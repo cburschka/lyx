@@ -40,8 +40,6 @@ public:
 	virtual int workWidth() const = 0;
 	///
 	virtual int workHeight() const = 0;
-	///
-	virtual unsigned int width() const = 0;
   
 	///
 	virtual int xpos() const = 0;
