@@ -320,6 +320,11 @@ Paragraph text.
 		ERT: "\ " could be converted to InsetSpace \<space>
 		ERT: "\," could be converted to InsetSpace \,
 
+2003-04-24  André Pönitz <poenitz@gmx.net>
+
+	* Added eqref support:
+	\begin_inset LatexCommand \eqref{label}
+
 2003-03-12  John Levon  <levon@movementarian.org>
 
 	* Added \\end_header to signify the end of the header in a

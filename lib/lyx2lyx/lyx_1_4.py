@@ -70,6 +70,41 @@ def revert_spaces(file):
 
 
 ##
+# equivalent to lyx::support::escape()
+#
+def lyx_support_escape(lab):
+    hexdigit = ['0', '1', '2', '3', '4', '5', '6', '7',
+                '8', '9', 'A', 'B', 'C', 'D', 'E', 'F']
+    enc = ""
+    for c in lab:
+        o = ord(c)
+        if o >= 128 or c == '=' or c == '%':
+            enc = enc + '='
+            enc = enc + hexdigit[o >> 4]
+            enc = enc + hexdigit[o & 15]
+        else:
+            enc = enc + c
+    return enc;
+
+
+##
+# \begin_inset LatexCommand \eqref -> ERT
+#
+def revert_eqref(file):
+    regexp = re.compile(r'^\\begin_inset\s+LatexCommand\s+\\eqref')
+    i = 0
+    while 1:
+        i = find_re(file.body, regexp, i)
+        if i == -1:
+            break
+        eqref = lyx_support_escape(regexp.sub("", file.body[i]))
+        file.body[i:i+1] = ["\\begin_inset ERT", "status Collapsed", "",
+                            "\\layout Standard", "", "\\backslash ",
+                            "eqref" + eqref]
+        i = i + 7
+
+
+##
 # BibTeX changes
 #
 def convert_bibtex(file):
@@ -1834,7 +1869,7 @@ revert =  [[240, [revert_ert_paragraphs]],
            [225, [revert_note]],
            [224, [rm_end_layout, begin_layout2layout, revert_end_document,
                   revert_valignment_middle, convert_vspace, convert_frameless_box]],
-           [223, [revert_external_2, revert_comment]],
+           [223, [revert_external_2, revert_comment, revert_eqref]],
            [221, [rm_end_header, revert_spaces, revert_bibtex,
                   rm_tracking_changes, rm_body_changes]]]
 
