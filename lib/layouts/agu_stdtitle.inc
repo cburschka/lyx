@@ -10,45 +10,59 @@ Input stdtitle.inc
 
 
 Style Header
-	Margin                First_dynamic
+	Margin                Static
 	LatexType             Command
 	LatexName             header
 	LabelSep              xx
 	LabelType             Centered_Top_Environment
-	LabelString           "<header>"
+	LabelString           "-- Header --"
 	CommandDepth          2
 	KeepEmpty             1
 	NextNoIndent          1
 	LabelFont
-	  Color               green
+	  Size                Largest
+	  Series              Bold
+	  Color               blue
 	EndFont
 End
 
 
 Style Special-section
 	CopyStyle             Header
+	Margin                Dynamic
 	LatexName             special-section
 	LabelType             Static
-	LabelString           "<special-section>"
+	LabelString           "Special-section: "
 	CommandDepth          3
 	LabelFont
-	  Color               blue
+	  Size                Normal
+	  Series              Medium
 	EndFont
 End
+
 
 
 Style AGU-journal
 	CopyStyle             Special-section
 	LatexName             AGU-journal
-	LabelString           "<AGU-journal>"
+	LabelString           "AGU-journal: "
 	CommandDepth          3
 End
+
+
+Style Citation-number
+	CopyStyle             Special-section
+	LatexName             citation-number
+	LabelString           "Citation-number: "
+	CommandDepth          3
+End
+
 
 
 Style AGU-volume
 	CopyStyle             Special-section
 	LatexName             AGU-volume
-	LabelString           "<AGU-volume>"
+	LabelString           "AGU-volume: "
 	CommandDepth          3
 End
 
@@ -56,7 +70,7 @@ End
 Style AGU-issue
 	CopyStyle             Special-section
 	LatexName             AGU-issue
-	LabelString           "<AGU-issue>"
+	LabelString           "AGU-issue: "
 	CommandDepth          3
 End
 
@@ -64,23 +78,46 @@ End
 Style Copyright
 	CopyStyle             Special-section
 	LatexName             copyright
-	LabelString           "<copyright>"
+	LabelString           "Copyright: "
 	CommandDepth          3
 End
 
 
-Style Indexterms
+Style Index-terms
 	CopyStyle             Special-section
 	LatexName             index-terms
-	LabelString           "<index-terms>"
+	TopSep                1.0
+	LabelString           "Index-terms..."
 	CommandDepth          3
+	LabelFont
+	  Shape               Italic
+      Size                Large
+	EndFont
+End
+
+
+Style Index-term
+	CopyStyle             Special-section
+	LatexName             index-term
+	LabelIndent           MM
+	LabelString           "Index-term: "
+	CommandDepth          4
+End
+
+
+Style Cross-term
+	CopyStyle             Special-section
+	LatexName             cross-term
+	LabelIndent           MM
+	LabelString           "Cross-term: "
+	CommandDepth          4
 End
 
 
 Style Keywords
 	CopyStyle             Special-section
 	LatexName             keywords
-	LabelString           "<keywords>"
+	LabelString           "Keywords: "
 	CommandDepth          3
 End
 
@@ -88,7 +125,7 @@ End
 Style Affiliation
 	CopyStyle             Special-section
 	LatexName             affiliation
-	LabelString           "<affiliation>"
+	LabelString           "Affiliation: "
 	CommandDepth          3
 End
 
@@ -96,23 +133,61 @@ End
 Style Supplementary
 	CopyStyle             Special-section
 	LatexName             sup-mat-ref
-	LabelString           "<sup-mat-ref>"
+	TopSep                1.0
+	LabelString           "Supplementary..."
 	CommandDepth          3
+	LabelFont
+	  Shape               Italic
+	  Size                Large
+	EndFont
+End
+
+
+Style Supp-note
+	CopyStyle             Special-section
+	LatexName             sup-mat-note
+	LabelIndent           MM
+	LabelString           "Sup-mat-note: "
+	CommandDepth          4
+End
+
+
+Style Cite-other
+	CopyStyle             Special-section
+	LatexName             cite-other
+	LabelIndent           MM
+	LabelString           "Cite-other: "
+	CommandDepth          4
 End
 
 
 Style Author
 	CopyStyle             Special-section
+	Margin                Static
+	LeftMargin            MMM
 	LatexName             author
-	LabelString           "<author>"
+	TopSep                0.8
+	BottomSep             0.8
+	Align                 Center
+	AlignPossible         Center
+	LabelType             No_Label
 	CommandDepth          3
+	Font
+	  Size                Large
+	EndFont
+End
+
+
+Style Name
+	CopyStyle             Special-section
+	LatexName             name
+	LabelIndent           MM
+	LabelString           "Name: "
+	CommandDepth          4
 End
 
 
 Style Abstract
-	LatexType             Environment
-	LabelType             Centered_Top_Environment
-	LabelString           "Abstract"
 	CommandDepth          3
 End
 
@@ -120,7 +195,7 @@ End
 Style Received
 	CopyStyle             Special-section
 	LatexName             received
-	LabelString           "<received>"
+	LabelString           "Received: "
 	CommandDepth          3
 End
 
@@ -128,7 +203,7 @@ End
 Style Revised
 	CopyStyle             Special-section
 	LatexName             revised
-	LabelString           "<revised>"
+	LabelString           "Revised: "
 	CommandDepth          3
 End
 
@@ -136,15 +211,15 @@ End
 Style Accepted
 	CopyStyle             Special-section
 	LatexName             accepted
-	LabelString           "<accepted>"
+	LabelString           "Accepted: "
 	CommandDepth          3
 End
 
 
-Style Identline
+Style Ident-line
 	CopyStyle             Special-section
 	LatexName             ident-line
-	LabelString           "<ident-line>"
+	LabelString           "Ident-line: "
 	CommandDepth          3
 End
 
@@ -152,32 +227,232 @@ End
 Style Runhead
 	CopyStyle             Special-section
 	LatexName             runhead
-	LabelString           "<runhead>"
+	LabelString           "Runhead: "
 	CommandDepth          3
 End
 
 
 Style Date
 	CopyStyle             Special-section
-	LatexName             date
-	LabelString           "<date>"
+	LatexName             published-online
+	LabelString           "Published-online: "
 	CommandDepth          3
 End
 
 
 Style Title
 	CopyStyle             Special-section
+	Margin                Static
+	LeftMargin            MMM
 	LatexName             title
-	LabelString           "<title>"
 	CommandDepth          3
+	TopSep                1.0
+	BottomSep             1.0
+	Align                 Center
+	AlignPossible         Center
+	LabelType             No_Label
+    Font
+      Size                Largest
+	EndFont
 End
 
 
 Style Citation
 	CopyStyle             Special-section
 	LatexName             citation
-	LabelString           "<citation>"
+	LabelString           "Citation: "
 	CommandDepth          3
+End
+
+
+Style Posting-order
+	CopyStyle             Special-section
+	LatexName             posting-order
+	LabelString           "Posting-order: "
+	CommandDepth          3
+End
+
+
+Style AGU-pages
+	CopyStyle             Special-section
+	LatexName             AGU-pages
+	LabelString           "AGU-pages: "
+	CommandDepth          3
+End
+
+
+Style Words
+	CopyStyle             Special-section
+	LatexName             words
+	LabelString           "Words: "
+	CommandDepth          3
+End
+
+
+Style Figures
+	CopyStyle             Special-section
+	LatexName             figures
+	LabelString           "Figures: "
+	CommandDepth          3
+End
+
+
+Style Tables
+	CopyStyle             Special-section
+	LatexName             tables
+	LabelString           "Tables: "
+	CommandDepth          3
+End
+
+
+Style Datasets
+	CopyStyle             Special-section
+	LatexName             datasets
+	LabelString           "Datasets: "
+	CommandDepth          3
+End
+
+
+# Inside AGU-journal:
+
+CharStyle ISSN
+	LatexType             Command
+	LatexName             ISSN
+	LabelFont
+	  Color               blue
+	EndFont
+End
+
+
+CharStyle CODEN
+	LatexType             Command
+	LatexName             CODEN
+	LabelFont
+	  Color               blue
+	EndFont
+End
+
+# Inside Special-section:
+
+CharStyle SS-Code
+	LatexType             Command
+	LatexName             ss-code
+	LabelFont
+	  Color               blue
+	EndFont
+End
+
+
+CharStyle SS-Title
+	LatexType             Command
+	LatexName             ss-title
+	LabelFont
+	  Color               blue
+	EndFont
+End
+
+# Inside Copyright:
+
+CharStyle CCC-Code
+	LatexType             Command
+	LatexName             CCCcode
+	LabelFont
+	  Color               blue
+	EndFont
+End
+
+
+# Inside Index-term:
+
+CharStyle Code
+	LatexType             Command
+	LatexName             code
+	LabelFont
+	  Color               blue
+	EndFont
+End
+
+
+CharStyle Dscr
+	LatexType             Command
+	LatexName             dscr
+	LabelFont
+	  Color               blue
+	EndFont
+End
+
+# Inside Keywords:
+
+CharStyle Keyword
+	LatexType             Command
+	LatexName             keyword
+	LabelFont
+	  Color               blue
+	EndFont
+End
+
+#inside Affiliation:
+
+CharStyle Orgdiv
+	LatexType             Command
+	LatexName             orgdiv
+	LabelFont
+	  Color               blue
+	EndFont
+End
+
+
+CharStyle Orgname
+	LatexType             Command
+	LatexName             orgname
+	LabelFont
+	  Color               blue
+	EndFont
+End
+
+
+CharStyle Street
+	LatexType             Command
+	LatexName             street
+	LabelFont
+	  Color               blue
+	EndFont
+End
+
+
+CharStyle City
+	LatexType             Command
+	LatexName             city
+	LabelFont
+	  Color               blue
+	EndFont
+End
+
+
+CharStyle State
+	LatexType             Command
+	LatexName             state
+	LabelFont
+	  Color               blue
+	EndFont
+End
+
+
+CharStyle Postcode
+	LatexType             Command
+	LatexName             postcode
+	LabelFont
+	  Color               blue
+	EndFont
+End
+
+
+CharStyle Country
+	LatexType             Command
+	LatexName             country
+	LabelFont
+	  Color               blue
+	EndFont
 End
 
 

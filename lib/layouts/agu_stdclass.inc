@@ -43,10 +43,22 @@ CharStyle Firstname
 	EndFont
 End
 
+CharStyle Fname
+	LatexType             Command
+	LatexName             fname
+	Font
+	  Shape               SmallCaps
+	EndFont
+	LabelFont
+	  Shape               Up
+	  Color               blue
+	EndFont
+End
+
 
 CharStyle Surname
 	LatexType             Command
-	LatexName             firstname
+	LatexName             surname
 	Font
 	  Shape               SmallCaps
 	EndFont
@@ -59,7 +71,7 @@ End
 
 CharStyle Filename
 	LatexType             Command
-	LatexName             firstname
+	LatexName             filename
 	Font
 	  Family              Typewriter
 	EndFont
@@ -72,7 +84,7 @@ End
 
 CharStyle Literal
 	LatexType             Command
-	LatexName             firstname
+	LatexName             literal
 	Font
 	  Family              Typewriter
 	EndFont
@@ -92,6 +104,87 @@ CharStyle Emph
 	EndFont
 	LabelFont
 	  Shape               Up
+	  Color               blue
+	EndFont
+End
+
+
+CharStyle Abbrev
+	LatexType             Command
+	LatexName             abbrev
+	LabelFont
+	  Color               blue
+	EndFont
+End
+
+
+CharStyle Citation-number
+	LatexType             Command
+	LatexName             citation-number
+	LabelFont
+	  Color               blue
+	EndFont
+End
+
+
+CharStyle Volume
+	LatexType             Command
+	LatexName             volume
+	LabelFont
+	  Color               blue
+	EndFont
+End
+
+
+CharStyle Day
+	LatexType             Command
+	LatexName             day
+	LabelFont
+	  Color               blue
+	EndFont
+End
+
+
+CharStyle Month
+	LatexType             Command
+	LatexName             month
+	LabelFont
+	  Color               blue
+	EndFont
+End
+
+
+CharStyle Year
+	LatexType             Command
+	LatexName             year
+	LabelFont
+	  Color               blue
+	EndFont
+End
+
+
+CharStyle Issue-number
+	LatexType             Command
+	LatexName             issue-number
+	LabelFont
+	  Color               blue
+	EndFont
+End
+
+
+CharStyle Issue-day
+	LatexType             Command
+	LatexName             issue-day
+	LabelFont
+	  Color               blue
+	EndFont
+End
+
+
+CharStyle Issue-months
+	LatexType             Command
+	LatexName             issue-months
+	LabelFont
 	  Color               blue
 	EndFont
 End
