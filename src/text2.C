@@ -1040,7 +1040,7 @@ void LyXText::toggleFree(BufferView * bview,
 	LyXCursor resetCursor = cursor;
 	bool implicitSelection = (font.language() == ignore_language
 	                          && font.number() == LyXFont::IGNORE)
-		? selectWordWhenUnderCursor(bview) : false;
+		? selectWordWhenUnderCursor(bview, WHOLE_WORD_STRICT) : false;
 
 	// Set font
 	setFont(bview, font, toggleall);

@@ -153,11 +153,17 @@ string const InsetQuotes::dispString(Language const * loclang) const
 		disp += disp;
 
  	if (lyxrc.font_norm_type == LyXRC::ISO_8859_1
- 	    || lyxrc.font_norm_type == LyXRC::ISO_8859_15)
-		if (disp == "<<")
+ 	    || lyxrc.font_norm_type == LyXRC::ISO_8859_9
+ 	    || lyxrc.font_norm_type == LyXRC::ISO_8859_15) {
+		if (disp == "'")
+			disp = "´";
+		else if (disp == "''")
+			disp = "´´";
+		else if (disp == "<<")
 			disp = '«';
 		else if (disp == ">>")
 			disp = '»';
+	}
 
 	// in french, spaces are added inside double quotes
 	if (times_ == DoubleQ && prefixIs(loclang->code(), "fr")) {

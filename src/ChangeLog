@@ -1,3 +1,15 @@
+2001-07-27  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* BufferView_pimpl.C (Dispatch): use WHOLE_WORD selection for
+	index; also, check that there is something to index, and that it
+	does not span over several paragraphs.
+	(doubleClick): use WHOLE_WORD_STRICT for double click.
+
+	* text.C (getWord): handle new WHOLE_WORD_STRICT word_location value.
+
+	* text2.C (toggleFree): do selection with WHOLE_WORD_STRICT
+	scheme.
+
 2001-07-27  Juergen Vigna  <jug@sad.it>
 
 	* text2.C: font.realize function adaption.

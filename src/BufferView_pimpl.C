@@ -678,10 +678,10 @@ void BufferView::Pimpl::doubleClick(int /*x*/, int /*y*/, unsigned int button)
 	    if (text->bv_owner) {
 		screen_->hideCursor();
 		screen_->toggleSelection(text, bv_);
-		text->selectWord(bv_);
+		text->selectWord(bv_, LyXText::WHOLE_WORD_STRICT);
 		screen_->toggleSelection(text, bv_, false);
 	    } else {
-		text->selectWord(bv_);
+		text->selectWord(bv_, LyXText::WHOLE_WORD_STRICT);
 	    }
 	    /* This will fit the cursor on the screen
 	     * if necessary */
@@ -2979,15 +2979,22 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 	case LFUN_INDEX_CREATE:
 	{
 		InsetCommandParams p("index");
+		LyXText * lt = bv_->getLyXText();
 		
 		if (argument.empty()) {
 			// Get word or selection
-			bv_->getLyXText()->selectWordWhenUnderCursor(bv_);
+			lt->selectWordWhenUnderCursor(bv_, LyXText::PREVIOUS_WORD);
 			
-			string const curstring = 
-				bv_->getLyXText()->selectionAsString(buffer_);
-
-			p.setContents(curstring);
+			if (!lt->selection.set()) {
+				owner_->message(_("Nothing to index!"));
+				break;
+			}
+			if (lt->selection.start.par() != lt->selection.end.par()) {
+				owner_->message(_("Cannot index more than one paragraph!"));
+				break;
+			}
+			
+			p.setContents(lt->selectionAsString(buffer_));
 		} else {
 			p.setContents(argument);
 		}
@@ -3011,13 +3018,20 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		    
 	case LFUN_INDEX_INSERT_LAST:
 	{
+		LyXText * lt = bv_->getLyXText();
 		// Get word or selection
-		bv_->getLyXText()->selectWordWhenUnderCursor(bv_);
+		lt->selectWordWhenUnderCursor(bv_, LyXText::PREVIOUS_WORD);
 
-		string const curstring = 
-			bv_->getLyXText()->selectionAsString(buffer_);
-
-		InsetCommandParams p("index", curstring);
+		if (!lt->selection.set()) {
+			owner_->message(_("Nothing to index!"));
+			break;
+		}
+		if (lt->selection.start.par() != lt->selection.end.par()) {
+			owner_->message(_("Cannot index more than one paragraph!"));
+			break;
+		}
+		
+		InsetCommandParams p("index", lt->selectionAsString(buffer_));
 		InsetIndex * inset = new InsetIndex(p);
 
 		if (!insertInset(inset))

@@ -48,10 +48,15 @@ public:
 	};
 	///
 	enum word_location {
-		/// the word around the cursor
+		// the word around the cursor, only if the cursor is
+		//not at a boundary
+		WHOLE_WORD_STRICT,
+		// the word around the cursor
 		WHOLE_WORD,
 		/// the word begining from the cursor position
 		PARTIAL_WORD,
+		/// the word around the cursor or before the cursor
+		PREVIOUS_WORD,
 		/// the next word (not yet used)
 		NEXT_WORD
 	};
@@ -272,7 +277,7 @@ public:
 	void getWord(LyXCursor & from, LyXCursor & to, 
 		     word_location const) const;
 	/// just selects the word the cursor is in
-	void selectWord(BufferView *, word_location const = WHOLE_WORD);
+	void selectWord(BufferView *, word_location const);
 	/// returns the inset at cursor (if it exists), 0 otherwise
 	Inset * getInset() const;
 
@@ -354,7 +359,7 @@ public:
 	void deleteLineForward(BufferView *);
 	///
 	bool selectWordWhenUnderCursor(BufferView *, 
-				       word_location const = WHOLE_WORD);
+				       word_location const);
 	///
 	enum TextCase {
 		///

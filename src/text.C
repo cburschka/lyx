@@ -2180,11 +2180,26 @@ void LyXText::getWord(LyXCursor & from, LyXCursor & to,
 	// first put the cursor where we wana start to select the word
 	from = cursor;
 	switch(loc) {
+	case WHOLE_WORD_STRICT:
+		if (cursor.pos() == 0 || cursor.pos() == cursor.par()->size()
+		    || cursor.par()->isSeparator(cursor.pos())
+		    || cursor.par()->isKomma(cursor.pos())
+		    || cursor.par()->isSeparator(cursor.pos() -1)
+		    || cursor.par()->isKomma(cursor.pos() -1)) {
+			to = from;
+			return;
+		}
+		// no break here, we go to the next
+		
 	case WHOLE_WORD:
 		// Move cursor to the beginning, when not already there.
 		if (from.pos() && !from.par()->isSeparator(from.pos() - 1)
 		    && !from.par()->isKomma(from.pos() - 1))
 			cursorLeftOneWord(from);
+		break;
+	case PREVIOUS_WORD:
+		// always move the cursor to the beginning of previous word
+		cursorLeftOneWord(from);
 		break;
 	case NEXT_WORD:
 		lyxerr << "LyXText::getWord: NEXT_WORD not implemented yet\n";
@@ -2210,29 +2225,22 @@ void LyXText::selectWord(BufferView * bview, word_location const loc)
 	getWord(from, to, loc);
 	if (cursor != from)
 		setCursor(bview, from.par(), from.pos());
+	if (to == from)
+		return;
 	selection.cursor = cursor;
 	setCursor(bview, to.par(), to.pos() );
 	setSelection(bview);
 }
 
-/* -------> Select the word currently under the cursor when:
-			1: no selection is currently set,
-	[disabled]	2: the cursor is not at the borders of the word. */
 
+/* -------> Select the word currently under the cursor when no
+	selection is currently set */
 bool LyXText::selectWordWhenUnderCursor(BufferView * bview, 
 					word_location const loc) 
 {
-	if (!selection.set() 
-#if 0
-	    && cursor.pos() > 0 && cursor.pos() < cursor.par()->size()
-	    && !cursor.par()->isSeparator(cursor.pos())
-	    && !cursor.par()->isKomma(cursor.pos())
-	    && !cursor.par()->isSeparator(cursor.pos() -1)
-	    && !cursor.par()->isKomma(cursor.pos() -1)
-#endif
-	    ) {
+	if (!selection.set()) {
 		selectWord(bview, loc);
-		return true;
+		return selection.set();
 	}
 	return false;
 }
