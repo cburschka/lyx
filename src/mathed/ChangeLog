@@ -1,5 +1,20 @@
 2003-03-04  Angus Leeming  <leeming@lyx.org>
 
+	* command_inset.[Ch] (createDialogStr): a new function to generate
+	something that the frontend Dialogs will understand.
+
+	* math_factory.[Ch] (createMathInset_fromDialogStr): new function
+	parses the string passed from the frontends.
+
+	* formulabase.C (localDiapatch):
+	* ref_inset.C (dispatch): use createDialogStr and
+	createMathInset_fromDialogStr rather than the current hard-coded
+	stuff.
+
+	* ref_inset.[Ch] (string2RefInset): goes the way of the dodo.
+
+2003-03-04  Angus Leeming  <leeming@lyx.org>
+
 	* formulabase.C (localDispatch): if an inset is found on
 	LFUN_INSET_APPLY, send LFUN_INSET_MODIFY to the inset's localDispatch.
 

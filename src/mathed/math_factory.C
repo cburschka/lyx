@@ -46,6 +46,7 @@
 #include "math_support.h"
 #include "Lsstream.h"
 #include "support/filetools.h" // LibFileSearch
+#include "support/lstrings.h"
 #include "frontends/lyx_gui.h"
 
 #include <map>
@@ -299,3 +300,28 @@ MathAtom createMathInset(string const & s)
 	//lyxerr[Debug::MATHED] << "creating inset 2 with name: '" << s << '\'' << endl;
 	return MathAtom(new MathUnknownInset(s));
 }
+
+
+bool createMathInset_fromDialogStr(string const & str, MathArray & ar)
+{
+	// An example str:
+	// "ref LatexCommand \\ref{sec:Title}\n\\end_inset\n\n";
+	string name;
+	string body = split(str, name, ' ');
+
+	if (name != "ref" )
+		return false;
+
+	// body comes with a head "LatexCommand " and a
+	// tail "\nend_inset\n\n". Strip them off.
+	string trimmed;
+	body = split(body, trimmed, ' ');
+	split(body, trimmed, '\n');
+
+	mathed_parse_cell(ar, trimmed);
+	if (ar.size() != 1)
+		return false;
+
+	return ar[0].nucleus();
+}
+

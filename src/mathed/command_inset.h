@@ -32,6 +32,8 @@ public:
 	dispatch_result dispatch(FuncRequest const & cmd, idx_type & idx, pos_type & pos);
 	///
 	string screenLabel() const;
+	/// generate something that will be understodd by the Dialogs.
+	string const createDialogStr(string const & name) const;
 public:
 	string name_;
 };

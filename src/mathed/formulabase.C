@@ -797,7 +797,8 @@ dispatch_result InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 	case LFUN_DIALOG_SHOW_NEW_INSET: {
 		string const & name = argument;
 		if (name == "ref") {
-			string data = "ref LatexCommand \\ref{}\n\\end_inset\n\n";
+			RefInset tmp;
+			string const data = tmp.createDialogStr(name);
 			bv->owner()->getDialogs().show(name, data, 0);
 		} else
 			result = UNDISPATCHED;
@@ -806,17 +807,17 @@ dispatch_result InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 
 	case LFUN_INSET_APPLY: {
 		string const name = cmd.getArg(0);
-		InsetBase * base =
+		InsetBase * base = 
 			bv->owner()->getDialogs().getOpenInset(name);
 
 		if (base) {
 			FuncRequest fr(bv, LFUN_INSET_MODIFY, cmd.argument);
 			result = base->localDispatch(fr);
 		} else {
-			// Turn 'argument' into a temporary RefInset.
 			MathArray ar;
-			if (string2RefInset(cmd.argument, ar)) {
+			if (createMathInset_fromDialogStr(cmd.argument, ar)) {
 				mathcursor->insert(ar);
+				result = DISPATCHED;
 			} else {
 				result = UNDISPATCHED;
 			}

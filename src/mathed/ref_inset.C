@@ -2,20 +2,18 @@
 #include <config.h>
 
 #include "ref_inset.h"
-#include "funcrequest.h"
-#include "formulabase.h"
+#include "math_factory.h"
+
 #include "BufferView.h"
-#include "frontends/LyXView.h"
-#include "frontends/Painter.h"
-#include "frontends/Dialogs.h"
-#include "lyxfunc.h"
+#include "debug.h"
+#include "funcrequest.h"
 #include "gettext.h"
 #include "LaTeXFeatures.h"
-#include "debug.h"
-#include "math_mathmlstream.h"
-#include "Lsstream.h"
-#include "math_parser.h"
-#include "support/lstrings.h"
+
+#include "frontends/LyXView.h"
+#include "frontends/Dialogs.h"
+
+#include "support/LOstream.h"
 
 
 RefInset::RefInset()
@@ -53,14 +51,9 @@ RefInset::dispatch(FuncRequest const & cmd, idx_type & idx, pos_type & pos)
 			if (cmd.button() == mouse_button::button1) {
 				// Eventually trigger dialog with button 3
 				// not 1
-				ostringstream data;
-				data << "ref LatexCommand ";
-				WriteStream wsdata(data);
-				write(wsdata);
-				wsdata << "\n\\end_inset\n\n";
-
+				string const data = createDialogStr("ref");
 				cmd.view()->owner()->getDialogs().
-					show("ref", data.str(), this);
+					show("ref", data, this);
 				return DISPATCHED;
 			}
 			break;
@@ -137,7 +130,7 @@ dispatch_result RefInset::localDispatch(FuncRequest const & cmd)
 		return UNDISPATCHED;
 
 	MathArray ar;
-	if (!string2RefInset(cmd.argument, ar))
+	if (!createMathInset_fromDialogStr(cmd.argument, ar))
 		return UNDISPATCHED;
 
 	*this = *ar[0].nucleus()->asRefInset();
@@ -146,28 +139,6 @@ dispatch_result RefInset::localDispatch(FuncRequest const & cmd)
 //                 // an Inset* and 'this' isn't.
 // 		cmd.view()->updateInset(this, true);
 	return DISPATCHED;
-}
-
-
-bool string2RefInset(string const & str, MathArray & ar)
-{
-	string name;
-	string body = split(str, name, ' ');
-
-	if (name != "ref")
-		return false;
-
-	// body comes with a head "LatexCommand " and a
-	// tail "\nend_inset\n\n". Strip them off.
-	string trimmed;
-	body = split(body, trimmed, ' ');
-	split(body, trimmed, '\n');
-
-	mathed_parse_cell(ar, trimmed);
-	if (ar.size() != 1)
-		return false;
-
-	return ar[0].nucleus()->asRefInset();
 }
 
 

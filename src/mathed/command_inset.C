@@ -2,6 +2,7 @@
 #include "command_inset.h"
 #include "math_mathmlstream.h"
 #include "funcrequest.h"
+#include "Lsstream.h"
 
 
 CommandInset::CommandInset(string const & data)
@@ -51,3 +52,17 @@ string CommandInset::screenLabel() const
 {
 	return name_;
 }
+
+
+string const CommandInset::createDialogStr(string const & name) const
+{
+	ostringstream data;
+	data << name << " LatexCommand ";
+	WriteStream wsdata(data);
+	write(wsdata);
+	wsdata << "\n\\end_inset\n\n";
+
+	return data.str();
+}
+
+
