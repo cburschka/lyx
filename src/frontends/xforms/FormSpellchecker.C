@@ -160,8 +160,8 @@ ButtonPolicy::SMInput FormSpellchecker::input(FL_OBJECT * ob, long ob_value)
 
 	// update slider with word count and progress
 	double const wordcount = controller().getCount();
-	if (wordcount > 0.0) {
-		int const progress = controller().getProgress();
+	int const progress = controller().getProgress();
+	if (wordcount > 0.0 && progress > 0) {
 		double const total = 100.0 * wordcount / progress;
 
 		fl_set_slider_bounds(dialog_->slider_progress, 0.0, total);
@@ -178,7 +178,7 @@ void FormSpellchecker::partialUpdate(int id)
 {
 	switch (id) {
 	case 1: // set suggestions
-		{
+	{
 		string w = controller().getWord();
 		fl_set_input(dialog_->input_replacement, w.c_str());
 		fl_set_object_label(dialog_->text_unknown, w.c_str());
@@ -186,8 +186,8 @@ void FormSpellchecker::partialUpdate(int id)
 		while (!(w = controller().getSuggestion()).empty()) {
 			fl_add_browser_line(dialog_->browser_suggestions, w.c_str());
 		}
-		}
-		break;
+	}
+	break;
 	case 2: // end of spell checking
 
 		// reset dialog and buttons into start condition
