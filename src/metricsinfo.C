@@ -14,6 +14,7 @@
 #include "mathed/math_support.h"
 #include "frontends/Painter.h"
 #include "BufferView.h"
+#include "LColor.h"
 
 
 
@@ -147,6 +148,7 @@ FontSetChanger::FontSetChanger(MetricsBase & mb, char const * name)
 	augmentFont(mb.font, name);
 }
 
+
 FontSetChanger::~FontSetChanger()
 {
 	orig_ = save_;
@@ -165,3 +167,21 @@ WidthChanger::~WidthChanger()
 {
 	orig_ = save_;
 }
+
+
+
+
+ColorChanger::ColorChanger(LyXFont & font, string const & color)
+	: Changer<LyXFont, string>(font)
+{
+	save_ = lcolor.getFromGUIName(color);
+	font.setColor(lcolor.getFromGUIName(color));
+}
+
+
+ColorChanger::~ColorChanger()
+{
+	orig_.setColor(lcolor.getFromGUIName(save_));
+}
+
+

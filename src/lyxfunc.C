@@ -72,7 +72,6 @@
 #include "support/path.h"
 #include "support/path_defines.h"
 #include "support/tostr.h"
-
 #include "support/std_sstream.h"
 
 using bv_funcs::apply_freefont;
@@ -1200,16 +1199,6 @@ void LyXFunc::dispatch(FuncRequest const & func, bool verbose)
 
 	case LFUN_REDO:
 		view()->redo();
-		break;
-
-	case LFUN_DEPTH_MIN:
-		changeDepth(view(), view()->getLyXText(), DEC_DEPTH, false);
-		owner->view_state_changed();
-		break;
-
-	case LFUN_DEPTH_PLUS:
-		changeDepth(view(), view()->getLyXText(), INC_DEPTH, false);
-		owner->view_state_changed();
 		break;
 
 	case LFUN_FREEFONT_APPLY:

@@ -175,4 +175,12 @@ struct WidthChanger : public Changer<MetricsBase>
 };
 
 
+// temporarily change the used color
+struct ColorChanger : public Changer<LyXFont, string> {
+	///
+	ColorChanger(LyXFont & font, string const & color);
+	///
+	~ColorChanger();
+};
+
 #endif

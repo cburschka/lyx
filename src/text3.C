@@ -1534,6 +1534,19 @@ InsetOld::RESULT LyXText::dispatch(FuncRequest const & cmd)
 		doInsertInset(this, cmd, false, false);
 		break;
 
+	case LFUN_DEPTH_MIN:
+		bv_funcs::changeDepth(bv, this, bv_funcs::DEC_DEPTH, false);
+		clearSelection();
+		bv->update();
+		break;
+
+	case LFUN_DEPTH_PLUS:
+		clearSelection();
+		bv_funcs::changeDepth(bv, this, bv_funcs::INC_DEPTH, false);
+		clearSelection();
+		bv->update();
+		break;
+
 	default:
 		return UNDISPATCHED;
 	}
