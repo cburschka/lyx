@@ -185,7 +185,7 @@ public:
 	void scrollDocView(int);
 
 	///
-	void setState();
+	void switchKeyMap();
 
 	///
 	bool ChangeInsets(Inset::Code code, string const & from,

@@ -351,7 +351,7 @@ int BufferView::Pimpl::resizeCurrentBuffer()
 
 	bv_->text->first_y = screen().topCursorVisible(bv_->text->cursor, bv_->text->first_y);
 
-	setState();
+	switchKeyMap();
 	owner_->allowInput();
 
 	/// clear the "Formatting Document" message
@@ -734,8 +734,8 @@ void BufferView::Pimpl::workAreaButtonRelease(int x, int y,
 		workarea().haveSelection(bv_->getLyXText()->selection.set());
 	}
 
-	setState();
-	owner_->showState();
+	switchKeyMap();
+	owner_->view_state_changed();
 	owner_->updateMenubar();
 	owner_->updateToolbar();
 
@@ -1236,7 +1236,7 @@ bool BufferView::Pimpl::isSavedPosition(unsigned int i)
 }
 
 
-void BufferView::Pimpl::setState()
+void BufferView::Pimpl::switchKeyMap()
 {
 	if (!lyxrc.rtl_support)
 		return;
@@ -1384,10 +1384,7 @@ void BufferView::Pimpl::moveCursorUpdate(bool selecting, bool fitcur)
 	if (!lt->selection.set())
 		workarea().haveSelection(false);
 
-	/* ---> Everytime the cursor is moved, show the current font state. */
-	// should this too me moved out of this func?
-	//owner->showState();
-	setState();
+	switchKeyMap();
 }
 
 
@@ -1520,7 +1517,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 
 	case LFUN_PASTE:
 		bv_->paste();
-		setState();
+		switchKeyMap();
 		break;
 
 	case LFUN_PASTESELECTION:
@@ -1546,7 +1543,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 
 	case LFUN_LAYOUT_PASTE:
 		bv_->pasteEnvironment();
-		setState();
+		switchKeyMap();
 		break;
 
 	case LFUN_GOTOERROR:
@@ -1675,60 +1672,60 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 			       BufferView::SELECT
 			       | BufferView::FITCUR
 			       | BufferView::CHANGE);
-			setState();
+			switchKeyMap();
 		}
 	}
 	break;
 
 	case LFUN_LANGUAGE:
 		lang(bv_, argument);
-		setState();
-		owner_->showState();
+		switchKeyMap();
+		owner_->view_state_changed();
 		break;
 
 	case LFUN_EMPH:
 		emph(bv_);
-		owner_->showState();
+		owner_->view_state_changed();
 		break;
 
 	case LFUN_BOLD:
 		bold(bv_);
-		owner_->showState();
+		owner_->view_state_changed();
 		break;
 
 	case LFUN_NOUN:
 		noun(bv_);
-		owner_->showState();
+		owner_->view_state_changed();
 		break;
 
 	case LFUN_CODE:
 		code(bv_);
-		owner_->showState();
+		owner_->view_state_changed();
 		break;
 
 	case LFUN_SANS:
 		sans(bv_);
-		owner_->showState();
+		owner_->view_state_changed();
 		break;
 
 	case LFUN_ROMAN:
 		roman(bv_);
-		owner_->showState();
+		owner_->view_state_changed();
 		break;
 
 	case LFUN_DEFAULT:
 		styleReset(bv_);
-		owner_->showState();
+		owner_->view_state_changed();
 		break;
 
 	case LFUN_UNDERLINE:
 		underline(bv_);
-		owner_->showState();
+		owner_->view_state_changed();
 		break;
 
 	case LFUN_FONT_SIZE:
 		fontSize(bv_, argument);
-		owner_->showState();
+		owner_->view_state_changed();
 		break;
 
 	case LFUN_FONT_STATE:
@@ -1874,7 +1871,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 			lt->cursorRight(bv_, false);
 		finishUndo();
 		moveCursorUpdate(false);
-		owner_->showState();
+		owner_->view_state_changed();
 	}
 	break;
 
@@ -1907,7 +1904,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 
 		finishUndo();
 		moveCursorUpdate(false);
-		owner_->showState();
+		owner_->view_state_changed();
 	}
 	break;
 
@@ -1921,7 +1918,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		lt->cursorUp(bv_);
 		finishUndo();
 		moveCursorUpdate(false);
-		owner_->showState();
+		owner_->view_state_changed();
 	}
 	break;
 
@@ -1935,7 +1932,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		lt->cursorDown(bv_);
 		finishUndo();
 		moveCursorUpdate(false);
-		owner_->showState();
+		owner_->view_state_changed();
 	}
 	break;
 
@@ -1949,7 +1946,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		lt->cursorUpParagraph(bv_);
 		finishUndo();
 		moveCursorUpdate(false);
-		owner_->showState();
+		owner_->view_state_changed();
 	}
 	break;
 
@@ -1963,7 +1960,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		lt->cursorDownParagraph(bv_);
 		finishUndo();
 		moveCursorUpdate(false);
-		owner_->showState();
+		owner_->view_state_changed();
 	}
 	break;
 
@@ -1977,7 +1974,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		cursorPrevious(lt);
 		finishUndo();
 		moveCursorUpdate(false, false);
-		owner_->showState();
+		owner_->view_state_changed();
 	}
 	break;
 
@@ -1991,7 +1988,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		cursorNext(lt);
 		finishUndo();
 		moveCursorUpdate(false, false);
-		owner_->showState();
+		owner_->view_state_changed();
 	}
 	break;
 
@@ -2005,7 +2002,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		lt->cursorHome(bv_);
 		finishUndo();
 		moveCursorUpdate(false);
-		owner_->showState();
+		owner_->view_state_changed();
 	}
 	break;
 
@@ -2020,7 +2017,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		lt->cursorEnd(bv_);
 		finishUndo();
 		moveCursorUpdate(false);
-		owner_->showState();
+		owner_->view_state_changed();
 	}
 	break;
 
@@ -2036,7 +2033,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		lt->cursorTab(bv_);
 		finishUndo();
 		moveCursorUpdate(false);
-		owner_->showState();
+		owner_->view_state_changed();
 	}
 	break;
 
@@ -2053,7 +2050,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 			lt->cursorRightOneWord(bv_);
 		finishUndo();
 		moveCursorUpdate(false);
-		owner_->showState();
+		owner_->view_state_changed();
 	}
 	break;
 
@@ -2070,7 +2067,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 			lt->cursorLeftOneWord(bv_);
 		finishUndo();
 		moveCursorUpdate(false);
-		owner_->showState();
+		owner_->view_state_changed();
 	}
 	break;
 
@@ -2085,7 +2082,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		lt->cursorTop(bv_);
 		finishUndo();
 		moveCursorUpdate(false);
-		owner_->showState();
+		owner_->view_state_changed();
 	}
 	break;
 
@@ -2100,7 +2097,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		lt->cursorBottom(bv_);
 		finishUndo();
 		moveCursorUpdate(false);
-		owner_->showState();
+		owner_->view_state_changed();
 	}
 	break;
 
@@ -2117,7 +2114,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 			lt->cursorRight(bv_);
 		finishUndo();
 		moveCursorUpdate(true);
-		owner_->showState();
+		owner_->view_state_changed();
 	}
 	break;
 
@@ -2133,7 +2130,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 			lt->cursorLeft(bv_);
 		finishUndo();
 		moveCursorUpdate(true);
-		owner_->showState();
+		owner_->view_state_changed();
 	}
 	break;
 
@@ -2146,7 +2143,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		lt->cursorUp(bv_, true);
 		finishUndo();
 		moveCursorUpdate(true);
-		owner_->showState();
+		owner_->view_state_changed();
 	}
 	break;
 
@@ -2159,7 +2156,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		lt->cursorDown(bv_, true);
 		finishUndo();
 		moveCursorUpdate(true);
-		owner_->showState();
+		owner_->view_state_changed();
 	}
 	break;
 
@@ -2172,7 +2169,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		lt->cursorUpParagraph(bv_);
 		finishUndo();
 		moveCursorUpdate(true);
-		owner_->showState();
+		owner_->view_state_changed();
 	}
 	break;
 
@@ -2185,7 +2182,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		lt->cursorDownParagraph(bv_);
 		finishUndo();
 		moveCursorUpdate(true);
-		owner_->showState();
+		owner_->view_state_changed();
 	}
 	break;
 
@@ -2197,7 +2194,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		cursorPrevious(lt);
 		finishUndo();
 		moveCursorUpdate(true);
-		owner_->showState();
+		owner_->view_state_changed();
 	}
 	break;
 
@@ -2209,7 +2206,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		cursorNext(lt);
 		finishUndo();
 		moveCursorUpdate(true);
-		owner_->showState();
+		owner_->view_state_changed();
 	}
 	break;
 
@@ -2221,7 +2218,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		lt->cursorHome(bv_);
 		finishUndo();
 		moveCursorUpdate(true);
-		owner_->showState();
+		owner_->view_state_changed();
 	}
 	break;
 
@@ -2233,7 +2230,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		lt->cursorEnd(bv_);
 		finishUndo();
 		moveCursorUpdate(true);
-		owner_->showState();
+		owner_->view_state_changed();
 	}
 	break;
 
@@ -2248,7 +2245,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 			lt->cursorRightOneWord(bv_);
 		finishUndo();
 		moveCursorUpdate(true);
-		owner_->showState();
+		owner_->view_state_changed();
 	}
 	break;
 
@@ -2263,7 +2260,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 			lt->cursorLeftOneWord(bv_);
 		finishUndo();
 		moveCursorUpdate(true);
-		owner_->showState();
+		owner_->view_state_changed();
 	}
 	break;
 
@@ -2277,7 +2274,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		lt->cursorTop(bv_);
 		finishUndo();
 		moveCursorUpdate(true);
-		owner_->showState();
+		owner_->view_state_changed();
 	}
 	break;
 
@@ -2292,7 +2289,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		lt->cursorBottom(bv_);
 		finishUndo();
 		moveCursorUpdate(true);
-		owner_->showState();
+		owner_->view_state_changed();
 	}
 	break;
 
@@ -2370,8 +2367,8 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 			bv_->cut(false);
 		}
 		moveCursorUpdate(false);
-		owner_->showState();
-		setState();
+		owner_->view_state_changed();
+		switchKeyMap();
 	}
 	break;
 
@@ -2435,7 +2432,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		bv_->getLyXText()->deleteWordForward(bv_);
 		update(bv_->getLyXText(), BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 		moveCursorUpdate(false);
-		owner_->showState();
+		owner_->view_state_changed();
 		break;
 
 		/* -------> Delete word backward. */
@@ -2450,7 +2447,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		       | BufferView::FITCUR
 		       | BufferView::CHANGE);
 		moveCursorUpdate(false);
-		owner_->showState();
+		owner_->view_state_changed();
 	}
 	break;
 
@@ -2513,8 +2510,8 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		} else {
 			bv_->cut(false);
 		}
-		owner_->showState();
-		setState();
+		owner_->view_state_changed();
+		switchKeyMap();
 	}
 	break;
 
@@ -2567,8 +2564,8 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		       | BufferView::FITCUR
 		       | BufferView::CHANGE);
 		lt->selection.cursor = lt->cursor;
-		setState();
-		owner_->showState();
+		switchKeyMap();
+		owner_->view_state_changed();
 		break;
 	}
 
@@ -2583,8 +2580,8 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		       | BufferView::FITCUR
 		       | BufferView::CHANGE);
 		lt->selection.cursor = lt->cursor;
-		setState();
-		owner_->showState();
+		switchKeyMap();
+		owner_->view_state_changed();
 		break;
 	}
 
@@ -2623,8 +2620,8 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		       | BufferView::FITCUR
 		       | BufferView::CHANGE);
 		lt->selection.cursor = cursor;
-		setState();
-		owner_->showState();
+		switchKeyMap();
+		owner_->view_state_changed();
 	}
 	break;
 
@@ -2686,7 +2683,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		update(lt, BufferView::SELECT|BufferView::FITCUR);
 		lt->toggleInset(bv_);
 		update(lt, BufferView::SELECT|BufferView::FITCUR);
-		setState();
+		switchKeyMap();
 	}
 		break;
 
@@ -3125,7 +3122,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		// real_current_font.number can change so we need to
 		// update the minibuffer
 		if (old_font != lt->real_current_font)
-			owner_->showState();
+			owner_->view_state_changed();
 		//return string();
 	}
 	break;

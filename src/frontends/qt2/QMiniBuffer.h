@@ -14,7 +14,7 @@
 
 #include "LString.h"
 
-#include "MiniBuffer.h"
+#include "frontends/MiniBuffer.h"
 
 #ifdef __GNUG__
 #pragma interface

@@ -145,11 +145,6 @@ LyXText * LyXFunc::TEXT(bool flag = true) const
 }
 
 
-// I changed this func slightly. I commented out the ...FinishUndo(),
-// this means that all places that used to have a moveCursorUpdate, now
-// have a ...FinishUndo() as the preceeding statement. I have also added
-// a moveCursorUpdate to some of the functions that updated the cursor, but
-// that did not show its new position.
 inline
 void LyXFunc::moveCursorUpdate(bool flag, bool selecting)
 {
@@ -161,9 +156,7 @@ void LyXFunc::moveCursorUpdate(bool flag, bool selecting)
 	owner->view()->update(TEXT(flag), BufferView::SELECT|BufferView::FITCUR);
 	owner->view()->showCursor();
 
-	/* ---> Everytime the cursor is moved, show the current font state. */
-	// should this too me moved out of this func?
-	owner->view()->setState();
+	owner->view()->switchKeyMap();
 }
 
 
@@ -852,7 +845,7 @@ string const LyXFunc::dispatch(kb_action action, string argument)
 			} else if (result == UpdatableInset::FINISHED_RIGHT) {
 				TEXT()->cursorRight(owner->view());
 				moveCursorUpdate(true, false);
-				owner->showState();
+				owner->view_state_changed();
 				goto exit_with_message;
 			} else if (result == UpdatableInset::FINISHED_UP) {
 				if (TEXT()->cursor.irow()->previous()) {
@@ -866,7 +859,7 @@ string const LyXFunc::dispatch(kb_action action, string argument)
 					TEXT()->cursorUp(owner->view());
 #endif
 					moveCursorUpdate(true, false);
-					owner->showState();
+					owner->view_state_changed();
 				} else {
 					owner->view()->update(TEXT(), BufferView::SELECT|BufferView::FITCUR);
 				}
@@ -887,7 +880,7 @@ string const LyXFunc::dispatch(kb_action action, string argument)
 					TEXT()->cursorRight(owner->view());
 				}
 				moveCursorUpdate(true, false);
-				owner->showState();
+				owner->view_state_changed();
 				goto exit_with_message;
 			}
 #warning I am not sure this is still right, please have a look! (Jug 20020417)
@@ -898,21 +891,21 @@ string const LyXFunc::dispatch(kb_action action, string argument)
 				case LFUN_BREAKPARAGRAPH:
 				case LFUN_BREAKLINE:
 					TEXT()->cursorRight(owner->view());
-					owner->view()->setState();
-					owner->showState();
+					owner->view()->switchKeyMap();
+					owner->view_state_changed();
 					break;
 				case LFUN_RIGHT:
 					if (!TEXT()->cursor.par()->isRightToLeftPar(owner->buffer()->params)) {
 						TEXT()->cursorRight(owner->view());
 						moveCursorUpdate(true, false);
-						owner->showState();
+						owner->view_state_changed();
 					}
 					goto exit_with_message;
 				case LFUN_LEFT:
 					if (TEXT()->cursor.par()->isRightToLeftPar(owner->buffer()->params)) {
 						TEXT()->cursorRight(owner->view());
 						moveCursorUpdate(true, false);
-						owner->showState();
+						owner->view_state_changed();
 					}
 					goto exit_with_message;
 				case LFUN_DOWN:
@@ -921,7 +914,7 @@ string const LyXFunc::dispatch(kb_action action, string argument)
 					else
 						TEXT()->cursorRight(owner->view());
 					moveCursorUpdate(true, false);
-					owner->showState();
+					owner->view_state_changed();
 					goto exit_with_message;
 				default:
 					break;
@@ -945,7 +938,7 @@ string const LyXFunc::dispatch(kb_action action, string argument)
 				owner->view()->unlockInset(tli);
 				TEXT()->cursorRight(owner->view());
 				moveCursorUpdate(true, false);
-				owner->showState();
+				owner->view_state_changed();
 			} else {
 				tli->unlockInsetInInset(owner->view(),
 							lock,
@@ -1385,8 +1378,8 @@ string const LyXFunc::dispatch(kb_action action, string argument)
 		}
 		// Set the cursor
 		owner->view()->getLyXText()->setCursor(owner->view(), par, 0);
-		owner->view()->setState();
-		owner->showState();
+		owner->view()->switchKeyMap();
+		owner->view_state_changed();
 
 		owner->view()->center();
 		// see BufferView_pimpl::center() 

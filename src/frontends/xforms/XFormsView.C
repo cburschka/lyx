@@ -66,6 +66,8 @@ XFormsView::XFormsView(int width, int height)
 	minibuffer_->inputReady.connect(boost::bind(&LyXFunc::miniDispatch, getLyXFunc(), _1));
 	minibuffer_->timeout.connect(boost::bind(&LyXFunc::initMiniBuffer, getLyXFunc()));
 
+	view_state_changed.connect(boost::bind(&XFormsView::update_view_state, this));
+ 
 	// Make sure the buttons are disabled if needed.
 	updateToolbar();
 	getDialogs()->redrawGUI.connect(boost::bind(&XFormsView::redraw, this));
@@ -198,6 +200,12 @@ void XFormsView::setWindowTitle(string const & title, string const & icon_title)
 }
 
 
+void XFormsView::update_view_state()
+{
+	minibuffer_->message(currentState(view()));
+}
+ 
+ 
 // How should this actually work? Should it prohibit input in all BufferViews,
 // or just in the current one? If "just the current one", then it should be
 // placed in BufferView. If "all BufferViews" then LyXGUI (I think) should

@@ -111,6 +111,7 @@ void lyx_gui::start(string const & batch, vector<string> files)
 		view.getLyXFunc()->verboseDispatch(batch, false);
 	}
 
+	// FIXME: something somewhere is EATING CPU
 	while (!finished) {
 		qApp->processEvents();
 	}

@@ -344,7 +344,7 @@ void BufferView::menuUndo()
 			owner()->message(_("No further undo information"));
 		else
 			update(text, BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
-		setState();
+		switchKeyMap();
 	}
 }
 
@@ -367,7 +367,7 @@ void BufferView::menuRedo()
 			owner()->message(_("No further redo information"));
 		else
 			update(text, BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
-		setState();
+		switchKeyMap();
 	}
 }
 

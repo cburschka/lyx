@@ -62,6 +62,9 @@ private:
 	 */
 	virtual void setWindowTitle(string const & t, string const & it);
 
+	/// update the minibuffer state message
+	void update_view_state();
+
 	/// makes the main form.
 	void create_form_form_main(Dialogs & d, int width, int height);
 	/// the main form.

@@ -658,7 +658,7 @@ void InsetText::updateLocal(BufferView * bv, int what, bool mark_dirty) const
 
 	if (need_update == CURSOR)
 		need_update = NONE;
-	bv->owner()->showState();
+	bv->owner()->view_state_changed();
 	bv->owner()->updateMenubar();
 	bv->owner()->updateToolbar();
 	if (old_par != cpar(bv)) {
@@ -1261,7 +1261,7 @@ InsetText::localDispatch(BufferView * bv,
 
 			setUndo(bv, Undo::INSERT,
 				lt->cursor.par(), lt->cursor.par()->next());
-			bv->setState();
+			bv->switchKeyMap();
 			if (lyxrc.auto_region_delete) {
 				if (lt->selection.set()) {
 					lt->cutSelection(bv, false);

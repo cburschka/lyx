@@ -163,9 +163,9 @@ void BufferView::update(LyXText * text, UpdateCodes f)
 }
 
 
-void BufferView::setState()
+void BufferView::switchKeyMap()
 {
-	pimpl_->setState();
+	pimpl_->switchKeyMap();
 }
 
 

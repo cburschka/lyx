@@ -227,9 +227,3 @@ void LyXView::updateWindowTitle()
 		last_title = title;
 	}
 }
-
-
-void LyXView::showState()
-{
-	message(currentState(view()));
-}

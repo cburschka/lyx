@@ -63,7 +63,7 @@ void ControlCharacter::apply()
 		view().apply();
 
 	toggleAndShow(lv_.view(), *(font_.get()), toggleall_);
-	lv_.view()->setState();
+	lv_.view_state_changed();
 	lv_.buffer()->markDirty();
 	setMinibuffer(&lv_, _("Character set"));
 }

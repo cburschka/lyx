@@ -56,6 +56,9 @@ protected:
 	virtual void closeEvent(QCloseEvent * e);
  
 private:
+	/// update status bar
+	void update_view_state();
+ 
 	/** 
 	 * setWindowTitle - set title of window
 	 * @param t main window title

@@ -107,7 +107,7 @@ struct BufferView::Pimpl : public boost::signals::trackable {
 	///
 	bool isSavedPosition(unsigned int i);
 	///
-	void setState();
+	void switchKeyMap();
 	///
 	void insetUnlock();
 	///

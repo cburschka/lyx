@@ -22,6 +22,7 @@
 #include <boost/utility.hpp>
 #include <boost/scoped_ptr.hpp>
 #include <boost/signals/trackable.hpp>
+#include <boost/signals/signal0.hpp>
 
 class Buffer;
 class Toolbar;
@@ -107,14 +108,15 @@ public:
 	/// update the menubar
 	void updateMenubar();
 
+	/// view state string changed
+	boost::signal0<void> view_state_changed;
+
 	/// display a message in the view
 	void message(string const &);
 	/// push a message onto the history, and show it
 	void messagePush(string const & str);
 	/// pop the last message pushed
 	void messagePop();
-	/// show state (font etc.) in minibuffer
-	void showState();
 
 	/// updates the title of the window
 	void updateWindowTitle();

@@ -21,6 +21,7 @@
 #include "QMiniBuffer.h"
 #include "ToolbarDefaults.h"
 #include "lyxfunc.h"
+#include "bufferview_funcs.h"
 #include "BufferView.h"
 
 #include "frontends/Toolbar.h"
@@ -35,6 +36,8 @@
 #include <qpixmap.h>
 #include <qmenubar.h>
 #include <qstatusbar.h>
+ 
+#include <boost/bind.hpp>
  
 using std::endl;
 
@@ -65,6 +68,8 @@ QtView::QtView(unsigned int width, unsigned int height)
 	bufferview_.reset(new BufferView(this, 0, 0, width, height));
 	::current_view = bufferview_.get();
 
+	view_state_changed.connect(boost::bind(&QtView::update_view_state, this));
+ 
 	// FIXME: move 
 	// FIXME autosave_timeout_->timeout.connect(SigC::slot(this, &QtView::autoSave));
 	
@@ -84,6 +89,12 @@ QtView::~QtView()
 }
 
 
+void QtView::update_view_state()
+{
+	statusBar()->message(currentState(view()).c_str()); 
+}
+
+ 
 void QtView::activated(int id)
 {
 	getLyXFunc()->verboseDispatch(id, true);
