@@ -902,7 +902,7 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 				goto exit_with_message;
 			} else if (result == FINISHED_UP) {
 				RowList::iterator const irow = view()->text->cursorIRow();
-				if (irow != view()->text->rows().begin()) {
+				if (irow != view()->text->firstRow()) {
 #if 1
 					view()->text->setCursorFromCoordinates(
 						view()->text->cursor.ix() + inset_x,
@@ -920,7 +920,7 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 				goto exit_with_message;
 			} else if (result == FINISHED_DOWN) {
 				RowList::iterator const irow = view()->text->cursorIRow();
-				if (boost::next(irow) != view()->text->rows().end()) {
+				if (irow != view()->text->lastRow()) {
 #if 1
 					view()->text->setCursorFromCoordinates(
 						view()->text->cursor.ix() + inset_x,
@@ -964,7 +964,7 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 					}
 					goto exit_with_message;
 				case LFUN_DOWN:
-					if (boost::next(view()->text->cursorRow()) != view()->text->rows().end())
+					if (view()->text->cursorRow() != view()->text->lastRow())
 						view()->text->cursorDown(view());
 					else
 						view()->text->cursorRight(view());
