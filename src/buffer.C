@@ -2263,19 +2263,6 @@ void Buffer::makeLaTeXFile(string const & fname,
 			texrow.newline();
 		}
 
-		// We try to load babel late, in case it interferes
-		// with other packages.
-		if (use_babel) {
-			string tmp = lyxrc.language_package;
-			if (!lyxrc.language_global_options
-			    && tmp == "\\usepackage{babel}")
-				tmp = string("\\usepackage[") +
-					language_options.str().c_str() +
-					"]{babel}";
-			ofs << tmp << "\n";
-			texrow.newline();
-		}
-
 		if (params.secnumdepth != tclass.secnumdepth()) {
 			ofs << "\\setcounter{secnumdepth}{"
 			    << params.secnumdepth
@@ -2389,6 +2376,19 @@ void Buffer::makeLaTeXFile(string const & fname,
 		}
 
 		ofs << preamble;
+
+		// We try to load babel late, in case it interferes
+		// with other packages.
+		if (use_babel) {
+			string tmp = lyxrc.language_package;
+			if (!lyxrc.language_global_options
+			    && tmp == "\\usepackage{babel}")
+				tmp = string("\\usepackage[") +
+					language_options.str().c_str() +
+					"]{babel}";
+			ofs << tmp << "\n";
+			texrow.newline();
+		}
 
 		// make the body.
 		ofs << "\\begin{document}\n";

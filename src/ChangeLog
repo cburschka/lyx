@@ -1,6 +1,13 @@
+2001-10-04  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* LaTeXFeatures.C: remove special case of french and index
+
+	* buffer.C (makeLaTeXFile): _really_ load babel late (i.e. just
+	before \begin{document}). This solves several incompatibilities.
+
 2001-10-03  Garst Reese  <reese@isn.net>
 
-	* lyx_cb.C: fhange CheckTex error msg.
+	* lyx_cb.C: change CheckTex error msg.
 
 2001-10-03  José Matos  <jamatos@fep.up.pt>
 

@@ -155,10 +155,7 @@ string const LaTeXFeatures::getPackages() const
 		
 	// makeidx.sty
 	if (makeidx) {
-		if (! tclass.provides(LyXTextClass::makeidx)
-		    && params.language->babel() != "french") // french provides
-						             // \index !
-			// French should not be hardcoded. (Lgb)
+		if (! tclass.provides(LyXTextClass::makeidx))
 			packages << "\\usepackage{makeidx}\n";
 		packages << "\\makeindex\n";
 	}
