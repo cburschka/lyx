@@ -331,6 +331,7 @@ void InsetTabular::drawSelection(PainterInfo & pi, int x, int y) const
 		row_type rs, re;
 		col_type cs, ce;
 		getSelection(cur, rs, re, cs, ce);
+		y -= tabular.getAscentOfRow(0);
 		for (row_type j = 0; j < tabular.rows(); ++j) {
 			int const a = tabular.getAscentOfRow(j);
 			int const h = a + tabular.getDescentOfRow(j);
@@ -343,7 +344,7 @@ void InsetTabular::drawSelection(PainterInfo & pi, int x, int y) const
 					tabular.getCellNumber(j, i);
 				int const w = tabular.getWidthOfColumn(cell);
 				if (i >= cs && i <= ce && j >= rs && j <= re)
-					pi.pain.fillRectangle(xx, y - a, w, h,
+					pi.pain.fillRectangle(xx, y, w, h,
 							      LColor::selection);
 				xx += w;
 
