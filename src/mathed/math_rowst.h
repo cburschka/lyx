@@ -44,8 +44,10 @@ public:
 	void setNumbered(bool nf);
 	///
 	void setTab(unsigned int i, int t);
+	///
+	friend class MathedRowSt;
 protected:
-	/// verticals 
+	/// Vericals 
 	int asc_;
 	///
 	int desc_;
@@ -61,9 +63,12 @@ protected:
 
 
  
-class MathedRowContainer {
-private:
-	///
+// The idea is to change this  MathedRowContainer  to mimic the behaviour
+// of std::list<MathedRowStruct> in several small steps.  In the end it
+// could be replaced by such a list and MathedRowSt can go as well.
+ 
+struct MathedRowContainer {
+///
 	struct iterator {
 		///
 		iterator() : st_(0), pos_(0) {}
@@ -75,9 +80,9 @@ private:
 		///
 		MathedRowStruct & operator*() { Assert(st_); return st_->data_[pos_]; }
 		///
-		MathedRowStruct * operator->() { Assert(st_); return &st_->data_[pos_]; }
+		MathedRowStruct * operator->() { return &st_->data_[pos_]; }
 		///
-		MathedRowStruct const * operator->() const { Assert(st_); return &st_->data_[pos_]; }
+		MathedRowStruct const * operator->() const { return &st_->data_[pos_]; }
 		///
 		void operator++() { Assert(st_); ++pos_; }
 		///
@@ -87,44 +92,27 @@ private:
 			{ return st_ == it.st_ && pos_ == it.pos_; }
 
 	//private:
-		///
-		friend class MathedRowContainer;
-
-		/// pointer to the container to which we belong
 		MathedRowContainer * st_;
-		/// position in this container, e.g. row number
+		///
 		unsigned int pos_;
 	};
 
-public:
-	/// 
+	///
 	iterator begin() { return iterator(this); }
 	///
 	bool empty() const { return data_.size() == 0; }
 
-	/// insert item before 'it'
+	/// insert 'item' before 'iterator'
 	void insert(iterator const & it) {
 		Assert(it.st_ == this);
 		data_.insert(data_.begin() + it.pos_, MathedRowStruct());
 	}
-			
-	/// erase item pointed to by 'it'
+
+	/// insert 'item' before 'iterator'
 	void erase(iterator & it) {
 		Assert(it.st_ == this);
 		data_.erase(data_.begin() + it.pos_);
 	}
-
-	/// access to last item
-	MathedRowStruct & back() {
-		Assert(data_.size());
-		return data_.back();
-	}
-	
-	/// append empty element
-	void push_back() {
-		data_.push_back(MathedRowStruct());
-	}
-	
 
 	///
 	std::vector<MathedRowStruct> data_;
