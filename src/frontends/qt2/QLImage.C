@@ -113,25 +113,25 @@ QLImage::~QLImage()
 }
 
 
-Image * QLImage::clone() const
+Image * QLImage::clone_impl() const
 {
 	return new QLImage(*this);
 }
 
 
-unsigned int QLImage::getWidth() const
+unsigned int QLImage::getWidth_impl() const
 {
 	return xformed_pixmap_.width();
 }
 
 
-unsigned int QLImage::getHeight() const
+unsigned int QLImage::getHeight_impl() const
 {
 	return xformed_pixmap_.height();
 }
 
 
-void QLImage::load(string const & filename)
+void QLImage::load_impl(string const & filename)
 {
 	if (!pixmap_.isNull()) {
 		lyxerr[Debug::GRAPHICS]
@@ -151,7 +151,7 @@ void QLImage::load(string const & filename)
 }
 
 
-bool QLImage::setPixmap(Params const & params)
+bool QLImage::setPixmap_impl(Params const & params)
 {
 	if (pixmap_.isNull() || params.display == NoDisplay)
 		return false;
@@ -185,7 +185,7 @@ bool QLImage::setPixmap(Params const & params)
 }
 
 
-void QLImage::clip(Params const & params)
+void QLImage::clip_impl(Params const & params)
 {
 	if (xformed_pixmap_.isNull())
 		return;
@@ -219,7 +219,7 @@ void QLImage::clip(Params const & params)
 }
 
 
-void QLImage::rotate(Params const & params)
+void QLImage::rotate_impl(Params const & params)
 {
 	if (xformed_pixmap_.isNull())
 		return;
@@ -236,7 +236,7 @@ void QLImage::rotate(Params const & params)
 }
 
 
-void QLImage::scale(Params const & params)
+void QLImage::scale_impl(Params const & params)
 {
 	if (xformed_pixmap_.isNull())
 		return;

@@ -30,45 +30,37 @@ public:
 	static FormatList loadableFormats();
 
 	~QLImage();
-
-	/// Create a copy
-	virtual Image * clone() const;
-
 	QPixmap const & qpixmap() const { return xformed_pixmap_; }
 
+private:
+	/// Create a copy
+	virtual Image * clone_impl() const;
 	/// Get the image width
-	virtual unsigned int getWidth() const;
-
+	virtual unsigned int getWidth_impl() const;
 	/// Get the image height
-	virtual unsigned int getHeight() const;
-
-	// FIXME
-	virtual bool isDrawable() const { return true; }
-
+	virtual unsigned int getHeight_impl() const;
+	// FIXME Is the image drawable ?
+	virtual bool isDrawable_impl() const { return true; }
 	/**
 	 * Load the image file into memory.
 	 * The process is asynchronous, so this method starts the loading.
 	 * When finished, the Image::finishedLoading signal is emitted.
 	 */
-	virtual void load(string const & filename);
-
+	virtual void load_impl(string const & filename);
 	/**
 	 * Generate the pixmap, based on the current state of
 	 * image_ (clipped, rotated, scaled etc).
 	 * Uses the params to decide on color, grayscale etc.
 	 * Returns true if the pixmap is created.
 	 */
-	virtual bool setPixmap(Params const & params);
-
+	virtual bool setPixmap_impl(Params const & params);
 	/// Clip the image using params.
-	virtual void clip(Params const & params);
-
+	virtual void clip_impl(Params const & params);
 	/// Rotate the image using params.
-	virtual void rotate(Params const & params);
-
+	virtual void rotate_impl(Params const & params);
 	/// Scale the image using params.
-	virtual void scale(Params const & params);
-private:
+	virtual void scale_impl(Params const & params);
+
 	/// Access to the class is through newImage() and clone.
 	QLImage();
 	///

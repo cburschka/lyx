@@ -151,35 +151,6 @@ xformsImage::~xformsImage()
 }
 
 
-Image * xformsImage::clone() const
-{
-	return new xformsImage(*this);
-}
-
-
-unsigned int xformsImage::getWidth() const
-{
-	if (!image_)
-		return 0;
-
-	return image_->w;
-}
-
-
-unsigned int xformsImage::getHeight() const
-{
-	if (!image_)
-		return 0;
-	return image_->h;
-}
-
-
-bool xformsImage::isDrawable() const
-{
-	return pixmap_;
-}
-
-
 Pixmap xformsImage::getPixmap() const
 {
 	if (!pixmap_status_ == PIXMAP_SUCCESS)
@@ -188,7 +159,36 @@ Pixmap xformsImage::getPixmap() const
 }
 
 
-void xformsImage::load(string const & filename)
+Image * xformsImage::clone_impl() const
+{
+	return new xformsImage(*this);
+}
+
+
+unsigned int xformsImage::getWidth_impl() const
+{
+	if (!image_)
+		return 0;
+
+	return image_->w;
+}
+
+
+unsigned int xformsImage::getHeight_impl() const
+{
+	if (!image_)
+		return 0;
+	return image_->h;
+}
+
+
+bool xformsImage::isDrawable_impl() const
+{
+	return pixmap_;
+}
+
+
+void xformsImage::load_impl(string const & filename)
 {
 	if (image_) {
 		lyxerr[Debug::GRAPHICS]
@@ -216,7 +216,7 @@ void xformsImage::load(string const & filename)
 }
 
 
-bool xformsImage::setPixmap(Params const & params)
+bool xformsImage::setPixmap_impl(Params const & params)
 {
 	if (!image_ || params.display == NoDisplay)
 		return false;
@@ -263,7 +263,7 @@ bool xformsImage::setPixmap(Params const & params)
 }
 
 
-void xformsImage::clip(Params const & params)
+void xformsImage::clip_impl(Params const & params)
 {
 	if (!image_)
 		return;
@@ -301,7 +301,7 @@ void xformsImage::clip(Params const & params)
 }
 
 
-void xformsImage::rotate(Params const & params)
+void xformsImage::rotate_impl(Params const & params)
 {
 	if (!image_)
 		return ;
@@ -327,7 +327,7 @@ void xformsImage::rotate(Params const & params)
 }
 
 
-void xformsImage::scale(Params const & params)
+void xformsImage::scale_impl(Params const & params)
 {
 	if (!image_)
 		return;

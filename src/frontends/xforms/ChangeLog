@@ -1,3 +1,8 @@
+2003-09-16  Angus Leeming  <leeming@lyx.org>
+
+	* xformsImage.[Ch]: separate interface from implementation. Make all the virtual
+	functions private.
+
 2003-09-16  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* lyx_gui.C: use namespace alias for lyx::support::os

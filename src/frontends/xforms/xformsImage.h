@@ -38,49 +38,42 @@ public:
 
 	///
 	~xformsImage();
-
-	/// Create a copy
-	Image * clone() const;
-
 	///
 	Pixmap getPixmap() const;
 
+	/// Internal callbacks.
+	void statusCB(string const &);
+	void errorCB(string const &);
+
+private:
+	/// Create a copy
+	virtual Image * clone_impl() const;
 	/// Get the image width
-	unsigned int getWidth() const;
-
+	virtual unsigned int getWidth_impl() const;
 	/// Get the image height
-	unsigned int getHeight() const;
-
-	virtual bool isDrawable() const;
-
+	virtual unsigned int getHeight_impl() const;
+	/// Is the image drawable ?
+	virtual bool isDrawable_impl() const;
 	/** Load the image file into memory.
 	 *  The process is asynchronous, so this method starts the loading.
 	 *  When finished, the Image::finishedLoading signal is emitted.
 	 */
-	void load(string const & filename);
-
+	virtual void load_impl(string const & filename);
 	/** Generate the pixmap, based on the current state of
 	 *  image_ (clipped, rotated, scaled etc).
 	 *  Uses the params to decide on color, grayscale etc.
 	 *  Returns true if the pixmap is created.
 	 */
-	bool setPixmap(Params const & params);
-
+	bool setPixmap_impl(Params const & params);
 	/// Clip the image using params.
-	void clip(Params const & params);
+	virtual void clip_impl(Params const & params);
 
 	/// Rotate the image using params.
-	void rotate(Params const & params);
+	virtual void rotate_impl(Params const & params);
 
 	/// Scale the image using params.
-	void scale(Params const & params);
+	virtual void scale_impl(Params const & params);
 
-	/// Internal callbacks.
-	void statusCB(string const &);
-	///
-	void errorCB(string const &);
-
-private:
 	/// Access to the class is through newImage() and clone.
 	xformsImage();
 	///

@@ -1,5 +1,10 @@
 2003-09-16  Angus Leeming  <leeming@lyx.org>
 
+	* QLImage.[Ch]: separate interface from implementation. Make all the virtual
+	functions private.
+
+2003-09-16  Angus Leeming  <leeming@lyx.org>
+
 	* QCharacter.C, QPrefs.C, lyx_gui.C: add #include "LColor.h".
 
 2003-09-15  Angus Leeming  <leeming@lyx.org>
