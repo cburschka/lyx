@@ -4,6 +4,7 @@
 
 #include <algorithm>
 
+#include "math_amsarrayinset.h"
 #include "math_charinset.h"
 #include "math_deliminset.h"
 #include "math_diffinset.h"
@@ -164,14 +165,23 @@ MathInset * singleItem(MathArray & ar)
 void extractMatrices(MathArray & ar)
 {
 	//lyxerr << "\nMatrices from: " << ar << "\n";
+	// first pass for explicitly delimited stuff
 	for (MathArray::iterator it = ar.begin(); it != ar.end(); ++it) {
 		MathDelimInset * del = (*it)->asDelimInset();
 		if (!del)
 			continue;
 		MathInset * arr = singleItem(del->cell(0));
-		if (!arr || !arr->asArrayInset())
+		if (!arr || !arr->asGridInset())
 			continue;
-		*it = MathAtom(new MathMatrixInset(*(arr->asArrayInset())));
+		*it = MathAtom(new MathMatrixInset(*(arr->asGridInset())));
+	}
+
+	// second pass for AMS "pmatrix" etc
+	for (MathArray::iterator it = ar.begin(); it != ar.end(); ++it) {
+		MathAMSArrayInset * ams = (*it)->asAMSArrayInset();
+		if (!ams)
+			continue;
+		*it = MathAtom(new MathMatrixInset(*ams));
 	}
 	//lyxerr << "\nMatrices to: " << ar << "\n";
 }

@@ -90,10 +90,3 @@ void MathAMSArrayInset::normalize(NormalStream & os) const
 	os << "]";
 }
 
-
-void MathAMSArrayInset::maplize(MapleStream & os) const
-{
-	os << name_ << "(";
-	MathGridInset::maplize(os);
-	os << ")";
-}

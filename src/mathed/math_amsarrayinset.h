@@ -28,8 +28,6 @@ public:
 	void write(WriteStream & os) const;
 	///
 	void normalize(NormalStream &) const;
-	///
-	void maplize(MapleStream &) const;
 
 private:
 	///

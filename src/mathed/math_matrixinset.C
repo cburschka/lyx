@@ -8,8 +8,8 @@
 #include "Lsstream.h"
 
 
-MathMatrixInset::MathMatrixInset(MathArrayInset const & p)
-	: MathArrayInset(p)
+MathMatrixInset::MathMatrixInset(MathGridInset const & p)
+	: MathGridInset(p)
 {}
 
 
@@ -21,13 +21,13 @@ MathInset * MathMatrixInset::clone() const
 
 void MathMatrixInset::write(WriteStream & os) const
 {
-	MathArrayInset::write(os);
+	MathGridInset::write(os);
 }
 
 
 void MathMatrixInset::normalize(NormalStream & os) const
 {
-	MathArrayInset::normalize(os);
+	MathGridInset::normalize(os);
 }
 
 

@@ -2,7 +2,7 @@
 #ifndef MATH_MATRIXINSET_H
 #define MATH_MATRIXINSET_H
 
-#include "math_arrayinset.h"
+#include "math_gridinset.h"
 
 #ifdef __GNUG__
 #pragma interface
@@ -10,10 +10,10 @@
 
 // "shortcut" for DelimInset("(",ArrayInset,")")
 
-class MathMatrixInset : public MathArrayInset {
+class MathMatrixInset : public MathGridInset {
 public:
 	///
-	MathMatrixInset(MathArrayInset const &);
+	MathMatrixInset(MathGridInset const &);
 	///
 	MathMatrixInset(string const & str);
 	///

@@ -149,6 +149,13 @@ OctaveStream & operator<<(OctaveStream & ns, char c)
 }
 
 
+OctaveStream & operator<<(OctaveStream & ns, int i)
+{
+	ns.os() << i;
+	return ns;
+}
+
+
 //////////////////////////////////////////////////////////////////////
 
 

@@ -150,6 +150,8 @@ OctaveStream & operator<<(OctaveStream &, MathArray const &);
 OctaveStream & operator<<(OctaveStream &, char const *);
 ///
 OctaveStream & operator<<(OctaveStream &, char);
+///
+OctaveStream & operator<<(OctaveStream &, int);
 
 
 
