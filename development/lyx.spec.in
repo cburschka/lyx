@@ -111,7 +111,7 @@ cd $RPM_INSTALL_PREFIX/share/lyx
 
 %files
 %attr(-,root,root) %doc ABOUT-NLS ANNOUNCE OLD-CHANGES COPYING 
-%attr(-,root,root) %doc README UPGRADING WHATSNEW ChangeLog
+%attr(-,root,root) %doc README UPGRADING ChangeLog NEWS
 %attr(-,root,root) %doc lib/CREDITS README.reLyX
 
 %attr(-,root,root) /usr/bin/*

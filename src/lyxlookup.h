@@ -13,7 +13,6 @@
    different input methods for different frames, but for now we can
    keep it as it is. */
 
-#include <config.h>
 #include <X11/Xlib.h>
 
 // Initialize the compose key handling

@@ -13,10 +13,6 @@
 #ifndef LOSTREAM_H
 #define LOSTREAM_H 
 
-#ifdef HAVE_CONFIG_H
-#include <config.h>
-#endif             
-
 #ifdef HAVE_OSTREAM
 #include <ostream>
 #else 

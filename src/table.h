@@ -14,7 +14,6 @@
 #pragma interface
 #endif
 
-#include <config.h>
 #include <stdio.h>
 #include "definitions.h"
 #include "lyxlex.h"

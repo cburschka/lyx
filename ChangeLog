@@ -1,3 +1,14 @@
+1999-11-08  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/support/LIstream.h,src/support/LOstream.h,
+	  src/support/lyxstring.h,src/table.h,
+	  src/lyxlookup.h: do not include <config.h> in header
+	files. This should be done in the .C files only.
+
+	* development/lyx.spec.in: WHATSNEW has been renamed to NEWS
+	(from Kayvan).
+	
+
 1999-11-05  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* config/lib_configure.m4,lib/configure,lib/lyxrc.example: update

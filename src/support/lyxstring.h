@@ -25,10 +25,6 @@
 #pragma interface
 #endif
 
-#ifdef HAVE_CONFIG_H
-#include <config.h> // needed at least for compilers that do not
-#endif              // understand `explicit' (JMarc)
-
 #include "LOstream.h"
 #include "LIstream.h"
 

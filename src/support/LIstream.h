@@ -13,10 +13,6 @@
 #ifndef LISTREAM_H
 #define LISTREAM_H 
 
-#ifdef HAVE_CONFIG_H
-#include <config.h> 
-#endif
-
 #ifdef HAVE_ISTREAM
 #include <istream>
 #else 
