@@ -150,7 +150,7 @@ int const latex_mathenv_num = sizeof(latex_mathenv)/sizeof(latex_mathenv[0]);
 
 void mathPrintError(string const & msg) 
 {
-	lyxerr << "Line ~" << yylineno << ": Math parse error: " << msg << endl;
+	lyxerr[Debug::MATHED] << "Line ~" << yylineno << ": Math parse error: " << msg << endl;
 }
 
 
@@ -197,7 +197,7 @@ unsigned char LexGetArg(unsigned char lf, bool accept_spaces = false)
 			if (!lf) 
 				lf = c;
 			else if (c != lf) {
-				lyxerr << "Math parse error: unexpected '" << c << "'" << endl;
+				lyxerr[Debug::MATHED] << "Math parse error: unexpected '" << c << "'" << endl;
 				return '\0';
 			}
 			break;
@@ -208,7 +208,7 @@ unsigned char LexGetArg(unsigned char lf, bool accept_spaces = false)
 	if (lf == '[') rg = ']';
 	if (lf == '(') rg = ')';
 	if (!rg) {
-		lyxerr << "Math parse error: unknown bracket '" << lf << "'" << endl;
+		lyxerr[Debug::MATHED] << "Math parse error: unknown bracket '" << lf << "'" << endl;
 		return '\0';
 	}
 	yytext.erase();
@@ -307,7 +307,7 @@ int yylex()
 				}
 				if (yyis->good())
 					yyis->putback(c);
-				lyxerr << "reading: text '" << yytext << "'\n";
+				lyxerr[Debug::MATHED] << "reading: text '" << yytext << "'\n";
 				latexkeys const * l = in_word_set(yytext);
 				if (!l)
 					return LM_TK_UNDEF;
@@ -475,13 +475,13 @@ MathInset * mathed_parse()
 
 			p = new MathMacroTemplate(name, na);
 			mathed_parse(p->cell(0), FLAG_BRACE | FLAG_BRACE_LAST);
-			lyxerr << "LM_TK_NEWCOMMAND: name: " << name << " na: " << na << "\n";
+			lyxerr[Debug::MATHED] << "LM_TK_NEWCOMMAND: name: " << name << " na: " << na << "\n";
 			break;
 		}
 
 		case LM_TK_BEGIN: {
 			int i = yylval.i;
-			lyxerr << "reading math environment " << i << " "
+			lyxerr[Debug::MATHED] << "reading math environment " << i << " "
 				<< latex_mathenv[i].name << "\n";
 
 			MathInsetTypes typ = latex_mathenv[i].typ;
@@ -516,14 +516,14 @@ MathInset * mathed_parse()
 				case LM_OT_ALIGNAT: {
 					LexGetArg('{');
 					//int c = atoi(yytext.c_str());
-					lyxerr << "LM_OT_ALIGNAT: not implemented\n";
+					lyxerr[Debug::MATHED] << "LM_OT_ALIGNAT: not implemented\n";
 					mathed_parse_lines(p, 2, latex_mathenv[i].numbered, true);
-					lyxerr << "LM_OT_ALIGNAT: par: " << *p << "\n";
+					lyxerr[Debug::MATHED] << "LM_OT_ALIGNAT: par: " << *p << "\n";
 					break;
 				}
 
 				default: 
-					lyxerr << "1: unknown math environment: " << typ << "\n";
+					lyxerr[Debug::MATHED] << "1: unknown math environment: " << typ << "\n";
 			}
 
 			p->SetName(latex_mathenv[i].basename);
@@ -532,7 +532,7 @@ MathInset * mathed_parse()
 		}
 		
 		default:
-			lyxerr << "2 unknown math environment: " << t << "\n";
+			lyxerr[Debug::MATHED] << "2 unknown math environment: " << t << "\n";
 	}
 
 	return p;
@@ -680,7 +680,7 @@ void mathed_parse(MathArray & array, unsigned flags)
 				--plevel;
 				return;
 			}
-			lyxerr << "found tab unexpectedly, array: '" << array << "'\n";
+			lyxerr[Debug::MATHED] << "found tab unexpectedly, array: '" << array << "'\n";
 			break;
 		}
 		
@@ -691,7 +691,7 @@ void mathed_parse(MathArray & array, unsigned flags)
 				--plevel;
 				return;
 			}
-			lyxerr << "found newline unexpectedly, array: '" << array << "'\n";
+			lyxerr[Debug::MATHED] << "found newline unexpectedly, array: '" << array << "'\n";
 			break;
 		}
 		
@@ -790,7 +790,7 @@ void mathed_parse(MathArray & array, unsigned flags)
 
 		case LM_TK_STY:
 		{
-			lyxerr << "LM_TK_STY not implemented\n";
+			lyxerr[Debug::MATHED] << "LM_TK_STY not implemented\n";
 			//MathArray tmp = array;
 			//MathSizeInset * p = new MathSizeInset(MathStyles(yylval.l->id));
 			//array.push_back(p);
@@ -866,7 +866,7 @@ void mathed_parse(MathArray & array, unsigned flags)
 				//lyxerr << "read matrix " << *mm << "\n";	
 				break;
 			} else 
-				lyxerr << "unknow math inset " << typ << "\n";	
+				lyxerr[Debug::MATHED] << "unknow math inset " << typ << "\n";	
 			break;
 		}
 	
@@ -880,7 +880,7 @@ void mathed_parse(MathArray & array, unsigned flags)
 			if (rg != '}') {
 				mathPrintError("Expected '{'");
 				// debug info
-				lyxerr << "[" << yytext << "]" << endl;
+				lyxerr[Debug::MATHED] << "[" << yytext << "]" << endl;
 				panic = true;
 				break;
 			} 
@@ -891,7 +891,7 @@ void mathed_parse(MathArray & array, unsigned flags)
 		
 		default:
 			mathPrintError("Unrecognized token");
-			lyxerr << "[" << t << " " << yytext << "]" << endl;
+			lyxerr[Debug::MATHED] << "[" << t << " " << yytext << "]" << endl;
 			break;
 
 		} // end of big switch
@@ -938,7 +938,7 @@ MathInset * mathed_parse(LyXLex & lex)
 		lex.nextToken();
 		if (lex.GetString() == "\\end_inset")
 			break;
-		lyxerr << "InsetFormula::Read: Garbage before \\end_inset,"
+		lyxerr[Debug::MATHED] << "InsetFormula::Read: Garbage before \\end_inset,"
 			" or missing \\end_inset!" << endl;
 	}
 

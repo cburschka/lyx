@@ -1504,6 +1504,10 @@ void LyXTabular::OldFormatRead(LyXLex & lex, string const & fl)
 			|| token == "\\end_float"
 			|| token == "\\end_deeper") {
 			lex.pushToken(token);
+			// Here we need to insert the inset_ert_contents into the last
+			// cell of the tabular.
+			owner_->bufferOwner()->insertErtContents(par, pos, font);
+			
 			break;
 		}
 		if (owner_->bufferOwner()->parseSingleLyXformat2Token(lex, par,

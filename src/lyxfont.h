@@ -26,7 +26,7 @@ class LyXLex;
 class BufferParams;
 
 
-//#define NO_LATEX 1
+#define NO_LATEX 1
 
 ///
 class LyXFont {

@@ -1,3 +1,11 @@
+2001-07-08  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* lyxfont.h: turn NO_LATEX on as default
+
+	* buffer.C (insertErtContents): new methods of tex style compability.
+	(parseSingleLyXformat2Token): use it several places.
+	* tabular.C (OldFormatRead): and here
+
 2001-07-07  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* text2.C: remove some commented code.

@@ -350,8 +350,26 @@ bool Buffer::readLyXformat2(LyXLex & lex, Paragraph * par)
 namespace {
 
 string last_inset_read;
+string inset_ert_contents;
+bool ert_active = false;
 
 } // anon
+
+
+void Buffer::insertErtContents(Paragraph * par, int & pos,
+			       LyXFont const & font, bool set_inactive) 
+{
+	if (!inset_ert_contents.empty()) {
+		lyxerr[Debug::INSETS] << "ERT contents:\n"
+		       << inset_ert_contents << endl;
+		Inset * inset = new InsetERT(inset_ert_contents);
+		par->insertInset(pos++, inset, font);
+		inset_ert_contents.erase();
+	}
+	if (set_inactive) {
+		ert_active = false;
+	}
+}
 
 
 bool
@@ -363,9 +381,6 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 	)
 {
 	bool the_end_read = false;
-#ifdef NO_LATEX
-	static string inset_ert_contents;
-#endif
 #ifndef NO_PEXTRA_REALLY
 	// This is super temporary but is needed to get the compability
 	// mode for minipages work correctly together with new tabulars.
@@ -377,12 +392,20 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 #endif
 	
 	if (token[0] != '\\') {
+#ifdef NO_LATEX
+		if (ert_active) {
+			inset_ert_contents += token;
+		} else {
+#endif
 		for (string::const_iterator cit = token.begin();
 		     cit != token.end(); ++cit) {
 			par->insertChar(pos, (*cit), font);
 			++pos;
 		}
 		checkminipage = true;
+#ifdef NO_LATEX
+		}
+#endif
 	} else if (token == "\\i") {
 		Inset * inset = new InsetLatexAccent;
 		inset->read(this, lex);
@@ -391,12 +414,7 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 	} else if (token == "\\layout") {
 #ifdef NO_LATEX
 		// Do the insetert.
-		if (!inset_ert_contents.empty()) {
-			Inset * inset = new InsetERT(inset_ert_contents);
-			par->insertInset(pos, inset, font);
-			++pos;
-			inset_ert_contents.erase();
-		}
+		insertErtContents(par, pos, font);
 #endif
                 lex.EatLine();
                 string const layoutname = lex.GetString();
@@ -404,6 +422,11 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
                         = textclasslist.NumberOfLayout(params.textclass,
                                                        layoutname);
 
+#ifdef NO_LATEX
+		if (compare_no_case(layoutname, "latex") == 0) {
+			ert_active = true;
+		}
+#endif
 #ifdef USE_CAPTION
 		// The is the compability reading of layout caption.
 		// It can be removed in LyX version 1.3.0. (Lgb)
@@ -882,11 +905,13 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 		lex.next();
 		string const tok = lex.GetString();
 		if (tok == "no_latex") {
-			; // nothing
+			// Do the insetert.
+			insertErtContents(par, pos, font);
 		} else if (tok == "latex") {
-			; // nothing
+			ert_active = true;
 		} else if (tok == "default") {
-			; // nothing
+			// Do the insetert.
+			insertErtContents(par, pos, font);
 		} else {
 			lex.printError("Unknown LaTeX font flag "
 				       "`$$Token'");
@@ -1004,6 +1029,11 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 		}
 		++pos;
 	} else if (token == "\\newline") {
+#ifdef NO_LATEX
+		// Since we cannot know it this is only a regular newline or a
+		// tabular cell delimter we have to handle the ERT here.
+		insertErtContents(par, pos, font, false);
+#endif		
 		par->insertChar(pos, Paragraph::META_NEWLINE, font);
 		++pos;
 	} else if (token == "\\LyXTable") {
@@ -1039,12 +1069,30 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 		}
 		par->bibkey->read(this, lex);		        
 	} else if (token == "\\backslash") {
+#ifdef NO_LATEX
+		if (ert_active) {
+			inset_ert_contents += "\\";
+		} else {
+#endif
 		par->insertChar(pos, '\\', font);
 		++pos;
+#ifdef NO_LATEX
+		}
+#endif
 	} else if (token == "\\the_end") {
+#ifdef NO_LATEX
+		// If we still have some ert active here we have to insert
+		// it so we don't loose it. (Lgb)
+		insertErtContents(par, pos, font);
+#endif
 		the_end_read = true;
 		minipar = parBeforeMinipage = 0;
 	} else {
+#ifdef NO_LATEX
+		if (ert_active) {
+			inset_ert_contents += token;
+		} else {
+#endif
 		// This should be insurance for the future: (Asger)
 		lex.printError("Unknown token `$$Token'. "
 			       "Inserting as text.");
@@ -1054,6 +1102,9 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 			par->insertChar(pos, (*cit), font);
 			++pos;
 		}
+#ifdef NO_LATEX
+		}
+#endif
 	}
 #ifndef NO_PEXTRA_REALLY
 	// now check if we have a minipage paragraph as at this

@@ -15,7 +15,7 @@ lyx_DEPENDENCIES = mathed/libmathed.la insets/libinsets.la \
 lyx_LDADD = $(lyx_DEPENDENCIES) @INTLLIBS@ $(LYX_LIBS) $(SIGC_LIBS) \
 	$(PSPELL_LIBS) @FRONTEND_LDFLAGS@ @FRONTEND_LIBS@
 #lyx_LDFLAGS=-Wl,-O1
-EXTRA_DIST = config.h.in stamp-h.in cheaders
+EXTRA_DIST = config.h.in stamp-h.in cheaders ext_l10n.h
 ETAGS_ARGS = --lang=c++
 BOOST_INCLUDES = -I$(top_srcdir)/boost
 INCLUDES = $(SIGC_CFLAGS) $(BOOST_INCLUDES) $(PSPELL_INCLUDES) @FRONTEND_INCLUDES@
@@ -108,7 +108,6 @@ lyx_SOURCES = \
 	encoding.h \
 	exporter.C \
 	exporter.h \
-	ext_l10n.h \
 	figure.h \
 	figure_form.C \
 	figure_form.h \

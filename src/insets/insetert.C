@@ -26,9 +26,25 @@ using std::ostream;
 InsetERT::InsetERT() : InsetCollapsable()
 {
 	setLabel(_("666"));
-#ifndef NO_LATEX
+	//LyXFont font(LyXFont::ALL_SANE);
+	//font.setLatex (LyXFont::ON);
+	labelfont = LyXFont(LyXFont::ALL_SANE);
+	labelfont.decSize();
+	labelfont.decSize();
+	labelfont.setColor(LColor::latex);
+	setAutoCollapse(false);
+	setInsetName("ERT");
+}
+
+
+InsetERT::InsetERT(string const & contents)
+{
+	setLabel(_("666"));
 	LyXFont font(LyXFont::ALL_SANE);
-	font.setLatex (LyXFont::ON);
+#ifndef NO_LATEX
+	font.setLatex(LyXFont::ON);
+#else
+	font.setColor(LColor::latex);
 #endif
 	labelfont = LyXFont(LyXFont::ALL_SANE);
 	labelfont.decSize();
@@ -36,6 +52,13 @@ InsetERT::InsetERT() : InsetCollapsable()
 	labelfont.setColor(LColor::latex);
 	setAutoCollapse(false);
 	setInsetName("ERT");
+
+	string::const_iterator cit = contents.begin();
+	string::const_iterator end = contents.end();
+	Paragraph::size_type pos = 0;
+	for (; cit != end; ++cit) {
+		inset.paragraph()->insertChar(pos++, *cit, font);
+	}
 }
 
 

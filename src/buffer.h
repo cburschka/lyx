@@ -124,6 +124,10 @@ public:
 					string const & token, int & pos,
 					Paragraph::depth_type & depth, 
 					LyXFont &);
+	///
+	void insertErtContents(Paragraph * par, int & pos,
+			       LyXFont const & font,
+			       bool set_inactive = true);
 private:
 	/// Parse a single inset.
 	void readInset(LyXLex &, Paragraph *& par, int & pos, LyXFont &);

@@ -1494,11 +1494,10 @@ void InsetTabular::setFont(BufferView * bv, LyXFont const & font, bool tall,
 		sel_cell_end = tabular->GetNumberOfCells() - 1;
 	}
 	if (hasSelection()) {
-		bool frozen;
 		setUndo(bv, Undo::EDIT,
 		        bv->text->cursor.par(),
 		        bv->text->cursor.par()->next());
-		frozen = undo_frozen;
+		bool frozen = undo_frozen;
 		if (!frozen)
 			freezeUndo();
 		// apply the fontchange on the whole selection

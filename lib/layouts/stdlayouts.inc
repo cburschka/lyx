@@ -7,25 +7,25 @@
 # quotations and such.
 
 # LaTeX style definition
-Style LaTeX
-  Margin		Static
-  LatexType		Paragraph
-  LatexName		dummy
-  NewLine		0
-  ParIndent		MM
-  ParSkip		0.4
-  ParSep		0.5
-  Align			Block
-  AlignPossible		Block, Left, Right, Center
-  LabelType		No_Label
-  FreeSpacing 	    	1
-
-  # standard font definition
-  Font 
-    Latex		Latex
-  EndFont
-
-End
+#Style LaTeX
+#  Margin		Static
+#  LatexType		Paragraph
+#  LatexName		dummy
+#  NewLine		0
+#  ParIndent		MM
+#  ParSkip		0.4
+#  ParSep		0.5
+#  Align			Block
+#  AlignPossible		Block, Left, Right, Center
+#  LabelType		No_Label
+#  FreeSpacing 	    	1
+#
+#  # standard font definition
+#  Font 
+#    Latex		Latex
+#  EndFont
+#
+#End
 
 # Quotation style definition
 Style Quotation
