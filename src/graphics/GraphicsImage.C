@@ -34,13 +34,15 @@ boost::function0<Image::FormatList> Image::loadableFormats;
 std::pair<unsigned int, unsigned int>
 Image::getScaledDimensions(Params const & params) const
 {
-	unsigned int width = getWidth();
-	unsigned int height = getHeight();
-
-	// scale only when value makes sense, i.e. not zero
+	// scale only when value > 0
+	unsigned int width;
+	unsigned int height;
 	if (params.scale) {
-		width  = (width * params.scale) / 100;
-		height = (height * params.scale) / 100;
+		width  = (getWidth() * params.scale) / 100;
+		height = (getHeight() * params.scale) / 100;
+	} else {
+		width = getWidth();
+		height = getHeight();
 	}
 
 	lyxerr[Debug::GRAPHICS]

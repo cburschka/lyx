@@ -13,6 +13,8 @@
 #ifndef GRAPHICSTYPES_H
 #define GRAPHICSTYPES_H
 
+#include "support/translator.h"
+
 #ifdef __GNUG__
 #pragma interface
 #endif
@@ -60,6 +62,12 @@ namespace grfx {
 		///
 		NoDisplay
 	};
-}
+	
+	/// The translator between the Display enum and corresponding lyx string.
+	extern Translator< DisplayType, string > displayTranslator;
+
+	void setDisplayTranslator();
+	
+} // namespace grfx
 
 #endif // GRAPHICSTYPES_H

@@ -1,3 +1,13 @@
+2002-08-28  Rob Lahaye  <lahaye@snu.ac.kr>
+	* buffer.C: increment LYX_FORMAT to 221
+
+	* lyxrc.[Ch]: declare display_graphics as grfx::DisplayType and use
+	grfx::displayTranslator.find(foo); include graphics/GraphicsTypes.h.
+	
+	* lyxrc.C: use more "if (...) { } else { }" style (John's advice).
+
+	* lyx_main.C: call once the setDisplayTranslator(); is that okay here?
+	
 2002-08-27  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* factory.C (createInset): use LyXTextClass::floats

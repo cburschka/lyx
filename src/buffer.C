@@ -147,7 +147,7 @@ extern BufferList bufferlist;
 
 namespace {
 
-const int LYX_FORMAT = 220;
+const int LYX_FORMAT = 221;
 
 } // namespace anon
 

@@ -1101,7 +1101,7 @@ argument: 0
 Name: form_preferences_lnf_misc
 Width: 450
 Height: 350
-Number of Objects: 16
+Number of Objects: 8
 
 --------------------
 class: FL_BOX
@@ -1109,24 +1109,6 @@ type: FLAT_BOX
 box: 0 0 450 350
 boxtype: FL_FLAT_BOX
 colors: FL_COL1 FL_COL1
-alignment: FL_ALIGN_CENTER
-style: FL_NORMAL_STYLE
-size: FL_DEFAULT_SIZE
-lcol: FL_BLACK
-label: 
-shortcut: 
-resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
-name: 
-callback: 
-argument: 
-
---------------------
-class: FL_FRAME
-type: ENGRAVED_FRAME
-box: 15 15 255 210
-boxtype: FL_NO_BOX
-colors: FL_BLACK FL_COL1
 alignment: FL_ALIGN_CENTER
 style: FL_NORMAL_STYLE
 size: FL_DEFAULT_SIZE
@@ -1168,9 +1150,9 @@ alignment: FL_ALIGN_CENTER
 style: FL_NORMAL_STYLE
 size: FL_NORMAL_SIZE
 lcol: FL_BLACK
-label: Cursor follows scrollbar|#f
+label: Cursor follows scrollbar|#C
 shortcut: 
-resize: FL_RESIZE_ALL
+resize: FL_RESIZE_NONE
 gravity: FL_NoGravity FL_NoGravity
 name: check_cursor_follows_scrollbar
 callback: C_FormBaseDeprecatedInputCB
@@ -1187,9 +1169,9 @@ alignment: FL_ALIGN_CENTER
 style: FL_NORMAL_STYLE
 size: FL_NORMAL_SIZE
 lcol: FL_BLACK
-label: Dialogs iconify with main window|#i
+label: Dialogs iconify with main window|#D
 shortcut: 
-resize: FL_RESIZE_ALL
+resize: FL_RESIZE_NONE
 gravity: FL_NoGravity FL_NoGravity
 name: check_dialogs_iconify_with_main
 callback: C_FormBaseDeprecatedInputCB
@@ -1199,16 +1181,16 @@ argument: 0
 --------------------
 class: FL_COUNTER
 type: NORMAL_COUNTER
-box: 20 235 115 30
+box: 310 190 115 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_BLUE
-alignment: FL_ALIGN_RIGHT
+alignment: FL_ALIGN_TOP
 style: FL_NORMAL_STYLE
 size: FL_NORMAL_SIZE
 lcol: FL_BLACK
 label: Wheel mouse jump
 shortcut: 
-resize: FL_RESIZE_ALL
+resize: FL_RESIZE_NONE
 gravity: FL_NoGravity FL_NoGravity
 name: counter_wm_jump
 callback: C_FormBaseDeprecatedInputCB
@@ -1221,16 +1203,16 @@ argument: 0
 --------------------
 class: FL_COUNTER
 type: NORMAL_COUNTER
-box: 20 270 115 30
+box: 310 115 115 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_BLUE
-alignment: FL_ALIGN_RIGHT
+alignment: FL_ALIGN_TOP
 style: FL_NORMAL_STYLE
 size: FL_NORMAL_SIZE
 lcol: FL_BLACK
 label: Autosave interval
 shortcut: 
-resize: FL_RESIZE_ALL
+resize: FL_RESIZE_NONE
 gravity: FL_NoGravity FL_NoGravity
 name: counter_autosave
 callback: C_FormBaseDeprecatedInputCB
@@ -1239,151 +1221,6 @@ argument: 0
   precision: 0
   value: 300
   sstep: 1
-
---------------------
-class: FL_BEGIN_GROUP
-type: 0
-box: 0 10 10 0
-boxtype: FL_NO_BOX
-colors: FL_COL1 FL_MCOL
-alignment: FL_ALIGN_CENTER
-style: FL_NORMAL_STYLE
-size: FL_DEFAULT_SIZE
-lcol: FL_BLACK
-label: 
-shortcut: 
-resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
-name: 
-callback: 
-argument: 
-
---------------------
-class: FL_ROUND3DBUTTON
-type: RADIO_BUTTON
-box: 285 35 30 30
-boxtype: FL_NO_BOX
-colors: FL_COL1 FL_YELLOW
-alignment: FL_ALIGN_CENTER
-style: FL_NORMAL_STYLE
-size: FL_DEFAULT_SIZE
-lcol: FL_BLACK
-label: in Monochrome|#M
-shortcut: 
-resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
-name: radio_display_monochrome
-callback: C_FormBaseDeprecatedInputCB
-argument: 0
-	value: 1
-
---------------------
-class: FL_ROUND3DBUTTON
-type: RADIO_BUTTON
-box: 285 65 30 30
-boxtype: FL_NO_BOX
-colors: FL_COL1 FL_YELLOW
-alignment: FL_ALIGN_CENTER
-style: FL_NORMAL_STYLE
-size: FL_DEFAULT_SIZE
-lcol: FL_BLACK
-label: in Grayscale|#G
-shortcut: 
-resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
-name: radio_display_grayscale
-callback: C_FormBaseDeprecatedInputCB
-argument: 0
-
---------------------
-class: FL_ROUND3DBUTTON
-type: RADIO_BUTTON
-box: 285 95 30 30
-boxtype: FL_NO_BOX
-colors: FL_COL1 FL_YELLOW
-alignment: FL_ALIGN_CENTER
-style: FL_NORMAL_STYLE
-size: FL_DEFAULT_SIZE
-lcol: FL_BLACK
-label: in Color|#C
-shortcut: 
-resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
-name: radio_display_color
-callback: C_FormBaseDeprecatedInputCB
-argument: 0
-
---------------------
-class: FL_ROUND3DBUTTON
-type: RADIO_BUTTON
-box: 285 125 30 30
-boxtype: FL_NO_BOX
-colors: FL_COL1 FL_YELLOW
-alignment: FL_ALIGN_CENTER
-style: FL_NORMAL_STYLE
-size: FL_DEFAULT_SIZE
-lcol: FL_BLACK
-label: Don't display|#D
-shortcut: 
-resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
-name: radio_no_display
-callback: C_FormBaseDeprecatedInputCB
-argument: 0
-
---------------------
-class: FL_END_GROUP
-type: 0
-box: 0 0 0 0
-boxtype: FL_NO_BOX
-colors: FL_COL1 FL_MCOL
-alignment: FL_ALIGN_CENTER
-style: FL_NORMAL_STYLE
-size: FL_DEFAULT_SIZE
-lcol: FL_BLACK
-label: 
-shortcut: 
-resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
-name: 
-callback: 
-argument: 
-
---------------------
-class: FL_LABELFRAME
-type: ENGRAVED_FRAME
-box: 275 15 160 210
-boxtype: FL_NO_BOX
-colors: FL_BLACK FL_COL1
-alignment: FL_ALIGN_TOP_LEFT
-style: FL_NORMAL_STYLE
-size: FL_DEFAULT_SIZE
-lcol: FL_BLACK
-label: Display Graphics
-shortcut: 
-resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
-name: 
-callback: 
-argument: 
-
---------------------
-class: FL_FRAME
-type: ENGRAVED_FRAME
-box: 15 230 420 75
-boxtype: FL_NO_BOX
-colors: FL_BLACK FL_COL1
-alignment: FL_ALIGN_CENTER
-style: FL_NORMAL_STYLE
-size: FL_DEFAULT_SIZE
-lcol: FL_BLACK
-label: 
-shortcut: 
-resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
-name: 
-callback: 
-argument: 
 
 --------------------
 class: FL_CHECKBUTTON
@@ -1403,6 +1240,24 @@ name: check_preview_latex
 callback: C_FormBaseDeprecatedInputCB
 argument: 0
 	value: 1
+
+--------------------
+class: FL_CHOICE
+type: NORMAL_CHOICE
+box: 305 40 130 30
+boxtype: FL_FRAME_BOX
+colors: FL_COL1 FL_BLACK
+alignment: FL_ALIGN_TOP
+style: FL_NORMAL_STYLE
+size: FL_DEFAULT_SIZE
+lcol: FL_BLACK
+label: Graphics display|#G
+shortcut: 
+resize: FL_RESIZE_NONE
+gravity: FL_NoGravity FL_NoGravity
+name: choice_display
+callback: C_FormBaseDeprecatedInputCB
+argument: 0
 
 =============== FORM ===============
 Name: form_preferences_spelloptions

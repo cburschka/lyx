@@ -214,8 +214,9 @@ void QLImage::clip(Params const & params)
 	if (new_width == pixmap_.width() && new_height == pixmap_.height())
 		return;
 
-	int const xoffset_l = std::max(0, int(params.bb.xl));
-	int const yoffset_t = std::max(0, pixmap_.height() - int(params.bb.yt));
+	int const xoffset_l = params.bb.xl;
+	int const yoffset_t = ( pixmap_.height() > params.bb.yt ?
+				pixmap_.height() - params.bb.yt : 0 );
 
 	xformed_pixmap_.resize(new_width, new_height);
 	QPainter p;

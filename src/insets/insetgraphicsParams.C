@@ -20,7 +20,6 @@
 
 #include "graphics/GraphicsParams.h"
 
-#include "support/translator.h"
 #include "support/filetools.h"
 #include "support/lyxlib.h"
 #include "support/LOstream.h"
@@ -32,39 +31,9 @@
 
 using std::ostream;
 
-
-namespace {
-
-/// This variable keeps a tab on whether the translator was set with the
-/// translations.
-bool translatorsSet = false;
-
-/// This is the translator between the Display enum and corresponding lyx
-/// file strings.
-Translator< grfx::DisplayType, string >
-displayTranslator(grfx::DefaultDisplay, "default");
-
-} // namespace anon
-
-
 InsetGraphicsParams::InsetGraphicsParams()
 {
 	init();
-	// Set translators
-	if (! translatorsSet) {
-		translatorsSet = true;
-		// Fill the display translator
-		displayTranslator.addPair(grfx::DefaultDisplay, "default");
-		displayTranslator.addPair(grfx::MonochromeDisplay, "monochrome");
-		displayTranslator.addPair(grfx::GrayscaleDisplay, "grayscale");
-		displayTranslator.addPair(grfx::ColorDisplay, "color");
-		displayTranslator.addPair(grfx::NoDisplay, "none");
-		
-		// backward compatibility for old lyxrc.display_graphics
-		displayTranslator.addPair(grfx::MonochromeDisplay, "mono");
-		displayTranslator.addPair(grfx::GrayscaleDisplay, "gray");
-		displayTranslator.addPair(grfx::NoDisplay, "no");
-	}
 }
 
 InsetGraphicsParams::InsetGraphicsParams(InsetGraphicsParams const & igp)
@@ -173,7 +142,7 @@ void InsetGraphicsParams::Write(ostream & os) const
 	if (lyxscale != 100)
 		os << "\tlyxscale " << lyxscale << '\n';
 	if (display != grfx::DefaultDisplay)
-		os << "\tdisplay " << displayTranslator.find(display) << '\n';
+		os << "\tdisplay " << grfx::displayTranslator.find(display) << '\n';
 	if (scale) {
 		if (scale != 100)
 			os << "\tscale " << scale << '\n';
@@ -220,7 +189,7 @@ bool InsetGraphicsParams::Read(LyXLex & lex, string const & token)
 	} else if (token == "display") {
 		lex.next();
 		string const type = lex.getString();
-		display = displayTranslator.find(type);
+		display = grfx::displayTranslator.find(type);
 	} else if (token == "scale") {
 		lex.next();
 		scale = lex.getInteger();
@@ -325,12 +294,11 @@ grfx::Params InsetGraphicsParams::as_grfxParams(string const & filepath) const
 		}
 	}
 	
-	string mode;
-	if (display != grfx::DefaultDisplay)
-		mode = displayTranslator.find(display);
-	else
-		mode = displayTranslator.find(lyxrc.display_graphics);
-	pars.display = displayTranslator.find(mode);
+	if (display == grfx::DefaultDisplay) {
+		pars.display = lyxrc.display_graphics;
+	} else {
+		pars.display = display;
+	}
 	
 	// Override the above if we're not using a gui
 	if (!lyxrc.use_gui) {

@@ -26,9 +26,10 @@ extern bool textUndo(BufferView *);
 extern bool textRedo(BufferView *);
 /// makes sure the next operation will be stored
 extern void finishUndo();
-/// this is dangerous and for internal use only
+/// Whilst undo is frozen, all actions do not get added
+/// to the undo stack
 extern void freezeUndo();
-/// this is dangerous and for internal use only
+/// Track undos again
 extern void unFreezeUndo();
 /// FIXME
 extern void setUndo(BufferView *, Undo::undo_kind kind,
@@ -39,8 +40,7 @@ extern void setRedo(BufferView *, Undo::undo_kind kind,
 /// FIXME
 extern void setCursorParUndo(BufferView *);
 
-// This is only used in one place. Need a nicer way.
-/// is the undo frozen
+/// Are we avoiding tracking undos currently ?
 extern bool undo_frozen;
 
 #endif // UNDO_FUNCS_H

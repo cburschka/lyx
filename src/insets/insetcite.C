@@ -353,6 +353,8 @@ int InsetCitation::latex(Buffer const * buffer, ostream & os,
 		os << "cite";
 
 #warning What is this code supposed to do? (Lgb)
+// my guess is that this is just waiting for when we support before,
+// so it's a oneliner. But this is very silly ! - jbl
 
 #if 1
 	// The current strange code

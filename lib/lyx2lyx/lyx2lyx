@@ -37,7 +37,7 @@ opt.quiet = 0
 
 format = re.compile(r"(\d)[\.,]?(\d\d)")
 fileformat = re.compile(r"\\lyxformat\s*(\S*)")
-lst_ft = ["210", "215", "216", "217", "218", "220"]
+lst_ft = ["210", "215", "216", "217", "218", "220", "221"]
 
 def usage():
     print """Usage: lyx2lyx [options] file1

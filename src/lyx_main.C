@@ -24,6 +24,8 @@
 #include "gettext.h"
 #include "lyxlex.h"
 
+#include "graphics/GraphicsTypes.h"
+
 #include "bufferlist.h"
 #include "buffer.h"
 #include "lyxserver.h"
@@ -85,6 +87,11 @@ LyX::LyX(int & argc, char * argv[])
 	toplevel_keymap.reset(new kb_keymap);
 	defaultKeyBindings(toplevel_keymap.get());
 
+	// set the DisplayTranslator only once; should that be done here??
+	// if this should not be in this file, please also remove
+	// #include "graphics/GraphicsTypes.h" at the top -- Rob Lahaye.
+	grfx::setDisplayTranslator();
+	
 	if (want_gui) {
 		lyx_gui::parse_init(argc, argv);
 	}

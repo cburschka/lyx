@@ -36,6 +36,7 @@ using std::vector;
 namespace {
 
 // Bound the number of input characters
+int const SIZE_MAXDIGITS = 10;
 int const FILENAME_MAXCHARS = 1024;
 
 string defaultUnit("cm");
@@ -99,10 +100,15 @@ void FormGraphics::build()
 
 	 // width default is scaling, thus unsigned integer input
 	fl_set_input_filter(file_->input_width, fl_unsigned_int_filter);
-	fl_set_input_filter(file_->input_height, fl_unsigned_float_filter);
+	fl_set_input_maxchars(file_->input_height, SIZE_MAXDIGITS);
 
-	fl_addto_choice(file_->choice_display, _("Default|Monochrome|Grayscale|Color|Do not display")); 
-	fl_addto_choice(file_->choice_width, (_("Scale%%|") + choice_Length_All).c_str());
+
+	string const display_List = _("Default|Monochrome|Grayscale|Color|Do not display");
+	fl_addto_choice(file_->choice_display, display_List.c_str());
+	
+	string const width_list = _("Scale%%|") + choice_Length_All;
+	fl_addto_choice(file_->choice_width, width_list.c_str());
+
 	fl_addto_choice(file_->choice_height, choice_Length_All.c_str());
 
 	bc().addReadOnly(file_->button_browse);   
@@ -250,7 +256,9 @@ void FormGraphics::apply()
 	igp.filename = getString(file_->input_filename);
 
 	igp.lyxscale = strToInt(getString(file_->input_lyxscale));
-	if (igp.lyxscale == 0) igp.lyxscale = 100;
+	if (igp.lyxscale == 0) {
+		igp.lyxscale = 100;
+	}
 	
 	switch (fl_get_choice(file_->choice_display)) {
 		case 5: igp.display = grfx::NoDisplay; break;
@@ -264,10 +272,11 @@ void FormGraphics::apply()
 	// first item in choice_width means scaling
 	if (fl_get_choice(file_->choice_width) == 1) {
 		igp.scale = strToInt(getString(file_->input_width));
-		if (igp.scale == 0) igp.scale = 100;
+		if (igp.scale == 0) {
+			igp.scale = 100;
+		}
 		igp.width = LyXLength();
-	}
-	else {
+	} else {
 		igp.scale = 0;
 		igp.width = getLyXLengthFromWidgets(file_->input_width,
 						    file_->choice_width);
@@ -280,9 +289,9 @@ void FormGraphics::apply()
 	igp.noUnzip = fl_get_button(file_->check_nounzip);
 
 	// the bb section
-	if (!controller().bbChanged)	// different to the original one?
-		igp.bb = string();	// don't write anything
-	else {
+	if (!controller().bbChanged) { // different to the original one?
+		igp.bb = string();     // don't write anything
+	} else {
 		string bb;
 		if (getString(bbox_->input_bb_x0).empty())
 			bb = "0 ";
@@ -312,8 +321,12 @@ void FormGraphics::apply()
 	igp.rotateAngle = strToDbl(getString(extra_->input_rotate_angle));
 	
 	// map angle into -360 (clock-wise) to +360 (counter clock-wise)
-	while (igp.rotateAngle <= -360.0) igp.rotateAngle += 360.0;
-	while (igp.rotateAngle >=  360.0) igp.rotateAngle -= 360.0;
+	while (igp.rotateAngle <= -360.0) {
+		igp.rotateAngle += 360.0;
+	}
+	while (igp.rotateAngle >=  360.0) {
+		igp.rotateAngle -= 360.0;
+	}
 	fl_set_input(extra_->input_rotate_angle, tostr(igp.rotateAngle).c_str());
 
 	int const origin_pos = fl_get_choice(extra_->choice_origin);
@@ -350,11 +363,12 @@ void FormGraphics::update() {
 	// set width input fields according to scaling or width/height input
 	if (igp.scale) {
 		fl_set_input_filter(file_->input_width, fl_unsigned_int_filter);
+		fl_set_input_maxchars(file_->input_width, 0);
 		fl_set_input(file_->input_width, tostr(igp.scale).c_str());
 		fl_set_choice(file_->choice_width, 1);
-	}
-	else {
-		fl_set_input_filter(file_->input_width, fl_unsigned_float_filter);
+	} else {
+		fl_set_input_filter(file_->input_width, NULL);
+		fl_set_input_maxchars(file_->input_width, SIZE_MAXDIGITS);
 		updateWidgetsFromLength(file_->input_width,
 					file_->choice_width, igp.width, defaultUnit);
 	}
@@ -382,11 +396,10 @@ void FormGraphics::update() {
 	// the extra section
 	fl_set_input(extra_->input_rotate_angle,
 		     tostr(igp.rotateAngle).c_str());
-	if (igp.rotateOrigin.empty())
-		fl_set_choice(extra_->choice_origin, 1);
-	else
-		fl_set_choice(extra_->choice_origin,
-			      1 + int(findPos(origins_, igp.rotateOrigin)) );
+
+	int const origin_pos = findPos(origins_, igp.rotateOrigin);
+	fl_set_choice(extra_->choice_origin, 1 + origin_pos);
+
 	fl_set_button(extra_->check_subcaption, igp.subcaption);
 	fl_set_input(extra_->input_subcaption, igp.subcaptionText.c_str());
 	setEnabled(extra_->input_subcaption,
@@ -394,7 +407,9 @@ void FormGraphics::update() {
 	fl_set_input(extra_->input_special, igp.special.c_str());
 
 	// open dialog in the file-tab, whenever filename is empty
-	if (igp.filename.empty()) fl_set_folder(dialog_->tabfolder, file_->form);
+	if (igp.filename.empty()) {
+		fl_set_folder(dialog_->tabfolder, file_->form);
+	}
 }
 
 
@@ -405,7 +420,7 @@ void FormGraphics::updateBB(string const & filename, string const & bb_inset)
 	// path, because the controller knows nothing about the doc-dir
 	controller().bbChanged = false;
 	if (bb_inset.empty()) {
-		lyxerr[Debug::GRAPHICS] << "update:: no BoundingBox" << endl;
+		lyxerr[Debug::GRAPHICS] << "FormGraphics::updateBB() [no BoundingBox]" << endl;
 		string const bb = controller().readBB(filename);
 		if (!bb.empty()) {
 			// get the values from the file
@@ -431,9 +446,11 @@ void FormGraphics::updateBB(string const & filename, string const & bb_inset)
 
 	} else {
 		// get the values from the inset
-		lyxerr[Debug::GRAPHICS] << "update:: igp has BoundingBox"
+		lyxerr[Debug::GRAPHICS] << "FormGraphics::updateBB(): igp has BoundingBox"
+					<< " ["<< bb_inset << "]"
 					<< endl;
 		controller().bbChanged = true;
+
 		LyXLength anyLength;
 		anyLength = LyXLength(token(bb_inset,' ',0));
 		updateWidgetsFromLength(bbox_->input_bb_x0,
@@ -449,6 +466,7 @@ void FormGraphics::updateBB(string const & filename, string const & bb_inset)
 					bbox_->choice_bb_units,anyLength,"bp");
 	}
 }
+
 
 namespace {
 
@@ -474,8 +492,9 @@ ButtonPolicy::SMInput FormGraphics::input(FL_OBJECT * ob, long)
 			fl_set_input(file_->input_filename, out_name.c_str());
 		}
 		if (controller().isFilenameValid(out_name) &&
-		    !controller().bbChanged)
+		    !controller().bbChanged) {
 			updateBB(out_name, string());
+		}
 	} else if (ob == file_->input_width || ob == file_->input_height) {
 		// disable aspectratio button in case of scaling or one of width/height is empty
 		bool const disable = fl_get_choice(file_->choice_width) == 1 ||
@@ -489,11 +508,13 @@ ButtonPolicy::SMInput FormGraphics::input(FL_OBJECT * ob, long)
 		setEnabled(file_->choice_height, !scaling);
 		
 		// allow only integer intput for scaling; float otherwise
-		if (scaling)
+		if (scaling) {
 			fl_set_input_filter(file_->input_width, fl_unsigned_int_filter);
-		else
-			fl_set_input_filter(file_->input_width, fl_unsigned_float_filter);
-
+			fl_set_input_maxchars(file_->input_width, 0);
+		} else {
+			fl_set_input_filter(file_->input_width, NULL);
+			fl_set_input_maxchars(file_->input_width, SIZE_MAXDIGITS);
+		}
 
 		// disable aspectratio button in case of scaling or height input is empty
 		bool const disable_aspectratio = scaling || getString(file_->input_height).empty();
@@ -530,18 +551,15 @@ ButtonPolicy::SMInput FormGraphics::input(FL_OBJECT * ob, long)
 
 	}
 
-	// deactivate OK/ Apply buttons and
-	// spit out warnings if invalid
-	if (ob == bbox_->input_bb_x0 || ob == bbox_->input_bb_x1 ||
-	    ob == bbox_->input_bb_y0 || ob == bbox_->input_bb_y1 ||
-	    ob == file_->input_width || ob == file_->input_height) {
-		if (isValid(ob))
-			clearMessage();
-		else {
-			postWarning(_("Invalid Length!"));
-			return ButtonPolicy::SMI_INVALID;
-		}
-	}
+	// check if the input is valid
+	bool const invalid = !isValid(file_->input_width) || !isValid(file_->input_height);
 
-	return ButtonPolicy::SMI_VALID;
+	// deactivate OK / Apply buttons and spit out warnings if invalid
+	if (invalid) {
+		postWarning(_("Invalid Length in Output size!"));
+		return ButtonPolicy::SMI_INVALID;
+	} else {
+		clearMessage();
+		return ButtonPolicy::SMI_VALID;
+	}
 }

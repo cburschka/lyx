@@ -88,10 +88,8 @@ void changeDepth(BufferView * bv, LyXText * text, int decInc)
 	else
 		text->decDepth(bv);
 	if (text->inset_owner)
-	    bv->updateInset((Inset *)text->inset_owner, true);
+		bv->updateInset((Inset *)text->inset_owner, true);
 	bv->update(bv->text, BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
-	bv->owner()->message(_("Changed environment depth "
-			       "(in possible range, maybe not)"));
 }
 
 

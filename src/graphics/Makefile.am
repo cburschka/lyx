@@ -26,6 +26,7 @@ libgraphics_la_SOURCES = \
 	GraphicsSupport.h \
 	GraphicsSupport.C \
 	GraphicsTypes.h \
+	GraphicsTypes.C \
 	PreviewImage.h \
 	PreviewImage.C \
 	PreviewLoader.h \

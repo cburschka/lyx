@@ -225,7 +225,7 @@ void LyXRC::setDefaults() {
 	check_lastfiles = true;
 	make_backup = true;
 	backupdir_path.erase();
-	display_graphics = "color";
+	display_graphics = grfx::ColorDisplay;
 	// Spellchecker settings:
 #ifdef USE_PSPELL
 	use_pspell = true;
@@ -328,16 +328,17 @@ int LyXRC::read(string const & filename)
 		case RC_BINDFILE:                     // RVDK_PATCH_5
 			if (lexrc.next()) {
 				string const tmp(lexrc.getString());
-				if (hasBindFile)
+				if (hasBindFile) {
 					// We are already in the
 					// "actually read bind file"
 					// mode.
 					ReadBindFile(tmp);
-				else
+				} else {
 					// We are still in the "just
 					// remember the name of the
 					// bind file" mode.
 					bind_file = tmp;
+				}
 			}
 			break;
 
@@ -348,23 +349,21 @@ int LyXRC::read(string const & filename)
 			break;
 
 		case RC_AUTORESET_OPTIONS:
-			if (lexrc.next())
+			if (lexrc.next()) {
 				auto_reset_options = lexrc.getBool();
+			}
 			break;
 
 		case RC_DISPLAY_GRAPHICS:
 			if (lexrc.next()) {
-				display_graphics = lexrc.getString();
-				// backward compatibility
-				if (display_graphics == "mono") display_graphics = "monochrome";
-				else if (display_graphics == "gray") display_graphics = "grayscale";
-				else if (display_graphics == "no") display_graphics = "none";
+				display_graphics = grfx::displayTranslator.find(lexrc.getString());
 			}
 			break;
 
 		case RC_KBMAP:
-			if (lexrc.next())
+			if (lexrc.next()) {
 				use_kbmap = lexrc.getBool();
+			}
 			break;
 
 		case RC_KBMAP_PRIMARY:
@@ -373,10 +372,11 @@ int LyXRC::read(string const & filename)
 				if (kmap.empty()) {
 					// nothing
 				} else if (!LibFileSearch("kbd", kmap,
-							  "kmap").empty())
+							  "kmap").empty()) {
 					primary_kbmap = kmap;
-				else
+				} else {
 					lexrc.printError("LyX: Keymap `$$Token' not found");
+				}
 			}
 			break;
 
@@ -386,116 +386,138 @@ int LyXRC::read(string const & filename)
 				if (kmap.empty()) {
 					// nothing
 				} else if (!LibFileSearch("kbd", kmap,
-							  "kmap").empty())
+							  "kmap").empty()) {
 					secondary_kbmap = kmap;
-				else
+				} else {
 					lexrc.printError("LyX: Keymap `$$Token' not found");
+				}
 			}
 			break;
 
 		case RC_FONT_ENCODING:
-			if (lexrc.next())
+			if (lexrc.next()) {
 				fontenc = lexrc.getString();
+			}
 			break;
 
 		case RC_PRINTER:
-			if (lexrc.next())
+			if (lexrc.next()) {
 				printer = lexrc.getString();
+			}
 			break;
 
 		case RC_PRINT_COMMAND:
-			if (lexrc.next())
+			if (lexrc.next()) {
 				print_command = lexrc.getString();
+			}
 			break;
 
 		case RC_PRINTEVENPAGEFLAG:
-			if (lexrc.next())
+			if (lexrc.next()) {
 				print_evenpage_flag = lexrc.getString();
+			}
 			break;
 
 		case RC_PRINTODDPAGEFLAG:
-			if (lexrc.next())
+			if (lexrc.next()) {
 				print_oddpage_flag = lexrc.getString();
+			}
 			break;
 
 		case RC_PRINTPAGERANGEFLAG:
-			if (lexrc.next())
+			if (lexrc.next()) {
 				print_pagerange_flag = lexrc.getString();
+			}
 			break;
 
 		case RC_PRINTCOPIESFLAG:
-			if (lexrc.next())
+			if (lexrc.next()) {
 				print_copies_flag = lexrc.getString();
+			}
 			break;
 
 		case RC_PRINTCOLLCOPIESFLAG:
-			if (lexrc.next())
+			if (lexrc.next()) {
 				print_collcopies_flag = lexrc.getString();
+			}
 			break;
 
 		case RC_PRINTREVERSEFLAG:
-			if (lexrc.next())
+			if (lexrc.next()) {
 				print_reverse_flag = lexrc.getString();
+			}
 			break;
 
 		case RC_PRINTLANDSCAPEFLAG:
-			if (lexrc.next())
+			if (lexrc.next()) {
 				print_landscape_flag = lexrc.getString();
+			}
 			break;
 
 		case RC_PRINTTOPRINTER:
-			if (lexrc.next())
+			if (lexrc.next()) {
 				print_to_printer = lexrc.getString();
+			}
 			break;
 
 		case RC_PRINT_ADAPTOUTPUT:
-			if (lexrc.next())
+			if (lexrc.next()) {
 				print_adapt_output = lexrc.getBool();
+			}
 			break;
 
 		case RC_PRINTTOFILE:
-			if (lexrc.next())
+			if (lexrc.next()) {
 				print_to_file = lexrc.getString();
+			}
 			break;
 
 		case RC_PRINTFILEEXTENSION:
-			if (lexrc.next())
+			if (lexrc.next()) {
 				print_file_extension = lexrc.getString();
+			}
 			break;
 
 		case RC_PRINTEXSTRAOPTIONS:
-			if (lexrc.next())
+			if (lexrc.next()) {
 				print_extra_options = lexrc.getString();
+			}
 			break;
 
 		case RC_PRINTSPOOL_COMMAND:
-			if (lexrc.next())
+			if (lexrc.next()) {
 				print_spool_command = lexrc.getString();
+			}
 			break;
 
 		case RC_PRINTSPOOL_PRINTERPREFIX:
-			if (lexrc.next())
+			if (lexrc.next()) {
 				print_spool_printerprefix = lexrc.getString();
+			}
 			break;
 
 		case RC_PRINTPAPERDIMENSIONFLAG:
-			if (lexrc.next())
+			if (lexrc.next()) {
 				print_paper_dimension_flag = lexrc.getString();
+			}
 			break;
 
 		case RC_PRINTPAPERFLAG:
-			if (lexrc.next())
+			if (lexrc.next()) {
 				print_paper_flag = lexrc.getString();
+			}
 			break;
 
 		case RC_CUSTOM_EXPORT_COMMAND:
-			if (lexrc.next())
+			if (lexrc.next()) {
 				custom_export_command = lexrc.getString();
+			}
 			break;
 
 		case RC_CUSTOM_EXPORT_FORMAT:
-			if (lexrc.next())
+			if (lexrc.next()) {
 				custom_export_format = lexrc.getString();
+			}
 			break;
 
 		case RC_DEFAULT_PAPERSIZE:
@@ -527,78 +549,96 @@ int LyXRC::read(string const & filename)
 			break;
 
 		case RC_VIEWDVI_PAPEROPTION:
-			if (lexrc.next())
+			if (lexrc.next()) {
 				view_dvi_paper_option = lexrc.getString();
-			else
+			} else {
 				view_dvi_paper_option.erase();
+			}
 			break;
 
 		case RC_PS_COMMAND:
-			if (lexrc.next())
+			if (lexrc.next()) {
 				ps_command = lexrc.getString();
+			}
 			break;
 
 		case RC_CHKTEX_COMMAND:
-			if (lexrc.next())
+			if (lexrc.next()) {
 				chktex_command = lexrc.getString();
+			}
 			break;
 
 		case RC_SCREEN_DPI:
-			if (lexrc.next())
+			if (lexrc.next()) {
 				dpi = lexrc.getInteger();
+			}
 			break;
 
 		case RC_SCREEN_ZOOM:
-			if (lexrc.next())
+			if (lexrc.next()) {
 				zoom = lexrc.getInteger();
+			}
 			break;
 
 		case RC_WHEEL_JUMP:
-			if (lexrc.next())
+			if (lexrc.next()) {
 				wheel_jump = lexrc.getInteger();
+			}
 			break;
 
 		case RC_SCREEN_FONT_SIZES:
-			if (lexrc.next())
+			if (lexrc.next()) {
 				font_sizes[LyXFont::SIZE_TINY] =
 					lexrc.getFloat();
-			if (lexrc.next())
+			}
+			if (lexrc.next()) {
 				font_sizes[LyXFont::SIZE_SCRIPT] =
 					lexrc.getFloat();
-			if (lexrc.next())
+			}
+			if (lexrc.next()) {
 				font_sizes[LyXFont::SIZE_FOOTNOTE] =
 					lexrc.getFloat();
-			if (lexrc.next())
+			}
+			if (lexrc.next()) {
 				font_sizes[LyXFont::SIZE_SMALL] =
 					lexrc.getFloat();
-			if (lexrc.next())
+			}
+			if (lexrc.next()) {
 				font_sizes[LyXFont::SIZE_NORMAL] =
 					lexrc.getFloat();
-			if (lexrc.next())
+			}
+			if (lexrc.next()) {
 				font_sizes[LyXFont::SIZE_LARGE] =
 					lexrc.getFloat();
-			if (lexrc.next())
+			}
+			if (lexrc.next()) {
 				font_sizes[LyXFont::SIZE_LARGER] =
 					lexrc.getFloat();
-			if (lexrc.next())
+			}
+			if (lexrc.next()) {
 				font_sizes[LyXFont::SIZE_LARGEST] =
 					lexrc.getFloat();
-			if (lexrc.next())
+			}
+			if (lexrc.next()) {
 				font_sizes[LyXFont::SIZE_HUGE] =
 					lexrc.getFloat();
-			if (lexrc.next())
+			}
+			if (lexrc.next()) {
 				font_sizes[LyXFont::SIZE_HUGER] =
 					lexrc.getFloat();
+			}
 			break;
 
 		case RC_SCREEN_FONT_SCALABLE:
-			if (lexrc.next())
+			if (lexrc.next()) {
 				use_scalable_fonts = lexrc.getBool();
+			}
 			break;
 
 		case RC_AUTOSAVE:
-			if (lexrc.next())
+			if (lexrc.next()) {
 				autosave = lexrc.getInteger();
+			}
 			break;
 
 		case RC_DOCUMENTPATH:
@@ -608,48 +648,57 @@ int LyXRC::read(string const & filename)
 			break;
 
 		case RC_TEMPLATEPATH:
-			if (lexrc.next())
+			if (lexrc.next()) {
 				template_path = ExpandPath(lexrc.getString());
+			}
 			break;
 
 		case RC_TEMPDIRPATH:
-			if (lexrc.next())
+			if (lexrc.next()) {
 				tempdir_path = ExpandPath(lexrc.getString());
+			}
 			break;
 
 		case RC_USETEMPDIR:
-			if (lexrc.next())
+			if (lexrc.next()) {
 				use_tempdir = lexrc.getBool();
+			}
 			break;
 
 		case RC_LASTFILES:
-			if (lexrc.next())
+			if (lexrc.next()) {
 				lastfiles = ExpandPath(lexrc.getString());
+			}
 			break;
 
 		case RC_NUMLASTFILES:
-			if (lexrc.next())
+			if (lexrc.next()) {
 				num_lastfiles = lexrc.getInteger();
+			}
 			break;
 
 		case RC_CHECKLASTFILES:
-			if (lexrc.next())
+			if (lexrc.next()) {
 				check_lastfiles = lexrc.getBool();
+			}
 			break;
 
 		case RC_SCREEN_FONT_ROMAN:
-			if (lexrc.next())
+			if (lexrc.next()) {
 				roman_font_name = lexrc.getString();
+			}
 			break;
 
 		case RC_SCREEN_FONT_SANS:
-			if (lexrc.next())
+			if (lexrc.next()) {
 				sans_font_name = lexrc.getString();
+			}
 			break;
 
 		case RC_SCREEN_FONT_TYPEWRITER:
-			if (lexrc.next())
+			if (lexrc.next()) {
 				typewriter_font_name = lexrc.getString();
+			}
 			break;
 
 		case RC_SCREEN_FONT_ENCODING:
@@ -660,18 +709,21 @@ int LyXRC::read(string const & filename)
 			break;
 
 		case RC_POPUP_BOLD_FONT:
-			if (lexrc.next())
+			if (lexrc.next()) {
 				popup_bold_font = lexrc.getString();
+			}
 			break;
 
 		case RC_POPUP_NORMAL_FONT:
-			if (lexrc.next())
+			if (lexrc.next()) {
 				popup_normal_font = lexrc.getString();
+			}
 			break;
 
 		case RC_POPUP_FONT_ENCODING:
-			if (lexrc.next())
+			if (lexrc.next()) {
 				popup_font_encoding = lexrc.getString();
+			}
 			break;
 
 		case RC_SET_COLOR:
@@ -692,16 +744,18 @@ int LyXRC::read(string const & filename)
 				break;
 			}
 
-			if (!lcolor.setColor(lyx_name, x11_name))
+			if (!lcolor.setColor(lyx_name, x11_name)) {
 				lyxerr << "Bad lyxrc set_color for "
 					<< lyx_name << endl;
 
+			}
 			break;
 		}
 		case RC_AUTOREGIONDELETE:
 			// Auto region delete defaults to true
-			if (lexrc.next())
+			if (lexrc.next()) {
 				auto_region_delete = lexrc.getBool();
+			}
 			break;
 
 		case RC_BIND:
@@ -752,208 +806,256 @@ int LyXRC::read(string const & filename)
 			break;
 		}
 		case RC_OVERRIDE_X_DEADKEYS:
-			if (lexrc.next())
+			if (lexrc.next()) {
 				override_x_deadkeys = lexrc.getBool();
+			}
 			break;
 
 		case RC_SERVERPIPE:
-			if (lexrc.next())
+			if (lexrc.next()) {
 				lyxpipes = ExpandPath(lexrc.getString());
+			}
 			break;
 
 		case RC_CURSOR_FOLLOWS_SCROLLBAR:
-			if (lexrc.next())
+			if (lexrc.next()) {
 				cursor_follows_scrollbar = lexrc.getBool();
+			}
 			break;
 
 		case RC_DIALOGS_ICONIFY_WITH_MAIN:
-			if (lexrc.next())
+			if (lexrc.next()) {
 				dialogs_iconify_with_main = lexrc.getBool();
+			}
 			break;
 
 		case RC_ASCIIROFF_COMMAND:
-			if (lexrc.next())
+			if (lexrc.next()) {
 				ascii_roff_command = lexrc.getString();
+			}
 			break;
 		case RC_ASCII_LINELEN:
-			if (lexrc.next())
+			if (lexrc.next()) {
 				ascii_linelen = lexrc.getInteger();
+			}
 			break;
 			// Spellchecker settings:
 #ifdef USE_PSPELL
 		case RC_USE_PSPELL:
-			if (lexrc.next())
+			if (lexrc.next()) {
 				use_pspell = lexrc.getBool();
+			}
 			break;
 #endif
 		case RC_SPELL_COMMAND:
-			if (lexrc.next())
+			if (lexrc.next()) {
 				isp_command = lexrc.getString();
+			}
 			break;
 		case RC_ACCEPT_COMPOUND:
-			if (lexrc.next())
+			if (lexrc.next()) {
 				isp_accept_compound = lexrc.getBool();
+			}
 			break;
 		case RC_USE_INP_ENC:
-			if (lexrc.next())
+			if (lexrc.next()) {
 				isp_use_input_encoding = lexrc.getBool();
+			}
 			break;
 		case RC_USE_ALT_LANG:
-			if (lexrc.next())
+			if (lexrc.next()) {
 				isp_use_alt_lang = lexrc.getBool();
+			}
 			break;
 		case RC_USE_PERS_DICT:
-			if (lexrc.next())
+			if (lexrc.next()) {
 				isp_use_pers_dict = lexrc.getBool();
+			}
 			break;
 		case RC_USE_ESC_CHARS:
-			if (lexrc.next())
+			if (lexrc.next()) {
 				isp_use_esc_chars = lexrc.getBool();
+			}
 			break;
 		case RC_ALT_LANG:
-			if (lexrc.next())
+			if (lexrc.next()) {
 				isp_alt_lang = lexrc.getString();
+			}
 			break;
 		case RC_PERS_DICT:
-			if (lexrc.next())
+			if (lexrc.next()) {
 				isp_pers_dict = lexrc.getString();
+			}
 			break;
 		case RC_ESC_CHARS:
-			if (lexrc.next())
+			if (lexrc.next()) {
 				isp_esc_chars = lexrc.getString();
+			}
 			break;
 		case RC_MAKE_BACKUP:
-			if (lexrc.next())
+			if (lexrc.next()) {
 				make_backup = lexrc.getBool();
+			}
 			break;
 		case RC_BACKUPDIR_PATH:
-			if (lexrc.next())
+			if (lexrc.next()) {
 				backupdir_path = ExpandPath(lexrc.getString());
+			}
 			break;
 		case RC_DATE_INSERT_FORMAT:
-			if (lexrc.next())
+			if (lexrc.next()) {
 				date_insert_format = lexrc.getString();
+			}
 			break;
 		case RC_LANGUAGE_PACKAGE:
-			if (lexrc.next())
+			if (lexrc.next()) {
 				language_package = lexrc.getString();
+			}
 			break;
 		case RC_LANGUAGE_AUTO_BEGIN:
-			if (lexrc.next())
+			if (lexrc.next()) {
 				language_auto_begin = lexrc.getBool();
+			}
 			break;
 		case RC_LANGUAGE_AUTO_END:
-			if (lexrc.next())
+			if (lexrc.next()) {
 				language_auto_end = lexrc.getBool();
+			}
 			break;
 		case RC_LANGUAGE_GLOBAL_OPTIONS:
-			if (lexrc.next())
+			if (lexrc.next()) {
 				language_global_options = lexrc.getBool();
+			}
 			break;
 		case RC_LANGUAGE_USE_BABEL:
-			if (lexrc.next())
+			if (lexrc.next()) {
 				language_use_babel = lexrc.getBool();
+			}
 			break;
 		case RC_LANGUAGE_COMMAND_BEGIN:
-			if (lexrc.next())
+			if (lexrc.next()) {
 				language_command_begin = lexrc.getString();
+			}
 			break;
 		case RC_LANGUAGE_COMMAND_END:
-			if (lexrc.next())
+			if (lexrc.next()) {
 				language_command_end = lexrc.getString();
+			}
 			break;
 		case RC_LANGUAGE_COMMAND_LOCAL:
-			if (lexrc.next())
+			if (lexrc.next()) {
 				language_command_local = lexrc.getString();
+			}
 			break;
 		case RC_RTL_SUPPORT:
-			if (lexrc.next())
+			if (lexrc.next()) {
 				rtl_support = lexrc.getBool();
+			}
 			break;
 		case RC_AUTO_NUMBER:
-			if (lexrc.next())
+			if (lexrc.next()) {
 				auto_number = lexrc.getBool();
+			}
 			break;
 		case RC_MARK_FOREIGN_LANGUAGE:
-			if (lexrc.next())
+			if (lexrc.next()) {
 				mark_foreign_language = lexrc.getBool();
+			}
 			break;
 
 		case RC_CONVERTER: {
 			string from, to, command, flags;
-			if (lexrc.next())
+			if (lexrc.next()) {
 				from = lexrc.getString();
-			if (lexrc.next())
+			}
+			if (lexrc.next()) {
 				to = lexrc.getString();
-			if (lexrc.next())
+			}
+			if (lexrc.next()) {
 				command = lexrc.getString();
-			if (lexrc.next())
+			}
+			if (lexrc.next()) {
 				flags = lexrc.getString();
-			if (command.empty() || command == "none")
+			}
+			if (command.empty() || command == "none") {
 				converters.erase(from, to);
-			else
+			} else {
 				converters.add(from, to, command, flags);
+			}
 			break;
 		}
 		case RC_VIEWER: {
 			string format, command;
-			if (lexrc.next())
+			if (lexrc.next()) {
 				format = lexrc.getString();
-			if (lexrc.next())
+			}
+			if (lexrc.next()) {
 				command = lexrc.getString();
+			}
 			formats.setViewer(format, command);
 			break;
 		}
 		case RC_FORMAT: {
 			string format, extension, prettyname, shortcut;
-			if (lexrc.next())
+			if (lexrc.next()) {
 				format = lexrc.getString();
-			if (lexrc.next())
+			}
+			if (lexrc.next()) {
 				extension = lexrc.getString();
-			if (lexrc.next())
+			}
+			if (lexrc.next()) {
 				prettyname = lexrc.getString();
-			if (lexrc.next())
+			}
+			if (lexrc.next()) {
 				shortcut = lexrc.getString();
+			}
 			if (prettyname.empty()) {
-				if (converters.formatIsUsed(format))
+				if (converters.formatIsUsed(format)) {
 					lyxerr << "Can't delete format "
 					       << format << endl;
-				else
+				} else {
 					formats.erase(format);
-
-			} else
+				}
+			} else {
 				formats.add(format, extension, prettyname,
 					    shortcut);
+			}
 			break;
 		}
 		case RC_DEFAULT_LANGUAGE:
-			if (lexrc.next())
+			if (lexrc.next()) {
 				default_language = lexrc.getString();
+			}
 			break;
 
 		case RC_LABEL_INIT_LENGTH:
-			if (lexrc.next())
+			if (lexrc.next()) {
 				label_init_length = lexrc.getInteger();
+			}
 			break;
 
 		case RC_SHOW_BANNER:
-			if (lexrc.next())
+			if (lexrc.next()) {
 				show_banner = lexrc.getBool();
+			}
 			break;
 
 		case RC_PREVIEW:
-			if (lexrc.next())
+			if (lexrc.next()) {
 				preview = lexrc.getBool();
+			}
 			break;
 
 		case RC_PREVIEW_HASHED_LABELS:
-			if (lexrc.next())
+			if (lexrc.next()) {
 				preview_hashed_labels = lexrc.getBool();
+			}
 			break;
 
 		case RC_PREVIEW_SCALE_FACTOR:
-			if (lexrc.next())
+			if (lexrc.next()) {
 				preview_scale_factor = lexrc.getFloat();
+			}
 			break;
 
 		case RC_LAST: break; // this is just a dummy
@@ -1051,7 +1153,7 @@ void LyXRC::output(ostream & os) const
 		if (display_graphics != system_lyxrc.display_graphics) {
 			os << "# Display graphics within LyX\n"
 			   << "# monochrome|grayscale|color|none\n"
-			   << "\\display_graphics " << display_graphics
+			   << "\\display_graphics " << grfx::displayTranslator.find(display_graphics)
 			   << "\n";
 		}
 

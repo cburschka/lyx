@@ -17,6 +17,7 @@
 #endif
 
 #include "bufferparams.h" // Just to get the enum BufferParams::PAPER_SIZE (sic)
+#include "graphics/GraphicsTypes.h"
 
 // #include <boost/utility.hpp>
 
@@ -341,7 +342,7 @@ enum LyXRCTags {
 	///
 	int label_init_length;
 	///
-	string display_graphics;
+	grfx::DisplayType display_graphics;
 	///
 	bool show_banner;
 	///

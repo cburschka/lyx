@@ -116,10 +116,13 @@ ButtonPolicy::SMInput FormBibtex::input(FL_OBJECT * ob, long)
 		}
 	} else if (ob == dialog_->button_style_choose) {
 		unsigned int selection = fl_get_browser(dialog_->browser_styles);
-		string const out_name =
-			fl_get_browser_line(dialog_->browser_styles, selection);
+		if (!selection)
+			return ButtonPolicy::SMI_NOOP;
+		
+		string const out_name = fl_get_browser_line(dialog_->browser_styles,
+								selection);
 		fl_set_input(dialog_->input_style,
-			ChangeExtension(out_name, string()).c_str());
+				ChangeExtension(out_name, string()).c_str());
 	} else if (ob == dialog_->button_rescan) {
 		fl_clear_browser(dialog_->browser_styles);
 		controller().rescanBibStyles();

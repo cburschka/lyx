@@ -1,3 +1,12 @@
+2002-08-28  Rob Lahaye  <lahaye@snu.ac.kr>
+
+	* GraphicsImage.C: small style fix to width/height setting.
+
+	* GraphicsTypes.h: have a displayTranslator here.
+
+	* Makefile.am:
+	* GraphicsTypes.C: new file added for the setDisplayTranslator();
+
 2002-08-23  Rob Lahaye  <lahaye@snu.ac.kr>
 
 	* GraphicsImage.C:

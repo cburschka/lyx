@@ -42,6 +42,7 @@
 #include "support/LAssert.h"
 
 #include "graphics/GraphicsCache.h"
+#include "graphics/GraphicsTypes.h"
 
 #include <boost/bind.hpp>
 
@@ -1824,15 +1825,14 @@ void FormPreferences::LnFmisc::apply() const
 	lyxrc.wheel_jump = static_cast<unsigned int>
 		(fl_get_counter_value(dialog_->counter_wm_jump));
 
-	string const old_value = lyxrc.display_graphics;
-	if (fl_get_button(dialog_->radio_display_monochrome)) {
-		lyxrc.display_graphics = "monochrome";
-	} else if (fl_get_button(dialog_->radio_display_grayscale)) {
-		lyxrc.display_graphics = "grayscale";
-	} else if (fl_get_button(dialog_->radio_display_color)) {
-		lyxrc.display_graphics = "color";
-	} else {
-		lyxrc.display_graphics = "none";
+	// See FIXME below
+	// grfx::DisplayType old_value = lyxrc.display_graphics;
+	switch (fl_get_choice(dialog_->choice_display)) {
+		case 4: lyxrc.display_graphics = grfx::NoDisplay; break;
+		case 3: lyxrc.display_graphics = grfx::ColorDisplay; break;
+		case 2: lyxrc.display_graphics = grfx::GrayscaleDisplay; break;
+		case 1: lyxrc.display_graphics = grfx::MonochromeDisplay; break;
+		default: lyxrc.display_graphics = grfx::ColorDisplay; break;
 	}
 
 #ifdef WITH_WARNINGS
@@ -1864,10 +1864,8 @@ void FormPreferences::LnFmisc::build()
 	setPrehandler(dialog_->check_dialogs_iconify_with_main);
 	setPrehandler(dialog_->check_preview_latex);
 	setPrehandler(dialog_->counter_wm_jump);
-	setPrehandler(dialog_->radio_display_monochrome);
-	setPrehandler(dialog_->radio_display_grayscale);
-	setPrehandler(dialog_->radio_display_color);
-	setPrehandler(dialog_->radio_no_display);
+	
+	fl_addto_choice(dialog_->choice_display, _("Monochrome|Grayscale|Color|Do not display"));
 }
 
 
@@ -1886,10 +1884,7 @@ FormPreferences::LnFmisc::feedback(FL_OBJECT const * const ob) const
 		return lyxrc.getDescription(LyXRC::RC_AUTOSAVE);
 	if (ob == dialog_->counter_wm_jump)
 		return lyxrc.getDescription(LyXRC::RC_WHEEL_JUMP);
-	if (ob == dialog_->radio_display_monochrome ||
-		 ob == dialog_->radio_display_grayscale ||
-		 ob == dialog_->radio_display_color ||
-		 ob == dialog_->radio_no_display)
+	if (ob == dialog_->choice_display)
 		return lyxrc.getDescription(LyXRC::RC_DISPLAY_GRAPHICS);
 	return string();
 }
@@ -1908,14 +1903,12 @@ void FormPreferences::LnFmisc::update()
 	fl_set_counter_value(dialog_->counter_autosave, lyxrc.autosave);
 	fl_set_counter_value(dialog_->counter_wm_jump, lyxrc.wheel_jump);
 
-	if (lyxrc.display_graphics == "monochrome") {
-		fl_set_button(dialog_->radio_display_monochrome, 1);
-	} else if (lyxrc.display_graphics == "grayscale") {
-		fl_set_button(dialog_->radio_display_grayscale, 1);
-	} else if (lyxrc.display_graphics == "color") {
-		fl_set_button(dialog_->radio_display_color, 1);
-	} else {
-		fl_set_button(dialog_->radio_no_display, 1);
+	switch (lyxrc.display_graphics) {
+		case grfx::NoDisplay:		fl_set_choice(dialog_->choice_display, 4); break;
+		case grfx::ColorDisplay:	fl_set_choice(dialog_->choice_display, 3); break;
+		case grfx::GrayscaleDisplay:	fl_set_choice(dialog_->choice_display, 2); break;
+		case grfx::MonochromeDisplay:	fl_set_choice(dialog_->choice_display, 1); break;
+		default:			fl_set_choice(dialog_->choice_display, 3); break;
 	}
 }
 
