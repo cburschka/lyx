@@ -418,22 +418,23 @@ void doInsertInset(LyXText const & lt, FuncRequest const & cmd,
 		   bool edit, bool pastesel)
 {
 	InsetOld * inset = createInset(cmd);
+	if (!inset)
+		return;
+
 	BufferView * bv = cmd.view();
 
-	if (inset) {
-		bool gotsel = false;
-		if (lt.selection.set()) {
-			bv->owner()->dispatch(FuncRequest(LFUN_CUT));
-			gotsel = true;
-		}
-		if (bv->insertInset(inset)) {
-			if (edit)
-				inset->edit(bv, true);
-			if (gotsel && pastesel)
-				bv->owner()->dispatch(FuncRequest(LFUN_PASTE));
-		} else
-			delete inset;
+	bool gotsel = false;
+	if (lt.selection.set()) {
+		bv->owner()->dispatch(FuncRequest(LFUN_CUT));
+		gotsel = true;
 	}
+	if (bv->insertInset(inset)) {
+		if (edit)
+			inset->edit(bv, true);
+		if (gotsel && pastesel)
+			bv->owner()->dispatch(FuncRequest(LFUN_PASTE));
+	} else
+		delete inset;
 }
 
 } // anon namespace
@@ -877,10 +878,10 @@ DispatchResult LyXText::dispatch(FuncRequest const & cmd)
 
 	case LFUN_INSET_INSERT: {
 		InsetOld * inset = createInset(cmd);
-		if (!inset || !bv->insertInset(inset))
+		if (inset && !bv->insertInset(inset))
 			delete inset;
 		break;
-		}
+	}
 
 	case LFUN_INSET_SETTINGS:
 		bv->cursor().innerInset()->showInsetDialog(bv);

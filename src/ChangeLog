@@ -1,5 +1,12 @@
 2003-12-11  Angus Leeming  <leeming@lyx.org>
 
+	* BufferView_pimpl.C (dispatch): remove LFUN_INSET_APPLY code
+	as it is now handled in LyXText::dispatch.
+
+	* text3.C (doInsertInset): remove a level of nesting.
+
+2003-12-11  Angus Leeming  <leeming@lyx.org>
+
 	* factory.C (createInset): changes due to the changed interface to
 	InsetCommandMailer::string2params.
 

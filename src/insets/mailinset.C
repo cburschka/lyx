@@ -47,7 +47,7 @@ void MailInset::hideDialog() const
 void print_mailer_error(string const & class_name,
 			string const & data, int arg_id, string const & arg)
 {
-	lyxerr << class_name << "::string2params(" << data << ")\n"
-	       << "Expected arg " << arg_id << "to be \"" << arg << '"'
+	lyxerr << '\n' << class_name << "::string2params(" << data << ")\n"
+	       << "Expected arg " << arg_id << " to be \"" << arg << "\"\n"
 	       << std::endl;
 }
