@@ -74,7 +74,7 @@ public:
 	void dispatch(LCursor & cur, FuncRequest & cmd);
 	/// do we want to handle this event?
 	virtual bool getStatus(LCursor & cur, FuncRequest const & cmd,
-		FuncStatus & status);
+		FuncStatus & status) const;
 
 	/// cursor enters
 	virtual void edit(LCursor & cur, bool left);

@@ -361,6 +361,13 @@ void InsetCollapsable::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 }
 
 
+bool InsetCollapsable::getStatus(LCursor & cur, FuncRequest const & cmd,
+	FuncStatus & flag) const
+{
+	return inset.getStatus(cur, cmd, flag);
+}
+
+
 void InsetCollapsable::validate(LaTeXFeatures & features) const
 {
 	inset.validate(features);

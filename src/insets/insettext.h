@@ -126,6 +126,8 @@ public:
 	}
 	///
 	LyXText * getText(int) const;
+	///
+	bool getStatus(LCursor & cur, FuncRequest const & cmd, FuncStatus &) const;
 
 	/// mark as erased for change tracking
 	void markErased() { clear(true); };

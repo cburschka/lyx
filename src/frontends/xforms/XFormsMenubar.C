@@ -269,7 +269,7 @@ int XFormsMenubar::create_submenu(Window win, XFormsView * view,
 				label += "%B";
 			if (flag.onoff(false))
 				label += "%b";
-			if (flag.disabled())
+			if (!flag.enabled())
 				label += "%i";
 
 			// Add the shortcut

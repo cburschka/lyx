@@ -87,10 +87,15 @@ public:
 	void setLayout(LCursor & cur, std::string const & layout);
 
 	/// Increase or decrease the nesting depth of the selected paragraph(s)
-	void changeDepth(LCursor & cur, bv_funcs::DEPTH_CHANGE type);
+	/// what type of depth change to make
+	enum DEPTH_CHANGE {
+		INC_DEPTH,
+		DEC_DEPTH
+	};
+	void changeDepth(LCursor & cur, DEPTH_CHANGE type);
 
 	/// Returns whether something would be changed by changeDepth
-	bool changeDepthAllowed(LCursor & cur, bv_funcs::DEPTH_CHANGE type);
+	bool changeDepthAllowed(LCursor & cur, DEPTH_CHANGE type) const;
 
 	/// Set font over selection paragraphs and rebreak.
 	void setFont(LCursor & cur, LyXFont const &, bool toggleall = false);
@@ -129,7 +134,8 @@ public:
 	/// try to handle that request
 	void dispatch(LCursor & cur, FuncRequest & cmd);
 	/// do we want to handle this event?
-	bool getStatus(LCursor & cur, FuncRequest const & cmd, FuncStatus & status);
+	bool getStatus(LCursor & cur, FuncRequest const & cmd,
+		FuncStatus & status) const;
 
 	/// access to out BufferView. This should go...
 	BufferView * bv();

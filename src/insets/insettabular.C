@@ -703,6 +703,79 @@ void InsetTabular::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 }
 
 
+bool InsetTabular::getStatus(LCursor & cur, FuncRequest const & cmd,
+	FuncStatus & flag) const
+{
+	switch (cmd.action) {
+	case LFUN_TABULAR_FEATURE:
+#if 0
+		if (cur.inMathed()) {
+			// FIXME: check temporarily disabled
+			// valign code
+			char align = mathcursor::valign();
+			if (align == '\0') {
+				enable = false;
+				break;
+			}
+			if (cmd.argument.empty()) {
+				flag.clear();
+				break;
+			}
+			if (!contains("tcb", cmd.argument[0])) {
+				enable = false;
+				break;
+			}
+			flag.setOnOff(cmd.argument[0] == align);
+		} else {
+			enable = false;
+
+			char const align = mathcursor::halign();
+			if (align == '\0') {
+				enable = false;
+				break;
+			}
+			if (cmd.argument.empty()) {
+				flag.clear();
+				break;
+			}
+			if (!contains("lcr", cmd.argument[0])) {
+				enable = false;
+				break;
+			}
+			flag.setOnOff(cmd.argument[0] == align);
+
+			disable = !mathcursor::halign();
+			break;
+		}
+
+			FuncStatus ret;
+			//ret.disabled(true);
+			InsetTabular * tab = static_cast<InsetTabular *>
+				(cur.innerInsetOfType(InsetBase::TABULAR_CODE));
+			if (tab) {
+				ret = tab->getStatus(cmd.argument);
+				flag |= ret;
+				enable = true;
+			} else {
+				enable = false;
+			}
+		} else {
+			static InsetTabular inset(*buf, 1, 1);
+			enable = false;
+			FuncStatus ret = inset.getStatus(cmd.argument);
+			if (ret.onoff(true) || ret.onoff(false))
+				flag.setOnOff(false);
+		}
+#endif
+		return true;
+
+	default:
+		// we try to handle this event in the insets dispatch function.
+		return cell(cur.idx()).getStatus(cur, cmd, flag);
+	}
+}
+
+
 int InsetTabular::latex(Buffer const & buf, ostream & os,
 			OutputParams const & runparams) const
 {
@@ -1382,7 +1455,7 @@ FuncStatus InsetTabular::getStatus(BufferView & bv,
 		break;
 
 	case LyXTabular::ALIGN_BLOCK:
-		status.disabled(tabular.getPWidth(actcell).zero());
+		status.enabled(!tabular.getPWidth(actcell).zero());
 		status.setOnOff(tabular.getAlignment(actcell, flag) == LYX_ALIGN_BLOCK);
 		break;
 
@@ -1457,7 +1530,7 @@ FuncStatus InsetTabular::getStatus(BufferView & bv,
 
 	default:
 		status.clear();
-		status.disabled(true);
+		status.enabled(false);
 		break;
 	}
 	return status;
@@ -1817,3 +1890,4 @@ string const InsetTabularMailer::params2string(InsetTabular const & inset)
 	data << "\\end_inset\n";
 	return data.str();
 }
+	

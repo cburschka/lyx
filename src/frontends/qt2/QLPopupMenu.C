@@ -93,8 +93,7 @@ void QLPopupMenu::populate(Menu * menu)
 			insertSeparator();
 		} else if (m->kind() == MenuItem::Submenu) {
 			pair<int, QLPopupMenu *> res = createMenu(this, &(*m), owner_);
-			setItemEnabled(res.first,
-				       !m->status().disabled());
+			setItemEnabled(res.first, m->status().enabled());
 			res.second->populate(m->submenu());
 		} else {
 			FuncStatus const status = m->status();
@@ -104,7 +103,7 @@ void QLPopupMenu::populate(Menu * menu)
 			int const index = distance(funcs_.begin(), fit);
 
 			insertItem(toqstr(getLabel(*m)), index);
-			setItemEnabled(index, !status.disabled());
+			setItemEnabled(index, status.enabled());
 			setItemChecked(index, status.onoff(true));
 		}
 	}

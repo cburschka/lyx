@@ -82,9 +82,7 @@
 #include "support/std_sstream.h"
 #include "support/os.h"
 
-using bv_funcs::DEC_DEPTH;
 using bv_funcs::freefont2string;
-using bv_funcs::INC_DEPTH;
 
 using lyx::support::AddName;
 using lyx::support::AddPath;
@@ -257,13 +255,14 @@ void LyXFunc::processKeySym(LyXKeySymPtr keysym, key_modifier::state state)
 
 FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 {
+	//lyxerr << "LyXFunc::getStatus: cmd: " << cmd << endl;
 	FuncStatus flag;
 	Buffer * buf = owner->buffer();
 	LCursor & cur = view()->cursor();
 
 	if (cmd.action == LFUN_NOACTION) {
 		setStatusMessage(N_("Nothing to do"));
-		flag.disabled(true);
+		flag.enabled(false);
 		return flag;
 	}
 
@@ -273,7 +272,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	case LFUN_THESAURUS_ENTRY:
 #endif
 		flag.unknown(true);
-		flag.disabled(true);
+		flag.enabled(false);
 		break;
 	default:
 		flag |= lyx_gui::getStatus(cmd);
@@ -298,394 +297,22 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 						   LyXAction::ReadOnly)) {
 				// no
 				setStatusMessage(N_("Document is read-only"));
-				flag.disabled(true);
+				flag.enabled(false);
 			}
 		} else {
 			// no
 			setStatusMessage(N_("Command not allowed with"
 					    "out any document open"));
-			flag.disabled(true);
+			flag.enabled(false);
 			return flag;
 		}
 	}
 
 	// I would really like to avoid having this switch and rather try to
 	// encode this in the function itself.
-	bool disable = false;
-	switch (cmd.action) {
-	case LFUN_EXPORT:
-		disable = cmd.argument != "custom"
-			&& !Exporter::IsExportable(*buf, cmd.argument);
-		break;
-	case LFUN_UNDO:
-		disable = buf->undostack().empty();
-		break;
-	case LFUN_REDO:
-		disable = buf->redostack().empty();
-		break;
-	case LFUN_CUT:
-	case LFUN_COPY:
-		disable = !cur.selection();
-		break;
-
-	case LFUN_RUNCHKTEX:
-		disable = !buf->isLatex() || lyxrc.chktex_command == "none";
-		break;
-
-	case LFUN_BUILDPROG:
-		disable = !Exporter::IsExportable(*buf, "program");
-		break;
-
-	case LFUN_LAYOUT_TABULAR:
-		disable = !cur.innerInsetOfType(InsetBase::TABULAR_CODE);
-		break;
-
-	case LFUN_DEPTH_MIN:
-		disable = !changeDepthAllowed(cur, view()->getLyXText(), DEC_DEPTH);
-		break;
-
-	case LFUN_DEPTH_PLUS:
-		disable = !changeDepthAllowed(cur, view()->getLyXText(), INC_DEPTH);
-		break;
-
-	case LFUN_LAYOUT:
-	case LFUN_LAYOUT_PARAGRAPH:
-		disable = cur.inset().forceDefaultParagraphs(&cur.inset());
-		break;
-
-	case LFUN_INSET_OPTARG:
-		disable = cur.inMathed()
-			|| cur.paragraph().layout()->optionalargs == 0;
-		break;
-
-	case LFUN_TABULAR_FEATURE:
-#if 0
-		if (cur.inMathed()) {
-			// FIXME: check temporarily disabled
-			// valign code
-			char align = mathcursor::valign();
-			if (align == '\0') {
-				disable = true;
-				break;
-			}
-			if (cmd.argument.empty()) {
-				flag.clear();
-				break;
-			}
-			if (!contains("tcb", cmd.argument[0])) {
-				disable = true;
-				break;
-			}
-			flag.setOnOff(cmd.argument[0] == align);
-		} else {
-			disable = true;
-
-			char const align = mathcursor::halign();
-			if (align == '\0') {
-				disable = true;
-				break;
-			}
-			if (cmd.argument.empty()) {
-				flag.clear();
-				break;
-			}
-			if (!contains("lcr", cmd.argument[0])) {
-				disable = true;
-				break;
-			}
-			flag.setOnOff(cmd.argument[0] == align);
-
-			disable = !mathcursor::halign();
-			break;
-		}
-
-		if (!cur.empty() && cur.inset().asUpdatableInset()) {
-			FuncStatus ret;
-			//ret.disabled(true);
-			InsetTabular * tab = static_cast<InsetTabular *>
-				(cur.innerInsetOfType(InsetBase::TABULAR_CODE));
-			if (tab) {
-				ret = tab->getStatus(cmd.argument);
-				flag |= ret;
-				disable = false;
-			} else {
-				disable = true;
-			}
-		} else {
-			static InsetTabular inset(*buf, 1, 1);
-			disable = true;
-			FuncStatus ret = inset.getStatus(cmd.argument);
-			if (ret.onoff(true) || ret.onoff(false))
-				flag.setOnOff(false);
-		}
-#endif
-		break;
-
-	case LFUN_VC_REGISTER:
-		disable = buf->lyxvc().inUse();
-		break;
-	case LFUN_VC_CHECKIN:
-		disable = !buf->lyxvc().inUse() || buf->isReadonly();
-		break;
-	case LFUN_VC_CHECKOUT:
-		disable = !buf->lyxvc().inUse() || !buf->isReadonly();
-		break;
-	case LFUN_VC_REVERT:
-	case LFUN_VC_UNDO:
-		disable = !buf->lyxvc().inUse();
-		break;
-	case LFUN_MENURELOAD:
-		disable = buf->isUnnamed() || buf->isClean();
-		break;
-	case LFUN_BOOKMARK_GOTO:
-		disable = !view()->
-			isSavedPosition(strToUnsignedInt(cmd.argument));
-		break;
-
-	case LFUN_MERGE_CHANGES:
-	case LFUN_ACCEPT_CHANGE:
-	case LFUN_REJECT_CHANGE:
-	case LFUN_ACCEPT_ALL_CHANGES:
-	case LFUN_REJECT_ALL_CHANGES:
-		disable = !buf->params().tracking_changes;
-		break;
-
-	case LFUN_INSET_SETTINGS: {
-		disable = true;
-		UpdatableInset * inset = cur.inset().asUpdatableInset();
-		if (!inset)
-			break;
-
-		// jump back to owner if an InsetText, so
-		// we get back to the InsetTabular or whatever
-		if (inset->lyxCode() == InsetOld::TEXT_CODE)
-			inset = inset->owner();
-
-		InsetOld::Code code = inset->lyxCode();
-		switch (code) {
-			case InsetOld::TABULAR_CODE:
-				disable = cmd.argument != "tabular";
-				break;
-			case InsetOld::ERT_CODE:
-				disable = cmd.argument != "ert";
-				break;
-			case InsetOld::FLOAT_CODE:
-				disable = cmd.argument != "float";
-				break;
-			case InsetOld::WRAP_CODE:
-				disable = cmd.argument != "wrap";
-				break;
-			case InsetOld::NOTE_CODE:
-				disable = cmd.argument != "note";
-				break;
-			case InsetOld::BRANCH_CODE:
-				disable = cmd.argument != "branch";
-				break;
-			case InsetOld::BOX_CODE:
-				disable = cmd.argument != "box";
-				break;
-			default:
-				break;
-		}
-		break;
-	}
-
-	case LFUN_MATH_MUTATE:
-		if (cur.inMathed())
-			//flag.setOnOff(mathcursor::formula()->hullType() == cmd.argument);
-			flag.setOnOff(false);
-		else
-			disable = true;
-		break;
-
-	// we just need to be in math mode to enable that
-	case LFUN_MATH_SIZE:
-	case LFUN_MATH_SPACE:
-	case LFUN_MATH_LIMITS:
-	case LFUN_MATH_NONUMBER:
-	case LFUN_MATH_NUMBER:
-	case LFUN_MATH_EXTERN:
-		disable = cur.inTexted();
-		break;
-
-	case LFUN_DIALOG_SHOW: {
-		string const name = cmd.getArg(0);
-		if (!buf)
-			disable = !(name == "aboutlyx" ||
-				    name == "file" ||
-				    name == "preferences" ||
-				    name == "texinfo");
-		else if (name == "print")
-			disable = !Exporter::IsExportable(*buf, "dvi") ||
-				lyxrc.print_command == "none";
-		else if (name == "character")
-			disable = cur.inset().lyxCode() == InsetOld::ERT_CODE;
-		else if (name == "vclog")
-			disable = !buf->lyxvc().inUse();
-		else if (name == "latexlog")
-			disable = !IsFileReadable(buf->getLogName().second);
-		break;
-	}
-
-	default:
-		break;
-	}
-
-	// the functions which insert insets
-	InsetOld::Code code = InsetOld::NO_CODE;
-	switch (cmd.action) {
-	case LFUN_DIALOG_SHOW_NEW_INSET:
-		if (cmd.argument == "bibitem")
-			code = InsetOld::BIBITEM_CODE;
-		else if (cmd.argument == "bibtex")
-			code = InsetOld::BIBTEX_CODE;
-		else if (cmd.argument == "box")
-			code = InsetOld::BOX_CODE;
-		else if (cmd.argument == "branch")
-			code = InsetOld::BRANCH_CODE;
-		else if (cmd.argument == "citation")
-			code = InsetOld::CITE_CODE;
-		else if (cmd.argument == "ert")
-			code = InsetOld::ERT_CODE;
-		else if (cmd.argument == "external")
-			code = InsetOld::EXTERNAL_CODE;
-		else if (cmd.argument == "float")
-			code = InsetOld::FLOAT_CODE;
-		else if (cmd.argument == "graphics")
-			code = InsetOld::GRAPHICS_CODE;
-		else if (cmd.argument == "include")
-			code = InsetOld::INCLUDE_CODE;
-		else if (cmd.argument == "index")
-			code = InsetOld::INDEX_CODE;
-		else if (cmd.argument == "label")
-			code = InsetOld::LABEL_CODE;
-		else if (cmd.argument == "note")
-			code = InsetOld::NOTE_CODE;
-		else if (cmd.argument == "ref")
-			code = InsetOld::REF_CODE;
-		else if (cmd.argument == "toc")
-			code = InsetOld::TOC_CODE;
-		else if (cmd.argument == "url")
-			code = InsetOld::URL_CODE;
-		else if (cmd.argument == "vspace")
-			code = InsetOld::VSPACE_CODE;
-		else if (cmd.argument == "wrap")
-			code = InsetOld::WRAP_CODE;
-		break;
-
-	case LFUN_INSET_ERT:
-		code = InsetOld::ERT_CODE;
-		break;
-	case LFUN_INSET_FOOTNOTE:
-		code = InsetOld::FOOT_CODE;
-		break;
-	case LFUN_TABULAR_INSERT:
-		code = InsetOld::TABULAR_CODE;
-		break;
-	case LFUN_INSET_MARGINAL:
-		code = InsetOld::MARGIN_CODE;
-		break;
-	case LFUN_INSET_FLOAT:
-	case LFUN_INSET_WIDE_FLOAT:
-		code = InsetOld::FLOAT_CODE;
-		break;
-	case LFUN_INSET_WRAP:
-		code = InsetOld::WRAP_CODE;
-		break;
-	case LFUN_FLOAT_LIST:
-		code = InsetOld::FLOAT_LIST_CODE;
-		break;
-#if 0
-	case LFUN_INSET_LIST:
-		code = InsetOld::LIST_CODE;
-		break;
-	case LFUN_INSET_THEOREM:
-		code = InsetOld::THEOREM_CODE;
-		break;
-#endif
-	case LFUN_INSET_CAPTION:
-		code = InsetOld::CAPTION_CODE;
-		break;
-	case LFUN_INSERT_NOTE:
-		code = InsetOld::NOTE_CODE;
-		break;
-	case LFUN_INSERT_CHARSTYLE:
-		code = InsetOld::CHARSTYLE_CODE;
-		if (buf->params().getLyXTextClass().charstyles().empty())
-			disable = true;
-		break;
-	case LFUN_INSERT_BOX:
-		code = InsetOld::BOX_CODE;
-		break;
-	case LFUN_INSERT_BRANCH:
-		code = InsetOld::BRANCH_CODE;
-		if (buf->params().branchlist().empty())
-			disable = true;
-		break;
-	case LFUN_INSERT_LABEL:
-		code = InsetOld::LABEL_CODE;
-		break;
-	case LFUN_INSET_OPTARG:
-		code = InsetOld::OPTARG_CODE;
-		break;
-	case LFUN_ENVIRONMENT_INSERT:
-		code = InsetOld::BOX_CODE;
-		break;
-	case LFUN_INDEX_INSERT:
-		code = InsetOld::INDEX_CODE;
-		break;
-	case LFUN_INDEX_PRINT:
-		code = InsetOld::INDEX_PRINT_CODE;
-		break;
-	case LFUN_TOC_INSERT:
-		code = InsetOld::TOC_CODE;
-		break;
-	case LFUN_HTMLURL:
-	case LFUN_URL:
-		code = InsetOld::URL_CODE;
-		break;
-	case LFUN_QUOTE:
-		// always allow this, since we will inset a raw quote
-		// if an inset is not allowed.
-		break;
-	case LFUN_HYPHENATION:
-	case LFUN_LIGATURE_BREAK:
-	case LFUN_HFILL:
-	case LFUN_MENU_SEPARATOR:
-	case LFUN_LDOTS:
-	case LFUN_END_OF_SENTENCE:
-		code = InsetOld::SPECIALCHAR_CODE;
-		break;
-	case LFUN_SPACE_INSERT:
-		// slight hack: we know this is allowed in math mode
-		if (cur.inTexted())
-			code = InsetOld::SPACE_CODE;
-		break;
-	case LFUN_INSET_DIALOG_SHOW: {
-		InsetBase * inset = cur.nextInset();
-		disable = !inset;
-		if (inset) {
-			code = inset->lyxCode();
-			if (!(code == InsetOld::INCLUDE_CODE
-				|| code == InsetOld::BIBTEX_CODE
-				|| code == InsetOld::FLOAT_LIST_CODE
-				|| code == InsetOld::TOC_CODE))
-				disable = true;
-		}
-		break;
-	}
-	default:
-		break;
-	}
-
-	if (code != InsetOld::NO_CODE
-			&& (cur.empty() || !cur.inset().insetAllowed(code)))
-		disable = true;
-
-	if (disable)
-		flag.disabled(true);
-
-	// A few general toggles
+	// -- And I'd rather let an inset decide which LFUNs it is willing
+	// to handle (Andre')
+	bool enable = true;
 	switch (cmd.action) {
 	case LFUN_TOOLTIPS_TOGGLE:
 		flag.setOnOff(owner->getDialogs().tooltipsEnabled());
@@ -694,88 +321,199 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	case LFUN_READ_ONLY_TOGGLE:
 		flag.setOnOff(buf->isReadonly());
 		break;
-	case LFUN_APPENDIX:
-		flag.setOnOff(cur.inTexted()
-			&& cur.paragraph().params().startOfAppendix());
-		break;
+
 	case LFUN_SWITCHBUFFER:
 		// toggle on the current buffer, but do not toggle off
 		// the other ones (is that a good idea?)
 		if (cmd.argument == buf->fileName())
 			flag.setOnOff(true);
 		break;
+
 	case LFUN_TRACK_CHANGES:
 		flag.setOnOff(buf->params().tracking_changes);
 		break;
-	default:
+
+	case LFUN_EXPORT:
+		enable = cmd.argument == "custom"
+			|| Exporter::IsExportable(*buf, cmd.argument);
+		break;
+	case LFUN_UNDO:
+		enable = !buf->undostack().empty();
+		break;
+	case LFUN_REDO:
+		enable = !buf->redostack().empty();
+		break;
+	case LFUN_CUT:
+	case LFUN_COPY:
+		enable = cur.selection();
+		break;
+
+	case LFUN_RUNCHKTEX:
+		enable = buf->isLatex() && lyxrc.chktex_command != "none";
+		break;
+
+	case LFUN_BUILDPROG:
+		enable = Exporter::IsExportable(*buf, "program");
+		break;
+
+	case LFUN_LAYOUT_TABULAR:
+		enable = cur.innerInsetOfType(InsetBase::TABULAR_CODE);
+		break;
+
+	case LFUN_LAYOUT:
+	case LFUN_LAYOUT_PARAGRAPH:
+		enable = !cur.inset().forceDefaultParagraphs(&cur.inset());
+		break;
+
+	case LFUN_VC_REGISTER:
+		enable = !buf->lyxvc().inUse();
+		break;
+	case LFUN_VC_CHECKIN:
+		enable = buf->lyxvc().inUse() && !buf->isReadonly();
+		break;
+	case LFUN_VC_CHECKOUT:
+		enable = buf->lyxvc().inUse() && buf->isReadonly();
+		break;
+	case LFUN_VC_REVERT:
+	case LFUN_VC_UNDO:
+		enable = buf->lyxvc().inUse();
+		break;
+	case LFUN_MENURELOAD:
+		enable = !buf->isUnnamed() && !buf->isClean();
+		break;
+	case LFUN_BOOKMARK_GOTO:
+		enable = view()->isSavedPosition(strToUnsignedInt(cmd.argument));
+		break;
+
+	case LFUN_MERGE_CHANGES:
+	case LFUN_ACCEPT_CHANGE:
+	case LFUN_REJECT_CHANGE:
+	case LFUN_ACCEPT_ALL_CHANGES:
+	case LFUN_REJECT_ALL_CHANGES:
+		enable = buf && buf->params().tracking_changes;
+		break;
+
+	case LFUN_INSET_SETTINGS: {
+		enable = false;
+		if (!cur.size())
+			break;
+		UpdatableInset * inset = cur.inset().asUpdatableInset();
+		lyxerr << "inset: " << inset << endl;
+		if (!inset)
+			break;
+
+		// jump back to owner if an InsetText, so
+		// we get back to the InsetTabular or whatever
+		if (inset->lyxCode() == InsetOld::TEXT_CODE)
+			inset = inset->owner();
+		lyxerr << "inset 2: " << inset << endl;
+		if (!inset)
+			break;
+
+		InsetOld::Code code = inset->lyxCode();
+		switch (code) {
+			case InsetOld::TABULAR_CODE:
+				enable = cmd.argument == "tabular";
+				break;
+			case InsetOld::ERT_CODE:
+				enable = cmd.argument == "ert";
+				break;
+			case InsetOld::FLOAT_CODE:
+				enable = cmd.argument == "float";
+				break;
+			case InsetOld::WRAP_CODE:
+				enable = cmd.argument == "wrap";
+				break;
+			case InsetOld::NOTE_CODE:
+				enable = cmd.argument == "note";
+				break;
+			case InsetOld::BRANCH_CODE:
+				enable = cmd.argument == "branch";
+				break;
+			case InsetOld::BOX_CODE:
+				enable = cmd.argument == "box";
+				break;
+			default:
+				break;
+		}
 		break;
 	}
 
-#ifdef LOCK
-	// the font related toggles
-	if (cur.inTexted()) {
-		LyXFont const & font = cur.text()->real_current_font;
-		switch (cmd.action) {
-		case LFUN_EMPH:
-			flag.setOnOff(font.emph() == LyXFont::ON);
-			break;
-		case LFUN_NOUN:
-			flag.setOnOff(font.noun() == LyXFont::ON);
-			break;
-		case LFUN_BOLD:
-			flag.setOnOff(font.series() == LyXFont::BOLD_SERIES);
-			break;
-		case LFUN_SANS:
-			flag.setOnOff(font.family() == LyXFont::SANS_FAMILY);
-			break;
-		case LFUN_ROMAN:
-			flag.setOnOff(font.family() == LyXFont::ROMAN_FAMILY);
-			break;
-		case LFUN_CODE:
-			flag.setOnOff(font.family() == LyXFont::TYPEWRITER_FAMILY);
-			break;
-		default:
-			break;
-		}
-	} else {
-		string tc = mathcursor::getLastCode();
-		switch (cmd.action) {
-		case LFUN_BOLD:
-			flag.setOnOff(tc == "mathbf");
-			break;
-		case LFUN_SANS:
-			flag.setOnOff(tc == "mathsf");
-			break;
-		case LFUN_EMPH:
-			flag.setOnOff(tc == "mathcal");
-			break;
-		case LFUN_ROMAN:
-			flag.setOnOff(tc == "mathrm");
-			break;
-		case LFUN_CODE:
-			flag.setOnOff(tc == "mathtt");
-			break;
-		case LFUN_NOUN:
-			flag.setOnOff(tc == "mathbb");
-			break;
-		case LFUN_DEFAULT:
-			flag.setOnOff(tc == "mathnormal");
-			break;
-		default:
-			break;
-		}
-	}
-#endif
-
-	// this one is difficult to get right. As a half-baked
-	// solution, we consider only the first action of the sequence
-	if (cmd.action == LFUN_SEQUENCE) {
-		// argument contains ';'-terminated commands
-#warning LyXAction arguments not handled here.
-		flag = getStatus(FuncRequest(
-			lyxaction.lookupFunc(token(cmd.argument, ';', 0))));
+	case LFUN_DIALOG_SHOW: {
+		string const name = cmd.getArg(0);
+		if (!buf)
+			enable = name == "aboutlyx"
+				|| name == "file"
+				|| name == "forks"
+				|| name == "preferences"
+				|| name == "texinfo";
+		else if (name == "print")
+			enable = Exporter::IsExportable(*buf, "dvi")
+				&& lyxrc.print_command != "none";
+		else if (name == "character")
+			enable = cur.inset().lyxCode() != InsetOld::ERT_CODE;
+		else if (name == "vclog")
+			enable = buf->lyxvc().inUse();
+		else if (name == "latexlog")
+			enable = IsFileReadable(buf->getLogName().second);
+		break;
 	}
 
+	case LFUN_MENUNEW:
+	case LFUN_MENUNEWTMPLT:
+	case LFUN_WORDFINDFORWARD:
+	case LFUN_WORDFINDBACKWARD:
+	case LFUN_PREFIX:
+	case LFUN_EXEC_COMMAND:
+	case LFUN_CANCEL:
+	case LFUN_META_FAKE:
+	case LFUN_CLOSEBUFFER:
+	case LFUN_MENUWRITE:
+	case LFUN_WRITEAS:
+	case LFUN_UPDATE:
+	case LFUN_PREVIEW:
+	case LFUN_IMPORT:
+	case LFUN_QUIT:
+	case LFUN_TOCVIEW:
+	case LFUN_AUTOSAVE:
+	case LFUN_RECONFIGURE:
+	case LFUN_HELP_OPEN:
+	case LFUN_FILE_NEW:
+	case LFUN_FILE_OPEN:
+	case LFUN_DROP_LAYOUTS_CHOICE:
+	case LFUN_MENU_OPEN_BY_NAME:
+	case LFUN_GETNAME:
+	case LFUN_NOTIFY:
+	case LFUN_GOTOFILEROW:
+	case LFUN_GOTO_PARAGRAPH:
+	case LFUN_DIALOG_SHOW_NEW_INSET:
+	case LFUN_DIALOG_SHOW_NEXT_INSET:
+	case LFUN_DIALOG_UPDATE:
+	case LFUN_DIALOG_HIDE:
+	case LFUN_DIALOG_DISCONNECT_INSET:
+	case LFUN_CHILDOPEN:
+	case LFUN_TOGGLECURSORFOLLOW:
+	case LFUN_KMAP_OFF:
+	case LFUN_KMAP_PRIM:
+	case LFUN_KMAP_SEC:
+	case LFUN_KMAP_TOGGLE:
+	case LFUN_REPEAT:
+	case LFUN_SEQUENCE:
+	case LFUN_SAVEPREFERENCES:
+	case LFUN_SCREEN_FONT_UPDATE:
+	case LFUN_SET_COLOR:
+	case LFUN_MESSAGE:
+	case LFUN_FORKS_KILL:
+	case LFUN_EXTERNAL_EDIT:
+		// these are handled in our dispatch()
+		break;
+
+	default:
+		cur.getStatus(cmd, flag);
+		return flag;
+	}
+
+	flag.enabled(enable);
 	return flag;
 }
 
@@ -819,7 +557,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd, bool verbose)
 	selection_possible = false;
 
 	// We cannot use this function here
-	if (getStatus(cmd).disabled()) {
+	if (!getStatus(cmd).enabled()) {
 		lyxerr[Debug::ACTION] << "LyXFunc::dispatch: "
 		       << lyxaction.getActionName(action)
 		       << " [" << action << "] is disabled at this location"
@@ -1378,7 +1116,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd, bool verbose)
 		view()->update();
 		view()->cursor().updatePos();
 		// if we executed a mutating lfun, mark the buffer as dirty
-		if (!getStatus(cmd).disabled()
+		if (getStatus(cmd).enabled()
 		    && !lyxaction.funcHasFlag(cmd.action, LyXAction::NoBuffer)
 		    && !lyxaction.funcHasFlag(cmd.action, LyXAction::ReadOnly))
 			view()->buffer()->markDirty();

@@ -330,16 +330,15 @@ void getSelectionSpan(LCursor & cur, LyXText & text,
 }
 
 
-bool changeDepthAllowed(bv_funcs::DEPTH_CHANGE type,
-			Paragraph const & par,
-			int max_depth)
+bool changeDepthAllowed(LyXText::DEPTH_CHANGE type,
+	Paragraph const & par, int max_depth)
 {
 	if (par.layout()->labeltype == LABEL_BIBLIO)
 		return false;
 	int const depth = par.params().depth();
-	if (type == bv_funcs::INC_DEPTH && depth < max_depth)
+	if (type == LyXText::INC_DEPTH && depth < max_depth)
 		return true;
-	if (type == bv_funcs::DEC_DEPTH && depth > 0)
+	if (type == LyXText::DEC_DEPTH && depth > 0)
 		return true;
 	return false;
 }
@@ -348,11 +347,11 @@ bool changeDepthAllowed(bv_funcs::DEPTH_CHANGE type,
 }
 
 
-bool LyXText::changeDepthAllowed(LCursor & cur, bv_funcs::DEPTH_CHANGE type)
+bool LyXText::changeDepthAllowed(LCursor & cur, DEPTH_CHANGE type) const
 {
 	BOOST_ASSERT(this == cur.text());
 	ParagraphList::iterator beg, end; 
-	getSelectionSpan(cur, *this, beg, end);
+	getSelectionSpan(cur, const_cast<LyXText&>(*this), beg, end);
 	int max_depth = 0;
 	if (beg != paragraphs().begin())
 		max_depth = boost::prior(beg)->getMaxDepthAfter();
@@ -366,7 +365,7 @@ bool LyXText::changeDepthAllowed(LCursor & cur, bv_funcs::DEPTH_CHANGE type)
 }
 
 
-void LyXText::changeDepth(LCursor & cur, bv_funcs::DEPTH_CHANGE type)
+void LyXText::changeDepth(LCursor & cur, DEPTH_CHANGE type)
 {
 	BOOST_ASSERT(this == cur.text());
 	ParagraphList::iterator beg, end;
@@ -380,7 +379,7 @@ void LyXText::changeDepth(LCursor & cur, bv_funcs::DEPTH_CHANGE type)
 	for (ParagraphList::iterator pit = beg; pit != end; ++pit) {
 		if (::changeDepthAllowed(type, *pit, max_depth)) {
 			int const depth = pit->params().depth();
-			if (type == bv_funcs::INC_DEPTH)
+			if (type == INC_DEPTH)
 				pit->params().depth(depth + 1);
 			else
 				pit->params().depth(depth - 1);

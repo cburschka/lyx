@@ -70,10 +70,11 @@ void QLToolbar::update()
 
 		button->setToggleButton(true);
 		button->setOn(status.onoff(true));
-		button->setEnabled(!status.disabled());
+		button->setEnabled(status.enabled());
 	}
 
-	bool const enable = !owner_->getLyXFunc().getStatus(FuncRequest(LFUN_LAYOUT)).disabled();
+	bool const enable = owner_->getLyXFunc().
+		getStatus(FuncRequest(LFUN_LAYOUT)).enabled();
 
 	// Workaround for Qt bug where setEnabled(true) closes
 	// the popup

@@ -117,9 +117,9 @@ void XFormsToolbar::update()
 	for (; p != end; ++p) {
 		if (p->func.action == int(ToolbarBackend::LAYOUTS) && combox_) {
 			LyXFunc const & lf = owner_->getLyXFunc();
-			bool const disable =
-				lf.getStatus(FuncRequest(LFUN_LAYOUT)).disabled();
-			setEnabled(combox_, !disable);
+			bool const enable =
+				lf.getStatus(FuncRequest(LFUN_LAYOUT)).enabled();
+			setEnabled(combox_, enable);
 			continue;
 		}
 
@@ -139,14 +139,14 @@ void XFormsToolbar::update()
 			fl_set_object_color(p->icon, FL_MCOL, FL_BLUE);
 			fl_set_object_boxtype(p->icon, FL_UP_BOX);
 		}
-		if (status.disabled()) {
+		if (status.enabled()) {
+			fl_activate_object(p->icon);
+		} else {
 			// Is there a way here to specify a
 			// mask in order to show that the
 			// button is disabled? (JMarc)
 			fl_deactivate_object(p->icon);
 		}
-		else
-			fl_activate_object(p->icon);
 	}
 }
 

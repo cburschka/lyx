@@ -332,6 +332,13 @@ void InsetText::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 }
 
 
+bool InsetText::getStatus(LCursor & cur, FuncRequest const & cmd,
+	FuncStatus & status) const
+{
+	return text_.getStatus(cur, cmd, status);
+}
+
+
 int InsetText::latex(Buffer const & buf, ostream & os,
 		     OutputParams const & runparams) const
 {

@@ -160,44 +160,46 @@ Menu & Menu::add(MenuItem const & i, LyXView const * view)
 	}
 
 	switch (i.kind()) {
-	case MenuItem::Command:
-	{
+
+	case MenuItem::Command: {
 		FuncStatus status =
 			view->getLyXFunc().getStatus(i.func());
 		if (status.unknown()
-		    || (status.disabled() && i.optional()))
+		    || (!status.enabled() && i.optional()))
 			break;
 		items_.push_back(i);
 		items_.back().status(status);
 		break;
 	}
-	case MenuItem::Submenu:
-	{
+
+	case MenuItem::Submenu: {
 		if (i.submenu()) {
-			bool disabled = true;
+			bool enabled = false;
 			for (const_iterator cit = i.submenu()->begin();
 			     cit != i.submenu()->end(); ++cit) {
 				if ((cit->kind() == MenuItem::Command
 				     || cit->kind() == MenuItem::Submenu)
-				    && !cit->status().disabled()) {
-					disabled = false;
+				    && cit->status().enabled()) {
+					enabled = true;
 					break;
 				}
 			}
-			if (!disabled || !i.optional()) {
+			if (enabled || !i.optional()) {
 				items_.push_back(i);
-				items_.back().status().disabled(disabled);
+				items_.back().status().enabled(enabled);
 			}
 		}
 		else
 			items_.push_back(i);
 		break;
 	}
+
 	case MenuItem::Separator:
 		if (!items_.empty()
 		    && items_.back().kind() != MenuItem::Separator)
 			items_.push_back(i);
 		break;
+
 	default:
 		items_.push_back(i);
 	}

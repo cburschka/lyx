@@ -17,6 +17,8 @@
 
 #include "lyxtext.h"
 
+#include "FloatList.h"
+#include "FuncStatus.h"
 #include "buffer.h"
 #include "bufferparams.h"
 #include "BufferView.h"
@@ -24,7 +26,6 @@
 #include "debug.h"
 #include "dispatchresult.h"
 #include "factory.h"
-#include "FloatList.h"
 #include "funcrequest.h"
 #include "gettext.h"
 #include "intl.h"
@@ -375,6 +376,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 	lyxerr[Debug::ACTION] << "LyXText::dispatch: cmd: " << cmd << endl;
 	//lyxerr << "*** LyXText::dispatch: cmd: " << cmd << endl;
 
+	BOOST_ASSERT(cur.text() == this);
 	BufferView * bv = &cur.bv();
 	CursorSlice sl = cur.top();
 
@@ -1270,12 +1272,12 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		break;
 
 	case LFUN_DEPTH_MIN:
-		changeDepth(cur, bv_funcs::DEC_DEPTH);
+		changeDepth(cur, DEC_DEPTH);
 		cur.update();
 		break;
 
 	case LFUN_DEPTH_PLUS:
-		changeDepth(cur, bv_funcs::INC_DEPTH);
+		changeDepth(cur, INC_DEPTH);
 		cur.update();
 		break;
 
@@ -1568,7 +1570,347 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 }
 
 
-bool LyXText::getStatus(LCursor &, FuncRequest const &, FuncStatus &)
+bool LyXText::getStatus(LCursor & cur, FuncRequest const & cmd,
+	FuncStatus & flag) const
 {
-	return false;
+	BOOST_ASSERT(cur.text() == this);
+	LyXFont const & font = real_current_font;
+	bool enable = true;
+
+	switch (cmd.action) {
+
+	case LFUN_DEPTH_MIN:
+		enable = changeDepthAllowed(cur, DEC_DEPTH);
+		break;
+
+	case LFUN_DEPTH_PLUS:
+		enable = changeDepthAllowed(cur, INC_DEPTH);
+		break;
+
+	case LFUN_INSET_OPTARG:
+		enable = cur.paragraph().layout()->optionalargs;
+		break;
+
+	case LFUN_APPENDIX:
+		flag.setOnOff(cur.paragraph().params().startOfAppendix());
+		break;
+
+#if 0
+	// the functions which insert insets
+	InsetOld::Code code = InsetOld::NO_CODE;
+	switch (cmd.action) {
+	case LFUN_DIALOG_SHOW_NEW_INSET:
+		if (cmd.argument == "bibitem")
+			code = InsetOld::BIBITEM_CODE;
+		else if (cmd.argument == "bibtex")
+			code = InsetOld::BIBTEX_CODE;
+		else if (cmd.argument == "box")
+			code = InsetOld::BOX_CODE;
+		else if (cmd.argument == "branch")
+			code = InsetOld::BRANCH_CODE;
+		else if (cmd.argument == "citation")
+			code = InsetOld::CITE_CODE;
+		else if (cmd.argument == "ert")
+			code = InsetOld::ERT_CODE;
+		else if (cmd.argument == "external")
+			code = InsetOld::EXTERNAL_CODE;
+		else if (cmd.argument == "float")
+			code = InsetOld::FLOAT_CODE;
+		else if (cmd.argument == "graphics")
+			code = InsetOld::GRAPHICS_CODE;
+		else if (cmd.argument == "include")
+			code = InsetOld::INCLUDE_CODE;
+		else if (cmd.argument == "index")
+			code = InsetOld::INDEX_CODE;
+		else if (cmd.argument == "label")
+			code = InsetOld::LABEL_CODE;
+		else if (cmd.argument == "note")
+			code = InsetOld::NOTE_CODE;
+		else if (cmd.argument == "ref")
+			code = InsetOld::REF_CODE;
+		else if (cmd.argument == "toc")
+			code = InsetOld::TOC_CODE;
+		else if (cmd.argument == "url")
+			code = InsetOld::URL_CODE;
+		else if (cmd.argument == "vspace")
+			code = InsetOld::VSPACE_CODE;
+		else if (cmd.argument == "wrap")
+			code = InsetOld::WRAP_CODE;
+		break;
+
+	case LFUN_INSET_ERT:
+		code = InsetOld::ERT_CODE;
+		break;
+	case LFUN_INSET_FOOTNOTE:
+		code = InsetOld::FOOT_CODE;
+		break;
+	case LFUN_TABULAR_INSERT:
+		code = InsetOld::TABULAR_CODE;
+		break;
+	case LFUN_INSET_MARGINAL:
+		code = InsetOld::MARGIN_CODE;
+		break;
+	case LFUN_INSET_FLOAT:
+	case LFUN_INSET_WIDE_FLOAT:
+		code = InsetOld::FLOAT_CODE;
+		break;
+	case LFUN_INSET_WRAP:
+		code = InsetOld::WRAP_CODE;
+		break;
+	case LFUN_FLOAT_LIST:
+		code = InsetOld::FLOAT_LIST_CODE;
+		break;
+#if 0
+	case LFUN_INSET_LIST:
+		code = InsetOld::LIST_CODE;
+		break;
+	case LFUN_INSET_THEOREM:
+		code = InsetOld::THEOREM_CODE;
+		break;
+#endif
+	case LFUN_INSET_CAPTION:
+		code = InsetOld::CAPTION_CODE;
+		break;
+	case LFUN_INSERT_NOTE:
+		code = InsetOld::NOTE_CODE;
+		break;
+	case LFUN_INSERT_CHARSTYLE:
+		code = InsetOld::CHARSTYLE_CODE;
+		if (buf->params().getLyXTextClass().charstyles().empty())
+			enable = false;
+		break;
+	case LFUN_INSERT_BOX:
+		code = InsetOld::BOX_CODE;
+		break;
+	case LFUN_INSERT_BRANCH:
+		code = InsetOld::BRANCH_CODE;
+		if (buf->params().branchlist().empty())
+			enable = false;
+		break;
+	case LFUN_INSERT_LABEL:
+		code = InsetOld::LABEL_CODE;
+		break;
+	case LFUN_INSET_OPTARG:
+		code = InsetOld::OPTARG_CODE;
+		break;
+	case LFUN_ENVIRONMENT_INSERT:
+		code = InsetOld::BOX_CODE;
+		break;
+	case LFUN_INDEX_INSERT:
+		code = InsetOld::INDEX_CODE;
+		break;
+	case LFUN_INDEX_PRINT:
+		code = InsetOld::INDEX_PRINT_CODE;
+		break;
+	case LFUN_TOC_INSERT:
+		code = InsetOld::TOC_CODE;
+		break;
+	case LFUN_HTMLURL:
+	case LFUN_URL:
+		code = InsetOld::URL_CODE;
+		break;
+	case LFUN_QUOTE:
+		// always allow this, since we will inset a raw quote
+		// if an inset is not allowed.
+		break;
+	case LFUN_HYPHENATION:
+	case LFUN_LIGATURE_BREAK:
+	case LFUN_HFILL:
+	case LFUN_MENU_SEPARATOR:
+	case LFUN_LDOTS:
+	case LFUN_END_OF_SENTENCE:
+		code = InsetOld::SPECIALCHAR_CODE;
+		break;
+	case LFUN_SPACE_INSERT:
+		// slight hack: we know this is allowed in math mode
+		if (cur.inTexted())
+			code = InsetOld::SPACE_CODE;
+		break;
+	case LFUN_INSET_DIALOG_SHOW: {
+		InsetBase * inset = cur.nextInset();
+		enable = inset;
+		if (inset) {
+			code = inset->lyxCode();
+			if (!(code == InsetOld::INCLUDE_CODE
+				|| code == InsetOld::BIBTEX_CODE
+				|| code == InsetOld::FLOAT_LIST_CODE
+				|| code == InsetOld::TOC_CODE))
+				enable = false;
+		}
+		break;
+	}
+	default:
+		break;
+	}
+
+	if (code != InsetOld::NO_CODE
+			&& (cur.empty() || !cur.inset().insetAllowed(code)))
+		enable = false;
+
+#endif
+
+	case LFUN_DIALOG_SHOW_NEW_INSET:
+	case LFUN_INSET_ERT:
+	case LFUN_INSERT_BOX:
+	case LFUN_INSERT_BRANCH:
+	case LFUN_ENVIRONMENT_INSERT:
+	case LFUN_INDEX_INSERT:
+	case LFUN_INDEX_PRINT:
+	case LFUN_TOC_INSERT:
+	case LFUN_HTMLURL:
+	case LFUN_URL:
+	case LFUN_QUOTE:
+	case LFUN_HYPHENATION:
+	case LFUN_LIGATURE_BREAK:
+	case LFUN_HFILL:
+	case LFUN_MENU_SEPARATOR:
+	case LFUN_LDOTS:
+	case LFUN_END_OF_SENTENCE:
+	case LFUN_SPACE_INSERT:
+	case LFUN_INSET_DIALOG_SHOW: 
+		break;
+
+	case LFUN_EMPH:
+		flag.setOnOff(font.emph() == LyXFont::ON);
+		break;
+
+	case LFUN_NOUN:
+		flag.setOnOff(font.noun() == LyXFont::ON);
+		break;
+
+	case LFUN_BOLD:
+		flag.setOnOff(font.series() == LyXFont::BOLD_SERIES);
+		break;
+
+	case LFUN_SANS:
+		flag.setOnOff(font.family() == LyXFont::SANS_FAMILY);
+		break;
+
+	case LFUN_ROMAN:
+		flag.setOnOff(font.family() == LyXFont::ROMAN_FAMILY);
+		break;
+
+	case LFUN_CODE:
+		flag.setOnOff(font.family() == LyXFont::TYPEWRITER_FAMILY);
+		break;
+
+	case LFUN_DELETE_WORD_FORWARD:
+	case LFUN_DELETE_WORD_BACKWARD:
+	case LFUN_DELETE_LINE_FORWARD:
+	case LFUN_WORDRIGHT:
+	case LFUN_WORDLEFT:
+	case LFUN_ENDBUF:
+	case LFUN_RIGHT:
+	case LFUN_RIGHTSEL:
+	case LFUN_LEFT:
+	case LFUN_LEFTSEL:
+	case LFUN_UP:
+	case LFUN_UPSEL:
+	case LFUN_DOWN:
+	case LFUN_DOWNSEL:
+	case LFUN_UP_PARAGRAPHSEL:
+	case LFUN_DOWN_PARAGRAPHSEL:
+	case LFUN_PRIORSEL:
+	case LFUN_NEXTSEL:
+	case LFUN_HOMESEL:
+	case LFUN_ENDSEL:
+	case LFUN_WORDRIGHTSEL:
+	case LFUN_WORDLEFTSEL:
+	case LFUN_WORDSEL:
+	case LFUN_UP_PARAGRAPH:
+	case LFUN_DOWN_PARAGRAPH:
+	case LFUN_PRIOR:
+	case LFUN_NEXT:
+	case LFUN_HOME:
+	case LFUN_END:
+	case LFUN_BREAKLINE:
+	case LFUN_DELETE:
+	case LFUN_DELETE_SKIP:
+	case LFUN_BACKSPACE:
+	case LFUN_BACKSPACE_SKIP:
+	case LFUN_BREAKPARAGRAPH:
+	case LFUN_BREAKPARAGRAPHKEEPLAYOUT:
+	case LFUN_BREAKPARAGRAPH_SKIP:
+	case LFUN_PARAGRAPH_SPACING:
+	case LFUN_INSET_APPLY:
+	case LFUN_INSET_INSERT:
+	case LFUN_INSET_TOGGLE:
+	case LFUN_UPCASE_WORD:
+	case LFUN_LOWCASE_WORD:
+	case LFUN_CAPITALIZE_WORD:
+	case LFUN_TRANSPOSE_CHARS:
+	case LFUN_PASTE:
+	case LFUN_CUT:
+	case LFUN_COPY:
+	case LFUN_GETXY:
+	case LFUN_SETXY:
+	case LFUN_GETFONT:
+	case LFUN_GETLAYOUT:
+	case LFUN_LAYOUT:
+	case LFUN_PASTESELECTION:
+	case LFUN_GOTOERROR:
+	case LFUN_GOTONOTE:
+	case LFUN_REFERENCE_GOTO:
+	case LFUN_DATE_INSERT:
+	case LFUN_SELFINSERT:
+	case LFUN_INSERT_LABEL:
+	case LFUN_INSERT_NOTE:
+	case LFUN_INSERT_CHARSTYLE:
+	case LFUN_INSERT_BIBITEM:
+	case LFUN_INSET_FLOAT:
+	case LFUN_INSET_FOOTNOTE:
+	case LFUN_INSET_MARGINAL:
+	case LFUN_INSET_WIDE_FLOAT:
+	case LFUN_INSET_WRAP:
+	case LFUN_TABULAR_INSERT:
+	case LFUN_INSERT_LINE:
+	case LFUN_INSERT_PAGEBREAK:
+	case LFUN_MATH_DISPLAY:
+	case LFUN_MATH_IMPORT_SELECTION:
+	case LFUN_MATH_MODE:
+	case LFUN_MATH_MACRO:
+	case LFUN_INSERT_MATH:
+	case LFUN_INSERT_MATRIX:
+	case LFUN_MATH_DELIM:
+	case LFUN_DEFAULT:
+	case LFUN_UNDERLINE:
+	case LFUN_FONT_SIZE:
+	case LFUN_LANGUAGE:
+	case LFUN_FREEFONT_APPLY:
+	case LFUN_FREEFONT_UPDATE:
+	case LFUN_LAYOUT_PARAGRAPH:
+	case LFUN_PARAGRAPH_UPDATE:
+	case LFUN_UMLAUT:
+	case LFUN_CIRCUMFLEX:
+	case LFUN_GRAVE:
+	case LFUN_ACUTE:
+	case LFUN_TILDE:
+	case LFUN_CEDILLA:
+	case LFUN_MACRON:
+	case LFUN_DOT:
+	case LFUN_UNDERDOT:
+	case LFUN_UNDERBAR:
+	case LFUN_CARON:
+	case LFUN_SPECIAL_CARON:
+	case LFUN_BREVE:
+	case LFUN_TIE:
+	case LFUN_HUNG_UMLAUT:
+	case LFUN_CIRCLE:
+	case LFUN_OGONEK:
+	case LFUN_FLOAT_LIST:
+	case LFUN_ACCEPT_CHANGE:
+	case LFUN_REJECT_CHANGE:
+	case LFUN_THESAURUS_ENTRY:
+	case LFUN_PARAGRAPH_APPLY:
+	case LFUN_ESCAPE:
+		// these are handled in our dispatch()
+		enable = true;
+		break;
+
+	default:
+		enable = false;
+		break;
+	}
+	flag.enabled(enable);
+	return true;
 }

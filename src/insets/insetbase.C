@@ -40,7 +40,7 @@ void InsetBase::priv_dispatch(LCursor & cur, FuncRequest &)
 }
 
 
-bool InsetBase::getStatus(LCursor &, FuncRequest const &, FuncStatus &)
+bool InsetBase::getStatus(LCursor &, FuncRequest const &, FuncStatus &) const
 {
 	return false;
 }

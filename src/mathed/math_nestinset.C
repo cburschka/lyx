@@ -28,6 +28,7 @@
 #include "math_unknowninset.h"
 
 #include "BufferView.h"
+#include "FuncStatus.h"
 #include "bufferview_funcs.h"
 #include "cursor.h"
 #include "debug.h"
@@ -818,6 +819,76 @@ void MathNestInset::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 	}
 }
 
+
+bool MathNestInset::getStatus(LCursor & cur, FuncRequest const & cmd,
+		FuncStatus & flag) const
+{
+	// the font related toggles
+	//string tc = mathcursor::getLastCode();
+	bool ret = true;
+	switch (cmd.action) {
+#if 0
+	case LFUN_TABULAR_FEATURE:
+		// FIXME: check temporarily disabled
+		// valign code
+		char align = mathcursor::valign();
+		if (align == '\0') {
+			enable = false;
+			break;
+		}
+		if (cmd.argument.empty()) {
+			flag.clear();
+			break;
+		}
+		if (!contains("tcb", cmd.argument[0])) {
+			enable = false;
+			break;
+		}
+		flag.setOnOff(cmd.argument[0] == align);
+		break;
+	case LFUN_BOLD:
+		flag.setOnOff(tc == "mathbf");
+		break;
+	case LFUN_SANS:
+		flag.setOnOff(tc == "mathsf");
+		break;
+	case LFUN_EMPH:
+		flag.setOnOff(tc == "mathcal");
+		break;
+	case LFUN_ROMAN:
+		flag.setOnOff(tc == "mathrm");
+		break;
+	case LFUN_CODE:
+		flag.setOnOff(tc == "mathtt");
+		break;
+	case LFUN_NOUN:
+		flag.setOnOff(tc == "mathbb");
+		break;
+	case LFUN_DEFAULT:
+		flag.setOnOff(tc == "mathnormal");
+		break;
+#endif
+	case LFUN_MATH_MUTATE:
+		//flag.setOnOff(mathcursor::formula()->hullType() == cmd.argument);
+		flag.setOnOff(false);
+		break;
+
+	// we just need to be in math mode to enable that
+	case LFUN_MATH_SIZE:
+	case LFUN_MATH_SPACE:
+	case LFUN_MATH_LIMITS:
+	case LFUN_MATH_NONUMBER:
+	case LFUN_MATH_NUMBER:
+	case LFUN_MATH_EXTERN:
+		flag.enabled(true);
+		break;
+
+	default:
+		ret = false;
+		break;
+	}
+	return ret;
+}
 
 void MathNestInset::edit(LCursor & cur, bool left)
 {

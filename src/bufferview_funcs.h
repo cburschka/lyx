@@ -16,9 +16,7 @@
 
 #include <string>
 
-class LCursor;
 class LyXFont;
-class LyXText;
 
 
 namespace bv_funcs {
@@ -33,16 +31,6 @@ bool string2font(std::string const & data, LyXFont & font, bool & toggle);
  *  frontends.
  */
 std::string const freefont2string();
-
-
-/// what type of depth change to make
-enum DEPTH_CHANGE {
-	INC_DEPTH,
-	DEC_DEPTH
-};
-
-/// Returns whether something would be changed by changeDepth
-bool changeDepthAllowed(LCursor & cur, LyXText * text, DEPTH_CHANGE);
 
 } // namespace bv_funcs
 

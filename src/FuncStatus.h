@@ -46,9 +46,9 @@ public:
 	bool unknown() const;
 
 	///
-	void disabled(bool b);
+	void enabled(bool b);
 	///
-	bool disabled() const;
+	bool enabled() const;
 
 	///
 	void setOnOff(bool b);

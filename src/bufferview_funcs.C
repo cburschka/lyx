@@ -144,11 +144,4 @@ bool string2font(string const & data, LyXFont & font, bool & toggle)
 	return (nset > 0);
 }
 
-
-bool changeDepthAllowed(LCursor & cur, LyXText * text, DEPTH_CHANGE type)
-{
-	return cur.bv().available() && text && text->changeDepthAllowed(cur, type);
-}
-
-
 } // namespace bv_funcs

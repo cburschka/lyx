@@ -45,18 +45,18 @@ bool FuncStatus::unknown() const
 }
 
 
-void FuncStatus::disabled(bool b)
+void FuncStatus::enabled(bool b)
 {
 	if (b)
-		v_ |= DISABLED;
-	else
 		v_ &= !DISABLED;
+	else
+		v_ |= DISABLED;
 }
 
 
-bool FuncStatus::disabled() const
+bool FuncStatus::enabled() const
 {
-	return (v_ & DISABLED);
+	return !(v_ & DISABLED);
 }
 
 
