@@ -921,9 +921,8 @@ lyxstring::size_type lyxstring::find(value_type const * ptr, size_type i,
 lyxstring::size_type lyxstring::find(value_type const * s, size_type i) const
 {
 	Assert(s);
-	if (!rep->sz) return npos;
+	if (!rep->sz || i >= rep->sz) return npos;
 	
-	Assert(i < rep->sz);
 	TestlyxstringInvariant(this);
 
 	if (!s || !*s) return npos;

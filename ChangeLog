@@ -1,3 +1,8 @@
+1999-11-02  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/support/lyxstring.C (find): remove bogus assert and return
+	npos for the same condition.
+
 1999-11-01  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* added patch for OS/2 from SMiyata.

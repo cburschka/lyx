@@ -73,7 +73,7 @@ string SpaceLess(string const & file)
 	string path = OnlyPath(file);
 	
 	for (string::size_type i = 0; i < name.length(); ++i) {
-		name[i] &= 0x7f;
+		name[i] &= 0x7f; // set 8th bit to 0
 		if (!isalnum(name[i]) && name[i] != '.')
 			name[i] = '_';
 	}
@@ -137,7 +137,6 @@ int IsFileWriteable (string const & path)
 	FilePtr fp(path, FilePtr::update);
 	if (!fp()) {
 		if ((errno == EACCES) || (errno == EROFS)) {
-			//fp = FilePtr(path, FilePtr::read);
 			fp.reopen(path, FilePtr::read);
 			if (fp()) {
 				return 0;
@@ -191,7 +190,7 @@ string FileOpenSearch (string const & path, string const & name,
 {
 	string real_file, path_element;
 	bool notfound = true;
-	string tmppath=split(path, path_element, ';');
+	string tmppath = split(path, path_element, ';');
 	
 	while (notfound && !path_element.empty()) {
 		path_element = CleanupPath(path_element);
@@ -338,9 +337,8 @@ bool PutEnvPath(string const & envstr)
 static
 int DeleteAllFilesInDir (string const & path)
 {
-	DIR * dir;
 	struct dirent * de;
-	dir = opendir(path.c_str());
+	DIR * dir = opendir(path.c_str());
 	if (!dir) {
 		WriteFSAlert (_("Error! Cannot open directory:"), path);
 		return -1;
@@ -856,10 +854,8 @@ string AddPath(string const & path, string const & path_2)
 
 	if (!path2.empty()){
 	        int p2start = path2.find_first_not_of('/');
-		//while (path2[p2start] == '/') ++p2start;
 
 		int p2end = path2.find_last_not_of('/');
-		//while (path2[p2end] == '/') --p2end;
 
 		string tmp = path2.substr(p2start, p2end - p2start + 1);
 		buf += tmp + '/';
@@ -949,6 +945,7 @@ string MakeDisplayPath (string const & path, unsigned int threshold)
 	}
 	return prefix + relhome;
 }
+
 
 bool LyXReadLink(string const & File, string & Link)
 {
