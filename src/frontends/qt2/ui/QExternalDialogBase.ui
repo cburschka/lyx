@@ -13,7 +13,7 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>357</width>
+            <width>353</width>
             <height>378</height>
         </rect>
     </property>
@@ -361,4 +361,17 @@
     <slot access="public">updateClicked()</slot>
     <slot access="public">viewClicked()</slot>
 </connections>
+<tabstops>
+    <tabstop>fileED</tabstop>
+    <tabstop>browsePB</tabstop>
+    <tabstop>paramsED</tabstop>
+    <tabstop>editPB</tabstop>
+    <tabstop>externalCO</tabstop>
+    <tabstop>externalTV</tabstop>
+    <tabstop>viewPB</tabstop>
+    <tabstop>updatePB</tabstop>
+    <tabstop>okPB</tabstop>
+    <tabstop>applyPB</tabstop>
+    <tabstop>closePB</tabstop>
+</tabstops>
 </UI>
