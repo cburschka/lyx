@@ -157,7 +157,6 @@ callback:
 argument: 
 
 --------------------
-
 class: FL_LABELFRAME
 type: ENGRAVED_FRAME
 box: 410 140 370 120
@@ -276,7 +275,7 @@ style: FL_BOLD_STYLE
 size: FL_NORMAL_SIZE
 lcol: FL_BLACK
 label: Citation style
-shortcut: frame_style
+shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: frame_style

@@ -94,7 +94,6 @@ FD_form_citation * FormCitation::build_citation()
     fl_set_object_gravity(obj, FL_SouthEast, FL_SouthEast);
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
   fdui->frame_style = obj = fl_add_labelframe(FL_ENGRAVED_FRAME, 410, 280, 370, 80, _("Citation style"));
-    fl_set_object_shortcut(obj, _("frame_style"), 1);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_lstyle(obj, FL_BOLD_STYLE);
   fdui->choice_style = obj = fl_add_choice(FL_NORMAL_CHOICE, 550, 290, 130, 30, "");
