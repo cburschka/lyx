@@ -27,8 +27,8 @@ int Alert::prompt(string const & title, string const & question,
 	   string const & b1, string const & b2, string const & b3)
 {
 	if (!lyx_gui::use_gui || lyxerr.debugging()) {
-		lyxerr << title
-		       << "----------------------------------------"
+		lyxerr << title << '\n'
+		       << "----------------------------------------\n"
 		       << question << endl;
 
 		lyxerr << "Assuming answer is ";
@@ -50,8 +50,8 @@ int Alert::prompt(string const & title, string const & question,
 void Alert::warning(string const & title, string const & message)
 {
 	if (!lyx_gui::use_gui || lyxerr.debugging())
-		lyxerr << "Warning: " << title
-		       << "----------------------------------------"
+		lyxerr << "Warning: " << title << '\n'
+		       << "----------------------------------------\n"
 		       << message << endl;
 	if (lyx_gui::use_gui)
 		warning_pimpl(title, message);
@@ -73,8 +73,8 @@ void Alert::error(string const & title, string const & message)
 void Alert::information(string const & title, string const & message)
 {
 	if (!lyx_gui::use_gui || lyxerr.debugging())
-		lyxerr << title
-		       << "----------------------------------------"
+		lyxerr << title << '\n'
+		       << "----------------------------------------\n"
 		       << message << endl;
 
 	if (lyx_gui::use_gui)
