@@ -48,7 +48,7 @@ static int const delim_rversion[] = {
 static char const * delim_values[] = {
 	"(", ")", "lceil",  "rceil",  "uparrow",  "Uparrow",
 	"[", "]", "lfloor", "rfloor", "updownarrow", "Updownarrow",
-	"{", "}",  "/", "\\",  "downarrow",  "Downarrow",
+	"{", "}",  "/", "backslash",  "downarrow",  "Downarrow",
 	"langle",  "rangle", "|", "Vert", ".", 0
 };
 
