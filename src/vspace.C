@@ -339,13 +339,13 @@ string const LyXLength::asLatexString() const
 	switch(uni) {
 	case PW:
 	case PE:
-	    buffer << "." << abs(static_cast<int>(val)) << "\\columnwidth";
+	    buffer << abs(static_cast<int>(val/100)) << "." << abs(static_cast<int>(val)%100) << "\\columnwidth";
 	    break;
 	case PP:
-	    buffer << "." << abs(static_cast<int>(val)) << "\\pagewidth";
+	    buffer << "." << abs(static_cast<int>(val/100)) << "." << abs(static_cast<int>(val)%100) << "\\pagewidth";
 	    break;
 	case PL:
-	    buffer << "." << abs(static_cast<int>(val)) << "\\linewidth";
+	    buffer << "." << abs(static_cast<int>(val/100)) << "." << abs(static_cast<int>(val)%100) << "\\linewidth";
 	    break;
 	default:
 	    buffer << val << unit_name[uni]; // setw?
