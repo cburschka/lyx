@@ -1,3 +1,9 @@
+2001-04-17  Allan Rae  <rae@lyx.org>
+
+	* libsigc++-1.0.3 and important local changes kept.  Outlining of
+	inline functions has been lost -- modify ../development/tools/
+	makeLyXsigc.sh if you want them back again.
+	
 2001-02-07  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* configure.in (AC_ARG_ENABLE(threads)): disable threads by default. 

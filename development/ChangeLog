@@ -1,3 +1,10 @@
+2001-04-17  Allan Rae  <rae@lyx.org>
+
+	* tools/makeLyXsigc.sh: put the important local changes into sed
+	scripts.  Outlining of inline code is lost -- feel free to add the
+	necessary script or patch to get them back again if they annoy you.
+	Or send a patch to Karl and get the changes into libsigc++.
+
 2001-04-03 Kayvan Sylvan <kayvan@sylvan.com>
 
 	* lyx.spec.in: fix handling of reLyX with RPM relocation. 

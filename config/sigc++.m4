@@ -62,7 +62,7 @@ dnl
 
     SIGC_CFLAGS=`$SIGC_CONFIG $sigc_config_args --cflags`
     SIGC_LIBS=`$SIGC_CONFIG $sigc_config_args --libs`
-    SIGC_MACROS=`$SIGC_CONFIG $sigc_config_args --libs`
+    SIGC_MACROS=`$SIGC_CONFIG $sigc_config_args --macros`
 
     sigc_major_version=`echo $sigc_version | \
            sed 's/\([[0-9]]*\).\([[0-9]]*\).\([[0-9]]*\)/\1/'`

@@ -84,7 +84,6 @@ template <class Obj,class Scope_>
         Obj *o=handle.obj();
         scope_.set(o,o,false);
        }
-
   };
 
 #define HANDLE_CTORS(X,T,P)                  \

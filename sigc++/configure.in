@@ -33,7 +33,7 @@ dnl
 dnl Source packaging numbers
 SIGC_MAJOR_VERSION=1
 SIGC_MINOR_VERSION=0
-SIGC_MICRO_VERSION=1
+SIGC_MICRO_VERSION=3
 
 dnl Library extension
 SIGC_RELEASE=1.0
@@ -87,7 +87,7 @@ else
   AC_SUBST(USE_INCLUDED_SIGC)
 
 AC_ARG_ENABLE(threads,
-[  --enable-threads       enable support threading.],
+[  --enable-threads       enables support threading.],
 enable_threads=$enableval,enable_threads="no")
 AC_ARG_ENABLE(checks,
 [  --disable-checks        disables unnecessary tests needed for bug reports.],
