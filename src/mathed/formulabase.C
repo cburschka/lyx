@@ -475,6 +475,7 @@ Inset::RESULT InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 	case LFUN_HOMESEL:
 		sel = true; // fall through
 	case LFUN_HOME:
+	case LFUN_WORDLEFT:
 		result = mathcursor->home(sel) ? DISPATCHED : FINISHED;
 		updateLocal(bv, false);
 		break;
@@ -482,18 +483,23 @@ Inset::RESULT InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 	case LFUN_ENDSEL:
 		sel = true; // fall through
 	case LFUN_END:
+	case LFUN_WORDRIGHT:
 		result = mathcursor->end(sel) ? DISPATCHED : FINISHED_RIGHT;
 		updateLocal(bv, false);
 		break;
 
 	case LFUN_PRIORSEL:
 	case LFUN_PRIOR:
+	case LFUN_BEGINNINGBUFSEL:
+	case LFUN_BEGINNINGBUF:
 		result = FINISHED_UP;
 		updateLocal(bv, false);
 		break;
 
 	case LFUN_NEXTSEL:
 	case LFUN_NEXT:
+	case LFUN_ENDBUFSEL:
+	case LFUN_ENDBUF:
 		result = FINISHED_DOWN;
 		updateLocal(bv, false);
 		break;
