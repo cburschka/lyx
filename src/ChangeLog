@@ -1,3 +1,8 @@
+2003-05-08  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* Makefile.am: ensure that lyx is relinked upon changes to the
+	various "convenience" libs.
+
 2003-05-20  Angus Leeming  <leeming@lyx.org>
 
 	* Makefile.am (lyx_SOURCES): move format.[Ch] and graph.[Ch] so that
