@@ -3,6 +3,14 @@
 	* insetgraphics.C: Clean up Baruch's comments a little.
 	(c-tor): remove code setting id_, as it's set in the Inset c-tor.
 
+2002-03-14  John Levon  <moz@compsoc.man.ac.uk>
+
+	* insettabular.C:
+	* insettheorem.C: wrap warnings
+
+	* insetgraphics.C: improve messages, move cached_status_
+	  setting to safer place
+ 
 2002-03-18  Juergen Vigna  <jug@sad.it>
 
 	* insettabular.C (unlockInsetInInset): removed unneeded showCursor

@@ -198,7 +198,7 @@ string const InsetGraphics::statusMessage() const
 		msg = _("Error scaling etc");
 		break;
 	case grfx::ErrorUnknown:
-		msg = _("No image associated with this inset is in the cache!");
+		msg = _("No image");
 		break;
 	case grfx::Loaded:
 		msg = _("Loaded but not displaying");
@@ -278,6 +278,7 @@ void InsetGraphics::draw(BufferView * bv, LyXFont const & font,
                          int baseline, float & x, bool) const
 {
 	int oasc = old_asc;
+	grfx::ImageStatus old_status_ = cached_status_;
 	
 	int ldescent = descent(bv, font);
 	int lascent  = ascent(bv, font);
@@ -306,7 +307,6 @@ void InsetGraphics::draw(BufferView * bv, LyXFont const & font,
 	// This will draw the graphics. If the graphics has not been loaded yet,
 	// we draw just a rectangle.
 	Painter & paint = bv->painter();
-	grfx::ImageStatus old_status_ = cached_status_;
 	
 	if (drawImage()) {
 //		lyxerr << "IG(" << this << "): " << old_x << endl;
@@ -690,7 +690,7 @@ int InsetGraphics::ascii(Buffer const *, ostream & os, int) const
 	// 1. Convert file to ascii using gifscii
 	// 2. Read ascii output file and add it to the output stream.
 	// at least we send the filename
-	os << '<' << _("Graphicfile:") << params().filename << ">\n";
+	os << '<' << _("Graphic file:") << params().filename << ">\n";
 	return 0;
 }
 

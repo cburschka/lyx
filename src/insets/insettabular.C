@@ -1510,7 +1510,9 @@ int InsetTabular::getCellXPos(int cell) const
 
 void InsetTabular::resetPos(BufferView * bv) const
 {
+#ifdef WITH_WARNINGS
 #warning This should be fixed in the right manner (20011128 Jug)
+#endif
 	// fast hack to fix infinite repaintings!
 	if (in_reset_pos)
 		return;
