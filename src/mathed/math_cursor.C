@@ -1238,7 +1238,7 @@ bool MathCursor::interpret(char c)
 	}
 
 	if (c == '{' || c == '}' || c == '#' || c == '&' || c == '$') {
-		createMathInset(string(1, c));
+		niceInsert(createMathInset(string(1, c)));
 		return true;
 	}
 

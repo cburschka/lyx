@@ -322,11 +322,11 @@ dispatch_result InsetFormulaBase::lfunMouseMotion(FuncRequest const & cmd)
 
 dispatch_result InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 {
-	lyxerr << "InsetFormulaBase::localDispatch: act: " << cmd.action
-		<< " arg: '" << cmd.argument
-		<< "' x: '" << cmd.x
-		<< " y: '" << cmd.y
-		<< "' button: " << cmd.button() << endl;
+	//lyxerr << "InsetFormulaBase::localDispatch: act: " << cmd.action
+	//	<< " arg: '" << cmd.argument
+	//	<< "' x: '" << cmd.x
+	//	<< " y: '" << cmd.y
+	//	<< "' button: " << cmd.button() << endl;
 
 	BufferView * bv = cmd.view();
 

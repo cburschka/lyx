@@ -231,13 +231,11 @@ latexkeys const * in_word_set(string const & str)
 
 MathAtom createMathInset(string const & s)
 {
-	lyxerr[Debug::MATHED] << "creating inset with name: '"
-			      << s << '\'' << endl;;
+	//lyxerr << "creating inset with name: '" << s << '\'' << endl;;
 	latexkeys const * l = in_word_set(s);
 	if (l) {
 		string const & inset = l->inset;
-		lyxerr[Debug::MATHED] << " found inset: '" <<
-			inset << '\'' << endl;
+		//lyxerr << " found inset: '" << inset << '\'' << endl;
 		if (inset == "ref")
 			return MathAtom(new RefInset(l->name));
 		if (inset == "overset")
@@ -316,7 +314,7 @@ MathAtom createMathInset(string const & s)
 	if (MathMacroTable::has(s))
 		return MathAtom(new MathMacro(s));
 
-	//lyxerr[Debug::MATHED] << "creating inset 2 with name: '" << s << '\'' << endl;
+	//lyxerr << "creating inset 2 with name: '" << s << '\'' << endl;
 	return MathAtom(new MathUnknownInset(s));
 }
 
