@@ -505,10 +505,10 @@ bool LyXText::changeDepth(bv_funcs::DEPTH_CHANGE type, bool test_only)
 
 	// Wow, redoParagraphs is stupid.
 	LyXCursor tmpcursor;
-	setCursor(tmpcursor, &(*start), 0);
+	setCursor(tmpcursor, start, 0);
 
 	//redoParagraphs(tmpcursor, &(*pastend));
-	redoParagraphs(tmpcursor, &(*pastend));
+	redoParagraphs(tmpcursor, pastend);
 
 	// We need to actually move the text->cursor. I don't
 	// understand why ...
@@ -1395,11 +1395,11 @@ void LyXText::pasteSelection()
 	ParagraphList::iterator endpit;
 	PitPosPair ppp;
 
-	boost::tie(ppp, endpit) = 
-		CutAndPaste::pasteSelection(ownerParagraphs(), 
-					    cursor.par(), cursor.pos(), 
+	boost::tie(ppp, endpit) =
+		CutAndPaste::pasteSelection(ownerParagraphs(),
+					    cursor.par(), cursor.pos(),
 					    bv()->buffer()->params.textclass);
-	
+
 	redoParagraphs(cursor, endpit);
 
 	setCursor(cursor.par(), cursor.pos());
@@ -1872,7 +1872,7 @@ LyXText::getColumnNearX(RowList::iterator rit, int & x, bool & boundary) const
 		if (body_pos > 0 && c == body_pos - 1) {
 			tmpx += fill_label_hfill +
 				font_metrics::width(layout->labelsep,
-					       getLabelFont(bv()->buffer(), &*rit_par));
+					       getLabelFont(bv()->buffer(), rit_par));
 			if (rit_par->isLineSeparator(body_pos - 1))
 				tmpx -= singleWidth(rit_par, body_pos - 1);
 		}

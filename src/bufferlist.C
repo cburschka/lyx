@@ -485,11 +485,11 @@ Buffer * BufferList::newFile(string const & name, string tname, bool isNamed)
 #endif
 			Alert::error(_("Could not read template"), text);
 			// no template, start with empty buffer
-			b->paragraphs.set(new Paragraph);
+			b->paragraphs.push_back(new Paragraph);
 			b->paragraphs.begin()->layout(b->params.getLyXTextClass().defaultLayout());
 		}
 	} else {  // start with empty buffer
-		b->paragraphs.set(new Paragraph);
+		b->paragraphs.push_back(new Paragraph);
 		b->paragraphs.begin()->layout(b->params.getLyXTextClass().defaultLayout());
 	}
 
@@ -500,7 +500,7 @@ Buffer * BufferList::newFile(string const & name, string tname, bool isNamed)
 
 	b->setReadonly(false);
 	b->updateDocLang(b->params.language);
-	
+
 	return b;
 }
 

@@ -140,7 +140,7 @@ PitPosPair CutAndPaste::eraseSelection(ParagraphList & pars,
 #warning current_view used here.
 // should we pass buffer or buffer->params around?
 		Buffer * buffer = current_view->buffer();
-		mergeParagraph(buffer->params, pars, &*startpit);
+		mergeParagraph(buffer->params, pars, startpit);
 		// this because endpar gets deleted here!
 		endpit = startpit;
 		endpos = startpos;

@@ -136,7 +136,7 @@ InsetText::InsetText(BufferParams const & bp)
 	: UpdatableInset(), lt(0), in_update(false), do_resize(0),
 	  do_reinit(false)
 {
-	paragraphs.set(new Paragraph);
+	paragraphs.push_back(new Paragraph);
 	paragraphs.begin()->layout(bp.getLyXTextClass().defaultLayout());
 	if (bp.tracking_changes)
 		paragraphs.begin()->trackChanges();
@@ -217,7 +217,7 @@ void InsetText::clear(bool just_mark_erased)
 	LyXLayout_ptr old_layout = paragraphs.begin()->layout();
 
 	paragraphs.clear();
-	paragraphs.set(new Paragraph);
+	paragraphs.push_back(new Paragraph);
 	paragraphs.begin()->setInsetOwner(this);
 	paragraphs.begin()->layout(old_layout);
 
@@ -672,14 +672,14 @@ void InsetText::edit(BufferView * bv, bool front)
 		clear = true;
 	}
 	if (front)
-		lt->setCursor(&*(paragraphs.begin()), 0);
+		lt->setCursor(paragraphs.begin(), 0);
 	else {
 		ParagraphList::iterator it = paragraphs.begin();
 		ParagraphList::iterator end = paragraphs.end();
 		while (boost::next(it) != end)
 			++it;
 //		int const pos = (p->size() ? p->size()-1 : p->size());
-		lt->setCursor(&*it, it->size());
+		lt->setCursor(it, it->size());
 	}
 	lt->clearSelection();
 	finishUndo();
@@ -727,9 +727,9 @@ void InsetText::insetUnlock(BufferView * bv)
 		bv->owner()->setLayout(bv->text->cursor.par()->layout()->name());
 	// hack for deleteEmptyParMech
 	if (!paragraphs.begin()->empty()) {
-		lt->setCursor(&*(paragraphs.begin()), 0);
+		lt->setCursor(paragraphs.begin(), 0);
 	} else if (boost::next(paragraphs.begin()) != paragraphs.end()) {
-		lt->setCursor(&*boost::next(paragraphs.begin()), 0);
+		lt->setCursor(boost::next(paragraphs.begin()), 0);
 	}
 	if (clear)
 		lt = 0;
@@ -755,7 +755,7 @@ void InsetText::lockInset(BufferView * bv)
 		lt = getLyXText(bv);
 		clear = true;
 	}
-	lt->setCursor(&*(paragraphs.begin()), 0);
+	lt->setCursor(paragraphs.begin(), 0);
 	lt->clearSelection();
 	finishUndo();
 	// If the inset is empty set the language of the current font to the
@@ -806,12 +806,12 @@ bool InsetText::lockInsetInInset(BufferView * bv, UpdatableInset * inset)
 				pit->insetlist.end();
 			for (; it != end; ++it) {
 				if (it.getInset() == inset) {
-					getLyXText(bv)->setCursorIntern(&*pit, it.getPos());
+					getLyXText(bv)->setCursorIntern(pit, it.getPos());
 					lockInset(bv, inset);
 					return true;
 				}
 				if (it.getInset()->getInsetFromID(id)) {
-					getLyXText(bv)->setCursorIntern(&*pit, it.getPos());
+					getLyXText(bv)->setCursorIntern(pit, it.getPos());
 					it.getInset()->edit(bv);
 					return the_locking_inset->lockInsetInInset(bv, inset);
 				}
@@ -2070,7 +2070,7 @@ int InsetText::cx(BufferView * bv) const
 	LyXText * llt = getLyXText(bv);
 	int x = llt->cursor.x() + top_x + TEXT_TO_INSET_OFFSET;
 	if (the_locking_inset) {
-		LyXFont font = llt->getFont(bv->buffer(), &*llt->cursor.par(),
+		LyXFont font = llt->getFont(bv->buffer(), llt->cursor.par(),
 					    llt->cursor.pos());
 		if (font.isVisibleRightToLeft())
 			x -= the_locking_inset->width(bv, font);
@@ -2085,7 +2085,7 @@ int InsetText::cix(BufferView * bv) const
 	LyXText * llt = getLyXText(bv);
 	int x = llt->cursor.ix() + top_x + TEXT_TO_INSET_OFFSET;
 	if (the_locking_inset) {
-		LyXFont font = llt->getFont(bv->buffer(), &*llt->cursor.par(),
+		LyXFont font = llt->getFont(bv->buffer(), llt->cursor.par(),
 					    llt->cursor.pos());
 		if (font.isVisibleRightToLeft())
 			x -= the_locking_inset->width(bv, font);
@@ -2139,7 +2139,7 @@ LyXText * InsetText::getLyXText(BufferView const * lbv,
 		if (recursive && the_locking_inset)
 			return the_locking_inset->getLyXText(lbv, true);
 		LyXText * lt = cached_text.get();
-		lyx::Assert(lt && lt->rows().begin()->par() == &*(paragraphs.begin()));
+		lyx::Assert(lt && lt->rows().begin()->par() == paragraphs.begin());
 		return lt;
 	}
 	// Super UGLY! (Lgb)
@@ -2591,7 +2591,7 @@ bool InsetText::searchBackward(BufferView * bv, string const & str,
 		while (boost::next(pit) != pend)
 			++pit;
 
-		lt->setCursor(&*pit, pit->size());
+		lt->setCursor(pit, pit->size());
 	}
 	lyxfind::SearchResult result =
 		lyxfind::LyXFind(bv, lt, str, false, cs, mw);
@@ -2632,12 +2632,12 @@ void InsetText::collapseParagraphs(BufferView * bv)
 		}
 		if (llt->selection.set()) {
 			if (llt->selection.start.par() == boost::next(paragraphs.begin())) {
-				llt->selection.start.par(&*(paragraphs.begin()));
+				llt->selection.start.par(paragraphs.begin());
 				llt->selection.start.pos(
 					llt->selection.start.pos() + paragraphs.begin()->size());
 			}
 			if (llt->selection.end.par() == boost::next(paragraphs.begin())) {
-				llt->selection.end.par(&*(paragraphs.begin()));
+				llt->selection.end.par(paragraphs.begin());
 				llt->selection.end.pos(
 					llt->selection.end.pos() + paragraphs.begin()->size());
 			}

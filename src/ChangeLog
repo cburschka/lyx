@@ -1,3 +1,20 @@
+2003-05-07  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* text2.C (changeDepth): parlist cleanup
+	(getColumnNearX): ditto
+
+	* rowpainter.C (getLabelFont): parlist cleanup
+
+	* bufferlist.C (newFile): parlist cleanup
+
+	* CutAndPaste.C (eraseSelection): parlist cleanup
+
+	* BufferView_pimpl.C (trackChanges): parlist cleanup
+	(dispatch): ditto
+
+	* BufferView.C (lockInset): parlist cleanup.
+	(ChangeInsets): ditto
+
 2003-05-06  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* CutAndPaste.h: Update file header.

@@ -1,3 +1,17 @@
+2003-05-07  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* insettext.C (InsetText): parlist cleanup
+	(clear): ditto
+	(edit): ditto
+	(insetUnlock): ditto
+	(lockInset): ditto
+	(lockInsetInInset): ditto
+	(cx): ditto
+	(cix): ditto
+	(getLyXText): ditto
+	(searchBackward): ditto
+	(collapseParagraphs): ditto
+
 2003-05-06  John Levon  <levon@movementarian.org>
 
 	* insetcaption.C: don't cast wrap inset to InsetFloat

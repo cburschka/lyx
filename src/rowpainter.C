@@ -81,7 +81,7 @@ int RowPainter::singleWidth(lyx::pos_type pos, char c) const
 
 LyXFont const RowPainter::getLabelFont() const
 {
-	return text_.getLabelFont(bv_.buffer(), &*pit_);
+	return text_.getLabelFont(bv_.buffer(), pit_);
 }
 
 

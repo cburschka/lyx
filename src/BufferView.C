@@ -695,12 +695,12 @@ bool BufferView::lockInset(UpdatableInset * inset)
 			InsetList::iterator end = pit->insetlist.end();
 			for (; it != end; ++it) {
 				if (it.getInset() == inset) {
-					text->setCursorIntern(&*pit, it.getPos());
+					text->setCursorIntern(pit, it.getPos());
 					theLockingInset(inset);
 					return true;
 				}
 				if (it.getInset()->getInsetFromID(id)) {
-					text->setCursorIntern(&*pit, it.getPos());
+					text->setCursorIntern(pit, it.getPos());
 					it.getInset()->edit(this);
 					return theLockingInset()->lockInsetInInset(this, inset);
 				}
@@ -808,7 +808,7 @@ bool BufferView::ChangeInsets(Inset::Code code,
 			if (it.size() == 1) {
 				text->setCursorIntern(par, 0);
 				text->redoParagraphs(text->cursor,
-						     text->cursor.par()->next());
+						     boost::next(text->cursor.par()));
 				text->fullRebreak();
 			}
 		}

@@ -899,7 +899,7 @@ void BufferView::Pimpl::trackChanges()
 		buf->undostack.clear();
 	} else {
 		update(BufferView::SELECT);
-		bv_->text->setCursor(&(*buf->paragraphs.begin()), 0);
+		bv_->text->setCursor(buf->paragraphs.begin(), 0);
 #warning changes FIXME
 		//moveCursorUpdate(false);
 
@@ -1229,7 +1229,7 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev_in)
 
 	case LFUN_ACCEPT_ALL_CHANGES: {
 		update(BufferView::SELECT);
-		bv_->text->setCursor(&(*bv_->buffer()->paragraphs.begin()), 0);
+		bv_->text->setCursor(bv_->buffer()->paragraphs.begin(), 0);
 #warning FIXME changes
 		//moveCursorUpdate(false);
 
@@ -1242,7 +1242,7 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev_in)
 
 	case LFUN_REJECT_ALL_CHANGES: {
 		update(BufferView::SELECT);
-		bv_->text->setCursor(&(*bv_->buffer()->paragraphs.begin()), 0);
+		bv_->text->setCursor(bv_->buffer()->paragraphs.begin(), 0);
 #warning FIXME changes
 		//moveCursorUpdate(false);
 
