@@ -25,7 +25,7 @@ using std::vector;
 
 
 FuncRequest::FuncRequest()
-	: view_(0), action(LFUN_UNKNOWN_ACTION), x(0), y(0), button_(mouse_button::none)
+	: view_(0), action(LFUN_NOACTION), x(0), y(0), button_(mouse_button::none)
 {}
 
 

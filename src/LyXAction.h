@@ -60,10 +60,10 @@ public:
 	 * If you include arguments in func_name, a new pseudoaction
 	 * will be created if needed.
 	 */
-	kb_action LookupFunc(string const & func_name);
+	FuncRequest lookupFunc(string const & func_name) const;
 
 	/// Return the name (and argument) associated with the given (pseudo) action
-	string const getActionName(int action) const;
+	string const getActionName(kb_action action) const;
 
 	/// True if the command has `flag' set
 	bool funcHasFlag(kb_action action, func_attrib flag) const;

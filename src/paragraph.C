@@ -726,7 +726,7 @@ string const corrected_env(string const & suffix, string const & env,
 		output += env;
 	return output + "}";
 }
- 
+
 } // namespace anon
 
 

@@ -22,6 +22,7 @@
 #include "errorlist.h"
 #include "exporter.h"
 #include "format.h"
+#include "funcrequest.h"
 #include "gettext.h"
 #include "iterators.h"
 #include "language.h"
@@ -2199,22 +2200,17 @@ void Buffer::markDepClean(string const & name)
 
 bool Buffer::dispatch(string const & command, bool * result)
 {
-	// Split command string into command and argument
-	string cmd;
-	string line = ltrim(command);
-	string const arg = trim(split(line, cmd, ' '));
-
-	return dispatch(lyxaction.LookupFunc(cmd), arg, result);
+	return dispatch(lyxaction.lookupFunc(command), result);
 }
 
 
-bool Buffer::dispatch(int action, string const & argument, bool * result)
+bool Buffer::dispatch(FuncRequest const & func, bool * result)
 {
 	bool dispatched = true;
 
-	switch (action) {
+	switch (func.action) {
 		case LFUN_EXPORT: {
-			bool const tmp = Exporter::Export(this, argument, false);
+			bool const tmp = Exporter::Export(this, func.argument, false);
 			if (result)
 				*result = tmp;
 			break;

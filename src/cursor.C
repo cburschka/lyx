@@ -38,7 +38,7 @@ void buildCursor(Cursor & cursor, BufferView & bv)
 	lyxerr << "\nbuildCursor: " << inset << std::endl;
 	if (!inset)
 		return;
-	
+
 	inset = inset->getLockingInset();
 
 	bool ok = false;
@@ -47,7 +47,7 @@ void buildCursor(Cursor & cursor, BufferView & bv)
 	for ( ; pit != end && !ok; ++pit) {
 		InsetList::iterator	it = pit->insetlist.begin();
 		InsetList::iterator	iend = pit->insetlist.end();
-		for ( ; it != iend && !ok; ++it) 
+		for ( ; it != iend && !ok; ++it)
 			if (it->inset == inset || it->inset == inset->owner())
 				ok = true;
 	}
@@ -57,7 +57,7 @@ void buildCursor(Cursor & cursor, BufferView & bv)
 		return;
 	}
 
-	vector<ParagraphList::iterator> pits; 
+	vector<ParagraphList::iterator> pits;
 	vector<ParagraphList const *>   plists;
 	vector<LyXText *>               texts;
 /*

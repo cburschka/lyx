@@ -1,7 +1,12 @@
+2003-09-22  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* QLPopupMenu.C (getLabel): fix so that bindings are added even if
+	shortcut is missing.
+
 2003-09-21  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* QtView.C (activated): change to take a FuncRequest, not a slot
-	anymore. 
+	anymore.
 
 	* QLToolbar.C (update): adjust
 	(add): change to take a FuncRequest

@@ -194,30 +194,30 @@ void LyXFunc::processKeySym(LyXKeySymPtr keysym,
 	// cancel and meta-fake keys. RVDK_PATCH_5
 	cancel_meta_seq.reset();
 
-	int action = cancel_meta_seq.addkey(keysym, state);
-	lyxerr[Debug::KEY] << "action first set to [" << action << ']' << endl;
+	FuncRequest func = cancel_meta_seq.addkey(keysym, state);
+	lyxerr[Debug::KEY] << "action first set to [" << func.action << ']' << endl;
 
 	// When not cancel or meta-fake, do the normal lookup.
 	// Note how the meta_fake Mod1 bit is OR-ed in and reset afterwards.
 	// Mostly, meta_fake_bit = key_modifier::none. RVDK_PATCH_5.
-	if ((action != LFUN_CANCEL) && (action != LFUN_META_FAKE)) {
+	if ((func.action != LFUN_CANCEL) && (func.action != LFUN_META_FAKE)) {
 		// remove Caps Lock and Mod2 as a modifiers
-		action = keyseq.addkey(keysym, (state | meta_fake_bit));
+		func = keyseq.addkey(keysym, (state | meta_fake_bit));
 		lyxerr[Debug::KEY] << "action now set to ["
-			<< action << ']' << endl;
+			<< func.action << ']' << endl;
 	}
 
 	// Dont remove this unless you know what you are doing.
 	meta_fake_bit = key_modifier::none;
 
 	// can this happen now ?
-	if (action == LFUN_NOACTION) {
-		action = LFUN_PREFIX;
+	if (func.action == LFUN_NOACTION) {
+		func = FuncRequest(LFUN_PREFIX);
 	}
 
 	if (lyxerr.debugging(Debug::KEY)) {
 		lyxerr << "Key [action="
-		       << action << "]["
+		       << func.action << "]["
 		       << keyseq.print() << ']'
 		       << endl;
 	}
@@ -233,19 +233,20 @@ void LyXFunc::processKeySym(LyXKeySymPtr keysym,
 
 	// Maybe user can only reach the key via holding down shift.
 	// Let's see. But only if shift is the only modifier
-	if (action == LFUN_UNKNOWN_ACTION && state == key_modifier::shift) {
+	if (func.action == LFUN_UNKNOWN_ACTION &&
+	    state == key_modifier::shift) {
 		lyxerr[Debug::KEY] << "Trying without shift" << endl;
-		action = keyseq.addkey(keysym, key_modifier::none);
-		lyxerr[Debug::KEY] << "Action now " << action << endl;
+		func = keyseq.addkey(keysym, key_modifier::none);
+		lyxerr[Debug::KEY] << "Action now " << func.action << endl;
 	}
 
-	if (action == LFUN_UNKNOWN_ACTION) {
+	if (func.action == LFUN_UNKNOWN_ACTION) {
 		// Hmm, we didn't match any of the keysequences. See
 		// if it's normal insertable text not already covered
 		// by a binding
 		if (keysym->isText() && keyseq.length() == 1) {
 			lyxerr[Debug::KEY] << "isText() is true, inserting." << endl;
-			action = LFUN_SELFINSERT;
+			func = FuncRequest(LFUN_SELFINSERT);
 		} else {
 			lyxerr[Debug::KEY] << "Unknown, !isText() - giving up" << endl;
 			owner->message(_("Unknown function."));
@@ -253,7 +254,7 @@ void LyXFunc::processKeySym(LyXKeySymPtr keysym,
 		}
 	}
 
-	if (action == LFUN_SELFINSERT) {
+	if (func.action == LFUN_SELFINSERT) {
 		if (encoded_last_key != 0) {
 			string arg;
 			arg += encoded_last_key;
@@ -264,7 +265,7 @@ void LyXFunc::processKeySym(LyXKeySymPtr keysym,
 				   << argument << "']" << endl;
 		}
 	} else {
-		dispatch(FuncRequest(kb_action(action)));
+		dispatch(func);
 	}
 }
 
@@ -803,7 +804,8 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 	// solution, we consider only the first action of the sequence
 	if (ev.action == LFUN_SEQUENCE) {
 		// argument contains ';'-terminated commands
-		flag = getStatus(FuncRequest(lyxaction.LookupFunc(token(ev.argument, ';', 0))));
+#warning LyXAction arguements not handled here.
+		flag = getStatus(FuncRequest(lyxaction.lookupFunc(token(ev.argument, ';', 0))));
 	}
 
 	return flag;
@@ -812,14 +814,14 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 
 void LyXFunc::dispatch(string const & s, bool verbose)
 {
-	int const action = lyxaction.LookupFunc(s);
+	FuncRequest func = lyxaction.lookupFunc(s);
 
-	if (action == LFUN_UNKNOWN_ACTION) {
+	if (func.action == LFUN_UNKNOWN_ACTION) {
 		owner->message(bformat(_("Unknown function (%1$s)"), s));
 		return;
 	}
 
-	dispatch(FuncRequest(kb_action(action)), verbose);
+	dispatch(func, verbose);
 }
 
 
@@ -847,10 +849,13 @@ namespace {
 } //namespace anon
 
 
-void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
+void LyXFunc::dispatch(FuncRequest const & func, bool verbose)
 {
-	lyxerr[Debug::ACTION] << "LyXFunc::dispatch: action[" << ev.action
-			      <<"] arg[" << ev.argument << ']' << endl;
+	string argument = func.argument;
+	kb_action action = func.action;
+
+	lyxerr[Debug::ACTION] << "LyXFunc::dispatch: action[" << action
+			      <<"] arg[" << argument << ']' << endl;
 
 	// we have not done anything wrong yet.
 	errorstat = false;
@@ -865,11 +870,8 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 
 	selection_possible = false;
 
-	string argument = ev.argument;
-	kb_action action = ev.action;
-
 	// We cannot use this function here
-	if (getStatus(ev).disabled()) {
+	if (getStatus(func).disabled()) {
 		lyxerr[Debug::ACTION] << "LyXFunc::dispatch: "
 		       << lyxaction.getActionName(action)
 		       << " [" << action << "] is disabled at this location"
@@ -885,7 +887,7 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 	{
 		Cursor cursor;
 		buildCursor(cursor, *view());
-		if (cursor.dispatch(FuncRequest(ev, view())) == DISPATCHED) {
+		if (cursor.dispatch(FuncRequest(func, view())) == DISPATCHED) {
 			lyxerr << "dispatched by Cursor::dispatch()\n";
 			goto exit_with_message;
 		}
@@ -917,7 +919,7 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 			// if we've just done LFUN_ESCAPE (which
 			// injects an LFUN_PARAGRAPH_UPDATE)
 			if (action == LFUN_PARAGRAPH_UPDATE) {
-				view()->dispatch(ev);
+				view()->dispatch(func);
 				goto exit_with_message;
 			}
 
@@ -1439,8 +1441,8 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 		break;
 
 	case LFUN_DIALOG_SHOW: {
-		string const name = ev.getArg(0);
-		string data = trim(ev.argument.substr(name.size()));
+		string const name = func.getArg(0);
+		string data = trim(func.argument.substr(name.size()));
 
 		if (name == "character") {
 			data = freefont2string();
@@ -1505,7 +1507,7 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 		InsetBase * inset = owner->getDialogs().getOpenInset(name);
 		if (inset) {
 			FuncRequest fr(view(), LFUN_INSET_DIALOG_UPDATE,
-				       ev.argument);
+				       func.argument);
 			inset->localDispatch(fr);
 		} else if (name == "paragraph") {
 			dispatch(FuncRequest(LFUN_PARAGRAPH_UPDATE));
@@ -1658,9 +1660,9 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 	default:
 		// Then if it was none of the above
 		// Trying the BufferView::pimpl dispatch:
-		if (!view()->dispatch(ev))
+		if (!view()->dispatch(func))
 			lyxerr << "A truly unknown func ["
-			       << lyxaction.getActionName(ev.action) << "]!"
+			       << lyxaction.getActionName(func.action) << "]!"
 			       << endl;
 		break;
 	} // end of switch
@@ -1676,22 +1678,23 @@ exit_with_message:
 		}
 
 		// If we executed a mutating lfun, mark the buffer as dirty
-		if (!getStatus(ev).disabled()
-		    && !lyxaction.funcHasFlag(ev.action, LyXAction::NoBuffer)
-		    && !lyxaction.funcHasFlag(ev.action, LyXAction::ReadOnly))
+		if (!getStatus(func).disabled()
+		    && !lyxaction.funcHasFlag(func.action, LyXAction::NoBuffer)
+		    && !lyxaction.funcHasFlag(func.action, LyXAction::ReadOnly))
 			view()->buffer()->markDirty();
 	}
 
-	sendDispatchMessage(getMessage(), ev, verbose);
+	sendDispatchMessage(getMessage(), func, verbose);
 }
 
 
-void LyXFunc::sendDispatchMessage(string const & msg, FuncRequest const & ev, bool verbose)
+void LyXFunc::sendDispatchMessage(string const & msg,
+				  FuncRequest const & func, bool verbose)
 {
 	owner->updateMenubar();
 	owner->updateToolbar();
 
-	if (ev.action == LFUN_SELFINSERT || !verbose) {
+	if (func.action == LFUN_SELFINSERT || !verbose) {
 		lyxerr[Debug::ACTION] << "dispatch msg is " << msg << endl;
 		if (!msg.empty())
 			owner->message(msg);
@@ -1702,23 +1705,23 @@ void LyXFunc::sendDispatchMessage(string const & msg, FuncRequest const & ev, bo
 	if (!dispatch_msg.empty())
 		dispatch_msg += ' ';
 
-	string comname = lyxaction.getActionName(ev.action);
+	string comname = lyxaction.getActionName(func.action);
 
 	bool argsadded = false;
 
-	if (!ev.argument.empty()) {
-		if (ev.action != LFUN_UNKNOWN_ACTION) {
-			comname += ' ' + ev.argument;
+	if (!func.argument.empty()) {
+		if (func.action != LFUN_UNKNOWN_ACTION) {
+			comname += ' ' + func.argument;
 			argsadded = true;
 		}
 	}
 
-	string const shortcuts = toplevel_keymap->findbinding(ev.action);
+	string const shortcuts = toplevel_keymap->findbinding(func);
 
 	if (!shortcuts.empty()) {
 		comname += ": " + shortcuts;
-	} else if (!argsadded && !ev.argument.empty()) {
-		comname += ' ' + ev.argument;
+	} else if (!argsadded && !func.argument.empty()) {
+		comname += ' ' + func.argument;
 	}
 
 	if (!comname.empty()) {

@@ -20,6 +20,8 @@
 
 #include "support/lstrings.h"
 
+#include <boost/assert.hpp>
+
 using lyx::support::split;
 using lyx::support::trim;
 
@@ -46,16 +48,6 @@ using std::ostream;
 */
 
 LyXAction lyxaction;
-
-namespace {
-
-/// return true if the given action is a pseudo-action
-inline bool isPseudoAction(int a)
-{
-	return a > int(LFUN_LASTACTION);
-}
-
-}
 
 
 void LyXAction::newFunc(kb_action action, string const & name,
@@ -345,29 +337,27 @@ LyXAction::LyXAction()
 
 
 // Returns an action tag from a string.
-kb_action LyXAction::LookupFunc(string const & func)
+FuncRequest LyXAction::lookupFunc(string const & func) const
 {
 	string const func2 = trim(func);
-	if (func2.empty()) return LFUN_NOACTION;
 
-	// split action and arg
-	string actstr;
-	string const argstr = split(func2, actstr, ' ');
-	lyxerr[Debug::ACTION] << "Action: " << actstr << '\n'
-			      << "Arg   : " << argstr << endl;
+	if (func2.empty()) {
+		return FuncRequest(LFUN_NOACTION);
+	}
 
-	func_map::const_iterator fit = lyx_func_map.find(actstr);
+	string cmd;
+	string const arg = split(func2, cmd, ' ');
 
-	return fit != lyx_func_map.end() ? fit->second : LFUN_UNKNOWN_ACTION;
+	func_map::const_iterator fit = lyx_func_map.find(cmd);
+
+	return fit != lyx_func_map.end() ? FuncRequest(fit->second, arg) : FuncRequest(LFUN_UNKNOWN_ACTION);
 }
 
 
-string const LyXAction::getActionName(int action) const
+string const LyXAction::getActionName(kb_action action) const
 {
-	info_map::const_iterator const it = lyx_info_map.find(kb_action(action));
-	if (it != lyx_info_map.end())
-		return it->second.name;
-	return string();
+	info_map::const_iterator const it = lyx_info_map.find(action);
+	return it != lyx_info_map.end() ? it->second.name : string();
 }
 
 
@@ -376,14 +366,9 @@ bool LyXAction::funcHasFlag(kb_action action,
 {
 	info_map::const_iterator ici = lyx_info_map.find(action);
 
-	if (ici != lyx_info_map.end()) {
-		return ici->second.attrib & flag;
-	} else {
-		// it really should exist, but...
-		lyxerr << "LyXAction::funcHasFlag: "
-			"No info about kb_action: " << action << '\n';
-		return false;
-	}
+	BOOST_ASSERT(ici != lyx_info_map.end());
+
+	return ici->second.attrib & flag;
 }
 
 

@@ -1324,7 +1324,7 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev_in)
 		ev.errorMessage(N_("Unknown function!"));
 		break;
 
-	default:	
+	default:
 		return bv_->getLyXText()->dispatch(FuncRequest(ev, bv_));
 	} // end of switch
 

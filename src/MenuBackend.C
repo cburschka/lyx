@@ -115,12 +115,17 @@ string const MenuItem::binding() const
 
 	// Get the keys bound to this action, but keep only the
 	// first one later
-	string bindings = toplevel_keymap->findbinding(func_.action);
+	string bindings = toplevel_keymap->findbinding(func_);
 
 	if (!bindings.empty()) {
 		return bindings.substr(1, bindings.find(']') - 1);
-	} else
+	} else {
+		lyxerr << "No bindings for "
+		       << lyxaction.getActionName(func_.action)
+		       << '(' << func_.argument << ')' << endl;
 		return string();
+	}
+
 }
 
 
@@ -238,20 +243,8 @@ Menu & Menu::read(LyXLex & lex)
 			string const name = _(lex.getString());
 			lex.next(true);
 			string const command = lex.getString();
-			string::size_type sp = command.find(' ');
-			if (sp != string::npos) {
-				string const cmd = command.substr(0, sp);
-				string const arg =command.substr(sp + 1,
-								 string::npos);
-				kb_action act = lyxaction.LookupFunc(cmd);
-				add(MenuItem(MenuItem::Command, name,
-					     FuncRequest(act, arg), optional));
-			} else {
-				kb_action act = lyxaction.LookupFunc(command);
-				add(MenuItem(MenuItem::Command, name,
-					     FuncRequest(act), optional));
-			}
-
+			FuncRequest func = lyxaction.lookupFunc(command);
+			add(MenuItem(MenuItem::Command, name, func, optional));
 			optional = false;
 			break;
 		}
@@ -620,7 +613,8 @@ void expandToc(Menu & tomenu, LyXView const * view)
 	cit = toc_list.find("TOC");
 	if (cit == end) {
 		tomenu.add(MenuItem(MenuItem::Command,
-				    _("No Table of contents")),
+				    _("No Table of contents"),
+				    FuncRequest()),
 			   view);
 	} else {
 		expandToc2(tomenu, cit->second, 0, cit->second.size(), 0);

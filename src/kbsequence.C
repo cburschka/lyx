@@ -24,8 +24,9 @@
 using std::make_pair;
 
 
-int kb_sequence::addkey(LyXKeySymPtr key,
-			key_modifier::state mod, key_modifier::state nmod)
+FuncRequest const &
+kb_sequence::addkey(LyXKeySymPtr key,
+		    key_modifier::state mod, key_modifier::state nmod)
 {
 	// adding a key to a deleted sequence
 	// starts a new sequence
@@ -42,7 +43,8 @@ int kb_sequence::addkey(LyXKeySymPtr key,
 		return curmap->lookup(key, mod, this);
 	}
 
-	return LFUN_UNKNOWN_ACTION;
+	static FuncRequest unknown(LFUN_UNKNOWN_ACTION);
+	return unknown;
 }
 
 

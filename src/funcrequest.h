@@ -75,4 +75,11 @@ public:  // should be private, too...
 	mouse_button::state button_;
 };
 
+
+inline
+bool operator==(FuncRequest const & lhs, FuncRequest const & rhs)
+{
+	return lhs.action == rhs.action && lhs.argument == rhs.argument;
+}
+
 #endif // FUNCREQUEST_H

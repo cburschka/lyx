@@ -179,11 +179,11 @@ void GMenubar::onSubMenuActivate(MenuItem const * item,
 			break;
 		case MenuItem::Command:
 		{
+			#warning Bindings are not inserted into the menu labels here. (Lgb)
 			FuncStatus const flag =
 				view_->getLyXFunc().getStatus(i->func());
-			bool on, off;
-			on = flag.onoff(true);
-			off = flag.onoff(false);
+			bool on = flag.onoff(true);
+			bool off = flag.onoff(false);
 
 			if (on || off) {
 				gmenu->items().push_back(

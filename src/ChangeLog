@@ -1,3 +1,47 @@
+2003-09-22  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* lyxfunc.C (processKeySym): adjust
+	(dispatch): adjust
+	(dispatch): change arg name from ev to func, adjust
+	(sendDispatchMessage): ditto
+
+	* lyx_main.C (defaultKeyBindings): adjust keybindings
+	(deadKeyBindings): ditto
+
+	* kbsequence.C (addkey): return a FuncRequest
+
+	* kbmap.h (kb_key): struct var FuncRequest instead of int action. 
+
+	* kbmap.C (bind): take a FuncRequest as arg, adjust
+	(read): adjust
+	(lookup): adjust
+	(defkey): change to take a FuncRequest as arg, adjust
+	(findbinding): take a FuncRequest as arg, adjust. 
+
+	* funcrequest.h (operator=): added
+
+	* funcrequest.C (FuncRequest): default kb_action changed from
+	LFUN_UNKNOWN_ACTION to LFUN_NO_ACTION
+
+	* buffer.C (dispatch): simplify
+	(dispatch): adjust to take a FuncRequest as arg, adjust
+
+	* boost.C (assertion_failed): change assertion message slightly
+
+	* ToolbarBackend.C (read): simplify
+
+	* MenuBackend.C (binding): adjust call to findbinding, add a
+	message if no binding is found.
+	(read): simplify
+	(expandToc): correct by adding a empty FuncRequest
+
+	* LyXAction.C: include <boost/assert.hpp>
+	(isPseudoAction): delete function
+	(LookupFunc): change name to...
+	(lookupFunc): this. change return type to FuncRequest.
+	(getActionName): take kb_action as arg, simplify
+	(funcHasFlag): add an assert, simplify.
+
 2003-09-21  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* toc.C (action): return a FuncRequest, simplify

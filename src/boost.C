@@ -49,8 +49,9 @@ void emergencyCleanup()
 void assertion_failed(char const * expr, char const * function,
 		      char const * file, long line)
 {
-	lyxerr << "Assertion triggered in " << function << " by \"" <<
-		expr << " in file " << file << ":" << line << endl;
+	lyxerr << "Assertion triggered in " << function
+	       << " by failing check \"" << expr << "\""
+	       << " in file " << file << ":" << line << endl;
 	emergencyCleanup();
 	lyx::support::abort();
 }

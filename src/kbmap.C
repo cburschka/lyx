@@ -27,6 +27,7 @@
 using std::endl;
 using lyx::support::i18nLibFileSearch;
 
+
 string const kb_keymap::printKeysym(LyXKeySymPtr key,
 				    key_modifier::state mod)
 {
@@ -52,19 +53,19 @@ string const kb_keymap::printKey(kb_key const & key) const
 }
 
 
-string::size_type kb_keymap::bind(string const & seq, int action)
+string::size_type kb_keymap::bind(string const & seq, FuncRequest const & func)
 {
 	if (lyxerr.debugging(Debug::KBMAP)) {
 		lyxerr << "BIND: Sequence `"
 		       << seq << "' Action `"
-		       << action << '\'' << endl;
+		       << func.action << '\'' << endl;
 	}
 
 	kb_sequence k(0, 0);
 
 	string::size_type const res = k.parse(seq);
 	if (res == string::npos) {
-		defkey(&k, action);
+		defkey(&k, func);
 	} else {
 		lyxerr[Debug::KBMAP] << "Parse error at position " << res
 				     << " in key sequence '" << seq << "'."
@@ -137,15 +138,15 @@ bool kb_keymap::read(string const & bind_file)
 				break;
 			}
 
-			int action = lyxaction.LookupFunc(cmd);
-			if (!action == LFUN_UNKNOWN_ACTION) {
+			FuncRequest func = lyxaction.lookupFunc(cmd);
+			if (func. action == LFUN_UNKNOWN_ACTION) {
 				lexrc.printError("BN_BIND: Unknown LyX"
 						 " function `$$Token'");
 				error = true;
 				break;
 			}
 
-			bind(seq, kb_action(action));
+			bind(seq, func);
 			break;
 		}
 		case BN_BINDFILE:
@@ -169,13 +170,16 @@ bool kb_keymap::read(string const & bind_file)
 }
 
 
-int kb_keymap::lookup(LyXKeySymPtr key,
-		      key_modifier::state mod, kb_sequence * seq) const
+FuncRequest const &
+kb_keymap::lookup(LyXKeySymPtr key,
+		  key_modifier::state mod, kb_sequence * seq) const
 {
+	static FuncRequest const unknown(LFUN_UNKNOWN_ACTION);
+
 	if (table.empty()) {
 		seq->curmap = seq->stdmap;
 		seq->mark_deleted();
-		return LFUN_UNKNOWN_ACTION;
+		return unknown;
 	}
 
 	Table::const_iterator end = table.end();
@@ -189,12 +193,13 @@ int kb_keymap::lookup(LyXKeySymPtr key,
 			if (cit->table.get()) {
 				// this is a prefix key - set new map
 				seq->curmap = cit->table.get();
-				return LFUN_PREFIX;
+				static FuncRequest prefix(LFUN_PREFIX);
+				return prefix;
 			} else {
 				// final key - reset map
 				seq->curmap = seq->stdmap;
 				seq->mark_deleted();
-				return cit->action;
+				return cit->func;
 			}
 		}
 	}
@@ -202,7 +207,8 @@ int kb_keymap::lookup(LyXKeySymPtr key,
 	// error - key not found:
 	seq->curmap = seq->stdmap;
 	seq->mark_deleted();
-	return LFUN_UNKNOWN_ACTION;
+
+	return unknown;
 }
 
 
@@ -218,7 +224,8 @@ string const kb_keymap::print() const
 }
 
 
-void kb_keymap::defkey(kb_sequence * seq, int action, unsigned int r)
+void kb_keymap::defkey(kb_sequence * seq,
+		       FuncRequest const & func, unsigned int r)
 {
 	LyXKeySymPtr code = seq->sequence[r];
 	if (!code->isOK())
@@ -243,7 +250,7 @@ void kb_keymap::defkey(kb_sequence * seq, int action, unsigned int r)
 				if (it->table.get()) {
 					it->table.reset();
 				}
-				it->action = action;
+				it->func = func;
 				return;
 			} else if (!it->table.get()) {
 				lyxerr << "Error: New binding for '" << seq->print()
@@ -251,7 +258,7 @@ void kb_keymap::defkey(kb_sequence * seq, int action, unsigned int r)
 					       << endl;
 				return;
 			} else {
-				it->table->defkey(seq, action, r + 1);
+				it->table->defkey(seq, func, r + 1);
 				return;
 			}
 		}
@@ -261,18 +268,19 @@ void kb_keymap::defkey(kb_sequence * seq, int action, unsigned int r)
 	newone->code = code;
 	newone->mod = seq->modifiers[r];
 	if (r + 1 == seq->length()) {
-		newone->action = action;
+		newone->func = func;
 		newone->table.reset();
 		return;
 	} else {
 		newone->table.reset(new kb_keymap);
-		newone->table->defkey(seq, action, r + 1);
+		newone->table->defkey(seq, func, r + 1);
 		return;
 	}
 }
 
 
-string const kb_keymap::findbinding(int act, string const & prefix) const
+string const kb_keymap::findbinding(FuncRequest const & func,
+				    string const & prefix) const
 {
 	string res;
 	if (table.empty()) return res;
@@ -281,15 +289,16 @@ string const kb_keymap::findbinding(int act, string const & prefix) const
 	for (Table::const_iterator cit = table.begin();
 	    cit != end; ++cit) {
 		if (cit->table.get()) {
-			res += cit->table->findbinding(act,
+			res += cit->table->findbinding(func,
 						       prefix
 						       + printKey((*cit))
 						       + ' ');
-		} else if (cit->action == act) {
+		} else if (cit->func == func) {
 			res += '[';
 			res += prefix + printKey((*cit));
 			res += "] ";
 		}
 	}
+
 	return res;
 }

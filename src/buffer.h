@@ -31,6 +31,7 @@
 
 class BufferParams;
 class ErrorItem;
+class FuncRequest;
 class LyXFont;
 class LyXLex;
 class LyXRC;
@@ -75,7 +76,7 @@ public:
 	bool dispatch(string const & command, bool * result = 0);
 
 	/// Maybe we know the function already by number...
-	bool dispatch(int ac, string const & argument, bool * result = 0);
+	bool dispatch(FuncRequest const & func, bool * result = 0);
 
 	/// Load the autosaved file.
 	void loadAutoSaveFile();

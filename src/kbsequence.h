@@ -22,6 +22,7 @@
 
 class kb_keymap;
 class LyXKeySym;
+class FuncRequest;
 
 /// Holds a key sequence and the current and standard keymaps
 class kb_sequence {
@@ -43,8 +44,9 @@ public:
 	 * @param nmod which modifiers to mask out for equality test
 	 * @return the action matching this key sequence or LFUN_UNKNOWN_ACTION
 	 */
-	int addkey(LyXKeySymPtr keysym, key_modifier::state mod,
-		   key_modifier::state nmod = key_modifier::none);
+	FuncRequest const &
+	addkey(LyXKeySymPtr keysym, key_modifier::state mod,
+	       key_modifier::state nmod = key_modifier::none);
 
 	/**
 	 * Add a sequence of keys from a string to the sequence

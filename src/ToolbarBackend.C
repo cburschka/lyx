@@ -93,26 +93,10 @@ void ToolbarBackend::read(LyXLex & lex)
 				lyxerr[Debug::PARSER]
 					<< "ToolbarBackend::read TO_ADD func: `"
 					<< func_arg << '\'' << endl;
-				// Split func_arg in function and arg.
-				string::size_type sp = func_arg.find(' ');
-				if (sp != string::npos) {
 
-					string const func =
-						func_arg.substr(0, sp);
-					string const arg =
-					     func_arg.substr(sp + 1,
-							     string::npos);
-
-					kb_action const tf =
-						lyxaction.LookupFunc(func);
-
-					add(tb, FuncRequest(tf, arg), tooltip);
-				} else {
-					kb_action const tf = lyxaction.LookupFunc(func_arg);
-					add(tb, FuncRequest(tf), tooltip);
-
-				}
-
+				FuncRequest func =
+					lyxaction.lookupFunc(func_arg);
+				add(tb, func, tooltip);
 			}
 			break;
 

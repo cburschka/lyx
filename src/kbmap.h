@@ -14,6 +14,8 @@
 #ifndef KBMAP_H
 #define KBMAP_H
 
+#include "funcrequest.h"
+
 #include "frontends/key_state.h"
 
 #include <boost/shared_ptr.hpp>
@@ -33,10 +35,10 @@ public:
 	 * occurs.
 	 * See kb_sequence::parse for the syntax of the seq string
 	 */
-	string::size_type bind(string const & seq, int action);
+	string::size_type bind(string const & seq, FuncRequest const & func);
 
 	// Parse a bind file
-	bool kb_keymap::read(string const & bind_file);
+	bool read(string const & bind_file);
 
 	/// print all available keysyms
 	string const print() const;
@@ -50,11 +52,12 @@ public:
 	 * @param seq the current key sequence so far
 	 * @return the action / LFUN_PREFIX / LFUN_UNKNOWN_ACTION
 	 */
-	int lookup(LyXKeySymPtr key,
-		   key_modifier::state mod, kb_sequence * seq) const;
+	FuncRequest const &
+	lookup(LyXKeySymPtr key,
+	       key_modifier::state mod, kb_sequence * seq) const;
 
 	/// Given an action, find all keybindings.
-	string const findbinding(int action,
+	string const findbinding(FuncRequest const & func,
 				 string const & prefix = string()) const;
 
 	/**
@@ -80,14 +83,15 @@ private:
 		boost::shared_ptr<kb_keymap> table;
 
 		/// Action for !prefix keys
-		int action;
+		FuncRequest func;
 	};
 
 	/**
 	 * Define an action for a key sequence.
 	 * @param r internal recursion level
 	 */
-	void defkey(kb_sequence * seq, int action, unsigned int r = 0);
+	void defkey(kb_sequence * seq, FuncRequest const & func,
+		    unsigned int r = 0);
 
 	///  Returns a string of the given key
 	string const printKey(kb_key const & key) const;
