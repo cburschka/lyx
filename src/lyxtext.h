@@ -22,6 +22,7 @@
 #include "layout.h"
 #include "lyxrow.h"
 #include "vspace.h"
+#include "Spacing.h"
 #include "LColor.h"
 
 class Buffer;
@@ -418,6 +419,7 @@ public:
 			  bool pagebreak_top, bool pagebreak_bottom,
 			  VSpace const & space_top,
 			  VSpace const & space_bottom,
+			  Spacing const & spacing,
 			  LyXAlignment align, 
 			  string labelwidthstring,
 			  bool noindent);

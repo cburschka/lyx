@@ -1189,6 +1189,7 @@ void LyXText::setParagraph(BufferView * bview,
 			   bool pagebreak_top, bool pagebreak_bottom,
 			   VSpace const & space_top,
 			   VSpace const & space_bottom,
+                           Spacing const & spacing,
 			   LyXAlignment align, 
 			   string labelwidthstring,
 			   bool noindent) 
@@ -1229,6 +1230,7 @@ void LyXText::setParagraph(BufferView * bview,
 		cursor.par()->params().pagebreakBottom(pagebreak_bottom);
 		cursor.par()->params().spaceTop(space_top);
 		cursor.par()->params().spaceBottom(space_bottom);
+                cursor.par()->params().spacing(spacing);
 		// does the layout allow the new alignment?
 		if (align == LYX_ALIGN_LAYOUT)
 			align = textclasslist

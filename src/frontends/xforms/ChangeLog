@@ -5,6 +5,16 @@
 	* form_math_matrix.C: 
 	* forms/form_math_matrix.fd: new layout
  
+2001-08-16  John Levon  <moz@compsoc.man.ac.uk>
+
+	* form_paragraph.h:
+	* form_paragraph.C:
+	* forms/form_paragraph.fd:
+	* FormParagraph.C: support per-para linespacing
+ 
+	* forms/form_float.fd:
+	* form_float.C: fix shortcut typo
+ 
 2001-08-15  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* forms/form_character.fd: small adjustment to the position of John's

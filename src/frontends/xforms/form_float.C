@@ -74,7 +74,11 @@ FD_form_float * FormFloat::build_float()
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseRestoreCB, 0);
-  fdui->radio_here = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 190, 60, 152, 30, _("Here, if possible#i"));
+  {
+    char const * const dummy = N_("Here, if possible|#i");
+    fdui->radio_here = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 190, 60, 152, 30, idex(_(dummy)));
+    fl_set_button_shortcut(obj, scex(_(dummy)), 1);
+  }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
   {

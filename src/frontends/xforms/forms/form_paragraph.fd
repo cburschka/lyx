@@ -5,17 +5,18 @@ Internal Form Definition File
 
 Number of forms: 3
 Unit of measure: FL_COORD_PIXEL
+SnapGrid: 5
 
 =============== FORM ===============
 Name: form_paragraph_general
 Width: 490
-Height: 250
-Number of Objects: 29
+Height: 335
+Number of Objects: 32
 
 --------------------
 class: FL_BOX
 type: FLAT_BOX
-box: 0 0 490 250
+box: 0 0 490 335
 boxtype: FL_FLAT_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -33,7 +34,7 @@ argument:
 --------------------
 class: FL_FRAME
 type: ENGRAVED_FRAME
-box: 360 110 120 50
+box: 360 260 120 40
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -51,7 +52,7 @@ argument:
 --------------------
 class: FL_FRAME
 type: ENGRAVED_FRAME
-box: 10 110 340 90
+box: 10 110 470 120
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -123,7 +124,7 @@ argument:
 --------------------
 class: FL_INPUT
 type: NORMAL_INPUT
-box: 100 210 360 30
+box: 100 265 250 30
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_LEFT
@@ -141,7 +142,7 @@ argument: 0
 --------------------
 class: FL_TEXT
 type: NORMAL_TEXT
-box: 370 100 60 20
+box: 370 250 60 20
 boxtype: FL_FLAT_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_LEFT|FL_ALIGN_INSIDE
@@ -231,7 +232,7 @@ argument: 0
 --------------------
 class: FL_CHECKBUTTON
 type: PUSH_BUTTON
-box: 360 120 120 30
+box: 360 265 120 30
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_YELLOW
 alignment: FL_ALIGN_CENTER
@@ -357,7 +358,7 @@ argument:
 --------------------
 class: FL_INPUT
 type: NORMAL_INPUT
-box: 180 120 90 30
+box: 180 135 90 30
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_LEFT
@@ -375,7 +376,7 @@ argument: 0
 --------------------
 class: FL_INPUT
 type: NORMAL_INPUT
-box: 180 160 90 30
+box: 180 185 90 30
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_LEFT
@@ -393,7 +394,7 @@ argument: 0
 --------------------
 class: FL_CHOICE
 type: NORMAL_CHOICE
-box: 70 120 100 30
+box: 70 135 100 30
 boxtype: FL_FRAME_BOX
 colors: FL_COL1 FL_BLACK
 alignment: FL_ALIGN_LEFT
@@ -411,7 +412,7 @@ argument: 0
 --------------------
 class: FL_CHOICE
 type: NORMAL_CHOICE
-box: 70 160 100 30
+box: 70 185 100 30
 boxtype: FL_FRAME_BOX
 colors: FL_COL1 FL_BLACK
 alignment: FL_ALIGN_LEFT
@@ -501,7 +502,7 @@ argument:
 --------------------
 class: FL_CHECKBUTTON
 type: PUSH_BUTTON
-box: 270 120 40 30
+box: 270 135 40 30
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_YELLOW
 alignment: FL_ALIGN_CENTER
@@ -519,7 +520,7 @@ argument: 0
 --------------------
 class: FL_CHECKBUTTON
 type: PUSH_BUTTON
-box: 270 160 40 30
+box: 270 185 40 30
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_YELLOW
 alignment: FL_ALIGN_CENTER
@@ -531,6 +532,60 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: check_space_below
+callback: C_FormBaseDeprecatedInputCB
+argument: 0
+
+--------------------
+class: FL_CHOICE
+type: NORMAL_CHOICE
+box: 355 150 115 30
+boxtype: FL_FRAME_BOX
+colors: FL_COL1 FL_BLACK
+alignment: FL_ALIGN_LEFT
+style: FL_NORMAL_STYLE
+size: FL_DEFAULT_SIZE
+lcol: FL_BLACK
+label: 
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: choice_linespacing
+callback: C_FormBaseDeprecatedInputCB
+argument: 0
+
+--------------------
+class: FL_TEXT
+type: NORMAL_TEXT
+box: 350 125 100 20
+boxtype: FL_FLAT_BOX
+colors: FL_COL1 FL_MCOL
+alignment: FL_ALIGN_LEFT|FL_ALIGN_INSIDE
+style: FL_BOLD_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: Line Spacing
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: 
+callback: 
+argument: 
+
+--------------------
+class: FL_INPUT
+type: NORMAL_INPUT
+box: 355 190 115 30
+boxtype: FL_DOWN_BOX
+colors: FL_COL1 FL_MCOL
+alignment: FL_ALIGN_LEFT
+style: FL_NORMAL_STYLE
+size: FL_DEFAULT_SIZE
+lcol: FL_BLACK
+label: 
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: input_linespacing
 callback: C_FormBaseDeprecatedInputCB
 argument: 0
 

@@ -2,6 +2,13 @@
 
 	* lyxfunc.C (dispatch): implemented the new FINISHED states.
 
+2001-08-16  John Levon  <moz@compsoc.man.ac.uk>
+
+	* BufferView_pimpl.C: 
+	* figureForm.C:
+	* lyxtext.h:
+	* text2.C: setParagraph takes linespacing now
+ 
 2001-08-14  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* buffer.C (parseSingleLyXformat2Token): Do not generate errors

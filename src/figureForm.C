@@ -88,6 +88,7 @@ void FigureApplyCB(FL_OBJECT *, long)
 				     VSpace (0.3 *
 					     buffer->params.spacing.getValue(),
 					     LyXLength::CM),
+				     Spacing(),
 				     LYX_ALIGN_CENTER, string(), 0);
 	
 	current_view->update(current_view->text, BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);

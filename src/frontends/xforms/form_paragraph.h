@@ -37,6 +37,8 @@ struct FD_form_paragraph_general {
 	FL_OBJECT *choice_space_below;
 	FL_OBJECT *check_space_above;
 	FL_OBJECT *check_space_below;
+	FL_OBJECT *choice_linespacing;
+	FL_OBJECT *input_linespacing;
 };
 struct FD_form_paragraph_extra {
 	~FD_form_paragraph_extra();

@@ -22,12 +22,12 @@ FD_form_paragraph_general * FormParagraph::build_paragraph_general()
   FL_OBJECT *obj;
   FD_form_paragraph_general *fdui = new FD_form_paragraph_general;
 
-  fdui->form = fl_bgn_form(FL_NO_BOX, 490, 250);
+  fdui->form = fl_bgn_form(FL_NO_BOX, 490, 335);
   fdui->form->u_vdata = this;
-  obj = fl_add_box(FL_FLAT_BOX, 0, 0, 490, 250, "");
-  obj = fl_add_frame(FL_ENGRAVED_FRAME, 360, 110, 120, 50, "");
+  obj = fl_add_box(FL_FLAT_BOX, 0, 0, 490, 335, "");
+  obj = fl_add_frame(FL_ENGRAVED_FRAME, 360, 260, 120, 40, "");
     fl_set_object_color(obj, FL_COL1, FL_COL1);
-  obj = fl_add_frame(FL_ENGRAVED_FRAME, 10, 110, 340, 90, "");
+  obj = fl_add_frame(FL_ENGRAVED_FRAME, 10, 110, 470, 120, "");
     fl_set_object_color(obj, FL_COL1, FL_COL1);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
   obj = fl_add_frame(FL_ENGRAVED_FRAME, 360, 20, 120, 70, "");
@@ -38,14 +38,14 @@ FD_form_paragraph_general * FormParagraph::build_paragraph_general()
     fl_set_object_color(obj, FL_COL1, FL_COL1);
   {
     char const * const dummy = N_("Label Width:|#d");
-    fdui->input_labelwidth = obj = fl_add_input(FL_NORMAL_INPUT, 100, 210, 360, 30, idex(_(dummy)));
+    fdui->input_labelwidth = obj = fl_add_input(FL_NORMAL_INPUT, 100, 265, 250, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_gravity(obj, FL_West, FL_East);
     fl_set_object_resize(obj, FL_RESIZE_X);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
-  obj = fl_add_text(FL_NORMAL_TEXT, 370, 100, 60, 20, _("Indent"));
+  obj = fl_add_text(FL_NORMAL_TEXT, 370, 250, 60, 20, _("Indent"));
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_lalign(obj, FL_ALIGN_LEFT|FL_ALIGN_INSIDE);
     fl_set_object_lstyle(obj, FL_BOLD_STYLE);
@@ -79,7 +79,7 @@ FD_form_paragraph_general * FormParagraph::build_paragraph_general()
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
   {
     char const * const dummy = N_("No Indent|#I");
-    fdui->check_noindent = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 360, 120, 120, 30, idex(_(dummy)));
+    fdui->check_noindent = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 360, 265, 120, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
@@ -116,15 +116,15 @@ FD_form_paragraph_general * FormParagraph::build_paragraph_general()
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
   fl_end_group();
 
-  fdui->input_space_above = obj = fl_add_input(FL_NORMAL_INPUT, 180, 120, 90, 30, "");
+  fdui->input_space_above = obj = fl_add_input(FL_NORMAL_INPUT, 180, 135, 90, 30, "");
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
-  fdui->input_space_below = obj = fl_add_input(FL_NORMAL_INPUT, 180, 160, 90, 30, "");
+  fdui->input_space_below = obj = fl_add_input(FL_NORMAL_INPUT, 180, 185, 90, 30, "");
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
   {
     char const * const dummy = N_("Above:|#v");
-    fdui->choice_space_above = obj = fl_add_choice(FL_NORMAL_CHOICE, 70, 120, 100, 30, idex(_(dummy)));
+    fdui->choice_space_above = obj = fl_add_choice(FL_NORMAL_CHOICE, 70, 135, 100, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_boxtype(obj, FL_FRAME_BOX);
@@ -132,7 +132,7 @@ FD_form_paragraph_general * FormParagraph::build_paragraph_general()
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
   {
     char const * const dummy = N_("Below:|#w");
-    fdui->choice_space_below = obj = fl_add_choice(FL_NORMAL_CHOICE, 70, 160, 100, 30, idex(_(dummy)));
+    fdui->choice_space_below = obj = fl_add_choice(FL_NORMAL_CHOICE, 70, 185, 100, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_boxtype(obj, FL_FRAME_BOX);
@@ -156,17 +156,26 @@ FD_form_paragraph_general * FormParagraph::build_paragraph_general()
     fl_set_object_lstyle(obj, FL_BOLD_STYLE);
   {
     char const * const dummy = N_("Keep|#K");
-    fdui->check_space_above = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 270, 120, 40, 30, idex(_(dummy)));
+    fdui->check_space_above = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 270, 135, 40, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
   {
     char const * const dummy = N_("Keep|#p");
-    fdui->check_space_below = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 270, 160, 40, 30, idex(_(dummy)));
+    fdui->check_space_below = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 270, 185, 40, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
+  fdui->choice_linespacing = obj = fl_add_choice(FL_NORMAL_CHOICE, 355, 150, 115, 30, "");
+    fl_set_object_boxtype(obj, FL_FRAME_BOX);
+    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
+  obj = fl_add_text(FL_NORMAL_TEXT, 350, 125, 100, 20, _("Line Spacing"));
+    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+    fl_set_object_lalign(obj, FL_ALIGN_LEFT|FL_ALIGN_INSIDE);
+    fl_set_object_lstyle(obj, FL_BOLD_STYLE);
+  fdui->input_linespacing = obj = fl_add_input(FL_NORMAL_INPUT, 355, 190, 115, 30, "");
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
   fl_end_form();
 

@@ -2384,6 +2384,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 						 cursor.par()->params().pagebreakBottom(),
 						 VSpace(VSpace::NONE), 
 						 cursor.par()->params().spaceBottom(),
+						 cursor.par()->params().spacing(), 
 						 cursor.par()->params().align(), 
 						 cursor.par()->params().labelWidthString(), 0);
 					lt->cursorLeft(bv_);
@@ -2521,6 +2522,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 					 cursor.par()->params().pagebreakTop(), 
 					 cursor.par()->params().pagebreakBottom(),
 					 VSpace(VSpace::NONE), cursor.par()->params().spaceBottom(),
+					 cursor.par()->params().spacing(), 
 					 cursor.par()->params().align(), 
 					 cursor.par()->params().labelWidthString(), 0);
 				update(lt,
@@ -2591,6 +2593,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 					 cursor.par()->params().pagebreakTop(), 
 					 cursor.par()->params().pagebreakBottom(),
 					 VSpace(VSpace::DEFSKIP), cursor.par()->params().spaceBottom(),
+					 cursor.par()->params().spacing(), 
 					 cursor.par()->params().align(), 
 					 cursor.par()->params().labelWidthString(), 1);
 				//update(BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
@@ -3337,6 +3340,7 @@ bool BufferView::Pimpl::insertInset(Inset * inset, string const & lout)
 		bv_->text->setParagraph(bv_, 0, 0,
 				   0, 0,
 				   VSpace(VSpace::NONE), VSpace(VSpace::NONE),
+				   Spacing(),
 				   LYX_ALIGN_LAYOUT, 
 				   string(),
 				   0);

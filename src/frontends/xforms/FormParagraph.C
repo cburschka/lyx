@@ -20,13 +20,16 @@
 #include "FormParagraph.h"
 #include "form_paragraph.h"
 #include "Dialogs.h"
+#include "support/lstrings.h" 
 #include "Liason.h"
 #include "LyXView.h"
 #include "buffer.h"
 #include "lyxtext.h"
 #include "xforms_helpers.h"
 #include "BufferView.h"
+#include "Spacing.h"
 #include "ParagraphParameters.h"
+#include "input_validators.h"
 
 using Liason::setMinibuffer;
 using SigC::slot;
@@ -123,6 +126,9 @@ void FormParagraph::build()
 		    _(" None | Defskip | Smallskip "
 		      "| Medskip | Bigskip | VFill | Length ")); 
 
+    fl_addto_choice(general_->choice_linespacing,
+                    _(" Single | OneHalf | Double | Other "));
+ 
     fl_set_input_return(general_->input_space_above, FL_RETURN_CHANGED);
     fl_set_input_return(general_->input_space_below, FL_RETURN_CHANGED);
     fl_set_input_return(general_->input_labelwidth, FL_RETURN_CHANGED);
@@ -142,9 +148,13 @@ void FormParagraph::build()
     bc_.addReadOnly (general_->choice_space_below);
     bc_.addReadOnly (general_->input_space_below);
     bc_.addReadOnly (general_->check_space_below);
+    bc_.addReadOnly (general_->choice_linespacing);
+    bc_.addReadOnly (general_->input_linespacing); 
     bc_.addReadOnly (general_->check_noindent);
     bc_.addReadOnly (general_->input_labelwidth);
 
+    fl_set_input_filter(general_->input_linespacing, fl_unsigned_float_filter);
+ 
     // now make them fit together
     fl_addto_tabfolder(dialog_->tabbed_folder,_("General"), general_->form);
 }
@@ -182,6 +192,8 @@ void FormParagraph::general_apply()
     LyXAlignment align;
     string labelwidthstring;
     bool noindent;
+    Spacing::Space linespacing;
+    string other_linespacing;
 
     // If a vspace kind is "Length" but there's no text in
     // the input field, reset the kind to "None". 
@@ -265,15 +277,25 @@ void FormParagraph::general_apply()
    
     labelwidthstring = fl_get_input(general_->input_labelwidth);
     noindent = fl_get_button(general_->check_noindent);
+    switch (fl_get_choice(general_->choice_linespacing)) {
+        case 1: linespacing = Spacing::Single; break;
+        case 2: linespacing = Spacing::Onehalf; break;
+        case 3: linespacing = Spacing::Double; break;
+        case 4:
+            linespacing = Spacing::Other;
+            other_linespacing = fl_get_input(general_->input_linespacing);
+            break;
+    }
 
+    Spacing const spacing(linespacing, other_linespacing);
     LyXText * text = 0;
     if (lv_->view()->theLockingInset())
 	text = lv_->view()->theLockingInset()->getLyXText(lv_->view());
     if (!text)
 	text = lv_->view()->text;
     text->setParagraph(lv_->view(), line_top, line_bottom, pagebreak_top,
-		       pagebreak_bottom, space_top, space_bottom, align, 
-		       labelwidthstring, noindent);
+		       pagebreak_bottom, space_top, space_bottom, spacing,
+                       align, labelwidthstring, noindent);
 }
 
 
@@ -333,6 +355,40 @@ void FormParagraph::general_update()
 		  par_->params().pagebreakBottom());
     fl_set_button(general_->check_noindent,
 		  par_->params().noindent());
+
+    int linespacing;
+    Spacing space = par_->params().spacing();
+ 
+    switch (lv_->buffer()->params.spacing.getSpace()) {
+        case Spacing::Single: linespacing = 1; break;
+        case Spacing::Onehalf: linespacing = 2; break;
+        case Spacing::Double: linespacing = 3; break;
+        case Spacing::Other: linespacing = 4; break;
+    }
+
+    switch (space.getSpace()) {
+        case Spacing::Single: linespacing = 1; break;
+        case Spacing::Onehalf: linespacing = 2; break;
+        case Spacing::Double: linespacing = 3; break;
+        case Spacing::Other: linespacing = 4; break;
+        case Spacing::Default:
+            space = lv_->buffer()->params.spacing;
+            break;
+    }
+    fl_set_choice(general_->choice_linespacing, linespacing);
+    if (space.getSpace() == Spacing::Other) {
+        string sp;
+        
+        if (space.getSpace() == Spacing::Default)
+            sp = tostr(lv_->buffer()->params.spacing.getValue());
+        else 
+            sp = tostr(space.getValue());
+        fl_set_input(general_->input_linespacing, sp.c_str());
+        setEnabled(general_->input_linespacing, true);
+    } else {
+        fl_set_input(general_->input_linespacing, "");
+        setEnabled(general_->input_linespacing, false);
+    }
 
     fl_set_input (general_->input_space_above, "");
 
@@ -418,6 +474,13 @@ bool FormParagraph::input(FL_OBJECT * ob, long)
     if (fl_get_choice (general_->choice_space_below) != 7)
         fl_set_input (general_->input_space_below, "");
 
+    if (fl_get_choice (general_->choice_linespacing) == 4)
+        setEnabled (general_->input_linespacing, true);
+    else {
+        setEnabled (general_->input_linespacing, false);
+        fl_set_input (general_->input_linespacing, "");
+    }
+ 
     //
     // first the general form
     //
