@@ -26,9 +26,7 @@
 
 using std::count;
 using std::transform;
-#ifndef __GLIBCPP__
-// The new glibstdc++-v3 has not worked out all the quirks regarding cctype
-// yet. So currently it failes if the to using lines below are stated.
+#ifndef CXX_GLOBAL_CSTD
 using std::tolower;
 using std::toupper;
 #endif

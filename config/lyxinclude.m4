@@ -519,6 +519,22 @@ if test $lyx_cv_cxx_cheaders = no ; then
   LYX_ADD_INC_DIR(lyx_cppflags,\$(top_srcdir)/src/cheaders)  
 fi])
 
+dnl Usage: LYX_CXX_GLOBAL_CSTD: checks whether C library functions
+dnl   are already in the global namespace
+AC_DEFUN(LYX_CXX_GLOBAL_CSTD,[
+    AC_CACHE_CHECK(whether C library functions are already in the global namespace,
+    lyx_cv_cxx_global_cstd,
+    [AC_TRY_COMPILE([
+    #include <cctype>
+    using std::tolower;
+    ],[
+    return 0;
+    ],[lyx_cv_cxx_global_cstd=no],[lyx_cv_cxx_global_cstd=yes])])
+    if test x$lyx_cv_cxx_global_cstd = xyes; then
+	AC_DEFINE(CXX_GLOBAL_CSTD,1,
+	[Define if your C++ compiler puts C library functions in the global namespace])
+    fi
+])
 
 dnl Usage LYX_PATH_XPM: Checks for xpm library and header
 AC_DEFUN(LYX_PATH_XPM,[

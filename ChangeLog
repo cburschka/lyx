@@ -1,3 +1,17 @@
+2000-11-10  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* lib/CREDITS: add Yves Bastide
+
+2000-11-03  Yves Bastide  <stid@libd-pc11.univ-bpclermont.fr>
+
+	* config/lyxinclude.m4 (LYX_CXX_GLOBAL_CSTD): new function to
+	check whether C library functions are in the global namespace.
+
+	* configure.in: calls it.
+
+	* src/support/lstrings.C: #ifndef CXX_GLOBAL_CSTD instead of
+	#ifndef __GLIBCPP__.
+
 2000-11-08  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* src/frontends/xforms/FormParagraph.C (updateLanguage): Check
