@@ -601,7 +601,8 @@ bool LyXTable::SetPWidth(int cell, string width)
         cellinfo_of_cell(fvcell)->p_width = width;
     } else {
         column_info[column_of_cell(fvcell)].p_width = width;
-        SetAlignment(cell,LYX_ALIGN_LEFT);
+	if (!width.empty()) // do this only if there is a width
+		SetAlignment(cell,LYX_ALIGN_LEFT);
     }
     return true;
 }

@@ -2807,11 +2807,15 @@ void LyXText::SetCursorIntern(LyXParagraph *par, int pos)
 		pos = par->PositionInParFromPos(pos);
 		par = tmppar;
 	}
-	if (par->IsDummy() && par->previous && 
+	if (par->IsDummy() && par->previous &&
 	    par->previous->footnoteflag == LyXParagraph::CLOSED_FOOTNOTE) {
-		while (par->previous && 
-		       par->previous->footnoteflag == LyXParagraph::CLOSED_FOOTNOTE){
+		while (par->previous &&
+		       ((par->previous->IsDummy() && par->previous->previous->footnoteflag == LyXParagraph::CLOSED_FOOTNOTE) ||
+			(par->previous->footnoteflag == LyXParagraph::CLOSED_FOOTNOTE))) {
 			par = par->previous ;
+			if (par->IsDummy() &&
+			    par->previous->footnoteflag == LyXParagraph::CLOSED_FOOTNOTE)
+				pos += par->last + 1;
 		}
 		if (par->previous) {
 			par = par->previous;

@@ -1,3 +1,11 @@
+1999-10-21  Juergen Vigna  <jug@sad.it>
+
+	* src/table.C (SetPWidth): Just a small fix so the alignment is not
+	set to left if I just remove the width entry (or it is empty).
+
+	* src/text2.C (SetCursorIntern): Fixed a bug calculating to use wrong
+	paragraph when having dummy paragraphs.
+
 1999-10-20  Juergen Vigna  <jug@sad.it>
 
 	* src/insets/figinset.C: just commented some fl_free_form calls
