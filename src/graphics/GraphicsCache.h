@@ -57,7 +57,7 @@ public:
 	 *  Returns an empty container if there is no such item.
 	 *
 	 *  IMPORTANT: whatever uses an image must make a local copy of this
-	 *  GraphicPtr. The boost::shared_ptr<>::use_count() function is
+	 *  ItemPtr. The boost::shared_ptr<>::use_count() function is
 	 *  used to ascertain whether or not to remove the item from the cache
 	 *  when remove(file) is called.
 	 *
