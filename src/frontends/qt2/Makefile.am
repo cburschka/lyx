@@ -63,7 +63,6 @@ libqt2_la_SOURCES = \
 	QThesaurus.C QThesaurus.h \
 	QToc.C QToc.h \
 	QURL.C QURL.h \
-	QVCLog.C QVCLog.h \
 	QVSpace.C QVSpace.h \
 	QWorkArea.h QWorkArea.C \
 	QWrap.C QWrap.h \

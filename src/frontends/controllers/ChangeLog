@@ -1,5 +1,10 @@
 2003-12-05  Angus Leeming  <leeming@lyx.org>
 
+	* ControlVCLog.[Ch]: removed.
+	* Makefile.am: remove ControlVCLog.[Ch]
+
+2003-12-05  Angus Leeming  <leeming@lyx.org>
+
 	* ControlLog.[Ch]: re-worked so that it is passed the logtype and
 	filename rather than extracting them from the kernel.
 

@@ -152,8 +152,6 @@ libxforms_la_SOURCES = \
 	FormToc.h \
 	FormUrl.C \
 	FormUrl.h \
-	FormVCLog.C \
-	FormVCLog.h \
 	FormVSpace.C \
 	FormVSpace.h \
 	FormWrap.C \

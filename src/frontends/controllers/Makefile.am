@@ -102,8 +102,6 @@ libcontrollers_la_SOURCES= \
 	ControlThesaurus.h \
 	ControlToc.C \
 	ControlToc.h \
-	ControlVCLog.C \
-	ControlVCLog.h \
 	ControlVSpace.C \
 	ControlVSpace.h \
 	ControlWrap.C \

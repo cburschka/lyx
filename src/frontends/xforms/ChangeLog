@@ -1,5 +1,11 @@
 2003-12-05  Angus Leeming  <leeming@lyx.org>
 
+	* FormVCLog.[Ch]: removed.
+
+	* Makefile.am: remove all mention of these files.
+
+2003-12-05  Angus Leeming  <leeming@lyx.org>
+
 	* FormLog.C: much simplified, thanks to the more powerful interface
 	of ControlLog.
 

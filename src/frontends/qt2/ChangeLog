@@ -1,5 +1,13 @@
 2003-12-05  Angus Leeming  <leeming@lyx.org>
 
+	* QVCLog.[Ch]:
+	* QVCLogDialog.[Ch]:
+	* ui/QVCLogDialogBase.ui: removed.
+
+	* Makefile.am, Makefile.dialogs: remove all mention of these files.
+
+2003-12-05  Angus Leeming  <leeming@lyx.org>
+
 	* QLog.C: much simplified, thanks to the more powerful interface
 	of ControlLog.
 
