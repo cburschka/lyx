@@ -1,3 +1,16 @@
+2000-07-10  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* sigc++/configure.in: fix bug in threading-related code (Yes, I
+	did submit that to Karl).
+
+	* configure.in: use -isystem instead of -I for X headers. This
+	fixes a problem on solaris with a recent gcc; 
+	put the front-end code after the X detection code;
+	configure in sigc++ before lib/
+
+	* src/lyx_main.C (commandLineHelp): remove -display from command
+	line help.
+
 2000-07-08  Dekel Tsur  <dekel@math.tau.ac.il>
 
 	* src/text.C (GetColumnNearX): Better behavior when a RTL

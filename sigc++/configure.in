@@ -589,7 +589,7 @@ int main()
     return 0;
   }
 ],[
- . ac_thread.sh
+ . ./ac_thread.sh
  rm ac_thread.sh
 AC_MSG_RESULT(found)
 ],[
@@ -615,7 +615,7 @@ ac_thread_key_impl_size=
 your thread library is not available.  Please fill out the ac_thread.sh file.
 ])
   else
-    . ac_thread.sh
+    . ./ac_thread.sh
   fi
 ])
   AC_DEFINE_UNQUOTED(SIGC_PTHREAD_COND_ATTR,$ac_thread_cond_attr_size)
