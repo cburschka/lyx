@@ -1,3 +1,8 @@
+2003-03-24  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* lyxinclude.m4 (lyx_warning): add gcc 3.3 as known compiler and
+	make sure that -fno-exceptions is turned on for it.
+
 2003-03-20  Kayvan Sylvan  <kayvan@sylvan.com>
 
 	* configure.ac:
