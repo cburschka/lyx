@@ -316,6 +316,22 @@ void MathCursor::last()
 }
 
 
+bool positionable(MathCursor::cursor_type const & cursor,
+                  MathCursor::cursor_type const & anchor)
+{
+	// avoid deeper nested insets when selecting
+	if (cursor.size() > anchor.size())
+		return false;
+
+	// anchor might be deeper, should have same path then
+	for (MathCursor::cursor_type::size_type i = 0; i < cursor.size(); ++i)
+		if (cursor[i].par_ != anchor[i].par_)
+			return false;
+
+	// position should be ok.
+	return true;
+}
+
 
 void MathCursor::setPos(int x, int y)
 {
@@ -327,17 +343,9 @@ void MathCursor::setPos(int x, int y)
 	MathIterator et = iend(formula()->par().nucleus());
 	for ( ; it != et; ++it) {
 		//lyxerr << "*it: " << *it << "  *et: " << *et << "\n";
-		if (selection_) {
-			// avoid deeper nested insets when selecting
-			if (it.cursor().size() > Anchor_.size())
-				continue;
-			// anchor might be deeper!
-			if (it.cursor().size() == Anchor_.size())
-				if (it.par() != Anchor_.back().par_)
-					continue;
-			//if (it.par() != Anchor_[it.cursor().size()].par_)
-			//	continue;
-		}
+		// avoid invalid nesting hen selecting
+		if (selection_ && !positionable(it.cursor(), Anchor_))
+			continue;
 		//lyxerr << it.position() << endl;
 		int xo = it.position().xpos();
 		int yo = it.position().ypos();
@@ -557,7 +565,11 @@ bool MathCursor::up(bool sel)
 		}
 	}
 
-	return goUp() || selection_;
+	cursor_type save = Cursor_;
+	if (goUpDown(true))
+		return true;
+	Cursor_ = save;
+	return selection_;
 }
 
 
@@ -587,7 +599,11 @@ bool MathCursor::down(bool sel)
 		}
 	}
 
-	return goDown() || selection_;
+	cursor_type save = Cursor_;
+	if (goUpDown(false))
+		return true;
+	Cursor_ = save;
+	return selection_;
 }
 
 
@@ -1116,57 +1132,42 @@ MathCursorPos const & MathCursor::cursor() const
 }
 
 
-bool MathCursor::goUp()
+bool MathCursor::goUpDown(bool up)
 {
-	// first ask the inset if it knows better then we
-	if (par()->idxUp(idx(), pos())) {
-		//lyxerr << "ask cell\n";
-		int xlow, xhigh, ylow, yhigh;
-		xarray().boundingBox(xlow, xhigh, ylow, yhigh);
-		bruteFind(xlow, xhigh, ylow, yhigh);
-		return true;
-	}
+	int xo, yo;
+	getPos(xo, yo);
 
-	// if not, apply brute force.
-	//lyxerr << "brute force\n";
-	return
-		bruteFind(
-			formula()->xlow(),
-			formula()->xhigh(),
-			formula()->ylow(),
-			xarray().yo() - 4 - xarray().ascent()
-		);
+	// try to find an inset that knows better then we
+	while (1) {
+		// we found a cell that think something "below" us.
+		if (up) {
+			if (par()->idxUp(idx(), pos()))
+				break;
+		} else {
+			if (par()->idxDown(idx(), pos()))
+				break;
+		}
+
+		if (!popLeft()) {
+			// have reached hull
+			return
+				bruteFind(xo, yo,
+					formula()->xlow(),
+					formula()->xhigh(),
+					up ? formula()->ylow() : yo + 4,
+					up ? yo - 4 : formula()->yhigh()
+				);
+		}
+	}
+	int xlow, xhigh, ylow, yhigh;
+	xarray().boundingBox(xlow, xhigh, ylow, yhigh);
+	bruteFind(xo, yo, xlow, xhigh, ylow, yhigh);
+	return true;
 }
 
 
-bool MathCursor::goDown()
+bool MathCursor::bruteFind(int x, int y, int xlow, int xhigh, int ylow, int yhigh)
 {
-	// first ask the inset if it knows better then we
-	if (par()->idxDown(idx(), pos())) {
-		//lyxerr << "ask cell\n";
-		int xlow, xhigh, ylow, yhigh;
-		xarray().boundingBox(xlow, xhigh, ylow, yhigh);
-		bruteFind(xlow, xhigh, ylow, yhigh);
-		return true;
-	}
-
-	// if not, apply brute force.
-	//lyxerr << "brute force\n";
-	return
-		bruteFind(
-			formula()->xlow(),
-			formula()->xhigh(),
-			xarray().yo() + 4 + xarray().descent(),
-			formula()->yhigh()
-		);
-}
-
-
-bool MathCursor::bruteFind(int xlow, int xhigh, int ylow, int yhigh)
-{
-	int x;
-	int y;
-	getPos(x, y);
 	//lyxerr << "looking at range: "
 	//	<< "[" << xlow << "..." << xhigh << "]" 
 	//	<< " x [" << ylow << "..." << yhigh << "]"

@@ -242,12 +242,10 @@ private:
 	bool idxLeft();
 	/// moves cursor index one cell to the right
 	bool idxRight();
-	/// moves position somehow up
-	bool goUp();
-	/// moves position somehow down
-	bool goDown();
+	/// moves position somehow up or down
+	bool goUpDown(bool up);
 	/// moves position into box
-	bool bruteFind(int xlow, int xhigh, int ylow, int yhigh);
+	bool bruteFind(int xo, int yo, int xlow, int xhigh, int ylow, int yhigh);
 
 	///
 	string macroName() const;
