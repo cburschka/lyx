@@ -136,7 +136,7 @@ int MathHullInset::defaultColSpace(col_type col)
 			return (col & 1) ? 40 : 0;
 		default:;
 	}
-	return 10;
+	return 0;
 }
 
 

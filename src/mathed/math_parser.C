@@ -275,6 +275,10 @@ private:
 	Token const & nextToken() const;
 	///
 	Token const & getToken();
+	/// skips spaces if any
+	void skipSpaces();
+	/// counts a sequence of hlines
+	int readHLines();
 	///
 	void lex(string const & s);
 	///
@@ -339,7 +343,28 @@ Token const & Parser::nextToken() const
 Token const & Parser::getToken()
 {
 	static const Token dummy;
+	//lyxerr << "looking at token " << tokens_[pos_] << '\n';
 	return good() ? tokens_[pos_++] : dummy;
+}
+
+
+void Parser::skipSpaces()
+{
+	while (nextToken().cat() == catSpace)
+		getToken();
+}
+
+
+int Parser::readHLines()
+{
+	int num = 0;
+	skipSpaces();
+	while (nextToken().cs() == "hline") {
+		getToken();
+		++num;
+		skipSpaces();
+	}
+	return num;
 }
 
 
@@ -481,6 +506,9 @@ bool Parser::parse_lines(MathAtom & t, bool numbered, bool outmost)
 	bool   const saved_num   = curr_num_;
 	string const saved_label = curr_label_;
 
+	// read initial hlines
+	p->rowinfo(0).lines_ = readHLines();
+
 	for (int row = 0; true; ++row) {
 		// reset global variables
 		curr_num_   = numbered;
@@ -491,12 +519,15 @@ bool Parser::parse_lines(MathAtom & t, bool numbered, bool outmost)
 			//lyxerr << "reading cell " << row << " " << col << "\n";
 			parse_into(p->cell(col + row * cols), FLAG_BLOCK);
 
-			// no ampersand
-			if (prevToken().cat() != catAlign) {
+			// break if cell is not followed by an ampersand
+			if (nextToken().cat() != catAlign) {
 				//lyxerr << "less cells read than normal in row/col: "
 				//	<< row << " " << col << "\n";
 				break;
 			}
+			
+			// skip the ampersand
+			getToken();
 		}
 
 		if (outmost) {
@@ -508,17 +539,34 @@ bool Parser::parse_lines(MathAtom & t, bool numbered, bool outmost)
 			m->numbered(row, curr_num_);
 			m->label(row, curr_label_);
 			if (curr_skip_.size()) {
-				m->vskip(LyXLength(curr_skip_), row);
+				m->vcrskip(LyXLength(curr_skip_), row);
 				curr_skip_.erase();
 			}
 		}
 
-		// no newline?
-		if (!prevToken().isCR()) {
-			//lyxerr << "no newline here\n";
+		// is a \\ coming?
+		if (nextToken().isCR()) {
+			// skip the cr-token
+			getToken();
+
+			// try to read a length
+			//get
+
+			// read hlines for next row
+			p->rowinfo(row + 1).lines_ = readHLines();
+		}
+
+		// we are finished if the next token is an 'end'
+		if (nextToken().cs() == "end") {
+			// skip the end-token
+			getToken();
+			getArg('{','}');
+
+			// leave the 'read a line'-loop
 			break;
 		}
 
+		// otherwise, we have to start a new row
 		p->appendRow();
 	}
 
@@ -533,9 +581,7 @@ bool Parser::parse_lines(MathAtom & t, bool numbered, bool outmost)
 string Parser::parse_macro()
 {
 	string name = "{error}";
-
-	while (nextToken().cat() == catSpace)
-		getToken();
+	skipSpaces();
 
 	if (getToken().cs() != "newcommand") {
 		lyxerr << "\\newcommand expected\n";
@@ -571,9 +617,7 @@ string Parser::parse_macro()
 
 bool Parser::parse_normal(MathAtom & matrix)
 {
-	while (nextToken().cat() == catSpace)
-		getToken();
-
+	skipSpaces();
 	Token const & t = getToken();
 
 	if (t.cs() == "(") {
@@ -706,10 +750,8 @@ void Parser::parse_into(MathArray & array, unsigned flags, MathTextCodes code)
 		}
 
 		if (flags & FLAG_BLOCK) {
-			if (t.cat() == catAlign || t.isCR())
-				return;
-			if (t.cs() == "end") {
-				getArg('{', '}');
+			if (t.cat() == catAlign || t.isCR() || t.cs() == "end") {
+				putback();
 				return;
 			}
 		}
@@ -865,8 +907,7 @@ void Parser::parse_into(MathArray & array, unsigned flags, MathTextCodes code)
 			if (name == "array") {
 				string const valign = getArg('[', ']') + 'c';
 				string const halign = getArg('{', '}');
-				array.push_back(
-					MathAtom(new MathArrayInset(halign.size(), 1, valign[0], halign)));
+				array.push_back(MathAtom(new MathArrayInset(valign[0], halign)));
 				parse_lines(array.back(), false, false);
 			} else if (name == "split") {
 				array.push_back(MathAtom(new MathSplitInset(1)));

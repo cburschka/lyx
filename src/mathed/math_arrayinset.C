@@ -24,6 +24,11 @@ MathArrayInset::MathArrayInset(int m, int n, char valign, string const & halign)
 {}
 
 
+MathArrayInset::MathArrayInset(char valign, string const & halign)
+	: MathGridInset(valign, halign)
+{}
+
+
 MathArrayInset::MathArrayInset(string const & str)
 	: MathGridInset(1, 1)
 {
@@ -72,11 +77,7 @@ void MathArrayInset::write(WriteStream & os) const
 
 	if (v_align_ == 't' || v_align_ == 'b') 
 		os << '[' << char(v_align_) << ']';
-
-	os << '{';
-	for (col_type col = 0; col < ncols(); ++col)
-		os << colinfo_[col].align_;
-	os << "}\n";
+	os << '{' << halign().c_str() << "}\n";
 
 	MathGridInset::write(os);
 

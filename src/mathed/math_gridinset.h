@@ -30,12 +30,12 @@ class MathGridInset : public MathNestInset {
 		mutable int ascent_;
 		/// cached offset
 		mutable int offset_;
-		/// hline abow this row?
-		bool upperline_;
-		/// hline below this row?
-		bool lowerline_;
-		/// distance
-		LyXLength skip_;
+		/// how many hlines above this row?
+		int lines_;
+		/// parameter to the line break
+		LyXLength crskip_;
+		/// extra distance between lines
+		int skip_;
 	};
 
 	// additional per-row information
@@ -54,11 +54,15 @@ class MathGridInset : public MathNestInset {
 		bool leftline_;
 		/// do we need a line to the right?
 		bool rightline_;
+		/// how many lines to the left of this column?
+		int lines_;
 		/// additional amount to be skipped when drawing
 		int skip_;
 	};
 
 public: 
+	/// constructor from columns description, creates one row
+	MathGridInset(char valign, string const & halign);
 	/// Note: columns first!
 	MathGridInset(col_type m, row_type n);
 	///
@@ -74,30 +78,32 @@ public:
 	///
 	char halign(col_type col) const;
 	///
+	string halign() const;
+	///
 	void valign(char c);
 	///
 	char valign() const;
 	///
-	void vskip(LyXLength const &, row_type row);
+	void vcrskip(LyXLength const &, row_type row);
 	///
-	LyXLength vskip(row_type row) const;
+	LyXLength vcrskip(row_type row) const;
 	///
 	void resize(short int type, col_type cols);
 	///
 	const RowInfo & rowinfo(row_type row) const;
-	///
+	/// returns topmost row if passed (-1)
 	RowInfo & rowinfo(row_type row);
 	/// identifies GridInset
 	virtual MathGridInset * asGridInset() { return this; }
 
 	///
-	col_type ncols() const { return colinfo_.size(); }
+	col_type ncols() const;
 	///
-	row_type nrows() const { return rowinfo_.size(); }
+	row_type nrows() const;
 	///
-	col_type col(idx_type idx) const { return idx % ncols(); }
+	col_type col(idx_type idx) const;
 	///
-	row_type row(idx_type idx) const { return idx / ncols(); }
+	row_type row(idx_type idx) const;
 	///
 	int cellXOffset(idx_type idx) const;
 	///
@@ -139,7 +145,7 @@ public:
 	///
 	std::vector<idx_type> idxBetween(idx_type from, idx_type to) const;
 	///
-	virtual int defaultColSpace(col_type) { return 10; }
+	virtual int defaultColSpace(col_type) { return 0; }
 	///
 	virtual char defaultColAlign(col_type) { return 'c'; }
 	///
@@ -161,6 +167,8 @@ protected:
 	string eolString(row_type row) const;
 	/// returns proper 'end of column' code for LaTeX
 	string eocString(col_type col) const;
+	/// extract number of columns from alignment string
+	col_type guessColumns(string const & halign) const;
 
 	/// row info
 	std::vector<RowInfo> rowinfo_;

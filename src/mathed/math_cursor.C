@@ -572,6 +572,9 @@ void MathCursor::delLine()
 	if (par()->nrows() > 1)
 		par()->delRow(row());
 
+	if (idx() > par()->nargs())
+		idx() = par()->nargs();
+
 	if (pos() > size())
 		pos() = size();
 }

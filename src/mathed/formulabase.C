@@ -647,6 +647,8 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 		result = UNDISPATCHED;
 	}
 
+	mathcursor->normalize();
+
 	lyx::Assert(mathcursor);
 
 	if (mathcursor->selection() || was_selection)

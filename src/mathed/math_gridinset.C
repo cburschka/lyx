@@ -5,17 +5,31 @@
 #include "math_gridinset.h"
 #include "math_mathmlstream.h"
 #include "lyxfont.h"
+#include "Painter.h"
 #include "debug.h"
 
 
 namespace {
 
 ///
-int const MATH_COLSEP = 10;
+int const COLSEP = 6;
 ///
-int const MATH_ROWSEP = 10;
+int const ROWSEP = 6;
 ///
-int const MATH_BORDER = 2;
+int const HLINESEP = 3;
+///
+int const VLINESEP = 3;
+///
+int const BORDER = 2;
+
+
+string verboseHLine(int n)
+{
+	string res;
+	for (int i = 0; i < n; ++i)
+		res += "\\hline";
+	return res + ' ';
+}
 
 }
 
@@ -24,7 +38,7 @@ int const MATH_BORDER = 2;
 
 
 MathGridInset::RowInfo::RowInfo()
-	: upperline_(false), lowerline_(false)
+	: skip_(0), lines_(0)
 {}
 
 
@@ -34,7 +48,7 @@ int MathGridInset::RowInfo::skipPixels() const
 #ifdef WITH_WARNINGS
 #warning fix this once the interface to LyXLength has improved
 #endif
-	return int(skip_.value());
+	return int(crskip_.value());
 }
 
 
@@ -43,22 +57,31 @@ int MathGridInset::RowInfo::skipPixels() const
 
 
 MathGridInset::ColInfo::ColInfo()
-	: align_('c'), leftline_(false), rightline_(false), skip_(MATH_COLSEP)
+	: align_('c'), leftline_(false), rightline_(false), lines_(0)
 {}
 
 
 ////////////////////////////////////////////////////////////// 
 
 
+MathGridInset::MathGridInset(char v, string const & h)
+	: MathNestInset(guessColumns(h)), rowinfo_(2), colinfo_(guessColumns(h) + 1)
+{
+	setDefaults();
+ 	valign(v);
+	halign(h);
+}
+
+
 MathGridInset::MathGridInset(col_type m, row_type n)
-	: MathNestInset(m * n), rowinfo_(n), colinfo_(m), v_align_('c')
+	: MathNestInset(m * n), rowinfo_(n + 1), colinfo_(m + 1), v_align_('c')
 {
 	setDefaults();
 }
 
 
 MathGridInset::MathGridInset(col_type m, row_type n, char v, string const & h)
-	: MathNestInset(m * n), rowinfo_(n), colinfo_(m), v_align_(v)
+	: MathNestInset(m * n), rowinfo_(n + 1), colinfo_(m + 1), v_align_(v)
 {
 	setDefaults();
  	valign(v);
@@ -75,9 +98,9 @@ MathInset::idx_type MathGridInset::index(row_type row, col_type col) const
 void MathGridInset::setDefaults()
 {
 	if (ncols() <= 0)
-		lyxerr << "positve number of columns expected\n";
+		lyxerr << "positive number of columns expected\n";
 	if (nrows() <= 0)
-		lyxerr << "positve number of rows expected\n";
+		lyxerr << "positive number of rows expected\n";
 	for (col_type col = 0; col < ncols(); ++col) {
 		colinfo_[col].align_ = defaultColAlign(col);
 		colinfo_[col].skip_  = defaultColSpace(col);
@@ -87,11 +110,37 @@ void MathGridInset::setDefaults()
 
 void MathGridInset::halign(string const & hh)
 {
+	col_type col = 0;
+	for (string::const_iterator it = hh.begin(); it != hh.end(); ++it) {
+		char c = *it;
+		if (c == '|') {
+			colinfo_[col].lines_++;
+		} else if (c == 'c' || c == 'l' || c == 'r') {
+			colinfo_[col].align_ = c;
+			++col;
+			colinfo_[col].lines_ = 0;
+		} else {
+			lyxerr << "unkown column separator: '" << c << "'\n";
+		}
+	}
+			
+/*
 	col_type n = hh.size();
 	if (n > ncols())
 		n = ncols();
 	for (col_type col = 0; col < n; ++col)
 		colinfo_[col].align_ = hh[col];
+*/
+}
+
+
+MathGridInset::col_type MathGridInset::guessColumns(string const & hh) const
+{
+	col_type col = 0;
+	for (string::const_iterator it = hh.begin(); it != hh.end(); ++it)
+		if (*it == 'c' || *it == 'l' || *it == 'r')
+			++col;
+	return col;
 }
 
 
@@ -107,6 +156,16 @@ char MathGridInset::halign(col_type col) const
 }
 
 
+string MathGridInset::halign() const
+{
+	string res;
+	for (col_type col = 0; col < ncols(); ++col) {
+		res += string(colinfo_[col].lines_, '|');
+		res += colinfo_[col].align_;
+	} 
+	return res + string(colinfo_[ncols()].lines_, '|');
+}
+
 
 void MathGridInset::valign(char c)
 {
@@ -120,16 +179,39 @@ char MathGridInset::valign() const
 }
 
 
-
-void MathGridInset::vskip(LyXLength const & skip, row_type row)
+MathGridInset::col_type MathGridInset::ncols() const
 {
-	rowinfo_[row].skip_ = skip;
+	return colinfo_.size() - 1;
 }
 
 
-LyXLength MathGridInset::vskip(row_type row) const
+MathGridInset::row_type MathGridInset::nrows() const
 {
-	return rowinfo_[row].skip_;
+	return rowinfo_.size() - 1;
+}
+
+
+MathGridInset::col_type MathGridInset::col(idx_type idx) const
+{
+	return idx % ncols();
+}
+
+
+MathGridInset::row_type MathGridInset::row(idx_type idx) const
+{
+	return idx / ncols();
+}
+
+
+void MathGridInset::vcrskip(LyXLength const & crskip, row_type row)
+{
+	rowinfo_[row].crskip_ = crskip;
+}
+
+
+LyXLength MathGridInset::vcrskip(row_type row) const
+{
+	return rowinfo_[row].crskip_;
 }
 
 
@@ -139,6 +221,7 @@ void MathGridInset::metrics(MathMetricsInfo const & mi) const
 	MathNestInset::metrics(mi);
 
 	// adjust vertical structure
+	rowinfo_[0].offset_ = 0;
 	for (row_type row = 0; row < nrows(); ++row) {
 		int asc  = 0;
 		int desc = 0;
@@ -149,59 +232,70 @@ void MathGridInset::metrics(MathMetricsInfo const & mi) const
 		}
 		rowinfo_[row].ascent_  = asc;
 		rowinfo_[row].descent_ = desc;
+		rowinfo_[row].offset_  += asc + HLINESEP * rowinfo_[row].lines_;
 
-		if (row) 
-			rowinfo_[row].offset_ = 
-				rowinfo_[row - 1].offset_ +
-				rowinfo_[row - 1].descent_ +
-				rowinfo_[row - 1].skipPixels() +
-				MATH_ROWSEP +
-				rowinfo_[row].ascent_;
-		else 
-			rowinfo_[row].offset_ = 0;
+		rowinfo_[row + 1].offset_ =
+				rowinfo_[row].offset_ +
+				rowinfo_[row].descent_ +
+				rowinfo_[row].skipPixels() +
+				ROWSEP;
 	}
+	rowinfo_[nrows()].ascent_  = 0;
+	rowinfo_[nrows()].descent_ = 0;
+	rowinfo_[nrows()].offset_  += HLINESEP * rowinfo_[nrows()].lines_;
 
 	// adjust vertical offset
 	int h = 0;
 	switch (v_align_) {
-	case 't':
-		h = 0;
-		break;
-	case 'b':
-		h = rowinfo_.back().offset_;
-		break;
-	default:
- 		h = rowinfo_.back().offset_ / 2;
+		case 't':
+			h = 0;
+			break;
+		case 'b':
+			h = rowinfo_[nrows()].offset_;
+			break;
+		default:
+			h = rowinfo_[nrows()].offset_ / 2;
+			//lyxerr << "\nnrows: " << nrows() << ' ' << ncols() << '\n';
 	}
-
-	for (row_type row = 0; row < nrows(); ++row) {
+	for (row_type row = 0; row <= nrows(); ++row)
 		rowinfo_[row].offset_ -= h;
-		rowinfo_[row].offset_ += MATH_BORDER;
-	}
+
 	
 	// adjust horizontal structure
+	colinfo_[0].offset_ = BORDER;
 	for (col_type col = 0; col < ncols(); ++col) {
-		int wid  = 0;
+		int wid = 0;
 		for (row_type row = 0; row < nrows(); ++row) 
 			wid = std::max(wid, xcell(index(row, col)).width());
 		colinfo_[col].width_  = wid;
-		colinfo_[col].offset_ = colinfo_[col].width_;
+		colinfo_[col].offset_ += VLINESEP * colinfo_[col].lines_;
 
-		if (col) 
-			colinfo_[col].offset_ =
-				colinfo_[col - 1].offset_ +
-				colinfo_[col - 1].width_ + 
-				colinfo_[col - 1].skip_;
-		else
-			colinfo_[col].offset_ = 0;
-
-		colinfo_[col].offset_ += MATH_BORDER;
+		colinfo_[col + 1].offset_ =
+			colinfo_[col].offset_ +
+			colinfo_[col].width_ + 
+			colinfo_[col].skip_ +
+			COLSEP;
 	}
+	colinfo_[ncols()].width_  = 0;
+	colinfo_[ncols()].offset_ += VLINESEP * colinfo_[ncols()].lines_;
 
-	width_   =   colinfo_.back().offset_  + colinfo_.back().width_;
-	ascent_  = - rowinfo_.front().offset_ + rowinfo_.front().ascent_;
-	descent_ =   rowinfo_.back().offset_  + rowinfo_.back().descent_;
-	
+
+	width_   =   colinfo_[ncols() - 1].offset_      
+	               + colinfo_[ncols() - 1].width_
+                 + VLINESEP * colinfo_[ncols()].lines_
+	               + BORDER;
+
+	ascent_  = - rowinfo_[0].offset_          
+	               + rowinfo_[0].ascent_
+                 + HLINESEP * rowinfo_[0].lines_
+	               + BORDER;
+
+	descent_ =   rowinfo_[nrows() - 1].offset_
+	               + rowinfo_[nrows() - 1].descent_
+                 + HLINESEP * rowinfo_[nrows()].lines_
+	               + BORDER;
+
+
 /*	
 	// Increase ws_[i] for 'R' columns (except the first one)
 	for (int i = 1; i < nc_; ++i)
@@ -213,9 +307,9 @@ void MathGridInset::metrics(MathMetricsInfo const & mi) const
 			ws_[0] = 7 * workwidth / 8;
 	
 	// Adjust local tabs
-	width = MATH_COLSEP;
+	width = COLSEP;
 	for (cxrow = row_.begin(); cxrow; ++cxrow) {   
-		int rg = MATH_COLSEP;
+		int rg = COLSEP;
 		int lf = 0;
 		for (int i = 0; i < nc_; ++i) {
 			bool isvoid = false;
@@ -245,9 +339,9 @@ void MathGridInset::metrics(MathMetricsInfo const & mi) const
 			}
 			int const ww = (isvoid) ? lf : lf + cxrow->getTab(i);
 			cxrow->setTab(i, lf + rg);
-			rg = ws_[i] - ww + MATH_COLSEP;
+			rg = ws_[i] - ww + COLSEP;
 			if (cxrow == row_.begin())
-				width += ws_[i] + MATH_COLSEP;
+				width += ws_[i] + COLSEP;
 		}
 		cxrow->setBaseline(cxrow->getBaseline() - ascent);
 	}
@@ -259,30 +353,51 @@ void MathGridInset::draw(Painter & pain, int x, int y) const
 {
 	for (idx_type idx = 0; idx < nargs(); ++idx)
 		xcell(idx).draw(pain, x + cellXOffset(idx), y + cellYOffset(idx));
+
+	for (row_type row = 0; row <= nrows(); ++row)
+		for (int i = 0; i < rowinfo_[row].lines_; ++i) {
+			int yy = y + rowinfo_[row].offset_ - rowinfo_[row].ascent_
+				- i * HLINESEP - HLINESEP/2 - ROWSEP/2;
+			//lyxerr << "i: " << i << " yy: " << yy << '\n';
+			pain.line(x + 1, yy, x + width_ - 1, yy);
+		}
+
+	for (col_type col = 0; col <= ncols(); ++col)
+		for (int i = 0; i < colinfo_[col].lines_; ++i) {
+			int xx = x + colinfo_[col].offset_
+				- i * VLINESEP - VLINESEP/2 - COLSEP/2;
+			//lyxerr << "i: " << i << " xx: " << xx << '\n';
+			pain.line(xx, y - ascent_ + 1, xx, y + descent_ - 1);
+		}
 }
 
 
 string MathGridInset::eolString(row_type row) const
 {
-	if (row + 1 == nrows())	
-		return "";
+	string eol;
 
-	if (rowinfo_[row].skip_.value() != 0)
-		return "\\\\[" + rowinfo_[row].skip_.asLatexString() + "]\n";
+	if (rowinfo_[row].crskip_.value() != 0)
+		eol += "[" + rowinfo_[row].crskip_.asLatexString() + "]";
 
 	// make sure an upcoming '[' does not break anything
-	MathArray const & c = cell(index(row + 1, 0));
-	if (c.size() && (*c.begin())->getChar() == '[')
-		return "\\\\[0pt]\n";
+	if (row + 1 < nrows()) {
+		MathArray const & c = cell(index(row + 1, 0));
+		if (c.size() && c.front()->getChar() == '[')
+			eol += "[0pt]";
+	}
 
-	return "\\\\\n";
+	// only add \\ if necessary
+	if (eol.empty() && row + 1 == nrows())
+		return string();
+
+	return "\\\\" + eol + '\n';
 }
 
 
 string MathGridInset::eocString(col_type col) const
 {
 	if (col + 1 == ncols())
-		return "";
+		return string();
 	return " & ";
 }
 
@@ -297,6 +412,7 @@ void MathGridInset::addRow(row_type row)
 void MathGridInset::appendRow()
 {
 	rowinfo_.push_back(RowInfo());
+	//cells_.insert(cells_.end(), ncols(), MathXArray());
 	for (col_type col = 0; col < ncols(); ++col)
 		cells_.push_back(cells_type::value_type());
 }
@@ -587,10 +703,14 @@ void MathGridInset::mathmlize(MathMLStream & os) const
 void MathGridInset::write(WriteStream & os) const
 {
 	for (row_type row = 0; row < nrows(); ++row) {
+		os << verboseHLine(rowinfo_[row].lines_).c_str();
 		for (col_type col = 0; col < ncols(); ++col) 
 			os << cell(index(row, col)) << eocString(col).c_str();
 		os << eolString(row).c_str();
 	}
+	string s = verboseHLine(rowinfo_[nrows()].lines_);
+	if (s.size())
+		os << "\\\\" << s.c_str();
 }
 
 
