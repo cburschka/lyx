@@ -206,7 +206,7 @@ ${srcdir}/POTFILES.in: $(POTFILE_IN_DEPS)
 
 
 l10n_pots: xforms_l10n.pot qt_l10n.pot layouts_l10n.pot languages_l10n.pot default_ui_l10n.pot
-	cat xforms_l10n.pot qt_l10n.pot layouts_l10n.pot languages_l10n.pot default_ui_l10n.pot > lyxtmp.pot && \
+	cat xforms_l10n.pot qt_l10n.pot layouts_l10n.pot languages_l10n.pot default_ui_l10n.pot | \
 	msguniq -o $(PACKAGE).po lyxtmp.pot
 
 xforms_l10n.pot: $(top_srcdir)/src/frontends/xforms/forms/*.fd

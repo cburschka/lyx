@@ -1,7 +1,11 @@
+2002-12-17  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* Makefile.in.in (l10n_pots): dont use a tmp file
+
 2002-12-16  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* Makefile.in.in (qt_l10n.pot): Fix a bug that resulted in too few
-	strings being extracted. 
+	strings being extracted.
 
 2002-12-14  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
