@@ -379,7 +379,7 @@ LyXText * InsetCollapsable::getText(int i) const
 }
 
 
-void InsetCollapsable::open(BufferView * bv)
+void InsetCollapsable::open(BufferView *)
 {
 	if (!collapsed_)
 		return;

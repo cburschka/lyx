@@ -186,8 +186,7 @@ void InsetFormulaBase::getCursorPos(BufferView *, int & x, int & y) const
 }
 
 
-void InsetFormulaBase::getCursorDim(BufferView * bv,
-				    int & asc, int & desc) const
+void InsetFormulaBase::getCursorDim(BufferView *, int & asc, int & desc) const
 {
 	if (!mathcursor)
 		return;

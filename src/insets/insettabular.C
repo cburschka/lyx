@@ -1905,7 +1905,7 @@ bool InsetTabular::copySelection(BufferView * bv)
 }
 
 
-bool InsetTabular::pasteSelection(BufferView * bv)
+bool InsetTabular::pasteSelection(BufferView *)
 {
 	if (!paste_tabular)
 		return false;

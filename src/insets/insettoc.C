@@ -68,7 +68,7 @@ void InsetTOC::metrics(MetricsInfo & mi, Dimension & dim) const
 }
 
 
-void InsetTOC::draw(PainterInfo & pi, int x, int y) const
+void InsetTOC::draw(PainterInfo & pi, int, int y) const
 {
 	InsetCommand::draw(pi, button().box().x1, y);
 }

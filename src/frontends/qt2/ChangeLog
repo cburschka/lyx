@@ -1,3 +1,12 @@
+2003-11-20  Angus Leeming  <leeming@lyx.org>
+
+	* BulletsModule.C (setBullet): squash gcc 'may be uninitialized' warning.
+	* QTabularDialog.C (hAlign_changed, vAlign_changed): ditto.
+
+	* QLImage.C (clip_impl): squash comparison of signed, unsigned warning.
+	* QSendto.C (apply, isValid): ditto.
+	* qt_helpers.C (formatted): ditto.
+
 2003-11-05  João Luis M. Assirati  <assirati@fma.if.usp.br>
 
 	* lyx_gui.C: {set,remove}_{server,data}socket_callback(): replace

@@ -1,3 +1,12 @@
+2003-11-20  Angus Leeming  <leeming@lyx.org>
+
+	* insetcharstyle.C (latex, linuxdoc, docbook, plaintext): squash warnings
+	about unused parameters.
+
+	* insetcollapsable.C (open):
+	* insettabular.C (pasteSelection):
+	* insettoc.C (draw): ditto.
+
 2003-11-17  Alfredo Braunstein  <abraunst@lyx.org>
 
 	* insetcollapsable.C: 

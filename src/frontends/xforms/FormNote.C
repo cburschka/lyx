@@ -38,7 +38,7 @@ void FormNote::build()
 
 	note_gui_tokens(ids_, gui_names_);
 
-	for (int i = 0; i < gui_names_.size(); ++i) {
+	for (string::size_type i = 0; i < gui_names_.size(); ++i) {
 		fl_addto_choice(dialog_->choice_type, gui_names_[i].c_str());
 	}
 
@@ -56,7 +56,7 @@ void FormNote::build()
 void FormNote::update()
 {
 	string type(controller().params().type);
-	for (int i = 0; i < gui_names_.size(); ++i) {
+	for (string::size_type i = 0; i < gui_names_.size(); ++i) {
 		if (type == ids_[i])
 			fl_set_choice_text(dialog_->choice_type, gui_names_[i].c_str());
 		}

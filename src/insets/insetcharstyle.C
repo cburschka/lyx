@@ -150,8 +150,8 @@ int outputVerbatim(std::ostream & os, InsetText inset)
 } // namespace anon
 
 
-int InsetCharStyle::latex(Buffer const & buf, ostream & os,
-		     OutputParams const & runparams) const
+int InsetCharStyle::latex(Buffer const &, ostream & os,
+		     OutputParams const &) const
 {
 	os << "%\n\\" << params_.latexname << "{";
 	int i = outputVerbatim(os, inset);
@@ -161,8 +161,8 @@ int InsetCharStyle::latex(Buffer const & buf, ostream & os,
 }
 
 
-int InsetCharStyle::linuxdoc(Buffer const & buf, std::ostream & os,
-			OutputParams const & runparams) const
+int InsetCharStyle::linuxdoc(Buffer const &, std::ostream & os,
+			     OutputParams const &) const
 {
 	os << "<" << params_.latexname << ">";
 	int const i = outputVerbatim(os, inset);
@@ -171,8 +171,8 @@ int InsetCharStyle::linuxdoc(Buffer const & buf, std::ostream & os,
 }
 
 
-int InsetCharStyle::docbook(Buffer const & buf, std::ostream & os,
-		       OutputParams const & runparams) const
+int InsetCharStyle::docbook(Buffer const &, std::ostream & os,
+			    OutputParams const &) const
 {
 	os << "<" << params_.latexname << ">";
 	int const i = outputVerbatim(os, inset);
@@ -181,8 +181,8 @@ int InsetCharStyle::docbook(Buffer const & buf, std::ostream & os,
 }
 
 
-int InsetCharStyle::plaintext(Buffer const & buf, std::ostream & os,
-		     OutputParams const & runparams) const
+int InsetCharStyle::plaintext(Buffer const &, std::ostream & os,
+			      OutputParams const & runparams) const
 {
 	return outputVerbatim(os, inset);
 }

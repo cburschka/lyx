@@ -208,7 +208,7 @@ void QLImage::clip_impl(Params const & params)
 		return;
 
 	int const xoffset_l = params.bb.xl;
-	int const yoffset_t = (pixmap_.height() > params.bb.yt ?
+	int const yoffset_t = (pixmap_.height() > int(params.bb.yt) ?
 				pixmap_.height() - params.bb.yt : 0);
 
 	xformed_pixmap_.resize(new_width, new_height);

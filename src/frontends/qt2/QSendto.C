@@ -78,7 +78,7 @@ void QSendto::apply()
 {
 	int const line(dialog_->formatLB->currentItem());
 
-	if (line < 0 || line > dialog_->formatLB->count())
+	if (line < 0 || line > int(dialog_->formatLB->count()))
 		return;
 
 	string const cmd(fromqstr(dialog_->commandCO->currentText()));
@@ -92,7 +92,7 @@ bool QSendto::isValid()
 {
 	int const line(dialog_->formatLB->currentItem());
 
-	if (line < 0 || line > dialog_->formatLB->count())
+	if (line < 0 || line > int(dialog_->formatLB->count()))
 		return false;
 
 	else return dialog_->formatLB->count() != 0 &&

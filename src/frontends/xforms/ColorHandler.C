@@ -56,7 +56,7 @@ LyXColorHandler::LyXColorHandler()
 
 	colormap = fl_state[fl_get_vclass()].colormap;
 	// Clear the GC cache
-	for (int i = 0; i < colorGCcache.size(); ++i) {
+	for (string::size_type i = 0; i < colorGCcache.size(); ++i) {
 		colorGCcache[i] = 0;
 	}
 }

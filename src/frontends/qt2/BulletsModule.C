@@ -233,8 +233,8 @@ void BulletsModule::setBullet(int level, const Bullet & bullet)
 {
 	bullets_[level] = bullet;
 
-	QPushButton * pb;
-	QComboBox * co;
+	QPushButton * pb = 0;
+	QComboBox * co = 0;
 
 	switch (level) {
 		case 0: pb = bullet1PB; co = bulletsize1CO; break;

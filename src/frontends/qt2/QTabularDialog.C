@@ -137,7 +137,7 @@ void QTabularDialog::rotateCell()
 
 void QTabularDialog::hAlign_changed(int align)
 {
-	ControlTabular::HALIGN h;
+	ControlTabular::HALIGN h = ControlTabular::LEFT;
 
 	switch (align) {
 		case 0: h = ControlTabular::LEFT; break;
@@ -152,7 +152,7 @@ void QTabularDialog::hAlign_changed(int align)
 
 void QTabularDialog::vAlign_changed(int align)
 {
-	ControlTabular::VALIGN v;
+	ControlTabular::VALIGN v = ControlTabular::TOP;
 
 	switch (align) {
 		case 0: v = ControlTabular::TOP; break;

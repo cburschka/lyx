@@ -146,7 +146,7 @@ string const formatted(string const & text, int w)
 			line.empty() ? word : line + ' ' + word;
 
 		// FIXME: make w be size_t
-		if (line_plus_word.length() >= w) {
+		if (int(line_plus_word.length()) >= w) {
 			sout += line + '\n';
 			if (newline) {
 				sout += word + '\n';
