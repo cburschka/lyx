@@ -89,7 +89,9 @@ sub parse_cols {
 	# parse a p or * or @ if necessary
 	# use exact_print in case there's weird stuff in the @ descriptions
 	$description = substr($description,-1);
-	if ($description eq 'p') {
+#	if ($description eq 'p') {
+	# The m and p descriptors have identical form.
+	if ($description =~ /^[mp]$/) {
 	    $tok = shift(@group);
 	    my $pdes = $description . $tok->exact_print; # "p{foo}"
 	    push @cols, $pdes;
@@ -120,6 +122,30 @@ sub parse_cols {
 
     return @cols;
 } # end sub parse_cols
+
+sub write_string {
+    my ($name, $s) = @_;
+    if (!$s) {
+	return '';
+    }
+    return ' ' . $name . '="' . $s . '"';
+}
+
+sub write_bool {
+    my ($name, $b) = @_;
+    if (!$b) {
+	return '';
+    }
+    write_string $name, "true";
+}
+
+sub write_int {
+    my ($name, $i) = @_;
+    if (!$i) {
+	return '';
+    }
+    write_string $name, $i;
+}
 
 ################################################################################
 # This package handles tables for reLyX
@@ -283,8 +309,60 @@ sub parse_cols {
 	}
     } # end sub done_reading
 
-# Subroutines to print out the table once it's created
     sub print_info {
+    # Subroutine to print out the table once it's created
+	&print_info_215(@_);
+    }
+
+    sub print_info_221 {
+    # Subroutine to print out the table in \lyxformat 221
+	my $thistable = shift;
+        my $to_print = '';
+        # header line
+	$to_print .= "\n<lyxtabular" .
+	    RelyxTable::write_int("version", 3) .
+	    RelyxTable::write_int("rows", $thistable->numrows) .
+	    RelyxTable::write_int("columns", $thistable->numcols) .
+	    ">\n";
+	# global longtable options
+	$to_print .= "<features" .
+	   RelyxTable::write_int ("rotate", $thistable->{"rotate"}) .
+	   RelyxTable::write_bool("islongtable", $thistable->{"is_long_table"}) .
+	   RelyxTable::write_int ("firstHeadTopDL", 0) .
+	   RelyxTable::write_int ("firstHeadBottomDL", 0) .
+	   RelyxTable::write_bool("firstHeadEmpty", 0) .
+	   RelyxTable::write_int ("headTopDL", 0) .
+	   RelyxTable::write_int ("headBottomDL", 0) .
+	   RelyxTable::write_int ("footTopDL", 0) .
+	   RelyxTable::write_int ("footBottomDL", 0) .
+	   RelyxTable::write_int ("lastFootTopDL", 0) .
+	   RelyxTable::write_int ("lastFootBottomDL", 0) .
+	   RelyxTable::write_bool("lastFootEmpty", 0) .
+	   ">\n";
+	# column info
+	my $col;
+	foreach $col (@{$thistable->{"columns"}}) {
+	    $to_print .= $col->print_info_221;
+	}
+	# row info
+	my $row;
+	my $cell;
+	foreach $row (@{$thistable->{"rows"}}) {
+	    $to_print .= $row->print_info_221;
+	    my $count = 0;
+	    foreach $col (@{$thistable->{"columns"}}) {
+	        $cell = $row->{"cells"}[$count];
+		$count++;
+	        $to_print .= $cell->print_info_221;
+	    }
+	    $to_print .= "</row>\n";
+	}
+	$to_print .= "</lyxtabular>\n";
+	return $to_print;
+    } # end sub print_info_221
+
+    sub print_info_215 {
+    # Subroutine to print out the table in \lyxformat 215
         # print the header information for this table
 	my $thistable = shift;
         my $to_print = "";
@@ -327,7 +405,7 @@ sub parse_cols {
 	$to_print .= "\n";
 
 	return $to_print;
-    } # end sub print_info
+    } # end sub print_info_215
 
 # Convenient subroutines
     sub numrows {
@@ -377,7 +455,7 @@ package RelyxTable::Column;
 	$col->{"special"} = "";
 
 	# Any special (@) column should be handled differently
-	if ($description =~ /\@/) {
+	if ($description =~ /\@/ || $description =~ /^m/ ) {
 	   # Just put the whole description in "special" field --- this
 	   # corresponds the the "extra" field in LyX table popup
 	   # Note that LyX ignores alignment, r/l lines for a special column
@@ -426,6 +504,23 @@ package RelyxTable::Column;
 		   
 	return $to_print;
     }
+
+    sub print_info_221 {
+    # print out header information for this column
+	my $col = shift;
+	my $to_print = '';
+
+	$to_print = "<column" .
+#	    RelyxTable::write_attribute("alignment", $TableAlignments{$col->{"alignment"}) .
+#	    RelyxTable::write_attribute("valignment", 0) .
+#	    RelyxTable::write_attribute("leftline",  $col->{"left_line"}) .
+#	    RelyxTable::write_attribute("rightline", $col->{"right_line"} .
+#	    RelyxTable::write_length("width", $col->{"pwidth"}) .
+	    RelyxTable::write_string("special", $col->{"special"}) .
+#	    ">\n";
+	return $to_print;
+    }
+
 } # end package RelyxTable::Column
 
 ################################################################################
@@ -522,6 +617,22 @@ package RelyxTable::Row;
 	return $to_print;
     } # end sub print_info
 
+    sub print_info_221 {
+    # print out header information for this column
+	my $row = shift;
+	my $to_print = '';
+
+	$to_print = "<row" .
+#	    RelyxTable::write_attribute("topline", $row->{"top_line"}) .
+#	    RelyxTable::write_attribute("bottomline", $row->{"bottom_line"}) .
+#	    RelyxTable::write_attribute("endhead", $row->{"endhead"}) .
+#	    RelyxTable::write_attribute("endfirsthead", $row->{"endfirsthead"}) .
+#	    RelyxTable::write_attribute("endfoot", $row->{"endfoot"}) .
+#	    RelyxTable::write_attribute("endlastfoot", $row->{"endlastfoot"}) .
+#	    RelyxTable::write_attribute("newpage", $row->{"newpage"}) .
+	    ">\n";
+	return $to_print;
+    }
 } # end package RelyxTable::Row
 
 ################################################################################
@@ -595,6 +706,25 @@ package RelyxTable::Cell;
 	$to_print .= join(" ",@arr);
 	$to_print .= "\n";
 		   
+	return $to_print;
+    }
+    sub print_info_221 {
+    # print out header information for this column
+	my $cell = shift;
+	my $to_print = '';
+
+	$to_print = "<cell" .
+#	    RelyxTable::write_attribute("topline", $row->{"top_line"}) .
+#	    RelyxTable::write_attribute("bottomline", $row->{"bottom_line"}) .
+#	    RelyxTable::write_attribute("endhead", $row->{"endhead"}) .
+#	    RelyxTable::write_attribute("endfirsthead", $row->{"endfirsthead"}) .
+#	    RelyxTable::write_attribute("endfoot", $row->{"endfoot"}) .
+#	    RelyxTable::write_attribute("endlastfoot", $row->{"endlastfoot"}) .
+#	    RelyxTable::write_attribute("newpage", $row->{"newpage"}) .
+	    ">\n" .
+	    "\\begin_inset " .
+	    "\n\\end_inset \n" .
+	    "</cell>\n";
 	return $to_print;
     }
 } # end package RelyxTable::Cell
