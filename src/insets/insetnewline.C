@@ -62,16 +62,16 @@ int InsetNewline::ascii(Buffer const *, ostream & os, int) const
 }
 
 
-int InsetNewline::linuxdoc(Buffer const *, std::ostream &) const
+int InsetNewline::linuxdoc(Buffer const *, std::ostream & os) const
 {
-	/* FIXME */
+	os << '\n';
 	return 0;
 }
 
 
-int InsetNewline::docbook(Buffer const *, std::ostream &, bool) const
+int InsetNewline::docbook(Buffer const *, std::ostream & os, bool) const
 {
-	/* FIXME */
+	os << '\n';
 	return 0;
 }
 
