@@ -1,3 +1,9 @@
+2001-03-01  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* lib/templates/g-brief-de.lyx: fix typo.
+
+	* src/support/filetools.C (CreateTmpDir): change umask to 0700.
+
 2001-03-01  Juergen Vigna  <jug@sad.it>
 
 	* src/insets/insettext.C (SetFont): don't call Undo on a simple
