@@ -43,17 +43,25 @@ What's new
 - fix mathed bug where curly brackets in, e.g. {a^b}^c, would get lost
   and cause TeX errors
 
-- graphics that have been set to not display in LyX are no longer
-  converted [bug #920]
-
 - delete lyxserver pipes on exit [bug #865, Qt only]
 
 - fix bug where "lyx -e" would refuse to work [bug #788, Qt only]
 
-- some tab-navigation problems in dialogs fixed [Qt only]
+- graphics that have been set to not display in LyX are no longer
+  converted [bug #920]
+
+- squash a potential bug in the PreviewLoader before it bites.
+
+- don't cause a warning message to complain about starting an already running
+  timer. Just don't start it ;-)
+
+- prevent incorrect warning message about failing to find a graphics file to 
+  load when all is actually fine and dandy.
 
 - The printer parameter preferences for "spool command" and "file
   extension" were accidentally made the same [Qt only]
+
+- Update the language of the text after changing the document language.
 
 - fix display of right quote inset
 
@@ -67,6 +75,8 @@ What's new
 
 - duplicate 'i' shortcut in paragraph dialog fixed [bug #918, Qt only]
 
+- some tab-navigation problems in dialogs fixed [Qt only]
+
 - in the BibTeX dialog, fix the browsing mechanism of *.sty files and
   remove the unused Update button [bug #773, Qt only]
 
@@ -76,40 +86,29 @@ What's new
 
 - duplicate 'a' shortcut in graphics dialog fixed [XForms only]
 
-- revert is now disabled for an unchanged or unsaved document [bug #783]
-
 - fix bug where changing encoding of screen fonts would not work
   immediately [XForms only]
 
 - in the dialogs, replace LaTeX font size names by LyX names for
   consistency reasons and to resolve a translation conflict
 
-- fix detection of fax programs
+- revert is now disabled for an unchanged or unsaved document [bug #783]
 
 - enable the debug level to be set in lyx2lyx
 
-- fix strerror() build problem with some gcc/glibc versions [bug #874]
+- fix detection of fax programs
 
-- revert is now disabled for an unchanged or unsaved document [bug #783]
+- fix strerror() build problem with some gcc/glibc versions [bug #874]
 
 - fix compilation on OpenBSD
 
 - mention in INSTALL file that the qt frontend is selected using
   --with-frontend=qt
 
+- fix problem in generation of the reLyX and noweb2lyx scripts
+
 - add a few autoconf-related files that were missing from the
   distribution 
 
 - improve the lyx.spec file used to produce rpms
 
-- enable the lyx2lyx debug level to be set
-
-- squash a potential bug in the PreviewLoader before it bites.
-
-- don't cause a warning message to complain about starting an already running
-  timer. Just don't start it ;-)
-
-- prevent incorrect warning message about failing to find a graphics file to 
-  load when all is actually fine and dandy.
-
-- Update the language of the text after changing the document language.

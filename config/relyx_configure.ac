@@ -38,7 +38,9 @@ AC_PROG_INSTALL
 RELYX_CHECK_PERL
 
 dnl Finish the work
-AC_CONFIG_FILES(Makefile reLyX noweb2lyx, chmod 755 reLyX noweb2lyx)
+AC_CONFIG_FILES([Makefile])
+AC_CONFIG_FILES([reLyX], [chmod 755 reLyX])
+AC_CONFIG_FILES([noweb2lyx], [chmod 755 noweb2lyx])
 AC_OUTPUT
 
 RELYX_CHECK_ERRORS
