@@ -29,6 +29,9 @@ What's new
 - fix problem where it was not possible to force some values to 0 in
   custom margins
 
+- fix bug where horizontal alignment would be reset automatically to
+  "left" in the tabular dialog.
+
 - fix functions word-find-forward and word-find-backward, which
   meaning was inverted
 
