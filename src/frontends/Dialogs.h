@@ -119,6 +119,9 @@ public:
 	*/
 	void update(string const & name, string const & data);
 
+	/// is the dialog currently visible?
+	bool visible(string const & name) const;
+
 	/** All Dialogs of the given \param name will be closed if they are
 	    connected to the given \param inset.
 	*/

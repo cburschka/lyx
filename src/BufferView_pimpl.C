@@ -1148,6 +1148,8 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev_in)
 	}
 
 	case LFUN_PARAGRAPH_UPDATE: {
+		if (!bv_->owner()->getDialogs().visible("paragraph"))
+			break;
 		Paragraph const * par = &*bv_->getLyXText()->cursor.par();
 		if (!par)
 			break;

@@ -110,6 +110,16 @@ void Dialogs::show(string const & name, string const & data, InsetBase * inset)
 }
 
 
+bool Dialogs::visible(string const & name) const
+{
+	std::map<string, DialogPtr>::const_iterator it =
+		dialogs_.find(name);
+	if (it == dialogs_.end())
+		return false;
+	return it->second.get()->isVisible();
+}
+
+
 void Dialogs::update(string const & name, string const & data)
 {
 	Dialog * dialog = find(name);
