@@ -140,7 +140,7 @@ void FormTabular::build()
 	for (std::vector<string>::iterator it = units_vec.begin();
 	     it != units_vec.end(); ++it) {
 	        if (contains(*it, "%"))
-	                it = units_vec.erase(it, it+1) - 1;
+	                it = units_vec.erase(it, it + 1) - 1;
 	}
 	string units = getStringFromVector(units_vec, "|");
 
@@ -159,22 +159,22 @@ void FormTabular::update()
 	LyXTabular * tabular = inset_->tabular.get();
 	int align;
 	char buf[12];
-	string pwidth;
+	LyXLength pwidth;
 	string special;
 
 	int cell = inset_->getActCell();
 	actCell_ = cell;
-	int column = tabular->column_of_cell(cell)+1;
-	fl_set_object_label(dialog_->text_warning,"");
+	int column = tabular->column_of_cell(cell) + 1;
+	fl_set_object_label(dialog_->text_warning, "");
 	fl_activate_object(column_options_->input_special_alignment);
 	fl_activate_object(cell_options_->input_special_multialign);
 	fl_activate_object(column_options_->input_column_width);
 	fl_activate_object(column_options_->choice_value_column_width);
-	sprintf(buf,"%d",column);
+	sprintf(buf, "%d", column);
 	fl_set_input(dialog_->input_tabular_column, buf);
 	fl_deactivate_object(dialog_->input_tabular_column);
-	int row = tabular->row_of_cell(cell)+1;
-	sprintf(buf,"%d",row);
+	int row = tabular->row_of_cell(cell) + 1;
+	sprintf(buf, "%d", row);
 	fl_set_input(dialog_->input_tabular_row, buf);
 	fl_deactivate_object(dialog_->input_tabular_row);
 	if (tabular->IsMultiColumn(cell)) {
@@ -193,7 +193,7 @@ void FormTabular::update()
 		setEnabled(cell_options_->radio_border_right, true);
 		pwidth = tabular->GetMColumnPWidth(cell);
 		align = tabular->GetAlignment(cell);
-		if (!pwidth.empty() || (align == LYX_ALIGN_LEFT))
+		if (!pwidth.zero() || (align == LYX_ALIGN_LEFT))
 			fl_set_button(cell_options_->radio_align_left, 1);
 		else if (align == LYX_ALIGN_RIGHT)
 			fl_set_button(cell_options_->radio_align_right, 1);
@@ -206,7 +206,7 @@ void FormTabular::update()
 		fl_set_button(cell_options_->radio_valign_top, 0);
 		fl_set_button(cell_options_->radio_valign_bottom, 0);
 		fl_set_button(cell_options_->radio_valign_center, 0);
-		if (pwidth.empty() || (align == LyXTabular::LYX_VALIGN_CENTER))
+		if (pwidth.zero() || (align == LyXTabular::LYX_VALIGN_CENTER))
 			fl_set_button(cell_options_->radio_valign_center, 1);
 		else if (align == LyXTabular::LYX_VALIGN_BOTTOM)
 			fl_set_button(cell_options_->radio_valign_bottom, 1);
@@ -215,12 +215,12 @@ void FormTabular::update()
 		setEnabled(cell_options_->radio_valign_top,    true);
 		setEnabled(cell_options_->radio_valign_bottom, true);
 		setEnabled(cell_options_->radio_valign_center, true);
-		special = tabular->GetAlignSpecial(cell,LyXTabular::SET_SPECIAL_MULTI);
+		special = tabular->GetAlignSpecial(cell, LyXTabular::SET_SPECIAL_MULTI);
 		fl_set_input(cell_options_->input_special_multialign, special.c_str());
 		string const default_unit = "cm";
-		updateWidgetsFromLengthString(cell_options_->input_mcolumn_width,
-					      cell_options_->choice_value_mcolumn_width,
-					      pwidth.c_str(), default_unit);
+		updateWidgetsFromLength(cell_options_->input_mcolumn_width,
+					cell_options_->choice_value_mcolumn_width,
+					pwidth, default_unit);
 
 		if (!lv_->buffer()->isReadonly()) {
 			setEnabled(cell_options_->input_special_multialign, true);
@@ -228,13 +228,13 @@ void FormTabular::update()
 			setEnabled(cell_options_->choice_value_mcolumn_width, true);
 		}
 
-		setEnabled(cell_options_->radio_valign_top,    !pwidth.empty());
-		setEnabled(cell_options_->radio_valign_bottom, !pwidth.empty());
-		setEnabled(cell_options_->radio_valign_center, !pwidth.empty());
+		setEnabled(cell_options_->radio_valign_top,    !pwidth.zero());
+		setEnabled(cell_options_->radio_valign_bottom, !pwidth.zero());
+		setEnabled(cell_options_->radio_valign_center, !pwidth.zero());
 		
-		setEnabled(cell_options_->radio_align_left,   pwidth.empty());
-		setEnabled(cell_options_->radio_align_right,  pwidth.empty());
-		setEnabled(cell_options_->radio_align_center, pwidth.empty());
+		setEnabled(cell_options_->radio_align_left,   pwidth.zero());
+		setEnabled(cell_options_->radio_align_right,  pwidth.zero());
+		setEnabled(cell_options_->radio_align_center, pwidth.zero());
 	} else {
 		fl_set_button(cell_options_->radio_multicolumn, 0);
 
@@ -295,7 +295,7 @@ void FormTabular::update()
 		fl_set_button(column_options_->radio_border_right, 1);
 	else
 		fl_set_button(column_options_->radio_border_right, 0);
-	special = tabular->GetAlignSpecial(cell,LyXTabular::SET_SPECIAL_COLUMN);
+	special = tabular->GetAlignSpecial(cell, LyXTabular::SET_SPECIAL_COLUMN);
 	fl_set_input(column_options_->input_special_alignment, special.c_str());
 
 	bool const isReadonly = lv_->buffer()->isReadonly();
@@ -303,26 +303,26 @@ void FormTabular::update()
 
 	pwidth = tabular->GetColumnPWidth(cell);
 	string const default_unit = "cm";
-	updateWidgetsFromLengthString(column_options_->input_column_width,
-				      column_options_->choice_value_column_width,
-				      pwidth.c_str(), default_unit);
+	updateWidgetsFromLength(column_options_->input_column_width,
+				column_options_->choice_value_column_width,
+				pwidth, default_unit);
 	setEnabled(column_options_->input_column_width, !isReadonly);
 	setEnabled(column_options_->choice_value_column_width, !isReadonly);
 
-	setEnabled(cell_options_->radio_useminipage, !pwidth.empty());
-	if (!pwidth.empty()) {
+	setEnabled(cell_options_->radio_useminipage, !pwidth.zero());
+	if (!pwidth.zero()) {
 		if (tabular->GetUsebox(cell) == 2)
 			fl_set_button(cell_options_->radio_useminipage, 1);
 		else
 			fl_set_button(cell_options_->radio_useminipage, 0);
 	} else {
-		fl_set_button(cell_options_->radio_useminipage,0);
+		fl_set_button(cell_options_->radio_useminipage, 0);
 	}
 	align = tabular->GetAlignment(cell, true);
 	fl_set_button(column_options_->radio_align_left, 0);
 	fl_set_button(column_options_->radio_align_right, 0);
 	fl_set_button(column_options_->radio_align_center, 0);
-	if (!pwidth.empty() || (align == LYX_ALIGN_LEFT))
+	if (!pwidth.zero() || (align == LYX_ALIGN_LEFT))
 		fl_set_button(column_options_->radio_align_left, 1);
 	else if (align == LYX_ALIGN_RIGHT)
 		fl_set_button(column_options_->radio_align_right, 1);
@@ -332,20 +332,20 @@ void FormTabular::update()
 	fl_set_button(column_options_->radio_valign_top, 0);
 	fl_set_button(column_options_->radio_valign_bottom, 0);
 	fl_set_button(column_options_->radio_valign_center, 0);
-	if (pwidth.empty() || (align == LyXTabular::LYX_VALIGN_CENTER))
+	if (pwidth.zero() || (align == LyXTabular::LYX_VALIGN_CENTER))
 		fl_set_button(column_options_->radio_valign_center, 1);
 	else if (align == LyXTabular::LYX_VALIGN_BOTTOM)
 		fl_set_button(column_options_->radio_valign_bottom, 1);
 	else
 		fl_set_button(column_options_->radio_valign_top, 1);
 
-	setEnabled(column_options_->radio_align_left,   pwidth.empty());
-	setEnabled(column_options_->radio_align_right,  pwidth.empty());
-	setEnabled(column_options_->radio_align_center, pwidth.empty());
+	setEnabled(column_options_->radio_align_left,   pwidth.zero());
+	setEnabled(column_options_->radio_align_right,  pwidth.zero());
+	setEnabled(column_options_->radio_align_center, pwidth.zero());
 	
-	setEnabled(column_options_->radio_valign_top,    !pwidth.empty());
-	setEnabled(column_options_->radio_valign_bottom, !pwidth.empty());
-	setEnabled(column_options_->radio_valign_center, !pwidth.empty());
+	setEnabled(column_options_->radio_valign_top,    !pwidth.zero());
+	setEnabled(column_options_->radio_valign_bottom, !pwidth.zero());
+	setEnabled(column_options_->radio_valign_center, !pwidth.zero());
 
 	fl_set_button(tabular_options_->radio_longtable,
 		      tabular->IsLongTabular());
@@ -360,21 +360,21 @@ void FormTabular::update()
 	if (enable) {
 		LyXTabular::ltType dummyltt;
 		fl_set_button(longtable_options_->radio_lt_firsthead,
-		              tabular->GetRowOfLTFirstHead(row-1, dummyltt));
+		              tabular->GetRowOfLTFirstHead(row - 1, dummyltt));
 		fl_set_button(longtable_options_->radio_lt_head,
-		              tabular->GetRowOfLTHead(row-1, dummyltt));
+		              tabular->GetRowOfLTHead(row - 1, dummyltt));
 		fl_set_button(longtable_options_->radio_lt_foot,
-		              tabular->GetRowOfLTFoot(row-1, dummyltt));
+		              tabular->GetRowOfLTFoot(row - 1, dummyltt));
 		fl_set_button(longtable_options_->radio_lt_lastfoot,
-		              tabular->GetRowOfLTLastFoot(row-1, dummyltt));
+		              tabular->GetRowOfLTLastFoot(row - 1, dummyltt));
 		fl_set_button(longtable_options_->radio_lt_newpage,
 		              tabular->GetLTNewPage(cell));
 	} else {
-		fl_set_button(longtable_options_->radio_lt_firsthead,0);
-		fl_set_button(longtable_options_->radio_lt_head,0);
-		fl_set_button(longtable_options_->radio_lt_foot,0);
-		fl_set_button(longtable_options_->radio_lt_lastfoot,0);
-		fl_set_button(longtable_options_->radio_lt_newpage,0);
+		fl_set_button(longtable_options_->radio_lt_firsthead, 0);
+		fl_set_button(longtable_options_->radio_lt_head, 0);
+		fl_set_button(longtable_options_->radio_lt_foot, 0);
+		fl_set_button(longtable_options_->radio_lt_lastfoot, 0);
+		fl_set_button(longtable_options_->radio_lt_newpage, 0);
 	}
 	fl_set_button(tabular_options_->radio_rotate_tabular,
 		      tabular->GetRotateTabular());
@@ -411,7 +411,7 @@ bool FormTabular::input(FL_OBJECT * ob, long)
 	    string const str =
 		    getLengthFromWidgets(column_options_->input_column_width,
 					 column_options_->choice_value_column_width);
-        inset_->tabularFeatures(lv_->view(), LyXTabular::SET_PWIDTH,str);
+        inset_->tabularFeatures(lv_->view(), LyXTabular::SET_PWIDTH, str);
         update(); // update for alignment
         return true;
     }
@@ -419,7 +419,7 @@ bool FormTabular::input(FL_OBJECT * ob, long)
 	    string const str =
 		    getLengthFromWidgets(cell_options_->input_mcolumn_width,
 					 cell_options_->choice_value_mcolumn_width);
-        inset_->tabularFeatures(lv_->view(), LyXTabular::SET_MPWIDTH,str);
+        inset_->tabularFeatures(lv_->view(), LyXTabular::SET_MPWIDTH, str);
         update(); // update for alignment
         return true;
     }
@@ -483,11 +483,11 @@ bool FormTabular::input(FL_OBJECT * ob, long)
 				  tabular->GetLTNewPage(cell));
 	    } else {
 		    num = LyXTabular::UNSET_LONGTABULAR;
-		    fl_set_button(longtable_options_->radio_lt_firsthead,0);
-		    fl_set_button(longtable_options_->radio_lt_head,0);
-		    fl_set_button(longtable_options_->radio_lt_foot,0);
-		    fl_set_button(longtable_options_->radio_lt_lastfoot,0);
-		    fl_set_button(longtable_options_->radio_lt_newpage,0);
+		    fl_set_button(longtable_options_->radio_lt_firsthead, 0);
+		    fl_set_button(longtable_options_->radio_lt_head, 0);
+		    fl_set_button(longtable_options_->radio_lt_foot, 0);
+		    fl_set_button(longtable_options_->radio_lt_lastfoot, 0);
+		    fl_set_button(longtable_options_->radio_lt_newpage, 0);
 	    }
     } else if (ob == tabular_options_->radio_rotate_tabular) {
         s = fl_get_button(tabular_options_->radio_rotate_tabular);

@@ -412,7 +412,7 @@ void LyXTabular::set_row_column_number_info(bool oldformat)
 					cell_info[row][column+cn-1].right_line;
 			}
 			cell_info[row][column].inset.setAutoBreakRows(
-				!GetPWidth(GetCellNumber(row, column)).empty());
+				!GetPWidth(GetCellNumber(row, column)).zero());
 		}
 	}
 }
@@ -730,9 +730,9 @@ bool LyXTabular::SetVAlignment(int cell, VAlignment align, bool onlycolumn)
 }
 
 
-bool LyXTabular::SetColumnPWidth(int cell, string const & width)
+bool LyXTabular::SetColumnPWidth(int cell, LyXLength const & width)
 {
-	bool flag = !width.empty();
+	bool flag = !width.zero();
 	int const j = column_of_cell(cell);
 
 	column_info[j].p_width = width;
@@ -740,16 +740,16 @@ bool LyXTabular::SetColumnPWidth(int cell, string const & width)
 		SetAlignment(cell, LYX_ALIGN_LEFT);
 	for (int i = 0; i < rows_; ++i) {
 		int c = GetCellNumber(i, j);
-		flag = !GetPWidth(c).empty(); // because of multicolumns!
+		flag = !GetPWidth(c).zero(); // because of multicolumns!
 		GetCellInset(c)->setAutoBreakRows(flag);
 	}
 	return true;
 }
 
 
-bool LyXTabular::SetMColumnPWidth(int cell, string const & width)
+bool LyXTabular::SetMColumnPWidth(int cell, LyXLength const & width)
 {
-	bool const flag = !width.empty();
+	bool const flag = !width.zero();
 
 	cellinfo_of_cell(cell)->p_width = width;
 	if (IsMultiColumn(cell)) {
@@ -842,7 +842,7 @@ LyXTabular::GetVAlignment(int cell, bool onlycolumn) const
 }
 
 
-string const LyXTabular::GetPWidth(int cell) const
+LyXLength const LyXTabular::GetPWidth(int cell) const
 {
 	if (IsMultiColumn(cell))
 		return cellinfo_of_cell(cell)->p_width;
@@ -850,17 +850,17 @@ string const LyXTabular::GetPWidth(int cell) const
 }
 
 
-string const LyXTabular::GetColumnPWidth(int cell) const
+LyXLength const LyXTabular::GetColumnPWidth(int cell) const
 {
 	return column_info[column_of_cell(cell)].p_width;
 }
 
 
-string const LyXTabular::GetMColumnPWidth(int cell) const
+LyXLength const LyXTabular::GetMColumnPWidth(int cell) const
 {
 	if (IsMultiColumn(cell))
 		return cellinfo_of_cell(cell)->p_width;
-	return string();
+	return LyXLength();
 }
 
 
@@ -1022,6 +1022,11 @@ string const write_attribute(string const & name, bool const & b)
 	return write_attribute(name, int(b));
 }
 
+template <>
+string const write_attribute(string const & name, LyXLength const & value)
+{
+	return write_attribute(name, value.asString());
+}
 #else
 
 string const write_attribute(string const & name, int value)
@@ -1041,6 +1046,13 @@ string const write_attribute(string const & name, string const & value)
 string const write_attribute(string const & name, bool value)
 {
 	string str = " " + name + "=\"" + tostr(static_cast<int>(value)) + "\"";
+	return str;
+}
+
+
+string const write_attribute(string const & name, LyXLength const & value)
+{
+	string str = " " + name + "=\"" + value.asString() + "\"";
 	return str;
 }
 #endif
@@ -1125,9 +1137,7 @@ void LyXTabular::Write(Buffer const * buf, ostream & os) const
 		   << write_attribute("valignment", tostr(column_info[j].valignment))
 		   << write_attribute("leftline", tostr(column_info[j].left_line))
 		   << write_attribute("rightline", tostr(column_info[j].right_line))
-		   << write_attribute("width",
-							  VSpace(column_info[j].p_width)
-							  .asLyXCommand())
+		   << write_attribute("width", column_info[j].p_width.asString())
 		   << write_attribute("special", column_info[j].align_special)
 		   << ">\n";
 	}
@@ -1295,6 +1305,15 @@ bool getTokenValue(string const & str, const char * token, bool & flag)
 	if (!getTokenValue(str, token, tmp))
 		return false;
 	return string2type(tmp, flag);
+}    
+
+
+bool getTokenValue(string const & str, const char * token, LyXLength & len)
+{
+	string tmp;
+	if (!getTokenValue(str, token, tmp))
+		return false;
+	return isValidLength(tmp, &len);
 }    
 
 
@@ -1525,7 +1544,7 @@ void LyXTabular::OldFormatRead(LyXLex & lex, string const & fl)
 			column_info[i].alignment = static_cast<LyXAlignment>(a);
 			column_info[i].left_line = b;
 			column_info[i].right_line = c;
-			column_info[i].p_width = s1;
+			column_info[i].p_width = LyXLength(s1);
 			column_info[i].align_special = s2;
 		}
 		for (i = 0; i < rows_; ++i) {
@@ -1557,7 +1576,7 @@ void LyXTabular::OldFormatRead(LyXLex & lex, string const & fl)
 				cell_info[i][j].rotate = static_cast<bool>(f);
 				cell_info[i][j].usebox = static_cast<BoxType>(g);
 				cell_info[i][j].align_special = s1;
-				cell_info[i][j].p_width = s2;
+				cell_info[i][j].p_width = LyXLength(s2);
 			}
 		}
 	}
@@ -1832,8 +1851,8 @@ void LyXTabular::SetUsebox(int cell, BoxType type)
 
 LyXTabular::BoxType LyXTabular::GetUsebox(int cell) const
 {
-	if (column_info[column_of_cell(cell)].p_width.empty() &&
-		!(IsMultiColumn(cell) && !cellinfo_of_cell(cell)->p_width.empty()))
+	if (column_info[column_of_cell(cell)].p_width.zero() &&
+		!(IsMultiColumn(cell) && !cellinfo_of_cell(cell)->p_width.zero()))
 		return BOX_NONE;
 	if (cellinfo_of_cell(cell)->usebox > 1)
 		return cellinfo_of_cell(cell)->usebox;
@@ -2047,7 +2066,7 @@ int LyXTabular::TeXCellPreamble(ostream & os, int cell) const
 			{
 				os << '|';
 			}
-			if (!GetPWidth(cell).empty()) {
+			if (!GetPWidth(cell).zero()) {
 				switch (GetVAlignment(cell)) {
 				case LYX_VALIGN_TOP:
 					os << "p";
@@ -2059,7 +2078,7 @@ int LyXTabular::TeXCellPreamble(ostream & os, int cell) const
 					os << "b";
 					break;
 				}
-				os << "{" << GetPWidth(cell) << '}';
+				os << "{" << GetPWidth(cell).asLatexString() << '}';
 			} else {
 				switch (GetAlignment(cell)) {
 				case LYX_ALIGN_LEFT:
@@ -2094,7 +2113,7 @@ int LyXTabular::TeXCellPreamble(ostream & os, int cell) const
 			os << "b";
 			break;
 		}
-		os << "]{" << GetPWidth(cell) << "}{";
+		os << "]{" << GetPWidth(cell).asLatexString() << "}{";
 	} else if (GetUsebox(cell) == BOX_MINIPAGE) {
 		os << "\\begin{minipage}[";
 		switch (GetVAlignment(cell)) {
@@ -2108,7 +2127,7 @@ int LyXTabular::TeXCellPreamble(ostream & os, int cell) const
 			os << "b";
 			break;
 		}
-		os << "]{" << GetPWidth(cell) << "}\n";
+		os << "]{" << GetPWidth(cell).asLatexString() << "}\n";
 		++ret;
 	}
 	return ret;
@@ -2161,7 +2180,7 @@ int LyXTabular::Latex(Buffer const * buf,
 		} else { 
 			if (column_info[i].left_line)
 				os << '|';
-			if (!column_info[i].p_width.empty()) {
+			if (!column_info[i].p_width.zero()) {
 				switch (column_info[i].valignment) {
 				case LYX_VALIGN_TOP:
 					os << "p";
@@ -2174,7 +2193,7 @@ int LyXTabular::Latex(Buffer const * buf,
 					break;
 			}
 				os << "{"
-				   << column_info[i].p_width
+				   << column_info[i].p_width.asLatexString()
 				   << '}';
 			} else {
 				switch (column_info[i].alignment) {
@@ -2216,7 +2235,7 @@ int LyXTabular::Latex(Buffer const * buf,
 			InsetText * inset = GetCellInset(cell);
 
 			bool rtl = inset->paragraph()->isRightToLeftPar(buf->params) &&
-					inset->paragraph()->size() > 0 && GetPWidth(cell).empty();
+					inset->paragraph()->size() > 0 && GetPWidth(cell).zero();
 
 			if (rtl)
 				os << "\\R{";

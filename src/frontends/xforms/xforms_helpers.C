@@ -122,6 +122,24 @@ string getLengthFromWidgets(FL_OBJECT * input, FL_OBJECT * choice)
 }
 	
 
+#if 1
+// this should definitely be the other way around!!!
+void updateWidgetsFromLength(FL_OBJECT * input, FL_OBJECT * choice,
+			     LyXLength const & len,
+			     string const & default_unit)
+{
+	if (len.zero())
+		updateWidgetsFromLengthString(input, choice,
+					      string(), default_unit);
+	else
+		updateWidgetsFromLengthString(input, choice,
+					      len.asString(), default_unit);
+
+}
+
+
+// Most of the code here is a poor duplication of the parser code
+// which is in LyXLength. Use that instead
 void updateWidgetsFromLengthString(FL_OBJECT * input, FL_OBJECT * choice,
 				   string const & str,
 				   string const & default_unit)
@@ -180,7 +198,37 @@ void updateWidgetsFromLengthString(FL_OBJECT * input, FL_OBJECT * choice,
 	fl_set_input(input,   len.c_str());
 	fl_set_choice(choice, unitpos);
 }
- 
+#else
+void updateWidgetsFromLengthString(FL_OBJECT * input, FL_OBJECT * choice,
+				   string const & str,
+				   string const & default_unit)
+{
+	updateWidgetsFromLength(input, choice,
+				LyXLength(str), default_unit);
+}
+
+
+void updateWidgetsFromLength(FL_OBJECT * input, FL_OBJECT * choice,
+			     LyXLength const & len,
+			     string const & default_unit)
+{
+	// Paranoia check
+	lyx::Assert(input  && input->objclass  == FL_INPUT &&
+		    choice && choice->objclass == FL_CHOICE);
+
+	if (len.zero()) {
+		fl_set_input(input, "");
+		fl_set_choice_text(choice, default_unit.c_str());
+	} else {
+		ostringstream buffer;
+		buffer << len.value();
+		fl_set_input(input, buffer.str().c_str());
+		fl_set_choice_text(choice, stringFromUnit(len.unit()));
+	}
+}
+#endif
+
+
 // Take a string and add breaks so that it fits into a desired label width, w
 string formatted(string const & sin, int w, int size, int style)
 {

@@ -23,6 +23,7 @@
 #include "layout.h"
 #include "LString.h"
 #include "insets/insettext.h"
+#include "lyxlength.h"
 
 class InsetTabular;
 class LaTeXFeatures;
@@ -238,9 +239,9 @@ public:
 	bool SetVAlignment(int cell, VAlignment align,
 			   bool onlycolumn = false);
 	///
-	bool SetColumnPWidth(int cell, string const & width);
+	bool SetColumnPWidth(int cell, LyXLength const & width);
 	///
-	bool SetMColumnPWidth(int cell, string const & width);
+	bool SetMColumnPWidth(int cell, LyXLength const & width);
 	///
 	bool SetAlignSpecial(int cell, string const & special, Feature what);
 	///
@@ -248,11 +249,11 @@ public:
 	///
 	VAlignment GetVAlignment(int cell, bool onlycolumn = false) const;
 	///
-	string const GetPWidth(int cell) const;
+	LyXLength const GetPWidth(int cell) const;
 	///
-	string const GetColumnPWidth(int cell) const;
+	LyXLength const GetColumnPWidth(int cell) const;
 	///
-	string const GetMColumnPWidth(int cell) const;
+	LyXLength const GetMColumnPWidth(int cell) const;
 	///
 	string const GetAlignSpecial(int cell, int what) const;
 	///
@@ -428,7 +429,7 @@ private:
 		///
 		string align_special;
 		///
-		string p_width; // this is only set for multicolumn!!!
+		LyXLength p_width; // this is only set for multicolumn!!!
 		///
 		InsetText inset;
 	};
@@ -470,7 +471,7 @@ private:
 		///
 		int  width_of_column;
 		///
-		string p_width;
+		LyXLength p_width;
 		///
 		string align_special;
 	};

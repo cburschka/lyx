@@ -13,6 +13,7 @@
  
 #include "Color.h"
 #include "support/lstrings.h"
+#include "lyxlength.h"
  
 #include <vector>
 
@@ -48,6 +49,13 @@ string getLengthFromWidgets(FL_OBJECT * input, FL_OBJECT * choice);
 void updateWidgetsFromLengthString(FL_OBJECT * input, FL_OBJECT * choice,
 				   string const & str,
 				   string const & default_unit);
+
+/** Given a LyXLength, set the input and choice widgets.
+    If the length is null, the choice will be set to default_unit.
+ */
+void updateWidgetsFromLength(FL_OBJECT * input, FL_OBJECT * choice,
+			     LyXLength const & len,
+			     string const & default_unit);
 
 /// struct holding xform-specific colors
 struct XformsColor : public NamedColor {

@@ -1229,7 +1229,7 @@ bool InsetTabular::calculate_dimensions_of_cells(BufferView * bv,
 				continue;
 			++cell;
 			inset = tabular->GetCellInset(cell);
-			if (!reinit && !tabular->GetPWidth(cell).empty())
+			if (!reinit && !tabular->GetPWidth(cell).zero())
 				inset->update(bv, font, false);
 			maxAsc = max(maxAsc, inset->ascent(bv, font));
 			maxDesc = max(maxDesc, inset->descent(bv, font));
@@ -1645,27 +1645,27 @@ void InsetTabular::tabularFeatures(BufferView * bv,
 	switch (feature) {
 	case LyXTabular::M_ALIGN_LEFT:
 	case LyXTabular::ALIGN_LEFT:
-		setAlign=LYX_ALIGN_LEFT;
+		setAlign = LYX_ALIGN_LEFT;
 		break;
 	case LyXTabular::M_ALIGN_RIGHT:
 	case LyXTabular::ALIGN_RIGHT:
-		setAlign=LYX_ALIGN_RIGHT;
+		setAlign = LYX_ALIGN_RIGHT;
 		break;
 	case LyXTabular::M_ALIGN_CENTER:
 	case LyXTabular::ALIGN_CENTER:
-		setAlign=LYX_ALIGN_CENTER;
+		setAlign = LYX_ALIGN_CENTER;
 		break;
 	case LyXTabular::M_VALIGN_TOP:
 	case LyXTabular::VALIGN_TOP:
-		setVAlign=LyXTabular::LYX_VALIGN_TOP;
+		setVAlign = LyXTabular::LYX_VALIGN_TOP;
 		break;
 	case LyXTabular::M_VALIGN_BOTTOM:
 	case LyXTabular::VALIGN_BOTTOM:
-		setVAlign=LyXTabular::LYX_VALIGN_BOTTOM;
+		setVAlign = LyXTabular::LYX_VALIGN_BOTTOM;
 		break;
 	case LyXTabular::M_VALIGN_CENTER:
 	case LyXTabular::VALIGN_CENTER:
-		setVAlign=LyXTabular::LYX_VALIGN_CENTER;
+		setVAlign = LyXTabular::LYX_VALIGN_CENTER;
 		break;
 	default:
 		break;
@@ -1688,8 +1688,9 @@ void InsetTabular::tabularFeatures(BufferView * bv,
 	switch (feature) {
 	case LyXTabular::SET_PWIDTH:
 	{
-		bool const update = (tabular->GetColumnPWidth(actcell) != value);
-		tabular->SetColumnPWidth(actcell,value);
+		LyXLength const vallen = LyXLength(value);
+		bool const update = (tabular->GetColumnPWidth(actcell) != vallen);
+		tabular->SetColumnPWidth(actcell,vallen);
 		if (update) {
 			for (int i = 0; i < tabular->rows(); ++i) {
 				tabular->GetCellInset(tabular->GetCellNumber(i, column))->
@@ -1701,8 +1702,9 @@ void InsetTabular::tabularFeatures(BufferView * bv,
 	break;
 	case LyXTabular::SET_MPWIDTH:
 	{
-		bool const update = (tabular->GetPWidth(actcell) != value);
-		tabular->SetMColumnPWidth(actcell,value);
+		LyXLength const vallen = LyXLength(value);
+		bool const update = (tabular->GetPWidth(actcell) != vallen);
+		tabular->SetMColumnPWidth(actcell,vallen);
 		if (update) {
 			for (int i = 0; i < tabular->rows(); ++i) {
 				tabular->GetCellInset(tabular->GetCellNumber(i, column))->
@@ -1999,11 +2001,14 @@ bool InsetTabular::insetHit(BufferView *, int x, int) const
 // in pixels if we have a pwidth for this cell.
 int InsetTabular::getMaxWidthOfCell(BufferView * bv, int cell) const
 {
-	string const s = tabular->GetPWidth(cell);
+	LyXLength const len = tabular->GetPWidth(cell);
 	
-	if (s.empty())
+	if (len.zero())
 		return -1;
-	return VSpace(s).inPixels(bv);
+#ifdef WITH_WARNINGS
+#warning Remove use of VSpace as soon as LyXLength::inPixels exists (JMarc)
+#endif
+	return VSpace(len).inPixels(bv);
 }
 
 

@@ -1,6 +1,9 @@
 2001-12-10  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
-	* insettext.C (draw): re-introduce the calls to width() ascent()
+	* insettabular.C (everywhere): adapt because widths are now real
+	widths and not strings
+
+	* insettext.C (draw): re-introduce the calls to width(), ascent()
 	and descent() to initialize the caching variables.
 
 2001-12-09  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>

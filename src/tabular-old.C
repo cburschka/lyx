@@ -125,6 +125,15 @@ bool getTokenValue(string const & str, char const * token, bool & flag)
 }
 
 
+bool getTokenValue(string const & str, const char * token, LyXLength & len)
+{
+	string tmp;
+	if (!getTokenValue(str, token, tmp))
+		return false;
+	return isValidLength(tmp, &len);
+}    
+
+
 inline
 void l_getline(istream & is, string & str)
 {
