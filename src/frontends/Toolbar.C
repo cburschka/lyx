@@ -13,6 +13,7 @@
 #endif
 
 #include "Toolbar.h"
+#include "ToolbarDefaults.h"
 #include "Toolbar_pimpl.h"
 #include "debug.h"
 #include "LyXAction.h"
