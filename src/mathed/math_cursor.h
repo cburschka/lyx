@@ -85,6 +85,10 @@ class MathedCursor {
     void setNumbered();
     void setLabel(char const *);
     ///
+    char const * getLabel() const {
+	    return cursor->getLabel();
+    }
+    ///
     bool Limits();
     /// Set accent: if argument = 0 it's considered consumed 
     void setAccent(int ac = 0);

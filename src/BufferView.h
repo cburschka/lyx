@@ -226,6 +226,8 @@ public:
 #endif
 	///
 	bool ChangeRefs(string const & from, string const & to);
+	///
+	bool ChangeRefsIfUnique(string const & from, string const & to);
 #ifdef XFORMS_CLIPBOARD
 	///
 	void pasteClipboard(bool asPara);

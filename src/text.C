@@ -434,12 +434,9 @@ bool LyXText::IsBoundary(LyXParagraph * par, LyXParagraph::size_type pos) const
 		return false;
 
 	bool rtl = bidi_level(pos - 1) % 2;
-	bool rtl2 = rtl;
-	if (pos == par->Last() ||
-	    (par->table && par->IsNewline(pos)))
-		rtl2 = par->isRightToLeftPar();
-	else if (bidi_InRange(pos))
-		rtl2 = bidi_level(pos) % 2;
+	bool rtl2 = bidi_InRange(pos)
+		? bidi_level(pos) % 2
+		: par->isRightToLeftPar();
 	return rtl != rtl2;
 }
 
@@ -450,12 +447,9 @@ bool LyXText::IsBoundary(LyXParagraph * par, LyXParagraph::size_type pos,
 		return false;    // This is just for speedup
 
 	bool rtl = font.isVisibleRightToLeft();
-	bool rtl2 = rtl;
-	if (pos == par->Last() ||
-	    (par->table && par->IsNewline(pos)))
-		rtl2 = par->isRightToLeftPar();
-	else if (bidi_InRange(pos))
-		rtl2 =  bidi_level(pos) % 2;
+	bool rtl2 = bidi_InRange(pos)
+		? bidi_level(pos) % 2
+		: par->isRightToLeftPar();
 	return rtl != rtl2;
 }
 
@@ -2666,7 +2660,7 @@ void LyXText::InsertChar(char c)
 	if (lyxrc.auto_number) {
 		if (current_font.number() == LyXFont::ON) {
 			if (!isdigit(c) && !strchr("+-/*", c) &&
-			    !(strchr(".",c) &&
+			    !(strchr(".,",c) &&
 			      cursor.pos >= 1 && cursor.pos < cursor.par->size() &&
 			      GetFont(cursor.par, cursor.pos).number() == LyXFont::ON &&
 			      GetFont(cursor.par, cursor.pos-1).number() == LyXFont::ON)
@@ -2685,7 +2679,7 @@ void LyXText::InsertChar(char c)
 				    ) {
 					SetCharFont(cursor.par, cursor.pos - 1,
 						    current_font);
-				} else if (strchr(".", c) &&
+				} else if (strchr(".,", c) &&
 					   cursor.pos >= 2 &&
 					   GetFont(cursor.par, cursor.pos-2).number() == LyXFont::ON) {
 					SetCharFont(cursor.par, cursor.pos - 1,
@@ -2847,6 +2841,10 @@ void LyXText::InsertChar(char c)
 		current_font = rawtmpfont;
 		real_current_font = realtmpfont;
 		SetCursor(cursor.par, cursor.pos + 1, false, cursor.boundary);
+		if (IsBoundary(cursor.par, cursor.pos) != cursor.boundary)
+			SetCursor(cursor.par, cursor.pos, false,
+				  !cursor.boundary);
+
 		if (row->next && row->next->par == row->par)
 			need_break_row = row->next;
 		else
@@ -3734,12 +3732,12 @@ void LyXText::Backspace()
 	// current_font = rawtmpfont;
 	// real_current_font = realtmpfont;
 
+	if (IsBoundary(cursor.par, cursor.pos) != cursor.boundary)
+		SetCursor(cursor.par, cursor.pos, false, !cursor.boundary);
+
 	lastpos = cursor.par->Last();
-	if (cursor.pos == lastpos) {
-		if (IsBoundary(cursor.par, cursor.pos) != cursor.boundary)
-			SetCursor(cursor.par, cursor.pos, false, !cursor.boundary);
+	if (cursor.pos == lastpos)
 		SetCurrentFont();
-	}
 	
 	// check, wether the last characters font has changed.
 	if (rawparfont != 

@@ -505,9 +505,13 @@ void BufferView::Pimpl::workAreaMotionNotify(int x, int y, unsigned int state)
 	// Check for inset locking
 	if (bv_->the_locking_inset) {
 		LyXCursor cursor = bv_->text->cursor;
+		LyXFont font = bv_->text->GetFont(cursor.par, cursor.pos);
+		int width = bv_->the_locking_inset->width(bv_->painter(), font);
+		int start_x = font.isVisibleRightToLeft()
+			? cursor.x - width : cursor.x;
 		bv_->the_locking_inset->
 			InsetMotionNotify(bv_,
-					  x - cursor.x,
+					  x - start_x,
 					  y - cursor.y + screen->first,
 					  state);
 		return;
@@ -810,6 +814,7 @@ void BufferView::Pimpl::workAreaButtonRelease(int x, int y,
 			c = bv_->text->cursor.par->
 				GetChar(bv_->text->cursor.pos);
 		}
+	       if(!bv_->text->selection)
 		if (c == LyXParagraph::META_FOOTNOTE
 		    || c == LyXParagraph::META_MARGIN
 		    || c == LyXParagraph::META_FIG
@@ -906,17 +911,11 @@ Inset * BufferView::Pimpl::checkInsetHit(int & x, int & y,
 		// Check whether the inset really was hit
 		Inset * tmpinset = cursor.par->GetInset(cursor.pos);
 		LyXFont font = bv_->text->GetFont(cursor.par, cursor.pos);
-		bool is_rtl = font.isVisibleRightToLeft();
-		int start_x, end_x;
-
-		if (is_rtl) {
-			start_x = cursor.x - tmpinset->width(bv_->painter(), font);
-			end_x = cursor.x;
-		} else {
-			start_x = cursor.x;
-			end_x = cursor.x + tmpinset->width(bv_->painter(), font);
-		}
-
+		int width = tmpinset->width(bv_->painter(), font);
+		int start_x = font.isVisibleRightToLeft()
+			? cursor.x - width : cursor.x;
+		int end_x = start_x + width;
+ 
 		if (x > start_x && x < end_x
 		    && y_tmp > cursor.y - tmpinset->ascent(bv_->painter(), font)
 		    && y_tmp < cursor.y + tmpinset->descent(bv_->painter(), font)) {
@@ -937,16 +936,12 @@ Inset * BufferView::Pimpl::checkInsetHit(int & x, int & y,
 	    (cursor.par->GetInset(cursor.pos - 1)->Editable())) {
 		Inset * tmpinset = cursor.par->GetInset(cursor.pos-1);
 		LyXFont font = bv_->text->GetFont(cursor.par, cursor.pos-1);
-		bool is_rtl = font.isVisibleRightToLeft();
-		int start_x, end_x;
 
-		if (!is_rtl) {
-			start_x = cursor.x - tmpinset->width(bv_->painter(), font);
-			end_x = cursor.x;
-		} else {
-			start_x = cursor.x;
-			end_x = cursor.x + tmpinset->width(bv_->painter(), font);
-		}
+		int width = tmpinset->width(bv_->painter(), font);
+		int start_x = font.isVisibleRightToLeft()
+			? cursor.x : cursor.x - width;
+		int end_x = start_x + width;
+
 		if (x > start_x && x < end_x
 		    && y_tmp > cursor.y - tmpinset->ascent(bv_->painter(), font)
 		    && y_tmp < cursor.y + tmpinset->descent(bv_->painter(), font)) {

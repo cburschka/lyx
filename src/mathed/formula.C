@@ -765,6 +765,10 @@ InsetFormula::LocalDispatch(BufferView * bv,
     case LFUN_BREAKLINE:
       bv->lockedInsetStoreUndo(Undo::INSERT);
       mathcursor->Insert(' ', LM_TC_CR);
+      if (!label.empty()) {
+	 mathcursor->setLabel(label.c_str());
+	 label.erase();
+      }
       par = mathcursor->GetPar();
       UpdateLocal(bv);
       break;
@@ -1020,28 +1024,37 @@ InsetFormula::LocalDispatch(BufferView * bv,
     case LFUN_INSERT_LABEL:
     {
        bv->lockedInsetStoreUndo(Undo::INSERT);
-       if (par->GetType() < LM_OT_PAR) break;
-       string lb = arg;
-       if (lb.empty()) {
-	  pair<bool, string>
-		res = askForText(_("Enter new label to insert:"));
-	  if (res.first) {
-	     lb = res.second;
-	  }
+       if (par->GetType() < LM_OT_PAR)
+	      break;
+
+       string old_label = (par->GetType() == LM_OT_MPARN)
+	       ?  mathcursor->getLabel() : label;
+       string new_label = arg;
+       if (new_label.empty()) {
+	  pair<bool, string> res = old_label.empty()
+		  ? askForText(_("Enter new label to insert:"))
+		  : askForText(_("Enter label:"), old_label);
+	  if (!res.first)
+	     break;
+	  new_label = frontStrip(strip(res.second));
        }
-       if (!lb.empty() && lb[0] > ' ') {
+
+       if (new_label == old_label)
+	       break;  // Nothing to do
+
+       if (!new_label.empty())
 	  SetNumber(true);
-	  if (par->GetType() == LM_OT_MPARN) {
-	      mathcursor->setLabel(lb.c_str());
-//	      MathMatrixInset *mt = (MathMatrixInset*)par;
-//	      mt->SetLabel(lb);
-	  } else {
-		  //if (label.notEmpty()) delete label;
-	      label = lb;
-	  }
-	  UpdateLocal(bv);
-       } else
-	       label.erase();
+
+       if (!new_label.empty() && bv->ChangeRefsIfUnique(old_label, new_label))
+	      bv->redraw();
+
+       if (par->GetType() == LM_OT_MPARN)
+	  mathcursor->setLabel(new_label.c_str());
+//	  MathMatrixInset *mt = (MathMatrixInset*)par;
+//	  mt->SetLabel(new_label);
+       else
+	  label = new_label;
+       UpdateLocal(bv);
        break;
     }
     

@@ -219,6 +219,10 @@ class MathedXIter: public MathedIter {
 	  //@{
 	///
     bool setLabel(char* label);
+    ///
+    char const * getLabel() const {
+	    return crow->getLabel();
+    }
 	///
     bool setNumbered(bool);
 	//@}

@@ -1,3 +1,37 @@
+2000-12-02  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* src/BufferView_pimpl.C (workAreaMotionNotify): Fixed mouse
+	movement in inset in RTL text.
+	(checkInsetHit): Fixed mouse movement in scrolled inset in RTL text.
+	(workAreaButtonRelease): Do not open a float when there is a selection.
+
+	* src/spellchecker.C (RunSpellChecker): Open all floats before
+ 	spellchecking.
+
+	* src/text.C (InsertChar): Consider "," as a part of a number
+	(for LTR numbers in RTL text code).
+	(IsBoundary): Fixed (and simplified).
+	(InsertChar): Recalculate cursor boundary.
+	(Backspace): Ditto.
+
+2000-11-23  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* mathed/formula.C (LocalDispatch): Preserve the label when
+	changing from display math to eqnarray (however, the label
+	do not appear at the first line, as one might expects, but at the
+	second line).
+	(LocalDispatch): When inserting a label to a formula which already 
+	have a label, the old label is used as default value.
+	Also, if the label is changed, then all references to the label
+ 	are changed.
+
+	* src/mathed/math_iter.C (setLabel): Allow to set the label
+	even if it is empty. This is needed to allow deletion of a label
+	in an eqnarray.
+
+	* src/BufferView2.C (ChangeRefsIfUnique): New method. Changes the
+	refernces only if the old label appears once in the document.
+	
 2000-12-06  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/lyx_cb.C (InsertAsciiFile): use a vector to temporary store
