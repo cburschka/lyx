@@ -692,7 +692,6 @@ pos_type addressBreakPoint(pos_type i, Paragraph * par)
 			// FIXME: what are we doing modifying stuff here !
 			par->getInset(i)->display(false);
 		}
-		++i;
 	}
 
 	return par->size();
