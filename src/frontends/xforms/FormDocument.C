@@ -723,7 +723,6 @@ void FormDocument::paper_apply()
 	params.leftmargin =
 		getLengthFromWidgets(paper_->input_left_margin,
 				     paper_->choice_left_margin_units);
-	std::cerr << params.leftmargin << std::endl;
 
 	params.topmargin =
 		getLengthFromWidgets(paper_->input_top_margin,
