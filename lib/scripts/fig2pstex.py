@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#! /usr/bin/env python
 # This script converts a xfig file into Postscript/LaTeX files
 
 import sys

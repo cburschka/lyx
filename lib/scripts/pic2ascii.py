@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#! /usr/bin/env python
 # This script converts a raster format picture into an ascii representation
 # with the suffix .asc
 

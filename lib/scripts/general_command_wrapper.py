@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#! /usr/bin/env python
 # This is a general wrapper script that will allow
 # us to maintain security in the external material
 # insets.
