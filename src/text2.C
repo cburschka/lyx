@@ -2633,6 +2633,8 @@ LyXText::text_status LyXText::status() const
 
 void LyXText::status(BufferView * bview, LyXText::text_status st) const
 {
+	LyXText * t = view->text;
+ 
 	// We should only go up with refreshing code so this means that if
 	// we have a MORE refresh we should never set it to LITTLE if we still
 	// didn't handle it (and then it will be UNCHANGED. Now as long as
@@ -2643,17 +2645,14 @@ void LyXText::status(BufferView * bview, LyXText::text_status st) const
 	// tell'em that it should redraw the actual row (where the inset
 	// resides! Capito?!
 
-	if ((status_ != NEED_MORE_REFRESH)
-	    || (status_ == NEED_MORE_REFRESH
-		&& st != NEED_VERY_LITTLE_REFRESH))
-	{
+	if (status_ != NEED_MORE_REFRESH || st != NEED_VERY_LITTLE_REFRESH) {
 		status_ = st;
 		if (inset_owner && st != UNCHANGED) {
-			bview->text->status(bview, NEED_VERY_LITTLE_REFRESH);
-			if (!bview->text->refresh_row) {
-				bview->text->refresh_row = bview->text->cursor.row();
-				bview->text->refresh_y = bview->text->cursor.y() -
-					bview->text->cursor.row()->baseline();
+			t->status(bview, NEED_VERY_LITTLE_REFRESH);
+			if (!t->refresh_row) {
+				t->refresh_row = t->cursor.row();
+				t->refresh_y = t->cursor.y() -
+					t->cursor.row()->baseline();
 			}
 		}
 	}
