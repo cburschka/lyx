@@ -21,24 +21,25 @@ class LyXTextClass;
 ///
 namespace CutAndPaste {
 ///
-std::pair<ParagraphList::iterator, int>
-cutSelection(ParagraphList & pars,
+PitPosPair cutSelection(ParagraphList & pars,
 	     ParagraphList::iterator startpit, 
 	     ParagraphList::iterator endpit,
 	     int start, int end, lyx::textclass_type tc,
 	     bool doclear = false);
 ///
-std::pair<ParagraphList::iterator, int>
-eraseSelection(ParagraphList & pars,
+PitPosPair eraseSelection(ParagraphList & pars,
 	       ParagraphList::iterator startpit, 
 	       ParagraphList::iterator endpit,
 	       int start, int end, bool doclear = false);
 ///
-bool copySelection(Paragraph * startpar, Paragraph * endpar,
+bool copySelection(ParagraphList::iterator startpit, 
+		   ParagraphList::iterator endpit,
 		   int start, int end, lyx::textclass_type tc);
 ///
-bool pasteSelection(Paragraph ** par, Paragraph ** endpar,
-		    int & pos, lyx::textclass_type tc);
+std::pair<PitPosPair, ParagraphList::iterator>
+pasteSelection(ParagraphList & pars,
+	       ParagraphList::iterator pit, int pos,
+	       lyx::textclass_type tc);
 
 ///
 int nrOfParagraphs();

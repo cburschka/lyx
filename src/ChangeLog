@@ -1,3 +1,9 @@
+2003-04-30  Alfredo Braunstein  <abraunst@libero.it>
+
+	* ParagraphList.h: define PitPosPair
+	* CutAndPaste.C (copySelection, pasteSelection): big rework, use 
+	ParagraphList, fix a bug on pasting multiple pars
+	* text2.C: change interface to C&P
 
 2003-04-30  André Pönitz  <poenitz@gmx.net>
 

@@ -4,6 +4,7 @@
 #define PARAGRAPH_LIST_H
 
 #include <iterator>
+#include <utility>
 
 class Paragraph;
 
@@ -80,11 +81,18 @@ private:
 	Paragraph * parlist;
 };
 
+
+
+typedef std::pair<ParagraphList::iterator, int> PitPosPair;
+
+
+
 ///
 bool operator==(ParagraphList::iterator const & i1,
 		ParagraphList::iterator const & i2);
 ///
 bool operator!=(ParagraphList::iterator const & i1,
 		ParagraphList::iterator const & i2);
+
 
 #endif

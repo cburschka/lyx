@@ -1367,8 +1367,8 @@ void LyXText::copySelection()
 		   || selection.start.pos() < selection.end.pos()))
 		selection.start.pos(selection.start.pos() + 1);
 
-	CutAndPaste::copySelection(&*selection.start.par(),
-				   &*selection.end.par(),
+	CutAndPaste::copySelection(selection.start.par(),
+				   selection.end.par(),
 				   selection.start.pos(), selection.end.pos(),
 				   bv()->buffer()->params.textclass);
 }
@@ -1383,21 +1383,21 @@ void LyXText::pasteSelection()
 	setUndo(bv(), Undo::INSERT,
 		cursor.par(), boost::next(cursor.par()));
 
-	Paragraph * endpar;
-	ParagraphList::iterator actpit = cursor.par();
-	int pos = cursor.pos();
+	ParagraphList::iterator endpit;
+	PitPosPair ppp;
 
-	Paragraph * actpar = &*actpit;
-	CutAndPaste::pasteSelection(&actpar, &endpar, pos,
-				    bv()->buffer()->params.textclass);
-
-	redoParagraphs(cursor, endpar);
+	boost::tie(ppp, endpit) = 
+		CutAndPaste::pasteSelection(ownerParagraphs(), 
+					    cursor.par(), cursor.pos(), 
+					    bv()->buffer()->params.textclass);
+	
+	redoParagraphs(cursor, endpit);
 
 	setCursor(cursor.par(), cursor.pos());
 	clearSelection();
 
 	selection.cursor = cursor;
-	setCursor(actpit, pos);
+	setCursor(ppp.first, ppp.second);
 	setSelection();
 	updateCounters();
 }

@@ -26,6 +26,7 @@
 #include "insets/inseterror.h"
 
 #include "support/BoostFormat.h"
+#include "support/LAssert.h"
 
 using std::endl;
 using std::pair;
@@ -61,31 +62,29 @@ textclass_type textclass = 0;
 
 } // namespace anon
 
-typedef std::pair<ParagraphList::iterator, int> pitPosPair;
-
-pitPosPair CutAndPaste::cutSelection(ParagraphList & pars, 
+PitPosPair CutAndPaste::cutSelection(ParagraphList & pars, 
 				     ParagraphList::iterator startpit, 
 				     ParagraphList::iterator endpit,
 				     int startpos, int endpos, 
 				     textclass_type tc, bool doclear)
 {
-	copySelection(&*startpit, &*endpit, startpos, endpos, tc);
+	copySelection(startpit, endpit, startpos, endpos, tc);
 	return eraseSelection(pars, startpit, endpit, startpos, 
 			      endpos, doclear);
 }
 
 
-pitPosPair CutAndPaste::eraseSelection(ParagraphList & pars, 
+PitPosPair CutAndPaste::eraseSelection(ParagraphList & pars, 
 				       ParagraphList::iterator startpit, 
 				       ParagraphList::iterator endpit,
 				       int startpos, int endpos, bool doclear)
 {
 	if (startpit == pars.end() || (startpos > startpit->size()))
-		return pitPosPair(endpit, endpos);
+		return PitPosPair(endpit, endpos);
 
 	if (endpit == pars.end() || startpit == endpit) {
 		endpos -= startpit->erase(startpos, endpos);
-		return pitPosPair(endpit, endpos);
+		return PitPosPair(endpit, endpos);
 	}
 
 	// clear end/begin fragments of the first/last par in selection
@@ -125,7 +124,7 @@ pitPosPair CutAndPaste::eraseSelection(ParagraphList & pars,
 #endif
 
 	if (boost::next(startpit) == pars.end())
-		return pitPosPair(endpit, endpos);
+		return PitPosPair(endpit, endpos);
 
 	if (doclear) {
 		boost::next(startpit)->stripLeadingSpaces();
@@ -144,90 +143,69 @@ pitPosPair CutAndPaste::eraseSelection(ParagraphList & pars,
 		endpos = startpos;
 	}
 
-	return pitPosPair(endpit, endpos);
+	return PitPosPair(endpit, endpos);
 
 }
 
 
-bool CutAndPaste::copySelection(Paragraph * startpar, Paragraph * endpar,
+bool CutAndPaste::copySelection(ParagraphList::iterator startpit, 
+				ParagraphList::iterator endpit,
 				int start, int end, textclass_type tc)
 {
-	if (!startpar || (start > startpar->size()))
-		return false;
+	lyx::Assert(&*startpit);
+	lyx::Assert(&*endpit);
+	lyx::Assert(0 <= start && start <= startpit->size());
+	lyx::Assert(0 <= end && end <= endpit->size());
+	lyx::Assert(startpit != endpit || start <= end);
 
 	paragraphs.clear();
 
 	textclass = tc;
-
-	if (!endpar || startpar == endpar) {
-		// only within one paragraph
-		ParagraphList::iterator buf =
-			paragraphs.insert(paragraphs.begin(), new Paragraph);
-
-		buf->layout(startpar->layout());
-		pos_type i = start;
-		if (end > startpar->size())
-			end = startpar->size();
-		for (; i < end; ++i) {
-			startpar->copyIntoMinibuffer(*current_view->buffer(), i);
-			buf->insertFromMinibuffer(buf->size());
-		}
-	} else {
-		// copy more than one paragraph
-		// clone the paragraphs within the selection
-		Paragraph * tmppar = startpar;
-
-		while (tmppar != endpar) {
-			Paragraph * newpar = new Paragraph(*tmppar, false);
-			// reset change info
-			newpar->cleanChanges();
-			newpar->setInsetOwner(0);
-
-			paragraphs.push_back(newpar);
-			tmppar = tmppar->next();
-		}
-
-		// The first paragraph is too big.
-		Paragraph & front = paragraphs.front();
-		pos_type tmpi2 = start;
-		for (; tmpi2; --tmpi2)
-			front.erase(0);
-
-		// Now last paragraph is too big, delete all after end.
-		Paragraph & back = paragraphs.back();
-		tmpi2 = end;
-		while (back.size() > tmpi2) {
-			back.erase(back.size() - 1);
-		}
+	
+	// clone the paragraphs within the selection
+	ParagraphList::iterator tmppit = startpit;
+	ParagraphList::iterator postend = boost::next(endpit);
+	
+	for (; tmppit != postend; ++tmppit) {
+		paragraphs.push_back(new Paragraph(*tmppit, false));
+		Paragraph & newpar = paragraphs.back();
+		// reset change info (can these go to the par ctor?)
+		newpar.cleanChanges();
+		newpar.setInsetOwner(0);
 	}
+
+	// Cut out the end of the last paragraph.
+	Paragraph & back = paragraphs.back();
+	for (pos_type tmppos = back.size() - 1; tmppos >= end; --tmppos)
+		back.erase(tmppos);
+
+	// Cut out the begin of the first paragraph
+	Paragraph & front = paragraphs.front();
+	for (pos_type tmppos = start; tmppos; --tmppos)
+		front.erase(0);
+	
 	return true;
 }
 
 
-bool CutAndPaste::pasteSelection(Paragraph ** par, Paragraph ** endpar,
-				 int & pos, textclass_type tc)
+pair<PitPosPair, ParagraphList::iterator>
+CutAndPaste::pasteSelection(ParagraphList & pars, 
+			    ParagraphList::iterator pit, int pos,
+			    textclass_type tc)
 {
 	if (!checkPastePossible())
-		return false;
+		return pair<PitPosPair,ParagraphList::iterator> 
+			(PitPosPair(pit, pos), pit);
 
-	if (pos > (*par)->size())
-		pos = (*par)->size();
-
-	// many paragraphs
+	lyx::Assert (pos <= pit->size());
 
 	// make a copy of the simple cut_buffer
 #if 1
-	ParagraphList::iterator it = paragraphs.begin();
-
 	ParagraphList simple_cut_clone;
-	simple_cut_clone.insert(simple_cut_clone.begin(),
-				new Paragraph(*it, false));
-
+	ParagraphList::iterator it = paragraphs.begin();
 	ParagraphList::iterator end = paragraphs.end();
-	while (boost::next(it) != end) {
-		++it;
-		simple_cut_clone.insert(simple_cut_clone.end(),
-					new Paragraph(*it, false));
+	for (; it != end; ++it) {
+		simple_cut_clone.push_back(new Paragraph(*it, false));
 	}
 #else
 	// Later we want it done like this:
@@ -237,18 +215,19 @@ bool CutAndPaste::pasteSelection(Paragraph ** par, Paragraph ** endpar,
 	// now remove all out of the buffer which is NOT allowed in the
 	// new environment and set also another font if that is required
 	ParagraphList::iterator tmpbuf = paragraphs.begin();
-	int depth_delta = (*par)->params().depth() - tmpbuf->params().depth();
+	int depth_delta = pit->params().depth() - tmpbuf->params().depth();
 	// Temporary set *par as previous of tmpbuf as we might have
 	// to realize the font.
-	tmpbuf->previous(*par);
+	tmpbuf->previous(&*pit);
 
 	// make sure there is no class difference
+#warning current_view used here
 	SwitchLayoutsBetweenClasses(textclass, tc, &*tmpbuf,
 				    current_view->buffer()->params);
 
-	Paragraph::depth_type max_depth = (*par)->getMaxDepthAfter();
+	Paragraph::depth_type max_depth = pit->getMaxDepthAfter();
 
-	while (tmpbuf != paragraphs.end()) {
+	for (; tmpbuf != paragraphs.end(); ++tmpbuf) {
 		// If we have a negative jump so that the depth would
 		// go below 0 depth then we have to redo the delta to
 		// this new max depth level so that subsequent
@@ -261,27 +240,26 @@ bool CutAndPaste::pasteSelection(Paragraph ** par, Paragraph ** endpar,
 		if (tmpbuf->params().depth() > max_depth)
 			tmpbuf->params().depth(max_depth);
 		// only set this from the 2nd on as the 2nd depends for maxDepth
-		// still on *par
-		if (tmpbuf->previous() != (*par))
+		// still on pit
+		if (tmpbuf->previous() != pit)
 			max_depth = tmpbuf->getMaxDepthAfter();
 		// set the inset owner of this paragraph
-		tmpbuf->setInsetOwner((*par)->inInset());
+		tmpbuf->setInsetOwner(pit->inInset());
 		for (pos_type i = 0; i < tmpbuf->size(); ++i) {
 			if (tmpbuf->getChar(i) == Paragraph::META_INSET) {
-				if (!(*par)->insetAllowed(tmpbuf->getInset(i)->lyxCode())) {
+				if (!pit->insetAllowed(tmpbuf->getInset(i)->lyxCode())) {
 					tmpbuf->erase(i--);
 				}
 			} else {
-				LyXFont f1 = tmpbuf->getFont(current_view->buffer()->params, i, outerFont(tmpbuf, current_view->buffer()->paragraphs));
+				LyXFont f1 = tmpbuf->getFont(current_view->buffer()->params, i, outerFont(tmpbuf, pars));
 				LyXFont f2 = f1;
-				if (!(*par)->checkInsertChar(f1)) {
+				if (!pit->checkInsertChar(f1)) {
 					tmpbuf->erase(i--);
 				} else if (f1 != f2) {
 					tmpbuf->setFont(i, f1);
 				}
 			}
 		}
-		tmpbuf = tmpbuf->next();
 	}
 
 	// now reset it to 0
@@ -289,9 +267,10 @@ bool CutAndPaste::pasteSelection(Paragraph ** par, Paragraph ** endpar,
 
 	// make the buf exactly the same layout than
 	// the cursor paragraph
-	paragraphs.begin()->makeSameLayout(**par);
+	paragraphs.begin()->makeSameLayout(*pit);
 
 	// find the end of the buffer
+	// FIXME: change this to end() - 1
 	ParagraphList::iterator lastbuffer = paragraphs.begin();
 	while (boost::next(lastbuffer) != paragraphs.end())
 		++lastbuffer;
@@ -300,48 +279,49 @@ bool CutAndPaste::pasteSelection(Paragraph ** par, Paragraph ** endpar,
 
 	// open the paragraph for inserting the buf
 	// if necessary
-	if (((*par)->size() > pos) || !(*par)->next()) {
-		breakParagraphConservative(
-			current_view->buffer()->params, current_view->buffer()->paragraphs, *par, pos);
+	if (pit->size() > pos || !pit->next()) {
+		breakParagraphConservative(current_view->buffer()->params, 
+					   pars, &*pit, pos);
 		paste_the_end = true;
 	}
 	// set the end for redoing later
-	*endpar = (*par)->next()->next();
+	ParagraphList::iterator endpit = boost::next(boost::next(pit));
 
 	// paste it!
-	lastbuffer->next((*par)->next());
-	(*par)->next()->previous(&*lastbuffer);
+	lastbuffer->next(pit->next());
+	pit->next()->previous(&*lastbuffer);
 
-	(*par)->next(&*paragraphs.begin());
-	paragraphs.begin()->previous(*par);
+	pit->next(&*paragraphs.begin());
+	paragraphs.begin()->previous(&*pit);
 
-	if ((*par)->next() == lastbuffer)
-		lastbuffer = *par;
+	if (boost::next(pit) == lastbuffer)
+		lastbuffer = pit;
 
-	mergeParagraph(current_view->buffer()->params,
-		       current_view->buffer()->paragraphs, *par);
+	mergeParagraph(current_view->buffer()->params, pars, pit);
 	// store the new cursor position
-	*par = &*lastbuffer;
+	pit = lastbuffer;
 	pos = lastbuffer->size();
 	// maybe some pasting
-	if (lastbuffer->next() && paste_the_end) {
-		if (lastbuffer->next()->hasSameLayout(*lastbuffer)) {
-			mergeParagraph(current_view->buffer()->params,
-				       current_view->buffer()->paragraphs, lastbuffer);
-		} else if (!lastbuffer->next()->size()) {
-			lastbuffer->next()->makeSameLayout(*lastbuffer);
-			mergeParagraph(current_view->buffer()->params, current_view->buffer()->paragraphs, lastbuffer);
+	if (boost::next(lastbuffer) != paragraphs.end() && paste_the_end) {
+		if (boost::next(lastbuffer)->hasSameLayout(*lastbuffer)) {
+			mergeParagraph(current_view->buffer()->params, pars, 
+				       lastbuffer);
+		} else if (!boost::next(lastbuffer)->size()) {
+			boost::next(lastbuffer)->makeSameLayout(*lastbuffer);
+			mergeParagraph(current_view->buffer()->params, pars, 
+				       lastbuffer);
 		} else if (!lastbuffer->size()) {
-			lastbuffer->makeSameLayout(*lastbuffer->next());
-			mergeParagraph(current_view->buffer()->params,
-				       current_view->buffer()->paragraphs, lastbuffer);
+			lastbuffer->makeSameLayout(*boost::next(lastbuffer));
+			mergeParagraph(current_view->buffer()->params, pars, 
+				       lastbuffer);
 		} else
-			lastbuffer->next()->stripLeadingSpaces();
+			boost::next(lastbuffer)->stripLeadingSpaces();
 	}
 	// restore the simple cut buffer
 	paragraphs = simple_cut_clone;
 
-	return true;
+	return pair<PitPosPair,ParagraphList::iterator> (PitPosPair(pit, pos), 
+							 endpit);
 }
 
 
