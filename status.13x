@@ -24,10 +24,13 @@ What's new
 
 ** Bug fixes
 
+- fix bug where opening the tabular dialog would mark the document as 
+  changed [bug #849, qt only]
+
 - in the dialogs, replace LaTeX font size names by LyX names for
   consistency reasons and to resolve a translation conflict
 
 - enable the debug level to be set in lyx2lyx
 
-- fix strerror() build problem with some gcc/glibc versions (bug #874)
+- fix strerror() build problem with some gcc/glibc versions [bug #874]
 

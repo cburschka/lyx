@@ -328,17 +328,20 @@ void QTabular::closeGUI()
 
 	// apply the fixed width values
 	int cell = inset->getActCell();
-	string str1 = LyXLength(dialog_->widthED->text().toDouble(),
-			dialog_->widthUnit->currentLengthItem()).asString();
+	bool const multicol(controller().isMulticolumnCell());
+	string str1 = widgetsToLength(dialog_->widthED, dialog_->widthUnit);
 	string str2;
+
 	LyXLength llen(tabular->GetColumnPWidth(cell));
-	if (llen.zero())
-		str2 = "";
-	else
-		str2 = llen.asString();
+	LyXLength llenMulti(tabular->GetMColumnPWidth(cell));
+
+	if (multicol && !llenMulti.zero())
+			str2 = llenMulti.asString();
+	else if (!multicol && !llen.zero())
+			str2 = llen.asString();
 
 	if (str1 != str2) {
-		if (controller().isMulticolumnCell())
+		if (multicol)
 			controller().set(LyXTabular::SET_MPWIDTH, str1);
 		else
 			controller().set(LyXTabular::SET_PWIDTH, str1);
@@ -346,13 +349,13 @@ void QTabular::closeGUI()
 
 	// apply the special alignment
 	str1 = fromqstr(dialog_->specialAlignmentED->text());
-	if (controller().isMulticolumnCell())
+	if (multicol)
 		str2 = tabular->GetAlignSpecial(cell, LyXTabular::SET_SPECIAL_MULTI);
 	else
 		str2 = tabular->GetAlignSpecial(cell, LyXTabular::SET_SPECIAL_COLUMN);
 
 	if (str1 != str2) {
-		if (controller().isMulticolumnCell())
+		if (multicol)
 			controller().set(LyXTabular::SET_SPECIAL_MULTI, str1);
 		else
 			controller().set(LyXTabular::SET_SPECIAL_COLUMN, str1);
