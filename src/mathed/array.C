@@ -139,11 +139,10 @@ void MathArray::insert(int pos, byte b, MathTextCodes t)
 
 void MathArray::insert(int pos, MathArray const & array)
 {
-#ifdef WITH_WARNINGS
-#warning quick and really dirty: make sure that we really own our insets
-#endif
-	MathArray a = array;
-	bf_.insert(bf_.begin() + pos, a.bf_.begin(), a.bf_.end());
+	bf_.insert(bf_.begin() + pos, array.bf_.begin(), array.bf_.end());
+	for (int p = pos; p < pos + array.size(); next(p)) 
+		if (isInset(p)) 
+			replace(p, GetInset(p)->clone());
 }
 
 

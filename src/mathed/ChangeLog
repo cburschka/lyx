@@ -6,6 +6,9 @@
 
 	* several files: subsequent changes
 
+	* array.C: fix bug when insets have not been cloned properly
+	This should fix quite a few "random" crashes...
+
 2001-06-29  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* formulabase.C (localDispatch): use .c_str() on istringstream
