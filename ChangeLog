@@ -1,3 +1,8 @@
+2002-07-06  Adrien Rebollo  <adrien.rebollo@gmx.fr>
+
+	* autogen.sh: use $ACLOCAL and $AUTOHEADER instead of aclocal
+	and autoheader to test if they are present.
+
 2002-07-03  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* INSTALL: document --enable-debug

@@ -30,7 +30,7 @@ rm -f acinclude.m4
 echo "done."
 
 # Generate the Makefiles and configure files
-if ( aclocal --version ) </dev/null > /dev/null 2>&1; then
+if ( $ACLOCAL --version ) </dev/null > /dev/null 2>&1; then
 	echo "Building macros..."
 	for dir in . lib/reLyX ; do
 	    echo "        $dir"
@@ -42,7 +42,7 @@ else
 	exit
 fi
 
-if ( autoheader --version ) </dev/null > /dev/null 2>&1; then
+if ( $AUTOHEADER --version ) </dev/null > /dev/null 2>&1; then
 	echo "Building config header template..."
 	for dir in . ; do
 	    echo "        $dir"
