@@ -483,13 +483,13 @@ ButtonPolicy::SMInput FormGraphics::input(FL_OBJECT * ob, long)
 		if (out_name != in_name && !out_name.empty()) {
 			fl_set_input(file_->input_filename, out_name.c_str());
 		}
-		if (!controller().isFilenameValid(out_name))
-			return ButtonPolicy::SMI_INVALID;
+//  		if (!controller().isFilenameValid(out_name))
+//  			return ButtonPolicy::SMI_INVALID;
 
-	} else if (ob == file_->input_filename) {
-		string name = getStringFromInput(file_->input_filename);
-		if (!controller().isFilenameValid(name))
-			return ButtonPolicy::SMI_INVALID;
+//  	} else if (ob == file_->input_filename) {
+//  		string name = getStringFromInput(file_->input_filename);
+//  		if (!controller().isFilenameValid(name))
+//  			return ButtonPolicy::SMI_INVALID;
 
 	} else if (ob == file_->check_subcaption) {
 		setEnabled(file_->input_subcaption,

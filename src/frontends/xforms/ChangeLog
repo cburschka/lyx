@@ -2,6 +2,9 @@
 
 	* FormPreferences.C (browse): don't use BrowseRelPath here you noodle!
 
+	* FormGraphics.C (input): don't disallow the input of a file that's
+	not there.
+
 2002-03-25  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* FormParagraph.C (changedParagraph): whitespace.
