@@ -1,3 +1,15 @@
+2002-03-07  Juergen Spitzmueller  <j.spitzmueller@gmx.de>
+
+	* FormGraphics.C:
+		- Make radiobuttons change too when using Latex size in
+		  lyxview and vice versa.
+		- Fix a typo where the value for height (lyxview) was
+		  taken from width (size).
+		- Remove *%-values from lyxview.
+		- Add an Alert when using "Get Latex size" and that contains
+		  *%-values.
+	* FormTabular.C: Remove obsolete comment.
+
 2002-03-07  Martin Vermeer <martin.vermeer@hut.fi>
 
 	* FormMathsDeco.C: add leftrightarrows to the bitmap.

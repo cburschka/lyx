@@ -22,6 +22,7 @@
 #include "ControlGraphics.h"
 #include "FormGraphics.h"
 #include "form_graphics.h"
+#include "Alert.h"
 
 #include "xforms_helpers.h"
 #include "input_validators.h"
@@ -106,8 +107,8 @@ void FormGraphics::build()
 	fl_set_input_return (lyxview_->input_lyxheight, FL_RETURN_CHANGED);
 	fl_set_input_return (lyxview_->input_lyxscale, FL_RETURN_CHANGED);
 
-	fl_addto_choice(lyxview_->choice_width_lyxwidth, choice_Length_All.c_str());
-	fl_addto_choice(lyxview_->choice_width_lyxheight, choice_Length_All.c_str());
+	fl_addto_choice(lyxview_->choice_width_lyxwidth, choice_Length_WithUnit.c_str());
+	fl_addto_choice(lyxview_->choice_width_lyxheight, choice_Length_WithUnit.c_str());
 
 	bc().addReadOnly(lyxview_->radio_pref);
 	bc().addReadOnly(lyxview_->radio_mono);
@@ -482,16 +483,47 @@ ButtonPolicy::SMInput FormGraphics::input(FL_OBJECT * ob, long)
 	    	setEnabled(lyxview_->choice_width_lyxheight, 0);
 	    	setEnabled(lyxview_->input_lyxscale, 1);
 	} else if (ob == lyxview_->button_latex_values) {
-	    LyXLength dummy = LyXLength(getLengthFromWidgets(size_->input_width,
-		size_->choice_width_units));
-	    updateWidgetsFromLength(lyxview_->input_lyxwidth,
-		lyxview_->choice_width_lyxwidth, dummy, defaultUnit);
-	    dummy = LyXLength(getLengthFromWidgets(size_->input_height,
-		size_->choice_width_units));
-	    updateWidgetsFromLength(lyxview_->input_lyxheight,
-		lyxview_->choice_width_lyxheight, dummy, defaultUnit);
-	    string const scale = getStringFromInput(size_->input_scale);
-	    fl_set_input(lyxview_->input_lyxscale, scale.c_str());
+		if (fl_get_choice(size_->choice_width_units) > 3
+			&& fl_get_choice(size_->choice_width_units) < 8
+			|| fl_get_choice(size_->choice_height_units) > 3
+			&& fl_get_choice(size_->choice_height_units) < 8)
+				Alert::alert(_("Warning!"),
+			   	_("The values %t, %p, %c and %l are not allowed here."),
+			   	_("Cannot take the values from LaTeX size!."));
+		else {
+	    		LyXLength dummy = LyXLength(getLengthFromWidgets(size_->input_width,
+				size_->choice_width_units));
+	    		updateWidgetsFromLength(lyxview_->input_lyxwidth,
+				lyxview_->choice_width_lyxwidth, dummy, defaultUnit);
+	    		dummy = LyXLength(getLengthFromWidgets(size_->input_height,
+				size_->choice_height_units));
+	    		updateWidgetsFromLength(lyxview_->input_lyxheight,
+				lyxview_->choice_width_lyxheight, dummy, defaultUnit);
+	    		string const scale = getStringFromInput(size_->input_scale);
+	    		fl_set_input(lyxview_->input_lyxscale, scale.c_str());
+	    		if (fl_get_button (size_->button_asis) == 1) {
+	    			fl_set_button (lyxview_->button_lyxasis, 1);
+				setEnabled(lyxview_->input_lyxwidth, 0);
+	    			setEnabled(lyxview_->choice_width_lyxwidth, 0);
+	    			setEnabled(lyxview_->input_lyxheight, 0);
+	    			setEnabled(lyxview_->choice_width_lyxheight, 0);
+	    			setEnabled(lyxview_->input_lyxscale, 0);
+	    		} else if (fl_get_button (size_->button_wh) == 1) {
+	    			fl_set_button (lyxview_->button_lyxwh, 1);
+	    			setEnabled(lyxview_->input_lyxwidth, 1);
+	    			setEnabled(lyxview_->choice_width_lyxwidth, 1);
+	    			setEnabled(lyxview_->input_lyxheight, 1);
+	    			setEnabled(lyxview_->choice_width_lyxheight, 1);
+	    			setEnabled(lyxview_->input_lyxscale, 0);
+	    		} else if (fl_get_button (size_->button_scale) ==1) {
+	    			fl_set_button (lyxview_->button_lyxscale, 1);
+	    			setEnabled(lyxview_->input_lyxwidth, 0);
+	    			setEnabled(lyxview_->choice_width_lyxwidth, 0);
+	    			setEnabled(lyxview_->input_lyxheight, 0);
+	    			setEnabled(lyxview_->choice_width_lyxheight, 0);
+	    			setEnabled(lyxview_->input_lyxscale, 1);
+	    		}
+		}
 
 	// the bb section
 	} else if (!controller().bbChanged && 
@@ -554,6 +586,31 @@ ButtonPolicy::SMInput FormGraphics::input(FL_OBJECT * ob, long)
 		size_->choice_height_units, dummy, defaultUnit);
 	    string const scale = getStringFromInput(lyxview_->input_lyxscale);
 	    fl_set_input(size_->input_scale, scale.c_str());
+	    if (fl_get_button (lyxview_->button_lyxasis) == 1) {
+	    	fl_set_button (size_->button_asis, 1);
+		setEnabled(size_->input_width, 0);
+	    	setEnabled(size_->choice_width_units, 0);
+	    	setEnabled(size_->input_height, 0);
+	    	setEnabled(size_->choice_height_units, 0);
+		setEnabled(size_->check_aspectratio, 0);
+	    	setEnabled(size_->input_scale, 0);
+	    } else if (fl_get_button (lyxview_->button_lyxwh) == 1) {
+	    	fl_set_button (size_->button_wh, 1);
+		setEnabled(size_->input_width, 1);
+	    	setEnabled(size_->choice_width_units, 1);
+	    	setEnabled(size_->input_height, 1);
+	    	setEnabled(size_->choice_height_units, 1);
+		setEnabled(size_->check_aspectratio, 1);
+	    	setEnabled(size_->input_scale, 0);
+	    } else if (fl_get_button (lyxview_->button_lyxscale) ==1) {
+	    	fl_set_button (size_->button_scale, 1);
+		setEnabled(size_->input_width, 0);
+	    	setEnabled(size_->choice_width_units, 0);
+	    	setEnabled(size_->input_height, 0);
+	    	setEnabled(size_->choice_height_units, 0);
+		setEnabled(size_->check_aspectratio, 0);
+	    	setEnabled(size_->input_scale, 1);
+	    }
 	}
 
 	// check if the input is valid

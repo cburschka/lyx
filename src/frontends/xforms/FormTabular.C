@@ -138,14 +138,6 @@ void FormTabular::build()
 	fl_addto_tabfolder(dialog_->tabFolder, _("LongTable"),
 	                   longtable_options_->form);
 
-	// We should set these input filters on width fields to make them accept
-	// only unsigned numbers.
-	// But this leeds to trouble with the current apply behaviour (JSpitzm).
-	// fl_set_input_filter(column_options_->input_column_width,
-	// 		    fl_unsigned_float_filter);
-	// fl_set_input_filter(cell_options_->input_mcolumn_width,
-	// 		    fl_unsigned_float_filter);
-
 	// Create the contents of the unit choices
 	// Don't include the "%" terms...
 	vector<string> units_vec = getLatexUnits();
