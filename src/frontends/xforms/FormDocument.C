@@ -863,10 +863,20 @@ bool FormDocument::language_apply(BufferParams & params)
 	else
 		params.quotes_times = InsetQuotes::DoubleQ;
 
+	Language const * old_language = params.language;
 	Language const * new_language = 
 		languages.getLanguage(combo_language->getline());
 	if (!new_language)
 		new_language = default_language;
+
+	if (old_language != new_language
+	    && old_language->RightToLeft() == params.language->RightToLeft()
+	    && !lv_->buffer()->isMultiLingual())
+		lv_->buffer()->changeLanguage(old_language, params.language);
+
+	if (old_language != new_language) {
+		redo = true;
+	}
 
 	params.language = new_language;
 	params.inputenc = fl_get_choice_text(language_->choice_inputenc);
@@ -877,20 +887,7 @@ bool FormDocument::language_apply(BufferParams & params)
 
 bool FormDocument::language_apply()
 {
-	BufferParams & params = lv_->buffer()->params;
-	Language const * old_language = params.language;
-
-	bool redo = language_apply(params);
-
-	if (old_language != params.language
-	    && old_language->RightToLeft() == params.language->RightToLeft()
-	    && !lv_->buffer()->isMultiLingual())
-		lv_->buffer()->changeLanguage(old_language, params.language);
-	if (old_language != params.language) {
-		redo = true;
-	}
-
-	return redo;
+	return language_apply(lv_->buffer()->params);
 }
 
 
