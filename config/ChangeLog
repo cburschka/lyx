@@ -1,3 +1,8 @@
+2004-05-18  Lars Gullik Bjonnes  <larsbj@gullik.net>
+
+	* lyxinclude.m4 (enable-debug): Use the libstdc++ debugging mode
+	if configuring with enable-debug. 
+
 2004-05-05  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* xforms.m4 (LYX_CHECK_XFORMS_IMAGE_LOADER): rename

@@ -216,7 +216,10 @@ if test x$GXX = xyes; then
       *)       CXXFLAGS="$lyx_opt";;
     esac
     if test x$enable_debug = xyes ; then
-	CXXFLAGS="-g $CXXFLAGS"
+	case $gxx_version in
+	    3.4*) CXXFLAGS="-g -D_GLIBCXX_DEBUG -D_GLIBCXX_DEBUG_PEDANTIC $CXXFLAGS";;
+	    *)    CXXFLAGS="-g $CXXFLAGS";;
+	esac
     fi
   fi
   if test x$enable_warnings = xyes ; then
