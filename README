@@ -71,7 +71,7 @@ What do I need to compile LyX from the source distribution?
 
 	1. A good c++ compiler.  Development is being done mainly on
 	   gcc/g++, but many others work.
-	2. The Xforms library version 0.81, 0.86 or 0.88.
+	2. The Xforms library version 0.88 (recommended) or 0.89.
 	3. LibXpm version 4.7 (or newer).
 
 	Read the file "INSTALL" for more information on compiling.
@@ -148,17 +148,6 @@ Internet resources of relevance to LyX
 	http://www.devel.lyx.org/
 	ftp://www.devel.lyx.org/pub/lyx/
 
-What is the numbering scheme for releases? Is it like the Linux kernel?
-
-	Yes, it's like the Linux kernel since LyX version 0.8:
-
-		0.10.x, 0.12.x, 1.0.x    ... are stable, public releases
-		0.11.x, 0.13.x, 1.1.x    ... are developer releases
-
-	Of course you may also use the developer releases, but only
-	at your own risk. This is definitely higher than your risk when 
-	using the public releases, even if this is your own risk, too.
-
 How do I submit a bug report?
 
 	If possible, read the "Known Bugs" document found under the
@@ -170,38 +159,6 @@ How do I submit a bug report?
 	If you can't do that, send details to the LyX Developers mailing
 	list.  Don't forget to mention which version you are having
 	problems with!
-
-How do I prepare a binary distribution for the use of others?
-
-	1) Compile LyX with the right compiler switches for your
-	architecture. In particular you might want to ensure that libraries
-	like xforms and xpm are statically linked. To this end, you
-	can use a command like
-
-		make LYX_LIBS='/foo/libforms.a /bar/libXpm.a'
-
-	Moreover, make sure you use the --without-latex-config switch
-	of configure, since others might not be interested by your
-	configuration :-) 
-
-	2) Create a file README.bin describing your distribution and
-	referring to *you* if problems arise. As a model, you can use the 
-	file development/tools/README.bin.example which was originally
-	written for Linux by David L. Johnson. Do *not* use directly
-	the file in the distribution, since it refers to Linux and
-	points to David L. Johnson for help. However, it can be a good
-	starting point. Note that removing the file completely is
-	better than not	editing it at all.
-
-	3) Type `make bindist'. This will create a file
-	lyx-1.xx.yy-bin.tar.gz. Rename it to reflect you architecture 
-	and the peculiarities of your build (e.g. static vs. dynamic).
-
-	4) Check that everything is correct by unpacking the distribution 
-	in some private place and running it. In particular, check the 
-	output of `ldd lyx' to know which libraries are really needed.
-
-	5) Upload your binary file to ftp.lyx.org:/pub/lyx/uploads.
 
 How can I participate in the development of LyX? 
 
