@@ -1615,9 +1615,9 @@ argument:
 --------------------
 class: FL_ROUND3DBUTTON
 type: RADIO_BUTTON
-box: 150 35 40 30
+box: 150 35 55 30
 boxtype: FL_UP_BOX
-colors: FL_COL1 FL_COL1
+colors: FL_COL1 FL_YELLOW
 alignment: FL_ALIGN_CENTER
 style: FL_NORMAL_STYLE
 size: FL_LARGE_SIZE
@@ -1634,9 +1634,9 @@ argument: BULLETDEPTH1
 --------------------
 class: FL_ROUND3DBUTTON
 type: RADIO_BUTTON
-box: 210 35 40 30
+box: 215 35 55 30
 boxtype: FL_UP_BOX
-colors: FL_COL1 FL_COL1
+colors: FL_COL1 FL_YELLOW
 alignment: FL_ALIGN_CENTER
 style: FL_NORMAL_STYLE
 size: FL_LARGE_SIZE
@@ -1652,9 +1652,9 @@ argument: BULLETDEPTH2
 --------------------
 class: FL_ROUND3DBUTTON
 type: RADIO_BUTTON
-box: 270 35 40 30
+box: 275 35 55 30
 boxtype: FL_UP_BOX
-colors: FL_COL1 FL_COL1
+colors: FL_COL1 FL_YELLOW
 alignment: FL_ALIGN_CENTER
 style: FL_NORMAL_STYLE
 size: FL_LARGE_SIZE
@@ -1670,9 +1670,9 @@ argument: BULLETDEPTH3
 --------------------
 class: FL_ROUND3DBUTTON
 type: RADIO_BUTTON
-box: 330 35 40 30
+box: 335 35 55 30
 boxtype: FL_UP_BOX
-colors: FL_COL1 FL_COL1
+colors: FL_COL1 FL_YELLOW
 alignment: FL_ALIGN_CENTER
 style: FL_NORMAL_STYLE
 size: FL_LARGE_SIZE
@@ -1744,7 +1744,7 @@ class: FL_ROUND3DBUTTON
 type: RADIO_BUTTON
 box: 15 105 90 30
 boxtype: FL_UP_BOX
-colors: FL_COL1 FL_COL1
+colors: FL_COL1 FL_YELLOW
 alignment: FL_ALIGN_CENTER
 style: FL_NORMAL_STYLE
 size: FL_NORMAL_SIZE
@@ -1763,7 +1763,7 @@ class: FL_ROUND3DBUTTON
 type: RADIO_BUTTON
 box: 15 135 90 30
 boxtype: FL_UP_BOX
-colors: FL_COL1 FL_COL1
+colors: FL_COL1 FL_YELLOW
 alignment: FL_ALIGN_CENTER
 style: FL_NORMAL_STYLE
 size: FL_NORMAL_SIZE
@@ -1781,7 +1781,7 @@ class: FL_ROUND3DBUTTON
 type: RADIO_BUTTON
 box: 15 195 90 30
 boxtype: FL_UP_BOX
-colors: FL_COL1 FL_COL1
+colors: FL_COL1 FL_YELLOW
 alignment: FL_ALIGN_CENTER
 style: FL_NORMAL_STYLE
 size: FL_NORMAL_SIZE
@@ -1799,7 +1799,7 @@ class: FL_ROUND3DBUTTON
 type: RADIO_BUTTON
 box: 15 225 90 30
 boxtype: FL_UP_BOX
-colors: FL_COL1 FL_COL1
+colors: FL_COL1 FL_YELLOW
 alignment: FL_ALIGN_CENTER
 style: FL_NORMAL_STYLE
 size: FL_NORMAL_SIZE
@@ -1817,7 +1817,7 @@ class: FL_ROUND3DBUTTON
 type: RADIO_BUTTON
 box: 15 255 90 30
 boxtype: FL_UP_BOX
-colors: FL_COL1 FL_COL1
+colors: FL_COL1 FL_YELLOW
 alignment: FL_ALIGN_CENTER
 style: FL_NORMAL_STYLE
 size: FL_NORMAL_SIZE
@@ -1835,7 +1835,7 @@ class: FL_ROUND3DBUTTON
 type: RADIO_BUTTON
 box: 15 165 90 30
 boxtype: FL_UP_BOX
-colors: FL_COL1 FL_COL1
+colors: FL_COL1 FL_YELLOW
 alignment: FL_ALIGN_CENTER
 style: FL_NORMAL_STYLE
 size: FL_NORMAL_SIZE
