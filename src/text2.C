@@ -2374,7 +2374,7 @@ void LyXText::PasteSelection(BufferView * bview)
 	CutAndPaste cap;
 
 	// this does not make sense, if there is nothing to paste
-	if (!cap.checkPastePossible(cursor.par(), cursor.pos()))
+	if (!cap.checkPastePossible(cursor.par()))
 		return;
 
 	SetUndo(bview->buffer(), Undo::INSERT,

@@ -16,6 +16,7 @@
 
 #include <fstream>
 #include <iomanip>
+#include <map>
 
 #include <cstdlib>
 #include <cmath>
@@ -3598,14 +3599,14 @@ vector<string> const Buffer::getLabelList()
 }
 
 
-vector<vector<Buffer::TocItem> > const Buffer::getTocList() const
+map<string, vector<Buffer::TocItem> > const Buffer::getTocList() const
 {
 #ifndef NEW_INSETS
 	int figs = 0;
 	int tables = 0;
 	int algs = 0;
 #endif
-	vector<vector<TocItem> > l(4);
+	map<string, vector<TocItem> > l;
 	LyXParagraph * par = paragraph;
 	while (par) {
 #ifndef NEW_INSETS
@@ -3620,21 +3621,51 @@ vector<vector<Buffer::TocItem> > const Buffer::getTocList() const
 				switch (par->footnotekind) {
 				case LyXParagraph::FIG:
 				case LyXParagraph::WIDE_FIG:
+				{
 					tmp.str = tostr(++figs) + ". "
 						+ tmp.str;
-					l[TOC_LOF].push_back(tmp);
+					map<string, vector<TocItem> >::iterator it = l.find("LOF");
+					if (it == l.end()) {
+						vector<TocItem> vti;
+						vti.push_back(tmp);
+						l["LOF"] = vti;
+					} else {
+						it->second.push_back(tmp);
+					}
 					break;
+				}
+				
 				case LyXParagraph::TAB:
 				case LyXParagraph::WIDE_TAB:
+				{
 					tmp.str = tostr(++tables) + ". "
 						+ tmp.str;
-					l[TOC_LOT].push_back(tmp);
+					map<string, vector<TocItem> >::iterator it = l.find("LOT");
+					if (it == l.end()) {
+						vector<TocItem> vti;
+						vti.push_back(tmp);
+						l["LOT"] = vti;
+					} else {
+						it->second.push_back(tmp);
+					}
 					break;
+				}
+				
 				case LyXParagraph::ALGORITHM:
+				{
 					tmp.str = tostr(++algs) + ". "
 						+ tmp.str;
-					l[TOC_LOA].push_back(tmp);
+					map<string, vector<TocItem> >::iterator it = l.find("LOA");
+					if (it == l.end()) {
+						vector<TocItem> vti;
+						vti.push_back(tmp);
+						l["LOA"] = vti;
+					} else {
+						it->second.push_back(tmp);
+					}
 					break;
+				}
+				
 				case LyXParagraph::FOOTNOTE:
 				case LyXParagraph::MARGIN:
 					break;
@@ -3655,8 +3686,29 @@ vector<vector<Buffer::TocItem> > const Buffer::getTocList() const
 						labeltype - 
 						textclasslist.TextClass(params.textclass).maxcounter());
 				tmp.str =  par->String(this, true);
-				l[TOC_TOC].push_back(tmp);
+				map<string, vector<TocItem> >::iterator it = l.find("TOC");
+				if (it == l.end()) {
+					vector<TocItem> vti;
+					vti.push_back(tmp);
+					l["TOC"] = vti;
+				} else {
+					it->second.push_back(tmp);
+				}
 			}
+#ifdef NEW_INSETS
+			// For each paragrph, traverse its insets and look for
+			// FLOAT_CODE
+			LyXParagraph::inset_iterator it =
+				par->inset_iterator_begin();
+			LyXParagraph::inset_iterator end =
+				par->inset_iterator_end();
+			for (; it != end; ++it) {
+				if ((*it)->LyxCode() == Inset::FLOAT_CODE) {
+					lyxerr << "Found a float!" << endl;
+					// Now find the caption in the float...
+				}
+			}
+#endif
 #ifndef NEW_INSETS
 		}
 		par = par->next_;

@@ -53,6 +53,7 @@ int InsetTOC::Ascii(Buffer const * buffer, ostream & os, int) const
 {
 	os << getScreenLabel() << endl << endl;
 
+#if 0
 	Buffer::TocType type;
 	string cmdname = getCmdName();
 	if (cmdname == "tableofcontents" )
@@ -70,7 +71,33 @@ int InsetTOC::Ascii(Buffer const * buffer, ostream & os, int) const
 	for (vector<Buffer::TocItem>::const_iterator it = toc.begin();
 	     it != toc.end(); ++it)
 		os << string(4 * it->depth, ' ') << it->str << endl;
+#else
+#warning Fix Me! (Lgb)
+	string type;
+	string cmdname = getCmdName();
+	if (cmdname == "tableofcontents" )
+		type = "TOC";
+	else if (cmdname == "listofalgorithms" )
+		type = "LOA";
+	else if (cmdname == "listoffigures" )
+		type = "LOF";
+	else 
+		type = "LOT";
 
+	map<string, vector<Buffer::TocItem> > const toc_list =
+                buffer->getTocList();
+	map<string, vector<Buffer::TocItem> >::const_iterator cit =
+		toc_list.find(type);
+	if (cit != toc_list.end()) {
+		vector<Buffer::TocItem>::const_iterator ccit =
+			cit->second.begin();
+		vector<Buffer::TocItem>::const_iterator end =
+			cit->second.end();
+		for (; ccit != end; ++ccit)
+			os << string(4 * ccit->depth, ' ')
+			   << ccit->str << endl;
+	}
+#endif
 	os << endl;
 	return 0;
 }

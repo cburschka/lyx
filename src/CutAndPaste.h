@@ -48,7 +48,7 @@ public:
 					LyXParagraph * par);
 	///
 	static
-	bool checkPastePossible(LyXParagraph *, int pos);
+	bool checkPastePossible(LyXParagraph *);
 };
 
 #endif

@@ -1,5 +1,14 @@
 2001-03-11  Lars Gullik Bjønnes  <larsbj@trylle.birdstep.com>
 
+	* buffer.h: remove TocType
+
+	* buffer.C (getTocList): change to return a map<string,
+	vector<TocItem> >, implement for dynamic number of list.
+
+	* CutAndPaste.[Ch] (checkPastePossible): remove unused arg
+	* text2.C (PasteSelection): adjust
+	* CutAndPaste.C (pasteSelection): adjust
+
 	* FloatList.C (FloatList): update from the new_insets branch.
 	* Floating.[Ch]: ditto
 	* LaTeXFeatures.C: ditto

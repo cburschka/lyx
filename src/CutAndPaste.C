@@ -291,7 +291,7 @@ bool CutAndPaste::copySelection(LyXParagraph * startpar, LyXParagraph * endpar,
 bool CutAndPaste::pasteSelection(LyXParagraph ** par, LyXParagraph ** endpar,
 				 int & pos, char tc)
 {
-    if (!checkPastePossible(*par, pos))
+    if (!checkPastePossible(*par))
 	return false;
 
 #ifndef NEW_INSETS
@@ -537,7 +537,7 @@ int CutAndPaste::SwitchLayoutsBetweenClasses(LyXTextClassList::size_type c1,
 }
 
 
-bool CutAndPaste::checkPastePossible(LyXParagraph * par, int)
+bool CutAndPaste::checkPastePossible(LyXParagraph * par)
 {
     if (!buf) return false;
 

@@ -262,7 +262,7 @@ public:
 	///
 	string const getIncludeonlyList(char delim = ',');
 	///
-	std::vector<std::pair<string,string> > const getBibkeyList();
+	std::vector<std::pair<string, string> > const getBibkeyList();
 	///
 	struct TocItem {
 		///
@@ -272,15 +272,8 @@ public:
 		///
 		string str;
 	};
-	/// The different content list types.
-	enum TocType {
-		TOC_TOC = 0, ///< Table of Contents
-		TOC_LOF, ///< List of Figures
-		TOC_LOT, ///< List of Tables
-		TOC_LOA ///< List of Algorithms
-	};
 	///
-	std::vector<std::vector<TocItem> > const getTocList() const;
+	std::map<string, std::vector<TocItem> > const getTocList() const;
 	///
 	std::vector<string> const getLabelList();
 

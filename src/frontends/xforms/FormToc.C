@@ -67,9 +67,19 @@ void FormToc::build()
 {
 	dialog_ = build_toc();
 
+#if 0
 	fl_addto_choice(dialog_->choice_toc_type,
 			_(" TOC | LOF | LOT | LOA "));
-
+#else
+	map<string, vector<Buffer::TocItem> > tmp =
+		lv_->view()->buffer()->getTocList();
+	string types;
+	map<string, vector<Buffer::TocItem> >::const_iterator cit = tmp.begin();
+	map<string, vector<Buffer::TocItem> >::const_iterator end = tmp.end();
+	for (; cit != end; ++cit) {
+		fl_addto_choice(dialog_->choice_toc_type, cit->first.c_str());
+	}
+#endif
 	// Don't need to limit size of this dialog
 	// (but fixing min size is a GOOD thing).
 	// Workaround dumb xforms sizing bug
@@ -84,6 +94,7 @@ void FormToc::build()
 
 void FormToc::update()
 {
+#if 0
 	Buffer::TocType type;
 
 	if (params.getCmdName() == "tableofcontents" )
@@ -99,13 +110,16 @@ void FormToc::update()
 		type = Buffer::TOC_LOT;
 	
 	fl_set_choice( dialog_->choice_toc_type, type+1 );
-
+#else
+#warning Reimplement (Lgb)
+#endif
 	updateToc();
 }
 
 
 void FormToc::updateToc()
 {
+#if 0
   	if (!lv_->view()->available()) {
 		toclist.clear();
 		fl_clear_browser( dialog_->browser_toc );
@@ -150,6 +164,62 @@ void FormToc::updateToc()
 
 	fl_set_browser_topline( dialog_->browser_toc, topline );
 	fl_select_browser_line( dialog_->browser_toc, line );
+#else
+#warning Fix Me! (Lgb)
+  	if (!lv_->view()->available()) {
+		toclist.clear();
+		fl_clear_browser( dialog_->browser_toc );
+		fl_add_browser_line( dialog_->browser_toc,
+				     _("*** No Document ***"));
+		return;
+	}
+
+	map<string, vector<Buffer::TocItem> > tmp =
+		lv_->view()->buffer()->getTocList();
+	//int type = fl_get_choice( dialog_->choice_toc_type ) - 1;
+	string type = fl_get_choice_item_text(dialog_->choice_toc_type,
+					      fl_get_choice(dialog_->choice_toc_type));
+
+	map<string, vector<Buffer::TocItem> >::iterator it = tmp.find(type);
+
+	if (it != tmp.end()) {
+		// Check if all elements are the same.
+		if (toclist == it->second) {
+			return;
+		}
+	} else if (it == tmp.end()) {
+		toclist.clear();
+		fl_clear_browser(dialog_->browser_toc);
+		fl_add_browser_line(dialog_->browser_toc,
+				    _("*** No Lists ***"));
+		return;
+	}
+	
+	// List has changed. Update browser
+	toclist = it->second;
+
+	static Buffer * buffer = 0;
+	int topline = 0;
+	int line = 0;
+	if (buffer == lv_->view()->buffer()) {
+		topline = fl_get_browser_topline(dialog_->browser_toc);
+		line = fl_get_browser( dialog_->browser_toc );
+	} else
+		buffer = lv_->view()->buffer();
+
+	fl_clear_browser(dialog_->browser_toc);
+
+	vector<Buffer::TocItem>::const_iterator cit = toclist.begin();
+	vector<Buffer::TocItem>::const_iterator end = toclist.end();
+	
+	for (; cit != end; ++cit) {
+		string const line = string(4 * cit->depth, ' ') + cit->str;
+		fl_add_browser_line(dialog_->browser_toc, line.c_str());
+	}
+	
+	fl_set_browser_topline(dialog_->browser_toc, topline);
+	fl_select_browser_line(dialog_->browser_toc, line);
+#endif
 }
 
  
