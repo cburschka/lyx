@@ -102,6 +102,9 @@ struct BufferView::Pimpl : public boost::signals::trackable {
 	void updateInset(Inset * inset, bool mark_dirty);
 	///
 	bool dispatch(FuncRequest const & ev);
+	///
+	bool viewDispatch(FuncRequest const & ev);
+
 private:
 	///
 	friend class BufferView;

@@ -93,6 +93,7 @@ unsigned int const saved_positions_num = 20;
 // (Lgb)
 
 boost::signals::connection dispatchcon;
+boost::signals::connection viewdispatchcon;
 boost::signals::connection timecon;
 boost::signals::connection doccon;
 boost::signals::connection resizecon;
@@ -119,6 +120,8 @@ BufferView::Pimpl::Pimpl(BufferView * bv, LyXView * owner,
 		.connect(boost::bind(&BufferView::Pimpl::workAreaResize, this));
 	dispatchcon = workarea().dispatch
 		.connect(boost::bind(&BufferView::Pimpl::dispatch, this, _1));
+	viewdispatchcon = workarea().viewDispatch
+		.connect(boost::bind(&BufferView::Pimpl::viewDispatch, this, _1));
 	kpresscon = workarea().workAreaKeyPress
 		.connect(boost::bind(&BufferView::Pimpl::workAreaKeyPress, this, _1, _2));
 	selectioncon = workarea().selectionRequested
@@ -912,6 +915,13 @@ void BufferView::Pimpl::MenuInsertLyXFile(string const & filen)
 #endif
 		owner_->message(STRCONV(str.str()));
 	}
+}
+
+
+bool BufferView::Pimpl::viewDispatch(FuncRequest const & ev)
+{
+		owner_->dispatch(ev);
+		return true;
 }
 
 

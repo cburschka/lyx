@@ -72,6 +72,8 @@ public:
 	boost::signal2<void, LyXKeySymPtr, key_modifier::state> workAreaKeyPress;
 	/// some mouse event
 	boost::signal1<void, FuncRequest> dispatch;
+	/// used by drag-and-drop
+	boost::signal1<bool, FuncRequest> viewDispatch;
 	/// emitted when an X client has requested our selection
 	boost::signal0<void> selectionRequested;
 	/// emitted when another X client has stolen our selection

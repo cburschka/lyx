@@ -56,6 +56,11 @@ public:
 	///
 	virtual void putClipboard(string const &) const;
 
+	///
+	virtual void dragEnterEvent(QDragEnterEvent * event);
+	///
+	virtual void dropEvent(QDropEvent* event);
+
 	/// get the pixmap we paint on to
 	QPixmap * getPixmap() const { return content_->pixmap(); }
 

@@ -1,3 +1,16 @@
+2003-12-08  Ronald Florence  <ron@18james.com>
+
+	* QWorkArea.C (checkAppleEventForMissingParams) 
+	(handleOpenDocuments): add support for OpenDocuments apple event
+
+	* lyx_gui.C (macEventFilter): handle apple events
+
+2003-12-04  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* QWorkArea.C (QWorkArea):
+	(dragEnterEvent):
+	(dropEvent): add support for drag and drop of URIs
+
 2003-12-05  Juergen Spitzmueller  <j.spitzmueller@gmx.de>
 
 	* QDocument.C: use geometry on custom, A3, B3 and B4

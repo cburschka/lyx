@@ -1,3 +1,8 @@
+2003-12-04  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* BufferView_pimpl.C (viewDispatch): new method, called by the qt
+	drag-and-drop code.
+
 2003-11-19  Angus Leeming  <leeming@lyx.org>
 
 	* lyxtextclass.C (LyXTextClass): fix warning about variable
