@@ -64,12 +64,22 @@ void QIncludeDialog::typeChanged(int v)
 {
 	switch (v) {
 		case 0:
+			visiblespaceCB->setEnabled(false);
+			visiblespaceCB->setChecked(false);
+			previewCB->setEnabled(true);
+			break;
+
 		case 1:
 			visiblespaceCB->setEnabled(false);
 			visiblespaceCB->setChecked(false);
+			previewCB->setEnabled(false);
+			previewCB->setChecked(false);
 			break;
+ 
 		default:
 			visiblespaceCB->setEnabled(true);
+			previewCB->setEnabled(false);
+			previewCB->setChecked(false);
 			break;
 	}
 }
