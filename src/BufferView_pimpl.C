@@ -905,6 +905,8 @@ bool BufferView::Pimpl::workAreaDispatch(FuncRequest const & cmd)
 {
 	switch (cmd.action) {
 	case LFUN_MOUSE_MOTION: {
+		if (!available())
+			return false;
 		FuncRequest cmd1(cmd, bv_);
 		UpdatableInset * inset = bv_->cursor().innerInset();
 		DispatchResult res;

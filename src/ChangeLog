@@ -1,3 +1,8 @@
+2003-12-12  Alfredo Braunstein  <abraunst@lyx.org>
+
+	* BufferView_pimpl.C (workAreaDispatch): avoid crashing when
+	dragging over the splash screen.
+
 2003-12-11  Angus Leeming  <leeming@lyx.org>
 
 	* BufferView_pimpl.C (dispatch): remove LFUN_INSET_APPLY code
