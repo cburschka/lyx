@@ -87,32 +87,57 @@ char nextToken(string & data)
 		lyx_advance(data, 5);
 		return '-';
 	} else {
-		string::size_type i;
+		string::size_type i = data.find_first_not_of("0123456789.");
 
-		// I really mean assignment ("=") below, not equality!
-		if ((i = data.find_last_of("0123456789.")) != string::npos) {
-			if (number_index > 3) return 'E';  // Error
-                        string buffer = data.substr(0, i + 1);
+		if (i != 0) {
+			if (number_index > 3) return 'E';
+
+			string buffer;
+		
+			// we have found some number
+			if (i == string::npos) {
+				buffer = data;
+				i = data.size() + 1;
+			} else
+				buffer = data.substr(0, i);
+
+			lyx_advance(data, i);
+
 			if (isStrDbl(buffer)) {
 				number[number_index] = strToDbl(buffer);
-				lyx_advance(data, i + 1);
 				++number_index;
 				return 'n';
-			} else 
-				return 'E';  // Error
-		} else if ((i = data.find_last_of("abcdefghijklmnopqrstuvwxyz"))
-			   != string::npos) {
-			if (unit_index > 3) return 'E';  // Error
-			string buffer = data.substr(0, i + 1);
-			unit[unit_index] = unitFromString(buffer);
+			} else return 'E';
+		}
+		
+		i = data.find_first_not_of("abcdefghijklmnopqrstuvwxyz");
+		if (i != 0) {
+			if (unit_index > 3) return 'E';
+
+			string buffer;
+		
+			// we have found some alphabetical string
+			if (i == string::npos) {
+				buffer = data;
+				i = data.size() + 1;
+			} else
+				buffer = data.substr(0, i);
+
+			// possibly we have "mmplus" string or similar
+			if (buffer.size() > 5 && (buffer.substr(2,4) == string("plus") || buffer.substr(2,5) == string("minus"))) {
+				lyx_advance(data, 2);
+				unit[unit_index] = unitFromString(buffer.substr(0, 2));
+			} else {
+				lyx_advance(data, i);
+				unit[unit_index] = unitFromString(buffer);
+			}
+
 			if (unit[unit_index] != LyXLength::UNIT_NONE) {
-				lyx_advance(data, i + 1);
 				++unit_index;
 				return 'u';
-			} else
-				return 'E';  // Error
-		} else
-			return 'E';  // Error
+			} else return 'E';  // Error
+		}
+		return 'E';  // Error
 	}
 }
 

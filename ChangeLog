@@ -1,3 +1,12 @@
+2000-11-17  Matej Cepl  <cepl@bigfoot.com>
+
+	* lib/kbd/czech.kmap: add apostroph mark to the Czech keyboard.
+
+2000-11-15  John Levon  <moz@compsoc.man.ac.uk>
+
+	* src/vspace.C (nextToken): fix so it can handle length phrases like
+		"10mm+-20mm", "40inplus16mmminus10cm" etc.
+
 2000-11-17  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/frontends/xforms/FormPreferences.C: constify several variables
