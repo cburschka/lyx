@@ -1,3 +1,11 @@
+2001-08-09  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* GUI.h: Button controller for Reference dialog changed to
+	NoRepeatedApplyReadOnlyPolicy.
+
+	* biblio.C (getInfo): output volume and number info. Move year to end
+	of string.
+
 2001-08-09  Allan Rae  <rae@lyx.org>
 
 	* Makefile.am (SUBDIRS, dist-hook): remove bogus entries. 

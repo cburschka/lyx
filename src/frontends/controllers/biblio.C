@@ -253,6 +253,8 @@ string const getInfo(InfoMap const & map, string const & key)
 	string title      = parseBibTeX(it->second, "title");
 	string booktitle  = parseBibTeX(it->second, "booktitle");
 	string chapter    = parseBibTeX(it->second, "chapter");
+	string number     = parseBibTeX(it->second, "number");
+	string volume     = parseBibTeX(it->second, "volume");
 	string pages      = parseBibTeX(it->second, "pages");
 
 	string media      = parseBibTeX(it->second, "journal");
@@ -265,8 +267,6 @@ string const getInfo(InfoMap const & map, string const & key)
 
 	ostringstream result;
 	result << author;
-	if (!year.empty())
-		result << ", " << year;
 	if (!title.empty())
 		result << ", " << title;
 	if (!booktitle.empty())
@@ -275,8 +275,14 @@ string const getInfo(InfoMap const & map, string const & key)
 		result << ", Ch. " << chapter;
 	if (!media.empty())
 		result << ", " << media;
+	if (!volume.empty())
+		result << ", vol. " << volume;
+	if (!number.empty())
+		result << ", no. " << number;
 	if (!pages.empty())
 		result << ", pp. " << pages;
+	if (!year.empty())
+		result << ", " << year;
 
 	if (result.str().empty()) // not a BibTeX record
 		result << it->second;
