@@ -207,6 +207,8 @@ public:
 	}
 
 	///
+	UpdatableInset() { scx = mx_scx = 0; }
+	///
 	//virtual ~UpdatableInset() {}
 	///
 	virtual unsigned char Editable() const;

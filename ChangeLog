@@ -1,3 +1,11 @@
+2000-03-03  Juergen Vigna  <jug@sad.it>
+
+	* src/insets/insetert.C (InsetERT): Now ERT-insets break row
+	automatically with the width of the LyX-Window
+
+	* src/insets/insettext.C (computeTextRows): fixed update bug in
+	displaying text-insets (scrollvalues where not initialized!)
+
 2000-03-02  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/mathed/math_utils.C (MathedLookupBOP): using only res->id ==

@@ -112,7 +112,7 @@ void UpdatableInset::Edit(BufferView * bv, int, int, unsigned int)
 {
     LyXFont
 	font;
-//    bview = bv;
+
     scx = 0;
 
     mx_scx=abs((width(bv->getPainter(), font) - bv->paperWidth())/2);

@@ -25,6 +25,7 @@ InsetERT::InsetERT(Buffer * bf)
 {
 	closed = true;
 	nomotion = false;
+	autoBreakRows = true;
 }
 
 

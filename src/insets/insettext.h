@@ -129,13 +129,15 @@ protected:
     ///
     LyXFont real_current_font;
     ///
-    int maxWidth;
+    mutable int maxWidth;
     ///
     mutable int maxAscent;
     ///
     mutable int maxDescent;
     ///
     mutable int insetWidth;
+    ///
+    bool autoBreakRows;
 
 private:
     ///

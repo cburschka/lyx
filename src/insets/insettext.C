@@ -63,6 +63,8 @@ InsetText::InsetText(Buffer * buf)
     interline_space = 1;
     no_selection = false;
     init_inset = true;
+    maxAscent = maxDescent = insetWidth = 0;
+    autoBreakRows = false;
 }
 
 
@@ -77,6 +79,8 @@ InsetText::InsetText(InsetText const & ins, Buffer * buf)
     interline_space = 1;
     no_selection = false;
     init_inset = true;
+    maxAscent = maxDescent = insetWidth = 0;
+    autoBreakRows = false;
 }
 
 
@@ -1068,7 +1072,7 @@ void InsetText::computeTextRows(Painter & pain) const
     row.pos      = 0;
     row.baseline = 0;
     rows.push_back(row);
-    if (maxWidth < 0) {
+    if (!autoBreakRows) {
 	for(p = 0; p < par->Last(); ++p) {
 	    insetWidth += SingleWidth(pain, par, p);
 	    SingleHeight(pain, par, p, asc, desc);
@@ -1084,11 +1088,13 @@ void InsetText::computeTextRows(Painter & pain) const
 	rows.push_back(row);
 	return;
     }
+
     bool is_first_word_in_row = true;
 
     int cw,
 	lastWordWidth = 0;
 
+    maxWidth = buffer->getUser()->paperWidth();
     for(p = 0; p < par->Last(); ++p) {
 	cw = SingleWidth(pain, par, p);
 	width += cw;
