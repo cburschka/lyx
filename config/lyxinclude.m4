@@ -574,3 +574,28 @@ AM_PROG_LIBTOOL dnl for libraries
 CC=$ac_save_cc
 CFLAGS="$ac_save_cflags"
 ])
+
+
+## ------------------------------------------------------------------------
+## Check whether mkdir() is mkdir or _mkdir, and whether it takes
+## one or two arguments.
+##
+## http://ac-archive.sourceforge.net/C_Support/ac_func_mkdir.html
+## ------------------------------------------------------------------------
+##
+AC_DEFUN([AC_FUNC_MKDIR],
+[AC_CHECK_FUNCS([mkdir _mkdir])
+AC_CACHE_CHECK([whether mkdir takes one argument],
+               [ac_cv_mkdir_takes_one_arg],
+[AC_TRY_COMPILE([
+#include <sys/stat.h>
+#if HAVE_UNISTD_H
+#  include <unistd.h>
+#endif
+], [mkdir (".");],
+[ac_cv_mkdir_takes_one_arg=yes], [ac_cv_mkdir_takes_one_arg=no])])
+if test x"$ac_cv_mkdir_takes_one_arg" = xyes; then
+  AC_DEFINE([MKDIR_TAKES_ONE_ARG], 1,
+            [Define if mkdir takes only one argument.])
+fi
+])
