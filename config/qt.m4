@@ -1,7 +1,7 @@
 
 dnl Please leave this alone. I use this file in
 dnl oprofile.
-FATAL=0
+FATAL=1
 
 dnl find a binary in the path
 AC_DEFUN(QT_FIND_PATH,
