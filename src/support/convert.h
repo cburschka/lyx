@@ -16,12 +16,9 @@
 #ifndef CONVERT_H
 #define CONVERT_H
 
+#if 0
 #include <boost/static_assert.hpp>
 
-#include <string>
-
-
-#if 0
 // Commented out since BOOST_STATIC_ASSERT does not work with gcc 4.0
 template <class Target, class Source>
 Target convert(Source arg)
@@ -35,30 +32,5 @@ Target convert(Source arg)
 template <class Target, class Source>
 Target convert(Source arg);
 #endif
-
-
-template<>
-std::string convert<std::string>(bool);
-
-template<>
-std::string convert<std::string>(char);
-
-template<>
-std::string convert<std::string>(unsigned short);
-
-template<>
-std::string convert<std::string>(int);
-
-template<>
-std::string convert<std::string>(unsigned int);
-
-template<>
-std::string convert<std::string>(float);
-
-template<>
-std::string convert<std::string>(double);
-
-template<>
-std::string convert<std::string>(std::string);
 
 #endif

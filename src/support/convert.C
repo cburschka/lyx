@@ -15,6 +15,8 @@
 
 #include <boost/lexical_cast.hpp>
 
+#include <string>
+
 using boost::lexical_cast;
 
 using std::string;
@@ -52,6 +54,13 @@ template<>
 string convert<string>(unsigned int ui)
 {
 	return lexical_cast<string>(ui);
+}
+
+
+template<>
+string convert<string>(unsigned long ul)
+{
+	return lexical_cast<string>(ul);
 }
 
 

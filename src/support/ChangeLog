@@ -1,3 +1,9 @@
+2005-01-07  Lars Gullik Bjonnes  <larsbj@gullik.net>
+
+	* convert.h: remove the specializations, dont included unneeded
+	headers 
+	* convert.C: add specialization for unsigned long
+
 2005-01-06  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
 	* tostr.[Ch]: renamed to convert[ch]

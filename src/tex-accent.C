@@ -14,6 +14,8 @@
 #include "tex-accent.h"
 #include "support/convert.h"
 
+#include <string>
+
 using std::string;
 
 /* the names used by TeX and XWindows for deadkeys/accents are not the same

@@ -120,7 +120,7 @@ bool addRow(MathGridInset & grid, MathGridInset::row_type & cellrow,
 			// one.
 			// This does not happen in well formed .lyx files,
 			// but LyX versions 1.3.x and older could create
-			// such files and tex2lyx can still do that. 
+			// such files and tex2lyx can still do that.
 			--cellrow;
 			lyxerr << "ignoring extra row";
 			if (!vskip.empty())
@@ -151,7 +151,7 @@ bool addCol(MathGridInset & grid, MathGridInset::col_type & cellcol)
 			// one.
 			// This does not happen in well formed .lyx files,
 			// but LyX versions 1.3.x and older could create
-			// such files and tex2lyx can still do that. 
+			// such files and tex2lyx can still do that.
 			--cellcol;
 			lyxerr << "ignoring extra column." << endl;
 			return false;
