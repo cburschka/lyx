@@ -290,6 +290,42 @@ sub call_parser {
     return;
 } # end subroutine call_parser
 
+# This is used as a toggle so that we know what to do when basic_lyx is
+# passed a '$' or '$$' token.
+my $inside_math=0;
+
+sub starting_math {
+    my $name = shift;
+
+    if ($name eq '\(' || $name eq '\[' ||
+	# These tokens bound both ends of a math environment so we must check
+	# $inside_math to know what action to take.
+	($name eq '$' || $name eq '$$') && !$inside_math) {
+
+	$inside_math = 1;
+	return 1;
+    }
+
+    # All other tokens
+    return 0;
+}
+
+sub ending_math {
+    my $name = shift;
+
+    if ($name eq '\)' || $name eq '\]' ||
+	# These tokens bound both ends of a math environment so we must check
+	# $inside_math to know what action to take.
+	($name eq '$' || $name eq '$$') && $inside_math) {
+
+	$inside_math = 0;
+	return 1;
+    }
+
+    # All other tokens
+    return 0;
+}
+
 ##########################   MAIN TRANSLATOR SUBROUTINE   #####################
 sub basic_lyx {
 # This subroutine is called by Text::TeX::process each time subroutine
@@ -388,7 +424,7 @@ sub basic_lyx {
 			      "\n\n\\end_inset \n\n";
 
 	    # Math -- copy verbatim until you're done
-	    } elsif ($name eq '\(' || $name eq '\[') {
+	    } elsif (starting_math($name)) {
 		print "\nCopying math beginning with '$name'\n" if $debug_on;
 		# copy everything until end text
 		$dummy = &Verbatim::copy_verbatim($fileobject, $eaten);
@@ -399,7 +435,7 @@ sub basic_lyx {
 		print $dummy if $debug_on;
 		print OUTFILE $dummy;
 
-	    } elsif ($name eq '\)' || $name eq '\]') {
+	    } elsif (ending_math($name)) {
 	        # end math
 		print OUTFILE "$name\n\\end_inset \n\n";
 		print "\nDone copying math ending with '$name'" if $debug_on;

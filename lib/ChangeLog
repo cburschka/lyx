@@ -2,6 +2,9 @@
 
 	* lyx2lyx/lyx2lyx: enable the debug level to be set.
 
+	* reLyX/BasicLyX.pm, reLyX/CleanTeX.pm, reLyX/Verbatim.pm: pass
+	$...$ and $$...$$ through reLyX unchanged.
+
 2003-02-04  Joao Luis Meloni Assirati  <assirati@fma.if.usp.br>
 
 	* images/math/rbracket.xpm: new file.

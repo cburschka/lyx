@@ -12,6 +12,8 @@
 package Verbatim;
 use strict;
 
+my $debug_on; # package-wide variable set if -d option is given
+
 sub copy_verb {
 # This subroutine handles a \verb token. Text is guaranteed to be on one line.
 # \verb must be followed by a non-letter, then copy anything until the next
@@ -27,6 +29,9 @@ sub copy_verb {
 }
 
 sub copy_verbatim {
+    # Was -d option given?
+    $debug_on = (defined($main::opt_d) && $main::opt_d);
+
 # This subroutine eats text verbatim until a certain text is reached
 # The end text itself is not eaten; this is necessary so that
 #    environments are properly nested (otherwise, TeX.pm complains)
@@ -35,7 +40,10 @@ sub copy_verbatim {
 # Arg 0 is the Text::TeX::OpenFile file object, arg 1 is the beginning token
     my $fileobject = shift;
     my $begin_token = shift;
-    my %endtokentbl = (  '\(' => '\)' , '\[' => '\]'  );
+    my %endtokentbl = (  '\(' => '\)',
+			 '\[' => '\]',
+			 '$'  => '$',
+			 '$$' => '$$' );
 
     my $type = ref($begin_token);
     $type =~ s/^Text::TeX:://o or die "unknown token type $type?!";

@@ -81,20 +81,6 @@ sub clean_tex {
     my($eaten,$txt) = (shift,shift);
     my ($outstr, $type);
 
-    # Sub translate is given a string and one of the translation tables below.
-    # It returns the translation, or just the string if there's no translation
-    # Translation table for TT::Begin::Group tokens
-    my %begtranstbl = (
-			'$' => '\(', # LyX math mode doesn't
-			'$$' => '\[', # understand \$ or $$
-			);
-
-    # Translation table for TT::End::Group tokens
-    my %endtranstbl = (
-			   '$' => '\)',
-			   '$$' => '\]',
-		       );
-
     # Translation table for TT::Token tokens whose translations should
     #    NOT have whitespace after them! See sub translate...
     #   Note that tokens of type TT::EndLocal are always translated to '}'. So,
@@ -135,8 +121,7 @@ sub clean_tex {
 
 	   # Handle the end of a local font command - insert a '}'
 	   if (/EndLocal/) {
-	       # we could just say $printstr='}'
-	       $printstr = &translate('}', \%endtranstbl);
+	       $printstr = '}';
 	       last SWITCH;
 	   }
 	   
@@ -242,13 +227,13 @@ sub clean_tex {
 	   
 	   # Handle opening groups, like '{' and '$'.
 	   if (/Begin::Group$/) {
-	       $printstr = &translate($outstr,\%begtranstbl);
+	       $printstr = $outstr;
 	       last SWITCH;
 	   }
 	   
 	   # Handle closing groups, like '}' and '$'.
 	   if (/End::Group$/) {
-	       $printstr = &translate($outstr, \%endtranstbl);
+	       $printstr = $outstr;
 	       last SWITCH;
 	   }
 
