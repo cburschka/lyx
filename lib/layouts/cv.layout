@@ -53,6 +53,11 @@ Style Subsection
   LeftMargin		MMM
 End
 
+# we used to have this version with wrong case
+Style SubSection
+  ObsoletedBy           Subsection
+End
+
 # Topic style definition
 Style Topic
   Margin                Manual
