@@ -34,7 +34,6 @@
 #include "support/lyxfunctional.h"
 #include "support/lstrings.h"
 
-extern LyXAction lyxaction;
 extern BufferList bufferlist;
 
 using std::endl;

@@ -20,9 +20,6 @@
 
 using std::endl;
 
-extern LyXAction lyxaction;
-
-
 Toolbar::Toolbar(LyXView * o, Dialogs & d,
 		 int x, int y, ToolbarDefaults const &tbd)
 	: last_textclass_(-1)

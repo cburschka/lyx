@@ -1,12 +1,8 @@
-/* This file is part of
- * ======================================================
- *
- *           LyX, The Document Processor
- *
- *           Copyright 1995 Matthias Ettrich
- *           Copyright 1995-2001 The LyX Team.
- *
- * ====================================================== */
+/**
+ * \file LyXAction.C
+ * Copyright 1995-2002 the LyX Team
+ * Read the file COPYING
+ */
 
 #include <config.h>
 
@@ -15,12 +11,17 @@
 #endif
 
 #include "LyXAction.h"
+
 #include "debug.h"
 #include "gettext.h"
 #include "support/lstrings.h"
 
+#include <boost/tuple/tuple.hpp>
+ 
 using std::ostream;
 using std::endl;
+using std::pair;
+using std::make_pair;
 
 /*
      NAMING RULES FOR USER-COMMANDS
@@ -37,18 +38,19 @@ using std::endl;
      8) The end of an object is called `end'.
 
      (May 19 1996, 12:04, RvdK)
- */
+*/
 
-// These are globals.
 LyXAction lyxaction;
 
-// Small helper function
-inline
-bool isPseudoAction(int a)
+namespace {
+
+/// return true if the given action is a pseudo-action
+inline bool isPseudoAction(int a)
 {
 	return a > int(LFUN_LASTACTION);
 }
 
+}
 
 
 void LyXAction::newFunc(kb_action action, string const & name,
@@ -81,7 +83,7 @@ void LyXAction::init()
 		unsigned int attrib;
 	};
 
-	ev_item items[] = {
+	ev_item const items[] = {
 		{ LFUN_ACUTE, "accent-acute", "", Noop },
 		{ LFUN_BREVE, "accent-breve", "", Noop },
 		{ LFUN_CARON, "accent-caron", "", Noop },
@@ -420,13 +422,9 @@ void LyXAction::init()
 		{ LFUN_NOACTION, "", "", Noop }
 	};
 
-	int i = 0;
-	while (items[i].action != LFUN_NOACTION) {
-		newFunc(items[i].action,
-			items[i].name,
-			_(items[i].helpText),
-			items[i].attrib);
-		++i;
+	for (int i = 0; items[i].action != LFUN_NOACTION; ++i) {
+		newFunc(items[i].action, items[i].name,
+			_(items[i].helpText), items[i].attrib);
 	}
 
 	init = true;
@@ -439,14 +437,11 @@ LyXAction::LyXAction()
 }
 
 
-// Search for an existent pseudoaction, return LFUN_UNKNOWN_ACTION
-// if it doesn't exist.
 int LyXAction::searchActionArg(kb_action action, string const & arg) const
 {
 	arg_map::const_iterator pit = lyx_arg_map.find(action);
 
 	if (pit == lyx_arg_map.end()) {
-		// the action does not have any pseudoactions
 		lyxerr[Debug::ACTION] << "Action " << action
 				      << " does not have any pseudo actions."
 				      << endl;
@@ -456,7 +451,6 @@ int LyXAction::searchActionArg(kb_action action, string const & arg) const
 	arg_item::const_iterator aci = pit->second.find(arg);
 
 	if (aci == pit->second.end()) {
-		// the action does not have any pseudoactions with this arg
 		lyxerr[Debug::ACTION]
 			<< "Action " << action
 			<< "does not have any pseudoactions with arg "
@@ -464,8 +458,7 @@ int LyXAction::searchActionArg(kb_action action, string const & arg) const
 		return LFUN_UNKNOWN_ACTION;
 	}
 
-	// pseudo action exist
-	lyxerr[Debug::ACTION] << "Pseudoaction exist["
+	lyxerr[Debug::ACTION] << "Pseudoaction exists["
 			      << action << '|'
 			      << arg << "] = " << aci->second << endl;
 
@@ -473,8 +466,7 @@ int LyXAction::searchActionArg(kb_action action, string const & arg) const
 }
 
 
-// Returns a pseudo-action given an action and its argument.
-int LyXAction::getPseudoAction(kb_action action, string const & arg) const
+int LyXAction::getPseudoAction(kb_action action, string const & arg)
 {
 	int const psdaction = searchActionArg(action, arg);
 
@@ -500,14 +492,10 @@ int LyXAction::getPseudoAction(kb_action action, string const & arg) const
 }
 
 
-// Retrieves the real action and its argument.
-// perhaps a pair<kb_action, string> should be returned?
-kb_action LyXAction::retrieveActionArg(int pseudo, string & arg) const
+pair<kb_action, string> LyXAction::retrieveActionArg(int pseudo) const
 {
-	arg.erase(); // clear it to be sure.
-
 	if (!isPseudoAction(pseudo))
-		return static_cast<kb_action>(pseudo);
+		return make_pair(static_cast<kb_action>(pseudo), string());
 
 	pseudo_map::const_iterator pit = lyx_pseudo_map.find(pseudo);
 
@@ -515,18 +503,17 @@ kb_action LyXAction::retrieveActionArg(int pseudo, string & arg) const
 		lyxerr[Debug::ACTION] << "Found the pseudoaction: ["
 				      << pit->second.action << '|'
 				      << pit->second.argument << "]\n";
-		arg = pit->second.argument;
-		return pit->second.action;
+		return make_pair(pit->second.action, pit->second.argument);
 	} else {
 		lyxerr << "Lyx Error: Unrecognized pseudo-action "
 			<< pseudo << endl;
-		return LFUN_UNKNOWN_ACTION;
+		return make_pair(LFUN_UNKNOWN_ACTION, string());
 	}
 }
 
 
 // Returns an action tag from a string.
-int LyXAction::LookupFunc(string const & func) const
+int LyXAction::LookupFunc(string const & func)
 {
 	string const func2 = trim(func);
 	if (func2.empty()) return LFUN_NOACTION;
@@ -548,56 +535,12 @@ int LyXAction::LookupFunc(string const & func) const
 }
 
 
-//#ifdef WITH_WARNINGS
-//#warning Not working as it should.
-//#endif
-// I have no clue what is wrong with it... (Lgb)
-int LyXAction::getApproxFunc(string const & func) const
-	// This func should perhaps also be able to return a list of all
-	// actions that has func as a prefix. That should actually be quite
-	// easy, just let it return a vector<int> or something.
-{
-	int action = LookupFunc(func);
-	if (action == LFUN_UNKNOWN_ACTION) {
-		// func is not an action, but perhaps it is
-		// part of one...check if it is prefix if one of the
-		// actions.
-		// Checking for prefix is not so simple, but
-		// using a simple bounding function gives
-		// a similar result.  [ale 19981103]
-		func_map::const_iterator fit =
-			lyx_func_map.lower_bound(func);
-
-		if (fit != lyx_func_map.end()) {
-			action =  fit->second;
-		}
-	} else {  // Go get the next function
-		func_map::const_iterator fit =
-			lyx_func_map.upper_bound(func);
-
-		if (fit != lyx_func_map.end()) {
-			action =  fit->second;
-		}
-	}
-
-	return action;
-}
-
-
-string const LyXAction::getApproxFuncName(string const & func) const
-{
-	int const f = getApproxFunc(func);
-	// This will return empty string if f isn't an action.
-	return getActionName(f);
-}
-
-
 string const LyXAction::getActionName(int action) const
 {
 	kb_action ac;
 	string arg;
-
-	ac = retrieveActionArg(action, arg);
+	boost::tie(ac, arg) = retrieveActionArg(action);
+ 
 	if (!arg.empty())
 		arg.insert(0, " ");
 
@@ -612,15 +555,14 @@ string const LyXAction::getActionName(int action) const
 }
 
 
-// Returns one line help associated with a (pseudo)action, i.e. appends
-// the argument of the action if necessary
 string const LyXAction::helpText(int pseudoaction) const
 {
-	string help, arg;
 	kb_action action;
+	string arg;
+	boost::tie(action, arg) = retrieveActionArg(pseudoaction);
 
-	action = retrieveActionArg(pseudoaction, arg);
-
+	string help;
+ 
 	info_map::const_iterator ici = lyx_info_map.find(action);
 	if (ici != lyx_info_map.end()) {
 		if (lyxerr.debugging(Debug::ACTION)) {

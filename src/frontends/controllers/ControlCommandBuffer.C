@@ -24,8 +24,6 @@ using std::back_inserter;
 using std::transform;
 using std::endl;
  
-extern LyXAction lyxaction;
- 
 namespace {
  
 struct prefix_p {

@@ -38,7 +38,6 @@ using std::for_each;
 typedef vector<int>::size_type size_type;
 
 extern boost::scoped_ptr<kb_keymap> toplevel_keymap;
-extern LyXAction lyxaction;
 
 namespace {
 

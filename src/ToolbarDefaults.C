@@ -24,7 +24,6 @@
 
 using std::endl;
 
-extern LyXAction lyxaction;
 ToolbarDefaults toolbardefaults;
 
 namespace {

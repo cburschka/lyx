@@ -36,17 +36,17 @@
  
 using std::endl;
 
-extern LyXAction lyxaction;
-
 namespace {
  
 QPixmap getIconPixmap(int action)
 {
+	kb_action act;
 	string arg;
+	boost::tie(act, arg) = lyxaction.retrieveActionArg(action);
+ 
+	string const name = lyxaction.getActionName(act);
 	string xpm_name;
 
-	const kb_action act = lyxaction.retrieveActionArg(action, arg);
-	string const name = lyxaction.getActionName(act);
 	if (!arg.empty())
 		xpm_name = subst(name + ' ' + arg, ' ','_');
 	else 

@@ -40,7 +40,6 @@ using std::vector;
 
 class kb_keymap;
 
-extern LyXAction lyxaction;
 extern boost::scoped_ptr<kb_keymap> toplevel_keymap;
 
 namespace {

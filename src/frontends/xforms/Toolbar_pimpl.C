@@ -36,9 +36,9 @@
 #include "support/filetools.h"
 #include "support/lstrings.h"
 
+#include <boost/tuple/tuple.hpp>
+ 
 using std::endl;
-
-extern LyXAction lyxaction;
 
 // some constants
 const int standardspacing = 2; // the usual space between items
@@ -251,10 +251,12 @@ extern "C" {
 
 void setPixmap(FL_OBJECT * obj, int action, int buttonwidth, int height)
 {
-	string arg;
 	string xpm_name;
 
-	const kb_action act = lyxaction.retrieveActionArg(action, arg);
+	kb_action act;
+	string arg;
+	boost::tie(act, arg) = lyxaction.retrieveActionArg(action);
+ 
 	string const name = lyxaction.getActionName(act);
 	if (!arg.empty())
 		xpm_name = subst(name + ' ' + arg, ' ','_');

@@ -34,8 +34,6 @@ using std::max;
 using std::endl;
 using std::ostream;
 
-extern LyXAction lyxaction;
-
 namespace toc
 {
 
