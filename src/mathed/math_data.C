@@ -382,10 +382,9 @@ void MathArray::towards(int & x, int & y) const
 }
 
 
-/*
-std::ostream & operator<<(std::ostream & os, MathArray const & ar)
+void MathArray::setXY(int x, int y)
 {
-	os << ar.data();
+	xo_ = x;
+	yo_ = y;
 }
-*/
 

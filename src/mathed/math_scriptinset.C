@@ -325,16 +325,34 @@ bool MathScriptInset::idxLeft(idx_type &, pos_type &) const
 bool MathScriptInset::idxUpDown(idx_type & idx, pos_type & pos, bool up,
 	int) const
 {
-	if ((idx == 1 && up) || (idx == 0 && !up))
-		return false;
-
-	// in nuclues?
-	if (idx == 2) {
-		idx = up;
-		pos = 0;
-	} else {
+	if (idx == 1) {
+		// if we are 'up' we can't go further up
+		if (up)
+			return false;
+		// otherwise go to last base position
 		idx = 2;
 		pos = cell(2).size();	
+	}
+
+	else if (idx == 0) {
+		// if we are 'down' we can't go further down
+		if (!up)
+			return false;
+		idx = 2;
+		pos = cell(2).size();	
+	}
+	
+	else {
+		// in nucleus
+		// don't go up/down unless in last position
+		if (pos != cell(2).size())
+			return false;	
+		// don't go up/down if there is no cell.
+		if (!has(up))
+			return false;
+		// otherwise move into the first position
+		idx = up;
+		pos = 0;
 	}
 	return true;
 }

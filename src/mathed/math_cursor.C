@@ -380,11 +380,15 @@ void MathCursor::niceInsert(MathAtom const & t)
 	macroModeClose();
 	MathGridInset safe = grabAndEraseSelection();
 	plainInsert(t);
+	int x, y;
+	getPos(x, y);
 	// enter the new inset and move the contents of the selection if possible
 	if (t->isActive()) {
 		posLeft();
 		pushLeft(nextAtom());
 		paste(safe);
+		// lets pretend we've not moved too far away...
+		array().setXY(x, y);
 	}
 }
 

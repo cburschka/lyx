@@ -124,6 +124,8 @@ public:
 	int xm() const { return xo_ + dim_.w / 2; }
 	/// access to cached y coordinate of mid point of last drawing
 	int ym() const { return yo_ + (dim_.d - dim_.a) / 2; }
+	/// write access to coordinate;
+	void setXY(int x, int y);
 	/// returns x coordinate of given position in the array
 	int pos2x(size_type pos) const;
 	/// returns position of given x coordinate
