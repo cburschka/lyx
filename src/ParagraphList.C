@@ -180,7 +180,7 @@ void ParagraphList::splice(iterator pos, ParagraphList & pl)
 {
 	if (pl.parlist == 0)
 		return;
-	
+
 	Paragraph * first = pl.parlist;
 	Paragraph * last = first;
 #ifndef NO_NEXT
