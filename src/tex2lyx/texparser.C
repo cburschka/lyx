@@ -373,6 +373,12 @@ string Parser::verbatim_item()
 }
 
 
+void Parser::reset()
+{
+	pos_ = 0;
+}
+
+
 void Parser::setCatCode(char c, CatCode cat)
 {
 	theCatcode[(unsigned char)c] = cat;

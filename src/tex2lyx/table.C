@@ -175,7 +175,7 @@ void parse_table(Parser & p, ostream & os, unsigned flags)
 		// cat codes
 		//
 		if (t.cat() == catMath) {
-				// we are inside some text mode thingy, so opening new math is allowed
+			// we are inside some text mode thingy, so opening new math is allowed
 			Token const & n = p.get_token();
 			if (n.cat() == catMath) {
 				// TeX's $$...$$ syntax for displayed math
@@ -249,7 +249,14 @@ void parse_table(Parser & p, ostream & os, unsigned flags)
 		else if (t.cs() == "begin") {
 			string const name = p.getArg('{', '}');
 			active_environments.push_back(name);
-			parse_table(p, os, FLAG_END);
+			os << "\\begin{" << name << '}';
+			if (is_math_env(name)) {
+				parse_math(p, os, FLAG_END, MATH_MODE);
+			} else {
+				parse_table(p, os, FLAG_END);
+			}
+			os << "\\end{" << name << '}';
+			active_environments.pop_back();
 		}
 
 		else if (t.cs() == "end") {
@@ -259,7 +266,6 @@ void parse_table(Parser & p, ostream & os, unsigned flags)
 				if (name != active_environment())
 					p.error("\\end{" + name + "} does not match \\begin{"
 						+ active_environment() + "}");
-				active_environments.pop_back();
 				return;
 			}
 			p.error("found 'end' unexpectedly");
@@ -387,6 +393,8 @@ void handle_tabular(Parser & p, ostream & os,
 		// split into cells
 		vector<string> cells;
 		split(lines[row], cells, TAB);
+		// Has the last multicolumn cell a rightline?
+		bool last_rightline = false;
 		for (size_t col = 0, cell = 0;
 				cell < cells.size() && col < colinfo.size(); ++col, ++cell) {
 			//cerr << "cell content: '" << cells[cell] << "'\n";
@@ -406,8 +414,21 @@ void handle_tabular(Parser & p, ostream & os,
 				ostringstream os;
 				parse_text_in_inset(p, os, FLAG_ITEM, false, context);
 				cellinfo[row][col].content   = os.str();
-				cellinfo[row][col].leftline  |= t.front().leftline;
-				cellinfo[row][col].rightline |= t.front().rightline;
+
+				// multicolumn cells are tricky: This
+				// \multicolumn{2}{|c|}{col1-2}&
+				// \multicolumn{2}{|c|}{col3-4}\\ 
+				// gives | col1-2 | col3-4 | and not
+				//       | col1-2 || col3-4 |
+				// So:
+				if (last_rightline && t.front().leftline) {
+					t.front().leftline = false;
+				}
+				last_rightline = t.front().rightline;
+
+				// multicolumn lines override normal cell lines
+				cellinfo[row][col].leftline  = t.front().leftline;
+				cellinfo[row][col].rightline = t.front().rightline;
 
 				// add dummy cells for multicol
 				for (size_t i = 0; i < ncells - 1 && col < colinfo.size(); ++i) {
@@ -428,6 +449,7 @@ void handle_tabular(Parser & p, ostream & os,
 				ostringstream os;
 				parse_text_in_inset(p, os, FLAG_CELL, false, context);
 				cellinfo[row][col].content   = os.str();
+				last_rightline = false;
 			}
 		}
 

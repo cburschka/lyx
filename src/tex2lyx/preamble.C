@@ -31,6 +31,8 @@ using std::ostream;
 using std::ostringstream;
 using std::string;
 using std::vector;
+using std::cerr;
+using std::endl;
 
 using lyx::support::LibFileSearch;
 
@@ -64,7 +66,8 @@ string h_fontscheme              = "default";
 string h_graphics                = "default";
 string h_paperfontsize           = "default";
 string h_spacing                 = "single";
-string h_papersize               = "default";
+// Match the entry in ../src/tex-strings.C. Why not "default"?
+string h_papersize               = "Default";
 string h_paperpackage            = "default";
 string h_use_geometry            = "0";
 string h_use_amsmath             = "0";
@@ -78,7 +81,7 @@ string h_defskip                 = "medskip";
 string h_quotes_language         = "english";
 string h_quotes_times            = "2";
 string h_papercolumns            = "1";
-string h_papersides              = "1";
+string h_papersides              = string();
 string h_paperpagestyle          = "default";
 string h_tracking_changes        = "0";
 
@@ -169,21 +172,34 @@ void end_preamble(ostream & os, LyXTextClass const & /*textclass*/)
 	   << "\\paperpagestyle " << h_paperpagestyle << "\n"
 	   << "\\tracking_changes " << h_tracking_changes << "\n"
 	   << "\\end_header\n";
+	// clear preamble for subdocuments
+	h_preamble.str("");
 }
 
 } // anonymous namespace
 
-LyXTextClass const parse_preamble(Parser & p, ostream & os)
+LyXTextClass const parse_preamble(Parser & p, ostream & os, string const & forceclass)
 {
 	// initialize fixed types
 	special_columns['D'] = 3;
+	bool is_full_document = false;
 
+	// determine wether this is a full document or a fragment for inclusion
 	while (p.good()) {
 		Token const & t = p.get_token();
 
+		if (t.cs() == "documentclass") {
+			is_full_document = true;
+			break;
+		}
+	}
+	p.reset();
+
+	while (is_full_document && p.good()) {
+		Token const & t = p.get_token();
+
 #ifdef FILEDEBUG
-		cerr << "t: " << t << " flags: " << flags << "\n";
-		//cell->dump();
+		cerr << "t: " << t << "\n";
 #endif
 
 		//
@@ -207,7 +223,7 @@ LyXTextClass const parse_preamble(Parser & p, ostream & os)
 			handle_comment(p);
 
 		else if (t.cs() == "pagestyle")
-			h_paperpagestyle == p.verbatim_item();
+			h_paperpagestyle = p.verbatim_item();
 
 		else if (t.cs() == "makeatletter") {
 			p.setCatCode('@', catLetter);
@@ -351,8 +367,22 @@ LyXTextClass const parse_preamble(Parser & p, ostream & os)
 			h_preamble << '\\' << t.cs() << ' ';
 	}
 
+	// Force textclass if the user wanted it
+	if (forceclass.size()) {
+		h_textclass = forceclass;
+	}
+	string layoutfilename = LibFileSearch("layouts", h_textclass, "layout");
+	if (layoutfilename.empty()) {
+		cerr << "Error: Could not find layout file for textclass \"" << h_textclass << "\"." << endl;
+		exit(1);
+	}
 	LyXTextClass textclass;
-	textclass.Read(LibFileSearch("layouts", h_textclass, "layout"));
+	textclass.Read(layoutfilename);
+	if (! h_papersides.size()) {
+		ostringstream ss;
+		ss << textclass.sides();
+		h_papersides = ss.str();
+	}
 	end_preamble(os, textclass);
 	return textclass;
 }

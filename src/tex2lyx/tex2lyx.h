@@ -23,7 +23,7 @@
 class Context;
 
 /// in preamble.C
-LyXTextClass const parse_preamble(Parser & p, std::ostream & os);
+LyXTextClass const parse_preamble(Parser & p, std::ostream & os, std::string const & forceclass);
 
 
 /// in text.C
@@ -60,5 +60,14 @@ char const ** is_known(std::string const & str, char const ** what);
 // Access to environment stack
 extern std::vector<std::string> active_environments;
 std::string active_environment();
+
+/*! Reads tex input from \a is and writes lyx output to \a os.
+ *  Uses some common settings for the preamble, so this should only
+ *  be used more than once for included documents.
+ *  Caution: Overwrites the existing preamble settings if the new document
+ *  contains a preamble. */
+void tex2lyx(std::istream &, std::ostream &);
+/// \return true if the conversion was successful, else false.
+bool tex2lyx(std::string const &, std::string const &);
 
 #endif

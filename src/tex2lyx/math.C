@@ -27,7 +27,10 @@ bool is_math_env(string const & name)
 {
 	static char const * known_math_envs[] = { "equation", "equation*",
 	"eqnarray", "eqnarray*", "align", "align*", "gather", "gather*",
-	"multline", "multline*", 0};
+	"multline", "multline*", "math", "displaymath", "flalign", "flalign*",
+	// These require extra args
+	"alignat", "alignat*", "xalignat", "xalignat*", "xxalignat",
+	0};
 
 	for (char const ** what = known_math_envs; *what; ++what)
 		if (*what == name)
@@ -162,6 +165,7 @@ void parse_math(Parser & p, ostream & os, unsigned flags, const mode_type mode)
 			else
 				parse_math(p, os, FLAG_END, mode);
 			os << "\\end{" << name << "}";
+			active_environments.pop_back();
 		}
 
 		else if (t.cs() == "end") {
@@ -171,7 +175,6 @@ void parse_math(Parser & p, ostream & os, unsigned flags, const mode_type mode)
 				if (name != active_environment())
 					p.error("\\end{" + name + "} does not match \\begin{"
 						+ active_environment() + "}");
-				active_environments.pop_back();
 				return;
 			}
 			p.error("found 'end' unexpectedly");
@@ -190,14 +193,15 @@ void parse_math(Parser & p, ostream & os, unsigned flags, const mode_type mode)
 		}
 
 		else if (t.cs() == "textrm" || t.cs() == "textsf" || t.cs() == "textbf"
-				|| t.cs() == "texttt" || t.cs() == "textsc") {
+				|| t.cs() == "texttt" || t.cs() == "textsc"
+				|| t.cs() == "text" || t.cs() == "intertext") {
 			os << '\\' << t.cs() << '{';
 			parse_math(p, os, FLAG_ITEM, MATHTEXT_MODE);
 			os << '}';
 		}
 
-		else if (t.cs() == "mbox") {
-			os << "\\mbox{";
+		else if (t.cs() == "mbox" || t.cs() == "fbox") {
+			os << "\\" << t.cs() << '{';
 			parse_math(p, os, FLAG_ITEM, MATHTEXT_MODE);
 			os << '}';
 		}

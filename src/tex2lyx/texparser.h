@@ -58,7 +58,8 @@ enum {
 	FLAG_SIMPLE2    = 1 << 10, //  next \) leaves the loop
 	FLAG_OPTION     = 1 << 11, //  read [...] style option
 	FLAG_BRACED     = 1 << 12, //  read {...} style argument
-	FLAG_CELL       = 1 << 13  //  read table cell
+	FLAG_CELL       = 1 << 13, //  read table cell
+	FLAG_TABBING    = 1 << 14  //  We are inside a tabbing environment
 };
 
 
@@ -148,7 +149,8 @@ public:
 	std::string verbatim_item();
 	///
 	std::string verbatimOption();
-
+	/// resets the parser to initial state
+	void reset();
 	///
 	void setCatCode(char c, CatCode cat);
 	///

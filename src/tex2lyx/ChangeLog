@@ -1,3 +1,40 @@
+2003-10-23  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* math.C:
+	* preamble.C:
+	* table.C:
+	* tex2lyx.C:
+	* tex2lyx.h:
+	* texparser.C:
+	* texparser.h:
+	* text.C:
+	- add \text{}, \intertext{} and \fbox{} support in mathmode.
+	- add support for some math environments like displaymath
+	- allow parsing of partial documents (for inclusion with \input).
+	- steal commandline switches -c and -f from reLyX to support the
+		     previous point
+	- add support for lengths with comma (4,5cm instead of 4.5cm) to
+		     minipage environments. Handle \textwidth etc. without factor
+	- rearrange active_environments.[push,pop]back() so that they are always
+	       called in pairs
+	- write an error message if layout file could not be found.
+	- convert \begin{comment}...\end{comment} to comment inset
+	- handle \= correctly inside tabbing environments
+	- fix multicolumn vertical rule bug in tables
+	- add missing \includegraphics options
+	- output minipages with latex lengths as ERT, since lyx cannot handle them
+	- recognize \textsl{}
+	- remove duplicate \ldots
+	- recognize \bibliographystyle and \bibliography
+	- handle \psfrag{ps-text}[ps-pos][tex-pos]{tex-text} correctly
+	- handle environments in table cells correctly
+	- add missing -userdir and -sysdir commandline switches
+	- recognize start of appendix
+	- handle optional arg to \item as ERT in itemize environment, since LyX
+		     does not support it directly
+
+
+
 2003-10-18  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* Makefile.am (BUILT_SOURCES): use this instead of "linked_files"
