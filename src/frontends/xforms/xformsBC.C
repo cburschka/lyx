@@ -15,8 +15,8 @@
 #endif
 
 #include "xformsBC.h"
-#include "ButtonController.tmpl"
 #include "xforms_helpers.h"
+
 
 xformsBC::xformsBC(string const & cancel, string const & close)
 	: GuiBC<FL_OBJECT, FL_OBJECT>(cancel, close)

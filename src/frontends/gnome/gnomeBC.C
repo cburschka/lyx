@@ -5,7 +5,6 @@
 #endif
 
 #include "gnomeBC.h"
-#include "ButtonController.tmpl"
 
 #include <gtkmm/widget.h>
 #include <gtkmm/button.h>

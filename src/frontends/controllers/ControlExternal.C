@@ -22,7 +22,6 @@
 #include "BufferView.h"
 #include "ButtonControllerBase.h"
 #include "ControlExternal.h"
-#include "ControlInset.tmpl"
 #include "Dialogs.h"
 #include "Liason.h"
 #include "frontends/LyXView.h"

@@ -11,7 +11,6 @@
 #define GUI_H
 
 #include "ButtonController.h"
-#include "ButtonController.tmpl"
 #include "ButtonPolicies.h"
 #include "ControlAboutlyx.h"
 #include "ControlBibitem.h"

@@ -31,8 +31,6 @@
 
 #include "frontends/LyXView.h"
 
-#include "ControlInset.tmpl"
-
 #include <boost/bind.hpp>
 
 using std::pair;

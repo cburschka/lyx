@@ -1,5 +1,19 @@
 2002-06-10  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
+	* GUI.h: do not include ButtonController.tmpl
+
+	* ControlInset.h: include ControlInset.tmpl
+
+	* ControlCitation.C: do not include ControlInset.tmpl
+	* ControlCommand.C: ditto
+	* ControlERT.C: ditto
+	* ControlError.C: ditto
+	* ControlExternal.C: ditto
+	* ControlFloat.C: ditto
+	* ControlGraphics.C: ditto
+	* ControlInclude.C: ditto
+	* ControlMinipage.C: ditto
+
 	* ControlDialog.tmpl: remove the Base:: prefix
 
 2002-06-07  Angus Leeming  <leeming@lyx.org>

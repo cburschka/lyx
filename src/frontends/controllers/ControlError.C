@@ -20,7 +20,6 @@
 #include "ControlError.h"
 #include "ViewBase.h"
 #include "ButtonControllerBase.h"
-#include "ControlInset.tmpl"
 #include "Dialogs.h"
 #include "buffer.h"
 #include "insets/inseterror.h"

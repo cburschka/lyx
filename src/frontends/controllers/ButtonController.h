@@ -81,4 +81,6 @@ protected:
 };
 
 
+#include "ButtonController.tmpl"
+
 #endif // BUTTONCONTROLLER_H
