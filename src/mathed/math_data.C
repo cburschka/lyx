@@ -276,9 +276,8 @@ void MathArray::metrics(MetricsInfo & mi) const
 void MathArray::draw(PainterInfo & pi, int x, int y) const
 {
 	//lyxerr << "MathArray::draw: x: " << x << " y: " << y << endl;
-
-	xo_    = x;
-	yo_    = y;
+	xo_ = x;
+	yo_ = y;
 
 	if (empty()) {
 		pi.pain.rectangle(x, y - ascent(), width(), height(), LColor::mathline);
@@ -332,16 +331,13 @@ void MathArray::metricsT(TextMetricsInfo const & mi, Dimension & dim) const
 
 void MathArray::drawT(TextPainter & pain, int x, int y) const
 {
-	//if (drawn_ && x == xo_ && y == yo_)
-	//	return;
 	//lyxerr << "x: " << x << " y: " << y << ' ' << pain.workAreaHeight() << endl;
-	xo_    = x;
-	yo_    = y;
-	drawn_ = true;
+	xo_ = x;
+	yo_ = y;
 
 	for (const_iterator it = begin(), et = end(); it != et; ++it) {
 		(*it)->drawT(pain, x, y);
-		//x += (*it->width_;
+		//x += (*it)->width_;
 		x += 2;
 	}
 }

@@ -62,8 +62,7 @@ void MathUnknownInset::draw(PainterInfo & pi, int x, int y) const
 		drawStrBlack(pi, x, y, name_);
 	else
 		drawStrRed(pi, x, y, name_);
-	xo_ = x;
-	yo_ = y;
+	setPosCache(pi, x, y);
 }
 
 

@@ -907,7 +907,6 @@ void MathNestInset::lfunMousePress(LCursor & cur, FuncRequest & cmd)
 	if (cmd.button() == mouse_button::button1) {
 		first_x = cmd.x;
 		first_y = cmd.y;
-		//cur.setScreenPos(cmd.x + xo_, cmd.y + yo_);
 		lyxerr << "lfunMousePress: setting cursor to: " << cur << endl;
 		cur.resetAnchor();
 		cur.bv().cursor() = cur;
