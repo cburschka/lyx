@@ -15,7 +15,7 @@
 
 
 MathDimInset::MathDimInset()
-	: xo_(-3), yo_(-3)
+	: xo_(-3), yo_(-3) // some sentinel value for debugging
 {}
 
 
@@ -39,7 +39,7 @@ int MathDimInset::width() const
 
 void MathDimInset::setPosCache(PainterInfo const &, int x, int y) const
 {
-	lyxerr << "MathDimInset:: position cache to " << x << " " << y << std::endl;
+	//lyxerr << "MathDimInset: cache to " << x << " " << y << std::endl;
 	xo_ = x;
 	yo_ = y;
 }

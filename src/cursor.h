@@ -144,6 +144,8 @@ public:
 	void selClear();
 	/// clears or deletes selection depending on lyxrc setting
 	void selClearOrDel();
+	//
+	std::string selectionAsString(bool label) const;
 	///
 	void paste(std::string const & data);
 
@@ -247,6 +249,13 @@ public:
 	/// move one step to the right
 	bool posRight();
 
+	/// insert an inset
+	void insert(InsetBase *);
+	/// insert a single char
+	void insert(char c);
+	/// insert a string
+	void insert(std::string const & str);
+
 	/// write acess to target x position of cursor
 	int & x_target();
 	/// return target x position of cursor
@@ -327,8 +336,6 @@ public:
 	void insert(MathAtom const &);
 	///
 	void insert(MathArray const &);
-	///
-	void insert2(std::string const &);
 	/// return false for empty math insets
 	bool erase();
 	/// return false for empty math insets
@@ -398,10 +405,6 @@ public:
 	/// returns the normalized anchor of the selection
 	CursorSlice normalAnchor();
 
-	///
-	void insert(char c);
-	///
-	void insert(std::string const & str);
 	/// lock/unlock inset
 	void lockToggle();
 

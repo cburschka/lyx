@@ -1499,37 +1499,6 @@ void LyXText::previousRow(ParagraphList::iterator & pit,
 }
 
 
-string LyXText::selectionAsString(Buffer const & buffer, bool label) const
-{
-	LCursor & cur = bv()->cursor();
-	if (!cur.selection())
-		return string();
-
-	// should be const ...
-	ParagraphList::iterator startpit = getPar(cur.selBegin());
-	ParagraphList::iterator endpit = getPar(cur.selEnd());
-	size_t const startpos = cur.selBegin().pos();
-	size_t const endpos = cur.selEnd().pos();
-
-	if (startpit == endpit)
-		return startpit->asString(buffer, startpos, endpos, label);
-
-	// First paragraph in selection
-	string result =
-		startpit->asString(buffer, startpos, startpit->size(), label) + "\n\n";
-
-	// The paragraphs in between (if any)
-	ParagraphList::iterator pit = startpit;
-	for (++pit; pit != endpit; ++pit)
-		result += pit->asString(buffer, 0, pit->size(), label) + "\n\n";
-
-	// Last paragraph in selection
-	result += endpit->asString(buffer, 0, endpos, label);
-
-	return result;
-}
-
-
 int LyXText::parOffset(ParagraphList::iterator pit) const
 {
 	return distance(paragraphs().begin(), pit);

@@ -514,8 +514,10 @@ void MathScriptInset::notifyCursorLeaves(idx_type idx)
 
 
 DispatchResult
-MathScriptInset::priv_dispatch(LCursor & bv, FuncRequest const & cmd)
+MathScriptInset::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 {
+	lyxerr << "MathScriptInset: request: " << cmd << std::endl;
+
 	if (cmd.action == LFUN_MATH_LIMITS) {
 		if (!cmd.argument.empty()) {
 			if (cmd.argument == "limits")
@@ -531,5 +533,5 @@ MathScriptInset::priv_dispatch(LCursor & bv, FuncRequest const & cmd)
 		return DispatchResult(true, true);
 	}
 
-	return MathNestInset::priv_dispatch(bv, cmd);
+	return MathNestInset::priv_dispatch(cur, cmd);
 }

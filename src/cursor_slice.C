@@ -236,7 +236,7 @@ std::ostream & operator<<(std::ostream & os, CursorSlice const & item)
 	os << "inset: " << item.inset_
 	   << " text: " << item.text()
 	   << " idx: " << item.idx_
-	   << " par: " << item.par_
+//	   << " par: " << item.par_
 	   << " pos: " << item.pos_
 //	   << " x: " << item.inset_->x()
 //	   << " y: " << item.inset_->y()

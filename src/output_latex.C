@@ -428,9 +428,8 @@ TeXOnePar(Buffer const & buf,
 
 } // anon namespace
 
-//
-// LaTeX all paragraphs from par to endpar, if endpar == 0 then to the end
-//
+
+// LaTeX all paragraphs
 void latexParagraphs(Buffer const & buf,
 		     ParagraphList const & paragraphs,
 		     ostream & os,
@@ -456,7 +455,7 @@ void latexParagraphs(Buffer const & buf,
 
 			if (layout->intitle) {
 				if (already_title) {
-					lyxerr <<"Error in latexParagraphs: You"
+					lyxerr << "Error in latexParagraphs: You"
 						" should not mix title layouts"
 						" with normal ones." << endl;
 				} else if (!was_title) {

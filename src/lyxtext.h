@@ -341,8 +341,6 @@ public:
 	bool isFirstRow(ParagraphList::iterator pit, Row const & row) const;
 
 	///
-	std::string selectionAsString(Buffer const & buffer, bool label) const;
-	///
 	double spacing(Paragraph const &) const;
 	///
 	void cursorLeftOneWord(CursorSlice &);

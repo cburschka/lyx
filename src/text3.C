@@ -46,12 +46,15 @@
 #include "insets/insettext.h"
 
 #include "support/lstrings.h"
+#include "support/lyxlib.h"
 #include "support/tostr.h"
 #include "support/std_sstream.h"
 
 #include "mathed/math_hullinset.h"
+#include "mathed/formulamacro.h"
 
 #include <clocale>
+
 
 using bv_funcs::replaceSelection;
 
@@ -59,6 +62,8 @@ using lyx::pos_type;
 
 using lyx::support::isStrUnsignedInt;
 using lyx::support::strToUnsignedInt;
+using lyx::support::atoi;
+using lyx::support::token;
 
 using std::endl;
 using std::find;
@@ -123,7 +128,43 @@ namespace {
 		cur.bv().owner()->view_state_changed();
 	}
 
-} // anon namespace
+
+	void mathDispatch(LCursor & cur, FuncRequest const & cmd, bool display)
+	{
+		string sel = cur.selectionAsString(false);
+		lyxerr << "selection is: '" << sel << "'" << endl;
+
+		if (sel.empty()) {
+			cur.insert(new MathHullInset);
+			cur.dispatch(FuncRequest(LFUN_RIGHT));
+			cur.dispatch(FuncRequest(LFUN_MATH_MUTATE, "simple"));
+			// don't do that also for LFUN_MATH_MODE unless you want end up with
+			// always changing to mathrm when opening an inlined inset
+			// -- I really hate "LyXfunc overloading"...
+			if (display)
+				cur.dispatch(FuncRequest(LFUN_MATH_DISPLAY));
+			cur.dispatch(FuncRequest(LFUN_INSERT_MATH, cmd.argument));
+		} else {
+			// create a macro if we see "\\newcommand" somewhere, and an ordinary
+			// formula otherwise
+			cur.bv().getLyXText()->cutSelection(true, true);
+			if (sel.find("\\newcommand") == string::npos &&
+					sel.find("\\def") == string::npos)
+			{
+				cur.insert(new MathHullInset);
+				cur.dispatch(FuncRequest(LFUN_RIGHT));
+				cur.dispatch(FuncRequest(LFUN_MATH_MUTATE, "simple"));
+				cur.dispatch(FuncRequest(LFUN_INSERT_MATH, sel));
+			} else {
+				cur.insert(new InsetFormulaMacro(sel));
+				cur.dispatch(FuncRequest(LFUN_RIGHT));
+			}
+		}
+		cur.message(N_("Math editor mode"));
+	}
+
+} // namespace anon
+
 
 
 namespace bv_funcs {
@@ -1269,21 +1310,38 @@ DispatchResult LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 		bv->update();
 		break;
 
-	case LFUN_MATH_DELIM:
 	case LFUN_MATH_DISPLAY:
-	case LFUN_INSERT_MATH:
-	case LFUN_MATH_LIMITS:
-	case LFUN_MATH_MACRO:
-	case LFUN_MATH_MUTATE:
-	case LFUN_MATH_SPACE:
+		mathDispatch(cur, cmd, true);
+		break;
+
 	case LFUN_MATH_IMPORT_SELECTION:
 	case LFUN_MATH_MODE:
-	case LFUN_MATH_NONUMBER:
-	case LFUN_MATH_NUMBER:
-	case LFUN_MATH_EXTERN:
-	case LFUN_MATH_SIZE:
-		mathDispatch(cur, cmd);
+		mathDispatch(cur, cmd, false);
 		break;
+
+	case LFUN_MATH_MACRO:
+		if (cmd.argument.empty())
+			cur.errorMessage(N_("Missing argument"));
+		else {
+			string s = cmd.argument;
+			string const s1 = token(s, ' ', 1);
+			int const nargs = s1.empty() ? 0 : atoi(s1);
+			string const s2 = token(s, ' ', 2);
+			string const type = s2.empty() ? "newcommand" : s2;
+			cur.insert(new InsetFormulaMacro(token(s, ' ', 0), nargs, s2));
+			cur.nextInset()->edit(cur, true);
+		}
+		break;
+
+	case LFUN_INSERT_MATH:
+	case LFUN_INSERT_MATRIX:
+	case LFUN_MATH_DELIM: {
+		cur.insert(new MathHullInset);
+		cur.dispatch(FuncRequest(LFUN_RIGHT));
+		cur.dispatch(FuncRequest(LFUN_MATH_MUTATE, "simple"));
+		cur.dispatch(cmd);
+		break;
+	}
 
 	case LFUN_EMPH: {
 		LyXFont font(LyXFont::ALL_IGNORE);

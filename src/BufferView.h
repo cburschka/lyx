@@ -125,11 +125,6 @@ public:
 	/// move cursor to the named label
 	void gotoLabel(std::string const & label);
 
-	/// undo last action
-	void undo();
-	/// redo last action
-	void redo();
-
 	/// get the stored error list
 	ErrorList const & getErrorList() const;
 	/// show the error list to the user

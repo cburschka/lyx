@@ -487,8 +487,8 @@ void Buffer::insertStringAsLines(ParagraphList::iterator & par, pos_type & pos,
 				++pos;
 				space_inserted = true;
 			} else {
-				const pos_type nb = 8 - pos % 8;
-				for (pos_type a = 0; a < nb ; ++a) {
+				const pos_type n = 8 - pos % 8;
+				for (pos_type i = 0; i < n; ++i) {
 					par->insertChar(pos, ' ', font);
 					++pos;
 				}
@@ -531,7 +531,6 @@ bool Buffer::readFile(string const & filename, ParagraphList::iterator pit)
 {
 	LyXLex lex(0, 0);
 	lex.setFile(filename);
-
 	return readFile(lex, filename, pit);
 }
 
@@ -711,9 +710,8 @@ bool Buffer::save() const
 		removeAutosaveFile(fileName());
 	} else {
 		// Saving failed, so backup is not backup
-		if (lyxrc.make_backup) {
+		if (lyxrc.make_backup)
 			rename(s, fileName());
-		}
 		return false;
 	}
 	return true;
@@ -722,20 +720,17 @@ bool Buffer::save() const
 
 bool Buffer::writeFile(string const & fname) const
 {
-	if (pimpl_->read_only && (fname == fileName())) {
+	if (pimpl_->read_only && fname == fileName())
 		return false;
-	}
 
 	FileInfo finfo(fname);
-	if (finfo.exist() && !finfo.writable()) {
+	if (finfo.exist() && !finfo.writable())
 		return false;
-	}
 
 	bool retval;
 
 	if (params().compressed) {
 		gz::ogzstream ofs(fname.c_str());
-
 		if (!ofs)
 			return false;
 
@@ -755,7 +750,6 @@ bool Buffer::writeFile(string const & fname) const
 
 bool Buffer::do_writeFile(ostream & ofs) const
 {
-
 #ifdef HAVE_LOCALE
 	// Use the standard "C" locale for file output.
 	ofs.imbue(std::locale::classic());
@@ -791,16 +785,9 @@ bool Buffer::do_writeFile(ostream & ofs) const
 	//        which should include file system full errors.
 
 	bool status = true;
-	if (!ofs.good()) {
+	if (!ofs) {
 		status = false;
-#if 0
-		if (ofs.bad()) {
-			lyxerr << "Buffer::writeFile: BAD ERROR!" << endl;
-		} else {
-			lyxerr << "Buffer::writeFile: NOT SO BAD ERROR!"
-			       << endl;
-		}
-#endif
+		lyxerr << "File was not closed properly." << endl;
 	}
 
 	return status;
@@ -822,9 +809,8 @@ void Buffer::makeLaTeXFile(string const & fname,
 		      runparams, output_preamble, output_body);
 
 	ofs.close();
-	if (ofs.fail()) {
-		lyxerr << "File was not closed properly." << endl;
-	}
+	if (ofs.fail())
+		lyxerr << "File '" << fname << "' was not closed properly." << endl;
 }
 
 
@@ -1018,7 +1004,8 @@ void Buffer::makeLinuxDocFile(string const & fname,
 	}
 
 	ofs.close();
-	// How to check for successful close
+	if (ofs.fail())
+		lyxerr << "File '" << fname << "' was not closed properly." << endl;
 }
 
 
@@ -1074,7 +1061,8 @@ void Buffer::makeDocBookFile(string const & fname,
 	sgml::closeTag(ofs, 0, false, top_element);
 
 	ofs.close();
-	// How to check for successful close
+	if (ofs.fail())
+		lyxerr << "File '" << fname << "' was not closed properly." << endl;
 }
 
 

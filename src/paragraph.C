@@ -1385,7 +1385,6 @@ void Paragraph::simpleDocBookOnePar(Buffer const & buf,
 			}
 		}
 
-
 		if (isInset(i)) {
 			InsetBase const * inset = getInset(i);
 			// don't print the inset in position 0 if desc_on == 3 (label)
@@ -1703,7 +1702,6 @@ bool Paragraph::isChangeEdited(pos_type start, pos_type end) const
 void Paragraph::setChange(lyx::pos_type pos, Change::Type type)
 {
 	pimpl_->setChange(pos, type);
-
 }
 
 
@@ -1738,7 +1736,6 @@ Paragraph::value_type Paragraph::getChar(pos_type pos) const
 		       << id() << " of size " << siz
 		       << "  is a bit silly !" << endl;
 		BOOST_ASSERT(false);
-		return '\0';
 	}
 
 	return text_[pos];

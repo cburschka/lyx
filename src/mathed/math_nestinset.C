@@ -207,7 +207,7 @@ void MathNestInset::draw(PainterInfo &, int, int) const
 }
 
 
-void MathNestInset::drawSelection(PainterInfo & pi, int x, int y) const
+void MathNestInset::drawSelection(PainterInfo & pi, int, int) const
 {
 	// this should use the x/y values given, not the cached values
 	LCursor & cur = pi.base.bv->cursor();
@@ -218,14 +218,12 @@ void MathNestInset::drawSelection(PainterInfo & pi, int x, int y) const
 	CursorSlice & s1 = cur.selBegin();
 	CursorSlice & s2 = cur.selEnd();
 	if (s1.idx() == s2.idx()) {
-		MathArray const & c = s1.cell();
-		lyxerr << "###### c.xo(): " << c.xo() << " c.yo(): " << c.yo() << endl;
+		MathArray const & c = cell(s1.idx());
 		int x1 = c.xo() + c.pos2x(s1.pos());
 		int y1 = c.yo() - c.ascent();
 		int x2 = c.xo() + c.pos2x(s2.pos());
 		int y2 = c.yo() + c.descent();
-		//pi.pain.fillRectangle(x1, y1, x2 - x1, y2 - y1, LColor::selection);
-		pi.pain.fillRectangle(x1, y1, x2 - x1, y2 - y1, LColor::red);
+		pi.pain.fillRectangle(x1, y1, x2 - x1, y2 - y1, LColor::selection);
 	} else {
 		for (idx_type i = 0; i < nargs(); ++i) {
 			if (idxBetween(i, s1.idx(), s2.idx())) {
@@ -234,8 +232,7 @@ void MathNestInset::drawSelection(PainterInfo & pi, int x, int y) const
 				int y1 = c.yo() - c.ascent();
 				int x2 = c.xo() + c.width();
 				int y2 = c.yo() + c.descent();
-				//pi.pain.fillRectangle(x1, y1, x2 - x1, y2 - y1, LColor::selection);
-				pi.pain.fillRectangle(x1, y1, x2 - x1, y2 - y1, LColor::red);
+				pi.pain.fillRectangle(x1, y1, x2 - x1, y2 - y1, LColor::selection);
 			}
 		}
 	}
@@ -354,12 +351,7 @@ void MathNestInset::handleFont2(LCursor & cur, string const & arg)
 DispatchResult
 MathNestInset::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 {
-	lyxerr << "*** MathNestInset: request: " << cmd << std::endl;
-	//lyxerr << "InsetFormulaBase::localDispatch: act: " << cmd.action
-	//	<< " arg: '" << cmd.argument
-	//	<< "' x: '" << cmd.x
-	//	<< " y: '" << cmd.y
-	//	<< "' button: " << cmd.button() << endl;
+	lyxerr << "MathNestInset: request: " << cmd << std::endl;
 
 	switch (cmd.action) {
 
@@ -388,48 +380,41 @@ MathNestInset::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 		return dispatch(cur, FuncRequest(LFUN_PASTE, cur.bv().getClipboard())); 
 
 	case LFUN_MOUSE_PRESS:
-		//lyxerr << "Mouse single press" << endl;
 		return lfunMousePress(cur, cmd);
 	case LFUN_MOUSE_MOTION:
-		//lyxerr << "Mouse motion" << endl;
 		return lfunMouseMotion(cur, cmd);
 	case LFUN_MOUSE_RELEASE:
-		//lyxerr << "Mouse single release" << endl;
 		return lfunMouseRelease(cur, cmd);
 	case LFUN_MOUSE_DOUBLE:
-		//lyxerr << "Mouse double" << endl;
 		return dispatch(cur, FuncRequest(LFUN_WORDSEL));
 
 	case LFUN_RIGHTSEL:
-		cur.selection() = true; // fall through...
 	case LFUN_RIGHT:
+		cur.selHandle(cmd.action == LFUN_RIGHTSEL);
 		return cur.right() ?
 			DispatchResult(true, true) : DispatchResult(false, FINISHED_RIGHT);
-		//lyxerr << "calling scroll 20" << endl;
-		//scroll(&cur.bv(), 20);
-		// write something to the minibuffer
-		//cur.bv().owner()->message(cur.info());
 
 	case LFUN_LEFTSEL:
-		cur.selection() = true; // fall through
 	case LFUN_LEFT:
+		cur.selHandle(cmd.action == LFUN_LEFTSEL);
 		return cur.left() ?
 			DispatchResult(true, true) : DispatchResult(false, FINISHED);
 
 	case LFUN_UPSEL:
-		cur.selection() = true; // fall through
 	case LFUN_UP:
+		cur.selHandle(cmd.action == LFUN_UPSEL);
 		return cur.up() ?
 			DispatchResult(true, true) : DispatchResult(false, FINISHED_UP);
 
 	case LFUN_DOWNSEL:
-		cur.selection() = true; // fall through
 	case LFUN_DOWN:
+		cur.selHandle(cmd.action == LFUN_DOWNSEL);
 		return cur.down() ?
 			DispatchResult(true, true) : DispatchResult(false, FINISHED_DOWN);
 
 	case LFUN_WORDSEL:
 		cur.home();
+		cur.resetAnchor();
 		cur.selection() = true;
 		cur.end();
 		return DispatchResult(true, true);
@@ -440,19 +425,27 @@ MathNestInset::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 	case LFUN_DOWN_PARAGRAPH:
 		return DispatchResult(true, FINISHED);
 
-	case LFUN_HOMESEL:
 	case LFUN_WORDLEFTSEL:
-		cur.selection() = true; // fall through
-	case LFUN_HOME:
 	case LFUN_WORDLEFT:
+		cur.selHandle(cmd.action == LFUN_WORDLEFTSEL);
+		return cur.home()
+			? DispatchResult(true, true) : DispatchResult(true, FINISHED);
+
+	case LFUN_WORDRIGHTSEL:
+	case LFUN_WORDRIGHT:
+		cur.selHandle(cmd.action == LFUN_WORDRIGHTSEL);
+		return cur.end()
+			? DispatchResult(true, true) : DispatchResult(false, FINISHED_RIGHT);
+
+	case LFUN_HOMESEL:
+	case LFUN_HOME:
+		cur.selHandle(cmd.action == LFUN_HOMESEL);
 		return cur.home()
 			? DispatchResult(true, true) : DispatchResult(true, FINISHED);
 
 	case LFUN_ENDSEL:
-	case LFUN_WORDRIGHTSEL:
-		cur.selection() = true; // fall through
 	case LFUN_END:
-	case LFUN_WORDRIGHT:
+		cur.selHandle(cmd.action == LFUN_ENDSEL);
 		return cur.end()
 			? DispatchResult(true, true) : DispatchResult(false, FINISHED_RIGHT);
 
@@ -516,32 +509,14 @@ MathNestInset::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 //
 // this needs to be incorporated
 //
-	//lyxerr << "InsetFormulaBase::localDispatch: act: " << cmd.action
-	//	<< " arg: '" << cmd.argument
-	//	<< "' x: '" << cmd.x
-	//	<< " y: '" << cmd.y
-	//	<< "' button: " << cmd.button() << endl;
-
 	// delete empty mathbox (LFUN_BACKSPACE and LFUN_DELETE)
 	bool remove_inset = false;
-
-	switch (cmd.action) {
-		default:
-			break;
-	}
 
 	DispatchResult result(true);
 	bool was_macro     = cur.inMacroMode();
 
 	cur.normalize();
 	cur.touch();
-
-	switch (cmd.action) {
-
-	case LFUN_MATH_LIMITS:
-		//recordUndo(cur, Undo::ATOMIC);
-		cur.dispatch(cmd);
-		break;
 #endif
 
 	//    case LFUN_GETXY:
@@ -676,7 +651,7 @@ MathNestInset::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 	}
 
 	case LFUN_MATH_DELIM: {
-		//lyxerr << "formulabase::LFUN_MATH_DELIM, arg: '" << arg << "'" << endl;
+		lyxerr << "MathNestInset::LFUN_MATH_DELIM" << endl;
 		string ls;
 		string rs = lyx::support::split(cmd.argument, ls, ' ');
 		// Reasonable default values
@@ -705,16 +680,6 @@ MathNestInset::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 		//recordUndo(cur, Undo::ATOMIC);
 		cur.interpret('\\');
 		return DispatchResult(true, true);
-
-#if 0
-	case LFUN_BREAKPARAGRAPH:
-	case LFUN_BREAKPARAGRAPHKEEPLAYOUT:
-	case LFUN_BREAKPARAGRAPH_SKIP:
-		cmd.argument = "\n";
-		//recordUndo(cur, Undo::ATOMIC);
-		cur.niceInsert(argument);
-		return DispatchResult(true, true);
-#endif
 
 // FIXME: We probably should swap parts of "math-insert" and "self-insert"
 // handling such that "self-insert" works on "arbitrary stuff" too, and
@@ -766,17 +731,6 @@ MathNestInset::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 		return
 			searchForward(&cur.bv(), cmd.getArg(0), false, false)
 				? DispatchResult(true, true) : DispatchResult(false);
-
-	case LFUN_INSERT_MATH:
-	case LFUN_INSERT_MATRIX:
-	case LFUN_MATH_DELIM: {
-		MathHullInset * f = new MathHullInset;
-		if (openNewInset(cur, f)) {
-			cur.inset()->dispatch(cur, FuncRequest(LFUN_MATH_MUTATE, "simple"));
-			cur.inset()->dispatch(cur, cmd);
-		}
-		return DispatchResult(true, true);
-	}
 
 	cur.normalize();
 	cur.touch();

@@ -223,11 +223,13 @@ public:
 		string::size_type const size = str.length();
 		lyx::pos_type i = 0;
 		lyx::pos_type const parsize = par.size();
-		while ((pos + i < parsize)
-		       && (string::size_type(i) < size)
-		       && (cs ? (str[i] == par.getChar(pos + i))
-			   : (uppercase(str[i]) == uppercase(par.getChar(pos + i))))) {
-			++i;
+		for (i = 0; pos + i < parsize; ++i) {
+			if (string::size_type(i) >= size)
+				break;
+		  if (cs && str[i] != par.getChar(pos + i))
+				break;
+			if (!cs && uppercase(str[i]) != uppercase(par.getChar(pos + i)))
+				break;
 		}
 
 		if (size != string::size_type(i))
@@ -359,16 +361,13 @@ int replaceAll(BufferView * bv,
 }
 
 
-bool stringSelected(BufferView * bv,
-		    string const & searchstr,
+bool stringSelected(BufferView * bv, string const & searchstr,
 		    bool cs, bool mw, bool fw)
 {
-	LyXText * text = bv->getLyXText();
 	// if nothing selected or selection does not equal search
 	// string search and select next occurance and return
 	string const & str1 = searchstr;
-	string const str2 = text->selectionAsString(*bv->buffer(),
-						    false);
+	string const str2 = bv->cursor().selectionAsString(false);
 	if ((cs && str1 != str2) || lowercase(str1) != lowercase(str2)) {
 		find(bv, searchstr, cs, mw, fw);
 		return false;
@@ -378,9 +377,8 @@ bool stringSelected(BufferView * bv,
 }
 
 
-int replace(BufferView * bv,
-	    string const & searchstr, string const & replacestr,
-	    bool cs, bool mw, bool fw)
+int replace(BufferView * bv, string const & searchstr,
+      string const & replacestr, bool cs, bool mw, bool fw)
 {
 	if (!searchAllowed(bv, searchstr) || bv->buffer()->isReadonly())
 		return 0;

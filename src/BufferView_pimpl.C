@@ -549,7 +549,7 @@ void BufferView::Pimpl::selectionRequested()
 		xsel_cache_.cursor = cur.cursor_.back();
 		xsel_cache_.anchor = cur.anchor_.back();
 		xsel_cache_.set = cur.selection();
-		sel = bv_->getLyXText()->selectionAsString(*bv_->buffer(), false);
+		sel = cur.selectionAsString(false);
 		if (!sel.empty())
 			workarea().putClipboard(sel);
 	} 
@@ -578,11 +578,9 @@ void BufferView::Pimpl::workAreaResize()
 	work_area_width = workarea().workWidth();
 	work_area_height = workarea().workHeight();
 
-	if (buffer_ != 0) {
-		if (widthChange) {
-			// The visible LyXView need a resize
-			resizeCurrentBuffer();
-		}
+	if (buffer_ && widthChange) {
+		// The visible LyXView need a resize
+		resizeCurrentBuffer();
 	}
 
 	if (widthChange || heightChange)
@@ -907,7 +905,7 @@ bool BufferView::Pimpl::workAreaDispatch(FuncRequest const & cmd0)
 		}
 
 		if (fitCursor() || res.update()) {
-			bv_->update();
+			update();
 			cur.updatePos();
 		}
 		return true;
@@ -950,7 +948,7 @@ bool BufferView::Pimpl::workAreaDispatch(FuncRequest const & cmd0)
 		DispatchResult res = cur.dispatch(cmd);
 
 		if (fitCursor() || res.update())
-			bv_->update();
+			update();
 
 		// see workAreaKeyPress
 		cursor_timeout.restart();
@@ -993,10 +991,26 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & cmd)
 
 	switch (cmd.action) {
 
-	case LFUN_SCROLL_INSET:
-		// this is not handled here as this function is only active
-		// if we have a locking_inset and that one is (or contains)
-		// a tabular-inset
+	case LFUN_UNDO:
+		if (available()) {
+			cur.message(_("Undo"));
+			cur.clearSelection();
+			if (!textUndo(*bv_))
+				cur.message(_("No further undo information"));
+			update();
+			switchKeyMap();
+		}
+		break;
+
+	case LFUN_REDO:
+		if (available()) {
+			cur.message(_("Redo"));
+			cur.clearSelection();
+			if (!textRedo(*bv_))
+				cur.message(_("No further redo information"));
+			update();
+			switchKeyMap();
+		}
 		break;
 
 	case LFUN_FILE_INSERT:
@@ -1083,14 +1097,12 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & cmd)
 		string arg = cmd.argument;
 
 		if (arg.empty()) {
-			arg = bv_->getLyXText()->selectionAsString(*buffer_,
-								   false);
-
+			arg = cur.selectionAsString(false);
 			// FIXME
 			if (arg.size() > 100 || arg.empty()) {
 				// Get word or selection
 				bv_->getLyXText()->selectWordWhenUnderCursor(lyx::WHOLE_WORD);
-				arg = bv_->getLyXText()->selectionAsString(*buffer_, false);
+				arg = cur.selectionAsString(false);
 				// FIXME: where is getLyXText()->unselect(bv_) ?
 			}
 		}
@@ -1147,7 +1159,7 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & cmd)
 
 	case LFUN_MARK_OFF:
 		cur.clearSelection();
-		bv_->update();
+		update();
 		cur.resetAnchor();
 		cur.message(N_("Mark off"));
 		break;
@@ -1155,7 +1167,7 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & cmd)
 	case LFUN_MARK_ON:
 		cur.clearSelection();
 		cur.mark() = true;
-		bv_->update();
+		update();
 		cur.resetAnchor();
 		cur.message(N_("Mark on"));
 		break;
@@ -1169,7 +1181,7 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & cmd)
 			cur.message(N_("Mark set"));
 		}
 		cur.resetAnchor();
-		bv_->update();
+		update();
 		break;
 
 	case LFUN_UNKNOWN_ACTION:

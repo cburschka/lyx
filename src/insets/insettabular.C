@@ -974,6 +974,7 @@ void InsetTabular::getCursorPos(CursorSlice const & cur, int & x, int & y) const
 
 void InsetTabular::setPos(BufferView & bv, int x, int y) const
 {
+	lyxerr << "# InsetTabular::setPos()  cursor: " << bv.cursor() << endl;
 	int const cell = getCell(x + xo_, y + yo_);
 	lyxerr << "# InsetTabular::setPos()  cell: " << cell << endl;
 	InsetText const & inset = tabular.getCellInset(cell);

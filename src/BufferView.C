@@ -322,34 +322,6 @@ void BufferView::gotoLabel(string const & label)
 }
 
 
-void BufferView::undo()
-{
-	if (!available())
-		return;
-
-	owner()->message(_("Undo"));
-	cursor().clearSelection();
-	if (!textUndo(*this))
-		owner()->message(_("No further undo information"));
-	update();
-	switchKeyMap();
-}
-
-
-void BufferView::redo()
-{
-	if (!available())
-		return;
-
-	owner()->message(_("Redo"));
-	cursor().clearSelection();
-	if (!textRedo(*this))
-		owner()->message(_("No further redo information"));
-	update();
-	switchKeyMap();
-}
-
-
 void BufferView::replaceWord(string const & replacestring)
 {
 	if (!available())

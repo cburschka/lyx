@@ -15,6 +15,7 @@
 #include "insettext.h"
 #include "lyxlayout_ptr_fwd.h"
 
+
 class InsetEnvironment : public InsetText {
 public:
 	///

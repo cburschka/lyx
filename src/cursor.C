@@ -174,7 +174,7 @@ bool LCursor::popRight()
 	}
 	inset()->notifyCursorLeaves(idx());
 	pop();
-	posRight();
+	++pos();
 	return true;
 }
 
@@ -387,7 +387,6 @@ CursorSlice const & LCursor::selBegin() const
 {
 	if (!selection())
 		return cursor_.back();
-	// can't use std::min as this creates a new object
 	return anchor() < cursor_.back() ? anchor() : cursor_.back();
 }
 
@@ -396,6 +395,7 @@ CursorSlice & LCursor::selBegin()
 {
 	if (!selection())
 		return cursor_.back();
+	// can't use std::min as this returns a const ref
 	return anchor() < cursor_.back() ? anchor() : cursor_.back();
 }
 
@@ -410,8 +410,9 @@ CursorSlice const & LCursor::selEnd() const
 
 CursorSlice & LCursor::selEnd()
 {
-	if (selection())
+	if (!selection())
 		return cursor_.back();
+	// can't use std::min as this returns a const ref
 	return anchor() > cursor_.back() ? anchor() : cursor_.back();
 }
 
@@ -629,8 +630,9 @@ string LCursor::grabSelection()
 
 void LCursor::eraseSelection()
 {
-	CursorSlice i1 = selBegin();
-	CursorSlice i2 = selEnd();
+	//lyxerr << "LCursor::eraseSelection" << endl;
+	CursorSlice const & i1 = selBegin();
+	CursorSlice const & i2 = selEnd();
 #warning FIXME
 	if (i1.inset()->asMathInset()) {
 		if (i1.idx_ == i2.idx_) {
@@ -648,6 +650,7 @@ void LCursor::eraseSelection()
 	} else {
 		lyxerr << "can't erase this selection 1" << endl;
 	}
+	//lyxerr << "LCursor::eraseSelection end" << endl;
 }
 
 
@@ -688,6 +691,7 @@ void LCursor::selCut()
 
 void LCursor::selDel()
 {
+	//lyxerr << "LCursor::selDel" << endl;
 	if (selection()) {
 		eraseSelection();
 		selection() = false;
@@ -707,6 +711,7 @@ void LCursor::selPaste(size_t n)
 
 void LCursor::selHandle(bool sel)
 {
+	//lyxerr << "LCursor::selHandle" << endl;
 	if (sel == selection())
 		return;
 	resetAnchor();
@@ -714,15 +719,9 @@ void LCursor::selHandle(bool sel)
 }
 
 
-void LCursor::selStart()
-{
-	resetAnchor();
-	selection() = true;
-}
-
-
 void LCursor::selClearOrDel()
 {
+	//lyxerr << "LCursor::selClearOrDel" << endl;
 	if (lyxrc.auto_region_delete)
 		selDel();
 	else
@@ -733,9 +732,9 @@ void LCursor::selClearOrDel()
 std::ostream & operator<<(std::ostream & os, LCursor const & cur)
 {
 	for (size_t i = 0, n = cur.cursor_.size(); i != n; ++i)
-		os << "  (" << cur.cursor_[i] << " | " << cur.anchor_[i] << "\n";
-	os << "  current: " << cur.current_ << endl;
-	os << "  selection: " << cur.selection_ << endl;
+		os << " " << cur.cursor_[i] << " | " << cur.anchor_[i] << "\n";
+	os << " current: " << cur.current_ << endl;
+	os << " selection: " << cur.selection_ << endl;
 	return os;
 }
 
@@ -983,26 +982,24 @@ void LCursor::plainInsert(MathAtom const & t)
 }
 
 
-void LCursor::insert2(string const & str)
+void LCursor::insert(string const & str)
 {
+	lyxerr << "LCursor::insert str '" << str << "'" << endl;
+	selClearOrDel();
+#if 0
+	for (string::const_iterator it = str.begin(); it != str.end(); ++it)
+		plainInsert(MathAtom(new MathCharInset(*it)));
+#else
 	MathArray ar;
 	asArray(str, ar);
 	insert(ar);
-}
-
-
-void LCursor::insert(string const & str)
-{
-	lyxerr << "inserting '" << str << "'" << endl;
-	selClearOrDel();
-	for (string::const_iterator it = str.begin(); it != str.end(); ++it)
-		plainInsert(MathAtom(new MathCharInset(*it)));
+#endif
 }
 
 
 void LCursor::insert(char c)
 {
-	lyxerr << "inserting '" << c << "'" << endl;
+	//lyxerr << "LCursor::insert char '" << c << "'" << endl;
 	selClearOrDel();
 	plainInsert(MathAtom(new MathCharInset(c)));
 }
@@ -1010,15 +1007,24 @@ void LCursor::insert(char c)
 
 void LCursor::insert(MathAtom const & t)
 {
+	//lyxerr << "LCursor::insert MathAtom: " << endl;
 	macroModeClose();
 	selClearOrDel();
 	plainInsert(t);
 }
 
 
+void LCursor::insert(InsetBase * inset)
+{
+	if (inMathed())
+		insert(MathAtom(inset));
+	else
+		text()->insertInset(inset);
+}
+
+
 void LCursor::niceInsert(string const & t)
 {
-	lyxerr << "*** LCursor::niceInsert 1: " << t << endl;
 	MathArray ar;
 	asArray(t, ar);
 	if (ar.size() == 1)
@@ -1030,17 +1036,17 @@ void LCursor::niceInsert(string const & t)
 
 void LCursor::niceInsert(MathAtom const & t)
 {
-	lyxerr << "*** LCursor::niceInsert 2: " << t << endl;
 	macroModeClose();
 	string safe = grabAndEraseSelection();
 	plainInsert(t);
 	// enter the new inset and move the contents of the selection if possible
 	if (t->isActive()) {
 		posLeft();
+		// be careful here: don't use 'pushLeft(t)' as this we need to
+		// push the clone, not the original
 		pushLeft(nextAtom().nucleus());
 		paste(safe);
 	}
-	lyxerr << "*** LCursor::niceInsert 3: " << t << endl;
 }
 
 
@@ -1187,11 +1193,12 @@ string LCursor::macroName()
 
 void LCursor::handleNest(MathAtom const & a, int c)
 {
+	//lyxerr << "LCursor::handleNest: " << c << endl;
 	MathAtom t = a;
 	asArray(grabAndEraseSelection(), t.nucleus()->cell(c));
 	insert(t);
 	posLeft();
-	pushLeft(t.nucleus());
+	pushLeft(nextAtom().nucleus());
 }
 
 
@@ -1268,17 +1275,15 @@ MathGridInset * LCursor::enclosingGrid(idx_type & idx) const
 
 void LCursor::pullArg()
 {
-#warning look here
-#if 0
+#warning Look here
 	MathArray ar = cell();
-	if (popLeft()) {
+	if (popLeft() && inMathed()) {
 		plainErase();
 		cell().insert(pos(), ar);
 		resetAnchor();
 	} else {
-		formula()->mutateToText();
+		//formula()->mutateToText();
 	}
-#endif
 }
 
 
@@ -1696,7 +1701,7 @@ void LCursor::lockToggle()
 	} else if (popLeft() && pos() != lastpos()) {
 		// ... or enclosing inset if we are in the last inset position
 		nextAtom().nucleus()->lock(!nextAtom()->lock());
-		posRight();
+		++pos();
 	}
 }
 
@@ -1754,6 +1759,7 @@ DispatchResult dispatch(LCursor & cur, FuncRequest const & cmd)
 
 void LCursor::handleFont(string const & font)
 {
+	lyxerr << "LCursor::handleFont: " << font << endl;
 	string safe;
 	if (selection()) {
 		macroModeClose();
@@ -1836,4 +1842,41 @@ void LCursor::message(string const & msg) const
 void LCursor::errorMessage(string const & msg) const
 {
 	bv().owner()->getLyXFunc().setErrorMessage(msg);
+}
+
+
+string LCursor::selectionAsString(bool label) const
+{
+	if (!selection())
+		return string();
+
+	if (inTexted()) {
+		Buffer const & buffer = *bv().buffer();
+
+		// should be const ...
+		ParagraphList::iterator startpit = text()->getPar(selBegin());
+		ParagraphList::iterator endpit = text()->getPar(selEnd());
+		size_t const startpos = selBegin().pos();
+		size_t const endpos = selEnd().pos();
+
+		if (startpit == endpit)
+			return startpit->asString(buffer, startpos, endpos, label);
+
+		// First paragraph in selection
+		string result =
+			startpit->asString(buffer, startpos, startpit->size(), label) + "\n\n";
+
+		// The paragraphs in between (if any)
+		ParagraphList::iterator pit = startpit;
+		for (++pit; pit != endpit; ++pit)
+			result += pit->asString(buffer, 0, pit->size(), label) + "\n\n";
+
+		// Last paragraph in selection
+		result += endpit->asString(buffer, 0, endpos, label);
+
+		return result;
+	}
+
+#warning an mathed?
+	return string();
 }

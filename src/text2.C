@@ -466,8 +466,7 @@ void LyXText::cursorTop()
 
 void LyXText::cursorBottom()
 {
-	ParagraphList::iterator lastpit =
-		boost::prior(paragraphs().end());
+	ParagraphList::iterator lastpit = boost::prior(paragraphs().end());
 	setCursor(lastpit, lastpit->size());
 }
 
@@ -520,7 +519,7 @@ string LyXText::getStringToIndex()
 	else if (cur.selBegin().par() != cur.selEnd().par())
 		bv()->owner()->message(_("Cannot index more than one paragraph!"));
 	else
-		idxstring = selectionAsString(*bv()->buffer(), false);
+		idxstring = cur.selectionAsString(false);
 
 	// Reset cursors to their original position.
 	cursor() = reset_cursor;
@@ -896,7 +895,7 @@ void LyXText::cutSelection(bool doclear, bool realcut)
 	// finished. The solution used currently just works, to make it
 	// faster we need to be more clever and probably also have more
 	// calls to stuffClipboard. (Lgb)
-	bv()->stuffClipboard(selectionAsString(*bv()->buffer(), true));
+	bv()->stuffClipboard(cur.selectionAsString(true));
 
 	// This doesn't make sense, if there is no selection
 	if (!cur.selection())
@@ -947,7 +946,7 @@ void LyXText::copySelection()
 {
 	LCursor & cur = bv()->cursor();
 	// stuff the selection onto the X clipboard, from an explicit copy request
-	bv()->stuffClipboard(selectionAsString(*bv()->buffer(), true));
+	bv()->stuffClipboard(cur.selectionAsString(true));
 
 	// this doesnt make sense, if there is no selection
 	if (!cur.selection())

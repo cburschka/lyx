@@ -824,7 +824,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd, bool verbose)
 	kb_action action = cmd.action;
 
 	lyxerr[Debug::ACTION] << "LyXFunc::dispatch: cmd: " << cmd << endl;
-	//lyxerr << "*** LyXFunc::dispatch: cmd: " << cmd << endl;
+	lyxerr << "LyXFunc::dispatch: cmd: " << cmd << endl;
 
 	// we have not done anything wrong yet.
 	errorstat = false;
@@ -998,14 +998,6 @@ void LyXFunc::dispatch(FuncRequest const & cmd, bool verbose)
 			AutoSave(view());
 			break;
 
-		case LFUN_UNDO:
-			view()->undo();
-			break;
-
-		case LFUN_REDO:
-			view()->redo();
-			break;
-
 		case LFUN_RECONFIGURE:
 			Reconfigure(view());
 			break;
@@ -1161,14 +1153,6 @@ void LyXFunc::dispatch(FuncRequest const & cmd, bool verbose)
 			view()->updateScrollbar();
 			break;
 		}
-
-		// ---  Mathed stuff. If we are here, there is no locked inset yet.
-		case LFUN_MATH_EXTERN:
-		case LFUN_MATH_NUMBER:
-		case LFUN_MATH_NONUMBER:
-		case LFUN_MATH_LIMITS:
-			setErrorMessage(N_("This is only allowed in math mode!"));
-			break;
 
 		case LFUN_DIALOG_SHOW: {
 			string const name = cmd.getArg(0);
@@ -1431,7 +1415,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd, bool verbose)
 		}
 	}
 
-	if (!view()->cursor().inMathed())
+	if (view()->cursor().inTexted())
 		view()->owner()->updateLayoutChoice();
 
 	if (view()->available()) {
@@ -1445,7 +1429,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd, bool verbose)
 			view()->buffer()->markDirty();
 	}
 
-	if (!view()->cursor().inMathed())
+	if (view()->cursor().inTexted())
 		sendDispatchMessage(getMessage(), cmd, verbose);
 }
 

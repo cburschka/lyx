@@ -888,7 +888,7 @@ int paintText(BufferView const & bv)
 {
 	ParagraphList::iterator pit;
 	bv.text()->updateParPositions();
-	bv.text()->getRowNearY(0, pit);
+	bv.text()->getRowNearY(bv.top_y(), pit);
 	//lyxerr << "top_y: " << bv.top_y() << " y: " << pit->y << endl;
 	return paintPars(bv, *bv.text(), pit, 0, 0, pit->y);
 }

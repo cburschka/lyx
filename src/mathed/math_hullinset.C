@@ -34,7 +34,6 @@
 
 #include "support/std_sstream.h"
 
-using lyx::support::trim;
 
 using std::endl;
 using std::max;
@@ -788,7 +787,7 @@ void MathHullInset::doExtern(LCursor & cur, FuncRequest const & func)
 DispatchResult
 MathHullInset::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 {
-	lyxerr << "*** MathHullInset: request: " << cmd << endl;
+	//lyxerr << "*** MathHullInset: request: " << cmd << endl;
 	switch (cmd.action) {
 
 		case LFUN_BREAKLINE:
@@ -837,7 +836,7 @@ MathHullInset::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 					: Alert::askForText(_("Enter label:"), old_label);
 				if (!res.first)
 					return DispatchResult(false);
-				new_label = trim(res.second);
+				new_label = lyx::support::trim(res.second);
 			}
 
 			//if (new_label == old_label)
@@ -1182,109 +1181,4 @@ int MathHullInset::docbook(Buffer const & buf, ostream & os,
 	ms <<   ETag("math");
 	ms << ETag("equation");
 	return ms.line() + res;
-}
-
-
-
-/////////////////////////////////////////////
-
-namespace {
-
-bool openNewInset(LCursor & cur, InsetBase * inset)
-{
-	cur.bv().getLyXText()->insertInset(inset);
-	inset->edit(cur, true);
-	return true;
-}
-
-
-void mathDispatchCreation(LCursor & cur, FuncRequest const & cmd,
-	bool display)
-{
-	// use selection if available..
-	//string sel;
-	//if (action == LFUN_MATH_IMPORT_SELECTION)
-	//	sel = "";
-	//else
-
-	string sel =
-		cur.bv().getLyXText()->selectionAsString(*cur.bv().buffer(), false);
-
-	if (sel.empty()) {
-		InsetBase * f = new MathHullInset;
-		if (openNewInset(cur, f)) {
-			cur.inset()->dispatch(cur, FuncRequest(LFUN_MATH_MUTATE, "simple"));
-			// don't do that also for LFUN_MATH_MODE unless you want end up with
-			// always changing to mathrm when opening an inlined inset
-			// -- I really hate "LyXfunc overloading"...
-			if (display)
-				f->dispatch(cur, FuncRequest(LFUN_MATH_DISPLAY));
-			f->dispatch(cur, FuncRequest(LFUN_INSERT_MATH, cmd.argument));
-		}
-	} else {
-		// create a macro if we see "\\newcommand" somewhere, and an ordinary
-		// formula otherwise
-		InsetBase * f;
-		if (sel.find("\\newcommand") == string::npos &&
-				sel.find("\\def") == string::npos)
-			f = new MathHullInset(sel);
-		else
-			f = new InsetFormulaMacro(sel);
-		cur.bv().getLyXText()->cutSelection(true, false);
-		openNewInset(cur, f);
-	}
-	cur.message(N_("Math editor mode"));
-}
-
-} // namespace anon
-
-
-void mathDispatch(LCursor & cur, FuncRequest const & cmd)
-{
-	if (!cur.bv().available())
-		return;
-
-	switch (cmd.action) {
-
-		case LFUN_MATH_DISPLAY:
-			mathDispatchCreation(cur, cmd, true);
-			break;
-
-		case LFUN_MATH_MODE:
-			mathDispatchCreation(cur, cmd, false);
-			break;
-
-		case LFUN_MATH_IMPORT_SELECTION:
-			mathDispatchCreation(cur, cmd, false);
-			break;
-
-/*
-		case LFUN_MATH_MACRO:
-			if (cmd.argument.empty())
-				cmd.errorMessage(N_("Missing argument"));
-			else {
-				string s = cmd.argument;
-				string const s1 = token(s, ' ', 1);
-				int const nargs = s1.empty() ? 0 : atoi(s1);
-				string const s2 = token(s, ' ', 2);
-				string const type = s2.empty() ? "newcommand" : s2;
-				openNewInset(cur, new InsetFormulaMacro(token(s, ' ', 0), nargs, s2));
-			}
-			break;
-
-		case LFUN_INSERT_MATH:
-		case LFUN_INSERT_MATRIX:
-		case LFUN_MATH_DELIM: {
-			MathHullInset * f = new MathHullInset;
-			if (openNewInset(cur, f)) {
-				cur.inset()->dispatch(cur, FuncRequest(LFUN_MATH_MUTATE, "simple"));
-				cur.inset()->dispatch(cur, cmd);
-			}
-			break;
-		}
-*/
-
-		default:
-			break;
-	}
 }
