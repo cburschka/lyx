@@ -1,3 +1,8 @@
+2002-07-25  Juergen Vigna  <jug@sad.it>
+
+	* insettabular.C (insetMotionNotify): Don't update the screen
+	if we didn't do nothing.
+
 2002-07-25  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* insetfloat.C (read, write): Allow default placement

@@ -324,13 +324,7 @@ bool createUndo(BufferView * bv, Undo::undo_kind kind,
 
 		while (tmppar != end && tmppar->next()) {
 			tmppar = tmppar->next();
-// FIXME: what does this #if 0 mean ?
-#if 0
 			tmppar2->next(new Paragraph(*tmppar, true));
-#else
-			Paragraph * ptmp = new Paragraph(*tmppar, true);
-			tmppar2->next(ptmp);
-#endif
 			// a memory optimization: Just store the layout
 			// information when only edit
 			if (kind == Undo::EDIT) {

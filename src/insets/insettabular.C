@@ -862,15 +862,16 @@ void InsetTabular::insetMotionNotify(BufferView * bv, int x, int y, mouse_button
 	}
 
 	hideInsetCursor(bv);
-//	int const old_cell = actcell;
+	int const old_cell = actcell;
 
 	setPos(bv, x, y);
 	if (!hasSelection()) {
 		setSelection(actcell, actcell);
-	} else {
+		updateLocal(bv, SELECTION, false);
+	} else if (old_cell != actcell) {
 		setSelection(sel_cell_start, actcell);
+		updateLocal(bv, SELECTION, false);
 	}
-	updateLocal(bv, SELECTION, false);
 	showInsetCursor(bv);
 }
 
