@@ -18,8 +18,6 @@
 #ifndef FORMGRAPHICS_H
 #define FORMGRAPHICS_H
 
-#include <config.h>
-
 #include "LString.h"
 #include "frontends/DialogBase.h"
 //#include "form_graphics.h"
@@ -27,7 +25,7 @@
 
 #ifdef __GNUG__
 #pragma interface
-#endif
+#endif 
 
 class Dialogs;
 // same arguement as in Dialogs.h s/LyX/UI/
@@ -38,14 +36,15 @@ struct FD_form_graphics;
 
 /** This class provides an XForms implementation of the FormGraphics Dialog.
  */
-class FormGraphics: public DialogBase {
+class FormGraphics: public DialogBase
+{
 public:
 	/// #FormGraphics x(LyXFunc ..., Dialogs ...);#
 	FormGraphics(LyXView *, Dialogs *);
 	///
 	~FormGraphics();
 	///
-	static  int WMHideCB(FL_FORM *, void *);
+	static int WMHideCB(FL_FORM *, void *);
 	///
 	static void OKCB(FL_OBJECT *, long);
 	///
@@ -62,31 +61,31 @@ public:
 private:
 	///
 	FormGraphics()
-		: widthButtons(5), heightButtons(4), displayButtons(4) {}
+: widthButtons(5), heightButtons(4), displayButtons(4) {}
 	//
-	FormGraphics(FormGraphics const &) : DialogBase() {}
-	
+FormGraphics(FormGraphics const &) : DialogBase() {}
+
 	/// The maximum digits for the image width (cm, inch, percent)
 	enum {
-		///
-		WIDTH_MAXDIGITS = 3
-	}; 
+	    ///
+	    WIDTH_MAXDIGITS = 3
+	};
 	/// The maximum digits for the image height (cm, inch, percent)
 	enum {
-		///
-		HEIGHT_MAXDIGITS = 3
+	    ///
+	    HEIGHT_MAXDIGITS = 3
 	};
 	/// The maximum characters in the rotation angle (minus sign and 3 digits)
 	enum {
-		///
-		ROTATE_MAXCHARS = 4
+	    ///
+	    ROTATE_MAXCHARS = 4
 	};
 	/// The maximum characters in a filename.
 	enum {
-		///
-		FILENAME_MAXCHARS = 1024
+	    ///
+	    FILENAME_MAXCHARS = 1024
 	};
-    
+
 	/**@name Slot Methods */
 	//@{
 	/// Save the active inset and show the dialog.
@@ -108,7 +107,7 @@ private:
 	/// Open the file browse dialog to select an image file.
 	void browse();
 	//@}
-	
+
 	/// Build the dialog
 	void build();
 	///
@@ -152,6 +151,7 @@ private:
 	string last_image_path;
 	//@}
 
-};
+}
+;
 
-#endif
+#endif 

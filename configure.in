@@ -61,6 +61,17 @@ LYX_SCO
 ### Check for program extensions (.exe or nothing)
 AC_EXEEXT
 
+### check which frontend we want to use
+LYX_USE_FRONTEND
+dnl The code below is not in a macro, because this would cause big
+dnl problems with the AC_REQUIRE contained in KDE_DO_IT_ALL.
+case "$lyx_use_frontend" in
+  gnome)
+    GNOME_INIT
+    GNOME_COMPILE_WARNINGS
+    GNOME_X_CHECKS
+esac 
+
 ### Check for a C++ compiler
 AC_LANG_CPLUSPLUS
 LYX_PROG_CXX
@@ -144,7 +155,7 @@ CPPFLAGS="$CPPFLAGS $X_CFLAGS"
 AC_CHECK_FUNCS(XOpenIM)
 
 ### check which frontend we want to use
-LYX_USE_FRONTEND
+#LYX_USE_FRONTEND
 dnl The code below is not in a macro, because this would cause big
 dnl problems with the AC_REQUIRE contained in KDE_DO_IT_ALL.  
 case "$lyx_use_frontend" in 

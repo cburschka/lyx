@@ -3,22 +3,55 @@ DISTCLEANFILES= *.orig *.rej *~ *.bak core
 MAINTAINERCLEANFILES = $(srcdir)/Makefile.in
 noinst_LTLIBRARIES = libgnome.la
 INCLUDES = ${FRONTEND_INCLUDES} -I${top_srcdir}/src/ \
-	-I${top_srcdir}/src/frontends/ \
+	-I${top_srcdir}/src/frontends/ -I${top_srcdir}/src/frontends/xforms \
 	${SIGC_CFLAGS}
-LIBS=
-LDFLAGS=
+libgnome_la_OBJADD = \
+	../xforms/FormCitation.lo \
+	../xforms/form_citation.lo \
+	../xforms/FormCommand.lo \
+	../xforms/FormDocument.lo \
+	../xforms/form_document.lo \
+	../xforms/FormGraphics.lo \
+	../xforms/form_graphics.lo \
+	../xforms/FormIndex.lo \
+	../xforms/form_index.lo \
+	../xforms/FormPreferences.lo \
+	../xforms/form_preferences.lo \
+	../xforms/FormRef.lo \
+	../xforms/form_ref.lo \
+	../xforms/FormTabular.lo \
+	../xforms/form_tabular.lo \
+	../xforms/FormToc.lo \
+	../xforms/form_toc.lo \
+	../xforms/input_validators.lo \
+	../xforms/RadioButtonGroup.lo \
+	../xforms/Toolbar_pimpl.lo
+LIBS= 
+LDFLAGS= $(libgnome_la_OBJADD)
 LYXDATADIRS = 
-ETAGS_ARGS = --lang=c++
+#ETAGS_ARGS = --lang=c++
 libgnome_la_SOURCES = \
 	Dialogs.C \
 	FormCopyright.C \
 	FormCopyright.h \
+	FormPrint.C \
+	FormPrint.h \
+	FormUrl.C \
+	FormUrl.h \
 	Menubar_pimpl.C \
 	Menubar_pimpl.h \
-	Toolbar_pimpl.C \
-	Toolbar_pimpl.h \
 	mainapp.C \
-	mainapp.h
+	mainapp.h \
+	support.c \
+	support.h \
+	diaprint_callbacks.c \
+	diaprint_callbacks.h \
+	diaprint_interface.c \
+	diaprint_interface.h \
+	diainserturl_callbacks.c  \
+	diainserturl_interface.c  \
+	diainserturl_callbacks.h \
+	diainserturl_interface.h 
 
 # These still have to be added. Sooner or later. ARRae-20000411
 #	GUI_defaults.C \

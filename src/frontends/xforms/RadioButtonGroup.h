@@ -21,38 +21,38 @@
 
 #ifdef __GNUG__
 #pragma interface
-#endif
+#endif 
 
-#include <vector>
-#include <utility>
+#include <vector> 
+#include <utility> 
 using std::vector;
 using std::pair;
 
 #include FORMS_H_LOCATION
 
-class RadioButtonGroup {
+class RadioButtonGroup
+{
 public:
-    /// Constructor. Allocate space for 'n' items in the group.
-    RadioButtonGroup(unsigned n = 5) : map(n)
-    {};
-    /// Destructor. Cleans up.
-    ~RadioButtonGroup() {};
-   
-    /// Register a radio button with it's corresponding value.
-    void registerRadioButton(FL_OBJECT *button, int value);
-    /// Reset registrations.
-    void reset();
+	/// Constructor. Allocate space for 'n' items in the group.
+	RadioButtonGroup(unsigned n = 5) : map(n) {};
+	/// Destructor. Cleans up.
+	~RadioButtonGroup() {};
 
-    // Set the active button.
-    void setButton(int value);
+	/// Register a radio button with it's corresponding value.
+	void registerRadioButton(FL_OBJECT *button, int value);
+	/// Reset registrations.
+	void reset();
 
-    // Get the active button.
-    int  getButton();
-    
+	// Set the active button.
+	void setButton(int value);
+
+	// Get the active button.
+	int getButton();
+
 private:
-    typedef pair<FL_OBJECT *, int> ButtonValuePair;
-    typedef vector<ButtonValuePair> ButtonValueMap;
-    ButtonValueMap map;
+	typedef pair < FL_OBJECT *, int > ButtonValuePair;
+	typedef vector < ButtonValuePair > ButtonValueMap;
+	ButtonValueMap map;
 };
 
-#endif
+#endif 

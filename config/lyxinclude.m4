@@ -906,7 +906,7 @@ AC_DEFUN(LYX_USE_FRONTEND,
 [AC_MSG_CHECKING(what frontend should be used as main GUI)
 AC_ARG_WITH(frontend,
   [  --with-frontend[=value] Use THIS frontend as main GUI:
-                          Possible values: xforms,kde,gtk],
+                          Possible values: xforms,kde,gnome],
   [lyx_use_frontend="$withval"], [lyx_use_frontend="xforms"])
 AC_MSG_RESULT($lyx_use_frontend)
 lyx_flags="$lyx_flags frontend-$lyx_use_frontend"

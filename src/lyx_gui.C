@@ -575,7 +575,7 @@ void LyXGUI::runTime()
 		kapp->processEvents();
 #endif
 #ifdef GTKGUI
-		Gnome::Main::instance()->iteration(FALSE);
+		while(Gnome::Main::instance()->events_pending()) Gnome::Main::instance()->iteration(FALSE);
 #endif
 		
 		if (fl_check_forms() == FL_EVENT) {

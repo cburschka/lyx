@@ -1,13 +1,33 @@
 #include <config.h>
+#include FORMS_H_LOCATION
+
 #include "Dialogs.h"
 #include "FormCopyright.h"
+#include "FormCitation.h"
+#include "FormDocument.h"
+#include "FormGraphics.h"
+#include "FormIndex.h"
+#include "FormPreferences.h"
+#include "FormPrint.h"
+#include "FormRef.h"
+#include "FormTabular.h"
+#include "FormToc.h"
+#include "FormUrl.h"
 
 
 Dialogs::Dialogs(LyXView * lv)
 {
+	dialogs_.push_back(new FormCitation(lv, this));
 	dialogs_.push_back(new FormCopyright(lv, this));
-	//dialogs_.push_back(new FormPrint(lv, this));
-	//dialogs_.push_back(new FormPreferences(lv, this));
+	dialogs_.push_back(new FormDocument(lv, this));
+	dialogs_.push_back(new FormGraphics(lv, this));
+	dialogs_.push_back(new FormIndex(lv, this));
+	dialogs_.push_back(new FormPreferences(lv, this));
+	dialogs_.push_back(new FormPrint(lv, this));
+	dialogs_.push_back(new FormRef(lv, this));
+	dialogs_.push_back(new FormTabular(lv, this));
+	dialogs_.push_back(new FormToc(lv, this));
+	dialogs_.push_back(new FormUrl(lv, this));
 
 	// reduce the number of connections needed in
 	// dialogs by a simple connection here.

@@ -1,9 +1,12 @@
 AUTOMAKE_OPTIONS = foreign 1.4
 DISTCLEANFILES= *.orig *.rej *~ *.bak core
 MAINTAINERCLEANFILES = $(srcdir)/Makefile.in
-SUBDIRS = @FRONTEND@
+# xforms has to be fixed here as we still need object files in this directory
+# for the compilation of other frontends, so until that we have to let this
+# here.
+SUBDIRS = xforms @FRONTEND@
 ETAGS_ARGS = --lang=c++
-INCLUDES = ${FRONTEND_INCLUDES} -I${srcdir}/.. -I${srcdir}/@FRONTEND@ ${SIGC_CFLAGS}
+INCLUDES = ${FRONTEND_INCLUDES} -I${srcdir}/.. -I${srcdir}/@FRONTEND@ -I${srcdir}/xfroms ${SIGC_CFLAGS}
 LIBS =
 noinst_LTLIBRARIES = libfrontends.la
 libfrontends_la_SOURCES=\
