@@ -58,6 +58,29 @@ using std::pair;
 namespace biblio = lyx::biblio;
 
 
+// anonym namespace
+namespace {
+int findToken(char const * const str[], string const search_token)
+{
+	int i = 0;
+
+	if (search_token != "default") {
+		while (str[i][0] && str[i] != search_token) {
+			++i;
+		}
+		if (!str[i][0]) {
+			lyxerr << "Unknown argument: '"
+			       << search_token << "'\n";
+			i = -1;
+		}
+	}
+
+	return i;
+}
+
+}
+
+
 struct BufferParams::Impl
 {
 	Impl();
@@ -250,7 +273,8 @@ string const BufferParams::readToken(LyXLex & lex, string const & token)
 		lex.next();
 		fonts = lex.getString();
 	} else if (token == "\\paragraph_separation") {
-		int tmpret = lex.findToken(string_paragraph_separation);
+		lex.next();
+		int tmpret = findToken(string_paragraph_separation, lex.getString());
 		if (tmpret == -1)
 			++tmpret;
 		paragraph_separation =
@@ -260,7 +284,8 @@ string const BufferParams::readToken(LyXLex & lex, string const & token)
 		pimpl_->defskip = VSpace(lex.getString());
 	} else if (token == "\\quotes_language") {
 		// FIXME: should be params.readQuotes()
-		int tmpret = lex.findToken(string_quotes_language);
+		lex.next();
+		int tmpret = findToken(string_quotes_language, lex.getString());
 		if (tmpret == -1)
 			++tmpret;
 		InsetQuotes::quote_language tmpl =
@@ -298,13 +323,15 @@ string const BufferParams::readToken(LyXLex & lex, string const & token)
 			break;
 		}
 	} else if (token == "\\papersize") {
-		int tmpret = lex.findToken(string_papersize);
+		lex.next();
+		int tmpret = findToken(string_papersize, lex.getString());
 		if (tmpret == -1)
 			++tmpret;
 		else
 			papersize2 = VMARGIN_PAPER_TYPE(tmpret);
 	} else if (token == "\\paperpackage") {
-		int tmpret = lex.findToken(string_paperpackages);
+		lex.next();
+		int tmpret = findToken(string_paperpackages, lex.getString());
 		if (tmpret == -1) {
 			++tmpret;
 			paperpackage = PACKAGE_NONE;
@@ -370,7 +397,8 @@ string const BufferParams::readToken(LyXLex & lex, string const & token)
 		ss >> a;
 		author_map.push_back(pimpl_->authorlist.record(a));
 	} else if (token == "\\paperorientation") {
-		int tmpret = lex.findToken(string_orientation);
+		lex.next();
+		int tmpret = findToken(string_orientation, lex.getString());
 		if (tmpret == -1)
 			++tmpret;
 		orientation =

@@ -38,6 +38,26 @@ using std::ostream;
 using std::ostringstream;
 using std::string;
 
+// anonym namespace
+namespace {
+int findToken(char const * const str[], string const search_token)
+{
+	int i = 0;
+
+	if (search_token != "default") {
+		while (str[i][0] && str[i] != search_token) {
+			++i;
+		}
+		if (!str[i][0]) {
+			i = -1;
+		}
+	}
+
+	return i;
+}
+
+}
+
 
 ParagraphParameters::ParagraphParameters()
 	: noindent_(false),
@@ -208,7 +228,8 @@ void ParagraphParameters::read(LyXLex & lex)
 				lex.printError("Unknown spacing token: '$$Token'");
 			}
 		} else if (token == "\\align") {
-			int tmpret = lex.findToken(string_align);
+			lex.next();
+			int tmpret = findToken(string_align, lex.getString());
 			if (tmpret == -1)
 				++tmpret;
 			align(LyXAlignment(1 << tmpret));

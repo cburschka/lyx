@@ -230,32 +230,6 @@ void LyXLex::pushToken(string const & pt)
 	pimpl_->pushToken(pt);
 }
 
-
-int LyXLex::findToken(char const * const str[])
-{
-	if (!next()) {
-		pimpl_->printError("file ended while scanning string token");
-		return -1;
-	}
-
-	int i = 0;
-
-	string const search_token = pimpl_->getString();
-
-	if (search_token != "default") {
-		while (str[i][0] && str[i] != search_token) {
-			++i;
-		}
-		if (!str[i][0]) {
-			pimpl_->printError("Unknown argument `$$Token'");
-			i = -1;
-		}
-	}
-
-	return i;
-}
-
-
 LyXLex::operator void const *() const
 {
 	// This behaviour is NOT the same as the std::streams which would

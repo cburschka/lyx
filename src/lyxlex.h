@@ -111,8 +111,6 @@ public:
 
 	///
 	bool eatLine();
-	///
-	int findToken(char const * const str[]);
 
 	/// Pushes a token list on a stack and replaces it with a new one.
 	void pushTable(keyword_item *, int);
