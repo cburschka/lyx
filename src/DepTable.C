@@ -30,6 +30,7 @@
 #include <unistd.h>
 
 #include <fstream>
+#include <ctime>
 
 using std::make_pair;
 using std::ofstream;
