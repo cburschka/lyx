@@ -44,7 +44,7 @@ ostream & operator<<(ostream & os, MathArray const & ar)
 
 
 // define a function for tests
-typedef bool TestItemFunc(MathInset const *);
+typedef bool TestItemFunc(MathAtom const &);
 
 // define a function for replacing subexpressions
 typedef MathInset * ReplaceArgumentFunc(const MathArray & ar);
@@ -171,16 +171,14 @@ void extractMatrices(MathArray & ar)
 
 
 // convert this inset somehow to a string
-bool extractString(MathInset const * p, string & str)
+bool extractString(MathAtom const & at, string & str)
 {
-	if (!p)
-		return false;
-	if (p->getChar()) {
-		str = string(1, p->getChar());
+	if (at->getChar()) {
+		str = string(1, at->getChar());
 		return true;
 	}
-	if (p->asStringInset()) {
-		str = p->asStringInset()->str();
+	if (at->asStringInset()) {
+		str = at->asStringInset()->str();
 		return true;
 	}
 	return false;
@@ -204,10 +202,10 @@ bool extractNumber(MathArray const & ar, double & d)
 }
 
 
-bool testString(MathInset const * p, const string & str)
+bool testString(MathAtom const & at, const string & str)
 {
 	string s;
-	return extractString(p, s) && str == s;
+	return extractString(at, s) && str == s;
 }
 
 
@@ -220,9 +218,9 @@ MathArray::iterator endNestSearch(
 )
 {
 	for (int level = 0; it != last; ++it) {
-		if (testOpen(it->nucleus()))
+		if (testOpen(*it))
 			++level;
-		if (testClose(it->nucleus()))
+		if (testClose(*it))
 			--level;
 		if (level == 0)
 			break;
@@ -244,7 +242,7 @@ void replaceNested(
 	for (MathArray::size_type i = 0; i < ar.size(); ++i) {
 		// check whether this is the begin of the sequence
 		MathArray::iterator it = ar.begin() + i;
-		if (!testOpen(it->nucleus()))
+		if (!testOpen(*it))
 			continue;
 
 		// search end of sequence
@@ -391,15 +389,15 @@ void extractNumbers(MathArray & ar)
 // search deliminiters
 //
 
-bool testOpenParan(MathInset const * p)
+bool testOpenParan(MathAtom const & at)
 {
-	return testString(p, "(");
+	return testString(at, "(");
 }
 
 
-bool testCloseParan(MathInset const * p)
+bool testCloseParan(MathAtom const & at)
 {
-	return testString(p, ")");
+	return testString(at, ")");
 }
 
 
@@ -445,7 +443,7 @@ void extractFunctions(MathArray & ar)
 		} else {
 			// is this a user defined function?
 			// it it probably not, if it doesn't have a name.
-			if (!extractString((*it).nucleus(), name))
+			if (!extractString(*it, name))
 				continue;
 			// it is not if it has no argument
 			if (jt == ar.end())
@@ -486,32 +484,32 @@ void extractFunctions(MathArray & ar)
 // search integrals
 //
 
-bool testSymbol(MathInset const * p, string const & name)
+bool testSymbol(MathAtom const & at, string const & name)
 {
-	return p->asSymbolInset() && p->asSymbolInset()->name() == name;
+	return at->asSymbolInset() && at->asSymbolInset()->name() == name;
 }
 
 
-bool testIntSymbol(MathInset const * p)
+bool testIntSymbol(MathAtom const & at)
 {
-	return testSymbol(p, "int");
+	return testSymbol(at, "int");
 }
 
 
-bool testIntegral(MathInset const * p)
+bool testIntegral(MathAtom const & at)
 {
 	return
-	 testIntSymbol(p) ||
-		( p->asScriptInset() 
-		  && p->asScriptInset()->nuc().size()
-			&& testIntSymbol(p->asScriptInset()->nuc().back().nucleus()) );
+	 testIntSymbol(at) ||
+		( at->asScriptInset() 
+		  && at->asScriptInset()->nuc().size()
+			&& testIntSymbol(at->asScriptInset()->nuc().back()) );
 }
 
 
 
-bool testIntDiff(MathInset const * p)
+bool testIntDiff(MathAtom const & at)
 {
-	return testString(p, "d");
+	return testString(at, "d");
 }
 
 
@@ -536,16 +534,16 @@ void extractIntegrals(MathArray & ar)
 			continue;
 
 		// is this a integral name?
-		if (!testIntegral(it->nucleus()))
+		if (!testIntegral(*it))
 			continue;
 
 		// core ist part from behind the scripts to the 'd'
 		MathExIntInset * p = new MathExIntInset("int");
 
 		// handle scripts if available
-		if (!testIntSymbol(it->nucleus())) {
-			p->cell(2) = it->nucleus()->asScriptInset()->down();
-			p->cell(3) = it->nucleus()->asScriptInset()->up();
+		if (!testIntSymbol(*it)) {
+			p->cell(2) = (*it)->asScriptInset()->down();
+			p->cell(3) = (*it)->asScriptInset()->up();
 		}
 		p->cell(0) = MathArray(it + 1, jt);
 
@@ -567,23 +565,23 @@ void extractIntegrals(MathArray & ar)
 
 bool testEqualSign(MathAtom const & at)
 {
-	return testString(at.nucleus(), "=");
+	return testString(at, "=");
 }
 
 
-bool testSumSymbol(MathInset const * p)
+bool testSumSymbol(MathAtom const & p)
 {
 	return testSymbol(p, "sum");
 }
 
 
-bool testSum(MathInset const * p)
+bool testSum(MathAtom const & at)
 {
 	return
-	 testSumSymbol(p) ||
-		( p->asScriptInset() 
-		  && p->asScriptInset()->nuc().size()
-			&& testSumSymbol(p->asScriptInset()->nuc().back().nucleus()) );
+	 testSumSymbol(at) ||
+		( at->asScriptInset() 
+		  && at->asScriptInset()->nuc().size()
+			&& testSumSymbol(at->asScriptInset()->nuc().back()) );
 }
 
 
@@ -600,7 +598,7 @@ void extractSums(MathArray & ar)
 		MathArray::iterator it = ar.begin() + i;
 
 		// is this a sum name?
-		if (!testSum(it->nucleus()))
+		if (!testSum(*it))
 			continue;
 
 		// create a proper inset as replacement
@@ -646,7 +644,7 @@ void extractSums(MathArray & ar)
 // tests for 'd' or '\partial'
 bool testDiffItem(MathAtom const & at)
 {
-	return testString(at.nucleus(), "d");
+	return testString(at, "d");
 }
 
 
@@ -656,25 +654,12 @@ bool testDiffArray(MathArray const & ar)
 }
 
 
-bool testDiffFrac(MathInset const * p)
+bool testDiffFrac(MathAtom const & at)
 {
-	MathFracInset const * f = p->asFracInset();
-	return f && testDiffArray(f->cell(0)) && testDiffArray(f->cell(1));
-}
-
-
-// is this something like ^number?
-bool extractDiffExponent(MathArray::iterator it, int & i)
-{
-	if (!(*it)->asScriptInset())
-		return false;
-
-	string s;
-	if (!extractString((*it).nucleus(), s))
-		return false;
-	istringstream is(s.c_str());
-	is >> i;
-	return is;
+	return
+		at->asFracInset()
+			&& testDiffArray(at->asFracInset()->cell(0))
+			&& testDiffArray(at->asFracInset()->cell(1));
 }
 
 
@@ -685,7 +670,7 @@ void extractDiff(MathArray & ar)
 		MathArray::iterator it = ar.begin() + i;
 
 		// is this a "differential fraction"?
-		if (!testDiffFrac(it->nucleus()))
+		if (!testDiffFrac(*it))
 			continue;
 
 		MathFracInset * f = (*it)->asFracInset();
@@ -756,9 +741,7 @@ void extractDiff(MathArray & ar)
 
 bool testRightArrow(MathAtom const & at)
 {
-	return
-		testSymbol(at.nucleus(), "to") ||
-		testSymbol(at.nucleus(), "rightarrow");
+	return testSymbol(at, "to") || testSymbol(at, "rightarrow");
 }
 
 
@@ -776,7 +759,7 @@ void extractLims(MathArray & ar)
 		MathArray::iterator it = ar.begin() + i;
 
 		// is this a limit function?
-		if (!testSymbol(it->nucleus(), "lim")) 
+		if (!testSymbol(*it, "lim")) 
 			continue;
 
 		// the next one must be a subscript (without superscript)
