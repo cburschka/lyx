@@ -1,3 +1,9 @@
+2003-04-28  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* math_support.C (drawStrBlack): 
+	(fontinfos): use LColor::foreground instead of LColor::black for
+	normal text
+
 2003-03-04  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* math_braceinset.C (metrics): fix computation of descent

@@ -36,9 +36,9 @@ What's new
 
 - add support for the hspell spell-checker for hebrew [Qt only]
 
-- [xforms only] add support for scalable tabfolders and for 'native' tooltips
+- add support for scalable tabfolders and for 'native' tooltips
   in browser widgets. You must recompile against xforms 1.0.2 or greater
-  to enable these new features.
+  to enable these new features [xforms only]
 
 - update dutch, finnish, german, polish [bug #1002], romanian, russian
   and spanish interface localisation. Add support for nynorsk. Fix
@@ -58,6 +58,9 @@ What's new
 
 - fix duplicate keyboard accelerator in the paragraph dialog [Qt only]
 
+- in the include dialog, make "show preview" activate the OK button
+  [Qt only]
+
 - fix display of bullet pixmaps in document dialog [bug #908, Qt 3.1.1 only]
 
 - fix loading of included files that are under revision control
@@ -72,8 +75,14 @@ What's new
 
 - fix reading of subcaptions in files from LyX 1.1.6 or older
 
+- add a converter from grace (.agr) files to PPM, in order to display
+  them in xforms frontend
+
 - fix support for \framebox macro in mathed: the argument is handled
   as text, and a second optional argument is now supported
+
+- text-mode parts of math equations are now drawn in foreground color
+  instead of being hardcoded to black
 
 - add support for macro \bmod in mathed
 

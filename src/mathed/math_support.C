@@ -495,7 +495,7 @@ void drawStrRed(MathPainterInfo & pi, int x, int y, string const & str)
 void drawStrBlack(MathPainterInfo & pi, int x, int y, string const & str)
 {
 	LyXFont f = pi.base.font;
-	f.setColor(LColor::black);
+	f.setColor(LColor::foreground);
 	pi.pain.text(x, y, str, f);
 }
 
@@ -547,20 +547,20 @@ fontinfo fontinfos[] = {
 	{"msa",    LyXFont::MSA_FAMILY, inh_series, inh_shape, LColor::none},
 	{"msb",    LyXFont::MSB_FAMILY, inh_series, inh_shape, LColor::none},
 	{"wasy",   LyXFont::WASY_FAMILY, inh_series, inh_shape, LColor::none},
-	{"text",   inh_family, inh_series, inh_shape, LColor::black},
-	{"textbf", inh_family, LyXFont::BOLD_SERIES, inh_shape, LColor::black},
-	{"textit", inh_family, inh_series, LyXFont::ITALIC_SHAPE, LColor::black},
-	{"textmd", inh_family, LyXFont::MEDIUM_SERIES, inh_shape, LColor::black},
-	{"textnormal", inh_family, inh_series, LyXFont::UP_SHAPE, LColor::black},
-	{"textrm", LyXFont::ROMAN_FAMILY, inh_series,LyXFont::UP_SHAPE,LColor::black},
-	{"textsc", inh_family, inh_series, LyXFont::SMALLCAPS_SHAPE, LColor::black},
-	{"textsf", LyXFont::SANS_FAMILY, inh_series, inh_shape, LColor::black},
-	{"textsl", inh_family, inh_series, LyXFont::SLANTED_SHAPE, LColor::black},
-	{"texttt", LyXFont::TYPEWRITER_FAMILY, inh_series, inh_shape, LColor::black},
-	{"textup", inh_family, inh_series, LyXFont::UP_SHAPE, LColor::black},
+	{"text",   inh_family, inh_series, inh_shape, LColor::foreground},
+	{"textbf", inh_family, LyXFont::BOLD_SERIES, inh_shape, LColor::foreground},
+	{"textit", inh_family, inh_series, LyXFont::ITALIC_SHAPE, LColor::foreground},
+	{"textmd", inh_family, LyXFont::MEDIUM_SERIES, inh_shape, LColor::foreground},
+	{"textnormal", inh_family, inh_series, LyXFont::UP_SHAPE, LColor::foreground},
+	{"textrm", LyXFont::ROMAN_FAMILY, inh_series,LyXFont::UP_SHAPE,LColor::foreground},
+	{"textsc", inh_family, inh_series, LyXFont::SMALLCAPS_SHAPE, LColor::foreground},
+	{"textsf", LyXFont::SANS_FAMILY, inh_series, inh_shape, LColor::foreground},
+	{"textsl", inh_family, inh_series, LyXFont::SLANTED_SHAPE, LColor::foreground},
+	{"texttt", LyXFont::TYPEWRITER_FAMILY, inh_series, inh_shape, LColor::foreground},
+	{"textup", inh_family, inh_series, LyXFont::UP_SHAPE, LColor::foreground},
 
 	// TIPA support
-	{"textipa",   inh_family, inh_series, inh_shape, LColor::black},
+	{"textipa",   inh_family, inh_series, inh_shape, LColor::foreground},
 
 	{"lyxtex", inh_family, inh_series, inh_shape, LColor::latex},
 	{"lyxert", LyXFont::TYPEWRITER_FAMILY, inh_series, inh_shape, LColor::latex},
@@ -570,8 +570,8 @@ fontinfo fontinfos[] = {
 	{"lyxitsymbol", LyXFont::SYMBOL_FAMILY,
 		inh_series, LyXFont::ITALIC_SHAPE, LColor::math},
 	{"lyxblacktext", LyXFont::ROMAN_FAMILY,
-		LyXFont::MEDIUM_SERIES, LyXFont::UP_SHAPE, LColor::black},
-	{"lyxnochange", inh_family, inh_series, inh_shape, LColor::black},
+		LyXFont::MEDIUM_SERIES, LyXFont::UP_SHAPE, LColor::foreground},
+	{"lyxnochange", inh_family, inh_series, inh_shape, LColor::foreground},
 
 	{"lyxfakebb", LyXFont::TYPEWRITER_FAMILY, LyXFont::BOLD_SERIES,
 		LyXFont::UP_SHAPE, LColor::math},
