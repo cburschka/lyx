@@ -1,3 +1,8 @@
+2001-08-03  Juergen Vigna  <jug@sad.it>
+
+	* insettext.C (setFont): don't call for a draw update if we're just
+	changing the cursor font!
+
 2001-08-02  Juergen Vigna  <jug@sad.it>
 
 	* insettext.C (draw): clear the background with the right color if

@@ -981,6 +981,9 @@ void BufferView::Pimpl::update()
 			bv_->text->status(bv_, st);
 			screen_->update(bv_->text, bv_);
 		}
+		// do this here instead of in the screen::update because of
+		// the above loop!
+		bv_->text->status(bv_, LyXText::UNCHANGED);
 		if (fitc)
 			fitCursor();
 	}

@@ -1579,6 +1579,10 @@ void InsetText::setFont(BufferView * bv, LyXFont const & font, bool toggleall,
 		the_locking_inset->setFont(bv, font, toggleall, selectall);
 		return;
 	}
+	if ((!par->next() && !par->size()) || !cpar(bv)->size()) {
+		getLyXText(bv)->setFont(bv, font, toggleall);
+		return;
+	}
 	bool clear = false;
 	if (!lt) {
 		lt = getLyXText(bv);

@@ -675,10 +675,12 @@ void LyXText::setFont(BufferView * bview, LyXFont const & font, bool toggleall)
 		// Determine basis font
 		LyXFont layoutfont;
 		if (cursor.pos() < beginningOfMainBody(bview->buffer(),
-						       cursor.par()))
+		                                       cursor.par()))
+		{
 			layoutfont = getFont(bview->buffer(), cursor.par(),-2);
-		else
+		} else {
 			layoutfont = getFont(bview->buffer(), cursor.par(),-1);
+		}
 		// Update current font
 		real_current_font.update(font, toggleall);
 
@@ -697,12 +699,12 @@ void LyXText::setFont(BufferView * bview, LyXFont const & font, bool toggleall)
 	// and sel_end cursor
    
 	setUndo(bview, Undo::EDIT,
-		selection.start.par(),
-		selection.end.par()->next()); 
+	        selection.start.par(), selection.end.par()->next()); 
 	freezeUndo();
 	cursor = selection.start;
 	while (cursor.par() != selection.end.par() ||
-	       (cursor.pos() < selection.end.pos())) {
+	       (cursor.pos() < selection.end.pos()))
+	{
 		if (cursor.pos() < cursor.par()->size()) {
 			// an open footnote should behave
 			// like a closed one
@@ -726,7 +728,7 @@ void LyXText::setFont(BufferView * bview, LyXFont const & font, bool toggleall)
 	clearSelection();
 	setSelection(bview);
 	setCursor(bview, tmpcursor.par(), tmpcursor.pos(), true,
-		  tmpcursor.boundary());
+	          tmpcursor.boundary());
 }
 
 

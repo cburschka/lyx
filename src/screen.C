@@ -432,7 +432,7 @@ bool LyXScreen::fitCursor(LyXText * text, BufferView * bv)
 
    
 void LyXScreen::update(LyXText * text, BufferView * bv,
-		       int y_offset, int x_offset)
+                       int y_offset, int x_offset)
 {
 	switch (text->status()) {
 	case LyXText::NEED_MORE_REFRESH:
@@ -440,7 +440,10 @@ void LyXScreen::update(LyXText * text, BufferView * bv,
 		int const y = max(int(text->refresh_y - text->first), 0);
 		drawFromTo(text, bv, y, owner.height(), y_offset, x_offset);
 		text->refresh_y = 0;
-		text->status(bv, LyXText::UNCHANGED);
+		// otherwise this is called ONLY from BufferView_pimpl(update)
+		// or we should see to set this flag accordingly
+		if (text != bv->text)
+			text->status(bv, LyXText::UNCHANGED);
 		expose(0, y, owner.workWidth(), owner.height() - y);
 	}
 	break;
@@ -452,7 +455,10 @@ void LyXScreen::update(LyXText * text, BufferView * bv,
 		// this because if we had a major update the refresh_row could
 		// have been set to 0!
 		if (text->refresh_row) {
-			text->status(bv, LyXText::UNCHANGED);
+			// otherwise this is called ONLY from BufferView_pimpl(update)
+			// or we should see to set this flag accordingly
+			if (text != bv->text)
+				text->status(bv, LyXText::UNCHANGED);
 			expose(0, text->refresh_y - text->first + y_offset,
 				   owner.workWidth(), text->refresh_row->height());
 		}
