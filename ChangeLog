@@ -1,3 +1,8 @@
+2000-05-30 Dekel Tsur  <dekel@math.tau.ac.il>
+
+	* src/trans_mgr.C (insertVerbatim): Do not use insetquote when the
+	text is Hebrew.
+                             
 2000-05-27  Dekel Tsur  <dekel@math.tau.ac.il>
 
 	* src/text.C (draw): draw bars under foreign language words.

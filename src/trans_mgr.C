@@ -290,7 +290,9 @@ void TransManager::insertVerbatim(string const & str, LyXText * text)
 	for (int i = 0; i < l; ++i){
 		if (str[i] == '\"' 
 		    && text->GetFont(text->cursor.par,
-				     text->cursor.pos).latex() == LyXFont::OFF)
+				     text->cursor.pos).latex() == LyXFont::OFF
+		    && text->GetFont(text->cursor.par,
+				     text->cursor.pos).language()->lang != "hebrew")
 			current_view->insertCorrectQuote();
 		else
 			text->InsertChar(str[i]);
