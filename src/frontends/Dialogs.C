@@ -65,7 +65,7 @@ void Dialogs::hide(string const & name, InsetBase* inset)
 
 
 Dialogs::Dialogs(LyXView & lyxview)
-	: lyxview_(lyxview)
+	: lyxview_(lyxview), in_show_(false)
 {
 	// Connect signals
 	redrawGUI().connect(boost::bind(&Dialogs::redraw, this));
@@ -90,24 +90,32 @@ Dialog * Dialogs::find_or_build(string const & name)
 
 void Dialogs::show(string const & name, string const & data)
 {
-	Dialog * dialog = find_or_build(name);
-	if (!dialog)
+	if (in_show_) {
 		return;
-
-	// FIXME! Should check that the dialog is NOT an inset dialog.
-	dialog->show(data);
+	}
+	in_show_ = true;
+	Dialog * dialog = find_or_build(name);
+	if (dialog) {
+		// FIXME! Should check that the dialog is NOT an inset dialog.
+		dialog->show(data);
+	}	
+	in_show_ = false;
 }
 
 
 void Dialogs::show(string const & name, string const & data, InsetBase * inset)
 {
-	Dialog * dialog = find_or_build(name);
-	if (!dialog)
+	if (in_show_) {
 		return;
-
-	// FIXME! Should check that the dialog IS an inset dialog.
-	dialog->show(data);
-	open_insets_[name] = inset;
+	}
+	in_show_ = true;
+	Dialog * dialog = find_or_build(name);
+	if (dialog) {
+		// FIXME! Should check that the dialog IS an inset dialog.
+		dialog->show(data);
+		open_insets_[name] = inset;
+	}
+	in_show_ = false;
 }
 
 

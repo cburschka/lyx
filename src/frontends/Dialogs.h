@@ -117,6 +117,9 @@ private:
 
 	///
 	std::map<std::string, DialogPtr> dialogs_;
+
+	/// flag against a race condition due to multiclicks in Qt frontend, see bug #1119
+	bool in_show_;
 };
 
 #endif
