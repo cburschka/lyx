@@ -485,9 +485,19 @@ void LyXText::drawInset(DrawRowParams & p, pos_type const pos)
 		Row * prev = p.row->previous();
 		if (prev && prev->par() == p.row->par()) {
 			breakAgainOneRow(p.bv, prev);
-		} 
+			// breakAgainOneRow() may have removed p.row
+			// What about the x and y coordinates? par & pos ok.
+			if (prev->next() != p.row) {
+				p.row = prev;
+			}
+			// If there's only one row (after p.row was deleted)
+			// prev->next() == 0 and no breaking is required.
+			// Otherwise, check the new next row.
+			need_break_row = prev->next();
+		} else {
+			need_break_row = p.row;
+		}
 		setCursor(p.bv, cursor.par(), cursor.pos());
-		need_break_row = p.row;
 	}
 }
 

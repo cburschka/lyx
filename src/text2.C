@@ -389,17 +389,23 @@ void LyXText::insertRow(Row * row, Paragraph * par,
 // removes the row and reset the touched counters
 void LyXText::removeRow(Row * row) const
 {
+	Row * row_prev = row->previous();
 	if (row->next())
-		row->next()->previous(row->previous());
-	if (!row->previous()) {
+		row->next()->previous(row_prev);
+	if (!row_prev) {
 		firstrow = row->next();
 //		lyx::Assert(firstrow);
 	} else  {
-		row->previous()->next(row->next());
+		row_prev->next(row->next());
 	}
-	if (row == lastrow)
-		lastrow = row->previous();
-   
+	if (row == lastrow) {
+		lyx::Assert(!row->next());
+		lastrow = row_prev;
+	}
+	if (refresh_row == row) {
+		refresh_row = row_prev ? row_prev : row->next();
+	}
+
 	height -= row->height(); // the text becomes smaller
    
 	delete row;
