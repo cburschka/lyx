@@ -328,7 +328,10 @@ InsetBase const * Paragraph::getInset(pos_type pos) const
 LyXFont const Paragraph::getFontSettings(BufferParams const & bparams,
 					 pos_type pos) const
 {
-	BOOST_ASSERT(pos <= size());
+	if (pos > size()) {
+		lyxerr << " pos: " << pos << " size: " << size() << endl;
+		BOOST_ASSERT(pos <= size());
+	}
 
 	Pimpl::FontList::const_iterator cit = pimpl_->fontlist.begin();
 	Pimpl::FontList::const_iterator end = pimpl_->fontlist.end();

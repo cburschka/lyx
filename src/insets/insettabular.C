@@ -491,6 +491,8 @@ void InsetTabular::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 		if (sl == cur.current())
 			if (tabular.row_of_cell(cur.idx()) != tabular.rows() - 1) {
 				cur.idx() = tabular.getCellBelow(cur.idx());
+				cur.par() = 0;
+				cur.pos() = 0;
 				resetPos(cur);
 			}
 		if (sl == cur.current())
@@ -503,6 +505,8 @@ void InsetTabular::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 		if (sl == cur.current())
 			if (tabular.row_of_cell(cur.idx()) != 0) {
 				cur.idx() = tabular.getCellAbove(cur.idx());
+				cur.par() = cur.lastpar();
+				cur.pos() = cur.lastpos();
 				resetPos(cur);
 			}
 		if (sl == cur.current())

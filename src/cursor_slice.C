@@ -43,18 +43,21 @@ CursorSlice::CursorSlice(InsetBase * p)
 
 size_t CursorSlice::nargs() const
 {
+	BOOST_ASSERT(inset_);
 	return inset_->nargs();
 }
 
 
 size_t CursorSlice::nrows() const
 {
+	BOOST_ASSERT(inset_);
 	return inset_->nrows();
 }
 
 
 size_t CursorSlice::ncols() const
 {
+	BOOST_ASSERT(inset_);
 	return inset_->ncols();
 }
 

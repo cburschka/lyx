@@ -841,15 +841,6 @@ void LyXFunc::dispatch(FuncRequest const & cmd, bool verbose)
 
 		switch (action) {
 
-		case LFUN_ESCAPE: {
-			if (!view()->available())
-				break;
-			view()->cursor().pop();
-			// Tell the paragraph dialog that we changed paragraph
-			dispatch(FuncRequest(LFUN_PARAGRAPH_UPDATE));
-			break;
-		}
-
 		case LFUN_WORDFINDFORWARD:
 		case LFUN_WORDFINDBACKWARD: {
 			static string last_search;
@@ -899,10 +890,6 @@ void LyXFunc::dispatch(FuncRequest const & cmd, bool verbose)
 			else
 				owner->buffer()->setReadonly(
 					!owner->buffer()->isReadonly());
-			break;
-
-		case LFUN_CENTER: // this is center and redraw.
-			view()->center();
 			break;
 
 		// --- Menus -----------------------------------------------
@@ -1066,11 +1053,6 @@ void LyXFunc::dispatch(FuncRequest const & cmd, bool verbose)
 
 		case LFUN_FILE_OPEN:
 			open(argument);
-			break;
-
-		case LFUN_LAYOUT_TABULAR:
-			if (InsetTabular * tab = view()->cursor().innerInsetTabular())
-				tab->openLayoutDialog(view());
 			break;
 
 		case LFUN_DROP_LAYOUTS_CHOICE:

@@ -160,7 +160,7 @@ public:
 	/// return the cell of the inset this cursor is in
 	idx_type & idx() { return current().idx(); }
 	/// return the last possible cell in this inset
-	idx_type lastidx() const { return current().lastidx(); }
+	idx_type lastidx() const;
 	/// return the paragraph this cursor is in
 	par_type par() const { return current().par(); }
 	/// return the paragraph this cursor is in

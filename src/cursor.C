@@ -80,6 +80,9 @@ void LCursor::reset()
 DispatchResult LCursor::dispatch(FuncRequest const & cmd0)
 {
 	lyxerr << "\nLCursor::dispatch: cmd: " << cmd0 << endl << *this << endl;
+	BOOST_ASSERT(pos() <= lastpos());
+	BOOST_ASSERT(idx() <= lastidx());
+	BOOST_ASSERT(par() <= lastpar());
 	FuncRequest cmd = cmd0;
 	disp_.update(true);
 	disp_.val(NONE);
@@ -526,6 +529,12 @@ LCursor::row_type LCursor::crow() const
 LCursor::row_type LCursor::lastcrow() const
 {
 	return paragraph().rows.size();
+}
+
+
+LCursor::idx_type LCursor::lastidx() const
+{
+	return current_ ? current().lastidx() : 0;
 }
 
 
