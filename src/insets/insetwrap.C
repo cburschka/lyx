@@ -28,16 +28,34 @@
 #include "frontends/LyXView.h"
 #include "frontends/Dialogs.h"
 #include "lyxlex.h"
+#include "FloatList.h"
 
 using std::ostream;
 using std::endl;
+
+namespace {
+
+// this should not be hardcoded, but be part of the definition
+// of the float (JMarc)
+string const caplayout("Caption");
+string floatname(string const & type, BufferParams const & bp)
+{
+	FloatList const & floats = bp.getLyXTextClass().floats();
+	FloatList::const_iterator it = floats[type];
+	if (it == floats.end())
+		return type;
+
+	return _(it->second.name());
+}
+
+} // namespace anon
 
 
 InsetWrap::InsetWrap(BufferParams const & bp, string const & type)
 	: InsetCollapsable(bp), width_(50, LyXLength::PCW)
 {
-	string lab(_("wrap"));
-	lab += type;
+	string lab(_("wrap: "));
+	lab += floatname(type, bp);
 	setLabel(lab);
 	LyXFont font(LyXFont::ALL_SANE);
 	font.decSize();
@@ -46,6 +64,9 @@ InsetWrap::InsetWrap(BufferParams const & bp, string const & type)
 	setLabelFont(font);
 	Type_ = type;
 	setInsetName(type);
+	LyXTextClass const & tclass = bp.getLyXTextClass();
+	if (tclass.hasLayout(caplayout))
+		inset.paragraph()->layout(tclass[caplayout]);
 }
 
 
@@ -228,4 +249,23 @@ bool InsetWrap::showInsetDialog(BufferView * bv) const
 		bv->owner()->getDialogs().showWrap(const_cast<InsetWrap *>(this));
 	}
 	return true;
+}
+
+
+void InsetWrap::addToToc(toc::TocList & toclist, Buffer const * buf) const
+{
+	// Now find the caption in the float...
+	// We now tranverse the paragraphs of
+	// the inset...
+	Paragraph * tmp = inset.paragraph();
+	while (tmp) {
+		if (tmp->layout()->name() == caplayout) {
+			string const str =
+				tostr(toclist[type()].size() + 1)
+				+ ". " + tmp->asString(buf, false);
+			toc::TocItem const item(tmp, 0 , str);
+			toclist[type()].push_back(item);
+		}
+		tmp = tmp->next();
+	}
 }

@@ -26,6 +26,7 @@
 #include "LyXAction.h"
 #include "paragraph.h"
 #include "insets/insetfloat.h"
+#include "insets/insetwrap.h"
 #include "debug.h"
 
 using std::vector;
@@ -91,13 +92,17 @@ TocList const getTocList(Buffer const * buf)
 		}
 
 		// For each paragraph, traverse its insets and look for
-		// FLOAT_CODE
+		// FLOAT_CODE or WRAP_CODE
 		InsetList::iterator it = par->insetlist.begin();
 		InsetList::iterator end = par->insetlist.end();
 		for (; it != end; ++it) {
 			if (it.getInset()->lyxCode() == Inset::FLOAT_CODE) {
 				InsetFloat * il =
 					static_cast<InsetFloat*>(it.getInset());
+				il->addToToc(toclist, buf);
+			} else if (it.getInset()->lyxCode() == Inset::WRAP_CODE) {
+				InsetWrap * il =
+					static_cast<InsetWrap*>(it.getInset());
 				il->addToToc(toclist, buf);
 			}
 		}

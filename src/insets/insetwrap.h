@@ -16,6 +16,7 @@
 #endif
 
 #include "insetcollapsable.h"
+#include "toc.h"
 #include "lyxlength.h"
 
 #include <boost/signals/signal0.hpp>
@@ -63,6 +64,8 @@ public:
 	void placement(string const & p);
 	///
 	string const & placement() const;
+	///
+	void addToToc(toc::TocList &, Buffer const *) const;
 	///
 	bool  showInsetDialog(BufferView *) const;
 	///
