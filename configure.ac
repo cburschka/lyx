@@ -115,7 +115,7 @@ AC_ARG_WITH(aiksaurus,
 if test x$lyx_use_aiksaurus != xno; then
 AC_CHECK_LIB(Aiksaurus, main,
 	[AC_DEFINE(HAVE_LIBAIKSAURUS,1,[Define this if you have the AikSaurus library])
-	 AIKSAURUS_LIBS="-lAiksaurus -lbz2"
+	 AIKSAURUS_LIBS="-lAiksaurus"
 	 lyx_flags="$lyx_flags aiksaurus"
 	])
 AC_CHECK_HEADER(Aiksaurus.h,[
