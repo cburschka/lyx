@@ -69,7 +69,7 @@ s/extern \(.*\) create_form_form_\(.*\)[(]void[)]/\1 build_\2(void *)/
 
 # All other lines are deleted:
 /^typedef struct/d
-/^	/{; /FL_OBJECT/!d; }
+/^	/{ /FL_OBJECT/!d; }
 
 
 # For all lines starting with FL_OBJECT...
