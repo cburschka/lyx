@@ -302,7 +302,7 @@ void LyXFunc::processKeySym(KeySym keysym, unsigned int state)
 	// why not return already here if action == -1 and
 	// num_bytes == 0? (Lgb)
 
-	if (keyseq.length() > 1 && !keyseq.deleted()) {
+	if (keyseq.length() > 1) {
 		owner->message(keyseq.print());
 	}
 
@@ -1019,7 +1019,7 @@ string const LyXFunc::dispatch(kb_action action, string argument)
 			owner->view()->update(TEXT(),
 					      BufferView::SELECT|BufferView::FITCUR);
 		}
-		owner->message(keyseq.print());
+		owner->message(keyseq.printOptions());
 	}
 	break;
 

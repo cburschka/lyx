@@ -139,8 +139,8 @@ string const kb_sequence::print() const
 {
 	string buf;
 
-	if (deleted_)
-		return buf;
+	//if (deleted_)
+	//	return buf;
 	
 	for (vector<unsigned int>::size_type i = 0; i < length_; ++i) {
 		buf += kb_keymap::printKeysym(sequence[i], modifiers[i] & 0xffff);

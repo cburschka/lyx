@@ -1,5 +1,15 @@
 2002-03-01  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
+	* minibuffer.C (MiniBuffer): reset timout to 6000, as it was before.
+
+	* lyxfunc.C (processKeySym): print sequence also if it is
+	`deleted' (complete)
+
+	* kbsequence.C (print): print sequence even if it is deleted
+	(complete would be a better word, actually).
+
+	* lyxfunc.C (dispatch): print complete options after a prefix key
+
 	* vspace.C (asLatexCommand): rewrite in a slightly different form.
 
 2002-03-01  Martin Vermeer  <martin.vermeer@hut.fi>

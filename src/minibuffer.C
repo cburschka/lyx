@@ -63,7 +63,7 @@ MiniBuffer::MiniBuffer(LyXView * o, FL_Coord x, FL_Coord y,
 {
 	add(FL_NORMAL_INPUT, x, y, h, w);
 
-	timer = new Timeout(600);
+	timer = new Timeout(6000);
 	timer->timeout.connect(slot(this, &MiniBuffer::init));
 
 	stored_timer = new Timeout(1500);
