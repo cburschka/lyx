@@ -1,3 +1,15 @@
+2002-07-18  Angus Leeming  <leeming@lyx.org>
+
+	* GraphicsCacheItem.[Ch]: add a FileMonitor variable to the the Impl
+	class.
+	(startMonitoring, monitoring, checksum): new methods to interact with
+	the FileMonitor.
+
+	* GraphicsLoader.[Ch] (startMonitoring, monitoring, checksum): new
+	methods invoking the CacheItem methods of the same name.
+	(resetFile): if monitoring and the file changes, start monitoring this
+	new file.
+
 2002-07-17  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* Makefile.am: remove FileMonitor.[Ch]

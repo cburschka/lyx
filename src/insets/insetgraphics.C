@@ -10,25 +10,7 @@
  * ====================================================== */
 
 /*
-Known BUGS:
-
-    * If the image is from the clipart, and the document is moved to another
-      directory, the user is screwed. Need a way to handle it.
-      This amounts to a problem of when to use relative or absolute file paths
-      We should probably use what the user asks to use... but when he chooses
-      by the file dialog we normally get an absolute path and this may not be
-      what the user meant.
-
-      Note that browseRelFile in helper_funcs.* provides a file name
-      which is relative if it is at reference path (here puffer path)
-      level or below, and an absolute path if the file name is not a
-      `natural' relative file name. In any case,
-	      MakeAbsPath(filename, buf->filePath())
-      is guaranteed to provide the correct absolute path. This is what is
-      done know for include insets. Feel free to ask me -- JMarc
-      14/01/2002
-
-TODO Before initial production release:
+TODO
 
     * What advanced features the users want to do?
       Implement them in a non latex dependent way, but a logical way.
@@ -162,6 +144,8 @@ struct InsetGraphics::Cache : boost::signals::trackable
 	int old_ascent;
 	///
 	grfx::Loader loader;
+	///
+	unsigned long checksum;
 
 private:
 	///
@@ -170,7 +154,7 @@ private:
 
 
 InsetGraphics::Cache::Cache(InsetGraphics & p)
-	: old_ascent(0), parent_(p)
+	: old_ascent(0), checksum(0), parent_(p)
 {
   	loader.connect(boost::bind(&InsetGraphics::statusChanged, &parent_));
 }
@@ -327,9 +311,11 @@ void InsetGraphics::draw(BufferView * bv, LyXFont const & font,
 	int old_x = int(x);
 	x += lwidth;
 
-	if (cache_->loader.status() == grfx::WaitingToLoad) {
+	if (cache_->loader.status() == grfx::WaitingToLoad)
 		cache_->loader.startLoading(*this, *bv);
-	}
+
+	if (!cache_->loader.monitoring())
+		cache_->loader.startMonitoring();
 
 	// This will draw the graphics. If the graphics has not been loaded yet,
 	// we draw just a rectangle.
@@ -626,41 +612,39 @@ string const InsetGraphics::prepareFile(Buffer const *buf) const
 	if (!IsFileReadable(orig_file_with_path))
 		return orig_file;
 
-	// If the file is compressed and we have specified that it should not be
-	// uncompressed, then just return its name and let LaTeX do the rest!
-
-	// maybe that other zip extensions also be useful, especially the
-	// ones that may be declared in texmf/tex/latex/config/graphics.cfg.
-	// for example:
-	/* -----------snip-------------
-	  {\DeclareGraphicsRule{.pz}{eps}{.bb}{}%
-	   \DeclareGraphicsRule{.eps.Z}{eps}{.eps.bb}{}%
-	   \DeclareGraphicsRule{.ps.Z}{eps}{.ps.bb}{}%
-	   \DeclareGraphicsRule{.ps.gz}{eps}{.ps.bb}{}%
-	   \DeclareGraphicsRule{.eps.gz}{eps}{.eps.bb}{}}}%
-	 -----------snip-------------*/
-
 	bool const zipped = zippedFile(orig_file_with_path);
-	if (zipped)
-		lyxerr[Debug::GRAPHICS] << "\twe have a zipped file ("
-			<< getExtFromContents(orig_file_with_path) << ")\n";
-	if (params().noUnzip && zipped) {
+
+	// If the file is compressed and we have specified that it
+	// should not be uncompressed, then just return its name and
+	// let LaTeX do the rest!
+	if (zipped && params().noUnzip) {
 		lyxerr[Debug::GRAPHICS]
-			<< "\tpass file unzipped to LaTeX but with full path.\n";
-		// latex needs an absolue path, otherwise the coresponding
-		// *.eps.bb file isn't found
+			<< "\tpass zipped file to LaTeX but with full path.\n";
+		// LaTeX needs an absolue path, otherwise the
+		// coresponding *.eps.bb file isn't found
 		return orig_file_with_path;
 	}
 
+	// Ascertain whether the file has changed.
+	unsigned long const new_checksum = cache_->loader.checksum();
+	bool const file_has_changed = cache_->checksum != new_checksum;
+	if (file_has_changed)
+	        cache_->checksum = new_checksum;
+
+	// temp_file will contain the file for LaTeX to act on if, for example,
+	// we move it to a temp dir or uncompress it.
 	string temp_file(orig_file);
-	// Uncompress the file if necessary. If it has been uncompressed in
-	// a previous call to prepareFile, do nothing.
+
 	if (zipped) {
+		// Uncompress the file if necessary.
+		// If it has been uncompressed in a previous call to
+		// prepareFile, do nothing.
 		temp_file = MakeAbsPath(OnlyFilename(temp_file), buf->tmppath);
 		lyxerr[Debug::GRAPHICS]
 			<< "\ttemp_file: " << temp_file << endl;
-		if (!IsFileReadable(temp_file)) {
-			bool const success = lyx::copy(orig_file_with_path, temp_file);
+		if (file_has_changed || !IsFileReadable(temp_file)) {
+			bool const success = lyx::copy(orig_file_with_path,
+						       temp_file);
 			lyxerr[Debug::GRAPHICS]
 				<< "\tCopying zipped file from "
 				<< orig_file_with_path << " to " << temp_file
@@ -673,16 +657,17 @@ string const InsetGraphics::prepareFile(Buffer const *buf) const
 		lyxerr[Debug::GRAPHICS]
 			<< "\tunzipped to " << orig_file_with_path << endl;
 	}
-	string const from = getExtFromContents(orig_file_with_path);
 
-	// "nice" means that the buffer is exported to LaTeX format but not
-	//        run through the LaTeX compiler.
-	// if (nice)
-	//	no conversion needed!
-	//	Return the original filename as is, because we do not know
-	// 	what the user decide.
-	if (buf->niceFile)
-		return orig_file;
+	string const from = getExtFromContents(orig_file_with_path);
+	string const to   = findTargetFormat(from);
+	lyxerr[Debug::GRAPHICS]
+		<< "\t we have: from " << from << " to " << to << '\n';
+
+	if (from == to && !lyxrc.use_tempdir)
+		// No conversion is needed. LaTeX can handle the
+		// graphic file as is.
+		// This is true even if the orig_file is compressed.
+		return RemoveExtension(orig_file_with_path);
 
 	// We're going to be running the exported buffer through the LaTeX
 	// compiler, so must ensure that LaTeX can cope with the graphics
@@ -711,8 +696,8 @@ string const InsetGraphics::prepareFile(Buffer const *buf) const
 		lyxerr[Debug::GRAPHICS]
 			<< "\tchanged to: " << temp_file << endl;
 
-		// if the file doen't exists, copy it into the tempdi
-		if (!IsFileReadable(temp_file)) {
+		// if the file doen't exists, copy it into the tempdir
+		if (file_has_changed || !IsFileReadable(temp_file)) {
 			bool const success = lyx::copy(orig_file_with_path, temp_file);
 			lyxerr[Debug::GRAPHICS]
 				<< "\tcopying from " << orig_file_with_path << " to "
@@ -724,18 +709,11 @@ string const InsetGraphics::prepareFile(Buffer const *buf) const
 				return orig_file;
 			}
 		}
-	}
 
-	string const to = findTargetFormat(from);
-	lyxerr[Debug::GRAPHICS]
-		<< "\t we have: from " << from << " to " << to << '\n';
-	if (from == to) {
-		// No conversion is needed. LaTeX can handle the graphic file as is.
-		// This is true even if the orig_file is compressed. We have to return
-		// the orig_file_with_path, maybe it is a zipped one
-		if (lyxrc.use_tempdir)
+		if (from == to)
+			// No conversion is needed. LaTeX can handle the
+			// graphic file as is.
 			return RemoveExtension(temp_file);
-		return RemoveExtension(orig_file_with_path);
 	}
 
 	string const outfile_base = RemoveExtension(temp_file);
@@ -820,6 +798,14 @@ int InsetGraphics::latex(Buffer const *buf, ostream & os,
 	lyxerr[Debug::GRAPHICS]
 		<< "\tBefore = " << before
 		<< "\n\tafter = " << after << endl;
+
+
+	// "nice" means that the buffer is exported to LaTeX format but not
+	//        run through the LaTeX compiler.
+	if (buf->niceFile) {
+		os << before <<'{' << params().filename << '}' << after;
+		return 1;
+	}
 
 	// Make the filename relative to the lyx file
 	// and remove the extension so the LaTeX will use whatever is

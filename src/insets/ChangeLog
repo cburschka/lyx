@@ -1,3 +1,10 @@
+2002-07-18  Angus Leeming  <leeming@lyx.org>
+
+	* insetgraphics.C: clean-up comments (from Herbert).
+	add a new checksum variable to the cache. Use it in PrepareFile.
+	(draw): start monitoring the file for a change.
+	(prepareFile): re-arrange a little to avoid unnecessary steps.
+
 2002-07-17  Angus Leeming  <leeming@lyx.org>
 
 	* insetgraphics.C (Cache c-tor): bind to the GraphicsLoader through

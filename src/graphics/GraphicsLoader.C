@@ -139,6 +139,33 @@ void Loader::startLoading(Inset const & inset, BufferView const & bv) const
 }
 
 
+void Loader::startMonitoring() const
+{
+	if (!pimpl_->cached_item_.get())
+		return;
+
+	pimpl_->cached_item_->startMonitoring();
+}
+
+
+bool Loader::monitoring() const
+{
+	if (!pimpl_->cached_item_.get())
+		return false;
+
+	return pimpl_->cached_item_->monitoring();
+}
+
+
+unsigned long Loader::checksum() const
+{
+	if (!pimpl_->cached_item_.get())
+		return 0;
+
+	return pimpl_->cached_item_->checksum();
+}
+
+
 string const & Loader::filename() const
 {
 	static string const empty;
@@ -187,7 +214,12 @@ void Loader::Impl::resetFile(string const & file)
 	if (file == old_file)
 		return;
 
+	// If monitoring() the current file, should continue to monitor the
+	// new file.
+	bool continue_monitoring = false;
+
 	if (!old_file.empty()) {
+		continue_monitoring = cached_item_->monitoring();
 		cached_item_.reset();
 		Cache::get().remove(old_file);
 	}
@@ -205,6 +237,9 @@ void Loader::Impl::resetFile(string const & file)
 	// We /must/ make a local copy of this.
 	cached_item_ = gc.item(file);
 	status_ = cached_item_->status();
+
+	if (continue_monitoring && !cached_item_->monitoring())
+		cached_item_->startMonitoring();
 
 	cached_item_->connect(boost::bind(&Impl::statusChanged, this));
 }
@@ -231,7 +266,7 @@ void Loader::Impl::statusChanged()
 
 void Loader::Impl::createPixmap()
 {
-	if (!cached_item_.get() || image_.get() ||
+	if (!cached_item_.get() ||
 	    params_.display == NoDisplay || status_ != Loaded)
 		return;
 

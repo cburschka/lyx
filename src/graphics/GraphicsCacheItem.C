@@ -18,6 +18,8 @@
 #include "GraphicsImage.h"
 #include "GraphicsConverter.h"
 
+#include "support/FileMonitor.h"
+
 #include "debug.h"
 
 #include "support/LAssert.h"
@@ -73,8 +75,22 @@ struct CacheItem::Impl : public boost::signals::trackable {
 	 */
 	void setStatus(ImageStatus new_status);
 
+	/** Can be invoked directly by the user, but is also connected to the
+	 *  FileMonitor and so is invoked when the file is changed
+	 *  (if monitoring is taking place).
+	 */
+	void startLoading();
+
+	/** If we are asked to load the file for a second or further time,
+	 *  (because the file has changed), then we'll have to first reset
+	 *  many of the variables below.
+	 */
+	void reset();
+
 	/// The filename we refer too.
 	string const filename_;
+	///
+	FileMonitor const monitor_;
 
 	/// Is the file compressed?
 	bool zipped_;
@@ -123,10 +139,26 @@ string const & CacheItem::filename() const
 
 void CacheItem::startLoading() const
 {
-	if (pimpl_->status_ != WaitingToLoad)
-		return;
+	pimpl_->startLoading();
+}
 
-	pimpl_->convertToDisplayFormat();
+
+void CacheItem::startMonitoring() const
+{
+	if (!pimpl_->monitor_.monitoring())
+		pimpl_->monitor_.start();
+}
+
+
+bool CacheItem::monitoring() const
+{
+	return pimpl_->monitor_.monitoring();
+}
+
+
+unsigned long CacheItem::checksum() const
+{
+	return pimpl_->monitor_.checksum();
 }
 
 
@@ -154,9 +186,51 @@ boost::signals::connection CacheItem::connect(slot_type const & slot) const
 
 
 CacheItem::Impl::Impl(string const & file)
-	: filename_(file), zipped_(false),
-	  remove_loaded_file_(false), status_(WaitingToLoad)
-{}
+	: filename_(file),
+	  monitor_(file, 2000),
+	  zipped_(false),
+	  remove_loaded_file_(false),
+	  status_(WaitingToLoad)
+{
+	monitor_.connect(boost::bind(&Impl::startLoading, this));
+}
+
+
+void CacheItem::Impl::startLoading()
+{
+	if (status_ != WaitingToLoad)
+		reset();
+
+	convertToDisplayFormat();
+}
+
+
+void CacheItem::Impl::reset()
+{
+	zipped_ = false;
+	if (!unzipped_filename_.empty())
+		lyx::unlink(unzipped_filename_);
+	unzipped_filename_.clear();
+
+	if (remove_loaded_file_ && !file_to_load_.empty())
+		lyx::unlink(file_to_load_);
+	remove_loaded_file_ = false;
+	file_to_load_.clear();
+
+	if (image_.get())
+		image_.reset();
+
+	status_ = WaitingToLoad;
+
+	if (cl_.connected())
+		cl_.disconnect();
+
+	if (cc_.connected())
+		cc_.disconnect();
+
+	if (converter_.get())
+		converter_.reset();
+}
 
 
 void CacheItem::Impl::setStatus(ImageStatus new_status)
@@ -276,6 +350,17 @@ namespace grfx {
 void CacheItem::Impl::convertToDisplayFormat()
 {
 	setStatus(Converting);
+
+	// First, check that the file exists!
+	if (!IsFileReadable(filename_)) {
+		if (status_ != ErrorNoFile) {
+			setStatus(ErrorNoFile);
+			lyxerr[Debug::GRAPHICS]
+				<< "\tThe file is not readable" << endl;
+		}
+		return;
+	}
+
 	// Make a local copy in case we unzip it
 	string const filename = zippedFile(filename_) ?
 		unzipFile(filename_) : filename_;
@@ -284,13 +369,6 @@ void CacheItem::Impl::convertToDisplayFormat()
 		<< "\tAttempting to convert image file: " << filename
 		<< "\n\twith displayed filename: " << displayed_filename
 		<< endl;
-
-	// First, check that the file exists!
-	if (!IsFileReadable(filename)) {
-		setStatus(ErrorNoFile);
-		lyxerr[Debug::GRAPHICS] << "\tThe file is not readable" << endl;
-		return;
-	}
 
 	string from = getExtFromContents(filename);
 	lyxerr[Debug::GRAPHICS]

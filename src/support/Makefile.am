@@ -16,6 +16,8 @@ libsupport_la_SOURCES = \
 	DebugStream.h \
 	FileInfo.C \
 	FileInfo.h \
+	FileMonitor.h \
+	FileMonitor.C \
 	LAssert.C \
 	LAssert.h \
 	LIstream.h \

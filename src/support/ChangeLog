@@ -1,3 +1,9 @@
+2002-07-18  Angus Leeming  <leeming@lyx.org>
+
+	* FileMonitor.[Ch]: new files. Monitor a file for any change and emit a
+	signal should it do so.
+
+	* Makefile.am: add FileMonitor.[Ch].
 
 2002-07-18  André Pönitz <poenitz@gmx.net>
 

@@ -59,6 +59,19 @@ public:
 	/// It's in the cache. Now start the loading process.
 	void startLoading() const;
 
+	/** Monitor any changes to the file.
+	 *  There is no point monitoring the file before startLoading() is
+	 *  invoked.
+	 */
+	void startMonitoring() const;
+	///
+	bool monitoring() const;
+	/** Returns the check sum of filename() so that, for example, you can
+	 *  ascertain whether to output a new PostScript version of the file
+	 *  for a LaTeX run.
+	 */
+	unsigned long checksum() const;
+
 	/** Get the image associated with filename().
 	 *  If the image is not yet loaded, returns 0.
 	 *  This routine returns a pointer to const; if you want to modify it,
