@@ -727,7 +727,11 @@ LyXText::rowBreakPoint(BufferView & bv, Row const & row) const
 	// or the end of the par, then choose the possible break
 	// nearest that.
 
-	int x = leftMargin(&bv, &row);
+	int const left = leftMargin(&bv, &row);
+	int x = left;
+
+	// pixel width since last breakpoint
+	int chunkwidth = 0;
 
 	for (i = pos; i < last; ++i) {
 
@@ -738,18 +742,21 @@ LyXText::rowBreakPoint(BufferView & bv, Row const & row) const
 			break;
 		}
 
-		x += singleWidth(&bv, par, i, c);
+		int thiswidth = singleWidth(&bv, par, i, c);
 
 		// add the auto-hfill from label end to the body
 		if (body_pos && i == body_pos) {
-			x += font_metrics::width(layout->labelsep,
+			thiswidth += font_metrics::width(layout->labelsep,
 				    getLabelFont(bv.buffer(), par));
 			if (par->isLineSeparator(i - 1))
-				x-= singleWidth(&bv, par, i - 1);
+				thiswidth -= singleWidth(&bv, par, i - 1);
 			int left_margin = labelEnd(bv, row);
-			if (x < left_margin)
-				x = left_margin;
+			if (thiswidth < left_margin)
+				thiswidth = left_margin;
 		}
+
+		x += thiswidth;
+		chunkwidth += thiswidth;
 
 		Inset * in = par->isInset(i) ? par->getInset(i) : 0;
 		bool display = (in && (in->display() || in->needFullRow()));
@@ -765,8 +772,9 @@ LyXText::rowBreakPoint(BufferView & bv, Row const & row) const
 		// break before a character that will fall off
 		// the right of the row
 		if (x >= width) {
-			// if no break before or this is a fullrow inset, break here.
-			if (point == last || display) {
+			// if no break before or we are at an inset
+			// that will take up a row, break here
+			if (point == last || display || chunkwidth >= (width - left)) {
 				if (pos < i)
 					point = i - 1;
 				else
@@ -777,8 +785,10 @@ LyXText::rowBreakPoint(BufferView & bv, Row const & row) const
 
 		if (!in || in->isChar()) {
 			// some insets are line separators too
-			if (par->isLineSeparator(i))
+			if (par->isLineSeparator(i)) {
 				point = i;
+				chunkwidth = 0;
+			}
 			continue;
 		}
 
