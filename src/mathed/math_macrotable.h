@@ -17,9 +17,7 @@ class MathMacroTemplate;
 struct MathMacroTable {
 public:
 	///
-	static void updateTemplate(MathMacroTemplate *);
-	///
-	static void insertTemplate(MathMacroTemplate *);
+	static void insertTemplate(MathMacroTemplate const *);
 	///
 	static MathMacroTemplate & provideTemplate(string const &);
 	///

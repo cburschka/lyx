@@ -588,7 +588,7 @@ bool MathCursor::toggleLimits()
 {
 	if (!prevIsInset())
 		return false;
-	MathInset * p = prevInset();
+	MathScriptInset * p = prevScriptInset();
 	int old = p->limits();
 	p->limits(old < 0 ? 1 : -1);
 	return old != p->limits();

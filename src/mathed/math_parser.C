@@ -85,7 +85,7 @@ void mathed_parse_into(MathArray & array, unsigned flags);
 
 unsigned char getuchar(std::istream * is)
 {
-	char c;
+	char c = 0;
 	is->get(c);
 	if (!is->good()) {
 		lyxerr << "The input stream is not well..." << endl;
@@ -124,7 +124,6 @@ union {
 string yytext;
 int yylineno;
 istream * yyis;
-MathTextCodes yyvarcode;
 
 
 
@@ -251,10 +250,7 @@ int yylex()
 		unsigned char c = getuchar(yyis);
 		//lyxerr << "reading byte: '" << c << "' code: " << lexcode[c] << endl;
 		
-		if (yyvarcode == LM_TC_TEXTRM && c == ' ') {
-			yylval.i = ' ';
-			return LM_TK_ALPHA;
-		} else if (lexcode[c] == LexNewLine) {
+		if (lexcode[c] == LexNewLine) {
 			++yylineno; 
 			continue;
 		} else if (lexcode[c] == LexComment) {
@@ -266,7 +262,7 @@ int yylex()
 			   || lexcode[c] == LexMathSpace) {
 			yylval.i = c;
 			return LM_TK_STR;
-		} else if (lexcode[c] == LexAlpha) {
+		} else if (lexcode[c] == LexAlpha || lexcode[c] == LexSpace) {
 			yylval.i = c;
 			return LM_TK_ALPHA;
 		} else if (lexcode[c] == LexBOP) {
@@ -328,8 +324,11 @@ int yylex()
 					yytext += c;
 					c = getuchar(yyis);
 				}
-				if (yyis->good())
+				while (lexcode[c] == LexSpace && yyis->good()) 
+					c = getuchar(yyis);
+				if (yyis->good() && lexcode[c] != LexSpace)
 					yyis->putback(c);
+			
 				//lyxerr[Debug::MATHED] << "reading: text '" << yytext << "'\n";
 				latexkeys const * l = in_word_set(yytext);
 				if (!l) 
@@ -425,23 +424,28 @@ void mathed_parse_lines(MathInset * inset, int col,
 }
 
 
-MathInset * mathed_parse()
+MathMacroTemplate * mathed_parse_macro()
 {
-	MathInset * p = 0;
+	if (yylex() != LM_TK_NEWCOMMAND) {
+		lyxerr << "\\newcommand expected\n";
+		return 0;
+	}
+
+	string name = lexArg('{').substr(1);
+	string arg  = lexArg('[');
+	int    narg = arg.empty() ? 0 : atoi(arg.c_str()); 
+	MathMacroTemplate * p = new MathMacroTemplate(name, narg);
+	mathed_parse_into(p->cell(0), FLAG_BRACE | FLAG_BRACE_LAST);
+	return p;
+}
+
+
+MathMatrixInset * mathed_parse_normal()
+{
+	MathMatrixInset * p = 0;
 	int t = yylex();
 
 	switch (t) {
-		case LM_TK_NEWCOMMAND: {
-			string const name = lexArg('{').substr(1);
-			string const arg  = lexArg('[');
-			int    narg = arg.empty() ? 0 : atoi(arg.c_str()); 
-			p = new MathMacroTemplate(name, narg);
-			mathed_parse_into(p->cell(0), FLAG_BRACE | FLAG_BRACE_LAST);
-			//lyxerr[Debug::MATHED] << "LM_TK_NEWCOMMAND: name: "
-			//	<< name << " nargs: " << narg << "\n";
-			break;
-		}
-
 		case LM_TK_MATH:
 		case LM_TK_BEGIN: {
 			int i = yylval.i;
@@ -522,7 +526,7 @@ void mathed_parse_into(MathArray & array, unsigned flags)
 	static int plevel = -1;
 
 	++plevel;
-	yyvarcode = LM_TC_VAR;
+	MathTextCodes yyvarcode   = LM_TC_VAR;
 
 	int  t      = yylex();
 	bool panic  = false;
@@ -559,12 +563,16 @@ void mathed_parse_into(MathArray & array, unsigned flags)
 		switch (t) {
 			
 		case LM_TK_ALPHA:
-			array.push_back(yylval.i, yyvarcode);
+			if (!isspace(yylval.i) || yyvarcode == LM_TC_TEXTRM)
+				array.push_back(yylval.i, yyvarcode);
 			break;
 
-		case LM_TK_ARGUMENT:
-			array.push_back(new MathMacroArgument(yylval.i));
+		case LM_TK_ARGUMENT: {
+			MathMacroArgument * p = new MathMacroArgument(yylval.i);
+			p->code(yyvarcode);
+			array.push_back(p);
 			break;
+		}
 
 		case LM_TK_SPECIAL:
 			array.push_back(yylval.i, LM_TC_SPECIAL);
@@ -846,27 +854,44 @@ MathArray mathed_parse_cell(string const & str)
 }
 
 
-MathInset * mathed_parse(string const & str)
+MathMacroTemplate * mathed_parse_macro(string const & str)
 {
 	istringstream is(str.c_str());
-	return mathed_parse(is);
+	return mathed_parse_macro(is);
 }
 
 
-MathInset * mathed_parse(istream & is)
+MathMatrixInset * mathed_parse_normal(string const & str)
+{
+	istringstream is(str.c_str());
+	return mathed_parse_normal(is);
+}
+
+
+
+MathMatrixInset * mathed_parse_normal(istream & is)
 {
 	yyis     = &is;
 	yylineno = 0;
-	return mathed_parse();
+	return mathed_parse_normal();
 }
 
 
-MathInset * mathed_parse(LyXLex & lex)
+MathMacroTemplate * mathed_parse_macro(istream & is)
+{
+	yyis     = &is;
+	yylineno = 0;
+	return mathed_parse_macro();
+}
+
+
+
+MathMatrixInset * mathed_parse_normal(LyXLex & lex)
 {
 	yyis     = &lex.getStream();
 	yylineno = lex.GetLineNo();
 
-	MathInset * p = mathed_parse();
+	MathMatrixInset * p = mathed_parse_normal();
 
 	// Update line number
 	lex.setLineNo(yylineno);
@@ -883,4 +908,25 @@ MathInset * mathed_parse(LyXLex & lex)
 	return p;
 }
 
+MathMacroTemplate * mathed_parse_macro(LyXLex & lex)
+{
+	yyis     = &lex.getStream();
+	yylineno = lex.GetLineNo();
+
+	MathMacroTemplate * p = mathed_parse_macro();
+
+	// Update line number
+	lex.setLineNo(yylineno);
+
+	// reading of end_inset
+	while (lex.IsOK()) {
+		lex.nextToken();
+		if (lex.GetString() == "\\end_inset")
+			break;
+		lyxerr[Debug::MATHED] << "InsetFormula::Read: Garbage before \\end_inset,"
+			" or missing \\end_inset!" << endl;
+	}
+
+	return p;
+}
 //]})

@@ -7,13 +7,13 @@
 #include "debug.h"
 
 
-MathMacroTemplate::MathMacroTemplate() :
-	MathInset(1, "undefined"), numargs_(0)
+MathMacroTemplate::MathMacroTemplate()
+	: MathInset(1), numargs_(0)
 {}
 
 
-MathMacroTemplate::MathMacroTemplate(string const & nm, int numargs) :
-	MathInset(1, nm), numargs_(numargs)
+MathMacroTemplate::MathMacroTemplate(string const & nm, int numargs)
+	: MathInset(1, nm), numargs_(numargs)
 {}
 
 

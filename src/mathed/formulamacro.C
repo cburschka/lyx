@@ -43,19 +43,32 @@ using std::ostream;
 extern MathCursor * mathcursor;
 
 InsetFormulaMacro::InsetFormulaMacro()
-	: InsetFormulaBase(new MathMacroTemplate("unknown", 0))
+	: tmacro_(new MathMacroTemplate("unknown", 0))
 {}
 
 
 InsetFormulaMacro::InsetFormulaMacro(string nm, int na)
-	: InsetFormulaBase(new MathMacroTemplate(nm, na))
+	: tmacro_(new MathMacroTemplate(nm, na))
 {
-	MathMacroTable::insertTemplate(tmacro());
+	MathMacroTable::insertTemplate(tmacro_);
+}
+
+
+InsetFormulaMacro::~InsetFormulaMacro()
+{
+#ifdef WITH_WARNINGS
+#warning Need to unregister from MathMacroTable.
+#endif
+	// Instead of unregister an delete leak this until it gets fixed
+	//delete tmacro_;
 }
 
 
 Inset * InsetFormulaMacro::clone(Buffer const &, bool) const
 {
+#ifdef WITH_WARNINGS
+#warning This should not be needed in reality...
+#endif
 	return new InsetFormulaMacro(*this);
 }
 
@@ -63,20 +76,20 @@ Inset * InsetFormulaMacro::clone(Buffer const &, bool) const
 void InsetFormulaMacro::write(ostream & os) const
 {
 	os << "FormulaMacro ";
-	tmacro()->write(os, false);
+	tmacro().write(os, false);
 }
 
 
 int InsetFormulaMacro::latex(ostream & os, bool fragile, 
 			     bool /*free_spacing*/) const
 {
-	tmacro()->write(os, fragile);
+	tmacro().write(os, fragile);
 	return 2;
 }
 
 int InsetFormulaMacro::ascii(ostream & os, int) const
 {
-	tmacro()->write(os, false);
+	tmacro().write(os, false);
 	return 0;
 }
 
@@ -96,35 +109,91 @@ int InsetFormulaMacro::docBook(ostream & os) const
 void InsetFormulaMacro::read(LyXLex & lex)
 {
 	// Awful hack...
-	delete par_;
-	par_ = mathed_parse(lex);
-	MathMacroTable::insertTemplate(tmacro());
-	par_->metrics(LM_ST_TEXT);
+	delete tmacro_;
+	tmacro_ = mathed_parse_macro(lex);
+	MathMacroTable::insertTemplate(tmacro_);
+	metrics();
 }
 
 
 string InsetFormulaMacro::prefix() const
 {
-	return string(" ") + _("Macro: ") + tmacro()->name() + ": ";
+	return string(" ") + _("Macro: ") + tmacro().name() + ": ";
 }
 
 
 int InsetFormulaMacro::ascent(BufferView *, LyXFont const &) const
 {
-	return tmacro()->ascent() + 5;
+	return tmacro().ascent() + 5;
 }
 
 
 int InsetFormulaMacro::descent(BufferView *, LyXFont const &) const
 {
-	return tmacro()->descent() + 5;
+	return tmacro().descent() + 5;
 }
 
 
 int InsetFormulaMacro::width(BufferView *, LyXFont const & f) const
 {
-	tmacro()->metrics(LM_ST_TEXT);
-	return 10 + lyxfont::width(prefix(), f) + tmacro()->width();
+	metrics();
+	return 10 + lyxfont::width(prefix(), f) + tmacro().width();
+}
+
+
+
+UpdatableInset::RESULT
+InsetFormulaMacro::localDispatch(BufferView * bv,
+				 kb_action action, string const & arg)
+{
+	RESULT result = DISPATCHED;
+	switch (action) {
+		case LFUN_MATH_MACROARG: {
+			int const i = lyx::atoi(arg);
+			lyxerr << "inserting macro arg " << i << "\n";
+			if (i > 0 && i <= tmacro().numargs()) {
+				mathcursor->insert(new MathMacroArgument(i));
+				updateLocal(bv, true);
+			} else {
+				lyxerr << "not in range 0.." << tmacro().numargs() << "\n";
+			}
+			break;
+		}
+		
+		default:
+			result = InsetFormulaBase::localDispatch(bv, action, arg);
+	}
+	return result;
+}
+
+
+MathMacroTemplate const & InsetFormulaMacro::tmacro() const
+{
+	return *tmacro_;
+}
+
+
+Inset::Code InsetFormulaMacro::lyxCode() const
+{
+	return Inset::MATHMACRO_CODE;
+}
+
+
+MathInsetTypes InsetFormulaMacro::getType() const
+{
+	return LM_OT_MACRO;
+}
+
+
+MathInset * InsetFormulaMacro::par() const
+{
+	return const_cast<MathMacroTemplate *>(tmacro_);
+}
+
+
+void InsetFormulaMacro::metrics() const
+{
+	par()->metrics(LM_ST_TEXT);
 }
 
 
@@ -152,51 +221,9 @@ void InsetFormulaMacro::draw(BufferView * bv, LyXFont const & f,
 	x += width(bv, font);
 
 	// formula
-	float t = tmacro()->width() + 5;
+	float t = tmacro().width() + 5;
 	x -= t;
-	tmacro()->draw(pain, int(x), baseline);
+	par()->draw(pain, int(x), baseline);
 	x += t;
 }
 
-
-UpdatableInset::RESULT
-InsetFormulaMacro::localDispatch(BufferView * bv,
-				 kb_action action, string const & arg)
-{
-	RESULT result = DISPATCHED;
-	switch (action) {
-		case LFUN_MATH_MACROARG: {
-			int const i = lyx::atoi(arg);
-			lyxerr << "inserting macro arg " << i << "\n";
-			if (i > 0 && i <= tmacro()->numargs()) {
-				mathcursor->insert(new MathMacroArgument(i));
-				updateLocal(bv, true);
-			} else {
-				lyxerr << "not in range 0.." << tmacro()->numargs() << "\n";
-			}
-			break;
-		}
-		
-		default:
-			result = InsetFormulaBase::localDispatch(bv, action, arg);
-	}
-	return result;
-}
-
-
-MathMacroTemplate * InsetFormulaMacro::tmacro() const
-{
-	return static_cast<MathMacroTemplate *>(par_);
-}
-
-
-Inset::Code InsetFormulaMacro::lyxCode() const
-{
-	return Inset::MATHMACRO_CODE;
-}
-
-
-MathInsetTypes InsetFormulaMacro::getType() const
-{
-	return LM_OT_MACRO;
-}

@@ -50,7 +50,6 @@ using std::vector;
 
 extern char const * latex_special_chars;
 
-int greek_kb_flag = 0;
 extern char const * latex_mathenv[];
 MathCursor        * mathcursor = 0;
 
@@ -116,8 +115,7 @@ MathArrayInset * matrixpar(int & idx)
 
 
 
-InsetFormulaBase::InsetFormulaBase(MathInset * par)
-	: par_(par)
+InsetFormulaBase::InsetFormulaBase()
 {
 #ifdef WITH_WARNINGS
 #warning This is needed as long the math parser is not re-entrant
@@ -127,21 +125,11 @@ InsetFormulaBase::InsetFormulaBase(MathInset * par)
 }
 
 
-InsetFormulaBase::InsetFormulaBase(InsetFormulaBase const & f)
-	: UpdatableInset(f), par_(f.par_->clone())
-{}
-
-
-InsetFormulaBase::~InsetFormulaBase()
-{
-	delete par_;
-}
-
-
 void InsetFormulaBase::read(Buffer const *, LyXLex & lex)
 {
 	read(lex);
 }
+
 
 void InsetFormulaBase::write(Buffer const *, ostream & os) const
 {
@@ -204,6 +192,7 @@ void InsetFormulaBase::edit(BufferView * bv, int x, int /*y*/, unsigned int)
 void InsetFormulaBase::edit(BufferView * bv, bool front)
 {
 #warning Please have a look if this is right (Jug)
+#warning Does not look wrong... although I do not know what it is supposed to do (Andre)
 	edit(bv, front ? 0 : 1, 0, 0);
 }
 
@@ -225,8 +214,8 @@ void InsetFormulaBase::insetUnlock(BufferView * bv)
 void InsetFormulaBase::getCursorPos(BufferView *, int & x, int & y) const
 {
 	mathcursor->getPos(x, y);
-	x -= par_->xo();
-	y -= par_->yo();
+	x -= par()->xo();
+	y -= par()->yo();
 }
 
 
@@ -241,8 +230,8 @@ void InsetFormulaBase::toggleInsetCursor(BufferView * bv)
 		int x;
 		int y;
 		mathcursor->getPos(x, y);
-		//x -= par_->xo();
-		y -= par_->yo();
+		//x -= par()->xo();
+		y -= par()->yo();
 		int asc;
 		int desc;
 		math_font_max_dim(LM_TC_TEXTRM, LM_ST_TEXT, asc, desc);
@@ -260,8 +249,8 @@ void InsetFormulaBase::showInsetCursor(BufferView * bv, bool)
 			int x;
 			int y;
 			mathcursor->getPos(x, y);
-			x -= par_->xo();
-			y -= par_->yo();
+			x -= par()->xo();
+			y -= par()->yo();
 			int asc;
 			int desc;
 			math_font_max_dim(LM_TC_TEXTRM, LM_ST_TEXT, asc, desc);
@@ -299,19 +288,13 @@ void InsetFormulaBase::updateLocal(BufferView * bv, bool dirty)
 }
 
 
-void InsetFormulaBase::metrics() const
-{
-	const_cast<MathInset *>(par_)->metrics(LM_ST_TEXT);
-}
-
-
 void InsetFormulaBase::insetButtonRelease(BufferView * bv,
 					  int x, int y, int /*button*/)
 {
 	if (mathcursor) {
 		hideInsetCursor(bv);
-		x += par_->xo();
-		y += par_->yo();
+		x += par()->xo();
+		y += par()->yo();
 		mathcursor->setPos(x, y);
 		showInsetCursor(bv);
 		if (sel_flag) {
@@ -343,14 +326,14 @@ void InsetFormulaBase::insetMotionNotify(BufferView * bv,
 	if (sel_x && sel_y && abs(x-sel_x) > 4 && !sel_flag) {
 		sel_flag = true;
 		hideInsetCursor(bv);
-		mathcursor->setPos(sel_x + par_->xo(), sel_y + par_->yo());
+		mathcursor->setPos(sel_x + par()->xo(), sel_y + par()->yo());
 		mathcursor->selStart();
 		showInsetCursor(bv);
 		mathcursor->getPos(sel_x, sel_y);
 	} else if (sel_flag) {
 		hideInsetCursor(bv);
-		x += par_->xo();
-		y += par_->yo();
+		x += par()->xo();
+		y += par()->yo();
 		mathcursor->setPos(x, y);
 		showInsetCursor(bv);
 		mathcursor->getPos(x, y);
@@ -375,6 +358,8 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 {
 	//lyxerr << "InsetFormulaBase::LocalDispatch: act: " << action
 	//	<< " arg: '" << arg << "' cursor: " << mathcursor << "\n";
+
+	static int greek_kb_flag = 0;
 
 	if (!mathcursor) 
 		return UNDISPATCHED;
@@ -499,7 +484,7 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 		int y1;
 		istringstream is(arg.c_str());
 		is >> x >> y;
-		par_->getXY(x1, y1);
+		par()->getXY(x1, y1);
 		mathcursor->setPos(x1 + x, y1 + y);
 		updateLocal(bv, false);
 	}
@@ -924,11 +909,6 @@ LyXFont const InsetFormulaBase::convertFont(LyXFont const & f) const
 	font.setLatex(LyXFont::OFF);
 #endif
 	return font;
-}
-
-MathInset * InsetFormulaBase::par() const
-{
-	return par_;
 }
 
 

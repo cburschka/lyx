@@ -51,19 +51,25 @@ extern MathCursor * mathcursor;
 
 
 InsetFormula::InsetFormula()
-	: InsetFormulaBase(new MathMatrixInset)
+	: par_(new MathMatrixInset)
 {}
 
 
 InsetFormula::InsetFormula(MathInsetTypes t)
-	: InsetFormulaBase(new MathMatrixInset(t))
+	: par_(new MathMatrixInset(t))
 {}
 
 
-InsetFormula::InsetFormula(string const & s)
-	: InsetFormulaBase(mathed_parse(s))
+InsetFormula::InsetFormula(string const & s) 
+	: par_(mathed_parse_normal(s))
 {
 	metrics();
+}
+
+
+InsetFormula::~InsetFormula()
+{
+	delete par_;
 }
 
 
@@ -82,14 +88,14 @@ void InsetFormula::write(ostream & os) const
 
 int InsetFormula::latex(ostream & os, bool fragile, bool) const
 {
-	par()->write(os, fragile);
+	par_->write(os, fragile);
 	return 1;
 }
 
 
 int InsetFormula::ascii(ostream & os, int) const
 {
-	par()->write(os, false);
+	par_->write(os, false);
 	return 1;
 }
 
@@ -108,7 +114,7 @@ int InsetFormula::docBook(ostream & os) const
 
 void InsetFormula::read(LyXLex & lex)
 {
-	par(mathed_parse(lex));
+	par(mathed_parse_normal(lex));
 	metrics();
 }
 
@@ -123,9 +129,9 @@ void InsetFormula::draw(BufferView * bv, LyXFont const &,
 	Painter & pain = bv->painter();
 
 	metrics();
-	int w = par()->width();
-	int h = par()->height();
-	int a = par()->ascent();
+	int w = par_->width();
+	int h = par_->height();
+	int a = par_->ascent();
 	pain.fillRectangle(x, y - a, w, h, LColor::mathbg);
 
 	if (mathcursor && mathcursor->formula() == this) {
@@ -133,8 +139,8 @@ void InsetFormula::draw(BufferView * bv, LyXFont const &,
 		pain.rectangle(x, y - a, w, h, LColor::mathframe);
 	}
 
-	par()->draw(pain, x, y);
-	xx += par()->width();
+	par_->draw(pain, x, y);
+	xx += par_->width();
 
 	setCursorVisible(false);
 }
@@ -142,12 +148,13 @@ void InsetFormula::draw(BufferView * bv, LyXFont const &,
 
 void InsetFormula::metrics() const 
 {
-	const_cast<MathInset *>(par_)->metrics(display() ? LM_ST_DISPLAY : LM_ST_TEXT);
+	const_cast<MathMatrixInset *>(par_)
+		->	metrics(display() ? LM_ST_DISPLAY : LM_ST_TEXT);
 }
 
 vector<string> const InsetFormula::getLabelList() const
 {
-	return par()->getLabelList();
+	return par_->getLabelList();
 }
 
 
@@ -174,9 +181,9 @@ InsetFormula::localDispatch(BufferView * bv, kb_action action,
 			//lyxerr << "toggling all numbers\n";
 			if (display()) {
 				bv->lockedInsetStoreUndo(Undo::INSERT);
-				bool old = par()->numberedType();
-				for (int row = 0; row < par()->nrows(); ++row)
-					par()->numbered(row, !old);
+				bool old = par_->numberedType();
+				for (int row = 0; row < par_->nrows(); ++row)
+					par_->numbered(row, !old);
 				bv->owner()->message(old ? _("No number") : _("Number"));
 				updateLocal(bv, true);
 			}
@@ -189,9 +196,9 @@ InsetFormula::localDispatch(BufferView * bv, kb_action action,
 			if (display()) {
 				bv->lockedInsetStoreUndo(Undo::INSERT);
 				int row = mathcursor->row();
-				bool old = par()->numbered(row);
+				bool old = par_->numbered(row);
 				bv->owner()->message(old ? _("No number") : _("Number"));
-				par()->numbered(row, !old);
+				par_->numbered(row, !old);
 				updateLocal(bv, true);
 			}
 			break;
@@ -202,7 +209,7 @@ InsetFormula::localDispatch(BufferView * bv, kb_action action,
 			bv->lockedInsetStoreUndo(Undo::INSERT);
 
 			int row = mathcursor->row();
-			string old_label = par()->label(row);
+			string old_label = par_->label(row);
 			string new_label = arg;
 
 			if (new_label.empty()) {
@@ -223,13 +230,13 @@ InsetFormula::localDispatch(BufferView * bv, kb_action action,
 
 			if (!new_label.empty()) {
 				lyxerr << "setting label to '" << new_label << "'\n";
-				par()->numbered(row, true);
+				par_->numbered(row, true);
 			}
 
 			if (!new_label.empty() && bv->ChangeRefsIfUnique(old_label, new_label))
 				bv->redraw();
 
-			par()->label(row, new_label);
+			par_->label(row, new_label);
 
 			updateLocal(bv, true);
 			break;
@@ -247,7 +254,7 @@ InsetFormula::localDispatch(BufferView * bv, kb_action action,
 			int x;
 			int y;
 			mathcursor->getPos(x, y);
-			par()->mutate(arg);
+			par_->mutate(arg);
 			mathcursor->setPos(x, y);
 			mathcursor->normalize();
 			updateLocal(bv, true);
@@ -259,10 +266,10 @@ InsetFormula::localDispatch(BufferView * bv, kb_action action,
 			int x;
 			int y;
 			mathcursor->getPos(x, y);
-			if (par()->getType() == LM_OT_SIMPLE)
-				par()->mutate(LM_OT_EQUATION);
+			if (par_->getType() == LM_OT_SIMPLE)
+				par_->mutate(LM_OT_EQUATION);
 			else
-				par()->mutate(LM_OT_SIMPLE);
+				par_->mutate(LM_OT_SIMPLE);
 			mathcursor->setPos(x, y);
 			mathcursor->normalize();
 			updateLocal(bv, true);
@@ -273,7 +280,7 @@ InsetFormula::localDispatch(BufferView * bv, kb_action action,
 		{
 			string const clip = bv->getClipboard();
   		if (!clip.empty())
-				par(mathed_parse(clip));
+				par(mathed_parse_normal(clip));
 			break;
 		}
 
@@ -290,33 +297,33 @@ void InsetFormula::handleExtern(const string & arg, BufferView *)
 	//string outfile = lyx::tempName("maple.out");
 	string outfile = "/tmp/lyx2" + arg + ".out";
 	ostringstream os;
-	par()->writeNormal(os); 
+	par_->writeNormal(os); 
 	string code = os.str().c_str();
 	string script = "lyx2" + arg + " '" + code + "' " + outfile;
 	lyxerr << "calling: " << script << endl;
 	Systemcalls cmd(Systemcalls::System, script, 0);
 
 	ifstream is(outfile.c_str());
-	par(mathed_parse(is));
+	par(mathed_parse_normal(is));
 	metrics();
 }
 
 bool InsetFormula::display() const
 {
-	return par()->getType() != LM_OT_SIMPLE;
+	return par_->getType() != LM_OT_SIMPLE;
 }
 
 
-MathMatrixInset * InsetFormula::par() const
+MathInset * InsetFormula::par() const
 {
-	return static_cast<MathMatrixInset *>(par_);
+	return par_;
 }
 
 
-void InsetFormula::par(MathInset * p)
+void InsetFormula::par(MathMatrixInset * p)
 { 
 	delete par_;
-	par_ = p ? p : new MathMatrixInset;
+	par_ = p ? static_cast<MathMatrixInset *>(p) : new MathMatrixInset;
 }
 
 
@@ -328,7 +335,7 @@ Inset::Code InsetFormula::lyxCode() const
 
 void InsetFormula::validate(LaTeXFeatures & features) const
 {
-	par()->validate(features);
+	par_->validate(features);
 }
 
 bool InsetFormula::insetAllowed(Inset::Code code) const
@@ -339,24 +346,24 @@ bool InsetFormula::insetAllowed(Inset::Code code) const
 
 int InsetFormula::ascent(BufferView *, LyXFont const &) const
 {
-	return par()->ascent() + 1;
+	return par_->ascent() + 1;
 }
 
 
 int InsetFormula::descent(BufferView *, LyXFont const &) const
 {
-	return par()->descent() + 1;
+	return par_->descent() + 1;
 }
 
 
 int InsetFormula::width(BufferView *, LyXFont const &) const
 {
 	metrics();
-	return par()->width();
+	return par_->width();
 }
 
 
 MathInsetTypes InsetFormula::getType() const
 {
-	return par()->getType();;
+	return par_->getType();;
 }

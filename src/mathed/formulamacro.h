@@ -37,6 +37,8 @@ public:
 	///
 	explicit InsetFormulaMacro(string name, int na);
 	///
+	~InsetFormulaMacro();
+	///
 	int ascent(BufferView *, LyXFont const &) const;
 	///
 	int descent(BufferView *, LyXFont const &) const;
@@ -66,11 +68,17 @@ public:
 	RESULT localDispatch(BufferView *, kb_action, string const &);
 	///
 	MathInsetTypes getType() const;
+	///
+	MathInset * par() const;
+	///
+	void metrics() const;
 private:
+	///
+	MathMacroTemplate const & tmacro() const;
 	/// prefix in inset
 	string prefix() const;
 	///
-	MathMacroTemplate * tmacro() const;
+	MathMacroTemplate const * tmacro_;
 };
 
 #endif

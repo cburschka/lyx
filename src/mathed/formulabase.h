@@ -32,12 +32,8 @@ class MathInset;
 ///
 class InsetFormulaBase : public UpdatableInset {
 public:
-	/// 
-	InsetFormulaBase(InsetFormulaBase const & p);
 	///
-	explicit InsetFormulaBase(MathInset *);
-	///
-	virtual ~InsetFormulaBase();
+	InsetFormulaBase();
 	///
 	virtual int ascent(BufferView *, LyXFont const &) const = 0;
 	///
@@ -120,14 +116,12 @@ public:
 	///
 	virtual std::vector<string> const getLabelList() const;
 	///
-	MathInset * par() const;
+	virtual MathInset * par() const = 0;
 	///
-	virtual void metrics() const;
+	virtual void metrics() const = 0;
 protected:
 	///
 	virtual void updateLocal(BufferView * bv, bool mark_dirty);
-	///
-	MathInset * par_;
 private:
 	/// unimplemented
 	void operator=(const InsetFormulaBase &);

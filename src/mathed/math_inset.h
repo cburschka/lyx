@@ -70,10 +70,6 @@ public:
 	///
 	virtual int height() const;
 	///
-	virtual int limits() const;
-	///
-	virtual void limits(int);
-	///
 	string const & name() const;
 	///
 	virtual void setName(string const & n);
@@ -181,6 +177,7 @@ public:
 	virtual bool isArray() const { return false; }
 	///
 	virtual bool isActive() const { return nargs() > 0; }
+	/// identifies insets that display scripts directly above and below
 
 
 	///
@@ -195,6 +192,12 @@ public:
 
 	///
 	static int workwidth;
+
+	/// the inherited text style
+	MathTextCodes code() const;
+	///
+	void code(MathTextCodes t);
+
 protected:
 	/// usually the LaTeX name of the thingy
 	string name_;
@@ -208,6 +211,8 @@ protected:
 	void size(MathStyles s);
 	/// the used font size
 	MathStyles size_;
+	/// the inherited text style
+	MathTextCodes code_;
 
 protected:
 	///

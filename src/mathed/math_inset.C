@@ -28,7 +28,7 @@ int MathInset::workwidth;
 
 MathInset::MathInset(int nargs, string const & name)
 	: name_(name), width_(0), ascent_(0), descent_(0),
-		size_(LM_ST_DISPLAY), cells_(nargs), xo_(0), yo_(0)
+		size_(LM_ST_DISPLAY), code_(LM_TC_MIN), cells_(nargs), xo_(0), yo_(0)
 {}
 
 
@@ -56,16 +56,6 @@ int MathInset::height() const
 }
 
 
-int MathInset::limits() const
-{
-	return false;
-}
-
-
-void MathInset::limits(int)
-{}
-
-
 string const & MathInset::name() const
 {
 	return name_;
@@ -88,6 +78,7 @@ void MathInset::size(MathStyles s)
 {
 	size_ = s;
 }
+
 
 std::ostream & operator<<(std::ostream & os, MathInset const & inset)
 {
@@ -126,11 +117,11 @@ int MathInset::nargs() const
 }
 
 
-
 MathXArray & MathInset::xcell(int i)
 {
 	return cells_[i];
 }
+
 
 MathXArray const & MathInset::xcell(int i) const
 {
@@ -138,11 +129,11 @@ MathXArray const & MathInset::xcell(int i) const
 }
 
 
-
 MathArray & MathInset::cell(int i)
 {
 	return cells_[i].data_;
 }
+
 
 MathArray const & MathInset::cell(int i) const
 {
@@ -158,12 +149,14 @@ void MathInset::substitute(MathArray & array, MathMacro const & m) const
 	array.push_back(p);
 }
 
+
 void MathInset::metrics(MathStyles st)
 {
 	size_ = st;
 	for (int i = 0; i < nargs(); ++i)
 		xcell(i).metrics(st);
 }
+
 
 void MathInset::draw(Painter & pain, int x, int y)
 {
@@ -205,6 +198,7 @@ bool MathInset::idxLeft(int & idx, int & pos) const
 	return idxPrev(idx, pos);
 }
 
+
 bool MathInset::idxUp(int &, int &) const
 {
 	return false;
@@ -225,6 +219,7 @@ bool MathInset::idxFirst(int & i, int & pos) const
 	pos = 0;
 	return true;
 }
+
 
 bool MathInset::idxLast(int & i, int & pos) const
 {
@@ -266,11 +261,13 @@ bool MathInset::idxFirstDown(int &, int &) const
 	return false;
 }
 
+
 void MathInset::idxDelete(int &, bool & popit, bool & deleteit)
 {
 	popit    = false;
 	deleteit = false;
 }
+
 
 void MathInset::idxDeleteRange(int, int)
 {}
@@ -349,11 +346,13 @@ bool MathInset::covers(int x, int y) const
 		y <= yo_ + descent_;
 }
 
+
 void MathInset::validate(LaTeXFeatures & features) const
 {
 	for (int i = 0; i < nargs(); ++i)
 		cell(i).validate(features);
 }
+
 
 std::vector<int> MathInset::idxBetween(int from, int to) const
 {
@@ -361,4 +360,16 @@ std::vector<int> MathInset::idxBetween(int from, int to) const
 	for (int i = from; i <= to; ++i)
 		res.push_back(i);
 	return res;
+}
+
+
+MathTextCodes MathInset::code() const
+{
+	return code_;
+}
+
+
+void MathInset::code(MathTextCodes t)
+{
+	code_ = t;
 }

@@ -5,6 +5,9 @@
 
 	* math_matrixinset.C: fix mis-alignment of eqnarray columns
 
+	*	formula*.[Ch]: seperation of the "pimpl" MathInset * into
+	MathMatrixInset * and MathMacroTemplate * to save a few casts
+
 2001-07-25  André Pönitz  <poenitz@gmx.net>
 	
 	* formulabase.C: re-enable 'space enlargement' feature

@@ -36,6 +36,8 @@ public:
 	///
 	explicit InsetFormula(string const &);
 	///
+	~InsetFormula();
+	///
 	int ascent(BufferView *, LyXFont const &) const;
 	///
 	int descent(BufferView *, LyXFont const &) const;
@@ -75,7 +77,7 @@ public:
 	///
 	void handleExtern(string const & arg, BufferView * bv);
 	///
-	MathMatrixInset * par() const;
+	MathInset * par() const;
 	///
 	bool display() const;
 	///
@@ -84,6 +86,8 @@ public:
 	MathInsetTypes getType() const;
 private:
 	/// Safe setting of contents
-	void par(MathInset *);
+	void par(MathMatrixInset *);
+	///
+	MathMatrixInset * par_;
 };
 #endif

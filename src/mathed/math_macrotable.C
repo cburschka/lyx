@@ -32,9 +32,9 @@ void MathMacroTable::dump()
 }
 
 
-void MathMacroTable::insertTemplate(MathMacroTemplate * p)
+void MathMacroTable::insertTemplate(MathMacroTemplate const * p)
 {
-	macro_table[p->name()] = p;
+	macro_table[p->name()] = const_cast<MathMacroTemplate *>(p);
 }
 
 

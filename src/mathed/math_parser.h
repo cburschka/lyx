@@ -29,7 +29,8 @@
 #include "symbol_def.h"
 
 class MathArray;
-class MathInset;
+class MathMatrixInset;
+class MathMacroTemplate;
 class LyXLex;
 
 ///
@@ -120,8 +121,12 @@ latexkeys const * in_word_set(string const & str);
 latexkeys const * lm_get_key_by_id(unsigned int id, short tc);
 
 
-MathInset * mathed_parse(string const &);
-MathInset * mathed_parse(std::istream &);
-MathInset * mathed_parse(LyXLex &);
+MathMatrixInset * mathed_parse_normal(string const &);
+MathMatrixInset * mathed_parse_normal(std::istream &);
+MathMatrixInset * mathed_parse_normal(LyXLex &);
+
+MathMacroTemplate * mathed_parse_macro(string const &);
+MathMacroTemplate * mathed_parse_macro(std::istream &);
+MathMacroTemplate * mathed_parse_macro(LyXLex &);
 
 #endif
