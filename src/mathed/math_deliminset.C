@@ -14,6 +14,20 @@ MathDelimInset::MathDelimInset(latexkeys const * l, latexkeys const * r)
 {}
 
 
+MathDelimInset::MathDelimInset(int l, int r)
+	: MathNestInset(1)
+{
+	string ls;
+	ls += l;
+	left_ = in_word_set(ls);
+
+	string rs;
+	rs += r;
+	right_ = in_word_set(rs);
+}
+
+
+
 MathInset * MathDelimInset::clone() const
 {   
 	return new MathDelimInset(*this);

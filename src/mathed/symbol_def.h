@@ -7,6 +7,7 @@
 
 enum Math_Symbols_enum {
 // Accents
+	LM_backslash      = '\\',
 	LM_acute          = '\'',
 	LM_grave          =  '`',
 	LM_hat            = '^',
