@@ -33,6 +33,11 @@ QLyXKeySym::QLyXKeySym()
 void QLyXKeySym::set(QKeyEvent * ev)
 {
 	key_ = ev->key();
+	if (ev->text().isNull()) {
+		lyxerr[Debug::KEY] << "keyevent has isNull() text !" << endl;
+		text_ = "";
+		return;
+	}
 	text_ = ev->text();
 	lyxerr[Debug::KEY] << "Setting key to " << key_ << ", " <<  text_.latin1() << endl;
 }
