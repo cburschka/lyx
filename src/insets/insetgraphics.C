@@ -123,10 +123,6 @@ string const RemoveExtension(string const & filename)
 	return ChangeExtension(filename, string());
 }
 
-} // namespace anon
-
-
-namespace {
 
 string const uniqueID()
 {
@@ -441,8 +437,10 @@ void InsetGraphics::readInsetGraphics(LyXLex & lex)
 // FormatVersion < 1.0  (LyX < 1.2)
 void InsetGraphics::readFigInset(LyXLex & lex)
 {
-	std::vector<string> const oldUnits =
-		getVectorFromString("pt,cm,in,p%,c%");
+	std::vector<string> const oldUnitsWidth =
+		getVectorFromString("pt, cm, in, text%, col%");
+	std::vector<string> const oldUnitsHeight =
+		getVectorFromString("pt, cm, in, theight%");
 	bool finished = false;
 	// set the display default
 	if (lyxrc.display_graphics == "mono")
@@ -507,7 +505,14 @@ void InsetGraphics::readFigInset(LyXLex & lex)
 				params_.scale = lex.getInteger();
 				params_.size_type = InsetGraphicsParams::SCALE;
 			    } else {
-				params_.width = LyXLength(lex.getString()+oldUnits[i]);
+				string const value = lex.getString();
+				lyxerr[Debug::GRAPHICS]
+					<< "readFiginset::oldWidth: "
+					<< value << oldUnitsWidth[i] << endl;
+				params_.width = LyXLength(value + oldUnitsWidth[i]);
+				lyxerr[Debug::GRAPHICS]
+					<< "readFiginset::newWidth: "
+					<< params_.width.asString() << endl;
 				params_.size_type = InsetGraphicsParams::WH;
 			    }
 			}
@@ -516,8 +521,15 @@ void InsetGraphics::readFigInset(LyXLex & lex)
 		    if (lex.next()) {
 			int i = lex.getInteger();
 			if (lex.next()) {
-			    params_.height = LyXLength(lex.getString()+oldUnits[i]);
-			    params_.size_type = InsetGraphicsParams::WH;
+                               string const value = lex.getString();
+                               lyxerr[Debug::GRAPHICS]
+				       << "readFiginset::oldHeight: "
+                                       << value << oldUnitsHeight[i] << endl;
+                               params_.height = LyXLength(value + oldUnitsHeight[i]);
+                               lyxerr[Debug::GRAPHICS]
+				       << "readFiginset::newHeight: "
+                                       << params_.height.asString() << endl;
+                               params_.size_type = InsetGraphicsParams::WH;
 			}
 		    }
 		}
@@ -634,8 +646,8 @@ string const InsetGraphics::prepareFile(Buffer const *buf) const
 	// original file. 
 	// to allow files with the same name in different dirs
 	// we manipulate the original file "any.dir/file.ext" 
-	// to "any_dir_file.ext"! changing the dots in the  
-	// dirname is important for the use of ChangeExtension
+       // to "any_dir_file.ext"!
+       // changing the dot is important for the use of ChangeExtension
 	string temp_file(orig_file);
 	if (lyxrc.use_tempdir) {
 		string const ext_tmp = GetExtension(orig_file);

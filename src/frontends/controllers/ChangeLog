@@ -1,3 +1,8 @@
+2002-06-20  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* ControlGraphics.C (grfx_formats): return the extension and not the
+	name of the format (i.e. "doc" and not "word")
+
 2002-06-13  Angus Leeming  <leeming@lyx.org>
 
 	Fixes needed to compile with Compaq cxx 6.3.

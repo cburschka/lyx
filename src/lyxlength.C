@@ -45,22 +45,23 @@ string const convertOldRelLength(string const & oldLength)
 	// we can have only one or none of the following
 	if (oldLength.find("c%") != string::npos) {
 		return subst(oldLength,"c%","col%");
-		    
+		
 	} else if (oldLength.find("t%") != string::npos) {
-		if (oldLength.find("text%") != string::npos)
-		    return oldLength;
+		if (oldLength.find("text%") != string::npos ||
+		    oldLength.find("height%") != string::npos)
+			return oldLength;
 		else
-		    return subst(oldLength,"t%","text%");
-
+			return subst(oldLength,"t%","text%");
+		
 	} else if (oldLength.find("l%") != string::npos) {
 		if (oldLength.find("col%") != string::npos)
-		    return oldLength;
+			return oldLength;
 		else
-		    return subst(oldLength,"l%","line%");
-
+			return subst(oldLength,"l%","line%");
+		
 	} else if (oldLength.find("p%") != string::npos)
 		return subst(oldLength,"p%","page%");
-
+	
 	return oldLength;
 }
 } // end anon
@@ -98,24 +99,32 @@ string const LyXLength::asLatexString() const
 	ostringstream buffer;
 	switch (unit_) {
 	case PW:
-	    buffer << abs(static_cast<int>(val_/100)) << "."
-		   << abs(static_cast<int>(val_)%100) << "\\textwidth";
-	    break;
+		buffer << abs(static_cast<int>(val_/100)) << "."
+		       << abs(static_cast<int>(val_)%100) << "\\textwidth";
+		break;
 	case PE:
-	    buffer << abs(static_cast<int>(val_/100)) << "."
-		   << abs(static_cast<int>(val_)%100) << "\\columnwidth";
-	    break;
+		buffer << abs(static_cast<int>(val_/100)) << "."
+		       << abs(static_cast<int>(val_)%100) << "\\columnwidth";
+		break;
 	case PP:
-	    buffer << abs(static_cast<int>(val_/100)) << "."
-		   << abs(static_cast<int>(val_)%100) << "\\paperwidth";
-	    break;
+		buffer << abs(static_cast<int>(val_/100)) << "."
+		       << abs(static_cast<int>(val_)%100) << "\\paperwidth";
+		break;
 	case PL:
-	    buffer << abs(static_cast<int>(val_/100)) << "."
-		   << abs(static_cast<int>(val_)%100) << "\\linewidth";
-	    break;
+		buffer << abs(static_cast<int>(val_/100)) << "."
+		       << abs(static_cast<int>(val_)%100) << "\\linewidth";
+		break;
+	case PH:
+		buffer << abs(static_cast<int>(val_/100)) << "."
+		       << abs(static_cast<int>(val_)%100) << "\\paperheight";
+		break;
+	case TH:
+		buffer << abs(static_cast<int>(val_/100)) << "."
+		       << abs(static_cast<int>(val_)%100) << "\\textheight";
+		break;
 	default:
-	    buffer << val_ << unit_name[unit_]; // setw?
-	    break;
+		buffer << val_ << unit_name[unit_]; // setw?
+		break;
 	}
 	return buffer.str().c_str();
 }
@@ -230,6 +239,10 @@ int LyXLength::inPixels(int default_width, int default_height) const
 	case LyXLength::PP:
 	case LyXLength::PL:
 		result = val_ * default_width / 100;
+		break;
+	case LyXLength::PH:
+	case LyXLength::TH:
+		result = val_ * default_height / 100;
 		break;
 	case LyXLength::UNIT_NONE:
 		result = 0;  // this cannot happen

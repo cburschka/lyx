@@ -8,7 +8,8 @@ int const num_units = LyXLength::UNIT_NONE;
 char const * unit_name[num_units] = { 
 	"sp", "pt", "bp", "dd", "mm", "pc", "cc", "cm",
 	"in", "ex", "em", "mu", 
-	"text%",  "col%", "page%", "line%" };
+	"text%",  "col%", "page%", "line%",     // width units
+	"theight%", "pheight%" };       
 
 
 LyXLength::UNIT unitFromString(string const & data)

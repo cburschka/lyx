@@ -1,3 +1,12 @@
+2002-05-17  Herbert Voss  <voss@lyx.org>
+
+	* FormGraphics.C: change a comment-text
+
+	* xforms_helpers.h: add the forgotten vertical relative Lengths
+	pheight (paperheight) and theight (textheight). The short form
+	is to prevent crashes in fact of the static choice-width in
+	some GUI's.
+
 2002-06-18  John Levon  <moz@compsoc.man.ac.uk>
 
 	* FormSearch.h:

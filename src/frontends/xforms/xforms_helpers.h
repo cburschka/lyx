@@ -26,7 +26,8 @@ class LyXLength;
 
 // what we always need for lengths
 string const choice_Length_All =
-    "cm|mm|in|text%%|col%%|page%%|line%%|ex|em|pt|sp|bp|dd|pc|cc|mu";
+    "cm|mm|in|text%%|col%%|page%%|line%%|theight%%|pheight%%"
+    "|ex|em|pt|sp|bp|dd|pc|cc|mu";
 string const choice_Length_WithUnit =
     "cm|mm|in|ex|em|pt|sp|bp|dd|pc|cc|mu";	// all with a Unit
 

@@ -77,7 +77,7 @@ vector<string> const grfx_formats()
 		vector<string>::const_iterator to_it = native_formats.begin();
 		for (; to_it != to_end; ++to_it) {
 			if (gconverter.isReachable(from, *to_it)) {
-				browsable_formats.push_back(from);
+				browsable_formats.push_back(from_it->extension());
 				break;
 			}
 		}

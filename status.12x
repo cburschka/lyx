@@ -41,15 +41,23 @@ What's new
 
 - re-read correctly graphics insets when file name contains a comma
 
+- fix rotation angle of images to be the same as in latex output
+
+- fix the graphics inset file browser to use the right list of
+  extensions (instead of list of formats)
+
+- fix support for 1.1.6 graphics files scaled as percentage of width
+  or height
+
 - do not ignore zero-length vertical spacing with 'keep' flag.
 
 - fix drawing problems for collapsed ERT insets
 
-- fix rotation angle of images to be the same as in latex output
-
 - fix bug where toolbar tips would not work at startup
 
 - disable 'Load' button of 'include file' dialog for verbatim include
+
+- highlight the search string on opening the Find&Replace dialog
 
 - fix translation of "reset" and "no change" in language combobox
 
@@ -84,6 +92,8 @@ What's new
   supported. 
 
 - honor --with-extra-XXX when searching for AikSaurus library
+
+- fix search for pspell library
 
 - fix support for alpha-based systems in boost library
 
