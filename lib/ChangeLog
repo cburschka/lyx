@@ -1,3 +1,11 @@
+2005-02-03  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* reLyX/configure.ac: use AC_CANONICAL_TARGET; use 
+	RELYX_USE_PACKAGING as in main configure. 
+
+	* reLyX/acinclude.m4 (RELYX_ERROR, RELYX_USE_PACKAGING): new
+	macros. 
+
 2005-01-24  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* ui/classic.ui, ui/stdmenus.ui: add output-changes.

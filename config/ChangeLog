@@ -1,3 +1,8 @@
+2005-02-03  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* lyxinclude.m4 (LYX_USE_PACKAGING): remove single quotes around
+	prefix in the windows case; set libdir correctly.
+
 2005-01-20  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* common.am (pch-file): new target, used recursively by target
