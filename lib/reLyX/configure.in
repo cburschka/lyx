@@ -1,8 +1,12 @@
 dnl Process with autoconf to generate configure script   -*- sh -*-
 AC_INIT(reLyX.in)
 AC_PREREQ(2.13) dnl We want to use autoconf 2.13
-AC_PREFIX_PROGRAM(reLyX)
 AC_CONFIG_AUX_DIR(../../config)
+
+AC_PREFIX_PROGRAM(reLyX)
+# fix the value of the prefixes.
+test "x$prefix" = xNONE && prefix=$ac_default_prefix
+test "x$exec_prefix" = xNONE && exec_prefix='${prefix}'
 
 dnl PACKAGE=reLyX
 dnl Do this to install in $datadir/lyx/reLyX instead of $datadir/reLyX/reLyX

@@ -2,7 +2,6 @@ AUTOMAKE_OPTIONS = foreign
 MAINTAINERCLEANFILES = Makefile.in
 noinst_PROGRAMS = insets.o
 LIBS=
-LDFLAGS=
 ETAGS_ARGS = --c++
 INCLUDES = -I${srcdir}/../ 
 CXXLINK = $(LD) $(LDFLAGS)-r -o $(noinst_PROGRAMS)

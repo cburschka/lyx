@@ -2,7 +2,6 @@ AUTOMAKE_OPTIONS = foreign
 MAINTAINERCLEANFILES = Makefile.in
 noinst_PROGRAMS = mathed.o
 LIBS=
-LDFLAGS=
 ETAGS_ARGS = --c++
 INCLUDES = -I${top_srcdir}/images -I${srcdir}/../ 
 CXXLINK = $(LD) $(LDFLAGS) -r -o $(noinst_PROGRAMS)

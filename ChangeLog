@@ -1,4 +1,33 @@
+1999-11-18  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/{insets,mathed}/Makefile.am: do not declare an empty
+	LDFLAGS, so that it can be set at configure time (useful on Irix
+	for -n32 flag).
+
+	* lib/reLyX/configure.in: make sure that the prefix is set
+	correctly in LYX_DIR.
+
+1999-11-18  Andre' Poenitz <poenitz@mathematik.tu-chemnitz.de>
+
+	* src/commandtags.h: introduction of a new tag 'LFUN_SEQUENCE' to
+	be used by 'command-sequence' this allows to bind a key to a
+	sequence of LyX-commands
+	(Example: 'command-sequence math-insert alpha; math-insert beta;")
+
+	* src/LyXAction.C: add "command-sequence"
+
+	* src/LyXFunction.C: handling of "command-sequence"
+
+	* src/LyXFunction.[hC] changed LyXFunc::Dispatch(string const
+	 &cmd, string const &arg) to LyXFunc::Dispatch(string const& s)
+
+	* src/lyxserver.C, src/minibuffer.C: Use this new interface
+
 1999-11-17  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/buffer.C (writeFile): Do not output a comment givinf user
+	and date at the beginning of a .lyx file. This is useless and
+	annoys cvs anyway; update version number to 1.1.
 
 	* src/Makefile.am (LYX_DIR): add this definition, so that a
 	default path is hardcoded in LyX.
