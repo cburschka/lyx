@@ -1,9 +1,8 @@
  /*
-*  File:        formula.C
-*  Purpose:     Implementation of formula inset
+*  File:        formulabase.C
+*  Purpose:     Implementation of common parts of the LyX  math insets
 *  Author:      Alejandro Aguilar Sierra <asierra@servidor.unam.mx>
 *  Created:     January 1996
-*  Description: Allows the edition of math paragraphs inside Lyx.
 *
 *  Copyright: 1996-1998 Alejandro Aguilar Sierra
 *
@@ -692,8 +691,7 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 		break;
 
 	default:
-		lyxerr << "Closed by action " << action << endl;
-		result = FINISHED_RIGHT;
+		result = UNDISPATCHED;
 	}
 
 	//mathcursor->normalize();

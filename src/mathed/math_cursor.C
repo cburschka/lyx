@@ -1273,6 +1273,7 @@ void MathCursor::interpret(string const & s)
 
 	if (lastcode_ != LM_TC_TEX && strchr("#$%{}", c)) {
 		insert(new MathSpecialCharInset(c));	
+		lastcode_ = LM_TC_VAR;
 		return;
 	}
 

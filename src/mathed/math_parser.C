@@ -776,9 +776,6 @@ void Parser::parse_into(MathArray & array, unsigned flags, MathTextCodes code)
 			break; 
 		}
 
-		else  LM_TK_SPECIAL:
-			array.push_back(new MathCharInset(ival_, LM_TC_TEX));
-			break;
 */
 		
 		else if (t.cs() == "begin") {
