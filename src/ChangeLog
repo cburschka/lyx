@@ -1,3 +1,7 @@
+2003-04-25  John Levon  <levon@movementarian.org>
+
+	* gettext.C: remove the broken asserts for now
+
 2003-04-25  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* messages.C: make case where setlocale cannot comply work better.

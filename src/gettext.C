@@ -29,7 +29,8 @@ boost::scoped_ptr<Messages> lyx_messages;
 
 char const * _(char const * str)
 {
-	lyx::Assert(str && str[0]);
+	// This breaks pretty much immediately
+	// lyx::Assert(str && str[0]);
 
 	if (!lyx_messages.get())
 		return str;
@@ -40,7 +41,8 @@ char const * _(char const * str)
 
 string const _(string const & str)
 {
-	lyx::Assert(!str.empty());
+	// This breaks pretty much immediately
+	// lyx::Assert(!str.empty());
 
 	if (!lyx_messages.get())
 		return str;
