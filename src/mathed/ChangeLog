@@ -1,3 +1,10 @@
+2001-11-08  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* math_arrayinset.C (MathArrayInset): 
+	* formula.C (pipeThroughMaple): 
+	(pipeThroughOctave): add ugly .c_str() to help compile
+	with lyxstring
+
 2001-11-07  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* math_inset.C: compilation fix

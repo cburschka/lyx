@@ -25,11 +25,11 @@ MathArrayInset::MathArrayInset(string const & str)
 	: MathGridInset(1, 1)
 {
 	vector< vector<string> > dat;
-	istringstream is(str);
+	istringstream is(str.c_str());
 	while (is) {
 		string line;
 		getline(is, line);
-		istringstream ls(line);
+		istringstream ls(line.c_str());
 		typedef std::istream_iterator<string> iter;
 		vector<string> v = vector<string>(iter(ls), iter());
 		if (v.size())

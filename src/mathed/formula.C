@@ -100,7 +100,7 @@ namespace {
 		ostringstream os;
 		MapleStream ms(os);
 		ms << ar;
-		string expr = os.str();
+		string expr = os.str().c_str();
 
 		for (int i = 0; i < 100; ++i) { // at most 100 attempts
 			// try to fix missing '*' the hard way by using mint
@@ -114,7 +114,7 @@ namespace {
 			string out = captureOutput("mint -i 1 -S -s -q -q", expr + ";");
 			if (out.empty())
 				break; // expression syntax is ok
-			istringstream is(out);
+			istringstream is(out.c_str());
 			string line;
 			getline(is, line);
 			if (line.find("on line") != 0)
@@ -146,7 +146,7 @@ namespace {
 		ostringstream os;
 		OctaveStream vs(os);
 		vs << ar;
-		string expr = os.str();
+		string expr = os.str().c_str();
 		string out;
 
 		for (int i = 0; i < 100; ++i) { // at most 100 attempts
@@ -165,7 +165,7 @@ namespace {
 				break;
 
 			// search line with single caret
-			istringstream is(out);
+			istringstream is(out.c_str());
 			string line;
 			while (is) {
 				getline(is, line);
