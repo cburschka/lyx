@@ -13,6 +13,7 @@
 #include "math_atom.h"
 #include "math_inset.h"
 
+using std::swap;
 
 
 MathAtom::MathAtom()
@@ -38,7 +39,7 @@ void MathAtom::operator=(MathAtom const & at)
 	if (&at == this)
 		return;
 	MathAtom tmp(at);
-	std::swap(tmp.nucleus_, nucleus_);
+	swap(tmp.nucleus_, nucleus_);
 }
 
 

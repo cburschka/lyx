@@ -1,3 +1,12 @@
+2004-01-28  Lars Gullik Bjonnes  <larsbj@gullik.net>
+
+	* QPrefs.C: add using statement for std::distance
+	(findPos): add a typedef for the const_iterator.
+
+	* QLPopupMenu.C: add using statement for std::distance
+
+	* QDocument.C: add using statement for std::distance
+
 2004-01-25  Angus Leeming  <leeming@lyx.org>
 
 	* Dialog.C (build): add the "findreplace" dialog.
@@ -22,19 +31,19 @@
 
 	* QExternalDialog.C (browseClicked):
 	* QGraphicsDialog.C (browse_clicked):
-	* QInclude.C (browse): 
+	* QInclude.C (browse):
 	changes doe to the name change controller().Browse() to
 	controller().browse().
 
 2003-12-15  Ronald Florence <ron@18james.com>
 
 	* qfont_loader.C: fixed headers to compile w/o X11
-	
-	* QWorkArea.C (checkAppleEventForMissingParams) 
+
+	* QWorkArea.C (checkAppleEventForMissingParams)
 	(handleOpenDocuments): add support for OpenDocuments apple event
 
 	* lyx_gui.C (macEventFilter): handle apple events
- 
+
 2004-01-05  Angus Leeming  <leeming@lyx.org>
 
 	* FileDialog_private.C (c-tor): invoke convert_brace_glob to convert
@@ -55,7 +64,7 @@
 2003-12-14  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* QMinipage.[Ch]:
-	* QMinipageDialog.[Ch]: 
+	* QMinipageDialog.[Ch]:
 	* ui/QMinipageDialogBase.ui: remove from repository.
 	* Dialogs.C:
 	* Makefile.am:
@@ -214,7 +223,7 @@
 
 2003-11-24  Alfredo Braunstein  <abraunst@lyx.org>
 
-	* QContentpane.[Ch] (trackScrollbar): add 
+	* QContentpane.[Ch] (trackScrollbar): add
 	* QWorkarea.C (setScrollbarParams): do not track scrollbar signals
 	when manually setting the scrollbar position
 
@@ -239,7 +248,7 @@
 
 	* lyx_gui.C: {set,remove}_{server,data}socket_callback(): replace
 	dummy functions with working ones
-	* socket_callback.[Ch] (): 
+	* socket_callback.[Ch] ():
 	new files with a class to connect sockets.
 	* Makefile.am: add the above
 

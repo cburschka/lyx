@@ -42,8 +42,11 @@ using std::max;
 using std::string;
 using std::auto_ptr;
 using std::istringstream;
+using std::ostream;
 using std::ostringstream;
 using std::pair;
+using std::swap;
+using std::vector;
 
 
 namespace {
@@ -319,8 +322,7 @@ bool MathHullInset::display() const
 }
 
 
-void MathHullInset::getLabelList(Buffer const &,
-				 std::vector<string> & labels) const
+void MathHullInset::getLabelList(Buffer const &, vector<string> & labels) const
 {
 	for (row_type row = 0; row < nrows(); ++row)
 		if (!label_[row].empty() && nonum_[row] != 1)
@@ -449,8 +451,8 @@ void MathHullInset::swapRow(row_type row)
 		return;
 	if (row + 1 == nrows())
 		--row;
-	std::swap(nonum_[row], nonum_[row + 1]);
-	std::swap(label_[row], label_[row + 1]);
+	swap(nonum_[row], nonum_[row + 1]);
+	swap(label_[row], label_[row + 1]);
 	MathGridInset::swapRow(row);
 }
 
@@ -690,7 +692,7 @@ void MathHullInset::mathmlize(MathMLStream & os) const
 }
 
 
-void MathHullInset::infoize(std::ostream & os) const
+void MathHullInset::infoize(ostream & os) const
 {
 	os << "Type: " << type_;
 }

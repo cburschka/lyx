@@ -1,3 +1,9 @@
+2004-01-28  Lars Gullik Bjonnes  <larsbj@gullik.net>
+
+	* XFormsToolbar.C: add using statement for std::distance
+
+	* XFormsMenubar.C: add using statement for std::distance
+
 2004-01-25  Angus Leeming  <leeming@lyx.org>
 
 	* Dialog.C (build): add the "findreplace" dialog.
@@ -14,7 +20,7 @@
 
 	* QExternalDialog.C (browseClicked):
 	* QGraphicsDialog.C (browse_clicked):
-	* QInclude.C (browse): 
+	* QInclude.C (browse):
 	changes doe to the name change controller().Browse() to
 	controller().browse().
 

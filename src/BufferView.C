@@ -48,8 +48,10 @@
 using lyx::support::bformat;
 using lyx::support::MakeAbsPath;
 
+using std::distance;
 using std::find;
 using std::string;
+using std::swap;
 using std::vector;
 
 
@@ -314,7 +316,7 @@ void BufferView::gotoLabel(string const & label)
 		if (find(labels.begin(),labels.end(),label) != labels.end()) {
 			cursor().clearSelection();
 			text()->setCursor(
-				std::distance(text()->paragraphs().begin(), it.getPar()),
+				distance(text()->paragraphs().begin(), it.getPar()),
 				it.getPos());
 			cursor().resetAnchor();
 			update();
@@ -462,7 +464,7 @@ void BufferView::putSelectionAt(PosIterator const & cur,
 		      int length, bool backwards)
 {
 	ParIterator par(cur);
-	
+
 	cursor().clearSelection();
 
 	LyXText * text = par.text(*buffer());
@@ -478,7 +480,7 @@ void BufferView::putSelectionAt(PosIterator const & cur,
 		text->setSelectionRange(length);
 		cursor().setSelection();
 		if (backwards)
-			std::swap(cursor().cursor_, cursor().anchor_);
+			swap(cursor().cursor_, cursor().anchor_);
 	}
 
 	fitCursor();
@@ -496,4 +498,3 @@ LCursor const & BufferView::cursor() const
 {
 	return pimpl_->cursor_;
 }
-

@@ -41,6 +41,8 @@
 
 using lyx::support::bformat;
 
+using std::advance;
+using std::distance;
 using std::endl;
 using std::string;
 
@@ -195,8 +197,8 @@ void ControlSpellchecker::check()
 	PosIterator const beg = buffer()->pos_iterator_begin();
 	PosIterator const end = buffer()->pos_iterator_end();
 
-	int start = std::distance(beg, cur);
-	int const total = start + std::distance(cur, end);
+	int start = distance(beg, cur);
+	int const total = start + distance(cur, end);
 
 	if (cur != buffer()->pos_iterator_begin())
 		for (; cur != end && isLetter(cur); ++cur, ++start);
@@ -235,9 +237,9 @@ void ControlSpellchecker::check()
 
 	if (!word_.word().empty()) {
 		int const size = word_.word().size();
-		std::advance(cur, -size);
+		advance(cur, -size);
 		bufferview()->putSelectionAt(cur, size, false);
-		std::advance(cur, size);
+		advance(cur, size);
 	} else {
 		showSummary();
 		endSession();

@@ -58,6 +58,8 @@ using lyx::support::contains;
 using lyx::support::lowercase;
 using lyx::support::uppercase;
 
+using std::advance;
+using std::distance;
 using std::max;
 using std::endl;
 using std::string;
@@ -344,7 +346,7 @@ int LyXText::rightMargin(Paragraph const & par) const
 {
 	LyXTextClass const & tclass = bv()->buffer()->params().getLyXTextClass();
 
-	return 
+	return
 		RIGHT_MARGIN
 		+ font_metrics::signedWidth(tclass.rightmargin(),
 				       tclass.defaultfont())
@@ -1404,7 +1406,7 @@ ParagraphList::iterator LyXText::getPar(int par) const
 	BOOST_ASSERT(par >= 0);
 	BOOST_ASSERT(par < int(paragraphs().size()));
 	ParagraphList::iterator pit = paragraphs().begin();
-	std::advance(pit, par);
+	advance(pit, par);
 	return pit;
 }
 
@@ -1543,7 +1545,7 @@ string LyXText::selectionAsString(Buffer const & buffer, bool label) const
 
 int LyXText::parOffset(ParagraphList::iterator pit) const
 {
-	return std::distance(paragraphs().begin(), pit);
+	return distance(paragraphs().begin(), pit);
 }
 
 
@@ -1773,7 +1775,7 @@ void LyXText::write(Buffer const & buf, std::ostream & os) const
 
 
 bool LyXText::read(Buffer const & buf, LyXLex & lex)
-{	
+{
 	static Change current_change;
 
 	bool the_end_read = false;

@@ -884,7 +884,7 @@ bool MathGridInset::idxDelete(idx_type & idx)
 
 	// move cells if necessary
 	for (idx_type i = index(row(idx), 0); i < idx; ++i)
-		std::swap(cell(i), cell(i + ncols()));
+		swap(cell(i), cell(i + ncols()));
 
 	delRow(row(idx));
 
@@ -1087,11 +1087,11 @@ MathGridInset::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 
 			// split line
 			for (col_type c = col(cur.idx()) + 1; c < ncols(); ++c)
-				std::swap(cell(index(r, c)), cell(index(r + 1, c)));
+				swap(cell(index(r, c)), cell(index(r + 1, c)));
 
 			// split cell
 			splitCell(cur);
-			std::swap(cell(cur.idx()), cell(cur.idx() + ncols() - 1));
+			swap(cell(cur.idx()), cell(cur.idx() + ncols() - 1));
 			if (cur.idx() > 0)
 				--cur.idx();
 			cur.idx() = cur.lastpos();

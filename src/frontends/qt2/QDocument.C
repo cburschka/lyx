@@ -40,6 +40,7 @@
 using lyx::support::bformat;
 using lyx::support::getVectorFromString;
 
+using std::distance;
 using std::vector;
 using std::string;
 
@@ -404,7 +405,7 @@ findPos(std::vector<A> const & vec, A const & val)
 		std::find(vec.begin(), vec.end(), val);
 	if (it == vec.end())
 		return 0;
-	return std::distance(vec.begin(), it);
+	return distance(vec.begin(), it);
 }
 
 } // namespace anom

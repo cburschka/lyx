@@ -1,3 +1,8 @@
+2004-01-28  Lars Gullik Bjonnes  <larsbj@gullik.net>
+
+	* insettabular.C: add using statement for std::vector, remove
+	std:: where using was already used.
+
 2004-01-19  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* insetgraphics.C, insetinclude.C: use runparams.nice instead of

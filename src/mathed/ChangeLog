@@ -1,3 +1,19 @@
+2004-01-28  Lars Gullik Bjonnes  <larsbj@gullik.net>
+
+	* math_hullinset.C: add using statements for std::ostream,
+	std::swap and std::vector
+
+	* math_gridinset.C (idxDelete): remove std:: from swap.
+	(priv_dispatch): ditto
+
+	* math_extern.C: add using statement for std::swap and std::vector
+
+	* math_cursor.C: remove std:: from string
+	(openable): use nucleus instead of operator->
+
+	* math_atom.h: add a const variant of nucleus
+
+	* math_atom.C: add using statement for std::swap
 
 2004-01-15  André Pönitz  <poenitz@gmx.net>
 
@@ -6,7 +22,7 @@
 
 2004-01-15  André Pönitz  <poenitz@gmx.net>
 
-	* *.[Ch]: change signature of priv_dispatch to prepare 
+	* *.[Ch]: change signature of priv_dispatch to prepare
 	inset unification
 
 2003-12-15  Ronald Florence <ron@18james.com>
@@ -17,7 +33,7 @@
 
 	* math_pos.[Ch]: remove (it's now cursor_slice.[Ch])
 
-	* Makefile.am: 
+	* Makefile.am:
 	* math_cursor.[Ch]:
 	* math_iterator.[Ch]: adjust
 
@@ -36,7 +52,7 @@
 2003-11-10  André Pönitz  <poenitz@gmx.net>
 
 	* formula.C:
-	* formulabase.C:  adjust to removed inset locking 
+	* formulabase.C:  adjust to removed inset locking
 
 2003-11-05  José Matos  <jamatos@lyx.org>
 

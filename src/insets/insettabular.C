@@ -47,14 +47,15 @@ using lyx::support::ltrim;
 using lyx::support::strToInt;
 using lyx::support::strToDbl;
 
+using std::auto_ptr;
 using std::endl;
 using std::max;
-using std::swap;
 using std::string;
-using std::auto_ptr;
 using std::istringstream;
 using std::ostream;
 using std::ostringstream;
+using std::swap;
+using std::vector;
 
 
 namespace {
@@ -506,7 +507,7 @@ InsetTabular::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 	}
 
 	if (!tablemode) {
-		
+
 		int cell = cur.idx();
 		lyxerr << "# InsetTabular::dispatch: A " << cur << endl;
 		result = tabular.getCellInset(cell).dispatch(cur, cmd);
@@ -692,7 +693,7 @@ tabular.column_of_cell(cur.idx()))
 				clearSelection();
 			int column = tabular.column_of_cell(cur.idx());
 			if (yo_ < 0) {
-				cur.bv().scrollDocView(	
+				cur.bv().scrollDocView(
 					cur.bv().top_y() - cur.bv().painter().paperHeight());
 				if (yo_ > 0)
 					cur.idx() = column;
@@ -1222,7 +1223,7 @@ bool InsetTabular::movePrevCell(LCursor & cur)
 }
 
 
-bool InsetTabular::tabularFeatures(LCursor & cur, std::string const & what)
+bool InsetTabular::tabularFeatures(LCursor & cur, string const & what)
 {
 	LyXTabular::Feature action = LyXTabular::LAST_ACTION;
 
@@ -1645,7 +1646,7 @@ FuncStatus InsetTabular::getStatus(string const & what, int actcell) const
 		string const tmp = tabularFeature[i].feature;
 		if (tmp == what.substr(0, tmp.length())) {
 			//if (!compare(tabularFeatures[i].feature.c_str(), what.c_str(),
-			//   tabularFeatures[i].feature.length())) 
+			//   tabularFeatures[i].feature.length()))
 			action = tabularFeature[i].action;
 			break;
 		}
@@ -1814,7 +1815,7 @@ FuncStatus InsetTabular::getStatus(string const & what, int actcell) const
 
 
 void InsetTabular::getLabelList(Buffer const & buffer,
-				std::vector<string> & list) const
+				vector<string> & list) const
 {
 	tabular.getLabelList(buffer, list);
 }

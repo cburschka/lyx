@@ -560,11 +560,11 @@ void region(CursorSlice const & i1, CursorSlice const & i2,
 	c1 = p->col(i1.idx_);
 	c2 = p->col(i2.idx_);
 	if (c1 > c2)
-		std::swap(c1, c2);
+		swap(c1, c2);
 	r1 = p->row(i1.idx_);
 	r2 = p->row(i2.idx_);
 	if (r1 > r2)
-		std::swap(r1, r2);
+		swap(r1, r2);
 }
 
 }
@@ -835,7 +835,7 @@ bool LCursor::openable(MathAtom const & t)
 	// we can't move into anything new during selection
 	if (depth() == anchor_.size())
 		return false;
-	if (t.operator->() != anchor_[depth()].inset())
+	if (t.nucleus() != anchor_[depth()].inset())
 		return false;
 
 	return true;
@@ -1212,7 +1212,7 @@ MathHullInset * LCursor::formula() const
 
 
 void LCursor::adjust(pos_type from, int diff)
-{	
+{
 	if (pos() > from)
 		pos() += diff;
 	if (anchor().pos_ > from)

@@ -22,6 +22,7 @@
 
 using lyx::support::subst;
 
+using std::distance;
 using std::make_pair;
 using std::string;
 using std::pair;
@@ -100,7 +101,7 @@ void QLPopupMenu::populate(Menu * menu)
 
 			Funcs::iterator fit =
 				funcs_.insert(funcs_.end(), m->func());
-			int const index = std::distance(funcs_.begin(), fit);
+			int const index = distance(funcs_.begin(), fit);
 
 			insertItem(toqstr(getLabel(*m)), index);
 			setItemEnabled(index, !status.disabled());

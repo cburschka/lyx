@@ -78,7 +78,7 @@ namespace mathcursor {
 	void eraseSelection(LCursor & cur);
 
 	/// the name of the macro we are currently inputting
-	std::string macroName(LCursor & cur);
+	string macroName(LCursor & cur);
 	/// where in the curent cell does the macro name start?
 	difference_type macroNamePos(LCursor & cur);
 	/// can we enter the inset?
@@ -184,7 +184,7 @@ bool openable(MathAtom const & t, bool sel)
 		// we can't move into anything new during selection
 		if (cur.depth() == Anchor_.size())
 			return false;
-		if (t.operator->() != Anchor_[cur.depth()].asMathInset())
+		if (t.nucleus() != Anchor_[cur.depth()].asMathInset())
 			return false;
 	}
 #else
@@ -662,7 +662,7 @@ InsetFormulaBase * formula()
 
 
 void adjust(LCursor & cur, pos_type from, difference_type diff)
-{	
+{
 	if (cur.pos() > from)
 		cur.pos() += diff;
 	if (cur.anchor().pos_ > from)

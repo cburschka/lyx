@@ -51,6 +51,8 @@ using std::auto_ptr;
 using std::istringstream;
 using std::ostream;
 using std::ostringstream;
+using std::swap;
+using std::vector;
 
 
 ostream & operator<<(ostream & os, MathArray const & ar)
@@ -290,7 +292,7 @@ void splitScripts(MathArray & ar)
 		// create extra script inset and move superscript over
 		MathScriptInset * p = ar[i].nucleus()->asScriptInset();
 		auto_ptr<MathScriptInset> q(new MathScriptInset(true));
-		std::swap(q->up(), p->up());
+		swap(q->up(), p->up());
 		p->removeScript(true);
 
 		// insert new inset behind
@@ -982,7 +984,7 @@ namespace {
 			expr.insert(pos,  "*");
 		}
 
-		std::vector<string> tmp = getVectorFromString(out, "$$");
+		vector<string> tmp = getVectorFromString(out, "$$");
 		if (tmp.size() < 2)
 			return MathArray();
 

@@ -30,6 +30,7 @@
 #include "lyx_forms.h"
 #include "combox.h"
 
+using std::distance;
 using std::endl;
 using std::string;
 
@@ -330,7 +331,7 @@ void XFormsToolbar::add(FuncRequest const & func, string const & tooltip)
 				      NorthWestGravity);
 
 		Funcs::iterator fit = funcs.insert(funcs.end(), func);
-		int const index = std::distance(funcs.begin(), fit);
+		int const index = distance(funcs.begin(), fit);
 		fl_set_object_callback(obj, C_Toolbar_ToolbarCB, index);
 		// Remove the blue feedback rectangle
 		fl_set_pixmapbutton_focus_outline(obj, 0);

@@ -39,6 +39,7 @@ using lyx::support::lowercase;
 using lyx::support::uppercase;
 using lyx::support::split;
 
+using std::advance;
 using std::ostringstream;
 using std::string;
 
@@ -345,7 +346,7 @@ int replaceAll(BufferView * bv,
 			= cur.pit()->getFontSettings(buf.params(), pos);
 		int striked = ssize - cur.pit()->erase(pos, pos + ssize);
 		cur.pit()->insert(pos, replacestr, font);
-		std::advance(cur, rsize + striked);
+		advance(cur, rsize + striked);
 		++num;
 	}
 

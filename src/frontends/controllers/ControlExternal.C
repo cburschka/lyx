@@ -37,6 +37,7 @@ using lyx::support::FileFilterList;
 using lyx::support::MakeAbsPath;
 using lyx::support::readBB_from_PSFile;
 
+using std::advance;
 using std::vector;
 using std::string;
 
@@ -131,7 +132,7 @@ external::Template ControlExternal::getTemplate(int i) const
 	external::TemplateManager::Templates::const_iterator i1
 		= external::TemplateManager::get().getTemplates().begin();
 
-	std::advance(i1, i);
+	advance(i1, i);
 
 	return i1->second;
 }

@@ -28,6 +28,7 @@
 using lyx::support::lowercase;
 using lyx::support::subst;
 
+using std::distance;
 using std::endl;
 using std::for_each;
 using std::string;
@@ -296,7 +297,7 @@ int XFormsMenubar::create_submenu(Window win, XFormsView * view,
 				Funcs::iterator fit =
 					funcs.insert(funcs.end(), item.func());
 				int const action_count =
-					std::distance(funcs.begin(), fit);
+					distance(funcs.begin(), fit);
 
 				label += "%x" + tostr(action_count + action_offset);
 				lyxerr[Debug::GUI] << "Action: \""

@@ -55,6 +55,7 @@ using lyx::pos_type;
 using lyx::support::contains;
 using lyx::support::subst;
 
+using std::distance;
 using std::endl;
 using std::list;
 using std::stack;
@@ -518,7 +519,7 @@ void Paragraph::setFont(pos_type pos, LyXFont const & font)
 		if (it->pos() >= pos)
 			break;
 	}
-	unsigned int i = std::distance(beg, it);
+	unsigned int i = distance(beg, it);
 	bool notfound = (it == endit);
 
 	if (!notfound && pimpl_->fontlist[i].font() == font)
@@ -712,7 +713,7 @@ InsetBibitem * Paragraph::bibitem() const
 namespace {
 
 // paragraphs inside floats need different alignment tags to avoid
-// unwanted space 
+// unwanted space
 
 bool noTrivlistCentering(UpdatableInset const * inset)
 {
@@ -1338,7 +1339,7 @@ void Paragraph::simpleDocBookOnePar(Buffer const & buf,
 	int char_line_count = depth;
 	bool label_closed = true;
 	bool para_closed = true;
-	
+
 	if (style->latextype == LATEX_ITEM_ENVIRONMENT) {
 		string ls = "";
 		Counters & counters = buf.params().getLyXTextClass().counters();
@@ -1351,11 +1352,11 @@ void Paragraph::simpleDocBookOnePar(Buffer const & buf,
 			if (!defaultstyle->latexparam().empty()) {
 				counters.step("para");
 				ls = tostr(counters.value("para"));
-				ls = " id=\"" 
+				ls = " id=\""
 					+ subst(defaultstyle->latexparam(), "#", ls) + '"';
 			}
-			os << "<" << style->itemtag() << ">\n" 
-			   << string(depth, ' ') << "<" 
+			os << "<" << style->itemtag() << ">\n"
+			   << string(depth, ' ') << "<"
 			   << defaultstyle->latexname() << ls << ">\n";
 			para_closed = false;
 		}
@@ -1408,8 +1409,8 @@ void Paragraph::simpleDocBookOnePar(Buffer const & buf,
 					os << str;
 			} else if (!style->labeltag().empty() && !label_closed) {
 				++char_line_count;
-				os << "\n</" << style->labeltag() << "><" 
-				   << style->itemtag() << "><" 
+				os << "\n</" << style->labeltag() << "><"
+				   << style->itemtag() << "><"
 				   << defaultstyle->latexname() << ">";
 				label_closed = true;
 				para_closed = false;
@@ -1431,12 +1432,12 @@ void Paragraph::simpleDocBookOnePar(Buffer const & buf,
 	// resets description flag correctly
 	if (!label_closed) {
 		// <term> not closed...
-		os << "</" << style->labeltag() << ">\n<" 
-		   << style->itemtag() << "><" 
+		os << "</" << style->labeltag() << ">\n<"
+		   << style->itemtag() << "><"
 		   << defaultstyle->latexname() << ">&nbsp;";
 	}
 	if (!para_closed) {
-		os << "\n" << string(depth, ' ') << "</" 
+		os << "\n" << string(depth, ' ') << "</"
 		   << defaultstyle->latexname() << ">\n";
 	}
 	if (style->free_spacing)

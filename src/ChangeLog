@@ -1,3 +1,16 @@
+2004-01-28  Lars Gullik Bjonnes  <larsbj@gullik.net>
+
+	* text.C: add using statements for std::advance and std::distance
+
+	* paragraph.C: add using statement for std::distance
+
+	* lyxfind.C: add using statement for std::advance
+
+	* cursor.C (region): remove std:: from swap
+	(openable): use nucleus in stead of operator->
+
+	* BufferView.C: add using statements for std::distance and std::swap
+
 2004-01-27  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
 	* iterators.C: Remove the pimple, move the needed structures to

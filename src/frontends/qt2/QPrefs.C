@@ -55,6 +55,7 @@
 using lyx::support::compare_no_case;
 using lyx::support::strToDbl;
 
+using std::distance;
 using std::endl;
 using std::setfill;
 using std::setw;
@@ -323,11 +324,12 @@ template<class A>
 typename std::vector<A>::size_type
 findPos(std::vector<A> const & vec, A const & val)
 {
-	typename std::vector<A>::const_iterator it =
-		std::find(vec.begin(), vec.end(), val);
+	typedef typename std::vector<A>::const_iterator Cit;
+
+	Cit it = std::find(vec.begin(), vec.end(), val);
 	if (it == vec.end())
 		return 0;
-	return std::distance(vec.begin(), it);
+	return distance(vec.begin(), it);
 }
 
 void setComboxFont(QComboBox * cb, string const & family, string const & foundry)

@@ -23,6 +23,7 @@
 
 #include "glob.h"
 
+using std::distance;
 using std::ostringstream;
 using std::string;
 using std::vector;
@@ -65,7 +66,7 @@ string const convert_brace_glob(string const & glob)
 		pattern += boost::regex_merge(tail, block_re, fmt);
 
 		// Increment the iterator to the end of the match.
-		it += std::distance(it, what[0].second);
+		it += distance(it, what[0].second);
 	}
 
 	return pattern;
@@ -86,7 +87,7 @@ vector<string> const glob(string const & pattern, int flags)
 
 
 vector<string> const expand_globs(string const & mask,
-				  std::string const & directory)
+				  string const & directory)
 {
 	typedef boost::tokenizer<boost::char_separator<char> > Tokenizer;
 	boost::char_separator<char> const separator(" ");
@@ -134,7 +135,7 @@ FileFilterList::FileFilterList(string const & qt_style_filter)
 		parse_filter(string(what[-1].first, what[-1].second));
 
 		// Increment the iterator to the end of the match.
-		it += std::distance(it, what[0].second);
+		it += distance(it, what[0].second);
 	}
 }
 
