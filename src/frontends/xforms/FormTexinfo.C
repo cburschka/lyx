@@ -27,6 +27,7 @@
 
 #include FORMS_H_LOCATION
 
+using std::vector;
 
 typedef FormCB<ControlTexinfo, FormDB<FD_texinfo> > base_class;
 FormTexinfo::FormTexinfo()
