@@ -8,14 +8,14 @@ Unit of measure: FL_COORD_PIXEL
 
 =============== FORM ===============
 Name: form_citation
-Width: 860
+Width: 800
 Height: 510
 Number of Objects: 24
 
 --------------------
 class: FL_BOX
 type: UP_BOX
-box: 0 0 860 510
+box: 0 0 800 510
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -33,7 +33,7 @@ argument:
 --------------------
 class: FL_BROWSER
 type: HOLD_BROWSER
-box: 10 30 180 460
+box: 10 30 165 460
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_YELLOW
 alignment: FL_ALIGN_TOP_LEFT
@@ -51,7 +51,7 @@ argument: 0
 --------------------
 class: FL_BROWSER
 type: HOLD_BROWSER
-box: 240 30 180 460
+box: 225 30 165 460
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_YELLOW
 alignment: FL_ALIGN_TOP_LEFT
@@ -69,7 +69,7 @@ argument: 0
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 200 30 30 30
+box: 185 30 30 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -87,7 +87,7 @@ argument: 0
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 200 65 30 30
+box: 185 65 30 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -105,7 +105,7 @@ argument: 0
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 200 100 30 30
+box: 185 100 30 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -123,7 +123,7 @@ argument: 0
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 200 135 30 30
+box: 185 135 30 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -141,7 +141,7 @@ argument: 0
 --------------------
 class: FL_BROWSER
 type: NORMAL_BROWSER
-box: 440 30 410 95
+box: 410 30 370 90
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_YELLOW
 alignment: FL_ALIGN_TOP_LEFT
@@ -159,7 +159,7 @@ argument:
 --------------------
 class: FL_LABELFRAME
 type: ENGRAVED_FRAME
-box: 440 145 410 125
+box: 410 140 370 120
 boxtype: FL_NO_BOX
 colors: FL_BLACK FL_COL1
 alignment: FL_ALIGN_TOP_LEFT
@@ -177,7 +177,7 @@ argument:
 --------------------
 class: FL_INPUT
 type: NORMAL_INPUT
-box: 455 160 380 30
+box: 430 150 340 30
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_TOP
@@ -195,7 +195,7 @@ argument:
 --------------------
 class: FL_CHECKBUTTON
 type: PUSH_BUTTON
-box: 455 195 30 30
+box: 430 190 30 30
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_YELLOW
 alignment: FL_ALIGN_CENTER
@@ -213,7 +213,7 @@ argument:
 --------------------
 class: FL_CHECKBUTTON
 type: PUSH_BUTTON
-box: 455 230 30 30
+box: 430 220 30 30
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_YELLOW
 alignment: FL_ALIGN_CENTER
@@ -231,7 +231,7 @@ argument:
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 745 195 90 30
+box: 680 190 90 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -249,7 +249,7 @@ argument: 0
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 745 230 90 30
+box: 680 225 90 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -267,7 +267,7 @@ argument: 0
 --------------------
 class: FL_LABELFRAME
 type: ENGRAVED_FRAME
-box: 440 285 410 80
+box: 410 280 370 80
 boxtype: FL_NO_BOX
 colors: FL_BLACK FL_COL1
 alignment: FL_ALIGN_TOP_LEFT
@@ -285,7 +285,7 @@ argument:
 --------------------
 class: FL_CHOICE
 type: NORMAL_CHOICE
-box: 590 300 130 30
+box: 550 290 130 30
 boxtype: FL_FRAME_BOX
 colors: FL_COL1 FL_BLACK
 alignment: FL_ALIGN_LEFT
@@ -303,7 +303,7 @@ argument: 0
 --------------------
 class: FL_CHECKBUTTON
 type: PUSH_BUTTON
-box: 580 330 30 30
+box: 530 320 30 30
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_YELLOW
 alignment: FL_ALIGN_LEFT
@@ -321,7 +321,7 @@ argument: 0
 --------------------
 class: FL_CHECKBUTTON
 type: PUSH_BUTTON
-box: 805 330 30 30
+box: 730 320 30 30
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_YELLOW
 alignment: FL_ALIGN_LEFT
@@ -375,7 +375,7 @@ argument: 0
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 440 460 90 30
+box: 410 460 90 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -393,7 +393,7 @@ argument: 0
 --------------------
 class: FL_BUTTON
 type: RETURN_BUTTON
-box: 560 460 90 30
+box: 510 460 90 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -411,7 +411,7 @@ argument: 0
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 660 460 90 30
+box: 605 460 90 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -429,7 +429,7 @@ argument: 0
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 760 460 90 30
+box: 700 460 90 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
