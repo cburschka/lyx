@@ -36,7 +36,6 @@
 #include "frontends/screen.h"
 
 #include "insets/insetcommand.h" // ChangeRefs
-#include "insets/inseterror.h"
 #include "insets/updatableinset.h"
 
 #include "support/FileInfo.h"
@@ -346,13 +345,6 @@ void BufferView::resetErrorList()
 void BufferView::setErrorList(ErrorList const & el)
 {
 	pimpl_->errorlist_ = el;
-}
-
-
-void BufferView::addError(ErrorItem const & ei)
-{
-	pimpl_->errorlist_.push_back(ei);
-
 }
 
 

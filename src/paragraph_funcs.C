@@ -32,7 +32,6 @@
 #include "insets/insetlatexaccent.h"
 #include "insets/insettabular.h"
 #include "insets/insethfill.h"
-#include "insets/inseterror.h"
 #include "insets/insetnewline.h"
 
 extern string bibitemWidest(Buffer const *);
@@ -1007,9 +1006,9 @@ int readParToken(Buffer & buf, Paragraph & par, LyXLex & lex, string const & tok
 		lex.eatLine();
 		string const s = bformat(_("Unknown token: %1$s %2$s\n"),
 			token, lex.getString());
-		// we can do this here this way because we're actually reading
-		// the buffer and don't care about LyXText right now.
-		par.insertInset(par.size(), new InsetError(s), font);
+
+		buf.parseError(ErrorItem(_("Unknown token"), s, 
+					 par.id(), 0, par.size()));
 		return 1;
 	}
 	return 0;

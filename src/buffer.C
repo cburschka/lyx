@@ -45,7 +45,6 @@
 #include "mathed/formulamacro.h"
 #include "mathed/formula.h"
 
-#include "insets/inseterror.h"
 #include "insets/insetbibitem.h"
 #include "insets/insetbibtex.h"
 #include "insets/insetinclude.h"
@@ -280,6 +279,12 @@ int Buffer::readHeader(LyXLex & lex)
 				unknownClass(unknown);
 			} else {
 				++unknown_tokens;
+				string const s = bformat(_("Unknown token: "
+							   "%1$s %2$s\n"), 
+							 token, 
+							 lex.getString());
+				parseError(ErrorItem(_("Header error"), s, 
+						     -1, 0, 0));
 			}
 		}
 	}
@@ -297,14 +302,10 @@ int Buffer::readHeader(LyXLex & lex)
 // Returns false if "\the_end" is not read (Asger)
 bool Buffer::readBody(LyXLex & lex, ParagraphList::iterator pit)
 {
-	int unknown_tokens = 0;
-
 	Paragraph::depth_type depth = 0;
 	bool the_end_read = false;
 
 	if (paragraphs.empty()) {
-		unknown_tokens += readHeader(lex);
-
 		if (!params.getLyXTextClass().load()) {
 			string theclass = params.getLyXTextClass().name();
 			Alert::error(_("Can't load document class"), bformat(
@@ -339,20 +340,7 @@ bool Buffer::readBody(LyXLex & lex, ParagraphList::iterator pit)
 			continue;
 		}
 
-		unknown_tokens += readParagraph(lex, token, paragraphs, pit, depth);
-	}
-
-
-	if (unknown_tokens > 0) {
-		string s;
-		if (unknown_tokens == 1) {
-			s = bformat(_("Encountered one unknown token when reading "
-				"the document %1$s."), fileName());
-		} else {
-			s = bformat(_("Encountered %1$s unknown tokens when reading "
-				"the document %2$s."), tostr(unknown_tokens), fileName());
-		}
-		Alert::warning(_("Document format failure"), s);
+		readParagraph(lex, token, paragraphs, pit, depth);
 	}
 
 	return the_end_read;
@@ -360,8 +348,8 @@ bool Buffer::readBody(LyXLex & lex, ParagraphList::iterator pit)
 
 
 int Buffer::readParagraph(LyXLex & lex, string const & token,
-		      ParagraphList & pars, ParagraphList::iterator & pit,
-		      Paragraph::depth_type & depth)
+			  ParagraphList & pars, ParagraphList::iterator & pit,
+			  Paragraph::depth_type & depth)
 {
 	static Change current_change;
 	int unknown = 0;
@@ -376,14 +364,16 @@ int Buffer::readParagraph(LyXLex & lex, string const & token,
 		LyXFont f(LyXFont::ALL_INHERIT, params.language);
 		par.setFont(0, f);
 
-		// FIXME: goddamn InsetTabular makes us pass a Buffer
-		// not BufferParams
-		unknown += ::readParagraph(*this, par, lex);
-
 		// insert after
 		if (pit != pars.end())
 			++pit;
+
 		pit = pars.insert(pit, par);
+
+		// FIXME: goddamn InsetTabular makes us pass a Buffer
+		// not BufferParams
+		::readParagraph(*this, *pit, lex);
+
 	} else if (token == "\\begin_deeper") {
 		++depth;
 	} else if (token == "\\end_deeper") {
@@ -1194,8 +1184,7 @@ void Buffer::makeLinuxDocFile(string const & fname, bool nice, bool body_only)
 
 		case LATEX_COMMAND:
 			if (depth != 0)
-				sgmlError(pit, 0,
-					  _("Error: Wrong depth for LatexType Command.\n"));
+				parseError(ErrorItem(_("Error:"), _("Wrong depth for LatexType Command.\n"), pit->id(), 0, pit->size()));
 
 			if (!environment_stack[depth].empty()) {
 				sgml::closeTag(ofs, depth, false, environment_stack[depth]);
@@ -1539,14 +1528,6 @@ void Buffer::simpleLinuxDocOnePar(ostream & os,
 }
 
 
-// Print an error message.
-void Buffer::sgmlError(ParagraphList::iterator pit, int pos,
-		       string const & message) const
-{
-	users->addError(ErrorItem(message, string(), pit->id(), pos, pos));
-}
-
-
 void Buffer::makeDocBookFile(string const & fname, bool nice, bool only_body)
 {
 	ofstream ofs(fname.c_str());
@@ -1662,8 +1643,7 @@ void Buffer::makeDocBookFile(string const & fname, bool nice, bool only_body)
 
 		case LATEX_COMMAND:
 			if (depth != 0)
-				sgmlError(par, 0,
-					  _("Error: Wrong depth for LatexType Command.\n"));
+				parseError(ErrorItem(_("Error"), _("Wrong depth for LatexType Command."), par->id(), 0, par->size()));
 
 			command_name = style->latexname();
 
@@ -1952,7 +1932,7 @@ int Buffer::runChktex()
 
 	if (res == -1) {
 		Alert::error(_("chktex failure"),
-			_("Could not run chktex successfully."));
+			     _("Could not run chktex successfully."));
 	} else if (res > 0) {
 		// Insert all errors as errors boxes
 		ErrorList el (*this, terr);

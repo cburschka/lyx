@@ -27,8 +27,8 @@ struct ErrorItem {
 	int par_id;
 	int pos_start;
 	int pos_end;
-	ErrorItem(string const &, string const &, 
-		  int, int, int);
+	ErrorItem(string const & error, string const & description, 
+		  int parid, int posstart, int posend);
 	ErrorItem();
 };
 

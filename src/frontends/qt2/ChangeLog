@@ -1,3 +1,9 @@
+
+2003-06-21  Alfredo Braunstein  <abraunst@libero.it>
+
+	* QDocumentDialog.C: header reordering to handle qt/boost "signals" 
+	symbol clash
+
 2003-06-20  Angus Leeming  <leeming@lyx.org>
 
 	* QBibtexDialog.C (browsePressed): fix warning of comparison between

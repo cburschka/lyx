@@ -161,8 +161,6 @@ public:
 	void resetErrorList();
 	/// stored this  error list
 	void setErrorList(ErrorList const &);
-	/// adds a single error to the list
-	void addError(ErrorItem const &);
 	/// show the error list to the user
 	void showErrorList(string const &) const;
 	/// set the cursor based on the given TeX source row

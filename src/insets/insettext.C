@@ -19,6 +19,7 @@
 #include "dimension.h"
 #include "funcrequest.h"
 #include "gettext.h"
+#include "errorlist.h"
 #include "intl.h"
 #include "LaTeXFeatures.h"
 #include "LColor.h"
@@ -1517,7 +1518,7 @@ int InsetText::docbook(Buffer const * buf, ostream & os, bool mixcont) const
 			break;
 
 		case LATEX_COMMAND:
-			buf->sgmlError(pit, 0,  _("Error: LatexType Command not allowed here.\n"));
+			buf->parseError(ErrorItem(_("Error"), _("LatexType Command not allowed here.\n"), pit->id(), 0, pit->size()));
 			return -1;
 			break;
 

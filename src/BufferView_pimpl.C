@@ -130,6 +130,12 @@ BufferView::Pimpl::Pimpl(BufferView * bv, LyXView * owner,
 }
 
 
+void BufferView::Pimpl::addError(ErrorItem const & ei)
+{
+	errorlist_.push_back(ei);
+
+}
+
 
 bool BufferView::Pimpl::loadLyXFile(string const & filename, bool tolastfiles)
 {
@@ -161,9 +167,14 @@ bool BufferView::Pimpl::loadLyXFile(string const & filename, bool tolastfiles)
 	}
 	Buffer * b = bufferlist.newBuffer(s);
 
-	//this is the point to attach to the error signal in the buffer
+	bv_->resetErrorList();
+	//attach to the error signal in the buffer
+	b->parseError.connect(boost::bind(&BufferView::Pimpl::addError, 
+					  this, _1));
 
-	if (!::loadLyXFile(b, s)) {
+	bool loaded = true;
+
+	if (! ::loadLyXFile(b, s)) {
 		bufferlist.release(b);
 		string text = bformat(_("The document %1$s does "
 					"not yet exist.\n\n"
@@ -176,12 +187,17 @@ bool BufferView::Pimpl::loadLyXFile(string const & filename, bool tolastfiles)
 			bufferlist.close(buffer_, false);
 			buffer(newFile(s, string(), true));
 		}
-	}
+
+		loaded = false;
+	} 
 
 	buffer(b);
 
 	if (tolastfiles)
 		lastfiles->newFile(b->fileName());
+
+	if (loaded)
+		bv_->showErrorList(_("Parse"));
 
 	return true;
 }

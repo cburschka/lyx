@@ -1,4 +1,12 @@
+2003-06-21  Alfredo Braunstein  <abraunst@libero.it>
 
+	* buffer.[Ch]: added the parseError signal and use it, removed 
+	sgmlError
+	* BufferView.[Ch] (addError): moved to ...
+	* BufferView_pimpl.[Ch] (addError, loadLyXFile): ... here. Attach 
+	to the Buffer::parseError signal to catch (guess what) parse errors
+	* lyx_main.[Ch] (printError,LyX): added gui-less parsing error feedback
+	
 2003-06-19  Alfredo Braunstein  <abraunst@libero.it>
 
 	* bufferlist.[Ch] (loadLyXFile, readFile, newFile): removed the 

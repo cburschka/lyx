@@ -11,11 +11,13 @@
 #define LYX_MAIN_H
 
 #include "LString.h"
+#include "errorlist.h"
 
 #include <boost/scoped_ptr.hpp>
 #include <boost/utility.hpp>
 
 #include <csignal>
+
 
 class LyXRC;
 class LastFiles;
@@ -60,6 +62,8 @@ private:
 	void readEncodingsFile(string const & name);
 	/// parsing of non-gui LyX options. Returns true if gui
 	bool easyParse(int & argc, char * argv[]);
+	/// shows up a parsing error on screen
+	void printError(ErrorItem const &);
 
 	/// has this user started lyx for the first time?
 	bool first_start;

@@ -9,6 +9,9 @@
  */
 
 #include <config.h>
+
+#include "buffer.h" //*here* because of braindead qt headers's #define signals
+
 #include "qt_helpers.h"
 
 #include "ControlDocument.h"
@@ -34,7 +37,7 @@
 #include "Spacing.h"
 #include "support/lstrings.h"
 #include "lyxrc.h"
-#include "buffer.h"
+
 
 #include <qwidgetstack.h>
 #include <qlistbox.h>

@@ -22,8 +22,10 @@
 #include "ParagraphList.h"
 #include "author.h"
 #include "iterators.h"
+#include "errorlist.h"
 
 #include <boost/scoped_ptr.hpp>
+#include <boost/signals/signal1.hpp>
 
 class BufferView;
 class LyXRC;
@@ -126,6 +128,9 @@ public:
 	bool hasParWithID(int id) const;
 
 public:
+	/// This signal is emitted when a parsing error shows up.
+	boost::signal1<void, ErrorItem> parseError;
+
 	/** Save file.
 	    Takes care of auto-save files and backup file if requested.
 	    Returns \c true if the save is successful, \c false otherwise.
@@ -168,9 +173,6 @@ public:
 	///
 	void makeDocBookFile(string const & filename,
 			     bool nice, bool only_body = false);
-	///
-	void sgmlError(ParagraphList::iterator par, int pos, string const & message) const;
-
 	/// returns the main language for the buffer (document)
 	Language const * getLanguage() const;
 	/// get l10n translated to the buffers language

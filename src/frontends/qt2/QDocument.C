@@ -17,6 +17,7 @@
 #include "QDocumentDialog.h"
 #include "Qt2BC.h"
 
+
 #include "language.h"
 #include "helper_funcs.h" // getSecond()
 #include "insets/insetquotes.h"
@@ -45,6 +46,7 @@
 #include "QBrowseBox.h"
 
 #include <vector>
+
 
 using std::vector;
 

@@ -109,6 +109,8 @@ struct BufferView::Pimpl : public boost::signals::trackable {
 private:
 	/// An error list (replaces the error insets)
 	ErrorList errorlist_;
+	/// add an error to the list
+	void addError(ErrorItem const &);
 
 	/// track changes for the document
 	void trackChanges();

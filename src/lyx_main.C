@@ -41,9 +41,12 @@
 #include "frontends/lyx_gui.h"
 
 #include <boost/function.hpp>
+#include <boost/bind.hpp>
+#include <boost/signals/signal1.hpp>
 
 #include <cstdlib>
 #include <csignal>
+#include <iostream>
 
 using std::vector;
 using std::endl;
@@ -144,6 +147,7 @@ LyX::LyX(int & argc, char * argv[])
 		vector<string>::iterator end = files.end();
 		for (; it != end; ++it) {
 			last_loaded = bufferlist.newBuffer(*it, false);
+			last_loaded->parseError.connect(boost::bind(&LyX::printError, this, _1));
 			loadLyXFile(last_loaded, *it);
 		}
 
@@ -211,6 +215,14 @@ static void error_handler(int err_sig)
 		lyx::abort();
 	exit(0);
 }
+
+}
+
+
+void LyX::printError(ErrorItem const & ei)
+{
+	std::cerr << _("LyX: ") << ei.error 
+		  << ':' << ei.description << std::endl;
 
 }
 
