@@ -65,11 +65,4 @@ private:
 	virtual MinipageParams const getParams(InsetMinipage const &);
 };
 
-/// Helper functions
-namespace minipage {
-
-	std::vector<string> const getUnits();
-
-} //  namespace minipage
-
 #endif
