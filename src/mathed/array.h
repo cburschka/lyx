@@ -120,11 +120,11 @@ public:
 	///
 	bool isInset(int pos) const;
 	///
-	void Write(std::ostream &, bool) const;
+	void write(std::ostream &, bool) const;
 	///
-	void WriteNormal(std::ostream &) const;
+	void writeNormal(std::ostream &) const;
 	///
-	void Validate(LaTeXFeatures &) const;
+	void validate(LaTeXFeatures &) const;
 private:
 	///
 	typedef std::vector<unsigned char>           buffer_type;

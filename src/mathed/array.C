@@ -291,7 +291,7 @@ std::ostream & operator<<(std::ostream & os, MathArray const & ar)
 }
 
 
-void MathArray::Write(ostream & os, bool fragile) const
+void MathArray::write(ostream & os, bool fragile) const
 {
 	if (empty())
 		return;
@@ -301,7 +301,7 @@ void MathArray::Write(ostream & os, bool fragile) const
 	for (int pos = 0; pos < size(); next(pos)) {
 		if (isInset(pos)) {
 
-			nextInset(pos)->Write(os, fragile);
+			nextInset(pos)->write(os, fragile);
 
 		} else {
 
@@ -351,22 +351,22 @@ void MathArray::Write(ostream & os, bool fragile) const
 }
 
 
-void MathArray::WriteNormal(ostream & os) const
+void MathArray::writeNormal(ostream & os) const
 {
 	if (empty()) {
 		os << "[par] ";
 		return;
 	}
 
-	Write(os, true);
+	write(os, true);
 }
 
 
-void MathArray::Validate(LaTeXFeatures & features) const
+void MathArray::validate(LaTeXFeatures & features) const
 {
 	for (int pos = 0; pos < size(); next(pos)) 
 		if (isInset(pos)) 
-			nextInset(pos)->Validate(features);
+			nextInset(pos)->validate(features);
 }
 
 

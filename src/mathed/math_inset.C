@@ -72,19 +72,19 @@ string const & MathInset::name() const
 }
 
 
-MathInsetTypes MathInset::GetType() const
+MathInsetTypes MathInset::getType() const
 {
 	return objtype;
 }
 
 
-void MathInset::SetType(MathInsetTypes t)
+void MathInset::setType(MathInsetTypes t)
 {
 	objtype = t;
 }
 
 
-void MathInset::SetName(string const & n)
+void MathInset::setName(string const & n)
 {
 	name_ = n;
 }
@@ -103,7 +103,7 @@ void MathInset::size(MathStyles s)
 
 std::ostream & operator<<(std::ostream & os, MathInset const & inset)
 {
-	inset.Write(os, false);
+	inset.write(os, false);
 	return os;
 }
 
@@ -170,11 +170,11 @@ void MathInset::substitute(MathArray & array, MathMacro const & m) const
 	array.push_back(p);
 }
 
-void MathInset::Metrics(MathStyles st)
+void MathInset::metrics(MathStyles st)
 {
 	size_ = st;
 	for (int i = 0; i < nargs(); ++i)
-		xcell(i).Metrics(st);
+		xcell(i).metrics(st);
 }
 
 void MathInset::draw(Painter & pain, int x, int y)
@@ -300,7 +300,7 @@ bool MathInset::idxLastDown(int &, int &) const
 }
 
 
-void MathInset::GetXY(int & x, int & y) const
+void MathInset::getXY(int & x, int & y) const
 {
    x = xo();
    y = yo();
@@ -308,7 +308,7 @@ void MathInset::GetXY(int & x, int & y) const
 
 
 /*
-void MathInset::UserSetSize(MathStyles sz)
+void MathInset::userSetSize(MathStyles sz)
 {
 	if (sz >= 0) {
 		size_ = sz;      
@@ -317,7 +317,7 @@ void MathInset::UserSetSize(MathStyles sz)
 }
 */
 
-void MathInset::WriteNormal(std::ostream & os) const
+void MathInset::writeNormal(std::ostream & os) const
 {
 	os << "[" << name_ << "] ";
 }
@@ -326,7 +326,7 @@ void MathInset::WriteNormal(std::ostream & os) const
 void MathInset::dump() const
 {
 	lyxerr << "---------------------------------------------\n";
-	Write(lyxerr, false);
+	write(lyxerr, false);
 	lyxerr << "\n";
 	for (int i = 0; i < nargs(); ++i)
 		lyxerr << cell(i) << "\n";
@@ -361,10 +361,10 @@ bool MathInset::covers(int x, int y) const
 		y <= yo_ + descent_;
 }
 
-void MathInset::Validate(LaTeXFeatures & features) const
+void MathInset::validate(LaTeXFeatures & features) const
 {
 	for (int i = 0; i < nargs(); ++i)
-		cell(i).Validate(features);
+		cell(i).validate(features);
 }
 
 std::vector<int> MathInset::idxBetween(int from, int to) const

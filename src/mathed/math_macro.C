@@ -49,11 +49,11 @@ MathInset * MathMacro::clone() const
 }
 
 
-void MathMacro::Metrics(MathStyles st)
+void MathMacro::metrics(MathStyles st)
 {
 	if (mathcursor && mathcursor->isInside(this)) {
 		expanded_ = tmplate_->xcell(0);
-		expanded_.Metrics(st);
+		expanded_.metrics(st);
 		size_    = st;
 		width_   = expanded_.width()   + 4;
 		ascent_  = expanded_.ascent()  + 2;
@@ -68,7 +68,7 @@ void MathMacro::Metrics(MathStyles st)
 
 		for (int i = 0; i < nargs(); ++i) {
 			MathXArray & c = xcell(i);
-			c.Metrics(st);
+			c.metrics(st);
 			width_    = std::max(width_, c.width() + lwid);
 			descent_ += std::max(c.ascent(),  lasc) + 5;
 			descent_ += std::max(c.descent(), ldes) + 5;
@@ -76,7 +76,7 @@ void MathMacro::Metrics(MathStyles st)
 	} else {
 		expanded_ = tmplate_->xcell(0);
 		expanded_.data_.substitute(*this);
-		expanded_.Metrics(st);
+		expanded_.metrics(st);
 		size_    = st;
 		width_   = expanded_.width()   + 6;
 		ascent_  = expanded_.ascent()  + 3;
@@ -90,7 +90,7 @@ void MathMacro::draw(Painter & pain, int x, int y)
 	xo(x);
 	yo(y);
 
-	Metrics(size());
+	metrics(size());
 
 	LColor::color col;
 
@@ -138,12 +138,12 @@ void MathMacro::dump(std::ostream & os) const
 	os << endl;
 }
 
-void MathMacro::Write(std::ostream & os, bool fragile) const
+void MathMacro::write(std::ostream & os, bool fragile) const
 {
 	os << '\\' << name_;
 	for (int i = 0; i < nargs(); ++i) {
 		os << '{';
-		cell(i).Write(os, fragile);
+		cell(i).write(os, fragile);
 		os << '}';
 	}
 	if (nargs() == 0) 
@@ -151,11 +151,11 @@ void MathMacro::Write(std::ostream & os, bool fragile) const
 }
 
 
-void MathMacro::WriteNormal(std::ostream & os) const
+void MathMacro::writeNormal(std::ostream & os) const
 {
 	os << "[macro " << name_ << " ";
 	for (int i = 0; i < nargs(); ++i) {
-		cell(i).WriteNormal(os);
+		cell(i).writeNormal(os);
 		os << ' ';
 	}
 	os << "] ";
@@ -186,9 +186,9 @@ bool MathMacro::idxRight(int &, int &) const
 }
 
 
-void MathMacro::Validate(LaTeXFeatures & features) const
+void MathMacro::validate(LaTeXFeatures & features) const
 {
 	if (name_ == "binom")
 		features.binom = true;
-	MathInset::Validate(features);
+	MathInset::validate(features);
 }

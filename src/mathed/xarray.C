@@ -19,7 +19,7 @@ MathXArray::MathXArray()
 {}
 
 
-void MathXArray::Metrics(MathStyles st)
+void MathXArray::metrics(MathStyles st)
 {
 	if (data_.empty()) {
 		mathed_char_dim(LM_TC_VAR, st, 'I', ascent_, descent_, width_); 
@@ -37,7 +37,7 @@ void MathXArray::Metrics(MathStyles st)
 		int wid;
 		MathInset * p = data_.nextInset(pos);
 		if (p) {
-			p->Metrics(st);
+			p->metrics(st);
 			asc = p->ascent();
 			des = p->descent();
 			wid = p->width();

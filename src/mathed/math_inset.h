@@ -43,28 +43,25 @@ class LaTeXFeatures;
 
 class MathInset {
 public: 
-	/** A math inset has a name (usually its LaTeX name),
-	    type and font-size
-	*/
 	///
 	explicit MathInset
 	(int na = 0, string const & nm = string(), MathInsetTypes ot = LM_OT_SIMPLE);
 
-	/// The virtual base destructor
+	/// the virtual base destructor
 	virtual ~MathInset() {}
 
-	/// Draw the object
+	/// draw the object, sets xo_ and yo_ cached values 
 	virtual void draw(Painter &, int x, int baseline) = 0;	
-	/// Write LaTeX and Lyx code
-	virtual void Write(std::ostream &, bool fragile) const = 0;
-	/// Write normalized content
-	virtual void WriteNormal(std::ostream &) const;
-	/// Reproduces itself
+	/// write LaTeX and Lyx code
+	virtual void write(std::ostream &, bool fragile) const = 0;
+	/// write normalized content
+	virtual void writeNormal(std::ostream &) const;
+	/// reproduce itself
 	virtual MathInset * clone() const = 0;
-	/// Appends itself with macro arguments substituted
+	/// appends itself with macro arguments substituted
 	virtual void substitute(MathArray & array, MathMacro const & macro) const;
-	/// Compute the size of the object
-	virtual void Metrics(MathStyles st) = 0;
+	/// compute the size of the object, sets ascend_, descend_ and width_
+	virtual void metrics(MathStyles st) = 0;
 	/// 
 	virtual int ascent() const;
 	///
@@ -80,12 +77,14 @@ public:
 	///
 	string const & name() const;
 	///
-	MathInsetTypes GetType() const;
+	MathInsetTypes getType() const;
+	///
+	MathInsetTypes GetType() const { return getType(); }
 	//Man:  Avoid to use these functions if it's not strictly necessary 
 	///
-	virtual void SetType(MathInsetTypes t);
+	virtual void setType(MathInsetTypes t);
 	///
-	virtual void SetName(string const & n);
+	virtual void setName(string const & n);
 	///
 	MathStyles size() const;
 
@@ -172,10 +171,10 @@ public:
 	virtual void delCol(int) {}
 
 	///
-	virtual void UserSetSize(MathStyles &) {}
+	virtual void userSetSize(MathStyles &) {}
 
 	///
-	void GetXY(int & x, int & y) const;
+	void getXY(int & x, int & y) const;
 	///
 	bool covers(int x, int y) const;
 	/// Identifies things that can get scripts
@@ -196,24 +195,24 @@ public:
 	void dump() const;
 
 	///
-	void Validate(LaTeXFeatures & features) const;
+	void validate(LaTeXFeatures & features) const;
 
 	///
 	static int workwidth;
 protected:
-	///
+	/// usually the LaTeX name of the thingy
 	string name_;
-	///
+	///  
 	MathInsetTypes objtype;
-	///
+	/// the width of this inset as computed by metrics()
 	int width_;
-	///
+	/// 
 	int ascent_;
 	///
 	int descent_;
-	///
+	/// 
 	void size(MathStyles s);
-	///
+	/// the used font size
 	MathStyles size_;
 
 protected:
@@ -222,14 +221,14 @@ protected:
 	/**
 	 * The contents of the inset are contained here.
 	 * Each inset is build from a number of insets.
-	 * For instance, a
 	 */
 	cells_type cells_;
 
 private:
-	/// Cursor start position in pixels from the document top
+	/// the following are used for positioning the cursor with the mouse
+	/// cached cursor start position in pixels from the document left
 	int xo_;
-	///
+	/// cached cursor start position in pixels from the document top
 	int yo_;
 };
 

@@ -19,11 +19,11 @@ public:
 	///
 	void draw(Painter &, int, int);
 	///
-	void Write(std::ostream &, bool fragile) const;
+	void write(std::ostream &, bool fragile) const;
 	///
-	void WriteNormal(std::ostream &) const;
+	void writeNormal(std::ostream &) const;
 	///
-	void Metrics(MathStyles st);
+	void metrics(MathStyles st);
 	///
 	bool isSpaceInset() const { return true; }
 	///

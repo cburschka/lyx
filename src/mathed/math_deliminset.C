@@ -20,7 +20,7 @@ MathInset * MathDelimInset::clone() const
 }
 
 
-void MathDelimInset::Write(std::ostream & os, bool fragile) const
+void MathDelimInset::write(std::ostream & os, bool fragile) const
 {
 	latexkeys const * l = (left_ != '|') ?
 		lm_get_key_by_id(left_, LM_TK_SYM) : 0;
@@ -37,7 +37,7 @@ void MathDelimInset::Write(std::ostream & os, bool fragile) const
 			os << char(left_) << ' ';
 	}
 
-	cell(0).Write(os, fragile);
+	cell(0).write(os, fragile);
 
 	os << "\\right";
 	if (r)
@@ -86,9 +86,9 @@ int MathDelimInset::dw() const
 }
 
 
-void MathDelimInset::Metrics(MathStyles st)
+void MathDelimInset::metrics(MathStyles st)
 {
-	xcell(0).Metrics(st);
+	xcell(0).metrics(st);
 	size_    = st;
 	ascent_  = xcell(0).ascent() + 2;
 	descent_ = xcell(0).descent() + 2;

@@ -16,7 +16,7 @@ public:
 	///
 	virtual MathInset * clone() const;
 	///
-	void Write(std::ostream &, bool fragile) const;
+	void write(std::ostream &, bool fragile) const;
 };
 
 #endif

@@ -62,20 +62,20 @@ Inset * InsetFormulaMacro::clone(Buffer const &, bool) const
 void InsetFormulaMacro::write(ostream & os) const
 {
 	os << "FormulaMacro ";
-	tmacro()->Write(os, false);
+	tmacro()->write(os, false);
 }
 
 
 int InsetFormulaMacro::latex(ostream & os, bool fragile, 
 			     bool /*free_spacing*/) const
 {
-	tmacro()->Write(os, fragile);
+	tmacro()->write(os, fragile);
 	return 2;
 }
 
 int InsetFormulaMacro::ascii(ostream & os, int) const
 {
-	tmacro()->Write(os, false);
+	tmacro()->write(os, false);
 	return 0;
 }
 
@@ -97,7 +97,7 @@ void InsetFormulaMacro::read(LyXLex & lex)
 	// Awful hack...
 	par_ = mathed_parse(lex);
 	MathMacroTable::insertTemplate(tmacro());
-	par_->Metrics(LM_ST_TEXT);
+	par_->metrics(LM_ST_TEXT);
 }
 
 
@@ -121,7 +121,7 @@ int InsetFormulaMacro::descent(BufferView *, LyXFont const &) const
 
 int InsetFormulaMacro::width(BufferView *, LyXFont const & f) const
 {
-	tmacro()->Metrics(LM_ST_TEXT);
+	tmacro()->metrics(LM_ST_TEXT);
 	return 10 + lyxfont::width(prefix(), f) + tmacro()->width();
 }
 

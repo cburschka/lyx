@@ -43,13 +43,13 @@ public:
 	///
 	void draw(Painter &, int, int);
 	///
-	void Metrics(MathStyles st);
+	void metrics(MathStyles st);
 	///
 	MathInset * clone() const;
 	///
-	void Write(std::ostream &, bool fragile) const;
+	void write(std::ostream &, bool fragile) const;
 	///
-	void WriteNormal(std::ostream &) const;
+	void writeNormal(std::ostream &) const;
 	///
 	void dump(std::ostream & os) const;
 
@@ -63,7 +63,7 @@ public:
 	bool idxRight(int &, int &) const;
 
 	///
-	void Validate(LaTeXFeatures &) const;
+	void validate(LaTeXFeatures &) const;
 
 private:
 	///

@@ -117,7 +117,7 @@ public:
 	///
 	MathInset * par() const;
 	///
-	virtual void Metrics() const;
+	virtual void metrics() const;
 protected:
 	///
 	virtual void updateLocal(BufferView * bv, bool mark_dirty);

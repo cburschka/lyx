@@ -18,11 +18,11 @@ public:
 	///
 	virtual MathInset * clone() const;
 	///
-	virtual void Write(std::ostream &, bool fragile) const;
+	virtual void write(std::ostream &, bool fragile) const;
 	///
-	virtual void WriteNormal(std::ostream &) const;
+	virtual void writeNormal(std::ostream &) const;
 	///
-	virtual void Metrics(MathStyles st);
+	virtual void metrics(MathStyles st);
 	///
 	virtual void draw(Painter &, int x, int baseline);
 	///

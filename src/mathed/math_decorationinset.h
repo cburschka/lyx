@@ -20,11 +20,11 @@ public:
 	///
 	void draw(Painter &, int, int);
 	///
-	void Write(std::ostream &, bool fragile) const;
+	void write(std::ostream &, bool fragile) const;
 	///
-	void Metrics(MathStyles st);
+	void metrics(MathStyles st);
 	///
-	void WriteNormal(std::ostream & os) const;
+	void writeNormal(std::ostream & os) const;
 private:
 	///
 	int deco_;

@@ -20,9 +20,9 @@ public:
 	///
 	void draw(Painter &, int, int);
 	///
-	void Write(std::ostream &, bool fragile) const;
+	void write(std::ostream &, bool fragile) const;
 	///
-	void Metrics(MathStyles st);
+	void metrics(MathStyles st);
 private:
 	int dw() const;
 	///

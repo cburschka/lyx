@@ -36,7 +36,7 @@ void MathMacroTemplate::numargs(int numargs)
 }
 
 
-void MathMacroTemplate::Write(std::ostream & os, bool fragile) const
+void MathMacroTemplate::write(std::ostream & os, bool fragile) const
 {
 	os << "\n\\newcommand{\\" << name_ << "}";
 
@@ -44,14 +44,14 @@ void MathMacroTemplate::Write(std::ostream & os, bool fragile) const
 		os << "[" << numargs_ << "]";
 
 	os << "{";
-	cell(0).Write(os, fragile);
+	cell(0).write(os, fragile);
 	os << "}\n";
 }
 
 
-void MathMacroTemplate::Metrics(MathStyles st)
+void MathMacroTemplate::metrics(MathStyles st)
 {
-	xcell(0).Metrics(st);
+	xcell(0).metrics(st);
 	size_    = st;
 	width_   = xcell(0).width() + 4;
 	ascent_  = xcell(0).ascent() + 2;

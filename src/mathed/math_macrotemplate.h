@@ -24,7 +24,7 @@ public:
 	///
 	MathInset * clone() const;
 	///
-	void Write(std::ostream &, bool fragile) const;
+	void write(std::ostream &, bool fragile) const;
 	/// Number of arguments
 	int numargs() const;
 	///
@@ -32,7 +32,7 @@ public:
 	///
 	void draw(Painter &, int, int);
 	///
-	void Metrics(MathStyles st);
+	void metrics(MathStyles st);
 private:
 	///
 	int numargs_;

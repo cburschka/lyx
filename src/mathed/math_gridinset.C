@@ -74,10 +74,10 @@ char MathGridInset::valign() const
 	return v_align_;
 }
 
-void MathGridInset::Metrics(MathStyles st)
+void MathGridInset::metrics(MathStyles st)
 {
 	// let the cells adjust themselves
-	MathInset::Metrics(st);
+	MathInset::metrics(st);
 	size_ = st;
 
 	// adjust vertical structure
@@ -212,7 +212,7 @@ void MathGridInset::draw(Painter & pain, int x, int y)
 }
 
 
-void MathGridInset::Write(std::ostream & os, bool fragile) const
+void MathGridInset::write(std::ostream & os, bool fragile) const
 {
 	for (int row = 0; row < nrows(); ++row) {
 		if (row)
@@ -220,7 +220,7 @@ void MathGridInset::Write(std::ostream & os, bool fragile) const
 		for (int col = 0; col < ncols(); ++col) {
 			if (col)
 				os << " & ";
-			cell(index(row, col)).Write(os, fragile);
+			cell(index(row, col)).write(os, fragile);
 		}
 	}
 }

@@ -17,7 +17,7 @@ extern LyXFont WhichFont(short type, int size);
 MathFuncInset::MathFuncInset(string const & nm, MathInsetTypes ot)
 	: MathInset(0, nm, ot)
 {
-	lims_ = (GetType() == LM_OT_FUNCLIM);
+	lims_ = (getType() == LM_OT_FUNCLIM);
 }
 
 
@@ -27,19 +27,19 @@ MathInset * MathFuncInset::clone() const
 }
 
 
-void MathFuncInset::Write(std::ostream & os, bool /* fragile */) const
+void MathFuncInset::write(std::ostream & os, bool /* fragile */) const
 {
 	os << "\\" << name_ << ' ';
 }
 
 
-void MathFuncInset::WriteNormal(std::ostream & os) const
+void MathFuncInset::writeNormal(std::ostream & os) const
 {
 	os << "[" << name_ << "] ";
 }
 
 
-void MathFuncInset::Metrics(MathStyles st) 
+void MathFuncInset::metrics(MathStyles st) 
 {
 	size_ = st;
 	if (name_.empty()) 

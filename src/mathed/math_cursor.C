@@ -239,8 +239,8 @@ bool MathCursor::Left(bool sel)
 	if (macro_mode) {
 		// was MacroModeBack()
 		if (!imacro->name().empty()) {
-			imacro->SetName(imacro->name().substr(0, imacro->name().length()-1));
-			imacro->Metrics(imacro->size());
+			imacro->setName(imacro->name().substr(0, imacro->name().length()-1));
+			imacro->metrics(imacro->size());
 		} else
 			MacroModeClose();
 		return true;
@@ -402,7 +402,7 @@ void MathCursor::insert(char c, MathTextCodes t)
 	if (macro_mode) {
 		if (MathIsAlphaFont(t) || t == LM_TC_MIN) {
 			// was MacroModeinsert(c);
-			imacro->SetName(imacro->name() + static_cast<char>(c));
+			imacro->setName(imacro->name() + static_cast<char>(c));
 			return;
 		}
 	}
@@ -604,7 +604,7 @@ bool MathCursor::toggleLimits()
 
 void MathCursor::SetSize(MathStyles size)
 {
-	cursor().par_->UserSetSize(size);
+	cursor().par_->userSetSize(size);
 }
 
 
@@ -737,7 +737,7 @@ void MathCursor::Interpret(string const & s)
 			if (oldsel) 
 				SelPaste();
 		}
-		p->Metrics(p->size());
+		p->metrics(p->size());
 	}
 }
 
@@ -981,7 +981,7 @@ MathInset * MathCursor::enclosing(MathInsetTypes t, int & idx) const
 {
 	for (int i = Cursor_.size() - 1; i >= 0; --i) {
 		//lyxerr << "checking level " << i << "\n";
-		if (Cursor_[i].par_->GetType() == t) {
+		if (Cursor_[i].par_->getType() == t) {
 			idx = Cursor_[i].idx_;
 			return Cursor_[i].par_;
 		}
@@ -1169,7 +1169,7 @@ void MathCursor::splitCell()
 void MathCursor::breakLine()
 {
 	MathMatrixInset * p = static_cast<MathMatrixInset *>(formula()->par());
-	if (p->GetType() == LM_OT_SIMPLE || p->GetType() == LM_OT_EQUATION) {
+	if (p->getType() == LM_OT_SIMPLE || p->getType() == LM_OT_EQUATION) {
 		p->mutate(LM_OT_EQNARRAY);
 		p->addRow(0);
 		cursor().idx_ = p->nrows();

@@ -31,7 +31,7 @@ void MathDotsInset::draw(Painter & pain, int x, int y)
 }
 
 
-void MathDotsInset::Metrics(MathStyles st)
+void MathDotsInset::metrics(MathStyles st)
 {
 	size(st);
 	mathed_char_dim(LM_TC_VAR, size(), 'M', ascent_, descent_, width_);
@@ -44,13 +44,13 @@ void MathDotsInset::Metrics(MathStyles st)
 } 
 
 
-void MathDotsInset::Write(ostream & os, bool /* fragile */) const
+void MathDotsInset::write(ostream & os, bool /* fragile */) const
 {
 	os << '\\' << name() << ' ';
 }
 
 
-void MathDotsInset::WriteNormal(ostream & os) const
+void MathDotsInset::writeNormal(ostream & os) const
 {
 	os << "[" << name() << "] ";
 }

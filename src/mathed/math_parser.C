@@ -478,7 +478,7 @@ MathInset * mathed_parse()
 					lyxerr[Debug::MATHED] << "1: unknown math environment: " << typ << "\n";
 			}
 
-			p->SetName(latex_mathenv[i].basename);
+			p->setName(latex_mathenv[i].basename);
 
 			break;
 		}
@@ -762,7 +762,7 @@ void mathed_parse(MathArray & array, unsigned flags)
 				for (int i = 0; i < m->nargs(); ++i) 
 					mathed_parse(m->cell(i), FLAG_ITEM);
 				array.push_back(m);
-				m->Metrics(LM_ST_TEXT);
+				m->metrics(LM_ST_TEXT);
 			} else
 				array.push_back(new MathFuncInset(yytext, LM_OT_UNDEF));
 			break;

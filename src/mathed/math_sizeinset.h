@@ -20,13 +20,13 @@ public:
 	///
 	virtual MathInset * clone() const;
 	///
-	void Metrics(MathStyles st);
+	void metrics(MathStyles st);
 	///
 	void draw(Painter &, int x, int baseline);
 	///
-	void Write(std::ostream &, bool fragile) const;
+	void write(std::ostream &, bool fragile) const;
 	///
-	void WriteNormal(std::ostream &) const;
+	void writeNormal(std::ostream &) const;
 
 private:
 	///

@@ -34,7 +34,7 @@ void MathMacroArgument::draw(Painter & pain, int x, int y)
 }
 
 
-void MathMacroArgument::Metrics(MathStyles st)
+void MathMacroArgument::metrics(MathStyles st)
 {
 	char str[] = "#0";
 	str[1] += number_; 
@@ -43,13 +43,13 @@ void MathMacroArgument::Metrics(MathStyles st)
 }
 
 
-void MathMacroArgument::Write(std::ostream & os, bool /*fragile*/) const
+void MathMacroArgument::write(std::ostream & os, bool /*fragile*/) const
 {
 	os << '#' << number_ << ' ';
 }
 
 
-void MathMacroArgument::WriteNormal(std::ostream & os) const
+void MathMacroArgument::writeNormal(std::ostream & os) const
 {
 	os << "[macroarg " << number_ << "] ";
 }

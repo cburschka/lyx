@@ -143,21 +143,21 @@ bool MathScriptInset::idxLastDown(int & idx, int & pos) const
 }
 
 
-void MathScriptInset::Write(std::ostream & os, bool fragile) const
+void MathScriptInset::write(std::ostream & os, bool fragile) const
 {
 	if (symbol_) {
-		symbol_->Write(os, fragile);
+		symbol_->write(os, fragile);
 		if (limits())
 			os << (limits() == 1 ? "\\limits" : "\\nolimits");
 	}
 	if (up()) {
 		os << "^{";
-		cell(0).Write(os, fragile);
+		cell(0).write(os, fragile);
 		os << "}";
 	}
 	if (down()) {
 		os << "_{";
-		cell(1).Write(os, fragile);
+		cell(1).write(os, fragile);
 		os << "}";
 	}
 	os << " ";
@@ -194,35 +194,35 @@ bool MathScriptInset::hasLimits() const
 }
 
 
-void MathScriptInset::WriteNormal(std::ostream & os) const
+void MathScriptInset::writeNormal(std::ostream & os) const
 {
 	if (limits() && symbol_) 
 		os << "[" << (limits() ? "limits" : "nolimits") << "]";
 	if (up()) {
 		os << "[superscript ";
-		cell(0).WriteNormal(os);
+		cell(0).writeNormal(os);
 		os << "] ";
 	}
 	if (down()) {
 		os << "[subscript ";
-		cell(1).WriteNormal(os);
+		cell(1).writeNormal(os);
 		os << "] ";
 	}
 }
 
 
-void MathScriptInset::Metrics(MathStyles st)
+void MathScriptInset::metrics(MathStyles st)
 {
 	size_ = st;
 	MathStyles tt = smallerStyleScript(st);
 	
-	xcell(0).Metrics(tt);
-	xcell(1).Metrics(tt);
+	xcell(0).metrics(tt);
+	xcell(1).metrics(tt);
 
 	width_   = std::max(xcell(0).width(), xcell(1).width());
 
 	if (hasLimits()) {
-		symbol_->Metrics(st);
+		symbol_->metrics(st);
 		int wid  = symbol_->width();
 		ascent_  = symbol_->ascent();
 		descent_ = symbol_->descent();
@@ -244,7 +244,7 @@ void MathScriptInset::Metrics(MathStyles st)
 		int wid = 0;
 		mathed_char_height(LM_TC_VAR, st, 'I', asc, des);
 		if (symbol_) {
-			symbol_->Metrics(st);
+			symbol_->metrics(st);
 			wid  = symbol_->width();
 			asc  = symbol_->ascent();
 			des = symbol_->descent();

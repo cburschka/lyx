@@ -9,7 +9,7 @@ using std::ostream;
 MathBigopInset::MathBigopInset(string const & name, int id)
 	: sym_(id)
 {
-	SetName(name);
+	setName(name);
 }
 
 
@@ -19,20 +19,20 @@ MathInset * MathBigopInset::clone() const
 }
 
 
-void MathBigopInset::Write(ostream & os, bool /* fragile */) const
+void MathBigopInset::write(ostream & os, bool /* fragile */) const
 {
 	//bool f = sym_ != LM_int && sym_ != LM_oint && size() == LM_ST_DISPLAY;
 	os << '\\' << name();
 }
 
 
-void MathBigopInset::WriteNormal(ostream & os) const
+void MathBigopInset::writeNormal(ostream & os) const
 {
 	os << "[bigop " << name() << "] ";
 }
 
 
-void MathBigopInset::Metrics(MathStyles st)
+void MathBigopInset::metrics(MathStyles st)
 {
 	//cerr << "\nBigopDraw\n";
 	size(st);

@@ -19,11 +19,11 @@ MathInset * MathFracInset::clone() const
 }
 
 
-void MathFracInset::Metrics(MathStyles st)
+void MathFracInset::metrics(MathStyles st)
 {
 	size_    = smallerStyleFrac(st);
-	xcell(0).Metrics(size_);
-	xcell(1).Metrics(size_);
+	xcell(0).metrics(size_);
+	xcell(1).metrics(size_);
 	width_   = std::max(xcell(0).width(), xcell(1).width()) + 4; 
 	ascent_  = xcell(0).height() + 4 + 5;
 	descent_ = xcell(1).height() + 4 - 5; 
@@ -43,22 +43,22 @@ void MathFracInset::draw(Painter & pain, int x, int y)
 }
 
 
-void MathFracInset::Write(std::ostream & os, bool fragile) const
+void MathFracInset::write(std::ostream & os, bool fragile) const
 {
 	os << '\\' << name() << '{';
-	cell(0).Write(os, fragile);
+	cell(0).write(os, fragile);
 	os << "}{";
-	cell(1).Write(os, fragile);
+	cell(1).write(os, fragile);
 	os << '}';
 }
 
 
-void MathFracInset::WriteNormal(std::ostream & os) const
+void MathFracInset::writeNormal(std::ostream & os) const
 {
 	os << '[' << name() << ' ';
-	cell(0).WriteNormal(os);
+	cell(0).writeNormal(os);
 	os << " ";
-	cell(1).WriteNormal(os);
+	cell(1).writeNormal(os);
 	os << "] ";
 }
 

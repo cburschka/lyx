@@ -43,26 +43,26 @@ void MathSizeInset::draw(Painter & pain, int x, int y)
 }
 
 
-void MathSizeInset::Metrics(MathStyles /* st */)
+void MathSizeInset::metrics(MathStyles /* st */)
 {
-	xcell(0).Metrics(style_);
+	xcell(0).metrics(style_);
 	ascent_   = xcell(0).ascent_;
 	descent_  = xcell(0).descent_;
 	width_    = xcell(0).width_;
 }
 
 
-void MathSizeInset::Write(std::ostream & os, bool fragile) const
+void MathSizeInset::write(std::ostream & os, bool fragile) const
 {
 	os << "{\\" << name() << " ";
-	cell(0).Write(os, fragile);
+	cell(0).write(os, fragile);
 	os << "}";
 }
 
 
-void MathSizeInset::WriteNormal(std::ostream & os) const
+void MathSizeInset::writeNormal(std::ostream & os) const
 {
 	os << "[" << name() << " ";
-	cell(0).WriteNormal(os);
+	cell(0).writeNormal(os);
 	os << "]";
 }

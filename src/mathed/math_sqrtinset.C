@@ -19,9 +19,9 @@ MathInset * MathSqrtInset::clone() const
 }
 
 
-void MathSqrtInset::Metrics(MathStyles st)
+void MathSqrtInset::metrics(MathStyles st)
 {
-	xcell(0).Metrics(st);
+	xcell(0).metrics(st);
 	size_    = st;
 	ascent_  = xcell(0).ascent()  + 4;
 	descent_ = xcell(0).descent() + 2;
@@ -46,17 +46,17 @@ void MathSqrtInset::draw(Painter & pain, int x, int y)
 }
 
 
-void MathSqrtInset::Write(std::ostream & os, bool fragile) const
+void MathSqrtInset::write(std::ostream & os, bool fragile) const
 {
 	os << "\\sqrt{";
-	cell(0).Write(os, fragile); 
+	cell(0).write(os, fragile); 
 	os << '}';
 }
 
 
-void MathSqrtInset::WriteNormal(std::ostream & os) const
+void MathSqrtInset::writeNormal(std::ostream & os) const
 {
 	os << "[sqrt ";
-	cell(0).WriteNormal(os); 
+	cell(0).writeNormal(os); 
 	os << "] ";
 }

@@ -190,7 +190,7 @@ void InsetFormulaBase::edit(BufferView * bv, int x, int /*y*/, unsigned int)
 	if (!bv->lockInset(this))
 		lyxerr[Debug::MATHED] << "Cannot lock inset!!!" << endl;
 
-	Metrics();
+	metrics();
 	//bv->updateInset(this, false);
 	if (x == 0)
 		mathcursor->first();
@@ -295,14 +295,14 @@ vector<string> const InsetFormulaBase::getLabelList() const
 
 void InsetFormulaBase::updateLocal(BufferView * bv, bool dirty)
 {
-	Metrics();
+	metrics();
 	bv->updateInset(this, dirty);
 }
 
 
-void InsetFormulaBase::Metrics() const
+void InsetFormulaBase::metrics() const
 {
-	const_cast<MathInset *>(par_)->Metrics(LM_ST_TEXT);
+	const_cast<MathInset *>(par_)->metrics(LM_ST_TEXT);
 }
 
 
@@ -501,7 +501,7 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 		int y1;
 		istringstream is(arg.c_str());
 		is >> x >> y;
-		par_->GetXY(x1, y1);
+		par_->getXY(x1, y1);
 		mathcursor->SetPos(x1 + x, y1 + y);
 		updateLocal(bv, false);
 	}

@@ -25,9 +25,9 @@ MathInset * MathDecorationInset::clone() const
 
 
 
-void MathDecorationInset::Metrics(MathStyles st)
+void MathDecorationInset::metrics(MathStyles st)
 {
-	xcell(0).Metrics(st);
+	xcell(0).metrics(st);
 	size_    = st;
 	width_   = xcell(0).width();
 	ascent_  = xcell(0).ascent();
@@ -60,7 +60,7 @@ void MathDecorationInset::draw(Painter & pain, int x, int y)
 }
 
 
-void MathDecorationInset::Write(ostream & os, bool fragile) const
+void MathDecorationInset::write(ostream & os, bool fragile) const
 {
 	if (fragile &&
 			(name_ == "overbrace" ||
@@ -75,15 +75,15 @@ void MathDecorationInset::Write(ostream & os, bool fragile) const
 	else
 		os << '{';
 
-	cell(0).Write(os, fragile);  
+	cell(0).write(os, fragile);  
 
 	if (deco_ != LM_not)
 		os << '}';
 }
 
-void MathDecorationInset::WriteNormal(ostream & os) const
+void MathDecorationInset::writeNormal(ostream & os) const
 {
 	os << "[" << name_ << " ";
-	cell(0).WriteNormal(os);
+	cell(0).writeNormal(os);
 	os << "] ";
 }

@@ -66,7 +66,7 @@ InsetFormula::InsetFormula(MathInsetTypes t)
 InsetFormula::InsetFormula(string const & s)
 	: InsetFormulaBase(mathed_parse(s))
 {
-	Metrics();
+	metrics();
 }
 
 
@@ -85,14 +85,14 @@ void InsetFormula::write(ostream & os) const
 
 int InsetFormula::latex(ostream & os, bool fragile, bool) const
 {
-	par()->Write(os, fragile);
+	par()->write(os, fragile);
 	return 1;
 }
 
 
 int InsetFormula::ascii(ostream & os, int) const
 {
-	par()->Write(os, false);
+	par()->write(os, false);
 	return 1;
 }
 
@@ -112,7 +112,7 @@ int InsetFormula::docBook(ostream & os) const
 void InsetFormula::read(LyXLex & lex)
 {
 	par(mathed_parse(lex));
-	Metrics();
+	metrics();
 }
 
 
@@ -125,7 +125,7 @@ void InsetFormula::draw(BufferView * bv, LyXFont const &,
 	MathInset::workwidth = bv->workWidth();
 	Painter & pain = bv->painter();
 
-	Metrics();
+	metrics();
 	int w = par()->width();
 	int h = par()->height();
 	int a = par()->ascent();
@@ -143,9 +143,9 @@ void InsetFormula::draw(BufferView * bv, LyXFont const &,
 }
 
 
-void InsetFormula::Metrics() const 
+void InsetFormula::metrics() const 
 {
-	const_cast<MathInset *>(par_)->Metrics(display() ? LM_ST_DISPLAY : LM_ST_TEXT);
+	const_cast<MathInset *>(par_)->metrics(display() ? LM_ST_DISPLAY : LM_ST_TEXT);
 }
 
 vector<string> const InsetFormula::getLabelList() const
@@ -262,7 +262,7 @@ InsetFormula::localDispatch(BufferView * bv, kb_action action,
 			int x;
 			int y;
 			mathcursor->GetPos(x, y);
-			if (par()->GetType() == LM_OT_SIMPLE)
+			if (par()->getType() == LM_OT_SIMPLE)
 				par()->mutate(LM_OT_EQUATION);
 			else
 				par()->mutate(LM_OT_SIMPLE);
@@ -293,7 +293,7 @@ void InsetFormula::handleExtern(const string & arg, BufferView *)
 	//string outfile = lyx::tempName("maple.out");
 	string outfile = "/tmp/lyx2" + arg + ".out";
 	ostringstream os;
-	par()->WriteNormal(os); 
+	par()->writeNormal(os); 
 	string code = os.str().c_str();
 	string script = "lyx2" + arg + " '" + code + "' " + outfile;
 	lyxerr << "calling: " << script << endl;
@@ -301,12 +301,12 @@ void InsetFormula::handleExtern(const string & arg, BufferView *)
 
 	ifstream is(outfile.c_str());
 	par(mathed_parse(is));
-	Metrics();
+	metrics();
 }
 
 bool InsetFormula::display() const
 {
-	return par_->GetType() != LM_OT_SIMPLE;
+	return par_->getType() != LM_OT_SIMPLE;
 }
 
 
@@ -330,7 +330,7 @@ Inset::Code InsetFormula::lyxCode() const
 
 void InsetFormula::validate(LaTeXFeatures & features) const
 {
-	par()->Validate(features);
+	par()->validate(features);
 }
 
 bool InsetFormula::insetAllowed(Inset::Code code) const
@@ -353,6 +353,6 @@ int InsetFormula::descent(BufferView *, LyXFont const &) const
 
 int InsetFormula::width(BufferView *, LyXFont const &) const
 {
-	Metrics();
+	metrics();
 	return par()->width();
 }

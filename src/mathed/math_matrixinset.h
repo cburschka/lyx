@@ -25,9 +25,9 @@ public:
 	///
 	MathInset * clone() const;
 	///
-	void Write(std::ostream &, bool fragile) const;
+	void write(std::ostream &, bool fragile) const;
 	///
-	void Metrics(MathStyles st);
+	void metrics(MathStyles st);
 	///
 	void draw(Painter &, int, int);
 	///
@@ -47,7 +47,7 @@ public:
 	///
 	std::vector<string> const getLabelList() const;
 	///
-	void Validate(LaTeXFeatures & features) const;
+	void validate(LaTeXFeatures & features) const;
 
 	///
 	void addRow(int);
@@ -67,7 +67,7 @@ public:
 
 private:
 	///
-	void Validate1(LaTeXFeatures & features);
+	void validate1(LaTeXFeatures & features);
 	///
 	void header_write(std::ostream &) const;
 	///

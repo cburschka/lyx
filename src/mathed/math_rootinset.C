@@ -30,9 +30,9 @@ MathInset * MathRootInset::clone() const
 }
 
 
-void MathRootInset::Metrics(MathStyles st)
+void MathRootInset::metrics(MathStyles st)
 {
-	MathInset::Metrics(st);
+	MathInset::metrics(st);
 	size_    = st;
 	ascent_  = std::max(xcell(0).ascent()  + 5, xcell(1).ascent())  + 2;
 	descent_ = std::max(xcell(1).descent() + 5, xcell(0).descent()) + 2;
@@ -60,22 +60,22 @@ void MathRootInset::draw(Painter & pain, int x, int y)
 }
 
 
-void MathRootInset::Write(std::ostream & os, bool fragile) const
+void MathRootInset::write(std::ostream & os, bool fragile) const
 {
 	os << "\\sqrt[";
-	cell(0).Write(os, fragile);  
+	cell(0).write(os, fragile);  
 	os << "]{";
-	cell(1).Write(os, fragile);
+	cell(1).write(os, fragile);
 	os << '}';
 }
 
 
-void MathRootInset::WriteNormal(std::ostream & os) const
+void MathRootInset::writeNormal(std::ostream & os) const
 {
 	os << "[root ";
-	cell(1).WriteNormal(os);  
+	cell(1).writeNormal(os);  
 	os << " ";
-	cell(0).WriteNormal(os);
+	cell(0).writeNormal(os);
 	os << "] ";
 }
 

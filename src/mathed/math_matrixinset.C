@@ -92,12 +92,12 @@ MathInset * MathMatrixInset::clone() const
 }
 
 
-void MathMatrixInset::Metrics(MathStyles /* st */)
+void MathMatrixInset::metrics(MathStyles /* st */)
 {
-	size_ = (GetType() == LM_OT_SIMPLE) ? LM_ST_TEXT : LM_ST_DISPLAY;
+	size_ = (getType() == LM_OT_SIMPLE) ? LM_ST_TEXT : LM_ST_DISPLAY;
 
 	// let the cells adjust themselves
-	MathGridInset::Metrics(size_);
+	MathGridInset::metrics(size_);
 
 	if (display()) {
 		ascent_  += 12;
@@ -132,7 +132,7 @@ void MathMatrixInset::draw(Painter & pain, int x, int y)
 }
 
 
-void MathMatrixInset::Write(std::ostream & os, bool fragile) const
+void MathMatrixInset::write(std::ostream & os, bool fragile) const
 {
   header_write(os);
 
@@ -144,7 +144,7 @@ void MathMatrixInset::Write(std::ostream & os, bool fragile) const
 		for (int col = 0; col < ncols(); ++col) {
 			if (col)
 				os << " & ";
-			cell(index(row, col)).Write(os, fragile);
+			cell(index(row, col)).write(os, fragile);
 		}
 		if (n) {
 			if (!label_[row].empty())
@@ -189,7 +189,7 @@ bool MathMatrixInset::ams() const
 
 bool MathMatrixInset::display() const
 {
-	return GetType() != LM_OT_SIMPLE;
+	return getType() != LM_OT_SIMPLE;
 }
 
 
@@ -205,7 +205,7 @@ std::vector<string> const MathMatrixInset::getLabelList() const
 
 bool MathMatrixInset::numberedType() const
 {
-	if (GetType() == LM_OT_SIMPLE)
+	if (getType() == LM_OT_SIMPLE)
 		return false;
 	for (int row = 0; row < nrows(); ++row)
 		if (!nonum_[row])
@@ -214,19 +214,19 @@ bool MathMatrixInset::numberedType() const
 }
 
 
-void MathMatrixInset::Validate(LaTeXFeatures & features) const
+void MathMatrixInset::validate(LaTeXFeatures & features) const
 {
 	features.amsstyle = ams();
 
 	// Validation is necessary only if not using AMS math.
-	// To be safe, we will always run mathedValidate.
+	// To be safe, we will always run mathedvalidate.
 	//if (features.amsstyle)
 	//  return;
 
 	features.boldsymbol = true;
 	//features.binom      = true;
 
-	MathInset::Validate(features);
+	MathInset::validate(features);
 }
 
 
@@ -234,7 +234,7 @@ void MathMatrixInset::header_write(std::ostream & os) const
 {
 	bool n = numberedType();
 
-	switch (GetType()) {
+	switch (getType()) {
 		case LM_OT_SIMPLE:
 			os << "\\("; 
 			break;
@@ -268,7 +268,7 @@ void MathMatrixInset::footer_write(std::ostream & os) const
 {
 	bool n = numberedType();
 
-	switch (GetType()) {
+	switch (getType()) {
 		case LM_OT_SIMPLE:
 			os << "\\)";
 			break;
@@ -322,7 +322,7 @@ void MathMatrixInset::delRow(int row)
 
 void MathMatrixInset::addCol(int col)
 {
-	switch (GetType()) {
+	switch (getType()) {
 		case LM_OT_EQUATION:
 			mutate(LM_OT_EQNARRAY);
 			break;
@@ -347,7 +347,7 @@ void MathMatrixInset::addCol(int col)
 
 void MathMatrixInset::delCol(int col)
 {
-	switch (GetType()) {
+	switch (getType()) {
 		case LM_OT_ALIGN:
 			MathGridInset::delCol(col);
 			break;
@@ -395,7 +395,7 @@ void MathMatrixInset::mutate(string const & newtype)
 		dump();
 		return;
 	}
-	//lyxerr << "mutating from '" << GetType() << "' to '" << newtype << "'\n";
+	//lyxerr << "mutating from '" << getType() << "' to '" << newtype << "'\n";
 	mutate(typecode(newtype));
 }
 
@@ -410,14 +410,14 @@ void MathMatrixInset::glueall()
 
 void MathMatrixInset::mutate(short newtype)
 {
-	//lyxerr << "mutating from '" << GetType() << "' to '" << newtype << "'\n";
+	//lyxerr << "mutating from '" << getType() << "' to '" << newtype << "'\n";
 
-	if (newtype == GetType())
+	if (newtype == getType())
 		return;
 
-	switch (GetType()) {
+	switch (getType()) {
 		case LM_OT_SIMPLE:
-			SetType(LM_OT_EQUATION);
+			setType(LM_OT_EQUATION);
 			numbered(0, false);
 			mutate(newtype);
 			break;
@@ -425,7 +425,7 @@ void MathMatrixInset::mutate(short newtype)
 		case LM_OT_EQUATION:
 			switch (newtype) {
 				case LM_OT_SIMPLE:
-					SetType(LM_OT_SIMPLE);
+					setType(LM_OT_SIMPLE);
 					break;
 
 				case LM_OT_ALIGN: {
@@ -438,7 +438,7 @@ void MathMatrixInset::mutate(short newtype)
 					cell(1).erase(0, pos);
 
 					halign("rl");
-					SetType(LM_OT_ALIGN);
+					setType(LM_OT_ALIGN);
 					break;
 				}
 
@@ -459,7 +459,7 @@ void MathMatrixInset::mutate(short newtype)
 					cell(2).erase(0, pos2);
 
 					halign("rcl");
-					SetType(LM_OT_EQNARRAY);
+					setType(LM_OT_EQNARRAY);
 					mutate(newtype);
 					break;
 				}
@@ -500,7 +500,7 @@ void MathMatrixInset::mutate(short newtype)
 						cell(c).push_back(cell(c + 1));
 					}
 					MathGridInset::delCol(2);
-					SetType(LM_OT_ALIGN);
+					setType(LM_OT_ALIGN);
 					halign("rl");
 					mutate(newtype);
 					break;
@@ -514,20 +514,20 @@ void MathMatrixInset::mutate(short newtype)
 				case LM_OT_EQUATION:
 				case LM_OT_EQNARRAY:
 					MathGridInset::addCol(1);
-					SetType(LM_OT_EQNARRAY);
+					setType(LM_OT_EQNARRAY);
 					halign("rcl");
 					mutate(newtype);
 					break;
 				
 				default:
-					lyxerr << "mutation from '" << GetType()
+					lyxerr << "mutation from '" << getType()
 						<< "' to '" << newtype << "' not implemented\n";
 					break;
 			}
 			break;
 
 		default:
-			lyxerr << "mutation from '" << GetType()
+			lyxerr << "mutation from '" << getType()
 				<< "' to '" << newtype << "' not implemented\n";
 	}
 }

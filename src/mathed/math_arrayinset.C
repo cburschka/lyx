@@ -17,7 +17,7 @@ MathInset * MathArrayInset::clone() const
 }
 
 
-void MathArrayInset::Write(std::ostream & os, bool fragile) const
+void MathArrayInset::write(std::ostream & os, bool fragile) const
 {
 	if (fragile)
 		os << "\\protect";
@@ -31,7 +31,7 @@ void MathArrayInset::Write(std::ostream & os, bool fragile) const
 		os << colinfo_[col].h_align_;
 	os << "}\n";
 
-	MathGridInset::Write(os, fragile);
+	MathGridInset::write(os, fragile);
 
 	if (fragile)
 		os << "\\protect";

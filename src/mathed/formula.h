@@ -44,7 +44,7 @@ public:
 	///
 	void draw(BufferView *, LyXFont const &, int, float &, bool) const;
 	///
-	void Metrics() const;
+	void metrics() const;
 
 	///
 	void write(std::ostream &) const;
