@@ -84,7 +84,7 @@ QDelimiterDialog::QDelimiterDialog(QMath * form)
 		leftIP->add(QPixmap(xpm_name.c_str()), delim[i], delim[i]);
 	}
 	leftIP->add(QPixmap(LibFileSearch("images/math/", "empty", "xpm").c_str()), "empty", "empty");
-	connect(leftIP, SIGNAL(button_clicked(string)), this, SLOT(ldelim_clicked(string)));
+	connect(leftIP, SIGNAL(button_clicked(string const &)), this, SLOT(ldelim_clicked(string const &)));
 	ldelim_clicked("(");
 
 	for (int i = 0; *delim[i]; ++i) {
@@ -92,7 +92,7 @@ QDelimiterDialog::QDelimiterDialog(QMath * form)
 		rightIP->add(QPixmap(xpm_name.c_str()), delim[i], delim[i]);
 	}
 	rightIP->add(QPixmap(LibFileSearch("images/math/", "empty", "xpm").c_str()), "empty", "empty");
-	connect(rightIP, SIGNAL(button_clicked(string)), this, SLOT(rdelim_clicked(string)));
+	connect(rightIP, SIGNAL(button_clicked(string const &)), this, SLOT(rdelim_clicked(string const &)));
 	rdelim_clicked(")");
 }
 
@@ -113,7 +113,7 @@ void QDelimiterDialog::set_label(QLabel * label, string const & str)
 }
 
 
-void QDelimiterDialog::ldelim_clicked(string str)
+void QDelimiterDialog::ldelim_clicked(string const & str)
 {
 	left_ = str;
 
@@ -125,7 +125,7 @@ void QDelimiterDialog::ldelim_clicked(string str)
 }
 
 
-void QDelimiterDialog::rdelim_clicked(string str)
+void QDelimiterDialog::rdelim_clicked(string const & str)
 {
 	right_ = str;
 
