@@ -111,14 +111,15 @@ sub translate_preamble {
 	"twocolumn"      => "\\papercolumns 2",
     );
 
-    # if the language file is available then added it to the options table
+    my %Languages_Table = ();
+    # if the language file is available then added it to the languages table
     if(-e "$main::lyxdir/languages") {
 	open (LANGUAGES, "<$main::lyxdir/languages");
 
 	while(<LANGUAGES>) {
 	    next if(/^\#/); #ignore comments
 	    my @lang_field = split(/\s+/);
-	    $Option_Trans_Table{$lang_field[1]} = "\\language $lang_field[1]";
+	    $Languages_Table{$lang_field[1]} = $lang_field[1];
 	}
 	close(LANGUAGES);
     }
@@ -203,6 +204,20 @@ sub translate_preamble {
 	    }
 	}
 	$extra_options =~ s/^,+|,+(?=,)|,+$//g; # extra commas
+	# Analyze further the extra options for languages, the last language
+	# is the document language, so the order matters.
+	my $language ="";
+	foreach $op (split(/\s*,\s*/,$extra_options)) {
+	    if (exists $Languages_Table{$op}) {
+		$language = $op;
+		$extra_options =~ s/\b$op\b//;
+		print "Document language $op\n" if $debug_on;
+	    }
+	}
+	if ($language) {
+	    $LyX_Preamble .= "\\language $language\n";
+	}
+	$extra_options =~ s/^,+|,+(?=,)|,+$//g; # extra commas
     }
     # Convert any remaining options to an \options command
     if ($extra_options) {
@@ -214,14 +229,11 @@ sub translate_preamble {
     #     (unless there is no preamble)
     # Everything until the end of filehandle PREAMBLE is preamble matter
     my $Latex_Preamble = $_; # there COULD be a preamble command on same line
-    my $write_preamble = (! /^\s*$/ && ! /^\s*%/);
     while (<PREAMBLE>) {
 	$Latex_Preamble .= $_;
-	# write an official preamble if we find anything that's not comment
-	$write_preamble ||= (! /^\s*$/ && ! /^\s*%/);
     }
 
-    # Process $Latex_Preamble, and try to extarct as much as possible to
+    # Process $Latex_Preamble, and try to extract as much as possible to
     # $Lyx_Preamble (jamatos 2001/07/21)
 
     # Deal with counters, for now just "tocdepth" and "secnumdepth"
@@ -245,7 +257,7 @@ sub translate_preamble {
     }
     $Latex_Preamble =~ s/\\usepackage\[.*\]\{fontenc\}\s*//;
 
-    ## Deal with several \usepackage{} cases
+    ## Deal with \usepackage{} cases, no optional argument
     my %Usepackage_Table = (
 	"amsmath"	=> "\\use_amsmath 1",
 	"amssymb"	=> "",
@@ -348,16 +360,12 @@ sub translate_preamble {
     $Latex_Preamble =~ s/\\makeatletter\s*//;
     $Latex_Preamble =~ s/\\makeatother\s*//;
 
-    if ($write_preamble) {
-	$Latex_Preamble =~ s/^\s*//;
-	print "LaTeX preamble, consists of:\n$Latex_Preamble" if $debug_on;
-	if($Latex_Preamble) {
-	    $Latex_Preamble = "\\begin_preamble\n$Latex_Preamble\\end_preamble\n";
-	}
-	print "End of LaTeX preamble\n" if $debug_on;
-    } else {
-        $Latex_Preamble = ""; #just comments, whitespace. Ignore them
-    }
+    $Latex_Preamble =~ s/^\s*//;
+    print "LaTeX preamble, consists of:\n$Latex_Preamble" if $debug_on;
+    if($Latex_Preamble) {
+	$Latex_Preamble = "\\begin_preamble\n$Latex_Preamble\\end_preamble\n";
+    } #just comments, whitespace. Ignore them
+    print "End of LaTeX preamble\n" if $debug_on;
 
     #warn "Done creating LyX Preamble\n";
     return ($class, $LyX_Preamble, $Latex_Preamble);

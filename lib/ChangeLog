@@ -1,3 +1,11 @@
+2001-10-18  José Abílio Oliveira Matos  <jamatos@fep.up.pt>
+
+	* reLyX/MakePreamble.pm (translate_preamble): Cleaned the code for babel.
+	Now the last language in the document option is the document language.
+	Code clean, remove unused variables.
+	
+	* reLyX/BasicLyx.pm: Added support for the lyx menu separator.
+
 2001-10-17  José Matos  <jamatos@fep.up.pt>
 
 	* reLyX/MakePreamble.pm: add support for \makeindex, added support

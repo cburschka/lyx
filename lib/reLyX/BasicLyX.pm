@@ -158,6 +158,7 @@ my %TextTokenTransTable = (
     '\LaTeXe' => "LaTeX2e",
     '\TeX'    => "TeX",
     '\LyX'    => "LyX",
+    '\lyxarrow' => "\\SpecialChar \\menuseparator\n",
     '\hfill'  => "\n\\hfill \n",
     '\noindent'        => "\n\\noindent \n",
     '\textbackslash'   => "\n\\backslash \n",
