@@ -143,6 +143,8 @@ void mathDispatchInsertMath(BufferView *, string const &);
 //
 void mathDispatchInsertMatrix(BufferView *, string const &);
 //
+void mathDispatchGreek(BufferView *, string const &);
+//
 void mathDispatchMathImportSelection(BufferView *, string const &);
 
 #endif

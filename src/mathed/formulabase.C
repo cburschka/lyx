@@ -754,6 +754,7 @@ void mathDispatchCreation(BufferView * bv, string const & arg, bool display)
 	bv->owner()->getLyXFunc()->setMessage(N_("Math editor mode"));
 }
 
+
 void mathDispatchMathDisplay(BufferView * bv, string const & arg)
 {
 	mathDispatchCreation(bv, arg, true);
@@ -814,4 +815,17 @@ void mathDispatchInsertMath(BufferView * bv, string const & arg)
 			mathDispatchMathMode(bv, arg);
 	}
 }
+
+
+void mathDispatchGreek(BufferView * bv, string const & arg)
+{ 	   
+	if (bv->available()) { 
+		InsetFormula * f = new InsetFormula;
+		if (openNewInset(bv, f)) {
+			bv->theLockingInset()->localDispatch(bv, LFUN_GREEK, string());
+			bv->theLockingInset()->localDispatch(bv, LFUN_SELFINSERT, arg);
+			bv->unlockInset(f);
+		}
+	}
+}	   
 
