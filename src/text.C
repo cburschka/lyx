@@ -27,6 +27,7 @@
 #include "dispatchresult.h"
 #include "encoding.h"
 #include "funcrequest.h"
+#include "FontIterator.h"
 #include "gettext.h"
 #include "language.h"
 #include "LColor.h"
@@ -443,37 +444,6 @@ pos_type addressBreakPoint(pos_type i, Paragraph const & par)
 }
 
 };
-
-FontIterator::FontIterator(LyXText const & text, ParagraphList::iterator pit,
-			   lyx::pos_type pos)
-	: text_(text), pit_(pit), pos_(pos),
-	  font_(text.getFont(pit, pos)),
-	  endspan_(pit->getEndPosOfFontSpan(pos)),
-	  bodypos_(pit->beginOfBody())
-{}
-
-
-LyXFont FontIterator::operator*() const
-{
-       return font_;
-}
-
-
-LyXFont * FontIterator::operator->()
-{
-	return &font_;
-}
-
-
-FontIterator & FontIterator::operator++()
-{
-	++pos_;
-	if (pos_ > endspan_ || pos_ == bodypos_) {
-		font_ = text_.getFont(pit_, pos_);
-		endspan_ = pit_->getEndPosOfFontSpan(pos_);
-	}
-	return *this;
-}
 
 
 void LyXText::rowBreakPoint(ParagraphList::iterator pit, Row & row) const

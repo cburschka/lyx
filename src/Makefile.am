@@ -77,6 +77,8 @@ lyx_SOURCES = \
 	FloatList.h \
 	Floating.C \
 	Floating.h \
+	FontIterator.C \
+	FontIterator.h \
 	FuncStatus.C \
 	FuncStatus.h \
 	InsetList.C \
