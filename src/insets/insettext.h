@@ -404,5 +404,6 @@ private:
 	bool in_update; /* as update is not reentrant! */
 	mutable BufferView * do_resize;
 	mutable bool do_reinit;
+	mutable bool in_insetAllowed;
 };
 #endif

@@ -1,3 +1,8 @@
+2001-12-05  Juergen Vigna  <jug@sad.it>
+
+	* insettext.C (insetAllowed): fixed for the case that we directly
+	ask the insettext from it's LyXText.
+
 2001-12-05  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* insetbib.C:

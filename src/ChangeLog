@@ -1,3 +1,8 @@
+2001-12-05  Juergen Vigna  <jug@sad.it>
+
+	* CutAndPaste.C (pasteSelection): remove not allowed insets/chars and
+	set the right font on the "multi" paragraph paste!
+
 2001-12-05  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* trans_decl.h:

@@ -196,6 +196,7 @@ void InsetText::init(InsetText const * ins, bool same_id)
 	frame_is_visible = false;
 	cached_bview = 0;
 	sstate.lpar = 0;
+	in_insetAllowed = false;
 }
 
 
@@ -1799,9 +1800,16 @@ bool InsetText::insertInset(BufferView * bv, Inset * inset)
 
 bool InsetText::insetAllowed(Inset::Code code) const
 {
+	bool ret = true;
+	if (in_insetAllowed)
+		return ret;
+	in_insetAllowed = true;
 	if (the_locking_inset)
-		return the_locking_inset->insetAllowed(code);
-	return true;
+		ret = the_locking_inset->insetAllowed(code);
+	else if (owner())
+		ret = owner()->insetAllowed(code);
+	in_insetAllowed = false;
+	return ret;
 }
 
 

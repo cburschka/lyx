@@ -262,6 +262,29 @@ bool CutAndPaste::pasteSelection(Paragraph ** par, Paragraph ** endpar,
 			tmpbuf2->next()->previous(tmpbuf2);
 			tmpbuf2 = tmpbuf2->next();
 		}
+
+		// now remove all out of the buffer which is NOT allowed in the
+		// new environment and set also another font if that is required
+		tmpbuf = buf;
+		while(tmpbuf) {
+			for(pos_type i = 0; i < tmpbuf->size(); ++i) {
+				if (tmpbuf->getChar(i) == Paragraph::META_INSET) {
+					if (!(*par)->insetAllowed(tmpbuf->getInset(i)->lyxCode()))
+					{
+						tmpbuf->erase(i--);
+					}
+				} else {
+					LyXFont f1 = tmpbuf->getFont(current_view->buffer()->params,i);
+					LyXFont f2 = f1;
+					if (!(*par)->checkInsertChar(f1)) {
+						tmpbuf->erase(i--);
+					} else if (f1 != f2) {
+						tmpbuf->setFont(i, f1);
+					}
+				}
+			}
+			tmpbuf = tmpbuf->next();
+		}
 		
 		// make sure there is no class difference
 		SwitchLayoutsBetweenClasses(textclass, tc, buf);
