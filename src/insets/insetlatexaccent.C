@@ -417,148 +417,68 @@ void InsetLatexAccent::draw(Painter & pain, LyXFont const & font,
 		switch (modtype) {
 		case ACUTE:     // acute 0xB4
  		{
-#if 0
-			pain.line(int(x2), int(y + hg),
-				  int(x2 + hg35), y + hg35);
-#else
 			pain.text(x2 - (lyxfont::rbearing(0xB4, font) - lyxfont::lbearing(0xB4, font)) / 2,
 				  baseline - lyxfont::ascent(ic, font) - lyxfont::descent(0xB4, font) - (lyxfont::ascent(0xB4, font) + lyxfont::descent(0xB4, font)) / 2,
 				  char(0xB4), font);
-#endif
 			break;
 		}
 		case GRAVE:     // grave 0x60
 		{
-#if 0
-			pain.line(int(x2), int(y + hg),
-				  int(x2 - hg35), y + hg35);
-#else
 			pain.text(x2 - (lyxfont::rbearing(0x60, font) - lyxfont::lbearing(0x60, font)) / 2,
 				  baseline - lyxfont::ascent(ic, font) - lyxfont::descent(0x60, font) - (lyxfont::ascent(0x60, font) + lyxfont::descent(0x60, font)) / 2.0,
 				  char(0x60), font);
-#endif
 			break;
 		}
 		case MACRON:     // macron
 		{
-#if 0
-			pain.line(int(x2 - wid * 0.4),
-				  int(y + hg),
-				  int(x2 + wid * 0.4),
-				  int(y + hg));
-#else
 			pain.text(x2 - (lyxfont::rbearing(0xAF, font) - lyxfont::lbearing(0xAF, font)) / 2,
 				  baseline - lyxfont::ascent(ic, font) - lyxfont::descent(0xAF, font) - (lyxfont::ascent(0xAF, font) + lyxfont::descent(0xAF, font)),
 				  char(0xAF), font);
-#endif
 			break;
 		}
 		case TILDE:     // tilde
 		{
-#if 0
-			if (hg35 > 2.0) hg35 -= 1.0;
-			x2 += (hg35 / 2.0);
-			int xp[4], yp[4];
-			
-			xp[0] = int(x2 - 2.0 * hg35);
-			yp[0] = int(y + hg);
-			
-			xp[1] = int(x2 - hg35);
-			yp[1] = int(y + hg35);
-			
-			xp[2] = int(x2);
-			yp[2] = int(y + hg);
-			
-			xp[3] = int(x2 + hg35);
-			yp[3] = int(y + hg35);
-			
-			pain.lines(xp, yp, 4);
-#else
 			pain.text(x2 - (lyxfont::rbearing('~', font) - lyxfont::lbearing('~', font)) / 2,
 				  baseline - lyxfont::ascent(ic, font) - lyxfont::descent('~', font) - (lyxfont::ascent('~', font) + lyxfont::descent('~', font)) / 2,
 				  '~', font);
-#endif
 			break;
 		}
 		case UNDERBAR:     // underbar 0x5F
 		{
-#if 0
-			pain.line(int(x2 - wid * 0.4),
-				  y + hg / 2.0,
-				  int(x2 + wid * 0.4),
-				  y + hg / 2.0);
-#else
 			pain.text(x2 - (lyxfont::rbearing(0x5F, font) - lyxfont::lbearing(0x5F, font)) / 2, baseline,
 				  char(0x5F), font);
-#endif
 			break;
 		}
 		case CEDILLA:     // cedilla
 		{
-#if 0
-			int xp[4], yp[4];
-			
-			xp[0] = int(x2);
-			yp[0] = y;
-			
-			xp[1] = int(x2);
-			yp[1] = y + int(hg / 3.0);
-			
-			xp[2] = int(x2 + (hg / 3.0));
-			yp[2] = y + int(hg / 2.0);
-			
-			xp[3] = int(x2 - (hg / 4.0));
-			yp[3] = y + int(hg);
-
-			pain.lines(xp, yp, 4);
-#else
 			pain.text(x2 - (lyxfont::rbearing(0xB8, font) - lyxfont::lbearing(0xB8, font)) / 2, baseline,
 				  char(0xB8), font);
 			
-#endif
 			break;
 		}
 		case UNDERDOT:     // underdot
 		{
-#if 0
-			pain.arc(int(x2), y + hg35,
-				     3, 3, 0, 360 * 64);
-#else
 			pain.text(x2 - (lyxfont::rbearing('.', font) - lyxfont::lbearing('.', font)) / 2.0,
 				  baseline + 3.0 / 2.0 * (lyxfont::ascent('.', font) + lyxfont::descent('.', font)),
 				  '.', font);
-#endif
 			break;
 		}
 
 		case DOT:    // dot
 		{
-#if 0
-			pain.arc(int(x2), y + hg * 0.5,
-				     (hg + 3.0)/5.0,
-				     (hg + 3.0)/5.0,
-				     0, 360 * 64);
-#else
 			pain.text(x2 - (lyxfont::rbearing('.', font) - lyxfont::lbearing('.', font)) / 2.0,
 				  baseline - lyxfont::ascent(ic, font) - lyxfont::descent('.', font) - (lyxfont::ascent('.', font) + lyxfont::descent('.', font)) / 2,
 				  '.', font);
-#endif
 			break;
 		}
 
 		case CIRCLE:     // circle
 		{
-#if 0
-			pain.arc(int(x2 - (hg / 2.0)),
-				 y + (hg / 2.0), hg, hg , 0,
-				 360 * 64);
-#else
 			LyXFont tmpf(font);
 			tmpf.decSize().decSize();
 			pain.text(x2 - (lyxfont::rbearing(0xB0, tmpf) - lyxfont::lbearing(0xB0, tmpf)) / 2.0,
 				  baseline - lyxfont::ascent(ic, font) - lyxfont::descent(0xB0, tmpf) - (lyxfont::ascent(0xB0, tmpf) + lyxfont::descent(0xB0, tmpf)) / 3.0,
 				  char(0xB0), tmpf);
-#endif
 			break;
 		}
 		case TIE:     // tie
@@ -604,76 +524,28 @@ void InsetLatexAccent::draw(Painter & pain, LyXFont const & font,
 		}
 		case HUNGARIAN_UMLAUT:    // hung. umlaut
 		{
-#if 0
-			int xs1[2], xs2[2], ys1[2], ys2[2];
-			
-			xs1[0] = int(x2 - (hg / 2.0));
-			ys1[0] = int(y + hg);
-			
-			xs2[0] = int(x2 + hg35 - (hg / 2.0));
-			ys2[0] = int(y + hg35);
-			
-			xs1[1] = int(x2 + (hg / 2.0));
-			ys1[1] = int(y + hg);
-			
-			xs2[1] = int(x2 + hg35 + (hg / 2.0));
-			ys2[1] = int(y + hg35);
-
-			pain.segments(xs1, ys1, xs2, ys2, 2);
-#else
 			pain.text(x2 - (lyxfont::rbearing('´', font) - lyxfont::lbearing('´', font)),
 				  baseline - lyxfont::ascent(ic, font) - lyxfont::descent('´', font) - (lyxfont::ascent('´', font) + lyxfont::descent('´', font)) / 2,
 				  '´', font);
 			pain.text(x2,
 				  baseline - lyxfont::ascent(ic, font) - lyxfont::descent('´', font) - (lyxfont::ascent('´', font) + lyxfont::descent('´', font)) / 2,
 				  '´', font);
-#endif
 			break;
 		}
 		case UMLAUT:    // umlaut
 		{
-#if 0
-			float rad = hg / 2.0;
-			if (rad <= 1.0) {
-				pain.point(int(x2 - 4.0 * hg / 7.0),
-					   y + hg35);
-				pain.point(int(x2 + 4.0 * hg / 7.0),
-					   y + hg35);
-			} else {
-				rad += .5; // this ensures that f.ex. 1.5 will
-				// not be rounded down to .5 and then
-				// converted to int = 0
-				pain.arc(int(x2 - 2.0 * hg / 4.0),
-					     y + hg35,
-					     rad, rad,
-					     0, 360 * 64);
-				pain.arc(int(x2 + 2.0 * hg / 4.0),
-					    y + hg35,
-					    rad, rad, 0, 360*64);
-			}
-#else
 			pain.text(x2 - (lyxfont::rbearing('¨', font) - lyxfont::lbearing('¨', font)) / 2,
 				  baseline - lyxfont::ascent(ic, font) - lyxfont::descent('¨', font) - ( lyxfont::ascent('¨', font) + lyxfont::descent('¨', font)) / 2,
 				  '¨', font);
-#endif
 			break;
 		}
 		case CIRCUMFLEX:    // circumflex
 		{
-#if 0
-			int xp[3], yp[3];
-			
-			xp[0] = int(x2 - hg35); yp[0] = y + int(hg);
-			xp[1] = int(x2);        yp[1] = int(y + hg35);
-			xp[2] = int(x2 + hg35); yp[2] = y + int(hg);
-			pain.lines(xp, yp, 3);
-#else
 			LyXFont tmpf(font);
 			tmpf.decSize().decSize().decSize();
 			pain.text(x2 - (lyxfont::rbearing(0x5E, tmpf) - lyxfont::lbearing(0x5E, tmpf)) / 2,
 				  baseline - lyxfont::ascent(ic, font) - lyxfont::descent(0x5E, tmpf) - (lyxfont::ascent(0x5E, tmpf) + lyxfont::descent(0x5E, tmpf)) / 3.0,
 				  char(0x5E), tmpf);
-#endif
 			break;
 		}
 		case OGONEK:    // ogonek

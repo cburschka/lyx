@@ -60,6 +60,7 @@
 #include "font.h"
 //#include "lyx_cb.h"
 #include "bufferview_funcs.h"
+#include "ColorHandler.h"
 
 using std::ostream;
 using std::istream;
@@ -108,7 +109,6 @@ static bool gs_gray;			// is grayscale?
 static int gs_allcolors;		// number of all colors
 
 static list<int> pidwaitlist; // pid wait list
-
 
 static
 GC createGC()
@@ -474,6 +474,10 @@ void freefigdata(figdata * tmpdata)
 static
 void runqueue()
 {
+	// This _have_ to be set before the fork!
+	unsigned long background_pixel =
+		lyxColorHandler->colorPixel(LColor::background);
+	
 	// run queued requests for ghostscript, if any
 	if (!gsrunning && gs_color && !gs_xcolor) {
 		// here alloc all colors, so that gs will use only
@@ -501,7 +505,7 @@ void runqueue()
 			continue;
 		}
 
-		int pid = fork();
+		int pid = ::fork();
 		
 		if (pid == -1) {
 			if (lyxerr.debugging()) {
@@ -553,14 +557,17 @@ void runqueue()
 			}
 			// wait until property is deleted if executing multiple
 			// ghostscripts
+			XGrabServer(tempdisp);
 			for (;;) {
 				// grab server to prevent other child
 				// interfering with setting GHOSTVIEW property
+				// The grabbing goes on for too long, is it
+				// really needed? (Lgb)
+				// I moved most of the grabs... (Lgb)
 				if (lyxerr.debugging()) {
 					lyxerr << "Grabbing the server"
 					       << endl;
 				}
-				XGrabServer(tempdisp);
 				prop = XListProperties(tempdisp,
 						       fl_get_canvas_id(
 					figinset_canvas), &nprop);
@@ -579,8 +586,8 @@ void runqueue()
 				XFree(reinterpret_cast<char *>(prop)); // jc:
 				if (err) break;
 				// release the server
-				XUngrabServer(tempdisp);
-				XFlush(tempdisp);
+				//XUngrabServer(tempdisp);
+				//XFlush(tempdisp);
 				// ok, property found, we must wait until
 				// ghostscript deletes it
 				if (lyxerr.debugging()) {
@@ -589,10 +596,11 @@ void runqueue()
 					       << "] GHOSTVIEW property"
 						" found. Waiting." << endl;
 				}
-
-				sleep(1);
+				XUngrabServer(tempdisp);
+				XFlush(tempdisp);
+				::sleep(1);
+				XGrabServer(tempdisp);
 			}
-
 			XChangeProperty(tempdisp, 
 					fl_get_canvas_id(figinset_canvas),
 					XInternAtom(tempdisp, "GHOSTVIEW", false),
@@ -600,6 +608,8 @@ void runqueue()
 					8, PropModeAppend, 
 					reinterpret_cast<unsigned char*>(tbuf),
 					strlen(tbuf));
+			XUngrabServer(tempdisp);
+			XFlush(tempdisp);
 			
 			switch (p->data->flags & 3) {
 			case 0: tbuf[0] = 'H'; break; // Hidden
@@ -612,11 +622,13 @@ void runqueue()
 					tbuf[0] = 'G'; // Gray
 				break;
 			}
+			
+			sprintf(tbuf + 1, " %ld %ld",
+				BlackPixelOfScreen(
+				DefaultScreenOfDisplay(tempdisp)),
+				background_pixel);
 
-			sprintf(tbuf+1, " %ld %ld", BlackPixelOfScreen(
-				DefaultScreenOfDisplay(fl_display)),
-				fl_get_pixel(FL_WHITE));
-
+			XGrabServer(tempdisp);
 			XChangeProperty(tempdisp, 
 					fl_get_canvas_id(figinset_canvas),
 					XInternAtom(tempdisp,
@@ -627,6 +639,7 @@ void runqueue()
 					strlen(tbuf));
 			XUngrabServer(tempdisp);
 			XFlush(tempdisp);
+			
 			if (lyxerr.debugging()) {
 				lyxerr << "Releasing the server" << endl;
 			}
@@ -637,7 +650,7 @@ void runqueue()
 			typedef char * char_p;
 			env = new char_p[ne + 2];
 			env[0] = tbuf2;
-			memcpy(&env[1], environ, sizeof(char*) * (ne + 1));
+			::memcpy(&env[1], environ, sizeof(char*) * (ne + 1));
 			environ = env;
 
 			// now make gs command
@@ -648,17 +661,17 @@ void runqueue()
 			sprintf(gbuf, "-g%dx%d", p->data->wid, p->data->hgh);
 			// now chdir into dir with .eps file, to be on the safe
 			// side
-			chdir(OnlyPath(p->data->fname).c_str());
+			::chdir(OnlyPath(p->data->fname).c_str());
 			// make temp file name
 			sprintf(tbuf, "%s/~lyxgs%d.ps", system_tempdir.c_str(),
-				int(getpid()));
+				int(::getpid()));
 			if (lyxerr.debugging()) {
 				lyxerr << "starting gs " << tbuf << " "
 				       << p->data->fname
 				       << ", pid: " << getpid() << endl;
 			}
 
-			int err = execlp(lyxrc.ps_command.c_str(), 
+			int err = ::execlp(lyxrc.ps_command.c_str(), 
 					 lyxrc.ps_command.c_str(), 
 					 "-sDEVICE=x11",
 					 "-dNOPAUSE", "-dQUIET",
@@ -927,22 +940,6 @@ void UnregisterFigure(InsetFig * fi)
 	delete tmpfig;
 
 	if (figures.empty()) DoneFigures();
-}
-
-
-static
-string NextToken(istream & is)
-{
-	string token;
-	char c;
-	if (!is.eof()) {
-		do {
-			is.get(c);
-			token += c;
-		} while (!is.eof() && !isspace(c));
-		token.erase(token.length() - 1); // remove the isspace
-	}
-	return token;
 }
 
 
@@ -1664,7 +1661,7 @@ void InsetFig::GetPSSizes()
 			break;
 		}
 		if (c == '%' && lastchar == '%') {
-			p = NextToken(ifs);
+			ifs >> p;
 			if (p.empty()) break;
 			// we should not use this, with it we cannot
 			// discover bounding box and end of file.

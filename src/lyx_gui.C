@@ -37,6 +37,7 @@
 #include "lyxlookup.h"
 #include "bufferlist.h"
 #include "language.h"
+#include "ColorHandler.h"
 
 #ifdef TWO_COLOR_ICONS
 #include "banner_bw.xbm"
@@ -185,6 +186,8 @@ LyXGUI::LyXGUI(LyX * owner, int * argc, char * argv[], bool GUI)
 			width = WidthOfScreen(scr) - 8;
 	}
 
+	// Initialize the LyXColorHandler
+	lyxColorHandler = new LyXColorHandler;
 }
 
 
@@ -410,20 +413,13 @@ void LyXGUI::create_forms()
 	combo_language->add(ob->x, ob->y, ob->w, ob->h, 250);
 	combo_language->shortcut("#G", 1);
 	fl_end_form();
-#if 0
-	int n; // declared here because DEC cxx does not like multiple
-	       // declarations of variables in for() loops (JMarc)
-        for (n = 0; tex_babel[n][0]; ++n) {
-	    combo_language->addto(tex_babel[n]);
-	}
-#else
+
 	// "default" is not part of the languages array any more.
 	combo_language->addto("default");
 	for(Languages::const_iterator cit = languages.begin();
 	    cit != languages.end(); ++cit) {
 		combo_language->addto((*cit).second.lang.c_str());
 	}
-#endif
 
 	// not really necessary, but we can do it anyway.
 	fl_addto_choice(fd_form_document->choice_fontsize, "default|10|11|12");

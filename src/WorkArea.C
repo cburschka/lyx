@@ -176,7 +176,7 @@ WorkArea::WorkArea(BufferView * o, int xpos, int ypos, int width, int height)
 	createPixmap(width - 15 - 2 * bw, height - 2 * bw);
 
 	// setup the painter
-	painter_.setDisplay(fl_display);
+	//painter_.setDisplay(fl_display);
 	
 	// We add this object as late as possible to avoit problems
 	// with drawing.

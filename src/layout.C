@@ -97,50 +97,6 @@ enum LayoutTags {
 };
 
 
-#if 0
-// This table is sorted alphabetically [asierra 30March96]
-static keyword_item layoutTags[] = {
-	{ "align",			LT_ALIGN },
-	{ "alignpossible",		LT_ALIGNPOSSIBLE },
-	{ "bottomsep",			LT_BOTTOMSEP },
-	{ "copystyle",                  LT_COPYSTYLE },
-	{ "end",			LT_END },
-	{ "endlabeltype",             	LT_ENDLABELTYPE },
-	{ "fill_bottom",		LT_FILL_BOTTOM },
-	{ "fill_top",			LT_FILL_TOP },
-	{ "font",                  	LT_FONT },
-	{ "freespacing",	   	LT_FREE_SPACING },
-	{ "intitle",                    LT_INTITLE },
-	{ "itemsep",               	LT_ITEMSEP },
-	{ "keepempty",                  LT_KEEPEMPTY },
-	{ "labelbottomsep",             LT_LABEL_BOTTOMSEP },
-	{ "labelfont",             	LT_LABELFONT },
-	{ "labelindent",           	LT_LABELINDENT },
-	{ "labelsep",              	LT_LABELSEP },
-	{ "labelstring",           	LT_LABELSTRING },
-	{ "labelstringappendix",        LT_LABELSTRING_APPENDIX },
-	{ "labeltype",             	LT_LABELTYPE },
-	{ "latexname",             	LT_LATEXNAME },
-	{ "latexparam",			LT_LATEXPARAM },
-	{ "latextype",             	LT_LATEXTYPE },
-	{ "leftmargin",            	LT_LEFTMARGIN },
-	{ "margin",                	LT_MARGIN },
-	{ "needprotect",                LT_NEED_PROTECT },
-	{ "newline",			LT_NEWLINE },
-	{ "nextnoindent",		LT_NEXTNOINDENT },
-	{ "obsoletedby",                LT_OBSOLETEDBY },
-	{ "parindent",			LT_PARINDENT },
-	{ "parsep",			LT_PARSEP },
-	{ "parskip",			LT_PARSKIP },
-	{ "preamble",                   LT_PREAMBLE },
-	{ "rightmargin",		LT_RIGHTMARGIN },
-	{ "spacing",                    LT_SPACING },
-	{ "textfont",                   LT_TEXTFONT },
-	{ "topsep",			LT_TOPSEP }
-};
-#endif
-
-
 /////////////////////
 
 // Constructor for layout
@@ -444,16 +400,6 @@ enum AlignTags {
 	AT_LAYOUT
 };
 
-
-#if 0
-static keyword_item alignTags[] = {
-	{ "block",  AT_BLOCK },
-	{ "center", AT_CENTER },
-	{ "layout", AT_LAYOUT },
-	{ "left",   AT_LEFT },
-	{ "right",  AT_RIGHT }
-};
-#endif
 
 void LyXLayout::readAlign(LyXLex & lexrc)
 {

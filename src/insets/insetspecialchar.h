@@ -34,10 +34,6 @@ public:
 		END_OF_SENTENCE,
 		/// Menu separator
 		MENU_SEPARATOR,
-#if 0
-		/// Newline
-		NEWLINE,
-#endif
 		/// Protected Separator
 		PROTECTED_SEPARATOR
 	};

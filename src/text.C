@@ -3959,12 +3959,6 @@ void LyXText::GetVisibleRow(int offset, Row * row_ptr, long y)
 			y_top += LYX_PAPER_MARGIN;
 		
 		if (row_ptr->par->pagebreak_top){ /* draw a top pagebreak  */
-#if 0
-			pain.line(0, offset + y_top + 2 * DefaultHeight(),
-				  paperwidth,
-				  offset + y_top + 2 * DefaultHeight(),
-				  LColor::pagebreak, Painter::line_onoffdash);
-#else
 			LyXFont pb_font;
 			pb_font.setColor(LColor::pagebreak).decSize();
 			int w = 0, a = 0, d = 0;
@@ -3985,7 +3979,6 @@ void LyXText::GetVisibleRow(int offset, Row * row_ptr, long y)
 				      pb_font,
 				      LColor::background,
 				      LColor::background);
-#endif
 			y_top += 3 * DefaultHeight();
 		}
 		
@@ -4147,12 +4140,6 @@ void LyXText::GetVisibleRow(int offset, Row * row_ptr, long y)
 		
 		/* draw a bottom pagebreak */ 
 		if (firstpar->pagebreak_bottom) {
-#if 0
-			pain.line(0, offset + y_bottom - 2 * DefaultHeight(),
-				  paperwidth,
-				  offset + y_bottom - 2 * DefaultHeight(),
-				  LColor::pagebreak, Painter::line_onoffdash);
-#else
 			LyXFont pb_font;
 			pb_font.setColor(LColor::pagebreak).decSize();
 			int w = 0, a = 0, d = 0;
@@ -4174,7 +4161,6 @@ void LyXText::GetVisibleRow(int offset, Row * row_ptr, long y)
 				      pb_font,
 				      LColor::background,
 				      LColor::background);
-#endif
 			y_bottom -= 3 * DefaultHeight();
 		}
 		

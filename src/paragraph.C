@@ -287,12 +287,6 @@ void LyXParagraph::writeFile(ostream & os, BufferParams const & params,
 			os << "\n\\hfill \n";
 			column = 0;
 			break;
-#if 0
-		case META_PROTECTED_SEPARATOR: 
-			os << "\n\\protected_separator \n";
-			column = 0;
-			break;
-#endif
 		case '\\':
 			os << "\n\\backslash \n";
 			column = 0;
@@ -2688,11 +2682,6 @@ bool LyXParagraph::linuxDocConvertChar(char c, string & sgml_string)
 	case LyXParagraph::META_HFILL:
 		sgml_string.clear();
 		break;
-#if 0
-	case LyXParagraph::META_PROTECTED_SEPARATOR: 
-		sgml_string = ' ';
-		break;
-#endif
 	case LyXParagraph::META_NEWLINE:
 		sgml_string = '\n';
 		break;
@@ -3190,11 +3179,6 @@ void LyXParagraph::SimpleTeXSpecialChars(ostream & os, TexRow & texrow,
 			// but I'll leave it as a switch statement
 			// so its simpler to extend. (ARRae)
 			switch (c) {
-#if 0
-			case LyXParagraph::META_PROTECTED_SEPARATOR: 
-			        os << ' ';
-			        break;
-#endif
 			default:
 				// make sure that we will not print
 				// error generating chars to the tex
@@ -3209,11 +3193,6 @@ void LyXParagraph::SimpleTeXSpecialChars(ostream & os, TexRow & texrow,
 		} else {
 			// Plain mode (i.e. not LaTeX)
 			switch (c) {
-#if 0
-			case LyXParagraph::META_PROTECTED_SEPARATOR: 
-			        os << '~';
-			        break;
-#endif
 			case '\\': 
 				os << "\\textbackslash{}";
 				column += 15;
@@ -3477,10 +3456,6 @@ bool LyXParagraph::RoffContTableRows(ostream & os,
 				break;
 			case LyXParagraph::META_HFILL: 
 				break;
-#if 0
-			case LyXParagraph::META_PROTECTED_SEPARATOR:
-				break;
-#endif
 			case '\\': 
 				os << "\\\\";
 				break;

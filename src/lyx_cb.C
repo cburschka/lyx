@@ -2736,13 +2736,7 @@ extern "C" void PrintCancelCB(FL_OBJECT *, long)
 static
 bool stringOnlyContains (string const & LStr, char const * cset)
 {
-#if 0
-	char const * cstr = LStr.c_str();
-
-	return strspn(cstr, cset) == strlen(cstr);
-#else
 	return LStr.find_first_not_of(cset) == string::npos;
-#endif
 }
 
 

@@ -61,11 +61,6 @@ int InsetSpecialChar::width(Painter &, LyXFont const & font) const
 	{
 		return lyxfont::width(" x ", font);
 	}
-#if 0
-	case NEWLINE:
-	{
-	}
-#endif
 	case PROTECTED_SEPARATOR:
 	{
 		return lyxfont::width('x', font);
@@ -119,11 +114,6 @@ void InsetSpecialChar::draw(Painter & pain, LyXFont const & f,
 		x += width(pain, font);
 		break;
 	}
-#if 0
-	case NEWLINE:
-	{
-	}
-#endif
 	case PROTECTED_SEPARATOR:
 	{
 		float w = width(pain, font);
@@ -159,9 +149,6 @@ void InsetSpecialChar::Write(ostream & os) const
 	case END_OF_SENTENCE:	command = "\\@.";	break;
 	case LDOTS:		command = "\\ldots{}";	break;
 	case MENU_SEPARATOR:    command = "\\menuseparator"; break;
-#if 0
-	case NEWLINE:           command = "\\newline";  break;
-#endif
 	case PROTECTED_SEPARATOR:
 		                command = "\\protected_separator";          break;
 	}

@@ -1591,11 +1591,6 @@ void Buffer::writeFileAscii(string const & fname, int linelen)
 			case LyXParagraph::META_HFILL: 
 				ofs << "\t";
 				break;
-#if 0
-			case LyXParagraph::META_PROTECTED_SEPARATOR:
-				ofs << " ";
-				break;
-#endif
 			case '\\':
 				ofs << "\\";
 				break;
@@ -3598,10 +3593,6 @@ void Buffer::RoffAsciiTable(ostream & os, LyXParagraph * par)
 			break;
 		case LyXParagraph::META_HFILL: 
 			break;
-#if 0
-		case LyXParagraph::META_PROTECTED_SEPARATOR:
-			break;
-#endif
 		case '\\': 
 			ofs << "\\\\";
 			break;

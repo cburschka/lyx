@@ -43,25 +43,6 @@ char const * string_align[5] = {
 // used all over. As it happens, that meant that these strings were included 
 // 27 times in the object file. (Asger)
 
-#if 0
-///
-char const * tex_babel[] = {
-	"default", "afrikaans", "american", "arabic",
-	"austrian", "bahasa", "brazil", "breton",
-	"catalan", "croatian", "czech", "danish", "dutch", 
-	"english", "esperanto", "estonian",
-	"finnish", "francais", "french", "frenchb",
-	"galician",
-	"german", "greek", "hebrew", "hungarian", "irish",
-	"italian", "lsorbian", "magyar", "norsk",
-	"polish", "portuges", "romanian",
-	"russian", "scottish",
-	"spanish", "slovak", "slovene", "swedish",
-	"turkish", "usorbian", "welsh",
-	""};
-#endif
-
-
 char const * tex_graphics[] = {"default", "dvips", "dvitops", "emtex",
 		      "ln", "oztex", "textures", "none", ""};
 

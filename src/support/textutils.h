@@ -22,17 +22,10 @@ bool IsNewlineChar(char c) {
 
 
 ///
-#if 0
-inline
-bool IsSeparatorChar(char c) {
-	return (c == ' ' || c == LyXParagraph::META_PROTECTED_SEPARATOR);
-}
-#else
 inline
 bool IsSeparatorChar(char c) {
 	return (c == ' ');
 }
-#endif
 
 
 ///
@@ -96,9 +89,6 @@ bool IsKommaChar(char c) {
 		|| c == '/' 
 		|| c == '\\'
 		|| c == LyXParagraph::META_NEWLINE
-#if 0
-		|| c == LyXParagraph::META_PROTECTED_SEPARATOR
-#endif
 		);
 }
 

@@ -21,7 +21,6 @@
 // This is only included to provide stuff for the non-public sections
 #include <X11/Xlib.h>
 
-#include <map>
 #include "PainterBase.h"
 #include "LColor.h"
 
@@ -101,36 +100,13 @@ public:
 	/// Draw a char at position x, y (y is the baseline)
 	PainterBase & text(int x, int y, char c, LyXFont const & f);
 	
-protected:
-	/**@Support for X only, by now */
-	friend class WorkArea;
-	///
-	PainterBase & setDisplay(Display * d) { display = d; return *this; }
-	
-	/// Get foreground color in ordinary GC
-	GC getGCForeground(LColor::color c);
-	
-	/// Set up GC according to line style
-	GC getGCLinepars(enum line_style, enum line_width, LColor::color c);
-	
+private:
 	/// Check the font, and if set, draw an underline
 	void underline(LyXFont const & f, int x, int y, int width);
 	
 	/**@Low level X parameters */
 	///
 	Display * display;
-
-	///
-	Drawable drawable() const;
-		
-	///
-	Colormap colormap;
-	
-	/// Caching of ordinary color GCs
-	GC colorGCcache[LColor::ignore + 1];
-	/// Caching of GCs used for lines
-	typedef std::map<int, GC> LineGCCache;
-	///
-	LineGCCache lineGCcache;
 };
+
 #endif
