@@ -105,8 +105,9 @@ TODO Before initial production release:
 #include "lyx_gui_misc.h"
 #include "support/FileInfo.h"
 #include "support/filetools.h"
-#include "frontends/controllers/helper_funcs.h"
+#include "support/lyxalgo.h" // lyx::count
 #include "support/lyxlib.h"
+#include "frontends/controllers/helper_funcs.h"
 #include "lyxtext.h"
 #include "lyxrc.h"
 #include "font.h" // For the lyxfont class.
@@ -581,31 +582,32 @@ int InsetGraphics::latex(Buffer const *buf, ostream & os,
 			<< _("empty figure path") << "}\n";
 		return 1; // One end of line marker added to the stream.
 	}
-	// Keep count of newlines that we issued.
-#warning the newlines=0 were in the original code. where is the sense? (Herbert)
-	int newlines = 0;
-	// This variables collect all the latex code that should be before and
+	// These variables collect all the latex code that should be before and
 	// after the actual includegraphics command.
 	string before;
 	string after;
 	// Do we want subcaptions?
 	if (params.subcaption) {
 		before += "\\subfigure[" + params.subcaptionText + "]{";
-		after = '}' + after;
+		after = '}';
 	}
 	// We never use the starred form, we use the "clip" option instead.
-	os << before << "\\includegraphics";
+	before += "\\includegraphics";
 	// Write the options if there are any.
 	string const opts = createLatexOptions();
 	if (!opts.empty()) {
-		os << "[%\n" << opts << ']';
+		before += ("[%\n" + opts +']');
 	}
 	// Make the filename relative to the lyx file
 	// and remove the extension so the LaTeX will use whatever is
 	// appropriate (when there are several versions in different formats)
-	string const filename = prepareFile(buf);
-	os << '{' << filename << '}' << after;
+	string const latex_str = before + '{' + prepareFile(buf) + '}' + after;
+	os << latex_str;
 	// Return how many newlines we issued.
+	int const newlines =
+		int(lyx::count(latex_str.begin(), latex_str.end(),'\n') + 1);
+	// lyxerr << "includegraphics: " << newlines << " lines of text"
+	//        << endl; 
 	return newlines;
 }
 

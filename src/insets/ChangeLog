@@ -1,3 +1,7 @@
+2002-02-12  Herbert Voss  <voss@lyx.org>
+
+	* insetgraphics.C: latex(), return the correct newlines
+
 2002-02-13  José Matos  <jamatos@fep.up.pt>
 
 	* inseturl.C (docbook): escape & in url.
