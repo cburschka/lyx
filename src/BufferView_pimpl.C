@@ -349,7 +349,8 @@ int BufferView::Pimpl::resizeCurrentBuffer()
 	bv_->setState();
 	AllowInput(bv_);
 
-	owner_->getDialogs()->hideSplash();
+	/// get rid of the splash screen if it's not gone already
+	owner_->getDialogs()->destroySplash();
  
 	return 0;
 }

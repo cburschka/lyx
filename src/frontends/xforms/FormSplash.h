@@ -10,37 +10,41 @@
 #ifndef FORMSPLASH_H
 #define FORMSPLASH_H
 
-#include "FormBase.h"
-
 #ifdef __GNUG__
 #pragma interface
 #endif
 
+#include "DialogBase.h"
+ 
 struct FD_form_splash;
+class Dialogs; 
+class LyXView;
 
 /** The startup splash screen
  */
-class FormSplash : public FormBaseBI {
+class FormSplash : public DialogBase {
 public:
 	FormSplash(LyXView *, Dialogs *);
 
 	~FormSplash();
 
-	/// close the dialog
-	static void CloseCB(FL_OBJECT *);
+	/// hide (and destroy) the dialog
+	void hide();
  
 private:
 	/// show the dialog
-	virtual void show(); 
+	void show(); 
 	/// Build the dialog
-	virtual void build();
-	/// Pointer to the actual instantiation of the xforms form
-	virtual FL_FORM * form() const;
+	void build();
 	/// Fdesign generated method
 	FD_form_splash * build_splash();
 
 	/// Real GUI implementation.
 	FD_form_splash * dialog_;
+	/// our container
+	Dialogs * d_; 
+	/// the show connection
+	Connection c_; 
 };
 
 #endif // FORMSPLASH_H

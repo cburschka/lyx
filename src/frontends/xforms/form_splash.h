@@ -5,7 +5,7 @@
 #define FD_form_splash_h_
 
 /** Callbacks, globals and object handlers **/
-extern  "C" void C_FormSplashTimerCB(FL_OBJECT *, long);
+extern  "C" void C_FormSplashCB(FL_OBJECT *, long);
 
 
 /**** Forms and Objects ****/

@@ -51,6 +51,8 @@ Signal0<void> Dialogs::redrawGUI;
 
 Dialogs::Dialogs(LyXView * lv)
 {
+	splash_ = new FormSplash(lv, this);
+ 
 	dialogs_.push_back(new FormBibitem(lv, this));
 	dialogs_.push_back(new FormBibtex(lv, this));
 	dialogs_.push_back(new FormCharacter(lv, this));
@@ -70,7 +72,6 @@ Dialogs::Dialogs(LyXView * lv)
 	dialogs_.push_back(new FormPrint(lv, this));
 	dialogs_.push_back(new FormRef(lv, this));
 	dialogs_.push_back(new FormSearch(lv, this));
-	dialogs_.push_back(new FormSplash(lv, this));
 	dialogs_.push_back(new FormTabular(lv, this));
 	dialogs_.push_back(new FormTabularCreate(lv, this));
 	dialogs_.push_back(new FormToc(lv, this));
@@ -90,9 +91,17 @@ Dialogs::~Dialogs()
 	     ++iter) {
 		delete *iter;
 	}
+	delete splash_;
 }
 
 
+void Dialogs::destroySplash()
+{
+	delete splash_;
+	splash_ = 0;
+}
+ 
+ 
 /*****************************************************************************
 
 Q.  WHY does Dialogs::Dialogs pass `this' to dialog constructors?

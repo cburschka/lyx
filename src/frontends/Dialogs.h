@@ -29,6 +29,8 @@ class DialogBase;
 // Maybe this should be a UIFunc modelled on LyXFunc
 class LyXView;
 
+class FormSplash;
+
 class InsetGraphics;
 class InsetBibKey;
 class InsetBibtex;
@@ -139,8 +141,8 @@ public:
 	Signal0<void> showSearch;
 	/// pop up the splash
 	Signal0<void> showSplash;
-	/// hide the splash immediately
-	Signal0<void> hideSplash;
+	/// destroy the splash dialog
+	void destroySplash();
 	///
 	Signal1<void, InsetTabular *> showTabular;
 	///
@@ -159,8 +161,10 @@ public:
 	Signal0<void> updateCharacter;  // allow update as cursor moves
 	//@}
 private:
-	///
+	/// the dialogs being managed
 	std::vector<DialogBase *> dialogs_;
+	/// the splash dialog
+	FormSplash * splash_;
 };
 
 #endif

@@ -27,7 +27,7 @@ FD_form_splash * FormSplash::build_splash()
   obj = fl_add_box(FL_UP_BOX, 0, 0, 420, 290, "");
     fl_set_object_color(obj, FL_BLACK, FL_TOP_BCOL);
   fdui->splash_timer = obj = fl_add_timer(FL_HIDDEN_TIMER, 110, 170, 190, 60, "");
-    fl_set_object_callback(obj, C_FormSplashTimerCB, 0);
+    fl_set_object_callback(obj, C_FormSplashCB, 0);
   fl_end_form();
 
   fdui->form->fdui = fdui;

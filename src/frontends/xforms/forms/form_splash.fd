@@ -45,7 +45,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: splash_timer
-callback: C_FormSplashTimerCB
+callback: C_FormSplashCB
 argument: 0
 
 ==============================

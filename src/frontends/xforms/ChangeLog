@@ -9,6 +9,18 @@
 	* xforms/forms/makefile:
 	* forms/form_external.fd: add FormExternal
 
+2001-03-12  John Levon  <moz@compsoc.man.ac.uk>
+
+	* Dialogs.C: add destroySplash()
+
+	* form_splash.h:
+	* form_splash.C:
+	* forms/form_splash.fd:
+	* FormSplash.h:
+	* FormSplash.C: make independent of FormBase, tidy
+	
+	* Menubar_pimpl.C: destroy splash on interaction
+
 2001-03-12  Lars Gullik Bjønnes  <larsbj@trylle.birdstep.com>
 
 	* FormToc.h: use Buffer::typedef

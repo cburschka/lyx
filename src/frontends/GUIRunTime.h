@@ -15,20 +15,19 @@
 #pragma interface
 #endif
 
-class LyXView;
-
 /** The LyX GUI independent guiruntime class
     The GUI interface is implemented in the corresponding
     frontends GUIRunTime.C file.
 */
 class GUIRunTime {
 public:
+	/// initialise the toolkit 
 	static
 	int initApplication(int argc, char * argv[]);
-	///
+	/// process pending events
 	static
 	void processEvents();
-	///
+	/// enter the permanent event loop until "finished" becomes false
 	static
 	void runTime();
 	/// This is run first in the LyXGUI constructor.
