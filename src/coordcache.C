@@ -14,10 +14,10 @@ void lyxbreaker(void const * data, const char * hint, int size)
 
 void CoordCache::clear()
 {
-	lyxerr << "CoordCache: removing " << arrays_.data_.size()
-		<< " arrays" << std::endl;
-	lyxerr << "CoordCache: removing " << insets_.data_.size()
-		<< " insets" << std::endl;
+//	lyxerr << "CoordCache: removing " << arrays_.data_.size()
+//		<< " arrays" << std::endl;
+//	lyxerr << "CoordCache: removing " << insets_.data_.size()
+//		<< " insets" << std::endl;
 	arrays_.clear();
 	insets_.clear();
 }

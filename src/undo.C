@@ -27,10 +27,9 @@
 
 #include <algorithm>
 
-using std::advance;
-
 using lyx::par_type;
 
+using std::advance;
 using std::endl;
 
 
@@ -42,8 +41,7 @@ bool undo_finished;
 
 std::ostream & operator<<(std::ostream & os, Undo const & undo)
 {
-	return os << " from: " << undo.from
-		<< " end: " << undo.end
+	return os << " from: " << undo.from << " end: " << undo.end
 		<< " cursor:\n" << undo.cursor;
 }
 
@@ -62,6 +60,8 @@ void recordUndo(Undo::undo_kind kind,
 	Undo undo;
 	undo.kind = kind;
 	undo.cursor = StableDocIterator(cur);
+	lyxerr << "recordUndo: cur: " << cur << endl;
+	lyxerr << "recordUndo: undo.cursor: " << undo.cursor << endl;
 	undo.from = first_par;
 	undo.end = cur.lastpar() - last_par;
 
@@ -140,12 +140,12 @@ void performUndoOrRedo(BufferView & bv, Undo const & undo)
 }
 
 
-// returns false if no undo possible
+// Returns false if no undo possible.
 bool textUndoOrRedo(BufferView & bv,
 	limited_stack<Undo> & stack, limited_stack<Undo> & otherstack)
 {
 	if (stack.empty()) {
-		// nothing to do
+		// Nothing to do.
 		finishUndo();
 		return false;
 	}
@@ -154,10 +154,15 @@ bool textUndoOrRedo(BufferView & bv,
 	stack.pop();
 	finishUndo();
 
-	// this implements redo
+	// This implements redo
 	otherstack.push(undo);
-	DocIterator dit =
-		undo.cursor.asDocIterator(&bv.buffer()->inset());
+	// FIXME: This triggers the error in dociterator.C +454
+	// could the reason be that we rebuild the dit _before_ the
+	// contents is actually 'undone'?
+	// I.e. state now is 'A', state on undo stack is 'B'.
+	// dit is created according to positions from undo.cursor, i.e. B
+	// but current buffer contents is more likely 'A'.
+	DocIterator dit = undo.cursor.asDocIterator(&bv.buffer()->inset());
 	if (dit.inMathed()) {
 		// Easy way out: store a full cell.
 		otherstack.top().array = asString(dit.cell());
@@ -188,7 +193,7 @@ bool textUndoOrRedo(BufferView & bv,
 
 void finishUndo()
 {
-	// makes sure the next operation will be stored
+	// Make sure the next operation will be stored.
 	undo_finished = true;
 }
 

@@ -625,12 +625,11 @@ int LyXText::leftMargin(par_type const pit, pos_type const pos) const
 
 int LyXText::rightMargin(Paragraph const & par) const
 {
-	LyXTextClass const & tclass = bv()->buffer()->params().getLyXTextClass();
-
 	// We do not want rightmargins on inner texts.
 	if (bv()->text() != this)
 		return 0;
 
+	LyXTextClass const & tclass = bv()->buffer()->params().getLyXTextClass();
 	int const r_margin =
 		::rightMargin()
 		+ font_metrics::signedWidth(tclass.rightmargin(),
@@ -640,7 +639,6 @@ int LyXText::rightMargin(Paragraph const & par) const
 		* 4 / (par.getDepth() + 4);
 
 	return r_margin;
-
 }
 
 

@@ -57,6 +57,10 @@ InsetBase * DocIterator::nextInset()
 	BOOST_ASSERT(!empty());
 	if (pos() == lastpos())
 		return 0;
+	if (pos() > lastpos()) {
+		lyxerr << "Should not happen, but it does. " << endl;
+		return 0;
+	}
 	if (inMathed())
 		return nextAtom().nucleus();
 	return paragraph().isInset(pos()) ? paragraph().getInset(pos()) : 0;
@@ -440,13 +444,19 @@ StableDocIterator::StableDocIterator(const DocIterator & dit)
 }
 
 
-DocIterator
-StableDocIterator::asDocIterator(InsetBase * inset) const
+DocIterator StableDocIterator::asDocIterator(InsetBase * inset) const
 {
 	// this function re-creates the cache of inset pointers
 	//lyxerr << "converting:\n" << *this << endl;
 	DocIterator dit = DocIterator(*inset);
 	for (size_t i = 0, n = data_.size(); i != n; ++i) {
+		if (inset == 0) {
+			// FIXME
+			lyxerr << "Should not happen, but does e.g. after C-n C-l C-z S-C-z"
+				<< endl << "dit: " << dit << endl
+				<< " lastpos: " << dit.lastpos() << endl;
+			break;
+		}
 		dit.push_back(data_[i]);
 		dit.back().inset_ = inset;
 		if (i + 1 != n)
