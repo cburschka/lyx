@@ -16,6 +16,9 @@
 
 #include <boost/utility.hpp>
 
+class LyXView;
+class Dialogs;
+
 /** This class makes a whole out of the disparate parts of a dialog.
  */
 template <typename Controller, typename GUIview,
