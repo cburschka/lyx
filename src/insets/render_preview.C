@@ -17,6 +17,7 @@
 #include "dimension.h"
 #include "gettext.h"
 #include "LColor.h"
+#include "lyx_main.h"
 #include "metricsinfo.h"
 
 #include "frontends/font_metrics.h"
@@ -43,22 +44,25 @@ bool RenderPreview::activated()
 }
 
 
-RenderPreview::RenderPreview()
-	: pimage_(0)
+RenderPreview::RenderPreview(InsetBase const * inset)
+	: pimage_(0),
+	  parent_(inset)
 {}
 
 
-RenderPreview::RenderPreview(RenderPreview const & other)
+RenderPreview::RenderPreview(RenderPreview const & other,
+			     InsetBase const * inset)
 	: RenderBase(other),
 	  boost::signals::trackable(),
 	  snippet_(other.snippet_),
-	  pimage_(0)
+	  pimage_(0),
+	  parent_(inset)
 {}
 
 
-auto_ptr<RenderBase> RenderPreview::clone() const
+auto_ptr<RenderBase> RenderPreview::clone(InsetBase const * inset) const
 {
-	return auto_ptr<RenderBase>(new RenderPreview(*this));
+	return auto_ptr<RenderBase>(new RenderPreview(*this, inset));
 }
 
 
@@ -142,12 +146,6 @@ void RenderPreview::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-boost::signals::connection RenderPreview::connect(slot_type const & slot)
-{
-	return preview_ready_signal_.connect(slot);
-}
-
-
 void RenderPreview::startLoading(Buffer const & buffer) const
 {
 	if (!activated() && !snippet_.empty())
@@ -224,8 +222,14 @@ void RenderPreview::imageReady(graphics::PreviewImage const & pimage)
 		return;
 
 	pimage_ = &pimage;
-	preview_ready_signal_();
+	LyX::cref().updateInset(parent_);
 }
+
+
+RenderMonitoredPreview::RenderMonitoredPreview(InsetBase const * inset)
+	: RenderPreview(inset),
+	  monitor_(std::string(), 2000)
+{}
 
 
 void RenderMonitoredPreview::setAbsFile(string const & file)

@@ -17,15 +17,13 @@
 #include "graphics/GraphicsLoader.h"
 #include "graphics/GraphicsParams.h"
 
-#include <boost/signals/signal0.hpp>
-
 
 class RenderGraphic : public RenderBase
 {
 public:
-	RenderGraphic();
-	RenderGraphic(RenderGraphic const &);
-	std::auto_ptr<RenderBase> clone() const;
+	RenderGraphic(InsetBase const *);
+	RenderGraphic(RenderGraphic const &, InsetBase const *);
+	std::auto_ptr<RenderBase> clone(InsetBase const *) const;
 
 	/// compute the size of the object returned in dim
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
@@ -37,12 +35,6 @@ public:
 
 	/// Is the stored checksum different to that of the graphics loader?
 	bool hasFileChanged() const;
-
-	/** Connect and you'll be informed when the loading status of the image
-	 *  changes.
-	 */
-	typedef boost::signal0<void>::slot_type slot_type;
-	boost::signals::connection connect(slot_type const &) const;
 
 	/// equivalent to dynamic_cast
 	virtual RenderGraphic * asGraphic() { return this; }

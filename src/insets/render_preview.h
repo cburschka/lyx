@@ -44,9 +44,9 @@ public:
 	/// a wrapper for Previews::activated()
 	static bool activated();
 
-	RenderPreview();
-	RenderPreview(RenderPreview const &);
-	std::auto_ptr<RenderBase> clone() const;
+	RenderPreview(InsetBase const *);
+	RenderPreview(RenderPreview const &, InsetBase const *);
+	std::auto_ptr<RenderBase> clone(InsetBase const *) const;
 
 	/// Compute the size of the object, returned in dim
 	void metrics(MetricsInfo &, Dimension & dim) const;
@@ -75,10 +75,6 @@ public:
 	/// The preview has been generated and is ready to use.
 	bool previewReady() const;
 
-	/// Connect and you'll be informed when the preview is ready.
-	typedef boost::signal0<void>::slot_type slot_type;
-	boost::signals::connection connect(slot_type const &);
-
 	/// equivalent to dynamic_cast
 	virtual RenderPreview * asPreview() { return this; }
 
@@ -100,14 +96,14 @@ private:
 	 */
 	boost::signals::connection ploader_connection_;
 
-	/// This signal is emitted when the preview is ready for display.
-	boost::signal0<void> preview_ready_signal_;
+	/// Inform the core that the inset has changed.
+	InsetBase const * parent_;
 };
 
 
 class RenderMonitoredPreview : public RenderPreview {
 public:
-	RenderMonitoredPreview() : monitor_(std::string(), 2000) {}
+	RenderMonitoredPreview(InsetBase const *);
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
 	///
@@ -117,7 +113,9 @@ public:
 	void startMonitoring() const { monitor_.start(); }
 	void stopMonitoring() const { monitor_.stop(); }
 
+
 	/// Connect and you'll be informed when the file changes.
+	typedef boost::signal0<void>::slot_type slot_type;
 	boost::signals::connection fileChanged(slot_type const &);
 
 	/// equivalent to dynamic_cast

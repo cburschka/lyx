@@ -1,3 +1,22 @@
+2004-04-13  Angus Leeming  <angus@localhost.localdomain>
+
+	* render_base.[Ch] (clone): now takes an InsetBase ptr to enable
+	the renderer to inform LyX::updateInset that the inset's status
+	has changed and it should be redrawn.
+
+	* render_button.[Ch] (clone):
+	* render_graphic.[Ch] (c-tors, clone):
+	* render_preview.[Ch] (c-tors, clone): ditto.
+
+	* render_graphic.[Ch] (connect):
+	* render_preview.[Ch] (connect): removed, as connection is now
+	made in the constructors.
+
+	* insetexternal.C:
+	* insetgraphics.C:
+	* insetinclude.C: ensuing simplification of the client code.
+	(statusChanged): now superfluous. Removed.
+	
 2004-04-12  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* ExternalTemplate.[Ch]: remove editCommand

@@ -16,6 +16,7 @@
 
 #include "gettext.h"
 #include "LColor.h"
+#include "lyx_main.h"
 #include "lyxrc.h"
 #include "metricsinfo.h"
 
@@ -26,6 +27,8 @@
 
 #include "support/filetools.h"
 
+#include <boost/bind.hpp>
+
 namespace graphics = lyx::graphics;
 
 using lyx::support::AbsolutePath;
@@ -35,22 +38,29 @@ using std::string;
 using std::auto_ptr;
 
 
-RenderGraphic::RenderGraphic()
+RenderGraphic::RenderGraphic(InsetBase const * inset)
 	: checksum_(0)
-{}
+{
+	loader_.connect(boost::bind(&LyX::updateInset,
+				    boost::cref(LyX::cref()), inset));
+}
 
 
-RenderGraphic::RenderGraphic(RenderGraphic const & other)
+RenderGraphic::RenderGraphic(RenderGraphic const & other,
+			     InsetBase const * inset)
 	: RenderBase(other),
 	  loader_(other.loader_),
 	  params_(other.params_),
 	  checksum_(0)
-{}
-
-
-auto_ptr<RenderBase> RenderGraphic::clone() const
 {
-	return auto_ptr<RenderBase>(new RenderGraphic(*this));
+	loader_.connect(boost::bind(&LyX::updateInset,
+				    boost::cref(LyX::cref()), inset));
+}
+
+
+auto_ptr<RenderBase> RenderGraphic::clone(InsetBase const * inset) const
+{
+	return auto_ptr<RenderBase>(new RenderGraphic(*this, inset));
 }
 
 
@@ -72,12 +82,6 @@ bool RenderGraphic::hasFileChanged() const
 	if (file_has_changed)
 		checksum_ = new_checksum;
 	return file_has_changed;
-}
-
-
-boost::signals::connection RenderGraphic::connect(slot_type const & slot) const
-{
-	return loader_.connect(slot);
 }
 
 

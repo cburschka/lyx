@@ -16,6 +16,7 @@
 
 #include <memory>
 
+class InsetBase;
 class MetricsInfo;
 class PainterInfo;
 
@@ -28,7 +29,7 @@ class RenderBase {
 public:
 	virtual ~RenderBase() {}
 
-	virtual std::auto_ptr<RenderBase> clone() const = 0;
+	virtual std::auto_ptr<RenderBase> clone(InsetBase const *) const = 0;
 
 	/// compute the size of the object returned in dim
 	virtual void metrics(MetricsInfo & mi, Dimension & dim) const = 0;

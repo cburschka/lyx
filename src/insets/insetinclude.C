@@ -91,10 +91,9 @@ string const uniqueID()
 
 InsetInclude::InsetInclude(InsetCommandParams const & p)
 	: params_(p), include_label(uniqueID()),
-	  preview_(new RenderMonitoredPreview),
+	  preview_(new RenderMonitoredPreview(this)),
 	  set_label_(false)
 {
-	preview_->connect(boost::bind(&InsetInclude::statusChanged, this));
 	preview_->fileChanged(boost::bind(&InsetInclude::fileChanged, this));
 }
 
@@ -103,10 +102,9 @@ InsetInclude::InsetInclude(InsetInclude const & other)
 	: InsetOld(other),
 	  params_(other.params_),
 	  include_label(other.include_label),
-	  preview_(new RenderMonitoredPreview),
+	  preview_(new RenderMonitoredPreview(this)),
 	  set_label_(other.set_label_)
 {
-	preview_->connect(boost::bind(&InsetInclude::statusChanged, this));
 	preview_->fileChanged(boost::bind(&InsetInclude::fileChanged, this));
 }
 
@@ -606,12 +604,6 @@ void InsetInclude::draw(PainterInfo & pi, int x, int y) const
 //
 // preview stuff
 //
-
-void InsetInclude::statusChanged() const
-{
-	LyX::cref().updateInset(this);
-}
-
 
 void InsetInclude::fileChanged() const
 {

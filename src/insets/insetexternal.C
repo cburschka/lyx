@@ -410,18 +410,8 @@ InsetExternal::InsetExternal(InsetExternal const & other)
 	: InsetOld(other),
 	  boost::signals::trackable(),
 	  params_(other.params_),
-	  renderer_(other.renderer_->clone())
-{
-	if (renderer_->asMonitoredPreview() != 0) {
-		RenderMonitoredPreview * const ptr = renderer_->asMonitoredPreview();
-		ptr->connect(boost::bind(&InsetExternal::statusChanged, this));
-		ptr->fileChanged(boost::bind(&InsetExternal::fileChanged, this));
-
-	} else if (renderer_->asGraphic() != 0 ) {
-		RenderGraphic * const ptr = renderer_->asGraphic();
-		ptr->connect(boost::bind(&InsetExternal::statusChanged, this));
-	}
-}
+	  renderer_(other.renderer_->clone(this))
+{}
 
 
 auto_ptr<InsetBase> InsetExternal::clone() const
@@ -611,10 +601,8 @@ void InsetExternal::setParams(InsetExternalParams const & p,
 	} case RENDERGRAPHIC: {
 		RenderGraphic * graphic_ptr = renderer_->asGraphic();
 		if (!graphic_ptr) {
-			renderer_.reset(new RenderGraphic);
+			renderer_.reset(new RenderGraphic(this));
 			graphic_ptr = renderer_->asGraphic();
-			graphic_ptr->connect(
-				boost::bind(&InsetExternal::statusChanged, this));
 		}
 
 		graphic_ptr->update(get_grfx_params(params_));
@@ -625,10 +613,8 @@ void InsetExternal::setParams(InsetExternalParams const & p,
 		RenderMonitoredPreview * preview_ptr =
 			renderer_->asMonitoredPreview();
 		if (!preview_ptr) {
-			renderer_.reset(new RenderMonitoredPreview);
+			renderer_.reset(new RenderMonitoredPreview(this));
 			preview_ptr = renderer_->asMonitoredPreview();
-			preview_ptr->connect(
-				boost::bind(&InsetExternal::statusChanged, this));
 			preview_ptr->fileChanged(
 				boost::bind(&InsetExternal::fileChanged, this));
 		}

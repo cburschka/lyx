@@ -85,8 +85,6 @@ protected:
 	///
 	virtual void priv_dispatch(LCursor & cur, FuncRequest & cmd);
 private:
-	/// Slot receiving a signal that the preview is ready to display.
-	void statusChanged() const;
 	/** Slot receiving a signal that the external file has changed
 	 *  and the preview should be regenerated.
 	 */

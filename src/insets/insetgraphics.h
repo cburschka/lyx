@@ -88,11 +88,6 @@ private:
 	///
 	friend class InsetGraphicsMailer;
 
-	/** This method is connected to the graphics loader, so we are
-	 *  informed when the image has been loaded.
-	 */
-	void statusChanged() const;
-
 	/// Read the inset native format
 	void readInsetGraphics(LyXLex & lex, std::string const & bufpath);
 
