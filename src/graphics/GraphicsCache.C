@@ -165,4 +165,25 @@ GCache::find(InsetGraphics const & inset) const
 	return cache->end();
 }
 
+
+unsigned int GCache::raw_width(string const & filename) const
+{
+	CacheType::const_iterator it = cache->find(filename);
+	if (it == cache->end())
+		return 0;
+
+	return it->second->raw_width();
+}
+
+
+unsigned int GCache::raw_height(string const & filename) const
+{
+	CacheType::const_iterator it = cache->find(filename);
+	if (it == cache->end())
+		return 0;
+
+	return it->second->raw_height();
+}
+
 } // namespace grfx
+

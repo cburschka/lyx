@@ -23,6 +23,9 @@
 #include "ButtonControllerBase.h"
 #include "ControlGraphics.h"
 #include "ControlInset.tmpl"
+
+#include "helper_funcs.h"
+
 #include "buffer.h"
 #include "BufferView.h"
 #include "Dialogs.h"
@@ -30,18 +33,20 @@
 #include "gettext.h"
 #include "lyxrc.h"
 
-#include "insets/insetgraphics.h"
-#include "insets/insetgraphicsParams.h" // need operator!=()
+#include "graphics/GraphicsCache.h"
 
-#include "support/FileInfo.h"  // for FileInfo
-#include "helper_funcs.h"
+#include "insets/insetgraphics.h"
+#include "insets/insetgraphicsParams.h"
+
 #include "support/lstrings.h"
-#include "support/filetools.h" // for AddName, zippedFile
+#include "support/filetools.h"
+#include "support/FileInfo.h"
+
 
 using std::pair;
 using std::make_pair;
 using std::ifstream;
-
+ 
 ControlGraphics::ControlGraphics(LyXView & lv, Dialogs & d)
 	: ControlInset<InsetGraphics, InsetGraphicsParams>(lv, d)
 {
@@ -104,7 +109,18 @@ string const ControlGraphics::Browse(string const & in_name)
 
 string const ControlGraphics::readBB(string const & file)
 {
-	return readBB_from_PSFile(MakeAbsPath(file, lv_.buffer()->filePath()));
+	string const abs_file = MakeAbsPath(file, lv_.buffer()->filePath());
+
+	string const from = getExtFromContents(abs_file);	
+	// Check if we have a Postscript file, then it's easy
+	if (contains(from, "ps"))
+		return readBB_from_PSFile(abs_file);
+
+	// we don't, so ask the Graphics Cache if it has loaded the file
+	grfx::GCache & gc = grfx::GCache::get();
+	return ("0 0 " + 
+		tostr(gc.raw_width(abs_file)) + ' ' + 
+		tostr(gc.raw_height(abs_file)));
 }
 
 

@@ -67,6 +67,11 @@ public:
 	/// How far have we got in loading the image?
 	ImageStatus status(InsetGraphics const &) const;
 
+	// Used to ascertain the Bounding Box of non (e)ps files.
+	unsigned int raw_width(string const & filename) const;
+	///
+	unsigned int raw_height(string const & filename) const;
+	
 private:
 	/** Make the c-tor private so we can control how many objects
 	 *  are instantiated.

@@ -392,6 +392,24 @@ void GCacheItem::imageLoaded(bool success)
 }
 
 
+unsigned int GCacheItem::raw_width() const
+{
+	if (!image_.get())
+		return 0;
+
+	return image_->getWidth();
+}
+
+
+unsigned int GCacheItem::raw_height() const
+{
+	if (!image_.get())
+		return 0;
+
+	return image_->getHeight();
+}
+
+
 namespace {
 
 string const findTargetFormat(string const & from)

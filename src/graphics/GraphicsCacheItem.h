@@ -89,6 +89,11 @@ public:
 	 */
 	void changeDisplay(bool changed_background);
 
+	/// Used to ascertain the Bounding Box of non (e)ps files.
+	unsigned int raw_width() const;
+	///
+	unsigned int raw_height() const;
+	
 private:
 	/** Start the image conversion process, checking first that it is
 	 *  necessary. If it is necessary, then a conversion task is started.
