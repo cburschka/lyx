@@ -305,9 +305,9 @@ VERSION_INFO="Configuration\n\
   Host type:                      ${host}\n\
   Special build flags:           ${lyx_flags}\n\
   C   Compiler:                   ${CC}\n\
-  C   Compiler flags:             ${CFLAGS}\n\
+  C   Compiler flags:             ${CPPFLAGS} ${CFLAGS}\n\
   C++ Compiler:                   ${CXX} ${CXX_VERSION}\n\
-  C++ Compiler flags:             ${CXXFLAGS}\n\
+  C++ Compiler flags:             ${CPPFLAGS} ${CXXFLAGS}\n\
   Linker flags:                   ${LDFLAGS}\n\
 ${FRONTEND_INFO}\
   LyX binary dir:                 ${real_bindir}\n\
