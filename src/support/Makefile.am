@@ -46,6 +46,8 @@ libsupport_la_SOURCES = \
 	forkedcontr.C \
 	forkedcontr.h \
 	getcwd.C \
+	gzstream.C \
+	gzstream.h \
 	kill.C \
 	limited_stack.h \
 	lstrings.C \

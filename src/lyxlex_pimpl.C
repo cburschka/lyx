@@ -113,17 +113,36 @@ void LyXLex::Pimpl::popTable()
 
 bool LyXLex::Pimpl::setFile(string const & filename)
 {
+	// Is this a compressed file or not?
+	bool const compressed = (filename.substr(filename.size() - 3, 3) == ".gz");
+
 	// The check only outputs a debug message, because it triggers
 	// a bug in compaq cxx 6.2, where is_open() returns 'true' for a
 	// fresh new filebuf.  (JMarc)
-	if (fb__.is_open() || is.tellg() > 0)
-		lyxerr[Debug::LYXLEX] << "Error in LyXLex::setFile: "
-			"file or stream already set." << endl;
-	fb__.open(filename.c_str(), ios::in);
-	is.rdbuf(&fb__);
-	name = filename;
-	lineno = 0;
-	return fb__.is_open() && is.good();
+	if (compressed) {
+		lyxerr << "lyxlex: compressed" << endl;
+
+		if (gz__.is_open() || is.tellg() > 0)
+			lyxerr[Debug::LYXLEX] << "Error in LyXLex::setFile: "
+				"file or stream already set." << endl;
+		gz__.open(filename.c_str(), ios::in);
+		is.rdbuf(&gz__);
+		name = filename;
+		lineno = 0;
+		return gz__.is_open() && is.good();
+	} else {
+		lyxerr << "lyxlex: UNcompressed" << endl;
+
+		if (fb__.is_open() || is.tellg() > 0)
+			lyxerr[Debug::LYXLEX] << "Error in LyXLex::setFile: "
+				"file or stream already set." << endl;
+		fb__.open(filename.c_str(), ios::in);
+		is.rdbuf(&fb__);
+		name = filename;
+		lineno = 0;
+		return fb__.is_open() && is.good();
+	}
+
 }
 
 

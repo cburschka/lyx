@@ -5,6 +5,8 @@
 
 #include "lyxlex.h"
 
+#include "support/gzstream.h"
+
 #include <boost/utility.hpp>
 
 #include <fstream>
@@ -43,8 +45,11 @@ struct LyXLex::Pimpl : boost::noncopyable {
 	bool nextToken();
 	///
 	void pushToken(string const &);
-	/// fb__ is only used to open files, the stream is accessed through is
+	/// fb__ is only used to open files, the stream is accessed through is.
 	std::filebuf fb__;
+	/// gz__ is only used to open files, the stream is accessed through is.
+	gz::gzstreambuf gz__;
+
 	/// the stream that we use.
 	std::istream is;
 	///

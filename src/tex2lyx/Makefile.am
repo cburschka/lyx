@@ -42,9 +42,9 @@ tex2lyx_SOURCES = \
 
 tex2lyx_LDADD = \
 	../support/libsupport.la \
-	../../boost/libs/regex/src/libboostregex.la
+	../../boost/libs/regex/src/libboostregex.la -lz
 
-FloatList.C: link_files 
+FloatList.C: link_files
 
 link_files:
 	for i in $(linked_files); do \

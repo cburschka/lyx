@@ -292,6 +292,8 @@ public:
 	AuthorList & authors();
 
 private:
+	bool do_writeFile(std::ostream & ofs) const;
+
 	typedef std::map<string, bool> DepClean;
 
 	/// need to regenerate .tex ?

@@ -1,3 +1,14 @@
+2003-07-28  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* lyxlex_pimpl.C (setFile): compress stuff
+
+	* buffer.C (writeFile): add some compression stuff
+	(do_writeFile): new func, dont call expliti close... will this
+	breake anything?
+
+
+	* Makefile.am (lyx_LDADD): add -lz
+
 2003-07-28  José Matos  <jamatos@fep.up.pt>
 
 	* buffer.C: increment file format.
@@ -9,14 +20,14 @@
 	* Makefile.am: remove special casing for configure-time setting of
 	LYX_DIR, TOP_SRCDIR and LOCALEDIR.
 
-	* lyx_main.C (init): remove all Jean-Marc's magic setting of 
+	* lyx_main.C (init): remove all Jean-Marc's magic setting of
 	system_lyxdir, build_lyxdir and user_lyxdir into the support lib.
 
 2003-07-26  André Pönitz  <poenitz@gmx.net>
 
-	* paragraph_func.[Ch]:	
+	* paragraph_func.[Ch]:
 	* paragraph.C (realizeFont): inline it whereever it is used
-		
+
 	* rowpainter.C:
 	* text.C:
 	* text2.C:

@@ -65,6 +65,7 @@
 #include "support/FileInfo.h"
 #include "support/lyxmanip.h"
 #include "support/lyxtime.h"
+#include "support/gzstream.h"
 
 #include <boost/bind.hpp>
 #include <boost/tuple/tuple.hpp>
@@ -636,9 +637,28 @@ bool Buffer::writeFile(string const & fname) const
 		return false;
 	}
 
+	bool const compressed = (fname.substr(fname.size() - 3, 3) == ".gz");
+
+	if (compressed) {
+		gz::ogzstream ofs(fname.c_str());
+
+		if (!ofs)
+			return false;
+
+		return do_writeFile(ofs);
+
+	}
+
 	ofstream ofs(fname.c_str());
 	if (!ofs)
 		return false;
+
+	return do_writeFile(ofs);
+}
+
+
+bool Buffer::do_writeFile(ostream & ofs) const
+{
 
 #ifdef HAVE_LOCALE
 	// Use the standard "C" locale for file output.
@@ -669,7 +689,8 @@ bool Buffer::writeFile(string const & fname) const
 	// Write marker that shows file is complete
 	ofs << "\n\\the_end" << endl;
 
-	ofs.close();
+	// Shouldn't really be needed....
+	//ofs.close();
 
 	// how to check if close went ok?
 	// Following is an attempt... (BE 20001011)
