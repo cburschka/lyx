@@ -28,7 +28,7 @@ class ParagraphList;
 
 
 class ParIterator : public std::iterator<std::forward_iterator_tag, Paragraph>,
-		    public DocumentIterator
+		    public DocIterator
 {
 public:
 	///
@@ -36,7 +36,7 @@ public:
 	///
 	ParIterator(ParIterator const &);
 	///
-	ParIterator(DocumentIterator const &);
+	ParIterator(DocIterator const &);
 
 	///
 	void operator=(ParIterator const &);
@@ -57,7 +57,7 @@ public:
 };
 
 
-DocumentIterator makeDocumentIterator(ParIterator const &, lyx::pos_type);
+DocIterator makeDocIterator(ParIterator const &, lyx::pos_type);
 
 ParIterator par_iterator_begin(InsetBase & inset);
 
@@ -73,13 +73,13 @@ bool operator!=(ParIterator const & iter1, ParIterator const & iter2);
 
 class ParConstIterator : public std::iterator<std::forward_iterator_tag,
 			 Paragraph>,
-			 public DocumentIterator
+			 public DocIterator
 {
 public:
 	///
 	ParConstIterator(ParConstIterator const &);
 	///
-	ParConstIterator(DocumentIterator const &);
+	ParConstIterator(DocIterator const &);
 	///
 
 	ParConstIterator & operator++();

@@ -52,7 +52,7 @@ struct Undo {
 	/// which kind of operation are we recording for?
 	undo_kind kind;
 	/// the position of the cursor
-	StableDocumentIterator cursor;
+	StableDocIterator cursor;
 	/// counted from begin of buffer
 	lyx::par_type from;
 	/// complement to end of this cell

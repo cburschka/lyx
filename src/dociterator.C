@@ -29,29 +29,29 @@ using std::endl;
 
 //we could be able to get rid of this if only every BufferView were
 //associated to a buffer on construction
-DocumentIterator::DocumentIterator() : inset_(0)
+DocIterator::DocIterator() : inset_(0)
 {}
 
 
-DocumentIterator doc_iterator_begin(InsetBase & inset)
+DocIterator doc_iterator_begin(InsetBase & inset)
 {
-	DocumentIterator dit(inset);
+	DocIterator dit(inset);
 	dit.forwardPos();
 	return dit;
 }
 
 
-DocumentIterator doc_iterator_end(InsetBase & inset)
+DocIterator doc_iterator_end(InsetBase & inset)
 {
-	return DocumentIterator(inset);
+	return DocIterator(inset);
 }
 
 
-DocumentIterator::DocumentIterator(InsetBase & inset) : inset_(&inset)
+DocIterator::DocIterator(InsetBase & inset) : inset_(&inset)
 {}
 
 
-InsetBase * DocumentIterator::nextInset()
+InsetBase * DocIterator::nextInset()
 {
 	BOOST_ASSERT(!empty());
 	if (pos() == lastpos())
@@ -62,7 +62,7 @@ InsetBase * DocumentIterator::nextInset()
 }
 
 
-InsetBase * DocumentIterator::prevInset()
+InsetBase * DocIterator::prevInset()
 {
 	BOOST_ASSERT(!empty());
 	if (pos() == 0)
@@ -73,7 +73,7 @@ InsetBase * DocumentIterator::prevInset()
 }
 
 
-InsetBase const * DocumentIterator::prevInset() const
+InsetBase const * DocIterator::prevInset() const
 {
 	BOOST_ASSERT(!empty());
 	if (pos() == 0)
@@ -84,7 +84,7 @@ InsetBase const * DocumentIterator::prevInset() const
 }
 
 
-MathAtom const & DocumentIterator::prevAtom() const
+MathAtom const & DocIterator::prevAtom() const
 {
 	BOOST_ASSERT(!empty());
 	BOOST_ASSERT(pos() > 0);
@@ -92,7 +92,7 @@ MathAtom const & DocumentIterator::prevAtom() const
 }
 
 
-MathAtom & DocumentIterator::prevAtom()
+MathAtom & DocIterator::prevAtom()
 {
 	BOOST_ASSERT(!empty());
 	BOOST_ASSERT(pos() > 0);
@@ -100,7 +100,7 @@ MathAtom & DocumentIterator::prevAtom()
 }
 
 
-MathAtom const & DocumentIterator::nextAtom() const
+MathAtom const & DocIterator::nextAtom() const
 {
 	BOOST_ASSERT(!empty());
 	BOOST_ASSERT(pos() < lastpos());
@@ -108,7 +108,7 @@ MathAtom const & DocumentIterator::nextAtom() const
 }
 
 
-MathAtom & DocumentIterator::nextAtom()
+MathAtom & DocIterator::nextAtom()
 {
 	BOOST_ASSERT(!empty());
 	BOOST_ASSERT(pos() < lastpos());
@@ -116,129 +116,129 @@ MathAtom & DocumentIterator::nextAtom()
 }
 
 
-LyXText * DocumentIterator::text() const
+LyXText * DocIterator::text() const
 {
 	BOOST_ASSERT(!empty());
 	return top().text();
 }
 
 
-Paragraph & DocumentIterator::paragraph()
+Paragraph & DocIterator::paragraph()
 {
 	BOOST_ASSERT(inTexted());
 	return top().paragraph();
 }
 
 
-Paragraph const & DocumentIterator::paragraph() const
+Paragraph const & DocIterator::paragraph() const
 {
 	BOOST_ASSERT(inTexted());
 	return top().paragraph();
 }
 
 
-Row & DocumentIterator::textRow()
+Row & DocIterator::textRow()
 {
 	return *paragraph().getRow(pos());
 }
 
 
-Row const & DocumentIterator::textRow() const
+Row const & DocIterator::textRow() const
 {
 	return *paragraph().getRow(pos());
 }
 
 
-DocumentIterator::par_type DocumentIterator::lastpar() const
+DocIterator::par_type DocIterator::lastpar() const
 {
 	return inMathed() ? 0 : text()->paragraphs().size() - 1;
 }
 
 
-DocumentIterator::pos_type DocumentIterator::lastpos() const
+DocIterator::pos_type DocIterator::lastpos() const
 {
 	return inMathed() ? cell().size() : paragraph().size();
 }
 
 
-DocumentIterator::row_type DocumentIterator::crow() const
+DocIterator::row_type DocIterator::crow() const
 {
 	return paragraph().row(pos());
 }
 
 
-DocumentIterator::row_type DocumentIterator::lastcrow() const
+DocIterator::row_type DocIterator::lastcrow() const
 {
 	return paragraph().rows.size();
 }
 
 
-DocumentIterator::idx_type DocumentIterator::lastidx() const
+DocIterator::idx_type DocIterator::lastidx() const
 {
 	return top().lastidx();
 }
 
 
-size_t DocumentIterator::nargs() const
+size_t DocIterator::nargs() const
 {
 	// assume 1x1 grid for main text
 	return top().nargs();
 }
 
 
-size_t DocumentIterator::ncols() const
+size_t DocIterator::ncols() const
 {
 	// assume 1x1 grid for main text
 	return top().ncols();
 }
 
 
-size_t DocumentIterator::nrows() const
+size_t DocIterator::nrows() const
 {
 	// assume 1x1 grid for main text
 	return top().nrows();
 }
 
 
-DocumentIterator::row_type DocumentIterator::row() const
+DocIterator::row_type DocIterator::row() const
 {
 	return top().row();
 }
 
 
-DocumentIterator::col_type DocumentIterator::col() const
+DocIterator::col_type DocIterator::col() const
 {
 	return top().col();
 }
 
 
-MathArray const & DocumentIterator::cell() const
+MathArray const & DocIterator::cell() const
 {
 	BOOST_ASSERT(inMathed());
 	return top().cell();
 }
 
 
-MathArray & DocumentIterator::cell()
+MathArray & DocIterator::cell()
 {
 	BOOST_ASSERT(inMathed());
 	return top().cell();
 }
 
 
-bool DocumentIterator::inMathed() const
+bool DocIterator::inMathed() const
 {
 	return !empty() && inset().inMathed();
 }
 
 
-bool DocumentIterator::inTexted() const
+bool DocIterator::inTexted() const
 {
 	return !empty() && !inset().inMathed();
 }
 
 
-LyXText * DocumentIterator::innerText() const
+LyXText * DocIterator::innerText() const
 {
 	BOOST_ASSERT(!empty());
 	// go up until first non-0 text is hit
@@ -250,7 +250,7 @@ LyXText * DocumentIterator::innerText() const
 }
 
 
-InsetBase * DocumentIterator::innerInsetOfType(int code) const
+InsetBase * DocIterator::innerInsetOfType(int code) const
 {
 	for (int i = size() - 1; i >= 0; --i)
 		if (operator[](i).inset_->lyxCode() == code)
@@ -259,7 +259,7 @@ InsetBase * DocumentIterator::innerInsetOfType(int code) const
 }
 
 
-void DocumentIterator::forwardPos()
+void DocIterator::forwardPos()
 {
 	//this dog bites his tail
 	if (empty()) {
@@ -327,7 +327,7 @@ void DocumentIterator::forwardPos()
 }
 
 
-void DocumentIterator::forwardPar()
+void DocIterator::forwardPar()
 {
 	forwardPos();
 	while (!empty() && (!inTexted() || pos() != 0))
@@ -335,7 +335,7 @@ void DocumentIterator::forwardPar()
 }
 
 
-void DocumentIterator::forwardChar()
+void DocIterator::forwardChar()
 {
 	forwardPos();
 	while (size() != 0 && pos() == lastpos())
@@ -343,7 +343,7 @@ void DocumentIterator::forwardChar()
 }
 
 
-void DocumentIterator::forwardInset()
+void DocIterator::forwardInset()
 {
 	forwardPos(); 
 	while (size() != 0 && (pos() == lastpos() || nextInset() == 0))
@@ -351,7 +351,7 @@ void DocumentIterator::forwardInset()
 }
 
 
-void DocumentIterator::backwardChar()
+void DocIterator::backwardChar()
 {
 	backwardPos();
 	while (size() != 0 && pos() == lastpos())
@@ -359,7 +359,7 @@ void DocumentIterator::backwardChar()
 }
 
 
-void DocumentIterator::backwardPos()
+void DocIterator::backwardPos()
 {
 	//this dog bites his tail
 	if (empty()) {
@@ -407,7 +407,7 @@ void DocumentIterator::backwardPos()
 }
 
 
-std::ostream & operator<<(std::ostream & os, DocumentIterator const & dit)
+std::ostream & operator<<(std::ostream & os, DocIterator const & dit)
 {
 	for (size_t i = 0, n = dit.size(); i != n; ++i)
 		os << " " << dit.operator[](i) << "\n";
@@ -418,7 +418,7 @@ std::ostream & operator<<(std::ostream & os, DocumentIterator const & dit)
 
 ///////////////////////////////////////////////////////
 
-StableDocumentIterator::StableDocumentIterator(const DocumentIterator & dit)
+StableDocIterator::StableDocIterator(const DocIterator & dit)
 {
 	data_ = dit;
 	for (size_t i = 0, n = data_.size(); i != n; ++i)
@@ -426,12 +426,12 @@ StableDocumentIterator::StableDocumentIterator(const DocumentIterator & dit)
 }
 
 
-DocumentIterator
-StableDocumentIterator::asDocumentIterator(InsetBase * inset) const
+DocIterator
+StableDocIterator::asDocIterator(InsetBase * inset) const
 {
 	// this function re-creates the cache of inset pointers
 	//lyxerr << "converting:\n" << *this << endl;
-	DocumentIterator dit = DocumentIterator(*inset);
+	DocIterator dit = DocIterator(*inset);
 	for (size_t i = 0, n = data_.size(); i != n; ++i) {
 		dit.push_back(data_[i]);
 		dit.back().inset_ = inset;
@@ -443,7 +443,7 @@ StableDocumentIterator::asDocumentIterator(InsetBase * inset) const
 }
 
 
-std::ostream & operator<<(std::ostream & os, StableDocumentIterator const & dit)
+std::ostream & operator<<(std::ostream & os, StableDocIterator const & dit)
 {
 	for (size_t i = 0, n = dit.data_.size(); i != n; ++i)
 		os << " " << dit.data_[i] << "\n";

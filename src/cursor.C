@@ -84,7 +84,7 @@ void region(CursorSlice const & i1, CursorSlice const & i2,
 
 
 LCursor::LCursor(BufferView & bv)
-	: DocumentIterator(), bv_(&bv),
+	: DocIterator(), bv_(&bv),
 	  anchor_(), cached_y_(0), x_target_(-1),
 	  selection_(false), mark_(false)
 {}
@@ -94,7 +94,7 @@ void LCursor::reset(InsetBase & inset)
 {
 	clear();
 	push_back(CursorSlice(inset));
-	anchor_ = DocumentIterator(inset);
+	anchor_ = DocIterator(inset);
 	cached_y_ = 0;
 	clearTargetX();
 	selection_ = false;
@@ -102,10 +102,10 @@ void LCursor::reset(InsetBase & inset)
 }
 
 
-void LCursor::setCursor(DocumentIterator const & cur, bool sel)
+void LCursor::setCursor(DocIterator const & cur, bool sel)
 {
 	// this (intentionally) does not touch the anchor
-	DocumentIterator::operator=(cur);
+	DocIterator::operator=(cur);
 	selection() = sel;
 }
 
@@ -344,7 +344,7 @@ CursorSlice const & LCursor::selEnd() const
 }
 
 
-DocumentIterator LCursor::selectionBegin() const
+DocIterator LCursor::selectionBegin() const
 {
 	if (!selection())
 		return *this;
@@ -352,7 +352,7 @@ DocumentIterator LCursor::selectionBegin() const
 }
 
 
-DocumentIterator LCursor::selectionEnd() const
+DocIterator LCursor::selectionEnd() const
 {
 	if (!selection())
 		return *this;
@@ -369,7 +369,7 @@ void LCursor::setSelection()
 }
 
 
-void LCursor::setSelection(DocumentIterator const & where, size_t n)
+void LCursor::setSelection(DocIterator const & where, size_t n)
 {
 	selection() = true;
 	setCursor(where, false);
@@ -631,8 +631,8 @@ bool LCursor::openable(MathAtom const & t) const
 }
 
 
-bool positionable(DocumentIterator const & cursor,
-	DocumentIterator const & anchor)
+bool positionable(DocIterator const & cursor,
+	DocIterator const & anchor)
 {
 	// avoid deeper nested insets when selecting
 	if (cursor.size() > anchor.size())
@@ -836,7 +836,7 @@ bool LCursor::erase()
 bool LCursor::up()
 {
 	macroModeClose();
-	DocumentIterator save = *this;
+	DocIterator save = *this;
 	if (goUpDown(true))
 		return true;
 	setCursor(save, false);
@@ -848,7 +848,7 @@ bool LCursor::up()
 bool LCursor::down()
 {
 	macroModeClose();
-	DocumentIterator save = *this;
+	DocIterator save = *this;
 	if (goUpDown(false))
 		return true;
 	setCursor(save, false);
@@ -977,8 +977,8 @@ void LCursor::touch()
 {
 #warning look here
 #if 0
-	DocumentIterator::const_iterator it = begin();
-	DocumentIterator::const_iterator et = end();
+	DocIterator::const_iterator it = begin();
+	DocIterator::const_iterator et = end();
 	for ( ; it != et; ++it)
 		it->cell().touch();
 #endif
@@ -1118,8 +1118,8 @@ bool LCursor::bruteFind(int x, int y, int xlow, int xhigh, int ylow, int yhigh)
 	BOOST_ASSERT(text);
 	getParsInRange(text->paragraphs(), ylow, yhigh, beg, end);
 
-	DocumentIterator it = doc_iterator_begin(bv().buffer()->inset());
-	DocumentIterator et = doc_iterator_end(bv().buffer()->inset());
+	DocIterator it = doc_iterator_begin(bv().buffer()->inset());
+	DocIterator et = doc_iterator_end(bv().buffer()->inset());
 	//lyxerr << "x: " << x << " y: " << y << endl;
 	//lyxerr << "xlow: " << xlow << " ylow: " << ylow << endl;
 	//lyxerr << "xhigh: " << xhigh << " yhigh: " << yhigh << endl;
@@ -1128,7 +1128,7 @@ bool LCursor::bruteFind(int x, int y, int xlow, int xhigh, int ylow, int yhigh)
 	//et.par() = text->parOffset(end);
 
 	double best_dist = 10e10;
-	DocumentIterator best_cursor = it;
+	DocIterator best_cursor = it;
 
 	for ( ; it != et; it.forwardPos()) {
 		// avoid invalid nesting when selecting
@@ -1161,9 +1161,9 @@ void LCursor::bruteFind2(int x, int y)
 {
 	double best_dist = 1e10;
 
-	DocumentIterator it = *this;
+	DocIterator it = *this;
 	it.back().pos() = 0;
-	DocumentIterator et = *this;
+	DocIterator et = *this;
 	et.back().pos() = et.back().asMathInset()->cell(et.back().idx()).size();
 	for (int i = 0; ; ++i) {
 		int xo, yo;

@@ -17,7 +17,7 @@
 
 
 InsetIterator::InsetIterator(InsetBase & inset)
-	: DocumentIterator(inset)
+	: DocIterator(inset)
 {
 }
 

@@ -32,7 +32,7 @@ class Encoding;
 
 // The public inheritance should go in favour of a suitable data member
 // (or maybe private inheritance) at some point of time.
-class LCursor : public DocumentIterator {
+class LCursor : public DocIterator {
 public:
 	/// create the cursor of a BufferView
 	explicit LCursor(BufferView & bv);
@@ -53,7 +53,7 @@ public:
 	/// pop one slice off the cursor stack and go right
 	bool popRight();
 	/// sets cursor part
-	void setCursor(DocumentIterator const & it, bool sel);
+	void setCursor(DocIterator const & it, bool sel);
 
 	//
 	// selection
@@ -69,7 +69,7 @@ public:
 	///
 	void setSelection();
 	/// set selection at given position
-	void setSelection(DocumentIterator const & where, size_t n);
+	void setSelection(DocIterator const & where, size_t n);
 	///
 	void clearSelection();
 	/// access start of selection
@@ -77,9 +77,9 @@ public:
 	/// access end of selection
 	CursorSlice const & selEnd() const;
 	/// access start of selection
-	DocumentIterator selectionBegin() const;
+	DocIterator selectionBegin() const;
 	/// access start of selection
-	DocumentIterator selectionEnd() const;
+	DocIterator selectionEnd() const;
 	///
 	std::string grabSelection();
 	///
@@ -181,7 +181,7 @@ public:
 	BufferView * bv_;
 //private:
 	/// the anchor position
-	DocumentIterator anchor_;
+	DocIterator anchor_;
 	
 	/// 
 	DispatchResult disp_;

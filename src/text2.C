@@ -412,8 +412,8 @@ void LyXText::setFont(LCursor & cur, LyXFont const & font, bool toggleall)
 	par_type const beg = cur.selBegin().par();
 	par_type const end = cur.selEnd().par();
 
-	DocumentIterator pos = cur.selectionBegin();	
-	DocumentIterator posend = cur.selectionEnd();	
+	DocIterator pos = cur.selectionBegin();	
+	DocIterator posend = cur.selectionEnd();	
 
 	BufferParams const & params = bv()->buffer()->params();
 

@@ -149,7 +149,7 @@ void ControlSpellchecker::endSession()
 
 namespace {
 
-bool isLetter(DocumentIterator const & cur)
+bool isLetter(DocIterator const & cur)
 {
 	return cur.inTexted()
 		&& cur.inset().allowSpellCheck()
@@ -159,7 +159,7 @@ bool isLetter(DocumentIterator const & cur)
 }
 
 
-WordLangTuple nextWord(DocumentIterator & cur, ptrdiff_t & progress,
+WordLangTuple nextWord(DocIterator & cur, ptrdiff_t & progress,
 	BufferParams & bp)
 {
 	// skip until we have real text (will jump paragraphs)
@@ -193,14 +193,14 @@ void ControlSpellchecker::check()
 
 	SpellBase::Result res = SpellBase::OK;
 
-	DocumentIterator cur = bufferview()->cursor();
+	DocIterator cur = bufferview()->cursor();
 
 	// a rough estimate should be sufficient:
-	//DocumentIterator::difference_type start = distance(beg, cur);
-	//DocumentIterator::difference_type const total = start + distance(cur, end);
+	//DocIterator::difference_type start = distance(beg, cur);
+	//DocIterator::difference_type const total = start + distance(cur, end);
 
 	ptrdiff_t start = 0, total = 0;
-	DocumentIterator it = DocumentIterator(buffer()->inset());
+	DocIterator it = DocIterator(buffer()->inset());
 	for (start = 0; it != cur; it.forwardPos())
 		++start; 	
 

@@ -26,7 +26,7 @@ using lyx::par_type;
 /// ParIterator
 ///
 
-ParIterator::ParIterator(DocumentIterator const & cur) : DocumentIterator(cur)
+ParIterator::ParIterator(DocIterator const & cur) : DocIterator(cur)
 {}
 
 
@@ -43,7 +43,7 @@ ParIterator par_iterator_end(InsetBase & inset)
 
 
 ParIterator::ParIterator(ParIterator const & pi)
-	: DocumentIterator(DocumentIterator(pi))
+	: DocIterator(DocIterator(pi))
 {}
 
 
@@ -56,7 +56,7 @@ ParIterator & ParIterator::operator++()
 
 ParIterator & ParIterator::operator--()
 {
-//	DocumentIterator::backwardPar();
+//	DocIterator::backwardPar();
 	return *this;
 }
 
@@ -93,7 +93,7 @@ ParagraphList & ParIterator::plist() const
 
 bool operator==(ParIterator const & iter1, ParIterator const & iter2)
 {
-	return DocumentIterator(iter1) == DocumentIterator(iter2);
+	return DocIterator(iter1) == DocIterator(iter2);
 }
 
 
@@ -102,10 +102,10 @@ bool operator!=(ParIterator const & iter1, ParIterator const & iter2)
 	return !(iter1 == iter2);
 }
 
-DocumentIterator
-makeDocumentIterator(ParIterator const & par, lyx::pos_type pos)
+DocIterator
+makeDocIterator(ParIterator const & par, lyx::pos_type pos)
 {
-	DocumentIterator dit(par);
+	DocIterator dit(par);
 	dit.pos() = pos;
 	return dit;
 }
@@ -115,19 +115,19 @@ makeDocumentIterator(ParIterator const & par, lyx::pos_type pos)
 ///
 
 
-ParConstIterator::ParConstIterator(DocumentIterator const & dit)
-	: DocumentIterator(dit)
+ParConstIterator::ParConstIterator(DocIterator const & dit)
+	: DocIterator(dit)
 {}
 
 
 ParConstIterator::ParConstIterator(ParConstIterator const & pi)
-	: DocumentIterator(DocumentIterator(pi))
+	: DocIterator(DocIterator(pi))
 {}
 
 
 ParConstIterator & ParConstIterator::operator++()
 {
-	DocumentIterator::forwardPar();
+	DocIterator::forwardPar();
 	return *this;
 }
 
@@ -152,7 +152,7 @@ ParagraphList const & ParConstIterator::plist() const
 
 bool operator==(ParConstIterator const & iter1, ParConstIterator const & iter2)
 {
-	return DocumentIterator(iter1) == DocumentIterator(iter2);
+	return DocIterator(iter1) == DocIterator(iter2);
 }
 
 

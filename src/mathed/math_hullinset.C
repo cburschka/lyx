@@ -1034,7 +1034,7 @@ bool MathHullInset::searchForward(BufferView * bv, string const & str,
 #warning pretty ugly
 #endif
 	static MathHullInset * lastformula = 0;
-	static CursorBase current = DocumentIterator(ibegin(nucleus()));
+	static CursorBase current = DocIterator(ibegin(nucleus()));
 	static MathArray ar;
 	static string laststr;
 
@@ -1050,7 +1050,7 @@ bool MathHullInset::searchForward(BufferView * bv, string const & str,
 	}
 	//lyxerr << "searching '" << str << "' in " << this << ar << endl;
 
-	for (DocumentIterator it = current; it != iend(nucleus()); increment(it)) {
+	for (DocIterator it = current; it != iend(nucleus()); increment(it)) {
 		CursorSlice & top = it.back();
 		MathArray const & a = top.asMathInset()->cell(top.idx_);
 		if (a.matchpart(ar, top.pos_)) {

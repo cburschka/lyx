@@ -61,7 +61,7 @@ void recordUndo(Undo::undo_kind kind,
 	// create the position information of the Undo entry
 	Undo undo;
 	undo.kind = kind;
-	undo.cursor = StableDocumentIterator(cur);
+	undo.cursor = StableDocIterator(cur);
 	undo.from = first_par;
 	undo.end = cur.lastpar() - last_par;
 
@@ -108,7 +108,7 @@ void performUndoOrRedo(BufferView & bv, Undo const & undo)
 {
 	LCursor & cur = bv.cursor();
 	lyxerr << "undo, performing: " << undo << std::endl;
-	cur.setCursor(undo.cursor.asDocumentIterator(&bv.buffer()->inset()), false);
+	cur.setCursor(undo.cursor.asDocIterator(&bv.buffer()->inset()), false);
 
 	if (cur.inMathed()) {
 		// We stored the full cell here as there is not much to be
@@ -155,8 +155,8 @@ bool textUndoOrRedo(BufferView & bv,
 
 	// this implements redo
 	otherstack.push(undo);
-	DocumentIterator dit =
-		undo.cursor.asDocumentIterator(&bv.buffer()->inset());
+	DocIterator dit =
+		undo.cursor.asDocIterator(&bv.buffer()->inset());
 	if (dit.inMathed()) {
 		// Easy way out: store a full cell.
 		otherstack.top().array = asString(dit.cell());

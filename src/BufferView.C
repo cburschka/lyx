@@ -371,7 +371,7 @@ void BufferView::setCursor(ParIterator const & par, lyx::pos_type pos)
 	for (int i = 0; i < last; ++i)
 		par[i].inset().edit(cursor(), true);
 
-	cursor().setCursor(makeDocumentIterator(par, pos), false);
+	cursor().setCursor(makeDocIterator(par, pos), false);
 }
 
 
@@ -389,7 +389,7 @@ this is solved in putSelectionAt with:
 Ab.
 */
 
-void BufferView::putSelectionAt(DocumentIterator const & cur,
+void BufferView::putSelectionAt(DocIterator const & cur,
 				int length, bool backwards)
 {
 	ParIterator par(cur);
@@ -409,7 +409,7 @@ void BufferView::putSelectionAt(DocumentIterator const & cur,
 	if (length) {
 		if (backwards) {
 			cursor().setSelection(cursor(), -length);
-			DocumentIterator const it = cursor();
+			DocIterator const it = cursor();
 			cursor().setCursor(cursor().anchor_, true);
 			cursor().anchor_ = it;
 		} else

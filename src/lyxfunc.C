@@ -1349,9 +1349,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd, bool verbose)
 				// nothing to do
 				break;
 
-			owner->message(
-				_("Converting document to new document class..."));
-
+			owner->message(_("Converting document to new document class..."));
 			ErrorList el;
 			lyx::cap::SwitchLayoutsBetweenClasses(
 				old_class, new_class,

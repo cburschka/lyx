@@ -5,10 +5,20 @@
 
 2004-03-31  Alfredo Braunstein  <abraunst@lyx.org>
 
+	* BufferView.C
+	* cursor.[Ch]
+	* dociterator.[Ch]:
+	* insetiterator.[Ch]:
+	* lyxfind.C:
+	* lyxfunc.C:
+	* pariterator.[Ch]:
+	* text2.C:
+	* undo.[Ch]: s/DocumentIterator/DocIterator/g
+
+2004-03-31  Alfredo Braunstein  <abraunst@lyx.org>
+
 	* BufferView.C (setCursor, putSelectionAt): call edit to open the
 	insets where we are putting the cursor.
-	* ControlSpellchecker.C (isLetter, nextWord): check for inTextEd,
-	use forwardPos.
 
 2004-03-31  Angus Leeming  <leeming@lyx.org>
 

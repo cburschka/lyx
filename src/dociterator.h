@@ -34,7 +34,7 @@ bool ptr_cmp(A const * a, B const * b)
 
 // The public inheritance should go in favour of a suitable data member
 // (or maybe private inheritance) at some point of time.
-class DocumentIterator : public std::vector<CursorSlice>
+class DocIterator : public std::vector<CursorSlice>
 {
 public:
 	/// type for cell number in inset
@@ -50,9 +50,9 @@ public:
 
 public:
 	///
-	DocumentIterator();
+	DocIterator();
 	///
-	explicit DocumentIterator(InsetBase & inset);
+	explicit DocIterator(InsetBase & inset);
 
 	/// is the iterator valid?
 	operator const void*() const { return empty() ? 0 : this; }
@@ -187,40 +187,40 @@ public:
 
 	/// output
 	friend std::ostream &
-	operator<<(std::ostream & os, DocumentIterator const & cur);
+	operator<<(std::ostream & os, DocIterator const & cur);
 private:
 	InsetBase * inset_;
 };
 
 
-DocumentIterator doc_iterator_begin(InsetBase & inset);
-DocumentIterator doc_iterator_end(InsetBase & inset);
+DocIterator doc_iterator_begin(InsetBase & inset);
+DocIterator doc_iterator_end(InsetBase & inset);
 
 
-// The difference to a ('non stable') DocumentIterator is the removed
+// The difference to a ('non stable') DocIterator is the removed
 // (overwritte by 0...) part of the CursorSlice data items. So this thing
 // is suitable for external storage, but not for iteration as such.
 
-class StableDocumentIterator {
+class StableDocIterator {
 public:
 	///
-	StableDocumentIterator() {}
+	StableDocIterator() {}
 	/// non-explicit intended
-	StableDocumentIterator(const DocumentIterator & it);
+	StableDocIterator(const DocIterator & it);
 	///
-	DocumentIterator asDocumentIterator(InsetBase * start) const;
+	DocIterator asDocIterator(InsetBase * start) const;
 	///
 	size_t size() const { return data_.size(); }
 	///
 	friend std::ostream &
-	operator<<(std::ostream & os, StableDocumentIterator const & cur);
+	operator<<(std::ostream & os, StableDocIterator const & cur);
 	///
 	friend std::istream &
-	operator>>(std::istream & is, StableDocumentIterator & cur);
+	operator>>(std::istream & is, StableDocIterator & cur);
 private:
 	std::vector<CursorSlice> data_;
 };
 
-bool operator==(StableDocumentIterator const &, StableDocumentIterator const &);
+bool operator==(StableDocIterator const &, StableDocIterator const &);
 
 #endif

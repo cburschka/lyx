@@ -23,7 +23,7 @@
 
 class Buffer;
 class Change;
-class DocumentIterator;
+class DocIterator;
 class Encoding;
 class ErrorList;
 class FuncRequest;
@@ -173,7 +173,7 @@ public:
 	///
 	void setCursor(ParIterator const & par, lyx::pos_type pos);
 	///
-	void putSelectionAt(DocumentIterator const & cur,
+	void putSelectionAt(DocIterator const & cur,
 		int length, bool backwards);
 
 private:

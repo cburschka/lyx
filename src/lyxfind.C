@@ -106,7 +106,7 @@ private:
 };
 
 
-bool findForward(DocumentIterator & cur, MatchString const & match)
+bool findForward(DocIterator & cur, MatchString const & match)
 {
 	for (; cur.size(); cur.forwardChar())
 		if (match(cur.paragraph(), cur.pos()))
@@ -115,7 +115,7 @@ bool findForward(DocumentIterator & cur, MatchString const & match)
 }
 
 
-bool findBackwards(DocumentIterator & cur, MatchString const & match)
+bool findBackwards(DocIterator & cur, MatchString const & match)
 {
 	for (; cur.size(); cur.backwardChar())
 		if (match(cur.paragraph(), cur.pos()))
@@ -124,7 +124,7 @@ bool findBackwards(DocumentIterator & cur, MatchString const & match)
 }
 
 
-bool findChange(DocumentIterator & cur)
+bool findChange(DocIterator & cur)
 {
 	for (; cur.size(); cur.forwardChar())
 		if ((cur.paragraph().empty() || !cur.empty())
@@ -149,7 +149,7 @@ bool find(BufferView * bv, string const & searchstr, bool cs, bool mw, bool fw)
 	if (!searchAllowed(bv, searchstr))
 		return false;
 
-	DocumentIterator cur = bv->cursor();
+	DocIterator cur = bv->cursor();
 
 	MatchString const match(searchstr, cs, mw);
 
@@ -179,7 +179,7 @@ int replaceAll(BufferView * bv,
 	int const rsize = replacestr.size();
 	int const ssize = searchstr.size();
 
-	DocumentIterator cur = DocumentIterator(buf.inset());
+	DocIterator cur = DocIterator(buf.inset());
 	while (findForward(cur, match)) {
 		lyx::pos_type pos = cur.pos();
 		LyXFont const font
@@ -192,7 +192,7 @@ int replaceAll(BufferView * bv,
 	}
 
 	bv->text()->init(bv);
-	bv->putSelectionAt(DocumentIterator(buf.inset()), 0, false);
+	bv->putSelectionAt(DocIterator(buf.inset()), 0, false);
 	if (num)
 		buf.markDirty();
 	return num;
@@ -337,7 +337,7 @@ bool findNextChange(BufferView * bv)
 	if (!bv->available())
 		return false;
 
-	DocumentIterator cur = DocumentIterator(bv->buffer()->inset());
+	DocIterator cur = DocIterator(bv->buffer()->inset());
 
 	if (!findChange(cur))
 		return false;

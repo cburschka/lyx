@@ -15,7 +15,7 @@
 #include "dociterator.h"
 
 
-class InsetIterator : public DocumentIterator
+class InsetIterator : public DocIterator
 {
 public:
 	///
