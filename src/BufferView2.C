@@ -990,7 +990,7 @@ UpdatableInset * BufferView::theLockingInset() const
 
 void BufferView::theLockingInset(UpdatableInset * inset)
 {
-    text->the_locking_inset = inset;
+	text->the_locking_inset = inset;
 }
 
 
