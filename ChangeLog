@@ -1,11 +1,22 @@
+2001-06-18  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* lib/tex/cv.cls:
+	* lib/layouts/cv.layout:
+	* lib/examples/cv.lyx: added class cv (version 1.5)
+
+2001-06-18  Andre Poenitz <poenitz@HTWM.De>
+
+	* src/mathed/math_parser.C (mathed_parse): fix bug in reading of
+	array alignment parameters.
+
 2001-05-30  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
-	* acconfig.h: add entry for HAVE_DECL_ISTREAMBUF_ITERATOR
+	* acconfig.h: add entry for HAVE_DECL_ISTREAMBUF_ITERATOR.
 
 2001-06-15  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* lib/Makefile.am (dist-hook): get documentation from BRANCH_1_1_6
-	in lyxdoc/
+	in lyxdoc/.
 
 2001-06-08  Yves Bastide  <stid@acm.org>
 

@@ -319,11 +319,12 @@ int yylex(void)
 
 
 static
-int parse_align(char * hor, char *)
+int parse_align(char const * hor)
 {
-   int nc = 0;
-   for (char * c = hor; c && *c > ' '; ++c) ++nc;
-   return nc;
+	int nc = 0;
+	for (char const * c = hor; c && *c > ' '; ++c)
+		++nc;
+	return nc;
 }
 
 
@@ -775,15 +776,16 @@ LyxArrayBase * mathed_parse(unsigned flags, LyxArrayBase * array,
     case LM_TK_BEGIN:
       {
 	 if (yylval.i == LM_EN_ARRAY) {
-	    char ar[120], ar2[8];
-	    ar[0] = ar2[0] = '\0'; 
-            char rg = LexGetArg(0);
+			string ar;
+			string ar2;
+      char rg = LexGetArg(0);
 	    if (rg == ']') {
-	       strcpy(ar2, yytext);
+	       ar2 = yytext;
 	       rg = LexGetArg('{');
 	    }
-	    strcpy(ar, yytext);
-	    int const nc = parse_align(ar, ar2);
+	    ar = yytext;
+			ar2 += '\0';
+	    int const nc = parse_align(ar.c_str());
 	    MathParInset * mm = new MathMatrixInset(nc, 0);
 	    mm->SetAlign(ar2[0], ar);
        	    data.Insert(mm, LM_TC_ACTIVE_INSET);

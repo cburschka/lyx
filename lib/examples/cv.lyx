@@ -1,0 +1,149 @@
+#LyX 1.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 218
+\textclass cv
+\begin_preamble
+%% You can modify the fonts used in the document be using the
+%% following macros. They take one parameter which is the font
+%% changing command.
+%% \headerfont: the font used in both headers.
+%%              Defaults to sans serif.
+%% \titlefont:  the font used for the title.
+%%              Defaults to \LARGE sans-serif semi bold condensed.
+%% \sectionfont: the font used by \section when beginning a new topic.
+%%              Defaults to sans-serif semi bold condensed.
+%% \itemfont:   the font used in descriptions of items.
+%%              Defaults to sans-serif slanted.
+% to make your name even bigger, uncomment the following line:
+% \titlefont{\Huge}
+%%
+%% You can modify the following parameters using \renewcommand:
+%% \topicmargin: the left margin inside topics.
+%%               Defaults to 20% of the text width (0.20\textwidth).
+% To get more room for left column of Topic layouts, uncomment following line:
+% \setlength{\topicmargin}{0.3\textwidth}
+\end_preamble
+\language english
+\inputencoding default
+\fontscheme default
+\graphics default
+\paperfontsize default
+\spacing single 
+\papersize Default
+\paperpackage a4
+\use_geometry 0
+\use_amsmath 0
+\paperorientation portrait
+\secnumdepth -1
+\tocdepth -1
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\quotes_times 2
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+
+\layout Left Header
+
+123 Hamlet Street
+\newline 
+Stratford-upon-Avon
+\layout Right Header
+
+TEL: 888-PUCK
+\newline 
+
+\family typewriter 
+\size small 
+bill@globe.org
+\layout Title
+
+William Shakespeare
+\layout Standard
+
+Some people put a summary here.
+ Note: there are many LaTeX variables you can set in the preamble to change
+ the look of the CV.
+ Look there (choose 
+\family sans 
+\bar under 
+L
+\bar default 
+ayout
+\family default 
+\SpecialChar \menuseparator
+
+\family sans 
+\bar under 
+L
+\bar default 
+\latex latex 
+{}
+\latex default 
+aTeX\SpecialChar ~
+Preamble...
+\family default 
+) for examples.
+\layout Section
+
+Work Experience
+\layout Topic
+\labelwidthstring MMMMM
+
+1593--1609 Wrote and produced plays for the Queen, and then for the King.
+ He really liked them a lot, but they reminded him of plays by this guy,
+ the Earl of Oxford.
+\layout Topic
+\labelwidthstring MMMMM
+
+\SpecialChar ~
+ If a topic does not have a subtitle, you have to put a protected space
+ there.
+ This is a shortcoming of LyX.
+\begin_deeper 
+\layout Standard
+
+But you can also use the paragraph depth setting, depending on what you
+ want to do.
+\end_deeper 
+\layout Section
+
+Education
+\layout Topic
+\labelwidthstring MMMMM
+
+1577--78 My Dad taught me stuff.
+\layout Topic
+\labelwidthstring MMMMM
+
+April\SpecialChar ~
+to\SpecialChar ~
+May\SpecialChar ~
+1581 Tried high school.
+ Hated my English teacher.
+ [Two things here: first, note (on paper) how a linebreak is inserted if
+ your subtitle is too long; second, note that you have to use unbreakable
+ spaces to embed spaces in the subtitle.]
+\layout Section
+
+Publications
+\layout Bibliography
+\labelwidthstring Publications
+\bibitem {firstref}
+
+First Folio.
+ Me.
+ 1623.
+\layout Bibliography
+\labelwidthstring Publications
+\bibitem {secondref}
+
+These references could have been entered via BibTeX\SpecialChar \ldots{}
+ In any case, here I
+ can cite my work of 
+\begin_inset LatexCommand \cite{firstref}
+
+\end_inset 
+
+.
+\the_end
