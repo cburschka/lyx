@@ -16,6 +16,7 @@
 #include "gettext.h"
 #include "buffer.h"
 #include "QtLyXView.h"
+#include "lyxtextclasslist.h"
 #include "lyxtext.h"
 #include "debug.h"
 #include "BufferView.h"
