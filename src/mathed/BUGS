@@ -79,10 +79,10 @@ Misc:
 
 // - If I change '\alpha' to bold, the result is \mathbf{a}
 
-- Just moving the cursor in a math inset causes changing the buffer status
-  to (changed).
+// - Just moving the cursor in a math inset causes changing the buffer status
+//   to (changed).
 
-- disable the insert->label menu item when in inline formula.
+// - disable the insert->label menu item when in inline formula.
 
 
 Eran Tromer:
@@ -211,12 +211,13 @@ From: Álvaro Tejero Cantero <alvaro@antalia.com>
  won't repeat that. Only that the flattening option would be then easier to 
  implement on top of that.
  
-- There's something I keep wondering about.. how do new math symbols get into 
- LyX. Do they get ever?. I don't know if it can be done, but if you tell me 
- where to "draw" those symbols or how, I would very glad start doing it. LyX 
- deserves to have support (visual support) for all the AMSTeX constructs. But 
- there must be something structural going on there, because otherwise more 
- math symbols would be ready by now.. just a thought.
+// - There's something I keep wondering about.. how do new math symbols get
+// into LyX. Do they get ever?. I don't know if it can be done, but if you
+// tell me where to "draw" those symbols or how, I would very glad start
+// doing it. LyX deserves to have support (visual support) for all the
+// AMSTeX constructs. But there must be something structural going on
+// there, because otherwise more math symbols would be ready by now..
+// just a thought.
  
 - Some math symbols aren't very well supported (to my knowledge). I'm 
   thinking of underbraces with extra data in them,or [] options.

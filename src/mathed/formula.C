@@ -356,7 +356,7 @@ void InsetFormula::validate(LaTeXFeatures & features) const
 
 bool InsetFormula::insetAllowed(Inset::Code code) const
 {
-	return code == Inset::LABEL_CODE; 
+	return code == Inset::LABEL_CODE && display(); 
 }
 
 

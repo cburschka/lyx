@@ -550,10 +550,8 @@ int mathed_char_descent(MathTextCodes type, MathStyles size, unsigned char c)
 int mathed_char_width(MathTextCodes type, MathStyles size, unsigned char c)
 {
 	LyXFont const font = whichFont(type, size);
-	LyXFont const f1 = whichFont(LM_TC_TEXTRM, size);
-#warning why f1 is used ?
 	if (isBinaryOp(c, type))
-		return lyxfont::width(c, font) + 2 * lyxfont::width(' ', f1);
+		return lyxfont::width(c, font) + 2 * lyxfont::width(' ', font);
 	else
 		return lyxfont::width(c, font);
 }

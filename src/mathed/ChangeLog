@@ -1,3 +1,8 @@
+2001-09-14  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* formula.C (insetAllowed): disallow label insertion in inline
+	formula
+
 2001-09-12  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* formulabase.C (mathDispatchCreation): pass second argument
