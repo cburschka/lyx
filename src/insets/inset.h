@@ -153,7 +153,7 @@ public:
 	virtual void insetButtonPress(BufferView *, int, int, int) {}
 	/// This is called when the user releases the button inside an inset
 	virtual void insetButtonRelease(BufferView *, int, int, int) {}
-	/// This is caleld when the user moves the mouse inside an inset
+	/// This is called when the user moves the mouse inside an inset
 	virtual void insetMotionNotify(BufferView *, int , int , int) {}
 	///
 	virtual bool isTextInset() const { return false; }
