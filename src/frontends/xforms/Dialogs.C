@@ -17,25 +17,29 @@
 
 #include "Dialogs.h"
 
+#include "xformsBC.h"
+
 #include "ControlBibitem.h"
 #include "ControlBibtex.h"
+#include "ControlCharacter.h"
 #include "ControlCitation.h"
 #include "ControlLog.h"
 #include "ControlVCLog.h"
-#include "xformsBC.h"
 
-#include "form_bibitem.h" // needed for clean destructtion of boost::scoped ptr
+#include "combox.h"       // needed for clean destructtion of boost::scoped ptr
+#include "form_bibitem.h"
 #include "form_bibtex.h"
 #include "form_browser.h"
+#include "form_character.h"
 #include "form_citation.h"
 
 #include "FormBibitem.h"
 #include "FormBibtex.h"
+#include "FormCharacter.h"
 #include "FormCitation.h"
 #include "FormLog.h"
 #include "FormVCLog.h"
 
-#include "FormCharacter.h"
 #include "FormCopyright.h"
 #include "FormCredits.h"
 #include "FormDocument.h"
@@ -66,13 +70,13 @@ Dialogs::Dialogs(LyXView * lv)
 {
 	splash_.reset(new FormSplash(lv, this));
 
-	add(new GUICitation<FormCitation, xformsBC>(*lv, *this));
 	add(new GUIBibitem<FormBibitem, xformsBC>(*lv, *this));
 	add(new GUIBibtex<FormBibtex, xformsBC>(*lv, *this));
+	add(new GUICharacter<FormCharacter, xformsBC>(*lv, *this));
+	add(new GUICitation<FormCitation, xformsBC>(*lv, *this));
 	add(new GUILog<FormLog, xformsBC>(*lv, *this));
 	add(new GUIVCLog<FormVCLog, xformsBC>(*lv, *this));
 
-	add(new FormCharacter(lv, this));
 	add(new FormCopyright(lv, this));
 	add(new FormCredits(lv, this));
 	add(new FormDocument(lv, this));

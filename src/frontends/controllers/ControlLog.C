@@ -17,12 +17,10 @@
 #endif
 
 #include <config.h>
-#include "ButtonController.h"
 #include "ControlLog.h"
 #include "LyXView.h"
 #include "Dialogs.h"
 #include "lyxrc.h"
-#include "ViewBase.h"
 
 using std::make_pair;
 using SigC::slot;

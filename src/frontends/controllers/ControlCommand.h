@@ -4,7 +4,7 @@
  *
  *           LyX, The Document Processor
  *
- *           Copyright 2000 The LyX Team.
+ *           Copyright 2001 The LyX Team.
  *
  * ======================================================
  *
@@ -27,9 +27,6 @@
 #include "ControlConnections.h"
 #include "insets/insetcommand.h"
 #include "commandtags.h" // kb_action
-
-class Dialogs;
-class LyXView;
 
 /** The Inset dialog controller. Connects/disconnects signals, launches 
     GUI-dependent View and returns the output from this View to the kernel.

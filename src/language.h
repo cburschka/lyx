@@ -86,11 +86,17 @@ public:
 	///
 	typedef LanguageList::const_iterator const_iterator;
 	///
+	typedef LanguageList::size_type size_type;
+	///
 	void read(string const & filename);
 	///
 	void setDefaults();
 	///
 	Language const * getLanguage(string const & language) const;
+	///
+	size_type size() const {
+		return languagelist.size();
+	}
 	///
 	const_iterator begin() const {
                 return languagelist.begin();
@@ -109,6 +115,6 @@ private:
 extern Languages languages;
 extern Language const * default_language;
 extern Language const * english_language;
-extern Language const *ignore_language;
+extern Language const * ignore_language;
 
 #endif

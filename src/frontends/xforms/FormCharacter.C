@@ -3,204 +3,133 @@
  * Copyright 2001 The LyX Team.
  * See the file COPYING.
  *
- * \author Edwin Leuven, leuven@fee.uva.nl
+ * \author Edwin Leuven,  leuven@fee.uva.nl
+ * \author Angus Leeming, a.leeming@ic.ac.uk
  */
 
-#include <config.h>
-
-#include FORMS_H_LOCATION
+#include <vector>
 
 #ifdef __GNUG_
 #pragma implementation
 #endif
 
+#include <config.h>
+
+#include "xformsBC.h"
+#include "ControlCharacter.h"
 #include "FormCharacter.h"
 #include "form_character.h"
-#include "bufferview_funcs.h"
-#include "Dialogs.h"
-#include "Liason.h"
-#include "LyXView.h"
-#include "buffer.h"
-#include "lyxtext.h"
-#include "language.h"
+#include "gettext.h"
 #include "combox.h"
+#include "helper_funcs.h"
 
-using Liason::setMinibuffer;
-using SigC::slot;
+using std::vector;
+using std::back_inserter;
+using std::transform;
 
-FormCharacter::FormCharacter(LyXView * lv, Dialogs * d)
-	: FormBaseBD(lv, d, _("Character Layout"))
+typedef FormCB<ControlCharacter, FormDB<FD_form_character> > base_class;
+
+FormCharacter::FormCharacter(ControlCharacter & c)
+	: base_class(c, _("Character Layout"))
+{}
+
+
+void FormCharacter::ComboInputCB(int, void * v, Combox * combox)
 {
-   // let the popup be shown
-   // This is a permanent connection so we won't bother
-   // storing a copy because we won't be disconnecting.
-   d->showLayoutCharacter.connect(slot(this, &FormCharacter::show));
-   // for LFUN_FREE
-   d->setUserFreeFont.connect(slot(this, &FormCharacter::apply));
+	FormCharacter * pre = static_cast<FormCharacter*>(v);
+	pre->InputCB(reinterpret_cast<FL_OBJECT *>(combox), 0);
 }
-
-
-FL_FORM * FormCharacter::form() const
-{
-   if (dialog_.get()) 
-     return dialog_->form;
-   return 0;
-}
-
 
 void FormCharacter::build()
 {
-   dialog_.reset(build_character());
+	dialog_.reset(build_character());
 
-   // Manage the ok, apply and cancel/close buttons
-   bc().setApply(dialog_->button_apply);
-   bc().setCancel(dialog_->button_close);
-   bc().refresh();
-   bc().addReadOnly (dialog_->check_toggle_all);
-   
-   fl_addto_choice(dialog_->choice_family,
-		   _(" No change %l| Roman | Sans Serif | Typewriter %l| Reset "));
-   fl_addto_choice(dialog_->choice_series,
-		   _(" No change %l| Medium | Bold %l| Reset "));
-   fl_addto_choice(dialog_->choice_shape,
-		   _(" No change %l| Upright | Italic | Slanted | Small Caps "
-		     "%l| Reset "));
-   fl_addto_choice(dialog_->choice_size,
-		   _(" No change %l| Tiny | Smallest | Smaller | Small "
-		     "| Normal | Large | Larger | Largest | Huge | Huger "
-		     "%l| Increase | Decrease | Reset "));
-   fl_addto_choice(dialog_->choice_bar,
-		   _(" No change %l| Emph | Underbar | Noun | LaTeX mode %l| Reset "));
-   fl_addto_choice(dialog_->choice_color,
-		   _(" No change %l| No color | Black | White | Red | Green "
-		     "| Blue | Cyan | Magenta | Yellow %l| Reset "));
-   fl_addto_choice(dialog_->choice_language,
-		   _(" English %l| German | French "));
+	vector<ControlCharacter::FamilyPair> const family = getFamilyData();
+	vector<ControlCharacter::SeriesPair> const series = getSeriesData();
+	vector<ControlCharacter::ShapePair>  const shape  = getShapeData();
+	vector<ControlCharacter::SizePair>   const size   = getSizeData();
+	vector<ControlCharacter::BarPair>    const bar    = getBarData();
+	vector<ControlCharacter::ColorPair>  const color  = getColorData();
+	vector<string> const language = getLanguageData();
 
-   // insert default language box manually
-   fl_addto_form(dialog_->form);
-   FL_OBJECT * ob = dialog_->choice_language;
-   combo_language2_.reset(new Combox(FL_COMBOX_DROPLIST));
-   combo_language2_->add(ob->x, ob->y, ob->w, ob->h, 250);
-   combo_language2_->shortcut("#L", 1);
-   fl_end_form();
+	// Store the enums for later
+	family_ = getSecond(family);
+	series_ = getSecond(series);
+	shape_ = getSecond(shape);
+	size_ = getSecond(size);
+	bar_ = getSecond(bar);
+	color_ = getSecond(color);
 
-   // build up the combox entries
-   combo_language2_->addline(_("No change"));
-   combo_language2_->addline(_("Reset"));
-   for (Languages::const_iterator cit = languages.begin(); 
-	cit != languages.end(); ++cit) {
-	combo_language2_->addto((*cit).second.lang());
-   }
+	// create a string of entries " entry1 | entry2 | entry3 | entry4 "
+	// with which to initialise the xforms choice object.
+	string choice = " " + getStringFromVector(getFirst(family), " | ") +" ";
+	fl_addto_choice(dialog_->choice_family, choice.c_str());
+
+	choice = " " + getStringFromVector(getFirst(series), " | ") + " ";
+	fl_addto_choice(dialog_->choice_series, choice.c_str());
+
+	choice = " " + getStringFromVector(getFirst(shape), " | ") + " ";
+	fl_addto_choice(dialog_->choice_shape, choice.c_str());
+
+	choice = " " + getStringFromVector(getFirst(size), " | ") + " ";
+	fl_addto_choice(dialog_->choice_size, choice.c_str());
+
+	choice = " " + getStringFromVector(getFirst(bar), " | ") + " ";
+	fl_addto_choice(dialog_->choice_bar, choice.c_str());
+
+	choice = " " + getStringFromVector(getFirst(color), " | ") + " ";
+	fl_addto_choice(dialog_->choice_color, choice.c_str());
+
+	// xforms appears to need this to prevent a crash...
+	// fl_addto_choice(dialog_->choice_language,
+	//		_(" English %l| German | French "));
+
+	// insert default language box manually
+	fl_addto_form(dialog_->form);
+		FL_OBJECT * ob = dialog_->choice_language;
+		combo_language2_.reset(new Combox(FL_COMBOX_DROPLIST));
+		combo_language2_->add(ob->x, ob->y, ob->w, ob->h, 250);
+		combo_language2_->shortcut("#L", 1);
+		combo_language2_->setcallback(ComboInputCB, this);
+	fl_end_form();
+
+	// build up the combox entries
+	for (vector<string>::const_iterator cit = language.begin(); 
+	     cit != language.end(); ++cit) {
+		combo_language2_->addto(*cit);
+	}
+	combo_language2_->select_text(*language.begin());
+
+	// Manage the ok, apply and cancel/close buttons
+	bc().setApply(dialog_->button_apply);
+	bc().setCancel(dialog_->button_close);
+	bc().refresh();
+	bc().addReadOnly(dialog_->check_toggle_all);
 }
 
 
 void FormCharacter::apply()
 {
-   if (!lv_->view()->available() || !dialog_.get())
-     return;
-   
-   LyXFont font(LyXFont::ALL_IGNORE);
-   
-   int pos = fl_get_choice(dialog_->choice_family);
-   switch (pos) {
-      case 1: font.setFamily(LyXFont::IGNORE_FAMILY); break;
-      case 2: font.setFamily(LyXFont::ROMAN_FAMILY); break;
-      case 3: font.setFamily(LyXFont::SANS_FAMILY); break;
-      case 4: font.setFamily(LyXFont::TYPEWRITER_FAMILY); break;
-      case 5: font.setFamily(LyXFont::INHERIT_FAMILY); break;
-   }
-   
-   pos = fl_get_choice(dialog_->choice_series);
-   switch (pos) {
-      case 1: font.setSeries(LyXFont::IGNORE_SERIES); break;
-      case 2: font.setSeries(LyXFont::MEDIUM_SERIES); break;
-      case 3: font.setSeries(LyXFont::BOLD_SERIES); break;
-      case 4: font.setSeries(LyXFont::INHERIT_SERIES); break;
-   }
-   
-   pos = fl_get_choice(dialog_->choice_shape);
-   switch (pos) {
-      case 1: font.setShape(LyXFont::IGNORE_SHAPE); break;
-      case 2: font.setShape(LyXFont::UP_SHAPE); break;
-      case 3: font.setShape(LyXFont::ITALIC_SHAPE); break;
-      case 4: font.setShape(LyXFont::SLANTED_SHAPE); break;
-      case 5: font.setShape(LyXFont::SMALLCAPS_SHAPE); break;
-      case 6: font.setShape(LyXFont::INHERIT_SHAPE); break;
-   }
-   
-   pos = fl_get_choice(dialog_->choice_size);
-   switch (pos) {
-      case 1: font.setSize(LyXFont::IGNORE_SIZE); break;
-      case 2: font.setSize(LyXFont::SIZE_TINY); break;
-      case 3: font.setSize(LyXFont::SIZE_SCRIPT); break;
-      case 4: font.setSize(LyXFont::SIZE_FOOTNOTE); break;
-      case 5: font.setSize(LyXFont::SIZE_SMALL); break;
-      case 6: font.setSize(LyXFont::SIZE_NORMAL); break;
-      case 7: font.setSize(LyXFont::SIZE_LARGE); break;
-      case 8: font.setSize(LyXFont::SIZE_LARGER); break;
-      case 9: font.setSize(LyXFont::SIZE_LARGEST); break;
-      case 10: font.setSize(LyXFont::SIZE_HUGE); break;
-      case 11: font.setSize(LyXFont::SIZE_HUGER); break;
-      case 12: font.setSize(LyXFont::INCREASE_SIZE); break;
-      case 13: font.setSize(LyXFont::DECREASE_SIZE); break;
-      case 14: font.setSize(LyXFont::INHERIT_SIZE); break;
-   }
-   
-   pos = fl_get_choice(dialog_->choice_bar);
-   switch (pos) {
-      case 1: font.setEmph(LyXFont::IGNORE);
-      font.setUnderbar(LyXFont::IGNORE);
-      font.setNoun(LyXFont::IGNORE);
-      font.setLatex(LyXFont::IGNORE);
-      break;
-      case 2: font.setEmph(LyXFont::TOGGLE); break;
-      case 3: font.setUnderbar(LyXFont::TOGGLE); break;
-      case 4: font.setNoun(LyXFont::TOGGLE); break;
-      case 5: font.setLatex(LyXFont::TOGGLE); break;
-      case 6: font.setEmph(LyXFont::INHERIT);
-      font.setUnderbar(LyXFont::INHERIT);
-      font.setNoun(LyXFont::INHERIT);
-      font.setLatex(LyXFont::INHERIT);
-      break;
-   }
-   
-   pos = fl_get_choice(dialog_->choice_color);
-   switch (pos) {
-      case 1: font.setColor(LColor::ignore); break;
-      case 2: font.setColor(LColor::none); break;
-      case 3: font.setColor(LColor::black); break;
-      case 4: font.setColor(LColor::white); break;
-      case 5: font.setColor(LColor::red); break;
-      case 6: font.setColor(LColor::green); break;
-      case 7: font.setColor(LColor::blue); break;
-      case 8: font.setColor(LColor::cyan); break;
-      case 9: font.setColor(LColor::magenta); break;
-      case 10: font.setColor(LColor::yellow); break;
-      case 11: font.setColor(LColor::inherit); break;
-   }
-   
-   int const choice = combo_language2_->get();
-   if (choice == 1)
-     font.setLanguage(ignore_language);
-   else if (choice == 2)
-     font.setLanguage(lv_->buffer()->params.language);
-   else
-     font.setLanguage(languages.getLanguage(combo_language2_->getline()));
+	int pos = fl_get_choice(dialog_->choice_family);
+	controller().setFamily(family_[pos-1]);
 
+	pos = fl_get_choice(dialog_->choice_series);
+	controller().setSeries(series_[pos-1]);
    
-   bool toggleall = fl_get_button(dialog_->check_toggle_all);
-   ToggleAndShow(lv_->view(), font, toggleall);
-   lv_->view()->setState();
-   lv_->buffer()->markDirty();
-   setMinibuffer(lv_, _("Character set"));
-}
+	pos = fl_get_choice(dialog_->choice_shape);
+	controller().setShape(shape_[pos-1]);
 
-
-void FormCharacter::update()
-{
-    if (!dialog_.get())
-        return;
+	pos = fl_get_choice(dialog_->choice_size);
+	controller().setSize(size_[pos-1]);
    
-    bc().readOnly(lv_->buffer()->isReadonly());
+	pos = fl_get_choice(dialog_->choice_bar);
+	controller().setBar(bar_[pos-1]);
+   
+	pos = fl_get_choice(dialog_->choice_color);
+	controller().setColor(color_[pos-1]);
+
+	controller().setLanguage(combo_language2_->getline());
+
+	bool const toggleall = fl_get_button(dialog_->check_toggle_all);
+	controller().setToggleAll(toggleall);
 }

@@ -25,6 +25,7 @@
 #include "support/lstrings.h"
 #include "xforms_helpers.h"
 #include "xformsBC.h"
+#include "helper_funcs.h"
 
 using std::find;
 using std::max;
@@ -317,8 +318,11 @@ void FormCitation::updateBrowser(FL_OBJECT * browser,
 {
 	fl_clear_browser(browser);
 
-	for (vector<string>::size_type i = 0; i < keys.size(); ++i)
-		fl_add_browser_line(browser, keys[i].c_str());
+	for (vector<string>::const_iterator it = keys.begin();
+	     it < keys.end(); ++it) {
+		string key = frontStrip(strip(*it));
+		fl_add_browser_line(browser, key.c_str());
+	}
 }
 
 

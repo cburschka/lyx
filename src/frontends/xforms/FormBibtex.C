@@ -12,11 +12,11 @@
 #endif
 
 #include <config.h>
+#include "xformsBC.h"
 #include "ControlBibtex.h"
 #include "FormBibtex.h"
 #include "form_bibtex.h"
 #include "gettext.h"
-#include "xformsBC.h"
 #include "debug.h"
 
 typedef FormCB<ControlBibtex, FormDB<FD_form_bibtex> > base_class;

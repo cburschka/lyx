@@ -64,7 +64,7 @@ shortcut:
 resize: FL_RESIZE_X
 gravity: FL_NorthWest FL_NorthEast
 name: choice_family
-callback: C_FormBaseDeprecatedInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -82,7 +82,7 @@ shortcut:
 resize: FL_RESIZE_X
 gravity: FL_NorthWest FL_NorthEast
 name: choice_series
-callback: C_FormBaseDeprecatedInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -100,7 +100,7 @@ shortcut:
 resize: FL_RESIZE_X
 gravity: FL_NorthWest FL_NorthEast
 name: choice_shape
-callback: C_FormBaseDeprecatedInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -118,7 +118,7 @@ shortcut:
 resize: FL_RESIZE_X
 gravity: FL_NorthWest FL_NorthEast
 name: choice_size
-callback: C_FormBaseDeprecatedInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -136,7 +136,7 @@ shortcut:
 resize: FL_RESIZE_X
 gravity: FL_NorthWest FL_NorthEast
 name: choice_bar
-callback: C_FormBaseDeprecatedInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -154,7 +154,7 @@ shortcut:
 resize: FL_RESIZE_NONE
 gravity: FL_SouthEast FL_SouthEast
 name: button_apply
-callback: C_FormBaseDeprecatedApplyCB
+callback: C_FormBaseApplyCB
 argument: 0
 
 --------------------
@@ -172,7 +172,7 @@ shortcut: ^M
 resize: FL_RESIZE_NONE
 gravity: FL_SouthEast FL_SouthEast
 name: button_close
-callback: C_FormBaseDeprecatedCancelCB
+callback: C_FormBaseCancelCB
 argument: 0
 
 --------------------
@@ -190,7 +190,7 @@ shortcut:
 resize: FL_RESIZE_X
 gravity: FL_NorthWest FL_NorthEast
 name: choice_color
-callback: C_FormBaseDeprecatedInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -208,7 +208,7 @@ shortcut:
 resize: FL_RESIZE_X
 gravity: FL_NorthWest FL_NorthEast
 name: check_toggle_all
-callback: C_FormBaseDeprecatedInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -226,7 +226,7 @@ shortcut:
 resize: FL_RESIZE_X
 gravity: FL_NorthWest FL_NorthEast
 name: choice_language
-callback: C_FormBaseDeprecatedInputCB
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------

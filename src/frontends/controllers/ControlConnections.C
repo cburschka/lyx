@@ -4,7 +4,7 @@
  *
  *           LyX, The Document Processor
  *
- *           Copyright 2000 The LyX Team.
+ *           Copyright 2001 The LyX Team.
  *
  * ======================================================
  *
@@ -20,7 +20,6 @@
 
 #include "ControlConnections.h"
 #include "Dialogs.h"
-#include "ViewBase.h"
 #include "insets/lyxinset.h"
 
 using SigC::slot;

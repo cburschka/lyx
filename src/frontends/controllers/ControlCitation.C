@@ -4,7 +4,7 @@
  *
  *           LyX, The Document Processor
  *
- *           Copyright 2000 The LyX Team.
+ *           Copyright 2001 The LyX Team.
  *
  * ======================================================
  *
@@ -22,10 +22,9 @@
 
 #include "ControlCitation.h"
 #include "buffer.h"
-#include "ButtonController.h"
 #include "Dialogs.h"
 #include "LyXView.h"
-#include "ViewBase.h"
+#include "helper_funcs.h"
 #include "support/lstrings.h"
 #include "support/LRegex.h"
 
@@ -129,29 +128,6 @@ string const ControlCitation::getBibkeyInfo(string const & key)
 }
 
 
-string const getStringFromVector(vector<string> const & vec, char delim)
-{
-	string str;
-	for (vector<string>::size_type i=0; i<vec.size(); ++i) {
-		if (i > 0) str += tostr(delim);
-		str += vec[i];
-	}
-	return str;
-}
-
-vector<string> const getVectorFromString(string const & str, char delim)
-{
-	vector<string> vec;
-	string keys(str);
-	string tmp;
-	keys = frontStrip(split(keys, tmp, delim));
-	while (!tmp.empty()) {
-		vec.push_back(tmp);
-		keys = frontStrip(split(keys, tmp, delim));
-	}
-	return vec;
-}
-
 vector<string>::const_iterator
 searchKeys(ControlCitation const & controller,
 	   vector<string> const & keys,
@@ -185,7 +161,7 @@ simpleSearch(ControlCitation const & controller,
 	     ControlCitation::Direction dir,
 	     bool caseSensitive)
 {
-	vector<string> searchwords = getVectorFromString(expr, ' ');
+	vector<string> searchwords = getVectorFromString(expr, " ");
 
 	// Loop over all keys from start...
 	for (vector<string>::const_iterator it = start;

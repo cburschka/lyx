@@ -91,7 +91,7 @@ void FormBase::InputCB(FL_OBJECT * ob, long data)
 
 ButtonPolicy::SMInput FormBase::input(FL_OBJECT *, long)
 {
-	return ButtonPolicy::SMI_NOOP;
+	return ButtonPolicy::SMI_VALID;
 }
 
 

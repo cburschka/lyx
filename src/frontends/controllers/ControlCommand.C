@@ -20,12 +20,10 @@
 
 #include "ControlCommand.h"
 #include "BufferView.h"
-#include "ButtonController.h"
 #include "Dialogs.h"
 #include "lyxfunc.h"
 #include "LyXView.h"
 #include "support/LAssert.h"
-#include "ViewBase.h"
 
 ControlCommand::ControlCommand(LyXView & lv, Dialogs & d, kb_action ac)
 	: ControlConnectInset<InsetCommand>(lv, d),

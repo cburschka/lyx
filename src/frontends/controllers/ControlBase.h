@@ -4,7 +4,7 @@
  *
  *           LyX, The Document Processor
  *
- *           Copyright 2000 The LyX Team.
+ *           Copyright 2001 The LyX Team.
  *
  * ======================================================
  *
@@ -28,8 +28,8 @@
 #endif
 
 #include "DialogBase.h" // This can go eventually
+#include "ButtonController.h"
 
-class ButtonControllerBase;
 class Dialogs;
 class LyXView;
 class ViewBase;
@@ -79,5 +79,6 @@ protected:
 	LyXView & lv_;
 };
 
+#include "ViewBase.h"
 
 #endif // CONTROLBASE_H

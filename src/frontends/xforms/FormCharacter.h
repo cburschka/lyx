@@ -5,6 +5,7 @@
  * See the file COPYING.
  * 
  * \author Edwin Leuven, leuven@fee.uva.nl
+ * \author Angus Leeming, a.leeming@.ac.uk
  */
 
 #ifndef FORM_CHARACTER_H
@@ -16,7 +17,10 @@
 #pragma interface
 #endif
 
-#include "FormBaseDeprecated.h"
+#include "FormBase.h"
+#include "lyxfont.h"          // for LyXFont enums
+#include "ControlCharacter.h" // for ControlCharacter enum
+#include "LColor.h"           // for LColor enum
 
 class Combox;
 struct FD_form_character;
@@ -26,14 +30,12 @@ struct FD_form_character;
  * The character dialog allows users to change the character settings
  * in their documents.
  */
-class FormCharacter : public FormBaseBD {
+class FormCharacter
+	: public FormCB<ControlCharacter, FormDB<FD_form_character> > {
 public:
 	///
-	FormCharacter(LyXView *, Dialogs *);
+	FormCharacter(ControlCharacter &);
 private:
-	
-	/// Pointer to the actual instantiation of the ButtonController.
-	virtual xformsBC & bc();
 
 	/// Build the popup
 	virtual void build();
@@ -41,29 +43,30 @@ private:
 	/// Apply from popup
 	virtual void apply();
    
-	/// Update the popup.
-	virtual void update();
-   
-	/// Pointer to the actual instantiation of the xform's form
-	virtual FL_FORM * form() const;
+	/// Nothing to update...
+	virtual void update() {}
 
-	///
+	/** Callback method (used only to activate Apply button when
+	    combox is changed */
+	static void ComboInputCB(int, void *, Combox *);
+
+	/// Type definition from the fdesign produced header file.
 	FD_form_character * build_character();
 	
-	/// Real GUI implementation.
-	boost::scoped_ptr<FD_form_character> dialog_;
-
 	///
 	boost::scoped_ptr<Combox> combo_language2_;
-
-	/// The ButtonController
-	ButtonController<NoRepeatedApplyReadOnlyPolicy, xformsBC> bc_;
+	///
+	std::vector<LyXFont::FONT_FAMILY>         family_;
+	///
+	std::vector<LyXFont::FONT_SERIES>         series_;
+	///
+	std::vector<LyXFont::FONT_SHAPE>          shape_;
+	///
+	std::vector<LyXFont::FONT_SIZE>           size_;
+	///
+	std::vector<ControlCharacter::FONT_STATE> bar_;
+	///
+	std::vector<LColor::color>                color_;
 };
 
-
-inline
-xformsBC & FormCharacter::bc()
-{
-	return bc_;
-}
 #endif

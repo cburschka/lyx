@@ -12,11 +12,11 @@
 #endif
 
 #include <config.h>
+#include "xformsBC.h"
 #include "ControlBibitem.h"
 #include "FormBibitem.h"
 #include "form_bibitem.h"
 #include "gettext.h"
-#include "xformsBC.h"
 #include "support/lstrings.h" // compare
 
 typedef FormCB<ControlBibitem, FormDB<FD_form_bibitem> > base_class;

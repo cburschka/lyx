@@ -21,8 +21,6 @@
 #endif
 
 #include "ControlCommand.h"
-#include "ButtonController.h"
-#include "ViewBase.h"
 
 /** A controller for Bibtex dialogs.
  */

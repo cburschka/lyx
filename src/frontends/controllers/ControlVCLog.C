@@ -7,7 +7,7 @@
  *
  * ======================================================
  *
- * \file ControlVCLog.h
+ * \file ControlVCLog.C
  * \author John Levon, moz@compsoc.man.ac.uk
  * \author Angus Leeming <a.leeming@ic.ac.uk>
  */
@@ -17,13 +17,11 @@
 #endif
 
 #include <config.h>
-#include "buffer.h"
-#include "ButtonController.h"
 #include "ControlVCLog.h"
+#include "buffer.h"
 #include "LyXView.h"
 #include "Dialogs.h"
 #include "lyxrc.h"
-#include "ViewBase.h"
 
 using SigC::slot;
 

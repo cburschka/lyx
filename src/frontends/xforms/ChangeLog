@@ -1,3 +1,15 @@
+2001-03-21  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* FormCharacter.[Ch]:
+	* forms/form_character.fd: implemented controller-view split.
+
+	* Dialogs.C: associated changes.
+
+	* FormBase.C (input): changed return to SMI_VALID.
+
+	* FormCitation.C (updateBrowser): ensure that the keys are stripped of
+	any surrounding whitespace.
+
 2001-03-20  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* FormBase.[Ch] (input): no longer pure virtual. Has defualt state of

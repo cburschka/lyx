@@ -1,3 +1,15 @@
+2001-03-21  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* ControlCharacter.[Ch]: new files; controller for the character popup.
+
+	* ControlCitation.[Ch] (getStringFromVector, getVectorFromString):
+	moved to new files helper_funcs.[Ch].
+
+	* helper_funcs.[Ch]: new files. Some useful helper functions and
+	functors.
+
+	* Makefile.am: added new files.
+
 2001-03-20  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* ControlCitation.C (getBibkeyInfo): parse non-BibTeX entries correctly.

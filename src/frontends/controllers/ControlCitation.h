@@ -4,7 +4,7 @@
  *
  *           LyX, The Document Processor
  *
- *           Copyright 2000 The LyX Team.
+ *           Copyright 2001 The LyX Team.
  *
  * ======================================================
  *
@@ -20,8 +20,6 @@
 #endif
 
 #include "ControlCommand.h"
-#include "ButtonController.h"
-#include "ViewBase.h"
 
 /** A controller for Citation dialogs. All citation-specific functionality
     should go in here.
@@ -92,12 +90,6 @@ GUICitation<GUIview, GUIbc>::GUICitation(LyXView & lv, Dialogs & d)
 
 /** Helper functions, of possible use to all frontends
  */
-
-/** Multiple citation keys are stored in InsetCommandParams::contents as a
-    comma-separated string. These two functions convert to/from a vector. */
-string const getStringFromVector(std::vector<string> const &, char delim=',');
-///
-std::vector<string> const getVectorFromString(string const &, char delim=',');
 
 /** Search a BibTeX info field for the given key and return the
     associated field. */

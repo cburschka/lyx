@@ -20,6 +20,8 @@ libcontrollers_la_SOURCES=\
 	ControlBibitem.h \
 	ControlBibtex.C \
 	ControlBibtex.h \
+	ControlCharacter.C \
+	ControlCharacter.h \
 	ControlCitation.C \
 	ControlCitation.h \
 	ControlCommand.C \
@@ -30,7 +32,9 @@ libcontrollers_la_SOURCES=\
 	ControlLog.h \
 	ControlVCLog.C \
 	ControlVCLog.h \
-	ViewBase.h
+	ViewBase.h \
+	helper_funcs.C \
+	helper_funcs.h
 
 # just copied from old lyx repository
 dist-hook:
