@@ -1,3 +1,9 @@
+2002-05-02  Juergen Vigna  <jug@sad.it>
+
+	* buffer.C (parseSingleLyXformat2Token): move the compatibility
+	parts of layout read further up as it still was in the wrong
+	position.
+
 2002-05-02  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* screen.C (drawFromTo): change sine fullRebreak always return

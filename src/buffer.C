@@ -463,6 +463,13 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 		// Do the insetert.
 		insertErtContents(par, pos);
 #endif
+		// reset the font as we start a new layout and if the font is
+		// not ALL_INHERIT,document_language then it will be set to the
+		// right values after this tag (Jug 20020420)
+		font = LyXFont(LyXFont::ALL_INHERIT, params.language);
+		if (file_format < 216 && params.language->lang() == "hebrew")
+			font.setLanguage(default_language);
+
 		lex.eatLine();
 		string layoutname = lex.getString();
 
@@ -471,7 +478,12 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 		if (layoutname.empty()) {
 			layoutname = tclass.defaultLayoutName();
 		}
-
+#ifndef NO_COMPABILITY
+		if (compare_no_case(layoutname, "latex") == 0) {
+			ert_comp.active = true;
+			ert_comp.font = font;
+		}
+#endif
 		bool hasLayout = tclass.hasLayout(layoutname);
 		if (!hasLayout) {
 			lyxerr << "Layout '" << layoutname << "' does not"
@@ -482,19 +494,6 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 			layoutname = tclass.defaultLayoutName();
 		}
 
-		// reset the font as we start a new layout and if the font is
-		// not ALL_INHERIT,document_language then it will be set to the
-		// right values after this tag (Jug 20020420)
-		font = LyXFont(LyXFont::ALL_INHERIT, params.language);
-		if (file_format < 216 && params.language->lang() == "hebrew")
-			font.setLanguage(default_language);
-
-#ifndef NO_COMPABILITY
-		if (compare_no_case(layoutname, "latex") == 0) {
-			ert_comp.active = true;
-			ert_comp.font = font;
-		}
-#endif
 #ifdef USE_CAPTION
 		// The is the compability reading of layout caption.
 		// It can be removed in LyX version 1.3.0. (Lgb)
