@@ -9,6 +9,11 @@
 #include "math_iter.h"
 #include "math_inset.h"
 
+#include "support/LOstream.h"
+
+using std::ostream;
+using std::endl;
+
 // Is this still needed? (Lgb)
 static inline
 void * my_memcpy(void * ps_in, void const * pt_in, size_t n)

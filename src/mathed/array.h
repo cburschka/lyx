@@ -112,7 +112,7 @@ public:
 	/// Make sure we can access at least \a needed elements
 	void need_size(int needed);
 	///
-	void dump(ostream &) const;
+	void dump(std::ostream &) const;
 private:
 	/// Buffer
 	buffer_type bf_;
