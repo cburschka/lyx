@@ -109,7 +109,7 @@ AC_DEFUN([QT_CHECK_COMPILE],
 		SAVE_CXXFLAGS=$CXXFLAGS
 		CXXFLAGS="$CXXFLAGS $QT_INCLUDES $QT_LDFLAGS" 
 
-		for libname in -lqt3 -lqt2 -lqt -lqt-mt;
+		for libname in -lqt3 -lqt2 -lqt -lqt-mt -lqt-mt3;
 		do
 			QT_TRY_LINK($libname)
 			if test -n "$qt_cv_libname"; then
