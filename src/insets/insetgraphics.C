@@ -733,7 +733,9 @@ string const InsetGraphics::prepareFile(Buffer const *buf) const
 		// No conversion is needed. LaTeX can handle the graphic file as is.
 		// This is true even if the orig_file is compressed. We have to return
 		// the orig_file_with_path, maybe it is a zipped one
-		return lyxrc.use_tempdir ? temp_file : orig_file_with_path;
+		if (lyxrc.use_tempdir)
+			return RemoveExtension(temp_file);
+		return RemoveExtension(orig_file_with_path);
 	}
 
 	string const outfile_base = RemoveExtension(temp_file);
