@@ -276,7 +276,7 @@ void LyXAction::init()
 #endif
 		{ LFUN_QUIT, "lyx-quit", N_("Exit"), NoBuffer },
 		{ LFUN_INSET_MARGINAL, "marginalnote-insert",
-		  N_("Insert Marginalnote"), Noop },
+		  N_("Insert margin note"), Noop },
 		{ LFUN_MARK_OFF, "mark-off", "", ReadOnly },
 		{ LFUN_MARK_ON, "mark-on", "", ReadOnly },
 		{ LFUN_SETMARK, "mark-toggle", "", ReadOnly },
