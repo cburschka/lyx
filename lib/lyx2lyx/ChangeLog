@@ -1,3 +1,10 @@
+2004-10-10  José Matos  <jamatos@lyx.org>
+
+	* .cvsignore: add entries related with profiling lyx2lyx.
+	* lyx2lyx (main): place all program inside this function, to allow
+	it to be called from profiling.
+	* profiling.py: new file to profile lyx2lyx.
+
 2004-10-09  José Matos  <jamatos@lyx.org>
 
 	* LyX.py: add support for format 237, fix variables type,

@@ -73,8 +73,8 @@ def parse_options(argv):
     return end_format, input, output, error, debug
 
 
-if __name__ == "__main__":
-    end_format, input, output, error, debug = parse_options(sys.argv)
+def main(argv):
+    end_format, input, output, error, debug = parse_options(argv)
     file = LyX.FileInfo(end_format, input, output, error, debug)
 
     mode, convertion_chain = file.chain()
@@ -85,3 +85,6 @@ if __name__ == "__main__":
         convert(file)
 
     file.write()
+
+if __name__ == "__main__":
+    main(sys.argv)

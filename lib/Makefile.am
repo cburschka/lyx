@@ -846,7 +846,8 @@ dist_lyx2lyx_DATA = \
 	lyx2lyx/lyx_1_1_6fix3.py \
 	lyx2lyx/lyx_1_2.py \
 	lyx2lyx/lyx_1_3.py \
-	lyx2lyx/lyx_1_4.py
+	lyx2lyx/lyx_1_4.py \
+	lyx2lyx/profiling.py
 
 scriptsdir = $(pkgdatadir)/scripts
 dist_scripts_SCRIPTS = \
