@@ -60,7 +60,7 @@ class_fun(C & c, R(C::*f)(A))
 
 
 template <class C, class A> void_class_fun_t<C, A>
-class_fun(C & c, void(C::*f)(A))
+void_class_fun(C & c, void(C::*f)(A))
 {
 	return void_class_fun_t<C, A>(c, f);
 }

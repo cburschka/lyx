@@ -13,7 +13,7 @@
 #include "ControlDialog.h"
 #include "ButtonControllerBase.h"
 #include "ControlConnections.h"
-#include "LyXView.h"
+#include "frontends/LyXView.h"
 #include "BufferView.h"
 #include "ViewBase.h"
 #include "debug.h"
@@ -27,49 +27,49 @@ ControlDialog<Base>::ControlDialog(LyXView & lv, Dialogs & d)
 template <class Base>
 void ControlDialog<Base>::show()
 {
-	if (isBufferDependent() && !lv_.view()->available())
+	if (Base::isBufferDependent() && !Base::lv_.view()->available())
 		return;
 
-	connect();
+	Base::connect();
 
 	setParams();
-	if (emergency_exit_) {
+	if (Base::emergency_exit_) {
 		hide();
 		return;
 	}
 
 	if (!dialog_built_) {
-		view().build();
+		Base::view().build();
 		dialog_built_ = true;
 	}
 
-	bc().readOnly(isReadonly());
-	view().show();
+	Base::bc().readOnly(Base::isReadonly());
+	Base::view().show();
 }
 
 template <class Base>
 void ControlDialog<Base>::update()
 {
-	if (isBufferDependent() && !lv_.view()->available())
+	if (Base::isBufferDependent() && !Base::lv_.view()->available())
 		return;
 
 	setParams();
-	if (emergency_exit_) {
+	if (Base::emergency_exit_) {
 		hide();
 		return;
 	}
 
-	bc().readOnly(isReadonly());
-	view().update();
+	Base::bc().readOnly(Base::isReadonly());
+	Base::view().update();
 }
 
 template <class Base>
 void ControlDialog<Base>::hide()
 {
-	emergency_exit_ = false;
+	Base::emergency_exit_ = false;
 	clearParams();
 
-	disconnect();
-	view().hide();
+	Base::disconnect();
+	Base::view().hide();
 }
 

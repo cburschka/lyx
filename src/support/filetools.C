@@ -16,21 +16,10 @@
 
 #include <config.h>
 
-#include <cctype>
-
-#include <utility>
-#include <fstream>
-
-#include "Lsstream.h"
-
 #ifdef __GNUG__
 #pragma implementation "filetools.h"
 #endif
 
-#include <cstdlib>
-#include <cstdio>
-#include <fcntl.h>
-#include <cerrno>
 #include "debug.h"
 #include "support/lstrings.h"
 #include "support/systemcall.h"
@@ -42,6 +31,18 @@
 #include "gettext.h"
 #include "lyxlib.h"
 #include "os.h"
+
+#include "Lsstream.h"
+
+#include <cctype>
+#include <cstdlib>
+#include <cstdio>
+#include <fcntl.h>
+#include <cerrno>
+
+#include <utility>
+#include <fstream>
+
 
 // Which part of this is still necessary? (JMarc).
 #if HAVE_DIRENT_H
@@ -59,6 +60,14 @@
 # if HAVE_NDIR_H
 #  include <ndir.h>
 # endif
+#endif
+
+#ifndef CXX_GLOBAL_CSTD
+using std::fgetc;
+using std::isalpha;
+using std::isalnum;
+using std::pclose;
+using std::popen;
 #endif
 
 using std::make_pair;

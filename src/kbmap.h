@@ -61,9 +61,9 @@ public:
 	/// return the ISO value of a keysym
 	static char getiso(unsigned int i);
 
-private:
 	typedef std::pair<key_modifier::state, key_modifier::state> modifier_pair;
- 
+
+private:
 	///
 	struct kb_key {
 		/// Keysym

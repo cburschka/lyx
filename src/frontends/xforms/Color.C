@@ -17,6 +17,10 @@
 #include <cmath> // floor
 #include FORMS_H_LOCATION
 
+#ifndef CXX_GLOBAL_CSTD
+using std::floor;
+#endif
+
 using std::max;
 using std::min;
 

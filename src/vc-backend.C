@@ -21,6 +21,11 @@
 
 #include <fstream>
 
+#ifndef CXX_GLOBAL_CSTD
+using std::asctime;
+using std::gmtime;
+#endif
+
 using std::endl;
 using std::ifstream;
 using std::getline;

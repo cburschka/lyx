@@ -62,8 +62,9 @@ public:
 	/// Erase the layout list
 	void clearLayoutList();
 
-private:
+	/// Compaq cxx 6.5 requires this to be public
 	struct Pimpl;
+private:
 	///
 	friend struct Toolbar::Pimpl;
 	///

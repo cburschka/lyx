@@ -17,6 +17,10 @@
 #include "encoding.h"
 #include "debug.h"
 
+#ifndef CXX_GLOBAL_CSTD
+using std::strtol;
+#endif
+
 using std::endl;
 
 Encodings encodings;

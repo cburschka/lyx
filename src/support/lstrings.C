@@ -31,9 +31,11 @@ using std::transform;
 using std::vector;
 
 #ifndef CXX_GLOBAL_CSTD
+using std::atof;
+using std::isdigit;
+using std::strlen;
 using std::tolower;
 using std::toupper;
-using std::strlen;
 #endif
 
 

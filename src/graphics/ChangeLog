@@ -1,3 +1,12 @@
+2002-06-07  Angus Leeming  <leeming@lyx.org>
+
+	Fixes needed to compile with Compaq cxx 6.5.
+	* GraphicsConverter.h: forward declare class ConvProcess.
+
+	* GraphicsImageXPM.C: 
+	all c-library variables have been moved into namespace std.
+	Wrap using std::xyz declarations inside a #ifndef CXX_GLOBAL_CSTD block.
+
 2002-06-06  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* GraphicsImageXPM.C (rotate): rotate in the same sense as xdvi!

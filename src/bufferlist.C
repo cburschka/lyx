@@ -294,7 +294,7 @@ void BufferList::updateIncludedTeXfiles(string const & mastertmpdir)
 void BufferList::emergencyWriteAll()
 {
 	for_each(bstore.begin(), bstore.end(),
-		 lyx::class_fun(*this, &BufferList::emergencyWrite));
+		 lyx::void_class_fun(*this, &BufferList::emergencyWrite));
 }
 
 

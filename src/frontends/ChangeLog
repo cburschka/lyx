@@ -1,3 +1,11 @@
+2002-06-07  Angus Leeming  <leeming@lyx.org>
+
+	Fixes needed to compile with Compaq cxx 6.5.
+	* Alert.C: all c-library variables have been moved into namespace std.
+	Wrap using std::xyz declarations inside a #ifndef CXX_GLOBAL_CSTD block.
+
+	* Toolbar.h (Pimpl): type definition made public.
+
 2002-05-31  John Levon  <moz@compsoc.man.ac.uk>
 
 	* Alert.h: better variable name

@@ -30,6 +30,10 @@
 //#include <cstddef>                 // for size_t
 //#include <utility>                 // for std::pair
 
+#ifndef CXX_GLOBAL_CSTD
+using std::free;
+#endif
+
 namespace lyx
 {
 //  checked_delete() and checked_array_delete()  -----------------------------//
@@ -41,7 +45,7 @@ namespace lyx
     {
 	BOOST_STATIC_ASSERT( sizeof(T) != 0 ); // assert type complete at point
 					       // of instantiation
-	free(x);
+	::free(x);
     }
 
 } // namespace boost

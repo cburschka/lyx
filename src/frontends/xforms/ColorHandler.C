@@ -24,6 +24,10 @@
 
 #include <cmath>
 
+#ifndef CXX_GLOBAL_CSTD
+using std::pow;
+#endif
+
 using std::endl;
 
 

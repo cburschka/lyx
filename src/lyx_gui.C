@@ -42,6 +42,10 @@
 #include <cstdlib>
 #include <fcntl.h>
 
+#ifndef CXX_GLOBAL_CSTD
+using std::exit;
+#endif
+
 using std::endl;
 
 extern LyXServer * lyxserver;

@@ -19,6 +19,7 @@
 #include "support/lstrings.h"
 #include "support/textutils.h"
 
+using std::abs;
 using std::istream;
 using std::getline;
 using std::endl;

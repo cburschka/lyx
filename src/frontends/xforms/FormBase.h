@@ -134,8 +134,8 @@ FormCB<Controller, Base>::FormCB(Controller & c, string const & t,
 template <class Controller, class Base>
 Controller & FormCB<Controller, Base>::controller() const
 {
-	return static_cast<Controller &>(controller_);
-	//return dynamic_cast<Controller &>(controller_);
+	return static_cast<Controller &>(ViewBase::controller_);
+	//return dynamic_cast<Controller &>(ViewBase::controller_);
 }
 
 

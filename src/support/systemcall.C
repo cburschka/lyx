@@ -20,6 +20,9 @@
 
 #include <cstdlib>
 
+#ifndef CXX_GLOBAL_CSTD
+using std::system;
+#endif
 
 // Reuse of instance
 int Systemcall::startscript(Starttype how, string const & what)

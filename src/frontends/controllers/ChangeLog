@@ -1,3 +1,11 @@
+2002-06-07  Angus Leeming  <leeming@lyx.org>
+
+	Fixes needed to compile with Compaq cxx 6.5.
+	* ControlDialog.tmpl: I have had to prefix base class methods with
+	Base:: Wierd!
+
+	* ControlInset.tmpl: #include a couple of headers.
+
 2002-05-29  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* switch from SigC signals to boost::signals

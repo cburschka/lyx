@@ -1,3 +1,40 @@
+2002-06-07  Angus Leeming  <leeming@lyx.org>
+
+	Fixes needed to compile with Compaq cxx 6.5.
+	* BufferView_pimpl.C:
+	* DepTable.C:
+	* buffer.C:
+	* converter.C:
+	* encoding.C:
+	* lyx_gui.C:
+	* lyx_main.C:
+	* lyxtextclasslist.C:
+	* minibuffer.C:
+	* sp_spell.C:
+	* tabular_funcs.C:
+	* vc-backend.C:
+	all c-library variables have been moved into namespace std. Wrap
+	using std::xyz declarations inside a #ifndef CXX_GLOBAL_CSTD block.
+
+	* lyxlength.C:
+	* tabular-old.C:
+	* tabular.C:
+	Add a using std::abs declaration.
+	
+	* kbmap.h (modifier_pair):
+	* paragraph.h (InsetTable, InsetList):
+	* lyxfont.h (FontBits):
+	type definition made public.
+
+	* bufferlist.C (emergencyWriteAll): the compiler complains that
+	there is more than one possible lyx::class_fun template to choose from.
+	I re-named the void specialisation as lyx::void_class_fun.
+
+	* lyxfont.C (FontBits' operator==, operator!=): taken out of class.
+
+	* tabular_funcs.C: lstrings.h must come before tabular_funcs.h or
+	the compiler is is unable to find tostr in write_attribute.
+
 2002-06-06  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* buffer.C (sgmlError): hide #warning

@@ -51,7 +51,9 @@
 using std::endl;
 
 #ifndef CXX_GLOBAL_CSTD
+using std::exit;
 using std::signal;
+using std::system;
 #endif
 
 extern void LoadLyXFile(string const &);

@@ -33,6 +33,7 @@
 
 #include <boost/bind.hpp>
 
+using std::abs;
 using std::endl;
 
 //extern void AutoSave(BufferView *);

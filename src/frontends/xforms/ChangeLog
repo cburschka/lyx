@@ -1,3 +1,17 @@
+2002-06-07  Angus Leeming  <leeming@lyx.org>
+
+	Fixes needed to compile with Compaq cxx 6.5.
+	* ColorHandler.C:
+	* DropDown.C:
+	* FormThesaurus.C:
+	all c-library variables have been moved into namespace std.
+	Wrap using std::xyz declarations inside a #ifndef CXX_GLOBAL_CSTD block.
+
+	* XFormsView.C: add a using std::abs directive.
+
+	* FormBase.h (FormCB::controller): I have had to prefix base class
+	methods with Base:: Wierd!
+
 2002-06-04  John Levon  <moz@compsoc.man.ac.uk>
 
 	* xformsGImage.h: an xforms build fix

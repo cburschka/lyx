@@ -18,8 +18,11 @@
 
 #include "tabular_funcs.h"
 
-#include "support/lstrings.h"
 #include "support/LIstream.h"
+
+#ifndef CXX_GLOBAL_CSTD
+using std::strlen;
+#endif
 
 using std::istream;
 using std::getline;

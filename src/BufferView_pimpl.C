@@ -76,6 +76,14 @@
 
 extern string current_layout;
 
+#ifndef CXX_GLOBAL_CSTD
+using std::tm;
+using std::localtime;
+using std::time;
+using std::setlocale;
+using std::strftime;
+#endif
+
 using std::vector;
 using std::find_if;
 using std::find;

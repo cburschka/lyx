@@ -17,6 +17,10 @@
 
 #include <cerrno>
 
+#ifndef CXX_GLOBAL_CSTD
+using std::strerror;
+#endif
+
 using std::endl;
 using std::pair;
 using std::make_pair;

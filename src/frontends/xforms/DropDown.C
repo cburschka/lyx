@@ -19,6 +19,10 @@
 #include <cctype>
 
 
+#ifndef CXX_GLOBAL_CSTD
+using std::isprint;
+#endif
+
 using std::vector;
 
 

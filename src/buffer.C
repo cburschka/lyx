@@ -110,6 +110,9 @@
 #include <locale>
 #endif
 
+#ifndef CXX_GLOBAL_CSTD
+using std::pow;
+#endif
 
 using std::ostream;
 using std::ofstream;

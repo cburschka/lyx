@@ -138,23 +138,18 @@ LyXFont::FontBits LyXFont::ignore = {
 	IGNORE };
 
 
-bool LyXFont::FontBits::operator==(LyXFont::FontBits const & fb1) const
+bool operator==(LyXFont::FontBits const & lhs,
+		LyXFont::FontBits const & rhs)
 {
-	return fb1.family == family &&
-		fb1.series == series &&
-		fb1.shape == shape &&
-		fb1.size == size &&
-		fb1.color == color &&
-		fb1.emph == emph &&
-		fb1.underbar == underbar &&
-		fb1.noun == noun &&
-		fb1.number == number;
-}
-
-
-bool LyXFont::FontBits::operator!=(LyXFont::FontBits const & fb1) const
-{
-	return !(fb1 == *this);
+	return lhs.family == rhs.family &&
+		lhs.series == rhs.series &&
+		lhs.shape == rhs.shape &&
+		lhs.size == rhs.size &&
+		lhs.color == rhs.color &&
+		lhs.emph == rhs.emph &&
+		lhs.underbar == rhs.underbar &&
+		lhs.noun == rhs.noun &&
+		lhs.number == rhs.number;
 }
 
 

@@ -32,6 +32,10 @@
 #include <fstream>
 #include <ctime>
 
+#ifndef CXX_GLOBAL_CSTD
+using std::time;
+#endif
+
 using std::make_pair;
 using std::ofstream;
 using std::ifstream;
