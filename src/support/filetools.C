@@ -558,7 +558,6 @@ string const MakeAbsPath(string const & RelPath, string const & BasePath)
 
 	// Copies given paths
 	string TempRel(os::slashify_path(RelPath));
-	lyxerr << "TempRel=" << TempRel <<endl;
 	// Since TempRel is NOT absolute, we can safely replace "//" with "/"
 	TempRel = subst(TempRel, "//", "/");
 
