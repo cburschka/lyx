@@ -90,7 +90,7 @@ void LyXText::init(BufferView * bview, bool reinit)
 	current_font = getFont(bview->buffer(), pit, 0);
 
 	for (; pit != end; ++pit) {
-		insertParagraph(&*pit, rowlist_.end());
+		insertParagraph(pit, rowlist_.end());
 	}
 	setCursorIntern(rowlist_.begin()->par(), 0);
 	selection.cursor = cursor;
@@ -589,7 +589,7 @@ void LyXText::setFont(LyXFont const & font, bool toggleall)
 	{
 		if (cursor.pos() < cursor.par()->size()) {
 			// an open footnote should behave like a closed one
-			setCharFont(&*cursor.par(), cursor.pos(),
+			setCharFont(cursor.par(), cursor.pos(),
 				    font, toggleall);
 			cursor.pos(cursor.pos() + 1);
 		} else {
@@ -705,7 +705,7 @@ void LyXText::redoParagraphs(LyXCursor const & cur,
 	// That should also make the code a bit easier to read. (Lgb)
 	do {
 		if (tmppit != ownerParagraphs().end()) {
-			insertParagraph(&*tmppit, tmprit);
+			insertParagraph(tmppit, tmprit);
 			while (tmprit != rows().end()
 			       && tmprit->par() == tmppit) {
 				++tmprit;
@@ -1271,7 +1271,7 @@ void LyXText::updateCounters()
 			pit->params().depth(maxdepth);
 
 		// setCounter can potentially change the labelString.
-		setCounter(bv()->buffer(), &*pit);
+		setCounter(bv()->buffer(), pit);
 
 		string const & newLabel = pit->params().labelString();
 
@@ -1516,7 +1516,7 @@ void LyXText::insertStringAsLines(string const & str)
 	Paragraph * par = &*pit;
 	bv()->buffer()->insertStringAsLines(par, pos, current_font, str);
 
-	redoParagraphs(cursor, &*endpit);
+	redoParagraphs(cursor, endpit);
 	setCursor(cursor.par(), cursor.pos());
 	selection.cursor = cursor;
 	setCursor(pit, pos);
@@ -1633,7 +1633,7 @@ bool LyXText::updateInset(Inset * inset)
 	// first check the current paragraph
 	int pos = cursor.par()->getPositionOfInset(inset);
 	if (pos != -1) {
-		checkParagraph(&*cursor.par(), pos);
+		checkParagraph(cursor.par(), pos);
 		return true;
 	}
 
@@ -1645,7 +1645,7 @@ bool LyXText::updateInset(Inset * inset)
 	do {
 		pos = par->getPositionOfInset(inset);
 		if (pos != -1) {
-			checkParagraph(&*par, pos);
+			checkParagraph(par, pos);
 			return true;
 		}
 		++par;
@@ -2032,7 +2032,7 @@ void LyXText::setCursorFromCoordinates(LyXCursor & cur, int x, int y)
 	RowList::iterator row = getRowNearY(y);
 	bool bound = false;
 	pos_type const column = getColumnNearX(row, x, bound);
-	cur.par(&*row->par());
+	cur.par(row->par());
 	cur.pos(row->pos() + column);
 	cur.x(x);
 	cur.y(y + row->baseline());

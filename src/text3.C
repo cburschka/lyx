@@ -216,7 +216,7 @@ void LyXText::gotoInset(vector<Inset::Code> const & codes,
 	if (!gotoNextInset(codes, contents)) {
 		if (cursor.pos() || cursor.par() != ownerParagraphs().begin()) {
 			LyXCursor tmp = cursor;
-			cursor.par(&*ownerParagraphs().begin());
+			cursor.par(ownerParagraphs().begin());
 			cursor.pos(0);
 			if (!gotoNextInset(codes, contents)) {
 				cursor = tmp;
@@ -282,7 +282,7 @@ void LyXText::cursorPrevious()
 	bv()->screen().draw(bv()->text, bv(), new_y < 0 ? 0 : new_y);
 	if (cursor.row() != rows().begin()) {
 		LyXCursor cur;
-		setCursor(cur, &*boost::prior(cursor.row())->par(),
+		setCursor(cur, boost::prior(cursor.row())->par(),
 			  boost::prior(cursor.row())->pos(), false);
 		if (cur.y() > top_y()) {
 			cursorUp(true);
@@ -343,7 +343,7 @@ void LyXText::cursorNext()
 	bv()->screen().draw(bv()->text, bv(), new_y);
 	if (boost::next(cursor.row()) != rows().end()) {
 		LyXCursor cur;
-		setCursor(cur, &*boost::next(cursor.row())->par(),
+		setCursor(cur, boost::next(cursor.row())->par(),
 			  boost::next(cursor.row())->pos(), false);
 		if (cur.y() < top_y() + bv()->workHeight()) {
 			cursorDown(true);
@@ -419,7 +419,7 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 				setUndo(bv, Undo::EDIT, &*tmp, &*boost::next(tmp));
 				tmp->params().startOfAppendix(false);
 				int tmpy;
-				setHeightOfRow(getRow(&*tmp, 0, tmpy));
+				setHeightOfRow(getRow(tmp, 0, tmpy));
 				break;
 			}
 		}
@@ -1279,7 +1279,7 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 			Inset * tli = bv->theLockingInset();
 			LyXCursor cursor = bv->text->cursor;
 			LyXFont font = bv->text->getFont(bv->buffer(),
-							 &*cursor.par(), cursor.pos());
+							 cursor.par(), cursor.pos());
 			int width = tli->width(bv, font);
 			int inset_x = font.isVisibleRightToLeft()
 				? cursor.ix() - width : cursor.ix();

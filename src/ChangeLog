@@ -1,5 +1,25 @@
 2003-04-13  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
+	* text.C (transformChar): use temp var for getChar
+	(computeBidiTables): use temp var for row->par()
+	(fill): move temp vars for row->par() and pit->layout() earlier in
+	the function.
+	(labelFill): use temp var for row->par()
+	(setHeightOfRow): do not allow rit to be RowList::end, get rid of
+	asc and desc, realize that pit never changes and that firstpit is
+	just a duplicate and not needed. Exchange rit->par() with pit in a
+	lot of places.
+	(breakAgain): use a temp var for boost::next(rit)
+	(breakAgainOneRow): ditto
+	(breakParagraph): use a temp var for rows().begin()
+	(prepareToPrint): move nlh into minimal scope, use temp var for rit->par()
+	(cursorRightOneWord): use temp var for cursor.par() and
+	cursor.pos(), remove usage of tmpcursor.
+	(cursorLeftOneWord): use temp var for cursor.par() and
+	cursor.pos() only set cur at end of function.
+
+2003-04-13  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
 	* text.C, text2.C: exchange all usage of Paragraph::next with
 	boost::next(ParagraphList::iterator)
 
