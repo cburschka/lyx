@@ -43,7 +43,6 @@
 \bind "M-m n"			"math-number"
 \bind "M-m S-N"			"math-nonumber"
 \bind "M-m 8"			"math-insert \infty"
-\bind "M-m v"			"accent-vector"
 
 \bind "M-m o 1"    "math-macro-arg 1"
 \bind "M-m o 2"    "math-macro-arg 2"
@@ -74,16 +73,25 @@
 \bind "M-m a h c"   "math-halign center"
 \bind "M-m a h r"   "math-halign right"
 
+# Decoration accents
+
 # The accent-circumflex is 'h' for 'hat', which is what most math
 # folks call it verbally.
 
-\bind "M-m b"			"math-insert \overline"
-\bind "M-m h"			"accent-circumflex"
-\bind "M-m ~S-period"		"accent-dot"
-\bind "M-m ~S-asciitilde"	"accent-tilde"
-\bind "M-m ~S-apostrophe"	"math-insert \prime"
-\bind "M-m ~S-quotedbl" 	"accent-umlaut"
+\bind "M-m ~S-quotedbl"		"math-insert \ddot"
+\bind "M-m h"				"math-insert \hat"
+\bind "M-m ~S-backslash"	"math-insert \grave"
+\bind "M-m ~S-slash"		"math-insert \acute"
+\bind "M-m ~S-ampersand"	"math-insert \tilde"
+\bind "M-m ~S-minus"		"math-insert \bar"
+\bind "M-m ~S-period"		"math-insert \dot"
+\bind "M-m S-V"				"math-insert \check"
+\bind "M-m S-U"				"math-insert \breve"
+\bind "M-m v"				"math-insert \vec"
+\bind "M-m ~S-underscore"	"math-insert \underbar"
 
+\bind "M-m b"			"math-insert \overline"
+\bind "M-m ~S-apostrophe"	"math-insert \prime"
 
 # These do pairs of: () {} [] <> ||
 
@@ -153,15 +161,4 @@
 \bind "M-m g S-X"    "math-insert \Xi"
 \bind "M-m g S-Y"    "math-insert \Varphi"
 
-
-\bind "M-m S-Aring"     "math-insert Å"
-\bind "M-m aring"       "math-insert å"
-\bind "M-m S-Oslash"    "math-insert Ø"
-\bind "M-m oslash"      "math-insert ø"
-\bind "M-m S-Adiaeresis"    "math-insert Ä"
-\bind "M-m adiaeresis"  "math-insert ä"
-\bind "M-m S-Odiaeresis"    "math-insert Ö"
-\bind "M-m odiaeresis"  "math-insert ö"
-\bind "M-m S-Udiaeresis"    "math-insert Ü"
-\bind "M-m udiaeresis"  "math-insert ü"
 
