@@ -17,7 +17,14 @@ struct Context {
 	// Output a \end_layout if needed
 	void check_end_layout(std::ostream & os);
 
-	// dump content on standard error (for debugging purpose)
+	// Output a \begin_deeper if needed
+	void check_deeper(ostream & os);
+
+	// Output a \end_deeper if needed
+	void check_end_deeper(ostream & os);
+	
+	// dump content on stream (for debugging purpose), with
+	// description \c desc.
 	void dump(std::ostream &, std::string const & desc = "context") const;
 
 	// Do we need to output some \begin_layout command before the

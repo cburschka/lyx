@@ -24,39 +24,14 @@ Context::Context(bool need_layout_,
 }
 
 
-void Context::check_end_layout(ostream & os) 
-{
-	if (need_end_layout) {
-		os << "\n\\end_layout\n";
-		need_end_layout = false;
-	}
-	if (need_end_deeper) {
-		os << "\n\\end_deeper\n";
-		need_end_deeper = false;
-	}
-}
-
-
 void Context::check_layout(ostream & os)
 {
 	if (need_layout) {
-		if (parent_layout->isEnvironment()) {
-			if (need_end_deeper) {
-				// no need to have \end_deeper \begin_deeper
-// FIXME: This does not work because \par already calls check_end_layout
-				need_end_deeper = false;
-				check_end_layout(os);
-			} else {
-				check_end_layout(os);
-				os << "\n\\begin_deeper\n";
-				need_end_deeper = true;
-			}
-		} else 
-			check_end_layout(os);
+		check_end_layout(os);
 		
 		os << "\n\\begin_layout " << layout->name() << "\n\n";
-		need_end_layout = true;
 		need_layout=false;
+		need_end_layout = true;
 		if (!extra_stuff.empty()) {
 			os << extra_stuff;
 			extra_stuff.erase();
@@ -65,9 +40,43 @@ void Context::check_layout(ostream & os)
 }
 
 
+void Context::check_end_layout(ostream & os) 
+{
+	if (need_end_layout) {
+		os << "\n\\end_layout\n";
+		need_end_layout = false;
+	}
+}
+
+
+void Context::check_deeper(ostream & os)
+{
+	if (parent_layout->isEnvironment()) {
+		if (need_end_deeper) {
+				// no need to have \end_deeper \begin_deeper
+// FIXME: This does not work because \par already calls check_end_layout
+			need_end_deeper = false;
+		} else {
+			os << "\n\\begin_deeper \n";
+			need_end_deeper = true;
+		}
+	} else
+		check_end_deeper(os);
+}
+
+
+void Context::check_end_deeper(ostream & os) 
+{
+	if (need_end_deeper) {
+		os << "\n\\end_deeper \n";
+		need_end_deeper = false;
+	}
+}
+
+
 void Context::dump(ostream & os, string const & desc) const
 {
-	os << desc <<" [";
+	os << "\n" << desc <<" [";
 	if (need_layout)
 		os << "need_layout ";
 	if (need_end_layout)

@@ -160,10 +160,10 @@ void output_command_layout(ostream & os, Parser & p, bool outer,
 			   Context & parent_context,
 			   LyXLayout_ptr newlayout)
 {
-//	parent_context.dump(os, "#parent_context before output_command_layout");
 	parent_context.check_end_layout(os);
 	Context context(true, parent_context.textclass, newlayout,
 			parent_context.layout);
+	context.check_deeper(os);
 	context.check_layout(os);
 	if (context.layout->optionalargs > 0) {
 		string s; 
@@ -176,16 +176,14 @@ void output_command_layout(ostream & os, Parser & p, bool outer,
 		}
 	}
 	parse_text_snippet(p, os, FLAG_ITEM, outer, context);
-	context.check_end_layout(os);	
-//	context.dump(os, "#context after output_command_layout");
-//	parent_context.dump(os, "#parent_context after output_command_layout");
+	context.check_end_layout(os);
+	context.check_end_deeper(os);
 }
 
 
 void parse_environment(Parser & p, ostream & os, bool outer,
 		       Context & parent_context)
 {
-//	parent_context.dump(os, "#parent_context before parse_environment");
 	LyXLayout_ptr newlayout;
 	string const name = p.getArg('{', '}');
 	const bool is_starred = suffixIs(name, '*');
@@ -221,7 +219,6 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 		Context context(true, parent_context.textclass, newlayout,
 				parent_context.layout);
 		parent_context.check_end_layout(os);
-//  		context.dump(os, "#context in parse_environment");
 		switch (context.layout->latextype) {
 		case  LATEX_LIST_ENVIRONMENT:
 			context.extra_stuff = "\\labelwidthstring "
@@ -233,10 +230,10 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 		default:
 			break;
 		}
-		//context.check_layout(os);
+		context.check_deeper(os);
 		parse_text(p, os, FLAG_END, outer, context);
-//  		context.dump(os, "#context after parse_environment");
 		context.check_end_layout(os);
+		context.check_end_deeper(os);
 	} else {
 		parent_context.check_layout(os);
 		handle_ert(os, "\\begin{" + name + "}", parent_context);
@@ -342,10 +339,11 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 
 		else if (t.cat() == catNewline) {
 			if (p.next_token().cat() == catNewline) {
+				// this should have been be done by
+				// the parser already
+				cerr << "what are we doing here?" << endl;
 				p.get_token();
 				context.need_layout = true;
-				// this should be done by the parser already
-				cerr << "what are we doing here?" << endl;
 			} else {
 				os << " "; // note the space
 			}
@@ -427,7 +425,6 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 					cerr << "\\end{" + name + "} does not match \\begin{"
 						+ active_environment() + "}\n";
 				active_environments.pop_back();
-				context.check_end_layout(os);
 				return;
 			}
 			p.error("found 'end' unexpectedly");
@@ -459,9 +456,6 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			p.skip_spaces();
 			context.check_end_layout(os);
 			context.need_layout = true;
-//			if (p.next_token().cs() != "\\begin")
-//				handle_par(os);
-			//cerr << "next token: '" << p.next_token().cs() << "'\n";
 		}
 
 		// Must attempt to parse "Section*" before "Section".

@@ -137,7 +137,7 @@ void handle_package(string const & name, string const & options)
 
 void end_preamble(ostream & os, LyXTextClass const & /*textclass*/)
 {
-	os << "# tex2lyx 0.1.0 created this file\n"
+	os << "#LyX file created by  tex2lyx 0.1.2 \n"
 	   << "\\lyxformat 225\n"
 	   << "\\textclass " << h_textclass << "\n"
 	   << "\\begin_preamble\n" << h_preamble.str() << "\n\\end_preamble\n";
@@ -166,7 +166,7 @@ void end_preamble(ostream & os, LyXTextClass const & /*textclass*/)
 	   << "\\papersides " << h_papersides << "\n"
 	   << "\\paperpagestyle " << h_paperpagestyle << "\n"
 	   << "\\tracking_changes " << h_tracking_changes << "\n"
-	   << "\\end_header";
+	   << "\\end_header\n";
 }
 
 } // anonymous namespace

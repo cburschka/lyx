@@ -1,3 +1,15 @@
+2003-08-05  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* text.C: some tweaks to make nesting work. What still does not
+	work is nesting a standard paragraph in a list.
+
+	* test-structure.tex: update a bit
+
+	* context.C (check_deeper, check_end_deeper): new methods to
+	handle the *_deeper stuff
+
+	* preamble.C (end_preamble): small tweaks
+
 2003-08-03  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* text.C: update to use Context struct, and more notably:
