@@ -525,8 +525,11 @@ void LyXText::rowBreakPoint(ParagraphList::iterator pit, Row & row) const
 				}
 			}
 			// exit on last registered breakpoint:
+#if 0
+			// hack removed:
 			if (i + 1 < end)
-				break;
+#endif
+			break;
 		}
 
 		InsetOld * in = pit->getInset(i);
@@ -540,10 +543,14 @@ void LyXText::rowBreakPoint(ParagraphList::iterator pit, Row & row) const
 		}
 	}
 
+#if 0
+	// hack removed (connected with the #if 0 above):
 	if (point == end && i != end && x >= width) {
 		// didn't find one, break at the point we reached the edge
 		point = i + 1;
-	} else if (i == end && x < width) {
+	} else
+#endif
+	if (i == end && x < width) {
 		// maybe found one, but the par is short enough.
 		point = end;
 	}
