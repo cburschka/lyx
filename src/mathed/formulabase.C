@@ -730,6 +730,7 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 
 	case LFUN_INSET_TOGGLE:
 		mathcursor->insetToggle();
+		updateLocal(bv, true);
 		break;
 
 	default:

@@ -11,6 +11,7 @@
 #include "math_support.h"
 #include "LaTeXFeatures.h"
 #include "textpainter.h"
+#include "frontends/Painter.h"
 
 
 
@@ -18,7 +19,7 @@
 MathFontInset::MathFontInset(string const & name)
 	: MathNestInset(1), name_(name)
 {
-	lock(true);
+	//lock(true);
 }
 
 
@@ -32,9 +33,9 @@ void MathFontInset::metrics(MathMetricsInfo & mi) const
 {
 	MathFontSetChanger dummy(mi.base, name_.c_str());
 	xcell(0).metrics(mi);
-	width_   = xcell(0).width();
+	width_   = xcell(0).width() + 6;
 	ascent_  = xcell(0).ascent();
-	descent_ = xcell(0).descent();
+	descent_ = xcell(0).descent() + 3;
 }
 
 
@@ -43,7 +44,14 @@ void MathFontInset::draw(MathPainterInfo & pi, int x, int y) const
 	//lyxerr << "MathFontInset::draw\n";
 	MathNestInset::draw(pi, x, y);
 	MathFontSetChanger dummy(pi.base, name_.c_str());
-	xcell(0).draw(pi, x, y);
+	xcell(0).draw(pi, x + 3, y);
+	int b = x + 1;
+	int t = x + width() - 1;
+	int d = y + descent();
+	pi.pain.line(b, d - 3, b, d, LColor::mathframe); 
+	pi.pain.line(t, d - 3, t, d, LColor::mathframe); 
+	pi.pain.line(b, d, b + 3, d, LColor::mathframe); 
+	pi.pain.line(t - 2, d, t, d, LColor::mathframe); 
 }
 
 

@@ -147,12 +147,9 @@ void MathNestInset::dump() const
 
 void MathNestInset::draw(MathPainterInfo & pi, int x, int y) const
 {
-	lyxerr << "MathNestInset::draw()\n";
-	if (lock_) {
-		lyxerr << "MathNestInset::draw background\n";
+	if (lock_)
 		pi.pain.fillRectangle(x, y - ascent(), width(), height(),
 					LColor::mathlockbg);
-	}
 }
 
 

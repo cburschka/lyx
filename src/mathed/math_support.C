@@ -410,11 +410,11 @@ int mathed_string_descent(LyXFont const & font, string const & s)
 
 
 
-void mathed_draw_deco(MathPainterInfo & pain, int x, int y, int w, int h,
+void mathed_draw_deco(MathPainterInfo & pi, int x, int y, int w, int h,
 	const string & name)
 {
 	if (name == ".") {
-		pain.pain.line(x + w/2, y, x + w/2, y + h,
+		pi.pain.line(x + w/2, y, x + w/2, y + h,
 			  LColor::mathcursor, Painter::line_onoffdash);
 		return;
 	}
@@ -454,7 +454,7 @@ void mathed_draw_deco(MathPainterInfo & pain, int x, int y, int w, int h,
 			else
 				mt.transform(xx, yy);
 			mt.transform(x2, y2);
-			pain.pain.line(
+			pi.pain.line(
 				x + int(xx + 0.5), y + int(yy + 0.5),
 				x + int(x2 + 0.5), y + int(y2 + 0.5),
 				LColor::math);
@@ -474,25 +474,25 @@ void mathed_draw_deco(MathPainterInfo & pain, int x, int y, int w, int h,
 				yp[j] = y + int(yy + 0.5);
 				//  lyxerr << "P[" << j " " << xx << " " << yy << " " << x << " " << y << "]";
 			}
-			pain.pain.lines(xp, yp, n, LColor::math);
+			pi.pain.lines(xp, yp, n, LColor::math);
 		}
 	}
 }
 
 
-void mathed_draw_framebox(MathPainterInfo & pain, int x, int y, MathInset const * p)
+void mathed_draw_framebox(MathPainterInfo & pi, int x, int y, MathInset const * p)
 {
 	if (mathcursor && mathcursor->isInside(p))
-		pain.pain.rectangle(x, y - p->ascent(), p->width(), p->height(),
+		pi.pain.rectangle(x, y - p->ascent(), p->width(), p->height(),
 			LColor::mathframe);
 }
 
 
 // In the future maybe we use a better fonts renderer
-void drawStr(MathPainterInfo & pain, LyXFont const & font,
+void drawStr(MathPainterInfo & pi, LyXFont const & font,
 	int x, int y, string const & str)
 {
-	pain.pain.text(x, y, str, font);
+	pi.pain.text(x, y, str, font);
 }
 
 
