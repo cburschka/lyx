@@ -28,6 +28,8 @@
 #include <qstringlist.h>
 #include "support/lstrings.h"
 
+#include <boost/tuple/tuple.hpp>
+
 #ifdef Q_WS_X11
 #include <qwidget.h>
 #include <X11/Xlib.h>
@@ -36,7 +38,9 @@
 #endif
 
 using std::endl;
-
+using std::vector;
+using std::pair;
+using std::make_pair;
 
 namespace {
 
@@ -136,7 +140,7 @@ bool isSymbolFamily(LyXFont::FONT_FAMILY family)
 }
 
 
-QFont const getSymbolFont(string const & family)
+pair<QFont, bool> const getSymbolFont(string const & family)
 {
 	lyxerr[Debug::FONT] << "Looking for font family "
 		<< family << " ... ";
@@ -149,14 +153,14 @@ QFont const getSymbolFont(string const & family)
 	// Note Qt lies about family, so we use rawName.
 	if (contains(fromqstr(font.rawName()), family)) {
 		lyxerr[Debug::FONT] << " got it !" << endl;
-		return font;
+		return make_pair<QFont, bool>(font, true);
 	}
 
 	font.setFamily(toqstr(upper));
 
 	if (contains(fromqstr(font.rawName()), upper)) {
 		lyxerr[Debug::FONT] << " got it (uppercase version) !" << endl;
-		return font;
+		return make_pair<QFont, bool>(font, true);
 	}
 
 	// A simple setFamily() fails on Qt 2
@@ -165,58 +169,11 @@ QFont const getSymbolFont(string const & family)
 
 	if (contains(fromqstr(font.rawName()), family)) {
 		lyxerr[Debug::FONT] << " got it (raw version) !" << endl;
-		return font;
+		return make_pair<QFont, bool>(font, true);
 	}
 
 	lyxerr[Debug::FONT] << " FAILED :-(" << endl;
-	return font;
-}
-
-
-bool isAvailable(LyXFont const & f)
-{
-	static std::vector<bool> cache(LyXFont::NUM_FAMILIES, false);
-	static std::vector<bool> cache_initialized(LyXFont::NUM_FAMILIES, false);
-	static bool first_call = true;
-
-	LyXFont::FONT_FAMILY lyxfamily = f.family();
-	if (cache_initialized[lyxfamily])
-		return cache[lyxfamily];
-	cache_initialized[lyxfamily] = true;
-
-	if (first_call && isSymbolFamily(lyxfamily)) {
-		first_call = false;
-		addFontPath();
-	}
-
-	string const tmp = symbolFamily(lyxfamily);
-
-	if (tmp.empty())
-		return false;
-
-	QString const family(toqstr(tmp));
-
-	lyxerr[Debug::FONT] << "Family " << tmp
-	       << " isAvailable ?";
-
-	QFontDatabase db;
-	// pass false for match-locale: LaTeX fonts
-	// do not have non-matching locale according
-	// to Qt 2
-	QStringList sl(db.families(false));
-
-	for (QStringList::Iterator it = sl.begin(); it != sl.end(); ++it) {
-		// Case-insensitive for Cmmi10 vs. cmmi10
-		if ((*it).lower().startsWith(family.lower())) {
-			lyxerr[Debug::FONT]
-				<< "found family "
-				<< fromqstr(*it) << endl;
-			cache[lyxfamily] = true;
-			return true;
-		}
-	}
-	lyxerr[Debug::FONT] << " no." << endl;
-	return false;
+	return make_pair<QFont, bool>(font, false);
 }
 
 
@@ -278,7 +235,8 @@ qfont_loader::font_info::font_info(LyXFont const & f)
 
 	string const pat = symbolFamily(f.family());
 	if (!pat.empty()) {
-		font = getSymbolFont(pat);
+		bool tmp;
+		boost::tie(font, tmp) = getSymbolFont(pat);
 	} else {
 		switch (f.family()) {
 		case LyXFont::ROMAN_FAMILY:
@@ -372,11 +330,47 @@ int qfont_loader::charwidth(LyXFont const & f, Uchar val)
 	return w;
 }
 
- 
+
 bool qfont_loader::available(LyXFont const & f)
 {
 	if (!lyxrc.use_gui)
 		return false;
 
-	return isAvailable(f);
+	static vector<bool> cache_set(LyXFont::NUM_FAMILIES, false);
+	static vector<bool> cache(LyXFont::NUM_FAMILIES, false);
+
+	LyXFont::FONT_FAMILY family = f.family();
+	if (cache_set[family])
+		return cache[family];
+	cache_set[family] = true;
+
+	string const pat = symbolFamily(family);
+	if (!pat.empty()) {
+		pair<QFont, bool> tmp = getSymbolFont(pat);
+		if (tmp.second) {
+			cache[family] = true;
+			return true;
+		}
+
+		// If the font is a tex symbol font and it is not available,
+		// we try to add the xfonts directory to the font path.
+		static bool first_time = true;
+		if (!first_time || family == LyXFont::SYMBOL_FAMILY
+		    || family == LyXFont::WASY_FAMILY)
+			return false;
+
+		first_time = false;
+		addFontPath();
+		tmp = getSymbolFont(pat);
+		if (tmp.second) {
+			cache[family] = true;
+			return true;
+		}
+		// We don't need to set cache[family] to false, as it
+		// is initialized to false;
+		return false;
+	}
+
+	// We don't care about non-symbol fonts
+	return false;
 }
