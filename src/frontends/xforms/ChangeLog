@@ -1,3 +1,9 @@
+2002-04-09  Herbert Voss  <voss@perce.de>
+
+	* FormGraphics.C: allow rotate-values like 270.1
+	* xformsGImage.C (rotate): get the right rotate-angle from
+	GraphicParams
+
 2002-04-08  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* xformsGImage.C (clip): no need to check if the width, height are > 0

@@ -32,10 +32,10 @@ using std::endl;
 namespace {
 
 // Bound the number of input characters
-int const SCALE_MAXDIGITS = 3;
+int const SCALE_MAXDIGITS = 3;         // %-value
 int const WIDTH_MAXDIGITS = 10;
 int const HEIGHT_MAXDIGITS = 10;
-int const ROTATE_MAXCHARS = 4;
+int const ROTATE_MAXCHARS = 5;         // like 270.1
 int const FILENAME_MAXCHARS = 1024;
 string defaultUnit("cm");
 
@@ -169,7 +169,7 @@ void FormGraphics::build()
 	setPrehandler(bbox_->input_bb_x1);
 	setPrehandler(bbox_->input_bb_y1);
 
-	string const bb_units = "bp|cm|in";
+	string const bb_units = "bp|cm|mm|in";
 	fl_addto_choice(bbox_->choice_bb_units, bb_units.c_str());
 	bc().addReadOnly(bbox_->button_getBB);
 	bc().addReadOnly(bbox_->check_clip);
