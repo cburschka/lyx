@@ -12,7 +12,6 @@ src/bufferview_funcs.C
 src/converter.C
 src/debug.C
 src/exporter.C
-src/ext_l10n.h
 src/frontends/LyXView.C
 src/frontends/controllers/ButtonController.h
 src/frontends/controllers/ControlAboutlyx.C
@@ -81,6 +80,7 @@ src/frontends/qt2/QToc.C
 src/frontends/qt2/QURL.C
 src/frontends/qt2/QVCLog.C
 src/frontends/qt2/QWrap.C
+src/frontends/qt2/QtView.C
 src/frontends/qt2/lengthcombo.C
 src/frontends/xforms/Alert_pimpl.C
 src/frontends/xforms/ColorHandler.C
@@ -181,4 +181,3 @@ src/tabular.C
 src/text.C
 src/text2.C
 src/text3.C
-src/ext_l10n.h

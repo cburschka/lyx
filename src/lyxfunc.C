@@ -338,9 +338,12 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 		break;
 	case LFUN_CUT:
 	case LFUN_COPY:
-		if (tli && tli->lyxCode() == Inset::TABULAR_CODE) {
-			InsetTabular * t(static_cast<InsetTabular*>(tli));
-			if (t->hasSelection()) {
+		if (tli) {
+			UpdatableInset * in = tli;
+			if (in->lyxCode() != Inset::TABULAR_CODE) {
+				in = tli->getFirstLockingInsetOfType(Inset::TABULAR_CODE);
+			}
+			if (in && static_cast<InsetTabular*>(in)->hasSelection()) {
 				disable = false;
 				break;
 			}
