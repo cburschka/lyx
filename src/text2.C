@@ -1734,10 +1734,17 @@ void LyXText::setCursor(LyXCursor & cur, Paragraph * par,
 		cur.ix(int(x));
 	} else
 		cur.ix(cur.x());
+/* We take out this for the time being because 1) the redraw code is not 
+   prepared to this yet and 2) because some good policy has yet to be decided
+   while editting: for instance how to act on rows being created/deleted
+   because of DEPM.
+*/ 
+#if 0
 	//if the cursor is in a visible row, anchor to it
 	int topy = top_y();
 	if (topy < y && y < topy + bv()->workHeight())
 		anchor_row(row);
+#endif
 }
 
 
