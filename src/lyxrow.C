@@ -16,6 +16,7 @@
 #include "paragraph.h"
 #include "layout.h"
 #include "lyxlayout.h"
+#include "debug.h"
 
 using lyx::pos_type;
 
@@ -152,3 +153,15 @@ bool Row::isParStart() const
 {
 	return !pos();
 }
+
+
+void Row::dump(const char * s) const
+{
+	lyxerr << s << " pos: " << pos_ << " width: " << width_
+		<< " height: " << height_
+		<< " fill: " << fill_
+		<< " ascent_of_text: " << ascent_of_text_
+		<< " top_of_text: " << top_of_text_
+		<< " y: " << y_ << "\n";
+}
+

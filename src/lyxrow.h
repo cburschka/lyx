@@ -65,6 +65,8 @@ public:
 	unsigned int y() const;
 	/// cache the y position
 	void y(unsigned int newy);
+	/// current debugging only
+	void dump(const char * = "") const;
 private:
 	///
 	ParagraphList::iterator pit_;

@@ -1094,12 +1094,12 @@ void LyXText::setHeightOfRow(RowList::iterator rit)
 			} else {
 				// Special handling of insets - are any larger?
 				if (par.isInset(pos)) {
-					LyXFont const tmpfont = getFont(pit, pos);
 					InsetOld const * tmpinset = par.getInset(pos);
 					if (tmpinset) {
 #if 1 // this is needed for deep update on initialitation
 #warning inset->update FIXME
 						//tmpinset->update(bv());
+						LyXFont const tmpfont = getFont(pit, pos);
 						Dimension dim;
 						MetricsInfo mi(bv(), tmpfont, workWidth());
 						tmpinset->metrics(mi, dim);

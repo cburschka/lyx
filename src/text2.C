@@ -281,11 +281,11 @@ void LyXText::removeParagraph(RowList::iterator rit)
 
 
 void LyXText::insertParagraph(ParagraphList::iterator pit,
-			      RowList::iterator rowit)
+			      RowList::iterator rit)
 {
 	// insert a new row, starting at position 0
 	Row newrow(pit, 0);
-	RowList::iterator rit = rowlist_.insert(rowit, newrow);
+	rit = rowlist_.insert(rit, newrow);
 
 	// and now append the whole paragraph before the new row
 	appendParagraph(rit);
@@ -645,7 +645,44 @@ void LyXText::redoParagraph(ParagraphList::iterator pit)
 	}
 
 	// reinsert the paragraph
-	insertParagraph(pit, rit);
+	// insert a new row, starting at position 0
+	Row newrow(pit, 0);
+	rit = rowlist_.insert(rit, newrow);
+	newrow.dump("newrow: ");
+
+	// and now append the whole paragraph before the new row
+	// was: appendParagraph(rit);
+
+	pos_type const last = rit->par()->size();
+	bool done = false;
+
+	do {
+		pos_type z = rowBreakPoint(*rit);
+
+		RowList::iterator tmprow = rit;
+		tmprow->dump("tmprow: ");
+
+		if (z < last) {
+			++z;
+			Row newrow(rit->par(), z);
+			newrow.dump("newrow2: ");
+			rit = rowlist_.insert(boost::next(rit), newrow);
+		} else {
+			done = true;
+		}
+
+		// Set the dimensions of the row
+		// fixed fill setting now by calling inset->update() in
+		// SingleWidth when needed!
+		tmprow->dump("tmprow 1: ");
+		tmprow->fill(fill(tmprow, workWidth()));
+		tmprow->dump("tmprow 2: ");
+		setHeightOfRow(tmprow);
+		tmprow->dump("tmprow 3: ");
+		height += rit->height();
+
+	} while (!done);
+
 	setHeightOfRow(rows().begin());
 }
 
@@ -661,7 +698,7 @@ void LyXText::fullRebreak()
 
 void LyXText::metrics(MetricsInfo & mi, Dimension & dim)
 {
-	lyxerr << "LyXText::metrics: width: " << mi.base.textwidth << "\n";
+	//lyxerr << "LyXText::metrics: width: " << mi.base.textwidth << "\n";
 	//Assert(mi.base.textwidth);
 
 	// rebuild row cache
@@ -680,6 +717,8 @@ void LyXText::metrics(MetricsInfo & mi, Dimension & dim)
 		for (; ii != iend; ++ii) {
 			Dimension dim;
 			MetricsInfo m = mi;
+#warning FIXME: pos != 0
+			m.base.font = getFont(pit, 0); 
 			ii->inset->metrics(m, dim);
 		}
 
@@ -1873,7 +1912,8 @@ void LyXText::cursorLeft(bool internal)
 		if (!internal && !boundary &&
 		    isBoundary(bv()->buffer(), *cursor.par(), cursor.pos() + 1))
 			setCursor(cursor.par(), cursor.pos() + 1, true, true);
-	} else if (cursor.par() != ownerParagraphs().begin()) { // steps into the above paragraph.
+	} else if (cursor.par() != ownerParagraphs().begin()) {
+		// steps into the paragraph above
 		ParagraphList::iterator pit = boost::prior(cursor.par());
 		setCursor(pit, pit->size());
 	}
@@ -1949,12 +1989,10 @@ void LyXText::cursorDown(bool selecting)
 
 void LyXText::cursorUpParagraph()
 {
-	if (cursor.pos() > 0) {
+	if (cursor.pos() > 0)
 		setCursor(cursor.par(), 0);
-	}
-	else if (cursor.par() != ownerParagraphs().begin()) {
+	else if (cursor.par() != ownerParagraphs().begin())
 		setCursor(boost::prior(cursor.par()), 0);
-	}
 }
 
 
@@ -1963,12 +2001,12 @@ void LyXText::cursorDownParagraph()
 	ParagraphList::iterator par = cursor.par();
 	ParagraphList::iterator next_par = boost::next(par);
 
-	if (next_par != ownerParagraphs().end()) {
+	if (next_par != ownerParagraphs().end())
 		setCursor(next_par, 0);
-	} else {
+	else
 		setCursor(par, par->size());
-	}
 }
+
 
 // fix the cursor `cur' after a characters has been deleted at `where'
 // position. Called by deleteEmptyParagraphMechanism
