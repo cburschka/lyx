@@ -237,6 +237,9 @@ void InsetCollapsable::draw(BufferView * bv, LyXFont const & f,
 void InsetCollapsable::edit(BufferView * bv, int xp, int yp,
 			    unsigned int button)
 {
+	if (button == 3)
+		return;
+
 	UpdatableInset::edit(bv, xp, yp, button);
 
 	if (collapsed_) {
