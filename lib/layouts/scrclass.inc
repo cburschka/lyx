@@ -9,7 +9,6 @@ SecNumDepth             2
 TocDepth                2
 DefaultStyle            Standard
 
-
 Style Standard
 	LatexName             dummy
 	ParIndent             MM
@@ -17,26 +16,17 @@ Style Standard
 	AlignPossible         Block, Left, Right, Center
 End
 
-
 Input stdlists.inc
-Input stdfloats.inc
-Input stdsections.inc
-Input stdstarsections.inc
 Input stdcounters.inc
-Input stdtitle.inc
-Input stdstruct.inc
-Input stdlayouts.inc
-Input lyxmacros.inc
+Input stdfloats.inc
 
 NoStyle List
-
 
 Style Description
 	LabelFont
 	  Family              Sans
 	EndFont
 End
-
 
 Style Labeling
 	Margin                Manual
@@ -54,6 +44,8 @@ Style Labeling
 	LabelString           00.00.0000
 End
 
+
+Input stdsections.inc
 
 Style Part
 	Font
@@ -106,7 +98,7 @@ Style Subparagraph
 	EndFont
 End
 
-
+Input stdstarsections.inc
 
 Style Addpart
 	CopyStyle             Part*
@@ -117,12 +109,14 @@ End
 Style Addchap
 	CopyStyle             Chapter*
 	LatexName             addchap
+	TocLevel              1
 End
 
 
 Style Addsec
 	CopyStyle             Section*
 	LatexName             addsec
+	TocLevel              2
 End
 
 
@@ -154,6 +148,7 @@ Style Minisec
 	EndFont
 End
 
+Input stdtitle.inc
 
 Style Title
 	Font
@@ -223,6 +218,7 @@ Style Extratitle
 	LatexName             extratitle
 End
 
+Input stdstruct.inc
 
 Style Abstract
 	LabelFont
@@ -237,6 +233,7 @@ Style Bibliography
 	EndFont
 End
 
+Input stdlayouts.inc
 
 Style Captionabove
 	CopyStyle            Caption
@@ -264,3 +261,7 @@ Style Dictum
 	  Size               Normal
 	EndFont
 End
+
+Input lyxmacros.inc
+Input scrmacros.inc
+
