@@ -29,7 +29,7 @@
 
 #include "insets/inseterror.h"
 
-#include <boost/format.hpp>
+#include "BoostFormat.h"
 
 using std::pair;
 using lyx::pos_type;
