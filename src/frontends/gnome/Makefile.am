@@ -73,7 +73,8 @@ libgnome_la_SOURCES = \
 	diainsertcitation_interface.c \
 	diainsertcitation_interface.h \
 	diainsertcitation_callbacks.c \
-	diainsertcitation_callbacks.h 
+	diainsertcitation_callbacks.h \
+	pixbutton.h
 
 # These still have to be added. Sooner or later. ARRae-20000411
 #	GUI_defaults.C \

@@ -107,6 +107,8 @@ void InsetText::init(InsetText const * ins)
 
 InsetText::~InsetText()
 {
+    for(Cache::const_iterator cit=cache.begin(); cit != cache.end(); ++cit)
+	deleteLyXText((*cit).first);
     LyXParagraph * p = par->next;
     delete par;
     while(p) {
@@ -914,40 +916,44 @@ InsetText::LocalDispatch(BufferView * bv,
 	UpdateLocal(bv, CURSOR_PAR, true);
 	break;
     case LFUN_LAYOUT:
-    {
-      static LyXTextClass::size_type cur_layout = cpar(bv)->layout;
+	// do not set layouts on non breakable textinsets
+	if (autoBreakRows) {
+	    static LyXTextClass::size_type cur_layout = cpar(bv)->layout;
       
-	// Derive layout number from given argument (string)
-	// and current buffer's textclass (number). */    
-	LyXTextClassList::ClassList::size_type tclass =
-	    bv->buffer()->params.textclass;
-	std::pair <bool, LyXTextClass::size_type> layout = 
-	    textclasslist.NumberOfLayout(tclass, arg);
+	    // Derive layout number from given argument (string)
+	    // and current buffer's textclass (number). */    
+	    LyXTextClassList::ClassList::size_type tclass =
+		bv->buffer()->params.textclass;
+	    std::pair <bool, LyXTextClass::size_type> layout = 
+		textclasslist.NumberOfLayout(tclass, arg);
 
-	// If the entry is obsolete, use the new one instead.
-	if (layout.first) {
-	    string obs = textclasslist.Style(tclass,layout.second).
-		obsoleted_by();
-	    if (!obs.empty()) 
-		layout = textclasslist.NumberOfLayout(tclass, obs);
-	}
+	    // If the entry is obsolete, use the new one instead.
+	    if (layout.first) {
+		string obs = textclasslist.Style(tclass,layout.second).
+		    obsoleted_by();
+		if (!obs.empty()) 
+		    layout = textclasslist.NumberOfLayout(tclass, obs);
+	    }
 
-	// see if we found the layout number:
-	if (!layout.first) {
-	    string msg = string(N_("Layout ")) + arg + N_(" not known");
+	    // see if we found the layout number:
+	    if (!layout.first) {
+		string msg = string(N_("Layout ")) + arg + N_(" not known");
 
-	    bv->owner()->getMiniBuffer()->Set(msg);
-	    break;
-	}
+		bv->owner()->getMiniBuffer()->Set(msg);
+		break;
+	    }
 
-	if (cur_layout != layout.second) {
-	    cur_layout = layout.second;
-	    TEXT(bv)->SetLayout(bv, layout.second);
+	    if (cur_layout != layout.second) {
+		cur_layout = layout.second;
+		TEXT(bv)->SetLayout(bv, layout.second);
+		bv->owner()->setLayout(cpar(bv)->GetLayout());
+		UpdateLocal(bv, CURSOR_PAR, true);
+	    }
+	} else {
+	    // reset the layout box
 	    bv->owner()->setLayout(cpar(bv)->GetLayout());
-	    UpdateLocal(bv, CURSOR_PAR, true);
 	}
-    }
-    break;
+	break;
     case LFUN_PARAGRAPH_SPACING:
 	    // This one is absolutely not working. When fiddling with this
 	    // it also seems to me that the paragraphs inside the insettext
@@ -1374,6 +1380,9 @@ LyXText * InsetText::getLyXText(BufferView * bv) const
 
 void InsetText::deleteLyXText(BufferView * bv, bool recursive) const
 {
+    if (cache.find(bv) == cache.end())
+	return;
+    delete cache[bv];
     cache.erase(bv);
     if (recursive) {
 	/// then remove all LyXText in text-insets

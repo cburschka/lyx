@@ -71,6 +71,12 @@ protected:
   void callbackToc(Buffer::TocItem tg);
   /// compose Gnome::UI::Array object describing the menu
   void composeUIInfo(string const & menu_name, vector<Gnome::UI::Info> & Menus, string path);
+  /// compose Gnome::UI::Array object describing the TOClist
+  vector<Buffer::TocItem>::const_iterator
+  composeTocUIInfo(vector<Gnome::UI::Info> & menu,
+		   vector<Buffer::TocItem> const & toclist,
+		   vector<Buffer::TocItem>::const_iterator begin,
+		   int mylevel);
   /// populate wid_act_ vector with all widgets and corresponding actions
   void connectWidgetToAction(GnomeUIInfo * guinfo);
 

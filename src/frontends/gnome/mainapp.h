@@ -14,6 +14,7 @@
 #include <gnome--/app.h>
 #include <gnome--/appbar.h>
 #include <gtk--/frame.h>
+#include <gtk--/accelgroup.h>
 
 #include "MenuBackend.h"
 
@@ -35,7 +36,7 @@ class GLyxAppWin: public Gnome::App
 		   int noelms,
 		   Gnome::UI::Array &);
   /// add action area
-  void add_action(Gtk::Container &, string title, bool expand=false);
+  void add_action(Gtk::Container &, string title, bool expand=false, Gtk::AccelGroup * acgr=NULL);
   /// remove action area
   void remove_action();
   /// clears action area if Escape is pressed
@@ -50,6 +51,8 @@ class GLyxAppWin: public Gnome::App
   Gnome::AppBar status_;
   Gtk::VBox box_;
   Gtk::Widget *view_;
+
+  Gtk::AccelGroup * accel_;
 
   bool action_mode;
   

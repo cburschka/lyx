@@ -1,3 +1,39 @@
+2000-09-25  Juergen Vigna  <jug@sad.it>
+
+	* src/insets/insettext.C (LocalDispatch): don't set the layout on
+	non breakable paragraphs.
+
+2000-09-25  Garst R. Reese <reese@isn.net>
+
+	* src/language.C (initL): added missing language_country codes.
+
+2000-09-25  Juergen Vigna  <jug@sad.it>
+
+	* src/insets/insettext.C (InsetText):
+	(deleteLyXText): remove the not released LyXText structure!
+
+2000-09-24  Marko Vendelin <markov@ioc.ee>
+
+	* src/frontends/gnome/mainapp.C
+	* src/frontends/gnome/mainapp.h: added support for keyboard 
+	accelerators
+
+	* src/frontends/gnome/FormCitation.C
+	* src/frontends/gnome/FormCitation.h
+	* src/frontends/gnome/Makefile.am
+	* src/frontends/gnome/pixbutton.h: completed the rewrite of 
+	FormCitation to use "action area" in mainapp window
+
+	* src/frontends/gnome/Menubar_pimpl.C	
+	* src/frontends/gnome/Menubar_pimpl.h: Gnome menu can handle
+	large TOC.
+
+2000-09-23  Dekel Tsur  <dekel@math.tau.ac.il>
+
+	* src/mathed/formula.C (MathFuncInset::Metrics): Use default 
+	width/descent/ascent values if name is empty.
+	(mathed_string_height): Use std::max.
+
 2000-09-25  Allan Rae  <rae@lyx.org>
 
 	* src/frontends/xforms/forms/form_preferences.fd: resize to stop

@@ -47,6 +47,8 @@ void GLyxAppWin::init()
 
   set_statusbar(status_);
 
+  accel_ = NULL;
+
   // initial (dummy) menu
   vector<Gnome::UI::Info> menus, fm;
   fm.push_back(Gnome::MenuItems::Open());
@@ -103,7 +105,7 @@ void GLyxAppWin::update_menu(string path, int noelms, Gnome::UI::Array &menu)
 }
   
 // clean up first, then add new action widget and finally, disable main view
-void GLyxAppWin::add_action(Gtk::Container &action, string title, bool expand)
+void GLyxAppWin::add_action(Gtk::Container &action, string title, bool expand, Gtk::AccelGroup * acgr)
 {
   remove_action();
 
@@ -115,17 +117,26 @@ void GLyxAppWin::add_action(Gtk::Container &action, string title, bool expand)
   box_.children().push_back( Gtk::Box_Helpers::Element( *frame, expand ) );
   box_.show_all();
 
+  accel_ = acgr;
+  if (accel_ != NULL) add_accel_group(*accel_);
+  
   view_->set_sensitive(false);
   action_mode = true;
 }
 
 void GLyxAppWin::remove_action()
 {
+  if (accel_ != NULL)
+    {
+      remove_accel_group(*accel_);
+      accel_ = NULL;
+    }
+  
   while ( box_.children().size() > 2 )
     {
       box_.children().pop_back();
     }
-  
+
   view_->set_sensitive(true);  
   action_mode = false;
 }

@@ -103,6 +103,7 @@ void Menubar::Pimpl::updateAllLists()
     }
 }
 
+int const max_number_of_items = 25;
 void Menubar::Pimpl::updateList(vector<Buffer::TocItem> * toclist, vector<ListsHolder> * pgui) 
 {
   vector<ListsHolder> & gui = *pgui;
@@ -116,22 +117,66 @@ void Menubar::Pimpl::updateList(vector<Buffer::TocItem> * toclist, vector<ListsH
 
       menu.push_back(Gnome::UI::Item(Gnome::UI::Icon(GNOME_STOCK_MENU_REFRESH),
 				     N_("Refresh"), slot(this, &Menubar::Pimpl::updateAllLists)));
-      
-      vector<Buffer::TocItem>::const_iterator end = toclist->end();
-      for (vector<Buffer::TocItem>::const_iterator it = toclist->begin();
-	   it != end; ++it)
 
+      if (toclist->size() > max_number_of_items)
+	composeTocUIInfo(menu, *toclist, toclist->begin(), 0);
+      else
 	{
-	  label = string(4*(*it).depth,' ')+(*it).str;
-	  
-	  menu.push_back(Gnome::UI::Item(label,
-					 bind<Buffer::TocItem>(slot(this, &Menubar::Pimpl::callbackToc), (*it)),
-					 label));
+	  vector<Buffer::TocItem>::const_iterator end = toclist->end();
+	  for (vector<Buffer::TocItem>::const_iterator it = toclist->begin();
+	       it != end; ++it)
+	    
+	    {
+	      label = string(4*(*it).depth,' ')+(*it).str;
+	      
+	      menu.push_back(Gnome::UI::Item(label,
+					     bind<Buffer::TocItem>(slot(this, &Menubar::Pimpl::callbackToc), (*it)),
+					     label));
+	    }
 	}
-
+      
       gui[i].lst = menu;
       mainAppWin->update_menu(gui[i].path, oldsz, gui[i].lst);
     }
+}
+
+vector<Buffer::TocItem>::const_iterator
+Menubar::Pimpl::composeTocUIInfo(vector<Gnome::UI::Info> & menu,
+				 vector<Buffer::TocItem> const & toclist,
+				 vector<Buffer::TocItem>::const_iterator begin,
+				 int mylevel)
+{
+  string label = N_("<No Name>");
+
+  vector<Buffer::TocItem>::const_iterator end = toclist.end();
+  vector<Buffer::TocItem>::const_iterator it;
+  for (it = begin; it != end && (*it).depth >= mylevel; ++it)
+    {
+      if ( (*it).depth == mylevel &&
+	   (it+1 == end || (*(it+1)).depth <= mylevel) )
+	{
+	  label = (*it).str;
+	  menu.push_back(Gnome::UI::Item(label,
+				       bind<Buffer::TocItem>(slot(this, &Menubar::Pimpl::callbackToc), (*it)),
+					 label));
+	}
+      else
+	{
+	  vector<Gnome::UI::Info> submenu;
+	  if ( (*it).depth == mylevel )
+	    {
+	      label = (*it).str;
+	      submenu.push_back(Gnome::UI::Item(label,
+						bind<Buffer::TocItem>(slot(this, &Menubar::Pimpl::callbackToc), (*it)),
+						label));
+	      ++it;    
+	    }
+	  it = composeTocUIInfo(submenu, toclist, it, mylevel+1);
+	  menu.push_back(Gnome::UI::Menu(label,submenu,label));
+	}
+    }
+  --it;
+  return it;
 }
 
 void Menubar::Pimpl::callback(int action)
