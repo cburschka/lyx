@@ -1,5 +1,7 @@
 2005-01-04  Angus Leeming  <leeming@lyx.org>
 
+	* os_win32.C (current_root): use _getdrive on Win32.
+
 	* FileInfo.C (FileInfo, newFile): strip the trailing '/' from
 	the stored file name as it breaks Window's version of stat().
 	(isLink): protect the code with #ifdef S_ISLNK.
