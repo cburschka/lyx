@@ -2,6 +2,12 @@
 
 	* text.C (breakParagraph): remove an outdated #warning
 
+2004-01-07  André Pönitz  <poenitz@gmx.net>
+
+	* lyxfind.C: somewhat clearer logic
+
+	* text.C: prevent crash in cursorX on unitialized row cache
+
 2004-01-07  Alfredo Braunstein  <abraunst@lyx.org>
 
 	* lyxcursor.[Ch] (operator>): add
