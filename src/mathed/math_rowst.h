@@ -96,6 +96,8 @@ public:
 public:
 	/// 
 	iterator begin();
+	/// 
+	iterator end();
 	///
 	bool empty() const;
 

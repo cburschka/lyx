@@ -85,6 +85,13 @@ MathedRowContainer::iterator MathedRowContainer::begin()
 	return iterator(this);
 }
 
+MathedRowContainer::iterator MathedRowContainer::end()
+{
+	iterator it(this);
+	it.pos_ = data_.size();
+	return it;
+}
+
 bool MathedRowContainer::empty() const
 {
 	return data_.size() == 0;
