@@ -306,7 +306,7 @@ void QPrefs::apply()
 			     << setw(2) << ci->color().green()
 			     << setw(2) << ci->color().blue();
 
-			string newhex(STRCONV(ostr.str()));
+			string newhex(ostr.str());
 			controller().setColor(col, newhex);
 		}
 	}

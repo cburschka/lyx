@@ -1,3 +1,8 @@
+2003-09-15  Angus Leeming  <leeming@lyx.org>
+
+	* QAbout.C (build_dialog): 
+	* QPrefs.C (apply): remove STRCONV.
+
 2003-09-09  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* BulletsModule.C: change Assert to BOOST_ASSERT
