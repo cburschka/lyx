@@ -229,7 +229,7 @@ public:
 	///
 	MathMatrixInset * parse_normal();
 	///
-	void parse_into(MathArray & array, unsigned flags);
+	void parse_into(MathArray & array, unsigned flags, MathTextCodes = LM_TC_MIN);
 	///
 	int lineno() const { return lineno_; }
 	///
@@ -612,7 +612,7 @@ latexkeys const * Parser::read_delim()
 }
 
 
-void Parser::parse_into(MathArray & array, unsigned flags)
+void Parser::parse_into(MathArray & array, unsigned flags, MathTextCodes code)
 {
 	MathTextCodes yyvarcode = LM_TC_MIN;
 
@@ -668,7 +668,8 @@ void Parser::parse_into(MathArray & array, unsigned flags)
 		else if (t.cat() == catLetter)
 			array.push_back(new MathCharInset(t.character(), yyvarcode));
 
-		else if (t.cat() == catSpace && yyvarcode == LM_TC_TEXTRM)
+		else if (t.cat() == catSpace &&
+				(yyvarcode == LM_TC_TEXTRM || code == LM_TC_TEXTRM))
 			array.push_back(new MathCharInset(' ', yyvarcode));
 
 		else if (t.cat() == catParameter) {
@@ -835,11 +836,21 @@ void Parser::parse_into(MathArray & array, unsigned flags)
 			if (l) {
 				if (l->token == LM_TK_FONT) {
 					//lyxerr << "starting font\n";
+					//CatCode catSpaceSave = theCatcode[' '];
+					//if (l->id == LM_TC_TEXTRM) {
+					//	// temporarily change catcode	
+					//	theCatcode[' '] = catLetter;	
+					//}
+
+					MathTextCodes t = static_cast<MathTextCodes>(l->id);
 					MathArray ar;
-					parse_into(ar, FLAG_ITEM);
+					parse_into(ar, FLAG_ITEM, t);
 					for (MathArray::iterator it = ar.begin(); it != ar.end(); ++it)
-						(*it)->handleFont(static_cast<MathTextCodes>(l->id));
+						(*it)->handleFont(t);
 					array.push_back(ar);
+
+					// undo catcode changes
+					////theCatcode[' '] = catSpaceSave;
 					//lyxerr << "ending font\n";
 				}
 
