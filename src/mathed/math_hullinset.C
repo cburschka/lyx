@@ -265,8 +265,6 @@ bool MathHullInset::numbered(row_type row) const
 
 bool MathHullInset::ams() const
 {
-	return true;
-/*
 	return
 		objtype_ == LM_OT_ALIGN ||
 		objtype_ == LM_OT_MULTLINE ||
@@ -274,7 +272,6 @@ bool MathHullInset::ams() const
 		objtype_ == LM_OT_ALIGNAT ||
 		objtype_ == LM_OT_XALIGNAT ||
 		objtype_ == LM_OT_XXALIGNAT;
-*/
 }
 
 
