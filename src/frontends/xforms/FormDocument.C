@@ -48,6 +48,7 @@ using namespace lyx::support;
 
 using std::bind2nd;
 using std::vector;
+using std::endl;
 
 
 namespace {
