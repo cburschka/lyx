@@ -78,12 +78,11 @@
 
 namespace {
 
-char const * const dialognames[] = { "about", "bibitem", "bibtex", "citation",
-				     "error", "ert", "external", "float",
-				     "graphics", "include", "index", "label",
-				     "minipage", "ref", "tabular",
+char const * const dialognames[] = { "about", "bibitem", "bibtex", "changes",
+				     "citation", "error", "ert", "external",
+				     "float", "graphics", "include", "index",
+				     "label", "minipage", "ref", "tabular",
 				     "tabularcreate", "toc", "url", "wrap" };
-
 
 char const * const * const end_dialognames =
 	dialognames + (sizeof(dialognames) / sizeof(char *));
