@@ -1,3 +1,8 @@
+2000-10-31  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/frontends/xforms/FormDocument.C (class_update): fix setting
+	of two-sided document.
+
 2000-10-31  Juergen Vigna  <jug@sad.it>
 
 	* src/WorkArea.C (work_area_handler): honor xforms 0.88 defines.

@@ -672,7 +672,7 @@ void FormDocument::class_update(BufferParams const & params)
     }
     fl_set_button(class_->radio_doc_sides_one, 0);
     fl_set_button(class_->radio_doc_sides_two, 0);
-    if (params.sides == 2)
+    if (params.sides == LyXTextClass::TwoSides)
 	fl_set_button(class_->radio_doc_sides_two, 1);
     else
 	fl_set_button(class_->radio_doc_sides_one, 1);
