@@ -855,15 +855,19 @@ void parse(Parser & p, ostream & os, unsigned flags, const mode_type mode)
 		}
 
 		else if (t.cs() == "includegraphics") {
-			map<string, string> opts = split_map(p.getArg('[', ']'));
-			string name = p.verbatimItem();
-			begin_inset(os, "Graphics ");
-			os << "\n\tfilename " << name << '\n';
-			if (opts.find("width") != opts.end())
-				os << "\twidth " << opts["width"] << '\n';
-			if (opts.find("height") != opts.end())
-				os << "\theight " << opts["height"] << '\n';
-			end_inset(os);
+			if (mode == TEXT_MODE) {
+				map<string, string> opts = split_map(p.getArg('[', ']'));
+				string name = p.verbatimItem();
+				begin_inset(os, "Graphics ");
+				os << "\n\tfilename " << name << '\n';
+				if (opts.find("width") != opts.end())
+					os << "\twidth " << opts["width"] << '\n';
+				if (opts.find("height") != opts.end())
+					os << "\theight " << opts["height"] << '\n';
+				end_inset(os);
+			} else {
+				os << "\\includegraphics ";
+			}
 		}
 
 		else if (t.cs() == "makeindex" || t.cs() == "maketitle")
@@ -895,18 +899,17 @@ void parse(Parser & p, ostream & os, unsigned flags, const mode_type mode)
 
 		else if (is_known(t.cs(), known_latex_commands) && mode == TEXT_MODE) {
 			begin_inset(os, "LatexCommand ");
-			os << '\\' << t.cs() << '{';
-			parse(p, os, FLAG_ITEM, TEXT_MODE);
-			os << '}';
+			os << '\\' << t.cs();
+			os << p.getOpt();
+			os << p.getOpt();
+			os << '{' << p.verbatimItem() << '}';
 			end_inset(os);
 		}
 
 		else if (t.cs() == "bibitem") {
 			os << "\n\\layout Bibliography\n\\bibitem ";
-			string opt = p.getArg('[',']');
-			if (opt.size())
-				os << '[' << opt << ']';
-			os << '{' << p.getArg('{','}') << '}' << "\n\n";
+			os << p.getOpt();
+			os << '{' << p.verbatimItem() << '}' << "\n\n";
 		}
 
 		else if (char const ** where = is_known(t.cs(), known_quotes)) {
@@ -942,7 +945,7 @@ void parse(Parser & p, ostream & os, unsigned flags, const mode_type mode)
 			handle_tex(os, "\\input{" + p.verbatimItem() + "}\n");
 
 		else if (t.cs() == "pagestyle" && in_preamble)
-			h_paperpagestyle == p.getArg('{','}');
+			h_paperpagestyle == p.verbatimItem();
 
 		else if (t.cs() == "fancyhead") {
 			ostringstream ss;
