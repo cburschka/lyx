@@ -122,6 +122,8 @@ struct WriteStream {
 	std::ostream & os;
 	///
 	bool fragile;
+	/// are we at the beginning of an MathArray?
+	bool firstitem;
 };
 
 

@@ -1164,24 +1164,6 @@ MathCursorPos const & MathCursor::cursor() const
 }
 
 
-int MathCursor::cellXOffset() const
-{
-	return par()->cellXOffset(idx());
-}
-
-
-int MathCursor::cellYOffset() const
-{
-	return par()->cellYOffset(idx());
-}
-
-
-void MathCursor::gotoX(int x) 
-{
-	pos() = xarray().x2pos(x - cellXOffset());
-}
-
-
 bool MathCursor::goUp()
 {
 	// first ask the inset if it knows better then we

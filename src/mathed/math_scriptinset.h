@@ -77,7 +77,7 @@ public:
 	///
 	void ensure(bool up);
 
-	///
+	/// suppresses empty braces if necessary
 	void write(MathInset const * nuc, WriteStream & os) const;
 	///
 	void normalize(MathInset const * nuc, NormalStream & os) const;

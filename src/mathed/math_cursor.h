@@ -285,12 +285,6 @@ private:
 	pos_type & pos();
 	/// write access to cursor cell index
 	idx_type & idx();
-	/// x-offset of current cell relative to par xo
-	int cellXOffset() const;
-	/// y-offset of current cell relative to par yo
-	int cellYOffset() const;
-	/// adjust position in current cell according to x. idx is not changed.
-	void gotoX(int x);
 
 	///
 	InsetFormulaBase * const formula_;

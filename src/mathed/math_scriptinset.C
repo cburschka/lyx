@@ -289,9 +289,11 @@ void MathScriptInset::write(MathInset const * nuc, WriteStream & os) const
 			if (limits_ == 1)
 				os << "\\limits ";
 		}
-	}
-	else
-		os << "{}";
+	} else
+			if (os.firstitem)
+				lyxerr << "suppressing {} \n";
+			else
+				os << "{}";
 
 	if (hasDown() && down().data_.size())
 		os << "_{" << down().data_ << '}';
