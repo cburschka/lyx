@@ -81,13 +81,20 @@ void QPreambleDialog::editClicked()
 
 	editor += " " + filename;
  
+	Systemcalls sys;
+
 	// FIXME: synchronous, ugh. Make async when moved to controllers ?
-	Systemcalls sys(Systemcalls::Wait, editor);
+	if (sys.startscript(Systemcalls::Wait, editor)) {
+		lyx::unlink(filename);
+		return;
+	}
 
 	std::ifstream in(filename.c_str());
 
-	if (!in)
+	if (!in) {
+		lyx::unlink(filename);
 		return;
+	}
 
 	string newtext;
 	string line;

@@ -1,6 +1,6 @@
 AUTOMAKE_OPTIONS = foreign 1.4
 MAINTAINERCLEANFILES = $(srcdir)/Makefile.in
-noinst_LTLIBRARIES = libqt2moc.la
+noinst_LTLIBRARIES = libqt2moc.o
 BOOST_INCLUDES = -I$(top_srcdir)/boost
 INCLUDES = -I${top_srcdir}/src/ \
 	-I${top_srcdir}/src/frontends/ \
@@ -13,7 +13,7 @@ AM_CXXFLAGS = -DQT_CLEAN_NAMESPACE -DQT_GENUINE_STR
 
 include ../Makefile.dialogs
 
-libqt2moc_la_SOURCES := FileDialog_private_moc.C \
+libqt2moc_o_SOURCES := FileDialog_private_moc.C \
 	emptytable_moc.C \
 	lengthcombo_moc.C \
 	qttableview_moc.C \
