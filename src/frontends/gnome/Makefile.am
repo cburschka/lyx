@@ -24,6 +24,7 @@ libgnome_la_LIBADD = \
 	../xforms/FormMathsSpace.lo \
 	../xforms/DropDown.lo \
 	../xforms/Alert_pimpl.lo \
+	../xforms/Menubar_pimpl.lo \
 	@LYX_LIBS@ @FRONTEND_LDFLAGS@ @FRONTEND_LIBS@
 
 #	../xforms/FileDialog.lo \
@@ -85,15 +86,17 @@ libgnome_la_SOURCES = \
 	gnomeBC.h \
 	GUIRunTime.C \
 	pixbutton.h \
-	mainapp.C \
-	mainapp.h \
-	Menubar_pimpl.C \
-	Menubar_pimpl.h \
 	support.c \
 	support.h \
 	Timeout_pimpl.C \
 	Timeout_pimpl.h
 
+# Trying to make things a litte more tidy. -- Koz-2002-01-11
+#	mainapp.C \
+#	mainapp.h \
+#	Menubar_pimpl.C \
+#	Menubar_pimpl.h \
+#
 #	FormCopyright.C \
 #	FormCopyright.h \
 #	FormCredits.C \

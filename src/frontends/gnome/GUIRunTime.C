@@ -19,7 +19,6 @@
 #include "debug.h"
 
 #include <gnome--/main.h>
-#include "mainapp.h"
 #include <glade/glade.h>
 
 using std::endl;
@@ -40,7 +39,6 @@ int const xforms_include_version = FL_INCLUDE_VERSION;
 
 } // namespace anon
 
-GLyxAppWin * mainAppWin;
 
 int GUIRunTime::initApplication(int &, char * argv[])
 {
@@ -75,8 +73,6 @@ int GUIRunTime::initApplication(int &, char * argv[])
 	string app_version(VERSION);
 	static Gnome::Main  a(app_id, app_version, 1, argv);
 	glade_gnome_init(); // Initialize the glade library.
-	static GLyxAppWin   appWin;
-	mainAppWin = &appWin;
 
 	return 0;
 }
