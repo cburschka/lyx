@@ -28,7 +28,11 @@
 #include "font.h"
 #include "lyxtext.h"
 #include "lyx_gui_misc.h"
+#include "LyXView.h"
+#include "lyxfunc.h"
 #include "insets/insettext.h"
+
+extern bool MenuLayoutTable(int);
 
 const int ADD_TO_HEIGHT = 2;
 const int ADD_TO_TABULAR_WIDTH = 2;
@@ -327,6 +331,10 @@ int InsetTabular::InsetInInsetY()
 void InsetTabular::InsetButtonRelease(BufferView * bv,
 				      int x, int y, int button)
 {
+    if (button == 3) {
+	LocalDispatch(bv, LFUN_LAYOUT_TABLE, "true");
+	return;
+    }
     if (the_locking_inset) {
         the_locking_inset->InsetButtonRelease(bv, x-inset_x, y-inset_y,button);
         return;
@@ -450,81 +458,87 @@ UpdatableInset::RESULT InsetTabular::LocalDispatch(BufferView * bv, int action,
 
     HideInsetCursor(bv);
     switch (action) {
-      // Normal chars not handled here
-      case -1:
-	  break;
-      // --- Cursor Movements ---------------------------------------------
-      case LFUN_RIGHTSEL:
-          moveRight(bv, false);
-	  sel_pos_end = cursor.pos;
-	  UpdateLocal(bv, false);
-	  break;
-      case LFUN_RIGHT:
-          result = moveRight(bv);
-	  if (hasCharSelection()) {
-	      sel_pos_start = sel_pos_end = cursor.pos;
-	      UpdateLocal(bv, false);
-	  } else
-	      sel_pos_start = sel_pos_end = cursor.pos;
+	// Normal chars not handled here
+    case -1:
+	break;
+	// --- Cursor Movements ---------------------------------------------
+    case LFUN_RIGHTSEL:
+	moveRight(bv, false);
+	sel_pos_end = cursor.pos;
+	UpdateLocal(bv, false);
+	break;
+    case LFUN_RIGHT:
+	result = moveRight(bv);
+	if (hasCharSelection()) {
+	    sel_pos_start = sel_pos_end = cursor.pos;
+	    UpdateLocal(bv, false);
+	} else
+	    sel_pos_start = sel_pos_end = cursor.pos;
           break;
-      case LFUN_LEFTSEL:
-          moveLeft(bv, false);
-	  sel_pos_end = cursor.pos;
-	  UpdateLocal(bv, false);
-	  break;
-      case LFUN_LEFT:
-          result = moveLeft(bv);
-	  if (hasCharSelection()) {
-	      sel_pos_start = sel_pos_end = cursor.pos;
-	      UpdateLocal(bv, false);
-	  } else
-	      sel_pos_start = sel_pos_end = cursor.pos;
-          break;
-      case LFUN_DOWNSEL:
-          moveDown();
-	  sel_pos_end = cursor.pos;
-	  UpdateLocal(bv, false);
-	  break;
-      case LFUN_DOWN:
-          result= moveDown();
-	  if (hasCharSelection()) {
-	      sel_pos_start = sel_pos_end = cursor.pos;
-	      UpdateLocal(bv, false);
-	  } else
-	      sel_pos_start = sel_pos_end = cursor.pos;
-          break;
-      case LFUN_UPSEL:
-          moveUp();
-	  sel_pos_end = cursor.pos;
-	  UpdateLocal(bv, false);
-	  break;
-      case LFUN_UP:
-          result= moveUp();
-	  if (hasCharSelection()) {
-	      sel_pos_start = sel_pos_end = cursor.pos;
-	      UpdateLocal(bv, false);
-	  } else
-	      sel_pos_start = sel_pos_end = cursor.pos;
-          break;
-      case LFUN_BACKSPACE:
-	  break;
-      case LFUN_DELETE:
-          break;
-      case LFUN_HOME:
-          break;
-      case LFUN_END:
-          break;
-      case LFUN_TAB:
-	  if (hasCharSelection()) {
-	      sel_pos_start = sel_pos_end = cursor.pos;
-	      UpdateLocal(bv, false);
-	  }
-	  sel_pos_start = sel_pos_end = cursor.pos;
-          moveNextCell();
-          break;
-      default:
-          result = UNDISPATCHED;
-          break;
+    case LFUN_LEFTSEL:
+	moveLeft(bv, false);
+	sel_pos_end = cursor.pos;
+	UpdateLocal(bv, false);
+	break;
+    case LFUN_LEFT:
+	result = moveLeft(bv);
+	if (hasCharSelection()) {
+	    sel_pos_start = sel_pos_end = cursor.pos;
+	    UpdateLocal(bv, false);
+	} else
+	    sel_pos_start = sel_pos_end = cursor.pos;
+	break;
+    case LFUN_DOWNSEL:
+	moveDown();
+	sel_pos_end = cursor.pos;
+	UpdateLocal(bv, false);
+	break;
+    case LFUN_DOWN:
+	result= moveDown();
+	if (hasCharSelection()) {
+	    sel_pos_start = sel_pos_end = cursor.pos;
+	    UpdateLocal(bv, false);
+	} else
+	    sel_pos_start = sel_pos_end = cursor.pos;
+	break;
+    case LFUN_UPSEL:
+	moveUp();
+	sel_pos_end = cursor.pos;
+	UpdateLocal(bv, false);
+	break;
+    case LFUN_UP:
+	result= moveUp();
+	if (hasCharSelection()) {
+	    sel_pos_start = sel_pos_end = cursor.pos;
+	    UpdateLocal(bv, false);
+	} else
+	    sel_pos_start = sel_pos_end = cursor.pos;
+	break;
+    case LFUN_BACKSPACE:
+	break;
+    case LFUN_DELETE:
+	break;
+    case LFUN_HOME:
+	break;
+    case LFUN_END:
+	break;
+    case LFUN_TAB:
+	if (hasCharSelection()) {
+	    sel_pos_start = sel_pos_end = cursor.pos;
+	    UpdateLocal(bv, false);
+	}
+	sel_pos_start = sel_pos_end = cursor.pos;
+	moveNextCell();
+	break;
+    case LFUN_LAYOUT_TABLE:
+    {
+	int flag = (arg == "true");
+	MenuLayoutTable(flag);
+    }
+    break;
+    default:
+	result = UNDISPATCHED;
+	break;
     }
     if (result!=FINISHED) {
 	if (!the_locking_inset) {

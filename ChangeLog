@@ -1,3 +1,12 @@
+2000-05-08  Juergen Vigna  <jug@sad.it>
+
+	* src/insets/insettabular.C (InsetButtonRelease): Now opens the
+	TabularLayoutMenu with mouse-button-3
+	(LocalDispatch): added LFUN_MENU_LAYOUT to open the Tabular-Layout.
+
+	* src/TabularLayout.C: added this file for having a Layout for
+	tabular-insets.
+
 2000-05-05  Juergen Vigna  <jug@sad.it>
 
 	* src/insets/insettabular.C (UpdateLocal): resetCursorPos when

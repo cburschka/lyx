@@ -59,6 +59,7 @@ lyx_SOURCES = \
 	Spacing.C \
 	Spacing.h \
 	TableLayout.C \
+	TabularLayout.C \
 	TextCache.C \
 	TextCache.h \
 	ToolbarDefaults.C \
