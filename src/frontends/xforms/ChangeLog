@@ -1,3 +1,7 @@
+2002-11-04  Rob Lahaye  <lahaye@snu.ac.kr>
+
+	* FormSpellchecker.C (input): fix label of spellchecker progress bar.
+
 2002-11-04  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* lyx_gui.C (hexname): STRCONV
@@ -9,7 +13,7 @@
 	* FormMathsDelim.C (apply): STRCONV
 
 	* lyx_gui.C (start): adjust signature
-	(start): exchange magic integeres for defined values.
+	(start): exchange magic integers for defined values.
 
 2002-10-31  Rob Lahaye  <lahaye@snu.ac.kr>
 
@@ -22,7 +26,7 @@
 	* FormParagraph.[Ch]:
 	* forms/form_paragraph.fd: a large-scale reorganisation and clean-up
 	of the code to make it more transparent. Use RadioButtonGroup and
-	ChaekedGlueLength for the same reason. Add tooltips.
+	CheckedGlueLength for the same reason. Add tooltips.
 
 2002-10-28  Angus Leeming  <leeming@lyx.org>
 

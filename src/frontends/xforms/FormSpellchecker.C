@@ -161,15 +161,14 @@ ButtonPolicy::SMInput FormSpellchecker::input(FL_OBJECT * ob, long ob_value)
 	}
 
 	// update slider with word count and progress
-	double const wordcount = controller().getCount();
 	int const progress = controller().getProgress();
-	if (wordcount > 0.0 && progress > 0) {
+	if (progress > 0) {
+		double const wordcount = controller().getCount();
 		double const total = 100.0 * wordcount / progress;
-
+		string const label = tostr(progress) + " %";
 		fl_set_slider_bounds(dialog_->slider_progress, 0.0, total);
 		fl_set_slider_value(dialog_->slider_progress, wordcount);
-		fl_set_object_label(dialog_->slider_progress,
-					(tostr(progress) + " %").c_str());
+		fl_set_object_label(dialog_->slider_progress, label.c_str());
 	}
 
 	return ButtonPolicy::SMI_VALID;
