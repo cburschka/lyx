@@ -64,17 +64,32 @@ InsetExternal::Params const & InsetExternal::params() const
 
 dispatch_result InsetExternal::localDispatch(FuncRequest const & cmd)
 {
-	if (cmd.action != LFUN_INSET_MODIFY)
-		return UNDISPATCHED;
+	dispatch_result result = UNDISPATCHED;
 
-	InsetExternal::Params p;
-	InsetExternalMailer::string2params(cmd.argument, p);
-	if (p.filename.empty())
-		return UNDISPATCHED;
+	switch (cmd.action) {
+	case LFUN_INSET_MODIFY: {
+		InsetExternal::Params p;
+		InsetExternalMailer::string2params(cmd.argument, p);
+		if (p.filename.empty())
+			break;
 
-	setFromParams(p);
-	cmd.view()->updateInset(this, true);
-	return DISPATCHED;
+		setFromParams(p);
+		cmd.view()->updateInset(this, true);
+		result = DISPATCHED;
+	}
+	break;
+
+	case LFUN_INSET_DIALOG_UPDATE: {
+		InsetExternalMailer mailer(*this);
+		mailer.updateDialog();
+	}
+	break;
+
+	default:
+		break;
+	}
+
+	return result;
 }
 
 

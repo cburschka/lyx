@@ -67,19 +67,32 @@ int InsetCommand::docbook(Buffer const *, ostream &, bool) const
 
 dispatch_result InsetCommand::localDispatch(FuncRequest const & cmd)
 {
-	if (cmd.action != LFUN_INSET_MODIFY)
-		return UNDISPATCHED;
+	dispatch_result result = UNDISPATCHED;
 
-	InsetCommandParams p;
-	InsetCommandMailer::string2params(cmd.argument, p);
-	if (p.getCmdName().empty())
-		return UNDISPATCHED;
+	switch (cmd.action) {
+	case LFUN_INSET_MODIFY: {
+		InsetCommandParams p;
+		InsetCommandMailer::string2params(cmd.argument, p);
+		if (p.getCmdName().empty())
+			break;
 
-	setParams(p);
-	if (view())
-		view()->updateInset(this, true);
+		setParams(p);
+		cmd.view()->updateInset(this, true);
+		result = DISPATCHED;
+	}
+	break;
 
-	return DISPATCHED;
+	case LFUN_INSET_DIALOG_UPDATE: {
+		InsetCommandMailer mailer(cmd.argument, *this);
+		mailer.updateDialog();
+	}
+	break;
+
+	default:
+		break;
+	}
+
+	return result;
 }
 
 InsetCommandMailer::InsetCommandMailer(string const & name,

@@ -169,6 +169,13 @@ dispatch_result InsetFloat::localDispatch(FuncRequest const & cmd)
 		result = DISPATCHED;
 	}
 	break;
+
+	case LFUN_INSET_DIALOG_UPDATE: {
+		InsetFloatMailer mailer(*this);
+		mailer.updateDialog();
+	}
+	break;
+
 	default:
 		result = InsetCollapsable::localDispatch(cmd);
 	}

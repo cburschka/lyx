@@ -99,6 +99,13 @@ dispatch_result InsetWrap::localDispatch(FuncRequest const & cmd)
 		result = DISPATCHED;
 	}
 	break;
+
+	case LFUN_INSET_DIALOG_UPDATE: {
+		InsetWrapMailer mailer(*this);
+		mailer.updateDialog();
+	}
+	break;
+
 	default:
 		result = InsetCollapsable::localDispatch(cmd);
 	}

@@ -115,19 +115,34 @@ InsetInclude::~InsetInclude()
 
 dispatch_result InsetInclude::localDispatch(FuncRequest const & cmd)
 {
-	if (cmd.action != LFUN_INSET_MODIFY)
-		return UNDISPATCHED;
+	dispatch_result result = UNDISPATCHED;
 
-	InsetInclude::Params p;
-	InsetIncludeMailer::string2params(cmd.argument, p);
-	if (p.cparams.getCmdName().empty())
-		return UNDISPATCHED;
+	switch (cmd.action) {
+	case LFUN_INSET_MODIFY: {
+		InsetInclude::Params p;
+		InsetIncludeMailer::string2params(cmd.argument, p);
+		if (p.cparams.getCmdName().empty())
+			break;
 
-	set(p);
-	params_.masterFilename_ = cmd.view()->buffer()->fileName();
+		set(p);
+		params_.masterFilename_ = cmd.view()->buffer()->fileName();
 
-	cmd.view()->updateInset(this, true);
-	return DISPATCHED;
+		cmd.view()->updateInset(this, true);
+		result = DISPATCHED;
+	}
+	break;
+
+	case LFUN_INSET_DIALOG_UPDATE: {
+		InsetIncludeMailer mailer(*this);
+		mailer.updateDialog();
+	}
+	break;
+
+	default:
+		break;
+	}
+
+	return result;
 }
 
 

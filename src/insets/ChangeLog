@@ -1,5 +1,15 @@
 2003-03-07  Angus Leeming  <leeming@lyx.org>
 
+	* insetcommand.C (localDispatch):
+	* insetexternal.C (localDispatch):
+	* insetfloat.C (localDispatch):
+	* insetinclude.C (localDispatch):
+	* insetminipage.C (localDispatch):
+	* insetwrap.C (localDispatch):
+	add LFUN_INSET_DIALOG_UPDATE to the switch.
+
+2003-03-07  Angus Leeming  <leeming@lyx.org>
+
 	* insetcommand.C (string2params):
 	* insetexternal.C (string2params):
 	* insetfloat.C (string2params):

@@ -1,3 +1,17 @@
+2003-03-05  Angus Leeming  <leeming@lyx.org>
+
+	* commandtags.h:
+	* LyXAction.C (init):
+	* lyxfunc.C (getStatus): remove LFUN_REF_INSERT.
+
+	* lyxfunc.C (getStatus): add LFUN_DIALOG_SHOW_NEW_INSET to switch.
+
+	* commandtags.h:
+	* LyXAction.C: add LFUN_INSET_DIALOG_UPDATE.
+
+	* lyxfunc (dispatch): on LFUN_DIALOG_UPDATE, pass the 'open' inset's
+	localDispatch method LFUN_INSET_DIALOG_UPDATE.
+
 2003-03-07  Angus Leeming  <leeming@lyx.org>
 
 	* lyxfunc.C (dispatch): add "include" to LFUN_SHOW_NEW_INSET and

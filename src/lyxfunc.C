@@ -507,6 +507,39 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 	// the functions which insert insets
 	Inset::Code code = Inset::NO_CODE;
 	switch (ev.action) {
+	case LFUN_DIALOG_SHOW_NEW_INSET:
+		if (ev.argument == "bibitem")
+			code = Inset::BIBITEM_CODE;
+		else if (ev.argument == "bibtex")
+			code = Inset::BIBTEX_CODE;
+		else if (ev.argument == "citation")
+			code = Inset::CITE_CODE;
+		else if (ev.argument == "ert")
+			code = Inset::ERT_CODE;
+		else if (ev.argument == "external")
+			code = Inset::EXTERNAL_CODE;
+		else if (ev.argument == "float")
+			code = Inset::FLOAT_CODE;
+		else if (ev.argument == "graphics")
+			code = Inset::GRAPHICS_CODE;
+		else if (ev.argument == "include")
+			code = Inset::INCLUDE_CODE;
+		else if (ev.argument == "index")
+			code = Inset::INDEX_CODE;
+		else if (ev.argument == "label")
+			code = Inset::LABEL_CODE;
+		else if (ev.argument == "minipage")
+			code = Inset::MINIPAGE_CODE;
+		else if (ev.argument == "ref")
+			code = Inset::REF_CODE;
+		else if (ev.argument == "toc")
+			code = Inset::TOC_CODE;
+		else if (ev.argument == "url")
+			code = Inset::URL_CODE;
+		else if (ev.argument == "wrap")
+			code = Inset::WRAP_CODE;
+		break;
+
 	case LFUN_INSET_ERT:
 		code = Inset::ERT_CODE;
 		break;
@@ -554,9 +587,6 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 		break;
 	case LFUN_INSET_OPTARG:
 		code = Inset::OPTARG_CODE;
-		break;
-	case LFUN_REF_INSERT:
-		code = Inset::REF_CODE;
 		break;
 	case LFUN_INDEX_INSERT:
 		code = Inset::INDEX_CODE;
@@ -1372,39 +1402,11 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 	case LFUN_DIALOG_UPDATE: {
 		string const & name = argument;
 		// Can only update a dialog connected to an existing inset
-		InsetBase * i = owner->getDialogs().getOpenInset(name);
-		if (!i)
-			break;
-
-		if (name == "bibitem" ||
-		    name == "bibtex" ||
-		    name == "citation" ||
-		    name == "index" ||
-		    name == "ref" ||
-		    name == "toc" ||
-		    name == "url") {
-			InsetCommand * inset = dynamic_cast<InsetCommand *>(i);
-			if (!inset)
-				break;
-
-			InsetCommandMailer mailer(name, *inset);
-			mailer.updateDialog();
-
-		} else if (name == "error") {
-			InsetError * inset = dynamic_cast<InsetError *>(i);
-			if (!inset)
-				break;
-
-			owner->getDialogs().update("error",
-						   inset->getContents());
-
-		} else if (name == "ert") {
-			InsetERT * inset = dynamic_cast<InsetERT *>(i);
-			if (!inset)
-				break;
-
-			InsetERTMailer mailer(*inset);
-			mailer.updateDialog();
+		InsetBase * inset = owner->getDialogs().getOpenInset(name);
+		if (inset) {
+			FuncRequest fr(view(), LFUN_INSET_DIALOG_UPDATE,
+				       ev.argument);
+			inset->localDispatch(fr);
 		}
 	}
 	break;

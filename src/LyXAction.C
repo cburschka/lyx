@@ -320,8 +320,6 @@ void LyXAction::init()
 		  N_("Reconfigure"), NoBuffer },
 		{ LFUN_REDO, "redo", N_("Redo"), Noop },
 		{ LFUN_REF_GOTO, "reference-goto", "", ReadOnly },
-		{ LFUN_REF_INSERT, "reference-insert",
-		  N_("Insert cross reference"), ReadOnly },
 		{ LFUN_REFERENCE_GOTO, "reference-next", "", ReadOnly },
 		{ LFUN_NEXT, "screen-down", "", ReadOnly },
 		{ LFUN_NEXTSEL, "screen-down-select", "", ReadOnly },
@@ -418,6 +416,7 @@ void LyXAction::init()
 		  N_("Disconnect the dialog from the current inset"), Noop },
 		{ LFUN_INSET_APPLY, "inset-apply", "", Noop },
 		{ LFUN_INSET_MODIFY, "", "internal only", Noop },
+		{ LFUN_INSET_DIALOG_UPDATE, "", "internal only", Noop },
 		{ LFUN_NOACTION, "", "", Noop }
 	};
 
