@@ -1,5 +1,10 @@
 2002-12-16  Edwin Leuven  <e.leuven@uva.nl>
 
+	* BulletsModule.C: forgot to remove an include of 
+	bulletstrings.[Ch] removed in the previous commit
+	
+2002-12-16  Edwin Leuven  <e.leuven@uva.nl>
+
 	* BulletsModule.[Ch]: Fix bulletstuff
 	* QDocument.C:
 	* QDocumentDialog.C:

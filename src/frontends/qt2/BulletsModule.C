@@ -29,7 +29,6 @@
 #include "ui/BulletsModuleBase.h"
 #include "QBrowseBox.h"
 #include "support/filetools.h"
-#include "bulletstrings.h"
 
 BulletsModule::BulletsModule(QWidget * parent,  char const * name, WFlags fl)
 	: BulletsModuleBase(parent, name, fl)
