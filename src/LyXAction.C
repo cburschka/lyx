@@ -365,7 +365,7 @@ void LyXAction::init()
 		{ LFUN_SHIFT_TAB, "tab-backward", "", Noop },
 		{ LFUN_TAB, "tab-forward", "", Noop },
 		{ LFUN_TABINSERT, "tab-insert", "", Noop },
-		{ LFUN_TABULAR_INSERT, "table-insert", N_("Insert Table"), Noop },
+		{ LFUN_TABULAR_INSERT, "tabular-insert", N_("Insert Table"), Noop },
 		{ LFUN_TABULAR_FEATURE, "tabular-feature",
 		  N_("Tabular Features"), Noop },
 #if 0

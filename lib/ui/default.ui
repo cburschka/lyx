@@ -185,7 +185,7 @@ Menuset
 	Item "TeX|T" "ert-insert"
 	Item "Minipage|p" "minipage-insert"
 	Item "Graphics...|G" "graphics-insert"
-	Item "Tabular Material...|b" "dialog-tabular-insert"
+	Item "Tabular Material...|b" "tabular-insert"
 	Submenu "Floats|a" "insert_floats"
 	Separator
 	Item "Include File...|d" "buffer-child-insert"
@@ -312,7 +312,7 @@ Menuset
 	Separator
 	Item "Error|E" "error-next"
 	Item "Note|N" "note-next"
-	Item "Refs|R" "reference-next"
+	Item "Refs|R" "reference-goto"
 	Submenu "Bookmarks|B" "navigate_bookmarks"
     End
 
@@ -398,5 +398,5 @@ Toolbar
     Icon "depth-increment"
     Separator
     Icon "graphics-insert"
-    Icon "dialog-tabular-insert"
+    Icon "tabular-insert"
 End
