@@ -99,7 +99,7 @@ void QAbout::build_dialog()
 	}
 #endif
 
-	dialog_->creditsTV->setText(toqstr(out.str()));
+	dialog_->creditsTV->setText(toqstr(STRCONV(out.str())));
 
 	// try to resize to a good size
 	dialog_->copyright->hide();
