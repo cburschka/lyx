@@ -269,7 +269,7 @@ void XWorkArea::scroll_cb()
 	waitForX(false);
 }
 
-
+ 
 int XWorkArea::work_area_handler(FL_OBJECT * ob, int event,
 				 FL_Coord, FL_Coord,
 				 int key, void * xev)
@@ -317,9 +317,7 @@ int XWorkArea::work_area_handler(FL_OBJECT * ob, int event,
 
 		int const drag_x = ev->xmotion.x;
 		int const drag_y = ev->xmotion.y;
-		int const area_x = ob->x;
 		int const area_y = ob->y;
-		int const area_w = ob->w;
 		int const area_h = ob->h;
 
 		// Check if the mouse is above or below the workarea
@@ -498,9 +496,12 @@ int XWorkArea::work_area_handler(FL_OBJECT * ob, int event,
 
 	case FL_ENTER:
 		lyxerr[Debug::WORKAREA] << "Workarea event: ENTER" << endl;
+		fl_set_cursor(FL_ObjWin(area->work_area), XC_xterm);
 		break;
 	case FL_LEAVE:
 		lyxerr[Debug::WORKAREA] << "Workarea event: LEAVE" << endl;
+		// There should be no need for this. But there is.
+		fl_set_cursor(FL_ObjWin(area->work_area), FL_DEFAULT_CURSOR);
 		break;
 	case FL_DBLCLICK:
 		if (ev) {
