@@ -204,7 +204,9 @@ void Dialogs::showSearch()
 
 
 void Dialogs::showSendto()
-{}
+{
+	pimpl_->sendto.controller().show();
+}
 
 
 void Dialogs::showSpellchecker()

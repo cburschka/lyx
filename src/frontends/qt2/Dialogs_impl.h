@@ -96,7 +96,8 @@
 #include "QRefDialog.h"
 #include "QSearch.h"
 #include "QSearchDialog.h"
-//#include "QSendto.h"
+#include "QSendto.h"
+#include "QSendtoDialog.h"
 #include "QShowFile.h"
 #include "QShowFileDialog.h"
 #include "QSpellchecker.h"
@@ -189,6 +190,9 @@ RefDialog;
 typedef GUI<ControlSearch, QSearch, NoRepeatedApplyReadOnlyPolicy, Qt2BC>
 SearchDialog;
 
+typedef GUI<ControlSendto, QSendto, OkApplyCancelPolicy, Qt2BC>
+SendtoDialog;
+
 typedef GUI<ControlSpellchecker, QSpellchecker, NoRepeatedApplyReadOnlyPolicy, Qt2BC>
 SpellcheckerDialog;
 
@@ -240,6 +244,7 @@ struct Dialogs::Impl {
 	PrintDialog         print;
 	RefDialog           ref;
 	SearchDialog        search;
+	SendtoDialog        sendto;
 	SpellcheckerDialog  spellchecker;
 	TabularCreateDialog tabularcreate;
 	TexinfoDialog       texinfo;

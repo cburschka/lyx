@@ -1,3 +1,13 @@
+2002-10-16  Juergen Spitzmueller  <j.spitzmueller@gmx.de>
+
+	* ui/QSendtoDialog.ui:
+	* QSendtoDialog.[Ch]:
+	* QSendto.[Ch]:
+	* Makefile.dialogs:
+	* Dialogs.C:
+	* Dialogs2.C:
+	* Dialogs_impl.h: Implement Sendto (Custom Export) dialog
+
 2002-10-16  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* qfont_loader.C (font_info): correct calculation of font size
@@ -27,7 +37,7 @@
 2002-10-12  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* qfont_loader.C (available): Implemented.
-
+	
 2002-10-09  Edwin Leuven <leuven@fee.uva.nl>
 
 	* QDocument.C: Brand new document dialog

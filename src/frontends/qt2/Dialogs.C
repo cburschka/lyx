@@ -65,6 +65,7 @@ Dialogs::Impl::Impl(LyXView & lv, Dialogs & d)
 	  print(lv, d),
 	  ref(lv, d),
 	  search(lv, d),
+	  sendto(lv, d),
 	  spellchecker(lv, d),
 	  tabularcreate(lv, d),
 	  texinfo(lv, d),

@@ -1,0 +1,267 @@
+<!DOCTYPE UI><UI>
+<class>QSendtoDialogBase</class>
+<include location="global">config.h</include>
+<include location="local">gettext.h</include>
+<widget>
+    <class>QDialog</class>
+    <property stdset="1">
+        <name>name</name>
+        <cstring>QSendtoDialogBase</cstring>
+    </property>
+    <property stdset="1">
+        <name>geometry</name>
+        <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>278</width>
+            <height>262</height>
+        </rect>
+    </property>
+    <property stdset="1">
+        <name>caption</name>
+        <string>Custom Export</string>
+    </property>
+    <property stdset="1">
+        <name>sizeGripEnabled</name>
+        <bool>true</bool>
+    </property>
+    <widget>
+        <class>QComboBox</class>
+        <property stdset="1">
+            <name>name</name>
+            <cstring>commandCO</cstring>
+        </property>
+        <property stdset="1">
+            <name>geometry</name>
+            <rect>
+                <x>15</x>
+                <y>185</y>
+                <width>245</width>
+                <height>22</height>
+            </rect>
+        </property>
+        <property stdset="1">
+            <name>sizePolicy</name>
+            <sizepolicy>
+                <hsizetype>3</hsizetype>
+                <vsizetype>0</vsizetype>
+            </sizepolicy>
+        </property>
+        <property stdset="1">
+            <name>focusPolicy</name>
+            <enum>StrongFocus</enum>
+        </property>
+        <property stdset="1">
+            <name>editable</name>
+            <bool>true</bool>
+        </property>
+        <property stdset="1">
+            <name>sizeLimit</name>
+            <number>10</number>
+        </property>
+        <property stdset="1">
+            <name>maxCount</name>
+            <number>666</number>
+        </property>
+        <property stdset="1">
+            <name>insertionPolicy</name>
+            <enum>AtTop</enum>
+        </property>
+        <property stdset="1">
+            <name>autoCompletion</name>
+            <bool>true</bool>
+        </property>
+        <property stdset="1">
+            <name>duplicatesEnabled</name>
+            <bool>false</bool>
+        </property>
+        <property>
+            <name>toolTip</name>
+            <string>Process the converted file with this command ($$FName = file name)</string>
+        </property>
+    </widget>
+    <widget>
+        <class>QLabel</class>
+        <property stdset="1">
+            <name>name</name>
+            <cstring>commandLA</cstring>
+        </property>
+        <property stdset="1">
+            <name>geometry</name>
+            <rect>
+                <x>15</x>
+                <y>165</y>
+                <width>126</width>
+                <height>16</height>
+            </rect>
+        </property>
+        <property stdset="1">
+            <name>text</name>
+            <string>&amp;Command:</string>
+        </property>
+        <property>
+            <name>buddy</name>
+            <cstring>commandCO</cstring>
+        </property>
+    </widget>
+    <widget>
+        <class>QLabel</class>
+        <property stdset="1">
+            <name>name</name>
+            <cstring>formatLA</cstring>
+        </property>
+        <property stdset="1">
+            <name>geometry</name>
+            <rect>
+                <x>15</x>
+                <y>10</y>
+                <width>115</width>
+                <height>16</height>
+            </rect>
+        </property>
+        <property stdset="1">
+            <name>text</name>
+            <string>&amp;Export formats:</string>
+        </property>
+        <property>
+            <name>buddy</name>
+            <cstring>formatLB</cstring>
+        </property>
+    </widget>
+    <widget>
+        <class>QListBox</class>
+        <item>
+            <property>
+                <name>text</name>
+                <string>New Item</string>
+            </property>
+        </item>
+        <property stdset="1">
+            <name>name</name>
+            <cstring>formatLB</cstring>
+        </property>
+        <property stdset="1">
+            <name>geometry</name>
+            <rect>
+                <x>15</x>
+                <y>30</y>
+                <width>245</width>
+                <height>125</height>
+            </rect>
+        </property>
+        <property stdset="1">
+            <name>maximumSize</name>
+            <size>
+                <width>32767</width>
+                <height>32767</height>
+            </size>
+        </property>
+        <property>
+            <name>toolTip</name>
+            <string>Available export converters</string>
+        </property>
+    </widget>
+    <widget>
+        <class>QLayoutWidget</class>
+        <property stdset="1">
+            <name>name</name>
+            <cstring>Layout6</cstring>
+        </property>
+        <property stdset="1">
+            <name>geometry</name>
+            <rect>
+                <x>11</x>
+                <y>225</y>
+                <width>256</width>
+                <height>24</height>
+            </rect>
+        </property>
+        <hbox>
+            <property stdset="1">
+                <name>margin</name>
+                <number>0</number>
+            </property>
+            <property stdset="1">
+                <name>spacing</name>
+                <number>6</number>
+            </property>
+            <widget>
+                <class>QPushButton</class>
+                <property stdset="1">
+                    <name>name</name>
+                    <cstring>okPB</cstring>
+                </property>
+                <property stdset="1">
+                    <name>text</name>
+                    <string>OK</string>
+                </property>
+                <property stdset="1">
+                    <name>autoDefault</name>
+                    <bool>true</bool>
+                </property>
+                <property stdset="1">
+                    <name>default</name>
+                    <bool>false</bool>
+                </property>
+            </widget>
+            <widget>
+                <class>QPushButton</class>
+                <property stdset="1">
+                    <name>name</name>
+                    <cstring>applyPB</cstring>
+                </property>
+                <property stdset="1">
+                    <name>text</name>
+                    <string>&amp;Apply</string>
+                </property>
+            </widget>
+            <widget>
+                <class>QPushButton</class>
+                <property stdset="1">
+                    <name>name</name>
+                    <cstring>closePB</cstring>
+                </property>
+                <property stdset="1">
+                    <name>text</name>
+                    <string>Cancel</string>
+                </property>
+            </widget>
+        </hbox>
+    </widget>
+</widget>
+<connections>
+    <connection>
+        <sender>formatLB</sender>
+        <signal>highlighted(const QString&amp;)</signal>
+        <receiver>QSendtoDialogBase</receiver>
+        <slot>slotFormatHighlighted(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>formatLB</sender>
+        <signal>selected(const QString&amp;)</signal>
+        <receiver>QSendtoDialogBase</receiver>
+        <slot>slotFormatSelected(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>formatLB</sender>
+        <signal>highlighted(const QString&amp;)</signal>
+        <receiver>QSendtoDialogBase</receiver>
+        <slot>changed_adaptor()</slot>
+    </connection>
+    <connection>
+        <sender>commandCO</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>QSendtoDialogBase</receiver>
+        <slot>changed_adaptor()</slot>
+    </connection>
+    <slot access="public">changed_adaptor()</slot>
+    <slot access="public">slotFormatHighlighted(const QString&amp;)</slot>
+    <slot access="public">slotFormatSelected(const QString&amp;)</slot>
+</connections>
+<tabstops>
+    <tabstop>formatLB</tabstop>
+    <tabstop>okPB</tabstop>
+    <tabstop>applyPB</tabstop>
+    <tabstop>closePB</tabstop>
+</tabstops>
+</UI>
