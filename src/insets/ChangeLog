@@ -1,5 +1,13 @@
 2004-09-29  Andreas Vox <vox@isp.uni-luebeck.de>
 
+	* insetgraphics.C (createDocBookAttribute, docbook) : 
+	convert scale, width, height and keepaspectratio to Docbook standards)
+	
+	* insetgraphics.[hC] (toDocbookLength): new method to convert TeX units
+	to Docbook units where possible.
+
+2004-09-29  Andreas Vox <vox@isp.uni-luebeck.de>
+
 	* insetgraphics.C (docbook): create inlinegraphic instead of graphic. 
 	
 	* insetgraphics.[hC] (createDocBookAttributes): Export parameters

@@ -95,6 +95,8 @@ private:
 	std::string const statusMessage() const;
 	/// Create the options for the latex command.
 	std::string const createLatexOptions() const;
+	/// Create length values for docbook export.
+	std::string const toDocbookLength(LyXLength const & len) const;
 	/// Create the atributes for docbook export.
 	std::string const createDocBookAttributes() const;
 	/// Convert the file if needed, and return the location of the file.

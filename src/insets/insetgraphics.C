@@ -64,6 +64,7 @@ TODO
 #include "gettext.h"
 #include "LaTeXFeatures.h"
 #include "lyx_main.h"
+#include "lyxlength.h"
 #include "lyxlex.h"
 #include "metricsinfo.h"
 #include "outputparams.h"
@@ -337,10 +338,67 @@ string const InsetGraphics::createLatexOptions() const
 }
 
 
+string const InsetGraphics::toDocbookLength(LyXLength const & len) const
+{
+	ostringstream result;
+	switch (len.unit() ) {
+		case LyXLength::SP: //< Scaled point (65536sp = 1pt) TeX's smallest unit.
+			result << len.value() * 65536.0 * 72 / 72.27 << "pt"; 
+			break;
+		case LyXLength::PT: //< Point = 1/72.27in = 0.351mm
+			result << len.value() * 72 / 72.27 << "pt"; 
+			break;
+		case LyXLength::BP: //< Big point (72bp = 1in), also PostScript point
+			result << len.value() << "pt";
+			break;
+		case LyXLength::DD: //< Didot point = 1/72 of a French inch, = 0.376mm
+			result << len.value() * 0.376 << "mm";
+			break;
+		case LyXLength::MM: //< Millimeter = 2.845pt
+			result << len.value() << "mm";
+			break;
+		case LyXLength::PC: //< Pica = 12pt = 4.218mm
+			result << len.value() << "pc";
+			break;
+		case LyXLength::CC: //< Cicero = 12dd = 4.531mm
+			result << len.value() * 4.531 << "mm";
+			break;
+		case LyXLength::CM: //< Centimeter = 10mm = 2.371pc
+			result << len.value() << "cm";
+			break;
+		case LyXLength::IN: //< Inch = 25.4mm = 72.27pt = 6.022pc
+			result << len.value() << "in";
+			break;
+		case LyXLength::EX: //< Height of a small "x" for the current font.
+			// Obviously we have to compromise here. Any better ratio than 1.5 ?
+			result << len.value() / 1.5 << "em";
+			break;
+		case LyXLength::EM: //< Width of capital "M" in current font.
+			result << len.value() << "em";
+			break;
+		case LyXLength::MU: //< Math unit (18mu = 1em) for positioning in math mode
+			result << len.value() * 18 << "em";
+			break;
+		case LyXLength::PTW: //< Percent of TextWidth
+		case LyXLength::PCW: //< Percent of ColumnWidth
+		case LyXLength::PPW: //< Percent of PageWidth
+		case LyXLength::PLW: //< Percent of LineWidth
+		case LyXLength::PTH: //< Percent of TextHeight	
+		case LyXLength::PPH: //< Percent of Paper
+			// Sigh, this will go wrong. 
+			result << len.value() << "%";
+			break;
+		default:
+			result << len.asString(); 
+			break;
+	}
+	return result.str();
+}
+ 
 string const InsetGraphics::createDocBookAttributes() const
 {
 	// Calculate the options part of the command, we must do it to a string
-	// stream since we copied the code from createLatexParams()
+	// stream since we copied the code from createLatexParams() ;-)
 
 	// FIXME: av: need to translate spec -> Docbook XSL spec (http://www.sagehill.net/docbookxsl/ImageSizing.html)
 	// Right now it only works with my version of db2latex :-)
@@ -348,14 +406,21 @@ string const InsetGraphics::createDocBookAttributes() const
 	ostringstream options;
 	if (!float_equal(params().scale, 0.0, 0.05)) {
 		if (!float_equal(params().scale, 100.0, 0.05))
-			options << " scale=\"" << params().scale / 100.0
+			options << " scale=\"" << static_cast<int>( (params().scale) + 0.5 )
 				<< "\" ";
 	} else {
-		if (!params().width.zero())
-			options << " width=\"" << params().width.asLatexString()  << "\" ";
-		if (!params().height.zero())
-			options << " depth=\"" << params().height.asLatexString()  << "\" ";
+		if ( ! params().width.zero()) {
+			options << " width=\"" << toDocbookLength(params().width)  << "\" ";
+		}
+		if ( ! params().height.zero()) {
+			options << " depth=\"" << toDocbookLength(params().height)  << "\" ";
+		}
+		if ( params().keepAspectRatio ) {
+			// This will be irrelevant unless both width and height are set
+			options << "scalefit=\"1\" ";
+		}
 	}
+	
 
 	if (!params().special.empty())
 	    options << params().special << " ";
