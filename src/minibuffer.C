@@ -126,7 +126,11 @@ int MiniBuffer::peek_event(FL_OBJECT * ob, int event, FL_Coord, FL_Coord,
 		default:
 			return 0;
 		}
-	}
+	} else if (event == FL_PUSH) {
+		// This actually clears the buffer.
+		mini->ExecCommand();
+ 	}
+
 	return 0;
 }
 
