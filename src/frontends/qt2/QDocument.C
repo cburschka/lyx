@@ -337,8 +337,8 @@ void QDocument::apply()
 	params.float_placement = dialog_->floatModule->get();
 
 	// paper
-	params.papersize2 =
-		dialog_->pageLayoutModule->papersizeCO->currentItem();
+	params.papersize2 = static_cast<BufferParams::VMARGIN_PAPER_TYPE>
+		(dialog_->pageLayoutModule->papersizeCO->currentItem());
 
 	params.paperwidth = widgetsToLength(dialog_->pageLayoutModule->paperwidthLE,
 		dialog_->pageLayoutModule->paperwidthUnitCO);
@@ -364,7 +364,7 @@ void QDocument::apply()
 	if (margin > 0) {
 		margin = margin - 1;
 	}
-	params.paperpackage = char(margin);
+	params.paperpackage = static_cast<BufferParams::PAPER_PACKAGES>(margin);
 
 	// set params.papersize from params.papersize2
 	// and params.paperpackage
