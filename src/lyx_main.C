@@ -77,6 +77,20 @@ LyX::LyX(int * argc, char * argv[])
 	lyxGUI = new LyXGUI(this, argc, argv, gui);
 	lyxerr[Debug::INIT] << "Initializing LyXGUI...done" << endl;
 
+	// Now the GUI and LyX have taken care of their arguments, so
+	// the only thing left on the command line should be
+	// filenames. Let's check anyway.
+	for (int argi = 1; argi < *argc ; ++argi) {
+		if (argv[argi][0] == '-') {
+			lyxerr << _("Wrong command line option `")
+			       << argv[argi]
+			       << _("'. Exiting.") << endl;
+			exit(0);
+		}
+	}
+	
+
+
 	// Initialization of LyX (reads lyxrc and more)
 	lyxerr[Debug::INIT] << "Initializing LyX::init..." << endl;
 	init(argc, argv, gui);
@@ -85,9 +99,6 @@ LyX::LyX(int * argc, char * argv[])
 	lyxGUI->init();
 
 	// Load the files specified in the command line.
-	// Now the GUI and LyX have taken care of their arguments, so
-	// the only thing left on the command line should be
-	// filenames.
 	if ((*argc) == 2) 
 		lyxerr[Debug::INFO] << "Opening document..." << endl;
 	else if ((*argc) > 2)
@@ -321,12 +332,30 @@ void LyX::init(int */*argc*/, char **argv, bool gui)
 	// Determine user lyx-dir
 	//
 	
-	user_lyxdir = AddPath(GetEnvPath("HOME"), string(".") + PACKAGE);
+	// Directories are searched in this order:
+	// 1) -userdir command line parameter
+	// 2) LYX_USERDIR_11x environment variable
+	// 3) $HOME/.<name of binary>
+
+	// If we had a command line switch, user_lyxdir is already set
+	bool explicit_userdir = true;
+	if (user_lyxdir.empty()) {
+
+	// LYX_USERDIR_11x environment variable
+		user_lyxdir = GetEnvPath("LYX_USERDIR_11x");
+
+	// default behaviour
+		if (user_lyxdir.empty())
+			user_lyxdir = AddPath(GetEnvPath("HOME"),
+							string(".") + PACKAGE);
+			explicit_userdir = false;
+	}
+
 	lyxerr[Debug::INIT] << "User LyX directory: '" 
 			    <<  user_lyxdir << '\'' << endl;
 
 	// Check that user LyX directory is ok.
-	queryUserLyXDir();
+	queryUserLyXDir(explicit_userdir);
 
 	//
 	// Load the layouts first
@@ -482,7 +511,7 @@ void LyX::deadKeyBindings(kb_keymap * kbmap)
 
 // This one is not allowed to use anything on the main form, since that
 // one does not exist yet. (Asger)
-void LyX::queryUserLyXDir()
+void LyX::queryUserLyXDir(bool explicit_userdir)
 {
 	// Does user directory exist?
 	FileInfo fileInfo(user_lyxdir);
@@ -494,7 +523,11 @@ void LyX::queryUserLyXDir()
 	}
 	
 	// Nope
-	if (!AskQuestion(_("You don't have a personal LyX directory."),
+	// Different wording if the user specifically requested a directory
+	if (!AskQuestion( explicit_userdir
+			 ? _("You have specified an invalid LyX directory.")
+			 : _("You don't have a personal LyX directory.") ,
+
 			 _("It is needed to keep your own configuration."),
 			 _("Should I try to set it up for you (recommended)?"))) {
 		lyxerr << _("Running without personal LyX directory.") << endl;
@@ -559,7 +592,8 @@ void commandLineHelp()
 		_("Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
 		  "Command line switches (case sensitive):\n"
 		  "\t-help           summarize LyX usage\n"
-		  "\t-sysdir x       try to set system directory to x\n"
+		  "\t-userdir dir      try to set user directory to dir\n"
+		  "\t-sysdir dir       try to set system directory to dir\n"
 		  "\t-width x        set the width of the main window\n"
 		  "\t-height y       set the height of the main window\n"
 		  "\t-xpos x         set the x position of the main window\n"
@@ -570,10 +604,10 @@ void commandLineHelp()
 		  "Check the LyX man page for more options.") << endl;
 }
 
-
 bool LyX::easyParse(int * argc, char * argv[])
 {
 	bool gui = true;
+	int removeargs = 0; // used when options are read
 	for(int i = 1; i < *argc; ++i) {
 		string arg = argv[i];
 
@@ -581,13 +615,7 @@ bool LyX::easyParse(int * argc, char * argv[])
 		if (arg == "-dbg") {
 			if (i + 1 < *argc) {
 				setDebuggingLevel(argv[i + 1]);
-
-				// Now, remove these two arguments by shifting
-				// the following two places down.
-				(*argc) -= 2;
-				for (int j = i; j < (*argc); ++j)
-					argv[j] = argv[j + 2];
-				--i; // After shift, check this number again.
+				removeargs = 2;
 			} else {
 				lyxerr << _("List of supported debug flags:")
 				       << endl;
@@ -599,18 +627,26 @@ bool LyX::easyParse(int * argc, char * argv[])
 		else if (arg == "-sysdir") {
 			if (i + 1 < *argc) {
 				system_lyxdir = argv[i + 1];
-
-				// Now, remove these two arguments by shifting
-				// the following two places down.
-				(*argc) -= 2;
-				for (int j= i; j < (*argc); ++j)
-					argv[j] = argv[j + 2];
-				--i; // After shift, check this number again.
-			} else
-				lyxerr << _("Missing directory for -sysdir switch!")
+				removeargs = 2;
+			} else {
+				lyxerr << _("Missing directory for -sysdir switch!") 
 				       << endl;
+				exit(0);
+			}
+		}
+		// Check for "-userdir"
+		else if (arg == "-userdir") {
+			if (i + 1 < *argc) {
+				user_lyxdir = argv[i + 1];
+				removeargs = 2;
+			} else {
+				lyxerr << _("Missing directory for -userdir switch!")
+				       << endl;
+				exit(0);
+			}
+		}
 		// Check for --help or -help
-		} else if (arg == "--help" || arg == "-help") {
+		else if (arg == "--help" || arg == "-help") {
 			commandLineHelp();
 			exit(0);
 		} 
@@ -624,14 +660,7 @@ bool LyX::easyParse(int * argc, char * argv[])
 		else if (arg == "-x" || arg == "--execute") {
 			if (i + 1 < *argc) {
 				batch_command = string(argv[i + 1]);
-
-				// Now, remove these two arguments by shifting
-				// the following two places down.
-				(*argc) -= 2;
-				for (int j = i; j < (*argc); ++j)
-					argv[j] = argv[j + 2];
-				--i; // After shift, check this number again.
-
+				removeargs = 2;
 			}
 			else
 				lyxerr << _("Missing command string after  -x switch!") << endl;
@@ -643,11 +672,7 @@ bool LyX::easyParse(int * argc, char * argv[])
 		else if (arg == "-e" || arg == "--export") {
 			if (i + 1 < *argc) {
 				string type(argv[i+1]);
-
-				(*argc) -= 2;
-				for (int j = i; j < (*argc); ++j)
-					argv[j] = argv[j + 2];
-				--i; // After shift, check this number again.
+				removeargs = 2;
 
 				if (type == "tex")
 					type = "latex";
@@ -668,16 +693,11 @@ bool LyX::easyParse(int * argc, char * argv[])
 					    "ps...] after ")
 				       << arg << _(" switch!") << endl;
 		}
-
 		else if (arg == "--import") {
 			if (i + 1 < *argc) {
 				string type(argv[i+1]);
 				string file(argv[i+2]);
-
-				(*argc) -= 3;
-				for (int j = i; j < (*argc); ++j)
-					argv[j] = argv[j + 3];
-				--i; // After shift, check this number again.
+				removeargs = 3;
 	
 				batch_command = "buffer-import " + type + " " + file;
 				lyxerr << "batch_command: "
@@ -688,6 +708,17 @@ bool LyX::easyParse(int * argc, char * argv[])
 					    "ps...] after ")
 				       << arg << _(" switch!") << endl;
 		}
+
+		if (removeargs > 0) {
+			// Now, remove used arguments by shifting
+			// the following ones removeargs places down.
+			(*argc) -= removeargs;
+			for (int j = i; j < (*argc); ++j)
+				argv[j] = argv[j + removeargs];
+			--i; // After shift, check this number again.
+			removeargs = 0;
+		}
+
 	}
 
 	return gui;

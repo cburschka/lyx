@@ -1,3 +1,14 @@
+2000-05-29  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/lyx_main.C (easyParse): simplify the code by factoring the
+	part that removes parameters from the command line.
+	(LyX): check wether wrong command line options have been given.
+
+2000-05-29  Lior Silberman <slior@math.huji.ac.il>
+
+	* src/lyx_main.C : add support for specifying user LyX
+	directory via command line option -userdir.
+
 2000-05-26 Dekel Tsur  <dekel@math.tau.ac.il>
 
 	* src/menus.C (Add_to_toc_menu): Limit the number of popups, and

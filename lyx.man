@@ -48,6 +48,10 @@ summarizes LyX usage
 .BI \-sysdir " directory"
 sets system directory. Normally not needed.
 .TP
+.BI \-userdir " directory"
+sets user directory. Needed if you want to use LyX with different lyxrc 
+settings.
+.TP
 .BI \-width " x"
 the width of the main window in \fBLyX\fR.
 .TP
@@ -172,6 +176,18 @@ The system directory is determined by searching for the file
 4) <path of binary>/../share/<name of binary>/ 
 .br
 5) hardcoded lyx_dir (usually /usr/local/share/lyx on UNIX and %X11ROOT%\\XFree86\\lib\\X11\\lyx on OS/2 with XFree)
+
+.TP
+.B LYX_USERDIR_11x
+can be used to specify which user directory to use.
+.PP
+The user directory is, in order of precedence: 
+.br
+1) -usedir command line parameter
+.br
+2) LYX_USERDIR_11x environment variable
+.br
+3) $HOME/.<name of binary> if no explicit setting is made
 
 .TP
 .B LYX_LOCALEDIR

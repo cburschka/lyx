@@ -80,7 +80,7 @@ private:
 	///
 	void deadKeyBindings(kb_keymap * kbmap);
 	///
-	void queryUserLyXDir();
+	void queryUserLyXDir(bool explicit_userdir);
 	///
         void ReadRcFile(string const & name);
         ///
