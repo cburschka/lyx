@@ -534,7 +534,7 @@ string const LyXAction::getActionName(int action) const
 {
 	FuncRequest ev = retrieveActionArg(action);
 	if (!ev.argument.empty())
-		ev.argument.insert(0u, 1, ' ');
+		ev.argument.insert(string::size_type(0), 1, ' ');
 
 	info_map::const_iterator const it = lyx_info_map.find(ev.action);
 
