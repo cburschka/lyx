@@ -70,6 +70,10 @@ void ControlDialog<Base>::show()
 	connect();
 
 	setParams();
+	if (emergency_exit_) {
+		hide();
+		return;
+	}
 
 	if (!dialog_built_) {
 		view().build();
@@ -87,6 +91,10 @@ void ControlDialog<Base>::update()
 		return;
 
 	setParams();
+	if (emergency_exit_) {
+		hide();
+		return;
+	}
 
 	bc().readOnly(isReadonly());
 	view().update();
@@ -95,6 +103,7 @@ void ControlDialog<Base>::update()
 template <class Base>
 void ControlDialog<Base>::hide()
 {
+	emergency_exit_ = false;
 	clearParams();
 
 	disconnect();

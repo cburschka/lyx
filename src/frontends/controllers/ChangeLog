@@ -1,3 +1,14 @@
+2001-09-25  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* ControlButtons.h: add variable emergency_exit_. If set to true, the
+	view will be shut down.
+
+	* ControlDialogs.h:
+	* ControlInset.h: act on emergency_exit_.
+
+	* ControlSpellchecker.C (clearParams): set emergency_exit_ if the
+	speller fails to launch.
+
 2001-09-24  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* ControlRef.C (getBufferList): use MakeDisplayPath on the list.

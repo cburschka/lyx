@@ -82,6 +82,10 @@ protected:
 	    of the View. */
 	virtual ViewBase & view() = 0;
 
+	/** This flag can be set by one of the miriad the controller methods
+	    to ensure that the dialog is shut down. */
+	bool emergency_exit_;
+
 private:
 	///
 	bool is_closing_;

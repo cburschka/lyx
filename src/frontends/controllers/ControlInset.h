@@ -143,6 +143,10 @@ void ControlInset<Inset, Params>::show(Params const & params)
 	params_ = new Params(params);
 
 	setDaughterParams();
+	if (emergency_exit_) {
+		hide();
+		return;
+	}
 
 	if (!dialog_built_) {
 		view().build();
@@ -157,6 +161,7 @@ void ControlInset<Inset, Params>::show(Params const & params)
 template <class Inset, class Params>
 void ControlInset<Inset, Params>::hide()
 {
+	emergency_exit_ = false;
 	if (params_) {
 		delete params_;
 		params_ = 0;
@@ -180,6 +185,11 @@ void ControlInset<Inset, Params>::update()
 		params_ = new Params(getParams(*inset_));
 	else
 		params_ = new Params();
+
+	if (emergency_exit_) {
+		hide();
+		return;
+	}
 
 	bc().readOnly(isReadonly());
 	view().update();

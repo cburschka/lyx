@@ -239,6 +239,9 @@ void ControlSpellchecker::clearParams()
 	stop_ = false;
 	result_ = SpellBase::ISP_UNKNOWN;
 	speller_ = 0;
+
+	// make sure that the dialog is not launched
+	emergency_exit_ = true;
 }
 
 

@@ -23,7 +23,7 @@
 #include "lyxrc.h"
 
 ControlButtons::ControlButtons()
-	: is_closing_(false)
+	: emergency_exit_(false), is_closing_(false)
 {}
 
 
