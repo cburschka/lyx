@@ -22,6 +22,7 @@
 #include "LString.h"
 #include "DepTable.h"
 #include <vector>
+#include <set>
 
 #include <boost/utility.hpp>
 
@@ -60,6 +61,42 @@ private:
 	///
 	Errors errors;
 };
+
+class Aux_Info {
+public:
+	///
+	Aux_Info() {}
+	///
+	string aux_file;
+	///
+	std::set<string> citations;
+	///
+	std::set<string> databases;
+	///
+	std::set<string> styles;
+	///
+	friend
+	bool operator==(Aux_Info const & a, Aux_Info const & o);
+};
+
+
+///
+inline
+bool operator==(Aux_Info const & a, Aux_Info const & o)
+{
+	return a.aux_file == o.aux_file &&
+		a.citations == o.citations &&
+		a.databases == o.databases &&
+		a.styles == o.styles;
+}
+
+
+///
+inline
+bool operator!=(Aux_Info const & a, Aux_Info const & o)
+{
+	return !(a == o);
+}
 
 
 ///
@@ -100,6 +137,8 @@ public:
 		///
 		TOO_MANY_ERRORS = 4096,
 		///
+		ERROR_RERUN = 8192,
+		///
 		ERRORS = TEX_ERROR + LATEX_ERROR,
 		///
 		WARNINGS = TEX_WARNING + LATEX_WARNING + PACKAGE_WARNING
@@ -138,10 +177,20 @@ protected:
 	bool runMakeIndex(string const &);
 
 	///
-	bool scanAux(DepTable &);
+	std::vector<Aux_Info> const scanAuxFiles(string const &);
+
+	///
+	Aux_Info const scanAuxFile(string const &);
+
+	///
+	void scanAuxFile(string const &, Aux_Info &);
 	
 	///
-	bool runBibTeX(string const &, DepTable &);
+	void updateBibtexDependencies(DepTable &,
+				      std::vector<Aux_Info> const &);
+
+	///
+	bool runBibTeX(std::vector<Aux_Info> const &);
 
 	///
 	void deleteFilesOnError() const;

@@ -36,6 +36,8 @@
 using std::ifstream;
 using std::getline;
 using std::endl;
+using std::vector;
+using std::set;
 
 // TODO: in no particular order
 // - get rid of the extern BufferList and the call to
@@ -138,56 +140,57 @@ int LaTeX::run(TeXErrors & terr, MiniBuffer * minib)
 	//             run latex once (we need to run latex once anyway) and
 	//             remake the dependency file.
 	//
+
 	FileInfo fi(depfile);
+	bool had_depfile = fi.exist();
 	bool run_bibtex = false;
-	if (fi.exist()) {
+	string aux_file = OnlyFilename(ChangeExtension(file, "aux"));
+
+	if (had_depfile) {
+		lyxerr[Debug::DEPEND] << "Dependency file exists" << endl;
 		// Read the dep file:
 		head.read(depfile);
 		// Update the checksums
 		head.update();
-		
-		lyxerr[Debug::DEPEND] << "Dependency file exists" << endl;
-		if (head.sumchange()) {
-			++count;
-			lyxerr[Debug::DEPEND]
-				<< "Dependency file has changed" << endl;
-			lyxerr[Debug::LATEX]
-				<< "Run #" << count << endl; 
-			WriteStatus(minib,
-				    string(_("LaTeX run number ")) + tostr(count));
-			this->operator()();
-			scanres = scanLogFile(terr);
-			if (scanres & LaTeX::ERRORS) {
-				deleteFilesOnError();
-				return scanres; // return on error
-			}
-			
-			run_bibtex = scanAux(head);
-			if (run_bibtex)
-				lyxerr[Debug::DEPEND]
-					<< "Bibtex demands rerun" << endl;
-		} else {
+		if (!head.sumchange()) {
 			lyxerr[Debug::DEPEND] << "return no_change" << endl;
 			return LaTeX::NO_CHANGE;
 		}
-	} else {
-		++count;
+		lyxerr[Debug::DEPEND]
+			<< "Dependency file has changed" << endl;
+
+		if (head.extchanged(".bib") || head.extchanged(".bst"))
+			run_bibtex = true;
+	} else
 		lyxerr[Debug::DEPEND]
 			<< "Dependency file does not exist" << endl;
-		
-		lyxerr[Debug::LATEX]
-			<< "Run #" << count << endl;
-		head.insert(file, true);
-		WriteStatus(minib,
-			    string(_("LaTeX run number ")) + tostr(count));
+
+	/// We scan the aux file even when had_depfile = false,
+	/// because we can run pdflatex on the file after running latex on it,
+	/// in which case we will not need to run bibtex again.
+	vector<Aux_Info> bibtex_info_old;
+	if (!run_bibtex)
+		bibtex_info_old = scanAuxFiles(aux_file);
+
+	++count;
+	lyxerr[Debug::LATEX] << "Run #" << count << endl; 
+	WriteStatus(minib, string(_("LaTeX run number ")) + tostr(count));
+	this->operator()();
+	scanres = scanLogFile(terr);
+	if (scanres & LaTeX::ERROR_RERUN) {
+		lyxerr[Debug::LATEX] << "Rerunning LaTeX" << endl;
 		this->operator()();
 		scanres = scanLogFile(terr);
-		if (scanres & LaTeX::ERRORS) {
-			deleteFilesOnError();
-			return scanres; // return on error
-		}
-		
 	}
+
+	if (scanres & LaTeX::ERRORS) {
+		deleteFilesOnError();
+		return scanres; // return on error
+	}
+
+	vector<Aux_Info> const bibtex_info = scanAuxFiles(aux_file);
+	if (!run_bibtex && bibtex_info_old != bibtex_info)
+		run_bibtex = true;
 
 	// update the dependencies.
 	deplog(head); // reads the latex log
@@ -218,9 +221,13 @@ int LaTeX::run(TeXErrors & terr, MiniBuffer * minib)
 		// no checks for now
 		lyxerr[Debug::LATEX] << "Running BibTeX." << endl;
 		WriteStatus(minib, _("Running BibTeX."));
-		rerun = runBibTeX(OnlyFilename(ChangeExtension(file, ".aux")), 
-				  head);
-	}
+		updateBibtexDependencies(head, bibtex_info);
+		rerun |= runBibTeX(bibtex_info);
+	} else if (!had_depfile)
+		/// If we run pdflatex on the file after running latex on it,
+		/// then we do not need to run bibtex, but we do need to
+		/// insert the .bib and .bst files into the .dep-pdf file.
+		updateBibtexDependencies(head, bibtex_info);
 	
 	// 1
 	// we know on this point that latex has been run once (or we just
@@ -339,131 +346,136 @@ bool LaTeX::runMakeIndex(string const & f)
 }
 
 
-bool LaTeX::scanAux(DepTable & dep)
+vector<Aux_Info> const
+LaTeX::scanAuxFiles(string const & file)
 {
-	// if any of the bib file has changed we don't have to
-	// check the .aux file.
-	if (dep.extchanged(".bib")
-	    || dep.extchanged(".bst")) return true;
+	vector<Aux_Info> result;
 	
-	string aux = OnlyFilename(ChangeExtension(file, ".aux"));
-	ifstream ifs(aux.c_str());
-	string token;
-	LRegex reg1("\\\\bibdata\\{([^}]+)\\}");
-	LRegex reg2("\\\\bibstyle\\{([^}]+)\\}");
-	while (getline(ifs, token)) {
-		if (reg1.exact_match(token)) {
-			LRegex::SubMatches sub = reg1.exec(token);
-			string data = LSubstring(token, sub[1].first,
-						 sub[1].second);
-			string::size_type b;
-			do {
-				b = data.find_first_of(',', 0);
-				string l;
-				if (b == string::npos)
-					l = data;
-				else {
-					l = data.substr( 0, b - 0);
-					data.erase(0, b + 1);
-				}
-				string full_l =
-					findtexfile(
-						ChangeExtension(l, "bib"), "bib");
-				if (!full_l.empty()) {
-					if (!dep.exist(full_l))
-						return true;
-				}
-			} while (b != string::npos);
-		} else if (reg2.exact_match(token)) {
-			LRegex::SubMatches sub = reg2.exec(token);
-			string style = LSubstring(token, sub[1].first,
-						  sub[1].second);
-			// token is now the style file
-			// pass it to the helper
-			string full_l =
-				findtexfile(
-					ChangeExtension(style, "bst"),
-					"bst");
-			if (!full_l.empty()) {
-				if (!dep.exist(full_l))
-					return true;
-			}
-		}
+	result.push_back(scanAuxFile(file));
+#if 0
+	for (int i = 1; i < 1000; ++i) {
+		string file2 = ChangeExtension(file, "") + "." + tostr(i)
+			+ ".aux";
+		FileInfo fi(file2);
+		if (!fi.exist())
+			break;
+		result.push_back(scanAuxFile(file2));
 	}
-	return false;
+#endif
+	return result;
 }
 
 
-bool LaTeX::runBibTeX(string const & f, DepTable & dep)
+Aux_Info const LaTeX::scanAuxFile(string const & file)
 {
-	// Since a run of Bibtex mandates more latex runs it is ok to
-	// remove all ".bib" and ".bst" files, it is also required to
-	// discover style and database changes.
-	dep.remove_files_with_extension(".bib");
-	dep.remove_files_with_extension(".bst");
-	ifstream ifs(f.c_str());
+	Aux_Info result;
+	result.aux_file = file;
+	scanAuxFile(file, result);
+	return result;
+}
+
+
+void LaTeX::scanAuxFile(string const & file, Aux_Info & aux_info)
+{
+	lyxerr[Debug::LATEX] << "Scanning aux file: " << file << endl;
+
+	ifstream ifs(file.c_str());
 	string token;
-	bool using_bibtex = false;
-	LRegex reg1("\\\\bibdata\\{([^}]+)\\}");
-	LRegex reg2("\\\\bibstyle\\{([^}]+)\\}");
+	LRegex reg1("\\\\citation\\{([^}]+)\\}");
+	LRegex reg2("\\\\bibdata\\{([^}]+)\\}");
+	LRegex reg3("\\\\bibstyle\\{([^}]+)\\}");
+	LRegex reg4("\\\\@input\\{([^}]+)\\}");
+
 	while (getline(ifs, token)) {
 		if (reg1.exact_match(token)) {
-			using_bibtex = true;
 			LRegex::SubMatches const & sub = reg1.exec(token);
+			string data = LSubstring(token, sub[1].first,
+						 sub[1].second);
+			while (!data.empty()) {
+				string citation;
+				data = split(data, citation, ',');
+				lyxerr[Debug::LATEX] << "Citation: "
+						     << citation << endl;
+				aux_info.citations.insert(citation);
+			}
+		} else if (reg2.exact_match(token)) {
+			LRegex::SubMatches const & sub = reg2.exec(token);
 			string data = LSubstring(token, sub[1].first,
 						 sub[1].second);
 			// data is now all the bib files separated by ','
 			// get them one by one and pass them to the helper
-			string::size_type b;
-			do {
-				b = data.find_first_of(',', 0);
-				string l;
-				if (b == string::npos)
-					l = data;
-				else {
-					l = data.substr(0, b - 0);
-					data.erase(0, b + 1);
-				}
-				string full_l = 
-					findtexfile(
-						ChangeExtension(l, "bib"),
-						"bib");
+			while (!data.empty()) {
+				string database;
+				data = split(data, database, ',');
+				database = ChangeExtension(database, "bib");
 				lyxerr[Debug::LATEX] << "Bibtex database: `"
-						     << full_l << "'" << endl;
-				if (!full_l.empty()) {
-					// add full_l to the dep file.
-					dep.insert(full_l, true);
-				}
-			} while (b != string::npos);
-		} else if (reg2.exact_match(token)) {
-			using_bibtex = true;
-			LRegex::SubMatches const & sub = reg2.exec(token);
+						     << database << "'" << endl;
+				aux_info.databases.insert(database);
+			}
+		} else if (reg3.exact_match(token)) {
+			LRegex::SubMatches const & sub = reg3.exec(token);
 			string style = LSubstring(token, sub[1].first,
 						  sub[1].second);
 			// token is now the style file
 			// pass it to the helper
-			string full_l = 
-				findtexfile(
-					ChangeExtension(style, "bst"),
-					"bst");
+			style = ChangeExtension(style, "bst");
 			lyxerr[Debug::LATEX] << "Bibtex style: `"
-					     << full_l << "'" << endl;
-			if (!full_l.empty()) {
-				// add full_l to the dep file.
-				dep.insert(full_l, true);
-			}
+					     << style << "'" << endl;
+			aux_info.styles.insert(style);
+		} else if (reg4.exact_match(token)) {
+			LRegex::SubMatches const & sub = reg4.exec(token);
+			string file2 = LSubstring(token, sub[1].first,
+						  sub[1].second);
+			scanAuxFile(file2, aux_info);
 		}
 	}
-	if (using_bibtex) {
-		// run bibtex and
+}
+
+
+void LaTeX::updateBibtexDependencies(DepTable & dep,
+				     vector<Aux_Info> const & bibtex_info)
+{
+	// Since a run of Bibtex mandates more latex runs it is ok to
+	// remove all ".bib" and ".bst" files.
+	dep.remove_files_with_extension(".bib");
+	dep.remove_files_with_extension(".bst");
+	string aux = OnlyFilename(ChangeExtension(file, ".aux"));
+
+	for (vector<Aux_Info>::const_iterator it = bibtex_info.begin();
+	     it != bibtex_info.end(); ++it) {
+		for (set<string>::const_iterator it2 = it->databases.begin();
+		     it2 != it->databases.end(); ++it2) {
+			string file = findtexfile(*it2, "bib");
+			if (!file.empty())
+				dep.insert(file, true);
+		}
+
+		for (set<string>::const_iterator it2 = it->styles.begin();
+		     it2 != it->styles.end(); ++it2) {
+			string file = findtexfile(*it2, "bst");
+			if (!file.empty())
+				dep.insert(file, true);
+		}			
+	}
+}
+
+
+bool LaTeX::runBibTeX(vector<Aux_Info> const & bibtex_info)
+{
+	bool result = false;
+	for (vector<Aux_Info>::const_iterator it = bibtex_info.begin();
+	     it != bibtex_info.end(); ++it) {
+		if (it->databases.empty())
+			continue;
+		result = true;
+
 		string tmp = "bibtex ";
-		tmp += OnlyFilename(ChangeExtension(file, string()));
+		tmp += OnlyFilename(ChangeExtension(it->aux_file, string()));
 		Systemcalls one;
 		one.startscript(Systemcalls::System, tmp);
-		return true;
 	}
-	// bibtex was not run.
-	return false;
+	// Return whether bibtex was run
+	return result;
 }
 
 
@@ -507,6 +519,8 @@ int LaTeX::scanLogFile(TeXErrors & terr)
 				    && contains(token, "undefined")) {
 					retval |= UNDEF_CIT;
 				}
+			} else if (contains(token, "run BibTeX")) {
+				retval |= UNDEF_CIT;
 			} else if (contains(token, "Rerun LaTeX.")) {
 				// at least longtable.sty might use this.
 				retval |= RERUN;
@@ -531,6 +545,8 @@ int LaTeX::scanLogFile(TeXErrors & terr)
 			if (prefixIs(tmp, "l.")) {
 				// we have a latex error
 				retval |=  TEX_ERROR;
+				if (contains(desc, "Package babel Error: You haven't defined the language"))
+					retval |= ERROR_RERUN;
 				// get the line number:
 				int line = 0;
 				sscanf(tmp.c_str(), "l.%d", &line);
