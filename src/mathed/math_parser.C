@@ -129,7 +129,6 @@ inline CatCode catcode(unsigned char c)
 
 
 enum {
-	FLAG_BRACE      = 1 << 0,  //  an opening brace needed
 	FLAG_BRACE_LAST = 1 << 1,  //  last closing brace ends the parsing process
 	FLAG_RIGHT      = 1 << 2,  //  next \\right ends the parsing process
 	FLAG_END        = 1 << 3,  //  next \\end ends the parsing process
@@ -538,7 +537,7 @@ string Parser::parse_macro()
 	}
 
 	if (getToken().cat() != catBegin) {
-		lyxerr << "'{' expected\n";
+		lyxerr << "'{' in \\newcommand expected (1)\n";
 		return name;
 	}
 
@@ -551,10 +550,15 @@ string Parser::parse_macro()
 
 	string    arg  = getArg('[', ']');
 	int       narg = arg.empty() ? 0 : atoi(arg.c_str()); 
+
+	if (getToken().cat() != catBegin) {
+		lyxerr << "'{' in \\newcommand expected (2)\n";
+		return name;
+	}
+
 	MathArray ar;
-	parse_into(ar, FLAG_BRACE | FLAG_BRACE_LAST);
+	parse_into(ar, FLAG_BRACE_LAST);
 	MathMacroTable::create(name, narg, ar);
-	
 	return name;
 }
 
@@ -694,17 +698,6 @@ void Parser::parse_into(MathArray & array, unsigned flags, MathTextCodes code)
 			}
 		}
 
-		if (flags & FLAG_BRACE) {
-			if (t.cat() != catBegin) {
-				error("Expected {. Maybe you forgot to enclose an argument in {}");
-				panic = true;
-				break;
-			} else {
-				flags &= ~FLAG_BRACE;
-				continue;
-			}
-		}
-
 		if (flags & FLAG_BLOCK) {
 			if (t.cat() == catAlign || t.cs() == "\\")
 				return;
@@ -733,7 +726,7 @@ void Parser::parse_into(MathArray & array, unsigned flags, MathTextCodes code)
 
 		else if (t.cat() == catBegin) {
 			array.push_back(MathAtom(new MathBraceInset));
-			parse_into(array.back()->cell(0), FLAG_BRACE_LAST, LM_TC_MIN);
+			parse_into(array.back()->cell(0), FLAG_BRACE_LAST);
 		}
 
 		else if (t.cat() == catEnd) {
@@ -883,41 +876,15 @@ void Parser::parse_into(MathArray & array, unsigned flags, MathTextCodes code)
 		}
 
 		else if (t.cs() == "label") {
-			//MathArray ar;
-			//parse_into(ar, FLAG_ITEM);
-			//ostringstream os;
-			//ar.write(os, true);
-			//curr_label_ = os.str();
-			// was: 
 			curr_label_ = getArg('{', '}');
 		}
 
 		else if (t.cs() == "choose" || t.cs() == "over" || t.cs() == "atop") {
 			MathAtom p = createMathInset(t.cs());
-			// search backward for position of last '{' if any
-			int pos;
-			for (pos = array.size() - 1; pos >= 0; --pos)
-				if (array.at(pos)->getChar() == '{')
-					break;
-			if (pos >= 0) {
-				// found it -> use the part after '{' as "numerator"
-				p->cell(0) = MathArray(array, pos + 1, array.size());
-				parse_into(p->cell(1), FLAG_BRACE_LAST);
-				// delete denominator and the '{'
-				array.erase(pos, array.size());
-			} else if (flags & FLAG_RIGHT) {
-				// we are inside a \left ... \right block
-				//lyxerr << "found '" << t.cs() << "' enclosed by \\left .. \\right\n";
-				p->cell(0).swap(array);
-				parse_into(p->cell(1), FLAG_RIGHT);
-				// handle the right delimiter properly
-				putback();
-			} else {
-				// not found -> use everything as "numerator"
-				p->cell(0).swap(array);
-				parse_into(p->cell(1), FLAG_BLOCK);
-			}
-			array.push_back(MathAtom(p));
+			array.swap(p->cell(0));
+			parse_into(p->cell(1), flags, code);
+			array.push_back(p);
+			return;
 		}
 
 /*
