@@ -111,3 +111,9 @@ bool operator==(LyXLength const & l1, LyXLength const & l2)
 {
 	return l1.value() == l2.value() && l1.unit() == l2.unit();
 }
+
+
+bool operator!=(LyXLength const & l1, LyXLength const & l2)
+{
+	return !(l1 == l2);
+}

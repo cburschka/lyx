@@ -98,6 +98,8 @@ private:
 ///
 bool operator==(LyXLength const & l1, LyXLength const & l2);
 ///
+bool operator!=(LyXLength const & l1, LyXLength const & l2);
+///
 bool isValidLength(string const & data, LyXLength * result);
 ///
 char const * stringFromUnit(int unit);

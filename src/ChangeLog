@@ -1,3 +1,7 @@
+2001-12-12  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* lyxlength.[Ch] (operator!=): new function
+
 2001-12-12  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* text.C (workWidth): use Inset::parOwner to find out where the
