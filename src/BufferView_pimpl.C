@@ -1022,16 +1022,6 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & cmd)
 		cur.message(cur.currentState());
 		break;
 
-	case LFUN_INSERT_LABEL: {
-		// Try and generate a valid label
-		string const contents = cmd.argument.empty() ?
-			cur.getPossibleLabel() : cmd.argument;
-		InsetCommandParams icp("label", contents);
-		string data = InsetCommandMailer::params2string("label", icp);
-		owner_->getDialogs().show("label", data, 0);
-		break;
-	}
-
 	case LFUN_BOOKMARK_SAVE:
 		savePosition(strToUnsignedInt(cmd.argument));
 		break;

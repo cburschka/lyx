@@ -1245,9 +1245,19 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 	}
 
 	case LFUN_INSERT_LABEL: {
-		InsetCommandParams p("label");
+		// Try to generate a valid label
+		string const contents = cmd.argument.empty() ?
+			cur.getPossibleLabel() : cmd.argument;
+
+		InsetCommandParams p("label", contents);
 		string const data = InsetCommandMailer::params2string("label", p);
-		bv->owner()->getDialogs().show("label", data, 0);
+
+		if (cmd.argument.empty()) {
+			bv->owner()->getDialogs().show("label", data, 0);
+		} else {
+			FuncRequest fr(LFUN_INSET_INSERT, data);
+			dispatch(cur, fr);
+		}
 		break;
 	}
 
