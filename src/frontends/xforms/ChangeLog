@@ -1,5 +1,12 @@
 2003-03-31  John Levon  <levon@movementarian.org>
 
+	* FontInfo.C:
+	* lyx_gui.C:
+	* xfont_loader.C: add font name helpers, move
+	use_gui
+
+2003-03-31  John Levon  <levon@movementarian.org>
+
 	* Alert_pimpl.C: remove alert()
 
 2003-03-29  John Levon  <levon@movementarian.org>

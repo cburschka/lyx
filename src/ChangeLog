@@ -1,5 +1,17 @@
 2003-03-31  John Levon  <levon@movementarian.org>
 
+	* lyxrc.h:
+	* lyxrc.C: moved pdf_mode and use_gui to elsewhere
+
+	* lyx_main.C: set default fonts from using lyx_gui funcs
+
+	* exporter.C: pdf_mode moved from lyxrc
+
+	* lyx_cb.C:
+	* lyxfunc.C: changes from above
+
+2003-03-31  John Levon  <levon@movementarian.org>
+
 	* lyx_main.C: fix to the last fix
 
 2003-03-31  John Levon  <levon@movementarian.org>

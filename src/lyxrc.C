@@ -209,9 +209,9 @@ void LyXRC::setDefaults() {
 	font_sizes[LyXFont::SIZE_HUGE] = 20.74;
 	font_sizes[LyXFont::SIZE_HUGER] = 24.88;
 	use_scalable_fonts = true;
-	roman_font_name = "times";
-	sans_font_name = "helvetica";
-	typewriter_font_name = "courier";
+	roman_font_name = "";
+	sans_font_name = "";
+	typewriter_font_name = "";
 	popup_bold_font = "-*-helvetica-bold-r";
 	popup_normal_font = "-*-helvetica-medium-r";
 	font_norm = "iso8859-1";
@@ -256,11 +256,6 @@ void LyXRC::setDefaults() {
 	preview = false;
 	preview_hashed_labels  = false;
 	preview_scale_factor = 0.9;
-
-	/// These variables are not stored on disk (perhaps they
-	// should be moved from the LyXRC class).
-	use_gui = true;
-	pdf_mode = false;
 
 	user_name = lyx::user_name();
 

@@ -128,7 +128,12 @@ char geometry[40];
 } // namespace anon
 
 
-void lyx_gui::parse_init(int & argc, char * argv[])
+namespace lyx_gui {
+
+bool use_gui = true;
+
+
+void parse_init(int & argc, char * argv[])
 {
 	setDefaults();
 
@@ -177,7 +182,7 @@ void lyx_gui::parse_init(int & argc, char * argv[])
 }
 
 
-void lyx_gui::parse_lyxrc()
+void parse_lyxrc()
 {
 	XformsColor::read(AddName(user_lyxdir, "preferences.xform"));
 
@@ -228,7 +233,7 @@ void lyx_gui::parse_lyxrc()
 }
 
 
-void lyx_gui::start(string const & batch, vector<string> const & files)
+void start(string const & batch, vector<string> const & files)
 {
 	// initial geometry
 	int xpos = -1;
@@ -314,19 +319,19 @@ void lyx_gui::start(string const & batch, vector<string> const & files)
 }
 
 
-void lyx_gui::exit()
+void exit()
 {
 	finished = true;
 }
 
 
-FuncStatus lyx_gui::getStatus(FuncRequest const & /*ev*/)
+FuncStatus getStatus(FuncRequest const & /*ev*/)
 {
 	// Nothing interesting to do here
 	return FuncStatus();
 }
 
-string const lyx_gui::hexname(LColor::color col)
+string const hexname(LColor::color col)
 {
 	unsigned int r, g, b;
 	bool const success = getRGBColor(col, r, g, b);
@@ -347,19 +352,19 @@ string const lyx_gui::hexname(LColor::color col)
 }
 
 
-void lyx_gui::update_color(LColor::color col)
+void update_color(LColor::color col)
 {
 	lyxColorHandler->updateColor(col);
 }
 
 
-void lyx_gui::update_fonts()
+void update_fonts()
 {
 	fontloader.update();
 }
 
 
-bool lyx_gui::font_available(LyXFont const & font)
+bool font_available(LyXFont const & font)
 {
 	return fontloader.available(font);
 }
@@ -375,13 +380,33 @@ void C_read_callback(int, void * data)
 
 }
 
-void lyx_gui::set_read_callback(int fd, LyXComm * comm)
+void set_read_callback(int fd, LyXComm * comm)
 {
 	fl_add_io_callback(fd, FL_READ, C_read_callback, comm);
 }
 
 
-void lyx_gui::remove_read_callback(int fd)
+void remove_read_callback(int fd)
 {
 	fl_remove_io_callback(fd, FL_READ, C_read_callback);
 }
+
+
+string const roman_font_name()
+{
+	return "times";
+}
+
+
+string const sans_font_name()
+{
+	return "helvetica";
+}
+
+
+string const typewriter_font_name()
+{
+	return "courier";
+}
+
+}; // namespace lyx_gui

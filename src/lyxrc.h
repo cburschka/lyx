@@ -185,8 +185,6 @@ enum LyXRCTags {
 	string custom_export_command;
 	///
 	string custom_export_format;
-	///
-	bool pdf_mode;
 	/// postscript interpreter (in general "gs", if it is installed)
 	string ps_command;
 	/// option for telling the dvi viewer about the paper size
@@ -330,8 +328,6 @@ enum LyXRCTags {
 	bool auto_number;
 	///
 	bool mark_foreign_language;
-	/// Do we have to use a GUI?
-	bool use_gui;
 	///
 	string default_language;
 	///

@@ -108,7 +108,7 @@ int rbearing(char c, LyXFont const & f)
 
 int width(char const * s, size_t n, LyXFont const & f)
 {
-	if (!lyxrc.use_gui)
+	if (!lyx_gui::use_gui)
 		return n;
 
 	if (lyxrc.font_norm_type == LyXRC::ISO_10646_1) {
@@ -193,7 +193,7 @@ namespace xfont_metrics {
 
 int width(XChar2b const * s, int n, LyXFont const & f)
 {
-	if (!lyxrc.use_gui)
+	if (!lyx_gui::use_gui)
 		return n;
 
 	if (f.realShape() != LyXFont::SMALLCAPS_SHAPE) {

@@ -71,6 +71,7 @@ TODO
 #include "LaTeXFeatures.h"
 #include "lyxlex.h"
 #include "lyxrc.h"
+#include "frontends/lyx_gui.h"
 
 #include "frontends/Alert.h"
 #include "frontends/Dialogs.h"
@@ -94,6 +95,8 @@ TODO
 #include <algorithm> // For the std::max
 
 extern string system_tempdir;
+// set by Exporters
+extern bool pdf_mode;
 
 using std::ostream;
 using std::endl;
@@ -128,10 +131,10 @@ string const uniqueID()
 
 string findTargetFormat(string const & suffix)
 {
-	// lyxrc.pdf_mode means:
+	// pdf_mode means:
 	// Are we creating a PDF or a PS file?
 	// (Should actually mean, are we using latex or pdflatex).
-	if (lyxrc.pdf_mode) {
+	if (pdf_mode) {
 		lyxerr[Debug::GRAPHICS] << "findTargetFormat: PDF mode\n";
 		if (contains(suffix, "ps") || suffix == "pdf")
 			return "pdf";

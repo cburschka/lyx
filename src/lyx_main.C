@@ -413,23 +413,23 @@ void LyX::init(bool gui)
 		first_start = false;
 	}
 
-	//
-	// Shine up lyxrc defaults
-	//
+	// Disable gui when easyparse says so
+	lyx_gui::use_gui = gui;
 
-	// Default template path: system_dir/templates
 	if (lyxrc.template_path.empty()) {
 		lyxrc.template_path = AddPath(system_lyxdir, "templates");
 	}
 
-	// Default lastfiles file: $HOME/.lyx/lastfiles
 	if (lyxrc.lastfiles.empty()) {
 		lyxrc.lastfiles = AddName(user_lyxdir, "lastfiles");
 	}
 
-	// Disable gui when either lyxrc or easyparse says so
-	if (!gui)
-		lyxrc.use_gui = false;
+	if (lyxrc.roman_font_name.empty())
+		lyxrc.roman_font_name = lyx_gui::roman_font_name();
+	if (lyxrc.sans_font_name.empty())
+		lyxrc.sans_font_name = lyx_gui::sans_font_name();
+	if (lyxrc.typewriter_font_name.empty())
+		lyxrc.typewriter_font_name = lyx_gui::typewriter_font_name();
 
 	//
 	// Read configuration files

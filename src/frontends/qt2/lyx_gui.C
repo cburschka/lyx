@@ -47,6 +47,7 @@
 #include <qapplication.h>
 #include <qwidget.h>
 #include <qpaintdevicemetrics.h>
+#include <qfont.h>
 
 #include <fcntl.h>
 #include <cstdlib>
@@ -73,7 +74,6 @@ float getDPI()
 map<int, io_callback *> io_callbacks;
 
 } // namespace anon
-
 
 // FIXME: wrong place !
 LyXServer * lyxserver;
@@ -105,8 +105,12 @@ LQApplication::LQApplication(int & argc, char ** argv)
 LQApplication::~LQApplication()
 {}
 
+namespace lyx_gui {
 
-void lyx_gui::parse_init(int & argc, char * argv[])
+bool use_gui = true;
+
+
+void parse_init(int & argc, char * argv[])
 {
 	static LQApplication a(argc, argv);
 
@@ -124,11 +128,11 @@ void lyx_gui::parse_init(int & argc, char * argv[])
 }
 
 
-void lyx_gui::parse_lyxrc()
+void parse_lyxrc()
 {}
 
 
-void lyx_gui::start(string const & batch, vector<string> const & files)
+void start(string const & batch, vector<string> const & files)
 {
 	// initial geometry
 	unsigned int width = 690;
@@ -171,7 +175,7 @@ void lyx_gui::start(string const & batch, vector<string> const & files)
 }
 
 
-void lyx_gui::exit()
+void exit()
 {
 	delete lyxserver;
 	lyxserver = 0;
@@ -185,7 +189,7 @@ void lyx_gui::exit()
 }
 
 
-FuncStatus lyx_gui::getStatus(FuncRequest const & ev)
+FuncStatus getStatus(FuncRequest const & ev)
 {
 	FuncStatus flag;
 	switch (ev.action) {
@@ -201,38 +205,38 @@ FuncStatus lyx_gui::getStatus(FuncRequest const & ev)
 }
 
 
-string const lyx_gui::hexname(LColor::color col)
+string const hexname(LColor::color col)
 {
 	QColor color(toqstr(lcolor.getX11Name(col)));
 	return ltrim(fromqstr(color.name()), "#");
 }
 
 
-void lyx_gui::update_color(LColor::color)
+void update_color(LColor::color)
 {
 	// no need
 }
 
 
-void lyx_gui::update_fonts()
+void update_fonts()
 {
 	fontloader.update();
 }
 
 
-bool lyx_gui::font_available(LyXFont const & font)
+bool font_available(LyXFont const & font)
 {
 	return fontloader.available(font);
 }
 
 
-void lyx_gui::set_read_callback(int fd, LyXComm * comm)
+void set_read_callback(int fd, LyXComm * comm)
 {
 	io_callbacks[fd] = new io_callback(fd, comm);
 }
 
 
-void lyx_gui::remove_read_callback(int fd)
+void remove_read_callback(int fd)
 {
 	map<int, io_callback *>::iterator it = io_callbacks.find(fd);
 	if (it != io_callbacks.end()) {
@@ -240,3 +244,41 @@ void lyx_gui::remove_read_callback(int fd)
 		io_callbacks.erase(it);
 	}
 }
+
+
+string const roman_font_name()
+{
+	if (!use_gui)
+		return "serif";
+
+	QFont font;
+	font.setFamily("serif");
+	font.setStyleHint(QFont::Serif);
+	return font.family().latin1();
+}
+
+
+string const sans_font_name()
+{
+	if (!use_gui)
+		return "sans";
+
+	QFont font;
+	font.setFamily("sans");
+	font.setStyleHint(QFont::SansSerif);
+	return font.family().latin1();
+}
+
+
+string const typewriter_font_name()
+{
+	if (!use_gui)
+		return "monospace";
+
+	QFont font;
+	font.setFamily("monospace");
+	font.setStyleHint(QFont::TypeWriter);
+	return font.family().latin1();
+}
+
+}; // namespace lyx_gui

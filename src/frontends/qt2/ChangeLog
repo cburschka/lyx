@@ -1,5 +1,14 @@
 2003-03-31  John Levon  <levon@movementarian.org>
 
+	* lyx_gui.C: return useful default font names, add use_gui
+
+	* QPrefs.C: remove some dead font code
+
+	* qfont_loader.C: use_gui moved.
+	* qfont_metrics.C: use_gui moved.
+
+2003-03-31  John Levon  <levon@movementarian.org>
+
 	* Alert_pimpl.C: remove alert()
 
 2003-03-29  John Levon  <levon@movementarian.org>

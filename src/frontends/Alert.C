@@ -13,7 +13,7 @@
 #include "Alert.h"
 
 #include "debug.h"
-#include "lyxrc.h"
+#include "lyx_gui.h"
 
 #include "Alert_pimpl.h"
 
@@ -25,7 +25,7 @@ int Alert::prompt(string const & title, string const & question,
            int default_button,
 	   string const & b1, string const & b2, string const & b3)
 {
-	if (lyxrc.use_gui)
+	if (lyx_gui::use_gui)
 		return prompt_pimpl(title, question, default_button, b1, b2, b3);
 
 	lyxerr << title << endl;
@@ -43,7 +43,7 @@ int Alert::prompt(string const & title, string const & question,
 
 void Alert::warning(string const & title, string const & message)
 {
-	if (lyxrc.use_gui)
+	if (lyx_gui::use_gui)
 		return warning_pimpl(title, message);
 
 	lyxerr << "Warning: " << title << endl;
@@ -54,7 +54,7 @@ void Alert::warning(string const & title, string const & message)
 
 void Alert::error(string const & title, string const & message)
 {
-	if (lyxrc.use_gui)
+	if (lyx_gui::use_gui)
 		return error_pimpl(title, message);
 
 	lyxerr << "Error: " << title << endl;
@@ -65,7 +65,7 @@ void Alert::error(string const & title, string const & message)
 
 void Alert::information(string const & title, string const & message)
 {
-	if (lyxrc.use_gui)
+	if (lyx_gui::use_gui)
 		return information_pimpl(title, message);
 
 	lyxerr << title << endl;
@@ -77,7 +77,7 @@ void Alert::information(string const & title, string const & message)
 pair<bool, string> const Alert::askForText(string const & msg,
 					   string const & dflt)
 {
-	if (!lyxrc.use_gui) {
+	if (!lyx_gui::use_gui) {
 		lyxerr << "----------------------------------------" << endl
 		       << msg << endl
 		       << "Assuming answer is " << dflt

@@ -26,6 +26,18 @@ class FuncRequest;
 /// GUI interaction
 namespace lyx_gui {
 
+/// are we using the GUI at all
+extern bool use_gui;
+
+/// return a suitable serif font name (called from non-gui context too !)
+string const roman_font_name();
+
+/// return a suitable sans serif font name (called from non-gui context too !)
+string const sans_font_name();
+
+/// return a suitable monospaced font name (called from non-gui context too !)
+string const typewriter_font_name();
+
 /// parse command line and do basic initialisation
 void parse_init(int & argc, char * argv[]);
 
@@ -45,7 +57,6 @@ void start(string const & batch, std::vector<string> const & files);
  * quit running LyX
  */
 void exit();
-
 
 /**
  * return the status flag for a given action. This can be used to tell

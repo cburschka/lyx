@@ -24,6 +24,7 @@
 #include <qfontdatabase.h>
 #include <qstringlist.h>
 #include "support/lstrings.h"
+#include "frontends/lyx_gui.h"
 
 #include <boost/tuple/tuple.hpp>
 
@@ -292,7 +293,7 @@ qfont_loader::font_info::font_info(LyXFont const & f)
 
 qfont_loader::font_info * qfont_loader::getfontinfo(LyXFont const & f)
 {
-	if (!lyxrc.use_gui) {
+	if (!lyx_gui::use_gui) {
 		// FIXME
 	}
 
@@ -322,7 +323,7 @@ int qfont_loader::charwidth(LyXFont const & f, Uchar val)
 
 bool qfont_loader::available(LyXFont const & f)
 {
-	if (!lyxrc.use_gui)
+	if (!lyx_gui::use_gui)
 		return false;
 
 	static vector<bool> cache_set(LyXFont::NUM_FAMILIES, false);

@@ -346,18 +346,6 @@ void setComboxFont(QComboBox * cb, string const & family,
 			return;
 		}
 	}
-
-	// Try the hint
-	QFont font;
-	font.setStyleHint(hint);
-	QFontInfo fi(font);
-
-	for (int i = cb->count() - 1; i >= 0; --i) {
-		if (cb->text(i) == fi.family()) {
-			cb->setCurrentItem(i);
-			return;
-		}
-	}
 }
 
 }

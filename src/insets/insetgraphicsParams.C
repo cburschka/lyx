@@ -24,6 +24,7 @@
 #include "lyxrc.h"
 #include "debug.h"
 #include "lyxlex.h"
+#include "frontends/lyx_gui.h"
 
 using std::ostream;
 
@@ -306,7 +307,7 @@ grfx::Params InsetGraphicsParams::as_grfxParams(string const & filepath) const
 	}
 
 	// Override the above if we're not using a gui
-	if (!lyxrc.use_gui) {
+	if (!lyx_gui::use_gui) {
 		pars.display = grfx::NoDisplay;
 	}
 

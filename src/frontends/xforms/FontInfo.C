@@ -115,7 +115,7 @@ void FontInfo::query()
 	}
 
 	char ** list = 0;
-	if (lyxrc.use_gui)
+	if (lyx_gui::use_gui)
 		list = XListFonts(fl_get_display(), pattern.c_str(),
 				  100, &matches);
 

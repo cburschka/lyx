@@ -27,6 +27,8 @@
 using std::vector;
 using std::find;
 
+bool pdf_mode = false;
+
 bool Exporter::Export(Buffer * buffer, string const & format,
 		      bool put_in_tempdir, string & result_file)
 {
@@ -51,7 +53,7 @@ bool Exporter::Export(Buffer * buffer, string const & format,
 			Graph::EdgePath p =
 				converters.getPath(*it,	format);
 			if (!p.empty()) {
-				lyxrc.pdf_mode = converters.usePdflatex(p);
+				pdf_mode = converters.usePdflatex(p);
 				backend_format = *it;
 				break;
 			}

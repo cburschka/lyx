@@ -11,7 +11,7 @@
 
 #include <config.h>
 
-
+#include "frontends/lyx_gui.h"
 #include "support/lstrings.h"
 #include "font_metrics.h"
 #include "qfont_loader.h"
@@ -32,7 +32,7 @@ QFontMetrics const & metrics(LyXFont const & f)
 
 int charwidth(Uchar val, LyXFont const & f)
 {
-	if (!lyxrc.use_gui)
+	if (!lyx_gui::use_gui)
 		return 1;
 	return fontloader.charwidth(f, val);
 }
@@ -44,7 +44,7 @@ namespace font_metrics {
 
 int maxAscent(LyXFont const & f)
 {
-	if (!lyxrc.use_gui)
+	if (!lyx_gui::use_gui)
 		return 1;
 	return metrics(f).ascent();
 }
@@ -52,7 +52,7 @@ int maxAscent(LyXFont const & f)
 
 int maxDescent(LyXFont const & f)
 {
-	if (!lyxrc.use_gui)
+	if (!lyx_gui::use_gui)
 		return 1;
 	// We add 1 as the value returned by QT is different than X
 	// See http://doc.trolltech.com/2.3/qfontmetrics.html#200b74
@@ -62,7 +62,7 @@ int maxDescent(LyXFont const & f)
 
 int ascent(char c, LyXFont const & f)
 {
-	if (!lyxrc.use_gui)
+	if (!lyx_gui::use_gui)
 		return 1;
 	QRect const & r = metrics(f).boundingRect(c);
 	return -r.top();
@@ -71,7 +71,7 @@ int ascent(char c, LyXFont const & f)
 
 int descent(char c, LyXFont const & f)
 {
-	if (!lyxrc.use_gui)
+	if (!lyx_gui::use_gui)
 		return 1;
 	QRect const & r = metrics(f).boundingRect(c);
 	return r.bottom()+1;
@@ -80,7 +80,7 @@ int descent(char c, LyXFont const & f)
 
 int lbearing(char c, LyXFont const & f)
 {
-	if (!lyxrc.use_gui)
+	if (!lyx_gui::use_gui)
 		return 1;
 	return metrics(f).leftBearing(c);
 }
@@ -88,7 +88,7 @@ int lbearing(char c, LyXFont const & f)
 
 int rbearing(char c, LyXFont const & f)
 {
-	if (!lyxrc.use_gui)
+	if (!lyx_gui::use_gui)
 		return 1;
 	QFontMetrics const & m(metrics(f));
 
@@ -108,7 +108,7 @@ Encoding const * fontencoding(LyXFont const & f)
 
 int smallcapswidth(char const * s, size_t ls, LyXFont const & f)
 {
-	if (!lyxrc.use_gui)
+	if (!lyx_gui::use_gui)
 		return 1;
 	// handle small caps ourselves ...
 
@@ -136,7 +136,7 @@ int smallcapswidth(char const * s, size_t ls, LyXFont const & f)
 
 int width(char const * s, size_t ls, LyXFont const & f)
 {
-	if (!lyxrc.use_gui)
+	if (!lyx_gui::use_gui)
 		return ls;
 
 	if (f.realShape() == LyXFont::SMALLCAPS_SHAPE) {

@@ -304,7 +304,7 @@ XFontStruct * xfont_loader::doLoad(LyXFont::FONT_FAMILY family,
 				LyXFont::FONT_SHAPE shape,
 				LyXFont::FONT_SIZE size)
 {
-	if (!lyxrc.use_gui) {
+	if (!lyx_gui::use_gui) {
 		if (!dummyXFontStructisGood) {
 			// no character specific info
 			dummyXFontStruct.per_char = 0;
@@ -366,7 +366,7 @@ XFontStruct * xfont_loader::doLoad(LyXFont::FONT_FAMILY family,
 
 bool xfont_loader::available(LyXFont const & f)
 {
-	if (!lyxrc.use_gui)
+	if (!lyx_gui::use_gui)
 		return false;
 
 	if (!fontinfo[f.family()][f.series()][f.realShape()])

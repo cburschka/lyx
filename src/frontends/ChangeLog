@@ -1,5 +1,12 @@
 2003-03-31  John Levon  <levon@movementarian.org>
 
+	* lyx_gui.h: add new font name helpers, move
+	use_gui to here.
+
+	* Alert.C: from above
+
+2003-03-31  John Levon  <levon@movementarian.org>
+
 	* Alert_pimpl.h:
 	* Alert.h:
 	* Alert.C: finally kill alert()

@@ -63,7 +63,7 @@ void ShowMessage(Buffer const * buf,
 		 string const & msg2,
 		 string const & msg3)
 {
-	if (lyxrc.use_gui
+	if (lyx_gui::use_gui
 	    && buf && buf->getUser() && buf->getUser()->owner()) {
 			string const str = msg1 + ' ' + msg2 + ' ' + msg3;
 			buf->getUser()->owner()->message(str);
@@ -182,7 +182,7 @@ void QuitLyX()
 {
 	lyxerr[Debug::INFO] << "Running QuitLyX." << endl;
 
-	if (lyxrc.use_gui) {
+	if (lyx_gui::use_gui) {
 		if (!bufferlist.quitWriteAll())
 			return;
 

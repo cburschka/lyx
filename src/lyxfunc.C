@@ -1869,7 +1869,7 @@ void LyXFunc::doImport(string const & argument)
 	string const lyxfile = ChangeExtension(filename, ".lyx");
 
 	// Check if the document already is open
-	if (lyxrc.use_gui && bufferlist.exists(lyxfile)) {
+	if (lyx_gui::use_gui && bufferlist.exists(lyxfile)) {
 		string const file = MakeDisplayPath(lyxfile, 30);
 
 		// FIXME: sucky UI !
