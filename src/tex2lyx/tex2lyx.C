@@ -37,15 +37,33 @@ using std::vector;
 
 namespace {
 
+void parse(Parser & p, ostream & os, unsigned flags, mode_type mode);
+
 char const OPEN = '<';
 char const CLOSE = '>';
-char const TAB = '\001';
+
+// rather brutish way to code table structure in a string:
+//
+//  \begin{tabular}{ccc}
+//    1 & 2 & 3\\ 
+//    \multicolumn{2}{c}{4} & 5\\ 
+//    6 & 7 \\ 
+//  \end{tabular}
+//
+// gets "translated" to:
+//  
+//  1 TAB 2 TAB 3 LINE
+//  2 MULT c MULT 4 TAB 5 LINE
+//  5 TAB 7 LINE
+
+char const TAB  = '\001';
 char const LINE = '\002';
+char const MULT = '\003';
 
 const char * known_languages[] = { "austrian", "babel", "bahasa", "basque",
-"breton", "british", "bulgarian", "catalan", "croatian", "czech",
-"danish", "dutch", "english", "esperanto", "estonian", "finnish",
-"francais", "frenchb", "galician", "germanb", "greek", "hebcal", "hebfont",
+"breton", "british", "bulgarian", "catalan", "croatian", "czech", "danish",
+"dutch", "english", "esperanto", "estonian", "finnish", "francais",
+"frenchb", "galician", "german", "germanb", "greek", "hebcal", "hebfont",
 "hebrew", "hebrew_newcode", "hebrew_oldcode", "hebrew_p", "hyphen",
 "icelandic", "irish", "italian", "latin", "lgrcmr", "lgrcmro", "lgrcmss",
 "lgrcmtt", "lgrenc", "lgrlcmss", "lgrlcmtt", "lheclas", "lhecmr",
@@ -55,11 +73,23 @@ const char * known_languages[] = { "austrian", "babel", "bahasa", "basque",
 "russianb", "samin", "scottish", "serbian", "slovak", "slovene", "spanish",
 "swedish", "turkish", "ukraineb", "usorbian", "welsh", 0};
 
-const char * known_fontsizes[] = { "10pt", "11pt", "12pt", 0 };
+char const * known_fontsizes[] = { "10pt", "11pt", "12pt", 0 };
 
+char const * known_headings[] = { "caption", "title", "author",
+"paragraph", "chapter", "section", "subsection", "subsubsection", 0 };
 
-const char * known_math_envs[] = {"equation", "eqnarray", "eqnarray*",
+char const * known_math_envs[] = { "equation", "eqnarray", "eqnarray*",
 "align", "align*", 0};
+
+char const * known_latex_commands[] = { "ref", "cite", "label", "index",
+"printindex", 0 };
+
+// LaTeX names for quotes
+char const * known_quotes[] = { "glqq", "grqq", 0};
+
+// the same as known_quotes with .lyx names
+char const * known_coded_quotes[] = { "gld", "grd", 0};
+
 
 
 // some ugly stuff
@@ -144,6 +174,15 @@ string join(vector<string> const & input, char delim)
 }
 
 
+char const ** is_known(string const & str, char const ** what)
+{
+	for ( ; *what; ++what)
+		if (str == *what)
+			return what;
+	return 0;
+}
+
+
 void handle_opt(vector<string> & opts, char const ** what, string & target)
 {
 	if (opts.empty())
@@ -167,31 +206,6 @@ bool is_math_env(string const & name)
 		if (*what == name)
 			return true;
 	return false;
-}
-
-
-bool is_heading(string const & name)
-{
-	return
-		name == "caption" ||
-		name == "title" ||
-		name == "author" ||
-		name == "paragraph" ||
-		name == "chapter" ||
-		name == "section" ||
-		name == "subsection" ||
-		name == "subsubsection";
-}
-
-
-bool is_latex_command(string const & name)
-{
-	return
- 		name == "ref" ||
- 		name == "cite" ||
- 		name == "label" ||
- 		name == "index" ||
- 		name == "printindex";
 }
 
 
@@ -247,6 +261,7 @@ void handle_par(ostream & os)
 
 void handle_package(string const & name, string const & options)
 {
+	//cerr << "handle_package: '" << name << "'\n";
 	if (name == "a4wide") {
 		h_papersize = "a4paper";
 		h_paperpackage = "widemarginsa4";
@@ -268,7 +283,10 @@ void handle_package(string const & name, string const & options)
 		; // ignore this
 	else if (name == "verbatim") 
 		; // ignore this
-	else {
+	else if (is_known(name, known_languages)) {
+		h_language = name;
+		h_quotes_language = name;
+	} else {
 		if (options.size())
 			h_preamble << "\\usepackage[" << options << "]{" << name << "}\n";
 		else
@@ -277,39 +295,78 @@ void handle_package(string const & name, string const & options)
 }
 
 
-void handle_table(Parser &, ostream &)
+vector<string> extract_col_align(string const & s)
 {
-	// \begin{table} has been read
-	//parse(end
+	vector<string> res;
+	for (size_t i = 0; i < s.size(); ++i) {
+		switch (s[i]) {
+			case 'c': res.push_back("center"); break;
+			case 'l': res.push_back("left");   break;
+			case 'r': res.push_back("right");  break;
+			default : res.push_back("right");  break;
+		}
+	}
+	return res;
+}
+
+
+void handle_tabular(Parser & p, ostream & os, mode_type mode)
+{
+	begin_inset(os, "Tabular \n");
+	string colopts = p.verbatimItem();
+	vector<string> colalign = extract_col_align(colopts);
+	ostringstream ss;
+	parse(p, ss, FLAG_END, mode);
+	vector<string> lines;
+	split(ss.str(), lines, LINE);
+	const size_t cols = colalign.size();
+	const size_t rows = lines.size();
+	os << "<lyxtabular version=\"3\" rows=\"" << rows
+		 << "\" columns=\"" << cols << "\">\n"
+		 << "<features>\n";
+	for (size_t c = 0; c < cols; ++c)
+		os << "<column alignment=\"" << colalign[c] << "\""
+			 << " valignment=\"top\""
+			 << " width=\"0pt\""
+			 << ">\n";
+	for (size_t r = 0; r < rows; ++r) {
+		vector<string> cells;
+		split(lines[r], cells, TAB);
+		while (cells.size() < cols)
+			cells.push_back(string());
+		//os << "<row bottomline=\"true\">\n";
+		os << "<row>\n";
+		for (size_t c = 0; c < cols; ++c) {
+			os << "<cell";
+			string alignment = "center";
+			vector<string> parts;
+			split(cells[c], parts, MULT);
+			if (parts.size() > 2) {
+				os << " multicolumn=\"" << parts[0] << "\"";
+				alignment = parts[1];
+			}
+			os << " alignment=\"" << alignment << "\""
+				 << " valignment=\"top\""
+				 << " topline=\"true\""
+				 << " leftline=\"true\""
+				 << " usebox=\"none\""
+				 << ">";
+			begin_inset(os, "Text");
+			os << "\n\n\\layout Standard\n\n";
+			os << parts.back();
+			end_inset(os);
+			os << "</cell>\n";
+		}
+		os << "</row>\n";
+	}
+	os << "</lyxtabular>\n";
+	end_inset(os);	
 }
 
 
 string wrap(string const & cmd, string const & str)
 {
 	return OPEN + cmd + ' ' + str + CLOSE;
-}
-
-
-vector<string> extract_col_align(string const & s)
-{
-	vector<string> res;
-	for (size_t i = 0; i < s.size(); ++i) {
-		switch (s[i]) {
-			case 'c':
-				res.push_back("center");
-				break;
-			case 'l':
-				res.push_back("left");
-				break;
-			case 'r':
-				res.push_back("right");
-				break;
-			default:
-				res.push_back("right");
-				break;
-		}
-	}
-	return res;
 }
 
 
@@ -494,6 +551,12 @@ void parse(Parser & p, ostream & os, unsigned flags, mode_type mode)
 				os << LINE;
 		}
 
+		else if (t.cs() == "\\" && mode == MATH_MODE)
+			os << t.asInput();
+
+		else if (t.cs() == "\\" && curr_env() == "tabular")
+			os << LINE;
+
 		else if (t.character() == ']' && (flags & FLAG_BRACK_LAST)) {
 			//cerr << "finished reading option\n";
 			return;
@@ -575,47 +638,7 @@ void parse(Parser & p, ostream & os, unsigned flags, mode_type mode)
 				os << "\\end{" << name << "}";
 				end_inset(os);	
 			} else if (name == "tabular") {
-				begin_inset(os, "Tabular \n");
-				string colopts = p.verbatimItem();
-				vector<string> colalign = extract_col_align(colopts);
-				ostringstream ss;
-				parse(p, ss, FLAG_END, mode);
-				vector<string> lines;
-				split(ss.str(), lines, LINE);
-				const size_t cols = colalign.size();
-				const size_t rows = lines.size();
-				os << "<lyxtabular version=\"3\" rows=\"" << rows
-				   << "\" columns=\"" << cols << "\">\n"
-				   << "<features>\n";
-				for (size_t c = 0; c < cols; ++c)
-					os << "<column alignment=\"" << colalign[c] << "\""
-					   << " valignment=\"top\""
-					   << " width=\"0pt\""
-					   << ">\n";
-				for (size_t r = 0; r < rows; ++r) {
-					vector<string> cells;
-					split(lines[r], cells, TAB);
-					while (cells.size() < cols)
-						cells.push_back(string());
-					//os << "<row bottomline=\"true\">\n";
-					os << "<row>\n";
-					for (size_t c = 0; c < cols; ++c) {
-						os << "<cell alignment=\"center\""
-						   << " valignment=\"top\""
-						   << " topline=\"true\""
-						   << " leftline=\"true\""
-						   << " usebox=\"none\""
-						   << ">";
-						begin_inset(os, "Text");
-						os << "\n\n\\layout Standard\n\n";
-						os << cells[c];
-						end_inset(os);
-						os << "</cell>\n";
-					}
-					os << "</row>\n";
-				}
-				os << "</lyxtabular>\n";
-				end_inset(os);	
+				handle_tabular(p, os, mode);
 			} else if (name == "table") {
 				begin_inset(os, "Float table\n");	
 				os << "wide false\n"
@@ -649,6 +672,7 @@ void parse(Parser & p, ostream & os, unsigned flags, mode_type mode)
 			}
 			p.error("found 'end' unexpectedly");
 		}
+
 
 		else if (t.cs() == "item")
 			handle_par(os);
@@ -733,7 +757,7 @@ void parse(Parser & p, ostream & os, unsigned flags, mode_type mode)
 		else if (t.cs() == "par")
 			handle_par(os);
 
-		else if (is_heading(t.cs())) {
+		else if (is_known(t.cs(), known_headings)) {
 			string name = t.cs();
 			if (p.nextToken().asInput() == "*") {
 				p.getToken();
@@ -749,6 +773,15 @@ void parse(Parser & p, ostream & os, unsigned flags, mode_type mode)
 		else if (t.cs() == "tableofcontents")
 			p.verbatimItem(); // swallow this
 
+		else if (t.cs() == "multicolumn" && mode == TEXT_MODE) {
+			// brutish...
+			parse(p, os, FLAG_ITEM, mode); 
+			os << MULT;
+			parse(p, os, FLAG_ITEM, mode); 
+			os << MULT;
+			parse(p, os, FLAG_ITEM, mode); 
+		}
+
 		else if (t.cs() == "textrm") {
 			os << '\\' << t.cs() << '{';
 			parse(p, os, FLAG_ITEM, MATHTEXT_MODE);
@@ -761,7 +794,7 @@ void parse(Parser & p, ostream & os, unsigned flags, mode_type mode)
 			os << "\n\\" << t.cs() << " default\n";
 		}
 
-		else if (is_latex_command(t.cs()) && mode == TEXT_MODE) {
+		else if (is_known(t.cs(), known_latex_commands) && mode == TEXT_MODE) {
 			begin_inset(os, "LatexCommand ");
 			os << '\\' << t.cs() << '{';
 			parse(p, os, FLAG_ITEM, TEXT_MODE);
@@ -775,6 +808,12 @@ void parse(Parser & p, ostream & os, unsigned flags, mode_type mode)
 			if (opt.size())
 				os << '[' << opt << ']';
 			os << '{' << p.getArg('{','}') << '}' << "\n\n";
+		}
+
+		else if (char const ** where = is_known(t.cs(), known_quotes)) {
+			begin_inset(os, "Quotes ");
+			os << known_coded_quotes[where - known_quotes];
+			end_inset(os);
 		}
 
 		else if (t.cs() == "textasciitilde")
