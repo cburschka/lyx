@@ -1,4 +1,4 @@
-How do I upgrade my existing LyX system to version 1.2.x?
+How do I upgrade my existing LyX system to version 1.3.0?
 ---------------------------------------------------------
 
 If you upgrade from version 1.1.6 or 1.1.5, you shouldn't have any
@@ -37,24 +37,21 @@ do not have the ImageMagick command-line tools installed, you
 will need to modify the default set up of LyX, or install them,
 in order to get previews of your document's graphics.
 
-Note: if you are using convert, and the graphics won't load in LyX,
-then you are probably seeing a bug in earlier versions of ImageMagick.
-You can either upgrade ImageMagick, change the convertor to use
-"convert -depth 8", which shold work around the problem, or set up
-a convertor to use a different conversion program as described in
-the documentation.
-
-http://bugzilla.lyx.org/show_bug.cgi?id=360
- 
 Document transfer
 -----------------
 
-In general, you don't need to convert any documents saved with LyX
-1.1.5 or 1.1.6 to use them with LyX 1.2.0.
+LyX 1.3.0 uses an external python script, lyx2lyx, to import documents
+written using previous versions of LyX. All versions of LyX as far back as
+0.12 are supported, so any klyx users still holding out for an alternative
+to xforms will finally be able to put their dinosaur to rest ;-)
 
-Older versions of LyX cannot read documents saved with LyX 1.2.0.
- 
-LyX 1.2.0 can read most documents saved with lyx 1.1.6 correctly.
+Of course, this means that you must have python installed in order to
+use LyX 1.3.0 with your old documents.
+
+lyx2lyx also has the framework in place to be able to convert documents
+to an earlier format. However, these converters have not yet been written
+so older versions of LyX will NOT be able to read documents saved with
+LyX 1.3.0.
 
 If you were previously using the floatflt paragraph option to
 wrap text around a figure, you will need to modify this for LyX 1.2.0
@@ -73,13 +70,3 @@ definitions, you can add an extra "\usepackage{babel}" statement at
 the beginning of your preamble.
 
 http://bugzilla.lyx.org/show_bug.cgi?id=315
-
-If you are using the minipage paragraph options in your document, you
-may find that LyX 1.2.0 fails to import them correctly as minipages.
-This might require some editing to correct this. If you have
-trouble with this, please ask the lyx-users mailing list for assistance,
-and we will be happy to help.
-
-http://bugzilla.lyx.org/show_bug.cgi?id=374
-http://bugzilla.lyx.org/show_bug.cgi?id=375
-http://bugzilla.lyx.org/show_bug.cgi?id=376
