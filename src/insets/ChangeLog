@@ -1,3 +1,8 @@
+2001-02-09  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* insettext.C (moveRightIntern): Update the selection cursor.
+	(moveLeftIntern): Ditto.
+
 2001-02-09  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* Makefile.am: remove BoundingBox.h

@@ -843,7 +843,6 @@ InsetText::LocalDispatch(BufferView * bv,
 	result = moveRight(bv);
 	bv->text->FinishUndo();
 	TEXT(bv)->ClearSelection();
-	TEXT(bv)->sel_cursor = TEXT(bv)->cursor;
 	UpdateLocal(bv, CURSOR, false);
 	break;
     case LFUN_LEFTSEL:
@@ -856,7 +855,6 @@ InsetText::LocalDispatch(BufferView * bv,
 	bv->text->FinishUndo();
 	result = moveLeft(bv);
 	TEXT(bv)->ClearSelection();
-	TEXT(bv)->sel_cursor = TEXT(bv)->cursor;
 	UpdateLocal(bv, CURSOR, false);
 	break;
     case LFUN_DOWNSEL:
@@ -1260,24 +1258,28 @@ InsetText::moveLeft(BufferView * bv, bool activate_inset, bool selecting)
 
 UpdatableInset::RESULT
 InsetText::moveRightIntern(BufferView * bv, bool behind, 
-			   bool activate_inset, bool /*selecting*/)
+			   bool activate_inset, bool selecting)
 {
     if (!cpar(bv)->next && (cpos(bv) >= cpar(bv)->Last()))
 	return FINISHED;
     if (activate_inset && checkAndActivateInset(bv, behind))
 	return DISPATCHED;
     TEXT(bv)->CursorRight(bv);
+    if (!selecting)
+	    TEXT(bv)->sel_cursor = TEXT(bv)->cursor;
     return DISPATCHED_NOUPDATE;
 }
 
 
 UpdatableInset::RESULT
 InsetText::moveLeftIntern(BufferView * bv, bool behind,
-			  bool activate_inset, bool /*selecting*/)
+			  bool activate_inset, bool selecting)
 {
     if (!cpar(bv)->previous && (cpos(bv) <= 0))
 	return FINISHED;
     TEXT(bv)->CursorLeft(bv);
+    if (!selecting)
+	    TEXT(bv)->sel_cursor = TEXT(bv)->cursor;
     if (activate_inset && checkAndActivateInset(bv, behind))
 	return DISPATCHED;
     return DISPATCHED_NOUPDATE;
