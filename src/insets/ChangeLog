@@ -1,3 +1,4 @@
+
 2002-08-29  Juergen Vigna  <jug@sad.it>
 
 	* insettabular.C (lfunMousePress): Pay attention where you set
@@ -7,7 +8,15 @@
 
 	* insettext.C (localDispatch): moved the MOUSE-events up to the
 	start of the function (Well Andre it would be a lot better if you
-	would use the ChangeLog!)
+	would use the ChangeLog!)  [See below noe]
+
+2002-08-29  André Pönitz <poenitz@gmx.net>
+
+	* insetfootlike.h: rename include guard to ALL CAPS
+	
+	* insettext.C: swap object and first parameter for checkInsetHit calls
+	  as this functions has moved from BufferView to LyXText
+
 
 2002-08-28  Rob Lahaye  <lahaye@snu.ac.kr>
 
