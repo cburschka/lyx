@@ -107,6 +107,12 @@ def remove_vcid(lines):
     if i != -1:
         del lines[i]
 
+def first_layout(lines):
+    while (lines[0] == ""):
+        del lines[0]
+    if lines[0][:7] != "\\layout":
+        lines[:0] = ["\\layout Standard"]
+
 def remove_space_in_units(lines):
     margins = ["\\topmargin","\\rightmargin",
                "\\leftmargin","\\bottommargin"]
@@ -132,6 +138,7 @@ def remove_space_in_units(lines):
             i = i + 1
 
 def convert(header,body):
+    first_layout(body)
     remove_vcid(header)
     remove_cursor(body)
     update_toc(body)
