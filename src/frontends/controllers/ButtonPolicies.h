@@ -66,7 +66,7 @@
 
     The IgnorantPolicy is a special case that allows anything.
  */
-class ButtonPolicy : public noncopyable {
+class ButtonPolicy : public boost::noncopyable {
 public:
 	///
 	virtual ~ButtonPolicy() {}

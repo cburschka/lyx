@@ -1,3 +1,9 @@
+2001-03-15  Lars Gullik Bjønnes  <larsbj@trylle.birdstep.com>
+
+	* ButtonPolicies.h: noncopyable is in namespace boost
+	* Dialogs.h (noncopyable): ditto
+	* DialogBase.h (noncopyable): ditto
+
 2001-03-14  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* Merging changes from BRANCH_MVC back into HEAD.

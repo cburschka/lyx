@@ -33,7 +33,7 @@ using SigC::Signal0;
 class LyXImage;
 
 /// A GraphicsCache item holder.
-class GraphicsCacheItem : public noncopyable {
+class GraphicsCacheItem : public boost::noncopyable {
 public:
 	/// c-tor
 	GraphicsCacheItem(string const & filename);

@@ -31,7 +31,7 @@ class GraphicsCacheItem;
     GraphicsCache is a singleton class, there should be only one instance of
     it at any moment.
 */
-class GraphicsCache : public noncopyable {
+class GraphicsCache : public boost::noncopyable {
 public:
 	/// Get the instance of the class.
 	static GraphicsCache & getInstance();

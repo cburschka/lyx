@@ -1,3 +1,8 @@
+2001-03-15  Lars Gullik Bjønnes  <larsbj@trylle.birdstep.com>
+
+	* FileInfo.h: noncopyable is in namespace boost
+	* path.h: ditto
+
 2001-02-16  John Levon  <moz@compsoc.man.ac.uk>
 
 	* syscontr.h: fix header include

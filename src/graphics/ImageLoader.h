@@ -29,7 +29,7 @@ class LyXImage;
  *  
  *  @Author Baruch Even, <baruch.even@writeme.com>
  */
-class ImageLoader : public noncopyable {
+class ImageLoader : public boost::noncopyable {
 public:
 	/// Errors that can be returned from this class.
 	enum Result {

@@ -12,7 +12,7 @@
 #endif
 
 ///
-class Path : public noncopyable {
+class Path : public boost::noncopyable {
 public:
 	///
 	explicit

@@ -27,7 +27,7 @@
     kept are user defined, but defaults to four.
     @author Lars Gullik Bjønnes
 */
-class LastFiles : public noncopyable {
+class LastFiles : public boost::noncopyable {
 public:
 	///
 	typedef std::deque<string> Files;

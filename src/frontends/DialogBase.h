@@ -35,7 +35,7 @@ using SigC::Object;
     satisfy that request.  Thus a dialog will have to "pull" the necessary
     details from the core of the program.
  */
-class DialogBase : public Object, public noncopyable
+class DialogBase : public Object, public boost::noncopyable
 {
 public:
 	/**@name Constructors and Deconstructors */

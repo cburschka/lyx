@@ -26,9 +26,8 @@
 #include <cstddef>            // for size_t
 #include <utility>            // for std::pair
 
-// LGB
-//namespace boost
-//{
+namespace boost
+{
 
 //  next() and prior() template functions  -----------------------------------//
 
@@ -91,11 +90,7 @@
     template <class A, class B>
     inline tied<A,B> tie(A& a, B& b) { return tied<A,B>(a, b); }
 
-// LGB
-//} // namespace boost
+} // namespace boost
 
 #endif  // BOOST_UTILITY_HPP
-
-
-
 

@@ -3642,7 +3642,8 @@ Buffer::Lists const Buffer::getLists() const
 #ifdef NEW_INSETS
 	bool found;
 	LyXTextClassList::size_type cap;
-	tie(found, cap) = textclasslist.NumberOfLayout(params.textclass, "Caption");
+	boost::tie(found, cap) = textclasslist
+		.NumberOfLayout(params.textclass, "Caption");
 #endif
 
 	while (par) {

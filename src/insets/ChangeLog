@@ -1,3 +1,9 @@
+2001-03-15  Lars Gullik Bjønnes  <larsbj@trylle.birdstep.com>
+
+	* ExternalTemplate.h: noncopyable is in namespace boost
+	* insetinclude.h: ditto
+	* insetcommand.h: ditto
+
 2001-03-14  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* insettext.C (Edit): #else# -> #else.

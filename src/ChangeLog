@@ -1,3 +1,19 @@
+2001-03-15  Lars Gullik Bjønnes  <larsbj@trylle.birdstep.com>
+
+	* buffer.C (pop_tag): tie is in namespace boost
+
+	* BufferView.h: noncopyable is in namespace boost
+	* lyxlex.h: ditto
+	* lyx_main.h: ditto
+	* lyx_gui.h: ditto
+	* layout.h: ditto
+	* lastfiles.h: ditto
+	* bufferlist.h: ditto
+	* ShareContainer.h: ditto
+	* LyXView.h: ditto
+	* LyXAction.h: ditto
+	* LaTeX.h: ditto
+
 2001-03-14  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* Merging changes from BRANCH_MVC back into HEAD.

@@ -61,7 +61,7 @@ protected:
 
 
 class MathedRowContainer {
-private:
+public:
 	///
 	typedef std::vector<MathedRowStruct>   data_type;
 	///

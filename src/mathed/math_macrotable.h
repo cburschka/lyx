@@ -16,7 +16,7 @@ class MathMacroTemplate;
 class MathMacro;
 
 ///
-class MathMacroTable : noncopyable {
+class MathMacroTable : boost::noncopyable {
 public:
 	///
 	void addTemplate(boost::shared_ptr<MathMacroTemplate> const &);

@@ -97,7 +97,7 @@ bool operator!=(Aux_Info const & a, Aux_Info const & o)
 
 
 ///
-class LaTeX : public noncopyable {
+class LaTeX : public boost::noncopyable {
 public:
 	/** Return values from scanLogFile() and run() (to come)
 	    

@@ -14,7 +14,7 @@
 
 /** This class encapsulates LyX action and user command operations.
  */
-class LyXAction : public noncopyable {
+class LyXAction : public boost::noncopyable {
 private:
 	///
 	struct func_info {

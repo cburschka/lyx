@@ -1,3 +1,9 @@
+2001-03-15  Lars Gullik Bjønnes  <larsbj@trylle.birdstep.com>
+
+	* math_macrotable.h: noncopyable is in namespace boost
+	* math_macrotemplate.h: ditto
+
+	* math_rowst.h: make MathedRowContainer::iterator public.
 
 2001-03-15  André Pönitz  <poenitz@htwm.de>
 

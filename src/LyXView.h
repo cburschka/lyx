@@ -44,7 +44,7 @@ using SigC::Object;
   view is supposed (at least IMHO) to be another class, that shows its output
   in one or more LyXView's.
  */
-class LyXView : public Object, public noncopyable {
+class LyXView : public Object, public boost::noncopyable {
 public:
 	/// constructor
 	LyXView(int w, int h);
