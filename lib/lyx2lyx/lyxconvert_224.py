@@ -166,7 +166,7 @@ def convert_minipage(lines):
         i = i + 1
         lines.insert(i, 'height' + height)
         i = i + 1
-        lines.insert(i, 'height_special "height"')
+        lines.insert(i, 'height_special "totalheight"')
         i = i + 1
 
 ##
