@@ -5,7 +5,7 @@
 #include FORMS_H_LOCATION
 #include "LString.h"
 #include "gettext.h"
-#include "Timeout.h"
+#include "frontends/Timeout.h"
 
 #ifdef __GNUG__
 #pragma interface

@@ -20,6 +20,8 @@ libfrontends_la_SOURCES=\
 	Liason.h \
 	Menubar.C \
 	Menubar.h \
+	Timeout.C \
+	Timeout.h \
 	Toolbar.C \
 	Toolbar.h
 

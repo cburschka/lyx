@@ -5,7 +5,7 @@
 
 #include "BufferView.h"
 #include "UpdateInset.h"
-#include "Timeout.h"
+#include "frontends/Timeout.h"
 
 #ifdef __GNUG__
 #pragma interface

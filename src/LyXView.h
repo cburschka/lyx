@@ -20,7 +20,7 @@
 #include FORMS_H_LOCATION
 
 #include "LString.h"
-#include "Timeout.h"
+#include "frontends/Timeout.h"
 #include <boost/utility.hpp>
 #include "layout.h"
 

@@ -40,6 +40,8 @@ libkde_la_SOURCES = \
 	Dialogs.C \
 	GUIRunTime.C \
 	QtLyXView.h \
+	Timeout_pimpl.C \
+	Timeout_pimpl.h \
 	FormCitation.C \
 	FormCitation.h \
 	FormCopyright.C \

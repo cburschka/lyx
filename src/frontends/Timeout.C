@@ -1,0 +1,76 @@
+/**
+ * \file Timeout.C
+ * Copyright 2001 LyX Team
+ * Read COPYING
+ *
+ * \author Lars Gullik Bjønnes
+ * \author John Levon
+ */
+#ifdef __GNUG__
+#pragma implementation
+#endif
+
+#include <config.h>
+
+#include "Timeout.h"
+#include "debug.h"
+
+#include "Timeout_pimpl.h"
+
+Timeout::Timeout()
+	: type(ONETIME), timeout_ms(0)
+{
+	pimpl_ = new Pimpl(this);
+}
+
+
+Timeout::Timeout(unsigned int msec, Type t)
+	: type(t), timeout_ms(msec)
+{
+	pimpl_ = new Pimpl(this);
+}
+
+
+Timeout::~Timeout()
+{
+	pimpl_->stop();
+	delete pimpl_;
+}
+
+
+void Timeout::start()
+{
+	pimpl_->start();
+}
+
+void Timeout::stop()
+{
+	pimpl_->stop();
+}
+
+void Timeout::restart()
+{
+	pimpl_->stop();
+	pimpl_->start();
+}
+
+void Timeout::emit()
+{
+	pimpl_->reset();
+	timeout.emit();
+	if (type == CONTINUOUS)
+		pimpl_->start();
+}
+
+Timeout & Timeout::setType(Type t)
+{
+	type = t;
+	return * this;
+}
+
+
+Timeout & Timeout::setTimeout(unsigned int msec)
+{
+	timeout_ms = msec;
+	return * this;
+}

@@ -73,8 +73,6 @@ lyx_SOURCES = \
 	Spacing.h \
 	TextCache.C \
 	TextCache.h \
-	Timeout.C \
-	Timeout.h \
 	ToolbarDefaults.C \
 	ToolbarDefaults.h \
 	UpdateInset.C \

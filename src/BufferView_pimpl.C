@@ -33,7 +33,6 @@ using SigC::slot;
 
 using std::pair;
 using std::endl;
-using std::vector;
 using std::make_pair;
 using std::min;
 
@@ -207,7 +206,6 @@ void BufferView::Pimpl::resize(int xpos, int ypos, int width, int height)
 
 void BufferView::Pimpl::resize()
 {
-	// This will resize the buffer. (Asger)
 	if (buffer_)
 		resizeCurrentBuffer();
 }
@@ -222,8 +220,8 @@ void BufferView::Pimpl::redraw()
 
 bool BufferView::Pimpl::fitCursor(LyXText * text)
 {
-	Assert(screen_); // it is a programming error to call fitCursor
-	// without a valid screen.
+	Assert(screen_);
+ 
 	bool ret = screen_->FitCursor(text, bv_);
 	if (ret)
 	    updateScrollbar();
@@ -393,7 +391,7 @@ void BufferView::Pimpl::updateScrollbar()
 // Callback for scrollbar slider
 void BufferView::Pimpl::scrollCB(double value)
 {
-	if (buffer_ == 0) return;
+	if (!buffer_) return;
 
 	current_scrollbar_value = long(value);
 	if (current_scrollbar_value < 0)
@@ -404,30 +402,29 @@ void BufferView::Pimpl::scrollCB(double value)
 
 	screen_->Draw(bv_->text, bv_, current_scrollbar_value);
 
-	if (lyxrc.cursor_follows_scrollbar) {
-		LyXText * vbt = bv_->text;
-		int height = vbt->DefaultHeight();
-		
-		if (vbt->cursor.y() < static_cast<int>((bv_->text->first + height))) {
-			vbt->SetCursorFromCoordinates(bv_, 0,
-						      bv_->text->first +
-						      height);
-		} else if (vbt->cursor.y() >
-			   static_cast<int>((bv_->text->first+workarea_->height()-height)))
-		{
-			vbt->SetCursorFromCoordinates(bv_, 0,
-						      bv_->text->first +
-						      workarea_->height()  -
-						      height);
-		}
+	if (!lyxrc.cursor_follows_scrollbar) {
+		waitForX();
+		return;
 	}
+ 
+	LyXText * vbt = bv_->text;
+ 
+	int const height = vbt->DefaultHeight();
+	int const first = static_cast<int>((bv_->text->first + height));
+	int const last = static_cast<int>((bv_->text->first + workarea_->height() - height));
+
+	if (vbt->cursor.y() < first)
+		vbt->SetCursorFromCoordinates(bv_, 0, first);
+	else if (vbt->cursor.y() > last)
+		vbt->SetCursorFromCoordinates(bv_, 0, last);
+
 	waitForX();
 }
 
 
 int BufferView::Pimpl::scrollUp(long time)
 {
-	if (buffer_ == 0) return 0;
+	if (!buffer_) return 0;
 	if (!screen_) return 0;
    
 	double value = workarea_->getScrollbarValue();
@@ -455,7 +452,7 @@ int BufferView::Pimpl::scrollUp(long time)
 
 int BufferView::Pimpl::scrollDown(long time)
 {
-	if (buffer_ == 0) return 0;
+	if (!buffer_) return 0;
 	if (!screen_) return 0;
    
 	double value= workarea_->getScrollbarValue();
@@ -495,7 +492,7 @@ void BufferView::Pimpl::workAreaMotionNotify(int x, int y, unsigned int state)
 	if (!(state & Button1MotionMask))
 		return;
 
-	if (buffer_ == 0 || !screen_) return;
+	if (!buffer_ || !screen_) return;
 
 	// Check for inset locking
 	if (bv_->theLockingInset()) {
@@ -514,22 +511,22 @@ void BufferView::Pimpl::workAreaMotionNotify(int x, int y, unsigned int state)
 		return;
 	}
    
-	/* The selection possible is needed, that only motion events are 
+	/* The test for not selection possible is needed, that only motion events are 
 	 * used, where the bottom press event was on the drawing area too */
-	if (selection_possible) {
-		screen_->HideCursor();
+	if (!selection_possible)
+		return;
+ 
+	screen_->HideCursor();
 
-		bv_->text->SetCursorFromCoordinates(bv_, x, y + bv_->text->first);
+	bv_->text->SetCursorFromCoordinates(bv_, x, y + bv_->text->first);
       
-		if (!bv_->text->selection)
-			update(BufferView::UPDATE); // Maybe an empty line was deleted
+	if (!bv_->text->selection)
+		update(BufferView::UPDATE); // Maybe an empty line was deleted
       
-		bv_->text->SetSelection();
-		screen_->ToggleToggle(bv_->text, bv_);
-		fitCursor(bv_->text);
-		screen_->ShowCursor(bv_->text, bv_);
-	}
-	return;
+	bv_->text->SetSelection();
+	screen_->ToggleToggle(bv_->text, bv_);
+	fitCursor(bv_->text);
+	screen_->ShowCursor(bv_->text, bv_);
 }
 
 
@@ -540,7 +537,7 @@ void BufferView::Pimpl::workAreaButtonPress(int xpos, int ypos,
 	last_click_x = -1;
 	last_click_y = -1;
 
-	if (buffer_ == 0 || !screen_) return;
+	if (!buffer_ || !screen_) return;
 
 	Inset * inset_hit = checkInsetHit(bv_->text, xpos, ypos, button);
 
@@ -694,7 +691,7 @@ void BufferView::Pimpl::leaveView()
 void BufferView::Pimpl::workAreaButtonRelease(int x, int y,
 					      unsigned int button)
 {
-	if (buffer_ == 0 || screen_ == 0) return;
+	if (!buffer_ || !screen_) return;
 
 	// If we hit an inset, we have the inset coordinates in these
 	// and inset_hit points to the inset.  If we do not hit an
@@ -720,7 +717,7 @@ void BufferView::Pimpl::workAreaButtonRelease(int x, int y,
 	owner_->showState();
 
 	// Did we hit an editable inset?
-	if (inset_hit != 0) {
+	if (inset_hit) {
 		// Inset like error, notes and figures
 		selection_possible = false;
 
@@ -916,12 +913,6 @@ Inset * BufferView::Pimpl::checkInsetHit(LyXText * text, int & x, int & y,
 
 void BufferView::Pimpl::workAreaExpose()
 {
-	// this is a hack to ensure that we only call this through
-	// BufferView::redraw().
-	//if (!lgb_hack) {
-	//	redraw();
-	//}
-	
 	static int work_area_width = 0;
 	static unsigned int work_area_height = 0;
 
@@ -1048,50 +1039,22 @@ void BufferView::Pimpl::cursorToggle()
 	// Quite a nice place for asyncron Inset updating, isn't it?
 	// Actually no! This is run even if no buffer exist... so (Lgb)
 	if (!buffer_) {
-		goto set_timer_and_return;
+		cursor_timeout.restart();
+		return;
 	}
-
-	// NOTE:
-	// On my quest to solve the gs render hangups I am now
-	// disabling the SIGHUP completely, and will do a wait
-	// now and then instead. If the guess that xforms somehow
-	// destroys something is true, this is likely (hopefully)
-	// to solve the problem...at least I hope so. Lgb
-
-	// ...Ok this seems to work...at least it does not make things
-	// worse so far. However I still see gs processes that hangs.
-	// I would really like to know _why_ they are hanging. Anyway
-	// the solution without the SIGCHLD handler seems to be easier
-	// to debug.
-
-	// When attaching gdb to a a running gs that hangs it shows
-	// that it is waiting for input(?) Is it possible for us to
-	// provide that input somehow? Or figure what it is expecing
-	// to read?
-
-	// One solution is to, after some time, look if there are some
-	// old gs processes still running and if there are: kill them
-	// and re render.
-
-	// Another solution is to provide the user an option to rerender
-	// a picture. This would, for the picture in question, check if
-	// there is a gs running for it, if so kill it, and start a new
-	// rendering process.
-
-	// these comments posted to lyx@via
-	{
-		int status = 1;
-		int pid = waitpid(static_cast<pid_t>(0), &status, WNOHANG);
-		if (pid == -1) // error find out what is wrong
-			; // ignore it for now.
-		else if (pid > 0)
-			sigchldhandler(pid, &status);
-	}
+ 
+	int status = 1;
+	int pid = waitpid(static_cast<pid_t>(0), &status, WNOHANG);
+	if (pid == -1) // error find out what is wrong
+		; // ignore it for now.
+	else if (pid > 0)
+		sigchldhandler(pid, &status);
 
 	updatelist.update(bv_);
 	
 	if (!screen_) {
-		goto set_timer_and_return;
+		cursor_timeout.restart();
+		return;
 	}
 
 	if (!bv_->theLockingInset()) {
@@ -1100,9 +1063,7 @@ void BufferView::Pimpl::cursorToggle()
 		bv_->theLockingInset()->ToggleInsetCursor(bv_);
 	}
 	
-  set_timer_and_return:
 	cursor_timeout.restart();
-	return;
 }
 
 
@@ -1168,9 +1129,6 @@ void BufferView::Pimpl::beforeChange()
 {
 	toggleSelection();
 	bv_->text->ClearSelection();
-
-	// CHECK
-	//owner_->update_timeout.stop();
 }
 
 
@@ -1338,7 +1296,7 @@ void BufferView::Pimpl::center()
 
 void BufferView::Pimpl::pasteClipboard(bool asPara) 
 {
-	if (buffer_ == 0) return;
+	if (!buffer_) return;
 
 	screen_->HideCursor();
 	bv_->beforeChange();

@@ -24,7 +24,7 @@ using SigC::slot;
 #endif
 
 FormBrowser::FormBrowser(LyXView * lv, Dialogs * d, const string & name)
-	: FormBaseBD(lv, d, name, new OkViewPolicy),
+	: FormBaseBD(lv, d, name, new IgnorantPolicy),
 	  dialog_(0)
 {
 }

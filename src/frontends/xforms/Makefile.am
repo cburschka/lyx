@@ -92,6 +92,8 @@ libxforms_la_SOURCES = \
 	Menubar_pimpl.h \
 	RadioButtonGroup.C \
 	RadioButtonGroup.h \
+	Timeout_pimpl.C \
+	Timeout_pimpl.h \
 	Toolbar_pimpl.C \
 	Toolbar_pimpl.h \
 	xform_helpers.C \

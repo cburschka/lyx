@@ -1,3 +1,13 @@
+2001-02-07  John Levon  <moz@compsoc.man.ac.uk>
+
+	* BufferView_pimpl.C: housekeeping
+	* BufferView_pimpl.h:
+	* LyXView.h:
+	* Makefile.am:
+	* Timeout.C:
+	* Timeout.h:
+	* minibuffer.h: move Timeout GUI-I
+                          
 2001-02-07  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* lyxrc.C (read): Update converters data-structures.
