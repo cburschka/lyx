@@ -22,7 +22,6 @@ libqt2_la_OBJADD = \
 	../controllers/ButtonControllerBase.lo \
 	../xforms/combox.lo \
 	../xforms/Color.lo \
-	../xforms/FloatMenuImpl.lo \
 	../xforms/FormBaseDeprecated.lo	\
 	../xforms/FormBrowser.lo \
 	../xforms/FormDocument.lo \
