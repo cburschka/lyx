@@ -24,7 +24,6 @@
 
 #include <map>
 
-
 namespace grfx {
 
 bool Previews::activated()

@@ -7,8 +7,8 @@
 # \author Angus Leeming, leeming@lyx.org
 #
 # with much help from David Kastrup, david.kastrup@t-online.de.
-# The sed script was created with advice from Praveen D V <praveend@sasken.com>
-# and the sed users' list sed-users@yahoogroups.com.
+# The sed script was created with advice from Praveen D V, praveend@sasken.com
+# and the sed users' list, sed-users@yahoogroups.com.
 
 # This script takes a LaTeX file and generates PPM files, one per page.
 # The idea is to use it with preview.sty to create small bitmap previews of
@@ -58,8 +58,7 @@ METRICS=${BASE}.metrics
 
 # Perform the conversion.
 cd ${DIR}
-latex -interaction=batchmode ${TEXFILE}
-
+latex ${TEXFILE}
 STATUS=$?
 EXECUTABLE="latex ${TEXFILE}"; CHECK_STATUS
 
@@ -116,7 +115,7 @@ rm -f ${SEDSCRIPT}
 EXECUTABLE="extracting metrics"; CHECK_STATUS
 
 # The ppm files have spurious (?! say some !) white space on the left and right
-# sides. If you want this set REMOVE_WS=1.
+# sides. If you want this removed set REMOVE_WS=1.
 REMOVE_WS=0
 
 which pnmcrop > /dev/null

@@ -397,6 +397,7 @@ void PreviewLoader::Impl::startLoading()
 	string const latexfile = filename_base + ".tex";
 
 	ofstream of(latexfile.c_str());
+	of << "\\batchmode\n";
 	dumpPreamble(of);
 	of << "\n\\begin{document}\n";
 	dumpData(of, inprogress.snippets);
@@ -494,6 +495,11 @@ void PreviewLoader::Impl::dumpPreamble(ostream & os) const
 		}
 	}
 
+	// All equation lables appear as "(#)" + preview.sty's rendering of
+	// the label name
+	if (lyxrc.preview_hashed_labels)
+		os << "\\renewcommand{\\theequation}{\\#}\n";
+
 	// Use the preview style file to ensure that each snippet appears on a
 	// fresh page.
 	os << "\n"
@@ -578,9 +584,8 @@ Converter const * setConverter()
 
 double setFontScalingFactor(Buffer & buffer)
 {
-	static double const lyxrc_preview_scale_factor = 0.9;
 	double scale_factor = 0.01 * lyxrc.dpi * lyxrc.zoom *
-		lyxrc_preview_scale_factor;
+		lyxrc.preview_scale_factor;
 
 	// Has the font size been set explicitly?
 	string const & fontsize = buffer.params.fontsize;
@@ -614,7 +619,10 @@ double setFontScalingFactor(Buffer & buffer)
 		if (!prefixIs(frontStrip(str), "\\ExecuteOptions"))
 			continue;
 
-		str = split(str, '{');
+		// str contains just the options of \ExecuteOptions
+		string const tmp = split(str, '{');
+		split(tmp, str, '}');
+		
 		int count = 0;
 		string tok = token(str, ',', count++);
 		while (!isValidLength(tok) && !tok.empty())

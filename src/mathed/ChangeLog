@@ -9,7 +9,7 @@
 2002-07-05  Angus Leeming  <leeming@lyx.org>
 
 	* formula.[Ch] (generatePreview): instantiate new virtual method.
-	Strip out the preliminary preview code and replace with new that
+	Strip out the preliminary preview code and replace with code that
 	makes full use of the graphics/Preview* files. Hide all the shenanigans
 	behind a PreviewImpl firewall.
 

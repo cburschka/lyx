@@ -1,3 +1,7 @@
+2002-07-09  Angus Leeming  <leeming@lyx.org>
+
+	* lyxpreview2ppm.sh: don't use latex option "-interaction=batchmode"
+	as it's not portable apparently.
 
 2002-07-09  André Pönitz <poenitz@gmx.net>
 	

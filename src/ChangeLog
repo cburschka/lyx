@@ -1,3 +1,7 @@
+2002-07-09  Angus Leeming  <leeming@lyx.org>
+
+	* lyxrc.[Ch]: added preview_hashed_labels and preview_scale_factor.
+
 2002-07-09  John Levon  <moz@compsoc.man.ac.uk>
 
 	* lengthcommon.h: whitespace
@@ -27,7 +31,7 @@
 
 	* LColor.C (LColor): add a corresponding entry to the items array.
 
-	* buffer.C (~Buffer): remove any previewed LaTeX snippets assocoated
+	* buffer.C (~Buffer): remove any previewed LaTeX snippets associated
 	with this buffer.
 
 2002-07-05  Angus Leeming  <leeming@lyx.org>

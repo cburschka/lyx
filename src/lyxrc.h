@@ -121,6 +121,8 @@ enum LyXRCTags {
 	RC_LABEL_INIT_LENGTH,
 	RC_DISPLAY_GRAPHICS,
 	RC_PREVIEW,
+	RC_PREVIEW_HASHED_LABELS,
+	RC_PREVIEW_SCALE_FACTOR,
 #ifdef USE_PSPELL
 	RC_USE_PSPELL,
 #endif
@@ -350,6 +352,11 @@ enum LyXRCTags {
 	bool show_banner;
 	///
 	bool preview;
+	///
+	bool preview_hashed_labels;
+	///
+	int preview_scale_factor;
+	
 private:
 	/// Is a bind file already (or currently) read?
 	bool hasBindFile;

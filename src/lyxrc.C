@@ -96,6 +96,8 @@ keyword_item lyxrcTags[] = {
 	{ "\\popup_font_encoding", LyXRC::RC_POPUP_FONT_ENCODING },
 	{ "\\popup_normal_font", LyXRC::RC_POPUP_NORMAL_FONT },
 	{ "\\preview", LyXRC::RC_PREVIEW },
+	{ "\\preview_hashed_labels", LyXRC::RC_PREVIEW_HASHED_LABELS },
+	{ "\\preview_scale_factor", LyXRC::RC_PREVIEW_SCALE_FACTOR },
 	{ "\\print_adapt_output", LyXRC::RC_PRINT_ADAPTOUTPUT },
 	{ "\\print_collcopies_flag", LyXRC::RC_PRINTCOLLCOPIESFLAG },
 	{ "\\print_command", LyXRC::RC_PRINT_COMMAND },
@@ -257,6 +259,8 @@ void LyXRC::setDefaults() {
 	dialogs_iconify_with_main = false;
 	label_init_length = 3;
 	preview = false;
+	preview_hashed_labels  = false;
+	preview_scale_factor = 0.9;
 
 	/// These variables are not stored on disk (perhaps they
 	// should be moved from the LyXRC class).
@@ -949,6 +953,16 @@ int LyXRC::read(string const & filename)
 				preview = lexrc.getBool();
 			break;
 
+		case RC_PREVIEW_HASHED_LABELS:
+			if (lexrc.next())
+				preview_hashed_labels = lexrc.getBool();
+			break;
+
+		case RC_PREVIEW_SCALE_FACTOR:
+			if (lexrc.next())
+				preview_hashed_labels = lexrc.getInteger();
+			break;
+
 		case RC_LAST: break; // this is just a dummy
 		}
 	}
@@ -1131,6 +1145,19 @@ void LyXRC::output(ostream & os) const
 	case RC_PREVIEW:
 		if (preview != system_lyxrc.preview) {
 			os << "\\preview " << tostr(preview) << "\n";
+		}
+
+	case RC_PREVIEW_HASHED_LABELS:
+		if (preview_hashed_labels !=
+		    system_lyxrc.preview_hashed_labels) {
+			os << "\\preview_hashed_labels "
+			   << tostr(preview_hashed_labels) << "\n";
+		}
+
+	case RC_PREVIEW_SCALE_FACTOR:
+		if (preview_scale_factor != system_lyxrc.preview_scale_factor) {
+			os << "\\preview_scale_factor "
+			   << preview_scale_factor << "\n";
 		}
 
 		os << "\n#\n"
@@ -2001,7 +2028,15 @@ string const LyXRC::getDescription(LyXRCTags tag)
 		break;
 
 	case RC_PREVIEW:
-		str = _("Shows a typeset preview besides formulas");
+		str = _("Shows a typeset preview of things such as math");
+		break;
+
+	case RC_PREVIEW_HASHED_LABELS:
+		str = _("Previewed equations will have \"(#)\" labels rather than numbered ones");
+		break;
+
+	case RC_PREVIEW_SCALE_FACTOR:
+		str = _("Scale the preview size to suit.");
 		break;
 
 	default:

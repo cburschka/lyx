@@ -1,5 +1,12 @@
 2002-07-09  Angus Leeming  <leeming@lyx.org>
 
+	* PreviewLoader.C (startLoading): prepend LaTeX file with "\batchmode".
+	Output equation labels as "(#)" if lyxrc preference is set.
+	(setFontScalingFactor): use lyxrc variable preview_scale_factor
+	rather than hard-coding this.
+
+2002-07-09  Angus Leeming  <leeming@lyx.org>
+
 	* PreviewLoader.C: Further refactoring of the code. Should now be
 	pretty clean.
 
