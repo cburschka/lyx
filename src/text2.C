@@ -2296,7 +2296,7 @@ bool LyXText::needRefresh() const
 
 void LyXText::clearPaint()
 {
-	need_refresh_ = true;
+	need_refresh_ = false;
 	refresh_row = rows().end();
 	refresh_y = 0;
 }
