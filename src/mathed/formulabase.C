@@ -609,8 +609,8 @@ Inset::RESULT InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 
 	//  Math fonts
 	case LFUN_GREEK_TOGGLE: handleFont(bv, cmd.argument, "lyxgreek"); break;
-	case LFUN_BOLD:         handleFont(bv, cmd.argument, "textbf"); break;
-	case LFUN_SANS:         handleFont(bv, cmd.argument, "textsf"); break;
+	case LFUN_BOLD:         handleFont(bv, cmd.argument, "mathbf"); break;
+	case LFUN_SANS:         handleFont(bv, cmd.argument, "mathsf"); break;
 	case LFUN_EMPH:         handleFont(bv, cmd.argument, "mathcal"); break;
 	case LFUN_ROMAN:        handleFont(bv, cmd.argument, "mathrm"); break;
 	case LFUN_CODE:         handleFont(bv, cmd.argument, "texttt"); break;
