@@ -1317,6 +1317,32 @@ void LyXFunc::dispatch(FuncRequest const & cmd, bool verbose)
 			break;
 		}
 
+		case LFUN_SAVE_AS_DEFAULT: {
+			string const fname =
+				AddName(AddPath(user_lyxdir(), "templates/"),
+					"defaults.lyx");
+			Buffer defaults(fname);
+
+			istringstream ss(argument);
+			LyXLex lex(0,0);
+			lex.setStream(ss);
+			int const unknown_tokens = defaults.readHeader(lex);
+
+			if (unknown_tokens != 0) {
+				lyxerr << "Warning in LFUN_SAVE_AS_DEFAULT!\n"
+				       << unknown_tokens << " unknown token"
+				       << (unknown_tokens == 1 ? "" : "s")
+				       << endl;
+			}
+			
+			if (defaults.writeFile(defaults.fileName()))
+				setMessage(_("Document defaults saved in ")
+					   + MakeDisplayPath(fname));
+			else
+				setErrorMessage(_("Unable to save document defaults"));
+			break;
+		}
+
 		case LFUN_BUFFERPARAMS_APPLY: {
 			biblio::CiteEngine const engine =
 				owner->buffer()->params().cite_engine;

@@ -329,6 +329,7 @@ void BufferView::Pimpl::setBuffer(Buffer * b)
 		cursor_.push(buffer_->inset());
 		cursor_.resetAnchor();
 		buffer_->text().init(bv_);
+		buffer_->text().setCurrentFont(cursor_);
 
 		// If we don't have a text object for this, we make one
 		//if (bv_->text() == 0)

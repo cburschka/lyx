@@ -1,3 +1,10 @@
+2004-08-08  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* lyxfunc.C (dispatch): implement LFUN_SAVE_AS_DEFAULT
+
+	* BufferView_pimpl.C (setBuffer): initialize the current font of
+	the underlying LyXText
+
 2004-08-05  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* kbsequence.C (print): use UI native formatting for menu
