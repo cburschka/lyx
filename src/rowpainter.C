@@ -259,7 +259,7 @@ void RowPainter::paintChars(pos_type & vpos, bool hebrew, bool arabic)
 {
 	pos_type pos = text_.vis2log(vpos);
 	pos_type const last = lastPrintablePos(text_, row_);
-	LyXFont orig_font(getFont(pos));
+	LyXFont orig_font = getFont(pos);
 
 	// first character
 	string str;

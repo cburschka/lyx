@@ -306,25 +306,17 @@ bool LyXScreen::fitCursor(LyXText * text, BufferView * bv)
 
 void LyXScreen::update(BufferView & bv, int yo, int xo)
 {
-	int const vwidth = workarea().workWidth();
-	int const vheight = workarea().workHeight();
 	LyXText * text = bv.text;
 
 	workarea().getPainter().start();
 
-	switch (text->refreshStatus()) {
-	case LyXText::REFRESH_ROW:
-	case LyXText::REFRESH_AREA:
-	{
+	if (text->needRefresh()) {
+		int const vwidth = workarea().workWidth();
+		int const vheight = workarea().workHeight();
 		text->updateRowPositions();
 		int const y = max(int(text->refresh_y - text->top_y()), 0);
 		drawFromTo(text, &bv, y, vheight, yo, xo);
 		expose(0, y, vwidth, vheight - y);
-		break;
-	}
-	case LyXText::REFRESH_NONE:
-		// Nothing needs done
-		break;
 	}
 
 	workarea().getPainter().end();

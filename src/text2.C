@@ -2288,15 +2288,15 @@ ParagraphList & LyXText::ownerParagraphs() const
 }
 
 
-LyXText::refresh_status LyXText::refreshStatus() const
+bool LyXText::needRefresh() const
 {
-	return refresh_status_;
+	return need_refresh_;
 }
 
 
 void LyXText::clearPaint()
 {
-	refresh_status_ = REFRESH_NONE;
+	need_refresh_ = true;
 	refresh_row = rows().end();
 	refresh_y = 0;
 }
@@ -2304,12 +2304,12 @@ void LyXText::clearPaint()
 
 void LyXText::postPaint(int start_y)
 {
-	refresh_status old = refresh_status_;
+	bool old = need_refresh_;
 
-	refresh_status_ = REFRESH_AREA;
+	need_refresh_ = true;
 	refresh_row = rows().end();
 
-	if (old != REFRESH_NONE && refresh_y < start_y)
+	if (old && refresh_y < start_y)
 		return;
 
 	refresh_y = start_y;
@@ -2328,17 +2328,17 @@ void LyXText::postPaint(int start_y)
 // make refresh_y be 0, and use row->y etc.
 void LyXText::postRowPaint(RowList::iterator rit, int start_y)
 {
-	if (refresh_status_ != REFRESH_NONE && refresh_y < start_y) {
-		refresh_status_ = REFRESH_AREA;
+	if (need_refresh_ && refresh_y < start_y) {
+		need_refresh_ = true;
 		return;
-	} else {
-		refresh_y = start_y;
 	}
 
-	if (refresh_status_ == REFRESH_AREA)
+	refresh_y = start_y;
+
+	if (need_refresh_)
 		return;
 
-	refresh_status_ = REFRESH_ROW;
+	need_refresh_ = true;
 	refresh_row = rit;
 
 	if (!inset_owner)

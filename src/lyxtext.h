@@ -44,16 +44,6 @@ class ParagraphList;
 // transition...
 class LyXText : public TextCursor {
 public:
-	/// what repainting is needed
-	enum refresh_status {
-		/// no repaint is needed
-		REFRESH_NONE = 0,
-		/// the refresh_row needs repainting
-		REFRESH_ROW = 1,
-		/// everything from refresh_y downwards needs repainting
-		REFRESH_AREA = 2
-	};
-
 	/// Constructor
 	LyXText(BufferView *);
 	/// sets inset as owner
@@ -180,14 +170,10 @@ public:
 	/// clear any pending paints
 	void clearPaint();
 
-	/**
-	 * Mark position y as the starting point for a repaint
-	 */
+	/// Mark position y as the starting point for a repaint
 	void postPaint(int start_y);
 
-	/**
-	 * Mark the given row at position y as needing a repaint.
-	 */
+	/// Mark the given row at position y as needing a repaint.
 	void postRowPaint(RowList::iterator rit, int start_y);
 
 	///
@@ -203,14 +189,14 @@ public:
 	 * Return the status. This represents what repaints are
 	 * pending after some operation (e.g. inserting a char).
 	 */
-	refresh_status refreshStatus() const;
+	bool needRefresh() const;
 
 private:
 	/**
 	 * The pixel y position from which to repaint the screen.
 	 * The position is absolute along the height of outermost
-	 * lyxtext (I think). REFRESH_AREA and REFRESH_ROW
-	 * repaints both use this as a starting point (if it's within
+	 * lyxtext (I think). If need_refresh_ is true
+	 * repaints use this as a starting point (if it's within
 	 * the viewable portion of the lyxtext).
 	 */
 	int refresh_y;
@@ -220,8 +206,8 @@ private:
 	 * It doesn't make any difference for REFRESH_AREA.
 	 */
 	RowList::iterator refresh_row;
-
-	refresh_status refresh_status_;
+	// do we need a refresh?
+	bool need_refresh_;
 
 public:
 	/// only the top-level LyXText has this non-zero

@@ -89,11 +89,9 @@ public:
 	 * @param xo the x offset into the text
 	 * @param yo the x offset into the text
 	 *
-	 * Updates part of the screen. If bv->text->status is
-	 * LyXText::REFRESH_AREA, we update from the
-	 * point of change and to the end of the screen.
-	 * If text->status is LyXText::REFRESH_ROW,
-	 * we only update the current row.
+	 * Updates part of the screen. If bv->text->needRefresh is
+	 * true, we update from the
+	 * point of change to the end of the screen.
 	 */
 	virtual void update(BufferView & bv, int yo = 0, int xo = 0);
 
@@ -140,11 +138,6 @@ protected:
 	/// y1 and y2 are coordinates of the screen
 	void drawFromTo(LyXText *, BufferView *, int y1, int y2,
 	                int y_offset = 0, int x_offset = 0);
-
-	/// y is a coordinate of the text
-	void drawOneRow(LyXText *, BufferView *,
-			RowList::iterator row,
-			int y_text, int y_offset = 0, int x_offset = 0);
 
 private:
 	/// grey out (no buffer)

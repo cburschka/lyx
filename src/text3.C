@@ -75,7 +75,7 @@ namespace {
 		}
 		if (!lt->isInInset()) {
 			bv->update(lt, BufferView::SELECT);
-		} else if (bv->text->refreshStatus() != LyXText::REFRESH_NONE) {
+		} else if (bv->text->needRefresh()) {
 			bv->update(BufferView::SELECT);
 		}
 

@@ -440,12 +440,12 @@ void InsetText::update(BufferView * bv, bool reinit)
 		the_locking_inset->update(bv, reinit);
 	}
 
-	if ((need_update & CURSOR_PAR) && (text_.refreshStatus() == LyXText::REFRESH_NONE) &&
+	if ((need_update & CURSOR_PAR) && !text_.needRefresh() &&
 		the_locking_inset) {
 		text_.updateInset(the_locking_inset);
 	}
 
-	if (text_.refreshStatus() == LyXText::REFRESH_AREA)
+	if (text_.needRefresh())
 		need_update |= FULL;
 
 	in_update = false;
@@ -461,16 +461,9 @@ void InsetText::update(BufferView * bv, bool reinit)
 void InsetText::setUpdateStatus(int what) const
 {
 	need_update |= what;
-	// we have to redraw us full if our LyXText REFRESH_AREA or
-	// if we don't break row so that we only have one row to update!
-	if ((text_.refreshStatus() == LyXText::REFRESH_AREA) ||
-	    (!autoBreakRows &&
-	     (text_.refreshStatus() == LyXText::REFRESH_ROW)))
-	{
+	// we will to redraw us full if our LyXText wants it
+	if (text_.needRefresh())
 		need_update |= FULL;
-	} else if (text_.refreshStatus() == LyXText::REFRESH_ROW) {
-		need_update |= CURSOR_PAR;
-	}
 
 	// this to not draw a selection when we redraw all of it!
 	if (need_update & CURSOR && !(need_update & SELECTION)) {
@@ -489,8 +482,8 @@ void InsetText::updateLocal(BufferView * bv, int what, bool mark_dirty)
 	text_.partialRebreak();
 	setUpdateStatus(what);
 	bool flag = mark_dirty ||
-		(((need_update != CURSOR) && (need_update != NONE)) ||
-		 (text_.refreshStatus() != LyXText::REFRESH_NONE) || text_.selection.set());
+		((need_update != CURSOR && need_update != NONE) ||
+		 text_.needRefresh() || text_.selection.set());
 	if (!text_.selection.set())
 		text_.selection.cursor = text_.cursor;
 
