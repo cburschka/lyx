@@ -1,3 +1,7 @@
+2003-07-26  André Pönitz  <poenitz@gmx.net>
+
+	* text.C (setHeightOfRow): restrict scope of temporary variable
+
 2003-07-27  Asger Alstrup  <alstrup@local>
 
 	* text.C (fill): Optimise algorithm to exploit that we can reuse

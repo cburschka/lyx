@@ -1055,8 +1055,6 @@ void LyXText::setHeightOfRow(RowList::iterator rit)
 	float layoutasc = 0;
 	float layoutdesc = 0;
 	float tmptop = 0;
-	LyXFont tmpfont;
-	InsetOld * tmpinset = 0;
 
 	// ok, let us initialize the maxasc and maxdesc value.
 	// This depends in LaTeX of the font of the last character
@@ -1103,8 +1101,8 @@ void LyXText::setHeightOfRow(RowList::iterator rit)
 		// Check if any insets are larger
 		for (pos_type pos = rit->pos(); pos <= pos_end; ++pos) {
 			if (pit->isInset(pos)) {
-				tmpfont = getFont(bv()->buffer(), pit, pos);
-				tmpinset = pit->getInset(pos);
+				LyXFont const & tmpfont = getFont(bv()->buffer(), pit, pos);
+				InsetOld * tmpinset = pit->getInset(pos);
 				if (tmpinset) {
 #if 1 // this is needed for deep update on initialitation
 #warning inset->update FIXME
