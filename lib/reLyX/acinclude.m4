@@ -58,7 +58,7 @@ fi])
 dnl Usage RELYX_CHECK_PERL
 AC_DEFUN(RELYX_CHECK_PERL,[
 AC_MSG_CHECKING([for perl >= 5.002])
-RELYX_SEARCH_PROG(PERL, perl perl5 perl5.002 perl5.003 perl5.004,
+RELYX_SEARCH_PROG(PERL, perl perl5 perl5.6.1  perl5.6.0 perl5.005 perl5.004 perl5.003 perl5.002,
 RELYX_PROG_PERL_OK
 )
 if test -n "$PERL" ; then
