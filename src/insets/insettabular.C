@@ -1196,7 +1196,7 @@ bool InsetTabular::calculate_dimensions_of_cells(BufferView * bv,
 				continue;
 			++cell;
 			inset = tabular->GetCellInset(cell);
-			if (!reinit)
+			if (!reinit && !tabular->GetPWidth(cell).empty())
 				inset->update(bv, font, false);
 			maxAsc = max(maxAsc, inset->ascent(bv, font));
 			maxDesc = max(maxDesc, inset->descent(bv, font));

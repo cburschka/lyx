@@ -1,7 +1,12 @@
 2001-08-10  Juergen Vigna  <jug@sad.it>
 
+	* insettabular.C (calculate_dimensions_of_cells): let's try to call
+	update only for fixed with cells.
+
 	* insettext.C (update): comment this out as it seems first wrong
 	and second not needed anymore!
+	(some functions): call reinitLyXText() only in update() in all other
+	positions set only need_update = INIT.
 
 2001-08-08  Juergen Vigna  <jug@sad.it>
 

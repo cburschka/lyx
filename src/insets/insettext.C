@@ -202,7 +202,7 @@ void InsetText::clear()
 		par = tmp;
 	}
 	par = new Paragraph;
-	reinitLyXText(true);
+	need_update = INIT;
 }
 
 
@@ -522,7 +522,7 @@ void InsetText::update(BufferView * bv, LyXFont const & font, bool reinit)
 	}
 	in_update = true;
 	if (reinit || need_update == INIT) {
-		need_update |= FULL;
+		need_update = FULL;
 		reinitLyXText();
 		if (owner())
 			owner()->update(bv, font, true);
@@ -1741,7 +1741,7 @@ void InsetText::setParagraphData(Paragraph * p)
 		np = np->next();
 		np->setInsetOwner(this);
 	}
-	reinitLyXText(true);
+	need_update = INIT;
 }
 
 
@@ -1758,10 +1758,9 @@ void InsetText::setAutoBreakRows(bool flag)
 {
 	if (flag != autoBreakRows) {
 		autoBreakRows = flag;
-		need_update = FULL;
 		if (!flag)
 			removeNewlines();
-		reinitLyXText(true);
+		need_update = INIT;
 	}
 }
 
