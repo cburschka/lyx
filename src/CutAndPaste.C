@@ -202,24 +202,15 @@ CutAndPaste::pasteSelection(ParagraphList & pars,
 
 	lyx::Assert (pos <= pit->size());
 
-	// make a copy of the simple cut_buffer
-#if 1
-	ParagraphList simple_cut_clone;
-	ParagraphList::iterator it = paragraphs.begin();
-	ParagraphList::iterator end = paragraphs.end();
-	for (; it != end; ++it) {
-		simple_cut_clone.push_back(new Paragraph(*it, false));
-	}
-#else
-	// Later we want it done like this:
+	// Make a copy of the simple cut_buffer.
 	ParagraphList simple_cut_clone = paragraphs;
-#endif
-	// now remove all out of the buffer which is NOT allowed in the
-	// new environment and set also another font if that is required
+
+	// Now remove all out of the buffer which is NOT allowed in the
+	// new environment and set also another font if that is required.
 	ParagraphList::iterator tmpbuf = paragraphs.begin();
 	int depth_delta = pit->params().depth() - tmpbuf->params().depth();
 
-	// make sure there is no class difference
+	// Make sure there is no class difference.
 #warning current_view used here
 	SwitchLayoutsBetweenClasses(textclass, tc, &*tmpbuf,
 				    current_view->buffer()->params);
@@ -238,11 +229,13 @@ CutAndPaste::pasteSelection(ParagraphList & pars,
 		tmpbuf->params().depth(tmpbuf->params().depth() + depth_delta);
 		if (tmpbuf->params().depth() > max_depth)
 			tmpbuf->params().depth(max_depth);
-		// only set this from the 2nd on as the 2nd depends for maxDepth
-		// still on pit
+
+		// Only set this from the 2nd on as the 2nd depends
+		// for maxDepth still on pit.
 		if (tmpbuf->previous() != pit)
 			max_depth = tmpbuf->getMaxDepthAfter();
-		// set the inset owner of this paragraph
+
+		// Set the inset owner of this paragraph.
 		tmpbuf->setInsetOwner(pit->inInset());
 		for (pos_type i = 0; i < tmpbuf->size(); ++i) {
 			if (tmpbuf->getChar(i) == Paragraph::META_INSET) {
@@ -250,11 +243,7 @@ CutAndPaste::pasteSelection(ParagraphList & pars,
 					tmpbuf->erase(i--);
 				}
 			} else {
-#if 0
-				LyXFont f1 = tmpbuf->getFont(current_view->buffer()->params, i, outerFont(tmpbuf, pars));
-#else
 				LyXFont f1 = tmpbuf->getFont(current_view->buffer()->params, i, outerFont(pit, pars));
-#endif
 				LyXFont f2 = f1;
 				if (!pit->checkInsertChar(f1)) {
 					tmpbuf->erase(i--);
@@ -265,11 +254,11 @@ CutAndPaste::pasteSelection(ParagraphList & pars,
 		}
 	}
 
-	// make the buf exactly the same layout than
-	// the cursor paragraph
+	// Make the buf exactly the same layout than
+	// the cursor paragraph.
 	paragraphs.begin()->makeSameLayout(*pit);
 
-	// find the end of the buffer
+	// Find the end of the buffer.
 	// FIXME: change this to end() - 1
 	ParagraphList::iterator lastbuffer = paragraphs.begin();
 	while (boost::next(lastbuffer) != paragraphs.end())
@@ -277,17 +266,18 @@ CutAndPaste::pasteSelection(ParagraphList & pars,
 
 	bool paste_the_end = false;
 
-	// open the paragraph for inserting the buf
-	// if necessary
+	// Open the paragraph for inserting the buf
+	// if necessary.
 	if (pit->size() > pos || !pit->next()) {
 		breakParagraphConservative(current_view->buffer()->params,
 					   pars, pit, pos);
 		paste_the_end = true;
 	}
-	// set the end for redoing later
+	
+	// Set the end for redoing later.
 	ParagraphList::iterator endpit = boost::next(boost::next(pit));
 
-	// paste it!
+	// Paste it!
 	lastbuffer->next(pit->next());
 	pit->next()->previous(&*lastbuffer);
 
@@ -298,10 +288,10 @@ CutAndPaste::pasteSelection(ParagraphList & pars,
 		lastbuffer = pit;
 
 	mergeParagraph(current_view->buffer()->params, pars, pit);
-	// store the new cursor position
+	// Store the new cursor position.
 	pit = lastbuffer;
 	pos = lastbuffer->size();
-	// maybe some pasting
+	// Maybe some pasting.
 	if (boost::next(lastbuffer) != paragraphs.end() && paste_the_end) {
 		if (boost::next(lastbuffer)->hasSameLayout(*lastbuffer)) {
 			mergeParagraph(current_view->buffer()->params, pars,
@@ -317,7 +307,7 @@ CutAndPaste::pasteSelection(ParagraphList & pars,
 		} else
 			boost::next(lastbuffer)->stripLeadingSpaces();
 	}
-	// restore the simple cut buffer
+	// restore the simple cut buffer.
 	paragraphs = simple_cut_clone;
 
 	return make_pair(PitPosPair(pit, pos), endpit);
