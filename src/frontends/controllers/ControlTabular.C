@@ -26,11 +26,9 @@ ControlTabular::ControlTabular(Dialog & parent)
 
 bool ControlTabular::initialiseParams(string const & data)
 {
-	Buffer * buffer = kernel().buffer();
-	if (!buffer)
-		return false;
+	Buffer & buffer = kernel().buffer();
 
-	InsetTabular tmp(*buffer);
+	InsetTabular tmp(buffer);
 	int cell = InsetTabularMailer::string2params(data, tmp);
 	if (cell != -1) {
 		params_.reset(new LyXTabular(tmp.tabular));

@@ -218,14 +218,26 @@ auto_ptr<InsetBase> InsetInclude::clone() const
 }
 
 
-void InsetInclude::write(Buffer const *, ostream & os) const
+void InsetInclude::write(Buffer const &, ostream & os) const
+{
+	write(os);
+}
+
+
+void InsetInclude::write(ostream & os) const
 {
 	os << "Include " << params_.cparams.getCommand() << '\n'
 	   << "preview " << tostr(params_.cparams.preview()) << '\n';
 }
 
 
-void InsetInclude::read(Buffer const *, LyXLex & lex)
+void InsetInclude::read(Buffer const &, LyXLex & lex)
+{
+	read(lex);
+}
+
+
+void InsetInclude::read(LyXLex & lex)
 {
 	params_.cparams.read(lex);
 
@@ -242,7 +254,7 @@ void InsetInclude::read(Buffer const *, LyXLex & lex)
 }
 
 
-string const InsetInclude::getScreenLabel(Buffer const *) const
+string const InsetInclude::getScreenLabel(Buffer const &) const
 {
 	string temp;
 
@@ -297,7 +309,7 @@ bool InsetInclude::loadIfNeeded() const
 }
 
 
-int InsetInclude::latex(Buffer const * buffer, ostream & os,
+int InsetInclude::latex(Buffer const & buffer, ostream & os,
 			LatexRunParams const & runparams) const
 {
 	string incfile(params_.cparams.getContents());
@@ -310,13 +322,13 @@ int InsetInclude::latex(Buffer const * buffer, ostream & os,
 		Buffer * tmp = bufferlist.getBuffer(getFileName());
 
 		// FIXME: this should be a GUI warning
-		if (tmp->params.textclass != buffer->params.textclass) {
+		if (tmp->params.textclass != buffer.params.textclass) {
 			lyxerr << "WARNING: Included file `"
 			       << MakeDisplayPath(getFileName())
 			       << "' has textclass `"
 			       << tmp->params.getLyXTextClass().name()
 			       << "' while parent file has textclass `"
-			       << buffer->params.getLyXTextClass().name()
+			       << buffer.params.getLyXTextClass().name()
 			       << "'." << endl;
 			//return 0;
 		}
@@ -324,19 +336,19 @@ int InsetInclude::latex(Buffer const * buffer, ostream & os,
 		// write it to a file (so far the complete file)
 		string writefile = ChangeExtension(getFileName(), ".tex");
 
-		if (!buffer->tmppath.empty() && !runparams.nice) {
+		if (!buffer.tmppath.empty() && !runparams.nice) {
 			incfile = subst(incfile, '/','@');
 #ifdef __EMX__
 			incfile = subst(incfile, ':', '$');
 #endif
-			writefile = AddName(buffer->tmppath, incfile);
+			writefile = AddName(buffer.tmppath, incfile);
 		} else
 			writefile = getFileName();
 		writefile = ChangeExtension(writefile, ".tex");
 		lyxerr[Debug::LATEX] << "incfile:" << incfile << endl;
 		lyxerr[Debug::LATEX] << "writefile:" << writefile << endl;
 
-		tmp->markDepClean(buffer->tmppath);
+		tmp->markDepClean(buffer.tmppath);
 
 		tmp->makeLaTeXFile(writefile, OnlyPath(getMasterFilename()),
 				   runparams, false);
@@ -365,7 +377,7 @@ int InsetInclude::latex(Buffer const * buffer, ostream & os,
 }
 
 
-int InsetInclude::ascii(Buffer const *, ostream & os, int) const
+int InsetInclude::ascii(Buffer const &, ostream & os, int) const
 {
 	if (isVerbatim())
 		os << GetFileContents(getFileName());
@@ -373,7 +385,7 @@ int InsetInclude::ascii(Buffer const *, ostream & os, int) const
 }
 
 
-int InsetInclude::linuxdoc(Buffer const * buffer, ostream & os) const
+int InsetInclude::linuxdoc(Buffer const & buffer, ostream & os) const
 {
 	string incfile(params_.cparams.getContents());
 
@@ -386,9 +398,9 @@ int InsetInclude::linuxdoc(Buffer const * buffer, ostream & os) const
 
 		// write it to a file (so far the complete file)
 		string writefile = ChangeExtension(getFileName(), ".sgml");
-		if (!buffer->tmppath.empty() && !buffer->niceFile) {
+		if (!buffer.tmppath.empty() && !buffer.niceFile) {
 			incfile = subst(incfile, '/','@');
-			writefile = AddName(buffer->tmppath, incfile);
+			writefile = AddName(buffer.tmppath, incfile);
 		} else
 			writefile = getFileName();
 
@@ -398,7 +410,7 @@ int InsetInclude::linuxdoc(Buffer const * buffer, ostream & os) const
 		lyxerr[Debug::LATEX] << "incfile:" << incfile << endl;
 		lyxerr[Debug::LATEX] << "writefile:" << writefile << endl;
 
-		tmp->makeLinuxDocFile(writefile, buffer->niceFile, true);
+		tmp->makeLinuxDocFile(writefile, buffer.niceFile, true);
 	}
 
 	if (isVerbatim()) {
@@ -412,7 +424,7 @@ int InsetInclude::linuxdoc(Buffer const * buffer, ostream & os) const
 }
 
 
-int InsetInclude::docbook(Buffer const * buffer, ostream & os,
+int InsetInclude::docbook(Buffer const & buffer, ostream & os,
 			  bool /*mixcont*/) const
 {
 	string incfile(params_.cparams.getContents());
@@ -426,9 +438,9 @@ int InsetInclude::docbook(Buffer const * buffer, ostream & os,
 
 		// write it to a file (so far the complete file)
 		string writefile = ChangeExtension(getFileName(), ".sgml");
-		if (!buffer->tmppath.empty() && !buffer->niceFile) {
+		if (!buffer.tmppath.empty() && !buffer.niceFile) {
 			incfile = subst(incfile, '/','@');
-			writefile = AddName(buffer->tmppath, incfile);
+			writefile = AddName(buffer.tmppath, incfile);
 		} else
 			writefile = getFileName();
 		if (IsLyXFilename(getFileName()))
@@ -437,7 +449,7 @@ int InsetInclude::docbook(Buffer const * buffer, ostream & os,
 		lyxerr[Debug::LATEX] << "incfile:" << incfile << endl;
 		lyxerr[Debug::LATEX] << "writefile:" << writefile << endl;
 
-		tmp->makeDocBookFile(writefile, buffer->niceFile, true);
+		tmp->makeDocBookFile(writefile, buffer.niceFile, true);
 	}
 
 	if (isVerbatim()) {
@@ -457,11 +469,11 @@ void InsetInclude::validate(LaTeXFeatures & features) const
 	string incfile(params_.cparams.getContents());
 	string writefile;
 
-	Buffer const * const b = bufferlist.getBuffer(getMasterFilename());
+	Buffer const & b = *bufferlist.getBuffer(getMasterFilename());
 
-	if (b && !b->tmppath.empty() && !b->niceFile && !isVerbatim()) {
+	if (!b.tmppath.empty() && !b.niceFile && !isVerbatim()) {
 		incfile = subst(incfile, '/','@');
-		writefile = AddName(b->tmppath, incfile);
+		writefile = AddName(b.tmppath, incfile);
 	} else
 		writefile = getFileName();
 
@@ -480,8 +492,7 @@ void InsetInclude::validate(LaTeXFeatures & features) const
 		// a file got loaded
 		Buffer * const tmp = bufferlist.getBuffer(getFileName());
 		if (tmp) {
-			if (b)
-				tmp->niceFile = b->niceFile;
+			tmp->niceFile = b.niceFile;
 			tmp->validate(features);
 		}
 	}
@@ -519,7 +530,7 @@ void InsetInclude::metrics(MetricsInfo & mi, Dimension & dim) const
 	} else {
 		if (!set_label_) {
 			set_label_ = true;
-			button_.update(getScreenLabel(mi.base.bv->buffer()),
+			button_.update(getScreenLabel(*mi.base.bv->buffer()),
 				       editable() != NOT_EDITABLE);
 		}
 		button_.metrics(mi, dim);
@@ -581,7 +592,7 @@ string const InsetInclude::PreviewImpl::latexString() const
 	ostringstream os;
 	LatexRunParams runparams;
 	runparams.flavor = LatexRunParams::LATEX;
-	parent().latex(view()->buffer(), os, runparams);
+	parent().latex(*view()->buffer(), os, runparams);
 
 	return STRCONV(os.str());
 }
@@ -648,7 +659,7 @@ void InsetIncludeMailer::string2params(string const & in,
 
 	if (lex.isOK()) {
 		InsetInclude inset(params);
-		inset.read(0, lex);
+		inset.read(lex);
 		params = inset.params();
 	}
 }
@@ -661,7 +672,7 @@ InsetIncludeMailer::params2string(InsetInclude::Params const & params)
 	inset.set(params);
 	ostringstream data;
 	data << name_ << ' ';
-	inset.write(0, data);
+	inset.write(data);
 	data << "\\end_inset\n";
 	return STRCONV(data.str());
 }

@@ -49,9 +49,9 @@ public:
 	///
 	InsetOld::Code lyxCode() const { return InsetOld::ERT_CODE; }
 	///
-	void read(Buffer const * buf, LyXLex & lex);
+	void read(Buffer const & buf, LyXLex & lex);
 	///
-	void write(Buffer const * buf, std::ostream & os) const;
+	void write(Buffer const & buf, std::ostream & os) const;
 	///
 	string const editMessage() const;
 	///
@@ -64,15 +64,15 @@ public:
 	///
 	EDITABLE editable() const;
 	///
-	int latex(Buffer const *, std::ostream &,
+	int latex(Buffer const &, std::ostream &,
 		  LatexRunParams const &) const;
 	///
-	int ascii(Buffer const *,
+	int ascii(Buffer const &,
 			  std::ostream &, int linelen = 0) const;
 	///
-	int linuxdoc(Buffer const *, std::ostream &) const;
+	int linuxdoc(Buffer const &, std::ostream &) const;
 	///
-	int docbook(Buffer const *, std::ostream &, bool mixcont) const;
+	int docbook(Buffer const &, std::ostream &, bool mixcont) const;
 	///
 	void validate(LaTeXFeatures &) const {}
 	///

@@ -29,15 +29,15 @@ public:
 		return std::auto_ptr<InsetBase>(new InsetCitation(params()));
 	}
 	///
-	string const getScreenLabel(Buffer const *) const;
+	string const getScreenLabel(Buffer const &) const;
 	///
 	EDITABLE editable() const { return IS_EDITABLE; }
 	///
 	InsetOld::Code lyxCode() const { return InsetOld::CITE_CODE; }
 	///
-	int ascii(Buffer const *, std::ostream &, int linelen) const;
+	int ascii(Buffer const &, std::ostream &, int linelen) const;
 	///
-	int latex(Buffer const *, std::ostream &,
+	int latex(Buffer const &, std::ostream &,
 		  LatexRunParams const &) const;
 	///
 	dispatch_result localDispatch(FuncRequest const & cmd);
@@ -47,7 +47,7 @@ public:
 	    is inserted. Tells us that the buffer is no longer being loaded
 	    and that the cache of BibTeX keys should be reloaded in the future.
 	*/
-	void setLoadingBuffer(Buffer const * buffer, bool state) const;
+	void setLoadingBuffer(Buffer const & buffer, bool state) const;
 private:
 	struct Cache {
 		///
@@ -72,9 +72,9 @@ private:
 	};
 
 	/// This function does the donkey work of creating the pretty label
-	string const generateLabel(Buffer const *) const;
+	string const generateLabel(Buffer const &) const;
 	///
-	Cache::Style getStyle(Buffer const * buffer) const;
+	Cache::Style getStyle(Buffer const & buffer) const;
 
 	///
 	mutable Cache cache;

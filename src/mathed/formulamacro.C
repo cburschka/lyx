@@ -70,7 +70,7 @@ auto_ptr<InsetBase> InsetFormulaMacro::clone() const
 }
 
 
-void InsetFormulaMacro::write(Buffer const *, ostream & os) const
+void InsetFormulaMacro::write(Buffer const &, ostream & os) const
 {
 	os << "FormulaMacro ";
 	WriteStream wi(os, false, false);
@@ -78,7 +78,7 @@ void InsetFormulaMacro::write(Buffer const *, ostream & os) const
 }
 
 
-int InsetFormulaMacro::latex(Buffer const *, ostream & os,
+int InsetFormulaMacro::latex(Buffer const &, ostream & os,
 			     LatexRunParams const & runparams) const
 {
 	WriteStream wi(os, runparams.moving_arg, true);
@@ -87,7 +87,7 @@ int InsetFormulaMacro::latex(Buffer const *, ostream & os,
 }
 
 
-int InsetFormulaMacro::ascii(Buffer const *, ostream & os, int) const
+int InsetFormulaMacro::ascii(Buffer const &, ostream & os, int) const
 {
 	WriteStream wi(os, false, true);
 	par()->write(wi);
@@ -95,19 +95,19 @@ int InsetFormulaMacro::ascii(Buffer const *, ostream & os, int) const
 }
 
 
-int InsetFormulaMacro::linuxdoc(Buffer const * buf, ostream & os) const
+int InsetFormulaMacro::linuxdoc(Buffer const & buf, ostream & os) const
 {
 	return ascii(buf, os, 0);
 }
 
 
-int InsetFormulaMacro::docbook(Buffer const * buf, ostream & os, bool) const
+int InsetFormulaMacro::docbook(Buffer const & buf, ostream & os, bool) const
 {
 	return ascii(buf, os, 0);
 }
 
 
-void InsetFormulaMacro::read(Buffer const *, LyXLex & lex)
+void InsetFormulaMacro::read(Buffer const &, LyXLex & lex)
 {
 	read(lex.getStream());
 }

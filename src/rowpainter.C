@@ -691,22 +691,22 @@ void RowPainter::paintFirst()
 	y_top += paintLengthMarker(_("Space above"), parparams.spaceTop(),
 			yo_ + y_top);
 
-	Buffer const * buffer = bv_.buffer();
+	Buffer const & buffer = *bv_.buffer();
 
 	LyXLayout_ptr const & layout = pit_->layout();
 
-	if (buffer->params.paragraph_separation == BufferParams::PARSEP_SKIP) {
+	if (buffer.params.paragraph_separation == BufferParams::PARSEP_SKIP) {
 		if (pit_ != text_.ownerParagraphs().begin()) {
 			if (layout->latextype == LATEX_PARAGRAPH
 				&& !pit_->getDepth()) {
-				y_top += buffer->params.getDefSkip().inPixels(bv_);
+				y_top += buffer.params.getDefSkip().inPixels(bv_);
 			} else {
 				LyXLayout_ptr const & playout =
 					boost::prior(pit_)->layout();
 				if (playout->latextype == LATEX_PARAGRAPH
 					&& !boost::prior(pit_)->getDepth()) {
 					// is it right to use defskip here, too? (AS)
-					y_top += buffer->params.getDefSkip().inPixels(bv_);
+					y_top += buffer.params.getDefSkip().inPixels(bv_);
 				}
 			}
 		}
@@ -746,12 +746,12 @@ void RowPainter::paintFirst()
 			// printed in an extra row and has a pagebreak at
 			// the top.
 			if (layout->labeltype == LABEL_COUNTER_CHAPTER) {
-				if (buffer->params.secnumdepth >= 0) {
+				if (buffer.params.secnumdepth >= 0) {
 					float spacing_val = 1.0;
 					if (!parparams.spacing().isDefault()) {
 						spacing_val = parparams.spacing().getValue();
 					} else {
-						spacing_val = buffer->params.spacing.getValue();
+						spacing_val = buffer.params.spacing.getValue();
 					}
 
 					int const maxdesc =
@@ -794,7 +794,7 @@ void RowPainter::paintFirst()
 			if (!parparams.spacing().isDefault()) {
 				spacing_val = parparams.spacing().getValue();
 			} else {
-				spacing_val = buffer->params.spacing.getValue();
+				spacing_val = buffer.params.spacing.getValue();
 			}
 
 			int maxdesc =
@@ -1050,7 +1050,7 @@ int paintRows(BufferView const & bv, LyXText const & text,
 	//const_cast<LyXText&>(text).updateRowPositions();
 	int const yy = yf - y;
 	int const y2 = bv.painter().paperHeight();
-	
+
 	ParagraphList::iterator end = text.ownerParagraphs().end();
 	bool active = false;
 
@@ -1075,7 +1075,6 @@ int paintRows(BufferView const & bv, LyXText const & text,
 
 	return y;
 }
-
 
 } // namespace anon
 
@@ -1128,5 +1127,3 @@ int getLengthMarkerHeight(BufferView const & bv, VSpace const & vsp)
 	else
 		return max(min_size, space_size);
 }
-
-

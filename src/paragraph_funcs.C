@@ -37,7 +37,7 @@
 #include "insets/insethfill.h"
 #include "insets/insetnewline.h"
 
-extern string bibitemWidest(Buffer const *);
+extern string bibitemWidest(Buffer const &);
 
 using namespace lyx::support;
 
@@ -298,14 +298,14 @@ int getEndLabel(ParagraphList::iterator p, ParagraphList const & plist)
 namespace {
 
 ParagraphList::iterator
-TeXEnvironment(Buffer const * buf,
+TeXEnvironment(Buffer const & buf,
 	       ParagraphList const & paragraphs,
 	       ParagraphList::iterator pit,
 	       ostream & os, TexRow & texrow,
 	       LatexRunParams const & runparams);
 
 ParagraphList::iterator
-TeXOnePar(Buffer const * buf,
+TeXOnePar(Buffer const & buf,
 	  ParagraphList const & paragraphs,
 	  ParagraphList::iterator pit,
 	  ostream & os, TexRow & texrow,
@@ -314,7 +314,7 @@ TeXOnePar(Buffer const * buf,
 
 
 ParagraphList::iterator
-TeXDeeper(Buffer const * buf,
+TeXDeeper(Buffer const & buf,
 	  ParagraphList const & paragraphs,
 	  ParagraphList::iterator pit,
 	  ostream & os, TexRow & texrow,
@@ -340,7 +340,7 @@ TeXDeeper(Buffer const * buf,
 
 
 ParagraphList::iterator
-TeXEnvironment(Buffer const * buf,
+TeXEnvironment(Buffer const & buf,
 	       ParagraphList const & paragraphs,
 	       ParagraphList::iterator pit,
 	       ostream & os, TexRow & texrow,
@@ -348,7 +348,7 @@ TeXEnvironment(Buffer const * buf,
 {
 	lyxerr[Debug::LATEX] << "TeXEnvironment...     " << &*pit << endl;
 
-	BufferParams const & bparams = buf->params;
+	BufferParams const & bparams = buf.params;
 
 	LyXLayout_ptr const & style = pit->layout();
 
@@ -465,7 +465,7 @@ InsetOptArg * optArgInset(Paragraph const & par)
 
 
 ParagraphList::iterator
-TeXOnePar(Buffer const * buf,
+TeXOnePar(Buffer const & buf,
 	  ParagraphList const & paragraphs,
 	  ParagraphList::iterator pit,
 	  ostream & os, TexRow & texrow,
@@ -474,7 +474,7 @@ TeXOnePar(Buffer const * buf,
 {
 	lyxerr[Debug::LATEX] << "TeXOnePar...     " << &*pit << " '"
 		<< everypar << "'" << endl;
-	BufferParams const & bparams = buf->params;
+	BufferParams const & bparams = buf.params;
 
 	InsetOld const * in = pit->inInset();
 	bool further_blank_line = false;
@@ -720,7 +720,7 @@ TeXOnePar(Buffer const * buf,
 //
 // LaTeX all paragraphs from par to endpar, if endpar == 0 then to the end
 //
-void latexParagraphs(Buffer const * buf,
+void latexParagraphs(Buffer const & buf,
 		     ParagraphList const & paragraphs,
 		     ostream & os,
 		     TexRow & texrow,
@@ -729,7 +729,7 @@ void latexParagraphs(Buffer const * buf,
 {
 	bool was_title = false;
 	bool already_title = false;
-	LyXTextClass const & tclass = buf->params.getLyXTextClass();
+	LyXTextClass const & tclass = buf.params.getLyXTextClass();
 	ParagraphList::iterator par = const_cast<ParagraphList&>(paragraphs).begin();
 	ParagraphList::iterator endpar = const_cast<ParagraphList&>(paragraphs).end();
 
@@ -929,27 +929,27 @@ int readParToken(Buffer & buf, Paragraph & par, LyXLex & lex, string const & tok
 				inset = new InsetSpecialChar;
 			else
 				inset = new InsetSpace;
-			inset->read(&buf, lex);
+			inset->read(buf, lex);
 			par.insertInset(par.size(), inset, font, change);
 		}
 	} else if (token == "\\i") {
 		InsetOld * inset = new InsetLatexAccent;
-		inset->read(&buf, lex);
+		inset->read(buf, lex);
 		par.insertInset(par.size(), inset, font, change);
 	} else if (token == "\\backslash") {
 		par.insertChar(par.size(), '\\', font, change);
 	} else if (token == "\\newline") {
 		InsetOld * inset = new InsetNewline;
-		inset->read(&buf, lex);
+		inset->read(buf, lex);
 		par.insertInset(par.size(), inset, font, change);
 	} else if (token == "\\LyXTable") {
 		InsetOld * inset = new InsetTabular(buf);
-		inset->read(&buf, lex);
+		inset->read(buf, lex);
 		par.insertInset(par.size(), inset, font, change);
 	} else if (token == "\\bibitem") {
 		InsetCommandParams p("bibitem", "dummy");
 		InsetBibitem * inset = new InsetBibitem(p);
-		inset->read(&buf, lex);
+		inset->read(buf, lex);
 		par.insertInset(par.size(), inset, font, change);
 	} else if (token == "\\hfill") {
 		par.insertInset(par.size(), new InsetHFill, font, change);

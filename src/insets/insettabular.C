@@ -201,9 +201,9 @@ auto_ptr<InsetBase> InsetTabular::clone() const
 }
 
 
-Buffer const * InsetTabular::buffer() const
+Buffer const & InsetTabular::buffer() const
 {
-	return buffer_;
+	return *buffer_;
 }
 
 
@@ -220,14 +220,14 @@ void InsetTabular::buffer(Buffer * b)
 }
 
 
-void InsetTabular::write(Buffer const * buf, ostream & os) const
+void InsetTabular::write(Buffer const & buf, ostream & os) const
 {
 	os << "Tabular" << endl;
 	tabular.write(buf, os);
 }
 
 
-void InsetTabular::read(Buffer const * buf, LyXLex & lex)
+void InsetTabular::read(Buffer const & buf, LyXLex & lex)
 {
 	bool const old_format = (lex.getString() == "\\LyXTable");
 
@@ -856,7 +856,7 @@ InsetOld::RESULT InsetTabular::localDispatch(FuncRequest const & cmd)
 			updateLocal(bv);
 		break;
 	case LFUN_NEXT: {
-		if (hs) 
+		if (hs)
 			clearSelection();
 		int column = actcol;
 		unlockInsetInInset(bv, the_locking_inset);
@@ -1085,29 +1085,29 @@ InsetOld::RESULT InsetTabular::localDispatch(FuncRequest const & cmd)
 }
 
 
-int InsetTabular::latex(Buffer const * buf, ostream & os,
+int InsetTabular::latex(Buffer const & buf, ostream & os,
 			LatexRunParams const & runparams) const
 {
 	return tabular.latex(buf, os, runparams);
 }
 
 
-int InsetTabular::ascii(Buffer const * buf, ostream & os, int ll) const
+int InsetTabular::ascii(Buffer const & buf, ostream & os, int ll) const
 {
 	if (ll > 0)
-		return tabular.ascii(buf, os, ownerPar(*buf, this).params().depth(),
+		return tabular.ascii(buf, os, ownerPar(buf, this).params().depth(),
 				      false, 0);
 	return tabular.ascii(buf, os, 0, false, 0);
 }
 
 
-int InsetTabular::linuxdoc(Buffer const * buf, ostream & os) const
+int InsetTabular::linuxdoc(Buffer const & buf, ostream & os) const
 {
 	return tabular.linuxdoc(buf,os);
 }
 
 
-int InsetTabular::docbook(Buffer const * buf, ostream & os, bool mixcont) const
+int InsetTabular::docbook(Buffer const & buf, ostream & os, bool mixcont) const
 {
 	int ret = 0;
 	InsetOld * master;
@@ -1980,7 +1980,7 @@ bool InsetTabular::insetHit(BufferView *, int x, int) const
 }
 
 
-void InsetTabular::deleteLyXText(BufferView * bv, bool recursive) const
+void InsetTabular::deleteLyXText(BufferView * /*bv*/, bool /*recursive*/) const
 {
 	//resizeLyXText(bv, recursive);
 }
@@ -2245,7 +2245,7 @@ bool InsetTabular::copySelection(BufferView * bv)
 				    true, true);
 
 	ostringstream os;
-	paste_tabular->ascii(bv->buffer(), os,
+	paste_tabular->ascii(*bv->buffer(), os,
 			     ownerPar(*bv->buffer(), this).params().depth(), true, '\t');
 	bv->stuffClipboard(STRCONV(os.str()));
 	return true;
@@ -2712,9 +2712,8 @@ int InsetTabularMailer::string2params(string const & in, InsetTabular & inset)
 	if (!lex.isOK())
 		return -1;
 
-	Buffer const * const buffer = inset.buffer();
-	if (buffer)
-		inset.read(buffer, lex);
+	Buffer const & buffer = inset.buffer();
+	inset.read(buffer, lex);
 
 	// We can't set the active cell, but we can tell the frontend
 	// what it is.
@@ -2724,9 +2723,7 @@ int InsetTabularMailer::string2params(string const & in, InsetTabular & inset)
 
 string const InsetTabularMailer::params2string(InsetTabular const & inset)
 {
-	Buffer const * const buffer = inset.buffer();
-	if (!buffer)
-		return string();
+	Buffer const & buffer = inset.buffer();
 
 	ostringstream data;
 	data << name_ << " \\active_cell " << inset.getActCell() << '\n';

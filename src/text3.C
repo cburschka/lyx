@@ -336,7 +336,7 @@ void LyXText::cursorNext()
 	}
 
 	ParagraphList::iterator pit = cursor.par();
-	nextRow(pit, rit);	
+	nextRow(pit, rit);
 	LyXCursor cur;
 	setCursor(cur, pit, rit->pos(), false);
 	if (cur.y() < bv_owner->top_y() + bv()->workHeight())

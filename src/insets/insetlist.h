@@ -23,11 +23,11 @@ public:
 	///
 	InsetList();
 	///
-	void write(Buffer const * buf, std::ostream & os) const;
+	void write(Buffer const & buf, std::ostream & os) const;
 	///
 	Inset::Code lyxCode() const { return Inset::FOOT_CODE; }
 	///
-	int latex(Buffer const *, std::ostream &,
+	int latex(Buffer const &, std::ostream &,
 		  LatexRunParams const &) const;
 	///
 	string const editMessage() const;

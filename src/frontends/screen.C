@@ -224,14 +224,14 @@ void LyXScreen::toggleCursor(BufferView & bv)
 }
 
 
-bool LyXScreen::fitManualCursor(BufferView * bv, LyXText * text,
+bool LyXScreen::fitManualCursor(BufferView * bv, LyXText *,
 	int /*x*/, int y, int asc, int desc)
 {
 	int const vheight = workarea().workHeight();
 	int const topy = bv->top_y();
 	int newtop = topy;
-	
-	
+
+
 	if (y + desc - topy >= vheight)
 		newtop = y - 3 * vheight / 4;  // the scroll region must be so big!!
 	else if (y - asc < topy && topy > 0)
@@ -252,7 +252,7 @@ unsigned int LyXScreen::topCursorVisible(LyXText * text)
 	LyXCursor const & cursor = text->cursor;
 	int top_y = text->bv()->top_y();
 	int newtop = top_y;
-	int const vheight = workarea().workHeight();
+	unsigned int const vheight = workarea().workHeight();
 
 	RowList::iterator row = text->cursorRow();
 

@@ -31,10 +31,10 @@ public:
 	///
 	InsetOld::Code lyxCode() const { return InsetOld::FOOT_CODE; }
 	///
-	int latex(Buffer const *, std::ostream &,
+	int latex(Buffer const &, std::ostream &,
 		  LatexRunParams const &) const;
 	///
-	int docbook(Buffer const *, std::ostream &, bool mixcont) const;
+	int docbook(Buffer const &, std::ostream &, bool mixcont) const;
 	///
 	string const editMessage() const;
 };

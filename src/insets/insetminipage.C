@@ -192,14 +192,14 @@ void InsetMinipage::Params::read(LyXLex & lex)
 }
 
 
-void InsetMinipage::write(Buffer const * buf, ostream & os) const
+void InsetMinipage::write(Buffer const & buf, ostream & os) const
 {
 	params_.write(os);
 	InsetCollapsable::write(buf, os);
 }
 
 
-void InsetMinipage::read(Buffer const * buf, LyXLex & lex)
+void InsetMinipage::read(Buffer const & buf, LyXLex & lex)
 {
 	params_.read(lex);
 	InsetCollapsable::read(buf, lex);
@@ -241,7 +241,7 @@ string const InsetMinipage::editMessage() const
 }
 
 
-int InsetMinipage::latex(Buffer const * buf, ostream & os,
+int InsetMinipage::latex(Buffer const & buf, ostream & os,
 			 LatexRunParams const & runparams) const
 {
 	string s_pos;

@@ -43,13 +43,15 @@ vector<Format const *> const ControlSendto::allFormats() const
 	exports.push_back("lyx");
 	exports.push_back("text");
 
-	if (buffer()->isLatex())
+#warning Can the doc ever be all/any of these at the same time? (Lgb)
+	// I think some if else if is in order.
+	if (buffer().isLatex())
 		exports.push_back("latex");
-	if (buffer()->isLinuxDoc())
+	if (buffer().isLinuxDoc())
 		exports.push_back("linuxdoc");
-	if (buffer()->isDocBook())
+	if (buffer().isDocBook())
 		exports.push_back("docbook");
-	if (buffer()->isLiterate())
+	if (buffer().isLiterate())
 		exports.push_back("literate");
 
 	// Loop over these native formats and ascertain what formats we

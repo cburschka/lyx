@@ -46,13 +46,13 @@ InsetFootlike::InsetFootlike(InsetFootlike const & in)
 void InsetFootlike::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	InsetCollapsable::metrics(mi, dim);
-	if (isOpen()) 
+	if (isOpen())
 		dim.wid = mi.base.textwidth;
 	dim_ = dim;
 }
 
 
-void InsetFootlike::write(Buffer const * buf, ostream & os) const
+void InsetFootlike::write(Buffer const & buf, ostream & os) const
 {
 	os << getInsetName() << "\n";
 	InsetCollapsable::write(buf, os);

@@ -28,7 +28,7 @@ public:
 	///
 	virtual dispatch_result localDispatch(FuncRequest const & cmd);
 	///
-	string const getScreenLabel(Buffer const *) const { return getContents(); }
+	string const getScreenLabel(Buffer const &) const { return getContents(); }
 	///
 	EDITABLE editable() const { return IS_EDITABLE; }
 	///
@@ -36,14 +36,14 @@ public:
 	///
 	void getLabelList(std::vector<string> &) const;
 	///
-	int latex(Buffer const *, std::ostream &,
+	int latex(Buffer const &, std::ostream &,
 		  LatexRunParams const &) const;
 	///
-	int ascii(Buffer const *, std::ostream &, int linelen) const;
+	int ascii(Buffer const &, std::ostream &, int linelen) const;
 	///
-	int linuxdoc(Buffer const *, std::ostream &) const;
+	int linuxdoc(Buffer const &, std::ostream &) const;
 	///
-	int docbook(Buffer const *, std::ostream &, bool mixcont) const;
+	int docbook(Buffer const &, std::ostream &, bool mixcont) const;
 };
 
 #endif

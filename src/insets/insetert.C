@@ -112,7 +112,7 @@ InsetERT::~InsetERT()
 }
 
 
-void InsetERT::read(Buffer const * buf, LyXLex & lex)
+void InsetERT::read(Buffer const & buf, LyXLex & lex)
 {
 	bool token_found = false;
 	if (lex.isOK()) {
@@ -182,7 +182,7 @@ void InsetERT::read(Buffer const * buf, LyXLex & lex)
 }
 
 
-void InsetERT::write(Buffer const * buf, ostream & os) const
+void InsetERT::write(Buffer const & buf, ostream & os) const
 {
 	string st;
 
@@ -202,7 +202,7 @@ void InsetERT::write(Buffer const * buf, ostream & os) const
 	   << "status "<< st << "\n";
 
 	//inset.writeParagraphData(buf, os);
-	string const layout(buf->params.getLyXTextClass().defaultLayoutName());
+	string const layout(buf.params.getLyXTextClass().defaultLayoutName());
 	ParagraphList::iterator par = inset.paragraphs.begin();
 	ParagraphList::iterator end = inset.paragraphs.end();
 	for (; par != end; ++par) {
@@ -325,7 +325,7 @@ void InsetERT::lfunMouseMotion(FuncRequest const & cmd)
 }
 
 
-int InsetERT::latex(Buffer const *, ostream & os,
+int InsetERT::latex(Buffer const &, ostream & os,
 		    LatexRunParams const &) const
 {
 	ParagraphList::iterator par = inset.paragraphs.begin();
@@ -357,13 +357,13 @@ int InsetERT::latex(Buffer const *, ostream & os,
 }
 
 
-int InsetERT::ascii(Buffer const *, ostream &, int /*linelen*/) const
+int InsetERT::ascii(Buffer const &, ostream &, int /*linelen*/) const
 {
 	return 0;
 }
 
 
-int InsetERT::linuxdoc(Buffer const *, ostream & os) const
+int InsetERT::linuxdoc(Buffer const &, ostream & os) const
 {
 	ParagraphList::iterator par = inset.paragraphs.begin();
 	ParagraphList::iterator end = inset.paragraphs.end();
@@ -390,7 +390,7 @@ int InsetERT::linuxdoc(Buffer const *, ostream & os) const
 }
 
 
-int InsetERT::docbook(Buffer const *, ostream & os, bool) const
+int InsetERT::docbook(Buffer const &, ostream & os, bool) const
 {
 	ParagraphList::iterator par = inset.paragraphs.begin();
 	ParagraphList::iterator end = inset.paragraphs.end();

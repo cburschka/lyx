@@ -74,14 +74,14 @@ string const InsetNote::editMessage() const
 }
 
 
-void InsetNote::write(Buffer const * buf, ostream & os) const
+void InsetNote::write(Buffer const & buf, ostream & os) const
 {
 	params_.write(os);
 	InsetCollapsable::write(buf, os);
 }
 
 
-void InsetNote::read(Buffer const * buf, LyXLex & lex)
+void InsetNote::read(Buffer const & buf, LyXLex & lex)
 {
 	InsetCollapsable::read(buf, lex);
 	setButtonLabel();
@@ -167,7 +167,7 @@ dispatch_result InsetNote::localDispatch(FuncRequest const & cmd)
 }
 
 
-int InsetNote::latex(Buffer const * buf, ostream & os,
+int InsetNote::latex(Buffer const & buf, ostream & os,
 				                LatexRunParams const & runparams) const
 {
 	string const pt = params_.type;
@@ -194,7 +194,7 @@ int InsetNote::latex(Buffer const * buf, ostream & os,
 }
 
 
-int InsetNote::linuxdoc(Buffer const * buf, std::ostream & os) const
+int InsetNote::linuxdoc(Buffer const & buf, std::ostream & os) const
 {
 	string const pt = params_.type;
 
@@ -213,7 +213,7 @@ int InsetNote::linuxdoc(Buffer const * buf, std::ostream & os) const
 }
 
 
-int InsetNote::docbook(Buffer const * buf, std::ostream & os, bool mixcont) const
+int InsetNote::docbook(Buffer const & buf, std::ostream & os, bool mixcont) const
 {
 	string const pt = params_.type;
 
@@ -232,7 +232,7 @@ int InsetNote::docbook(Buffer const * buf, std::ostream & os, bool mixcont) cons
 }
 
 
-int InsetNote::ascii(Buffer const * buf, std::ostream & os, int ll) const
+int InsetNote::ascii(Buffer const & buf, std::ostream & os, int ll) const
 {
 	int i = 0;
 	string const pt = params_.type;

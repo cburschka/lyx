@@ -33,11 +33,9 @@ ControlRef::ControlRef(Dialog & d)
 
 vector<string> const ControlRef::getLabelList(string const & name) const
 {
-	Buffer const * buf = bufferlist.getBuffer(MakeAbsPath(name));
-	if (!buf)
-		buf = kernel().buffer();
+	Buffer const & buf = *bufferlist.getBuffer(MakeAbsPath(name));
 	vector<string> list;
-	buf->getLabelList(list);
+	buf.getLabelList(list);
 	return list;
 }
 
@@ -70,7 +68,7 @@ vector<string> const ControlRef::getBufferList() const
 int ControlRef::getBufferNum() const
 {
 	vector<string> buffers = bufferlist.getFileNames();
-	string const name = kernel().buffer()->fileName();
+	string const name = kernel().buffer().fileName();
 	vector<string>::const_iterator cit =
 		find(buffers.begin(), buffers.end(), name);
 	if (cit == buffers.end())

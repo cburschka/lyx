@@ -456,7 +456,7 @@ void BufferView::replaceWord(string const & replacestring)
 	tt->setSelectionRange(replacestring.length());
 
 	// Go back so that replacement string is also spellchecked
-	for (string::size_type i = 0; i < replacestring.length() + 1; ++i) 
+	for (string::size_type i = 0; i < replacestring.length() + 1; ++i)
 		tt->cursorLeft(this);
 
 	// FIXME: should be done through LFUN

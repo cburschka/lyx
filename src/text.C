@@ -270,7 +270,7 @@ bool LyXText::bidi_InRange(lyx::pos_type pos) const
 
 
 void LyXText::computeBidiTables(ParagraphList::iterator pit,
-   Buffer const * buf, RowList::iterator row) const
+   Buffer const & buf, RowList::iterator row) const
 {
 	bidi_same_direction = true;
 	if (!lyxrc.rtl_support) {
@@ -308,7 +308,7 @@ void LyXText::computeBidiTables(ParagraphList::iterator pit,
 
 	pos_type stack[2];
 	bool const rtl_par =
-		pit->isRightToLeftPar(buf->params);
+		pit->isRightToLeftPar(buf.params);
 	int level = 0;
 	bool rtl = false;
 	bool rtl0 = false;
@@ -321,12 +321,12 @@ void LyXText::computeBidiTables(ParagraphList::iterator pit,
 			 !pit->isLineSeparator(lpos + 1) &&
 			 !pit->isNewline(lpos + 1))
 			? lpos + 1 : lpos;
-		LyXFont font = pit->getFontSettings(buf->params, pos);
+		LyXFont font = pit->getFontSettings(buf.params, pos);
 		if (pos != lpos && 0 < lpos && rtl0 && font.isRightToLeft() &&
 		    font.number() == LyXFont::ON &&
-		    pit->getFontSettings(buf->params, lpos - 1).number()
+		    pit->getFontSettings(buf.params, lpos - 1).number()
 		    == LyXFont::ON) {
-			font = pit->getFontSettings(buf->params, lpos);
+			font = pit->getFontSettings(buf.params, lpos);
 			is_space = false;
 		}
 
@@ -397,7 +397,7 @@ void LyXText::computeBidiTables(ParagraphList::iterator pit,
 
 
 // This method requires a previous call to ComputeBidiTables()
-bool LyXText::isBoundary(Buffer const * buf, Paragraph const & par,
+bool LyXText::isBoundary(Buffer const & buf, Paragraph const & par,
 			 pos_type pos) const
 {
 	if (!lyxrc.rtl_support || pos == 0)
@@ -412,12 +412,12 @@ bool LyXText::isBoundary(Buffer const * buf, Paragraph const & par,
 	bool const rtl = bidi_level(pos - 1) % 2;
 	bool const rtl2 = bidi_InRange(pos)
 		? bidi_level(pos) % 2
-		: par.isRightToLeftPar(buf->params);
+		: par.isRightToLeftPar(buf.params);
 	return rtl != rtl2;
 }
 
 
-bool LyXText::isBoundary(Buffer const * buf, Paragraph const & par,
+bool LyXText::isBoundary(Buffer const & buf, Paragraph const & par,
 			 pos_type pos, LyXFont const & font) const
 {
 	if (!lyxrc.rtl_support)
@@ -426,7 +426,7 @@ bool LyXText::isBoundary(Buffer const * buf, Paragraph const & par,
 	bool const rtl = font.isVisibleRightToLeft();
 	bool const rtl2 = bidi_InRange(pos)
 		? bidi_level(pos) % 2
-		: par.isRightToLeftPar(buf->params);
+		: par.isRightToLeftPar(buf.params);
 	return rtl != rtl2;
 }
 
@@ -607,7 +607,7 @@ int LyXText::leftMargin(ParagraphList::iterator pit, Row const & row) const
 
 
 int LyXText::rightMargin(ParagraphList::iterator pit,
-	Buffer const & buf, Row const & row) const
+	Buffer const & buf, Row const &) const
 {
 	LyXTextClass const & tclass = buf.params.getLyXTextClass();
 	LyXLayout_ptr const & layout = pit->layout();
@@ -656,7 +656,7 @@ pos_type LyXText::rowBreakPoint(ParagraphList::iterator pit,
 	Row const & row) const
 {
 	// maximum pixel width of a row.
-	int width = workWidth() 
+	int width = workWidth()
 		- rightMargin(pit, *bv()->buffer(), row);
 
 	// inset->textWidth() returns -1 via workWidth(),
@@ -813,7 +813,7 @@ int LyXText::fill(ParagraphList::iterator pit,
 				font = getFont(pit, i);
 				endPosOfFontSpan = pit->getEndPosOfFontSpan(i);
 			}
-			w += singleWidth(pit, i, c, font); 
+			w += singleWidth(pit, i, c, font);
 			++i;
 		}
 	}
@@ -1467,15 +1467,15 @@ void LyXText::prepareToPrint(ParagraphList::iterator pit,
 
 		switch (align) {
 	    case LYX_ALIGN_BLOCK:
-	 	{
+		{
 			int const ns = numberOfSeparators(*pit, rit);
-			RowList::iterator next_row = boost::next(rit);	 
+			RowList::iterator next_row = boost::next(rit);
 			if (ns
 				&& next_row != pit->rows.end()
-				&& !pit->isNewline(next_row->pos() - 1)			
+				&& !pit->isNewline(next_row->pos() - 1)
 				) {
-					fill_separator = w / ns;	
-			} else if (is_rtl) {	
+					fill_separator = w / ns;
+			} else if (is_rtl) {
 				x += w;
 			}
 			break;
@@ -1489,7 +1489,7 @@ void LyXText::prepareToPrint(ParagraphList::iterator pit,
 		}
 	}
 
-	computeBidiTables(pit, bv()->buffer(), rit);
+	computeBidiTables(pit, *bv()->buffer(), rit);
 	if (is_rtl) {
 		pos_type body_pos = pit->beginningOfBody();
 		pos_type last = lastPos(*pit, rit);

@@ -148,7 +148,6 @@ void ControlSpellchecker::check()
 	SpellBase::Result res = SpellBase::OK;
 
 	// clear any old selection
-	LyXText * text = bufferview()->getLyXText();
 	bufferview()->update();
 
 	while (res == SpellBase::OK || res == SpellBase::IGNORE) {

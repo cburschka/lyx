@@ -178,7 +178,7 @@ public:
 		   InsetTabular *, LyXTabular const &);
 	///
 	explicit
-	LyXTabular(Buffer const *, InsetTabular *, LyXLex & lex);
+	LyXTabular(Buffer const &, InsetTabular *, LyXLex & lex);
 
 	/// Returns true if there is a topline, returns false if not
 	bool topLine(int cell, bool onlycolumn = false) const;
@@ -277,18 +277,18 @@ public:
 	///
 	int numberOfCellsInRow(int cell) const;
 	///
-	void write(Buffer const *, std::ostream &) const;
+	void write(Buffer const &, std::ostream &) const;
 	///
-	void read(Buffer const *, LyXLex &);
+	void read(Buffer const &, LyXLex &);
 	///
-	int latex(Buffer const *, std::ostream &,
+	int latex(Buffer const &, std::ostream &,
 		  LatexRunParams const &) const;
 	//
-	int linuxdoc(Buffer const * buf, std::ostream & os) const;
+	int linuxdoc(Buffer const & buf, std::ostream & os) const;
 	///
-	int docbook(Buffer const * buf, std::ostream & os, bool mixcont) const;
+	int docbook(Buffer const & buf, std::ostream & os, bool mixcont) const;
 	///
-	int ascii(Buffer const *, std::ostream &, int const depth,
+	int ascii(Buffer const &, std::ostream &, int const depth,
 		  bool onlydata, unsigned char delim) const;
 	///
 	bool isMultiColumn(int cell, bool real = false) const;
@@ -546,12 +546,12 @@ public:
 	///
 	int TeXCellPostamble(std::ostream &, int cell) const;
 	///
-	int TeXLongtableHeaderFooter(std::ostream &, Buffer const * buf,
+	int TeXLongtableHeaderFooter(std::ostream &, Buffer const & buf,
 				     LatexRunParams const &) const;
 	///
 	bool isValidRow(int const row) const;
 	///
-	int TeXRow(std::ostream &, int const row, Buffer const * buf,
+	int TeXRow(std::ostream &, int const row, Buffer const & buf,
 		   LatexRunParams const &) const;
 	///
 	// helper function for ASCII returns number of newlines
@@ -562,12 +562,12 @@ public:
 	int asciiBottomHLine(std::ostream &, int row,
 			     std::vector<unsigned int> const &) const;
 	///
-	int asciiPrintCell(Buffer const *, std::ostream &,
+	int asciiPrintCell(Buffer const &, std::ostream &,
 			   int cell, int row, int column,
 			   std::vector<unsigned int> const &,
 					   bool onlydata) const;
 	/// auxiliary function for docbook
-	int docbookRow(Buffer const * buf, std::ostream & os, int row) const;
+	int docbookRow(Buffer const & buf, std::ostream & os, int row) const;
 };
 
 #endif

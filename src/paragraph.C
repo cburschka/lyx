@@ -130,7 +130,7 @@ Paragraph::~Paragraph()
 }
 
 
-void Paragraph::write(Buffer const * buf, ostream & os,
+void Paragraph::write(Buffer const & buf, ostream & os,
 			  BufferParams const & bparams,
 			  depth_type & dth) const
 {
@@ -818,7 +818,7 @@ int Paragraph::endTeXParParams(BufferParams const & bparams,
 
 
 // This one spits out the text of the paragraph
-bool Paragraph::simpleTeXOnePar(Buffer const * buf,
+bool Paragraph::simpleTeXOnePar(Buffer const & buf,
 				BufferParams const & bparams,
 				LyXFont const & outerfont,
 				ostream & os, TexRow & texrow,
@@ -1131,7 +1131,7 @@ bool Paragraph::isMultiLingual(BufferParams const & bparams)
 
 // Convert the paragraph to a string.
 // Used for building the table of contents
-string const Paragraph::asString(Buffer const * buffer, bool label) const
+string const Paragraph::asString(Buffer const & buffer, bool label) const
 {
 #if 0
 	string s;
@@ -1159,7 +1159,7 @@ string const Paragraph::asString(Buffer const * buffer, bool label) const
 }
 
 
-string const Paragraph::asString(Buffer const * buffer,
+string const Paragraph::asString(Buffer const & buffer,
 				 pos_type beg, pos_type end, bool label) const
 {
 	ostringstream os;
@@ -1168,7 +1168,7 @@ string const Paragraph::asString(Buffer const * buffer,
 		os << params().labelString() << ' ';
 
 	for (pos_type i = beg; i < end; ++i) {
-		value_type const c = getUChar(buffer->params, i);
+		value_type const c = getUChar(buffer.params, i);
 		if (IsPrintable(c))
 			os << c;
 		else if (c == META_INSET)

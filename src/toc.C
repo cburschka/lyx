@@ -63,16 +63,14 @@ string const getType(string const & cmdName)
 }
 
 
-TocList const getTocList(Buffer const * buf)
+TocList const getTocList(Buffer const & buf)
 {
 	TocList toclist;
-	if (!buf)
-		return toclist;
 
-	LyXTextClass const & textclass = buf->params.getLyXTextClass();
+	LyXTextClass const & textclass = buf.params.getLyXTextClass();
 
-	ParConstIterator pit = buf->par_iterator_begin();
-	ParConstIterator end = buf->par_iterator_end();
+	ParConstIterator pit = buf.par_iterator_begin();
+	ParConstIterator end = buf.par_iterator_end();
 	for (; pit != end; ++pit) {
 #ifdef WITH_WARNINGS
 #warning bogus type (Lgb)
@@ -80,7 +78,7 @@ TocList const getTocList(Buffer const * buf)
 		char const labeltype = pit->layout()->labeltype;
 
 		if (labeltype >= LABEL_COUNTER_CHAPTER
-		    && labeltype <= LABEL_COUNTER_CHAPTER + buf->params.tocdepth) {
+		    && labeltype <= LABEL_COUNTER_CHAPTER + buf.params.tocdepth) {
 				// insert this into the table of contents
 			const int depth = max(0, labeltype - textclass.maxcounter());
 			TocItem const item(pit->id(), depth,
@@ -109,7 +107,7 @@ TocList const getTocList(Buffer const * buf)
 }
 
 
-vector<string> const getTypes(Buffer const * buffer)
+vector<string> const getTypes(Buffer const & buffer)
 {
 	vector<string> types;
 
@@ -126,7 +124,7 @@ vector<string> const getTypes(Buffer const * buffer)
 }
 
 
-void asciiTocList(string const & type, Buffer const * buffer, ostream & os)
+void asciiTocList(string const & type, Buffer const & buffer, ostream & os)
 {
 	TocList const toc_list = getTocList(buffer);
 	TocList::const_iterator cit = toc_list.find(type);

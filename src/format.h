@@ -96,7 +96,7 @@ public:
 	///
 	void setViewer(string const & name, string const & command);
 	///
-	bool view(Buffer const * buffer, string const & filename,
+	bool view(Buffer const & buffer, string const & filename,
 		  string const & format_name) const;
 	///
 	string const prettyName(string const & name) const;

@@ -41,8 +41,8 @@ class Dimension;
 /**
   This class used to hold the mapping between buffer paragraphs and
 	screen rows. Nowadays, the Paragraphs take care of their rows
-  themselves and this contains just most of the code for manipulating 
-  them and interaction with the Cursor. 
+  themselves and this contains just most of the code for manipulating
+  them and interaction with the Cursor.
   */
 
 // The inheritance from TextCursor should go. It's just there to ease
@@ -240,10 +240,10 @@ public:
 	void setCurrentFont();
 
 	///
-	bool isBoundary(Buffer const *, Paragraph const & par,
+	bool isBoundary(Buffer const &, Paragraph const & par,
 			lyx::pos_type pos) const;
 	///
-	bool isBoundary(Buffer const *, Paragraph const & par,
+	bool isBoundary(Buffer const &, Paragraph const & par,
 			 lyx::pos_type pos,
 			 LyXFont const & font) const;
 
@@ -354,7 +354,7 @@ public:
 
 	///
 	void computeBidiTables(ParagraphList::iterator pit,
-		Buffer const *, RowList::iterator row) const;
+		Buffer const &, RowList::iterator row) const;
 	/// Maps positions in the visual string to positions in logical string.
 	lyx::pos_type log2vis(lyx::pos_type pos) const;
 	/// Maps positions in the logical string to positions in visual string.
@@ -423,7 +423,7 @@ public:
 
 private:
 	///
-	void setCounter(Buffer const *, ParagraphList::iterator pit);
+	void setCounter(Buffer const &, ParagraphList::iterator pit);
 	///
 	void deleteWordForward();
 	///

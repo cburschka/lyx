@@ -480,7 +480,7 @@ bool Paragraph::Pimpl::isTextAt(string const & str, pos_type pos) const
 }
 
 
-void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const * buf,
+void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const & buf,
 					     BufferParams const & bparams,
 					     ostream & os,
 					     TexRow & texrow,

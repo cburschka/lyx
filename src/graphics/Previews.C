@@ -60,15 +60,13 @@ Previews::~Previews()
 {}
 
 
-PreviewLoader & Previews::loader(Buffer const * buffer) const
+PreviewLoader & Previews::loader(Buffer const & buffer) const
 {
-	Assert(buffer);
-
-	Impl::CacheType::iterator it = pimpl_->cache.find(buffer);
+	Impl::CacheType::iterator it = pimpl_->cache.find(&buffer);
 
 	if (it == pimpl_->cache.end()) {
-		Impl::PreviewLoaderPtr ptr(new PreviewLoader(*buffer));
-		pimpl_->cache[buffer] = ptr;
+		Impl::PreviewLoaderPtr ptr(new PreviewLoader(buffer));
+		pimpl_->cache[&buffer] = ptr;
 		return *ptr.get();
 	}
 
@@ -76,12 +74,9 @@ PreviewLoader & Previews::loader(Buffer const * buffer) const
 }
 
 
-void Previews::removeLoader(Buffer const * buffer) const
+void Previews::removeLoader(Buffer const & buffer) const
 {
-	if (!buffer)
-		return;
-
-	Impl::CacheType::iterator it = pimpl_->cache.find(buffer);
+	Impl::CacheType::iterator it = pimpl_->cache.find(&buffer);
 
 	if (it != pimpl_->cache.end())
 		pimpl_->cache.erase(it);
@@ -90,7 +85,7 @@ void Previews::removeLoader(Buffer const * buffer) const
 
 void Previews::generateBufferPreviews(Buffer const & buffer) const
 {
-	PreviewLoader & ploader = loader(&buffer);
+	PreviewLoader & ploader = loader(buffer);
 
 	Buffer::inset_iterator it  = buffer.inset_const_iterator_begin();
 	Buffer::inset_iterator end = buffer.inset_const_iterator_end();

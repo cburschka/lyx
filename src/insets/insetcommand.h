@@ -37,22 +37,22 @@ public:
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
 	///
-	void write(Buffer const *, std::ostream & os) const
+	void write(Buffer const &, std::ostream & os) const
 		{ p_.write(os); }
 	///
-	virtual void read(Buffer const *, LyXLex & lex)
+	virtual void read(Buffer const &, LyXLex & lex)
 		{ p_.read(lex); }
 	/// Can remove one InsetBibKey is modified
 	void scanCommand(string const & c) { p_.scanCommand(c); };
 	///
-	virtual int latex(Buffer const *, std::ostream &,
+	virtual int latex(Buffer const &, std::ostream &,
 			  LatexRunParams const &) const;
 	///
-	int ascii(Buffer const *, std::ostream &, int linelen) const;
+	int ascii(Buffer const &, std::ostream &, int linelen) const;
 	///
-	virtual int linuxdoc(Buffer const *, std::ostream &) const;
+	virtual int linuxdoc(Buffer const &, std::ostream &) const;
 	///
-	virtual int docbook(Buffer const *, std::ostream &, bool) const;
+	virtual int docbook(Buffer const &, std::ostream &, bool) const;
 	///
 	InsetOld::Code lyxCode() const { return InsetOld::NO_CODE; }
 
@@ -81,7 +81,7 @@ protected:
 	///
 	virtual BufferView * view() const;
 	/// This should provide the text for the button
-	virtual string const getScreenLabel(Buffer const *) const = 0;
+	virtual string const getScreenLabel(Buffer const &) const = 0;
 
 private:
 	///

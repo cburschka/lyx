@@ -43,7 +43,7 @@ void InsetCommand::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	if (!set_label_) {
 		set_label_ = true;
-		button_.update(getScreenLabel(mi.base.bv->buffer()),
+		button_.update(getScreenLabel(*mi.base.bv->buffer()),
 			       editable() != NOT_EDITABLE);
 	}
 	button_.metrics(mi, dim);
@@ -66,7 +66,7 @@ void InsetCommand::setParams(InsetCommandParams const & p)
 }
 
 
-int InsetCommand::latex(Buffer const *, ostream & os,
+int InsetCommand::latex(Buffer const &, ostream & os,
 			LatexRunParams const &) const
 {
 	os << getCommand();
@@ -74,19 +74,19 @@ int InsetCommand::latex(Buffer const *, ostream & os,
 }
 
 
-int InsetCommand::ascii(Buffer const *, ostream &, int) const
+int InsetCommand::ascii(Buffer const &, ostream &, int) const
 {
 	return 0;
 }
 
 
-int InsetCommand::linuxdoc(Buffer const *, ostream &) const
+int InsetCommand::linuxdoc(Buffer const &, ostream &) const
 {
 	return 0;
 }
 
 
-int InsetCommand::docbook(Buffer const *, ostream &, bool) const
+int InsetCommand::docbook(Buffer const &, ostream &, bool) const
 {
 	return 0;
 }

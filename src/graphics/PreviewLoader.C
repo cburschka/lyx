@@ -579,7 +579,7 @@ void PreviewLoader::Impl::dumpPreamble(ostream & os) const
 
 	// FIXME! This is a HACK! The proper fix is to control the 'true'
 	// passed to WriteStream below:
-	// int InsetFormula::latex(Buffer const *, ostream & os,
+	// int InsetFormula::latex(Buffer const &, ostream & os,
 	//                         LatexRunParams const & runparams) const
 	// {
 	//	WriteStream wi(os, runparams.moving_arg, true);
@@ -596,7 +596,7 @@ void PreviewLoader::Impl::dumpPreamble(ostream & os) const
 
 	for (; it != end; ++it)
 		if (it->lyxCode() == InsetOld::MATHMACRO_CODE)
-			it->latex(&buffer_, os, runparams);
+			it->latex(buffer_, os, runparams);
 
 	// All equation lables appear as "(#)" + preview.sty's rendering of
 	// the label name

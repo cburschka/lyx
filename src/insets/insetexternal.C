@@ -68,10 +68,10 @@ unsigned int defaultLyxScale = 100;
 
 /// Substitute meta-variables in string s, makeing use of params and buffer.
 string const doSubstitution(InsetExternal::Params const & params,
-			    Buffer const * buffer, string const & s);
+			    Buffer const & buffer, string const & s);
 
 /// Invoke the external editor.
-void editExternal(InsetExternal::Params const & params, Buffer const * buffer);
+void editExternal(InsetExternal::Params const & params, Buffer const & buffer);
 
 } // namespace anon
 
@@ -141,16 +141,16 @@ dispatch_result InsetExternal::localDispatch(FuncRequest const & cmd)
 		Buffer const & buffer = *cmd.view()->buffer();
 		InsetExternal::Params p;
 		InsetExternalMailer::string2params(cmd.argument, buffer, p);
-		editExternal(p, &buffer);
+		editExternal(p, buffer);
 		return DISPATCHED_NOUPDATE;
 	}
 
 	case LFUN_INSET_MODIFY: {
 		Assert(cmd.view());
 
-		Buffer const * buffer = cmd.view()->buffer();
+		Buffer const & buffer = *cmd.view()->buffer();
 		InsetExternal::Params p;
-		InsetExternalMailer::string2params(cmd.argument, *buffer, p);
+		InsetExternalMailer::string2params(cmd.argument, buffer, p);
 		setParams(p, buffer);
 		cmd.view()->updateInset(this);
 		return DISPATCHED;
@@ -216,7 +216,7 @@ ExternalTemplate const * getTemplatePtr(InsetExternal::Params const & params)
 
 
 string const getScreenLabel(InsetExternal::Params const & params,
-			    Buffer const * buffer)
+			    Buffer const & buffer)
 {
 	ExternalTemplate const * const ptr = getTemplatePtr(params);
 	if (!ptr)
@@ -234,7 +234,7 @@ InsetExternal::Params const & InsetExternal::params() const
 }
 
 
-void InsetExternal::setParams(Params const & p, Buffer const * buffer)
+void InsetExternal::setParams(Params const & p, Buffer const & buffer)
 {
 	// The stored params; what we would like to happen in an ideal world.
 	params_.filename = p.filename;
@@ -272,14 +272,14 @@ void InsetExternal::setParams(Params const & p, Buffer const * buffer)
 }
 
 
-void InsetExternal::write(Buffer const * buffer, ostream & os) const
+void InsetExternal::write(Buffer const & buffer, ostream & os) const
 {
 	os << "External\n"
 	   << "\ttemplate " << params_.templatename << '\n';
 
 	if (!params_.filename.empty())
 		os << "\tfilename "
-		   << params_.filename.outputFilename(buffer->filePath())
+		   << params_.filename.outputFilename(buffer.filePath())
 		   << '\n';
 
 	if (params_.display != defaultDisplayType)
@@ -291,7 +291,7 @@ void InsetExternal::write(Buffer const * buffer, ostream & os) const
 }
 
 
-void InsetExternal::read(Buffer const * buffer, LyXLex & lex)
+void InsetExternal::read(Buffer const & buffer, LyXLex & lex)
 {
 	enum ExternalTags {
 		EX_TEMPLATE = 1,
@@ -326,7 +326,7 @@ void InsetExternal::read(Buffer const * buffer, LyXLex & lex)
 		case EX_FILENAME: {
 			lex.next();
 			string const name = lex.getString();
-			params.filename.set(name, buffer->filePath());
+			params.filename.set(name, buffer.filePath());
 			break;
 		}
 
@@ -376,7 +376,7 @@ void InsetExternal::read(Buffer const * buffer, LyXLex & lex)
 
 
 int InsetExternal::write(string const & format,
-			 Buffer const * buf, ostream & os,
+			 Buffer const & buf, ostream & os,
 			 bool external_in_tmpdir) const
 {
 	ExternalTemplate const * const et_ptr = getTemplatePtr(params_);
@@ -400,7 +400,7 @@ int InsetExternal::write(string const & format,
 }
 
 
-int InsetExternal::latex(Buffer const * buf, ostream & os,
+int InsetExternal::latex(Buffer const & buf, ostream & os,
 			 LatexRunParams const & runparams) const
 {
 	// "nice" means that the buffer is exported to LaTeX format but not
@@ -408,7 +408,7 @@ int InsetExternal::latex(Buffer const * buf, ostream & os,
 	// If we're running through the LaTeX compiler, we should write the
 	// generated files in the bufer's temporary directory.
 	bool const external_in_tmpdir =
-		lyxrc.use_tempdir && !buf->tmppath.empty() && !runparams.nice;
+		lyxrc.use_tempdir && !buf.tmppath.empty() && !runparams.nice;
 
 	// If the template has specified a PDFLaTeX output, then we try and
 	// use that.
@@ -428,19 +428,19 @@ int InsetExternal::latex(Buffer const * buf, ostream & os,
 }
 
 
-int InsetExternal::ascii(Buffer const * buf, ostream & os, int) const
+int InsetExternal::ascii(Buffer const & buf, ostream & os, int) const
 {
 	return write("Ascii", buf, os);
 }
 
 
-int InsetExternal::linuxdoc(Buffer const * buf, ostream & os) const
+int InsetExternal::linuxdoc(Buffer const & buf, ostream & os) const
 {
 	return write("LinuxDoc", buf, os);
 }
 
 
-int InsetExternal::docbook(Buffer const * buf, ostream & os, bool) const
+int InsetExternal::docbook(Buffer const & buf, ostream & os, bool) const
 {
 	return write("DocBook", buf, os);
 }
@@ -469,7 +469,7 @@ void InsetExternal::validate(LaTeXFeatures & features) const
 
 
 void InsetExternal::updateExternal(string const & format,
-				   Buffer const * buf,
+				   Buffer const & buf,
 				   bool external_in_tmpdir) const
 {
 	ExternalTemplate const * const et_ptr = getTemplatePtr(params_);
@@ -518,7 +518,7 @@ void InsetExternal::updateExternal(string const & format,
 
 	if (external_in_tmpdir && !from_file.empty()) {
 		// We are running stuff through LaTeX
-		from_file = copyFileToDir(buf->tmppath, from_file);
+		from_file = copyFileToDir(buf.tmppath, from_file);
 		if (from_file.empty())
 			return;
 	}
@@ -536,7 +536,7 @@ void InsetExternal::updateExternal(string const & format,
 		     fi.getModificationTime()) >= 0) {
 	} else {
 		string const to_filebase = ChangeExtension(to_file, string());
-		converters.convert(buf, from_file, to_filebase,
+		converters.convert(&buf, from_file, to_filebase,
 				   from_format, to_format);
 	}
 }
@@ -546,10 +546,10 @@ namespace {
 
 /// Substitute meta-variables in this string
 string const doSubstitution(InsetExternal::Params const & params,
-			    Buffer const * buffer, string const & s)
+			    Buffer const & buffer, string const & s)
 {
 	string result;
-	string const buffer_path = buffer ? buffer->filePath() : string();
+	string const buffer_path = buffer.filePath();
 	string const filename = params.filename.outputFilename(buffer_path);
 	string const basename = ChangeExtension(filename, string());
 	string const filepath = OnlyPath(filename);
@@ -567,15 +567,15 @@ string const doSubstitution(InsetExternal::Params const & params,
 		string::size_type const end = result.find("\")", pos);
 		string const file = result.substr(pos + 12, end - (pos + 12));
 		string contents;
-		if (buffer) {
-			Path p(buffer->filePath());
-			if (!IsFileReadable(file))
-				Path p(buffer->tmppath);
-			if (IsFileReadable(file))
-				contents = GetFileContents(file);
-		} else {
-			contents = GetFileContents(file);
+		Path p(buffer.filePath());
+		if (!IsFileReadable(file)) {
+#warning Is this really working as intended?
+			Path p(buffer.tmppath);
 		}
+
+		if (IsFileReadable(file))
+			contents = GetFileContents(file);
+
 		result = subst(result,
 			       ("$$Contents(\"" + file + "\")").c_str(),
 			       contents);
@@ -585,11 +585,8 @@ string const doSubstitution(InsetExternal::Params const & params,
 }
 
 
-void editExternal(InsetExternal::Params const & params, Buffer const * buffer)
+void editExternal(InsetExternal::Params const & params, Buffer const & buffer)
 {
-	if (!buffer)
-		return;
-
 	ExternalTemplate const * const et_ptr = getTemplatePtr(params);
 	if (!et_ptr)
 		return;
@@ -600,11 +597,11 @@ void editExternal(InsetExternal::Params const & params, Buffer const * buffer)
 
 	string const command = doSubstitution(params, buffer, et.editCommand);
 
-	Path p(buffer->filePath());
+	Path p(buffer.filePath());
 	Forkedcall call;
 	if (lyxerr.debugging()) {
 		lyxerr << "Executing '" << command << "' in '"
-		       << buffer->filePath() << '\'' << endl;
+		       << buffer.filePath() << '\'' << endl;
 	}
 	call.startscript(Forkedcall::DontWait, command);
 }
@@ -655,7 +652,7 @@ void InsetExternalMailer::string2params(string const & in,
 
 	if (lex.isOK()) {
 		InsetExternal inset;
-		inset.read(&buffer, lex);
+		inset.read(buffer, lex);
 		params = inset.params();
 	}
 }
@@ -666,10 +663,10 @@ InsetExternalMailer::params2string(InsetExternal::Params const & params,
 				   Buffer const & buffer)
 {
 	InsetExternal inset;
-	inset.setParams(params, &buffer);
+	inset.setParams(params, buffer);
 	ostringstream data;
 	data << name_ << ' ';
-	inset.write(&buffer, data);
+	inset.write(buffer, data);
 	data << "\\end_inset\n";
 	return STRCONV(data.str());
 }

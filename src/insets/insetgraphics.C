@@ -223,19 +223,19 @@ InsetOld::EDITABLE InsetGraphics::editable() const
 }
 
 
-void InsetGraphics::write(Buffer const * buf, ostream & os) const
+void InsetGraphics::write(Buffer const & buf, ostream & os) const
 {
 	os << "Graphics\n";
-	params().Write(os, buf->filePath());
+	params().Write(os, buf.filePath());
 }
 
 
-void InsetGraphics::read(Buffer const * buf, LyXLex & lex)
+void InsetGraphics::read(Buffer const & buf, LyXLex & lex)
 {
 	string const token = lex.getString();
 
 	if (token == "Graphics")
-		readInsetGraphics(lex, buf->filePath());
+		readInsetGraphics(lex, buf.filePath());
 	else
 		lyxerr[Debug::GRAPHICS] << "Not a Graphics inset!" << endl;
 
@@ -328,13 +328,13 @@ string const InsetGraphics::createLatexOptions() const
 }
 
 
-string const InsetGraphics::prepareFile(Buffer const * buf,
+string const InsetGraphics::prepareFile(Buffer const & buf,
 					LatexRunParams const & runparams) const
 {
 	// LaTeX can cope if the graphics file doesn't exist, so just return the
 	// filename.
 	string orig_file = params().filename.absFilename();
-	string const rel_file = params().filename.relFilename(buf->filePath());
+	string const rel_file = params().filename.relFilename(buf.filePath());
 
 	if (!IsFileReadable(orig_file)) {
 		lyxerr[Debug::GRAPHICS]
@@ -364,7 +364,7 @@ string const InsetGraphics::prepareFile(Buffer const * buf,
 		// Uncompress the file if necessary.
 		// If it has been uncompressed in a previous call to
 		// prepareFile, do nothing.
-		temp_file = MakeAbsPath(OnlyFilename(temp_file), buf->tmppath);
+		temp_file = MakeAbsPath(OnlyFilename(temp_file), buf.tmppath);
 		lyxerr[Debug::GRAPHICS]
 			<< "\ttemp_file: " << temp_file << endl;
 		if (graphic_->hasFileChanged() || !IsFileReadable(temp_file)) {
@@ -411,7 +411,7 @@ string const InsetGraphics::prepareFile(Buffer const * buf,
 		<< "\tthe orig file is: " << orig_file << endl;
 
 	if (lyxrc.use_tempdir) {
-		temp_file = copyFileToDir(buf->tmppath, orig_file);
+		temp_file = copyFileToDir(buf.tmppath, orig_file);
 		if (temp_file.empty()) {
 			string str = bformat(_("Could not copy the file\n%1$s\n"
 					       "into the temporary directory."),
@@ -439,7 +439,7 @@ string const InsetGraphics::prepareFile(Buffer const * buf,
 
 	// if no special converter defined, than we take the default one
 	// from ImageMagic: convert from:inname.from to:outname.to
-	if (!converters.convert(buf, temp_file, outfile_base, from, to)) {
+	if (!converters.convert(&buf, temp_file, outfile_base, from, to)) {
 		string const command =
 			LibFileSearch("scripts", "convertDefault.sh") +
 				' ' + from + ':' + temp_file + ' ' +
@@ -461,7 +461,7 @@ string const InsetGraphics::prepareFile(Buffer const * buf,
 }
 
 
-int InsetGraphics::latex(Buffer const * buf, ostream & os,
+int InsetGraphics::latex(Buffer const & buf, ostream & os,
 			 LatexRunParams const & runparams) const
 {
 	// If there is no file specified or not existing,
@@ -471,7 +471,7 @@ int InsetGraphics::latex(Buffer const * buf, ostream & os,
 		<< params().filename.absFilename() << endl;
 
 	string const relative_file =
-		params().filename.relFilename(buf->filePath());
+		params().filename.relFilename(buf.filePath());
 
 	// A missing (e)ps-extension is no problem for LaTeX, so
 	// we have to test three different cases
@@ -539,7 +539,7 @@ int InsetGraphics::latex(Buffer const * buf, ostream & os,
 }
 
 
-int InsetGraphics::ascii(Buffer const *, ostream & os, int) const
+int InsetGraphics::ascii(Buffer const &, ostream & os, int) const
 {
 	// No graphics in ascii output. Possible to use gifscii to convert
 	// images to ascii approximation.
@@ -552,10 +552,10 @@ int InsetGraphics::ascii(Buffer const *, ostream & os, int) const
 }
 
 
-int InsetGraphics::linuxdoc(Buffer const * buf, ostream & os) const
+int InsetGraphics::linuxdoc(Buffer const & buf, ostream & os) const
 {
-	string const file_name = buf->niceFile ?
-				params().filename.relFilename(buf->filePath()):
+	string const file_name = buf.niceFile ?
+				params().filename.relFilename(buf.filePath()):
 				params().filename.absFilename();
 
 	os << "<eps file=\"" << file_name << "\">\n";
@@ -567,7 +567,7 @@ int InsetGraphics::linuxdoc(Buffer const * buf, ostream & os) const
 // For explanation on inserting graphics into DocBook checkout:
 // http://en.tldp.org/LDP/LDP-Author-Guide/inserting-pictures.html
 // See also the docbook guide at http://www.docbook.org/
-int InsetGraphics::docbook(Buffer const *, ostream & os,
+int InsetGraphics::docbook(Buffer const &, ostream & os,
 			   bool /*mixcont*/) const
 {
 	// In DocBook v5.0, the graphic tag will be eliminated from DocBook, will

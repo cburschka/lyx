@@ -19,6 +19,10 @@
 #include "frontends/Dialogs.h"
 #include "frontends/LyXView.h"
 
+#include "support/LAssert.h"
+
+using lyx::support::Assert;
+
 Kernel::Kernel(LyXView & lyxview)
 	: lyxview_(lyxview)
 {}
@@ -59,19 +63,16 @@ bool Kernel::isBufferReadonly() const
 
 string const Kernel::bufferFilepath() const
 {
-	return buffer()->filePath();
+	return buffer().filePath();
 }
 
 Kernel::DocTypes Kernel::docType() const
 {
-	if (!buffer())
+	if (buffer().isLatex())
 		return LATEX;
-
-	if (buffer()->isLatex())
-		return LATEX;
-	if (buffer()->isLiterate())
+	if (buffer().isLiterate())
 		return LITERATE;
-	if (buffer()->isLinuxDoc())
+	if (buffer().isLinuxDoc())
 		return LINUXDOC;
 
 	return DOCBOOK;
@@ -90,13 +91,15 @@ BufferView const * Kernel::bufferview() const
 }
 
 
-Buffer * Kernel::buffer()
+Buffer & Kernel::buffer()
 {
-	return lyxview_.buffer();
+	Assert(lyxview_.buffer());
+	return *lyxview_.buffer();
 }
 
 
-Buffer const * Kernel::buffer() const
+Buffer const & Kernel::buffer() const
 {
-	return lyxview_.buffer();
+	Assert(lyxview_.buffer());
+	return *lyxview_.buffer();
 }

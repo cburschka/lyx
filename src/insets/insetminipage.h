@@ -62,9 +62,9 @@ public:
 	///
 	virtual dispatch_result localDispatch(FuncRequest const & cmd);
 	///
-	void write(Buffer const * buf, std::ostream & os) const;
+	void write(Buffer const & buf, std::ostream & os) const;
 	///
-	void read(Buffer const * buf, LyXLex & lex);
+	void read(Buffer const & buf, LyXLex & lex);
 	///
 	virtual std::auto_ptr<InsetBase> clone() const;
 	///
@@ -72,7 +72,7 @@ public:
 	///
 	InsetOld::Code lyxCode() const { return InsetOld::MINIPAGE_CODE; }
 	///
-	int latex(Buffer const *, std::ostream &,
+	int latex(Buffer const &, std::ostream &,
 		  LatexRunParams const &) const;
 	///
 	string const editMessage() const;

@@ -17,17 +17,17 @@
 #include "BranchList.h"
 
  struct InsetBranchParams {
- 	///
- 	void write(std::ostream & os) const;
- 	///
- 	void read(LyXLex & lex);
- 	///
- 	string branch;
+	///
+	void write(std::ostream & os) const;
+	///
+	void read(LyXLex & lex);
+	///
+	string branch;
 	/// Hack -- MV
 	BranchList branchlist;
  };
- 
- 
+
+
 /** The Branch inset for alternative, conditional output.
 
 */
@@ -35,44 +35,44 @@ class InsetBranch : public InsetCollapsable {
 public:
 	///
 
-	
- 	InsetBranch(BufferParams const &, string const &);
- 	/// Copy constructor
-  	InsetBranch(InsetBranch const &);
-  	///
+
+	InsetBranch(BufferParams const &, string const &);
+	/// Copy constructor
+	InsetBranch(InsetBranch const &);
+	///
 	~InsetBranch();
- 	///
+	///
 	virtual std::auto_ptr<InsetBase> clone() const;
 	///
 	string const editMessage() const;
 	///
 	InsetOld::Code lyxCode() const { return InsetOld::BRANCH_CODE; }
 	///
-	void write(Buffer const *, std::ostream &) const;
+	void write(Buffer const &, std::ostream &) const;
 	///
-	void read(Buffer const * buf, LyXLex & lex);
+	void read(Buffer const & buf, LyXLex & lex);
 	///
 	void setButtonLabel();
 	///
 	bool showInsetDialog(BufferView *) const;
 	///
- 	dispatch_result localDispatch(FuncRequest const &);
+	dispatch_result localDispatch(FuncRequest const &);
 	///
- 	int latex(Buffer const *, std::ostream &,
- 			LatexRunParams const &) const;
+	int latex(Buffer const &, std::ostream &,
+			LatexRunParams const &) const;
 	///
-	int linuxdoc(Buffer const *, std::ostream &) const;
+	int linuxdoc(Buffer const &, std::ostream &) const;
 	///
-	int docbook(Buffer const *, std::ostream &, bool) const;
+	int docbook(Buffer const &, std::ostream &, bool) const;
 	///
-	int ascii(Buffer const *, std::ostream &, int) const;
+	int ascii(Buffer const &, std::ostream &, int) const;
 	///
 	void validate(LaTeXFeatures &) const;
 	///
 	InsetBranchParams const & params() const { return params_; }
 	///
 	void setParams(InsetBranchParams const & params) { params_ = params; }
-	
+
 private:
 	friend class InsetBranchParams;
 

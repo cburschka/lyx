@@ -370,7 +370,7 @@ LyXTabular::LyXTabular(BufferParams const & bp,
 }
 
 
-LyXTabular::LyXTabular(Buffer const * buf, InsetTabular * inset, LyXLex & lex)
+LyXTabular::LyXTabular(Buffer const & buf, InsetTabular * inset, LyXLex & lex)
 {
 	owner_ = inset;
 	cur_cell = -1;
@@ -1149,7 +1149,7 @@ int LyXTabular::right_column_of_cell(int cell) const
 }
 
 
-void LyXTabular::write(Buffer const * buf, ostream & os) const
+void LyXTabular::write(Buffer const & buf, ostream & os) const
 {
 	// header line
 	os << "<lyxtabular"
@@ -1295,7 +1295,7 @@ void LyXTabular::setHeaderFooterRows(int hr, int fhr, int fr, int lfr)
 }
 
 
-void LyXTabular::read(Buffer const * buf, LyXLex & lex)
+void LyXTabular::read(Buffer const & buf, LyXLex & lex)
 {
 	string line;
 	istream & is = lex.getStream();
@@ -1318,7 +1318,7 @@ void LyXTabular::read(Buffer const * buf, LyXLex & lex)
 	int columns_arg;
 	if (!getTokenValue(line, "columns", columns_arg))
 		return;
-	init(buf->params, rows_arg, columns_arg);
+	init(buf.params, rows_arg, columns_arg);
 	l_getline(is, line);
 	if (!prefixIs(line, "<features")) {
 		lyxerr << "Wrong tabular format (expected <features ...> got"
@@ -1961,7 +1961,7 @@ int LyXTabular::TeXCellPostamble(ostream & os, int cell) const
 }
 
 
-int LyXTabular::TeXLongtableHeaderFooter(ostream & os, Buffer const * buf,
+int LyXTabular::TeXLongtableHeaderFooter(ostream & os, Buffer const & buf,
 					 LatexRunParams const & runparams) const
 {
 	if (!is_long_tabular)
@@ -2061,7 +2061,7 @@ bool LyXTabular::isValidRow(int const row) const
 }
 
 
-int LyXTabular::TeXRow(ostream & os, int const i, Buffer const * buf,
+int LyXTabular::TeXRow(ostream & os, int const i, Buffer const & buf,
 		       LatexRunParams const & runparams) const
 {
 	int ret = 0;
@@ -2074,7 +2074,7 @@ int LyXTabular::TeXRow(ostream & os, int const i, Buffer const * buf,
 		ret += TeXCellPreamble(os, cell);
 		InsetText & inset = getCellInset(cell);
 
-		bool rtl = inset.paragraphs.begin()->isRightToLeftPar(buf->params) &&
+		bool rtl = inset.paragraphs.begin()->isRightToLeftPar(buf.params) &&
 			!inset.paragraphs.begin()->empty() && getPWidth(cell).zero();
 
 		if (rtl)
@@ -2097,7 +2097,7 @@ int LyXTabular::TeXRow(ostream & os, int const i, Buffer const * buf,
 }
 
 
-int LyXTabular::latex(Buffer const * buf, ostream & os,
+int LyXTabular::latex(Buffer const & buf, ostream & os,
 		      LatexRunParams const & runparams) const
 {
 	int ret = 0;
@@ -2205,7 +2205,7 @@ int LyXTabular::latex(Buffer const * buf, ostream & os,
 }
 
 
-int LyXTabular::linuxdoc(Buffer const * buf, ostream & os) const
+int LyXTabular::linuxdoc(Buffer const & buf, ostream & os) const
 {
 	os << "<tabular ca=\"";
 	for (int i = 0; i < columns_; ++i) {
@@ -2229,7 +2229,7 @@ int LyXTabular::linuxdoc(Buffer const * buf, ostream & os) const
 			if (isPartOfMultiColumn(i, j))
 				continue;
 			InsetText & inset = getCellInset(cell);
-	
+
 			ret += inset.linuxdoc(buf, os);
 
 			if (isLastCellInRow(cell)) {
@@ -2246,7 +2246,7 @@ int LyXTabular::linuxdoc(Buffer const * buf, ostream & os) const
 }
 
 
-int LyXTabular::docbookRow(Buffer const * buf, ostream & os, int row) const
+int LyXTabular::docbookRow(Buffer const & buf, ostream & os, int row) const
 {
 	int ret = 0;
 	int cell = getFirstCellInRow(row);
@@ -2297,7 +2297,7 @@ int LyXTabular::docbookRow(Buffer const * buf, ostream & os, int row) const
 }
 
 
-int LyXTabular::docbook(Buffer const * buf, ostream & os,
+int LyXTabular::docbook(Buffer const & buf, ostream & os,
 			bool /*mixcont*/) const
 {
 	int ret = 0;
@@ -2473,7 +2473,7 @@ int LyXTabular::asciiBottomHLine(ostream & os, int row,
 }
 
 
-int LyXTabular::asciiPrintCell(Buffer const * buf, ostream & os,
+int LyXTabular::asciiPrintCell(Buffer const & buf, ostream & os,
 			       int cell, int row, int column,
 			       vector<unsigned int> const & clen,
 			       bool onlydata) const
@@ -2523,7 +2523,7 @@ int LyXTabular::asciiPrintCell(Buffer const * buf, ostream & os,
 }
 
 
-int LyXTabular::ascii(Buffer const * buf, ostream & os, int const depth,
+int LyXTabular::ascii(Buffer const & buf, ostream & os, int const depth,
 					  bool onlydata, unsigned char delim) const
 {
 	int ret = 0;

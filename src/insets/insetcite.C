@@ -36,7 +36,7 @@ namespace {
 // reload the bibkey list
 std::map<Buffer const *, bool> loading_buffer;
 
-string const getNatbibLabel(Buffer const * buffer,
+string const getNatbibLabel(Buffer const & buffer,
 			    string const & citeType, string const & keyList,
 			    string const & before, string const & after,
 			    bool numerical)
@@ -46,13 +46,13 @@ string const getNatbibLabel(Buffer const * buffer,
 
 	// Only load the bibkeys once if we're loading up the buffer,
 	// else load them afresh each time.
-	map<Buffer const *, bool>::iterator lit = loading_buffer.find(buffer);
+	map<Buffer const *, bool>::iterator lit = loading_buffer.find(&buffer);
 	if (lit == loading_buffer.end())
-		loading_buffer[buffer] = true;
+		loading_buffer[&buffer] = true;
 
-	bool loadkeys = !loading_buffer[buffer];
+	bool loadkeys = !loading_buffer[&buffer];
 	if (!loadkeys) {
-		CachedMap::iterator kit = cached_keys.find(buffer);
+		CachedMap::iterator kit = cached_keys.find(&buffer);
 		loadkeys = kit == cached_keys.end();
 	}
 
@@ -60,7 +60,7 @@ string const getNatbibLabel(Buffer const * buffer,
 		// build the keylist
 		typedef vector<std::pair<string, string> > InfoType;
 		InfoType bibkeys;
-		buffer->fillWithBibKeys(bibkeys);
+		buffer.fillWithBibKeys(bibkeys);
 
 		InfoType::const_iterator bit  = bibkeys.begin();
 		InfoType::const_iterator bend = bibkeys.end();
@@ -72,10 +72,10 @@ string const getNatbibLabel(Buffer const * buffer,
 		if (infomap.empty())
 			return string();
 
-		cached_keys[buffer] = infomap;
+		cached_keys[&buffer] = infomap;
 	}
 
-	biblio::InfoMap infomap = cached_keys[buffer];
+	biblio::InfoMap infomap = cached_keys[&buffer];
 
 	// the natbib citation-styles
 	// CITET:	author (year)
@@ -240,13 +240,13 @@ InsetCitation::~InsetCitation()
 }
 
 
-string const InsetCitation::generateLabel(Buffer const * buffer) const
+string const InsetCitation::generateLabel(Buffer const & buffer) const
 {
 	string const before = string();
 	string const after  = getOptions();
 
 	string label;
-	if (buffer->params.use_natbib) {
+	if (buffer.params.use_natbib) {
 		string cmd = getCmdName();
 		if (cmd == "cite") {
 			// We may be "upgrading" from an older LyX version.
@@ -254,14 +254,14 @@ string const InsetCitation::generateLabel(Buffer const * buffer) const
 			// author/year info is not present in the biblio
 			// database, then getNatbibLabel will exit gracefully
 			// and we'll call getBasicLabel.
-			if (buffer->params.use_numerical_citations)
+			if (buffer.params.use_numerical_citations)
 				cmd = "citep";
 			else
 				cmd = "citet";
 		}
 		label = getNatbibLabel(buffer, cmd, getContents(),
 				       before, after,
-				       buffer->params.use_numerical_citations);
+				       buffer.params.use_numerical_citations);
 	}
 
 	// Fallback to fail-safe
@@ -273,12 +273,12 @@ string const InsetCitation::generateLabel(Buffer const * buffer) const
 }
 
 
-InsetCitation::Cache::Style InsetCitation::getStyle(Buffer const * buffer) const
+InsetCitation::Cache::Style InsetCitation::getStyle(Buffer const & buffer) const
 {
 	Cache::Style style = Cache::BASIC;
 
-	if (buffer->params.use_natbib) {
-		if (buffer->params.use_numerical_citations) {
+	if (buffer.params.use_natbib) {
+		if (buffer.params.use_numerical_citations) {
 			style = Cache::NATBIB_NUM;
 		} else {
 			style = Cache::NATBIB_AY;
@@ -289,7 +289,7 @@ InsetCitation::Cache::Style InsetCitation::getStyle(Buffer const * buffer) const
 }
 
 
-string const InsetCitation::getScreenLabel(Buffer const * buffer) const
+string const InsetCitation::getScreenLabel(Buffer const & buffer) const
 {
 	Cache::Style const style = getStyle(buffer);
 	if (cache.params == params() && cache.style == style)
@@ -318,10 +318,10 @@ string const InsetCitation::getScreenLabel(Buffer const * buffer) const
 }
 
 
-void InsetCitation::setLoadingBuffer(Buffer const * buffer, bool state) const
+void InsetCitation::setLoadingBuffer(Buffer const & buffer, bool state) const
 {
 	// Doesn't matter if there is no bv->buffer() entry in the map.
-	loading_buffer[buffer] = state;
+	loading_buffer[&buffer] = state;
 }
 
 
@@ -331,7 +331,7 @@ dispatch_result InsetCitation::localDispatch(FuncRequest const & cmd)
 	case LFUN_INSET_EDIT:
 		// A call to edit indicates that we're no longer loading the
 		// buffer but doing some real work.
-		setLoadingBuffer(cmd.view()->buffer(), false);
+		setLoadingBuffer(*cmd.view()->buffer(), false);
 		InsetCommandMailer("citation", *this).showDialog(cmd.view());
 		return DISPATCHED;
 
@@ -341,7 +341,7 @@ dispatch_result InsetCitation::localDispatch(FuncRequest const & cmd)
 }
 
 
-int InsetCitation::ascii(Buffer const * buffer, ostream & os, int) const
+int InsetCitation::ascii(Buffer const & buffer, ostream & os, int) const
 {
 	if (cache.params == params() && cache.style == getStyle(buffer))
 		os << cache.generated_label;
@@ -355,11 +355,11 @@ int InsetCitation::ascii(Buffer const * buffer, ostream & os, int) const
 // the \cite command is valid. Eg, the user has natbib enabled, inputs some
 // citations and then changes his mind, turning natbib support off. The output
 // should revert to \cite[]{}
-int InsetCitation::latex(Buffer const * buffer, ostream & os,
+int InsetCitation::latex(Buffer const & buffer, ostream & os,
 			 LatexRunParams const &) const
 {
 	os << "\\";
-	if (buffer->params.use_natbib)
+	if (buffer.params.use_natbib)
 		os << getCmdName();
 	else
 		os << "cite";
@@ -373,7 +373,7 @@ int InsetCitation::latex(Buffer const * buffer, ostream & os,
 
 	string const before = string();
 	string const after  = getOptions();
-	if (!before.empty() && buffer->params.use_natbib)
+	if (!before.empty() && buffer.params.use_natbib)
 		os << '[' << before << "][" << after << ']';
 	else if (!after.empty())
 		os << '[' << after << ']';

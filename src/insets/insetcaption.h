@@ -22,9 +22,9 @@ public:
 	///
 	InsetCaption(BufferParams const &);
 	///
-	void write(Buffer const * buf, std::ostream & os) const;
+	void write(Buffer const & buf, std::ostream & os) const;
 	///
-	void read(Buffer const * buf, LyXLex & lex);
+	void read(Buffer const & buf, LyXLex & lex);
 	///
 	virtual bool display() const;
 	///
@@ -34,12 +34,12 @@ public:
 	///
 	virtual void draw(PainterInfo & pi, int x, int y) const;
 	///
-	virtual int latex(Buffer const * buf, std::ostream & os,
+	virtual int latex(Buffer const & buf, std::ostream & os,
 			  LatexRunParams const &) const;
 	///
-	int ascii(Buffer const * buf, std::ostream & os, int linelen) const;
+	int ascii(Buffer const & buf, std::ostream & os, int linelen) const;
 	///
-	int docbook(Buffer const * buf, std::ostream & os, bool mixcont) const;
+	int docbook(Buffer const & buf, std::ostream & os, bool mixcont) const;
 };
 
 

@@ -47,7 +47,7 @@ ControlGraphics::ControlGraphics(Dialog & parent)
 bool ControlGraphics::initialiseParams(string const & data)
 {
 	InsetGraphicsParams params;
-	InsetGraphicsMailer::string2params(data, *kernel().buffer(), params);
+	InsetGraphicsMailer::string2params(data, kernel().buffer(), params);
 	params_.reset(new InsetGraphicsParams(params));
 	return true;
 }
@@ -63,7 +63,7 @@ void ControlGraphics::dispatchParams()
 {
 	InsetGraphicsParams tmp_params(params());
 	string const lfun =
-		InsetGraphicsMailer::params2string(tmp_params, *kernel().buffer());
+		InsetGraphicsMailer::params2string(tmp_params, kernel().buffer());
 	kernel().dispatch(FuncRequest(LFUN_INSET_APPLY, lfun));
 }
 

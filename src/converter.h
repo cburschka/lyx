@@ -126,10 +126,10 @@ private:
 	std::vector<Format const *> const
 	Converters::intToFormat(std::vector<int> const & input);
 	///
-	bool scanLog(Buffer const * buffer, string const & command,
+	bool scanLog(Buffer const & buffer, string const & command,
 		     string const & filename);
 	///
-	bool runLaTeX(Buffer const * buffer, string const & command,
+	bool runLaTeX(Buffer const & buffer, string const & command,
 		      LatexRunParams const &);
 	///
 	ConverterList converterlist_;

@@ -88,8 +88,8 @@ public:
 	LyXView & lyxview() { return lyxview_; }
 	LyXView const & lyxview() const { return lyxview_; }
 
-	Buffer * buffer();
-	Buffer const * buffer() const;
+	Buffer & buffer();
+	Buffer const & buffer() const;
 
 	BufferView * bufferview();
 	BufferView const * bufferview() const;

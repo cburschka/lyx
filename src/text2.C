@@ -596,7 +596,7 @@ int LyXText::redoParagraphs(ParagraphList::iterator start,
 	int pars_width = 0;
 	for ( ; start != end; ++start) {
 		int par_width = redoParagraphInternal(start);
-		pars_width = std::max(par_width, pars_width);	
+		pars_width = std::max(par_width, pars_width);
 	}
 	updateRowPositions();
 	return pars_width;
@@ -753,7 +753,7 @@ string LyXText::getStringToIndex()
 	else if (selection.start.par() != selection.end.par())
 		bv()->owner()->message(_("Cannot index more than one paragraph!"));
 	else
-		idxstring = selectionAsString(bv()->buffer(), false);
+		idxstring = selectionAsString(*bv()->buffer(), false);
 
 	// Reset cursors to their original position.
 	cursor = reset_cursor;
@@ -853,9 +853,9 @@ void LyXText::setParagraph(bool line_top, bool line_bottom,
 
 
 // set the counter of a paragraph. This includes the labels
-void LyXText::setCounter(Buffer const * buf, ParagraphList::iterator pit)
+void LyXText::setCounter(Buffer const & buf, ParagraphList::iterator pit)
 {
-	LyXTextClass const & textclass = buf->params.getLyXTextClass();
+	LyXTextClass const & textclass = buf.params.getLyXTextClass();
 	LyXLayout_ptr const & layout = pit->layout();
 
 	if (pit != ownerParagraphs().begin()) {
@@ -913,7 +913,7 @@ void LyXText::setCounter(Buffer const * buf, ParagraphList::iterator pit)
 
 		ostringstream s;
 
-		if (i >= 0 && i <= buf->params.secnumdepth) {
+		if (i >= 0 && i <= buf.params.secnumdepth) {
 			string numbertype;
 			string langtype;
 
@@ -921,9 +921,9 @@ void LyXText::setCounter(Buffer const * buf, ParagraphList::iterator pit)
 
 			// Is there a label? Useful for Chapter layout
 			if (!pit->params().appendix()) {
-				s << buf->B_(layout->labelstring());
+				s << buf.B_(layout->labelstring());
 			} else {
-				s << buf->B_(layout->labelstring_appendix());
+				s << buf.B_(layout->labelstring_appendix());
 			}
 
 			// Use of an integer is here less than elegant. For now.
@@ -932,7 +932,7 @@ void LyXText::setCounter(Buffer const * buf, ParagraphList::iterator pit)
 				numbertype = "sectioning";
 			} else {
 				numbertype = "appendix";
-				if (pit->isRightToLeftPar(buf->params))
+				if (pit->isRightToLeftPar(buf.params))
 					langtype = "hebrew";
 				else
 					langtype = "latin";
@@ -986,7 +986,7 @@ void LyXText::setCounter(Buffer const * buf, ParagraphList::iterator pit)
 		}
 		// In biblio should't be following counters but...
 	} else {
-		string s = buf->B_(layout->labelstring());
+		string s = buf.B_(layout->labelstring());
 
 		// the caption hack:
 		if (layout->labeltype == LABEL_SENSITIVE) {
@@ -1003,7 +1003,7 @@ void LyXText::setCounter(Buffer const * buf, ParagraphList::iterator pit)
 					isOK = true;
 					break;
 				} else {
-					Paragraph const * owner = &ownerPar(*buf, in);
+					Paragraph const * owner = &ownerPar(buf, in);
 					tmppit = ownerParagraphs().begin();
 					for ( ; tmppit != end; ++tmppit)
 						if (&*tmppit == owner)
@@ -1026,7 +1026,7 @@ void LyXText::setCounter(Buffer const * buf, ParagraphList::iterator pit)
 				textclass.counters().step(fl.type());
 
 				// Doesn't work... yet.
-				s = bformat(_("%1$s #:"), buf->B_(fl.name()));
+				s = bformat(_("%1$s #:"), buf.B_(fl.name()));
 			} else {
 				// par->SetLayout(0);
 				// s = layout->labelstring;
@@ -1072,7 +1072,7 @@ void LyXText::updateCounters()
 			pit->params().depth(maxdepth);
 
 		// setCounter can potentially change the labelString.
-		setCounter(bv()->buffer(), pit);
+		setCounter(*bv()->buffer(), pit);
 
 		string const & newLabel = pit->params().labelString();
 
@@ -1093,7 +1093,7 @@ void LyXText::insertInset(InsetOld * inset)
 	// The character will not be inserted a second time
 	insertChar(Paragraph::META_INSET);
 	// If we enter a highly editable inset the cursor should be before
-	// the inset. After an Undo LyX tries to call inset->edit(...) 
+	// the inset. After an Undo LyX tries to call inset->edit(...)
 	// and fails if the cursor is behind the inset and getInset
 	// does not return the inset!
 	if (isHighlyEditableInset(inset))
@@ -1112,7 +1112,7 @@ void LyXText::cutSelection(bool doclear, bool realcut)
 	// finished. The solution used currently just works, to make it
 	// faster we need to be more clever and probably also have more
 	// calls to stuffClipboard. (Lgb)
-	bv()->stuffClipboard(selectionAsString(bv()->buffer(), true));
+	bv()->stuffClipboard(selectionAsString(*bv()->buffer(), true));
 
 	// This doesn't make sense, if there is no selection
 	if (!selection.set())
@@ -1177,7 +1177,7 @@ void LyXText::cutSelection(bool doclear, bool realcut)
 void LyXText::copySelection()
 {
 	// stuff the selection onto the X clipboard, from an explicit copy request
-	bv()->stuffClipboard(selectionAsString(bv()->buffer(), true));
+	bv()->stuffClipboard(selectionAsString(*bv()->buffer(), true));
 
 	// this doesnt make sense, if there is no selection
 	if (!selection.set())
@@ -1360,7 +1360,7 @@ void LyXText::setCursor(LyXCursor & cur, ParagraphList::iterator pit,
 
 	RowList::iterator row = getRow(pit, pos);
 	int y = row->y();
-	
+
 	RowList::iterator old_row = row;
 	// if we are before the first char of this row and are still in the
 	// same paragraph and there is a previous row then put the cursor on
@@ -1493,7 +1493,7 @@ void LyXText::setCurrentFont()
 	real_current_font = getFont(pit, pos);
 
 	if (cursor.pos() == pit->size() &&
-	    isBoundary(bv()->buffer(), *pit, cursor.pos()) &&
+	    isBoundary(*bv()->buffer(), *pit, cursor.pos()) &&
 	    !cursor.boundary()) {
 		Language const * lang =
 			pit->getParLanguage(bv()->buffer()->params);
@@ -1594,7 +1594,7 @@ pos_type LyXText::getColumnNearX(ParagraphList::iterator pit,
 		bool const rtl = (bidi_level(c) % 2 == 1);
 		if (left_side == rtl) {
 			++c;
-			boundary = isBoundary(bv()->buffer(), *pit, c);
+			boundary = isBoundary(*bv()->buffer(), *pit, c);
 		}
 	}
 
@@ -1648,7 +1648,7 @@ void LyXText::cursorLeft(bool internal)
 		bool boundary = cursor.boundary();
 		setCursor(cursor.par(), cursor.pos() - 1, true, false);
 		if (!internal && !boundary &&
-		    isBoundary(bv()->buffer(), *cursor.par(), cursor.pos() + 1))
+		    isBoundary(*bv()->buffer(), *cursor.par(), cursor.pos() + 1))
 			setCursor(cursor.par(), cursor.pos() + 1, true, true);
 	} else if (cursor.par() != ownerParagraphs().begin()) {
 		// steps into the paragraph above
@@ -1669,7 +1669,7 @@ void LyXText::cursorRight(bool internal)
 	else if (!at_end) {
 		setCursor(cursor.par(), cursor.pos() + 1, true, false);
 		if (!internal &&
-		    isBoundary(bv()->buffer(), *cursor.par(), cursor.pos()))
+		    isBoundary(*bv()->buffer(), *cursor.par(), cursor.pos()))
 			setCursor(cursor.par(), cursor.pos(), true, true);
 	} else if (boost::next(cursor.par()) != ownerParagraphs().end())
 		setCursor(boost::next(cursor.par()), 0);
@@ -1867,7 +1867,7 @@ bool LyXText::deleteEmptyParagraphMechanism(LyXCursor const & old_cursor)
 		ParagraphList::iterator endpit = boost::next(old_cursor.par());
 		while (endpit != ownerParagraphs().end() && endpit->getDepth())
 			++endpit;
-	
+
 		recordUndo(bv(), Undo::DELETE, old_cursor.par(), boost::prior(endpit));
 		cursor = tmpcursor;
 

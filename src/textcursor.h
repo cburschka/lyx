@@ -30,7 +30,7 @@
 	it should not be absolutely needed to move the cursor...
 	[even later]
 	Nevertheless, it should still be moved, in order to keep classes
-	and interdependencies small. 
+	and interdependencies small.
 	*/
 
 // The structure that keeps track of the selections set.
@@ -66,7 +66,7 @@ struct TextCursor {
 	///
 	void clearSelection();
 	///
-	string const selectionAsString(Buffer const * buffer, bool label) const;
+	string const selectionAsString(Buffer const & buffer, bool label) const;
 
 	// actual cursor position
 	LyXCursor cursor;

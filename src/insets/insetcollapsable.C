@@ -84,14 +84,14 @@ bool InsetCollapsable::insertInset(BufferView * bv, InsetOld * in)
 }
 
 
-void InsetCollapsable::write(Buffer const * buf, ostream & os) const
+void InsetCollapsable::write(Buffer const & buf, ostream & os) const
 {
 	os << "collapsed " << (collapsed_ ? "true" : "false") << "\n";
 	inset.writeParagraphData(buf, os);
 }
 
 
-void InsetCollapsable::read(Buffer const * buf, LyXLex & lex)
+void InsetCollapsable::read(Buffer const & buf, LyXLex & lex)
 {
 	if (lex.isOK()) {
 		lex.next();
@@ -252,26 +252,26 @@ void InsetCollapsable::lfunMouseRelease(FuncRequest const & cmd)
 }
 
 
-int InsetCollapsable::latex(Buffer const * buf, ostream & os,
+int InsetCollapsable::latex(Buffer const & buf, ostream & os,
 			    LatexRunParams const & runparams) const
 {
 	return inset.latex(buf, os, runparams);
 }
 
 
-int InsetCollapsable::ascii(Buffer const * buf, ostream & os, int ll) const
+int InsetCollapsable::ascii(Buffer const & buf, ostream & os, int ll) const
 {
 	return inset.ascii(buf, os, ll);
 }
 
 
-int InsetCollapsable::linuxdoc(Buffer const * buf, ostream & os) const
+int InsetCollapsable::linuxdoc(Buffer const & buf, ostream & os) const
 {
 	return inset.linuxdoc(buf, os);
 }
 
 
-int InsetCollapsable::docbook(Buffer const * buf, ostream & os, bool mixcont) const
+int InsetCollapsable::docbook(Buffer const & buf, ostream & os, bool mixcont) const
 {
 	return inset.docbook(buf, os, mixcont);
 }

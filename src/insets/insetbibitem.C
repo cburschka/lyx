@@ -87,7 +87,7 @@ void InsetBibitem::setCounter(int c)
 // as a LyX 2.x command, and lyxlex is not enough smart to understand
 // real LaTeX commands. Yes, that could be fixed, but would be a waste
 // of time cause LyX3 won't use lyxlex anyway.  (ale)
-void InsetBibitem::write(Buffer const *, std::ostream & os) const
+void InsetBibitem::write(Buffer const &, std::ostream & os) const
 {
 	os << "\n\\bibitem ";
 	if (!getOptions().empty())
@@ -98,7 +98,7 @@ void InsetBibitem::write(Buffer const *, std::ostream & os) const
 
 // This is necessary here because this is written without begin_inset
 // This should be changed!!! (Jug)
-void InsetBibitem::read(Buffer const *, LyXLex & lex)
+void InsetBibitem::read(Buffer const &, LyXLex & lex)
 {
 	if (lex.eatLine()) {
 		scanCommand(lex.getString());
@@ -119,7 +119,7 @@ string const InsetBibitem::getBibLabel() const
 }
 
 
-string const InsetBibitem::getScreenLabel(Buffer const *) const
+string const InsetBibitem::getScreenLabel(Buffer const &) const
 {
 	return getContents() + " [" + getBibLabel() + ']';
 }
@@ -146,7 +146,7 @@ int bibitemMaxWidth(BufferView * bv, LyXFont const &)
 
 
 // ale070405
-string const bibitemWidest(Buffer const * buffer)
+string const bibitemWidest(Buffer const & buffer)
 {
 	int w = 0;
 	// Does look like a hack? It is! (but will change at 0.13)
@@ -154,8 +154,8 @@ string const bibitemWidest(Buffer const * buffer)
 	InsetBibitem const * bitem = 0;
 	LyXFont font;
 
-	ParagraphList::const_iterator it = buffer->paragraphs.begin();
-	ParagraphList::const_iterator end = buffer->paragraphs.end();
+	ParagraphList::const_iterator it = buffer.paragraphs.begin();
+	ParagraphList::const_iterator end = buffer.paragraphs.end();
 
 	for (; it != end; ++it) {
 		if (it->bibitem()) {

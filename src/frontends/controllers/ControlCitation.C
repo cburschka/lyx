@@ -32,7 +32,7 @@ bool ControlCitation::initialiseParams(string const & data)
 	ControlCommand::initialiseParams(data);
 
 	vector<pair<string,string> > blist;
-	kernel().buffer()->fillWithBibKeys(blist);
+	kernel().buffer().fillWithBibKeys(blist);
 
 	typedef std::map<string, string>::value_type InfoMapValue;
 
@@ -70,7 +70,7 @@ biblio::InfoMap const & ControlCitation::bibkeysInfo() const
 
 bool ControlCitation::usingNatbib() const
 {
-    return kernel().buffer()->params.use_natbib;
+    return kernel().buffer().params.use_natbib;
 }
 
 
@@ -81,7 +81,7 @@ vector<string> const ControlCitation::getCiteStrings(string const & key) const
 	vector<biblio::CiteStyle> const cs =
 		biblio::getCiteStyles(usingNatbib());
 
-	if (kernel().buffer()->params.use_numerical_citations)
+	if (kernel().buffer().params.use_numerical_citations)
 		styles = biblio::getNumericalStrings(key, bibkeysInfo_, cs);
 	else
 		styles = biblio::getAuthorYearStrings(key, bibkeysInfo_, cs);

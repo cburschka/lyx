@@ -86,19 +86,19 @@ public:
 	{
 		return IS_EDITABLE;
 	}
-	/// With lyx3 we won't overload these 3 methods
-	void write(Buffer const *, std::ostream &) const;
 	///
-	void read(Buffer const *, LyXLex &);
+	void write(Buffer const &, std::ostream &) const;
 	///
-	int latex(Buffer const *, std::ostream &,
+	void read(Buffer const &, LyXLex &);
+	///
+	int latex(Buffer const &, std::ostream &,
 		  LatexRunParams const &) const;
 	///
-	int ascii(Buffer const *, std::ostream &, int linelen) const;
+	int ascii(Buffer const &, std::ostream &, int linelen) const;
 	///
-	int linuxdoc(Buffer const *, std::ostream &) const;
+	int linuxdoc(Buffer const &, std::ostream &) const;
 	///
-	int docbook(Buffer const *, std::ostream &, bool mixcont) const;
+	int docbook(Buffer const &, std::ostream &, bool mixcont) const;
 	///
 	void validate(LaTeXFeatures &) const;
 
@@ -109,8 +109,14 @@ public:
 	void addPreview(lyx::graphics::PreviewLoader &) const;
 
 private:
+	friend class InsetIncludeMailer;
+	
+	///
+	void write(std::ostream &) const;
+	///
+	void read(LyXLex &);
 	/// get the text displayed on the button
-	string const getScreenLabel(Buffer const *) const;
+	string const getScreenLabel(Buffer const &) const;
 	/// is this a verbatim include ?
 	bool isVerbatim() const;
 	/// get the filename of the master buffer

@@ -319,7 +319,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 	switch (ev.action) {
 	case LFUN_EXPORT:
 		disable = ev.argument != "custom"
-			&& !Exporter::IsExportable(buf, ev.argument);
+			&& !Exporter::IsExportable(*buf, ev.argument);
 		break;
 	case LFUN_UNDO:
 		disable = buf->undostack.empty();
@@ -345,7 +345,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 		disable = !buf->isLatex() || lyxrc.chktex_command == "none";
 		break;
 	case LFUN_BUILDPROG:
-		disable = !Exporter::IsExportable(buf, "program");
+		disable = !Exporter::IsExportable(*buf, "program");
 		break;
 
 	case LFUN_LAYOUT_TABULAR:
@@ -553,7 +553,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 		}
 
 		if (name == "print") {
-			disable = !Exporter::IsExportable(buf, "dvi") ||
+			disable = !Exporter::IsExportable(*buf, "dvi") ||
 				lyxrc.print_command == "none";
 		} else if (name == "character") {
 			UpdatableInset * tli = view()->theLockingInset();
@@ -1978,4 +1978,3 @@ bool LyXFunc::wasMetaKey() const
 {
 	return (meta_fake_bit != key_modifier::none);
 }
-

@@ -169,7 +169,7 @@ Buffer::~Buffer()
 	paragraphs.clear();
 
 	// Remove any previewed LaTeX snippets associated with this buffer.
-	lyx::graphics::Previews::get().removeLoader(this);
+	lyx::graphics::Previews::get().removeLoader(*this);
 }
 
 
@@ -697,7 +697,7 @@ bool Buffer::do_writeFile(ostream & ofs) const
 	ParagraphList::const_iterator pit = paragraphs.begin();
 	ParagraphList::const_iterator pend = paragraphs.end();
 	for (; pit != pend; ++pit)
-		pit->write(this, ofs, params, depth);
+		pit->write(*this, ofs, params, depth);
 
 	// Write marker that shows file is complete
 	ofs << "\n\\end_document" << endl;
@@ -873,7 +873,7 @@ string const Buffer::asciiParagraph(Paragraph const & par,
 					currlinelen += word.length();
 					word.erase();
 				}
-				if (inset->ascii(this, buffer, linelen)) {
+				if (inset->ascii(*this, buffer, linelen)) {
 					// to be sure it breaks paragraph
 					currlinelen += linelen;
 				}
@@ -1036,7 +1036,7 @@ void Buffer::makeLaTeXFile(ostream & os,
 		texrow.newline();
 	}
 
-	latexParagraphs(this, paragraphs, os, texrow, runparams);
+	latexParagraphs(*this, paragraphs, os, texrow, runparams);
 
 	// add this just in case after all the paragraphs
 	os << endl;
@@ -1485,7 +1485,7 @@ void Buffer::simpleLinuxDocOnePar(ostream & os,
 
 		if (c == Paragraph::META_INSET) {
 			InsetOld * inset = par->getInset(i);
-			inset->linuxdoc(this, os);
+			inset->linuxdoc(*this, os);
 			font_old = font;
 			continue;
 		}
@@ -1855,7 +1855,7 @@ void Buffer::simpleDocBookOnePar(ostream & os,
 			if (i || desc_on != 3) {
 				if (style->latexparam() == "CDATA")
 					os << "]]>";
-				inset->docbook(this, os, false);
+				inset->docbook(*this, os, false);
 				if (style->latexparam() == "CDATA")
 					os << "<![CDATA[";
 			}
@@ -2023,7 +2023,7 @@ void Buffer::fillWithBibKeys(std::vector<std::pair<string, string> > & keys) con
 	for (inset_iterator it = inset_const_iterator_begin();
 		it != inset_const_iterator_end(); ++it) {
 		if (it->lyxCode() == InsetOld::BIBTEX_CODE)
-			static_cast<InsetBibtex &>(*it).fillWithBibKeys(this, keys);
+			static_cast<InsetBibtex &>(*it).fillWithBibKeys(*this, keys);
 		else if (it->lyxCode() == InsetOld::INCLUDE_CODE)
 			static_cast<InsetInclude &>(*it).fillWithBibKeys(keys);
 		else if (it->lyxCode() == InsetOld::BIBITEM_CODE) {

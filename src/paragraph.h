@@ -79,13 +79,13 @@ public:
 	bool isMultiLingual(BufferParams const &);
 
 	///
-	string const asString(Buffer const *, bool label) const;
+	string const asString(Buffer const &, bool label) const;
 	///
-	string const asString(Buffer const *, lyx::pos_type beg, lyx::pos_type end,
+	string const asString(Buffer const &, lyx::pos_type beg, lyx::pos_type end,
 			      bool label) const;
 
 	///
-	void write(Buffer const *, std::ostream &, BufferParams const &,
+	void write(Buffer const &, std::ostream &, BufferParams const &,
 		       depth_type & depth) const;
 	///
 	void validate(LaTeXFeatures &) const;
@@ -103,7 +103,7 @@ public:
 
 
 	///
-	bool simpleTeXOnePar(Buffer const *, BufferParams const &,
+	bool simpleTeXOnePar(Buffer const &, BufferParams const &,
 			     LyXFont const & outerfont, std::ostream &,
 			     TexRow & texrow, LatexRunParams const &);
 

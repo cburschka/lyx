@@ -145,14 +145,14 @@ void InsetWrapParams::read(LyXLex & lex)
 }
 
 
-void InsetWrap::write(Buffer const * buf, ostream & os) const
+void InsetWrap::write(Buffer const & buf, ostream & os) const
 {
 	params_.write(os);
 	InsetCollapsable::write(buf, os);
 }
 
 
-void InsetWrap::read(Buffer const * buf, LyXLex & lex)
+void InsetWrap::read(Buffer const & buf, LyXLex & lex)
 {
 	params_.read(lex);
 	InsetCollapsable::read(buf, lex);
@@ -178,7 +178,7 @@ string const InsetWrap::editMessage() const
 }
 
 
-int InsetWrap::latex(Buffer const * buf, ostream & os,
+int InsetWrap::latex(Buffer const & buf, ostream & os,
 		     LatexRunParams const & runparams) const
 {
 	os << "\\begin{floating" << params_.type << '}';
@@ -194,7 +194,7 @@ int InsetWrap::latex(Buffer const * buf, ostream & os,
 }
 
 
-int InsetWrap::docbook(Buffer const * buf, ostream & os, bool mixcont) const
+int InsetWrap::docbook(Buffer const & buf, ostream & os, bool mixcont) const
 {
 	os << '<' << params_.type << '>';
 	int const i = inset.docbook(buf, os, mixcont);
@@ -233,7 +233,7 @@ bool InsetWrap::showInsetDialog(BufferView * bv) const
 }
 
 
-void InsetWrap::addToToc(lyx::toc::TocList & toclist, Buffer const * buf) const
+void InsetWrap::addToToc(lyx::toc::TocList & toclist, Buffer const & buf) const
 {
 	// Now find the caption in the float...
 	ParagraphList::iterator tmp = inset.paragraphs.begin();
@@ -241,7 +241,7 @@ void InsetWrap::addToToc(lyx::toc::TocList & toclist, Buffer const * buf) const
 
 	for (; tmp != end; ++tmp) {
 		if (tmp->layout()->name() == caplayout) {
-			string const name = floatname(params_.type, buf->params);
+			string const name = floatname(params_.type, buf.params);
 			string const str =
 				tostr(toclist[name].size() + 1)
 				+ ". " + tmp->asString(buf, false);

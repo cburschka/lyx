@@ -232,7 +232,7 @@ void InsetQuotes::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-void InsetQuotes::write(Buffer const *, ostream & os) const
+void InsetQuotes::write(Buffer const &, ostream & os) const
 {
 	string text;
 	text += language_char[language_];
@@ -242,7 +242,7 @@ void InsetQuotes::write(Buffer const *, ostream & os) const
 }
 
 
-void InsetQuotes::read(Buffer const *, LyXLex & lex)
+void InsetQuotes::read(Buffer const &, LyXLex & lex)
 {
 	lex.nextToken();
 	parseString(lex.getString());
@@ -253,11 +253,11 @@ void InsetQuotes::read(Buffer const *, LyXLex & lex)
 }
 
 
-int InsetQuotes::latex(Buffer const * buf, ostream & os,
+int InsetQuotes::latex(Buffer const & buf, ostream & os,
 		       LatexRunParams const & runparams) const
 {
 	// How do we get the local language here??
-	lyx::pos_type curr_pos = ownerPar(*buf, this).getPositionOfInset(this);
+	lyx::pos_type curr_pos = ownerPar(buf, this).getPositionOfInset(this);
 	Assert(curr_pos != -1);
 
 #warning FIXME. We _must_ find another way to get the language. (Lgb)
@@ -267,7 +267,7 @@ int InsetQuotes::latex(Buffer const * buf, ostream & os,
 		parOwner()->getFont(buf->params, curr_pos).language()->babel();
 #else
 	// And this is not the way... (Lgb)
-	string const curr_lang = buf->params.language->lang();
+	string const curr_lang = buf.params.language->lang();
 #endif
 	const int quoteind = quote_index[side_][language_];
 	string qstr;
@@ -305,21 +305,21 @@ int InsetQuotes::latex(Buffer const * buf, ostream & os,
 }
 
 
-int InsetQuotes::ascii(Buffer const *, ostream & os, int) const
+int InsetQuotes::ascii(Buffer const &, ostream & os, int) const
 {
 	os << '"';
 	return 0;
 }
 
 
-int InsetQuotes::linuxdoc(Buffer const *, ostream & os) const
+int InsetQuotes::linuxdoc(Buffer const &, ostream & os) const
 {
 	os << '"';
 	return 0;
 }
 
 
-int InsetQuotes::docbook(Buffer const *, ostream & os, bool) const
+int InsetQuotes::docbook(Buffer const &, ostream & os, bool) const
 {
 	if (times_ == DoubleQ) {
 		if (side_ == LeftQ)

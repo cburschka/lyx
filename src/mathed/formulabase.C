@@ -892,7 +892,7 @@ void mathDispatchCreation(FuncRequest const & cmd, bool display)
 	//	sel = "";
 	//else
 
-	string sel = bv->getLyXText()->selectionAsString(bv->buffer(), false);
+	string sel = bv->getLyXText()->selectionAsString(*bv->buffer(), false);
 
 	if (sel.empty()) {
 		InsetFormula * f = new InsetFormula(bv);

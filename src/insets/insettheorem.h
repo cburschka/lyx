@@ -23,7 +23,7 @@ public:
 	///
 	InsetTheorem();
 	///
-	void write(Buffer const * buf, std::ostream & os) const;
+	void write(Buffer const & buf, std::ostream & os) const;
 	///
 	virtual InsetBase * clone() const;
 	///
@@ -33,7 +33,7 @@ public:
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
 	///
-	int latex(Buffer const *, std::ostream &,
+	int latex(Buffer const &, std::ostream &,
 		  LatexRunParams const &) const;
 	///
 	string const editMessage() const;

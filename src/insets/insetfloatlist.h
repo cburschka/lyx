@@ -36,24 +36,24 @@ public:
 	///
 	dispatch_result localDispatch(FuncRequest const & cmd);
 	///
-	string const getScreenLabel(Buffer const *) const;
+	string const getScreenLabel(Buffer const &) const;
 	///
 	EDITABLE editable() const { return IS_EDITABLE; }
 	///
 	InsetOld::Code lyxCode() const;
 	///
-	void write(Buffer const *, std::ostream &) const;
+	void write(Buffer const &, std::ostream &) const;
 	///
-	void read(Buffer const *, LyXLex &);
+	void read(Buffer const &, LyXLex &);
 	///
-	int latex(Buffer const *, std::ostream &,
+	int latex(Buffer const &, std::ostream &,
 		  LatexRunParams const &) const;
 	///
-	int linuxdoc(Buffer const *, std::ostream &) const { return 0; }
+	int linuxdoc(Buffer const &, std::ostream &) const { return 0; }
 	///
-	int docbook(Buffer const *, std::ostream &, bool) const { return 0; }
+	int docbook(Buffer const &, std::ostream &, bool) const { return 0; }
 	///
-	int ascii(Buffer const *, std::ostream &, int linelen) const;
+	int ascii(Buffer const &, std::ostream &, int linelen) const;
 	///
 	void validate(LaTeXFeatures & features) const;
 private:

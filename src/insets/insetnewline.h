@@ -30,18 +30,18 @@ public:
 
 	virtual void draw(PainterInfo & pi, int x, int y) const;
 
-	virtual int latex(Buffer const *, std::ostream &,
+	virtual int latex(Buffer const &, std::ostream &,
 			  LatexRunParams const &) const;
 
-	virtual int ascii(Buffer const *, std::ostream &, int linelen) const;
+	virtual int ascii(Buffer const &, std::ostream &, int linelen) const;
 
-	virtual int linuxdoc(Buffer const *, std::ostream &) const;
+	virtual int linuxdoc(Buffer const &, std::ostream &) const;
 
-	virtual int docbook(Buffer const *, std::ostream &, bool) const;
+	virtual int docbook(Buffer const &, std::ostream &, bool) const;
 
-	virtual void read(Buffer const *, LyXLex & lex);
+	virtual void read(Buffer const &, LyXLex & lex);
 
-	virtual void write(Buffer const * buf, std::ostream & os) const;
+	virtual void write(Buffer const & buf, std::ostream & os) const;
 	/// We don't need \begin_inset and \end_inset
 	virtual bool directWrite() const { return true; }
 };

@@ -21,7 +21,7 @@ ControlLog::ControlLog(Dialog & parent)
 
 bool ControlLog::initialiseParams(string const &)
 {
-	logfile_ = kernel().buffer()->getLogName();
+	logfile_ = kernel().buffer().getLogName();
 	return true;
 }
 

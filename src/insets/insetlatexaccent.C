@@ -601,13 +601,13 @@ void InsetLatexAccent::draw(PainterInfo & pi, int x, int baseline) const
 }
 
 
-void InsetLatexAccent::write(Buffer const *, ostream & os) const
+void InsetLatexAccent::write(Buffer const &, ostream & os) const
 {
 	os << "\\i " << contents << "\n";
 }
 
 
-void InsetLatexAccent::read(Buffer const *, LyXLex & lex)
+void InsetLatexAccent::read(Buffer const &, LyXLex & lex)
 {
 	lex.eatLine();
 	contents = lex.getString();
@@ -615,7 +615,7 @@ void InsetLatexAccent::read(Buffer const *, LyXLex & lex)
 }
 
 
-int InsetLatexAccent::latex(Buffer const *, ostream & os,
+int InsetLatexAccent::latex(Buffer const &, ostream & os,
 			    LatexRunParams const &) const
 {
 	os << contents;
@@ -623,21 +623,21 @@ int InsetLatexAccent::latex(Buffer const *, ostream & os,
 }
 
 
-int InsetLatexAccent::ascii(Buffer const *, ostream & os, int) const
+int InsetLatexAccent::ascii(Buffer const &, ostream & os, int) const
 {
 	os << contents;
 	return 0;
 }
 
 
-int InsetLatexAccent::linuxdoc(Buffer const *, ostream & os) const
+int InsetLatexAccent::linuxdoc(Buffer const &, ostream & os) const
 {
 	os << contents;
 	return 0;
 }
 
 
-int InsetLatexAccent::docbook(Buffer const *, ostream & os, bool) const
+int InsetLatexAccent::docbook(Buffer const &, ostream & os, bool) const
 {
 	os << contents;
 	return 0;

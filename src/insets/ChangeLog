@@ -1,3 +1,7 @@
+2003-08-28  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* most files: change to use const Buffer refs
+
 2003-08-26  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* insetfootlike.C: whitespace.
@@ -48,7 +52,7 @@
 
 	* insetref.C: require amsmath for eqref
 
-2003-08-17  Martin Vermeer  <martin.vermeer@hut.fi>	
+2003-08-17  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* Makefile.am:
 	* inset.h:

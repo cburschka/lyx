@@ -101,7 +101,7 @@ void InsetSpace::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-void InsetSpace::write(Buffer const *, ostream & os) const
+void InsetSpace::write(Buffer const &, ostream & os) const
 {
 	string command;
 	switch (kind_) {
@@ -135,7 +135,7 @@ void InsetSpace::write(Buffer const *, ostream & os) const
 
 
 // This function will not be necessary when lyx3
-void InsetSpace::read(Buffer const *, LyXLex & lex)
+void InsetSpace::read(Buffer const &, LyXLex & lex)
 {
 	lex.nextToken();
 	string const command = lex.getString();
@@ -161,7 +161,7 @@ void InsetSpace::read(Buffer const *, LyXLex & lex)
 }
 
 
-int InsetSpace::latex(Buffer const *, ostream & os,
+int InsetSpace::latex(Buffer const &, ostream & os,
 		      LatexRunParams const & runparams) const
 {
 	switch (kind_) {
@@ -194,7 +194,7 @@ int InsetSpace::latex(Buffer const *, ostream & os,
 }
 
 
-int InsetSpace::ascii(Buffer const *, ostream & os, int) const
+int InsetSpace::ascii(Buffer const &, ostream & os, int) const
 {
 	switch (kind_) {
 	case NORMAL:
@@ -212,7 +212,7 @@ int InsetSpace::ascii(Buffer const *, ostream & os, int) const
 }
 
 
-int InsetSpace::linuxdoc(Buffer const *, ostream & os) const
+int InsetSpace::linuxdoc(Buffer const &, ostream & os) const
 {
 	switch (kind_) {
 	case NORMAL:
@@ -232,7 +232,7 @@ int InsetSpace::linuxdoc(Buffer const *, ostream & os) const
 }
 
 
-int InsetSpace::docbook(Buffer const *, ostream & os, bool) const
+int InsetSpace::docbook(Buffer const &, ostream & os, bool) const
 {
 	switch (kind_) {
 	case NORMAL:

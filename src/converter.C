@@ -126,7 +126,7 @@ bool operator<(Converter const & a, Converter const & b)
 	int const i = compare_ascii_no_case(a.From->prettyname(),
 					    b.From->prettyname());
 	if (i == 0)
-		return compare_ascii_no_case(a.To->prettyname(), 
+		return compare_ascii_no_case(a.To->prettyname(),
 					     b.To->prettyname()) < 0;
 	else
 		return i < 0;
@@ -317,7 +317,7 @@ bool Converters::convert(Buffer const * buffer,
 			run_latex = true;
 			string command = subst(conv.command, token_from, "");
 			lyxerr[Debug::FILES] << "Running " << command << endl;
-			if (!runLaTeX(buffer, command, runparams))
+			if (!runLaTeX(*buffer, command, runparams))
 				return false;
 		} else {
 			if (conv.need_aux && !run_latex
@@ -325,7 +325,7 @@ bool Converters::convert(Buffer const * buffer,
 				lyxerr[Debug::FILES]
 					<< "Running " << latex_command_
 					<< " to update aux file"<<  endl;
-				runLaTeX(buffer, latex_command_, runparams);
+				runLaTeX(*buffer, latex_command_, runparams);
 			}
 
 			string infile2 = (conv.original_dir)
@@ -350,13 +350,13 @@ bool Converters::convert(Buffer const * buffer,
 						      dvipdfm_options(buffer->params));
 
 			lyxerr[Debug::FILES] << "Calling " << command << endl;
-			if (buffer)
-				buffer->message(_("Executing command: ") + command);
+			buffer->message(_("Executing command: ") + command);
+
 			Systemcall::Starttype type = (dummy)
 				? Systemcall::DontWait : Systemcall::Wait;
 			Systemcall one;
 			int res;
-			if (conv.original_dir && buffer) {
+			if (conv.original_dir) {
 				Path p(buffer->filePath());
 				res = one.startscript(type, command);
 			} else
@@ -379,7 +379,7 @@ bool Converters::convert(Buffer const * buffer,
 					" < " + QuoteName(infile2 + ".out") +
 					" > " + QuoteName(logfile);
 				one.startscript(Systemcall::Wait, command2);
-				if (!scanLog(buffer, command, logfile))
+				if (!scanLog(*buffer, command, logfile))
 					return false;
 			}
 
@@ -484,12 +484,9 @@ bool Converters::formatIsUsed(string const & format)
 }
 
 
-bool Converters::scanLog(Buffer const * buffer, string const & /*command*/,
+bool Converters::scanLog(Buffer const & buffer, string const & /*command*/,
 			 string const & filename)
 {
-	if (!buffer)
-		return false;
-
 	LatexRunParams runparams;
 	runparams.flavor = LatexRunParams::LATEX;
 	LaTeX latex("", runparams, filename, "");
@@ -497,7 +494,7 @@ bool Converters::scanLog(Buffer const * buffer, string const & /*command*/,
 	int result = latex.scanLogFile(terr);
 
 	if (result & LaTeX::ERRORS)
-		bufferErrors(*buffer, terr);
+		bufferErrors(buffer, terr);
 
 	return true;
 }
@@ -506,37 +503,34 @@ namespace {
 
 class showMessage : public boost::signals::trackable {
 public:
-	showMessage(Buffer const * b) : buffer_(b) {};
-	void operator()(string m) 
+	showMessage(Buffer const & b) : buffer_(b) {};
+	void operator()(string const & m)
 	{
-		buffer_->message(m);
+		buffer_.message(m);
 	}
 private:
-	Buffer const * buffer_;
+	Buffer const & buffer_;
 };
 
 }
 
-bool Converters::runLaTeX(Buffer const * buffer, string const & command,
+
+bool Converters::runLaTeX(Buffer const & buffer, string const & command,
 			  LatexRunParams const & runparams)
 {
-	// when is this needed?
-	if (!buffer)
-		return false;
-
-	buffer->busy(true);
-	buffer->message(_("Running LaTeX..."));
+	buffer.busy(true);
+	buffer.message(_("Running LaTeX..."));
 
 	// do the LaTeX run(s)
-	string name = buffer->getLatexName();
-	LaTeX latex(command, runparams, name, buffer->filePath());
+	string name = buffer.getLatexName();
+	LaTeX latex(command, runparams, name, buffer.filePath());
 	TeXErrors terr;
 	showMessage show(buffer);
 	latex.message.connect(show);
 	int result = latex.run(terr);
 
 	if (result & LaTeX::ERRORS)
-		bufferErrors(*buffer, terr);
+		bufferErrors(buffer, terr);
 
 	// check return value from latex.run().
 	if ((result & LaTeX::NO_LOGFILE)) {
@@ -549,8 +543,8 @@ bool Converters::runLaTeX(Buffer const * buffer, string const & command,
 			       _("An empty output file was generated."));
 	}
 
-	
-	buffer->busy(false);
+
+	buffer.busy(false);
 
 	int const ERROR_MASK =
 			LaTeX::NO_LOGFILE |

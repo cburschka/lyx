@@ -50,9 +50,9 @@ InsetFloatList::~InsetFloatList()
 }
 
 
-string const InsetFloatList::getScreenLabel(Buffer const * buf) const
+string const InsetFloatList::getScreenLabel(Buffer const & buf) const
 {
-	FloatList const & floats = buf->params.getLyXTextClass().floats();
+	FloatList const & floats = buf.params.getLyXTextClass().floats();
 	FloatList::const_iterator it = floats[getCmdName()];
 	if (it != floats.end())
 		return _(it->second.listName());
@@ -67,15 +67,15 @@ InsetOld::Code InsetFloatList::lyxCode() const
 }
 
 
-void InsetFloatList::write(Buffer const *, ostream & os) const
+void InsetFloatList::write(Buffer const &, ostream & os) const
 {
 	os << "FloatList " << getCmdName() << "\n";
 }
 
 
-void InsetFloatList::read(Buffer const * buf, LyXLex & lex)
+void InsetFloatList::read(Buffer const & buf, LyXLex & lex)
 {
-	FloatList const & floats = buf->params.getLyXTextClass().floats();
+	FloatList const & floats = buf.params.getLyXTextClass().floats();
 	string token;
 
 	if (lex.eatLine()) {
@@ -125,10 +125,10 @@ dispatch_result InsetFloatList::localDispatch(FuncRequest const & cmd)
 }
 
 
-int InsetFloatList::latex(Buffer const * buf, ostream & os,
+int InsetFloatList::latex(Buffer const & buf, ostream & os,
 			  LatexRunParams const &) const
 {
-	FloatList const & floats = buf->params.getLyXTextClass().floats();
+	FloatList const & floats = buf.params.getLyXTextClass().floats();
 	FloatList::const_iterator cit = floats[getCmdName()];
 
 	if (cit != floats.end()) {
@@ -155,7 +155,7 @@ int InsetFloatList::latex(Buffer const * buf, ostream & os,
 }
 
 
-int InsetFloatList::ascii(Buffer const * buffer, ostream & os, int) const
+int InsetFloatList::ascii(Buffer const & buffer, ostream & os, int) const
 {
 	os << getScreenLabel(buffer) << "\n\n";
 

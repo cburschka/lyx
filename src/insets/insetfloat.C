@@ -230,17 +230,17 @@ void InsetFloatParams::read(LyXLex & lex)
 }
 
 
-void InsetFloat::write(Buffer const * buf, ostream & os) const
+void InsetFloat::write(Buffer const & buf, ostream & os) const
 {
 	params_.write(os);
 	InsetCollapsable::write(buf, os);
 }
 
 
-void InsetFloat::read(Buffer const * buf, LyXLex & lex)
+void InsetFloat::read(Buffer const & buf, LyXLex & lex)
 {
 	params_.read(lex);
-	wide(params_.wide, buf->params);
+	wide(params_.wide, buf.params);
 	InsetCollapsable::read(buf, lex);
 }
 
@@ -268,10 +268,10 @@ string const InsetFloat::editMessage() const
 }
 
 
-int InsetFloat::latex(Buffer const * buf, ostream & os,
+int InsetFloat::latex(Buffer const & buf, ostream & os,
 		      LatexRunParams const & runparams) const
 {
-	FloatList const & floats = buf->params.getLyXTextClass().floats();
+	FloatList const & floats = buf.params.getLyXTextClass().floats();
 	string const tmptype = (params_.wide ? params_.type + "*" : params_.type);
 	// Figure out the float placement to use.
 	// From lowest to highest:
@@ -279,7 +279,7 @@ int InsetFloat::latex(Buffer const * buf, ostream & os,
 	// - document wide default placement
 	// - specific float placement
 	string placement;
-	string const buf_placement = buf->params.float_placement;
+	string const buf_placement = buf.params.float_placement;
 	string const def_placement = floats.defaultPlacement(params_.type);
 	if (!params_.placement.empty()
 	    && params_.placement != def_placement) {
@@ -310,9 +310,9 @@ int InsetFloat::latex(Buffer const * buf, ostream & os,
 }
 
 
-int InsetFloat::linuxdoc(Buffer const * buf, ostream & os) const
+int InsetFloat::linuxdoc(Buffer const & buf, ostream & os) const
 {
-	FloatList const & floats = buf->params.getLyXTextClass().floats();
+	FloatList const & floats = buf.params.getLyXTextClass().floats();
 	string const tmptype =  params_.type;
 	// Figure out the float placement to use.
 	// From lowest to highest:
@@ -322,7 +322,7 @@ int InsetFloat::linuxdoc(Buffer const * buf, ostream & os) const
 	// This is the same as latex, as linuxdoc is modeled after latex.
 
 	string placement;
-	string const buf_placement = buf->params.float_placement;
+	string const buf_placement = buf.params.float_placement;
 	string const def_placement = floats.defaultPlacement(params_.type);
 	if (!params_.placement.empty()
 	    && params_.placement != def_placement) {
@@ -347,7 +347,7 @@ int InsetFloat::linuxdoc(Buffer const * buf, ostream & os) const
 }
 
 
-int InsetFloat::docbook(Buffer const * buf, ostream & os, bool mixcont) const
+int InsetFloat::docbook(Buffer const & buf, ostream & os, bool mixcont) const
 {
 	os << '<' << params_.type << '>';
 	int const i = inset.docbook(buf, os, mixcont);
@@ -394,7 +394,7 @@ void InsetFloat::wide(bool w, BufferParams const & bp)
 }
 
 
-void InsetFloat::addToToc(lyx::toc::TocList & toclist, Buffer const * buf) const
+void InsetFloat::addToToc(lyx::toc::TocList & toclist, Buffer const & buf) const
 {
 	ParIterator pit(inset.paragraphs.begin(), inset.paragraphs);
 	ParIterator end(inset.paragraphs.end(), inset.paragraphs);
@@ -402,7 +402,7 @@ void InsetFloat::addToToc(lyx::toc::TocList & toclist, Buffer const * buf) const
 	// Find a caption layout in one of the (child inset's) pars
 	for (; pit != end; ++pit) {
 		if (pit->layout()->name() == caplayout) {
-			string const name = floatname(params_.type, buf->params);
+			string const name = floatname(params_.type, buf.params);
 			string const str =
 				tostr(toclist[name].size() + 1)
 				+ ". " + pit->asString(buf, false);

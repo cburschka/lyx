@@ -440,15 +440,15 @@ void expandFormats(MenuItem::Kind kind, Menu & tomenu, LyXView const * view)
 		action = LFUN_IMPORT;
 		break;
 	case MenuItem::ViewFormats:
-		formats = Exporter::GetExportableFormats(view->buffer(), true);
+		formats = Exporter::GetExportableFormats(*view->buffer(), true);
 		action = LFUN_PREVIEW;
 		break;
 	case MenuItem::UpdateFormats:
-		formats = Exporter::GetExportableFormats(view->buffer(), true);
+		formats = Exporter::GetExportableFormats(*view->buffer(), true);
 		action = LFUN_UPDATE;
 		break;
 	default:
-		formats = Exporter::GetExportableFormats(view->buffer(), false);
+		formats = Exporter::GetExportableFormats(*view->buffer(), false);
 		action = LFUN_EXPORT;
 	}
 	sort(formats.begin(), formats.end(), compare_format());
@@ -594,7 +594,7 @@ void expandToc(Menu & tomenu, LyXView const * view)
 		return;
 	}
 
-	lyx::toc::TocList toc_list = lyx::toc::getTocList(view->buffer());
+	lyx::toc::TocList toc_list = lyx::toc::getTocList(*view->buffer());
 	lyx::toc::TocList::const_iterator cit = toc_list.begin();
 	lyx::toc::TocList::const_iterator end = toc_list.end();
 	for (; cit != end; ++cit) {
@@ -658,7 +658,7 @@ void expandBranches(Menu & tomenu, LyXView const * view)
 
 	std::list<Branch>::const_iterator cit = params.branchlist.begin();
 	std::list<Branch>::const_iterator end = params.branchlist.end();
-	
+
 	for (int ii = 1; cit != end; ++cit, ++ii) {
 		string label = cit->getBranch();
 		int const action = lyxaction.

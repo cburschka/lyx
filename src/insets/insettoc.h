@@ -35,17 +35,17 @@ public:
 	///
 	dispatch_result localDispatch(FuncRequest const & cmd);
 	///
-	string const getScreenLabel(Buffer const *) const;
+	string const getScreenLabel(Buffer const &) const;
 	///
 	EDITABLE editable() const { return IS_EDITABLE; }
 	///
 	InsetOld::Code lyxCode() const;
 	///
-	int ascii(Buffer const *, std::ostream &, int linelen) const;
+	int ascii(Buffer const &, std::ostream &, int linelen) const;
 	///
-	int linuxdoc(Buffer const *, std::ostream &) const;
+	int linuxdoc(Buffer const &, std::ostream &) const;
 	///
-	int docbook(Buffer const *, std::ostream &, bool mixcont) const;
+	int docbook(Buffer const &, std::ostream &, bool mixcont) const;
 private:
 	///
 	mutable unsigned int center_indent_;

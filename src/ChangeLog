@@ -1,3 +1,7 @@
+2003-08-28  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* most files: change to use const Buffer refs
+
 2003-08-27  André Pönitz  <poenitz@gmx.net>
 
 	* BufferView.[Ch]: remove getParentText, implement getParentLanguage
@@ -17,14 +21,14 @@
 	* BufferView_pimpl.[Ch]: to here
 	* frontends/screen.C:
 	* insets/insettabular.C:
-	* insets/insettext.C: adjust  
+	* insets/insettext.C: adjust
 	* rowpainter.[Ch] (paintRows): remove LyXText & argument
 
 2003-08-27  Alfredo Braunstein  <abraunst@libero.it>
 
 	* BufferView.[Ch]:
 	* BufferView_pimpl.[Ch] (updateInset): add an InsetOld * argument
-	
+
 2003-08-26  André Pönitz  <poenitz@gmx.net>
 
 	* paragraph_func.[Ch] (outerPar): new function
@@ -36,7 +40,7 @@
 	* text2.C: remove Inset::par_owner
 
 2003-08-25  Martin Vermeer  <martin.vermeer@hut.fi>
- 
+
 	* lyxrow_funcs.C:
 	* lyxtext.h:
 	* text.C:
@@ -45,8 +49,8 @@
 
 2003-08-25  Alfredo Braunstein  <abraunst@libero.it>
 
-	* text2.C (redoParagraphInternal, redoParagraphs): 
-	* text.C (redoParagraph): add a call to	updateRowPositions at the 
+	* text2.C (redoParagraphInternal, redoParagraphs):
+	* text.C (redoParagraph): add a call to	updateRowPositions at the
 	end of each 'metrics-like' call. Remove all others.
 	(getRow): remove the 'y-computing' version.
 	(getRowNearY): do not compute nor return the real y. Solve the
@@ -61,7 +65,7 @@
 
 	* lyxrow.[Ch]: add x_ and *fill_ members
 
-	* lyxtext.h: 
+	* lyxtext.h:
 	* text.C:
 	* rowpainter.C:
 	* text2.C: adjust/remove prepareToPrint() calls
@@ -100,7 +104,7 @@
 
 	* MenuBackend.C: fix branchlist related crash
 
-2003-08-17  Martin Vermeer  <martin.vermeer@hut.fi>	
+2003-08-17  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* BranchList.[Ch]:
 	* InsetList.[Ch]:
@@ -128,7 +132,7 @@
 2003-08-15  Kayvan A. Sylvan <kayvan@sylvan.com>
 
 	* BufferView_pimpl.C: compile fix
-	
+
 2003-08-15  André Pönitz  <poenitz@gmx.net>
 
 	* rowpainter.C: remove extra metrics calls
@@ -213,7 +217,7 @@
 
 2003-08-05  Alfredo Braunstein  <abraunst@libero.it>
 
-	* text2.C (DEPM): fix part of bug 1255 and 1256 
+	* text2.C (DEPM): fix part of bug 1255 and 1256
 
 2003-08-05  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 

@@ -44,9 +44,9 @@ public:
 	///
 	virtual dispatch_result localDispatch(FuncRequest const & cmd);
 	///
-	void write(Buffer const * buf, std::ostream & os) const;
+	void write(Buffer const & buf, std::ostream & os) const;
 	///
-	void read(Buffer const * buf, LyXLex & lex);
+	void read(Buffer const & buf, LyXLex & lex);
 	///
 	void validate(LaTeXFeatures & features) const;
 	///
@@ -54,16 +54,16 @@ public:
 	///
 	InsetOld::Code lyxCode() const { return InsetOld::WRAP_CODE; }
 	///
-	int latex(Buffer const *, std::ostream &,
+	int latex(Buffer const &, std::ostream &,
 		  LatexRunParams const &) const;
 	///
-	int docbook(Buffer const *, std::ostream &, bool mixcont) const;
+	int docbook(Buffer const &, std::ostream &, bool mixcont) const;
 	///
 	string const editMessage() const;
 	///
 	bool insetAllowed(InsetOld::Code) const;
 	///
-	void addToToc(lyx::toc::TocList &, Buffer const *) const;
+	void addToToc(lyx::toc::TocList &, Buffer const &) const;
 	///
 	bool  showInsetDialog(BufferView *) const;
 	///

@@ -50,18 +50,18 @@ public:
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
 	///
-	void write(Buffer const *, std::ostream &) const;
+	void write(Buffer const &, std::ostream &) const;
 	/// Will not be used when lyxf3
-	void read(Buffer const *, LyXLex & lex);
+	void read(Buffer const &, LyXLex & lex);
 	///
-	int latex(Buffer const *, std::ostream &,
+	int latex(Buffer const &, std::ostream &,
 		  LatexRunParams const &) const;
 	///
-	int ascii(Buffer const *, std::ostream &, int linelen) const;
+	int ascii(Buffer const &, std::ostream &, int linelen) const;
 	///
-	int linuxdoc(Buffer const *, std::ostream &) const;
+	int linuxdoc(Buffer const &, std::ostream &) const;
 	///
-	int docbook(Buffer const *, std::ostream &, bool mixcont) const;
+	int docbook(Buffer const &, std::ostream &, bool mixcont) const;
 	///
 	virtual std::auto_ptr<InsetBase> clone() const;
 	///

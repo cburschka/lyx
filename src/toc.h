@@ -52,13 +52,13 @@ typedef std::vector<TocItem> Toc;
 typedef std::map<string, Toc> TocList;
 
 ///
-TocList const getTocList(Buffer const *);
+TocList const getTocList(Buffer const &);
 
 ///
-std::vector<string> const getTypes(Buffer const *);
+std::vector<string> const getTypes(Buffer const &);
 
 ///
-void asciiTocList(string const &, Buffer const *, std::ostream &);
+void asciiTocList(string const &, Buffer const &, std::ostream &);
 
 /** Given the cmdName of the TOC param, returns the type used
     by ControlToc::getContents() */

@@ -35,11 +35,11 @@ public:
 	/** Currently \bibitem is used as a LyX2.x command,
 	    so we need this method.
 	*/
-	void write(Buffer const *, std::ostream &) const;
+	void write(Buffer const &, std::ostream &) const;
 	///
-	void read(Buffer const *, LyXLex & lex);
+	void read(Buffer const &, LyXLex & lex);
 	///
-	virtual string const getScreenLabel(Buffer const *) const;
+	virtual string const getScreenLabel(Buffer const &) const;
 	///
 	EDITABLE editable() const { return IS_EDITABLE; }
 	///

@@ -111,7 +111,7 @@ void InsetSpecialChar::draw(PainterInfo & pi, int x, int y) const
 
 
 // In lyxf3 this will be just LaTeX
-void InsetSpecialChar::write(Buffer const *, ostream & os) const
+void InsetSpecialChar::write(Buffer const &, ostream & os) const
 {
 	string command;
 	switch (kind_) {
@@ -136,7 +136,7 @@ void InsetSpecialChar::write(Buffer const *, ostream & os) const
 
 
 // This function will not be necessary when lyx3
-void InsetSpecialChar::read(Buffer const *, LyXLex & lex)
+void InsetSpecialChar::read(Buffer const &, LyXLex & lex)
 {
 	lex.nextToken();
 	string const command = lex.getString();
@@ -156,7 +156,7 @@ void InsetSpecialChar::read(Buffer const *, LyXLex & lex)
 }
 
 
-int InsetSpecialChar::latex(Buffer const *, ostream & os,
+int InsetSpecialChar::latex(Buffer const &, ostream & os,
 			    LatexRunParams const &) const
 {
 	switch (kind_) {
@@ -180,7 +180,7 @@ int InsetSpecialChar::latex(Buffer const *, ostream & os,
 }
 
 
-int InsetSpecialChar::ascii(Buffer const *, ostream & os, int) const
+int InsetSpecialChar::ascii(Buffer const &, ostream & os, int) const
 {
 	switch (kind_) {
 	case HYPHENATION:
@@ -200,7 +200,7 @@ int InsetSpecialChar::ascii(Buffer const *, ostream & os, int) const
 }
 
 
-int InsetSpecialChar::linuxdoc(Buffer const *, ostream & os) const
+int InsetSpecialChar::linuxdoc(Buffer const &, ostream & os) const
 {
 	switch (kind_) {
 	case HYPHENATION:
@@ -220,7 +220,7 @@ int InsetSpecialChar::linuxdoc(Buffer const *, ostream & os) const
 }
 
 
-int InsetSpecialChar::docbook(Buffer const *, ostream & os, bool) const
+int InsetSpecialChar::docbook(Buffer const &, ostream & os, bool) const
 {
 	switch (kind_) {
 	case HYPHENATION:

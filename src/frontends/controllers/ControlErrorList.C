@@ -59,10 +59,10 @@ void ControlErrorList::goTo(int item)
 	if (err.par_id == -1)
 		return;
 
-	Buffer * const buf = kernel().buffer();
-	ParIterator pit = buf->getParFromID(err.par_id);
+	Buffer & buf = kernel().buffer();
+	ParIterator pit = buf.getParFromID(err.par_id);
 
-	if (pit == buf->par_iterator_end()) {
+	if (pit == buf.par_iterator_end()) {
 		lyxerr << "par id not found" << endl;
 		return;
 	}

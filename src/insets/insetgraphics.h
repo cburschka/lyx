@@ -42,22 +42,22 @@ public:
 	///
 	EDITABLE editable() const;
 	///
-	void write(Buffer const *, std::ostream &) const;
+	void write(Buffer const &, std::ostream &) const;
 	///
-	void read(Buffer const *, LyXLex & lex);
+	void read(Buffer const &, LyXLex & lex);
 
 	/** returns the number of rows (\n's) of generated tex code.
 	 #fragile == true# means, that the inset should take care about
 	 fragile commands by adding a #\protect# before.
 	 */
-	int latex(Buffer const *, std::ostream &,
+	int latex(Buffer const &, std::ostream &,
 		  LatexRunParams const &) const;
 	///
-	int ascii(Buffer const *, std::ostream &, int linelen) const;
+	int ascii(Buffer const &, std::ostream &, int linelen) const;
 	///
-	int linuxdoc(Buffer const *, std::ostream &) const;
+	int linuxdoc(Buffer const &, std::ostream &) const;
 	///
-	int docbook(Buffer const *, std::ostream &, bool mixcont) const;
+	int docbook(Buffer const &, std::ostream &, bool mixcont) const;
 
 	/** Tell LyX what the latex features you need i.e. what latex packages
 	    you need to be included.
@@ -95,7 +95,7 @@ private:
 	/// Create the options for the latex command.
 	string const createLatexOptions() const;
 	/// Convert the file if needed, and return the location of the file.
-	string const prepareFile(Buffer const * buf, LatexRunParams const &) const;
+	string const prepareFile(Buffer const & buf, LatexRunParams const &) const;
 
 	///
 	InsetGraphicsParams params_;

@@ -42,9 +42,9 @@ public:
 	///
 	InsetCollapsable(InsetCollapsable const & in);
 	///
-	void read(Buffer const *, LyXLex &);
+	void read(Buffer const &, LyXLex &);
 	///
-	void write(Buffer const *, std::ostream &) const;
+	void write(Buffer const &, std::ostream &) const;
 	///
 	void metrics(MetricsInfo &, Dimension &) const;
 	///
@@ -75,14 +75,14 @@ public:
 	///
 	RESULT localDispatch(FuncRequest const &);
 	///
-	int latex(Buffer const *, std::ostream &,
+	int latex(Buffer const &, std::ostream &,
 		  LatexRunParams const &) const;
 	///
-	int ascii(Buffer const *, std::ostream &, int) const;
+	int ascii(Buffer const &, std::ostream &, int) const;
 	///
-	int linuxdoc(Buffer const *, std::ostream &) const;
+	int linuxdoc(Buffer const &, std::ostream &) const;
 	///
-	int docbook(Buffer const *, std::ostream &, bool mixcont) const;
+	int docbook(Buffer const &, std::ostream &, bool mixcont) const;
 	///
 	void validate(LaTeXFeatures & features) const;
 	/// FIXME, document

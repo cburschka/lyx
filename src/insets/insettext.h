@@ -62,9 +62,9 @@ public:
 	/// empty inset to empty par, or just mark as erased
 	void clear(bool just_mark_erased);
 	///
-	void read(Buffer const *, LyXLex &);
+	void read(Buffer const &, LyXLex &);
 	///
-	void write(Buffer const *, std::ostream &) const;
+	void write(Buffer const &, std::ostream &) const;
 	///
 	void metrics(MetricsInfo &, Dimension &) const;
 	///
@@ -85,14 +85,14 @@ public:
 	///
 	RESULT localDispatch(FuncRequest const &);
 	///
-	int latex(Buffer const *, std::ostream &,
+	int latex(Buffer const &, std::ostream &,
 		  LatexRunParams const &) const;
 	///
-	int ascii(Buffer const *, std::ostream &, int linelen) const;
+	int ascii(Buffer const &, std::ostream &, int linelen) const;
 	///
-	int linuxdoc(Buffer const *, std::ostream &) const ;
+	int linuxdoc(Buffer const &, std::ostream &) const ;
 	///
-	int docbook(Buffer const *, std::ostream &, bool mixcont) const ;
+	int docbook(Buffer const &, std::ostream &, bool mixcont) const ;
 	///
 	void validate(LaTeXFeatures & features) const;
 	///
@@ -120,7 +120,7 @@ public:
 	///
 	void init(InsetText const * ins);
 	///
-	void writeParagraphData(Buffer const *, std::ostream &) const;
+	void writeParagraphData(Buffer const &, std::ostream &) const;
 	///
 	void setText(string const &, LyXFont const &);
 	///
@@ -247,7 +247,7 @@ private:
 	///
 	RESULT moveDown(BufferView *);
 	///
-	void setCharFont(Buffer const *, int pos, LyXFont const & font);
+	void setCharFont(Buffer const &, int pos, LyXFont const & font);
 	///
 	bool checkAndActivateInset(BufferView * bv, bool front);
 	///

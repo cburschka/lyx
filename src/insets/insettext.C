@@ -146,7 +146,7 @@ void InsetText::clear(bool just_mark_erased)
 	if (just_mark_erased) {
 		ParagraphList::iterator it = paragraphs.begin();
 		ParagraphList::iterator end = paragraphs.end();
-		for (; it != end; ++it) 
+		for (; it != end; ++it)
 			it->markErased();
 		return;
 	}
@@ -167,32 +167,32 @@ auto_ptr<InsetBase> InsetText::clone() const
 }
 
 
-void InsetText::write(Buffer const * buf, ostream & os) const
+void InsetText::write(Buffer const & buf, ostream & os) const
 {
 	os << "Text\n";
 	writeParagraphData(buf, os);
 }
 
 
-void InsetText::writeParagraphData(Buffer const * buf, ostream & os) const
+void InsetText::writeParagraphData(Buffer const & buf, ostream & os) const
 {
 	ParagraphList::const_iterator it = paragraphs.begin();
 	ParagraphList::const_iterator end = paragraphs.end();
 	Paragraph::depth_type dth = 0;
 	for (; it != end; ++it) {
-		it->write(buf, os, buf->params, dth);
+		it->write(buf, os, buf.params, dth);
 	}
 }
 
 
-void InsetText::read(Buffer const * buf, LyXLex & lex)
+void InsetText::read(Buffer const & buf, LyXLex & lex)
 {
 	string token;
 	Paragraph::depth_type depth = 0;
 
 	clear(false);
 
-	if (buf->params.tracking_changes)
+	if (buf.params.tracking_changes)
 		paragraphs.begin()->trackChanges();
 
 	// delete the initial paragraph
@@ -214,7 +214,7 @@ void InsetText::read(Buffer const * buf, LyXLex & lex)
 		}
 
 		// FIXME: ugly.
-		const_cast<Buffer*>(buf)->readParagraph(lex, token, paragraphs, pit, depth);
+		const_cast<Buffer&>(buf).readParagraph(lex, token, paragraphs, pit, depth);
 	}
 
 	pit = paragraphs.begin();
@@ -838,7 +838,7 @@ InsetOld::RESULT InsetText::localDispatch(FuncRequest const & cmd)
 	case LFUN_DELETE:
 		if (text_.selection.set())
 			text_.cutSelection(true, false);
-		else 
+		else
 			text_.Delete();
 		updflag = true;
 		break;
@@ -907,7 +907,7 @@ InsetOld::RESULT InsetText::localDispatch(FuncRequest const & cmd)
 			string cur_layout = cpar()->layout()->name();
 
 			// Derive layout number from given argument (string)
-			// and current buffer's textclass (number). 
+			// and current buffer's textclass (number).
 			LyXTextClass const & tclass =
 				bv->buffer()->params.getLyXTextClass();
 			string layout = cmd.argument;
@@ -965,7 +965,7 @@ InsetOld::RESULT InsetText::localDispatch(FuncRequest const & cmd)
 }
 
 
-int InsetText::latex(Buffer const * buf, ostream & os,
+int InsetText::latex(Buffer const & buf, ostream & os,
 		     LatexRunParams const & runparams) const
 {
 	TexRow texrow;
@@ -974,7 +974,7 @@ int InsetText::latex(Buffer const * buf, ostream & os,
 }
 
 
-int InsetText::ascii(Buffer const * buf, ostream & os, int linelen) const
+int InsetText::ascii(Buffer const & buf, ostream & os, int linelen) const
 {
 	unsigned int lines = 0;
 
@@ -982,7 +982,7 @@ int InsetText::ascii(Buffer const * buf, ostream & os, int linelen) const
 	ParagraphList::const_iterator end = paragraphs.end();
 	ParagraphList::const_iterator it = beg;
 	for (; it != end; ++it) {
-		string const tmp = buf->asciiParagraph(*it, linelen, it == beg);
+		string const tmp = buf.asciiParagraph(*it, linelen, it == beg);
 		lines += lyx::count(tmp.begin(), tmp.end(), '\n');
 		os << tmp;
 	}
@@ -990,7 +990,7 @@ int InsetText::ascii(Buffer const * buf, ostream & os, int linelen) const
 }
 
 
-int InsetText::linuxdoc(Buffer const * buf, ostream & os) const
+int InsetText::linuxdoc(Buffer const & buf, ostream & os) const
 {
 	ParagraphList::iterator pit = const_cast<ParagraphList&>(paragraphs).begin();
 	ParagraphList::iterator pend = const_cast<ParagraphList&>(paragraphs).end();
@@ -1003,7 +1003,7 @@ int InsetText::linuxdoc(Buffer const * buf, ostream & os) const
 		const string name = pit->layout()->latexname();
 		if (name != "p")
 			sgml::openTag(os, 1, 0, name);
-		buf->simpleLinuxDocOnePar(os, pit, 0);
+		buf.simpleLinuxDocOnePar(os, pit, 0);
 		if (name != "p")
 			sgml::closeTag(os, 1, 0, name);
 	}
@@ -1011,7 +1011,7 @@ int InsetText::linuxdoc(Buffer const * buf, ostream & os) const
 }
 
 
-int InsetText::docbook(Buffer const * buf, ostream & os, bool mixcont) const
+int InsetText::docbook(Buffer const & buf, ostream & os, bool mixcont) const
 {
 	unsigned int lines = 0;
 
@@ -1067,7 +1067,7 @@ int InsetText::docbook(Buffer const * buf, ostream & os, bool mixcont) const
 			break;
 
 		case LATEX_COMMAND:
-			buf->error(ErrorItem(_("Error"), _("LatexType Command not allowed here.\n"), pit->id(), 0, pit->size()));
+			buf.error(ErrorItem(_("Error"), _("LatexType Command not allowed here.\n"), pit->id(), 0, pit->size()));
 			return -1;
 			break;
 
@@ -1119,7 +1119,7 @@ int InsetText::docbook(Buffer const * buf, ostream & os, bool mixcont) const
 			break;
 		}
 
-		buf->simpleDocBookOnePar(os, pit, desc_on, depth + 1 + command_depth);
+		buf.simpleDocBookOnePar(os, pit, desc_on, depth + 1 + command_depth);
 
 		string end_tag;
 		// write closing SGML tags
@@ -1605,7 +1605,7 @@ int InsetText::scroll(bool recursive) const
 }
 
 
-void InsetText::clearSelection(BufferView * bv)
+void InsetText::clearSelection(BufferView *)
 {
 	text_.clearSelection();
 }

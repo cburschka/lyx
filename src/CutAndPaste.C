@@ -68,7 +68,7 @@ CutAndPaste::availableSelections(Buffer const & buffer)
 		ParagraphList::const_iterator pit = pars.begin();
 		ParagraphList::const_iterator pend = pars.end();
 		for (; pit != pend; ++pit) {
-			asciiSel += pit->asString(&buffer, false);
+			asciiSel += pit->asString(buffer, false);
 			if (asciiSel.size() > 25) {
 				asciiSel.replace(22, string::npos, "...");
 				break;

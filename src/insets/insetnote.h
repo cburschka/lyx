@@ -46,9 +46,9 @@ public:
 	///
 	InsetOld::Code lyxCode() const { return InsetOld::NOTE_CODE; }
 	///
-	void write(Buffer const *, std::ostream &) const;
+	void write(Buffer const &, std::ostream &) const;
 	///
-	void read(Buffer const * buf, LyXLex & lex);
+	void read(Buffer const & buf, LyXLex & lex);
 	///
 	void setButtonLabel();
 	///
@@ -58,14 +58,14 @@ public:
 	/// show the note dialog
 	bool showInsetDialog(BufferView * bv) const;
 	///
-	int latex(Buffer const *, std::ostream &,
+	int latex(Buffer const &, std::ostream &,
 			LatexRunParams const &) const;
 	///
-	int linuxdoc(Buffer const *, std::ostream &) const;
+	int linuxdoc(Buffer const &, std::ostream &) const;
 	///
-	int docbook(Buffer const *, std::ostream &, bool) const;
+	int docbook(Buffer const &, std::ostream &, bool) const;
 	///
-	int ascii(Buffer const *, std::ostream &, int) const;
+	int ascii(Buffer const &, std::ostream &, int) const;
 	///
 	void validate(LaTeXFeatures &) const;
 	///

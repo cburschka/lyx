@@ -306,7 +306,7 @@ void BufferView::Pimpl::buffer(Buffer * b)
 	buffer_ = b;
 
 	top_y_ = 0;
-	
+
 	// if we're quitting lyx, don't bother updating stuff
 	if (quitting)
 		return;
@@ -590,7 +590,7 @@ void BufferView::Pimpl::selectionRequested()
 		 text->selection.end != bv_->text->xsel_cache.end))
 	{
 		bv_->text->xsel_cache = text->selection;
-		sel = text->selectionAsString(bv_->buffer(), false);
+		sel = text->selectionAsString(*bv_->buffer(), false);
 	} else if (!text->selection.set()) {
 		sel = string();
 		bv_->text->xsel_cache.set(false);
@@ -988,7 +988,7 @@ bool BufferView::Pimpl::workAreaDispatch(FuncRequest const & ev)
 		screen().hideCursor();
 
 		bool const res = dispatch(ev);
-		
+
 		// see workAreaKeyPress
 		cursor_timeout.restart();
 		screen().showCursor(*bv_);
@@ -1259,14 +1259,14 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev_in)
 		string arg = ev.argument;
 
 		if (arg.empty()) {
-			arg = bv_->getLyXText()->selectionAsString(buffer_,
+			arg = bv_->getLyXText()->selectionAsString(*buffer_,
 								   false);
 
 			// FIXME
 			if (arg.size() > 100 || arg.empty()) {
 				// Get word or selection
 				bv_->getLyXText()->selectWordWhenUnderCursor(lyx::WHOLE_WORD);
-				arg = bv_->getLyXText()->selectionAsString(buffer_, false);
+				arg = bv_->getLyXText()->selectionAsString(*buffer_, false);
 				// FIXME: where is getLyXText()->unselect(bv_) ?
 			}
 		}

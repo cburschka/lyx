@@ -158,7 +158,7 @@ struct Paragraph::Pimpl {
 			     LyXFont const & font,
 			     LyXLayout const & style);
 	///
-	void simpleTeXSpecialChars(Buffer const *, BufferParams const &,
+	void simpleTeXSpecialChars(Buffer const &, BufferParams const &,
 				   std::ostream &, TexRow & texrow,
 				   LatexRunParams const &,
 				   LyXFont & font, LyXFont & running_font,

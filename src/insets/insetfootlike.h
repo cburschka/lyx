@@ -26,7 +26,7 @@ public:
 	///
 	void metrics(MetricsInfo &, Dimension &) const;
 	///
-	void write(Buffer const * buf, std::ostream & os) const;
+	void write(Buffer const & buf, std::ostream & os) const;
 	///
 	bool insetAllowed(InsetOld::Code) const;
 	/** returns true if, when outputing LaTeX, font changes should

@@ -1,11 +1,14 @@
+2003-08-28  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
-2003-08-16  Martin Vermeer  <martin.vermeer@hut.fi>	
+	* most files: change to use const buffer refs.
+
+2003-08-16  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* ControlBranch.[Ch]:
 	* ControlDocument.C:
 	* Makefile.am: implements the 'branch
-	inset' idea. This allows the output of various versions of a 
-	document from a single source version, selectively outputing or 
+	inset' idea. This allows the output of various versions of a
+	document from a single source version, selectively outputing or
 	suppressing output of parts of the text.
 	This implementation contains a 'branch list editor' in a separate
 	tab of the document settings dialog. Branches are user definable
@@ -38,7 +41,7 @@
 2003-07-30  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* ControlNote.[Ch]: add i18n support.
-	
+
 2003-07-27  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* ControlToc.C (goTo): adjust for lyx::toc

@@ -36,11 +36,11 @@ using std::find;
 
 namespace {
 
-vector<string> const Backends(Buffer const * buffer)
+vector<string> const Backends(Buffer const & buffer)
 {
 	vector<string> v;
-	if (buffer->params.getLyXTextClass().isTeXClassAvailable())
-		v.push_back(BufferFormat(*buffer));
+	if (buffer.params.getLyXTextClass().isTeXClassAvailable())
+		v.push_back(BufferFormat(buffer));
 	v.push_back("text");
 	return v;
 }
@@ -54,7 +54,7 @@ bool Exporter::Export(Buffer * buffer, string const & format,
 	string backend_format;
 	LatexRunParams runparams;
 	runparams.flavor = LatexRunParams::LATEX;
-	vector<string> backends = Backends(buffer);
+	vector<string> backends = Backends(*buffer);
 	if (find(backends.begin(), backends.end(), format) == backends.end()) {
 		for (vector<string>::const_iterator it = backends.begin();
 		     it != backends.end(); ++it) {
@@ -133,11 +133,11 @@ bool Exporter::Preview(Buffer * buffer, string const & format)
 	string result_file;
 	if (!Export(buffer, format, true, result_file))
 		return false;
-	return formats.view(buffer, result_file, format);
+	return formats.view(*buffer, result_file, format);
 }
 
 
-bool Exporter::IsExportable(Buffer const * buffer, string const & format)
+bool Exporter::IsExportable(Buffer const & buffer, string const & format)
 {
 	vector<string> backends = Backends(buffer);
 	for (vector<string>::const_iterator it = backends.begin();
@@ -149,7 +149,7 @@ bool Exporter::IsExportable(Buffer const * buffer, string const & format)
 
 
 vector<Format const *> const
-Exporter::GetExportableFormats(Buffer const * buffer, bool only_viewable)
+Exporter::GetExportableFormats(Buffer const & buffer, bool only_viewable)
 {
 	vector<string> backends = Backends(buffer);
 	vector<Format const *> result =

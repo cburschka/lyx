@@ -56,9 +56,9 @@ public:
 	///
 	virtual EDITABLE editable() const { return IS_EDITABLE; }
 	///
-	virtual void write(Buffer const *, std::ostream &) const;
+	virtual void write(Buffer const &, std::ostream &) const;
 	///
-	virtual void read(Buffer const *, LyXLex & lex);
+	virtual void read(Buffer const &, LyXLex & lex);
 
 	/** returns the number of rows (\n's) of generated tex code.
 	 fragile == true means, that the inset should take care about
@@ -66,14 +66,14 @@ public:
 	 If the free_spc (freespacing) variable is set, then this inset
 	 is in a free-spacing paragraph.
 	 */
-	virtual int latex(Buffer const *, std::ostream &,
+	virtual int latex(Buffer const &, std::ostream &,
 			  LatexRunParams const &) const;
 	/// write ASCII output to the ostream
-	virtual int ascii(Buffer const *, std::ostream &, int linelen) const;
+	virtual int ascii(Buffer const &, std::ostream &, int linelen) const;
 	/// write LinuxDoc output to the ostream
-	virtual int linuxdoc(Buffer const *, std::ostream &) const;
+	virtual int linuxdoc(Buffer const &, std::ostream &) const;
 	/// write DocBook output to the ostream
-	virtual int docbook(Buffer const *, std::ostream &, bool mixcont) const;
+	virtual int docbook(Buffer const &, std::ostream &, bool mixcont) const;
 
 	/// Updates needed features for this inset.
 	virtual void validate(LaTeXFeatures & features) const;
@@ -88,13 +88,13 @@ public:
 	Params const & params() const;
 
 	/// Set the inset parameters.
-	virtual void setParams(Params const &, Buffer const *);
+	virtual void setParams(Params const &, Buffer const &);
 
 	/** update the file represented by the template.
 	    If \param external_in_tmpdir == true, then the generated file is
 	    place in the buffer's temporary directory.
 	*/
-	void updateExternal(string const &, Buffer const *,
+	void updateExternal(string const &, Buffer const &,
 			    bool external_in_tmpdir) const;
 
 private:
@@ -108,7 +108,7 @@ private:
 	    If \param external_in_tmpdir == true, then the generated file is
 	    place in the buffer's temporary directory.
 	*/
-	int write(string const & format, Buffer const *, std::ostream &,
+	int write(string const & format, Buffer const &, std::ostream &,
 		  bool external_in_tmpdir = false) const;
 
 	/// the current params

@@ -85,7 +85,7 @@ protected:
 	/// a wrapper for LyXView::buffer()
 	Buffer * buffer();
 	///
-	Buffer const * buffer() const;
+	Buffer const & buffer() const;
 	/// a wrapper for LyXView::getLyXFunc()
 	LyXFunc & lyxfunc();
 	///

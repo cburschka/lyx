@@ -29,13 +29,13 @@ using std::ostream;
 using std::endl;
 
 
-void InsetNewline::read(Buffer const *, LyXLex &)
+void InsetNewline::read(Buffer const &, LyXLex &)
 {
 	/* Nothing to read */
 }
 
 
-void InsetNewline::write(Buffer const *, ostream & os) const
+void InsetNewline::write(Buffer const &, ostream & os) const
 {
 	os << "\n\\newline \n";
 }
@@ -51,7 +51,7 @@ void InsetNewline::metrics(MetricsInfo & mi, Dimension & dim) const
 }
 
 
-int InsetNewline::latex(Buffer const *, ostream &,
+int InsetNewline::latex(Buffer const &, ostream &,
 			LatexRunParams const &) const
 {
 	lyxerr << "Eek, calling InsetNewline::latex !" << endl;
@@ -59,21 +59,21 @@ int InsetNewline::latex(Buffer const *, ostream &,
 }
 
 
-int InsetNewline::ascii(Buffer const *, ostream & os, int) const
+int InsetNewline::ascii(Buffer const &, ostream & os, int) const
 {
 	os << '\n';
 	return 0;
 }
 
 
-int InsetNewline::linuxdoc(Buffer const *, std::ostream & os) const
+int InsetNewline::linuxdoc(Buffer const &, std::ostream & os) const
 {
 	os << '\n';
 	return 0;
 }
 
 
-int InsetNewline::docbook(Buffer const *, std::ostream & os, bool) const
+int InsetNewline::docbook(Buffer const &, std::ostream & os, bool) const
 {
 	os << '\n';
 	return 0;

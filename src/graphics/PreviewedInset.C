@@ -51,7 +51,7 @@ void PreviewedInset::generatePreview()
 		return;
 
 	Previews & previews = Previews::get();
-	PreviewLoader & loader = previews.loader(view()->buffer());
+	PreviewLoader & loader = previews.loader(*view()->buffer());
 	addPreview(loader);
 	if (!snippet_.empty())
 		loader.startLoading();
@@ -89,7 +89,7 @@ void PreviewedInset::removePreview()
 		return;
 
 	Previews & previews = Previews::get();
-	PreviewLoader & loader = previews.loader(view()->buffer());
+	PreviewLoader & loader = previews.loader(*view()->buffer());
 	loader.remove(snippet_);
 	snippet_.erase();
 	pimage_ = 0;
@@ -104,7 +104,7 @@ bool PreviewedInset::previewReady() const
 
 	if (!pimage_ || snippet_ != pimage_->snippet()) {
 		PreviewLoader & ploader =
-			Previews::get().loader(view()->buffer());
+			Previews::get().loader(*view()->buffer());
 		pimage_ = ploader.preview(snippet_);
 	}
 

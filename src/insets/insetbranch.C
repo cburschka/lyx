@@ -73,14 +73,14 @@ string const InsetBranch::editMessage() const
 }
 
 
-void InsetBranch::write(Buffer const * buf, ostream & os) const
+void InsetBranch::write(Buffer const & buf, ostream & os) const
 {
 	params_.write(os);
 	InsetCollapsable::write(buf, os);
 }
 
 
-void InsetBranch::read(Buffer const * buf, LyXLex & lex)
+void InsetBranch::read(Buffer const & buf, LyXLex & lex)
 {
 	if (lex.isOK()) {
 		lex.next();
@@ -129,7 +129,7 @@ dispatch_result InsetBranch::localDispatch(FuncRequest const & cmd)
 		return DISPATCHED;
 		}
 	case LFUN_INSET_EDIT:
-		if (cmd.button() != mouse_button::button3) 
+		if (cmd.button() != mouse_button::button3)
 			return InsetCollapsable::localDispatch(cmd);
 		return UNDISPATCHED;
 	case LFUN_INSET_DIALOG_UPDATE:
@@ -148,35 +148,35 @@ dispatch_result InsetBranch::localDispatch(FuncRequest const & cmd)
 
 
 
-int InsetBranch::latex(Buffer const * buf, ostream & os,
+int InsetBranch::latex(Buffer const & buf, ostream & os,
 	LatexRunParams const & runparams) const
 {
-	string const branch_sel = buf->params.branchlist.allSelected();
+	string const branch_sel = buf.params.branchlist.allSelected();
 	if (branch_sel.find(params_.branch, 0) != string::npos)
 		return inset.latex(buf, os, runparams);
 	return 0;
 }
 
 
-int InsetBranch::linuxdoc(Buffer const *, std::ostream &) const
-{ 
-	return 0; 
+int InsetBranch::linuxdoc(Buffer const &, std::ostream &) const
+{
+	return 0;
 }
 
 
-int InsetBranch::docbook(Buffer const * buf, std::ostream & os, bool mixcont) const
+int InsetBranch::docbook(Buffer const & buf, std::ostream & os, bool mixcont) const
 {
 	// untested - MV
-	string const branch_sel = buf->params.branchlist.allSelected();
-	if (branch_sel.find(params_.branch, 0) != string::npos) 
+	string const branch_sel = buf.params.branchlist.allSelected();
+	if (branch_sel.find(params_.branch, 0) != string::npos)
 		return inset.docbook(buf, os, mixcont);
 	return 0;
 }
 
 
-int InsetBranch::ascii(Buffer const * buf, std::ostream & os, int ll) const
+int InsetBranch::ascii(Buffer const & buf, std::ostream & os, int ll) const
 {
-	string const branch_sel = buf->params.branchlist.allSelected();
+	string const branch_sel = buf.params.branchlist.allSelected();
 	if (branch_sel.find(params_.branch, 0) != string::npos) {
 		return inset.ascii(buf, os, ll);
 	}
@@ -260,4 +260,3 @@ void InsetBranchParams::read(LyXLex & lex)
 		branch = lex.getString();
 	}
 }
-

@@ -78,7 +78,7 @@ dispatch_result InsetLabel::localDispatch(FuncRequest const & cmd)
 }
 
 
-int InsetLabel::latex(Buffer const *, ostream & os,
+int InsetLabel::latex(Buffer const &, ostream & os,
 		      LatexRunParams const &) const
 {
 	os << escape(getCommand());
@@ -86,21 +86,21 @@ int InsetLabel::latex(Buffer const *, ostream & os,
 }
 
 
-int InsetLabel::ascii(Buffer const *, ostream & os, int) const
+int InsetLabel::ascii(Buffer const &, ostream & os, int) const
 {
 	os << '<' << getContents()  << '>';
 	return 0;
 }
 
 
-int InsetLabel::linuxdoc(Buffer const *, ostream & os) const
+int InsetLabel::linuxdoc(Buffer const &, ostream & os) const
 {
 	os << "<label id=\"" << getContents() << "\" >";
 	return 0;
 }
 
 
-int InsetLabel::docbook(Buffer const *, ostream & os, bool) const
+int InsetLabel::docbook(Buffer const &, ostream & os, bool) const
 {
 	os << "<anchor id=\"" << getContents() << "\">";
 	return 0;

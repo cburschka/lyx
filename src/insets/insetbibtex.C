@@ -92,13 +92,13 @@ dispatch_result InsetBibtex::localDispatch(FuncRequest const & cmd)
 
 }
 
-string const InsetBibtex::getScreenLabel(Buffer const *) const
+string const InsetBibtex::getScreenLabel(Buffer const &) const
 {
 	return _("BibTeX Generated References");
 }
 
 
-int InsetBibtex::latex(Buffer const * buffer, ostream & os,
+int InsetBibtex::latex(Buffer const & buffer, ostream & os,
 		       LatexRunParams const & runparams) const
 {
 	// changing the sequence of the commands
@@ -120,8 +120,8 @@ int InsetBibtex::latex(Buffer const * buffer, ostream & os,
 	}
 
 	if (!runparams.nice
-	    && IsFileReadable(MakeAbsPath(style, buffer->filePath()) + ".bst")) {
-		style = MakeAbsPath(style, buffer->filePath());
+	    && IsFileReadable(MakeAbsPath(style, buffer.filePath()) + ".bst")) {
+		style = MakeAbsPath(style, buffer.filePath());
 	}
 
 	if (!style.empty()) { // we want no \biblio...{}
@@ -134,9 +134,9 @@ int InsetBibtex::latex(Buffer const * buffer, ostream & os,
 		// part of its name, because it's than book.
 		// For the "official" lyx-layouts it's no problem to support
 		// all well
-		if (!contains(buffer->params.getLyXTextClass().name(),
+		if (!contains(buffer.params.getLyXTextClass().name(),
 			      "art")) {
-			if (buffer->params.sides == LyXTextClass::OneSide) {
+			if (buffer.params.sides == LyXTextClass::OneSide) {
 				// oneside
 				os << "\\clearpage";
 			} else {
@@ -160,8 +160,8 @@ int InsetBibtex::latex(Buffer const * buffer, ostream & os,
 	string db_out;
 	while (!adb.empty()) {
 		if (!runparams.nice &&
-		    IsFileReadable(MakeAbsPath(adb, buffer->filePath())+".bib"))
-			 adb = os::external_path(MakeAbsPath(adb, buffer->filePath()));
+		    IsFileReadable(MakeAbsPath(adb, buffer.filePath())+".bib"))
+			 adb = os::external_path(MakeAbsPath(adb, buffer.filePath()));
 		db_out += adb;
 		db_out += ',';
 		db_in = split(db_in, adb,',');
@@ -198,11 +198,10 @@ vector<string> const InsetBibtex::getFiles(Buffer const & buffer) const
 
 
 // This method returns a comma separated list of Bibtex entries
-void InsetBibtex::fillWithBibKeys(Buffer const * buffer,
+void InsetBibtex::fillWithBibKeys(Buffer const & buffer,
 				  std::vector<std::pair<string, string> > & keys) const
 {
-	Assert(buffer);
-	vector<string> const files = getFiles(*buffer);
+	vector<string> const files = getFiles(buffer);
 	for (vector<string>::const_iterator it = files.begin();
 	     it != files.end(); ++ it) {
 		// This is a _very_ simple parser for Bibtex database

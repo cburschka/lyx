@@ -62,7 +62,7 @@ int getEndLabel(ParagraphList::iterator pit,
 		ParagraphList const & plist);
 
 
-void latexParagraphs(Buffer const * buf,
+void latexParagraphs(Buffer const & buf,
 		     ParagraphList const & paragraphs,
 		     std::ostream & ofs,
 		     TexRow & texrow,

@@ -41,14 +41,14 @@ InsetCaption::InsetCaption(BufferParams const & bp)
 }
 
 
-void InsetCaption::write(Buffer const * buf, ostream & os) const
+void InsetCaption::write(Buffer const & buf, ostream & os) const
 {
 	os << "Caption\n";
 	writeParagraphData(buf, os);
 }
 
 
-void InsetCaption::read(Buffer const * buf, LyXLex & lex)
+void InsetCaption::read(Buffer const & buf, LyXLex & lex)
 {
 #if 0
 	// We will enably this check again when the compability
@@ -104,7 +104,7 @@ void InsetCaption::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-int InsetCaption::latex(Buffer const * buf, ostream & os,
+int InsetCaption::latex(Buffer const & buf, ostream & os,
 			LatexRunParams const & runparams) const
 {
 	// This is a bit too simplistic to take advantage of
@@ -119,7 +119,7 @@ int InsetCaption::latex(Buffer const * buf, ostream & os,
 }
 
 
-int InsetCaption::ascii(Buffer const * /*buf*/,
+int InsetCaption::ascii(Buffer const & /*buf*/,
 			ostream & /*os*/, int /*linelen*/) const
 {
 	// FIX: Implement me!
@@ -127,7 +127,7 @@ int InsetCaption::ascii(Buffer const * /*buf*/,
 }
 
 
-int InsetCaption::docbook(Buffer const * buf, ostream & os, bool mixcont) const
+int InsetCaption::docbook(Buffer const & buf, ostream & os, bool mixcont) const
 {
 	int ret;
 	os << "<title>";

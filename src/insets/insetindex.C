@@ -39,7 +39,7 @@ InsetIndex::~InsetIndex()
 }
 
 
-string const InsetIndex::getScreenLabel(Buffer const *) const
+string const InsetIndex::getScreenLabel(Buffer const &) const
 {
 	return _("Idx");
 }
@@ -73,7 +73,7 @@ dispatch_result InsetIndex::localDispatch(FuncRequest const & cmd)
 }
 
 
-int InsetIndex::docbook(Buffer const *, ostream & os, bool) const
+int InsetIndex::docbook(Buffer const &, ostream & os, bool) const
 {
 	os << "<indexterm><primary>" << getContents()
 	   << "</primary></indexterm>";
@@ -102,7 +102,7 @@ InsetPrintIndex::~InsetPrintIndex()
 {}
 
 
-string const InsetPrintIndex::getScreenLabel(Buffer const *) const
+string const InsetPrintIndex::getScreenLabel(Buffer const &) const
 {
 	return _("Index");
 }

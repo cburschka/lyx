@@ -36,18 +36,18 @@ public:
 	void draw(PainterInfo & pi, int x, int y) const;
 
 	///
-	void read(Buffer const *, LyXLex & lex);
+	void read(Buffer const &, LyXLex & lex);
 	///
-	void write(Buffer const *, std::ostream & os) const;
+	void write(Buffer const &, std::ostream & os) const;
 	///
-	int ascii(Buffer const *, std::ostream &, int linelen) const;
+	int ascii(Buffer const &, std::ostream &, int linelen) const;
 	///
-	int latex(Buffer const *, std::ostream & os,
+	int latex(Buffer const &, std::ostream & os,
 		  LatexRunParams const &) const;
 	///
-	int linuxdoc(Buffer const *, std::ostream & os) const;
+	int linuxdoc(Buffer const &, std::ostream & os) const;
 	///
-	int docbook(Buffer const *, std::ostream &, bool mixcont) const;
+	int docbook(Buffer const &, std::ostream &, bool mixcont) const;
 
 	///
 	virtual std::auto_ptr<InsetBase> clone() const;

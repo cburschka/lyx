@@ -54,7 +54,7 @@ dispatch_result InsetUrl::localDispatch(FuncRequest const & cmd)
 }
 
 
-string const InsetUrl::getScreenLabel(Buffer const *) const
+string const InsetUrl::getScreenLabel(Buffer const &) const
 {
 	string temp;
 	if (getCmdName() == "url")
@@ -78,7 +78,7 @@ string const InsetUrl::getScreenLabel(Buffer const *) const
 }
 
 
-int InsetUrl::latex(Buffer const *, ostream & os,
+int InsetUrl::latex(Buffer const &, ostream & os,
 		    LatexRunParams const & runparams) const
 {
 	if (!getOptions().empty())
@@ -90,7 +90,7 @@ int InsetUrl::latex(Buffer const *, ostream & os,
 }
 
 
-int InsetUrl::ascii(Buffer const *, ostream & os, int) const
+int InsetUrl::ascii(Buffer const &, ostream & os, int) const
 {
 	if (getOptions().empty())
 		os << '[' << getContents() << ']';
@@ -100,7 +100,7 @@ int InsetUrl::ascii(Buffer const *, ostream & os, int) const
 }
 
 
-int InsetUrl::linuxdoc(Buffer const *, ostream & os) const
+int InsetUrl::linuxdoc(Buffer const &, ostream & os) const
 {
 	os << '<' << getCmdName()
 	   << " url=\""  << getContents() << "\""
@@ -110,7 +110,7 @@ int InsetUrl::linuxdoc(Buffer const *, ostream & os) const
 }
 
 
-int InsetUrl::docbook(Buffer const *, ostream & os, bool) const
+int InsetUrl::docbook(Buffer const &, ostream & os, bool) const
 {
 	os << "<ulink url=\"" << subst(getContents(),"&","&amp;")
 	   << "\">" << getOptions() << "</ulink>";

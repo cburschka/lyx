@@ -46,14 +46,14 @@ auto_ptr<InsetBase> InsetEnvironment::clone() const
 }
 
 
-void InsetEnvironment::write(Buffer const * buf, ostream & os) const
+void InsetEnvironment::write(Buffer const & buf, ostream & os) const
 {
 	os << "Environment " << getInsetName() << "\n";
 	InsetText::write(buf, os);
 }
 
 
-void InsetEnvironment::read(Buffer const * buf, LyXLex & lex)
+void InsetEnvironment::read(Buffer const & buf, LyXLex & lex)
 {
 	InsetText::read(buf, lex);
 }
@@ -65,7 +65,7 @@ string const InsetEnvironment::editMessage() const
 }
 
 
-int InsetEnvironment::latex(Buffer const * buf, ostream & os,
+int InsetEnvironment::latex(Buffer const & buf, ostream & os,
 			    LatexRunParams const & runparams) const
 {
 	os << layout_->latexheader;

@@ -33,16 +33,16 @@ public:
 	/// small wrapper for the time being
 	virtual dispatch_result localDispatch(FuncRequest const & cmd);
 	///
-	string const getScreenLabel(Buffer const *) const;
+	string const getScreenLabel(Buffer const &) const;
 	///
 	EDITABLE editable() const { return IS_EDITABLE; }
 	///
 	InsetOld::Code lyxCode() const { return InsetOld::BIBTEX_CODE; }
 	///
-	int latex(Buffer const *, std::ostream &,
+	int latex(Buffer const &, std::ostream &,
 		  LatexRunParams const &) const;
 	///
-	void fillWithBibKeys(Buffer const * buffer,
+	void fillWithBibKeys(Buffer const & buffer,
 		std::vector<std::pair<string,string> > & keys) const;
 	///
 	std::vector<string> const getFiles(Buffer const &) const;

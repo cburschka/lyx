@@ -116,7 +116,7 @@ auto_ptr<InsetBase> InsetFormula::clone() const
 }
 
 
-void InsetFormula::write(Buffer const *, ostream & os) const
+void InsetFormula::write(Buffer const &, ostream & os) const
 {
 	WriteStream wi(os, false, false);
 	os << par_->fileInsetLabel() << ' ';
@@ -124,7 +124,7 @@ void InsetFormula::write(Buffer const *, ostream & os) const
 }
 
 
-int InsetFormula::latex(Buffer const *, ostream & os,
+int InsetFormula::latex(Buffer const &, ostream & os,
 			LatexRunParams const & runparams) const
 {
 	WriteStream wi(os, runparams.moving_arg, true);
@@ -133,7 +133,7 @@ int InsetFormula::latex(Buffer const *, ostream & os,
 }
 
 
-int InsetFormula::ascii(Buffer const *, ostream & os, int) const
+int InsetFormula::ascii(Buffer const &, ostream & os, int) const
 {
 	if (0 && display()) {
 		Dimension dim;
@@ -153,13 +153,13 @@ int InsetFormula::ascii(Buffer const *, ostream & os, int) const
 }
 
 
-int InsetFormula::linuxdoc(Buffer const * buf, ostream & os) const
+int InsetFormula::linuxdoc(Buffer const & buf, ostream & os) const
 {
 	return docbook(buf, os, false);
 }
 
 
-int InsetFormula::docbook(Buffer const * buf, ostream & os, bool) const
+int InsetFormula::docbook(Buffer const & buf, ostream & os, bool) const
 {
 	MathMLStream ms(os);
 	ms << MTag("equation");
@@ -176,7 +176,7 @@ int InsetFormula::docbook(Buffer const * buf, ostream & os, bool) const
 }
 
 
-void InsetFormula::read(Buffer const *, LyXLex & lex)
+void InsetFormula::read(Buffer const &, LyXLex & lex)
 {
 	mathed_parse_normal(par_, lex);
 	// remove extra 'mathrm' for chemistry stuff.

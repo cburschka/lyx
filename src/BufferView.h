@@ -66,10 +66,10 @@ public:
 
 	/// return the visible top y
 	int top_y() const;
-	
+
 	/// set the visible top y
- 	void top_y(int);
-	
+	void top_y(int);
+
 	/// resize event has happened
 	void resize();
 

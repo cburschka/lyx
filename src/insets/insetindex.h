@@ -32,13 +32,13 @@ public:
 	///
 	dispatch_result localDispatch(FuncRequest const & cmd);
 	///
-	string const getScreenLabel(Buffer const *) const;
+	string const getScreenLabel(Buffer const &) const;
 	///
 	EDITABLE editable() const { return IS_EDITABLE; }
 	///
 	InsetOld::Code lyxCode() const;
 	///
-	int docbook(Buffer const *, std::ostream &, bool mixcont) const;
+	int docbook(Buffer const &, std::ostream &, bool mixcont) const;
 };
 
 
@@ -61,7 +61,7 @@ public:
 	///
 	InsetOld::Code lyxCode() const;
 	///
-	string const getScreenLabel(Buffer const *) const;
+	string const getScreenLabel(Buffer const &) const;
 	///
 	void metrics(MetricsInfo &, Dimension &) const; 
 	///

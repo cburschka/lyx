@@ -84,9 +84,9 @@ Buffer * ControlConnectBase::buffer()
 }
 
 
-Buffer const * ControlConnectBase::buffer() const
+Buffer const & ControlConnectBase::buffer() const
 {
-	return lv_.buffer();
+	return *lv_.buffer();
 }
 
 

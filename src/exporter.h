@@ -34,11 +34,11 @@ public:
 	bool Preview(Buffer * buffer, string const & format);
 	///
 	static
-	bool IsExportable(Buffer const * buffer, string const & format);
+	bool IsExportable(Buffer const & buffer, string const & format);
 	///
 	static
 	std::vector<Format const *> const
-	GetExportableFormats(Buffer const * buffer, bool only_viewable);
+	GetExportableFormats(Buffer const & buffer, bool only_viewable);
 	///
 };
 #endif

@@ -60,7 +60,7 @@ void TextCursor::clearSelection()
 }
 
 
-string const TextCursor::selectionAsString(Buffer const * buffer,
+string const TextCursor::selectionAsString(Buffer const & buffer,
 					bool label) const
 {
 	if (!selection.set())

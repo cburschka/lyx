@@ -22,15 +22,15 @@ public:
 	///
 	InsetEnvironment(InsetEnvironment const &);
 	///
-	void write(Buffer const * buf, std::ostream & os) const;
+	void write(Buffer const & buf, std::ostream & os) const;
 	///
-	void read(Buffer const * buf, LyXLex & lex);
+	void read(Buffer const & buf, LyXLex & lex);
 	///
 	virtual std::auto_ptr<InsetBase> clone() const;
 	///
 	InsetOld::Code lyxCode() const { return InsetOld::ENVIRONMENT_CODE; }
 	///
-	int latex(Buffer const *, std::ostream &,
+	int latex(Buffer const &, std::ostream &,
 		  LatexRunParams const &) const;
 	///
 	string const editMessage() const;

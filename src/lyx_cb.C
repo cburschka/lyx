@@ -434,7 +434,7 @@ string const getPossibleLabel(BufferView const & bv)
 	    lyxrc.label_init_length < 0)
 		text.erase();
 
-	string par_text = pit->asString(bv.buffer(), false);
+	string par_text = pit->asString(*bv.buffer(), false);
 	for (int i = 0; i < lyxrc.label_init_length; ++i) {
 		if (par_text.empty())
 			break;

@@ -199,7 +199,7 @@ InsetOld * createInset(FuncRequest const & cmd)
 			InsetCommandParams icp;
 			InsetCommandMailer::string2params(cmd.argument, icp);
 			InsetCitation * inset = new InsetCitation(icp);
-			inset->setLoadingBuffer(bv->buffer(), false);
+			inset->setLoadingBuffer(*bv->buffer(), false);
 			return inset;
 
 		} else if (name == "ert") {
@@ -210,10 +210,10 @@ InsetOld * createInset(FuncRequest const & cmd)
 			return inset;
 
 		} else if (name == "external") {
-			Buffer const * buffer = cmd.view()->buffer();
+			Buffer const & buffer = *cmd.view()->buffer();
 			InsetExternal::Params iep;
 			InsetExternalMailer::string2params(cmd.argument,
-							   *buffer, iep);
+							   buffer, iep);
 			InsetExternal * inset = new InsetExternal;
 			inset->setParams(iep, buffer);
 			return inset;
@@ -367,7 +367,7 @@ InsetOld * readInset(LyXLex & lex, Buffer const & buf)
 				|| tmptok == "Greyedout") {
 			inset = new InsetNote(buf.params, tmptok);
 		} else if (tmptok == "Branch") {
-			inset = new InsetBranch(buf.params, tmptok); 
+			inset = new InsetBranch(buf.params, tmptok);
 		} else if (tmptok == "Include") {
 			InsetCommandParams p("Include");
 			inset = new InsetInclude(p, buf);
@@ -411,7 +411,7 @@ InsetOld * readInset(LyXLex & lex, Buffer const & buf)
 		}
 
 		if (inset)
-			inset->read(&buf, lex);
+			inset->read(buf, lex);
 	}
 
 	return inset;
