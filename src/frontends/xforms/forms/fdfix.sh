@@ -1,4 +1,4 @@
- #! /bin/sh
+#!/bin/sh
 #
 # \file fdfix.sh
 # Copyright 2002 the LyX Team
