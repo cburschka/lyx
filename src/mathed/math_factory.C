@@ -31,6 +31,7 @@
 #include "math_stackrelinset.h"
 #include "math_substackinset.h"
 #include "math_symbolinset.h"
+#include "math_tabularinset.h"
 #include "math_undersetinset.h"
 #include "math_unknowninset.h"
 #include "math_xarrowinset.h"
@@ -275,6 +276,8 @@ MathAtom createMathInset(string const & s)
 		return MathAtom(new MathSqrtInset);
 	if (s == "root")
 		return MathAtom(new MathRootInset);
+	if (s == "tabular")
+		return MathAtom(new MathTabularInset(s, 1, 1));
 	if (s == "stackrel")
 		return MathAtom(new MathStackrelInset);
 	if (s == "binom" || s == "choose")

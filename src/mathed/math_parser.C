@@ -56,6 +56,7 @@ following hack as starting point to write some macros:
 #include "math_sqrtinset.h"
 #include "math_stringinset.h"
 #include "math_support.h"
+#include "math_tabularinset.h"
 #include "math_xyarrowinset.h"
 
 //#include "insets/insetref.h"
@@ -993,6 +994,13 @@ void Parser::parse1(MathGridInset & grid, unsigned flags,
 				string const valign = parse_verbatim_option() + 'c';
 				string const halign = parse_verbatim_item();
 				cell->push_back(MathAtom(new MathArrayInset(name, valign[0], halign)));
+				parse2(cell->back(), FLAG_END, mode, false);
+			}
+
+			if (name == "tabular") {
+				string const valign = parse_verbatim_option() + 'c';
+				string const halign = parse_verbatim_item();
+				cell->push_back(MathAtom(new MathTabularInset(name, valign[0], halign)));
 				parse2(cell->back(), FLAG_END, mode, false);
 			}
 

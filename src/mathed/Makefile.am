@@ -142,6 +142,8 @@ libmathed_la_SOURCES = \
 	math_support.h \
 	math_symbolinset.C \
 	math_symbolinset.h \
+	math_tabularinset.C \
+	math_tabularinset.h \
 	math_textinset.C \
 	math_textinset.h \
 	math_unknowninset.C \
