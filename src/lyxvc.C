@@ -76,10 +76,24 @@ void LyXVC::buffer(Buffer * buf)
 void LyXVC::registrer()
 {
 	// it is very likely here that the vcs is not created yet...
-	// so... we use RCS as default, later this should perhaps be
-	// a lyxrc option.
 	if (!vcs) {
-		vcs = new RCS(owner_->fileName());
+		string const cvs_entries = "CVS/Entries";
+
+		if (IsFileReadable(cvs_entries)) {
+			lyxerr[Debug::LYXVC]
+				<< "LyXVC: registering "
+				<< MakeDisplayPath(owner_->fileName())
+				<< " with CVS" << endl;
+			vcs = new CVS(cvs_entries, owner_->fileName());
+
+		} else {
+			lyxerr[Debug::LYXVC]
+				<< "LyXVC: registering "
+				<< MakeDisplayPath(owner_->fileName())
+				<< " with RCS" << endl;
+			vcs = new RCS(owner_->fileName());
+		}
+
 		vcs->owner(owner_);
 	}
 
