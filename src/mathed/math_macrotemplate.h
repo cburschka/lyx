@@ -31,8 +31,6 @@ public:
 	///
 	explicit MathMacroTemplate(std::istream & is);
 	///
-	std::auto_ptr<InsetBase> clone() const;
-	///
 	void edit(LCursor & cur, bool left);
 	///
 	EDITABLE editable() const { return HIGHLY_EDITABLE; }
@@ -62,6 +60,7 @@ public:
 	InsetBase::Code lyxCode() const { return MATHMACRO_CODE; }
 
 private:
+	virtual std::auto_ptr<InsetBase> doClone() const;
 	/// prefix in inset
 	std::string prefix() const;
 

@@ -944,7 +944,7 @@ bool Paragraph::simpleTeXOnePar(Buffer const & buf,
 			++column;
 		}
 		if (!asdefault)
-			column += startTeXParParams(bparams, os, 
+			column += startTeXParParams(bparams, os,
 						    runparams.moving_arg);
 	}
 

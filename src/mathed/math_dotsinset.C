@@ -26,7 +26,7 @@ MathDotsInset::MathDotsInset(latexkeys const * key)
 {}
 
 
-auto_ptr<InsetBase> MathDotsInset::clone() const
+auto_ptr<InsetBase> MathDotsInset::doClone() const
 {
 	return auto_ptr<InsetBase>(new MathDotsInset(*this));
 }

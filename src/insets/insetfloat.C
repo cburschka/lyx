@@ -271,7 +271,7 @@ void InsetFloat::validate(LaTeXFeatures & features) const
 }
 
 
-auto_ptr<InsetBase> InsetFloat::clone() const
+auto_ptr<InsetBase> InsetFloat::doClone() const
 {
 	return auto_ptr<InsetBase>(new InsetFloat(*this));
 }

@@ -21,8 +21,6 @@ public:
 	///
 	MathBoxedInset();
 	///
-	std::auto_ptr<InsetBase> clone() const;
-	///
 	void validate(LaTeXFeatures & features) const;
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
@@ -34,6 +32,8 @@ public:
 	void normalize(NormalStream & ns) const;
 	///
 	void infoize(std::ostream & os) const;
+private:
+	virtual std::auto_ptr<InsetBase> doClone() const;
 };
 
 #endif

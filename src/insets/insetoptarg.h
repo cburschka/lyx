@@ -24,9 +24,6 @@ class InsetOptArg : public InsetCollapsable {
 public:
 	InsetOptArg(BufferParams const &);
 
-	InsetOptArg(InsetOptArg const &);
-	/// make a duplicate of this inset
-	virtual std::auto_ptr<InsetBase> clone() const;
 	/// code of the inset
 	InsetOld::Code lyxCode() const { return InsetOld::OPTARG_CODE; }
 	/// return an message upon editing
@@ -40,6 +37,10 @@ public:
 			  OutputParams const &) const;
 	/// Write out tothe .lyx file
 	void write(Buffer const & buf, std::ostream & os) const;
+protected:
+	InsetOptArg(InsetOptArg const &);
+private:
+	virtual std::auto_ptr<InsetBase> doClone() const;
 };
 
 #endif // INSETOPTARG_H

@@ -33,7 +33,7 @@ MathMacro::MathMacro(string const & name, int numargs)
 {}
 
 
-auto_ptr<InsetBase> MathMacro::clone() const
+auto_ptr<InsetBase> MathMacro::doClone() const
 {
 	return auto_ptr<InsetBase>(new MathMacro(*this));
 }

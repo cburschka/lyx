@@ -72,7 +72,7 @@ InsetCharStyle::InsetCharStyle(InsetCharStyle const & in)
 }
 
 
-auto_ptr<InsetBase> InsetCharStyle::clone() const
+auto_ptr<InsetBase> InsetCharStyle::doClone() const
 {
 	return auto_ptr<InsetBase>(new InsetCharStyle(*this));
 }
@@ -122,13 +122,13 @@ void InsetCharStyle::draw(PainterInfo & pi, int x, int y) const
 	int desc = InsetText::descent();
 	if (has_label_)
 		desc -= ascent();
-	
+
 	pi.pain.line(x, y + desc - 4, x, y + desc, params_.labelfont.color());
-	pi.pain.line(x, y + desc, x + dim_.wid - 2, y + desc, 
+	pi.pain.line(x, y + desc, x + dim_.wid - 2, y + desc,
 		params_.labelfont.color());
-	pi.pain.line(x + dim_.wid - 2, y + desc, x + dim_.wid - 2, y + desc - 4, 
+	pi.pain.line(x + dim_.wid - 2, y + desc, x + dim_.wid - 2, y + desc - 4,
 		params_.labelfont.color());
-		
+
 	// the name of the charstyle. Can be toggled.
 	if (has_label_) {
 		LyXFont font(params_.labelfont);
@@ -142,16 +142,16 @@ void InsetCharStyle::draw(PainterInfo & pi, int x, int y) const
 		pi.pain.rectText(x + (dim_.wid - w) / 2, y + desc + a,
 			params_.type, font, LColor::none, LColor::none);
 	}
-	
+
 	// a visual clue when the cursor is inside the inset
 	LCursor & cur = pi.base.bv->cursor();
 	if (cur.isInside(this)) {
 		y -= ascent();
 		pi.pain.line(x, y + 4, x, y, params_.labelfont.color());
 		pi.pain.line(x + 4, y, x, y, params_.labelfont.color());
-		pi.pain.line(x + dim_.wid - 2, y + 4, x + dim_.wid - 2, y, 
+		pi.pain.line(x + dim_.wid - 2, y + 4, x + dim_.wid - 2, y,
 			params_.labelfont.color());
-		pi.pain.line(x + dim_.wid - 6, y, x + dim_.wid - 2, y, 
+		pi.pain.line(x + dim_.wid - 6, y, x + dim_.wid - 2, y,
 			params_.labelfont.color());
 	}
 }
@@ -191,7 +191,7 @@ bool InsetCharStyle::getStatus(LCursor & cur, FuncRequest const & cmd,
 		case LFUN_BREAKPARAGRAPH_SKIP:
 			status.enabled(false);
 			return true;
-			
+
 		default:
 			return InsetCollapsable::getStatus(cur, cmd, status);
 		}

@@ -24,7 +24,7 @@ MathBoldsymbolInset::MathBoldsymbolInset()
 {}
 
 
-auto_ptr<InsetBase> MathBoldsymbolInset::clone() const
+auto_ptr<InsetBase> MathBoldsymbolInset::doClone() const
 {
 	return auto_ptr<InsetBase>(new MathBoldsymbolInset(*this));
 }

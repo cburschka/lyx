@@ -21,8 +21,6 @@ public:
 	///
 	MathFboxInset();
 	///
-	std::auto_ptr<InsetBase> clone() const;
-	///
 	mode_type currentMode() const;
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
@@ -34,6 +32,8 @@ public:
 	void normalize(NormalStream & ns) const;
 	///
 	void infoize(std::ostream & os) const;
+private:
+	virtual std::auto_ptr<InsetBase> doClone() const;
 };
 
 #endif

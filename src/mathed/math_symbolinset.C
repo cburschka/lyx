@@ -40,7 +40,7 @@ MathSymbolInset::MathSymbolInset(string const & name)
 {}
 
 
-auto_ptr<InsetBase> MathSymbolInset::clone() const
+auto_ptr<InsetBase> MathSymbolInset::doClone() const
 {
 	return auto_ptr<InsetBase>(new MathSymbolInset(*this));
 }

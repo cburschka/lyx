@@ -25,7 +25,7 @@ MathBigInset::MathBigInset(string const & name, string const & delim)
 {}
 
 
-auto_ptr<InsetBase> MathBigInset::clone() const
+auto_ptr<InsetBase> MathBigInset::doClone() const
 {
 	return auto_ptr<InsetBase>(new MathBigInset(*this));
 }

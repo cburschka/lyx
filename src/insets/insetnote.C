@@ -123,7 +123,7 @@ InsetNote::~InsetNote()
 }
 
 
-auto_ptr<InsetBase> InsetNote::clone() const
+auto_ptr<InsetBase> InsetNote::doClone() const
 {
 	return auto_ptr<InsetBase>(new InsetNote(*this));
 }

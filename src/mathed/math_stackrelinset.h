@@ -25,8 +25,6 @@ public:
 	///
 	MathStackrelInset();
 	///
-	virtual std::auto_ptr<InsetBase> clone() const;
-	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
@@ -35,6 +33,8 @@ public:
 	void write(WriteStream & os) const;
 	///
 	void normalize(NormalStream &) const;
+private:
+	virtual std::auto_ptr<InsetBase> doClone() const;
 };
 
 #endif

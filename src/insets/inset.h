@@ -34,8 +34,6 @@ public:
 	///
 	InsetOld();
 	///
-	InsetOld(InsetOld const & in);
-	///
 	int ascent() const;
 	///
 	int descent() const;
@@ -59,11 +57,15 @@ public:
 	bool forceDefaultParagraphs(InsetBase const * inset) const;
 protected:
 	///
+	InsetOld(InsetOld const & in);
+	///
 	mutable int scx;
 	///
 	mutable Dimension dim_;
 
 private:
+	InsetOld & operator=(InsetOld const &) const;
+	
 	///
 	std::string name_;
 	/** We store the LColor::color value as an int to get LColor.h out
@@ -78,10 +80,10 @@ private:
  *  having to expose inset.h.
  */
 class InsetOld_code {
-	InsetOld::Code val_;
+	InsetBase::Code val_;
 public:
-	InsetOld_code(InsetOld::Code val) : val_(val) {}
-	operator InsetOld::Code() const { return val_; }
+	InsetOld_code(InsetBase::Code val) : val_(val) {}
+	operator InsetBase::Code() const { return val_; }
 };
 
 #endif

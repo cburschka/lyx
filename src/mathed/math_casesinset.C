@@ -25,7 +25,7 @@ MathCasesInset::MathCasesInset(row_type n)
 {}
 
 
-auto_ptr<InsetBase> MathCasesInset::clone() const
+auto_ptr<InsetBase> MathCasesInset::doClone() const
 {
 	return auto_ptr<InsetBase>(new MathCasesInset(*this));
 }

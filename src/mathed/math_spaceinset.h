@@ -23,8 +23,6 @@ public:
 	///
 	explicit MathSpaceInset(std::string const & name);
 	///
-	virtual std::auto_ptr<InsetBase> clone() const;
-	///
 	MathSpaceInset const * asSpaceInset() const { return this; }
 	///
 	MathSpaceInset * asSpaceInset() { return this; }
@@ -54,6 +52,7 @@ public:
 	///
 	void write(WriteStream & os) const;
 private:
+	virtual std::auto_ptr<InsetBase> doClone() const;
 	///
 	int space_;
 };

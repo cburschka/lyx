@@ -23,8 +23,6 @@ public:
 	///
 	InsetBibtex(InsetCommandParams const &);
 	///
-	std::auto_ptr<InsetBase> clone() const;
-	///
 	std::string const getScreenLabel(Buffer const &) const;
 	///
 	EDITABLE editable() const { return IS_EDITABLE; }
@@ -47,8 +45,10 @@ public:
 	///
 	void validate(LaTeXFeatures &) const;
 protected:
-	///
 	virtual void priv_dispatch(LCursor & cur, FuncRequest & cmd);
+private:
+	virtual std::auto_ptr<InsetBase> doClone() const;
+
 };
 
 #endif // INSET_BIBTEX_H

@@ -21,8 +21,6 @@ public:
 	///
 	explicit MathCharInset(char c);
 	///
-	virtual std::auto_ptr<InsetBase> clone() const;
-	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
@@ -47,6 +45,7 @@ public:
 	bool isRelOp() const;
 
 private:
+	virtual std::auto_ptr<InsetBase> doClone() const;
 	/// the character
 	char char_;
 	/// cached width

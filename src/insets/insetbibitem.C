@@ -47,7 +47,7 @@ InsetBibitem::InsetBibitem(InsetCommandParams const & p)
 }
 
 
-auto_ptr<InsetBase> InsetBibitem::clone() const
+auto_ptr<InsetBase> InsetBibitem::doClone() const
 {
 	auto_ptr<InsetBibitem> b(new InsetBibitem(params()));
 	b->setCounter(counter);

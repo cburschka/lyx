@@ -28,8 +28,6 @@ public:
 	///
 	explicit MathKernInset(std::string const & wid);
 	///
-	std::auto_ptr<InsetBase> clone() const;
-	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
@@ -38,6 +36,7 @@ public:
 	///
 	void normalize(NormalStream & ns) const;
 private:
+	virtual std::auto_ptr<InsetBase> doClone() const;
 	/// width in em
 	LyXLength wid_;
 };

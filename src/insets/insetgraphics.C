@@ -167,7 +167,7 @@ InsetGraphics::InsetGraphics(InsetGraphics const & ig)
 }
 
 
-auto_ptr<InsetBase> InsetGraphics::clone() const
+auto_ptr<InsetBase> InsetGraphics::doClone() const
 {
 	return auto_ptr<InsetBase>(new InsetGraphics(*this));
 }

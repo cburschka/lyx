@@ -21,9 +21,7 @@
 class MathMBoxInset : public MathDimInset {
 public:
 	///
-	MathMBoxInset(BufferView & bv);
-	///
-	std::auto_ptr<InsetBase> clone() const;
+	explicit MathMBoxInset(BufferView & bv);
 	/// this stores metrics information in cache_
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	/// draw according to cached metrics
@@ -50,6 +48,8 @@ protected:
 	mutable LyXText text_;
 	///
 	BufferView * const bv_;
+private:
+	virtual std::auto_ptr<InsetBase> doClone() const;
 };
 
 #endif

@@ -44,10 +44,6 @@ class InsetCharStyle : public InsetCollapsable {
 public:
 	///
 	InsetCharStyle(BufferParams const &, CharStyles::iterator);
-	/// Copy constructor
-	InsetCharStyle(InsetCharStyle const &);
-	///
-	virtual std::auto_ptr<InsetBase> clone() const;
 	///
 	std::string const editMessage() const;
 	///
@@ -81,14 +77,15 @@ public:
 	InsetCharStyleParams const & params() const { return params_; }
 
 protected:
-	///
+	InsetCharStyle(InsetCharStyle const &);
 	virtual void priv_dispatch(LCursor & cur, FuncRequest & cmd);
 	///
 	bool getStatus(LCursor & cur, FuncRequest const & cmd, FuncStatus &) const;
 
 private:
-	///
 	friend class InsetCharStyleParams;
+
+	virtual std::auto_ptr<InsetBase> doClone() const;
 
 	/// used by the constructors
 	void init();

@@ -69,7 +69,7 @@ MathArrayInset::MathArrayInset(string const & name, string const & str)
 }
 
 
-auto_ptr<InsetBase> MathArrayInset::clone() const
+auto_ptr<InsetBase> MathArrayInset::doClone() const
 {
 	return auto_ptr<InsetBase>(new MathArrayInset(*this));
 }

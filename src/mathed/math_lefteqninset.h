@@ -22,8 +22,6 @@ public:
 	///
 	MathLefteqnInset();
 	///
-	virtual std::auto_ptr<InsetBase> clone() const;
-	///
 	std::string name() const;
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
@@ -31,5 +29,7 @@ public:
 	void draw(PainterInfo & pi, int x, int y) const;
 	///
 	void infoize(std::ostream & os) const;
+private:
+	virtual std::auto_ptr<InsetBase> doClone() const;
 };
 #endif

@@ -23,7 +23,7 @@ MathSubstackInset::MathSubstackInset()
 {}
 
 
-auto_ptr<InsetBase> MathSubstackInset::clone() const
+auto_ptr<InsetBase> MathSubstackInset::doClone() const
 {
 	return auto_ptr<InsetBase>(new MathSubstackInset(*this));
 }

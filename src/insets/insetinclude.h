@@ -28,11 +28,7 @@ class InsetInclude: public InsetOld {
 public:
 	///
 	InsetInclude(InsetCommandParams const &);
-	InsetInclude(InsetInclude const &);
 	~InsetInclude();
-
-	///
-	virtual std::auto_ptr<InsetBase> clone() const;
 
 	/// Override these InsetButton methods if Previewing
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
@@ -82,9 +78,12 @@ public:
 	///
 	void addPreview(lyx::graphics::PreviewLoader &) const;
 protected:
+	InsetInclude(InsetInclude const &);
 	///
 	virtual void priv_dispatch(LCursor & cur, FuncRequest & cmd);
 private:
+	virtual std::auto_ptr<InsetBase> doClone() const;
+
 	/** Slot receiving a signal that the external file has changed
 	 *  and the preview should be regenerated.
 	 */

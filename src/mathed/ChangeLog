@@ -1,3 +1,13 @@
+2004-11-24  Lars Gullik Bjonnes  <larsbj@gullik.net>
+
+	* math_hullinset.C (operator): use common semantics
+
+2004-11-23  Lars Gullik Bjonnes  <larsbj@gullik.net>
+
+	* math_atom.C (operator): use common semantics
+
+	* Adjust for clone changes
+
 2004-11-22  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* math_hullinset.[Ch] (rowChangeOK): new

@@ -28,8 +28,6 @@ public:
 	///
 	MathExFuncInset(std::string const & name, MathArray const & ar);
 	///
-	virtual std::auto_ptr<InsetBase> clone() const;
-	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
@@ -48,6 +46,7 @@ public:
 	void octave(OctaveStream &) const;
 
 private:
+	virtual std::auto_ptr<InsetBase> doClone() const;
 	///
 	std::string const name_;
 };

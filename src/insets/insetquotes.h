@@ -70,8 +70,6 @@ public:
 	/// Direct access to inner/outer quotation marks
 	InsetQuotes(char c, quote_language l, quote_times t);
 	///
-	virtual std::auto_ptr<InsetBase> clone() const;
-	///
 	void metrics(MetricsInfo &, Dimension &) const;
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
@@ -103,6 +101,8 @@ public:
 	bool isChar() const { return true; }
 
 private:
+	virtual std::auto_ptr<InsetBase> doClone() const;
+
 	///
 	quote_language language_;
 	///

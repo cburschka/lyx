@@ -29,7 +29,7 @@ MathBoxedInset::MathBoxedInset()
 {}
 
 
-auto_ptr<InsetBase> MathBoxedInset::clone() const
+auto_ptr<InsetBase> MathBoxedInset::doClone() const
 {
 	return auto_ptr<InsetBase>(new MathBoxedInset(*this));
 }
@@ -74,4 +74,3 @@ void MathBoxedInset::validate(LaTeXFeatures & features) const
 {
 	features.require("amsmath");
 }
-

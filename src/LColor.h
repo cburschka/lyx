@@ -189,7 +189,7 @@ public:
 	///
 	~LColor();
 	///
-	void operator=(LColor const &);
+	LColor & operator=(LColor);
 
 	/** set the given LyX color to the color defined by the X11 name given
 	 *  \returns true if successful.

@@ -21,8 +21,6 @@ public:
 	///
 	MathFrameboxInset();
 	///
-	virtual std::auto_ptr<InsetBase> clone() const;
-	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
@@ -33,6 +31,7 @@ public:
 	///
 	mode_type currentMode() const { return TEXT_MODE; }
 private:
+	virtual std::auto_ptr<InsetBase> doClone() const;
 	/// width of '[' in current font
 	mutable int w_;
 };

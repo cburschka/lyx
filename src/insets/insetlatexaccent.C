@@ -49,7 +49,7 @@ InsetLatexAccent::InsetLatexAccent(string const & str)
 }
 
 
-auto_ptr<InsetBase> InsetLatexAccent::clone() const
+auto_ptr<InsetBase> InsetLatexAccent::doClone() const
 {
 	return auto_ptr<InsetBase>(new InsetLatexAccent(contents));
 }

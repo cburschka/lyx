@@ -23,10 +23,6 @@ public:
 	///
 	InsetFoot(BufferParams const &);
 	///
-	InsetFoot(InsetFoot const &);
-	///
-	virtual std::auto_ptr<InsetBase> clone() const;
-	///
 	InsetOld::Code lyxCode() const { return InsetOld::FOOT_CODE; }
 	///
 	int latex(Buffer const &, std::ostream &,
@@ -36,6 +32,10 @@ public:
 		    OutputParams const & runparams) const;
 	///
 	std::string const editMessage() const;
+protected:
+	InsetFoot(InsetFoot const &);
+private:
+	virtual std::auto_ptr<InsetBase> doClone() const;
 };
 
 #endif

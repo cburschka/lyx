@@ -45,7 +45,7 @@ public:
 protected:
 	RenderBase() {}
 	RenderBase(RenderBase const &) {}
-	void operator=(RenderBase const &) {}
+	RenderBase & operator=(RenderBase const &) { return *this; }
 
 	/// Cached
 	mutable Dimension dim_;

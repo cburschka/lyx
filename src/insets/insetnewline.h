@@ -20,10 +20,6 @@ public:
 
 	InsetNewline() {}
 
-	virtual std::auto_ptr<InsetBase> clone() const {
-		return std::auto_ptr<InsetBase>(new InsetNewline);
-	}
-
 	InsetOld::Code lyxCode() const { return InsetOld::NEWLINE_CODE; }
 
 	void metrics(MetricsInfo &, Dimension &) const;
@@ -50,6 +46,11 @@ public:
 	/// is this equivalent to a space (which is BTW different from
 	// a line separator)?
 	bool isSpace() const;
+private:
+	virtual std::auto_ptr<InsetBase> doClone() const
+	{
+		return std::auto_ptr<InsetBase>(new InsetNewline);
+	}
 };
 
 #endif // INSET_NEWLINE_H

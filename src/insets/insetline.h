@@ -20,10 +20,6 @@ public:
 
 	InsetLine() {}
 
-	std::auto_ptr<InsetBase> clone() const {
-		return std::auto_ptr<InsetBase>(new InsetLine);
-	}
-
 	InsetOld::Code lyxCode() const { return InsetOld::LINE_CODE; }
 
 	void metrics(MetricsInfo &, Dimension &) const;
@@ -51,6 +47,11 @@ public:
 	bool display() const { return true; }
 	///
 	void validate(LaTeXFeatures & features) const;
+private:
+	virtual std::auto_ptr<InsetBase> doClone() const
+	{
+		return std::auto_ptr<InsetBase>(new InsetLine);
+	}
 };
 
 #endif // INSET_NEWLINE_H

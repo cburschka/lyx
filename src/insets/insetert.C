@@ -72,7 +72,7 @@ InsetERT::InsetERT(InsetERT const & in)
 }
 
 
-auto_ptr<InsetBase> InsetERT::clone() const
+auto_ptr<InsetBase> InsetERT::doClone() const
 {
 	return auto_ptr<InsetBase>(new InsetERT(*this));
 }
@@ -250,7 +250,7 @@ bool InsetERT::getStatus(LCursor & cur, FuncRequest const & cmd,
 		case LFUN_UNDERLINE:
 			status.enabled(false);
 			return true;
-			
+
 		default:
 			return InsetCollapsable::getStatus(cur, cmd, status);
 		}

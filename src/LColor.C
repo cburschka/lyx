@@ -160,10 +160,10 @@ LColor::~LColor()
 {}
 
 
-void LColor::operator=(LColor const & c)
+LColor & LColor::operator=(LColor tmp)
 {
-	LColor tmp(c);
 	boost::swap(pimpl_, tmp.pimpl_);
+	return *this;
 }
 
 

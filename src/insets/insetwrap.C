@@ -169,7 +169,7 @@ void InsetWrap::validate(LaTeXFeatures & features) const
 }
 
 
-auto_ptr<InsetBase> InsetWrap::clone() const
+auto_ptr<InsetBase> InsetWrap::doClone() const
 {
 	return auto_ptr<InsetBase>(new InsetWrap(*this));
 }

@@ -21,8 +21,6 @@ public:
 	///
 	explicit InsetTOC(InsetCommandParams const &);
 	///
-	std::auto_ptr<InsetBase> clone() const;
-	///
 	std::string const getScreenLabel(Buffer const &) const;
 	///
 	EDITABLE editable() const { return IS_EDITABLE; }
@@ -39,6 +37,8 @@ public:
 	///
 	int docbook(Buffer const &, std::ostream &,
 		    OutputParams const &) const;
+private:
+	virtual std::auto_ptr<InsetBase> doClone() const;
 };
 
 #endif

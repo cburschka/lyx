@@ -24,10 +24,6 @@ public:
 	///
 	InsetIndex(InsetCommandParams const &);
 	///
-	virtual std::auto_ptr<InsetBase> clone() const {
-		return std::auto_ptr<InsetBase>(new InsetIndex(params()));
-	}
-	///
 	std::string const getScreenLabel(Buffer const &) const;
 	///
 	EDITABLE editable() const { return IS_EDITABLE; }
@@ -36,6 +32,10 @@ public:
 	///
 	int docbook(Buffer const &, std::ostream &,
 		    OutputParams const &) const;
+private:
+	virtual std::auto_ptr<InsetBase> doClone() const {
+		return std::auto_ptr<InsetBase>(new InsetIndex(params()));
+	}
 };
 
 
@@ -43,10 +43,6 @@ class InsetPrintIndex : public InsetCommand {
 public:
 	///
 	InsetPrintIndex(InsetCommandParams const &);
-	///
-	virtual std::auto_ptr<InsetBase> clone() const {
-		return std::auto_ptr<InsetBase>(new InsetPrintIndex(params()));
-	}
 	/// Updates needed features for this inset.
 	void validate(LaTeXFeatures & features) const;
 	///
@@ -57,6 +53,10 @@ public:
 	bool display() const { return true; }
 	///
 	std::string const getScreenLabel(Buffer const &) const;
+private:
+	virtual std::auto_ptr<InsetBase> doClone() const {
+		return std::auto_ptr<InsetBase>(new InsetPrintIndex(params()));
+	}
 };
 
 #endif

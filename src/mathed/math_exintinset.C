@@ -35,7 +35,7 @@ MathExIntInset::MathExIntInset(string const & name)
 // 3 - upper
 
 
-auto_ptr<InsetBase> MathExIntInset::clone() const
+auto_ptr<InsetBase> MathExIntInset::doClone() const
 {
 	return auto_ptr<InsetBase>(new MathExIntInset(*this));
 }

@@ -23,8 +23,6 @@ public:
 	///
 	explicit MathNumberInset(std::string const & s);
 	///
-	virtual std::auto_ptr<InsetBase> clone() const;
-	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
 	void draw(PainterInfo &, int x, int y) const;
@@ -45,6 +43,7 @@ public:
 	void write(WriteStream & os) const;
 
 private:
+	virtual std::auto_ptr<InsetBase> doClone() const;
 	/// the number as string
 	std::string str_;
 };

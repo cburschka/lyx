@@ -243,7 +243,7 @@ int InsetSpecialChar::docbook(Buffer const &, ostream & os,
 }
 
 
-auto_ptr<InsetBase> InsetSpecialChar::clone() const
+auto_ptr<InsetBase> InsetSpecialChar::doClone() const
 {
 	return auto_ptr<InsetBase>(new InsetSpecialChar(kind_));
 }

@@ -35,12 +35,6 @@ public:
 
 	InsetRef(InsetCommandParams const &, Buffer const &);
 
-	InsetRef(InsetRef const &);
-
-	///
-	virtual std::auto_ptr<InsetBase> clone() const {
-		return std::auto_ptr<InsetBase>(new InsetRef(*this));
-	}
 	///
 	std::string const getScreenLabel(Buffer const &) const;
 	///
@@ -64,9 +58,14 @@ public:
 	///
 	void validate(LaTeXFeatures & features) const;
 protected:
+	InsetRef(InsetRef const &);
+
 	///
 	void priv_dispatch(LCursor & cur, FuncRequest & cmd);
 private:
+	virtual std::auto_ptr<InsetBase> doClone() const {
+		return std::auto_ptr<InsetBase>(new InsetRef(*this));
+	}
 	///
 	bool isLatex;
 };

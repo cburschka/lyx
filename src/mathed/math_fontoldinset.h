@@ -22,8 +22,6 @@ class MathFontOldInset : public MathNestInset {
 public:
 	///
 	explicit MathFontOldInset(latexkeys const * key);
-	///
-	virtual std::auto_ptr<InsetBase> clone() const;
 	/// we are in text mode.
 	mode_type currentMode() const { return TEXT_MODE; }
 	/// we write extra braces in any case...
@@ -44,6 +42,7 @@ public:
 	void infoize(std::ostream & os) const;
 
 private:
+	virtual std::auto_ptr<InsetBase> doClone() const;
 	/// the font to be used on screen
 	latexkeys const * key_;
 };

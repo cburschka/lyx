@@ -28,7 +28,7 @@ MathColorInset::MathColorInset(bool oldstyle)
 {}
 
 
-auto_ptr<InsetBase> MathColorInset::clone() const
+auto_ptr<InsetBase> MathColorInset::doClone() const
 {
 	return auto_ptr<InsetBase>(new MathColorInset(*this));
 }

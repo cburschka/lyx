@@ -25,7 +25,7 @@ MathUnknownInset::MathUnknownInset(string const & nm, bool final, bool black)
 {}
 
 
-auto_ptr<InsetBase> MathUnknownInset::clone() const
+auto_ptr<InsetBase> MathUnknownInset::doClone() const
 {
 	return auto_ptr<InsetBase>(new MathUnknownInset(*this));
 }

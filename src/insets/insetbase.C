@@ -103,6 +103,14 @@ TranslatorMap const build_translator()
 } // namespace anon
 
 
+InsetBase::InsetBase()
+{}
+
+
+InsetBase::InsetBase(InsetBase const &)
+{}
+
+
 InsetBase::Code InsetBase::translate(std::string const & name)
 {
 	static TranslatorMap const translator = build_translator();

@@ -26,7 +26,7 @@ MathEnvInset::MathEnvInset(string const & name)
 {}
 
 
-auto_ptr<InsetBase> MathEnvInset::clone() const
+auto_ptr<InsetBase> MathEnvInset::doClone() const
 {
 	return auto_ptr<InsetBase>(new MathEnvInset(*this));
 }

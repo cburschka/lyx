@@ -23,8 +23,6 @@ public:
 	///
 	MathBraceInset(MathArray const & ar);
 	///
-	std::auto_ptr<InsetBase> clone() const;
-	///
 	MathBraceInset const * asBraceInset() const { return this; }
 	/// we write extra braces in any case...
 	bool extraBraces() const { return true; }
@@ -46,6 +44,8 @@ public:
 	void mathmlize(MathMLStream &) const;
 	///
 	void infoize(std::ostream & os) const;
+private:
+	virtual std::auto_ptr<InsetBase> doClone() const;
 };
 
 #endif

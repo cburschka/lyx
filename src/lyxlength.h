@@ -53,6 +53,12 @@ public:
 	/// "data" must be a decimal number, followed by a unit
 	explicit LyXLength(std::string const & data);
 
+	void swap(LyXLength & rhs)
+	{
+		std::swap(val_, rhs.val_);
+		std::swap(unit_, rhs.unit_);
+	}
+
 	///
 	double value() const;
 	///

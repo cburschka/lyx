@@ -365,7 +365,7 @@ void InsetQuotes::validate(LaTeXFeatures & features) const
 }
 
 
-auto_ptr<InsetBase> InsetQuotes::clone() const
+auto_ptr<InsetBase> InsetQuotes::doClone() const
 {
 	return auto_ptr<InsetBase>(new InsetQuotes(language_, side_, times_));
 }

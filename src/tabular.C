@@ -40,6 +40,9 @@ using lyx::support::rtrim;
 using lyx::support::strToInt;
 using lyx::support::suffixIs;
 
+using boost::shared_ptr;
+using boost::dynamic_pointer_cast;
+
 using std::abs;
 using std::endl;
 using std::getline;
@@ -205,7 +208,7 @@ bool string2type(string const str, bool & num)
 }
 
 
-bool getTokenValue(string const & str, const char * token, string & ret)
+bool getTokenValue(string const & str, char const * token, string & ret)
 {
 	ret.erase();
 	size_t token_length = strlen(token);
@@ -227,7 +230,7 @@ bool getTokenValue(string const & str, const char * token, string & ret)
 }
 
 
-bool getTokenValue(string const & str, const char * token, int & num)
+bool getTokenValue(string const & str, char const * token, int & num)
 {
 	string tmp;
 	num = 0;
@@ -238,14 +241,14 @@ bool getTokenValue(string const & str, const char * token, int & num)
 }
 
 
-bool getTokenValue(string const & str, const char * token, LyXAlignment & num)
+bool getTokenValue(string const & str, char const * token, LyXAlignment & num)
 {
 	string tmp;
 	return getTokenValue(str, token, tmp) && string2type(tmp, num);
 }
 
 
-bool getTokenValue(string const & str, const char * token,
+bool getTokenValue(string const & str, char const * token,
 				   LyXTabular::VAlignment & num)
 {
 	string tmp;
@@ -253,7 +256,7 @@ bool getTokenValue(string const & str, const char * token,
 }
 
 
-bool getTokenValue(string const & str, const char * token,
+bool getTokenValue(string const & str, char const * token,
 				   LyXTabular::BoxType & num)
 {
 	string tmp;
@@ -261,7 +264,7 @@ bool getTokenValue(string const & str, const char * token,
 }
 
 
-bool getTokenValue(string const & str, const char * token, bool & flag)
+bool getTokenValue(string const & str, char const * token, bool & flag)
 {
 	// set the flag always to false as this should be the default for bools
 	// not in the file-format.
@@ -271,7 +274,7 @@ bool getTokenValue(string const & str, const char * token, bool & flag)
 }
 
 
-bool getTokenValue(string const & str, const char * token, LyXLength & len)
+bool getTokenValue(string const & str, char const * token, LyXLength & len)
 {
 	// set the lenght to be zero() as default as this it should be if not
 	// in the file format.
@@ -296,52 +299,95 @@ void l_getline(istream & is, string & str)
 /// Define a few methods for the inner structs
 
 LyXTabular::cellstruct::cellstruct(BufferParams const & bp)
-	: inset(bp)
+	: cellno(0),
+	  width_of_cell(0),
+	  multicolumn(LyXTabular::CELL_NORMAL),
+	  alignment(LYX_ALIGN_CENTER),
+	  valignment(LYX_VALIGN_TOP),
+	  top_line(true),
+	  bottom_line(false),
+	  left_line(true),
+	  right_line(false),
+	  usebox(BOX_NONE),
+	  rotate(false),
+	  inset(new InsetText(bp))
+{}
+
+
+LyXTabular::cellstruct::cellstruct(cellstruct const & cs)
+	: cellno(cs.cellno),
+	  width_of_cell(cs.width_of_cell),
+	  multicolumn(cs.multicolumn),
+	  alignment(cs.alignment),
+	  valignment(cs.valignment),
+	  top_line(cs.top_line),
+	  bottom_line(cs.bottom_line),
+	  left_line(cs.left_line),
+	  right_line(cs.right_line),
+	  usebox(cs.usebox),
+	  rotate(cs.rotate),
+	  align_special(cs.align_special),
+	  p_width(cs.p_width),
+	  inset(dynamic_cast<InsetText*>(cs.inset->clone().release()))
+{}
+
+
+LyXTabular::cellstruct &
+LyXTabular::cellstruct::operator=(cellstruct cs)
 {
-	cellno = 0;
-	width_of_cell = 0;
-	multicolumn = LyXTabular::CELL_NORMAL;
-	alignment = LYX_ALIGN_CENTER;
-	valignment = LYX_VALIGN_TOP;
-	top_line = true;
-	bottom_line = false;
-	left_line = true;
-	right_line = false;
-	usebox = BOX_NONE;
-	rotate = false;
+	swap(cs);
+	return *this;
+}
+
+
+void
+LyXTabular::cellstruct::swap(cellstruct & rhs)
+{
+	std::swap(cellno, rhs.cellno);
+	std::swap(width_of_cell, rhs.width_of_cell);
+	std::swap(multicolumn, rhs.multicolumn);
+	std::swap(alignment, rhs.alignment);
+	std::swap(valignment, rhs.valignment);
+	std::swap(top_line, rhs.top_line);
+	std::swap(bottom_line, rhs.bottom_line);
+	std::swap(left_line, rhs.left_line);
+	std::swap(right_line, rhs.right_line);
+	std::swap(usebox, rhs.usebox);
+	std::swap(rotate, rhs.rotate);
+	std::swap(align_special, rhs.align_special);
+	p_width.swap(rhs.p_width);
+	inset.swap(rhs.inset);
 }
 
 
 LyXTabular::rowstruct::rowstruct()
-{
-	top_line = true;
-	bottom_line = false;
-	ascent_of_row = 0;
-	descent_of_row = 0;
-	endhead = false;
-	endfirsthead = false;
-	endfoot = false;
-	endlastfoot = false;
-	newpage = false;
-}
+	: ascent_of_row(0),
+	  descent_of_row(0),
+	  top_line(true),
+	  bottom_line(false),
+	  endhead(false),
+	  endfirsthead(false),
+	  endfoot(false),
+	  endlastfoot(false),
+	  newpage(false)
+{}
 
 
 LyXTabular::columnstruct::columnstruct()
+	: alignment(LYX_ALIGN_CENTER),
+	  valignment(LYX_VALIGN_TOP),
+	  left_line(true),
+	  right_line(false),
+	  width_of_column(0)
 {
-	left_line = true;
-	right_line = false;
-	alignment = LYX_ALIGN_CENTER;
-	valignment = LYX_VALIGN_TOP;
-	width_of_column = 0;
 }
 
 
 LyXTabular::ltType::ltType()
-{
-	topDL = false;
-	bottomDL = false;
-	empty = false;
-}
+	: topDL(false),
+	  bottomDL(false),
+	  empty(false)
+{}
 
 
 LyXTabular::LyXTabular(BufferParams const & bp, int rows_arg, int columns_arg)
@@ -379,7 +425,7 @@ void LyXTabular::fixCellNums()
 		for (int j = 0; j < columns_; ++j) {
 			// When debugging it can be nice to set
 			// this to true.
-			cell_info[i][j].inset.setDrawFrame(false);
+			cell_info[i][j].inset->setDrawFrame(false);
 			cell_info[i][j].cellno = cellno++;
 		}
 		cell_info[i].back().right_line = true;
@@ -389,11 +435,11 @@ void LyXTabular::fixCellNums()
 }
 
 
-void LyXTabular::appendRow(BufferParams const & bp, int cell)
+void LyXTabular::appendRow(BufferParams const & bp, int const cell)
 {
 	++rows_;
 
-	int row = row_of_cell(cell);
+	int const row = row_of_cell(cell);
 
 	row_vector::iterator rit = row_info.begin() + row;
 	row_info.insert(rit, rowstruct());
@@ -413,13 +459,13 @@ void LyXTabular::appendRow(BufferParams const & bp, int cell)
 
 	if (bp.tracking_changes)
 		for (int j = 0; j < columns_; ++j)
-			cell_info[row + 1][j].inset.markNew(true);
+			cell_info[row + 1][j].inset->markNew(true);
 
 	set_row_column_number_info();
 }
 
 
-void LyXTabular::deleteRow(int row)
+void LyXTabular::deleteRow(int const row)
 {
 	// Not allowed to delete last row
 	if (rows_ == 1)
@@ -432,7 +478,7 @@ void LyXTabular::deleteRow(int row)
 }
 
 
-void LyXTabular::appendColumn(BufferParams const & bp, int cell)
+void LyXTabular::appendColumn(BufferParams const & bp, int const cell)
 {
 	++columns_;
 
@@ -455,15 +501,15 @@ void LyXTabular::appendColumn(BufferParams const & bp, int cell)
 	}
 	//++column;
 	for (int i = 0; i < rows_; ++i) {
-		cell_info[i][column + 1].inset.clear(false);
+		cell_info[i][column + 1].inset->clear(false);
 		if (bp.tracking_changes)
-			cell_info[i][column + 1].inset.markNew(true);
+			cell_info[i][column + 1].inset->markNew(true);
 	}
 	fixCellNums();
 }
 
 
-void LyXTabular::deleteColumn(int column)
+void LyXTabular::deleteColumn(int const column)
 {
 	// Not allowed to delete last column
 	if (columns_ == 1)
@@ -514,7 +560,7 @@ void LyXTabular::set_row_column_number_info()
 		for (int column = 0; column < columns_; ++column) {
 			if (isPartOfMultiColumn(row,column))
 				continue;
-			cell_info[row][column].inset.setAutoBreakRows(
+			cell_info[row][column].inset->setAutoBreakRows(
 				!getPWidth(getCellNumber(row, column)).zero());
 		}
 	}
@@ -527,7 +573,7 @@ int LyXTabular::getNumberOfCells() const
 }
 
 
-int LyXTabular::numberOfCellsInRow(int cell) const
+int LyXTabular::numberOfCellsInRow(int const cell) const
 {
 	int const row = row_of_cell(cell);
 	int result = 0;
@@ -539,7 +585,7 @@ int LyXTabular::numberOfCellsInRow(int cell) const
 
 
 // returns 1 if there is a topline, returns 0 if not
-bool LyXTabular::topLine(int cell, bool onlycolumn) const
+bool LyXTabular::topLine(int const cell, bool const onlycolumn) const
 {
 	if (!onlycolumn && isMultiColumn(cell))
 		return cellinfo_of_cell(cell).top_line;
@@ -813,7 +859,7 @@ void LyXTabular::setColumnPWidth(int cell, LyXLength const & width)
 	for (int i = 0; i < rows_; ++i) {
 		int const cell = getCellNumber(i, j);
 		// because of multicolumns
-		getCellInset(cell).setAutoBreakRows(!getPWidth(cell).zero());
+		getCellInset(cell)->setAutoBreakRows(!getPWidth(cell).zero());
 	}
 }
 
@@ -824,7 +870,7 @@ bool LyXTabular::setMColumnPWidth(int cell, LyXLength const & width)
 		return false;
 
 	cellinfo_of_cell(cell).p_width = width;
-	getCellInset(cell).setAutoBreakRows(!width.zero());
+	getCellInset(cell)->setAutoBreakRows(!width.zero());
 	return true;
 }
 
@@ -1125,7 +1171,7 @@ void LyXTabular::write(Buffer const & buf, ostream & os) const
 			   << write_attribute("special", cell_info[i][j].align_special)
 			   << ">\n";
 			os << "\\begin_inset ";
-			cell_info[i][j].inset.write(buf, os);
+			cell_info[i][j].inset->write(buf, os);
 			os << "\n\\end_inset\n"
 			   << "</cell>\n";
 		}
@@ -1325,7 +1371,7 @@ void LyXTabular::read(Buffer const & buf, LyXLex & lex)
 			getTokenValue(line, "special", cell_info[i][j].align_special);
 			l_getline(is, line);
 			if (prefixIs(line, "\\begin_inset")) {
-				cell_info[i][j].inset.read(buf, lex);
+				cell_info[i][j].inset->read(buf, lex);
 				l_getline(is, line);
 			}
 			if (!prefixIs(line, "</cell>")) {
@@ -1378,8 +1424,8 @@ void LyXTabular::setMultiColumn(Buffer * buffer, int cell, int number)
 	for (int i = 1; i < number; ++i) {
 		cellstruct & cs1 = cellinfo_of_cell(cell + i);
 		cs1.multicolumn = CELL_PART_OF_MULTICOLUMN;
-		cs.inset.appendParagraphs(buffer, cs1.inset.paragraphs());
-		cs1.inset.clear(false);
+		cs.inset->appendParagraphs(buffer, cs1.inset->paragraphs());
+		cs1.inset->clear(false);
 	}
 	set_row_column_number_info();
 }
@@ -1987,24 +2033,23 @@ bool LyXTabular::isValidRow(int row) const
 int LyXTabular::TeXRow(ostream & os, int i, Buffer const & buf,
 		       OutputParams const & runparams) const
 {
-	int ret = 0;
 	int cell = getCellNumber(i, 0);
 
-	ret += TeXTopHLine(os, i);
+	int ret = TeXTopHLine(os, i);
 	for (int j = 0; j < columns_; ++j) {
 		if (isPartOfMultiColumn(i, j))
 			continue;
 		ret += TeXCellPreamble(os, cell);
-		InsetText & inset = getCellInset(cell);
+		shared_ptr<InsetText> inset = getCellInset(cell);
 
-		Paragraph & par = inset.paragraphs().front();
+		Paragraph const & par = inset->paragraphs().front();
 		bool rtl = par.isRightToLeftPar(buf.params())
 			&& !par.empty()
 			&& getPWidth(cell).zero();
 
 		if (rtl)
 			os << "\\R{";
-		ret += inset.latex(buf, os, runparams);
+		ret += inset->latex(buf, os, runparams);
 		if (rtl)
 			os << '}';
 
@@ -2154,9 +2199,9 @@ int LyXTabular::linuxdoc(Buffer const & buf, ostream & os,
 		for (int j = 0; j < columns_; ++j) {
 			if (isPartOfMultiColumn(i, j))
 				continue;
-			InsetText & inset = getCellInset(cell);
+			shared_ptr<InsetText> inset = getCellInset(cell);
 
-			ret += inset.linuxdoc(buf, os, runparams);
+			ret += inset->linuxdoc(buf, os, runparams);
 
 			if (isLastCellInRow(cell)) {
 				os << "@\n";
@@ -2215,7 +2260,7 @@ int LyXTabular::docbookRow(Buffer const & buf, ostream & os, int row,
 		}
 
 		os << '>';
-		ret += getCellInset(cell).docbook(buf, os, runparams);
+		ret += getCellInset(cell)->docbook(buf, os, runparams);
 		os << "</entry>\n";
 		++cell;
 	}
@@ -2412,7 +2457,7 @@ int LyXTabular::asciiPrintCell(Buffer const & buf, ostream & os,
 			       bool onlydata) const
 {
 	ostringstream sstr;
-	int ret = getCellInset(cell).plaintext(buf, sstr, runparams);
+	int const ret = getCellInset(cell)->plaintext(buf, sstr, runparams);
 
 	if (onlydata) {
 		os << sstr.str();
@@ -2476,7 +2521,7 @@ int LyXTabular::plaintext(Buffer const & buf, ostream & os,
 				if (isMultiColumnReal(cell))
 					continue;
 				ostringstream sstr;
-				getCellInset(cell).plaintext(buf, sstr, runparams);
+				getCellInset(cell)->plaintext(buf, sstr, runparams);
 				if (clen[j] < sstr.str().length())
 					clen[j] = sstr.str().length();
 			}
@@ -2488,7 +2533,7 @@ int LyXTabular::plaintext(Buffer const & buf, ostream & os,
 				if (!isMultiColumnReal(cell) || isPartOfMultiColumn(i, j))
 					continue;
 				ostringstream sstr;
-				getCellInset(cell).plaintext(buf, sstr, runparams);
+				getCellInset(cell)->plaintext(buf, sstr, runparams);
 				int len = int(sstr.str().length());
 				int const n = cells_in_multicolumn(cell);
 				for (int k = j; len > 0 && k < j + n - 1; ++k)
@@ -2501,8 +2546,7 @@ int LyXTabular::plaintext(Buffer const & buf, ostream & os,
 	int cell = 0;
 	for (int i = 0; i < rows_; ++i) {
 		if (!onlydata && asciiTopHLine(os, i, clen))
-			for (int j = 0; j < depth; ++j)
-				os << "  ";
+			os << string(depth * 2, ' ');
 		for (int j = 0; j < columns_; ++j) {
 			if (isPartOfMultiColumn(i, j))
 				continue;
@@ -2514,24 +2558,22 @@ int LyXTabular::plaintext(Buffer const & buf, ostream & os,
 		}
 		os << endl;
 		if (!onlydata) {
-			for (int j = 0; j < depth; ++j)
-				os << "  ";
+			os << string(depth * 2, ' ');
 			if (asciiBottomHLine(os, i, clen))
-				for (int j = 0; j < depth; ++j)
-					os << "  ";
+				os << string(depth * 2, ' ');
 		}
 	}
 	return ret;
 }
 
 
-InsetText & LyXTabular::getCellInset(int cell) const
+shared_ptr<InsetText> LyXTabular::getCellInset(int cell) const
 {
 	return cell_info[row_of_cell(cell)][column_of_cell(cell)].inset;
 }
 
 
-InsetText & LyXTabular::getCellInset(int row, int column) const
+shared_ptr<InsetText> LyXTabular::getCellInset(int row, int column) const
 {
 	return cell_info[row][column].inset;
 }
@@ -2546,7 +2588,7 @@ int LyXTabular::getCellFromInset(InsetBase const * inset) const
 	}
 
 	for (int cell = 0, n = getNumberOfCells(); cell < n; ++cell)
-		if (&getCellInset(cell) == inset) {
+		if (getCellInset(cell).get() == inset) {
 			lyxerr[Debug::INSETTEXT] << "LyXTabular::getCellFromInset: "
 				<< "cell=" << cell << endl;
 			return cell;
@@ -2572,7 +2614,7 @@ void LyXTabular::validate(LaTeXFeatures & features) const
 		if (getVAlignment(cell) != LYX_VALIGN_TOP ||
 		     (!getPWidth(cell).zero() && !isMultiColumn(cell)))
 			features.require("array");
-		getCellInset(cell).validate(features);
+		getCellInset(cell)->validate(features);
 	}
 }
 
@@ -2582,13 +2624,13 @@ void LyXTabular::getLabelList(Buffer const & buffer,
 {
 	for (int i = 0; i < rows_; ++i)
 		for (int j = 0; j < columns_; ++j)
-			getCellInset(i, j).getLabelList(buffer, list);
+			getCellInset(i, j)->getLabelList(buffer, list);
 }
 
 
 LyXTabular::BoxType LyXTabular::useParbox(int cell) const
 {
-	ParagraphList const & parlist = getCellInset(cell).paragraphs();
+	ParagraphList const & parlist = getCellInset(cell)->paragraphs();
 	ParagraphList::const_iterator cit = parlist.begin();
 	ParagraphList::const_iterator end = parlist.end();
 

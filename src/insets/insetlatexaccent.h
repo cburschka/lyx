@@ -60,8 +60,6 @@ public:
 	///
 	bool directWrite() const;
 	///
-	virtual std::auto_ptr<InsetBase> clone() const;
-	///
 	InsetOld::Code lyxCode()const;
 	///
 	inline bool canDisplay();
@@ -118,6 +116,9 @@ public:
 	};
 private:
 	friend std::ostream & operator<<(std::ostream &, ACCENT_TYPES);
+
+	virtual std::auto_ptr<InsetBase> doClone() const;
+
 	/// Check if we know the modifier and can display it ok on screen.
 	void checkContents();
 	///

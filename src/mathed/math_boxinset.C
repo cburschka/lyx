@@ -25,7 +25,7 @@ MathBoxInset::MathBoxInset(string const & name)
 {}
 
 
-auto_ptr<InsetBase> MathBoxInset::clone() const
+auto_ptr<InsetBase> MathBoxInset::doClone() const
 {
 	return auto_ptr<InsetBase>(new MathBoxInset(*this));
 }

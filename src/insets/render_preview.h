@@ -84,7 +84,7 @@ public:
 
 private:
 	/// Not implemented.
-	void operator=(RenderPreview const &);
+	RenderPreview & operator=(RenderPreview const &);
 
 	/// This method is connected to the PreviewLoader::imageReady signal.
 	void imageReady(lyx::graphics::PreviewImage const &);

@@ -26,8 +26,6 @@ public:
 	///
 	~InsetVSpace();
 	///
-	std::auto_ptr<InsetBase> clone() const;
-	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
@@ -57,6 +55,8 @@ protected:
 	virtual void priv_dispatch(LCursor & cur, FuncRequest & cmd);
 
 private:
+	virtual std::auto_ptr<InsetBase> doClone() const;
+	
 	///
 	VSpace space_;
 };

@@ -34,7 +34,7 @@ MathKernInset::MathKernInset(string const & s)
 {}
 
 
-auto_ptr<InsetBase> MathKernInset::clone() const
+auto_ptr<InsetBase> MathKernInset::doClone() const
 {
 	return auto_ptr<InsetBase>(new MathKernInset(*this));
 }

@@ -25,7 +25,7 @@ MathNumberInset::MathNumberInset(string const & s)
 {}
 
 
-auto_ptr<InsetBase> MathNumberInset::clone() const
+auto_ptr<InsetBase> MathNumberInset::doClone() const
 {
 	return auto_ptr<InsetBase>(new MathNumberInset(*this));
 }

@@ -39,12 +39,8 @@ class InsetNote : public InsetCollapsable {
 public:
 	///
 	InsetNote(BufferParams const &, std::string const &);
-	/// Copy constructor
-	InsetNote(InsetNote const &);
 	///
 	~InsetNote();
-	///
-	virtual std::auto_ptr<InsetBase> clone() const;
 	///
 	std::string const editMessage() const;
 	///
@@ -74,10 +70,13 @@ public:
 	///
 	InsetNoteParams const & params() const { return params_; }
 protected:
+	InsetNote(InsetNote const &);
 	///
 	virtual void priv_dispatch(LCursor & cur, FuncRequest & cmd);
 private:
 	friend class InsetNoteParams;
+
+	virtual std::auto_ptr<InsetBase> doClone() const;
 
 	/// used by the constructors
 	void init();

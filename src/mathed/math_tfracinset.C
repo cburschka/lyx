@@ -31,7 +31,7 @@ MathTfracInset::MathTfracInset()
 {}
 
 
-auto_ptr<InsetBase> MathTfracInset::clone() const
+auto_ptr<InsetBase> MathTfracInset::doClone() const
 {
 	return auto_ptr<InsetBase>(new MathTfracInset(*this));
 }

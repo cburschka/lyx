@@ -24,8 +24,6 @@ class InsetBibitem : public InsetCommand {
 public:
 	///
 	InsetBibitem(InsetCommandParams const &);
-	///
-	std::auto_ptr<InsetBase> clone() const;
 	/** Currently \bibitem is used as a LyX2.x command,
 	    so we need this method.
 	*/
@@ -53,6 +51,8 @@ protected:
 	///
 	virtual void priv_dispatch(LCursor & cur, FuncRequest & cmd);
 private:
+	virtual std::auto_ptr<InsetBase> doClone() const;
+
 	///
 	int counter;
 	///

@@ -24,16 +24,16 @@ public:
 	///
 	InsetMarginal(BufferParams const &);
 	///
-	InsetMarginal(InsetMarginal const &);
-	///
-	virtual std::auto_ptr<InsetBase> clone() const;
-	///
 	InsetOld::Code lyxCode() const { return InsetOld::MARGIN_CODE; }
 	///
 	int latex(Buffer const &, std::ostream &,
 		  OutputParams const &) const;
 	///
 	std::string const editMessage() const;
+protected:
+	InsetMarginal(InsetMarginal const &);
+private:
+	virtual std::auto_ptr<InsetBase> doClone() const;
 };
 
 #endif

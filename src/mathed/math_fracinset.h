@@ -22,8 +22,6 @@ public:
 	///
 	explicit MathFracInset(bool atop = false);
 	///
-	virtual std::auto_ptr<InsetBase> clone() const;
-	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
 	void draw(PainterInfo &, int x, int y) const;
@@ -49,8 +47,9 @@ public:
 	///
 	void mathmlize(MathMLStream &) const;
 public:
+	virtual std::auto_ptr<InsetBase> doClone() const;
 	///
-	const bool atop_;
+	bool const atop_;
 };
 
 #endif

@@ -33,7 +33,7 @@ MathExFuncInset::MathExFuncInset(string const & name, MathArray const & ar)
 }
 
 
-auto_ptr<InsetBase> MathExFuncInset::clone() const
+auto_ptr<InsetBase> MathExFuncInset::doClone() const
 {
 	return auto_ptr<InsetBase>(new MathExFuncInset(*this));
 }

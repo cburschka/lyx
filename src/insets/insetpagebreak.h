@@ -20,10 +20,6 @@ public:
 
 	InsetPagebreak() {}
 
-	std::auto_ptr<InsetBase> clone() const {
-		return std::auto_ptr<InsetBase>(new InsetPagebreak);
-	}
-
 	InsetOld::Code lyxCode() const { return InsetOld::LINE_CODE; }
 
 	void metrics(MetricsInfo &, Dimension &) const;
@@ -49,6 +45,11 @@ public:
 	bool directWrite() const { return true; }
 
 	bool display() const { return true; }
+private:
+	virtual std::auto_ptr<InsetBase> doClone() const
+	{
+		return std::auto_ptr<InsetBase>(new InsetPagebreak);
+	}
 };
 
 #endif // INSET_NEWLINE_H

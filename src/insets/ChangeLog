@@ -1,3 +1,21 @@
+2004-11-23  Lars Gullik Bjonnes  <larsbj@gullik.net>
+
+	* render_base.h (operator=): use common semantics
+
+	* insettext.C (operator=): delete this
+	(copy constructor): implement this properly
+	(init): use for_each and bind
+	(clear): ditto
+	(appendParagraphs): ditto
+
+	* insettabular.C: add more const. Adjust for changes in tabular.
+
+	* insetbase.h: Use NVI on clone. Add virtual doClone and update
+	all children, also make copy constructor protected. Added some
+	safe-guards to clone.
+
+	* insets: adjust to fit.
+
 2004-11-16  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* insetoptarg.C (latexOptional): return number of lines instead of
@@ -27,14 +45,14 @@
 
 	* insetcharstyle.[Ch]:
 	* insetert.[Ch]: implement getStatus
-	
+
 	* insetcharstyle.C (draw): visual clue when the cursor is inside
 	the inset
 
 2004-11-02  José Matos  <jamatos@lyx.org>
 
 	* insetcharstyle.C (docbook):
-	* insetlabel.C (linuxdoc, docbook):	
+	* insetlabel.C (linuxdoc, docbook):
 	* insetref.C (linuxdoc, docbook): escape chacters in id to produce
 	always legal output.
 
@@ -43,7 +61,7 @@
 
 2004-11-01  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
-	* insetcharstyle.C (priv_dispatch): prevent paragraph breaks 
+	* insetcharstyle.C (priv_dispatch): prevent paragraph breaks
 
 2004-11-01  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
@@ -64,7 +82,7 @@
 	InsetText methods rather than outputVerbatim (escapes special
 	characters) [bug 1731]
 	* insetcharstyle.C (outputVerbatim): remove this function.
-	* insetcharstyle.C (priv_dispatch): fix typo in LFUN_MOUSE_PRESS, 
+	* insetcharstyle.C (priv_dispatch): fix typo in LFUN_MOUSE_PRESS,
 	which caused an infinite loop.
 
 2004-10-29  José Matos  <jamatos@lyx.org>
@@ -97,7 +115,7 @@
 
 2004-10-26  Angus Leeming  <leeming@lyx.org>
 
-	* ExternalSupport.C (updateExternal): 
+	* ExternalSupport.C (updateExternal):
 	* insetgraphics.C (copyFileIfNeeded): use the new Movers to move
 	external files to the temp directory.
 
@@ -2621,7 +2639,7 @@
 
 	* graphicinset.C (draw): add a comment for the #if 0 block.
 
-	* insetexternal.h: remove Params::parameters variable. 
+	* insetexternal.h: remove Params::parameters variable.
 
 	* insetexternal.C (read, write): rewrite to output new ExternalInset
 	format and read it back making full use of LyXLex.
@@ -4472,7 +4490,7 @@
 
 	* insetexternal.C: all c-library variables have been moved into
 	namespace std. Wrap using std::xyz declarations inside a #ifndef
-	CXX_GLOBAL_CSTD block. 
+	CXX_GLOBAL_CSTD block.
 
 2002-06-05  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 

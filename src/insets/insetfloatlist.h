@@ -24,10 +24,6 @@ public:
 	///
 	InsetFloatList(std::string const & type);
 	///
-	virtual std::auto_ptr<InsetBase> clone() const {
-		return std::auto_ptr<InsetBase>(new InsetFloatList(getCmdName()));
-	}
-	///
 	std::string const getScreenLabel(Buffer const &) const;
 	///
 	EDITABLE editable() const { return IS_EDITABLE; }
@@ -53,6 +49,11 @@ public:
 		  OutputParams const & runparams) const;
 	///
 	void validate(LaTeXFeatures & features) const;
+private:
+	virtual std::auto_ptr<InsetBase> doClone() const
+	{
+		return std::auto_ptr<InsetBase>(new InsetFloatList(getCmdName()));
+	}
 };
 
 #endif

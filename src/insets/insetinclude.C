@@ -226,7 +226,7 @@ void InsetInclude::set(InsetCommandParams const & p, Buffer const & buffer)
 }
 
 
-auto_ptr<InsetBase> InsetInclude::clone() const
+auto_ptr<InsetBase> InsetInclude::doClone() const
 {
 	return auto_ptr<InsetBase>(new InsetInclude(*this));
 }

@@ -22,7 +22,7 @@ InsetHFill::InsetHFill()
 {}
 
 
-std::auto_ptr<InsetBase> InsetHFill::clone() const
+std::auto_ptr<InsetBase> InsetHFill::doClone() const
 {
 	return std::auto_ptr<InsetBase>(new InsetHFill);
 }

@@ -47,8 +47,6 @@ public:
 	///
 	void validate(LaTeXFeatures & features) const;
 	///
-	virtual std::auto_ptr<InsetBase> clone() const;
-	///
 	InsetOld::Code lyxCode() const { return InsetOld::WRAP_CODE; }
 	///
 	int latex(Buffer const &, std::ostream &,
@@ -70,6 +68,8 @@ protected:
 	///
 	virtual void priv_dispatch(LCursor & cur, FuncRequest & cmd);
 private:
+	virtual std::auto_ptr<InsetBase> doClone() const;
+
 	///
 	InsetWrapParams params_;
 };

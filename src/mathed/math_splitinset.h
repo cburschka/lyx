@@ -20,14 +20,13 @@ public:
 	///
 	explicit MathSplitInset(std::string const & name);
 	///
-	virtual std::auto_ptr<InsetBase> clone() const;
-	///
 	void write(WriteStream & os) const;
 	///
 	int defaultColSpace(col_type) { return 0; }
 	///
 	char defaultColAlign(col_type);
 private:
+	virtual std::auto_ptr<InsetBase> doClone() const;
 	///
 	std::string name_;
 };

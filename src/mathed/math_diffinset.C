@@ -24,7 +24,7 @@ MathDiffInset::MathDiffInset()
 {}
 
 
-auto_ptr<InsetBase> MathDiffInset::clone() const
+auto_ptr<InsetBase> MathDiffInset::doClone() const
 {
 	return auto_ptr<InsetBase>(new MathDiffInset(*this));
 }

@@ -30,7 +30,7 @@ InsetTOC::InsetTOC(InsetCommandParams const & p)
 {}
 
 
-std::auto_ptr<InsetBase> InsetTOC::clone() const
+std::auto_ptr<InsetBase> InsetTOC::doClone() const
 {
 	return std::auto_ptr<InsetBase>(new InsetTOC(*this));
 }

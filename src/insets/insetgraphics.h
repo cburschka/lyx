@@ -29,8 +29,6 @@ public:
 	///
 	InsetGraphics();
 	///
-	InsetGraphics(InsetGraphics const &);
-	///
 	~InsetGraphics();
 	///
 	void metrics(MetricsInfo &, Dimension &) const;
@@ -65,9 +63,6 @@ public:
 	/// returns LyX code associated with the inset. Used for TOC, ...)
 	InsetOld::Code lyxCode() const { return InsetOld::GRAPHICS_CODE; }
 
-	///
-	virtual std::auto_ptr<InsetBase> clone() const;
-
 	/** Set the inset parameters, used by the GUIndependent dialog.
 	    Return true of new params are different from what was so far.
 	*/
@@ -82,11 +77,13 @@ public:
 	///
 	void editGraphics(InsetGraphicsParams const &, Buffer const &) const;
 protected:
+	InsetGraphics(InsetGraphics const &);
 	///
 	void priv_dispatch(LCursor & cur, FuncRequest & cmd);
 private:
-	///
 	friend class InsetGraphicsMailer;
+
+	virtual std::auto_ptr<InsetBase> doClone() const;
 
 	/// Read the inset native format
 	void readInsetGraphics(LyXLex & lex, std::string const & bufpath);

@@ -22,8 +22,6 @@ public:
 	///
 	MathRootInset();
 	///
-	virtual std::auto_ptr<InsetBase> clone() const;
-	///
 	bool idxUpDown(LCursor & cur, bool up) const;
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
@@ -40,6 +38,8 @@ public:
 	void maple(MapleStream &) const;
 	///
 	void octave(OctaveStream &) const;
+private:
+	virtual std::auto_ptr<InsetBase> doClone() const;
 };
 
 #endif

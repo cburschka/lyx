@@ -64,7 +64,7 @@ MathDelimInset::MathDelimInset
 }
 
 
-auto_ptr<InsetBase> MathDelimInset::clone() const
+auto_ptr<InsetBase> MathDelimInset::doClone() const
 {
 	return auto_ptr<InsetBase>(new MathDelimInset(*this));
 }

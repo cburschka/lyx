@@ -73,8 +73,6 @@ public:
 	int docbook(Buffer const &, std::ostream &,
 		    OutputParams const &) const;
 	///
-	virtual std::auto_ptr<InsetBase> clone() const;
-	///
 	InsetOld::Code lyxCode() const { return InsetOld::SPACE_CODE; }
 	/// We don't need \begin_inset and \end_inset
 	bool directWrite() const { return true; }
@@ -87,6 +85,8 @@ public:
 	// a line separator)?
 	bool isSpace() const;
 private:
+	virtual std::auto_ptr<InsetBase> doClone() const;
+
 	/// And which kind is this?
 	Kind kind_;
 };

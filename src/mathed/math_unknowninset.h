@@ -22,8 +22,6 @@ public:
 	explicit MathUnknownInset(std::string const & name,
 		bool final = true, bool black = false);
 	///
-	std::auto_ptr<InsetBase> clone() const;
-	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
@@ -51,6 +49,7 @@ public:
 	///
 	bool final() const;
 private:
+	virtual std::auto_ptr<InsetBase> doClone() const;
 	///
 	std::string name_;
 	/// are we finished creating the name?

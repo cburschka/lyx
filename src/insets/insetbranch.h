@@ -37,12 +37,8 @@ class InsetBranch : public InsetCollapsable {
 public:
 	///
 	InsetBranch(BufferParams const &, InsetBranchParams const &);
-	/// Copy constructor
-	InsetBranch(InsetBranch const &);
 	///
 	~InsetBranch();
-	///
-	virtual std::auto_ptr<InsetBase> clone() const;
 	///
 	std::string const editMessage() const;
 	///
@@ -80,10 +76,12 @@ public:
 	bool isBranchSelected(BranchList const & branchlist) const;
 
 protected:
-	///
+	InsetBranch(InsetBranch const &);
 	virtual void priv_dispatch(LCursor & cur, FuncRequest & cmd);
 private:
 	friend class InsetBranchParams;
+
+	virtual std::auto_ptr<InsetBase> doClone() const;
 
 	/// used by the constructors
 	void init();

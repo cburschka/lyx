@@ -21,8 +21,6 @@ public:
 	///
 	explicit MathXArrowInset(std::string const & name);
 	///
-	virtual std::auto_ptr<InsetBase> clone() const;
-	///
 	void draw(PainterInfo & pi, int x, int y) const;
 	///
 	void write(WriteStream & os) const;
@@ -32,6 +30,7 @@ public:
 	void normalize(NormalStream & os) const;
 
 private:
+	virtual std::auto_ptr<InsetBase> doClone() const;
 	///
 	bool upper() const;
 	///

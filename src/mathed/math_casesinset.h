@@ -22,8 +22,6 @@ public:
 	///
 	explicit MathCasesInset(row_type rows = 1u);
 	///
-	virtual std::auto_ptr<InsetBase> clone() const;
-	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
@@ -38,6 +36,8 @@ public:
 	void write(WriteStream & os) const;
 	///
 	void validate(LaTeXFeatures & features) const;
+private:
+	virtual std::auto_ptr<InsetBase> doClone() const;
 };
 
 #endif

@@ -12,7 +12,10 @@
 #ifndef INSETBASE_H
 #define INSETBASE_H
 
+#include <boost/assert.hpp>
+
 #include <string>
+#include <typeinfo>
 #include <vector>
 #include <memory>
 
@@ -61,7 +64,13 @@ public:
 	/// virtual base class destructor
 	virtual ~InsetBase() {}
 	/// replicate ourselves
-	virtual std::auto_ptr<InsetBase> clone() const = 0;
+	std::auto_ptr<InsetBase> clone() const
+	{
+		std::auto_ptr<InsetBase> b = doClone();
+		BOOST_ASSERT(typeid(*b) == typeid(*this));
+		return b;
+	}
+
 
 	/// identification as math inset
 	virtual MathInset * asMathInset() { return 0; }
@@ -351,9 +360,6 @@ public:
 	 *  defaults to empty.
 	 */
 	virtual void addPreview(lyx::graphics::PreviewLoader &) const {}
-protected:
-	// the real dispatcher
-	virtual void priv_dispatch(LCursor & cur, FuncRequest & cmd);
 public:
 	/// returns LyX code associated with the inset. Used for TOC, ...)
 	virtual Code lyxCode() const { return NO_CODE; }
@@ -376,6 +382,13 @@ public:
 	virtual int ascent() const { return 10; }
 	/// pretty arbitrary
 	virtual int descent() const { return 10; }
+protected:
+	InsetBase();
+	InsetBase(InsetBase const &);
+	// the real dispatcher
+	virtual void priv_dispatch(LCursor & cur, FuncRequest & cmd);
+private:
+	virtual std::auto_ptr<InsetBase> doClone() const = 0;
 };
 
 

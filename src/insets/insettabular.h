@@ -50,11 +50,7 @@ public:
 	///
 	InsetTabular(Buffer const &, int rows = 1, int columns = 1);
 	///
-	InsetTabular(InsetTabular const &);
-	///
 	~InsetTabular();
-	///
-	virtual std::auto_ptr<InsetBase> clone() const;
 	///
 	void read(Buffer const &, LyXLex &);
 	///
@@ -66,7 +62,7 @@ public:
 	///
 	std::string const editMessage() const;
 	///
-	bool insetAllowed(InsetOld::Code) const { return true; }
+	bool insetAllowed(InsetBase::Code) const { return true; }
 	///
 	bool isTextInset() const { return true; }
 	/** returns true if, when outputing LaTeX, font changes should
@@ -90,7 +86,7 @@ public:
 	///
 	void validate(LaTeXFeatures & features) const;
 	///
-	Code lyxCode() const { return InsetOld::TABULAR_CODE; }
+	Code lyxCode() const { return InsetBase::TABULAR_CODE; }
 	/// get the absolute screen x,y of the cursor
 	void getCursorPos(LCursor const & cur, int & x, int & y) const;
 	///
@@ -107,9 +103,9 @@ public:
 	/// number of cells
 	size_t nargs() const;
 	///
-	InsetText const & cell(int) const;
+	boost::shared_ptr<InsetText const> cell(int) const;
 	///
-	InsetText & cell(int);
+	boost::shared_ptr<InsetText> cell(int);
 	///
 	LyXText * getText(int) const;
 
@@ -141,11 +137,14 @@ public:
 	mutable LyXTabular tabular;
 
 protected:
+	InsetTabular(InsetTabular const &);
 	///
 	void priv_dispatch(LCursor & cur, FuncRequest & cmd);
 	///
 	bool getStatus(LCursor & cur, FuncRequest const & cmd, FuncStatus &) const;
 private:
+	virtual std::auto_ptr<InsetBase> doClone() const;
+
 	///
 	void drawCellLines(Painter &, int x, int baseline,
 		int row, int cell) const;

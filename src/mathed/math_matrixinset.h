@@ -20,11 +20,9 @@
 class MathMatrixInset : public MathGridInset {
 public:
 	///
-	MathMatrixInset(MathGridInset const &);
+	explicit MathMatrixInset(MathGridInset const &);
 	///
-	MathMatrixInset(std::string const & str);
-	///
-	virtual std::auto_ptr<InsetBase> clone() const;
+	explicit MathMatrixInset(std::string const & str);
 	/// identifies MatrixInsets
 	MathMatrixInset const * asMatrixInset() const { return this; }
 
@@ -40,6 +38,8 @@ public:
 	void mathmlize(MathMLStream &) const;
 	///
 	void octave(OctaveStream &) const;
+private:
+	virtual std::auto_ptr<InsetBase> doClone() const;
 };
 
 #endif

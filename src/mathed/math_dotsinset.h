@@ -23,8 +23,6 @@ public:
 	///
 	explicit MathDotsInset(latexkeys const * l);
 	///
-	std::auto_ptr<InsetBase> clone() const;
-	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
@@ -35,5 +33,7 @@ protected:
 	mutable int dh_;
 	///
 	latexkeys const * key_;
+private:
+	virtual std::auto_ptr<InsetBase> doClone() const;
 };
 #endif

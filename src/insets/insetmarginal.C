@@ -40,7 +40,7 @@ InsetMarginal::InsetMarginal(InsetMarginal const & in)
 }
 
 
-auto_ptr<InsetBase> InsetMarginal::clone() const
+auto_ptr<InsetBase> InsetMarginal::doClone() const
 {
 	return auto_ptr<InsetBase>(new InsetMarginal(*this));
 }

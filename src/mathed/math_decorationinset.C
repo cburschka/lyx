@@ -32,7 +32,7 @@ MathDecorationInset::MathDecorationInset(latexkeys const * key)
 }
 
 
-auto_ptr<InsetBase> MathDecorationInset::clone() const
+auto_ptr<InsetBase> MathDecorationInset::doClone() const
 {
 	return auto_ptr<InsetBase>(new MathDecorationInset(*this));
 }

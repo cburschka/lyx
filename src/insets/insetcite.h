@@ -25,10 +25,6 @@ public:
 	///
 	InsetCitation(InsetCommandParams const &);
 	///
-	std::auto_ptr<InsetBase> clone() const {
-		return std::auto_ptr<InsetBase>(new InsetCitation(params()));
-	}
-	///
 	std::string const getScreenLabel(Buffer const &) const;
 	///
 	EDITABLE editable() const { return IS_EDITABLE; }
@@ -46,6 +42,11 @@ public:
 	void validate(LaTeXFeatures &) const;
 
 private:
+	virtual std::auto_ptr<InsetBase> doClone() const
+	{
+		return std::auto_ptr<InsetBase>(new InsetCitation(params()));
+	}
+
 	/// This function does the donkey work of creating the pretty label
 	std::string const generateLabel(Buffer const &) const;
 

@@ -25,7 +25,7 @@ MathMakeboxInset::MathMakeboxInset()
 {}
 
 
-auto_ptr<InsetBase> MathMakeboxInset::clone() const
+auto_ptr<InsetBase> MathMakeboxInset::doClone() const
 {
 	return auto_ptr<InsetBase>(new MathMakeboxInset(*this));
 }

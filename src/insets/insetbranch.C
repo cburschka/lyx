@@ -60,7 +60,7 @@ InsetBranch::~InsetBranch()
 }
 
 
-auto_ptr<InsetBase> InsetBranch::clone() const
+auto_ptr<InsetBase> InsetBranch::doClone() const
 {
 	return auto_ptr<InsetBase>(new InsetBranch(*this));
 }

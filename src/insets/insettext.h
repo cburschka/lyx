@@ -41,13 +41,7 @@ public:
 	///
 	explicit InsetText(BufferParams const &);
 	///
-	explicit InsetText();
-	///
-	InsetText(InsetText const &);
-	///
-	virtual std::auto_ptr<InsetBase> clone() const;
-	///
-	void operator=(InsetText const & it);
+	InsetText();
 	/// empty inset to empty par, or just mark as erased
 	void clear(bool just_mark_erased);
 	///
@@ -79,7 +73,7 @@ public:
 	///
 	void validate(LaTeXFeatures & features) const;
 	///
-	InsetOld::Code lyxCode() const { return InsetOld::TEXT_CODE; }
+	Code lyxCode() const { return TEXT_CODE; }
 	/// FIXME, document
 	void getCursorPos(LCursor const & cur, int & x, int & y) const;
 	///
@@ -143,9 +137,12 @@ public:
 	bool allowSpellCheck() const { return true; }
 
 protected:
+	InsetText(InsetText const &);
 	///
 	void priv_dispatch(LCursor & cur, FuncRequest & cmd);
 private:
+	virtual std::auto_ptr<InsetBase> doClone() const;
+
 	///
 	void updateLocal(LCursor &);
 	///

@@ -23,8 +23,6 @@ public:
 	///
 	explicit MathFontInset(latexkeys const * key);
 	///
-	virtual std::auto_ptr<InsetBase> clone() const;
-	///
 	MathFontInset * asFontInset() { return this; }
 	///
 	MathFontInset const * asFontInset() const { return this; }
@@ -46,6 +44,7 @@ public:
 	void infoize(std::ostream & os) const;
 
 private:
+	virtual std::auto_ptr<InsetBase> doClone() const;
 	/// the font to be used on screen
 	latexkeys const * key_;
 };

@@ -30,7 +30,7 @@ CommandInset::CommandInset(string const & name)
 }
 
 
-auto_ptr<InsetBase> CommandInset::clone() const
+auto_ptr<InsetBase> CommandInset::doClone() const
 {
 	return auto_ptr<InsetBase>(new CommandInset(*this));
 }

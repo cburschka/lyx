@@ -23,8 +23,6 @@ public:
 	///
 	MathEnvInset(std::string const & name_);
 	///
-	virtual std::auto_ptr<InsetBase> clone() const;
-	///
 	void draw(PainterInfo &, int x, int y) const;
 	///
 	void write(WriteStream & os) const;
@@ -36,6 +34,7 @@ public:
 	void infoize(std::ostream & os) const;
 
 private:
+	virtual std::auto_ptr<InsetBase> doClone() const;
 	/// name of that environment
 	std::string name_;
 };

@@ -23,8 +23,6 @@ public:
 	///
 	MathLimInset(MathArray const & f, MathArray const & x, MathArray const & x0);
 	///
-	virtual std::auto_ptr<InsetBase> clone() const;
-	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
@@ -39,6 +37,8 @@ public:
 	void mathmlize(MathMLStream &) const;
 	///
 	void write(WriteStream & os) const;
+private:
+	virtual std::auto_ptr<InsetBase> doClone() const;
 };
 
 #endif

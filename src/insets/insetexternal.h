@@ -105,11 +105,7 @@ class InsetExternal : public InsetOld, public boost::signals::trackable
 public:
 	InsetExternal();
 	///
-	InsetExternal(InsetExternal const &);
-	///
 	virtual ~InsetExternal();
-	///
-	virtual std::auto_ptr<InsetBase> clone() const;
 	///
 	virtual InsetOld::Code lyxCode() const { return EXTERNAL_CODE; }
 	///
@@ -150,9 +146,12 @@ public:
 	void edit(LCursor & cur, bool left);
 
 protected:
+	InsetExternal(InsetExternal const &);
 	///
 	void priv_dispatch(LCursor & cur, FuncRequest & cmd);
 private:
+	virtual std::auto_ptr<InsetBase> doClone() const;
+
 	/** This method is connected to the graphics loader, so we are
 	 *  informed when the image has been loaded.
 	 */

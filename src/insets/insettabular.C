@@ -46,6 +46,8 @@ using lyx::support::ltrim;
 using lyx::support::strToInt;
 using lyx::support::strToDbl;
 
+using boost::shared_ptr;
+
 using std::auto_ptr;
 using std::endl;
 using std::max;
@@ -170,7 +172,7 @@ InsetTabular::~InsetTabular()
 }
 
 
-auto_ptr<InsetBase> InsetTabular::clone() const
+auto_ptr<InsetBase> InsetTabular::doClone() const
 {
 	return auto_ptr<InsetBase>(new InsetTabular(*this));
 }
@@ -239,7 +241,7 @@ void InsetTabular::metrics(MetricsInfo & mi, Dimension & dim) const
 			if (!p_width.zero()) {
 				m.base.textwidth = p_width.inPixels(mi.base.textwidth);
 			}
-			tabular.getCellInset(cell).metrics(m, dim);
+			tabular.getCellInset(cell)->metrics(m, dim);
 			maxAsc  = max(maxAsc, dim.asc);
 			maxDesc = max(maxDesc, dim.des);
 			tabular.setWidthOfCell(cell, dim.wid);
@@ -288,7 +290,7 @@ void InsetTabular::draw(PainterInfo & pi, int x, int y) const
 				drawCellSelection(pi, nx, y, i, j, idx);
 
 			int const cx = nx + tabular.getBeginningOfTextInCell(idx);
-			cell(idx).draw(pi, cx, y);
+			cell(idx)->draw(pi, cx, y);
 			drawCellLines(pi.pain, nx, y, i, idx);
 			nx += tabular.getWidthOfColumn(idx);
 			++idx;
@@ -475,7 +477,7 @@ void InsetTabular::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 
 	case LFUN_RIGHTSEL:
 	case LFUN_RIGHT:
-		cell(cur.idx()).dispatch(cur, cmd);
+		cell(cur.idx())->dispatch(cur, cmd);
 		cur.dispatched(); // override the cell's decision
 		if (sl == cur.top())
 			isRightToLeft(cur) ? movePrevCell(cur) : moveNextCell(cur);
@@ -487,7 +489,7 @@ void InsetTabular::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 
 	case LFUN_LEFTSEL:
 	case LFUN_LEFT:
-		cell(cur.idx()).dispatch(cur, cmd);
+		cell(cur.idx())->dispatch(cur, cmd);
 		cur.dispatched(); // override the cell's decision
 		if (sl == cur.top())
 			isRightToLeft(cur) ? moveNextCell(cur) : movePrevCell(cur);
@@ -499,7 +501,7 @@ void InsetTabular::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 
 	case LFUN_DOWNSEL:
 	case LFUN_DOWN:
-		cell(cur.idx()).dispatch(cur, cmd);
+		cell(cur.idx())->dispatch(cur, cmd);
 		cur.dispatched(); // override the cell's decision
 		if (sl == cur.top())
 			if (tabular.row_of_cell(cur.idx()) != tabular.rows() - 1) {
@@ -516,7 +518,7 @@ void InsetTabular::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 
 	case LFUN_UPSEL:
 	case LFUN_UP:
-		cell(cur.idx()).dispatch(cur, cmd);
+		cell(cur.idx())->dispatch(cur, cmd);
 		cur.dispatched(); // override the cell's decision
 		if (sl == cur.top())
 			if (tabular.row_of_cell(cur.idx()) != 0) {
@@ -584,7 +586,7 @@ void InsetTabular::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 	// insert file functions
 	case LFUN_FILE_INSERT_ASCII_PARA:
 	case LFUN_FILE_INSERT_ASCII: {
-		string tmpstr = getContentsOfAsciiFile(&cur.bv(), cmd.argument, false);
+		string const tmpstr = getContentsOfAsciiFile(&cur.bv(), cmd.argument, false);
 		if (!tmpstr.empty() && !insertAsciiString(cur.bv(), tmpstr, false))
 			cur.undispatched();
 		break;
@@ -603,7 +605,7 @@ void InsetTabular::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 		if (tablemode(cur))
 			cutSelection(cur);
 		else
-			cell(cur.idx()).dispatch(cur, cmd);
+			cell(cur.idx())->dispatch(cur, cmd);
 		break;
 
 	case LFUN_COPY:
@@ -645,7 +647,7 @@ void InsetTabular::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 
 			string::size_type op = 0;
 			int cell = 0;
-			int cells = paste_tabular->getNumberOfCells();
+			int const cells = paste_tabular->getNumberOfCells();
 			cols = 0;
 			LyXFont font;
 			for (size_t p = 0; cell < cells && p < len; ++p) {
@@ -654,13 +656,13 @@ void InsetTabular::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 					break;
 				switch (clip[p]) {
 				case '\t':
-					paste_tabular->getCellInset(cell).
+					paste_tabular->getCellInset(cell)->
 						setText(clip.substr(op, p - op), font);
 					++cols;
 					++cell;
 					break;
 				case '\n':
-					paste_tabular->getCellInset(cell).
+					paste_tabular->getCellInset(cell)->
 						setText(clip.substr(op, p - op), font);
 					while (cols++ < maxCols)
 						++cell;
@@ -671,7 +673,7 @@ void InsetTabular::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 			}
 			// check for the last cell if there is no trailing '\n'
 			if (cell < cells && op < len)
-				paste_tabular->getCellInset(cell).
+				paste_tabular->getCellInset(cell)->
 					setText(clip.substr(op, len - op), font);
 		} else if (!insertAsciiString(cur.bv(), clip, true)) {
 			// so that the clipboard is used and it goes on
@@ -688,12 +690,12 @@ void InsetTabular::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 			pasteSelection(cur);
 			break;
 		}
-		cell(cur.idx()).dispatch(cur, cmd);
+		cell(cur.idx())->dispatch(cur, cmd);
 		break;
 
 	default:
 		// we try to handle this event in the insets dispatch function.
-		cell(cur.idx()).dispatch(cur, cmd);
+		cell(cur.idx())->dispatch(cur, cmd);
 		break;
 	}
 
@@ -878,7 +880,7 @@ bool InsetTabular::getStatus(LCursor & cur, FuncRequest const & cmd,
 
 	default:
 		// we try to handle this event in the insets dispatch function.
-		return cell(cur.idx()).getStatus(cur, cmd, status);
+		return cell(cur.idx())->getStatus(cur, cmd, status);
 	}
 }
 
@@ -893,7 +895,7 @@ int InsetTabular::latex(Buffer const & buf, ostream & os,
 int InsetTabular::plaintext(Buffer const & buf, ostream & os,
 			OutputParams const & runparams) const
 {
-	int dp = runparams.linelen ? runparams.depth : 0;
+	int const dp = runparams.linelen ? runparams.depth : 0;
 	return tabular.plaintext(buf, os, runparams, dp, false, 0);
 }
 
@@ -941,13 +943,13 @@ void InsetTabular::validate(LaTeXFeatures & features) const
 }
 
 
-InsetText const & InsetTabular::cell(int idx) const
+shared_ptr<InsetText const> InsetTabular::cell(int idx) const
 {
 	return tabular.getCellInset(idx);
 }
 
 
-InsetText & InsetTabular::cell(int idx)
+shared_ptr<InsetText> InsetTabular::cell(int idx)
 {
 	return tabular.getCellInset(idx);
 }
@@ -955,7 +957,7 @@ InsetText & InsetTabular::cell(int idx)
 
 void InsetTabular::getCursorPos(LCursor const & cur, int & x, int & y) const
 {
-	cell(cur.idx()).getCursorPos(cur, x, y);
+	cell(cur.idx())->getCursorPos(cur, x, y);
 }
 
 
@@ -972,13 +974,13 @@ InsetBase * InsetTabular::setPos(LCursor & cur, int x, int y) const
 		}
 	}
 	cur.idx() = idx_min;
-	InsetBase * inset = cell(cur.idx()).text_.editXY(cur, x, y);
+	InsetBase * inset = cell(cur.idx())->text_.editXY(cur, x, y);
 	//lyxerr << "# InsetTabular::setPos()\n" << cur << endl;
 	return inset;
 }
 
 
-int InsetTabular::getCellXPos(int cell) const
+int InsetTabular::getCellXPos(int const cell) const
 {
 	int c = cell;
 
@@ -1026,7 +1028,7 @@ void InsetTabular::moveNextCell(LCursor & cur)
 	if (isRightToLeft(cur)) {
 		lyxerr << "InsetTabular::moveNextCell A cur: " << endl;
 		if (tabular.isFirstCellInRow(cur.idx())) {
-			int row = tabular.row_of_cell(cur.idx());
+			int const row = tabular.row_of_cell(cur.idx());
 			if (row == tabular.rows() - 1)
 				return;
 			cur.idx() = tabular.getCellBelow(tabular.getLastCellInRow(row));
@@ -1052,7 +1054,7 @@ void InsetTabular::movePrevCell(LCursor & cur)
 {
 	if (isRightToLeft(cur)) {
 		if (tabular.isLastCellInRow(cur.idx())) {
-			int row = tabular.row_of_cell(cur.idx());
+			int const row = tabular.row_of_cell(cur.idx());
 			if (row == 0)
 				return;
 			cur.idx() = tabular.getFirstCellInRow(row);
@@ -1176,8 +1178,8 @@ void InsetTabular::tabularFeatures(LCursor & cur,
 	recordUndo(cur, Undo::ATOMIC);
 
 	getSelection(cur, sel_row_start, sel_row_end, sel_col_start, sel_col_end);
-	int row = tabular.row_of_cell(cur.idx());
-	int column = tabular.column_of_cell(cur.idx());
+	int const row = tabular.row_of_cell(cur.idx());
+	int const column = tabular.column_of_cell(cur.idx());
 	bool flag = true;
 	LyXTabular::ltType ltt;
 
@@ -1517,8 +1519,8 @@ bool InsetTabular::pasteSelection(LCursor & cur)
 {
 	if (!paste_tabular)
 		return false;
-	int actcol = tabular.column_of_cell(cur.idx());
-	int actrow = tabular.row_of_cell(cur.idx());
+	int const actcol = tabular.column_of_cell(cur.idx());
+	int const actrow = tabular.row_of_cell(cur.idx());
 	for (int r1 = 0, r2 = actrow;
 	     r1 < paste_tabular->rows() && r2 < tabular.rows();
 	     ++r1, ++r2) {
@@ -1536,9 +1538,9 @@ bool InsetTabular::pasteSelection(LCursor & cur)
 				--c1;
 				continue;
 			}
-			InsetText & inset = tabular.getCellInset(r2, c2);
+			shared_ptr<InsetText> inset = tabular.getCellInset(r2, c2);
 			inset = paste_tabular->getCellInset(r1, c1);
-			inset.markNew();
+			inset->markNew();
 		}
 	}
 	return true;
@@ -1555,7 +1557,7 @@ void InsetTabular::cutSelection(LCursor & cur)
 	getSelection(cur, rs, re, cs, ce);
 	for (int i = rs; i <= re; ++i)
 		for (int j = cs; j <= ce; ++j)
-			cell(tabular.getCellNumber(i, j)).clear(track);
+			cell(tabular.getCellNumber(i, j))->clear(track);
 
 	// cursor position might be invalid now
 	cur.pos() = cur.lastpos();
@@ -1602,21 +1604,21 @@ size_t InsetTabular::nargs() const
 
 LyXText * InsetTabular::getText(int idx) const
 {
-	return size_t(idx) < nargs() ? cell(idx).getText(0) : 0;
+	return size_t(idx) < nargs() ? cell(idx)->getText(0) : 0;
 }
 
 
 void InsetTabular::markErased()
 {
 	for (idx_type idx = 0; idx < nargs(); ++idx)
-		cell(idx).markErased();
+		cell(idx)->markErased();
 }
 
 
 bool InsetTabular::forceDefaultParagraphs(InsetBase const *) const
 {
 #if 0
-	const int cell = tabular.getCellFromInset(in);
+	int const cell = tabular.getCellFromInset(in);
 
 	if (cell != -1)
 		return tabular.getPWidth(cell).zero();
@@ -1643,7 +1645,7 @@ bool InsetTabular::insertAsciiString(BufferView & bv, string const & buf,
 	int cols = 1;
 	int rows = 1;
 	int maxCols = 1;
-	string::size_type len = buf.length();
+	string::size_type const len = buf.length();
 	string::size_type p = 0;
 
 	while (p < len && (p = buf.find_first_of("\t\n", p)) != string::npos) {
@@ -1678,7 +1680,7 @@ bool InsetTabular::insertAsciiString(BufferView & bv, string const & buf,
 	}
 
 	string::size_type op = 0;
-	int cells = loctab->getNumberOfCells();
+	int const cells = loctab->getNumberOfCells();
 	p = 0;
 	cols = ocol;
 	rows = loctab->rows();
@@ -1693,10 +1695,10 @@ bool InsetTabular::insertAsciiString(BufferView & bv, string const & buf,
 		case '\t':
 			// we can only set this if we are not too far right
 			if (cols < columns) {
-				InsetText & inset = loctab->getCellInset(cell);
-				Paragraph & par = inset.text_.getPar(0);
-				LyXFont const font = inset.text_.getFont(par, 0);
-				inset.setText(buf.substr(op, p - op), font);
+				shared_ptr<InsetText> inset = loctab->getCellInset(cell);
+				Paragraph & par = inset->text_.getPar(0);
+				LyXFont const font = inset->text_.getFont(par, 0);
+				inset->setText(buf.substr(op, p - op), font);
 				++cols;
 				++cell;
 			}
@@ -1704,10 +1706,10 @@ bool InsetTabular::insertAsciiString(BufferView & bv, string const & buf,
 		case '\n':
 			// we can only set this if we are not too far right
 			if (cols < columns) {
-				InsetText & inset = tabular.getCellInset(cell);
-				Paragraph & par = inset.text_.getPar(0);
-				LyXFont const font = inset.text_.getFont(par, 0);
-				inset.setText(buf.substr(op, p - op), font);
+				shared_ptr<InsetText> inset = tabular.getCellInset(cell);
+				Paragraph & par = inset->text_.getPar(0);
+				LyXFont const font = inset->text_.getFont(par, 0);
+				inset->setText(buf.substr(op, p - op), font);
 			}
 			cols = ocol;
 			++row;
@@ -1720,10 +1722,10 @@ bool InsetTabular::insertAsciiString(BufferView & bv, string const & buf,
 	}
 	// check for the last cell if there is no trailing '\n'
 	if (cell < cells && op < len) {
-		InsetText & inset = loctab->getCellInset(cell);
-		Paragraph & par = inset.text_.getPar(0);
-		LyXFont const font = inset.text_.getFont(par, 0);
-		inset.setText(buf.substr(op, len - op), font);
+		shared_ptr<InsetText> inset = loctab->getCellInset(cell);
+		Paragraph & par = inset->text_.getPar(0);
+		LyXFont const font = inset->text_.getFont(par, 0);
+		inset->setText(buf.substr(op, len - op), font);
 	}
 	return true;
 }
@@ -1735,7 +1737,7 @@ void InsetTabular::addPreview(PreviewLoader & loader) const
 	int const columns = tabular.columns();
 	for (int i = 0; i < rows; ++i) {
 		for (int j = 0; j < columns; ++j)
-			tabular.getCellInset(i, j).addPreview(loader);
+			tabular.getCellInset(i, j)->addPreview(loader);
 	}
 }
 

@@ -21,8 +21,6 @@ public:
 	///
 	explicit MathBinomInset(bool choose = false);
 	///
-	virtual std::auto_ptr<InsetBase> clone() const;
-	///
 	void write(WriteStream & os) const;
 	///
 	void normalize(NormalStream &) const;
@@ -31,6 +29,7 @@ public:
 	///
 	void draw(PainterInfo &, int x, int y) const;
 private:
+	virtual std::auto_ptr<InsetBase> doClone() const;
 	///
 	int dw() const;
 	///

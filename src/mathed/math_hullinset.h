@@ -26,13 +26,9 @@ public:
 	///
 	explicit MathHullInset(std::string const & type);
 	///
-	MathHullInset(MathHullInset const &);
-	///
 	~MathHullInset();
 	///
-	std::auto_ptr<InsetBase> clone() const;
-	///
-	void operator=(MathHullInset const &);
+	MathHullInset & operator=(MathHullInset const &);
 	///
 	mode_type currentMode() const;
 	///
@@ -122,8 +118,10 @@ public:
 
 
 protected:
-	///
-	void priv_dispatch(LCursor & cur, FuncRequest & cmd);
+	MathHullInset(MathHullInset const &);
+
+	virtual void priv_dispatch(LCursor & cur, FuncRequest & cmd);
+
 	/// do we want to handle this event?
 	bool getStatus(LCursor & cur, FuncRequest const & cmd,
 		FuncStatus & status) const;
@@ -131,6 +129,7 @@ protected:
 	std::string eolString(row_type row, bool fragile) const;
 
 private:
+	virtual std::auto_ptr<InsetBase> doClone() const;
 	///
 	void setType(std::string const & type);
 	///

@@ -24,8 +24,6 @@ public:
 	///
 	explicit MathDecorationInset(latexkeys const * key);
 	///
-	virtual std::auto_ptr<InsetBase> clone() const;
-	///
 	void draw(PainterInfo &, int x, int y) const;
 	///
 	void write(WriteStream & os) const;
@@ -39,6 +37,7 @@ public:
 	bool isScriptable() const;
 
 private:
+	virtual std::auto_ptr<InsetBase> doClone() const;
 	///
 	bool upper() const;
 	///

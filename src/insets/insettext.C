@@ -59,6 +59,9 @@ using lyx::graphics::PreviewLoader;
 using lyx::support::isStrUnsignedInt;
 using lyx::support::strToUnsignedInt;
 
+using boost::bind;
+using boost::ref;
+
 using std::endl;
 using std::for_each;
 using std::max;
@@ -83,8 +86,11 @@ InsetText::InsetText(BufferParams const & bp)
 InsetText::InsetText(InsetText const & in)
 	: UpdatableInset(in), text_(in.text_.bv_owner)
 {
-	// this is ugly...
-	operator=(in);
+	autoBreakRows_ = in.autoBreakRows_;
+	drawFrame_ = in.drawFrame_;
+	frame_color_ = in.frame_color_;
+	text_.paragraphs() = in.text_.paragraphs();
+	init();
 }
 
 
@@ -92,24 +98,10 @@ InsetText::InsetText() : text_(0)
 {}
 
 
-void InsetText::operator=(InsetText const & in)
-{
-	UpdatableInset::operator=(in);
-	autoBreakRows_ = in.autoBreakRows_;
-	drawFrame_ = in.drawFrame_;
-	frame_color_ = in.frame_color_;
-	text_ = LyXText(in.text_.bv_owner);
-	text_.paragraphs() = in.text_.paragraphs();
-	init();
-}
-
-
 void InsetText::init()
 {
-	ParagraphList::iterator pit = paragraphs().begin();
-	ParagraphList::iterator end = paragraphs().end();
-	for (; pit != end; ++pit)
-		pit->setInsetOwner(this);
+	for_each(paragraphs().begin(), paragraphs().end(),
+		 bind(&Paragraph::setInsetOwner, _1, this));
 	old_par = -1;
 }
 
@@ -118,10 +110,8 @@ void InsetText::clear(bool just_mark_erased)
 {
 	ParagraphList & pars = paragraphs();
 	if (just_mark_erased) {
-		ParagraphList::iterator it = pars.begin();
-		ParagraphList::iterator end = pars.end();
-		for (; it != end; ++it)
-			it->markErased();
+		for_each(pars.begin(), pars.end(),
+			 bind(&Paragraph::markErased, _1));
 		return;
 	}
 
@@ -135,7 +125,7 @@ void InsetText::clear(bool just_mark_erased)
 }
 
 
-auto_ptr<InsetBase> InsetText::clone() const
+auto_ptr<InsetBase> InsetText::doClone() const
 {
 	return auto_ptr<InsetBase>(new InsetText(*this));
 }
@@ -336,7 +326,7 @@ int InsetText::plaintext(Buffer const & buf, ostream & os,
 	for (; it != end; ++it)
 		asciiParagraph(buf, *it, os, runparams, it == beg);
 
-	//FIXME: Give the total numbers of lines
+	// FIXME: Give the total numbers of lines
 	return 0;
 }
 
@@ -360,7 +350,7 @@ int InsetText::docbook(Buffer const & buf, ostream & os,
 void InsetText::validate(LaTeXFeatures & features) const
 {
 	for_each(paragraphs().begin(), paragraphs().end(),
-		 boost::bind(&Paragraph::validate, _1, boost::ref(features)));
+		 bind(&Paragraph::validate, _1, ref(features)));
 }
 
 
@@ -409,8 +399,9 @@ void InsetText::markNew(bool track_changes)
 void InsetText::setText(string const & data, LyXFont const & font)
 {
 	clear(false);
+	Paragraph & first = paragraphs().front();
 	for (unsigned int i = 0; i < data.length(); ++i)
-		paragraphs().begin()->insertChar(i, data[i], font);
+		first.insertChar(i, data[i], font);
 }
 
 
@@ -476,15 +467,15 @@ void InsetText::appendParagraphs(Buffer * buffer, ParagraphList & plist)
 // And it probably does. You have to take a look at this John. (Lgb)
 #warning John, have a look here. (Lgb)
 #endif
+	ParagraphList & pl = paragraphs();
+	
 	ParagraphList::iterator pit = plist.begin();
-	ParagraphList::iterator ins = paragraphs().insert(paragraphs().end(), *pit);
+	ParagraphList::iterator ins = pl.insert(pl.end(), *pit);
 	++pit;
-	mergeParagraph(buffer->params(), paragraphs(),
-		ins - paragraphs().begin() - 1);
+	mergeParagraph(buffer->params(), pl, ins - pl.begin() - 1);
 
-	ParagraphList::iterator pend = plist.end();
-	for (; pit != pend; ++pit)
-		paragraphs().push_back(*pit);
+	for_each(pit, plist.end(),
+		 bind(&ParagraphList::push_back, ref(pl), _1));
 }
 
 

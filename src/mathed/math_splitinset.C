@@ -27,7 +27,7 @@ MathSplitInset::MathSplitInset(string const & name)
 }
 
 
-auto_ptr<InsetBase> MathSplitInset::clone() const
+auto_ptr<InsetBase> MathSplitInset::doClone() const
 {
 	return auto_ptr<InsetBase>(new MathSplitInset(*this));
 }

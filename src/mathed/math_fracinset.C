@@ -29,7 +29,7 @@ MathFracInset::MathFracInset(bool atop)
 {}
 
 
-auto_ptr<InsetBase> MathFracInset::clone() const
+auto_ptr<InsetBase> MathFracInset::doClone() const
 {
 	return auto_ptr<InsetBase>(new MathFracInset(*this));
 }

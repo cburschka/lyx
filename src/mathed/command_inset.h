@@ -24,8 +24,6 @@ public:
 	///
 	explicit CommandInset(std::string const & name);
 	///
-	virtual std::auto_ptr<InsetBase> clone() const;
-	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
@@ -40,6 +38,8 @@ public:
 	///
 	std::string const & commandname() const { return name_; }
 private:
+	virtual std::auto_ptr<InsetBase> doClone() const;
+
 	///
 	std::string name_;
 	///

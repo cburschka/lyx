@@ -40,7 +40,7 @@ InsetLabel::InsetLabel(InsetCommandParams const & p)
 {}
 
 
-std::auto_ptr<InsetBase> InsetLabel::clone() const
+std::auto_ptr<InsetBase> InsetLabel::doClone() const
 {
 	return std::auto_ptr<InsetBase>(new InsetLabel(params()));
 }

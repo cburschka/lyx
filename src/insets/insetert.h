@@ -32,10 +32,6 @@ public:
 	///
 	InsetERT(BufferParams const &, CollapseStatus status = Open);
 	///
-	InsetERT(InsetERT const &);
-	///
-	virtual std::auto_ptr<InsetBase> clone() const;
-	///
 	InsetERT(BufferParams const &,
 		 Language const *, std::string const & contents, CollapseStatus status);
 	///
@@ -73,11 +69,13 @@ public:
 	///
 	bool forceDefaultParagraphs(InsetBase const *) const { return true; }
 protected:
+	InsetERT(InsetERT const &);
 	///
 	virtual void priv_dispatch(LCursor & cur, FuncRequest & cmd);
 	///
 	bool getStatus(LCursor & cur, FuncRequest const & cmd, FuncStatus &) const;
 private:
+	virtual std::auto_ptr<InsetBase> doClone() const;
 	///
 	void init();
 	///

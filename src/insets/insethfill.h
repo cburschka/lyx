@@ -22,8 +22,6 @@ public:
 	///
 	void metrics(MetricsInfo &, Dimension &) const;
 	///
-	std::auto_ptr<InsetBase> clone() const;
-	///
 	std::string const getScreenLabel(Buffer const &) const;
 	///
 	InsetOld::Code lyxCode() const { return InsetOld::HFILL_CODE; }
@@ -46,7 +44,8 @@ public:
 	/// is this equivalent to a space (which is BTW different from
 	// a line separator)?
 	bool isSpace() const;
-
+private:
+	virtual std::auto_ptr<InsetBase> doClone() const;
 };
 
 #endif

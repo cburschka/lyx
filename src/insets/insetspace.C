@@ -255,7 +255,7 @@ int InsetSpace::docbook(Buffer const &, ostream & os,
 }
 
 
-auto_ptr<InsetBase>  InsetSpace::clone() const
+auto_ptr<InsetBase> InsetSpace::doClone() const
 {
 	return auto_ptr<InsetBase>(new InsetSpace(kind_));
 }

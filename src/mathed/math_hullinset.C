@@ -158,21 +158,23 @@ MathHullInset::~MathHullInset()
 {}
 
 
-auto_ptr<InsetBase> MathHullInset::clone() const
+auto_ptr<InsetBase> MathHullInset::doClone() const
 {
 	return auto_ptr<InsetBase>(new MathHullInset(*this));
 }
 
 
-void MathHullInset::operator=(MathHullInset const & other)
+MathHullInset & MathHullInset::operator=(MathHullInset const & other)
 {
 	if (this == &other)
-		return;
+		return *this;
 	*static_cast<MathGridInset*>(this) = MathGridInset(other);
 	type_  = other.type_;
 	nonum_ = other.nonum_;
 	label_ = other.label_;
 	preview_.reset(new RenderPreview(*other.preview_, this));
+
+	return *this;
 }
 
 
@@ -1355,7 +1357,7 @@ int MathHullInset::docbook(Buffer const & buf, ostream & os,
 		name = "informalequation";
 
 	string bname = name;
-	if (!label(0).empty()) 
+	if (!label(0).empty())
 		bname += " id=\"" + sgml::cleanID(buf, runparams, label(0)) + "\"";
 	ms << MTag(bname.c_str());
 
@@ -1373,23 +1375,23 @@ int MathHullInset::docbook(Buffer const & buf, ostream & os,
 		MathGridInset::mathmlize(ms);
 		ms << ETag("math");
 	} else {
-		ms << MTag("alt role=\"tex\"");		
+		ms << MTag("alt role=\"tex\"");
 		res = latex(buf, ls, runparams);
 		ms << subst(subst(ls.str(), "&", "&amp;"), "<", "&lt;");
 		ms << ETag("alt");
 	}
-	
+
 	ms <<  "<graphic fileref=\"eqn/";
-	if ( !label(0).empty()) 
+	if ( !label(0).empty())
 		ms << sgml::cleanID(buf, runparams, label(0));
 	else {
 		ms << sgml::uniqueID("anon");
 	}
-	if (runparams.flavor == OutputParams::XML) 
+	if (runparams.flavor == OutputParams::XML)
 		ms << "\"/>";
-	else 
+	else
 		ms << "\">";
-		
+
 	ms << ETag(name.c_str());
 	return ms.line() + res;
 }

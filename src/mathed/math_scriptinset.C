@@ -47,8 +47,7 @@ MathScriptInset::MathScriptInset(MathAtom const & at, bool up)
 }
 
 
-
-auto_ptr<InsetBase> MathScriptInset::clone() const
+auto_ptr<InsetBase> MathScriptInset::doClone() const
 {
 	return auto_ptr<InsetBase>(new MathScriptInset(*this));
 }

@@ -25,7 +25,7 @@ MathFrameboxInset::MathFrameboxInset()
 {}
 
 
-auto_ptr<InsetBase> MathFrameboxInset::clone() const
+auto_ptr<InsetBase> MathFrameboxInset::doClone() const
 {
 	return auto_ptr<InsetBase>(new MathFrameboxInset(*this));
 }

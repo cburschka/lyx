@@ -29,7 +29,7 @@ MathSizeInset::MathSizeInset(latexkeys const * l)
 {}
 
 
-auto_ptr<InsetBase> MathSizeInset::clone() const
+auto_ptr<InsetBase> MathSizeInset::doClone() const
 {
 	return auto_ptr<InsetBase>(new MathSizeInset(*this));
 }

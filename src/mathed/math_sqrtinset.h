@@ -22,8 +22,6 @@ public:
 	///
 	MathSqrtInset();
 	///
-	virtual std::auto_ptr<InsetBase> clone() const;
-	///
 	void draw(PainterInfo &, int x, int y) const;
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
@@ -44,5 +42,7 @@ public:
 	void octave(OctaveStream &) const;
 	///
 	void mathmlize(MathMLStream &) const;
+private:
+	virtual std::auto_ptr<InsetBase> doClone() const;
 };
 #endif

@@ -32,7 +32,7 @@ MathCommentInset::MathCommentInset(string const & str)
 }
 
 
-auto_ptr<InsetBase> MathCommentInset::clone() const
+auto_ptr<InsetBase> MathCommentInset::doClone() const
 {
 	return auto_ptr<InsetBase>(new MathCommentInset(*this));
 }

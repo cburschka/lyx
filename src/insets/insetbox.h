@@ -56,12 +56,8 @@ class InsetBox : public InsetCollapsable {
 public:
 	///
 	InsetBox(BufferParams const &, std::string const &);
-	/// Copy constructor
-	InsetBox(InsetBox const &);
 	///
 	~InsetBox();
-	///
-	virtual std::auto_ptr<InsetBase> clone() const;
 	///
 	std::string const editMessage() const;
 	///
@@ -104,10 +100,12 @@ public:
 		Doublebox
 	};
 protected:
-	///
+	InsetBox(InsetBox const &);
 	virtual void priv_dispatch(LCursor & cur, FuncRequest & cmd);
 private:
 	friend class InsetBoxParams;
+
+	virtual std::auto_ptr<InsetBase> doClone() const;
 
 	/// used by the constructors
 	void init();

@@ -41,7 +41,7 @@ InsetEnvironment::InsetEnvironment(InsetEnvironment const & in)
 {}
 
 
-auto_ptr<InsetBase> InsetEnvironment::clone() const
+auto_ptr<InsetBase> InsetEnvironment::doClone() const
 {
 	return auto_ptr<InsetBase>(new InsetEnvironment(*this));
 }

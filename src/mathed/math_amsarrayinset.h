@@ -23,8 +23,6 @@ public:
 	///
 	MathAMSArrayInset(std::string const & name);
 	///
-	virtual std::auto_ptr<InsetBase> clone() const;
-	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
 	void draw(PainterInfo & pain, int x, int y) const;
@@ -39,6 +37,7 @@ public:
 	void normalize(NormalStream &) const;
 
 private:
+	virtual std::auto_ptr<InsetBase> doClone() const;
 	///
 	char const * name_left() const;
 	///

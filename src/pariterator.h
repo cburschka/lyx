@@ -50,7 +50,7 @@ public:
 	ParIterator(DocIterator const &);
 
 	/// This really should be implemented...
-	//void operator=(ParIterator const &);
+	//ParIterator & operator=(ParIterator const &);
 	///
 	ParIterator & operator++();
 	///

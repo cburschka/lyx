@@ -28,7 +28,7 @@ MathFboxInset::MathFboxInset()
 {}
 
 
-auto_ptr<InsetBase> MathFboxInset::clone() const
+auto_ptr<InsetBase> MathFboxInset::doClone() const
 {
 	return auto_ptr<InsetBase>(new MathFboxInset(*this));
 }
@@ -75,4 +75,3 @@ void MathFboxInset::infoize(std::ostream & os) const
 {
 	os << "FBox: ";
 }
-

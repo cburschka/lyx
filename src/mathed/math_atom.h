@@ -55,7 +55,7 @@ public:
 	/// we really need to clean up
 	~MathAtom();
 	/// assignment invokes nucleus_->clone()
-	void operator=(MathAtom const &);
+	MathAtom & operator=(MathAtom const &);
 	/// access to the inset (checked with gprof)
 	MathInset       * nucleus()       { return nucleus_; }
 	MathInset const * nucleus() const { return nucleus_; }

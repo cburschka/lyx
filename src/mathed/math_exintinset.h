@@ -27,8 +27,6 @@ public:
 	///
 	explicit MathExIntInset(std::string const & name_);
 	///
-	virtual std::auto_ptr<InsetBase> clone() const;
-	///
 	void symbol(std::string const &);
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
@@ -48,6 +46,7 @@ public:
 	///
 	void write(WriteStream & os) const;
 private:
+	virtual std::auto_ptr<InsetBase> doClone() const;
 	///
 	bool hasScripts() const;
 

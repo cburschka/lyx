@@ -23,7 +23,7 @@ MathStackrelInset::MathStackrelInset()
 {}
 
 
-auto_ptr<InsetBase> MathStackrelInset::clone() const
+auto_ptr<InsetBase> MathStackrelInset::doClone() const
 {
 	return auto_ptr<InsetBase>(new MathStackrelInset(*this));
 }

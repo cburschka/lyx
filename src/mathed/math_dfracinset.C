@@ -28,7 +28,7 @@ MathDfracInset::MathDfracInset()
 {}
 
 
-auto_ptr<InsetBase> MathDfracInset::clone() const
+auto_ptr<InsetBase> MathDfracInset::doClone() const
 {
 	return auto_ptr<InsetBase>(new MathDfracInset(*this));
 }

@@ -33,7 +33,7 @@ MathBraceInset::MathBraceInset(MathArray const & ar)
 }
 
 
-auto_ptr<InsetBase> MathBraceInset::clone() const
+auto_ptr<InsetBase> MathBraceInset::doClone() const
 {
 	return auto_ptr<InsetBase>(new MathBraceInset(*this));
 }

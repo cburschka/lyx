@@ -56,7 +56,7 @@ void InsetTheorem::write(Buffer const * buf, ostream & os) const
 }
 
 
-auto_ptr<InsetBase> InsetTheorem::clone() const
+auto_ptr<InsetBase> InsetTheorem::doClone() const
 {
 #ifdef WITH_WARNINGS
 #warning Is this inset used? If YES this is WRONG!!! (Jug)

@@ -35,7 +35,7 @@ MathMacroArgument::MathMacroArgument(size_t n)
 }
 
 
-auto_ptr<InsetBase> MathMacroArgument::clone() const
+auto_ptr<InsetBase> MathMacroArgument::doClone() const
 {
 	return auto_ptr<InsetBase>(new MathMacroArgument(*this));
 }

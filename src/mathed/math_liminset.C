@@ -29,7 +29,7 @@ MathLimInset::MathLimInset
 }
 
 
-auto_ptr<InsetBase> MathLimInset::clone() const
+auto_ptr<InsetBase> MathLimInset::doClone() const
 {
 	return auto_ptr<InsetBase>(new MathLimInset(*this));
 }

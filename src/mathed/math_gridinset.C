@@ -186,7 +186,7 @@ MathGridInset::~MathGridInset()
 }
 
 
-auto_ptr<InsetBase> MathGridInset::clone() const
+auto_ptr<InsetBase> MathGridInset::doClone() const
 {
 	return auto_ptr<InsetBase>(new MathGridInset(*this));
 }

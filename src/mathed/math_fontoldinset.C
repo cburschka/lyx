@@ -27,7 +27,7 @@ MathFontOldInset::MathFontOldInset(latexkeys const * key)
 }
 
 
-auto_ptr<InsetBase> MathFontOldInset::clone() const
+auto_ptr<InsetBase> MathFontOldInset::doClone() const
 {
 	return auto_ptr<InsetBase>(new MathFontOldInset(*this));
 }

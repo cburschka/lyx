@@ -28,8 +28,6 @@ public:
 	/// create inset with single script and given nucleus
 	MathScriptInset(MathAtom const & at, bool up);
 	///
-	std::auto_ptr<InsetBase> clone() const;
-	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
@@ -103,6 +101,7 @@ protected:
 	///
 	void priv_dispatch(LCursor & cur, FuncRequest & cmd);
 private:
+	virtual std::auto_ptr<InsetBase> doClone() const;
 	/// returns x offset for main part
 	int dxx() const;
 	/// returns width of nucleus if any

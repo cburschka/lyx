@@ -46,7 +46,7 @@ MathSpaceInset::MathSpaceInset(string const & name)
 }
 
 
-auto_ptr<InsetBase> MathSpaceInset::clone() const
+auto_ptr<InsetBase> MathSpaceInset::doClone() const
 {
 	return auto_ptr<InsetBase>(new MathSpaceInset(*this));
 }

@@ -26,8 +26,6 @@ public:
 	///
 	explicit MathBoxInset(std::string const & name);
 	///
-	std::auto_ptr<InsetBase> clone() const;
-	///
 	mode_type currentMode() const { return TEXT_MODE; }
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
@@ -41,6 +39,7 @@ public:
 	void infoize(std::ostream & os) const;
 
 private:
+	virtual std::auto_ptr<InsetBase> doClone() const;
 	///
 	std::string name_;
 };

@@ -22,7 +22,7 @@ using std::auto_ptr;
 
 
 
-auto_ptr<InsetBase> MathUndersetInset::clone() const
+auto_ptr<InsetBase> MathUndersetInset::doClone() const
 {
 	return auto_ptr<InsetBase>(new MathUndersetInset(*this));
 }
@@ -96,4 +96,3 @@ void MathUndersetInset::validate(LaTeXFeatures & features) const
 	features.require("amsmath");
 	MathNestInset::validate(features);
 }
-

@@ -25,8 +25,6 @@ public:
 	///
 	explicit MathCommentInset(std::string const &);
 	///
-	virtual std::auto_ptr<InsetBase> clone() const;
-	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
@@ -47,5 +45,7 @@ public:
 	void mathmlize(MathMLStream &) const;
 	///
 	void infoize(std::ostream & os) const;
+private:
+	virtual std::auto_ptr<InsetBase> doClone() const;
 };
 #endif

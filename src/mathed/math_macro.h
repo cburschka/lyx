@@ -25,8 +25,6 @@ public:
 	/// A macro can be built from an existing template
 	MathMacro(std::string const & name, int numargs);
 	///
-	std::auto_ptr<InsetBase> clone() const;
-	///
 	void draw(PainterInfo & pi, int x, int y) const;
 	///
 	void drawExpanded(PainterInfo & pi, int x, int y) const;
@@ -52,6 +50,7 @@ public:
 	void infoize2(std::ostream &) const;
 
 private:
+	virtual std::auto_ptr<InsetBase> doClone() const;
 	///
 	void updateExpansion() const;
 	///

@@ -23,8 +23,6 @@ class MathSizeInset : public MathNestInset {
 public:
 	///
 	explicit MathSizeInset(latexkeys const * l);
-	///
-	virtual std::auto_ptr<InsetBase> clone() const;
 	/// we write extra braces in any case...
 	bool extraBraces() const { return true; }
 	///
@@ -38,8 +36,8 @@ public:
 	void normalize(NormalStream &) const;
 	///
 	void infoize(std::ostream & os) const;
-
 private:
+	virtual std::auto_ptr<InsetBase> doClone() const;
 	///
 	latexkeys const * key_;
 	///

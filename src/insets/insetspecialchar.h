@@ -65,8 +65,6 @@ public:
 	int docbook(Buffer const &, std::ostream &,
 		    OutputParams const &) const;
 	///
-	virtual std::auto_ptr<InsetBase> clone() const;
-	///
 	InsetOld::Code lyxCode() const { return InsetOld::SPECIALCHAR_CODE; }
 	/// We don't need \begin_inset and \end_inset
 	bool directWrite() const { return true; }
@@ -80,6 +78,8 @@ public:
 	// should we break lines after this inset?
 	bool isLineSeparator() const;
 private:
+	virtual std::auto_ptr<InsetBase> doClone() const;
+
 	/// And which kind is this?
 	Kind kind_;
 };

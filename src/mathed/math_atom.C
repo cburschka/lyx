@@ -34,12 +34,13 @@ MathAtom::MathAtom(MathAtom const & at)
 }
 
 
-void MathAtom::operator=(MathAtom const & at)
+MathAtom & MathAtom::operator=(MathAtom const & at)
 {
 	if (&at == this)
-		return;
+		return *this;
 	MathAtom tmp(at);
 	swap(tmp.nucleus_, nucleus_);
+	return *this;
 }
 
 

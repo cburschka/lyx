@@ -21,13 +21,9 @@ public:
 	///
 	InsetEnvironment(BufferParams const &, std::string const & name);
 	///
-	InsetEnvironment(InsetEnvironment const &);
-	///
 	void write(Buffer const & buf, std::ostream & os) const;
 	///
 	void read(Buffer const & buf, LyXLex & lex);
-	///
-	virtual std::auto_ptr<InsetBase> clone() const;
 	///
 	InsetOld::Code lyxCode() const { return InsetOld::ENVIRONMENT_CODE; }
 	///
@@ -45,8 +41,10 @@ public:
             be closed before generating this inset. This is needed for
             insets that may contain several paragraphs */
 	bool noFontChange() const { return true; }
-
+protected:
+	InsetEnvironment(InsetEnvironment const &);
 private:
+	virtual std::auto_ptr<InsetBase> doClone() const;
 	/// the layout
 	LyXLayout_ptr layout_;
 };

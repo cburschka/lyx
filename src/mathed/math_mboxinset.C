@@ -40,7 +40,7 @@ MathMBoxInset::MathMBoxInset(BufferView & bv)
 }
 
 
-auto_ptr<InsetBase> MathMBoxInset::clone() const
+auto_ptr<InsetBase> MathMBoxInset::doClone() const
 {
 	return auto_ptr<InsetBase>(new MathMBoxInset(*this));
 }

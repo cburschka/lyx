@@ -21,7 +21,7 @@ using std::max;
 using std::auto_ptr;
 
 
-auto_ptr<InsetBase> MathOversetInset::clone() const
+auto_ptr<InsetBase> MathOversetInset::doClone() const
 {
 	return auto_ptr<InsetBase>(new MathOversetInset(*this));
 }
@@ -84,4 +84,3 @@ void MathOversetInset::validate(LaTeXFeatures & features) const
 	features.require("amsmath");
 	MathNestInset::validate(features);
 }
-

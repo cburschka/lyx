@@ -25,10 +25,6 @@ public:
 	explicit
 	InsetUrl(InsetCommandParams const &);
 	///
-	virtual std::auto_ptr<InsetBase> clone() const {
-		return std::auto_ptr<InsetBase>(new InsetUrl(params()));
-	}
-	///
 	InsetOld::Code lyxCode() const { return InsetOld::URL_CODE; }
 	///
 	void validate(LaTeXFeatures &) const;
@@ -50,6 +46,10 @@ public:
 	///
 	int docbook(Buffer const &, std::ostream &,
 		    OutputParams const &) const;
+private:
+	virtual std::auto_ptr<InsetBase> doClone() const {
+		return std::auto_ptr<InsetBase>(new InsetUrl(params()));
+	}
 };
 
 #endif

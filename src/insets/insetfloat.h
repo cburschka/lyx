@@ -51,8 +51,6 @@ public:
 	///
 	void validate(LaTeXFeatures & features) const;
 	///
-	virtual std::auto_ptr<InsetBase> clone() const;
-	///
 	InsetOld::Code lyxCode() const { return InsetOld::FLOAT_CODE; }
 	///
 	int latex(Buffer const &, std::ostream &,
@@ -84,6 +82,8 @@ public:
 protected:
 	virtual void priv_dispatch(LCursor & cur, FuncRequest & cmd);
 private:
+	virtual std::auto_ptr<InsetBase> doClone() const;
+
 	///
 	InsetFloatParams params_;
 };

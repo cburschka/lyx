@@ -24,7 +24,7 @@ MathLefteqnInset::MathLefteqnInset()
 {}
 
 
-auto_ptr<InsetBase> MathLefteqnInset::clone() const
+auto_ptr<InsetBase> MathLefteqnInset::doClone() const
 {
 	return auto_ptr<InsetBase>(new MathLefteqnInset(*this));
 }

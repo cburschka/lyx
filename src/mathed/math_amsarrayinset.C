@@ -30,7 +30,7 @@ MathAMSArrayInset::MathAMSArrayInset(string const & name)
 {}
 
 
-auto_ptr<InsetBase> MathAMSArrayInset::clone() const
+auto_ptr<InsetBase> MathAMSArrayInset::doClone() const
 {
 	return auto_ptr<InsetBase>(new MathAMSArrayInset(*this));
 }

@@ -21,9 +21,7 @@
 class MathDiffInset : public MathNestInset {
 public:
 	///
-	explicit MathDiffInset();
-	///
-	virtual std::auto_ptr<InsetBase> clone() const;
+	MathDiffInset();
 	///
 	void addDer(MathArray const & der);
 	///
@@ -41,6 +39,8 @@ public:
 	void mathmlize(MathMLStream &) const;
 	///
 	void write(WriteStream & os) const;
+private:
+	virtual std::auto_ptr<InsetBase> doClone() const;
 };
 
 #endif

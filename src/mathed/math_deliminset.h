@@ -26,8 +26,6 @@ public:
 	///
 	MathDelimInset(std::string const & left, std::string const & right, MathArray const &);
 	///
-	virtual std::auto_ptr<InsetBase> clone() const;
-	///
 	MathDelimInset * asDelimInset() { return this; }
 	///
 	MathDelimInset const * asDelimInset() const { return this; }
@@ -61,6 +59,7 @@ public:
 	///
 	std::string right_;
 private:
+	virtual std::auto_ptr<InsetBase> doClone() const;
 	///
 	mutable int dw_;
 };

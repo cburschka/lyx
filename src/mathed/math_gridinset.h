@@ -20,7 +20,6 @@
  *  This is the base to all grid-like editable math objects
  */
 class MathGridInset : public MathNestInset {
-
 public:
 
 	/// additional per-cell information
@@ -93,8 +92,6 @@ public:
 	MathGridInset(col_type m, row_type n, char valign, std::string const & halign);
 	/// Ensures that the dialog is closed.
 	~MathGridInset();
-	///
-	std::auto_ptr<InsetBase> clone() const;
 	///
 	void metrics(MetricsInfo & mi) const;
 	///
@@ -238,6 +235,8 @@ public:
 	std::vector<CellInfo> cellinfo_;
 	///
 	char v_align_; // add approp. type
+private:
+	virtual std::auto_ptr<InsetBase> doClone() const;
 };
 
 #endif

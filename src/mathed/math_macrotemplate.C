@@ -64,7 +64,7 @@ MathMacroTemplate::MathMacroTemplate(std::istream & is)
 }
 
 
-auto_ptr<InsetBase> MathMacroTemplate::clone() const
+auto_ptr<InsetBase> MathMacroTemplate::doClone() const
 {
 	return auto_ptr<InsetBase>(new MathMacroTemplate(*this));
 }

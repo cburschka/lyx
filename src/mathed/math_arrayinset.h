@@ -28,8 +28,6 @@ public:
 	/// convienience constructor from whitespace/newline seperated data
 	MathArrayInset(std::string const &, std::string const & str);
 	///
-	std::auto_ptr<InsetBase> clone() const;
-	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
@@ -48,6 +46,7 @@ public:
 	void maple(MapleStream & os) const;
 
 private:
+	virtual std::auto_ptr<InsetBase> doClone() const;
 	///
 	std::string name_;
 };

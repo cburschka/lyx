@@ -39,7 +39,7 @@ MathTabularInset::MathTabularInset(string const & name, char valign,
 {}
 
 
-auto_ptr<InsetBase> MathTabularInset::clone() const
+auto_ptr<InsetBase> MathTabularInset::doClone() const
 {
 	return auto_ptr<InsetBase>(new MathTabularInset(*this));
 }

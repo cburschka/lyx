@@ -25,7 +25,7 @@ MathXArrowInset::MathXArrowInset(string const & name)
 {}
 
 
-auto_ptr<InsetBase> MathXArrowInset::clone() const
+auto_ptr<InsetBase> MathXArrowInset::doClone() const
 {
 	return auto_ptr<InsetBase>(new MathXArrowInset(*this));
 }

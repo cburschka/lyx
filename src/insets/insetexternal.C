@@ -415,7 +415,7 @@ InsetExternal::InsetExternal(InsetExternal const & other)
 {}
 
 
-auto_ptr<InsetBase> InsetExternal::clone() const
+auto_ptr<InsetBase> InsetExternal::doClone() const
 {
 	return auto_ptr<InsetBase>(new InsetExternal(*this));
 }

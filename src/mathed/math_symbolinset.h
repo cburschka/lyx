@@ -29,8 +29,6 @@ public:
 	///
 	explicit MathSymbolInset(std::string const & name);
 	///
-	virtual std::auto_ptr<InsetBase> clone() const;
-	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
 	void draw(PainterInfo &, int x, int y) const;
@@ -68,6 +66,7 @@ public:
 	void infoize2(std::ostream & os) const;
 
 private:
+	virtual std::auto_ptr<InsetBase> doClone() const;
 	///
 	latexkeys const * sym_;
 	///

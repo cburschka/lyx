@@ -1,3 +1,18 @@
+2004-11-23  Lars Gullik Bjonnes  <larsbj@gullik.net>
+
+	* tabular.C (cellstruct): use initialization, store a shared_ptr
+	to insettext instead of the insettext directly, adjust to fit.
+	(operator=):  new function
+	(swap): new function
+	(rowstruct): use initialization
+	(columnstruct): use initialization
+	(ltType): use initialization
+	
+
+	* lyxlength.h (swap): new function 
+
+	* LColor.[Ch] (operator=): use the common semantics 
+
 2004-11-22  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* lyxfind.C (findNextChange): update the bufferview after setting
@@ -19,13 +34,13 @@
 	code; return true also for digits
 	(isWord, isKomma): remove
 
-	* text.C (cursorRightOneWord, cursorLeftOneWord, getWord): 
+	* text.C (cursorRightOneWord, cursorLeftOneWord, getWord):
 	* lyxfind.C (MatchString()): use isLetter instead of isWord
 
 2004-11-17  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
 	* pariterator.h (operatir=): comment out un-implemented member
-	function. 
+	function.
 
 	* paragraph.h: resolve ambiguity found by gcc 4.0 with the use of a
 	static cast.

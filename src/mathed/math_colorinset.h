@@ -21,8 +21,6 @@ public:
 	///
 	explicit MathColorInset(bool oldstyle);
 	///
-	std::auto_ptr<InsetBase> clone() const;
-	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	/// we write extra braces in any case...
 	bool extraBraces() const { return true; }
@@ -37,6 +35,7 @@ public:
 	///
 	void infoize(std::ostream & os) const;
 private:
+	virtual std::auto_ptr<InsetBase> doClone() const;
 	/// width of '[' in current font
 	mutable int w_;
 	///

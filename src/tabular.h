@@ -18,6 +18,8 @@
 #include "lyxlength.h"
 #include "insets/insettext.h"
 
+#include <boost/shared_ptr.hpp>
+
 #include <iosfwd>
 #include <vector>
 
@@ -364,9 +366,9 @@ public:
 	///
 	// end longtable support
 	///
-	InsetText & getCellInset(int cell) const;
+	boost::shared_ptr<InsetText> getCellInset(int cell) const;
 	///
-	InsetText & getCellInset(int row, int column) const;
+	boost::shared_ptr<InsetText> getCellInset(int row, int column) const;
 	/// Search for \param inset in the tabular, with the
 	///
 	int getCellFromInset(InsetBase const * inset) const;
@@ -384,6 +386,12 @@ public:
 	struct cellstruct {
 		///
 		cellstruct(BufferParams const &);
+		///
+		cellstruct(cellstruct const &);
+		///
+		cellstruct & operator=(cellstruct);
+		///
+		void swap(cellstruct & rhs);
 		///
 		int cellno;
 		///
@@ -411,7 +419,7 @@ public:
 		///
 		LyXLength p_width; // this is only set for multicolumn!!!
 		///
-		InsetText inset;
+		boost::shared_ptr<InsetText> inset;
 	};
 	cellstruct & cellinfo_of_cell(int cell) const;
 	///
