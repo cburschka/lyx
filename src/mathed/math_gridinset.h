@@ -18,6 +18,8 @@
 
 class MathGridInset : public MathNestInset {
 
+public:
+
 	/// additional per-cell information
 	struct CellInfo {
 		///
