@@ -1,3 +1,19 @@
+2003-04-09  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* text2.C (getFont): change to take a ParagraphList::iterator
+	instead of Paragraph*
+	Adjust several functions.
+
+	* text.C (transformChar): change to take a ParagraphList::iterator
+	instead of Paragraph*
+	(singleWidth): ditto
+	Adjust several functions.
+	
+	* rowpainter.C: adjust several functions
+	* rowpainter.h:store a ParagraphList::iterator and not a
+	Paragraph&.
+	
+
 2003-04-09  John Levon  <levon@movementarian.org>
 
 	* lyxfunc.C:

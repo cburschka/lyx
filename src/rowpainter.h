@@ -1,4 +1,4 @@
-// -** C++ -*-
+// -*- C++ -*-
 /**
  * \file rowpainter.h
  * This file is part of LyX, the document processor.
@@ -85,7 +85,7 @@ private:
 	RowList::iterator row_;
 
 	/// Row's paragraph
-	Paragraph const & par_;
+	mutable ParagraphList::iterator  pit_;
 
 	// Looks ugly - is
 	int xo_;

@@ -186,8 +186,9 @@ int LyXText::getRealCursorX() const
 }
 
 
-unsigned char LyXText::transformChar(unsigned char c, Paragraph * par,
-			pos_type pos) const
+#warning FIXME  This function seems to belong outside of LyxText.
+unsigned char LyXText::transformChar(unsigned char c, Paragraph const & par,
+				     pos_type pos) const
 {
 	if (!Encodings::is_arabic(c))
 		if (lyxrc.font_norm_type == LyXRC::ISO_8859_6_8 && IsDigit(c))
@@ -195,12 +196,12 @@ unsigned char LyXText::transformChar(unsigned char c, Paragraph * par,
 		else
 			return c;
 
-	unsigned char const prev_char = pos > 0 ? par->getChar(pos-1) : ' ';
+	unsigned char const prev_char = pos > 0 ? par.getChar(pos - 1) : ' ';
 	unsigned char next_char = ' ';
 
-	for (pos_type i = pos+1; i < par->size(); ++i)
-		if (!Encodings::IsComposeChar_arabic(par->getChar(i))) {
-			next_char = par->getChar(i);
+	for (pos_type i = pos + 1; i < par.size(); ++i)
+		if (!Encodings::IsComposeChar_arabic(par.getChar(i))) {
+			next_char = par.getChar(i);
 			break;
 		}
 
@@ -244,26 +245,23 @@ unsigned char LyXText::transformChar(unsigned char c, Paragraph * par,
 //
 // Lgb
 
-#warning FIXME Convert this to ParagraphList::iterator
-int LyXText::singleWidth(Paragraph * par,
-			 pos_type pos) const
+int LyXText::singleWidth(ParagraphList::iterator pit, pos_type pos) const
 {
-	if (pos >= par->size())
+	if (pos >= pit->size())
 		return 0;
 
-	char const c = par->getChar(pos);
-	return singleWidth(par, pos, c);
+	char const c = pit->getChar(pos);
+	return singleWidth(pit, pos, c);
 }
 
 
-#warning FIXME Convert this to ParagraphList::iterator
-int LyXText::singleWidth(Paragraph * par,
+int LyXText::singleWidth(ParagraphList::iterator pit,
 			 pos_type pos, char c) const
 {
-	if (pos >= par->size())
+	if (pos >= pit->size())
 		return 0;
 
-	LyXFont const font = getFont(bv()->buffer(), par, pos);
+	LyXFont const font = getFont(bv()->buffer(), pit, pos);
 
 	// The most common case is handled first (Asger)
 	if (IsPrintable(c)) {
@@ -274,7 +272,7 @@ int LyXText::singleWidth(Paragraph * par,
 				if (Encodings::IsComposeChar_arabic(c))
 					return 0;
 				else
-					c = transformChar(c, par, pos);
+					c = transformChar(c, *pit, pos);
 			} else if (font.language()->lang() == "hebrew" &&
 				 Encodings::IsComposeChar_hebrew(c))
 				return 0;
@@ -284,7 +282,7 @@ int LyXText::singleWidth(Paragraph * par,
 	}
 
 	if (c == Paragraph::META_INSET) {
-		Inset * tmpinset = par->getInset(pos);
+		Inset * tmpinset = pit->getInset(pos);
 		if (tmpinset) {
 			if (tmpinset->lyxCode() == Inset::HFILL_CODE) {
 				// Because of the representation as vertical lines
@@ -794,14 +792,14 @@ LyXText::rowBreakPoint(Row const & row) const
 
 		char const c = pit->getChar(i);
 
-		int thiswidth = singleWidth(&*pit, i, c);
+		int thiswidth = singleWidth(pit, i, c);
 
 		// add the auto-hfill from label end to the body
 		if (body_pos && i == body_pos) {
 			thiswidth += font_metrics::width(layout->labelsep,
 				    getLabelFont(bv()->buffer(), &*pit));
 			if (pit->isLineSeparator(i - 1))
-				thiswidth -= singleWidth(&*pit, i - 1);
+				thiswidth -= singleWidth(pit, i - 1);
 		}
 
 		x += thiswidth;
@@ -898,18 +896,18 @@ int LyXText::fill(RowList::iterator row, int paper_width) const
 		if (body_pos > 0 && i == body_pos) {
 			w += font_metrics::width(layout->labelsep, getLabelFont(bv()->buffer(), &*pit));
 			if (pit->isLineSeparator(i - 1))
-				w -= singleWidth(&*pit, i - 1);
+				w -= singleWidth(pit, i - 1);
 			int left_margin = labelEnd(*row);
 			if (w < left_margin)
 				w = left_margin;
 		}
-		w += singleWidth(&*pit, i);
+		w += singleWidth(pit, i);
 		++i;
 	}
 	if (body_pos > 0 && body_pos > last) {
 		w += font_metrics::width(layout->labelsep, getLabelFont(bv()->buffer(), &*pit));
 		if (last >= 0 && pit->isLineSeparator(last))
-			w -= singleWidth(&*pit, last);
+			w -= singleWidth(pit, last);
 		int const left_margin = labelEnd(*row);
 		if (w < left_margin)
 			w = left_margin;
@@ -938,7 +936,7 @@ int LyXText::labelFill(Row const & row) const
 	int w = 0;
 	pos_type i = row.pos();
 	while (i <= last) {
-		w += singleWidth(&*row.par(), i);
+		w += singleWidth(row.par(), i);
 		++i;
 	}
 
@@ -1038,7 +1036,7 @@ void LyXText::setHeightOfRow(RowList::iterator rit)
 					maxdesc = max(maxdesc, desc);
 				}
 			} else {
-				maxwidth += singleWidth(&*rit->par(), pos);
+				maxwidth += singleWidth(rit->par(), pos);
 			}
 		}
 	}

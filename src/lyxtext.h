@@ -102,7 +102,7 @@ public:
 	///
 	int getRealCursorX() const;
 	///
-	LyXFont const getFont(Buffer const *, Paragraph * par,
+	LyXFont const getFont(Buffer const *, ParagraphList::iterator pit,
 		lyx::pos_type pos) const;
 	///
 	LyXFont const getLayoutFont(Buffer const *, Paragraph * par) const;
@@ -544,10 +544,10 @@ public:
 	Inset * checkInsetHit(int & x, int & y);
 
 	///
-	int singleWidth(Paragraph * par,
+	int singleWidth(ParagraphList::iterator pit,
 		lyx::pos_type pos) const;
 	///
-	int singleWidth(Paragraph * par,
+	int singleWidth(ParagraphList::iterator pit,
 		lyx::pos_type pos, char c) const;
 
 	/// return the color of the canvas
@@ -556,7 +556,7 @@ public:
 	///
 	mutable bool bidi_same_direction;
 
-	unsigned char transformChar(unsigned char c, Paragraph * par,
+	unsigned char transformChar(unsigned char c, Paragraph const & par,
 				    lyx::pos_type pos) const;
 
 	/**

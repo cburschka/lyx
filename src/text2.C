@@ -133,26 +133,26 @@ LyXFont const realizeFont(LyXFont const & font,
 // smaller. (Asger)
 // If position is -1, we get the layout font of the paragraph.
 // If position is -2, we get the font of the manual label of the paragraph.
-LyXFont const LyXText::getFont(Buffer const * buf, Paragraph * par,
+LyXFont const LyXText::getFont(Buffer const * buf, ParagraphList::iterator pit,
 			       pos_type pos) const
 {
 	lyx::Assert(pos >= 0);
 
-	LyXLayout_ptr const & layout = par->layout();
+	LyXLayout_ptr const & layout = pit->layout();
 
 	// We specialize the 95% common case:
-	if (!par->getDepth()) {
+	if (!pit->getDepth()) {
 		if (layout->labeltype == LABEL_MANUAL
-		    && pos < par->beginningOfBody()) {
+		    && pos < pit->beginningOfBody()) {
 			// 1% goes here
-			LyXFont f = par->getFontSettings(buf->params, pos);
-			if (par->inInset())
-				par->inInset()->getDrawFont(f);
+			LyXFont f = pit->getFontSettings(buf->params, pos);
+			if (pit->inInset())
+				pit->inInset()->getDrawFont(f);
 			return f.realize(layout->reslabelfont);
 		} else {
-			LyXFont f = par->getFontSettings(buf->params, pos);
-			if (par->inInset())
-				par->inInset()->getDrawFont(f);
+			LyXFont f = pit->getFontSettings(buf->params, pos);
+			if (pit->inInset())
+				pit->inInset()->getDrawFont(f);
 			return f.realize(layout->resfont);
 		}
 	}
@@ -161,7 +161,7 @@ LyXFont const LyXText::getFont(Buffer const * buf, Paragraph * par,
 
 	LyXFont layoutfont;
 
-	if (pos < par->beginningOfBody()) {
+	if (pos < pit->beginningOfBody()) {
 		// 1% goes here
 		layoutfont = layout->labelfont;
 	} else {
@@ -169,13 +169,13 @@ LyXFont const LyXText::getFont(Buffer const * buf, Paragraph * par,
 		layoutfont = layout->font;
 	}
 
-	LyXFont tmpfont = par->getFontSettings(buf->params, pos);
+	LyXFont tmpfont = pit->getFontSettings(buf->params, pos);
 	tmpfont.realize(layoutfont);
 
-	if (par->inInset())
-		par->inInset()->getDrawFont(tmpfont);
+	if (pit->inInset())
+		pit->inInset()->getDrawFont(tmpfont);
 
-	return realizeFont(tmpfont, buf, par);
+	return realizeFont(tmpfont, buf, &*pit);
 }
 
 
@@ -648,7 +648,6 @@ void LyXText::redoParagraphs(LyXCursor const & cur,
 			     Paragraph const * ep)
 {
 	RowList::iterator tmprit = cur.row();
-	ParagraphList::iterator begpit = cur.row()->par();
 	ParagraphList::iterator endpit(const_cast<Paragraph*>(ep));
 	int y = cur.y() - tmprit->baseline();
 
@@ -1771,21 +1770,21 @@ float LyXText::getCursorX(RowList::iterator rit,
 					getLabelFont(bv()->buffer(),
 						     &*rit->par()));
 			if (rit->par()->isLineSeparator(body_pos - 1))
-				x -= singleWidth(&*rit->par(), body_pos - 1);
+				x -= singleWidth(rit->par(), body_pos - 1);
 		}
 
 		if (hfillExpansion(*this, rit, pos)) {
-			x += singleWidth(&*rit->par(), pos);
+			x += singleWidth(rit->par(), pos);
 			if (pos >= body_pos)
 				x += fill_hfill;
 			else
 				x += fill_label_hfill;
 		} else if (rit->par()->isSeparator(pos)) {
-			x += singleWidth(&*rit->par(), pos);
+			x += singleWidth(rit->par(), pos);
 			if (pos >= body_pos)
 				x += fill_separator;
 		} else
-			x += singleWidth(&*rit->par(), pos);
+			x += singleWidth(rit->par(), pos);
 	}
 	return x;
 }
@@ -1906,21 +1905,21 @@ LyXText::getColumnNearX(RowList::iterator rit, int & x, bool & boundary) const
 				font_metrics::width(layout->labelsep,
 					       getLabelFont(bv()->buffer(), &*rit->par()));
 			if (rit->par()->isLineSeparator(body_pos - 1))
-				tmpx -= singleWidth(&*rit->par(), body_pos - 1);
+				tmpx -= singleWidth(rit->par(), body_pos - 1);
 		}
 
 		if (hfillExpansion(*this, rit, c)) {
-			tmpx += singleWidth(&*rit->par(), c);
+			tmpx += singleWidth(rit->par(), c);
 			if (c >= body_pos)
 				tmpx += fill_hfill;
 			else
 				tmpx += fill_label_hfill;
 		} else if (rit->par()->isSeparator(c)) {
-			tmpx += singleWidth(&*rit->par(), c);
+			tmpx += singleWidth(rit->par(), c);
 			if (c >= body_pos)
 				tmpx+= fill_separator;
 		} else {
-			tmpx += singleWidth(&*rit->par(), c);
+			tmpx += singleWidth(rit->par(), c);
 		}
 		++vc;
 	}
@@ -1964,9 +1963,9 @@ LyXText::getColumnNearX(RowList::iterator rit, int & x, bool & boundary) const
 	if (rit->pos() <= last && c > last
 	    && rit->par()->isNewline(last)) {
 		if (bidi_level(last) % 2 == 0)
-			tmpx -= singleWidth(&*rit->par(), last);
+			tmpx -= singleWidth(rit->par(), last);
 		else
-			tmpx += singleWidth(&*rit->par(), last);
+			tmpx += singleWidth(rit->par(), last);
 		c = last;
 	}
 
