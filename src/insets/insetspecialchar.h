@@ -28,8 +28,8 @@ public:
 	enum Kind {
 		/// Optional hyphenation point (\-)
 		HYPHENATION,
-		/// Hyphenation break point (\textcompwordmark)
-		HYPHENATION_BREAK,
+		/// Ligature break point (\textcompwordmark)
+		LIGATURE_BREAK,
 		/// ... (\ldots)
 		LDOTS,
 		/// End of sentence punctuation (\@)

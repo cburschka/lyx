@@ -50,7 +50,7 @@ int InsetSpecialChar::width(BufferView *, LyXFont const & font) const
 			w -= 2; // to make it look shorter
 		return w;
 	}
-	case HYPHENATION_BREAK:
+	case LIGATURE_BREAK:
 	{
 		return lyxfont::width('|', font);
 	}
@@ -90,7 +90,7 @@ void InsetSpecialChar::draw(BufferView * bv, LyXFont const & f,
 		x += width(bv, font);
 		break;
 	}
-	case HYPHENATION_BREAK:
+	case LIGATURE_BREAK:
 	{
 		font.setColor(LColor::special);
 		pain.text(int(x), baseline, "|", font);
@@ -162,7 +162,7 @@ void InsetSpecialChar::write(Buffer const *, ostream & os) const
 	case HYPHENATION:	
 		command = "\\-";	
 		break;
-	case HYPHENATION_BREAK: 
+	case LIGATURE_BREAK: 
 		command = "\\textcompwordmark{}"; 
 		break;
 	case END_OF_SENTENCE:	
@@ -192,7 +192,7 @@ void InsetSpecialChar::read(Buffer const *, LyXLex & lex)
 	if (command == "\\-")
 		kind = HYPHENATION;
 	else if (command == "\\textcompwordmark{}")
-		kind = HYPHENATION_BREAK;
+		kind = LIGATURE_BREAK;
 	else if (command == "\\@.")
 		kind = END_OF_SENTENCE;
 	else if (command == "\\ldots{}")
@@ -214,7 +214,7 @@ int InsetSpecialChar::latex(Buffer const *, ostream & os, bool /*fragile*/,
 	case HYPHENATION:	  
 		os << "\\-";	
 		break;
-	case HYPHENATION_BREAK:
+	case LIGATURE_BREAK:
 		os << "\\textcompwordmark{}";
 		break;
 	case END_OF_SENTENCE:	  
@@ -238,7 +238,7 @@ int InsetSpecialChar::ascii(Buffer const *, ostream & os, int) const
 {
 	switch (kind) {
 	case HYPHENATION:
-	case HYPHENATION_BREAK:
+	case LIGATURE_BREAK:
 		break;
 	case END_OF_SENTENCE:	  
 		os << ".";	

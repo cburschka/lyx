@@ -1523,8 +1523,8 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		specialChar(InsetSpecialChar::HYPHENATION);
 		break;
 		
-	case LFUN_HYPHENATION_BREAK:
-		specialChar(InsetSpecialChar::HYPHENATION_BREAK);
+	case LFUN_LIGATURE_BREAK:
+		specialChar(InsetSpecialChar::LIGATURE_BREAK);
 		break;
 		
 	case LFUN_LDOTS:
