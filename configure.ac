@@ -262,9 +262,7 @@ AC_TYPE_SIGNAL
 AC_TYPE_SIZE_T
 AC_TYPE_UID_T
 
-AC_CHECK_FUNCS(snprintf vsnprintf strerror)
-LYX_CHECK_DECL(snprintf, stdio.h)
-LYX_CHECK_DECL(vsnprintf, stdio.h)
+AC_CHECK_FUNCS(strerror)
 LYX_CHECK_DECL(istreambuf_iterator, iterator)
 LYX_CHECK_DECL(mkstemp,[unistd.h stdlib.h])
 

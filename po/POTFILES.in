@@ -38,6 +38,7 @@ src/frontends/gtk/GBC.h
 src/frontends/gtk/GChanges.C
 src/frontends/gtk/GCharacter.C
 src/frontends/gtk/GErrorList.C
+src/frontends/gtk/GGraphics.C
 src/frontends/gtk/GLog.C
 src/frontends/gtk/GMathDelim.C
 src/frontends/gtk/GMathPanel.C
@@ -192,7 +193,6 @@ src/mathed/math_macrotemplate.C
 src/mathed/math_nestinset.C
 src/mathed/ref_inset.C
 src/output.C
-src/output_docbook.C
 src/output_linuxdoc.C
 src/output_plaintext.C
 src/paragraph.C
