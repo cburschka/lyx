@@ -1,3 +1,7 @@
+2005-02-10  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* text2.C (setCounter): check for inInset() == 0
+
 2005-02-09  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* BufferView_pimpl.C (dispatch): handle LFUN_GOTO_PARAGRAPH here,
