@@ -219,6 +219,7 @@ void InsetText::clear()
 		par = tmp;
 	}
 	par = new Paragraph;
+	reinitLyXText();
 	need_update = INIT;
 }
 
@@ -545,6 +546,7 @@ void InsetText::update(BufferView * bv, LyXFont const & font, bool reinit)
 	in_update = true;
 	if (reinit || need_update == INIT) {
 		need_update = FULL;
+		// we should put this call where we set need_update to INIT!
 		reinitLyXText();
 		if (owner())
 			owner()->update(bv, font, true);
@@ -1938,6 +1940,7 @@ void InsetText::setParagraphData(Paragraph * p)
 		np = np->next();
 		np->setInsetOwner(this);
 	}
+	reinitLyXText();
 	need_update = INIT;
 }
 
@@ -2037,8 +2040,11 @@ Row * InsetText::crow(BufferView * bv) const
 LyXText * InsetText::getLyXText(BufferView const * lbv,
                                 bool const recursive) const
 {
-	if (!recursive && (cached_bview == lbv))
+	if (!recursive && (cached_bview == lbv)) {
+		LyXText * lt = cached_text.get();
+		lyx::Assert(lt && lt->firstrow->par() == par);
 		return cached_text.get();
+	}
 	
 	// Super UGLY! (Lgb)
 	BufferView * bv = const_cast<BufferView *>(lbv);
@@ -2327,13 +2333,7 @@ Paragraph * InsetText::paragraph() const
 void InsetText::paragraph(Paragraph * p)
 {
 	par = p;
-#if 0
-	// we now have to update/redraw all instances
-	for (Cache::iterator cit = cache.begin(); cit != cache.end(); ++cit) {
-		delete cit->second;
-		cit->second = 0;
-	}
-#endif
+	reinitLyXText();
 	// redraw myself when asked for
 	need_update = INIT;
 }

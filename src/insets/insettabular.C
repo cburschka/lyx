@@ -1352,6 +1352,7 @@ void InsetTabular::resetPos(BufferView * bv) const
 {
 	if (!locked || nodraw())
 		return;
+#warning This should be fixed in the right manner (20011128 Jug)
 	// fast hack to fix infinite repaintings!
 	if (in_reset_pos)
 		return;

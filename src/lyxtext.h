@@ -501,9 +501,10 @@ public:
 		return bidi_start == -1 ||
 			(bidi_start <= pos && pos <= bidi_end);
 	}
-private:
+public:
 	///
 	mutable Row * firstrow;
+private:
 	///
 	mutable Row * lastrow;
 

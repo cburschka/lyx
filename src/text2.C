@@ -391,6 +391,7 @@ void LyXText::removeRow(Row * row) const
 		row->next()->previous(row->previous());
 	if (!row->previous()) {
 		firstrow = row->next();
+		lyx::Assert(firstrow);
 	} else  {
 		row->previous()->next(row->next());
 	}
@@ -2366,6 +2367,10 @@ void LyXText::fixCursorAfterDelete(BufferView * bview,
 void LyXText::deleteEmptyParagraphMechanism(BufferView * bview,
 					    LyXCursor const & old_cursor) const
 {
+	// don't delete anything if this is the ONLY paragraph!
+	if (!old_cursor.par()->next() && !old_cursor.par()->previous())
+		return;
+	
 	// Would be wrong to delete anything if we have a selection.
 	if (selection.set()) return;
 

@@ -54,7 +54,8 @@ error_item errorTags[] = {
 	{ Debug::INSETS,    "insets",    N_("LyX Insets")},
 	{ Debug::FILES,     "files",     N_("Files used by LyX")},
 	{ Debug::WORKAREA,  "workarea",  N_("Workarea events")},
-        { Debug::ANY,       "any",       N_("All debugging messages")}
+	{ Debug::INSETTEXT, "insettext", N_("Insettext/tabular messanges")},
+	{ Debug::ANY,       "any",       N_("All debugging messages")}
 };
 
 

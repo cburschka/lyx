@@ -390,6 +390,9 @@ void BufferView::replaceWord(string const & replacestring)
 
 bool BufferView::lockInset(UpdatableInset * inset)
 {
+	// don't relock if we're already locked
+	if (theLockingInset() == inset)
+		return true;
 	if (!theLockingInset() && inset) {
 		theLockingInset(inset);
 		return true;

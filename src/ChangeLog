@@ -1,3 +1,13 @@
+2001-11-29  Juergen Vigna  <jug@sad.it>
+
+	* BufferView2.C (lockInset): don't relock if we're already locked!
+
+	* text2.C (deleteEmptyParagraphMechanism): don't do anything if it's
+	the only paragraph.
+	(removeRow): added Assert::(firstrow)
+
+	* debug.C: forgot to add INSETTEXT here.
+
 2001-11-28  Juergen Vigna  <jug@sad.it>
 
 	* sp_spell.C (initialize): changed error text to more general

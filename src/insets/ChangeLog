@@ -1,9 +1,16 @@
+2001-11-29  Juergen Vigna  <jug@sad.it>
+
+	* insettext.C: inserted a reinitLyXText function everywhere I delete
+	the paragraphs! This should fixe the crashes we had.
+
 2001-11-28  André Pönitz <poenitz@gmx.net>
 
 	* insetnote.C: add pos initialization that I removed without
 	  knowing what I did.
 
 2001-11-28  Juergen Vigna  <jug@sad.it>
+
+	* insettabular.C (resetPos): hack to not crash with infinite paints.
 
 	* insettabular.h: insert missing function allowSpellcheck()!
 
