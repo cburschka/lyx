@@ -2350,7 +2350,7 @@ string LyXFunc::Dispatch(int ac,
 	}
 	break;
 
-	case LFUN_INSERT_DATE:  // jdblair: insert-date cmd
+	case LFUN_DATE_INSERT:  // jdblair: date-insert cmd
 	{
 		char datetmp[32];
 		int datetmp_len;
@@ -2364,7 +2364,7 @@ string LyXFunc::Dispatch(int ac,
 		if (!argument.empty())
 			arg = argument;
 		else if (arg.empty())
-			arg = lyxrc->insert_date_format;
+			arg = lyxrc->date_insert_format;
 		datetmp_len = (int) strftime(datetmp, 32, arg.c_str(), now_tm);
 		for (int i = 0; i < datetmp_len; i++) {
 			owner->view()->text->InsertChar(datetmp[i]);

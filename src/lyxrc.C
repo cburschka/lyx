@@ -133,7 +133,7 @@ enum LyXRCTags {
 	RC_VIEWPDF_COMMAND,
 	RC_PDF_TO_PS_COMMAND,
 	RC_DVI_TO_PS_COMMAND,
-	RC_INSERT_DATE_FORMAT,
+	RC_DATE_INSERT_FORMAT,
 	RC_LAST
 };
 
@@ -168,7 +168,7 @@ static keyword_item lyxrcTags[] = {
 	{ "\\font_encoding", RC_FONT_ENCODING },
 	{ "\\html_command", RC_HTML_COMMAND },
 	{ "\\input", RC_INPUT },
-	{ "\\insert_date_format", RC_INSERT_DATE_FORMAT },
+	{ "\\date_insert_format", RC_DATE_INSERT_FORMAT },
 	{ "\\kbmap", RC_KBMAP },
 	{ "\\kbmap_primary", RC_KBMAP_PRIMARY },
 	{ "\\kbmap_secondary", RC_KBMAP_SECONDARY },
@@ -325,7 +325,7 @@ LyXRC::LyXRC()
 	hasBindFile = false;
 	defaultKeyBindings();
 	///
-	insert_date_format = "%A, %B %d %Y";
+	date_insert_format = "%A, %e. %B %Y";
 }
 
 
@@ -907,9 +907,9 @@ int LyXRC::read(string const & filename)
 		        if (lexrc.next())
 		                make_backup = lexrc.GetBool();
 			break;
-		case RC_INSERT_DATE_FORMAT:
+		case RC_DATE_INSERT_FORMAT:
 			if (lexrc.next())
-				insert_date_format = lexrc.GetString();
+				date_insert_format = lexrc.GetString();
 			break;
 		case RC_LAST: break; // this is just a dummy
 		}

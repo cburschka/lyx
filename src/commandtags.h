@@ -242,7 +242,7 @@ enum kb_action {
 	LFUN_MENU_SEPARATOR,            // Asger 990220
 	LFUN_SEQUENCE,                  // Andre' 991111
 	LFUN_SAVEPREFERENCES,           // Lgb 991127
-	LFUN_INSERT_DATE,		// jdblair 20000131
+	LFUN_DATE_INSERT,		// jdblair 20000131
 	LFUN_LASTACTION  /* this marks the end of the table */
 };
 

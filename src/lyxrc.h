@@ -198,7 +198,7 @@ public:
 	///
 	string lyxpipes;
 	///
-	string insert_date_format;
+	string date_insert_format;
 
 private:
 	///
