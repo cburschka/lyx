@@ -457,12 +457,15 @@
 \bind "M-k t"                  "keymap-toggle"
 \bind "M-k x"                  "keymap-off"
 
-
-
 #
 # Misc menu
 #
+ 
+# this clashes with M-x so we can't use it. M-x is more
+# important (reported by Serge Winitzki <winitzki@yahoo.com>)
+# \bind "M-x c"                  "screen-recenter"
 
-\bind "M-x c"                  "screen-recenter"
+\bind "M-x"			"command-execute"
+
 
 \bind_file latinkeys.bind
