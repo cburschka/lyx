@@ -1,5 +1,7 @@
 2001-02-16  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
+	* Makefile.am (lyx_SOURCES): removed bibforms.h
+
 	* vspace.h: doxygen
 
 	* text.C (GetVisibleRow): make several local vars const

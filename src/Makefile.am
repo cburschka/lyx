@@ -81,7 +81,6 @@ lyx_SOURCES = \
 	Variables.h \
 	WorkArea.C \
 	WorkArea.h \
-	bibforms.h \
 	bmtable.c \
 	bmtable.h \
 	broken_headers.h \
