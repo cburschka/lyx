@@ -384,6 +384,9 @@ public:
 		InsetList::iterator it;
 	};
 	///
+	friend class inset_iterator;
+	
+	///
 	inset_iterator inset_iterator_begin();
 	///
 	inset_iterator inset_iterator_end();

@@ -275,11 +275,6 @@ private:
 	///
 	Row * crow(BufferView *) const;
 	///
-	/// This instead of a macro
-	LyXText * TEXT(BufferView * bv) const {
-		return getLyXText(bv);
-	}
-	///
 	void drawFrame(Painter &, bool cleared) const;
 	///
 	void clearFrame(Painter &, bool cleared) const;
