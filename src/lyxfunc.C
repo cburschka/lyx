@@ -2538,11 +2538,10 @@ string LyXFunc::Dispatch(int ac,
 	}
 	break;
 	
-	case LFUN_CREATE_CITATION:
+	case LFUN_CITATION_CREATE:
 	{
 		// Should do this "at source"
-		InsetCommandParams p;
-		p.setCmdName( "cite" );
+		InsetCommandParams p( "cite" );
 		
 		if (contains(argument, "|")) {
 			p.setContents( token(argument, '|', 0) );
@@ -2555,7 +2554,7 @@ string LyXFunc::Dispatch(int ac,
 	}
 	break;
 		    
-	case LFUN_INSERT_CITATION:
+	case LFUN_CITATION_INSERT:
 	{
 		InsetCommandParams p;
 		p.setFromString( argument );
@@ -2621,21 +2620,18 @@ string LyXFunc::Dispatch(int ac,
 	}
 	break;
 		
-	case LFUN_INDEX_INSERT:
-	case LFUN_INDEX_INSERT_LAST:
+	case LFUN_INDEX_CREATE:
+	case LFUN_INDEX_CREATE_LAST:
 	{
 	  	// Can't do that at the beginning of a paragraph.
 	  	if (owner->view()->text->cursor.pos() - 1 < 0)
 			break;
 
-		InsetIndex * new_inset = new InsetIndex();
+		InsetCommandParams p( "index" );
+		
 		if (!argument.empty()) {
-  			string lsarg(argument);
-			new_inset->setContents(lsarg);
-			if (!owner->view()->insertInset(new_inset))
-				delete new_inset;
+			p.setContents( argument );
 		} else {
-			//reh 98/09/21
 			//get the current word for an argument
 			LyXParagraph::size_type lastpos = 
 				owner->view()->text->cursor.pos() - 1;
@@ -2646,36 +2642,32 @@ string LyXFunc::Dispatch(int ac,
 					 ->text->cursor.par()->GetWord(lastpos));
 
 			//make the new inset and write the current word into it
-			InsetIndex * new_inset = new InsetIndex();
-
-			new_inset->setContents(curstring);
-
-			//don't edit it if the call was to INSERT_LAST
-			if(action != LFUN_INDEX_INSERT_LAST) {
-				new_inset->Edit(owner->view(), 0, 0, 0);
-			} else {
-				//it looks blank on the screen unless
-				//we do  something.  put it here.
-
-				// move the cursor to the returned value of lastpos
-				// but only for the auto-insert
-				owner->view()->text->cursor.pos(lastpos);
-			}
-
-			//put the new inset into the buffer.
-			// there should be some way of knowing the user
-			//cancelled & avoiding this, but i don't know how
-			if (!owner->view()->insertInset(new_inset))
-				delete new_inset;
+			p.setContents( curstring );
 		}
+
+		owner->getDialogs()->createIndex( p.getAsString() );
 	}
 	break;
+		    
+	case LFUN_INDEX_INSERT:
+	{
+		InsetCommandParams p;
+		p.setFromString( argument );
 
+		InsetIndex * inset = new InsetIndex( p );
+		if (!owner->view()->insertInset(inset))
+			delete inset;
+		else
+			owner->view()->updateInset( inset, true );
+	}
+	break;
+		    
 	case LFUN_INDEX_PRINT:
 	{
-		Inset * new_inset = new InsetPrintIndex(owner->buffer());
-		if (!owner->view()->insertInset(new_inset, "Standard", true))
-			delete new_inset;
+		InsetCommandParams p("printindex");
+		Inset * inset = new InsetPrintIndex(p);
+		if (!owner->view()->insertInset(inset, "Standard", true))
+			delete inset;
 	}
 	break;
 

@@ -26,6 +26,10 @@ libxforms_la_SOURCES = \
 	FormGraphics.h \
 	form_graphics.C \
 	form_graphics.h \
+	FormIndex.C \
+	FormIndex.h \
+	form_index.C \
+	form_index.h \
 	FormPreferences.C \
 	FormPreferences.h \
 	form_preferences.C \

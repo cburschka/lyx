@@ -99,6 +99,12 @@ void MathDelimInset::Write(ostream & os, bool fragile)
 void MathDecorationInset::Write(ostream & os, bool fragile)
 {
 	latexkeys * l = lm_get_key_by_id(deco, LM_TK_WIDE);
+	if (fragile &&
+	    (strcmp(l->name, "overbrace") == 0 ||
+	     strcmp(l->name, "underbrace") == 0 ||
+	     strcmp(l->name, "overleftarrow") == 0 ||
+	     strcmp(l->name, "overrightarrow") == 0))
+		os << "\\protect";
 	os << '\\' << l->name << '{';
 	MathParInset::Write(os, fragile);  
 	os << '}';

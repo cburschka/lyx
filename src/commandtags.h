@@ -196,10 +196,10 @@ enum kb_action {
 	LFUN_MENURELOAD,		// Asger 1997-02-02
 	LFUN_FAX,			// Asger 1997-02-10
 	LFUN_RECONFIGURE,		// Asger 1997-02-14
-	LFUN_INSERT_CITATION,           // AAS 97-02-23
+	LFUN_CITATION_INSERT,           // AAS 97-02-23
 	LFUN_INSERT_BIBTEX,             // AAS 97-02-23
-	LFUN_INDEX_INSERT,              // Lgb 97-02-27
-	LFUN_INDEX_INSERT_LAST, // 180  // Reh 98-09-17
+	LFUN_INDEX_CREATE,              // Lgb 97-02-27
+	LFUN_INDEX_CREATE_LAST, // 180  // Reh 98-09-17
 	LFUN_INDEX_PRINT,               // Lgb 97-02-27
 	LFUN_APROPOS,                   // Asger 1997-02-27
 	LFUN_LATEX_LOG,                 // Lgb 97-04-05
@@ -267,12 +267,13 @@ enum kb_action {
 	LFUN_INSET_FLOAT,               // Lgb 20000627
 	LFUN_INSET_LIST,                // Lgb 20000627
 	LFUN_INSET_THEOREM,             // Lgb 20000630
-	LFUN_CREATE_CITATION,           // Angus 20000705
+	LFUN_CITATION_CREATE,           // Angus 20000705
 	LFUN_INSET_CAPTION,             // Lgb 20000718
 	LFUN_SWITCHBUFFER,  // and where is this comming from?
 	LFUN_INSERT_URL,                // Angus 20000726
 	LFUN_TABULAR_FEATURE,           // Jug 20000728
 	LFUN_LAYOUT_TABULAR,            // Jug 20000731
+	LFUN_INDEX_INSERT,              // Angus 20000803
 	LFUN_LASTACTION  /* this marks the end of the table */
 };
 

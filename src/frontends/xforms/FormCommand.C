@@ -34,15 +34,18 @@ FormCommand::FormCommand(LyXView * lv, Dialogs * d, string const & t)
 {}
 
 
+FormCommand::~FormCommand()
+{
+	free();
+}
+
+
 void FormCommand::showInset( InsetCommand * const inset )
 {
 	if( dialogIsOpen || inset == 0 ) return;
 
 	inset_ = inset;
-	// companion to Lars' commenting out in insetcommand.
-	// need a better plan perhaps since there seems to be a small
-	// flaw here if we copy an inset while it's visible
-	//	ih_ = inset_->hide.connect(slot(this, &FormCommand::hide));
+	ih_ = inset_->hide.connect(slot(this, &FormCommand::hide));
 
 	params = inset->params();
 	show();
@@ -110,6 +113,7 @@ void FormCommand::hide()
 	inset_ = 0;
 	ih_.disconnect();
 	dialogIsOpen = false;
+	clearStore();
 }
 
 

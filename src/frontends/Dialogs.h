@@ -33,7 +33,6 @@ class InsetGraphics;
 class InsetBibKey;
 class InsetBibtex;
 class InsetInclude;
-class InsetIndex;
 class InsetInfo;
 class InsetTabular;
 class InsetCommand;
@@ -109,7 +108,9 @@ public:
 	///
 	Signal1<void, InsetInclude *> showInclude;
 	///
-	Signal1<void, InsetIndex *> showIndex;
+	Signal1<void, InsetCommand *> showIndex;
+	///
+	Signal1<void, string const &> createIndex;
 	///
 	Signal1<void, InsetBibKey *> showBibkey;
 	///

@@ -72,7 +72,7 @@ Menuset
 	OptItem "as LinuxDoc|L" "buffer-export linuxdoc"
 	OptItem "as DocBook|B" "buffer-export docbook"
 	Item "as DVI|D" "buffer-export dvi"
-	Item "as Postscript|P" "buffer-export postscript"
+#	Item "as Postscript|P" "buffer-export postscript"
 	Item "as Ascii|A" "buffer-export ascii"
 	Item "as HTML|H" "buffer-export html"
 	OptItem "Custom...|C" "buffer-export custom"

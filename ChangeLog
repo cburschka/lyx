@@ -1,3 +1,33 @@
+2000-08-03  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* src/commandtags.h: renamed, created some flags for citation
+	and index
+
+	* src/lyx_gui_misc.C: stripped out old FD_index_form code
+
+	* src/lyxfunc.C (dispatch): use signals to insert index entry
+	
+	* src/frontends/Dialogs.h: new signal createIndex
+
+	* src/frontends/xforms/FormCommand.[Ch],
+	src/frontends/xforms/FormCitation.[Ch],
+	src/frontends/xforms/FormToc.[Ch],
+	src/frontends/xforms/FormUrl.[Ch]: clean up and comment better
+
+	* src/insets/insetindex.[Ch]: GUI-independent
+
+	* src/frontends/xforms/FormIndex.[Ch],
+	* src/frontends/xforms/forms/form_index.fd: xforms implementation
+	of the Index dialog
+	
+  2000-08-02  Lars Gullik Bjønnes  <larsbj@lyx.org>
+  
+  	* src/insets/insetref.C (Latex): rewrite so that there is now
+2000-08-01  Dekel Tsur  <dekel@math.tau.ac.il>
+
+	* src/mathed/math_write.C (MathDecorationInset::Write) Put \protect 
+	before \overbrace, \underbrace, \overleftarrow, or \overrightarrow.
+	
 2000-08-02  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/insets/insetref.C (Latex): rewrite so that there is now

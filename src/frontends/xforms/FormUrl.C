@@ -19,20 +19,15 @@
 
 
 #include "gettext.h"
-#include "BufferView.h"
 #include "Dialogs.h"
 #include "FormUrl.h"
 #include "LyXView.h"
 #include "buffer.h"
 #include "form_url.h"
 #include "lyxfunc.h"
-#include "xform_macros.h"
-#include "insets/insetcommand.h"
-#include "insets/inseturl.h"
-#include "support/filetools.h"
 
 FormUrl::FormUrl(LyXView * lv, Dialogs * d)
-  : FormCommand(lv, d, _("Url")), dialog_(0)
+	: FormCommand(lv, d, _("Url")), dialog_(0)
 {
 	// let the dialog be shown
 	// These are permanent connections so we won't bother
@@ -44,7 +39,6 @@ FormUrl::FormUrl(LyXView * lv, Dialogs * d)
 
 FormUrl::~FormUrl()
 {
-	free();
 	delete dialog_;
 }
 

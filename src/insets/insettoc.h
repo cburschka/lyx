@@ -17,10 +17,11 @@
 #endif
 
 #include "insetcommand.h"
+#include "support/utility.hpp"
 
 /** Used to insert table of contents
  */
-class InsetTOC : public InsetCommand {
+class InsetTOC : public InsetCommand, public noncopyable {
 public:
 	///
 	InsetTOC(InsetCommandParams const & p) : InsetCommand(p) {}

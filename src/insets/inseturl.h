@@ -16,12 +16,13 @@
 #endif
 
 #include "insetcommand.h"
+#include "support/utility.hpp"
 
 struct LaTeXFeatures;
 
 /** The url inset  
  */
-class InsetUrl : public InsetCommand {
+class InsetUrl : public InsetCommand, public noncopyable {
 public:
 	///
 	explicit

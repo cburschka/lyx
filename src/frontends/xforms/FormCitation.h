@@ -43,17 +43,19 @@ public:
 	//@}
 
 private:
-	/**@name Slot Methods */
-	//@{
-	virtual void update();
-	/// Apply from dialog
-	virtual void apply();
-	/// Filter the inputs
-	virtual void input( long );
 	/// Build the dialog
 	virtual void build();
-	///
+	/// Filter the inputs
+	virtual void input( long );
+	/// Update dialog before showing it
+	virtual void update();
+	/// Apply from dialog (modify or create inset)
+	virtual void apply();
+	/// delete derived class variables from hide()
+	virtual void clearStore();
+	/// Pointer to the actual instantiation of the xform's form
 	virtual FL_FORM * const form() const;
+
 	///
 	void updateBrowser( FL_OBJECT *, std::vector<string> const & ) const;
 	///
@@ -64,7 +66,6 @@ private:
 	void setSize( int, bool ) const;
 	///
 	FD_form_citation * build_citation();
-	//@}
 
 	/// Real GUI implementation.
 	FD_form_citation * dialog_;

@@ -17,88 +17,45 @@
 #endif
 
 #include "insetcommand.h"
+#include "support/utility.hpp"
 
-class Buffer;
 struct LaTeXFeatures;
-struct FD_index_form;
-
-// Created by Lgb 970227
-
 
 /** Used to insert index labels  
   */
-class InsetIndex : public InsetCommand {
+class InsetIndex : public InsetCommand, public noncopyable {
 public:
 	///
-	InsetIndex() : InsetCommand("index") {}
+	InsetIndex(InsetCommandParams const &);
 	///
-	explicit
-	InsetIndex(string const & key);
-	///
-	~InsetIndex();
-	///
-	Inset * Clone() const { return new InsetIndex(getContents());}
-	///
-	void Edit(BufferView *, int, int, unsigned int);
-	///
-	EDITABLE Editable() const
-	{
-		return IS_EDITABLE;
-	}
+	Inset * Clone() const { return new InsetIndex(params());}
 	///
 	string getScreenLabel() const;
 	///
-	void callback( FD_index_form *, long );
+	EDITABLE Editable() const { return IS_EDITABLE; }
 	///
-	struct Holder {
-		InsetIndex * inset;
-		BufferView * view;
-	};
- private:
-	///
-	Holder holder;
+	void Edit(BufferView *, int, int, unsigned int);
 };
 
 
-class InsetPrintIndex : public InsetCommand {
+class InsetPrintIndex : public InsetCommand, public noncopyable {
 public:
-#if 0
 	///
-	InsetPrintIndex();
-#endif
+	InsetPrintIndex(InsetCommandParams const &);
 	///
-	InsetPrintIndex(Buffer *);
-#if 0
-	///
-	~InsetPrintIndex();
-#endif
+	Inset * Clone() const { return new InsetPrintIndex(params());}
 	/// Updates needed features for this inset.
 	void Validate(LaTeXFeatures & features) const;
 	///
 	void Edit(BufferView *, int, int, unsigned int) {}
 	///
-	EDITABLE Editable() const{
-		return IS_EDITABLE;
-	}
-	/// WHY is clone missing? (Lgb)
+	EDITABLE Editable() const{ return NOT_EDITABLE; }
 	///
 	bool display() const { return true; }
 	///
 	Inset::Code LyxCode() const;
 	///
 	string getScreenLabel() const;
-private:
-	///
-	Buffer * owner;
 };
 
-// this was shifted here rather than a separate
-// file because its little and only need by
-// insetindex.C and lyx_gui_misc.C ARRae 981020
-struct FD_index_form {
-	FL_FORM * index_form;
-	FL_OBJECT * key;
-};
-
-extern FD_index_form * index_form;
 #endif

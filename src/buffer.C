@@ -962,7 +962,7 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, LyXParagraph *& par,
 			} else if (inscmd.getCmdName() == "BibTeX") {
 				inset = new InsetBibtex(inscmd.getContents(), inscmd.getOptions(), this);
 			} else if (inscmd.getCmdName() == "index") {
-				inset = new InsetIndex(inscmd.getContents());
+				inset = new InsetIndex(inscmd.params());
 			} else if (inscmd.getCmdName() == "include") {
 				inset = new InsetInclude(inscmd.getContents(), this);
 			} else if (inscmd.getCmdName() == "label") {
@@ -984,7 +984,7 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, LyXParagraph *& par,
 				   || inscmd.getCmdName() == "listoftables") {
 				inset = new InsetTOC(inscmd.params());
 			} else if (inscmd.getCmdName() == "printindex") {
-				inset = new InsetPrintIndex(this);
+				inset = new InsetPrintIndex(inscmd.params());
 			} else if (inscmd.getCmdName() == "lyxparent") {
 				inset = new InsetParent(inscmd.getContents(), this);
 			}
@@ -1193,7 +1193,7 @@ void Buffer::readInset(LyXLex & lex, LyXParagraph *& par,
 			inset = new InsetBibtex(inscmd.getContents(),
 						inscmd.getOptions(), this);
 		} else if (inscmd.getCmdName() == "index") {
-			inset = new InsetIndex(inscmd.getContents());
+			inset = new InsetIndex(inscmd.params());
 		} else if (inscmd.getCmdName() == "include") {
 			inset = new InsetInclude(inscmd.getContents(), this);
 		} else if (inscmd.getCmdName() == "label") {
@@ -1216,7 +1216,7 @@ void Buffer::readInset(LyXLex & lex, LyXParagraph *& par,
 			   || inscmd.getCmdName() == "listoftables") {
 			inset = new InsetTOC(inscmd.params());
 		} else if (inscmd.getCmdName() == "printindex") {
-			inset = new InsetPrintIndex(this);
+			inset = new InsetPrintIndex(inscmd.params());
 		} else if (inscmd.getCmdName() == "lyxparent") {
 			inset = new InsetParent(inscmd.getContents(), this);
 		}

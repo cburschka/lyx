@@ -9,26 +9,26 @@
  * ======================================================
  */
 
-#ifndef FORMURL_H
-#define FORMURL_H
+#ifndef FORMINDEX_H
+#define FORMINDEX_H
 
 #ifdef __GNUG__
 #pragma interface
 #endif
 
 #include "FormCommand.h"
-struct FD_form_url;
+struct FD_form_index;
 
-/** This class provides an XForms implementation of the FormUrl Dialog.
+/** This class provides an XForms implementation of the FormIndex Dialog.
  */
-class FormUrl : public FormCommand {
+class FormIndex : public FormCommand {
 public:
 	/**@name Constructors and Destructors */
 	//@{
 	///
-	FormUrl(LyXView *, Dialogs *);
+	FormIndex(LyXView *, Dialogs *);
 	///
-	~FormUrl();
+	~FormIndex();
 	//@}
 
 private:
@@ -43,11 +43,11 @@ private:
 	/// Pointer to the actual instantiation of the xform's form
 	virtual FL_FORM * const form() const;
 	///
-	FD_form_url * build_url();
+	FD_form_index * build_index();
 	//@}
 
 	/// Real GUI implementation.
-	FD_form_url * dialog_;
+	FD_form_index * dialog_;
 };
 
 #endif

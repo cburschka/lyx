@@ -21,7 +21,7 @@
 #include "support/lstrings.h"
 
 InsetCitation::InsetCitation(InsetCommandParams const & p)
-		: InsetCommand(p)
+	: InsetCommand(p)
 {}
 
 string InsetCitation::getScreenLabel() const

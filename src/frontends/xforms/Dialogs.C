@@ -2,10 +2,11 @@
 #include FORMS_H_LOCATION
 
 #include "Dialogs.h"
-#include "FormCopyright.h"
-#include "FormPreferences.h"
-#include "FormGraphics.h"
 #include "FormCitation.h"
+#include "FormCopyright.h"
+#include "FormGraphics.h"
+#include "FormIndex.h"
+#include "FormPreferences.h"
 #include "FormPrint.h"
 #include "FormTabular.h"
 #include "FormToc.h"
@@ -18,10 +19,11 @@
 
 Dialogs::Dialogs(LyXView * lv)
 {
-	dialogs_.push_back(new FormCopyright(lv, this));
-	dialogs_.push_back(new FormPreferences(lv, this));
-	dialogs_.push_back(new FormGraphics(lv, this));
 	dialogs_.push_back(new FormCitation(lv, this));
+	dialogs_.push_back(new FormCopyright(lv, this));
+	dialogs_.push_back(new FormGraphics(lv, this));
+	dialogs_.push_back(new FormIndex(lv, this));
+	dialogs_.push_back(new FormPreferences(lv, this));
 	dialogs_.push_back(new FormPrint(lv, this));
 	dialogs_.push_back(new FormTabular(lv, this));
 	dialogs_.push_back(new FormToc(lv, this));

@@ -33,7 +33,6 @@
 #include "minibuffer.h"
 #include "print_form.h"
 #include "sp_form.h"
-#include "insets/insetindex.h"
 #include "LyXView.h"
 #include "bufferview_funcs.h"
 #include "support/filetools.h"
@@ -66,7 +65,6 @@ extern FD_space  * fd_space;
 extern FD_matrix * fd_matrix;
 extern FD_bibitem_form * bibitem_form;
 extern FD_include * form;
-extern FD_index_form * index_form;
 
 extern void HideFiguresPopups();
 
@@ -176,11 +174,6 @@ void CloseAllBufferRelatedDialogs()
 	if (form) {
 		if (form->include->visible) {
 			fl_hide_form(form->include);
-		}
-	}
-	if (index_form) {
-		if (index_form->index_form->visible) {
-			fl_hide_form(index_form->index_form);
 		}
 	}
 	HideFiguresPopups();
@@ -319,11 +312,6 @@ void updateAllVisibleBufferRelatedDialogs()
 	if (form) {
 		if (form->include->visible) {
 			fl_hide_form(form->include);
-		}
-	}
-	if (index_form) {
-		if (index_form->index_form->visible) {
-			fl_hide_form(index_form->index_form);
 		}
 	}
 	HideFiguresPopups();

@@ -31,23 +31,22 @@ public:
 	~FormToc();
 
 private:
-	/**@name Slot Methods */
-	//@{
-	///
-	virtual void update();
-	/// Apply from dialog
-	virtual void apply();
-	///
-	virtual void input( long ) {};
 	/// Build the dialog
 	virtual void build();
-	///
+	/// Not used but must be instantiated
+	virtual void input( long ) {}
+	/// Update dialog before showing it
+	virtual void update();
+	/// Apply from dialog (modify or create inset)
+	virtual void apply();
+	/// delete derived class variables from hide()
+	virtual void clearStore();
+	/// Pointer to the actual instantiation of the xform's form
 	virtual FL_FORM * const form() const;
 	///
 	void updateToc();
 	///
 	FD_form_toc * build_toc();
-	//@}
 
 	/// Real GUI implementation.
 	FD_form_toc * dialog_;

@@ -40,7 +40,7 @@ static vector<string> bibkeys;
 static vector<string> bibkeysInfo;
 
 FormCitation::FormCitation(LyXView * lv, Dialogs * d)
-  : FormCommand(lv, d, _("Citation")), dialog_(0)
+	: FormCommand(lv, d, _("Citation")), dialog_(0)
 {
 	// let the dialog be shown
 	// These are permanent connections so we won't bother
@@ -52,8 +52,15 @@ FormCitation::FormCitation(LyXView * lv, Dialogs * d)
 
 FormCitation::~FormCitation()
 {
-	free();
 	delete dialog_;
+}
+
+
+void FormCitation::clearStore()
+{
+	citekeys.clear();
+	bibkeys.clear();
+	bibkeysInfo.clear();
 }
 
 
@@ -416,7 +423,7 @@ void FormCitation::apply()
 			lv_->view()->updateInset( inset_, true );
 		}
 	} else {
-		lv_->getLyXFunc()->Dispatch( LFUN_INSERT_CITATION,
+		lv_->getLyXFunc()->Dispatch( LFUN_CITATION_INSERT,
 					     params.getAsString().c_str() );
 	}
 }
