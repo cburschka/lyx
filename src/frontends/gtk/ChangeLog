@@ -1,3 +1,8 @@
+2003-09-10  Angus Leeming  <leeming@lyx.org>
+
+	* GToolbar.C (onLayoutSelected): missed a change from a call to the
+	Buffer::params member variable to the Buffer::params() function.
+
 2003-09-09  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* GPainter.C: change Assert to BOOST_ASSERT

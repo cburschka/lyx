@@ -160,7 +160,7 @@ void GToolbar::onLayoutSelected()
 	if (layoutGuiName.empty())
 		return;
 	LyXTextClass const & tc =
-		view_->buffer()->params.getLyXTextClass();
+		view_->buffer()->params().getLyXTextClass();
 
 	LyXTextClass::const_iterator end = tc.end();
 	for (LyXTextClass::const_iterator cit = tc.begin();
