@@ -42,14 +42,6 @@ public:
 	void dispatch(FuncRequest const & cmd);
 	/// get the resut of the last dispatch
 	DispatchResult result() const;
-        /**
-	 * \returns true if this function made a definitive decision on
-	 * whether the inset at this cursor position wants to handle the
-	 * request \p cmd or not. The result of this decision is put into
-	 * \p status.
-	 */
-	bool getStatus(FuncRequest const & cmd, FuncStatus & flag);
-
 	/// add a new cursor slice
 	void push(InsetBase & inset);
 	/// add a new cursor slice, place cursor on left end

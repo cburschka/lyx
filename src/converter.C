@@ -103,10 +103,11 @@ private:
 } // namespace anon
 
 
-Converter::Converter(string const & f, string const & t, string const & c,
-	  string const & l): from(f), to(t), command(c), flags(l),
-			     From(0), To(0), latex(false), xml(false),
-			     original_dir(false), need_aux(false)
+Converter::Converter(string const & f, string const & t,
+		     string const & c, string const & l)
+	: from(f), to(t), command(c), flags(l),
+	  From(0), To(0), latex(false), xml(false),
+	  original_dir(false), need_aux(false)
 {}
 
 
@@ -158,7 +159,7 @@ bool operator<(Converter const & a, Converter const & b)
 Converter const * Converters::getConverter(string const & from,
 					    string const & to) const
 {
-	ConverterList::const_iterator cit =
+	ConverterList::const_iterator const cit =
 		find_if(converterlist_.begin(), converterlist_.end(),
 			ConverterEqual(from, to));
 	if (cit != converterlist_.end())
@@ -170,7 +171,7 @@ Converter const * Converters::getConverter(string const & from,
 
 int Converters::getNumber(string const & from, string const & to) const
 {
-	ConverterList::const_iterator cit =
+	ConverterList::const_iterator const cit =
 		find_if(converterlist_.begin(), converterlist_.end(),
 			ConverterEqual(from, to));
 	if (cit != converterlist_.end())
@@ -215,9 +216,10 @@ void Converters::add(string const & from, string const & to,
 
 void Converters::erase(string const & from, string const & to)
 {
-	ConverterList::iterator it = find_if(converterlist_.begin(),
-					     converterlist_.end(),
-					     ConverterEqual(from, to));
+	ConverterList::iterator const it =
+		find_if(converterlist_.begin(),
+			converterlist_.end(),
+			ConverterEqual(from, to));
 	if (it != converterlist_.end())
 		converterlist_.erase(it);
 }
@@ -324,7 +326,7 @@ bool Converters::convert(Buffer const * buffer,
 
 		if (conv.latex) {
 			run_latex = true;
-			string command = subst(conv.command, token_from, "");
+			string const command = subst(conv.command, token_from, "");
 			lyxerr[Debug::FILES] << "Running " << command << endl;
 			if (!runLaTeX(*buffer, command, runparams))
 				return false;
@@ -337,9 +339,9 @@ bool Converters::convert(Buffer const * buffer,
 				runLaTeX(*buffer, latex_command_, runparams);
 			}
 
-			string infile2 = (conv.original_dir)
+			string const infile2 = (conv.original_dir)
 				? infile : MakeRelPath(infile, path);
-			string outfile2 = (conv.original_dir)
+			string const outfile2 = (conv.original_dir)
 				? outfile : MakeRelPath(outfile, path);
 
 			string command = conv.command;
@@ -363,7 +365,7 @@ bool Converters::convert(Buffer const * buffer,
 				buffer->message(_("Executing command: ")
 					+ command);
 
-			Systemcall::Starttype type = (dummy)
+			Systemcall::Starttype const type = (dummy)
 				? Systemcall::DontWait : Systemcall::Wait;
 			Systemcall one;
 			int res;
@@ -420,9 +422,9 @@ bool Converters::convert(Buffer const * buffer,
 				  subst(conv.result_file,
 					token_base, OnlyFilename(to_base)));
 		if (from_base != to_base) {
-			string from = subst(conv.result_dir,
+			string const from = subst(conv.result_dir,
 					    token_base, from_base);
-			string to = subst(conv.result_dir,
+			string const to = subst(conv.result_dir,
 					  token_base, to_base);
 			Mover const & mover = movers(conv.from);
 			if (!mover.rename(from, to)) {
@@ -506,13 +508,14 @@ bool Converters::scanLog(Buffer const & buffer, string const & /*command*/,
 	runparams.flavor = OutputParams::LATEX;
 	LaTeX latex("", runparams, filename, "");
 	TeXErrors terr;
-	int result = latex.scanLogFile(terr);
+	int const result = latex.scanLogFile(terr);
 
 	if (result & LaTeX::ERRORS)
 		bufferErrors(buffer, terr);
 
 	return true;
 }
+
 
 namespace {
 
@@ -539,21 +542,22 @@ bool Converters::runLaTeX(Buffer const & buffer, string const & command,
 	runparams.document_language = buffer.params().language->babel();
 
 	// do the LaTeX run(s)
-	string name = buffer.getLatexName();
+	string const name = buffer.getLatexName();
 	LaTeX latex(command, runparams, name, buffer.filePath());
 	TeXErrors terr;
 	showMessage show(buffer);
 	latex.message.connect(show);
-	int result = latex.run(terr);
+	int const result = latex.run(terr);
 
 	if (result & LaTeX::ERRORS)
 		bufferErrors(buffer, terr);
 
 	// check return value from latex.run().
 	if ((result & LaTeX::NO_LOGFILE)) {
-		string str = bformat(_("LaTeX did not run successfully. "
-				       "Additionally, LyX could not locate "
-				       "the LaTeX log %1$s."), name);
+		string const str =
+			bformat(_("LaTeX did not run successfully. "
+				  "Additionally, LyX could not locate "
+				  "the LaTeX log %1$s."), name);
 		Alert::error(_("LaTeX failed"), str);
 	} else if (result & LaTeX::NO_OUTPUT) {
 		Alert::warning(_("Output is empty"),
@@ -578,7 +582,7 @@ void Converters::buildGraph()
 {
 	G_.init(formats.size());
 	ConverterList::iterator beg = converterlist_.begin();
-	ConverterList::iterator end = converterlist_.end();
+	ConverterList::iterator const end = converterlist_.end();
 	for (ConverterList::iterator it = beg; it != end ; ++it) {
 		int const s = formats.getNumber(it->from);
 		int const t = formats.getNumber(it->to);
@@ -593,7 +597,7 @@ Converters::intToFormat(std::vector<int> const & input)
 	vector<Format const *> result(input.size());
 
 	vector<int>::const_iterator it = input.begin();
-	vector<int>::const_iterator end = input.end();
+	vector<int>::const_iterator const end = input.end();
 	vector<Format const *>::iterator rit = result.begin();
 	for ( ; it != end; ++it, ++rit) {
 		*rit = &formats.get(*it);
@@ -601,8 +605,9 @@ Converters::intToFormat(std::vector<int> const & input)
 	return result;
 }
 
+
 vector<Format const *> const
-Converters::getReachableTo(string const & target, bool clear_visited)
+Converters::getReachableTo(string const & target, bool const clear_visited)
 {
 	vector<int> const & reachablesto =
 		G_.getReachableTo(formats.getNumber(target), clear_visited);
@@ -612,8 +617,8 @@ Converters::getReachableTo(string const & target, bool clear_visited)
 
 
 vector<Format const *> const
-Converters::getReachable(string const & from, bool only_viewable,
-			 bool clear_visited)
+Converters::getReachable(string const & from, bool const only_viewable,
+			 bool const clear_visited)
 {
 	vector<int> const & reachables =
 		G_.getReachable(formats.getNumber(from),

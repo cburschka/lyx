@@ -50,8 +50,10 @@ extern BufferList bufferlist;
 
 namespace {
 
-bool readFile(Buffer * b, string const & s)
+bool readFile(Buffer * const b, string const & s)
 {
+	BOOST_ASSERT(b);
+
 	// File information about normal file
 	FileInfo fileN(s);
 	if (!fileN.exist()) {
@@ -70,9 +72,10 @@ bool readFile(Buffer * b, string const & s)
 	    && fileE.getModificationTime() > fileN.getModificationTime())
 	{
 		string const file = MakeDisplayPath(s, 20);
-		string text = bformat(_("An emergency save of the document "
-					"%1$s exists.\n\n"
-					"Recover emergency save?"), file);
+		string const text =
+			bformat(_("An emergency save of the document "
+				  "%1$s exists.\n\n"
+				  "Recover emergency save?"), file);
 		switch (Alert::prompt(_("Load emergency save?"), text, 0, 2,
 				      _("&Recover"),  _("&Load Original"),
 				      _("&Cancel")))
@@ -96,9 +99,10 @@ bool readFile(Buffer * b, string const & s)
 	    && fileA.getModificationTime() > fileN.getModificationTime())
 	{
 		string const file = MakeDisplayPath(s, 20);
-		string text = bformat(_("The backup of the document "
-					"%1$s is newer.\n\nLoad the "
-					"backup instead?"), file);
+		string const text =
+			bformat(_("The backup of the document "
+				  "%1$s is newer.\n\nLoad the "
+				  "backup instead?"), file);
 		switch (Alert::prompt(_("Load backup?"), text, 0, 2,
 				      _("&Load backup"), _("Load &original"),
 				      _("&Cancel") ))
@@ -125,6 +129,8 @@ bool readFile(Buffer * b, string const & s)
 
 bool loadLyXFile(Buffer * b, string const & s)
 {
+	BOOST_ASSERT(b);
+
 	switch (IsFileWriteable(s)) {
 	case 0:
 		b->setReadonly(true);
@@ -139,8 +145,9 @@ bool loadLyXFile(Buffer * b, string const & s)
 		string const file = MakeDisplayPath(s, 20);
 		// Here we probably should run
 		if (LyXVC::file_not_found_hook(s)) {
-			string text = bformat(_("Do you want to retrieve the document"
-				" %1$s from version control?"), file);
+			string const text =
+				bformat(_("Do you want to retrieve the document"
+					  " %1$s from version control?"), file);
 			int const ret = Alert::prompt(_("Retrieve from version control?"),
 				text, 0, 1, _("&Retrieve"), _("&Cancel"));
 
@@ -159,10 +166,11 @@ bool loadLyXFile(Buffer * b, string const & s)
 
 
 Buffer * newFile(string const & filename, string const & templatename,
-		 bool isNamed)
+		 bool const isNamed)
 {
 	// get a free buffer
 	Buffer * b = bufferlist.newBuffer(filename);
+	BOOST_ASSERT(b);
 
 	string tname;
 	// use defaults.lyx as a default template if it exists.
@@ -251,4 +259,3 @@ int countWords(DocIterator const & from, DocIterator const & to)
 
 	return count;
 }
-

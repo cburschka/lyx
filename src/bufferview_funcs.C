@@ -50,7 +50,7 @@ namespace bv_funcs {
 
 // Set data using font and toggle
 // If successful, returns true
-bool font2string(LyXFont const & font, bool toggle, string & data)
+bool font2string(LyXFont const & font, bool const toggle, string & data)
 {
 	string lang = "ignore";
 	if (font.language())

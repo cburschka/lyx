@@ -53,8 +53,6 @@ public:
 	/// returns the actual scroll-value
 	virtual int scroll(bool recursive = true) const;
 
-	///
-	bool forceDefaultParagraphs(InsetBase const * inset) const;
 protected:
 	///
 	InsetOld(InsetOld const & in);

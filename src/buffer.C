@@ -136,7 +136,7 @@ extern BufferList bufferlist;
 
 namespace {
 
-const int LYX_FORMAT = 238;
+int const LYX_FORMAT = 238;
 
 } // namespace anon
 
@@ -319,7 +319,7 @@ TexRow const & Buffer::texrow() const
 }
 
 
-string const Buffer::getLatexName(bool no_path) const
+string const Buffer::getLatexName(bool const no_path) const
 {
 	string const name = ChangeExtension(MakeLatexName(fileName()), ".tex");
 	return no_path ? OnlyFilename(name) : name;
@@ -358,7 +358,7 @@ pair<Buffer::LogType, string> const Buffer::getLogName() const
 }
 
 
-void Buffer::setReadonly(bool flag)
+void Buffer::setReadonly(bool const flag)
 {
 	if (pimpl_->read_only != flag) {
 		pimpl_->read_only = flag;
@@ -548,7 +548,7 @@ bool Buffer::readFile(string const & filename)
 }
 
 
-bool Buffer::readFile(string const & filename, pit_type pit)
+bool Buffer::readFile(string const & filename, pit_type const pit)
 {
 	LyXLex lex(0, 0);
 	lex.setFile(filename);
@@ -562,13 +562,13 @@ bool Buffer::fully_loaded() const
 }
 
 
-void Buffer::fully_loaded(bool value)
+void Buffer::fully_loaded(bool const value)
 {
 	pimpl_->file_fully_loaded = value;
 }
 
 
-bool Buffer::readFile(LyXLex & lex, string const & filename, pit_type pit)
+bool Buffer::readFile(LyXLex & lex, string const & filename, pit_type const pit)
 {
 	BOOST_ASSERT(!filename.empty());
 
@@ -846,7 +846,7 @@ void Buffer::makeLaTeXFile(string const & fname,
 void Buffer::makeLaTeXFile(ostream & os,
 			   string const & original_path,
 			   OutputParams const & runparams_in,
-			   bool output_preamble, bool output_body)
+			   bool const output_preamble, bool const output_body)
 {
 	OutputParams runparams = runparams_in;
 
@@ -1000,7 +1000,7 @@ bool Buffer::isSGML() const
 
 void Buffer::makeLinuxDocFile(string const & fname,
 			      OutputParams const & runparams,
-			      bool body_only)
+			      bool const body_only)
 {
 	ofstream ofs;
 	if (!openFileWrite(ofs, fname))
@@ -1013,7 +1013,7 @@ void Buffer::makeLinuxDocFile(string const & fname,
 
 	LyXTextClass const & tclass = params().getLyXTextClass();
 
-	string top_element = tclass.latexname();
+	string const & top_element = tclass.latexname();
 
 	if (!body_only) {
 		ofs << tclass.class_header();
@@ -1058,7 +1058,7 @@ void Buffer::makeLinuxDocFile(string const & fname,
 
 void Buffer::makeDocBookFile(string const & fname,
 			     OutputParams const & runparams,
-			     bool only_body)
+			     bool const only_body)
 {
 	ofstream ofs;
 	if (!openFileWrite(ofs, fname))
@@ -1070,7 +1070,7 @@ void Buffer::makeDocBookFile(string const & fname,
 	texrow().reset();
 
 	LyXTextClass const & tclass = params().getLyXTextClass();
-	string top_element = tclass.latexname();
+	string const & top_element = tclass.latexname();
 
 	if (!only_body) {
 		if (runparams.flavor == OutputParams::XML)
@@ -1157,7 +1157,7 @@ int Buffer::runChktex()
 
 	TeXErrors terr;
 	Chktex chktex(lyxrc.chktex_command, name, filePath());
-	int res = chktex.run(terr); // run chktex
+	int const res = chktex.run(terr); // run chktex
 
 	if (res == -1) {
 		Alert::error(_("chktex failure"),
@@ -1220,7 +1220,7 @@ void Buffer::validate(LaTeXFeatures & features) const
 }
 
 
-void Buffer::getLabelList(std::vector<string> & list) const
+void Buffer::getLabelList(vector<string> & list) const
 {
 	/// if this is a child document and the parent is already loaded
 	/// Use the parent's list instead  [ale990407]
@@ -1240,7 +1240,7 @@ void Buffer::getLabelList(std::vector<string> & list) const
 
 
 // This is also a buffer property (ale)
-void Buffer::fillWithBibKeys(std::vector<std::pair<string, string> > & keys)
+void Buffer::fillWithBibKeys(vector<pair<string, string> > & keys)
 	const
 {
 	/// if this is a child document and the parent is already loaded
@@ -1276,7 +1276,7 @@ void Buffer::fillWithBibKeys(std::vector<std::pair<string, string> > & keys)
 
 bool Buffer::isDepClean(string const & name) const
 {
-	DepClean::const_iterator it = pimpl_->dep_clean.find(name);
+	DepClean::const_iterator const it = pimpl_->dep_clean.find(name);
 	if (it == pimpl_->dep_clean.end())
 		return true;
 	return it->second;
@@ -1316,6 +1316,9 @@ bool Buffer::dispatch(FuncRequest const & func, bool * result)
 
 void Buffer::changeLanguage(Language const * from, Language const * to)
 {
+	BOOST_ASSERT(from);
+	BOOST_ASSERT(to);
+
 	lyxerr << "Changing Language!" << endl;
 
 	// Take care of l10n/i18n
@@ -1329,6 +1332,8 @@ void Buffer::changeLanguage(Language const * from, Language const * to)
 
 void Buffer::updateDocLang(Language const * nlang)
 {
+	BOOST_ASSERT(nlang);
+
 	pimpl_->messages.reset(new Messages(nlang->code()));
 }
 
@@ -1344,10 +1349,10 @@ bool Buffer::isMultiLingual() const
 }
 
 
-ParIterator Buffer::getParFromID(int id) const
+ParIterator Buffer::getParFromID(int const id) const
 {
 	ParConstIterator it = par_iterator_begin();
-	ParConstIterator end = par_iterator_end();
+	ParConstIterator const end = par_iterator_end();
 
 	if (id < 0) {
 		// John says this is called with id == -1 from undo
@@ -1363,9 +1368,9 @@ ParIterator Buffer::getParFromID(int id) const
 }
 
 
-bool Buffer::hasParWithID(int id) const
+bool Buffer::hasParWithID(int const id) const
 {
-	ParConstIterator it = getParFromID(id);
+	ParConstIterator const it = getParFromID(id);
 	return it != par_iterator_end();
 }
 
@@ -1452,6 +1457,7 @@ bool Buffer::isUnnamed() const
 }
 
 
+#warning this function should be moved to buffer_pimpl.C
 void Buffer::markDirty()
 {
 	if (pimpl_->lyx_clean) {

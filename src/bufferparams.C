@@ -64,26 +64,30 @@ namespace biblio = lyx::biblio;
 namespace {
 
 // Paragraph separation
-typedef Translator<std::string, BufferParams::PARSEP> ParSepTranslator;
+typedef Translator<string, BufferParams::PARSEP> ParSepTranslator;
 
 
-ParSepTranslator const init_parseptranslator() {
+ParSepTranslator const init_parseptranslator()
+{
 	ParSepTranslator translator(string_paragraph_separation[0], BufferParams::PARSEP_INDENT);
 	translator.addPair(string_paragraph_separation[1], BufferParams::PARSEP_SKIP);
 	return translator;
 }
 
 
-ParSepTranslator const & parseptranslator() {
+ParSepTranslator const & parseptranslator()
+{
 	static ParSepTranslator translator = init_parseptranslator();
 	return translator;
 }
 
+
 // Quotes language
-typedef Translator<std::string, InsetQuotes::quote_language> QuotesLangTranslator;
+typedef Translator<string, InsetQuotes::quote_language> QuotesLangTranslator;
 
 
-QuotesLangTranslator const init_quoteslangtranslator() {
+QuotesLangTranslator const init_quoteslangtranslator()
+{
 	QuotesLangTranslator translator(string_quotes_language[0], InsetQuotes::EnglishQ);
 	translator.addPair(string_quotes_language[1], InsetQuotes::SwedishQ);
 	translator.addPair(string_quotes_language[2], InsetQuotes::GermanQ);
@@ -94,32 +98,38 @@ QuotesLangTranslator const init_quoteslangtranslator() {
 }
 
 
-QuotesLangTranslator const & quoteslangtranslator() {
+QuotesLangTranslator const & quoteslangtranslator()
+{
 	static QuotesLangTranslator translator = init_quoteslangtranslator();
 	return translator;
 }
+
 
 // Quote times
 typedef Translator<int, InsetQuotes::quote_times> QuotesTimesTranslator;
 
 
-QuotesTimesTranslator const init_quotestimestranslator() {
+QuotesTimesTranslator const init_quotestimestranslator()
+{
 	QuotesTimesTranslator translator(1, InsetQuotes::SingleQ);
 	translator.addPair(2, InsetQuotes::DoubleQ);
 	return translator;
 }
 
 
-QuotesTimesTranslator const & quotestimestranslator() {
+QuotesTimesTranslator const & quotestimestranslator()
+{
 	static QuotesTimesTranslator translator = init_quotestimestranslator();
 	return translator;
 }
+
 
 // Paper size
 typedef Translator<std::string, VMARGIN_PAPER_TYPE> PaperSizeTranslator;
 
 
-PaperSizeTranslator const init_papersizetranslator() {
+PaperSizeTranslator const init_papersizetranslator()
+{
 	PaperSizeTranslator translator(string_papersize[0], VM_PAPER_DEFAULT);
 	translator.addPair(string_papersize[1], VM_PAPER_CUSTOM);
 	translator.addPair(string_papersize[2], VM_PAPER_USLETTER);
@@ -135,16 +145,19 @@ PaperSizeTranslator const init_papersizetranslator() {
 }
 
 
-PaperSizeTranslator const & papersizetranslator() {
+PaperSizeTranslator const & papersizetranslator()
+{
 	static PaperSizeTranslator translator = init_papersizetranslator();
 	return translator;
 }
 
+
 // Paper packages
-typedef Translator<std::string, PAPER_PACKAGES> PaperPackagesTranslator;
+typedef Translator<string, PAPER_PACKAGES> PaperPackagesTranslator;
 
 
-PaperPackagesTranslator const init_paperpackagestranslator() {
+PaperPackagesTranslator const init_paperpackagestranslator()
+{
 	PaperPackagesTranslator translator(string_paperpackages[0], PACKAGE_NONE);
 	translator.addPair(string_paperpackages[1], PACKAGE_A4);
 	translator.addPair(string_paperpackages[2], PACKAGE_A4WIDE);
@@ -153,24 +166,27 @@ PaperPackagesTranslator const init_paperpackagestranslator() {
 }
 
 
-PaperPackagesTranslator const & paperpackagestranslator() {
+PaperPackagesTranslator const & paperpackagestranslator()
+{
 	static PaperPackagesTranslator translator = init_paperpackagestranslator();
 	return translator;
 }
 
 
 // Paper orientation
-typedef Translator<std::string, PAPER_ORIENTATION> PaperOrientationTranslator;
+typedef Translator<string, PAPER_ORIENTATION> PaperOrientationTranslator;
 
 
-PaperOrientationTranslator const init_paperorientationtranslator() {
+PaperOrientationTranslator const init_paperorientationtranslator()
+{
 	PaperOrientationTranslator translator(string_orientation[0], ORIENTATION_PORTRAIT);
 	translator.addPair(string_orientation[1], ORIENTATION_LANDSCAPE);
 	return translator;
 }
 
 
-PaperOrientationTranslator const & paperorientationtranslator() {
+PaperOrientationTranslator const & paperorientationtranslator()
+{
 	static PaperOrientationTranslator translator = init_paperorientationtranslator();
 	return translator;
 }
@@ -180,14 +196,16 @@ PaperOrientationTranslator const & paperorientationtranslator() {
 typedef Translator<int, LyXTextClass::PageSides> SidesTranslator;
 
 
-SidesTranslator const init_sidestranslator() {
+SidesTranslator const init_sidestranslator()
+{
 	SidesTranslator translator(1, LyXTextClass::OneSide);
 	translator.addPair(2, LyXTextClass::TwoSides);
 	return translator;
 }
 
 
-SidesTranslator const & sidestranslator() {
+SidesTranslator const & sidestranslator()
+{
 	static SidesTranslator translator = init_sidestranslator();
 	return translator;
 }
@@ -198,7 +216,8 @@ SidesTranslator const & sidestranslator() {
 typedef Translator<int, BufferParams::AMS> AMSTranslator;
 
 
-AMSTranslator const init_amstranslator() {
+AMSTranslator const init_amstranslator()
+{
 	AMSTranslator translator(0, BufferParams::AMS_OFF);
 	translator.addPair(1, BufferParams::AMS_AUTO);
 	translator.addPair(2, BufferParams::AMS_ON);
@@ -206,18 +225,19 @@ AMSTranslator const init_amstranslator() {
 }
 
 
-AMSTranslator const & amstranslator() {
+AMSTranslator const & amstranslator()
+{
 	static AMSTranslator translator = init_amstranslator();
 	return translator;
 }
-
 
 
 // Cite engine
 typedef Translator<string, biblio::CiteEngine> CiteEngineTranslator;
 
 
-CiteEngineTranslator const init_citeenginetranslator() {
+CiteEngineTranslator const init_citeenginetranslator()
+{
 	CiteEngineTranslator translator("basic", biblio::ENGINE_BASIC);
 	translator.addPair("natbib_numerical", biblio::ENGINE_NATBIB_NUMERICAL);
 	translator.addPair("natbib_authoryear", biblio::ENGINE_NATBIB_AUTHORYEAR);
@@ -226,7 +246,8 @@ CiteEngineTranslator const init_citeenginetranslator() {
 }
 
 
-CiteEngineTranslator const & citeenginetranslator() {
+CiteEngineTranslator const & citeenginetranslator()
+{
 	static CiteEngineTranslator translator = init_citeenginetranslator();
 	return translator;
 }
@@ -236,7 +257,8 @@ CiteEngineTranslator const & citeenginetranslator() {
 typedef Translator<string, Spacing::Space> SpaceTranslator;
 
 
-SpaceTranslator const init_spacetranslator() {
+SpaceTranslator const init_spacetranslator()
+{
 	SpaceTranslator translator("default", Spacing::Default);
 	translator.addPair("single", Spacing::Single);
 	translator.addPair("onehalf", Spacing::Onehalf);
@@ -245,7 +267,8 @@ SpaceTranslator const init_spacetranslator() {
 }
 
 
-SpaceTranslator const & spacetranslator() {
+SpaceTranslator const & spacetranslator()
+{
 	static SpaceTranslator translator = init_spacetranslator();
 	return translator;
 }
@@ -281,6 +304,8 @@ BufferParams::Impl::Impl()
 BufferParams::Impl *
 BufferParams::MemoryTraits::clone(BufferParams::Impl const * ptr)
 {
+	BOOST_ASSERT(ptr);
+
 	return new BufferParams::Impl(*ptr);
 }
 
@@ -359,28 +384,28 @@ BranchList const & BufferParams::branchlist() const
 }
 
 
-Bullet & BufferParams::temp_bullet(lyx::size_type index)
+Bullet & BufferParams::temp_bullet(lyx::size_type const index)
 {
 	BOOST_ASSERT(index < 4);
 	return pimpl_->temp_bullets[index];
 }
 
 
-Bullet const & BufferParams::temp_bullet(lyx::size_type index) const
+Bullet const & BufferParams::temp_bullet(lyx::size_type const index) const
 {
 	BOOST_ASSERT(index < 4);
 	return pimpl_->temp_bullets[index];
 }
 
 
-Bullet & BufferParams::user_defined_bullet(lyx::size_type index)
+Bullet & BufferParams::user_defined_bullet(lyx::size_type const index)
 {
 	BOOST_ASSERT(index < 4);
 	return pimpl_->user_defined_bullets[index];
 }
 
 
-Bullet const & BufferParams::user_defined_bullet(lyx::size_type index) const
+Bullet const & BufferParams::user_defined_bullet(lyx::size_type const index) const
 {
 	BOOST_ASSERT(index < 4);
 	return pimpl_->user_defined_bullets[index];
@@ -425,7 +450,8 @@ string const BufferParams::readToken(LyXLex & lex, string const & token)
 			return classname;
 		}
 		if (!getLyXTextClass().isTeXClassAvailable()) {
-			string msg = bformat(_("The document uses a missing "
+			string const msg =
+				bformat(_("The document uses a missing "
 				"TeX class \"%1$s\".\n"), classname);
 			Alert::warning(_("Document class not available"),
 			               msg + _("LyX will not be able to produce output."));
@@ -589,12 +615,12 @@ void BufferParams::writeFile(ostream & os) const
 		   << "\n\\end_preamble\n";
 	}
 
-	/* the options */
+	// the options
 	if (!options.empty()) {
 		os << "\\options " << options << '\n';
 	}
 
-	/* then the text parameters */
+	// then the text parameters
 	if (language != ignore_language)
 		os << "\\language " << language->lang() << '\n';
 	os << "\\inputencoding " << inputenc
@@ -1091,6 +1117,7 @@ bool BufferParams::writeLaTeX(ostream & os, LaTeXFeatures & features,
 	return use_babel;
 }
 
+
 void BufferParams::setPaperStuff()
 {
 	papersize = PAPER_DEFAULT;
@@ -1226,7 +1253,7 @@ void BufferParams::readBulletsLaTeX(LyXLex & lex)
 	if (!lex.next()) return;
 	int const index = lex.getInteger();
 	lex.next(true);
-	string temp_str = lex.getString();
+	string const temp_str = lex.getString();
 
 	user_defined_bullet(index).setText(temp_str);
 	temp_bullet(index).setText(temp_str);

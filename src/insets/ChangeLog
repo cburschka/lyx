@@ -1,11 +1,16 @@
+2005-01-05  Lars Gullik Bjonnes  <larsbj@gullik.net>
+
+	* inset.[Ch] (forceDefaultParagraphs): delete since it is same as
+	base version
+
 2005-01-04  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* ExternalTransforms.C: fix LaTeX output of \scalebox.
-	
-	* ExternalTransforms.[Ch]: 
+
+	* ExternalTransforms.[Ch]:
 	* insetexternal.C: store all float/double values as strings.
-	
-	* insetgraphics.C: 
+
+	* insetgraphics.C:
 	* insetgraphicsParams.C: more precise checks for the value strings.
 
 2004-12-28  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
@@ -14,12 +19,12 @@
 
 2004-12-28  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
-	* insetgraphics.C: 
+	* insetgraphics.C:
 	* insetgraphicsParams.[Ch]: store all float/double values as strings.
 
 2004-12-17  Alfredo Braunstein  <abraunst@lyx.org>
 
-	* insettext.[Ch] : move autoBreakRows_ bool to LyXText 
+	* insettext.[Ch] : move autoBreakRows_ bool to LyXText
 
 2004-12-15  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
@@ -36,7 +41,7 @@
 	* insettabular.C (getCellXPos): make it return a relative x
 	position wrt. the begin of the tabular
 	(resetPos): a couple of fixes
-	(doDispatch): add a couple of resetPos calls 
+	(doDispatch): add a couple of resetPos calls
 	(drawSelection): fix drawing of selection in single-cell mode
 	(draw): replace 'do not draw' optimization by 'draw with
 	nullpainter' one

@@ -230,45 +230,6 @@ DispatchResult LCursor::result() const
 }
 
 
-bool LCursor::getStatus(FuncRequest const & cmd, FuncStatus & status)
-{
-	// This is, of course, a mess. Better create a new doc iterator and use
-	// this in Inset::getStatus. This might require an additional
-	// BufferView * arg, though (which should be avoided)
-	LCursor safe = *this;
-	bool res = false;
-	for ( ; size(); pop()) {
-		//lyxerr << "\nLCursor::getStatus: cmd: " << cmd << endl << *this << endl;
-		if (idx() > lastidx()) {
-			lyxerr << "wrong idx " << idx() << ", max is " << lastidx()
-				<< ". Trying to correct this."  << endl;
-			idx() = lastidx();
-		}
-		if (pit() > lastpit()) {
-			lyxerr << "wrong par " << pit() << ", max is " << lastpit()
-				<< ". Trying to correct this."  << endl;
-			pit() = lastpit();
-		}
-		if (pos() > lastpos()) {
-			lyxerr << "wrong pos " << pos() << ", max is " << lastpos()
-				<< ". Trying to correct this."  << endl;
-			pos() = lastpos();
-		}
-
-		// The inset's getStatus() will return 'true' if it made
-		// a definitive decision on whether it want to handle the
-		// request or not. The result of this decision is put into
-		// the 'status' parameter.
-		if (inset().getStatus(*this, cmd, status)) {
-			res = true;
-			break;
-		}
-	}
-	operator=(safe);
-	return res;
-}
-
-
 BufferView & LCursor::bv() const
 {
 	BOOST_ASSERT(bv_);

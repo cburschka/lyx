@@ -64,7 +64,7 @@ private:
 		AspellConfig * config;
 	};
 
-	typedef std::map<std::string, struct Speller> Spellers;
+	typedef std::map<std::string, Speller> Spellers;
 
 	/// the spellers
 	Spellers spellers_;

@@ -73,7 +73,7 @@ void ASpell::addSpeller(string const & lang)
 }
 
 
-enum ASpell::Result ASpell::check(WordLangTuple const & word)
+ASpell::Result ASpell::check(WordLangTuple const & word)
 {
 	Result res = UNKNOWN;
 
@@ -88,7 +88,7 @@ enum ASpell::Result ASpell::check(WordLangTuple const & word)
 
 	AspellSpeller * m = it->second.speller;
 
-	int word_ok = aspell_speller_check(m, word.word().c_str(), -1);
+	int const word_ok = aspell_speller_check(m, word.word().c_str(), -1);
 	BOOST_ASSERT(word_ok != -1);
 
 	if (word_ok) {
@@ -129,9 +129,8 @@ string const ASpell::nextMiss()
 
 	if (els)
 		str = aspell_string_enumeration_next(els);
-	if (str)
-		return str;
-	return "";
+
+	return (str ? str : "");
 }
 
 
@@ -143,9 +142,7 @@ string const ASpell::error()
 		err = aspell_error_message(spell_error_object);
 	}
 
-	if (err)
-		return err;
-	return "";
+	return (err ? err : "");
 }
 
 #endif // USE_ASPELL

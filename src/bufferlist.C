@@ -69,14 +69,17 @@ bool BufferList::empty() const
 
 bool BufferList::quitWriteBuffer(Buffer * buf)
 {
+	BOOST_ASSERT(buf);
+
 	string file;
 	if (buf->isUnnamed())
 		file = OnlyFilename(buf->fileName());
 	else
 		file = MakeDisplayPath(buf->fileName(), 30);
 
-	string text = bformat(_("The document %1$s has unsaved changes.\n\n"
-		"Do you want to save the document or discard the changes?"), file);
+	string const text =
+		bformat(_("The document %1$s has unsaved changes.\n\n"
+			  "Do you want to save the document or discard the changes?"), file);
 	int const ret = Alert::prompt(_("Save changed document?"),
 		text, 0, 2, _("&Save"), _("&Discard"), _("&Cancel"));
 
@@ -127,16 +130,18 @@ bool BufferList::quitWriteAll()
 void BufferList::release(Buffer * buf)
 {
 	BOOST_ASSERT(buf);
-	BufferStorage::iterator it = find(bstore.begin(), bstore.end(), buf);
+	BufferStorage::iterator const it =
+		find(bstore.begin(), bstore.end(), buf);
 	if (it != bstore.end()) {
 		Buffer * tmp = (*it);
+		BOOST_ASSERT(tmp);
 		bstore.erase(it);
 		delete tmp;
 	}
 }
 
 
-Buffer * BufferList::newBuffer(string const & s, bool ronly)
+Buffer * BufferList::newBuffer(string const & s, bool const ronly)
 {
 	auto_ptr<Buffer> tmpbuf(new Buffer(s, ronly));
 	tmpbuf->params().useClassDefaults();
@@ -155,7 +160,7 @@ void BufferList::closeAll()
 }
 
 
-bool BufferList::close(Buffer * buf, bool ask)
+bool BufferList::close(Buffer * buf, bool const ask)
 {
 	BOOST_ASSERT(buf);
 
@@ -171,8 +176,9 @@ bool BufferList::close(Buffer * buf, bool ask)
 	else
 		fname = MakeDisplayPath(buf->fileName(), 30);
 
-	string text = bformat(_("The document %1$s has unsaved changes.\n\n"
-		"Do you want to save the document or discard the changes?"), fname);
+	string const text =
+		bformat(_("The document %1$s has unsaved changes.\n\n"
+			  "Do you want to save the document or discard the changes?"), fname);
 	int const ret = Alert::prompt(_("Save changed document?"),
 		text, 0, 2, _("&Save"), _("&Discard"), _("&Cancel"));
 
@@ -216,7 +222,7 @@ Buffer * BufferList::first()
 }
 
 
-Buffer * BufferList::getBuffer(unsigned int choice)
+Buffer * BufferList::getBuffer(unsigned int const choice)
 {
 	if (choice >= bstore.size())
 		return 0;
@@ -226,6 +232,8 @@ Buffer * BufferList::getBuffer(unsigned int choice)
 
 Buffer * BufferList::next(Buffer const * buf) const
 {
+	BOOST_ASSERT(buf);
+
 	if (bstore.empty())
 		return 0;
 	BufferStorage::const_iterator it = find(bstore.begin(),
@@ -241,6 +249,8 @@ Buffer * BufferList::next(Buffer const * buf) const
 
 Buffer * BufferList::previous(Buffer const * buf) const
 {
+	BOOST_ASSERT(buf);
+
 	if (bstore.empty())
 		return 0;
 	BufferStorage::const_iterator it = find(bstore.begin(),
@@ -280,10 +290,9 @@ void BufferList::emergencyWriteAll()
 
 void BufferList::emergencyWrite(Buffer * buf)
 {
-	// assert(buf) // this is not good since C assert takes an int
-		       // and a pointer is a long (JMarc)
-	assert(buf != 0); // use c assert to avoid a loop
-
+	// Use ::assert to avoid a loop, BOOST_ASSERT ends up calling ::assert
+	// compare with 0 to avoid pointer/interger comparison
+	assert(buf != 0);
 
 	// No need to save if the buffer has not changed.
 	if (buf->isClean())

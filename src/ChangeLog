@@ -1,3 +1,32 @@
+2005-01-05  Lars Gullik Bjonnes  <larsbj@gullik.net>
+
+	* lyxfunc.C (getStatus): moved from lyxfunc.C put into anon
+	namespace, also more use of temp references and const
+	
+	* cursor.[Ch] (getStatus): move to lyxfunc.C
+
+	* bufferparams.C: reformat slightly
+
+	* bufferview_funcs.C (font2string): constify arg
+
+	* changes.C:
+	* converter.C:
+	* counters.C:
+	* bufferlist.C:
+	* buffer_funcs.C: (many funcs): constify arg on function
+	definitions, also make more local vars const, also add ASSERTS on
+	pointer args.
+
+	* buffer.C (LYX_FORMAT): put const in correct place
+	(many funcs): constify arg on function definitions, also make
+	more local vars const
+
+	* aspell_local.h: remove "struct" from typdef setup
+
+	* aspell.C (check): make word_ok const
+	(nextMiss): simplify slightly
+	(error): ditto
+
 2005-01-05  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* lyxrc.[Ch]: store all float values as strings.
@@ -44,7 +73,7 @@
 	* BufferView_pimpl.C (getStatus, dispatch): handle
 	LFUN_WORDS_COUNT.
 
-	* LyXAction.C (init): 
+	* LyXAction.C (init):
 	* lfuns.h: add LFUN_WORDS_COUNT.
 
 2004-12-19  Angus Leeming  <leeming@lyx.org>
@@ -66,11 +95,11 @@
 	avoid using the paragraph one
 
 	* text2.C (LyXText, insertStringAsLines): adjust
-	
+
 2004-12-16  Angus Leeming  <leeming@lyx.org>
 
 	* bufferlist.C:
-	* lyx_main.C: 
+	* lyx_main.C:
 	* messages.C: remove redundant "using lyx::support::GetEnvPath;"
 
 2004-12-14  Angus Leeming  <leeming@lyx.org>
@@ -92,7 +121,7 @@
 
 2004-12-06  Alfredo Braunstein  <abraunst@lyx.org>
 
-	* lyxfunc.C: 
+	* lyxfunc.C:
 	* text3.C: remove selection_possible global flag
 
 2004-12-06  Alfredo Braunstein  <abraunst@lyx.org>

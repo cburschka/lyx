@@ -425,4 +425,3 @@ int MathArray::yo() const
 {
 	return theCoords.arrays_.y(this);
 }
-

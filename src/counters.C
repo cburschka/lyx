@@ -78,7 +78,7 @@ void Counter::setMaster(string const & m)
 void Counters::newCounter(string const & newc)
 {
 	// First check if newc already exist
-	CounterList::iterator cit = counterList.find(newc);
+	CounterList::iterator const cit = counterList.find(newc);
 	// if already exist give warning and return
 	if (cit != counterList.end()) {
 		lyxerr << "The new counter already exists." << endl;
@@ -91,14 +91,14 @@ void Counters::newCounter(string const & newc)
 void Counters::newCounter(string const & newc, string const & masterc)
 {
 	// First check if newc already exists
-	CounterList::iterator cit = counterList.find(newc);
+	CounterList::iterator const cit = counterList.find(newc);
 	// if already existant give warning and return
 	if (cit != counterList.end()) {
 		lyxerr << "The new counter already exists." << endl;
 		return;
 	}
 	// then check if masterc exists
-	CounterList::iterator it = counterList.find(masterc);
+	CounterList::iterator const it = counterList.find(masterc);
 	// if not give warning and return
 	if (it == counterList.end()) {
 		lyxerr << "The master counter does not exist." << endl;
@@ -109,9 +109,9 @@ void Counters::newCounter(string const & newc, string const & masterc)
 }
 
 
-void Counters::set(string const & ctr, int val)
+void Counters::set(string const & ctr, int const val)
 {
-	CounterList::iterator it = counterList.find(ctr);
+	CounterList::iterator const it = counterList.find(ctr);
 	if (it == counterList.end()) {
 		lyxerr << "set: Counter does not exist: " << ctr << endl;
 		return;
@@ -120,9 +120,9 @@ void Counters::set(string const & ctr, int val)
 }
 
 
-void Counters::addto(string const & ctr, int val)
+void Counters::addto(string const & ctr, int const val)
 {
-	CounterList::iterator it = counterList.find(ctr);
+	CounterList::iterator const it = counterList.find(ctr);
 	if (it == counterList.end()) {
 		lyxerr << "addto: Counter does not exist: " << ctr << endl;
 		return;
@@ -133,7 +133,7 @@ void Counters::addto(string const & ctr, int val)
 
 int Counters::value(string const & ctr) const
 {
-	CounterList::const_iterator cit = counterList.find(ctr);
+	CounterList::const_iterator const cit = counterList.find(ctr);
 	if (cit == counterList.end()) {
 		lyxerr << "value: Counter does not exist: " << ctr << endl;
 		return 0;
@@ -152,7 +152,7 @@ void Counters::step(string const & ctr)
 
 	it->second.step();
 	it = counterList.begin();
-	CounterList::iterator end = counterList.end();
+	CounterList::iterator const end = counterList.end();
 	for (; it != end; ++it) {
 		if (it->second.master() == ctr) {
 			it->second.reset();
@@ -164,7 +164,7 @@ void Counters::step(string const & ctr)
 void Counters::reset()
 {
 	CounterList::iterator it = counterList.begin();
-	CounterList::iterator end = counterList.end();
+	CounterList::iterator const end = counterList.end();
 	for (; it != end; ++it) {
 		it->second.reset();
 	}
@@ -198,7 +198,7 @@ void Counters::copy(Counters & from, Counters & to, string const & match)
 
 namespace {
 
-char loweralphaCounter(int n)
+char loweralphaCounter(int const n)
 {
 	if (n < 1 || n > 26)
 		return '?';
@@ -206,7 +206,7 @@ char loweralphaCounter(int n)
 }
 
 
-char alphaCounter(int n)
+char alphaCounter(int const n)
 {
 	if (n < 1 || n > 26)
 		return '?';
@@ -214,7 +214,7 @@ char alphaCounter(int n)
 }
 
 
-char hebrewCounter(int n)
+char hebrewCounter(int const n)
 {
 	static const char hebrew[22] = {
 		'à', 'á', 'â', 'ã', 'ä', 'å', 'æ', 'ç', 'è',
@@ -228,9 +228,9 @@ char hebrewCounter(int n)
 }
 
 
-string const lowerromanCounter(int n)
+string const lowerromanCounter(int const n)
 {
-	static char const * roman[20] = {
+	static char const * const roman[20] = {
 		"i",   "ii",  "iii", "iv", "v",
 		"vi",  "vii", "viii", "ix", "x",
 		"xi",  "xii", "xiii", "xiv", "xv",
@@ -243,9 +243,9 @@ string const lowerromanCounter(int n)
 }
 
 
-string const romanCounter(int n)
+string const romanCounter(int const n)
 {
-	static char const * roman[20] = {
+	static char const * const roman[20] = {
 		"I",   "II",  "III", "IV", "V",
 		"VI",  "VII", "VIII", "IX", "X",
 		"XI",  "XII", "XIII", "XIV", "XV",
@@ -291,7 +291,7 @@ string Counters::counterLabel(string const & format)
 	string label = format;
 	while (true) {
 #ifdef WITH_WARNINGS
-#warning Using boost::regex would make this code a lot simpler... (Lgb)
+#warning Using boost::regex or boost::spirit would make this code a lot simpler... (Lgb)
 #endif
 
 		size_t const i = label.find('\\', 0);

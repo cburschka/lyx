@@ -141,6 +141,59 @@ extern boost::scoped_ptr<kb_keymap> toplevel_keymap;
 extern tex_accent_struct get_accent(kb_action action);
 
 
+namespace {
+
+bool getStatus(LCursor cursor,
+	       FuncRequest const & cmd, FuncStatus & status)
+{
+	// This is, of course, a mess. Better create a new doc iterator and use
+	// this in Inset::getStatus. This might require an additional
+	// BufferView * arg, though (which should be avoided)
+	//LCursor safe = *this;
+	bool res = false;
+	for ( ; cursor.size(); cursor.pop()) {
+		//lyxerr << "\nLCursor::getStatus: cmd: " << cmd << endl << *this << endl;
+		DocIterator::idx_type & idx = cursor.idx();
+		DocIterator::idx_type const lastidx = cursor.lastidx();
+
+		if (idx > lastidx) {
+			lyxerr << "wrong idx " << idx << ", max is " << lastidx
+				<< ". Trying to correct this."  << endl;
+			idx = lastidx;
+		}
+
+		DocIterator::pit_type & pit = cursor.pit();
+		DocIterator::pit_type const lastpit = cursor.lastpit();
+
+		if (pit > lastpit) {
+			lyxerr << "wrong par " << pit << ", max is " << lastpit
+				<< ". Trying to correct this."  << endl;
+			pit = lastpit;
+		}
+
+		DocIterator::pos_type & pos = cursor.pos();
+		DocIterator::pos_type const lastpos = cursor.lastpos();
+
+		if (pos > lastpos) {
+			lyxerr << "wrong pos " << pos << ", max is " << lastpos
+				<< ". Trying to correct this."  << endl;
+			pos = lastpos;
+		}
+
+		// The inset's getStatus() will return 'true' if it made
+		// a definitive decision on whether it want to handle the
+		// request or not. The result of this decision is put into
+		// the 'status' parameter.
+		if (cursor.inset().getStatus(cursor, cmd, status)) {
+			res = true;
+			break;
+		}
+	}
+	return res;
+}
+
+}
+
 LyXFunc::LyXFunc(LyXView * lv)
 	: owner(lv),
 	encoded_last_key(0),
@@ -522,8 +575,8 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 
 	default:
 
-		if (!cur.getStatus(cmd, flag))
-			flag |= view()->getStatus(cmd);
+		if (!::getStatus(cur, cmd, flag))
+			flag = view()->getStatus(cmd);
 	}
 
 	if (!enable)

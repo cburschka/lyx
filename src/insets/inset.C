@@ -52,12 +52,6 @@ LColor_color InsetOld::backgroundColor() const
 }
 
 
-bool InsetOld::forceDefaultParagraphs(InsetBase const *) const
-{
-	return false;
-}
-
-
 int InsetOld::ascent() const
 {
 	return dim_.asc;

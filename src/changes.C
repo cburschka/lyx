@@ -60,13 +60,13 @@ bool Changes::Range::contained(Range const & r) const
 }
 
 
-bool Changes::Range::contains(pos_type pos) const
+bool Changes::Range::contains(pos_type const pos) const
 {
 	return pos >= start && pos < end;
 }
 
 
-bool Changes::Range::loose_contains(pos_type pos) const
+bool Changes::Range::loose_contains(pos_type const pos) const
 {
 	return pos >= start && pos <= end;
 }
@@ -79,7 +79,7 @@ bool Changes::Range::intersects(Range const & r) const
 }
 
 
-Changes::Changes(Change::Type type)
+Changes::Changes(Change::Type const type)
 	: empty_type_(type)
 {
 }
@@ -96,7 +96,7 @@ Changes::Changes(Changes const & c)
 }
 
 
-void Changes::record(Change change, pos_type pos)
+void Changes::record(Change const change, pos_type const pos)
 {
 	if (lyxerr.debugging(Debug::CHANGES)) {
 		lyxerr[Debug::CHANGES] << "record " << change.type
@@ -118,25 +118,27 @@ void Changes::record(Change change, pos_type pos)
 }
 
 
-void Changes::set(Change change, pos_type pos)
+void Changes::set(Change const change, pos_type const pos)
 {
 	set(change, pos, pos + 1);
 }
 
 
-void Changes::set(Change::Type type, pos_type pos)
+void Changes::set(Change::Type const type, pos_type const pos)
 {
 	set(type, pos, pos + 1);
 }
 
 
-void Changes::set(Change::Type type, pos_type start, pos_type end)
+void Changes::set(Change::Type const type,
+		  pos_type const start, pos_type const end)
 {
 	set(Change(type), start, end);
 }
 
 
-void Changes::set(Change change, pos_type start, pos_type end)
+void Changes::set(Change const change,
+		  pos_type const start, pos_type const end)
 {
 	ChangeTable::iterator it = table_.begin();
 
@@ -162,7 +164,7 @@ void Changes::set(Change change, pos_type start, pos_type end)
 	}
 
 	it = table_.begin();
-	ChangeTable::iterator itend = table_.end();
+	ChangeTable::iterator const itend = table_.end();
 
 	// find a super-range
 	for (; it != itend; ++it) {
@@ -221,7 +223,7 @@ void Changes::set(Change change, pos_type start, pos_type end)
 }
 
 
-void Changes::erase(pos_type pos)
+void Changes::erase(pos_type const pos)
 {
 	ChangeTable::iterator it = table_.begin();
 	ChangeTable::iterator end = table_.end();
@@ -252,7 +254,7 @@ void Changes::erase(pos_type pos)
 }
 
 
-void Changes::del(Change change, ChangeTable::size_type pos)
+void Changes::del(Change const change, ChangeTable::size_type const pos)
 {
 	// this case happens when building from .lyx
 	if (table_.empty()) {
@@ -281,7 +283,7 @@ void Changes::del(Change change, ChangeTable::size_type pos)
 }
 
 
-void Changes::add(Change change, ChangeTable::size_type pos)
+void Changes::add(Change const change, ChangeTable::size_type const pos)
 {
 	ChangeTable::iterator it = table_.begin();
 	ChangeTable::iterator end = table_.end();
@@ -310,7 +312,7 @@ void Changes::add(Change change, ChangeTable::size_type pos)
 }
 
 
-Change const Changes::lookupFull(pos_type pos) const
+Change const Changes::lookupFull(pos_type const pos) const
 {
 	if (!table_.size()) {
 		if (lyxerr.debugging(Debug::CHANGES))
@@ -319,7 +321,7 @@ Change const Changes::lookupFull(pos_type pos) const
 	}
 
 	ChangeTable::const_iterator it = table_.begin();
-	ChangeTable::const_iterator end = table_.end();
+	ChangeTable::const_iterator const end = table_.end();
 
 	for (; it != end; ++it) {
 		if (it->range.contains(pos))
@@ -327,12 +329,12 @@ Change const Changes::lookupFull(pos_type pos) const
 	}
 
 	check();
-	BOOST_ASSERT(false);
+	BOOST_ASSERT(false && "missing changes for pos");
 	return Change(Change::UNCHANGED);
 }
 
 
-Change::Type Changes::lookup(pos_type pos) const
+Change::Type Changes::lookup(pos_type const pos) const
 {
 	if (!table_.size()) {
 		if (lyxerr.debugging(Debug::CHANGES))
@@ -349,12 +351,12 @@ Change::Type Changes::lookup(pos_type pos) const
 	}
 
 	check();
-	BOOST_ASSERT(0);
+	BOOST_ASSERT(false && "missing changes for pos");
 	return Change::UNCHANGED;
 }
 
 
-bool Changes::isChange(pos_type start, pos_type end) const
+bool Changes::isChange(pos_type const start, pos_type const end) const
 {
 	if (!table_.size()) {
 		if (lyxerr.debugging(Debug::CHANGES))
@@ -363,7 +365,7 @@ bool Changes::isChange(pos_type start, pos_type end) const
 	}
 
 	ChangeTable::const_iterator it = table_.begin();
-	ChangeTable::const_iterator itend = table_.end();
+	ChangeTable::const_iterator const itend = table_.end();
 
 	for (; it != itend; ++it) {
 		if (lyxerr.debugging(Debug::CHANGES)) {
@@ -388,7 +390,8 @@ bool Changes::isChange(pos_type start, pos_type end) const
 }
 
 
-bool Changes::isChangeEdited(lyx::pos_type start, lyx::pos_type end) const
+bool Changes::isChangeEdited(lyx::pos_type const start,
+			     lyx::pos_type const end) const
 {
 	if (!table_.size()) {
 		if (lyxerr.debugging(Debug::CHANGES))
@@ -397,7 +400,7 @@ bool Changes::isChangeEdited(lyx::pos_type start, lyx::pos_type end) const
 	}
 
 	ChangeTable::const_iterator it = table_.begin();
-	ChangeTable::const_iterator itend = table_.end();
+	ChangeTable::const_iterator const itend = table_.end();
 
 	for (; it != itend; ++it) {
 		if (it->range.intersects(Range(start, end ? end - 1 : 0))
@@ -465,7 +468,7 @@ void Changes::check() const
 	ChangeTable::const_iterator it = table_.begin();
 	ChangeTable::const_iterator end = table_.end();
 
-	bool dont_assert(true);
+	bool dont_assert = true;
 
 	lyxerr[Debug::CHANGES] << "Changelist:" << endl;
 	for (; it != end; ++it) {
@@ -491,7 +494,8 @@ void Changes::check() const
 }
 
 
-int Changes::latexMarkChange(std::ostream & os, Change::Type old, Change::Type change)
+int Changes::latexMarkChange(std::ostream & os,
+			     Change::Type const old, Change::Type const change)
 {
 	if (old == change)
 		return 0;
@@ -535,8 +539,9 @@ int Changes::latexMarkChange(std::ostream & os, Change::Type old, Change::Type c
 }
 
 
-void Changes::lyxMarkChange(std::ostream & os, int & column, lyx::time_type curtime,
-	Change const & old, Change const & change)
+void Changes::lyxMarkChange(std::ostream & os, int & column,
+			    lyx::time_type const curtime,
+			    Change const & old, Change const & change)
 {
 	if (old == change)
 		return;
@@ -549,7 +554,7 @@ void Changes::lyxMarkChange(std::ostream & os, int & column, lyx::time_type curt
 			break;
 
 		case Change::DELETED: {
-			lyx::time_type t(change.changetime);
+			lyx::time_type t = change.changetime;
 			if (!t)
 				t = curtime;
 			os << "\n\\change_deleted " << change.author
@@ -558,12 +563,13 @@ void Changes::lyxMarkChange(std::ostream & os, int & column, lyx::time_type curt
 			break;
 		}
 
-		case Change::INSERTED:
-			lyx::time_type t(change.changetime);
+	case Change::INSERTED: {
+			lyx::time_type t = change.changetime;
 			if (!t)
 				t = curtime;
 			os << "\n\\change_inserted " << change.author
 				<< " " << t << "\n";
 			break;
+	}
 	}
 }
