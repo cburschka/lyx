@@ -78,21 +78,21 @@ InsetVSpace::priv_dispatch(FuncRequest const & cmd,
 		return InsetOld::priv_dispatch(cmd, idx, pos);
 	}
 }
-		
+
 
 void InsetVSpace::read(Buffer const &, LyXLex & lex)
 {
-	if (lex.isOK()) {
-		lex.next();
-		space_ = VSpace(lex.getString());
-	}
+	BOOST_ASSERT(lex.isOK());
+	string vsp;
+	lex >> vsp;
+	if (lex)
+		space_ = VSpace(vsp);
 
-	if (lex.isOK())
-		lex.next();
-	if (lex.getString() != "\\end_inset") {
+	string end_token;
+	lex >> end_token;
+	if (end_token != "\\end_inset")
 		lex.printError("Missing \\end_inset at this point. "
 			       "Read: `$$Token'");
-	}
 }
 
 
@@ -232,7 +232,7 @@ InsetVSpaceMailer::InsetVSpaceMailer(InsetVSpace & inset)
 
 string const InsetVSpaceMailer::inset2string(Buffer const &) const
 {
-	return params2string(inset_.space_);
+	return params2string(inset_.space());
 }
 
 
@@ -247,7 +247,7 @@ void InsetVSpaceMailer::string2params(string const & in, VSpace & vspace)
 	LyXLex lex(0,0);
 	lex.setStream(data);
 	string name, vsp;
-	lex >> name >> vsp; 
+	lex >> name >> vsp;
 	if (lex)
 		vspace = VSpace(vsp);
 }

@@ -1,3 +1,9 @@
+2003-12-02  Angus Leeming  <leeming@lyx.org>
+
+	* lyxlex.[Ch] (operator void const *): add the 'const' to the return
+	type. Add a comment in the implementation that the function uses
+	the stream's bad() function rather than fail() as the std::streams
+	would do.
 
 2003-12-02  André Pönitz  <poenitz@gmx.net>
 

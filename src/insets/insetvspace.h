@@ -36,19 +36,21 @@ public:
 		  OutputParams const &) const;
 	///
 	int plaintext(Buffer const &, std::ostream &,
-	    OutputParams const &) const;
+		      OutputParams const &) const;
 	///
 	int linuxdoc(Buffer const &, std::ostream &,
-	    OutputParams const &) const;
+		     OutputParams const &) const;
 	///
 	int docbook(Buffer const &, std::ostream &,
-	    OutputParams const &) const;
+		    OutputParams const &) const;
 	///
 	void read(Buffer const &, LyXLex & lex);
 	///
 	void write(Buffer const & buf, std::ostream & os) const;
 	///
 	bool display() const { return true; }
+	/// How much?
+	VSpace const & space() const { return space_; }
 
 protected:
 	///
@@ -56,8 +58,8 @@ protected:
 	DispatchResult
 	priv_dispatch(FuncRequest const & cmd, idx_type &, pos_type &);
 
-public:
-	/// how much
+private:
+	///
 	VSpace space_;
 };
 

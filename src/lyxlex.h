@@ -55,10 +55,10 @@ public:
 		LEX_TOKEN = -4
 	};
 
-	/// straem is open and end of straem is not reached
+	/// stream is open and end of stream is not reached
 	bool isOK() const;
 	/// stream is ok
-	operator void *() const;
+	operator void const *() const;
 	/// stream is not ok
 	bool operator!() const;
 	/// return true if able to open file, else false

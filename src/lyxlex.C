@@ -256,15 +256,19 @@ int LyXLex::findToken(char const * str[])
 }
 
 
-LyXLex::operator void *() const
+LyXLex::operator void const *() const
 {
-	return isOK() ? const_cast<LyXLex *>(this) : 0;
+	// This behaviour is NOT the same as the std::streams which would
+	// use fail() here. However, our implementation of getString() et al.
+	// can cause the eof() and fail() bits to be set, even though we
+	// haven't tried to read 'em.
+	return pimpl_->is.bad() ? 0 : this;
 }
 
 
 bool LyXLex::operator!() const
 {
-	return !isOK();
+	return pimpl_->is.bad();
 }
 
 
@@ -316,5 +320,4 @@ LyXLex & LyXLex::operator>>(bool & s)
 	}
 	return *this;
 }
-
 
