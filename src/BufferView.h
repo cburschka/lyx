@@ -157,10 +157,6 @@ public:
 
 	/// get the stored error list
 	ErrorList const & getErrorList() const;
-	/// clears the stored error list
-	void resetErrorList();
-	/// stored this  error list
-	void setErrorList(ErrorList const &);
 	/// show the error list to the user
 	void showErrorList(string const &) const;
 	/// set the cursor based on the given TeX source row

@@ -19,6 +19,7 @@
 #include "lyxfind.h"
 
 #include "buffer.h"
+#include "buffer_funcs.h"
 #include "errorlist.h"
 #include "language.h"
 #include "lyx_main.h"
@@ -126,8 +127,7 @@ void ControlDocument::classApply()
 	CutAndPaste::SwitchLayoutsBetweenClasses(old_class, new_class,
 						 lv_.buffer()->paragraphs,
 						 el);
-
-	bufferview()->setErrorList(el);
+	parseErrors(*buffer(), el);
 	bufferview()->showErrorList(_("Class switch"));
 }
 

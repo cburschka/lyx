@@ -18,7 +18,6 @@
 #include <vector>
 
 class Buffer;
-class TeXErrors;
 
 /// A class to hold an error item
 struct ErrorItem {
@@ -36,7 +35,6 @@ class ErrorList : private std::vector<ErrorItem>
 {
 public:	
 	ErrorList() : std::vector<ErrorItem> () {};
-	ErrorList(Buffer const & buf, TeXErrors const &);
 
 	using std::vector<ErrorItem>::push_back;
 	using std::vector<ErrorItem>::end;

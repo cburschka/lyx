@@ -9,9 +9,14 @@
  * Full author contact details are available in file CREDITS
  */
 
+#ifndef BUFFER_FUNCS_H
+#define BUFFER_FUNCS_H
+
 #include "LString.h"
 
 class Buffer;
+class TeXErrors;
+class ErrorList;
 
 /**
  *  Loads a LyX file \c filename into \c Buffer 
@@ -24,3 +29,12 @@ bool loadLyXFile(Buffer *, string const & filename);
  */
 Buffer * newFile(string const & filename, string const & templatename, 
 		 bool isNamed = false);
+
+///return the format of the buffer on a string
+string const BufferFormat(Buffer const & buffer);
+
+void parseErrors(Buffer const &, TeXErrors const &);
+
+void parseErrors(Buffer const &, ErrorList const &);
+
+#endif // BUFFER_FUNCS_H

@@ -15,9 +15,11 @@
 #include "buffer_funcs.h"
 #include "bufferlist.h"
 #include "buffer.h"
+#include "errorlist.h"
 #include "gettext.h"
 #include "vc-backend.h"
 #include "lyxlex.h"
+#include "LaTeX.h"
 #include "ParagraphList.h"
 #include "paragraph.h"
 
@@ -193,4 +195,46 @@ Buffer * newFile(string const & filename, string const & templatename,
 	b->updateDocLang(b->params.language);
 
 	return b;
+}
+
+
+void parseErrors(Buffer const & buf, TeXErrors const & terr) 
+{
+	TeXErrors::Errors::const_iterator cit = terr.begin();
+	TeXErrors::Errors::const_iterator end = terr.end();
+
+	for (; cit != end; ++cit) {
+		int par_id = -1;
+		int posstart = -1;
+		int const errorrow = cit->error_in_line;
+		buf.texrow.getIdFromRow(errorrow, par_id, posstart);
+		int posend = -1;
+		buf.texrow.getIdFromRow(errorrow + 1, par_id, posend);
+		buf.parseError(ErrorItem(cit->error_desc,
+					 cit->error_text,
+					 par_id, posstart, posend));
+	}
+}
+
+
+void parseErrors(Buffer const & buf, ErrorList const & el) 
+{
+	ErrorList::const_iterator it = el.begin();
+	ErrorList::const_iterator end = el.end();
+
+	for (; it != end; ++it) 
+		buf.parseError(*it);
+}
+
+
+string const BufferFormat(Buffer const & buffer)
+{
+	if (buffer.isLinuxDoc())
+		return "linuxdoc";
+	else if (buffer.isDocBook())
+		return "docbook";
+	else if (buffer.isLiterate())
+		return "literate";
+	else
+		return "latex";
 }

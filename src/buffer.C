@@ -11,6 +11,7 @@
 #include <config.h>
 
 #include "buffer.h"
+#include "buffer_funcs.h"
 #include "bufferlist.h"
 #include "LyXAction.h"
 #include "lyxrc.h"
@@ -1146,8 +1147,6 @@ void Buffer::makeLinuxDocFile(string const & fname, bool nice, bool body_only)
 	string item_name;
 	vector<string> environment_stack(5);
 
-	users->resetErrorList();
-
 	ParagraphList::iterator pit = paragraphs.begin();
 	ParagraphList::iterator pend = paragraphs.end();
 	for (; pit != pend; ++pit) {
@@ -1276,8 +1275,6 @@ void Buffer::makeLinuxDocFile(string const & fname, bool nice, bool body_only)
 
 	// we want this to be true outside previews (for insetexternal)
 	niceFile = true;
-
-	users->showErrorList(_("LinuxDoc"));
 }
 
 
@@ -1594,8 +1591,6 @@ void Buffer::makeDocBookFile(string const & fname, bool nice, bool only_body)
 	string item_name;
 	string command_name;
 
-	users->resetErrorList();
-
 	ParagraphList::iterator par = paragraphs.begin();
 	ParagraphList::iterator pend = paragraphs.end();
 
@@ -1811,7 +1806,6 @@ void Buffer::makeDocBookFile(string const & fname, bool nice, bool only_body)
 
 	// we want this to be true outside previews (for insetexternal)
 	niceFile = true;
-	users->showErrorList(_("DocBook"));
 }
 
 
@@ -1937,9 +1931,7 @@ int Buffer::runChktex()
 			     _("Could not run chktex successfully."));
 	} else if (res > 0) {
 		// Insert all errors as errors boxes
-		ErrorList el (*this, terr);
-		users->setErrorList(el);
-		users->showErrorList(_("ChkTeX"));
+		parseErrors(*this, terr);
 	}
 
 	users->owner()->busy(false);

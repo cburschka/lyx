@@ -15,6 +15,7 @@
 #include "format.h"
 #include "lyxrc.h"
 #include "buffer.h"
+#include "buffer_funcs.h"
 #include "bufferview_funcs.h"
 #include "errorlist.h"
 #include "LaTeX.h"
@@ -476,11 +477,8 @@ bool Converters::scanLog(Buffer const * buffer, string const & /*command*/,
 	TeXErrors terr;
 	int result = latex.scanLogFile(terr);
 
-	if (bv && (result & LaTeX::ERRORS)) {
-		ErrorList el(*buffer, terr);
-		bv->setErrorList(el);
-		bv->showErrorList(_("LaTeX"));
-	}
+	if (bv && (result & LaTeX::ERRORS))
+		parseErrors(*buffer, terr);
 
 	return true;
 }
@@ -507,12 +505,8 @@ bool Converters::runLaTeX(Buffer const * buffer, string const & command,
 	int result = latex.run(terr,
 			       bv ? &bv->owner()->getLyXFunc() : 0);
 
-	if (bv && (result & LaTeX::ERRORS)) {
-		//show errors
-		ErrorList el(*buffer, terr);
-		bv->setErrorList(el);
-		bv->showErrorList(_("LaTeX"));
-	}
+	if (bv && (result & LaTeX::ERRORS))
+		parseErrors(*buffer, terr);
 
 	// check return value from latex.run().
 	if ((result & LaTeX::NO_LOGFILE)) {

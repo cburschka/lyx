@@ -336,18 +336,6 @@ bool BufferView::insertLyXFile(string const & filen)
 }
 
 
-void BufferView::resetErrorList()
-{
-	pimpl_->errorlist_.clear();
-}
-
-
-void BufferView::setErrorList(ErrorList const & el)
-{
-	pimpl_->errorlist_ = el;
-}
-
-
 void BufferView::showErrorList(string const & action) const
 {
 	if (getErrorList().size()) {
@@ -361,6 +349,7 @@ ErrorList const &
 BufferView::getErrorList() const
 {
 	return pimpl_->errorlist_;
+	pimpl_->errorlist_.clear();
 }
 
 

@@ -39,11 +39,5 @@ public:
 	std::vector<Format const *> const
 	GetExportableFormats(Buffer const * buffer, bool only_viewable);
 	///
-private:
-	static
-	string const BufferFormat(Buffer const * buffer);
-	///
-	static
-	std::vector<string> const Backends(Buffer const * buffer);
 };
 #endif

@@ -12,7 +12,6 @@
 
 #include "errorlist.h"
 #include "buffer.h"
-#include "LaTeX.h"
 
 
 ErrorItem::ErrorItem(string const & error, string const & description,
@@ -27,21 +26,3 @@ ErrorItem::ErrorItem()
 {}
 
 
-ErrorList::ErrorList(Buffer const & buf, 
-		     TeXErrors const & terr) 
-{
-	TeXErrors::Errors::const_iterator cit = terr.begin();
-	TeXErrors::Errors::const_iterator end = terr.end();
-
-	for (; cit != end; ++cit) {
-		int par_id = -1;
-		int posstart = -1;
-		int const errorrow = cit->error_in_line;
-		buf.texrow.getIdFromRow(errorrow, par_id, posstart);
-		int posend = -1;
-		buf.texrow.getIdFromRow(errorrow + 1, par_id, posend);
-		push_back(ErrorItem(cit->error_desc,
-				    cit->error_text,
-				    par_id, posstart, posend));
-	}
-}

@@ -1,3 +1,16 @@
+2003-06-24  Alfredo Brauntein  <abraunst@lyx.org>
+
+	* converter.C (scanLog, runLaTeX):
+	* buffer.C (makeLinuxDocFile, makeDocBookFile, runChkTeX):
+	move the bv->showErrorList call to the callers
+	* lyxfunc.C: i.e. here...
+	* text2.C: and here
+	* BufferView.[Ch] (setErrorList, resetErrorList): both removed
+	* exporter.[Ch] (Backends, BufferFormat): the first was moved to anon
+	namespace, the second to...
+	* buffer_funcs (BufferFormat, parseErrors): added
+	* errorlist.C (ErrorList(TeXErrors const &)): removed
+	
 2003-06-24  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* ToolbarBackend.C (getIcon): complain when icon cannot be found

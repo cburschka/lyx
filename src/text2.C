@@ -18,6 +18,7 @@
 #include "frontends/LyXView.h"
 #include "undo_funcs.h"
 #include "buffer.h"
+#include "buffer_funcs.h"
 #include "bufferparams.h"
 #include "errorlist.h"
 #include "gettext.h"
@@ -1415,7 +1416,7 @@ void LyXText::pasteSelection(size_t sel_index)
 					    cursor.par(), cursor.pos(),
 					    bv()->buffer()->params.textclass,
 					    sel_index, el);
-	bv()->setErrorList(el);
+	parseErrors(*bv()->buffer(), el);
 	bv()->showErrorList(_("Paste"));
 
 	redoParagraphs(cursor, endpit);

@@ -1094,25 +1094,31 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 
 	case LFUN_UPDATE:
 		Exporter::Export(owner->buffer(), argument, true);
+		view()->showErrorList(BufferFormat(*owner->buffer()));
 		break;
 
 	case LFUN_PREVIEW:
 		Exporter::Preview(owner->buffer(), argument);
+		view()->showErrorList(BufferFormat(*owner->buffer()));
 		break;
 
 	case LFUN_BUILDPROG:
 		Exporter::Export(owner->buffer(), "program", true);
+		view()->showErrorList(_("Build"));
 		break;
 
 	case LFUN_RUNCHKTEX:
 		owner->buffer()->runChktex();
+		view()->showErrorList(_("ChkTeX"));
 		break;
 
 	case LFUN_EXPORT:
 		if (argument == "custom")
 			owner->getDialogs().showSendto();
-		else
+		else {
 			Exporter::Export(owner->buffer(), argument, false);
+			view()->showErrorList(BufferFormat(*owner->buffer()));
+		}
 		break;
 
 	case LFUN_IMPORT:

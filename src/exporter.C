@@ -12,6 +12,7 @@
 
 #include "exporter.h"
 #include "buffer.h"
+#include "buffer_funcs.h"
 #include "lyx_cb.h" //ShowMessage()
 #include "support/filetools.h"
 #include "lyxrc.h"
@@ -25,6 +26,21 @@
 
 using std::vector;
 using std::find;
+
+
+namespace {
+
+vector<string> const Backends(Buffer const * buffer)
+{
+	vector<string> v;
+	if (buffer->params.getLyXTextClass().isTeXClassAvailable())
+		v.push_back(BufferFormat(*buffer));
+	v.push_back("text");
+	return v;
+}
+
+} //namespace anon
+
 
 bool Exporter::Export(Buffer * buffer, string const & format,
 		      bool put_in_tempdir, string & result_file)
@@ -142,25 +158,3 @@ Exporter::GetExportableFormats(Buffer const * buffer, bool only_viewable)
 	return result;
 }
 
-
-string const Exporter::BufferFormat(Buffer const * buffer)
-{
-	if (buffer->isLinuxDoc())
-		return "linuxdoc";
-	else if (buffer->isDocBook())
-		return "docbook";
-	else if (buffer->isLiterate())
-		return "literate";
-	else
-		return "latex";
-}
-
-
-vector<string> const Exporter::Backends(Buffer const * buffer)
-{
-	vector<string> v;
-	if (buffer->params.getLyXTextClass().isTeXClassAvailable())
-		v.push_back(BufferFormat(buffer));
-	v.push_back("text");
-	return v;
-}
