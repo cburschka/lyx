@@ -20,6 +20,7 @@
 #include "debug.h"
 #include "lyxrc.h"
 #include "BufferView.h"
+#include "qt_helpers.h"
 
 #include <qglobal.h>
 #if QT_VERSION < 300
@@ -176,13 +177,16 @@ qfont_loader::font_info::font_info(LyXFont const & f)
 	} else 
 		switch (f.family()) {
 		case LyXFont::ROMAN_FAMILY:
-			font.setFamily(lyxrc.roman_font_name.c_str());
+			font.setFamily(makeFontName(lyxrc.roman_font_name,
+						    lyxrc.roman_font_foundry).c_str());
 			break;
 		case LyXFont::SANS_FAMILY:
-			font.setFamily(lyxrc.sans_font_name.c_str());
+			font.setFamily(makeFontName(lyxrc.sans_font_name,
+						    lyxrc.sans_font_foundry).c_str());
 			break;
 		case LyXFont::TYPEWRITER_FAMILY:
-			font.setFamily(lyxrc.typewriter_font_name.c_str());
+			font.setFamily(makeFontName(lyxrc.typewriter_font_name,
+						    lyxrc.typewriter_font_foundry).c_str());
 			break;
 		default:
 			break;

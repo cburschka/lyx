@@ -55,6 +55,9 @@ enum LyXRCTags {
 	RC_SCREEN_FONT_ROMAN,
 	RC_SCREEN_FONT_SANS,
 	RC_SCREEN_FONT_TYPEWRITER,
+	RC_SCREEN_FONT_ROMAN_FOUNDRY,
+	RC_SCREEN_FONT_SANS_FOUNDRY,
+	RC_SCREEN_FONT_TYPEWRITER_FOUNDRY,
 	RC_SCREEN_FONT_ENCODING,
 	RC_POPUP_BOLD_FONT,
 	RC_POPUP_NORMAL_FONT,
@@ -241,6 +244,12 @@ enum LyXRCTags {
 	string sans_font_name;
 	///
 	string typewriter_font_name;
+	///
+	string roman_font_foundry;
+	///
+	string sans_font_foundry;
+	///
+	string typewriter_font_foundry;
 	///
 	string popup_bold_font;
 	///

@@ -1,0 +1,49 @@
+/**
+ * \file qt_helpers.C
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
+ *
+ * \author Dekel Tsur
+ *
+ * Full author contact details are available in file CREDITS
+ */
+
+#include <config.h>
+
+#ifdef __GNUG__
+#pragma implementation
+#endif
+
+#include "qt_helpers.h"
+
+#include <qglobal.h>
+
+
+string makeFontName(string const & family, string const & foundry)
+{
+	if (foundry.empty())
+		return family;
+#if QT_VERSION  >= 300
+	return family + " [" + foundry + ']';
+#else
+	return foundry + '-' + family;
+#endif
+}
+
+
+pair<string,string> parseFontName(string const & name)
+{
+#if QT_VERSION  >= 300
+	string::size_type const idx = name.find('[');
+	if (idx == string::npos || idx == 0)
+		return make_pair(name, string());
+	return make_pair(name.substr(0, idx - 1),
+			 name.substr(idx + 1, name.size() - idx - 2));
+#else
+	string::size_type const idx = name.find('-');
+	if (idx == string::npos || idx == 0)
+		return make_pair(name, string());
+	return make_pair(name.substr(idx + 1),
+			 name.substr(0, idx));
+#endif
+}

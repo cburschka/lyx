@@ -70,6 +70,24 @@ namespace {
 Formats    local_formats;
 Converters local_converters;
 
+string makeFontName(string const & family, string const & foundry)
+{
+	if (foundry.empty())
+		return family;
+	return family + ',' + foundry;
+}
+
+
+pair<string,string> parseFontName(string const & name)
+{
+	string::size_type const idx = name.find(',');
+	if (idx == string::npos)
+		return make_pair(name, string());
+	return make_pair(name.substr(0, idx),
+			 name.substr(idx+1));
+}
+
+
 } // namespace anon
 
 
@@ -2435,25 +2453,32 @@ void FormPreferences::ScreenFonts::apply(LyXRC & rc) const
 {
 	bool changed = false;
 
-	string str = fl_get_input(dialog_->input_roman);
-	if (rc.roman_font_name != str) {
+	pair<string, string> tmp =
+		parseFontName(fl_get_input(dialog_->input_roman));
+	if (rc.roman_font_name != tmp.first ||
+	    rc.roman_font_foundry != tmp.second) {
 		changed = true;
-		rc.roman_font_name = str;
+		rc.roman_font_name = tmp.first;
+		rc.roman_font_foundry = tmp.second;
 	}
 
-	str = fl_get_input(dialog_->input_sans);
-	if (rc.sans_font_name != str) {
+	tmp = parseFontName(fl_get_input(dialog_->input_sans));
+	if (rc.sans_font_name != tmp.first ||
+	    rc.sans_font_foundry != tmp.second) {
 		changed = true;
-		rc.sans_font_name = str;
+		rc.sans_font_name = tmp.first;
+		rc.sans_font_foundry = tmp.second;
 	}
 
-	str = fl_get_input(dialog_->input_typewriter);
-	if (rc.typewriter_font_name != str) {
+	tmp = parseFontName(fl_get_input(dialog_->input_typewriter));
+	if (rc.typewriter_font_name != tmp.first ||
+	    rc.typewriter_font_foundry != tmp.second) {
 		changed = true;
-		rc.typewriter_font_name = str;
+		rc.typewriter_font_name = tmp.first;
+		rc.typewriter_font_foundry = tmp.second;
 	}
 
-	str = fl_get_input(dialog_->input_screen_encoding);
+	string str = fl_get_input(dialog_->input_screen_encoding);
 	if (rc.font_norm != str) {
 		changed = true;
 		rc.font_norm = str;
@@ -2690,11 +2715,14 @@ bool FormPreferences::ScreenFonts::input()
 void FormPreferences::ScreenFonts::update(LyXRC const & rc)
 {
 	fl_set_input(dialog_->input_roman,
-		     rc.roman_font_name.c_str());
+		     makeFontName(rc.roman_font_name,
+				  rc.roman_font_foundry).c_str());
 	fl_set_input(dialog_->input_sans,
-		     rc.sans_font_name.c_str());
+		     makeFontName(rc.sans_font_name,
+				  rc.sans_font_foundry).c_str());
 	fl_set_input(dialog_->input_typewriter,
-		     rc.typewriter_font_name.c_str());
+		     makeFontName(rc.typewriter_font_name,
+				  rc.typewriter_font_foundry).c_str());
 	fl_set_input(dialog_->input_screen_encoding,
 		     rc.font_norm.c_str());
 	fl_set_button(dialog_->check_scalable,

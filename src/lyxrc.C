@@ -126,10 +126,13 @@ keyword_item lyxrcTags[] = {
 	// compatibility with versions older than 1.2.0 only Angus 10 Jan 2002
 	{ "\\screen_font_popup", LyXRC::RC_POPUP_NORMAL_FONT },
 	{ "\\screen_font_roman", LyXRC::RC_SCREEN_FONT_ROMAN },
+	{ "\\screen_font_roman_foundry", LyXRC::RC_SCREEN_FONT_ROMAN_FOUNDRY },
 	{ "\\screen_font_sans", LyXRC::RC_SCREEN_FONT_SANS },
+	{ "\\screen_font_sans_foundry", LyXRC::RC_SCREEN_FONT_SANS_FOUNDRY },
 	{ "\\screen_font_scalable", LyXRC::RC_SCREEN_FONT_SCALABLE },
 	{ "\\screen_font_sizes", LyXRC::RC_SCREEN_FONT_SIZES },
 	{ "\\screen_font_typewriter", LyXRC::RC_SCREEN_FONT_TYPEWRITER },
+	{ "\\screen_font_typewriter_foundry", LyXRC::RC_SCREEN_FONT_TYPEWRITER_FOUNDRY },
 	{ "\\screen_zoom", LyXRC::RC_SCREEN_ZOOM },
 	{ "\\serverpipe", LyXRC::RC_SERVERPIPE },
 	{ "\\set_color", LyXRC::RC_SET_COLOR },
@@ -208,9 +211,9 @@ void LyXRC::setDefaults() {
 	font_sizes[LyXFont::SIZE_HUGE] = 20.74;
 	font_sizes[LyXFont::SIZE_HUGER] = 24.88;
 	use_scalable_fonts = true;
-	roman_font_name = "-*-times";
-	sans_font_name = "-*-helvetica";
-	typewriter_font_name = "-*-courier";
+	roman_font_name = "times";
+	sans_font_name = "helvetica";
+	typewriter_font_name = "courier";
 	popup_bold_font = "-*-helvetica-bold-r";
 	popup_normal_font = "-*-helvetica-medium-r";
 	font_norm = "iso8859-1";
@@ -283,6 +286,21 @@ void LyXRC::readBindFileIfNeeded()
 	if (!hasBindFile)
 		ReadBindFile(bind_file);
 }
+
+
+namespace {
+
+void oldFontFormat(string & family, string & foundry)
+{
+	if (family.empty() || family[0] != '-')
+		return;
+	foundry = token(family, '-', 1);
+	family = token(family, '-', 2);
+	if (foundry == "*")
+		foundry.erase();
+}
+
+} // namespace anon
 
 
 int LyXRC::read(string const & filename)
@@ -686,18 +704,41 @@ int LyXRC::read(string const & filename)
 		case RC_SCREEN_FONT_ROMAN:
 			if (lexrc.next()) {
 				roman_font_name = lexrc.getString();
+				oldFontFormat(roman_font_name,
+					      roman_font_foundry);
 			}
 			break;
 
 		case RC_SCREEN_FONT_SANS:
 			if (lexrc.next()) {
 				sans_font_name = lexrc.getString();
+				oldFontFormat(sans_font_name, sans_font_foundry);
 			}
 			break;
 
 		case RC_SCREEN_FONT_TYPEWRITER:
 			if (lexrc.next()) {
 				typewriter_font_name = lexrc.getString();
+				oldFontFormat(typewriter_font_name,
+					      typewriter_font_foundry);
+			}
+			break;
+
+		case RC_SCREEN_FONT_ROMAN_FOUNDRY:
+			if (lexrc.next()) {
+				roman_font_foundry = lexrc.getString();
+			}
+			break;
+
+		case RC_SCREEN_FONT_SANS_FOUNDRY:
+			if (lexrc.next()) {
+				sans_font_foundry = lexrc.getString();
+			}
+			break;
+
+		case RC_SCREEN_FONT_TYPEWRITER_FOUNDRY:
+			if (lexrc.next()) {
+				typewriter_font_foundry = lexrc.getString();
 			}
 			break;
 
@@ -1299,9 +1340,19 @@ void LyXRC::output(ostream & os) const
 			os << "\\screen_font_roman \"" << roman_font_name
 			   << "\"\n";
 		}
+	case RC_SCREEN_FONT_ROMAN_FOUNDRY:
+		if (roman_font_foundry != system_lyxrc.roman_font_foundry) {
+			os << "\\screen_font_roman_foundry \"" << roman_font_foundry
+			   << "\"\n";
+		}
 	case RC_SCREEN_FONT_SANS:
 		if (sans_font_name != system_lyxrc.sans_font_name) {
 			os << "\\screen_font_sans \"" << sans_font_name
+			   << "\"\n";
+		}
+	case RC_SCREEN_FONT_SANS_FOUNDRY:
+		if (sans_font_foundry != system_lyxrc.sans_font_foundry) {
+			os << "\\screen_font_sans_foundry \"" << sans_font_foundry
 			   << "\"\n";
 		}
 	case RC_SCREEN_FONT_TYPEWRITER:
@@ -1309,6 +1360,12 @@ void LyXRC::output(ostream & os) const
 			os << "\\screen_font_typewriter \""
 			   << typewriter_font_name << "\"\n";
 		}
+	case RC_SCREEN_FONT_TYPEWRITER_FOUNDRY:
+		if (typewriter_font_foundry != system_lyxrc.typewriter_font_foundry) {
+			os << "\\screen_font_typewriter_foundry \""
+			   << typewriter_font_foundry << "\"\n";
+		}
+
 	case RC_SCREEN_FONT_SCALABLE:
 		if (use_scalable_fonts != system_lyxrc.use_scalable_fonts) {
 			os << "\\screen_font_scalable "

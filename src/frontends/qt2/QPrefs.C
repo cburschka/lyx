@@ -39,7 +39,10 @@
 #include "lyxrc.h"
 #include "frnt_lang.h"
 #include "helper_funcs.h"
+#include "qt_helpers.h"
 #include "debug.h"
+
+#include <boost/tuple/tuple.hpp>
 
 #include <qpushbutton.h>
 #include <qcheckbox.h>
@@ -51,6 +54,7 @@
 #include "qcoloritem.h"
 
 using std::vector;
+using std::pair;
 using std::ostringstream;
 using std::setfill;
 using std::setw;
@@ -230,10 +234,14 @@ void QPrefs::apply()
 	QPrefScreenFontsModule * fontmod(dialog_->screenfontsModule);
 
 	LyXRC const oldrc(rc);
+ 
+	boost::tie(rc.roman_font_name, rc.roman_font_foundry)
+		= parseFontName(fontmod->screenRomanCO->currentText().latin1());
+	boost::tie(rc.sans_font_name, rc.sans_font_foundry) = 
+		parseFontName(fontmod->screenSansCO->currentText().latin1());
+	boost::tie(rc.typewriter_font_name, rc.typewriter_font_foundry) =
+		parseFontName(fontmod->screenTypewriterCO->currentText().latin1());
 
-	rc.roman_font_name = fontmod->screenRomanCO->currentText().latin1();
-	rc.sans_font_name = fontmod->screenSansCO->currentText().latin1();
-	rc.typewriter_font_name = fontmod->screenTypewriterCO->currentText().latin1();
 	rc.zoom = fontmod->screenZoomSB->value();
 	rc.dpi = fontmod->screenDpiSB->value();
 	rc.font_sizes[LyXFont::SIZE_TINY] = strToDbl(fontmod->screenTinyED->text().latin1());
@@ -297,6 +305,29 @@ findPos(std::vector<A> const & vec, A const & val)
 	if (it == vec.end())
 		return 0;
 	return std::distance(vec.begin(), it);
+}
+
+void setComboxFont(QComboBox * cb,
+		   string const & family, string const & foundry)
+{
+
+	string const name = makeFontName(family, foundry);
+	for (int i = 0; i < cb->count(); ++i) {
+		if (compare_no_case(cb->text(i).latin1(), name) == 0) {
+			cb->setCurrentItem(i);
+			return;
+		}
+	}
+
+	// Try matching without foundary name
+	for (int i = cb->count() - 1; i >= 0; --i) {
+		// We count in reverse in order to prefer the Xft foundry
+		pair<string, string> tmp = parseFontName(cb->text(i).latin1());
+		if (compare_no_case(tmp.first, family) == 0) {
+			cb->setCurrentItem(i);
+			return;
+		}
+	}
 }
 
 }
@@ -436,36 +467,17 @@ void QPrefs::update_contents()
 
 	QPrefScreenFontsModule * fontmod(dialog_->screenfontsModule);
 
-	QString roman(rc.roman_font_name.c_str());
-	QString sans(rc.sans_font_name.c_str());
-	QString typewriter(rc.typewriter_font_name.c_str());
+	setComboxFont(fontmod->screenRomanCO,
+		      rc.roman_font_name, rc.roman_font_foundry);
+	setComboxFont(fontmod->screenSansCO,
+		      rc.sans_font_name, rc.sans_font_foundry);
+	setComboxFont(fontmod->screenTypewriterCO,
+		      rc.typewriter_font_name, rc.typewriter_font_foundry);
 
-	for (int i = 0; i < fontmod->screenRomanCO->count(); ++i) {
-		if (fontmod->screenRomanCO->text(i) == roman) {
-			fontmod->screenRomanCO->setCurrentItem(i);
-			break;
-		}
-	}
-
-	for (int i = 0; i < fontmod->screenSansCO->count(); ++i) {
-		if (fontmod->screenSansCO->text(i) == sans) {
-			fontmod->screenSansCO->setCurrentItem(i);
-			break;
-		}
-	}
-
-	for (int i = 0; i < fontmod->screenTypewriterCO->count(); ++i) {
-		if (fontmod->screenTypewriterCO->text(i) == typewriter) {
-			fontmod->screenTypewriterCO->setCurrentItem(i);
-			break;
-		}
-	}
-
-	// Fucked if I know why we need this. But we do
-	dialog_->select_roman(roman);
-	dialog_->select_sans(sans);
-	dialog_->select_typewriter(typewriter);
-
+	dialog_->select_roman(fontmod->screenRomanCO->currentText());
+	dialog_->select_sans(fontmod->screenSansCO->currentText());
+	dialog_->select_typewriter(fontmod->screenTypewriterCO->currentText());
+ 
 	fontmod->screenZoomSB->setValue(rc.zoom);
 	fontmod->screenDpiSB->setValue(int(rc.dpi));
 	fontmod->screenTinyED->setText(tostr(rc.font_sizes[LyXFont::SIZE_TINY]).c_str());

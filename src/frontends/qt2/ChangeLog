@@ -1,3 +1,11 @@
+2002-11-27  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* qfont_loader.C (font_info): Use lyxrc.*_font_foundry.
+
+	* QPrefs.C: Handle lyxrc.*_font_foundry.
+
+	* qt_helpers.C: New file.
+
 2002-11-27  John Levon  <levon@movementarian.org>
 
 	* qsetborder.h:

@@ -128,6 +128,15 @@ string const symbolPattern(LyXFont::FONT_FAMILY family)
 	}	
 }
 
+string const fontName(string const & family, string const & foundry)
+{
+	if (foundry.empty() || foundry == "Xft")
+		return "-*-"+family;
+	else
+		return "-"+foundry+"-"+family;
+}
+
+
 bool addFontPath()
 {
 	string const dir =  OnlyPath(LibFileSearch("xfonts", "fonts.dir"));
@@ -192,21 +201,27 @@ void xfont_loader::getFontinfo(LyXFont::FONT_FAMILY family,
 		switch (family) {
 		case LyXFont::ROMAN_FAMILY:
 			switch (cfam) {
-			case 0: ffamily = lyxrc.roman_font_name; break;
+			case 0: ffamily = fontName(lyxrc.roman_font_name,
+						   lyxrc.roman_font_foundry);
+				break;
 			case 1: ffamily = "-*-times";
 			default: cfam = 100;
 			}
 			break;
 		case LyXFont::SANS_FAMILY:
 			switch (cfam) {
-			case 0: ffamily = lyxrc.sans_font_name; break;
+			case 0: ffamily = fontName(lyxrc.sans_font_name,
+						   lyxrc.sans_font_foundry);
+				break;
 			case 1: ffamily = "-*-helvetica";
 			default: cfam = 100;
 			}
 			break;
 		case LyXFont::TYPEWRITER_FAMILY:
 			switch (cfam) {
-			case 0: ffamily = lyxrc.typewriter_font_name; break;
+			case 0: ffamily = fontName(lyxrc.typewriter_font_name,
+						   lyxrc.typewriter_font_foundry);
+				break;
 			case 1: ffamily = "-*-courier";
 			default: cfam = 100;
 			}
