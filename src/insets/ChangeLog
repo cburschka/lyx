@@ -1,3 +1,10 @@
+2002-12-10  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* insetgraphics.C (prepareFile): do not remove the extension of
+	the file name if it is not the default extension for the given
+	format (that is, in latex output, remove extension from foo.eps,
+	but not from foo.epsi)
+
 2002-11-20  Juergen Vigna  <jug@sad.it>
 
 	* insettabular.C (resetPos): temporary fix for endless loop in

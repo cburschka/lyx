@@ -708,12 +708,22 @@ string const InsetGraphics::prepareFile(Buffer const *buf) const
 	lyxerr[Debug::GRAPHICS]
 		<< "\t we have: from " << from << " to " << to << '\n';
 	if (from == to) {
-		// No conversion is needed. LaTeX can handle the graphic file as is.
-		// This is true even if the orig_file is compressed. We have to return
-		// the orig_file_with_path, maybe it is a zipped one
-		if (lyxrc.use_tempdir)
-			return RemoveExtension(temp_file);
-		return RemoveExtension(orig_file_with_path);
+		// No conversion is needed. LaTeX can handle the
+		// graphic file as is. This is true even if the
+		// orig_file is compressed. We have to return the
+		// orig_file_with_path, maybe it is a zipped one
+
+		// If the extension is not the default one (e.g. .epsi
+		// instead of .eps), then we do not remove it. (JMarc 20021210)
+		if (formats.getFormat(to)->extension() == GetExtension(orig_file)) {
+			if (lyxrc.use_tempdir)
+				return RemoveExtension(temp_file);
+			return RemoveExtension(orig_file_with_path);
+		} else {
+			if (lyxrc.use_tempdir)
+				return temp_file;
+			return orig_file_with_path;
+		}
 	}
 
 	string const outfile_base = RemoveExtension(temp_file);

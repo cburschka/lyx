@@ -50,22 +50,19 @@ Both an Xforms and Xpm libraries should be installed to compile LyX.
 It is imperative that you have the correct versions of these
 libraries, and their associated header files.
 
-As of LyX version 1.2.0, you will need to have Xforms library and
-header version 0.88 or 0.89. Version 0.89.6 is the one which works
-best, but the old stable 0.88.1 version is still supported. On some
-systems, such as linux ELF, there are shared library versions of the
-Xforms library, which require an installation step to configure the
-system.
+As of LyX version 1.2.2, you will need to have Xforms library and
+header version 0.88, 0.89 or 1.0.0. The later is the one which works
+best (many bugs have been fixed in this version after reports from the
+LyX team). On some systems, such as linux ELF, there are shared
+library versions of the Xforms library, which require an installation
+step to configure the system.
 
-Xforms is available (free) only in binary format, source code is not
-available.  If it is not available for your machine, contact the Xforms
-developers to request a version for your system.  You can get it from
+Xforms 1.0 is available in source form at the following addresses
+    ftp://ncmir.ucsd.edu/pub/xforms/OpenSource/
+    ftp://ftp.lyx.org/pub/xforms/OpenSource/
 
-    http://world.std.com/~xforms/
-    ftp://ncmir.ucsd.edu/pub/xforms/
-    ftp://ftp.lyx.org/pub/xforms/
-    ftp://ftp.fu-berlin.de/unix/X11/gui/xforms
-    ftp://ftp.cs.ruu.nl/pub/XFORMS/
+Older 0.x versions are available (free) only in binary format on the
+same ftp sites , source code is not available.
 
 If you use a rpm-based linux distribution, such as RedHat or Mandrake,
 we recommend that you grab a version of xforms from
