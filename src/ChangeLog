@@ -1,5 +1,9 @@
 2004-08-20  José Matos  <jamatos@lyx.org>
 
+	* lyxrc.C: remove support/translator.h inclusion since it is not used.
+
+2004-08-20  José Matos  <jamatos@lyx.org>
+
 	* lyxlex.[Ch] (findToken): remove function.
 
 	* ParagraphParameters.C (findToken):

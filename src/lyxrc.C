@@ -33,7 +33,6 @@
 
 #include "support/filetools.h"
 #include "support/lstrings.h"
-#include "support/translator.h"
 #include "support/tostr.h"
 #include "support/userinfo.h"
 
