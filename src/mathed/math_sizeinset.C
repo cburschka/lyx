@@ -15,17 +15,17 @@
 #include "math_mathmlstream.h"
 #include "math_parser.h"
 #include "math_streamstr.h"
-#include "support/std_ostream.h"
 
-#ifndef CXX_GLOBAL_CSTD
-using std::atoi;
-#endif
+#include "support/std_ostream.h"
+#include "support/lyxlib.h"
+
+using lyx::support::atoi;
 
 using std::auto_ptr;
 
 
 MathSizeInset::MathSizeInset(latexkeys const * l)
-	: MathNestInset(1), key_(l), style_(Styles(atoi(l->extra.c_str())))
+	: MathNestInset(1), key_(l), style_(Styles(atoi(l->extra)))
 {}
 
 

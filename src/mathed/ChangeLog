@@ -1,3 +1,7 @@
+2004-11-07  Lars Gullik Bjonnes  <larsbj@gullik.net>
+
+	* math_parser.C (parse1): change to use lyx::support::atoi
+	* math_sizeinset.C (MathSizeInset): ditto
 
 2004-08-12  André Pönitz  <poenitz@gmx.net>
 

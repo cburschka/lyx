@@ -62,12 +62,12 @@ following hack as starting point to write some macros:
 
 #include "lyxlex.h"
 #include "debug.h"
+#include "support/lyxlib.h"
 
 #include <sstream>
 
-#ifndef CXX_GLOBAL_CSTD
-using std::atoi;
-#endif
+using lyx::support::atoi;
+
 using std::endl;
 using std::fill;
 
@@ -797,7 +797,7 @@ void Parser::parse1(MathGridInset & grid, unsigned flags,
 
 				string arg  = getArg('[', ']');
 				if (!arg.empty())
-					nargs = atoi(arg.c_str());
+					nargs = atoi(arg);
 
 			}
 
