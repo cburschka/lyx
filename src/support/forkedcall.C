@@ -268,7 +268,7 @@ int Forkedcall::generateChild()
 	}
 #else
 	pid_t const cpid = spawnvp(P_SESSION|P_DEFAULT|P_MINIMIZE|P_BACKGROUND,
-				   syscmd, argv);
+				   argv[0], argv);
 #endif
 
 	if (cpid < 0) {
