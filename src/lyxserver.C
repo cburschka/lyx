@@ -110,124 +110,20 @@ void LyXComm::openConnection()
  
 	if (pipename.empty()) return;
 
-	// --- prepare input pipe ---------------------------------------
- 
-	string tmp = pipename + ".in";
-       
-#ifdef __EMX__
-	HPIPE fd;
-	APIRET rc;
-	int errnum;
-	// Try create one instance of named pipe with the mode O_RDONLY|O_NONBLOCK.
-	// The current emx implementation of access() won't work with pipes.
-	rc = DosCreateNPipe(tmp.c_str(), &fd, NP_ACCESS_INBOUND,
-		NP_NOWAIT|0x01, 0600, 0600, 0);
-	if (rc == ERROR_PIPE_BUSY)
-#else
-	if (::access(tmp.c_str(), F_OK) == 0)
-#endif
-	{
-		lyxerr << "LyXComm: Pipe " << tmp << " already exists.\n"
-		       << "If no other LyX program is active, please delete"
-			" the pipe by hand and try again." << endl;
-		pipename.erase();
+	if ((infd = startPipe(pipename + ".in")) == -1)
 		return;
-	}
-#ifndef __EMX__
-	if (::mkfifo(tmp.c_str(), 0600) < 0) {
-		lyxerr << "LyXComm: Could not create pipe " << tmp << '\n'
-		       << strerror(errno) << endl;
-		return;
-	};
-	infd = ::open(tmp.c_str(), O_RDONLY|O_NONBLOCK);
-#else
-	if (rc != NO_ERROR) {
-		errnum = TranslateOS2Error(rc);
-		lyxerr <<"LyXComm: Could not create pipe " << tmp
-		       << strerror(errnum) << endl;
-		return;
-	};
-	// Listen to it.
-	rc = DosConnectNPipe(fd);
-	if (rc != NO_ERROR && rc != ERROR_PIPE_NOT_CONNECTED) {
-		errnum = TranslateOS2Error(rc);
-		lyxerr <<"LyXComm: Could not create pipe " << tmp
-		       << strerror(errnum) << endl;
-		return;
-	};
-	// Imported handles can be used both with OS/2 APIs and emx
-	// library functions. 
-	infd = _imphandle(fd);
-#endif
-	if (infd < 0) {
-		lyxerr << "LyXComm: Could not open pipe " << tmp << '\n'
-		       << strerror(errno) << endl;
-		return;
-	}
-	fl_add_io_callback(infd, FL_READ, C_LyXComm_callback, this);
- 
-	// --- prepare output pipe ---------------------------------------
- 
-	tmp = pipename + ".out";
-       
-#ifndef __EMX__       
-	if (::access(tmp.c_str(), F_OK) == 0)
-#else
-	rc = DosCreateNPipe(tmp.c_str(), &fd, NP_ACCESS_DUPLEX,
-		NP_NOWAIT|0x01, 0600, 0600, 0);
 
-	if (rc == ERROR_PIPE_BUSY)
-#endif
-	{
-		lyxerr << "LyXComm: Pipe " << tmp << " already exists.\n"
-		       << "If no other LyX program is active, please delete"
-			" the pipe by hand and try again." << endl;
-		pipename.erase();
+	if ((outfd = startPipe(pipename + ".out")) == -1) {
+		endPipe(infd, pipename + ".in");
 		return;
 	}
-#ifndef __EMX__
-	if (::mkfifo(tmp.c_str(), 0600) < 0) {
-		lyxerr << "LyXComm: Could not create pipe " << tmp << '\n'
-		       << strerror(errno) << endl;
-		return;
-	};
-	if (::access(tmp.c_str(), F_OK) != 0) {
-		lyxerr << "LyXComm: Pipe " << tmp
-		       << " does not exist" << endl;
-		return;
-	}
-	outfd = ::open(tmp.c_str(), O_RDWR);
-#else
-	if (rc != NO_ERROR) {
-		errnum = TranslateOS2Error(rc);
-		lyxerr << "LyXComm: Could not create pipe " << tmp << '\n'
-		       << strerror(errnum) << endl;
-		return;
-	}
-	rc = DosConnectNPipe(fd);
-	if (rc == ERROR_BAD_PIPE) {
-		lyxerr << "LyXComm: Pipe " << tmp
-		       << " does not exist" << endl;
-		return;
-	}
-	if (rc != NO_ERROR && rc != ERROR_PIPE_NOT_CONNECTED) {
-		errnum = TranslateOS2Error(rc);
-		lyxerr << "LyXComm: Could not create pipe " << tmp << '\n'
-		       << strerror(errnum) << endl;
-		return;
-	}
-	outfd = _imphandle(fd);
-#endif
-	if (outfd < 0) {
-		lyxerr << "LyXComm: Could not open pipe " << tmp << '\n'
-		       << strerror(errno) << endl;
-		return;
-	}
+ 
 	if (fcntl(outfd, F_SETFL, O_NONBLOCK) < 0) {
-		lyxerr << "LyXComm: Could not set flags on pipe " << tmp
+		lyxerr << "LyXComm: Could not set flags on pipe " << pipename << ".out"
 		       << '\n' << strerror(errno) << endl;
 		return;
 	}
+ 
 	// We made it!
 	ready = true;
 	lyxerr[Debug::LYXSERVER] << "LyXComm: Connection established" << endl;
@@ -237,10 +133,6 @@ void LyXComm::openConnection()
 /// Close pipes
 void LyXComm::closeConnection()
 {
-#ifdef __EMX__
-	APIRET rc;
-	int errnum;
-#endif
        	lyxerr[Debug::LYXSERVER] << "LyXComm: Closing connection" << endl;
 
 	if (pipename.empty()) {
@@ -252,53 +144,114 @@ void LyXComm::closeConnection()
 		return;
 	}
  
-	if (infd > -1) {
-		fl_remove_io_callback(infd, FL_READ, C_LyXComm_callback);
+	endPipe(infd, pipename + ".in");
+	endPipe(outfd, pipename + ".out");
  
-		string tmp = pipename + ".in";
-#ifdef __EMX__		// Notify the operating system.
-		rc = DosDisConnectNPipe(infd);
-		if (rc != NO_ERROR) {
-			errnum = TranslateOS2Error(rc);
-			lyxerr << "LyXComm: Could not disconnect pipe " << tmp
-			       << '\n' << strerror(errnum) << endl;
-			return;
-		}
-#endif
-		if (close(infd) < 0) {
-			lyxerr << "LyXComm: Could not close pipe " << tmp
-			       << '\n' << strerror(errno) << endl;
-		}
-#ifndef __EMX__		// OS/2 named pipes will be automatically removed.
-		if (lyx::unlink(tmp) < 0){
-			lyxerr << "LyXComm: Could not remove pipe " << tmp
-			       << '\n' << strerror(errno) << endl;
-		};
-#endif
-	}
-	if (outfd > -1) {
-		string tmp = pipename + ".out";
-#ifdef __EMX__
-		rc = DosDisConnectNPipe(outfd);
-		if (rc != NO_ERROR) {
-			errnum = TranslateOS2Error(rc);
-			lyxerr << "LyXComm: Could not disconnect pipe " << tmp
-			       << '\n' << strerror(errnum) << endl;
-			return;
-		}
-#endif
-		if (::close(outfd) < 0) {
-			lyxerr << "LyXComm: Could not close pipe " << tmp
-			       << '\n' << strerror(errno) << endl;
-		}
-#ifndef __EMX__
-		if (lyx::unlink(tmp) < 0){
-			lyxerr << "LyXComm: Could not remove pipe " << tmp
-			       << '\n' << strerror(errno) << endl;
-		};
-#endif
-	}
 	ready = false;
+}
+
+int LyXComm::startPipe(string const & filename)
+{
+	int fd;
+ 
+#ifdef __EMX__
+	HPIPE os2fd;
+	APIRET rc;
+	int errnum;
+	// Try create one instance of named pipe with the mode O_RDONLY|O_NONBLOCK.
+	// The current emx implementation of access() won't work with pipes.
+	rc = DosCreateNPipe(filename.c_str(), &os2fd, NP_ACCESS_INBOUND,
+		NP_NOWAIT|0x01, 0600, 0600, 0);
+	if (rc == ERROR_PIPE_BUSY) {
+		lyxerr << "LyXComm: Pipe " << filename << " already exists.\n"
+		       << "If no other LyX program is active, please delete"
+			" the pipe by hand and try again." << endl;
+		pipename.erase();
+		return -1;
+	}
+ 
+	if (rc != NO_ERROR) {
+		errnum = TranslateOS2Error(rc);
+		lyxerr <<"LyXComm: Could not create pipe " << filename
+		       << strerror(errnum) << endl;
+		return -1;
+	};
+	// Listen to it.
+	rc = DosConnectNPipe(os2fd);
+	if (rc != NO_ERROR && rc != ERROR_PIPE_NOT_CONNECTED) {
+		errnum = TranslateOS2Error(rc);
+		lyxerr <<"LyXComm: Could not create pipe " << filename
+		       << strerror(errnum) << endl;
+		return -1;
+	};
+	// Imported handles can be used both with OS/2 APIs and emx
+	// library functions. 
+	fd = _imphandle(os2fd);
+#else
+	if (::access(filename.c_str(), F_OK) == 0) {
+		lyxerr << "LyXComm: Pipe " << filename << " already exists.\n"
+		       << "If no other LyX program is active, please delete"
+			" the pipe by hand and try again." << endl;
+		pipename.erase();
+		return -1;
+	}
+ 
+	if (::mkfifo(filename.c_str(), 0600) < 0) {
+		lyxerr << "LyXComm: Could not create pipe " << filename << '\n'
+		       << strerror(errno) << endl;
+		return -1;
+	};
+	fd = ::open(filename.c_str(), O_RDONLY|O_NONBLOCK);
+#endif
+ 
+	if (fd < 0) {
+		lyxerr << "LyXComm: Could not open pipe " << filename << '\n'
+		       << strerror(errno) << endl;
+		lyx::unlink(filename);
+		return -1;
+	}
+	fl_add_io_callback(fd, FL_READ, C_LyXComm_callback, this);
+	return fd;
+}
+
+
+void LyXComm::endPipe(int fd, string const & filename)
+{
+	if (fd < 0)
+		return;
+
+#ifdef __EMX__
+	APIRET rc;
+	int errnum;
+ 
+	rc = DosDisConnectNPipe(fd);
+	if (rc != NO_ERROR) {
+		errnum = TranslateOS2Error(rc);
+		lyxerr << "LyXComm: Could not disconnect pipe " << filename
+		       << '\n' << strerror(errnum) << endl;
+		return;
+	}
+#endif
+ 
+	if (::close(fd) < 0) {
+		lyxerr << "LyXComm: Could not close pipe " << filename
+		       << '\n' << strerror(errno) << endl;
+	}
+ 
+// OS/2 pipes are deleted automatically
+#ifndef __EMX__
+	if (lyx::unlink(filename) < 0){
+		lyxerr << "LyXComm: Could not remove pipe " << filename
+		       << '\n' << strerror(errno) << endl;
+	};
+#endif
+}
+
+
+void LyXComm::emergencyCleanup()
+{
+	endPipe(infd, pipename + ".in");
+	endPipe(outfd, pipename + ".out");
 }
 
 

@@ -220,7 +220,7 @@ void error_handler(int err_sig)
 	signal(SIGSEGV, SIG_DFL);
 	signal(SIGTERM, SIG_DFL);
 
-	bufferlist.emergencyWriteAll();
+	LyX::emergencyCleanup();
 
 	lyxerr << "Bye." << endl;
 	if (err_sig!= SIGHUP && 
@@ -556,6 +556,19 @@ void LyX::defaultKeyBindings(kb_keymap  * kbmap)
 }
 
 
+void LyX::emergencyCleanup()
+{
+	// what to do about tmpfiles is non-obvious. we would
+	// like to delete any we find, but our lyxdir might
+	// contain documents etc. which might be helpful on
+	// a crash
+ 
+	bufferlist.emergencyWriteAll();
+	if (lyxserver)
+		lyxserver->emergencyCleanup();
+}
+
+ 
 // LyX can optionally take over the handling of deadkeys
 void LyX::deadKeyBindings(kb_keymap * kbmap)
 {

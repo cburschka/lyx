@@ -4,7 +4,7 @@
 
 #include "support/lyxlib.h"
 
-extern void emergencySave();
+extern void emergencyCleanup();
 
 namespace lyx {
 
@@ -12,7 +12,7 @@ namespace lyx {
 
 /** Live assertion.
     This is a debug tool to ensure that the assertion holds. If it don't hole
-    we run #emergencySave()# and then #lyx::abort".
+    we run #emergencyCleanup()# and then #lyx::abort".
     @param assertion this should evaluate to true unless you want an abort.
 */
 template<class A>
@@ -20,7 +20,7 @@ inline
 void Assert(A assertion)
 {
 	if (!assertion) {
-		::emergencySave();
+		::emergencyCleanup();
 		lyx::abort();
 	}
 }

@@ -27,12 +27,12 @@ enum kb_action {
 	LFUN_WRITEAS,
 	LFUN_MENUPRINT,
 	LFUN_MENUSENDTO,
-        LFUN_BUILDPROG,
+	LFUN_BUILDPROG,
 	LFUN_TOCVIEW, // 10
 	LFUN_PREVIEW,
 	LFUN_CLOSEBUFFER,
-	LFUN_BUFFER_PRINT,		// ARRae 20000313
-	LFUN_PRINTER_PARAMS_GET,	// ARRae 20000313
+	LFUN_BUFFER_PRINT,              // ARRae 20000313
+	LFUN_PRINTER_PARAMS_GET,        // ARRae 20000313
 	LFUN_QUIT,
 	LFUN_AUTOSAVE,
 	LFUN_UNDO,
@@ -68,7 +68,7 @@ enum kb_action {
 	LFUN_HOME,
 	LFUN_END,
 	LFUN_TAB,
-	LFUN_SHIFT_TAB, // Jug 20000522
+	LFUN_SHIFT_TAB,                 // Jug 20000522
 	LFUN_WORDRIGHT,
 	LFUN_WORDLEFT,   // 50
 	LFUN_BEGINNINGBUF,
@@ -110,7 +110,7 @@ enum kb_action {
 	LFUN_UMLAUT,
 	LFUN_DOT,
 	LFUN_OGONEK,
-	LFUN_VECTOR,        //  Alejandro 040696 // 90
+	LFUN_VECTOR, // 90              //  Alejandro 040696 
 	LFUN_SELFINSERT,
 	LFUN_GETBUFNAME,
 	LFUN_GETXY,
@@ -121,7 +121,7 @@ enum kb_action {
 	LFUN_GETFONT,
 	LFUN_GETNAME, // 100
 	LFUN_NOTIFY,
-        LFUN_GOTOFILEROW,   // Edmar 12/23/98
+	LFUN_GOTOFILEROW,               // Edmar 12/23/98
 	LFUN_INSERT_NOTE,
 	LFUN_KMAP_OFF,
 	LFUN_KMAP_PRIM,
@@ -132,25 +132,25 @@ enum kb_action {
 	LFUN_GREEK,  // 110
 	LFUN_MATH_LIMITS,
 	LFUN_GREEK_TOGGLE,
-	LFUN_MATH_DELIM,    //  Alejandro 180696
-	LFUN_MATH_DISPLAY,  // was INSERT_EQUATION  Alejandro 180696
-	LFUN_MATH_MODE,     //  Alejandro 040696
-	LFUN_MATH_NUMBER,   //  Alejandro 040696
-	LFUN_MATH_NONUMBER,   //  Alejandro 180696
-	LFUN_MATH_SIZE,   //  Alejandro 150896
-	LFUN_MATH_MACRO, // ale970510
-	LFUN_MATH_MACROARG,  // ale970510  // 120
-	LFUN_MATH_EXTERN,           // Andre' 20010424
-	LFUN_MATH_PANEL,            // Andre' 20010522
-	LFUN_MATH_VALIGN,           // Andre' 20010522
-	LFUN_MATH_HALIGN,           // Andre' 20010522
-	LFUN_MATH_ROW_INSERT,       // Andre' 20010522
-	LFUN_MATH_ROW_DELETE,       // Andre' 20010522
-	LFUN_MATH_COLUMN_INSERT,    // Andre' 20010522
-	LFUN_MATH_COLUMN_DELETE,    // Andre' 20010522
-	LFUN_MATH_MUTATE,           // Andre' 20010523
-	LFUN_MATH_IMPORT_SELECTION, // Andre' 20010704
-	LFUN_MATH_SPACE,            // Andre' 20010725
+	LFUN_MATH_DELIM,                // Alejandro 180696
+	LFUN_MATH_DISPLAY,              // was INSERT_EQUATION  Alejandro 180696
+	LFUN_MATH_MODE,                 // Alejandro 040696
+	LFUN_MATH_NUMBER,               // Alejandro 040696
+	LFUN_MATH_NONUMBER,             // Alejandro 180696
+	LFUN_MATH_SIZE,                 // Alejandro 150896
+	LFUN_MATH_MACRO,                // ale970510
+	LFUN_MATH_MACROARG,  // 120     // ale970510 
+	LFUN_MATH_EXTERN,               // Andre' 20010424
+	LFUN_MATH_PANEL,                // Andre' 20010522
+	LFUN_MATH_VALIGN,               // Andre' 20010522
+	LFUN_MATH_HALIGN,               // Andre' 20010522
+	LFUN_MATH_ROW_INSERT,           // Andre' 20010522
+	LFUN_MATH_ROW_DELETE,           // Andre' 20010522
+	LFUN_MATH_COLUMN_INSERT,        // Andre' 20010522
+	LFUN_MATH_COLUMN_DELETE,        // Andre' 20010522
+	LFUN_MATH_MUTATE,               // Andre' 20010523
+	LFUN_MATH_IMPORT_SELECTION,     // Andre' 20010704
+	LFUN_MATH_SPACE,                // Andre' 20010725
 	LFUN_FIGURE,
 	LFUN_DELETE_WORD_FORWARD,
 	LFUN_DELETE_WORD_BACKWARD,
@@ -158,12 +158,12 @@ enum kb_action {
 	LFUN_MARK_OFF,
 	LFUN_MARK_ON,
 	LFUN_LAYOUT,
-	LFUN_LAYOUTNO,    // Lgb 97-06-10  // 130
+	LFUN_LAYOUTNO,  // 130          // Lgb 97-06-10
 	LFUN_LAYOUT_CHARACTER,
 	LFUN_LAYOUT_PARAGRAPH,
 	LFUN_LAYOUT_DOCUMENT,
 	LFUN_LAYOUT_PREAMBLE,
-        LFUN_LAYOUT_SAVE_DEFAULT,
+	LFUN_LAYOUT_SAVE_DEFAULT,
 	LFUN_DROP_LAYOUTS_CHOICE,
 	LFUN_CODE,
 	LFUN_SANS,
@@ -178,12 +178,12 @@ enum kb_action {
 	LFUN_REF_INSERT,
 	LFUN_PUSH_TOOLBAR,
 	LFUN_ADD_TO_TOOLBAR,
-	LFUN_DEPTH_MIN,   // 150             // RVDK_PATCH_5
-	LFUN_DEPTH_PLUS,                     // RVDK_PATCH_5
-	LFUN_MENU_OPEN_BY_NAME,              // RVDK_PATCH_5
-	LFUN_SPELLCHECK,                     // RVDK_PATCH_5
-	LFUN_CANCEL,                         // RVDK_PATCH_5
-	LFUN_META_FAKE,                      // RVDK_PATCH_5
+	LFUN_DEPTH_MIN,   // 150        // RVDK_PATCH_5
+	LFUN_DEPTH_PLUS,                // RVDK_PATCH_5
+	LFUN_MENU_OPEN_BY_NAME,         // RVDK_PATCH_5
+	LFUN_SPELLCHECK,                // RVDK_PATCH_5
+	LFUN_CANCEL,                    // RVDK_PATCH_5
+	LFUN_META_FAKE,                 // RVDK_PATCH_5
 	LFUN_EXEC_COMMAND,
 	LFUN_FILE_INSERT,
 	LFUN_FILE_INSERT_ASCII,         // CFO-G 1997-11-19
@@ -191,26 +191,26 @@ enum kb_action {
 	LFUN_FILE_NEW,
 	LFUN_FILE_OPEN,  // 160
 	LFUN_UP_PARAGRAPH,              // Asger 1996-10-01
-	LFUN_UP_PARAGRAPHSEL,		// Asger 1996-10-01
-	LFUN_DOWN_PARAGRAPH,		// Asger 1996-10-01
-	LFUN_DOWN_PARAGRAPHSEL,		// Asger 1996-10-01
+	LFUN_UP_PARAGRAPHSEL,           // Asger 1996-10-01
+	LFUN_DOWN_PARAGRAPH,            // Asger 1996-10-01
+	LFUN_DOWN_PARAGRAPHSEL,         // Asger 1996-10-01
 	LFUN_BREAKPARAGRAPH_SKIP,
 	LFUN_BACKSPACE_SKIP,
 	LFUN_DELETE_SKIP,
-	LFUN_MENUNEWTMPLT,		// Asger 1997-02-02
-	LFUN_MENURELOAD,		// Asger 1997-02-02
-	LFUN_RECONFIGURE, // 170	// Asger 1997-02-14
+	LFUN_MENUNEWTMPLT,              // Asger 1997-02-02
+	LFUN_MENURELOAD,                // Asger 1997-02-02
+	LFUN_RECONFIGURE, // 170        // Asger 1997-02-14
 	LFUN_CITATION_INSERT,           // AAS 97-02-23
 	LFUN_INSERT_BIBTEX,             // AAS 97-02-23
 	LFUN_INDEX_CREATE,              // Lgb 97-02-27
-	LFUN_INDEX_INSERT_LAST,   // Reh 98-09-17
+	LFUN_INDEX_INSERT_LAST,         // Reh 98-09-17
 	LFUN_INDEX_PRINT,               // Lgb 97-02-27
 	LFUN_APROPOS,                   // Asger 1997-02-27
 	LFUN_LATEX_LOG,                 // Lgb 97-04-05
-	LFUN_LAYOUT_COPY,		// Asger 1997-05-04
-	LFUN_LAYOUT_PASTE,		// Asger 1997-05-04
+	LFUN_LAYOUT_COPY,               // Asger 1997-05-04
+	LFUN_LAYOUT_PASTE,              // Asger 1997-05-04
 	LFUN_TABINSERT, // 180          // Ale 970515
-	LFUN_CHILD_INSERT,               // Ale 970521
+	LFUN_CHILD_INSERT,              // Ale 970521
 	LFUN_CHILDOPEN,                 // Ale 970528
 	LFUN_TOC_INSERT,                // Lgb 97-05-27
 	LFUN_FLOAT_LIST,                // Lgb 20010503
@@ -231,37 +231,37 @@ enum kb_action {
 // schedule for deletion
 #endif
 	LFUN_REF_GOTO, // 200           // Ale 970806
-	//LFUN_REF_BACK,                  // Ale 970806
-	LFUN_PARENTINSERT,		// Ale 970813
+	//LFUN_REF_BACK,                // Ale 970806
+	LFUN_PARENTINSERT,              // Ale 970813
 	LFUN_REMOVEERRORS,              // Asger 970906
 	LFUN_LDOTS,                     // Asger 970929
-	LFUN_END_OF_SENTENCE,		// Asger 970929
-	LFUN_RUNCHKTEX,			// Asger 971030
+	LFUN_END_OF_SENTENCE,           // Asger 970929
+	LFUN_RUNCHKTEX,                 // Asger 971030
 	LFUN_TOGGLECURSORFOLLOW,        // ARRae 971202
 	LFUN_HTMLURL,                   // CFO-G 971121
 	LFUN_URL,                       // CFO-G 971121
-	LFUN_WORDFINDFORWARD, // 210	// Etienne 980216
-	LFUN_WORDFINDBACKWARD,		// Etienne 980220
+	LFUN_WORDFINDFORWARD, // 210    // Etienne 980216
+	LFUN_WORDFINDBACKWARD,          // Etienne 980220
 	LFUN_APPENDIX,                  // ettrich 980505
-	LFUN_IMPORT,     		// Asger 980724
+	LFUN_IMPORT,                    // Asger 980724
 	LFUN_MENU_SEPARATOR,            // Asger 990220
 	LFUN_SEQUENCE,                  // Andre' 991111
-	LFUN_DIALOG_PREFERENCES,	// ARRae 20000726
+	LFUN_DIALOG_PREFERENCES,        // ARRae 20000726
 	LFUN_SAVEPREFERENCES,           // Lgb 991127
-        LFUN_HELP_OPEN,	// 220		// Jug 990627
-	LFUN_DATE_INSERT,		// jdblair 20000131
+	LFUN_HELP_OPEN, // 220          // Jug 990627
+	LFUN_DATE_INSERT,	              // jdblair 20000131
 	LFUN_LANGUAGE,                  // Dekel 20000203
-	LFUN_INSET_TEXT,		// Jug 20000214
-	LFUN_INSET_ERT,			// Jug 20000218
+	LFUN_INSET_TEXT,	              // Jug 20000214
+	LFUN_INSET_ERT,	                // Jug 20000218
 	LFUN_INSET_GRAPHICS,            // Lgb 20000226
 	LFUN_INSET_FOOTNOTE,            // Jug 20000307
 	LFUN_PARAGRAPH_SPACING,         // Lgb 20000411
-	LFUN_INSET_TABULAR,		// Jug 20000412
-	LFUN_LOFVIEW, // 230		// Dekel 20000519	
-	LFUN_LOTVIEW,			// Dekel 20000519
-	LFUN_LOAVIEW,			// Dekel 20000519
- 	LFUN_SET_COLOR,			// SLior 20000611
-	LFUN_INSET_EXTERNAL,		// Alstrup 20000609
+	LFUN_INSET_TABULAR,             // Jug 20000412
+	LFUN_LOFVIEW, // 230            // Dekel 20000519
+	LFUN_LOTVIEW,                   // Dekel 20000519
+	LFUN_LOAVIEW,                   // Dekel 20000519
+ 	LFUN_SET_COLOR,                 // SLior 20000611
+	LFUN_INSET_EXTERNAL,            // Alstrup 20000609
 	LFUN_INSET_MARGINAL,            // Lgb 20000626
 	LFUN_INSET_MINIPAGE,            // Lgb 20000627
 	LFUN_INSET_FLOAT,               // Lgb 20000627
@@ -273,28 +273,28 @@ enum kb_action {
 #endif
 	LFUN_CITATION_CREATE, // 240    // Angus 20000705
 	LFUN_INSET_CAPTION,             // Lgb 20000718
-	LFUN_SWITCHBUFFER,  // and where is this comming from?
+	LFUN_SWITCHBUFFER,  // and where is this coming from?
 	LFUN_INSERT_URL,                // Angus 20000726
 	LFUN_TABULAR_FEATURE,           // Jug 20000728
 	LFUN_LAYOUT_TABULAR,            // Jug 20000731
 	LFUN_SCROLL_INSET,              // Jug 20000801
 	LFUN_UPDATE,                    // Dekel 20000805
 	LFUN_INDEX_INSERT,              // Angus 20000803
-	LFUN_SCREEN_FONT_UPDATE,	// ARRae 20000813
+	LFUN_SCREEN_FONT_UPDATE,        // ARRae 20000813
 	LFUN_DIALOG_TABULAR_INSERT, // 250 // Jug 20000825 (old table-insert)
-	LFUN_GOTO_PARAGRAPH,             // Dekel 20000826
-	LFUN_REFERENCE_GOTO,             // Dekel 20010114
-	LFUN_BOOKMARK_SAVE,              // Dekel 20010127
-	LFUN_BOOKMARK_GOTO,              // Dekel 20010127
-	LFUN_SELECT_FILE_SYNC,		// Levon 20010214
+	LFUN_GOTO_PARAGRAPH,            // Dekel 20000826
+	LFUN_REFERENCE_GOTO,            // Dekel 20010114
+	LFUN_BOOKMARK_SAVE,             // Dekel 20010127
+	LFUN_BOOKMARK_GOTO,             // Dekel 20010127
+	LFUN_SELECT_FILE_SYNC,          // Levon 20010214
 	LFUN_MESSAGE,                   // Lgb 20010408
 	LFUN_MESSAGE_PUSH,              // Lgb 20010410
 	LFUN_MESSAGE_POP,               // Lgb 20010410
 	LFUN_TRANSPOSE_CHARS,           // Lgb 20010425
 	LFUN_ESCAPE, // 260             // Lgb 20010517
 	LFUN_HELP_ABOUTLYX,             // Edwin 20010712
-	LFUN_THESAURUS_ENTRY,		// Levon 20010720
-	LFUN_HELP_TEXINFO,		// Herbert 20011001
+	LFUN_THESAURUS_ENTRY,           // Levon 20010720
+	LFUN_HELP_TEXINFO,              // Herbert 20011001
 	LFUN_LASTACTION  /* this marks the end of the table */
 };
 

@@ -51,6 +51,9 @@ public:
 	/// Always is useful a destructor
 	~LyX();
 
+	/// in the case of failure
+	static void emergencyCleanup();
+ 
 	///
 	LyXGUI * lyxGUI;  // should be only one of this
 private:

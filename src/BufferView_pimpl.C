@@ -2914,6 +2914,10 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		mathDispatchMathMode(bv_, argument);
 		break;
 		
+	case LFUN_GREEK:                 // Insert a single greek letter
+		mathDispatchGreek(bv_, argument);
+		break;
+		
 	case LFUN_CITATION_INSERT:
 	{
 		InsetCommandParams p;

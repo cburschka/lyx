@@ -79,9 +79,8 @@ extern "C" {
 static
 int LyX_XErrHandler(Display * display, XErrorEvent * xeev)
 {
-	// emergency save
-	if (!bufferlist.empty())
-		bufferlist.emergencyWriteAll();
+	// emergency cleanup
+	LyX::emergencyCleanup();
 
 	// Get the reason for the crash.
 	char etxt[513];

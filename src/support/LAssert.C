@@ -17,20 +17,16 @@
 #include "LAssert.h"
 
 #ifdef ENABLE_ASSERTIONS
-#include "bufferlist.h"
+#include "lyx_main.h"
 
-extern BufferList bufferlist;
-
-void emergencySave() {
-	static bool didSafe;
-	if (didSafe)
+void emergencyCleanup() {
+	static bool didCleanup;
+	if (didCleanup)
 		return;
 
-	didSafe = true;
+	didCleanup = true;
 
-	// emergency save
-	if (!bufferlist.empty())
-		bufferlist.emergencyWriteAll();
+	LyX::emergencyCleanup();
 }
 
 #endif

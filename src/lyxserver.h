@@ -49,6 +49,9 @@ public:
 		closeConnection();
 	}
 
+	/// clean up in emergency
+	void emergencyCleanup();
+ 
 	/// Send message
 	void send(string const &);
 
@@ -62,6 +65,12 @@ private:
 	/// Close pipes
 	void closeConnection();
 
+	/// start a pipe
+	int startPipe(string const &);
+ 
+	/// finish a pipe
+	void endPipe(int, string const &);
+ 
 	/// This is -1 if not open
 	int infd;
 
@@ -103,6 +112,12 @@ public:
 	~LyXServer();
 	///
 	void notifyClient(string const &);
+	
+	/// whilst crashing etc.
+	void emergencyCleanup() {
+		pipes.emergencyCleanup();
+	}
+ 
 private:
 	///
 	static void callback(LyXServer *, string const & msg);

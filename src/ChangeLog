@@ -1,3 +1,10 @@
+2001-10-19  John Levon  <moz@compsoc.man.ac.uk>
+
+	* lyxserver.h:
+	* lyxserver.C:
+	* lyx_main.h:
+	* lyx_main.C: add emergencyCleanup (remove pipes on crash)
+
 2001-10-19  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* text.C (workWidth): do not search for the exact row when
