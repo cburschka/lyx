@@ -128,4 +128,6 @@ libmathed_la_SOURCES = \
 	math_undersetinset.C \
 	math_undersetinset.h \
 	math_xdata.C \
-	math_xdata.h
+	math_xdata.h \
+	math_xymatrix.C \
+	math_xymatrix.h

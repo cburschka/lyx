@@ -139,8 +139,9 @@ enum {
 	FLAG_END        = 1 << 3,  //  next \\end ends the parsing process
 	FLAG_BRACK_END  = 1 << 4,  //  next closing bracket ends the parsing process
 	FLAG_BOX        = 1 << 5,  //  we are in a box
-	FLAG_ITEM       = 1 << 7,  //  read a (possibly braced token)
-	FLAG_BLOCK      = 1 << 8,  //  next block ends the parsing process
+	FLAG_ITEM       = 1 << 6,  //  read a (possibly braced token)
+	FLAG_BLOCK      = 1 << 7,  //  next block ends the parsing process
+	FLAG_BLOCK2     = 1 << 8,  //  next block2 ends the parsing process
 	FLAG_LEAVE      = 1 << 9   //  leave the loop at the end
 };
 
@@ -263,6 +264,8 @@ private:
 	void error(string const & msg);
 	///
 	bool parse_lines(MathAtom & t, bool numbered, bool outmost);
+	/// parses {... & ... \\ ... & ... }
+	bool parse_lines2(MathAtom & t);
 
 private:
 	///
@@ -281,6 +284,10 @@ private:
 	Token const & getToken();
 	/// skips spaces if any
 	void skipSpaces();
+	/// skips opening brace
+	void skipBegin();
+	/// skips closing brace
+	void skipEnd();
 	/// counts a sequence of hlines
 	int readHLines();
 	///
@@ -356,6 +363,24 @@ void Parser::skipSpaces()
 {
 	while (nextToken().cat() == catSpace)
 		getToken();
+}
+
+
+void Parser::skipBegin()
+{
+	if (nextToken().cat() == catBegin)
+		getToken();
+	else
+		lyxerr << "'{' expected\n";
+}
+
+
+void Parser::skipEnd()
+{
+	if (nextToken().cat() == catEnd)
+		getToken();
+	else
+		lyxerr << "'}' expected\n";
 }
 
 
@@ -504,8 +529,6 @@ bool Parser::parse_lines(MathAtom & t, bool numbered, bool outmost)
 		return false;
 	}
 
-	MathInset::col_type const cols = p->ncols();
-
 	// save global variables
 	bool   const saved_num   = curr_num_;
 	string const saved_label = curr_label_;
@@ -519,9 +542,10 @@ bool Parser::parse_lines(MathAtom & t, bool numbered, bool outmost)
 		curr_label_.erase();
 
 		// reading a row
-		for (MathInset::col_type col = 0; col < cols; ++col) {
+		for (MathInset::col_type col = 0; col < p->ncols(); ++col) {
 			//lyxerr << "reading cell " << row << " " << col << "\n";
-			parse_into(p->cell(col + row * cols), FLAG_BLOCK);
+		
+			parse_into(p->cell(col + row * p->ncols()), FLAG_BLOCK);
 
 			// break if cell is not followed by an ampersand
 			if (nextToken().cat() != catAlign) {
@@ -580,6 +604,62 @@ bool Parser::parse_lines(MathAtom & t, bool numbered, bool outmost)
 
 	return true;
 }
+
+
+bool Parser::parse_lines2(MathAtom & t)
+{	
+	MathGridInset * p = t->asGridInset();
+	if (!p) {
+		lyxerr << "error in Parser::parse_lines() 1\n";
+		return false;
+	}
+
+	skipBegin();
+
+	for (int row = 0; true; ++row) {
+		// reading a row
+		for (MathInset::col_type col = 0; true; ++col) {
+			//lyxerr << "reading cell " << row << " " << col << " " << p->ncols() << "\n";
+		
+			if (col >= p->ncols()) {
+				//lyxerr << "adding col " << col << "\n";
+				p->addCol(p->ncols());
+			}
+
+			parse_into(p->cell(col + row * p->ncols()), FLAG_BLOCK2);
+			//lyxerr << "read cell: " << p->cell(col + row * p->ncols()) << "\n";
+
+			// break if cell is not followed by an ampersand
+			if (nextToken().cat() != catAlign) {
+				//lyxerr << "less cells read than normal in row/col: " << row << " " << col << "\n";
+				break;
+			}
+			
+			// skip the ampersand
+			getToken();
+		}
+
+		// is a \\ coming?
+		if (nextToken().isCR()) {
+			// skip the cr-token
+			getToken();
+		}
+
+		// we are finished if the next token is an '}'
+		if (nextToken().cat() == catEnd) {
+			// skip the end-token
+			getToken();
+			// leave the 'read a line'-loop
+			break;
+		}
+
+		// otherwise, we have to start a new row
+		p->appendRow();
+	}
+
+	return true;
+}
+
 
 
 bool Parser::parse_macro(string & name)
@@ -751,7 +831,7 @@ void Parser::parse_into(MathArray & array, unsigned flags, MathTextCodes code)
 	while (good()) {
 		Token const & t = getToken();
 	
-		//lyxerr << "t: " << t << " flags: " << flags << "'\n";
+		//lyxerr << "t: " << t << " flags: " << flags << "\n";
 		//array.dump(lyxerr);
 		//lyxerr << "\n";
 
@@ -770,6 +850,14 @@ void Parser::parse_into(MathArray & array, unsigned flags, MathTextCodes code)
 
 		if (flags & FLAG_BLOCK) {
 			if (t.cat() == catAlign || t.isCR() || t.cs() == "end") {
+				putback();
+				return;
+			}
+		}
+
+		if (flags & FLAG_BLOCK2) {
+			if (t.cat() == catAlign || t.isCR() || t.cs() == "end"
+					|| t.cat() == catEnd) {
 				putback();
 				return;
 			}
@@ -965,6 +1053,12 @@ void Parser::parse_into(MathArray & array, unsigned flags, MathTextCodes code)
 			parse_into(p->cell(1), flags, code);
 			array.push_back(p);
 			return;
+		}
+
+		else if (t.cs() == "xymatrix") {
+			array.push_back(createMathInset(t.cs()));
+			parse_lines2(array.back());
+			// skip closing brace
 		}
 
 		// Disabled

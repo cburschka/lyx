@@ -23,6 +23,7 @@
 #include "math_symbolinset.h"
 #include "math_undersetinset.h"
 #include "math_unknowninset.h"
+#include "math_xymatrix.h"
 
 
 MathAtom createMathInset(latexkeys const * l)
@@ -89,6 +90,9 @@ MathAtom createMathInset(string const & s)
 	if (s.size() == 3 && s[0] == '\\' && s[1] == '#'
 			&& s[2] >= '1' && s[2] <= '9')
 		return MathAtom(new MathMacroArgument(s[2] - '0'));
+
+	if (s == "xymatrix")
+		return MathAtom(new MathXYMatrixInset);
 
 	latexkeys const * l = in_word_set(s);
 	if (l)
