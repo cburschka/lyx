@@ -40,8 +40,6 @@ public:
 	bool isRelOp() const;
 	///
 	bool match(MathInset *) const;
-	/// identifies complicated things that need braces if used as arg
-	bool needsBraces() const { return false; }
 
 private:
 	/// the character

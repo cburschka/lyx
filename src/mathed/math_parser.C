@@ -595,10 +595,10 @@ void Parser::parse_into(MathArray & array, unsigned flags, bool mathmode)
 	parse_into1(grid, flags, mathmode, false);
 	array = grid.cell(0);
 	// remove 'unnecessary' braces:
-	if (array.size() == 1 && array.back()->asBraceInset()) {
-		lyxerr << "extra braces removed\n";
-		array = array.back()->asBraceInset()->cell(0);
-	}
+	//if (array.size() == 1 && array.back()->asBraceInset()) {
+	//	lyxerr << "extra braces removed\n";
+	//	array = array.back()->asBraceInset()->cell(0);
+	//}
 }
 
 
@@ -693,20 +693,8 @@ void Parser::parse_into1(MathGridInset & grid, unsigned flags,
 		else if (t.cat() == catBegin) {
 			MathArray ar;
 			parse_into(ar, FLAG_BRACE_LAST, mathmode);
-#ifndef WITH_WARNINGS
-#warning this might be wrong in general!
-#endif
-			// ignore braces around simple items
-			if ((ar.size() == 1 && !ar.front()->needsBraces()
-			 || (ar.size() == 2 && !ar.front()->needsBraces()
-							&& ar.back()->asScriptInset()))
-			 || (ar.size() == 0 && cell->size() == 0))
-			{
-				cell->push_back(ar);
-			} else {
-				cell->push_back(MathAtom(new MathBraceInset));
-				cell->back()->cell(0).swap(ar);
-			}
+			cell->push_back(MathAtom(new MathBraceInset));
+			cell->back()->cell(0).swap(ar);
 		}
 
 		else if (t.cat() == catEnd) {

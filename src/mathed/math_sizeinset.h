@@ -24,8 +24,6 @@ public:
 	void metrics(MathMetricsInfo & st) const;
 	///
 	void draw(MathPainterInfo &, int x, int y) const;
-	///
-	bool needsBraces() const { return false; }
 
 	///
 	void write(WriteStream & os) const;
