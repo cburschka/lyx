@@ -181,8 +181,11 @@ Painter & QLPainter::arc(int x, int y,
 	unsigned int w, unsigned int h,
 	int a1, int a2, LColor::color col)
 {
-	// FIXME
-	setPen(col).drawArc(x, y, w, h, a1, a2);
+	lyxerr[Debug::GUI] << "arc: " << x<<","<<y
+		<< " " << w<<","<<h << ", angles "
+		<< a1 << " - " << a2 << endl;
+	// LyX usings 1/64ths degree, Qt usings 1/16th 
+	setPen(col).drawArc(x, y, w, h, a1 / 4, a2 / 4);
         return *this;
 }
 
