@@ -290,6 +290,7 @@ void InsetTabular::draw(BufferView * bv, LyXFont const & font, int baseline,
 		    tabular->GetAdditionalHeight(cell);
 	    }
 	}
+        i = tabular->row_of_cell(actcell);
 	if (the_locking_inset == tabular->GetCellInset(cell)) {
 	    LyXText::text_status st = bv->text->status;
 	    do {

@@ -1,3 +1,16 @@
+2000-10-28  Juergen Vigna  <jug@sad.it>
+
+	* src/insets/insettabular.C (draw): fixed drawing bug.
+
+	* src/insets/insettext.C (clear): 
+	(Read): 
+	(SetParagraphData): clearing the TEXT buffers when deleting the
+	paragraphs used by it.
+
+	* src/BufferView_pimpl.C (cursorNext): fixed PageDown problem.
+
+	* src/trans.C (AddDeadkey): fixed bug in inizializing keymap array.
+
 2000-10-27  Juergen Vigna  <jug@sad.it>
 
 	* src/tabular.C (~LyXTabular): removed not needed anymore.

@@ -112,6 +112,8 @@ void InsetText::init(InsetText const * ins)
 
 InsetText::~InsetText()
 {
+    // delete all instances of LyXText before deleting the paragraps used
+    // by it.
     for(Cache::const_iterator cit = cache.begin(); cit != cache.end(); ++cit)
 	delete (*cit).second;
     LyXParagraph * p = par->next;
@@ -126,6 +128,10 @@ InsetText::~InsetText()
 
 void InsetText::clear()
 {
+    // delete all instances of LyXText before deleting the paragraps used
+    // by it.
+    for(Cache::const_iterator cit = cache.begin(); cit != cache.end(); ++cit)
+	delete (*cit).second;
     LyXParagraph * p = par->next;
     delete par;
     while(p) {
@@ -168,6 +174,11 @@ void InsetText::Read(Buffer const * buf, LyXLex & lex)
     LyXParagraph::footnote_kind footnotekind = LyXParagraph::FOOTNOTE;
 #endif
     LyXFont font(LyXFont::ALL_INHERIT);
+
+    // delete all instances of LyXText before deleting the paragraps used
+    // by it.
+    for(Cache::const_iterator cit = cache.begin(); cit != cache.end(); ++cit)
+	delete (*cit).second;
 
     LyXParagraph * p = par->next;
     delete par;
@@ -1374,8 +1385,12 @@ int InsetText::getMaxWidth(Painter & pain, UpdatableInset const * inset) const
 
 void InsetText::SetParagraphData(LyXParagraph *p)
 {
-    LyXParagraph * np;
+    // delete all instances of LyXText before deleting the paragraps used
+    // by it.
+    for(Cache::const_iterator cit = cache.begin(); cit != cache.end(); ++cit)
+	delete (*cit).second;
 
+    LyXParagraph * np;
     if (par) {
 	np = par->next;
 	delete par;

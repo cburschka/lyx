@@ -1167,13 +1167,13 @@ void BufferView::Pimpl::cursorNext(LyXText * text)
 	if (!text->cursor.row()->next())
 		return;
 	
-	int y = text->first;
+	int y = text->first + workarea_->height();
 //	if (text->inset_owner)
 //		y += bv_->text->first;
 	text->GetRowNearY(y);
+    
 	Row * cursorrow = text->cursor.row();
-	text->SetCursorFromCoordinates(bv_, text->cursor.x_fix(), y
-				       + workarea_->height());
+	text->SetCursorFromCoordinates(bv_, text->cursor.x_fix(), y); // + workarea_->height());
 	bv_->text->FinishUndo();
 	// This is to allow jumping over large insets
 	if ((cursorrow == bv_->text->cursor.row()))

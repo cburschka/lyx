@@ -155,7 +155,13 @@ void Trans::AddDeadkey(tex_accent accent, string const & keys,
 	for(string::size_type i = 0; i < keys.length(); ++i) {
 		string * temp =
 			&keymap_[static_cast<unsigned char>(keys[i])];
-		(*temp)[0] = 0; (*temp)[1] = accent;
+#warning this is not really clean we should find a cleaner way (Jug)
+        *temp = "xx"; /* this is needed for the being sure that the below
+                         assignment is not assigned to a nullpointer
+                         (if size of string = 0)
+                      */
+		(*temp)[0] = 0;
+        (*temp)[1] = accent;
 	}
 	kmod_list_[accent]->exception_list = 0;
 }
