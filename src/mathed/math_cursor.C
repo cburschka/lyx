@@ -1410,8 +1410,8 @@ bool MathCursor::interpret(char c)
 	}
 
 	// no special circumstances, so insert the character without any fuss
-	insert(c, lastcode_);
 	lastcode_ = LM_TC_MIN;
+	insert(c, lastcode_);
 	return true;
 }
 
