@@ -1,3 +1,8 @@
+
+2003-05-13 André Pönitz <poenitz@gmx.net>
+
+	* ControlForks.[Ch]: use vector<pid_t> instead of strings
+
 2003-05-14  Rob Lahaye <lahaye@users.sourceforge.net>
 
 	* ControlErrorList.C (clearParams): replace string::clear by

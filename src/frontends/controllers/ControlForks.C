@@ -31,21 +31,19 @@ ControlForks::ControlForks(LyXView & lv, Dialogs & d)
 
 vector<pid_t> const ControlForks::getPIDs() const
 {
-	ForkedcallsController const & fcc = ForkedcallsController::get();
-	return fcc.getPIDs();
+	return ForkedcallsController::get().getPIDs();
 }
 
 
 string const ControlForks::getCommand(pid_t pid) const
 {
-	ForkedcallsController const & fcc = ForkedcallsController::get();
-	return fcc.getCommand(pid);
+	return ForkedcallsController::get().getCommand(pid);
 }
 
 
 void ControlForks::kill(pid_t pid)
 {
-	pids_.push_back(tostr(pid));
+	pids_.push_back(pid);
 }
 
 
@@ -60,9 +58,9 @@ void ControlForks::apply()
 	if (pids_.empty())
 		return;
 
-	for (vector<string>::const_iterator it = pids_.begin();
+	for (vector<pid_t>::const_iterator it = pids_.begin();
 	     it != pids_.end(); ++it) {
-		lyxfunc().dispatch(FuncRequest(LFUN_FORKS_KILL, *it));
+		lyxfunc().dispatch(FuncRequest(LFUN_FORKS_KILL, tostr(*it)));
 	}
 
 	pids_.clear();

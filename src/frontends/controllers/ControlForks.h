@@ -44,7 +44,7 @@ private:
 	/// Connection to the ForkedcallsController signal
 	boost::signals::connection childrenChanged_;
 	/// The list of PIDs to kill
-	std::vector<string> pids_;
+	std::vector<pid_t> pids_;
 };
 
 #endif // CONTROLFORKS_H
