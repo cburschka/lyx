@@ -2,10 +2,13 @@
 	* array.[Ch]: factor out deep_copy,
 	  remove third argument from raw_pointer_insert 
 
-	* mathiter.[Ch]: remove unused function Clear()	
+	* math_iter.[Ch]: remove unused function Clear()	
 
-	* mathcursor.C: change signature of MathStackXIter:push()
+	* math_cursor.C: change signature of MathStackXIter:push()
 	  whitespace changes
+
+	* math_rowst.h: introduction of MathRowContainer
+	  several files: corresponding changes
 
 2001-03-04  André Pönitz  <poenitz@htwm.de>
   * math_macrotemplate.[Ch]:

@@ -40,9 +40,9 @@ MathMatrixInset::MathMatrixInset(MathMatrixInset const & mt)
 	  v_align_(mt.v_align_), h_align_(mt.h_align_)
 {
 	array = mt.GetData();
-	if (mt.row_ != 0) {
+	if (mt.row_.data_ != 0) {
 		MathedRowSt * ro = 0;
-		MathedRowSt * mrow = mt.row_;
+		MathedRowSt * mrow = mt.row_.data_;
 
 		while (mrow) {
 			MathedRowSt * r = new MathedRowSt(nc_ + 1);
@@ -65,7 +65,7 @@ MathMatrixInset::MathMatrixInset(MathMatrixInset const & mt)
 
 MathMatrixInset::~MathMatrixInset()
 {
-	MathedRowSt * r = row_;
+	MathedRowSt * r = row_.data_;
 	while (r) {
 		MathedRowSt * q = r->getNext();
 		delete r;
@@ -132,14 +132,14 @@ void MathMatrixInset::draw(Painter & pain, int x, int baseline)
 
 void MathMatrixInset::Metrics()
 {
-	if (!row_) {
+	if (!row_.data_) {
 		// lyxerr << " MIDA ";
 		MathedXIter it(this);
 		row_ = it.adjustVerticalSt();
 	} 
 	
 	// Clean the arrays      
-	MathedRowSt * cxrow = row_;
+	MathedRowSt * cxrow = row_.data_;
 	while (cxrow) {   
 		for (int i = 0; i <= nc_; ++i)
 			cxrow->setTab(i, 0);
@@ -149,24 +149,24 @@ void MathMatrixInset::Metrics()
 	// Basic metrics
 	MathParInset::Metrics();
 	
-	if (nc_ <= 1 && !row_->getNext()) {
-		row_->ascent(ascent);
-		row_->descent(descent);
+	if (nc_ <= 1 && !row_.data_->getNext()) {
+		row_.data_->ascent(ascent);
+		row_.data_->descent(descent);
 	}
 	
 	// Vertical positions of each row
-	cxrow = row_;     
+	cxrow = row_.data_;     
 	MathedRowSt * cprow = 0;
 	int h = 0;
 	while (cxrow) {
 		for (int i = 0; i < nc_; ++i) {
-			if (cxrow == row_ || ws_[i] < cxrow->getTab(i))
+			if (cxrow == row_.data_ || ws_[i] < cxrow->getTab(i))
 				ws_[i] = cxrow->getTab(i);
 			if (cxrow->getNext() == 0 && ws_[i] == 0)
 				ws_[i] = df_width;
 		}
 		
-		cxrow->setBaseline((cxrow == row_) ?
+		cxrow->setBaseline((cxrow == row_.data_) ?
 				   cxrow->ascent() :
 				   cxrow->ascent() + cprow->descent()
 				   + MATH_ROWSEP + cprow->getBaseline());
@@ -181,13 +181,13 @@ void MathMatrixInset::Metrics()
 	//  Compute vertical align
 	switch (v_align_) {
 	case 't':
-		ascent = row_->getBaseline();
+		ascent = row_.data_->getBaseline();
 		break;
 	case 'b':
 		ascent = h - hl;
 		break;
 	default:
-		ascent = (row_->getNext()) ? h / 2 : h - hl;
+		ascent = (row_.data_->getNext()) ? h / 2 : h - hl;
 		break;
 	}
 	descent = h - ascent + 2;
@@ -202,7 +202,7 @@ void MathMatrixInset::Metrics()
 			ws_[0] = 7 * workWidth / 8;
 	
 	// Adjust local tabs
-	cxrow = row_;
+	cxrow = row_.data_;
 	width = MATH_COLSEP;
 	while (cxrow) {   
 		int rg = MATH_COLSEP;
@@ -225,7 +225,7 @@ void MathMatrixInset::Metrics()
 				lf = ws_[i] - cxrow->getTab(i);
 				break;
 			case 'C':
-				if (cxrow == row_)
+				if (cxrow == row_.data_)
 					lf = 0;
 				else if (!cxrow->getNext())
 					lf = ws_[i] - cxrow->getTab(i);
@@ -236,7 +236,7 @@ void MathMatrixInset::Metrics()
 			int const ww = (isvoid) ? lf : lf + cxrow->getTab(i);
 			cxrow->setTab(i, lf + rg);
 			rg = ws_[i] - ww + MATH_COLSEP;
-			if (cxrow == row_)
+			if (cxrow == row_.data_)
 				width += ws_[i] + MATH_COLSEP;
 		}
 		cxrow->setBaseline(cxrow->getBaseline() - ascent);

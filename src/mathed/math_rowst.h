@@ -72,10 +72,53 @@ public:
 	MathedRowSt * getNext() const;
 	/// ...we couldn't use this.
 	void setNext(MathedRowSt * n);
-private:
+//private:
 	///
 	MathedRowSt * next_;
 };
+
+
+// The idea is to change this  MathedRowContainer  to mimic the behaviour
+// of std::list<MathedRowStruct> in several small steps.  In the end it
+// could be replaced by such a list and MathedRowSt can go as well. 
+ 
+struct MathedRowContainer {
+	///
+	struct iterator {
+		///
+		iterator(MathedRowContainer * m) : st_(m->data_) {}
+		/// "better" conversion to bool
+		operator void *() const { return st_; }
+		///
+		MathedRowStruct & operator*() { return *st_; }
+		///
+		MathedRowStruct * operator->() { return st_; }
+		///
+		void operator++() { st_ = st_->next_; }
+		///
+		bool is_last() const { return st_->next_ == 0; }
+		///
+		bool operator==(const iterator & it) const { return st_ == it.st_; }
+
+	private:
+		///
+		MathedRowSt * st_;
+	};
+
+	///
+	MathedRowContainer() : data_(0) {}
+	///
+	MathedRowContainer(MathedRowSt * data) : data_(data) {}
+
+	///
+	iterator begin() { return iterator(this); }
+	///
+	bool empty() const { return data_ == 0; }
+
+	///
+	MathedRowSt * data_;
+};
+
 
 
 inline

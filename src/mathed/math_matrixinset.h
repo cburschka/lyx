@@ -61,7 +61,7 @@ private:
 	//std::vector<char> h_align;
 	string h_align_; // a vector would perhaps be more correct
 	/// Vertical structure
-	MathedRowSt * row_;
+	MathedRowContainer row_;
 };
 
 
@@ -89,7 +89,7 @@ bool MathMatrixInset::isMatrix() const
 inline
 MathedRowSt * MathMatrixInset::getRowSt() const
 {
-	return row_;
+	return row_.data_;
 }
 
 

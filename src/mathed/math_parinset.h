@@ -5,12 +5,12 @@
 #include "array.h"
 #include "math_inset.h"
 #include "math_defs.h"
+#include "math_rowst.h"
 
 #ifdef __GNUG__
 #pragma interface
 #endif
 
-class MathedRowSt;
 class MathedArray;
 
 
