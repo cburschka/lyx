@@ -1,5 +1,8 @@
 1999-10-13  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
+	* src/support/lyxstring.C (getline): Default arg was given for
+	para 3. removed.
+
 	* Configure.cmd: removed file 
 
 1999-10-13  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
