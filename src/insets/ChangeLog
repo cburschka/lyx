@@ -1,9 +1,16 @@
+2005-01-14  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* insetgraphics.C (prepareFile): move the invocation of the default
+	converter to ../converter.C
+	* insetgraphics.C (prepareFile), ExternalSupport.C (updateExternal):
+	call convert with try_default == true
+
 2005-01-11  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* insetgraphics.C (prepareFile): add missing calls to addExternalFile
-	* updateExternal.[Ch] (doSubstitution): take a new parameter that
+	* ExternalSupport.[Ch] (doSubstitution): take a new parameter that
 	determines what variables are substituted
-	* updateExternal.C (updateExternal): fix substitution of
+	* ExternalSupport.C (updateExternal): fix substitution of
 	ReferencedFiles
 
 2005-01-10  Angus Leeming  <leeming@lyx.org>

@@ -107,11 +107,12 @@ public:
 	bool convert(Buffer const * buffer,
 		     std::string const & from_file, std::string const & to_file_base,
 		     std::string const & from_format, std::string const & to_format,
-		     std::string & to_file);
+                     std::string & to_file, bool try_default = false);
 	///
 	bool convert(Buffer const * buffer,
 		     std::string const & from_file, std::string const & to_file_base,
-		     std::string const & from_format, std::string const & to_format);
+		     std::string const & from_format, std::string const & to_format,
+                     bool try_default = false);
 	///
 	void update(Formats const & formats);
 	///

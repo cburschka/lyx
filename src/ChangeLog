@@ -1,3 +1,8 @@
+2005-01-14  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* converter.[Ch] (convert): take a new parameter try_default. Use
+	a default converter (imagemagick) if try_default is true.
+
 2005-01-13  Angus Leeming  <leeming@lyx.org>
 
 	* lyxrc.C (read): use LyXRC::cygwin_path_fix to set the value of

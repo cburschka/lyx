@@ -36,6 +36,8 @@ using lyx::support::compare_ascii_no_case;
 using lyx::support::contains;
 using lyx::support::DirList;
 using lyx::support::GetExtension;
+using lyx::support::IsFileReadable;
+using lyx::support::LibFileSearch;
 using lyx::support::LibScriptSearch;
 using lyx::support::MakeRelPath;
 using lyx::support::OnlyFilename;
@@ -279,16 +281,39 @@ OutputParams::FLAVOR Converters::getFlavor(Graph::EdgePath const & path)
 bool Converters::convert(Buffer const * buffer,
 			 string const & from_file, string const & to_file_base,
 			 string const & from_format, string const & to_format,
-			 string & to_file)
+			 string & to_file, bool try_default)
 {
-	to_file = ChangeExtension(to_file_base,
-				  formats.extension(to_format));
+	string const to_ext = formats.extension(to_format);
+	to_file = ChangeExtension(to_file_base, to_ext);
 
 	if (from_format == to_format)
 		return move(from_format, from_file, to_file, false);
 
 	Graph::EdgePath edgepath = getPath(from_format, to_format);
 	if (edgepath.empty()) {
+		if (try_default) {
+			// if no special converter defined, then we take the
+			// default one from ImageMagic.
+			string const from_ext = formats.extension(from_format);
+			string const command = "sh " +
+				LibFileSearch("scripts", "convertDefault.sh") +
+				' ' + from_ext + ':' + from_file +
+				' ' + to_ext   + ':' + to_file;
+			lyxerr[Debug::FILES]
+				<< "No converter defined! "
+				   "I use convertDefault.sh:\n\t"
+				<< command << endl;
+			Systemcall one;
+			one.startscript(Systemcall::Wait, command);
+			if (IsFileReadable(to_file)) {
+				return true;
+			}
+		}
+		Alert::error(_("Cannot convert file"),
+			bformat(_("No information for converting %1$s "
+				"format files to %2$s.\n"
+				"Try defining a convertor in the preferences."),
+			from_format, to_format));
 		return false;
 	}
 	OutputParams runparams;
@@ -481,11 +506,12 @@ bool Converters::move(string const & fmt,
 
 bool Converters::convert(Buffer const * buffer,
 			 string const & from_file, string const & to_file_base,
-			 string const & from_format, string const & to_format)
+			 string const & from_format, string const & to_format,
+                         bool try_default)
 {
 	string to_file;
 	return convert(buffer, from_file, to_file_base, from_format, to_format,
-		       to_file);
+		       to_file, try_default);
 }
 
 

@@ -97,7 +97,6 @@ using lyx::support::FileName;
 using lyx::support::float_equal;
 using lyx::support::GetExtension;
 using lyx::support::IsFileReadable;
-using lyx::support::LibFileSearch;
 using lyx::support::OnlyFilename;
 using lyx::support::rtrim;
 using lyx::support::strToDbl;
@@ -672,34 +671,11 @@ string const InsetGraphics::prepareFile(Buffer const & buf,
 		<< "\tfile to convert = " << temp_file << '\n'
 		<< "\t from " << from << " to " << to << '\n';
 
-	// if no special converter defined, then we take the default one
-	// from ImageMagic: convert from:inname.from to:outname.to
-	if (converters.convert(&buf, temp_file, temp_file, from, to)) {
+	if (converters.convert(&buf, temp_file, temp_file, from, to, true)) {
 		runparams.exportdata->addExternalFile("latex",
 				to_file, output_to_file);
 		runparams.exportdata->addExternalFile("dvi",
 				to_file, output_to_file);
-	} else {
-		string const command =
-			"sh " + LibFileSearch("scripts", "convertDefault.sh") +
-				' ' + formats.extension(from) + ':' + temp_file +
-				' ' + ext + ':' + to_file;
-		lyxerr[Debug::GRAPHICS]
-			<< "No converter defined! I use convertDefault.sh:\n\t"
-			<< command << endl;
-		Systemcall one;
-		one.startscript(Systemcall::Wait, command);
-		if (IsFileReadable(to_file)) {
-			runparams.exportdata->addExternalFile("latex",
-					to_file, output_to_file);
-			runparams.exportdata->addExternalFile("dvi",
-					to_file, output_to_file);
-		} else {
-			string str = bformat(_("No information for converting %1$s "
-				"format files to %2$s.\n"
-				"Try defining a convertor in the preferences."), from, to);
-			Alert::error(_("Could not convert image"), str);
-		}
 	}
 
 	return stripExtension(output_file);

@@ -273,7 +273,7 @@ void updateExternal(InsetExternalParams const & params,
 		support::ChangeExtension(to_file, string());
 	/* bool const success = */
 		converters.convert(&buffer, temp_file, to_file_base,
-				   from_format, to_format);
+				   from_format, to_format, true);
 	// return success
 }
 
