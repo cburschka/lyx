@@ -809,7 +809,7 @@ void BufferView::Pimpl::MenuInsertLyXFile(string const & filenm)
 	owner_->message(bformat(_("Inserting document %1$s..."), disp_fn));
 
 	bv_->cursor().clearSelection();
-	bv_->text()->breakParagraph(bv_->cursor());
+	bv_->getLyXText()->breakParagraph(bv_->cursor());
 
 	BOOST_ASSERT(bv_->cursor().inTexted());
 

@@ -1,3 +1,15 @@
+2005-01-27  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* BufferView_pimpl.C (MenuInsertLyXFile): do breakParagraph on the
+	LyXText containing the cursor, not the top-level one.
+
+	* buffer.C (Impl): make sure the toplevel insettext has AutoBreak_
+	true. 
+	(insertStringAsLines): rename par to pit; use temporary variable
+	par to hold a Paragraph; do not store par.layout() in a variable,
+	since the pointer may die when breaking paragraphs; pass pars to
+	breakParagraph() instead of Buffer::paragraphs().
+
 2005-01-31  Asger Ottar Alstrup  <aalstrup@laerdal.dk>
 
 	* lyxlex_pimpl.h: #include <fstream>.
@@ -39,7 +51,7 @@
 	* vc-backend.C (find_file): rewrite to use boost.filesystem
 	(scanMaster): ditto
 
-	* main.C (main): sett default name check for boost.filesystem to
+	* main.C (main): set default name check for boost.filesystem to
 	no check
 
 	* lyxfunc.C (menuNew): rewrite to use boost.filesystem
@@ -88,7 +100,7 @@
 2005-01-24  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* LaTeXFeatures.[Ch]: Add a static list packages_ that
-	holds the contens of packages.lst. New functions getAvailable
+	holds the contents of packages.lst. New functions getAvailable
 	and isAvailable to parse and check that list, resp.
 
 	* LyXAction.C:

@@ -198,6 +198,7 @@ Buffer::Impl::Impl(Buffer & parent, string const & file, bool readonly_)
 	  filename(file), filepath(OnlyPath(file)), file_fully_loaded(false),
 		inset(params)
 {
+	inset.setAutoBreakRows(true);
 	lyxvc.buffer(&parent);
 	temppath = createBufferTmpDir();
 	// FIXME: And now do something if temppath == string(), because we
@@ -472,23 +473,22 @@ bool Buffer::readDocument(LyXLex & lex)
 
 // needed to insert the selection
 void Buffer::insertStringAsLines(ParagraphList & pars,
-	pit_type & par, pos_type & pos,
+	pit_type & pit, pos_type & pos,
 	LyXFont const & fn, string const & str, bool autobreakrows)
 {
-	LyXLayout_ptr const & layout = pars[par].layout();
-
 	LyXFont font = fn;
 
-	pars[par].checkInsertChar(font);
+	pars[pit].checkInsertChar(font);
 	// insert the string, don't insert doublespace
 	bool space_inserted = true;
 	for (string::const_iterator cit = str.begin();
-	    cit != str.end(); ++cit) {
+	    cit != str.end(); ++cit) { 
+		Paragraph & par = pars[pit];
 		if (*cit == '\n') {
-			if (autobreakrows && (!pars[par].empty() || pars[par].allowEmpty())) {
-				breakParagraph(params(), paragraphs(), par, pos,
-					       layout->isEnvironment());
-				++par;
+			if (autobreakrows && (!par.empty() || par.allowEmpty())) {
+				breakParagraph(params(), pars, pit, pos,
+					       par.layout()->isEnvironment());
+				++pit;
 				pos = 0;
 				space_inserted = true;
 			} else {
@@ -496,18 +496,18 @@ void Buffer::insertStringAsLines(ParagraphList & pars,
 			}
 			// do not insert consecutive spaces if !free_spacing
 		} else if ((*cit == ' ' || *cit == '\t') &&
-			   space_inserted && !pars[par].isFreeSpacing()) {
+			   space_inserted && !par.isFreeSpacing()) {
 			continue;
 		} else if (*cit == '\t') {
-			if (!pars[par].isFreeSpacing()) {
+			if (!par.isFreeSpacing()) {
 				// tabs are like spaces here
-				pars[par].insertChar(pos, ' ', font);
+				par.insertChar(pos, ' ', font);
 				++pos;
 				space_inserted = true;
 			} else {
 				const pos_type n = 8 - pos % 8;
 				for (pos_type i = 0; i < n; ++i) {
-					pars[par].insertChar(pos, ' ', font);
+					par.insertChar(pos, ' ', font);
 					++pos;
 				}
 				space_inserted = true;
@@ -517,7 +517,7 @@ void Buffer::insertStringAsLines(ParagraphList & pars,
 			continue;
 		} else {
 			// just insert the character
-			pars[par].insertChar(pos, *cit, font);
+			par.insertChar(pos, *cit, font);
 			++pos;
 			space_inserted = (*cit == ' ');
 		}
