@@ -43,6 +43,14 @@ private:
 
 	/// browse for a file
 	void browse(); 
+	/// get bounding box from file
+	void get(); 
 };
 
 #endif // QGRAPHICS_H
+
+
+
+
+
+

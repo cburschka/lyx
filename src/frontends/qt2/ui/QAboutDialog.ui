@@ -13,8 +13,8 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>444</width>
-            <height>454</height>
+            <width>331</width>
+            <height>232</height>
         </rect>
     </property>
     <property stdset="1">
@@ -79,10 +79,13 @@
                         </property>
                         <property stdset="1">
                             <name>alignment</name>
-                            <set>AlignCenter</set>
+                            <set>WordBreak|AlignCenter</set>
                         </property>
                         <property>
                             <name>hAlign</name>
+                        </property>
+                        <property>
+                            <name>wordwrap</name>
                         </property>
                     </widget>
                 </vbox>
@@ -113,12 +116,12 @@
                             <cstring>creditsTV</cstring>
                         </property>
                         <property stdset="1">
-                            <name>textFormat</name>
-                            <enum>RichText</enum>
-                        </property>
-                        <property stdset="1">
                             <name>text</name>
                             <string></string>
+                        </property>
+                        <property stdset="1">
+                            <name>textFormat</name>
+                            <enum>RichText</enum>
                         </property>
                     </widget>
                 </vbox>
@@ -133,7 +136,7 @@
                     <name>title</name>
                     <string>Copyright</string>
                 </attribute>
-                <vbox>
+                <grid>
                     <property stdset="1">
                         <name>margin</name>
                         <number>11</number>
@@ -142,147 +145,75 @@
                         <name>spacing</name>
                         <number>6</number>
                     </property>
-                    <widget>
-                        <class>QLabel</class>
+                    <widget row="0"  column="0" >
+                        <class>QTextView</class>
                         <property stdset="1">
                             <name>name</name>
-                            <cstring>copyrightLA</cstring>
-                        </property>
-                        <property stdset="1">
-                            <name>frameShape</name>
-                            <enum>Box</enum>
-                        </property>
-                        <property stdset="1">
-                            <name>frameShadow</name>
-                            <enum>Sunken</enum>
-                        </property>
-                        <property stdset="1">
-                            <name>margin</name>
-                            <number>6</number>
-                        </property>
-                        <property stdset="1">
-                            <name>text</name>
-                            <string>Copyright notice goes here</string>
-                        </property>
-                        <property stdset="1">
-                            <name>alignment</name>
-                            <set>AlignCenter</set>
-                        </property>
-                        <property>
-                            <name>hAlign</name>
+                            <cstring>copyright</cstring>
                         </property>
                     </widget>
-                    <widget>
-                        <class>QLabel</class>
-                        <property stdset="1">
-                            <name>name</name>
-                            <cstring>disclaimerLA</cstring>
-                        </property>
-                        <property stdset="1">
-                            <name>sizePolicy</name>
-                            <sizepolicy>
-                                <hsizetype>5</hsizetype>
-                                <vsizetype>5</vsizetype>
-                            </sizepolicy>
-                        </property>
-                        <property stdset="1">
-                            <name>minimumSize</name>
-                            <size>
-                                <width>0</width>
-                                <height>0</height>
-                            </size>
-                        </property>
-                        <property stdset="1">
-                            <name>frameShape</name>
-                            <enum>Box</enum>
-                        </property>
-                        <property stdset="1">
-                            <name>frameShadow</name>
-                            <enum>Sunken</enum>
-                        </property>
-                        <property stdset="1">
-                            <name>margin</name>
-                            <number>6</number>
-                        </property>
-                        <property stdset="1">
-                            <name>text</name>
-                            <string>Warranty goes here</string>
-                        </property>
-                        <property stdset="1">
-                            <name>alignment</name>
-                            <set>WordBreak|AlignCenter</set>
-                        </property>
-                        <property>
-                            <name>hAlign</name>
-                        </property>
-                        <property>
-                            <name>wordwrap</name>
-                        </property>
-                    </widget>
-                    <widget>
-                        <class>QLabel</class>
-                        <property stdset="1">
-                            <name>name</name>
-                            <cstring>licenseLA</cstring>
-                        </property>
-                        <property stdset="1">
-                            <name>sizePolicy</name>
-                            <sizepolicy>
-                                <hsizetype>5</hsizetype>
-                                <vsizetype>5</vsizetype>
-                            </sizepolicy>
-                        </property>
-                        <property stdset="1">
-                            <name>frameShape</name>
-                            <enum>Box</enum>
-                        </property>
-                        <property stdset="1">
-                            <name>frameShadow</name>
-                            <enum>Sunken</enum>
-                        </property>
-                        <property stdset="1">
-                            <name>margin</name>
-                            <number>6</number>
-                        </property>
-                        <property stdset="1">
-                            <name>text</name>
-                            <string>GPL goes here</string>
-                        </property>
-                        <property stdset="1">
-                            <name>alignment</name>
-                            <set>WordBreak|AlignCenter</set>
-                        </property>
-                        <property>
-                            <name>hAlign</name>
-                        </property>
-                        <property>
-                            <name>wordwrap</name>
-                        </property>
-                    </widget>
-                </vbox>
+                </grid>
             </widget>
         </widget>
         <widget>
-            <class>QPushButton</class>
+            <class>QLayoutWidget</class>
             <property stdset="1">
                 <name>name</name>
-                <cstring>closePB</cstring>
+                <cstring>Layout1</cstring>
             </property>
-            <property stdset="1">
-                <name>text</name>
-                <string>&amp;Close</string>
-            </property>
-            <property stdset="1">
-                <name>sizePolicy</name>
-                <sizepolicy>
-                    <hsizetype>0</hsizetype>
-                    <vsizetype>0</vsizetype>
-                </sizepolicy>
-            </property>
-            <property stdset="1">
-                <name>default</name>
-                <bool>true</bool>
-            </property>
+            <hbox>
+                <property stdset="1">
+                    <name>margin</name>
+                    <number>0</number>
+                </property>
+                <property stdset="1">
+                    <name>spacing</name>
+                    <number>6</number>
+                </property>
+                <spacer>
+                    <property>
+                        <name>name</name>
+                        <cstring>Spacer1</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>orientation</name>
+                        <enum>Horizontal</enum>
+                    </property>
+                    <property stdset="1">
+                        <name>sizeType</name>
+                        <enum>Expanding</enum>
+                    </property>
+                    <property>
+                        <name>sizeHint</name>
+                        <size>
+                            <width>20</width>
+                            <height>20</height>
+                        </size>
+                    </property>
+                </spacer>
+                <widget>
+                    <class>QPushButton</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>closePB</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>sizePolicy</name>
+                        <sizepolicy>
+                            <hsizetype>0</hsizetype>
+                            <vsizetype>0</vsizetype>
+                        </sizepolicy>
+                    </property>
+                    <property stdset="1">
+                        <name>text</name>
+                        <string>&amp;Close</string>
+                    </property>
+                    <property stdset="1">
+                        <name>default</name>
+                        <bool>true</bool>
+                    </property>
+                </widget>
+            </hbox>
         </widget>
     </vbox>
 </widget>

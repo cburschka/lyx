@@ -197,6 +197,37 @@
         <receiver>placement</receiver>
         <slot>setDisabled(bool)</slot>
     </connection>
+    <connection>
+        <sender>top</sender>
+        <signal>toggled(bool)</signal>
+        <receiver>QFloatDialogBase</receiver>
+        <slot>change_adaptor()</slot>
+    </connection>
+    <connection>
+        <sender>page</sender>
+        <signal>toggled(bool)</signal>
+        <receiver>QFloatDialogBase</receiver>
+        <slot>change_adaptor()</slot>
+    </connection>
+    <connection>
+        <sender>bottom</sender>
+        <signal>toggled(bool)</signal>
+        <receiver>QFloatDialogBase</receiver>
+        <slot>change_adaptor()</slot>
+    </connection>
+    <connection>
+        <sender>here</sender>
+        <signal>stateChanged(int)</signal>
+        <receiver>QFloatDialogBase</receiver>
+        <slot>change_adaptor()</slot>
+    </connection>
+    <connection>
+        <sender>forcehere</sender>
+        <signal>toggled(bool)</signal>
+        <receiver>QFloatDialogBase</receiver>
+        <slot>change_adaptor()</slot>
+    </connection>
+    <slot access="protected">change_adaptor()</slot>
 </connections>
 <tabstops>
     <tabstop>top</tabstop>

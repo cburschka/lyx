@@ -40,9 +40,12 @@ void QAbout::build_dialog()
 	connect(dialog_.get()->closePB, SIGNAL(clicked()),
 		this, SLOT(slotClose()));
 
-	dialog_->copyrightLA->setText(controller().getCopyright().c_str());
-	dialog_->licenseLA->setText(controller().getLicense().c_str());
-	dialog_->disclaimerLA->setText(controller().getDisclaimer().c_str());
+	dialog_->copyright->setText(controller().getCopyright().c_str());
+	dialog_->copyright->append("\n");
+	dialog_->copyright->append(controller().getLicense().c_str());
+	dialog_->copyright->append("\n");
+	dialog_->copyright->append(controller().getDisclaimer().c_str());
+
 	dialog_->versionLA->setText(controller().getVersion().c_str()); 
  
 	stringstream in;

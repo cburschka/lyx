@@ -23,7 +23,8 @@ public:
 
 protected slots:
 	virtual void change_adaptor();
-	virtual void browseClicked();
+	virtual void browse_clicked();
+	virtual void get_clicked();
 
 protected:
 	virtual void closeEvent(QCloseEvent * e);

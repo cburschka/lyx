@@ -16,21 +16,21 @@
 LengthCombo::LengthCombo(QWidget * parent, char * name)
 	: QComboBox(parent, name)
 {
-	insertItem(_("Centimetres"));
-	insertItem(_("Inches"));
-	insertItem(_("Points"));
-	insertItem(_("Millimetres"));
-	insertItem(_("Picas"));
-	insertItem(_("ex units"));
-	insertItem(_("em units"));
-	insertItem(_("Scaled points"));
-	insertItem(_("Big/PS points"));
-	insertItem(_("Didot points"));
-	insertItem(_("Cicero points"));
-	insertItem(_("Mathematical units"));
-	insertItem(_("Percent of page"));
-	insertItem(_("Percent of column"));
-	insertItem(_("Percent of line width"));
+	insertItem(_("cm"));
+	insertItem(_("in"));
+	insertItem(_("pt"));
+	insertItem(_("mm"));
+	insertItem(_("pc"));
+	insertItem(_("ex"));
+	insertItem(_("em"));
+	insertItem(_("sp"));
+	insertItem(_("bp"));
+	insertItem(_("dd"));
+	insertItem(_("cc"));
+	insertItem(_("mu"));
+	insertItem(_("%p"));
+	insertItem(_("%c"));
+	insertItem(_("%l"));
 
 	connect(this, SIGNAL(activated(int)),
 		this, SLOT(has_activated(int)));

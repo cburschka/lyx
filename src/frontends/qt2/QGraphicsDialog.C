@@ -28,9 +28,11 @@ QGraphicsDialog::QGraphicsDialog(QGraphics * form)
 	connect(okPB, SIGNAL(clicked()),
 		form, SLOT(slotOK()));
 	connect(applyPB, SIGNAL(clicked()),
-		form, SLOT(slotOK()));
+		form, SLOT(slotApply()));
 	connect(closePB, SIGNAL(clicked()),
 		form, SLOT(slotClose()));
+	connect(restorePB, SIGNAL(clicked()),
+		form, SLOT(slotRestore()));
 }
 
  
@@ -47,7 +49,13 @@ void QGraphicsDialog::closeEvent(QCloseEvent * e)
 }
 
 
-void QGraphicsDialog::browseClicked()
+void QGraphicsDialog::browse_clicked()
 {
 	form_->browse();
 }
+
+void QGraphicsDialog::get_clicked()
+{
+	form_->get();
+}
+
