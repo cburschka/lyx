@@ -95,6 +95,7 @@
 
 using bv_funcs::freefont2string;
 
+using lyx::support::AbsolutePath;
 using lyx::support::AddName;
 using lyx::support::AddPath;
 using lyx::support::bformat;
@@ -487,7 +488,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 		else if (name == "print")
 			enable = Exporter::IsExportable(*buf, "dvi")
 				&& lyxrc.print_command != "none";
-		else if (name == "character")
+		else if (name == "character" || name == "mathpanel")
 			enable = cur.inset().lyxCode() != InsetBase::ERT_CODE;
 		else if (name == "vclog")
 			enable = buf->lyxvc().inUse();
@@ -495,6 +496,10 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 			enable = IsFileReadable(buf->getLogName().second);
 		break;
 	}
+
+	case LFUN_DIALOG_SHOW_NEW_INSET:
+		enable = cur.inset().lyxCode() != InsetBase::ERT_CODE;
+		break;
 
 	case LFUN_DIALOG_UPDATE: {
 		string const name = cmd.getArg(0);
@@ -540,7 +545,6 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	case LFUN_NOTIFY:
 	case LFUN_GOTOFILEROW:
 	case LFUN_GOTO_PARAGRAPH:
-	case LFUN_DIALOG_SHOW_NEW_INSET:
 	case LFUN_DIALOG_SHOW_NEXT_INSET:
 	case LFUN_DIALOG_HIDE:
 	case LFUN_DIALOG_DISCONNECT_INSET:

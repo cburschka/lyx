@@ -1,3 +1,11 @@
+2005-02-03  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* buffer.C: format up to 241.
+	* CutAndPaste.C (pasteSelectionHelper): convert newline to paragraph
+	break if pasting into ERT
+	* lyxfunc.C (getStatus): suppress mathpanel and
+	LFUN_DIALOG_SHOW_NEW_INSET in ERT 
+
 2005-02-01  Angus Leeming  <leeming@lyx.org>
 
 	* lyxrc.C (getDescription): add a description for RC_PATH_PREFIX.

@@ -114,6 +114,21 @@ pasteSelectionHelper(Buffer const & buffer, ParagraphList & pars,
 	// Now remove all out of the pars which is NOT allowed in the
 	// new environment and set also another font if that is required.
 
+	// Convert newline to paragraph break in ERT inset.
+	// This should not be here!
+	if (pars[pit].inInset()->lyxCode() == InsetBase::ERT_CODE) {
+		for (ParagraphList::size_type i = 0; i < insertion.size(); ++i) {
+			for (pos_type j = 0; j < insertion[i].size(); ++j) {
+				if (insertion[i].isNewline(j)) {
+					insertion[i].erase(j);
+					breakParagraphConservative(
+							buffer.params(),
+							insertion, i, j);
+				}
+			}
+		}
+	}
+
 	// Make sure there is no class difference.
 	lyx::cap::SwitchLayoutsBetweenClasses(textclass, tc, insertion,
 				    errorlist);
@@ -145,10 +160,9 @@ pasteSelectionHelper(Buffer const & buffer, ParagraphList & pars,
 		// Set the inset owner of this paragraph.
 		tmpbuf->setInsetOwner(pars[pit].inInset());
 		for (pos_type i = 0; i < tmpbuf->size(); ++i) {
-			if (tmpbuf->getChar(i) == Paragraph::META_INSET) {
-				if (!pars[pit].insetAllowed(tmpbuf->getInset(i)->lyxCode()))
-					tmpbuf->erase(i--);
-			}
+			if (tmpbuf->getChar(i) == Paragraph::META_INSET &&
+			    !pars[pit].insetAllowed(tmpbuf->getInset(i)->lyxCode()))
+				tmpbuf->erase(i--);
 		}
 	}
 

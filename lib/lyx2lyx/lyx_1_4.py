@@ -1552,6 +1552,122 @@ def revert_output_changes (file):
 
 
 ##
+# Convert paragraph breaks and sanitize paragraphs
+#
+def convert_ert_paragraphs(file):
+    forbidden_settings = [
+                          # paragraph parameters
+                          '\\paragraph_spacing', '\\labelwidthstring',
+                          '\\start_of_appendix', '\\noindent',
+                          '\\leftindent', '\\align',
+                          # font settings
+                          '\\family', '\\series', '\\shape', '\\size',
+                          '\\emph', '\\numeric', '\\bar', '\\noun',
+                          '\\color', '\\lang']
+    i = 0
+    while 1:
+        i = find_token(file.body, '\\begin_inset ERT', i)
+        if i == -1:
+            return
+        j = find_end_of_inset(file.body, i)
+        if j == -1:
+            file.warning("Malformed lyx file: Missing '\\end_inset'.")
+            i = i + 1
+            continue
+
+        # convert non-standard paragraphs to standard
+        k = i
+        while 1:
+            k = find_token(file.body, "\\begin_layout", k, j)
+            if k == -1:
+                break
+            file.body[k] = "\\begin_layout Standard"
+            k = k + 1
+
+        # remove all paragraph parameters and font settings
+        k = i
+        while k < j:
+            if (strip(file.body[k]) and
+                split(file.body[k])[0] in forbidden_settings):
+                del file.body[k]
+                j = j - 1
+            else:
+                k = k + 1
+
+        # insert an empty paragraph before each paragraph but the first
+        k = i
+        first_pagraph = 1
+        while 1:
+            k = find_token(file.body, "\\begin_layout Standard", k, j)
+            if k == -1:
+                break
+            if first_pagraph:
+                first_pagraph = 0
+                k = k + 1
+                continue
+            file.body[k:k] = ["\\begin_layout Standard", "",
+                              "\\end_layout", ""]
+            k = k + 5
+            j = j + 4
+
+        # convert \\newline to new paragraph
+        k = i
+        while 1:
+            k = find_token(file.body, "\\newline", k, j)
+            if k == -1:
+                break
+            file.body[k:k+1] = ["\\end_layout", "", "\\begin_layout Standard"]
+            k = k + 4
+            j = j + 3
+        i = i + 1
+
+
+##
+# Remove double paragraph breaks
+#
+def revert_ert_paragraphs(file):
+    i = 0
+    while 1:
+        i = find_token(file.body, '\\begin_inset ERT', i)
+        if i == -1:
+            return
+        j = find_end_of_inset(file.body, i)
+        if j == -1:
+            file.warning("Malformed lyx file: Missing '\\end_inset'.")
+            i = i + 1
+            continue
+
+        # replace paragraph breaks with \newline
+        k = i
+        while 1:
+            k = find_token(file.body, "\\end_layout", k, j)
+            l = find_token(file.body, "\\begin_layout", k, j)
+            if k == -1 or l == -1:
+                break
+            file.body[k:l+1] = ["\\newline"]
+            j = j - l + k
+            k = k + 1
+
+        # replace double \newlines with paragraph breaks
+        k = i
+        while 1:
+            k = find_token(file.body, "\\newline", k, j)
+            if k == -1:
+                break
+            l = k + 1
+            while file.body[l] == "":
+                l = l + 1
+            if strip(file.body[l]) and split(file.body[l])[0] == "\\newline":
+                file.body[k:l+1] = ["\\end_layout", "",
+                                    "\\begin_layout Standard"]
+                j = j - l + k + 2
+                k = k + 3
+            else:
+                k = k + 1
+        i = i + 1
+
+
+##
 # Convertion hub
 #
 
@@ -1575,9 +1691,11 @@ convert = [[223, [insert_tracking_changes, add_end_header, remove_color_default,
            [237, [use_x_boolean]],
            [238, [update_latexaccents]],
            [239, [normalize_paragraph_params]],
-           [240, [convert_output_changes]]]
+           [240, [convert_output_changes]],
+           [241, [convert_ert_paragraphs]]]
 
-revert =  [[239, [revert_output_changes]],
+revert =  [[240, [revert_ert_paragraphs]],
+           [239, [revert_output_changes]],
            [238, []],
            [237, []],
            [236, [use_x_binary]],

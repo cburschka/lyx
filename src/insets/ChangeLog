@@ -1,3 +1,10 @@
+2005-02-03  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* insetert.C (latex, linuxdoc, docbook): remove newline handling
+	* insetert.C (doDispatch): clean pasted paragraphs
+	* insetert.C (getStatus): suppress more lfuns
+	* insetert.C (insetAllowed): return always false
+
 2005-01-31  Asger Ottar Alstrup  <aalstrup@laerdal.dk>
 
 	* inset.C:

@@ -1,6 +1,21 @@
 LyX file-format changes
 -----------------------
 
+2005-02-03  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* format incremented to 241.
+
+	All following changes apply only to text in ERT insets. The
+	rationale is that text in ERT is simply ASCII text, and nothing more.
+
+	* paragraph breaks are now a single newline in latex and not a
+	paragraph break anymore (bug 698).
+	* \newline is not allowed anymore, because it is redundant (see above)
+	* layouts other than Standard, paragraph parameters and font changes
+	are not allowed anymore. They never made sense and were ignored for
+	latex output, but now they can't be read or set anymore (bug 922).
+
+
 2005-01-23  Jürgen Spitzmüller  <j.spitzmüller@gmx.de>
 
 	* format incremented to 240.
