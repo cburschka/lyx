@@ -203,8 +203,13 @@ public:
 	Paragraph * outerHook();
 	///
 	Paragraph const * outerHook() const;
-	///
-	int beginningOfMainBody() const;
+
+	/// Paragraphs can contain "manual labels", for example, Description environment.
+	/// The text for this user-editable label is stored in the paragraph alongside
+	/// the text of the rest of the paragraph (the body). This function returns
+	/// the starting position of the body of the text in the paragraph.
+	int beginningOfBody() const;
+
 	///
 	string const & getLabelstring() const;
 

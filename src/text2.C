@@ -158,7 +158,7 @@ LyXFont const LyXText::getFont(Buffer const * buf, Paragraph * par,
 	// We specialize the 95% common case:
 	if (!par->getDepth()) {
 		if (layout->labeltype == LABEL_MANUAL
-		    && pos < par->beginningOfMainBody()) {
+		    && pos < par->beginningOfBody()) {
 			// 1% goes here
 			LyXFont f = par->getFontSettings(buf->params, pos);
 			if (par->inInset())
@@ -176,7 +176,7 @@ LyXFont const LyXText::getFont(Buffer const * buf, Paragraph * par,
 
 	LyXFont layoutfont;
 
-	if (pos < par->beginningOfMainBody()) {
+	if (pos < par->beginningOfBody()) {
 		// 1% goes here
 		layoutfont = layout->labelfont;
 	} else {
@@ -251,7 +251,7 @@ void LyXText::setCharFont(Buffer const * buf, Paragraph * par,
 	// Get concrete layout font to reduce against
 	LyXFont layoutfont;
 
-	if (pos < par->beginningOfMainBody())
+	if (pos < par->beginningOfBody())
 		layoutfont = layout->labelfont;
 	else
 		layoutfont = layout->font;
@@ -425,7 +425,7 @@ void LyXText::makeFontEntriesLayoutSpecific(Buffer const & buf,
 
 	LyXFont layoutfont;
 	for (pos_type pos = 0; pos < par.size(); ++pos) {
-		if (pos < par.beginningOfMainBody())
+		if (pos < par.beginningOfBody())
 			layoutfont = layout->labelfont;
 		else
 			layoutfont = layout->font;
@@ -641,7 +641,7 @@ void LyXText::setFont(BufferView * bview, LyXFont const & font, bool toggleall)
 	if (!selection.set()) {
 		// Determine basis font
 		LyXFont layoutfont;
-		if (cursor.pos() < cursor.par()->beginningOfMainBody()) {
+		if (cursor.pos() < cursor.par()->beginningOfBody()) {
 			layoutfont = getLabelFont(bview->buffer(),
 						  cursor.par());
 		} else {
@@ -1836,33 +1836,33 @@ float LyXText::getCursorX(BufferView * bview, Row * row,
 		cursor_vpos = (bidi_level(pos) % 2 == 0)
 			? log2vis(pos) : log2vis(pos) + 1;
 
-	pos_type main_body = row->par()->beginningOfMainBody();
-	if ((main_body > 0) &&
-	    ((main_body-1 > last) ||
-	     !row->par()->isLineSeparator(main_body-1)))
-		main_body = 0;
+	pos_type body_pos = row->par()->beginningOfBody();
+	if ((body_pos > 0) &&
+	    ((body_pos-1 > last) ||
+	     !row->par()->isLineSeparator(body_pos-1)))
+		body_pos = 0;
 
 	for (pos_type vpos = row->pos(); vpos < cursor_vpos; ++vpos) {
 		pos_type pos = vis2log(vpos);
-		if (main_body > 0 && pos == main_body - 1) {
+		if (body_pos > 0 && pos == body_pos - 1) {
 			x += fill_label_hfill +
 				font_metrics::width(
 					row->par()->layout()->labelsep,
 					getLabelFont(bview->buffer(),
 						     row->par()));
-			if (row->par()->isLineSeparator(main_body - 1))
+			if (row->par()->isLineSeparator(body_pos - 1))
 				x -= singleWidth(bview,
-						 row->par(), main_body - 1);
+						 row->par(), body_pos - 1);
 		}
 		if (row->hfillExpansion(pos)) {
 			x += singleWidth(bview, row->par(), pos);
-			if (pos >= main_body)
+			if (pos >= body_pos)
 				x += fill_hfill;
 			else
 				x += fill_label_hfill;
 		} else if (row->par()->isSeparator(pos)) {
 			x += singleWidth(bview, row->par(), pos);
-			if (pos >= main_body)
+			if (pos >= body_pos)
 				x += fill_separator;
 		} else
 			x += singleWidth(bview, row->par(), pos);

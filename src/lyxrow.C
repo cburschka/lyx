@@ -189,7 +189,7 @@ pos_type Row::lastPrintablePos() const
 int Row::numberOfSeparators() const
 {
 	pos_type const last = lastPrintablePos();
-	pos_type p = max(pos(), par()->beginningOfMainBody());
+	pos_type p = max(pos(), par()->beginningOfBody());
 
 	int n = 0;
 	for (; p <= last; ++p) {
@@ -213,7 +213,7 @@ int Row::numberOfHfills() const
 		}
 	}
 
-	first = max(first, par()->beginningOfMainBody());
+	first = max(first, par()->beginningOfBody());
 
 	int n = 0;
 
@@ -237,7 +237,7 @@ int Row::numberOfLabelHfills() const
 			++first;
 	}
 
-	last = min(last, par()->beginningOfMainBody());
+	last = min(last, par()->beginningOfBody());
 	int n = 0;
 
 	// last, because the end is ignored!
@@ -273,7 +273,7 @@ bool Row::hfillExpansion(pos_type pos) const
 
 	// in some labels  it does not count
 	if (par()->layout()->margintype != MARGIN_MANUAL
-	    && pos < par()->beginningOfMainBody())
+	    && pos < par()->beginningOfBody())
 		return false;
 
 	// if there is anything between the first char of the row and

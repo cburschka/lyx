@@ -298,7 +298,7 @@ void LyXText::computeBidiTables(Buffer const * buf, Row * row) const
 	int level = 0;
 	bool rtl = false;
 	bool rtl0 = false;
-	pos_type const main_body = row->par()->beginningOfMainBody();
+	pos_type const body_pos = row->par()->beginningOfBody();
 
 	for (pos_type lpos = bidi_start; lpos <= bidi_end; ++lpos) {
 		bool is_space = row->par()->isLineSeparator(lpos);
@@ -321,8 +321,8 @@ void LyXText::computeBidiTables(Buffer const * buf, Row * row) const
 		bool new_rtl0 = font.isRightToLeft();
 		int new_level;
 
-		if (lpos == main_body - 1
-		    && row->pos() < main_body - 1
+		if (lpos == body_pos - 1
+		    && row->pos() < body_pos - 1
 		    && is_space) {
 			new_level = (rtl_par) ? 1 : 0;
 			new_rtl = new_rtl0 = rtl_par;
@@ -498,7 +498,7 @@ int LyXText::leftMargin(BufferView * bview, Row const * row) const
 	case MARGIN_MANUAL:
 		x += font_metrics::signedWidth(layout->labelindent, labelfont);
 		// The width of an empty par, even with manual label, should be 0
-		if (!row->par()->empty() && row->pos() >= row->par()->beginningOfMainBody()) {
+		if (!row->par()->empty() && row->pos() >= row->par()->beginningOfBody()) {
 			if (!row->par()->getLabelWidthString().empty()) {
 				x += font_metrics::width(row->par()->getLabelWidthString(),
 					       labelfont);
@@ -512,7 +512,7 @@ int LyXText::leftMargin(BufferView * bview, Row const * row) const
 		break;
 	case MARGIN_FIRST_DYNAMIC:
 		if (layout->labeltype == LABEL_MANUAL) {
-			if (row->pos() >= row->par()->beginningOfMainBody()) {
+			if (row->pos() >= row->par()->beginningOfBody()) {
 				x += font_metrics::signedWidth(layout->leftmargin,
 							  labelfont);
 			} else {
@@ -668,7 +668,7 @@ int LyXText::labelEnd(BufferView & bview, Row const & row) const
 	if (row.par()->layout()->margintype == MARGIN_MANUAL) {
 		Row tmprow = row;
 		tmprow.pos(row.par()->size());
-		// just the beginning of the main body
+		// return the beginning of the body
 		return leftMargin(&bview, &tmprow);
 	}
 
@@ -694,7 +694,7 @@ LyXText::nextBreakPoint(BufferView * bview, Row const * row, int width) const
 	pos_type last_separator = -1;
 	width -= rightMargin(*bview->buffer(), *row);
 
-	pos_type const main_body = par->beginningOfMainBody();
+	pos_type const body_pos = par->beginningOfBody();
 	LyXLayout_ptr const & layout = par->layout();
 
 	pos_type i = pos;
@@ -734,7 +734,7 @@ LyXText::nextBreakPoint(BufferView * bview, Row const * row, int width) const
 				if (in->display() &&
 				    (layout->isCommand() ||
 				     (layout->labeltype == LABEL_MANUAL
-				      && i < par->beginningOfMainBody())))
+				      && i < par->beginningOfBody())))
 				{
 					// display istn't allowd
 					in->display(false);
@@ -770,7 +770,7 @@ LyXText::nextBreakPoint(BufferView * bview, Row const * row, int width) const
 				x += singleWidth(bview, par, i, c);
 			}
 			++i;
-			if (i == main_body) {
+			if (i == body_pos) {
 				x += font_metrics::width(layout->labelsep,
 						    getLabelFont(bview->buffer(), par));
 				if (par->isLineSeparator(i - 1))
@@ -796,8 +796,8 @@ LyXText::nextBreakPoint(BufferView * bview, Row const * row, int width) const
 	}
 
 	// manual labels cannot be broken in LaTeX, do not care
-	if (main_body && last_separator < main_body)
-		last_separator = main_body - 1;
+	if (body_pos && last_separator < body_pos)
+		last_separator = body_pos - 1;
 
 	return last_separator;
 }
@@ -825,11 +825,11 @@ int LyXText::fill(BufferView & bview, Row & row, int paper_width) const
 	Paragraph * par = row.par();
 	LyXLayout_ptr const & layout = par->layout();
 
-	pos_type const main_body = par->beginningOfMainBody();
+	pos_type const body_pos = par->beginningOfBody();
 	pos_type i = row.pos();
 
 	while (i <= last) {
-		if (main_body > 0 && i == main_body) {
+		if (body_pos > 0 && i == body_pos) {
 			w += font_metrics::width(layout->labelsep, getLabelFont(bview.buffer(), par));
 			if (par->isLineSeparator(i - 1))
 				w -= singleWidth(&bview, par, i - 1);
@@ -840,7 +840,7 @@ int LyXText::fill(BufferView & bview, Row & row, int paper_width) const
 		w += singleWidth(&bview, par, i);
 		++i;
 	}
-	if (main_body > 0 && main_body > last) {
+	if (body_pos > 0 && body_pos > last) {
 		w += font_metrics::width(layout->labelsep, getLabelFont(bview.buffer(), par));
 		if (last >= 0 && par->isLineSeparator(last))
 			w -= singleWidth(&bview, par, last);
@@ -857,7 +857,7 @@ int LyXText::fill(BufferView & bview, Row & row, int paper_width) const
 // returns the minimum space a manual label needs on the screen in pixel
 int LyXText::labelFill(BufferView & bview, Row const & row) const
 {
-	pos_type last = row.par()->beginningOfMainBody();
+	pos_type last = row.par()->beginningOfBody();
 
 	lyx::Assert(last > 0);
 
@@ -1572,7 +1572,7 @@ void LyXText::insertChar(BufferView * bview, char c)
 			return;
 		}
 	} else if (IsNewlineChar(c)) {
-		if (cursor.pos() <= cursor.par()->beginningOfMainBody()) {
+		if (cursor.pos() <= cursor.par()->beginningOfBody()) {
 			charInserted();
 			return;
 		}
@@ -1775,11 +1775,11 @@ void LyXText::prepareToPrint(BufferView * bview,
 		nlh = row->numberOfLabelHfills();
 
 		// A manual label par (e.g. List) has an auto-hfill
-		// between the label text and the "main body" of the
+		// between the label text and the body of the
 		// paragraph too.
 		// But we don't want to do this auto hfill if the par
 		// is empty.
-		if (row->par()->size())
+		if (!row->par()->empty())
 			++nlh;
 			
 		if (nlh && !row->par()->getLabelWidthString().empty()) {
@@ -1849,15 +1849,15 @@ void LyXText::prepareToPrint(BufferView * bview,
 
 	computeBidiTables(bview->buffer(), row);
 	if (is_rtl) {
-		pos_type main_body = row->par()->beginningOfMainBody();
+		pos_type body_pos = row->par()->beginningOfBody();
 		pos_type last = row->lastPos();
 
-		if (main_body > 0 &&
-		    (main_body - 1 > last ||
-		     !row->par()->isLineSeparator(main_body - 1))) {
+		if (body_pos > 0 &&
+		    (body_pos - 1 > last ||
+		     !row->par()->isLineSeparator(body_pos - 1))) {
 			x += font_metrics::width(layout->labelsep,
 					    getLabelFont(bview->buffer(), row->par()));
-			if (main_body - 1 <= last)
+			if (body_pos - 1 <= last)
 				x += fill_label_hfill;
 		}
 	}
@@ -2586,7 +2586,7 @@ void LyXText::backspace(BufferView * bview)
 			// delete newlines at the beginning of paragraphs
 			while (!cursor.par()->empty() &&
 			       cursor.par()->isNewline(cursor.pos()) &&
-			       cursor.pos() == cursor.par()->beginningOfMainBody()) {
+			       cursor.pos() == cursor.par()->beginningOfBody()) {
 				cursor.par()->erase(cursor.pos());
 				// refresh the positions
 				tmprow = row;
@@ -2734,13 +2734,13 @@ LyXText::getColumnNearX(BufferView * bview, Row * row, int & x,
 
 	bool left_side = false;
 
-	pos_type main_body = row->par()->beginningOfMainBody();
+	pos_type body_pos = row->par()->beginningOfBody();
 	float last_tmpx = tmpx;
 
-	if (main_body > 0 &&
-	    (main_body - 1 > last ||
-	     !row->par()->isLineSeparator(main_body - 1)))
-		main_body = 0;
+	if (body_pos > 0 &&
+	    (body_pos - 1 > last ||
+	     !row->par()->isLineSeparator(body_pos - 1)))
+		body_pos = 0;
 
 	// check for empty row
 	if (!row->par()->size()) {
@@ -2751,23 +2751,23 @@ LyXText::getColumnNearX(BufferView * bview, Row * row, int & x,
 	while (vc <= last && tmpx <= x) {
 		c = vis2log(vc);
 		last_tmpx = tmpx;
-		if (main_body > 0 && c == main_body-1) {
+		if (body_pos > 0 && c == body_pos-1) {
 			tmpx += fill_label_hfill +
 				font_metrics::width(layout->labelsep,
 					       getLabelFont(bview->buffer(), row->par()));
-			if (row->par()->isLineSeparator(main_body - 1))
-				tmpx -= singleWidth(bview, row->par(), main_body-1);
+			if (row->par()->isLineSeparator(body_pos - 1))
+				tmpx -= singleWidth(bview, row->par(), body_pos-1);
 		}
 
 		if (row->hfillExpansion(c)) {
 			tmpx += singleWidth(bview, row->par(), c);
-			if (c >= main_body)
+			if (c >= body_pos)
 				tmpx += fill_hfill;
 			else
 				tmpx += fill_label_hfill;
 		} else if (row->par()->isSeparator(c)) {
 			tmpx += singleWidth(bview, row->par(), c);
-			if (c >= main_body)
+			if (c >= body_pos)
 				tmpx+= fill_separator;
 		} else {
 			tmpx += singleWidth(bview, row->par(), c);

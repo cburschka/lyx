@@ -505,10 +505,10 @@ LyXFont const Paragraph::getFont(BufferParams const & bparams,
 
 	LyXLayout_ptr const & lout = layout();
 
-	pos_type const main_body = beginningOfMainBody();
+	pos_type const body_pos = beginningOfBody();
 
 	LyXFont layoutfont;
-	if (pos < main_body)
+	if (pos < body_pos)
 		layoutfont = lout->labelfont;
 	else
 		layoutfont = lout->font;
@@ -841,14 +841,7 @@ void Paragraph::applyLayout(LyXLayout_ptr const & new_layout)
 }
 
 
-// if the layout of a paragraph contains a manual label, the beginning of the
-// main body is the beginning of the second word. This is what the par-
-// function returns. If the layout does not contain a label, the main
-// body always starts with position 0. This differentiation is necessary,
-// because there cannot be a newline or a blank <= the beginning of the
-// main body in TeX.
-
-int Paragraph::beginningOfMainBody() const
+int Paragraph::beginningOfBody() const
 {
 	if (layout()->labeltype != LABEL_MANUAL)
 		return 0;
@@ -1099,19 +1092,19 @@ bool Paragraph::simpleTeXOnePar(Buffer const * buf,
 	LyXFont basefont;
 
 	// Maybe we have to create a optional argument.
-	pos_type main_body;
+	pos_type body_pos;
 
 	// FIXME: can we actually skip this check and just call
-	// beginningOfMainBody() ??
+	// beginningOfBody() ??
 	if (style->labeltype != LABEL_MANUAL) {
-		main_body = 0;
+		body_pos = 0;
 	} else {
-		main_body = beginningOfMainBody();
+		body_pos = beginningOfBody();
 	}
 
 	unsigned int column = 0;
 
-	if (main_body > 0) {
+	if (body_pos > 0) {
 		os << '[';
 		++column;
 		basefont = getLabelFont(bparams);
@@ -1144,8 +1137,8 @@ bool Paragraph::simpleTeXOnePar(Buffer const * buf,
 	for (pos_type i = 0; i < size(); ++i) {
 		++column;
 		// First char in paragraph or after label?
-		if (i == main_body) {
-			if (main_body > 0) {
+		if (i == body_pos) {
+			if (body_pos > 0) {
 				if (open_font) {
 					column += running_font.latexWriteEndChanges(os, basefont, basefont);
 					open_font = false;
@@ -1190,7 +1183,7 @@ bool Paragraph::simpleTeXOnePar(Buffer const * buf,
 		{
 			column += running_font.latexWriteEndChanges(os,
 								    basefont,
-								    (i == main_body-1) ? basefont : font);
+								    (i == body_pos-1) ? basefont : font);
 			running_font = basefont;
 			open_font = false;
 		}
@@ -1198,7 +1191,7 @@ bool Paragraph::simpleTeXOnePar(Buffer const * buf,
 		// Blanks are printed before start of fontswitch
 		if (c == ' ') {
 			// Do not print the separation of the optional argument
-			if (i != main_body - 1) {
+			if (i != body_pos - 1) {
 				pimpl_->simpleTeXBlanks(os, texrow, i,
 						       column, font, *style);
 			}
@@ -1207,7 +1200,7 @@ bool Paragraph::simpleTeXOnePar(Buffer const * buf,
 		// Do we need to change font?
 		if ((font != running_font ||
 		     font.language() != running_font.language()) &&
-			i != main_body - 1)
+			i != body_pos - 1)
 		{
 			column += font.latexWriteStartChanges(os, basefont,
 							      last_font);
@@ -1280,7 +1273,7 @@ bool Paragraph::simpleTeXOnePar(Buffer const * buf,
 	}
 
 	// Needed if there is an optional argument but no contents.
-	if (main_body > 0 && main_body == size()) {
+	if (body_pos > 0 && body_pos == size()) {
 		os << "]~";
 		return_value = false;
 	}

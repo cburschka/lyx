@@ -470,26 +470,26 @@ void RowPainter::paintSelection()
 	if ((startrow != row && !is_rtl) || (endrow != row && is_rtl))
 		pain_.fillRectangle(xo_, yo_, int(x_), row_.height(), LColor::selection);
 
-	pos_type const main_body = par_.beginningOfMainBody();
+	pos_type const body_pos = par_.beginningOfBody();
 	pos_type const last = row_.lastPrintablePos();
 	float tmpx = x_;
 
 	for (pos_type vpos = row_.pos(); vpos <= last; ++vpos)  {
 		pos_type pos = text_.vis2log(vpos);
 		float const old_tmpx = tmpx;
-		if (main_body > 0 && pos == main_body - 1) {
+		if (body_pos > 0 && pos == body_pos - 1) {
 			LyXLayout_ptr const & layout = par_.layout();
 			LyXFont const lfont = getLabelFont();
 
 			tmpx += label_hfill_ + font_metrics::width(layout->labelsep, lfont);
 
-			if (par_.isLineSeparator(main_body - 1))
-				tmpx -= singleWidth(main_body - 1);
+			if (par_.isLineSeparator(body_pos - 1))
+				tmpx -= singleWidth(body_pos - 1);
 		}
 
 		if (row_.hfillExpansion(pos)) {
 			tmpx += singleWidth(pos);
-			if (pos >= main_body)
+			if (pos >= body_pos)
 				tmpx += hfill_;
 			else
 				tmpx += label_hfill_;
@@ -497,7 +497,7 @@ void RowPainter::paintSelection()
 
 		else if (par_.isSeparator(pos)) {
 			tmpx += singleWidth(pos);
-			if (pos >= main_body)
+			if (pos >= body_pos)
 				tmpx += separator_;
 		} else {
 			tmpx += singleWidth(pos);
@@ -930,11 +930,11 @@ void RowPainter::paintLast()
 bool RowPainter::paintText()
 {
 	pos_type const last = row_.lastPrintablePos();
-	pos_type main_body = par_.beginningOfMainBody();
-	if (main_body > 0 &&
-		(main_body - 1 > last ||
-		!par_.isLineSeparator(main_body - 1))) {
-		main_body = 0;
+	pos_type body_pos = par_.beginningOfBody();
+	if (body_pos > 0 &&
+		(body_pos - 1 > last ||
+		!par_.isLineSeparator(body_pos - 1))) {
+		body_pos = 0;
 	}
 
 	LyXLayout_ptr const & layout = par_.layout();
@@ -975,12 +975,12 @@ bool RowPainter::paintText()
 			running_strikeout = false;
 		}
 
-		if (main_body > 0 && pos == main_body - 1) {
+		if (body_pos > 0 && pos == body_pos - 1) {
 			int const lwidth = font_metrics::width(layout->labelsep,
 				getLabelFont());
 
 			x_ += label_hfill_ + lwidth
-				- singleWidth(main_body - 1);
+				- singleWidth(body_pos - 1);
 		}
 
 		if (par_.isHfill(pos)) {
@@ -995,7 +995,7 @@ bool RowPainter::paintText()
 			if (row_.hfillExpansion(pos)) {
 				int const y2 = (y0 + y1) / 2;
 
-				if (pos >= main_body) {
+				if (pos >= body_pos) {
 					pain_.line(int(x_), y2,
 						  int(x_ + hfill_), y2,
 						  LColor::added_space,
@@ -1016,7 +1016,7 @@ bool RowPainter::paintText()
 			++vpos;
 		} else if (par_.isSeparator(pos)) {
 			x_ += singleWidth(pos);
-			if (pos >= main_body)
+			if (pos >= body_pos)
 				x_ += separator_;
 			++vpos;
 		} else {
