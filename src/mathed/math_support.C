@@ -759,13 +759,17 @@ void drawStr(Painter & pain, MathTextCodes type, MathMetricsInfo const & size,
 void drawChar(Painter & pain, MathTextCodes type, MathMetricsInfo const & size,
 	int x, int y, char c)
 {
-	string s;
-	if (isBinaryOp(c, type))
-		s += ' ';
-	s += c;
-	if (isBinaryOp(c, type))
-		s += ' ';
-	drawStr(pain, type, size, x, y, s);
+	LyXFont font;
+	whichFont(font, type, size);
+	if (isBinaryOp(c, type)) {
+		pain.text(x, y, ' ', font);
+		x += lyxfont::width(' ', font);
+		pain.text(x, y, c, font);
+		x += lyxfont::width(c, font);
+		pain.text(x, y, ' ', font);
+	} else {
+		pain.text(x, y, c, font);
+	}
 }
 
 
