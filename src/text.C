@@ -3222,7 +3222,8 @@ char * LyXText::SelectNextWord(BufferView * bview, float & value)
 #ifdef HAVE_SSTREAM
 		       && latex.str() == "\\-"
 #else
-		&& string(latex.str(), 3) == "\\-" // this is not nice at all
+		       && latex.str() // protect against null pointers	       
+		       && string(latex.str(), 3) == "\\-" // this is not nice at all
 #endif
 			   ))
 		cursor.pos(cursor.pos() + 1);

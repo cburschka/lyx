@@ -146,7 +146,8 @@ fi
 
 
 #### Create the build directories if necessary
-for dir in bind doc kbd layouts templates reLyX ; do
+for dir in bind clipart doc examples images kbd layouts reLyX \
+    scripts templates ; do
   test ! -d $dir && mkdir $dir
 done
 
