@@ -259,7 +259,7 @@ bool BufferView::Pimpl::fitCursor()
 
 	bv_->owner()->getDialogs()->updateParagraph();
 	if (ret)
-	    updateScrollbar();
+		updateScrollbar();
 	return ret;
 }
 
@@ -377,6 +377,9 @@ void BufferView::Pimpl::updateScrollbar()
 	}
 
 	LyXText const & t = *bv_->text;
+ 
+	lyxerr[Debug::GUI] << "Updating scrollbar: h " << t.height << ", first_y "
+		<< t.first_y << ", default height " << t.defaultHeight() << endl;
 
 	workarea().setScrollbarParams(t.height, t.first_y, t.defaultHeight());
 }
@@ -926,13 +929,13 @@ void BufferView::Pimpl::workAreaResize()
 		}
 	}
 
-	if (widthChange || heightChange) {
+	// FIXME: GUII temporarily we always repaint for xforms' benefit 
+	if (1 || widthChange || heightChange) {
 		repaint();
 	}
 
 	// always make sure that the scrollbar is sane.
 	updateScrollbar();
-	repaint();
 	owner_->updateLayoutChoice();
 	return;
 }
@@ -1019,9 +1022,9 @@ void BufferView::Pimpl::update(LyXText * text, BufferView::UpdateCodes f)
 
 	if (text->inset_owner) {
 		text->inset_owner->setUpdateStatus(bv_, InsetText::NONE);
-	    updateInset(text->inset_owner, false);
+		updateInset(text->inset_owner, false);
 	} else {
-	    update();
+		update();
 	}
 
 	if ((f & FITCUR)) {
@@ -1216,7 +1219,7 @@ void BufferView::Pimpl::restorePosition(unsigned int i)
 	bv_->text->setCursor(bv_, par,
 			     min(par->size(), saved_positions[i].par_pos));
 
-	update(bv_->text, BufferView::SELECT|BufferView::FITCUR);
+	update(bv_->text, BufferView::SELECT | BufferView::FITCUR);
 	if (i > 0) {
 		ostringstream str;
 		str << _("Moved to bookmark") << ' ' << i;
@@ -1295,13 +1298,28 @@ void BufferView::Pimpl::toggleToggle()
 
 void BufferView::Pimpl::center()
 {
-	beforeChange(bv_->text);
-	if (bv_->text->cursor.y() > static_cast<int>((workarea().workHeight() / 2))) {
-		screen().draw(bv_->text, bv_, bv_->text->cursor.y() - workarea().workHeight() / 2);
-	} else {
-		screen().draw(bv_->text, bv_, 0);
+	LyXText * t = bv_->text;
+ 
+	beforeChange(t);
+	int const half_height = workarea().workHeight() / 2;
+	int new_y = 0;
+ 
+	if (t->cursor.y() > half_height) {
+		new_y = t->cursor.y() - half_height;
 	}
-	update(bv_->text, BufferView::SELECT|BufferView::FITCUR);
+ 
+	// FIXME: can we do this w/o calling screen directly ?
+	// This updates first_y but means the fitCursor() call
+	// from the update(FITCUR) doesn't realise that we might
+	// have moved (e.g. from GOTOPARAGRAPH), so doesn't cause
+	// the scrollbar to be updated as it should, so we have
+	// to do it manually. Any operation that does a center()
+	// and also might have moved first_y must make sure to call
+	// updateScrollbar() currently. Never mind that this is a 
+	// pretty obfuscated way of updating t->first_y
+	screen().draw(t, bv_, new_y);
+ 
+	update(t, BufferView::SELECT | BufferView::FITCUR);
 }
 
 
