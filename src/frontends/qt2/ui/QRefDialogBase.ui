@@ -13,8 +13,8 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>383</width>
-            <height>395</height>
+            <width>355</width>
+            <height>423</height>
         </rect>
     </property>
     <property stdset="1">
@@ -34,7 +34,7 @@
             <name>spacing</name>
             <number>6</number>
         </property>
-        <widget row="3"  column="1" >
+        <widget row="2"  column="1"  rowspan="1"  colspan="2" >
             <class>QLayoutWidget</class>
             <property stdset="1">
                 <name>name</name>
@@ -95,7 +95,7 @@
                 </widget>
             </hbox>
         </widget>
-        <widget row="3"  column="0" >
+        <widget row="2"  column="0" >
             <class>QCheckBox</class>
             <property stdset="1">
                 <name>name</name>
@@ -110,14 +110,14 @@
                 <string>Sort references in alphabetical order</string>
             </property>
         </widget>
-        <widget row="4"  column="1" >
+        <widget row="3"  column="1"  rowspan="1"  colspan="2" >
             <class>QLineEdit</class>
             <property stdset="1">
                 <name>name</name>
                 <cstring>referenceED</cstring>
             </property>
         </widget>
-        <widget row="5"  column="1" >
+        <widget row="4"  column="1"  rowspan="1"  colspan="2" >
             <class>QComboBox</class>
             <item>
                 <property>
@@ -165,7 +165,7 @@
                 <string>Reference as it appears in output</string>
             </property>
         </widget>
-        <widget row="4"  column="0" >
+        <widget row="3"  column="0" >
             <class>QLabel</class>
             <property stdset="1">
                 <name>name</name>
@@ -187,7 +187,7 @@
                 <name>hAlign</name>
             </property>
         </widget>
-        <widget row="5"  column="0" >
+        <widget row="4"  column="0" >
             <class>QLabel</class>
             <property stdset="1">
                 <name>name</name>
@@ -209,7 +209,7 @@
                 <name>hAlign</name>
             </property>
         </widget>
-        <widget row="6"  column="0" >
+        <widget row="5"  column="0" >
             <class>QLabel</class>
             <property stdset="1">
                 <name>name</name>
@@ -235,7 +235,7 @@
                 <name>hAlign</name>
             </property>
         </widget>
-        <widget row="6"  column="1" >
+        <widget row="5"  column="1"  rowspan="1"  colspan="2" >
             <class>QLineEdit</class>
             <property stdset="1">
                 <name>name</name>
@@ -246,73 +246,7 @@
                 <bool>false</bool>
             </property>
         </widget>
-        <widget row="1"  column="0"  rowspan="1"  colspan="2" >
-            <class>QLabel</class>
-            <property stdset="1">
-                <name>name</name>
-                <cstring>refsL</cstring>
-            </property>
-            <property stdset="1">
-                <name>text</name>
-                <string>A&amp;vailable references in the document:</string>
-            </property>
-            <property>
-                <name>buddy</name>
-                <cstring>refsLB</cstring>
-            </property>
-        </widget>
-        <widget row="2"  column="0"  rowspan="1"  colspan="2" >
-            <class>QListBox</class>
-            <property stdset="1">
-                <name>name</name>
-                <cstring>refsLB</cstring>
-            </property>
-            <property stdset="1">
-                <name>enabled</name>
-                <bool>true</bool>
-            </property>
-            <property stdset="1">
-                <name>sizePolicy</name>
-                <sizepolicy>
-                    <hsizetype>7</hsizetype>
-                    <vsizetype>3</vsizetype>
-                </sizepolicy>
-            </property>
-            <property>
-                <name>toolTip</name>
-                <string>Available references</string>
-            </property>
-        </widget>
-        <widget row="0"  column="0" >
-            <class>QLabel</class>
-            <property stdset="1">
-                <name>name</name>
-                <cstring>bufferL</cstring>
-            </property>
-            <property stdset="1">
-                <name>text</name>
-                <string>&amp;Document:</string>
-            </property>
-            <property>
-                <name>buddy</name>
-                <cstring>bufferCO</cstring>
-            </property>
-        </widget>
-        <widget row="0"  column="1" >
-            <class>QComboBox</class>
-            <property stdset="1">
-                <name>name</name>
-                <cstring>bufferCO</cstring>
-            </property>
-            <property stdset="1">
-                <name>sizePolicy</name>
-                <sizepolicy>
-                    <hsizetype>7</hsizetype>
-                    <vsizetype>0</vsizetype>
-                </sizepolicy>
-            </property>
-        </widget>
-        <widget row="7"  column="0"  rowspan="1"  colspan="2" >
+        <widget row="6"  column="0"  rowspan="1"  colspan="3" >
             <class>QLayoutWidget</class>
             <property stdset="1">
                 <name>name</name>
@@ -391,6 +325,57 @@
                 </widget>
             </hbox>
         </widget>
+        <widget row="1"  column="0"  rowspan="1"  colspan="3" >
+            <class>QListBox</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>refsLB</cstring>
+            </property>
+            <property stdset="1">
+                <name>enabled</name>
+                <bool>true</bool>
+            </property>
+            <property stdset="1">
+                <name>sizePolicy</name>
+                <sizepolicy>
+                    <hsizetype>7</hsizetype>
+                    <vsizetype>3</vsizetype>
+                </sizepolicy>
+            </property>
+            <property>
+                <name>toolTip</name>
+                <string>Available references</string>
+            </property>
+        </widget>
+        <widget row="0"  column="0"  rowspan="1"  colspan="2" >
+            <class>QLabel</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>refsL</cstring>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string>R&amp;eferences in:</string>
+            </property>
+            <property>
+                <name>buddy</name>
+                <cstring>bufferCO</cstring>
+            </property>
+        </widget>
+        <widget row="0"  column="2" >
+            <class>QComboBox</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>bufferCO</cstring>
+            </property>
+            <property stdset="1">
+                <name>sizePolicy</name>
+                <sizepolicy>
+                    <hsizetype>7</hsizetype>
+                    <vsizetype>0</vsizetype>
+                </sizepolicy>
+            </property>
+        </widget>
     </grid>
 </widget>
 <connections>
@@ -468,9 +453,10 @@
     <tabstop>updatePB</tabstop>
     <tabstop>gotoPB</tabstop>
     <tabstop>referenceED</tabstop>
-    <tabstop>nameED</tabstop>
     <tabstop>typeCO</tabstop>
+    <tabstop>nameED</tabstop>
     <tabstop>okPB</tabstop>
+    <tabstop>applyPB</tabstop>
     <tabstop>closePB</tabstop>
 </tabstops>
 </UI>
