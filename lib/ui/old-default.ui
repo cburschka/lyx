@@ -5,95 +5,84 @@
 
 Menuset
 
-    Menubar "main_nobuffer"
-	Submenu "File|F" "file_nobuffer"
-        Submenu "Edit|E" "edit_nobuffer"
-	Submenu "Help|H" "help"
-    End
-
     Menubar "main"
 	Submenu "File|F" "file"
 	Submenu "Edit|E" "edit"
-	Submenu "Insert|I" "insert"
+	Submenu "Toc|T" "toc"
+	Submenu "Refs|R" "refs"
 	Submenu "Layout|L" "layout"
-        Submenu "View|V" "view"
-        Submenu "Navigate|N" "navigate"
+	Submenu "Insert|I" "insert"
+	Submenu "Math|a" "math"
+	Submenu "Options|O" "options"
 	Submenu "Documents|D" "documents"
 	Submenu "Help|H" "help"
     End
 
-#
-# FILE MENU
-#
-    Menu "file_nobuffer"
-	Item "New...|N" "buffer-new"
-	Item "New from template...|t" "buffer-new-template"
-	Item "Open...|O" "buffer-open"
-	Submenu "Import|I" "fileimport"
-	Separator
-	Item "Exit|x" "lyx-quit"
-	Separator
-	Lastfiles
+    Menubar "main_nobuffer"
+	Submenu "File|F" "file_nobuffer"
+	Submenu "Options|O" "options"
+	Submenu "Help|H" "help"
     End
 
-    Menu "file"
+    Menu "file" 
 	Item "New...|N" "buffer-new"
 	Item "New from template...|t" "buffer-new-template"
 	Item "Open...|O" "buffer-open"
-	Submenu "Import|m" "fileimport"
-        Submenu "Insert|I" "fileinsert"
 	Separator
 	Item "Close|C" "buffer-close"
 	Item "Save|S" "buffer-write"
 	Item "Save As...|A" "buffer-write-as"
 	Item "Revert to saved|R" "buffer-reload"
-	Submenu "Version control|V" "file_vc"
+	Separator
+	Item "View dvi|d" "buffer-view dvi"
+	Item "View Postscript|w" "buffer-view ps"
+	Submenu "View|V" "view"
+	Item "Update dvi" "buffer-update dvi"
+	Item "Update Postscript" "buffer-update ps"
+	Submenu "Update|U" "update"
+	OptItem "Build program|B" "build-program"
 	Separator
 	Item "Print...|P" "buffer-print"
-	Submenu "Export|E" "exportfile"
+#	Item "Fax...|F" "buffer-fax"
+	Submenu "Import|I" "import"
+	Submenu "Export|E" "export"
 	Separator
 	Item "Exit|x" "lyx-quit"
 	Separator
 	Lastfiles
     End
 
-    Menu "fileimport"
-	OptItem "LaTeX...|L" "buffer-import latex"
-	OptItem "Ascii text as lines...|A" "buffer-import text"
-	OptItem "Ascii text as paragraphs...|p" "buffer-import textparagraph"
-	OptItem "HTML...|H" "buffer-import html"
-	OptItem "Noweb...|N" "buffer-import literate"
-	OptItem "LinuxDoc...|D" "buffer-import linuxdoc"
+    Menu "file_nobuffer" 
+	Item "New...|N" "buffer-new"
+	Item "New from template...|t" "buffer-new-template"
+	Item "Open...|O" "buffer-open"
+	Separator
+	Submenu "Import|I" "import"
+	Separator
+	Item "Exit|x" "lyx-quit"
+	Separator
+	Lastfiles
     End
 
-    Menu "fileinsert"
-	Item "File...|F" "buffer-child-insert"
-	Item "LyX file...|X" "file-insert"
-	Item "Ascii as lines...|l" "file-insert-ascii lines"
-	Item "Ascii as paragraphs...|p" "file-insert-ascii paragraphs"
-	Item "External material...|E" "external-insert"
+    Menu "view"
+	ViewFormats
     End
 
-
-    Menu "file_vc"
-	OptItem "Register|R" "vc-register"
-        OptItem "Check In Changes|I" "vc-check-in"
-	OptItem "Check Out for Edit|O" "vc-check-out"
-	OptItem "Revert to last version|l" "vc-revert"
-	OptItem "Undo last check in|U" "vc-undo-last"
-	OptItem "Show History|H" "vc-history"
+    Menu "update"
+	UpdateFormats
     End
 
-    Menu "exportfile"
+    Menu "import"
+	OptItem "LaTeX|L" "buffer-import latex"
+	OptItem "Ascii text as lines|A" "buffer-import text"
+	OptItem "Ascii text as paragraphs|p" "buffer-import textparagraph"
+	OptItem "HTML|H" "buffer-import html"
+	OptItem "Noweb|N" "buffer-import literate"
+	OptItem "LinuxDoc|D" "buffer-import linuxdoc"
+    End
+
+    Menu "export"
 	ExportFormats
-    End
-
-#
-# EDIT MENU
-#
-    Menu "edit_nobuffer"
-	Item "Reconfigure|R"    "reconfigure"
-	Item "Preferences...|P" "dialog-preferences"
     End
 
     Menu "edit"
@@ -103,25 +92,24 @@ Menuset
 	Item "Cut|C" "cut"
 	Item "Copy|o" "copy"
 	Item "Paste|P" "paste"
+	Separator
 	Item "Find & Replace...|F" "find-replace"
-	Submenu "Paste external selection|s" "edit_paste"
-        Separator
+	Item "Go to Error|E" "error-next"
+	Item "Go to Note|N" "note-next"
 	Submenu "Floats & Insets|I" "edit_floats"
-	Submenu "Tabular|T" "edit_tabular"
+	Submenu "Tabular" "edit_tabular"
 	Item "Spellchecker...|S" "spellchecker"
 	Item "Check TeX|h" "buffer-chktex"
-        Separator
-	Item "Reconfigure|R" "reconfigure"
-	Item "Preferences...|P" "dialog-preferences"
-    End
-
-    Menu "edit_paste"
-	Item "as Lines|L" "primary-selection-paste"
-	Item "as Paragraphs|P" "primary-selection-paste paragraph"
+	Item "Table of Contents|b" "toc-view"
+	Separator
+	Submenu "Version control" "vc"
+	Separator
+	Item "View LaTeX log file|w" "latex-view-log"
+	Separator
+	Submenu "Paste primary selection" "edit_paste"
     End
 
     Menu "edit_floats"
-        Item "? What should go here ?" ""
     End
 
     Menu "edit_tabular"
@@ -147,31 +135,76 @@ Menuset
 	Item "Delete Column|D" "tabular-feature delete-column"
     End
 
-#
-# INSERT MENU
-#
+    Menu "edit_paste"
+	Item "as Lines|L" "primary-selection-paste"
+	Item "as Paragraphs|g" "primary-selection-paste paragraph"
+    End
+
+    Menu "vc"
+	 OptItem "Register|R" "vc-register"
+	 OptItem "Check In Changes|I" "vc-check-in"
+	 OptItem "Check Out for Edit|O" "vc-check-out"
+	 OptItem "Revert to last version|l" "vc-revert"
+	 OptItem "Undo last check in|U" "vc-undo-last"
+	 OptItem "Show History|H" "vc-history"
+    End
+
+    Menu toc
+	Toc
+    End
+
+    Menu refs
+	References
+	Separator
+	Item "Go Back|B" "reference-back"
+    End
+
+    Menu "layout"
+	Item "Character...|C" "layout-character"
+	Item "Paragraph...|P" "layout-paragraph"
+	Item "Document...|D" "layout-document"
+	OptItem "Tabular...|a" "layout-tabular"
+	Separator
+	Item "Emphasize Style|E" "font-emph"
+	Item "Noun Style|N" "font-noun"
+	Item "Bold Style|B" "font-bold"
+	Item "TeX Style|X" "tex-mode"
+	Item "Change environment depth|v" "depth-increment"
+	Item "LaTeX preamble...|a" "layout-preamble"
+	Item "Start of Appendix|x" "appendix"
+	Separator
+	Item "Save layout as default|S" "layout-save-default"
+    End
+
     Menu "insert"
-	Item "Math text|M" "math-mode"
-	Item "Math Display|D" "math-display"
-	Item "Math Panel...|P" "math-panel"
-        Submenu "Math elements|e" "insert-math"
-        Separator
-	Submenu "Special character|S" "insert_special"
-	Item "Citation reference...|i" "citation-insert"
-	Item "Cross reference...|r" "reference-insert"
-	Item "Label...|L" "label-insert"
+	Item "Figure...|g" "figure-insert"
+	Item "Tabular...|T" "dialog-tabular-insert"
+	Separator
+	Item "Include File...|c" "buffer-child-insert"
+	Submenu "Import ascii file|a" "insert_ascii"
+	Item "Insert LyX file...|X" "file-insert"
+	Item "Insert external material...|e" "external-insert"
+	Separator
 	Item "Footnote|F" "footnote-insert"
-	Item "Marginal note|M" "marginpar-insert"
+	Item "Marginnote|M" "marginpar-insert"
+	Submenu "Floats|a" "insert_floats"
+	Separator
+	Submenu "Lists & TOC|T" "insert_toc"
+	Separator
+	Submenu "Special character|S" "insert_special"
+	Separator
+	Item "Note...|N" "note-insert"
+	Item "Label...|L" "label-insert"
+	Item "Cross reference...|r" "reference-insert"
+	Item "Citation reference...|i" "citation-insert"
 	Item "Index entry...|d" "index-insert"
 	Item "Index entry of last word|w" "index-insert-last"
 	Item "URL...|U" "url-insert"
-	Item "Note...|N" "note-insert"
-	Separator
-	Item "Figure...|g" "figure-insert"
-	Item "Tabular...|T" "dialog-tabular-insert"
-	Submenu "Floats|a" "insert_floats"
-        Separator
-	Submenu "Lists & TOC|T" "insert_toc"
+    End
+
+    Menu "insert_ascii"
+	Item "As lines...|l" "file-insert-ascii lines"
+	Item "As paragraphs...|p" "file-insert-ascii paragraphs"
     End
 
     Menu "insert_floats"
@@ -181,15 +214,6 @@ Menuset
 	Item "Wide table float|d" "buffer-float-insert wide-tab"
 	Separator
 	Item "Algorithm float|A" "buffer-float-insert algorithm"
-    End
-
-    Menu "insert-math"
-	Item "Fraction|F" "math-insert frac"
-	Item "Square root|S" "math-insert sqrt"
-	Item "Exponent|E" "math-insert ^"
-	Item "Index|x" "math-insert -"
-	Item "Sum|u" "math-insert sum"
-	Item "Integral|I" "math-insert int"
     End
 
     Menu "insert_toc"
@@ -212,54 +236,25 @@ Menuset
 	Item "Menu Separator|M" "menu-separator-insert"
     End
 
-#
-# LAYOUT MENU
-#
-    Menu "layout"
-	Item "Character...|C" "layout-character"
-	Item "Paragraph...|P" "layout-paragraph"
-	Item "Document...|D" "layout-document"
-	OptItem "Tabular...|a" "layout-tabular"
+    Menu "math"
+	Item "Fraction|F" "math-insert frac"
+	Item "Square root|S" "math-insert sqrt"
+	Item "Exponent|E" "math-insert ^"
+	Item "Index|x" "math-insert -"
+	Item "Sum|u" "math-insert sum"
+	Item "Integral|I" "math-insert int"
 	Separator
-	Item "Emphasize Style|E" "font-emph"
-	Item "Noun Style|N" "font-noun"
-	Item "Bold Style|B" "font-bold"
-	Item "TeX Style|X" "tex-mode"
-        Separator
-	Item "Change environment depth|v" "depth-increment"
-	Item "LaTeX preamble...|a" "layout-preamble"
-	Item "Start of Appendix|x" "appendix"
+	Item "Math mode|M" "math-mode"
+	Item "Display|D" "math-display"
 	Separator
-	Item "Save layout as default|S" "layout-save-default"
+	Item "Math Panel...|P" "math-panel"
     End
 
-
-#
-# VIEW MENU
-#
-    Menu "view"
-	ViewFormats
-	OptItem "Build program|B" "build-program"
-        Submenu "Update|U" "update"
-        Separator
-	Item "LaTeX log file|w" "latex-view-log"
-	Item "Table of Contents|b" "toc-view"
+    Menu "options"
+	Item "Reconfigure|R" "reconfigure"
+	Item "Preferences...|P" "dialog-preferences"
     End
-
-    Menu "update"
-	UpdateFormats
-    End
-
-#
-# NAVIGATE MENU
-#
-    Menu "navigate"
-        Item "Error|E" "error-next"
-	Item "Note|N" "note-next"
-        Separator
-        Toc
-    End
-
+    
     Menu "documents"
 	Documents
     End
@@ -327,3 +322,4 @@ Toolbar
     Icon "figure-insert"
     Icon "dialog-tabular-insert"
 End
+

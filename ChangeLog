@@ -1,3 +1,15 @@
+2000-11-03  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* lib/bind/menus.bind: remove the Layout menu entries, which I
+	somehow forgot earlier.
+
+2000-11-03  Rob Lahaye  <lahaye@postech.edu>
+
+	* lib/ui/old-default.ui: keep the old one here for reference (to
+	be deleted later).
+
+	* lib/ui/default.ui: update the menu layout
+
 2000-11-02  Angus Leeming <a.leeming@ic.ac.uk>
 
 	* src/frontends/xforms/FormCitation.C: made use of ButtonController.
@@ -7,7 +19,8 @@
 	Can't actually DO anything with them yet, but I'd like a little
 	feedback.
 
-	* src/frontends/xforms/input_validators.[ch] (fl_lowercase_filter): new.
+	* src/frontends/xforms/input_validators.[ch]
+	(fl_lowercase_filter): new. 
 
 2000-10-27   Dekel Tsur  <dekelts@tau.ac.il>
 

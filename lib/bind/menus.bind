@@ -10,23 +10,6 @@
 # Key bindings for so-called "invisible" menus
 
 #
-# Layout menu
-#
-
-\bind "M-l c"			"layout-character"
-\bind "M-l p"			"layout-paragraph"
-\bind "M-l d"			"layout-document"
-\bind "M-l m"			"font-emph" 
-\bind "M-l n"			"font-noun" 
-\bind "M-l b"			"font-bold" 
-\bind "M-l t"			"tex-mode" 
-\bind "M-l v"			"depth-next"
-\bind "M-l l"			"layout-preamble"
-\bind "M-l s"			"layout-save-default"
-\bind "M-l space"		"menu-open Layout"  
-\bind "M-l x"			"appendix"
-
-#
 # Insert menu
 #
 
