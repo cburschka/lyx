@@ -48,8 +48,6 @@ using std::endl;
 using std::ostream;
 using std::vector;
 
-extern char const * latex_special_chars;
-
 extern char const * latex_mathenv[];
 MathCursor        * mathcursor = 0;
 
@@ -806,7 +804,7 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 				if (code != LM_TC_TEXTRM)
 					code = LM_TC_BOP;
 				mathcursor->insert(c, code);
-			} else if (strchr(latex_special_chars, c) && c != '_') {
+			} else if (strchr("#$%^{|}", c)) {
 				MathTextCodes code = mathcursor->getLastCode();
 				if (code != LM_TC_TEXTRM)
 					code = LM_TC_SPECIAL;

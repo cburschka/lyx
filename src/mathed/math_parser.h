@@ -108,7 +108,7 @@ struct latexkeys {
 	///
 	unsigned int id;
 	///
-	MathBinaryTypes bin;
+	int numargs;
 };
 
 

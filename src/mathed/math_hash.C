@@ -11,9 +11,17 @@ namespace {
 latexkeys const wordlist[] = 
 {
 	//{"displaystyle",  LM_TK_STY, LM_ST_DISPLAY, LMB_NONE},
+	//{"oint",  LM_TK_BIGSYM, LM_oint, LMB_NONE},
+	//{"pmod",  LM_TK_SYM, 0, LMB_NONE},
 	//{"scriptscriptstyle",  LM_TK_STY, LM_ST_SCRIPTSCRIPT, LMB_NONE},
 	//{"scriptstyle",  LM_TK_STY, LM_ST_SCRIPT, LMB_NONE},
 	//{"textstyle",  LM_TK_STY, LM_ST_TEXT, LMB_NONE},
+	{"#",  LM_TK_SPECIAL, '#', LMB_NONE},
+	{"$",  LM_TK_SPECIAL, '$', LMB_NONE},
+	{"%",  LM_TK_SPECIAL, '%', LMB_NONE},
+	{"&",  LM_TK_SPECIAL, '&', LMB_NONE},
+	{"(",  LM_TK_BEGIN, LM_OT_SIMPLE, LMB_NONE},
+	{")",  LM_TK_END, LM_OT_SIMPLE, LMB_NONE},
 	{"Delta",  LM_TK_SYM, LM_Delta, LMB_NONE},
 	{"Downarrow",  LM_TK_SYM, LM_Downarrow, LMB_NONE},
 	{"Gamma",  LM_TK_SYM, LM_Gamma, LMB_NONE},
@@ -38,6 +46,11 @@ latexkeys const wordlist[] =
 	{"Upsilon",  LM_TK_SYM, LM_Upsilon, LMB_NONE},
 	{"Vert",  LM_TK_SYM, LM_Vert, LMB_NONE},
 	{"Xi",  LM_TK_SYM, LM_Xi, LMB_NONE},
+	{"[",  LM_TK_BEGIN, LM_OT_EQUATION, LMB_NONE},
+// -1 needed in mathed_parse_lines!
+	{"\\",  LM_TK_NEWLINE, static_cast<unsigned>(-1), LMB_NONE},
+	{"]",  LM_TK_END, LM_OT_EQUATION, LMB_NONE},
+	{"_",  LM_TK_SPECIAL, '_', LMB_NONE},
 	{"acute",  LM_TK_DECORATION, LM_acute, LMB_NONE},
 	{"aleph",  LM_TK_SYM, LM_aleph, LMB_NONE},
 	{"alpha",  LM_TK_SYM, LM_alpha, LMB_NONE},
@@ -184,7 +197,6 @@ latexkeys const wordlist[] =
 	{"nu",  LM_TK_SYM, LM_nu, LMB_NONE},
 	{"nwarrow",  LM_TK_SYM, LM_nwarrow, LMB_NONE},
 	{"odot",  LM_TK_SYM, LM_odot, LMB_OPERATOR},
-	//{"oint",  LM_TK_BIGSYM, LM_oint, LMB_NONE},
 	{"omega",  LM_TK_SYM, LM_omega, LMB_NONE},
 	{"ominus",  LM_TK_SYM, LM_ominus, LMB_OPERATOR},
 	{"oplus",  LM_TK_SYM, LM_oplus, LMB_OPERATOR},
@@ -200,7 +212,6 @@ latexkeys const wordlist[] =
 	{"phi",  LM_TK_SYM, LM_phi, LMB_NONE},
 	{"pi",  LM_TK_SYM, LM_pi, LMB_NONE},
 	{"pm",  LM_TK_SYM, LM_pm, LMB_OPERATOR},
-	//{"pmod",  LM_TK_SYM, 0, LMB_NONE},
 	{"prec",  LM_TK_SYM, LM_prec, LMB_RELATION},
 	{"preceq",  LM_TK_SYM, LM_preceq, LMB_RELATION},
 	{"prime",  LM_TK_SYM, LM_prime, LMB_NONE},
@@ -280,6 +291,9 @@ latexkeys const wordlist[] =
 	{"wr",  LM_TK_SYM, LM_wr, LMB_OPERATOR},
 	{"xi",  LM_TK_SYM, LM_xi, LMB_NONE},
 	{"zeta",  LM_TK_SYM, LM_zeta, LMB_NONE},
+	{"{",  LM_TK_SPECIAL, '{', LMB_NONE},
+	{"|",  LM_TK_UNDEF, '|', LMB_NONE},
+	{"}",  LM_TK_SPECIAL, '}', LMB_NONE}
 };
 
 

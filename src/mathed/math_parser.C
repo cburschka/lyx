@@ -80,9 +80,6 @@ enum lexcode_enum {
 lexcode_enum lexcode[256];  
 
 
-char const * latex_special_chars = "#$%&_{}";
-
-
 namespace {
 
 void mathed_parse_into(MathArray & array, unsigned flags);
@@ -286,34 +283,15 @@ int yylex()
 			return LM_TK_CLOSE;
 		} else if (lexcode[c] == LexESC)   {
 			c = getuchar(yyis);
-			if (c == '\\')	{
-				yylval.i = -1;
-				return LM_TK_NEWLINE;
+			string s;
+			s += c;
+			latexkeys const * l = in_word_set(s);
+			if (l) {
+				//lyxerr << "found special token for '" << l->name
+				//	<< "' : " << l->id << " \n";
+				yylval.i = l->id;
+				return l->token;
 			}
-			if (c == '(') {
-				yylval.i = LM_OT_SIMPLE;
-				return LM_TK_BEGIN;
-			}
-			if (c == ')') {
-				yylval.i = LM_OT_SIMPLE;
-				return LM_TK_END;
-			}
-			if (c == '[') {
-				yylval.i = LM_OT_EQUATION;
-				return LM_TK_BEGIN;
-			}
-			if (c == ']') {
-				yylval.i = LM_OT_EQUATION;
-				return LM_TK_END;
-			}
-			if (c == '|') {
-				yytext = "|";
-				return LM_TK_UNDEF;
-			}
-			if (contains(latex_special_chars, c)) {
-				yylval.i = c;
-				return LM_TK_SPECIAL;
-			} 
 			if (lexcode[c] == LexMathSpace) {
 				int i;
 				for (i = 0; i < 4 && static_cast<int>(c) != latex_mathspace[i][0]; ++i)
@@ -411,7 +389,9 @@ void mathed_parse_lines(MathGridInset * p, int col, bool numbered, bool outmost)
 			m->label(row, curr_label);
 		}
 
-		// Hack!
+#ifdef WITH_WARNINGS
+#warning Hack!
+#endif
 		// no newline
 		if (yylval.i != -1)
 			break;
