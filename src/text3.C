@@ -61,6 +61,8 @@
 #include "mathed/math_hullinset.h"
 #include "mathed/math_macrotemplate.h"
 
+#include <boost/current_function.hpp>
+
 #include <clocale>
 #include <sstream>
 

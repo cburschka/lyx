@@ -22,6 +22,7 @@
 #include "mathed/math_inset.h"
 
 #include <boost/assert.hpp>
+#include <boost/current_function.hpp>
 
 using std::endl;
 

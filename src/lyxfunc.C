@@ -90,6 +90,7 @@
 #include "support/convert.h"
 #include "support/os.h"
 
+#include <boost/current_function.hpp>
 #include <boost/filesystem/operations.hpp>
 
 #include <sstream>
@@ -156,17 +157,9 @@ bool getStatus(LCursor cursor,
 	bool res = false;
 	for ( ; cursor.depth(); cursor.pop()) {
 		//lyxerr << "\nLCursor::getStatus: cmd: " << cmd << endl << *this << endl;
-		DocIterator::idx_type & idx = cursor.idx();
-		DocIterator::idx_type const lastidx = cursor.lastidx();
-		BOOST_ASSERT(idx <= lastidx);
-
-		DocIterator::pit_type & pit = cursor.pit();
-		DocIterator::pit_type const lastpit = cursor.lastpit();
-		BOOST_ASSERT(pit <= lastpit);
-
-		DocIterator::pos_type & pos = cursor.pos();
-		DocIterator::pos_type const lastpos = cursor.lastpos();
-		BOOST_ASSERT(pos <= lastpos);
+		BOOST_ASSERT(cursor.idx() <= cursor.lastidx());
+		BOOST_ASSERT(cursor.pit() <= cursor.lastpit());
+		BOOST_ASSERT(cursor.pos() <= cursor.lastpos());
 
 		// The inset's getStatus() will return 'true' if it made
 		// a definitive decision on whether it want to handle the
