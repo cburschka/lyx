@@ -327,10 +327,13 @@ test $fax_command != "none" && fax_command="$fax_command \$\$i"
 
 # Search for LinuxDoc support
 SEARCH_PROG([for SGML-tools 1.x (LinuxDoc)], LINUXDOC, sgml2lyx)
-chk_linuxdoc=no
 if test $LINUXDOC != none; then
   chk_linuxdoc=yes
+  bool_linuxdoc=true
   linuxdoc_cmd="\\def\\haslinuxdoc{yes}"
+else
+  chk_linuxdoc=no
+  bool_linuxdoc=false
 fi
 
 case $LINUXDOC in
@@ -348,10 +351,13 @@ esac
 
 # Search for DocBook support
 SEARCH_PROG([for SGML-tools 2.x (DocBook) or db2x scripts], DOCBOOK, sgmltools db2dvi)
-chk_docbook=no
 if test $DOCBOOK != none; then
   chk_docbook=yes
+  bool_docbook=true
   docbook_cmd="\\def\\hasdocbook{yes}"
+else
+  chk_docbook=no
+  bool_docbook=false
 fi
 
 case $DOCBOOK in
@@ -389,6 +395,49 @@ MSG_CHECKING(LaTeX configuration)
 rm -f textclass.lst packages.lst chkconfig.sed
 if test ${lyx_check_config} = no ; then
   MSG_RESULT(default values)
+  MSG_CHECKING(list of textclasses,+)
+  cat >textclass.lst <<EOF
+# This file declares layouts and their associated definition files
+# (include dir. relative to the place where this file is).
+# It contains only default values, since chkconfig.ltx could not be run
+# for some reason. Run ./configure if you need to update it after a
+# configuration change.
+EOF
+  # build the list of available layout files and convert it to commands
+  # for chkconfig.ltx
+  for file in ./layouts/*.layout ${srcdir}/layouts/*.layout ; do
+    case $file in
+      */\*.layout) ;;
+      *) if test -r "$file" ; then
+           class=`echo $file | sed -e 's%^.*layouts/\(.*\)\.layout$%\1%'`
+           cleanclass=`echo $class | tr ' -' '__'`
+changequote([,])dnl
+           # make sure the same class is not considered twice
+           if test  x`[eval] echo $ac_n '${found_'$cleanclass'}'` = x ; then
+             [eval] "found_$cleanclass=yes"
+changequote(,)dnl
+	     # The sed commands below are a bit scary. Here is what they do:
+	     # 1-3: remove the \DeclareFOO macro and add the correct boolean 
+	     #      at the end of the line telling whether the class is 
+             #      available
+	     # 4: if the macro had an optional argument with several 
+	     #    parameters, only keep the first one
+	     # 5: if the macro did not have an optional argument, provide one 
+	     #    (equal to the class name)
+	     # 6: remove brackets and replace with correctly quoted entries
+	     grep '\\Declare\(LaTeX\|DocBook\|LinuxDoc\)Class' "$file" \
+	      | sed -e 's/^.*\DeclareLaTeXClass *\(.*\)/\1 "false"/' \
+		    -e 's/^.*\DeclareDocBookClass *\(.*\)/\1 "'$bool_docbook'"/' \
+		    -e 's/^.*\DeclareLinuxDocClass *\(.*\)/\1 "'$bool_linuxdoc'"/' \
+		    -e 's/\[\([^,]*\),[^]]*\]/[\1]/' \
+		    -e 's/^{/['$class']{/' \
+		    -e 's/\[\([^]]*\)\] *{\([^}]*\)}/"'$class'" "\1" "\2"/' \
+                    >>textclass.lst
+           fi
+	 fi ;;
+    esac
+  done 
+  MSG_RESULT(done)
 else
   MSG_RESULT(auto)
   rm -f wrap_chkconfig.ltx chkconfig.vars chkconfig.classes chklayouts.tex
@@ -416,14 +465,6 @@ fi
 
 # Do we have all the files we need? Useful if latex did not run
 changequote([,])dnl
-echo "creating textclass.lst"
-PROVIDE_DEFAULT_FILE(textclass.lst,dnl
-[# This file declares layouts and their associated definition files
-# (include dir. relative to the place where this file is).
-# It contains only default values, since chkconfig.ltx could not be run
-# for some reason. Run ./configure if you need to update it after a
-# configuration change.
-article	article	article false])
 
 PROVIDE_DEFAULT_FILE(chkconfig.sed,[s/@.*@/???/g])
 

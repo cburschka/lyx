@@ -1,3 +1,9 @@
+2004-02-27  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* configure.m4: if lyx_check_config is false (no latex), use some
+	ugly sed code to parse the textclasses and produce a reasonable
+	textclass.lst. 
+
 2004-03-07  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* dco/LaTeXConfig.lyx.in: document jurabib.
