@@ -19,16 +19,14 @@ namespace support {
 
 string const & lyx_localedir();
 
-/* The absolute path to the lyx build directory.
- * (Make-time value.)
- */
-string const & build_lyxdir();
-
 /// The absolute path to the lyx support files we're actually going to use.
 string const & system_lyxdir();
 
 /// Set the absolute path to the lyx support files (from the command line).
 void system_lyxdir(string const &);
+
+/// The absolute path to the lyx support files in the build directory
+string const & build_lyxdir();
 
 /// The absolute path to the user-level lyx support files.
 string const & user_lyxdir();

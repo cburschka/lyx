@@ -1,3 +1,11 @@
+2003-08-01  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* path_defines.C.in (setLyxPaths): re-introduce the code to check
+	whether lyx is run in place
+	(build_dir): renamed from build_lyxdir
+	(build_lyxdir): give this better semantics compatible with what
+	LibFileSearch expects.
+
 2003-07-29  Angus Leeming  <leeming@lyx.org>
 
 	* filename.[Ch] (relFilename, outputFilename): the 'path' arg
