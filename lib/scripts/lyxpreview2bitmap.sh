@@ -94,6 +94,11 @@ if [ $# -ne 3 ]; then
 	exit 1
 fi
 
+# We use latex, dvips and gs, so check that they're all there.
+FIND_IT ${LATEX}
+FIND_IT ${DVIPS}
+FIND_IT ${GS}
+
 # Extract the params from the argument list.
 DIR=`dirname $1`
 BASE=`basename $1 .tex`
@@ -110,11 +115,6 @@ else
 	BAIL_OUT "Unrecognised output format ${OUTPUTFORMAT}. \
 	Expected either \"ppm\" or \"png\"."
 fi
-
-# We use latex, dvips and gs, so check that they're all there.
-FIND_IT ${LATEX}
-FIND_IT ${DVIPS}
-FIND_IT ${GS}
 
 # Initialise some variables.
 TEXFILE=${BASE}.tex
