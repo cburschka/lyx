@@ -2271,11 +2271,11 @@ bool LyXText::selectWordWhenUnderCursor(BufferView * bview,
 
 // This function is only used by the spellchecker for NextWord().
 // It doesn't handle LYX_ACCENTs and probably never will.
-string const LyXText::selectNextWord(BufferView * bview,
+string const LyXText::selectNextWordToSpellcheck(BufferView * bview,
                                      float & value) const
 {
 	if (the_locking_inset) {
-		string str = the_locking_inset->selectNextWord(bview, value);
+		string str = the_locking_inset->selectNextWordToSpellcheck(bview, value);
 		if (!str.empty()) {
 			value += float(cursor.y())/float(height);
 			return str;
@@ -2306,10 +2306,12 @@ string const LyXText::selectNextWord(BufferView * bview,
 	while ((cursor.par()->size() > cursor.pos()
 	       && (!cursor.par()->isLetter(cursor.pos()))
 	       && (!cursor.par()->isInset(cursor.pos()) ||
-	           !cursor.par()->getInset(cursor.pos())->isTextInset()))
+	           !(cursor.par()->getInset(cursor.pos())->isTextInset() &&
+		     cursor.par()->getInset(cursor.pos())->lyxCode() !=
+		     Inset::ERT_CODE)))
 	       || (cursor.par()->size() == cursor.pos()
 		   && cursor.par()->next()))
-	{
+	{      
 		if (cursor.pos() == cursor.par()->size()) {
 			cursor.par(cursor.par()->next());
 			cursor.pos(0);
@@ -2319,13 +2321,13 @@ string const LyXText::selectNextWord(BufferView * bview,
 
 	// now check if we hit an inset so it has to be a inset containing text!
 	if (cursor.pos() < cursor.par()->size() &&
-		cursor.par()->isInset(cursor.pos()))
+	    cursor.par()->isInset(cursor.pos()))
 	{
 		// lock the inset!
 		cursor.par()->getInset(cursor.pos())->edit(bview);
 		// now call us again to do the above trick
 		// but obviously we have to start from down below ;)
-		return bview->text->selectNextWord(bview, value);
+		return bview->text->selectNextWordToSpellcheck(bview, value);
 	}		
   
 	// Update the value if we changed paragraphs

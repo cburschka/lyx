@@ -2186,7 +2186,7 @@ Inset * InsetText::getInsetFromID(int id_arg) const
 }
 
 
-string const InsetText::selectNextWord(BufferView * bv, float & value) const
+string const InsetText::selectNextWordToSpellcheck(BufferView * bv, float & value) const
 {
 	bool clear = false;
 	string str;
@@ -2196,7 +2196,7 @@ string const InsetText::selectNextWord(BufferView * bv, float & value) const
 		clear = true;
 	}
 	if (the_locking_inset) {
-		str = the_locking_inset->selectNextWord(bv, value);
+		str = the_locking_inset->selectNextWordToSpellcheck(bv, value);
 		if (!str.empty()) {
 			value += cy(bv);
 			if (clear)
@@ -2208,7 +2208,7 @@ string const InsetText::selectNextWord(BufferView * bv, float & value) const
 		// we have to go on checking so move cusor to the right
 		lt->cursor.pos(lt->cursor.pos() + 1);
 	}
-	str = lt->selectNextWord(bv, value);
+	str = lt->selectNextWordToSpellcheck(bv, value);
 	if (str.empty())
 		bv->unlockInset(const_cast<InsetText *>(this));
 	else

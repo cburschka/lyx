@@ -2490,10 +2490,10 @@ Inset * InsetTabular::getInsetFromID(int id_arg) const
 }
 
 
-string const InsetTabular::selectNextWord(BufferView * bv, float & value) const
+string const InsetTabular::selectNextWordToSpellcheck(BufferView * bv, float & value) const
 {
 	if (the_locking_inset) {
-		string const str(the_locking_inset->selectNextWord(bv, value));
+		string const str(the_locking_inset->selectNextWordToSpellcheck(bv, value));
 		if (!str.empty())
 			return str;
 		if (tabular->IsLastCell(actcell)) {
@@ -2520,7 +2520,7 @@ string InsetTabular::selectNextWordInt(BufferView * bv, float & value) const
 	// when entering this function the inset should be ALWAYS locked!
 	lyx::Assert(the_locking_inset);
 
-	string const str(the_locking_inset->selectNextWord(bv, value));
+	string const str(the_locking_inset->selectNextWordToSpellcheck(bv, value));
 	if (!str.empty())
 		return str;
 

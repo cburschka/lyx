@@ -295,7 +295,7 @@ public:
 	 to the beginning of this word. 
 	 With SelectSelectedWord can this be highlighted really
 	 */ 
-	string const selectNextWord(BufferView *, float & value) const;
+	string const selectNextWordToSpellcheck(BufferView *, float & value) const;
 	///
 	void selectSelectedWord(BufferView *);
 	///

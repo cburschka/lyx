@@ -1,3 +1,11 @@
+2001-09-21  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* lyxtext.h, text.C (selectNextWord): renamed as
+	selectNextWordToSpellcheck.
+
+	* text.C (selectNextWordToSpellcheck): Modified to not select
+	words inside an ERT inset.
+
 2001-09-21  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* lyx_cb.C (MenuLayoutSave): change a bit the question

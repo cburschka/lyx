@@ -339,7 +339,7 @@ string const BufferView::nextWord(float & value)
 		return string();
 	}
 
-	return text->selectNextWord(this, value);
+	return text->selectNextWordToSpellcheck(this, value);
 }
 
   

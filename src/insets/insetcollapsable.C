@@ -644,10 +644,10 @@ bool InsetCollapsable::searchBackward(BufferView * bv, string const & str,
 }
 
 
-string const InsetCollapsable::selectNextWord(BufferView * bv,
+string const InsetCollapsable::selectNextWordToSpellcheck(BufferView * bv,
 					      float & value) const
 {
-	string const str = inset.selectNextWord(bv, value);
+	string const str = inset.selectNextWordToSpellcheck(bv, value);
 	if (first_after_edit && str.empty())
 		close(bv);
 	first_after_edit = false;

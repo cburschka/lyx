@@ -1,5 +1,8 @@
 2001-09-21  Angus Leeming  <a.leeming@ic.ac.uk>
 
+	* various files (selectNextWord): renamed as
+	selectNextWordToSpellcheck.
+
 	* insetgraphics.C (draw): remove the previous change. Right place
 	is in imageLoaderXPM.C.
 	(draw): don't display the image if params.display == NONE.

@@ -212,7 +212,7 @@ public:
 	///
 	LyXCursor const & cursor(BufferView *) const;
 	///
-	string const selectNextWord(BufferView *, float & value) const;
+	string const selectNextWordToSpellcheck(BufferView *, float & value) const;
 	void selectSelectedWord(BufferView *);
 	void toggleSelection(BufferView *, bool kill_selection);
 	///

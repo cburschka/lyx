@@ -471,7 +471,7 @@ public:
 	///
 	// needed for spellchecking text
 	///
-	virtual string const selectNextWord(BufferView *, float & value) const;
+	virtual string const selectNextWordToSpellcheck(BufferView *, float & value) const;
 	///
 	virtual void selectSelectedWord(BufferView *) { return; }
 	///

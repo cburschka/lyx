@@ -345,7 +345,7 @@ LyXCursor const & Inset::cursor(BufferView * bv) const
 }
 
 
-string const UpdatableInset::selectNextWord(BufferView *bv,
+string const UpdatableInset::selectNextWordToSpellcheck(BufferView *bv,
 					    float & value) const
 {
 	// we have to unlock ourself in this function by default!
