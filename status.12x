@@ -1,0 +1,53 @@
+-*- text -*-
+I'd be glad if some of you could take the time to check it out (or fix
+a bug or two if you are feeling adventurous). Let me recall that all
+these fixes have been checked in the branch BRANCH-1_2_X, which you
+can get with the command
+  cvs checkout -d lyx-1_2_x -r BRANCH-1_2_X lyx-devel
+
+JMarc
+
+What's new
+==========
+
+** Updates
+
+- update finnish and danish localizations
+
+- update Tutorial to be more up to date
+
+- add new icon for buffer-new
+
+- update template for IEEEtran
+
+** Bugfixes
+
+- fix positionning of cursor after undo
+
+- save preamble too when using 'save as document defaults' in document
+  layout dialog
+
+- re-read correctly graphics insets when file name contains a comma
+
+- disable 'Load' button of 'include file' dialog for verbatim include
+
+- only use the amsmath package when it is needed
+
+- do not ignore zero-length vertical spacing with 'keep' flag.
+
+- fix interaction between sixpack and LyX via lyxserver
+
+- fix command line crash and give useful exit status on some errors
+
+- fix latex import when using --with-version-suffix configure flag
+
+- make latex import script (reLyX) honor the LYX_DIR_12x envirnment
+  variable, like the rest of LyX
+
+- honor --with-extra-XXX whensearching for AikSaurus library
+
+- fix support for alpha-based systems in boost library
+
+- improve compilation with compaq cxx 6.5 (not there yet...)
+
+- fix "FADE OUT:" style in hollywood layout

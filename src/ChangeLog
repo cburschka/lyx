@@ -1,3 +1,8 @@
+2002-04-30  Herbert Voss  <voss@lyx.org>
+
+	* buffer.C (parseSingleLyXformat2Token): fix bug with ignored
+	"keep" option
+
 2002-05-29  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* lyxserver.C (callback): fix of lyxserver for gbib. Does not use

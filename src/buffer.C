@@ -1119,15 +1119,21 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 	} else if (token == "\\added_space_top") {
 		lex.nextToken();
 		VSpace value = VSpace(lex.getString());
+		// only add the length when value > 0 or
+		// with option keep
 		if ((value.length().len().value() != 0) ||
+		    value.keep() ||
 		    (value.kind() != VSpace::LENGTH))
-		    par->params().spaceTop(value);
+			par->params().spaceTop(value);
 	} else if (token == "\\added_space_bottom") {
 		lex.nextToken();
 		VSpace value = VSpace(lex.getString());
+		// only add the length when value > 0 or
+		// with option keep
 		if ((value.length().len().value() != 0) ||
+		    value.keep() ||
 		    (value.kind() != VSpace::LENGTH))
-		    par->params().spaceBottom(value);
+			par->params().spaceBottom(value);
 #ifndef NO_COMPABILITY
 #ifndef NO_PEXTRA_REALLY
 	} else if (token == "\\pextra_type") {
