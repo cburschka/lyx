@@ -1,3 +1,9 @@
+1999-10-14  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* lib/Makefile.am (install-data-local): forgot a ';'
+	(install-data-local): forgot a '\'
+	(libinstalldirs): needed after all. reintroduced.
+
 1999-10-13  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* configure.in (AC_OUTPUT): added lyx.spec

@@ -7,7 +7,8 @@ SUBDIRS    = reLyX
 
 BIND = bind/*.bind
 CLIPART = clipart/*.eps
-DOC = doc/LaTeXConfig.lyx.in 
+DOCDIST = doc/LaTeXConfig.lyx*
+DOCINST = doc/*
 EXAMPLES = examples/*.lyx
 IMAGES = images/*.xpm images/*.xbm
 KBD = kbd/*.kmap kbd/*.cdef
@@ -15,23 +16,32 @@ LAYOUT = layouts/*.layout layouts/*.inc
 TEMPL = templates/*.lyx
 TEXSUPPORT = tex/*.cls
 
+LIBINSTFILES = $(BIND) $(CLIPART) $(DOCINST) $(EXAMPLES) $(IMAGES) $(KBD) \
+	$(LAYOUT) $(TEMPL) $(TEXSUPPORT)
+
+LIBDISTFILES = $(BIND) $(CLIPART) $(DOCDIST) $(EXAMPLES) $(IMAGES) $(KBD) \
+	$(LAYOUT) $(TEMPL) $(TEXSUPPORT)
+
 pkgdata_DATA = lyxrc.example CREDITS chkconfig.ltx lyxrc.defaults \
                textclass.lst packages.lst
 
-LIBINSTFILES = $(BIND) $(CLIPART) $(EXAMPLES) $(IMAGES) $(KBD) \
-	$(LAYOUT) $(TEMPL) $(TEXSUPPORT)
+LYXLIBDIRS = bind clipart doc examples images kbd layouts templates tex
 
 EXTRA_DIST = CREDITS chkconfig.ltx configure.cmd lyxrc.example \
-	$(LIBINSTFILES) $(DOC)
+	$(LYXLIBDIRS)
 
-install-data-local:
+libinstalldirs:
+	for dir in $(LYXLIBDIRS) ; do \
+		$(mkinstalldirs) $(pkgdatadir)/$$dir ; \
+	done
+
+install-data-local: libinstalldirs
 	files=`cd ${srcdir} ; echo $(LIBINSTFILES)` ; \
 	for i in $${files} ; do \
 	   $(INSTALL_DATA) ${srcdir}/$$i $(pkgdatadir)/$$i ; \
-	done \
-	for i in doc/* ; do
-		$(INSTALL_DATA) ${srcdir}/$$i $(pkgdatadir)/$$i ; \
 	done
 
 dist-hook:
-	cd ${distdir} ; cvs -q export -r HEAD -d doc lyxdoc
+	cd ${distdir} ; rm -rf `find . -name \*CVS\*` ; \
+	rm -rf doc/BUGS.lyx ; \
+	cvs -Q export -r HEAD -d doc lyxdoc
