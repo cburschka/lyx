@@ -120,9 +120,10 @@ string const MenuItem::binding() const
 	if (!bindings.empty()) {
 		return bindings.substr(1, bindings.find(']') - 1);
 	} else {
-		lyxerr << "No bindings for "
-		       << lyxaction.getActionName(func_.action)
-		       << '(' << func_.argument << ')' << endl;
+		lyxerr[Debug::KBMAP]
+			<< "No bindings for "
+			<< lyxaction.getActionName(func_.action)
+			<< '(' << func_.argument << ')' << endl;
 		return string();
 	}
 

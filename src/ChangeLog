@@ -1,5 +1,7 @@
 2003-10-09  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
+	* MenuBackend.C (binding): put debug message into Debug::KBMAP
+
 	* lyxlex_pimpl.C (setFile): put debug messages into Debug::LYXLEX.
 
 2003-10-09  André Pönitz  <poenitz@gmx.net>
