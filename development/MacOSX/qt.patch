@@ -19,3 +19,14 @@
  typedef struct OpaqueWindowGroupRef *WindowGroupRef;
  typedef struct OpaqueGrafPtr *CGrafPtr;
  typedef struct OpaquePMPrintSession *PMPrintSession;
+--- src/tools/qglobal.cpp.orig  Thu Nov  6 22:39:39 2003
++++ src/tools/qglobal.cpp       Fri Nov  7 07:42:23 2003
+@@ -161,7 +161,7 @@
+        first = FALSE;
+        long gestalt_version;
+        if(Gestalt(gestaltSystemVersion, &gestalt_version) == noErr) {
+-           if(gestalt_version >= 0x1020 && gestalt_version < 0x1030)
++           if(gestalt_version >= 0x1020 && gestalt_version < 0x1040)
+                macver = Qt::MV_10_DOT_2;
+            else if(gestalt_version >= 0x1010 && gestalt_version < 0x1020)
+                macver = Qt::MV_10_DOT_1;
