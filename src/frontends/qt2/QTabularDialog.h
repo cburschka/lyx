@@ -28,6 +28,11 @@ public:
 protected slots:
 	virtual void change_adaptor();
  
+	virtual void columnAppend_clicked();
+	virtual void rowAppend_clicked();
+	virtual void columnDelete_clicked(); 
+	virtual void rowDelete_clicked();
+ 
 protected:
 	virtual void closeEvent(QCloseEvent * e);
  

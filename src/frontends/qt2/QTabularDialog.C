@@ -14,10 +14,11 @@
 #pragma implementation
 #endif
 
-#include "gettext.h"
-
+#include "ControlTabular.h"
+ 
 #include "QTabular.h"
 #include "QTabularDialog.h"
+#include "tabular.h"
 
 #include <qpushbutton.h>
 
@@ -41,4 +42,28 @@ void QTabularDialog::closeEvent(QCloseEvent * e)
 {
 	form_->slotWMHide();
 	e->accept();
+}
+ 
+
+void QTabularDialog::columnAppend_clicked()
+{
+	form_->controller().set(LyXTabular::APPEND_COLUMN);
+}
+
+ 
+void QTabularDialog::rowAppend_clicked()
+{
+	form_->controller().set(LyXTabular::APPEND_ROW);
+}
+
+ 
+void QTabularDialog::columnDelete_clicked()
+{
+	form_->controller().set(LyXTabular::DELETE_COLUMN);
+}
+
+ 
+void QTabularDialog::rowDelete_clicked()
+{
+	form_->controller().set(LyXTabular::DELETE_COLUMN);
 }
