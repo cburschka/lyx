@@ -1,3 +1,10 @@
+2001-02-02  John Levon  <moz@compsoc.man.ac.uk>
+
+	* lib/Makefile.am: fix permissions on configure and
+	  configure.cmd (from Albert Chin)
+
+	* lib/CREDITS: add Albert Chin
+
 2001-02-01  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* src/text.C (Backspace): Preserve the font when changing newline char
