@@ -432,6 +432,14 @@ void MathCursor::backspace()
 		return;
 	}
 
+	if (inMacroMode()) {
+		MathUnknownInset * p = activeMacro();
+		if (p->name().size() > 1) {
+			p->setName(p->name().substr(0, p->name().size() - 1));
+			return;
+		}
+	}
+
 /*
 	if (prevAtom()->asScriptInset()) {
 		// simply enter nucleus

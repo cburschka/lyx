@@ -170,11 +170,13 @@ Inset::Code InsetFormulaMacro::lyxCode() const
 void InsetFormulaMacro::draw(BufferView * bv, LyXFont const & f,
 			     int y, float & xx, bool /*cleared*/) const
 {
-	MathPainterInfo pain = MathPainterInfo(bv->painter());
-	LyXFont font(f);
-
 	// label
+	LyXFont font(f);
 	font.setColor(LColor::math);
+
+	MathPainterInfo pi = MathPainterInfo(bv->painter());
+	pi.base.style = LM_ST_TEXT;
+	pi.base.font  = font;
 
 	int const x = int(xx);
 	int const a = y - ascent(bv, font) + 1;
@@ -182,17 +184,17 @@ void InsetFormulaMacro::draw(BufferView * bv, LyXFont const & f,
 	int const h = ascent(bv, font) + descent(bv, font) - 2;
 
 	// LColor::mathbg used to be "AntiqueWhite" but is "linen" now, too
-	pain.pain.fillRectangle(x, a, w, h, LColor::mathmacrobg);
-	pain.pain.rectangle(x, a, w, h, LColor::mathframe);
+	pi.pain.fillRectangle(x, a, w, h, LColor::mathmacrobg);
+	pi.pain.rectangle(x, a, w, h, LColor::mathframe);
 
 	if (mathcursor &&
 			const_cast<InsetFormulaBase const *>(mathcursor->formula()) == this)
-		mathcursor->drawSelection(pain);
+		mathcursor->drawSelection(pi);
 
-	pain.pain.text(x + 2, y, prefix(), font);
+	pi.pain.text(x + 2, y, prefix(), font);
 
 	// formula
-	par()->draw(pain, x + font_metrics::width(prefix(), f) + 5, y);
+	par()->draw(pi, x + font_metrics::width(prefix(), f) + 5, y);
 	xx += w + 2;
 	xo_ = x;
 	yo_ = y;
