@@ -204,7 +204,7 @@ char const * const rorigin_gui_strs[] = {
 	N_("center top"), N_("center bottom"), N_("center baseline"),
 	N_("right top"),  N_("right bottom"),  N_("right baseline") };
 
-size_t rorigin_size = sizeof(rorigin_lyx_strs) / sizeof(char *);
+size_t const rorigin_size = sizeof(rorigin_lyx_strs) / sizeof(char *);
 
 } // namespace anon
 
