@@ -69,11 +69,11 @@ namespace {
 	positionable(DocIterator const & cursor, DocIterator const & anchor)
 	{
 		// avoid deeper nested insets when selecting
-		if (cursor.size() > anchor.size())
+		if (cursor.depth() > anchor.depth())
 			return false;
 
 		// anchor might be deeper, should have same path then
-		for (size_t i = 0; i < cursor.size(); ++i)
+		for (size_t i = 0; i < cursor.depth(); ++i)
 			if (&cursor[i].inset() != &anchor[i].inset())
 				return false;
 
@@ -91,11 +91,12 @@ namespace {
 		DocIterator result;
 
 		DocIterator it = c;
-		it.back().pos() = 0;
+		it.top().pos() = 0;
 		DocIterator et = c;
-		et.back().pos() = et.back().asMathInset()->cell(et.back().idx()).size();
+		et.top().pos() = et.top().asMathInset()->cell(et.top().idx()).size();
 		for (int i = 0; ; ++i) {
-			int xo, yo;
+			int xo;
+			int yo;
 			LCursor cur = c;
 			cur.setCursor(it);
 			cur.inset().getCursorPos(cur.top(), xo, yo);
@@ -192,15 +193,16 @@ void LCursor::setCursor(DocIterator const & cur)
 
 void LCursor::dispatch(FuncRequest const & cmd0)
 {
-	lyxerr[Debug::DEBUG] << "LCursor::dispatch: cmd: "
-		<< cmd0 << endl << *this << endl;
+	lyxerr[Debug::DEBUG] << BOOST_CURRENT_FUNCTION
+			     << " cmd: " << cmd0 << '\n'
+			     << *this << endl;
 	if (empty())
 		return;
 
 	FuncRequest cmd = cmd0;
 	LCursor safe = *this;
 
-	for (; size(); pop()) {
+	for (; depth(); pop()) {
 		lyxerr[Debug::DEBUG] << "LCursor::dispatch: cmd: "
 			<< cmd0 << endl << *this << endl;
 		BOOST_ASSERT(pos() <= lastpos());
@@ -249,7 +251,7 @@ Buffer & LCursor::buffer() const
 
 void LCursor::pop()
 {
-	BOOST_ASSERT(size() >= 1);
+	BOOST_ASSERT(depth() >= 1);
 	pop_back();
 }
 
@@ -297,7 +299,7 @@ bool LCursor::popRight()
 int LCursor::currentMode()
 {
 	BOOST_ASSERT(!empty());
-	for (int i = size() - 1; i >= 0; --i) {
+	for (int i = depth() - 1; i >= 0; --i) {
 		int res = operator[](i).inset().currentMode();
 		if (res != InsetBase::UNDECIDED_MODE)
 			return res;
@@ -347,9 +349,9 @@ bool LCursor::posRight()
 
 CursorSlice LCursor::anchor() const
 {
-	BOOST_ASSERT(anchor_.size() >= size());
-	CursorSlice normal = anchor_[size() - 1];
-	if (size() < anchor_.size() && back() <= normal) {
+	BOOST_ASSERT(anchor_.depth() >= depth());
+	CursorSlice normal = anchor_[depth() - 1];
+	if (depth() < anchor_.depth() && top() <= normal) {
 		// anchor is behind cursor -> move anchor behind the inset
 		++normal.pos();
 	}
@@ -360,16 +362,16 @@ CursorSlice LCursor::anchor() const
 CursorSlice LCursor::selBegin() const
 {
 	if (!selection())
-		return back();
-	return anchor() < back() ? anchor() : back();
+		return top();
+	return anchor() < top() ? anchor() : top();
 }
 
 
 CursorSlice LCursor::selEnd() const
 {
 	if (!selection())
-		return back();
-	return anchor() > back() ? anchor() : back();
+		return top();
+	return anchor() > top() ? anchor() : top();
 }
 
 
@@ -377,7 +379,7 @@ DocIterator LCursor::selectionBegin() const
 {
 	if (!selection())
 		return *this;
-	return anchor() < back() ? anchor_ : *this;
+	return anchor() < top() ? anchor_ : *this;
 }
 
 
@@ -385,7 +387,7 @@ DocIterator LCursor::selectionEnd() const
 {
 	if (!selection())
 		return *this;
-	return anchor() > back() ? anchor_ : *this;
+	return anchor() > top() ? anchor_ : *this;
 }
 
 
@@ -465,15 +467,15 @@ void LCursor::selHandle(bool sel)
 std::ostream & operator<<(std::ostream & os, LCursor const & cur)
 {
 	os << "\n cursor:                                | anchor:\n";
-	for (size_t i = 0, n = cur.size(); i != n; ++i) {
-		os << " " << cur.operator[](i) << " | ";
-		if (i < cur.anchor_.size())
+	for (size_t i = 0, n = cur.depth(); i != n; ++i) {
+		os << " " << cur[i] << " | ";
+		if (i < cur.anchor_.depth())
 			os << cur.anchor_[i];
 		else
 			os << "-------------------------------";
 		os << "\n";
 	}
-	for (size_t i = cur.size(), n = cur.anchor_.size(); i < n; ++i) {
+	for (size_t i = cur.depth(), n = cur.anchor_.depth(); i < n; ++i) {
 		os << "------------------------------- | " << cur.anchor_[i] << "\n";
 	}
 	os << " selection: " << cur.selection_
@@ -525,7 +527,7 @@ bool LCursor::openable(MathAtom const & t) const
 		return true;
 
 	// we can't move into anything new during selection
-	if (depth() >= anchor_.size())
+	if (depth() >= anchor_.depth())
 		return false;
 	if (!ptr_cmp(t.nucleus(), &anchor_[depth()].inset()))
 		return false;
@@ -620,7 +622,7 @@ void LCursor::niceInsert(string const & t)
 void LCursor::niceInsert(MathAtom const & t)
 {
 	macroModeClose();
-	string safe = lyx::cap::grabAndEraseSelection(*this);
+	string const safe = lyx::cap::grabAndEraseSelection(*this);
 	plainInsert(t);
 	// enter the new inset and move the contents of the selection if possible
 	if (t->isActive()) {
@@ -752,7 +754,7 @@ void LCursor::macroModeClose()
 		return;
 	MathUnknownInset * p = activeMacro();
 	p->finalize();
-	string s = p->name();
+	string const s = p->name();
 	--pos();
 	cell().erase(pos());
 
@@ -803,10 +805,11 @@ int LCursor::targetX() const
 
 void LCursor::setTargetX()
 {
-	//for now this is good enough. A better solution would be to
-	//avoid this rebreak by setting cursorX only after drawing
+	// For now this is good enough. A better solution would be to
+	// avoid this rebreak by setting cursorX only after drawing
 	bottom().text()->redoParagraph(bottom().pit());
-	int x, y;
+	int x;
+	int y;
 	getPos(x, y);
 	x_target_ = x;
 }
@@ -934,7 +937,7 @@ bool LCursor::goUpDown(bool up)
 	//}
 
 	// try to find an inset that knows better then we
-	while (1) {
+	while (true) {
 		//lyxerr << "updown: We are in " << &inset() << " idx: " << idx() << endl;
 		// ask inset first
 		if (inset().idxUpDown(*this, up)) {
@@ -953,7 +956,8 @@ bool LCursor::goUpDown(bool up)
 		}
 
 		// any improvement so far?
-		int xnew, ynew;
+		int xnew;
+		int ynew;
 		getPos(xnew, ynew);
 		if (up ? ynew < yo : ynew > yo)
 			return true;
@@ -1061,7 +1065,7 @@ string LCursor::currentState()
 	}
 
 	if (inTexted())
-	 return text()->currentState(*this);
+		return text()->currentState(*this);
 
 	return string();
 }
@@ -1082,7 +1086,7 @@ Encoding const * LCursor::getEncoding() const
 	int s = 0;
 	// go up until first non-0 text is hit
 	// (innermost text is 0 in mathed)
-	for (s = size() - 1; s >= 0; --s)
+	for (s = depth() - 1; s >= 0; --s)
 		if (operator[](s).text())
 			break;
 	CursorSlice const & sl = operator[](s);
@@ -1123,7 +1127,7 @@ LyXFont LCursor::getFont() const
 	int s = 0;
 	// go up until first non-0 text is hit
 	// (innermost text is 0 in mathed)
-	for (s = size() - 1; s >= 0; --s)
+	for (s = depth() - 1; s >= 0; --s)
 		if (operator[](s).text())
 			break;
 	CursorSlice const & sl = operator[](s);
@@ -1132,7 +1136,6 @@ LyXFont LCursor::getFont() const
 		bv().buffer()->params(),
 		sl.pos(),
 		outerFont(sl.pit(), text.paragraphs()));
-	for (; s < size(); ++s)
-		;
+
 	return font;
 }

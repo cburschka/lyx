@@ -1,5 +1,39 @@
 2005-02-08  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
+	* text3.C (dispatch): size() -> depth()
+
+	* text2.C: remove some debug output
+
+	* paragraph.C: ws changes only
+
+	* lyxfunc.C (getStatus): size() -> depth()
+
+	* dociterator.h (clear, push_back, pop_back, internalData,
+	operator[], resize, empty): new functions
+	Make StableDocIterator and operator== be friends. Don't inherit
+	from std::vector use a privat class variable slices_ instead.
+	Modify to fit.
+
+	* dociterator.C: update because of not inheriting from std::vector
+	anymore. Call explictly to slices_ instead. Use depth() instead of
+	size() and top() instead of back()
+
+	* cursor.C: chagne size() -> depth and back() -> top(). Also
+	remove some direct operator[](i) calls in favour of foo[i]
+	(getFont): remove some dead code
+
+	* bufferview_funcs.C (coordOffset): size() -> depth()
+
+	* buffer.C: ws changes only
+
+	* CutAndPaste.C (eraseSelection): back() -> top()
+
+	* BufferView_pimpl.C (selectionRequested): back() -> top()
+
+	* BufferView.C (setCursor): size() -> depth()
+
+2005-02-08  Lars Gullik Bjonnes  <larsbj@gullik.net>
+
 	* text3.C (cursorPrevious): return true if depm changed something
 	(cursorNext): ditto
 	(dispatch): rename sl to oldTopSlice, remove moving use the new

@@ -156,9 +156,10 @@ Point coordOffset(DocIterator const & dit)
 	int y = 0;
 
 	// Contribution of nested insets
-	for (size_t i = 1; i != dit.size(); ++i) {
+	for (size_t i = 1; i != dit.depth(); ++i) {
 		CursorSlice const & sl = dit[i];
-		int xx = 0, yy = 0;
+		int xx = 0;
+		int yy = 0;
 		sl.inset().getCursorPos(sl, xx, yy);
 		x += xx;
 		y += yy;
@@ -184,7 +185,7 @@ Point getPos(DocIterator const & dit)
 	CoordCache::InnerParPosCache::const_iterator it = cache.find(bot.pit());
 	if (it == cache.end()) {
 		//lyxerr << "cursor out of view" << std::endl;
-		return Point(-1,-1);
+		return Point(-1, -1);
 	}
 	Point p = coordOffset(dit); // offset from outer paragraph
 	p.y_ += it->second.y_;

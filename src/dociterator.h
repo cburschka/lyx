@@ -34,7 +34,7 @@ bool ptr_cmp(A const * a, B const * b)
 
 // The public inheritance should go in favour of a suitable data member
 // (or maybe private inheritance) at some point of time.
-class DocIterator : public std::vector<CursorSlice>
+class DocIterator // : public std::vector<CursorSlice>
 {
 public:
 	/// type for cell number in inset
@@ -54,42 +54,55 @@ public:
 	///
 	explicit DocIterator(InsetBase & inset);
 
+	CursorSlice const & operator[](size_t i) const {
+		return slices_[i];
+	}
+
+	CursorSlice & operator[](size_t i) {
+		return slices_[i];
+	}
+
+	// What is the point of this function?
+	void resize(size_t i) { slices_.resize(i); }
+
 	/// is the iterator valid?
 	operator const void*() const { return empty() ? 0 : this; }
 	/// is this iterator invalid?
 	bool operator!() const { return empty(); }
 
+	bool empty() const { return slices_.empty(); }
+
 	//
 	// access to slice at tip
 	//
 	/// access to tip
-	CursorSlice & top() { return back(); }
+	CursorSlice & top() { return slices_.back(); }
 	/// access to tip
-	CursorSlice const & top() const { return back(); }
+	CursorSlice const & top() const { return slices_.back(); }
 	/// access to outermost slice
-	CursorSlice & bottom() { return front(); }
+	CursorSlice & bottom() { return slices_.front(); }
 	/// access to  outermost slicetip
-	CursorSlice const & bottom() const { return front(); }
+	CursorSlice const & bottom() const { return slices_.front(); }
 	/// how many nested insets do we have?
-	size_t depth() const { return size(); }
+	size_t depth() const { return slices_.size(); }
 	/// the containing inset
-	InsetBase & inset() const { return back().inset(); }
+	InsetBase & inset() const { return top().inset(); }
 	/// return the cell of the inset this cursor is in
-	idx_type idx() const { return back().idx(); }
+	idx_type idx() const { return top().idx(); }
 	/// return the cell of the inset this cursor is in
-	idx_type & idx() { return back().idx(); }
+	idx_type & idx() { return top().idx(); }
 	/// return the last possible cell in this inset
 	idx_type lastidx() const;
 	/// return the paragraph this cursor is in
-	pit_type pit() const { return back().pit(); }
+	pit_type pit() const { return top().pit(); }
 	/// return the paragraph this cursor is in
-	pit_type & pit() { return back().pit(); }
+	pit_type & pit() { return top().pit(); }
 	/// return the last possible paragraph in this inset
 	pit_type lastpit() const;
 	/// return the position within the paragraph
-	pos_type pos() const { return back().pos(); }
+	pos_type pos() const { return top().pos(); }
 	/// return the position within the paragraph
-	pos_type & pos() { return back().pos(); }
+	pos_type & pos() { return top().pos(); }
 	/// return the last position within the paragraph
 	pos_type lastpos() const;
 
@@ -191,13 +204,41 @@ public:
 	/// output
 	friend std::ostream &
 	operator<<(std::ostream & os, DocIterator const & cur);
+	friend bool operator==(DocIterator const &, DocIterator const &);
+	friend class StableDocIterator;
+protected:
+	void clear() { slices_.clear(); }
+	void push_back(CursorSlice const & sl) {
+		slices_.push_back(sl);
+	}
+	void pop_back() {
+		slices_.pop_back();
+	}
 private:
+	std::vector<CursorSlice> const & internalData() const {
+		return slices_;
+	}
+	std::vector<CursorSlice> slices_;
 	InsetBase * inset_;
 };
 
 
 DocIterator doc_iterator_begin(InsetBase & inset);
 DocIterator doc_iterator_end(InsetBase & inset);
+
+
+inline
+bool operator==(DocIterator const & di1, DocIterator const & di2)
+{
+	return di1.slices_ == di2.slices_;
+}
+
+
+inline
+bool operator!=(DocIterator const & di1, DocIterator const & di2)
+{
+	return !(di1 == di2);
+}
 
 
 // The difference to a ('non stable') DocIterator is the removed

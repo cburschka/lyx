@@ -901,9 +901,9 @@ bool Paragraph::simpleTeXOnePar(Buffer const & buf,
 	}
 
 	LyXFont basefont;
-	
+
 	LaTeXFeatures features(buf, bparams, runparams.nice);
-	
+
 	// output change tracking marks only if desired,
 	// if dvipost is installed,
 	// and with dvi/ps (other formats don't work)
@@ -1020,7 +1020,7 @@ bool Paragraph::simpleTeXOnePar(Buffer const & buf,
 
 		Change::Type change = pimpl_->lookupChange(i);
 
-		column += Changes::latexMarkChange(os, running_change, 
+		column += Changes::latexMarkChange(os, running_change,
 			change, output);
 		running_change = change;
 
@@ -1878,4 +1878,3 @@ void Paragraph::dump() const
 		rows_[i].dump();
 	}
 }
-

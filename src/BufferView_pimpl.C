@@ -484,7 +484,7 @@ void BufferView::Pimpl::scrollDocView(int value)
 }
 
 
-void BufferView::Pimpl::scroll(int lines)
+void BufferView::Pimpl::scroll(int /*lines*/)
 {
 //	if (!buffer_)
 //		return;
@@ -540,11 +540,11 @@ void BufferView::Pimpl::selectionRequested()
 	}
 
 	if (!xsel_cache_.set ||
-	    cur.back() != xsel_cache_.cursor ||
-	    cur.anchor_.back() != xsel_cache_.anchor)
+	    cur.top() != xsel_cache_.cursor ||
+	    cur.anchor_.top() != xsel_cache_.anchor)
 	{
-		xsel_cache_.cursor = cur.back();
-		xsel_cache_.anchor = cur.anchor_.back();
+		xsel_cache_.cursor = cur.top();
+		xsel_cache_.anchor = cur.anchor_.top();
 		xsel_cache_.set = cur.selection();
 		sel = cur.selectionAsString(false);
 		if (!sel.empty())

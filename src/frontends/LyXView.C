@@ -140,13 +140,13 @@ void LyXView::resetAutosaveTimer()
 
 void LyXView::updateLayoutChoice()
 {
-	// don't show any layouts without a buffer
+	// Don't show any layouts without a buffer
 	if (!view()->buffer()) {
 		toolbars_->clearLayoutList();
 		return;
 	}
 
-	// update the layout display
+	// Update the layout display
 	if (toolbars_->updateLayoutList(buffer()->params().textclass)) {
 		current_layout = buffer()->params().getLyXTextClass().defaultLayoutName();
 	}

@@ -244,11 +244,11 @@ bool DocIterator::inTexted() const
 LyXText * DocIterator::innerText()
 {
 	BOOST_ASSERT(!empty());
-	// go up until first non-0 text is hit
+	// Go up until first non-0 text is hit
 	// (innermost text is 0 in mathed)
-	for (int i = size() - 1; i >= 0; --i)
-		if (operator[](i).text())
-			return operator[](i).text();
+	for (int i = depth() - 1; i >= 0; --i)
+		if (slices_[i].text())
+			return slices_[i].text();
 	return 0;
 }
 
@@ -257,18 +257,18 @@ LyXText const * DocIterator::innerText() const
 	BOOST_ASSERT(!empty());
 	// go up until first non-0 text is hit
 	// (innermost text is 0 in mathed)
-	for (int i = size() - 1; i >= 0; --i)
-		if (operator[](i).text())
-			return operator[](i).text();
+	for (int i = depth() - 1; i >= 0; --i)
+		if (slices_[i].text())
+			return slices_[i].text();
 	return 0;
 }
 
 
 InsetBase * DocIterator::innerInsetOfType(int code) const
 {
-	for (int i = size() - 1; i >= 0; --i)
-		if (operator[](i).inset_->lyxCode() == code)
-			return operator[](i).inset_;
+	for (int i = depth() - 1; i >= 0; --i)
+		if (slices_[i].inset_->lyxCode() == code)
+			return slices_[i].inset_;
 	return 0;
 }
 
@@ -281,7 +281,7 @@ void DocIterator::forwardPos()
 		return;
 	}
 
-	CursorSlice & top = back();
+	CursorSlice & tip = top();
 	//lyxerr << "XXX\n" << *this << endl;
 
 	// this is used twice and shows up in the profiler!
@@ -290,13 +290,13 @@ void DocIterator::forwardPos()
 	// move into an inset to the right if possible
 	InsetBase * n = 0;
 
-	if (top.pos() != lastp) {
+	if (tip.pos() != lastp) {
 		// this is impossible for pos() == size()
 		if (inMathed()) {
-			n = (top.cell().begin() + top.pos())->nucleus();
+			n = (tip.cell().begin() + tip.pos())->nucleus();
 		} else {
-			if (paragraph().isInset(top.pos()))
-				n = paragraph().getInset(top.pos());
+			if (paragraph().isInset(tip.pos()))
+				n = paragraph().getInset(tip.pos());
 		}
 	}
 
@@ -307,28 +307,28 @@ void DocIterator::forwardPos()
 	}
 
 	// otherwise move on one position if possible
-	if (top.pos() < lastp) {
+	if (tip.pos() < lastp) {
 		//lyxerr << "... next pos" << endl;
-		++top.pos();
+		++tip.pos();
 		return;
 	}
 	//lyxerr << "... no next pos" << endl;
 
 	// otherwise move on one paragraph if possible
-	if (top.pit() < lastpit()) {
+	if (tip.pit() < lastpit()) {
 		//lyxerr << "... next par" << endl;
-		++top.pit();
-		top.pos() = 0;
+		++tip.pit();
+		tip.pos() = 0;
 		return;
 	}
 	//lyxerr << "... no next pit" << endl;
 
 	// otherwise try to move on one cell if possible
-	if (top.idx() < lastidx()) {
+	if (tip.idx() < lastidx()) {
 		//lyxerr << "... next idx" << endl;
-		++top.idx();
-		top.pit() = 0;
-		top.pos() = 0;
+		++tip.idx();
+		tip.pit() = 0;
+		tip.pos() = 0;
 		return;
 	}
 	//lyxerr << "... no next idx" << endl;
@@ -336,8 +336,8 @@ void DocIterator::forwardPos()
 	// otherwise leave inset and jump over inset as a whole
 	pop_back();
 	// 'top' is invalid now...
-	if (size())
-		++back().pos();
+	if (!empty())
+		++top().pos();
 }
 
 
@@ -352,7 +352,7 @@ void DocIterator::forwardPar()
 void DocIterator::forwardChar()
 {
 	forwardPos();
-	while (size() != 0 && pos() == lastpos())
+	while (!empty() && pos() == lastpos())
 		forwardPos();
 }
 
@@ -360,7 +360,7 @@ void DocIterator::forwardChar()
 void DocIterator::forwardInset()
 {
 	forwardPos();
-	while (size() != 0 && (pos() == lastpos() || nextInset() == 0))
+	while (!empty() && (pos() == lastpos() || nextInset() == 0))
 		forwardPos();
 }
 
@@ -368,7 +368,7 @@ void DocIterator::forwardInset()
 void DocIterator::backwardChar()
 {
 	backwardPos();
-	while (size() != 0 && pos() == lastpos())
+	while (!empty() && pos() == lastpos())
 		backwardPos();
 }
 
@@ -378,24 +378,24 @@ void DocIterator::backwardPos()
 	//this dog bites his tail
 	if (empty()) {
 		push_back(CursorSlice(*inset_));
-		back().idx() = lastidx();
-		back().pit() = lastpit();
-		back().pos() = lastpos();
+		top().idx() = lastidx();
+		top().pit() = lastpit();
+		top().pos() = lastpos();
 		return;
 	}
 
-	CursorSlice & top = back();
+	CursorSlice & tip = top();
 
-	if (top.pos() != 0) {
-		--top.pos();
-	} else if (top.pit() != 0) {
-		--top.pit();
-		top.pos() = lastpos();
+	if (tip.pos() != 0) {
+		--tip.pos();
+	} else if (tip.pit() != 0) {
+		--tip.pit();
+		tip.pos() = lastpos();
 		return;
-	} else if (top.idx() != 0) {
-		--top.idx();
-		top.pit() = lastpit();
-		top.pos() = lastpos();
+	} else if (tip.idx() != 0) {
+		--tip.idx();
+		tip.pit() = lastpit();
+		tip.pos() = lastpos();
 		return;
 	} else {
 		pop_back();
@@ -406,17 +406,17 @@ void DocIterator::backwardPos()
 	InsetBase * n = 0;
 
 	if (inMathed()) {
-		n = (top.cell().begin() + top.pos())->nucleus();
+		n = (tip.cell().begin() + tip.pos())->nucleus();
 	} else {
-		if (paragraph().isInset(top.pos()))
-			n = paragraph().getInset(top.pos());
+		if (paragraph().isInset(tip.pos()))
+			n = paragraph().getInset(tip.pos());
 	}
 
 	if (n && n->isActive()) {
 		push_back(CursorSlice(*n));
-		back().idx() = lastidx();
-		back().pit() = lastpit();
-		back().pos() = lastpos();
+		top().idx() = lastidx();
+		top().pit() = lastpit();
+		top().pos() = lastpos();
 	}
 }
 
@@ -424,18 +424,18 @@ void DocIterator::backwardPos()
 bool DocIterator::hasPart(DocIterator const & it) const
 {
 	// it can't be a part if it is larger
-	if (it.size() > size())
+	if (it.depth() > depth())
 		return false;
 
 	// as inset adresses are the 'last' level
-	return &it.back().inset() == &operator[](it.size() - 1).inset();
+	return &it.top().inset() == &slices_[it.depth() - 1].inset();
 }
 
 
 std::ostream & operator<<(std::ostream & os, DocIterator const & dit)
 {
-	for (size_t i = 0, n = dit.size(); i != n; ++i)
-		os << " " << dit.operator[](i) << "\n";
+	for (size_t i = 0, n = dit.depth(); i != n; ++i)
+		os << " " << dit[i] << "\n";
 	return os;
 }
 
@@ -443,9 +443,9 @@ std::ostream & operator<<(std::ostream & os, DocIterator const & dit)
 
 ///////////////////////////////////////////////////////
 
-StableDocIterator::StableDocIterator(const DocIterator & dit)
+StableDocIterator::StableDocIterator(DocIterator const & dit)
 {
-	data_ = dit;
+	data_ = dit.internalData();
 	for (size_t i = 0, n = data_.size(); i != n; ++i)
 		data_[i].inset_ = 0;
 }
@@ -459,14 +459,15 @@ DocIterator StableDocIterator::asDocIterator(InsetBase * inset) const
 	for (size_t i = 0, n = data_.size(); i != n; ++i) {
 		if (inset == 0) {
 			// FIXME
-			lyxerr << "Should not happen, but does e.g. after C-n C-l C-z S-C-z"
-				<< endl << "dit: " << dit << endl
+			lyxerr << BOOST_CURRENT_FUNCTION
+			       << " Should not happen, but does e.g. after C-n C-l C-z S-C-z"
+				<< '\n' << "dit: " << dit << '\n'
 				<< " lastpos: " << dit.lastpos() << endl;
 			//break;
 			BOOST_ASSERT(false);
 		}
 		dit.push_back(data_[i]);
-		dit.back().inset_ = inset;
+		dit.top().inset_ = inset;
 		if (i + 1 != n)
 			inset = dit.nextInset();
 	}

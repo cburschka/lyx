@@ -426,7 +426,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		break;
 
 	case LFUN_BEGINNINGBUF:
-		if (cur.size() == 1) {
+		if (cur.depth() == 1) {
 			if (!cur.mark())
 				cur.clearSelection();
 			cursorTop(cur);
@@ -437,7 +437,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		break;
 
 	case LFUN_BEGINNINGBUFSEL:
-		if (cur.size() == 1) {
+		if (cur.depth() == 1) {
 			if (!cur.selection())
 				cur.resetAnchor();
 			cursorTop(cur);
@@ -448,7 +448,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		break;
 
 	case LFUN_ENDBUF:
-		if (cur.size() == 1) {
+		if (cur.depth() == 1) {
 			if (!cur.mark())
 				cur.clearSelection();
 			cursorBottom(cur);
@@ -459,7 +459,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		break;
 
 	case LFUN_ENDBUFSEL:
-		if (cur.size() == 1) {
+		if (cur.depth() == 1) {
 			if (!cur.selection())
 				cur.resetAnchor();
 			cursorBottom(cur);

@@ -482,7 +482,7 @@ void Buffer::insertStringAsLines(ParagraphList & pars,
 	// insert the string, don't insert doublespace
 	bool space_inserted = true;
 	for (string::const_iterator cit = str.begin();
-	    cit != str.end(); ++cit) { 
+	    cit != str.end(); ++cit) {
 		Paragraph & par = pars[pit];
 		if (*cit == '\n') {
 			if (autobreakrows && (!par.empty() || par.allowEmpty())) {

@@ -1246,9 +1246,6 @@ bool LyXText::cursorRight(LCursor & cur)
 	if (cur.pos() != cur.lastpos()) {
 		bool updateNeeded = false;
 		if (!checkAndActivateInset(cur, true)) {
-			lyxerr << BOOST_CURRENT_FUNCTION
-			       << " Running setCursor" << endl;
-
 			updateNeeded |= setCursor(cur, cur.pit(), cur.pos() + 1, true, false);
 			if (false && bidi.isBoundary(cur.buffer(), cur.paragraph(),
 							 cur.pos()))

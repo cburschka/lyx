@@ -150,7 +150,7 @@ bool getStatus(LCursor cursor,
 	// BufferView * arg, though (which should be avoided)
 	//LCursor safe = *this;
 	bool res = false;
-	for ( ; cursor.size(); cursor.pop()) {
+	for ( ; cursor.depth(); cursor.pop()) {
 		//lyxerr << "\nLCursor::getStatus: cmd: " << cmd << endl << *this << endl;
 		DocIterator::idx_type & idx = cursor.idx();
 		DocIterator::idx_type const lastidx = cursor.lastidx();
@@ -444,7 +444,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 
 	case LFUN_INSET_SETTINGS: {
 		enable = false;
-		if (!cur.size())
+		if (!cur)
 			break;
 		UpdatableInset * inset = cur.inset().asUpdatableInset();
 		lyxerr << "inset: " << inset << endl;

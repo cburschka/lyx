@@ -326,12 +326,13 @@ LyXText * BufferView::text() const
 
 void BufferView::setCursor(ParIterator const & par, lyx::pos_type pos)
 {
-	for (int i = 0, n = par.size(); i < n; ++i)
+	for (int i = 0, n = par.depth(); i < n; ++i)
 		par[i].inset().edit(cursor(), true);
 
 	cursor().setCursor(makeDocIterator(par, pos));
 	cursor().selection() = false;
 }
+
 
 void BufferView::putSelectionAt(DocIterator const & cur,
 				int length, bool backwards)

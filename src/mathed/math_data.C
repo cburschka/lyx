@@ -221,7 +221,7 @@ namespace {
 bool isInside(DocIterator const & it, MathArray const & ar,
 	lyx::pos_type p1, lyx::pos_type p2)
 {
-	for (size_t i = 0; i != it.size(); ++i) {
+	for (size_t i = 0; i != it.depth(); ++i) {
 		CursorSlice const & sl = it[i];
 		if (sl.inset().inMathed() && &sl.cell() == &ar)
 			return p1 <= sl.pos() && sl.pos() < p2;

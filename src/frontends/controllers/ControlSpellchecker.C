@@ -138,7 +138,7 @@ WordLangTuple nextWord(DocIterator & cur, ptrdiff_t & progress,
 	bool ignoreword = false;
 	string word, lang_code;
 
-	while(cur.size()) {
+	while (cur.depth()) {
 		if (isLetter(cur)) {
 			if (!inword) {
 				inword = true;

@@ -41,7 +41,7 @@ using std::ostream;
 
 void leaveInset(LCursor & cur, InsetBase const & in)
 {
-	for (unsigned int i = 0; i != cur.size(); ++i) {
+	for (size_t i = 0; i != cur.depth(); ++i) {
 		if (&cur[i].inset() == &in) {
 			cur.resize(i);
 			return;
