@@ -138,10 +138,10 @@ void InsetBase::edit(LCursor &, bool)
 }
 
 
-InsetBase * InsetBase::editXY(LCursor &, int x, int y)
+InsetBase * InsetBase::editXY(LCursor &, int x, int y) const
 {
 	lyxerr << "InsetBase: editXY x:" << x << " y: " << y << std::endl;
-	return this;
+	return const_cast<InsetBase*>(this);
 }
 
 

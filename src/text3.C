@@ -185,7 +185,7 @@ string const freefont2string()
 
 
 //takes absolute x,y coordinates
-InsetBase * LyXText::checkInsetHit(int x, int y)
+InsetBase * LyXText::checkInsetHit(int x, int y) const 
 {
 	par_type pit;
 	par_type end;
@@ -198,8 +198,8 @@ InsetBase * LyXText::checkInsetHit(int x, int y)
 	lyxerr << "checkInsetHit: x: " << x << " y: " << y << endl;
 	lyxerr << "  pit: " << pit << " end: " << end << endl;
 	for (; pit != end; ++pit) {
-		InsetList::iterator iit = pars_[pit].insetlist.begin();
-		InsetList::iterator iend = pars_[pit].insetlist.end();
+		InsetList::const_iterator iit = pars_[pit].insetlist.begin();
+		InsetList::const_iterator iend = pars_[pit].insetlist.end();
 		for (; iit != iend; ++iit) {
 			InsetBase * inset = iit->inset;
 #if 0

@@ -1,5 +1,10 @@
 2004-08-13  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
+	* text2.C (editXY): 
+	* text3.C (checkInsetHit): constify
+
+2004-08-13  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
 	* LyXAction.C (init): mark LFUN_WORD_FIND as working in read-only
 	documents (bug 1629)
 

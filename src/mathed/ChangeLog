@@ -1,3 +1,7 @@
+2004-08-13  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* math_nestinset.C (editXY): constify
+
 2004-08-13  José Matos  <jamatos@lyx.org>
 
 	* math_hullinset.C (docbook): add awareness of the distinction

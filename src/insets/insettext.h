@@ -138,7 +138,7 @@ public:
 	///
 	void edit(LCursor & cur, bool left);
 	///
-	InsetBase * editXY(LCursor & cur, int x, int y);
+	InsetBase * editXY(LCursor & cur, int x, int y) const;
 
 	/// number of cells in this inset
 	size_t nargs() const { return 1; }

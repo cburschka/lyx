@@ -184,7 +184,7 @@ public:
 	///
 	void setCursorFromCoordinates(LCursor & cur, int x, int y);
 	///
-	InsetBase * editXY(LCursor & cur, int x, int y);
+	InsetBase * editXY(LCursor & cur, int x, int y) const;
 	///
 	void cursorUp(LCursor & cur);
 	///
@@ -268,7 +268,7 @@ public:
 	/// updates all counters
 	void updateCounters();
 	/// Returns an inset if inset was hit, or 0 if not.
-	InsetBase * checkInsetHit(int x, int y);
+	InsetBase * checkInsetHit(int x, int y) const;
 
 	///
 	int singleWidth(par_type pit, pos_type pos) const;

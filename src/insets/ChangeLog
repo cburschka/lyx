@@ -1,5 +1,11 @@
 2004-08-13  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
+	* insettext.C (editXY): 
+
+	* insettabular.C (editXY): 
+	* insetcollapsable.C (editXY): 
+	* insetbase.C (editXY): constify
+
 	* insetcollapsable.C (priv_dispatch): on a mouse press event, do
 	not ask for an update if we did nothing; on a mouse release, make
 	sure that the cursor is  moved to the right position; on a mouse

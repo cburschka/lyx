@@ -101,7 +101,7 @@ protected:
 	///
 	void edit(LCursor & cur, bool left);
 	///
-	InsetBase * editXY(LCursor & cur, int x, int y);
+	InsetBase * editXY(LCursor & cur, int x, int y) const;
 
 protected:
 	///

@@ -304,7 +304,7 @@ void InsetText::edit(LCursor & cur, bool left)
 }
 
 
-InsetBase * InsetText::editXY(LCursor & cur, int x, int y)
+InsetBase * InsetText::editXY(LCursor & cur, int x, int y) const
 {
 	lyxerr << "InsetText::edit xy" << endl;
 	old_par = -1;

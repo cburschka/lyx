@@ -394,11 +394,11 @@ void InsetTabular::edit(LCursor & cur, bool left)
 }
 
 
-InsetBase * InsetTabular::editXY(LCursor & cur, int x, int y)
+InsetBase * InsetTabular::editXY(LCursor & cur, int x, int y) const
 {
 	//lyxerr << "InsetTabular::editXY: " << this << endl;
 	cur.selection() = false;
-	cur.push(*this);
+	cur.push(const_cast<InsetTabular&>(*this));
 	return setPos(cur, x, y);
 	//int xx = cursorx_ - xo_ + tabular.getBeginningOfTextInCell(actcell);
 }

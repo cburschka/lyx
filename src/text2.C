@@ -1138,7 +1138,7 @@ void LyXText::setCursorFromCoordinates(LCursor & cur, int x, int y)
 
 
 // x,y are absolute screen coordinates
-InsetBase * LyXText::editXY(LCursor & cur, int x, int y)
+InsetBase * LyXText::editXY(LCursor & cur, int x, int y) const
 {
 	par_type pit;
 	Row const & row = getRowNearY(y - yo_, pit);
