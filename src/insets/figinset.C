@@ -381,13 +381,6 @@ void InitFigures()
 	figures.clear();
 	bitmaps.clear();
 
-	unsigned int k;
-	for (unsigned int i = 0; i < 256; ++i) {
-		k = 0;
-		for (unsigned int j = 0; j < 8; ++j)
-			if (i & (1 << (7-j))) k |= 1 << j;
-	}
-
 	// allocate color cube on pseudo-color display
 	// first get visual
 	gs_color = false;

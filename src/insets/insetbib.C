@@ -26,8 +26,6 @@ using std::endl;
 using std::vector;
 using std::pair;
 
-extern BufferView * current_view;
-
 FD_bibitem_form * bibitem_form = 0;
 
 FD_bibitem_form * create_form_bibitem_form(void);
@@ -200,8 +198,8 @@ void InsetBibKey::Edit(BufferView * bv, int, int, unsigned int)
 }
 
 
-InsetBibtex::InsetBibtex(InsetCommandParams const & p, Buffer * o)
-	: InsetCommand(p), owner(o)
+InsetBibtex::InsetBibtex(InsetCommandParams const & p)
+	: InsetCommand(p)
 {}
 
 
@@ -220,16 +218,9 @@ string const InsetBibtex::getScreenLabel() const
 }
 
 
-int InsetBibtex::Latex(Buffer const *, ostream & os,
+int InsetBibtex::Latex(Buffer const * buffer, ostream & os,
 		       bool /*fragile*/, bool/*fs*/) const
 {
-	// this looks like an horrible hack and it is :) The problem
-	// is that owner is not initialized correctly when the bib
-	// inset is cut and pasted. Such hacks will not be needed
-	// later (JMarc)
-	if (!owner) {
-		owner = current_view->buffer();
-	}
 	// If we generate in a temp dir, we might need to give an
 	// absolute path there. This is a bit complicated since we can
 	// have a comma-separated list of bibliographies
@@ -237,9 +228,9 @@ int InsetBibtex::Latex(Buffer const *, ostream & os,
 	string db_in = getContents();
 	db_in = split(db_in, adb, ',');
 	while(!adb.empty()) {
-		if (!owner->niceFile &&
-		    IsFileReadable(MakeAbsPath(adb, owner->filepath)+".bib")) 
-                         adb = MakeAbsPath(adb, owner->filepath);
+		if (!buffer->niceFile &&
+		    IsFileReadable(MakeAbsPath(adb, buffer->filepath)+".bib")) 
+                         adb = MakeAbsPath(adb, buffer->filepath);
 
 		db_out += adb;
 		db_out += ',';
@@ -248,10 +239,10 @@ int InsetBibtex::Latex(Buffer const *, ostream & os,
 	db_out = strip(db_out, ',');
 	// Idem, but simpler
 	string style;
-	if (!owner->niceFile 
-	    && IsFileReadable(MakeAbsPath(getOptions(), owner->filepath)
+	if (!buffer->niceFile 
+	    && IsFileReadable(MakeAbsPath(getOptions(), buffer->filepath)
 			      + ".bst")) 
-		style = MakeAbsPath(getOptions(), owner->filepath);
+		style = MakeAbsPath(getOptions(), buffer->filepath);
 	else
 		style = getOptions();
 
@@ -262,19 +253,9 @@ int InsetBibtex::Latex(Buffer const *, ostream & os,
 
 
 // This method returns a comma separated list of Bibtex entries
-vector<pair<string, string> > const InsetBibtex::getKeys() const
+vector<pair<string, string> > const InsetBibtex::getKeys(Buffer const * buffer) const
 {
-	// This hack is copied from InsetBibtex::Latex.
-	// Is it still needed? Probably yes.
-	// Why is this needed here when it already is in Latex?
-	// Anyway we need a different way to get to the
-	// buffer the inset is in. (Lgb)
-	
-	//if (!owner) {
-	//	owner = current_view->buffer();
-	//}
-	
-	Path p(owner->filepath);
+	Path p(buffer->filepath);
 
 	vector<pair<string,string> > keys;
 	string tmp;
@@ -383,7 +364,7 @@ int bibitemMaxWidth(BufferView * bv, LyXFont const & font)
 {
 	int w = 0;
 	// Does look like a hack? It is! (but will change at 0.13)
-	LyXParagraph * par = current_view->buffer()->paragraph;
+	LyXParagraph * par = bv->buffer()->paragraph;
     
 	while (par) {
 		if (par->bibkey) {
@@ -401,7 +382,7 @@ string const bibitemWidest(BufferView * bv)
 {
 	int w = 0;
 	// Does look like a hack? It is! (but will change at 0.13)
-	LyXParagraph * par = current_view->buffer()->paragraph;
+	LyXParagraph * par = bv->buffer()->paragraph;
 	InsetBibKey * bkey = 0;
 	LyXFont font;
       

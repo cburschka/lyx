@@ -78,11 +78,11 @@ private:
 class InsetBibtex : public InsetCommand {
 public:
 	///
-	InsetBibtex(InsetCommandParams const &, Buffer *);
+	InsetBibtex(InsetCommandParams const &);
 	///
 	~InsetBibtex();
 	///
-	Inset * Clone() const { return new InsetBibtex(params(), owner); }
+	Inset * Clone() const { return new InsetBibtex(params()); }
 	///
 	string const getScreenLabel() const;
 	///
@@ -95,7 +95,7 @@ public:
 	int Latex(Buffer const *, std::ostream &,
 		  bool fragile, bool freespace) const;
 	///
-	std::vector<std::pair<string,string> > const getKeys() const;
+	std::vector<std::pair<string,string> > const getKeys(Buffer const *) const;
         ///
         bool addDatabase(string const &);
         ///
@@ -109,9 +109,6 @@ public:
 	};
 
 private:
-	///
-	mutable Buffer * owner;
-
 	///
 	Holder holder;
 };

@@ -953,7 +953,7 @@ void Buffer::readInset(LyXLex & lex, LyXParagraph *& par,
 			lex.printError("Wrong place for bibitem");
 			inset = new InsetBibKey(inscmd);
 		} else if (inscmd.getCmdName() == "BibTeX") {
-			inset = new InsetBibtex(inscmd, this);
+			inset = new InsetBibtex(inscmd);
 		} else if (inscmd.getCmdName() == "index") {
 			inset = new InsetIndex(inscmd);
 		} else if (inscmd.getCmdName() == "include") {
@@ -3583,7 +3583,7 @@ vector<pair<string,string> > const Buffer::getBibkeyList()
 			// Search for Bibtex or Include inset
 			if ((*it)->LyxCode() == Inset::BIBTEX_CODE) {
 				vector<pair<string,string> > tmp =
-					static_cast<InsetBibtex*>(*it)->getKeys();
+					static_cast<InsetBibtex*>(*it)->getKeys(this);
 				keys.insert(keys.end(), tmp.begin(), tmp.end());
 			} else if ((*it)->LyxCode() == Inset::INCLUDE_CODE) {
 				vector<pair<string,string> > const tmp =

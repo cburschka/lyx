@@ -30,7 +30,6 @@
 using std::endl;
 
 const int SizeInset = sizeof(char*) + 2;
-const int SizeFont = 2;
 
 extern int mathed_char_width(short type, int style, byte c);
 extern int mathed_string_width(short type, int style, byte const* s, int ls);
@@ -887,7 +886,6 @@ void MathedXIter::subMetrics(int a, int d)
 void MathedXIter::IMetrics(int pos2, int & width, int & ascent, int & descent)
 {  
     byte cx;
-    byte cxp = 0; // *s;
     int x1; // ls;
     int asc = 0;
     int des = 0;
@@ -948,7 +946,6 @@ void MathedXIter::IMetrics(int pos2, int & width, int & ascent, int & descent)
 	    break;
 	}       
 	if (pos < pos2)  Next();
-	cxp = cx;
    }
     width = x - x1;
 }

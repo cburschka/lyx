@@ -353,7 +353,7 @@ bool InsetInclude::loadIfNeeded() const
 }
 
 
-int InsetInclude::Latex(Buffer const *, ostream & os,
+int InsetInclude::Latex(Buffer const * buffer, ostream & os,
 			bool /*fragile*/, bool /*fs*/) const
 {
 	string incfile(getContents());
@@ -365,37 +365,37 @@ int InsetInclude::Latex(Buffer const *, ostream & os,
 	if (loadIfNeeded()) {
 		Buffer * tmp = bufferlist.getBuffer(getFileName());
 
-		if (tmp->params.textclass != master->params.textclass) {
+		if (tmp->params.textclass != buffer->params.textclass) {
 			lyxerr << "ERROR: Cannot handle include file `"
 			       << MakeDisplayPath(getFileName())
 			       << "' which has textclass `"
 			       << textclasslist.NameOfClass(tmp->params.textclass)
 			       << "' instead of `"
-			       << textclasslist.NameOfClass(master->params.textclass)
+			       << textclasslist.NameOfClass(buffer->params.textclass)
 			       << "'." << endl;
 			return 0;
 		}
 		
 		// write it to a file (so far the complete file)
 		string writefile = ChangeExtension(getFileName(), ".tex");
-		if (!master->tmppath.empty()
-		    && !master->niceFile) {
+		if (!buffer->tmppath.empty()
+		    && !buffer->niceFile) {
 			incfile = subst(incfile, '/','@');
 #ifdef __EMX__
 			incfile = subst(incfile, ':', '$');
 #endif
-			writefile = AddName(master->tmppath, incfile);
+			writefile = AddName(buffer->tmppath, incfile);
 		} else
 			writefile = getFileName();
 		writefile = ChangeExtension(writefile, ".tex");
 		lyxerr[Debug::LATEX] << "incfile:" << incfile << endl;
 		lyxerr[Debug::LATEX] << "writefile:" << writefile << endl;
 		
-		tmp->markDepClean(master->tmppath);
+		tmp->markDepClean(buffer->tmppath);
 		
 		tmp->makeLaTeXFile(writefile,
 				   OnlyPath(getMasterFilename()), 
-				   master->niceFile, true);
+				   buffer->niceFile, true);
 	} 
 
 	if (isVerb()) {
@@ -421,7 +421,7 @@ int InsetInclude::Latex(Buffer const *, ostream & os,
 }
 
 
-int InsetInclude::Linuxdoc(Buffer const *, ostream & os) const
+int InsetInclude::Linuxdoc(Buffer const * buffer, ostream & os) const
 {
 	string incfile(getContents());
 	
@@ -434,9 +434,9 @@ int InsetInclude::Linuxdoc(Buffer const *, ostream & os) const
 
 		// write it to a file (so far the complete file)
 		string writefile = ChangeExtension(getFileName(), ".sgml");
-		if (!master->tmppath.empty() && !master->niceFile) {
+		if (!buffer->tmppath.empty() && !buffer->niceFile) {
 			incfile = subst(incfile, '/','@');
-			writefile = AddName(master->tmppath, incfile);
+			writefile = AddName(buffer->tmppath, incfile);
 		} else
 			writefile = getFileName();
 
@@ -446,7 +446,7 @@ int InsetInclude::Linuxdoc(Buffer const *, ostream & os) const
 		lyxerr[Debug::LATEX] << "incfile:" << incfile << endl;
 		lyxerr[Debug::LATEX] << "writefile:" << writefile << endl;
 		
-		tmp->makeLinuxDocFile(writefile, master->niceFile, true);
+		tmp->makeLinuxDocFile(writefile, buffer->niceFile, true);
 	} 
 
 	if (isVerb()) {
@@ -458,7 +458,7 @@ int InsetInclude::Linuxdoc(Buffer const *, ostream & os) const
 }
 
 
-int InsetInclude::DocBook(Buffer const *, ostream & os) const
+int InsetInclude::DocBook(Buffer const * buffer, ostream & os) const
 {
 	string incfile(getContents());
 
@@ -471,9 +471,9 @@ int InsetInclude::DocBook(Buffer const *, ostream & os) const
 
 		// write it to a file (so far the complete file)
 		string writefile = ChangeExtension(getFileName(), ".sgml");
-		if (!master->tmppath.empty() && !master->niceFile) {
+		if (!buffer->tmppath.empty() && !buffer->niceFile) {
 			incfile = subst(incfile, '/','@');
-			writefile = AddName(master->tmppath, incfile);
+			writefile = AddName(buffer->tmppath, incfile);
 		} else
 			writefile = getFileName();
 		if(IsLyXFilename(getFileName()))
@@ -482,7 +482,7 @@ int InsetInclude::DocBook(Buffer const *, ostream & os) const
 		lyxerr[Debug::LATEX] << "incfile:" << incfile << endl;
 		lyxerr[Debug::LATEX] << "writefile:" << writefile << endl;
 		
-		tmp->makeDocBookFile(writefile, master->niceFile, true);
+		tmp->makeDocBookFile(writefile, buffer->niceFile, true);
 	} 
 
 	if (isVerb()) {

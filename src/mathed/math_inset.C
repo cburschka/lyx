@@ -26,14 +26,6 @@
 #include "symbol_def.h"
 
 
-static inline
-char * strnew(char const * s)
-{
-   char * s1 = new char[strlen(s)+1];
-   return strcpy(s1, s);
-}
-
-
 MathedInset::MathedInset(MathedInset * inset) 
 {
    if (inset) {

@@ -2671,7 +2671,7 @@ string const LyXFunc::Dispatch(int ac,
 			bibstyle = "plain";
 
 		InsetCommandParams p( "BibTeX", db, bibstyle );
-		InsetBibtex * inset = new InsetBibtex(p, owner->buffer());
+		InsetBibtex * inset = new InsetBibtex(p);
 		
 		if (owner->view()->insertInset(inset)) {
 			if (argument.empty())

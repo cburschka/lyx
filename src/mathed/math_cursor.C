@@ -35,12 +35,6 @@ static LyxArrayBase * selarray = 0;
 
 using std::endl;
 
-static inline
-bool IsAlpha(char c)
-{
-   return ('A' <= c  && c <= 'Z' || 'a' <= c  && c <= 'z');
-}
-
 // This was very smaller, I'll change it later 
 static inline
 bool IsMacro(short tok, int id)

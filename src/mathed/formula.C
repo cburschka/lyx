@@ -70,14 +70,6 @@ int MathedInset::df_des;
 int MathedInset::df_width;
 
 
-inline
-bool IsMacro(short token, int id)
-{
-   return (token != LM_TK_FRAC && token != LM_TK_SQRT &&
-	  !((token == LM_TK_SYM || token == LM_TC_BSYM) && id < 255));
-}
-
-
 static
 void mathedValidate(LaTeXFeatures & features, MathParInset * par);
 

@@ -1,3 +1,25 @@
+2000-10-02  Angus Leeming <a.leeming@ic.ac.uk>
+
+	* src/mathed/formula.C (IsMacro): declared but not referenced; removed.
+	* src/mathed/math_cursor.C (IsAlpha): ditto.
+	* src/mathed/math_inset.C (strnew): ditto.
+	* src/mathed/math_iter.C: SizeFont declared but not referenced;removed.
+	(IMetrics): cxp set but never used; removed.
+	* src/insets/figinset.C (InitFigures): removed redundant for loop, now
+	that the variable in question has been removed also!
+
+
+	* src/insets/insetbib.[Ch]: remove need to store Buffer * owner by
+	using the Buffer * passed to Latex(), using the BufferView * passed to
+	bibitemMaxWidth() bibitemWidest() and by passing a Buffer* to getKeys()
+
+	* src/insets/insetinclude.C: use the Buffer * passed to Latex(),
+	Linuxdoc() and DocBook() rather than the stored Buffer * master.
+
+	* src/lyxfunc.C (Dispatch): used new InsetBibtex c-tor
+	* src/buffer.C (readInset): used new InsetBibtex c-tor
+	* (getBibkeyList): used new InsetBibtex::getKeys
+
 2000-10-01  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* lib/configure.m4
