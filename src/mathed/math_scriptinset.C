@@ -360,6 +360,9 @@ void MathScriptInset::write(WriteStream & os) const
 
 	if (hasUp() && up().size())
 		os << "^{" << up().data() << '}';
+
+	if (lock_ && !os.latex())
+		os << "\\lyxlock ";
 }
 
 

@@ -27,11 +27,11 @@ public:
 	void drawT(TextPainter &, int x, int y) const;
 	///
 	MathFracInset * asFracInset();
+	///
+	string name() const;
 
 	///
 	void write(WriteStream & os) const;
-	///
-	void normalize(NormalStream &) const;
 	///
 	void maplize(MapleStream &) const;
 	///

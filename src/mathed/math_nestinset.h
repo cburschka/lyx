@@ -98,6 +98,11 @@ public:
 	/// is the cursor currently somewhere within this inset?
 	virtual bool editing() const;
 
+	/// writes \\, name(), and args in braces and '\\lyxlock' if necessary
+	void write(WriteStream & os) const;
+	/// writes [, name(), and args in [] 
+	void normalize(NormalStream & os) const;
+
 protected:
 	/// we store the cells in a vector
 	typedef std::vector<MathXArray> cells_type;

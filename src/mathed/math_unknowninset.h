@@ -19,13 +19,13 @@ public:
 	///
 	MathInset * clone() const;
 	///
-	void metrics(MathMetricsInfo & st) const;
+	void metrics(MathMetricsInfo & mi) const;
 	///
-	void draw(MathPainterInfo &, int x, int y) const;
+	void draw(MathPainterInfo & pi, int x, int y) const;
 	///
-	string & name();
+	void setName(string const & name);
 	///
-	string const & name() const;
+	string name() const;
 	/// identifies UnknownInsets
 	MathUnknownInset const * asUnknownInset() const { return this; }
 	/// identifies UnknownInsets

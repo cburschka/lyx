@@ -1500,7 +1500,7 @@ void MathCursor::setSelection(MathIterator const & where, size_type n)
 void MathCursor::insetToggle()
 {
 	if (hasNextAtom()) {
-		// toggle next inset ...
+		// toggle previous inset ...
 		nextAtom()->lock(!nextAtom()->lock());
 	} else if (popLeft() && hasNextAtom()) {
 		// ... or enclosing inset if we are in the last inset position

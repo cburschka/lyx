@@ -53,7 +53,7 @@ MathInset * MathMacro::clone() const
 }
 
 
-string const & MathMacro::name() const
+string MathMacro::name() const
 {
 	return tmplate_->asMacroTemplate()->name();
 }

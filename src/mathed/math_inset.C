@@ -319,6 +319,12 @@ string const & MathInset::getType() const
 }
 
 
+string MathInset::name() const
+{
+	return "unknown";
+}
+
+
 string asString(MathArray const & ar)
 {
 	std::ostringstream os;

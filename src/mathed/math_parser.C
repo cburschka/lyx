@@ -675,6 +675,11 @@ void Parser::parse1(MathGridInset & grid, unsigned flags,
 		// control sequences
 		//
 
+		else if (t.cs() == "lyxlock") {
+			if (cell->size())
+				cell->back()->lock(true);
+		}
+
 		else if (t.cs() == "def" || t.cs() == "newcommand") {
 			string name;
 			int nargs = 0;

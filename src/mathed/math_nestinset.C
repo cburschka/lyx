@@ -302,6 +302,25 @@ MathArray MathNestInset::glue() const
 }
 
 
+void MathNestInset::write(WriteStream & os) const
+{
+	os << '\\' << name().c_str();
+	for (unsigned i = 0; i < nargs(); ++i)
+		os << '{' << cell(i) << '}';
+	if (lock_ && !os.latex())
+		os << "\\lyxlock ";
+}
+
+
+void MathNestInset::normalize(NormalStream & os) const
+{
+	os << '[' << name().c_str();
+	for (unsigned i = 0; i < nargs(); ++i)
+		os << ' ' << cell(i);
+	os << ']';
+}
+
+
 void MathNestInset::notifyCursorLeaves()
 {
 	// Generate a preview only if previews are active and we are leaving

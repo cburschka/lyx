@@ -23,6 +23,8 @@ public:
 	/// are we in math mode, text mode, or unsure?
 	mode_type currentMode() const;
 	///
+	string name() const;
+	///
 	void metrics(MathMetricsInfo & mi) const;
 	///
 	void draw(MathPainterInfo & pi, int x, int y) const;
@@ -30,10 +32,6 @@ public:
 	void metricsT(TextMetricsInfo const & mi) const;
 	///
 	void drawT(TextPainter & pi, int x, int y) const;
-	///
-	void write(WriteStream & os) const;
-	///
-	void normalize(NormalStream &) const;
 	///
 	void validate(LaTeXFeatures & features) const;
 	///

@@ -75,29 +75,28 @@ void MathFracInset::write(WriteStream & os) const
 {
 	if (atop_)
 		os << '{' << cell(0) << "\\atop " << cell(1) << '}';
-	else
-		os << "\\frac{" << cell(0) << "}{" << cell(1) << '}';
+	else // it's \\frac
+		MathNestInset::write(os);
 }
 
 
-void MathFracInset::normalize(NormalStream & os) const
+string MathFracInset::name() const
 {
-	if (atop_)
-		os << "[atop ";
-	else
-		os << "[frac ";
-	os << cell(0) << ' ' << cell(1) << ']';
+	return atop_ ? "atop" : "frac";
 }
+
 
 void MathFracInset::maplize(MapleStream & os) const
 {
 	os << '(' << cell(0) << ")/(" << cell(1) << ')';
 }
 
+
 void MathFracInset::mathematicize(MathematicaStream & os) const
 {
 	os << '(' << cell(0) << ")/(" << cell(1) << ')';
 }
+
 
 void MathFracInset::octavize(OctaveStream & os) const
 {

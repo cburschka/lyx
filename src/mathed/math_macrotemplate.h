@@ -34,7 +34,7 @@ public:
 	///
 	void numargs(int);
 	///
-	string const & name() const;
+	string name() const;
 	///
 	void draw(MathPainterInfo &, int x, int y) const;
 	///

@@ -59,7 +59,7 @@ void MathMacroTemplate::numargs(int numargs)
 }
 
 
-string const & MathMacroTemplate::name() const
+string MathMacroTemplate::name() const
 {
 	return name_;
 }

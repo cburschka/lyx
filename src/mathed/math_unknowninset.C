@@ -21,15 +21,15 @@ MathInset * MathUnknownInset::clone() const
 }
 
 
-string const & MathUnknownInset::name() const
+string MathUnknownInset::name() const
 {
 	return name_;
 }
 
 
-string & MathUnknownInset::name()
+void MathUnknownInset::setName(string const & name)
 {
-	return name_;
+	name_ = name;
 }
 
 

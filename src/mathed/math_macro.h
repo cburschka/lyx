@@ -79,7 +79,7 @@ private:
 	///
 	void operator=(MathMacro const &);
 	///
-	string const & name() const;
+	string name() const;
 	///
 	bool defining() const;
 	///

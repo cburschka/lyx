@@ -18,9 +18,7 @@
 
 MathFontInset::MathFontInset(latexkeys const * key)
 	: MathNestInset(1), key_(key)
-{
-	//lock(true);
-}
+{}
 
 
 MathInset * MathFontInset::clone() const
@@ -70,15 +68,9 @@ void MathFontInset::drawT(TextPainter & pain, int x, int y) const
 }
 
 
-void MathFontInset::write(WriteStream & os) const
+string MathFontInset::name() const
 {
-	os << '\\' << key_->name << '{' << cell(0) << '}';
-}
-
-
-void MathFontInset::normalize(NormalStream & os) const
-{
-	os << "[font " << key_->name << " " << cell(0) << "]";
+	return key_->name;
 }
 
 

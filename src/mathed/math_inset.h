@@ -291,6 +291,8 @@ public:
 	virtual void mutate(string const &) {}
 	/// how is the inset called in the .lyx file?
 	virtual string fileInsetLabel() const { return "Formula"; }
+	/// usually the latex name
+	virtual string name() const;
 };
 
 std::ostream & operator<<(std::ostream &, MathInset const &);
