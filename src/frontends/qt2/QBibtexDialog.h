@@ -20,7 +20,6 @@ class QBibtexDialog : public QBibtexDialogBase
 
 public:
 	QBibtexDialog(QBibtex * form);
-	~QBibtexDialog();
 
 protected slots:
 	virtual void change_adaptor();

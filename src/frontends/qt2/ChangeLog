@@ -1,6 +1,15 @@
 2001-08-26  John Levon  <moz@compsoc.man.ac.uk>
 
 	* Dialogs.C:
+	* Makefile.am:
+	* Makefile.dialogs:
+	* QBibitem.[Ch]:
+	* QBibitemDialog.[Ch]:
+	* ui/QBibitemDialog.ui: add Bibitem dialog
+ 
+2001-08-26  John Levon  <moz@compsoc.man.ac.uk>
+
+	* Dialogs.C:
 	* Makefile.dialogs:
 	* QBibtex.[Ch]:
 	* QBibtexDialog.[Ch]:

@@ -24,8 +24,6 @@ libqt2_la_OBJADD = \
 	../xforms/Color.lo \
 	../xforms/FloatMenuImpl.lo \
 	../xforms/FormBaseDeprecated.lo	\
-	../xforms/FormBibitem.lo \
-	../xforms/FormBibtex.lo \
 	../xforms/FormBrowser.lo \
 	../xforms/FormDocument.lo \
 	../xforms/FormError.lo \

@@ -2,6 +2,7 @@
 
 DIALOGS = \
 	QAbout \
+	QBibitem \
 	QBibtex \
 	QCharacter \
 	QCitation \
@@ -19,6 +20,8 @@ DIALOGS = \
 DIALOGSOURCES = \
 	QAbout.h QAboutDialog.h \
 	QAbout.C QAboutDialog.C \
+	QBibitem.h QBibitemDialog.h \
+	QBibitem.C QBibitemDialog.C \
 	QBibtex.h QBibtexDialog.h \
 	QBibtex.C QBibtexDialog.C \
 	QCharacter.h QCharacterDialog.h \
@@ -48,6 +51,7 @@ DIALOGSOURCES = \
  
 MOCDIALOGS = \
 	QAboutDialog_moc.C \
+	QBibitemDialog_moc.C \
 	QBibtexDialog_moc.C \
 	QCharacterDialog_moc.C \
 	QCitationDialog_moc.C \
@@ -65,6 +69,8 @@ MOCDIALOGS = \
 UIDIALOGS = \
 	QAboutDialogBase.h \
 	QAboutDialogBase.C \
+	QBibitemDialogBase.h \
+	QBibitemDialogBase.C \
 	QBibtexDialogBase.h \
 	QBibtexDialogBase.C \
 	QCharacterDialogBase.h \
@@ -92,6 +98,7 @@ UIDIALOGS = \
  
 UIMOCDIALOGS = \
 	QAboutDialogBase_moc.C \
+	QBibitemDialogBase_moc.C \
 	QBibtexDialogBase_moc.C \
 	QCharacterDialogBase_moc.C \
 	QCitationDialogBase_moc.C \

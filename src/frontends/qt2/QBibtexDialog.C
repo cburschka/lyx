@@ -32,11 +32,6 @@ QBibtexDialog::QBibtexDialog(QBibtex * form)
 }
 
  
-QBibtexDialog::~QBibtexDialog()
-{
-}
-
-
 void QBibtexDialog::change_adaptor()
 {
 	form_->changed();
