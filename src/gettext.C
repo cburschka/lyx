@@ -10,15 +10,16 @@
 
 #include <config.h>
 
+#ifdef HAVE_LOCALE_H
+#  include <locale.h>
+#endif
+
 #include "LString.h"
 
 #ifdef ENABLE_NLS
 
 #  if HAVE_GETTEXT
 #    include <libintl.h>      // use the header already in the system *EK*
-#    ifdef HAVE_LOCALE_H
-#      include <locale.h>        // for LC_MESSAGES
-#    endif
 #  else
 #    include "../intl/libintl.h"
 #  endif
@@ -54,9 +55,9 @@ void locale_init()
 {
 #  ifdef HAVE_LC_MESSAGES
 	setlocale(LC_MESSAGES, "");
+#  endif
 	setlocale(LC_CTYPE, "");
 	setlocale(LC_NUMERIC, "C");
-#  endif
 }
 
 void gettext_init(string const & localedir)
@@ -74,5 +75,6 @@ void locale_init()
 
 void gettext_init(string const &)
 {
+	setlocale(LC_NUMERIC, "C");
 }
 #endif
