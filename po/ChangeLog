@@ -1,3 +1,9 @@
+2003-12-22  Michael Schmitt <Michael.Schmitt@teststep.org>
+
+	* Makefile.in.in: fix extraction of language names from
+	lib/languages when the name includes a space (patch backported
+	from main branch)
+
 2003-12-23  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* wa.po: remove bad e-mail address
