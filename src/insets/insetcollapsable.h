@@ -187,13 +187,13 @@ public:
 
 protected:
 	///
-	int ascent_collapsed(Painter &, LyXFont const &) const;
+	int ascent_collapsed(Painter &) const;
 	///
-	int descent_collapsed(Painter &, LyXFont const &) const;
+	int descent_collapsed(Painter &) const;
 	///
-	int width_collapsed(Painter &, LyXFont const & f) const;
+	int width_collapsed(Painter &) const;
 	///
-	void draw_collapsed(Painter & pain, const LyXFont &, int , float &) const;
+	void draw_collapsed(Painter & pain, int , float &) const;
 	///
 	int getMaxTextWidth(Painter & pain, UpdatableInset const *) const;
 	
@@ -223,8 +223,6 @@ private:
 	mutable string draw_label;
 	///
 	bool autocollapse;
-	///
-	mutable int widthCollapsed;
 	///
 	mutable int oldWidth;
 	///

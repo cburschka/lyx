@@ -193,7 +193,7 @@ Inset * InsetMinipage::clone(Buffer const &, bool same_id) const
 int InsetMinipage::ascent(BufferView * bv, LyXFont const & font) const
 {
 	if (collapsed_)
-		return ascent_collapsed(bv->painter(), font);
+		return ascent_collapsed(bv->painter());
 	else {
 		// Take placement into account.
 		int i = 0;
@@ -217,7 +217,7 @@ int InsetMinipage::ascent(BufferView * bv, LyXFont const & font) const
 int InsetMinipage::descent(BufferView * bv, LyXFont const & font) const
 {
 	if (collapsed_)
-		return descent_collapsed(bv->painter(), font);
+		return descent_collapsed(bv->painter());
 	else {
 		// Take placement into account.
 		int i = 0;
