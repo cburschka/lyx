@@ -1,3 +1,13 @@
+2000-09-22  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* lib/doc/LaTeXConfig.lyx.in: updated.
+
+	* src/language.C (initL): remove language "francais" and change a
+	bit the names of the two other french variations.
+
+	* src/support/lyxstring.C (lyxstring): do not apply strlen() on a
+	string that may not be 0-terminated.
+
 2000-09-20  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/Makefile.am (lyx_SOURCES): remove table.C and Table.h

@@ -1062,21 +1062,6 @@ a4
 Other packages
 \layout Subsection
 
-array
-\layout Description
-
-Found: @chk_array@
-\layout Description
-
-CTAN: 
-\family typewriter 
-macros/latex/required/tools/array.dtx
-\layout Description
-
-Notes: The package array is needed by LyX to be able to output vertical
- alignment other then ''top'' for tabulars.
-\layout Subsection
-
 algorithm
 \layout Description
 
@@ -1111,6 +1096,21 @@ index of algorithms
 \end_inset 
 
  too.
+\layout Subsection
+
+array
+\layout Description
+
+Found: @chk_array@
+\layout Description
+
+CTAN: 
+\family typewriter 
+macros/latex/required/tools/array.dtx
+\layout Description
+
+Notes: The package array is needed by LyX to be able to output vertical
+ alignment other then ''top'' for tabulars.
 \layout Subsection
 
 babel
@@ -1311,6 +1311,38 @@ default
 .
 \layout Subsection
 
+longtable
+\layout Description
+
+Found: @chk_longtable@
+\layout Description
+
+CTAN: 
+\family typewriter 
+macros/latex/packages/tools/longtable.dtx
+\layout Description
+
+Notes: The package 
+\family sans 
+longtable
+\family default 
+ is needed by LyX to be able to output correctly multipage tables.
+\layout Subsection
+
+prettyref
+\layout Description
+
+Found: @chk_prettyref@
+\layout Description
+
+CTAN: 
+\family typewriter 
+macros/latex/contrib/supported/prettyref
+\layout Description
+
+Notes: none yet
+\layout Subsection
+
 rotating
 \layout Description
 
@@ -1368,24 +1400,6 @@ setspace
  is needed by LyX to change the line spacing of your document.
 \layout Subsection
 
-longtable
-\layout Description
-
-Found: @chk_longtable@
-\layout Description
-
-CTAN: 
-\family typewriter 
-macros/latex/packages/tools/longtable.dtx
-\layout Description
-
-Notes: The package 
-\family sans 
-longtable
-\family default 
- is needed by LyX to be able to output correctly multipage tables.
-\layout Subsection
-
 url
 \layout Description
 
@@ -1404,25 +1418,15 @@ url
  is needed by LyX to be able to output url's corrently.
 \layout Subsection
 
-prettyref
-\layout Description
-
-Found: @chk_prettyref@
-\layout Description
-
-CTAN: ??
-\layout Description
-
-Notes: none yet
-\layout Subsection
-
 varioref
 \layout Description
 
 Found: @chk_varioref@
 \layout Description
 
-CTAN: ??
+CTAN: 
+\family typewriter 
+macros/latex/required/tools/
 \layout Description
 
 Notes: none yet
