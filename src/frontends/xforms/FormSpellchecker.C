@@ -63,7 +63,7 @@ void FormSpellchecker::hide()
 ButtonPolicy::SMInput FormSpellchecker::input(FL_OBJECT * obj, long)
 {
 	if (obj == dialog_->replace) {
-		string tmp = fl_get_input(dialog_->input);
+		string const tmp = fl_get_input(dialog_->input);
 		controller().replace(tmp);
 	} else if (obj == dialog_->start) {
 		controller().check();
@@ -80,13 +80,19 @@ ButtonPolicy::SMInput FormSpellchecker::input(FL_OBJECT * obj, long)
 	} else if (obj == dialog_->options) {
 		controller().options();
 	} else if (obj == dialog_->browser) {
-		int sel = fl_get_browser(dialog_->browser);
-		if (clickline_==sel) {
-			string tmp = fl_get_input(dialog_->input);
+		int const sel = fl_get_browser(dialog_->browser);
+		if (sel < 1)
+			return ButtonPolicy::SMI_NOOP;
+
+		if (clickline_ == sel) {
+			string const tmp = fl_get_input(dialog_->input);
 			controller().replace(tmp);
 		}
+
 		clickline_ = sel;
-		string tmp = fl_get_browser_line(dialog_->browser, clickline_);
+		char const * cptmp = fl_get_browser_line(dialog_->browser,
+							 clickline_);
+		string const tmp = (cptmp) ? cptmp : "";
 		fl_set_input(dialog_->input, tmp.c_str());
 	}
 

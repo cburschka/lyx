@@ -1,3 +1,12 @@
+2002-01-08  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* xform_helpers.[Ch] (getStringFromBrowser): a littel wrapper function
+	for fl_get_browser_line that is guaranteed to return a valid string.
+
+2002-01-08  John Levon  <moz@compsoc.man.ac.uk>
+
+	* FormSpellchecker.C: fix possible crash on clicking a suggestion
+
 2002-01-07  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* FormDocument.C:

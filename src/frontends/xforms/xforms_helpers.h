@@ -39,6 +39,14 @@ std::vector<string> const getVectorFromChoice(FL_OBJECT *);
 /// Given an fl_browser, create a vector of its entries
 std::vector<string> const getVectorFromBrowser(FL_OBJECT *);
 
+/** Given an fl_browser, return the contents of the currently
+    highlighted line (xforms numbering convention; starts at 1).
+    If nothing is selected, return an empty string.
+    This function, although apparently overkill, ensures that we don't get
+    unexpected crashes.
+*/
+string const getStringFromBrowser(FL_OBJECT * ob, int line);
+
 /// Given input and choice widgets, create a string such as "1cm"
 string getLengthFromWidgets(FL_OBJECT * input, FL_OBJECT * choice);
 
