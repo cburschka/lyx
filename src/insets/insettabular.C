@@ -1031,27 +1031,37 @@ InsetTabular::localDispatch(BufferView * bv, kb_action action,
 			updateLocal(bv, SELECTION, false);
 		break;
 	case LFUN_NEXT: {
+		UpdateCodes code = CURSOR;
+		if (hs) {
+			clearSelection();
+			code = SELECTION;
+		}
 		int column = actcol;
 		unlockInsetInInset(bv, the_locking_inset);
 		if (bv->text->first + bv->painter().paperHeight() <
 		    (top_baseline + tabular->GetHeightOfTabular()))
 			{
 				bv->scrollCB(bv->text->first + bv->painter().paperHeight());
-				updateLocal(bv, FULL, false);
+				code = FULL;
 				actcell = tabular->GetCellBelow(first_visible_cell) + column;
 			} else {
 				actcell = tabular->GetFirstCellInRow(tabular->rows() - 1) + column;
 			}
 		resetPos(bv);
-		updateLocal(bv, CURSOR, false);
+		updateLocal(bv, code, false);
 		break;
 	}
 	case LFUN_PRIOR: {
+		UpdateCodes code = CURSOR;
+		if (hs) {
+			clearSelection();
+			code = SELECTION;
+		}
 		int column = actcol;
 		unlockInsetInInset(bv, the_locking_inset);
 		if (top_baseline < 0) {
 			bv->scrollCB(bv->text->first - bv->painter().paperHeight());
-			updateLocal(bv, FULL, false);
+			code = FULL;
 			if (top_baseline > 0)
 				actcell = column;
 			else
@@ -1060,7 +1070,7 @@ InsetTabular::localDispatch(BufferView * bv, kb_action action,
 			actcell = column;
 		}
 		resetPos(bv);
-		updateLocal(bv, CURSOR, false);
+		updateLocal(bv, code, false);
 		break;
 	}
 	// none of these make sense for insettabular,

@@ -98,6 +98,8 @@ src/frontends/xforms/form_filedialog.C
 src/frontends/xforms/FormFiledialog.C
 src/frontends/xforms/form_float.C
 src/frontends/xforms/FormFloat.C
+src/frontends/xforms/form_forks.C
+src/frontends/xforms/FormForks.C
 src/frontends/xforms/form_graphics.C
 src/frontends/xforms/FormGraphics.C
 src/frontends/xforms/form_include.C
@@ -151,6 +153,8 @@ src/frontends/xforms/input_validators.C
 src/frontends/xforms/Menubar_pimpl.C
 src/frontends/xforms/xforms_helpers.C
 src/gettext.h
+src/graphics/GraphicsCacheItem.C
+src/graphics/GraphicsConverter.C
 src/importer.C
 src/insets/figinset.C
 src/insets/insetbib.C
