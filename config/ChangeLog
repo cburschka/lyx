@@ -1,3 +1,8 @@
+2002-06-07  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* xforms.m4 (LYX_USE_XFORMS_IMAGE_LOADER): test for jpeg library
+	first. Fix stupid typo so that the script is actually useful.
+
 2002-06-06  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* xforms.m4 (LYX_USE_XFORMS_IMAGE_LOADER): complete rewrite. Now

@@ -20,7 +20,7 @@
 
 #include "graphics/GraphicsImage.h"
 #include FORMS_H_LOCATION
-#if HAVE_FLIMAGE_H
+#ifdef HAVE_FLIMAGE_H
 #include FLIMAGE_H_LOCATION
 #endif
 

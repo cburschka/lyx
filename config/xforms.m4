@@ -1,3 +1,5 @@
+dnl some macros to test for xforms-related functionality  -*- sh -*-
+
 dnl Usage LYX_PATH_XFORMS: Checks for xforms library and flags
 dnl   If it is found, the variable XFORMS_LIB is set to the relevant -l flags,
 dnl and FORMS_H_LOCATION / FLIMAGE_H_LOCATION is also set
@@ -69,10 +71,15 @@ LIBS="$XFORMS_LIB $LIBS"
 lyx_use_xforms_image_loader=no
 AC_LANG_SAVE
 AC_LANG_C
+
+AC_CHECK_LIB(jpeg, jpeg_read_header, 
+  [XFORMS_IMAGE_LIB=-ljpeg
+   LIBS="$LIBS -ljpeg"])
 AC_SEARCH_LIBS(flimage_dup, flimage, 
   [lyx_use_xforms_image_loader=yes
    if test "$ac_cv_search_flimage_dup" != "none required" ; then
-     XFORMS_IMAGE_LIB="-flimage"
+     XFORMS_IMAGE_LIB="-lflimage $XFORMS_IMAGE_LIB"
+     LIBS="$XFORMS_IMAGE_LIB $XFORMS_LIB $LIBS"
   fi])
 AC_SUBST(XFORMS_IMAGE_LIB)
 
@@ -80,14 +87,7 @@ if test $lyx_use_xforms_image_loader = yes ; then
   lyx_flags="$lyx_flags xforms-image-loader"
   AC_DEFINE(USE_XFORMS_IMAGE_LOADER, 1, 
             [Define if you want to use xforms built-in image loader])
-  AC_CHECK_FUNCS(flimage_enable_ps)
-  AC_SEARCH_LIBS(flimage_enable_jpeg, jpeg, 
-    [if test "$ac_cv_search_flimage_enable_jpeg" != "none required" ; then
-       save_LIBS="-ljpeg $save_LIBS"
-       XFORMS_IMAGE_LIB="-ljpeg $XFORMS_IMAGE_LIB"
-     fi
-     AC_DEFINE(HAVE_FLIMAGE_ENABLE_JPEG, 1, 
-               [Define if you have the flimage_enable_jpeg function and the jpeg library available.])])
+  AC_CHECK_FUNCS(flimage_enable_ps flimage_enable_jpeg)
   AC_CHECK_HEADER(flimage.h,[
     ac_cv_header_flimage_h=yes
     lyx_cv_flimage_h_location="<flimage.h>"],
@@ -95,7 +95,7 @@ if test $lyx_use_xforms_image_loader = yes ; then
       ac_cv_header_flimage_h=yes
       lyx_cv_flimage_h_location="<X11/flimage.h>"],
       ac_cv_header_flimage_h=no)])
-  if test ac_cv_header_flimage_h = yes ; then
+  if test $ac_cv_header_flimage_h = yes ; then
     AC_DEFINE(HAVE_FLIMAGE_H, 1, [Define if you have the <flimage.h> header file.])
     AC_DEFINE_UNQUOTED(FLIMAGE_H_LOCATION, $lyx_cv_flimage_h_location, 
       [define this to the location of flimage.h to be used with #include, e.g. <flimage.h>

@@ -47,6 +47,11 @@ What's new
 
 - fix translation of "reset" and "no change" in language combobox
 
+- fix drawing of math delimiters in the math panel
+
+- when a document is registered though version control, make sure it
+  has been saved
+
 - only use the amsmath package when it is needed
 
 - make sure to use the graphicx package with the RasterBitmap and XFig
