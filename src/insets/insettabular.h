@@ -202,9 +202,9 @@ private:
     ///
     UpdatableInset::RESULT moveLeft(BufferView *, bool lock = true);
     ///
-    UpdatableInset::RESULT moveUp(BufferView *);
+    UpdatableInset::RESULT moveUp(BufferView *, bool lock = true);
     ///
-    UpdatableInset::RESULT moveDown(BufferView *);
+    UpdatableInset::RESULT moveDown(BufferView *, bool lock = true);
     ///
     bool moveNextCell(BufferView *, bool lock = false);
     ///
@@ -218,15 +218,18 @@ private:
     ///
     void RemoveTabularRow();
     ///
-    bool hasSelection() const { return ((sel_pos_start != sel_pos_end) ||
-				       (sel_cell_start != sel_cell_end));}
+    bool hasSelection() const {
+	return sel_cell_start != sel_cell_end;
+    }
     ///
     void clearSelection() const {
-	sel_pos_start = sel_pos_end = sel_cell_start = sel_cell_end = 0;
+	sel_cell_start = sel_cell_end = 0;
     }
     ///
     bool ActivateCellInset(BufferView *, int x = 0, int y = 0, int button = 0,
 			   bool behind = false);
+    ///
+    bool ActivateCellInsetAbs(BufferView *, int x = 0, int y = 0, int button = 0);
     ///
     bool InsetHit(BufferView * bv, int x, int y) const;
     ///
@@ -247,21 +250,15 @@ private:
     ///
     InsetText * the_locking_inset;
     ///
+    InsetText * old_locking_inset;
+    ///
     Buffer const * buffer;
     ///
     mutable LyXCursor cursor;
     ///
-    mutable LyXCursor old_cursor;
-    ///
-    mutable LyXParagraph::size_type inset_pos;
-    ///
     mutable unsigned int inset_x;
     ///
     mutable unsigned int inset_y;
-    ///
-    mutable LyXParagraph::size_type sel_pos_start;
-    ///
-    mutable LyXParagraph::size_type sel_pos_end;
     ///
     mutable int sel_cell_start;
     ///
