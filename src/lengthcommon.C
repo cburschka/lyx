@@ -29,7 +29,7 @@ char const * const unit_name[] = {
 	"text%",  "col%", "page%", "line%",
 	"theight%", "pheight%", "" };
 
-int const num_units = int(sizeof(unit_name) / sizeof(unit_name[0]));
+int const num_units = int(sizeof(unit_name) / sizeof(unit_name[0]) - 1);
 
 // the latex units
 char const * const unit_name_ltx[] = {
@@ -61,7 +61,7 @@ char const * const unit_name_gui[] = {
 LyXLength::UNIT unitFromString(string const & data)
 {
 	int i = 0;
-	while (i < num_units - 1 && data != unit_name[i])
+	while (i < num_units && data != unit_name[i])
 		++i;
 	return static_cast<LyXLength::UNIT>(i);
 }
