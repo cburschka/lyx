@@ -1,3 +1,38 @@
+2001-03-06  Lars Gullik Bjønnes  <larsbj@trylle.birdstep.com>
+
+	* lyxparagraph.h: move serveral local vars to
+	ParameterStruct/ParagraphParameters., use ShareContainer in
+	FontTable., make vars in FontTable private and add getter and
+	setter.
+
+	* paragraph.C: changes because of the above.
+
+	* lyxfont.h: remove copy constructor and copy assignment. (the
+	default ones is ok), move number inside FontBits. move inlines to lyxfont.C
+
+	* lyxfont.C: add number to initializaton of statics, move several
+	inlines here. constify several local vars. some whitespace
+	cleanup. Dont hide outerscope variables.
+
+	* Spacing.h: add two new constructors to match the set methods.
+
+	* ShareContainer.h: new file, will perhaps be moved to support
+
+	* ParameterStruct.h: new file
+
+	* ParagraphParameters.h: new file
+
+	* ParagraphParameters.C: new file
+
+	* Makefile.am (lyx_SOURCES): add ParagraphParameters.C,
+	ParagraphParameters.h, ParameterStruct.h and ShareContainer.h
+
+	* BufferView_pimpl.C: ParagraphParameter changes.
+	* buffer.C: Likewise.
+	* bufferview_funcs.C: Likewise.
+	* text.C: Likewise.
+	* text2.C: Likewise.
+	
 2001-03-06  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* lyxfind.C (LyXReplace): do not redefine default argument in

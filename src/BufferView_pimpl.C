@@ -2215,18 +2215,18 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 				TEXT(bv_)->CursorRight(bv_);
 				cursor = TEXT(bv_)->cursor;
 				if (cursor.pos() == 0
-				    && !(cursor.par()->added_space_top 
+				    && !(cursor.par()->params.spaceTop()
 					 == VSpace (VSpace::NONE))) {
 					TEXT(bv_)->SetParagraph
 						(bv_,
-						 cursor.par()->line_top,
-						 cursor.par()->line_bottom,
-						 cursor.par()->pagebreak_top, 
-						 cursor.par()->pagebreak_bottom,
+						 cursor.par()->params.lineTop(),
+						 cursor.par()->params.lineBottom(),
+						 cursor.par()->params.pagebreakTop(), 
+						 cursor.par()->params.pagebreakBottom(),
 						 VSpace(VSpace::NONE), 
-						 cursor.par()->added_space_bottom,
-						 cursor.par()->align, 
-						 cursor.par()->labelwidthstring, 0);
+						 cursor.par()->params.spaceBottom(),
+						 cursor.par()->params.align(), 
+						 cursor.par()->params.labelWidthString(), 0);
 					TEXT(bv_)->CursorLeft(bv_);
 					update(TEXT(bv_), 
 					       BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
@@ -2323,17 +2323,17 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		
 		if (!TEXT(bv_)->selection) {
 			if (cursor.pos() == 0 
-			    && !(cursor.par()->added_space_top 
+			    && !(cursor.par()->params.spaceTop() 
 				 == VSpace (VSpace::NONE))) {
 				TEXT(bv_)->SetParagraph 
 					(bv_,
-					 cursor.par()->line_top,      
-					 cursor.par()->line_bottom,
-					 cursor.par()->pagebreak_top, 
-					 cursor.par()->pagebreak_bottom,
-					 VSpace(VSpace::NONE), cursor.par()->added_space_bottom,
-					 cursor.par()->align, 
-					 cursor.par()->labelwidthstring, 0);
+					 cursor.par()->params.lineTop(),      
+					 cursor.par()->params.lineBottom(),
+					 cursor.par()->params.pagebreakTop(), 
+					 cursor.par()->params.pagebreakBottom(),
+					 VSpace(VSpace::NONE), cursor.par()->params.spaceBottom(),
+					 cursor.par()->params.align(), 
+					 cursor.par()->params.labelWidthString(), 0);
 				update(TEXT(bv_),
 				       BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 			} else {
@@ -2382,16 +2382,16 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		
 		beforeChange(TEXT(bv_));
 		if (cursor.pos() == 0) {
-			if (cursor.par()->added_space_top == VSpace(VSpace::NONE)) {
+			if (cursor.par()->params.spaceTop() == VSpace(VSpace::NONE)) {
 				TEXT(bv_)->SetParagraph
 					(bv_,
-					 cursor.par()->line_top,      
-					 cursor.par()->line_bottom,
-					 cursor.par()->pagebreak_top, 
-					 cursor.par()->pagebreak_bottom,
-					 VSpace(VSpace::DEFSKIP), cursor.par()->added_space_bottom,
-					 cursor.par()->align, 
-					 cursor.par()->labelwidthstring, 1);
+					 cursor.par()->params.lineTop(),      
+					 cursor.par()->params.lineBottom(),
+					 cursor.par()->params.pagebreakTop(), 
+					 cursor.par()->params.pagebreakBottom(),
+					 VSpace(VSpace::DEFSKIP), cursor.par()->params.spaceBottom(),
+					 cursor.par()->params.align(), 
+					 cursor.par()->params.labelWidthString(), 1);
 				//update(BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 			} 
 		}
@@ -2411,10 +2411,10 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 	case LFUN_PARAGRAPH_SPACING:
 	{
 		LyXParagraph * par = TEXT(bv_)->cursor.par();
-		Spacing::Space cur_spacing = par->spacing.getSpace();
+		Spacing::Space cur_spacing = par->params.spacing().getSpace();
 		float cur_value = 1.0;
 		if (cur_spacing == Spacing::Other) {
-			cur_value = par->spacing.getValue();
+			cur_value = par->params.spacing().getValue();
 		}
 		
 		istringstream istr(argument.c_str());
@@ -2446,7 +2446,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 			       << argument << endl;
 		}
 		if (cur_spacing != new_spacing || cur_value != new_value) {
-			par->spacing.set(new_spacing, new_value);
+			par->params.spacing(Spacing(new_spacing, new_value));
 			TEXT(bv_)->RedoParagraph(bv_);
 			update(TEXT(bv_),
 			       BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);

@@ -155,9 +155,6 @@ public:
 	///
 	LyXFont();
 
-	// LyXFont x(LyXFont ...) and LyXFont x = LyXFont ...
-	LyXFont(LyXFont const & x);
- 
 	/// Shortcut initialization
 	explicit
 	LyXFont(LyXFont::FONT_INIT1);
@@ -174,9 +171,6 @@ public:
 	/// Shortcut initialization
 	LyXFont(LyXFont::FONT_INIT3, Language const * l);
 
-	/// LyXFont x, y; x = y;
-	LyXFont & operator=(LyXFont const & x);
- 
 	/// Decreases font size by one
 	LyXFont & decSize();
  
@@ -350,13 +344,15 @@ private:
 		FONT_MISC_STATE noun;
 		///
 		FONT_MISC_STATE latex;
+		///
+		FONT_MISC_STATE number;
 	};
+
 	///
 	FontBits bits;
+	
 	///
 	Language const * lang;
-	///
-	FONT_MISC_STATE number_;
 	
 	/// Sane font
 	static FontBits sane;
@@ -377,276 +373,16 @@ std::ostream & operator<<(std::ostream &, LyXFont::FONT_MISC_STATE);
 
 ///
 inline
-bool operator==(LyXFont const & font1, LyXFont const & font2) {
+bool operator==(LyXFont const & font1, LyXFont const & font2)
+{
 	return font1.bits == font2.bits &&
-		font1.lang == font2.lang &&
-		font1.number_ == font2.number_;
+		font1.lang == font2.lang;
 }
 
 ///
 inline
-bool operator!=(LyXFont const & font1, LyXFont const & font2) {
+bool operator!=(LyXFont const & font1, LyXFont const & font2)
+{
 	return !(font1 == font2);
 }
-
-
-inline
-LyXFont::LyXFont()
-{
-	bits = sane;
-	lang = default_language;
-	number_ = OFF;
-}
-
-
-inline
-LyXFont::LyXFont(LyXFont const & x)
-{
-	bits = x.bits;
-	lang = x.lang;
-	number_ = x.number_;
-}
-
-
-inline
-LyXFont::LyXFont(LyXFont::FONT_INIT1)
-{
-	bits = inherit;
-	lang = default_language;
-	number_ = OFF;
-}
-
-
-inline
-LyXFont::LyXFont(LyXFont::FONT_INIT2)
-{
-	bits = ignore;
-	lang = ignore_language;
-	number_ = IGNORE;
-}
-
-
-inline
-LyXFont::LyXFont(LyXFont::FONT_INIT3)
-{
-	bits = sane;
-	lang = default_language;
-	number_ = OFF;
-}
-
-
-inline
-LyXFont::LyXFont(LyXFont::FONT_INIT1, Language const * l)
-{
-	bits = inherit;
-	lang = l;
-	number_ = OFF;
-}
-
-
-inline
-LyXFont::LyXFont(LyXFont::FONT_INIT2, Language const * l)
-{
-	bits = ignore;
-	lang = l;
-	number_ = IGNORE;
-}
-
-
-inline
-LyXFont::LyXFont(LyXFont::FONT_INIT3, Language const * l)
-{
-	bits = sane;
-	lang = l;
-	number_ = OFF;
-}
-
-
-inline
-LyXFont & LyXFont::operator=(LyXFont const & x) 
-{
-	bits = x.bits;
-	lang = x.lang;
-	number_ = x.number_;
-	return *this;
-}
-
-
-inline
-LyXFont::FONT_FAMILY LyXFont::family() const 
-{
-	return bits.family;
-}
-
-
-inline
-LyXFont::FONT_SERIES LyXFont::series() const
-{
-	return bits.series;
-}
-
-
-inline
-LyXFont::FONT_SHAPE LyXFont::shape() const
-{
-	return bits.shape;
-}
-
-
-inline
-LyXFont::FONT_SIZE LyXFont::size() const
-{
-	return bits.size;
-}
-
-
-inline
-LyXFont::FONT_MISC_STATE LyXFont::emph() const
-{
-	return bits.emph;
-}
-
-
-inline
-LyXFont::FONT_MISC_STATE LyXFont::underbar() const
-{
-	return bits.underbar;
-}
-
-
-inline
-LyXFont::FONT_MISC_STATE LyXFont::noun() const
-{
-	return bits.noun;
-}
-
-
-inline
-LyXFont::FONT_MISC_STATE LyXFont::latex() const 
-{
-	return bits.latex;
-}
-
-
-inline
-LColor::color LyXFont::color() const 
-{
-	return bits.color;
-}
-
-
-inline
-Language const * LyXFont::language() const 
-{
-	return lang;
-}
-
-
-inline
-LyXFont::FONT_MISC_STATE LyXFont::number() const 
-{
-	return number_;
-}
-
-
-inline
-bool LyXFont::isRightToLeft() const 
-{
-	return lang->RightToLeft();
-}
-
-
-inline
-bool LyXFont::isVisibleRightToLeft() const 
-{
-	return (lang->RightToLeft() && latex() != ON && number() != ON);
-}
-
-
-inline
-LyXFont & LyXFont::setFamily(LyXFont::FONT_FAMILY f)
-{
-	bits.family = f;
-	return *this;
-}
-
-
-inline
-LyXFont & LyXFont::setSeries(LyXFont::FONT_SERIES s)
-{
-	bits.series = s;
-	return *this;
-}
-
-
-inline
-LyXFont & LyXFont::setShape(LyXFont::FONT_SHAPE s)
-{
-	bits.shape = s;
-	return *this;
-}
-
-
-inline
-LyXFont & LyXFont::setSize(LyXFont::FONT_SIZE s)
-{
-	bits.size = s;
-	return *this;
-}
-
-
-inline
-LyXFont & LyXFont::setEmph(LyXFont::FONT_MISC_STATE e)
-{
-	bits.emph = e;
-	return *this;
-}
-
-
-inline
-LyXFont & LyXFont::setUnderbar(LyXFont::FONT_MISC_STATE u)
-{
-	bits.underbar = u;
-	return *this;
-}
-
-
-inline
-LyXFont & LyXFont::setNoun(LyXFont::FONT_MISC_STATE n)
-{
-	bits.noun = n;
-	return *this;
-}
-
-inline
-LyXFont & LyXFont::setLatex(LyXFont::FONT_MISC_STATE l)
-{
-	bits.latex = l;
-	return *this;
-}
-
-
-inline
-LyXFont & LyXFont::setColor(LColor::color c)
-{
-	bits.color = c;
-	return *this;
-}
-
-
-inline
-LyXFont & LyXFont::setLanguage(Language const * l)
-{
-	lang = l;
-	return *this;
-}
-
-
-inline
-LyXFont & LyXFont::setNumber(LyXFont::FONT_MISC_STATE n)
-{
-	number_ = n;
-	return *this;
-}
-
 #endif

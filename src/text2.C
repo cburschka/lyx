@@ -590,10 +590,10 @@ LyXParagraph * LyXText::SetLayout(BufferView * bview,
 #else
 			LyXParagraph * fppar = cur.par();
 #endif
-			fppar->added_space_top = lyxlayout.fill_top ?
-				VSpace(VSpace::VFILL) : VSpace(VSpace::NONE);
-			fppar->added_space_bottom = lyxlayout.fill_bottom ? 
-				VSpace(VSpace::VFILL) : VSpace(VSpace::NONE); 
+			fppar->params.spaceTop(lyxlayout.fill_top ?
+				VSpace(VSpace::VFILL) : VSpace(VSpace::NONE));
+			fppar->params.spaceBottom(lyxlayout.fill_bottom ? 
+				VSpace(VSpace::VFILL) : VSpace(VSpace::NONE));
 			if (lyxlayout.margintype == MARGIN_MANUAL)
 				cur.par()->SetLabelWidthString(lyxlayout.labelstring());
 			if (lyxlayout.labeltype != LABEL_BIBLIO
@@ -616,10 +616,10 @@ LyXParagraph * LyXText::SetLayout(BufferView * bview,
 #else
 		LyXParagraph * fppar = cur.par();
 #endif
-		fppar->added_space_top = lyxlayout.fill_top ?
-			VSpace(VSpace::VFILL) : VSpace(VSpace::NONE);
-		fppar->added_space_bottom = lyxlayout.fill_bottom ? 
-			VSpace(VSpace::VFILL) : VSpace(VSpace::NONE); 
+		fppar->params.spaceTop(lyxlayout.fill_top ?
+			VSpace(VSpace::VFILL) : VSpace(VSpace::NONE));
+		fppar->params.spaceBottom(lyxlayout.fill_bottom ? 
+			VSpace(VSpace::VFILL) : VSpace(VSpace::NONE));
 		if (lyxlayout.margintype == MARGIN_MANUAL)
 			cur.par()->SetLabelWidthString(lyxlayout.labelstring());
 		if (lyxlayout.labeltype != LABEL_BIBLIO
@@ -735,9 +735,9 @@ void  LyXText::IncDepth(BufferView * bview)
 				    && textclasslist.Style(bview->buffer()->params.textclass,
 						      prev->GetLayout()).isEnvironment()))) {
 #ifndef NEW_INSETS
-				cursor.par()->FirstPhysicalPar()->depth++;
+				cursor.par()->FirstPhysicalPar()->params.depth(cursor.par()->FirstPhysicalPar()->params.depth() + 1);
 #else
-				cursor.par()->depth++;
+				cursor.par()->params.depth(cursor.par()->params.depth() + 1);
 #endif
 				anything_changed = true;
 				}
@@ -752,17 +752,17 @@ void  LyXText::IncDepth(BufferView * bview)
 		cursor = sel_start_cursor;
 		while (cursor.par() != sel_end_cursor.par()) {
 #ifndef NEW_INSETS
-			cursor.par()->FirstPhysicalPar()->depth = 0;
+			cursor.par()->FirstPhysicalPar()->params.depth(0);
 #else
-			cursor.par()->depth = 0;
+			cursor.par()->params.depth(0);
 #endif
 			cursor.par(cursor.par()->Next());
 		}
 #ifndef NEW_INSETS
 		if (cursor.par()->footnoteflag == sel_start_cursor.par()->footnoteflag)
-			cursor.par()->FirstPhysicalPar()->depth = 0;
+			cursor.par()->FirstPhysicalPar()->params.depth(0);
 #else
-			cursor.par()->depth = 0;
+			cursor.par()->params.depth(0);
 #endif
 	}
    
@@ -831,12 +831,12 @@ void  LyXText::DecDepth(BufferView * bview)
 #ifndef NEW_INSETS
 		if (cursor.par()->footnoteflag ==
 		    sel_start_cursor.par()->footnoteflag) {
-			if (cursor.par()->FirstPhysicalPar()->depth)
-				cursor.par()->FirstPhysicalPar()->depth--;
+			if (cursor.par()->FirstPhysicalPar()->params.depth())
+				cursor.par()->FirstPhysicalPar()->params.depth(cursor.par()->FirstPhysicalPar()->params.depth() - 1);
 		}
 #else
-			if (cursor.par()->depth)
-				cursor.par()->depth--;
+			if (cursor.par()->params.depth())
+				cursor.par()->params.depth(cursor.par()->params.depth() - 1);
 #endif
 		if (cursor.par() == sel_end_cursor.par())
 			break;
@@ -1208,7 +1208,7 @@ string const LyXText::selectionAsString(Buffer const * buffer) const
 }
 
 
-void LyXText::ClearSelection(BufferView * bview) const
+void LyXText::ClearSelection(BufferView * /*bview*/) const
 {
 	selection = false;
 	mark_set = false;
@@ -1484,12 +1484,12 @@ void LyXText::SetParagraph(BufferView * bview,
 		if (cursor.par()->footnoteflag ==
 		    sel_start_cursor.par()->footnoteflag) {
 #endif
-			cursor.par()->line_top = line_top;
-			cursor.par()->line_bottom = line_bottom;
-			cursor.par()->pagebreak_top = pagebreak_top;
-			cursor.par()->pagebreak_bottom = pagebreak_bottom;
-			cursor.par()->added_space_top = space_top;
-			cursor.par()->added_space_bottom = space_bottom;
+			cursor.par()->params.lineTop(line_top);
+			cursor.par()->params.lineBottom(line_bottom);
+			cursor.par()->params.pagebreakTop(pagebreak_top);
+			cursor.par()->params.pagebreakBottom(pagebreak_bottom);
+			cursor.par()->params.spaceTop(space_top);
+			cursor.par()->params.spaceBottom(space_bottom);
 			// does the layout allow the new alignment?
 			if (align == LYX_ALIGN_LAYOUT)
 				align = textclasslist
@@ -1501,12 +1501,12 @@ void LyXText::SetParagraph(BufferView * bview,
 				if (align == textclasslist
 				    .Style(bview->buffer()->params.textclass,
 					   cursor.par()->GetLayout()).align)
-					cursor.par()->align = LYX_ALIGN_LAYOUT;
+					cursor.par()->params.align(LYX_ALIGN_LAYOUT);
 				else
-					cursor.par()->align = align;
+					cursor.par()->params.align(align);
 			}
 			cursor.par()->SetLabelWidthString(labelwidthstring);
-			cursor.par()->noindent = noindent;
+			cursor.par()->params.noindent(noindent);
 #ifndef NEW_INSETS
 		}
 		
@@ -1589,16 +1589,16 @@ void LyXText::SetParagraphExtraOpt(BufferView * bview, int type,
                     sel_start_cursor.par()->footnoteflag) {
 #endif
                         if (type == LyXParagraph::PEXTRA_NONE) {
-                                if (cursor.par()->pextra_type != LyXParagraph::PEXTRA_NONE) {
+                                if (cursor.par()->params.pextraType() != LyXParagraph::PEXTRA_NONE) {
                                         cursor.par()->UnsetPExtraType(bview->buffer()->params);
-                                        cursor.par()->pextra_type = LyXParagraph::PEXTRA_NONE;
+                                        cursor.par()->params.pextraType(LyXParagraph::PEXTRA_NONE);
                                 }
                         } else {
                                 cursor.par()->SetPExtraType(bview->buffer()->params,
 							  type, width, widthp);
-                                cursor.par()->pextra_hfill = hfill;
-                                cursor.par()->pextra_start_minipage = start_minipage;
-                                cursor.par()->pextra_alignment = alignment;
+                                cursor.par()->params.pextraHfill(hfill);
+                                cursor.par()->params.pextraStartMinipage(start_minipage);
+                                cursor.par()->params.pextraAlignment(alignment);
                         }
 #ifndef NEW_INSETS
 		}
@@ -1697,12 +1697,12 @@ void LyXText::SetCounter(Buffer const * buf, LyXParagraph * par) const
 			par->setCounter(i, par->Previous()->GetFirstCounter(i));
 		}
 #ifndef NEW_INSETS
-		par->appendix = par->Previous()->FirstPhysicalPar()->appendix;
+		par->params.appendix(par->Previous()->FirstPhysicalPar()->params.appendix());
 #else
-		par->appendix = par->Previous()->appendix;
+		par->params.appendix(par->Previous()->params.appendix());
 #endif
-		if (!par->appendix && par->start_of_appendix){
-		  par->appendix = true;
+		if (!par->params.appendix() && par->params.startOfAppendix()) {
+		  par->params.appendix(true);
 		  for (int i = 0; i < 10; ++i) {
 		    par->setCounter(i, 0);
 		  }  
@@ -1718,7 +1718,7 @@ void LyXText::SetCounter(Buffer const * buf, LyXParagraph * par) const
 		for (int i = 0; i < 10; ++i) {
 			par->setCounter(i, 0);
 		}  
-		par->appendix = par->start_of_appendix;
+		par->params.appendix(par->params.startOfAppendix());
 		par->enumdepth = 0;
 		par->itemdepth = 0;
 	}
@@ -1787,12 +1787,12 @@ void LyXText::SetCounter(Buffer const * buf, LyXParagraph * par) const
 			par->setCounter(i, 0);
 	}
    
-	if (!par->labelstring.empty()) {
-		par->labelstring.erase();
+	if (!par->params.labelString().empty()) {
+		par->params.labelString(string());
 	}
    
 	if (layout.margintype == MARGIN_MANUAL) {
-		if (par->labelwidthstring.empty()) {
+		if (par->params.labelWidthString().empty()) {
 			par->SetLabelWidthString(layout.labelstring());
 		}
 	} else {
@@ -1807,21 +1807,21 @@ void LyXText::SetCounter(Buffer const * buf, LyXParagraph * par) const
 			par->incCounter(i);	// increment the counter  
 	 
 			// Is there a label? Useful for Chapter layout
-			if (!par->appendix){
+			if (!par->params.appendix()) {
 				if (!layout.labelstring().empty())
-					par->labelstring = layout.labelstring();
+					par->params.labelString(layout.labelstring());
 				else
-					par->labelstring.erase();
+					par->params.labelString(string());
                         } else {
 				if (!layout.labelstring_appendix().empty())
-					par->labelstring = layout.labelstring_appendix();
+					par->params.labelString(layout.labelstring_appendix());
 				else
-					par->labelstring.erase();
+					par->params.labelString(string());
 			}
 
 			std::ostringstream s;
 
-			if (!par->appendix) {
+			if (!par->params.appendix()) {
 				switch (2 * LABEL_COUNTER_CHAPTER -
 					textclass.maxcounter() + i) {
 				case LABEL_COUNTER_CHAPTER:
@@ -1944,7 +1944,7 @@ void LyXText::SetCounter(Buffer const * buf, LyXParagraph * par) const
 				}
 			}
 
-			par->labelstring += s.str().c_str();
+			par->params.labelString(par->params.labelString() +s.str().c_str());
 			// We really want to remove the c_str as soon as
 			// possible...
 			
@@ -1996,7 +1996,7 @@ void LyXText::SetCounter(Buffer const * buf, LyXParagraph * par) const
 				break;
 			}
 
-			par->labelstring = s.str().c_str();
+			par->params.labelString(s.str().c_str());
 			// we really want to get rid of that c_str()
 
 			for (i += par->enumdepth + 1; i < 10; ++i)
@@ -2012,7 +2012,7 @@ void LyXText::SetCounter(Buffer const * buf, LyXParagraph * par) const
 			par->bibkey = new InsetBibKey(p);
 		}
 		par->bibkey->setCounter(number);
-		par->labelstring = layout.labelstring();
+		par->params.labelString(layout.labelstring());
 		
 		// In biblio should't be following counters but...
 	} else {
@@ -2052,7 +2052,7 @@ void LyXText::SetCounter(Buffer const * buf, LyXParagraph * par) const
 					? " :תועמשמ רסח" : "Senseless: ";
 			}
 		}
-		par->labelstring = s;
+		par->params.labelString(s);
 		
 		/* reset the enumeration counter. They are always resetted
 		 * when there is any other layout between */ 
@@ -3503,13 +3503,13 @@ void LyXText::toggleAppendix(BufferView * bview)
 #else
 	LyXParagraph * par = cursor.par();
 #endif
-	bool start = !par->start_of_appendix;
+	bool start = !par->params.startOfAppendix();
 
 	// ensure that we have only one start_of_appendix in this document
 	LyXParagraph * tmp = FirstParagraph();
 	for (; tmp; tmp = tmp->next)
-		tmp->start_of_appendix = 0;
-	par->start_of_appendix = start;
+		tmp->params.startOfAppendix(false);
+	par->params.startOfAppendix(start);
 
 	// we can set the refreshing parameters now
 	status = LyXText::NEED_MORE_REFRESH;

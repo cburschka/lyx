@@ -18,12 +18,11 @@
 
 #include <vector>
 #include <list>
+#include <boost/array.hpp>
 
 #include "insets/lyxinset.h"
-#include "vspace.h"
-#include "layout.h"
-#include <boost/array.hpp>
 #include "language.h"
+#include "ParagraphParameters.h"
 
 class BufferParams;
 class LyXBuffer;
@@ -225,14 +224,8 @@ public:
 	void setContentsFromPar(LyXParagraph * par);
 	///
 	void clearContents();
-	/// 
-	VSpace added_space_top;
-	
-	/// 
-	VSpace added_space_bottom;
 
-	///
-	Spacing spacing;
+	ParagraphParameters params;
 	
 	///
 	LyXTextClass::LayoutList::size_type layout;
@@ -249,26 +242,6 @@ public:
 	/// footnote, margin, fig, tab
 	footnote_kind footnotekind;
 #endif
-	///
-	bool line_top;
-	
-	///
-	bool line_bottom;
-	
-  	///
-	bool pagebreak_top;
-	
-	///
-	bool pagebreak_bottom;
-	
-	///
-	LyXAlignment align;
-	
-	///
-	char depth;
-	
-	///
-        bool noindent;
 	
 private:
 	///
@@ -280,11 +253,6 @@ public:
 	int getCounter(int i) const;
 	///
 	void incCounter(int i);
-	///
-	bool start_of_appendix;
-
-	///
-	bool appendix;
 
 	///
 	char enumdepth;
@@ -292,26 +260,6 @@ public:
 	///
 	char itemdepth;
 
-        /* This is for the paragraph extra stuff */
-        ///
-        int pextra_type;
-        ///
-        string pextra_width;
-        ///
-        string pextra_widthp;
-        ///
-        int pextra_alignment;
-        ///
-        bool pextra_hfill;
-        ///
-        bool pextra_start_minipage;
-        
-        ///
-	string labelstring;
-	
-	///
-	string labelwidthstring;
-	
 	///
 	LyXParagraph * next;
 	///
@@ -524,7 +472,7 @@ private:
 		///
 		Inset * inset;
 		///
-		InsetTable(size_type p, Inset * i) { pos = p; inset = i;}
+		InsetTable(size_type p, Inset * i) : pos(p), inset(i) {}
 	};
 	///
 	friend struct matchIT;
@@ -549,8 +497,23 @@ private:
 	  (font_1 covers the chars 0,...,pos_1) (Dekel)
 	*/
 	struct FontTable  {
+		///
+		FontTable(size_type p, LyXFont const & f)
+			: pos_(p)
+		{
+			font_ = container.get(f);
+		}
+		///
+		size_type pos() const { return pos_; }
+		///
+		void pos(size_type p) { pos_ = p; }
+		///
+		LyXFont const & font() const { return *font_; }
+		///
+		void font(LyXFont const & f) { font_ = container.get(f);}
+	private:
 		/// End position of paragraph this font attribute covers
-		size_type pos;
+		size_type pos_;
 		/** Font. Interpretation of the font values:
 		If a value is LyXFont::INHERIT_*, it means that the font 
 		attribute is inherited from either the layout of this
@@ -560,9 +523,9 @@ private:
 		The values LyXFont::IGNORE_* and LyXFont::TOGGLE are NOT 
 		allowed in these font tables.
 		*/
-		LyXFont font;
+		boost::shared_ptr<LyXFont> font_;
 		///
-		FontTable(size_type p, LyXFont const & f) {pos = p; font = f;}
+		static ShareContainer<LyXFont> container;
 	};
 	///
 	friend struct matchFT;
@@ -572,7 +535,7 @@ private:
 		inline
 		int operator()(LyXParagraph::FontTable const & a,
 			       LyXParagraph::FontTable const & b) const {
-			return a.pos < b.pos;
+			return a.pos() < b.pos();
 		}
 	};
 

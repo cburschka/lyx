@@ -10,12 +10,12 @@
 
 #include <config.h>
 #include <clocale>
+#include <cctype>
 
 #ifdef __GNUG__
-#pragma implementation "lyxfont.h"
+#pragma implementation
 #endif
 
-#include <cctype>
 
 #include "gettext.h"
 #include "lyxfont.h"
@@ -104,6 +104,8 @@ char const * LaTeXSizeNames[14] =
   "Large", "LARGE", "huge", "Huge", "error8", "error9", "error10", "error11" };
 
 
+
+// Initialize static member
 LyXFont::FontBits LyXFont::sane = {
 	ROMAN_FAMILY,
 	MEDIUM_SERIES,
@@ -113,8 +115,10 @@ LyXFont::FontBits LyXFont::sane = {
 	OFF,
 	OFF,
 	OFF,
+	OFF,
 	OFF };
 
+// Initialize static member
 LyXFont::FontBits LyXFont::inherit = {
 	INHERIT_FAMILY,
 	INHERIT_SERIES,
@@ -124,8 +128,10 @@ LyXFont::FontBits LyXFont::inherit = {
 	INHERIT,
 	INHERIT,
 	INHERIT,
-	INHERIT };
+	INHERIT,
+	OFF };
 
+// Initialize static member
 LyXFont::FontBits LyXFont::ignore = {
 	IGNORE_FAMILY,
 	IGNORE_SERIES,
@@ -135,26 +141,232 @@ LyXFont::FontBits LyXFont::ignore = {
 	IGNORE,
 	IGNORE,
 	IGNORE,
+	IGNORE,
 	IGNORE };
 
 
 bool LyXFont::FontBits::operator==(LyXFont::FontBits const & fb1) const
 {
-			return fb1.family == family &&
-				fb1.series == series &&
-				fb1.shape == shape &&
-				fb1.size == size &&
-				fb1.color == color &&
-				fb1.emph == emph &&
-				fb1.underbar == underbar &&
-				fb1.noun == noun &&
-				fb1.latex == latex;
+	return fb1.family == family &&
+		fb1.series == series &&
+		fb1.shape == shape &&
+		fb1.size == size &&
+		fb1.color == color &&
+		fb1.emph == emph &&
+		fb1.underbar == underbar &&
+		fb1.noun == noun &&
+		fb1.latex == latex &&
+		fb1.number == number;
 }
 
 
 bool LyXFont::FontBits::operator!=(LyXFont::FontBits const & fb1) const
 {
 	return !(fb1 == *this);
+}
+
+
+LyXFont::LyXFont()
+{
+	bits = sane;
+	lang = default_language;
+}
+
+
+LyXFont::LyXFont(LyXFont::FONT_INIT1)
+{
+	bits = inherit;
+	lang = default_language;
+}
+
+
+LyXFont::LyXFont(LyXFont::FONT_INIT2)
+{
+	bits = ignore;
+	lang = ignore_language;
+}
+
+
+LyXFont::LyXFont(LyXFont::FONT_INIT3)
+{
+	bits = sane;
+	lang = default_language;
+}
+
+
+LyXFont::LyXFont(LyXFont::FONT_INIT1, Language const * l)
+{
+	bits = inherit;
+	lang = l;
+}
+
+
+LyXFont::LyXFont(LyXFont::FONT_INIT2, Language const * l)
+{
+	bits = ignore;
+	lang = l;
+}
+
+
+LyXFont::LyXFont(LyXFont::FONT_INIT3, Language const * l)
+{
+	bits = sane;
+	lang = l;
+}
+
+
+LyXFont::FONT_FAMILY LyXFont::family() const 
+{
+	return bits.family;
+}
+
+
+LyXFont::FONT_SERIES LyXFont::series() const
+{
+	return bits.series;
+}
+
+
+LyXFont::FONT_SHAPE LyXFont::shape() const
+{
+	return bits.shape;
+}
+
+
+LyXFont::FONT_SIZE LyXFont::size() const
+{
+	return bits.size;
+}
+
+
+LyXFont::FONT_MISC_STATE LyXFont::emph() const
+{
+	return bits.emph;
+}
+
+
+LyXFont::FONT_MISC_STATE LyXFont::underbar() const
+{
+	return bits.underbar;
+}
+
+
+LyXFont::FONT_MISC_STATE LyXFont::noun() const
+{
+	return bits.noun;
+}
+
+
+LyXFont::FONT_MISC_STATE LyXFont::latex() const 
+{
+	return bits.latex;
+}
+
+
+LColor::color LyXFont::color() const 
+{
+	return bits.color;
+}
+
+
+Language const * LyXFont::language() const 
+{
+	return lang;
+}
+
+
+LyXFont::FONT_MISC_STATE LyXFont::number() const 
+{
+	return bits.number;
+}
+
+
+bool LyXFont::isRightToLeft() const 
+{
+	return lang->RightToLeft();
+}
+
+
+bool LyXFont::isVisibleRightToLeft() const 
+{
+	return (lang->RightToLeft() && latex() != ON && number() != ON);
+}
+
+
+LyXFont & LyXFont::setFamily(LyXFont::FONT_FAMILY f)
+{
+	bits.family = f;
+	return *this;
+}
+
+
+LyXFont & LyXFont::setSeries(LyXFont::FONT_SERIES s)
+{
+	bits.series = s;
+	return *this;
+}
+
+
+LyXFont & LyXFont::setShape(LyXFont::FONT_SHAPE s)
+{
+	bits.shape = s;
+	return *this;
+}
+
+
+LyXFont & LyXFont::setSize(LyXFont::FONT_SIZE s)
+{
+	bits.size = s;
+	return *this;
+}
+
+
+LyXFont & LyXFont::setEmph(LyXFont::FONT_MISC_STATE e)
+{
+	bits.emph = e;
+	return *this;
+}
+
+
+LyXFont & LyXFont::setUnderbar(LyXFont::FONT_MISC_STATE u)
+{
+	bits.underbar = u;
+	return *this;
+}
+
+
+LyXFont & LyXFont::setNoun(LyXFont::FONT_MISC_STATE n)
+{
+	bits.noun = n;
+	return *this;
+}
+
+
+LyXFont & LyXFont::setLatex(LyXFont::FONT_MISC_STATE l)
+{
+	bits.latex = l;
+	return *this;
+}
+
+
+LyXFont & LyXFont::setColor(LColor::color c)
+{
+	bits.color = c;
+	return *this;
+}
+
+
+LyXFont & LyXFont::setLanguage(Language const * l)
+{
+	lang = l;
+	return *this;
+}
+
+
+LyXFont & LyXFont::setNumber(LyXFont::FONT_MISC_STATE n)
+{
+	bits.number = n;
+	return *this;
 }
 
 
@@ -365,7 +577,6 @@ LyXFont & LyXFont::realize(LyXFont const & tmplt)
 	if (bits.color == LColor::inherit) {
 		bits.color = tmplt.bits.color;
 	}
-
 	return *this;
 }
 
@@ -422,7 +633,7 @@ string const LyXFont::stateText(BufferParams * params) const
 // Set family according to lyx format string
 LyXFont & LyXFont::setLyXFamily(string const & fam)
 {
-	string s = lowercase(fam);
+	string const s = lowercase(fam);
 
 	int i = 0;
 	while (s != LyXFamilyNames[i] && LyXFamilyNames[i] != "error") ++i;
@@ -438,7 +649,7 @@ LyXFont & LyXFont::setLyXFamily(string const & fam)
 // Set series according to lyx format string
 LyXFont & LyXFont::setLyXSeries(string const & ser)
 {
-	string s = lowercase(ser);
+	string const s = lowercase(ser);
 
 	int i = 0;
 	while (s != LyXSeriesNames[i] && LyXSeriesNames[i] != "error") ++i;
@@ -454,7 +665,7 @@ LyXFont & LyXFont::setLyXSeries(string const & ser)
 // Set shape according to lyx format string
 LyXFont & LyXFont::setLyXShape(string const & sha)
 {
-	string s = lowercase(sha);
+	string const s = lowercase(sha);
 
 	int i = 0;
 	while (s != LyXShapeNames[i] && LyXShapeNames[i] != "error") ++i;
@@ -470,7 +681,7 @@ LyXFont & LyXFont::setLyXShape(string const & sha)
 // Set size according to lyx format string
 LyXFont & LyXFont::setLyXSize(string const & siz)
 {
-	string s = lowercase(siz);
+	string const s = lowercase(siz);
 	int i = 0;
 	while (s != LyXSizeNames[i] && LyXSizeNames[i] != "error") ++i;
 	if (s == LyXSizeNames[i]) {
@@ -485,7 +696,7 @@ LyXFont & LyXFont::setLyXSize(string const & siz)
 // Set size according to lyx format string
 LyXFont::FONT_MISC_STATE LyXFont::setLyXMisc(string const & siz)
 {
-	string s = lowercase(siz);
+	string const s = lowercase(siz);
 	int i = 0;
 	while (s != LyXMiscNames[i] && LyXMiscNames[i] != "error") ++i;
 	if (s == LyXMiscNames[i])
@@ -519,7 +730,7 @@ LyXFont & LyXFont::lyxRead(LyXLex & lex)
 	bool finished = false;
 	while (!finished && lex.IsOK() && !error) {
 		lex.next();
-		string tok = lowercase(lex.GetString());
+		string const tok = lowercase(lex.GetString());
 
 		if (tok.empty()) {
 			continue;
@@ -527,54 +738,54 @@ LyXFont & LyXFont::lyxRead(LyXLex & lex)
 			finished = true;
 		} else if (tok == "family") {
 			lex.next();
-			string tok = lex.GetString();
-			setLyXFamily(tok);
+			string const ttok = lex.GetString();
+			setLyXFamily(ttok);
 		} else if (tok == "series") {
 			lex.next();
-			string tok = lex.GetString();
-			setLyXSeries(tok);
+			string const ttok = lex.GetString();
+			setLyXSeries(ttok);
 		} else if (tok == "shape") {
 			lex.next();
-			string tok = lex.GetString();
-			setLyXShape(tok);
+			string const ttok = lex.GetString();
+			setLyXShape(ttok);
 		} else if (tok == "size") {
 			lex.next();
-			string tok = lex.GetString();
-			setLyXSize(tok);
+			string const ttok = lex.GetString();
+			setLyXSize(ttok);
 		} else if (tok == "latex") {
 			lex.next();
-			string tok = lowercase(lex.GetString());
+			string const ttok = lowercase(lex.GetString());
 
-			if (tok == "no_latex") {
+			if (ttok == "no_latex") {
 				setLatex(OFF);
-			} else if (tok == "latex") {
+			} else if (ttok == "latex") {
 				setLatex(ON);
 			} else {
 				lex.printError("Illegal LaTeX type`$$Token'");
 			}
 		} else if (tok == "misc") {
 			lex.next();
-			string tok = lowercase(lex.GetString());
+			string const ttok = lowercase(lex.GetString());
 
-			if (tok == "no_bar") {
+			if (ttok == "no_bar") {
 				setUnderbar(OFF);
-			} else if (tok == "no_emph") {
+			} else if (ttok == "no_emph") {
 				setEmph(OFF);
-			} else if (tok == "no_noun") {
+			} else if (ttok == "no_noun") {
 				setNoun(OFF);
-			} else if (tok == "emph") {
+			} else if (ttok == "emph") {
 				setEmph(ON);
-			} else if (tok == "underbar") {
+			} else if (ttok == "underbar") {
 				setUnderbar(ON);
-			} else if (tok == "noun") {
+			} else if (ttok == "noun") {
 				setNoun(ON);
 			} else {
 				lex.printError("Illegal misc type `$$Token´");
 			}
 		} else if (tok == "color") {
 			lex.next();
-			string tok = lex.GetString();
-			setLyXColor(tok);
+			string const ttok = lex.GetString();
+			setLyXColor(ttok);
 		} else {
 			lex.printError("Unknown tag `$$Token'");
 			error = true;
@@ -677,7 +888,7 @@ int LyXFont::latexWriteStartChanges(ostream & os, LyXFont const & base,
 				count += 3;
 			}
 		} else {
-			string tmp =
+			string const tmp =
 				subst(lyxrc.language_command_local,
 				      "$$lang", language()->babel());
 			os << tmp;

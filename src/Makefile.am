@@ -65,9 +65,13 @@ lyx_SOURCES = \
 	Painter.h \
 	PainterBase.C \
 	PainterBase.h \
+	ParagraphParameters.C \
+	ParagraphParameters.h \
+	ParameterStruct.h \
 	PrinterParams.h \
 	Sectioning.h \
 	Sectioning.C \
+	ShareContainer.h \
 	Spacing.C \
 	Spacing.h \
 	TextCache.C \

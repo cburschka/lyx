@@ -1053,10 +1053,10 @@ InsetText::LocalDispatch(BufferView * bv,
 	    // inherit bufferparams/paragraphparams in a strange way. (Lgb)
     {
 	    LyXParagraph * par = TEXT(bv)->cursor.par();
-	    Spacing::Space cur_spacing = par->spacing.getSpace();
+	    Spacing::Space cur_spacing = par->params.spacing().getSpace();
 	    float cur_value = 1.0;
 	    if (cur_spacing == Spacing::Other) {
-		    cur_value = par->spacing.getValue();
+		    cur_value = par->params.spacing().getValue();
 	    }
 	    		
 	    std::istringstream istr(arg.c_str());
@@ -1087,7 +1087,7 @@ InsetText::LocalDispatch(BufferView * bv,
 			   << arg << endl;
 	    }
 	    if (cur_spacing != new_spacing || cur_value != new_value) {
-		    par->spacing.set(new_spacing, new_value);
+		    par->params.spacing(Spacing(new_spacing, new_value));
 		    //TEXT(bv)->RedoParagraph(owner->view());
 		    UpdateLocal(bv, CURSOR_PAR, true);
 		    //bv->update(BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);

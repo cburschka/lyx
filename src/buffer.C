@@ -394,7 +394,7 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, LyXParagraph *& par,
 		par->footnoteflag = footnoteflag;
 		par->footnotekind = footnotekind;
 #endif
-		par->depth = depth;
+		par->params.depth(depth);
 		font = LyXFont(LyXFont::ALL_INHERIT, params.language);
 		if (file_format < 216 && params.language->lang() == "hebrew")
 			font.setLanguage(default_language);
@@ -550,21 +550,21 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, LyXParagraph *& par,
 		lex.EatLine();
 		params.fonts = lex.GetString();
 	} else if (token == "\\noindent") {
-		par->noindent = true;
+		par->params.noindent(true);
 	} else if (token == "\\fill_top") {
-		par->added_space_top = VSpace(VSpace::VFILL);
+		par->params.spaceTop(VSpace(VSpace::VFILL));
 	} else if (token == "\\fill_bottom") {
-		par->added_space_bottom = VSpace(VSpace::VFILL);
+		par->params.spaceBottom(VSpace(VSpace::VFILL));
 	} else if (token == "\\line_top") {
-		par->line_top = true;
+		par->params.lineTop(true);
 	} else if (token == "\\line_bottom") {
-		par->line_bottom = true;
+		par->params.lineBottom(true);
 	} else if (token == "\\pagebreak_top") {
-		par->pagebreak_top = true;
+		par->params.pagebreakTop(true);
 	} else if (token == "\\pagebreak_bottom") {
-		par->pagebreak_bottom = true;
+		par->params.pagebreakBottom(true);
 	} else if (token == "\\start_of_appendix") {
-		par->start_of_appendix = true;
+		par->params.startOfAppendix(true);
 	} else if (token == "\\paragraph_separation") {
 		int tmpret = lex.FindToken(string_paragraph_separation);
 		if (tmpret == -1) ++tmpret;
@@ -755,7 +755,7 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, LyXParagraph *& par,
 		// Small hack so that files written with klyx will be
 		// parsed correctly.
 		if (return_par) {
-			par->spacing.set(tmp_space, tmp_val);
+			par->params.spacing(Spacing(tmp_space, tmp_val));
 		} else {
 			params.spacing.set(tmp_space, tmp_val);
 		}
@@ -763,15 +763,15 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, LyXParagraph *& par,
 		lex.next();
 		string const tmp = strip(lex.GetString());
 		if (tmp == "single") {
-			par->spacing.set(Spacing::Single);
+			par->params.spacing(Spacing(Spacing::Single));
 		} else if (tmp == "onehalf") {
-			par->spacing.set(Spacing::Onehalf);
+			par->params.spacing(Spacing(Spacing::Onehalf));
 		} else if (tmp == "double") {
-			par->spacing.set(Spacing::Double);
+			par->params.spacing(Spacing(Spacing::Double));
 		} else if (tmp == "other") {
 			lex.next();
-			par->spacing.set(Spacing::Other,
-					 lex.GetFloat());
+			par->params.spacing(Spacing(Spacing::Other,
+					 lex.GetFloat()));
 		} else {
 			lex.printError("Unknown spacing token: '$$Token'");
 		}
@@ -844,35 +844,35 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, LyXParagraph *& par,
 		if (tmpret != LYX_LAYOUT_DEFAULT) { // tmpret != 99 ???
 			int const tmpret2 = int(pow(2.0, tmpret));
 			//lyxerr << "Tmpret2 = " << tmpret2 << endl;
-			par->align = LyXAlignment(tmpret2);
+			par->params.align(LyXAlignment(tmpret2));
 		}
 	} else if (token == "\\added_space_top") {
 		lex.nextToken();
-		par->added_space_top = VSpace(lex.GetString());
+		par->params.spaceTop(VSpace(lex.GetString()));
 	} else if (token == "\\added_space_bottom") {
 		lex.nextToken();
-		par->added_space_bottom = VSpace(lex.GetString());
+		par->params.spaceBottom(VSpace(lex.GetString()));
 	} else if (token == "\\pextra_type") {
 		lex.nextToken();
-		par->pextra_type = lex.GetInteger();
+		par->params.pextraType(lex.GetInteger());
 	} else if (token == "\\pextra_width") {
 		lex.nextToken();
-		par->pextra_width = lex.GetString();
+		par->params.pextraWidth(lex.GetString());
 	} else if (token == "\\pextra_widthp") {
 		lex.nextToken();
-		par->pextra_widthp = lex.GetString();
+		par->params.pextraWidthp(lex.GetString());
 	} else if (token == "\\pextra_alignment") {
 		lex.nextToken();
-		par->pextra_alignment = lex.GetInteger();
+		par->params.pextraAlignment(lex.GetInteger());
 	} else if (token == "\\pextra_hfill") {
 		lex.nextToken();
-		par->pextra_hfill = lex.GetInteger();
+		par->params.pextraHfill(lex.GetInteger());
 	} else if (token == "\\pextra_start_minipage") {
 		lex.nextToken();
-		par->pextra_start_minipage = lex.GetInteger();
+		par->params.pextraStartMinipage(lex.GetInteger());
 	} else if (token == "\\labelwidthstring") {
 		lex.EatLine();
-		par->labelwidthstring = lex.GetString();
+		par->params.labelWidthString(lex.GetString());
 		// do not delete this token, it is still needed!
 	} else if (token == "\\end_inset") {
 		lyxerr << "Solitary \\end_inset. Missing \\begin_inset?.\n"
@@ -1343,14 +1343,13 @@ string const Buffer::asciiParagraph(LyXParagraph const * par,
 		}
 #endif
 		/* begins or ends a deeper area ?*/ 
-		if (depth != par->depth) {
-			if (par->depth > depth) {
-				while (par->depth > depth) {
+		if (depth != par->params.depth()) {
+			if (par->params.depth() > depth) {
+				while (par->params.depth() > depth) {
 					++depth;
 				}
-			}
-			else {
-				while (par->depth < depth) {
+			} else {
+				while (par->params.depth() < depth) {
 					--depth;
 				}
 			}
@@ -1439,7 +1438,7 @@ string const Buffer::asciiParagraph(LyXParagraph const * par,
 				}
 				break;
 			default:
-				buffer << par->labelstring << " ";
+				buffer << par->params.labelString() << " ";
 				break;
 			}
 			if (ltype_depth > depth) {
@@ -2088,7 +2087,7 @@ void Buffer::latexParagraphs(ostream & ofs, LyXParagraph * par,
 		// flag this with ftcount
 		ftcount = -1;
 		if (layout.isEnvironment()
-                    || par->pextra_type != LyXParagraph::PEXTRA_NONE) {
+                    || par->params.pextraType() != LyXParagraph::PEXTRA_NONE) {
 			par = par->TeXEnvironment(this, params, ofs, texrow
 #ifndef NEW_INSETS
 						  ,ftnote, ft_texrow, ftcount
@@ -2254,7 +2253,7 @@ void Buffer::makeLinuxDocFile(string const & fname, bool nice, bool body_only)
 		}
 
 		// environment tag closing
-		for (; depth > par->depth; --depth) {
+		for (; depth > par->params.depth(); --depth) {
 			sgmlCloseTag(ofs, depth, environment_stack[depth]);
 			environment_stack[depth].erase();
 		}
@@ -2262,7 +2261,7 @@ void Buffer::makeLinuxDocFile(string const & fname, bool nice, bool body_only)
 		// write opening SGML tags
 		switch (style.latextype) {
 		case LATEX_PARAGRAPH:
-			if (depth == par->depth 
+			if (depth == par->params.depth() 
 			   && !environment_stack[depth].empty()) {
 				sgmlCloseTag(ofs, depth, environment_stack[depth]);
 				environment_stack[depth].erase();
@@ -2292,7 +2291,7 @@ void Buffer::makeLinuxDocFile(string const & fname, bool nice, bool body_only)
 
 		case LATEX_ENVIRONMENT:
 		case LATEX_ITEM_ENVIRONMENT:
-			if (depth == par->depth 
+			if (depth == par->params.depth() 
 			   && environment_stack[depth] != style.latexname()
 			   && !environment_stack[depth].empty()) {
 
@@ -2300,8 +2299,8 @@ void Buffer::makeLinuxDocFile(string const & fname, bool nice, bool body_only)
 					     environment_stack[depth]);
 				environment_stack[depth].erase();
 			}
-			if (depth < par->depth) {
-			       depth = par->depth;
+			if (depth < par->params.depth()) {
+			       depth = par->params.depth();
 			       environment_stack[depth].erase();
 			}
 			if (environment_stack[depth] != style.latexname()) {
@@ -2879,7 +2878,7 @@ void Buffer::makeDocBookFile(string const & fname, bool nice, bool only_body)
 					    par->layout);
 
 		// environment tag closing
-		for (; depth > par->depth; --depth) {
+		for (; depth > par->params.depth(); --depth) {
 			if (environment_inner[depth] != "!-- --") {
 				item_name= "listitem";
 				sgmlCloseTag(ofs, command_depth + depth,
@@ -2894,7 +2893,7 @@ void Buffer::makeDocBookFile(string const & fname, bool nice, bool only_body)
 			environment_inner[depth].erase();
 		}
 
-		if (depth == par->depth
+		if (depth == par->params.depth()
 		   && environment_stack[depth] != style.latexname()
 		   && !environment_stack[depth].empty()) {
 			if (environment_inner[depth] != "!-- --") {
@@ -2978,8 +2977,8 @@ void Buffer::makeDocBookFile(string const & fname, bool nice, bool only_body)
 
 		case LATEX_ENVIRONMENT:
 		case LATEX_ITEM_ENVIRONMENT:
-			if (depth < par->depth) {
-				depth = par->depth;
+			if (depth < par->params.depth()) {
+				depth = par->params.depth();
 				environment_stack[depth].erase();
 			}
 

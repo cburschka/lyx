@@ -254,9 +254,9 @@ string const CurrentState(BufferView * bv)
 			state += string(_(", Depth: ")) + tostr(depth);
 		// The paragraph spacing, but only if different from
 		// buffer spacing.
-		if (!text->cursor.par()->spacing.isDefault()) {
+		if (!text->cursor.par()->params.spacing().isDefault()) {
 			Spacing::Space cur_space =
-				text->cursor.par()->spacing.getSpace();
+				text->cursor.par()->params.spacing().getSpace();
 			state += _(", Spacing: ");
 			switch (cur_space) {
 			case Spacing::Single:
@@ -270,7 +270,7 @@ string const CurrentState(BufferView * bv)
 				break;
 			case Spacing::Other:
 				state += _("Other (");
-				state += tostr(text->cursor.par()->spacing.getValue());
+				state += tostr(text->cursor.par()->params.spacing().getValue());
 				state += ")";
 				break;
 			case Spacing::Default:

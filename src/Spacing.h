@@ -39,6 +39,13 @@ public:
 	///
 	Spacing() : space(Single), value(1.0) {}
 	///
+	Spacing(Spacing::Space sp, float val = 1.0) {
+		set(sp, val);
+	}
+	Spacing(Spacing::Space sp, string const & val) {
+		set(sp, val);
+	}
+	///
 	bool isDefault() const {
 		return space == Default;
 	}
