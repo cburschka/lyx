@@ -12,6 +12,9 @@
 #include <config.h>
 
 // Too hard to make concept checks work with this file
+#ifdef _GLIBCXX_CONCEPT_CHECKS
+#undef _GLIBCXX_CONCEPT_CHECKS
+#endif
 #ifdef _GLIBCPP_CONCEPT_CHECKS
 #undef _GLIBCPP_CONCEPT_CHECKS
 #endif
@@ -192,7 +195,7 @@ void GMenubar::onSubMenuActivate(MenuItem const * item,
 				} else {
 					Glib::ustring xpmName =
 						Glib::locale_to_utf8(toolbarbackend.getIcon(i->func()));
-					if (xpmName.find("unknown.xpm") == -1) {
+					if (xpmName.find("unknown.xpm") == Glib::ustring::npos) {
 						// Load icon and shrink it for menu size
 						Glib::RefPtr<Gdk::Pixbuf> bigicon =
 							Gdk::Pixbuf::create_from_file(xpmName);

@@ -1,3 +1,11 @@
+2005-01-29  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* *.C: make ugly concept check hack work with gcc 3.4 and above
+	(fixes bug 1745)
+	* GMenubar.C (onSubMenuActivate): use Glib::ustring::npos instead of
+	-1
+	* GTexinfo.C (onItemActivate): squash compiler warning
+
 2005-01-27  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
 	* Several files: use convert<> instead of atoi,strToXXX and friends

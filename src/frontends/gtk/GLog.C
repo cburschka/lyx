@@ -8,6 +8,11 @@
  * Full author contact details are available in file CREDITS.
  */
 
+// Too hard to make concept checks work with this file
+#ifdef _GLIBCXX_CONCEPT_CHECKS
+#undef _GLIBCXX_CONCEPT_CHECKS
+#endif
+
 #include "GLog.h"
 #include "ControlLog.h"
 

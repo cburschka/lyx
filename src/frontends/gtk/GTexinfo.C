@@ -8,6 +8,11 @@
  * Full author contact details are available in file CREDITS.
  */
 
+// Too hard to make concept checks work with this file
+#ifdef _GLIBCXX_CONCEPT_CHECKS
+#undef _GLIBCXX_CONCEPT_CHECKS
+#endif
+
 #include "GTexinfo.h"
 
 #include "ghelpers.h"
@@ -90,7 +95,7 @@ void GTexinfo::doBuild() {
 
 void GTexinfo::onItemActivate(
 	Gtk::TreeModel::Path const & path,
-	Gtk::TreeViewColumn * col)
+	Gtk::TreeViewColumn * /* col */)
 {
 	int const choice =
 		(*itemsstore_->get_iter(path))[listColIndex_];
