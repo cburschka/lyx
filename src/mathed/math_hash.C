@@ -142,7 +142,6 @@ latexkeys_a wordlist_array[] =
 	{"|",  LM_TK_UNDEF, '|', LMB_NONE},
 	{"}",  LM_TK_SPECIAL, '}', LMB_NONE},
 	{"", LM_TK_SPECIAL, 0, LMB_NONE}
-
 };
 
 
@@ -152,15 +151,16 @@ bool initialized = false;
 
 } // namespace anon
 
+
 void ReadSymbols(string const & filename)
 {
-	for(latexkeys_a * p = wordlist_array; !string(p->name).empty(); ++p) {
+	for (latexkeys_a * p = wordlist_array; !string(p->name).empty(); ++p) {
 		latexkeys tmp;
-		tmp.name = p->name;
-		tmp.token = p->token;
-		tmp.id = p->id;
+		tmp.name   = p->name;
+		tmp.token  = p->token;
+		tmp.id     = p->id;
+		tmp.type   = p->type;
 		tmp.latex_font_id = 0;
-		tmp.type = p->type;
 		wordlist.push_back(tmp);
 	}
 
@@ -219,10 +219,10 @@ latexkeys const * in_word_set(string const & str)
 		string const file = LibFileSearch(string(), "symbols");
 		if (file.empty())
 			lyxerr << "Could not find symbols file" << endl;
-                else
+		else
 			ReadSymbols(file);
 		initialized = true;
-        }
+	}
 
 	std::vector<latexkeys>::iterator it =
 		std::find_if(wordlist.begin(), wordlist.end(),
