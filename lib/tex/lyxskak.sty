@@ -1168,7 +1168,7 @@
   \EqStr{Z}{#1}%
   {\EqStr{Z}{#2}{}{\Mainline(#2)}}%
   {\EqStr{[}{#1}%
-    {\typeset@eatcomment#1#2QXXQQ}%
+    {\typeset@eatcomment#1#2WXWX}%
     {\NumberNext%
       {\EatNumber{#1}% sets \NumberOK, \ExpectedColour
                                 % executes a move not separated from the 
@@ -1179,7 +1179,7 @@
         {\errmessage{mainline: not the correct move number}}}%
       {\MakeMoveMainline{#1}%
         \Mainline(#2)}}}}
-\def\typeset@eatcomment[#1]#2QXXQQ{\Mainline(#2)}
+\def\typeset@eatcomment[#1]#2WXWX{\Mainline(#2)}
 
 %%%%% typesetting
 %%% figurine notation
@@ -1309,6 +1309,7 @@
     \typeset@A@moveA(#2)}}
 
 
+\def\commentstyle{\mdseries}% How embedded comments are typeset
 \def\typeset@A#1{\gdef\TypeSetNumberNext{\True}%
   \gdef\TypeSetAfterBlack{\False}\opentypesetting\typeset@AA(#1 Z )%
   \closetypesetting}
@@ -1316,14 +1317,17 @@
   \EqStr{Z}{#1}%
   {\EqStr{Z}{#2}{}{\typeset@AA(#2)}}%
   {\EqStr{[}{#1}%
-    {\typeset@printcomment#1#2QXXQX}%
+    {\typeset@printcomment#1#2WXWX}%
     {{\TypeSetNumberNext%
       {\typeset@number{#1}% sets \TypeSetColour
         \gdef\TypeSetNumberNext{\False}%
         \typeset@AA(#2)}%
       {\typeset@A@move{#1}%
         \typeset@AA(#2)}}}}}
-\def\typeset@printcomment[#1]#2QXXQX{{\ }{#1}{\typeset@AA(#2)}}
+\def\typeset@printcomment[#1]#2WXWX{%
+  \closetypesetting%
+  {\ }{\commentstyle{#1}}%
+  \opentypesetting\typeset@AA(#2)}
 
 \def\variation{\begingroup\catcode`\#=12 \@variation}
 \def\@variation#1{\endgroup{\variationstyle\typeset@A{#1}}}
