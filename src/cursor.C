@@ -44,6 +44,7 @@
 #include "frontends/LyXView.h"
 
 #include <boost/assert.hpp>
+#include <boost/bind.hpp>
 #include <boost/current_function.hpp>
 
 #include <sstream>
@@ -61,8 +62,8 @@ using std::swap;
 
 namespace {
 
-	bool positionable
-		(DocIterator const & cursor, DocIterator const & anchor)
+	bool
+	positionable(DocIterator const & cursor, DocIterator const & anchor)
 	{
 		// avoid deeper nested insets when selecting
 		if (cursor.size() > anchor.size())
@@ -624,9 +625,9 @@ void LCursor::plainInsert(MathAtom const & t)
 
 void LCursor::insert(string const & str)
 {
-	//lyxerr << "LCursor::insert str '" << str << "'" << endl;
-	for (string::const_iterator it = str.begin(); it != str.end(); ++it)
-		insert(*it);
+	for_each(str.begin(), str.end(),
+		 boost::bind(static_cast<void(LCursor::*)(char)>
+			     (&LCursor::insert), this, _1));
 }
 
 

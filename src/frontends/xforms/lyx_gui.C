@@ -304,10 +304,8 @@ void start(string const & batch, vector<string> const & files)
 	lyxsocket = new LyXServerSocket(&view->getLyXFunc(),
 			  os::slashify_path(os::getTmpDir() + "/lyxsocket"));
 
-	vector<string>::const_iterator cit = files.begin();
-	vector<string>::const_iterator end = files.end();
-	for (; cit != end; ++cit)
-		view->view()->loadLyXFile(*cit, true);
+	for_each(files.begin(), files.end(),
+		bind(&BufferView::loadLyXFile, view->view(), _1, true));
 
 	// handle the batch commands the user asked for
 	if (!batch.empty())

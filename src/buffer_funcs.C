@@ -31,6 +31,8 @@
 #include "support/filetools.h"
 #include "support/lyxlib.h"
 
+#include <boost/bind.hpp>
+
 using lyx::support::bformat;
 using lyx::support::FileInfo;
 using lyx::support::IsFileWriteable;
@@ -211,11 +213,7 @@ void bufferErrors(Buffer const & buf, TeXErrors const & terr)
 
 void bufferErrors(Buffer const & buf, ErrorList const & el)
 {
-	ErrorList::const_iterator it = el.begin();
-	ErrorList::const_iterator end = el.end();
-
-	for (; it != end; ++it)
-		buf.error(*it);
+	for_each(el.begin(), el.end(), bind(ref(buf.error), _1));
 }
 
 

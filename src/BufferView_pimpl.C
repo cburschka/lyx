@@ -72,6 +72,8 @@
 
 #include <boost/bind.hpp>
 
+#include <functional>
+
 using lyx::pos_type;
 
 using lyx::support::AddPath;
@@ -90,6 +92,7 @@ using std::istringstream;
 using std::make_pair;
 using std::min;
 using std::string;
+using std::mem_fun_ref;
 
 
 extern BufferList bufferlist;
@@ -823,9 +826,9 @@ void BufferView::Pimpl::trackChanges()
 	bool const tracking = buf->params().tracking_changes;
 
 	if (!tracking) {
-		ParIterator const end = buf->par_iterator_end();
-		for (ParIterator it = buf->par_iterator_begin(); it != end; ++it)
-			it->trackChanges();
+		for_each(buf->par_iterator_begin(),
+			 buf->par_iterator_end(),
+			 bind(&Paragraph::trackChanges, _1, Change::UNCHANGED));
 		buf->params().tracking_changes = true;
 
 		// we cannot allow undos beyond the freeze point
@@ -842,9 +845,10 @@ void BufferView::Pimpl::trackChanges()
 			return;
 		}
 
-		ParIterator const end = buf->par_iterator_end();
-		for (ParIterator it = buf->par_iterator_begin(); it != end; ++it)
-			it->untrackChanges();
+		for_each(buf->par_iterator_begin(),
+			 buf->par_iterator_end(),
+			 mem_fun_ref(&Paragraph::untrackChanges));
+
 		buf->params().tracking_changes = false;
 	}
 

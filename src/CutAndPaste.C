@@ -601,14 +601,15 @@ void replaceSelectionWithString(LCursor & cur, string const & str)
 
 	// Get font setting before we cut
 	pos_type pos = cur.selEnd().pos();
-	LyXFont const font = text->getPar(cur.selBegin().par()).
-		getFontSettings(cur.buffer().params(), cur.selBegin().pos());
+	Paragraph & par = text->getPar(cur.selEnd().par());
+	LyXFont const font =
+		par.getFontSettings(cur.buffer().params(), cur.selBegin().pos());
 
 	// Insert the new string
 	string::const_iterator cit = str.begin();
 	string::const_iterator end = str.end();
 	for (; cit != end; ++cit, ++pos)
-		text->getPar(cur.selEnd().par()).insertChar(pos, (*cit), font);
+		par.insertChar(pos, (*cit), font);
 
 	// Cut the selection
 	cutSelection(cur, true, false);

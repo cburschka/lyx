@@ -160,7 +160,6 @@ string LaTeXFeatures::getLanguages() const
 	     cit != UsedLanguages_.end();
 	     ++cit)
 		languages << (*cit)->babel() << ',';
-
 	return languages.str();
 }
 

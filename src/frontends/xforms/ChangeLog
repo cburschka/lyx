@@ -1,3 +1,7 @@
+2004-11-06  Lars Gullik Bjonnes  <larsbj@gullik.net>
+
+	* lyx_gui.C (start): use for_each instead of explicit for loop
+
 2004-11-05  Allan Rae  <rae@itee.uq.edu.au>
 
 	* forms/Makefile.am: s/SUFFIX/SUFFIXES/ rule.

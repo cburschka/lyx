@@ -1323,9 +1323,9 @@ void Buffer::changeLanguage(Language const * from, Language const * to)
 	// Take care of l10n/i18n
 	updateDocLang(to);
 
-	ParIterator end = par_iterator_end();
-	for (ParIterator it = par_iterator_begin(); it != end; ++it)
-		it->changeLanguage(params(), from, to);
+	for_each(par_iterator_begin(),
+		 par_iterator_end(),
+		 bind(&Paragraph::changeLanguage, _1, params(), from, to));
 }
 
 
@@ -1367,20 +1367,8 @@ ParIterator Buffer::getParFromID(int id) const
 
 bool Buffer::hasParWithID(int id) const
 {
-	ParConstIterator it = par_iterator_begin();
-	ParConstIterator end = par_iterator_end();
-
-	if (id < 0) {
-		// John says this is called with id == -1 from undo
-		lyxerr << "hasParWithID(), id: " << id << endl;
-		return 0;
-	}
-
-	for (; it != end; ++it)
-		if (it->id() == id)
-			return true;
-
-	return false;
+	ParConstIterator it = getParFromID(id);
+	return it != par_iterator_end();
 }
 
 

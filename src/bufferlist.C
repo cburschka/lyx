@@ -31,6 +31,9 @@
 
 #include <boost/bind.hpp>
 
+#include <algorithm>
+#include <functional>
+
 using lyx::support::AddName;
 using lyx::support::bformat;
 using lyx::support::GetEnvPath;
@@ -49,6 +52,8 @@ using std::find_if;
 using std::for_each;
 using std::string;
 using std::vector;
+using std::back_inserter;
+using std::transform;
 
 
 BufferList::BufferList()
@@ -195,8 +200,9 @@ bool BufferList::close(Buffer * buf, bool ask)
 vector<string> const BufferList::getFileNames() const
 {
 	vector<string> nvec;
-	std::copy(bstore.begin(), bstore.end(),
-		  lyx::back_inserter_fun(nvec, &Buffer::fileName));
+	transform(bstore.begin(), bstore.end(),
+		  back_inserter(nvec),
+		  boost::bind(&Buffer::fileName, _1));
 	return nvec;
 }
 
