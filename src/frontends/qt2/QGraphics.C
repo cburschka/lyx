@@ -21,6 +21,7 @@
 #include "support/filetools.h"
 #include "support/lyxlib.h"
 #include "insets/insetgraphicsParams.h"
+#include "buffer.h"
 #include "lyxrc.h"
 #include "lengthcombo.h"
 #include "qt_helpers.h"
@@ -159,11 +160,13 @@ void QGraphics::update_contents()
 			break;
 	}
 
-	dialog_->filename->setText(toqstr(igp.filename));
+	string const name =
+		igp.filename.outputFilename(kernel().buffer()->filePath());
+	dialog_->filename->setText(toqstr(name));
 
 	// set the bounding box values
 	if (igp.bb.empty()) {
-		string const bb = controller().readBB(igp.filename);
+		string const bb = controller().readBB(igp.filename.absFilename());
 		// the values from the file always have the bigpoint-unit bp
 		dialog_->lbX->setText(toqstr(token(bb, ' ', 0)));
 		dialog_->lbY->setText(toqstr(token(bb, ' ', 1)));
@@ -299,7 +302,8 @@ void QGraphics::apply()
 {
 	InsetGraphicsParams & igp = controller().params();
 
-	igp.filename = fromqstr(dialog_->filename->text());
+	igp.filename.set(fromqstr(dialog_->filename->text()),
+			 kernel().buffer()->filePath());
 
 	// the bb section
 	igp.bb.erase();

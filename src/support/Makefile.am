@@ -30,6 +30,8 @@ libsupport_la_SOURCES = \
 	boost-inst.C \
 	chdir.C \
 	copy.C \
+	filename.C \
+	filename.h \
 	filetools.C \
 	filetools.h \
 	forkedcall.C \

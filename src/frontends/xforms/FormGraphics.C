@@ -22,6 +22,7 @@
 #include "Tooltips.h"
 #include "xforms_helpers.h"
 
+#include "buffer.h"
 #include "debug.h" // for lyxerr
 #include "lyxrc.h" // for lyxrc.display_graphics
 
@@ -292,7 +293,8 @@ void FormGraphics::apply()
 	InsetGraphicsParams & igp = controller().params();
 
 	// the file section
-	igp.filename = getString(file_->input_filename);
+	igp.filename.set(getString(file_->input_filename),
+			 kernel().buffer()->filePath());
 
 	igp.lyxscale = strToInt(getString(file_->input_lyxscale));
 	if (igp.lyxscale == 0) {
@@ -424,7 +426,9 @@ void FormGraphics::update() {
 	InsetGraphicsParams & igp = controller().params();
 
 	// the file section
-	fl_set_input(file_->input_filename, igp.filename.c_str());
+	string const name =
+		igp.filename.outputFilename(kernel().buffer()->filePath());
+	fl_set_input(file_->input_filename, name.c_str());
 	fl_set_input(file_->input_lyxscale, tostr(igp.lyxscale).c_str());
 
 	switch (igp.display) {
@@ -479,7 +483,7 @@ void FormGraphics::update() {
 	// the bb section
 	// set the bounding box values, if exists. First we need the whole
 	// path, because the controller knows nothing about the doc-dir
-	updateBB(igp.filename, igp.bb);
+	updateBB(igp.filename.absFilename(), igp.bb);
 	fl_set_button(bbox_->check_clip, igp.clip);
 
 	// the extra section

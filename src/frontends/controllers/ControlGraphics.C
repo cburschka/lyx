@@ -54,8 +54,6 @@ bool ControlGraphics::initialiseParams(string const & data)
 	InsetGraphicsParams params;
 	InsetGraphicsMailer::string2params(data, bufpath, params);
 	params_.reset(new InsetGraphicsParams(params));
-	// make relative for good UI
-	params_->filename = MakeRelPath(params_->filename, bufpath);
 	return true;
 }
 
@@ -70,8 +68,6 @@ void ControlGraphics::dispatchParams()
 {
 	string const buffer_path = kernel().buffer()->filePath();
 	InsetGraphicsParams tmp_params(params());
-	// core requires absolute path during runtime
-	tmp_params.filename = MakeAbsPath(tmp_params.filename, buffer_path);
 	string const lfun =
 		InsetGraphicsMailer::params2string(tmp_params, buffer_path);
 	kernel().dispatch(FuncRequest(LFUN_INSET_APPLY, lfun));

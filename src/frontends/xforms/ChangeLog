@@ -1,5 +1,11 @@
 2003-07-21  Angus Leeming  <leeming@lyx.org>
 
+	* FormGraphics.C (apply, update):
+	changes due to the use of the FileName class to store the graphics
+	file name.
+
+2003-07-21  Angus Leeming  <leeming@lyx.org>
+
 	* FormExternal.C (update, apply):
 	* FormGraphics.C (update, apply):
 	* FormPrefences.C (LnFmisc::update, LnFmisc::apply):

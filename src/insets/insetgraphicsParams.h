@@ -17,6 +17,7 @@
 #include "graphics/GraphicsTypes.h"
 #include "LString.h"
 #include "lyxlength.h"
+#include "support/filename.h"
 
 class LyXLex;
 
@@ -31,7 +32,7 @@ namespace graphics {
 struct InsetGraphicsParams
 {
 	/// Image filename.
-	string filename;
+	lyx::support::FileName filename;
 	/// Scaling the Screen inside Lyx
 	unsigned int lyxscale;
 	/// How to display the image inside LyX

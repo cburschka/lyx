@@ -1,5 +1,13 @@
 2003-07-21  Angus Leeming  <leeming@lyx.org>
 
+	* insetgraphicsParams.[Ch]: store the graphics file name in
+	a FileName member variable rather than a string.
+
+	* insetgraphics.[Ch]:
+	* insetgraphicsParams.[Ch]: Associated changes.
+
+2003-07-21  Angus Leeming  <leeming@lyx.org>
+
 	* insetgraphics.[Ch] (string2params, params2string): passed a
 	buffer_path argument.
 	(view): new method.

@@ -331,8 +331,8 @@ string const InsetGraphics::prepareFile(Buffer const * buf,
 {
 	// LaTeX can cope if the graphics file doesn't exist, so just return the
 	// filename.
-	string orig_file = params().filename;
-	string const rel_file = MakeRelPath(orig_file, buf->filePath());
+	string orig_file = params().filename.absFilename();
+	string const rel_file = params().filename.relFilename(buf->filePath());
 
 	if (!IsFileReadable(orig_file)) {
 		lyxerr[Debug::GRAPHICS]
@@ -466,14 +466,15 @@ int InsetGraphics::latex(Buffer const * buf, ostream & os,
 	// just output a message about it in the latex output.
 	lyxerr[Debug::GRAPHICS]
 		<< "insetgraphics::latex: Filename = "
-		<< params().filename << endl;
+		<< params().filename.absFilename() << endl;
 
-	string const relative_file = MakeRelPath(params().filename, buf->filePath());
+	string const relative_file = 
+		params().filename.relFilename(buf->filePath());
 
 	// A missing (e)ps-extension is no problem for LaTeX, so
 	// we have to test three different cases
 #warning uh, but can our cache handle it ? no.
-	string const file_ = params().filename;
+	string const file_ = params().filename.absFilename();
 	bool const file_exists =
 		!file_.empty() &&
 		(IsFileReadable(file_) ||		// original
@@ -543,7 +544,8 @@ int InsetGraphics::ascii(Buffer const *, ostream & os, int) const
 	// 1. Convert file to ascii using gifscii
 	// 2. Read ascii output file and add it to the output stream.
 	// at least we send the filename
-	os << '<' << bformat(_("Graphics file: %1$s"), params().filename) << ">\n";
+	os << '<' << bformat(_("Graphics file: %1$s"),
+			     params().filename.absFilename()) << ">\n";
 	return 0;
 }
 
@@ -575,7 +577,8 @@ void InsetGraphics::validate(LaTeXFeatures & features) const
 	if (params().filename.empty())
 		return;
 
-	features.includeFile(graphic_label, RemoveExtension(params().filename));
+	features.includeFile(graphic_label,
+			     RemoveExtension(params().filename.absFilename()));
 
 	features.require("graphicx");
 

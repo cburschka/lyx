@@ -1,5 +1,11 @@
 2003-07-21  Angus Leeming  <leeming@lyx.org>
 
+	* QGraphics.C (apply, update_contents):
+	changes due to the use of the FileName class to store the graphics
+	file name.
+
+2003-07-21  Angus Leeming  <leeming@lyx.org>
+
 	* QExternal.C (update_contents, apply):
 	* QGraphics.C (update_contents, apply):
 	* QLPainter.C (image):

@@ -144,7 +144,7 @@ void InsetGraphicsParams::Write(ostream & os, string const & bufpath) const
 	// Do not write the default values
 
 	if (!filename.empty()) {
-		os << "\tfilename " << MakeRelPath(filename, bufpath) << '\n';
+		os << "\tfilename " << filename.outputFilename(bufpath) << '\n';
 	}
 	if (lyxscale != 100)
 		os << "\tlyxscale " << lyxscale << '\n';
@@ -189,7 +189,7 @@ bool InsetGraphicsParams::Read(LyXLex & lex, string const & token, string const 
 {
 	if (token == "filename") {
 		lex.eatLine();
-		filename = MakeAbsPath(lex.getString(), bufpath);
+		filename.set(lex.getString(), bufpath);
 	} else if (token == "lyxscale") {
 		lex.next();
 		lyxscale = lex.getInteger();
@@ -259,7 +259,7 @@ bool InsetGraphicsParams::Read(LyXLex & lex, string const & token, string const 
 lyx::graphics::Params InsetGraphicsParams::as_grfxParams() const
 {
 	lyx::graphics::Params pars;
-	pars.filename = filename;
+	pars.filename = filename.absFilename();
 	pars.scale = lyxscale;
 	pars.angle = rotateAngle;
 
@@ -267,7 +267,7 @@ lyx::graphics::Params InsetGraphicsParams::as_grfxParams() const
 		pars.bb = bb;
 
 		// Get the original Bounding Box from the file
-		string const tmp = readBB_from_PSFile(filename);
+		string const tmp = readBB_from_PSFile(filename.absFilename());
 		lyxerr[Debug::GRAPHICS] << "BB_from_File: " << tmp << std::endl;
 		if (!tmp.empty()) {
 			unsigned int const bb_orig_xl = strToInt(token(tmp, ' ', 0));

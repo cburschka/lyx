@@ -1,5 +1,10 @@
 2003-07-21  Angus Leeming  <leeming@lyx.org>
 
+	* ControlGraphics.C (initialiseParams, dispatchParams): no need
+	to modify the filename for reasons of 'good UI' anymore.
+
+2003-07-21  Angus Leeming  <leeming@lyx.org>
+
 	* ControlGraphics.C (initialiseParams, dispatchParams): pass a
 	buffer_path parameter to InsetGraphicsMailer's string2params,
 	params2string.
