@@ -22,7 +22,7 @@
 #include <boost/signals/signal0.hpp>
 #include <boost/signals/trackable.hpp>
 
-#include FORMS_H_LOCATION // Can't forward-declare FL_OBJECT
+#include "forms_fwd.h" // Can't forward-declare FL_OBJECT
 
 #include <map>
 

@@ -14,14 +14,15 @@
 #pragma interface
 #endif
 
-#include "frontends/LyXView.h"
-#include "LString.h"
-
-#include FORMS_H_LOCATION
+#include "forms_fwd.h"
+#include <X11/Xlib.h>
 
 #include <boost/signals/signal1.hpp>
 
+#include "LString.h"
 #include <vector>
+
+class LyXView;
 
 class DropDown {
 public:

@@ -17,11 +17,11 @@
 #include "FormBase.h"
 
 class ControlError;
-struct FD_form_error;
+struct FD_error;
 
 /** This class provides an XForms implementation of the Error Dialog.
  */
-class FormError : public FormCB<ControlError, FormDB<FD_form_error> > {
+class FormError : public FormCB<ControlError, FormDB<FD_error> > {
 public:
 	/// Constructor
 	FormError(ControlError &);
@@ -33,9 +33,6 @@ private:
 	virtual void build();
 	/// Update dialog before showing it
 	virtual void update();
-
-	/// Fdesign generated method
-	FD_form_error * build_error();
 };
 
 #endif // FORMERROR_H

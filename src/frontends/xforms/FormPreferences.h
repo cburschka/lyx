@@ -22,26 +22,27 @@
 
 #include <boost/scoped_ptr.hpp>
 
+#include FORMS_H_LOCATION
 #include <utility> // pair
 
 class Combox;
 class Dialogs;
 class LyXView;
 class RGBColor;
-struct FD_form_colors;
-struct FD_form_converters;
-struct FD_form_formats;
-struct FD_form_inputs_misc;
-struct FD_form_interface;
-struct FD_form_language;
-struct FD_form_lnf_misc;
-struct FD_form_inner_tab;
-struct FD_form_outputs_misc;
-struct FD_form_paths;
-struct FD_form_preferences;
-struct FD_form_printer;
-struct FD_form_screen_fonts;
-struct FD_form_spelloptions;
+struct FD_preferences;
+struct FD_preferences_colors;
+struct FD_preferences_converters;
+struct FD_preferences_formats;
+struct FD_preferences_inputs_misc;
+struct FD_preferences_interface;
+struct FD_preferences_language;
+struct FD_preferences_lnf_misc;
+struct FD_preferences_inner_tab;
+struct FD_preferences_outputs_misc;
+struct FD_preferences_paths;
+struct FD_preferences_printer;
+struct FD_preferences_screen_fonts;
+struct FD_preferences_spelloptions;
 
 
 /** This class provides an XForms implementation of the FormPreferences Dialog.
@@ -82,47 +83,18 @@ private:
 		    std::pair<string,string> const & dir1= std::make_pair(string(),string()),
 		    std::pair<string,string> const & dir2 = std::make_pair(string(),string()));
 
-	/// Fdesign generated methods
-	FD_form_preferences * build_preferences();
-	///
-	FD_form_inner_tab * build_inner_tab();
-	///
-	FD_form_colors * build_colors();
-	///
-	FD_form_converters * build_converters();
-	///
-	FD_form_formats * build_formats();
-	///
-	FD_form_inputs_misc * build_inputs_misc();
-	///
-	FD_form_interface * build_interface();
-	///
-	FD_form_language * build_language();
-	///
-	FD_form_lnf_misc * build_lnf_misc();
-	///
-	FD_form_outputs_misc * build_outputs_misc();
-	///
-	FD_form_paths * build_paths();
-	///
-	FD_form_printer * build_printer();
-	///
-	FD_form_screen_fonts * build_screen_fonts();
-	///
-	FD_form_spelloptions * build_spelloptions();
-
 	/// Real GUI implementation.
-	boost::scoped_ptr<FD_form_preferences> dialog_;
+	boost::scoped_ptr<FD_preferences> dialog_;
 	/// Converters tabfolder
-	boost::scoped_ptr<FD_form_inner_tab> converters_tab_;
+	boost::scoped_ptr<FD_preferences_inner_tab> converters_tab_;
 	/// reLyX and other import/input stuff
-	boost::scoped_ptr<FD_form_inner_tab> inputs_tab_;
+	boost::scoped_ptr<FD_preferences_inner_tab> inputs_tab_;
 	/// HCI configuration
-	boost::scoped_ptr<FD_form_inner_tab> look_n_feel_tab_;
+	boost::scoped_ptr<FD_preferences_inner_tab> look_n_feel_tab_;
 	/// Outputs tabfolder
-	boost::scoped_ptr<FD_form_inner_tab> outputs_tab_;
+	boost::scoped_ptr<FD_preferences_inner_tab> outputs_tab_;
 	/// Spellchecker, language stuff, etc
-	boost::scoped_ptr<FD_form_inner_tab> lang_opts_tab_;
+	boost::scoped_ptr<FD_preferences_inner_tab> lang_opts_tab_;
 
 	/** Each tab folder is encapsulated in its own class.
 	 */
@@ -138,7 +110,7 @@ private:
 		///
 		Colors(FormPreferences & p);
 		///
-		FD_form_colors const * dialog();
+		FD_preferences_colors const * dialog();
 		///
 		void apply(); // not const as modifies modifiedXformsPrefs.
 		///
@@ -174,7 +146,7 @@ private:
 		///
 		FormPreferences & parent_;
 		///
-		boost::scoped_ptr<FD_form_colors> dialog_;
+		boost::scoped_ptr<FD_preferences_colors> dialog_;
 
 		/// A vector of LyX LColor GUI name and associated RGB color.
 		std::vector<NamedColor> lyxColorDB;
@@ -190,7 +162,7 @@ private:
 		///
 		Converters(FormPreferences & p);
 		///
-		FD_form_converters const * dialog();
+		FD_preferences_converters const * dialog();
 		///
 		void apply() const;
 		///
@@ -223,7 +195,7 @@ private:
 		///
 		FormPreferences & parent_;
 		///
-		boost::scoped_ptr<FD_form_converters> dialog_;
+		boost::scoped_ptr<FD_preferences_converters> dialog_;
 	};
 	///
 	friend class Converters;
@@ -234,7 +206,7 @@ private:
 		///
 		Formats(FormPreferences &  p);
 		///
-		FD_form_formats const * dialog();
+		FD_preferences_formats const * dialog();
 		///
 		void apply() const;
 		///
@@ -261,7 +233,7 @@ private:
 		///
 		FormPreferences & parent_;
 		///
-		boost::scoped_ptr<FD_form_formats> dialog_;
+		boost::scoped_ptr<FD_preferences_formats> dialog_;
 	};
 	///
 	friend class Formats;
@@ -272,7 +244,7 @@ private:
 		///
 		InputsMisc(FormPreferences &  p);
 		///
-		FD_form_inputs_misc const * dialog();
+		FD_preferences_inputs_misc const * dialog();
 		///
 		void apply() const;
 		///
@@ -286,7 +258,7 @@ private:
 		///
 		FormPreferences & parent_;
 		///
-		boost::scoped_ptr<FD_form_inputs_misc> dialog_;
+		boost::scoped_ptr<FD_preferences_inputs_misc> dialog_;
 	};
 	///
 	friend class InputsMisc;
@@ -297,7 +269,7 @@ private:
 		///
 		Interface(FormPreferences &  p);
 		///
-		FD_form_interface const * dialog();
+		FD_preferences_interface const * dialog();
 		///
 		void apply() const;
 		///
@@ -313,7 +285,7 @@ private:
 		///
 		FormPreferences & parent_;
 		///
-		boost::scoped_ptr<FD_form_interface> dialog_;
+		boost::scoped_ptr<FD_preferences_interface> dialog_;
 	};
 	///
 	friend class Interface;
@@ -324,7 +296,7 @@ private:
 		///
 		Language(FormPreferences &  p);
 		///
-		FD_form_language const * dialog();
+		FD_preferences_language const * dialog();
 		///
 		void apply(); // not const because calls update()
 		///
@@ -342,7 +314,7 @@ private:
 		///
 		FormPreferences & parent_;
 		///
-		boost::scoped_ptr<FD_form_language> dialog_;
+		boost::scoped_ptr<FD_preferences_language> dialog_;
 		///
 		boost::scoped_ptr<Combox> combo_default_lang;
 		///
@@ -357,7 +329,7 @@ private:
 		///
 		LnFmisc(FormPreferences &  p);
 		///
-		FD_form_lnf_misc const * dialog();
+		FD_preferences_lnf_misc const * dialog();
 		///
 		void apply() const;
 		///
@@ -371,7 +343,7 @@ private:
 		///
 		FormPreferences & parent_;
 		///
-		boost::scoped_ptr<FD_form_lnf_misc> dialog_;
+		boost::scoped_ptr<FD_preferences_lnf_misc> dialog_;
 	};
 	///
 	friend class LnFmisc;
@@ -382,7 +354,7 @@ private:
 		///
 		OutputsMisc(FormPreferences &  p);
 		///
-		FD_form_outputs_misc const * dialog();
+		FD_preferences_outputs_misc const * dialog();
 		///
 		void apply() const;
 		///
@@ -396,7 +368,7 @@ private:
 		///
 		FormPreferences & parent_;
 		///
-		boost::scoped_ptr<FD_form_outputs_misc> dialog_;
+		boost::scoped_ptr<FD_preferences_outputs_misc> dialog_;
 	};
 	///
 	friend class OutputsMisc;
@@ -407,7 +379,7 @@ private:
 		///
 		Paths(FormPreferences &  p);
 		///
-		FD_form_paths const * dialog();
+		FD_preferences_paths const * dialog();
 		///
 		void apply();
 		///
@@ -423,7 +395,7 @@ private:
 		///
 		FormPreferences & parent_;
 		///
-		boost::scoped_ptr<FD_form_paths> dialog_;
+		boost::scoped_ptr<FD_preferences_paths> dialog_;
 	};
 	///
 	friend class Paths;
@@ -434,7 +406,7 @@ private:
 		///
 		Printer(FormPreferences &  p);
 		///
-		FD_form_printer const * dialog();
+		FD_preferences_printer const * dialog();
 		///
 		void apply() const;
 		///
@@ -448,7 +420,7 @@ private:
 		///
 		FormPreferences & parent_;
 		///
-		boost::scoped_ptr<FD_form_printer> dialog_;
+		boost::scoped_ptr<FD_preferences_printer> dialog_;
 	};
 	///
 	friend class Printer;
@@ -459,7 +431,7 @@ private:
 		///
 		ScreenFonts(FormPreferences &  p);
 		///
-		FD_form_screen_fonts const * dialog();
+		FD_preferences_screen_fonts const * dialog();
 		///
 		void apply() const;
 		///
@@ -475,7 +447,7 @@ private:
 		///
 		FormPreferences & parent_;
 		///
-		boost::scoped_ptr<FD_form_screen_fonts> dialog_;
+		boost::scoped_ptr<FD_preferences_screen_fonts> dialog_;
 	};
 	///
 	friend class ScreenFonts;
@@ -486,7 +458,7 @@ private:
 		///
 		SpellOptions(FormPreferences &  p);
 		///
-		FD_form_spelloptions const * dialog();
+		FD_preferences_spelloptions const * dialog();
 		///
 		void apply(); // not const because calls update()!
 		///
@@ -502,7 +474,7 @@ private:
 		///
 		FormPreferences & parent_;
 		///
-		boost::scoped_ptr<FD_form_spelloptions> dialog_;
+		boost::scoped_ptr<FD_preferences_spelloptions> dialog_;
 	};
 	///
 	friend class SpellOptions;

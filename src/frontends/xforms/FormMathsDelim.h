@@ -20,7 +20,7 @@
 
 #include <boost/scoped_ptr.hpp>
 
-struct FD_form_maths_delim;
+struct FD_maths_delim;
 
 /**
  * This class provides an XForms implementation of the maths delim.
@@ -41,11 +41,8 @@ private:
 	/// Pointer to the actual instantiation of the xforms form
 	virtual FL_FORM * form() const;
 
-	// build the form
-	FD_form_maths_delim * build_maths_delim();
-
 	// Real GUI implementation
-	boost::scoped_ptr<FD_form_maths_delim> dialog_;
+	boost::scoped_ptr<FD_maths_delim> dialog_;
 };
 
 #endif //  FORM_MATHSDELIM_H

@@ -16,13 +16,14 @@
 #endif
 
 #include "FormMathsDelim.h"
-#include "form_maths_delim.h"
+#include "forms/form_maths_delim.h"
 #include "Dialogs.h"
 #include "frontends/LyXView.h"
 #include "bmtable.h"
 #include "debug.h"
 #include "support/lstrings.h"
 #include "lyxfunc.h"
+#include FORMS_H_LOCATION
 
 #include "delim.xbm"
 #include "delim0.xpm"
@@ -57,7 +58,7 @@ FL_FORM * FormMathsDelim::form() const
 
 void FormMathsDelim::build()
 {
-	dialog_.reset(build_maths_delim());
+	dialog_.reset(build_maths_delim(this));
 
 	fl_set_button(dialog_->radio_left, 1);
 	// Initialize button_pix to "()" as found in images/delim0.xpm:

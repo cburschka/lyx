@@ -18,12 +18,13 @@
 #include "xformsBC.h"
 #include "ControlInclude.h"
 #include "FormInclude.h"
-#include "form_include.h"
+#include "forms/form_include.h"
 #include "insets/insetinclude.h"
 #include "xforms_helpers.h" // setEnabled
 #include "support/lstrings.h" // strip
+#include FORMS_H_LOCATION
 
-typedef FormCB<ControlInclude, FormDB<FD_form_include> > base_class;
+typedef FormCB<ControlInclude, FormDB<FD_include> > base_class;
 
 FormInclude::FormInclude(ControlInclude & c)
 	: base_class(c, _("Include file"))
@@ -32,7 +33,7 @@ FormInclude::FormInclude(ControlInclude & c)
 
 void FormInclude::build()
 {
-	dialog_.reset(build_include());
+	dialog_.reset(build_include(this));
 
 	fl_set_input_return(dialog_->input_filename, FL_RETURN_CHANGED);
 	setPrehandler(dialog_->input_filename);

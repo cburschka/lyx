@@ -15,9 +15,10 @@
 #include "xformsBC.h"
 #include "ControlSearch.h"
 #include "FormSearch.h"
-#include "form_search.h"
+#include "forms/form_search.h"
+#include FORMS_H_LOCATION
 
-typedef FormCB<ControlSearch, FormDB<FD_form_search> > base_class;
+typedef FormCB<ControlSearch, FormDB<FD_search> > base_class;
 
 FormSearch::FormSearch(ControlSearch & c)
 	: base_class(c, _("LyX: Find and Replace"))
@@ -26,7 +27,7 @@ FormSearch::FormSearch(ControlSearch & c)
 
 void FormSearch::build()
 {
-	dialog_.reset(build_search());
+	dialog_.reset(build_search(this));
 
 	// Manage the ok, apply and cancel/close buttons
 	bc().setCancel(dialog_->button_close);

@@ -17,11 +17,11 @@
 #include "FormBase.h"
 
 class ControlIndex;
-struct FD_form_index;
+struct FD_index;
 
 /** This class provides an XForms implementation of the Index Dialog.
  */
-class FormIndex : public FormCB<ControlIndex, FormDB<FD_form_index> > {
+class FormIndex : public FormCB<ControlIndex, FormDB<FD_index> > {
 public:
 	///
 	FormIndex(ControlIndex &);
@@ -33,9 +33,6 @@ private:
 	virtual void build();
 	/// Update dialog before/whilst showing it.
 	virtual void update();
-
-	/// Fdesign generated method
-	FD_form_index * build_index();
 };
 
 #endif // FORMINDEX_H

@@ -16,8 +16,9 @@
 #include "xformsBC.h"
 #include "ControlVCLog.h"
 #include "FormVCLog.h"
-#include "form_browser.h"
+#include "forms/form_browser.h"
 #include "gettext.h"
+#include FORMS_H_LOCATION
 
 FormVCLog::FormVCLog(ControlVCLog & c)
 	: FormCB<ControlVCLog, FormBrowser>(c, _("Version Control Log"))

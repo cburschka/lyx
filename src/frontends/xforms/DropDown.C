@@ -15,6 +15,8 @@
 #include "DropDown.h"
 #include "xforms_helpers.h"
 
+#include FORMS_H_LOCATION
+
 #include <iostream>
 #include <cctype>
 

@@ -17,6 +17,7 @@
 #include "LString.h"
 #include <algorithm>
 #include <vector>
+#include FORMS_H_LOCATION
 
 using std::vector;
 

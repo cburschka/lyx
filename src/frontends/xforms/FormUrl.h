@@ -17,11 +17,11 @@
 #include "FormBase.h"
 
 class ControlUrl;
-struct FD_form_url;
+struct FD_url;
 
 /** This class provides an XForms implementation of the Url Dialog.
  */
-class FormUrl : public FormCB<ControlUrl, FormDB<FD_form_url> > {
+class FormUrl : public FormCB<ControlUrl, FormDB<FD_url> > {
 public:
 	///
 	FormUrl(ControlUrl &);
@@ -33,8 +33,6 @@ private:
 	virtual void build();
 	/// Update dialog before showing it
 	virtual void update();
-	/// Filter the inputs on callback from xforms
-	FD_form_url * build_url();
 };
 
 #endif // FORMURL_H

@@ -19,7 +19,7 @@
 #include "frontends/LyXView.h"
 #include "bmtable.h"
 #include "debug.h"
-#include "xforms_helpers.h"
+#include "forms_gettext.h"
 #include "gettext.h"
 #include "support/LAssert.h"
 

@@ -18,11 +18,11 @@
 #include "buffer.h"
 
 class ControlToc;
-struct FD_form_toc;
+struct FD_toc;
 
 /** This class provides an XForms implementation of the FormToc Dialog.
  */
-class FormToc : public FormCB<ControlToc, FormDB<FD_form_toc> > {
+class FormToc : public FormCB<ControlToc, FormDB<FD_toc> > {
 public:
 	///
 	FormToc(ControlToc &);
@@ -40,9 +40,6 @@ private:
 	void updateType();
 	///
 	void updateContents();
-
-	/// Fdesign generated method
-	FD_form_toc * build_toc();
 
 	///
 	Buffer::SingleList toclist_;

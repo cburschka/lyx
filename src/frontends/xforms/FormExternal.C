@@ -17,14 +17,15 @@
 #include "xformsBC.h"
 #include "ControlExternal.h"
 #include "FormExternal.h"
-#include "form_external.h"
+#include "forms/form_external.h"
 #include "gettext.h"
 #include "xforms_helpers.h"
 #include "helper_funcs.h"
 
 #include "support/lstrings.h"
+#include FORMS_H_LOCATION
 
-typedef FormCB<ControlExternal, FormDB<FD_form_external> > base_class;
+typedef FormCB<ControlExternal, FormDB<FD_external> > base_class;
 
 FormExternal::FormExternal(ControlExternal & c)
 	: base_class(c, _("Edit external file"))
@@ -45,7 +46,7 @@ void FormExternal::apply()
 
 void FormExternal::build()
 {
-	dialog_.reset(build_external());
+	dialog_.reset(build_external(this));
 
 	string const choice =
 		" " + getStringFromVector(controller().getTemplates(), " | ") + " ";

@@ -16,18 +16,19 @@
 #include "xformsBC.h"
 #include "ControlRef.h"
 #include "FormRef.h"
-#include "form_ref.h"
+#include "forms/form_ref.h"
 #include "xforms_helpers.h"
 #include "insets/insetref.h"
 #include "helper_funcs.h" // getStringFromVector
 #include "support/lstrings.h" // frontStrip, strip
+#include FORMS_H_LOCATION
 
 using std::find;
 using std::max;
 using std::sort;
 using std::vector;
 
-typedef FormCB<ControlRef, FormDB<FD_form_ref> > base_class;
+typedef FormCB<ControlRef, FormDB<FD_ref> > base_class;
 
 FormRef::FormRef(ControlRef & c)
 	: base_class(c, _("Reference")),
@@ -37,7 +38,7 @@ FormRef::FormRef(ControlRef & c)
 
 void FormRef::build()
 {
-	dialog_.reset(build_ref());
+	dialog_.reset(build_ref(this));
 
 	for (int i = 0; !InsetRef::types[i].latex_name.empty(); ++i)
 		fl_addto_choice(dialog_->choice_type,

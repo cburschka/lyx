@@ -20,11 +20,11 @@
 #include "FormInset.h"
 
 class InsetTabular;
-struct FD_form_tabular;
-struct FD_form_tabular_options;
-struct FD_form_column_options;
-struct FD_form_cell_options;
-struct FD_form_longtable_options;
+struct FD_tabular;
+struct FD_tabular_options;
+struct FD_tabular_column;
+struct FD_tabular_cell;
+struct FD_tabular_longtable;
 
 /** This class provides an XForms implementation of the FormTabular Dialog.
     The tabular dialog allows users to set/save their tabular.
@@ -58,27 +58,16 @@ private:
 	///
 	virtual int checkLongtableOptions(FL_OBJECT *, string &);
 
-	/// Fdesign generated methods
-	FD_form_tabular * build_tabular();
-	///
-	FD_form_tabular_options * build_tabular_options();
-	///
-	FD_form_column_options * build_column_options();
-	///
-	FD_form_cell_options * build_cell_options();
-	///
-	FD_form_longtable_options * build_longtable_options();
-
 	/// Real GUI implementation.
-	boost::scoped_ptr<FD_form_tabular> dialog_;
+	boost::scoped_ptr<FD_tabular> dialog_;
 	///
-	boost::scoped_ptr<FD_form_tabular_options> tabular_options_;
+	boost::scoped_ptr<FD_tabular_options> tabular_options_;
 	///
-	boost::scoped_ptr<FD_form_column_options> column_options_;
+	boost::scoped_ptr<FD_tabular_column> column_options_;
 	///
-	boost::scoped_ptr<FD_form_cell_options> cell_options_;
+	boost::scoped_ptr<FD_tabular_cell> cell_options_;
 	///
-	boost::scoped_ptr<FD_form_longtable_options> longtable_options_;
+	boost::scoped_ptr<FD_tabular_longtable> longtable_options_;
 
 	/// pointer to the inset passed through showInset
 	InsetTabular * inset_;

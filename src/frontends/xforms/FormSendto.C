@@ -13,17 +13,18 @@
 #endif
 
 #include "FormSendto.h"
-#include "form_sendto.h"
+#include "forms/form_sendto.h"
 #include "ControlSendto.h"
 #include "xformsBC.h"
 #include "Tooltips.h"
 #include "xforms_helpers.h"
 #include "converter.h"
 #include "gettext.h"
+#include FORMS_H_LOCATION
 
 using std::vector;
 
-typedef FormCB<ControlSendto, FormDB<FD_form_sendto> > base_class;
+typedef FormCB<ControlSendto, FormDB<FD_sendto> > base_class;
 
 FormSendto::FormSendto(ControlSendto & c)
 	: base_class(c, _("Send document to command"))
@@ -32,7 +33,7 @@ FormSendto::FormSendto(ControlSendto & c)
 
 void FormSendto::build()
 {
-	dialog_.reset(build_sendto());
+	dialog_.reset(build_sendto(this));
 
 	fl_set_input_return(dialog_->input_command, FL_RETURN_CHANGED);
 	setPrehandler(dialog_->input_command);

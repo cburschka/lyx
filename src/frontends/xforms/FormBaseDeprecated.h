@@ -25,7 +25,7 @@
 #include "xformsBC.h"
 #include "FeedbackController.h"
 
-#include FORMS_H_LOCATION
+#include "forms_fwd.h"
 
 #include <boost/signals/trackable.hpp>
 

@@ -14,7 +14,7 @@
 #pragma interface
 #endif
 
-#include FORMS_H_LOCATION
+#include "forms_fwd.h"
 
 #include "Color.h"
 #include "LString.h"
@@ -30,22 +30,12 @@ string const choice_Length_All =
 string const choice_Length_WithUnit =
     "cm|mm|in|ex|em|pt|sp|bp|dd|pc|cc|mu";	// all with a Unit
 
-/// Extract shortcut from <ident>|<shortcut> string
-char const * flyx_shortcut_extract(char const * sc);
-/// Shortcut for flyx_shortcut_extract
-#define scex flyx_shortcut_extract
-
-/// Extract shortcut from <ident>|<shortcut> string
-char const * flyx_ident_extract(char const * sc);
-/// Shortcut for flyx_ident_extract
-#define idex flyx_ident_extract
-
 /// Set an FL_OBJECT to activated or deactivated
 void setEnabled(FL_OBJECT *, bool enable);
 
 /// Take a string and add breaks so that it fits into a desired label width, w
 string formatted(string const &label, int w,
-		 int = FL_NORMAL_SIZE, int = FL_NORMAL_STYLE);
+		 int = 12 /*FL_NORMAL_SIZE*/, int = 0 /*FL_NORMAL_STYLE*/);
 
 /// Given an fl_choice, create a vector of its entries
 std::vector<string> const getVectorFromChoice(FL_OBJECT *);

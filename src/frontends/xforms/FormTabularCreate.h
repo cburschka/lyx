@@ -18,13 +18,13 @@
 #include "FormBase.h"
 
 class ControlTabularCreate;
-struct FD_form_tabular_create;
+struct FD_tabular_create;
 
 /** This class provides an XForms implementation of the TabularCreate
     Dialog.
  */
 class FormTabularCreate :
-	public FormCB<ControlTabularCreate, FormDB<FD_form_tabular_create> > {
+	public FormCB<ControlTabularCreate, FormDB<FD_tabular_create> > {
 public:
 	///
 	FormTabularCreate(ControlTabularCreate &);
@@ -36,9 +36,6 @@ private:
 	virtual void build();
 	/// not needed
 	virtual void update() {};
-
-	///
-	FD_form_tabular_create * build_tabular_create();
 };
 
 #endif // FORMTABULARCREATE

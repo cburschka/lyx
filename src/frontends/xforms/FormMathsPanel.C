@@ -18,16 +18,16 @@
 #include "Dialogs.h"
 #include "frontends/LyXView.h"
 #include "FormMathsPanel.h"
-#include "form_maths_panel.h"
+#include "forms/form_maths_panel.h"
 #include "MathsSymbols.h"
 #include "debug.h"
 #include "lyxfunc.h"
 
-#include "form_maths_deco.h"
-#include "form_maths_delim.h"
-#include "form_maths_matrix.h"
-#include "form_maths_space.h"
-#include "form_maths_style.h"
+#include "forms/form_maths_deco.h"
+#include "forms/form_maths_delim.h"
+#include "forms/form_maths_matrix.h"
+#include "forms/form_maths_space.h"
+#include "forms/form_maths_style.h"
 
 #include "FormMathsBitmap.h"
 #include "FormMathsDeco.h"
@@ -35,6 +35,9 @@
 #include "FormMathsMatrix.h"
 #include "FormMathsSpace.h"
 #include "FormMathsStyle.h"
+
+#include FORMS_H_LOCATION
+#include <boost/bind.hpp>
 
 #include "deco.xpm"
 #include "delim.xpm"
@@ -60,8 +63,6 @@
 #include "ams_rel.xbm"
 #include "ams_nrel.xbm"
 #include "ams_ops.xbm"
-
-#include <boost/bind.hpp>
 
 using std::vector;
 
@@ -171,7 +172,7 @@ void FormMathsPanel::setActive(FormMathsSub * a) const
 
 void FormMathsPanel::build()
 {
-	dialog_.reset(build_maths_panel());
+	dialog_.reset(build_maths_panel(this));
 
 	for (int i = 0; i < nr_function_names; ++i)
 		fl_add_browser_line(dialog_->browser_funcs,

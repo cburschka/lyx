@@ -16,7 +16,8 @@
 #endif
 
 #include "FormMathsSpace.h"
-#include "form_maths_space.h"
+#include "forms/form_maths_space.h"
+#include FORMS_H_LOCATION
 
 extern char * latex_mathspace[];
 
@@ -37,7 +38,7 @@ FL_FORM * FormMathsSpace::form() const
 
 void FormMathsSpace::build()
 {
-	dialog_.reset(build_maths_space());
+	dialog_.reset(build_maths_space(this));
 
 	space_ = -1;
 

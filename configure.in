@@ -169,7 +169,7 @@ case "$lyx_use_frontend" in
   xforms)
   # for now don't set it for xforms as this is always entered
 	FRONTEND="xforms"
-	FRONTEND_GUILIB="xforms/*.lo"
+	FRONTEND_GUILIB="xforms/*.lo xforms/forms/*.lo"
 	FRONTEND_INCLUDES="-I\$(srcdir)/xforms"
 	FRONTEND_LIBS="@XFORMS_IMAGE_LIB@ @XFORMS_LIB@ @XPM_LIB@"
 	FRONTEND_INFO=`cat <<EOF

@@ -15,7 +15,7 @@
 #include "debug.h"
 
 #include "FormTabular.h"
-#include "form_tabular.h"
+#include "forms/form_tabular.h"
 #include "frontends/LyXView.h"
 #include "Dialogs.h"
 #include "buffer.h"
@@ -31,6 +31,7 @@
 #include <boost/bind.hpp>
 
 #include <functional>
+#include FORMS_H_LOCATION
 
 
 using std::vector;
@@ -110,7 +111,7 @@ void FormTabular::updateInset(InsetTabular * inset)
 
 void FormTabular::build()
 {
-	dialog_.reset(build_tabular());
+	dialog_.reset(build_tabular(this));
 
 	// Allow the base class to control messages
 	setMessageWidget(dialog_->text_warning);
@@ -118,10 +119,10 @@ void FormTabular::build()
 	setPrehandler(dialog_->input_tabular_column);
 	setPrehandler(dialog_->input_tabular_row);
 
-	tabular_options_.reset(build_tabular_options());
-	column_options_.reset(build_column_options());
-	cell_options_.reset(build_cell_options());
-	longtable_options_.reset(build_longtable_options());
+	tabular_options_.reset(build_tabular_options(this));
+	column_options_.reset(build_tabular_column(this));
+	cell_options_.reset(build_tabular_cell(this));
+	longtable_options_.reset(build_tabular_longtable(this));
 
 	fl_set_input_return(column_options_->input_column_width,
 			    FL_RETURN_END);

@@ -17,11 +17,11 @@
 #include "FormBase.h"
 
 class ControlPreamble;
-struct FD_form_preamble;
+struct FD_preamble;
 
 /** This class provides an XForms implementation of the Preamble Dialog.
  */
-class FormPreamble : public FormCB<ControlPreamble, FormDB<FD_form_preamble> > {
+class FormPreamble : public FormCB<ControlPreamble, FormDB<FD_preamble> > {
 public:
 	///
 	FormPreamble(ControlPreamble &);
@@ -32,9 +32,6 @@ private:
 	virtual void build();
 	/// Update the dialog
 	virtual void update();
-
-	/// Fdesign generated method
-	FD_form_preamble * build_preamble();
 };
 
 

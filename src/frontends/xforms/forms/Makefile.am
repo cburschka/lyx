@@ -1,16 +1,20 @@
 include $(top_srcdir)/config/common.am
 
-EXTRA_DIST = $(SRCS) form_document.C.patch form_ert.C.patch form_filedialog.C.patch fdfixc.sed fdfixh.sed fdfix.sh makefile.old README
+EXTRA_DIST = fdfixc.sed fdfixh.sed fdfix.sh README
 
-updatesrc:
-	@echo Note:
-	@echo   To update the C files generated from XForms fd files
-	@echo   You should go to the source dir and do a
-	@echo        make -f makefile.old updatesrc
+noinst_LTLIBRARIES = libfdesign.la
+
+# For (forms_fwd.h, forms_gettext.h) and LString.h, respectively.
+INCLUDES = -I$(srcdir)/..  -I$(top_srcdir)/src
+
+# These are used to generate the .[Ch] files from the .fd ones.
+# It would be nice if we could make the .Ch files dependent on the fdfix files.
+SHELL = /bin/sh
+SCRIPT = $(srcdir)/fdfix.sh
+SUFFIXES = .fd
 
 SRCS =  form_aboutlyx.fd \
 	form_bibitem.fd \
-	form_bibtex.fd \
 	form_bibtex.fd \
 	form_browser.fd \
 	form_character.fd \
@@ -46,3 +50,17 @@ SRCS =  form_aboutlyx.fd \
 	form_thesaurus.fd \
 	form_toc.fd \
 	form_url.fd
+
+libfdesign_la_SOURCES = $(SRCS:.fd=.C) $(SRCS:.fd=.h)
+
+libfdesign.la: $(libfdesign_la_OBJECTS) $(libfdesign_la_DEPENDENCIES)
+
+.fd.C:
+	$(SHELL) $(SCRIPT) $<
+
+clean-local:
+	rm -f *.[ChH] *.orig \
+	rm -f $(srcdir)/*.[hc] $(srcdir)/*.bak
+
+distclean-local:
+	rm -f $(srcdir)/*.orig $(srcdir)/*.rej $(srcdir)/*~

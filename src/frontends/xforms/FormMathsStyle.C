@@ -17,13 +17,15 @@
 #endif
 
 #include "FormMathsStyle.h"
-#include "form_maths_style.h"
+#include "forms/form_maths_style.h"
 #include "bmtable.h"
+
+#include "debug.h"
+
+#include FORMS_H_LOCATION
 
 #include "style.xbm"
 #include "font.xbm"
-
-#include "debug.h"
 
 char const * latex_mathstyle[] = {
 	"displaystyle", "textstyle", "scriptstyle", "scriptscriptstyle"
@@ -53,7 +55,7 @@ FL_FORM * FormMathsStyle::form() const
 
 void FormMathsStyle::build()
 {
-	dialog_.reset(build_maths_style());
+	dialog_.reset(build_maths_style(this));
 
 	fl_set_bmtable_data(dialog_->bmtable_style1, 1, 1,
 			    style1_width, style1_height, style1_bits);

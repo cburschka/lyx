@@ -18,6 +18,7 @@
 #include "xforms_resize.h"
 #include "Tooltips.h"
 #include "support/LAssert.h"
+#include FORMS_H_LOCATION
 
 extern "C" {
 

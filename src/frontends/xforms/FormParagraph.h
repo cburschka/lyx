@@ -16,13 +16,13 @@
 
 #include "FormBase.h"
 
-struct FD_form_paragraph;
+struct FD_paragraph;
 class ControlParagraph;
 
 /** This class provides an XForms implementation of the FormParagraph dialog.
  */
 class FormParagraph
-	: public FormCB<ControlParagraph, FormDB<FD_form_paragraph> > {
+	: public FormCB<ControlParagraph, FormDB<FD_paragraph> > {
 public:
 	///
 	FormParagraph(ControlParagraph &);
@@ -36,9 +36,6 @@ private:
 	
 	/// Filter the inputs on callback from xforms
 	virtual ButtonPolicy::SMInput input(FL_OBJECT *, long);
-
-	/// Fdesign generated method
-	FD_form_paragraph * build_paragraph();
 };
 
 #endif

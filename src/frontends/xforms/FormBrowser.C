@@ -13,17 +13,17 @@
 #endif
 
 #include "FormBrowser.h"
-#include "form_browser.h"
+#include "forms/form_browser.h"
 #include "xformsBC.h"
 
 FormBrowser::FormBrowser(ControlButtons & c, string const & t, bool allowResize)
-	: FormDB<FD_form_browser>(c, t, allowResize)
+	: FormDB<FD_browser>(c, t, allowResize)
 {}
 
 
 void FormBrowser::build()
 {
-	dialog_.reset(build_browser());
+	dialog_.reset(build_browser(this));
 
 	// Manage the close button
 	bc().setCancel(dialog_->button_close);

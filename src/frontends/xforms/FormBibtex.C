@@ -16,9 +16,11 @@
 #include "xformsBC.h"
 #include "ControlBibtex.h"
 #include "FormBibtex.h"
-#include "form_bibtex.h"
+#include "forms/form_bibtex.h"
 #include "Tooltips.h"
 #include "xforms_helpers.h"
+#include FORMS_H_LOCATION
+
 #include "helper_funcs.h"
 #include "gettext.h"
 #include "debug.h"
@@ -31,7 +33,7 @@ using std::vector;
 using std::sort;
 
 
-typedef FormCB<ControlBibtex, FormDB<FD_form_bibtex> > base_class;
+typedef FormCB<ControlBibtex, FormDB<FD_bibtex> > base_class;
 
 FormBibtex::FormBibtex(ControlBibtex & c)
 	: base_class(c, _("BibTeX Database"))
@@ -40,7 +42,7 @@ FormBibtex::FormBibtex(ControlBibtex & c)
 
 void FormBibtex::build()
 {
-	dialog_.reset(build_bibtex());
+	dialog_.reset(build_bibtex(this));
 
 	fl_set_input_return(dialog_->input_database, FL_RETURN_CHANGED);
 	fl_set_input_return(dialog_->input_style, FL_RETURN_CHANGED);

@@ -21,12 +21,12 @@
 #include "RadioButtonGroup.h"
 
 class ControlPrint;
-struct FD_form_print;
+struct FD_print;
 
 /** This class provides an XForms implementation of the FormPrint Dialog.
     The print dialog allows users to print their documents.
  */
-class FormPrint : public FormCB<ControlPrint, FormDB<FD_form_print> > {
+class FormPrint : public FormCB<ControlPrint, FormDB<FD_print> > {
 public:
 	///
 	FormPrint(ControlPrint &);
@@ -40,9 +40,6 @@ private:
 	virtual void update();
 	/// Filter the inputs on callback from xforms
 	virtual ButtonPolicy::SMInput input(FL_OBJECT *, long);
-
-	/// Fdesign generated method
-	FD_form_print * build_print();
 
 	/// print target
 	RadioButtonGroup target_;

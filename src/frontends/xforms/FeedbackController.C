@@ -22,6 +22,7 @@
 #include "gettext.h"        // _()
 #include "xforms_helpers.h" // formatted
 #include "support/LAssert.h"
+#include FORMS_H_LOCATION
 
 FeedbackController::FeedbackController()
 	: warning_posted_(false), message_widget_(0)

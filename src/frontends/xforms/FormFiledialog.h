@@ -18,8 +18,7 @@
 
 #include "LString.h"
 
-#include FORMS_H_LOCATION
-#include "form_filedialog.h"
+#include "forms_fwd.h"
 
 #include "frontends/FileDialog.h"
 
@@ -47,6 +46,8 @@ public:
 //}
 
 
+class FD_filedialog;
+
 class FileDialog::Private : public boost::signals::trackable {
 public:
 	///
@@ -73,7 +74,7 @@ public:
 
 private:
 	/// data
-	static FD_form_filedialog * pFileDlgForm;
+	static FD_filedialog * pFileDlgForm;
 	///
 	static FileDialog::Private * pCurrentDlg;
 	///
@@ -102,9 +103,6 @@ private:
 	bool force_cancel;
 	///
 	bool force_ok;
-
-	/// build the dialog
-	FD_form_filedialog * build_filedialog();
 
 	/** Redraw the form (on receipt of a Signal indicating, for example,
 	    that the xform colors have been re-mapped).

@@ -16,7 +16,7 @@
 #ifndef FEEDBACKCONTROLLER_H
 #define FEEDBACKCONTROLLER_H
 
-#include FORMS_H_LOCATION
+#include "forms_fwd.h"
 #include "LString.h"
 
 #ifdef __GNUG__

@@ -17,11 +17,11 @@
 #include "FormBase.h"
 
 class ControlSpellchecker;
-struct FD_form_spellchecker;
+struct FD_spellchecker;
 
 /** This class provides an XForms implementation of the FormSpellchecker Dialog.
  */
-class FormSpellchecker : public FormCB<ControlSpellchecker, FormDB<FD_form_spellchecker> > {
+class FormSpellchecker : public FormCB<ControlSpellchecker, FormDB<FD_spellchecker> > {
 public:
 	///
 	FormSpellchecker(ControlSpellchecker &);
@@ -45,9 +45,6 @@ private:
 
 	/// Filter the inputs
 	virtual ButtonPolicy::SMInput input(FL_OBJECT *, long);
-
-	/// Fdesign generated method
-	FD_form_spellchecker  * build_spellchecker();
 };
 
 #endif // FORMSPELLCHECKER_H

@@ -23,7 +23,8 @@
 
 #include <boost/shared_ptr.hpp>
 
-#include FORMS_H_LOCATION
+#include "forms_fwd.h"
+#include <X11/X.h> // Window
 
 #include <vector>
 #include <map>

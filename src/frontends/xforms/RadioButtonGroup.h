@@ -19,7 +19,7 @@
 #include "support/types.h"
 #include <vector>
 #include <utility>
-#include FORMS_H_LOCATION
+#include "forms_fwd.h"
 
 /** This class simplifies the work with a group of radio buttons,
  * the idea is that you register a bunch of radio buttons with the accompanying

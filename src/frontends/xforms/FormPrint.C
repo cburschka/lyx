@@ -16,7 +16,7 @@
 #include "xformsBC.h"
 #include "ControlPrint.h"
 #include "FormPrint.h"
-#include "form_print.h"
+#include "forms/form_print.h"
 
 #include "frontends/LyXView.h"
 
@@ -26,10 +26,11 @@
 #include "xforms_helpers.h"
 
 #include "support/lstrings.h"
+#include FORMS_H_LOCATION
 
 using std::make_pair;
 
-typedef FormCB<ControlPrint, FormDB<FD_form_print> > base_class;
+typedef FormCB<ControlPrint, FormDB<FD_print> > base_class;
 
 FormPrint::FormPrint(ControlPrint & c)
 	: base_class(c, _("Print")),
@@ -39,7 +40,7 @@ FormPrint::FormPrint(ControlPrint & c)
 
 void FormPrint::build()
 {
-	dialog_.reset(build_print());
+	dialog_.reset(build_print(this));
 
 	// Manage the ok, apply and cancel/close buttons
 	bc().setOK(dialog_->button_ok);

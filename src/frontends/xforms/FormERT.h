@@ -17,13 +17,13 @@
 #include "FormBase.h"
 
 class ControlERT;
-struct FD_form_ert;
+struct FD_ert;
 
 /** This class provides an XForms implementation of the ERT
     Dialog.
  */
 class FormERT
-	: public FormCB<ControlERT, FormDB<FD_form_ert> > {
+	: public FormCB<ControlERT, FormDB<FD_ert> > {
 public:
 	///
 	FormERT(ControlERT &);
@@ -34,9 +34,6 @@ private:
 	virtual void build();
 	/// Update dialog before/whilst showing it.
 	virtual void update();
-
-	/// Fdesign generated method
-	FD_form_ert * build_ert();
 };
 
 #endif // FORMERT_H

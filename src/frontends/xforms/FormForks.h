@@ -16,10 +16,10 @@
 
 #include "FormBase.h"
 
-struct FD_form_forks;
 class ControlForks;
+struct FD_forks;
 
-class FormForks : public FormCB<ControlForks, FormDB<FD_form_forks> > {
+class FormForks : public FormCB<ControlForks, FormDB<FD_forks> > {
 public:
 	///
 	FormForks(ControlForks &);
@@ -36,9 +36,6 @@ private:
 	virtual void update();
 	/// Filter the inputs on callback from xforms
 	virtual ButtonPolicy::SMInput input(FL_OBJECT *, long);
-
-	/// Fdesign generated method
-	FD_form_forks * build_forks();
 
 	ButtonPolicy::SMInput input_browser_children();
 	ButtonPolicy::SMInput input_browser_kill();

@@ -17,12 +17,12 @@
 #include "FormBase.h"
 
 class ControlFloat;
-struct FD_form_float;
+struct FD_float;
 
 /** This class provides an XForms implementation of the Float
     Dialog.
  */
-class FormFloat : public FormCB<ControlFloat, FormDB<FD_form_float> > {
+class FormFloat : public FormCB<ControlFloat, FormDB<FD_float> > {
 public:
 	///
 	FormFloat(ControlFloat &);
@@ -36,9 +36,6 @@ private:
 	virtual void update();
 	/// Filter the inputs on callback from xforms
 	virtual ButtonPolicy::SMInput input(FL_OBJECT *, long);
-
-	/// Fdesign generated method
-	FD_form_float * build_float();
 };
 
 #endif // FORMFLOAT_H

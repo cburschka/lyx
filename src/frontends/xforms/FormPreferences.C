@@ -13,7 +13,7 @@
 #endif
 
 #include "FormPreferences.h"
-#include "form_preferences.h"
+#include "forms/form_preferences.h"
 #include "Dialogs.h"
 
 #include "buffer.h"
@@ -31,6 +31,7 @@
 #include "combox.h"
 #include "Color.h"
 #include "input_validators.h"
+#include "forms_gettext.h"
 #include "xforms_helpers.h"
 #include "helper_funcs.h"
 
@@ -43,6 +44,7 @@
 
 #include <boost/bind.hpp>
 
+#include FORMS_H_LOCATION
 #include <utility>
 #include <iomanip>
 #include <X11/Xlib.h>
@@ -159,7 +161,7 @@ void FormPreferences::hide()
 
 void FormPreferences::build()
 {
-	dialog_.reset(build_preferences());
+	dialog_.reset(build_preferences(this));
 
 	// Manage the restore, save, apply and cancel/close buttons
 	bc().setOK(dialog_->button_ok);
@@ -171,11 +173,11 @@ void FormPreferences::build()
 	setMessageWidget(dialog_->text_warning);
 
 	// build the tab folders
-	converters_tab_.reset(build_inner_tab());
-	look_n_feel_tab_.reset(build_inner_tab());
-	inputs_tab_.reset(build_inner_tab());
-	outputs_tab_.reset(build_inner_tab());
-	lang_opts_tab_.reset(build_inner_tab());
+	converters_tab_.reset(build_preferences_inner_tab(this));
+	look_n_feel_tab_.reset(build_preferences_inner_tab(this));
+	inputs_tab_.reset(build_preferences_inner_tab(this));
+	outputs_tab_.reset(build_preferences_inner_tab(this));
+	lang_opts_tab_.reset(build_preferences_inner_tab(this));
 
 	// build actual tabfolder contents
 	// these will become nested tabfolders
@@ -378,7 +380,7 @@ FormPreferences::Colors::Colors(FormPreferences & p)
 {}
 
 
-FD_form_colors const * FormPreferences::Colors::dialog()
+FD_preferences_colors const * FormPreferences::Colors::dialog()
 {
 	return dialog_.get();
 }
@@ -457,7 +459,7 @@ void FormPreferences::Colors::apply()
 
 void FormPreferences::Colors::build()
 {
-	dialog_.reset(parent_.build_colors());
+	dialog_.reset(build_preferences_colors(this));
 
 	fl_set_object_color(dialog_->button_color,
 			    GUI_COLOR_CHOICE, GUI_COLOR_CHOICE);
@@ -924,7 +926,7 @@ FormPreferences::Converters::Converters(FormPreferences & p)
 {}
 
 
-FD_form_converters const * FormPreferences::Converters::dialog()
+FD_preferences_converters const * FormPreferences::Converters::dialog()
 {
 	return dialog_.get();
 }
@@ -940,7 +942,7 @@ void FormPreferences::Converters::apply() const
 
 void FormPreferences::Converters::build()
 {
-	dialog_.reset(parent_.build_converters());
+	dialog_.reset(build_preferences_converters(this));
 
 	fl_set_input_return(dialog_->input_converter, FL_RETURN_CHANGED);
 	fl_set_input_return(dialog_->input_flags, FL_RETURN_CHANGED);
@@ -1183,7 +1185,7 @@ FormPreferences::Formats::Formats(FormPreferences &  p)
 {}
 
 
-FD_form_formats const * FormPreferences::Formats::dialog()
+FD_preferences_formats const * FormPreferences::Formats::dialog()
 {
 	return dialog_.get();
 }
@@ -1197,7 +1199,7 @@ void FormPreferences::Formats::apply() const
 
 void FormPreferences::Formats::build()
 {
-	dialog_.reset(parent_.build_formats());
+	dialog_.reset(build_preferences_formats(this));
 
 	fl_set_input_return(dialog_->input_format, FL_RETURN_CHANGED);
 	fl_set_input_return(dialog_->input_viewer, FL_RETURN_CHANGED);
@@ -1408,7 +1410,7 @@ FormPreferences::InputsMisc::InputsMisc(FormPreferences &  p)
 {}
 
 
-FD_form_inputs_misc const * FormPreferences::InputsMisc::dialog()
+FD_preferences_inputs_misc const * FormPreferences::InputsMisc::dialog()
 {
 	return dialog_.get();
 }
@@ -1423,7 +1425,7 @@ void FormPreferences::InputsMisc::apply() const
 
 void FormPreferences::InputsMisc::build()
 {
-	dialog_.reset(parent_.build_inputs_misc());
+	dialog_.reset(build_preferences_inputs_misc(this));
 
 	fl_set_input_return(dialog_->input_date_format, FL_RETURN_CHANGED);
 
@@ -1456,7 +1458,7 @@ FormPreferences::Interface::Interface(FormPreferences &  p)
 {}
 
 
-FD_form_interface const * FormPreferences::Interface::dialog()
+FD_preferences_interface const * FormPreferences::Interface::dialog()
 {
 	return dialog_.get();
 }
@@ -1478,7 +1480,7 @@ void FormPreferences::Interface::apply() const
 
 void FormPreferences::Interface::build()
 {
-	dialog_.reset(parent_.build_interface());
+	dialog_.reset(build_preferences_interface(this));
 
 	fl_set_input_return(dialog_->input_popup_normal_font, FL_RETURN_CHANGED);
 	fl_set_input_return(dialog_->input_popup_bold_font, FL_RETURN_CHANGED);
@@ -1573,7 +1575,7 @@ FormPreferences::Language::Language(FormPreferences &  p)
 {}
 
 
-FD_form_language const * FormPreferences::Language::dialog()
+FD_preferences_language const * FormPreferences::Language::dialog()
 {
 	return dialog_.get();
 }
@@ -1625,7 +1627,7 @@ void FormPreferences::Language::apply()
 
 void FormPreferences::Language::build()
 {
-	dialog_.reset(parent_.build_language());
+	dialog_.reset(build_preferences_language(this));
 
 	fl_set_input_return(dialog_->input_package, FL_RETURN_CHANGED);
 	fl_set_input_return(dialog_->input_command_begin, FL_RETURN_CHANGED);
@@ -1811,7 +1813,7 @@ FormPreferences::LnFmisc::LnFmisc(FormPreferences &  p)
 {}
 
 
-FD_form_lnf_misc const * FormPreferences::LnFmisc::dialog()
+FD_preferences_lnf_misc const * FormPreferences::LnFmisc::dialog()
 {
 	return dialog_.get();
 }
@@ -1854,7 +1856,7 @@ void FormPreferences::LnFmisc::apply() const
 
 void FormPreferences::LnFmisc::build()
 {
-	dialog_.reset(parent_.build_lnf_misc());
+	dialog_.reset(build_preferences_lnf_misc(this));
 
 	fl_set_counter_step(dialog_->counter_autosave, 1, 10);
 	fl_set_counter_step(dialog_->counter_wm_jump, 1, 10);
@@ -1944,7 +1946,7 @@ FormPreferences::OutputsMisc::OutputsMisc(FormPreferences &  p)
 {}
 
 
-FD_form_outputs_misc const * FormPreferences::OutputsMisc::dialog()
+FD_preferences_outputs_misc const * FormPreferences::OutputsMisc::dialog()
 {
 	return dialog_.get();
 }
@@ -1969,7 +1971,7 @@ void FormPreferences::OutputsMisc::apply() const
 
 void FormPreferences::OutputsMisc::build()
 {
-	dialog_.reset(parent_.build_outputs_misc());
+	dialog_.reset(build_preferences_outputs_misc(this));
 
 	fl_set_counter_step(dialog_->counter_line_len, 1, 10);
 
@@ -2042,7 +2044,7 @@ FormPreferences::Paths::Paths(FormPreferences &  p)
 {}
 
 
-FD_form_paths const * FormPreferences::Paths::dialog()
+FD_preferences_paths const * FormPreferences::Paths::dialog()
 {
 	return dialog_.get();
 }
@@ -2085,7 +2087,7 @@ void FormPreferences::Paths::apply()
 
 void FormPreferences::Paths::build()
 {
-	dialog_.reset(parent_.build_paths());
+	dialog_.reset(build_preferences_paths(this));
 
 	fl_set_input_return(dialog_->input_default_path, FL_RETURN_CHANGED);
 	fl_set_input_return(dialog_->input_template_path, FL_RETURN_CHANGED);
@@ -2293,7 +2295,7 @@ FormPreferences::Printer::Printer(FormPreferences &  p)
 {}
 
 
-FD_form_printer const * FormPreferences::Printer::dialog()
+FD_preferences_printer const * FormPreferences::Printer::dialog()
 {
 	return dialog_.get();
 }
@@ -2375,7 +2377,7 @@ FormPreferences::Printer::feedback(FL_OBJECT const * const ob) const
 
 void FormPreferences::Printer::build()
 {
-	dialog_.reset(parent_.build_printer());
+	dialog_.reset(build_preferences_printer(this));
 
 	fl_set_input_return(dialog_->input_command, FL_RETURN_CHANGED);
 	fl_set_input_return(dialog_->input_page_range, FL_RETURN_CHANGED);
@@ -2463,7 +2465,7 @@ FormPreferences::ScreenFonts::ScreenFonts(FormPreferences &  p)
 {}
 
 
-FD_form_screen_fonts const * FormPreferences::ScreenFonts::dialog()
+FD_preferences_screen_fonts const * FormPreferences::ScreenFonts::dialog()
 {
 	return dialog_.get();
 }
@@ -2587,7 +2589,7 @@ void FormPreferences::ScreenFonts::apply() const
 
 void FormPreferences::ScreenFonts::build()
 {
-	dialog_.reset(parent_.build_screen_fonts());
+	dialog_.reset(build_preferences_screen_fonts(this));
 
 	fl_set_counter_step(dialog_->counter_zoom, 1, 10);
 	fl_set_counter_step(dialog_->counter_dpi,  1, 10);
@@ -2771,7 +2773,7 @@ FormPreferences::SpellOptions::SpellOptions(FormPreferences &  p)
 {}
 
 
-FD_form_spelloptions const * FormPreferences::SpellOptions::dialog()
+FD_preferences_spelloptions const * FormPreferences::SpellOptions::dialog()
 {
 	return dialog_.get();
 }
@@ -2842,7 +2844,7 @@ void FormPreferences::SpellOptions::apply()
 
 void FormPreferences::SpellOptions::build()
 {
-	dialog_.reset(parent_.build_spelloptions());
+	dialog_.reset(build_preferences_spelloptions(this));
 
 	fl_addto_choice(dialog_->choice_spell_command,
 			_(" ispell | aspell "));

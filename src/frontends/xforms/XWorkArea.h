@@ -15,7 +15,6 @@
 #pragma interface
 #endif
 
-#include FORMS_H_LOCATION
 #include "XPainter.h"
 #include "frontends/mouse_state.h"
 #include "frontends/key_state.h"
@@ -25,6 +24,7 @@
 #include <boost/signals/signal2.hpp>
 #include <boost/signals/signal3.hpp>
 
+#include FORMS_H_LOCATION
 #include <utility>
 
 ///

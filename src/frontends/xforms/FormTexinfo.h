@@ -17,9 +17,9 @@
 #include "FormBase.h"
 #include "ControlTexinfo.h"
 
-struct FD_form_texinfo;
+struct FD_texinfo;
 
-class FormTexinfo : public FormCB<ControlTexinfo, FormDB<FD_form_texinfo> > {
+class FormTexinfo : public FormCB<ControlTexinfo, FormDB<FD_texinfo> > {
 public:
 	///
 	FormTexinfo(ControlTexinfo &);
@@ -35,8 +35,6 @@ private:
 	virtual ButtonPolicy::SMInput input(FL_OBJECT *, long);
 	///
 	void updateStyles(ControlTexinfo::texFileSuffix);
-	/// Fdesign generated method
-	FD_form_texinfo * build_texinfo();
 	///
 	ControlTexinfo::texFileSuffix activeStyle;
 };

@@ -15,10 +15,11 @@
 #include "xformsBC.h"
 #include "ControlError.h"
 #include "FormError.h"
-#include "form_error.h"
+#include "forms/form_error.h"
 #include "xforms_helpers.h" // formatted
+#include FORMS_H_LOCATION
 
-typedef FormCB<ControlError, FormDB<FD_form_error> > base_class;
+typedef FormCB<ControlError, FormDB<FD_error> > base_class;
 
 FormError::FormError(ControlError & c)
 	: base_class(c, _("LaTeX Error"))
@@ -27,7 +28,7 @@ FormError::FormError(ControlError & c)
 
 void FormError::build()
 {
-	dialog_.reset(build_error());
+	dialog_.reset(build_error(this));
 
 	// Manage the cancel/close button
 	bc().setCancel(dialog_->button_close);

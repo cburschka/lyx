@@ -15,18 +15,19 @@
 #include "FormToc.h"
 #include "xformsBC.h"
 #include "ControlToc.h"
-#include "form_toc.h"
+#include "forms/form_toc.h"
 #include "helper_funcs.h" // getStringFromVector
 #include "support/lstrings.h" // frontStrip, strip
 #include "debug.h"
 #include "gettext.h"
+#include FORMS_H_LOCATION
 
 #include <vector>
 
 using std::endl;
 
 
-typedef FormCB<ControlToc, FormDB<FD_form_toc> > base_class;
+typedef FormCB<ControlToc, FormDB<FD_toc> > base_class;
 
 FormToc::FormToc(ControlToc & c)
 	: base_class(c, _("Table of Contents"))
@@ -35,7 +36,7 @@ FormToc::FormToc(ControlToc & c)
 
 void FormToc::build()
 {
-	dialog_.reset(build_toc());
+	dialog_.reset(build_toc(this));
 
 	string const choice =
 		" " + getStringFromVector(controller().getTypes(), " | ") + " ";

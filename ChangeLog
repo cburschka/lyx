@@ -1,5 +1,10 @@
 2002-06-12  Angus Leeming  <leeming@lyx.org>
 
+	* configure.in: add xforms/forms/*.lo to the xforms version of
+	FRONTEND_GUILIB.
+
+2002-06-12  Angus Leeming  <leeming@lyx.org>
+
 	* configure.in: remove LYX_STL_STRING_FWD.
 
 2002-06-11  John Levon  <moz@compsoc.man.ac.uk>

@@ -15,8 +15,9 @@
 #include "xformsBC.h"
 #include "ControlShowFile.h"
 #include "FormShowFile.h"
-#include "form_browser.h"
+#include "forms/form_browser.h"
 #include "gettext.h"
+#include FORMS_H_LOCATION
 
 FormShowFile::FormShowFile(ControlShowFile & c)
 	: FormCB<ControlShowFile, FormBrowser>(c, string())

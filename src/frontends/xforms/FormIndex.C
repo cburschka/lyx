@@ -16,9 +16,10 @@
 #include "ControlIndex.h"
 #include "FormIndex.h"
 #include "frontends/LyXView.h"
-#include "form_index.h"
+#include "forms/form_index.h"
+#include FORMS_H_LOCATION
 
-typedef FormCB<ControlIndex, FormDB<FD_form_index> > base_class;
+typedef FormCB<ControlIndex, FormDB<FD_index> > base_class;
 
 FormIndex::FormIndex(ControlIndex & c)
 	: base_class(c, _("Index"))
@@ -27,7 +28,7 @@ FormIndex::FormIndex(ControlIndex & c)
 
 void FormIndex::build()
 {
-	dialog_.reset(build_index());
+	dialog_.reset(build_index(this));
 
 	fl_set_input_return(dialog_->input_key, FL_RETURN_CHANGED);
 	setPrehandler(dialog_->input_key);

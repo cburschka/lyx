@@ -16,14 +16,15 @@
 #include "xformsBC.h"
 #include "ControlTabularCreate.h"
 #include "FormTabularCreate.h"
-#include "form_tabular_create.h"
+#include "forms/form_tabular_create.h"
 #include "support/lstrings.h"
+#include FORMS_H_LOCATION
 
 
 using std::make_pair;
 
 
-typedef FormCB<ControlTabularCreate, FormDB<FD_form_tabular_create> > base_class;
+typedef FormCB<ControlTabularCreate, FormDB<FD_tabular_create> > base_class;
 
 FormTabularCreate::FormTabularCreate(ControlTabularCreate & c)
 	: base_class(c, _("Insert Tabular"))
@@ -32,7 +33,7 @@ FormTabularCreate::FormTabularCreate(ControlTabularCreate & c)
 
 void FormTabularCreate::build()
 {
-	dialog_.reset(build_tabular_create());
+	dialog_.reset(build_tabular_create(this));
 
 	fl_set_slider_bounds(dialog_->slider_rows, 1, 50);
 	fl_set_slider_bounds(dialog_->slider_columns, 1, 50);

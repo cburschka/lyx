@@ -16,15 +16,16 @@
 
 #include "xformsBC.h"
 #include "FormTexinfo.h"
-#include "form_texinfo.h"
+#include "forms/form_texinfo.h"
 #include "Tooltips.h"
 #include "gettext.h"
 #include "debug.h"
 #include "xforms_helpers.h"
 #include "support/LAssert.h"
+#include FORMS_H_LOCATION
 
 
-typedef FormCB<ControlTexinfo, FormDB<FD_form_texinfo> > base_class;
+typedef FormCB<ControlTexinfo, FormDB<FD_texinfo> > base_class;
 FormTexinfo::FormTexinfo(ControlTexinfo & c)
 	: base_class(c, _("LaTeX Information")),
 	  activeStyle(ControlTexinfo::cls)
@@ -32,7 +33,7 @@ FormTexinfo::FormTexinfo(ControlTexinfo & c)
 
 
 void FormTexinfo::build() {
-	dialog_.reset(build_texinfo());
+	dialog_.reset(build_texinfo(this));
 	// courier medium
 	fl_set_browser_fontstyle(dialog_->browser,FL_FIXED_STYLE);
 	// with Path is default

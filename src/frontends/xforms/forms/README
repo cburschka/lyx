@@ -5,16 +5,22 @@ NOTE: An exception to the above is any tabbed form which
       xforms requires multiple forms to create.  In that case
       the group of forms constitutes one gui form.
 
-All forms should be named form_xxx and saved into a file by the same name.
+* All forms should be named form_xxx and saved into a file of the same name.
 For example, the copyright notice is called form_copyright and is stored in
-form_copyright.fd.  Its used by class FormCopyright.  If you match this pattern
-the fdfix.sh script will do all the conversions for you.  That'll make
-updating the source incredibly easy.
+form_copyright.fd.
+Tabbed folders should be named form_xxx_yyy.
+For example, the file folder in the graphics dialog has the identifier
+form_graphics_file.
 
-Name all buttons and other form components that are likely to cause a callback.
-The names should be of the form:  button_ok, radio_group_item and so on.
+If you match this pattern, the fdfix.sh script will be able to manipulate
+the generated .c and .h files to produce the .C and .h files used by LyX. A form
+called form_xxx will result in a struct FD_xxx.
 
-Being more explicit (Angus, 12 Mar 2002):
+* Name all buttons and other form components that are likely to cause a
+callback. The names should be of the form:  button_ok, radio_group_item and
+so on.
+
+Being more explicit:
 	class             | prefix
 	------------------+-------
 	FL_BROWSER        | browser
@@ -42,51 +48,13 @@ scripts. At the moment this applies only to bmtable:
 Enter the full name of the callback eg.:
         C_FormBaseOkCB
 
-That is, they all have the same format: C_##FormName##CallbackName.
-Your code will then need to use the appropriate macro to setup this C callback
-function which will in turn call the corresponding static class member function
-of the form FormName::CallbackName.  You should be able to copy the macro
-entries from a similar dialog for reuse without having to change anything.
+If you follow these simple rules then you will generate code for functions
+build_xxx that will need no further editing to make them work. For example,
+form_graphics.h contains the struct declarations and build methods, so:
 
-The name of the wrapped dialog will be dialog_ eg.
-        typedef struct {
-        ...
-        } FD_form_copyright;
-
-        FD_form_copyright * dialog_;
-
-Angus Leeming has modified the scripts to forward declare FD_form_xxxx thereby
-removing one inter-file dependency and removing the struct declaration from the
-FormXxxx.h file which was the previous practice.
-
-If you follow these simple rules then the generated code for create_form_form_xxxx
-can will be converted as the FormXxxx::build_xxxx method without any extra 
-editting to make it work.  Every forms implementation will thereby follow a very
-simple pattern and make it easier to maintain.
-
-All the forms are rebuild by running `make test`.  This will generate all
-the form_xxxx.[Ch] files. You should run `make updatesrc` to install them in the
-parent directory.  `make updatesrc` will also regenerate all the files for you
-so you don't have to do the `make test` step unless, for example, you are
-testing the conversion scripts. The files fdfix.sh, fdfixc.sed, fdfixh.sed and
-makefile contain the necessary smarts to convert the generated code into
-something that can be used directly in the LyX codebase.
-
-The easiest way to fit into the pattern is to copy an existing dialogs
-implementation and adjust it to suit, keeping the variable names the same.
-Take a look at the existing .fd files as well to see what is needed in there
-in the way of callback names and widget names.
-
-In addition a lot of work can be saved by using the code that has already been
-written in the "lyx" module of the LyX CVS repository. This is where the old
-development branch is kept.  The code there will need to be modified slightly
-to meet these new guidelines.  In addition, an earlier generation signalling
-system was used in that code. A conversion script called gtkmmconvert2 is 
-available from the gtk-- distribution.  It updates all the signals to use
-libsigc++.
-
-Don't reinvent the wheel.  There's 18 months worth of code in the "lyx" cvs
-module that you should at least use as a guide even if you don't actually make
-direct use of it.
-
-Allan. (ARRae)
+extern FD_graphics * build_graphics();
+extern FD_graphics_file * build_graphics_file();
+extern FD_graphics_size * build_graphics_size();
+extern FD_graphics_bbox * build_graphics_bbox();
+extern FD_graphics_special * build_graphics_special();
+extern FD_graphics_lyxview * build_graphics_lyxview();

@@ -20,10 +20,10 @@
 #include "insets/insetexternal.h"
 
 class ControlExternal;
-struct FD_form_external;
+struct FD_external;
 
 /// The class for editing External insets via a dialog
-class FormExternal : public FormCB<ControlExternal, FormDB<FD_form_external> > {
+class FormExternal : public FormCB<ControlExternal, FormDB<FD_external> > {
 public:
 	///
 	FormExternal(ControlExternal &);
@@ -43,9 +43,6 @@ private:
 
 	///
 	void updateComboChange();
-
-	/// Fdesign generated method
-	FD_form_external * build_external();
 };
 
 #endif // FORMEXTERNAL_H

@@ -16,6 +16,7 @@
 
 #include "xformsBC.h"
 #include "xforms_helpers.h"
+#include FORMS_H_LOCATION
 
 
 xformsBC::xformsBC(string const & cancel, string const & close)

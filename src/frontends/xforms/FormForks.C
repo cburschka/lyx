@@ -16,18 +16,19 @@
 #include "xformsBC.h"
 #include "FormForks.h"
 #include "ControlForks.h"
-#include "form_forks.h"
+#include "forms/form_forks.h"
 #include "Tooltips.h"
 #include "helper_funcs.h"
 #include "xforms_helpers.h"
 #include "gettext.h"
 #include "support/lstrings.h"
+#include FORMS_H_LOCATION
 
 using std::vector;
 using std::find;
 using std::find_if;
 
-typedef FormCB<ControlForks, FormDB<FD_form_forks> > base_class;
+typedef FormCB<ControlForks, FormDB<FD_forks> > base_class;
 
 FormForks::FormForks(ControlForks & c)
 	: base_class(c, _("Child processes"))
@@ -35,7 +36,7 @@ FormForks::FormForks(ControlForks & c)
 
 
 void FormForks::build() {
-	dialog_.reset(build_forks());
+	dialog_.reset(build_forks(this));
 
 	// It appears that the browsers aren't initialised properly.
 	// This fudge fixes tings.

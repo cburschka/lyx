@@ -18,11 +18,13 @@
 #include "xformsBC.h"
 #include "ControlCharacter.h"
 #include "FormCharacter.h"
-#include "form_character.h"
+#include "forms/form_character.h"
 #include "gettext.h"
 #include "combox.h"
 #include "helper_funcs.h"
 #include "xforms_helpers.h"
+#include FORMS_H_LOCATION
+
 #include "frnt_lang.h"
 
 #include "support/lstrings.h"
@@ -32,14 +34,14 @@ using std::find;
 
 using namespace frnt;
 
-typedef FormCB<ControlCharacter, FormDB<FD_form_character> > base_class;
+typedef FormCB<ControlCharacter, FormDB<FD_character> > base_class;
 
 FormCharacter::FormCharacter(ControlCharacter & c)
 	: base_class(c, _("Character Layout"), false)
 {}
 
 
-void FormCharacter::ComboInputCB(int, void * v, Combox * combox)
+void FormCharacter::ComboInputCB(int, void * v, Combox *)
 {
 	FormCharacter * pre = static_cast<FormCharacter*>(v);
 	// must use input() directly, to avoid treating the Combox
@@ -49,7 +51,7 @@ void FormCharacter::ComboInputCB(int, void * v, Combox * combox)
 
 void FormCharacter::build()
 {
-	dialog_.reset(build_character());
+	dialog_.reset(build_character(this));
 
 	vector<FamilyPair>   const family = getFamilyData();
 	vector<SeriesPair>   const series = getSeriesData();

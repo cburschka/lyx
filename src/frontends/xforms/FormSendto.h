@@ -19,11 +19,11 @@
 
 class ControlSendto;
 class Format;
-struct FD_form_sendto;
+struct FD_sendto;
 
 /** This class provides an XForms implementation of the Custom Export Dialog.
  */
-class FormSendto : public FormCB<ControlSendto, FormDB<FD_form_sendto> > {
+class FormSendto : public FormCB<ControlSendto, FormDB<FD_sendto> > {
 public:
 	///
 	FormSendto(ControlSendto &);
@@ -37,9 +37,6 @@ private:
 	virtual void update();
 	/// Filter the inputs on callback from xforms
 	virtual ButtonPolicy::SMInput input(FL_OBJECT *, long);
-
-	/// Fdesign generated method
-	FD_form_sendto * build_sendto();
 
 	std::vector<Format const *> all_formats_;
 };

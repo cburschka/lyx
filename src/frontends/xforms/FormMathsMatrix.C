@@ -18,13 +18,14 @@
 #include <algorithm>
 
 #include "FormMathsMatrix.h"
-#include "form_maths_matrix.h"
+#include "forms/form_maths_matrix.h"
 #include "Dialogs.h"
 #include "frontends/LyXView.h"
 #include "Lsstream.h"
 #include "lyxfunc.h"
 #include "support/LAssert.h"
 #include "support/lyxalgo.h" // lyx::count
+#include FORMS_H_LOCATION
 
 #ifndef CXX_GLOBAL_CSTD
 using std::strlen;
@@ -67,7 +68,7 @@ FL_FORM * FormMathsMatrix::form() const
 
 void FormMathsMatrix::build()
 {
-	dialog_.reset(build_maths_matrix());
+	dialog_.reset(build_maths_matrix(this));
 
 	fl_addto_choice(dialog_->choice_valign, _("Top | Center | Bottom"));
 	fl_set_choice(dialog_->choice_valign, 2);

@@ -15,6 +15,7 @@
 #endif
 
 #include "XFormsView.h"
+#include FORMS_H_LOCATION
 #if FL_VERSION < 1 && (FL_REVISION < 89 || (FL_REVISION == 89 && FL_FIXLEVEL < 5))
 #include "frontends/xforms/lyxlookup.h"
 #endif

@@ -12,7 +12,7 @@
 #ifndef XFORMSBC_H
 #define XFORMSBC_H
 
-#include FORMS_H_LOCATION
+#include "forms_fwd.h"
 
 #ifdef __GNUG__
 #pragma interface

@@ -16,7 +16,7 @@
 #include "xformsBC.h"
 #include "ControlGraphics.h"
 #include "FormGraphics.h"
-#include "form_graphics.h"
+#include "forms/form_graphics.h"
 #include "Alert.h"
 
 #include "xforms_helpers.h"
@@ -27,6 +27,7 @@
 #include "support/filetools.h"  // for MakeAbsPath etc
 #include "insets/insetgraphicsParams.h"
 #include "lyxrc.h" // for lyxrc.display_graphics
+#include FORMS_H_LOCATION
 
 using std::endl;
 using std::vector;
@@ -50,7 +51,7 @@ LyXLength getLyXLengthFromWidgets(FL_OBJECT * input, FL_OBJECT * choice)
 } // namespace anon
 
 
-typedef FormCB<ControlGraphics, FormDB<FD_form_graphics> > base_class;
+typedef FormCB<ControlGraphics, FormDB<FD_graphics> > base_class;
 
 FormGraphics::FormGraphics(ControlGraphics & c)
 	: base_class(c, _("Graphics"), false)
@@ -71,7 +72,7 @@ void FormGraphics::redraw()
 
 void FormGraphics::build()
 {
-	dialog_.reset(build_graphics());
+	dialog_.reset(build_graphics(this));
 
 	// Allow the base class to control messages
 	setMessageWidget(dialog_->text_warning);
@@ -83,7 +84,7 @@ void FormGraphics::build()
 	bc().setRestore(dialog_->button_restore);
 
 	// the file section
-	file_.reset(build_file());
+	file_.reset(build_graphics_file(this));
 
 	fl_set_input_return (file_->input_filename, FL_RETURN_CHANGED);
 	fl_set_input_return (file_->input_subcaption, FL_RETURN_CHANGED);
@@ -113,7 +114,7 @@ void FormGraphics::build()
 	bc().addReadOnly(file_->check_nounzip);
 
 	// the lyxview section
-	lyxview_.reset(build_lyxview());
+	lyxview_.reset(build_graphics_lyxview(this));
 
 	fl_set_input_return (lyxview_->input_lyxwidth, FL_RETURN_CHANGED);
 	fl_set_input_return (lyxview_->input_lyxheight, FL_RETURN_CHANGED);
@@ -133,7 +134,7 @@ void FormGraphics::build()
 	bc().addReadOnly(lyxview_->radio_nodisplay);
 
 	// the size section
-	size_.reset(build_size());
+	size_.reset(build_graphics_size(this));
 
 	fl_set_input_return (size_->input_scale, FL_RETURN_CHANGED);
 	fl_set_input_return (size_->input_width, FL_RETURN_CHANGED);
@@ -158,7 +159,7 @@ void FormGraphics::build()
 	bc().addReadOnly(size_->check_aspectratio);
 
 	// the bounding box selection
-	bbox_.reset(build_bbox());
+	bbox_.reset(build_graphics_bbox(this));
 	fl_set_input_return (bbox_->input_bb_x0, FL_RETURN_CHANGED);
 	fl_set_input_return (bbox_->input_bb_y0, FL_RETURN_CHANGED);
 	fl_set_input_return (bbox_->input_bb_x1, FL_RETURN_CHANGED);
@@ -180,7 +181,7 @@ void FormGraphics::build()
 	bc().addReadOnly(bbox_->check_clip);
 
 	// the rotate section
-	special_.reset(build_special());
+	special_.reset(build_graphics_special(this));
 
 	fl_set_input_return (special_->input_special, FL_RETURN_CHANGED);
 	setPrehandler(special_->input_special);

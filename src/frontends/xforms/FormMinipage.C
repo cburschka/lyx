@@ -15,13 +15,14 @@
 #include "xformsBC.h"
 #include "ControlMinipage.h"
 #include "FormMinipage.h"
-#include "form_minipage.h"
+#include "forms/form_minipage.h"
 #include "support/lstrings.h"
 #include "helper_funcs.h"
 #include "debug.h"
 #include "xforms_helpers.h"
+#include FORMS_H_LOCATION
 
-typedef FormCB<ControlMinipage, FormDB<FD_form_minipage> > base_class;
+typedef FormCB<ControlMinipage, FormDB<FD_minipage> > base_class;
 
 FormMinipage::FormMinipage(ControlMinipage & c)
 	: base_class(c, _("Minipage Options"))
@@ -30,7 +31,7 @@ FormMinipage::FormMinipage(ControlMinipage & c)
 
 void FormMinipage::build()
 {
-	dialog_.reset(build_minipage());
+	dialog_.reset(build_minipage(this));
 
 	// Allow the base class to control messages
 	setMessageWidget(dialog_->text_warning);

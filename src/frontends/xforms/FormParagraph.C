@@ -15,7 +15,7 @@
 #include FORMS_H_LOCATION
 
 #include "FormParagraph.h"
-#include "form_paragraph.h"
+#include "forms/form_paragraph.h"
 #include "ControlParagraph.h"
 #include "ParagraphParameters.h"
 #include "xforms_helpers.h"
@@ -28,6 +28,7 @@
 
 #include "support/lstrings.h"
 #include "support/LAssert.h"
+#include FORMS_H_LOCATION
 
 #include <functional>
 
@@ -35,7 +36,7 @@ using std::vector;
 using std::bind2nd;
 using std::remove_if;
 
-typedef FormCB<ControlParagraph, FormDB<FD_form_paragraph> > base_class;
+typedef FormCB<ControlParagraph, FormDB<FD_paragraph> > base_class;
   
 FormParagraph::FormParagraph(ControlParagraph & c)
 	: base_class(c, _("Paragraph Layout"), false)
@@ -44,7 +45,7 @@ FormParagraph::FormParagraph(ControlParagraph & c)
 void FormParagraph::build()
 {
 	// the tabbed folder
-	dialog_.reset(build_paragraph());
+	dialog_.reset(build_paragraph(this));
 
 	// Allow the base class to control messages
 	setMessageWidget(dialog_->text_warning);

@@ -15,6 +15,7 @@
 #endif
 
 #include "RadioButtonGroup.h"
+#include FORMS_H_LOCATION
 
 #include "debug.h" // for lyxerr
 #include "support/lyxfunctional.h"

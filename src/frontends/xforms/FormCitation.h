@@ -20,9 +20,9 @@
 /** This class provides an XForms implementation of the Citation Dialog.
  */
 class ControlCitation;
-struct FD_form_citation;
+struct FD_citation;
 
-class FormCitation : public FormCB<ControlCitation, FormDB<FD_form_citation> > {
+class FormCitation : public FormCB<ControlCitation, FormDB<FD_citation> > {
 public:
 	///
 	FormCitation(ControlCitation &);
@@ -46,9 +46,6 @@ private:
 	virtual void update();
 	/// Filter the inputs on callback from xforms
 	virtual ButtonPolicy::SMInput input(FL_OBJECT *, long);
-
-	/// Fdesign generated method
-	FD_form_citation * build_citation();
 
 	/// search for a citation
 	void findBiblio(biblio::Direction const dir);

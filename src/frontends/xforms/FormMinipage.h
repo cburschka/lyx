@@ -17,13 +17,13 @@
 #include "FormBase.h"
 
 class ControlMinipage;
-struct FD_form_minipage;
+struct FD_minipage;
 
 /** This class provides an XForms implementation of the Minipage
     Dialog.
  */
 class FormMinipage
-	: public FormCB<ControlMinipage, FormDB<FD_form_minipage> > {
+	: public FormCB<ControlMinipage, FormDB<FD_minipage> > {
 public:
 	///
 	FormMinipage(ControlMinipage &);
@@ -36,9 +36,6 @@ private:
 	virtual void update();
 	/// Filter the inputs on callback from xforms
 	virtual ButtonPolicy::SMInput input(FL_OBJECT *, long);
-
-	/// Fdesign generated method
-	FD_form_minipage * build_minipage();
 };
 
 #endif // FORMMINIPAGE_H

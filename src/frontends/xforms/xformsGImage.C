@@ -20,6 +20,16 @@
 #include "support/LAssert.h"
 #include "support/lyxfunctional.h"  // compare_memfun
 
+#include FORMS_H_LOCATION
+
+#ifdef HAVE_FLIMAGE_H
+# include <flimage.h>
+#else
+# ifdef HAVE_X11_FLIMAGE_H
+# include <X11/flimage.h>
+# endif
+#endif
+
 using std::find_if;
 
 namespace {

@@ -20,7 +20,7 @@
 
 #include <boost/scoped_ptr.hpp>
 
-struct FD_form_maths_style;
+struct FD_maths_style;
 
 /**
  * This class provides an XForms implementation of the maths style.
@@ -41,11 +41,8 @@ private:
 	/// Pointer to the actual instantiation of the xforms form
 	virtual FL_FORM * form() const;
 
-	// build the form
-	FD_form_maths_style * build_maths_style();
-
 	// Real GUI implementation
-	boost::scoped_ptr<FD_form_maths_style> dialog_;
+	boost::scoped_ptr<FD_maths_style> dialog_;
 
 	/// The current choice.
 	int style_;

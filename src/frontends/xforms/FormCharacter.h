@@ -24,7 +24,7 @@
 #include <boost/scoped_ptr.hpp>
 
 class Combox;
-struct FD_form_character;
+struct FD_character;
 
 /**
  * This class provides an XForms implementation of the Character Dialog.
@@ -32,7 +32,7 @@ struct FD_form_character;
  * in their documents.
  */
 class FormCharacter
-	: public FormCB<ControlCharacter, FormDB<FD_form_character> > {
+	: public FormCB<ControlCharacter, FormDB<FD_character> > {
 public:
 	///
 	FormCharacter(ControlCharacter &);
@@ -53,9 +53,6 @@ private:
 	/** Callback method (used only to activate Apply button when
 	    combox is changed */
 	static void ComboInputCB(int, void *, Combox *);
-
-	/// Fdesign generated method
-	FD_form_character * build_character();
 
 	///
 	boost::scoped_ptr<Combox> combo_language2_;

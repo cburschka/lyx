@@ -24,7 +24,7 @@
 
 #include <boost/scoped_ptr.hpp>
 
-#include FORMS_H_LOCATION // Can't forward-declare FL_FORM
+#include "forms_fwd.h"
 
 class xformsBC;
 class Tooltips;

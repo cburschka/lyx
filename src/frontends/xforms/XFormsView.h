@@ -16,7 +16,7 @@
 #pragma interface
 #endif
 
-#include FORMS_H_LOCATION
+#include "forms_fwd.h"
 
 #include "frontends/LyXView.h"
 

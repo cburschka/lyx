@@ -17,16 +17,11 @@
 #include "FormBase.h"
 
 class ControlThesaurus;
-struct FD_form_thesaurus;
-struct FD_form_noun;
-struct FD_form_verb;
-struct FD_form_adjective;
-struct FD_form_adverb;
-struct FD_form_other;
+struct FD_thesaurus;
 
 /** This class provides an XForms implementation of the Thesaurus dialog.
  */
-class FormThesaurus : public FormCB<ControlThesaurus, FormDB<FD_form_thesaurus> > {
+class FormThesaurus : public FormCB<ControlThesaurus, FormDB<FD_thesaurus> > {
 public:
 	///
 	FormThesaurus(ControlThesaurus &);
@@ -38,9 +33,6 @@ private:
 	virtual void build();
 	/// update dialog
 	virtual void update();
-
-	/// dialog build
-	FD_form_thesaurus * build_thesaurus();
 
 	/// set the replace word properly
 	void setReplace(string const & templ, string const & nstr);

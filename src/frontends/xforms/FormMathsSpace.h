@@ -20,7 +20,7 @@
 
 #include <boost/scoped_ptr.hpp>
 
-struct FD_form_maths_space;
+struct FD_maths_space;
 
 /**
  * This class provides an XForms implementation of the maths space.
@@ -41,11 +41,8 @@ private:
 	/// Pointer to the actual instantiation of the xforms form
 	virtual FL_FORM * form() const;
 
-	// build the form
-	FD_form_maths_space * build_maths_space();
-
 	// Real GUI implementation
-	boost::scoped_ptr<FD_form_maths_space> dialog_;
+	boost::scoped_ptr<FD_maths_space> dialog_;
 
 	/// The current choice.
 	int space_;

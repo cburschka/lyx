@@ -16,9 +16,10 @@
 #include "xformsBC.h"
 #include "ControlUrl.h"
 #include "FormUrl.h"
-#include "form_url.h"
+#include "forms/form_url.h"
+#include FORMS_H_LOCATION
 
-typedef FormCB<ControlUrl, FormDB<FD_form_url> > base_class;
+typedef FormCB<ControlUrl, FormDB<FD_url> > base_class;
 
 FormUrl::FormUrl(ControlUrl & c)
 	: base_class(c, _("Url"))
@@ -27,7 +28,7 @@ FormUrl::FormUrl(ControlUrl & c)
 
 void FormUrl::build()
 {
-	dialog_.reset(build_url());
+	dialog_.reset(build_url(this));
 
 	fl_set_input_return(dialog_->input_name, FL_RETURN_CHANGED);
 	fl_set_input_return(dialog_->input_url,  FL_RETURN_CHANGED);

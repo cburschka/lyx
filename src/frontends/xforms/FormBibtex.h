@@ -18,12 +18,12 @@
 #include "FormBase.h"
 
 class ControlBibtex;
-struct FD_form_bibtex;
+struct FD_bibtex;
 
 /**
  * For bibtex database setting
  */
-class FormBibtex : public FormCB<ControlBibtex, FormDB<FD_form_bibtex> > {
+class FormBibtex : public FormCB<ControlBibtex, FormDB<FD_bibtex> > {
 public:
 	///
 	FormBibtex(ControlBibtex &);
@@ -37,9 +37,6 @@ private:
 	virtual void update();
 	/// Filter the inputs on callback from xforms
 	virtual ButtonPolicy::SMInput input(FL_OBJECT *, long);
-
-	/// Fdesign generated method
-	FD_form_bibtex * build_bibtex();
 };
 
 #endif // FORMBIBTEX_H

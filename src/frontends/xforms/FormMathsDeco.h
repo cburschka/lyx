@@ -20,7 +20,7 @@
 
 #include <boost/scoped_ptr.hpp>
 
-struct FD_form_maths_deco;
+struct FD_maths_deco;
 
 /**
  * This class provides an XForms implementation of the maths deco.
@@ -41,11 +41,8 @@ private:
 	/// Pointer to the actual instantiation of the xforms form
 	virtual FL_FORM * form() const;
 
-	// build the form
-	FD_form_maths_deco * build_maths_deco();
-
 	// Real GUI implementation
-	boost::scoped_ptr<FD_form_maths_deco> dialog_;
+	boost::scoped_ptr<FD_maths_deco> dialog_;
 
 	/// Current choice
 	int deco_;

@@ -20,7 +20,7 @@
 
 #include <boost/scoped_ptr.hpp>
 
-struct FD_form_maths_matrix;
+struct FD_maths_matrix;
 
 /**
  * This class provides an XForms implementation of the maths matrix.
@@ -42,11 +42,8 @@ private:
 	/// Pointer to the actual instantiation of the xforms form
 	virtual FL_FORM * form() const;
 
-	// build the form
-	FD_form_maths_matrix * build_maths_matrix();
-
 	// Real GUI implementation
-	boost::scoped_ptr<FD_form_maths_matrix> dialog_;
+	boost::scoped_ptr<FD_maths_matrix> dialog_;
 };
 
 #endif //  FORM_MATHSMATRIX_H

@@ -15,11 +15,12 @@
 #include "xformsBC.h"
 #include "ControlBibitem.h"
 #include "FormBibitem.h"
-#include "form_bibitem.h"
+#include "forms/form_bibitem.h"
+#include FORMS_H_LOCATION
 #include "gettext.h"
 #include "support/lstrings.h" // compare
 
-typedef FormCB<ControlBibitem, FormDB<FD_form_bibitem> > base_class;
+typedef FormCB<ControlBibitem, FormDB<FD_bibitem> > base_class;
 
 FormBibitem::FormBibitem(ControlBibitem & c)
 	: base_class(c, _("Bibliography Entry"))
@@ -28,7 +29,7 @@ FormBibitem::FormBibitem(ControlBibitem & c)
 
 void FormBibitem::build()
 {
-	dialog_.reset(build_bibitem());
+	dialog_.reset(build_bibitem(this));
 
 	fl_set_input_return(dialog_->input_key,   FL_RETURN_CHANGED);
 	fl_set_input_return(dialog_->input_label, FL_RETURN_CHANGED);

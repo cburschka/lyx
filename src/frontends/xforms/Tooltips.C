@@ -24,6 +24,7 @@
 #include "gettext.h"
 #include "support/lstrings.h"
 #include "support/LAssert.h"
+#include FORMS_H_LOCATION
 
 #include <boost/bind.hpp>
 

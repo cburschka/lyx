@@ -16,9 +16,10 @@
 #endif
 
 #include "FormMathsDeco.h"
-#include "form_maths_deco.h"
+#include "forms/form_maths_deco.h"
 #include "Dialogs.h"
 #include "bmtable.h"
+#include FORMS_H_LOCATION
 
 #include "deco.xbm"
 
@@ -51,7 +52,7 @@ FL_FORM * FormMathsDeco::form() const
 
 void FormMathsDeco::build()
 {
-	dialog_.reset(build_maths_deco());
+	dialog_.reset(build_maths_deco(this));
 
 	fl_set_bmtable_data(dialog_->bmtable_deco1, 3, 4,
 			    deco1_width, deco1_height, deco1_bits);

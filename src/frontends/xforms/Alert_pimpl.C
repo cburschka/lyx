@@ -14,7 +14,7 @@
 
 #include "Alert.h"
 #include "Alert_pimpl.h"
-#include "xforms_helpers.h"
+#include "forms_gettext.h"
 #include "gettext.h"
 
 #include <algorithm>

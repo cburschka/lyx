@@ -17,11 +17,11 @@
 #include "FormBase.h"
 
 class ControlRef;
-struct FD_form_ref;
+struct FD_ref;
 
 /** This class provides an XForms implementation of the FormRef Dialog.
  */
-class FormRef : public FormCB<ControlRef, FormDB<FD_form_ref> > {
+class FormRef : public FormCB<ControlRef, FormDB<FD_ref> > {
 public:
 	///
 	FormRef(ControlRef &);
@@ -38,9 +38,6 @@ private:
 
 	///
 	void updateBrowser(std::vector<string> const &) const;
-
-	/// Fdesign generated method
-	FD_form_ref * build_ref();
 
 	///
 	bool at_ref_;

@@ -18,12 +18,12 @@
 #include "FormBase.h"
 
 class ControlBibitem;
-struct FD_form_bibitem;
+struct FD_bibitem;
 
 /**
  * For bibliography entry editing
  */
-class FormBibitem : public FormCB<ControlBibitem, FormDB<FD_form_bibitem> > {
+class FormBibitem : public FormCB<ControlBibitem, FormDB<FD_bibitem> > {
 public:
 	///
 	FormBibitem(ControlBibitem &);
@@ -37,9 +37,6 @@ private:
 	virtual void update();
 	/// Filter the inputs on callback from xforms
 	virtual ButtonPolicy::SMInput input(FL_OBJECT *, long);
-
-	/// Fdesign generated method
-	FD_form_bibitem * build_bibitem();
 };
 
 #endif // FORMBIBITEM_H

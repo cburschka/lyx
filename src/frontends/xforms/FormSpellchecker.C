@@ -16,9 +16,10 @@
 #include "xforms_helpers.h"
 #include "ControlSpellchecker.h"
 #include "FormSpellchecker.h"
-#include "form_spellchecker.h"
+#include "forms/form_spellchecker.h"
+#include FORMS_H_LOCATION
 
-typedef FormCB<ControlSpellchecker, FormDB<FD_form_spellchecker> > base_class;
+typedef FormCB<ControlSpellchecker, FormDB<FD_spellchecker> > base_class;
 
 FormSpellchecker::FormSpellchecker(ControlSpellchecker & c)
 	: base_class(c, _("LyX: Spellchecker"), false)
@@ -27,7 +28,7 @@ FormSpellchecker::FormSpellchecker(ControlSpellchecker & c)
 
 void FormSpellchecker::build()
 {
-	dialog_.reset(build_spellchecker());
+	dialog_.reset(build_spellchecker(this));
 
 	fl_set_slider_bounds(dialog_->slider, 0.0, 100.0);
 	fl_set_slider_step(dialog_->slider, 1.0);

@@ -25,6 +25,7 @@
 #include "support/LAssert.h"
 #include "gettext.h"
 #include "debug.h"
+#include FORMS_H_LOCATION
 
 #include <boost/scoped_ptr.hpp>
 

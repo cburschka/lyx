@@ -16,7 +16,7 @@
 #endif
 
 #include "FormDocument.h"
-#include "form_document.h"
+#include "forms/form_document.h"
 #include "Alert.h"
 #include "Dialogs.h"
 #include "lyxtextclasslist.h"
@@ -45,6 +45,8 @@
 
 #include "support/filetools.h"
 #include "support/lstrings.h"
+
+#include FORMS_H_LOCATION
 
 #include <boost/bind.hpp>
 
@@ -92,7 +94,7 @@ void FormDocument::build()
 	int n;
 
 	// the tabbed folder
-	dialog_.reset(build_tabbed_document());
+	dialog_.reset(build_document(this));
 
 	// Allow the base class to control messages
 	setMessageWidget(dialog_->text_warning);
@@ -106,7 +108,7 @@ void FormDocument::build()
 	bc().addReadOnly (dialog_->button_reset_defaults);
 
 	// the document paper form
-	paper_.reset(build_doc_paper());
+	paper_.reset(build_document_paper(this));
 	fl_addto_choice(paper_->choice_papersize,
 			_(" Default | Custom | US letter | US legal "
 			  "| US executive | A3 | A4 | A5 | B3 | B4 | B5 "));
@@ -180,7 +182,7 @@ void FormDocument::build()
 	bc().addReadOnly (paper_->input_foot_skip);
 
 	// the document class form
-	class_.reset(build_doc_class());
+	class_.reset(build_document_class(this));
 
 	FL_OBJECT * obj;
 	// The language is a combo-box and has to be inserted manually
@@ -238,7 +240,7 @@ void FormDocument::build()
 	bc().addReadOnly (class_->input_doc_spacing);
 
 	// the document language form
-	language_.reset(build_doc_language());
+	language_.reset(build_document_language(this));
 	fl_addto_choice(language_->choice_inputenc,
 			"default|auto|latin1|latin2|latin3|latin4|latin5|latin9"
 			"|koi8-r|koi8-u|cp866|cp1251|iso88595");
@@ -275,7 +277,7 @@ void FormDocument::build()
 	bc().addReadOnly (language_->radio_double);
 
 	// the document options form
-	options_.reset(build_doc_options());
+	options_.reset(build_document_options(this));
 	fl_set_input_return(options_->input_float_placement, FL_RETURN_CHANGED);
 	setPrehandler(options_->input_float_placement);
 
@@ -301,7 +303,7 @@ void FormDocument::build()
 	bc_.addReadOnly (options_->choice_postscript_driver);
 
 	// the document bullets form
-	bullets_.reset(build_doc_bullet());
+	bullets_.reset(build_document_bullet(this));
 	fl_addto_choice(bullets_->choice_bullet_size,
 			_(" default | tiny | script | footnote | small |"
 			  " normal | large | Large | LARGE | huge | Huge"));
@@ -422,39 +424,28 @@ bool saveParamsAsDefault(BufferParams const &params)
 } //namespace
 
 
-bool FormDocument::input(FL_OBJECT * ob, long data)
+bool FormDocument::input(FL_OBJECT * ob, long)
 {
-	State cb = static_cast<State>(data);
-
-	switch (cb) {
-	case CHECKCHOICECLASS:
+	if (ob == class_->choice_doc_class) {
 		CheckChoiceClass(ob, 0);
-		break;
-	case CHOICEBULLETSIZE:
+	} else if (ob == bullets_->choice_bullet_size) {
 		ChoiceBulletSize(ob, 0);
-		break;
-	case INPUTBULLETLATEX:
+	} else if (ob == bullets_->input_bullet_latex) {
 		InputBulletLaTeX(ob, 0);
-		break;
-	case BULLETDEPTH1:
-	case BULLETDEPTH2:
-	case BULLETDEPTH3:
-	case BULLETDEPTH4:
-		BulletDepth(ob, cb);
-		break;
-	case BULLETPANEL1:
-	case BULLETPANEL2:
-	case BULLETPANEL3:
-	case BULLETPANEL4:
-	case BULLETPANEL5:
-	case BULLETPANEL6:
-		BulletPanel(ob, cb);
-		break;
-	case BULLETBMTABLE:
+	} else if (ob == bullets_->radio_bullet_depth_1 ||
+		   ob == bullets_->radio_bullet_depth_2 ||
+		   ob == bullets_->radio_bullet_depth_3 ||
+		   ob == bullets_->radio_bullet_depth_4) {
+		BulletDepth(ob);
+	} else if (ob == bullets_->radio_bullet_panel_standard ||
+		   ob == bullets_->radio_bullet_panel_maths ||
+		   ob == bullets_->radio_bullet_panel_ding1 ||
+		   ob == bullets_->radio_bullet_panel_ding2 ||
+		   ob == bullets_->radio_bullet_panel_ding3 ||
+		   ob == bullets_->radio_bullet_panel_ding4) {
+		BulletPanel(ob);
+	} else if (ob == bullets_->bmtable_bullet_panel) {
 		BulletBMTable(ob, 0);
-		break;
-	default:
-		break;
 	}
 
 	bool const length_input = fl_get_choice(class_->choice_doc_skip) == 4;
@@ -647,18 +638,7 @@ bool FormDocument::input(FL_OBJECT * ob, long data)
 		setEnabled(paper_->choice_foot_skip_units,     use_geom);
 	}
 
-	switch (data) {
-	case INPUT:
-	case CHECKCHOICECLASS:
-	case CHOICEBULLETSIZE:
-	case INPUTBULLETLATEX:
-	case BULLETBMTABLE:
-		return CheckDocumentInput(ob, 0);
-	default:
-		break;
-	}
-
-	return true;
+	return CheckDocumentInput(ob, 0);
 }
 
 
@@ -1346,7 +1326,7 @@ void FormDocument::InputBulletLaTeX(FL_OBJECT *, long)
 }
 
 
-void FormDocument::BulletDepth(FL_OBJECT * ob, State cb)
+void FormDocument::BulletDepth(FL_OBJECT * ob)
 {
 	/* Should I do the following:                                 */
 	/*  1. change to the panel that the current bullet belongs in */
@@ -1359,13 +1339,13 @@ void FormDocument::BulletDepth(FL_OBJECT * ob, State cb)
 	BufferParams & param = lv_->buffer()->params;
 
 	int data = 0;
-	if (cb == BULLETDEPTH1)
+	if (ob == bullets_->radio_bullet_depth_1)
 		data = 0;
-	else if (cb == BULLETDEPTH2)
+	else if (ob == bullets_->radio_bullet_depth_2)
 		data = 1;
-	else if (cb == BULLETDEPTH3)
+	else if (ob == bullets_->radio_bullet_depth_3)
 		data = 2;
-	else if (cb == BULLETDEPTH4)
+	else if (ob == bullets_->radio_bullet_depth_4)
 		data = 3;
 
 	switch (fl_get_button_numb(ob)) {
@@ -1382,23 +1362,23 @@ void FormDocument::BulletDepth(FL_OBJECT * ob, State cb)
 }
 
 
-void FormDocument::BulletPanel(FL_OBJECT * /*ob*/, State cb)
+void FormDocument::BulletPanel(FL_OBJECT * ob)
 {
 	/* Here we have to change the background pixmap to that selected */
 	/* by the user. (eg. standard.xpm, psnfss1.xpm etc...)           */
 
 	int data = 0;
-	if (cb == BULLETPANEL1)
+	if (ob == bullets_->radio_bullet_panel_standard)
 		data = 0;
-	else if (cb == BULLETPANEL2)
+	else if (ob == bullets_->radio_bullet_panel_maths)
 		data = 1;
-	else if (cb == BULLETPANEL3)
+	else if (ob == bullets_->radio_bullet_panel_ding2)
 		data = 2;
-	else if (cb == BULLETPANEL4)
+	else if (ob == bullets_->radio_bullet_panel_ding3)
 		data = 3;
-	else if (cb == BULLETPANEL5)
+	else if (ob == bullets_->radio_bullet_panel_ding4)
 		data = 4;
-	else if (cb == BULLETPANEL6)
+	else if (ob == bullets_->radio_bullet_panel_ding1)
 		data = 5;
 
 	if (data != current_bullet_panel) {
@@ -1408,32 +1388,23 @@ void FormDocument::BulletPanel(FL_OBJECT * /*ob*/, State cb)
 		/* free the current pixmap */
 		fl_free_bmtable_pixmap(bullets_->bmtable_bullet_panel);
 		string new_panel;
-		switch (cb) {
-			/* display the new one */
-		case BULLETPANEL1 :
+		if (ob == bullets_->radio_bullet_panel_standard) {
 			new_panel = "standard";
-			break;
-		case BULLETPANEL2 :
+		} else if (ob == bullets_->radio_bullet_panel_maths ) {
 			new_panel = "amssymb";
-			break;
-		case BULLETPANEL3 :
+		} else if (ob == bullets_->radio_bullet_panel_ding2) {
 			new_panel = "psnfss1";
-			break;
-		case BULLETPANEL4 :
+		} else if (ob == bullets_->radio_bullet_panel_ding3) {
 			new_panel = "psnfss2";
-			break;
-		case BULLETPANEL5 :
+		} else if (ob == bullets_->radio_bullet_panel_ding4) {
 			new_panel = "psnfss3";
-			break;
-		case BULLETPANEL6 :
+		} else if (ob == bullets_->radio_bullet_panel_ding1) {
 			new_panel = "psnfss4";
-			break;
-		default :
+		} else {
 			/* something very wrong happened */
 			// play it safe for now but should be an exception
 			current_bullet_panel = 0;  // standard panel
 			new_panel = "standard";
-			break;
 		}
 		new_panel += ".xpm";
 		fl_set_bmtable_pixmap_file(bullets_->bmtable_bullet_panel, 6, 6,

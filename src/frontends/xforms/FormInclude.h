@@ -18,11 +18,11 @@
 #include "FormBase.h"
 
 class ControlInclude;
-struct FD_form_include;
+struct FD_include;
 
 /** This class provides an XForms implementation of the Include Dialog.
  */
-class FormInclude : public FormCB<ControlInclude, FormDB<FD_form_include> > {
+class FormInclude : public FormCB<ControlInclude, FormDB<FD_include> > {
 public:
 	///
 	FormInclude(ControlInclude &);
@@ -36,9 +36,6 @@ private:
 	virtual void update();
 	/// Filter the inputs on callback from xforms
 	virtual ButtonPolicy::SMInput input(FL_OBJECT *, long);
-
-	/// Fdesign generated method
-	FD_form_include * build_include();
 };
 
 #endif

@@ -12,14 +12,15 @@
 #pragma implementation
 #endif
 
-#include <cctype>
-#include "support/lstrings.h"
-#include "xformsBC.h"
-#include "xforms_helpers.h"
 #include "ControlThesaurus.h"
 #include "FormThesaurus.h"
-#include "form_thesaurus.h"
+#include "forms/form_thesaurus.h"
+#include "xformsBC.h"
+#include "xforms_helpers.h"
 #include "debug.h"
+#include "support/lstrings.h"
+#include FORMS_H_LOCATION
+#include <cctype>
 
 #ifndef CXX_GLOBAL_CSTD
 using std::isupper;
@@ -29,7 +30,7 @@ using std::islower;
 using std::vector;
 
 
-typedef FormCB<ControlThesaurus, FormDB<FD_form_thesaurus> > base_class;
+typedef FormCB<ControlThesaurus, FormDB<FD_thesaurus> > base_class;
 
 
 FormThesaurus::FormThesaurus(ControlThesaurus & c)
@@ -41,7 +42,7 @@ FormThesaurus::FormThesaurus(ControlThesaurus & c)
 
 void FormThesaurus::build()
 {
-	dialog_.reset(build_thesaurus());
+	dialog_.reset(build_thesaurus(this));
 
 	fl_set_input_return(dialog_->input_entry,   FL_RETURN_CHANGED);
 	fl_set_input_return(dialog_->input_replace, FL_RETURN_CHANGED);

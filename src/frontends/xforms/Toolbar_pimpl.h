@@ -12,7 +12,7 @@
 #define TOOLBAR_PIMPL_H
 
 #include <vector>
-#include FORMS_H_LOCATION
+#include "forms_fwd.h"
 
 #include "frontends/Toolbar.h"
 

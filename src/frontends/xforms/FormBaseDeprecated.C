@@ -17,6 +17,8 @@
 #include "xformsBC.h"
 #include "xforms_resize.h"
 #include "Tooltips.h"
+#include FORMS_H_LOCATION
+
 #include "lyxrc.h"
 
 #include "frontends/LyXView.h"

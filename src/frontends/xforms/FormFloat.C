@@ -15,11 +15,12 @@
 #include "xformsBC.h"
 #include "ControlFloat.h"
 #include "FormFloat.h"
-#include "form_float.h"
+#include "forms/form_float.h"
 #include "support/lstrings.h"
 #include "xforms_helpers.h"
+#include FORMS_H_LOCATION
 
-typedef FormCB<ControlFloat, FormDB<FD_form_float> > base_class;
+typedef FormCB<ControlFloat, FormDB<FD_float> > base_class;
 
 FormFloat::FormFloat(ControlFloat & c)
 	: base_class(c, _("Float Options"))
@@ -32,7 +33,7 @@ FormFloat::FormFloat(ControlFloat & c)
 
 void FormFloat::build()
 {
-	dialog_.reset(build_float());
+	dialog_.reset(build_float(this));
 
 	// Manage the ok, apply and cancel/close buttons
 	bc().setOK(dialog_->button_ok);

@@ -21,9 +21,9 @@
  * This class provides an XForms implementation of a read only
  * text browser.
  */
-struct FD_form_browser;
+struct FD_browser;
 
-class FormBrowser : public FormDB<FD_form_browser> {
+class FormBrowser : public FormDB<FD_browser> {
 public:
 	///
 	FormBrowser(ControlButtons &, string const &, bool allowResize=true);
@@ -31,8 +31,6 @@ public:
 private:
 	/// Build the dialog.
 	virtual void build();
-	/// generated build function
-	FD_form_browser * build_browser();
 };
 
 #endif // FORMBROWSER_H

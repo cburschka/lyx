@@ -27,7 +27,7 @@ using std::sort;
 #include "support/lstrings.h"
 #include "gettext.h"
 #include "frontends/Dialogs.h"
-#include "xforms_helpers.h"
+#include "forms_gettext.h"
 
 #include <boost/bind.hpp>
 
@@ -74,6 +74,8 @@ extern "C" int gettimeofday(struct timeval *, struct timezone *);
 
 #include "support/filetools.h"
 #include "FormFiledialog.h"
+#include "forms/form_filedialog.h"
+#include FORMS_H_LOCATION
 
 namespace {
 
@@ -216,7 +218,7 @@ public:
 // *** FileDialog::Private class implementation
 
 // static members
-FD_form_filedialog * FileDialog::Private::pFileDlgForm = 0;
+FD_filedialog * FileDialog::Private::pFileDlgForm = 0;
 FileDialog::Private * FileDialog::Private::pCurrentDlg = 0;
 
 
@@ -427,7 +429,7 @@ FileDialog::Private::Private()
 
 	// Creates form if necessary.
 	if (!pFileDlgForm) {
-		pFileDlgForm = build_filedialog();
+		pFileDlgForm = build_filedialog(this);
 		// Set callbacks. This means that we don't need a patch file
 		fl_set_object_callback(pFileDlgForm->DirBox,
 				       C_LyXFileDlg_FileDlgCB, 0);

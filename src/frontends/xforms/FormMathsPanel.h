@@ -30,7 +30,7 @@ class FormMathsMatrix;
 class FormMathsSpace;
 class FormMathsStyle;
 class FormMathsSub;
-struct FD_form_maths_panel;
+struct FD_maths_panel;
 
 /**
  * This class provides an XForms implementation of the maths panel.
@@ -57,14 +57,11 @@ private:
 	/// Pointer to the actual instantiation of the xforms form
 	virtual FL_FORM * form() const;
 
-	// build the panels
-	FD_form_maths_panel * build_maths_panel();
+	// Real GUI implementation
+	boost::scoped_ptr<FD_maths_panel> dialog_;
 
 	/// send LFUN_MATH_DISPLAY
 	void mathDisplay() const;
-
-	// Real GUI implementation
-	boost::scoped_ptr<FD_form_maths_panel> dialog_;
 
 	/// Subdialogs
 	boost::scoped_ptr<FormMathsDeco>   deco_;

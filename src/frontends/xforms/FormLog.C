@@ -15,8 +15,9 @@
 #include "xformsBC.h"
 #include "ControlLog.h"
 #include "FormLog.h"
-#include "form_browser.h"
+#include "forms/form_browser.h"
 #include "gettext.h"
+#include FORMS_H_LOCATION
 
 FormLog::FormLog(ControlLog & c)
 	: FormCB<ControlLog, FormBrowser>(c, _("LaTeX Log"))

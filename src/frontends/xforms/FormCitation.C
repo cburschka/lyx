@@ -16,10 +16,12 @@
 #include "xformsBC.h"
 #include "ControlCitation.h"
 #include "FormCitation.h"
-#include "form_citation.h"
+#include "forms/form_citation.h"
 #include "Tooltips.h"
 #include "helper_funcs.h"
 #include "xforms_helpers.h"
+#include FORMS_H_LOCATION
+
 #include "gettext.h"
 #include "support/LAssert.h"
 #include "support/lstrings.h"
@@ -42,7 +44,7 @@ int string_width(string const & str)
 }
 
 
-void fillChoice(FD_form_citation * dialog, vector<string> vec)
+void fillChoice(FD_citation * dialog, vector<string> vec)
 {
 	// Check whether the current contents of the browser will be
 	// changed by loading the contents of the vec...
@@ -84,7 +86,7 @@ void fillChoice(FD_form_citation * dialog, vector<string> vec)
 }
 
 
-void updateStyle(FD_form_citation * dialog, string command)
+void updateStyle(FD_citation * dialog, string command)
 {
 	// Find the style of the citekeys
 	vector<biblio::CiteStyle> const & styles =
@@ -110,7 +112,7 @@ void updateStyle(FD_form_citation * dialog, string command)
 } // namespace anon
 
 
-typedef FormCB<ControlCitation, FormDB<FD_form_citation> > base_class;
+typedef FormCB<ControlCitation, FormDB<FD_citation> > base_class;
 
 
 FormCitation::FormCitation(ControlCitation & c)
@@ -154,7 +156,7 @@ void FormCitation::hide()
 
 void FormCitation::build()
 {
-	dialog_.reset(build_citation());
+	dialog_.reset(build_citation(this));
 
 	fl_set_input_return(dialog_->input_after,  FL_RETURN_CHANGED);
 	fl_set_input_return(dialog_->input_before, FL_RETURN_CHANGED);

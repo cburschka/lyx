@@ -15,10 +15,11 @@
 #include "xformsBC.h"
 #include "ControlPreamble.h"
 #include "FormPreamble.h"
-#include "form_preamble.h"
+#include "forms/form_preamble.h"
 #include "xforms_helpers.h"
+#include FORMS_H_LOCATION
 
-typedef FormCB<ControlPreamble, FormDB<FD_form_preamble> > base_class;
+typedef FormCB<ControlPreamble, FormDB<FD_preamble> > base_class;
 
 FormPreamble::FormPreamble(ControlPreamble & c)
 	: base_class(c, _("LaTeX preamble"))
@@ -27,7 +28,7 @@ FormPreamble::FormPreamble(ControlPreamble & c)
 
 void FormPreamble::build()
 {
-	dialog_.reset(build_preamble());
+	dialog_.reset(build_preamble(this));
 
 	fl_set_input_return(dialog_->input_preamble, FL_RETURN_CHANGED);
 

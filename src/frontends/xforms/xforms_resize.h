@@ -14,7 +14,7 @@
 #pragma interface
 #endif
 
-#include FORMS_H_LOCATION
+#include "forms_fwd.h"
 
 /** If the form contains a tabfolder, then by how much should the form be
     scaled (enlarged only) to render the tabs (buttons) visible?

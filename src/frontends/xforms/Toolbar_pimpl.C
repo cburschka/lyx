@@ -28,6 +28,7 @@
 #include "MathsSymbols.h"
 #include "gettext.h"
 #include "Tooltips.h"
+#include FORMS_H_LOCATION
 
 #include "support/LAssert.h"
 #include "support/filetools.h"

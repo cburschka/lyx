@@ -15,12 +15,13 @@
 #include "xformsBC.h"
 #include "ControlERT.h"
 #include "FormERT.h"
-#include "form_ert.h"
+#include "forms/form_ert.h"
 #include "support/lstrings.h"
 #include "helper_funcs.h"
 #include "debug.h"
+#include FORMS_H_LOCATION
 
-typedef FormCB<ControlERT, FormDB<FD_form_ert> > base_class;
+typedef FormCB<ControlERT, FormDB<FD_ert> > base_class;
 
 FormERT::FormERT(ControlERT & c)
 	: base_class(c, _("ERT Options"))
@@ -29,7 +30,7 @@ FormERT::FormERT(ControlERT & c)
 
 void FormERT::build()
 {
-	dialog_.reset(build_ert());
+	dialog_.reset(build_ert(this));
 
 	// Manage the ok, apply and cancel/close buttons
 	bc().setOK(dialog_->button_ok);
