@@ -339,6 +339,10 @@ string const LaTeXFeatures::getMacros() const
 	if (isRequired("NeedLyXFootnoteCode"))
 		macros << floatingfootnote_def;
 
+	// some problems with tex->html converters
+	if (isRequired("NeedTabularnewline"))
+		macros << tabularnewline_def;
+
 	// floats
 	getFloatDefinitions(macros);
 

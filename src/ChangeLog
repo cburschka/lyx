@@ -1,3 +1,13 @@
+2002-09-06  Alain Castera  <castera@in2p3.fr>
+
+        * tabular.C: uses \tabularnewline; uses >{...} construct from array
+	package to set the horizontal alignment on fixed width columns.
+
+        * lyx_sty.C: 
+	* lyx_sty.h: added tabularnewline macro def.
+
+        * LaTeXFeatures.C: added NeedTabularnewline macro feature
+
 2002-09-06  John Levon  <levon@movementarian.org>
 
 	* LyXAction.C: tooltips for sub/superscript

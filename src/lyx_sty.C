@@ -118,3 +118,7 @@ string const binom_def =
 string const mathcircumflex_def =
 	"%% For printing a cirumflex inside a formula\n"
 	"\\newcommand{\\mathcircumflex}[0]{\\mbox{\\^{}}}\n";
+
+string const tabularnewline_def =
+        "%% Because html converters don't know tabularnewline\n"
+        "\\providecommand{\\tabularnewline}{\\\\}\n";

@@ -751,8 +751,9 @@ bool LyXTabular::SetColumnPWidth(int cell, LyXLength const & width)
 	int const j = column_of_cell(cell);
 
 	column_info[j].p_width = width;
-	if (flag) // do this only if there is a width
-		SetAlignment(cell, LYX_ALIGN_LEFT);
+	// This should not ne necessary anymore
+	//	if (flag) // do this only if there is a width
+	//	SetAlignment(cell, LYX_ALIGN_LEFT);
 	for (int i = 0; i < rows_; ++i) {
 		int c = GetCellNumber(i, j);
 		flag = !GetPWidth(c).zero(); // because of multicolumns!
@@ -2212,7 +2213,7 @@ int LyXTabular::TeXRow(ostream & os, int const i, Buffer const * buf,
 		}
 		++cell;
 	}
-	os << "\\\\\n";
+	os << "\\tabularnewline\n";
 	++ret;
 	ret += TeXBottomHLine(os, i);
 	return ret;
@@ -2243,6 +2244,20 @@ int LyXTabular::latex(Buffer const * buf,
 			if (column_info[i].left_line)
 				os << '|';
 			if (!column_info[i].p_width.zero()) {
+			  os << ">{";
+			  switch (column_info[i].alignment) {
+			  case LYX_ALIGN_LEFT:
+			    os << "\\raggedright";
+			    break;
+			  case LYX_ALIGN_RIGHT:
+			    os << "\\raggedleft";
+			    break;
+			  case LYX_ALIGN_CENTER:
+			    os << "\\centering";
+			    break;
+			  }
+			  os << "}";
+			  
 				switch (column_info[i].valignment) {
 				case LYX_VALIGN_TOP:
 					os << "p";
@@ -2722,12 +2737,15 @@ int LyXTabular::GetCellFromInset(Inset const * inset, int maybe_cell) const
 
 void LyXTabular::Validate(LaTeXFeatures & features) const
 {
+        features.require("NeedTabularnewline");
 	if (IsLongTabular())
 		features.require("longtable");
 	if (NeedRotating())
 		features.require("rotating");
 	for (int cell = 0; cell < numberofcells; ++cell) {
-		if (GetVAlignment(cell) != LYX_VALIGN_TOP)
+		if ( (GetVAlignment(cell) != LYX_VALIGN_TOP) ||
+		     ( !(GetPWidth(cell).zero())&&!(IsMultiColumn(cell)) )
+		   )
 			features.require("array");
 		GetCellInset(cell)->validate(features);
 	}

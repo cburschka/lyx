@@ -222,7 +222,7 @@ void FormTabular::update()
 		}
 		pwidth = tabular->GetMColumnPWidth(cell);
 		align = tabular->GetAlignment(cell);
-		if (!pwidth.zero() || (align == LYX_ALIGN_LEFT))
+		if (align == LYX_ALIGN_LEFT)
 			fl_set_button(cell_options_->radio_align_left, 1);
 		else if (align == LYX_ALIGN_RIGHT)
 			fl_set_button(cell_options_->radio_align_right, 1);
@@ -258,9 +258,9 @@ void FormTabular::update()
 		setEnabled(cell_options_->radio_valign_bottom, !pwidth.zero());
 		setEnabled(cell_options_->radio_valign_center, !pwidth.zero());
 
-		setEnabled(cell_options_->radio_align_left,   pwidth.zero());
-		setEnabled(cell_options_->radio_align_right,  pwidth.zero());
-		setEnabled(cell_options_->radio_align_center, pwidth.zero());
+		setEnabled(cell_options_->radio_align_left,   true);
+		setEnabled(cell_options_->radio_align_right,  true);
+		setEnabled(cell_options_->radio_align_center, true);
 	} else {
 		fl_set_button(cell_options_->check_multicolumn, 0);
 
@@ -349,7 +349,7 @@ void FormTabular::update()
 	fl_set_button(column_options_->radio_align_left, 0);
 	fl_set_button(column_options_->radio_align_right, 0);
 	fl_set_button(column_options_->radio_align_center, 0);
-	if (!pwidth.zero() || (align == LYX_ALIGN_LEFT))
+	if (align == LYX_ALIGN_LEFT)
 		fl_set_button(column_options_->radio_align_left, 1);
 	else if (align == LYX_ALIGN_RIGHT)
 		fl_set_button(column_options_->radio_align_right, 1);
@@ -366,10 +366,9 @@ void FormTabular::update()
 	else
 		fl_set_button(column_options_->radio_valign_top, 1);
 
-	setEnabled(column_options_->radio_align_left,   pwidth.zero());
-	setEnabled(column_options_->radio_align_right,  pwidth.zero());
-	setEnabled(column_options_->radio_align_center, pwidth.zero());
-
+	setEnabled(column_options_->radio_align_left,   true);
+	setEnabled(column_options_->radio_align_right,  true);
+	setEnabled(column_options_->radio_align_center, true);
 	setEnabled(column_options_->radio_valign_top,    !pwidth.zero());
 	setEnabled(column_options_->radio_valign_bottom, !pwidth.zero());
 	setEnabled(column_options_->radio_valign_center, !pwidth.zero());

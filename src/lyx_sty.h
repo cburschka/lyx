@@ -49,5 +49,7 @@ extern string const boldsymbol_def;
 extern string const binom_def;
 ///
 extern string const mathcircumflex_def;
+///
+extern string const tabularnewline_def;
 
 #endif // LYX_STY_H
