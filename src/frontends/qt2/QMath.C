@@ -85,9 +85,9 @@ void QMath::insertCubeRoot()
 }
 
 
-void QMath::insertMatrix()
+void QMath::insertMatrix(string const & str)
 {
-	current_view->owner()->dispatch(FuncRequest(LFUN_INSERT_MATRIX, "2 2"));
+	current_view->owner()->dispatch(FuncRequest(LFUN_INSERT_MATRIX, str));
 }
 
 

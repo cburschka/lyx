@@ -66,6 +66,7 @@ DIALOGSOURCES = \
 	QLog.C QLogDialog.C \
 	QMath.h QMathDialog.h \
 	QMath.C QMathDialog.C \
+	QMathMatrixDialog.h QMathMatrixDialog.C \
 	QMinipage.h QMinipageDialog.h \
 	QMinipage.C QMinipageDialog.C \
 	QParagraph.h QParagraphDialog.h \
@@ -116,6 +117,7 @@ MOCDIALOGS = \
 	QIndexDialog_moc.C \
 	QLogDialog_moc.C \
 	QMathDialog_moc.C \
+	QMathMatrixDialog_moc.C \
 	QMinipageDialog_moc.C \
 	QParagraphDialog_moc.C \
 	QPreambleDialog_moc.C \
@@ -168,6 +170,8 @@ UIDIALOGS = \
 	QLogDialogBase.C \
 	QMathDialogBase.h \
 	QMathDialogBase.C \
+	QMathMatrixDialogBase.h \
+	QMathMatrixDialogBase.C \
 	QMinipageDialogBase.h \
 	QMinipageDialogBase.C \
 	QParagraphDialogBase.h \
@@ -228,6 +232,7 @@ UIMOCDIALOGS = \
 	QIndexDialogBase_moc.C \
 	QLogDialogBase_moc.C \
 	QMathDialogBase_moc.C \
+	QMathMatrixDialogBase_moc.C \
 	QMinipageDialogBase_moc.C \
 	QParagraphDialogBase_moc.C \
 	QPreambleDialogBase_moc.C \

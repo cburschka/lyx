@@ -1,3 +1,18 @@
+2002-10-28  John Levon  <levon@movementarian.org>
+
+	* iconpalette.C:
+	* QMathDialog.C: fix symbol insert breakage from Lars' patch
+ 
+2002-10-26  Juergen Spitzmueller  <j.spitzmueller@gmx.de>
+
+	* ui/QMathMatrixDialog.ui:
+	* QMathMatrixDialog.[Ch]:
+	* Makefile.dialogs:
+	* QMath.C:
+ 	* QMathDialog.C: implement Matrix dialog
+
+	* QMathDialog.C: enlarge Symbols combox (prevent scrollbar)
+ 
 2002-10-28  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* qfont_loader.C (font_info): Add xfonts to the font path if

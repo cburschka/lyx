@@ -7,7 +7,6 @@ Those with asterisks are what I perceive as being "big jobs"
 lyx_gui (qt)
 
 	- move out lyxserver
-	- do dpi (cannot easily fix)
  
 QDocument
 
@@ -19,7 +18,7 @@ QDocument
 
 qfont_loader
 
-	- use lyxrc, check for failure, implement available()
+	- use lyxrc, check for failure
  
 QForks
 
@@ -41,7 +40,6 @@ QLPainter
 QLyXKeySym
 
 	- getISOEncoded - get this to work (*)
-	 
 
 QMathDialog
 
@@ -50,10 +48,6 @@ QMathDialog
 QPreferences
 
 	- implement me (*)
- 
-QSendTo
-
-	- implement me
  
 QTabular
 

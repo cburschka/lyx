@@ -24,6 +24,7 @@
 #include "ControlMath.h"
 #include "iconpalette.h"
 #include "QDelimiterDialog.h"
+#include "QMathMatrixDialog.h"
 
 #include <qapplication.h>
 #include <qwidgetstack.h>
@@ -92,6 +93,9 @@ QMathDialog::QMathDialog(QMath * form)
 	: QMathDialogBase(0, 0, false, 0),
 	form_(form)
 {
+	// enlarge the symbols ComboBox (no scrollbar)
+	symbolsCO->setSizeLimit(13);
+
 	connect(symbolsCO, SIGNAL(activated(int)), symbolsWS, SLOT(raiseWidget(int)));
 
 	for (int i = 0; *function_names[i]; ++i) {
@@ -179,7 +183,7 @@ IconPalette * QMathDialog::makePanel(QWidget * parent, char const ** entries)
 		string xpm_name = LibFileSearch("images/math/", entries[i], "xpm");
 		p->add(QPixmap(xpm_name.c_str()), entries[i], string("\\") + entries[i]);
 	}
-	connect(p, SIGNAL(button_clicked(string)), this, SLOT(symbol_clicked(string)));
+	connect(p, SIGNAL(button_clicked(string const &)), this, SLOT(symbol_clicked(string const &)));
 
 	return p;
 }
@@ -234,7 +238,9 @@ void QMathDialog::functionSelected(const QString & str)
 
 void QMathDialog::matrixClicked()
 {
-	form_->insertMatrix();
+	// FIXME: leak?
+	QMathMatrixDialog * d = new QMathMatrixDialog(form_);
+	d->show();
 }
 
 

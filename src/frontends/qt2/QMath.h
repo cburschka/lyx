@@ -39,7 +39,7 @@ public:
 	void insertCubeRoot();
 
 	/// insert a matrix
-	void insertMatrix();
+	void insertMatrix(string const & str);
 
 	/// insert delim
 	void insertDelim(string const & str);

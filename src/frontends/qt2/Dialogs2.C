@@ -131,6 +131,18 @@ void Dialogs::createIndex()
 }
 
 
+void Dialogs::showListing(InsetCommand * ic)
+{
+	pimpl_->listing.controller().showInset(ic);
+}
+
+
+void Dialogs::createListing(string const & s)
+{
+	pimpl_->listing.controller().createInset(s);
+}
+
+
 void Dialogs::showLogFile()
 {
 	pimpl_->logfile.controller().show();
