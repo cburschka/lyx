@@ -1,3 +1,8 @@
+2002-04-02  Allan Rae  <rae@lyx.org>
+
+	* lyxinclude.m4 (LYX_WITH_SIGC): fixed typo so now compiling in source
+	directory uses minimum include paths
+
 2002-03-31  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* lyxinclude.m4 (LYX_XFORMS_IMAGE_LOADER_NEEDS_JPEG): new macro
