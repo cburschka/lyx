@@ -1,0 +1,312 @@
+#LyX 1.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 218
+\textclass article
+\language frenchb
+\inputencoding latin1
+\fontscheme default
+\graphics default
+\paperfontsize 12
+\spacing single 
+\papersize Default
+\paperpackage a4
+\use_geometry 0
+\use_amsmath 0
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language french
+\quotes_times 2
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+
+\layout Title
+
+Macros définies par l'utilisateur en mode mathématique
+\begin_inset Info
+Informations de révision :
+Traduction : Mise à jour Date: 2001/03/19
+Original : Révision: 1.3, Date: 2000/11/03
+\end_inset 
+
+
+\layout Author
+
+Alejandro Aguilar Sierra
+\begin_float footnote 
+\layout Standard
+
+Traduction par Adrien 
+\noun on 
+Rebollo
+\noun default 
+ 
+\family typewriter 
+<Adrien.Rebollo@wanadoo.fr>
+\family default 
+.
+\end_float 
+\layout Section
+
+Introduction
+\layout Standard
+
+LyX permet à l'utilisateur de définir des macros.
+ En mode math, une macro définie par l'utilisateur n'est pas un mot en rouge
+ que LyX ne sait pas comment dessiner (autrefois connu comme mode macro,
+ aujourd'hui simplement comme mode TeX).
+ Une boîte de définition de macro apparaît à l'écran comme un bouton grisé
+ avec le nom de la macro en bleu (couleur des math dans LyX).
+ Mais si vous cliquez dessus, elle apparaît comme une boîte mathématique
+ normale que vous pouvez éditer.
+ Vous n'avez qu'à essayer :
+\begin_inset FormulaMacro 
+\newcommand{\macro}{a+b}
+
+\end_inset 
+
+
+\layout Standard
+
+Pour utiliser cette macro dans d'autres boîtes mathématiques vous n'avez
+ qu'à en taper le nom en mode TeX, dans ce cas 
+\family typewriter 
+
+\backslash 
+macro
+\family default 
+, et elle sera automatiquement développée : 
+\begin_inset Formula \( c=\macro  \)
+\end_inset 
+
+.
+ Comme vous pouvez le vérifier, le curseur ne peut pas aller dans la macro,
+ qui se comporte toute entière comme un seul caractère, et le code TeX de
+ cette expression est 
+\family typewriter 
+c = 
+\backslash 
+macro
+\family default 
+.
+\layout Standard
+
+Toutefois le curseur peut aller dans certaines sortes de macros, celles
+ qui ont des 
+\emph on 
+paramètres
+\begin_float footnote 
+\layout Standard
+
+NdT : Traduction choisie pour l'anglais 
+\begin_inset Quotes fld
+\end_inset 
+
+argument
+\begin_inset Quotes frd
+\end_inset 
+
+.
+ On pourrait aussi dire argument.
+\end_float 
+.
+ Dans une boîte de définition de macro un paramètre ressemble à un 
+\family typewriter 
+#
+\family default 
+ suivi du numéro du paramètre :
+\begin_inset FormulaMacro 
+\newcommand{\macroparam}[1]{2+\sqrt{#1 }}
+
+\end_inset 
+
+
+\layout Standard
+
+Une fois développée, cette macro comprend l'habituel rectangle vide pour
+ indiquer que vous pouvez insérer ce que vous voulez : 
+\family typewriter 
+
+\backslash 
+macroparam = 
+\family default 
+
+\begin_inset Formula \( \macroparam{} \)
+\end_inset 
+
+.
+ Exemple : 
+\begin_inset Formula \( b=\macroparam{x-2} \)
+\end_inset 
+
+.
+\layout Standard
+
+Une fois exportée vers LaTeX, une définition de macro produit la commande
+ 
+\family typewriter 
+
+\backslash 
+newcommand
+\family default 
+.
+\layout Subsection
+
+Mode d'emploi des macros
+\layout Subsubsection
+
+Comment en créer
+\layout Standard
+
+Pour créer une boîte de définition de macro, entrez ceci dans le minibuffer
+ :
+\layout Standard
+
+
+\family typewriter 
+math-macro <nom de la macro> [nombre de paramètres]
+\layout Standard
+
+Par exemple, 
+\family typewriter 
+
+\backslash 
+macro
+\family default 
+ a été créée avec 
+\family typewriter 
+
+\begin_inset Quotes fld
+\end_inset 
+
+math-macro macro
+\begin_inset Quotes frd
+\end_inset 
+
+
+\family default 
+, et 
+\family typewriter 
+
+\backslash 
+macroparam
+\family default 
+ avec 
+\family typewriter 
+
+\begin_inset Quotes fld
+\end_inset 
+
+
+\backslash 
+math-macro macroparam 1
+\begin_inset Quotes frd
+\end_inset 
+
+
+\family default 
+.
+\layout Standard
+
+Pour insérer une marque de paramètre (seulement dans une boîte de définition
+ de macro), utilisez ceci :
+\layout Standard
+
+
+\family typewriter 
+math-macro-arg <numéro>
+\layout Standard
+
+La marque de paramètre dans 
+\family typewriter 
+
+\backslash 
+macroparam
+\family default 
+ a été introduite avec 
+\family typewriter 
+
+\begin_inset Quotes fld
+\end_inset 
+
+math-macro-arg 1
+\begin_inset Quotes frd
+\end_inset 
+
+
+\family default 
+.
+\layout Standard
+
+Vous ne pouvez pas utiliser plus de 9 paramètres, numérotés de 1 à 9.
+ Un paramètre peut être utilisé plusieurs fois dans la boîte de définition
+ de la macro, mais ne peut bien sûr être entré qu'une fois.
+ Le numéro d'un paramètre ne peut pas être supérieur au nombre de paramètres
+ alloués à la macro.
+\layout Subsubsection
+
+Comment y naviguer
+\layout Description
+
+Avec\SpecialChar ~
+les\SpecialChar ~
+flèches\SpecialChar ~
+du\SpecialChar ~
+clavier: Entrer dans une macro par le côté gauche place
+ le curseur dans le premier paramètre, pour passer au deuxième utilisez
+ la touche 
+\family sans 
+Tab
+\family default 
+.
+ Rappelez-vous qu'appuyer sur la barre 
+\family sans 
+Espace
+\family default 
+ fait sortir le curseur de la macro et le place à droite de celle-ci.
+\layout Description
+
+Avec\SpecialChar ~
+la\SpecialChar ~
+souris: Comme d'habitude, cliquez sur la boîte de paramètre désirée.
+ Parfois ça échoue si la boîte est vide ou trop petite.
+\layout Standard
+
+Pour l'instant l'utilisateur ne peut définir que des macros de commandes,
+ mais de manière interne il est aussi possible de définir des macros d'environne
+ments.
+\layout Standard
+
+Il y a plusieurs macros prédéfinies, principalement pour permettre aux utilisate
+urs d'AMS-LaTeX d'utiliser les macros AMS de façon WYSIWYM, comme 
+\family typewriter 
+
+\backslash 
+cases
+\family default 
+ et 
+\family typewriter 
+
+\backslash 
+binom
+\begin_float footnote 
+\layout Standard
+
+
+\emph on 
+Note pour LyX 1.0 : 
+\family typewriter 
+
+\backslash 
+cases
+\family default 
+ est pour le moment désactivée car après simplification et amélioration
+ des fonctions macros, les seuls paramètres valides sont les sous-paragraphes
+ (sans tabulation ni nouvelle ligne).
+ Peut-être qu'elle sera de nouveau incluse dans une version ultérieure.
+ AAS
+\end_float 
+.
+\the_end

@@ -1,0 +1,264 @@
+#LyX 1.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 218
+\textclass article
+\begin_preamble
+\usepackage{dcolumn}
+\newcolumntype{d}[1]{D{.}{.}{#1}}
+\end_preamble
+\language frenchb
+\inputencoding latin1
+\fontscheme default
+\graphics default
+\paperfontsize default
+\spacing single 
+\papersize Default
+\paperpackage a4
+\use_geometry 0
+\use_amsmath 0
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language french
+\quotes_times 2
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+
+\layout Title
+
+Une meilleure solution pour l'Alignement Décimal
+\begin_float footnote 
+\layout Standard
+
+Traduction par Adrien 
+\noun on 
+Rebollo
+\noun default 
+ 
+\family typewriter 
+<Adrien.Rebollo@wanadoo.fr>
+\family default 
+.
+\end_float 
+
+\begin_inset Info
+Informations de révision :
+Traduction : Mise à jour Date: 2001/03/20
+Original : Révision: 1.3, Date: 2000/11/03
+\end_inset 
+
+
+\layout Standard
+
+Une méthode alternative pour obtenir un alignement décimal dans les tableaux
+ est de passer par le paquetage 
+\family typewriter 
+dcolumn
+\family default 
+.
+ Ajoutez ce qui suit au préambule LaTeX :
+\layout LyX-Code
+
+
+\backslash 
+usepackage{dcolumn} 
+\layout LyX-Code
+
+
+\backslash 
+newcolumntype{d}[1]{D{.}{.}{#1}}
+\layout Standard
+
+Pour avoir une colonne alignée sur le symbole décimal, entrez ce qui suit
+ dans le champ 
+\family sans 
+Colonne\SpecialChar ~
+spéciale\SpecialChar \menuseparator
+Alignement
+\family default 
+ de la fenêtre 
+\family sans 
+Style\SpecialChar ~
+du\SpecialChar ~
+Tableau\SpecialChar \menuseparator
+Colonne/Rangée
+\family default 
+ :
+\layout LyX-Code
+
+d{nombre de chiffres après la virgule dans les données}
+\layout Standard
+
+Dans le tableau suivant nous avons entré 
+\family typewriter 
+d{4}
+\family default 
+:
+\layout Standard
+\added_space_top 0.3cm \added_space_bottom 0.3cm \align center 
+
+\begin_inset  Tabular
+<lyxtabular version="2" rows="5" columns="2">
+<features rotate="false" islongtable="false" endhead="0" endfirsthead="0" endfoot="0" endlastfoot="0">
+<column alignment="center" valignment="top" leftline="false" rightline="false" width="" special="">
+<column alignment="right" valignment="top" leftline="true" rightline="false" width="" special="d{4}">
+<row topline="false" bottomline="true" newpage="false">
+<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="false" rightline="false" rotate="false" usebox="none" width="" special="">
+\begin_inset Text
+
+\layout Standard
+
+Expression
+\end_inset 
+</cell>
+<cell multicolumn="1" alignment="center" valignment="top" topline="false" bottomline="true" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+\begin_inset Text
+
+\layout Standard
+
+Valeur
+\end_inset 
+</cell>
+</row>
+<row topline="false" bottomline="false" newpage="false">
+<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="false" rightline="false" rotate="false" usebox="none" width="" special="">
+\begin_inset Text
+
+\layout Standard
+
+
+\begin_inset Formula \( \pi  \)
+\end_inset 
+
+
+\end_inset 
+</cell>
+<cell multicolumn="1" alignment="right" valignment="top" topline="false" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+\begin_inset Text
+
+\layout Standard
+
+3,1416
+\end_inset 
+</cell>
+</row>
+<row topline="false" bottomline="false" newpage="false">
+<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="false" rightline="false" rotate="false" usebox="none" width="" special="">
+\begin_inset Text
+
+\layout Standard
+
+
+\begin_inset Formula \( \pi ^{\pi } \)
+\end_inset 
+
+
+\end_inset 
+</cell>
+<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+\begin_inset Text
+
+\layout Standard
+
+36,462
+\end_inset 
+</cell>
+</row>
+<row topline="false" bottomline="false" newpage="false">
+<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="false" rightline="false" rotate="false" usebox="none" width="" special="">
+\begin_inset Text
+
+\layout Standard
+
+
+\begin_inset Formula \( (\pi ^{\pi })^{\pi } \)
+\end_inset 
+
+
+\end_inset 
+</cell>
+<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+\begin_inset Text
+
+\layout Standard
+
+80663,
+\end_inset 
+</cell>
+</row>
+<row topline="false" bottomline="false" newpage="false">
+<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="false" rightline="false" rotate="false" usebox="none" width="" special="">
+\begin_inset Text
+
+\layout Standard
+
+
+\begin_inset Formula \( \pi ^{\pi ^{\pi }} \)
+\end_inset 
+
+
+\end_inset 
+</cell>
+<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+\begin_inset Text
+
+\layout Standard
+
+1,3402e18
+\end_inset 
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset 
+
+
+\layout Standard
+
+Pour créer de l'espace supplémentaire dans la colonne augmentez juste le
+ nombre de décimales dans 
+\family typewriter 
+d{}
+\family default 
+.
+ Cocher l'attribut 
+\family sans 
+Multicolonne
+\family default 
+ pour une case isolée la rend insensible à l'alignement décimal, ce qui
+ est commode.
+ Un inconvénient de cette méthode est que le mode mathématique n'est pas
+ autorisé dans une case avec l'alignement décimal sauf si l'attribut 
+\family sans 
+Multicolonne
+\family default 
+ est coché.
+\layout Standard
+
+Cette méthode offre la même flexibilité que le paquetage 
+\family typewriter 
+dcolumn
+\family default 
+.
+ On peut, par exemple, changer le séparateur d'alignement, et avoir des
+ séparateurs d'alignement différents pour des colonnes différentes en définissan
+t plusieurs types de colonnes dans le préambule.
+ La syntaxe est comme suit :
+\layout LyX-Code
+
+D{inputsep}{outputsep}{decimal places}
+\begin_float footnote 
+\layout Standard
+
+NdT : non traduit car je ne suis pas certain du sens
+\end_float 
+\layout Standard
+
+Le lecteur intéressé se référera à la documentation du paquetage 
+\family typewriter 
+dcolumn
+\family default 
+ pour plus de détails.
+\the_end
