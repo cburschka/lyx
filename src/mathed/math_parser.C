@@ -812,13 +812,13 @@ void Parser::parse_into(MathArray & array, unsigned flags)
 		}
 	
 		else if (t.cs() == "label") {
-			MathArray ar;
-			parse_into(ar, FLAG_ITEM);
-			ostringstream os;
-			ar.write(os, true);
-			curr_label_ = os.str();
+			//MathArray ar;
+			//parse_into(ar, FLAG_ITEM);
+			//ostringstream os;
+			//ar.write(os, true);
+			//curr_label_ = os.str();
 			// was: 
-			//curr_label_ = getArg('{', '}');
+			curr_label_ = getArg('{', '}');
 		}
 
 		else if (t.cs() == "choose" || t.cs() == "over" || t.cs() == "atop") {

@@ -210,12 +210,31 @@ bool MathCursor::isInside(MathInset const * p) const
 }
 
 
-bool MathCursor::openable(MathInset * p, bool sel, bool useupdown) const
+bool MathCursor::openable(MathInset * p, bool sel) const
 {
 	if (!p)
 		return false;
 
-	if (!(p->isActive() || (useupdown && p->isScriptInset())))
+	if (!p->isActive())
+		return false;
+
+	if (sel) {
+		// we can't move into anything new during selection
+		if (Cursor_.size() == Anchor_.size())
+			return false;
+		if (p != Anchor_[Cursor_.size()].par_)
+			return false;
+	}
+	return true;
+}
+
+
+bool MathCursor::positionable(MathInset * p, bool sel) const
+{
+	if (!p)
+		return false;
+
+	if (!p->nargs())
 		return false;
 
 	if (sel) {
@@ -259,7 +278,7 @@ bool MathCursor::left(bool sel)
 	lastcode_ = LM_TC_VAR;
 
 	MathInset * p = prevInset();
-	if (openable(p, sel, false)) {
+	if (openable(p, sel)) {
 		pushRight(p);
 		return true;
 	} 
@@ -280,7 +299,7 @@ bool MathCursor::right(bool sel)
 	lastcode_ = LM_TC_VAR;
 
 	MathInset * p = nextInset();
-	if (openable(p, sel, false)) {
+	if (openable(p, sel)) {
 		pushLeft(p);
 		return true;
 	}
@@ -338,9 +357,9 @@ void MathCursor::setPos(int x, int y)
 		//	<< pos()  << "\n";
 		MathInset * n = nextInset();
 		MathInset * p = prevInset();
-		if (openable(n, selection_, true) && n->covers(x, y))
+		if (positionable(n, selection_) && n->covers(x, y))
 			pushLeft(n);
-		else if (openable(p, selection_, true) && p->covers(x, y))
+		else if (positionable(p, selection_) && p->covers(x, y))
 			pushRight(p);
 		else 
 			break;

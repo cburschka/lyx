@@ -176,6 +176,12 @@ void MathScriptInset::idxDelete(int & idx, bool & popit, bool & deleteit)
 }
 
 
+bool MathScriptInset::isActive() const
+{
+	return false;
+}
+
+
 int MathScriptInset::limits() const
 {  
 	return limits_;
@@ -274,3 +280,4 @@ void MathScriptInset::draw(Painter & pain, int x, int y) const
 	if (down())
 		xcell(1).draw(pain, x + dx1_, y + dy1_);
 }
+

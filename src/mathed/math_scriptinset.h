@@ -70,7 +70,7 @@ public:
 	///
 	int limits() const;
 	///
-	bool isActive() const { return false; }
+	bool isActive() const;
 	/// Identifies ScriptInsets
 	bool isScriptInset() const { return true; }
 	///

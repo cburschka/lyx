@@ -209,8 +209,6 @@ public:
 	void getSelection(MathCursorPos &, MathCursorPos &) const;
 	/// returns the normalized anchor of the selection
 	MathCursorPos normalAnchor() const;
-	/// returns the normalized anchor of the selection
-	bool openable(MathInset *, bool selection, bool useupdown) const;
 
 	/// path of positions the cursor had to go if it were leving each inset
 	std::vector<MathCursorPos> Cursor_;
@@ -249,9 +247,13 @@ private:
 	string macroName() const;
 	///
 	void insert(char, MathTextCodes t = LM_TC_MIN);
-	///
+	/// can we enter the inset? 
+	bool openable(MathInset *, bool selection) const;
+	/// can the setPos routine enter that inset?
+	bool positionable(MathInset *, bool selection) const;
+	/// write access to cursor cell position
 	int & pos();
-	///
+	/// write access to cursor cell index
 	int & idx();
 	/// x-offset of current cell relative to par xo
 	int cellXOffset() const;
