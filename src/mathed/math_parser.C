@@ -405,7 +405,7 @@ MathedInset * doAccent(MathedInset * p)
 }
 
 
-MathedArray * mathed_parse(unsigned flags = 0, MathedArray * array = 0,
+void mathed_parse(MathedArray & array, unsigned flags = 0,
 			    MathParInset ** mtx = 0)
 {
    int t = yylex();
@@ -424,8 +424,7 @@ MathedArray * mathed_parse(unsigned flags = 0, MathedArray * array = 0,
     MathedRowSt * crow = (mt) ? mt->getRowSt() : 0;
 
    ++plevel;
-   if (!array) array = new MathedArray;
-   MathedIter data(array);
+   MathedIter data(&array);
    while (t) {
       if ((flags & FLAG_BRACE) && t != LM_TK_OPEN) {
 	 if ((flags & FLAG_BRACK_ARG) && t == '[') {
@@ -469,7 +468,7 @@ MathedArray * mathed_parse(unsigned flags = 0, MathedArray * array = 0,
 	  macro = new MathMacroTemplate(name, na);
 	  flags = FLAG_BRACE|FLAG_BRACE_LAST;
 	  *mtx = macro;
-	  macro->setData(*array);
+	  macro->setData(array);
 	  break;
       }
     case LM_TK_SPECIAL:
@@ -524,7 +523,7 @@ MathedArray * mathed_parse(unsigned flags = 0, MathedArray * array = 0,
 	 }
 	 if (brace == 0 && (flags & FLAG_BRACE_LAST)) {
 	    --plevel;
-	    return array;
+	    return;
 	 } else {
 	    data.insert('}', LM_TC_TEX);
 	 }
@@ -550,7 +549,7 @@ MathedArray * mathed_parse(unsigned flags = 0, MathedArray * array = 0,
       {
 	  if (flags & FLAG_BRACK_END) {
 	      --plevel;
-	      return array;
+	      return;
 	  } else
 	    data.insert(']', LM_TC_CONST);
 	break;
@@ -559,8 +558,9 @@ MathedArray * mathed_parse(unsigned flags = 0, MathedArray * array = 0,
     case '^':
       {  
 	 MathParInset * p = new MathParInset(size, "", LM_OT_SCRIPT);
-	 MathedArray * ar = mathed_parse(FLAG_BRACE_OPT|FLAG_BRACE_LAST, 0);
-	 p->setData(*ar);
+	 MathedArray ar;
+   mathed_parse(ar, FLAG_BRACE_OPT|FLAG_BRACE_LAST);
+	 p->setData(ar);
 //	 lyxerr << "UP[" << p->GetStyle() << "]" << endl;
 	 data.insertInset(p, LM_TC_UP);
 	 break;
@@ -568,8 +568,9 @@ MathedArray * mathed_parse(unsigned flags = 0, MathedArray * array = 0,
     case '_':
       {
 	 MathParInset * p = new MathParInset(size, "", LM_OT_SCRIPT);
-	 MathedArray * ar = mathed_parse(FLAG_BRACE_OPT|FLAG_BRACE_LAST, 0);
-	 p->setData(*ar);
+	 MathedArray ar;
+	 mathed_parse(ar, FLAG_BRACE_OPT|FLAG_BRACE_LAST);
+	 p->setData(ar);
 	 data.insertInset(p, LM_TC_DOWN);
 	 break;
       }
@@ -670,9 +671,11 @@ MathedArray * mathed_parse(unsigned flags = 0, MathedArray * array = 0,
     case LM_TK_FRAC:
       {
 	 MathFracInset * fc = new MathFracInset(fractype);
-	 MathedArray * num = mathed_parse(FLAG_BRACE|FLAG_BRACE_LAST);
-	 MathedArray * den = mathed_parse(FLAG_BRACE|FLAG_BRACE_LAST);
-	 fc->SetData(*num, *den);
+	 MathedArray num;
+	 mathed_parse(num, FLAG_BRACE|FLAG_BRACE_LAST);
+	 MathedArray den;
+   mathed_parse(den, FLAG_BRACE|FLAG_BRACE_LAST);
+	 fc->SetData(num, den);
 	 data.insertInset(fc, LM_TC_ACTIVE_INSET);
 	 break;
       }
@@ -685,13 +688,17 @@ MathedArray * mathed_parse(unsigned flags = 0, MathedArray * array = 0,
 	 if (c == '[') {
 	     rt = new MathRootInset(size);
 	     rt->setArgumentIdx(0);
-	     rt->setData(*mathed_parse(FLAG_BRACK_END, 0, &rt));
+       MathedArray ar;
+	     mathed_parse(ar, FLAG_BRACK_END, &rt);
+	     rt->setData(ar);
 	     rt->setArgumentIdx(1);
 	 } else {
 		 yyis->putback(c);
 	     rt = new MathSqrtInset(size);
 	 }
-	 rt->setData(*mathed_parse(FLAG_BRACE|FLAG_BRACE_LAST, 0, &rt));
+   MathedArray ar;
+	 mathed_parse(ar, FLAG_BRACE|FLAG_BRACE_LAST, &rt);
+	 rt->setData(ar);
 	 data.insertInset(rt, LM_TC_ACTIVE_INSET);
 	 break;
       }
@@ -702,13 +709,14 @@ MathedArray * mathed_parse(unsigned flags = 0, MathedArray * array = 0,
 	 if (lfd == LM_TK_SYM || lfd == LM_TK_STR || lfd == LM_TK_BOP|| lfd == LM_TK_SPECIAL)
 	   lfd = (lfd == LM_TK_SYM) ? yylval.l->id: yylval.i;
 //	 lyxerr << "L[" << lfd << " " << lfd << "]";
-	 MathedArray * a = mathed_parse(FLAG_RIGHT);
+	 MathedArray ar;
+	 mathed_parse(ar, FLAG_RIGHT);
 	 int rgd = yylex();
 //	 lyxerr << "R[" << rgd << "]";
 	 if (rgd == LM_TK_SYM || rgd == LM_TK_STR || rgd == LM_TK_BOP || rgd == LM_TK_SPECIAL)
 	   rgd = (rgd == LM_TK_SYM) ? yylval.l->id: yylval.i;	 
 	 MathDelimInset * dl = new MathDelimInset(lfd, rgd);
-	 dl->setData(*a);
+	 dl->setData(ar);
 	 data.insertInset(dl, LM_TC_ACTIVE_INSET);
 //	 lyxerr << "RL[" << lfd << " " << rgd << "]";
   	 break;
@@ -717,7 +725,7 @@ MathedArray * mathed_parse(unsigned flags = 0, MathedArray * array = 0,
       {
 	 if (flags & FLAG_RIGHT) { 
 	    --plevel;
-	    return array;
+	    return;
 	 } else {
 	    mathPrintError("Unmatched right delimiter");
 //	    panic = true;
@@ -736,7 +744,9 @@ MathedArray * mathed_parse(unsigned flags = 0, MathedArray * array = 0,
       {  
 	 MathDecorationInset * sq = new MathDecorationInset(yylval.l->id,
 							    size);
-	 sq->setData(*mathed_parse(FLAG_BRACE|FLAG_BRACE_LAST));
+	 MathedArray ar;
+	 mathed_parse(ar, FLAG_BRACE|FLAG_BRACE_LAST);
+	 sq->setData(ar);
 	 data.insertInset(sq, LM_TC_ACTIVE_INSET);
 	 break;
       }
@@ -780,8 +790,11 @@ MathedArray * mathed_parse(unsigned flags = 0, MathedArray * array = 0,
 	     data.insertInset(doAccent(p), p->getTCode());
 	   else
 	     data.insertInset(p, p->getTCode());
-	   for (int i = 0; p->setArgumentIdx(i); ++i)
-	     p->setData(*mathed_parse(FLAG_BRACE|FLAG_BRACE_LAST));
+	   for (int i = 0; p->setArgumentIdx(i); ++i) {
+			 MathedArray ar;
+	     mathed_parse(ar, FLAG_BRACE|FLAG_BRACE_LAST);
+	     p->setData(ar);
+			}
        }
        else {
 	   MathedInset * q = new MathFuncInset(yylval.s, LM_OT_UNDEF);
@@ -802,10 +815,10 @@ MathedArray * mathed_parse(unsigned flags = 0, MathedArray * array = 0,
 		 lyxerr << "[" << yylval.i << "]" << endl;
 	 --plevel;
 	 if (mt) { // && (flags & FLAG_END)) {
-	    mt->setData(*array);
-	    array = 0;
+	    mt->setData(array);
+	    array.clear();
 	 }
-	 return array;
+	 return;
       }
     case LM_TK_BEGIN:
       {
@@ -822,7 +835,7 @@ MathedArray * mathed_parse(unsigned flags = 0, MathedArray * array = 0,
 	    MathParInset * mm = new MathMatrixInset(nc, 0);
 	    mm->SetAlign(ar2[0], ar);
        	    data.insertInset(mm, LM_TC_ACTIVE_INSET);
-            mathed_parse(FLAG_END, &mm->GetData(), &mm);
+            mathed_parse(mm->GetData(), FLAG_END, &mm);
 	 } else if (is_eqn_type(yylval.i)) {
 	     if (plevel!= 0) {
 		 mathPrintError("Misplaced environment");
@@ -873,7 +886,7 @@ MathedArray * mathed_parse(unsigned flags = 0, MathedArray * array = 0,
 	     if (p) {
 		 data.insertInset(p, p->getTCode());
 		 p->setArgumentIdx(0);
-		 mathed_parse(FLAG_END, &p->GetData(), reinterpret_cast<MathParInset**>(&p));
+		 mathed_parse(p->GetData(), FLAG_END, reinterpret_cast<MathParInset**>(&p));
 //		 for (int i = 0; p->setArgumentIdx(i); ++i)
 //		   p->SetData(mathed_parse(FLAG_BRACE|FLAG_BRACE_LAST));
 	     } else 
@@ -939,7 +952,6 @@ MathedArray * mathed_parse(unsigned flags = 0, MathedArray * array = 0,
     }
    }
    --plevel;
-   return array;
 }
 
 

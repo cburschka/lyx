@@ -36,8 +36,7 @@ extern math_deco_struct const * search_deco(int code);
 
 /// math_parser.C
 extern
-MathedArray * mathed_parse(unsigned flags, MathedArray * data,
-			    MathParInset ** mt);
+void mathed_parse(MathedArray & data, unsigned flags, MathParInset ** mt);
 
 /// math_parser.C
 extern

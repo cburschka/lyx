@@ -305,7 +305,8 @@ void InsetFormula::Read(Buffer const *, LyXLex & lex)
 	// Silly hack to read labels.
 	mathed_label.erase();
 
-	mathed_parse(0, 0, &par);
+	MathedArray ar;
+	mathed_parse(ar, 0, &par);
 	par->Metrics();
 	disp_flag = (par->GetType() > 0);
 
