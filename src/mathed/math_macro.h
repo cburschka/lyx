@@ -76,7 +76,7 @@ public:
 	///
 	void expand();
 	///
-	void dump(ostream & os) const;
+	void dump(std::ostream & os) const;
 	///
 	MathParInset const * arg(int) const;
 	///
@@ -97,7 +97,7 @@ private:
 	void operator=(MathMacro const &);
 };
 
-inline ostream & operator<<(ostream & os, MathMacro const & m)
+inline std::ostream & operator<<(std::ostream & os, MathMacro const & m)
 {
 	m.dump(os);
 	return os;

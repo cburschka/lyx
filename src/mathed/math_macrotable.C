@@ -17,6 +17,7 @@
 #include "support/LAssert.h"
 
 using std::endl;
+using std::make_pair;
 
 MathMacroTable::table_type MathMacroTable::macro_table;
 
@@ -25,6 +26,8 @@ bool MathMacroTable::built = false;
 
 void MathMacroTable::dump()
 {
+	using std::cerr;
+
 	cerr << "\n------------------------------------------\n";
 	table_type::const_iterator it;
 	for (it = macro_table.begin(); it != macro_table.end(); ++it)

@@ -145,7 +145,7 @@ private:
 };
 
 inline 
-ostream & operator<<(ostream & os, MathedArray const & ar)
+std::ostream & operator<<(std::ostream & os, MathedArray const & ar)
 {
 	ar.dump(os);
 	return os;

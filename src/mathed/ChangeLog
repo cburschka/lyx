@@ -1,3 +1,12 @@
+2001-04-25  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* array.h (operator<<):
+	* math_macro.h (dump, operator<<): added std:: qualifier to ostream.
+
+	* math_macrotable.C: added using std::make_pair directive.
+	(dump): added using std::cerr directive here as I guess that this is
+	temporary.
+
 2001-04-20  Allan Rae  <rae@lyx.org>
 
 	* formula.C (LocalDispatch): fixed another #warning.  Guess who.
