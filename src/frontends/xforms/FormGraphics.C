@@ -36,6 +36,7 @@
 #include "frontends/Alert.h"
 
 #include "support/lstrings.h"  // for strToDbl & tostr
+#include "support/lyxlib.h"  // for float_equal
 #include "support/filetools.h"  // for MakeAbsPath etc
 
 #include FORMS_H_LOCATION
@@ -126,34 +127,34 @@ void FormGraphics::build()
 	fl_addto_choice(file_->choice_height, choice_Length_All.c_str());
 
 	// set up the tooltips for the filesection
-	string str = _("The file you want to insert");
+	string str = _("The file you want to insert.");
 	tooltips().init(file_->input_filename, str);
-	str = _("Browse the directories");
+	str = _("Browse the directories.");
 	tooltips().init(file_->button_browse, str);
 
-	str = _("Scale the image to inserted percentage value");
+	str = _("Scale the image to inserted percentage value.");
 	tooltips().init(file_->input_lyxscale, str);
-	str = _("Select display mode for this image");
+	str = _("Select display mode for this image.");
 	tooltips().init(file_->choice_display, str);
 
-	str = _("Set the image width to the inserted value");
+	str = _("Set the image width to the inserted value.");
 	tooltips().init(file_->input_width, str);
-	str = _("Select unit for width; Scale% for scaling whole image");
+	str = _("Select unit for width; Scale% for scaling whole image.");
 	tooltips().init(file_->choice_width, str);
-	str = _("Set the image height to the inserted value");
+	str = _("Set the image height to the inserted value.");
 	tooltips().init(file_->input_height, str);
-	str = _("Select unit for height");
+	str = _("Select unit for height.");
 	tooltips().init(file_->choice_height, str);
 	str = _("Do not distort the image. " 
                 "Keep image within \"width\" by \"height\" and obey "
-		"aspect ratio");
+		"aspect ratio.");
 	tooltips().init(file_->check_aspectratio, str);
-
 	str = _("Pass a filename like \"file.eps.gz\" to the LaTeX output. "
-	    "Useful when LaTeX should unzip the file. Needs an additional file "
-	    "like \"file.eps.bb\" which holds the values for the bounding box");
+		"Useful when LaTeX should unzip the file. Needs an additional "
+		"file like \"file.eps.bb\" which holds the values for "
+		"the bounding box.");
 	tooltips().init(file_->check_nounzip, str);
-	str = _("Show image only as a rectangle of the original size");
+	str = _("Show image only as a rectangle of the original size.");
 	tooltips().init(file_->check_draft, str);
 
 	// the bounding box selection
@@ -186,25 +187,25 @@ void FormGraphics::build()
 	fl_addto_choice(bbox_->choice_bb_units, bb_units.c_str());
 
 	// set up the tooltips for the bounding-box-section
-	str = _("The lower left x-value of the bounding box");
+	str = _("The lower left x-value of the bounding box.");
 	tooltips().init(bbox_->input_bb_x0, str);
-	str = _("The lower left y-value of the bounding box");
+	str = _("The lower left y-value of the bounding box.");
 	tooltips().init(bbox_->input_bb_y0, str);
 	str = _("The upper right x-value of the bounding box; "
 		"only this input field allows length + unit, e.g. 5cm "
-		"and sets the unit for the other input fields");
+		"and sets the unit for the other input fields.");
 	tooltips().init(bbox_->input_bb_x1, str);
-	str = _("The upper right y-value of the bounding box");
+	str = _("The upper right y-value of the bounding box.");
 	tooltips().init(bbox_->input_bb_y1, str);
-	str = _("Select unit for the bounding box values");
+	str = _("Select unit for the bounding box values.");
 	tooltips().init(bbox_->choice_bb_units, str);
 
 	str = _("Read the image coordinates new from file. For (e)ps-file "
 		"the bounding box is read, otherwise the imagesize in pixels. "
-		"Default unit is \"bp\", the PostScript's b(ig) p(oint)");
+		"Default unit is \"bp\", the PostScript's b(ig) p(oint).");
 	tooltips().init(bbox_->button_getBB, str);
 
-	str = _("Clip image to the bounding box values");
+	str = _("Clip image to the bounding box values.");
 	tooltips().init(bbox_->check_clip, str);
 
 	// the extra section
@@ -239,16 +240,16 @@ void FormGraphics::build()
 	// set up the tooltips for the extra section
 	str = _("Insert the rotation angle in degrees. "
 	        "Positive value rotates anti-clockwise, "
-		"negative value clockwise");
+		"negative value clockwise.");
 	tooltips().init(extra_->input_rotate_angle, str);
-	str = _("Insert the point of origin for rotation");
+	str = _("Insert the point of origin for rotation.");
 	tooltips().init(extra_->choice_origin, str);
-	str = _("Enables use of subfigure with its own caption");
+	str = _("Enables use of subfigure with its own caption.");
 	tooltips().init(extra_->check_subcaption, str);
-	str = _("Insert the optional subfigure caption");
+	str = _("Insert the optional subfigure caption.");
 	tooltips().init(extra_->input_subcaption, str);
 	str = _("Add any additional latex option, which is defined in the "
-                "graphicx-package and not mentioned in the gui's tabfolders");
+                "graphicx-package and not mentioned in the gui's tabfolders.");
 	tooltips().init(extra_->input_special, str);
 
 	// add the different tabfolders
@@ -306,7 +307,7 @@ void FormGraphics::apply()
 	// first item in choice_width means scaling
 	if (fl_get_choice(file_->choice_width) == 1) {
 		igp.scale = strToDbl(getString(file_->input_width));
-		if (igp.scale == 0.0) {
+		if (lyx::float_equal(igp.scale, 0.0, 0.05)) {
 			igp.scale = 100.0;
 		}
 		igp.width = LyXLength();
