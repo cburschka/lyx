@@ -36,7 +36,6 @@
 
 using lyx::support::AddName;
 using lyx::support::bformat;
-using lyx::support::GetEnvPath;
 using lyx::support::MakeAbsPath;
 using lyx::support::MakeDisplayPath;
 using lyx::support::OnlyFilename;

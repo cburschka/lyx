@@ -65,7 +65,6 @@ using lyx::support::createLyXTmpDir;
 using lyx::support::FileInfo;
 using lyx::support::FileSearch;
 using lyx::support::GetEnv;
-using lyx::support::GetEnvPath;
 using lyx::support::i18nLibFileSearch;
 using lyx::support::LibFileSearch;
 using lyx::support::Path;

@@ -15,7 +15,6 @@
 
 #include <boost/regex.hpp>
 
-using lyx::support::GetEnvPath;
 using lyx::support::lyx_localedir;
 
 using std::string;

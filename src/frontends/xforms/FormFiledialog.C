@@ -66,7 +66,6 @@ using lyx::support::ExpandPath;
 using lyx::support::FileFilterList;
 using lyx::support::FileInfo;
 using lyx::support::getcwd;
-using lyx::support::GetEnvPath;
 using lyx::support::LyXReadLink;
 using lyx::support::MakeAbsPath;
 using lyx::support::OnlyFilename;

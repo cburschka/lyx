@@ -13,7 +13,6 @@
 #include "support/filetools.h"
 #include "support/path_defines.h"
 
-using lyx::support::GetEnvPath;
 using lyx::support::lyx_localedir;
 
 using std::string;

@@ -1,3 +1,9 @@
+2004-12-16  Angus Leeming  <leeming@lyx.org>
+
+	* bufferlist.C:
+	* lyx_main.C: 
+	* messages.C: remove redundant "using lyx::support::GetEnvPath;"
+
 2004-12-14  Angus Leeming  <leeming@lyx.org>
 
 	* LaTeX.C: (startscript): use os::nulldev() rather than "/dev/null".
