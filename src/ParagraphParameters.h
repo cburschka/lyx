@@ -11,9 +11,6 @@
 #include "ShareContainer.h"
 #include "layout.h"
 
-// Not yet... lyx 1.3.x or so
-#define NO_PEXTRA_REALLY 1
-
 #include "ParameterStruct.h"
 
 class VSpace;
@@ -91,33 +88,6 @@ public:
 	LyXLength const & leftIndent() const;
 	///
 	void leftIndent(LyXLength const &);
-	///
-#ifndef NO_PEXTRA_REALLY
-	///
-	int pextraType() const;
-	///
-	void pextraType(int);
-	///
-	string const & pextraWidth() const;
-	///
-	void pextraWidth(string const &);
-	///
-	string const & pextraWidthp() const;
-	///
-	void pextraWidthp(string const &);
-	///
-	int pextraAlignment() const;
-	///
-	void pextraAlignment(int);
-	///
-	bool pextraHfill() const;
-	///
-	void pextraHfill(bool);
-	///
-	bool pextraStartMinipage() const;
-	///
-	void pextraStartMinipage(bool);
-#endif
 private:
 	///
 	void set_from_struct(ParameterStruct const &);

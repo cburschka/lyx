@@ -48,21 +48,6 @@ struct ParameterStruct {
 	string labelwidthstring;
 	///
 	LyXLength leftindent;
-	///
-#ifndef NO_PEXTRA_REALLY
-	///
-	int pextra_type;
-	///
-	string pextra_width;
-	///
-	string pextra_widthp;
-	///
-	int pextra_alignment;
-	///
-	bool pextra_hfill;
-	///
-	bool pextra_start_minipage;
-#endif
 };
 
 
@@ -72,10 +57,6 @@ ParameterStruct::ParameterStruct()
 	  pagebreak_top(false), pagebreak_bottom(false),
 	  align(LYX_ALIGN_BLOCK), depth(0), start_of_appendix(false),
 	  appendix(false)
-#ifndef NO_PEXTRA_REALLY
-	, pextra_type(0), pextra_alignment(0), pextra_hfill(false),
-	pextra_start_minipage(false)
-#endif
 {}
 
 
@@ -97,16 +78,7 @@ bool operator==(ParameterStruct const & ps1,
 		&& ps1.appendix == ps2.appendix
 		&& ps1.labelstring == ps2.labelstring
 		&& ps1.labelwidthstring == ps2.labelwidthstring
-		&& ps1.leftindent == ps2.leftindent
-#ifndef NO_PEXTRA_REALLY
-		&& ps1.pextra_type == ps2.pextra_type
-		&& ps1.pextra_width == ps2.pextra_width
-		&& ps1.pextra_widthp == ps2.pextra_widthp
-		&& ps1.pextra_alignment == ps2.pextra_alignment
-		&& ps1.pextra_hfill == ps2.pextra_hfill
-		&& ps1.pextra_start_minipage == ps2.pextra_start_minipage
-#endif
-	;
+		&& ps1.leftindent == ps2.leftindent;
 
 }
 

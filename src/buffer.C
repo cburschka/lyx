@@ -474,17 +474,6 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 	)
 {
 	bool the_end_read = false;
-#ifndef NO_COMPABILITY
-#ifndef NO_PEXTRA_REALLY
-	// This is super temporary but is needed to get the compability
-	// mode for minipages work correctly together with new tabulars.
-	static int call_depth;
-	++call_depth;
-	bool checkminipage = false;
-	static Paragraph * minipar = 0;
-	static Paragraph * parBeforeMinipage;
-#endif
-#endif
 
 	// The order of the tags tested may seem unnatural, but this
 	// has been done in order to reduce the number of string
@@ -823,9 +812,6 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 		}
 
 		if (!inset) {
-#ifndef NO_PEXTRA_REALLY
-			--call_depth;
-#endif
 			return false; // no end read yet
 		}
 
@@ -1183,28 +1169,6 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 		   value.keep() ||
 		    (value.kind() != VSpace::LENGTH))
 			par->params().spaceBottom(value);
-#ifndef NO_COMPABILITY
-#ifndef NO_PEXTRA_REALLY
-	} else if (token == "\\pextra_type") {
-		lex.nextToken();
-		par->params().pextraType(lex.getInteger());
-	} else if (token == "\\pextra_width") {
-		lex.nextToken();
-		par->params().pextraWidth(lex.getString());
-	} else if (token == "\\pextra_widthp") {
-		lex.nextToken();
-		par->params().pextraWidthp(lex.getString());
-	} else if (token == "\\pextra_alignment") {
-		lex.nextToken();
-		par->params().pextraAlignment(lex.getInteger());
-	} else if (token == "\\pextra_hfill") {
-		lex.nextToken();
-		par->params().pextraHfill(lex.getInteger());
-	} else if (token == "\\pextra_start_minipage") {
-		lex.nextToken();
-		par->params().pextraStartMinipage(lex.getInteger());
-#endif
-#endif
 	} else if (token == "\\labelwidthstring") {
 		lex.eatLine();
 		par->params().labelWidthString(lex.getString());
@@ -1263,13 +1227,6 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 		insertErtContents(par, pos);
 #endif
 		the_end_read = true;
-#ifndef NO_COMPABILITY
-#ifndef NO_PEXTRA_REALLY
-		if (minipar == par)
-			par = 0;
-		minipar = parBeforeMinipage = 0;
-#endif
-#endif
 	} else {
 #ifndef NO_COMPABILITY
 		if (ert_comp.active) {
@@ -1292,191 +1249,6 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 #endif
 	}
 
-#ifndef NO_COMPABILITY
-#ifndef NO_PEXTRA_REALLY
-	// I wonder if we could use this blanket fix for all the
-	// checkminipage cases...
-	// don't forget about ert paragraphs and compatibility read for'em
-	if (par && (par->size() || !ert_comp.contents.empty())) {
-		// It is possible that this will check to often,
-		// but that should not be an correctness issue.
-		// Only a speed issue.
-		checkminipage = true;
-	}
-
-	// now check if we have a minipage paragraph as at this
-	// point we already read all the necessary data!
-	// this cannot be done in layout because there we did
-	// not read yet the paragraph PEXTRA-params (Jug)
-	//
-	// BEGIN pextra_minipage compability
-	// This should be removed in 1.3.x (Lgb)
-	// I don't think we should remove this so fast (Jug)
-
-	// This compability code is not perfect. In a couple
-	// of rand cases it fails. When the minipage par is
-	// the first par in the document, and when there are
-	// none or only one regular paragraphs after the
-	// minipage. Currently I am not investing any effort
-	// in fixing those cases.
-
-//	lyxerr << "Call depth: " << call_depth << endl;
-//	lyxerr << "Checkminipage: " << checkminipage << endl;
-
-	if (checkminipage && (call_depth == 1)) {
-		checkminipage = false;
-		if (minipar && (minipar != par) &&
-		    (par->params().pextraType() == Paragraph::PEXTRA_MINIPAGE)) {
-			lyxerr << "minipages in a row" << endl;
-			if (par->params().pextraStartMinipage()) {
-				lyxerr << "start new minipage" << endl;
-				// minipages in a row
-				par->previous()->next(0);
-				par->previous(0);
-
-				Paragraph * tmp = minipar;
-				while (tmp) {
-					tmp->params().pextraType(0);
-					tmp->params().pextraWidth(string());
-					tmp->params().pextraWidthp(string());
-					tmp->params().pextraAlignment(0);
-					tmp->params().pextraHfill(false);
-					tmp->params().pextraStartMinipage(false);
-					tmp = tmp->next();
-				}
-				// create a new paragraph to insert the
-				// minipages in the following case
-				if (par->params().pextraStartMinipage() &&
-				    !par->params().pextraHfill()) {
-					Paragraph * p = new Paragraph;
-					p->layout(params.getLyXTextClass().defaultLayoutName());
-
-					p->previous(parBeforeMinipage);
-					parBeforeMinipage->next(p);
-					p->next(0);
-					p->params().depth(parBeforeMinipage->params().depth());
-					parBeforeMinipage = p;
-				}
-				InsetMinipage * mini = new InsetMinipage(params);
-				mini->pos(static_cast<InsetMinipage::Position>(par->params().pextraAlignment()));
-				mini->pageWidth(LyXLength(par->params().pextraWidth()));
-				if (!par->params().pextraWidthp().empty()) {
-					lyxerr << "WP:" << mini->pageWidth().asString() << endl;
-					mini->pageWidth(LyXLength((par->params().pextraWidthp())+"col%"));
-				}
-				Paragraph * op = mini->firstParagraph();
-				mini->inset.paragraph(par);
-				//
-				// and free the old ones!
-				//
-				while(op) {
-					Paragraph * pp = op->next();
-					delete op;
-					op = pp;
-				}
-				// Insert the minipage last in the
-				// previous paragraph.
-				if (par->params().pextraHfill()) {
-					parBeforeMinipage->insertChar
-						(parBeforeMinipage->size(),
-						 Paragraph::META_HFILL, font);
-				}
-				parBeforeMinipage->insertInset
-					(parBeforeMinipage->size(), mini, font);
-
-				minipar = par;
-			} else {
-				lyxerr << "new minipage par" << endl;
-				//nothing to do just continue reading
-			}
-
-		} else if (minipar && (minipar != par)) {
-			lyxerr << "last minipage par read" << endl;
-			// The last paragraph read was not part of a
-			// minipage but the par linked list is...
-			// So we need to remove the last par from the
-			// rest
-			if (par->previous())
-				par->previous()->next(0);
-			par->previous(parBeforeMinipage);
-			parBeforeMinipage->next(par);
-			Paragraph * tmp = minipar;
-			while (tmp) {
-				tmp->params().pextraType(0);
-				tmp->params().pextraWidth(string());
-				tmp->params().pextraWidthp(string());
-				tmp->params().pextraAlignment(0);
-				tmp->params().pextraHfill(false);
-				tmp->params().pextraStartMinipage(false);
-				tmp = tmp->next();
-			}
-			depth = parBeforeMinipage->params().depth();
-			// and set this depth on the par as it has not been set already
-			par->params().depth(depth);
-			minipar = parBeforeMinipage = 0;
-		} else if (!minipar &&
-			   (par->params().pextraType() == Paragraph::PEXTRA_MINIPAGE)) {
-			// par is the first paragraph in a minipage
-			lyxerr << "begin minipage" << endl;
-			// To minimize problems for
-			// the users we will insert
-			// the first minipage in
-			// a sequence of minipages
-			// in its own paragraph.
-			Paragraph * p = new Paragraph;
-			p->layout(params.getLyXTextClass().defaultLayoutName());
-			p->previous(par->previous());
-			p->next(0);
-			p->params().depth(depth);
-			par->params().depth(0);
-			depth = 0;
-			if (par->previous())
-				par->previous()->next(p);
-			par->previous(0);
-			parBeforeMinipage = p;
-			minipar = par;
-			if (!first_par || (first_par == par))
-				first_par = p;
-
-			InsetMinipage * mini = new InsetMinipage(params);
-			mini->pos(static_cast<InsetMinipage::Position>(minipar->params().pextraAlignment()));
-			mini->pageWidth(LyXLength(minipar->params().pextraWidth()));
-			if (!par->params().pextraWidthp().empty()) {
-				lyxerr << "WP:" << mini->pageWidth().asString() << endl;
-				mini->pageWidth(LyXLength((par->params().pextraWidthp())+"col%"));
-			}
-
-			Paragraph * op = mini->firstParagraph();
-			mini->inset.paragraph(minipar);
-			//
-			// and free the old ones!
-			//
-			while(op) {
-				Paragraph * pp = op->next();
-				delete op;
-				op = pp;
-			}
-
-			// Insert the minipage last in the
-			// previous paragraph.
-			if (minipar->params().pextraHfill()) {
-				parBeforeMinipage->insertChar
-					(parBeforeMinipage->size(),
-					 Paragraph::META_HFILL, font);
-			}
-			parBeforeMinipage->insertInset
-				(parBeforeMinipage->size(), mini, font);
-		} else if (par->params().pextraType() == Paragraph::PEXTRA_INDENT) {
-			par->params().leftIndent(LyXLength(par->params().pextraWidth()));
-			if (!par->params().pextraWidthp().empty()) {
-				par->params().leftIndent(LyXLength((par->params().pextraWidthp())+"col%"));
-			}
-		}
-	}
-	// End of pextra_minipage compability
-	--call_depth;
-#endif
-#endif
 	return the_end_read;
 }
 

@@ -34,16 +34,6 @@ void ParagraphParameters::clear()
 	tmp.labelstring.erase();
 	tmp.labelwidthstring.erase();
 	tmp.start_of_appendix = false;
-#ifndef NO_PEXTRA_REALLY
-	//tmp.pextra_type = PEXTRA_NONE;
-	tmp.pextra_type = 0;
-	tmp.pextra_width.erase();
-	tmp.pextra_widthp.erase();
-	//tmp.pextra_alignment = MINIPAGE_ALIGN_TOP;
-	tmp.pextra_alignment = 0;
-	tmp.pextra_hfill = false;
-	tmp.pextra_start_minipage = false;
-#endif
 	set_from_struct(tmp);
 }
 
@@ -59,14 +49,6 @@ bool ParagraphParameters::sameLayout(ParagraphParameters const & pp) const
 		param->pagebreak_top == pp.param->pagebreak_top &&
 		param->added_space_top == pp.param->added_space_top &&
 		param->spacing == pp.param->spacing &&
-#ifndef NO_PEXTRA_REALLY
-		param->pextra_type == pp.param->pextra_type &&
-		param->pextra_width == pp.param->pextra_width &&
-		param->pextra_widthp == pp.param->pextra_widthp &&
-		param->pextra_alignment == pp.param->pextra_alignment &&
-		param->pextra_hfill == pp.param->pextra_hfill &&
-		param->pextra_start_minipage == pp.param->pextra_start_minipage &&
-#endif
 		param->noindent == pp.param->noindent &&
 		param->depth == pp.param->depth;
 }
@@ -282,88 +264,3 @@ void ParagraphParameters::leftIndent(LyXLength const & li)
 	tmp.leftindent = li;
 	set_from_struct(tmp);
 }
-
-#ifndef NO_PEXTRA_REALLY
-int ParagraphParameters::pextraType() const
-{
-	return param->pextra_type;
-}
-
-
-void ParagraphParameters::pextraType(int t)
-{
-	ParameterStruct tmp(*param);
-	tmp.pextra_type = t;
-	set_from_struct(tmp);
-}
-
-
-string const & ParagraphParameters::pextraWidth() const
-{
-	return param->pextra_width;
-}
-
-
-void ParagraphParameters::pextraWidth(string const & w)
-{
-	ParameterStruct tmp(*param);
-	tmp.pextra_width = w;
-	set_from_struct(tmp);
-}
-
-
-string const & ParagraphParameters::pextraWidthp() const
-{
-	return param->pextra_widthp;
-}
-
-
-void ParagraphParameters::pextraWidthp(string const & wp)
-{
-	ParameterStruct tmp(*param);
-	tmp.pextra_widthp = wp;
-	set_from_struct(tmp);
-}
-
-
-int ParagraphParameters::pextraAlignment() const
-{
-	return param->pextra_alignment;
-}
-
-
-void ParagraphParameters::pextraAlignment(int a)
-{
-	ParameterStruct tmp(*param);
-	tmp.pextra_alignment = a;
-	set_from_struct(tmp);
-}
-
-
-bool ParagraphParameters::pextraHfill() const
-{
-	return param->pextra_hfill;
-}
-
-
-void ParagraphParameters::pextraHfill(bool hf)
-{
-	ParameterStruct tmp(*param);
-	tmp.pextra_hfill = hf;
-	set_from_struct(tmp);
-}
-
-
-bool ParagraphParameters::pextraStartMinipage() const
-{
-	return param->pextra_start_minipage;
-}
-
-
-void ParagraphParameters::pextraStartMinipage(bool smp)
-{
-	ParameterStruct tmp(*param);
-	tmp.pextra_start_minipage = smp;
-	set_from_struct(tmp);
-}
-#endif

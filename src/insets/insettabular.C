@@ -810,7 +810,7 @@ void InsetTabular::lfunMousePress(FuncRequest const & cmd)
 
 	bool const inset_hit = insetHit(bv, cmd.x, cmd.y);
 
-	FuncRequest cmd1 = cmd;	
+	FuncRequest cmd1 = cmd;
 	cmd1.x -= inset_x;
 	cmd1.y -= inset_y;
 
@@ -849,7 +849,7 @@ bool InsetTabular::lfunMouseRelease(FuncRequest const & cmd)
 {
 	bool ret = false;
 	if (the_locking_inset) {
-		FuncRequest cmd1 = cmd;	
+		FuncRequest cmd1 = cmd;
 		cmd1.x -= inset_x;
 		cmd1.y -= inset_y;
 		ret = the_locking_inset->localDispatch(cmd1);
@@ -865,7 +865,7 @@ bool InsetTabular::lfunMouseRelease(FuncRequest const & cmd)
 void InsetTabular::lfunMouseMotion(FuncRequest const & cmd)
 {
 	if (the_locking_inset) {
-		FuncRequest cmd1 = cmd;	
+		FuncRequest cmd1 = cmd;
 		cmd1.x -= inset_x;
 		cmd1.y -= inset_y;
 		the_locking_inset->localDispatch(cmd1);
