@@ -1,3 +1,8 @@
+2002-03-25  Herbert Voss  <voss@lyx.org>
+
+	* insetgraphicsParams.C (Read): prevent LyX from hanging if the
+	graphics file does not exist.
+
 2002-03-25  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* insetgraphics.C (prepareFile): ensure that the file has an absolute
