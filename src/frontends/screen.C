@@ -263,11 +263,11 @@ void LyXScreen::update(BufferView & bv, int yo, int xo)
 	case LyXText::REFRESH_ROW:
 	{
 		// ok I will update the current cursor row
-		drawOneRow(text, &bv, text->refresh_row, text->refresh_y,
+		drawOneRow(text, &bv, &*text->refresh_row, text->refresh_y,
 			   yo, xo);
 		// this because if we had a major update the refresh_row could
 		// have been set to 0!
-		if (text->refresh_row) {
+		if (text->refresh_row != text->rows().end()) {
 			expose(0, text->refresh_y - text->top_y() + yo,
 				   vwidth, text->refresh_row->height());
 		}

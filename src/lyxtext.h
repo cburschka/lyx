@@ -80,7 +80,7 @@ private:
 	/** the 'anchor' row: the position of this row remains constant
 	 *  with respect to the top of the screen
 	 */
-	Row * anchor_row_;
+	RowList::iterator anchor_row_;
 	/** the pixel offset with respect to this row of top_y
 	 */
 	int anchor_row_offset_;
@@ -177,7 +177,7 @@ public:
 	void fullRebreak();
 
 	///
-	Row * need_break_row;
+	RowList::iterator need_break_row;
 
 	/// clear any pending paints
 	void clearPaint();
@@ -221,7 +221,7 @@ private:
 	 * This must be set if the pending update is REFRESH_ROW.
 	 * It doesn't make any difference for REFRESH_AREA.
 	 */
-	Row * refresh_row;
+	RowList::iterator refresh_row;
 
 	refresh_status refresh_status_;
 
@@ -512,7 +512,7 @@ private:
 	string copylayouttype;
 
 	/// removes the row and reset the touched counters
-	void removeRow(Row * row);
+	void removeRow(RowList::iterator rit);
 
 	/// remove all following rows of the paragraph of the specified row.
 	void removeParagraph(Row * row);
@@ -525,9 +525,9 @@ private:
 	void appendParagraph(RowList::iterator rowit);
 
 	///
-	void breakAgain(Row * row);
+	void breakAgain(RowList::iterator rit);
 	/// Calculate and set the height of the row
-	void setHeightOfRow(Row * row_ptr);
+	void setHeightOfRow(RowList::iterator rit);
 
 	// fix the cursor `cur' after a characters has been deleted at `where'
 	// position. Called by deleteEmptyParagraphMechanism

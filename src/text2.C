@@ -52,21 +52,23 @@ using lyx::pos_type;
 
 
 LyXText::LyXText(BufferView * bv)
-	: height(0), width(0), anchor_row_(0), anchor_row_offset_(0),
-	  inset_owner(0), the_locking_inset(0), need_break_row(0),
-	  bv_owner(bv)
+	: height(0), width(0), anchor_row_offset_(0),
+	  inset_owner(0), the_locking_inset(0), bv_owner(bv)
 {
-	refresh_row = 0;
+	anchor_row_ = rows().end();
+	need_break_row = rows().end();
+	refresh_row = rows().end();
 	clearPaint();
 }
 
 
 LyXText::LyXText(BufferView * bv, InsetText * inset)
-	: height(0), width(0), anchor_row_(0), anchor_row_offset_(0),
-	  inset_owner(inset), the_locking_inset(0), need_break_row(0),
-	  bv_owner(bv)
+	: height(0), width(0), anchor_row_offset_(0),
+	  inset_owner(inset), the_locking_inset(0), bv_owner(bv)
 {
-	refresh_row = 0;
+	anchor_row_ = rows().end();
+	need_break_row = rows().end();
+	refresh_row = rows().end();
 	clearPaint();
 }
 
@@ -75,7 +77,7 @@ void LyXText::init(BufferView * bview, bool reinit)
 {
 	if (reinit) {
 		rowlist_.clear();
-		need_break_row = 0;
+		need_break_row = rows().end();
 		width = height = 0;
 		copylayouttype.erase();
 		top_y(0);
@@ -259,35 +261,33 @@ void LyXText::setCharFont(Buffer const * buf, Paragraph * par,
 
 
 // removes the row and reset the touched counters
-void LyXText::removeRow(Row * row)
+void LyXText::removeRow(RowList::iterator rit)
 {
-	lyx::Assert(row);
-
-	Row * row_prev = row->previous();
-	Row * row_next = row->next();
-	int const row_height = row->height();
-
 	/* FIXME: when we cache the bview, this should just
 	 * become a postPaint(), I think */
-	if (refresh_row == row) {
-		refresh_row = row_prev ? row_prev : row_next;
+	if (refresh_row == rit) {
+		if (rit == rows().begin())
+			refresh_row = boost::next(rit);
+		else
+			refresh_row = boost::prior(rit);
+
 		// what about refresh_y
 	}
 
-	if (anchor_row_ == row) {
-		if (row_prev) {
-			anchor_row_ = row_prev;
-			anchor_row_offset_ += row_prev->height();
+	if (anchor_row_ == rit) {
+		if (rit != rows().begin()) {
+			anchor_row_ = boost::prior(rit);
+			anchor_row_offset_ += boost::prior(rit)->height();
 		} else {
-			anchor_row_ = row_next;
-			anchor_row_offset_ -= row_height;
+			anchor_row_ = boost::next(rit);
+			anchor_row_offset_ -= rit->height();
 		}
 	}
 
 	// the text becomes smaller
-	height -= row_height;
+	height -= rit->height();
 
-	rowlist_.erase(row);
+	rowlist_.erase(rit);
 }
 
 
@@ -767,9 +767,9 @@ void LyXText::fullRebreak()
 		init(bv());
 		return;
 	}
-	if (need_break_row) {
+	if (need_break_row != rows().end()) {
 		breakAgain(need_break_row);
-		need_break_row = 0;
+		need_break_row = rows().end();
 		return;
 	}
 }
@@ -2292,7 +2292,7 @@ bool LyXText::deleteEmptyParagraphMechanism(LyXCursor const & old_cursor)
 			 * the parindent that can occur or dissappear.
 			 * The next row can change its height, if
 			 * there is another layout before */
-			if (refresh_row) {
+			if (refresh_row != rows().end()) {
 				if (refresh_row->next()) {
 					breakAgain(refresh_row->next());
 					updateCounters();
@@ -2395,7 +2395,7 @@ LyXText::refresh_status LyXText::refreshStatus() const
 void LyXText::clearPaint()
 {
 	refresh_status_ = REFRESH_NONE;
-	refresh_row = 0;
+	refresh_row = rows().end();
 	refresh_y = 0;
 }
 
@@ -2405,7 +2405,7 @@ void LyXText::postPaint(int start_y)
 	refresh_status old = refresh_status_;
 
 	refresh_status_ = REFRESH_AREA;
-	refresh_row = 0;
+	refresh_row = rows().end();
 
 	if (old != REFRESH_NONE && refresh_y < start_y)
 		return;

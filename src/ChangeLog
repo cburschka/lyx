@@ -1,5 +1,23 @@
 2003-03-30  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
+	* text2.C (LyXText): adjust.
+	(init): adjust
+	(removeRow): make it take a RowList::iterator as arg, adjust.
+	(fullRebreak): adjust
+	(deleteEmptyParagraphMechanism): adjust
+	(clearPaint): adjust
+	(postPaint): adjust
+
+	* text.C (top_y): adjust
+	(setHeightOfRow): make it take a RowList::iterator as arg, adjust.
+	(breakAgain): make it take a RowList::iterator as arg, adjust.
+	(breakParagraph): adjust
+	(insertChar): adjust
+	(backspace): adjust
+
+	* lyxtext.h: make anchor_row_ be a RowList::iterator, ditto
+	need_break_row, and refresh_row.
+
 	* text3.C (dispatch): adjust
 
 	* text2.C (checkParagraph): adjust
