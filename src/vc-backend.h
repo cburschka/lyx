@@ -39,7 +39,11 @@ public:
 	///
 	virtual void getLog(string const &) = 0;
 	///
-	string const & version() const { return version_; }
+	virtual string const versionString() const = 0;
+	///
+	string const & version() const {
+		return version_; 
+	}
 	///
 	string const & locker() const { return locker_; }
 	///
@@ -96,6 +100,10 @@ public:
 	virtual void undoLast();
 	///
 	virtual void getLog(string const &);
+	///
+	virtual string const versionString() const {
+		return "RCS: " + version_;
+	}
 };
 
 
@@ -121,6 +129,10 @@ public:
 	virtual void undoLast();
 	///
 	virtual void getLog(string const &);
+	///
+	virtual string const versionString() const {
+		return "CVS: " + version_;
+	}
 private:
 	string file_;
 };

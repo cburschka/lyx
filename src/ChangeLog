@@ -1,3 +1,15 @@
+2001-08-19  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* vc-backend.h (RCS::versionString): add RCS to version 
+	(CVS::versionString): add CVS to version 
+
+	* vc-backend.C (scanMaster): do not add CVS to version.
+	(scanMaster): do not add RCS to version
+
+	* lyxvc.C (versionString): new method
+
+	* lyxfunc.C (initMiniBuffer): use LyXVC::versionString
+
 2001-08-18  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* Spacing.C (set): initialize fval

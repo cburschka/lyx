@@ -82,7 +82,9 @@ public:
 	bool inUse();
 
 	/// Returns the version number.
-	string const & version() const;
+	//string const & version() const;
+	/// Returns the version number.
+	string const versionString() const;
 
 	/// Returns the userid of the person who has locked the doc.
 	string const & locker() const;

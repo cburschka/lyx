@@ -112,7 +112,9 @@ void RCS::scanMaster()
 				vcstatus = UNLOCKED;
 				continue;
 			}
-			string tmpt, s1, s2;
+			string tmpt;
+			string s1;
+			string s2;
 			do {
 				ifs >> tmpt;
 				s1 = strip(tmpt, ';');
@@ -136,7 +138,6 @@ void RCS::scanMaster()
 				<< endl;
 		}
 	}
-	version_ = "RCS: " + version_;
 }
 
 
@@ -245,8 +246,7 @@ void CVS::scanMaster()
 			LRegex::SubMatches const & sm = reg.exec(line);
 			//sm[0]; // whole matched string
 			//sm[1]; // filename
-			version_ = "CVS: ";
-			version_ += LSubstring(line, sm[2].first,
+			version_ = LSubstring(line, sm[2].first,
 					      sm[2].second);
 			string file_date = LSubstring(line, sm[3].first,
 						      sm[3].second);
