@@ -404,6 +404,7 @@ void LyXText::removeRow(Row * row) const
 	}
 	if (refresh_row == row) {
 		refresh_row = row_prev ? row_prev : row->next();
+		// what about refresh_y, refresh_height
 	}
 
 	height -= row->height(); // the text becomes smaller

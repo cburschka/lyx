@@ -476,24 +476,22 @@ void LyXText::drawInset(DrawRowParams & p, pos_type const pos)
 	}
  
 	LyXFont const & font = getFont(p.bv->buffer(), p.row->par(), pos);
- 
+
 	inset->update(p.bv, font, false);
 	inset->draw(p.bv, font, p.yo + p.row->baseline(), p.x, p.cleared);
  
 	if (!need_break_row && !inset_owner 
-		&& p.bv->text->status() == CHANGED_IN_DRAW) {
+	    && p.bv->text->status() == CHANGED_IN_DRAW) {
 		Row * prev = p.row->previous();
 		if (prev && prev->par() == p.row->par()) {
 			breakAgainOneRow(p.bv, prev);
-			// breakAgainOneRow() may have removed p.row
-			// What about the x and y coordinates? par & pos ok.
 			if (prev->next() != p.row) {
-				p.row = prev;
+				// breakAgainOneRow() has removed p.row
+				p.row = 0;  // see what this breaks
+				need_break_row = prev;
+			} else {
+				need_break_row = p.row;
 			}
-			// If there's only one row (after p.row was deleted)
-			// prev->next() == 0 and no breaking is required.
-			// Otherwise, check the new next row.
-			need_break_row = prev->next();
 		} else {
 			need_break_row = p.row;
 		}
@@ -1671,7 +1669,7 @@ void LyXText::breakAgainOneRow(BufferView * bview, Row * row)
 			row = row->next();
 			row->height(0);
 		} else  {
-			row= row->next();
+			row = row->next();
 			++z;
 			if (row->pos() != z)
 				row->pos(z);
