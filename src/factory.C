@@ -285,19 +285,6 @@ InsetOld * createInset(FuncRequest const & cmd)
 		}
 	}
 
-	case LFUN_INSERT_LABEL: {
-		InsetCommandParams icp;
-		InsetCommandMailer::string2params(cmd.argument, icp);
-		return new InsetLabel(icp);
-	}
-
-	case LFUN_URL:
-	case LFUN_HTMLURL: {
-		InsetCommandParams icp;
-		InsetCommandMailer::string2params(cmd.argument, icp);
-		return new InsetUrl(icp);
-	}
-
 	case LFUN_SPACE_INSERT: {
 		string const name = cmd.argument;
 		if (name == "normal")

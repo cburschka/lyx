@@ -1098,6 +1098,10 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev_in)
 		break;
 
 	case LFUN_INSET_APPLY: {
+#warning is this code ever called?
+		// Remove if not triggered. Mail lyx-devel if triggered.
+		// This code was replaced by code in text3.C.
+		BOOST_ASSERT(false);
 		string const name = ev.getArg(0);
 
 		InsetBase * inset = owner_->getDialogs().getOpenInset(name);
@@ -1114,6 +1118,8 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev_in)
 	break;
 
 	case LFUN_INSET_INSERT: {
+		// Same as above.
+		BOOST_ASSERT(false);
 		InsetOld * inset = createInset(ev);
 		if (!inset || !insertInset(inset))
 			delete inset;

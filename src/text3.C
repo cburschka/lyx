@@ -989,6 +989,26 @@ DispatchResult LyXText::dispatch(FuncRequest const & cmd)
 		break;
 	}
 
+	case LFUN_INSET_APPLY: {
+		string const name = cmd.getArg(0);
+		InsetBase * inset = bv->owner()->getDialogs().getOpenInset(name);
+		if (inset) {
+			FuncRequest fr(bv, LFUN_INSET_MODIFY, cmd.argument);
+			inset->dispatch(fr);
+		} else {
+			FuncRequest fr(bv, LFUN_INSET_INSERT, cmd.argument);
+			dispatch(fr);
+		}
+		break;
+	}
+
+	case LFUN_INSET_INSERT: {
+		InsetOld * inset = createInset(cmd);
+		if (!inset || !bv->insertInset(inset))
+			delete inset;
+		break;
+		}
+
 	case LFUN_INSET_SETTINGS:
 		bv->cursor().innerInset()->showInsetDialog(bv);
 		break;
@@ -1484,7 +1504,6 @@ DispatchResult LyXText::dispatch(FuncRequest const & cmd)
 	}
 
 	case LFUN_URL: {
-		doInsertInset(this, cmd, true, false);
 		InsetCommandParams p("url");
 		string const data = InsetCommandMailer::params2string("url", p);
 		bv->owner()->getDialogs().show("url", data, 0);
@@ -1492,10 +1511,16 @@ DispatchResult LyXText::dispatch(FuncRequest const & cmd)
 	}
 
 	case LFUN_HTMLURL: {
-		doInsertInset(this, cmd, true, false);
 		InsetCommandParams p("htmlurl");
 		string const data = InsetCommandMailer::params2string("url", p);
 		bv->owner()->getDialogs().show("url", data, 0);
+		break;
+	}
+
+	case LFUN_INSERT_LABEL: {
+		InsetCommandParams p("label");
+		string const data = InsetCommandMailer::params2string("label", p);
+		bv->owner()->getDialogs().show("label", data, 0);
 		break;
 	}
 
