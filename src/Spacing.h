@@ -37,7 +37,7 @@ public:
 		Default
 	};
 	///
-	Spacing() : space(Single), value(1.0) {}
+	Spacing() : space(Default), value(1.0) {}
 	///
 	Spacing(Spacing::Space sp, float val = 1.0) {
 		set(sp, val);

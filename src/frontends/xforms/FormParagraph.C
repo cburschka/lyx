@@ -127,7 +127,7 @@ void FormParagraph::build()
 		      "| Medskip | Bigskip | VFill | Length ")); 
 
     fl_addto_choice(general_->choice_linespacing,
-                    _(" Single | OneHalf | Double | Other "));
+                    _(" Default | Single | OneHalf | Double | Other "));
  
     fl_set_input_return(general_->input_space_above, FL_RETURN_CHANGED);
     fl_set_input_return(general_->input_space_below, FL_RETURN_CHANGED);
@@ -192,8 +192,6 @@ void FormParagraph::general_apply()
     LyXAlignment align;
     string labelwidthstring;
     bool noindent;
-    Spacing::Space linespacing;
-    string other_linespacing;
 
     // If a vspace kind is "Length" but there's no text in
     // the input field, reset the kind to "None". 
@@ -277,11 +275,14 @@ void FormParagraph::general_apply()
    
     labelwidthstring = fl_get_input(general_->input_labelwidth);
     noindent = fl_get_button(general_->check_noindent);
+    Spacing::Space linespacing;
+    string other_linespacing;
     switch (fl_get_choice(general_->choice_linespacing)) {
-        case 1: linespacing = Spacing::Single; break;
-        case 2: linespacing = Spacing::Onehalf; break;
-        case 3: linespacing = Spacing::Double; break;
-        case 4:
+        case 1: linespacing = Spacing::Default; break;
+        case 2: linespacing = Spacing::Single; break;
+        case 3: linespacing = Spacing::Onehalf; break;
+        case 4: linespacing = Spacing::Double; break;
+        case 5:
             linespacing = Spacing::Other;
             other_linespacing = fl_get_input(general_->input_linespacing);
             break;
@@ -358,22 +359,23 @@ void FormParagraph::general_update()
 
     int linespacing;
     Spacing space = par_->params().spacing();
- 
+
+    /* 
     switch (lv_->buffer()->params.spacing.getSpace()) {
-        case Spacing::Single: linespacing = 1; break;
-        case Spacing::Onehalf: linespacing = 2; break;
-        case Spacing::Double: linespacing = 3; break;
-        case Spacing::Other: linespacing = 4; break;
+        case Spacing::Default: linespacing = 1; break;
+        case Spacing::Single: linespacing = 2; break;
+        case Spacing::Onehalf: linespacing = 3; break;
+        case Spacing::Double: linespacing = 4; break;
+        case Spacing::Other: linespacing = 5; break;
     }
+    */
 
     switch (space.getSpace()) {
-        case Spacing::Single: linespacing = 1; break;
-        case Spacing::Onehalf: linespacing = 2; break;
-        case Spacing::Double: linespacing = 3; break;
-        case Spacing::Other: linespacing = 4; break;
-        case Spacing::Default:
-            space = lv_->buffer()->params.spacing;
-            break;
+        case Spacing::Default: linespacing = 1; break;
+        case Spacing::Single: linespacing = 2; break;
+        case Spacing::Onehalf: linespacing = 3; break;
+        case Spacing::Double: linespacing = 4; break;
+        case Spacing::Other: linespacing = 5; break;
     }
     fl_set_choice(general_->choice_linespacing, linespacing);
     if (space.getSpace() == Spacing::Other) {
