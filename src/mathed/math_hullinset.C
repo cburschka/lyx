@@ -795,7 +795,7 @@ dispatch_result MathHullInset::dispatch
 					? Alert::askForText(_("Enter new label to insert:"), default_label)
 					: Alert::askForText(_("Enter label:"), old_label);
 				if (!res.first)
-					break;
+					return UNDISPATCHED;
 				new_label = trim(res.second);
 			}
 
@@ -804,13 +804,6 @@ dispatch_result MathHullInset::dispatch
 
 			if (!new_label.empty())
 				numbered(r, true);
-
-#warning FIXME: please check you really mean repaint() ... is it needed,
-#warning and if so, should it be update() instead ?
-			if (!new_label.empty()
-					&& cmd.view()->ChangeRefsIfUnique(old_label, new_label))
-				cmd.view()->repaint();
-
 			label(r, new_label);
 			return DISPATCHED;
 		}
@@ -840,9 +833,7 @@ dispatch_result MathHullInset::dispatch
 
 		default:
 			return MathGridInset::dispatch(cmd, idx, pos);
-
 	}
-	return UNDISPATCHED;
 }
 
 
