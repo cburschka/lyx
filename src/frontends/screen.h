@@ -157,14 +157,18 @@ protected:
 	virtual void drawOneRow(LyXText *, BufferView *, Row * row,
 			int y_text, int y_offset = 0, int x_offset = 0);
 
+	/// is the blinking cursor currently drawn
+	bool cursor_visible_;
+
+private:
 	/// grey out (no buffer)
 	void greyOut();
 
 	/// FIXME ?
 	bool force_clear_;
 
-	/// is the blinking cursor currently drawn
-	bool cursor_visible_;
+	/// is the screen displaying text or the splash screen?
+	bool greyed_out_;
 };
 
 #endif // SCREEN_H

@@ -54,6 +54,15 @@ public:
 	string const & text() const { return text_; }
 	///
 	LyXFont const & font() const { return font_; }
+	///
+	void connect(grfx::Loader::slot_type const & slot) const {
+		loader_.connect(slot);
+	}
+	///
+	void startLoading() const {
+		if (loader_.status() == grfx::WaitingToLoad)
+			loader_.startLoading();
+	}
 
 private:
 	/** Make the c-tor private so we can control how many objects
@@ -95,22 +104,20 @@ SplashScreen::SplashScreen()
 
 	// Load up the graphics file
 	loader_.reset(file);
-	// We aren't interested here in when the image is loaded.
-	// If it isn't ready when we want it, then we ignore it.
-//	loader_->statusChanged.connect(
-//			boost::bind(&SplashScreen::statusChanged, this));
-	if (loader_.status() == grfx::WaitingToLoad)
-		loader_.startLoading();
 }
 
 } // namespace anon
 
 
 LyXScreen::LyXScreen()
-	: force_clear_(true), cursor_visible_(false)
+	: cursor_visible_(false), force_clear_(true), greyed_out_(false)
 {
 	// Start loading the pixmap as soon as possible
-	SplashScreen::get();
+	if (lyxrc.show_banner) {
+		SplashScreen const & splash = SplashScreen::get();
+		splash.connect(boost::bind(&LyXScreen::greyOut, this));
+		splash.startLoading();
+	}
 }
 
 
@@ -351,12 +358,12 @@ void LyXScreen::toggleToggle(LyXText * text, BufferView * bv,
 
 void LyXScreen::redraw(LyXText * text, BufferView * bv)
 {
+	greyed_out_ = !text;
+
 	workarea().getPainter().start();
 
-	if (!text) {
+	if (greyed_out_) {
 		greyOut();
-		expose(0, 0, workarea().workWidth(), workarea().workHeight());
-		workarea().getPainter().end();
 		return;
 	}
 
@@ -374,6 +381,9 @@ void LyXScreen::redraw(LyXText * text, BufferView * bv)
 
 void LyXScreen::greyOut()
 {
+	if (!greyed_out_)
+		return;
+
 	workarea().getPainter().fillRectangle(0, 0,
 		workarea().workWidth(),
 		workarea().workHeight(),
@@ -399,6 +409,8 @@ void LyXScreen::greyOut()
 
 		workarea().getPainter().text(x, y, splash_text, splash_font);
 	}
+	expose(0, 0, workarea().workWidth(), workarea().workHeight());
+	workarea().getPainter().end();
 }
 
 
