@@ -61,7 +61,7 @@ void GParagraph::doBuild()
 	setCancel(button);
 
 	// Make the main hbox sensitive to readonly
-	Gtk::HBox * controlbox;
+	Gtk::Widget * controlbox;
 	xml_->get_widget("ControlBox", controlbox);
 	bcview().addReadOnly(controlbox);
 

@@ -4,7 +4,6 @@
 <glade-interface>
 
 <widget class="GtkDialog" id="dialog">
-  <property name="border_width">6</property>
   <property name="title" translatable="yes">You shouldn't see this</property>
   <property name="type">GTK_WINDOW_TOPLEVEL</property>
   <property name="window_position">GTK_WIN_POS_NONE</property>
@@ -67,6 +66,7 @@
 
       <child>
 	<widget class="GtkScrolledWindow" id="scrolledwindow1">
+	  <property name="border_width">9</property>
 	  <property name="visible">True</property>
 	  <property name="can_focus">True</property>
 	  <property name="hscrollbar_policy">GTK_POLICY_AUTOMATIC</property>

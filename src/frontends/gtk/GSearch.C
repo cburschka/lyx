@@ -70,6 +70,7 @@ void GSearch::doBuild()
 void GSearch::update()
 {
 	bc().refreshReadOnly();
+	findentry->grab_focus();
 	onFindEntryChanged();
 }
 

@@ -79,13 +79,13 @@
 
       <child>
 	<widget class="GtkHBox" id="hbox1">
+	  <property name="border_width">6</property>
 	  <property name="visible">True</property>
 	  <property name="homogeneous">False</property>
 	  <property name="spacing">0</property>
 
 	  <child>
 	    <widget class="GtkFrame" id="frame3">
-	      <property name="border_width">3</property>
 	      <property name="visible">True</property>
 	      <property name="label_xalign">0</property>
 	      <property name="label_yalign">0.5</property>
@@ -110,7 +110,7 @@
 		      <property name="n_columns">2</property>
 		      <property name="homogeneous">False</property>
 		      <property name="row_spacing">4</property>
-		      <property name="column_spacing">0</property>
+		      <property name="column_spacing">6</property>
 
 		      <child>
 			<widget class="GtkLabel" id="label4">
@@ -404,7 +404,7 @@
 			<widget class="GtkHBox" id="hbox2">
 			  <property name="visible">True</property>
 			  <property name="homogeneous">False</property>
-			  <property name="spacing">0</property>
+			  <property name="spacing">6</property>
 
 			  <child>
 			    <widget class="GtkLabel" id="label9">
@@ -493,7 +493,7 @@
 			<widget class="GtkHBox" id="hbox3">
 			  <property name="visible">True</property>
 			  <property name="homogeneous">False</property>
-			  <property name="spacing">0</property>
+			  <property name="spacing">6</property>
 
 			  <child>
 			    <widget class="GtkLabel" id="label10">

@@ -1,5 +1,10 @@
 2004-12-07  John Spray  <spray_john@users.sourceforge.net>
 
+	* glade/: improve layouts, set spinbuttons to display 2 
+		decimal places where apropriate
+	* GSearch.C: focus 'find' entry on update()
+	* GParagraph.C: don't require that 'ControlBox' widget 
+		be an HBox.
 	* The Include Dialog:
 	  Dialogs.C, Makefile.am, GInclude.[Ch], glade/include.glade
 
