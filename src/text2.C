@@ -3349,9 +3349,9 @@ bool LyXText::TextHandleUndo(BufferView * bview, Undo * undo)
 				// informations.
 				if (undo->kind == Undo::EDIT) {
 					tmppar2->setContentsFromPar(tmppar);
+					tmppar->clearContents();
 					tmppar2 = tmppar2->next;
 				}
-				delete tmppar;
 			}
 		}
     

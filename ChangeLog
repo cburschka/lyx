@@ -1,3 +1,8 @@
+2001-12-13  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* src/text2.C (TextHandleUndo): remove previous leak fix, as it
+	may not be as safe as I thought.
+
 2001-12-12  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* src/FontLoader.C (getFontinfo): only use symbol fonts with encoding
