@@ -17,45 +17,10 @@
 #include <boost/assert.hpp>
 
 
-MathIterator::MathIterator()
-{}
-
-
-MathIterator::MathIterator(MathInset * p)
-{
-	push(p);
-}
-
-
-
 MathArray const & MathIterator::cell() const
 {
 	CursorSlice const & top = back();
 	return top.asMathInset()->cell(top.idx_);
-}
-
-
-
-void MathIterator::push(MathInset * p)
-{
-	//lyxerr << "push: " << p << endl;
-	push_back(CursorSlice(p));
-}
-
-
-void MathIterator::pop()
-{
-	//lyxerr << "pop: " << endl;
-	BOOST_ASSERT(size());
-	pop_back();
-}
-
-
-void MathIterator::goEnd()
-{
-	CursorSlice & top = back();
-	top.idx_ = top.asMathInset()->nargs() - 1;
-	top.pos_ = cell().size();
 }
 
 
@@ -70,7 +35,7 @@ void MathIterator::operator++()
 	if (top.pos_ != ar.size())
 		n = (ar.begin() + top.pos_)->nucleus();
 	if (n && n->isActive()) {
-		push(n);
+		push_back(CursorSlice(n));
 		return;
 	}
 
@@ -93,22 +58,9 @@ void MathIterator::operator++()
 
 	// otherwise leave array, move on one back
 	// this might yield pos() == size(), but that's a ok.
-	pop();
+	pop_back();
 	// it certainly invalidates top
 	++back().pos_;
-}
-
-
-bool MathIterator::normal() const
-{
-	return back().pos_ < cell().size();
-}
-
-
-void MathIterator::shrink(size_type i)
-{
-	if (i < size())
-		erase(begin() + i, end());
 }
 
 
@@ -126,13 +78,19 @@ bool operator!=(MathIterator const & it, MathIterator const & jt)
 
 MathIterator ibegin(MathInset * p)
 {
-	return MathIterator(p);
+	MathIterator it;
+	it.push_back(CursorSlice(p));
+	return it;
 }
 
 
 MathIterator iend(MathInset * p)
 {
-	MathIterator it(p);
-	it.goEnd();
+	MathIterator it;
+	it.push_back(CursorSlice(p));
+	return it;
+	CursorSlice & top = it.back();
+	top.idx_ = top.asMathInset()->nargs() - 1;
+	top.pos_ = it.cell().size();
 	return it;
 }

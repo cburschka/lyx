@@ -38,26 +38,10 @@ public:
 	friend bool operator!=(MathIterator const &, MathIterator const &);
 	friend bool operator==(MathIterator const &, MathIterator const &);
 
-	/// default constructor
-	MathIterator();
-	/// start with given inset
-	explicit MathIterator(MathInset * p);
 	/// move on one step
 	void operator++();
-	/// helper for iend
-	void goEnd();
 	/// read access to top most item
 	MathArray const & cell() const;
-	/// is this a non-end position
-	bool normal() const;
-	/// shrinks to at most i levels
-	void shrink(size_type i);
-
-private:
-	/// own level down
-	void push(MathInset *);
-	/// own level up
-	void pop();
 };
 
 ///

@@ -1466,7 +1466,8 @@ DispatchResult MathCursor::dispatch(FuncRequest const & cmd)
 			pos.asMathInset()->dispatch(cmd, pos.idx_, pos.pos_);
 		if (res.dispatched()) {
 			if (res.val() == FINISHED) {
-				Cursor_.shrink(i + 1);
+				if (i + 1 < Cursor_.size())
+					Cursor_.erase(Cursor_.begin() + i + 1, Cursor_.end());
 				selClear();
 			}
 			return res;
