@@ -1198,14 +1198,6 @@ void LyXText::setCursor(LyXCursor & cur, paroffset_type par,
 
 	ParagraphList::iterator pit = getPar(par);
 	Row const & row = *pit->getRow(pos);
-
-	int y = pit->y + row.y_offset();
-
-	// y is now the beginning of the cursor row
-	y += row.baseline();
-	// y is now the cursor baseline
-	cur.y(y);
-
 	pos_type const end = row.endpos();
 
 	// None of these should happen, but we're scaredy-cats
@@ -1237,65 +1229,6 @@ void LyXText::setCursor(LyXCursor & cur, paroffset_type par,
 		cur.pos(pos);
 		BOOST_ASSERT(false);
 	}
-	// now get the cursors x position
-	cur.x(int(getCursorX(pit, row, pos, boundary)));
-}
-
-
-float LyXText::getCursorX(ParagraphList::iterator pit, Row const & row,
-			  pos_type pos, bool boundary) const
-{
-	pos_type cursor_vpos    = 0;
-	double x                = row.x();
-	double fill_separator   = row.fill_separator();
-	double fill_hfill       = row.fill_hfill();
-	double fill_label_hfill = row.fill_label_hfill();
-	pos_type const row_pos  = row.pos();
-	pos_type const end = row.endpos();
-
-	if (end <= row_pos)
-		cursor_vpos = row_pos;
-	else if (pos >= end && !boundary)
-		cursor_vpos = (pit->isRightToLeftPar(bv()->buffer()->params()))
-			? row_pos : end;
-	else if (pos > row_pos && (pos >= end || boundary))
-		// Place cursor after char at (logical) position pos - 1
-		cursor_vpos = (bidi.level(pos - 1) % 2 == 0)
-			? bidi.log2vis(pos - 1) + 1 : bidi.log2vis(pos - 1);
-	else
-		// Place cursor before char at (logical) position pos
-		cursor_vpos = (bidi.level(pos) % 2 == 0)
-			? bidi.log2vis(pos) : bidi.log2vis(pos) + 1;
-
-	pos_type body_pos = pit->beginOfBody();
-	if (body_pos > 0 &&
-	    (body_pos > end || !pit->isLineSeparator(body_pos - 1)))
-		body_pos = 0;
-
-	for (pos_type vpos = row_pos; vpos < cursor_vpos; ++vpos) {
-		pos_type pos = bidi.vis2log(vpos);
-		if (body_pos > 0 && pos == body_pos - 1) {
-			x += fill_label_hfill
-				+ font_metrics::width(pit->layout()->labelsep,
-						      getLabelFont(pit));
-			if (pit->isLineSeparator(body_pos - 1))
-				x -= singleWidth(pit, body_pos - 1);
-		}
-
-		if (hfillExpansion(*pit, row, pos)) {
-			x += singleWidth(pit, pos);
-			if (pos >= body_pos)
-				x += fill_hfill;
-			else
-				x += fill_label_hfill;
-		} else if (pit->isSeparator(pos)) {
-			x += singleWidth(pit, pos);
-			if (pos >= body_pos)
-				x += fill_separator;
-		} else
-			x += singleWidth(pit, pos);
-	}
-	return x;
 }
 
 
@@ -1303,7 +1236,7 @@ void LyXText::setCursorIntern(paroffset_type par,
 			      pos_type pos, bool setfont, bool boundary)
 {
 	setCursor(cursor, par, pos, boundary);
-	bv()->x_target(cursor.x() + xo_);
+	bv()->x_target(cursorX() + xo_);
 	if (setfont)
 		setCurrentFont();
 }
@@ -1460,21 +1393,16 @@ void LyXText::setCursorFromCoordinates(int x, int y)
 	deleteEmptyParagraphMechanism(old_cursor);
 }
 
+
 // x,y are coordinates relative to this LyXText
 void LyXText::setCursorFromCoordinates(LyXCursor & cur, int x, int y)
 {
-	// Get the row first.
 	ParagraphList::iterator pit;
 	Row const & row = *getRowNearY(y, pit);
-	y = pit->y + row.y_offset();
-
 	bool bound = false;
 	pos_type const column = getColumnNearX(pit, row, x, bound);
 	cur.par(parOffset(pit));
 	cur.pos(row.pos() + column);
-	cur.x(x);
-	cur.y(y + row.baseline());
-
 	cur.boundary(bound);
 }
 
@@ -1607,7 +1535,7 @@ void LyXText::cursorUp(bool selecting)
 {
 	Row const & row = *cursorRow();
 	int x = bv()->x_target() - xo_;
-	int y = cursor.y() - row.baseline() - 1;
+	int y = cursorY() - row.baseline() - 1;
 	setCursorFromCoordinates(x, y);
 
 	if (!selecting) {
@@ -1623,7 +1551,7 @@ void LyXText::cursorDown(bool selecting)
 {
 	Row const & row = *cursorRow();
 	int x = bv()->x_target() - xo_;
-	int y = cursor.y() - row.baseline() + row.height() + 1;
+	int y = cursorY() - row.baseline() + row.height() + 1;
 	setCursorFromCoordinates(x, y);
 
 	if (!selecting) {

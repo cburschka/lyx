@@ -207,7 +207,9 @@ private:
 		has_selection = true;
 	}
 	///
-	void activateCellInset(BufferView *, int x, int y, bool behind);
+	void activateCellInset(BufferView *, int cell, int x, int y);
+	///
+	void activateCellInset(BufferView *, int cell, bool behind);
 	///
 	bool hasPasteBuffer() const;
 	///
@@ -237,8 +239,6 @@ private:
 	mutable int sel_cell_start;
 	/// the ending cell selection nr
 	mutable int sel_cell_end;
-	/// -1: no cell, >= 0 cell
-	mutable int locked_cell;
 	///
 	mutable int actcell;
 	///

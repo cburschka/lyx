@@ -13,6 +13,7 @@
 #define CURSOR_H
 
 #include "textcursor.h"
+#include "cursor_slice.h"
 
 #include "support/types.h"
 
@@ -30,29 +31,6 @@ class InsetTabular;
 /**
  * The cursor class describes the position of a cursor within a document.
  */
-
-class CursorItem {
-public:
-	///
-	CursorItem() : inset_(0), idx_(0), par_(0), pos_(0) {}
-	///
-	explicit CursorItem(UpdatableInset * inset)
-		: inset_(inset), idx_(0), par_(0), pos_(0)
-	{}
-	///
-	LyXText * text() const;
-	///
-	friend std::ostream & operator<<(std::ostream &, CursorItem const &);
-public:
-	///
-	UpdatableInset * inset_;
-	///
-	int idx_;
-	///
-	int par_;
-	///
-	int pos_;
-};
 
 
 class LCursor {
@@ -85,7 +63,7 @@ public:
 	friend std::ostream & operator<<(std::ostream &, LCursor const &);
 public:
 	/// mainly used as stack, but wee need random access
-	std::vector<CursorItem> data_;
+	std::vector<CursorSlice> data_;
 	///
 	BufferView * bv_;
 private:

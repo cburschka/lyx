@@ -41,14 +41,6 @@ public:
 	void boundary(bool b);
 	/// FIXME
 	bool boundary() const;
-	/// set the x position in pixels
-	void x(int i);
-	/// return the x position in pixels
-	int x() const;
-	/// set the y position in pixels
-	void y(int i);
-	/// return the y position in pixels
-	int y() const;
 
 private:
 	/// The paragraph the cursor is in.
@@ -71,10 +63,6 @@ private:
 	 * the user.
 	 */
 	bool boundary_;
-	/// the pixel x position
-	int x_;
-	/// the pixel y position
-	int y_;
 };
 
 ///

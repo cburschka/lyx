@@ -136,6 +136,8 @@ lyx_SOURCES = \
 	counters.h \
 	cursor.C \
 	cursor.h \
+	cursor_slice.C \
+	cursor_slice.h \
 	debug.C \
 	debug.h \
 	dimension.C \

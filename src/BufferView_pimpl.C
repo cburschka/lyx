@@ -469,9 +469,9 @@ void BufferView::Pimpl::scrollDocView(int value)
 	int const last = top_y() + workarea().workHeight() - height;
 
 	LyXText * text = bv_->text();
-	if (text->cursor.y() < first)
+	if (text->cursorY() < first)
 		text->setCursorFromCoordinates(0, first);
-	else if (text->cursor.y() > last)
+	else if (text->cursorY() > last)
 		text->setCursorFromCoordinates(0, last);
 
 	owner_->updateLayoutChoice();
@@ -713,7 +713,7 @@ void BufferView::Pimpl::center()
 
 	text->clearSelection();
 	int const half_height = workarea().workHeight() / 2;
-	int new_y = std::max(0, text->cursor.y() - half_height);
+	int new_y = std::max(0, text->cursorY() - half_height);
 
 	// FIXME: look at this comment again ...
 	// This updates top_y() but means the fitCursor() call

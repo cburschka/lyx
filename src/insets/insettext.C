@@ -305,8 +305,8 @@ void InsetText::edit(BufferView * bv, int x, int y)
 DispatchResult InsetText::priv_dispatch(FuncRequest const & cmd,
 	idx_type &, pos_type &)
 {
-	lyxerr << "InsetText::priv_dispatch (begin), act: "
-	       << cmd.action << " " << endl;
+	//lyxerr << "InsetText::priv_dispatch (begin), act: "
+	//      << cmd.action << " " << endl;
 
 	BufferView * bv = cmd.view();
 	setViewCache(bv);
@@ -335,7 +335,7 @@ DispatchResult InsetText::priv_dispatch(FuncRequest const & cmd,
 		text_.setFont(font, false);
 	}
 
-	lyxerr << "InsetText::priv_dispatch (end)" << endl;
+	//lyxerr << "InsetText::priv_dispatch (end)" << endl;
 	return result;
 }
 
@@ -388,8 +388,8 @@ void InsetText::validate(LaTeXFeatures & features) const
 
 void InsetText::getCursorPos(int & x, int & y) const
 {
-	x = text_.cursor.x() + TEXT_TO_INSET_OFFSET;
-	y = text_.cursor.y() - dim_.asc + TEXT_TO_INSET_OFFSET;
+	x = text_.cursorX() + TEXT_TO_INSET_OFFSET;
+	y = text_.cursorY() - dim_.asc + TEXT_TO_INSET_OFFSET;
 }
 
 

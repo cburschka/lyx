@@ -69,7 +69,7 @@ MathCursor::~MathCursor()
 
 void MathCursor::push(MathAtom & t)
 {
-	Cursor_.push_back(CursorPos(t.nucleus()));
+	Cursor_.push_back(CursorSlice(t.nucleus()));
 }
 
 
@@ -140,7 +140,7 @@ bool MathCursor::popRight()
 bool MathCursor::isInside(MathInset const * p) const
 {
 	for (unsigned i = 0; i < depth(); ++i)
-		if (Cursor_[i].inset_ == p)
+		if (Cursor_[i].asMathInset() == p)
 			return true;
 	return false;
 }
@@ -158,7 +158,7 @@ bool MathCursor::openable(MathAtom const & t, bool sel) const
 		// we can't move into anything new during selection
 		if (depth() == Anchor_.size())
 			return false;
-		if (t.operator->() != Anchor_[depth()].inset_)
+		if (t.operator->() != Anchor_[depth()].asMathInset())
 			return false;
 	}
 	return true;
@@ -254,7 +254,7 @@ bool positionable
 
 	// anchor might be deeper, should have same path then
 	for (MathIterator::size_type i = 0; i < cursor.size(); ++i)
-		if (cursor[i].inset_ != anchor[i].inset_)
+		if (cursor[i].asMathInset() != anchor[i].asMathInset())
 			return false;
 
 	// position should be ok.
@@ -625,10 +625,10 @@ void MathCursor::drawSelection(PainterInfo & pi) const
 {
 	if (!selection_)
 		return;
-	CursorPos i1;
-	CursorPos i2;
+	CursorSlice i1;
+	CursorSlice i2;
 	getSelection(i1, i2);
-	i1.inset_->drawSelection(pi, i1.idx_, i1.pos_, i2.idx_, i2.pos_);
+	i1.asMathInset()->drawSelection(pi, i1.idx_, i1.pos_, i2.idx_, i2.pos_);
 }
 
 
@@ -659,7 +659,7 @@ int MathCursor::targetX() const
 
 MathInset * MathCursor::inset() const
 {
-	return cursor().inset_;
+	return cursor().asMathInset();
 }
 
 
@@ -741,7 +741,7 @@ bool MathCursor::selection() const
 MathGridInset * MathCursor::enclosingGrid(MathCursor::idx_type & idx) const
 {
 	for (MathInset::difference_type i = depth() - 1; i >= 0; --i) {
-		MathGridInset * p = Cursor_[i].inset_->asGridInset();
+		MathGridInset * p = Cursor_[i].asMathInset()->asGridInset();
 		if (p) {
 			idx = Cursor_[i].idx_;
 			return p;
@@ -753,21 +753,21 @@ MathGridInset * MathCursor::enclosingGrid(MathCursor::idx_type & idx) const
 
 void MathCursor::popToHere(MathInset const * p)
 {
-	while (depth() && Cursor_.back().inset_ != p)
+	while (depth() && Cursor_.back().asMathInset() != p)
 		Cursor_.pop_back();
 }
 
 
 void MathCursor::popToEnclosingGrid()
 {
-	while (depth() && !Cursor_.back().inset_->asGridInset())
+	while (depth() && !Cursor_.back().asMathInset()->asGridInset())
 		Cursor_.pop_back();
 }
 
 
 void MathCursor::popToEnclosingHull()
 {
-	while (depth() && !Cursor_.back().inset_->asHullInset())
+	while (depth() && !Cursor_.back().asMathInset()->asHullInset())
 		Cursor_.pop_back();
 }
 
@@ -910,9 +910,9 @@ char MathCursor::halign() const
 }
 
 
-void MathCursor::getSelection(CursorPos & i1, CursorPos & i2) const
+void MathCursor::getSelection(CursorSlice & i1, CursorSlice & i2) const
 {
-	CursorPos anc = normalAnchor();
+	CursorSlice anc = normalAnchor();
 	if (anc < cursor()) {
 		i1 = anc;
 		i2 = cursor();
@@ -923,14 +923,14 @@ void MathCursor::getSelection(CursorPos & i1, CursorPos & i2) const
 }
 
 
-CursorPos & MathCursor::cursor()
+CursorSlice & MathCursor::cursor()
 {
 	BOOST_ASSERT(depth());
 	return Cursor_.back();
 }
 
 
-CursorPos const & MathCursor::cursor() const
+CursorSlice const & MathCursor::cursor() const
 {
 	BOOST_ASSERT(depth());
 	return Cursor_.back();
@@ -1312,7 +1312,7 @@ string MathCursor::info() const
 	ostringstream os;
 	os << "Math editor mode.  ";
 	for (int i = 0, n = depth(); i < n; ++i) {
-		Cursor_[i].inset_->infoize(os);
+		Cursor_[i].asMathInset()->infoize(os);
 		os << "  ";
 	}
 	if (hasPrevAtom())
@@ -1332,11 +1332,11 @@ unsigned MathCursor::depth() const
 
 namespace {
 
-void region(CursorPos const & i1, CursorPos const & i2,
+void region(CursorSlice const & i1, CursorSlice const & i2,
 	MathInset::row_type & r1, MathInset::row_type & r2,
 	MathInset::col_type & c1, MathInset::col_type & c2)
 {
-	MathInset * p = i1.inset_;
+	MathInset * p = i1.asMathInset();
 	c1 = p->col(i1.idx_);
 	c2 = p->col(i2.idx_);
 	if (c1 > c2)
@@ -1355,8 +1355,8 @@ string MathCursor::grabSelection() const
 	if (!selection_)
 		return string();
 
-	CursorPos i1;
-	CursorPos i2;
+	CursorSlice i1;
+	CursorSlice i2;
 	getSelection(i1, i2);
 
 	if (i1.idx_ == i2.idx_) {
@@ -1375,7 +1375,7 @@ string MathCursor::grabSelection() const
 		for (col_type col = c1; col <= c2; ++col) {
 			if (col > c1)
 				data += '&';
-			data += asString(i1.inset_->cell(i1.inset_->index(row, col)));
+			data += asString(i1.asMathInset()->cell(i1.asMathInset()->index(row, col)));
 		}
 	}
 	return data;
@@ -1384,13 +1384,13 @@ string MathCursor::grabSelection() const
 
 void MathCursor::eraseSelection()
 {
-	CursorPos i1;
-	CursorPos i2;
+	CursorSlice i1;
+	CursorSlice i2;
 	getSelection(i1, i2);
 	if (i1.idx_ == i2.idx_)
 		i1.cell().erase(i1.pos_, i2.pos_);
 	else {
-		MathInset * p = i1.inset_;
+		MathInset * p = i1.asMathInset();
 		row_type r1, r2;
 		col_type c1, c2;
 		region(i1, i2, r1, r2, c1, c2);
@@ -1413,7 +1413,7 @@ string MathCursor::grabAndEraseSelection()
 }
 
 
-CursorPos MathCursor::normalAnchor() const
+CursorSlice MathCursor::normalAnchor() const
 {
 	if (Anchor_.size() < depth()) {
 		Anchor_ = Cursor_;
@@ -1421,7 +1421,7 @@ CursorPos MathCursor::normalAnchor() const
 	}
 	//lyx::BOOST_ASSERT(Anchor_.size() >= cursor.depth());
 	// use Anchor on the same level as Cursor
-	CursorPos normal = Anchor_[depth() - 1];
+	CursorSlice normal = Anchor_[depth() - 1];
 	if (depth() < Anchor_.size() && !(normal < cursor())) {
 		// anchor is behind cursor -> move anchor behind the inset
 		++normal.pos_;
@@ -1439,7 +1439,7 @@ DispatchResult MathCursor::dispatch(FuncRequest const & cmd)
 		case LFUN_MOUSE_MOTION:
 		case LFUN_MOUSE_RELEASE:
 		case LFUN_MOUSE_DOUBLE: {
-			CursorPos & pos = Cursor_.back();
+			CursorSlice & pos = Cursor_.back();
 			int x = 0;
 			int y = 0;
 			getPos(x, y);
@@ -1461,9 +1461,9 @@ DispatchResult MathCursor::dispatch(FuncRequest const & cmd)
 	}
 
 	for (int i = Cursor_.size() - 1; i >= 0; --i) {
-		CursorPos & pos = Cursor_[i];
+		CursorSlice & pos = Cursor_[i];
 		DispatchResult const res =
-			pos.inset_->dispatch(cmd, pos.idx_, pos.pos_);
+			pos.asMathInset()->dispatch(cmd, pos.idx_, pos.pos_);
 		if (res.dispatched()) {
 			if (res.val() == FINISHED) {
 				Cursor_.shrink(i + 1);
@@ -1479,7 +1479,7 @@ DispatchResult MathCursor::dispatch(FuncRequest const & cmd)
 MathInset::mode_type MathCursor::currentMode() const
 {
 	for (int i = Cursor_.size() - 1; i >= 0; --i) {
-		MathInset::mode_type res = Cursor_[i].inset_->currentMode();
+		MathInset::mode_type res = Cursor_[i].asMathInset()->currentMode();
 		if (res != MathInset::UNDECIDED_MODE)
 			return res;
 	}

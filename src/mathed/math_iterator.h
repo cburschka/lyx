@@ -12,17 +12,17 @@
 #ifndef MATH_ITERATOR_H
 #define MATH_ITERATOR_H
 
-#include "math_pos.h"
+#include "cursor_slice.h"
 
 #include <vector>
 
 
 // this is used for traversing math insets
 
-class MathIterator : private std::vector<CursorPos> {
+class MathIterator : private std::vector<CursorSlice> {
 public:
 	// re-use inherited stuff
-	typedef std::vector<CursorPos> base_type;
+	typedef std::vector<CursorSlice> base_type;
 	using base_type::clear;
 	using base_type::size;
 	using base_type::push_back;
@@ -43,9 +43,9 @@ public:
 	/// start with given inset
 	explicit MathIterator(MathInset * p);
 	///
-	CursorPos const & operator*() const;
+	CursorSlice const & operator*() const;
 	///
-	CursorPos const & operator->() const;
+	CursorSlice const & operator->() const;
 	/// move on one step
 	void operator++();
 	/// move on several steps

@@ -12,6 +12,7 @@
 
 #include "math_iterator.h"
 #include "math_inset.h"
+#include "math_data.h"
 
 #include <boost/assert.hpp>
 
@@ -28,20 +29,20 @@ MathIterator::MathIterator(MathInset * p)
 
 MathInset const * MathIterator::inset() const
 {
-	return back().inset_;
+	return back().asMathInset();
 }
 
 
 MathInset * MathIterator::inset()
 {
-	return back().inset_;
+	return back().asMathInset();
 }
 
 
 MathArray const & MathIterator::cell() const
 {
-	CursorPos const & top = back();
-	return top.inset_->cell(top.idx_);
+	CursorSlice const & top = back();
+	return top.asMathInset()->cell(top.idx_);
 }
 
 
@@ -49,7 +50,7 @@ MathArray const & MathIterator::cell() const
 void MathIterator::push(MathInset * p)
 {
 	//lyxerr << "push: " << p << endl;
-	push_back(CursorPos(p));
+	push_back(CursorSlice(p));
 }
 
 
@@ -61,13 +62,13 @@ void MathIterator::pop()
 }
 
 
-CursorPos const & MathIterator::operator*() const
+CursorSlice const & MathIterator::operator*() const
 {
 	return back();
 }
 
 
-CursorPos const & MathIterator::operator->() const
+CursorSlice const & MathIterator::operator->() const
 {
 	return back();
 }
@@ -75,16 +76,16 @@ CursorPos const & MathIterator::operator->() const
 
 void MathIterator::goEnd()
 {
-	CursorPos & top = back();
-	top.idx_ = top.inset_->nargs() - 1;
+	CursorSlice & top = back();
+	top.idx_ = top.asMathInset()->nargs() - 1;
 	top.pos_ = cell().size();
 }
 
 
 void MathIterator::operator++()
 {
-	CursorPos & top = back();
-	MathArray     & ar  = top.inset_->cell(top.idx_);
+	CursorSlice & top = back();
+	MathArray   & ar  = top.asMathInset()->cell(top.idx_);
 
 	// move into the current inset if possible
 	// it is impossible for pos() == size()!
@@ -104,10 +105,10 @@ void MathIterator::operator++()
 	}
 
 	// otherwise try to move on one cell if possible
-	while (top.idx_ + 1 < top.inset_->nargs()) {
+	while (top.idx_ + 1 < top.asMathInset()->nargs()) {
 		// idx() == nargs() is _not_ valid!
 		++top.idx_;
-		if (top.inset_->validCell(top.idx_)) {
+		if (top.asMathInset()->validCell(top.idx_)) {
 			top.pos_ = 0;
 			return;
 		}

@@ -391,10 +391,10 @@ void RowPainter::paintSelection()
 	bool const is_rtl = pit_->isRightToLeftPar(bv_.buffer()->params());
 
 	// the current selection
-	int const startx = text_.selStart().x();
-	int const endx = text_.selEnd().x();
-	int const starty = text_.selStart().y();
-	int const endy = text_.selEnd().y();
+	int const startx = text_.cursorX(text_.selStart());
+	int const endx = text_.cursorX(text_.selEnd());
+	int const starty = text_.cursorY(text_.selStart());
+	int const endy = text_.cursorY(text_.selEnd());
 	ParagraphList::iterator startpit = text_.getPar(text_.selStart());
 	ParagraphList::iterator endpit = text_.getPar(text_.selEnd());
 	RowList::iterator startrow = startpit->getRow(text_.selStart().pos());
@@ -888,7 +888,7 @@ int paintText(BufferView const & bv)
 }
 
 
-void paintTextInset(BufferView const & bv, LyXText const & text, int xo, int yo)
+void paintTextInset(LyXText const & text, PainterInfo & pi, int xo, int yo)
 {
-	paintPars(bv, text, text.paragraphs().begin(), xo, yo, 0);
+	paintPars(*pi.base.bv, text, text.paragraphs().begin(), xo, yo, 0);
 }

@@ -1,3 +1,19 @@
+
+2003-12-15  André Pönitz  <poenitz@gmx.net>
+
+	* cursor_slice.[Ch]: new class to cover texted and mathed's cursor slices
+
+	* Makefile.am:
+
+	* BufferView_pimpl.C:
+	* cursor.[Ch]:
+	* lyxcursor.[Ch]:
+	* rowpainter.[Ch]:
+	* lyxtext.h:
+	* text.C:
+	* text2.C:
+	* text3.C: adjust
+
 2003-12-15  Angus Leeming  <leeming@lyx.org>
 
 	* metricsinfo.C (ColorChanger): use LColor::getFromLyXName rather
@@ -5,7 +21,7 @@
 
 2003-12-14  Angus Leeming  <leeming@lyx.org>
 
-	BranchList.[Ch]: minimize the API.
+	* BranchList.[Ch]: minimize the API.
 	(Branch::getBranch, getColor): now return a 'const &'.
 	(Branch::setSelected) now returns a bool set to true if the
 	selection status changes.

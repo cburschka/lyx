@@ -161,7 +161,6 @@ InsetTabular::InsetTabular(Buffer const & buf, int rows, int columns)
 	tabular.setOwner(this);
 	actrow = 0;
 	actcell = 0;
-	locked_cell = -1;
 	clearSelection();
 	in_reset_pos = 0;
 }
@@ -175,7 +174,6 @@ InsetTabular::InsetTabular(InsetTabular const & tab)
 	actrow = 0;
 	actcell = 0;
 	clearSelection();
-	locked_cell = -1;
 	in_reset_pos = 0;
 }
 
@@ -350,7 +348,7 @@ void InsetTabular::drawCellLines(Painter & pain, int x, int y,
 void InsetTabular::drawCellSelection(Painter & pain, int x, int y,
 				     int row, int column, int cell) const
 {
-	if (locked_cell != -1)
+	if (actcell != -1)
 		return;
 
 	BOOST_ASSERT(hasSelection());
@@ -407,7 +405,7 @@ void InsetTabular::lfunMousePress(FuncRequest const & cmd)
 	lyxerr << "# InsetTabular::lfunMousePress cell: " << cell << endl;
 	if (cell == -1) {
 		bv->cursor() = theTempCursor;
-		bv->cursor().data_.push_back(CursorItem(this));
+		bv->cursor().data_.push_back(CursorSlice(this));
 		bv->cursor().data_.back().idx_ = cell;
 	} else {
 		setPos(bv, cmd.x, cmd.y);
@@ -415,7 +413,7 @@ void InsetTabular::lfunMousePress(FuncRequest const & cmd)
 		bv->cursor() = theTempCursor;
 		bv->cursor().data_.back().idx_ = cell;
 	}
-	locked_cell = cell;
+	actcell = cell;
 	lyxerr << bv->cursor() << endl;
 
 	if (cmd.button() == mouse_button::button2)
@@ -467,7 +465,6 @@ void InsetTabular::edit(BufferView * bv, bool left)
 	bv->fitCursor();
 	bv->cursor().push(this);
 	bv->cursor().data_.back().idx_ = actcell;
-	locked_cell = actcell;
 	lyxerr << bv->cursor() << endl;
 }
 
@@ -484,7 +481,7 @@ void InsetTabular::edit(BufferView * bv, int x, int y)
 	int xx = cursorx_ - xo_ + tabular.getBeginningOfTextInCell(actcell);
 	bv->cursor().push(this);
 	if (x > xx)
-		activateCellInset(bv, x - xx, y - cursory_, false);
+		activateCellInset(bv, actcell, x - xx, y - cursory_);
 }
 
 
@@ -516,40 +513,47 @@ InsetTabular::priv_dispatch(FuncRequest const & cmd,
 		break;
 	}
 
-
 	int cell = bv->cursor().data_.back().idx_;
 	if (cell != -1) {
+		
+		if (cell != actcell) {
+			lyxerr << "## ERROR ## InsetTabular::priv_dispatch: actcell: " 
+				<< actcell << " and cell " << cell << " should be the same "
+				<< "here" << endl;
+		}
+
 		lyxerr << "# InsetTabular::dispatch 1: " << cmd << endl;
 		result = tabular.getCellInset(cell).dispatch(cmd, idx, pos);
 
 		switch (result.val()) {
-		case LFUN_FINISHED_LEFT:
-			lyxerr << "handle LFUN_FINISHED_LEFT, act: " << actcell << endl;
+		case FINISHED:
+			lyxerr << "# handle FINISHED_LEFT, act: " << actcell << endl;
 			if (movePrevCell(bv, false))
 				result = DispatchResult(true, true);
 			else
 				result = DispatchResult(false, FINISHED);
 			break;
 
-		case LFUN_FINISHED_RIGHT:
-			lyxerr << "handle LFUN_FINISHED_RIGHT, act: " << actcell << endl;
+		case FINISHED_RIGHT:
+			lyxerr << "# handle FINISHED_RIGHT, act: " << actcell << endl;
 			if (moveNextCell(bv, false))
 				result = DispatchResult(true, true);
 			else
 				result = DispatchResult(false, FINISHED_RIGHT);
 			break;
 
-		case LFUN_FINISHED_UP:
-			lyxerr << "handle LFUN_FINISHED_UP, act: " << actcell << endl;
+		case FINISHED_UP:
+			lyxerr << "# handle FINISHED_UP, act: " << actcell << endl;
 			result = moveUp(bv, true);
 			break;
 
-		case LFUN_FINISHED_DOWN:
-			lyxerr << "handle LFUN_FINISHED_DOWN, act: " << actcell << endl;
+		case FINISHED_DOWN:
+			lyxerr << "# handle FINISHED_DOWN, act: " << actcell << endl;
 			result = moveDown(bv, true);
 			break;
 
 		default:
+			lyxerr << "# don't handle dispatch in act: " << actcell << endl;
 			break;
 		}
 
@@ -966,12 +970,14 @@ void InsetTabular::calculate_dimensions_of_cells(MetricsInfo & mi) const
 
 void InsetTabular::getCursorPos(int & x, int & y) const
 {
-	if (locked_cell == -1) {
+	if (actcell == -1) {
 		x = TEXT_TO_INSET_OFFSET + cursorx_ - xo_;
 		y = TEXT_TO_INSET_OFFSET + cursory_;
 	} else {
-		tabular.getCellInset(locked_cell).getCursorPos(x, y);
-		x = TEXT_TO_INSET_OFFSET;
+		InsetText const & inset = tabular.getCellInset(actcell);
+		inset.getCursorPos(x, y);
+		x += inset.x() - xo_;
+		y += inset.y() - yo_;
 	}
 }
 
@@ -1079,7 +1085,7 @@ DispatchResult InsetTabular::moveRight(BufferView * bv, bool lock)
 	if (!moved)
 		return DispatchResult(false, FINISHED_RIGHT);
 	if (lock) {
-		activateCellInset(bv, 0, 0, false);
+		activateCellInset(bv, actcell, false);
 		return DispatchResult(true, true);
 	}
 	resetPos(bv);
@@ -1094,7 +1100,7 @@ DispatchResult InsetTabular::moveLeft(BufferView * bv, bool lock)
 		return DispatchResult(false, FINISHED);
 	// behind the inset
 	if (lock) {
-		activateCellInset(bv, 0, 0, true);
+		activateCellInset(bv, actcell, true);
 		return DispatchResult(true, true);
 	}
 	resetPos(bv);
@@ -1110,7 +1116,7 @@ DispatchResult InsetTabular::moveUp(BufferView * bv, bool lock)
 		return DispatchResult(false, FINISHED_UP);
 	resetPos(bv);
 	if (lock)
-		activateCellInset(bv, bv->x_target(), 0, false);
+		activateCellInset(bv, actcell, bv->x_target(), 0);
 	return DispatchResult(true, true);
 }
 
@@ -1123,13 +1129,14 @@ DispatchResult InsetTabular::moveDown(BufferView * bv, bool lock)
 		return DispatchResult(false, FINISHED_DOWN);
 	resetPos(bv);
 	if (lock)
-		activateCellInset(bv, bv->x_target(), 0, false);
+		activateCellInset(bv, actcell, bv->x_target());
 	return DispatchResult(true, true);
 }
 
 
 bool InsetTabular::moveNextCell(BufferView * bv, bool lock)
 {
+	lyxerr << "InsetTabular::moveNextCell 1 actcell: " << actcell << endl;
 	if (isRightToLeft(bv)) {
 		if (tabular.isFirstCellInRow(actcell)) {
 			int row = tabular.row_of_cell(actcell);
@@ -1138,7 +1145,7 @@ bool InsetTabular::moveNextCell(BufferView * bv, bool lock)
 			actcell = tabular.getLastCellInRow(row);
 			actcell = tabular.getCellBelow(actcell);
 		} else {
-			if (!actcell)
+			if (actcell == 0)
 				return false;
 			--actcell;
 		}
@@ -1147,10 +1154,11 @@ bool InsetTabular::moveNextCell(BufferView * bv, bool lock)
 			return false;
 		++actcell;
 	}
+	lyxerr << "InsetTabular::moveNextCell 2 actcell: " << actcell << endl;
 	if (lock) {
 		bool rtl = tabular.getCellInset(actcell).paragraphs().begin()->
 			isRightToLeftPar(bv->buffer()->params());
-		activateCellInset(bv, 0, 0, !rtl);
+		activateCellInset(bv, actcell, !rtl);
 	}
 	resetPos(bv);
 	return true;
@@ -1183,7 +1191,7 @@ bool InsetTabular::movePrevCell(BufferView * bv, bool lock)
 	if (lock) {
 		bool rtl = tabular.getCellInset(actcell).paragraphs().begin()->
 			isRightToLeftPar(bv->buffer()->params());
-		activateCellInset(bv, 0, 0, !rtl);
+		activateCellInset(bv, actcell, !rtl);
 	}
 	lyxerr << "move prevcell 3" << endl;
 	resetPos(bv);
@@ -1569,19 +1577,23 @@ void InsetTabular::tabularFeatures(BufferView * bv,
 }
 
 
-void InsetTabular::activateCellInset(BufferView * bv, int x, int y, bool behind)
+void InsetTabular::activateCellInset(BufferView * bv, int cell, int x, int y)
 {
-	UpdatableInset & inset = tabular.getCellInset(actcell);
-	if (behind) {
-#warning metrics?
-		x = inset.x() + inset.width();
-		y = inset.descent();
-	}
-	inset.edit(bv, x, y);
+	actcell = cell;
+	tabular.getCellInset(actcell).edit(bv, x, y);
 	bv->cursor().data_.back().idx_ = actcell;
-	locked_cell = actcell;
 	updateLocal(bv);
 }
+
+
+void InsetTabular::activateCellInset(BufferView * bv, int cell, bool behind)
+{
+	actcell = cell;
+	tabular.getCellInset(actcell).edit(bv, behind);
+	bv->cursor().data_.back().idx_ = actcell;
+	updateLocal(bv);
+}
+
 
 
 bool InsetTabular::showInsetDialog(BufferView * bv) const

@@ -399,6 +399,14 @@ public:
 	int ascent() const;
 	///
 	int descent() const;
+	///
+	int cursorX() const;
+	///
+	int cursorY() const;
+	///
+	int cursorX(LyXCursor const & cursor) const;
+	///
+	int cursorY(LyXCursor const & cursor) const;
 
 public:
 	///
@@ -437,10 +445,6 @@ public:
 private:
 	/// rebreaks the given par
 	void redoParagraphInternal(ParagraphList::iterator pit);
-
-	///
-	float getCursorX(ParagraphList::iterator pit,
-	     Row const & row, lyx::pos_type pos, bool boundary) const;
 	/// used in setlayout
 	void makeFontEntriesLayoutSpecific(BufferParams const &, Paragraph & par);
 

@@ -1015,7 +1015,7 @@ DispatchResult LyXText::dispatch(FuncRequest const & cmd)
 		break;
 
 	case LFUN_GETXY:
-		cmd.message(tostr(cursor.x()) + ' ' + tostr(cursor.y()));
+		cmd.message(tostr(cursorX()) + ' ' + tostr(cursorY()));
 		break;
 
 	case LFUN_SETXY: {
@@ -1274,7 +1274,7 @@ DispatchResult LyXText::dispatch(FuncRequest const & cmd)
 		setCursorFromCoordinates(cmd.x, cmd.y);
 		selection.cursor = cursor;
 		finishUndo();
-		bv->x_target(cursor.x() + xo_);
+		bv->x_target(cursorX() + xo_);
 
 		if (bv->fitCursor())
 			selection_possible = false;

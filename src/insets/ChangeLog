@@ -1,3 +1,9 @@
+
+2003-12-15  André Pönitz  <poenitz@gmx.net>
+
+	* insettabular.[Ch]:
+	* insettext.C: adjust to changed name in CursorItem -> CursorSlice
+
 2003-12-12  Angus Leeming  <leeming@lyx.org>
 
 	* insetbranch.C (c-tor): takes an InsetBranchParams arg rather than

@@ -17,7 +17,7 @@
 
 
 LyXCursor::LyXCursor()
-	: par_(0), pos_(0), boundary_(false), x_(0), y_(0)
+	: par_(0), pos_(0), boundary_(false)
 {}
 
 
@@ -33,9 +33,9 @@ lyx::paroffset_type LyXCursor::par() const
 }
 
 
-void LyXCursor::pos(lyx::pos_type p)
+void LyXCursor::pos(lyx::pos_type pos)
 {
-	pos_ = p;
+	pos_ = pos;
 }
 
 
@@ -45,39 +45,15 @@ lyx::pos_type LyXCursor::pos() const
 }
 
 
-void LyXCursor::boundary(bool b)
+void LyXCursor::boundary(bool boundary)
 {
-	boundary_ = b;
+	boundary_ = boundary;
 }
 
 
 bool LyXCursor::boundary() const
 {
 	return boundary_;
-}
-
-
-void LyXCursor::x(int n)
-{
-	x_ = n;
-}
-
-
-int LyXCursor::x() const
-{
-	return x_;
-}
-
-
-void LyXCursor::y(int i)
-{
-	y_ = i;
-}
-
-
-int LyXCursor::y() const
-{
-	return y_;
 }
 
 

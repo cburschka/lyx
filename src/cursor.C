@@ -32,27 +32,6 @@ using std::vector;
 using std::endl;
 
 
-std::ostream & operator<<(std::ostream & os, CursorItem const & item)
-{
-	os << " inset: " << item.inset_
-	   << " code: " << item.inset_->lyxCode()
-	   << " text: " << item.text()
-	   << " idx: " << item.idx_
-//	   << " par: " << item.par_
-//	   << " pos: " << item.pos_
-	   << " x: " << item.inset_->x()
-	   << " y: " << item.inset_->y()
-;
-	return os;
-}
-
-
-LyXText * CursorItem::text() const
-{
-	return inset_->getText(0);
-}
-
-
 std::ostream & operator<<(std::ostream & os, LCursor const & cursor)
 {
 	os << "\n";
@@ -73,7 +52,7 @@ DispatchResult LCursor::dispatch(FuncRequest const & cmd0)
 	FuncRequest cmd = cmd0;
 
 	for (int i = data_.size() - 1; i >= 0; --i) {
-		CursorItem const & citem = data_[i];
+		CursorSlice const & citem = data_[i];
 		lyxerr << "trying to dispatch to inset " << citem.inset_ << endl;
 		DispatchResult res = citem.inset_->dispatch(cmd);
 		if (res.dispatched()) {
@@ -121,7 +100,7 @@ DispatchResult LCursor::dispatch(FuncRequest const & cmd0)
 void LCursor::push(UpdatableInset * inset)
 {
 	lyxerr << "LCursor::push()  inset: " << inset << endl;
-	data_.push_back(CursorItem(inset));
+	data_.push_back(CursorSlice(inset));
 	updatePos();
 }
 
@@ -149,7 +128,7 @@ void LCursor::pop()
 
 UpdatableInset * LCursor::innerInset() const
 {
-	return data_.empty() ? 0 : data_.back().inset_;
+	return data_.empty() ? 0 : data_.back().asUpdatableInset();
 }
 
 
@@ -189,8 +168,8 @@ void LCursor::getDim(int & asc, int & desc) const
 void LCursor::getPos(int & x, int & y) const
 {
 	if (data_.empty()) {
-		x = bv_->text()->cursor.x();
-		y = bv_->text()->cursor.y();
+		x = bv_->text()->cursorX();
+		y = bv_->text()->cursorY();
 //		y -= bv_->top_y();
 	} else {
 		// Would be nice to clean this up to make some understandable sense...
@@ -202,7 +181,6 @@ void LCursor::getPos(int & x, int & y) const
 		// inset->draw() is not called: this doesn't update
 		// inset.top_baseline, so getCursor() returns an old value.
 		// Ugly as you like.
-		//inset->getCursorPos(bv_, x, y);
 		inset->getCursorPos(x, y);
 		x += inset->x();
 		y += cached_y_;
@@ -213,8 +191,8 @@ void LCursor::getPos(int & x, int & y) const
 UpdatableInset * LCursor::innerInsetOfType(int code) const
 {
 	for (int i = data_.size() - 1; i >= 0; --i)
-		if (data_[i].inset_->lyxCode() == code)
-			return data_[i].inset_;
+		if (data_[i].asUpdatableInset()->lyxCode() == code)
+			return data_[i].asUpdatableInset();
 	return 0;
 }
 

@@ -13,8 +13,8 @@
 #ifndef MATH_CURSOR
 #define MATH_CURSOR
 
-
 #include "math_inset.h"
+#include "math_data.h"
 #include "math_iterator.h"
 
 #include <string>
@@ -30,7 +30,7 @@ class MathUnknownInset;
 [Have a look at math_inset.h first]
 
 The MathCursor is different from the kind of cursor used in the Outer
-World. It contains a stack of CursorPos, each of which is made
+World. It contains a stack of CursorSlice, each of which is made
 up of a inset pointer, an index and a position offset, marking a path from
 this formula's MathHullInset to the current position.
 
@@ -207,14 +207,14 @@ public:
 	MathAtom & nextAtom();
 
 	/// returns the selection
-	void getSelection(CursorPos &, CursorPos &) const;
+	void getSelection(CursorSlice &, CursorSlice &) const;
 	/// returns the normalized anchor of the selection
-	CursorPos normalAnchor() const;
+	CursorSlice normalAnchor() const;
 
 	/// reference to the last item of the path, i.e. "The Cursor"
-	CursorPos & cursor();
+	CursorSlice & cursor();
 	/// reference to the last item of the path, i.e. "The Cursor"
-	CursorPos const & cursor() const;
+	CursorSlice const & cursor() const;
 	/// how deep are we nested?
 	unsigned depth() const;
 	/// describe the situation
