@@ -39,11 +39,13 @@ FontLoader::FontLoader()
 	reset();
 }
 
+
 // Destroy font loader
 FontLoader::~FontLoader()
 {
 	unload();
 }
+
 
 // Update fonts after zoom, dpi, font names, or norm change
 // For now, we just ditch all fonts we have. Later, we should
@@ -52,6 +54,7 @@ void FontLoader::update()
 {
 	unload();
 }
+
 
 // Reset font loader
 void FontLoader::reset()
@@ -66,6 +69,7 @@ void FontLoader::reset()
 				}
 			}
 }
+
 
 // Unload all fonts
 void FontLoader::unload() 
@@ -86,6 +90,7 @@ void FontLoader::unload()
 				}
 			}
 }
+
 
 // Get font info
 /* Takes care of finding which font that can match the given request. Tries

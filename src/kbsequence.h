@@ -39,7 +39,7 @@ public:
 	
 	/// Make length negative to mark the sequence as deleted
 	void delseq();
-	
+
 	///
 	char getiso() const;
 	

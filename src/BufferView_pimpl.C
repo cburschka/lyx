@@ -134,8 +134,6 @@ BufferView::Pimpl::Pimpl(BufferView * b, LyXView * o,
 	workarea_.workAreaKeyPress
 		.connect(slot(this, &BufferView::Pimpl::workAreaKeyPress));
 	
-	//screen_ = 0;
-
 	cursor_timeout.timeout.connect(slot(this,
 					    &BufferView::Pimpl::cursorToggle));
 	//current_scrollbar_value = 0;
@@ -179,8 +177,6 @@ void BufferView::Pimpl::buffer(Buffer * b)
 	// Nuke old image
 	// screen is always deleted when the buffer is changed.
 	screen_.reset(0);
-	//delete screen_;
-	//screen_ = 0;
 
 	// If we are closing the buffer, use the first buffer as current
 	if (!buffer_) {
@@ -254,7 +250,7 @@ bool BufferView::Pimpl::fitCursor(LyXText * text)
 {
 	lyx::Assert(screen_.get());
  
-	bool ret = screen_->FitCursor(text, bv_);
+	bool const ret = screen_->FitCursor(text, bv_);
 	if (ret)
 	    updateScrollbar();
 	return ret;
@@ -2648,7 +2644,18 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 	case LFUN_HUNG_UMLAUT:
 	case LFUN_CIRCLE:
 	case LFUN_OGONEK:
-		owner_->getLyXFunc()->handleKeyFunc(action);
+		if (argument.empty()) {
+			// As always...
+			owner_->getLyXFunc()->handleKeyFunc(action);
+		} else {
+			owner_->getLyXFunc()->handleKeyFunc(action);
+			owner_->getIntl()->getTrans()
+				.TranslateAndInsert(argument[0], TEXT(bv_));
+			update(TEXT(bv_),
+			       BufferView::SELECT
+			       | BufferView::FITCUR
+			       | BufferView::CHANGE);
+		}
 		break;
 	
 	// --- insert characters ----------------------------------------
@@ -2926,6 +2933,8 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 
 	case LFUN_UNKNOWN_ACTION:
 	{
+		// Ok what does this break.
+#if 0
 		if (!buffer_) {
 			owner_->getLyXFunc()->setErrorMessage(N_("No document open"));
 			break;
@@ -2975,6 +2984,10 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 			// strange going on so we just tell this to someone!
 			owner_->getLyXFunc()->setErrorMessage(N_("No argument given"));
 		}
+#else
+		owner_->getLyXFunc()->setErrorMessage(N_("Unknow function!"));
+		
+#endif
 		break;
 	}
 	default:

@@ -1504,10 +1504,6 @@ string const Buffer::asciiParagraph(LyXParagraph const * par,
 				    unsigned int linelen) const
 {
 	ostringstream buffer;
-	LyXFont font1;
-	LyXFont font2;
-	Inset const * inset;
-	char c;
 	char depth = 0;
 	int ltype = 0;
 	int ltype_depth = 0;
@@ -1517,7 +1513,7 @@ string const Buffer::asciiParagraph(LyXParagraph const * par,
 	int noparbreak = 0;
 	int islatex = 0;
 	if (!par->previous()) {
-		/* begins or ends a deeper area ?*/ 
+		// begins or ends a deeper area ?
 		if (depth != par->params.depth()) {
 			if (par->params.depth() > depth) {
 				while (par->params.depth() > depth) {
@@ -1530,7 +1526,7 @@ string const Buffer::asciiParagraph(LyXParagraph const * par,
 			}
 		}
 		
-		/* First write the layout */
+		// First write the layout
 		string const tmp = textclasslist.NameOfLayout(params.textclass, par->layout);
 		if (tmp == "Itemize") {
 			ltype = 1;
@@ -1573,7 +1569,7 @@ string const Buffer::asciiParagraph(LyXParagraph const * par,
 		lyxerr << "Should this ever happen?" << endl;
 	}
       
-	font1 = LyXFont(LyXFont::ALL_INHERIT, params.language);
+	LyXFont const font1 = LyXFont(LyXFont::ALL_INHERIT, params.language);
 	for (LyXParagraph::size_type i = 0; i < par->size(); ++i) {
 		if (!i && !noparbreak) {
 			if (linelen > 0)
@@ -1582,17 +1578,17 @@ string const Buffer::asciiParagraph(LyXParagraph const * par,
 				buffer << "  ";
 			currlinelen = depth * 2;
 			switch (ltype) {
-			case 0: /* Standard */
-			case 4: /* (Sub)Paragraph */
-			case 5: /* Description */
+			case 0: // Standard
+			case 4: // (Sub)Paragraph
+			case 5: // Description
 				break;
-			case 6: /* Abstract */
+			case 6: // Abstract
 				if (linelen > 0)
 					buffer << "Abstract\n\n";
 				else
 					buffer << "Abstract: ";
 				break;
-			case 7: /* Bibliography */
+			case 7: // Bibliography
 				if (!ref_printed) {
 					if (linelen > 0)
 						buffer << "References\n\n";
@@ -1611,7 +1607,7 @@ string const Buffer::asciiParagraph(LyXParagraph const * par,
 				currlinelen += (ltype_depth-depth)*2;
 			}
 		}
-		font2 = par->GetFontSettings(params, i);
+		LyXFont const font2 = par->GetFontSettings(params, i);
 		if (font1.latex() != font2.latex()) {
 			if (font2.latex() == LyXFont::OFF)
 				islatex = 0;
@@ -1620,23 +1616,29 @@ string const Buffer::asciiParagraph(LyXParagraph const * par,
 		} else {
 			islatex = 0;
 		}
-		c = par->GetUChar(params, i);
+		
+		char c = par->GetUChar(params, i);
 		if (islatex)
 			continue;
 		switch (c) {
 		case LyXParagraph::META_INSET:
-			if ((inset = par->GetInset(i))) {
+		{
+			Inset const * inset = par->GetInset(i);
+			if (inset) {
 				if (!inset->Ascii(this, buffer)) {
 					string dummy;
-					string s = rsplit(buffer.str().c_str(),
-							  dummy, '\n');
+					string const s =
+						rsplit(buffer.str().c_str(),
+						       dummy, '\n');
 					currlinelen += s.length();
 				} else {
 					// to be sure it breaks paragraph
 					currlinelen += linelen;
 				}
 			}
-			break;
+		}
+		break;
+		
 		case LyXParagraph::META_NEWLINE:
 			if (linelen > 0) {
 				buffer << "\n";
@@ -1651,12 +1653,15 @@ string const Buffer::asciiParagraph(LyXParagraph const * par,
 				currlinelen += (ltype_depth - depth) * 2;
 			}
 			break;
+			
 		case LyXParagraph::META_HFILL: 
 			buffer << "\t";
 			break;
+			
 		case '\\':
 			buffer << "\\";
 			break;
+			
 		default:
 			if ((linelen > 0) && (currlinelen > (linelen - 10)) &&
 			    (c == ' ') && ((i + 2) < par->size()))

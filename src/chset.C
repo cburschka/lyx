@@ -30,7 +30,7 @@ bool CharacterSet::loadFile(string const & fname)
 	// open definition file
 	lyxerr[Debug::KBMAP]
 		<< "Reading character set file " << fname << ".cdef" << endl;
-	string filename = LibFileSearch("kbd", fname, "cdef");
+	string const filename = LibFileSearch("kbd", fname, "cdef");
 	ifstream ifs(filename.c_str());
 	if (!ifs) {
 		lyxerr << "Unable to open character set file" << endl;
@@ -38,8 +38,6 @@ bool CharacterSet::loadFile(string const & fname)
 	}
 	name_ = fname;
 	
-	string str;
-	int n;
 	string line;
 	// Ok, I'll be the first to admit that this is probably not
 	// the fastest way to parse the cdef files, but I though it
@@ -49,9 +47,10 @@ bool CharacterSet::loadFile(string const & fname)
 	while(getline(ifs, line)) {
 		if (reg.exact_match(line)) {
 			LRegex::SubMatches const & sub = reg.exec(line);
-			n = lyx::atoi(line.substr(sub[1].first,
+			int const n = lyx::atoi(line.substr(sub[1].first,
 						  sub[1].second));
-			str = LSubstring(line, sub[2].first, sub[2].second);
+			string const str = LSubstring(line, sub[2].first,
+						      sub[2].second);
 			if (lyxerr.debugging(Debug::KBMAP))
 				lyxerr << "Chardef: " << n
 				       << " to [" << str << "]" << endl;

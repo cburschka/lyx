@@ -1,3 +1,12 @@
+2001-05-11  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* bind/latinkeys.bind: new file. bindings for latin1, latin2,
+	latin3, latin4, latin8, latin9
+
+	* bind/emacs.bind: include latinkeys.bind
+
+	* bind/cua.bind: include latinkeys.bind
+
 2001-05-04  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* ui/default.ui: add FloatInsert and FloatListInsert

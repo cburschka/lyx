@@ -197,10 +197,10 @@ void LyXFunc::moveCursorUpdate(bool flag, bool selecting)
 
 void LyXFunc::handleKeyFunc(kb_action action)
 {
-	char c = 0;
+	char c = keyseq.getiso();
 
-	if (keyseq.length == -1 && keyseq.getiso() != 0) 
-		c = keyseq.getiso();
+	if (keyseq.length != -1) c = 0;
+	
 	owner->getIntl()->getTrans()
 		.deadkey(c, get_accent(action).accent, TEXT(false));
 	// Need to reset, in case the minibuffer calls these
@@ -317,6 +317,7 @@ int LyXFunc::processKeySym(KeySym keysym, unsigned int state)
 	}
 
 	if (action == -1) {
+#if 0
 		if (keyseq.length < -1) { // unknown key sequence...
 			string buf;
 			keyseq.print(buf);
@@ -336,6 +337,10 @@ int LyXFunc::processKeySym(KeySym keysym, unsigned int state)
 			// so we`ll skip the dispatch.
 			return 0;
 		}
+#else
+		owner->message(_("Unknown function."));
+		return 0;
+#endif
 	} else if (action == LFUN_SELFINSERT) {
 		// We must set the argument to the char looked up by
 		// XKeysymToString
@@ -357,7 +362,7 @@ int LyXFunc::processKeySym(KeySym keysym, unsigned int state)
 		xke.same_screen = True;
 		char ret[10];
 		KeySym tmpkeysym;
-		int res = XLookupString(&xke, ret, 10, &tmpkeysym, 0);
+		int const res = XLookupString(&xke, ret, 10, &tmpkeysym, 0);
 		//Assert(keysym == tmpkeysym);
 		lyxerr[Debug::KEY] << "TmpKeysym ["
 				   << tmpkeysym << "]" << endl;
@@ -560,6 +565,7 @@ void LyXFunc::miniDispatch(string const & s)
 {
 	Dispatch(s);
 }
+
 
 string const LyXFunc::Dispatch(string const & s) 
 {
@@ -1483,7 +1489,8 @@ string const LyXFunc::Dispatch(int ac,
 	default:
 		// Then if it was none of the above
 		if (!owner->view()->Dispatch(action, argument))
-			lyxerr << "A truly unknown func!" << endl;
+			lyxerr << "A truly unknown func ["
+			       << action << "]!" << endl;
 		break;
 	} // end of switch
 

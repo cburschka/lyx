@@ -160,8 +160,7 @@ string const TransCombinedState::normalkey(char c, string const & trans)
 	
 	// Check if the key is allowed on the combination
 	if (countChar(comb_info_->data, c) > 0) {
-		string temp;
-		temp = DoAccent(c, deadkey2_info_.accent);
+		string const temp = DoAccent(c, deadkey2_info_.accent);
 		res = DoAccent(temp, deadkey_info_.accent);
 		currentState = init_state_;
 	} else {
@@ -333,7 +332,8 @@ void TransManager::deadkey(char c, tex_accent accent, LyXText * t)
 		// or a accent command was typed in the minibuffer
 		KmodInfo i;
 		if (active_->isAccentDefined(accent, i) == true) {
-			string res = trans_fsm_.currentState->deadkey(c, i);
+			string const res = trans_fsm_
+				.currentState->deadkey(c, i);
 			insert(res, t);
 			return;
 		}

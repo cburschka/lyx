@@ -85,7 +85,8 @@ tex_accent_struct get_accent(kb_action action)
 	return temp;
 }
 
-string DoAccent(string const & s, tex_accent accent)
+
+string const DoAccent(string const & s, tex_accent accent)
 {
 	string res;
 	
@@ -99,7 +100,8 @@ string DoAccent(string const & s, tex_accent accent)
 	return res;
 }
 
-string DoAccent(char c, tex_accent accent)
+
+string const DoAccent(char c, tex_accent accent)
 {
 	return DoAccent(tostr(c), accent);
 }
