@@ -1222,8 +1222,11 @@ bool MathCursor::interpret(char c)
 					niceInsert(createMathInset("textbackslash"));
 				else
 					niceInsert(createMathInset("backslash"));
-			} else
+			} else if (c == '{') {
+				niceInsert(MathAtom(new MathBraceInset));
+			} else {
 				niceInsert(createMathInset(string(1, c)));
+			}
 			return true;
 		}
 
@@ -1286,23 +1289,12 @@ bool MathCursor::interpret(char c)
 	}
 
 	if (c == '#') {
-		insert(c); // LM_TC_TEX;
+		insert(c);
 		return true;
 	}
 
-/*
-	if (c == '{' || c == '}', c)) {
-		insert(c); // LM_TC_TEX;
-		return true;
-	}
-*/
-
-	if (c == '{') {
-		niceInsert(MathAtom(new MathBraceInset));
-		return true;
-	}
-
-	if (c == '}') {
+	if (c == '{' || c == '}') {
+		niceInsert(createMathInset(string(1, c)));
 		return true;
 	}
 
