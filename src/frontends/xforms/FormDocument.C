@@ -104,6 +104,8 @@ void FormDocument::build()
 		      "| A4 small Margins (only portrait) "
 		      "| A4 very small Margins (only portrait) "
 		      "| A4 very wide margins (only portrait) "));
+    setEnabled(paper_->choice_paperpackage, true);
+
     fl_set_input_return(paper_->input_custom_width, FL_RETURN_CHANGED);
     fl_set_input_return(paper_->input_custom_height, FL_RETURN_CHANGED);
     fl_set_input_return(paper_->input_top_margin, FL_RETURN_CHANGED);
@@ -922,6 +924,19 @@ bool FormDocument::CheckDocumentInput(FL_OBJECT * ob, long)
 	if (*input && !isValidGlueLength(input))
 	    ok = false;
     }
+
+    if (ob == paper_->radio_portrait) {
+	    setEnabled(paper_->choice_paperpackage,
+		       fl_get_button(paper_->radio_portrait));
+    }
+
+    if (ob == paper_->radio_landscape) {
+	    setEnabled(paper_->choice_paperpackage,
+		       fl_get_button(paper_->radio_portrait));
+	    fl_set_choice(paper_->choice_paperpackage,
+			  BufferParams::PACKAGE_NONE + 1);
+    }
+
     if ((fl_get_choice(class_->choice_doc_skip) == 4) && !*input)
 	ok = false;
     else if (fl_get_choice(class_->choice_doc_skip) != 4)

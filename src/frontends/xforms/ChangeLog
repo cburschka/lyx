@@ -1,3 +1,8 @@
+2001-10-01  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* FormDocument.C: Disable choice "Special" if landscape
+	is chosen to prevent senseless values.
+
 2001-09-28  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* forms/form_preferences.fd: small tweaks.
