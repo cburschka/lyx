@@ -1000,6 +1000,14 @@ void LyXText::setHeightOfRow(pit_type const pit, Row & row)
 	maxasc  += int(layoutasc  * 2 / (2 + pars_[pit].getDepth()));
 	maxdesc += int(layoutdesc * 2 / (2 + pars_[pit].getDepth()));
 
+	// Top and bottom margin of the document (only at top-level)
+	if (bv_owner->text() == this) {
+		if (pit == 0 && row.pos() == 0)
+			maxasc += 20;
+		if (pit == pars_.size() - 1 && row.endpos() == par.size())
+			maxdesc += 20;
+	}
+
 	row.ascent(maxasc + labeladdon);
 	row.descent(maxdesc);
 }

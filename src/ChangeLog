@@ -1,3 +1,8 @@
+2005-01-11  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* text.C (setHeightOfRow): add a margin at the top and bottom of
+	the document (bug 1761)
+
 2005-01-17  Angus Leeming  <leeming@lyx.org>
 
 	* buffer.C (readFile): prepend the name of the "lyx2lyx" script
