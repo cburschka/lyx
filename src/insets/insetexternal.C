@@ -292,8 +292,8 @@ void InsetExternal::updateExternal(string const & format,
 		FileInfo fi(params_.filename);
 		FileInfo fi2(resultfile);
 		if (fi2.exist() && fi.exist() &&
-		    ::difftime(fi2.getModificationTime(),
-			       fi.getModificationTime()) >= 0) {
+		    difftime(fi2.getModificationTime(),
+			     fi.getModificationTime()) >= 0) {
 			lyxerr[Debug::FILES] << resultfile
 					     << " is up to date" << endl;
 			return;
