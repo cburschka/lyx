@@ -1,3 +1,9 @@
+
+2003-04-29  André Pönitz  <poenitz@gmx.net>
+	
+	* Makefile.am:
+	  texparser.h: whitespace
+
 2003-04-20  Kayvan A. Sylvan  <kayvan@sylvan.com>
 
 	* table.C: use string::erase(), not string::clear() to enable older

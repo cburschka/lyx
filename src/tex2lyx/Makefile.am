@@ -6,7 +6,7 @@ INCLUDES = -I$(srcdir)/../ $(BOOST_INCLUDES)
 #
 #libtexparser_la_SOURCES = \
 #	texparser.C \
-#	texparser.h 
+#	texparser.h
 #
 #tex2lyx_LDADD = libtexparser.la
 
@@ -20,4 +20,4 @@ tex2lyx_SOURCES = \
 	preamble.C \
 	math.C \
 	table.C \
-	text.C 
+	text.C

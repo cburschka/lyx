@@ -120,7 +120,7 @@ ParagraphList::insert(ParagraphList::iterator it, Paragraph * par)
 		par->next_par_ = &*it;
 		par->prev_par_ = prev;
 		prev->next_par_ = par;
-		it->prev_ par_= par;
+		it->prev_par_= par;
 	} else if (parlist == 0) {
 		parlist = par;
 	} else {

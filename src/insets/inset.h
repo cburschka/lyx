@@ -125,7 +125,7 @@ public:
 		///
 		OPTARG_CODE,
 		///
-		ENVIRONMENT_CODE, 
+		ENVIRONMENT_CODE,
 		///
 		HFILL_CODE,
 		///
@@ -270,6 +270,10 @@ public:
 	virtual Paragraph * firstParagraph() const { return 0; }
 	///
 	virtual Paragraph * getFirstParagraph(int /*num*/) const { return 0; }
+	///
+	virtual bool haveParagraphs() const {
+		return false;
+	}
 
 	/// return the cursor if we own one otherwise giv'em just the
 	/// BufferView cursor to work with.
