@@ -44,7 +44,7 @@ RefInset::RefInset(string const & data)
 {}
 
 
-auto_ptr<InsetBase> RefInset::clone() const
+auto_ptr<InsetBase> RefInset::doClone() const
 {
 	return auto_ptr<InsetBase>(new RefInset(*this));
 }

@@ -16,6 +16,9 @@
 #include "support/std_ostream.h"
 
 
+using std::auto_ptr;
+
+
 MathParInset::MathParInset(MathArray const & ar)
 {
 	cells_[0] = ar;
@@ -47,4 +50,10 @@ void MathParInset::write(WriteStream & os) const
 void MathParInset::infoize(std::ostream & os) const
 {
 	os << "Type: Paragraph ";
+}
+
+
+auto_ptr<InsetBase> MathParInset::doClone() const
+{
+	return auto_ptr<InsetBase>(new MathParInset(*this));
 }

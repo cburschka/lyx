@@ -42,6 +42,9 @@ public:
 	///
 	int docbook(Buffer const & buf, std::ostream & os,
 		    OutputParams const & runparams) const;
+private:
+	///
+	virtual std::auto_ptr<InsetBase> doClone() const;
 };
 
 

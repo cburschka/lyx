@@ -24,8 +24,6 @@ public:
 	///
 	explicit RefInset(std::string const & data);
 	///
-	virtual std::auto_ptr<InsetBase> clone() const;
-	///
 	//void write(WriteStream & os) const;
 	///
 	void infoize(std::ostream & os) const;
@@ -61,6 +59,9 @@ public:
 	static std::string const & getName(int type);
 protected:
 	virtual void doDispatch(LCursor & cur, FuncRequest & cmd);
+private:
+	///
+	virtual std::auto_ptr<InsetBase> doClone() const;
 };
 
 #endif

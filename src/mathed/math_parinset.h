@@ -31,6 +31,9 @@ public:
 	void infoize(std::ostream & os) const;
 	///
 	void write(WriteStream & os) const;
+private:
+	///
+	virtual std::auto_ptr<InsetBase> doClone() const;
 };
 
 #endif

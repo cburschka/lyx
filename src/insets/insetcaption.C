@@ -34,6 +34,7 @@
 
 using lyx::support::bformat;
 
+using std::auto_ptr;
 using std::endl;
 using std::string;
 using std::ostream;
@@ -138,7 +139,7 @@ int InsetCaption::latex(Buffer const & buf, ostream & os,
 int InsetCaption::plaintext(Buffer const & /*buf*/,ostream & /*os*/,
 			OutputParams const & /*runparams*/) const
 {
-	// FIX: Implement me!
+	// FIXME: Implement me!
 	return 0;
 }
 
@@ -151,4 +152,10 @@ int InsetCaption::docbook(Buffer const & buf, ostream & os,
 	ret = InsetText::docbook(buf, os, runparams);
 	os << "</title>\n";
 	return ret;
+}
+
+
+auto_ptr<InsetBase> InsetCaption::doClone() const
+{
+	return auto_ptr<InsetBase>(new InsetCaption(*this));
 }
