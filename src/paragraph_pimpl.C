@@ -55,7 +55,7 @@ special_phrase special_phrases[] = {
 	{ "LaTeX", "\\LaTeX{}", true },
 };
 
-size_t phrases_nr = sizeof(special_phrases)/sizeof(special_phrase);
+size_t const phrases_nr = sizeof(special_phrases)/sizeof(special_phrase);
 
 } // namespace anon
 

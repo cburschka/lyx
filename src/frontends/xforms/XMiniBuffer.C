@@ -39,12 +39,12 @@ using std::vector;
 XMiniBuffer::XMiniBuffer(XFormsView * v, ControlCommandBuffer & control,
 	FL_Coord x, FL_Coord y, FL_Coord h, FL_Coord w)
 	: controller_(control), view_(v),
-	info_suffix_shown_(false)
+	info_shown_(false)
 {
 	input_obj_ = create_input_box(FL_NORMAL_INPUT, x, y, h, w);
-	suffix_timer_.reset(new Timeout(1500));
+	info_timer_.reset(new Timeout(1500));
 	idle_timer_.reset(new Timeout(6000));
-	suffix_timer_->timeout.connect(boost::bind(&XMiniBuffer::suffix_timeout, this));
+	info_timer_->timeout.connect(boost::bind(&XMiniBuffer::info_timeout, this));
 	idle_timer_->timeout.connect(boost::bind(&XMiniBuffer::idle_timeout, this));
 	idle_timer_->start(); 
 	messageMode();
@@ -68,12 +68,6 @@ XMiniBuffer::~XMiniBuffer()
 int XMiniBuffer::peek_event(FL_OBJECT * ob, int event,
 			    int key, XEvent * /*xev*/)
 {
-#if 0
-	if (dropdown_->isVisible()) {
-		return dropdown_->peek(xev);
-	}
-#endif
-
 	switch (event) {
 	case FL_FOCUS:
 		messageMode(false);
@@ -84,9 +78,9 @@ int XMiniBuffer::peek_event(FL_OBJECT * ob, int event,
 	case FL_KEYBOARD:
 	{
 		string input;
-		if (info_suffix_shown_) {
-			suffix_timer_->stop();
-			suffix_timeout();
+		if (info_shown_) {
+			info_timer_->stop();
+			info_timeout();
 		}
  
 		char const * tmp = fl_get_input(ob);
@@ -100,7 +94,7 @@ int XMiniBuffer::peek_event(FL_OBJECT * ob, int event,
 		{
 			string const h(controller_.historyDown());
 			if (h.empty()) {
-				show_info_suffix(_("[End of history]"), input);
+				show_info(_("[End of history]"), input, false);
 			} else {
 				set_input(h);
 			}
@@ -114,7 +108,7 @@ int XMiniBuffer::peek_event(FL_OBJECT * ob, int event,
 		{
 			string const h(controller_.historyUp());
 			if (h.empty()) {
-				show_info_suffix(_("[Beginning of history]"), input);
+				show_info(_("[Beginning of history]"), input, false);
 			} else {
 				set_input(h);
 			}
@@ -128,13 +122,13 @@ int XMiniBuffer::peek_event(FL_OBJECT * ob, int event,
 			vector<string> comp = controller_.completions(input, new_input);
 			 
 			if (comp.empty() && new_input == input) {
-				show_info_suffix(_("[no match]"), input);
+				show_info(_("[no match]"), input);
 				break;
 			}
 
 			if (comp.empty()) {
 				set_input(new_input);
-				show_info_suffix(("[only completion]"), new_input + " ");
+				show_info(("[only completion]"), new_input + " ");
 				break;
 			}
 				 
@@ -162,27 +156,9 @@ int XMiniBuffer::peek_event(FL_OBJECT * ob, int event,
 		case XK_KP_Enter:
 #endif
 		{
-#if 0
-			// This will go in again in a little while
-			// we need to be able to declare what types
-			// of argumetns LFUN's should have first. (Lgb)
-			// First check for match
-			vector<string>::const_iterator cit =
-				find(completion_.begin(),
-				     completion_.end(),
-				     input);
-			if (cit == completion_.end()) {
-				// no such func/item
-				string const tmp = input + _(" [no match]");
-				show_info_suffix(tmp, input);
-			} else {
-#endif
 			messageMode();
 			redraw();
 			controller_.dispatch(input);
-# if 0
-			}
-#endif
 			return 1;
 		}
 		default:
@@ -240,12 +216,15 @@ void XMiniBuffer::freeze()
 }
 
  
-void XMiniBuffer::show_info_suffix(string const & suffix, string const & input)
+void XMiniBuffer::show_info(string const & info, string const & input, bool append)
 {
 	stored_input_ = input;
-	info_suffix_shown_ = true;
-	set_input(input + " " + suffix); 
-	suffix_timer_->start();
+	info_shown_ = true;
+	if (append)
+		set_input(input + " " + info);
+	else
+		set_input(info);
+	info_timer_->start();
 }
  
 
@@ -255,9 +234,9 @@ void XMiniBuffer::idle_timeout()
 }
 
  
-void XMiniBuffer::suffix_timeout()
+void XMiniBuffer::info_timeout()
 {
-	info_suffix_shown_ = false;
+	info_shown_ = false;
 	set_input(stored_input_);
 }
 

@@ -44,14 +44,14 @@ vector<string> const ControlRef::getLabelList(string const & name) const
 
 void ControlRef::gotoRef(string const & ref) const
 {
-	lv_.getLyXFunc()->dispatch(LFUN_BOOKMARK_SAVE, string("0"));
+	lv_.getLyXFunc()->dispatch(LFUN_BOOKMARK_SAVE, "0", false);
 	lv_.getLyXFunc()->dispatch(LFUN_REF_GOTO, ref);
 }
 
 
 void ControlRef::gotoBookmark() const
 {
-	lv_.getLyXFunc()->dispatch(LFUN_BOOKMARK_GOTO, string("0"));
+	lv_.getLyXFunc()->dispatch(LFUN_BOOKMARK_GOTO, "0", false);
 }
 
 

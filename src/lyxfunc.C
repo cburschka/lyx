@@ -1363,10 +1363,10 @@ void LyXFunc::dispatch(kb_action action, string argument, bool verbose)
 
 	// passthrough hat and underscore outside mathed:
 	case LFUN_SUBSCRIPT:
-		dispatch(LFUN_SELFINSERT, string("_"));
+		dispatch(LFUN_SELFINSERT, "_", false);
 		break;
 	case LFUN_SUPERSCRIPT:
-		dispatch(LFUN_SELFINSERT, string("^"));
+		dispatch(LFUN_SELFINSERT, "^", false);
 		break;
 
 	case LFUN_MATH_PANEL:

@@ -99,8 +99,7 @@ void FormMathsMatrix::apply()
 	ostringstream ost;
 	ost << nx << ' ' << ny << ' ' << c << ' ' << sh;
 
-	// remeber gcc 3.1 and lyxstring stringstream before "fixing"
-	lv_->getLyXFunc()->dispatch(LFUN_INSERT_MATRIX, string(ost.str().c_str()));
+	lv_->getLyXFunc()->dispatch(LFUN_INSERT_MATRIX, ost.str().c_str(), false);
 }
 
 bool FormMathsMatrix::input(FL_OBJECT * ob, long)

@@ -91,8 +91,7 @@ void FormMathsDelim::apply()
 	ostringstream ost;
 	ost << delim_values[left] << ' ' << delim_values[right];
 
-	// the unusual formulation here is necessary for lyxstring stringstream 
-	lv_->getLyXFunc()->dispatch(LFUN_MATH_DELIM, string(ost.str().c_str()));
+	lv_->getLyXFunc()->dispatch(LFUN_MATH_DELIM, ost.str().c_str(), false);
 }
 
 bool FormMathsDelim::input(FL_OBJECT *, long)

@@ -55,7 +55,7 @@ protected:
 	bool isEditingMode() const;
 
 	/// reset buffer to stored input text
-	void suffix_timeout();
+	void info_timeout();
 
 	/// go back to "at rest" message
 	void idle_timeout();
@@ -79,13 +79,13 @@ protected:
 	void messageMode(bool on = true);
  
 	/// show a temporary message whilst in edit mode
-	void show_info_suffix(string const & suffix, string const & input);
+	void show_info(string const & info, string const & input, bool append = true);
 
 	/// the dropdown menu
 	boost::scoped_ptr<DropDown> dropdown_;
 
-	/// info suffix timer
-	boost::scoped_ptr<Timeout> suffix_timer_;
+	/// info timer
+	boost::scoped_ptr<Timeout> info_timer_;
 
 	/// idle timer
 	boost::scoped_ptr<Timeout> idle_timer_;
@@ -102,11 +102,11 @@ protected:
 	/// the lyx view
 	XFormsView * view_;
 
-	/// stored input when showing suffix info
+	/// stored input when showing info
 	string stored_input_;
 
-	/// are we showing an informational suffix of the mesage ?
-	bool info_suffix_shown_;
+	/// are we showing an informational temporary message ?
+	bool info_shown_;
 };
  
 #endif // XMINIBUFFER_H
