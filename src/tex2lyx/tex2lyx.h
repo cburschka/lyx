@@ -46,7 +46,6 @@ void handle_tabular(Parser & p, std::ostream & os, Context & context);
 
 
 /// in tex2lyx.C
-void handle_comment(Parser & p);
 std::string const trim(std::string const & a, char const * p = " \t\n\r");
 
 void split(std::string const & s, std::vector<std::string> & result,

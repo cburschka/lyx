@@ -37,6 +37,15 @@ struct Context {
 	// description \c desc.
 	void dump(std::ostream &, std::string const & desc = "context") const;
 
+	/// Are we just beginning a new paragraph?
+	bool atParagraphStart() const { return need_layout; }
+
+	/// Begin an item in a list environment
+	void set_item();
+
+	/// Start a new paragraph
+	void new_paragraph(std::ostream & os);
+
 	// Do we need to output some \begin_layout command before the
 	// next characters?
 	bool need_layout;

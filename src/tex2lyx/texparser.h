@@ -75,7 +75,7 @@ public:
 	///
 	Token(char c, CatCode cat) : cs_(), char_(c), cat_(cat) {}
 	///
-	Token(std::string const & cs) : cs_(cs), char_(0), cat_(catIgnore) {}
+	Token(std::string const & cs, CatCode cat) : cs_(cs), char_(0), cat_(cat) {}
 
 	///
 	std::string const & cs() const { return cs_; }
@@ -100,9 +100,16 @@ private:
 std::ostream & operator<<(std::ostream & os, Token const & t);
 
 
-//
-// Actual parser class
-//
+/*!
+ * Actual parser class
+ *
+ * The parser parses every character of the inputstream into a token
+ * and classifies the token.
+ * The following transformations are done:
+ * - Consecutive spaces are combined into one single token with CatCode catSpace
+ * - Consecutive newlines are combined into one single token with CatCode catNewline
+ * - Comments and %\n combinations are parsed into one token with CatCode catComment
+ */
 
 class Parser {
 
@@ -136,11 +143,15 @@ public:
 	///
 	Token const & prev_token() const;
 	///
-	Token const & next_token() const;
+	Token const & curr_token() const;
 	///
+	Token const & next_token() const;
+	/// Make the next token current and return that.
 	Token const & get_token();
-	/// skips spaces if any
-	void skip_spaces();
+	/// skips spaces (and comments if \param skip_comments is true)
+	void skip_spaces(bool skip_comments = false);
+	/// puts back spaces (and comments if \param skip_comments is true)
+	void unskip_spaces(bool skip_comments = false);
 	///
 	void lex(std::string const & s);
 	///
@@ -156,7 +167,7 @@ public:
 	///
 	CatCode getCatCode(char c) const;
 
-//private:
+private:
 	///
 	int lineno_;
 	///

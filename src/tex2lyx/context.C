@@ -23,7 +23,7 @@ namespace {
 
 void begin_layout(ostream & os, LyXLayout_ptr layout)
 {
-	os << "\n\\begin_layout " << layout->name() << "\n\n";
+	os << "\n\\begin_layout " << layout->name() << "\n";
 }
 
 
@@ -94,11 +94,12 @@ void Context::check_layout(ostream & os)
 			begin_layout(os, layout);
 			need_layout=false;
 			need_end_layout = true;
-			if (!extra_stuff.empty()) {
-				os << extra_stuff;
-				extra_stuff.erase();
-			}
 		}
+		if (!extra_stuff.empty()) {
+			os << extra_stuff;
+			extra_stuff.erase();
+		}
+		os << "\n";
 	}
 }
 
@@ -140,6 +141,20 @@ void Context::check_end_deeper(ostream & os)
 }
 
 
+void Context::set_item()
+{
+	need_layout = true;
+	has_item = true;
+}
+
+
+void Context::new_paragraph(ostream & os)
+{
+	check_end_layout(os);
+	need_layout = true;
+}
+
+
 void Context::dump(ostream & os, string const & desc) const
 {
 	os << "\n" << desc <<" [";
@@ -147,6 +162,12 @@ void Context::dump(ostream & os, string const & desc) const
 		os << "need_layout ";
 	if (need_end_layout)
 		os << "need_end_layout ";
+	if (need_end_deeper)
+		os << "need_end_deeper ";
+	if (has_item)
+		os << "has_item ";
+	if (deeper_paragraph)
+		os << "deeper_paragraph ";
 	if (!extra_stuff.empty())
 		os << "extrastuff=[" << extra_stuff << "] ";
 	os << "layout=" << layout->name();

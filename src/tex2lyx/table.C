@@ -192,13 +192,14 @@ void parse_table(Parser & p, ostream & os, unsigned flags)
 			}
 		}
 
+		else if (t.cat() == catSpace || t.cat() == catNewline)
+				os << t.cs();
+
 		else if (t.cat() == catLetter ||
-			       t.cat() == catSpace ||
 			       t.cat() == catSuper ||
 			       t.cat() == catSub ||
 			       t.cat() == catOther ||
 			       t.cat() == catActive ||
-			       t.cat() == catNewline ||
 			       t.cat() == catParameter)
 			os << t.character();
 
@@ -216,6 +217,7 @@ void parse_table(Parser & p, ostream & os, unsigned flags)
 
 		else if (t.cat() == catAlign) {
 			os << TAB;
+			p.skip_spaces();
 		}
 
 		else if (t.cs() == "tabularnewline" || t.cs() == "\\") {
@@ -232,7 +234,7 @@ void parse_table(Parser & p, ostream & os, unsigned flags)
 			hlines += "\\cline{" + p.verbatim_item() + '}';
 
 		else if (t.cat() == catComment)
-			handle_comment(p);
+			os << t.asInput();
 
 		else if (t.cs() == "(") {
 			os << "\\(";

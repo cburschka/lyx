@@ -52,19 +52,6 @@ using lyx::support::IsFileWriteable;
 // Hacks to allow the thing to link in the lyxlayout stuff
 LyXErr lyxerr(std::cerr.rdbuf());
 
-void handle_comment(Parser & p)
-{
-	string s;
-	while (p.good()) {
-		Token const & t = p.get_token();
-		if (t.cat() == catNewline)
-			break;
-		s += t.asString();
-	}
-	//cerr << "comment: " << s << "\n";
-	p.skip_spaces();
-}
-
 
 string const trim(string const & a, char const * p)
 {
@@ -238,6 +225,13 @@ void tex2lyx(std::istream &is, std::ostream &os)
 	active_environments.pop_back();
 	ss.seekg(0);
 	os << ss.str();
+#ifdef TEST_PARSER
+	p.reset();
+	ofstream parsertest("parsertest.tex");
+	while (p.good())
+		parsertest << p.get_token().asInput();
+	// <origfile> and parsertest.tex should now have identical content
+#endif
 }
 
 

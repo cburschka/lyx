@@ -188,7 +188,7 @@ LyXTextClass const parse_preamble(Parser & p, ostream & os, string const & force
 	while (p.good()) {
 		Token const & t = p.get_token();
 
-		if (t.cs() == "documentclass") {
+		if (t.cat() == catEscape && t.cs() == "documentclass") {
 			is_full_document = true;
 			break;
 		}
@@ -206,7 +206,6 @@ LyXTextClass const parse_preamble(Parser & p, ostream & os, string const & force
 		// cat codes
 		//
 		if (t.cat() == catLetter ||
-			  t.cat() == catSpace ||
 			  t.cat() == catSuper ||
 			  t.cat() == catSub ||
 			  t.cat() == catOther ||
@@ -215,24 +214,26 @@ LyXTextClass const parse_preamble(Parser & p, ostream & os, string const & force
 			  t.cat() == catBegin ||
 			  t.cat() == catEnd ||
 			  t.cat() == catAlign ||
-			  t.cat() == catNewline ||
 			  t.cat() == catParameter)
 		h_preamble << t.character();
 
+		else if (t.cat() == catSpace || t.cat() == catNewline)
+			h_preamble << t.asInput();
+
 		else if (t.cat() == catComment)
-			handle_comment(p);
+			h_preamble << t.asInput();
 
 		else if (t.cs() == "pagestyle")
 			h_paperpagestyle = p.verbatim_item();
 
 		else if (t.cs() == "makeatletter") {
 			p.setCatCode('@', catLetter);
-			h_preamble << "\\makeatletter\n";
+			h_preamble << "\\makeatletter";
 		}
 
 		else if (t.cs() == "makeatother") {
 			p.setCatCode('@', catOther);
-			h_preamble << "\\makeatother\n";
+			h_preamble << "\\makeatother";
 		}
 
 		else if (t.cs() == "newcommand" || t.cs() == "renewcommand"
@@ -246,24 +247,24 @@ LyXTextClass const parse_preamble(Parser & p, ostream & os, string const & force
 			string const opts = p.getOpt();
 			string const body = p.verbatim_item();
 			// only non-lyxspecific stuff
-			if (name != "\\noun "
-				  && name != "\\tabularnewline "
-			    && name != "\\LyX "
-				  && name != "\\lyxline "
-				  && name != "\\lyxaddress "
-				  && name != "\\lyxrightaddress "
-				  && name != "\\boldsymbol "
-				  && name != "\\lyxarrow ") {
+			if (   name != "\\noun"
+			    && name != "\\tabularnewline"
+			    && name != "\\LyX"
+			    && name != "\\lyxline"
+			    && name != "\\lyxaddress"
+			    && name != "\\lyxrightaddress"
+			    && name != "\\boldsymbol"
+			    && name != "\\lyxarrow") {
 				ostringstream ss;
 				ss << '\\' << t.cs();
 				if (star)
 					ss << '*';
-				ss << '{' << name << '}' << opts << '{' << body << "}\n";
+				ss << '{' << name << '}' << opts << '{' << body << "}";
 				h_preamble << ss.str();
 /*
 				ostream & out = in_preamble ? h_preamble : os;
 				out << "\\" << t.cs() << "{" << name << "}"
-				    << opts << "{" << body << "}\n";
+				    << opts << "{" << body << "}";
 */
 			}
 		}
@@ -301,7 +302,6 @@ LyXTextClass const parse_preamble(Parser & p, ostream & os, string const & force
 			ss << p.getOpt();
 			ss << '{' << p.verbatim_item() << '}';
 			ss << '{' << p.verbatim_item() << '}';
-			ss << '\n';
 			if (name != "lyxcode" && name != "lyxlist"
 					&& name != "lyxrightadress" && name != "lyxaddress")
 				h_preamble << ss.str();
@@ -311,7 +311,7 @@ LyXTextClass const parse_preamble(Parser & p, ostream & os, string const & force
 			string name = p.get_token().cs();
 			while (p.next_token().cat() != catBegin)
 				name += p.get_token().asString();
-			h_preamble << "\\def\\" << name << '{' << p.verbatim_item() << "}\n";
+			h_preamble << "\\def\\" << name << '{' << p.verbatim_item() << "}";
 		}
 
 		else if (t.cs() == "newcolumntype") {
@@ -328,7 +328,7 @@ LyXTextClass const parse_preamble(Parser & p, ostream & os, string const & force
 			h_preamble << "\\newcolumntype{" << name << "}";
 			if (nargs)
 				h_preamble << "[" << nargs << "]";
-			h_preamble << "{" << p.verbatim_item() << "}\n";
+			h_preamble << "{" << p.verbatim_item() << "}";
 		}
 
 		else if (t.cs() == "setcounter") {
@@ -339,22 +339,20 @@ LyXTextClass const parse_preamble(Parser & p, ostream & os, string const & force
 			else if (name == "tocdepth")
 				h_tocdepth = content;
 			else
-				h_preamble << "\\setcounter{" << name << "}{" << content << "}\n";
+				h_preamble << "\\setcounter{" << name << "}{" << content << "}";
 		}
 
 		else if (t.cs() == "setlength") {
 			string const name = p.verbatim_item();
 			string const content = p.verbatim_item();
+			// Is this correct?
 			if (name == "parskip")
 				h_paragraph_separation = "skip";
 			else if (name == "parindent")
 				h_paragraph_separation = "skip";
 			else
-				h_preamble << "\\setlength{" << name << "}{" << content << "}\n";
+				h_preamble << "\\setlength{" << name << "}{" << content << "}";
 		}
-
-		else if (t.cs() == "par")
-			h_preamble << '\n';
 
 		else if (t.cs() == "begin") {
 			string const name = p.getArg('{', '}');
@@ -364,8 +362,9 @@ LyXTextClass const parse_preamble(Parser & p, ostream & os, string const & force
 		}
 
 		else if (t.cs().size())
-			h_preamble << '\\' << t.cs() << ' ';
+			h_preamble << '\\' << t.cs();
 	}
+	p.skip_spaces();
 
 	// Force textclass if the user wanted it
 	if (forceclass.size()) {

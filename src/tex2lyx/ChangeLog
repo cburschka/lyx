@@ -1,3 +1,27 @@
+2003-11-03  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* math.C:
+	* table.C:
+	* text.C:
+	* context.[Ch]: New functions Context::set_item(),
+	Context::new_paragraph(ostream & os) and Context::atParagraphStart()
+	to make Context usage more explicit
+	* texparser.[Ch]: Rework Parser::tokenize (see comment in texparser.h)
+	* table.C:
+	* math.C:
+	* texparser.C: Don't silently drop comments
+	* texparser.C: Token::asInput() does not append a space anymore
+	* texparser.[Ch]: Renamed Parser::prev_token() to Parser::curr_token().
+	New function Parser::prev_token() returns now really the previous token
+	* Context.[Ch]:
+	* text.C: Convert known vspaces at paragraph start to \\added_space_top
+	* preamble.C: Don't put out newlines twice.
+	* text.C: Fix minipage position bug
+	* text.C: Fix \labelwidthstring bug
+	* text.C: Recognize alignment environments
+	* text.C: Fix a few cases of incorrect context usage, resulting
+	in missing or superflous \begin_layout / \end_laout lines.
+
 2003-10-23  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* math.C:
@@ -32,8 +56,6 @@
 	- recognize start of appendix
 	- handle optional arg to \item as ERT in itemize environment, since LyX
 		     does not support it directly
-
-
 
 2003-10-18  Lars Gullik Bjønnes  <larsbj@gullik.net>
 

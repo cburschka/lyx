@@ -100,7 +100,6 @@ void parse_math(Parser & p, ostream & os, unsigned flags, const mode_type mode)
 		}
 
 		else if (t.cat() == catLetter ||
-			       t.cat() == catSpace ||
 			       t.cat() == catSuper ||
 			       t.cat() == catSub ||
 			       t.cat() == catOther ||
@@ -108,15 +107,6 @@ void parse_math(Parser & p, ostream & os, unsigned flags, const mode_type mode)
 			       t.cat() == catActive ||
 			       t.cat() == catParameter)
 			os << t.character();
-
-		else if (t.cat() == catNewline) {
-			//if (p.next_token().cat() == catNewline) {
-			//	p.get_token();
-			//	handle_par(os);
-			//} else {
-				os << "\n "; // note the space
-			//}
-		}
 
 		else if (t.cat() == catBegin) {
 			os << '{';
@@ -130,8 +120,13 @@ void parse_math(Parser & p, ostream & os, unsigned flags, const mode_type mode)
 			os << "unexpected '}' in math\n";
 		}
 
-		else if (t.cat() == catComment)
-			handle_comment(p);
+		else if (t.cat() == catComment) {
+			if (t.cs().size())
+				cerr << "Ignoring comment: " << t.asInput();
+			else
+				// "%\n" combination
+				p.skip_spaces();
+		}
 
 		//
 		// control sequences

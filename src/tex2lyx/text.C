@@ -170,8 +170,12 @@ void skip_braces(Parser & p)
 }
 
 
-void handle_ert(ostream & os, string const & s, Context const & context)
+void handle_ert(ostream & os, string const & s, Context & context, bool check_layout = true)
 {
+	if (check_layout) {
+		// We must have a valid layout before outputting the ERT inset.
+		context.check_layout(os);
+	}
 	Context newcontext(true, context.textclass);
 	begin_inset(os, "ERT");
 	os << "\nstatus Collapsed\n";
@@ -182,6 +186,26 @@ void handle_ert(ostream & os, string const & s, Context const & context)
 		else
 			os << *it;
 	}
+	newcontext.check_end_layout(os);
+	end_inset(os);
+}
+
+
+void handle_comment(ostream & os, string const & s, Context & context)
+{
+	// TODO: Handle this better
+	Context newcontext(true, context.textclass);
+	begin_inset(os, "ERT");
+	os << "\nstatus Collapsed\n";
+	newcontext.check_layout(os);
+	for (string::const_iterator it = s.begin(), et = s.end(); it != et; ++it) {
+		if (*it == '\\')
+			os << "\n\\backslash \n";
+		else
+			os << *it;
+	}
+	// make sure that our comment is the last thing on the line
+	os << "\n\\newline";
 	newcontext.check_end_layout(os);
 	end_inset(os);
 }
@@ -217,10 +241,11 @@ void output_command_layout(ostream & os, Parser & p, bool outer,
 	context.check_deeper(os);
 	context.check_layout(os);
 	if (context.layout->optionalargs > 0) {
+		p.skip_spaces();
 		if (p.next_token().character() == '[') {
 			p.get_token(); // eat '['
 			begin_inset(os, "OptArg\n");
-			os << "collapsed true\n";
+			os << "collapsed true\n\n";
 			parse_text_in_inset(p, os, FLAG_BRACK_LAST, outer, context);
 			end_inset(os);
 		}
@@ -228,8 +253,46 @@ void output_command_layout(ostream & os, Parser & p, bool outer,
 	parse_text_snippet(p, os, FLAG_ITEM, outer, context);
 	context.check_end_layout(os);
 	context.check_end_deeper(os);
+	// We don't need really a new paragraph, but
+	// we must make sure that the next item gets a \begin_layout.
+	parent_context.new_paragraph(os);
 }
 
+
+/*!
+ * Output a space if necessary.
+ * This function gets called for every whitespace token.
+ *
+ * We have three cases here:
+ * 1. A space must be suppressed. Example: The lyxcode case below
+ * 2. A space may be suppressed. Example: Spaces before "\par"
+ * 3. A space must not be suppressed. Example: A space between two words
+ *
+ * We currently handle only 1. and 3 and from 2. only the case of
+ * spaces before newlines as a side effect.
+ *
+ * 2. could be used to suppress as many spaces as possible. This has two effects:
+ * - Reimporting LyX generated LaTeX files changes almost no whitespace
+ * - Superflous whitespace from non LyX generated LaTeX files is removed.
+ * The drawback is that the logic inside the function becomes
+ * complicated, and that is the reason why it is not implemented.
+ */
+void check_space(Parser const & p, ostream & os, Context & context)
+{
+	Token const next = p.next_token();
+	Token const curr = p.curr_token();
+	// A space before a single newline and vice versa must be ignored
+	// LyX emits a newline before \end{lyxcode}.
+	// This newline must be ignored,
+	// otherwise LyX will add an additional protected space.
+	if (next.cat() == catSpace ||
+	    next.cat() == catNewline ||
+	    (next.cs() == "end" && context.layout->free_spacing && curr.cat() == catNewline)) {
+		return;
+	}
+	context.check_layout(os);
+	os << ' ';
+}
 
 void parse_environment(Parser & p, ostream & os, bool outer,
 		       Context & parent_context)
@@ -239,6 +302,8 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 	const bool is_starred = suffixIs(name, '*');
 	string const unstarred_name = rtrim(name, "*");
 	active_environments.push_back(name);
+	p.skip_spaces();
+
 	if (is_math_env(name)) {
 		parent_context.check_layout(os);
 		begin_inset(os, "Formula ");
@@ -262,13 +327,15 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 			os << "placement " << p.getArg('[', ']') << '\n';
 		}
 		os << "wide " << tostr(is_starred)
-		   << "\ncollapsed false\n";
+		   << "\ncollapsed false\n\n";
 		parse_text_in_inset(p, os, FLAG_END, outer, parent_context);
 		end_inset(os);
+		// We don't need really a new paragraph, but
+		// we must make sure that the next item gets a \begin_layout.
+		parent_context.new_paragraph(os);
 	}
 
 	else if (name == "minipage") {
-		parent_context.check_layout(os);
 		string position = "1";
 		string inner_pos = "0";
 		string height = "0pt";
@@ -293,8 +360,8 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 				if (p.next_token().asInput() == "[") {
 					latex_inner_pos = p.getArg('[', ']');
 					switch(latex_inner_pos[0]) {
-					case 't': inner_pos = "0"; break;
-					case 'c': inner_pos = "1"; break;
+					case 'c': inner_pos = "0"; break;
+					case 't': inner_pos = "1"; break;
 					case 'b': inner_pos = "2"; break;
 					case 's': inner_pos = "3"; break;
 					default:
@@ -318,11 +385,11 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 				ss << '[' << latex_inner_pos << ']';
 			ss << "{" << width << "}";
 			handle_ert(os, ss.str(), parent_context);
-			parent_context.check_end_layout(os);
-			parent_context.need_layout = true;
+			parent_context.new_paragraph(os);
 			parse_text_in_inset(p, os, FLAG_END, outer, parent_context);
 			handle_ert(os, "\\end{minipage}", parent_context);
 		} else {
+			parent_context.check_layout(os);
 			begin_inset(os, "Minipage\n");
 			os << "position " << position << '\n';
 			os << "inner_position " << inner_pos << '\n';
@@ -332,11 +399,27 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 			parse_text_in_inset(p, os, FLAG_END, outer, parent_context);
 			end_inset(os);
 		}
-
 	}
 
-	else if (name == "center") {
+	// Alignment settings
+	else if (name == "center" || name == "flushleft" || name == "flushright" ||
+	         name == "centering" || name == "raggedright" || name == "raggedleft") {
+		// We must begin a new paragraph if not already done
+		if (! parent_context.atParagraphStart()) {
+			parent_context.check_end_layout(os);
+			parent_context.new_paragraph(os);
+		}
+		if (name == "flushleft" || name == "raggedright")
+			parent_context.extra_stuff += "\\align left ";
+		else if (name == "flushright" || name == "raggedleft")
+			parent_context.extra_stuff += "\\align right ";
+		else
+			parent_context.extra_stuff += "\\align center ";
 		parse_text(p, os, FLAG_END, outer, parent_context);
+		// Just in case the environment is empty ..
+		parent_context.extra_stuff.erase();
+		// We must begin a new paragraph to reset the alignment
+		parent_context.new_paragraph(os);
 	}
 
 	// The single '=' is meant here.
@@ -349,9 +432,11 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 		case  LATEX_LIST_ENVIRONMENT:
 			context.extra_stuff = "\\labelwidthstring "
 				+ p.verbatim_item() + '\n';
+			p.skip_spaces();
 			break;
 		case  LATEX_BIB_ENVIRONMENT:
 			p.verbatim_item(); // swallow next arg
+			p.skip_spaces();
 			break;
 		default:
 			break;
@@ -360,6 +445,7 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 		parse_text(p, os, FLAG_END, outer, context);
 		context.check_end_layout(os);
 		context.check_end_deeper(os);
+		parent_context.new_paragraph(os);
 	}
 
 	else if (name == "appendix") {
@@ -383,19 +469,20 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 
 	else if (name == "tabbing") {
 		// We need to remember that we have to handle '\=' specially
-		parent_context.check_layout(os);
 		handle_ert(os, "\\begin{" + name + "}", parent_context);
 		parse_text_snippet(p, os, FLAG_END | FLAG_TABBING, outer, parent_context);
 		handle_ert(os, "\\end{" + name + "}", parent_context);
 	}
 
 	else {
-		parent_context.check_layout(os);
 		handle_ert(os, "\\begin{" + name + "}", parent_context);
 		parse_text_snippet(p, os, FLAG_END, outer, parent_context);
 		handle_ert(os, "\\end{" + name + "}", parent_context);
 	}
+
 	active_environments.pop_back();
+	if (name != "math")
+		p.skip_spaces();
 }
 
 } // anonymous namespace
@@ -485,9 +572,10 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			skip_braces(p);
 		}
 
+		else if (t.cat() == catSpace || (t.cat() == catNewline && t.cs().size() == 1))
+			check_space(p, os, context);
 
 		else if (t.cat() == catLetter ||
-			       t.cat() == catSpace ||
 			       t.cat() == catOther ||
 			       t.cat() == catAlign ||
 			       t.cat() == catParameter) {
@@ -495,16 +583,9 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			os << t.character();
 		}
 
-		else if (t.cat() == catNewline) {
-			if (p.next_token().cat() == catNewline) {
-				// this should have been be done by
-				// the parser already
-				cerr << "what are we doing here?" << endl;
-				p.get_token();
-				context.need_layout = true;
-			} else {
-				os << " "; // note the space
-			}
+		else if (t.cat() == catNewline || (t.cat() == catEscape && t.cs() == "par")) {
+			p.skip_spaces();
+			context.new_paragraph(os);
 		}
 
 		else if (t.cat() == catActive) {
@@ -519,20 +600,19 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		}
 
 		else if (t.cat() == catBegin) {
-// FIXME???
 			// special handling of size changes
 			context.check_layout(os);
 			bool const is_size = is_known(p.next_token().cs(), known_sizes);
-			Context newcontext(false, context.textclass);
-//			need_end_layout = false;
-			string const s = parse_text(p, FLAG_BRACE_LAST, outer, newcontext);
-//			need_end_layout = true;
-			if (s.empty() && p.next_token().character() == '`')
-				; // ignore it in  {}``
+			Token const prev = p.prev_token();
+			string const s = parse_text(p, FLAG_BRACE_LAST, outer, context);
+			if (s.empty() && (p.next_token().character() == '`' ||
+			                  (prev.character() == '-' && p.next_token().character())))
+				; // ignore it in {}`` or -{}-
 			else if (is_size || s == "[" || s == "]" || s == "*")
 				os << s;
 			else {
-				handle_ert(os, "{", context);
+				handle_ert(os, "{", context, false);
+				// s will end the current layout and begin a new one if necessary
 				os << s;
 				handle_ert(os, "}", context);
 			}
@@ -540,15 +620,26 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 
 		else if (t.cat() == catEnd) {
 			if (flags & FLAG_BRACE_LAST) {
-				context.check_end_layout(os);
 				return;
 			}
 			cerr << "stray '}' in text\n";
 			handle_ert(os, "}", context);
 		}
 
-		else if (t.cat() == catComment)
-			handle_comment(p);
+		else if (t.cat() == catComment) {
+			context.check_layout(os);
+			if (t.cs().size()) {
+				handle_comment(os, '%' + t.cs(), context);
+				if (p.next_token().cat() == catNewline) {
+					// A newline after a comment line starts a new paragraph
+					context.new_paragraph(os);
+					p.skip_spaces();
+				}
+			} else {
+				// "%\n" combination
+				p.skip_spaces();
+			}
+		}
 
 		//
 		// control sequences
@@ -588,8 +679,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		}
 
 		else if (t.cs() == "item") {
-			// should be done automatically by Parser::tokenize
-			//p.skip_spaces();
+			p.skip_spaces();
 			string s;
 			bool optarg = false;
 			if (p.next_token().character() == '[') {
@@ -598,11 +688,10 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				s = parse_text(p, FLAG_BRACK_LAST, outer, newcontext);
 				optarg = true;
 			}
-			context.need_layout = true;
-			context.has_item = true;
+			context.set_item();
 			context.check_layout(os);
 			if (optarg) {
-				if (active_environment() == "itemize") {
+				if (context.layout->labeltype != LABEL_MANUAL) {
 					// lyx does not support \item[\mybullet] in itemize environments
 					handle_ert(os, "[", context);
 					os << s;
@@ -610,13 +699,13 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				} else if (s.size()) {
 					// The space is needed to separate the item from the rest of the sentence.
 					os << s << ' ';
+					p.skip_spaces();
 				}
 			}
 		}
 
 		else if (t.cs() == "bibitem") {
-			context.need_layout = true;
-			context.has_item = true;
+			context.set_item();
 			context.check_layout(os);
 			os << "\\bibitem ";
 			os << p.getOpt();
@@ -624,6 +713,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		}
 
 		else if (t.cs() == "def") {
+			p.skip_spaces();
 			context.check_layout(os);
 			string name = p.get_token().cs();
 			while (p.next_token().cat() != catBegin)
@@ -631,20 +721,14 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			handle_ert(os, "\\def\\" + name + '{' + p.verbatim_item() + '}', context);
 		}
 
-		else if (t.cs() == "par") {
+		else if (t.cs() == "noindent") {
 			p.skip_spaces();
-			context.check_end_layout(os);
-			context.need_layout = true;
+			context.extra_stuff += "\\noindent ";
 		}
 
 		else if (t.cs() == "appendix") {
-			context.check_end_layout(os);
-			Context newcontext(true, context.textclass, context.layout,
-					context.layout);
-			newcontext.check_layout(os);
-			os << "\\start_of_appendix\n";
-			parse_text(p, os, FLAG_END, outer, newcontext);
-			newcontext.check_end_layout(os);
+			p.skip_spaces();
+			context.extra_stuff += "\\start_of_appendix ";
 		}
 
 		// Must attempt to parse "Section*" before "Section".
@@ -655,12 +739,14 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			 newlayout->isCommand()) {
 			p.get_token();
 			output_command_layout(os, p, outer, context, newlayout);
+			p.skip_spaces();
 		}
 
 		// The single '=' is meant here.
 		else if ((newlayout = findLayout(context.textclass, t.cs())).get() &&
 			 newlayout->isCommand()) {
 			output_command_layout(os, p, outer, context, newlayout);
+			p.skip_spaces();
 		}
 
 		else if (t.cs() == "includegraphics") {
@@ -763,22 +849,25 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		}
 
 		else if (t.cs() == "footnote") {
+			p.skip_spaces();
 			context.check_layout(os);
 			begin_inset(os, "Foot\n");
-			os << "collapsed true\n";
+			os << "collapsed true\n\n";
 			parse_text_in_inset(p, os, FLAG_ITEM, false, context);
 			end_inset(os);
 		}
 
 		else if (t.cs() == "marginpar") {
+			p.skip_spaces();
 			context.check_layout(os);
 			begin_inset(os, "Marginal\n");
-			os << "collapsed true\n";
+			os << "collapsed true\n\n";
 			parse_text_in_inset(p, os, FLAG_ITEM, false, context);
 			end_inset(os);
 		}
 
 		else if (t.cs() == "ensuremath") {
+			p.skip_spaces();
 			context.check_layout(os);
 			Context newcontext(false, context.textclass);
 			string s = parse_text(p, FLAG_ITEM, false, newcontext);
@@ -793,12 +882,16 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			context.check_layout(os);
 			os << "\n\\hfill\n";
 			skip_braces(p);
+			p.skip_spaces();
 		}
 
-		else if (t.cs() == "makeindex" || t.cs() == "maketitle")
+		else if (t.cs() == "makeindex" || t.cs() == "maketitle") {
+			p.skip_spaces();
 			skip_braces(p); // swallow this
+		}
 
 		else if (t.cs() == "tableofcontents") {
+			p.skip_spaces();
 			context.check_layout(os);
 			begin_inset(os, "LatexCommand \\tableofcontents\n");
 			end_inset(os);
@@ -806,6 +899,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		}
 
 		else if (t.cs() == "listoffigures") {
+			p.skip_spaces();
 			context.check_layout(os);
 			begin_inset(os, "FloatList figure\n");
 			end_inset(os);
@@ -813,6 +907,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		}
 
 		else if (t.cs() == "listoftables") {
+			p.skip_spaces();
 			context.check_layout(os);
 			begin_inset(os, "FloatList table\n");
 			end_inset(os);
@@ -820,6 +915,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		}
 
 		else if (t.cs() == "listof") {
+			p.skip_spaces(true);
 			string const name = p.get_token().asString();
 			if (context.textclass.floats().typeExist(name)) {
 				context.check_layout(os);
@@ -906,6 +1002,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 
 		else if (is_known(t.cs(), known_quotes)) {
 			char const ** where = is_known(t.cs(), known_quotes);
+			context.check_layout(os);
 			begin_inset(os, "Quotes ");
 			os << known_coded_quotes[where - known_quotes];
 			end_inset(os);
@@ -916,6 +1013,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			char const ** where = is_known(t.cs(), known_sizes);
 			context.check_layout(os);
 			os << "\n\\size " << known_coded_sizes[where - known_sizes] << "\n";
+			p.skip_spaces();
 		}
 
 		else if (t.cs() == "LyX" || t.cs() == "TeX"
@@ -1096,6 +1194,35 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			end_inset(os);
 		}
 
+		else if ( t.cs() == "smallskip" ||
+		          t.cs() == "medskip" ||
+			  t.cs() == "bigskip" ||
+			  t.cs() == "vfill" ||
+		         (t.cs() == "vspace" && p.next_token().asInput() != "*")) {
+			string arg;
+			if (t.cs() == "vspace")
+				arg = p.getArg('{', '}');
+			else
+				arg = t.cs();
+			// We may only add the vspace to the current context if the
+			// current paragraph is not empty.
+			if (context.atParagraphStart()
+			    && (p.next_token().cat() != catNewline || p.next_token().cs().size() == 1)
+			    && (! (p.next_token().cat() == catEscape && p.next_token().cs() == "end"))
+			    && (! (p.next_token().cat() == catEscape && p.next_token().cs() == "par"))) {
+				context.extra_stuff += "\\added_space_top " + arg + " ";
+				p.skip_spaces();
+			} else {
+				if (t.cs() == "vspace")
+					handle_ert(os, t.asInput() + '{' + arg + '}', context);
+				else
+					handle_ert(os, t.asInput(), context);
+			}
+			// Would be nice to recognize added_space_bottom too...
+			// At the moment this is parsed as added_space_top of the
+			// next paragraph.
+		}
+
 		else if (t.cs() == "psfrag") {
 			// psfrag{ps-text}[ps-pos][tex-pos]{tex-text}
 			// TODO: Generalize this!
@@ -1103,7 +1230,6 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			arguments += '}';
 			arguments += p.getOpt();
 			arguments += p.getOpt();
-			p.skip_spaces();
 			handle_ert(os, "\\psfrag{" + arguments, context);
 		}
 
@@ -1122,7 +1248,13 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			handle_ert(os, s + ' ', context);
 			*/
 			context.check_layout(os);
-			handle_ert(os, t.asInput() + ' ', context);
+			string name = t.asInput();
+			if (p.next_token().asInput() == "*") {
+				// Starred commands like \vspace*{}
+				p.get_token();				// Eat '*'
+				name += '*';
+			}
+			handle_ert(os, name, context);
 		}
 
 		if (flags & FLAG_LEAVE) {

@@ -28,17 +28,6 @@ namespace {
 
 CatCode theCatcode[256];
 
-void skipSpaceTokens(istream & is, char c)
-{
-	// skip trailing spaces
-	while (catcode(c) == catSpace || catcode(c) == catNewline)
-		if (!is.get(c))
-			break;
-	//cerr << "putting back: " << c << "\n";
-	is.putback(c);
-}
-
-
 void catInit()
 {
 	fill(theCatcode, theCatcode + 256, catOther);
@@ -95,12 +84,16 @@ CatCode catcode(unsigned char c)
 
 ostream & operator<<(ostream & os, Token const & t)
 {
-	if (t.cs().size())
+	if (t.cat() == catComment)
+		os << '%' << t.cs() << '\n';
+	else if (t.cat() == catSpace)
+		os << t.cs();
+	else if (t.cat() == catEscape)
 		os << '\\' << t.cs() << ' ';
 	else if (t.cat() == catLetter)
 		os << t.character();
 	else if (t.cat() == catNewline)
-		os << "[\\n," << t.cat() << "]\n";
+		os << "[" << t.cs().size() << "\\n," << t.cat() << "]\n";
 	else
 		os << '[' << t.character() << ',' << t.cat() << ']';
 	return os;
@@ -115,7 +108,11 @@ string Token::asString() const
 
 string Token::asInput() const
 {
-	return char_ ? string(1, char_) : '\\' + cs_ + ' ';
+	if (cat_ == catComment)
+		return '%' + cs_ + '\n';
+	if (cat_ == catSpace || cat_ == catNewline)
+		return cs_;
+	return char_ ? string(1, char_) : '\\' + cs_;
 }
 
 
@@ -154,6 +151,13 @@ void Parser::pop_back()
 Token const & Parser::prev_token() const
 {
 	static const Token dummy;
+	return pos_ > 1 ? tokens_[pos_ - 2] : dummy;
+}
+
+
+Token const & Parser::curr_token() const
+{
+	static const Token dummy;
 	return pos_ > 0 ? tokens_[pos_ - 1] : dummy;
 }
 
@@ -173,14 +177,35 @@ Token const & Parser::get_token()
 }
 
 
-void Parser::skip_spaces()
+void Parser::skip_spaces(bool skip_comments)
 {
-	while (1) {
-		if (next_token().cat() == catSpace || next_token().cat() == catNewline)
+	// We just silently return if we have no more tokens.
+	// skip_spaces() should be callable at any time,
+	// the caller must check p::good() anyway.
+	while (good()) {
+		if ( next_token().cat() == catSpace ||
+		    (next_token().cat() == catNewline && next_token().cs().size() == 1) ||
+		     next_token().cat() == catComment && next_token().cs().empty())
 			get_token();
-		else if (next_token().cat() == catComment)
-			while (next_token().cat() != catNewline)
-				get_token();
+		else if (skip_comments && next_token().cat() == catComment)
+			cerr << "  Ignoring comment: " << get_token().asInput();
+		else
+			break;
+	}
+}
+
+
+void Parser::unskip_spaces(bool skip_comments)
+{
+	while (pos_ > 0) {
+		if ( curr_token().cat() == catSpace ||
+		    (curr_token().cat() == catNewline && curr_token().cs().size() == 1))
+			putback();
+		else if (skip_comments && curr_token().cat() == catComment) {
+			// TODO: Get rid of this
+			cerr << "Unignoring comment: " << curr_token().asInput();
+			putback();
+		}
 		else
 			break;
 	}
@@ -209,7 +234,12 @@ char Parser::getChar()
 
 string Parser::getArg(char left, char right)
 {
-	skip_spaces();
+	skip_spaces(true);
+
+	// This is needed if a partial file ends with a command without arguments,
+	// e. g. \medskip
+	if (! good())
+		return string();
 
 	string result;
 	char c = getChar();
@@ -217,8 +247,17 @@ string Parser::getArg(char left, char right)
 	if (c != left)
 		putback();
 	else
-		while ((c = getChar()) != right && good())
-			result += c;
+		while ((c = getChar()) != right && good()) {
+			// Ignore comments
+			if (curr_token().cat() == catComment) {
+				if (curr_token().cs().size())
+					cerr << "Ignoring comment: " << curr_token().asInput();
+			}
+			else if (curr_token().cat() == catSpace || curr_token().cat() == catNewline)
+				result += curr_token().cs();
+			else
+				result += c;
+		}
 
 	return result;
 }
@@ -245,34 +284,39 @@ void Parser::tokenize(istream & is)
 		//cerr << "reading c: " << c << "\n";
 
 		switch (catcode(c)) {
+			case catSpace: {
+				string s(1, c);
+				while (is.get(c) && catcode(c) == catSpace)
+					s += c;
+				if (catcode(c) != catSpace)
+					is.putback(c);
+				push_back(Token(s, catSpace));
+				break;
+			}
+
 			case catNewline: {
 				++lineno_;
-				is.get(c);
-				if (catcode(c) == catNewline) {
-					//do {
-						is.get(c);
-					//} while (catcode(c) == catNewline);
-					push_back(Token("par"));
-				} else {
-					push_back(Token('\n', catNewline));
+				string s(1, c);
+				while (is.get(c) && catcode(c) == catNewline) {
+					++lineno_;
+					s += c;
 				}
-				is.putback(c);
+				if (catcode(c) != catNewline)
+					is.putback(c);
+				push_back(Token(s, catNewline));
 				break;
 			}
 
 			case catComment: {
-				push_back(Token(c, catComment));
+				// We don't treat "%\n" combinations here specially because
+				// we want to preserve them in the preamble
+				string s;
 				while (is.get(c) && catcode(c) != catNewline)
-					push_back(Token(c, catLetter));
-				push_back(Token(c, catNewline));
+					s += c;
+				// Note: The '%' at the beginning and the '\n' at the end
+				// of the comment are not stored.
 				++lineno_;
-				is.get(c);
-				if (catcode(c) == catNewline) {
-					push_back(Token("par"));
-					++lineno_;
-				} else {
-					is.putback(c);
-				}
+				push_back(Token(s, catComment));
 				break;
 			}
 
@@ -286,18 +330,11 @@ void Parser::tokenize(istream & is)
 						// collect letters
 						while (is.get(c) && catcode(c) == catLetter)
 							s += c;
-						skipSpaceTokens(is, c);
+						if (catcode(c) != catLetter)
+							is.putback(c);
 					}
-					push_back(Token(s));
+					push_back(Token(s, catEscape));
 				}
-				break;
-			}
-
-			case catSuper:
-			case catSub: {
-				push_back(Token(c, catcode(c)));
-				is.get(c);
-				skipSpaceTokens(is, c);
 				break;
 			}
 
