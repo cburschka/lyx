@@ -503,6 +503,8 @@ void InsetText::update(BufferView * bv, LyXFont const & font, bool reinit)
 	if (oldw != insetWidth) {
 		resizeLyXText(bv);
 		need_update |= FULL;
+		if (clear)
+			lt = 0;
 		return;
 	}
 	if ((need_update & CURSOR_PAR) && (lt->status() == LyXText::UNCHANGED) &&

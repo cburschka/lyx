@@ -44,10 +44,9 @@
 #include "Dialogs.h"
 #include "Liason.h"
 
+# include "sp_ispell.h"
 #ifdef USE_PSPELL
 # include "sp_pspell.h"
-#else
-# include "sp_ispell.h"
 #endif
 
 #include "debug.h"
@@ -85,16 +84,21 @@ void ControlSpellchecker::show()
 
 	if (!speller_) {
 		// create spell object
+		string tmp;
 #ifdef USE_PSPELL
-		string tmp = (lyxrc.isp_use_alt_lang) ?
-			lyxrc.isp_alt_lang : lv_.buffer()->params.language->code();
-	
-		speller_ = new PSpell(lv_.view()->buffer()->params, tmp);
-#else
-		string tmp = (lyxrc.isp_use_alt_lang) ?
-			lyxrc.isp_alt_lang : lv_.buffer()->params.language->lang();
-	
-		speller_ = new ISpell(lv_.view()->buffer()->params, tmp);
+		if (lyxrc.use_pspell) {
+			tmp = (lyxrc.isp_use_alt_lang) ?
+				lyxrc.isp_alt_lang : lv_.buffer()->params.language->code();
+			
+			speller_ = new PSpell(lv_.view()->buffer()->params, tmp);
+		} else {
+#endif
+			tmp = (lyxrc.isp_use_alt_lang) ?
+				lyxrc.isp_alt_lang : lv_.buffer()->params.language->lang();
+			
+			speller_ = new ISpell(lv_.view()->buffer()->params, tmp);
+#ifdef USE_PSPELL
+		}
 #endif
 	
 		if (lyxrc.isp_use_alt_lang) {

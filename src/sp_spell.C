@@ -17,11 +17,20 @@
 #pragma implementation
 #endif
 
-#ifdef USE_PSPELL
-
 #include <unistd.h>
 #include <fcntl.h>
 #include <stdio.h>
+
+#if TIME_WITH_SYS_TIME
+# include <sys/time.h>
+# include <ctime>
+#else
+# if HAVE_SYS_TIME_H
+#  include <sys/time.h>
+# else
+#  include <ctime>
+# endif
+#endif
 
 #ifdef HAVE_SYS_SELECT_H
 # ifdef HAVE_STRINGS_H
@@ -36,14 +45,32 @@
 
 #include "LString.h"
 #include "support/lstrings.h"
+#include "lyxrc.h"
+#include "debug.h"
+#include "encoding.h"
+#include "sp_ispell.h"
+
+using std::endl;
+
+namespace {
+	/// pid for the `ispell' process. 
+	pid_t isp_pid = -1; 
+}
+
+/// can be found in src/insets/figinset.C
+extern void sigchldchecker(pid_t pid, int * status);
+
+///
+// ------------------- start special pspell code/class --------------------
+///
+#ifdef USE_PSPELL
+
 #include "support/LAssert.h"
 
 #define USE_ORIGINAL_MANAGER_FUNCS 1
 # include <pspell/pspell.h>
 
 #include "sp_pspell.h"
-
-extern void sigchldchecker(pid_t pid, int *status);
 
 
 PSpell::PSpell() 
@@ -154,6 +181,7 @@ char const * PSpell::nextMiss()
 {
 	if (els)
 		return pspell_string_emulation_next(els);
+	return "";
 }
 
 char const * PSpell::error()
@@ -166,65 +194,11 @@ void PSpell::sigchldhandler(pid_t pid, int * status)
 	sigchldchecker(pid, status);
 }
 
-
-
-#else
-
-/*
- *This file is part of
- * ====================================================== 
- * 
- *           LyX, The Document Processor
- * 	 
- *	    Copyright 1995 Matthias Ettrich
- *          Copyright 1995-1998 The LyX Team
- *
- * ====================================================== 
- */
-
-#include <unistd.h>
-#include <fcntl.h>
-#include <stdio.h>
-
-#if TIME_WITH_SYS_TIME
-# include <sys/time.h>
-# include <ctime>
-#else
-# if HAVE_SYS_TIME_H
-#  include <sys/time.h>
-# else
-#  include <ctime>
-# endif
 #endif
 
-#ifdef HAVE_SYS_SELECT_H
-# ifdef HAVE_STRINGS_H
-   // <strings.h> is needed at least on AIX because FD_ZERO uses bzero().
-   // BUT we cannot include both string.h and strings.h on Irix 6.5 :(
-#  ifdef _AIX
-#   include <strings.h>
-#  endif
-# endif
-#include <sys/select.h>
-#endif
-
-#include "LString.h"
-#include "support/lstrings.h"
-#include "lyxrc.h"
-#include "debug.h"
-#include "encoding.h"
-#include "sp_ispell.h"
-
-using std::endl;
-
-/// can be found in src/insets/figinset.C
-extern void sigchldchecker(pid_t pid, int * status);
-
-namespace {
-/// pid for the `ispell' process. 
-pid_t isp_pid = -1; 
-}
-
+///
+// ------------------- start special ispell code/class --------------------
+///
 
 ISpell::ISpell()
 {
@@ -574,7 +548,3 @@ char const * ISpell::error()
 {
 	return error_;
 }
-
-
-
-#endif

@@ -133,6 +133,9 @@ keyword_item lyxrcTags[] = {
 	{ "\\use_escape_chars", LyXRC::RC_USE_ESC_CHARS },
 	{ "\\use_input_encoding", LyXRC::RC_USE_INP_ENC },
 	{ "\\use_personal_dictionary", LyXRC::RC_USE_PERS_DICT },
+#ifdef USE_PSPELL
+	{ "\\use_pspell", LyXRC::RC_USE_PSPELL },
+#endif
 	{ "\\use_tempdir", LyXRC::RC_USETEMPDIR },
 	{ "\\view_dvi_paper_option", LyXRC::RC_VIEWDVI_PAPEROPTION },
 	{ "\\viewer" ,LyXRC::RC_VIEWER}, 
@@ -216,6 +219,9 @@ void LyXRC::setDefaults() {
 	exit_confirmation = true;
 	display_shortcuts = true;
 	// Spellchecker settings:
+#ifdef USE_PSPELL	
+	use_pspell = true;
+#endif
 	isp_command = "ispell";
 	isp_accept_compound = false;
 	isp_use_input_encoding = false;
@@ -751,6 +757,12 @@ int LyXRC::read(string const & filename)
 				ascii_linelen = lexrc.GetInteger();
 			break;
 			// Spellchecker settings:
+#ifdef USE_PSPELL
+		case RC_USE_PSPELL:
+			if (lexrc.next())
+				use_pspell = lexrc.GetBool();
+			break;
+#endif
 		case RC_SPELL_COMMAND:
 			if (lexrc.next())
 				isp_command = lexrc.GetString();
@@ -1375,7 +1387,12 @@ void LyXRC::output(ostream & os) const
 		os << "\n#\n"
 		   << "# SPELLCHECKER SECTION ##############################\n"
 		   << "#\n\n";
-
+#ifdef USE_PSPELL
+	case RC_USE_PSPELL:
+		if (use_pspell != system_lyxrc.use_pspell) {
+			os << "\\use_pspell \"" << use_pspell << "\"\n";
+		}
+#endif
 	case RC_SPELL_COMMAND:
 		if (isp_command != system_lyxrc.isp_command) {
 			os << "\\spell_command \"" << isp_command << "\"\n";

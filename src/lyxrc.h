@@ -117,6 +117,9 @@ enum LyXRCTags {
 	RC_NEW_ASK_FILENAME,
 	RC_DEFAULT_LANGUAGE,
 	RC_LABEL_INIT_LENGTH,
+#ifdef USE_PSPELL	
+	RC_USE_PSPELL,
+#endif
 	RC_LAST
 };
 
@@ -263,6 +266,9 @@ enum LyXRCTags {
 	///
 	unsigned int ascii_linelen;
 	/// Ispell command
+#ifdef USE_PSPELL	
+	bool use_pspell;
+#endif
 	string isp_command;
 	/// Accept compound words in spellchecker?
 	bool isp_accept_compound;

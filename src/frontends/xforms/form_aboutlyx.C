@@ -26,7 +26,7 @@ FD_form_aboutlyx * FormAboutlyx::build_aboutlyx()
   fdui->form->u_vdata = this;
   obj = fl_add_box(FL_UP_BOX, 0, 0, 450, 370, "");
   {
-    char const * const dummy = N_("Close|#C");
+    char const * const dummy = N_("Close|^[");
     fdui->close = obj = fl_add_button(FL_NORMAL_BUTTON, 320, 330, 120, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
