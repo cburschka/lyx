@@ -111,12 +111,17 @@ dnl by testing these we check if it is ok to have
 dnl -lc and -lm as args to the compiler
 AC_CHECK_LIB(m, sin)
 AC_CHECK_LIB(c, fopen)
+AC_ARG_WITH(aiksaurus,
+  [  --without-aiksaurus     do not use the AikSaurus library],
+  [lyx_use_aiksaurus=$withval])
+if test x$lyx_use_aiksaurus != xno; then
 AC_CHECK_LIB(bz2, main)
 AC_CHECK_LIB(AikSaurus, main, 
 	[AC_DEFINE(HAVE_LIBAIKSAURUS,,[Define this if you have the AikSaurus library])
 	 AIKSAURUS_LIBS="-lAikSaurus"
-	 AC_SUBST(AIKSAURUS_LIBS)
 	])
+fi 
+AC_SUBST(AIKSAURUS_LIBS)
 
 ### Add extra directories to check for libraries.
 LYX_WITH_DIR([extra-lib],[extra library directory],extra_lib, NONE)
