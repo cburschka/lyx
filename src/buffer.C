@@ -186,36 +186,41 @@ string const Buffer::getLatexName(bool no_path) const
 				       ".tex"); 
 }
 
+
 pair<Buffer::LogType, string> const Buffer::getLogName(void) const
 {
-	string filename, fname, bname, path;
-
-	filename = getLatexName(false);
+	string const filename = getLatexName(false);
 
 	if (filename.empty())
 		return make_pair(Buffer::latexlog, string());
 
-	path = OnlyPath(filename);
+	string path = OnlyPath(filename);
 
 	if (lyxrc.use_tempdir || (IsDirWriteable(path) < 1))
 		path = tmppath;
 
-	fname = AddName(path, OnlyFilename(ChangeExtension(filename, ".log")));
-	bname = AddName(path, OnlyFilename(ChangeExtension(filename,
-		formats.Extension("literate") + ".out")));
+	string const fname = AddName(path,
+				     OnlyFilename(ChangeExtension(filename,
+								  ".log")));
+	string const bname =
+		AddName(path, OnlyFilename(
+			ChangeExtension(filename,
+					formats.Extension("literate") + ".out")));
 
 	// If no Latex log or Build log is newer, show Build log
 
-	FileInfo f_fi(fname), b_fi(bname);
+	FileInfo const f_fi(fname);
+	FileInfo const b_fi(bname);
 
 	if (b_fi.exist() &&
-		(!f_fi.exist() || f_fi.getModificationTime() < b_fi.getModificationTime())) {
+	    (!f_fi.exist() || f_fi.getModificationTime() < b_fi.getModificationTime())) {
 		lyxerr[Debug::FILES] << "Log name calculated as : " << bname << endl;
 		return make_pair(Buffer::buildlog, bname);
 	}
 	lyxerr[Debug::FILES] << "Log name calculated as : " << fname << endl;
 	return make_pair(Buffer::latexlog, fname);
 }
+
 
 void Buffer::setReadonly(bool flag)
 {
@@ -361,6 +366,12 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, LyXParagraph *& par,
 #endif
 	)
 {
+#ifdef NEW_INSETS
+	// This is super temporary but is needed to get the compability
+	// mode for minipages work correctly together with new tabulars.
+	static int call_depth = 0;
+	++call_depth;
+#endif
 	bool the_end_read = false;
 	
 	if (token[0] != '\\') {
@@ -478,24 +489,27 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, LyXParagraph *& par,
 			// minipage. Currently I am not investing any effort
 			// in fixing those cases.
 			static LyXParagraph * minipar = 0;
-			
+			//lyxerr << "Call depth: " << call_depth << endl;
+			if (call_depth == 1) {
+				
 			if (minipar
 			    && par->params.pextraType() == LyXParagraph::PEXTRA_MINIPAGE) {
 				lyxerr << "minipages in a row" << endl;
 				if (par->params.pextraStartMinipage()) {
 					lyxerr << "start new minipage" << endl;
 					// minipages in a row
-					minipar->previous()->next(par);
 					par->previous()->next(0);
 					par->previous(minipar->previous());
-					InsetMinipage * mini = new InsetMinipage;
+					minipar->previous()->next(par);
+					minipar->previous(0);
+					
 					// Before we insert the list of
 					// minipages into the inset we have
 					// to clean up a bit.
 					// This is not quite correct yet since
 					// we do want to use some of these
 					// parameters to set options in the
-					// minipage isnet.
+					// minipage inset.
 					LyXParagraph * tmp = minipar;
 					while (tmp) {
 						tmp->params.pextraType(0);
@@ -507,7 +521,10 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, LyXParagraph *& par,
 						tmp = tmp->next();
 					}
 					
+					InsetMinipage * mini = new InsetMinipage;
 					mini->inset->par = minipar;
+					// Insert the minipage last in the
+					// previous paragraph.
 					par->previous()->InsertInset(par->previous()->size(), mini);
 					minipar = par;
 				} else {
@@ -524,18 +541,29 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, LyXParagraph *& par,
 				// a InsetMinipage, insert this minipage into
 				// prevpar, append the current par to prevpar
 				// and continue...
-				par->previous()->next(0);
+
+				LyXParagraph * lp = minipar;
+				int pcount = 0;
+				while (lp) {
+					++pcount;
+					lp = lp->next();
+				}
+				lyxerr << "Minipar count: " << pcount << endl;
+				lyxerr << "Par: " << (void*)par << endl;
+				lyxerr << "Par->prev: " << (void*)par->previous() << endl;
+
+				if (par->previous())
+					par->previous()->next(0);
 				par->previous(minipar->previous());
 				minipar->previous()->next(par);
 				minipar->previous(0);
-				InsetMinipage * mini = new InsetMinipage;
 				
 				// Before we insert the list of
 				// minipages into the inset we have
 				// to clean up a bit.
 				// This is not quite correct yet since we
 				// do want to use some of these parameters
-				// to set options in the minipage isnet.
+				// to set options in the minipage inset.
 				LyXParagraph * tmp = minipar;
 				while (tmp) {
 					tmp->params.pextraType(0);
@@ -547,6 +575,7 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, LyXParagraph *& par,
 					tmp = tmp->next();
 				}
 				
+				InsetMinipage * mini = new InsetMinipage;
 				mini->inset->par = minipar;
 				par->previous()->InsertInset(par->previous()->size(), mini);
 				minipar = 0;
@@ -557,6 +586,8 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, LyXParagraph *& par,
 				minipar = par;
 				
 			}
+			}
+			
 			// End of pextra_minipage compability
 			
 			if (!return_par)
@@ -587,7 +618,7 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, LyXParagraph *& par,
 			if (file_format < 216
 			    && params.language->lang() == "hebrew")
 				font.setLanguage(default_language);
-#ifdef USE_CAPTION
+#if USE_CAPTION
                 }
 #endif
 #endif
@@ -653,7 +684,10 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, LyXParagraph *& par,
 			old_float << "placement htbp\n";
 		}
 
-		if (!inset) return false; // no end read yet
+		if (!inset) {
+			--call_depth;
+			return false; // no end read yet
+		}
 		
 		old_float << "collapsed true\n";
 
@@ -1151,6 +1185,7 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, LyXParagraph *& par,
 			++pos;
 		}
 	}
+	--call_depth;
 	return the_end_read;
 }
 

@@ -35,7 +35,7 @@ class BufferView;
 
 // I dare you to enable this and help me find all the bugs that then show
 // up. (Lgb)
-//#define NEW_INSETS 1
+#define NEW_INSETS 1
 
 /// A LyXParagraph holds all text, attributes and insets in a text paragraph
 class LyXParagraph  {
