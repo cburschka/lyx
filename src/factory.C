@@ -55,6 +55,8 @@
 #include "support/lstrings.h"
 #include "support/std_sstream.h"
 
+#include <boost/assert.hpp>
+
 using lyx::support::compare_ascii_no_case;
 
 using std::endl;
@@ -354,6 +356,9 @@ InsetOld * readInset(LyXLex & lex, Buffer const & buf)
 			inset = new InsetFloatList("table");
 		} else if (cmdName == "printindex") {
 			inset = new InsetPrintIndex(inscmd);
+		} else {
+			lyxerr << "unknown CommandInset '" << cmdName << "'" << std::endl;
+			BOOST_ASSERT(false);
 		}
 	} else {
 		if (tmptok == "Quotes") {
@@ -411,10 +416,12 @@ InsetOld * readInset(LyXLex & lex, Buffer const & buf)
 			inset = new InsetCaption(buf.params());
 		} else if (tmptok == "FloatList") {
 			inset = new InsetFloatList;
+		} else {
+			lyxerr << "unknown Inset type '" << tmptok << "'" << std::endl;
+			BOOST_ASSERT(false);
 		}
 
-		if (inset)
-			inset->read(buf, lex);
+		inset->read(buf, lex);
 	}
 
 	return inset;
