@@ -517,19 +517,32 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 	case LFUN_WORDLEFTSEL:
 		break;
 
-		// --- accented characters ------------------------------
-
-	case LFUN_UMLAUT:       handleAccent(bv, arg, "ddot"); break;
-	case LFUN_CIRCUMFLEX:   handleAccent(bv, arg, "hat"); break;
-	case LFUN_GRAVE:        handleAccent(bv, arg, "grave"); break;
-	case LFUN_ACUTE:        handleAccent(bv, arg, "acute"); break;
-	case LFUN_TILDE:        handleAccent(bv, arg, "tilde"); break;
-	case LFUN_MACRON:       handleAccent(bv, arg, "bar"); break;
-	case LFUN_DOT:          handleAccent(bv, arg, "dot"); break;
-	case LFUN_CARON:        handleAccent(bv, arg, "check"); break;
-	case LFUN_BREVE:        handleAccent(bv, arg, "breve"); break;
-	case LFUN_VECTOR:       handleAccent(bv, arg, "vec"); break;
-	case LFUN_UNDERBAR:     handleAccent(bv, arg, "underbar"); break;
+	// Special casing for superscript in case of LyX handling
+	// dead-keys:
+	case LFUN_CIRCUMFLEX:
+		if (arg.empty()) {
+			// do superscript if LyX handles
+			// deadkeys
+			bv->lockedInsetStoreUndo(Undo::EDIT);
+			mathcursor->script(true);
+			updateLocal(bv, true);
+		}
+		break;
+	case LFUN_UMLAUT:
+	case LFUN_ACUTE:
+	case LFUN_GRAVE:
+	case LFUN_BREVE:
+	case LFUN_DOT:
+	case LFUN_MACRON:
+	case LFUN_CARON:
+	case LFUN_TILDE:
+	case LFUN_CEDILLA:
+	case LFUN_CIRCLE:
+	case LFUN_UNDERDOT:
+	case LFUN_TIE:
+	case LFUN_OGONEK:
+	case LFUN_HUNG_UMLAUT:
+		break;
 
 	//  Math fonts
 	case LFUN_GREEK_TOGGLE: handleFont(bv, arg, LM_TC_GREEK); break;
@@ -798,18 +811,6 @@ bool InsetFormulaBase::searchBackward(BufferView * bv, string const & what,
 {
 	lyxerr << "searching backward not implemented in mathed" << endl;
 	return searchForward(bv, what, a, b);
-}
-
-
-
-void InsetFormulaBase::handleAccent(BufferView * bv,
-	string const & arg, string const & name)
-{
-	bv->lockedInsetStoreUndo(Undo::EDIT);
-	MathAtom at = createMathInset(name);
-	mathed_parse_cell(at->cell(0), arg);
-	mathcursor->insert(at);
-	updateLocal(bv, true);
 }
 
 

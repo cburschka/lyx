@@ -1074,11 +1074,15 @@ void Parser::parse_into1(MathArray & array, unsigned flags, MathTextCodes code)
 		else if (t.cs() == "xymatrix") {
 			array.push_back(createMathInset(t.cs()));
 			parse_lines2(array.back());
-			// skip closing brace
 		}
 
 		// Disabled
 #if 0
+		else if (0 && t.cs() == "ar") {
+			array.push_back(createMathInset(t.cs()));
+			parse_lines2(array.back());
+		}
+
 		else if (t.cs() == "mbox") {
 			array.push_back(createMathInset(t.cs()));
 			// slurp in the argument of mbox

@@ -25,6 +25,7 @@
 #include "math_unknowninset.h"
 #include "math_xarrowinset.h"
 #include "math_xymatrixinset.h"
+#include "math_xyarrowinset.h"
 
 
 MathAtom createMathInset(latexkeys const * l)

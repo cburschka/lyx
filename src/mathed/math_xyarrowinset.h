@@ -1,24 +1,24 @@
 // -*- C++ -*-
-#ifndef MATH_XYMATRIX_H
-#define MATH_XYMATRIX_H
+#ifndef MATH_XYARROWINSET_H
+#define MATH_ARROWINSET_H
 
-#include "math_gridinset.h"
+#include "math_nestinset.h"
 
 #ifdef __GNUG__
 #pragma interface
 #endif
 
 
-class MathXYMatrixInset : public MathGridInset {
+class MathXYArrowInset : public MathNestInset {
 public: 
 	///
-	MathXYMatrixInset();
+	MathXYArrowInset();
 	///
 	MathInset * clone() const;
 	///
 	void metrics(MathMetricsInfo const & st) const;
 	///
-	MathXYMatrixInset * asXYMatrixInset() { return this; }
+	MathXYArrowInset * asXYArrowInset() { return this; }
 	///
 	void normalize();
 
@@ -26,8 +26,6 @@ public:
 	void write(WriteStream & os) const;
 	///
 	void normalize(NormalStream &) const;
-	///
-	void maplize(MapleStream &) const;
 };
 
 #endif
