@@ -101,8 +101,8 @@ InsetFormulaBase::InsetFormulaBase()
 	// This is needed as long the math parser is not re-entrant
 	MathMacroTable::builtinMacros();
 	//lyxerr << "sizeof MathInset: " << sizeof(MathInset) << "\n";
-	lyxerr << "sizeof(MathMetricsInfo): " << sizeof(MathMetricsInfo) << "\n";
-	lyxerr << "sizeof(MathCharInset): " << sizeof(MathCharInset) << "\n";
+	//lyxerr << "sizeof(MathMetricsInfo): " << sizeof(MathMetricsInfo) << "\n";
+	//lyxerr << "sizeof(MathCharInset): " << sizeof(MathCharInset) << "\n";
 }
 
 
