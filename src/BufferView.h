@@ -249,6 +249,8 @@ public:
 	///
 	bool ChangeRefs(string const & from, string const & to);
 	///
+	bool ChangeRefsIfUnique(string const & from, string const & to);
+	///
 	void pasteClipboard(bool asPara);
 	///
 	void stuffClipboard(string const &) const;

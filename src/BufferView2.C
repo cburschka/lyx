@@ -39,6 +39,7 @@ using std::endl;
 using std::ifstream;
 using std::vector;
 using std::find;
+using std::count;
 
 // Inserts a file into current document
 bool BufferView::insertLyXFile(string const & filen)
@@ -896,6 +897,16 @@ bool BufferView::ChangeRefs(string const & from, string const & to)
 	return flag;
 }
 
+
+bool BufferView::ChangeRefsIfUnique(string const & from, string const & to)
+{
+	// Check if the label 'from' appears more than once
+	vector<string> labels = buffer()->getLabelList();
+	if (count(labels.begin(), labels.end(), from) > 1)
+		return false;
+
+	return ChangeRefs(from, to);
+}
 
 UpdatableInset * BufferView::theLockingInset() const
 {

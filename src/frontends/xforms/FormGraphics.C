@@ -2,13 +2,6 @@
  * FormGraphics Interface Class Implementation
  */
 
-/* TODO:
- *      * Handle the case when the buffer is read-only.
- *          Initial work is done, if we are read-only the ok/cancel are 
- *          disabled. Probably we need to find a better way to deal with it.
- *      
- */
-
 #include <config.h> 
 
 #ifdef __GNUG__
@@ -25,9 +18,9 @@
 
 #include "debug.h" // for lyxerr
 
-#include "support/lstrings.h" // for strToDbl & tostr
-#include "support/FileInfo.h" // for FileInfo
-#include "filedlg.h" // for LyXFileDlg
+#include "support/lstrings.h"  // for strToDbl & tostr
+#include "support/FileInfo.h"  // for FileInfo
+#include "xform_helpers.h"     // for browseFile
 #include "support/filetools.h" // for AddName
 #include "insets/insetgraphics.h"
 #include "insets/insetgraphicsParams.h"
@@ -37,7 +30,7 @@
 #include "support/LAssert.h"
 
 using std::endl;
-
+using std::make_pair;
 
 FormGraphics::FormGraphics(LyXView * lv, Dialogs * d)
 	: FormInset(lv, d, _("Graphics"), new NoRepeatedApplyReadOnlyPolicy),
@@ -62,7 +55,7 @@ FormGraphics::~FormGraphics()
 	displayButtons.reset();
 	
 	// Free the form.
-	delete dialog_;
+	// delete dialog_;
 }
 
 
@@ -357,68 +350,31 @@ bool FormGraphics::checkInput()
 // We need these in the file browser.
 extern string system_lyxdir;
 extern string user_lyxdir;
-//extern string system_tempdir;
-
-
-// Need to move this to the form_graphics
-string FormGraphics::browseFile(string const & filename)
-{
-	if (! filename.empty() )
-		last_image_path = OnlyPath(filename);
-
-	// Does user clipart directory exist?
-	string bufclip = AddName (user_lyxdir, "clipart");
-	FileInfo fileInfo(bufclip);
-	if (!(fileInfo.isOK() && fileInfo.isDir()))
-		// No - bail out to system clipart directory
-		bufclip = AddName (system_lyxdir, "clipart");
-
-	LyXFileDlg fileDlg;
-	fileDlg.SetButton(0, _("Clipart"), bufclip);
-
-	bool error = false;
-	string buf;
-	do {
-		string p = fileDlg.Select(_("Graphics"),
-		                          last_image_path,
-		                          "*(ps|png)", filename);
-
-		if (p.empty()) return p;
-
-		last_image_path = OnlyPath(p);
-
-		if (p.find_first_of("#~$% ") != string::npos) {
-			WriteAlert(_("Filename can't contain any "
-			             "of these characters:"),
-			           // xgettext:no-c-format
-			           _("space, '#', '~', '$' or '%'."));
-			error = true;
-		} else {
-			error = false;
-			buf = p;
-		}
-	} while (error);
-
-	return buf;
-}
-
 
 void FormGraphics::browse()
 {
 	// Get the filename from the dialog
 	string const filename = fl_get_input(dialog_->input_filename);
 
+	string const title = N_("Graphics");
+	string const pattern = "*(ps|png)";
+
+  	// Does user clipart directory exist?
+  	string clipdir = AddName (user_lyxdir, "clipart");
+ 	FileInfo fileInfo(clipdir);
+  	if (!(fileInfo.isOK() && fileInfo.isDir()))
+  		// No - bail out to system clipart directory
+  		clipdir = AddName (system_lyxdir, "clipart");
+	pair<string, string> dir1(N_("Clipart"), clipdir);
+	
 	// Show the file browser dialog
-	string const new_filename = browseFile(filename);
+	string const new_filename =
+		browseFile(filename, title, pattern, dir1,
+			   make_pair(string(), string()));
 
 	// Save the filename to the dialog
-	if (new_filename != filename && ! new_filename.empty()) {
-		fl_set_input(dialog_->input_filename,
-		             new_filename.c_str());
-		// The above set input doesn't cause an input event so we do
-		// it manually. Otherwise the user needs to cause an input event
-		// to get the ok/apply buttons to be activated.
+	if (new_filename != filename && !new_filename.empty()) {
+		fl_set_input(dialog_->input_filename, new_filename.c_str());
 		input(0, 0);
 	}
-
 }

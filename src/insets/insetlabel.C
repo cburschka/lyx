@@ -52,8 +52,9 @@ void InsetLabel::Edit(BufferView * bv, int, int, unsigned int)
 		if (!new_contents.empty() &&
 		    getContents() != new_contents) {
 			bv->buffer()->markDirty();
-			bool flag = bv->ChangeRefs(getContents(),new_contents);
-			setContents( new_contents );
+			bool flag = bv->ChangeRefsIfUnique(getContents(),
+							   new_contents);
+			setContents(new_contents);
 			bv->text->RedoParagraph(bv);
 			if (flag) {
 				bv->redraw();

@@ -156,6 +156,14 @@
 #
 #\date_insert_format "%A, %e. %B %Y"
 
+
+# Maximum number of words in the initialization string for a new label.
+# If it is set to 0, then the init. string will only contain the prefix
+# (e.g. "sec:"). If it is set to -1, the init. string will be empty. 
+# This feature is disabled in 1.1.6.
+#
+#\label_init_length 0
+
 #
 # SCREEN & FONTS SECTION #################################################
 #

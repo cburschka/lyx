@@ -90,8 +90,6 @@ private:
 	bool checkInput();
 	/// Open the file browse dialog to select an image file.
 	void browse();
-	/// Display a file browser dialog and return the file chosen.
-	string browseFile(string const & filename);
 
 	/// Pointer to the actual instantiation of the xform's form
 	virtual FL_FORM * form() const;

@@ -83,21 +83,21 @@ string const browseFile( string const & filename,
 	if( !dir1.second.empty() ) {
 		FileInfo fileInfo( dir1.second );
 		if( fileInfo.isOK() && fileInfo.isDir() )
-			fileDlg.SetButton( 0, dir1.first, dir1.second );
+			fileDlg.SetButton( 0, _(dir1.first), dir1.second );
 	}
 
 	if( !dir2.second.empty() ) {
 		FileInfo fileInfo( dir2.second );
 		if( fileInfo.isOK() && fileInfo.isDir() )
-		    fileDlg.SetButton( 1, dir2.first, dir2.second );
+		    fileDlg.SetButton( 1, _(dir2.first), dir2.second );
 	}
 
 	bool error = false;
 	string buf;
 	do {
-		string p = fileDlg.Select(title,
+		string p = fileDlg.Select(_(title),
 		                          lastPath,
-		                          pattern, filename );
+		                          pattern, OnlyFilename(filename) );
 
 		if (p.empty()) return p;
 
@@ -121,7 +121,6 @@ string const browseFile( string const & filename,
 // sorted by hand to prevent LyXLex from complaining on read().
 static
 keyword_item xformTags[] = {
-//	{ "\\gui_active_tab", FL_LIGHTER_COL1 },
 	{ "\\gui_background", FL_COL1 },
 	{ "\\gui_buttonbottom", FL_BOTTOM_BCOL },
 	{ "\\gui_buttonleft", FL_LEFT_BCOL },

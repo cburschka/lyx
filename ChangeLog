@@ -1,3 +1,58 @@
+2000-12-11  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* lib/languages: Change description of german to "German (new
+	spelling)".
+
+2000-12-07  Angus Leeming <a.leeming@ic.ac.uk>
+
+	* src/frontends/xforms/FormInset.C (createInset): activate "Ok",
+	"Apply" buttons if arg is non-zero.
+
+	* src/lyxfunc.C (Dispatch): enable citation to be inserted without
+	launching the popup if sufficient info is passed to
+	LFUN_CITATION_CREATE.
+
+2000-11-23  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* src/lyx_cb.C (MenuInsertLabel): Compute a default value for new
+ 	labels (disabled in 1.1.6).
+
+	* src/lyxrc.[Ch]: New variable label_init_length
+
+	* mathed/formula.C (LocalDispatch): Preserve the label when
+	changing from display math to eqnarray (however, the label
+	do not appear at the first line, as one might expects, but at the
+	second line).
+	(LocalDispatch): When inserting a label to a formula which already 
+	have a label, the old label is used as default value.
+	Also, if the label is changed, then all references to the label
+ 	are changed.
+
+	* src/mathed/math_iter.C (setLabel): Allow to set the label
+	even if it is empty. This is needed to allow deletion of a label
+	in an eqnarray.
+
+	* src/BufferView2.C (ChangeRefsIfUnique): New method. Changes the
+	refernces only if the old label appears once in the document.
+
+2000-12-07  Angus Leeming <a.leeming@ic.ac.uk>
+
+	* lib/languages: added ngerman. Patch courtesy of Andreas Gehlert
+	<gehlert@Rcs1.urz.tu-dresden.de>
+
+	* src/frontends/xforms/FormBase.C: comment out debug.h
+
+	* src/frontends/xforms/FormGraphics.[Ch] (browseFile): removed. Reuse
+	code in xform_helpers instead.
+	(d-tor): comment out "delete dialog;" and so prevent a crash on exit.
+
+	* src/frontends/xforms/FormPreferences.C: use AddName() in more places.
+	Use N_(), rather than _() when creating strings to pass to browseFile()
+	because browseFile calls gettext() itself now.
+
+	* src/frontends/xforms/xform_helpers.C (browseFile): call gettext() and
+	display the filename correctly.
+
 2000-12-09  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* src/converter.C (Move): New method. Used to move file or files

@@ -518,8 +518,75 @@ void MenuInsertLabel(BufferView * bv, string const & arg)
 	string label(arg);
 	ProhibitInput(bv);
 	if (label.empty()) {
-		pair<bool, string>
-			result = askForText(_("Enter new label to insert:"));
+#ifdef LABEL_INIT
+#ifndef NEW_INSETS
+		LyXParagraph * par =
+			bv->text->cursor.par()->FirstPhysicalPar();
+#else
+		LyXParagraph * par = bv->text->cursor.par();
+#endif
+		LyXLayout const * layout =
+			&textclasslist.Style(bv->buffer()->params.textclass,
+					     par->GetLayout());
+
+		if (layout->latextype == LATEX_PARAGRAPH && par->previous) {
+#ifndef NEW_INSETS
+			LyXParagraph * par2 = par->previous->FirstPhysicalPar();
+#else
+			LyXParagraph * par2 = par->previous;
+#endif
+			LyXLayout const * layout2 =
+				&textclasslist.Style(bv->buffer()->params.textclass,
+						     par2->GetLayout());
+			if (layout2->latextype != LATEX_PARAGRAPH) {
+				par = par2;
+				layout = layout2;
+			}
+		}
+		string text = layout->latexname().substr(0, 3);
+		if (layout->latexname() == "theorem")
+			text = "thm"; // Create a correct prefix for prettyref
+#ifndef NEW_INSETS
+		if (par->footnoteflag==LyXParagraph::OPEN_FOOTNOTE)
+			switch (par->footnotekind) {
+			case LyXParagraph::FIG:
+			case LyXParagraph::WIDE_FIG:
+				text = "fig";
+				break;
+			case LyXParagraph::TAB:
+			case LyXParagraph::WIDE_TAB:
+				text = "tab";
+				break;
+			case LyXParagraph::ALGORITHM:
+				text = "alg";
+				break;
+			case LyXParagraph::FOOTNOTE:	
+			case LyXParagraph::MARGIN:
+				break;
+			}
+#endif
+		text += ":";
+		if (layout->latextype == LATEX_PARAGRAPH ||
+		    lyxrc.label_init_length < 0)
+			text.erase();
+		string par_text = par->String(bv->buffer(), false);
+		for (int i = 0; i < lyxrc.label_init_length; ++i) {
+			if (par_text.empty())
+				break;
+			string head;
+			par_text = split(par_text, head, ' ');
+			if (i > 0)
+				text += '_'; // Is it legal to use spaces in
+			                     // labels ?
+			text += head;
+		}
+
+		pair<bool, string> result =
+			askForText(_("Enter new label to insert:"), text);
+#else
+		pair<bool, string> result =
+			askForText(_("Enter new label to insert:"));
+#endif
 		if (result.first) {
 			label = frontStrip(strip(result.second));
 		}

@@ -21,7 +21,7 @@
 #include "FormBase.h"
 #include "LyXView.h"
 #include "support/LAssert.h"
-#include "debug.h"
+//#include "debug.h"
 
 extern "C" int C_FormBaseWMHideCB(FL_FORM * ob, void * d)
 {
@@ -60,7 +60,6 @@ FormBase::FormBase(LyXView * lv, Dialogs * d, string const & t,
 
 FormBase::~FormBase()
 {
-	//lyxerr << "bp_[" << bp_ << "]" << endl;
 	delete bp_;
 }
 

@@ -118,6 +118,7 @@ enum LyXRCTags {
 	RC_FORMAT,
 	RC_NEW_ASK_FILENAME,
 	RC_DEFAULT_LANGUAGE,
+	RC_LABEL_INIT_LENGTH,
 	RC_LAST
 };
 
@@ -331,6 +332,8 @@ enum LyXRCTags {
 	string default_language;
 	///
 	bool cursor_follows_scrollbar;
+	///
+	int label_init_length;
 };
 
 ///

@@ -2529,17 +2529,22 @@ string const LyXFunc::Dispatch(int ac,
 	
 	case LFUN_CITATION_CREATE:
 	{
-		// Should do this "at source"
 		InsetCommandParams p( "cite" );
 		
-		if (contains(argument, "|")) {
-			p.setContents( token(argument, '|', 0) );
-			p.setOptions(  token(argument, '|', 1) );
-		} else {
-			p.setContents( argument );
-		}
-
-		owner->getDialogs()->createCitation( p.getAsString() );
+		if (!argument.empty()) {
+			// This should be set at source, ie when typing
+			// "citation-insert foo" in the minibuffer.
+			// Question: would pybibliographer also need to be
+			// changed. Suspect so. Leave as-is therefore.
+			if (contains(argument, "|")) {
+				p.setContents( token(argument, '|', 0) );
+				p.setOptions(  token(argument, '|', 1) );
+			} else {
+				p.setContents( argument );
+			}
+			Dispatch(LFUN_CITATION_INSERT, p.getAsString());
+		} else
+			owner->getDialogs()->createCitation( p.getAsString() );
 	}
 	break;
 		    

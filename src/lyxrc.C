@@ -78,6 +78,7 @@ keyword_item lyxrcTags[] = {
 	{ "\\kbmap", LyXRC::RC_KBMAP },
 	{ "\\kbmap_primary", LyXRC::RC_KBMAP_PRIMARY },
 	{ "\\kbmap_secondary", LyXRC::RC_KBMAP_SECONDARY },
+	{ "\\label_init_length", LyXRC::RC_LABEL_INIT_LENGTH },
 	{ "\\language_auto_begin", LyXRC::RC_LANGUAGE_AUTO_BEGIN },
 	{ "\\language_auto_end", LyXRC::RC_LANGUAGE_AUTO_END },
 	{ "\\language_command_begin", LyXRC::RC_LANGUAGE_COMMAND_BEGIN },
@@ -238,6 +239,7 @@ void LyXRC::setDefaults() {
 	date_insert_format = "%A, %e %B %Y";
 	show_banner = true;
 	cursor_follows_scrollbar = false;
+	label_init_length = 3;
 
 	/// These variables are not stored on disk (perhaps they
 	// should be moved from the LyXRC class).
@@ -901,6 +903,11 @@ int LyXRC::read(string const & filename)
 				default_language = lexrc.GetString();
 			break;
 
+		case RC_LABEL_INIT_LENGTH:
+			if (lexrc.next())
+				label_init_length = lexrc.GetInteger();
+			break;
+
 		case RC_LAST: break; // this is just a dummy
 		}
 	}
@@ -1062,7 +1069,12 @@ void LyXRC::output(ostream & os) const
 			os << "\\date_insert_format \"" << date_insert_format
 			   << "\"\n";
 		}
-		
+	case RC_LABEL_INIT_LENGTH:
+		if (label_init_length != system_lyxrc.label_init_length) {
+			os << "\\label_init_length " << label_init_length
+			   << "\n";
+		}
+
 		os << "\n#\n"
 		   << "# SCREEN & FONTS SECTION ############################\n"
 		   << "#\n\n";
@@ -1894,6 +1906,10 @@ string const LyXRC::getDescription(LyXRCTags tag)
 		
 	case RC_DEFAULT_LANGUAGE:
 		str = N_("New documents will be assigned this language.");
+		break;
+
+	case RC_LABEL_INIT_LENGTH:
+		str = N_("Maximum number of words in the initialization string for a new label");
 		break;
 		
 	default:

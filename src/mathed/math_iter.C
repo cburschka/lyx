@@ -964,7 +964,7 @@ bool MathedXIter::setNumbered(bool numb)
 
 bool MathedXIter::setLabel(string const & label)
 {  
-    if (!label.empty() && crow) {
+    if (crow) {
 	crow->setLabel(label);
 	return true;
     }

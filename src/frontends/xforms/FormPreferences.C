@@ -1574,28 +1574,28 @@ FormPreferences::Interface::feedback(FL_OBJECT const * const ob) const
 bool FormPreferences::Interface::input(FL_OBJECT const * const ob)
 {
 	if (ob == dialog_->button_bind_file_browse) {
-		string dir  = system_lyxdir + string("bind");
-		string name = _("Sys Bind");
+		string dir  = AddName(system_lyxdir, "bind");
+		string name = N_("Sys Bind");
 		pair<string,string> dir1(name, dir);
 
-		dir = user_lyxdir + string("bind");
-		name = _("User Bind");
+		dir = AddName(user_lyxdir, "bind");
+		name = N_("User Bind");
 		pair<string,string> dir2(name, dir);
 
 		parent_.browse(dialog_->input_bind_file,
-				_("Bind file"), "*.bind", dir1, dir2);
+			       N_("Bind file"), "*.bind", dir1, dir2);
 		
 	} else if (ob == dialog_->button_ui_file_browse) {
-		string dir  = system_lyxdir + string("ui");
-		string name = _("Sys UI");
+		string dir  = AddName(system_lyxdir, "ui");
+		string name = N_("Sys UI");
 		pair<string,string> dir1(name, dir);
 
-		dir = user_lyxdir + string("ui");
-		name = _("User UI");
+		dir = AddName(user_lyxdir, "ui");
+		name = N_("User UI");
 		pair<string,string> dir2(name, dir);
 
 		parent_.browse(dialog_->input_ui_file,
-				_("UI file"), "*.ui", dir1, dir2);
+			       N_("UI file"), "*.ui", dir1, dir2);
 	}
 	
 	return true;
@@ -1790,21 +1790,21 @@ bool FormPreferences::Language::input(FL_OBJECT const * const ob)
 	}
 
 	if (ob == dialog_->button_kbmap1_browse) {
-		string const dir  = system_lyxdir + string("kbd");
+		string const dir  = AddName(system_lyxdir, "kbd");
 		string const name = N_("Key maps");
 		pair<string, string> dir1(name, dir);
 
 		parent_.browse(dialog_->input_kbmap1,
-				_("Keyboard map"), "*.kmap", dir1,
-				make_pair(string(), string()));
+			       N_("Keyboard map"), "*.kmap", dir1,
+			       make_pair(string(), string()));
 	} else if (ob == dialog_->button_kbmap2_browse) {
-		string const dir  = system_lyxdir + string("kbd");
+		string const dir  = AddName(system_lyxdir, "kbd");
 		string const name = N_("Key maps");
 		pair<string, string> dir1(name, dir);
 
 		parent_.browse(dialog_->input_kbmap2,
-				_("Keyboard map"), "*.kmap", dir1,
-				make_pair(string(), string()));
+			       N_("Keyboard map"), "*.kmap", dir1,
+			       make_pair(string(), string()));
 	}
 
 	return activate;
@@ -2228,35 +2228,35 @@ bool FormPreferences::Paths::input(FL_OBJECT const * const ob)
 
 	if (ob == dialog_->button_default_path_browse) {
 		parent_.browse(dialog_->input_default_path,
-				_("Default path"), string(),
-				make_pair(string(), string()),
-				make_pair(string(), string()));
+			       N_("Default path"), string(),
+			       make_pair(string(), string()),
+			       make_pair(string(), string()));
 	} else if (ob == dialog_->button_template_path_browse) {
 		parent_.browse(dialog_->input_template_path,
-				_("Template path"), string(),
-				make_pair(string(), string()),
-				make_pair(string(), string()));
+			       N_("Template path"), string(),
+			       make_pair(string(), string()),
+			       make_pair(string(), string()));
 	} else if (ob == dialog_->button_temp_dir_browse) {
 		parent_.browse(dialog_->input_temp_dir,
-				_("Temp dir"), string(),
-				make_pair(string(), string()),
-				make_pair(string(), string()));
+			       N_("Temp dir"), string(),
+			       make_pair(string(), string()),
+			       make_pair(string(), string()));
 	} else if (ob == dialog_->button_lastfiles_browse) {
 		pair<string, string> dir(_("User"), user_lyxdir);
 
 		parent_.browse(dialog_->input_lastfiles,
-				_("Lastfiles"), string(), dir,
-				make_pair(string(), string()));
+			       N_("Lastfiles"), string(), dir,
+			       make_pair(string(), string()));
 	} else if (ob == dialog_->button_backup_path_browse) {
 		parent_.browse(dialog_->input_backup_path,
-				_("Backup path"), string(),
-				make_pair(string(), string()),
-				make_pair(string(), string()));
+			       N_("Backup path"), string(),
+			       make_pair(string(), string()),
+			       make_pair(string(), string()));
 	} else if (ob == dialog_->button_serverpipe_browse) {
 		parent_.browse(dialog_->input_serverpipe,
-				_("LyX Server pipes"), string(),
-				make_pair(string(), string()),
-				make_pair(string(), string()));
+			       N_("LyX Server pipes"), string(),
+			       make_pair(string(), string()),
+			       make_pair(string(), string()));
 	}
 	
 	return activate;
@@ -2949,9 +2949,9 @@ bool FormPreferences::SpellChecker::input(FL_OBJECT const * const ob)
 
 	if (ob == dialog_->button_personal_dict) {
 		parent_.browse(dialog_->input_personal_dict,
-				_("Personal dictionary"), "*.ispell",
-				make_pair(string(), string()),
-				make_pair(string(), string()));
+			       N_("Personal dictionary"), "*.ispell",
+			       make_pair(string(), string()),
+			       make_pair(string(), string()));
 	}
 	
 	return true; // All input is valid!
