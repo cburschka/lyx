@@ -172,7 +172,7 @@ MathArray & CursorSlice::cell() const
 
 LyXText * CursorSlice::text() const
 {
-	inset_ ? inset_->getText(idx_) : 0;
+	return inset_ ? inset_->getText(idx_) : 0;
 }
 
 
