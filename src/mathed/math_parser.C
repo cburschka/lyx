@@ -591,14 +591,13 @@ MathMatrixInset * Parser::parse_normal()
 
 	if (name == "align" || name == "align*") {
 		MathMatrixInset * p = new MathMatrixInset(LM_OT_ALIGN);
-		p->halign(getArg('{', '}'));
 		parse_lines(p, !stared(name), true);
 		return p;
 	}
 
 	if (name == "alignat" || name == "alignat*") {
-		MathMatrixInset * p = new MathMatrixInset(LM_OT_ALIGNAT);
-		p->halign(getArg('{', '}'));
+		MathMatrixInset * p =
+			new MathMatrixInset(LM_OT_ALIGNAT, 2 * atoi(getArg('{', '}').c_str()));
 		parse_lines(p, !stared(name), true);
 		return p;
 	}

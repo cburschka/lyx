@@ -77,6 +77,12 @@ int firstRelOp(MathArray const & array)
 
 }
 
+
+MathMatrixInset::MathMatrixInset()
+	: MathGridInset(1, 1), objtype_(LM_OT_SIMPLE), nonum_(1), label_(1)
+{}
+
+
 MathMatrixInset::MathMatrixInset(MathInsetTypes t)
 	: MathGridInset(getCols(t), 1), objtype_(t), nonum_(1), label_(1)
 {
@@ -84,9 +90,12 @@ MathMatrixInset::MathMatrixInset(MathInsetTypes t)
 }
 
 
-MathMatrixInset::MathMatrixInset()
-	: MathGridInset(1, 1), objtype_(LM_OT_SIMPLE), nonum_(1), label_(1)
-{}
+MathMatrixInset::MathMatrixInset(MathInsetTypes t, int cols)
+	: MathGridInset(cols, 1), objtype_(t), nonum_(1), label_(1)
+{
+	halign(getAlign(t, ncols()));
+}
+
 
 MathInset * MathMatrixInset::clone() const
 {
@@ -169,6 +178,7 @@ string MathMatrixInset::label(int row) const
 {
 	return label_[row];
 }
+
 
 void MathMatrixInset::label(int row, string const & label)
 {

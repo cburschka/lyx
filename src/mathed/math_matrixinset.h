@@ -23,6 +23,8 @@ public:
 	///
 	explicit MathMatrixInset(MathInsetTypes t);
 	///
+	MathMatrixInset(MathInsetTypes t, int cols);
+	///
 	MathInset * clone() const;
 	///
 	void write(std::ostream &, bool fragile) const;
