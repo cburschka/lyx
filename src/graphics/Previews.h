@@ -36,20 +36,15 @@ public:
 
 	/** Returns the PreviewLoader for this buffer.
 	 *  Used by individual insets to update their own preview.
-	 *  We assert that (buffer != 0) but do not pass a Buffer &
-	 *  so that insets do not need to #include buffer.h
 	 */
 	PreviewLoader & loader(Buffer const & buffer) const;
 
-	/** Called from the Buffer d-tor.
-	 *  If (buffer == 0), does nothing.
-	 */
+	/// Called from the Buffer d-tor.
 	void removeLoader(Buffer const & buffer) const;
 
 	/** For a particular buffer, initiate the generation of previews
-	 *  for each and every snippetof LaTeX that's of interest with
+	 *  for each and every snippet of LaTeX that's of interest with
 	 *  a single forked process.
-	 *  If (buffer == 0), does nothing.
 	 */
 	void generateBufferPreviews(Buffer const & buffer) const;
 
@@ -58,7 +53,6 @@ private:
 	 *  are instantiated.
 	 */
 	Previews();
-	///
 	~Previews();
 
 	/// Use the Pimpl idiom to hide the internals.

@@ -31,7 +31,19 @@
 #include <fstream>
 #include <sys/types.h> // needed for pid_t
 
-using namespace lyx::support;
+namespace support = lyx::support;
+
+using support::ChangeExtension;
+using support::Forkedcall;
+using support::ForkedCallQueue;
+using support::LibFileSearch;
+using support::LibScriptSearch;
+using support::OnlyPath;
+using support::OnlyFilename;
+using support::QuoteName;
+using support::subst;
+using support::tempName;
+using support::unlink;
 
 using std::endl;
 using std::ostream;

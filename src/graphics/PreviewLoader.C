@@ -42,7 +42,8 @@
 #include <utility>
 #include <vector>
 
-using namespace lyx::support;
+namespace support = lyx::support;
+
 
 using std::endl;
 using std::find;
@@ -292,16 +293,16 @@ InProgress::InProgress(string const & filename_base,
 void InProgress::stop() const
 {
 	if (pid)
-		ForkedcallsController::get().kill(pid, 0);
+		support::ForkedcallsController::get().kill(pid, 0);
 
 	if (!metrics_file.empty())
-		unlink(metrics_file);
+		support::unlink(metrics_file);
 
 	BitmapFile::const_iterator vit  = snippets.begin();
 	BitmapFile::const_iterator vend = snippets.end();
 	for (; vit != vend; ++vit) {
 		if (!vit->second.empty())
-			unlink(vit->second);
+			support::unlink(vit->second);
 	}
 }
 
@@ -393,7 +394,7 @@ void PreviewLoader::Impl::add(string const & latex_snippet)
 	if (!pconverter_ || status(latex_snippet) != NotFound)
 		return;
 
-	string const snippet = trim(latex_snippet);
+	string const snippet = support::trim(latex_snippet);
 	if (snippet.empty())
 		return;
 
@@ -486,14 +487,15 @@ void PreviewLoader::Impl::startLoading()
 	cs << pconverter_->command << ' ' << latexfile << ' '
 	   << int(font_scaling_factor_) << ' ' << pconverter_->to;
 
-	string const command = "sh " + LibScriptSearch(STRCONV(cs.str()));
+	string const command = "sh " + support::LibScriptSearch(STRCONV(cs.str()));
 
 	// Initiate the conversion from LaTeX to bitmap images files.
-	Forkedcall::SignalTypePtr convert_ptr(new Forkedcall::SignalType);
+	support::Forkedcall::SignalTypePtr
+		convert_ptr(new support::Forkedcall::SignalType);
 	convert_ptr->connect(
 		boost::bind(&Impl::finishedGenerating, this, _1, _2));
 
-	Forkedcall call;
+	support::Forkedcall call;
 	int ret = call.startscript(command, convert_ptr);
 
 	if (ret != 0) {
@@ -649,7 +651,7 @@ string const unique_filename(string const bufferpath)
 {
 	static int theCounter = 0;
 	string const filename = tostr(theCounter++) + "lyxpreview";
-	return AddName(bufferpath, filename);
+	return support::AddName(bufferpath, filename);
 }
 
 
@@ -746,7 +748,7 @@ void setAscentFractions(vector<double> & ascent_fractions,
 			double const a = ascent + tp_ascent;
 			double const d = descent - tp_descent;
 
-			if (!float_equal(a + d, 0, 0.1))
+			if (!support::float_equal(a + d, 0, 0.1))
 				*it = a / (a + d);
 
 			if (++it == end)

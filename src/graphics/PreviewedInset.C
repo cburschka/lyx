@@ -25,9 +25,8 @@
 
 #include <boost/bind.hpp>
 
-#include "debug.h"    // temporary
+namespace support = lyx::support;
 
-using namespace lyx::support;
 
 namespace lyx {
 namespace graphics {
@@ -63,7 +62,7 @@ void PreviewedInset::addPreview(PreviewLoader & ploader)
 	if (!Previews::activated() || !previewWanted())
 		return;
 
-	snippet_ = trim(latexString());
+	snippet_ = support::trim(latexString());
 	if (snippet_.empty())
 		return;
 

@@ -22,10 +22,10 @@
 
 #include <map>
 
+namespace support = lyx::support;
+
+
 namespace lyx {
-
-using namespace lyx::support;
-
 namespace graphics {
 
 bool Previews::activated()

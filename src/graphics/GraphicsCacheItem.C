@@ -28,7 +28,19 @@
 #include <boost/bind.hpp>
 #include <boost/signals/trackable.hpp>
 
-using namespace lyx::support;
+namespace support = lyx::support;
+
+using support::Assert;
+using support::ChangeExtension;
+using support::FileMonitor;
+using support::IsFileReadable;
+using support::MakeDisplayPath;
+using support::OnlyFilename;
+using support::getExtFromContents;
+using support::tempName;
+using support::unlink;
+using support::unzipFile;
+using support::zippedFile;
 
 using std::endl;
 

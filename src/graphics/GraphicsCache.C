@@ -23,7 +23,7 @@
 
 #include <map>
 
-using namespace lyx::support;
+namespace support = lyx::support;
 
 namespace lyx {
 namespace graphics {
@@ -64,7 +64,7 @@ std::vector<string> Cache::loadableFormats() const
 
 void Cache::add(string const & file) const
 {
-	if (!AbsolutePath(file)) {
+	if (!support::AbsolutePath(file)) {
 		lyxerr << "Cache::add(" << file << "):\n"
 		       << "The file must be have an absolute path."
 		       << std::endl;
