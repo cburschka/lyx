@@ -1293,9 +1293,11 @@ pos_type LyXText::getColumnNearX(ParagraphList::iterator pit,
 }
 
 
-// x,y are coordinates relative to this LyXText
+// x,y are absolute coordinates
 void LyXText::setCursorFromCoordinates(LCursor & cur, int x, int y)
 {
+	x -= xo_;
+	y -= yo_;
 	CursorSlice old_cursor = cur.current();
 	ParagraphList::iterator pit;
 	Row const & row = *getRowNearY(y, pit);
@@ -1468,7 +1470,7 @@ void LyXText::cursorUp(LCursor & cur, bool selecting)
 	Row const & row = cur.textRow();
 	int x = cur.x_target();
 	int y = cursorY(cur.current()) - row.baseline() - 1;
-	setCursorFromCoordinates(cur, x - xo_, y - yo_);
+	setCursorFromCoordinates(cur, x, y);
 
 	if (!selecting) {
 		InsetBase * inset_hit = checkInsetHit(cur.x_target(), y);
@@ -1483,7 +1485,7 @@ void LyXText::cursorDown(LCursor & cur, bool selecting)
 	Row const & row = cur.textRow();
 	int x = cur.x_target();
 	int y = cursorY(cur.current()) - row.baseline() + row.height() + 1;
-	setCursorFromCoordinates(cur, x - xo_, y - yo_);
+	setCursorFromCoordinates(cur, x, y);
 
 	if (!selecting) {
 		InsetBase * inset_hit = checkInsetHit(cur.x_target(), y);

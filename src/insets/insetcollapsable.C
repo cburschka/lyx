@@ -311,11 +311,6 @@ InsetBase * InsetCollapsable::editXY(LCursor & cur, int x, int y)
 //inset yet. I personally think it's ok. (ab)
 		return this;
 	}
-
-//if (y <= yo() + inset.ascent() + button_dim.y2)
-//	y = yo();
-//else
-//	y += inset.ascent() - height_collapsed();
 	return inset.editXY(cur, x, y);
 }
 

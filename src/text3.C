@@ -1147,7 +1147,7 @@ DispatchResult LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 		// Clear the selection
 		cur.clearSelection();
 
-		setCursorFromCoordinates(cur, cmd.x - xo_, cmd.y - yo_);
+		setCursorFromCoordinates(cur, cmd.x, cmd.y);
 		cur.resetAnchor();
 		finishUndo();
 		cur.x_target() = cursorX(cur.current());

@@ -1,3 +1,10 @@
+2004-02-16  Alfredo Braunstein  <abraunst@lyx.org>
+
+	* text2.C (setCursorFromCoordinates): switch to absolute coords
+	(cursorUp): adjust
+	(cursorDown): adjust
+	* text3.C (dispatch): adjust
+
 2004-02-16  André Pönitz  <poenitz@gmx.net>
 
 	* cursor.[Ch]: use new '_void_ dispatch(...)' signature (see
