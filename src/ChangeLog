@@ -1,3 +1,12 @@
+2002-01-13  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* lyxfunc.C (verboseDispatch): fix handling of arguments
+
+	* lyxrc.C (setDefaults): do not initialize document_path to $HOME.
+
+	* lyxrc.C: use string::erase() instead of initializing to "".
+	
+
 2001-11-26  John Levon  <moz@compsoc.man.ac.uk>
 
 	* BufferView_pimpl.h:

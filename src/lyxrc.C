@@ -182,11 +182,11 @@ void LyXRC::setDefaults() {
 	print_file_extension = ".ps";
 	print_paper_flag = "-t";
 	print_paper_dimension_flag = "-T";
-	document_path = GetEnvPath("HOME");
+	document_path.erase();
 	tempdir_path = "/tmp";
 	use_tempdir = true;
 	ps_command = "gs";
-	view_dvi_paper_option = "";
+	view_dvi_paper_option.erase();
 	default_papersize = BufferParams::PAPER_USLETTER;
 	custom_export_format = "ps";
 	chktex_command = "chktex -n1 -n3 -n6 -n9 -n22 -n25 -n30 -n38";
@@ -214,7 +214,7 @@ void LyXRC::setDefaults() {
 	popup_normal_font = "-*-helvetica-medium-r";
 	font_norm = "iso8859-1";
 	font_norm_type = ISO_8859_1;
-	popup_font_encoding = "";
+	popup_font_encoding.erase();
 	override_x_deadkeys = true;
 	autosave = 300;
 	auto_region_delete = true;
@@ -223,7 +223,7 @@ void LyXRC::setDefaults() {
 	num_lastfiles = 4;
 	check_lastfiles = true;
 	make_backup = true;
-	backupdir_path = "";
+	backupdir_path.erase();
 	exit_confirmation = true;
 	display_graphics = "mono";
 	display_shortcuts = true;
@@ -535,7 +535,7 @@ int LyXRC::read(string const & filename)
 			if (lexrc.next())
 				view_dvi_paper_option = lexrc.getString();
 			else 
-				view_dvi_paper_option = "";
+				view_dvi_paper_option.erase();
 			break;
 
 		case RC_PS_COMMAND:

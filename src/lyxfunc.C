@@ -756,16 +756,11 @@ void LyXFunc::miniDispatch(string const & s)
 
 void const LyXFunc::verboseDispatch(string const & s, bool show_sc) 
 {
-	// Split command string into command and argument
-	string cmd;
-	string line = frontStrip(s);
-	string const arg = strip(frontStrip(split(line, cmd, ' ')));
-
-	int action = lyxaction.LookupFunc(cmd);
+	int action = lyxaction.LookupFunc(frontStrip(s));
  
 	if (action == LFUN_UNKNOWN_ACTION) {
 		string const msg = string(_("Unknown function ("))
-			+ cmd + ")";
+			+ s + ")";
 		owner->message(msg);
 	} else {
 		verboseDispatch(action, show_sc);
