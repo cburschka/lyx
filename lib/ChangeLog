@@ -1,3 +1,9 @@
+2004-02-27  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* configure.m4: if lyx_check_config is false (no latex), use some
+	ugly sed code to parse the textclasses and produce a reasonable
+	textclass.lst. 
+
 2004-02-23  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* examples/ro_splash.lyx: move this file from the docs (where it

@@ -23,3 +23,10 @@ What's new
 
 ** Bug fixes
 
+- when the autodetection of latex classes cannot be done for some
+  reason, a sensible list of textclasses is provided
+
+- the qt-related parts of the configure script honors the environment
+  variables MOC and UIC if they are set
+
+- fix compilation for OpenBSD
