@@ -2915,40 +2915,15 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev)
 		}
 		break;
 
-	case LFUN_MATH:
-		mathDispatch(bv_, ev.argument);
-		break;
-
 	case LFUN_MATH_MACRO:
-		mathDispatchMathMacro(bv_, ev.argument);
-		break;
-
 	case LFUN_MATH_DELIM:
-		mathDispatchMathDelim(bv_, ev.argument);
-		break;
-
 	case LFUN_INSERT_MATRIX:
-		mathDispatchInsertMatrix(bv_, ev.argument);
-		break;
-
 	case LFUN_INSERT_MATH:
-		mathDispatchInsertMath(bv_, ev.argument);
-		break;
-
 	case LFUN_MATH_IMPORT_SELECTION: // Imports LaTeX from the X selection
-		mathDispatchMathImportSelection(bv_, ev.argument);
-		break;
-
 	case LFUN_MATH_DISPLAY:          // Open or create a displayed math inset
-		mathDispatchMathDisplay(bv_, ev.argument);
-		break;
-
 	case LFUN_MATH_MODE:             // Open or create an inlined math inset
-		mathDispatchMathMode(bv_, ev.argument);
-		break;
-
 	case LFUN_GREEK:                 // Insert a single greek letter
-		mathDispatchGreek(bv_, ev.argument);
+		mathDispatch(FuncRequest(bv_, ev.action, ev.argument));
 		break;
 
 	case LFUN_CITATION_INSERT:

@@ -428,7 +428,7 @@ string getContentsOfAsciiFile(BufferView * bv, string const & f, bool asParagrap
 
 void MenuInsertLabel(BufferView * bv, string const & arg)
 {
-	string label(arg);
+	string label = arg;
 	bv->owner()->prohibitInput();
 	if (label.empty()) {
 		Paragraph * par = bv->getLyXText()->cursor.par();

@@ -416,6 +416,8 @@ InsetFormulaBase::localDispatch(FuncRequest const & ev)
 
 	switch (ev.action) {
 
+	case LFUN_MATH_MUTATE:
+	case LFUN_MATH_DISPLAY:
 	case LFUN_MATH_HALIGN:
 	case LFUN_MATH_VALIGN:
 	case LFUN_MATH_ROW_INSERT:
@@ -532,6 +534,15 @@ InsetFormulaBase::localDispatch(FuncRequest const & ev)
 		updateLocal(bv, false);
 		break;
 	}
+
+/*
+	case LFUN_PASTESELECTION: {
+		string const clip = bv->getClipboard();
+		if (!clip.empty())
+			mathed_parse_normal(par_, clip);
+		break;
+	}
+*/
 
 	case LFUN_PASTE:
 		if (was_macro)
@@ -892,14 +903,18 @@ bool InsetFormulaBase::searchBackward(BufferView * bv, string const & what,
 }
 
 
+bool InsetFormulaBase::display() const
+{
+	return par()->asHullInset() && par()->asHullInset()->display();
+}
+
+
 /////////////////////////////////////////////////////////////////////
 
 
-void mathDispatchCreation(BufferView * bv, string const & arg, bool display)
+void mathDispatchCreation(FuncRequest const & cmd, bool display)
 {
-	if (!bv->available())
-		return;
-
+	BufferView * bv = cmd.view();
 	// use selection if available..
 	//string sel;
 	//if (action == LFUN_MATH_IMPORT_SELECTION)
@@ -911,13 +926,14 @@ void mathDispatchCreation(BufferView * bv, string const & arg, bool display)
 	if (sel.empty()) {
 		InsetFormula * f = new InsetFormula(bv);
 		if (openNewInset(bv, f)) {
-			f->mutate("simple");
+			bv->theLockingInset()->
+				localDispatch(FuncRequest(bv, LFUN_MATH_MUTATE, "simple"));
 			// don't do that also for LFUN_MATH_MODE unless you want end up with
 			// always changing to mathrm when opening an inlined inset
 			// -- I really hate "LyXfunc overloading"...
 			if (display)
 				f->localDispatch(FuncRequest(bv, LFUN_MATH_DISPLAY));
-			f->localDispatch(FuncRequest(bv, LFUN_INSERT_MATH, arg));
+			f->localDispatch(FuncRequest(bv, LFUN_INSERT_MATH, cmd.argument));
 		}
 	} else {
 		// create a macro if we see "\\newcommand" somewhere, and an ordinary
@@ -935,91 +951,50 @@ void mathDispatchCreation(BufferView * bv, string const & arg, bool display)
 }
 
 
-void mathDispatchMathDisplay(BufferView * bv, string const & arg)
+void mathDispatch(FuncRequest const & cmd)
 {
-	mathDispatchCreation(bv, arg, true);
-}
-
-
-void mathDispatchMathMode(BufferView * bv, string const & arg)
-{
-	mathDispatchCreation(bv, arg, false);
-}
-
-
-void mathDispatchMathImportSelection(BufferView * bv, string const & arg)
-{
-	mathDispatchCreation(bv, arg, true);
-}
-
-
-void mathDispatchMathMacro(BufferView * bv, string const & arg)
-{
+	BufferView * bv = cmd.view();
 	if (!bv->available())
 		return;
-	if (arg.empty())
-		bv->owner()->getLyXFunc().setErrorMessage(N_("Missing argument"));
-	else {
-		string s = arg;
-		string const s1 = token(s, ' ', 1);
-		int const na = s1.empty() ? 0 : lyx::atoi(s1);
-		openNewInset(bv, new InsetFormulaMacro(token(s, ' ', 0), na));
+
+	switch (cmd.action) {
+
+		case LFUN_MATH_DISPLAY:
+			mathDispatchCreation(cmd, true);
+			break;
+
+		case LFUN_MATH_MODE:
+			mathDispatchCreation(cmd, false);
+			break;
+
+		case LFUN_MATH_IMPORT_SELECTION:
+			mathDispatchCreation(cmd, false);
+			break;
+
+		case LFUN_MATH_MACRO:
+			if (cmd.argument.empty())
+				bv->owner()->getLyXFunc().setErrorMessage(N_("Missing argument"));
+			else {
+				string s = cmd.argument;
+				string const s1 = token(s, ' ', 1);
+				int const na = s1.empty() ? 0 : lyx::atoi(s1);
+				openNewInset(bv, new InsetFormulaMacro(token(s, ' ', 0), na));
+			}
+			break;
+
+		case LFUN_GREEK: 
+		case LFUN_INSERT_MATH: 
+		case LFUN_INSERT_MATRIX: 
+		case LFUN_MATH_DELIM: {
+			InsetFormula * f = new InsetFormula(bv);
+			if (openNewInset(bv, f)) {
+				bv->theLockingInset()->	
+					localDispatch(FuncRequest(bv, LFUN_MATH_MUTATE, "simple"));
+				bv->theLockingInset()->localDispatch(cmd);
+			}
+			break;
+		}
+		default:
+			break;
 	}
 }
-
-
-void mathDispatchMathDelim(BufferView * bv, string const & arg)
-{
-	if (!bv->available())
-		return;
-	InsetFormula * f = new InsetFormula(bv);
-	if (openNewInset(bv, f)) {
-		f->mutate("simple");
-		bv->theLockingInset()->localDispatch(FuncRequest(bv, LFUN_MATH_DELIM, arg));
-	}
-}
-
-
-void mathDispatchInsertMatrix(BufferView * bv, string const & arg)
-{
-	if (!bv->available())
-		return;
-	InsetFormula * f = new InsetFormula(bv);
-	if (openNewInset(bv, f)) {
-		f->mutate("simple");
-		bv->theLockingInset()->localDispatch(FuncRequest(bv, LFUN_INSERT_MATRIX, arg));
-	}
-}
-
-
-void mathDispatchInsertMath(BufferView * bv, string const & arg)
-{
-	if (!bv->available())
-		return;
-	InsetFormula * f = new InsetFormula(bv);
-	if (openNewInset(bv, f)) {
-		f->mutate("simple");
-    bv->theLockingInset()->localDispatch(FuncRequest(bv, LFUN_INSERT_MATH, arg));
-	}
-}
-
-
-void mathDispatchGreek(BufferView * bv, string const & arg)
-{
-	if (!bv->available())
-		return;
-	InsetFormula * f = new InsetFormula(bv);
-	if (openNewInset(bv, f)) {
-		f->mutate("simple");
-		bv->theLockingInset()->localDispatch(FuncRequest(bv, LFUN_GREEK, arg));
-		bv->unlockInset(f);
-	}
-}
-
-
-void mathDispatch(BufferView *, kb_action, string const &)
-{}
-
-
-void mathDispatch(BufferView *, string const &)
-{}

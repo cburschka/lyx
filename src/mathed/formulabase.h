@@ -43,8 +43,6 @@ public:
 	virtual int width(BufferView *, LyXFont const &) const = 0;
 	///
 	virtual void draw(BufferView *,LyXFont const &, int, float &, bool) const = 0;
-	///
-	virtual string hullType() const { return "none"; }
 	/// lowest x coordinate
 	virtual int xlow() const;
 	/// highest x coordinate
@@ -90,6 +88,8 @@ public:
 
 	/// To allow transparent use of math editing functions
 	virtual RESULT localDispatch(FuncRequest const &);
+	/// To allow transparent use of math editing functions
+	//virtual void status(FuncRequest const &);
 
 	///
 	virtual std::vector<string> const getLabelList() const;
@@ -116,6 +116,8 @@ public:
 	virtual void revealCodes(BufferView *) const;
 	///
 	virtual Inset::EDITABLE editable() const { return HIGHLY_EDITABLE; }
+	///
+	bool display() const;
 
 private:
 	/// unimplemented
@@ -145,27 +147,6 @@ protected:
 
 // We don't really mess want around with mathed stuff outside mathed.
 // So do it here.
-//
-void mathDispatchCreation(BufferView *, string const &, bool);
-//
-void mathDispatchMathDisplay(BufferView *, string const &);
-//
-void mathDispatchMathMode(BufferView *, string const &);
-//
-void mathDispatchMathMacro(BufferView *, string const &);
-//
-void mathDispatchMathDelim(BufferView *, string const &);
-//
-void mathDispatchInsertMath(BufferView *, string const &);
-//
-void mathDispatchInsertMatrix(BufferView *, string const &);
-//
-void mathDispatchGreek(BufferView *, string const &);
-//
-void mathDispatchMathImportSelection(BufferView *, string const &);
-//
-void mathDispatch(BufferView *, FuncRequest const &);
-//
-void mathDispatch(BufferView *, string const &);
+void mathDispatch(FuncRequest const &);
 
 #endif

@@ -26,8 +26,6 @@
 
 #include <boost/scoped_ptr.hpp>
 
-class MathHullInset;
-
 ///
 class InsetFormula : public InsetFormulaBase {
 public:
@@ -72,11 +70,7 @@ public:
 	///
 	bool insetAllowed(Inset::Code code) const;
 	///
-	virtual RESULT localDispatch(FuncRequest const &);
-	///
 	std::vector<string> const getLabelList() const;
-	///
-	string hullType() const;
 	///
 	MathAtom const & par() const { return par_; }
 	///
@@ -86,11 +80,9 @@ public:
 	///
 	void addPreview(grfx::PreviewLoader &) const;
 	///
-	void mutate(string const & type);
+	//void mutate(string const & type);
 
 private:
-	/// Is this a displayed environment?
-	bool display() const;
 	/// available in AMS only?
 	bool ams() const;
 

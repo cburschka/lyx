@@ -278,7 +278,6 @@ void LyXAction::init()
 		{ LFUN_MARK_OFF, "mark-off", "", ReadOnly },
 		{ LFUN_MARK_ON, "mark-on", "", ReadOnly },
 		{ LFUN_SETMARK, "mark-toggle", "", ReadOnly },
-		{ LFUN_MATH, "math", "", Noop },
 		{ LFUN_MATH_DELIM, "math-delim", "", Noop },
 		{ LFUN_MATH_DISPLAY, "math-display", "", Noop },
 		{ LFUN_GREEK, "math-greek", N_("Math Greek"), Noop },

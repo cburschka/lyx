@@ -216,7 +216,6 @@ void InsetFormula::draw(BufferView * bv, LyXFont const & font,
 		pi.pain.image(x, y - a, w, h,
 			      *(preview_->pimage()->image(*this, *bv)));
 	} else {
-		//pi.base.style = display() ? LM_ST_DISPLAY : LM_ST_TEXT;
 		pi.base.style = LM_ST_TEXT;
 		pi.base.font  = font;
 		pi.base.font.setColor(LColor::math);
@@ -250,65 +249,6 @@ vector<string> const InsetFormula::getLabelList() const
 }
 
 
-UpdatableInset::RESULT
-InsetFormula::localDispatch(FuncRequest const & ev)
-{
-	RESULT result = DISPATCHED;
-	BufferView * bv = ev.view();
-
-	switch (ev.action) {
-
-		case LFUN_MATH_MUTATE:
-		{
-			bv->lockedInsetStoreUndo(Undo::EDIT);
-			int x;
-			int y;
-			mathcursor->getPos(x, y);
-			mutate(ev.argument);
-			mathcursor->setPos(x, y);
-			mathcursor->normalize();
-			updateLocal(bv, true);
-			break;
-		}
-
-
-		case LFUN_MATH_DISPLAY:
-		{
-			int x = 0;
-			int y = 0;
-			mathcursor->getPos(x, y);
-			if (hullType() == "simple")
-				mutate("equation");
-			else
-				mutate("simple");
-			mathcursor->setPos(x, y);
-			mathcursor->normalize();
-			updateLocal(bv, true);
-			break;
-		}
-
-		case LFUN_PASTESELECTION:
-		{
-			string const clip = bv->getClipboard();
-			if (!clip.empty())
-				mathed_parse_normal(par_, clip);
-			break;
-		}
-
-		default:
-			result = InsetFormulaBase::localDispatch(ev);
-	}
-
-	return result;
-}
-
-
-bool InsetFormula::display() const
-{
-	return hullType() != "simple" && hullType() != "none";
-}
-
-
 Inset::Code InsetFormula::lyxCode() const
 {
 	return Inset::MATH_CODE;
@@ -324,7 +264,7 @@ void InsetFormula::validate(LaTeXFeatures & features) const
 bool InsetFormula::insetAllowed(Inset::Code code) const
 {
 	return
-		(code == Inset::LABEL_CODE && display())
+		(code == Inset::LABEL_CODE)
 		|| code == Inset::REF_CODE
 		|| code == Inset::ERT_CODE;
 }
@@ -355,16 +295,12 @@ int InsetFormula::width(BufferView * bv, LyXFont const & font) const
 }
 
 
-string InsetFormula::hullType() const
-{
-	return par()->getType();
-}
-
-
+/*
 void InsetFormula::mutate(string const & type)
 {
 	par_.nucleus()->mutate(type);
 }
+*/
 
 
 //

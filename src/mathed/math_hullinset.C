@@ -809,6 +809,25 @@ MathInset::result_type MathHullInset::dispatch
 			doExtern(cmd, idx, pos);
 			return DISPATCHED_POP;
 
+		case LFUN_MATH_MUTATE: {
+			row_type r = row(idx);
+			col_type c = col(idx);
+			mutate(cmd.argument);
+			idx = r * ncols() + c;
+			if (idx >= nargs())
+				idx = nargs() - 1;
+			if (pos > cell(idx).size()) 
+				pos = cell(idx).size();
+			return DISPATCHED_POP;
+		}
+
+		case LFUN_MATH_DISPLAY: {
+			mutate(type_ == "simple" ? "equation" : "simple");
+			idx = 0;
+			pos = cell(idx).size();
+			return DISPATCHED_POP;
+		}
+
 		default:
 			return MathGridInset::dispatch(cmd, idx, pos);
 

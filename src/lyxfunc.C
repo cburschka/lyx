@@ -417,7 +417,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 		disable = !IsFileReadable(buf->getLogName().second);
 		break;
 	case LFUN_MATH_VALIGN:
-		if (mathcursor && mathcursor->formula()->hullType() != "simple") {
+		if (mathcursor) {
 			char align = mathcursor->valign();
 			if (align == '\0') {
 				disable = true;
@@ -437,7 +437,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 		break;
 
 	case LFUN_MATH_HALIGN:
-		if (mathcursor && mathcursor->formula()->hullType() != "simple") {
+		if (mathcursor) {
 			char align = mathcursor->halign();
 			if (align == '\0') {
 				disable = true;
@@ -457,8 +457,9 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 		break;
 
 	case LFUN_MATH_MUTATE:
-		if (tli && (tli->lyxCode() == Inset::MATH_CODE))
-			flag.setOnOff(mathcursor->formula()->hullType() == ev.argument);
+		if (mathcursor)
+			//flag.setOnOff(mathcursor->formula()->hullType() == ev.argument);
+			flag.setOnOff(false);
 		else
 			disable = true;
 		break;
@@ -479,8 +480,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 	case LFUN_MATH_ROW_DELETE:
 	case LFUN_MATH_COLUMN_INSERT:
 	case LFUN_MATH_COLUMN_DELETE:
-		disable = !mathcursor || !mathcursor->halign() ||
-			mathcursor->formula()->hullType() == "simple";
+		disable = !mathcursor || !mathcursor->halign();
 		break;
 
 	default:

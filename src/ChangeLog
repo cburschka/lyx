@@ -1,3 +1,11 @@
+	
+	*	lyxfunc.C:
+	  BufferView_pimpl.C: streamlining mathed <-> outer world interaction
+
+	* commandtags.h:
+	  LyXAction.C: remove unused LFUN_MATH
+
+
 2002-08-15  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* paragraph.[Ch]: add some NO_NEXT ifdefs.
