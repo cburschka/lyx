@@ -64,6 +64,10 @@ void FormBibtex::build()
 	fl_set_input_return(dialog_->input_database, FL_RETURN_CHANGED);
 	fl_set_input_return(dialog_->input_style, FL_RETURN_CHANGED);
 
+	// callback for double click in browser
+	fl_set_browser_dblclick_callback(dialog_->browser_styles,
+					 C_FormBaseInputCB, 2);
+
 	// set up the tooltips
 	string str = _("The database you want to cite from. Insert it "
 		       "without the default extension \".bib\". Use comma "
@@ -81,7 +85,7 @@ void FormBibtex::build()
 		"of Contents");
 	tooltips().init(dialog_->check_bibtotoc, str);
 
-	str = _("Choose a BibTeX style from the list.");
+	str = _("Double click to choose a BibTeX style from the list.");
 	tooltips().init(dialog_->browser_styles, str);
 	// Work-around xforms' bug; enable tooltips for browser widgets.
 	setPrehandler(dialog_->browser_styles);
@@ -93,7 +97,7 @@ void FormBibtex::build()
 }
 
 
-ButtonPolicy::SMInput FormBibtex::input(FL_OBJECT * ob, long)
+ButtonPolicy::SMInput FormBibtex::input(FL_OBJECT * ob, long ob_value)
 {
 	if (ob == dialog_->button_database_browse) {
 		// When browsing, take the first file only
@@ -119,7 +123,8 @@ ButtonPolicy::SMInput FormBibtex::input(FL_OBJECT * ob, long)
 			fl_set_input(dialog_->input_style, style.c_str());
 		}
 
-	} else if (ob == dialog_->browser_styles) {
+	} else if (ob == dialog_->browser_styles && ob_value == 2) {
+		// double clicked in styles browser
 		string const style = getString(dialog_->browser_styles);
 		if (style.empty()) {
 			return ButtonPolicy::SMI_NOOP;
@@ -127,6 +132,9 @@ ButtonPolicy::SMInput FormBibtex::input(FL_OBJECT * ob, long)
 			fl_set_input(dialog_->input_style,
 					ChangeExtension(style, "").c_str());
 		}
+		// reset the browser so that the following
+		// single-click callback doesn't do anything
+		fl_deselect_browser(dialog_->browser_styles);
 
 	} else if (ob == dialog_->button_rescan) {
 		fl_clear_browser(dialog_->browser_styles);
