@@ -133,6 +133,28 @@ bool ControlGraphics::isFilenameValid(string const & fname) const
 }
 
 
+namespace {
+
+static char const * bb_units[] = { "bp", "cm", "mm", "in"};
+size_t const bb_size = sizeof(bb_units) / sizeof(char *);
+
+}
+
+
+vector<string> const ControlGraphics::getUnits()
+{
+	static vector<string> data;
+	if (!data.empty())
+		return data;
+
+	data.resize(bb_size);
+	for (lyx::size_type i = 0; i < bb_size; ++i) {
+		data[i] = bb_units[i];
+	}
+	return data;
+}
+
+
 namespace frnt {
 
 namespace {

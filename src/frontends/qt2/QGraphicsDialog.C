@@ -57,6 +57,13 @@ void QGraphicsDialog::change_adaptor()
 }
 
 
+void QGraphicsDialog::change_bb()
+{
+	form_->controller().bbChanged = true;
+	form_->changed();
+}
+
+
 void QGraphicsDialog::closeEvent(QCloseEvent * e)
 {
 	form_->slotWMHide();

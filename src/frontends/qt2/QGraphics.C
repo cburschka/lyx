@@ -5,6 +5,7 @@
  *
  * \author John Levon
  * \author Edwin Leuven
+ * \author Herbert Voss
  *
  * Full author contact details are available in file CREDITS
  */
@@ -25,6 +26,8 @@
 #include "lyxrc.h"
 #include "lengthcombo.h"
 #include "gettext.h"
+#include "lengthcommon.h"
+#include "lyxlength.h"
 #include "debug.h"
 
 #include <qlineedit.h>
@@ -40,6 +43,7 @@
 #include "QGraphics.h"
 #include "Qt2BC.h"
 
+using std::vector;
 
 typedef Qt2CB<ControlGraphics, Qt2DB<QGraphicsDialog> > base_class;
 
@@ -96,8 +100,33 @@ void QGraphics::build_dialog()
 }
 
 
+namespace {
+ 
+int getItemNo(vector<string> v, string const & s) {
+	vector<string>::const_iterator cit =
+		    find(v.begin(), v.end(), s);
+	return (cit != v.end()) ? int(cit - v.begin()) : 0;
+}
+ 
+}
+
+
 void QGraphics::update_contents()
 {
+	// clear and fill in the comboboxes
+	vector<string> const bb_units = controller().getUnits();
+	dialog_->lbXunit->clear();
+	dialog_->lbYunit->clear();
+	dialog_->rtXunit->clear();
+	dialog_->rtYunit->clear();
+	for (vector<string>::const_iterator it = bb_units.begin();
+	    it != bb_units.end(); ++it) {
+		dialog_->lbXunit->insertItem((*it).c_str(), -1);
+		dialog_->lbYunit->insertItem((*it).c_str(), -1);
+		dialog_->rtXunit->insertItem((*it).c_str(), -1);
+		dialog_->rtYunit->insertItem((*it).c_str(), -1);
+	}
+	
 	InsetGraphicsParams & igp = controller().params();
 
 	// set the right default unit
@@ -121,24 +150,51 @@ void QGraphics::update_contents()
 
 	dialog_->filename->setText(igp.filename.c_str());
 
-	controller().bbChanged = false;
+	// set the bounding box values
 	if (igp.bb.empty()) {
-		string const bb(controller().readBB(igp.filename));
-		if (!bb.empty()) {
-			// get the values from the file
-			// in this case we always have the point-unit
-			dialog_->lbX->setText(token(bb, ' ', 0).c_str());
-			dialog_->lbY->setText(token(bb, ' ', 1).c_str());
-			dialog_->rtX->setText(token(bb, ' ', 2).c_str());
-			dialog_->rtY->setText(token(bb, ' ', 3).c_str());
-		}
+		controller().bbChanged = false;
+		string const bb = controller().readBB(igp.filename);
+		// the values from the file always have the point-unit
+		dialog_->lbX->setText(token(bb, ' ', 0).c_str());
+		dialog_->lbY->setText(token(bb, ' ', 1).c_str());
+		dialog_->rtX->setText(token(bb, ' ', 2).c_str());
+		dialog_->rtY->setText(token(bb, ' ', 3).c_str());
 	} else {
 		// get the values from the inset
 		controller().bbChanged = true;
-		dialog_->lbX->setText(token(igp.bb, ' ', 0).c_str());
-		dialog_->lbY->setText(token(igp.bb, ' ', 1).c_str());
-		dialog_->rtX->setText(token(igp.bb, ' ', 2).c_str());
-		dialog_->rtY->setText(token(igp.bb, ' ', 3).c_str());
+		LyXLength anyLength;
+		string const xl(token(igp.bb,' ',0));
+		string const yl(token(igp.bb,' ',1));
+		string const xr(token(igp.bb,' ',2));
+		string const yr(token(igp.bb,' ',3));
+		if (isValidLength(xl, &anyLength)) {
+			dialog_->lbX->setText(tostr(anyLength.value()).c_str());
+			string const unit(unit_name[anyLength.unit()]);
+			dialog_->lbXunit->setCurrentItem(getItemNo(bb_units, unit));
+		} else {
+			dialog_->lbX->setText(xl.c_str());
+		}
+		if (isValidLength(yl, &anyLength)) {
+			dialog_->lbY->setText(tostr(anyLength.value()).c_str());
+			string const unit(unit_name[anyLength.unit()]);
+			dialog_->lbYunit->setCurrentItem(getItemNo(bb_units, unit));
+		} else {
+			dialog_->lbY->setText(xl.c_str());
+		}
+		if (isValidLength(xr, &anyLength)) {
+			dialog_->rtX->setText(tostr(anyLength.value()).c_str());
+			string const unit(unit_name[anyLength.unit()]);
+			dialog_->rtXunit->setCurrentItem(getItemNo(bb_units, unit));
+		} else {
+			dialog_->rtX->setText(xl.c_str());
+		}
+		if (isValidLength(yr, &anyLength)) {
+			dialog_->rtY->setText(tostr(anyLength.value()).c_str());
+			string const unit(unit_name[anyLength.unit()]);
+			dialog_->rtYunit->setCurrentItem(getItemNo(bb_units, unit));
+		} else {
+			dialog_->rtY->setText(xl.c_str());
+		}
 	}
 
 	// Update the draft and clip mode
@@ -188,7 +244,9 @@ void QGraphics::apply()
 
 	igp.filename = dialog_->filename->text();
 
+	// the bb section
 	if (!controller().bbChanged) {
+		// don't write anything		
 		igp.bb.erase();
 	} else {
 		string bb;
@@ -200,20 +258,19 @@ void QGraphics::apply()
 		if (lbX.empty())
 			bb = "0 ";
 		else
-			bb = lbX + " ";
+			bb = lbX + dialog_->lbXunit->currentText().latin1() + ' ';
 		if (lbY.empty())
 			bb += "0 ";
-		else
-			bb += (lbY + " ");
+		else 
+			bb += (lbY + dialog_->lbYunit->currentText().latin1() + ' ');
 		if (rtX.empty())
 			bb += "0 ";
-		else
-			bb += (rtX + " ");
+		else 
+			bb += (rtX + dialog_->rtXunit->currentText().latin1() + ' ');
 		if (rtY.empty())
-			bb += "0 ";
-		else
-			bb += (rtY + " ");
-
+			bb += "0";
+		else 
+			bb += (rtY + dialog_->rtYunit->currentText().latin1());
 		igp.bb = bb;
 	}
 
@@ -277,6 +334,12 @@ void QGraphics::get()
 			dialog_->lbY->setText(token(bb, ' ', 1).c_str());
 			dialog_->rtX->setText(token(bb, ' ', 2).c_str());
 			dialog_->rtY->setText(token(bb, ' ', 3).c_str());
+			// the default units for the bb values when reading
+			// it from the file
+			dialog_->lbXunit->setCurrentItem(0);
+			dialog_->lbYunit->setCurrentItem(0);
+			dialog_->rtXunit->setCurrentItem(0);
+			dialog_->rtYunit->setCurrentItem(0);
 		}
 		controller().bbChanged = false;
 	}

@@ -28,6 +28,7 @@ public:
 	virtual void show();
 protected slots:
 	virtual void change_adaptor();
+	virtual void change_bb();
 	virtual void browse_clicked();
 	virtual void get_clicked();
 protected:

@@ -32,6 +32,7 @@ class LyXView;
 
 /** A controller for Graphics dialogs.
  */
+
 class ControlGraphics
 	: public ControlInset<InsetGraphics, InsetGraphicsParams> {
 public:
@@ -46,6 +47,8 @@ public:
 	bool bbChanged;
 	/// test if file exist
 	bool isFilenameValid(string const & fname) const;
+	/// get the units for the bb
+	std::vector<string> const getUnits();
 
 private:
 	/// Dispatch the changed parameters to the kernel.

@@ -1377,31 +1377,49 @@
         <sender>lbX</sender>
         <signal>textChanged(const QString&amp;)</signal>
         <receiver>QGraphicsDialogBase</receiver>
-        <slot>change_adaptor()</slot>
+        <slot>change_bb()</slot>
+    </connection>
+    <connection>
+        <sender>lbY</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>QGraphicsDialogBase</receiver>
+        <slot>change_bb()</slot>
+    </connection>
+    <connection>
+        <sender>rtX</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>QGraphicsDialogBase</receiver>
+        <slot>change_bb()</slot>
+    </connection>
+    <connection>
+        <sender>rtY</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>QGraphicsDialogBase</receiver>
+        <slot>change_bb()</slot>
     </connection>
     <connection>
         <sender>lbXunit</sender>
         <signal>activated(int)</signal>
         <receiver>QGraphicsDialogBase</receiver>
-        <slot>change_adaptor()</slot>
+        <slot>change_bb()</slot>
     </connection>
     <connection>
         <sender>lbYunit</sender>
         <signal>activated(int)</signal>
         <receiver>QGraphicsDialogBase</receiver>
-        <slot>change_adaptor()</slot>
+        <slot>change_bb()</slot>
     </connection>
     <connection>
         <sender>rtXunit</sender>
         <signal>activated(int)</signal>
         <receiver>QGraphicsDialogBase</receiver>
-        <slot>change_adaptor()</slot>
+        <slot>change_bb()</slot>
     </connection>
     <connection>
         <sender>rtYunit</sender>
         <signal>activated(int)</signal>
         <receiver>QGraphicsDialogBase</receiver>
-        <slot>change_adaptor()</slot>
+        <slot>change_bb()</slot>
     </connection>
     <connection>
         <sender>showCB</sender>
@@ -1526,6 +1544,7 @@
     <slot access="protected">browse_clicked()</slot>
     <slot access="protected">get_clicked()</slot>
     <slot access="protected">change_adaptor()</slot>
+    <slot access="protected">change_bb()</slot>
 </connections>
 <tabstops>
     <tabstop>TabWidget</tabstop>
