@@ -45,29 +45,29 @@
 #include "banner.xpm"
 #endif
 
-FD_form_title *fd_form_title;
-FD_form_paragraph *fd_form_paragraph;
-FD_form_paragraph_extra *fd_form_paragraph_extra;
-FD_form_search *fd_form_search;
-FD_form_character *fd_form_character;
-FD_form_document *fd_form_document;
-FD_form_paper *fd_form_paper;
-FD_form_table_options *fd_form_table_options;
-FD_form_table_extra *fd_form_table_extra;
-FD_form_quotes *fd_form_quotes;
-FD_form_preamble *fd_form_preamble;
-FD_form_table *fd_form_table;
-FD_form_print *fd_form_print;
-FD_form_sendto *fd_form_sendto;
-FD_form_figure *fd_form_figure;
-FD_form_screen *fd_form_screen;
-FD_form_toc *fd_form_toc;
-FD_form_ref *fd_form_ref;
-FD_LaTeXOptions *fd_latex_options; // from latexoptions.h
-FD_LaTeXLog *fd_latex_log; // from latexoptions.h
-Combox *combo_language;
+FD_form_title * fd_form_title;
+FD_form_paragraph * fd_form_paragraph;
+FD_form_paragraph_extra * fd_form_paragraph_extra;
+FD_form_search * fd_form_search;
+FD_form_character * fd_form_character;
+FD_form_document * fd_form_document;
+FD_form_paper * fd_form_paper;
+FD_form_table_options * fd_form_table_options;
+FD_form_table_extra * fd_form_table_extra;
+FD_form_quotes * fd_form_quotes;
+FD_form_preamble * fd_form_preamble;
+FD_form_table * fd_form_table;
+FD_form_print * fd_form_print;
+FD_form_sendto * fd_form_sendto;
+FD_form_figure * fd_form_figure;
+FD_form_screen * fd_form_screen;
+FD_form_toc * fd_form_toc;
+FD_form_ref * fd_form_ref;
+FD_LaTeXOptions * fd_latex_options; // from latexoptions.h
+FD_LaTeXLog * fd_latex_log; // from latexoptions.h
+Combox * combo_language;
 
-extern LyXServer *lyxserver;
+extern LyXServer * lyxserver;
 extern bool finished;	// flag, that we are quitting the program
 extern BufferList bufferlist;
 
@@ -161,8 +161,8 @@ extern "C" int LyX_XErrHandler(Display * display, XErrorEvent * xeev)
 }
 
 
-LyXGUI::LyXGUI(LyX *owner, int *argc, char *argv[], bool GUI)
-	:_owner(owner)
+LyXGUI::LyXGUI(LyX * owner, int * argc, char * argv[], bool GUI)
+	: _owner(owner)
 {
 	gui = GUI;
 	if (!gui)
@@ -197,7 +197,8 @@ LyXGUI::LyXGUI(LyX *owner, int *argc, char *argv[], bool GUI)
 
 
 // A destructor is always necessary  (asierra-970604)
-LyXGUI::~LyXGUI() {
+LyXGUI::~LyXGUI()
+{
         // Lyxserver was created in this class so should be destroyed
         // here.  asierra-970604
         if (lyxserver) {
@@ -441,20 +442,20 @@ void LyXGUI::create_forms()
 	fl_set_counter_precision(fd_form_document->slider_tocdepth, 0);
 	fl_addto_form(fd_form_document->form_document);
 	combo_language = new Combox(FL_COMBOX_DROPLIST);
-	FL_OBJECT *ob = fd_form_document->choice_language;
+	FL_OBJECT * ob = fd_form_document->choice_language;
 	combo_language->add(ob->x, ob->y, ob->w, ob->h, 200);
 	combo_language->shortcut("#G", 1);
 	fl_end_form();
 	int n; // declared here because DEC cxx does not like multiple
 	       // declarations of variables in for() loops (JMarc)
-        for (n = 0; tex_babel[n][0]; n++) {
+        for (n = 0; tex_babel[n][0]; ++n) {
 	    combo_language->addto(tex_babel[n]);
 	}
 
 	// not really necessary, but we can do it anyway.
 	fl_addto_choice(fd_form_document->choice_fontsize, "default|10|11|12");
 	
-        for (n = 0; tex_fonts[n][0]; n++) {
+        for (n = 0; tex_fonts[n][0]; ++n) {
 	    fl_addto_choice(fd_form_document->choice_fonts, tex_fonts[n]);
 	}
 
@@ -462,7 +463,7 @@ void LyXGUI::create_forms()
 			"default|latin1|latin2|latin5"
 			"|koi8-r|koi8-u|cp866|cp1251");
 
-        for (n = 0; tex_graphics[n][0]; n++) {
+        for (n = 0; tex_graphics[n][0]; ++n) {
 	    fl_addto_choice(fd_form_document->choice_postscript_driver,
 					tex_graphics[n]);
 	}
@@ -639,7 +640,7 @@ void LyXGUI::runTime()
 }
 
 
-void LyXGUI::regBuf(Buffer *b)
+void LyXGUI::regBuf(Buffer * b)
 {
 	lyxViews->view()->buffer(b);
 }

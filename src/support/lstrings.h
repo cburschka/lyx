@@ -119,7 +119,7 @@ bool contains(string const & a, string const & b);
 bool contains(char const * a, char const * b);
 
 /// Counts how many of character c there is in a
-int countChar(string const & a, char const c);
+unsigned int countChar(string const & a, char const c);
 
 /** Extracts a token from this string at the nth delim.
   Doesn't modify the original string. Similar to strtok.

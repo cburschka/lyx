@@ -18,6 +18,11 @@
 
 #include FORMS_H_LOCATION
 
+#if defined(__cplusplus)
+extern "C"
+{
+#endif
+
 ///
 #define FL_BMTABLE 1500
 /// A flat bitmap table
@@ -33,6 +38,7 @@
  *  normal bmtable default
  */
 #define FL_BMTABLE_BOXTYPE	FL_UP_BOX
+
 
 ///
 FL_OBJECT *fl_create_bmtable(int, FL_Coord, FL_Coord, 
@@ -83,6 +89,10 @@ void fl_free_bmtable_bitmap(FL_OBJECT *ob);
 
 /** Free the current pixmap in preparation for installing a new one */
 void fl_free_bmtable_pixmap(FL_OBJECT *ob);
+
+#if defined(__cplusplus)
+}
+#endif
 
 #endif  /* BMTABLE_H */
 

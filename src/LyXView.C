@@ -158,22 +158,20 @@ void LyXView::create_form_form_main(int width, int height)
 	 * are presented (and rightly so) in GUI popups. Asger. 
 	 */
 {
-	FL_OBJECT * obj;
-	
-	FD_form_main *fdui = (FD_form_main *)
-		fl_calloc(1, sizeof(FD_form_main));
+	FD_form_main * fdui = static_cast<FD_form_main *>
+		(fl_calloc(1, sizeof(FD_form_main)));
 
 	_form_main = fdui;
 
 	// the main form
 	_form = fdui->form_main = fl_bgn_form(FL_NO_BOX, width, height);
 	fdui->form_main->u_vdata = this;
-	obj = fl_add_box(FL_FLAT_BOX, 0, 0, width, height, "");
+	FL_OBJECT * obj = fl_add_box(FL_FLAT_BOX, 0, 0, width, height, "");
 	fl_set_object_color(obj, FL_MCOL, FL_MCOL);
 
 	// Parameters for the appearance of the main form
-	const int air = 2;
-	const int bw = abs(fl_get_border_width());
+	int const air = 2;
+	int const bw = abs(fl_get_border_width());
 	
 	//
 	// THE MENUBAR
@@ -194,19 +192,19 @@ void LyXView::create_form_form_main(int width, int height)
 	// WORKAREA
 	//
 
-	const int ywork = 60 + 2*air + bw;
-	const int workheight = height - ywork - (25 + 2*air);
+	int const ywork = 60 + 2 * air + bw;
+	int const workheight = height - ywork - (25 + 2 * air);
 
 	::current_view = bufferview = new BufferView(this, air, ywork,
-						     width - 3*air,
+						     width - 3 * air,
 						     workheight);
 
 	//
 	// MINIBUFFER
 	//
 
-	minibuffer = new MiniBuffer(this, air, height-(25+air), 
-				    width-(2*air), 25);
+	minibuffer = new MiniBuffer(this, air, height - (25 + air), 
+				    width - (2 * air), 25);
 
 	//
 	// TIMERS
@@ -292,16 +290,13 @@ void LyXView::updateLayoutChoice()
 	if (toolbar->combox->empty() ||
 	    (last_textclass != int(buffer()->params.textclass))) {
 		toolbar->combox->clear();
-		for (int i = 0;
-		     textclasslist.NameOfLayout(buffer()->
-			 params.textclass, i) != "@@end@@";
-		     i++) {
-			LyXLayout const & layout = textclasslist.
-				Style(buffer()->params.textclass, i);
-			if (layout.obsoleted_by().empty())
-				toolbar->combox->addline(layout.name().c_str());
+		LyXTextClass const & tc = textclasslist.TextClass(buffer()->params.textclass);
+		for (LyXTextClass::const_iterator cit = tc.begin();
+		     cit != tc.end(); ++cit) {
+			if ((*cit).obsoleted_by().empty())
+				toolbar->combox->addline((*cit).name().c_str());
 			else
-				toolbar->combox->addline(("@N"+layout.name()).c_str());
+				toolbar->combox->addline(("@N" + (*cit).name()).c_str());
 		}
 		last_textclass = int(buffer()->params.textclass);
 		current_layout = 0;
@@ -323,10 +318,10 @@ void LyXView::UpdateDocumentClassChoice()
 	// Update the document class display in the document form
 	if (fd_form_document) {
 		fl_clear_choice(fd_form_document->choice_class);
-		for (int i = 0;
-		     textclasslist.DescOfClass(i) != "@@end@@"; ++i) {
+		for (LyXTextClassList::const_iterator cit = textclasslist.begin();
+		     cit != textclasslist.end(); ++cit) {
 			fl_addto_choice(fd_form_document->choice_class,
-					textclasslist.DescOfClass(i).c_str());
+					(*cit).description().c_str());
 		}
 	}
 }

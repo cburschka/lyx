@@ -66,9 +66,9 @@ int Intl::SetSecondary(string const & lang)
 
 void Intl::update()
 {
-	int off, prim, sec;
-	
-	off = prim = sec = 0;
+	int off = 0;
+	int prim = 0;
+	int sec = 0;
 	
 	if (!keymapon) {
 		off = 1;
@@ -219,10 +219,12 @@ void Intl::DispatchCallback(FL_OBJECT * ob, long code)
 	if (itl!= 0) itl->Keymap(code);
 }
 
+
 extern "C" void C_Intl_DispatchCallback(FL_OBJECT * ob, long code)
 {
 	Intl::DispatchCallback(ob, code);
 }
+
 
 void Intl::InitKeyMapper(bool on)
 	/* initialize key mapper */
@@ -291,7 +293,7 @@ void Intl::InitKeyMapper(bool on)
 	
 	Language->addto(_("other..."));
 	Language2->addto(_("other..."));
-	otherkeymap = n+1;
+	otherkeymap = n + 1;
 	if (!Language->select_text(prim_lang.c_str())) {
 		Language->select(n+1);
 		fl_set_input(fd_form_keymap->OtherKeymap, prim_lang.c_str());
@@ -300,7 +302,7 @@ void Intl::InitKeyMapper(bool on)
 		trans->SetPrimary(prim_lang);
 
 	if (!Language2->select_text(sec_lang.c_str())) {
-		Language2->select(n+1);
+		Language2->select(n + 1);
 		fl_set_input(fd_form_keymap->OtherKeymap2, sec_lang.c_str());
 	}
 	else
@@ -319,6 +321,9 @@ void Intl::Keymap(long code)
 	if (lyxerr.debugging(Debug::KBMAP))
 		lyxerr << "KeyMap callback: " << code << endl;
 
+	// Did you wonder if it is possible to write spagetti code with
+	// other constructs thatn goto's? Well here we have a nice small
+	// spagetti example using a switch... (Lgb)
 	switch (code) {
 	case 0:
 		/* cancel/hide */

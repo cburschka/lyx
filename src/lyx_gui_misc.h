@@ -1,13 +1,13 @@
 // -*- C++ -*-
 /* This file is part of
-* ======================================================
-* 
-*           LyX, The Document Processor
-*        
-*           Copyright (C) 1995 1996 Matthias Ettrich
-*           and the LyX Team.
-*
-* ====================================================== */
+ * ======================================================
+ * 
+ *           LyX, The Document Processor
+ *        
+ *           Copyright 1995 1996 Matthias Ettrich
+ *           Copyright 1995-1999 The LyX Team
+ *
+ * ====================================================== */
 
 // Misc. GUI specific routines
 
@@ -29,12 +29,12 @@ void CloseAllBufferRelatedPopups();
 void updateAllVisibleBufferRelatedPopups();
 
 /// Extract shortcut from <ident>|<shortcut> string
-const char* flyx_shortcut_extract(const char*sc);
+char const * flyx_shortcut_extract(char const * sc);
 /// Make a shortnamed version of the above func
 #define scex flyx_shortcut_extract
 
 /// Extract shortcut from <ident>|<shortcut> string
-const char* flyx_ident_extract(char const *sc);
+char const * flyx_ident_extract(char const * sc);
 /// Make a shortnamed versjon of the above func
 #define idex flyx_ident_extract
 
@@ -57,7 +57,7 @@ int AskConfirmation(string const & s1, string const & s2 = string(),
 string askForText(string const & msg, string const & dflt = string());
 
 /// Informs the user that changes in the coming form will be ignored
-void WarnReadonly();
+void WarnReadonly(string const & file);
 
 // inlined functions
 /// rings the audio bell.

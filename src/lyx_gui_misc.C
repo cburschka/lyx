@@ -32,7 +32,7 @@
 #include "insets/insetindex.h"
 #include "LyXView.h"
 
-extern BufferView *current_view;
+extern BufferView * current_view;
 
 extern FD_form_paragraph * fd_form_paragraph;
 extern FD_form_paragraph_extra * fd_form_paragraph_extra;
@@ -305,38 +305,40 @@ void updateAllVisibleBufferRelatedPopups()
 }
 
 // Extract shortcut from <ident>|<shortcut> string
-const char* flyx_shortcut_extract(const char*sc)
+char const * flyx_shortcut_extract(char const * sc)
 {
 	// Find '|' in the sc and return the string after that.
-	register char const *sd = sc;
-	while(sd[0]!= 0 && sd[0] != '|') sd++;
+	register char const * sd = sc;
+	while(sd[0]!= 0 && sd[0] != '|') ++sd;
 
 	if (sd[0] == '|') {
-		sd++;
+		++sd;
 		//lyxerr << sd << endl;
 		return sd;
 	}
 	return "";
 }
 
+
 // Extract identifier from <ident>|<shortcut> string
-const char* flyx_ident_extract(char const *sc)
+char const * flyx_ident_extract(char const * sc)
 {
-	register char const *se = sc;
-	while(se[0]!= 0 && se[0] != '|') se++;
+	register char const * se = sc;
+	while(se[0]!= 0 && se[0] != '|') ++se;
 
 	if (se[0] == 0) return sc;
 	
-	char * sb = new char[se-sc + 1];
+	char * sb = new char[se - sc + 1];
 	int index = 0;
-	register char const *sd = sc;
+	register char const * sd = sc;
 	while (sd != se) {
 		sb[index] = sd[0];
-		index++; sd++;
+		++index; ++sd;
 	}
 	sb[index] = 0;
 	return sb;
 }
+
 
 //
 void WriteAlert(string const & s1, string const & s2, string const & s3)
@@ -375,6 +377,7 @@ bool AskQuestion(string const & s1, string const & s2, string const & s3)
 #endif
 }
 
+
 // Returns 1 for yes, 2 for no, 3 for cancel.
 int AskConfirmation(string const & s1, string const & s2, string const & s3)
 {
@@ -399,7 +402,7 @@ int AskConfirmation(string const & s1, string const & s2, string const & s3)
 // Asks for a text
 string askForText(string const & msg, string const & dflt)
 {
-	const char * tmp;
+	char const * tmp;
 	fl_set_resource("flInput.cancel.label", idex(_("Cancel|^[")));
 	fl_set_resource("flInput.ok.label", idex(_("OK|#O")));
 	fl_set_resource("flInput.clear.label", idex(_("Clear|#e")));
@@ -410,12 +413,12 @@ string askForText(string const & msg, string const & dflt)
 	  return string();
 }
 
+
 // Inform the user that the buffer is read-only, and that changes in the
 // dialog box that is to appear will be ignored.
-void WarnReadonly()
+void WarnReadonly(string const & file)
 {
 	WriteAlert(_("Any changes will be ignored"),
 		   _("The document is read-only:"),
-		   current_view->buffer()->fileName());
+		   file);
 }
-

@@ -286,6 +286,30 @@ if test $lyx_cv_broken_stack = yes ; then
 fi])
 
 
+dnl Usage: LYX_STD_COUNT : checks wherer the C++ library have a conforming
+dnl    count template, if not the old HP version is assumed.
+AC_DEFUN(LYX_STD_COUNT,[
+AC_CACHE_CHECK(for conforming std::count,lyx_cv_std_count,
+ [AC_TRY_COMPILE([
+#include <string>
+#include <algorithm>
+using std::string;
+using std::count;
+int countChar(string const & a, char const c)
+{
+        return count(a.begin(), a.end(), c);
+}
+],[
+    string a("hello");
+    int i = countChar(a, 'l');
+],lyx_cv_std_count=yes,lyx_cv_std_count=no)
+])
+if test $lyx_cv_std_count = yes ; then
+    AC_DEFINE(HAVE_STD_COUNT, 1,
+    [Define if you have a conforming std::count template, otherwise HP version of count template is assumed.])
+fi])
+
+
 dnl Usage: LYX_CXX_STL_MODERN_STREAMS : checks whether the C++ compiler
 dnl   supports modern STL streams
 AC_DEFUN(LYX_CXX_STL_MODERN_STREAMS,[

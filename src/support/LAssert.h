@@ -32,7 +32,7 @@ template<class A> inline void Assert(A * ptr)
 
 #else
 
-template<class A> inline void Assert(A /*assertion*/) {;}
+template<class A> inline void Assert(A /*assertion*/) {}
 
 #endif /* ENABLE_ASSERTIONS */
 

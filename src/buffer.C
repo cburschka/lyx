@@ -230,25 +230,25 @@ bool Buffer::insertLyXFile(string const & filen)
 {
 	if (filen.empty()) return false;
 
-	string filename = MakeAbsPath(filen);
+	string fname = MakeAbsPath(filen);
 
 	// check if file exist
-	FileInfo fi(filename);
+	FileInfo fi(fname);
 
 	if (!fi.readable()) {
 		WriteAlert(_("Error!"),
 			   _("Specified file is unreadable: "),
-			   MakeDisplayPath(filename, 50));
+			   MakeDisplayPath(fname, 50));
 		return false;
 	}
 	
 	BeforeChange();
 
-	FilePtr myfile(filename, FilePtr::read);
+	FilePtr myfile(fname, FilePtr::read);
 	if (!myfile()) {
 		WriteAlert(_("Error!"),
 			   _("Cannot open specified file: "),
-			   MakeDisplayPath(filename, 50));
+			   MakeDisplayPath(fname, 50));
 		return false;
 	}
 	LyXLex lex(0, 0);
@@ -1174,45 +1174,45 @@ bool Buffer::readFile(LyXLex & lex, LyXParagraph * par)
 	    	    
 
 // Returns false if unsuccesful
-bool Buffer::writeFile(string const & filename, bool flag)
+bool Buffer::writeFile(string const & fname, bool flag)
 {
 	// if flag is false writeFile will not create any GUI
 	// warnings, only cerr.
 	// Needed for autosave in background or panic save (Matthias 120496)
 
-	if (read_only && (filename == this->filename)) {
+	if (read_only && (fname == filename)) {
 		// Here we should come with a question if we should
 		// perform the write anyway.
 		if (flag)
 			lyxerr << _("Error! Document is read-only: ")
-			       << filename << endl;
+			       << fname << endl;
 		else
 			WriteAlert(_("Error! Document is read-only: "),
-				   filename);
+				   fname);
 		return false;
 	}
 
-	FileInfo finfo(filename);
+	FileInfo finfo(fname);
 	if (finfo.exist() && !finfo.writable()) {
 		// Here we should come with a question if we should
 		// try to do the save anyway. (i.e. do a chmod first)
 		if (flag)
 			lyxerr << _("Error! Cannot write file: ")
-			       << filename << endl;
+			       << fname << endl;
 		else
 			WriteFSAlert(_("Error! Cannot write file: "),
-				     filename);
+				     fname);
 		return false;
 	}
 
-	ofstream ofs(filename.c_str());
+	ofstream ofs(fname.c_str());
 	if (!ofs) {
 		if (flag)
 			lyxerr << _("Error! Cannot open file: ")
-			       << filename << endl;
+			       << fname << endl;
 		else
 			WriteFSAlert(_("Error! Cannot open file: "),
-				     filename);
+				     fname);
 		return false;
 	}
 	// The top of the file should not be written by params.
@@ -1242,7 +1242,7 @@ bool Buffer::writeFile(string const & filename, bool flag)
 }
 
 
-void Buffer::writeFileAscii(string const & filename, int linelen) 
+void Buffer::writeFileAscii(string const & fname, int linelen) 
 {
 	LyXFont font1, font2;
 	Inset * inset;
@@ -1255,9 +1255,9 @@ void Buffer::writeFileAscii(string const & filename, int linelen)
 	long fpos = 0;
 	bool ref_printed = false;
 
-	ofstream ofs(filename.c_str());
+	ofstream ofs(fname.c_str());
 	if (!ofs) {
-		WriteFSAlert(_("Error: Cannot write file:"), filename);
+		WriteFSAlert(_("Error: Cannot write file:"), fname);
 		return;
 	}
 
@@ -1565,7 +1565,7 @@ void Buffer::writeFileAscii(string const & filename, int linelen)
 }
 
 
-void Buffer::makeLaTeXFile(string const & filename, 
+void Buffer::makeLaTeXFile(string const & fname, 
 			   string const & original_path,
 			   bool nice, bool only_body)
 {
@@ -1578,9 +1578,9 @@ void Buffer::makeLaTeXFile(string const & filename,
         LyXTextClass const & tclass =
 		textclasslist.TextClass(params.textclass);
 
-	ofstream ofs(filename.c_str());
+	ofstream ofs(fname.c_str());
 	if (!ofs) {
-		WriteFSAlert(_("Error: Cannot open file: "), filename);
+		WriteFSAlert(_("Error: Cannot open file: "), fname);
 		return;
 	}
 	
@@ -2120,27 +2120,33 @@ bool Buffer::isSGML() const
 void Buffer::sgmlOpenTag(ostream & os, int depth,
 			 string const & latexname) const
 {
-	static char * space[] = {" ","  ", "   ", "    ", "     ", "      ",
-				 "       ",
-				 "        ", "         ", "          ",
-				 "          "};
-
+#if 0
+	static char const * space[] = {
+		" ","  ", "   ", "    ", "     ", "      ",
+		"       ",
+		"        ", "         ", "          ",
+		"          "};
 	os << space[depth] << "<" << latexname << ">\n";
+#endif
+	os << string(depth, ' ') << "<" << latexname << ">\n";
 }
 
 
 void Buffer::sgmlCloseTag(ostream & os, int depth,
 			  string const & latexname) const
 {
+#if 0
 	static char * space[] = {" ", "  ", "   ", "    ", "     ",
 				 "      ", "       ", "        ",
 				 "         ", "          ", "          "};
 
 	os << space[depth] << "</" << latexname << ">\n";
+#endif
+	os << string(depth, ' ') << "</" << latexname << ">\n";
 }
 
 
-void Buffer::makeLinuxDocFile(string const & filename, int column)
+void Buffer::makeLinuxDocFile(string const & fname, int column)
 {
 	LyXParagraph * par = paragraph;
 
@@ -2150,10 +2156,10 @@ void Buffer::makeLinuxDocFile(string const & filename, int column)
 
 	int depth = 0;              /* paragraph depth */
 
-	ofstream ofs(filename.c_str());
+	ofstream ofs(fname.c_str());
 
 	if (!ofs) {
-		WriteAlert(_("LYX_ERROR:"), _("Cannot write file"), filename);
+		WriteAlert(_("LYX_ERROR:"), _("Cannot write file"), fname);
 		return;
 	}
    
@@ -2723,7 +2729,7 @@ void Buffer::LinuxDocError(LyXParagraph * par, int pos,
 
 enum { MAX_NEST_LEVEL = 25};
 
-void Buffer::makeDocBookFile(string const & filename, int column)
+void Buffer::makeDocBookFile(string const & fname, int column)
 {
 	LyXParagraph * par = paragraph;
 
@@ -2741,9 +2747,9 @@ void Buffer::makeDocBookFile(string const & filename, int column)
 
 	tex_code_break_column = column; 
 
-	ofstream ofs(filename.c_str());
+	ofstream ofs(fname.c_str());
 	if (!ofs) {
-		WriteAlert(_("LYX_ERROR:"), _("Cannot write file"), filename);
+		WriteAlert(_("LYX_ERROR:"), _("Cannot write file"), fname);
 		return;
 	}
    

@@ -230,7 +230,7 @@ Inset * InsetInclude::Clone() const
 void InsetInclude::Edit(int, int)
 {
 	if(current_view->buffer()->isReadonly())
-		WarnReadonly();
+		WarnReadonly(current_view->buffer()->fileName());
 
 	if (!form) {
                 form = create_form_include();

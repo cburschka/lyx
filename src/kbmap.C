@@ -40,7 +40,7 @@ enum { ModsMask = ShiftMask | ControlMask | Mod1Mask};
    Returns   : length of printed string if ok, 0 otherwise.
 \* ---F------------------------------------------------------------------- */
 static
-void printKeysym( KeySym key, unsigned int mod, string & buf)
+void printKeysym(KeySym key, unsigned int mod, string & buf)
 {
 	mod &= ModsMask;
 
@@ -64,7 +64,7 @@ void printKeysym( KeySym key, unsigned int mod, string & buf)
 \* ---F------------------------------------------------------------------- */
 
 static
-void printKeyTab( kb_key * tabPt, string & buf)
+void printKeyTab(kb_key * tabPt, string & buf)
 {
 	unsigned int ksym, mod;
 	
@@ -131,59 +131,55 @@ int kb_sequence::addkey(KeySym key,
 
 int kb_sequence::parse(char const * s)
 {
+	if(!s[0]) return 1;
+
 	int i = 0;
 	unsigned int mod = 0, nmod = 0;
-	KeySym key = 0;
-	char tbuf[100];
-	
-	if(!s[0]) return 1;
-	
 	while(s[i]) {
 		if(s[i] && (s[i]) <= ' ') ++i;
 		if(!s[i]) break;
 		
-		if(s[i+1] == '-')	{ // is implicit that s[i] == true
+		if(s[i + 1] == '-')	{ // is implicit that s[i] == true
 			switch(s[i]) {
 			case 's': case 'S':
 				mod |= ShiftMask;
-				i+= 2;
+				i += 2;
 				continue;
 			case 'c': case 'C':
 				mod |= ControlMask;
-				i+= 2;
+				i += 2;
 				continue;
 			case 'm': case 'M':
 				mod |= Mod1Mask;
-				i+= 2;
+				i += 2;
 				continue;
 			default:
-				return i+1;
+				return i + 1;
 			}
-		} else if(s[i] == '~' && s[i+1] && s[i+2] == '-') {
-			switch(s[i+1]) {
+		} else if(s[i] == '~' && s[i + 1] && s[i + 2] == '-') {
+			switch(s[i + 1]) {
 			case 's': case 'S':
 				nmod |= ShiftMask;
-				i+= 3;
+				i += 3;
 				continue;
 			case 'c': case 'C':
 				nmod |= ControlMask;
-				i+= 3;
+				i += 3;
 				continue;
 			case 'm': case 'M':
 				nmod |= Mod1Mask;
-				i+= 3;
+				i += 3;
 				continue;
 			default:
-				return i+2;
+				return i + 2;
 			}
 		} else {
-			int j = 0;
-			for(j = i; s[j] && s[j] > ' '; ++j)
-				tbuf[j-i] = s[j];    // (!!!check bounds :-)
+			string tbuf;
+			int j = i;
+			for(; s[j] && s[j] > ' '; ++j)
+				tbuf += s[j];    // (!!!check bounds :-)
 			
-			tbuf[j-i] = '\0';
-         
-			key = XStringToKeysym(tbuf);
+			KeySym key = XStringToKeysym(tbuf.c_str());
 			if(key == NoSymbol) {
 				lyxerr[Debug::KBMAP]
 					<< "kbmap.C: No such keysym: "
@@ -282,7 +278,7 @@ KeySym kb_sequence::getsym()
 	int l = length;
 	if(l == 0) return NoSymbol;
 	if(l < 0) l = -l;
-	return sequence[l-1];
+	return sequence[l - 1];
 }
 
 
@@ -316,7 +312,7 @@ void kb_sequence::reset()
 {
 	delseq();
 	curmap = stdmap;
-	if ( length > 0 ) length = -length;
+	if (length > 0) length = -length;
 }
 
 
@@ -368,7 +364,7 @@ int kb_keymap::lookup(KeySym key, unsigned int mod, kb_sequence * seq)
 
 #ifndef NO_HASH
 	if(size < 0) {               // --- if hash table ---
-		hashval = ((key&0xff) ^ ((key>>8)&0xff)) % KB_HASHSIZE;
+		hashval = ((key & 0xff) ^ ((key >> 8) & 0xff)) % KB_HASHSIZE;
 		tab = htable[hashval];
 		if(!tab) {
 			seq->curmap = seq->stdmap;
@@ -381,7 +377,7 @@ int kb_keymap::lookup(KeySym key, unsigned int mod, kb_sequence * seq)
 
 	// --- now search the list of keys ---
 
-	for( ; (tab->code & 0xffff) != NoSymbol; ++tab) {
+	for(; (tab->code & 0xffff) != NoSymbol; ++tab) {
 		ksym =  tab->code;
 		msk1 =  tab->mod      & 0xffff;
 		msk0 = (tab->mod >> 16) & 0xffff;
@@ -485,7 +481,7 @@ int kb_keymap::defkey(kb_sequence * seq, int action, int idx /*= 0*/)
 	int tsize;
 	for(t = tab, tsize = 1; t->code != NoSymbol; ++t, ++tsize) {
 		if(code == t->code && modmsk == t->mod) { // -- overwrite binding ---
-			if(idx+1 == seq->length) {
+			if(idx + 1 == seq->length) {
 				string buf;
 				seq->print(buf, true);
 				lyxerr[Debug::KEY]

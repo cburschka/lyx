@@ -89,14 +89,6 @@ int  strToInt(string const & str)
 
 string lowercase(string const & a)
 {
-#if 0
-	string tmp;
-	string::const_iterator cit = a.begin();
-	for(; cit != a.end(); ++cit) {
-		tmp += static_cast<char>(tolower(*cit));
-	}
-	return tmp;
-#endif
 	string tmp(a);
 	transform(tmp.begin(), tmp.end(), tmp.begin(), tolower);
 	return tmp;
@@ -157,14 +149,6 @@ string tostr(bool b)
 {
 	return b ? "true" : "false";
 }
-
-
-#if 0
-string tostr(float f)
-{
-	return tostr(double(f));
-}
-#endif
 
 
 string tostr(double d)
@@ -234,9 +218,15 @@ bool contains(char const * a, char const * b)
 }
 
 
-int countChar(string const & a, char const c)
+unsigned int countChar(string const & a, char const c)
 {
+#ifdef HAVE_STD_COUNT
 	return count(a.begin(), a.end(), c);
+#else
+	unsigned int n = 0;
+	count(a.begin(), a.end(), c, n);
+	return n;
+#endif
 }
 
 

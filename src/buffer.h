@@ -33,6 +33,7 @@
 #include "texrow.h"
 #include "lyxtext.h"
 #include "support/filetools.h"
+#include "lyx_gui_misc.h"
 
 
 class LyXRC;
@@ -40,7 +41,6 @@ class TeXErrors;
 class LaTeXFeatures;
 
 extern void updateAllVisibleBufferRelatedPopups();
-extern void WarnReadonly();
 
 ///
 struct DEPCLEAN {
@@ -252,17 +252,16 @@ public:
 	bool isReadonly() { return read_only; }
 
 	/// Set buffer read-only flag
-	void setReadonly(bool flag = true) 
-		{
-			if (read_only != flag) {
-				read_only = flag; 
-				updateTitles();
-				updateAllVisibleBufferRelatedPopups();
-			}
-			if (read_only) {
-				WarnReadonly();
-			}
+	void setReadonly(bool flag = true) {
+		if (read_only != flag) {
+			read_only = flag; 
+			updateTitles();
+			updateAllVisibleBufferRelatedPopups();
 		}
+		if (read_only) {
+			WarnReadonly(filename);
+		}
+	}
 
 	/// returns true if the buffer contains a LaTeX document
 	bool isLatex() const;

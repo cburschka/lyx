@@ -744,10 +744,10 @@ void  LyXText::SetFont(LyXFont font, bool toggleall)
 }
 
 
-void LyXText::RedoHeightOfParagraph(LyXCursor cursor)
+void LyXText::RedoHeightOfParagraph(LyXCursor cur)
 {
-	Row * tmprow = cursor.row;
-	long y = cursor.y - tmprow->baseline;
+	Row * tmprow = cur.row;
+	long y = cur.y - tmprow->baseline;
 
 	SetHeightOfRow(tmprow);
 	LyXParagraph * first_phys_par = tmprow->par->FirstPhysicalPar();
@@ -768,15 +768,15 @@ void LyXText::RedoHeightOfParagraph(LyXCursor cursor)
 	status = LyXText::NEED_MORE_REFRESH;
 	refresh_y = y;
 	refresh_row = tmprow;
-	SetCursor(cursor.par, cursor.pos);
+	SetCursor(cur.par, cur.pos);
 }
 
 
-void LyXText::RedoDrawingOfParagraph(LyXCursor cursor)
+void LyXText::RedoDrawingOfParagraph(LyXCursor cur)
 {
-	Row * tmprow = cursor.row;
+	Row * tmprow = cur.row;
    
-	long y = cursor.y - tmprow->baseline;
+	long y = cur.y - tmprow->baseline;
 	SetHeightOfRow(tmprow);
 	LyXParagraph * first_phys_par = tmprow->par->FirstPhysicalPar();
 	/* find the first row of the paragraph */
@@ -797,21 +797,21 @@ void LyXText::RedoDrawingOfParagraph(LyXCursor cursor)
 		refresh_row = tmprow;
 	}
 	status = LyXText::NEED_MORE_REFRESH;
-	SetCursor(cursor.par, cursor.pos);
+	SetCursor(cur.par, cur.pos);
 }
 
 
 /* deletes and inserts again all paragaphs between the cursor
 * and the specified par 
 * This function is needed after SetLayout and SetFont etc. */
-void LyXText::RedoParagraphs(LyXCursor cursor, LyXParagraph * endpar)
+void LyXText::RedoParagraphs(LyXCursor cur, LyXParagraph * endpar)
 {
 	Row * tmprow2;
 	LyXParagraph * tmppar, * first_phys_par;
    
-	Row * tmprow = cursor.row;
+	Row * tmprow = cur.row;
    
-	long y = cursor.y - tmprow->baseline;
+	long y = cur.y - tmprow->baseline;
    
 	if (!tmprow->previous){
 		first_phys_par = FirstParagraph();   // a trick/hack for UNDO
@@ -3482,27 +3482,25 @@ void LyXText::SetCursorParUndo()
 		cursor.par->ParFromPos(cursor.pos)->next); 
 }
 
-void LyXText::RemoveTableRow(LyXCursor * cursor)
+void LyXText::RemoveTableRow(LyXCursor * cur)
 {
-    int
-        cell_act,
-        cell = -1,
-        cell_org = 0,
-        ocell = 0;
+	int cell = -1;
+	int cell_org = 0;
+	int ocell = 0;
     
     /* move to the previous row */
-    cell_act = NumberOfCell(cursor->par, cursor->pos);
+    int cell_act = NumberOfCell(cur->par, cur->pos);
     if (cell < 0)
         cell = cell_act;
-    while (cursor->pos && !cursor->par->IsNewline(cursor->pos-1))
-        cursor->pos--;
-    while (cursor->pos && 
-           !cursor->par->table->IsFirstCell(cell_act)){
-        cursor->pos--;
-        while (cursor->pos && !cursor->par->IsNewline(cursor->pos-1))
-            cursor->pos--;
-            cell--;
-            cell_act--;
+    while (cur->pos && !cur->par->IsNewline(cur->pos - 1))
+        cur->pos--;
+    while (cur->pos && 
+           !cur->par->table->IsFirstCell(cell_act)) {
+        cur->pos--;
+        while (cur->pos && !cur->par->IsNewline(cur->pos - 1))
+            cur->pos--;
+            --cell;
+            --cell_act;
     }
     /* now we have to pay attention if the actual table is the
        main row of TableContRows and if yes to delete all of them */
@@ -3511,25 +3509,25 @@ void LyXText::RemoveTableRow(LyXCursor * cursor)
     do {
         ocell = cell;
         /* delete up to the next row */
-        while (cursor->pos < cursor->par->Last() && 
+        while (cur->pos < cur->par->Last() && 
                (cell_act == ocell
-                || !cursor->par->table->IsFirstCell(cell_act))){
-            while (cursor->pos < cursor->par->Last() &&
-                   !cursor->par->IsNewline(cursor->pos))
-                cursor->par->Erase(cursor->pos);
-            cell++;
-            cell_act++;
-            if (cursor->pos < cursor->par->Last())
-                cursor->par-> Erase(cursor->pos);
+                || !cur->par->table->IsFirstCell(cell_act))) {
+            while (cur->pos < cur->par->Last() &&
+                   !cur->par->IsNewline(cur->pos))
+                cur->par->Erase(cur->pos);
+            ++cell;
+            ++cell_act;
+            if (cur->pos < cur->par->Last())
+                cur->par->Erase(cur->pos);
         }
-        if (cursor->pos && cursor->pos == cursor->par->Last()){
-            cursor->pos--;
-            cursor->par->Erase(cursor->pos); // no newline at the very end!
+        if (cur->pos && cur->pos == cur->par->Last()) {
+            cur->pos--;
+            cur->par->Erase(cur->pos); // no newline at the very end!
         }
-    } while (((cell+1) < cursor->par->table->GetNumberOfCells()) &&
-             !cursor->par->table->IsContRow(cell_org) &&
-             cursor->par->table->IsContRow(cell));
-    cursor->par->table->DeleteRow(cell_org);
+    } while (((cell + 1) < cur->par->table->GetNumberOfCells()) &&
+             !cur->par->table->IsContRow(cell_org) &&
+             cur->par->table->IsContRow(cell));
+    cur->par->table->DeleteRow(cell_org);
     return;
 }
 

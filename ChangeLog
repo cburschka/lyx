@@ -1,3 +1,58 @@
+1999-12-21  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/text2.C (RedoHeightOfParagraph): rename arg cursor -> cur
+	(RedoDrawingOfParagraph): ditto
+	(RedoParagraphs): ditto
+	(RemoveTableRow): ditto
+
+	* src/text.C (Fill): rename arg paperwidth -> paper_width
+
+	* src/buffer.C (insertLyXFile): rename var filename -> fname
+	(writeFile): rename arg filename -> fname
+	(writeFileAscii): ditto
+	(makeLaTeXFile): ditto
+	(makeLinuxDocFile): ditto
+	(makeDocBookFile): ditto
+
+	* src/LaTeX.C (runMakeIndex): change arg name from file -> f
+	(runBibTeX): ditto
+
+	* src/Makefile.am (lyx_SOURCES): add bmtable.c and remove bmtable.C
+
+	* src/bmtable.h: add extern "C" on this file when __cplusplus is
+	defined.
+
+	* src/bmtable.c: new file, a C'ified copy of bmtable.C, this is
+	compiled by a C compilator not C++. 
+
+	* src/layout.h (LyXTextClass): added typedef for const_iterator
+	(LyXTextClassList): added typedef for const_iterator + member
+	functions begin and end.
+
+	* src/LyXView.C (UpdateDocumentClassChoice): rewritten to use
+	iterators to fill the choice_class.
+	(updateLayoutChoice): rewritten to use iterators to fill the
+	layoutlist in the toolbar.
+
+	* src/BufferView.h (BufferView::work_area_width): removed unused
+	variable. 
+
+	* src/lyx_gui_misc.C (WarnReadonly): added string parameter 'file'
+
+	* src/buffer.C (sgmlOpenTag): drop the use of the static space array
+	(sgmlCloseTag): ditto
+
+	* src/support/lstrings.h: return type of countChar changed to
+	unsigned char.
+
+	* src/support/lstrings.C (countChar): use HAVE_STD_COUNT to choose
+	what version of this func to use. Also made to return unsigned int.
+
+	* configure.in: call LYX_STD_COUNT 
+
+	* acinclude.m4 (LYX_STD_COUNT): new function checks for a standard
+	conforming std::count. 
+
 1999-12-20  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/mathed/math_draw.C (Draw, Metrics): fix a bug where a prime

@@ -48,7 +48,7 @@ lyx_SOURCES = \
 	Spacing.h \
 	TableLayout.C \
 	bibforms.h \
-	bmtable.C \
+	bmtable.c \
 	bmtable.h \
 	broken_headers.h \
 	buffer.C \

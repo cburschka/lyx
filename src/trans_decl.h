@@ -25,12 +25,7 @@ struct KmodInfo {
 	tex_accent accent;
 	string allowed;
 	KmodException exception_list;    
-
-	
-	//KmodInfo(const KmodInfo&);
 	KmodInfo();
-	
-	//KmodInfo& operator= (const KmodInfo&);
 };
 
 #endif

@@ -112,7 +112,7 @@ void InsetUrl::Edit(int, int)
 	static int ow = -1, oh;
 
 	if(current_view->buffer()->isReadonly())
-		WarnReadonly();
+		WarnReadonly(current_view->buffer()->fileName());
 
 	if (!fd_form_url) {
 		fd_form_url = create_form_form_url();

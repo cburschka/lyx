@@ -1285,7 +1285,7 @@ void InsetFig::Edit(int, int)
 	// The actual prevention of altering a readonly doc
 	// is done in CallbackFig()
 	if(current_view->buffer()->isReadonly()) 
-		WarnReadonly();
+		WarnReadonly(current_view->buffer()->fileName());
 
 	if (!form) {
 		form = create_form_Figure();

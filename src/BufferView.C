@@ -402,7 +402,7 @@ extern "C" {
 void BufferView::create_view(int xpos, int ypos, int width, int height)
 {
 	FL_OBJECT * obj;
-	const int bw = abs(fl_get_border_width());
+	int const bw = abs(fl_get_border_width());
 
 	// a hack for the figinsets (Matthias)
 	// This one first, then it will probably be invisible. (Lgb)
@@ -423,9 +423,9 @@ void BufferView::create_view(int xpos, int ypos, int width, int height)
 
 	// the free object
 	work_area = obj = fl_add_free(FL_INPUT_FREE,
-				      xpos +bw, ypos+bw,
-				      width-15-2*bw /* scrollbarwidth */,
-				      height-2*bw, "",
+				      xpos + bw, ypos + bw,
+				      width - 15 - 2 * bw /* scrollbarwidth */,
+				      height - 2 * bw, "",
 				      C_BufferView_work_area_handler);
 	obj->wantkey = FL_KEY_TAB;
 	obj->u_vdata = this; /* This is how we pass the BufferView
@@ -445,7 +445,7 @@ void BufferView::create_view(int xpos, int ypos, int width, int height)
 	fl_set_border_width(-2); // to get visible feedback
 #endif
 	button_up = obj = fl_add_pixmapbutton(FL_TOUCH_BUTTON,
-					      width-15+4*bw,
+					      width - 15 + 4 * bw,
 					      ypos,
 					      15, 15, "");
 	fl_set_object_boxtype(obj, FL_UP_BOX);
@@ -464,9 +464,9 @@ void BufferView::create_view(int xpos, int ypos, int width, int height)
 	// the scrollbar slider
 	fl_set_border_width(-bw);
 	scrollbar = obj = fl_add_slider(FL_VERT_SLIDER,
-					width-15+4*bw,
+					width - 15 + 4 * bw,
 					ypos + 15,
-					15, height-30, "");
+					15, height - 30, "");
 	fl_set_object_color(obj, FL_COL1, FL_MCOL);
 	fl_set_object_boxtype(obj, FL_UP_BOX);
 	fl_set_object_resize(obj, FL_RESIZE_ALL);
@@ -824,11 +824,10 @@ int BufferView::work_area_handler(FL_OBJECT * ob, int event,
 	return 1;
 }
 
-int BufferView::WorkAreaMotionNotify(FL_OBJECT *ob, Window,
+int BufferView::WorkAreaMotionNotify(FL_OBJECT * ob, Window,
 				     int /*w*/, int /*h*/,
-				     XEvent * ev, void */*d*/)
+				     XEvent * ev, void * /*d*/)
 {
-
 	if (buffer_ == 0) return 0;
 	if (!screen) return 0;
 
@@ -1350,7 +1349,7 @@ void BufferView::CursorToggleCB(FL_OBJECT * ob, long)
 	}
 
 	if (view->lyx_focus && view->work_area_focus) {
-		if (!view->buffer_->the_locking_inset){
+		if (!view->buffer_->the_locking_inset) {
 			view->screen->CursorToggle();
 		} else {
 			view->buffer_->the_locking_inset->
@@ -1359,7 +1358,7 @@ void BufferView::CursorToggleCB(FL_OBJECT * ob, long)
 		goto set_timer_and_return;
 	} else {
 		// Make sure that the cursor is visible.
-		if (!view->buffer_->the_locking_inset){
+		if (!view->buffer_->the_locking_inset) {
 			view->screen->ShowCursor();
 		} else {
 			if (!view->buffer_->the_locking_inset->isCursorVisible())
@@ -1433,7 +1432,7 @@ int BufferView::WorkAreaSelectionNotify(FL_OBJECT *, Window win,
 		}
 		XFlush(fl_display);
 
-		if (uc){
+		if (uc) {
 			free(uc);
 			uc = 0;
 		}

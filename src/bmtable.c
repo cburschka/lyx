@@ -37,8 +37,8 @@ typedef struct   {
 } BMTABLE_SPEC;
                  
 
-extern "C" int handle_bitmaptable(FL_OBJECT * ob, int event, FL_Coord mx, 
-				  FL_Coord my, int key, void * xev);
+int handle_bitmaptable(FL_OBJECT * ob, int event, FL_Coord mx, 
+		       FL_Coord my, int key, void * xev);
 
 
 FL_OBJECT * fl_create_bmtable(int type, FL_Coord x, FL_Coord y, 
@@ -73,9 +73,9 @@ static void draw_bitmaptable(FL_OBJECT *ob)
 	int i, j, lx;
 	FL_Coord mx, my;
 	FL_Coord xx, yy, ww, hh;
-	BMTABLE_SPEC *sp = (BMTABLE_SPEC *)ob->spec;
-	if (!sp) return;
+	BMTABLE_SPEC * sp = (BMTABLE_SPEC *)ob->spec;
 	GC gc = fl_state[fl_get_vclass()].gc[0];
+	if (!sp) return;
    
 	/* draw the bounding box first */
 	lx = sp->maxi % sp->nx;
@@ -94,7 +94,7 @@ static void draw_bitmaptable(FL_OBJECT *ob)
 	if (sp->bdata)  {
 		if (!sp->pix) {
 			sp->pix = XCreatePixmapFromBitmapData(fl_display, fl_winget(), 
-		  const_cast<char*>(reinterpret_cast<char const *>(sp->bdata)),
+							      (char*)sp->bdata,
 							       sp->bw, sp->bh,
 					fl_get_flcolor(ob->lcol), fl_get_flcolor(ob->col1),
 							       /*DefaultDepth(fl_display, DefaultScreen(fl_display))*/ fl_state[fl_get_vclass()].depth);
@@ -171,8 +171,8 @@ static void draw_bitmaptable(FL_OBJECT *ob)
 }
 
 
-extern "C" int handle_bitmaptable(FL_OBJECT * ob, int event, FL_Coord mx, 
-				  FL_Coord my, int key, void */*xev*/)
+int handle_bitmaptable(FL_OBJECT * ob, int event, FL_Coord mx, 
+				  FL_Coord my, int key, void * xev)
 {
 	int i, j;
 	BMTABLE_SPEC * sp = (BMTABLE_SPEC *)ob->spec;
@@ -255,6 +255,13 @@ void fl_set_bmtable_pixmap_data(FL_OBJECT * ob, int nx, int ny,
 	BMTABLE_SPEC * sp = (BMTABLE_SPEC *)ob->spec;
 	extern Colormap color_map;
 	if (sp) {
+		Pixmap dummy_shapemask = 0;
+#if 0
+		// I can't see why this initalization is needed. (Lgb)
+		XpmAttributes dumb_attributes = {0};
+#else
+		XpmAttributes dumb_attributes;
+#endif
 		sp->nx = nx;
 		sp->ny = ny; 
 		sp->bx = FL_abs(ob->bw);
@@ -264,13 +271,6 @@ void fl_set_bmtable_pixmap_data(FL_OBJECT * ob, int nx, int ny,
 		sp->i = -1;
 		sp->maxi = sp->nx * sp->ny;
 		sp->bdata = 0;
-		Pixmap dummy_shapemask = 0;
-#if 0
-		// I can't see why this initalization is needed. (Lgb)
-		XpmAttributes dumb_attributes = {0};
-#else
-		XpmAttributes dumb_attributes;
-#endif
 		dumb_attributes.colormap = color_map;
 		dumb_attributes.closeness = 30000;
 		dumb_attributes.valuemask = XpmColormap | XpmCloseness;
@@ -323,6 +323,12 @@ void fl_set_bmtable_pixmap_file(FL_OBJECT *ob, int nx, int ny, char const *filen
 	extern Colormap color_map;
 	BMTABLE_SPEC *sp = (BMTABLE_SPEC *)ob->spec;
 	if (sp) {
+		Pixmap dummy_shapemask = 0;
+#if 0
+		XpmAttributes dumb_attributes = {0};
+#else
+		XpmAttributes dumb_attributes;
+#endif
 		sp->nx = nx;
 		sp->ny = ny; 
 		sp->bx = FL_abs(ob->bw);
@@ -333,12 +339,6 @@ void fl_set_bmtable_pixmap_file(FL_OBJECT *ob, int nx, int ny, char const *filen
 		sp->maxi = sp->nx * sp->ny;
 		sp->bdata = 0;
 
-		Pixmap dummy_shapemask = 0;
-#if 0
-		XpmAttributes dumb_attributes = {0};
-#else
-		XpmAttributes dumb_attributes;
-#endif
 		dumb_attributes.colormap = color_map;
 		dumb_attributes.closeness = 30000;
 		dumb_attributes.valuemask = XpmColormap | XpmCloseness;
@@ -404,18 +404,18 @@ int fl_get_bmtable_maxitems(FL_OBJECT * ob)
 }
 
 
-void fl_replace_bmtable_item(FL_OBJECT */*ob*/, int /*id*/, int  /*cw*/, int /*ch*/, char */*data*/)
+void fl_replace_bmtable_item(FL_OBJECT * ob, int id, int cw, int ch, char * data)
 {
    fprintf(stderr, "Replace bmtable item: Sorry, not yet implemented!\n");
 }
 
 
-void fl_get_bmtable_item(FL_OBJECT */*ob*/, int /*id*/, int */*cw*/, int */*ch*/, char */*data*/)
+void fl_get_bmtable_item(FL_OBJECT * ob, int id, int * cw, int * ch, char * data)
 {
    fprintf(stderr, "Get bmtable item: Sorry, not yet implemented!\n");
 }  
 
-void fl_set_bmtable(FL_OBJECT *ob, int pushed, int pos)
+void fl_set_bmtable(FL_OBJECT * ob, int pushed, int pos)
 {
    if ((BMTABLE_SPEC *)ob->spec)
      ((BMTABLE_SPEC *)ob->spec)->i = (pushed) ? pos: -1;

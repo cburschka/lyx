@@ -338,6 +338,8 @@ class LyXTextClass {
 public:
 	///
 	typedef vector<LyXLayout> LayoutList;
+	///
+	typedef LayoutList::const_iterator const_iterator;
 
 	///
 	LyXTextClass (string const & = string(), 
@@ -345,9 +347,9 @@ public:
 		      string const & = string());
 
 	///
-	LayoutList::const_iterator begin() const { return layoutlist.begin(); }
+	const_iterator begin() const { return layoutlist.begin(); }
 	///
-	LayoutList::const_iterator end() const { return layoutlist.end(); }
+	const_iterator end() const { return layoutlist.end(); }
 	
 	///
 	bool Read(string const & filename, bool merge = false);
@@ -507,6 +509,13 @@ class LyXTextClassList {
 public:
 	///
 	typedef vector<LyXTextClass> ClassList;
+	///
+	typedef ClassList::const_iterator const_iterator;
+	///
+	const_iterator begin() const { return classlist.begin(); }
+	///
+	const_iterator end() const { return classlist.end(); }
+	
 	/// Gets layout structure from layout number and textclass number
 	LyXLayout const & Style(ClassList::size_type textclass,
 				LyXTextClass::LayoutList::size_type layout) const;

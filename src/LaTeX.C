@@ -296,18 +296,18 @@ int LaTeX::operator()()
 }
 
 
-bool LaTeX::runMakeIndex(string const &file)
+bool LaTeX::runMakeIndex(string const & f)
 {
 	lyxerr[Debug::LATEX] << "idx file has been made,"
 		" running makeindex on file "
-			     <<  file << endl;
+			     <<  f << endl;
 
 	// It should be possible to set the switches for makeindex
 	// sorting style and such. It would also be very convenient
 	// to be able to make style files from within LyX. This has
 	// to come for a later time. (0.13 perhaps?)
 	string tmp = "makeindex -c -q ";
-	tmp += file;
+	tmp += f;
 	Systemcalls one;
 	one.startscript(Systemcalls::System, tmp);
 	return true;
@@ -369,14 +369,14 @@ bool LaTeX::scanAux(DepTable & dep)
 }
 
 
-bool LaTeX::runBibTeX(string const & file, DepTable & dep)
+bool LaTeX::runBibTeX(string const & f, DepTable & dep)
 {
 	// Since a run of Bibtex mandates more latex runs it is ok to
 	// remove all ".bib" and ".bst" files, it is also required to
 	// discover style and database changes.
 	dep.remove_files_with_extension(".bib");
 	dep.remove_files_with_extension(".bst");
-	ifstream ifs(file.c_str());
+	ifstream ifs(f.c_str());
 	string token;
 	bool using_bibtex = false;
 	LRegex reg1("\\\\bibdata{([^}]+)}");

@@ -13,7 +13,7 @@
 #include "LaTeXFeatures.h"
 #include "gettext.h"
 #include "LString.h"
-#include "lyx_gui_misc.h" // WarnReadonly()
+#include "lyx_gui_misc.h" // WarnReadonly
  
 extern BufferView * current_view;
 extern void UpdateInset(Inset * inset, bool mark_dirty = true);
@@ -89,7 +89,7 @@ InsetIndex::~InsetIndex()
 void InsetIndex::Edit(int, int)
 {
 	if(current_view->buffer()->isReadonly())
-		WarnReadonly();
+		WarnReadonly(current_view->buffer()->fileName());
 
 	if (!index_form)
 		index_form = create_form_index_form();

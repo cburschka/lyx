@@ -152,7 +152,7 @@ InsetCitation::~InsetCitation()
 void InsetCitation::Edit(int, int)
 {
 	if(current_view->buffer()->isReadonly())
-		WarnReadonly();
+		WarnReadonly(current_view->buffer()->fileName());
 
 	if (!citation_form) {
 		citation_form = create_form_citation_form();
@@ -257,7 +257,7 @@ string InsetBibKey::getScreenLabel() const
 void InsetBibKey::Edit(int, int)
 {
 	if(current_view->buffer()->isReadonly())
-		WarnReadonly();
+		WarnReadonly(current_view->buffer()->fileName());
 	
 	if (!bibitem_form) {
 		bibitem_form = create_form_bibitem_form();

@@ -183,7 +183,7 @@ void InsetInfo::Edit(int, int)
 	static int ow = -1, oh;
 
 	if(current_view->buffer()->isReadonly())
-		WarnReadonly();
+		WarnReadonly(current_view->buffer()->fileName());
 	
 	if (!form) {
 		FL_OBJECT *obj;

@@ -1,12 +1,12 @@
 /* This file is part of
-* ====================================================== 
-* 
-*           LyX, The Document Processor
-* 	 
-*	    Copyright (C) 1995 Matthias Ettrich
-*           Copyright (C) 1995-1998 The LyX Team.
-*
-* ====================================================== */
+ * ====================================================== 
+ * 
+ *           LyX, The Document Processor
+ * 	 
+ *           Copyright 1995 Matthias Ettrich
+ *           Copyright 1995-1999 The LyX Team.
+ *
+ * ====================================================== */
 
 #include <config.h>
 #include <cstdlib>
@@ -702,7 +702,7 @@ LyXText::NextBreakPoint(Row * row, int width)
 
 
 /* returns the minimum space a row needs on the screen in pixel */
-int LyXText::Fill(Row * row, int paperwidth)
+int LyXText::Fill(Row * row, int paper_width)
 {
    int w, fill;
    /* get the pure distance */
@@ -767,7 +767,7 @@ int LyXText::Fill(Row * row, int paperwidth)
       }
    }
    
-   fill = paperwidth - w - RightMargin(row);
+   fill = paper_width - w - RightMargin(row);
    return fill;
 }
 

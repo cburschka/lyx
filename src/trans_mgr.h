@@ -61,38 +61,37 @@ public:
 
 
 /// Init State
-class TransInitState: 
+class TransInitState : 
 	virtual public TransFSMData,
 	public TransState {
 public:
-		///
-		TransInitState();
-		///
-		virtual string normalkey(char, char *);
-		///
-		virtual bool backspace() { return true; }
-		///
-		virtual string deadkey(char, KmodInfo);
+	///
+	TransInitState();
+	///
+	virtual string normalkey(char, char *);
+	///
+	virtual bool backspace() { return true; }
+	///
+	virtual string deadkey(char, KmodInfo);
 };
 
 
 /// Deadkey State
-class TransDeadkeyState: 
+class TransDeadkeyState : 
 	virtual public TransFSMData,
 	public TransState {
 public:
-		///
-		TransDeadkeyState();
-		///
-		virtual string normalkey(char, char *);
-		///
-		virtual bool backspace()
-	{
+	///
+	TransDeadkeyState();
+	///
+	virtual string normalkey(char, char *);
+	///
+	virtual bool backspace() {
 		currentState = init_state_;
 		return false;
 	}
-		///
-		virtual string deadkey(char, KmodInfo);
+	///
+	virtual string deadkey(char, KmodInfo);
 };
 
 
@@ -101,13 +100,12 @@ class TransCombinedState:
 	virtual public TransFSMData,
 	public TransState {
 public:
-		///
-		TransCombinedState();
-		///
-		virtual string normalkey(char, char *);
-		///
-		virtual bool backspace()
-	{
+	///
+	TransCombinedState();
+	///
+	virtual string normalkey(char, char *);
+	///
+	virtual bool backspace() {
 		// cancel the second deadkey
 		deadkey2_ = 0;
 		deadkey2_info_.accent = TEX_NOACCENT;
@@ -115,13 +113,13 @@ public:
 		
 		return false;
 	}
-		///
-		virtual string deadkey(char, KmodInfo);
+	///
+	virtual string deadkey(char, KmodInfo);
 };
 
 
 ///
-class TransFSM:	
+class TransFSM :	
 	virtual public TransFSMData,
 	public TransInitState,
 	public TransDeadkeyState,
@@ -132,9 +130,9 @@ public:
 	TransFSM();
 };
 
+
 ///
-class TransManager
-{
+class TransManager {
 private:
 	///
 	TransFSM trans_fsm_;
@@ -170,8 +168,7 @@ public:
 	///
 	bool setCharset(const char *);
 	///
-	bool backspace()
-	{
+	bool backspace() {
 		return trans_fsm_.currentState->backspace();
 	}
 	///

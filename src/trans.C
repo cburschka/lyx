@@ -64,9 +64,7 @@ Trans::~Trans()
 void Trans::InsertException(Trans::keyexc & exclist, char c,
 			    string const & data, bool flag, tex_accent accent)
 {
-	keyexc p;
-
-	p = new Keyexc; 
+	keyexc p = new Keyexc; 
 	p->next = exclist;
 	p->c = c;
 
@@ -259,12 +257,11 @@ int Trans::Load(LyXLex & lex)
 		break;
 		case KMAP: {
 			unsigned char key_from;
-			char * string_to;
 
 			if (lyxerr.debugging(Debug::KBMAP))
 				lyxerr << "KMAP:\t" << lex.text() << endl;
 			if (lex.next(true)) {
-				key_from= lex.text()[0];
+				key_from = lex.text()[0];
 				if (lyxerr.debugging(Debug::KBMAP))
 					lyxerr << "\t`" << lex.text() << "'"
 					       << endl;
@@ -273,7 +270,8 @@ int Trans::Load(LyXLex & lex)
 
 			if (lex.next(true)) {
 				char const * t = lex.text();
-				string_to = strcpy(new char[strlen(t)+1], t);
+				char * string_to =
+					strcpy(new char[strlen(t)+1], t);
 				keymap_[key_from] = string_to;
 				if (lyxerr.debugging(Debug::KBMAP))
 					lyxerr << "\t`" << string_to << "'"

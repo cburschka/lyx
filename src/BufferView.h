@@ -30,7 +30,7 @@ class Inset;
 class BufferView {
 public:
 	///
-	BufferView(LyXView *owner, int , int , int, int);
+	BufferView(LyXView * owner, int , int , int, int);
 	///
 	~BufferView();
 	///
@@ -66,11 +66,10 @@ public:
 	///
 	LyXView * owner() const { return owner_; }
 	///
-	LyXScreen * getScreen()
-		{
-			fl_set_timer(timer_cursor, 0.4);
-			return screen;
-		}
+	LyXScreen * getScreen() {
+		fl_set_timer(timer_cursor, 0.4);
+		return screen;
+	}
         ///
         void savePosition();
         ///
@@ -141,8 +140,6 @@ private:
 	LyXScreen * screen;
 	///
 	long current_scrollbar_value;
-	///
-	int work_area_width;
 	///
 	bool lyx_focus;
 	///
