@@ -1,0 +1,236 @@
+#% Do not delete the line below; configure depends on this
+#  \DeclareLaTeXClass{article (REVTeX 4)}
+# RevTeX 4 textclass definition file. Based on:
+# AMS-Article textclass definition file. Taken from initial LyX source code
+# and from the Article textclass definition file, following the AMS sample
+# paper "testmath.tex" of January, 1995
+# Author : David L. Johnson <dlj0@lehigh.edu> (AMS)
+#          Marc Mengel (RevTeX)
+#          Amir Karger (LyX v11.34 style modifications - using changes
+#                       made by Jean-Marc Lasgouttes to amsart.layout)
+#          Amir Karger (RevTeX 4 beta) 9/1999
+
+#TODO: need to make a thanks layout and write note in template not to
+#put footnotes in the title matter!
+#TODO: examine this issue that it seems you need to put the address last or you
+#get errors (seems to happen even when not using lyx...)
+
+# General textclass parameters
+Columns			1
+Sides			1
+PageStyle		Headers
+MaxCounter		Counter_Section
+
+# Default textclass options. The user may need to modify this.
+ClassOptions
+  Other			"aps,manuscript"
+End
+
+# Standard style definition
+Style Standard
+  Margin  		Static
+  LatexType 		Paragraph
+  LatexName 		dummy
+  ParIndent		MM
+  ParSkip 		0.4
+  Align 		Block
+  AlignPossible 	Block, Left, Right, Center
+  LabelType 		No_Label
+End
+
+# Idea from aapaper: declare all layouts here ("Style Foo\nEnd\n")
+# so that they appear in a specific order in the layout dropdown menu?
+
+############### Sections.
+
+Input stdsections.inc
+
+# Redefine some of the section styles.
+
+# Section-numbered style definition
+Style Section
+  Align			Center
+  AlignPossible		Block, Center, Left
+
+  # standard font definition
+  Font
+    Series 		Medium
+    Shape		Smallcaps
+    Size		Large
+  EndFont
+End
+
+# Subsection-numbered style definition
+Style Subsection
+  # standard font definition
+  Font
+    Series 		Bold
+    Size		Normal
+  EndFont
+End
+
+# Subsubsection-numbered style definition
+Style Subsubsection
+  # standard font definition
+  Font
+    Shape  		Italic
+    Size		Normal
+  EndFont
+End
+
+# Paragraph-numbered style definition
+Style Paragraph
+  TopSep		0.7
+  ParSep		0.4
+
+  # standard font definition
+  Font
+    Shape  		Italic
+    Size		Normal
+  EndFont
+End
+
+# then define the unumbered sections, based on the numbered ones.
+Input stdstarsections.inc
+
+# remove the layouts that do not make sense.
+NoStyle         Chapter
+NoStyle         Chapter*
+NoStyle		Subparagraph
+NoStyle		Subparagraph*
+
+########### LAYOUTS quotes, etc.
+Input stdlayouts.inc
+
+########## LISTS
+Input stdlists.inc
+
+################ STRUCTURE OF THE DOCUMENT
+Input stdstruct.inc
+
+# Preprint style
+Style Preprint
+  Margin                Right_Address_Box
+  LatexType             Command
+  LatexName             preprint
+  ParSkip               0.4
+  BottomSep             1.5
+  ParSep                1.5
+  Align                 Left
+  AlignPossible         Left
+End
+
+# Title style definition
+Style Title
+  # standard font definition
+  Font
+    Series 		Bold
+    Size		Large
+  EndFont
+End
+
+# Author style definition
+# Same as stdstruct.inc except the font
+Style Author
+  # standard font definition
+  Font
+    Size		Large
+    Shape		Smallcaps
+  EndFont
+End
+
+# Date style definition
+Style Date
+  LabelType		Static
+  LabelString		"Date: "
+
+  # standard font definition
+  LabelFont
+    Shape		Italic
+    Size		Large
+  EndFont
+End
+
+# Address style definition
+# (This style is same as Afilliation for Phys. Rev.)
+Style Address
+  Margin		Dynamic
+  LatexType		Command
+  InTitle		1
+  LatexName		address
+  ParSkip		0.4
+#  BottomSep		1.5
+#  ParSep		1.5
+  Align			Center
+  AlignPossible		Block, Left, Right, Center
+  LabelType		Static
+  LabelString           "Address: "
+
+  LabelFont
+    Shape		Italic
+  EndFont
+End  
+
+Style Affiliation
+  CopyStyle             Address
+  LatexName		affiliation
+  LabelString           "Affiliation: "
+End
+
+Style Thanks
+  CopyStyle             Address
+  LatexName		thanks
+  LabelString           "Thanks: "
+End
+
+Style Author_Email
+  CopyStyle             Address
+  LatexName             email
+  LabelString           "Electronic Address: "
+
+  TextFont
+    Family              Typewriter
+  EndFont
+  LabelFont
+# override Typewriter
+    Family              Roman
+  EndFont
+End
+
+Style Author_URL
+  CopyStyle             "Author Email"
+  LatexName             homepage
+  LabelString           "URL: "
+End
+
+# Abstract style definition
+Style Abstract 
+  InTitle		1
+  ItemSep		0.2
+  ParSep		0.3
+
+  LabelFont
+    Size		Large
+  EndFont
+End 
+
+Style PACS
+  Margin		Dynamic
+  LatexType             Command
+  LatexName             pacs
+  LabelType		Static
+  LabelString           "PACS number: "
+End
+
+Style Keywords
+  CopyStyle             PACS
+  Latexname             keywords
+  LabelString           "Keywords: "
+End
+
+### Finally a few obsolete definitions for compatibility
+Input obsolete.inc
+
+Style REVTEX_Title
+  ObsoletedBy		Title
+End

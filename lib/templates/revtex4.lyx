@@ -1,0 +1,152 @@
+#This file was created by <karger> Thu Sep 23 10:54:03 1999
+#LyX 1.0 (C) 1995-1999 Matthias Ettrich and the LyX Team
+\lyxformat 2.15
+\textclass revtex4
+\options aps,manuscript
+
+\layout Preprint
+
+This line only printed with preprint option
+\layout Title
+
+Insert your Title Here
+\layout Author
+
+Author1
+\layout Author Email
+
+foo@bar.edu
+\begin_inset Info Make sure to put any Email, URL, and Thanks layouts IN
+BETWEEN the Author layout and the corresponding Address
+layout for that author.
+\end_inset 
+
+
+\layout Author URL
+
+http://bar.com/~foo
+\layout Thanks
+
+Thanks to you, Mrs.
+ Robinson!
+\begin_inset Info Use Thanks layout instead of inserting footnotes.
+Footnotes in the title will do weird things in RevTeX 4!
+\end_inset 
+
+
+\layout Address
+
+Address for author 1 
+\layout Author
+
+Author2
+\layout Author Email
+
+bar@foo.edu
+\layout Address
+
+Address for author 2
+\layout Abstract
+
+Insert your abstract here.
+ It should be interesting.
+\layout Standard
+
+
+\begin_inset Info You don't have to write \maketitle.. LyX does this by itself.
+\end_inset 
+
+
+\layout Section
+
+introduction
+\layout Standard
+
+By the way, any of the style options, like 
+\family typewriter 
+prl
+\family default 
+ or 
+\family typewriter 
+preprint
+\family default 
+ should go in the 
+\family sans 
+Extra
+\protected_separator 
+Options
+\family default 
+ field in the 
+\family sans 
+Document
+\protected_separator 
+Layout
+\family default 
+ popup (accessed from the 
+\family sans 
+Layout
+\family default 
+ menu).
+ See the RevTeX 4 manual for style options, special macros, and the like.
+\layout Section
+
+methods
+\layout Standard
+
+Special REVTeX macros must be typed in TeX mode, so typing 
+\family typewriter 
+
+\backslash 
+openone
+\family default 
+ in TeX mode yields 
+\latex latex 
+
+\backslash 
+openone{}
+\latex default 
+.
+ REVTeX macros can also be used freely in the math editor, so you can type
+ 
+\begin_inset Formula \( \sqrt{\overstar {a}}>b \)
+\end_inset 
+
+, for example, which uses the RevTeX 
+\family typewriter 
+
+\backslash 
+overcirc
+\family default 
+ command.
+\layout Standard
+
+You can do a bibliography by hand, as shown below, but it may be easier
+ to erase that and use BibTeX.
+ If you use BibTeX, use the RevTeX bibliography style file, 
+\family typewriter 
+revtex.bst
+\family default 
+.
+ With either method, you can cite references with the LyX citation commands
+\begin_inset LatexCommand \cite{mycitation}
+
+\end_inset 
+
+.
+\layout Bibliography
+\bibitem {mycitation}
+
+Author, 
+\begin_inset Quotes eld
+\end_inset 
+
+Title
+\begin_inset Quotes erd
+\end_inset 
+
+, Journal 
+\series bold 
+Volume
+\series default 
+, page--numbers (year).
+\the_end
