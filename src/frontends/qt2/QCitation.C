@@ -112,6 +112,8 @@ void QCitation::fillStyles()
 	if (!citekeys.empty())
 		key = citekeys[0];
 
+	int const orig = dialog_->citationStyleCO->currentItem();
+
 	dialog_->citationStyleCO->clear();
 	vector<string> const & sty = controller().getCiteStrings(key);
 
@@ -119,6 +121,9 @@ void QCitation::fillStyles()
 		it != sty.end(); ++it) {
 		dialog_->citationStyleCO->insertItem(toqstr(*it));
 	}
+
+	if (orig != -1 && orig < dialog_->citationStyleCO->count())
+		dialog_->citationStyleCO->setCurrentItem(orig);
 }
 
 

@@ -166,13 +166,12 @@ void QTabular::update_contents()
 	dialog_->specialAlignmentED->setEnabled(!isReadonly);
 
 	LyXLength::UNIT default_unit = controller().metric() ? LyXLength::CM : LyXLength::IN;
-	if (!pwidth.zero()) {
-		dialog_->widthED->setText(toqstr(tostr(pwidth.value())));
-		dialog_->widthUnit->setCurrentItem(pwidth.unit());
-	} else {
-		dialog_->widthED->setText("");
-		dialog_->widthUnit->setCurrentItem(default_unit);
-	}
+	string colwidth;
+	if (!pwidth.zero())
+		colwidth = pwidth.asString();
+	lengthToWidgets(dialog_->widthED, dialog_->widthUnit,
+		colwidth, default_unit);
+
 	dialog_->widthED->setEnabled(!isReadonly);
 	dialog_->widthUnit->setEnabled(!isReadonly);
 

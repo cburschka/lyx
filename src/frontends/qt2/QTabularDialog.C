@@ -147,9 +147,7 @@ void QTabularDialog::specialAlignment_changed()
 
 void QTabularDialog::width_changed()
 {
-	string const width =
-		LyXLength(widthED->text().toDouble(),
-			widthUnit->currentLengthItem()).asString();
+	string const width = widgetsToLength(widthED, widthUnit);
 	if (form_->controller().isMulticolumnCell())
 		form_->controller().set(LyXTabular::SET_MPWIDTH, width);
 	else
