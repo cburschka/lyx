@@ -1,5 +1,23 @@
 2003-07-23  Angus Leeming  <leeming@lyx.org>
 
+	* mailinset.[Ch] (inset2string):
+	* insetcommand.[Ch] (inset2string):
+	* insetert.[Ch] (inset2string):
+	* insetexternal.[Ch] (inset2string):
+	* insetfloat.[Ch] (inset2string):
+	* insetgraphics.[Ch] (inset2string):
+	* insetinclude.[Ch] (inset2string):
+	* insetminipage.[Ch] (inset2string):
+	* insetnote.[Ch] (inset2string):
+	* insettabular.[Ch] (inset2string):
+	* insetwrap.[Ch] (inset2string): now requires a Buffer const & arg.
+
+	* insetexternal.[Ch]:
+	* insetgraphics.[Ch]: get rid of the view() function. Associated
+	changes to the mailers' string2params and params2string functions.
+
+2003-07-23  Angus Leeming  <leeming@lyx.org>
+
 	* insetexternal.[Ch]: store the external file name in a FileName
 	member variable rather than a string + associated changes.
 

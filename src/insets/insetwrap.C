@@ -260,7 +260,7 @@ InsetWrapMailer::InsetWrapMailer(InsetWrap & inset)
 {}
 
 
-string const InsetWrapMailer::inset2string() const
+string const InsetWrapMailer::inset2string(Buffer const &) const
 {
 	return params2string(inset_.params());
 }

@@ -128,17 +128,17 @@ dispatch_result InsetExternal::localDispatch(FuncRequest const & cmd)
 	case LFUN_EXTERNAL_EDIT: {
 		Assert(cmd.view());
 
-		Buffer const * buffer = cmd.view()->buffer();
+		Buffer const & buffer = *cmd.view()->buffer();
 		InsetExternal::Params p;
 		InsetExternalMailer::string2params(cmd.argument, buffer, p);
-		editExternal(p, buffer);
+		editExternal(p, &buffer);
 		return DISPATCHED_NOUPDATE;
 	}
 
 	case LFUN_INSET_MODIFY: {
 		Assert(cmd.view());
 
-		Buffer const * buffer = cmd.view()->buffer();
+		Buffer const & buffer = *cmd.view()->buffer();
 		InsetExternal::Params p;
 		InsetExternalMailer::string2params(cmd.argument, buffer, p);
 		setParams(p);
@@ -258,12 +258,6 @@ void InsetExternal::setParams(Params const & p)
 
 		graphic_ptr->update(get_grfx_params(params_));
 	}
-}
-
-
-BufferView * InsetExternal::view() const
-{
-	return renderer_->view();
 }
 
 
@@ -620,17 +614,14 @@ InsetExternalMailer::InsetExternalMailer(InsetExternal & inset)
 {}
 
 
-string const InsetExternalMailer::inset2string() const
+string const InsetExternalMailer::inset2string(Buffer const & buffer) const
 {
-	BufferView * bv = inset_.view();
-	if (!bv)
-		return string();
-	return params2string(inset_.params(), bv->buffer());
+	return params2string(inset_.params(), buffer);
 }
 
 
 void InsetExternalMailer::string2params(string const & in,
-					Buffer const * buffer,
+					Buffer const & buffer,
 					InsetExternal::Params & params)
 {
 	params = InsetExternal::Params();
@@ -660,7 +651,7 @@ void InsetExternalMailer::string2params(string const & in,
 
 	if (lex.isOK()) {
 		InsetExternal inset;
-		inset.read(buffer, lex);
+		inset.read(&buffer, lex);
 		params = inset.params();
 	}
 }
@@ -668,13 +659,13 @@ void InsetExternalMailer::string2params(string const & in,
 
 string const
 InsetExternalMailer::params2string(InsetExternal::Params const & params,
-				   Buffer const * buffer)
+				   Buffer const & buffer)
 {
 	InsetExternal inset;
 	inset.setParams(params);
 	ostringstream data;
 	data << name_ << ' ';
-	inset.write(buffer, data);
+	inset.write(&buffer, data);
 	data << "\\end_inset\n";
 	return STRCONV(data.str());
 }

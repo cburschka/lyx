@@ -89,7 +89,7 @@ public:
 	///
 	virtual string const & name() const { return name_; }
 	///
-	virtual string const inset2string() const;
+	virtual string const inset2string(Buffer const &) const;
 	///
 	static string const params2string(string const &, InsetNoteParams const &);
 	///

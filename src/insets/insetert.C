@@ -654,7 +654,7 @@ InsetERTMailer::InsetERTMailer(InsetERT & inset)
 {}
 
 
-string const InsetERTMailer::inset2string() const
+string const InsetERTMailer::inset2string(Buffer const &) const
 {
 	return params2string(inset_.status());
 }

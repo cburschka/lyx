@@ -24,7 +24,8 @@ using namespace lyx::support;
 void MailInset::showDialog(BufferView * bv) const
 {
 	Assert(bv);
-	bv->owner()->getDialogs().show(name(), inset2string(), &inset());
+	bv->owner()->getDialogs().show(name(), inset2string(*bv->buffer()),
+				       &inset());
 }
 
 
@@ -32,7 +33,8 @@ void MailInset::updateDialog(BufferView * bv) const
 {
 	Assert(bv);
 	if(bv->owner()->getDialogs().visible(name()))
-		bv->owner()->getDialogs().update(name(), inset2string());
+		bv->owner()->getDialogs().update(name(),
+						 inset2string(*bv->buffer()));
 }
 
 

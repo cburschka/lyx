@@ -388,7 +388,7 @@ InsetFloatMailer::InsetFloatMailer(InsetFloat & inset)
 {}
 
 
-string const InsetFloatMailer::inset2string() const
+string const InsetFloatMailer::inset2string(Buffer const &) const
 {
 	return params2string(inset_.params());
 }

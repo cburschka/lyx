@@ -316,7 +316,7 @@ InsetMinipageMailer::InsetMinipageMailer(InsetMinipage & inset)
 {}
 
 
-string const InsetMinipageMailer::inset2string() const
+string const InsetMinipageMailer::inset2string(Buffer const &) const
 {
 	return params2string(inset_.params());
 }

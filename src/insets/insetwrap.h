@@ -88,7 +88,7 @@ public:
 	///
 	virtual string const & name() const { return name_; }
 	///
-	virtual string const inset2string() const;
+	virtual string const inset2string(Buffer const &) const;
 	///
 	static void string2params(string const &, InsetWrapParams &);
 	///

@@ -2744,7 +2744,7 @@ InsetTabularMailer::InsetTabularMailer(InsetTabular const & inset)
 {}
 
 
-string const InsetTabularMailer::inset2string() const
+string const InsetTabularMailer::inset2string(Buffer const &) const
 {
 	return params2string(inset_);
 }

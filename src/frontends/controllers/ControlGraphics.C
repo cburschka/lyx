@@ -49,9 +49,8 @@ ControlGraphics::ControlGraphics(Dialog & parent)
 
 bool ControlGraphics::initialiseParams(string const & data)
 {
-	string const bufpath = kernel().bufferFilepath();
 	InsetGraphicsParams params;
-	InsetGraphicsMailer::string2params(data, bufpath, params);
+	InsetGraphicsMailer::string2params(data, *kernel().buffer(), params);
 	params_.reset(new InsetGraphicsParams(params));
 	return true;
 }
@@ -65,10 +64,9 @@ void ControlGraphics::clearParams()
 
 void ControlGraphics::dispatchParams()
 {
-	string const buffer_path = kernel().bufferFilepath();
 	InsetGraphicsParams tmp_params(params());
 	string const lfun =
-		InsetGraphicsMailer::params2string(tmp_params, buffer_path);
+		InsetGraphicsMailer::params2string(tmp_params, *kernel().buffer());
 	kernel().dispatch(FuncRequest(LFUN_INSET_APPLY, lfun));
 }
 

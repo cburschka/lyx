@@ -177,9 +177,9 @@ dispatch_result InsetGraphics::localDispatch(FuncRequest const & cmd)
 {
 	switch (cmd.action) {
 	case LFUN_INSET_MODIFY: {
-		string const bufpath = cmd.view()->buffer()->filePath();
+		Buffer const & buffer = *cmd.view()->buffer();
 		InsetGraphicsParams p;
-		InsetGraphicsMailer::string2params(cmd.argument, bufpath, p);
+		InsetGraphicsMailer::string2params(cmd.argument, buffer, p);
 		if (!p.filename.empty()) {
 			setParams(p);
 			cmd.view()->updateInset(this);
@@ -610,12 +610,6 @@ InsetGraphicsParams const & InsetGraphics::params() const
 }
 
 
-BufferView * InsetGraphics::view() const
-{
-	return graphic_->view();
-}
-
-
 string const InsetGraphicsMailer::name_("graphics");
 
 InsetGraphicsMailer::InsetGraphicsMailer(InsetGraphics & inset)
@@ -623,17 +617,14 @@ InsetGraphicsMailer::InsetGraphicsMailer(InsetGraphics & inset)
 {}
 
 
-string const InsetGraphicsMailer::inset2string() const
+string const InsetGraphicsMailer::inset2string(Buffer const & buffer) const
 {
-	BufferView * bv = inset_.view();
-	if (bv)
-		return params2string(inset_.params(), bv->buffer()->filePath());
-	return string();
+	return params2string(inset_.params(), buffer);
 }
 
 
 void InsetGraphicsMailer::string2params(string const & in,
-					string const & buffer_path,
+					Buffer const & buffer,
  					InsetGraphicsParams & params)
 {
 	params = InsetGraphicsParams();
@@ -654,7 +645,7 @@ void InsetGraphicsMailer::string2params(string const & in,
 
 	if (lex.isOK()) {
 		InsetGraphics inset;
-		inset.readInsetGraphics(lex, buffer_path);
+		inset.readInsetGraphics(lex, buffer.filePath());
 		params = inset.params();
 	}
 }
@@ -662,11 +653,11 @@ void InsetGraphicsMailer::string2params(string const & in,
 
 string const
 InsetGraphicsMailer::params2string(InsetGraphicsParams const & params,
-				   string const & buffer_path)
+				   Buffer const & buffer)
 {
 	ostringstream data;
 	data << name_ << ' ';
-	params.Write(data, buffer_path);
+	params.Write(data, buffer.filePath());
 	data << "\\end_inset\n";
 	return STRCONV(data.str());
 }

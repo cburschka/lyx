@@ -1,5 +1,13 @@
 2003-07-23  Angus Leeming  <leeming@lyx.org>
 
+	* ControlExternal.C: pass a Buffer const & rather than a Buffer const *
+	to the mailer's string2params, params2string functions.
+
+	* ControlGraphics.C pass a Buffer const & rather than a string const &
+	buffer_path to the mailer's string2params, params2string functions.
+
+2003-07-23  Angus Leeming  <leeming@lyx.org>
+
 	* Kernel.[Ch] (bufferFilepath): new wrapper for Buffer::filePath.
 
 	* ControlBibtex.C:

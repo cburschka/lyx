@@ -27,7 +27,7 @@ public:
 		return theName;
 	}
 	///
-	virtual string const inset2string() const
+	virtual string const inset2string(Buffer const &) const
 	{
 		ostringstream data;
 		//data << name() << " active_cell " << inset.getActCell() << '\n';

@@ -92,8 +92,6 @@ public:
 	/// Set the inset parameters.
 	virtual void setParams(Params const &);
 
-	virtual BufferView * view() const;
-
 	/** update the file represented by the template.
 	    If \param external_in_tmpdir == true, then the generated file is
 	    place in the buffer's temporary directory.
@@ -134,13 +132,13 @@ public:
 	///
 	virtual string const & name() const { return name_; }
 	///
-	virtual string const inset2string() const;
+	virtual string const inset2string(Buffer const &) const;
 	///
-	static void string2params(string const &, Buffer const *,
+	static void string2params(string const &, Buffer const &,
 				  InsetExternal::Params &);
 	///
 	static string const params2string(InsetExternal::Params const &,
-					  Buffer const *);
+					  Buffer const &);
 private:
 	///
 	static string const name_;

@@ -611,7 +611,7 @@ InsetIncludeMailer::InsetIncludeMailer(InsetInclude & inset)
 {}
 
 
-string const InsetIncludeMailer::inset2string() const
+string const InsetIncludeMailer::inset2string(Buffer const &) const
 {
 	return params2string(inset_.params());
 }

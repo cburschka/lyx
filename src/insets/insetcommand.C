@@ -126,7 +126,7 @@ InsetCommandMailer::InsetCommandMailer(string const & name,
 {}
 
 
-string const InsetCommandMailer::inset2string() const
+string const InsetCommandMailer::inset2string(Buffer const &) const
 {
 	return params2string(name(), inset_.params());
 }

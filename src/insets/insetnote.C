@@ -216,7 +216,7 @@ InsetNoteMailer::InsetNoteMailer(string const & name,
 }
 
 
-string const InsetNoteMailer::inset2string() const
+string const InsetNoteMailer::inset2string(Buffer const &) const
 {
 	return params2string(name_, inset_.params());
 }

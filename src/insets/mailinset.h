@@ -17,6 +17,7 @@
 
 
 class InsetBase;
+class Buffer;
 class BufferView;
 
 
@@ -31,7 +32,7 @@ public:
 	///
 	void hideDialog() const;
 	///
-	virtual string const inset2string() const = 0;
+	virtual string const inset2string(Buffer const &) const = 0;
 
 protected:
 	///
