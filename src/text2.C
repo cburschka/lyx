@@ -283,7 +283,7 @@ void LyXText::removeRow(RowList::iterator rit)
 	if (anchor_row_ == rit) {
 		if (rit != rows().begin()) {
 			anchor_row_ = boost::prior(rit);
-			anchor_row_offset_ += boost::prior(rit)->height();
+			anchor_row_offset_ += anchor_row_->height();
 		} else {
 			anchor_row_ = boost::next(rit);
 			anchor_row_offset_ -= rit->height();

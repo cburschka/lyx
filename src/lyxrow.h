@@ -61,6 +61,10 @@ public:
 	unsigned int baseline() const;
 	/// return true if this row is the start of a paragraph
 	bool isParStart() const;
+	/// return the cached y position
+	unsigned int y() const;
+	/// cache the y position
+	void y(unsigned int newy);
 private:
 	///
 	ParagraphList::iterator pit_;
@@ -73,6 +77,8 @@ private:
 	unsigned short height_;
 	///
 	unsigned int width_;
+	/// cached y position
+	unsigned int y_;
 	/// ascent from baseline including prelude space
 	unsigned short ascent_of_text_;
 	/// the top of the real text in the row

@@ -74,25 +74,28 @@ BufferView * LyXText::bv() const
 }
 
 
-int LyXText::top_y() const
+void LyXText::updateRowPositions()
 {
-	if (anchor_row_ == rowlist_.end())
-		return 0;
-
-	int y = 0;
-
-	RowList::iterator rit = rowlist_.begin();
-	RowList::iterator end = rowlist_.end();
-	for (; rit != end && rit != anchor_row_; ++rit) {
+	RowList::iterator rit = rows().begin();
+	RowList::iterator rend = rows().end();
+	for (int y = 0; rit != rend ; ++rit) {
+		rit->y(y);
 		y += rit->height();
 	}
-	return y + anchor_row_offset_;
+}
+
+
+int LyXText::top_y() const
+{
+	if (isInInset() || anchor_row_ == rowlist_.end() )
+		return 0;
+	return anchor_row_->y() + anchor_row_offset_;
 }
 
 
 void LyXText::top_y(int newy)
 {
-	if (rows().empty())
+	if (rows().empty() || isInInset())
 		return;
 	lyxerr[Debug::GUI] << "setting top y = " << newy << endl;
 
@@ -2767,20 +2770,41 @@ LyXText::getRow(ParagraphList::iterator pit, pos_type pos, int & y) const
 
 RowList::iterator LyXText::getRowNearY(int & y) const
 {
-	// If possible we should optimize this method. (Lgb)
-	int tmpy = 0;
 
-	RowList::iterator rit = rowlist_.begin();
-	RowList::iterator end = rowlist_.end();
+	RowList::iterator rit = anchor_row_;
+	RowList::iterator const beg = rows().begin();
+	RowList::iterator const end = rows().end();
 
-	while (rit != end &&
-	       boost::next(rit) != end &&
-	       tmpy + rit->height() <= y) {
-		tmpy += rit->height();
-		++rit;
+	if (rows().empty()) {
+		y = 0;
+		return end;
+	}
+	if (rit == end)
+		rit = beg;
+
+	int tmpy = rit->y();
+
+	if (tmpy <= y) {
+		while (rit != end && tmpy <= y) {
+			tmpy += rit->height();
+			++rit;
+		}
+		if (rit != beg) {
+			--rit;
+			tmpy -= rit->height();
+		}
+	} else {
+		while (rit != beg && tmpy > y) {
+			--rit;
+			tmpy -= rit->height();
+		}
+	}
+	if (tmpy < 0 || rit == end) {
+		tmpy = 0;
+		rit = beg;
 	}
 
-	// return the real y
+	// return the rel y
 	y = tmpy;
 
 	return rit;

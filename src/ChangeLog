@@ -1,3 +1,11 @@
+2003-04-11  Alfredo Braunstein  <abraunst@libero.it>
+
+	* lyxrow.[Ch]: add a cached y position to a Row and Row::y()
+	methods to access it.
+	* lyxtext.h:
+	* text.C: Added updateRowPositions to compute all row positions.
+	Make top_y and getRowNearY() to use the cached y position
+
 2003-04-11  John Levon  <levon@movementarian.org>
 
 	* text.C (rowBreakPoint): reintroduce the labelEnd

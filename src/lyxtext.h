@@ -88,6 +88,8 @@ private:
 	 */
 	int anchor_row_offset_;
 public:
+	/// update all cached row positions
+	void updateRowPositions();
 	/// get the y coord. of the top of the screen (relative to doc start)
 	int top_y() const;
 	/// set the y coord. of the top of the screen (relative to doc start)

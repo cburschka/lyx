@@ -23,15 +23,27 @@ using std::max;
 using std::min;
 
 Row::Row()
-	: pos_(0), fill_(0), height_(0), width_(0),
+	: pos_(0), fill_(0), height_(0), width_(0), y_(0),
 	  ascent_of_text_(0), baseline_(0)
 {}
 
 
 Row::Row(ParagraphList::iterator pit, pos_type po)
-	: pit_(pit), pos_(po), fill_(0), height_(0), width_(0),
+	: pit_(pit), pos_(po), fill_(0), height_(0), width_(0), y_(0),
 	  ascent_of_text_(0), baseline_(0)
 {}
+
+
+void Row::y(unsigned int newy)
+{
+	y_ = newy;
+}
+
+
+unsigned int Row::y() const
+{
+	return y_;
+}
 
 
 ParagraphList::iterator Row::par()

@@ -257,6 +257,7 @@ void LyXScreen::update(BufferView & bv, int yo, int xo)
 	switch (text->refreshStatus()) {
 	case LyXText::REFRESH_AREA:
 	{
+		text->updateRowPositions();
 		int const y = max(int(text->refresh_y - text->top_y()), 0);
 		drawFromTo(text, &bv, y, vheight, yo, xo);
 		expose(0, y, vwidth, vheight - y);
@@ -264,6 +265,7 @@ void LyXScreen::update(BufferView & bv, int yo, int xo)
 	break;
 	case LyXText::REFRESH_ROW:
 	{
+		text->updateRowPositions();
 		// ok I will update the current cursor row
 		drawOneRow(text, &bv, text->refresh_row, text->refresh_y,
 			   yo, xo);
@@ -412,22 +414,18 @@ void LyXScreen::drawFromTo(LyXText * text, BufferView * bv,
 {
 	lyxerr[Debug::GUI] << "screen: drawFromTo " << y1 << '-' << y2 << endl;
 
-	int y_text = text->top_y() + y1;
-
-	// get the first needed row
-	RowList::iterator row = text->getRowNearY(y_text);
-	RowList::iterator end = text->rows().end();
-
-	// y_text is now the real beginning of the row
-
-	int y = y_text - text->top_y();
+	int const topy = text->top_y();
+	int y_text = topy + y1;
+	RowList::iterator rit = text->getRowNearY(y_text);
+	int y = y_text - topy;
 	// y1 is now the real beginning of row on the screen
 
-	while (row != end && y < y2) {
-		RowPainter rp(*bv, *text, row);
-		rp.paint(y + yo, xo, y + text->top_y());
-		y += row->height();
-		++row;
+	RowList::iterator const rend = text->rows().end();
+	while (rit != rend && y < y2) {
+		RowPainter rp(*bv, *text, rit);
+		rp.paint(y + yo, xo, y + topy);
+		y += rit->height();
+		++rit;
 	}
 
 	// maybe we have to clear the screen at the bottom

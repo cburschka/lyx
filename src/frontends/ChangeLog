@@ -1,3 +1,8 @@
+2003-04-11  Alfredo Braunstein  <abraunst@libero.it>
+
+	* screen.C (update): add calls to updateRowPositions() before
+	drawOneRow and drawFromTo.
+
 2003-04-10  John Levon  <levon@movementarian.org>
 
 	* Toolbar.h:
