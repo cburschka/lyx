@@ -25,7 +25,8 @@
 #include "lyxrc.h"
 
 #include "support/lstrings.h"
-#include "support/std_sstream.h"
+
+#include <sstream>
 
 using lyx::support::ascii_lowercase;
 using lyx::support::bformat;

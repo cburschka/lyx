@@ -1,3 +1,8 @@
+2004-07-24  Lars Gullik Bjonnes  <larsbj@gullik.net>
+
+	* PreviewLoader.C, GraphicsParams.C, GraphicsConverter.C: change
+	"support/std_sstream.h" to <sstream>
+
 2004-04-19  Angus Leeming  <leeming@lyx.org>
 
 	* Previews.[Ch] (status): new member function, replacing activated.

@@ -14,7 +14,7 @@
 
 #include "lyxlength.h"
 
-#include "support/std_sstream.h"
+#include <sstream>
 
 
 using std::string;

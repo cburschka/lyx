@@ -10,7 +10,7 @@
 
 #include <config.h>
 
-#include "support/std_sstream.h"
+#include <sstream>
 
 using std::string;
 using std::ostringstream;

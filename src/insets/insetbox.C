@@ -25,8 +25,9 @@
 #include "metricsinfo.h"
 #include "paragraph.h"
 
-#include "support/std_sstream.h"
 #include "support/translator.h"
+
+#include <sstream>
 
 using std::auto_ptr;
 using std::string;

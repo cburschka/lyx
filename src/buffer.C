@@ -71,14 +71,15 @@
 #include "support/path.h"
 #include "support/textutils.h"
 #include "support/tostr.h"
-#include "support/std_sstream.h"
 
 #include <boost/bind.hpp>
 
+#include <utime.h>
+
 #include <iomanip>
 #include <stack>
+#include <sstream>
 
-#include <utime.h>
 
 using lyx::pos_type;
 using lyx::par_type;
@@ -1078,7 +1079,7 @@ void Buffer::makeDocBookFile(string const & fname,
 			    << "\"http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd\"";
 		else
 			ofs << " PUBLIC \"-//OASIS//DTD DocBook V4.2//EN\"";
-		
+
 		string preamble = params().preamble;
 		string const name = runparams.nice ? ChangeExtension(pimpl_->filename, ".sgml")
 			 : fname;

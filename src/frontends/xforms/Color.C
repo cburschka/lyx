@@ -16,9 +16,8 @@
 
 #include "LColor.h"
 
-#include "support/std_sstream.h"
-
 #include <cmath>
+#include <sstream>
 #include <iomanip>
 
 #ifndef CXX_GLOBAL_CSTD

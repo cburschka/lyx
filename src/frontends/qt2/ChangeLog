@@ -1,6 +1,11 @@
+2004-07-24  Lars Gullik Bjonnes  <larsbj@gullik.net>
+
+	* QPrefs.C, QMathMatrixDialog.C:
+	* QLog.C, QAbout.C: change "support/std_sstream.h" to <sstream>
+
 2004-07-22  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
-	* lyx_gui.C (set_read_callback,remove_read_callback): delete funcs 
+	* lyx_gui.C (set_read_callback,remove_read_callback): delete funcs
 
 	* Makefile.dialogs (MOCFILES): remove io_callback.[Ch]
 	* io_callback.[Ch]: delete files

@@ -37,7 +37,6 @@
 
 #include "support/lstrings.h"
 #include "support/tostr.h"
-#include "support/std_sstream.h"
 
 #include "controllers/ControlPrefs.h"
 #include "controllers/frnt_lang.h"
@@ -56,6 +55,7 @@
 #include <boost/tuple/tuple.hpp>
 
 #include <iomanip>
+#include <sstream>
 
 using lyx::support::compare_no_case;
 using lyx::support::strToDbl;

@@ -1,7 +1,13 @@
+2004-07-24  Lars Gullik Bjonnes  <larsbj@gullik.net>
+
+	* lyx_gui.C, FormMathsMatrix.C, FormLog.C:
+	* FormAboutlyx.C, Color.C: change "support/std_sstream.h" to
+	<sstream>
+
 2004-07-22  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
 	* lyx_gui.C (C_read_callback, set_read_callback,
-	remove_read_callback): delete funcs 
+	remove_read_callback): delete funcs
 
 2004-07-21  Lars Gullik Bjonnes  <larsbj@gullik.net>
 

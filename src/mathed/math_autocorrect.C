@@ -17,10 +17,10 @@
 #include "math_parser.h"
 #include "debug.h"
 
-#include "support/std_sstream.h"
 #include "support/filetools.h" //  LibFileSearch
 
 #include <fstream>
+#include <sstream>
 
 using lyx::support::LibFileSearch;
 

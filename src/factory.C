@@ -60,9 +60,10 @@
 #include "frontends/LyXView.h"
 
 #include "support/lstrings.h"
-#include "support/std_sstream.h"
 
 #include <boost/assert.hpp>
+
+#include <sstream>
 
 using lyx::support::compare_ascii_no_case;
 

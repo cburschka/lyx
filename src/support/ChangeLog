@@ -1,3 +1,13 @@
+2004-07-24  Lars Gullik Bjonnes  <larsbj@gullik.net>
+
+	* tostr.C, lstrings.C, globbing.C, filetools.C: change
+	"support/std_sstream.h" to <sstream>
+
+	* Makefile.am (libsupport_la_SOURCES): delete std_sstream.h and
+	sstream.h
+	(std_sstream.h): delete file
+	(sstream.h): delete file
+
 2004-06-29  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* filetools.C (i18nLibFileSearch): honor case where LANGUAGE
@@ -10,10 +20,10 @@
 	its po files when moved around; set default user directory to
 	~/Library/Preferences/LyX/ for LyX/Mac.
 	(lyx_localedir): return the value that may have been computed in
-	setLyXPaths 
+	setLyXPaths
 
 2004-05-27  Kayvan Sylvan <kayvan@sylvan.com>
-	
+
 	* Makefile.am (libsupport_la_SOURCES): remove reference to
 	nt_defines.h
 

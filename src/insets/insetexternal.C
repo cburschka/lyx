@@ -43,10 +43,10 @@
 #include "support/lyxlib.h"
 #include "support/tostr.h"
 #include "support/translator.h"
-#include "support/std_sstream.h"
 
 #include <boost/bind.hpp>
 
+#include <sstream>
 
 namespace support = lyx::support;
 namespace external = lyx::external;

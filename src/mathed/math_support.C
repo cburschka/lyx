@@ -24,9 +24,8 @@
 #include "frontends/font_metrics.h"
 #include "frontends/lyx_gui.h"
 
-#include "support/std_sstream.h"
-
 #include <map>
+#include <sstream>
 
 
 using std::string;

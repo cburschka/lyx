@@ -58,7 +58,8 @@
 #include "support/lstrings.h"
 #include "support/textutils.h"
 #include "support/tostr.h"
-#include "support/std_sstream.h"
+
+#include <sstream>
 
 using lyx::par_type;
 using lyx::pos_type;

@@ -29,7 +29,7 @@
 #include "frontends/Alert.h"
 #include "frontends/LyXView.h"
 
-#include "support/std_sstream.h"
+#include <sstream>
 
 using lyx::pos_type;
 

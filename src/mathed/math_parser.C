@@ -62,8 +62,9 @@ following hack as starting point to write some macros:
 #include "ref_inset.h"
 
 #include "lyxlex.h"
-#include "support/std_sstream.h"
 #include "debug.h"
+
+#include <sstream>
 
 #ifndef CXX_GLOBAL_CSTD
 using std::atoi;
@@ -1282,6 +1283,3 @@ void initParser()
 	theCatcode[int('~')]  = catActive;
 	theCatcode[int('%')]  = catComment;
 }
-
-
-

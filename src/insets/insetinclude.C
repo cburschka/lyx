@@ -49,7 +49,8 @@
 #include <boost/bind.hpp>
 
 #include "support/std_ostream.h"
-#include "support/std_sstream.h"
+
+#include <sstream>
 
 using lyx::support::AddName;
 using lyx::support::AbsolutePath;

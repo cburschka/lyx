@@ -41,7 +41,7 @@
 
 #include <boost/array.hpp>
 
-#include "support/std_sstream.h"
+#include <sstream>
 
 namespace support = lyx::support;
 using lyx::support::bformat;
@@ -328,7 +328,7 @@ string const BufferParams::readToken(LyXLex & lex, string const & token)
 			cite_engine = biblio::ENGINE_NATBIB_AUTHORYEAR;
 		else if (engine == "jurabib")
 			cite_engine = biblio::ENGINE_JURABIB;
-		
+
 	} else if (token == "\\use_bibtopic") {
 		lex.nextToken();
 		use_bibtopic = lex.getInteger();

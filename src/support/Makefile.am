@@ -66,10 +66,8 @@ libsupport_la_SOURCES = \
 	snprintf.c \
 	socktools.C \
 	socktools.h \
-	sstream.h \
 	std_istream.h \
 	std_ostream.h \
-	std_sstream.h \
 	systemcall.C \
 	systemcall.h \
 	tempname.C \

@@ -38,10 +38,11 @@
 #include "xfont_loader.h"
 #include "xformsImage.h"
 
-#include "support/std_sstream.h"
+#include <boost/bind.hpp>
+
+#include <sstream>
 #include <iomanip>
 #include <fcntl.h>
-#include <boost/bind.hpp>
 
 #include "gnome_helpers.h"
 #include <gtkmm/main.h>

@@ -16,10 +16,11 @@
 #include "debug.h"
 
 #include "support/lstrings.h"
-#include "support/std_sstream.h"
 #include "support/tostr.h"
 
 #include <boost/assert.hpp>
+
+#include <sstream>
 
 using std::endl;
 using std::ostringstream;

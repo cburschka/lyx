@@ -35,19 +35,19 @@
 #include "lyxlib.h"
 #include "os.h"
 
-#include "support/std_sstream.h"
-
 #include <boost/assert.hpp>
 #include <boost/regex.hpp>
+
+#include <fcntl.h>
 
 #include <cctype>
 #include <cstdlib>
 #include <cstdio>
-#include <fcntl.h>
 #include <cerrno>
 
 #include <utility>
 #include <fstream>
+#include <sstream>
 
 
 // Which part of this is still necessary? (JMarc).
@@ -335,7 +335,7 @@ i18nLibFileSearch(string const & dir, string const & name,
 	string l;
 	lang = split(lang, l, ':');
 	while (!l.empty() && l != "C" && l != "POSIX") {
-		string const tmp = LibFileSearch(dir, 
+		string const tmp = LibFileSearch(dir,
 						 token(l, '_', 0) + '_' + name,
 						 ext);
 		if (!tmp.empty())

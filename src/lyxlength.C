@@ -19,8 +19,8 @@
 #include "lengthcommon.h"
 #include "lyxrc.h"
 
+#include <sstream>
 
-#include "support/std_sstream.h"
 
 using std::abs;
 using std::ostringstream;

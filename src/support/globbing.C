@@ -16,12 +16,13 @@
 
 #include "lstrings.h"
 #include "path.h"
-#include "std_sstream.h"
 
 #include <boost/regex.hpp>
 #include <boost/tokenizer.hpp>
 
-#include "glob.h"
+#include <glob.h>
+
+#include <sstream>
 
 using std::distance;
 using std::ostringstream;

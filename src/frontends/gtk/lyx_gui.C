@@ -47,12 +47,14 @@
 #include "xftFontLoader.h"
 #include "GWorkArea.h"
 
-#include "support/std_sstream.h"
-#include <iomanip>
-#include <fcntl.h>
 #include <boost/bind.hpp>
 #include <boost/function.hpp>
 #include <boost/shared_ptr.hpp>
+
+#include <fcntl.h>
+
+#include <sstream>
+#include <iomanip>
 
 //just for xforms
 #include "lyx_forms.h"

@@ -12,7 +12,6 @@
 #include <config.h>
 
 #include "support/lstrings.h"
-#include "support/std_sstream.h"
 
 #include "gnome_helpers.h"
 #include "gnomeBC.h"
@@ -20,6 +19,8 @@
 
 #include <gtkmm/button.h>
 #include <gtkmm/textview.h>
+
+#include <sstream>
 
 using std::istringstream;
 

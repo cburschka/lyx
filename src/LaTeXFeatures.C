@@ -27,7 +27,7 @@
 
 #include "support/filetools.h"
 
-#include "support/std_sstream.h"
+#include <sstream>
 
 using lyx::support::IsSGMLFilename;
 using lyx::support::MakeRelPath;
@@ -307,7 +307,7 @@ string const LaTeXFeatures::getPackages() const
 		}
 		packages << "]{natbib}\n";
 	}
-	
+
 	// jurabib -- we need version 0.6 at least.
 	if (isRequired("jurabib")) {
 		packages << "\\RequirePackage{jurabib}[2004/01/25]\n";

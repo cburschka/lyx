@@ -6,7 +6,7 @@ MAINTAINERCLEANFILES = $(srcdir)/Makefile.in
 
 AM_INSTALL_DATA_FLAGS = $(INSTALL) -m 644 -D
 
-ETAGS_ARGS = --lang=c++
+AM_ETAGSFLAGS = --lang=c++
 
 if USE_INCLUDED_BOOST
 BOOST_INCLUDES = -I$(top_srcdir)/boost

@@ -16,7 +16,7 @@
 #include "dispatchresult.h"
 #include "funcrequest.h"
 
-#include "support/std_sstream.h"
+#include <sstream>
 
 using std::string;
 using std::auto_ptr;

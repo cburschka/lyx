@@ -40,11 +40,12 @@
 #include "mathed/math_macrotable.h"
 
 #include "support/limited_stack.h"
-#include "support/std_sstream.h"
 
 #include "frontends/LyXView.h"
 
 #include <boost/assert.hpp>
+
+#include <sstream>
 
 using lyx::par_type;
 

@@ -27,9 +27,9 @@
 #include "paragraph.h"
 
 #include "support/lyxalgo.h"
-#include "support/std_sstream.h"
 #include "support/translator.h"
 
+#include <sstream>
 
 using std::string;
 using std::auto_ptr;

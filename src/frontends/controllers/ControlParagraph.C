@@ -17,8 +17,8 @@
 #include "lyxlex.h"
 #include "paragraph.h"
 #include "ParagraphParameters.h"
-#include "support/std_sstream.h"
 
+#include <sstream>
 
 using std::istringstream;
 using std::ostringstream;

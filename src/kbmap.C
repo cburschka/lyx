@@ -23,7 +23,8 @@
 #include "frontends/LyXKeySym.h"
 
 #include "support/filetools.h"
-#include "support/std_sstream.h"
+
+#include <sstream>
 
 using lyx::support::i18nLibFileSearch;
 
@@ -293,14 +294,14 @@ string const kb_keymap::printbindings(FuncRequest const & func) const
 }
 
 
-kb_keymap::Bindings 
+kb_keymap::Bindings
 kb_keymap::findbindings(FuncRequest const & func) const
 {
 	return findbindings(func, kb_sequence(0, 0));
 }
 
 
-kb_keymap::Bindings 
+kb_keymap::Bindings
 kb_keymap::findbindings(FuncRequest const & func,
 			kb_sequence const & prefix) const
 {
@@ -313,7 +314,7 @@ kb_keymap::findbindings(FuncRequest const & func,
 		if (cit->table.get()) {
 			kb_sequence seq = prefix;
 			seq.addkey(cit->code, cit->mod.first);
-			Bindings res2 = 
+			Bindings res2 =
 				cit->table->findbindings(func, seq);
 			res.insert(res.end(), res2.begin(), res2.end());
 		} else if (cit->func == func) {
@@ -333,9 +334,9 @@ kb_keymap::find1keybinding(FuncRequest const & func) const
 	Table::const_iterator end = table.end();
 	for (Table::const_iterator cit = table.begin();
 	    cit != end; ++cit) {
-		if (!cit->table.get() && cit->func == func) 
+		if (!cit->table.get() && cit->func == func)
 			return std::make_pair(cit->code.get(), cit->mod.first);
 	}
 
 	return std::make_pair<LyXKeySym const *, key_modifier::state>(0, key_modifier::none);
-}	
+}

@@ -19,8 +19,9 @@
 #include "support/translator.h"
 
 #include <boost/regex.hpp>
-#include "support/std_sstream.h"
+
 #include <cmath> // std::abs
+#include <sstream>
 
 using lyx::support::float_equal;
 

@@ -19,7 +19,7 @@
 #include "lyxlex.h"
 #include "metricsinfo.h"
 
-#include "support/std_sstream.h"
+#include <sstream>
 
 
 using std::string;

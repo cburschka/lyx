@@ -77,12 +77,14 @@ TODO
 #include "support/os.h"
 #include "support/systemcall.h"
 #include "support/tostr.h"
-#include "support/std_sstream.h"
 
 #include <boost/bind.hpp>
 #include <boost/tuple/tuple.hpp>
 
+#include <sstream>
+
 namespace support = lyx::support;
+
 using lyx::support::AbsolutePath;
 using lyx::support::bformat;
 using lyx::support::ChangeExtension;

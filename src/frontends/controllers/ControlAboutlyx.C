@@ -14,12 +14,12 @@
 #include "ControlAboutlyx.h"
 #include "gettext.h"
 #include "version.h"
-#include "support/std_sstream.h"
 
 #include "support/filetools.h" // FileSearch
 #include "support/path_defines.h"
 
 #include <fstream>
+#include <sstream>
 
 using std::ostream;
 using std::ostringstream;

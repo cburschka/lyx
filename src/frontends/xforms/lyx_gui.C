@@ -42,9 +42,10 @@
 
 #include <boost/bind.hpp>
 
-#include "support/std_sstream.h"
-#include <iomanip>
 #include <fcntl.h>
+
+#include <sstream>
+#include <iomanip>
 
 using lyx::support::AddName;
 using lyx::support::user_lyxdir;

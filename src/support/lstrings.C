@@ -12,7 +12,6 @@
 #include <config.h>
 
 #include "lstrings.h"
-#include "support/std_sstream.h"
 #include "debug.h"
 #include "lyxlib.h"
 #include "tostr.h"
@@ -25,6 +24,8 @@
 
 #include <cctype>
 #include <cstdlib>
+
+#include <sstream>
 
 using std::transform;
 using std::string;

@@ -18,11 +18,11 @@
 #include "gettext.h"
 
 #include "support/lstrings.h"
-#include "support/std_sstream.h"
 
 #include <boost/regex.hpp>
 
 #include <algorithm>
+#include <sstream>
 
 using std::string;
 using std::ostringstream;

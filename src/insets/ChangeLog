@@ -1,3 +1,11 @@
+2004-07-24  Lars Gullik Bjonnes  <larsbj@gullik.net>
+
+	* insetwrap.C, insetvspace.C, insettabular.C, insetnote.C:
+	* insetinclude.C, insetgraphics.C, insetfloat.C:
+	* insetexternal.C, insetert.C, insetcharstyle.C, insetcaption.C:
+	* insetbranch.C, insetbox.C, ExternalTransforms.C: change
+	"support/std_sstream.h" to <sstream>
+
 2004-06-22  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* insetgraphics.C (prepareFile): remove conversion_needed flag.

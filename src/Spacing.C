@@ -10,11 +10,11 @@
  */
 
 #include <config.h>
-#include <string>
 
 #include "Spacing.h"
 
-#include "support/std_sstream.h"
+#include <sstream>
+#include <string>
 
 using std::ios;
 using std::istringstream;

@@ -24,7 +24,7 @@
 
 #include <boost/bind.hpp>
 
-#include "support/std_sstream.h"
+#include <sstream>
 #include <fstream>
 
 namespace support = lyx::support;

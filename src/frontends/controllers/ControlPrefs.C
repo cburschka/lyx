@@ -24,7 +24,7 @@
 #include "support/globbing.h"
 #include "support/path_defines.h"
 
-#include "support/std_sstream.h"
+#include <sstream>
 
 using std::ostringstream;
 using std::pair;

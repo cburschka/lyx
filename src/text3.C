@@ -54,12 +54,12 @@
 #include "support/lstrings.h"
 #include "support/lyxlib.h"
 #include "support/tostr.h"
-#include "support/std_sstream.h"
 
 #include "mathed/math_hullinset.h"
 #include "mathed/math_macrotemplate.h"
 
 #include <clocale>
+#include <sstream>
 
 using lyx::pos_type;
 

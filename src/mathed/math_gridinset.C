@@ -26,9 +26,9 @@
 
 #include "frontends/Painter.h"
 
-#include "support/std_sstream.h"
-
 #include "insets/mailinset.h"
+
+#include <sstream>
 
 using std::endl;
 using std::max;

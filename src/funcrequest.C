@@ -12,9 +12,8 @@
 
 #include "funcrequest.h"
 
-#include "support/std_sstream.h"
-
 #include <iostream>
+#include <sstream>
 #include <vector>
 
 using std::getline;

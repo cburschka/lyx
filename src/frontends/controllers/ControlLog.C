@@ -16,8 +16,7 @@
 #include "gettext.h"
 #include "lyxlex.h"
 
-#include "support/std_sstream.h"
-
+#include <sstream>
 #include <fstream>
 
 using std::istringstream;

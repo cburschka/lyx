@@ -14,9 +14,9 @@
 #include "ControlLog.h"
 #include "forms/form_browser.h"
 
-#include "support/std_sstream.h"
-
 #include "lyx_forms.h"
+
+#include <sstream>
 
 namespace lyx {
 namespace frontend {

@@ -40,9 +40,9 @@
 #include "graphics/PreviewImage.h"
 #include "graphics/PreviewLoader.h"
 
-#include "support/std_sstream.h"
-
 #include <boost/bind.hpp>
+
+#include <sstream>
 
 using lyx::cap::grabAndEraseSelection;
 

@@ -37,8 +37,7 @@
 #include "frontends/LyXView.h"
 #include "frontends/Painter.h"
 
-#include "support/std_sstream.h"
-
+#include <sstream>
 #include <iostream>
 
 using lyx::graphics::PreviewLoader;

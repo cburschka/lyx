@@ -30,8 +30,8 @@
 #include "support/filetools.h"
 #include "support/lstrings.h"
 #include "support/lyxlib.h"
-#include "support/std_sstream.h"
 
+#include <sstream>
 #include <vector>
 
 using lyx::pos_type;

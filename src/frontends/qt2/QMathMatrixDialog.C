@@ -18,7 +18,7 @@
 
 #include "controllers/ControlMath.h"
 
-#include "support/std_sstream.h"
+#include <sstream>
 
 #include <qcombobox.h>
 #include <qlineedit.h>

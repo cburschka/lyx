@@ -19,9 +19,9 @@
 #include "debug.h"
 #include "dociterator.h"
 
-#include "support/std_sstream.h"
-
 #include <boost/assert.hpp>
+
+#include <sstream>
 
 using std::endl;
 using std::istringstream;

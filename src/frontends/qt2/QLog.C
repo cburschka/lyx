@@ -16,7 +16,7 @@
 
 #include "controllers/ControlLog.h"
 
-#include "support/std_sstream.h"
+#include <sstream>
 
 #include <qtextview.h>
 #include <qpushbutton.h>

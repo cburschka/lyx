@@ -19,7 +19,8 @@
 #include "controllers/ControlAboutlyx.h"
 
 #include "support/lstrings.h"
-#include "support/std_sstream.h"
+
+#include <sstream>
 
 #include <qlabel.h>
 #include <qpushbutton.h>

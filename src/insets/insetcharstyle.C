@@ -27,7 +27,8 @@
 
 #include "frontends/font_metrics.h"
 #include "frontends/Painter.h"
-#include "support/std_sstream.h"
+
+#include <sstream>
 
 
 using std::string;

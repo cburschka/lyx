@@ -41,12 +41,13 @@
 #include "outputparams.h"
 #include "undo.h"
 
-#include "support/std_sstream.h"
 #include "support/lstrings.h"
 
 #include "frontends/Dialogs.h"
 #include "frontends/LyXView.h"
 #include "frontends/Painter.h"
+
+#include <sstream>
 
 using lyx::cap::copySelection;
 using lyx::cap::grabAndEraseSelection;

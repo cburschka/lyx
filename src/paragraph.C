@@ -41,7 +41,6 @@
 #include "insets/insetoptarg.h"
 
 #include "support/lstrings.h"
-#include "support/std_sstream.h"
 #include "support/textutils.h"
 #include "support/tostr.h"
 
@@ -50,6 +49,7 @@
 
 #include <list>
 #include <stack>
+#include <sstream>
 
 using lyx::pos_type;
 

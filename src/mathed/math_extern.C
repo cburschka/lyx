@@ -31,12 +31,12 @@
 #include "math_stringinset.h"
 #include "math_symbolinset.h"
 #include "math_parser.h"
-#include "support/std_sstream.h"
 #include "debug.h"
 #include "support/filetools.h"
 #include "support/lstrings.h"
 
 #include <algorithm>
+#include <sstream>
 
 using lyx::support::cmd_ret;
 using lyx::support::getVectorFromString;

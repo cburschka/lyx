@@ -32,7 +32,8 @@
 
 #include "support/lstrings.h"
 #include "support/tostr.h"
-#include "support/std_sstream.h"
+
+#include <sstream>
 
 using lyx::support::contains;
 

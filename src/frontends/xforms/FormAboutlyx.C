@@ -18,10 +18,11 @@
 #include "ControlAboutlyx.h"
 #include "forms/form_aboutlyx.h"
 #include "xforms_helpers.h"
-#include "support/std_sstream.h"
 #include "version.h"
 
 #include "lyx_forms.h"
+
+#include <sstream>
 
 using std::ostringstream;
 

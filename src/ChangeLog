@@ -1,3 +1,12 @@
+2004-07-24  Lars Gullik Bjonnes  <larsbj@gullik.net>
+
+	* text3.C, text2.C, text.C, tabular.C, paragraph_funcs.C, paragraph.C:
+	* lyxlength.C, lyxgluelength.C, lyxfunc.C, lyxfont.C, lyxfind.C:
+	* kbmap.C, funcrequest.C, factory.C, cursor.C, counters.C:
+	* bufferview_funcs.C, bufferparams.C, buffer.C, Spacing.C:
+	* ParagraphParameters.C, LaTeXFeatures.C: replace
+	"support/std_sstream.h" with <sstream>
+
 2004-07-23  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
 	* lyxserver.C (startPipe): use this (pointer) not *this (reference)

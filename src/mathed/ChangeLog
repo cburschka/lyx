@@ -1,5 +1,13 @@
 2004-07-24  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
+	* math_support.C, math_parser.C, math_nestinset.C, math_macrotable.C: 
+	* math_hullinset.C, math_gridinset.C, math_factory.C:
+	* math_extern.C, math_autocorrect.C, math_arrayinset.C:
+	* formulamacro.C, command_inset.C: change "support/std_sstream.h"
+	to <sstream>
+
+2004-07-24  Lars Gullik Bjonnes  <larsbj@gullik.net>
+
 	* math_macrotable.C (expand): n is now size_t
 
 	* math_macroarg.h (number): return size_t

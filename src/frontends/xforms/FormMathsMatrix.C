@@ -25,7 +25,7 @@
 
 #include "lyx_forms.h"
 
-#include "support/std_sstream.h"
+#include <sstream>
 
 
 using std::ostringstream;

@@ -87,8 +87,9 @@
 #include "support/path_defines.h"
 #include "support/systemcall.h"
 #include "support/tostr.h"
-#include "support/std_sstream.h"
 #include "support/os.h"
+
+#include <sstream>
 
 using bv_funcs::freefont2string;
 
@@ -299,7 +300,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 
 	// the default error message if we disable the command
 	setStatusMessage(N_("Command disabled"));
-	if (!flag.enabled()) 
+	if (!flag.enabled())
 		return flag;
 
 	// Check whether we need a buffer
