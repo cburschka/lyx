@@ -1,3 +1,12 @@
+2003-12-15  Ronald Florence <ron@18james.com>
+
+	* qfont_loader.C: fixed headers to compile w/o X11
+	
+	* QWorkArea.C (checkAppleEventForMissingParams) 
+	(handleOpenDocuments): add support for OpenDocuments apple event
+
+	* lyx_gui.C (macEventFilter): handle apple events
+ 
 2004-01-05  Angus Leeming  <leeming@lyx.org>
 
 	* FileDialog_private.C (c-tor): invoke convert_brace_glob to convert

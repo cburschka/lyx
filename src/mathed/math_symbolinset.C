@@ -65,10 +65,10 @@ void MathSymbolInset::metrics(MetricsInfo & mi, Dimension & dim) const
 	// correct height for broken cmex and wasy font
 #if defined(__APPLE__) && defined(__GNUC__)
 	if (sym_->inset == "cmex") {
-		h_ = 4 * dim_.des / 5;
-		dim_.asc += 0*h_;
-		dim_.des -= h_;
-		h_ = dim_.asc;
+		h_ = 4 * dim.des / 5;
+		dim.asc += 0*h_;
+		dim.des -= h_;
+		h_ = dim.asc;
 	} else if (sym_->inset == "wasy") {
 		h_ = 4 * dim.des / 5;
 		dim.asc += h_;

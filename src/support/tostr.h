@@ -29,5 +29,7 @@ std::string const tostr(long int);
 std::string const tostr(double);
 ///
 std::string const tostr(std::string const & s);
+///
+std::string const tostr(long unsigned int);
 
 #endif

@@ -43,6 +43,10 @@
 #include "socket_callback.h"
 #include "lcolorcache.h"
 
+#ifdef Q_WS_MACX
+#include <Carbon/Carbon.h>
+#endif
+
 #include <qapplication.h>
 #include <qpaintdevicemetrics.h>
 
@@ -86,6 +90,12 @@ extern void initEncodings();
 extern bool lyxX11EventFilter(XEvent * xev);
 #endif
 
+#ifdef Q_WS_MACX
+extern bool macEventFilter(EventRef event);
+extern pascal OSErr
+handleOpenDocuments(const AppleEvent* inEvent, AppleEvent* /*reply*/, 
+		    long /*refCon*/);
+#endif
 
 class LQApplication : public QApplication
 {
@@ -95,16 +105,41 @@ public:
 #ifdef Q_WS_X11
 	bool x11EventFilter (XEvent * ev) { return lyxX11EventFilter(ev); }
 #endif
+#ifdef Q_WS_MACX
+	bool macEventFilter(EventRef event);
+#endif
 };
 
 
 LQApplication::LQApplication(int & argc, char ** argv)
 	: QApplication(argc, argv)
-{}
+{
+#ifdef Q_WS_MACX
+	AEInstallEventHandler(kCoreEventClass, kAEOpenDocuments,
+			      NewAEEventHandlerUPP(handleOpenDocuments),
+			      0, false);
+#endif
+}
 
 
 LQApplication::~LQApplication()
 {}
+
+
+#ifdef Q_WS_MACX
+bool LQApplication::macEventFilter(EventRef event) 
+{
+	if (GetEventClass(event) == kEventClassAppleEvent) {
+		EventRecord eventrec;
+		ConvertEventRefToEventRecord(event, &eventrec);
+		AEProcessAppleEvent(&eventrec);
+		
+		return false;
+	}
+	return false;
+}
+#endif
+
 
 namespace lyx_gui {
 

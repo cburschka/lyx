@@ -28,9 +28,16 @@
 #include <X11/Xlib.h>
 #endif
 
+#ifdef Q_WS_MACX
+#include <Carbon/Carbon.h>
+#endif
+
 using std::endl;
 using std::string;
 
+namespace {
+QWorkArea const * wa_ptr = 0;
+}
 
 QWorkArea::QWorkArea(int, int, int, int)
 	: WorkArea(), QWidget(qApp->mainWidget()), painter_(*this)
@@ -51,6 +58,9 @@ QWorkArea::QWorkArea(int, int, int, int)
 	vl->addWidget(content_, 5);
 	vl->addWidget(scrollbar_, 0);
 
+#ifdef Q_WS_MACX
+	wa_ptr = this;
+#endif
 	show();
 }
 
@@ -75,10 +85,6 @@ void QWorkArea::setScrollbarParams(int h, int pos, int line_h)
 	scrollbar_->setPageStep(height());
 }
 
-namespace {
-QWorkArea const * wa_ptr = 0;
-}
-
 #ifdef Q_WS_X11
 bool lyxX11EventFilter(XEvent * xev)
 {
@@ -97,6 +103,72 @@ bool lyxX11EventFilter(XEvent * xev)
 	return false;
 }
 #endif
+
+#ifdef Q_WS_MACX
+namespace{
+OSErr checkAppleEventForMissingParams(const AppleEvent& theAppleEvent)
+ {
+	DescType returnedType;
+	Size actualSize;
+	OSErr err = AEGetAttributePtr(&theAppleEvent, keyMissedKeywordAttr, 
+				      typeWildCard, &returnedType, nil, 0, 
+				      &actualSize);
+	switch (err) {
+	case errAEDescNotFound:
+		return noErr;  
+	case noErr:      
+		return errAEEventNotHandled;
+	default:
+		return err; 
+	}
+ }
+}
+
+pascal OSErr handleOpenDocuments(const AppleEvent* inEvent, 
+				 AppleEvent* /*reply*/, long /*refCon*/) 
+{
+	QString s_arg;
+	AEDescList documentList;
+	OSErr err = AEGetParamDesc(inEvent, keyDirectObject, typeAEList, 
+				   &documentList);
+	if (err != noErr) 
+		return err;
+
+	err = checkAppleEventForMissingParams(*inEvent);
+	if (err == noErr) {
+		long documentCount;
+		err = AECountItems(&documentList, &documentCount);
+		for (long documentIndex = 1; 
+		     err == noErr && documentIndex <= documentCount; 
+		     documentIndex++) {
+			DescType returnedType;
+			Size actualSize;
+			AEKeyword keyword;
+			FSRef ref;
+			char qstr_buf[1024];
+			err = AESizeOfNthItem(&documentList, documentIndex, 
+					      &returnedType, &actualSize);
+			if (err == noErr) {
+				err = AEGetNthPtr(&documentList, documentIndex,
+						  typeFSRef, &keyword,
+						  &returnedType, (Ptr)&ref, 
+						  sizeof(FSRef), &actualSize);
+				if (err == noErr) {
+					FSRefMakePath(&ref, (UInt8*)qstr_buf, 
+						      1024);
+					s_arg=QString::fromUtf8(qstr_buf);
+					wa_ptr->dispatch(
+						FuncRequest(LFUN_FILE_OPEN, 
+							    fromqstr(s_arg)));
+					break;
+				}
+			}
+		} // for ...
+	}
+	AEDisposeDesc(&documentList);
+	return err;
+}
+#endif  // Q_WS_MACX
 
 void QWorkArea::haveSelection(bool own) const
 {

@@ -58,3 +58,11 @@ string const tostr(string const & s)
 {
 	return s;
 }
+
+
+string const tostr(long unsigned int i)
+{
+        ostringstream os;
+        os << i;
+        return os.str();
+}

@@ -44,7 +44,9 @@ push @maybe_dir, "$dir/$srcdir";
 if (exists $ENV{LYX_DIR_14x}) { push @maybe_dir, "$ENV{LYX_DIR_14x}/reLyX"};
 # case 4: e.g., reLyX in /opt/bin, $mainscript in /opt/share/lyx/reLyX
 push @maybe_dir, "$dir/../share/$lyxname/reLyX"; # case 4
-# case 5: configure figured out where $mainscript is
+# case 5: LyX/Mac -- reLyX is in a MacOS X application bundle
+push @maybe_dir, "$dir/../Resources/LyX/reLyX"; # case 5
+# case 6: configure figured out where $mainscript is
 push @maybe_dir, "$lyxdir/reLyX";
 
 # Decide which one is the real directory, based on the existence of
