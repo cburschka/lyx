@@ -11,9 +11,26 @@
 
 #include "messages.h"
 #include "debug.h"
+#include "support/filetools.h"
 
 
 #ifdef ENABLE_NLS
+
+namespace {
+
+string const & getLocaleDir()
+{
+	static string locale_dir;
+
+	if (locale_dir.empty()) {
+		locale_dir = GetEnvPath("LYX_LOCALEDIR");
+		if (locale_dir.empty())
+			locale_dir = LOCALEDIR;
+	}
+	return locale_dir;
+}
+
+} // anon namespace
 
 #if 0
 
@@ -25,15 +42,15 @@ class Messages::Pimpl {
 public:
 	typedef std::messages<char>::catalog catalog;
 
-	Pimpl(string const & l, string const & dir)
-		: lang_(l), localedir_(dir),
+	Pimpl(string const & l)
+		: lang_(l),
 		  loc_gl(lang_.c_str()),
 		  mssg_gl(std::use_facet<std::messages<char> >(loc_gl))
 	{
 		//lyxerr << "Messages: language(" << l
 		//       << ") in dir(" << dir << ")" << std::endl;
 
-		cat_gl = mssg_gl.open(PACKAGE, loc_gl, localedir_.c_str());
+		cat_gl = mssg_gl.open(PACKAGE, loc_gl, getLocaleDir().c_str());
 
 	}
 
@@ -49,8 +66,6 @@ public:
 private:
 	///
 	string lang_;
-	///
-	string localedir_;
 	///
 	std::locale loc_gl;
 	///
@@ -73,13 +88,13 @@ private:
 // This is a more traditional variant.
 class Messages::Pimpl {
 public:
-	Pimpl(string const & l, string const & dir)
-		: lang_(l), localedir_(dir)
+	Pimpl(string const & l)
+		: lang_(l)
 	{
 		//lyxerr << "Messages: language(" << l
 		//       << ") in dir(" << dir << ")" << std::endl;
 
-	      bindtextdomain(PACKAGE, localedir_.c_str());
+	      bindtextdomain(PACKAGE, getLocaleDir().c_str());
 	      textdomain(PACKAGE);
 	}
 
@@ -108,7 +123,7 @@ private:
 // This is the dummy variant.
 class Messages::Pimpl {
 public:
-	Pimpl(string const &, string const &) {}
+	Pimpl(string const &) {}
 
 	~Pimpl() {}
 
@@ -119,8 +134,14 @@ public:
 };
 #endif
 
-Messages::Messages(string const & l, string const & dir)
-	: pimpl_(new Pimpl(l, dir))
+
+Messages::Messages()
+	: pimpl_(new Pimpl(""))
+{}
+
+
+Messages::Messages(string const & l)
+	: pimpl_(new Pimpl(l))
 {}
 
 

@@ -1,3 +1,24 @@
+2003-04-28  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* messages.C (getLocaleDir): singleton generation function
+	(Pimpl): use it.
+	(Messages): add a default constructor.
+
+	* main.C (main): do not setup localedir here, do not call
+	gettext_init.
+
+	* gettext.C (_): use it.
+	(gettext_init): delete funciton
+
+2003-04-27  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* gettext.C (getLyXMessages): new singleton generating function.
+
+	* buffer.C (updateDocLang): adjust
+
+	* Makefile.am (messages.o): add target
+	(main.o): remove target
+
 2003-04-27  John Levon  <levon@movementarian.org>
 
 	* bufferlist.C:
@@ -14,7 +35,7 @@
 
 	* lyxfunc.C: don't enable tabular-feature when there's
 	just any locking inset
-	
+
 2003-04-26  John Levon  <levon@movementarian.org>
 
 	* bufferlist.C: re-add Cancel to buffer close question

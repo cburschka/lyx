@@ -50,7 +50,5 @@ string const _(string const &);
 
 ///
 void locale_init();
-///
-void gettext_init(string const & localedir);
 
 #endif

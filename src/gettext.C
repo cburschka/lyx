@@ -22,38 +22,25 @@
 
 namespace {
 
-boost::scoped_ptr<Messages> lyx_messages;
+Messages & getLyXMessages()
+{
+	static Messages lyx_messages;
+
+	return lyx_messages;
+}
 
 } // anon namespace
 
 
 char const * _(char const * str)
 {
-	// This breaks pretty much immediately
-	// lyx::Assert(str && str[0]);
-
-	if (!lyx_messages.get())
-		return str;
-
-	return lyx_messages->get(str).c_str();
+	return getLyXMessages().get(str).c_str();
 }
 
 
 string const _(string const & str)
 {
-	// This breaks pretty much immediately
-	// lyx::Assert(!str.empty());
-
-	if (!lyx_messages.get())
-		return str;
-
-	return lyx_messages->get(str);
-}
-
-
-void gettext_init(string const & localedir)
-{
-	lyx_messages.reset(new Messages("", localedir));
+	return getLyXMessages().get(str);
 }
 
 

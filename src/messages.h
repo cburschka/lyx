@@ -19,7 +19,9 @@
 class Messages {
 public:
 	///
-	Messages(string const & l, string const & dir);
+	Messages();
+	///
+	Messages(string const & l);
 	///
 	~Messages();
 	///

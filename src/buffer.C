@@ -2227,7 +2227,7 @@ void Buffer::changeLanguage(Language const * from, Language const * to)
 	
 void Buffer::updateDocLang(Language const * nlang)
 {
-	messages_.reset(new Messages(nlang->code(), "/usr/local/share/locale"));
+	messages_.reset(new Messages(nlang->code()));
 }
 
 
