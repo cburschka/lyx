@@ -17,11 +17,9 @@
 
 #include "ui/QPrefsDialogBase.h"
 
-#include <map>
 #include <vector>
 
 class QPrefs;
-class QListViewItem;
 class QPrefAsciiModule;
 class QPrefDateModule;
 class QPrefKeyboardModule;
@@ -52,8 +50,6 @@ public:
 	void updateFormats();
 
 public slots:
-	virtual void switchPane(QListViewItem * i);
-
 	void change_adaptor();
 
 	void switch_format(int);
@@ -87,9 +83,6 @@ protected:
 	void closeEvent(QCloseEvent * e);
 
 private:
-	typedef std::map<QListViewItem *, QWidget *> PaneMap;
-
-	PaneMap pane_map_;
 
 	std::vector<LColor::color> colors_;
 

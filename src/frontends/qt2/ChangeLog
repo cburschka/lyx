@@ -1,3 +1,17 @@
+2003-03-28  John Levon  <levon@movementarian.org>
+
+	* Makefile.am:
+	* Makefile.dialogs:
+	* moc/Makefile.am:
+	* panelstack.h:
+	* panelstack.C: add new class for handling paned dialogs
+
+	* QPrefsDialog.h:
+	* QPrefsDialog.C:
+	* ui/QPrefsDialogBase.ui: use the above
+
+	* ui/QPrefUIModule.ui: re-layout
+
 2003-03-27  John Levon  <levon@movementarian.org>
 
 	* ui/QParagraphDialogBase.ui: fix dupe accelerator / group label

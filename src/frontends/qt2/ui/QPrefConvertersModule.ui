@@ -13,7 +13,7 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>354</width>
+            <width>384</width>
             <height>261</height>
         </rect>
     </property>
@@ -93,6 +93,14 @@
                                     <hsizetype>3</hsizetype>
                                     <vsizetype>7</vsizetype>
                                 </sizepolicy>
+                            </property>
+                            <property stdset="1">
+                                <name>vScrollBarMode</name>
+                                <enum>AlwaysOn</enum>
+                            </property>
+                            <property stdset="1">
+                                <name>hScrollBarMode</name>
+                                <enum>AlwaysOff</enum>
                             </property>
                         </widget>
                         <widget row="1"  column="0" >

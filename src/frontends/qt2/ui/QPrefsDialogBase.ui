@@ -13,7 +13,7 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>449</width>
+            <width>437</width>
             <height>352</height>
         </rect>
     </property>
@@ -32,7 +32,7 @@
         <name>sizeGripEnabled</name>
         <bool>true</bool>
     </property>
-    <grid>
+    <vbox>
         <property stdset="1">
             <name>margin</name>
             <number>11</number>
@@ -41,7 +41,14 @@
             <name>spacing</name>
             <number>6</number>
         </property>
-        <widget row="1"  column="0"  rowspan="1"  colspan="2" >
+        <widget>
+            <class>PanelStack</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>prefsPS</cstring>
+            </property>
+        </widget>
+        <widget>
             <class>QLayoutWidget</class>
             <property stdset="1">
                 <name>name</name>
@@ -139,101 +146,22 @@
                 </widget>
             </hbox>
         </widget>
-        <widget row="0"  column="1" >
-            <class>QLayoutWidget</class>
-            <property stdset="1">
-                <name>name</name>
-                <cstring>Layout3</cstring>
-            </property>
-            <vbox>
-                <property stdset="1">
-                    <name>margin</name>
-                    <number>0</number>
-                </property>
-                <property stdset="1">
-                    <name>spacing</name>
-                    <number>6</number>
-                </property>
-                <widget>
-                    <class>QWidgetStack</class>
-                    <property stdset="1">
-                        <name>name</name>
-                        <cstring>prefsWS</cstring>
-                    </property>
-                    <property stdset="1">
-                        <name>sizePolicy</name>
-                        <sizepolicy>
-                            <hsizetype>7</hsizetype>
-                            <vsizetype>7</vsizetype>
-                        </sizepolicy>
-                    </property>
-                </widget>
-            </vbox>
-        </widget>
-        <widget row="0"  column="0" >
-            <class>QListView</class>
-            <column>
-                <property>
-                    <name>text</name>
-                    <string>Preferences</string>
-                </property>
-                <property>
-                    <name>clickable</name>
-                    <bool>false</bool>
-                </property>
-                <property>
-                    <name>resizeable</name>
-                    <bool>false</bool>
-                </property>
-            </column>
-            <property stdset="1">
-                <name>name</name>
-                <cstring>prefsLV</cstring>
-            </property>
-            <property stdset="1">
-                <name>sizePolicy</name>
-                <sizepolicy>
-                    <hsizetype>5</hsizetype>
-                    <vsizetype>5</vsizetype>
-                </sizepolicy>
-            </property>
-            <property stdset="1">
-                <name>minimumSize</name>
-                <size>
-                    <width>100</width>
-                    <height>0</height>
-                </size>
-            </property>
-            <property stdset="1">
-                <name>dragAutoScroll</name>
-                <bool>true</bool>
-            </property>
-            <property stdset="1">
-                <name>itemMargin</name>
-                <number>1</number>
-            </property>
-            <property stdset="1">
-                <name>rootIsDecorated</name>
-                <bool>true</bool>
-            </property>
-        </widget>
-    </grid>
+    </vbox>
 </widget>
 <customwidgets>
     <customwidget>
-        <class>QWidgetStack</class>
-        <header location="global">qwidgetstack.h</header>
+        <class>PanelStack</class>
+        <header location="local">panelstack.h</header>
         <sizehint>
             <width>-1</width>
             <height>-1</height>
         </sizehint>
-        <container>0</container>
+        <container>1</container>
         <sizepolicy>
             <hordata>7</hordata>
             <verdata>7</verdata>
         </sizepolicy>
         <pixmap>image0</pixmap>
-        <slot access="public">raiseWidget(int)</slot>
     </customwidget>
 </customwidgets>
 <images>
@@ -243,20 +171,12 @@
     </image>
 </images>
 <connections>
-    <connection>
-        <sender>prefsLV</sender>
-        <signal>currentChanged(QListViewItem*)</signal>
-        <receiver>QPrefsDialogBase</receiver>
-        <slot>switchPane(QListViewItem *)</slot>
-    </connection>
     <slot access="public">change_adaptor()</slot>
     <slot access="protected">defaultClicked()</slot>
-    <slot access="public">switchPane(QListViewItem *)</slot>
     <slot access="protected">saveClicked()</slot>
     <slot access="public">setTitle(int)</slot>
 </connections>
 <tabstops>
-    <tabstop>prefsLV</tabstop>
     <tabstop>restorePB</tabstop>
     <tabstop>savePB</tabstop>
     <tabstop>applyPB</tabstop>

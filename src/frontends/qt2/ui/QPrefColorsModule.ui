@@ -13,7 +13,7 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>297</width>
+            <width>289</width>
             <height>259</height>
         </rect>
     </property>
@@ -65,6 +65,22 @@
                     <property stdset="1">
                         <name>name</name>
                         <cstring>lyxObjectsLB</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>resizePolicy</name>
+                        <enum>AutoOneFit</enum>
+                    </property>
+                    <property stdset="1">
+                        <name>vScrollBarMode</name>
+                        <enum>AlwaysOn</enum>
+                    </property>
+                    <property stdset="1">
+                        <name>hScrollBarMode</name>
+                        <enum>AlwaysOff</enum>
+                    </property>
+                    <property stdset="1">
+                        <name>columnMode</name>
+                        <enum>FitToHeight</enum>
                     </property>
                 </widget>
                 <widget>
