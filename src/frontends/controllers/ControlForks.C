@@ -25,13 +25,15 @@
 #include "support/forkedcontr.h"
 #include "support/lstrings.h"
 
+#include <boost/bind.hpp>
+
 using std::vector;
-using SigC::slot;
+
 
 ControlForks::ControlForks(LyXView & lv, Dialogs & d)
 	: ControlDialogBI(lv, d)
 {
-	d_.showForks.connect(slot(this, &ControlForks::show));
+	d_.showForks = boost::bind(&ControlForks::show, this);
 }
 
 
@@ -84,7 +86,7 @@ void ControlForks::setParams()
 
 	ForkedcallsController & fcc = ForkedcallsController::get();
 	childrenChanged_ =
-		fcc.childrenChanged.connect(slot(this, &ControlForks::update));
+		fcc.childrenChanged.connect(boost::bind(&ControlForks::update, this));
 }
 
 

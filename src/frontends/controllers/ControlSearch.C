@@ -17,26 +17,29 @@
 #pragma implementation
 #endif
 
+#include "ControlSearch.h"
 #include "ViewBase.h"
 #include "ButtonControllerBase.h"
-#include "ControlSearch.h"
 #include "Dialogs.h"
 #include "Liason.h"
-#include "frontends/LyXView.h"
 #include "buffer.h"
 #include "lyxfind.h"
 #include "debug.h"
 #include "gettext.h"
 #include "BufferView.h"
+
+#include "frontends/LyXView.h"
+
 #include "support/lstrings.h"
 
+#include <boost/bind.hpp>
+
 using Liason::setMinibuffer;
-using SigC::slot;
 
 ControlSearch::ControlSearch(LyXView & lv, Dialogs & d)
 	: ControlDialogBD(lv, d)
 {
-	d_.showSearch.connect(SigC::slot(this, &ControlSearch::show));
+	d_.showSearch = boost::bind(&ControlSearch::show, this);
 
 	// perhaps in the future we'd like a
 	// "search again" button/keybinding

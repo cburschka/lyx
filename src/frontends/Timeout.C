@@ -57,7 +57,7 @@ void Timeout::restart()
 void Timeout::emit()
 {
 	pimpl_->reset();
-	timeout.emit();
+	timeout();
 	if (type == CONTINUOUS)
 		pimpl_->start();
 }

@@ -166,7 +166,7 @@ void xformsGImage::load(string const & filename, SignalTypePtr on_finish)
 	if (image_) {
 		lyxerr[Debug::GRAPHICS]
 			<< "Image is loaded already!" << std::endl;
-		on_finish->emit(false);
+		on_finish->operator()(false);
 		return;
 	}
 
@@ -174,7 +174,7 @@ void xformsGImage::load(string const & filename, SignalTypePtr on_finish)
 	if (!image_) {
 		lyxerr[Debug::GRAPHICS]
 			<< "Unable to open image" << std::endl;
-		on_finish->emit(false);
+		on_finish->operator()(false);
 		return;
 	}
 
@@ -324,7 +324,7 @@ void xformsGImage::statusCB(string const & status_message)
 		}
 
 		if (on_finish_.get()) {
-			on_finish_->emit(true);
+			on_finish_->operator()(true);
 			on_finish_.reset();
 		}
 	}
@@ -341,7 +341,7 @@ void xformsGImage::errorCB(string const & error_message)
 	}
 
 	if (on_finish_.get()) {
-		on_finish_->emit(false);
+		on_finish_->operator()(false);
 		on_finish_.reset();
 	}
 }

@@ -26,8 +26,9 @@
 #include "buffer.h"
 #include "BufferView.h"
 
+#include <boost/bind.hpp>
+
 using std::vector;
-using SigC::slot;
 
 // sorry this is just a temporary hack we should include vspace.h! (Jug)
 extern const char * stringFromUnit(int);
@@ -35,12 +36,12 @@ extern const char * stringFromUnit(int);
 ControlERT::ControlERT(LyXView & lv, Dialogs & d)
 	: ControlInset<InsetERT, ERTParams>(lv, d)
 {
-	d_.showERT.connect(slot(this, &ControlERT::showInset));
+	d_.showERT = boost::bind(&ControlERT::showInset, this, _1);
 
 	// We could have an extra method updateInset that calls
 	// view().update() rather than view().show(), but I don't see why
 	// it is really needed.
-	d_.updateERT.connect(slot(this, &ControlERT::showInset));
+	d_.updateERT = boost::bind(&ControlERT::showInset, this, _1);
 }
 
 

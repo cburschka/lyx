@@ -7,7 +7,6 @@
  */
 
 #include <config.h>
-#include <fstream>
 
 #ifdef __GNUG__
 #pragma implementation
@@ -24,10 +23,14 @@
 #include "exporter.h"
 #include "gettext.h"
 #include "lyxrc.h"
+
 #include "support/filetools.h"
 #include "support/lstrings.h"
 #include "support/systemcall.h"
 
+#include <boost/bind.hpp>
+
+#include <fstream>
 
 using std::vector;
 
@@ -36,7 +39,7 @@ ControlSendto::ControlSendto(LyXView & lv, Dialogs & d)
 	  format_(0),
 	  command_(lyxrc.custom_export_command)
 {
-	d_.showSendto.connect(SigC::slot(this, &ControlSendto::show));
+	d_.showSendto = boost::bind(&ControlSendto::show, this);
 }
 
 

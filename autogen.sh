@@ -6,7 +6,7 @@ AUTOMAKE="automake -a -c --foreign"
 AUTOCONF=autoconf
 GNUM4=
 
-ACINCLUDE_FILES="lyxinclude.m4 libtool.m4 codeset.m4 gettext.m4 glibc21.m4 iconv.m4 isc-posix.m4 lcmessage.m4 progtest.m4 sigc++.m4 qt2.m4 gtk--.m4 gnome--.m4 gnome.m4 pspell.m4 pkg.m4"
+ACINCLUDE_FILES="lyxinclude.m4 libtool.m4 codeset.m4 gettext.m4 glibc21.m4 iconv.m4 isc-posix.m4 lcmessage.m4 progtest.m4 qt2.m4 gtk--.m4 gnome--.m4 gnome.m4 pspell.m4 pkg.m4"
 SIGCPP_ACINCLUDE_FILES="libtool.m4"
 
 echo -n "Locating GNU m4... "
@@ -25,15 +25,14 @@ fi
 
 # Generate acinclude.m4
 echo -n "Generate acinclude.m4... "
-rm -f acinclude.m4 sigc++/acinclude.m4
+rm -f acinclude.m4
 (cd config ; cat ${ACINCLUDE_FILES} >../acinclude.m4)
-(cd config ; cat ${SIGCPP_ACINCLUDE_FILES} >../sigc++/acinclude.m4)
 echo "done."
 
 # Generate the Makefiles and configure files
 if ( aclocal --version ) </dev/null > /dev/null 2>&1; then
 	echo "Building macros..."
-	for dir in . lib/reLyX sigc++ ; do
+	for dir in . lib/reLyX ; do
 	    echo "        $dir"
 	    ( cd $dir ; $ACLOCAL )
 	done
@@ -45,7 +44,7 @@ fi
 
 if ( autoheader --version ) </dev/null > /dev/null 2>&1; then
 	echo "Building config header template..."
-	for dir in . sigc++ ; do
+	for dir in . ; do
 	    echo "        $dir"
 	    ( cd $dir ; $AUTOHEADER )
 	done
@@ -57,7 +56,7 @@ fi
 
 if ( $AUTOMAKE --version ) </dev/null > /dev/null 2>&1; then
 	echo "Building Makefile templates..."
-	for dir in . lib/reLyX sigc++ ; do
+	for dir in . lib/reLyX ; do
 	    echo "        $dir"
 	    ( cd $dir ; $AUTOMAKE )
 	done
@@ -69,7 +68,7 @@ fi
 
 if ( $AUTOCONF --version ) </dev/null > /dev/null 2>&1; then
 	echo "Building configure..."
-	for dir in . lib/reLyX sigc++ ; do
+	for dir in . lib/reLyX ; do
 	    echo "       $dir"
 	    ( cd $dir ; $AUTOCONF )
 	done

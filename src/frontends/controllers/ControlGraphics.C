@@ -13,7 +13,6 @@
  */
 
 #include <config.h>
-#include <fstream>
 
 #ifdef __GNUG__
 #pragma implementation
@@ -44,6 +43,9 @@
 #include "support/filetools.h"
 #include "support/FileInfo.h"
 
+#include <boost/bind.hpp>
+
+#include <fstream>
 
 using std::pair;
 using std::make_pair;
@@ -55,25 +57,25 @@ namespace {
 // FIXME: currently we need the second '|' to prevent mis-interpretation!
 // All supported graphic formats with their file-extension and the
 // gzip-ext for zipped (e)ps-files.
-// string const grfx_pattern = 
-// 	"*.(agr|bmp|eps|epsi|fits|gif|jpg|obj|pdf|pbm|pgm|png|"
-// 	"ppm|ps|tif|tiff|xbm|xpm|xwd|gz)|";
+// string const grfx_pattern =
+//	"*.(agr|bmp|eps|epsi|fits|gif|jpg|obj|pdf|pbm|pgm|png|"
+//	"ppm|ps|tif|tiff|xbm|xpm|xwd|gz)|";
 vector<string> const grfx_formats()
 {
 	vector<string> native_formats = grfx::GCache::get().loadableFormats();
 	// We can load any format that can be loaded natively together with
 	// those that can be converted to one of these native formats.
 	vector<string> browsable_formats = native_formats;
-	
+
 	grfx::GConverter const & gconverter = grfx::GConverter::get();
-	
+
 	vector<string>::const_iterator to_end = native_formats.end();
 
 	Formats::const_iterator from_it = formats.begin();
 	Formats::const_iterator from_end = formats.end();
 	for (; from_it != from_end; ++from_it) {
 		string const from = from_it->name();
-		
+
 		vector<string>::const_iterator to_it = native_formats.begin();
 		for (; to_it != to_end; ++to_it) {
 			if (gconverter.isReachable(from, *to_it)) {
@@ -92,18 +94,18 @@ vector<string> const grfx_formats()
 string const xforms_pattern()
 {
 	vector<string> const browsable_formats = grfx_formats();
-	string const answer = 
+	string const answer =
 		"*.(" + getStringFromVector(browsable_formats, "|") +")|";
 	return answer;
 }
 
 }
 
- 
+
 ControlGraphics::ControlGraphics(LyXView & lv, Dialogs & d)
 	: ControlInset<InsetGraphics, InsetGraphicsParams>(lv, d)
 {
-	d_.showGraphics.connect(SigC::slot(this, &ControlGraphics::showInset));
+	d_.showGraphics = boost::bind(&ControlGraphics::showInset, this, _1);
 }
 
 
@@ -162,15 +164,15 @@ string const ControlGraphics::readBB(string const & file)
 {
 	string const abs_file = MakeAbsPath(file, lv_.buffer()->filePath());
 
-	string const from = getExtFromContents(abs_file);	
+	string const from = getExtFromContents(abs_file);
 	// Check if we have a Postscript file, then it's easy
 	if (contains(from, "ps"))
 		return readBB_from_PSFile(abs_file);
 
 	// we don't, so ask the Graphics Cache if it has loaded the file
 	grfx::GCache & gc = grfx::GCache::get();
-	return ("0 0 " + 
-		tostr(gc.raw_width(abs_file)) + ' ' + 
+	return ("0 0 " +
+		tostr(gc.raw_width(abs_file)) + ' ' +
 		tostr(gc.raw_height(abs_file)));
 }
 
@@ -224,4 +226,3 @@ vector<RotationOriginPair> getRotationOriginData()
 }
 
 } // namespace frnt
-

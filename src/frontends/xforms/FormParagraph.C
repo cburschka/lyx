@@ -33,10 +33,11 @@
 #include "support/lstrings.h"
 #include "support/LAssert.h"
 
+#include <boost/bind.hpp>
+
 #include <functional>
 
 using Liason::setMinibuffer;
-using SigC::slot;
 using std::vector;
 using std::bind2nd;
 using std::remove_if;
@@ -48,14 +49,14 @@ FormParagraph::FormParagraph(LyXView * lv, Dialogs * d)
 	// let the dialog be shown
 	// This is a permanent connection so we won't bother
 	// storing a copy because we won't be disconnecting.
-	d->showParagraph.connect(slot(this, &FormParagraph::show));
+	d->showParagraph = boost::bind(&FormParagraph::show, this);
 }
 
 
 void FormParagraph::connect()
 {
 	cp_ = d_->updateParagraph
-		.connect(slot(this, &FormParagraph::changedParagraph));
+		.connect(boost::bind(&FormParagraph::changedParagraph, this));
 	FormBaseBD::connect();
 }
 

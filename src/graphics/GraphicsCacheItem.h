@@ -39,7 +39,9 @@
 #include <boost/utility.hpp>
 #include <boost/shared_ptr.hpp>
 
-#include <sigc++/signal_system.h>
+#include <boost/signals/signal1.hpp>
+#include <boost/signals/connection.hpp>
+#include <boost/signals/trackable.hpp>
 
 #include <list>
 
@@ -51,7 +53,7 @@ class GParams;
 class ModifiedItem;
 
 /// A grfx::GCache item holder.
-class GCacheItem : boost::noncopyable, public SigC::Object {
+class GCacheItem : boost::noncopyable, public boost::signals::trackable {
 public:
 	/// the GCacheItem contains data of this type.
 	typedef boost::shared_ptr<ModifiedItem> ModifiedItemPtr;
@@ -165,12 +167,12 @@ private:
 	 *  the signal must remain in scope. It doesn't matter if the slot
 	 *  disappears, SigC takes care of that.
 	 */
-	typedef SigC::Signal1<void, bool> SignalLoadType;
+	typedef boost::signal1<void, bool> SignalLoadType;
 	///
 	typedef boost::shared_ptr<SignalLoadType> SignalLoadTypePtr;
 
 	/// The connection of the signal passed to ImagePtr::loadImage.
-	SigC::Connection cl_;
+	boost::signals::connection cl_;
 
 	/** A SignalConvertTypePtr is connected to this->imageConverted and
 	 *  then passed to GConverter::convert.
@@ -178,12 +180,12 @@ private:
 	 *  is emitted, returning the name of the loadable file to
 	 *  imageConverted.
 	 */
-	typedef SigC::Signal1<void, string const &> SignalConvertType;
+	typedef boost::signal1<void, string const &> SignalConvertType;
 	///
 	typedef boost::shared_ptr<SignalConvertType> SignalConvertTypePtr;
 
 	/// The connection of the signal passed to GConverter::convert.
-	SigC::Connection cc_;
+	boost::signals::connection cc_;
 
 	/// The list of all modified images.
 	typedef std::list<ModifiedItemPtr> ListType;

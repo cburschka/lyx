@@ -1,3 +1,6 @@
+2002-05-29  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* switch from SigC signals to boost::signals
 
 2002-05-29  André Pönitz <poenitz@gmx.net>
 
@@ -31,11 +34,11 @@
 	* trans.C:
 	* lyxfont.C:
 	* lyxvc.C: remove unused headers
- 
+
 2002-05-26  John Levon  <moz@compsoc.man.ac.uk>
 
 	* Makefile.am:
-	* buffer.h: 
+	* buffer.h:
 	* undostack.h:
 	* undostack.C:
 	* undo_funcs.h:
@@ -53,7 +56,7 @@
 	* lyxfunc.h:
 	* lyxfunc.C:
 	* text2.C: use key_state/mouse_state
- 
+
 2002-05-25  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* vc-backend.C (scanMaster): use boost regex and get rid of LRegex

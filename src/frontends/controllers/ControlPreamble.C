@@ -24,11 +24,13 @@
 #include "BufferView.h"
 #include "support/LAssert.h"
 
+#include <boost/bind.hpp>
+
 ControlPreamble::ControlPreamble(LyXView & lv, Dialogs & d)
 	: ControlDialogBD(lv, d),
 	  params_(0)
 {
-	d_.showPreamble.connect(SigC::slot(this, &ControlPreamble::show));
+	d_.showPreamble = boost::bind(&ControlPreamble::show, this);
 }
 
 

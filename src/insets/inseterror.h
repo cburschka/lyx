@@ -18,7 +18,8 @@
 
 #include "inset.h"
 #include "LString.h"
-#include <sigc++/signal_system.h>
+
+#include <boost/signals/signal0.hpp>
 
 /** Used for error messages from LaTeX runs.
 
@@ -73,7 +74,7 @@ public:
 	///
 	string const & getContents() const { return contents; }
 	///
-	SigC::Signal0<void> hideDialog;
+	boost::signal0<void> hideDialog;
 private:
 	///
 	string contents;

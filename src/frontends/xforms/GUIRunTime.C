@@ -24,6 +24,8 @@
 #include "graphics/GraphicsImageXPM.h"
 #endif
 
+#include <boost/bind.hpp>
+
 // I keep these here so that it will be processed as early in
 // the compilation process as possible.
 #if !defined(FL_REVISION) || FL_REVISION < 88 || FL_VERSION != 0
@@ -136,16 +138,15 @@ LyXView * GUIRunTime::createMainView(int w, int h)
 void GUIRunTime::initialiseGraphics()
 {
 	using namespace grfx;
-	using SigC::slot;
 
 #if defined(HAVE_FLIMAGE_DUP) && defined(HAVE_FLIMAGE_TO_PIXMAP)
 	// connect the image loader based on the xforms library
-	GImage::newImage.connect(slot(&xformsGImage::newImage));
-	GImage::loadableFormats.connect(slot(&xformsGImage::loadableFormats));
+	GImage::newImage.connect(boost::bind(&xformsGImage::newImage));
+	GImage::loadableFormats.connect(boost::bind(&xformsGImage::loadableFormats));
 #else
 	// connect the image loader based on the XPM library
-	GImage::newImage.connect(slot(&GImageXPM::newImage));
-	GImage::loadableFormats.connect(slot(&GImageXPM::loadableFormats));
+	GImage::newImage.connect(boost::bind(&GImageXPM::newImage));
+	GImage::loadableFormats.connect(boost::bind(&GImageXPM::loadableFormats));
 #endif
 }
 

@@ -15,7 +15,10 @@
 #define FORMCOMMAND_H
 
 #include "FormBaseDeprecated.h"
+
 #include "insets/insetcommand.h"
+
+#include <boost/signals/connection.hpp>
 
 #ifdef __GNUG__
 #pragma interface
@@ -38,7 +41,7 @@ protected:
 	virtual void updateSlot(bool);
 
 	/// inset::hide connection.
-	SigC::Connection ih_;
+	boost::signals::connection ih_;
 };
 
 

@@ -19,7 +19,8 @@
 #endif
 
 #include "insetcollapsable.h"
-#include <sigc++/signal_system.h>
+
+#include <boost/signals/signal0.hpp>
 
 /** A collapsable text inset for LaTeX insertions.
 
@@ -73,7 +74,7 @@ public:
 	///
 	EDITABLE editable() const;
 	///
-	SigC::Signal0<void> hideDialog;
+	boost::signal0<void> hideDialog;
 	///
 	void insetButtonPress(BufferView *, int x, int y, mouse_button::state button);
 	///

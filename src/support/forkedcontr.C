@@ -19,8 +19,11 @@
 #include "forkedcontr.h"
 #include "forkedcall.h"
 #include "lyxfunctional.h"
-#include "frontends/Timeout.h"
 #include "debug.h"
+
+#include "frontends/Timeout.h"
+
+#include <boost/bind.hpp>
 
 #include <cerrno>
 #include <cstdlib>
@@ -48,7 +51,7 @@ ForkedcallsController::ForkedcallsController()
 	timeout_ = new Timeout(100, Timeout::ONETIME);
 
 	timeout_->timeout
-		.connect(SigC::slot(this, &ForkedcallsController::timer));
+		.connect(boost::bind(&ForkedcallsController::timer, this));
 }
 
 
@@ -74,7 +77,7 @@ void ForkedcallsController::addCall(Forkedcall const &newcall)
 
 	Forkedcall * call = new Forkedcall(newcall);
 	forkedCalls.push_back(call);
-	childrenChanged.emit();
+	childrenChanged();
 }
 
 
@@ -148,7 +151,7 @@ void ForkedcallsController::timer()
 	}
 
 	if (start_size != forkedCalls.size())
-		childrenChanged.emit();
+		childrenChanged();
 }
 
 

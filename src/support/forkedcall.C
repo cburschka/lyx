@@ -35,6 +35,8 @@
 #include "debug.h"
 #include "frontends/Timeout.h"
 
+#include <boost/bind.hpp>
+
 #include <cerrno>
 #include <sys/types.h>
 #include <sys/wait.h>
@@ -100,14 +102,14 @@ int Forkedcall::startscript(string const & what, SignalTypePtr signal)
 void Forkedcall::emitSignal()
 {
 	if (signal_.get()) {
-		signal_->emit(command_, pid_, retval_);
+		signal_->operator()(command_, pid_, retval_);
 	}
 }
 
 
 namespace {
 
-class Murder : public SigC::Object {
+class Murder : public boost::signals::trackable {
 public:
 	//
 	static void killItDead(int secs, pid_t pid)
@@ -135,7 +137,7 @@ private:
 		: timeout_(0), pid_(pid)
 	{
 		timeout_ = new Timeout(1000*secs, Timeout::ONETIME);
-		timeout_->timeout.connect(SigC::slot(this, &Murder::kill));
+		timeout_->timeout.connect(boost::bind(&Murder::kill, this));
 		timeout_->start();
 	}
 

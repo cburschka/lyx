@@ -9,21 +9,24 @@
  *
  * ======================================================*/
 
-#ifndef WORKAREA_H
-#define WORKAREA_H
+#ifndef XWORKAREA_H
+#define XWORKAREA_H
 
 #ifdef __GNUG__
 #pragma interface
 #endif
 
-#include <utility>
-
-#include <sigc++/signal_system.h>
-
 #include FORMS_H_LOCATION
 #include "frontends/Painter.h"
 #include "frontends/mouse_state.h"
 #include "frontends/key_state.h"
+
+#include <boost/signals/signal0.hpp>
+#include <boost/signals/signal1.hpp>
+#include <boost/signals/signal2.hpp>
+#include <boost/signals/signal3.hpp>
+
+#include <utility>
 
 ///
 class WorkArea {
@@ -105,33 +108,33 @@ public:
 	void putClipboard(string const &) const;
 	// Signals
 	///
-	SigC::Signal0<void> workAreaExpose;
+	boost::signal0<void> workAreaExpose;
 	///
-	SigC::Signal1<void, double> scrollCB;
+	boost::signal1<void, double> scrollCB;
 	///
-	SigC::Signal2<void, KeySym, key_modifier::state> workAreaKeyPress;
+	boost::signal2<void, KeySym, key_modifier::state> workAreaKeyPress;
 	///
-	SigC::Signal3<void, int, int, mouse_button::state> workAreaButtonPress;
+	boost::signal3<void, int, int, mouse_button::state> workAreaButtonPress;
 	///
-	SigC::Signal3<void, int, int, mouse_button::state> workAreaButtonRelease;
+	boost::signal3<void, int, int, mouse_button::state> workAreaButtonRelease;
 	///
-	SigC::Signal3<void, int, int, mouse_button::state> workAreaMotionNotify;
+	boost::signal3<void, int, int, mouse_button::state> workAreaMotionNotify;
 	///
-	SigC::Signal0<void> workAreaFocus;
+	boost::signal0<void> workAreaFocus;
 	///
-	SigC::Signal0<void> workAreaUnfocus;
+	boost::signal0<void> workAreaUnfocus;
 	///
-	SigC::Signal0<void> workAreaEnter;
+	boost::signal0<void> workAreaEnter;
 	///
-	SigC::Signal0<void> workAreaLeave;
+	boost::signal0<void> workAreaLeave;
 	///
-	SigC::Signal3<void, int, int, mouse_button::state> workAreaDoubleClick;
+	boost::signal3<void, int, int, mouse_button::state> workAreaDoubleClick;
 	///
-	SigC::Signal3<void, int, int, mouse_button::state> workAreaTripleClick;
+	boost::signal3<void, int, int, mouse_button::state> workAreaTripleClick;
 	/// emitted when an X client has requested our selection
-	SigC::Signal0<void> selectionRequested;
+	boost::signal0<void> selectionRequested;
 	/// emitted when another X client has stolen our selection
-	SigC::Signal0<void> selectionLost;
+	boost::signal0<void> selectionLost;
 
 	/// handles SelectionRequest X Event, to fill the clipboard
 	int event_cb(XEvent * xev);

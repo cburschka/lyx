@@ -25,12 +25,11 @@
 #include "support/lstrings.h"
 #include "support/LAssert.h"
 
-using SigC::slot;
-
+#include <boost/bind.hpp>
 
 bool Tooltips::enabled_ = true;
 
-SigC::Signal0<void> Tooltips::toggled;
+boost::signal0<void> Tooltips::toggled;
 
 
 #if FL_REVISION >= 89
@@ -40,9 +39,9 @@ Tooltips::Tooltips()
 	static bool first = true;
 	if (first) {
 		first = false;
-		Dialogs::toggleTooltips.connect(slot(&Tooltips::toggleEnabled));
+		Dialogs::toggleTooltips.connect(boost::bind(&Tooltips::toggleEnabled));
 	}
-	toggled.connect(slot(this, &Tooltips::set));
+	toggled.connect(boost::bind(&Tooltips::set, this));
 }
 
 

@@ -17,7 +17,8 @@
 #endif
 
 #include "insetcollapsable.h"
-#include <sigc++/signal_system.h>
+
+#include <boost/signals/signal0.hpp>
 
 class Painter;
 
@@ -63,7 +64,7 @@ public:
 	///
 	bool  showInsetDialog(BufferView *) const;
 	///
-	SigC::Signal0<void> hideDialog;
+	boost::signal0<void> hideDialog;
 private:
 	///
 	string floatType_;

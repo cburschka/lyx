@@ -19,19 +19,19 @@
 #include "FormInset.h"
 #include "xformsBC.h"
 
-using SigC::slot;
+#include <boost/bind.hpp>
 
 FormInset::FormInset(LyXView * lv, Dialogs * d, string const & t)
-	: FormBaseBD(lv, d, t), ih_(0)
+	: FormBaseBD(lv, d, t)
 {}
 
 
 void FormInset::connect()
 {
 	u_ = d_->updateBufferDependent.
-		connect(slot(this, &FormInset::updateSlot));
+		connect(boost::bind(&FormInset::updateSlot, this, _1));
 	h_ = d_->hideBufferDependent.
-		connect(slot(this, &FormInset::hide));
+		connect(boost::bind(&FormInset::hide, this));
 	FormBaseDeprecated::connect();
 }
 
@@ -76,7 +76,7 @@ void FormCommand::showInset(InsetCommand * inset)
 
 	inset_    = inset;
 	params    = inset->params();
-	ih_ = inset->hideDialog.connect(slot(this, &FormCommand::hide));
+	ih_ = inset->hideDialog.connect(boost::bind(&FormCommand::hide, this));
 	show();
 }
 

@@ -1,9 +1,13 @@
+2002-05-29  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* switch from SigC signals to boost::signals
+
 2002-05-26  John Levon  <moz@compsoc.man.ac.uk>
 
 	* Makefile.am:
 	* WorkArea.h:
 	* WorkArea.C: move to xforms/ for better diff
- 
+
 2002-05-26  John Levon  <moz@compsoc.man.ac.uk>
 
 	* key_state.h:
@@ -12,35 +16,35 @@
 	* Makefile.am:
 	* WorkArea.h:
 	* WorkArea.C: use above
- 
+
 2002-05-24  John Levon  <moz@compsoc.man.ac.uk>
 
 	* Makefile.am:
 	* font_loader.h: placeholder
- 
+
 	* screen.C: use placeholder
- 
+
 2002-05-23  John Levon  <moz@compsoc.man.ac.uk>
 
 	* Makefile.am:
 	* font_metrics.h: add placeholder
- 
+
 	* Painter.C:
 	* screen.C: use placeholder
- 
+
 2002-05-23  John Levon  <moz@compsoc.man.ac.uk>
 
 	* WorkArea.h:
 	* WorkArea.C:
 	* Makefile.am: move here
- 
+
 	* screen.h:
 	* screen.C: move here
- 
+
 2002-05-23  John Levon  <moz@compsoc.man.ac.uk>
 
 	* Liason.C:
-	* LyXView.h: 
+	* LyXView.h:
 	* LyXView.C:
 	* Makefile.am: move LyXView here
 
@@ -49,7 +53,7 @@
 	* Makefile.am:
 	* Painter.h:
 	* Painter.C: add PainterBase here
- 
+
 2002-05-22  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* Dialogs.h: use more specific smart_ptr header

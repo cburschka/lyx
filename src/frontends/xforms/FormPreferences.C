@@ -42,6 +42,8 @@
 
 #include "graphics/GraphicsCache.h"
 
+#include <boost/bind.hpp>
+
 #include <utility>
 #include <iomanip>
 #include <X11/Xlib.h>
@@ -54,8 +56,6 @@ using std::min;
 using std::vector;
 using std::setw;
 using std::setfill;
-
-using SigC::slot;
 
 extern string system_lyxdir;
 extern string user_lyxdir;
@@ -79,8 +79,8 @@ FormPreferences::FormPreferences(LyXView * lv, Dialogs * d)
 	// let the dialog be shown
 	// This is a permanent connection so we won't bother
 	// storing a copy because we won't be disconnecting.
-	d->showPreferences.connect(slot(this, &FormPreferences::show));
-	d->showSpellcheckerPreferences.connect(slot(this, &FormPreferences::showSpellPref));
+	d->showPreferences = boost::bind(&FormPreferences::show, this);
+	d->showSpellcheckerPreferences = boost::bind(&FormPreferences::showSpellPref, this);
 }
 
 

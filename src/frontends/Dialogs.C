@@ -25,11 +25,11 @@
 
 // Signal enabling all visible dialogs to be redrawn if so desired.
 // E.g., when the GUI colours have been remapped.
-SigC::Signal0<void> Dialogs::redrawGUI;
+boost::signal0<void> Dialogs::redrawGUI;
 
 
 // toggle tooltips on/off in all dialogs.
-SigC::Signal0<void> Dialogs::toggleTooltips;
+boost::signal0<void> Dialogs::toggleTooltips;
 
 void Dialogs::add(DialogBase * ptr)
 {

@@ -63,8 +63,9 @@
 #include "ams_nrel.xbm"
 #include "ams_ops.xbm"
 
+#include <boost/bind.hpp>
+
 using std::vector;
-using SigC::slot;
 
 FormMathsPanel::FormMathsPanel(LyXView * lv, Dialogs * d)
 	: FormBaseBD(lv, d, _("Maths Panel"), false),
@@ -152,7 +153,7 @@ FormMathsPanel::FormMathsPanel(LyXView * lv, Dialogs * d)
 	ams_ops_.reset(new FormMathsBitmap(lv, d, *this, _("AMS Operators"), latex));
 
 	//showUnderMouse(false);
-	d->showMathPanel.connect(slot(this, &FormMathsPanel::show));
+	d->showMathPanel = boost::bind(&FormMathsPanel::show, this);
 }
 
 

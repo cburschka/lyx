@@ -31,8 +31,7 @@
 #include "LString.h"
 
 #include <boost/shared_ptr.hpp>
-
-#include <sigc++/signal_system.h>
+#include <boost/signals/signal3.hpp>
 
 #include <sys/types.h>
 
@@ -73,7 +72,7 @@ public:
 	 *  we can return easily to C++ methods, rather than just globally
 	 *  accessible functions.
 	 */
-	typedef SigC::Signal3<void, string const &, pid_t, int> SignalType;
+	typedef boost::signal3<void, string const &, pid_t, int> SignalType;
 
 	/** The signal is connected in the calling routine to the desired
 	 *  slot. We pass a shared_ptr rather than a reference to the signal

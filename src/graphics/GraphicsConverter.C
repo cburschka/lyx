@@ -22,6 +22,8 @@
 #include "support/forkedcall.h"
 #include "support/path.h"
 
+#include <boost/bind.hpp>
+
 #include <fstream>
 
 namespace {
@@ -79,7 +81,7 @@ void GConverter::convert(string const & from_file, string const & to_file_base,
 	if (!success) {
 		lyxerr[Debug::GRAPHICS]
 			<< "Unable to build the conversion script" << std::endl;
-		on_finish->emit(string());
+		on_finish->operator()(string());
 		return;
 	}
 
@@ -94,7 +96,7 @@ void GConverter::convert(string const & from_file, string const & to_file_base,
 	std::ofstream fs(script_file.c_str());
 	if (!fs.good()) {
 		// Unable to output the conversion script to file.
-		on_finish->emit(string());
+		on_finish->operator()(string());
 		return;
 	}
 
@@ -255,7 +257,7 @@ ConvProcess::ConvProcess(string const & script_file,
 	Forkedcall::SignalTypePtr convert_ptr;
 	convert_ptr.reset(new Forkedcall::SignalType);
 
-	convert_ptr->connect(SigC::slot(this, &ConvProcess::converted));
+	convert_ptr->connect(boost::bind(&ConvProcess::converted, this, _1, _2, _3));
 
 	Forkedcall call;
 	int retval = call.startscript(script_command, convert_ptr);
@@ -278,7 +280,7 @@ void ConvProcess::converted(string const &/* cmd */,
 	}
 
 	if (on_finish_.get()) {
-		on_finish_->emit(to_file_);
+		on_finish_->operator()(to_file_);
 	}
 
 	grfx::GConverter::get().erase(this);

@@ -18,11 +18,13 @@
 #include "xforms_resize.h"
 #include "GUIRunTime.h"
 #include "Tooltips.h"
-#include "frontends/LyXView.h"
 #include "lyxrc.h"
+
+#include "frontends/LyXView.h"
+
 #include "support/LAssert.h"
 
-using SigC::slot;
+#include <boost/bind.hpp>
 
 extern "C" {
 
@@ -38,7 +40,7 @@ static int C_PrehandlerCB(FL_OBJECT *, int, FL_Coord, FL_Coord, int, void *);
 
 FormBaseDeprecated::FormBaseDeprecated(LyXView * lv, Dialogs * d,
 				       string const & t, bool allowResize)
-	: lv_(lv), d_(d), h_(0), r_(0), title_(t),
+	: lv_(lv), d_(d), title_(t),
 	  minw_(0), minh_(0), allow_resize_(allowResize),
 	  tooltips_(new Tooltips)
 {
@@ -68,7 +70,7 @@ void FormBaseDeprecated::redraw()
 void FormBaseDeprecated::connect()
 {
 	fl_set_form_minsize(form(), minw_, minh_);
-	r_ = Dialogs::redrawGUI.connect(slot(this,&FormBaseDeprecated::redraw));
+	r_ = Dialogs::redrawGUI.connect(boost::bind(&FormBaseDeprecated::redraw, this));
 }
 
 
@@ -211,24 +213,23 @@ FormBaseBI::FormBaseBI(LyXView * lv, Dialogs * d, string const & t,
 
 void FormBaseBI::connect()
 {
-	h_ = d_->hideAll.connect(slot(this, &FormBaseBI::hide));
+	h_ = d_->hideAll.connect(boost::bind(&FormBaseBI::hide, this));
 	FormBaseDeprecated::connect();
 }
 
 
 FormBaseBD::FormBaseBD(LyXView * lv, Dialogs * d, string const & t,
 		       bool allowResize)
-	: FormBaseDeprecated(lv, d, t, allowResize),
-	  u_(0)
+	: FormBaseDeprecated(lv, d, t, allowResize)
 {}
 
 
 void FormBaseBD::connect()
 {
 	u_ = d_->updateBufferDependent.
-		connect(slot(this, &FormBaseBD::updateSlot));
+		connect(boost::bind(&FormBaseBD::updateSlot, this, _1));
 	h_ = d_->hideBufferDependent.
-		connect(slot(this, &FormBaseBD::hide));
+		connect(boost::bind(&FormBaseBD::hide, this));
 	FormBaseDeprecated::connect();
 }
 

@@ -11,26 +11,28 @@
  * \author Angus Leeming <a.leeming@ic.ac.uk>
  */
 
+#include <config.h>
+
 #ifdef __GNUG__
 #pragma implementation
 #endif
 
-#include <config.h>
-
+#include "ControlError.h"
 #include "ViewBase.h"
 #include "ButtonControllerBase.h"
-#include "ControlError.h"
 #include "ControlInset.tmpl"
 #include "Dialogs.h"
-#include "frontends/LyXView.h"
 #include "buffer.h"
 #include "insets/inseterror.h"
 
+#include "frontends/LyXView.h"
+
+#include <boost/bind.hpp>
 
 ControlError::ControlError(LyXView & lv, Dialogs & d)
 	: ControlInset<InsetError, string>(lv, d)
 {
-	d_.showError.connect(SigC::slot(this, &ControlError::showInset));
+	d_.showError = boost::bind(&ControlError::showInset, this, _1);
 }
 
 

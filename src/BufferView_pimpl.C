@@ -66,6 +66,8 @@
 #include "support/filetools.h"
 #include "support/lyxfunctional.h"
 
+#include <boost/bind.hpp>
+
 #include <ctime>
 #include <unistd.h>
 #include <sys/wait.h>
@@ -81,7 +83,6 @@ using std::pair;
 using std::endl;
 using std::make_pair;
 using std::min;
-using SigC::slot;
 
 using lyx::pos_type;
 using lyx::textclass_type;
@@ -131,33 +132,31 @@ BufferView::Pimpl::Pimpl(BufferView * b, LyXView * o,
 	  inset_slept(false)
 {
 	// Setup the signals
-	workarea_.scrollCB.connect(slot(this, &BufferView::Pimpl::scrollCB));
+	workarea_.scrollCB.connect(boost::bind(&BufferView::Pimpl::scrollCB, this, _1));
 	workarea_.workAreaExpose
-		.connect(slot(this, &BufferView::Pimpl::workAreaExpose));
+		.connect(boost::bind(&BufferView::Pimpl::workAreaExpose, this));
 	workarea_.workAreaEnter
-		.connect(slot(this, &BufferView::Pimpl::enterView));
+		.connect(boost::bind(&BufferView::Pimpl::enterView, this));
 	workarea_.workAreaLeave
-		.connect(slot(this, &BufferView::Pimpl::leaveView));
+		.connect(boost::bind(&BufferView::Pimpl::leaveView, this));
 	workarea_.workAreaButtonPress
-		.connect(slot(this, &BufferView::Pimpl::workAreaButtonPress));
+		.connect(boost::bind(&BufferView::Pimpl::workAreaButtonPress, this, _1, _2, _3));
 	workarea_.workAreaButtonRelease
-		.connect(slot(this,
-			      &BufferView::Pimpl::workAreaButtonRelease));
+		.connect(boost::bind(&BufferView::Pimpl::workAreaButtonRelease, this, _1, _2, _3));
 	workarea_.workAreaMotionNotify
-		.connect(slot(this, &BufferView::Pimpl::workAreaMotionNotify));
+		.connect(boost::bind(&BufferView::Pimpl::workAreaMotionNotify, this, _1, _2, _3));
 	workarea_.workAreaDoubleClick
-		.connect(slot(this, &BufferView::Pimpl::doubleClick));
+		.connect(boost::bind(&BufferView::Pimpl::doubleClick, this, _1, _2, _3));
 	workarea_.workAreaTripleClick
-		.connect(slot(this, &BufferView::Pimpl::tripleClick));
+		.connect(boost::bind(&BufferView::Pimpl::tripleClick, this, _1, _2, _3));
 	workarea_.workAreaKeyPress
-		.connect(slot(this, &BufferView::Pimpl::workAreaKeyPress));
+		.connect(boost::bind(&BufferView::Pimpl::workAreaKeyPress, this, _1, _2));
 	workarea_.selectionRequested
-		.connect(slot(this, &BufferView::Pimpl::selectionRequested));
+		.connect(boost::bind(&BufferView::Pimpl::selectionRequested, this));
 	workarea_.selectionLost
-		.connect(slot(this, &BufferView::Pimpl::selectionLost));
+		.connect(boost::bind(&BufferView::Pimpl::selectionLost, this));
 
-	cursor_timeout.timeout.connect(slot(this,
-					    &BufferView::Pimpl::cursorToggle));
+	cursor_timeout.timeout.connect(boost::bind(&BufferView::Pimpl::cursorToggle, this));
 	cursor_timeout.start();
 	workarea_.setFocus();
 	saved_positions.resize(saved_positions_num);
@@ -619,7 +618,7 @@ void BufferView::Pimpl::workAreaButtonPress(int xpos, int ypos,
 		return;
 
 	// ok ok, this is a hack.
- 
+
 	if (button == mouse_button::button4) {
 		scrollUp(lyxrc.wheel_jump);
 		// We shouldn't go further down as we really should only do the
@@ -633,7 +632,7 @@ void BufferView::Pimpl::workAreaButtonPress(int xpos, int ypos,
 		// dialogs (Jug 20020424).
 		return;
 	}
- 
+
 	Inset * inset_hit = checkInsetHit(bv_->text, xpos, ypos);
 
 	// Middle button press pastes if we have a selection

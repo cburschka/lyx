@@ -16,20 +16,23 @@
 #pragma implementation
 #endif
 
+#include "ControlTabularCreate.h"
 #include "ViewBase.h"
 #include "ButtonControllerBase.h"
-#include "ControlTabularCreate.h"
 #include "BufferView.h"
 #include "Dialogs.h"
-#include "frontends/LyXView.h"
 #include "lyxfunc.h"
+
+#include "frontends/LyXView.h"
+
 #include "support/lstrings.h"
+
+#include <boost/bind.hpp>
 
 ControlTabularCreate::ControlTabularCreate(LyXView & lv, Dialogs & d)
 	: ControlDialogBD(lv, d)
 {
-	d_.showTabularCreate.connect(SigC::slot(this,
-						&ControlTabularCreate::show));
+	d_.showTabularCreate = boost::bind(&ControlTabularCreate::show, this);
 }
 
 

@@ -11,18 +11,22 @@
 #ifndef FORMFILEDIALOG_H
 #define FORMFILEDIALOG_H
 
-#include <vector>
-#include <sigc++/signal_system.h>
 
 #ifdef __GNUG__
 #pragma interface
 #endif
 
 #include "LString.h"
+
 #include FORMS_H_LOCATION
 #include "form_filedialog.h"
 
 #include "frontends/FileDialog.h"
+
+#include <boost/signals/connection.hpp>
+#include <boost/signals/trackable.hpp>
+
+#include <vector>
 
 /// DirEntry internal structure definition
 class DirEntry {
@@ -43,7 +47,7 @@ public:
 //}
 
 
-class FileDialog::Private : public SigC::Object {
+class FileDialog::Private : public boost::signals::trackable {
 public:
 	///
 	Private();
@@ -125,7 +129,7 @@ private:
 	/// Simulates a click on OK/Cancel
 	void Force(bool);
 	/// Redraw connection.
-	SigC::Connection r_;
+	boost::signals::connection r_;
 };
 
 #endif // FORMFILEDIALOG_H

@@ -12,25 +12,27 @@
 #pragma implementation
 #endif
 
+#include "ControlThesaurus.h"
 #include "ViewBase.h"
 #include "ButtonControllerBase.h"
-#include "ControlThesaurus.h"
 #include "Dialogs.h"
 #include "Liason.h"
-#include "frontends/LyXView.h"
 #include "lyxfind.h"
 #include "buffer.h"
 #include "debug.h"
 #include "gettext.h"
 #include "BufferView.h"
 
+#include "frontends/LyXView.h"
+
+#include <boost/bind.hpp>
+
 using Liason::setMinibuffer;
-using SigC::slot;
 
 ControlThesaurus::ControlThesaurus(LyXView & lv, Dialogs & d)
 	: ControlDialogBD(lv, d)
 {
-	d_.showThesaurus.connect(SigC::slot(this, &ControlThesaurus::showEntry));
+	d_.showThesaurus = boost::bind(&ControlThesaurus::showEntry, this, _1);
 }
 
 

@@ -17,25 +17,28 @@
 #pragma implementation
 #endif
 
+#include "ControlToc.h"
 #include "ViewBase.h"
 #include "ButtonControllerBase.h"
-#include "ControlToc.h"
 #include "buffer.h"
 #include "Dialogs.h"
-#include "frontends/LyXView.h"
 #include "lyxfunc.h"
-#include "support/lstrings.h" // tostr
 #include "gettext.h"
 #include "BufferView.h"
 
+#include "frontends/LyXView.h"
+
+#include "support/lstrings.h" // tostr
+
+#include <boost/bind.hpp>
+
 using std::vector;
-using SigC::slot;
 
 ControlToc::ControlToc(LyXView & lv, Dialogs & d)
 	: ControlCommand(lv, d, LFUN_TOC_INSERT)
 {
-	d_.showTOC.connect(slot(this, &ControlToc::showInset));
-	d_.createTOC.connect(slot(this, &ControlToc::createInset));
+	d_.showTOC = boost::bind(&ControlToc::showInset, this, _1);
+	d_.createTOC = boost::bind(&ControlToc::createInset, this, _1);
 }
 
 

@@ -14,11 +14,15 @@
 #ifndef FORKEDCONTR_H
 #define FORKEDCONTR_H
 
+#include "LString.h"
+
+#include <boost/signals/signal0.hpp>
+#include <boost/signals/trackable.hpp>
+
+#include <sys/types.h> // needed for pid_t
+
 #include <list>
 #include <vector>
-#include "LString.h"
-#include <sigc++/signal_system.h>
-#include <sys/types.h> // needed for pid_t
 
 #ifdef __GNUG__
 #pragma interface
@@ -27,7 +31,7 @@
 class Forkedcall;
 class Timeout;
 
-class ForkedcallsController : public SigC::Object {
+class ForkedcallsController : public boost::signals::trackable {
 public:
 	/// We need this to avoid warnings.
 	ForkedcallsController();
@@ -62,7 +66,7 @@ public:
 	void kill(pid_t, int tolerance = 5);
 
 	/// Signal emitted when the list of current child processes changes.
-	SigC::Signal0<void> childrenChanged;
+	boost::signal0<void> childrenChanged;
 
 private:
 	///

@@ -35,6 +35,8 @@
 
 #include "support/filetools.h"        // OnlyFilename()
 
+#include <boost/bind.hpp>
+
 #include <sys/time.h>
 #include <unistd.h>
 
@@ -57,7 +59,7 @@ LyXView::LyXView()
 	autosave_timeout = new Timeout(5000);
 
 	dialogs_ = new Dialogs(this);
-	Dialogs::redrawGUI.connect(SigC::slot(this, &LyXView::redraw));
+	Dialogs::redrawGUI.connect(boost::bind(&LyXView::redraw, this));
 }
 
 

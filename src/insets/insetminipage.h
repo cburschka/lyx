@@ -18,7 +18,8 @@
 
 #include "insetcollapsable.h"
 #include "lyxlength.h"
-#include <sigc++/signal_system.h>
+
+#include <boost/signals/signal0.hpp>
 
 /** The minipage inset
 
@@ -79,7 +80,7 @@ public:
 	///
 	void pageWidth(LyXLength const &);
 	///
-	SigC::Signal0<void> hideDialog;
+	boost::signal0<void> hideDialog;
 	///
 	int getMaxWidth(BufferView *, UpdatableInset const *) const;
 	///

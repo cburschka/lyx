@@ -7,7 +7,7 @@ MAINTAINERCLEANFILES += $(srcdir)/aclocal.m4 \
 	$(srcdir)/configure $(srcdir)/development/lyx.spec \
 	$(srcdir)/acinclude.m4
 
-SUBDIRS = config intl po sigc++ boost src lib
+SUBDIRS = config intl po boost src lib
 
 EXTRA_DIST = ANNOUNCE INSTALL.OS2 INSTALL.autoconf README.OS2 \
 	UPGRADING lyx.man acconfig.h autogen.sh \

@@ -28,10 +28,11 @@
 
 #include "support/lstrings.h"
 
+#include <boost/bind.hpp>
+
 #include <functional>
 
 
-using SigC::slot;
 using std::vector;
 using std::bind2nd;
 using std::remove_if;
@@ -44,8 +45,8 @@ FormTabular::FormTabular(LyXView * lv, Dialogs * d)
 	// let the dialog be shown
 	// This is a permanent connection so we won't bother
 	// storing a copy because we won't be disconnecting.
-	d->showTabular.connect(slot(this, &FormTabular::showInset));
-	d->updateTabular.connect(slot(this, &FormTabular::updateInset));
+	d->showTabular = boost::bind(&FormTabular::showInset, this, _1);
+	d->updateTabular = boost::bind(&FormTabular::updateInset, this, _1);
 }
 
 
@@ -84,7 +85,7 @@ void FormTabular::showInset(InsetTabular * inset)
 	// If connected to another inset, disconnect from it.
 	if (inset_ != inset) {
 		ih_.disconnect();
-		ih_ = inset->hideDialog.connect(slot(this, &FormTabular::hide));
+		ih_ = inset->hideDialog.connect(boost::bind(&FormTabular::hide, this));
 		inset_ = inset;
 	}
 
@@ -99,7 +100,7 @@ void FormTabular::updateInset(InsetTabular * inset)
 	// If connected to another inset, disconnect from it.
 	if (inset_ != inset) {
 		ih_.disconnect();
-		ih_ = inset->hideDialog.connect(slot(this, &FormTabular::hide));
+		ih_ = inset->hideDialog.connect(boost::bind(&FormTabular::hide, this));
 		inset_ = inset;
 	}
 

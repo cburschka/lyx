@@ -19,7 +19,8 @@
 #include "insetbutton.h"
 #include "ExternalTemplate.h"
 #include "LString.h"
-#include <sigc++/signal_system.h>
+
+#include <boost/signals/signal0.hpp>
 
 ///
 class InsetExternal : public InsetButton {
@@ -102,7 +103,7 @@ public:
 	Params params() const;
 
 	/// hide connection
-	SigC::Signal0<void> hideDialog;
+	boost::signal0<void> hideDialog;
 
 private:
 	/// Write the output for a specific file format

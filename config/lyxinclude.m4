@@ -212,6 +212,7 @@ if test x$GXX = xyes; then
       2.96*)  CXXFLAGS="$lyx_opt";;
       3.0*)    CXXFLAGS="$lyx_opt";;
       3.1*)    CXXFLAGS="$lyx_opt";;
+      3.2*)    CXXFLAGS="$lyx_opt";;
       *)       CXXFLAGS="$lyx_opt";;
     esac
     if test x$enable_debug = xyes ; then
@@ -228,7 +229,7 @@ if test x$GXX = xyes; then
       case $gxx_version in
 	  2.95.*) ;;
 	  2.96*) ;;
-	  *) ;;
+	  *) CXXFLAGS="$CXXFLAGS -Winline";;
       esac
     fi
   fi
@@ -437,10 +438,10 @@ AC_DEFUN(LYX_CXX_GOOD_STD_STRING,[
 dnl Usage: LYX_REGEX : checks if the header regex.h is available
 dnl   if it is not available the automake variable USE_REGEX will be
 dnl   defined and the regex.h and regex.c that we provide will be used.
-AC_DEFUN(LYX_REGEX,[
-    AC_CHECK_HEADERS(regex.h, lyx_regex=no, lyx_regex=yes)
-    AM_CONDITIONAL(USE_REGEX, test x$lyx_regex = xyes)
-])
+dnl AC_DEFUN(LYX_REGEX,[
+dnl     AC_CHECK_HEADERS(regex.h, lyx_regex=no, lyx_regex=yes)
+dnl     AM_CONDITIONAL(USE_REGEX, test x$lyx_regex = xyes)
+dnl ])
 
 dnl NOT USED CURRENTLY*************************************
 dnl LYX_CXX_PARTIAL
@@ -762,58 +763,6 @@ fi])
 dnl Usage: LYX_ADD_INC_DIR(var-name,dir) Adds a -I directive to variable
 dnl var-name.
 AC_DEFUN(LYX_ADD_INC_DIR,[$1="${$1} -I$2 "])
-
-### Check which libsigc++ we're using and make sure any external one works
-### Check for libsigc++ library
-AC_DEFUN(LYX_WITH_SIGC,
-[AC_MSG_CHECKING(whether the included libsigc++ should be used)
-AC_ARG_WITH([included-libsigc],
-  [  --without-included-libsigc
-			     Use the libsigc++ installed on the system],
-  [lyx_use_included_libsigc=$withval],
-  [lyx_use_included_libsigc=yes])
-AC_MSG_RESULT([$lyx_use_included_libsigc])
-if test x$lyx_use_included_libsigc = xno; then
-  ### Check for libsigc++
-  ## can't use AC_SUBST right here!
-  AM_PATH_SIGC(0.8.7,
-    [ INCLUDED_SIGC=
-    ],
-    [LYX_ERROR(dnl
-    [Cannot find libsigc++ library or headers at least as recent as 0.8.7.
-     Check your installation.  Have you installed the development package?])
-  ])
-else
-  ### Use the included libsigc++
-  ### sigc-config hasn't been created yet so we can't just do the same as above
-  ### unless of course someone gets keen and merges the sigc++ configure.in
-  ### with this one.  We don't really gain much by doing that though except
-  ### a considerably smaller dist and more difficult maintenance.
-  ### It'd also mean we'd have the equivalent of config/gettext.m4
-  lyx_flags="$lyx_flags included-libsigc"
-  SIGC_LIBS="\`\${top_builddir}/sigc++/sigc-config --libs-names | sed -e 's/-lsigc//'\`"
-  # Libsigc++ always installs into a subdirectory called sigc++.  Therefore we
-  # have to always use #include <sigc++/signal_system.h> in our code.
-  # Remember if you decide to do anything to the sigc++ code to do your mods on
-  # the makeLyXsigc.sh script in development/tools using a current cvs checkout
-  # of libsigc++.  A tarball distribution doesn't have everything in it that we
-  # need.
-  # We need both these -I entries to build when builddir != srcdir
-  if test "x$srcdir" = "x." ; then
-    SIGC_CFLAGS="-I\${top_srcdir}"
-  else
-    SIGC_CFLAGS="-I\${top_builddir} -I\${top_srcdir}"
-  fi
-  INCLUDED_SIGC="\${top_builddir}/sigc++/libsigc.la"
-  ## can't substitute these here like this otherwise all remaining tests fail
-  ## instead we SUBST directly into the Makefiles
-  ##LIBS="$LIBS \$SIGC_LIBS"
-  ##CPPFLAGS="$CPPFLAGS \$SIGC_CFLAGS"
-  AC_SUBST(SIGC_LIBS)
-  AC_SUBST(SIGC_CFLAGS)
-fi
-AC_SUBST(INCLUDED_SIGC)
-])
 
 ### Check for a headers existence and location iff it exists
 ## This is supposed to be a generalised version of LYX_STL_STRING_FWD

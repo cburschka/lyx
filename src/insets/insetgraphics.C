@@ -153,7 +153,6 @@ InsetGraphics::InsetGraphics(InsetGraphics const & ig,
 			     string const & filepath,
 			     bool same_id)
 	: Inset(ig, same_id),
-	  SigC::Object(),
 	  graphic_label(unique_id()),
 	  cached_status_(grfx::ErrorUnknown), cache_filled_(false), old_asc(0)
 {
@@ -328,7 +327,7 @@ void InsetGraphics::draw(BufferView * bv, LyXFont const & font,
 		string const justname = OnlyFilename (params().filename);
 		if (!justname.empty()) {
 			msgFont.setSize(LyXFont::SIZE_FOOTNOTE);
-			paint.text(old_x + 8, 
+			paint.text(old_x + 8,
 				   baseline - font_metrics::maxAscent(msgFont) - 4,
 				   justname, msgFont);
 		}

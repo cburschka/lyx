@@ -1,3 +1,7 @@
+2002-05-29  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* switch from SigC signals to boost::signals.
+
 2002-05-28  André Pönitz <poenitz@gmx.net>
 
 	* insets/insetgraphicsParams.[Ch]:
@@ -41,7 +45,7 @@
 	* insettoc.h:
 	* inseturl.C:
 	* inseturl.h: use mouse_state. Kill insetKeyPress
- 
+
 2002-05-24  John Levon  <moz@compsoc.man.ac.uk>
 
 	* insetbib.C:
@@ -55,7 +59,7 @@
 	* insetspecialchar.C:
 	* insettabular.C:
 	* insettext.C: name change for font metrics
- 
+
 2002-05-24  Juergen Vigna  <jug@sad.it>
 
 	* insetgraphics.h: include inset.h first (for LString.h)
@@ -63,7 +67,7 @@
 2002-05-23  John Levon  <moz@compsoc.man.ac.uk>
 
 	* insettext.C: screen moved
- 
+
 2002-05-23  John Levon  <moz@compsoc.man.ac.uk>
 
 	* insetbib.C:
@@ -83,7 +87,7 @@
 	* insettext.C:
 	* insettoc.C:
 	* inseturl.C: LyXView moved into frontends/
- 
+
 2002-05-23  John Levon  <moz@compsoc.man.ac.uk>
 
 	* inset.C:
@@ -99,7 +103,7 @@
 	* insetspecialchar.C:
 	* insettabular.C:
 	* insettext.C: move Painter to frontends/
- 
+
 2002-05-22  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* insettabular.h: use more specific smart_ptr header.

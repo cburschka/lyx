@@ -16,6 +16,9 @@
 
 #include "ControlDialog_impl.h"
 #include "LString.h"
+
+#include <boost/signals/connection.hpp>
+
 #include <sys/types.h>
 #include <vector>
 
@@ -41,7 +44,7 @@ private:
 	/// connect to the ForkedcallsController
 	virtual void setParams();
 	/// Connection to the ForkedcallsController signal
-	SigC::Connection childrenChanged_;
+	boost::signals::connection childrenChanged_;
 	/// The list of PIDs to kill
 	std::vector<string> pids_;
 };

@@ -17,18 +17,22 @@
 #pragma implementation
 #endif
 
+#include "ControlTexinfo.h"
 #include "ViewBase.h"
 #include "ButtonControllerBase.h"
-#include "ControlTexinfo.h"
 #include "Dialogs.h"
-#include "frontends/LyXView.h"
 #include "BufferView.h"
 #include "gettext.h"
+#include "helper_funcs.h"
+
+#include "frontends/LyXView.h"
+
 #include "support/filetools.h" // FileSearch
 #include "support/systemcall.h"
 #include "support/path.h"
-#include "helper_funcs.h"
 #include "support/lstrings.h"
+
+#include <boost/bind.hpp>
 
 extern string user_lyxdir; // home of *Files.lst
 
@@ -36,7 +40,7 @@ extern string user_lyxdir; // home of *Files.lst
 ControlTexinfo::ControlTexinfo(LyXView & lv, Dialogs & d)
 	: ControlDialogBI(lv, d)
 {
-	d_.showTexinfo.connect(SigC::slot(this, &ControlTexinfo::show));
+	d_.showTexinfo = boost::bind(&ControlTexinfo::show, this);
 }
 
 

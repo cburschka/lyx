@@ -37,6 +37,8 @@
 
 #include "ControlButtons.h"
 
+#include <boost/signals/connection.hpp>
+
 class Dialogs;
 class LyXView;
 
@@ -84,9 +86,9 @@ protected:
 	/// Contains the signals we have to connect to.
 	Dialogs & d_;
 	/// Hide connection.
-	SigC::Connection h_;
+	boost::signals::connection h_;
 	/// Redraw connection.
-	SigC::Connection r_;
+	boost::signals::connection r_;
 };
 
 
@@ -134,7 +136,7 @@ private:
 	*/
 	virtual void updateSlot(bool) { update(); }
 	/// Update connection.
-	SigC::Connection u_;
+	boost::signals::connection u_;
 };
 
 #endif // CONTROLCONNECTIONS_H

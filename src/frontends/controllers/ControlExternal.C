@@ -36,6 +36,7 @@
 #include "support/lstrings.h"
 
 #include <boost/scoped_ptr.hpp>
+#include <boost/bind.hpp>
 
 #include <utility>
 #include <vector>
@@ -46,7 +47,7 @@ using std::vector;
 ControlExternal::ControlExternal(LyXView & lv, Dialogs & d)
 	: ControlInset<InsetExternal, InsetExternal::Params>(lv, d)
 {
-	d_.showExternal.connect(SigC::slot(this, &ControlExternal::showInset));
+	d_.showExternal = boost::bind(&ControlExternal::showInset, this, _1);
 }
 
 

@@ -24,6 +24,7 @@ using std::endl;
 
 #ifndef CXX_GLOBAL_CSTD
 using std::strchr;
+using std::isalpha;
 #endif
 
 

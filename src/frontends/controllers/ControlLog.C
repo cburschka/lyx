@@ -18,20 +18,21 @@
 #pragma implementation
 #endif
 
+#include "ControlLog.h"
 #include "ViewBase.h"
 #include "ButtonControllerBase.h"
-#include "ControlLog.h"
-#include "frontends/LyXView.h"
 #include "Dialogs.h"
 #include "lyxrc.h"
 #include "BufferView.h"
 
-using SigC::slot;
+#include "frontends/LyXView.h"
+
+#include <boost/bind.hpp>
 
 ControlLog::ControlLog(LyXView & lv, Dialogs & d)
 	: ControlDialogBD(lv, d)
 {
-	d_.showLogFile.connect(slot(this, &ControlLog::show));
+	d_.showLogFile = boost::bind(&ControlLog::show, this);
 }
 
 

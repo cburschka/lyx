@@ -164,7 +164,7 @@ void DropDown::completed()
 {
 	XUngrabPointer(fl_get_display(), CurrentTime);
 	fl_hide_form(form_);
-	result.emit(getSelectedStringFromBrowser(browser_));
+	result(getSelectedStringFromBrowser(browser_));
 }
 
 
@@ -172,5 +172,5 @@ void DropDown::key_pressed(char c)
 {
 	XUngrabPointer(fl_get_display(), CurrentTime);
 	fl_hide_form(form_);
-	keypress.emit(c);
+	keypress(c);
 }

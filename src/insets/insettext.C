@@ -995,7 +995,7 @@ bool InsetText::updateInsetInInset(BufferView * bv, Inset * inset)
 }
 
 
-void InsetText::insetButtonPress(BufferView * bv, 
+void InsetText::insetButtonPress(BufferView * bv,
 	int x, int y, mouse_button::state button)
 {
 	no_selection = true;
@@ -1108,7 +1108,7 @@ void InsetText::insetButtonPress(BufferView * bv,
 }
 
 
-bool InsetText::insetButtonRelease(BufferView * bv, 
+bool InsetText::insetButtonRelease(BufferView * bv,
 	int x, int y, mouse_button::state button)
 {
 	no_selection = true;
@@ -1375,7 +1375,7 @@ InsetText::localDispatch(BufferView * bv,
 		}
 		// bug 393
 		lt->clearSelection();
- 
+
 		updwhat = CURSOR_PAR;
 		updflag = true;
 		break;
@@ -1804,7 +1804,7 @@ void InsetText::toggleInsetCursor(BufferView * bv)
 
 	int const asc = font_metrics::maxAscent(font);
 	int const desc = font_metrics::maxDescent(font);
-  
+
 	if (isCursorVisible())
 		bv->hideLockedInsetCursor();
 	else
@@ -1822,7 +1822,7 @@ void InsetText::showInsetCursor(BufferView * bv, bool show)
 	if (!isCursorVisible()) {
 		LyXFont const font =
 			getLyXText(bv)->getFont(bv->buffer(), cpar(bv), cpos(bv));
-	
+
 		int const asc = font_metrics::maxAscent(font);
 		int const desc = font_metrics::maxDescent(font);
 
@@ -1853,7 +1853,7 @@ void InsetText::fitInsetCursor(BufferView * bv) const
 	}
 	LyXFont const font =
 		getLyXText(bv)->getFont(bv->buffer(), cpar(bv), cpos(bv));
-	
+
 	int const asc = font_metrics::maxAscent(font);
 	int const desc = font_metrics::maxDescent(font);
 
@@ -2076,7 +2076,7 @@ bool InsetText::checkAndActivateInset(BufferView * bv, int x, int y,
 	// WRONG
 	if (button == mouse_button::none && !isHighlyEditableInset(inset))
 		return false;
-	
+
 	if (inset) {
 		if (x < 0)
 			x = insetWidth;

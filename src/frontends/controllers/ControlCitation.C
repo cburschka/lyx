@@ -12,18 +12,22 @@
  */
 
 #include <config.h>
-#include <algorithm>
 
 #ifdef __GNUG__
 #pragma implementation
 #endif
 
+#include "ControlCitation.h"
 #include "ViewBase.h"
 #include "ButtonControllerBase.h"
-#include "ControlCitation.h"
 #include "buffer.h"
 #include "Dialogs.h"
+
 #include "frontends/LyXView.h"
+
+#include <boost/bind.hpp>
+
+#include <algorithm>
 
 // need to #include this in _one_ of the ControlCommand-derived classses in
 // order to instantiate
@@ -34,7 +38,6 @@
 
 using std::pair;
 using std::vector;
-using SigC::slot;
 
 vector<biblio::CiteStyle> ControlCitation::citeStyles_;
 
@@ -43,8 +46,8 @@ ControlCitation::ControlCitation(LyXView & lv, Dialogs & d)
 {
 	// These are permanent connections so we won't bother
 	// storing a copy because we won't be disconnecting.
-	d_.showCitation.connect(slot(this, &ControlCitation::showInset));
-	d_.createCitation.connect(slot(this, &ControlCitation::createInset));
+	d_.showCitation = boost::bind(&ControlCitation::showInset, this, _1);
+	d_.createCitation = boost::bind(&ControlCitation::createInset, this, _1);
 }
 
 

@@ -16,9 +16,6 @@
 #ifndef FORMBASEDEPRECATED_H
 #define FORMBASEDEPRECATED_H
 
-#include FORMS_H_LOCATION
-#include <sigc++/signal_system.h>
-
 #ifdef __GNUG__
 #pragma interface
 #endif
@@ -27,6 +24,10 @@
 #include "LString.h"
 #include "xformsBC.h"
 #include "FeedbackController.h"
+
+#include FORMS_H_LOCATION
+
+#include <boost/signals/trackable.hpp>
 
 class Buffer;
 class Dialogs;
@@ -120,9 +121,9 @@ protected: // methods
 	/// Used so we can get at the signals we have to connect to.
 	Dialogs * d_;
 	/// Hide connection.
-	SigC::Connection h_;
+	boost::signals::connection h_;
 	/// Redraw connection.
-	SigC::Connection r_;
+	boost::signals::connection r_;
 	/// dialog title, displayed by WM.
 	string title_;
 
@@ -145,7 +146,8 @@ private:
 class FormBaseBI : public FormBaseDeprecated {
 protected:
 	/// Constructor
-	FormBaseBI(LyXView *, Dialogs *, string const &, bool allowResize=true);
+	FormBaseBI(LyXView *, Dialogs *, string const &,
+		   bool allowResize = true);
 
 	/// Connect signals
 	virtual void connect();
@@ -157,7 +159,8 @@ protected:
 class FormBaseBD : public FormBaseDeprecated {
 protected:
 	/// Constructor
-	FormBaseBD(LyXView *, Dialogs *, string const &, bool allowResize=true);
+	FormBaseBD(LyXView *, Dialogs *, string const &,
+		   bool allowResize = true);
 
 	/// Connect signals
 	virtual void connect();
@@ -167,7 +170,7 @@ protected:
 	virtual void updateSlot(bool) { update(); }
 
 	/// Update connection.
-	SigC::Connection u_;
+	boost::signals::connection u_;
 };
 
 

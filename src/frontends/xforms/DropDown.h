@@ -15,9 +15,12 @@
 #endif
 
 #include "frontends/LyXView.h"
-#include <sigc++/signal_system.h>
 #include "LString.h"
+
 #include FORMS_H_LOCATION
+
+#include <boost/signals/signal1.hpp>
+
 #include <vector>
 
 class DropDown {
@@ -37,10 +40,10 @@ public:
 	void key_pressed(char c);
 
 	/// signal for completion
-	SigC::Signal1<void, string const &> result;
+	boost::signal1<void, string const &> result;
 
 	/// signal that a key was pressed
-	SigC::Signal1<void, char> keypress;
+	boost::signal1<void, char> keypress;
 
 	/// X event
 	int peek(XEvent *);

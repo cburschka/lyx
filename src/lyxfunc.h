@@ -6,15 +6,18 @@
 #pragma interface
 #endif
 
-#include <X11/Xlib.h>
-#include <sigc++/signal_system.h>
 
-#include "frontends/mouse_state.h"
-#include "frontends/key_state.h"
 #include "commandtags.h" // for kb_action enum
 #include "FuncStatus.h"
 #include "kbsequence.h"
 #include "LString.h"
+
+#include "frontends/mouse_state.h"
+#include "frontends/key_state.h"
+
+#include <boost/signals/trackable.hpp>
+
+#include <X11/Xlib.h>
 
 class LyXView;
 class LyXText;
@@ -26,7 +29,7 @@ class LyXText;
     keyboard or from the GUI. All GUI objects, including buttons and
     menus should use this class and never call kernel functions directly.
 */
-class LyXFunc : public SigC::Object {
+class LyXFunc : public boost::signals::trackable {
 public:
 	///
 	explicit

@@ -27,7 +27,8 @@
 
 #include <boost/shared_ptr.hpp>
 
-#include <sigc++/signal_system.h>
+#include <boost/signals/signal0.hpp>
+#include <boost/signals/signal1.hpp>
 
 #include <X11/X.h>
 
@@ -50,10 +51,10 @@ public:
 	/** This will be connected to a function that will return whichever
 	 *  derived class we desire.
 	 */
-	static SigC::Signal0<ImagePtr> newImage;
+	static boost::signal0<ImagePtr> newImage;
 
 	/// Return the list of loadable formats.
-	static SigC::Signal0<FormatList> loadableFormats;
+	static boost::signal0<FormatList> loadableFormats;
 
 	///
 	virtual ~GImage() {}
@@ -72,7 +73,7 @@ public:
 
 	/** At the end of the loading or modification process, return the new
 	 *  image by emitting this signal */
-	typedef SigC::Signal1<void, bool> SignalType;
+	typedef boost::signal1<void, bool> SignalType;
 	///
 	typedef boost::shared_ptr<SignalType> SignalTypePtr;
 

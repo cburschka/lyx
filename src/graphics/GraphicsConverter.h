@@ -25,7 +25,8 @@
 #include <boost/shared_ptr.hpp>
 #include <boost/utility.hpp>
 
-#include <sigc++/signal_system.h>
+#include <boost/signals/signal1.hpp>
+#include <boost/signals/trackable.hpp>
 
 #include <list>
 
@@ -52,7 +53,7 @@ public:
 	 *  converted file (to_file_base + extension(to_format_name)).
 	 *  If unsuccessful, the string will be empty.
 	 */
-	typedef SigC::Signal1<void, string const &> SignalType;
+	typedef boost::signal1<void, string const &> SignalType;
 	///
 	typedef boost::shared_ptr<SignalType> SignalTypePtr;
 	///
@@ -88,7 +89,7 @@ private:
 
 
 /// Each ConvProcess represents a single conversion process.
-struct ConvProcess : public SigC::Object
+struct ConvProcess : public boost::signals::trackable
 {
 	///
 	typedef GConverter::SignalTypePtr SignalTypePtr;

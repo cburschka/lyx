@@ -14,7 +14,7 @@
 #pragma interface
 #endif
 
-#include <sigc++/signal_system.h>
+#include <boost/signals/signal0.hpp>
 
 /**
  * This class executes the callback when the timeout expires.
@@ -41,7 +41,7 @@ public:
 	/// restart the timer
 	void restart();
 	/// signal emitted on timer expiry
-	SigC::Signal0<void> timeout;
+	boost::signal0<void> timeout;
 	/// emit the signal
 	void emit();
 	/// set the timer type

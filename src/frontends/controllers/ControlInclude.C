@@ -15,29 +15,33 @@
 #pragma implementation
 #endif
 
+#include "ControlInclude.h"
 #include "ViewBase.h"
 #include "ButtonControllerBase.h"
-#include "ControlInclude.h"
-#include "ControlInset.tmpl"
 #include "buffer.h"
 #include "Alert.h"
 #include "BufferView.h"
 #include "Dialogs.h"
-#include "frontends/LyXView.h"
 #include "lyxfunc.h"
 #include "gettext.h"
 #include "helper_funcs.h"
 #include "lyxrc.h"
+
 #include "support/filetools.h"
+
+#include "frontends/LyXView.h"
+
+#include "ControlInset.tmpl"
+
+#include <boost/bind.hpp>
 
 using std::pair;
 using std::make_pair;
-using SigC::slot;
 
 ControlInclude::ControlInclude(LyXView & lv, Dialogs & d)
 	: ControlInset<InsetInclude, InsetInclude::Params>(lv, d)
 {
-	d_.showInclude.connect(slot(this, &ControlInclude::showInset));
+	d_.showInclude = boost::bind(&ControlInclude::showInset, this, _1);
 }
 
 

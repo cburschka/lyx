@@ -18,12 +18,15 @@
 #pragma interface
 #endif
 
-#include <map>
-#include <sigc++/signal_system.h>
 #include "LString.h"
 
+#include <boost/signals/signal0.hpp>
+#include <boost/signals/trackable.hpp>
+
+#include <map>
+
 ///
-class Counter : public SigC::Object {
+class Counter : public boost::trackable {
 public:
 	///
 	Counter();
@@ -38,7 +41,7 @@ public:
 	///
 	void reset();
 	///
-	SigC::Signal0<void> onstep;
+	boost::signal0<void> onstep;
 private:
 	///
 	int value_;

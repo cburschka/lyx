@@ -22,14 +22,16 @@
 #include "insets/inset.h"
 #include "graphics/GraphicsTypes.h"
 #include "insets/insetgraphicsParams.h"
+
 // We need a signal here to hide an active dialog when we are deleted.
-#include "sigc++/signal_system.h"
+#include <boost/signals/signal0.hpp>
+#include <boost/signals/trackable.hpp>
 
 class Dialogs;
 class LaTeXFeatures;
 
 ///
-class InsetGraphics : public Inset, public SigC::Object {
+class InsetGraphics : public Inset, public boost::signals::trackable {
 public:
 	///
 	InsetGraphics();
@@ -93,7 +95,7 @@ public:
 	/** This signal is connected by our dialog and called when the inset
 	    is deleted.
 	*/
-	SigC::Signal0<void> hideDialog;
+	boost::signal0<void> hideDialog;
 
 private:
 	/// Set the cached variables

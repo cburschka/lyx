@@ -64,6 +64,7 @@ private:
 	GUIview view_;
 };
 
+#if 0
 /** Specialization for About LyX dialog
  */
 template <class GUIview, class GUIbc>
@@ -402,5 +403,6 @@ public:
 	    : GUI<ControlVCLog, GUIview, OkCancelPolicy, GUIbc>(lv, d) {}
 };
 
+#endif
 
 #endif // GUI_H

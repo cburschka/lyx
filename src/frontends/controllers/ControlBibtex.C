@@ -13,32 +13,35 @@
  * \author Herbert Voss <voss@lyx.org>
  */
 
-#include <algorithm>
+#include <config.h>
 
 #ifdef __GNUG__
 #pragma implementation
 #endif
 
-#include <config.h>
 #include "ViewBase.h"
 #include "ButtonControllerBase.h"
 #include "ControlBibtex.h"
 #include "Dialogs.h"
-#include "frontends/LyXView.h"
 #include "buffer.h"
 #include "BufferView.h"
 #include "lyxrc.h"
 #include "helper_funcs.h"
 #include "gettext.h"
 
-using SigC::slot;
+#include "frontends/LyXView.h"
+
+#include <boost/bind.hpp>
+
+#include <algorithm>
+
 using std::pair;
 using std::make_pair;
 
 ControlBibtex::ControlBibtex(LyXView & lv, Dialogs & d)
 	: ControlCommand(lv, d)
 {
-	d_.showBibtex.connect(slot(this, &ControlBibtex::showInset));
+	d_.showBibtex = boost::bind(&ControlBibtex::showInset, this, _1);
 }
 
 void ControlBibtex::applyParamsToInset()

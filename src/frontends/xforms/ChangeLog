@@ -1,5 +1,7 @@
 2002-05-29  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
+	* switch from SigC signals to boost::signals.
+
 	* Dialogs.C (Dialogs): simplify creation of dialog objects a bit.
 
 2002-05-28  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>

@@ -29,6 +29,7 @@ using std::sort;
 #include "frontends/Dialogs.h"
 #include "xforms_helpers.h"
 
+#include <boost/bind.hpp>
 
 #ifdef HAVE_ERRNO_H
 #include <cerrno>
@@ -456,7 +457,7 @@ FileDialog::Private::Private()
 	fl_hide_object(pFileDlgForm->User1);
 	fl_hide_object(pFileDlgForm->User2);
 
-	r_ = Dialogs::redrawGUI.connect(SigC::slot(this, &FileDialog::Private::redraw));
+	r_ = Dialogs::redrawGUI.connect(boost::bind(&FileDialog::Private::redraw, this));
 }
 
 

@@ -6,14 +6,16 @@
 #include "BufferView.h"
 #include "commandtags.h"
 #include "frontends/mouse_state.h"
+#include "frontends/key_state.h"
 #include "frontends/Timeout.h"
-// FIXME remove me 
+// FIXME remove me
 #include "frontends/WorkArea.h"
 #include "box.h"
 #include "insets/insetspecialchar.h"
 #include "support/types.h"
 
 #include <boost/scoped_ptr.hpp>
+#include <boost/signals/trackable.hpp>
 
 #ifdef __GNUG__
 #pragma interface
@@ -24,7 +26,7 @@ class WorkArea;
 class LyXScreen;
 
 ///
-struct BufferView::Pimpl : public SigC::Object {
+struct BufferView::Pimpl : public boost::signals::trackable {
 	///
 	Pimpl(BufferView * i, LyXView * o,
 	      int xpos, int ypos, int width, int height);

@@ -15,24 +15,27 @@
 #pragma implementation
 #endif
 
+#include "ControlFloat.h"
 #include "ViewBase.h"
 #include "ButtonControllerBase.h"
-#include "ControlFloat.h"
-#include "ControlInset.tmpl"
 #include "Dialogs.h"
-#include "frontends/LyXView.h"
 #include "buffer.h"
 #include "BufferView.h"
+
 #include "insets/insetfloat.h"
+#include "frontends/LyXView.h"
+
+#include "ControlInset.tmpl"
+
+#include <boost/bind.hpp>
 
 using std::vector;
-using SigC::slot;
 
 
 ControlFloat::ControlFloat(LyXView & lv, Dialogs & d)
 	: ControlInset<InsetFloat, FloatParams>(lv, d)
 {
-	d_.showFloat.connect(slot(this, &ControlFloat::showInset));
+	d_.showFloat = boost::bind(&ControlFloat::showInset, this, _1);
 
 	// We could have an extra method updateInset that calls
 	// view().update() rather than view().show(), but I don't see why

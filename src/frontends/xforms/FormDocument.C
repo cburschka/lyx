@@ -46,12 +46,13 @@
 #include "support/filetools.h"
 #include "support/lstrings.h"
 
+#include <boost/bind.hpp>
+
 #include <functional>
 
 using std::bind2nd;
 
 using Liason::setMinibuffer;
-using SigC::slot;
 using std::vector;
 
 FormDocument::FormDocument(LyXView * lv, Dialogs * d)
@@ -62,7 +63,7 @@ FormDocument::FormDocument(LyXView * lv, Dialogs * d)
 	// let the dialog be shown
 	// This is a permanent connection so we won't bother
 	// storing a copy because we won't be disconnecting.
-	d->showDocument.connect(slot(this, &FormDocument::show));
+	d->showDocument = boost::bind(&FormDocument::show, this);
 }
 
 

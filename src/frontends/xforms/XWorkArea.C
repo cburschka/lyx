@@ -14,7 +14,7 @@
 #pragma implementation
 #endif
 
-#include "WorkArea.h"
+#include "XWorkArea.h"
 #include "debug.h"
 #include "frontends/LyXView.h"
 #include "lyxrc.h" // lyxrc.show_banner
@@ -72,8 +72,8 @@ mouse_button::state x_button_state(unsigned int button)
 	}
 	return b;
 }
- 
- 
+
+
 // FIXME
 mouse_button::state x_motion_state(unsigned int state)
 {
@@ -90,21 +90,21 @@ mouse_button::state x_motion_state(unsigned int state)
 		b |= mouse_button::button5;
 	return b;
 }
- 
+
 
 key_modifier::state x_key_state(unsigned int state)
 {
-        key_modifier::state k = key_modifier::none;
-        if (state & ControlMask)
+	key_modifier::state k = key_modifier::none;
+	if (state & ControlMask)
 		k |= key_modifier::ctrl;
-        if (state & ShiftMask)
+	if (state & ShiftMask)
 		k |= key_modifier::shift;
-        if (state & Mod1Mask)
+	if (state & Mod1Mask)
 		k |= key_modifier::alt;
-        return k;
+	return k;
 }
- 
- 
+
+
 } // anon namespace
 
 
@@ -630,11 +630,11 @@ int WorkArea::event_cb(XEvent * xev)
 	switch (xev->type) {
 		case SelectionRequest:
 			lyxerr[Debug::GUI] << "X requested selection." << endl;
-			selectionRequested.emit();
+			selectionRequested();
 			break;
 		case SelectionClear:
 			lyxerr[Debug::GUI] << "Lost selection." << endl;
-			selectionLost.emit();
+			selectionLost();
 			break;
 	}
 	return ret;

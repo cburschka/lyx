@@ -33,9 +33,10 @@
 #include "BufferView.h"
 #include "frontends/Timeout.h"
 
+#include <boost/bind.hpp>
+
 #include <cctype>
 
-using SigC::slot;
 using std::vector;
 using std::back_inserter;
 using std::find;
@@ -64,10 +65,10 @@ MiniBuffer::MiniBuffer(LyXView * o, FL_Coord x, FL_Coord y,
 	add(FL_NORMAL_INPUT, x, y, h, w);
 
 	timer = new Timeout(6000);
-	timer->timeout.connect(slot(this, &MiniBuffer::init));
+	timer->timeout.connect(boost::bind(&MiniBuffer::init, this));
 
 	stored_timer = new Timeout(1500);
-	stored_timer->timeout.connect(slot(this, &MiniBuffer::stored_slot));
+	stored_timer->timeout.connect(boost::bind(&MiniBuffer::stored_slot, this));
 	deactivate();
 }
 
@@ -76,8 +77,8 @@ MiniBuffer::MiniBuffer(LyXView * o, FL_Coord x, FL_Coord y,
 void MiniBuffer::dd_init()
 {
 	dropdown_ = new DropDown(owner_, the_buffer);
-	dropdown_->result.connect(slot(this, &MiniBuffer::set_complete_input));
-	dropdown_->keypress.connect(slot(this, &MiniBuffer::append_char));
+	dropdown_->result.connect(boost::bind(&MiniBuffer::set_complete_input, this, _1));
+	dropdown_->keypress.connect(boost::bind(&MiniBuffer::append_char, this, _1));
 }
 
 
@@ -234,7 +235,7 @@ int MiniBuffer::peek_event(FL_OBJECT * ob, int event, int key)
 				if (!input.empty()) {
 					history_->push_back(input);
 				}
-				stringReady.emit(input);
+				stringReady(input);
 # if 0
 			}
 #endif
@@ -370,7 +371,7 @@ void MiniBuffer::init()
 	if (the_buffer->focus)
 		return;
 
-	timeout.emit();
+	timeout();
 	timer->stop();
 }
 

@@ -17,7 +17,7 @@
 #include "LString.h"
 #include "debug.h"
 #include "lyxfont.h"
-#include "WorkArea.h"
+#include "frontends/xforms/XWorkArea.h"
 #include "xfont_metrics.h"
 #include "ColorHandler.h"
 #include "lyxrc.h"

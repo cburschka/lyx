@@ -159,5 +159,5 @@ Dialogs::Dialogs(LyXView * lv)
 
 	// reduce the number of connections needed in
 	// dialogs by a simple connection here.
-	hideAll.connect(hideBufferDependent.slot());
+	hideAll.connect(hideBufferDependent);
 }

@@ -2,11 +2,15 @@
 #ifndef MINIBUFFER_H
 #define MINIBUFFER_H
 
-#include <sigc++/signal_system.h>
+#include "LString.h"
+
+#include <boost/signals/signal0.hpp>
+#include <boost/signals/signal1.hpp>
+#include <boost/signals/trackable.hpp>
+
 #include <vector>
 
 #include FORMS_H_LOCATION
-#include "LString.h"
 
 #ifdef __GNUG__
 #pragma interface
@@ -17,7 +21,7 @@ class DropDown;
 class Timeout;
 
 ///
-class MiniBuffer : public SigC::Object {
+class MiniBuffer : public boost::signals::trackable {
 public:
 	enum State {
 		spaces,
@@ -58,11 +62,11 @@ public:
 	///
 	int peek_event(FL_OBJECT *, int, int);
 	///
-	SigC::Signal1<void, string const &> stringReady;
+	boost::signal1<void, string const &> stringReady;
 	///
-	//SigC::Signal0<void> escape;
+	//boost::signal0<void> escape;
 	///
-	SigC::Signal0<void> timeout;
+	boost::signal0<void> timeout;
 private:
 	///
 	void activate();

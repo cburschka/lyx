@@ -12,27 +12,29 @@
  * \author Angus Leeming <a.leeming@ic.ac.uk>
  */
 
-#include <algorithm>
+#include <config.h>
 
 #ifdef __GNUG__
 #pragma implementation
 #endif
 
-#include <config.h>
+#include "ControlBibitem.h"
 #include "ViewBase.h"
 #include "ButtonControllerBase.h"
-#include "ControlBibitem.h"
 #include "Dialogs.h"
-#include "frontends/LyXView.h"
 #include "buffer.h"
 #include "BufferView.h"
 
-using SigC::slot;
+#include "frontends/LyXView.h"
+
+#include <boost/bind.hpp>
+
+#include <algorithm>
 
 ControlBibitem::ControlBibitem(LyXView & lv, Dialogs & d)
 	: ControlCommand(lv, d)
 {
-	d_.showBibitem.connect(slot(this, &ControlBibitem::showInset));
+	d_.showBibitem = boost::bind(&ControlBibitem::showInset, this, _1);
 }
 
 

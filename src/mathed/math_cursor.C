@@ -185,7 +185,7 @@ Selection theSelection;
 
 
 MathCursor::MathCursor(InsetFormulaBase * formula, bool left)
-	:	formula_(formula), lastcode_(LM_TC_MIN), 
+	:	formula_(formula), lastcode_(LM_TC_MIN),
 		autocorrect_(false), selection_(false)
 {
 	left ? first() : last();
@@ -357,7 +357,7 @@ void MathCursor::last()
 
 
 bool positionable(MathCursor::cursor_type const & cursor,
-                  MathCursor::cursor_type const & anchor)
+		  MathCursor::cursor_type const & anchor)
 {
 	// avoid deeper nested insets when selecting
 	if (cursor.size() > anchor.size())
@@ -445,7 +445,7 @@ void MathCursor::plainInsert(MathAtom const & t)
 void MathCursor::insert(char c, MathTextCodes t)
 {
 	//lyxerr << "inserting '" << c << "'\n";
-	selClearOrDel();	
+	selClearOrDel();
 	plainInsert(MathAtom(new MathCharInset(c, t)));
 }
 
@@ -1589,7 +1589,7 @@ bool MathCursor::interpret(char c)
 	// no special circumstances, so insert the character without any fuss
 	insert(c, lastcode_ == LM_TC_MIN ? MathCharInset::nativeCode(c) : lastcode_);
 	lastcode_ = LM_TC_MIN;
-	autocorrect_ = true;  
+	autocorrect_ = true;
 	return true;
 }
 

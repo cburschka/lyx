@@ -269,7 +269,7 @@ void LyXFunc::processKeySym(KeySym keysym, key_modifier::state state)
 			lyxerr << "meta_fake_bit is ["
 			       << meta_fake_bit << "]" << endl;
 		}
-#endif 
+#endif
 		// remove Caps Lock and Mod2 as a modifiers
 		action = keyseq.addkey(keysym, (state | meta_fake_bit));
 		if (lyxerr.debugging(Debug::KEY)) {

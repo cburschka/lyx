@@ -25,6 +25,8 @@
 #include "support/filetools.h" // FileSearch
 #include "version.h"
 
+#include <boost/bind.hpp>
+
 // needed for the browser
 extern string system_lyxdir;
 extern string user_lyxdir;
@@ -32,7 +34,7 @@ extern string user_lyxdir;
 ControlAboutlyx::ControlAboutlyx(LyXView & lv, Dialogs & d)
 	: ControlDialogBI(lv, d)
 {
-	d_.showAboutlyx.connect(SigC::slot(this, &ControlAboutlyx::show));
+	d_.showAboutlyx = boost::bind(&ControlAboutlyx::show, this);
 }
 
 

@@ -17,7 +17,7 @@
 #endif
 
 #include "insetbutton.h"
-#include <sigc++/signal_system.h>
+#include <boost/signals/signal0.hpp>
 #include <boost/utility.hpp>
 
 // Created by Alejandro 970222
@@ -120,7 +120,7 @@ public:
 	///
 	void setParams(InsetCommandParams const &);
 	///
-	SigC::Signal0<void> hideDialog;
+	boost::signal0<void> hideDialog;
 
 private:
 	///

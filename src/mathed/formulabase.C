@@ -55,13 +55,13 @@
 using std::endl;
 using std::ostream;
 using std::vector;
+
 using std::abs;
 
 MathCursor * mathcursor = 0;
 
 
 namespace {
-
 
 // local global
 int first_x;
@@ -279,7 +279,7 @@ void InsetFormulaBase::updateLocal(BufferView * bv, bool dirty)
 
 
 bool InsetFormulaBase::insetButtonRelease(BufferView * bv,
-                                          int /*x*/, int /*y*/, mouse_button::state button)
+					  int /*x*/, int /*y*/, mouse_button::state button)
 {
 	//lyxerr << "insetButtonRelease: " << x << " " << y << "\n";
 

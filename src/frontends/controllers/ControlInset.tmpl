@@ -11,14 +11,15 @@
  */
 
 #include "ControlInset.h"
+#include "debug.h"
+
 #include "support/LAssert.h"
-#include "debug.h" 
 
 
 template <class Inset, class Params>
 ControlInset<Inset, Params>::ControlInset(LyXView & lv, Dialogs & d)
 	: ControlConnectBD(lv, d),
-	  inset_(0), ih_(0), params_(0), dialog_built_(false)
+	  inset_(0), params_(0), dialog_built_(false)
 {}
 
 
@@ -179,7 +180,7 @@ void ControlInset<Inset, Params>::connectInset(Inset * inset)
 	if (inset) {
 		inset_ = inset;
 		ih_ = inset->hideDialog.connect(
-			SigC::slot(this, &ControlInset::hide));
+			boost::bind(&ControlInset::hide, this));
 	}
 	connect();
 }

@@ -17,16 +17,21 @@
 #define TOOLTIPS_H
 
 #include "LString.h"
+
 #include <boost/utility.hpp>
-#include <sigc++/signal_system.h>
-#include <map>
+#include <boost/signals/signal0.hpp>
+#include <boost/signals/trackable.hpp>
+
 #include FORMS_H_LOCATION // Can't forward-declare FL_OBJECT
+
+#include <map>
+
 
 #ifdef __GNUG__
 #pragma interface
 #endif
 
-class Tooltips : boost::noncopyable, public SigC::Object {
+class Tooltips : boost::noncopyable, public boost::signals::trackable {
 public:
 	Tooltips();
 
@@ -61,7 +66,7 @@ private:
 	/** Once enabled_ is changed, then this signal is emitted to update
 	 *  all the tooltips.
 	 */
-	static SigC::Signal0<void> toggled;
+	static boost::signal0<void> toggled;
 
 	/// The tooltips are stored so that they can be turned on and off.
 	typedef std::map<FL_OBJECT *, string> TooltipsMap;

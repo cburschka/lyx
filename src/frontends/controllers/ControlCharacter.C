@@ -6,28 +6,30 @@
  * \author Angus Leeming, a.leeming@ic.ac.uk
  */
 
-#include <vector>
+#include <config.h>
 
 #ifdef __GNUG__
 #pragma implementation
 #endif
 
-#include <config.h>
-
+#include "ControlCharacter.h"
 #include "ViewBase.h"
 #include "ButtonControllerBase.h"
-#include "ControlCharacter.h"
 #include "buffer.h"
 #include "Dialogs.h"
 #include "Liason.h"
-#include "frontends/LyXView.h"
 #include "bufferview_funcs.h" // ToggleAndShow
 #include "gettext.h"
 #include "language.h"
 #include "BufferView.h"
 
+#include "frontends/LyXView.h"
+
+#include <boost/bind.hpp>
+
+#include <vector>
+
 using Liason::setMinibuffer;
-using SigC::slot;
 using std::vector;
 
 
@@ -35,8 +37,8 @@ ControlCharacter::ControlCharacter(LyXView & lv, Dialogs & d)
 	: ControlDialogBD(lv, d),
 	  font_(0), toggleall_(false)
 {
-	d_.showCharacter.connect(slot(this, &ControlCharacter::show));
-	d_.setUserFreeFont.connect(slot(this, &ControlCharacter::apply));
+	d_.showCharacter = boost::bind(&ControlCharacter::show, this);
+	d_.setUserFreeFont = boost::bind(&ControlCharacter::apply, this);
 }
 
 

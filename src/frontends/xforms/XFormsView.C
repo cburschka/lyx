@@ -31,6 +31,8 @@
 #include "lyxfunc.h"
 #include "BufferView.h"
 
+#include <boost/bind.hpp>
+
 using std::endl;
 
 //extern void AutoSave(BufferView *);
@@ -57,10 +59,8 @@ XFormsView::XFormsView(int width, int height)
 	fl_set_form_atclose(form_, C_XFormsView_atCloseMainFormCB, 0);
 
 	// Connect the minibuffer signals
-	minibuffer->stringReady.connect(SigC::slot(getLyXFunc(),
-						&LyXFunc::miniDispatch));
-	minibuffer->timeout.connect(SigC::slot(getLyXFunc(),
-					       &LyXFunc::initMiniBuffer));
+	minibuffer->stringReady.connect(boost::bind(&LyXFunc::miniDispatch, getLyXFunc(), _1));
+	minibuffer->timeout.connect(boost::bind(&LyXFunc::initMiniBuffer, getLyXFunc()));
 
 	// Make sure the buttons are disabled if needed.
 	updateToolbar();
@@ -164,7 +164,7 @@ void XFormsView::create_form_form_main(int width, int height)
 	// TIMERS
 	//
 
-	autosave_timeout->timeout.connect(SigC::slot(this, &XFormsView::AutoSave));
+	autosave_timeout->timeout.connect(boost::bind(&XFormsView::AutoSave, this));
 
 	//
 	// Misc

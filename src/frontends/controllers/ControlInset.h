@@ -22,6 +22,8 @@
 #include "ControlConnections.h"
 #include "LString.h"
 
+#include <boost/signals/connection.hpp>
+
 class Inset;
 
 template <class Inset, class Params>
@@ -94,7 +96,7 @@ private:
 	/// pointer to the inset passed through connectInset
 	Inset * inset_;
 	/// inset::hide connection.
-	SigC::Connection ih_;
+	boost::signals::connection ih_;
 	/** A local copy of the inset's params.
 	    Memory is allocated only whilst the dialog is visible.
 	*/

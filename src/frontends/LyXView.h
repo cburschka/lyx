@@ -7,11 +7,12 @@
 #pragma interface
 #endif
 
-#include <boost/utility.hpp>
-#include <sigc++/signal_system.h>
-
 #include "LString.h"
+
 #include "support/types.h"
+
+#include <boost/utility.hpp>
+#include <boost/signals/trackable.hpp>
 
 class Buffer;
 class Toolbar;
@@ -25,7 +26,7 @@ class LyXFunc;
 class Timeout;
 
 ///
-class LyXView : public SigC::Object, boost::noncopyable {
+class LyXView : public boost::signals::trackable, boost::noncopyable {
 public:
 	///
 	LyXView();

@@ -1,7 +1,10 @@
+2002-05-29  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* switch from SigC signals to boost::signals.
 
 2002-05-29  André Pönitz <poenitz@gmx.net>
 
-	* GraphicsParam.C: remove unneeded #include, move vomment 
+	* GraphicsParam.C: remove unneeded #include, move vomment
 
 2002-05-28  André Pönitz <poenitz@gmx.net>
 
@@ -10,10 +13,10 @@
 2002-05-24  John Levon  <moz@compsoc.man.ac.uk>
 
 	* GraphicsImageXPM.C: ColorHandler moved
- 
+
 2002-05-24  Juergen Vigna  <jug@sad.it>
 
-	* GraphicsCache.h: 
+	* GraphicsCache.h:
 	* GraphicsImage.h: include LString.h first.
 
 2002-05-22  Lars Gullik Bjønnes  <larsbj@birdstep.com>

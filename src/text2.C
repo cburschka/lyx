@@ -738,7 +738,7 @@ void LyXText::setFont(BufferView * bview, LyXFont const & font, bool toggleall)
 	freezeUndo();
 	cursor = selection.start;
 	while (cursor.par() != selection.end.par() ||
-	       cursor.pos() < selection.end.pos()) 
+	       cursor.pos() < selection.end.pos())
 	{
 		if (cursor.pos() < cursor.par()->size()) {
 			// an open footnote should behave like a closed one
@@ -2405,7 +2405,7 @@ void LyXText::fixCursorAfterDelete(BufferView * bview,
 	// pagragraph because we erased the last character.
 	if (cur.pos() > cur.par()->size())
 		cur.pos(cur.par()->size());
-	
+
 	// recompute row et al. for this cursor
 	setCursor(bview, cur, cur.par(), cur.pos(), cur.boundary());
 }

@@ -17,6 +17,7 @@
 #include "FormBaseDeprecated.h"
 
 #include <boost/scoped_ptr.hpp>
+#include <boost/signals/connection.hpp>
 
 class Paragraph;
 struct FD_form_paragraph;
@@ -62,7 +63,7 @@ private:
 	ButtonController<NoRepeatedApplyReadOnlyPolicy, xformsBC> bc_;
 
 	/// Changed Paragraph connection.
-	SigC::Connection cp_;
+	boost::signals::connection cp_;
 
 	/// The current Paragraph
 	Paragraph const * par_;

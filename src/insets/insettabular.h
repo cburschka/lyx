@@ -57,7 +57,7 @@
 
 #include <boost/scoped_ptr.hpp>
 
-#include <sigc++/signal_system.h>
+#include <boost/signals/signal0.hpp>
 
 class LyXLex;
 class Painter;
@@ -230,7 +230,7 @@ public:
 	///
 	boost::scoped_ptr<LyXTabular> tabular;
 	///
-	SigC::Signal0<void> hideDialog;
+	boost::signal0<void> hideDialog;
 
 private:
 	///

@@ -17,6 +17,8 @@
 
 #include "insetcommand.h"
 
+#include <boost/signals/signal0.hpp>
+
 class Buffer;
 struct LaTeXFeatures;
 
@@ -116,7 +118,7 @@ public:
 	bool loadIfNeeded() const;
 
 	/// hide a dialog if about
-	SigC::Signal0<void> hideDialog;
+	boost::signal0<void> hideDialog;
 private:
 	/// get the text displayed on the button
 	string const getScreenLabel(Buffer const *) const;

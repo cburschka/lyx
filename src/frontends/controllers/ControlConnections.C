@@ -11,29 +11,30 @@
  * \author Angus Leeming <a.leeming@ic.ac.uk>
  */
 
+#include <config.h>
+
 #ifdef __GNUG__
 #pragma implementation
 #endif
 
-#include <config.h>
-
-#include "ViewBase.h"
 #include "ControlConnections.h"
+#include "ViewBase.h"
 #include "Dialogs.h"
-#include "frontends/LyXView.h"
 #include "buffer.h"
 
-using SigC::slot;
+#include "frontends/LyXView.h"
+
+#include <boost/bind.hpp>
 
 ControlConnectBase::ControlConnectBase(LyXView & lv, Dialogs & d)
-	: lv_(lv), d_(d), h_(0), r_(0)
+	: lv_(lv), d_(d)
 {}
 
 
 void ControlConnectBase::connect()
 {
 	r_ = Dialogs::redrawGUI.
-		connect(slot(this, &ControlConnectBase::redraw));
+		connect(boost::bind(&ControlConnectBase::redraw, this));
 }
 
 void ControlConnectBase::disconnect()
@@ -81,22 +82,21 @@ ControlConnectBI::ControlConnectBI(LyXView & lv, Dialogs & d)
 
 void ControlConnectBI::connect()
 {
-	h_ = d_.hideAll.connect(slot(this, &ControlConnectBI::hide));
+	h_ = d_.hideAll.connect(boost::bind(&ControlConnectBI::hide, this));
 	ControlConnectBase::connect();
 }
 
 ControlConnectBD::ControlConnectBD(LyXView & lv, Dialogs & d)
-	: ControlConnectBase(lv, d),
-	  u_(0)
+	: ControlConnectBase(lv, d)
 {}
 
 
 void ControlConnectBD::connect()
 {
 	u_ = d_.updateBufferDependent.
-		connect(slot(this, &ControlConnectBD::updateSlot));
+		connect(boost::bind(&ControlConnectBD::updateSlot, this, _1));
 	h_ = d_.hideBufferDependent.
-		connect(slot(this, &ControlConnectBD::hide));
+		connect(boost::bind(&ControlConnectBD::hide, this));
 	ControlConnectBase::connect();
 }
 

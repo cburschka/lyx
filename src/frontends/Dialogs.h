@@ -22,8 +22,9 @@
 
 #include <boost/utility.hpp>
 #include <boost/shared_ptr.hpp>
-
-#include <sigc++/signal_system.h>
+#include <boost/signals/signal0.hpp>
+#include <boost/signals/signal1.hpp>
+#include <boost/function.hpp>
 
 #include <vector>
 
@@ -67,10 +68,10 @@ public:
 
 	/** Redraw all visible dialogs because, for example, the GUI colours
 	    have been re-mapped. */
-	static SigC::Signal0<void> redrawGUI;
+	static boost::signal0<void> redrawGUI;
 
 	/// Toggle tooltips on/off in all dialogs.
-	static SigC::Signal0<void> toggleTooltips;
+	static boost::signal0<void> toggleTooltips;
 
 	/// Are the tooltips on or off?
 	static bool tooltipsEnabled();
@@ -78,113 +79,111 @@ public:
 	/**@name Global Hide and Update Signals */
 	//@{
 	/// Hide all visible dialogs
-	SigC::Signal0<void> hideAll;
+	boost::signal0<void> hideAll;
 
 	/// Hide any dialogs that require a buffer for them to operate
-	SigC::Signal0<void> hideBufferDependent;
+	boost::signal0<void> hideBufferDependent;
 
 	/** Update visible, buffer-dependent dialogs
 	    If the bool is true then a buffer change has occurred
 	    else its still the same buffer.
 	 */
-	SigC::Signal1<void, bool> updateBufferDependent;
+	boost::signal1<void, bool> updateBufferDependent;
 	//@}
 
 	/**@name Dialog Access Signals.
 	   Put into some sort of alphabetical order */
 	//@{
-	/// Do we really have to push this?
-	SigC::Signal1<void, std::vector<string> const &> SetDocumentClassChoice;
 	///
-	SigC::Signal0<void> showAboutlyx;
+	boost::function<void> showAboutlyx;
 	/// show the key and label of a bibliography entry
-	SigC::Signal1<void, InsetCommand *> showBibitem;
+	boost::function<void, InsetCommand *> showBibitem;
 	/// show the bibtex dialog
-	SigC::Signal1<void, InsetCommand *> showBibtex;
+	boost::function<void, InsetCommand *> showBibtex;
 	///
-	SigC::Signal0<void> showCharacter;
+	boost::function<void> showCharacter;
 	/// connected to the character dialog also
-	SigC::Signal0<void> setUserFreeFont;
+	boost::function<void> setUserFreeFont;
 	///
-	SigC::Signal1<void, InsetCommand *> showCitation;
+	boost::function<void, InsetCommand *> showCitation;
 	///
-	SigC::Signal1<void, string const &> createCitation;
+	boost::function<void, string const &> createCitation;
 	///
-	SigC::Signal0<void> showDocument;
+	boost::function<void> showDocument;
 	///
-	SigC::Signal1<void, InsetError *> showError;
+	boost::function<void, InsetError *> showError;
 	/// show the external inset dialog
-	SigC::Signal1<void, InsetExternal *> showExternal;
+	boost::function<void, InsetExternal *> showExternal;
 	/// show the contents of a file.
-	SigC::Signal1<void, string const &> showFile;
+	boost::function<void, string const &> showFile;
 	/// show all forked child processes
-	SigC::Signal0<void> showForks;
+	boost::function<void> showForks;
 	///
-	SigC::Signal1<void, InsetGraphics *> showGraphics;
+	boost::function<void, InsetGraphics *> showGraphics;
 	/// show the details of a LyX file include inset
-	SigC::Signal1<void, InsetInclude *> showInclude;
+	boost::function<void, InsetInclude *> showInclude;
 	///
-	SigC::Signal1<void, InsetCommand *> showIndex;
+	boost::function<void, InsetCommand *> showIndex;
 	///
-	SigC::Signal1<void, string const &> createIndex;
+	boost::function<void, string const &> createIndex;
 	///
-	SigC::Signal1<void, InsetInfo *> showInfo;
+	boost::function<void, InsetInfo *> showInfo;
 	/// show the LaTeX log or build file
-	SigC::Signal0<void> showLogFile;
+	boost::function<void> showLogFile;
 	/// display the top-level maths panel
-	SigC::Signal0<void> showMathPanel;
+	boost::function<void> showMathPanel;
 	///
-	SigC::Signal1<void, InsetMinipage *> showMinipage;
+	boost::function<void, InsetMinipage *> showMinipage;
 	///
-	SigC::Signal1<void, InsetMinipage *> updateMinipage;
+	boost::function<void, InsetMinipage *> updateMinipage;
 	///
-	SigC::Signal1<void, InsetERT *> showERT;
+	boost::function<void, InsetERT *> showERT;
 	///
-	SigC::Signal1<void, InsetERT *> updateERT;
+	boost::function<void, InsetERT *> updateERT;
 	///
-	SigC::Signal1<void, InsetFloat *> showFloat;
+	boost::function<void, InsetFloat *> showFloat;
 	///
-	SigC::Signal0<void> showParagraph;
+	boost::function<void> showParagraph;
 	///
-	SigC::Signal0<void> updateParagraph;
+	boost::signal0<void> updateParagraph;
 	///
-	SigC::Signal0<void> showPreamble;
+	boost::function<void> showPreamble;
 	///
-	SigC::Signal0<void> showPreferences;
+	boost::function<void> showPreferences;
 	///
-	SigC::Signal0<void> showPrint;
+	boost::function<void> showPrint;
 	///
-	SigC::Signal1<void, InsetCommand *> showRef;
+	boost::function<void, InsetCommand *> showRef;
 	///
-	SigC::Signal1<void, string const &> createRef;
+	boost::function<void, string const &> createRef;
 	///
-	SigC::Signal0<void> showSearch;
+	boost::function<void> showSearch;
 	///
-	SigC::Signal0<void> showSendto;
+	boost::function<void> showSendto;
 	/// bring up the spellchecker
-	SigC::Signal0<void> showSpellchecker;
+	boost::function<void> showSpellchecker;
 	/// bring up the spellchecker tab in preferences
-	SigC::Signal0<void> showSpellcheckerPreferences;
+	boost::function<void> showSpellcheckerPreferences;
 	///
-	SigC::Signal1<void, InsetTabular *> showTabular;
+	boost::function<void, InsetTabular *> showTabular;
 	///
-	SigC::Signal1<void, InsetTabular *> updateTabular;
+	boost::function<void, InsetTabular *> updateTabular;
 	///
-	SigC::Signal0<void> showTabularCreate;
+	boost::function<void> showTabularCreate;
 	/// show the TexInfo
-	SigC::Signal0<void> showTexinfo;
+	boost::function<void> showTexinfo;
 	/// show the thesaurus dialog
-	SigC::Signal1<void, string const &> showThesaurus;
+	boost::function<void, string const &> showThesaurus;
 	///
-	SigC::Signal1<void, InsetCommand *> showTOC;
+	boost::function<void, InsetCommand *> showTOC;
 	///
-	SigC::Signal1<void, string const &> createTOC;
+	boost::function<void, string const &> createTOC;
 	///
-	SigC::Signal1<void, InsetCommand *> showUrl;
+	boost::function<void, InsetCommand *> showUrl;
 	///
-	SigC::Signal1<void, string const &> createUrl;
+	boost::function<void, string const &> createUrl;
 	/// show the version control log
-	SigC::Signal0<void> showVCLogFile;
+	boost::function<void> showVCLogFile;
 	//@}
 private:
 	/// Add a dialog to the vector of dialogs.

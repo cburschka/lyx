@@ -12,24 +12,28 @@
  */
 
 #include <config.h>
-#include <algorithm>
 
 #ifdef __GNUG__
 #pragma implementation
 #endif
 
+#include "ControlRef.h"
 #include "ViewBase.h"
 #include "ButtonControllerBase.h"
-#include "ControlRef.h"
 #include "Dialogs.h"
-#include "frontends/LyXView.h"
 #include "buffer.h"
 #include "lyxfunc.h"
 #include "bufferlist.h"
-#include "support/filetools.h" // MakeAbsPath, MakeDisplayPath
 #include "debug.h"
 
-using SigC::slot;
+#include "frontends/LyXView.h"
+
+#include "support/filetools.h" // MakeAbsPath, MakeDisplayPath
+
+#include <boost/bind.hpp>
+
+#include <algorithm>
+
 using std::vector;
 using std::find;
 
@@ -38,8 +42,8 @@ extern BufferList bufferlist;
 ControlRef::ControlRef(LyXView & lv, Dialogs & d)
 	: ControlCommand(lv, d, LFUN_REF_INSERT)
 {
-	d_.showRef.connect(slot(this, &ControlRef::showInset));
-	d_.createRef.connect(slot(this, &ControlRef::createInset));
+	d_.showRef = boost::bind(&ControlRef::showInset, this, _1);
+	d_.createRef = boost::bind(&ControlRef::createInset, this, _1);
 }
 
 

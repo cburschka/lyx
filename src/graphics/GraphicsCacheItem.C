@@ -19,13 +19,18 @@
 #include "graphics/GraphicsImage.h"
 #include "graphics/GraphicsParams.h"
 #include "graphics/GraphicsConverter.h"
+
 #include "insets/insetgraphics.h"
+
 #include "BufferView.h"
 #include "debug.h"
 #include "gettext.h"
 #include "lyx_main.h" // for global dispatch method
+
 #include "support/LAssert.h"
 #include "support/filetools.h"
+
+#include <boost/bind.hpp>
 
 // Very, Very UGLY!
 extern BufferView * current_view;
@@ -354,7 +359,7 @@ void GCacheItem::loadImage()
 	// GImage::loadImage.
 	SignalLoadTypePtr on_finish;
 	on_finish.reset(new SignalLoadType);
-	cl_ = on_finish->connect(SigC::slot(this, &GCacheItem::imageLoaded));
+	cl_ = on_finish->connect(boost::bind(&GCacheItem::imageLoaded, this, _1));
 
 	image_ = GImage::newImage();
 	image_->load(file_to_load_, on_finish);
@@ -514,7 +519,7 @@ void GCacheItem::convertToDisplayFormat()
 	// on completion of the conversion process.
 	SignalConvertTypePtr on_finish;
 	on_finish.reset(new SignalConvertType);
-	cc_ = on_finish->connect(SigC::slot(this, &GCacheItem::imageConverted));
+	cc_ = on_finish->connect(boost::bind(&GCacheItem::imageConverted, this, _1));
 
 	GConverter & graphics_converter = GConverter::get();
 	graphics_converter.convert(filename, to_file_base, from, to, on_finish);

@@ -1419,10 +1419,10 @@ void InsetTabular::toggleInsetCursor(BufferView * bv)
 	}
 
 	LyXFont font; // = the_locking_inset->GetFont(par, cursor.pos);
-	
+
 	int const asc = font_metrics::maxAscent(font);
 	int const desc = font_metrics::maxDescent(font);
-	
+
 	if (isCursorVisible())
 		bv->hideLockedInsetCursor();
 	else
@@ -1437,7 +1437,7 @@ void InsetTabular::showInsetCursor(BufferView * bv, bool show)
 		return;
 	if (!isCursorVisible()) {
 		LyXFont font; // = GetFont(par, cursor.pos);
-	
+
 		int const asc = font_metrics::maxAscent(font);
 		int const desc = font_metrics::maxDescent(font);
 		bv->fitLockedInsetCursor(cursor_.x(), cursor_.y(), asc, desc);
@@ -1467,7 +1467,7 @@ void InsetTabular::fitInsetCursor(BufferView * bv) const
 		return;
 	}
 	LyXFont font;
-	
+
 	int const asc = font_metrics::maxAscent(font);
 	int const desc = font_metrics::maxDescent(font);
 	resetPos(bv);

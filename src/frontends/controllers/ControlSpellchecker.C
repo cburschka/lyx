@@ -17,6 +17,32 @@
 #pragma implementation
 #endif
 
+#include "ControlSpellchecker.h"
+#include "buffer.h"
+#include "lyxrc.h"
+#include "BufferView.h"
+#include "lyxtext.h"
+#include "gettext.h"
+#include "language.h"
+
+#include "ViewBase.h"
+#include "ButtonControllerBase.h"
+#include "Dialogs.h"
+#include "Liason.h"
+
+#include "frontends/LyXView.h"
+
+#include "support/lstrings.h"
+
+# include "sp_ispell.h"
+#ifdef USE_PSPELL
+# include "sp_pspell.h"
+#endif
+
+#include "debug.h"
+
+#include <boost/bind.hpp>
+
 #include <sys/types.h> // needed by <sys/select.h> at least on freebsd
 
 #ifdef HAVE_SYS_SELECT_H
@@ -30,36 +56,12 @@
 #include <sys/select.h>
 #endif
 
-#include "buffer.h"
-#include "lyxrc.h"
-#include "BufferView.h"
-#include "frontends/LyXView.h"
-#include "lyxtext.h"
-#include "gettext.h"
-#include "support/lstrings.h"
-#include "language.h"
-
-#include "ViewBase.h"
-#include "ButtonControllerBase.h"
-#include "ControlSpellchecker.h"
-#include "Dialogs.h"
-#include "Liason.h"
-
-# include "sp_ispell.h"
-#ifdef USE_PSPELL
-# include "sp_pspell.h"
-#endif
-
-#include "debug.h"
-
-using SigC::slot;
-
 ControlSpellchecker::ControlSpellchecker(LyXView & lv, Dialogs & d)
 	: ControlDialogBD(lv, d),
 	  rtl_(false), newval_(0.0), oldval_(0), newvalue_(0), count_(0),
 	  stop_(false), result_(SpellBase::ISP_OK), speller_(0)
 {
-	d_.showSpellchecker.connect(SigC::slot(this, &ControlSpellchecker::show));
+	d_.showSpellchecker = boost::bind(&ControlSpellchecker::show, this);
 }
 
 

@@ -16,15 +16,14 @@
 #include "GraphicsImage.h"
 #include "GraphicsParams.h"
 
-
 namespace grfx {
 
 // This will be connected to a function that will return whichever
 // whichever derived class we desire.
-SigC::Signal0<ImagePtr> GImage::newImage;
+boost::signal0<ImagePtr> GImage::newImage;
 
 /// Return the list of loadable formats.
-SigC::Signal0<GImage::FormatList> GImage::loadableFormats;
+boost::signal0<GImage::FormatList> GImage::loadableFormats;
 
 std::pair<unsigned int, unsigned int>
 GImage::getScaledDimensions(GParams const & params) const
