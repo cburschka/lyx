@@ -18,8 +18,7 @@
 #include "GraphicsImage.h"
 #include "GraphicsParams.h"
 #include "insets/insetgraphics.h"
-#include "frontends/GUIRunTime.h"
-
+#include "frontends/lyx_gui.h"
 
 namespace grfx {
 
@@ -28,7 +27,7 @@ GCache & GCache::get()
 	static bool start = true;
 	if (start) {
 		start = false;
-		GUIRunTime::initialiseGraphics();
+		lyx_gui::init_graphics();
 	}
 
 	// Now return the cache

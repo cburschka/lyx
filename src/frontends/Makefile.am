@@ -21,7 +21,6 @@ libfrontends_la_SOURCES = \
 	Dialogs.h \
 	DialogBase.h \
 	FileDialog.h \
-	GUIRunTime.h \
 	Liason.C \
 	Liason.h \
 	Menubar.C \
@@ -38,6 +37,7 @@ libfrontends_la_SOURCES = \
 	font_loader.h \
 	font_metrics.h \
 	key_state.h \
+	lyx_gui.h \
 	mouse_state.h \
 	screen.C \
 	screen.h

@@ -21,13 +21,12 @@
 
 #include <csignal>
 
-class LyXGUI;
 class LyXRC;
 class LastFiles;
 class Buffer;
 class kb_keymap;
 
-
+ 
 ///
 extern string user_lyxdir;
 ///
@@ -36,18 +35,16 @@ extern string system_lyxdir;
 extern string system_tempdir;
 ///
 extern boost::scoped_ptr<LastFiles> lastfiles;
-
+ 
 
 class LyX : boost::noncopyable {
 public:
-	LyX(int * argc, char * argv[]);
+	LyX(int & argc, char * argv[]);
 
 	/// in the case of failure
 	static void emergencyCleanup();
 
 private:
-	/// Should be a maximum of 1 LyXGUI.
-	boost::scoped_ptr<LyXGUI> lyxGUI;
 	/// does this user start lyx for the first time?
 	bool first_start;
 	///
@@ -73,7 +70,7 @@ private:
 	/// Read the encodings file `name'
 	void readEncodingsFile(string const & name);
 	///
-	bool easyParse(int * argc, char * argv[]);
+	bool easyParse(int & argc, char * argv[]);
 };
 
 #endif

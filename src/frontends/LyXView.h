@@ -54,12 +54,6 @@ public:
 	LyXView();
 	///
 	virtual ~LyXView();
-	///
-	virtual void init() = 0;
-	///
-	virtual void setPosition(int, int) = 0;
-	///
-	virtual void show(int, int, string const &) = 0;
 	/// Redraw the main form.
 	virtual void redraw() = 0;
 

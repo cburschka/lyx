@@ -17,7 +17,6 @@
 #include "GraphicsParams.h"
 #include "frontends/xforms/ColorHandler.h"
 #include "debug.h"
-#include "frontends/GUIRunTime.h" // x11Display, x11Screen
 #include "support/filetools.h"    // IsFileReadable
 #include "support/lstrings.h"
 #include "Lsstream.h"
@@ -25,6 +24,8 @@
 #include <cmath>                  // cos, sin
 #include <cstdlib>                // malloc, free
 
+#include FORMS_H_LOCATION
+ 
 #ifndef CXX_GLOBAL_CSTD
 using std::cos;
 using std::sin;
@@ -70,7 +71,7 @@ GImageXPM::GImageXPM(GImageXPM const & other)
 GImageXPM::~GImageXPM()
 {
 	if (pixmap_)
-		XFreePixmap(GUIRunTime::x11Display(), pixmap_);
+		XFreePixmap(fl_get_display(), pixmap_);
 }
 
 
@@ -160,14 +161,14 @@ bool GImageXPM::setPixmap(GParams const & params)
 		return false;
 	}
 
-	Display * display = GUIRunTime::x11Display();
+	Display * display = fl_get_display();
 
 	if (pixmap_ && pixmap_status_ == PIXMAP_SUCCESS)
 		XFreePixmap(display, pixmap_);
 
 	//(BE 2000-08-05)
 	// This might be a dirty thing, but I dont know any other solution.
-	Screen * screen = ScreenOfDisplay(display, GUIRunTime::x11Screen());
+	Screen * screen = ScreenOfDisplay(display, fl_screen);
 
 	Pixmap pixmap;
 	Pixmap mask;
@@ -611,8 +612,8 @@ void mapcolor(char const * c_color, char ** g_color_ptr, char ** m_color_ptr)
 		// Already filled.
 		return;
 
-	Display * display = GUIRunTime::x11Display();
-	Colormap cmap     = GUIRunTime::x11Colormap();
+	Display * display = fl_get_display();
+	Colormap cmap     = fl_colormap;
 	XColor xcol;
 	XColor ccol;
 	if (XLookupColor(display, cmap, c_color, &xcol, &ccol) == 0)

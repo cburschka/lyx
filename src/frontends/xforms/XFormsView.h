@@ -31,10 +31,15 @@ public:
 	XFormsView(int w, int h);
 
 	~XFormsView();
-	/// Where to place the form.
-	virtual void setPosition(int, int);
-	/// Show the main form.
-	virtual void show(int, int, string const & t = string("LyX"));
+
+        /**
+         * show - display the top-level window
+         * @param xpos requested x position (or 0)
+         * @param xpos requested y position (or 0)
+         * @param title window title
+         */
+	void show(int xpos, int ypos, string const & t = string("LyX"));
+ 
 	/// init (should probably be removed later) (Lgb)
 	virtual void init();
 	/// get the xforms main form

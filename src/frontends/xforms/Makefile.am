@@ -197,9 +197,9 @@ libxforms_la_SOURCES = \
 	form_url.h \
 	FormVCLog.C \
 	FormVCLog.h \
-	GUIRunTime.C \
 	input_validators.C \
 	input_validators.h \
+	lyx_gui.C \
 	lyxlookup.C \
 	lyxlookup.h \
 	MathsSymbols.C \
@@ -230,13 +230,6 @@ libxforms_la_SOURCES = \
 	xforms_resize.h \
 	$(XFORMSGIMAGE) xformsBC.C \
 	xformsBC.h
-
-# These still have to be added. Sooner or later. ARRae-20000411
-#	GUI_defaults.C \
-#	GUI_initialize.C \
-#	GUI_postlyxrc.C \
-#	GUI_runtime.C \
-#	GUI_applymenu.C
 
 libxforms.la: $(libxforms_la_OBJECTS) $(libxforms_la_DEPENDENCIES)
 

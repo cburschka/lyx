@@ -24,7 +24,6 @@
 #include "encoding.h"
 #include "language.h"
 
-#include "frontends/GUIRunTime.h"
 #include "graphics/GraphicsImage.h"
 
 #include "support/LAssert.h"
@@ -43,7 +42,7 @@ namespace {
 inline
 Display * display()
 {
-	return GUIRunTime::x11Display();
+	return fl_get_display();
 }
 
 }

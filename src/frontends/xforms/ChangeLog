@@ -1,5 +1,18 @@
 2002-06-12  John Levon  <moz@compsoc.man.ac.uk>
 
+	* GUIRunTime.C: remove in favour of ...
+
+	* Makefile.am:
+	* lyx_gui.C: ... GUI startup namespace
+
+	* XFormsView.h:
+	* XFormsView.C: change show() prototype
+ 
+	* XPainter.C:
+	* xfont_loader.C: don't use GUIRunTime any more
+ 
+2002-06-12  John Levon  <moz@compsoc.man.ac.uk>
+
 	* ColorHandler.C: 
 	* FontInfo.h:
 	* FormBase.C:

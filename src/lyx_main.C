@@ -14,38 +14,35 @@
 #endif
 
 #include "lyx_main.h"
-#include "lyx_gui.h"
-#include "frontends/LyXView.h"
-#include "lyxfunc.h"
-#include "lyxrc.h"
-#include "buffer.h"
-#include "bufferlist.h"
+ 
+#include "support/filetools.h"
+#include "support/lyxlib.h"
+#include "support/os.h"
+#include "support/FileInfo.h"
+#include "support/path.h"
 #include "debug.h"
-#include "lastfiles.h"
-#include "intl.h"
-#include "lyxserver.h"
-//#include "layout.h"
-#include "lyxtextclasslist.h"
 #include "gettext.h"
-#include "kbmap.h"
-#include "MenuBackend.h"
-#include "ToolbarDefaults.h"
 #include "lyxlex.h"
+ 
+#include "bufferlist.h"
+#include "lyxtextclasslist.h"
+#include "lyxserver.h"
+#include "kbmap.h"
+#include "lyxfunc.h"
+#include "ToolbarDefaults.h"
+#include "MenuBackend.h"
+#include "language.h"
+#include "lastfiles.h"
 #include "encoding.h"
 #include "converter.h"
-#include "language.h"
 
 #include "frontends/Alert.h"
-#include "frontends/GUIRunTime.h"
-
-#include "support/path.h"
-#include "support/filetools.h"
-#include "support/FileInfo.h"
-#include "support/os.h"
+#include "frontends/lyx_gui.h"
 
 #include <cstdlib>
 #include <csignal>
 
+using std::vector;
 using std::endl;
 
 #ifndef CXX_GLOBAL_CSTD
@@ -57,6 +54,8 @@ using std::system;
 extern void LoadLyXFile(string const &);
 extern void QuitLyX();
 
+extern LyXServer * lyxserver;
+ 
 string system_lyxdir;
 string build_lyxdir;
 string system_tempdir;
@@ -69,7 +68,6 @@ boost::scoped_ptr<LastFiles> lastfiles;
 // This is the global bufferlist object
 BufferList bufferlist;
 
-LyXServer * lyxserver = 0;
 // this should be static, but I need it in buffer.C
 bool finished = false;	// flag, that we are quitting the program
 
@@ -77,26 +75,23 @@ bool finished = false;	// flag, that we are quitting the program
 boost::scoped_ptr<kb_keymap> toplevel_keymap;
 
 
-LyX::LyX(int * argc, char * argv[])
+LyX::LyX(int & argc, char * argv[])
 {
 	// Here we need to parse the command line. At least
 	// we need to parse for "-dbg" and "-help"
-	bool gui = easyParse(argc, argv);
+	bool const want_gui = easyParse(argc, argv);
 
 	// Global bindings (this must be done as early as possible.) (Lgb)
 	toplevel_keymap.reset(new kb_keymap);
 	defaultKeyBindings(toplevel_keymap.get());
 
-	// Make the GUI object, and let it take care of the
-	// command line arguments that concerns it.
-	lyxerr[Debug::INIT] << "Initializing LyXGUI..." << endl;
-	lyxGUI.reset(new LyXGUI(this, argc, argv, gui));
-	lyxerr[Debug::INIT] << "Initializing LyXGUI...done" << endl;
+	if (want_gui) {
+		lyx_gui::parse_init(argc, argv);
+	}
 
-	// Now the GUI and LyX have taken care of their arguments, so
-	// the only thing left on the command line should be
-	// filenames. Let's check anyway.
-	for (int argi = 1; argi < *argc ; ++argi) {
+	// check for any spurious extra arguments
+	// other than documents
+	for (int argi = 1; argi < argc ; ++argi) {
 		if (argv[argi][0] == '-') {
 			lyxerr << _("Wrong command line option `")
 			       << argv[argi]
@@ -107,46 +102,27 @@ LyX::LyX(int * argc, char * argv[])
 
 	// Initialization of LyX (reads lyxrc and more)
 	lyxerr[Debug::INIT] << "Initializing LyX::init..." << endl;
-	init(gui);
+	init(want_gui);
 	lyxerr[Debug::INIT] << "Initializing LyX::init...done" << endl;
 
-	lyxGUI->init();
+	if (want_gui) {
+		lyx_gui::parse_lyxrc();
+	}
 
-	// Load the files specified in the command line.
-	if ((*argc) == 2)
-		lyxerr[Debug::INFO] << "Opening document..." << endl;
-	else if ((*argc) > 2)
-		lyxerr[Debug::INFO] << "Opening documents..." << endl;
+	vector<string> files;
 
-	Buffer * last_loaded = 0;
-
-	for (int argi = (*argc) - 1; argi >= 1; --argi) {
-		Buffer * loadb = bufferlist.loadLyXFile(argv[argi]);
-		if (loadb != 0) {
-			last_loaded = loadb;
-		}
+	for (int argi = argc - 1; argi >= 1; --argi) {
+		files.push_back(argv[argi]);
 	}
 
 	if (first_start) {
-		string const splash =
-			i18nLibFileSearch("examples", "splash.lyx");
-		lyxerr[Debug::INIT] << "Opening splash document "
-			       << splash << "..." << endl;
-		Buffer * loadb = bufferlist.loadLyXFile(splash);
-		if (loadb != 0) {
-			last_loaded = loadb;
-		}
+		files.push_back(i18nLibFileSearch("examples", "splash.lyx"));
 	}
-
-	if (last_loaded != 0) {
-		lyxerr[Debug::INIT] << "Yes we loaded some files." << endl;
-		if (lyxrc.use_gui)
-			lyxGUI->regBuf(last_loaded);
-	}
-
+ 
+#if 0 // FIXME: GUII
 	// Execute batch commands if available
 	if (!batch_command.empty()) {
-		lyxerr << "About to handle -x '"
+		lyxerr[Debug::INIT] << "About to handle -x '"
 		       << batch_command << "'" << endl;
 
 		// no buffer loaded, create one
@@ -156,27 +132,20 @@ LyX::LyX(int * argc, char * argv[])
 		bool success = false;
  
 		// try to dispatch to last loaded buffer first
-		bool dispatched	= last_loaded->dispatch(batch_command, &success);
+		bool const dispatched = last_loaded->dispatch(batch_command, &success);
 
-		// if this was successful, return.
-		// Maybe we could do something more clever than aborting...
+		// if this was successful, finish
 		if (dispatched) {
 			QuitLyX();
 			exit(!success);
 		}
-
-		// otherwise, let the GUI handle the batch command
-		lyxGUI->regBuf(last_loaded);
-		lyxGUI->getLyXView()->getLyXFunc()->verboseDispatch(batch_command, false);
-
-		// fall through...
 	}
+#endif
 
-	// Let the ball begin...
-	lyxGUI->runTime();
+	lyx_gui::start(batch_command, files);
 }
 
-
+ 
 extern "C" {
 
 static
@@ -441,15 +410,6 @@ void LyX::init(bool gui)
 	if (!gui)
 		lyxrc.use_gui = false;
 
-	// Calculate screen dpi as average of x-DPI and y-DPI:
-	if (lyxrc.use_gui) {
-		lyxrc.dpi = GUIRunTime::getScreenDPI();
-		lyxerr[Debug::INIT] << "DPI setting detected to be "
-						<< lyxrc.dpi + 0.5 << endl;
-	} else {
-		lyxrc.dpi = 1; // I hope this is safe
-	}
-
 	//
 	// Read configuration files
 	//
@@ -503,11 +463,6 @@ void LyX::init(bool gui)
 	lastfiles.reset(new LastFiles(lyxrc.lastfiles,
 				      lyxrc.check_lastfiles,
 				      lyxrc.num_lastfiles));
-
-	// start up the lyxserver. (is this a bit early?) (Lgb)
-	// 0.12 this will be way to early, we need the GUI to be initialized
-	// first, so move it for now.
-	// lyxserver = new LyXServer;
 }
 
 
@@ -813,16 +768,16 @@ void commandLineVersionInfo()
 } // namespace anon
 
 
-bool LyX::easyParse(int * argc, char * argv[])
+bool LyX::easyParse(int & argc, char * argv[])
 {
 	bool gui = true;
 	int removeargs = 0; // used when options are read
-	for (int i = 1; i < *argc; ++i) {
+	for (int i = 1; i < argc; ++i) {
 		string arg = argv[i];
 
 		// Check for -dbg int
 		if (arg == "-dbg") {
-			if (i + 1 < *argc) {
+			if (i + 1 < argc) {
 				setDebuggingLevel(argv[i + 1]);
 				removeargs = 2;
 			} else {
@@ -834,7 +789,7 @@ bool LyX::easyParse(int * argc, char * argv[])
 		}
 		// Check for "-sysdir"
 		else if (arg == "-sysdir") {
-			if (i + 1 < *argc) {
+			if (i + 1 < argc) {
 				system_lyxdir = argv[i + 1];
 				removeargs = 2;
 			} else {
@@ -845,7 +800,7 @@ bool LyX::easyParse(int * argc, char * argv[])
 		}
 		// Check for "-userdir"
 		else if (arg == "-userdir") {
-			if (i + 1 < *argc) {
+			if (i + 1 < argc) {
 				user_lyxdir = argv[i + 1];
 				removeargs = 2;
 			} else {
@@ -873,7 +828,7 @@ bool LyX::easyParse(int * argc, char * argv[])
 
 		// Check for "-x": Execute commands
 		else if (arg == "-x" || arg == "--execute") {
-			if (i + 1 < *argc) {
+			if (i + 1 < argc) {
 				batch_command = string(argv[i + 1]);
 				removeargs = 2;
 			}
@@ -886,7 +841,7 @@ bool LyX::easyParse(int * argc, char * argv[])
 		}
 
 		else if (arg == "-e" || arg == "--export") {
-			if (i + 1 < *argc) {
+			if (i + 1 < argc) {
 				string type(argv[i+1]);
 				removeargs = 2;
 				batch_command = "buffer-export " + type;
@@ -899,7 +854,7 @@ bool LyX::easyParse(int * argc, char * argv[])
 			}
 		}
 		else if (arg == "-i" || arg == "--import") {
-			if (i + 1 < *argc) {
+			if (i + 1 < argc) {
 				if (!argv[i+2]) {
 					lyxerr << _("Missing filename for --import") << endl;
 					exit(1);
@@ -924,8 +879,8 @@ bool LyX::easyParse(int * argc, char * argv[])
 		if (removeargs > 0) {
 			// Now, remove used arguments by shifting
 			// the following ones removeargs places down.
-			(*argc) -= removeargs;
-			for (int j = i; j < (*argc); ++j)
+			argc -= removeargs;
+			for (int j = i; j < argc; ++j)
 				argv[j] = argv[j + removeargs];
 			--i; // After shift, check this number again.
 			removeargs = 0;

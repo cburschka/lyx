@@ -93,20 +93,26 @@ int XFormsView::atCloseMainFormCB(FL_FORM *, void *)
 }
 
 
-void XFormsView::setPosition(int x, int y)
+void XFormsView::show(int x, int y, string const & title)
 {
-	fl_set_form_position(getForm(), x, y);
-}
-
-
-void XFormsView::show(int place, int border, string const & title)
-{
-	fl_set_form_minsize(getForm(), getForm()->w, getForm()->h);
-	fl_show_form(getForm(), place, border, title.c_str());
+	FL_FORM * form = getForm();
+ 
+	fl_set_form_minsize(form, form->w, form->h);
+ 
+	int placement = FL_PLACE_CENTER | FL_FREE_SIZE;
+ 
+	// Did we get a valid geometry position ?
+	if (x >= 0 && y >= 0) {
+		fl_set_form_position(form, x, y);
+		placement = FL_PLACE_POSITION;
+	}
+ 
+	fl_show_form(form, placement, FL_FULLBORDER, title.c_str());
+ 
 	getLyXFunc()->initMiniBuffer();
 #if FL_VERSION < 1 && (FL_REVISION < 89 || (FL_REVISION == 89 && FL_FIXLEVEL < 5))
-	InitLyXLookup(fl_get_display(), getForm()->window);
-#endif
+	InitLyXLookup(fl_get_display(), form_->window);
+#endif 
 }
 
 

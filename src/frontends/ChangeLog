@@ -5,6 +5,15 @@
 
 2002-06-12  John Levon  <moz@compsoc.man.ac.uk>
 
+	* GUIRunTime.h: remove in favour of ...
+
+	* Makefile.am:
+	* lyx_gui.h: ... namespace for GUI start up 
+ 
+	* LyXView.h: remove init(),show(),setPosition() 
+ 
+2002-06-12  John Levon  <moz@compsoc.man.ac.uk>
+
 	* Menubar.C:
 	* Timeout.h:
 	* Toolbar.C:

@@ -136,8 +136,6 @@ lyx_SOURCES = \
 	lengthcommon.h \
 	lyx_cb.C \
 	lyx_cb.h \
-	lyx_gui.C \
-	lyx_gui.h \
 	lyx_main.C \
 	lyx_main.h \
 	lyx_sty.C \
@@ -214,15 +212,14 @@ lyx_SOURCES = \
 	vspace.C \
 	vspace.h
 
-lyx_main.o: lyx_main.C lyx_main.h config.h version.h lyx_gui.h \
+lyx_main.o: lyx_main.C lyx_main.h config.h version.h \
 	lyxrc.h support/path.h support/filetools.h \
 	bufferlist.h debug.h support/FileInfo.h lastfiles.h intl.h \
 	lyxserver.h layout.h gettext.h kbmap.h commandtags.h language.h
 	$(CXXCOMPILE) -DLYX_DIR=\"$(pkgdatadir)\" \
 	  -DTOP_SRCDIR=\"$(top_srcdir)\" -c $(top_srcdir)/src/lyx_main.C
 
-main.o: main.C config.h lyx_main.h gettext.h LString.h support/filetools.h \
-	support/os.h frontends/GUIRunTime.h
+main.o: main.C config.h lyx_main.h gettext.h LString.h support/filetools.h support/os.h
 	$(CXXCOMPILE) -DLOCALEDIR=\"$(localedir)\" -c $(top_srcdir)/src/main.C
 
 dist-hook:

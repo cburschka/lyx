@@ -1,5 +1,15 @@
 2002-06-12  John Levon  <moz@compsoc.man.ac.uk>
 
+	* Makefile.am:
+	* lyx_gui.h:
+	* lyx_gui.C: move to frontends/
+ 
+	* main.C:
+	* lyx_main.h:
+	* lyx_main.C: changes from above
+ 
+2002-06-12  John Levon  <moz@compsoc.man.ac.uk>
+
 	* intl.C:
 	* intl.h:
 	* kbmap.C:

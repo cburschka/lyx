@@ -1,30 +1,22 @@
-/* This file is part of
- * ======================================================
+/**
+ * \file main.C
+ * Copyright 2002 the LyX Team
+ * Read the file COPYING
  *
- *           LyX, The Document Processor
- *
- *	    Copyright 1995 Matthias Ettrich
- *          Copyright 1995-2001 The LyX Team.
- *
- * ====================================================== */
+ * \author unknown
+ */
 
 #include <config.h>
 
 #include "lyx_main.h"
 #include "gettext.h"
 #include "LString.h"
-#include "lyx_gui.h"
 #include "support/filetools.h"
 #include "support/os.h"
-#include "frontends/GUIRunTime.h"
-
-
+ 
 int main(int argc, char * argv[])
 {
 	os::init(&argc, &argv);
-	int const val = GUIRunTime::initApplication(argc, argv);
-	if (val)
-		return val;
 
 	// lyx_localedir is used by gettext_init() is we have
 	//   i18n support built-in
@@ -36,6 +28,6 @@ int main(int argc, char * argv[])
 	locale_init();
 	gettext_init(lyx_localedir);
 
-	LyX lyx(&argc, argv);
-	return 0; // SUCCESS
+	LyX lyx(argc, argv);
+	return 0;
 }
