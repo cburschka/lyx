@@ -90,26 +90,26 @@ void FormGraphics::build()
 	bcview().setCancel(dialog_->button_close);
 	bcview().setRestore(dialog_->button_restore);
 
-	// the file section
+	// The file section.
 	file_.reset(build_graphics_file(this));
 
-	// disable for read-only documents
+	// Disable for read-only documents.
 	bcview().addReadOnly(file_->button_browse);
 	bcview().addReadOnly(file_->check_aspectratio);
 	bcview().addReadOnly(file_->check_draft);
 	bcview().addReadOnly(file_->check_nounzip);
 
-	// check validity of "length + unit" input
+	// Check validity of "length + unit" input.
 	addCheckedGlueLength(bcview(), file_->input_width);
 	addCheckedGlueLength(bcview(), file_->input_height);
 
-	// trigger an input event for cut&paste with middle mouse button.
+	// Trigger an input event for cut&paste with middle mouse button.
 	setPrehandler(file_->input_filename);
 	setPrehandler(file_->input_lyxscale);
 	setPrehandler(file_->input_width);
 	setPrehandler(file_->input_height);
 
-	// for activate ok/apply immediately upon input
+	// Activate ok/apply immediately upon input.
 	fl_set_input_return(file_->input_filename, FL_RETURN_CHANGED);
 	fl_set_input_return(file_->input_lyxscale, FL_RETURN_CHANGED);
 	fl_set_input_return(file_->input_width, FL_RETURN_CHANGED);
@@ -118,7 +118,7 @@ void FormGraphics::build()
 	fl_set_input_maxchars(file_->input_filename, FILENAME_MAXCHARS);
 	fl_set_input_filter(file_->input_lyxscale, fl_unsigned_int_filter);
 
-	// width default is scaling: use unsigned float filter
+	// Width default is scaling: use unsigned float filter.
 	fl_set_input_filter(file_->input_width, fl_unsigned_float_filter);
 	fl_set_input_maxchars(file_->input_height, SIZE_MAXDIGITS);
 

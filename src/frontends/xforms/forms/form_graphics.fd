@@ -202,7 +202,7 @@ argument: 0
 --------------------
 class: FL_LABELFRAME
 type: ENGRAVED_FRAME
-box: 5 55 385 60
+box: 5 55 385 55
 boxtype: FL_NO_BOX
 colors: FL_BLACK FL_COL1
 alignment: FL_ALIGN_TOP_LEFT
@@ -369,7 +369,7 @@ boxtype: FL_FLAT_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_CENTER|FL_ALIGN_INSIDE
 style: FL_NORMAL_STYLE
-size: FL_MEDIUM_SIZE
+size: FL_NORMAL_SIZE
 lcol: FL_BLACK
 label: %
 shortcut: 
