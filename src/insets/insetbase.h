@@ -125,8 +125,6 @@ public:
 	virtual bool isActive() const { return nargs() > 0; }
 	/// Where should we go when we press the up or down cursor key?
 	virtual bool idxUpDown(LCursor & cur, bool up) const;
-	/// Where should we go when we press the up or down cursor key?
-	virtual bool idxUpDown2(LCursor & cur, bool up) const;
 	/// Move one cell to the left
 	virtual bool idxLeft(LCursor &) const { return false; }
 	/// Move one cell to the right

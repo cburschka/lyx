@@ -176,12 +176,6 @@ bool InsetBase::idxUpDown(LCursor &, bool) const
 }
 
 
-bool InsetBase::idxUpDown2(LCursor &, bool) const
-{
-	return false;
-}
-
-
 int InsetBase::plaintext(Buffer const &,
 	std::ostream &, OutputParams const &) const
 {

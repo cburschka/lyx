@@ -1,3 +1,7 @@
+2004-12-03  Lars Gullik Bjonnes  <larsbj@gullik.net>
+
+	* cursor.C (goUpDown): remove call to idxUpDown2
+
 2004-12-02  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* tabular.[Ch]: use size_t-like types for cell, row and column
@@ -20,7 +24,7 @@
 2004-11-29  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* broken_headers.h: remove
-	
+
 	* Makefile.am (lyx_SOURCES): remove broken_headers.h
 
 2004-11-24  Alfredo Braunstein  <abraunst@lyx.org>
@@ -36,7 +40,7 @@
 	(workAreaDispatch): adapt to new coord scheme
 	(redoCurrentBuffer): remove
 
-	* FontIterator.[Ch]: Use Paragraph & instead of pit_type 
+	* FontIterator.[Ch]: Use Paragraph & instead of pit_type
 
 	* bufferview_funcs.[Ch]: introduce coordOffset, getPos, status,
 	CurStatus enum.
@@ -70,8 +74,8 @@
 	in insets and LyXText, draw two off-screen paragraphs using
 	NullPainter, and adapt to new coord scheme
 
-	* text.C: 
-	* text2.C: 
+	* text.C:
+	* text2.C:
 	* text3.C: adapt lfun handlers to the new coord scheme, which
 	means: there's only guaranteed coord information for onscreen pars
 	plus one above and one below. This implies that one can do search

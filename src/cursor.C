@@ -124,7 +124,7 @@ namespace {
 		CursorSlice bottom = cursor[0];
 		LyXText * text = bottom.text();
 		BOOST_ASSERT(text);
-		
+
 		DocIterator it = doc_iterator_begin(bottom.inset());
 		DocIterator const et = doc_iterator_end(bottom.inset());
 
@@ -165,7 +165,7 @@ namespace {
 } // namespace anon
 
 
-// be careful: this is called from the bv's constructor, too, so 
+// be careful: this is called from the bv's constructor, too, so
 // bv functions are not yet available!
 LCursor::LCursor(BufferView & bv)
 	: DocIterator(), bv_(&bv), anchor_(), x_target_(-1),
@@ -979,10 +979,6 @@ bool LCursor::goUpDown(bool up)
 			}
 		}
 	}
-
-	// try current cell for e.g. text insets
-	if (inset().idxUpDown2(*this, up))
-		return true;
 
 	//xarray().boundingBox(xlow, xhigh, ylow, yhigh);
 	//if (up)
