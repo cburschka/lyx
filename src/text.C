@@ -30,6 +30,7 @@
 #include "language.h"
 #include "ParagraphParameters.h"
 #include "undo_funcs.h"
+#include "text_funcs.h"
 #include "WordLangTuple.h"
 #include "paragraph_funcs.h"
 #include "rowpainter.h"
@@ -49,7 +50,10 @@ using std::max;
 using std::min;
 using std::endl;
 using std::pair;
+
 using lyx::pos_type;
+using lyx::word_location;
+
 using namespace bv_funcs;
 
 /// top, right, bottom pixel margin
@@ -1976,27 +1980,8 @@ void LyXText::prepareToPrint(RowList::iterator rit, float & x,
 
 void LyXText::cursorRightOneWord()
 {
-	// treat floats, HFills and Insets as words
-	ParagraphList::iterator pit = cursor.par();
-	pos_type pos = cursor.pos();
-
-	// CHECK See comment on top of text.C
-
-	if (pos == pit->size()
-	    && boost::next(pit) != ownerParagraphs().end()) {
-		++pit;
-		pos = 0;
-	} else {
-		// Skip through initial nonword stuff.
-		while (pos < pit->size() && !pit->isWord(pos)) {
-			++pos;
-		}
-		// Advance through word.
-		while (pos < pit->size() && pit->isWord(pos)) {
-			++pos;
-		}
-	}
-	setCursor(pit, pos);
+	::cursorRightOneWord(cursor, ownerParagraphs());
+	setCursor(cursor.par(), cursor.pos());
 }
 
 
@@ -2005,102 +1990,16 @@ void LyXText::cursorRightOneWord()
 void LyXText::cursorLeftOneWord()
 {
 	LyXCursor tmpcursor = cursor;
-	cursorLeftOneWord(tmpcursor);
+	::cursorLeftOneWord(tmpcursor, ownerParagraphs());
 	setCursor(tmpcursor.par(), tmpcursor.pos());
-}
-
-
-void LyXText::cursorLeftOneWord(LyXCursor & cur)
-{
-	// treat HFills, floats and Insets as words
-
-	ParagraphList::iterator pit = cursor.par();
-	pos_type pos = cursor.pos();
-
-	while (pos &&
-	       (pit->isSeparator(pos - 1) ||
-		pit->isKomma(pos - 1) ||
-		pit->isNewline(pos - 1)) &&
-	       !(pit->isHfill(pos - 1) ||
-		 pit->isInset(pos - 1)))
-		--pos;
-
-	if (pos &&
-	    (pit->isInset(pos - 1) ||
-	     pit->isHfill(pos - 1))) {
-		--pos;
-	} else if (!pos) {
-		if (pit != ownerParagraphs().begin()) {
-			--pit;
-			pos = pit->size();
-		}
-	} else {		// Here, cur != 0
-		while (pos > 0 &&
-		       pit->isWord(pos - 1))
-			--pos;
-	}
-
-	cur.par(pit);
-	cur.pos(pos);
-}
-
-
-// Select current word. This depends on behaviour of
-// CursorLeftOneWord(), so it is patched as well.
-void LyXText::getWord(LyXCursor & from, LyXCursor & to,
-		      word_location const loc)
-{
-	// first put the cursor where we wana start to select the word
-	from = cursor;
-	switch (loc) {
-	case WHOLE_WORD_STRICT:
-		if (cursor.pos() == 0 || cursor.pos() == cursor.par()->size()
-		    || cursor.par()->isSeparator(cursor.pos())
-		    || cursor.par()->isKomma(cursor.pos())
-		    || cursor.par()->isNewline(cursor.pos())
-		    || cursor.par()->isSeparator(cursor.pos() - 1)
-		    || cursor.par()->isKomma(cursor.pos() - 1)
-		    || cursor.par()->isNewline(cursor.pos() - 1)) {
-			to = from;
-			return;
-		}
-		// no break here, we go to the next
-
-	case WHOLE_WORD:
-		// Move cursor to the beginning, when not already there.
-		if (from.pos() && !from.par()->isSeparator(from.pos() - 1)
-		    && !(from.par()->isKomma(from.pos() - 1)
-			 || from.par()->isNewline(from.pos() - 1)))
-			cursorLeftOneWord(from);
-		break;
-	case PREVIOUS_WORD:
-		// always move the cursor to the beginning of previous word
-		cursorLeftOneWord(from);
-		break;
-	case NEXT_WORD:
-		lyxerr << "LyXText::getWord: NEXT_WORD not implemented yet\n";
-		break;
-	case PARTIAL_WORD:
-		break;
-	}
-	to = from;
-	while (to.pos() < to.par()->size()
-	       && !to.par()->isSeparator(to.pos())
-	       && !to.par()->isKomma(to.pos())
-	       && !to.par()->isNewline(to.pos())
-	       && !to.par()->isHfill(to.pos())
-	       && !to.par()->isInset(to.pos()))
-	{
-		to.pos(to.pos() + 1);
-	}
 }
 
 
 void LyXText::selectWord(word_location loc)
 {
-	LyXCursor from;
+	LyXCursor from = cursor;
 	LyXCursor to;
-	getWord(from, to, loc);
+	::getWord(from, to, loc, ownerParagraphs());
 	if (cursor != from)
 		setCursor(from.par(), from.pos());
 	if (to == from)
@@ -2358,7 +2257,8 @@ void LyXText::changeCase(LyXText::TextCase action)
 		from = selection.start;
 		to = selection.end;
 	} else {
-		getWord(from, to, PARTIAL_WORD);
+		from = cursor;
+		::getWord(from, to, lyx::PARTIAL_WORD, ownerParagraphs());
 		setCursor(to.par(), to.pos() + 1);
 	}
 

@@ -17,9 +17,25 @@
 
 #include <config.h>
 
-class LyXText;
-class LyXCursor;
+#include "support/types.h"
 
-void transposeChars(LyXText & text, LyXCursor const & cursor);
+class LyXCursor;
+class ParagraphList;
+
+
+// do no use LyXText or BufferView here
+
+
+///
+bool transposeChars(LyXCursor const & cursor);
+///
+void cursorLeftOneWord(LyXCursor &, ParagraphList const &);
+///
+void cursorRightOneWord(LyXCursor &, ParagraphList const &);
+
+// Select current word. This depends on behaviour of
+// CursorLeftOneWord(), so it is patched as well.
+void getWord(LyXCursor & from, LyXCursor & to, lyx::word_location const loc,
+	ParagraphList const & pars);
 
 #endif // TEXT_FUNCS_H

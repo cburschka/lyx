@@ -16,6 +16,9 @@
 #ifndef TEXTCURSOR_H
 #define TEXTCURSOR_H
 
+// Do not even think of forward declaring LyXText/BufferView etc here!
+// If you need Paragraph proper, go to text_func.h
+
 /** The cursor.
 	Later this variable has to be removed. There should be now internal
 	cursor in a text (and thus not in a buffer). By keeping this it is

@@ -54,21 +54,6 @@ public:
 		REFRESH_AREA = 2
 	};
 
-	///
-	enum word_location {
-		// the word around the cursor, only if the cursor is
-		//not at a boundary
-		WHOLE_WORD_STRICT,
-		// the word around the cursor
-		WHOLE_WORD,
-		/// the word begining from the cursor position
-		PARTIAL_WORD,
-		/// the word around the cursor or before the cursor
-		PREVIOUS_WORD,
-		/// the next word (not yet used)
-		NEXT_WORD
-	};
-
 	/// Constructor
 	LyXText(BufferView *);
 	/// sets inset as owner
@@ -279,9 +264,9 @@ public:
 	void clearSelection();
 
 	/// select the word we need depending on word_location
-	void getWord(LyXCursor & from, LyXCursor & to, word_location const);
+	void getWord(LyXCursor & from, LyXCursor & to, lyx::word_location const);
 	/// just selects the word the cursor is in
-	void selectWord(word_location loc);
+	void selectWord(lyx::word_location loc);
 	/// returns the inset at cursor (if it exists), 0 otherwise
 	Inset * getInset() const;
 
@@ -362,7 +347,7 @@ public:
 	///
 	void backspace();
 	///
-	bool selectWordWhenUnderCursor(word_location);
+	bool selectWordWhenUnderCursor(lyx::word_location);
 	///
 	enum TextCase {
 		///
@@ -451,8 +436,6 @@ public:
 private:
 	///
 	mutable RowList rowlist_;
-	///
-	void cursorLeftOneWord(LyXCursor &);
 
 	///
 	float getCursorX(RowList::iterator rit, lyx::pos_type pos,

@@ -590,9 +590,9 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 
 	case LFUN_WORDSEL: {
 		update();
-		LyXCursor cur1;
+		LyXCursor cur1 = cursor;
 		LyXCursor cur2;
-		getWord(cur1, cur2, WHOLE_WORD);
+		::getWord(cur1, cur2, lyx::WHOLE_WORD, ownerParagraphs());
 		setCursor(cur1.par(), cur1.pos());
 		bv->beforeChange(this);
 		setCursor(cur2.par(), cur2.pos());
@@ -1018,7 +1018,9 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 
 	case LFUN_TRANSPOSE_CHARS:
 		update();
-		transposeChars(*this, cursor);
+		setUndo(bv, Undo::FINISH, cursor.par());
+		if (transposeChars(cursor))
+			checkParagraph(cursor.par(), cursor.pos());
 		if (inset_owner)
 			bv->updateInset(inset_owner);
 		update();
@@ -1268,10 +1270,10 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 		if (cmd.button() == mouse_button::button1) {
 			if (!isInInset()) {
 				bv->screen().toggleSelection(this, bv);
-				selectWord(LyXText::WHOLE_WORD_STRICT);
+				selectWord(lyx::WHOLE_WORD_STRICT);
 				bv->screen().toggleSelection(this, bv, false);
 			} else {
-				selectWord(LyXText::WHOLE_WORD_STRICT);
+				selectWord(lyx::WHOLE_WORD_STRICT);
 			}
 			update();
 			bv->haveSelection(selection.set());

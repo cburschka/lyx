@@ -1,3 +1,14 @@
+
+2003-07-01  André Pönitz  <poenitz@gmx.net>
+
+	* text.C:
+	* text2.C:
+	* text3.C:
+	* text_funcs.[Ch]:
+	* textcursor.h:
+	* lyxtext.h: shuffle pure paragraph/cursor related cursor movement from
+	  text*.C to text_func.C
+
 2003-07-01  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* introduce namespace lyx::support

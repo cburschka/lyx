@@ -70,6 +70,21 @@ namespace lyx
 
 #endif
 
+	///
+	enum word_location {
+		// the word around the cursor, only if the cursor is
+		//not at a boundary
+		WHOLE_WORD_STRICT,
+		// the word around the cursor
+		WHOLE_WORD,
+		/// the word begining from the cursor position
+		PARTIAL_WORD,
+		/// the word around the cursor or before the cursor
+		PREVIOUS_WORD,
+		/// the next word (not yet used)
+		NEXT_WORD
+	};
+
 }
 
 #endif // LYX_TYPES_H

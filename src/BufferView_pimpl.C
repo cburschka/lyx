@@ -1259,7 +1259,7 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev_in)
 			// FIXME
 			if (arg.size() > 100 || arg.empty()) {
 				// Get word or selection
-				bv_->getLyXText()->selectWordWhenUnderCursor(LyXText::WHOLE_WORD);
+				bv_->getLyXText()->selectWordWhenUnderCursor(lyx::WHOLE_WORD);
 				arg = bv_->getLyXText()->selectionAsString(buffer_, false);
 				// FIXME: where is getLyXText()->unselect(bv_) ?
 			}
