@@ -297,6 +297,7 @@ enum kb_action {
 	LFUN_DIALOG_HIDE,
 	LFUN_DIALOG_DISCONNECT_INSET,
 	LFUN_INSET_APPLY,
+	LFUN_INSET_MODIFY,
 	LFUN_LASTACTION  /* this marks the end of the table */
 };
 

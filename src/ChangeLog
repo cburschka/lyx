@@ -1,3 +1,11 @@
+2003-03-04  Angus Leeming  <leeming@lyx.org>
+
+	* commandtags.h:
+	* LyXAction.C: new LFUN_INSET_MODIFY.
+
+	* BufferView_pimpl.C (dispatch): if an inset is found to be open
+	on LFUN_INSET_APPLY, pass LFUN_INSET_MODIFY to its localDispatch.
+
 2003-03-04  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* several files: ws changes only

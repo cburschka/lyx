@@ -67,7 +67,7 @@ int InsetCommand::docbook(Buffer const *, ostream &, bool) const
 
 dispatch_result InsetCommand::localDispatch(FuncRequest const & cmd)
 {
-	if (cmd.action != LFUN_INSET_APPLY)
+	if (cmd.action != LFUN_INSET_MODIFY)
 		return UNDISPATCHED;
 
 	InsetCommandParams p;

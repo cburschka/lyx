@@ -1,3 +1,12 @@
+2003-03-04  Angus Leeming  <leeming@lyx.org>
+
+	* insetbibitem.C (localDispatch):
+	* insetbibtex.C (localDispatch):
+	* insetcommand.C (localDispatch):
+	* insetert.C (localDispatch):
+	* insetlabel.C (localDispatch):
+	handle LFUN_INSET_MODIFY, not LFUN_INSET_APPLY.
+
 2003-03-04  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* insettext.C (latex): adjust for ParagraphList::iterator

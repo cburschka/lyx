@@ -133,7 +133,7 @@ int RefInset::docbook(std::ostream & os, bool) const
 
 dispatch_result RefInset::localDispatch(FuncRequest const & cmd)
 {
-	if (cmd.action != LFUN_INSET_APPLY || cmd.getArg(0) != "ref")
+	if (cmd.action != LFUN_INSET_MODIFY || cmd.getArg(0) != "ref")
 		return UNDISPATCHED;
 
 	MathArray ar;

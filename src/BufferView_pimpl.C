@@ -1178,14 +1178,14 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev_in)
 		string const name = ev.getArg(0);
 
 		InsetBase * base = owner_->getDialogs().getOpenInset(name);
-		Inset * inset = 0;
 		if (base) {
 			// This works both for 'original' and 'mathed' insets.
 			// Note that the localDispatch performs updateInset
 			// also.
-			base->localDispatch(ev);
+			FuncRequest fr(bv_, LFUN_INSET_MODIFY, ev.argument);
+			base->localDispatch(fr);
 		} else {
-			inset = createInset(ev);
+			Inset * inset = createInset(ev);
 			if (inset && insertInset(inset)) {
 				updateInset(inset, true);
 			} else {

@@ -806,16 +806,12 @@ dispatch_result InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 
 	case LFUN_INSET_APPLY: {
 		string const name = cmd.getArg(0);
-		if (name != "ref") {
-			result = UNDISPATCHED;
-			break;
-		}
-
 		InsetBase * base =
 			bv->owner()->getDialogs().getOpenInset(name);
 
 		if (base) {
-			result = base->localDispatch(cmd);
+			FuncRequest fr(bv, LFUN_INSET_MODIFY, cmd.argument);
+			result = base->localDispatch(fr);
 		} else {
 			// Turn 'argument' into a temporary RefInset.
 			MathArray ar;

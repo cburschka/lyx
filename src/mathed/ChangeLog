@@ -1,3 +1,11 @@
+2003-03-04  Angus Leeming  <leeming@lyx.org>
+
+	* formulabase.C (localDispatch): if an inset is found on
+	LFUN_INSET_APPLY, send LFUN_INSET_MODIFY to the inset's localDispatch.
+
+	* ref_inset.C (localDispatch): handle LFUN_INSET_MODIFY, not
+	LFUN_INSET_APPLY.
+
 2003-03-03  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* formulabase.h: adjust for boost 1.30.0

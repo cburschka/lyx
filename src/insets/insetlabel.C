@@ -54,7 +54,7 @@ void InsetLabel::edit(BufferView *, int, int, mouse_button::state)
 
 dispatch_result InsetLabel::localDispatch(FuncRequest const & cmd)
 {
-	if (cmd.action != LFUN_INSET_APPLY)
+	if (cmd.action != LFUN_INSET_MODIFY)
 		return UNDISPATCHED;
 
 	InsetCommandParams p;
@@ -64,8 +64,8 @@ dispatch_result InsetLabel::localDispatch(FuncRequest const & cmd)
 
 	bool clean = true;
 	if (view() && p.getContents() != params().getContents()) {
-		clean = view()->ChangeCitationsIfUnique(params().getContents(),
-							p.getContents());
+		clean = view()->ChangeRefsIfUnique(params().getContents(),
+						   p.getContents());
 	}
 
 	setParams(p);

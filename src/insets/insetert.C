@@ -442,7 +442,7 @@ int InsetERT::docbook(Buffer const *, ostream & os, bool) const
 
 Inset::RESULT InsetERT::localDispatch(FuncRequest const & cmd)
 {
-	Inset::RESULT result = DISPATCHED_NOUPDATE;
+	Inset::RESULT result = UNDISPATCHED;
 	BufferView * bv = cmd.view();
 
 	if (inset.paragraph()->empty()) {
@@ -450,33 +450,34 @@ Inset::RESULT InsetERT::localDispatch(FuncRequest const & cmd)
 	}
 
 	switch (cmd.action) {
-	case LFUN_INSET_APPLY: {
-		if (!bv)
-			return UNDISPATCHED;
-
+	case LFUN_INSET_MODIFY: {
 		InsetERT::ERTStatus status_;
 		InsetERTMailer::string2params(cmd.argument, status_);
 
 		status(bv, status_);
 		bv->updateInset(this, true);
-		return DISPATCHED;
+		result = DISPATCHED;
 	}
 	break;
 		
 	case LFUN_MOUSE_PRESS:
 		lfunMousePress(cmd);
-		return DISPATCHED;
+		result = DISPATCHED;
+		break;
 
 	case LFUN_MOUSE_MOTION:
 		lfunMouseMotion(cmd);
-		return DISPATCHED;
+		result = DISPATCHED;
+		break;
 
 	case LFUN_MOUSE_RELEASE:
 		lfunMouseRelease(cmd);
-		return DISPATCHED;
+		result = DISPATCHED;
+		break;
 
 	case LFUN_LAYOUT:
 		bv->owner()->setLayout(inset.paragraph()->layout()->name());
+		result = DISPATCHED_NOUPDATE;
 		break;
 
 	default:
