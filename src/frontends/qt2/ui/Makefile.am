@@ -31,6 +31,53 @@ QAskForTextDialog.h: QAskForTextDialog.ui
 QAskForTextDialog.C: QAskForTextDialog.h QAskForTextDialog.ui
 	$(UIC) -impl $^ | $(SED) '$(SEDREPLACETR);$(SEDREMOVEEMPTY)' > $@
 
+ClassModuleBase.h: ClassModuleBase.ui
+	$(UIC) $< -o $@
+ClassModuleBase.C: ClassModuleBase.h ClassModuleBase.ui
+	$(UIC) -impl $^ | $(SED) '$(SEDREPLACETR);$(SEDREMOVEEMPTY)' > $@
+
+BulletsModuleBase.h: BulletsModuleBase.ui
+	$(UIC) $< -o $@
+BulletsModuleBase.C: BulletsModuleBase.h BulletsModuleBase.ui
+	$(UIC) -impl $^ | $(SED) '$(SEDREPLACETR);$(SEDREMOVEEMPTY)' > $@
+
+PackagesModuleBase.h: PackagesModuleBase.ui
+	$(UIC) $< -o $@
+PackagesModuleBase.C: PackagesModuleBase.h PackagesModuleBase.ui
+	$(UIC) -impl $^ | $(SED) '$(SEDREPLACETR);$(SEDREMOVEEMPTY)' > $@
+
+PaperModuleBase.h: PaperModuleBase.ui
+	$(UIC) $< -o $@
+PaperModuleBase.C: PaperModuleBase.h PaperModuleBase.ui
+	$(UIC) -impl $^ | $(SED) '$(SEDREPLACETR);$(SEDREMOVEEMPTY)' > $@
+
+MarginsModuleBase.h: MarginsModuleBase.ui
+	$(UIC) $< -o $@
+MarginsModuleBase.C: MarginsModuleBase.h MarginsModuleBase.ui
+	$(UIC) -impl $^ | $(SED) '$(SEDREPLACETR);$(SEDREMOVEEMPTY)' > $@
+
+LanguageModuleBase.h: LanguageModuleBase.ui
+	$(UIC) $< -o $@
+LanguageModuleBase.C: LanguageModuleBase.h LanguageModuleBase.ui
+	$(UIC) -impl $^ | $(SED) '$(SEDREPLACETR);$(SEDREMOVEEMPTY)' > $@
+
+NumberingModuleBase.h: NumberingModuleBase.ui
+	$(UIC) $< -o $@
+NumberingModuleBase.C: NumberingModuleBase.h NumberingModuleBase.ui
+	$(UIC) -impl $^ | $(SED) '$(SEDREPLACETR);$(SEDREMOVEEMPTY)' > $@
+
+BiblioModuleBase.h: BiblioModuleBase.ui
+	$(UIC) $< -o $@
+BiblioModuleBase.C: BiblioModuleBase.h BiblioModuleBase.ui
+	$(UIC) -impl $^ | $(SED) '$(SEDREPLACETR);$(SEDREMOVEEMPTY)' > $@
+
+PreambleModuleBase.h: PreambleModuleBase.ui
+	$(UIC) $< -o $@
+PreambleModuleBase.C: PreambleModuleBase.h PreambleModuleBase.ui
+	$(UIC) -impl $^ | $(SED) '$(SEDREPLACETR);$(SEDREMOVEEMPTY)' > $@
+
+
+
 %Base.h: %.ui
 	$(UIC) $< -o $@
 %Base.C: %Base.h %.ui

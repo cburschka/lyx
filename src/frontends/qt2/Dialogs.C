@@ -49,6 +49,7 @@ Dialogs::Impl::Impl(LyXView & lv, Dialogs & d)
 	  bibtex(lv, d),
 	  character(lv, d),
 	  citation(lv, d),
+	  document(lv, d),
 	  error(lv, d),
 	  ert(lv, d),
 	  external(lv, d),

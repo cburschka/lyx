@@ -1,0 +1,244 @@
+<!DOCTYPE UI><UI>
+<class>BulletsModuleBase</class>
+<include location="global">config.h</include>
+<include location="local">gettext.h</include>
+<widget>
+    <class>QWidget</class>
+    <property stdset="1">
+        <name>name</name>
+        <cstring>BulletsModuleBase</cstring>
+    </property>
+    <property stdset="1">
+        <name>geometry</name>
+        <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>311</width>
+            <height>210</height>
+        </rect>
+    </property>
+    <property stdset="1">
+        <name>caption</name>
+        <string>Form3</string>
+    </property>
+    <property stdset="1">
+        <name>mouseTracking</name>
+        <bool>true</bool>
+    </property>
+    <grid>
+        <property stdset="1">
+            <name>margin</name>
+            <number>11</number>
+        </property>
+        <property stdset="1">
+            <name>spacing</name>
+            <number>6</number>
+        </property>
+        <widget row="1"  column="2" >
+            <class>QComboBox</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>bulletsize1CO</cstring>
+            </property>
+        </widget>
+        <widget row="1"  column="1" >
+            <class>QLineEdit</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>bullet1LE</cstring>
+            </property>
+            <property stdset="1">
+                <name>sizePolicy</name>
+                <sizepolicy>
+                    <hsizetype>3</hsizetype>
+                    <vsizetype>0</vsizetype>
+                </sizepolicy>
+            </property>
+        </widget>
+        <widget row="0"  column="2" >
+            <class>QLabel</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>sizeL</cstring>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string>Size:</string>
+            </property>
+        </widget>
+        <widget row="0"  column="1" >
+            <class>QLabel</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>latexL</cstring>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string>LaTeX:</string>
+            </property>
+        </widget>
+        <spacer row="6"  column="1" >
+            <property>
+                <name>name</name>
+                <cstring>Spacer25</cstring>
+            </property>
+            <property stdset="1">
+                <name>orientation</name>
+                <enum>Vertical</enum>
+            </property>
+            <property stdset="1">
+                <name>sizeType</name>
+                <enum>Expanding</enum>
+            </property>
+            <property>
+                <name>sizeHint</name>
+                <size>
+                    <width>20</width>
+                    <height>20</height>
+                </size>
+            </property>
+        </spacer>
+        <widget row="3"  column="2" >
+            <class>QComboBox</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>bulletsize3CO</cstring>
+            </property>
+        </widget>
+        <widget row="3"  column="1" >
+            <class>QLineEdit</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>bullet3LE</cstring>
+            </property>
+        </widget>
+        <widget row="4"  column="2" >
+            <class>QComboBox</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>bulletsize4CO</cstring>
+            </property>
+        </widget>
+        <widget row="4"  column="1" >
+            <class>QLineEdit</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>bullet4LE</cstring>
+            </property>
+        </widget>
+        <widget row="5"  column="2" >
+            <class>QComboBox</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>bulletsize5CO</cstring>
+            </property>
+        </widget>
+        <widget row="5"  column="1" >
+            <class>QLineEdit</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>bullet5LE</cstring>
+            </property>
+        </widget>
+        <widget row="2"  column="2" >
+            <class>QComboBox</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>bulletsize2CO</cstring>
+            </property>
+        </widget>
+        <widget row="2"  column="1" >
+            <class>QLineEdit</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>bullet2LE</cstring>
+            </property>
+        </widget>
+        <widget row="2"  column="0" >
+            <class>QToolButton</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>setbullet2TB</cstring>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string>Set Level 2:</string>
+            </property>
+            <property stdset="1">
+                <name>popupDelay</name>
+                <number>0</number>
+            </property>
+        </widget>
+        <widget row="3"  column="0" >
+            <class>QToolButton</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>setbullet3TB</cstring>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string>Set Level 3:</string>
+            </property>
+            <property stdset="1">
+                <name>popupDelay</name>
+                <number>0</number>
+            </property>
+        </widget>
+        <widget row="4"  column="0" >
+            <class>QToolButton</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>setbullet4TB</cstring>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string>Set Level 4:</string>
+            </property>
+            <property stdset="1">
+                <name>popupDelay</name>
+                <number>1</number>
+            </property>
+        </widget>
+        <widget row="5"  column="0" >
+            <class>QToolButton</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>setbullet5TB</cstring>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string>Set Level 5:</string>
+            </property>
+        </widget>
+        <widget row="1"  column="0" >
+            <class>QToolButton</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>setbullet1TB</cstring>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string>Set Level 1:</string>
+            </property>
+            <property stdset="1">
+                <name>popupDelay</name>
+                <number>0</number>
+            </property>
+        </widget>
+    </grid>
+</widget>
+<connections>
+    <connection>
+        <sender>setbullet1TB</sender>
+        <signal>pressed()</signal>
+        <receiver>BulletsModuleBase</receiver>
+        <slot>setLevel1()</slot>
+    </connection>
+    <slot access="public">setLevel1()</slot>
+    <slot access="public">setLevel2()</slot>
+    <slot access="public">setLevel3()</slot>
+    <slot access="public">setLevel4()</slot>
+    <slot access="public">setLevel5()</slot>
+    <slot access="public">updateBulletSet(int)</slot>
+</connections>
+</UI>

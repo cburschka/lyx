@@ -13,8 +13,8 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>225</width>
-            <height>395</height>
+            <width>407</width>
+            <height>454</height>
         </rect>
     </property>
     <property stdset="1">
@@ -25,7 +25,7 @@
         <name>sizeGripEnabled</name>
         <bool>true</bool>
     </property>
-    <vbox>
+    <grid>
         <property stdset="1">
             <name>margin</name>
             <number>11</number>
@@ -34,144 +34,7 @@
             <name>spacing</name>
             <number>6</number>
         </property>
-        <widget>
-            <class>QButtonGroup</class>
-            <property stdset="1">
-                <name>name</name>
-                <cstring>ButtonGroup1</cstring>
-            </property>
-            <property stdset="1">
-                <name>title</name>
-                <string>Print Destination</string>
-            </property>
-            <property>
-                <name>layoutSpacing</name>
-            </property>
-            <grid>
-                <property stdset="1">
-                    <name>margin</name>
-                    <number>11</number>
-                </property>
-                <property stdset="1">
-                    <name>spacing</name>
-                    <number>6</number>
-                </property>
-                <widget row="1"  column="1" >
-                    <class>QLineEdit</class>
-                    <property stdset="1">
-                        <name>name</name>
-                        <cstring>fileED</cstring>
-                    </property>
-                    <property stdset="1">
-                        <name>enabled</name>
-                        <bool>true</bool>
-                    </property>
-                    <property>
-                        <name>toolTip</name>
-                        <string>Send output to a file</string>
-                    </property>
-                </widget>
-                <widget row="2"  column="1" >
-                    <class>QLayoutWidget</class>
-                    <property stdset="1">
-                        <name>name</name>
-                        <cstring>Layout5</cstring>
-                    </property>
-                    <hbox>
-                        <property stdset="1">
-                            <name>margin</name>
-                            <number>0</number>
-                        </property>
-                        <property stdset="1">
-                            <name>spacing</name>
-                            <number>6</number>
-                        </property>
-                        <widget>
-                            <class>QPushButton</class>
-                            <property stdset="1">
-                                <name>name</name>
-                                <cstring>browsePB</cstring>
-                            </property>
-                            <property stdset="1">
-                                <name>enabled</name>
-                                <bool>true</bool>
-                            </property>
-                            <property stdset="1">
-                                <name>text</name>
-                                <string>&amp;Browse ...</string>
-                            </property>
-                        </widget>
-                        <spacer>
-                            <property>
-                                <name>name</name>
-                                <cstring>Spacer15</cstring>
-                            </property>
-                            <property stdset="1">
-                                <name>orientation</name>
-                                <enum>Horizontal</enum>
-                            </property>
-                            <property stdset="1">
-                                <name>sizeType</name>
-                                <enum>Expanding</enum>
-                            </property>
-                            <property>
-                                <name>sizeHint</name>
-                                <size>
-                                    <width>20</width>
-                                    <height>20</height>
-                                </size>
-                            </property>
-                        </spacer>
-                    </hbox>
-                </widget>
-                <widget row="0"  column="0" >
-                    <class>QRadioButton</class>
-                    <property stdset="1">
-                        <name>name</name>
-                        <cstring>printerRB</cstring>
-                    </property>
-                    <property stdset="1">
-                        <name>text</name>
-                        <string>P&amp;rinter</string>
-                    </property>
-                    <property stdset="1">
-                        <name>checked</name>
-                        <bool>true</bool>
-                    </property>
-                    <property>
-                        <name>toolTip</name>
-                        <string>Send output to the printer</string>
-                    </property>
-                </widget>
-                <widget row="0"  column="1" >
-                    <class>QLineEdit</class>
-                    <property stdset="1">
-                        <name>name</name>
-                        <cstring>printerED</cstring>
-                    </property>
-                    <property>
-                        <name>toolTip</name>
-                        <string>Send output to the given printer</string>
-                    </property>
-                </widget>
-                <widget row="1"  column="0" >
-                    <class>QRadioButton</class>
-                    <property stdset="1">
-                        <name>name</name>
-                        <cstring>fileRB</cstring>
-                    </property>
-                    <property stdset="1">
-                        <name>text</name>
-                        <string>&amp;File</string>
-                    </property>
-                    <property>
-                        <name>toolTip</name>
-                        <string>Send output to a file</string>
-                    </property>
-                </widget>
-            </grid>
-        </widget>
-        <widget>
+        <widget row="1"  column="0" >
             <class>QButtonGroup</class>
             <property stdset="1">
                 <name>name</name>
@@ -357,7 +220,7 @@
                 </widget>
             </vbox>
         </widget>
-        <widget>
+        <widget row="2"  column="0" >
             <class>QGroupBox</class>
             <property stdset="1">
                 <name>name</name>
@@ -437,7 +300,7 @@
                 </spacer>
             </hbox>
         </widget>
-        <widget>
+        <widget row="3"  column="0" >
             <class>QLayoutWidget</class>
             <property stdset="1">
                 <name>name</name>
@@ -501,7 +364,106 @@
                 </widget>
             </hbox>
         </widget>
-    </vbox>
+        <widget row="0"  column="0" >
+            <class>QButtonGroup</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>ButtonGroup1</cstring>
+            </property>
+            <property stdset="1">
+                <name>title</name>
+                <string>Print Destination</string>
+            </property>
+            <property>
+                <name>layoutSpacing</name>
+            </property>
+            <grid>
+                <property stdset="1">
+                    <name>margin</name>
+                    <number>11</number>
+                </property>
+                <property stdset="1">
+                    <name>spacing</name>
+                    <number>6</number>
+                </property>
+                <widget row="0"  column="0" >
+                    <class>QRadioButton</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>printerRB</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>text</name>
+                        <string>P&amp;rinter</string>
+                    </property>
+                    <property stdset="1">
+                        <name>checked</name>
+                        <bool>true</bool>
+                    </property>
+                    <property>
+                        <name>toolTip</name>
+                        <string>Send output to the printer</string>
+                    </property>
+                </widget>
+                <widget row="0"  column="1"  rowspan="1"  colspan="2" >
+                    <class>QLineEdit</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>printerED</cstring>
+                    </property>
+                    <property>
+                        <name>toolTip</name>
+                        <string>Send output to the given printer</string>
+                    </property>
+                </widget>
+                <widget row="1"  column="0" >
+                    <class>QRadioButton</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>fileRB</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>text</name>
+                        <string>&amp;File</string>
+                    </property>
+                    <property>
+                        <name>toolTip</name>
+                        <string>Send output to a file</string>
+                    </property>
+                </widget>
+                <widget row="1"  column="1" >
+                    <class>QLineEdit</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>fileED</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>enabled</name>
+                        <bool>true</bool>
+                    </property>
+                    <property>
+                        <name>toolTip</name>
+                        <string>Send output to a file</string>
+                    </property>
+                </widget>
+                <widget row="1"  column="2" >
+                    <class>QPushButton</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>browsePB</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>enabled</name>
+                        <bool>true</bool>
+                    </property>
+                    <property stdset="1">
+                        <name>text</name>
+                        <string>&amp;Browse ...</string>
+                    </property>
+                </widget>
+            </grid>
+        </widget>
+    </grid>
 </widget>
 <connections>
     <connection>

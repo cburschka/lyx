@@ -1,0 +1,44 @@
+<!DOCTYPE UI><UI>
+<class>PreambleModuleBase</class>
+<include location="global">config.h</include>
+<include location="local">gettext.h</include>
+<widget>
+    <class>QWidget</class>
+    <property stdset="1">
+        <name>name</name>
+        <cstring>PreambleModuleBase</cstring>
+    </property>
+    <property stdset="1">
+        <name>geometry</name>
+        <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>381</width>
+            <height>278</height>
+        </rect>
+    </property>
+    <property stdset="1">
+        <name>caption</name>
+        <string>Form1</string>
+    </property>
+    <grid>
+        <property stdset="1">
+            <name>margin</name>
+            <number>11</number>
+        </property>
+        <property stdset="1">
+            <name>spacing</name>
+            <number>6</number>
+        </property>
+        <widget row="0"  column="0" >
+            <class>QMultiLineEdit</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>preambleMLE</cstring>
+            </property>
+        </widget>
+    </grid>
+</widget>
+<connections>
+</connections>
+</UI>

@@ -21,6 +21,9 @@ nodist_libqt2moc_la_SOURCES = \
 	iconpalette_moc.C \
 	lengthcombo_moc.C \
 	qttableview_moc.C \
+	qgridview_moc.C \
+	QBrowseBox_moc.C \
+	BulletsModule_moc.C \
 	Toolbar_pimpl_moc.C \
 	QCommandBuffer_moc.C \
 	QCommandEdit_moc.C \

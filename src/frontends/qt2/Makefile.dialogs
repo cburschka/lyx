@@ -7,6 +7,7 @@ DIALOGS = \
 	QBibtex \
 	QCharacter \
 	QCitation \
+	QDocument \
 	QError \
 	QERT \
 	QExternal \
@@ -43,6 +44,8 @@ DIALOGSOURCES = \
 	QCharacter.C QCharacterDialog.C \
 	QCitation.h QCitationDialog.h \
 	QCitation.C QCitationDialog.C \
+	QDocument.h QDocumentDialog.h \
+	QDocument.C QDocumentDialog.C \
 	QDelimiterDialog.h QDelimiterDialog.C \
 	QError.h QErrorDialog.h \
 	QError.C QErrorDialog.C \
@@ -99,6 +102,7 @@ MOCDIALOGS = \
 	QBibtexDialog_moc.C \
 	QCharacterDialog_moc.C \
 	QCitationDialog_moc.C \
+	QDocumentDialog_moc.C \
 	QDelimiterDialog_moc.C \
 	QErrorDialog_moc.C \
 	QERTDialog_moc.C \
@@ -138,6 +142,8 @@ UIDIALOGS = \
 	QCharacterDialogBase.C \
 	QCitationDialogBase.h \
 	QCitationDialogBase.C \
+	QDocumentDialogBase.h \
+	QDocumentDialogBase.C \
 	QDelimiterDialogBase.h \
 	QDelimiterDialogBase.C \
 	QErrorDialogBase.C \
@@ -187,7 +193,16 @@ UIDIALOGS = \
 	QVCLogDialogBase.h \
 	QVCLogDialogBase.C \
 	QWrapDialogBase.h \
-	QWrapDialogBase.C
+	QWrapDialogBase.C \
+	ClassModuleBase.h ClassModuleBase.C \
+	PackagesModuleBase.h PackagesModuleBase.C \
+	PaperModuleBase.h PaperModuleBase.C \
+	MarginsModuleBase.h MarginsModuleBase.C \
+	LanguageModuleBase.h LanguageModuleBase.C \
+	NumberingModuleBase.h NumberingModuleBase.C \
+	BiblioModuleBase.h BiblioModuleBase.C \
+	PreambleModuleBase.h PreambleModuleBase.C \
+	BulletsModuleBase.h BulletsModuleBase.C
  
 UIMOCDIALOGS = \
 	QAboutDialogBase_moc.C \
@@ -196,6 +211,7 @@ UIMOCDIALOGS = \
 	QBibtexDialogBase_moc.C \
 	QCharacterDialogBase_moc.C \
 	QCitationDialogBase_moc.C \
+	QDocumentDialogBase_moc.C \
 	QDelimiterDialogBase_moc.C \
 	QErrorDialogBase_moc.C \
 	QERTDialogBase_moc.C \
@@ -220,4 +236,13 @@ UIMOCDIALOGS = \
 	QTocDialogBase_moc.C \
 	QURLDialogBase_moc.C \
 	QVCLogDialogBase_moc.C \
-	QWrapDialogBase_moc.C
+	QWrapDialogBase_moc.C \
+	ClassModuleBase_moc.C \
+	PackagesModuleBase_moc.C \
+	PaperModuleBase_moc.C \
+	MarginsModuleBase_moc.C \
+	LanguageModuleBase_moc.C \
+	NumberingModuleBase_moc.C \
+	BiblioModuleBase_moc.C \
+	PreambleModuleBase_moc.C \
+	BulletsModuleBase_moc.C

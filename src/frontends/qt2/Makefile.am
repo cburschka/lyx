@@ -18,6 +18,12 @@ include $(srcdir)/Makefile.dialogs
 
 libqt2_la_SOURCES = \
 	Alert_pimpl.C \
+	qgridview.h \
+	qgridview.cpp \
+	BulletsModule.C \
+	BulletsModule.h \
+	QBrowseBox.C \
+	QBrowseBox.h \
 	Dialogs.C \
 	Dialogs2.C \
 	Dialogs_impl.h \

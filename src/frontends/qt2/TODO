@@ -11,7 +11,11 @@ lyx_gui (qt)
  
 QDocument
 
-	- implement me. Need MVC (Edwin is on this)
+	- finalize bullets 
+	- buffer should update after apply
+	- set default unit if metric
+	- set new pagestuff on class change
+	- check
 
 qfont_loader
 

@@ -42,6 +42,8 @@ libcontrollers_la_SOURCES= \
 	ControlDialog.h \
 	ControlDialog_impl.C \
 	ControlDialog_impl.h \
+	ControlDocument.C \
+	ControlDocument.h \
 	ControlError.C \
 	ControlError.h \
 	ControlERT.C \

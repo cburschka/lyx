@@ -61,7 +61,9 @@ void Dialogs::createCitation(string const & s)
 
 
 void Dialogs::showDocument()
-{}
+{
+	pimpl_->document.controller().show();
+}
 
 
 void Dialogs::showError(InsetError * ie)
@@ -169,7 +171,7 @@ void Dialogs::updateParagraph()
 
 void Dialogs::showPreamble()
 {
-	pimpl_->preamble.controller().show();
+	pimpl_->document.controller().showPreamble();
 }
 
 

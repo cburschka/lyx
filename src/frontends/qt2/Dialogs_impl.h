@@ -23,6 +23,7 @@
 #include "ControlBibtex.h"
 #include "ControlCharacter.h"
 #include "ControlCitation.h"
+#include "ControlDocument.h"
 #include "ControlError.h"
 #include "ControlERT.h"
 #include "ControlExternal.h"
@@ -59,7 +60,8 @@
 #include "QCharacterDialog.h"
 #include "QCitation.h"
 #include "QCitationDialog.h"
-//#include "QDocument.h"
+#include "QDocument.h"
+#include "QDocumentDialog.h"
 #include "QError.h"
 #include "QErrorDialog.h"
 #include "QERT.h"
@@ -138,6 +140,9 @@ CharacterDialog;
 
 typedef GUI<ControlCitation, QCitation, NoRepeatedApplyReadOnlyPolicy, Qt2BC>
 CitationDialog;
+
+typedef GUI<ControlDocument, QDocument, NoRepeatedApplyReadOnlyPolicy, Qt2BC>
+DocumentDialog;
 
 typedef GUI<ControlError, QError, OkCancelPolicy, Qt2BC>
 ErrorDialog;
@@ -219,6 +224,7 @@ struct Dialogs::Impl {
         BibtexDialog        bibtex;
         CharacterDialog     character;
 	CitationDialog      citation;
+	DocumentDialog      document;
         ErrorDialog         error;
 	ERTDialog           ert;
         ExternalDialog      external;
