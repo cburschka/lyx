@@ -39,13 +39,16 @@ public:
 	};
 
 	///
+	explicit
 	LyxArrayBase(int size = ARRAY_STEP);
 	///
 	LyxArrayBase(LyxArrayBase const &);
 	///
 	~LyxArrayBase();
    
-	
+	/// Constructs a new array with dx elements starting at pos 
+	LyxArrayBase & operator= (LyxArrayBase const &); 
+
 	///
 	int empty() const { return (last == 0); }
    
@@ -81,9 +84,6 @@ public:
 
 	/// Constructs a new array with dx elements starting at pos 
 	byte operator[](const int);
-
-	/// Constructs a new array with dx elements starting at pos 
-	LyxArrayBase & operator= (LyxArrayBase const &); 
 
 protected:
 	///

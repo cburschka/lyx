@@ -34,6 +34,7 @@ public:
     ///
     static int const TEXT_TO_BOTTOM_OFFSET = 2;
     ///
+	explicit
     InsetCollapsable(Buffer *);
     ///
     ~InsetCollapsable() {}

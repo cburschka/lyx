@@ -12,7 +12,6 @@
 #endif
 
 #include <iosfwd>
-#include <fstream>
 
 #include "LString.h"
 
@@ -34,7 +33,9 @@ class LyXLex {
 public:
 	///
 	LyXLex (keyword_item *, int);
-
+	///
+	~LyXLex();
+	
 	/// Lex basic codes
 	enum {
 		///
@@ -54,9 +55,10 @@ public:
 	///
 	void setStream(std::istream & i);
 	///
-	std::istream & getStream() { return is; }
+	std::istream & getStream();
 	/// Danger! Don't use it unless you know what you are doing.
-	void setLineNo(int l) { lineno = l; }
+	void setLineNo(int l);
+	
 	/// returns a lex code
 	int lex();
 
@@ -71,7 +73,8 @@ public:
 	bool nextToken();
 	
 	/// 
-	int GetLineNo() const { return lineno; }
+	int GetLineNo() const;
+	
 	///
 	int GetInteger() const;
 	///
@@ -79,7 +82,7 @@ public:
 	///
 	float GetFloat() const;
 	///
-	string GetString() const;
+	string const GetString() const;
 	
 	/// get a long string, ended by the tag `endtag'
 	string getLongString(string const & endtag);
@@ -92,7 +95,7 @@ public:
 	int CheckToken(char const * str[], int print_error);
 
 	///
-	char const * text() const { return &buff[0]; }
+	char const * text() const;
 
 	/** Pushes a token list on a stack and replaces it with a new one.
 	 */
@@ -113,56 +116,10 @@ public:
 	  Prints the current token table on the supplied ostream.
 	  */
 	void printTable(std::ostream &);
-protected:
-	///
-	enum {
-		///
-		LEX_MAX_BUFF = 2048
-	};
-
-	///
-	struct pushed_table {
-		///
-		pushed_table(){
-			next= 0;
-			table_elem= 0;
-		}
-		///
-		pushed_table * next;
-		///
-		keyword_item * table_elem;
-		///
-		int table_siz;
-	};
-
-	/// fb__ is only used to open files, the stream is accessed through is
-	std::filebuf fb__;
-	/// the stream that we use.
-	std::istream is;
-	/// 
-	string name;
-	///
-	int lineno;
-	///
-	keyword_item * table;
-	///
-	int no_items;
-	///
-	char buff[LEX_MAX_BUFF];
-	///
-	pushed_table * pushed;
-	///
-	int search_kw(char const * const) const;
-	///
-	short status;
+private:
+	struct Pimpl;
+	Pimpl * pimpl_;
 };
-
-
-inline
-bool LyXLex::IsOK() const
-{
-	return is.good();
-}
 
 
 // This is needed to ensure that the pop is done upon exit from methods

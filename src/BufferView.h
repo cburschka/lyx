@@ -17,17 +17,11 @@
 #endif
 
 #include FORMS_H_LOCATION
-#include "BackStack.h"
-#include "LaTeX.h"
 #include "undo.h"
-#include "UpdateInset.h"
 
 class LyXView;
-class Buffer;
-class LyXScreen;
-class Inset;
 class LyXText;
-class WorkArea;
+class TeXErrors;
 
 ///
 class BufferView {
@@ -37,7 +31,7 @@ public:
 	///
 	~BufferView();
 	///
-	Buffer * buffer() const { return buffer_; }
+	Buffer * buffer() const;
 	///
 	Painter & painter();
 	///
@@ -73,7 +67,7 @@ public:
 	/// 
 	bool available() const;
 	///
-	LyXView * owner() const { return owner_; }
+	LyXView * owner() const;
 	///
 	void beforeChange();
         ///
@@ -190,27 +184,6 @@ public:
 	///
 	void center();
 	
-private:
-	friend class WorkArea;
-	
-	/// Update pixmap of screen
-	void updateScreen();
-	///
-	void workAreaExpose();
-	///
-	void scrollUpOnePage();
-	///
-	void scrollDownOnePage();
-	///
-	void create_view();
-	///
-	Inset * checkInsetHit(int & x, int & y, unsigned int button);
-	/// 
-	int scrollUp(long time);
-	///
-	int scrollDown(long time);
-
-public:
 	///
 	bool focus() const;
 	///
@@ -232,48 +205,25 @@ public:
 	///
 	void setState();
 
-private:
 	///
-	void workAreaMotionNotify(int x, int y, unsigned int state);
+	void pushIntoUpdateList(Inset * i);
+	///
+	void workAreaExpose();
 	///
 	void workAreaButtonPress(int x, int y, unsigned int button);
 	///
 	void workAreaButtonRelease(int x, int y, unsigned int button);
 	///
-	void workAreaSelectionNotify(Window win, XEvent * event);
+	void workAreaMotionNotify(int x, int y, unsigned int state);
 	///
 	void doubleClick(int x, int y, unsigned int button);
 	///
 	void tripleClick(int x, int y, unsigned int button);
 	///
-	LyXView * owner_;
-	///
-	Buffer * buffer_;
-	///
-	LyXScreen * screen;
-	///
-	long current_scrollbar_value;
-	///
-	bool lyx_focus;
-	///
-	bool work_area_focus;
-	///
-	FL_OBJECT * figinset_canvas;
-	///
-	FL_OBJECT * timer_cursor;
-        ///
-        BackStack backstack;
-	///
-	int last_click_x, last_click_y;
-	///
-	WorkArea * workarea;
-	///
-	UpdateInset updatelist;
-public:
-	///
-	void pushIntoUpdateList(Inset * i) {
-		updatelist.push(i);
-	}
+	void workAreaSelectionNotify(Window win, XEvent * event);
+private:
+	struct Pimpl;
+	Pimpl * pimpl_;
 };
 
 #endif

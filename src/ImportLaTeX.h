@@ -29,7 +29,7 @@ public:
 	/**
 	  file = name and path of the latex file
 	  */
-	ImportLaTeX(string const & file);
+	explicit ImportLaTeX(string const & file);
 	
 	/** Imports the document.
 	  Return 0 if fail.

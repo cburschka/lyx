@@ -25,6 +25,8 @@
 #include "debug.h"
 #include "gettext.h"
 #include "LyXAction.h"
+#include "BufferView.h"
+#include "buffer.h"
 
 using std::endl;
 

@@ -31,6 +31,7 @@
 class MathedCursor {
  public:
     ///
+	explicit
     MathedCursor(MathParInset * p);
     ///
     ~MathedCursor() { };

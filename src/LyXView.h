@@ -17,13 +17,14 @@
 #endif
 
 #include FORMS_H_LOCATION
-#include "buffer.h"
-#include "menus.h"
 
 class LyXFunc;
 class Toolbar;
 class MiniBuffer;
 class Intl;
+class Buffer;
+class Menus;
+class BufferView;
 
 ///
 struct  FD_form_main {
@@ -66,31 +67,31 @@ public:
 	void redraw();
 
 	/// returns the buffer currently shown in the main form.
-	Buffer * buffer() const { return bufferview->buffer(); }
+	Buffer * buffer() const;
 
 	///
-	BufferView * view() { return bufferview; }
+	BufferView * view() const;
 
 	/// returns a pointer to the main form.
-	FD_form_main * getMainForm() { return _form_main; }
+	FD_form_main * getMainForm() const;
 
 	/// returns a pointer to the form.
-	FL_FORM * getForm() { return _form; }
+	FL_FORM * getForm() const;
 
 	/// return a pointer to the toolbar
-	Toolbar * getToolbar() { return toolbar; }
+	Toolbar * getToolbar() const;
 
 	/// return a pointer to the lyxfunc
-	LyXFunc * getLyXFunc() { return lyxfunc; }
+	LyXFunc * getLyXFunc() const;
 
 	/// return a pointer to the minibuffer
-	MiniBuffer * getMiniBuffer() { return minibuffer; }
+	MiniBuffer * getMiniBuffer() const;
 
 	///
-	Menus * getMenus() { return menus; }
+	Menus * getMenus() const;
 
 	///
-	Intl * getIntl() { return intl; }
+	Intl * getIntl() const;
 
 	///
 	void updateLayoutChoice();
@@ -134,9 +135,9 @@ private:
 	/// makes the main form.
 	void create_form_form_main(int width, int height);
 	/// A pointer to the form.	
-	FD_form_main * _form_main;
+	FD_form_main * form_main_;
 	/// A pointer to the form.	
-	FL_FORM * _form;
+	FL_FORM * form_;
 
 	/** The last textclass layout list in the layout choice selector
 	  This should probably be moved to the toolbar, but for now it's

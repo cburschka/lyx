@@ -1,3 +1,24 @@
+2000-04-08  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/WorkArea.C (belowMouse): manually implement below mouse.
+
+	* src/*: Add "explicit" on several constructors, I added probably
+	some unneeded ones. A couple of changes to code because of this.
+
+	* src/BufferView.[Ch]: Used the "pimpl" idom to hide more of the
+	implementation and private parts from the users of BufferView. Not
+	quite finished.
+
+	* src/lyxlex.[Ch]: Used the "pimpl" idom to hide more of the
+	implementaaion and private parts from the users of LyXLex. Not
+	quite finished.
+
+	* src/BufferView_pimpl.[Ch]: new files
+
+	* src/lyxlex_pimpl.[Ch]: new files
+
+	* src/LyXView.[Ch]: some inline functios move out-of-line
+
 2000-04-04  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/lyxparagraph.h: make strict InsetTable public.

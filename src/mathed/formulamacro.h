@@ -32,6 +32,7 @@ public:
 	///
 	InsetFormulaMacro();
 	///
+	explicit
 	InsetFormulaMacro(string name, int na = 0, bool env = false);
 	///
 	~InsetFormulaMacro();

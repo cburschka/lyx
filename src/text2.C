@@ -37,6 +37,7 @@
 #include "lyxrow.h"
 #include "Painter.h"
 #include "font.h"
+#include "debug.h"
 
 #define FIX_DOUBLE_SPACE 1
 

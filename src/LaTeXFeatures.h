@@ -33,7 +33,7 @@ struct Language;
   in buffer.C and paragraph.C when you do so. */
 struct LaTeXFeatures {
 	///
-	LaTeXFeatures(int n) ;
+	explicit LaTeXFeatures(int n) ;
 	/// The packaes needed by the document
 	string getPackages(BufferParams const & params);
 	/// The macros definitions needed by the document

@@ -28,6 +28,7 @@ public:
 	///
 	InsetLOF() : InsetCommand("listoffigures") {}
 	///
+	explicit
 	InsetLOF(Buffer * b) : InsetCommand("listoffigures"), owner(b) {}
         ///
         Inset * Clone() const { return new InsetLOF(owner); }

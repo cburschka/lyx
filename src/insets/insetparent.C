@@ -23,6 +23,7 @@
 #include "LyXView.h"
 #include "lyxfunc.h"
 #include "commandtags.h"
+#include "buffer.h"
 
 using std::ostream;
 

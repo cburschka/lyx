@@ -23,6 +23,7 @@
 class InsetLabel : public InsetCommand {
 public:
 	///
+	explicit
 	InsetLabel(string const & cmd);
 	///
 	InsetLabel() : InsetCommand("label") {}

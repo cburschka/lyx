@@ -1050,7 +1050,7 @@ bool LyXTextClass::Read(string const & filename, bool merge)
 			if (!defaultfont_.resolved()) {
 				lexrc.printError("Warning: defaultfont should "
 						 "be fully instantiated!");
-				defaultfont_.realize(LyXFont::ALL_SANE);
+				defaultfont_.realize(LyXFont(LyXFont::ALL_SANE));
 			}
 			break;
 
@@ -1601,4 +1601,18 @@ LyXTextClassList::Load (LyXTextClassList::size_type number) const
 		result = false;
 	}
 	return result;
+}
+
+
+std::ostream & operator<<(std::ostream & os, LyXTextClass::PageSides p)
+{
+	switch (p) {
+	case LyXTextClass::OneSide:
+		os << "1";
+		break;
+	case LyXTextClass::TwoSides:
+		os << "2";
+		break;
+	}
+	return os;
 }

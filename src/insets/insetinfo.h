@@ -33,6 +33,7 @@ public:
 	///
 	InsetInfo();
 	///
+	explicit
 	InsetInfo(string const & string);
 	///
 	~InsetInfo();

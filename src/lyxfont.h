@@ -158,10 +158,13 @@ public:
 	LyXFont(LyXFont const & x);
  
 	/// Shortcut initialization
+	explicit
 	LyXFont(LyXFont::FONT_INIT1);
 	/// Shortcut initialization
+	explicit
 	LyXFont(LyXFont::FONT_INIT2);
 	/// Shortcut initialization
+	explicit
 	LyXFont(LyXFont::FONT_INIT3);
 	/// Shortcut initialization
 	LyXFont(LyXFont::FONT_INIT1, Language const * l);

@@ -14,6 +14,8 @@ lyx_SOURCES = \
 	BufferView.C \
 	BufferView.h \
 	BufferView2.C \
+	BufferView_pimpl.C \
+	BufferView_pimpl.h \
 	Bullet.C \
 	Bullet.h \
 	Chktex.C \
@@ -138,6 +140,8 @@ lyx_SOURCES = \
 	lyxfunc.h \
 	lyxlex.C \
 	lyxlex.h \
+	lyxlex_pimpl.C \
+	lyxlex_pimpl.h \
 	lyxlookup.C \
 	lyxlookup.h \
 	lyxparagraph.h \

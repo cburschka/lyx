@@ -12,7 +12,7 @@
 #ifndef DEBUGSTREAM_H
 #define DEBUGSTREAM_H
 
-#include <iostream>
+#include "LOstream.h"
 
 #ifdef TEST_DEBUGSTREAM
 #include <string>
@@ -88,6 +88,7 @@ public:
 	explicit DebugStream(Debug::type t = Debug::NONE);
 	
 	/// Constructor, sets the log file to f, and the debug level to t.
+	explicit
 	DebugStream(char const * f, Debug::type t = Debug::NONE);
 
 	///

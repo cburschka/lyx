@@ -69,6 +69,7 @@
 #include "layout.h"
 #include "WorkArea.h"
 #include "lyxfr1.h"
+#include "menus.h"
 
 using std::pair;
 using std::endl;

@@ -30,8 +30,8 @@ public:
 	FontInfo() { init(); }
 
 	///
-	FontInfo(string const & pat)
-	: pattern(pat) { init(); }
+	explicit FontInfo(string const & pat)
+		: pattern(pat) { init(); }
 
 	/// Destructor
 	~FontInfo() { release(); }

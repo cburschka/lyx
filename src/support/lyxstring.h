@@ -163,6 +163,7 @@ public:
 	lyxstring(value_type const *, size_type n);
 	
 	/// #lyxstring x("abc")#
+	explicit
 	lyxstring(value_type const *);
 	
 	/// lyxstring(5, 'n') -> "nnnnn"

@@ -76,6 +76,7 @@ protected:
 class RCS : public VCS {
 public:
 	///
+	explicit
 	RCS(string const & m);
 	///
 	static string find_file(string const & file);
@@ -103,6 +104,7 @@ private:
 class CVS : public VCS {
 public:
 	///
+	explicit
 	CVS(string const & m, string const & f);
 	///
 	static string find_file(string const & file);

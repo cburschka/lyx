@@ -11,6 +11,8 @@
 
 #include <config.h>
 
+#include <fstream>
+
 #include "BufferView.h"
 #include "buffer.h"
 #include "lyxcursor.h"
@@ -23,6 +25,10 @@
 #include "bufferlist.h"
 #include "support/FileInfo.h"
 #include "lyxscreen.h"
+#include "support/filetools.h"
+#include "lyx_gui_misc.h"
+#include "LaTeX.h"
+#include "BufferView_pimpl.h"
 
 extern BufferList bufferlist;
 
@@ -734,7 +740,7 @@ void BufferView::showLockedInsetCursor(long x, long y, int asc, int desc)
 {
 	if (the_locking_inset && available()) {
 		y += text->cursor.y;
-		screen->ShowManualCursor(x, y, asc, desc,
+		pimpl_->screen->ShowManualCursor(x, y, asc, desc,
 					 LyXScreen::BAR_SHAPE);
 	}
 }
@@ -743,7 +749,7 @@ void BufferView::showLockedInsetCursor(long x, long y, int asc, int desc)
 void BufferView::hideLockedInsetCursor()
 {
 	if (the_locking_inset && available()) {
-		screen->HideCursor();
+		pimpl_->screen->HideCursor();
 	}
 }
 
@@ -752,7 +758,7 @@ void BufferView::fitLockedInsetCursor(long x, long y, int asc, int desc)
 {
 	if (the_locking_inset && available()){
 		y += text->cursor.y;
-		if (screen->FitManualCursor(x, y, asc, desc))
+		if (pimpl_->screen->FitManualCursor(x, y, asc, desc))
 			updateScrollbar();
 	}
 }

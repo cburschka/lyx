@@ -29,9 +29,11 @@ public:
 	/** Get information about file.
 	    If link is true, the information is about the link itself, not
 	    the file that is obtained by tracing the links. */
+	explicit
 	FileInfo(string const & path, bool link = false);
 
 	/// File descriptor
+	explicit
 	FileInfo(int fildes);
 
 	/// Query a new file

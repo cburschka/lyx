@@ -45,6 +45,7 @@ public:
 	///
 	InsetSpecialChar() {}
 	///
+	explicit
 	InsetSpecialChar(Kind k);
 	///
 	int ascent(Painter &, LyXFont const &) const;

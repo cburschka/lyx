@@ -167,6 +167,26 @@ Buffer::~Buffer()
 }
 
 
+string Buffer::getLatexName(bool no_path = true) const
+{
+	return ChangeExtension(MakeLatexName(filename), 
+			       ".tex", no_path); 
+}
+
+
+void Buffer::setReadonly(bool flag = true)
+{
+	if (read_only != flag) {
+		read_only = flag; 
+		updateTitles();
+		updateAllVisibleBufferRelatedPopups();
+	}
+	if (read_only) {
+		WarnReadonly(filename);
+	}
+}
+
+
 bool Buffer::saveParamsAsDefaults()
 {
 	string fname = AddName(AddPath(user_lyxdir, "templates/"),
@@ -716,10 +736,10 @@ bool Buffer::parseSingleLyXformat2Token(LyXLex & lex, LyXParagraph *& par,
 		}
 	} else if (token == "\\added_space_top") {
 		lex.nextToken();
-		par->added_space_top = lex.GetString();
+		par->added_space_top = VSpace(lex.GetString());
 	} else if (token == "\\added_space_bottom") {
 		lex.nextToken();
-		par->added_space_bottom = lex.GetString();
+		par->added_space_bottom = VSpace(lex.GetString());
 	} else if (token == "\\pextra_type") {
 		lex.nextToken();
 		par->pextra_type = lex.GetInteger();

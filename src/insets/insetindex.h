@@ -31,6 +31,7 @@ public:
 	///
 	InsetIndex() : InsetCommand("index") {}
 	///
+	explicit
 	InsetIndex(string const & key);
 	///
 	~InsetIndex();

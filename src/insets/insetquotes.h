@@ -65,7 +65,8 @@ public:
 	    \item grd <- german double quote right 
 	    \item etc.
 	  \end{itemize}
-	  */ 
+	  */
+	explicit
 	InsetQuotes(string const & str = "eld");
 	/// Create the right quote inset after character c
 	InsetQuotes(char c, BufferParams const & params);

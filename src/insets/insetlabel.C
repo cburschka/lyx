@@ -15,6 +15,7 @@
 #endif
 
 #include "insetlabel.h"
+#include "support/LOstream.h"
 
 using std::ostream;
 

@@ -14,6 +14,7 @@
 class Path {
 public:
 	///
+	explicit
 	Path(string const & path)
 		: popped_(false)
 	{

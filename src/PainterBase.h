@@ -56,7 +56,7 @@ public:
 	};
 
 	///
-	PainterBase(WorkArea & wa) : owner(wa) {}
+	explicit PainterBase(WorkArea & wa) : owner(wa) {}
 	
 	///
 	virtual ~PainterBase() {}

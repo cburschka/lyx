@@ -19,6 +19,7 @@
 #ifdef MODERN_STL_STREAMS
 #include <fstream>
 #endif
+#include <iostream>
 
 using std::ostream;
 using std::streambuf;

@@ -29,7 +29,7 @@ public:
 	/**
 	  file = name and path of the noweb file to import
 	  */
-	ImportNoweb(string const & file) : file(file) {}
+	explicit ImportNoweb(string const & file) : file(file) {}
 	
 	/** Imports the document.
 	  Return 0 if fail.

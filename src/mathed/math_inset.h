@@ -36,6 +36,7 @@
 class MathFuncInset: public MathedInset  {
 public:
 	///
+	explicit
 	MathFuncInset(char const * nm,
 		      short ot = LM_OT_FUNC, short st = LM_ST_TEXT);
 	///

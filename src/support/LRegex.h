@@ -19,6 +19,7 @@
 class LRegex {
 public:
 	///
+	explicit
 	LRegex(string const & regex);
 
 	///

@@ -120,6 +120,7 @@ public:
 	///
 	LyXParagraph();
 	/// this konstruktor inserts the new paragraph in a list
+	explicit
 	LyXParagraph(LyXParagraph * par);
 	/// the destruktors removes the new paragraph from the list
 	~LyXParagraph();

@@ -51,6 +51,7 @@ class MathedIter {
 	ncols = row = col = 0;
     }
     ///
+	explicit
     MathedIter(LyxArrayBase *);
     ///
     virtual ~MathedIter() { }
@@ -69,11 +70,11 @@ class MathedIter {
     ///
     byte GetChar();
     ///
-    byte* GetString(int& len);
+    byte * GetString(int& len);
     ///
-    MathedInset* GetInset();
+    MathedInset * GetInset();
     ///
-    MathParInset* GetActiveInset();
+    MathParInset * GetActiveInset();
     ///
     bool IsInset();
     ///
@@ -89,9 +90,9 @@ class MathedIter {
     ///
     virtual void Reset();
     ///
-    virtual void Insert(byte, MathedTextCodes c= LM_TC_CONST);
+    virtual void Insert(byte, MathedTextCodes c = LM_TC_CONST);
     ///
-    virtual void Insert(MathedInset*, int t= LM_TC_INSET);
+    virtual void Insert(MathedInset *, int t = LM_TC_INSET);
     ///
     virtual bool Delete();
     ///
@@ -111,12 +112,12 @@ class MathedIter {
     ///
     void setNumCols(int n) { ncols = n; }
     ///
-    void SetData(LyxArrayBase *a) { array = a; Reset(); }
+    void SetData(LyxArrayBase * a) { array = a; Reset(); }
     ///
-    LyxArrayBase *GetData() { return array; }
+    LyxArrayBase * GetData() { return array; }
     
     /// Copy every object from position p1 to p2
-    LyxArrayBase *Copy(int p1= 0, int p2= 10000);
+    LyxArrayBase * Copy(int p1= 0, int p2= 10000);
    
     /// Delete every object from position p1 to p2
     void Clear();

@@ -30,6 +30,7 @@ public:
 	/// Non-standard LyX macro
 	InsetParent() : InsetCommand("lyxparent") {}
 	///
+	explicit
         InsetParent(string const & fn, Buffer * owner = 0);
 	/// 
 	int Latex(std::ostream &, signed char fragile, bool free_spc) const;

@@ -29,6 +29,7 @@ public:
 	///
 	InsetLatex();
 	///
+	explicit
 	InsetLatex(string const & string);
 	///
 	~InsetLatex();

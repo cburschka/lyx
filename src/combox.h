@@ -51,7 +51,7 @@ typedef void (*FL_COMBO_PRE_POST) ();
 class Combox {
 public:
 	///
-	Combox(combox_type t = FL_COMBOX_NORMAL);
+	explicit Combox(combox_type t = FL_COMBOX_NORMAL);
 	///
 	~Combox();
 

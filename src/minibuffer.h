@@ -16,7 +16,8 @@ class LyXView;
 class MiniBuffer {
 public:
 	///
-	MiniBuffer(LyXView *o, FL_Coord x, FL_Coord y, FL_Coord h, FL_Coord w);
+	MiniBuffer(LyXView * o,
+		   FL_Coord x, FL_Coord y, FL_Coord h, FL_Coord w);
 
 	///
 	bool shows_no_match;

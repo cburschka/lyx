@@ -30,6 +30,7 @@ public:
 		ToggleOff = 8
 	};
 	///
+	explicit
 	LyXFunc(LyXView *);
     
 	/// LyX distpatcher, executes lyx actions.

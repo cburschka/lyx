@@ -325,7 +325,9 @@ void mathed_write(MathParInset * p, ostream & os, int * newlines,
    else {
 	   // Thinko!
 	   // Is this '\n' really needed, what can go wrong
-	   //if it is not there?
+	   //if it is not there? The reason why I want to avoid this is
+	   // because of the "backlook" into the output stream.
+	   // Lgb.
 #warning Thinko!
 #if 0
      if (!suffixIs(outf, '\n')) {

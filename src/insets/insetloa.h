@@ -28,6 +28,7 @@ public:
 	///
 	InsetLOA() : InsetCommand("listofalgorithms") {}
 	///
+	explicit
 	InsetLOA(Buffer * b) : InsetCommand("listofalgorithms"), owner(b) {}
         ///
 	void Validate(LaTeXFeatures & features) const;

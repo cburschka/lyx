@@ -69,6 +69,7 @@ public:
 	///
 	LyXTable(int columns_arg, int rows_arg);
 	///
+	explicit
 	LyXTable(LyXLex & lex);
 	///
 	~LyXTable();

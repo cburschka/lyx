@@ -32,6 +32,8 @@
 #include "support/filetools.h"        // OnlyFilename()
 #include "layout.h"
 #include "lyxtext.h"
+#include "buffer.h"
+#include "menus.h"
 
 using std::endl;
 
@@ -50,7 +52,7 @@ extern "C" int C_LyXView_atCloseMainFormCB(FL_FORM *, void *);
 LyXView::LyXView(int width, int height)
 {
 	create_form_form_main(width, height);
-	fl_set_form_atclose(_form, C_LyXView_atCloseMainFormCB, 0);
+	fl_set_form_atclose(form_, C_LyXView_atCloseMainFormCB, 0);
 	lyxerr[Debug::INIT] << "Initializing LyXFunc" << endl;
 	lyxfunc = new LyXFunc(this);
 	intl = new Intl;
@@ -71,8 +73,63 @@ LyXView::~LyXView()
 /// Redraw the main form.
 void LyXView::redraw() {
 	lyxerr[Debug::INFO] << "LyXView::redraw()" << endl;
-	fl_redraw_form(_form);
+	fl_redraw_form(form_);
 	minibuffer->Activate();
+}
+
+
+/// returns the buffer currently shown in the main form.
+Buffer * LyXView::buffer() const
+{
+	return bufferview->buffer();
+}
+
+
+BufferView * LyXView::view() const
+{
+	return bufferview;
+}
+
+
+FD_form_main * LyXView::getMainForm() const
+{
+	return form_main_;
+}
+
+
+FL_FORM * LyXView::getForm() const
+{
+	return form_;
+}
+
+
+Toolbar * LyXView::getToolbar() const
+{
+	return toolbar;
+}
+
+
+LyXFunc * LyXView::getLyXFunc() const
+{
+	return lyxfunc;
+}
+
+
+MiniBuffer * LyXView::getMiniBuffer() const
+{
+	return minibuffer;
+}
+
+
+Menus * LyXView::getMenus() const
+{
+	return menus;
+}
+
+
+Intl * LyXView::getIntl() const
+{
+	return intl;
 }
 
 
@@ -120,7 +177,7 @@ extern "C" void C_LyXView_AutosaveTimerCB(FL_OBJECT * ob, long data)
 void LyXView::resetAutosaveTimer()
 {
 	if (lyxrc.autosave)
-		fl_set_timer(_form_main->timer_autosave, lyxrc.autosave);
+		fl_set_timer(form_main_->timer_autosave, lyxrc.autosave);
 }
 
 
@@ -141,15 +198,15 @@ extern "C" int C_LyXView_atCloseMainFormCB(FL_FORM * form, void * p)
 
 void LyXView::setPosition(int x, int y)
 {
-	fl_set_form_position(_form, x, y);
+	fl_set_form_position(form_, x, y);
 }
 
 
 void LyXView::show(int place, int border, char const * title)
 {
-	fl_show_form(_form, place, border, title);
+	fl_show_form(form_, place, border, title);
 	minibuffer->Init();
-	InitLyXLookup(fl_display, _form->window);
+	InitLyXLookup(fl_display, form_->window);
 }
 
 
@@ -165,10 +222,10 @@ void LyXView::create_form_form_main(int width, int height)
 	FD_form_main * fdui = static_cast<FD_form_main *>
 		(fl_calloc(1, sizeof(FD_form_main)));
 
-	_form_main = fdui;
+	form_main_ = fdui;
 
 	// the main form
-	_form = fdui->form_main = fl_bgn_form(FL_NO_BOX, width, height);
+	form_ = fdui->form_main = fl_bgn_form(FL_NO_BOX, width, height);
 	fdui->form_main->u_vdata = this;
 	FL_OBJECT * obj = fl_add_box(FL_FLAT_BOX, 0, 0, width, height, "");
 	fl_set_object_color(obj, FL_MCOL, FL_MCOL);
@@ -260,11 +317,11 @@ void LyXView::init()
 	
 	// Start autosave timer
 	if (lyxrc.autosave)
-		fl_set_timer(_form_main->timer_autosave, lyxrc.autosave);
+		fl_set_timer(form_main_->timer_autosave, lyxrc.autosave);
 	
 	
 	// Install the raw callback for keyboard events 
-	fl_register_raw_callback(_form,
+	fl_register_raw_callback(form_,
 				 KeyPressMask,
 				 C_LyXView_KeyPressMask_raw_callback);
         intl->InitKeyMapper(lyxrc.use_kbmap);
@@ -411,7 +468,7 @@ void LyXView::updateWindowTitle()
 	}
 	// Don't update title if it's the same as last time
 	if (title != last_title) {
-		fl_set_form_title(_form, title.c_str());
+		fl_set_form_title(form_, title.c_str());
 		last_title = title;
 	}
 }

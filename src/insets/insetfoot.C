@@ -19,6 +19,7 @@
 #include "BufferView.h"
 #include "lyxscreen.h"
 #include "Painter.h"
+#include "support/LOstream.h"
 
 using std::ostream;
 

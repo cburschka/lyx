@@ -61,6 +61,7 @@ public:
 	LyXLength(float v, LyXLength::UNIT u) : val(v), uni(u) {}
 
 	/** "data" must be a decimal number, followed by a unit. */
+	explicit
         LyXLength(string const & data);
 	//@}
 	
@@ -102,9 +103,12 @@ public:
 	//@Man: constructors
 	//@{
 	///
-	LyXGlueLength(float v,      LyXLength::UNIT u, 
-		      float pv= 0.0, LyXLength::UNIT pu= LyXLength::UNIT_NONE, 
-		      float mv= 0.0, LyXLength::UNIT mu= LyXLength::UNIT_NONE) 
+	LyXGlueLength(float v,
+		      LyXLength::UNIT u, 
+		      float pv = 0.0,
+		      LyXLength::UNIT pu = LyXLength::UNIT_NONE, 
+		      float mv = 0.0,
+		      LyXLength::UNIT mu = LyXLength::UNIT_NONE) 
 		: LyXLength (v, u), 
 		  plus_val(pv), minus_val(mv), 
 		  plus_uni(pu), minus_uni(mu) {}
@@ -115,6 +119,7 @@ public:
 	  1.2 cm  //  4mm +2pt  //  2cm -4mm +2mm  //  4+0.1-0.2cm
 	  The traditional Latex format is also accepted, like  
 	  4cm plus 10pt minus 10pt */
+	explicit
         LyXGlueLength(string const & data);
 	//@}
 	
@@ -160,17 +165,19 @@ public:
 	enum vspace_kind { NONE, DEFSKIP, 
 			   SMALLSKIP, MEDSKIP, BIGSKIP, 
 			   VFILL, LENGTH };
-	// constructors
+	/// constructors
 	VSpace() : 
 		kin (NONE), 
 		len(0.0, LyXLength::PT),
                 kp (false) {}
-
+	///
+	explicit
 	VSpace(vspace_kind k) : 
 		kin (k), 
 		len (0.0, LyXLength::PT),
 	        kp (false) {}
-
+	///
+	explicit
 	VSpace(LyXGlueLength l) :
 		kin (LENGTH),
 		len (l),
@@ -182,6 +189,7 @@ public:
 	        kp (false) {}
 
 	/// this constructor is for reading from a .lyx file
+	explicit
 	VSpace(string const & data);
 	
 	// access functions

@@ -32,8 +32,10 @@ class MathedCursor;
 class InsetFormula: public UpdatableInset {
 public:
 	///
+	explicit
 	InsetFormula(bool display = false);
 	///
+	explicit
 	InsetFormula(MathParInset *);
 	///
 	~InsetFormula();

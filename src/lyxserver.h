@@ -39,8 +39,8 @@ public:
 	typedef void (*ClientCallbackfct)(LyXServer *, string const &);
 
 	/// Construct with pipe-basename and callback to receive messages
-	LyXComm(string const &pip, LyXServer * cli, ClientCallbackfct ccb = 0)
-		:pipename(pip), client(cli), clientcb(ccb)
+	LyXComm(string const & pip, LyXServer * cli, ClientCallbackfct ccb = 0)
+		: pipename(pip), client(cli), clientcb(ccb)
 	{
 		ready = false;
 		openConnection();
@@ -98,7 +98,7 @@ public:
         // bufferview. We just have to find a way to handle situations like if
         // lyxserver is using a buffer that is being edited with a bufferview.
         // With a common buffer list this is not a problem, maybe. (Alejandro)
-	LyXServer(LyXFunc *f, string const &pip)
+	LyXServer(LyXFunc * f, string const & pip)
 		: numclients(0), func(f), pipes(pip, (this), callback)
 	{ }
         /// 
@@ -113,7 +113,7 @@ private:
 	string clients[MAX_CLIENTS];
 	int numclients;
 	///
-	LyXFunc *func;
+	LyXFunc * func;
 	///
 	LyXComm pipes;
 };

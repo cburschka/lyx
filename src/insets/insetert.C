@@ -18,7 +18,8 @@
 #include "lyxfont.h"
 #include "Painter.h"
 #include "buffer.h"
-//#include "lyx_gui_misc.h"
+#include "support/LOstream.h"
+#include "lyx_gui_misc.h"
 
 using std::ostream;
 

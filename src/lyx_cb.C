@@ -12,6 +12,7 @@
 
 #include <fstream>
 #include <algorithm>
+#include <iostream>
 
 #include "LString.h"
 #include "support/lstrings.h"

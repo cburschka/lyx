@@ -19,8 +19,11 @@
 #include "lyxtext.h"
 #include "LyXView.h"
 #include "minibuffer.h"
+#include "lyx_gui_misc.h"
 #include "support/textutils.h"
-
+#include "support/lstrings.h"
+#include "BufferView.h"
+#include "buffer.h"
 
 // Returns the current selection. If nothing is selected or if the selection
 // spans 2 paragraphs, an empty string is returned.

@@ -38,8 +38,10 @@ public:
 		flag = InsetUrl::URL;
 	}
 	///
+	explicit
 	InsetUrl(string const &);
 	///
+	explicit
 	InsetUrl(InsetCommand const &);
 	///
 	InsetUrl(string const &, string const &, string const &);

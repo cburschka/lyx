@@ -32,8 +32,7 @@
 #include "lyxvc.h"
 #include "bufferparams.h"
 #include "texrow.h"
-#include "support/filetools.h"
-#include "lyx_gui_misc.h"
+
 
 class LyXRC;
 class TeXErrors;
@@ -61,7 +60,7 @@ public:
 	/**@name Constructors and destructor */
 	//@{
 	///
-	Buffer(string const & file, bool b = false);
+	explicit Buffer(string const & file, bool b = false);
 	
 	///
 	~Buffer();
@@ -81,10 +80,10 @@ public:
 	/** high-level interface to buffer functionality
 	    This function parses a command string and executes it
 	*/
-	void Dispatch(const string & command);
+	void Dispatch(string const & command);
 
 	/// Maybe we know the function already by number...
-	void Dispatch(int ac, const string & argument);
+	void Dispatch(int ac, string const & argument);
 
 	/// should be changed to work for a list.
 	void resize() {
@@ -133,7 +132,7 @@ public:
 	/* This parses a single LyXformat-Token */
 	bool parseSingleLyXformat2Token(LyXLex &, LyXParagraph *& par,
 					LyXParagraph *& return_par,
-					const string & token, int & pos,
+					string const & token, int & pos,
 					char & depth, LyXFont &,
 					LyXParagraph::footnote_flag &,
 					LyXParagraph::footnote_kind &);
@@ -243,10 +242,7 @@ public:
 
 	/** A transformed version of the file name, adequate for LaTeX  
 	    The path is stripped if no_path is true (default) */
-	string getLatexName(bool no_path = true) const {
-		return ChangeExtension(MakeLatexName(filename), 
-				       ".tex", no_path); 
-	}
+	string getLatexName(bool no_path = true) const;
 
 	/// Change name of buffer. Updates "read-only" flag.
 	void fileName(string const & newfile);
@@ -258,16 +254,7 @@ public:
 	bool isReadonly() const { return read_only; }
 
 	/// Set buffer read-only flag
-	void setReadonly(bool flag = true) {
-		if (read_only != flag) {
-			read_only = flag; 
-			updateTitles();
-			updateAllVisibleBufferRelatedPopups();
-		}
-		if (read_only) {
-			WarnReadonly(filename);
-		}
-	}
+	void setReadonly(bool flag = true);
 
 	/// returns true if the buffer contains a LaTeX document
 	bool isLatex() const;

@@ -28,6 +28,7 @@ class Painter;
 class InsetFoot : public InsetCollapsable {
 public:
     ///
+	explicit
     InsetFoot(Buffer *);
     ///
     ~InsetFoot() {}

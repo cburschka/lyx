@@ -35,7 +35,7 @@ class WorkArea;
 class Painter : public PainterBase {
 public:
 	/// Constructor 
-	Painter(WorkArea &);
+	explicit Painter(WorkArea &);
 	
 	/// Destructor
 	~Painter();

@@ -37,8 +37,10 @@ class MathMacro : public MathParInset
 {
 public:
     /// A macro can only be builded from an existing template
+	explicit
     MathMacro(MathMacroTemplate *);
     /// or from another macro.
+	explicit
     MathMacro(MathMacro *);
 	///
     ~MathMacro();
@@ -105,6 +107,7 @@ public:
     ///
     MathMacroArgument() { expnd_mode = false; number = 1;  SetType(LM_OT_MACRO_ARG); }
     ///
+	explicit
     MathMacroArgument(int);
     ///
 	~MathMacroArgument() { lyxerr << "help, destroyme!" << std::endl; }
@@ -134,6 +137,7 @@ private:
 class MathMacroTemplate: public MathParInset {
 public:
     /// A template constructor needs all the data
+	explicit
     MathMacroTemplate(char const *, int na = 0, int f = 0);
 	///
     ~MathMacroTemplate();
@@ -186,6 +190,7 @@ typedef MathMacroTemplate * MathMacroTemplateP;
 class MathMacroTable {
 public:
 	///
+	explicit
     MathMacroTable(int);
 	///
     ~MathMacroTable();

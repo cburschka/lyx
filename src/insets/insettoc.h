@@ -28,6 +28,7 @@ public:
 	///
 	InsetTOC() : InsetCommand("tableofcontents") {}
 	///
+	explicit
 	InsetTOC(Buffer * b) : InsetCommand("tableofcontents"), owner(b) {}
         ///
         Inset * Clone() const { return new InsetTOC(owner); }

@@ -32,6 +32,7 @@ public:
 	///
 	InsetLatexAccent(); 
 	///
+	explicit
 	InsetLatexAccent(string const & string);
 	///
 	int ascent(Painter &, LyXFont const &) const;

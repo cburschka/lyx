@@ -7,6 +7,7 @@
 
 class DebugTracer {
 public:
+	explicit
 	DebugTracer(string const & s) : str(s) {
 		lyxerr << string(depth, ' ') << "Trace begin : "
 		       << str << std::endl;

@@ -12,6 +12,8 @@
 #ifndef LAYOUT_H
 #define LAYOUT_H
 
+#include <vector>
+
 #ifdef __GNUG__
 #pragma interface
 #endif
@@ -20,7 +22,6 @@
 #include "lyxfont.h"
 #include "Spacing.h"
 
-#include <vector>
 
 /// Reads the style files
 extern void LyXSetStyle();
@@ -359,6 +360,7 @@ public:
 	///
 	typedef LayoutList::size_type size_type;
 	///
+	explicit
 	LyXTextClass (string const & = string(), 
 		      string const & = string(), 
 		      string const & = string());
@@ -508,19 +510,7 @@ void operator|=(LyXTextClass::Provides & p1, LyXTextClass::Provides p2)
 
 
 ///
-inline
-std::ostream & operator<<(std::ostream & os, LyXTextClass::PageSides p)
-{
-	switch (p) {
-	case LyXTextClass::OneSide:
-		os << "1";
-		break;
-	case LyXTextClass::TwoSides:
-		os << "2";
-		break;
-	}
-	return os;
-}
+std::ostream & operator<<(std::ostream & os, LyXTextClass::PageSides p);
 
 
 ///

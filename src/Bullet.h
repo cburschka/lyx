@@ -27,10 +27,10 @@
 class Bullet {
 public:
 	///
-	Bullet(const int f = -1, const int c = -1, const int s = -1);
+	Bullet(int f = -1, int c = -1, int s = -1);
 
 	///
-	Bullet(string const &);
+	explicit Bullet(string const &);
 
 	///
 	void setCharacter(int);

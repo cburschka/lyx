@@ -30,6 +30,7 @@ public:
 	///
 	InsetCommand();
 	///
+	explicit
 	InsetCommand(string const & name, string const & arg = string(), 
 		     string const & opt = string());
 	///

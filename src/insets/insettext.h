@@ -37,6 +37,7 @@ public:
 	///
 	enum { TEXT_TO_INSET_OFFSET = 1 };
     ///
+	explicit
     InsetText(Buffer *);
     ///
     InsetText(InsetText const &, Buffer *);

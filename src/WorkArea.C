@@ -211,8 +211,22 @@ WorkArea::~WorkArea()
 
 bool WorkArea::belowMouse() const
 {
-	lyxerr << "Below mouse: " << work_area->belowmouse << endl;
-	return work_area->belowmouse;
+	FL_Coord x, y;
+	unsigned int button;
+	fl_get_mouse(&x, &y, &button);
+	FL_Coord ulx = work_area->form->x + work_area->x;
+	FL_Coord uly = work_area->form->y + work_area->y;
+	FL_Coord w = work_area->w;
+	FL_Coord h = work_area->h;
+	if (x > ulx && y > uly && x < ulx + h && y < uly + w)
+		return true;
+	return false;
+	
+	
+	//lyxerr << "Mouse: (" << x << ", " << y <<") button = " << button << endl;
+	//lyxerr << "Workarea: (" << work_area->x + work_area->form->x << ", " << work_area->y + work_area->form->y << ", " << work_area->w << ", " << work_area->h << ")" << endl;
+	//lyxerr << "Below mouse: " << work_area->belowmouse << endl;
+	//return work_area->belowmouse;
 }
 
 

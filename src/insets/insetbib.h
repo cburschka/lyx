@@ -27,6 +27,7 @@ public:
 	///
 	InsetCitation() : InsetCommand("cite") {}
 	///
+	explicit
 	InsetCitation(string const & key, string const & note = string());
         ///
 	~InsetCitation();
@@ -64,8 +65,10 @@ public:
 	///
 	InsetBibKey() : InsetCommand("bibitem") { counter = 1; }
 	///
+	explicit
 	InsetBibKey(string const & key, string const & label = string());
 	///
+	explicit
 	InsetBibKey(InsetBibKey const *);
 	///
 	~InsetBibKey();

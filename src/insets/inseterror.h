@@ -29,6 +29,7 @@
 class InsetError: public Inset {
 public:
 	///
+	explicit
 	InsetError(string const & string);
 	///
 	InsetError();

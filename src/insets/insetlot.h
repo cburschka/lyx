@@ -28,6 +28,7 @@ public:
 	///
 	InsetLOT() : InsetCommand("listoftables") {}
 	///
+	explicit
 	InsetLOT(Buffer * b) : InsetCommand("listoftables"), owner(b) {}
         ///
         Inset * Clone() const { return new InsetLOT(owner); }
