@@ -2,7 +2,7 @@
 #ifndef MATH_UNKNOWNINSET_H
 #define MATH_UNKNOWNINSET_H
 
-#include "math_diminset.h"
+#include "math_nestinset.h"
 
 #ifdef __GNUG__
 #pragma interface
@@ -11,7 +11,7 @@
 /**
  Unknowntions or LaTeX names for objects that we really don't know
  */
-class MathUnknownInset : public MathDimInset {
+class MathUnknownInset : public MathNestInset {
 public:
 	///
 	explicit MathUnknownInset(string const & name,
