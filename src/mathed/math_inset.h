@@ -218,14 +218,14 @@ public:
 	///
 	bool setArgumentIdx(int i); // was bool Up/down(void);
 	///
-	int  getArgumentIdx() { return int(idx); }
+	int getArgumentIdx() const { return idx; }
 	///
-	int  getMaxArgumentIdx() { return 1; }
+	int getMaxArgumentIdx() const { return 1; }
 	///
 	void  SetStyle(short);
 protected:
 	///
-	short idx;
+	int idx;
 	///
 	MathParInset * den;
 	///

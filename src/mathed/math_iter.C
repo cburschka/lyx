@@ -546,7 +546,8 @@ void MathedXIter::Merge(LyxArrayBase *a0)
 //-----------  XIter
 
 
-MathedXIter::MathedXIter(MathParInset* pp): p(pp) 
+MathedXIter::MathedXIter(MathParInset * pp)
+	: p(pp) 
 { 
     x = y = 0;
     sx = sw = 0;   
@@ -560,7 +561,7 @@ MathedXIter::MathedXIter(MathParInset* pp): p(pp)
     }
 }
 
-void MathedXIter::SetData(MathParInset *pp)
+void MathedXIter::SetData(MathParInset * pp)
 {
     p = pp;
     x = y = 0;
@@ -843,14 +844,15 @@ void MathedXIter::ipop()
 
 void MathedXIter::fitCoord(int /*xx*/, int yy)
 {
-    int xo = 0, yo = 0;
+    int xo = 0;
+    int yo = 0;
     
     GoBegin();
     if (p) 
       p->GetXY(xo, yo);
     // first fit vertically
     while (crow && OK()) {
-	if (yy>= yo+y-crow->asc && yy<= yo+y+crow->desc) 
+	if (yy >= yo + y - crow->asc && yy <= yo + y + crow->desc) 
 	  break;
 	goNextCode(LM_TC_CR);
 	Next();
@@ -858,6 +860,7 @@ void MathedXIter::fitCoord(int /*xx*/, int yy)
     // now horizontally
 //    while (x<xx && Next());
 }
+
 
 void MathedXIter::setTab(int tx, int tab)
 {
@@ -881,11 +884,13 @@ void MathedXIter::subMetrics(int a, int d)
 
 
 // This function is not recursive, as MathPar::Metrics is
-void MathedXIter::IMetrics(int pos2, int& width, int& ascent, int& descent)
+void MathedXIter::IMetrics(int pos2, int & width, int & ascent, int & descent)
 {  
-	byte cx, cxp= 0;// *s;
-	int x1;// ls;
-    int asc= 0, des= 0;
+    byte cx;
+    byte cxp = 0; // *s;
+    int x1; // ls;
+    int asc = 0;
+    int des = 0;
     bool limit = false;
   
     descent = ascent = width = 0;
@@ -905,20 +910,22 @@ void MathedXIter::IMetrics(int pos2, int& width, int& ascent, int& descent)
 	    MathedInset *pp = GetInset();
 	    if (cx == LM_TC_UP) {
 		if (!asc && p) {
-		    int xx, yy;
+		    int xx;
+		    int yy;
 		    p->GetXY(xx, yy);
 		    static_cast<MathParInset*>(pp)->GetXY(xx, asc);
 		    asc = yy - asc;
 		}
-		asc += ((limits) ? pp->Height()+4: pp->Ascent());
+		asc += ((limits) ? pp->Height() + 4 : pp->Ascent());
 	    } else
 	      if (cx == LM_TC_DOWN) {
 		  if (!des && p) {
-		      int xx, yy;
+		      int xx;
+		      int yy;
 		      p->GetXY(xx, yy);
 		      static_cast<MathParInset*>(pp)->GetXY(xx, des);
-		      if (des-pp->Height()<yy && !asc)
-			asc = yy - (des-pp->Height());
+		      if (des - pp->Height() < yy && !asc)
+			asc = yy - (des - pp->Height());
 		      des -= yy;
 		  }
 		  des += (limit ? pp->Height()+4: pp->Height()-pp->Ascent()/2);

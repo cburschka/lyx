@@ -252,7 +252,7 @@ void FormRef::apply()
 }
 
 
-void FormRef::input( long data )
+void FormRef::input(long data)
 {
 	switch( data ) {
 	// goto reference / go back

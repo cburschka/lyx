@@ -542,7 +542,7 @@ LyxArrayBase * mathed_parse(unsigned flags, LyxArrayBase * array,
       
     case '&':    // Tab
       {
-	 if ((flags & FLAG_END) && mt && data.getCol()<mt->GetColumns()-1) {
+	 if ((flags & FLAG_END) && mt && data.getCol()<mt->GetColumns() - 1) {
 	     data.setNumCols(mt->GetColumns());
 	     data.Insert('T', LM_TC_TAB);
 	 } else 
@@ -557,7 +557,7 @@ LyxArrayBase * mathed_parse(unsigned flags, LyxArrayBase * array,
 	  if (mt && (flags & FLAG_END)) {
 	      if (mt->Permit(LMPF_ALLOW_CR)) {
 		  if (crow) {
-			  crow->setNext(new MathedRowSt(mt->GetColumns()+1)); // this leaks
+			  crow->setNext(new MathedRowSt(mt->GetColumns() + 1)); // this leaks
 		      crow = crow->getNext();
 		  }
 		  data.Insert('K', LM_TC_CR);

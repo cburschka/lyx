@@ -82,13 +82,13 @@ int LyXCursor::x_fix() const
 }
 
 
-void LyXCursor::y(unsigned long i)
+void LyXCursor::y(int i)
 {
 	y_ = i;
 }
 
 
-unsigned long LyXCursor::y() const
+int LyXCursor::y() const
 {
 	return y_;
 }

@@ -353,7 +353,7 @@ void AllocGrays(int num)
 	if (num > 128) num = 128;
 	XColor xcol;
 	for (int i = 0; i < num; ++i) {
-		xcol.red = xcol.green = xcol.blue = 65535 * i / (num - 1);
+		xcol.red = xcol.green = xcol.blue = short(65535 * i / (num - 1));
 		xcol.flags = DoRed | DoGreen | DoBlue;
 		if (!XAllocColor(fl_display,
 				 fl_state[fl_get_vclass()].colormap, &xcol)) {
@@ -591,7 +591,7 @@ void runqueue()
 					XInternAtom(tempdisp, "STRING", false),
 					8, PropModeAppend, 
 					reinterpret_cast<unsigned char*>(const_cast<char*>(t1.str().c_str())),
-					t1.str().size());
+					int(t1.str().size()));
 			XUngrabServer(tempdisp);
 			XFlush(tempdisp);
 
@@ -620,7 +620,7 @@ void runqueue()
 					XInternAtom(tempdisp, "STRING", false),
 					8, PropModeReplace, 
 					reinterpret_cast<unsigned char*>(const_cast<char*>(t3.str().c_str())),
-					t3.str().size());
+					int(t3.str().size()));
 			XUngrabServer(tempdisp);
 			XFlush(tempdisp);
 			

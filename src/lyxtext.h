@@ -58,7 +58,7 @@ public:
 	///
 	mutable int number_of_rows;
 	///
-	mutable long height;
+	mutable int height;
 	///
 	mutable unsigned int width;
 	/// the current font settings
@@ -66,7 +66,7 @@ public:
 	/// the current font
 	mutable LyXFont real_current_font;
 	/// first visible pixel-row is set from LyXScreen!!!
-	unsigned long first;
+	unsigned int first;
 	///
 	BufferView * bv_owner;
 	///
@@ -158,7 +158,7 @@ public:
 	///
 	Row * need_break_row;
 	///
-	mutable long refresh_y;
+	mutable int refresh_y;
 	///
 	int refresh_height;
 	///
@@ -179,7 +179,7 @@ public:
 	  (relative to the whole text). y is set to the real beginning
 	  of this row
 	  */ 
-	Row * GetRowNearY(long & y) const;
+	Row * GetRowNearY(int & y) const;
 	
 	/** returns the column near the specified x-coordinate of the row 
 	 x is set to the real beginning of this column
@@ -191,7 +191,7 @@ public:
 	 of the row
 	 */
 	Row * GetRow(LyXParagraph * par,
-		     LyXParagraph::size_type pos, long & y) const;
+		     LyXParagraph::size_type pos, int & y) const;
 
 	/** returns the height of a default row, needed  for scrollbar
 	 */
@@ -271,10 +271,10 @@ public:
 			 LyXFont const & font) const;
 
 	///
-	void SetCursorFromCoordinates(BufferView *, int x, long y) const;
+	void SetCursorFromCoordinates(BufferView *, int x, int y) const;
 	///
 	void SetCursorFromCoordinates(BufferView *, LyXCursor &,
-				      int x, long y) const;
+				      int x, int y) const;
 	///
 	void CursorUp(BufferView *) const;
 	///
@@ -330,7 +330,7 @@ public:
 	  solution but faster.
 	 */
 	void GetVisibleRow(BufferView *, int y_offset, int x_offset,
-			   Row * row_ptr, long y, bool cleared=false);
+			   Row * row_ptr, int y, bool cleared=false);
 
 #ifndef NEW_INSETS
 	/* footnotes: */

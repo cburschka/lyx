@@ -1281,7 +1281,7 @@ void LyXText::SetHeightOfRow(BufferView * bview, Row * row_ptr) const
 
    /* this must not happen before the currentrow for clear reasons.
       so the trick is just to set the current row onto this row */
-   long unused_y;
+   int unused_y;
    GetRow(row_ptr->par(), row_ptr->pos(), unused_y);
 
    /* ok , let us initialize the maxasc and maxdesc value. 
@@ -1962,7 +1962,7 @@ void LyXText::InsertChar(BufferView * bview, char c)
 
 	// get the cursor row fist
 	Row * row = cursor.row();
-	long y = cursor.y() - row->baseline();
+	int y = cursor.y() - row->baseline();
 	if (c != LyXParagraph::META_INSET) /* Here case LyXText::InsertInset 
 					    * already insertet the character */
 		cursor.par()->InsertChar(cursor.pos(), c);
@@ -2780,7 +2780,7 @@ void LyXText::Backspace(BufferView * bview)
 		}
 		
 		Row * row = cursor.row();
-		long y = cursor.y() - row->baseline();
+		int y = cursor.y() - row->baseline();
 		LyXParagraph::size_type z;
 		/* remember that a space at the end of a row doesnt count
 		 * when calculating the fill */ 
@@ -2945,7 +2945,7 @@ void LyXText::Backspace(BufferView * bview)
 
 
 void LyXText::GetVisibleRow(BufferView * bview, int y_offset, int x_offset,
-			    Row * row_ptr, long y, bool cleared)
+			    Row * row_ptr, int y, bool cleared)
 {
 	/* returns a printed row */
 	Painter & pain = bview->painter();
@@ -3056,16 +3056,16 @@ void LyXText::GetVisibleRow(BufferView * bview, int y_offset, int x_offset,
 							   sel_end_cursor.x(),
 							   row_ptr->height(),
 							   LColor::selection);
-			} else if (y > long(sel_start_cursor.y())
-				   && y < long(sel_end_cursor.y())) {
+			} else if (y > sel_start_cursor.y()
+				   && y < sel_end_cursor.y()) {
 				pain.fillRectangle(x_offset, y_offset, w,
 						   row_ptr->height(),
 						   LColor::selection);
 			}
 		} else if ( sel_start_cursor.row() != row_ptr &&
 			    sel_end_cursor.row() != row_ptr &&
-			    y > long(sel_start_cursor.y())
-			    && y < long(sel_end_cursor.y())) {
+			    y > sel_start_cursor.y()
+			    && y < sel_end_cursor.y()) {
 			pain.fillRectangle(x_offset, y_offset, w,
 					   row_ptr->height(),
 					   LColor::selection);
@@ -3973,7 +3973,7 @@ void LyXText::InsertFootnoteEnvironment(BufferView * bview,
 
 // returns pointer to a specified row
 Row * LyXText::GetRow(LyXParagraph * par,
-		      LyXParagraph::size_type pos, long & y) const
+		      LyXParagraph::size_type pos, int & y) const
 {
 	Row * tmprow = firstrow;
 	y = 0;

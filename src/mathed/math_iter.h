@@ -352,16 +352,18 @@ void MathedXIter::GetPos(int & xx, int & yy) const
 inline 
 int MathedXIter::GetX() const
 { 
-    int xx, yy;
-    GetPos(xx, yy);
+    int xx;
+    int dummy_y;
+    GetPos(xx, dummy_y);
     return xx; 
 }
 
 inline 
 int MathedXIter::GetY() const
 { 
-    int xx, yy;
-    GetPos(xx, yy);
+    int dummy_x;
+    int yy;
+    GetPos(dummy_x, yy);
     return yy; 
 }
 

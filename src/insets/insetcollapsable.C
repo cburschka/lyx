@@ -379,7 +379,7 @@ bool InsetCollapsable::UpdateInsetInInset(BufferView * bv, Inset *in)
 }
 
 
-int InsetCollapsable::InsetInInsetY()
+unsigned int InsetCollapsable::InsetInInsetY()
 {
     return inset->InsetInInsetY();
 }

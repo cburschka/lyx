@@ -1257,7 +1257,7 @@ void Buffer::writeFileAscii(string const & fname, int linelen)
 	int actcell = 0;
 	int actpos = 0;
 	int currlinelen = 0;
-	long fpos = 0;
+	int fpos = 0;
 	bool ref_printed = false;
 
 	ofstream ofs(fname.c_str());
@@ -1465,14 +1465,12 @@ string const Buffer::asciiParagraph(LyXParagraph const * par,
 				    unsigned int linelen) const
 {
 	ostringstream buffer;
-	LyXFont font1, font2;
+	LyXFont font1;
+	LyXFont font2;
 	Inset const * inset;
 	char c;
 	LyXParagraph::footnote_flag footnoteflag = LyXParagraph::NO_FOOTNOTE;
 	char depth = 0;
-	string tmp;
-	LyXParagraph::size_type i;
-	unsigned int j;
 	int ltype = 0;
 	int ltype_depth = 0;
 	unsigned int currlinelen = 0;
@@ -1494,16 +1492,15 @@ string const Buffer::asciiParagraph(LyXParagraph const * par,
 		if (footnoteflag != par->footnoteflag) {
 			footnoteflag = par->footnoteflag;
 			if (footnoteflag) {
-				j = strlen(string_footnotekinds[par->footnotekind])+4;
+				size_t const j = strlen(string_footnotekinds[par->footnotekind]) + 4;
 				if ((linelen > 0) &&
 				    ((currlinelen + j) > linelen)) {
 					buffer << "\n";
 					currlinelen = 0;
 				}
-				buffer <<
-				    "([" <<
-				    string_footnotekinds[par->footnotekind] <<
-				    "] ";
+				buffer << "(["
+				       << string_footnotekinds[par->footnotekind]
+				       << "] ";
 				currlinelen += j;
 			}
 		}
@@ -1523,7 +1520,7 @@ string const Buffer::asciiParagraph(LyXParagraph const * par,
 		}
 		
 		/* First write the layout */
-		tmp = textclasslist.NameOfLayout(params.textclass, par->layout);
+		string const tmp = textclasslist.NameOfLayout(params.textclass, par->layout);
 		if (tmp == "Itemize") {
 			ltype = 1;
 			ltype_depth = depth+1;
@@ -1573,10 +1570,10 @@ string const Buffer::asciiParagraph(LyXParagraph const * par,
 	}
       
 	font1 = LyXFont(LyXFont::ALL_INHERIT, params.language_info);
-	for (i = 0; i < par->size(); ++i) {
+	for (LyXParagraph::size_type i = 0; i < par->size(); ++i) {
 		if (!i && !footnoteflag && !noparbreak){
 			buffer << "\n\n";
-			for(j = 0; j < depth; ++j)
+			for(char j = 0; j < depth; ++j)
 				buffer << "  ";
 			currlinelen = depth * 2;
 			switch(ltype) {
@@ -1598,7 +1595,7 @@ string const Buffer::asciiParagraph(LyXParagraph const * par,
 				break;
 			}
 			if (ltype_depth > depth) {
-				for(j = ltype_depth - 1; j > depth; --j)
+				for(char j = ltype_depth - 1; j > depth; --j)
 					buffer << "  ";
 				currlinelen += (ltype_depth-depth)*2;
 			}
@@ -1631,11 +1628,11 @@ string const Buffer::asciiParagraph(LyXParagraph const * par,
 			break;
 		case LyXParagraph::META_NEWLINE:
 			buffer << "\n";
-			for(j = 0; j < depth; ++j)
+			for(char j = 0; j < depth; ++j)
 				buffer << "  ";
 			currlinelen = depth * 2;
 			if (ltype_depth > depth) {
-				for(j = ltype_depth;
+				for(char j = ltype_depth;
 				    j > depth; --j)
 					buffer << "  ";
 				currlinelen += (ltype_depth - depth) * 2;
@@ -1652,11 +1649,11 @@ string const Buffer::asciiParagraph(LyXParagraph const * par,
 			    (c == ' ') && ((i + 2) < par->size()))
 			{
 				buffer << "\n";
-				for(j = 0; j < depth; ++j)
+				for(char j = 0; j < depth; ++j)
 					buffer << "  ";
 				currlinelen = depth * 2;
 				if (ltype_depth > depth) {
-					for(j = ltype_depth;
+					for(char j = ltype_depth;
 					    j > depth; --j)
 						buffer << "  ";
 					currlinelen += (ltype_depth-depth)*2;

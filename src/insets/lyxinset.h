@@ -338,7 +338,7 @@ public:
 	virtual UpdatableInset * GetFirstLockingInsetOfType(Inset::Code c)
 		{ return (c == LyxCode()) ? this : 0; }
 	///
-	virtual int InsetInInsetY() { return 0; }
+	virtual unsigned int InsetInInsetY() { return 0; }
 	///
 	virtual bool UpdateInsetInInset(BufferView *, Inset *)
 		{ return false; }

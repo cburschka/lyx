@@ -290,7 +290,7 @@ void FormCitation::setSize( int hbrsr, bool bibPresent ) const
 }
 
 
-void FormCitation::input( long data )
+void FormCitation::input(long data)
 {
 	State cb = static_cast<FormCitation::State>( data );
 

@@ -51,13 +51,13 @@ public:
 
 	/** Draws the screen form textposition y. Uses as much of
 	    the already printed pixmap as possible */
-	void Draw(LyXText *, unsigned long y);
+	void Draw(LyXText *, unsigned int y);
 
 	/// Redraws the screen, without using existing pixmap
 	void Redraw(LyXText *);
    
 	/// Returns a new top so that the cursor is visible
-	unsigned long TopCursorVisible(LyXText const *);
+	unsigned int TopCursorVisible(LyXText const *);
 	/// Redraws the screen such that the cursor is visible
 	bool FitCursor(LyXText *);
 	///
@@ -67,11 +67,11 @@ public:
 	///
 	void CursorToggle(LyXText const *);
 	///
-	void ShowManualCursor(LyXText const *, long x, long y,
+	void ShowManualCursor(LyXText const *, int x, int y,
 			      int asc, int desc,
 			      Cursor_Shape shape);
 	/// returns 1 if first has changed, otherwise 0
-	bool FitManualCursor(LyXText *, long, long, int, int);
+	bool FitManualCursor(LyXText *, int, int, int, int);
 	///
 	void ToggleSelection(LyXText *, bool = true, int y_offset = 0,
 			     int x_offset = 0);
@@ -94,11 +94,12 @@ private:
 	void expose(int x, int y, int exp_width, int exp_height); 
 
 	/// y1 and y2 are coordinates of the screen
-	void DrawFromTo(LyXText *, int y1, int y2, int y_offset=0, int x_offset=0);
+	void DrawFromTo(LyXText *, int y1, int y2,
+			int y_offset = 0, int x_offset = 0);
 
 	/// y is a coordinate of the text
-	void DrawOneRow(LyXText *, Row * row, long y_text, int y_offset=0,
-			int x_offset=0);
+	void DrawOneRow(LyXText *, Row * row, int y_text, int y_offset = 0,
+			int x_offset = 0);
 
 	///
 	WorkArea & owner;

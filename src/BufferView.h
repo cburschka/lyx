@@ -192,11 +192,11 @@ public:
 	///
 	bool lockInset(UpdatableInset * inset);
 	///
-	void showLockedInsetCursor(long x, long y, int asc, int desc);
+	void showLockedInsetCursor(int x, int y, int asc, int desc);
 	///
 	void hideLockedInsetCursor();
 	///
-	void fitLockedInsetCursor(long x, long y, int asc, int desc);
+	void fitLockedInsetCursor(int x, int y, int asc, int desc);
 	///
 	int unlockInset(UpdatableInset * inset);
 	///

@@ -698,7 +698,8 @@ string const LyXFunc::Dispatch(int ac,
 			}
 			// Undo/Redo pre 0.13 is a bit tricky for insets.
 		        if (action == LFUN_UNDO) {
-				int slx, sly;
+				int slx;
+				int sly;
 				UpdatableInset * inset = 
 					owner->view()->the_locking_inset;
 				inset->GetCursorPos(owner->view(), slx, sly);
@@ -717,7 +718,8 @@ string const LyXFunc::Dispatch(int ac,
 					inset->Edit(owner->view(),slx,sly,0);
 				return string();
 			} else if (action == LFUN_REDO) {
-				int slx, sly;
+				int slx;
+				int sly;
 				UpdatableInset * inset = owner->view()->
 					the_locking_inset;
 				inset->GetCursorPos(owner->view(), slx, sly);
@@ -2345,9 +2347,9 @@ string const LyXFunc::Dispatch(int ac,
 		
 	case LFUN_SETXY:
 	{
-		int  x;
-		long y;
-		::sscanf(argument.c_str(), " %d %ld", &x, &y);
+		int x;
+		int y;
+		::sscanf(argument.c_str(), " %d %d", &x, &y);
 		owner->view()->text->SetCursorFromCoordinates(owner->view(), x, y);
 	}
 	break;

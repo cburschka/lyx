@@ -47,9 +47,9 @@ public:
 	///
 	int x_fix() const;
 	///
-	void y(unsigned long i);
+	void y(int i);
 	///
-	unsigned long y() const;
+	int y() const;
 	///
 	void row(Row * r);
 	///
@@ -68,7 +68,7 @@ private:
 	///
 	int x_fix_;
 	///
-	unsigned long y_;
+	int y_;
 	///
 	Row * row_;
 };

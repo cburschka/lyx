@@ -43,7 +43,7 @@ namespace lyx {
 	/// returns the name of the user (not used currently)
 	string const getUserName();
 	///
-	int kill(long int pid, int sig);
+	int kill(int pid, int sig);
 	///
 	void abort();
         ///
@@ -81,7 +81,7 @@ struct lyx {
 	/// returns the name of the user (not used currently)
 	static string const getUserName();
 	///
-	static int kill(long int pid, int sig);
+	static int kill(int pid, int sig);
 	///
 	static void abort();
 	///

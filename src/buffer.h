@@ -358,16 +358,16 @@ private:
 #ifndef NEW_INSETS
         ///
         void linuxDocHandleFootnote(std::ostream & os,
-				    LyXParagraph * & par, int const depth);
+				    LyXParagraph * & par, int depth);
 #endif
         ///
 	void DocBookHandleCaption(std::ostream & os, string & inner_tag,
-				  int const depth, int desc_on,
+				  int depth, int desc_on,
 				  LyXParagraph * & par);
 #ifndef NEW_INSETS
         ///
 	void DocBookHandleFootnote(std::ostream & os,
-				   LyXParagraph * & par, int const depth);
+				   LyXParagraph * & par, int depth);
 #endif
 	///
         void sgmlOpenTag(std::ostream & os, int depth,
@@ -380,11 +380,11 @@ private:
 			   string const & message);
         ///
 	void SimpleLinuxDocOnePar(std::ostream & os, LyXParagraph * par,
-				  int desc_on, int const depth);
+				  int desc_on, int depth);
         ///
 	void SimpleDocBookOnePar(std::ostream &, string & extra,
 				 LyXParagraph * par, int & desc_on,
-				 int const depth);
+				 int depth);
 
 	/// LinuxDoc.
 	void push_tag(std::ostream & os, string const & tag,

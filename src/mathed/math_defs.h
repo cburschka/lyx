@@ -45,9 +45,9 @@ enum math_align {
 	MATH_ALIGN_TOP = 8
 };
 ///
-#define MATH_COLSEP 8
+static int const MATH_COLSEP = 8;
 ///
-#define MATH_ROWSEP 8
+static int const MATH_ROWSEP = 8;
 
 
 /// Standard Math Sizes (Math mode styles)
@@ -358,20 +358,20 @@ class MathParInset: public MathedInset  {
     ///
     virtual void SetAlign(char, string const &) {}
     ///
-    virtual int GetColumns() { return 1; }
+    virtual int GetColumns() const { return 1; }
     ///
-    virtual int GetRows() { return 1; }
+    virtual int GetRows() const { return 1; }
     ///
-    virtual bool isMatrix() { return false; }
+    virtual bool isMatrix() const { return false; }
     // Vertical switching
     ///
     virtual bool setArgumentIdx(int i) { return (i == 0); }
     ///
     virtual bool setNextArgIdx() { return false; }
     ///
-    virtual int  getArgumentIdx() { return 0; }
+    virtual int getArgumentIdx() const { return 0; }
     ///
-    virtual int  getMaxArgumentIdx() { return 0; }
+    virtual int getMaxArgumentIdx() const { return 0; }
     ///
     virtual void SetStyle(short);
     ///
@@ -497,11 +497,11 @@ class MathMatrixInset: public MathParInset {
 	return h_align;
     }
     ///
-    int GetColumns() { return nc; }
+    int GetColumns() const { return nc; }
     ///
-    int GetRows() { return nr; }
+    int GetRows() const { return nr; }
     ///
-    virtual bool isMatrix() { return true; }
+    virtual bool isMatrix() const { return true; }
 
     /// Use this to manage the extra information independently of paragraph
     MathedRowSt * getRowSt() const { return row; }

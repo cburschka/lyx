@@ -86,15 +86,16 @@ void LyXScreen::expose(int x, int y, int exp_width, int exp_height)
 }
 
 
-void LyXScreen::DrawFromTo(LyXText * text, int y1, int y2, int y_offset, int x_offset)
+void LyXScreen::DrawFromTo(LyXText * text,
+			   int y1, int y2, int y_offset, int x_offset)
 {
-	long y_text = text->first + y1;
+	int y_text = text->first + y1;
    
 	// get the first needed row 
 	Row * row = text->GetRowNearY(y_text);
 	// y_text is now the real beginning of the row
    
-	long y = y_text - text->first;
+	int y = y_text - text->first;
 	// y1 is now the real beginning of row on the screen
 	
 	while (row != 0 && y < y2) {
@@ -120,13 +121,13 @@ void LyXScreen::DrawFromTo(LyXText * text, int y1, int y2, int y_offset, int x_o
 }
 
 
-void LyXScreen::DrawOneRow(LyXText * text, Row * row, long y_text,
+void LyXScreen::DrawOneRow(LyXText * text, Row * row, int y_text,
 			   int y_offset, int x_offset)
 {
-	long y = y_text - text->first + y_offset;
+	int y = y_text - text->first + y_offset;
       
 	if (y + row->height() > 0
-	    && y - row->height() <= long(owner.height())) {
+	    && y - row->height() <= owner.height()) {
 		// ok there is something visible
 		LyXText::text_status st = text->status;
 		do {
@@ -142,11 +143,11 @@ void LyXScreen::DrawOneRow(LyXText * text, Row * row, long y_text,
 
 /* draws the screen, starting with textposition y. uses as much already
 * printed pixels as possible */
-void LyXScreen::Draw(LyXText * text, unsigned long y)
+void LyXScreen::Draw(LyXText * text, unsigned int y)
 {
 	if (cursor_visible) HideCursor();
 
-	unsigned long old_first = text->first;
+	unsigned int old_first = text->first;
 	text->first = y;
 
 	// is any optimiziation possible?
@@ -215,20 +216,20 @@ void LyXScreen::ShowCursor(LyXText const * text)
 
 /* returns true if first has changed, otherwise false */ 
 bool LyXScreen::FitManualCursor(LyXText * text,
-				long /*x*/, long y, int asc, int desc)
+				int /*x*/, int y, int asc, int desc)
 {
-	long newtop = text->first;
+	int newtop = text->first;
   
 	if (y + desc - text->first >= owner.height())
 		newtop = y - 3 * owner.height() / 4;  // the scroll region must be so big!!
-	else if (y - asc < long(text->first)
+	else if (y - asc < text->first
 		&& text->first > 0) {
 		newtop = y - owner.height() / 4;
 	}
 
-	newtop = max(newtop, 0L); // can newtop ever be < 0? (Lgb)
+	newtop = max(newtop, 0); // can newtop ever be < 0? (Lgb)
   
-	if (newtop != long(text->first)) {
+	if (newtop != text->first) {
 		Draw(text, newtop);
 		text->first = newtop;
 		return true;
@@ -237,13 +238,13 @@ bool LyXScreen::FitManualCursor(LyXText * text,
 }
 
 
-void LyXScreen::ShowManualCursor(LyXText const * text, long x, long y,
+void LyXScreen::ShowManualCursor(LyXText const * text, int x, int y,
 				 int asc, int desc, Cursor_Shape shape)
 {
-	unsigned long y1 = max(y - text->first - asc, 0UL);
-	typedef unsigned long ulong;
+	unsigned int y1 = max(y - text->first - asc, 0U);
+	typedef unsigned int uint;
 	
-	unsigned long y2 = min(y - text->first + desc, ulong(owner.height()));
+	unsigned int y2 = min(y - text->first + desc, owner.height());
 
 	// Secure against very strange situations
 	y2 = max(y2, y1);
@@ -342,9 +343,9 @@ void LyXScreen::CursorToggle(LyXText const * text)
 
 
 /* returns a new top so that the cursor is visible */ 
-unsigned long LyXScreen::TopCursorVisible(LyXText const * text)
+unsigned int LyXScreen::TopCursorVisible(LyXText const * text)
 {
-	long newtop = text->first;
+	int newtop = text->first;
 
 	if (text->cursor.y()
 	    - text->cursor.row()->baseline()
@@ -365,11 +366,11 @@ unsigned long LyXScreen::TopCursorVisible(LyXText const * text)
 			newtop = text->cursor.y() - text->cursor.row()->baseline();
 		else {
 			newtop = text->cursor.y() - owner.height() / 4;
-			newtop = min(newtop, long(text->first));
+			newtop = min(newtop, int(text->first));
 		}
 	}
 
-	newtop = max(newtop, 0L);
+	newtop = max(newtop, 0);
 
 	return newtop;
 }
@@ -380,7 +381,7 @@ unsigned long LyXScreen::TopCursorVisible(LyXText const * text)
 bool LyXScreen::FitCursor(LyXText * text)
 {
 	// Is a change necessary?
-	unsigned long newtop = TopCursorVisible(text);
+	unsigned int newtop = TopCursorVisible(text);
 	bool result = (newtop != text->first);
 	if (result)
 		Draw(text, newtop);
@@ -393,7 +394,7 @@ void LyXScreen::Update(LyXText * text, int y_offset, int x_offset)
 	switch(text->status) {
 	case LyXText::NEED_MORE_REFRESH:
 	{
-		long y = max(text->refresh_y - long(text->first), 0L);
+		int y = max(int(text->refresh_y - text->first), 0);
 		int height;
 		if (text->inset_owner)
 			height = text->inset_owner->ascent(owner.owner(),
@@ -433,11 +434,11 @@ void LyXScreen::ToggleSelection(LyXText * text,  bool kill_selection,
 	// only if there is a selection
 	if (!text->selection) return;
 
-	long bottom = min(max(text->sel_end_cursor.y()
+	int bottom = min(max(text->sel_end_cursor.y()
 			      - text->sel_end_cursor.row()->baseline()
 			      + text->sel_end_cursor.row()->height(), text->first),
 			  text->first + owner.height());
-	long top = min(max(text->sel_start_cursor.y()
+	int top = min(max(text->sel_start_cursor.y()
 			   - text->sel_start_cursor.row()->baseline(), text->first),
 		       text->first + owner.height());
 
@@ -457,16 +458,16 @@ void LyXScreen::ToggleToggle(LyXText * text, int y_offset, int x_offset)
 	    && text->toggle_cursor.pos() == text->toggle_end_cursor.pos())
 		return;
 	
-	long top = text->toggle_cursor.y()
+	int top = text->toggle_cursor.y()
 		- text->toggle_cursor.row()->baseline();
-	long bottom = text->toggle_end_cursor.y()
+	int bottom = text->toggle_end_cursor.y()
 		- text->toggle_end_cursor.row()->baseline() 
 		+ text->toggle_end_cursor.row()->height();
 	
-	typedef unsigned long ulong;
+	typedef unsigned int uint;
 	
-	bottom = min(max(ulong(bottom), text->first), text->first + owner.height());
-	top = min(max(ulong(top), text->first), text->first + owner.height());
+	bottom = min(max(uint(bottom), text->first), text->first + owner.height());
+	top = min(max(uint(top), text->first), text->first + owner.height());
 
 	DrawFromTo(text, top - text->first, bottom - text->first, y_offset,
 		   x_offset);

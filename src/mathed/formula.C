@@ -56,9 +56,11 @@ LyXFont * Math_Fonts = 0; // this is only used by Whichfont and mathed_init_font
 
 static LyXFont::FONT_SIZE lfont_size = LyXFont::SIZE_NORMAL;
 
-// local global 
-static int sel_x, sel_y;
+// local global
+static int sel_x;
+static int sel_y;
 static bool sel_flag;
+
 MathedCursor * InsetFormula::mathcursor = 0; 
 
 
@@ -536,7 +538,8 @@ void InsetFormula::ToggleInsetCursor(BufferView * bv)
   if (!mathcursor)
     return;
 
-  int x, y;
+  int x;
+  int y;
   mathcursor->GetPos(x, y);
 //  x -= par->xo; 
   y -= par->yo; 
@@ -556,7 +559,8 @@ void InsetFormula::ShowInsetCursor(BufferView * bv)
 {
   if (!cursor_visible) {
     if (mathcursor) {
-      int x, y;
+      int x;
+      int y;
       mathcursor->GetPos(x, y);
       //  x -= par->xo; 
       y -= par->yo;
@@ -690,8 +694,7 @@ void InsetFormula::InsetMotionNotify(BufferView * bv,
 	mathcursor->SelStart();
 	ShowInsetCursor(bv); 
 	mathcursor->GetPos(sel_x, sel_y);
-    } else
-      if (sel_flag) {
+    } else if (sel_flag) {
 	  HideInsetCursor(bv);
 	  x += par->xo;
 	  y += par->yo;
@@ -827,7 +830,10 @@ InsetFormula::LocalDispatch(BufferView * bv,
 //      break;
     case LFUN_SETXY:
       {
-	 int x, y, x1, y1;
+	 int x;
+	 int y;
+	 int x1;
+	 int y1;
 	 istringstream ist(arg.c_str());
 	 ist >> x >> y;
 	 par->GetXY(x1, y1);

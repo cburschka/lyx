@@ -434,7 +434,9 @@ void InsetTabular::Edit(BufferView * bv, int x, int y, unsigned int button)
     }
     locked = true;
     the_locking_inset = 0;
-    inset_pos = inset_x = inset_y = 0;
+    inset_pos = 0;
+    inset_x = 0;
+    inset_y = 0;
     setPos(bv, x, y);
     sel_pos_start = sel_pos_end = cursor.pos();
     sel_cell_start = sel_cell_end = actcell;
@@ -550,7 +552,7 @@ bool InsetTabular::UpdateInsetInInset(BufferView * bv, Inset * inset)
 }
 
 
-int InsetTabular::InsetInInsetY()
+unsigned int InsetTabular::InsetInInsetY()
 {
     if (!the_locking_inset)
 	return 0;
@@ -959,7 +961,7 @@ bool InsetTabular::calculate_dimensions_of_cells(BufferView * bv,
 
 
 void InsetTabular::GetCursorPos(BufferView *,
-				unsigned long & x, unsigned long & y) const
+				int & x, int & y) const
 {
     x = cursor.x() - top_x;
     y = cursor.y();
@@ -1017,12 +1019,12 @@ void InsetTabular::setPos(BufferView * bv, int x, int y) const
     cursor.pos(0);
 	
     actcell = actrow = actcol = 0;
-    int ly = tabular->GetDescentOfRow(actrow);
+    unsigned int ly = tabular->GetDescentOfRow(actrow);
 
     // first search the right row
     while((ly < y) && (actrow < tabular->rows())) {
         cursor.y(cursor.y() + tabular->GetDescentOfRow(actrow) +
-	    tabular->GetAscentOfRow(actrow+1) +
+	    tabular->GetAscentOfRow(actrow + 1) +
             tabular->GetAdditionalHeight(tabular->GetCellNumber(actrow + 1,
 								actcol)));
         ++actrow;
@@ -1031,7 +1033,7 @@ void InsetTabular::setPos(BufferView * bv, int x, int y) const
     actcell = tabular->GetCellNumber(actrow, actcol);
 
     // now search the right column
-    int lx = tabular->GetWidthOfColumn(actcell) -
+    unsigned int lx = tabular->GetWidthOfColumn(actcell) -
 	tabular->GetAdditionalWidth(actcell);
     for(; !tabular->IsLastCellInRow(actcell) && (lx < x);
 	++actcell,lx += tabular->GetWidthOfColumn(actcell) +

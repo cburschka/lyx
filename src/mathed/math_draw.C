@@ -84,8 +84,7 @@ MathParInset::draw(Painter & pain, int x, int y)
 	    int yy = y;
 	    MathedInset * p = data.GetInset();
 	    if (cx == LM_TC_UP) {
-	       if (limits) {
-		  x -= (xp>p->Width()) ? p->Width()+(xp-p->Width())/2: xp;  
+	       if (limits) {		  x -= (xp>p->Width()) ? p->Width()+(xp-p->Width())/2: xp;  
 		  yy -= (asc + p->Descent()+4);
 	       } else
 		  yy -= (p->Descent()>asc) ? p->Descent()+4: asc;

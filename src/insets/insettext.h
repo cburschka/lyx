@@ -138,7 +138,7 @@ public:
     ///
     void GetCursorPos(BufferView *, int & x, int & y) const;
     ///
-    int InsetInInsetY();
+    unsigned int InsetInInsetY();
     ///
     void ToggleInsetCursor(BufferView *);
     ///
@@ -221,9 +221,9 @@ private:
     void removeNewlines();
 
     ///
-    long cx(BufferView *) const;
+    int cx(BufferView *) const;
     ///
-    long cy(BufferView *) const;
+    int cy(BufferView *) const;
     ///
     int cpos(BufferView *) const;
     ///
@@ -242,7 +242,7 @@ private:
     ///
     mutable int insetAscent;
     ///
-    mutable long insetDescent;
+    mutable int insetDescent;
     ///
     mutable int insetWidth;
     ///

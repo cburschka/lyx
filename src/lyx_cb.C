@@ -127,7 +127,7 @@ bool toggleall = true;
    otherwise 0 */
 // Now they work only for updatable insets. [Alejandro 080596]
 //int LockInset(UpdatableInset * inset);
-void ToggleLockedInsetCursor(long x, long y, int asc, int desc);
+void ToggleLockedInsetCursor(int x, int y, int asc, int desc);
 //void FitLockedInsetCursor(long x, long y, int asc, int desc);
 //int UnlockInset(UpdatableInset * inset);
 //void LockedInsetStoreUndo(Undo::undo_kind kind);

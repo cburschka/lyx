@@ -162,7 +162,8 @@ void MathedCursor::Redraw(Painter & pain)
 	lyxerr[Debug::MATHED] << "Mathed: Redrawing!" << endl;
 	par->Metrics();
 	int w = par->Width(), h = par->Height();
-	int x, y;
+	int x;
+	int y;
 	par->GetXY(x, y);
 	//mathed_set_font(LM_TC_VAR, 1);
 	pain.fillRectangle(x, y - par->Ascent(),
@@ -376,7 +377,7 @@ void MathedCursor::Insert(byte c, MathedTextCodes t)
       } else // Navigate between arguments
 	 if (p && p->GetType() == LM_OT_MACRO) {
 	     if (p->getArgumentIdx() < p->getMaxArgumentIdx()) {
-		 p->setArgumentIdx(p->getArgumentIdx()+1);
+		 p->setArgumentIdx(p->getArgumentIdx() + 1);
 		 cursor->SetData(p);
 		 return;
 	     }
@@ -499,7 +500,7 @@ bool MathedCursor::Up(bool sel)
 	} else {
 	    result = (p->getArgumentIdx() > 0);
 	    if (result) {
-		p->setArgumentIdx(p->getArgumentIdx()-1);
+		p->setArgumentIdx(p->getArgumentIdx() - 1);
 		cursor->SetData(p);
 	    }
 	}
@@ -551,7 +552,7 @@ bool MathedCursor::Down(bool sel)
 	} else {
 	    result = (p->getArgumentIdx() < p->getMaxArgumentIdx());
 	    if (result) {
-		p->setArgumentIdx(p->getArgumentIdx()+1);
+		p->setArgumentIdx(p->getArgumentIdx() + 1);
 		cursor->SetData(p);
 	    }
 	}
@@ -923,15 +924,25 @@ void MathedCursor::SelGetArea(int ** xp, int ** yp, int & np)
     }
     
     // single row selection
-    int i = 0, x, y, a, d, xo, yo, x1, y1, a1, d1;
+    int i = 0;
+    int a;
+    int d;
+    int a1;
+    int d1;
 
     // Balance anchor and cursor
     SelBalance();
  
+    int xo;
+    int yo;
     cursor->p->GetXY(xo, yo);
     int w = cursor->p->Width();
+    int x1;
+    int y1;
     cursor->GetPos(x1, y1);
     cursor->getAD(a1, d1);
+    int x;
+    int y;
     anchor->GetPos(x, y);
     anchor->getAD(a, d);
 

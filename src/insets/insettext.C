@@ -82,14 +82,19 @@ InsetText & InsetText::operator=(InsetText const & it)
 
 void InsetText::init(InsetText const * ins)
 {
-    top_y = last_width = last_height = 0;
-    insetAscent = insetDescent = insetWidth = 0;
+    top_y = 0;
+    last_width = 0;
+    last_height = 0;
+    insetAscent = 0;
+    insetDescent = 0;
+    insetWidth = 0;
     the_locking_inset = 0;
     cursor_visible = false;
     interline_space = 1;
     no_selection = false;
     need_update = INIT;
-    drawTextXOffset = drawTextYOffset = 0;
+    drawTextXOffset = 0;
+    drawTextYOffset = 0;
     autoBreakRows = false;
     drawFrame = NEVER;
     xpos = 0.0;
@@ -211,7 +216,7 @@ void InsetText::Read(Buffer const * buf, LyXLex & lex)
 
 int InsetText::ascent(BufferView * bv, LyXFont const &) const
 {
-    long int y_temp = 0;
+    int y_temp = 0;
     Row * row = TEXT(bv)->GetRowNearY(y_temp);
     insetAscent = row->ascent_of_text() + TEXT_TO_INSET_OFFSET;
     return insetAscent;
@@ -220,7 +225,7 @@ int InsetText::ascent(BufferView * bv, LyXFont const &) const
 
 int InsetText::descent(BufferView * bv, LyXFont const &) const
 {
-    long int y_temp = 0;
+    int y_temp = 0;
     Row * row = TEXT(bv)->GetRowNearY(y_temp);
     insetDescent = TEXT(bv)->height - row->ascent_of_text() +
 	TEXT_TO_INSET_OFFSET;
@@ -268,7 +273,7 @@ void InsetText::draw(BufferView * bv, LyXFont const & f,
     if (!cleared && ((need_update==FULL) || (top_x!=int(x)) ||
 		     (top_baseline!=baseline))) {
 	int w =  insetWidth;
-	int h = insetAscent + insetDescent;
+	unsigned int h = insetAscent + insetDescent;
 	int ty = baseline - insetAscent;
 	
 	if (ty < 0) {
@@ -308,7 +313,7 @@ void InsetText::draw(BufferView * bv, LyXFont const & f,
 	return;
     }
     x += TEXT_TO_INSET_OFFSET;
-    long int y = 0;
+    int y = 0;
     Row * row = TEXT(bv)->GetRowNearY(y);
     y += baseline - row->ascent_of_text();
     if (cleared || !locked || (need_update == FULL)) {
@@ -409,7 +414,7 @@ void InsetText::update(BufferView * bv, LyXFont const & font, bool reinit)
     if (TEXT(bv)->status == LyXText::NEED_MORE_REFRESH)
 	need_update = FULL;
 
-    long int y_temp = 0;
+    int y_temp = 0;
     Row * row = TEXT(bv)->GetRowNearY(y_temp);
     insetAscent = row->ascent_of_text() + TEXT_TO_INSET_OFFSET;
     insetDescent = TEXT(bv)->height - row->ascent_of_text() +
@@ -1060,14 +1065,15 @@ int InsetText::BeginningOfMainBody(Buffer const * buf, LyXParagraph * p) const
 }
 
 
-void InsetText::GetCursorPos(BufferView * bv, int & x, int & y) const
+void InsetText::GetCursorPos(BufferView * bv,
+			     int & x, int & y) const
 {
     x = cx(bv);
     y = cy(bv);
 }
 
 
-int InsetText::InsetInInsetY()
+unsigned int InsetText::InsetInInsetY()
 {
     if (!the_locking_inset)
 	return 0;
@@ -1226,12 +1232,14 @@ void InsetText::SetFont(BufferView * bv, LyXFont const & font, bool toggleall)
 bool InsetText::checkAndActivateInset(BufferView * bv, bool behind)
 {
     if (cpar(bv)->GetChar(cpos(bv)) == LyXParagraph::META_INSET) {
-	int x, y;
+	unsigned int x;
+	unsigned int y;
 	Inset * inset =
 	    static_cast<UpdatableInset*>(cpar(bv)->GetInset(cpos(bv)));
 	if (!inset || inset->Editable() != Inset::HIGHLY_EDITABLE)
 	    return false;
-	LyXFont font = TEXT(bv)->GetFont(bv->buffer(), cpar(bv), cpos(bv));
+	LyXFont const font =
+		TEXT(bv)->GetFont(bv->buffer(), cpar(bv), cpos(bv));
 	if (behind) {
 	    x = inset->width(bv, font);
 	    y = inset->descent(bv, font);
@@ -1240,7 +1248,7 @@ bool InsetText::checkAndActivateInset(BufferView * bv, bool behind)
 	}
 	inset_x = cx(bv) - top_x + drawTextXOffset;
 	inset_y = cy(bv) + drawTextYOffset;
-	inset->Edit(bv, x-inset_x, y-inset_y, 0);
+	inset->Edit(bv, x - inset_x, y - inset_y, 0);
 	if (!the_locking_inset)
 	    return false;
 	UpdateLocal(bv, CURSOR_PAR, false);
@@ -1253,9 +1261,9 @@ bool InsetText::checkAndActivateInset(BufferView * bv, bool behind)
 bool InsetText::checkAndActivateInset(BufferView * bv, int x, int y,
 				      int button)
 {
-    int tmp_x = x - drawTextXOffset;
-    int tmp_y = y + insetAscent;
-    Inset * inset = bv->checkInsetHit(TEXT(bv), tmp_x, tmp_y, button);
+    x = x - drawTextXOffset;
+    y = y + insetAscent;
+    Inset * inset = bv->checkInsetHit(TEXT(bv), x, y, button);
 
     if (inset) {
 	if (x < 0)
@@ -1355,13 +1363,13 @@ LyXFont InsetText::GetDrawFont(BufferView * bv, LyXParagraph * p, int pos) const
 #endif
 
 
-long InsetText::cx(BufferView * bv) const
+int InsetText::cx(BufferView * bv) const
 {
     return TEXT(bv)->cursor.x() + top_x + TEXT_TO_INSET_OFFSET;
 }
 
 
-long InsetText::cy(BufferView * bv) const
+int InsetText::cy(BufferView * bv) const
 {
     LyXFont font;
     return TEXT(bv)->cursor.y() - ascent(bv, font) + TEXT_TO_INSET_OFFSET;

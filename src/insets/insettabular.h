@@ -111,7 +111,7 @@ public:
     ///
     bool UpdateInsetInInset(BufferView *, Inset *);
     ///
-    int InsetInInsetY();
+    unsigned int InsetInInsetY();
     ///
     UpdatableInset * GetLockingInset();
     ///
@@ -145,8 +145,7 @@ public:
     ///
     Inset::Code LyxCode() const { return Inset::TABULAR_CODE; }
     ///
-    void GetCursorPos(BufferView *, unsigned long & x,
-		      unsigned long & y) const;
+    void GetCursorPos(BufferView *, int & x, int & y) const;
     ///
     void ToggleInsetCursor(BufferView *);
     ///
@@ -244,9 +243,9 @@ private:
     ///
     mutable int inset_pos;
     ///
-    mutable int inset_x;
+    mutable unsigned int inset_x;
     ///
-    mutable unsigned long inset_y;
+    mutable unsigned int inset_y;
     ///
     mutable int sel_pos_start;
     ///

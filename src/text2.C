@@ -345,7 +345,7 @@ void LyXText::RemoveRow(Row * row) const
 	/* this must not happen before the currentrow for clear reasons.
 	   so the trick is just to set the current row onto the previous
 	   row of this row */
-	long unused_y;
+	int unused_y;
 	GetRow(row->par(), row->pos(), unused_y);
    
 	if (row->next())
@@ -941,7 +941,7 @@ void LyXText::SetFont(BufferView * bview, LyXFont const & font, bool toggleall)
 void LyXText::RedoHeightOfParagraph(BufferView * bview, LyXCursor const & cur)
 {
 	Row * tmprow = cur.row();
-	long y = cur.y() - tmprow->baseline();
+	int y = cur.y() - tmprow->baseline();
 
 	SetHeightOfRow(bview, tmprow);
 #ifndef NEW_INSETS
@@ -975,7 +975,7 @@ void LyXText::RedoDrawingOfParagraph(BufferView * bview, LyXCursor const & cur)
 {
 	Row * tmprow = cur.row();
    
-	long y = cur.y() - tmprow->baseline();
+	int y = cur.y() - tmprow->baseline();
 	SetHeightOfRow(bview, tmprow);
 #ifndef NEW_INSETS
 	LyXParagraph * first_phys_par = tmprow->par()->FirstPhysicalPar();
@@ -1014,7 +1014,7 @@ void LyXText::RedoParagraphs(BufferView * bview, LyXCursor const & cur,
    
 	Row * tmprow = cur.row();
    
-	long y = cur.y() - tmprow->baseline();
+	int y = cur.y() - tmprow->baseline();
    
 	if (!tmprow->previous()){
 		first_phys_par = FirstParagraph();   // a trick/hack for UNDO
@@ -1247,10 +1247,10 @@ void  LyXText::CursorBottom(BufferView * bview) const
 /* returns a pointer to the row near the specified y-coordinate
 * (relative to the whole text). y is set to the real beginning
 * of this row */
-Row * LyXText::GetRowNearY(long & y) const
+Row * LyXText::GetRowNearY(int & y) const
 {
 	Row * tmprow = firstrow;
-	long tmpy = 0;
+	int tmpy = 0;
 
 	while (tmprow->next() && tmpy + tmprow->height() <= y) {
 		tmpy += tmprow->height();
@@ -2651,7 +2651,7 @@ void LyXText::CheckParagraph(BufferView * bview, LyXParagraph * par,
 {
 	LyXCursor tmpcursor;			
 
-	long y = 0;
+	int y = 0;
 	LyXParagraph::size_type z;
 	Row * row = GetRow(par, pos, y);
 	
@@ -2799,7 +2799,7 @@ void LyXText::SetCursor(BufferView *bview, LyXCursor & cur, LyXParagraph * par,
 	cur.boundary(boundary);
 
 	/* get the cursor y position in text  */
-	long y = 0;
+	int y = 0;
 	Row * row = GetRow(par, pos, y);
 	/* y is now the beginning of the cursor row */ 
 	y += row->baseline();
@@ -2918,7 +2918,7 @@ void LyXText::SetCurrentFont(BufferView * bview) const
 }
 
 
-void LyXText::SetCursorFromCoordinates(BufferView * bview, int x, long y) const
+void LyXText::SetCursorFromCoordinates(BufferView * bview, int x, int y) const
 {
 	LyXCursor old_cursor = cursor;
    
@@ -2940,7 +2940,7 @@ void LyXText::SetCursorFromCoordinates(BufferView * bview, int x, long y) const
 
 
 void LyXText::SetCursorFromCoordinates(BufferView * bview, LyXCursor & cur,
-				       int x, long y) const
+				       int x, int y) const
 {
 	/* get the row first */ 
    

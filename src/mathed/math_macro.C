@@ -128,12 +128,13 @@ void MathMacro::draw(Painter & pain, int x, int y)
     tmplate->update(this);
     tmplate->SetStyle(size);
     tmplate->draw(pain, x, y);
-    for (int i = 0; i < nargs; ++i)
-      tmplate->GetMacroXY(i, args[i].x, args[i].y);
+    for (int i = 0; i < nargs; ++i) {
+	    tmplate->GetMacroXY(i, args[i].x, args[i].y);
+    }
 }
 
 
-int MathMacro::GetColumns()
+int MathMacro::GetColumns() const
 {
     return tmplate->getMacroPar(idx)->GetColumns();
 }
@@ -321,7 +322,7 @@ void MathMacroTemplate::draw(Painter & pain, int x, int y)
 
 void MathMacroTemplate::Metrics()
 {
-    bool expnd = (nargs>0) ? args[0].getExpand(): false;
+    bool expnd = (nargs > 0) ? args[0].getExpand(): false;
     
     if (flags & MMF_Edit) {
 	for (int i = 0; i < nargs; ++i) {
@@ -342,12 +343,12 @@ void MathMacroTemplate::Metrics()
 
 void MathMacroTemplate::update(MathMacro * macro)
 {
-    int idx = (macro) ? macro->getArgumentIdx(): 0;
+    int idx = (macro) ? macro->getArgumentIdx() : 0;
     for (int i = 0; i < nargs; ++i) {
 	if (macro) {
 	    macro->setArgumentIdx(i);
 	    args[i].SetData(macro->GetData());
-	    MathedRowSt *row = macro->getRowSt();
+	    MathedRowSt * row = macro->getRowSt();
 	    args[i].setRowSt(row);
 	}
     }	

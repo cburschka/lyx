@@ -1136,7 +1136,7 @@ void BufferView::Pimpl::cursorPrevious()
 {
 	if (!bv_->text->cursor.row()->previous()) return;
 	
-	long y = bv_->text->first;
+	int y = bv_->text->first;
 	Row * cursorrow = bv_->text->cursor.row();
 	bv_->text->SetCursorFromCoordinates(bv_, bv_->text->cursor.x_fix(), y);
 	bv_->text->FinishUndo();
@@ -1158,7 +1158,7 @@ void BufferView::Pimpl::cursorNext()
 {
 	if (!bv_->text->cursor.row()->next()) return;
 	
-	long y = bv_->text->first;
+	int y = bv_->text->first;
 	bv_->text->GetRowNearY(y);
 	Row * cursorrow = bv_->text->cursor.row();
 	bv_->text->SetCursorFromCoordinates(bv_, bv_->text->cursor.x_fix(), y

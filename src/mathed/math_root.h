@@ -53,11 +53,11 @@ public:
     ///
     bool setArgumentIdx(int i);
     ///
-    int  getArgumentIdx() { return idx; }
+    int getArgumentIdx() const { return idx; }
     ///
-    int  getMaxArgumentIdx() { return 1; }
+    int getMaxArgumentIdx() const { return 1; }
     ///
-    void  SetStyle(short);
+    void SetStyle(short);
 
 protected:
     ///

@@ -55,11 +55,11 @@ public:
     ///
     bool setArgumentIdx(int);
     ///
-    int  getArgumentIdx();
+    int getArgumentIdx() const;
     ///
-    int  getMaxArgumentIdx();
+    int getMaxArgumentIdx() const;
     ///
-    int GetColumns();
+    int GetColumns() const;
     ///
     void GetXY(int &, int &) const;
     ///
@@ -71,7 +71,7 @@ public:
     ///
     void SetData(LyxArrayBase *);
     ///
-    MathedTextCodes getTCode() { return tcode; }
+    MathedTextCodes getTCode() const { return tcode; }
     ///
     bool Permit(short);
     
@@ -128,7 +128,7 @@ public:
     /// Is expanded or not
     void setExpand(bool e) { expnd_mode = e; }
     /// Is expanded or not
-    bool getExpand() { return expnd_mode; }
+    bool getExpand() const { return expnd_mode; }
 private:
     ///
     bool expnd_mode;
@@ -154,11 +154,11 @@ public:
     /// useful for special insets
     void  setTCode(MathedTextCodes t) { tcode = t; }
     ///
-    MathedTextCodes getTCode() { return tcode; }
+    MathedTextCodes getTCode() const { return tcode; }
     /// 
     void setArgument(LyxArrayBase *, int i= 0);
     /// Number of arguments
-    int getNoArgs() { return nargs; }
+    int getNoArgs() const { return nargs; }
     ///
     void GetMacroXY(int, int &, int &) const;
     ///
@@ -235,13 +235,13 @@ bool MathMacro::setArgumentIdx(int i)
 }
 
 inline
-int  MathMacro::getArgumentIdx() 
+int MathMacro::getArgumentIdx() const 
 { 
     return idx; 
 }
 
 inline
-int  MathMacro::getMaxArgumentIdx() 
+int MathMacro::getMaxArgumentIdx() const 
 { 
     return nargs - 1; 
 } 
