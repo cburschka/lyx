@@ -72,7 +72,9 @@ using std::vector;
 using std::find;
 using std::flush;
 using std::endl;
+#ifdef HAVE_SSTREAM
 using std::ostringstream;
+#endif
 
 extern BufferView * current_view;
 extern FL_OBJECT * figinset_canvas;
@@ -540,12 +542,12 @@ void runqueue()
 			ostringstream t2;
 #else
 			char tbuf2[80];
-			ostrstream t2(tbuf2, sizeof(tbuf));
+			ostrstream t2(tbuf2, sizeof(tbuf2));
 #endif
 			t2 << "GHOSTVIEW=" << fl_get_canvas_id(figinset_canvas)
 			   << ' ' << p->data->bitmap;
 #ifndef HAVE_SSTREAM
-			<< '\0';
+			t2 << '\0';
 #endif
 			// now set up ghostview property on a window
 			// #warning BUG seems that the only bug here
@@ -559,7 +561,7 @@ void runqueue()
 			t1 << "0 0 0 0 " << p->data->wid << ' '
 			   << p->data->hgh << " 72 72 0 0 0 0";
 #ifndef HAVE_SSTREAM
-			<< '\0';
+			t1 << '\0';
 #endif
 			
 			if (lyxerr.debugging()) {
@@ -614,16 +616,22 @@ void runqueue()
 					XInternAtom(tempdisp, "GHOSTVIEW", false),
 					XInternAtom(tempdisp, "STRING", false),
 					8, PropModeAppend, 
+#ifdef HAVE_SSTREAM
 					reinterpret_cast<unsigned char*>(const_cast<char*>(t1.str().c_str())),
-					t1.str().size());
+					t1.str().size()
+#else
+					reinterpret_cast<unsigned char*>(const_cast<char*>(t1.str())),
+					strlen(t1.str())
+#endif
+				);
 			XUngrabServer(tempdisp);
 			XFlush(tempdisp);
 
 #ifdef HAVE_SSTREAM
 			ostringstream t3;
 #else
-			char tbuf[384];
-			ostrstream t3(tbuf, sizeof(tbuf));
+			char tbuf3[384];
+			ostrstream t3(tbuf3, sizeof(tbuf3));
 #endif
 			switch (p->data->flags & 3) {
 			case 0: t3 << 'H'; break; // Hidden
@@ -640,7 +648,7 @@ void runqueue()
 			t3 << ' ' << BlackPixelOfScreen(DefaultScreenOfDisplay(tempdisp))
 			   << ' ' << background_pixel;
 #ifndef HAVE_SSTREAM
-			<< '\0';
+			t3 << '\0';
 #endif
 
 			XGrabServer(tempdisp);
@@ -650,8 +658,14 @@ void runqueue()
 						    "GHOSTVIEW_COLORS", false),
 					XInternAtom(tempdisp, "STRING", false),
 					8, PropModeReplace, 
+#ifdef HAVE_SSTREAM
 					reinterpret_cast<unsigned char*>(const_cast<char*>(t3.str().c_str())),
-					t3.str().size());
+					t3.str().size()
+#else
+					reinterpret_cast<unsigned char*>(const_cast<char*>(t3.str())),
+					strlen(t3.str())
+#endif
+				);
 			XUngrabServer(tempdisp);
 			XFlush(tempdisp);
 			
