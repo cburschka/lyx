@@ -35,6 +35,8 @@ public:
 	string name() const;
 	///
 	bool match(MathInset *) const;
+	/// request "external features"
+	void validate(LaTeXFeatures & features) const;
 
 	///
 	void normalize(NormalStream &) const;

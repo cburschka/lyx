@@ -34,6 +34,8 @@ public:
 	string str() const { return str_; }
 	///
 	MathStringInset * asStringInset() { return this; }
+	/// request "external features"
+	void validate(LaTeXFeatures & features) const;
 
 	///
 	void normalize(NormalStream &) const;

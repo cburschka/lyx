@@ -116,3 +116,10 @@ void MathStringInset::write(WriteStream & os) const
 	else 
 		os << str_;
 }
+
+
+void MathStringInset::validate(LaTeXFeatures & features) const
+{
+	// if (...)
+	//	features.require("amssymb");
+}

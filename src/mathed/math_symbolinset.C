@@ -183,3 +183,8 @@ void MathSymbolInset::infoize(std::ostream & os) const
 }
 
 
+void MathSymbolInset::validate(LaTeXFeatures & features) const
+{
+	// if (...)
+	//	features.require("amssymb");
+}
