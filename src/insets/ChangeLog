@@ -1,3 +1,9 @@
+2001-08-07  Juergen Vigna  <jug@sad.it>
+
+	* insetert.C (read): don't use InsetCollapsable::read as we don't
+	write the collapsed status anymore only the status.
+	(write): ditto.
+
 2001-08-06  Juergen Vigna  <jug@sad.it>
 
 	* insetert.C (set_latex_font): use LyXText's setFont directly.

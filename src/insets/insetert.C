@@ -99,12 +99,12 @@ void InsetERT::read(Buffer const * buf, LyXLex & lex)
 			string const tmp_token = lex.getString();
 			
 			if (tmp_token == "Inlined") {
-				status_ = Inlined;
+				status(0, Inlined);
 			} else if (tmp_token == "Collapsed") {
-				status_ = Collapsed;
+				status(0, Collapsed);
 			} else {
 				// leave this as default!
-				status_ = Open;
+				status(0, Open);
 			}
 			
 			token_found = true;
@@ -115,12 +115,25 @@ void InsetERT::read(Buffer const * buf, LyXLex & lex)
 			lex.pushToken(token);
 		}
 	}
-	InsetCollapsable::read(buf, lex);
+#warning this should be really short lived only for compatibility to
+#warning files written 07/08/2001 so this has to go before 1.2.0! (Jug)
+	if (lex.isOK()) {
+		lex.next();
+		string const token = lex.getString();
+		if (token == "collapsed") {
+			lex.next();
+			collapsed_ = lex.getBool();
+		} else {
+			// Take countermeasures
+			lex.pushToken(token);
+		}
+	}
+	inset.read(buf, lex);
 	if (!token_found) {
 		if (collapsed_) {
-			status_ = Collapsed;
+			status(0, Collapsed);
 		} else {
-			status_ = Open;
+			status(0, Open);
 		}
 	}
 	setButtonLabel();
@@ -145,7 +158,8 @@ void InsetERT::write(Buffer const * buf, ostream & os) const
 
 	os << getInsetName() << "\n"
 	   << "status "<< st << "\n";
-	InsetCollapsable::write(buf, os);
+
+	inset.writeParagraphData(buf, os);
 }
 
 
@@ -454,10 +468,12 @@ void InsetERT::status(BufferView * bv, ERTStatus const st)
 			collapsed_ = true;
 			need_update = FULL;
 			setButtonLabel();
-			bv->unlockInset(this);
+			if (bv)
+				bv->unlockInset(this);
 			break;
 		}
-		bv->updateInset(this, true);
+		if (bv)
+			bv->updateInset(this, true);
 	}
 }
 
