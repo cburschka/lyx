@@ -140,6 +140,7 @@ InsetTabular::InsetTabular(Buffer const & buf, int rows, int columns)
 	clearSelection();
 	need_update = INIT;
 	in_update = false;
+	in_reset_pos = false;
 }
 
 
@@ -155,6 +156,7 @@ InsetTabular::InsetTabular(InsetTabular const & tab, Buffer const & buf,
 	sel_cell_start = sel_cell_end = 0;
 	need_update = INIT;
 	in_update = false;
+	in_reset_pos = false;
 }
 
 
@@ -353,7 +355,7 @@ void InsetTabular::draw(BufferView * bv, LyXFont const & font, int baseline,
 		}
 		i = tabular->row_of_cell(cell);
 		if (the_locking_inset != tabular->GetCellInset(cell)) {
-			lyxerr[Debug::INSETS] << "ERROR this shouldn't happen\n";
+			lyxerr[Debug::INSETTEXT] << "ERROR this shouldn't happen\n";
 			return;
 		}
 		float dx = nx + tabular->GetBeginningOfTextInCell(cell);
@@ -524,7 +526,7 @@ void InsetTabular::edit(BufferView * bv, int x, int y, unsigned int button)
 	UpdatableInset::edit(bv, x, y, button);
 	
 	if (!bv->lockInset(this)) {
-		lyxerr[Debug::INSETS] << "InsetTabular::Cannot lock inset" << endl;
+		lyxerr[Debug::INSETTEXT] << "InsetTabular::Cannot lock inset" << endl;
 		return;
 	}
 	locked = true;
@@ -545,7 +547,7 @@ void InsetTabular::edit(BufferView * bv, bool front)
 	UpdatableInset::edit(bv, front);
 	
 	if (!bv->lockInset(this)) {
-		lyxerr[Debug::INSETS] << "InsetTabular::Cannot lock inset" << endl;
+		lyxerr[Debug::INSETTEXT] << "InsetTabular::Cannot lock inset" << endl;
 		return;
 	}
 	locked = true;
@@ -600,24 +602,24 @@ void InsetTabular::updateLocal(BufferView * bv, UpdateCodes what,
 
 bool InsetTabular::lockInsetInInset(BufferView * bv, UpdatableInset * inset)
 {
-	lyxerr[Debug::INSETS] << "InsetTabular::LockInsetInInset("
+	lyxerr[Debug::INSETTEXT] << "InsetTabular::LockInsetInInset("
 			      << inset << "): ";
 	if (!inset)
 		return false;
 	oldcell = -1;
 	if (inset == tabular->GetCellInset(actcell)) {
-		lyxerr[Debug::INSETS] << "OK" << endl;
+		lyxerr[Debug::INSETTEXT] << "OK" << endl;
 		the_locking_inset = tabular->GetCellInset(actcell);
 		resetPos(bv);
 		return true;
 	} else if (the_locking_inset && (the_locking_inset == inset)) {
-		lyxerr[Debug::INSETS] << "OK" << endl;
+		lyxerr[Debug::INSETTEXT] << "OK" << endl;
 		resetPos(bv);
 	} else if (the_locking_inset) {
-		lyxerr[Debug::INSETS] << "MAYBE" << endl;
+		lyxerr[Debug::INSETTEXT] << "MAYBE" << endl;
 		return the_locking_inset->lockInsetInInset(bv, inset);
 	}
-	lyxerr[Debug::INSETS] << "NOT OK" << endl;
+	lyxerr[Debug::INSETTEXT] << "NOT OK" << endl;
 	return false;
 }
 
@@ -1350,6 +1352,11 @@ void InsetTabular::resetPos(BufferView * bv) const
 {
 	if (!locked || nodraw())
 		return;
+	// fast hack to fix infinite repaintings!
+	if (in_reset_pos)
+		return;
+	in_reset_pos = true;
+
 	actcol = tabular->column_of_cell(actcell);
 
 	int cell = 0;
@@ -1413,6 +1420,7 @@ void InsetTabular::resetPos(BufferView * bv) const
 		bv->owner()->getDialogs()->updateTabular(inset);
 		oldcell = actcell;
 	}
+	in_reset_pos = false;
 }
 
 
@@ -1998,7 +2006,7 @@ int InsetTabular::getMaxWidth(BufferView * bv,
 		cell = actcell;
 		if (tabular->GetCellInset(cell) != inset) {
 			
-			lyxerr << "Actcell not equal to actual cell!\n";
+			lyxerr[Debug::INSETTEXT] << "Actcell not equal to actual cell!\n";
 			cell = -1;
 		}
 	}

@@ -195,7 +195,6 @@ void InsetCollapsable::draw(BufferView * bv, LyXFont const & f,
 
 	if (!isOpen()) {
 		draw_collapsed(pain, baseline, x);
-		x += TEXT_TO_INSET_OFFSET;
 		return;
 	}
 

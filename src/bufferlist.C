@@ -127,32 +127,33 @@ bool BufferList::qwriteOne(Buffer * buf, string const & fname, string & unsaved_
 			return false;
 		}
 	}
-	return false;
+	return true;
 }
 
  
 bool BufferList::qwriteAll()
 {
-        bool are_unsaved = false;
-        string unsaved;
+	string unsaved;
 	for (BufferStorage::iterator it = bstore.begin();
-		it != bstore.end(); ++it) {
+	     it != bstore.end(); ++it)
+	{
 		if (!(*it)->isLyxClean()) {
 			string fname;
 			if ((*it)->isUnnamed())
 				fname = OnlyFilename((*it)->fileName());
 			else
 				fname = MakeDisplayPath((*it)->fileName(), 50);
-			are_unsaved = qwriteOne(*it, fname, unsaved);
+			if (!qwriteOne(*it, fname, unsaved)) // cancel the request!
+				return false;
 		}
 	}
  
-        if (are_unsaved && lyxrc.exit_confirmation) {
+	if (!unsaved.empty() && lyxrc.exit_confirmation) {
 		return Alert::askQuestion(_("Some documents were not saved:"),
-			unsaved, _("Exit anyway?"));
-        }
+		                          unsaved, _("Exit anyway?"));
+	}
 
-        return true;
+	return true;
 }
 
 

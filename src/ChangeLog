@@ -1,3 +1,12 @@
+2001-11-28  Juergen Vigna  <jug@sad.it>
+
+	* sp_spell.C (initialize): changed error text to more general
+	spellchecker command use (not only ispell!)
+
+	* bufferlist.C (qwriteAll): fixed "Cancel" button handling!
+
+	* debug.h: inserted one for debugging INSETTEXT (and InsetTabular)!
+
 2001-11-26  John Levon  <moz@compsoc.man.ac.uk>
 
 	* vspace.C: initialise lyxgluelength on failure

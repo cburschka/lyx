@@ -413,11 +413,12 @@ void ISpell::initialize(BufferParams const & params, string const & lang)
 	if (isp_pid == -1) {
 		error_ = 
 			"\n\n"
-			"The ispell-process has died for some reason. *One* possible reason\n"
-			"could be that you do not have a dictionary file\n"
-			"for the language of this document installed.\n"
-			"Check /usr/lib/ispell or set another\n"
-			"dictionary in the Spellchecker Options menu.";
+			"The spellcheck-process has died for some reason.\n"
+			"*One* possible reason could be that you do not have\n"
+			"a dictionary file for the language of this document\n"
+			"installed.\n"
+			"Check your spellchecker or set another dictionary\n"
+			"in the Spellchecker Options menu.\n\n";
 	} else {
 		error_ = 0;
 	}

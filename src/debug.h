@@ -68,7 +68,9 @@ struct Debug {
 		///
 		FILES      = (1 << 18),
 		///
-		WORKAREA   = (1 << 19) 
+		WORKAREA   = (1 << 19),
+		///
+		INSETTEXT  = (1 << 20)
 	};
 	///
 	static type const ANY;

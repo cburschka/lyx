@@ -212,6 +212,7 @@ public:
 	///
 	LyXCursor const & cursor(BufferView *) const;
 	///
+	bool allowSpellcheck() { return true; }
 	string const selectNextWordToSpellcheck(BufferView *, float & value) const;
 	void selectSelectedWord(BufferView *);
 	void toggleSelection(BufferView *, bool kill_selection);
@@ -337,5 +338,7 @@ private:
 	mutable UpdateCodes need_update;
 	///
 	bool in_update;
+	///
+	mutable bool in_reset_pos;
 };
 #endif
