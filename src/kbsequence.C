@@ -61,6 +61,7 @@ void printKeysym(unsigned int key, unsigned int mod, string & buf);
 int kb_sequence::addkey(unsigned int key,
 			unsigned int mod, unsigned int nmod /*= 0*/)
 {
+#if 0
 	if (length < 0) length = 0;
 
 	if (length + 1 >= size) {
@@ -74,10 +75,24 @@ int kb_sequence::addkey(unsigned int key,
 		if (modifiers != staticmod) delete modifiers;
 		modifiers = nseq;
 	}
-
+#else
+	if (length < 0) {
+		length = 0;
+		sequence.clear();
+		modifiers.clear();
+		//sequence.resize(0);
+		//modifiers.resize(0);
+	}
+#endif
+	
+#if 0
 	modifiers[length]  = mod + (nmod << 16);
 	sequence[length++] = key;
-   
+#else
+	modifiers.push_back(mod + (nmod << 16));
+	sequence.push_back(key);
+	++length;
+#endif
 	if (curmap)
 		return curmap->lookup(key, mod, this);
 	

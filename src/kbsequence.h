@@ -13,9 +13,12 @@
 #pragma interface
 #endif
 
+#include <vector>
 #include "LString.h"
 
+#if 0
 #define KB_PREALLOC  16
+#endif
 
 class kb_keymap;
 
@@ -25,12 +28,17 @@ public:
 	///
 	kb_sequence() {
 		stdmap = curmap = 0;
+#if 0
 		sequence = staticseq;
 		modifiers = staticmod;
-		length = 0; 
+#endif
+		length = 0;
+#if 0
 		size = KB_PREALLOC;
+#endif
 	}
-	
+
+#if 0
 	///
 	~kb_sequence() {
 		if (sequence != staticseq) {
@@ -38,6 +46,7 @@ public:
 			delete modifiers;
 		}
 	}
+#endif
 	
 	/** Add a key to the key sequence and look it up in the curmap
 	    if the latter is defined. */
@@ -72,14 +81,22 @@ public:
 	
 	/** Array holding the current key sequence.
 	    If sequence[length-1] < 0xff it can be used as ISO8859 char */
+#if 0
 	unsigned int * sequence;
+#else
+	std::vector<unsigned int> sequence;
+#endif
 	
 	///
+#if 0
 	unsigned int * modifiers;
+#else
+	std::vector<unsigned int> modifiers;
+#endif
 	
 	/// Current length of key sequence
 	int length;
-	
+#if 0
 private:
 	/// Static array preallocated for sequence
 	unsigned int staticseq[KB_PREALLOC];
@@ -89,6 +106,7 @@ private:
 	
 	/// Physically allocated storage size
 	int size;
+#endif
 };
 
 #endif

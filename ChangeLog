@@ -1,5 +1,10 @@
 2000-11-15  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
+	* src/kbsequence.C (addkey): use a vector as per Andre Poenitz patch.
+
+	* lib/Makefile.am (dist-hook): also delete doc/.cvsignore from
+	distdir. 
+
 	* src/support/lyxfunctional.h: make back_insert_fun_iterator(s)
 	match the requirements from the standard better. This is required
 	to work with gnu libstdc++-v3
