@@ -1,5 +1,5 @@
-#LyX 1.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 2.16
+#LyX 1.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 220
 \textclass article
 \language english
 \inputencoding default
@@ -11,6 +11,8 @@
 \paperpackage a4
 \use_geometry 0
 \use_amsmath 0
+\use_natbib 0
+\use_numerical_citations 0
 \paperorientation portrait
 \secnumdepth 2
 \tocdepth 3
@@ -62,7 +64,9 @@ Found
 
  item is no) and you need its functionality, you can grab it at your nearest
  CTAN ftp site
-\begin_float footnote 
+\begin_inset Foot
+collapsed true
+
 \layout Standard
 
 The participating hosts in the Comprehensive TeX Archive Network are:
@@ -79,7 +83,8 @@ ftp://ftp.tex.ac.uk/tex-archive
 
 There are also a zillion mirror sites which are listed at the three primary
  sites.
-\end_float 
+\end_inset 
+
  at the location indicated in the 
 \begin_inset Quotes eld
 \end_inset 
@@ -128,7 +133,9 @@ ptions\SpecialChar \menuseparator
 R
 \bar default 
 econfigure
-\begin_float footnote 
+\begin_inset Foot
+collapsed true
+
 \layout Standard
 
 or, if you want to change the system-wide settings, issue the command 
@@ -140,7 +147,8 @@ or, if you want to change the system-wide settings, issue the command
 /usr/local/lib/lyx/
 \family default 
 )
-\end_float 
+\end_inset 
+
  and reload this file to see if the new package was recognized.
  If the 
 \begin_inset Quotes eld
@@ -181,12 +189,15 @@ The LaTeX version that LyX will use is:
  
 \family typewriter 
 1995/12/01
-\begin_float footnote 
+\begin_inset Foot
+collapsed true
+
 \layout Standard
 
 In case it is not clear to you, this number is the date at which the version
  has been released.
-\end_float 
+\end_inset 
+
 .
  In fact, earlier versions may work for many things, but will certainly
  fail in some cases.
@@ -563,29 +574,6 @@ Notes: The document class
 g-brief-de
 \family default 
  is the same as the above g-brief-en only with german labels.
-\layout Subsection
-
-Springer 2-columns Journals (ejour2)
-\layout Description
-
-Found: @chk_ejour2@
-\layout Description
-
-CTAN: N/A (must be installed from the 
-\family typewriter 
-tex/
-\family default 
- subdirectory of LyX source distribution)
-\layout Description
-
-Notes: The document class 
-\family sans 
-ejour2
-\family default 
- is for the two-column journal format used by Springer Verlag.
- It is reasonably well tested only for the Journal of Geodesy.
- It is not an existing LaTeX document class, but a new one which is distributed
- with LyX.
 \layout Subsection
 
 foils
@@ -1276,27 +1264,22 @@ ghostview
 \end_inset 
 
 
-\begin_float footnote 
+\begin_inset Foot
+collapsed true
+
 \layout Standard
 
 Here, a value of 
-\latex no_latex 
-
 \begin_inset Quotes eld
 \end_inset 
 
-
-\latex default 
 default
-\latex no_latex 
-
 \begin_inset Quotes erd
 \end_inset 
 
-
-\latex default 
  means that your LaTeX installation provides a sensible value for this parameter.
-\end_float 
+\end_inset 
+
 .
 \layout Subsection
 
@@ -1658,7 +1641,7 @@ URL:
 Notes: Ghostview is used to preview PostScript files.
  You'll also need 
 \begin_inset LatexCommand \url[Ghostscript]{http://www.cs.wisc.edu/~ghost/aladdin/index.html}
- 
+
 \end_inset 
 
  to be able to use Ghostview.

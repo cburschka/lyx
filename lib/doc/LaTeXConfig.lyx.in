@@ -649,29 +649,6 @@ book
 ) with additional document-wide font sizes.
 \layout Subsection
 
-Springer 2-columns Journals (ejour2)
-\layout Description
-
-Found: @chk_ejour2@
-\layout Description
-
-CTAN: N/A (must be installed from the 
-\family typewriter 
-tex/
-\family default 
- subdirectory of LyX source distribution)
-\layout Description
-
-Notes: The document class 
-\family sans 
-ejour2
-\family default 
- is for the two-column journal format used by Springer Verlag.
- It is reasonably well tested only for the Journal of Geodesy.
- It is not an existing LaTeX document class, but a new one which is distributed
- with LyX.
-\layout Subsection
-
 
 \begin_inset LatexCommand \label{ssec:foils}
 

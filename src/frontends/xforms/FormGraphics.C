@@ -488,8 +488,8 @@ ButtonPolicy::SMInput FormGraphics::input(FL_OBJECT * ob, long)
 			|| fl_get_choice(size_->choice_height_units) > 3
 			&& fl_get_choice(size_->choice_height_units) < 8)
 				Alert::alert(_("Warning!"),
-			   	_("The values %t, %p, %c and %l are not allowed here."),
-			   	_("Cannot take the values from LaTeX size!."));
+			   	_("The units t%, p%, c% and l% are not allowed here."),
+			   	_("Cannot use the values from LaTeX size!"));
 		else {
 	    		LyXLength dummy = LyXLength(getLengthFromWidgets(size_->input_width,
 				size_->choice_width_units));
