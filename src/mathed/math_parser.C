@@ -853,7 +853,7 @@ void Parser::parse1(MathGridInset & grid, unsigned flags,
 			cell = &grid.cell(grid.index(cellrow, cellcol));
 		}
 
-#if 1
+#if 0
 		else if (t.cs() == "multicolumn") {
 			// extract column count and insert dummy cells
 			MathArray count;

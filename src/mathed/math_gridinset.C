@@ -534,9 +534,9 @@ string MathGridInset::eolString(row_type row, bool fragile) const
 }
 
 
-string MathGridInset::eocString(col_type col) const
+string MathGridInset::eocString(col_type col, col_type lastcol) const
 {
-	if (col + 1 == ncols())
+	if (col + 1 == lastcol)
 		return string();
 	return " & ";
 }
@@ -864,8 +864,12 @@ void MathGridInset::write(WriteStream & os) const
 	for (row_type row = 0; row < nrows(); ++row) {
 		os << verboseHLine(rowinfo_[row].lines_);
 		// don't write & and empty cells at end of line
+		col_type lastcol = 0;
 		for (col_type col = 0; col < ncols(); ++col)
-			os << cell(index(row, col)) << eocString(col);
+			if (!cell(index(row, col)).empty())
+				lastcol = col + 1;
+		for (col_type col = 0; col < lastcol; ++col)
+			os << cell(index(row, col)) << eocString(col, lastcol);
 		os << eolString(row, os.fragile());
 	}
 	string const s = verboseHLine(rowinfo_[nrows()].lines_);
