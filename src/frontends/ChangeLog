@@ -1,3 +1,7 @@
+2004-04-13  Angus Leeming  <leeming@lyx.org>
+
+	* LyXView.[Ch] (updateInset): pass it an InsetBase pointer rather
+	than an InsetOld one.
 
 2004-04-07  Alfredo Braunstein  <abraunst@lyx.org>
 
@@ -10,7 +14,7 @@
 
 2004-04-05  Angus Leeming  <leeming@lyx.org>
 
-	* Dialogs.h: remove redundant header file. Clean up comments.
+	* Dialogs.h: remove #included header file. Clean up comments.
 
 2004-03-31  Angus Leeming  <leeming@lyx.org>
 

@@ -21,7 +21,7 @@
 
 class Buffer;
 class Toolbar;
-class InsetOld;
+class InsetBase;
 class Intl;
 class Menubar;
 class ControlCommandBuffer;
@@ -135,7 +135,7 @@ public:
 	/** redraw \c inset in all the BufferViews in which it is currently
 	 *  visible. If successful return a pointer to the owning Buffer.
 	 */
-	Buffer const * const updateInset(InsetOld const *) const;
+	Buffer const * const updateInset(InsetBase const *) const;
 
 protected:
 	/// view of a buffer. Eventually there will be several.

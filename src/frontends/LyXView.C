@@ -193,7 +193,7 @@ void LyXView::dispatch(FuncRequest const & cmd)
 }
 
 
-Buffer const * const LyXView::updateInset(InsetOld const * inset) const
+Buffer const * const LyXView::updateInset(InsetBase const * inset) const
 {
 	Buffer const * buffer_ptr = 0;
 	if (inset) {

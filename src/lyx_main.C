@@ -163,7 +163,7 @@ void LyX::addLyXView(boost::shared_ptr<LyXView> const & lyxview)
 }
 
 
-Buffer const * const LyX::updateInset(InsetOld const * inset) const
+Buffer const * const LyX::updateInset(InsetBase const * inset) const
 {
 	if (!inset)
 		return 0;

@@ -1,3 +1,9 @@
+2004-04-13  Angus Leeming  <leeming@lyx.org>
+
+	* PreviewLoader.C (dumpPreamble):
+	* Previews.C (generateBufferPreviews): re-enable iteration over all
+	insets.
+
 2004-02-21  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* GraphicsCacheItem.C (convertToDisplayFormat): unzip zipped files

@@ -1,3 +1,8 @@
+2004-04-13  Angus Leeming  <leeming@lyx.org>
+
+	* lyx_main.[Ch] (updateInset): pass it an InsetBase pointer rather
+	than an InsetOld one.
+
 2004-04-12  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* format.[Ch]: add editor to Format

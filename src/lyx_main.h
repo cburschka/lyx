@@ -23,7 +23,7 @@
 
 class Buffer;
 class ErrorItem;
-class InsetOld;
+class InsetBase;
 class LastFiles;
 class LyXView;
 class kb_keymap;
@@ -47,7 +47,7 @@ public:
 	/** redraw \c inset in all the BufferViews in which it is currently
 	 *  visible. If successful return a pointer to the owning Buffer.
 	 */
-	Buffer const * const updateInset(InsetOld const *) const;
+	Buffer const * const updateInset(InsetBase const *) const;
 
 private:
 	static boost::scoped_ptr<LyX> singleton_;

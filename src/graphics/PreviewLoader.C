@@ -600,7 +600,11 @@ void PreviewLoader::Impl::dumpPreamble(ostream & os) const
 	   << "\n";
 
 	// Loop over the insets in the buffer and dump all the math-macros.
-	for (InsetIterator it(buffer_.inset()); it; ++it)
+	InsetBase & inset = buffer_.inset();
+	InsetIterator it = inset_iterator_begin(inset);
+	InsetIterator const end = inset_iterator_end(inset);
+
+	for (; it != end; ++it)
 		if (it->lyxCode() == InsetOld::MATHMACRO_CODE)
 			it->latex(buffer_, os, runparams);
 
