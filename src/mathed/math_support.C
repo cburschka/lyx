@@ -664,8 +664,9 @@ void mathed_draw_deco(Painter & pain, int x, int y, int w, int h,
 			else
 				mt.transform(xx, yy);
 			mt.transform(x2, y2);
-			pain.line(x + int(xx), y + int(yy), x + int(x2), y + int(y2),
-					LColor::math);
+			pain.line(int(x + xx + 0.5), int(y + yy + 0.5),
+				  int(x + x2 + 0.5), int(y + y2 + 0.5),
+				  LColor::math);
 		}	else {
 			int xp[32];
 			int yp[32];
@@ -678,8 +679,8 @@ void mathed_draw_deco(Painter & pain, int x, int y, int w, int h,
 					sqmt.transform(xx, yy);
 				else
 					mt.transform(xx, yy);
-				xp[j] = x + int(xx);
-				yp[j] = y + int(yy);
+				xp[j] = int(x + xx + 0.5);
+				yp[j] = int(y + yy + 0.5);
 				//  lyxerr << "P[" << j " " << xx << " " << yy << " " << x << " " << y << "]";
 			}
 			pain.lines(xp, yp, n, LColor::math);
