@@ -1,3 +1,10 @@
+2005-02-14  André Pönitz  <poenitz@gmx.net>
+
+	* dociterator.[Ch]: new member forwardPosNoDescent(),
+	which doesn't enter nested insets.
+	* text2.C (setFont): use forwardPosNoDescent() instead
+	of ForwardPos() (fixes crash on font change).
+
 2005-02-13  Angus Leeming  <leeming@lyx.org>
 
 	* lyx_main.C (init): invoke prependEnvPath to adjust the PATH

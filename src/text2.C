@@ -440,7 +440,9 @@ void LyXText::setFont(LCursor & cur, LyXFont const & font, bool toggleall)
 
 	// Don't use forwardChar here as ditend might have
 	// pos() == lastpos() and forwardChar would miss it.
-	for (; dit != ditend; dit.forwardPos()) {
+	// Can't use forwardPos either as this descends into
+	// nested insets. 
+	for (; dit != ditend; dit.forwardPosNoDescend()) {
 		if (dit.pos() != dit.lastpos()) {
 			LyXFont f = getFont(dit.paragraph(), dit.pos());
 			f.update(font, params.language, toggleall);

@@ -138,6 +138,8 @@ LyXText const * DocIterator::text() const
 
 Paragraph & DocIterator::paragraph()
 {
+	if (!inTexted()) 
+		lyxerr << *this << endl;
 	BOOST_ASSERT(inTexted());
 	return top().paragraph();
 }
@@ -338,6 +340,42 @@ void DocIterator::forwardPos()
 	// 'top' is invalid now...
 	if (!empty())
 		++top().pos();
+}
+
+
+void DocIterator::forwardPosNoDescend()
+{
+	CursorSlice & tip = top();
+	pos_type const lastp = lastpos();
+
+	//  move on one position if possible
+	if (tip.pos() < lastp) {
+		//lyxerr << "... next pos" << endl;
+		++tip.pos();
+		return;
+	}
+	//lyxerr << "... no next pos" << endl;
+
+	// otherwise move on one paragraph if possible
+	if (tip.pit() < lastpit()) {
+		//lyxerr << "... next par" << endl;
+		++tip.pit();
+		tip.pos() = 0;
+		return;
+	}
+	//lyxerr << "... no next pit" << endl;
+
+	// otherwise try to move on one cell if possible
+	if (tip.idx() < lastidx()) {
+		//lyxerr << "... next idx" << endl;
+		++tip.idx();
+		tip.pit() = 0;
+		tip.pos() = 0;
+		return;
+	}
+	//lyxerr << "... no next idx" << endl;
+
+	// otherwise we can't move on
 }
 
 
