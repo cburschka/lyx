@@ -19,6 +19,9 @@
 
 	* text.C (setHeightOfRow): restrict scope of temporary variable
 
+	* paragraph_funcs.C (readParToken): remove USE_CAPTION  compatibility
+	  code (never has been used?)
+
 2003-07-27  Asger Alstrup  <alstrup@local>
 
 	* text.C (fill): Optimise algorithm to exploit that we can reuse
