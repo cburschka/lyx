@@ -1,3 +1,4 @@
+// -*- C++ -*-
 /**
  * \file GUI.h
  * Copyright 2001 The LyX Team.

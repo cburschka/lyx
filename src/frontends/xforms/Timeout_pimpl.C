@@ -1,3 +1,4 @@
+// -*- C++ -*-
 /**
  * \file Timeout_pimpl.C
  * Copyright 2001 LyX Team

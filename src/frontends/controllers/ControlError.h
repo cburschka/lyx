@@ -1,3 +1,4 @@
+// -*- C++ -*-
 /*
  * \file ControlError.h
  * This file is part of

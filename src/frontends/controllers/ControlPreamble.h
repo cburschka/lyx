@@ -1,3 +1,4 @@
+// -*- C++ -*-
 /**
  * \file ControlPreamble.h
  * Copyright 2001 The LyX Team.

@@ -1,3 +1,4 @@
+// -*- C++ -*-
 /**
  * \file FormCopyright.h
  * This file is part of

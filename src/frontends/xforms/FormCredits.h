@@ -1,3 +1,4 @@
+// -*- C++ -*-
 /**
  * \file FormCredits.h
  * Copyright 2001 The LyX Team.

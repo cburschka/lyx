@@ -1,3 +1,4 @@
+// -*- C++ -*-
 /**
  * \file FormMathsDeco.C
  * Copyright 2001 The LyX Team.

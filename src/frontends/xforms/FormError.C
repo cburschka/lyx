@@ -1,3 +1,4 @@
+// -*- C++ -*-
 /*
  * \file FormError.C
  * This file is part of

@@ -1,3 +1,5 @@
+// -*- C++ -*-
+
 #ifndef XFORMSHELPERS_H
 #define XFORMSHELPERS_H
 

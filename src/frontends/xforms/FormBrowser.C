@@ -1,3 +1,4 @@
+// -*- C++ -*-
 /* FormBrowser.C
  * (C) 2001 LyX Team
  * John Levon, moz@compsoc.man.ac.uk

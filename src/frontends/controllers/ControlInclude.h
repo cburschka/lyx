@@ -1,3 +1,4 @@
+// -*- C++ -*-
 /**
  * \file ControlInclude.h
  * Copyright 2001 the LyX Team

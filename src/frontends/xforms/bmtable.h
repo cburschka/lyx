@@ -1,3 +1,4 @@
+// -*- C++ -*-
 /*
  *  File:        bmtable.h
  *  Purpose:     Declaration of the XForms object bmtable. 

@@ -1,3 +1,4 @@
+// -*- C++ -*-
 /** 
  * \file FormMathsPanel.h
  * Copyright 2001 The LyX Team.

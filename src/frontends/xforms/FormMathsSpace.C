@@ -1,3 +1,4 @@
+// -*- C++ -*-
 /**
  * \file FormMathsSpace.C
  * Copyright 2001 The LyX Team.
