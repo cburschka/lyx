@@ -2,6 +2,8 @@
 #ifndef LASSERT_H
 #define LASSERT_H
 
+#include "support/lyxlib.h"
+
 //namespace LyX {
 
 #ifdef ENABLE_ASSERTIONS
@@ -11,7 +13,7 @@ template<class A> inline void Assert(A assertion)
 {
 	//if (!assertion) throw X();
 	if (!assertion) {
-		abort();
+		lyx::abort();
 	}
 }
 
@@ -24,7 +26,7 @@ template<class A> inline void Assert(A * ptr)
 template<> inline void Assert(void const * ptr)
 {
 	if (!ptr) {
-		abort();
+		lyx::abort();
 	}
 }
 #endif /* HAVE_PARTIAL_SPECIALIZATION  */ 

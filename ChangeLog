@@ -1,3 +1,26 @@
+2000-01-14  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/support/date.C: new file
+
+	* src/support/chdir.C: new file
+
+	* src/support/getUserName.C: new file
+
+	* src/support/getcwd.C: new file
+
+	* src/support/abort.C: new file
+
+	* src/support/kill.C: new file
+
+	* src/support/lyxlib.h: moved all the functions in this file
+	insede struct lyx. Added also kill and abort to this struct. This
+	is a way to avoid the "kill is not defined in <csignal>", we make
+	C++ wrappers for functions that are not ANSI C or ANSI C++.
+
+	* src/support/lyxsum.C (sum): use #ifdef MODERN_STL_STREAMS
+	instead of #if __GLIBCPP__. Since lyxsum is now put inside struct
+	lyx it has been renamed to sum.
+
 2000-01-14  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/text.C: add using directives for std::min and std::max.

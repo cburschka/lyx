@@ -57,6 +57,7 @@ using std::ifstream;
 #include "gettext.h"
 #include "lyx_gui_misc.h" // CancelCloseBoxCB
 #include "support/FileInfo.h"
+#include "support/lyxlib.h"
 
 extern BufferView * current_view;
 #if 0
@@ -260,7 +261,7 @@ extern "C" int GhostscriptMsg(FL_OBJECT *, Window, int, int,
 					lyxerr << "Killing gs " 
 					       << p->gspid << endl;
 				}
-				kill(p->gspid, SIGHUP);
+				lyx::kill(p->gspid, SIGHUP);
 
 				sprintf(tmp, "%s/~lyxgs%d.ps",
 					system_tempdir.c_str(), 
@@ -275,7 +276,7 @@ extern "C" int GhostscriptMsg(FL_OBJECT *, Window, int, int,
 					lyxerr << "Killing gs " 
 					       << p->gspid << endl;
 				}
-				kill(p->gspid, SIGHUP);
+				lyx::kill(p->gspid, SIGHUP);
 
 				sprintf(tmp, "%s/~lyxgs%d.ps", 
 					system_tempdir.c_str(),
@@ -472,7 +473,7 @@ static void freefigdata(figdata * tmpdata)
 		chpixmap(tmpdata->bitmap, tmpdata->wid, tmpdata->hgh);
 		// kill ghostscript and unlink it's files
 		tmpdata->gspid = -1;
-		kill(pid, SIGKILL);
+		lyx::kill(pid, SIGKILL);
 		sprintf(buf, "%s/~lyxgs%d.ps", system_tempdir.c_str(), pid);
 		unlink(buf);
 	}

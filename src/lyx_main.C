@@ -615,6 +615,6 @@ void error_handler(int err_sig)
 
 	lyxerr << "Bye." << endl;
 	if(err_sig!= SIGHUP && (!GetEnv("LYXDEBUG").empty() || err_sig == SIGSEGV))
-		abort();
+		lyx::abort();
 	exit(0);
 }

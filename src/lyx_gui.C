@@ -156,7 +156,7 @@ extern "C" int LyX_XErrHandler(Display * display, XErrorEvent * xeev)
 	XGetErrorText(display, xeev->error_code, etxt, 512);
 	lyxerr << etxt << endl;
 	// By doing an abort we get a nice backtrace. (hopefully)
-	abort();
+	lyx::abort();
 	return 0; // Solaris CC wants us to return something
 }
 

@@ -1588,7 +1588,7 @@ void Buffer::makeLaTeXFile(string const & fname,
 	// first paragraph of the document. (Asger)
 	texrow.start(paragraph, 0);
 
-	string userName(getUserName());
+	string userName(lyx::getUserName());
 	string LFile;
 	
 	if (!only_body && nice) {
@@ -2146,9 +2146,9 @@ void Buffer::makeLinuxDocFile(string const & fname, int column)
 		    << params.preamble << " \n]>\n\n";
 	}
 
-        string userName(getUserName());
+        string userName(lyx::getUserName());
 	ofs << "<!-- LinuxDoc file was created by LyX 1.0 (C) 1995-1999 "
-	    << "by <" << userName << "> " << date() << " -->\n";
+	    << "by <" << userName << "> " << lyx::date() << " -->\n";
 
 	if(params.options.empty())
 		sgmlOpenTag(ofs, 0, top_element);

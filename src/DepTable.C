@@ -35,7 +35,7 @@ void DepTable::insert(string const & fi,
 	if (deplist.find(f) == deplist.end()) {
 		if (upd) {
 			one = two;
-			two = lyxsum(f.c_str());
+			two = lyx::sum(f.c_str());
 		}
 		deplist[f] = make_pair(one, two);
 	}
@@ -48,7 +48,7 @@ void DepTable::update()
 	    itr != deplist.end();
 	    ++itr) {
 		unsigned long one = (*itr).second.second;
-		unsigned long two = lyxsum((*itr).first.c_str());
+		unsigned long two = lyx::sum((*itr).first.c_str());
 		(*itr).second = make_pair(one, two);
 		if (lyxerr.debugging()) {
 			lyxerr << "update: " << (*itr).first << " "

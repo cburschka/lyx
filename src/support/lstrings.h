@@ -10,36 +10,36 @@
 
 #include <cstring>
 
-#include "LAssert.h"
+//#include "LAssert.h"
 
 //#warning verify this please. Lgb
 ///
-template<class T>
-size_t lstrlen(T const * t)
-{
-	Assert(t); // we don't want null pointers
-	size_t count = 0;
-	T const * r = t;
-	while(*r != 0) ++r, ++count;
-	return count;
-}
+//template<class T>
+//size_t lstrlen(T const * t)
+//{
+//	Assert(t); // we don't want null pointers
+//	size_t count = 0;
+//	T const * r = t;
+//	while(*r != 0) ++r, ++count;
+//	return count;
+//}
 
 
-//#warning verify this please. Lgb
+//#Warning verify this please. Lgb
 ///
-template<class T>
-T * lstrchr(T const * t, int c)
-{
-  Assert(t); // we don't want null pointers
-  T * r = const_cast<T*>(t);
-  while(*r != 0) { 
-    if (*r == c) 
-      return r; 
-    else 
-      ++r;
-  }
-  return 0;
-}
+//template<class T>
+//T * lstrchr(T const * t, int c)
+//{
+//  Assert(t); // we don't want null pointers
+//  T * r = const_cast<T*>(t);
+//  while(*r != 0) { 
+//    if (*r == c) 
+//      return r; 
+//    else 
+//      ++r;
+//  }
+//  return 0;
+//}
 
 #include <cctype>
 #include "LString.h"

@@ -14,6 +14,7 @@
 #include "syscall.h"
 #include "syscontr.h"
 #include "support/lstrings.h"
+#include "support/lyxlib.h"
 
 Systemcalls::Systemcalls() {
 	pid = 0; // No child yet
@@ -33,7 +34,7 @@ Systemcalls::~Systemcalls() {
 #if 0
 	// If the child is alive, we have to brutally kill it
 	if (getpid() != 0) {
-		::kill(getpid(), SIGKILL);
+		lyx::kill(getpid(), SIGKILL);
 	}
 #endif
 }
@@ -77,7 +78,7 @@ void Systemcalls::kill(int /*tolerance*/) {
 		lyxerr << "LyX: Can't kill non-existing process." << endl;
 		return;
 	}
-	int ret = ::kill(getpid(), SIGHUP);
+	int ret = lyx::kill(getpid(), SIGHUP);
 	bool wait_for_death = true;
 	if (ret != 0) {
 		if (errno == ESRCH) {

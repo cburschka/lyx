@@ -3,7 +3,7 @@
  * 
  *           LyX, The Document Processor 	 
  *
- *    The function lyxsum is taken from GNU textutill-1.22
+ *    The function lyx::sum is taken from GNU textutill-1.22
  *    and is there part of the program chsum. The chsum program
  *    is written by Q. Frank Xia, qx@math.columbia.edu.
  *
@@ -14,11 +14,13 @@
 
 
 #include <config.h>
-#ifdef __GLIBCPP__
+#ifdef MODERN_STL_STREAMS
 #include <fstream>
 #else
 #include <cstdio>
 #endif
+
+#include "support/lyxlib.h"
 
 /* Number of bytes to read at once.  */
 #define BUFLEN (1 << 16)
@@ -84,12 +86,12 @@ static unsigned long const crctab[256] =
    Return crc if successful, 0 if an error occurs. */
  
 unsigned long
-lyxsum (char const * file)
+lyx::sum (char const * file)
 {
 	unsigned long crc = 0;
 	long length = 0;
 	long bytes_read;
-#if __GLIBCPP__
+#ifdef MODERN_STL_STREAMS
 	char buf[BUFLEN];
 	ifstream ifs(file);
 	if (!ifs) {
@@ -98,7 +100,6 @@ lyxsum (char const * file)
  
 	while ((bytes_read = ifs.readsome(buf, BUFLEN)) > 0) {
 		unsigned char * cp = reinterpret_cast<unsigned char*>(buf);
-		
 		length += bytes_read;
 		while (bytes_read--)
 			crc = (crc << 8) ^ crctab[((crc >> 24) ^ *(cp++)) & 0xFF];

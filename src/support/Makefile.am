@@ -23,9 +23,15 @@ libsupport_la_SOURCES = \
 	LRegex.h \
 	LSubstring.C \
 	LSubstring.h \
+	abort.C \
 	block.h \
+	chdir.C \
+	date.C \
 	filetools.C \
 	filetools.h \
+	getUserName.C \
+	getcwd.C \
+	kill.C \
 	lstrings.C \
 	lstrings.h \
 	lyxlib.h \
