@@ -121,7 +121,7 @@
 \bind "M-m ~S-equal"   "math-insert \neq"
 
 \bind "Escape"         "escape"
-\bind "C-Tab"          "tab-insert"
+\bind "C-Tab"          "cell-split"
 \bind "M-m space"      "math-space"
 
 # This should be handled properly by some "get the next key" method
