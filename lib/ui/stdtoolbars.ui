@@ -30,14 +30,14 @@ Toolbar "Standard"
 	Item "New document" "buffer-new"
 	Item "Open document" "file-open"
 	Item "Save document" "buffer-write"
-	Item "Print document" "buffer-print"
+	Item "Print document" "dialog-show print"
 	Separator
 	Item "Undo" "undo"
 	Item "Redo" "redo"
 	Item "Cut" "cut"
 	Item "Copy" "copy"
 	Item "Paste" "paste"
-	Item "Find and replace" "find-replace"
+	Item "Find and replace" "dialog-show findreplace"
 	Separator
 	Item "Toggle emphasis style" "font-emph"
 	Item "Toggle noun style" "font-noun"
@@ -70,10 +70,10 @@ Toolbar "Extra"
 	Item "Insert TeX" "ert-insert"
 	Item "Include file" "dialog-show-new-inset include"
 	Separator
-	Item "Text Style" "layout-character"
+	Item "Text Style" "dialog-show character"
 	Item "Paragraph Settings" "layout-paragraph"
 	Item "Table of contents" "toc-view"
-	Item "Check spelling" "spellchecker"
+	Item "Check spelling" "dialog-show spellchecker"
 	Item "Thesaurus" "thesaurus-entry"
 End
 
@@ -103,7 +103,7 @@ Toolbar "Table"
 End
 
 Toolbar "Math"
-	Item "Show math panel" "math-panel"
+	Item "Show math panel" "dialog-show mathpanel"
 	Item "Set display mode" "math-display"
 	Item "Subscript" "math-subscript"
 	Item "Superscript" "math-superscript"

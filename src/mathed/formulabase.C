@@ -669,10 +669,6 @@ dispatch_result InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 		}
 		break;
 
-	case LFUN_MATH_PANEL:
-		result = UNDISPATCHED;
-		break;
-
 	case LFUN_ESCAPE:
 		if (mathcursor->selection())
 			mathcursor->selClear();
@@ -682,6 +678,11 @@ dispatch_result InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 
 	case LFUN_INSET_TOGGLE:
 		mathcursor->insetToggle();
+		break;
+
+	case LFUN_DIALOG_SHOW:
+		if (argument == "mathpanel")
+			result = UNDISPATCHED;
 		break;
 
 	case LFUN_DIALOG_SHOW_NEW_INSET: {

@@ -45,8 +45,8 @@
 # this is "quoted-insert" a total different meaning from "quote-insert"
 \bind "C-q"                    "self-insert \""
 #bind "C-r"                    "------"
-\bind "C-s"                    "find-replace"
-\bind "M-~S-percent"		"find-replace"
+\bind "C-s"                    "dialog-show findreplace"
+\bind "M-~S-percent"		"dialog-show findreplace"
 
 # should be "chars-transpose" (swaps two chars)
 #bind "C-t"                    "------"
@@ -82,7 +82,7 @@
 # \bind "C-x s"                  "buffer-write"
 \bind "C-x t"                  "buffer-update dvi"
 \bind "C-x u"                  "undo"
-\bind "C-x v h"                "vc-history"
+\bind "C-x v h"                "dialog-show vclog"
 \bind "C-x v v"                "vc-check-in"
 \bind "C-x v u"                "vc-revert"
 \bind "C-x v c"                "vc-undo-last"
@@ -234,7 +234,7 @@
 #  similar here especially for LinuxDoc (although LinuxDoc isn't only for
 #  making HTML).
 ##
-\bind "C-c C-l"                 "latex-view-log"        # show warning log
+\bind "C-c C-l"                 "dialog-show latexlog"        # show warning log
 \bind "C-c C-o"                 "error-next"
 \bind "C-c C-v"                 "buffer-chktex"         # validate
 
@@ -314,7 +314,7 @@
 ## Start TeX mode, some overlap with AucTeX mode
 #
 \bind "C-c C-b"			"buffer-update dvi"
-\bind "C-c C-p"			"buffer-print"
+\bind "C-c C-p"			"dialog-show print"
 \bind "C-c C-r"			"buffer-update dvi"	# tex region
 #
 ## End TeX mode

@@ -318,10 +318,6 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 	// encode this in the function itself.
 	bool disable = false;
 	switch (ev.action) {
-	case LFUN_MENUPRINT:
-		disable = !Exporter::IsExportable(buf, "dvi")
-			|| lyxrc.print_command == "none";
-		break;
 	case LFUN_EXPORT:
 		disable = ev.argument != "custom"
 			&& !Exporter::IsExportable(buf, ev.argument);
@@ -351,10 +347,6 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 		break;
 	case LFUN_BUILDPROG:
 		disable = !Exporter::IsExportable(buf, "program");
-		break;
-
-	case LFUN_LAYOUT_CHARACTER:
-		disable = tli && tli->lyxCode() == Inset::ERT_CODE;
 		break;
 
 	case LFUN_LAYOUT_TABULAR:
@@ -463,7 +455,6 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 		break;
 	case LFUN_VC_REVERT:
 	case LFUN_VC_UNDO:
-	case LFUN_VC_HISTORY:
 		disable = !buf->lyxvc.inUse();
 		break;
 	case LFUN_MENURELOAD:
@@ -527,10 +518,6 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 		break;
 	}
 
-	case LFUN_LATEX_LOG:
-		disable = !IsFileReadable(buf->getLogName().second);
-		break;
-
 	case LFUN_MATH_MUTATE:
 		if (mathcursor)
 			//flag.setOnOff(mathcursor->formula()->hullType() == ev.argument);
@@ -548,6 +535,31 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 	case LFUN_MATH_EXTERN:
 		disable = !mathcursor;
 		break;
+
+ 	case LFUN_DIALOG_SHOW: {
+		string const name = ev.getArg(0);
+		if (!buf) {
+			disable = !(name == "aboutlyx" ||
+				    name == "file" ||
+				    name == "forks" ||
+				    name == "preferences" ||
+				    name == "texinfo");
+			break;
+		}
+
+		if (name == "print") {
+			disable = !Exporter::IsExportable(buf, "dvi") ||
+				lyxrc.print_command == "none";
+		} else if (name == "character") {
+			UpdatableInset * tli = view()->theLockingInset();
+			disable = tli && tli->lyxCode() == Inset::ERT_CODE;
+		} else if (name == "vclog") {
+			disable = !buf->lyxvc.inUse();
+		} else if (name == "latexlog") {
+			disable = !IsFileReadable(buf->getLogName().second);
+		}
+		break;
+	}
 
 	default:
 		break;
@@ -1095,10 +1107,6 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 		owner->buffer()->runChktex();
 		break;
 
-	case LFUN_MENUPRINT:
-		owner->getDialogs().showPrint();
-		break;
-
 	case LFUN_EXPORT:
 		if (argument == "custom")
 			owner->getDialogs().showSendto();
@@ -1132,10 +1140,6 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 
 	case LFUN_REDO:
 		view()->redo();
-		break;
-
-	case LFUN_MENUSEARCH:
-		owner->getDialogs().showSearch();
 		break;
 
 	case LFUN_DEPTH_MIN:
@@ -1176,14 +1180,6 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 //#warning Find another implementation here (or another lyxfunc)!
 #endif
 #endif
-	case LFUN_HELP_ABOUTLYX:
-		owner->getDialogs().show("about");
-		break;
-
-	case LFUN_HELP_TEXINFO:
-		owner->getDialogs().showTexinfo();
-		break;
-
 	case LFUN_HELP_OPEN:
 	{
 		string const arg = argument;
@@ -1239,12 +1235,6 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 	}
 	break;
 
-	case LFUN_VC_HISTORY:
-	{
-		owner->getDialogs().show("vclog");
-		break;
-	}
-
 	// --- buffers ----------------------------------------
 
 	case LFUN_SWITCHBUFFER:
@@ -1264,21 +1254,6 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 		open(argument);
 		break;
 
-	case LFUN_LATEX_LOG:
-		owner->getDialogs().show("log");
-		break;
-
-	case LFUN_LAYOUT_DOCUMENT:
-		owner->getDialogs().showDocument();
-		break;
-
-	case LFUN_LAYOUT_CHARACTER: {
-		string data = freefont2string();
-		if (!data.empty())
-			owner->getDialogs().show("character", data);
-		break;
-	}
-
 	case LFUN_LAYOUT_TABULAR:
 	    if (view()->theLockingInset()) {
 		if (view()->theLockingInset()->lyxCode()==Inset::TABULAR_CODE) {
@@ -1294,10 +1269,6 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 	    }
 	    break;
 
-	case LFUN_LAYOUT_PREAMBLE:
-		owner->getDialogs().showPreamble();
-		break;
-
 	case LFUN_DROP_LAYOUTS_CHOICE:
 		owner->getToolbar().openLayoutList();
 		break;
@@ -1305,10 +1276,6 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 	case LFUN_MENU_OPEN_BY_NAME:
 		owner->getMenubar().openByName(argument);
 		break; // RVDK_PATCH_5
-
-	case LFUN_SPELLCHECK:
-		owner->getDialogs().showSpellchecker();
-		break;
 
 	// --- lyxserver commands ----------------------------
 
@@ -1404,13 +1371,32 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 		dispatch(FuncRequest(view(), LFUN_SELFINSERT, "^"));
 		break;
 
-	case LFUN_MATH_PANEL:
-		owner->getDialogs().show("mathpanel");
-		break;
+	case LFUN_DIALOG_SHOW: {
+		string const name = ev.getArg(0);
+		string data = trim(ev.argument.substr(name.size()));
 
-	case LFUN_DIALOG_SHOW:
-		owner->getDialogs().show(argument);
+		if (name == "character") {
+			data = freefont2string();
+			if (!data.empty())
+				owner->getDialogs().show("character", data);
+		} else if (name == "document")
+			owner->getDialogs().showDocument();
+		else if (name == "findreplace")
+			owner->getDialogs().showSearch();
+		else if (name == "forks")
+			owner->getDialogs().showForks();
+		else if (name == "preamble")
+			owner->getDialogs().showPreamble();
+		else if (name == "preferences")
+			owner->getDialogs().showPreferences();
+		else if (name == "print")
+			owner->getDialogs().showPrint();
+		else if (name == "spellchecker")
+			owner->getDialogs().showSpellchecker();
+		else
+			owner->getDialogs().show(name, data);
 		break;
+	}
 
 	case LFUN_DIALOG_SHOW_NEW_INSET: {
 		string const & name = argument;
@@ -1504,10 +1490,6 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 	}
 	break;
 
-	case LFUN_DIALOG_PREFERENCES:
-		owner->getDialogs().showPreferences();
-		break;
-
 	case LFUN_SAVEPREFERENCES:
 	{
 		Path p(user_lyxdir);
@@ -1572,10 +1554,6 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 
 	case LFUN_MESSAGE:
 		owner->message(argument);
-		break;
-
-	case LFUN_FORKS_SHOW:
-		owner->getDialogs().showForks();
 		break;
 
 	case LFUN_FORKS_KILL:

@@ -36,7 +36,7 @@
 \bind "C-w"			"buffer-close"
 \bind "C-s"			"buffer-write"
 \bind "C-S-S"			"buffer-write-as"
-\bind "C-p"			"buffer-print" 
+\bind "C-p"			"dialog-show print" 
 \bind "C-d"			"buffer-view dvi"	# 'd' for dvi
 \bind "C-t"			"buffer-view ps"
 \bind "C-S-D"			"buffer-update dvi"	# 'd' for dvi
@@ -53,7 +53,7 @@
 \bind "C-m"			"math-mode"
 \bind "C-S-M"			"math-display"
 
-\bind "C-f"			"find-replace"
+\bind "C-f"			"dialog-show findreplace"
 \bind "C-g"			"error-next"
 \bind "C-i"			"inset-toggle"		# 'i' for Inset
 
@@ -79,7 +79,7 @@
 \bind "C-F4"			"buffer-close"
 \bind "F5"			"screen-recenter"
 \bind "M-F4"			"lyx-quit"
-\bind "F7"			"spellchecker"
+\bind "F7"			"dialog-show spellchecker"
 \bind "S-F7"			"thesaurus-entry"
 
 \bind "M-x"			"command-execute"

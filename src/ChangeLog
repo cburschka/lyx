@@ -1,3 +1,10 @@
+2003-06-19  Angus Leeming  <leeming@lyx.org>
+
+	* lfuns.h:
+	* LyXAction.C (init):
+	* lyxfunc.C (getStatus, dispatch): remove 14 LFUNs, replacing them
+	with LFUN_DIALOG_SHOW <name> <data>.
+
 2003-06-19  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* CutAndPaste.C (availableSelections): small compilation fix for

@@ -1,3 +1,8 @@
+2003-06-19  Angus Leeming  <leeming@lyx.org>
+
+	* lyx_gui.C (getStatus): changes due to replacement of lots of lfuns
+	with LFUN_DIALOG_SHOW <name>.
+
 2003-06-17  Angus Leeming  <leeming@lyx.org>
 
 	* Dialogs.C: rename math panel identifier as "mathpanel".

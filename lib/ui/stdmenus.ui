@@ -31,7 +31,7 @@ Menuset
 		Separator
 		Submenu "Import|I" "file_import"
 		Submenu "Export|E" "file_export"
-		Item "Print...|P" "buffer-print"
+		Item "Print...|P" "dialog-show print"
 		OptItem "Fax...|F" "buffer-export fax"
 		Separator
 		Item "Exit|x" "lyx-quit"
@@ -47,7 +47,7 @@ Menuset
 		OptItem "Check Out for Edit|O" "vc-check-out"
 		OptItem "Revert to Last Version|L" "vc-revert"
 		OptItem "Undo Last Check In|U" "vc-undo-last"
-		OptItem "Show History|H" "vc-history"
+		OptItem "Show History|H" "dialog-show vclog"
 	End
 
 	Menu "file_import"
@@ -71,9 +71,9 @@ Menuset
 		Item "Copy" "copy"
 		Item "Paste" "paste"
 		Submenu "Paste Recent" "pasterecent"
-		Item "Find & Replace...|F" "find-replace"
+		Item "Find & Replace...|F" "dialog-show findreplace"
 		Separator
-		Item "Text Style...|S" "layout-character"
+		Item "Text Style...|S" "dialog-show character"
 		Item "Paragraph Settings...|P" "layout-paragraph"
 		Separator
 # Mathed b0rkage means these don't work properly
@@ -270,7 +270,7 @@ Menuset
 		Item "Cases Environment|C" "math-insert \cases"
 		Separator
 		Submenu "Font Change|f" "insert_math_font"
-		Item "Math Panel|l" "math-panel"
+		Item "Math Panel|l" "dialog-show mathpanel"
 	End
 
 	Menu "insert_math_font"
@@ -324,12 +324,12 @@ Menuset
 	Menu "document"
 		Submenu "Change tracking|C" "edit_change"
 		OptItem "Build Program|B" "build-program"
-		Item "LaTeX Log File...|L" "latex-view-log"
+		Item "LaTeX Log File...|L" "dialog-show latexlog"
 		Item "Table of Contents...|T" "toc-view"
-		Item "LaTeX Preamble...|P" "layout-preamble"
+		Item "LaTeX Preamble...|P" "dialog-show preamble"
 		Item "Start Appendix Here|A" "appendix"
 		Separator
-		Item "Settings...|S" "layout-document"
+		Item "Settings...|S" "dialog-show document"
 	End
  
 	Menu "edit_change"
@@ -365,17 +365,17 @@ Menuset
 #
  
 	Menu "tools"
-		Item "Spellchecker...|S" "spellchecker"
+		Item "Spellchecker...|S" "dialog-show spellchecker"
 		OptItem "Thesaurus...|T" "thesaurus-entry"
 		OptItem "Check TeX|h" "buffer-chktex"
-		Item "View Child Processes...|C" "show-forks"
-		Item "TeX Information...|I" "help-Texinfo"
+		Item "View Child Processes...|C" "dialog-show forks"
+		Item "TeX Information...|I" "dialog-show texinfo"
 		Separator
 # A LOT of applications have Tools->Prefs. Remember this
 # should be rarely used - Edit menu is not a good place to
 # have it.
 		Item "Reconfigure|R" "reconfigure"
-		Item "Preferences...|P" "dialog-preferences"
+		Item "Preferences...|P" "dialog-show preferences"
 	End
  
 #
@@ -391,7 +391,7 @@ Menuset
 		Item "Table of Contents|a" "help-open TOC"
 		Item "LaTeX Configuration|L" "help-open LaTeXConfig"
 		Separator
-		Item "About LyX...|X" "help-aboutlyx"
+		Item "About LyX...|X" "dialog-show aboutlyx"
 	End
 
 End

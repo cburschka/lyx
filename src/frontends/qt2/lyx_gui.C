@@ -201,9 +201,11 @@ FuncStatus getStatus(FuncRequest const & ev)
 {
 	FuncStatus flag;
 	switch (ev.action) {
-	case LFUN_LAYOUT_PREAMBLE:
+	case LFUN_DIALOG_SHOW:
+		if (ev.argument == "preamble" || ev.argument == "forks")
+			flag.unknown(true);
+		break;
 	case LFUN_TOOLTIPS_TOGGLE:
-	case LFUN_FORKS_SHOW:
 		flag.unknown(true);
 		break;
 	default:

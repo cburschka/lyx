@@ -44,8 +44,8 @@
 # this is "quoted-insert" a total different meaning from "quote-insert"
 \bind "C-q"                    "self-insert \""
 #bind "C-r"                    "------"
-\bind "C-s"                    "find-replace"
-\bind "M-~S-percent"		"find-replace"
+\bind "C-s"                    "dialog-show findreplace"
+\bind "M-~S-percent"		"dialog-show findreplace"
 
 \bind "C-t"                    "chars-transpose"
 
@@ -78,7 +78,7 @@
 # \bind "C-x s"                  "buffer-write"
 \bind "C-x t"                  "buffer-update dvi"
 \bind "C-x u"                  "undo"
-\bind "C-x v h"                "vc-history"
+\bind "C-x v h"                "dialog-show vclog"
 \bind "C-x v v"                "vc-check-in"
 \bind "C-x v u"                "vc-revert"
 \bind "C-x v c"                "vc-undo-last"

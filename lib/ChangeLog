@@ -1,3 +1,12 @@
+2003-06-19  Angus Leeming  <leeming@lyx.org>
+
+	* lib/bind/cua.bind:
+	* lib/bind/emacs.bind:
+	* lib/bind/xemacs.bind:
+	* lib/ui/classic.ui:
+	* lib/ui/stdmenus.ui:
+	* lib/ui/stdtoolbars.ui: replace lots of lfuns with dialog-show <name>.
+
 2003-06-17  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* ui/stdmenus.ui: add submenu "Paste Recent" to edit. Also add
@@ -1261,6 +1270,7 @@
 	* Makefile.am: do not set M4 explicitely
 
 2002-04-24  Rob Lahaye  <lahaye@users.sourceforge.net>
+
 	* configure.m4: add 'convert XPM to EPS', add more Grace conversions
 	and change tab to double space indentation in conversion section
 
