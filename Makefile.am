@@ -11,7 +11,7 @@ SUBDIRS = intl po sigc++ boost src lib
 
 EXTRA_DIST = ANNOUNCE INSTALL.OS2 INSTALL.autoconf README.OS2 \
 	UPGRADING lyx.man acconfig.h autogen.sh \
-	config development forms images sourcedoc
+	config development images sourcedoc
 
 #ETAGS_ARGS = --language-force=c++
 man_MANS = lyx.1
@@ -26,7 +26,6 @@ lyx.1:
 dist-hook:
 	cd $(distdir) ; rm -rf `find config -name \*CVS\*` ; \
 	rm -rf `find development -name \*CVS\*` ; \
-	rm -rf `find forms -name \*CVS\*` ; \
 	rm -rf `find images -name \*CVS\*`
 
 rpmdist: dist
