@@ -1,5 +1,8 @@
 2002-07-13  Dekel Tsur  <dekelts@tau.ac.il>
 
+	* insettabular.C (edit): Move into correct cell when entering a
+	tabular in 
+
 	* insettext.C (unlockInsetInInset): Correct cursor behaviour for
 	RTL paragraphs.
 
