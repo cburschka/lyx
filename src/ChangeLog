@@ -1,5 +1,10 @@
 2001-07-26  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
+	* buffer.C (parseSingleLyXformat2Token): a more general fix for
+	the minipage conversion problem.
+
+2001-07-26  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
 	* buffer.C (parseSingleLyXformat2Token): check minipage if we
 	insert an inset.
 

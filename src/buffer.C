@@ -431,7 +431,6 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 			par->insertChar(pos, (*cit), font);
 			++pos;
 		}
-		checkminipage = true;
 #ifdef NO_LATEX
 		}
 #endif
@@ -1041,9 +1040,6 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 		// But insets should read it, it is a part of
 		// the inset isn't it? Lgb.
 	} else if (token == "\\begin_inset") {
-		// Does this fix it? YES!
-		checkminipage = true;
-		
 #ifdef NO_LATEX
 		insertErtContents(par, pos, font, false);
 		ert_stack.push(ert_comp);
@@ -1108,9 +1104,6 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 		inset->read(this, lex);
 		par->insertInset(pos, inset, font);
 		++pos;
-		// because of OLD_TABULAR_READ where tabulars have been
-		// one paragraph.
-		checkminipage = true;
 	} else if (token == "\\hfill") {
 		par->insertChar(pos, Paragraph::META_HFILL, font);
 		++pos;
@@ -1173,7 +1166,17 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 		}
 #endif
 	}
+
 #ifndef NO_PEXTRA_REALLY
+	// I wonder if we could use this blanket fix for all the
+	// checkminipage cases...
+	if (par && par->size()) {
+		// It is possible that this will check to often,
+		// but that should not be an correctness issue.
+		// Only a speed issue.
+		checkminipage = true;
+	}
+	
 	// now check if we have a minipage paragraph as at this
 	// point we already read all the necessary data!
 	// this cannot be done in layout because there we did
