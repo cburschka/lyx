@@ -3,6 +3,9 @@
 	* ref_inset.C (dispatch): add an '\end_inset' to the string passed to
 	the dialog.
 
+	* math_inset.h:
+	* ref_inset.h (asRefInset): new method, replacing asInsetRef.
+
 2003-02-21  Angus Leeming  <leeming@lyx.org>
 
 	* formulabase.C (localDispatch): retire LFUN_REF_INSERT. Add

@@ -62,7 +62,7 @@ class MathSpaceInset;
 class MathSymbolInset;
 class MathUnknownInset;
 
-class InsetRef;
+class RefInset;
 
 class NormalStream;
 class OctaveStream;
@@ -218,7 +218,7 @@ public:
 	virtual MathSymbolInset const   * asSymbolInset() const   { return 0; }
 	virtual MathUnknownInset        * asUnknownInset()        { return 0; }
 	virtual MathUnknownInset const  * asUnknownInset() const  { return 0; }
-	virtual InsetRef                * asInsetRef()            { return 0; }
+	virtual RefInset                * asRefInset()            { return 0; }
 
 	/// identifies things that can get scripts
 	virtual bool isScriptable() const { return false; }

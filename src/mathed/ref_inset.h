@@ -23,6 +23,8 @@ public:
 	string screenLabel() const;
 	///
 	void validate(LaTeXFeatures & features) const;
+	///
+	virtual RefInset * asRefInset() { return this; }
 
 	/// plain ascii output
 	int ascii(std::ostream & os, int) const;
