@@ -1,3 +1,7 @@
+2002-02-07  Herbert Voss  <voss@lyx.org>
+
+	* GraphicsCacheItem.C: use unzipFile() from support/filetools
+
 2002-01-31  Herbert Voss  <voss@lyx.org>
 
 	* GraphicsCacheItem.h: handle filetype without the file extension;

@@ -1,3 +1,8 @@
+2002-02-06  Herbert Voss  <voss@perce.de>
+
+	* filetools.[Ch]: fix sume bugs for detecting zipped files 
+	adding unzipFile()
+
 2002-02-04  Herbert Voss  <voss@perce.de>
 
 	* filetools.[Ch]: add ifZippedFile() for zipped

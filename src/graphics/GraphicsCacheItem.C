@@ -26,7 +26,6 @@
 #include "debug.h"
 #include "support/LAssert.h"
 #include "gettext.h"
-#include "support/syscall.h"
 #include "lyxfunc.h"
 
 using std::endl;
@@ -139,9 +138,9 @@ bool GraphicsCacheItem::convertImage(string const & filename)
    -----------snip-------------*/
 
 	lyxerr << "GetExtension: " << GetExtension(filename_) << endl;
-	bool zipped = GetExtension(filename_).compare("gz") == 0;
+	bool const zipped = zippedFile(filename_);
 	if (zipped)
-	    filename_ = ChangeExtension(filename_, string());	// snip the ".gz"
+	    filename_ = unzipFile(filename_);
 	string const from = getExtFromContents(filename_);	// get the type
 	lyxerr << "GetExtFromContents: " << from << endl;
 	string const to = findTargetFormat(from);
@@ -149,13 +148,6 @@ bool GraphicsCacheItem::convertImage(string const & filename)
 	if (to.empty()) 
 		return false;
 	// manage zipped files. unzip them first into the tempdir
-	if (zipped) {
-	    tempfile = lyx::tempName(string(), filename_);
-	    // Run gunzip
-	    string const command = "gunzip -c "+filename+" > "+tempfile;
-	    Systemcalls one(Systemcalls::System, command); 
-	    filename_ = tempfile;
-	}
 	if (from == to) {
 		// No conversion needed!
 		// Saves more than just time: prevents the deletion of

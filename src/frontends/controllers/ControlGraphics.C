@@ -36,6 +36,7 @@
 #include "helper_funcs.h"      // for browseFile
 #include "support/lstrings.h"
 #include "support/filetools.h" // for AddName
+#include "support/syscall.h"	// for zippedFile()
 #include "BufferView.h"
 
 using std::pair;
@@ -108,8 +109,11 @@ string const ControlGraphics::readBB(string const & file)
 // end of the file. Than we have in the header a
 // 	%%BoundingBox: (atend)
 // In this case we must check until the end.
-	std::ifstream is(file.c_str());
-	if (!contains(getExtFromContents(file),"ps"))	// bb exists? 
+	string file_ = file;
+	if (zippedFile(file_))
+	    file_ = unzipFile(file_);
+	std::ifstream is(file_.c_str());
+	if (!contains(getExtFromContents(file_),"ps"))	// bb exists? 
 	    return string();
 	while (is) {
 		string s;

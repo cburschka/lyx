@@ -1,3 +1,9 @@
+2002-02-06  Herbert Voss  <voss@lyx.org>
+
+	* insetgraphic.C: prepareFile(): don't convert the file, when
+	it's not viewed in LyX. Saves a lot of time when opening a
+	document!
+
 2002-02-05  Herbert Voss  <voss@lyx.org>
 
 	* insetgraphic.C: 

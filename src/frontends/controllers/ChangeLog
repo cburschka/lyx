@@ -1,3 +1,10 @@
+2002-02-06  Herbert Voss  <voss@lyx.org>
+
+	* ControlGraphics.[C] (readBB): search also in
+	g'zipped files. If it is useful than PK and compress
+	should also be supported. use unzipFile() from
+	support/filetools
+
 2002-02-06  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* ControlRef.C (getBufferName): new method to get a real buffer

@@ -33,6 +33,7 @@
 #include <cerrno>
 #include "debug.h"
 #include "support/lstrings.h"
+#include "support/syscall.h"
 
 #include "filetools.h"
 #include "LSubstring.h"
@@ -970,13 +971,13 @@ string const GetExtension(string const & name)
 // JPG	JFIF
 // PDF	%PDF-...
 // PNG	.PNG...
-// PS	%!PS-Adobe-2.0
+// PS	%!PS-Adobe-2.0 or 1.0,  no "EPSF"!
 // XBM	... static char ...
 // XPM	/* XPM */
 //
-// GZIP	\213\037\008\008...	http://www.ietf.org/rfc/rfc1952.txt
+// GZIP	\037\213\010\010...	http://www.ietf.org/rfc/rfc1952.txt
 // ZIP	PK...			http://www.halyava.ru/document/ind_arch.htm
-// Z	\177\037		UNIX compress
+// Z	\037\177		UNIX compress
 /// return the "extension" which belongs to the contents
 string const getExtFromContents(string const & filename) {
 	if (filename.empty() || !IsFileReadable(filename)) 
@@ -984,16 +985,16 @@ string const getExtFromContents(string const & filename) {
 	ifstream ifs(filename.c_str());
 	if (!ifs) 
 	    return string();	// Couldn't open file...
-	string const gzipStamp = "\213\037\008\008";	// gnuzip
+	string const gzipStamp = "\037\213\010\010";	// gnuzip
 	string const zipStamp = "PK";			// PKZIP
-	string const compressStamp = "\177\037";	// compress
-	int const max_count = 50; // Maximum strings to read to attempt recognition
-	int count = 0; // Counter of attempts.
+	string const compressStamp = "\037\177";	// compress
+	int const max_count = 50; 	// Maximum strings to read
+	int count = 0; 			// Counter of attempts.
 	string str;
 	bool zipChecked = false;
 	for (; count < max_count; ++count) {
 		if (ifs.eof()) {
-			lyxerr[Debug::INFO] << "InsetGraphics (classifyFiletype)"
+			lyxerr[Debug::INFO] << "filetools(getExtFromContents)"
 				" End of file reached and it wasn't found to be a known Type!" << endl;
 			break;
 		}
@@ -1009,8 +1010,8 @@ string const getExtFromContents(string const & filename) {
 			return "compress";
 		    zipChecked = true;
 		}
-		if (contains(str,"EPSF"))
-		    return "eps";
+		if (contains(str,"EPSF")) // dummy, if we have wrong file
+		    return "eps";	  // description like "%!PS-Adobe-2.0EPSF"
 		else if (contains(str,"GIF"))
 		    return "gif";
 		else if (contains(str,"JFIF"))
@@ -1019,14 +1020,19 @@ string const getExtFromContents(string const & filename) {
 		    return "pdf";
 		else if (contains(str,"PNG"))
 		    return "png";
-		else if (contains(str,"%!PS-Adobe-"))
-		    return "ps";		// eps here no more possible
-		else if (contains(str,"static char"))
+		else if (contains(str,"%!PS-Adobe")) { // eps or ps
+		    // test if it's ps or eps
+		    ifs >> str;
+		    if (contains(str,"EPSF"))
+			return "eps";
+		    else 
+			return "ps";
+		} else if (contains(str,"static char"))
 		    return "xbm";
 		else if (contains(str,"XPM"))
 		    return "xpm";
 	}
-	lyxerr[Debug::INFO] << "InsetGraphics (classifyFiletype)"
+	lyxerr[Debug::INFO] << "filetools(getExtFromContents)"
 		" Couldn't find a known Type!" << endl;
 	return string();
 }
@@ -1035,10 +1041,22 @@ string const getExtFromContents(string const & filename) {
 /// check for zipped file
 bool zippedFile(string const & name) {
 	string const type = getExtFromContents(name);
-	if (contains("gzip zip",type) && !type.empty())
+	if (contains("gzip zip compress",type) && !type.empty())
 	    return true;
 	return false;
 }
+
+string const unzipFile(string const & zipped_file)
+{
+    string const file = ChangeExtension(zipped_file, string());
+    string  const tempfile = lyx::tempName(string(), file);
+    // Run gunzip
+    string const command = "gunzip -c "+file+" > "+tempfile;
+    Systemcalls one(Systemcalls::System, command);
+    // test that command was executed successfully
+    return tempfile;
+}
+
 
 // Creates a nice compact path for displaying
 string const

@@ -138,6 +138,9 @@ string const getExtFromContents(string const & name);
 /// check for zipped file
 bool zippedFile(string const & name);
 
+/// unzip a file
+string const unzipFile(string const & zipped_file);
+
 /// Returns true is path is absolute
 bool AbsolutePath(string const & path);
 

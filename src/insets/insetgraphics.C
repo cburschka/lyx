@@ -37,10 +37,6 @@ Known BUGS:
 		its original size and color, resizing is done in the final output,
 		but not in the LyX window.
 
-	* EPS figures are not fully detected, they may have a lot of possible
-		suffixes so we need to read the file and detect if it's EPS or not.
-		[Implemented, need testing]
-		
 TODO Before initial production release:
     * Replace insetfig everywhere
         * Search for comments of the form
@@ -461,26 +457,26 @@ string const InsetGraphics::createLatexOptions() const
 	// before writing it to the output stream.
 	ostringstream options;
 	if (!params.bb.empty())
-	    options << "  bb=" << strip(params.bb) << ",%\n";
+	    options << "  bb=" << strip(params.bb) << ",\n";
 	if (params.draft)
-	    options << "  draft,%\n";
+	    options << "  draft,\n";
 	if (params.clip)
-	    options << "  clip,%\n";
+	    options << "  clip,\n";
 	if (params.size_type == InsetGraphicsParams::WH) {
 	    if (!params.width.zero())
-		options << "  width=" << params.width.asLatexString() << ",%\n";
+		options << "  width=" << params.width.asLatexString() << ",\n";
 	    if (!params.height.zero())
-		options << "  height=" << params.height.asLatexString() << ",%\n";
+		options << "  height=" << params.height.asLatexString() << ",\n";
 	} else if (params.size_type == InsetGraphicsParams::SCALE) {
 	    if (params.scale > 0)
-		options << "  scale=" << double(params.scale)/100.0 << ",%\n";
+		options << "  scale=" << double(params.scale)/100.0 << ",\n";
 	}
 	if (params.keepAspectRatio)
-	    options << "  keepaspectratio,%\n";
+	    options << "  keepaspectratio,\n";
 	// Make sure it's not very close to zero, a float can be effectively
 	// zero but not exactly zero.
 	if (!lyx::float_equal(params.rotateAngle, 0, 0.001) && params.rotate) {
-	    options << "  angle=" << params.rotateAngle << ",%\n";
+	    options << "  angle=" << params.rotateAngle << ",\n";
 	    if (!params.rotateOrigin.empty()) {
 		options << "  origin=" << params.rotateOrigin[0];
 		if (contains(params.rotateOrigin,"Top"))
@@ -489,14 +485,13 @@ string const InsetGraphics::createLatexOptions() const
 		    options << 'b';
 		else if (contains(params.rotateOrigin,"Baseline"))
 		    options << 'B';
-		options << ",%\n";
+		options << ",\n";
 	    }
 	}
 	if (!params.special.empty())
-	    options << params.special << ",%\n";
+	    options << params.special << ",\n";
 	string opts = options.str().c_str();
-	opts = opts.substr(0,opts.size()-3);	// delete last ",%\n"
-	return opts;
+	return opts.substr(0,opts.size()-2);	// delete last ",\n"
 }
 
 namespace {
@@ -538,13 +533,24 @@ string const InsetGraphics::prepareFile(Buffer const *buf) const
 	//   convert_place = original file directory
 	//   return original filename without the extension
 	//
+	// first check if file is viewed in LyX. First local
+	// than global
+	if ((params.display == InsetGraphicsParams::NONE) || 
+	    ((params.display == InsetGraphicsParams::DEFAULT) &&
+	    (lyxrc.display_graphics == "no"))) {
+		lyxerr << "InsetGraphics::no converting of: " << params.filename << "\n";
+		return params.filename;
+	}
+	// if it's a zipped one, than let LaTeX do the rest!!!
+	if (zippedFile(params.filename)) {
+	    lyxerr << "InsetGraphics::prepareFilter(zippedFile): return " 
+		    << params.filename << endl;
+	    return params.filename;
+	}
+	// now we have unzipped files
 	// Get the extension (format) of the original file.
 	// we handle it like a virtual one, so we can have
 	// different extensions with the same type.
-	// if it's a zipped one, than let LaTeX do the rest!!!
-	if (zippedFile(params.filename))	
-	    return params.filename;
-	// now we have unzipped files
 	string const extension = getExtFromContents(params.filename);
 	// Are we creating a PDF or a PS file?
 	// (Should actually mean, are we usind latex or pdflatex).
