@@ -1,3 +1,7 @@
+2005-02-03  Angus Leeming  <leeming@lyx.org>
+
+	* Makefile.am: make -lz conditional on USE_COMPRESSION.
+
 2005-02-03  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* text.C (parse_text): handle \includegraphics*

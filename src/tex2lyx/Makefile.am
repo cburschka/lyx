@@ -17,6 +17,10 @@ AM_CPPFLAGS = $(PCH_FLAGS) -I$(srcdir)/.. $(BOOST_INCLUDES)
 
 BOOST_LIBS = $(BOOST_REGEX) $(BOOST_FILESYSTEM)
 
+if USE_COMPRESSION
+COMPRESSIONLIB = -lz
+endif
+
 BUILT_SOURCES = \
 	FloatList.C \
 	Floating.C \
@@ -50,7 +54,7 @@ tex2lyx_SOURCES = \
 
 tex2lyx_LDADD = \
 	$(top_builddir)/src/support/libsupport.la \
-	$(BOOST_LIBS) -lz
+	$(BOOST_LIBS) $(COMPRESSIONLIB)
 
 $(BUILT_SOURCES) :
 	@rm -f $@ ; \
