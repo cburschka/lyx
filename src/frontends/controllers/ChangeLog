@@ -3,7 +3,9 @@
 	* ControlConnections.[Ch]: (docType): new method; returns the type
 	of the buffer, LaTeX, Literate, LinuxDoc or DocBook.
 
-	* ControlRef.[Ch]: new files; controller for the Ref popup.
+	* ControlRef.[Ch]:
+	* ControlTabularCreate.[Ch]: new files; controller for the Ref and
+	TabularCreate popups, respectively.
 
 	* GUI.h:
 	* Makefile.am: associated changes.

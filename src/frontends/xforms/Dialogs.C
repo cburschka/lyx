@@ -30,6 +30,7 @@
 #include "ControlLog.h"
 #include "ControlUrl.h"
 #include "ControlRef.h"
+#include "ControlTabularCreate.h"
 #include "ControlVCLog.h"
 
 #include "GUI.h"
@@ -45,6 +46,7 @@
 #include "form_error.h"
 #include "form_include.h"
 #include "form_ref.h"
+#include "form_tabular_create.h"
 #include "form_url.h"
 
 #include "FormBibitem.h"
@@ -57,6 +59,7 @@
 #include "FormInclude.h"
 #include "FormLog.h"
 #include "FormRef.h"
+#include "FormTabularCreate.h"
 #include "FormUrl.h"
 #include "FormVCLog.h"
 
@@ -72,7 +75,6 @@
 #include "FormSearch.h"
 #include "FormSplash.h"
 #include "FormTabular.h"
-#include "FormTabularCreate.h"
 #include "FormToc.h"
 #include "FormMinipage.h"
 
@@ -96,6 +98,7 @@ Dialogs::Dialogs(LyXView * lv)
 	add(new GUIRef<FormRef, xformsBC>(*lv, *this));
 	add(new GUIUrl<FormUrl, xformsBC>(*lv, *this));
 	add(new GUIVCLog<FormVCLog, xformsBC>(*lv, *this));
+	add(new GUITabularCreate<FormTabularCreate, xformsBC>(*lv, *this));
 
 	add(new FormDocument(lv, this));
 	add(new FormExternal(lv, this));
@@ -109,7 +112,6 @@ Dialogs::Dialogs(LyXView * lv)
 	add(new FormSearch(lv, this));
 	add(new FormSplash(lv, this));
 	add(new FormTabular(lv, this));
-	add(new FormTabularCreate(lv, this));
 	add(new FormToc(lv, this));
 	add(new FormMinipage(lv, this));
 	

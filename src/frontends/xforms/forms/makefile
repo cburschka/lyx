@@ -36,6 +36,7 @@ SRCS := form_bibitem.fd \
 	form_maths_matrix.fd \
 	form_maths_panel.fd \
 	form_maths_space.fd \
+	form_minipage.fd \
 	form_paragraph.fd \
 	form_preamble.fd \
 	form_preferences.fd \
@@ -46,8 +47,7 @@ SRCS := form_bibitem.fd \
 	form_tabular.fd \
 	form_tabular_create.fd \
 	form_toc.fd \
-	form_url.fd \
-	form_minipage.fd
+	form_url.fd
 
 OBJS := $(SRCS:.fd=.C)
 

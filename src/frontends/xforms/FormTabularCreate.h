@@ -1,66 +1,47 @@
-// -*- C++ -*-
 /* This file is part of
  * ======================================================
  * 
  *           LyX, The Document Processor
  * 	 
  *	    Copyright 1995 Matthias Ettrich
- *          Copyright 1995-2000 The LyX Team.
+ *          Copyright 1995-2001 The LyX Team.
  *
- *======================================================*/
-/* FormTabularCreate.h
- * FormTabularCreate Interface Class
+ *======================================================
+ *
+ * \file FormTabularCreate.h
  */
 
 #ifndef FORMTABULARCREATE_H
 #define FORMTABULARCREATE_H
 
-#include <boost/smart_ptr.hpp>
-
 #ifdef __GNUG__
 #pragma interface
 #endif
 
-#include "FormBaseDeprecated.h"
+#include "FormBase.h"
 
+class ControlTabularCreate;
 struct FD_form_tabular_create;
 
-/** This class provides an XForms implementation of the FormTabularCreate
+/** This class provides an XForms implementation of the TabularCreate
     Dialog.
  */
-class FormTabularCreate : public FormBaseBD {
+class FormTabularCreate :
+	public FormCB<ControlTabularCreate, FormDB<FD_form_tabular_create> > {
 public:
-	/// #FormTabularCreate x(LyXView ..., Dialogs ...);#
-	FormTabularCreate(LyXView *, Dialogs *);
+	/// 
+	FormTabularCreate(ControlTabularCreate &);
 
 private:
-	/// Pointer to the actual instantiation of the ButtonController.
-	virtual xformsBC & bc();
-	/// Connect signals etc.
-	virtual void connect();
-
 	/// Apply from dialog
 	virtual void apply();
-	/// Update dialog before showing it
-	virtual void update();
-	/// Pointer to the actual instantiation of the xforms form
-	virtual FL_FORM * form() const;
 	/// Build the dialog
 	virtual void build();
+	/// not needed
+	virtual void update() {};
 
 	///
 	FD_form_tabular_create * build_tabular_create();
-	
-	/// Real GUI implementation.
-	boost::scoped_ptr<FD_form_tabular_create> dialog_;
-	/// The ButtonController
-	ButtonController<OkApplyCancelReadOnlyPolicy, xformsBC> bc_;
 };
 
-
-inline
-xformsBC & FormTabularCreate::bc()
-{
-	return bc_;
-}
-#endif
+#endif // FORMTABULARCREATE

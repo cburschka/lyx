@@ -46,8 +46,8 @@ shortcut: ^M
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: button_ok
-callback: C_FormBaseDeprecatedOKCB
-argument: 0
+callback: C_FormBaseOKCB
+argument: 
 
 --------------------
 class: FL_BUTTON
@@ -64,8 +64,8 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: button_apply
-callback: C_FormBaseDeprecatedApplyCB
-argument: 0
+callback: C_FormBaseApplyCB
+argument: 
 
 --------------------
 class: FL_BUTTON
@@ -82,8 +82,8 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: button_cancel
-callback: C_FormBaseDeprecatedCancelCB
-argument: 0
+callback: C_FormBaseCancelCB
+argument: 
 
 --------------------
 class: FL_VALSLIDER

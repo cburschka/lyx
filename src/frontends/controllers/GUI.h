@@ -165,6 +165,22 @@ public:
 };
 
 
+/** Specialization for TabularCreate dialog
+ */
+class ControlTabularCreate;
+
+template <class GUIview, class GUIbc>
+class GUITabularCreate :
+	public GUI<ControlTabularCreate, GUIview,
+                   OkApplyCancelReadOnlyPolicy, GUIbc> {
+public:
+	///
+	GUITabularCreate(LyXView & lv, Dialogs & d)
+		: GUI<ControlTabularCreate, GUIview,
+		      OkApplyCancelReadOnlyPolicy, GUIbc>(lv, d) {}
+};
+
+
 /** Specialization for Url dialog
  */
 class ControlUrl;
