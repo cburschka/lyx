@@ -119,7 +119,7 @@ void MathCharInset::write(MathWriteInfo & os) const
 
 void MathCharInset::writeNormal(std::ostream & os) const
 {
-	os << char_;
+	os << "[char " << char_ << " " << "mathalpha" << "]";
 }
 
 

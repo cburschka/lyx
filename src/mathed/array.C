@@ -201,10 +201,17 @@ void MathArray::write(MathWriteInfo & wi) const
 
 void MathArray::writeNormal(ostream & os) const
 {
-	os << "[par ";
-	for (const_iterator it = begin(); it != end(); ++it)
-		(*it)->writeNormal(os);
-	os << "]";
+	for (const_iterator it = begin(); it != end(); ++it) {	
+		MathInset * p = it->nucleus();
+		if (!p)
+			continue;
+		if (MathScriptInset const * q = asScript(it)) {
+			q->writeNormal(p, os);
+			++it;
+		} else {
+			p->writeNormal(os);
+		}
+	}
 }
 
 

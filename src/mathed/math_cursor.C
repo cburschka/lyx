@@ -702,7 +702,8 @@ void MathCursor::selDel()
 	seldump("selDel");
 	if (selection_) {
 		theSelection.erase(*this);
-		pos() = 0;
+		if (pos() > size())
+			pos() = size();
 		selClear();
 	}
 }

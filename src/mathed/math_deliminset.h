@@ -23,6 +23,8 @@ public:
 	void draw(Painter &, int x, int y) const;
 	///
 	void write(MathWriteInfo & os) const;
+	/// write normalized content
+	void writeNormal(std::ostream &) const;
 	///
 	void metrics(MathMetricsInfo const & st) const;
 private:

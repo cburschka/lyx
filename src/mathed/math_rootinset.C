@@ -70,7 +70,7 @@ void MathRootInset::writeNormal(std::ostream & os) const
 	cell(1).writeNormal(os);  
 	os << " ";
 	cell(0).writeNormal(os);
-	os << "] ";
+	os << "]";
 }
 
 

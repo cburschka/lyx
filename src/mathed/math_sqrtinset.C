@@ -53,5 +53,5 @@ void MathSqrtInset::writeNormal(std::ostream & os) const
 {
 	os << "[sqrt ";
 	cell(0).writeNormal(os); 
-	os << "] ";
+	os << "]";
 }

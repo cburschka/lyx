@@ -49,6 +49,12 @@ void MathDelimInset::write(MathWriteInfo & os) const
 }
 
 
+void MathDelimInset::writeNormal(std::ostream & os) const
+{
+	os << "[delim " << latexName(left_) << " " << latexName(right_) << "]";
+}
+
+
 int MathDelimInset::dw() const
 {
 	int w = height() / 5;

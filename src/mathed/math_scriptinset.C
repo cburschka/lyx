@@ -1,4 +1,7 @@
+
 #include <config.h>
+#include <sstream>
+
 #include "debug.h"
 #include "support.h"
 #include "support/LOstream.h"
@@ -9,6 +12,8 @@
 #endif
 
 #include "math_scriptinset.h"
+
+using std::ostringstream;
 
 
 MathScriptInset::MathScriptInset()
@@ -25,7 +30,6 @@ MathScriptInset::MathScriptInset(bool up)
 	script_[0] = !up;
 	script_[1] = up;
 }
-
 
 
 MathInset * MathScriptInset::clone() const
@@ -248,6 +252,43 @@ void MathScriptInset::write(MathInset const * nuc, MathWriteInfo & os) const
 
 	if (hasUp() && up().data_.size())
 		os << "^{" << up().data_ << '}';
+}
+
+
+void MathScriptInset::writeNormal(ostream & os) const
+{  
+	//lyxerr << "unexpected call to MathScriptInset::writeNormal()\n";
+	writeNormal(0, os);
+}
+
+
+void MathScriptInset::writeNormal(MathInset const * nuc, ostream & os) const
+{
+	bool d = hasDown() && down().data_.size();
+	bool u = hasUp() && up().data_.size();
+
+	ostringstream osb;
+	if (nuc)
+		nuc->writeNormal(osb);
+	else
+		osb << "[par]";
+	string base = osb.str();
+
+	if (u && d) {
+		os << "[sup [sub " << osb.str() << " ";
+		down().data_.writeNormal(os);
+		os << "]";
+		up().data_.writeNormal(os);
+		os << ']';
+	} else if (u) {
+		os << "[sup " << osb.str() << " ";
+		up().data_.writeNormal(os);
+		os << ']';
+	} else if (d) {
+		os << "[sub " << osb.str() << " ";
+		down().data_.writeNormal(os);
+		os << ']';
+	}
 }
 
 
