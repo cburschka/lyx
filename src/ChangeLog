@@ -1,3 +1,8 @@
+
+2004-04-01  Alfredo Braunstein  <abraunst@lyx.org>
+
+	* lyxfunc.C (getStatus): enable LFUN_WORD_{FIND,REPLACE}
+
 2004-03-31  Angus Leeming  <leeming@lyx.org>
 
 	* lyxfunc.C (dispatch): Fall through to the generic

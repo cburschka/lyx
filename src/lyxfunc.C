@@ -507,7 +507,8 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	case LFUN_SAVE_AS_DEFAULT:
 	case LFUN_BUFFERPARAMS_APPLY:
 	case LFUN_LYXRC_APPLY:
-
+	case LFUN_WORD_FIND:
+	case LFUN_WORD_REPLACE:
 		// these are handled in our dispatch()
 		break;
 
