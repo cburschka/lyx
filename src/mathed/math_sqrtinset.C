@@ -39,7 +39,7 @@ void MathSqrtInset::draw(Painter & pain, int x, int y) const
 	xp[1] = x + 8;      yp[1] = y - a + 1;
 	xp[2] = x + 5;      yp[2] = y + d - 1;
 	xp[3] = x;          yp[3] = y + (d - a)/2;
-	pain.lines(xp, yp, 4, LColor::mathline);
+	pain.lines(xp, yp, 4, LColor::math);
 }
 
 

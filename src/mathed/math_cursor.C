@@ -805,7 +805,7 @@ void MathCursor::drawSelection(Painter & pain) const
 		int x  = c.xo() + c.pos2x(anc.pos_);
 		int y1 = c.yo() - c.ascent();
 		int y2 = c.yo() + c.descent();
-		pain.line(x, y1, x, y2, LColor::mathline);
+		pain.line(x, y1, x, y2, LColor::math);
 	}
 #endif
 }
@@ -961,7 +961,7 @@ void MathCursor::normalize() const
 		lyxerr << "this should not really happen - 2: "
 			<< pos() << " " << size() <<  " in idx: " << it->idx()
 			<< " in atom: '";
-		WriteStream wi(0, lyxerr, false);
+		WriteStream wi(lyxerr, false);
 		it->par()->write(wi);
 		lyxerr << "\n";
 		dump("error 4");

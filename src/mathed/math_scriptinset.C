@@ -358,7 +358,7 @@ void MathScriptInset::write2(MathInset const * nuc, WriteStream & os) const
 				os << "\\limits ";
 		}
 	} else
-			if (os.firstitem)
+			if (os.firstitem())
 				lyxerr << "suppressing {} \n";
 			else
 				os << "{}";

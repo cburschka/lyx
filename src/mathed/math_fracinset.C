@@ -43,7 +43,7 @@ void MathFracInset::draw(Painter & pain, int x, int y) const
 	xcell(0).draw(pain, m - xcell(0).width() / 2, y - xcell(0).descent() - 3 - 5);
 	xcell(1).draw(pain, m - xcell(1).width() / 2, y + xcell(1).ascent()  + 3 - 5);
 	if (!atop_)
-		pain.line(x + 2, y - 5, x + width() - 4, y - 5, LColor::mathline);
+		pain.line(x + 2, y - 5, x + width() - 4, y - 5, LColor::math);
 }
 
 

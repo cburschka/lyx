@@ -93,7 +93,7 @@ void MathDecorationInset::draw(Painter & pain, int x, int y) const
 
 void MathDecorationInset::write(WriteStream & os) const
 {
-	if (os.fragile && protect())
+	if (os.fragile() && protect())
 		os << "\\protect";
 	os << '\\' << name_.c_str() << '{' << cell(0) << '}';
 }

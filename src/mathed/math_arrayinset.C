@@ -71,7 +71,7 @@ void MathArrayInset::metrics(MathMetricsInfo const & st) const
 
 void MathArrayInset::write(WriteStream & os) const
 {
-	if (os.fragile)
+	if (os.fragile())
 		os << "\\protect";
 	os << "\\begin{array}";
 
@@ -81,7 +81,7 @@ void MathArrayInset::write(WriteStream & os) const
 
 	MathGridInset::write(os);
 
-	if (os.fragile)
+	if (os.fragile())
 		os << "\\protect";
 	os << "\\end{array}\n";
 }

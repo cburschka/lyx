@@ -1,15 +1,20 @@
 #ifndef MATH_MATHMLSTREAM_H
 #define MATH_MATHMLSTREAM_H
 
-#include "LString.h"
 
-#include "support/LOstream.h"
+// Please keep all four streams in one file until the interface has
+// settled.
+
 
 #include <iosfwd>
 
-struct MathArray;
-struct MathInset;
-struct Buffer;
+class MathArray;
+class MathInset;
+
+
+//
+//  MathML
+//
 
 struct MTag {
 	///
@@ -25,24 +30,19 @@ struct ETag {
 	char const * const tag_;
 };
 
-struct MathMLStream {
+class MathMLStream {
+public:
 	///
 	explicit MathMLStream(std::ostream & os);
 	///
-	MathMLStream & operator<<(MathInset const *);
-	///
-	MathMLStream & operator<<(MathArray const &);
-	///
-	MathMLStream & operator<<(char const *);
-	///
-	MathMLStream & operator<<(char);
-	///
-	MathMLStream & operator<<(MTag const &);
-	///
-	MathMLStream & operator<<(ETag const &);
-	///
 	void cr();
-
+	///
+	std::ostream & os() { return os_; }
+	///
+	int & line() { return line_; }
+	///
+	int & tab() { return tab_; }
+private:
 	///
 	std::ostream & os_;
 	///
@@ -53,89 +53,145 @@ struct MathMLStream {
 	char lastchar_;
 };
 
+///
+MathMLStream & operator<<(MathMLStream &, MathInset const *);
+///
+MathMLStream & operator<<(MathMLStream &, MathArray const &);
+///
+MathMLStream & operator<<(MathMLStream &, char const *);
+///
+MathMLStream & operator<<(MathMLStream &, char);
+///
+MathMLStream & operator<<(MathMLStream &, MTag const &);
+///
+MathMLStream & operator<<(MathMLStream &, ETag const &);
 
-struct NormalStream {
+
+
+//
+// Debugging
+//
+
+class NormalStream {
+public:
 	///
 	explicit NormalStream(std::ostream & os) : os_(os) {}
 	///
+	std::ostream & os() { return os_; }
+private:
+	///
 	std::ostream & os_;
-	///
-	NormalStream & operator<<(MathInset const *);
-	///
-	NormalStream & operator<<(MathArray const &);
-	///
-	NormalStream & operator<<(char const *);
-	///
-	NormalStream & operator<<(char);
 };
 
+///
+NormalStream & operator<<(NormalStream &, MathInset const *);
+///
+NormalStream & operator<<(NormalStream &, MathArray const &);
+///
+NormalStream & operator<<(NormalStream &, char const *);
+///
+NormalStream & operator<<(NormalStream &, char);
 
-struct MapleStream {
+
+
+
+//
+// Maple
+//
+
+
+class MapleStream {
+public:
 	///
 	explicit MapleStream(std::ostream & os) : os_(os) {}
 	///
+	std::ostream & os() { return os_; }
+private:
+	///
 	std::ostream & os_;
-	///
-	MapleStream & operator<<(MathInset const *);
-	///
-	MapleStream & operator<<(MathArray const &);
-	///
-	MapleStream & operator<<(char const *);
-	///
-	MapleStream & operator<<(char);
-	///
-	MapleStream & operator<<(int);
 };
 
 
-struct OctaveStream {
+///
+MapleStream & operator<<(MapleStream &, MathInset const *);
+///
+MapleStream & operator<<(MapleStream &, MathArray const &);
+///
+MapleStream & operator<<(MapleStream &, char const *);
+///
+MapleStream & operator<<(MapleStream &, char);
+///
+MapleStream & operator<<(MapleStream &, int);
+
+
+//
+// Octave
+//
+
+
+class OctaveStream {
+public:
 	///
 	explicit OctaveStream(std::ostream & os) : os_(os) {}
 	///
+	std::ostream & os() { return os_; }
+private:
+	///
 	std::ostream & os_;
-	///
-	OctaveStream & operator<<(MathInset const *);
-	///
-	OctaveStream & operator<<(MathArray const &);
-	///
-	OctaveStream & operator<<(char const *);
-	///
-	OctaveStream & operator<<(char);
 };
 
+///
+OctaveStream & operator<<(OctaveStream &, MathInset const *);
+///
+OctaveStream & operator<<(OctaveStream &, MathArray const &);
+///
+OctaveStream & operator<<(OctaveStream &, char const *);
+///
+OctaveStream & operator<<(OctaveStream &, char);
 
-struct WriteStream {
+
+
+//
+// LaTeX/LyX
+//
+
+class WriteStream {
+public:
 	///
-	WriteStream(Buffer const * buffer_, std::ostream & os_, bool fragile_);
+	WriteStream(std::ostream & os, bool fragile);
 	///
 	explicit WriteStream(std::ostream & os_);
-
+	/// yes... the references will be removed some day...
+	int & line() { return line_; }
 	///
-	WriteStream & operator<<(MathInset const *);
+	bool fragile() const { return fragile_; }
 	///
-	WriteStream & operator<<(MathArray const &);
+	std::ostream & os() { return os_; }
 	///
-	WriteStream & operator<<(string const &);
+	bool & firstitem() { return firstitem_; }
+private:
 	///
-	WriteStream & operator<<(char const *);
+	std::ostream & os_;
 	///
-	WriteStream & operator<<(char);
-	///
-	WriteStream & operator<<(int);
-	///
-	WriteStream & operator<<(unsigned int);
-
-	///
-	Buffer const * buffer;
-	///
-	std::ostream & os;
-	///
-	bool fragile;
+	bool fragile_;
 	/// are we at the beginning of an MathArray?
-	bool firstitem;
+	bool firstitem_;
 	///
 	int line_;
 };
+
+///
+WriteStream & operator<<(WriteStream &, MathInset const *);
+///
+WriteStream & operator<<(WriteStream &, MathArray const &);
+///
+WriteStream & operator<<(WriteStream &, char const *);
+///
+WriteStream & operator<<(WriteStream &, char);
+///
+WriteStream & operator<<(WriteStream &, int);
+///
+WriteStream & operator<<(WriteStream &, unsigned int);
 
 
 #endif

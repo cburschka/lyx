@@ -111,6 +111,7 @@ libmathed_la_SOURCES = \
 	math_sqrtinset.h \
 	math_stackrelinset.C \
 	math_stackrelinset.h \
+	math_streamstr.h \
 	math_stringinset.C \
 	math_stringinset.h \
 	math_support.C \

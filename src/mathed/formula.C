@@ -283,20 +283,19 @@ void InsetFormula::write(Buffer const * buf, ostream & os) const
 }
 
 
-int InsetFormula::latex(Buffer const * buf, ostream & os, bool fragil, bool)
-	const
+int InsetFormula::latex(Buffer const *, ostream & os, bool fragil, bool) const
 {
-	WriteStream wi(buf, os, fragil);
+	WriteStream wi(os, fragil);
 	par_->write(wi);
-	return wi.line_;
+	return wi.line();
 }
 
 
-int InsetFormula::ascii(Buffer const * buf, ostream & os, int) const
+int InsetFormula::ascii(Buffer const *, ostream & os, int) const
 {
-	WriteStream wi(buf, os, false);
+	WriteStream wi(os, false);
 	par_->write(wi);
-	return wi.line_;
+	return wi.line();
 }
 
 
@@ -310,11 +309,11 @@ int InsetFormula::docbook(Buffer const * buf, ostream & os) const
 {
 	MathMLStream ms(os);
 	ms << MTag("equation") << MTag("alt");
-	int res = ascii(buf, ms.os_, 0);
+	int res = ascii(buf, ms.os(), 0);
 	ms << ETag("alt") << MTag("math");
 	ms << par_.nucleus();
 	ms << ETag("math") << ETag("equation");
-	return ms.line_ + res;
+	return ms.line() + res;
 }
 
 

@@ -28,14 +28,6 @@
 #include "debug.h"
 
 
-MathInset::MathInset()
-{}
-
-
-MathInset::~MathInset()
-{}
-
-
 int MathInset::height() const
 {
 	return ascent() + descent();
@@ -44,7 +36,7 @@ int MathInset::height() const
 
 std::ostream & operator<<(std::ostream & os, MathInset const & inset)
 {
-	WriteStream wi(0, os, false);
+	WriteStream wi(os, false);
 	inset.write(wi);
 	return os;
 }
@@ -188,7 +180,7 @@ void MathInset::idxDeleteRange(idx_type, idx_type)
 void MathInset::normalize(NormalStream & os) const
 {
 	os << "[unknown ";
-	WriteStream wi(0, os.os_, false);
+	WriteStream wi(os.os(), false);
 	write(wi);
 	os << "] ";
 }
@@ -197,7 +189,7 @@ void MathInset::normalize(NormalStream & os) const
 void MathInset::dump() const
 {
 	lyxerr << "---------------------------------------------\n";
-	WriteStream wi(0, lyxerr, false);
+	WriteStream wi(lyxerr, false);
 	write(wi);
 	lyxerr << "\n---------------------------------------------\n";
 }
@@ -244,20 +236,20 @@ void MathInset::write(WriteStream &) const
 
 void MathInset::octavize(OctaveStream & os) const
 {
-	NormalStream ns(os.os_);
+	NormalStream ns(os.os());
 	normalize(ns);
 }
 
 
 void MathInset::maplize(MapleStream & os) const
 {
-	NormalStream ns(os.os_);
+	NormalStream ns(os.os());
 	normalize(ns);
 }
 
 
 void MathInset::mathmlize(MathMLStream & os) const
 {
-	NormalStream ns(os.os_);
+	NormalStream ns(os.os());
 	normalize(ns);
 }

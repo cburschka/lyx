@@ -96,9 +96,9 @@ void MathCharInset::writeRaw(std::ostream & os) const
 
 void MathCharInset::write(WriteStream & os) const
 {
-	writeHeader(os.os);
-	writeRaw(os.os);
-	writeTrailer(os.os);
+	writeHeader(os.os());
+	writeRaw(os.os());
+	writeTrailer(os.os());
 }
 
 

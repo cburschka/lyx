@@ -31,10 +31,18 @@
 #include "math_xdata.h"
 #include "math_defs.h"
 
-/** Abstract base class for all math objects.
-    A math insets is for use of the math editor only, it isn't a
-    general LyX inset. It's used to represent all the math objects.
-    The formulaInset (a LyX inset) encapsulates a math inset.
+/**
+
+Abstract base class for all math objects.  A math insets is for use of the
+math editor only, it isn't a general LyX inset. It's used to represent all
+the math objects. 
+
+Math insets do not know there parents, a cursor position or things
+like that. The are dumb object that are contained in other math insets
+(mathNestInsets, in fact) thus forming a tree. The root of this tree is
+always a mathHullInset, which provides an interface to the Outer World by
+inclusion in the "real LyX insets" FormulaInset and FormulaMacroInset.
+
 */
 
 
@@ -79,10 +87,10 @@ public:
 	/// type for column numbers
 	typedef size_type                col_type;
 
-	///
-	MathInset();
+	/// our members behave nicely...
+	MathInset() {}
 	/// the virtual base destructor
-	virtual ~MathInset(); 
+	virtual ~MathInset() {}
 
 	/// draw the object
 	virtual void draw(Painter &, int x, int y) const;

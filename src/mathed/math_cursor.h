@@ -29,13 +29,25 @@ class InsetFormulaBase;
 class Painter;
 class Selection;
 
+/**
+
+[Have a look at math_inset.h first]
+
+The MathCursor is different from the kind of cursor used in the Outer
+World. It contains a stack of MathCursorPositions, each of which is made
+up of a inset pointer, an index and a position offset, marking a path from
+this formula's mathHullInset to the current position.
+
+*/
+
+
 /// Description of a position 
 struct MathCursorPos {
-	/// inset
+	/// pointer to an inset
 	MathAtom * par_;
-	/// cell index
+	/// cell index of a position in this inset
 	MathInset::idx_type idx_;
-	/// cell position
+	/// position in this cell
 	MathInset::pos_type pos_;
 
 	/// returns cell corresponding to this position
@@ -48,13 +60,13 @@ struct MathCursorPos {
 	MathXArray & xcell(MathInset::idx_type idx) const;
 };
 
-/// 
+/// test for equality
 bool operator==(MathCursorPos const &, MathCursorPos const &);
-/// 
+/// test for unequality
 bool operator<(MathCursorPos const &, MathCursorPos const &);
 
 
-/// This is the external interface of Math's subkernel
+/// see above
 class MathCursor {
 public:
 	/// short of anything else reasonable
@@ -82,25 +94,25 @@ public:
 	void erase();
 	///
 	void backspace();
-	///
+	/// called for LFUN_HOME etc
 	void home(bool sel = false);
-	///
+	/// called for LFUN_END etc
 	void end(bool sel = false);
-	///
+	/// called for LFUN_RIGHT and LFUN_RIGHTSEL
 	bool right(bool sel = false);
-	///
+	/// called for LFUN_LEFT etc
 	bool left(bool sel = false);
-	///
+	/// called for LFUN_UP etc
 	bool up(bool sel = false);
-	///
+	/// called for LFUN_DOWN etc
 	bool down(bool sel = false);
 	/// Put the cursor in the first position
 	void first();
 	/// Put the cursor in the last position
 	void last();
-	///
+	/// move to next cell in current inset
 	void idxNext();
-	///
+	/// move to previous cell in current inset
 	void idxPrev();
 	///
 	void plainErase();
@@ -111,22 +123,21 @@ public:
 
 	///
 	void delLine();
-	/// This is in pixels from (maybe?) the top of inset
+	/// in pixels from top of screen
 	void setPos(int x, int y);
-	/// This is in pixels from (maybe?) the top of inset, don't move further
-	///
+	/// in pixels from top of screen
 	void getPos(int & x, int & y);
-	///
+	/// 
 	MathAtom & par() const;
 	/// return the next enclosing grid inset and the cursor's index in it
 	MathGridInset * enclosingGrid(idx_type &) const;
 	///
 	InsetFormulaBase const * formula();
-	///
+	/// current offset in the current cell
 	pos_type pos() const;
-	///
+	/// current cell
 	idx_type idx() const;
-	///
+	/// size of current cell
 	size_type size() const;
 	///
 	bool interpret(string const &);
@@ -134,8 +145,7 @@ public:
 	bool interpret(char);
 	///
 	bool toggleLimits();
-	///
-	// Macro mode methods
+	/// interpret name a name of a macro
 	void macroModeClose();
 	///
 	bool inMacroMode() const;
@@ -167,9 +177,9 @@ public:
 	void handleDelim(string const & l, string const & r);
 	///
 	void handleNest(MathInset * p);
-	/// Splits cells and shifts right part to the next cell
+	/// splits cells and shifts right part to the next cell
 	void splitCell();
-	/// Splits line and insert new row of cell 
+	/// splits line and insert new row of cell 
 	void breakLine();
 	/// read contents of line into an array
 	void readLine(MathArray & ar) const;
@@ -192,7 +202,7 @@ public:
 	///
 	row_type row() const;
 
-	/// Make sure cursor position is valid
+	/// make sure cursor position is valid
 	void normalize() const;
 	///
 	UpdatableInset * asHyperActiveInset() const;
@@ -235,14 +245,14 @@ public:
 	/// path of positions the anchor had to go if it were leving each inset
 	cursor_type Anchor_;
 
-	/// reference to the last item of the path
+	/// reference to the last item of the path, i.e. "The Cursor"
 	MathCursorPos & cursor();
-	///
+	/// reference to the last item of the path, i.e. "The Cursor"
 	MathCursorPos const & cursor() const;
 
-	///
+	/// dump selection information for debugging
 	void seldump(char const * str) const;
-	///
+	/// dump selection information for debugging
 	void dump(char const * str) const;
 	///
 	void stripFromLastEqualSign();

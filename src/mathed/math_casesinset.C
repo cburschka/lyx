@@ -36,11 +36,11 @@ void MathCasesInset::draw(Painter & pain, int x, int y) const
 
 void MathCasesInset::write(WriteStream & os) const
 {
-	if (os.fragile)
+	if (os.fragile())
 		os << "\\protect";
 	os << "\\begin{cases}";
 	MathGridInset::write(os);
-	if (os.fragile)
+	if (os.fragile())
 		os << "\\protect";
 	os << "\\end{cases}\n";
 }

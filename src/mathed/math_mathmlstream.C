@@ -11,61 +11,61 @@ MathMLStream::MathMLStream(std::ostream & os)
 {}
 
 
-MathMLStream & MathMLStream::operator<<(MathInset const * p)
+MathMLStream & operator<<(MathMLStream & ms, MathInset const * p)
 {
 	if (p)
-		p->mathmlize(*this);
+		p->mathmlize(ms);
 	else
-		lyxerr << "MathMLStream::operator<<(NULL) called\n";
-	return *this;		
+		lyxerr << "operator<<(MathMLStream, NULL) called\n";
+	return ms;
 }
 
 
-MathMLStream & MathMLStream::operator<<(MathArray const & ar)
+MathMLStream & operator<<(MathMLStream & ms, MathArray const & ar)
 {
-	mathmlize(ar, *this);
-	return *this;		
+	mathmlize(ar, ms);
+	return ms;
 }
 
 
-MathMLStream & MathMLStream::operator<<(char const * s)
+MathMLStream & operator<<(MathMLStream & ms, char const * s)
 {
-	os_ << s;
-	return *this;		
+	ms.os() << s;
+	return ms;
 }
 
 
-MathMLStream & MathMLStream::operator<<(char c)
+MathMLStream & operator<<(MathMLStream & ms, char c)
 {
-	os_ << c;
-	return *this;		
+	ms.os() << c;
+	return ms;
 }
 
 
-MathMLStream & MathMLStream::operator<<(MTag const & t)
+MathMLStream & operator<<(MathMLStream & ms, MTag const & t)
 {
-	++tab_;
-	cr();
-	os_ << '<' << t.tag_ << '>';
-	return *this;		
+	++ms.tab();
+	ms.cr();
+	ms.os() << '<' << t.tag_ << '>';
+	return ms;
 }
 
 
-MathMLStream & MathMLStream::operator<<(ETag const & t)
+MathMLStream & operator<<(MathMLStream & ms, ETag const & t)
 {
-	cr();
-	if (tab_ > 0)
-		--tab_;
-	os_ << "</" << t.tag_ << '>';
-	return *this;		
+	ms.cr();
+	if (ms.tab() > 0)
+		--ms.tab();
+	ms.os() << "</" << t.tag_ << '>';
+	return ms;
 }
 
 
 void MathMLStream::cr()
 {
-	os_ << '\n';
-	for (int i = 0; i < tab_; ++i)
-		os_ << ' ';
+	os() << '\n';
+	for (int i = 0; i < tab(); ++i)
+		os() << ' ';
 }
 
 
@@ -73,109 +73,109 @@ void MathMLStream::cr()
 //////////////////////////////////////////////////////////////////////
 
 
-MapleStream & MapleStream::operator<<(MathInset const * p)
+MapleStream & operator<<(MapleStream & ms, MathInset const * p)
 {
 	if (p)
-		p->maplize(*this);
+		p->maplize(ms);
 	else
-		lyxerr << "MathMLStream::operator<<(NULL) called\n";
-	return *this;		
+		lyxerr << "operator<<(MapleStream, NULL) called\n";
+	return ms;
 }
 
 
-MapleStream & MapleStream::operator<<(MathArray const & ar)
+MapleStream & operator<<(MapleStream & ms, MathArray const & ar)
 {
-	maplize(ar, *this);
-	return *this;		
+	maplize(ar, ms);
+	return ms;
 }
 
 
-MapleStream & MapleStream::operator<<(char const * s)
+MapleStream & operator<<(MapleStream & ms, char const * s)
 {
-	os_ << s;
-	return *this;		
+	ms.os() << s;
+	return ms;
 }
 
 
-MapleStream & MapleStream::operator<<(char c)
+MapleStream & operator<<(MapleStream & ms, char c)
 {
-	os_ << c;
-	return *this;		
+	ms.os() << c;
+	return ms;
 }
 
 
-MapleStream & MapleStream::operator<<(int i)
+MapleStream & operator<<(MapleStream & ms, int i)
 {
-	os_ << i;
-	return *this;		
+	ms.os() << i;
+	return ms;
 }
 
 
 //////////////////////////////////////////////////////////////////////
 
 
-OctaveStream & OctaveStream::operator<<(MathInset const * p)
+OctaveStream & operator<<(OctaveStream & ns, MathInset const * p)
 {
 	if (p)
-		p->octavize(*this);
+		p->octavize(ns);
 	else
-		lyxerr << "MathMLStream::operator<<(NULL) called\n";
-	return *this;		
+		lyxerr << "operator<<(OctaveStream, NULL) called\n";
+	return ns;
 }
 
 
-OctaveStream & OctaveStream::operator<<(MathArray const & ar)
+OctaveStream & operator<<(OctaveStream & ns, MathArray const & ar)
 {
-	octavize(ar, *this);
-	return *this;		
+	octavize(ar, ns);
+	return ns;
 }
 
 
-OctaveStream & OctaveStream::operator<<(char const * s)
+OctaveStream & operator<<(OctaveStream & ns, char const * s)
 {
-	os_ << s;
-	return *this;		
+	ns.os() << s;
+	return ns;
 }
 
 
-OctaveStream & OctaveStream::operator<<(char c)
+OctaveStream & operator<<(OctaveStream & ns, char c)
 {
-	os_ << c;
-	return *this;		
+	ns.os() << c;
+	return ns;
 }
 
 
 //////////////////////////////////////////////////////////////////////
 
 
-NormalStream & NormalStream::operator<<(MathInset const * p)
+NormalStream & operator<<(NormalStream & ns, MathInset const * p)
 {
 	if (p)
-		p->normalize(*this);
+		p->normalize(ns);
 	else
-		lyxerr << "MathMLStream::operator<<(NULL) called\n";
-	return *this;		
+		lyxerr << "operator<<(NormalStream, NULL) called\n";
+	return ns;
 }
 
 
-NormalStream & NormalStream::operator<<(MathArray const & ar)
+NormalStream & operator<<(NormalStream & ns, MathArray const & ar)
 {
-	normalize(ar, *this);
-	return *this;		
+	normalize(ar, ns);
+	return ns;
 }
 
 
-NormalStream & NormalStream::operator<<(char const * s)
+NormalStream & operator<<(NormalStream & ns, char const * s)
 {
-	os_ << s;
-	return *this;		
+	ns.os() << s;
+	return ns;
 }
 
 
-NormalStream & NormalStream::operator<<(char c)
+NormalStream & operator<<(NormalStream & ns, char c)
 {
-	os_ << c;
-	return *this;		
+	ns.os() << c;
+	return ns;
 }
 
 
@@ -183,76 +183,62 @@ NormalStream & NormalStream::operator<<(char c)
 //////////////////////////////////////////////////////////////////////
 
 
-WriteStream::WriteStream
-		(Buffer const * buffer_, std::ostream & os_, bool fragile_)
-	: buffer(buffer_), os(os_), fragile(fragile_), line_(0)
+WriteStream::WriteStream(std::ostream & os, bool fragile)
+	: os_(os), fragile_(fragile), line_(0)
 {}
 
 
-WriteStream::WriteStream(std::ostream & os_)
-	: buffer(0), os(os_), fragile(false), line_(0)
+WriteStream::WriteStream(std::ostream & os)
+	: os_(os), fragile_(false), line_(0)
 {}
 
 
-WriteStream & WriteStream::operator<<(MathInset const * p)
+WriteStream & operator<<(WriteStream & ws, MathInset const * p)
 {
 	if (p)
-		p->write(*this);
+		p->write(ws);
 	else
-		lyxerr << "MathMLStream::operator<<(NULL) called\n";
-	return *this;		
+		lyxerr << "operator<<(WriteStream, NULL) called\n";
+	return ws;
 }
 
 
-WriteStream & WriteStream::operator<<(MathArray const & ar)
+WriteStream & operator<<(WriteStream & ws, MathArray const & ar)
 {
-	write(ar, *this);
-	return *this;		
+	write(ar, ws);
+	return ws;
 }
 
 
-WriteStream & WriteStream::operator<<(string const & s)
+WriteStream & operator<<(WriteStream & ws, char const * s)
 {
-	os << s;
-	string::const_iterator cit = s.begin();
-	string::const_iterator end = s.end();
-	for ( ; cit != end ; ++cit) {
-		if (*cit == '\n')
-			++line_;
-	}
-	return *this;		
-}
-
-
-WriteStream & WriteStream::operator<<(char const * s)
-{
-	os << s;
+	ws.os() << s;
 	for ( ; *s ; ++s) {
 		if (*s == '\n')
-			++line_;
+			++ws.line();
 	}
-	return *this;		
+	return ws;
 }
 
 
-WriteStream & WriteStream::operator<<(char c)
+WriteStream & operator<<(WriteStream & ws, char c)
 {
-	os << c;
+	ws.os() << c;
 	if (c == '\n')
-		++line_;
-	return *this;		
+		++ws.line();
+	return ws;
 }
 
 
-WriteStream & WriteStream::operator<<(int i)
+WriteStream & operator<<(WriteStream & ws, int i)
 {
-	os << i;
-	return *this;		
+	ws.os() << i;
+	return ws;
 }
 
 
-WriteStream & WriteStream::operator<<(unsigned int i)
+WriteStream & operator<<(WriteStream & ws, unsigned int i)
 {
-	os << i;
-	return *this;		
+	ws.os() << i;
+	return ws;
 }

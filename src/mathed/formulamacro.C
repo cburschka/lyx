@@ -71,26 +71,26 @@ Inset * InsetFormulaMacro::clone(Buffer const &, bool) const
 }
 
 
-void InsetFormulaMacro::write(Buffer const * buf, ostream & os) const
+void InsetFormulaMacro::write(Buffer const *, ostream & os) const
 {
 	os << "FormulaMacro ";
-	WriteStream wi(buf, os, false);
+	WriteStream wi(os, false);
 	par()->write(wi);
 }
 
 
-int InsetFormulaMacro::latex(Buffer const * buf, ostream & os, bool fragile, 
+int InsetFormulaMacro::latex(Buffer const *, ostream & os, bool fragile, 
 			     bool /*free_spacing*/) const
 {
-	WriteStream wi(buf, os, fragile);
+	WriteStream wi(os, fragile);
 	par()->write(wi);
 	return 2;
 }
 
 
-int InsetFormulaMacro::ascii(Buffer const * buf, ostream & os, int) const
+int InsetFormulaMacro::ascii(Buffer const *, ostream & os, int) const
 {
-	WriteStream wi(buf, os, false);
+	WriteStream wi(os, false);
 	par()->write(wi);
 	return 0;
 }

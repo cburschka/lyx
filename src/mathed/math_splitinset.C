@@ -19,13 +19,13 @@ MathInset * MathSplitInset::clone() const
 }
 
 
-void MathSplitInset::write(WriteStream & os) const
+void MathSplitInset::write(WriteStream & ws) const
 {
-	if (os.fragile)
-		os << "\\protect";
-	os << "\\begin{split}";
-	MathGridInset::write(os);
-	if (os.fragile)
-		os << "\\protect";
-	os << "\\end{split}\n";
+	if (ws.fragile())
+		ws << "\\protect";
+	ws << "\\begin{split}";
+	MathGridInset::write(ws);
+	if (ws.fragile())
+		ws << "\\protect";
+	ws << "\\end{split}\n";
 }

@@ -559,7 +559,7 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 
 	case LFUN_MATH_DELIM:
 	{
-		//lyxerr << "formulabase::LFUN_MATH_DELIM, arg: '" << arg << "'\n";
+		lyxerr << "formulabase::LFUN_MATH_DELIM, arg: '" << arg << "'\n";
 		string ls;
 		string rs;
 		istringstream is(arg.c_str());
@@ -755,7 +755,7 @@ void mathDispatchMathMacro(BufferView * bv, string const & arg)
 
 
 void mathDispatchMathDelim(BufferView * bv, string const & arg)
-{ 	   
+{
 	if (bv->available()) { 
 		if (openNewInset(bv, new InsetFormula))
 			bv->theLockingInset()->localDispatch(bv, LFUN_MATH_DELIM, arg);

@@ -713,7 +713,7 @@ void write(MathArray const & dat, WriteStream & wi)
 	MathArray ar = dat;
 	extractStrings(ar);
 	for (MathArray::const_iterator it = ar.begin(); it != ar.end(); ++it) {
-		wi.firstitem = (it == ar.begin());
+		wi.firstitem() = (it == ar.begin());
 		MathInset const * p = it->nucleus();
 		if (it + 1 != ar.end()) {
 			if (MathScriptInset const * q = asScript(it)) {
