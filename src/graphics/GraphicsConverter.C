@@ -28,6 +28,8 @@
 #include <fstream>
 #include <sys/types.h> // needed for pid_t
 
+extern string system_lyxdir;
+
 using std::endl;
 
 namespace grfx {
@@ -272,6 +274,7 @@ bool build_script(string const & from_file,
 	string const token_from("$$i");
 	string const token_base("$$b");
 	string const token_to("$$o");
+	string const token_lib("$$s");
 
 	EdgePath::const_iterator it  = edgepath.begin();
 	EdgePath::const_iterator end = edgepath.end();
@@ -292,6 +295,7 @@ bool build_script(string const & from_file,
 		command = subst(command, token_from, "${infile}");
 		command = subst(command, token_base, "${infile_base}");
 		command = subst(command, token_to,   "${outfile}");
+		command = subst(command, token_lib,  system_lyxdir + "scripts");
 
 		// Store in the shell script
 		script << "\n" << command << "\n\n";

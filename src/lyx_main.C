@@ -240,7 +240,7 @@ void LyX::init(bool gui)
 	// If we had a command line switch, system_lyxdir is already set
 	string searchpath;
 	if (!system_lyxdir.empty())
-		searchpath= MakeAbsPath(system_lyxdir) + ';';
+		searchpath = MakeAbsPath(system_lyxdir) + ';';
 
 	// LYX_DIR_13x environment variable
 	string const lyxdir = GetEnvPath("LYX_DIR_13x");
