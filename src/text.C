@@ -78,7 +78,7 @@ int LyXText::top_y() const
 		return 0;
 
 	int y = 0;
-	for (Row * row = firstrow; 
+	for (Row * row = firstrow;
 	     row && row != anchor_row_; row = row->next()) {
 		y += row->height();
 	}
@@ -112,10 +112,10 @@ void LyXText::anchor_row(Row * row)
 {
 	int old_y = top_y();
 	anchor_row_offset_ = 0;
-	anchor_row_ = row; 
+	anchor_row_ = row;
 	anchor_row_offset_ = old_y - top_y();
-	lyxerr[Debug::GUI] << "anchor_row(): changing reference to row: " 
-			   << anchor_row_ << " offset: " << anchor_row_offset_ 
+	lyxerr[Debug::GUI] << "anchor_row(): changing reference to row: "
+			   << anchor_row_ << " offset: " << anchor_row_offset_
 			   << endl;
 }
 
@@ -1665,8 +1665,8 @@ void LyXText::insertChar(char c)
 	if (row->previous() && row->previous()->par() == row->par()
 	    && (cursor.par()->isLineSeparator(cursor.pos())
 		|| cursor.par()->isNewline(cursor.pos())
-		|| ((cursor.pos() < cursor.par()->size()) &&
-		    cursor.par()->isInset(cursor.pos()+1))
+		|| ((cursor.pos() + 1 < cursor.par()->size()) &&
+		    cursor.par()->isInset(cursor.pos() + 1))
 		|| cursor.row()->fill() == -1))
 	{
 		pos_type z = rowBreakPoint(*row->previous());
@@ -2628,6 +2628,7 @@ void LyXText::backspace()
 
 			// delete newlines at the beginning of paragraphs
 			while (!cursor.par()->empty() &&
+			       cursor.pos() < cursor.par()->size() &&
 			       cursor.par()->isNewline(cursor.pos()) &&
 			       cursor.pos() == cursor.par()->beginningOfBody()) {
 				cursor.par()->erase(cursor.pos());

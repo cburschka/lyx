@@ -252,29 +252,24 @@ void Paragraph::Pimpl::rejectChange(pos_type start, pos_type end)
 
 Paragraph::value_type Paragraph::Pimpl::getChar(pos_type pos) const
 {
-	lyx::Assert(pos <= size());
-
-	// This is stronger, and I belive that this is the assertion
-	// that we should really use. (Lgb)
-	// Rationale - getChar() is really text[]. getInset(getChar(size()))
-	// makes no sense (crashes). The fact we return '\0' should be
-	// evidence enough - jbl
-	//lyx::Assert(pos < size());
-
-	if (lyxerr.debugging(Debug::LYXVC))
-		lyx::Assert(pos < size());
-#if 1
+#if 0
 	// This is in the critical path for loading!
 	pos_type const siz = size();
 
+	lyx::Assert(pos <= siz);
+
 	if (pos == siz) {
 		lyxerr << "getChar() on pos " << pos << " in par id "
-			<< owner_->id() << " of size " << siz
-			<< "  is a bit silly !" << endl;
+		       << owner_->id() << " of size " << siz
+		       << "  is a bit silly !" << endl;
 		return '\0';
 	}
-#endif
+
 	return text[pos];
+#else
+	lyx::Assert(pos < size());
+	return text[pos];
+#endif
 }
 
 
