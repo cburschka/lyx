@@ -1,5 +1,5 @@
-#LyX 1.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 2.16
+#LyX 1.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 220
 \textclass article
 \begin_preamble
 \usepackage{dcolumn}
@@ -15,6 +15,8 @@
 \paperpackage a4
 \use_geometry 0
 \use_amsmath 0
+\use_natbib 0
+\use_numerical_citations 0
 \paperorientation portrait
 \secnumdepth 3
 \tocdepth 3
@@ -66,62 +68,104 @@ d{4}
 \family default 
 :
 \layout Standard
-\added_space_top 0.3cm \added_space_bottom 0.3cm \align center \LyXTable
-multicol5
-5 2 0 0 -1 -1 -1 -1
-0 1 0 0
-0 0 0 0
-0 0 0 0
-0 0 0 0
-0 0 0 0
-8 0 0 "" ""
-4 1 0 "" "d{4}"
-0 8 1 0 0 0 0 "" ""
-1 8 0 1 0 0 0 "" ""
-0 8 1 0 0 0 0 "" ""
-1 4 0 0 0 0 0 "" ""
-0 8 1 0 0 0 0 "" ""
-0 8 1 0 0 0 0 "" ""
-0 8 1 0 0 0 0 "" ""
-0 8 1 0 0 0 0 "" ""
-0 8 1 0 0 0 0 "" ""
-0 8 1 0 0 0 0 "" ""
+\added_space_top 0.3cm \added_space_bottom 0.3cm \align center 
+
+\begin_inset  Tabular
+<lyxtabular version="3" rows="5" columns="2">
+<features>
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="right" valignment="top" leftline="true" width="0pt" special="d{4}">
+<row bottomline="true">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
 
 Expression
-\newline 
+\end_inset 
+</cell>
+<cell multicolumn="1" alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
 Value 
-\newline 
-
-\begin_inset Formula \( \pi  \)
 \end_inset 
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
 
+\layout Standard
 
-\newline 
+\end_inset 
+</cell>
+<cell multicolumn="1" alignment="right" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
 3.1416
-\newline 
-
-\begin_inset Formula \( \pi ^{\pi } \)
 \end_inset 
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
 
+\layout Standard
 
-\newline 
+\end_inset 
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
 36.462
-\newline 
-
-\begin_inset Formula \( (\pi ^{\pi })^{\pi } \)
 \end_inset 
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
 
+\layout Standard
 
-\newline 
+\end_inset 
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
 80663.
-\newline 
+\end_inset 
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
 
-\begin_inset Formula \( \pi ^{\pi ^{\pi }} \)
+\layout Standard
+
+\end_inset 
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+1.3402e18
+\end_inset 
+</cell>
+</row>
+</lyxtabular>
+
 \end_inset 
 
 
-\newline 
-1.3402e18
 \layout Standard
 
 To create extra column space just increase the number of decimals in 

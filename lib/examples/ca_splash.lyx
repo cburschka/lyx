@@ -1,6 +1,5 @@
-#This file was created by <fburrull> Wed Jun 16 15:02:40 1999
-#LyX 1.0 (C) 1995-1999 Matthias Ettrich and the LyX Team
-\lyxformat 2.15
+#LyX 1.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 220
 \textclass article
 \language catalan
 \inputencoding default
@@ -12,6 +11,8 @@
 \paperpackage a4
 \use_geometry 0
 \use_amsmath 0
+\use_natbib 0
+\use_numerical_citations 0
 \paperorientation portrait
 \secnumdepth 3
 \tocdepth 3
@@ -71,11 +72,14 @@ processador de documents.
  senzilla l'escriptura de documents.
  Això sí, només una mica diferent, que ningú s'espanti! La documentació
  ho aclarirà tot
-\begin_float footnote 
+\begin_inset Foot
+collapsed true
+
 \layout Standard
 
 No us havia dit encara que cal llegir la documentació ?
-\end_float 
+\end_inset 
+
 .
 \layout Enumerate
 
@@ -84,8 +88,7 @@ Els documents LyX ténen un aspecte formidable! Proveu de seleccionar
 \bar under 
 F
 \bar default 
-itxer->Visualitzar
-\protected_separator 
+itxer->Visualitzar\SpecialChar ~
 
 \bar under 
 d

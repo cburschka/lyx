@@ -1,6 +1,5 @@
-#This file was created by <larsbj> Sun Dec  5 17:48:49 1999
-#LyX 1.0 (C) 1995-1999 Matthias Ettrich and the LyX Team
-\lyxformat 2.15
+#LyX 1.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 220
 \textclass amsart
 \language english
 \inputencoding default
@@ -12,6 +11,8 @@
 \paperpackage a4
 \use_geometry 0
 \use_amsmath 0
+\use_natbib 0
+\use_numerical_citations 0
 \paperorientation portrait
 \secnumdepth 3
 \tocdepth 3
@@ -93,7 +94,7 @@ ocument
 
 amsart - The standard AMS-article format.
  All results and similar statements are numbered as 
-\begin_inset Formula \( (n.m) \)
+\begin_inset Formula $(n.m)$
 \end_inset 
 
 , where the first number refers to the section, and the second refers to
@@ -149,9 +150,17 @@ Its proof.
 
 Unnumbered corollary.
  
-\layout LaTeX
+\layout Standard
 
+
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 %
+\end_inset 
+
+
 \layout Corollary*
 
 A second, with no intervening text.
@@ -275,7 +284,7 @@ Need some criteria
 \layout Notation
 
 
-\begin_inset Formula \( S=\mathbb {R} \)
+\begin_inset Formula $S=\mathbb{R}$
 \end_inset 
 
 .
@@ -448,6 +457,4 @@ Instructions for preparation of papers and monographs: AMS-LaTeX
 \bibitem {3}
 
 American Mathematical Society, 
-\layout Standard
-
 \the_end

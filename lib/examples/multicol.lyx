@@ -1,6 +1,5 @@
-#This file was created by <mike> Tue Jan 25 11:50:08 2000
-#LyX 1.0 (C) 1995-1999 Matthias Ettrich and the LyX Team
-\lyxformat 2.15
+#LyX 1.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 220
 \textclass article
 \begin_preamble
 \usepackage{multicol}
@@ -15,6 +14,8 @@
 \paperpackage a4
 \use_geometry 0
 \use_amsmath 0
+\use_natbib 0
+\use_numerical_citations 0
 \paperorientation portrait
 \secnumdepth 3
 \tocdepth 3
@@ -93,10 +94,16 @@ end{multicols}
 \layout Standard
 
 
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 begin{multicols}{2}
+\end_inset 
+
+
 \layout Standard
 \noindent 
 
@@ -137,10 +144,16 @@ ty which utterly submerged my mind.
 \layout Standard
 
 
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 end{multicols}
+\end_inset 
+
+
 \layout Subsubsection
 
 Multiple columns
@@ -152,10 +165,16 @@ The same pattern is used when you want more than two columns.
 \layout Standard
 
 
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 begin{multicols}{3}
+\end_inset 
+
+
 \layout Standard
 
 
@@ -182,10 +201,16 @@ It can be imagined that my close intimacy with Sherlock Holmes had interested
 \layout Standard
 
 
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 end{multicols}
+\end_inset 
+
+
 \layout Subsubsection
 
 Columns inside columns
@@ -195,10 +220,16 @@ You can even have columns inside columns:
 \layout Standard
 
 
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 begin{multicols}{2}
+\end_inset 
+
+
 \layout Standard
 \added_space_bottom -2ex 
 
@@ -211,10 +242,16 @@ The Honourable Ronald Adair was the second son of the Earl of Maynooth,
 \layout Standard
 
 
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 begin{multicols}{2}
+\end_inset 
+
+
 \layout Standard
 
 
@@ -232,10 +269,16 @@ The youth moved in the best society--had, so far as was known, no enemies
 \layout Standard
 
 
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 end{multicols}
+\end_inset 
+
+
 \layout Standard
 
 
@@ -265,10 +308,16 @@ The evidence of those who had played with him-- Mr.
 \layout Standard
 
 
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 end{multicols}
+\end_inset 
+
+
 \layout Subsection
 
 Advanced Examples
@@ -290,15 +339,25 @@ If there is less than 5cm left on the page, a page break will be inserted
 \layout Standard
 
 
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 begin{multicols}{2}[
-\latex default 
+\end_inset 
+
 And the story continues and continues and continues and continues\SpecialChar \ldots{}
 
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 ][5cm]
+\end_inset 
+
+
 \layout Standard
 
 
@@ -325,10 +384,16 @@ On the evening of the crime, he returned from the club exactly at ten.
 \layout Standard
 
 
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 end{multicols}
+\end_inset 
+
+
 \layout Subsubsection
 
 Preface and sections
@@ -344,16 +409,26 @@ multicols
 \layout Standard
 
 
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 begin{multicols}{2}[
 \backslash 
 subsubsection{
-\latex default 
+\end_inset 
+
 This is the sectioning command as a preface
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 }][5cm]
+\end_inset 
+
+
 \layout Standard
 
 
@@ -388,10 +463,16 @@ A minute examination of the circumstances served only to make the case more
 \layout Standard
 
 
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 end{multicols}
+\end_inset 
+
+
 \layout Subsubsection
 
 Free Space
@@ -421,7 +502,10 @@ begin{multicols}
 \layout Standard
 
 
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 setlength{
@@ -429,6 +513,9 @@ setlength{
 multicolsep}{3cm}
 \backslash 
 begin{multicols}{2}
+\end_inset 
+
+
 \layout Standard
 
 
@@ -461,10 +548,16 @@ ion.
 \layout Standard
 
 
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 end{multicols}
+\end_inset 
+
+
 \layout Paragraph
 
 Note:
@@ -481,12 +574,18 @@ setlength
 \layout Standard
 
 
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 setlength{
 \backslash 
 multicolsep}{13pt}
+\end_inset 
+
+
 \layout Subsubsection
 
 Column Width and Separation
@@ -502,7 +601,10 @@ multicols
 \layout Standard
 
 
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 setlength{
@@ -510,6 +612,9 @@ setlength{
 columnsep}{3cm}
 \backslash 
 begin{multicols}{2}
+\end_inset 
+
+
 \layout Standard
 
 
@@ -530,10 +635,16 @@ My observations of No.
 \layout Standard
 
 
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 end{multicols}
+\end_inset 
+
+
 \layout Standard
 
 Once again, we have to reset the value after use to avoid using it in the
@@ -541,12 +652,18 @@ Once again, we have to reset the value after use to avoid using it in the
 \layout Standard
 
 
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 setlength{
 \backslash 
 columnsep}{10pt}
+\end_inset 
+
+
 \layout Subsubsection
 
 Vertical Lines
@@ -564,7 +681,10 @@ columnseprule
 \layout Standard
 
 
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 setlength{
@@ -572,6 +692,9 @@ setlength{
 columnseprule}{2pt}
 \backslash 
 begin{multicols}{2}
+\end_inset 
+
+
 \layout Standard
 
 
@@ -643,8 +766,7 @@ Well, sir, if it isn't too great a liberty, I am a neighbour of yours, for
  Maybe you collect yourself, sir.
  Here's 
 \noun on 
-British
-\protected_separator 
+British\SpecialChar ~
 Birds
 \noun default 
 , and 
@@ -665,32 +787,47 @@ The Holy War
 \layout Standard
 
 
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 end{multicols}
+\end_inset 
+
+
 \layout Standard
 
 As usual, we reset the value after use.
 \layout Standard
 
 
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 setlength{
 \backslash 
 columnseprule}{0pt}
+\end_inset 
+
+
 \layout Standard
 
 You'll have to go to the library to read the rest of the story.
-\begin_float footnote 
+\begin_inset Foot
+collapsed true
+
 \layout Standard
 
 \SpecialChar \ldots{}
 or cheat like we did and find it at the Gutenberg project somewhere on the
  Web.
-\end_float 
+\end_inset 
+
  Believe it or not, but it's actually a bit of a cliff-hanger at this point
  in the story\SpecialChar \ldots{}
 

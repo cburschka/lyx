@@ -1,6 +1,5 @@
-#This file was created by <larsbj> Sun Dec  5 17:49:17 1999
-#LyX 1.0 (C) 1995-1999 Matthias Ettrich and the LyX Team
-\lyxformat 2.15
+#LyX 1.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 220
 \textclass amsbook
 \language english
 \inputencoding default
@@ -12,6 +11,8 @@
 \paperpackage a4
 \use_geometry 0
 \use_amsmath 0
+\use_natbib 0
+\use_numerical_citations 0
 \paperorientation portrait
 \secnumdepth 3
 \tocdepth 3
@@ -72,19 +73,19 @@ Introduction
 
 This file, using the amsbook layout, numbers all results, Theorems, Definitions,
  etc., using 
-\begin_inset Formula \( (m.n.p) \)
+\begin_inset Formula $(m.n.p)$
 \end_inset 
 
  where the 
-\begin_inset Formula \( m \)
+\begin_inset Formula $m$
 \end_inset 
 
  is the chapter number, the 
-\begin_inset Formula \( n \)
+\begin_inset Formula $n$
 \end_inset 
 
  is the section number, and, finally, the 
-\begin_inset Formula \( p \)
+\begin_inset Formula $p$
 \end_inset 
 
  is the result number in that section.
@@ -198,7 +199,7 @@ Need some criteria
 \layout Notation
 
 
-\begin_inset Formula \( S=\mathbb {R} \)
+\begin_inset Formula $S=\mathbb{R}$
 \end_inset 
 
 .
