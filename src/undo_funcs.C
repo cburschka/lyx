@@ -367,6 +367,47 @@ bool createUndo(BufferView * bv, Undo::undo_kind kind,
 	return true;
 }
 
+
+// returns false if no undo possible
+bool textUndoOrRedo(BufferView * bv,
+	limited_stack<boost::shared_ptr<Undo> > & stack,
+	limited_stack<boost::shared_ptr<Undo> > & otherstack)
+{
+	Buffer * b = bv->buffer();
+
+	if (stack.empty()) {
+		finishNoUndo(bv);
+		return false;
+	}
+
+	shared_ptr<Undo> undo = stack.top();
+	stack.pop();
+	finishUndo();
+
+	if (!undo_frozen) {
+		Paragraph * first = &*b->getParFromID(undo->number_of_before_par);
+		if (first && first->next())
+			first = first->next();
+		else if (!first)
+			first = firstUndoParagraph(bv, undo->number_of_inset_id);
+		if (first) {
+			shared_ptr<Undo> u;
+			if (createUndo(bv, undo->kind, first,
+				             b->getParFromID(undo->number_of_behind_par), u))
+				otherstack.push(u);
+		}
+	}
+
+	// now we can unlock the inset for saftey because the inset pointer could
+	// be changed during the undo-function. Anyway if needed we have to lock
+	// the right inset/position if this is requested.
+	freezeUndo();
+	bv->unlockInset(bv->theLockingInset());
+	bool const ret = textHandleUndo(bv, *undo.get());
+	unFreezeUndo();
+	return ret;
+}
+
 } // namespace anon
 
 void finishUndo()
@@ -390,81 +431,15 @@ void unFreezeUndo()
 }
 
 
-// returns false if no undo possible
 bool textUndo(BufferView * bv)
 {
-	Buffer * b = bv->buffer();
-
-	if (b->undostack.empty()) {
-		finishNoUndo(bv);
-		return false;
-	}
-
-	shared_ptr<Undo> undo = b->undostack.top();
-	b->undostack.pop();
-	finishUndo();
-
-	if (!undo_frozen) {
-		Paragraph * first = &*b->getParFromID(undo->number_of_before_par);
-		if (first && first->next())
-			first = first->next();
-		else if (!first)
-			first = firstUndoParagraph(bv, undo->number_of_inset_id);
-		if (first) {
-			shared_ptr<Undo> u;
-			if (createUndo(bv, undo->kind, first,
-				b->getParFromID(undo->number_of_behind_par), u))
-				b->redostack.push(u);
-		}
-	}
-
-	// now we can unlock the inset for saftey because the inset pointer could
-	// be changed during the undo-function. Anyway if needed we have to lock
-	// the right inset/position if this is requested.
-	freezeUndo();
-	bv->unlockInset(bv->theLockingInset());
-	bool const ret = textHandleUndo(bv, *undo.get());
-	unFreezeUndo();
-	return ret;
+	return textUndoOrRedo(bv, bv->buffer()->undostack, bv->buffer()->redostack);
 }
 
 
-// returns false if no redo possible
 bool textRedo(BufferView * bv)
 {
-	Buffer * b = bv->buffer();
-
-	if (b->redostack.empty()) {
-		finishNoUndo(bv);
-		return false;
-	}
-
-	shared_ptr<Undo> undo = b->redostack.top();
-	b->redostack.pop();
-	finishUndo();
-
-	if (!undo_frozen) {
-	Paragraph * first = &*bv->buffer()->getParFromID(undo->number_of_before_par);
-		if (first && first->next())
-			first = first->next();
-		else if (!first)
-			first = firstUndoParagraph(bv, undo->number_of_inset_id);
-		if (first) {
-			shared_ptr<Undo> u;
-			if (createUndo(bv, undo->kind, first,
-				&*bv->buffer()->getParFromID(undo->number_of_behind_par), u))
-				bv->buffer()->undostack.push(u);
-		}
-	}
-
-	// now we can unlock the inset for saftey because the inset pointer could
-	// be changed during the undo-function. Anyway if needed we have to lock
-	// the right inset/position if this is requested.
-	freezeUndo();
-	bv->unlockInset(bv->theLockingInset());
-	bool ret = textHandleUndo(bv, *undo.get());
-	unFreezeUndo();
-	return ret;
+	return textUndoOrRedo(bv, bv->buffer()->redostack, bv->buffer()->undostack);
 }
 
 
