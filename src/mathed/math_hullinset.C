@@ -624,7 +624,7 @@ string MathHullInset::eolString(row_type row, bool fragile) const
 {
 	string res;
 	if (numberedType()) {
-		if (!label_[row].empty())
+		if (!label_[row].empty() && !nonum_[row])
 			res += "\\label{" + label_[row] + "}";
 		if (nonum_[row])
 			res += "\\nonumber ";
