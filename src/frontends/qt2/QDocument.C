@@ -316,9 +316,7 @@ void QDocument::apply()
 		break;
 	case 3:
 		params.spacing().set(Spacing::Other,
-				   dialog_->textLayoutModule->
-				   lspacingLE->text().toFloat()
-				   );
+			fromqstr(dialog_->textLayoutModule->lspacingLE->text()));
 		break;
 	}
 
@@ -567,9 +565,9 @@ void QDocument::update_contents()
 	dialog_->textLayoutModule->lspacingCO->setCurrentItem(nitem);
 	if (params.spacing().getSpace() == Spacing::Other) {
 		dialog_->textLayoutModule->lspacingLE->setText(
-			toqstr(tostr(params.spacing().getValue())));
-		dialog_->setLSpacing(3);
+			toqstr(params.spacing().getValueAsString()));	
 	}
+	dialog_->setLSpacing(nitem);
 
 	if (params.paragraph_separation
 	    == BufferParams::PARSEP_INDENT) {

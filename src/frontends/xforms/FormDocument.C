@@ -1173,7 +1173,7 @@ void FormDocument::class_update(BufferParams const & params)
 
 	bool const spacing_input = pos == 4;
 	setEnabled(class_->input_spacing, spacing_input);
-	string const input = spacing_input ? tostr(params.spacing().getValue()) : string();
+	string const input = spacing_input ? params.spacing().getValueAsString() : string();
 	fl_set_input(class_->input_spacing, input.c_str());
 }
 

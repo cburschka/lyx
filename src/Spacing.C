@@ -12,12 +12,15 @@
 #include <config.h>
 
 #include "Spacing.h"
+#include "support/lstrings.h"
+#include "support/tostr.h"
 
 #include <sstream>
 #include <string>
 
-using std::ios;
-using std::istringstream;
+using lyx::support::strToDbl;
+
+//using std::ios;
 using std::ostream;
 using std::ostringstream;
 using std::string;
@@ -26,39 +29,51 @@ using std::string;
 string const Spacing::spacing_string[]
 	= {"single", "onehalf", "double", "other"};
 
-float Spacing::getValue() const
+
+string const Spacing::getValueAsString() const
 {
 	switch (space) {
 	case Default: // nothing special should happen with this...
-	case Single: return 1.0;
-	case Onehalf: return 1.25;
-	case Double: return 1.667;
+	case Single: return "1.0";
+	case Onehalf: return "1.25";
+	case Double: return "1.667";
 	case Other: return value;
 	}
-	return 1.0;
+	return "1.0";
+}
+
+
+double Spacing::getValue() const
+{
+	return strToDbl(getValueAsString());
 }
 
 
 void Spacing::set(Spacing::Space sp, float val)
 {
-	space = sp;
-	if (sp == Other) {
-		switch (int(val * 1000 + 0.5)) {
-		case 1000: space = Single; break;
-		case 1250: space = Onehalf; break;
-		case 1667: space = Double; break;
-		default: value = val; break;
-		}
-	}
+	set(sp, tostr(val));
 }
 
 
 void Spacing::set(Spacing::Space sp, string const & val)
 {
-	float fval = 0.0;
-	istringstream istr(val);
-	istr >> fval;
-	set(sp, fval);
+	space = sp;
+	if (sp == Other) {
+		switch (int(strToDbl(val) * 1000 + 0.5)) {
+		case 1000: 
+			space = Single; 
+			break;
+		case 1250: 
+			space = Onehalf; 
+			break;
+		case 1667: 
+			space = Double; 
+			break;
+		default: 
+			value = val; 
+			break;
+		}
+	}
 }
 
 
@@ -69,10 +84,8 @@ void Spacing::writeFile(ostream & os, bool para) const
 	string cmd = para ? "\\paragraph_spacing " : "\\spacing ";
 
 	if (getSpace() == Spacing::Other) {
-		os.setf(ios::showpoint|ios::fixed);
-		os.precision(2);
 		os << cmd << spacing_string[getSpace()]
-		   << ' ' << getValue() << "\n";
+		   << ' ' << getValueAsString() << "\n";
 	} else {
 		os << cmd << spacing_string[getSpace()] << "\n";
 	}
@@ -93,7 +106,7 @@ string const Spacing::writeEnvirBegin() const
 	{
 		ostringstream ost;
 		ost << "\\begin{spacing}{"
-		    << getValue() << '}';
+		    << getValueAsString() << '}';
 		return ost.str();
 	}
 	}

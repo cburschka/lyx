@@ -509,7 +509,7 @@ void RowPainter::paintFirst()
 			// the top.
 			if (layout->counter == "chapter") {
 				if (buffer.params().secnumdepth >= 0) {
-					float spacing_val = 1.0;
+					double spacing_val = 1.0;
 					if (!parparams.spacing().isDefault()) {
 						spacing_val = parparams.spacing().getValue();
 					} else {
@@ -550,7 +550,7 @@ void RowPainter::paintFirst()
 		LyXFont font = getLabelFont();
 		if (!par_.getLabelstring().empty()) {
 			string const str = par_.getLabelstring();
-			float spacing_val = 1.0;
+			double spacing_val = 1.0;
 			if (!parparams.spacing().isDefault()) {
 				spacing_val = parparams.spacing().getValue();
 			} else {

@@ -753,15 +753,15 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 	case LFUN_PARAGRAPH_SPACING: {
 		Paragraph & par = cur.paragraph();
 		Spacing::Space cur_spacing = par.params().spacing().getSpace();
-		float cur_value = 1.0;
+		string cur_value = "1.0";
 		if (cur_spacing == Spacing::Other)
-			cur_value = par.params().spacing().getValue();
+			cur_value = par.params().spacing().getValueAsString();
 
 		istringstream is(cmd.argument);
 		string tmp;
 		is >> tmp;
 		Spacing::Space new_spacing = cur_spacing;
-		float new_value = cur_value;
+		string new_value = cur_value;
 		if (tmp.empty()) {
 			lyxerr << "Missing argument to `paragraph-spacing'"
 			       << endl;
@@ -773,10 +773,10 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 			new_spacing = Spacing::Double;
 		} else if (tmp == "other") {
 			new_spacing = Spacing::Other;
-			float tmpval = 0.0;
+			string tmpval = "0.0";
 			is >> tmpval;
 			lyxerr << "new_value = " << tmpval << endl;
-			if (tmpval != 0.0)
+			if (tmpval != "0.0")
 				new_value = tmpval;
 		} else if (tmp == "default") {
 			new_spacing = Spacing::Default;

@@ -16,6 +16,8 @@
 #ifndef SPACING_H
 #define SPACING_H
 
+#include <string>
+
 class Spacing {
 public:
 	///
@@ -26,8 +28,10 @@ public:
 		Other,
 		Default
 	};
-
+	///
 	void set(Spacing::Space, float = 1.0) {}
+	///
+	void set(Spacing::Space sp, std::string const & val) {}
 };
 
 #endif // NOT SPACING_H

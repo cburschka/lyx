@@ -33,7 +33,7 @@ public:
 		Default
 	};
 	///
-	Spacing() : space(Default), value(1.0) {}
+	Spacing() : space(Default), value("1.0") {}
 	///
 	Spacing(Spacing::Space sp, float val = 1.0) {
 		set(sp, val);
@@ -46,13 +46,15 @@ public:
 		return space == Default;
 	}
 	///
-	float getValue() const;
+	std::string const getValueAsString() const;
+	///
+	double getValue() const;
 	///
 	Spacing::Space getSpace() const { return space; }
 	///
 	void set(Spacing::Space sp, float val = 1.0);
 	///
-	void set(Spacing::Space sp, std::string const & val) ;
+	void set(Spacing::Space sp, std::string const & val);
 	///
 	void writeFile(std::ostream &, bool para = false) const;
 	///
@@ -64,7 +66,7 @@ private:
 	///
 	Space space;
 	///
-	float value;
+	std::string value;
 	/// names of line spacing
 	static std::string const spacing_string[];
 };
@@ -75,7 +77,7 @@ inline
 bool operator==(Spacing const & a, Spacing const & b)
 {
 	return a.getSpace() == b.getSpace()
-		&& a.getValue() == b.getValue();
+		&& a.getValueAsString() == b.getValueAsString();
 }
 
 ///

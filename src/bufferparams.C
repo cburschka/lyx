@@ -263,6 +263,7 @@ SpaceTranslator const init_spacetranslator()
 	translator.addPair("single", Spacing::Single);
 	translator.addPair("onehalf", Spacing::Onehalf);
 	translator.addPair("double", Spacing::Double);
+	translator.addPair("other", Spacing::Other);
 	return translator;
 }
 
@@ -583,7 +584,7 @@ string const BufferParams::readToken(LyXLex & lex, string const & token)
 	} else if (token == "\\spacing") {
 		string nspacing;
 		lex >> nspacing;
-		float tmp_val = 0.0;
+		string tmp_val;
 		if (nspacing == "other") {
 			lex >> tmp_val;
 		}

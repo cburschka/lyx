@@ -2134,7 +2134,7 @@ string LyXText::currentState(LCursor & cur)
 			os << _("Double");
 			break;
 		case Spacing::Other:
-			os << _("Other (") << spacing.getValue() << ')';
+			os << _("Other (") << spacing.getValueAsString() << ')';
 			break;
 		case Spacing::Default:
 			// should never happen, do nothing

@@ -785,7 +785,7 @@ void LyXLayout::readSpacing(LyXLex & lexrc)
 		break;
 	case ST_OTHER:
 		lexrc.next();
-		spacing.set(Spacing::Other, lexrc.getFloat());
+		spacing.set(Spacing::Other, lexrc.getString());
 		break;
 	}
 }

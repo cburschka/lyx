@@ -172,8 +172,7 @@ void QParagraph::update_contents()
 	}
 	dialog_->linespacing->setCurrentItem(linespacing);
 	if (space.getSpace() == Spacing::Other) {
-		string const sp = tostr(space.getValue());
-		dialog_->linespacingValue->setText(toqstr(sp));
+		dialog_->linespacingValue->setText(toqstr(space.getValueAsString()));
 		dialog_->linespacingValue->setEnabled(true);
 	} else {
 		dialog_->linespacingValue->setText("");

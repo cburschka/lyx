@@ -223,7 +223,7 @@ void ParagraphParameters::read(LyXLex & lex)
 			} else if (tmp == "other") {
 				lex.next();
 				spacing(Spacing(Spacing::Other,
-						 lex.getFloat()));
+						 lex.getString()));
 			} else {
 				lex.printError("Unknown spacing token: '$$Token'");
 			}

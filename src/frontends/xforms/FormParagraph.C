@@ -266,8 +266,8 @@ void FormParagraph::update()
 	bool const spacing_other = space.getSpace() == Spacing::Other;
 	setEnabled(dialog_->input_linespacing, spacing_other);
 	if (spacing_other) {
-		string const sp = tostr(space.getValue());
-		fl_set_input(dialog_->input_linespacing, sp.c_str());
+		fl_set_input(dialog_->input_linespacing, 
+			space.getValueAsString().c_str());
 	} else {
 		fl_set_input(dialog_->input_linespacing, "");
 	}

@@ -1,3 +1,19 @@
+2005-01-06  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* Spacing.[Ch]: New method getValueAsString().
+
+	* Spacing.[Ch]:
+	* bufferparams.C:
+	* ParagraphParameters.C: 
+	* lyxlayout.C: 
+	* text.C:
+	* text3.C: store/read spacing value as string.
+	
+	* rowpainter.C: change float value (spacing_val) to double.
+	
+	* bufferparams.C: add Spacing::Other to spacetranslator (fixes
+	broken custom document spacing).
+
 2005-01-05  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
 	* lyxfunc.C (getStatus): moved from lyxfunc.C put into anon
