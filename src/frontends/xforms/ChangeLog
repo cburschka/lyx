@@ -3,6 +3,8 @@
 	* forms/form_citation.fd: remove spurious shortcut to a labelframe!
 	(Thereby removing a warning message when the dialog is built.)
 
+	* FormFloat.C (input): return SMI_VALID.
+
 2001-09-11  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* FormDocument.C (input, options_update): add code to enable the
