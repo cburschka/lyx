@@ -31,8 +31,8 @@ extern BufferList bufferlist;
 
 namespace {
 
-inline
-string const unique_id() {
+string const unique_id()
+{
 	static unsigned int seed = 1000;
 
 	std::ostringstream ost;
@@ -45,19 +45,16 @@ string const unique_id() {
 } // namespace anon
 
 
-InsetInclude::InsetInclude(InsetIncludeParams const & p)
-{
-	include_label = unique_id();
-	setFromParams(p);
-	params_.buffer = p.buffer;
-}
+InsetInclude::InsetInclude(Params const & p)
+	: params_(p), include_label(unique_id())
+{}
 
 
 InsetInclude::InsetInclude(InsetCommandParams const & p, Buffer const & b)
 {
+	params_.cparams = p;
+	params_.masterFilename_ = b.fileName();
 	include_label = unique_id();
-	params_.buffer = &b;
-	setFromParams(p);
 }
 
 
@@ -67,48 +64,60 @@ InsetInclude::~InsetInclude()
 }
 
 
-InsetInclude::InsetIncludeParams const & InsetInclude::params() const
+InsetInclude::Params const & InsetInclude::params() const
 {
 	return params_;
 }
 
 
-void InsetInclude::setFromParams(InsetIncludeParams const & p)
+bool InsetInclude::Params::operator==(Params const & o) const
 {
-	params_.cparams.setContents(p.cparams.getContents());
-	params_.noload = p.noload;
-	if (params_.flag == p.flag)
-		return;
+	if (cparams == o.cparams && flag == o.flag &&
+	    noload == o.noload && masterFilename_ == o.masterFilename_)
+		return true;
+	
+	return false;
+}
 
-	params_.flag = p.flag;
 
+bool InsetInclude::Params::operator!=(Params const & o) const
+{
+	return !(*this == o);
+}
+
+
+void InsetInclude::set(Params const & p)
+{
+	params_ = p;
+
+	// Just to be safe...
 	string command;
-
+ 
 	switch (params_.flag) {
-		case INCLUDE:
-			command="include";
-			break;
-		case VERB:
-			command="verbatiminput";
-			break;
-		case INPUT:
-			command="input";
-			break;
-		case VERBAST:
-			command="verbatiminput*";
-			break;
+	        case INCLUDE:
+	                command="include";
+	                break;
+	        case VERB:
+	                command="verbatiminput";
+	                break;
+	        case INPUT:
+	                command="input";
+	                break;
+	        case VERBAST:
+	                command="verbatiminput*";
+	                break;
 	}
-
+ 
 	params_.cparams.setCmdName(command);
 }
 
 
 Inset * InsetInclude::Clone(Buffer const & buffer) const
 {
-	InsetIncludeParams p(params_);
-	p.buffer = &buffer;
+	Params p(params_);
+	p.masterFilename_ = buffer.fileName();
 
-	return new InsetInclude (p);
+	return new InsetInclude(p);
 }
 
 
@@ -184,7 +193,7 @@ string const InsetInclude::getFileName() const
 
 string const InsetInclude::getMasterFilename() const
 {
-	return params_.buffer->fileName();
+	return params_.masterFilename_;
 }
 
 
@@ -367,11 +376,11 @@ void InsetInclude::Validate(LaTeXFeatures & features) const
 	string incfile(params_.cparams.getContents());
 	string writefile;
 
-	Buffer const & b = *params_.buffer;
+	Buffer const * const b = bufferlist.getBuffer(getMasterFilename());
 
-	if (!b.tmppath.empty() && b.niceFile) {
+	if (b && !b->tmppath.empty() && b->niceFile) {
 		incfile = subst(incfile, '/','@');
-		writefile = AddName(b.tmppath, incfile);
+		writefile = AddName(b->tmppath, incfile);
 	} else
 		writefile = getFileName();
 
@@ -388,8 +397,9 @@ void InsetInclude::Validate(LaTeXFeatures & features) const
 	// to be loaded:
 	if (loadIfNeeded()) {
 		// a file got loaded
-		Buffer * tmp = bufferlist.getBuffer(getFileName());
-		tmp->validate(features);
+		Buffer const * const tmp = bufferlist.getBuffer(getFileName());
+		if (tmp)
+			tmp->validate(features);
 	}
 }
 

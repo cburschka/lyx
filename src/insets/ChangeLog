@@ -1,3 +1,9 @@
+2001-03-23  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* insetinclude.[Ch]: rename InsetInclude::InsetIncludeParams as
+	InsetInclude::Params. Don't store a buffer * in Params. Store the
+	master file name instead.
+
 2001-03-23  Juergen Vigna  <jug@sad.it>
 
 	* insetcollapsable.C (InsetMotionNotify):

@@ -29,9 +29,14 @@ libcontrollers_la_SOURCES=\
 	ControlConnections.C \
 	ControlConnections.h \
 	ControlCopyright.C \
+	ControlCopyright.h \
 	ControlCredits.h \
 	ControlCredits.C \
-	ControlCopyright.h \
+	ControlError.h \
+	ControlError.C \
+	ControlInclude.C \
+	ControlInclude.h \
+	ControlInset.h \
 	ControlLog.C \
 	ControlLog.h \
 	ControlVCLog.C \

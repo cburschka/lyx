@@ -25,6 +25,8 @@
 #include "ControlCitation.h"
 #include "ControlCopyright.h"
 #include "ControlCredits.h"
+#include "ControlError.h"
+#include "ControlInclude.h"
 #include "ControlLog.h"
 #include "ControlVCLog.h"
 
@@ -38,6 +40,8 @@
 #include "form_citation.h"
 #include "form_copyright.h"
 #include "form_credits.h"
+#include "form_error.h"
+#include "form_include.h"
 
 #include "FormBibitem.h"
 #include "FormBibtex.h"
@@ -45,14 +49,14 @@
 #include "FormCitation.h"
 #include "FormCopyright.h"
 #include "FormCredits.h"
+#include "FormError.h"
+#include "FormInclude.h"
 #include "FormLog.h"
 #include "FormVCLog.h"
 
 #include "FormDocument.h"
-#include "FormError.h"
 #include "FormExternal.h" 
 #include "FormGraphics.h"
-#include "FormInclude.h"
 #include "FormIndex.h"
 #include "FormMathsPanel.h"
 #include "FormParagraph.h"
@@ -82,14 +86,14 @@ Dialogs::Dialogs(LyXView * lv)
 	add(new GUICitation<FormCitation, xformsBC>(*lv, *this));
 	add(new GUICopyright<FormCopyright, xformsBC>(*lv, *this));
 	add(new GUICredits<FormCredits, xformsBC>(*lv, *this));
+	add(new GUIError<FormError, xformsBC>(*lv, *this));
+	add(new GUIInclude<FormInclude, xformsBC>(*lv, *this));
 	add(new GUILog<FormLog, xformsBC>(*lv, *this));
 	add(new GUIVCLog<FormVCLog, xformsBC>(*lv, *this));
 
 	add(new FormDocument(lv, this));
-	add(new FormError(lv, this));
 	add(new FormExternal(lv, this));
 	add(new FormGraphics(lv, this));
-	add(new FormInclude(lv, this));
 	add(new FormIndex(lv, this));
  	add(new FormMathsPanel(lv, this));
 	add(new FormParagraph(lv, this));

@@ -2928,13 +2928,14 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		if (!bv_->insertInset(inset, "Standard", true))
 			delete inset;
 	}
+		 
 	break;
 
 	case LFUN_CHILD_INSERT:
 	{
-		InsetInclude::InsetIncludeParams p;
+		InsetInclude::Params p;
 		p.cparams.setFromString(argument);
-		p.buffer = buffer_;
+		p.masterFilename_ = buffer_->fileName();
 
 		InsetInclude * inset = new InsetInclude(p);
 		if (!bv_->insertInset(inset))

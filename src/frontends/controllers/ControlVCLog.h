@@ -34,7 +34,7 @@ public:
 	///
 	string const & logfile() { return logfile_; }
 
-protected:
+private:
 	///
 	virtual void apply() {}
 	/// set the params before show or update
@@ -42,7 +42,6 @@ protected:
 	/// clean-up on hide.
 	virtual void clearParams();
 
-private:
 	string logfile_;
 };
 

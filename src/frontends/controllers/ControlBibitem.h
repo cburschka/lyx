@@ -30,9 +30,13 @@ public:
 	///
 	ControlBibitem(LyXView &, Dialogs &);
 
-protected:
-	/// Get changed parameters and Dispatch them to the kernel.
-	virtual void apply();
+private:
+	/// Dispatch the changed parameters to the kernel.
+	virtual void applyParamsToInset();
+	/// not needed.
+	virtual void applyParamsNoInset() {}
+	/// not needed.
+	virtual void clearDaughterParams() {}
 };
 
 #endif // CONTROLBIBITEM_H

@@ -23,7 +23,7 @@
 #include "ControlBibtex.h"
 #include "Dialogs.h"
 #include "LyXView.h"
-#include "BufferView.h"
+#include "buffer.h"
 
 using SigC::slot;
 
@@ -33,22 +33,21 @@ ControlBibtex::ControlBibtex(LyXView & lv, Dialogs & d)
 	d_.showBibtex.connect(slot(this, &ControlBibtex::showInset));
 }
 
-void ControlBibtex::apply()
+void ControlBibtex::applyParamsToInset()
 {
-	view().apply();
+	if (params().getContents() != inset()->params().getContents())
+		lv_.view()->ChangeCitationsIfUnique(inset()->params().getContents(),
+						    params().getContents());
 
-	if (inset_ && params() != inset_->params()) {
-		if (params().getContents() != inset_->params().getContents())
-			lv_.view()->ChangeCitationsIfUnique(
-				inset_->params().getContents(),
-				params().getContents());
+	inset()->setParams(params());
+	lv_.view()->updateInset(inset(), true);
 
-		inset_->setParams(params());
-		lv_.view()->updateInset(inset_, true);
-
-		// We need to do a redraw because the maximum
-		// InsetBibKey width could have changed
-		lv_.view()->redraw();
-		lv_.view()->fitCursor(lv_.view()->getLyXText());
-	}
+	// We need to do a redraw because the maximum
+	// InsetBibKey width could have changed
+	lv_.view()->redraw();
+	lv_.view()->fitCursor(lv_.view()->getLyXText());
 }
+
+
+void ControlBibtex::applyParamsNoInset()
+{}

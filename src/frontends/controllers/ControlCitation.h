@@ -55,8 +55,8 @@ public:
 	    Empty if no info exists. */
 	string const getBibkeyInfo(string const &);
 private:
-	/// Clean up, then hide dialog.
-	virtual void clearParams();
+	/// clean-up any daughter class-particular data on hide.
+	virtual void clearDaughterParams();
 	/// The info associated with each key
 	InfoMap bibkeysInfo_;
 };

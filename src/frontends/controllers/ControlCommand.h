@@ -1,4 +1,3 @@
-// -*- C++ -*-
 /* This file is part of
  * ====================================================== 
  *
@@ -27,49 +26,29 @@
 #pragma interface
 #endif
 
-#include "ControlDialogs.h"
+#include "ControlInset.h"
 #include "insets/insetcommand.h"
 #include "commandtags.h" // kb_action
 
 /** The Inset dialog controller. Connects/disconnects signals, launches 
     GUI-dependent View and returns the output from this View to the kernel.
  */
-class ControlCommand : public ControlInset<InsetCommand>
+class ControlCommand : public ControlInset<InsetCommand, InsetCommandParams>
 {
 public:
 	///
 	ControlCommand(LyXView &, Dialogs &, kb_action=LFUN_NOACTION);
 
-	/// Allow the View access to the local copy.
-	InsetCommandParams & params() const;
-
-protected:
-	/// Slots connected in the daughter classes c-tor.
-	/// Slot launching dialog to (possibly) create a new inset.
-	void createInset(string const &);
-	/// Slot launching dialog to an existing inset.
-	void showInset(InsetCommand *);
-
-	/// Connect signals and launch View.
-	void show(InsetCommandParams const &);
-
-	/// Instantiation of private ControlBase virtual methods.
-	/// Get changed parameters and Dispatch them to the kernel.
-	virtual void apply();
-	/// Disconnect signals and hide View.
-	virtual void hide();
-	/// Update dialog before showing it.
-	virtual void update();
-
-	/// clean-up on hide.
-	virtual void clearParams() {}
-	
-
 private:
-	/** A local copy of the inset's params.
-	    Memory is allocated only whilst the dialog is visible.
-	*/
-	InsetCommandParams * params_;
+	/// Dispatch the changed parameters to the kernel.
+	virtual void applyParamsToInset();
+	/// 
+	virtual void applyParamsNoInset();
+	/// get the parameters from the string passed to createInset.
+	virtual InsetCommandParams const getParams(string const &);
+	/// get the parameters from the inset passed to showInset.
+	virtual InsetCommandParams const getParams(InsetCommand const &);
+
 	/// Controls what is done in LyXFunc::Dispatch()
 	kb_action const action_;
 };

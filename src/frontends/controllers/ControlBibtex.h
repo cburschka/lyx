@@ -30,9 +30,13 @@ public:
 	///
 	ControlBibtex(LyXView &, Dialogs &);
 
-protected:
-	/// Get changed parameters and Dispatch them to the kernel.
-	virtual void apply();
+private:
+	/// Dispatch the changed parameters to the kernel.
+	virtual void applyParamsToInset();
+	/// 
+	virtual void applyParamsNoInset();
+	/// not needed.
+	virtual void clearDaughterParams() {}
 };
 
 #endif // CONTROLBIBTEX_H

@@ -1,3 +1,21 @@
+2001-03-23  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* FormError.[Ch]:
+	* form_error.fd:
+	* FormInclude.[Ch]:
+	* form_include.fd: implemented controller-view split.
+
+	* Dialogs.C: associated changes.
+
+	* FormBibitem.h:
+	* FormBibtex.h:
+	* FormCitation.h: moved methods from protected to private.
+
+2001-03-23  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* FormCredits.C (build): changes associated with
+	ControlCredits::getCredits returning a stringstream not a vector<string>
+
 2001-03-22  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* FormCopyright.[Ch]:

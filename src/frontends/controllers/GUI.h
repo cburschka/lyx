@@ -109,6 +109,34 @@ public:
 };
 
 
+/** Specialization for Error dialog
+ */
+class ControlError;
+
+template <class GUIview, class GUIbc>
+class GUIError :
+	public GUI<ControlError, GUIview, OkCancelPolicy, GUIbc> {
+public:
+	///
+	GUIError(LyXView & lv, Dialogs & d)
+		: GUI<ControlError, GUIview, OkCancelPolicy, GUIbc>(lv, d) {}
+};
+
+
+/** Specialization for Include dialog
+ */
+class ControlInclude;
+
+template <class GUIview, class GUIbc>
+class GUIInclude :
+	public GUI<ControlInclude, GUIview, OkCancelReadOnlyPolicy, GUIbc> {
+public:
+	///
+	GUIInclude(LyXView & lv, Dialogs & d)
+		: GUI<ControlInclude, GUIview, OkCancelReadOnlyPolicy, GUIbc>(lv, d) {}
+};
+
+
 /** Specialization for Log dialog
  */
 class ControlLog;

@@ -1,5 +1,27 @@
 2001-03-23  Angus Leeming  <a.leeming@ic.ac.uk>
 
+	* ControlDialogs.h: moved class ControlInset into its own file.
+
+	* ControlInset.h: new file. class ControlInset has been expanded to take
+	two template parameters, Inset and Params. Believe that all inset
+	controllers can be derived from this with the minimum of effort.
+
+	* ControlBibitem.[Ch]:
+	* ControlBibtex.[Ch]:
+	* ControlCitation.[Ch]:
+	* ControlCommand.[Ch]: moved most code into ControlInset.
+
+	* lots of files. Moved protected stuff into private where possible.
+
+	* ControlError.[Ch]:
+	* ControlInclude.[Ch]: new files; controllers for the LaTeX error and
+	Include popups, respectively.
+
+	* GUI.h:
+	* Makefile.am: associated changes.
+
+2001-03-23  Angus Leeming  <a.leeming@ic.ac.uk>
+
 	* ControlCredits.[Ch] (getCredits): returns a stringstream not a
 	vector<string>.
 

@@ -5,86 +5,42 @@
  * See the file COPYING
  *
  * \author Alejandro Aguilar Sierra
- * \author John Levon
+ * \author John Levon, moz@compsoc.man.ac.uk
+ * \author Angus Leeming <a.leeming@ic.ac.uk>
  */
 #ifndef FORMINCLUDE_H
 #define FORMINCLUDE_H
-
-#include <boost/smart_ptr.hpp>
 
 #ifdef __GNUG__
 #pragma interface
 #endif
 
-#include "FormBaseDeprecated.h"
-#include "insets/insetinclude.h"
+#include "FormBase.h"
 
+class ControlInclude;
 struct FD_form_include;
 
-/** This class provides an XForms implementation of the FormInclude Dialog.
+/** This class provides an XForms implementation of the Include Dialog.
  */
-class FormInclude : public FormBaseBD {
+class FormInclude : public FormCB<ControlInclude, FormDB<FD_form_include> > {
 public:
 	///
-	FormInclude(LyXView *, Dialogs *);
+	FormInclude(ControlInclude &);
+
 private:
-	///
-	enum State {
-		/// the browse button
-		BROWSE = 0,
-		/// the load file button
-		LOAD = 5,
-		/// the verbatim radio choice
-		VERBATIM = 10,
-		/// the input and include radio choices
-		INPUTINCLUDE = 11
-	};
- 
-	/// Pointer to the actual instantiation of the ButtonController.
-	virtual xformsBC & bc();
-	/// Slot launching dialog to an existing inset
-	void showInclude(InsetInclude *);
-
-	/// Connect signals. Also perform any necessary initialisation.
-	virtual void connect();
-	/// Disconnect signals. Also perform any necessary housekeeping.
-	virtual void disconnect();
-
+	/// Set the Params variable for the Controller.
+	virtual void apply();
 	/// Build the dialog
 	virtual void build();
-	/// Filter the inputs
-	virtual bool input( FL_OBJECT *, long );
 	/// Update dialog before showing it
 	virtual void update();
-	/// Apply from dialog (modify or create inset)
-	virtual void apply();
-	/// Pointer to the actual instantiation of the xforms form
-	virtual FL_FORM * form() const;
-	/// bool indicates if a buffer switch took place
-	virtual void updateSlot(bool);
+	/// Filter the inputs on callback from xforms
+	virtual ButtonPolicy::SMInput input(FL_OBJECT *, long);
 
-
+	///
+	ButtonPolicy::SMInput inputBrowse();
 	/// Type definition from the fdesign produced header file.
 	FD_form_include * build_include();
-
-	/// Real GUI implementation.
-	boost::scoped_ptr<FD_form_include> dialog_;
-	/// The ButtonController
-	ButtonController<OkCancelReadOnlyPolicy, xformsBC> bc_;
-
-	/// inset::hide connection.
-	SigC::Connection ih_;
- 
-	/// pointer to the inset passed through showInset
-	InsetInclude * inset_;
-	/// the nitty-gritty. What is modified and passed back
-	InsetInclude::InsetIncludeParams params;
 };
 
-
-inline
-xformsBC & FormInclude::bc()
-{
-  return bc_;
-}
 #endif

@@ -36,7 +36,7 @@ public:
 	std::pair<Buffer::LogType, string> const & logfile()
 		{ return logfile_; }
 
-protected:
+private:
 	///
 	virtual void apply() {}
 	/// set the params before show or update
@@ -44,7 +44,6 @@ protected:
 	/// clean-up on hide.
 	virtual void clearParams();
 
-private:
 	std::pair<Buffer::LogType, string> logfile_;
 };
 

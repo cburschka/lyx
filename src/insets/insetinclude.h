@@ -27,9 +27,9 @@ struct LaTeXFeatures;
 class InsetInclude: public InsetButton, public boost::noncopyable {
 public:
         /// the type of inclusion
-        enum IncludeFlags {
+        enum Flags {
 		///
-		INCLUDE= 0,
+		INCLUDE = 0,
 		///
 		VERB = 1,
 		///
@@ -38,30 +38,37 @@ public:
 		VERBAST = 3
 	};
 
-	struct InsetIncludeParams {
-		InsetIncludeParams(InsetCommandParams const & cp = InsetCommandParams(),
-			IncludeFlags f = INCLUDE, bool nl = false, Buffer const * b = 0)
-			: cparams(cp), flag(f), noload(nl), buffer(b) {}
+	struct Params {
+		Params(InsetCommandParams const & cp = InsetCommandParams(),
+		       Flags f = INCLUDE,
+		       bool nl = false,
+		       string const & name = string())
+			: cparams(cp), flag(f), noload(nl),
+			  masterFilename_(name) {}
 		InsetCommandParams cparams;
-		IncludeFlags flag;
+		Flags flag;
 		bool noload;
-		Buffer const * buffer;
+		string masterFilename_;
+
+		///
+		bool operator==(Params const &) const;
+		///
+		bool operator!=(Params const &) const;
 	};
 
 	///
-	InsetInclude(InsetIncludeParams const &);
+	InsetInclude(Params const &);
 	///
 	InsetInclude(InsetCommandParams const &, Buffer const &);
 	///
 	~InsetInclude();
 
 	/// get the parameters
-	InsetIncludeParams const & params(void) const;
-
+	Params const & params(void) const;
 	/// set the parameters
-	void setFromParams(InsetIncludeParams const & params);
+	void set(Params const & params);
 
-        ///
+	///
         Inset * Clone(Buffer const &) const;
 	///
 	Inset::Code LyxCode() const { return Inset::INCLUDE_CODE; }
@@ -118,7 +125,7 @@ private:
         string const getFileName() const;
 
 	/// the parameters
-	InsetIncludeParams params_;
+	Params params_;
 	///
 	string include_label;
 };

@@ -108,17 +108,17 @@ public:
 protected:
 	///
 	virtual bool isBufferDependent() const { return true; }
-	/** Slot connected to update signal.
-	    Bool indicates if a buffer switch took place.
-	    Default behaviour is to ignore this and simply update().
-	*/
-	virtual void updateSlot(bool) { update(); }
 	/// Connect signals
 	virtual void connect();
 	/// Disconnect signals
 	virtual void disconnect();
 
 private:
+	/** Slot connected to update signal.
+	    Bool indicates if a buffer switch took place.
+	    Default behaviour is to ignore this and simply update().
+	*/
+	virtual void updateSlot(bool) { update(); }
 	/// Update connection.
 	SigC::Connection u_;
 };

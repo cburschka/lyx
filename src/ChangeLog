@@ -2,6 +2,9 @@
 
 	* LString.h: removed "using std::getline"!
 
+	* BufferView_pimpl.C (Dispatch): changes due to changes in
+	InsetInclude::Params.
+
 	* buffer.C (tag_name): removed redundant break statements as they were
 	producing lots of warnings with my compiler.
 

@@ -30,17 +30,6 @@ public:
 	///
 	FormCitation(ControlCitation &);
 
-	// Functions accessible to the Controller.
-
-	/// Set the Params variable for the Controller.
-	virtual void apply();
-	/// Build the dialog.
-	virtual void build();
-	/// Hide the dialog.
-	virtual void hide();
-	/// Update dialog before/whilst showing it.
-	virtual void update();
-
 private:
 	///
 	enum State {
@@ -50,6 +39,14 @@ private:
 		OFF
 	};
 
+	/// Set the Params variable for the Controller.
+	virtual void apply();
+	/// Build the dialog.
+	virtual void build();
+	/// Hide the dialog.
+	virtual void hide();
+	/// Update dialog before/whilst showing it.
+	virtual void update();
 	/// Filter the inputs on callback from xforms
 	virtual ButtonPolicy::SMInput input(FL_OBJECT *, long);
 

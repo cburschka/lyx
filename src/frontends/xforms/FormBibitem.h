@@ -28,16 +28,13 @@ public:
 	///
 	FormBibitem(ControlBibitem &);
 
-	// Functions accessible to the Controller.
-
+private:
 	/// Set the Params variable for the Controller.
 	virtual void apply();
 	/// Build the dialog.
 	virtual void build();
 	/// Update dialog before/whilst showing it.
 	virtual void update();
-
-private:
 	/// Filter the inputs on callback from xforms
 	virtual ButtonPolicy::SMInput input(FL_OBJECT *, long);
 

@@ -1,65 +1,46 @@
-// -*- C++ -*-
-/* This file is part of
+/*
+ * \file FormError.h
+ * This file is part of
  * ====================================================== 
  *
  *           LyX, The Document Processor
  *
- *           Copyright 2000 The LyX Team.
+ *           Copyright 2000-2001 The LyX Team.
  *
  * ======================================================
+ *
+ * \author Angus Leeming, a.leeming@.ac.uk
  */
 
 #ifndef FORMERROR_H
 #define FORMERROR_H
 
-#include <boost/smart_ptr.hpp>
-
 #ifdef __GNUG__
 #pragma interface
 #endif
 
-#include "FormInset.h"
+#include "FormBase.h"
 
-class InsetError;
+class ControlError;
 struct FD_form_error;
 
-/** This class provides an XForms implementation of the FormError Dialog.
+/** This class provides an XForms implementation of the Error Dialog.
  */
-class FormError : public FormInset {
+class FormError : public FormCB<ControlError, FormDB<FD_form_error> > {
 public:
 	/// Constructor
-	FormError(LyXView *, Dialogs *);
-private:
-	/// Pointer to the actual instantiation of the ButtonController.
-	virtual xformsBC & bc();
-	/// Disconnect signals. Also perform any necessary housekeeping.
-	virtual void disconnect();
+	FormError(ControlError &);
 
-	/// Slot launching dialog to an existing inset
-	void showInset(InsetError *);
-	/// Update dialog before showing it
-	virtual void update();
+private:
+	/// not needed.
+	virtual void apply() {}
 	/// Build the dialog
 	virtual void build();
-	/// Pointer to the actual instantiation of the xforms form
-	virtual FL_FORM * form() const;
+	/// Update dialog before showing it
+	virtual void update();
+
 	/// Fdesign generated method
 	FD_form_error * build_error();
-
-	/// Real GUI implementation.
-	boost::scoped_ptr<FD_form_error> dialog_;
-	/// pointer to the inset passed through showInset
-	InsetError * inset_;
-	/// the error message
-  	string message_;
-	/// The ButtonController
-	ButtonController<OkCancelPolicy, xformsBC> bc_;
 };
 
-
-inline
-xformsBC & FormError::bc()
-{
-	return bc_;
-}
-#endif
+#endif // FORMERROR_H

@@ -71,7 +71,7 @@ public:
 	///
 	void setToggleAll(bool);
 
-protected:
+private:
 	/// Get changed parameters and Dispatch them to the kernel.
 	virtual void apply();
 	/// set the params before show or update.
@@ -79,8 +79,9 @@ protected:
 	/// clean-up on hide.
 	virtual void clearParams();
 
-private:
+	///
 	LyXFont * font_;
+	///
 	bool toggleall_;
 };
 

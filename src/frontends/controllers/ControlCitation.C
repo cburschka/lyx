@@ -45,7 +45,7 @@ ControlCitation::ControlCitation(LyXView & lv, Dialogs & d)
 }
 
 
-void ControlCitation::clearParams()
+void ControlCitation::clearDaughterParams()
 {
 	bibkeysInfo_.clear();
 }

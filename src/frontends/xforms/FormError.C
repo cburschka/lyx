@@ -1,74 +1,34 @@
-// -*- C++ -*-
-/* This file is part of
+/*
+ * \file FormError.C
+ * This file is part of
  * ====================================================== 
  *
  *           LyX, The Document Processor
  *
- *           Copyright 2000 The LyX Team.
+ *           Copyright 2000-2001 The LyX Team.
  *
  * ======================================================
+ *
+ * \author Angus Leeming, a.leeming@.ac.uk
  */
-
-#include <config.h>
 
 #ifdef __GNUG__
 #pragma implementation
 #endif
 
-#include "Dialogs.h"
+#include <config.h>
+
+#include "xformsBC.h"
+#include "ControlError.h"
 #include "FormError.h"
 #include "form_error.h"
-#include "insets/inseterror.h"
-#include "support/LAssert.h"
+#include "xforms_helpers.h" // formatted
 
-using SigC::slot;
+typedef FormCB<ControlError, FormDB<FD_form_error> > base_class;
 
-FormError::FormError(LyXView * lv, Dialogs * d)
-	: FormInset( lv, d, _("LaTeX Error")),
-	  inset_(0)
-{
-	Assert(lv && d);
-	// let the dialog be shown
-	// This is a permanent connection so we won't bother
-	// storing a copy because we won't be disconnecting.
-	d->showError.connect(slot(this, &FormError::showInset));
-}
-
-
-FL_FORM * FormError::form() const
-{
-	if (dialog_.get()) return dialog_->form;
-	return 0;
-}
-
-
-void FormError::disconnect()
-{
-	inset_ = 0;
-	message_.erase();
-	FormInset::disconnect();
-}
-
-
-void FormError::showInset(InsetError * inset)
-{
-	if (inset == 0) return; // Is this _really_ allowed? (Lgb)
-
-	// If connected to another inset, disconnect from it.
-	if (inset_)
-		ih_.disconnect();
-
-	inset_ = inset;
-	message_ = inset->getContents();
-	ih_ = inset->hideDialog.connect(slot(this, &FormError::hide));
-	show();
-}
-
-
-void FormError::update()
-{
-	fl_set_object_label(dialog_->message, message_.c_str());
-}
+FormError::FormError(ControlError & c)
+	: base_class(c, _("LaTeX Error"))
+{}
 
 
 void FormError::build()
@@ -78,4 +38,12 @@ void FormError::build()
         // Manage the cancel/close button
 	bc().setCancel(dialog_->button_cancel);
 	bc().refresh();
+}
+
+
+void FormError::update()
+{
+	string const txt = formatted(controller().params(),
+				     dialog_->message->w-10);
+	fl_set_object_label(dialog_->message, txt.c_str());
 }

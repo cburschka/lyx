@@ -1,4 +1,3 @@
-// -*- C++ -*-
 /* This file is part of
  * ====================================================== 
  *
@@ -19,95 +18,39 @@
 #include <config.h>
 
 #include "ControlCommand.h"
-#include "BufferView.h"
+#include "buffer.h"
 #include "Dialogs.h"
 #include "lyxfunc.h"
 #include "LyXView.h"
-#include "support/LAssert.h"
 
 ControlCommand::ControlCommand(LyXView & lv, Dialogs & d, kb_action ac)
-	: ControlInset<InsetCommand>(lv, d),
-	  params_(0), action_(ac)
+	: ControlInset<InsetCommand, InsetCommandParams>(lv, d),
+	  action_(ac)
 {}
 
 
-void ControlCommand::showInset(InsetCommand * inset)
+InsetCommandParams const ControlCommand::getParams(string const & arg)
 {
-	if (inset == 0) return;  // maybe we should Assert this?
-
-	connectInset(inset);
-	show(inset->params());
-}
-
-
-void ControlCommand::createInset(string const & arg)
-{
-	connectInset();
-
-	if ( !arg.empty() )
-		bc().valid(); // so that the user can press Ok
-
 	InsetCommandParams params;
 	params.setFromString(arg);
-	show(params);
+	return params;
 }
 
-
-void ControlCommand::update()
+InsetCommandParams const ControlCommand::getParams(InsetCommand const & inset)
 {
-	if (params_) delete params_;
-
-	if (inset_)
-		params_ = new InsetCommandParams(inset_->params());
-	else
-		params_ = new InsetCommandParams;
-
-	bc().readOnly(isReadonly());
-	view().update();
+	return inset.params();
 }
 
-
-void ControlCommand::show(InsetCommandParams const & params)
+void ControlCommand::applyParamsToInset()
 {
-	if (params_) delete params_;
-	params_ = new InsetCommandParams(params);
-
-	bc().readOnly(isReadonly());
-	view().show();
+	inset()->setParams(params());
+	lv_.view()->updateInset(inset(), true);
 }
 
-
-void ControlCommand::hide()
+void ControlCommand::applyParamsNoInset()
 {
-	if (params_) {
-		delete params_;
-		params_ = 0;
-	}
+	if (action_ == LFUN_NOACTION) return;
 
-	clearParams();
-
-	disconnect();
-	view().hide();
+	lv_.getLyXFunc()->Dispatch(action_, params().getAsString());
 }
 
-InsetCommandParams & ControlCommand::params() const
-{
-	Assert(params_);
-	return *params_;
-}
-
-
-void ControlCommand::apply()
-{
-	view().apply();
-
-	if (inset_) {
-		// Only update if contents have changed
-		if (params() != inset_->params()) {
-			inset_->setParams(params());
-			lv_.view()->updateInset(inset_, true);
-		}
-	} else if (action_ != LFUN_NOACTION){
-		lv_.getLyXFunc()->Dispatch(action_, params().getAsString());
-	}
-}
