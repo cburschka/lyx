@@ -182,7 +182,8 @@ InsetBase * createInset(BufferView * bv, FuncRequest const & cmd)
 		return 0;
 
 	case LFUN_INSET_CAPTION: {
-		UpdatableInset * up = bv->cursor().inset().asUpdatableInset();
+		UpdatableInset * up = bv->cursor().inset()
+			? bv->cursor().inset()->asUpdatableInset() : 0;
 		if (!up) {
 			auto_ptr<InsetCaption> inset(new InsetCaption(params));
 			inset->setOwner(up);

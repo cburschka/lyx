@@ -58,7 +58,7 @@ public:
 	~BufferView();
 
 	/// set the buffer we are viewing
-	void setBuffer(Buffer * b);
+	void buffer(Buffer * b);
 	/// return the buffer being viewed
 	Buffer * buffer() const;
 
@@ -81,7 +81,7 @@ public:
 	/// reload the contained buffer
 	void reload();
 	/// create a new buffer based on template
-	void newFile(std::string const & fname, std::string const & tname,
+	bool newFile(std::string const & fname, std::string const & tname,
 		     bool named = true);
 	/// load a buffer into the view
 	bool loadLyXFile(std::string const & name, bool tolastfiles = true);
@@ -110,6 +110,9 @@ public:
 
 	/// return the lyxtext we are using
 	LyXText * getLyXText() const;
+
+	/// return the current encoding at the cursor
+	Encoding const * getEncoding() const;
 
 	/// return the parent language of the given inset
 	Language const * getParentLanguage(InsetOld * inset) const;

@@ -180,15 +180,15 @@ struct Buffer::Impl
 	 */
 	bool file_fully_loaded;
 
-	/// our LyXText that should be wrapped in an InsetText
-	InsetText inset;
+	/// our text
+	LyXText text;
 };
 
 
 Buffer::Impl::Impl(Buffer & parent, string const & file, bool readonly_)
 	: lyx_clean(true), bak_clean(true), unnamed(false), read_only(readonly_),
 	  filename(file), filepath(OnlyPath(file)), file_fully_loaded(false),
-		inset(params)
+		text(0, 0)
 {
 	lyxvc.buffer(&parent);
 	temppath = createBufferTmpDir();
@@ -202,7 +202,6 @@ Buffer::Buffer(string const & file, bool ronly)
 	: pimpl_(new Impl(*this, file, ronly))
 {
 	lyxerr[Debug::INFO] << "Buffer::Buffer()" << endl;
-	lyxerr << "Buffer::Buffer()" << endl;
 }
 
 
@@ -226,13 +225,7 @@ Buffer::~Buffer()
 
 LyXText & Buffer::text() const
 {
-	return const_cast<LyXText &>(pimpl_->inset.text_);
-}
-
-
-InsetBase & Buffer::inset() const
-{
-	return const_cast<InsetText &>(pimpl_->inset);
+	return const_cast<LyXText &>(pimpl_->text);
 }
 
 
@@ -274,13 +267,13 @@ BufferParams const & Buffer::params() const
 
 ParagraphList & Buffer::paragraphs()
 {
-	return text().paragraphs();
+	return pimpl_->text.paragraphs();
 }
 
 
 ParagraphList const & Buffer::paragraphs() const
 {
-	return text().paragraphs();
+	return pimpl_->text.paragraphs();
 }
 
 
@@ -648,18 +641,12 @@ bool Buffer::readFile(LyXLex & lex, string const & filename,
 	bool the_end = readBody(lex);
 	params().setPaperStuff();
 
-#warning Look here!
-#if 0
-	if (token == "\\end_document")
-		the_end_read = true;
-
 	if (!the_end) {
 		Alert::error(_("Document format failure"),
 			     bformat(_("%1$s ended unexpectedly, which means"
 				       " that it is probably corrupted."),
 				       filename));
 	}
-#endif 
 	pimpl_->file_fully_loaded = true;
 	return true;
 }

@@ -26,7 +26,7 @@ using std::endl;
 
 
 MathMBoxInset::MathMBoxInset(BufferView & bv)
-	: text_(&bv), bv_(&bv)
+	: text_(&bv, true), bv_(&bv)
 {
 	text_.paragraphs().push_back(Paragraph());
 	text_.paragraphs().back().

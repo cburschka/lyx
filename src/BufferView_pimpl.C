@@ -46,7 +46,6 @@
 #include "vspace.h"
 
 #include "insets/insetref.h"
-#include "insets/insettext.h"
 
 #include "frontends/Alert.h"
 #include "frontends/Dialogs.h"
@@ -158,32 +157,19 @@ void BufferView::Pimpl::connectBuffer(Buffer & buf)
 		disconnectBuffer();
 
 	errorConnection_ =
-		buf.error.connect(
-			boost::bind(&BufferView::Pimpl::addError, this, _1));
-
+		buf.error.connect(boost::bind(&BufferView::Pimpl::addError, this, _1));
 	messageConnection_ =
-		buf.message.connect(
-			boost::bind(&LyXView::message, owner_, _1));
-
+		buf.message.connect(boost::bind(&LyXView::message, owner_, _1));
 	busyConnection_ =
-		buf.busy.connect(
-			boost::bind(&LyXView::busy, owner_, _1));
-
+		buf.busy.connect(boost::bind(&LyXView::busy, owner_, _1));
 	titleConnection_ =
-		buf.updateTitles.connect(
-			boost::bind(&LyXView::updateWindowTitle, owner_));
-
+		buf.updateTitles.connect(boost::bind(&LyXView::updateWindowTitle, owner_));
 	timerConnection_ =
-		buf.resetAutosaveTimers.connect(
-			boost::bind(&LyXView::resetAutosaveTimer, owner_));
-
+		buf.resetAutosaveTimers.connect(boost::bind(&LyXView::resetAutosaveTimer, owner_));
 	readonlyConnection_ =
-		buf.readonly.connect(
-			boost::bind(&BufferView::Pimpl::showReadonly, this, _1));
-
+		buf.readonly.connect(boost::bind(&BufferView::Pimpl::showReadonly, this, _1));
 	closingConnection_ =
-		buf.closing.connect(
-			boost::bind(&BufferView::Pimpl::setBuffer, this, (Buffer *)0));
+		buf.closing.connect(boost::bind(&BufferView::Pimpl::buffer, this, (Buffer *)0));
 }
 
 
@@ -199,10 +185,13 @@ void BufferView::Pimpl::disconnectBuffer()
 }
 
 
-void BufferView::Pimpl::newFile(string const & filename, string const & tname,
-	bool isNamed)
+bool BufferView::Pimpl::newFile(string const & filename,
+				string const & tname,
+				bool isNamed)
 {
-	setBuffer(::newFile(filename, tname, isNamed));
+	Buffer * b = ::newFile(filename, tname, isNamed);
+	buffer(b);
+	return true;
 }
 
 
@@ -227,13 +216,14 @@ bool BufferView::Pimpl::loadLyXFile(string const & filename, bool tolastfiles)
 			text, 0, 1,  _("&Revert"), _("&Switch to document"));
 
 		if (ret != 0) {
-			setBuffer(bufferlist.getBuffer(s));
+			buffer(bufferlist.getBuffer(s));
 			return true;
+		} else {
+			// FIXME: should be LFUN_REVERT
+			if (!bufferlist.close(bufferlist.getBuffer(s), false))
+				return false;
+			// Fall through to new load. (Asger)
 		}
-		// FIXME: should be LFUN_REVERT
-		if (!bufferlist.close(bufferlist.getBuffer(s), false))
-			return false;
-		// Fall through to new load. (Asger)
 	}
 
 	Buffer * b;
@@ -258,7 +248,7 @@ bool BufferView::Pimpl::loadLyXFile(string const & filename, bool tolastfiles)
 			return false;
 	}
 
-	setBuffer(b);
+	buffer(b);
 	bv_->showErrorList(_("Parse"));
 
 	if (tolastfiles)
@@ -298,45 +288,48 @@ int BufferView::Pimpl::top_y() const
 }
 
 
-void BufferView::Pimpl::setBuffer(Buffer * b)
+void BufferView::Pimpl::buffer(Buffer * b)
 {
 	lyxerr[Debug::INFO] << "Setting buffer in BufferView ("
 			    << b << ')' << endl;
-	if (buffer_)
+	if (buffer_) {
 		disconnectBuffer();
+		//delete bv_->text();
+		//bv_->setText(0);
+	}
+
+	// reset old cursor
+	cursor_.reset();
 
 	// set current buffer
 	buffer_ = b;
 
-	// reset old cursor
 	top_y_ = 0;
-	cursor_ = LCursor(*bv_);
 
 	// if we're quitting lyx, don't bother updating stuff
 	if (quitting)
 		return;
 
+	// if we are closing the buffer, use the first buffer as current
+	if (!buffer_)
+		buffer_ = bufferlist.first();
+
 	if (buffer_) {
 		lyxerr[Debug::INFO] << "Buffer addr: " << buffer_ << endl;
 		connectBuffer(*buffer_);
 
-		cursor_.push(buffer_->inset());
-		cursor_.resetAnchor();
 		buffer_->text().init(bv_);
 
 		// If we don't have a text object for this, we make one
-		//if (bv_->text() == 0)
-		//	resizeCurrentBuffer();
+		if (bv_->text() == 0)
+			resizeCurrentBuffer();
 
 		// Buffer-dependent dialogs should be updated or
 		// hidden. This should go here because some dialogs (eg ToC)
 		// require bv_->text.
 		owner_->getDialogs().updateBufferDependent(true);
-		owner_->setLayout(bv_->text()->getPar(0)->layout()->name());
 	} else {
 		lyxerr[Debug::INFO] << "  No Buffer!" << endl;
-		// we are closing the buffer, use the first buffer as current
-		buffer_ = bufferlist.first();
 		owner_->getDialogs().hideBufferDependent();
 	}
 
@@ -347,6 +340,10 @@ void BufferView::Pimpl::setBuffer(Buffer * b)
 	owner_->updateLayoutChoice();
 	owner_->updateWindowTitle();
 
+	// Don't forget to update the Layout
+	if (buffer_)
+		owner_->setLayout(bv_->text()->getPar(0)->layout()->name());
+
 	if (lyx::graphics::Previews::activated() && buffer_)
 		lyx::graphics::Previews::get().generateBufferPreviews(*buffer_);
 }
@@ -354,10 +351,11 @@ void BufferView::Pimpl::setBuffer(Buffer * b)
 
 bool BufferView::Pimpl::fitCursor()
 {
-	if (!screen().fitCursor(bv_))
-		return false;
-	updateScrollbar();
-	return true;
+	if (screen().fitCursor(bv_)) {
+		updateScrollbar();
+		return true;
+	}
+	return false;
 }
 
 
@@ -441,17 +439,15 @@ void BufferView::Pimpl::updateScrollbar()
 {
 	if (!bv_->text()) {
 		lyxerr[Debug::GUI] << "no text in updateScrollbar" << endl;
-		lyxerr << "no text in updateScrollbar" << endl;
 		workarea().setScrollbarParams(0, 0, 0);
 		return;
 	}
 
 	LyXText const & t = *bv_->text();
 
-	lyxerr[Debug::GUI]
-		<< "Updating scrollbar: height: " << t.height()
-		<< " top_y: " << top_y()
-		<< " default height " << defaultRowHeight() << endl;
+	lyxerr[Debug::GUI] << "Updating scrollbar: h" << t.height()
+			   << ", top_y()" << top_y() << ", default height "
+			   << defaultRowHeight() << endl;
 
 	workarea().setScrollbarParams(t.height(), top_y(), defaultRowHeight());
 }
@@ -596,11 +592,11 @@ void BufferView::Pimpl::workAreaResize()
 
 void BufferView::Pimpl::update()
 {
-	//lyxerr << "BufferView::Pimpl::update(), buffer: " << buffer_ << endl;
+	//lyxerr << "BufferView::update()" << endl;
 	// fix cursor coordinate cache in case something went wrong
 
 	// check needed to survive LyX startup
-	if (buffer_) {
+	if (bv_->getLyXText()) {
 		// update all 'visible' paragraphs
 		ParagraphList::iterator beg;
 		ParagraphList::iterator end;
@@ -676,7 +672,7 @@ void BufferView::Pimpl::restorePosition(unsigned int i)
 			::loadLyXFile(b, fname); // don't ask, just load it
 		}
 		if (b)
-			setBuffer(b);
+			buffer(b);
 	}
 
 	ParIterator par = buffer_->getParFromID(saved_positions[i].par_id);
@@ -877,8 +873,6 @@ bool BufferView::Pimpl::workAreaDispatch(FuncRequest const & cmd0)
 	cmd.y += bv_->top_y();
 	//lyxerr << "*** workAreaDispatch: request: " << cmd << std::endl;
 	LCursor cur(*bv_);
-	cur.push(bv_->buffer()->inset());
-	cur.resetAnchor();
 	cur.selection() = bv_->cursor().selection();
 	switch (cmd.action) {
 
@@ -887,7 +881,14 @@ bool BufferView::Pimpl::workAreaDispatch(FuncRequest const & cmd0)
 		if (!available())
 			return false;
 		FuncRequest cmd1 = cmd;
-		DispatchResult res = cur.inset().dispatch(cur, cmd);
+		InsetBase * inset = cur.inset();
+		DispatchResult res;
+		if (inset) {
+			res = inset->dispatch(cur, cmd);
+		} else {
+			res = bv_->text()->dispatch(cur, cmd);
+		}
+
 		if (fitCursor() || res.update()) {
 			update();
 			cur.updatePos();
@@ -1120,22 +1121,6 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & cmd)
 
 	case LFUN_CENTER:
 		bv_->center();
-		break;
-
-	case LFUN_BEGINNINGBUFSEL:
-		bv_->cursor().reset();
-		if (!cur.selection())
-			cur.resetAnchor();
-		bv_->text()->cursorTop(cur);
-		finishUndo();
-		break;
-
-	case LFUN_ENDBUFSEL:
-		bv_->cursor().reset();
-		if (!cur.selection())
-			cur.resetAnchor();
-		bv_->text()->cursorBottom(cur);
-		finishUndo();
 		break;
 
 	default:

@@ -71,10 +71,10 @@ using std::ostringstream;
 using std::string;
 
 
-LyXText::LyXText(BufferView * bv)
+LyXText::LyXText(BufferView * bv, bool in_inset)
 	: width_(0), maxwidth_(bv ? bv->workWidth() : 100), height_(0),
 	  background_color_(LColor::background),
-	  bv_owner(bv), xo_(0), yo_(0)
+	  bv_owner(bv), in_inset_(in_inset), xo_(0), yo_(0)
 {}
 
 
@@ -100,12 +100,6 @@ void LyXText::init(BufferView * bv)
 }
 
 
-bool LyXText::isMainText() const
-{
-	return &bv()->buffer()->text() == this;
-}
-
-
 // Gets the fully instantiated font at a given position in a paragraph
 // Basically the same routine as Paragraph::getFont() in paragraph.C.
 // The difference is that this one is used for displaying, and thus we
@@ -123,7 +117,7 @@ LyXFont LyXText::getFont(ParagraphList::iterator pit, pos_type pos) const
 	// We specialize the 95% common case:
 	if (!pit->getDepth()) {
 		LyXFont f = pit->getFontSettings(params, pos);
-		if (!isMainText())
+		if (in_inset_)
 			f.realize(font_);
 		if (layout->labeltype == LABEL_MANUAL && pos < body_pos)
 			return f.realize(layout->reslabelfont);
@@ -141,7 +135,7 @@ LyXFont LyXText::getFont(ParagraphList::iterator pit, pos_type pos) const
 	LyXFont font = pit->getFontSettings(params, pos);
 	font.realize(layoutfont);
 
-	if (!isMainText())
+	if (in_inset_)
 		font.realize(font_);
 
 	// Realize with the fonts of lesser depth.
@@ -1601,6 +1595,12 @@ void LyXText::recUndo(par_type first, par_type last) const
 void LyXText::recUndo(par_type par) const
 {
 	recordUndo(bv()->cursor(), Undo::ATOMIC, par, par);
+}
+
+
+bool LyXText::isInInset() const
+{
+	return in_inset_;
 }
 
 

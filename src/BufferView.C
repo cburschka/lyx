@@ -43,7 +43,6 @@
 
 #include "insets/insetcommand.h" // ChangeRefs
 #include "insets/updatableinset.h"
-#include "insets/insettext.h"
 
 #include "support/filetools.h"
 #include "support/lyxalgo.h" // lyx_count
@@ -103,15 +102,15 @@ Painter & BufferView::painter() const
 }
 
 
-void BufferView::setBuffer(Buffer * b)
+void BufferView::buffer(Buffer * b)
 {
-	pimpl_->setBuffer(b);
+	pimpl_->buffer(b);
 }
 
 
-void BufferView::newFile(string const & fn, string const & tn, bool named)
+bool BufferView::newFile(string const & fn, string const & tn, bool named)
 {
-	pimpl_->newFile(fn, tn, named);
+	return pimpl_->newFile(fn, tn, named);
 }
 
 
@@ -333,9 +332,7 @@ void BufferView::hideCursor()
 
 LyXText * BufferView::getLyXText() const
 {
-	LyXText * text = cursor().innerText();
-	BOOST_ASSERT(text);
-	return text;
+	return cursor().innerText();
 }
 
 
@@ -344,6 +341,19 @@ Language const * BufferView::getParentLanguage(InsetOld * inset) const
 	Paragraph const & par = ownerPar(*buffer(), inset);
 	return par.getFontSettings(buffer()->params(),
 	                           par.getPositionOfInset(inset)).language();
+}
+
+
+Encoding const * BufferView::getEncoding() const
+{
+	LyXText * t = getLyXText();
+	if (!t)
+		return 0;
+	CursorSlice const & cur = cursor().innerTextSlice();
+	return t->getPar(cur.par())->getFont(
+		buffer()->params(), cur.pos(),
+		outerFont(t->getPar(cur.par()), t->paragraphs())
+	).language()->encoding();
 }
 
 
@@ -361,22 +371,22 @@ int BufferView::workHeight() const
 
 LyXText * BufferView::text() const
 {
-	return buffer() ? &buffer()->text() : 0;
+	return pimpl_->buffer_ ? &pimpl_->buffer_->text() : 0;
 }
 
 
-void BufferView::setCursor(ParIterator const & par, lyx::pos_type pos)
+void BufferView::setCursor(ParIterator const & par,
+			   lyx::pos_type pos)
 {
 	LCursor & cur = cursor();
 	cur.reset();
-	cur.push(buffer()->inset());
 	ParIterator::PosHolder const & positions = par.positions();
 	int const last = par.size() - 1;
 	for (int i = 0; i < last; ++i)
 		(*positions[i].it)->inset->edit(cur, true);
 	cur.resetAnchor();
-	LyXText * text = par.text(*buffer());
-	text->setCursor(cur, text->parOffset(par.pit()), pos);
+	LyXText * lt = par.text(*buffer());
+	lt->setCursor(cur, lt->parOffset(par.pit()), pos);
 }
 
 

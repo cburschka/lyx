@@ -396,7 +396,7 @@ void InsetTabular::edit(LCursor & cur, bool left)
 	cur.selection() = false;
 	resetPos(cur);
 	cur.bv().fitCursor();
-	cur.push(*this);
+	cur.push(this);
 	cur.idx() = cell;
 }
 
@@ -405,7 +405,7 @@ InsetBase * InsetTabular::editXY(LCursor & cur, int x, int y)
 {
 	//lyxerr << "InsetTabular::editXY: " << this << endl;
 	cur.selection() = false;
-	cur.push(*this);
+	cur.push(this);
 	return setPos(cur, x, y);
 	//int xx = cursorx_ - xo_ + tabular.getBeginningOfTextInCell(actcell);
 }

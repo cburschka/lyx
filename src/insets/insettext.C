@@ -70,18 +70,18 @@ using std::vector;
 
 InsetText::InsetText(BufferParams const & bp)
 	: autoBreakRows_(false), drawFrame_(NEVER),
-	  frame_color_(LColor::insetframe), text_(0)
+	  frame_color_(LColor::insetframe), text_(0, true)
 {
 	paragraphs().push_back(Paragraph());
-	paragraphs().back().layout(bp.getLyXTextClass().defaultLayout());
+	paragraphs().begin()->layout(bp.getLyXTextClass().defaultLayout());
 	if (bp.tracking_changes)
-		paragraphs().back().trackChanges();
+		paragraphs().begin()->trackChanges();
 	init();
 }
 
 
 InsetText::InsetText(InsetText const & in)
-	: UpdatableInset(in), text_(in.text_.bv_owner)
+	: UpdatableInset(in), text_(in.text_.bv_owner, true)
 {
 	// this is ugly...
 	operator=(in);
@@ -94,7 +94,7 @@ void InsetText::operator=(InsetText const & in)
 	autoBreakRows_ = in.autoBreakRows_;
 	drawFrame_ = in.drawFrame_;
 	frame_color_ = in.frame_color_;
-	text_ = LyXText(in.text_.bv_owner);
+	text_ = LyXText(in.text_.bv_owner, true);
 	text_.paragraphs() = in.text_.paragraphs();
 	init();
 }

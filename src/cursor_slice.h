@@ -54,10 +54,10 @@ public:
 	///
 	CursorSlice();
 	///
-	explicit CursorSlice(InsetBase &);
+	explicit CursorSlice(InsetBase *);
 
 	/// the current inset
-	InsetBase & inset() const { return *inset_; }
+	InsetBase * inset() const { return inset_; }
 	/// return the cell this cursor is in
 	idx_type idx() const;
 	/// return the cell this cursor is in

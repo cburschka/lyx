@@ -332,7 +332,7 @@ TeXOnePar(Buffer const & buf,
 	// Is this really needed ? (Dekel)
 	// We do not need to use to change the font for the last paragraph
 	// or for a command.
-	LyXFont const outerfont = outerFont(pit, paragraphs);
+	LyXFont const outerfont(outerFont(pit, paragraphs));
 
 	LyXFont const font =
 		(pit->empty()
