@@ -16,6 +16,7 @@
 #include "insetcommandparams.h"
 #include "render_button.h"
 #include <boost/scoped_ptr.hpp>
+#include <boost/weak_ptr.hpp>
 
 
 class Buffer;
@@ -42,8 +43,6 @@ public:
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
-	///
-	virtual BufferView * view() const;
 
 	/// get the parameters
 	InsetCommandParams const & params(void) const;
@@ -83,6 +82,9 @@ public:
 	void addPreview(lyx::graphics::PreviewLoader &) const;
 
 private:
+	void cache(BufferView *) const;
+	BufferView * view() const;
+
 	/// Slot receiving a signal that the preview is ready to display.
 	void statusChanged() const;
 	/** Slot receiving a signal that the external file has changed
@@ -90,7 +92,6 @@ private:
 	 */
 	void fileChanged() const;
 
-	
 	friend class InsetIncludeMailer;
 
 	/// set the parameters
@@ -111,6 +112,7 @@ private:
 	boost::scoped_ptr<RenderMonitoredPreview> const preview_;
 
 	/// cache
+	mutable boost::weak_ptr<BufferView> view_;
 	mutable bool set_label_;
 	mutable RenderButton button_;
 };

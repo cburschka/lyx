@@ -19,7 +19,6 @@ libinsets_la_SOURCES = \
 	ExternalTemplate.h \
 	ExternalTransforms.C \
 	ExternalTransforms.h \
-	render_base.C \
 	render_base.h \
 	render_button.C \
 	render_button.h \

@@ -15,6 +15,7 @@
 #define INSET_FORMULABASE_H
 
 #include "insets/updatableinset.h"
+#include <boost/weak_ptr.hpp>
 
 
 class Buffer;
@@ -66,9 +67,6 @@ public:
 	///
 	virtual MathAtom & par() = 0;
 	///
-	// And shouldn't this really return a shared_ptr<BufferView> instead?
-	BufferView * view() const;
-
 	///
 	virtual bool searchForward(BufferView *, std::string const &,
 				   bool = true, bool = false);
@@ -101,11 +99,19 @@ private:
 	dispatch_result lfunMouseMotion(FuncRequest const &);
 
 protected:
-	///
-	//mutable boost::weak_ptr<BufferView> view_;
-	mutable BufferView * view_;
+	void cache(BufferView *) const;
+	BufferView * view() const;
 
 protected:
+
+	/** Find the PreviewLoader, add a LaTeX snippet to it and
+	 *  start the loading process.
+	 *
+	 *  Most insets have no interest in this capability, so the method
+	 *  defaults to empty.
+	 */
+	virtual void generatePreview(Buffer const &) const {}
+
 	///
 	void handleFont(BufferView * bv, std::string const & arg, std::string const & font);
 	///
@@ -115,6 +121,9 @@ protected:
 	mutable int xo_;
 	///
 	mutable int yo_;
+private:
+	// Cache
+	mutable boost::weak_ptr<BufferView> view_;
 };
 
 // We don't really mess want around with mathed stuff outside mathed.

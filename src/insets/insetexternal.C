@@ -25,8 +25,10 @@
 #include "latexrunparams.h"
 #include "lyxlex.h"
 #include "lyxrc.h"
+#include "metricsinfo.h"
 
 #include "frontends/lyx_gui.h"
+#include "frontends/LyXView.h"
 
 #include "support/lstrings.h"
 #include "support/lyxlib.h"
@@ -388,9 +390,21 @@ InsetExternal::~InsetExternal()
 }
 
 
+void InsetExternal::cache(BufferView * view) const
+{
+	BOOST_ASSERT(view);
+	view_ = view->owner()->view();
+}
+
+BufferView * InsetExternal::view() const
+{
+	return view_.lock().get();
+}
+
+
 void InsetExternal::statusChanged() const
 {
-	BufferView * const bv = renderer_->view();
+	BufferView * const bv = view();
 	if (bv)
 		bv->updateInset(this);
 }
@@ -445,6 +459,7 @@ void InsetExternal::metrics(MetricsInfo & mi, Dimension & dim) const
 
 void InsetExternal::draw(PainterInfo & pi, int x, int y) const
 {
+	cache(pi.base.bv);
 	renderer_->draw(pi, x, y);
 }
 

@@ -95,10 +95,6 @@ public:
 	/// draw inset and update (xo, yo)-cache
 	virtual void draw(PainterInfo & pi, int x, int y) const = 0;
 
-	/// Methods to cache and retrieve a cached BufferView.
-	virtual void cache(BufferView *) const {}
-	///
-	virtual BufferView * view() const { return 0; }
 	/// request "external features"
 	virtual void validate(LaTeXFeatures &) const {}
 	/// Appends \c list with all labels found within this inset.

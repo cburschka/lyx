@@ -21,6 +21,7 @@
 
 #include <boost/scoped_ptr.hpp>
 #include <boost/signals/trackable.hpp>
+#include <boost/weak_ptr.hpp>
 
 
 /** No two InsetExternalParams variables can have the same temporary file.
@@ -128,6 +129,8 @@ public:
 	void setParams(InsetExternalParams const &, Buffer const &);
 
 private:
+	void cache(BufferView *) const;
+	BufferView * view() const;
 	/** This method is connected to the graphics loader, so we are
 	 *  informed when the image has been loaded.
 	 */
@@ -137,6 +140,9 @@ private:
 	InsetExternalParams params_;
 	/// The thing that actually draws the image on LyX's screen.
 	boost::scoped_ptr<RenderBase> renderer_;
+
+	/// Cached
+	mutable boost::weak_ptr<BufferView> view_;
 };
 
 

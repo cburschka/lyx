@@ -14,9 +14,6 @@
 
 #include "dimension.h"
 
-#include <boost/weak_ptr.hpp>
-
-class BufferView;
 class MetricsInfo;
 class PainterInfo;
 
@@ -32,16 +29,12 @@ public:
 	/// draw inset and update (xo, yo)-cache
 	virtual void draw(PainterInfo & pi, int x, int y) const = 0;
 
-	/// An accessor function to the cached store.
-	BufferView * view() const;
-
 protected:
 	RenderBase() {}
 	RenderBase(RenderBase const &) {}
 	void operator=(RenderBase const &) {}
 
-	/// These are cached variables (are not copied).
-	mutable boost::weak_ptr<BufferView> view_;
+	/// Cached
 	mutable Dimension dim_;
 };
 

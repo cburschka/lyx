@@ -256,10 +256,6 @@ public:
 	virtual std::string fileInsetLabel() const;
 	/// usually the latex name
 	virtual std::string name() const;
-
-protected:
-	/// a dirty hack
-	BufferView * view() const;
 };
 
 std::ostream & operator<<(std::ostream &, MathAtom const &);

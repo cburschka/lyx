@@ -33,12 +33,6 @@ InsetCommand::InsetCommand(InsetCommandParams const & p)
 {}
 
 
-BufferView * InsetCommand::view() const
-{
-	return button_.view();
-}
-
-
 void InsetCommand::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	if (!set_label_) {

@@ -1,3 +1,12 @@
+2003-10-12  Angus Leeming  <leeming@lyx.org>
+
+	* formulabase.[Ch] (cache): added.
+	(view): make protected.
+	(view_): store as a boost::weak_ptr.
+	(generatePreview): added this virtual function. Moved from inset.h.
+
+	* math_inset.[Ch] (view): removed.
+
 2003-10-10  Angus Leeming  <leeming@lyx.org>
 
 	* command_inset.h:trivial changes ButtonRenderer -> RenderButton.

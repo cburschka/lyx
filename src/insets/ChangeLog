@@ -1,3 +1,29 @@
+2003-10-12  Angus Leeming  <leeming@lyx.org>
+
+	* renderbase.h (view, view_): removed.
+	* renderbase.C: removed.
+	* Makefile.am: remove render_base.C. The shortest lived file in history?
+
+	* renderbutton.C (draw):
+	* render_graphic.C (draw): don't cache the BufferView.
+
+	* insetabase.h (cache, view): removed.
+
+	* inset.h (generatePreview) removed.
+
+	* insetcallapsable.[Ch] (cache, view, view_): removed.
+
+	* insetcollapsable.C (draw): don't cache the BufferView.
+
+	* insetcommand.[Ch] (view): removed.
+
+	* insetexternal.[Ch] (cache, view, view_):
+	* insetgraphics.[Ch] (cache, view, view_):
+	* insetinclude.[Ch] (cache, view, view_): added. Cache the BufferView.
+
+	* insetlabel.C: small clean-up. Don't use the BufferView cache, view(),
+	when you have direct access to it. In fact, don't use the cache at all.
+
 2003-10-10  Angus Leeming  <leeming@lyx.org>
 
 	* insetinclude.C (metrics): use preview_->metrics.
@@ -43,7 +69,7 @@
 
 	* insetinclude.[Ch]: mods to PreviewImpl due to the changes to
 	PreviewedInset.
-	
+
 2003-10-09  Angus Leeming  <leeming@lyx.org>
 
 	* insetinclude.C (metrics, draw, restartLoading): pass a buffer arg

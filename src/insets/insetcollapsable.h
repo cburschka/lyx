@@ -20,8 +20,6 @@
 #include "box.h"
 #include "lyxfont.h"
 
-#include <boost/weak_ptr.hpp>
-
 class Painter;
 class LyXText;
 class Paragraph;
@@ -150,11 +148,6 @@ public:
 
 protected:
 	///
-	virtual void cache(BufferView *) const;
-	///
-	virtual BufferView * view() const;
-
-	///
 	void dimension_collapsed(Dimension &) const;
 	///
 	int height_collapsed() const;
@@ -197,8 +190,6 @@ private:
 	bool in_update;
 	///
 	mutable bool first_after_edit;
-	///
-	mutable boost::weak_ptr<BufferView> view_;
 };
 
 

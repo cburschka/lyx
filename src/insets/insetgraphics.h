@@ -18,6 +18,7 @@
 
 #include <boost/scoped_ptr.hpp>
 #include <boost/signals/trackable.hpp>
+#include <boost/weak_ptr.hpp>
 
 
 class Dialogs;
@@ -37,8 +38,6 @@ public:
 	virtual dispatch_result localDispatch(FuncRequest const & cmd);
 	///
 	void metrics(MetricsInfo &, Dimension &) const;
-	///
-	void draw(PainterInfo & pi, int x, int y) const;
 	///
 	EDITABLE editable() const;
 	///
@@ -77,10 +76,15 @@ public:
 
 	/// Get the inset parameters, used by the GUIndependent dialog.
 	InsetGraphicsParams const & params() const;
+	///
+	void draw(PainterInfo & pi, int x, int y) const;
 
 private:
 	///
 	friend class InsetGraphicsMailer;
+
+	void cache(BufferView *) const;
+	BufferView * view() const;
 
 	/** This method is connected to the graphics loader, so we are
 	 *  informed when the image has been loaded.
@@ -105,6 +109,9 @@ private:
 
 	/// The thing that actually draws the image on LyX's screen.
 	boost::scoped_ptr<RenderGraphic> const graphic_;
+
+	/// Cached
+	mutable boost::weak_ptr<BufferView> view_;
 };
 
 

@@ -15,6 +15,8 @@
 #include "BufferView.h"
 #include "funcrequest.h"
 
+#include "frontends/LyXView.h"
+
 #include "support/lstrings.h"
 
 #include "support/std_ostream.h"
@@ -36,18 +38,33 @@ InsetLabel::~InsetLabel()
 }
 
 
+std::auto_ptr<InsetBase> InsetLabel::clone() const
+{
+	return std::auto_ptr<InsetBase>(new InsetLabel(params()));
+}
+
+
 void InsetLabel::getLabelList(Buffer const &, std::vector<string> & list) const
 {
 	list.push_back(getContents());
 }
 
 
+string const InsetLabel::getScreenLabel(Buffer const &) const
+{
+	return getContents();
+}
+
+
 dispatch_result InsetLabel::localDispatch(FuncRequest const & cmd)
 {
+	BOOST_ASSERT(cmd.view());
+	BufferView * const bv = cmd.view();
+
 	switch (cmd.action) {
 
 	case LFUN_INSET_EDIT:
-		InsetCommandMailer("label", *this).showDialog(cmd.view());
+		InsetCommandMailer("label", *this).showDialog(bv);
 		return DISPATCHED;
 		break;
 
@@ -58,13 +75,13 @@ dispatch_result InsetLabel::localDispatch(FuncRequest const & cmd)
 			return UNDISPATCHED;
 
 		bool clean = true;
-		if (view() && p.getContents() != params().getContents()) {
-			clean = view()->ChangeRefsIfUnique(params().getContents(),
-							   p.getContents());
+		if (bv && p.getContents() != params().getContents()) {
+			clean = bv->ChangeRefsIfUnique(params().getContents(),
+						       p.getContents());
 		}
 
 		setParams(p);
-		cmd.view()->updateInset(this);
+		bv->updateInset(this);
 		return DISPATCHED;
 	}
 

@@ -75,7 +75,7 @@ bool openNewInset(BufferView * bv, UpdatableInset * new_inset)
 
 
 InsetFormulaBase::InsetFormulaBase()
-	: view_(0), xo_(0), yo_(0)
+	: xo_(0), yo_(0)
 {
 	// This is needed as long the math parser is not re-entrant
 	initMath();
@@ -139,9 +139,15 @@ void InsetFormulaBase::handleFont2(BufferView * bv, string const & arg)
 
 
 
+void InsetFormulaBase::cache(BufferView * view) const
+{
+	BOOST_ASSERT(view);
+	view_ = view->owner()->view();
+}
+
 BufferView * InsetFormulaBase::view() const
 {
-	return view_;
+	return view_.lock().get();
 }
 
 

@@ -14,13 +14,11 @@
 
 #include "insets/inset.h"
 
-#include "BufferView.h"
 #include "gettext.h"
 #include "LColor.h"
 #include "metricsinfo.h"
 
 #include "frontends/font_metrics.h"
-#include "frontends/LyXView.h"
 #include "frontends/Painter.h"
 
 #include "graphics/GraphicsImage.h"
@@ -156,9 +154,6 @@ void RenderGraphic::metrics(MetricsInfo & mi, Dimension & dim) const
 
 void RenderGraphic::draw(PainterInfo & pi, int x, int y) const
 {
-	BOOST_ASSERT(pi.base.bv);
-	view_ = pi.base.bv->owner()->view();
-
 	if (params_.display != lyx::graphics::NoDisplay &&
 	    loader_.status() == lyx::graphics::WaitingToLoad)
 		loader_.startLoading();

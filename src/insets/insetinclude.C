@@ -25,6 +25,7 @@
 #include "lyxlex.h"
 #include "metricsinfo.h"
 
+#include "frontends/LyXView.h"
 #include "frontends/Painter.h"
 
 #include "graphics/PreviewImage.h"
@@ -557,9 +558,15 @@ void InsetInclude::draw(PainterInfo & pi, int x, int y) const
 }
 
 
+void InsetInclude::cache(BufferView * view) const
+{
+	BOOST_ASSERT(view);
+	view_ = view->owner()->view();
+}
+
 BufferView * InsetInclude::view() const
 {
-	return button_.view();
+	return view_.lock().get();
 }
 
 

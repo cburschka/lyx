@@ -14,6 +14,7 @@
 
 
 #include "insetcommand.h"
+#include <boost/weak_ptr.hpp>
 
 class InsetLabel : public InsetCommand {
 public:
@@ -22,13 +23,11 @@ public:
 	///
 	~InsetLabel();
 	///
-	virtual std::auto_ptr<InsetBase> clone() const {
-		return std::auto_ptr<InsetBase>(new InsetLabel(params()));
-	}
+	std::auto_ptr<InsetBase> clone() const;
 	///
 	virtual dispatch_result localDispatch(FuncRequest const & cmd);
 	///
-	std::string const getScreenLabel(Buffer const &) const { return getContents(); }
+	std::string const getScreenLabel(Buffer const &) const;
 	///
 	EDITABLE editable() const { return IS_EDITABLE; }
 	///

@@ -12,12 +12,10 @@
 
 #include "render_button.h"
 
-#include "BufferView.h"
 #include "LColor.h"
 #include "metricsinfo.h"
 
 #include "frontends/font_metrics.h"
-#include "frontends/LyXView.h"
 #include "frontends/Painter.h"
 
 using std::string;
@@ -57,9 +55,6 @@ void RenderButton::metrics(MetricsInfo &, Dimension & dim) const
 
 void RenderButton::draw(PainterInfo & pi, int x, int y) const
 {
-	BOOST_ASSERT(pi.base.bv);
-	view_ = pi.base.bv->owner()->view();
-
 	// Draw it as a box with the LaTeX text
 	LyXFont font(LyXFont::ALL_SANE);
 	font.setColor(LColor::command);

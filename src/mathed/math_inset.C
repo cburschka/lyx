@@ -12,22 +12,13 @@
 #include <config.h>
 
 #include "math_inset.h"
+#include "math_data.h"
 #include "math_mathmlstream.h"
-#include "math_cursor.h"
 #include "debug.h"
-
-#include "formulabase.h"
-
 
 using std::string;
 using std::ostream;
 using std::endl;
-
-
-BufferView * MathInset::view() const
-{
-	return mathcursor ? mathcursor->formula()->view() : 0;
-}
 
 
 MathInset::size_type MathInset::nargs() const

@@ -180,9 +180,7 @@ void InsetFormula::read(Buffer const &, LyXLex & lex)
 
 void InsetFormula::draw(PainterInfo & pi, int x, int y) const
 {
-	BOOST_ASSERT(pi.base.bv);
-	BufferView * bv = pi.base.bv;
-	cache(bv);
+	cache(pi.base.bv);
 
 	// The previews are drawn only when we're not editing the inset.
 	bool const editing_inset = mathcursor && mathcursor->formula() == this;
@@ -197,7 +195,7 @@ void InsetFormula::draw(PainterInfo & pi, int x, int y) const
 		// one pixel gap in front
 		preview_->draw(pi, x + 1, y);
 	} else {
-		PainterInfo p(bv);
+		PainterInfo p(pi.base.bv);
 		p.base.style = LM_ST_TEXT;
 		p.base.font  = pi.base.font;
 		p.base.font.setColor(LColor::math);
@@ -248,9 +246,6 @@ bool InsetFormula::insetAllowed(InsetOld::Code code) const
 
 void InsetFormula::metrics(MetricsInfo & m, Dimension & dim) const
 {
-	BOOST_ASSERT(m.base.bv);
-	view_ = m.base.bv;
-
 	bool const editing_inset = mathcursor && mathcursor->formula() == this;
 	bool const use_preview = !editing_inset && preview_->previewReady();
 

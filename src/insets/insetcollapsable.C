@@ -138,9 +138,6 @@ void InsetCollapsable::draw_collapsed(PainterInfo & pi, int x, int y) const
 
 void InsetCollapsable::draw(PainterInfo & pi, int x, int y, bool inlined) const
 {
-	BOOST_ASSERT(pi.base.bv);
-	cache(pi.base.bv);
-
 	Dimension dim_collapsed;
 	dimension_collapsed(dim_collapsed);
 
@@ -561,16 +558,4 @@ InsetCollapsable::selectNextWordToSpellcheck(BufferView * bv, float & value) con
 void InsetCollapsable::addPreview(PreviewLoader & loader) const
 {
 	inset.addPreview(loader);
-}
-
-
-void InsetCollapsable::cache(BufferView * bv) const
-{
-	view_ = bv->owner()->view();
-}
-
-
-BufferView * InsetCollapsable::view() const
-{
-	return view_.lock().get();
 }

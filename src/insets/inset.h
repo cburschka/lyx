@@ -300,15 +300,6 @@ public:
 	 *  defaults to empty.
 	 */
 	virtual void addPreview(lyx::graphics::PreviewLoader &) const {}
-
-	/** Find the PreviewLoader, add a LaTeX snippet to it and
-	 *  start the loading process.
-	 *
-	 *  Most insets have no interest in this capability, so the method
-	 *  defaults to empty.
-	 */
-	virtual void generatePreview(Buffer const &) const {}
-
 protected:
 	///
 	mutable int top_x;

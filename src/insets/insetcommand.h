@@ -80,8 +80,6 @@ protected:
 	void setOptions(std::string const & o) { p_.setOptions(o); }
 	///
 	void setParams(InsetCommandParams const &);
-	///
-	virtual BufferView * view() const;
 	/// This should provide the text for the button
 	virtual std::string const getScreenLabel(Buffer const &) const = 0;
 
