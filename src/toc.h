@@ -39,17 +39,17 @@ namespace toc
 
 ///
 struct TocItem {
-	TocItem(Paragraph const * p, int d, string const & s)
-		: par(p), depth(d), str(s) {}
+	TocItem(int par_id, int d, string const & s)
+		: id_(par_id), depth(d), str(s) {}
 	///
 	string const asString() const;
 	/// set cursor in LyXView to this TocItem
 	void goTo(LyXView & lv_) const;
 	/// the action corresponding to the goTo above
 	int action() const;
-	///
-	Paragraph const * par;
-	///
+	/// Paragraph ID containing this item
+	int id_;
+	/// nesting depth
 	int depth;
 	///
 	string str;
@@ -73,21 +73,18 @@ void asciiTocList(string const &, Buffer const *, std::ostream &);
     by ControlToc::getContents() */
 string const getType(string const & cmdName);
 
-///
 inline
 bool operator==(TocItem const & a, TocItem const & b)
 {
-	return a.par == b.par && a.str == b.str;
+	return a.id_ == b.id_ && a.str == b.str;
 	// No need to compare depth.
 }
 
 
-///
 inline
 bool operator!=(TocItem const & a, TocItem const & b)
 {
 	return !(a == b);
-	// No need to compare depth.
 }
 
 

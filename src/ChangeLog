@@ -1,3 +1,9 @@
+2003-03-19  John Levon  <levon@movementarian.org>
+
+	* toc.h:
+	* toc.C: store a par id not Paragraph * to avoid
+	TOC dialog crash on deleted par
+
 2003-03-19  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* ispell.C: add an include for <sys/time.h>

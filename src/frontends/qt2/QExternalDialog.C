@@ -34,7 +34,7 @@ QExternalDialog::QExternalDialog(QExternal * form)
 {
 	connect(okPB, SIGNAL(clicked()),
 		form, SLOT(slotOK()));
-	connect(okPB, SIGNAL(clicked()),
+	connect(applyPB, SIGNAL(clicked()),
 		form, SLOT(slotApply()));
 	connect(closePB, SIGNAL(clicked()),
 		form, SLOT(slotClose()));
