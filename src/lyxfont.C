@@ -279,8 +279,6 @@ void LyXFont::update(LyXFont const & newfont,
 			incSize();
 		else if (newfont.size() == DECREASE_SIZE)
 			decSize();
-		else if (newfont.size() == size() && toggleall)
-			setSize(INHERIT_SIZE); // toggle 'back'
 		else
 			setSize(newfont.size());
 	}
