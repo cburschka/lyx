@@ -1,3 +1,9 @@
+2002-11-20  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* QLPopupMenu.C (getLabel): show labels for menu entries
+
+	* qlkey.h (string_to_qkey): add support for KP_xxx keysyms
+
 2002-11-20  John Levon  <levon@movementarian.org>
 
 	* ui/QDelimiterDialog.ui: geometry fix

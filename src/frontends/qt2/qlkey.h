@@ -57,7 +57,9 @@ int string_to_qkey(string const & str)
 	if (str == "Return") return Qt::Key_Return;
 	if (str == "KP_Enter") return Qt::Key_Enter; // correct ?
 	if (str == "Insert") return Qt::Key_Insert;
+	if (str == "KP_Insert") return Qt::Key_Insert;
 	if (str == "Delete") return Qt::Key_Delete;
+	if (str == "KP_Delete") return Qt::Key_Delete;
 	if (str == "Pause") return Qt::Key_Pause;
 	if (str == "Print") return Qt::Key_Print;
 	if (str == "Sys_Req") return Qt::Key_SysReq;
@@ -69,6 +71,14 @@ int string_to_qkey(string const & str)
 	if (str == "Down") return Qt::Key_Down;
 	if (str == "Prior") return Qt::Key_Prior;
 	if (str == "Next") return Qt::Key_Next;
+	if (str == "KP_Home") return Qt::Key_Home;
+	if (str == "KP_End") return Qt::Key_End;
+	if (str == "KP_Left") return Qt::Key_Left;
+	if (str == "KP_Up") return Qt::Key_Up;
+	if (str == "KP_Right") return Qt::Key_Right;
+	if (str == "KP_Down") return Qt::Key_Down;
+	if (str == "KP_Prior") return Qt::Key_Prior;
+	if (str == "KP_Next") return Qt::Key_Next;
 	if (str == "Shift_L") return Qt::Key_Shift;
 	if (str == "Control_L") return Qt::Key_Control;
 	if (str == "Alt_L") return Qt::Key_Meta; // correct ?
