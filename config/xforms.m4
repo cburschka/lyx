@@ -69,7 +69,8 @@ AC_DEFUN(LYX_USE_XFORMS_IMAGE_LOADER,
 save_LIBS=$LIBS
 LIBS="$XFORMS_LIB $LIBS"
 lyx_use_xforms_image_loader=no
-AC_LANG_PUSH(C)
+AC_LANG_SAVE
+AC_LANG(C)
 
 AC_CHECK_LIB(jpeg, jpeg_read_header,
   [XFORMS_IMAGE_LIB=-ljpeg
@@ -94,5 +95,5 @@ fi
 ### very simple one in graphics/GraphicsImageXPM.[Ch]
 AM_CONDITIONAL(USE_BASIC_IMAGE_LOADER,
 	       test $lyx_use_xforms_image_loader = no)
-AC_LANG_POP(C)
+AC_LANG_RESTORE
 LIBS=$save_LIBS])
