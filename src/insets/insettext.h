@@ -235,13 +235,9 @@ private:
 	void lfunMouseMotion(FuncRequest const &);
 
 	///
-	RESULT moveRight(BufferView *,
-					 bool activate_inset = true,
-					 bool selecting = false);
+	RESULT moveRight(BufferView *);
 	///
-	RESULT moveLeft(BufferView *,
-					bool activate_inset = true,
-					bool selecting = false);
+	RESULT moveLeft(BufferView *);
 	///
 	RESULT moveRightIntern(BufferView *, bool front,
 					       bool activate_inset = true,

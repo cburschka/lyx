@@ -2079,7 +2079,6 @@ bool LyXText::deleteEmptyParagraphMechanism(LyXCursor const & old_cursor)
 			fixCursorAfterDelete(selection.cursor, old_cursor);
 			fixCursorAfterDelete(selection.start, old_cursor);
 			fixCursorAfterDelete(selection.end, old_cursor);
-			fixCursorAfterDelete(last_sel_cursor, old_cursor);
 			return false;
 		}
 	}

@@ -34,11 +34,6 @@ InsetLabel::InsetLabel(InsetCommandParams const & p)
 {}
 
 
-// InsetLabel::InsetLabel(InsetCommandParams const & p, bool)
-//	: InsetCommand(p, false)
-// {}
-
-
 InsetLabel::~InsetLabel()
 {
 	InsetCommandMailer("label", *this).hideDialog();
@@ -53,8 +48,6 @@ void InsetLabel::getLabelList(std::vector<string> & list) const
 
 dispatch_result InsetLabel::localDispatch(FuncRequest const & cmd)
 {
-	InsetOld::RESULT result = UNDISPATCHED;
-
 	switch (cmd.action) {
 
 	case LFUN_INSET_EDIT:

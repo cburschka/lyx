@@ -1373,23 +1373,21 @@ void InsetText::fitInsetCursor(BufferView * bv) const
 }
 
 
-InsetOld::RESULT
-InsetText::moveRight(BufferView * bv, bool activate_inset, bool selecting)
+InsetOld::RESULT InsetText::moveRight(BufferView * bv)
 {
 	if (text_.cursor.par()->isRightToLeftPar(bv->buffer()->params))
-		return moveLeftIntern(bv, false, activate_inset, selecting);
+		return moveLeftIntern(bv, false, true, false);
 	else
-		return moveRightIntern(bv, true, activate_inset, selecting);
+		return moveRightIntern(bv, true, true, false);
 }
 
 
-InsetOld::RESULT
-InsetText::moveLeft(BufferView * bv, bool activate_inset, bool selecting)
+InsetOld::RESULT InsetText::moveLeft(BufferView * bv)
 {
 	if (text_.cursor.par()->isRightToLeftPar(bv->buffer()->params))
-		return moveRightIntern(bv, true, activate_inset, selecting);
+		return moveRightIntern(bv, true, true, false);
 	else
-		return moveLeftIntern(bv, false, activate_inset, selecting);
+		return moveLeftIntern(bv, false, true, false);
 }
 
 

@@ -2,22 +2,16 @@
 
 #include "textcursor.h"
 
-bool TextCursor::setSelection()
+void TextCursor::setSelection()
 {
-	bool const lsel = selection.set();
-
 	if (!selection.set()) {
-		last_sel_cursor = selection.cursor;
 		selection.start = selection.cursor;
 		selection.end = selection.cursor;
 	}
 
 	selection.set(true);
 
-	last_sel_cursor = cursor;
-
 	// and now the whole selection
-
 	if (selection.cursor.par() == cursor.par())
 		if (selection.cursor.pos() < cursor.pos()) {
 			selection.end = cursor;
@@ -40,9 +34,9 @@ bool TextCursor::setSelection()
 	// a selection with no contents is not a selection
 	if (selection.start.par() == selection.end.par() &&
 	    selection.start.pos() == selection.end.pos())
+	{
 		selection.set(false);
-
-	return lsel;
+	}
 }
 
 
@@ -50,7 +44,9 @@ void TextCursor::clearSelection()
 {
 	selection.set(false);
 	selection.mark(false);
-	last_sel_cursor = selection.end = selection.start = selection.cursor = cursor;
+	selection.end    = cursor;
+	selection.start  = cursor;
+	selection.cursor = cursor;
 }
 
 

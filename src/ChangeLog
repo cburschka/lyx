@@ -7,6 +7,8 @@
 	* text2.C:
 	* text3.C: rip out "deep update"
 
+	* textcursor.[Ch] (last_sel_cursor): remove unused member
+
 2003-08-04  André Pönitz  <poenitz@gmx.net>
 
 	* BufferView.[Ch]:

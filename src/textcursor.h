@@ -59,8 +59,8 @@ private:
 };
 
 struct TextCursor {
-	/// returns true if selection was set previously
-	bool setSelection();
+	///
+	void setSelection();
 	///
 	void clearSelection();
 	///
@@ -72,9 +72,6 @@ struct TextCursor {
 	Selection selection;
 	// this is used to handle XSelection events in the right manner
 	Selection xsel_cache;
-
-	/// needed for the toggling (cursor position on last selection made)
-	LyXCursor last_sel_cursor;
 };
 
 #endif
