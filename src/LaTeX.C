@@ -386,7 +386,7 @@ bool LaTeX::runBibTeX(string const & file, DepTable & dep)
 			using_bibtex = true;
 			LRegex::SubMatches const & sub = reg1.exec(token);
 			string data = LSubstring(token, sub[1].first,
-						 sub[2].second);
+						 sub[1].second);
 			// data is now all the bib files separated by ','
 			// get them one by one and pass them to the helper
 			string::size_type b;

@@ -1,3 +1,7 @@
+1999-12-06  Allan Rae  <rae@lyx.org>
+
+	* src/LaTeX.C (runBibTeX): fix typo in accessing submatch pair.
+
 1999-12-07  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/support/lyxstring.C: added a lot of inline for no good
