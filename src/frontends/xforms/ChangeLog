@@ -1,14 +1,18 @@
+2002-05-29  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* Dialogs.C (Dialogs): simplify creation of dialog objects a bit.
+
 2002-05-28  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* FormDocument.C (input): set preamble too when saving default
-	template. 
+	template.
 
 2002-05-26  John Levon  <moz@compsoc.man.ac.uk>
 
 	* Makefile.am:
 	* XWorkArea.h:
 	* XWorkArea.C: moved here
- 
+
 2002-05-24  John Levon  <moz@compsoc.man.ac.uk>
 
 	* ColorHandler.h:
@@ -21,14 +25,14 @@
 
 	* Makefile.am:
 	* xfont_metrics.C: changes from above
- 
+
 2002-05-23  John Levon  <moz@compsoc.man.ac.uk>
 
 	* Makefile.am:
 	* XPainter.C:
 	* xfont_metrics.h:
 	* xfont_metrics.C: moved font metrics code
- 
+
 2002-05-24  Juergen Vigna  <jug@sad.it>
 
 	* FormMathsBitmap.C: include local includes first (selfcontainment)
@@ -40,7 +44,7 @@
 	* lyxlookup.h:
 	* lyxlookup.C:
 	* Makefile.am: move here
- 
+
 2002-05-23  John Levon  <moz@compsoc.man.ac.uk>
 
 	* DropDown.h:
@@ -61,13 +65,13 @@
 	* XFormsView.h:
 	* XFormsView.C: LyXView is now in frontends/,
 	XFormsView moved to here
-	 
+
 2002-05-23  John Levon  <moz@compsoc.man.ac.uk>
 
 	* Makefile.am:
 	* XPainter.h:
 	* XPainter.C: move Painter here
- 
+
 2002-05-22  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* Menubar_pimpl.C: add scoped_ptr.hpp

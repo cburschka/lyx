@@ -92,36 +92,64 @@ bool Dialogs::tooltipsEnabled()
 
 Dialogs::Dialogs(LyXView * lv)
 {
-	add(new GUIAboutlyx<FormAboutlyx, xformsBC>(*lv, *this));
-	add(new GUIBibitem<FormBibitem, xformsBC>(*lv, *this));
-	add(new GUIBibtex<FormBibtex, xformsBC>(*lv, *this));
-	add(new GUICharacter<FormCharacter, xformsBC>(*lv, *this));
-	add(new GUICitation<FormCitation, xformsBC>(*lv, *this));
-	add(new GUIError<FormError, xformsBC>(*lv, *this));
-	add(new GUIERT<FormERT, xformsBC>(*lv, *this));
-	add(new GUIExternal<FormExternal, xformsBC>(*lv, *this));
-	add(new GUIForks<FormForks, xformsBC>(*lv, *this));
-	add(new GUIGraphics<FormGraphics, xformsBC>(*lv, *this));
-	add(new GUIInclude<FormInclude, xformsBC>(*lv, *this));
-	add(new GUIIndex<FormIndex, xformsBC>(*lv, *this));
-	add(new GUILog<FormLog, xformsBC>(*lv, *this));
-	add(new GUIMinipage<FormMinipage, xformsBC>(*lv, *this));
-	add(new GUIFloat<FormFloat, xformsBC>(*lv, *this));
-	add(new GUIPreamble<FormPreamble, xformsBC>(*lv, *this));
-	add(new GUIPrint<FormPrint, xformsBC>(*lv, *this));
-	add(new GUIRef<FormRef, xformsBC>(*lv, *this));
-	add(new GUISearch<FormSearch, xformsBC>(*lv, *this));
-	add(new GUISendto<FormSendto, xformsBC>(*lv, *this));
-	add(new GUIShowFile<FormShowFile, xformsBC>(*lv, *this));
-	add(new GUISpellchecker<FormSpellchecker, xformsBC>(*lv, *this));
-	add(new GUITabularCreate<FormTabularCreate, xformsBC>(*lv, *this));
+	add(new GUI<ControlAboutlyx, FormAboutlyx,
+		    OkCancelPolicy, xformsBC>(*lv, *this));
+	add(new GUI<ControlBibitem, FormBibitem,
+		    OkCancelReadOnlyPolicy, xformsBC>(*lv, *this));
+	add(new GUI<ControlBibtex, FormBibtex,
+		    OkCancelReadOnlyPolicy, xformsBC>(*lv, *this));
+	add(new GUI<ControlCharacter, FormCharacter,
+		    OkApplyCancelReadOnlyPolicy, xformsBC>(*lv, *this));
+	add(new GUI<ControlCitation, FormCitation,
+		    NoRepeatedApplyReadOnlyPolicy, xformsBC>(*lv, *this));
+	add(new GUI<ControlError, FormError,
+		    OkCancelPolicy, xformsBC>(*lv, *this));
+	add(new GUI<ControlERT, FormERT,
+		    NoRepeatedApplyReadOnlyPolicy, xformsBC>(*lv, *this));
+	add(new GUI<ControlExternal, FormExternal,
+		    OkApplyCancelReadOnlyPolicy, xformsBC>(*lv, *this));
+	add(new GUI<ControlForks, FormForks,
+		    OkApplyCancelPolicy, xformsBC>(*lv, *this));
+	add(new GUI<ControlGraphics, FormGraphics,
+		    NoRepeatedApplyReadOnlyPolicy, xformsBC>(*lv, *this));
+	add(new GUI<ControlInclude, FormInclude,
+		    OkCancelReadOnlyPolicy, xformsBC>(*lv, *this));
+	add(new GUI<ControlIndex, FormIndex,
+		    NoRepeatedApplyReadOnlyPolicy, xformsBC>(*lv, *this));
+	add(new GUI<ControlLog, FormLog,
+		    OkCancelPolicy, xformsBC>(*lv, *this));
+	add(new GUI<ControlMinipage, FormMinipage,
+		    NoRepeatedApplyReadOnlyPolicy, xformsBC>(*lv, *this));
+	add(new GUI<ControlFloat, FormFloat,
+		    NoRepeatedApplyReadOnlyPolicy, xformsBC>(*lv, *this));
+	add(new GUI<ControlPreamble, FormPreamble,
+		    NoRepeatedApplyReadOnlyPolicy, xformsBC>(*lv, *this));
+	add(new GUI<ControlPrint, FormPrint,
+		    OkApplyCancelPolicy, xformsBC>(*lv, *this));
+	add(new GUI<ControlRef, FormRef,
+		    NoRepeatedApplyReadOnlyPolicy, xformsBC>(*lv, *this));
+	add(new GUI<ControlSearch, FormSearch,
+		    NoRepeatedApplyReadOnlyPolicy, xformsBC>(*lv, *this));
+	add(new GUI<ControlSendto, FormSendto,
+		    OkApplyCancelPolicy, xformsBC>(*lv, *this));
+	add(new GUI<ControlShowFile, FormShowFile,
+		    OkCancelPolicy, xformsBC>(*lv, *this));
+	add(new GUI<ControlSpellchecker, FormSpellchecker,
+		    NoRepeatedApplyReadOnlyPolicy, xformsBC>(*lv, *this));
+	add(new GUI<ControlTabularCreate, FormTabularCreate,
+		    OkApplyCancelReadOnlyPolicy, xformsBC>(*lv, *this));
 #ifdef HAVE_LIBAIKSAURUS
-	add(new GUIThesaurus<FormThesaurus, xformsBC>(*lv, *this));
+	add(new GUI<ControlThesaurus, FormThesaurus,
+		    OkApplyCancelReadOnlyPolicy, xformsBC>(*lv, *this));
 #endif
-	add(new GUITexinfo<FormTexinfo, xformsBC>(*lv, *this));
-	add(new GUIToc<FormToc, xformsBC>(*lv, *this));
-	add(new GUIUrl<FormUrl, xformsBC>(*lv, *this));
-	add(new GUIVCLog<FormVCLog, xformsBC>(*lv, *this));
+	add(new GUI<ControlTexinfo, FormTexinfo,
+		    OkCancelPolicy, xformsBC>(*lv, *this));
+	add(new GUI<ControlToc, FormToc,
+		    OkCancelPolicy, xformsBC>(*lv, *this));
+	add(new GUI<ControlUrl, FormUrl,
+		    NoRepeatedApplyReadOnlyPolicy, xformsBC>(*lv, *this));
+	add(new GUI<ControlVCLog, FormVCLog,
+		    OkCancelPolicy, xformsBC>(*lv, *this));
 
 	add(new FormDocument(lv, this));
 	add(new FormMathsPanel(lv, this));
