@@ -72,8 +72,8 @@ void RadioButtonGroup::set(FL_OBJECT * ob) const
 }
 
 
-template < typename T >
-struct is_set_button {
+template <typename T>
+struct is_set_button : public std::unary_function<T, bool> {
 	bool operator() (T const & item) const
 	{
 		return fl_get_button((item).first);

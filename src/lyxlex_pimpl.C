@@ -35,10 +35,10 @@ using std::ios;
 using std::istream;
 using std::ostream;
 
-// namespace {
-struct compare_tags {
+namespace {
+
+struct compare_tags : public std::binary_function<keyword_item, keyword_item, int> {
 	// used by lower_bound, sort and sorted
-	inline
 	int operator()(keyword_item const & a, keyword_item const & b) const {
 		// we use the ascii version, because in turkish, 'i'
 		// is not the lowercase version of 'I', and thus
@@ -46,7 +46,8 @@ struct compare_tags {
 		return compare_ascii_no_case(a.tag, b.tag) < 0;
 	}
 };
-// } // end of anon namespace
+
+} // end of anon namespace
 
 
 LyXLex::Pimpl::Pimpl(keyword_item * tab, int num)

@@ -290,10 +290,10 @@ bool prefixIs(string const & a, string const & pre)
 	if (prelen > alen || a.empty())
 		return false;
 	else {
-#if !defined(USE_INCLUDED_STRING) && !defined(STD_STRING_IS_GOOD)
-		return ::strncmp(a.c_str(), pre.c_str(), prelen) == 0;
-#else
+#if defined(STD_STRING_IS_GOOD)
 		return a.compare(0, prelen, pre) == 0;
+#else
+		return ::strncmp(a.c_str(), pre.c_str(), prelen) == 0;
 #endif
 	}
 }

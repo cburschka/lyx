@@ -1,4 +1,36 @@
+2004-01-31  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
+	* lyxtextclasslist.C (less_textclass_avail_desc): inherit from
+	std::binary_function 
+
+	* lyxtextclass.C (compare_name): rename to...
+	(LayoutNamesEqual): ...this
+
+	* lyxlex_pimpl.C (compare_tags): inherit from
+	std::binary_function, put back into anon namespace
+
+	* lyxfind.C (MatchString): inherig from std::binary_function
+	(findChange): use empty() istead of !size()
+
+	* format.C (FormatNamesEqual): new functor
+	(getFormat): use it
+	(getNumber): use it
+	(add): use it
+	(erase): use it
+	(setViewer): use it
+
+	* converter.C (compare_Converter): rename to...
+	(ConverterEqual): ...this, and fixup a bit.
+	(getConverter): use it, and make function const
+	(getNumber): use it, and make function const
+	(add): use it
+	(erase): use it: 
+
+	* bufferlist.C: add using boost::bind
+
+	* MenuBackend.C (MenuNamesEqual): new functor
+	(hasMenu): use it, and make function const
+	(hasSubmenu): use nested bind to get rid of compare_memfun.
 
 2004-01-30  André Pönitz  <poenitz@gmx.net>
 

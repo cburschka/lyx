@@ -503,8 +503,7 @@ InsetTabular::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 	}
 
 	if (!tablemode) {
-
-		int cell = cur.idx();
+		int const cell = cur.idx();
 		lyxerr << "# InsetTabular::dispatch: A " << cur << endl;
 		result = tabular.getCellInset(cell).dispatch(cur, cmd);
 

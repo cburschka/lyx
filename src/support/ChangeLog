@@ -1,3 +1,11 @@
+2004-01-31  Lars Gullik Bjonnes  <larsbj@gullik.net>
+
+	* lyxalgo.h (eliminate_duplicates): reimplement with sort and the
+	unique-erase idom.
+
+	* lstrings.h (contains_functor): inherit from
+	std::binary_function, remove typedefs. 
+
 2004-01-28  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
 	* globbing.C: add using statement for std::distance, remove std::

@@ -40,9 +40,10 @@
 #include "frontends/LyXView.h"
 
 #include "support/filetools.h"
-#include "support/lyxfunctional.h"
 #include "support/lstrings.h"
 #include "support/tostr.h"
+
+#include <boost/bind.hpp>
 
 #include <algorithm>
 
@@ -51,8 +52,11 @@ using lyx::support::contains;
 using lyx::support::MakeDisplayPath;
 using lyx::support::token;
 
+using boost::bind;
+
 using std::auto_ptr;
 using std::endl;
+using std::equal_to;
 using std::find_if;
 using std::max;
 using std::sort;
@@ -62,6 +66,23 @@ using std::vector;
 
 extern BufferList bufferlist;
 extern boost::scoped_ptr<kb_keymap> toplevel_keymap;
+
+namespace {
+
+class MenuNamesEqual : public std::unary_function<Menu, bool> {
+public:
+	MenuNamesEqual(string const & name)
+		: name_(name) {}
+	bool operator()(Menu const & menu) const
+	{
+		return menu.name() == name_;
+	}
+private:
+	string name_;
+};
+
+} // namespace anon
+
 
 // This is the global menu definition
 MenuBackend menubackend;
@@ -539,7 +560,7 @@ void expandCharStyleInsert(Menu & tomenu, LyXView const * view)
 			   view);
 		return;
 	}
-	CharStyles & charstyles = 
+	CharStyles & charstyles =
 		view->buffer()->params().getLyXTextClass().charstyles();
 	CharStyles::iterator cit = charstyles.begin();
 	CharStyles::iterator end = charstyles.end();
@@ -769,9 +790,22 @@ void MenuBackend::expand(Menu const & frommenu, Menu & tomenu,
 
 bool Menu::hasSubmenu(string const & name) const
 {
+#if 1
 	return find_if(begin(), end(),
-		       lyx::compare_memfun(&MenuItem::submenuname,
-					   name)) != end();
+		       bind(std::equal_to<string>(),
+			    bind(&MenuItem::submenuname, _1),
+			    name)) != end();
+#else
+	// I would have prefered this, but I am not sure if it
+	// makes a difference. (Lgb)
+	return find_if(
+		make_transform_iterator(begin(),
+					bind(&MenuItem::submenuname, _1)),
+		make_transform_iterator(end(),
+					bind(&MenuItem::submenuname, _1)),
+		name
+		).base() != end();
+#endif
 }
 
 
@@ -840,15 +874,13 @@ void MenuBackend::add(Menu const & menu)
 
 bool MenuBackend::hasMenu(string const & name) const
 {
-	return find_if(begin(), end(),
-		       lyx::compare_memfun(&Menu::name, name)) != end();
+	return find_if(begin(), end(), MenuNamesEqual(name)) != end();
 }
 
 
 Menu const & MenuBackend::getMenu(string const & name) const
 {
-	const_iterator cit = find_if(begin(), end(),
-				     lyx::compare_memfun(&Menu::name, name));
+	const_iterator cit = find_if(begin(), end(), MenuNamesEqual(name));
 	if (cit == end())
 		lyxerr << "No submenu named " << name << endl;
 	BOOST_ASSERT(cit != end());
@@ -858,10 +890,10 @@ Menu const & MenuBackend::getMenu(string const & name) const
 
 Menu & MenuBackend::getMenu(string const & name)
 {
-	MenuList::iterator it =
-		find_if(menulist_.begin(), menulist_.end(),
-			lyx::compare_memfun(&Menu::name, name));
-	BOOST_ASSERT(it != menulist_.end());
+	iterator it = find_if(begin(), end(), MenuNamesEqual(name));
+	if (it == end())
+		lyxerr << "No submenu named " << name << endl;
+	BOOST_ASSERT(it != end());
 	return (*it);
 }
 

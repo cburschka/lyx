@@ -272,14 +272,14 @@ string const escape_special_chars(string const & expr)
 
 // A functor for use with std::find_if, used to ascertain whether a
 // data entry matches the required regex_
-struct RegexMatch
+struct RegexMatch : public std::unary_function<string, bool>
 {
 	// re and icase are used to construct an instance of boost::RegEx.
 	// if icase is true, then matching is insensitive to case
 	RegexMatch(InfoMap const & m, string const & re, bool icase)
 		: map_(m), regex_(re, icase) {}
 
-	bool operator()(string const & key) {
+	bool operator()(string const & key) const {
 		if (!validRE())
 			return false;
 
@@ -299,7 +299,7 @@ struct RegexMatch
 
 private:
 	InfoMap const map_;
-	boost::RegEx regex_;
+	mutable boost::RegEx regex_;
 };
 
 } // namespace anon

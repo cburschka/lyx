@@ -62,16 +62,19 @@ LyXTextClassList::operator[](textclass_type textclass) const
 
 
 // used when sorting the textclass list.
-class less_textclass_avail_desc {
-public:
-	int operator()(LyXTextClass const & tc1, LyXTextClass const & tc2) {
+struct less_textclass_avail_desc
+	: public std::binary_function<LyXTextClass, LyXTextClass, int>
+{
+	int operator()(LyXTextClass const & tc1,
+		       LyXTextClass const & tc2) const
+	{
 		// Ordering criteria:
 		//   1. Availability of text class
 		//   2. Description (lexicographic)
 
 		return (tc1.isTeXClassAvailable() && !tc2.isTeXClassAvailable()) ||
-		       (tc1.isTeXClassAvailable() == tc2.isTeXClassAvailable() &&
-		        tc1.description() < tc2.description());
+			(tc1.isTeXClassAvailable() == tc2.isTeXClassAvailable() &&
+			 tc1.description() < tc2.description());
 	}
 };
 

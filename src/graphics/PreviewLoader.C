@@ -47,6 +47,8 @@ using std::fill;
 using std::find_if;
 using std::make_pair;
 
+using boost::bind;
+
 using std::ifstream;
 using std::list;
 using std::map;
@@ -75,9 +77,10 @@ Converter const * setConverter();
 void setAscentFractions(vector<double> & ascent_fractions,
 			string const & metrics_file);
 
-struct FindFirst {
+class FindFirst : public std::unary_function<StrPair, bool> {
+public:
 	FindFirst(string const & comp) : comp_(comp) {}
-	bool operator()(StrPair const & sp)
+	bool operator()(StrPair const & sp) const
 	{
 		return sp.first == comp_;
 	}
@@ -343,19 +346,19 @@ PreviewLoader::Impl::preview(string const & latex_snippet) const
 
 namespace {
 
-struct FindSnippet {
+class FindSnippet : public std::unary_function<InProgressProcess, bool> {
+public:
 	FindSnippet(string const & s) : snippet_(s) {}
-	bool operator()(InProgressProcess const & process)
+	bool operator()(InProgressProcess const & process) const
 	{
 		BitmapFile const & snippets = process.second.snippets;
-		BitmapFile::const_iterator it  = snippets.begin();
+		BitmapFile::const_iterator beg  = snippets.begin();
 		BitmapFile::const_iterator end = snippets.end();
-		it = find_if(it, end, FindFirst(snippet_));
-		return it != end;
+		return find_if(beg, end, FindFirst(snippet_)) != end;
 	}
 
 private:
-	string const & snippet_;
+	string const snippet_;
 };
 
 } // namespace anon
@@ -491,8 +494,7 @@ void PreviewLoader::Impl::startLoading()
 	// Initiate the conversion from LaTeX to bitmap images files.
 	support::Forkedcall::SignalTypePtr
 		convert_ptr(new support::Forkedcall::SignalType);
-	convert_ptr->connect(
-		boost::bind(&Impl::finishedGenerating, this, _1, _2));
+	convert_ptr->connect(bind(&Impl::finishedGenerating, this, _1, _2));
 
 	support::Forkedcall call;
 	int ret = call.startscript(command, convert_ptr);

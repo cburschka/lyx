@@ -85,6 +85,19 @@ string const dvipdfm_options(BufferParams const & bp)
 	return result;
 }
 
+
+class ConverterEqual : public std::binary_function<string, string, bool> {
+public:
+	ConverterEqual(string const & from, string const & to)
+		: from_(from), to_(to) {}
+	bool operator()(Converter const & c) const {
+		return c.from == from_ && c.to == to_;
+	}
+private:
+	string const from_;
+	string const to_;
+};
+
 } // namespace anon
 
 
@@ -138,26 +151,12 @@ bool operator<(Converter const & a, Converter const & b)
 }
 
 
-class compare_Converter {
-public:
-	compare_Converter(string const & f, string const & t)
-		: from(f), to(t) {}
-	bool operator()(Converter const & c) {
-		return c.from == from && c.to == to;
-	}
-private:
-	string const & from;
-	string const & to;
-};
-
-
-
 Converter const * Converters::getConverter(string const & from,
-					    string const & to)
+					    string const & to) const
 {
 	ConverterList::const_iterator cit =
 		find_if(converterlist_.begin(), converterlist_.end(),
-			compare_Converter(from, to));
+			ConverterEqual(from, to));
 	if (cit != converterlist_.end())
 		return &(*cit);
 	else
@@ -165,13 +164,13 @@ Converter const * Converters::getConverter(string const & from,
 }
 
 
-int Converters::getNumber(string const & from, string const & to)
+int Converters::getNumber(string const & from, string const & to) const
 {
 	ConverterList::const_iterator cit =
 		find_if(converterlist_.begin(), converterlist_.end(),
-			compare_Converter(from, to));
+			ConverterEqual(from, to));
 	if (cit != converterlist_.end())
-		return cit - converterlist_.begin();
+		return distance(converterlist_.begin(), cit);
 	else
 		return -1;
 }
@@ -184,7 +183,7 @@ void Converters::add(string const & from, string const & to,
 	formats.add(to);
 	ConverterList::iterator it = find_if(converterlist_.begin(),
 					     converterlist_.end(),
-					     compare_Converter(from, to));
+					     ConverterEqual(from , to));
 
 	Converter converter(from, to, command, flags);
 	if (it != converterlist_.end() && !flags.empty() && flags[0] == '*') {
@@ -214,7 +213,7 @@ void Converters::erase(string const & from, string const & to)
 {
 	ConverterList::iterator it = find_if(converterlist_.begin(),
 					     converterlist_.end(),
-					     compare_Converter(from, to));
+					     ConverterEqual(from, to));
 	if (it != converterlist_.end())
 		converterlist_.erase(it);
 }

@@ -39,6 +39,8 @@ using lyx::support::OnlyFilename;
 using lyx::support::removeAutosaveFile;
 using lyx::support::prefixIs;
 
+using boost::bind;
+
 using std::auto_ptr;
 using std::endl;
 using std::find;
@@ -235,7 +237,7 @@ void BufferList::updateIncludedTeXfiles(string const & mastertmpdir,
 void BufferList::emergencyWriteAll()
 {
 	for_each(bstore.begin(), bstore.end(),
-		 boost::bind(&BufferList::emergencyWrite, this, _1));
+		 bind(&BufferList::emergencyWrite, this, _1));
 }
 
 

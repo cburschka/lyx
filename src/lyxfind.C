@@ -210,7 +210,7 @@ bool findNextChange(BufferView * bv)
 
 namespace {
 
-class MatchString
+class MatchString : public std::binary_function<Paragraph, lyx::pos_type, bool>
 {
 public:
 	MatchString(string const & str, bool cs, bool mw)
@@ -281,7 +281,7 @@ bool findBackwards(PosIterator & cur, PosIterator const & beg,
 bool findChange(PosIterator & cur, PosIterator const & end)
 {
 	for (; cur != end; ++cur) {
-		if ((!cur.pit()->size() || !cur.at_end())
+		if ((cur.pit()->empty() || !cur.at_end())
 		    && cur.pit()->lookupChange(cur.pos()) != Change::UNCHANGED)
 			return true;
 	}

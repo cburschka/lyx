@@ -103,13 +103,12 @@ bool contains(std::string const & a, std::string const & b);
 bool contains(std::string const & a, char b);
 
 /// This should probably we rewritten to be more general.
-class contains_functor {
-public:
-	typedef std::string first_argument_type;
-	typedef std::string second_argument_type;
-	typedef bool result_type;
-
-	bool operator()(std::string const & haystack, std::string const & needle) const {
+struct contains_functor
+	: public std::binary_function<std::string, std::string, bool>
+{
+	bool operator()(std::string const & haystack,
+			std::string const & needle) const
+	{
 		return contains(haystack, needle);
 	}
 };

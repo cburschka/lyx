@@ -1,3 +1,9 @@
+2004-01-31  Lars Gullik Bjonnes  <larsbj@gullik.net>
+
+	* PreviewLoader.C (FindFirst): inherit from std::unary_function
+	and make operator() const
+	(FindSnippet): inherit from unary_function, simplify slightly.
+
 2004-01-07  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
 	* GraphicsTypes.C: include <string>

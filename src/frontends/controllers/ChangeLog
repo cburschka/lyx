@@ -1,3 +1,11 @@
+2004-01-31  Lars Gullik Bjonnes  <larsbj@gullik.net>
+
+	* biblio.C (RegexMatch): inherit from std::unary_function, make
+	operator() const and variable regex_ mutable.
+
+	* ControlSpellchecker.C (check): use correct types for the result
+	from distance.
+
 2004-01-28  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
 	* ControlSpellchecker.C: add using statements for std::advance and

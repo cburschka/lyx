@@ -29,6 +29,8 @@
 #include <sys/wait.h>
 
 
+using boost::bind;
+
 using std::endl;
 using std::find_if;
 using std::string;
@@ -55,7 +57,7 @@ ForkedcallsController::ForkedcallsController()
 	timeout_ = new Timeout(100, Timeout::ONETIME);
 
 	timeout_->timeout
-		.connect(boost::bind(&ForkedcallsController::timer, this));
+		.connect(bind(&ForkedcallsController::timer, this));
 }
 
 

@@ -36,30 +36,29 @@ using std::string;
 using std::ostream;
 
 
-namespace { // anon
+namespace {
 
-struct compare_name {
-
-	compare_name(string const & name)
+class LayoutNamesEqual : public std::unary_function<LyXLayout_ptr, bool> {
+public:
+	LayoutNamesEqual(string const & name)
 		: name_(name)
 	{}
-
-	bool operator()(boost::shared_ptr<LyXLayout> const & c)
+	bool operator()(LyXLayout_ptr const & c) const
 	{
 		return c->name() == name_;
 	}
-
+private:
 	string name_;
-
 };
 
-} // anon
+} // namespace anon
 
 
 LyXTextClass::LyXTextClass(string const & fn, string const & cln,
 			   string const & desc, bool texClassAvail )
 	: name_(fn), latexname_(cln), description_(desc),
-	  floatlist_(new FloatList), ctrs_(new Counters), texClassAvail_(texClassAvail)
+	  floatlist_(new FloatList), ctrs_(new Counters),
+	  texClassAvail_(texClassAvail)
 {
 	outputType_ = LATEX;
 	columns_ = 1;
@@ -551,7 +550,7 @@ void LyXTextClass::readCharStyle(LyXLex & lexrc, string const & name)
 	LyXFont font(LyXFont::ALL_INHERIT);
 	LyXFont labelfont(LyXFont::ALL_INHERIT);
 	string preamble;
-	
+
 	bool getout = false;
 	while (!getout && lexrc.isOK()) {
 		int le = lexrc.lex();
@@ -790,7 +789,7 @@ bool LyXTextClass::hasLayout(string const & n) const
 	string const name = (n.empty() ? defaultLayoutName() : n);
 
 	return find_if(layoutlist_.begin(), layoutlist_.end(),
-		       compare_name(name))
+		       LayoutNamesEqual(name))
 		!= layoutlist_.end();
 }
 
@@ -803,7 +802,7 @@ LyXLayout_ptr const & LyXTextClass::operator[](string const & name) const
 	LayoutList::const_iterator cit =
 		find_if(layoutlist_.begin(),
 			layoutlist_.end(),
-			compare_name(name));
+			LayoutNamesEqual(name));
 
 	if (cit == layoutlist_.end()) {
 		lyxerr << "We failed to find the layout '" << name
@@ -829,7 +828,7 @@ bool LyXTextClass::delete_layout(string const & name)
 
 	LayoutList::iterator it =
 		remove_if(layoutlist_.begin(), layoutlist_.end(),
-			  compare_name(name));
+			  LayoutNamesEqual(name));
 
 	LayoutList::iterator end = layoutlist_.end();
 	bool const ret = (it != end);

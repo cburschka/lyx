@@ -197,8 +197,8 @@ void ControlSpellchecker::check()
 	PosIterator const beg = buffer()->pos_iterator_begin();
 	PosIterator const end = buffer()->pos_iterator_end();
 
-	int start = distance(beg, cur);
-	int const total = start + distance(cur, end);
+	PosIterator::difference_type start = distance(beg, cur);
+	PosIterator::difference_type const total = start + distance(cur, end);
 
 	if (cur != buffer()->pos_iterator_begin())
 		for (; cur != end && isLetter(cur); ++cur, ++start);

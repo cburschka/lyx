@@ -55,7 +55,7 @@ public:
 		/** This is a list of importable formats
 		    typically for the File->Export menu. */
 		ImportFormats,
-		/** This is the list of elements available 
+		/** This is the list of elements available
 		 * for insertion into document. */
 		CharStyles,
 		/** This is the list of floats that we can
@@ -186,6 +186,8 @@ public:
 	///
 	typedef MenuList::const_iterator const_iterator;
 	///
+	typedef MenuList::iterator iterator;
+	///
 	void read(LyXLex &);
 	///
 	void add(Menu const &);
@@ -211,7 +213,15 @@ public:
 		return menulist_.begin();
 	}
 	///
+	iterator begin() {
+		return menulist_.begin();
+	}
+	///
 	const_iterator end() const {
+		return menulist_.end();
+	}
+	///
+	iterator end() {
 		return menulist_.end();
 	}
 private:

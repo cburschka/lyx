@@ -128,8 +128,8 @@ string InsetFormulaMacro::prefix() const
 void InsetFormulaMacro::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	MathNestInset::metrics(mi);
-	dim = cell(0).dim(); 
-	dim += cell(1).dim(); 
+	dim = cell(0).dim();
+	dim += cell(1).dim();
 	dim.asc += 5;
 	dim.des += 5;
 	dim.wid += 10 + font_metrics::width(prefix(), mi.base.font);

@@ -1868,7 +1868,7 @@ int LyXText::cursorX(CursorSlice const & cur) const
 {
 	ParagraphList::iterator pit = getPar(cur);
 	if (pit->rows.empty())
-		return xo_; 
+		return xo_;
 	Row const & row         = *pit->getRow(cur.pos());
 	pos_type pos            = cur.pos();
 	pos_type cursor_vpos    = 0;
@@ -1940,7 +1940,7 @@ int findText(LyXText const * text)
 	CursorBase & cur = text->bv()->cursor().cursor_;
 	//lyxerr << "findText: text: " << text << " cursor: "
 	//	<< text->bv()->cursor() << endl;
-	for (int i = cur.size() - 1; i > 0; --i) 
+	for (int i = cur.size() - 1; i > 0; --i)
 		if (cur[i].text() == text)
 			return i;
 	if (text->bv()->text() == text)

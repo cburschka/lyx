@@ -1,3 +1,8 @@
+2004-01-31  Lars Gullik Bjonnes  <larsbj@gullik.net>
+
+	* RadioButtonGroup.C (is_set_button): inherit from
+	std::unary_function
+
 2004-01-28  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
 	* XFormsToolbar.C: add using statement for std::distance

@@ -23,7 +23,6 @@
 #include "support/filetools.h"
 #include "support/path.h"
 #include "support/systemcall.h"
-#include "support/lyxfunctional.h"
 
 using lyx::support::bformat;
 using lyx::support::compare_ascii_no_case;
@@ -45,6 +44,19 @@ string const token_from("$$i");
 string const token_path("$$p");
 string const token_socket("$$a");
 
+
+class FormatNamesEqual : public std::unary_function<Format, bool> {
+public:
+	FormatNamesEqual(string const & name)
+		: name_(name) {}
+	bool operator()(Format const & f) const
+	{
+		return f.name() == name_;
+	}
+private:
+	string name_;
+};
+
 } //namespace anon
 
 bool operator<(Format const & a, Format const & b)
@@ -57,11 +69,8 @@ bool operator<(Format const & a, Format const & b)
 }
 
 Format::Format(string const & n, string const & e, string const & p,
-       string const & s, string const & v): name_(n),
-					    extension_(e),
-					    prettyname_(p),
-					    shortcut_(s),
-					    viewer_(v)
+	       string const & s, string const & v)
+	: name_(n), extension_(e), prettyname_(p),shortcut_(s), viewer_(v)
 {}
 
 
@@ -91,7 +100,7 @@ Format const * Formats::getFormat(string const & name) const
 {
 	FormatList::const_iterator cit =
 		find_if(formatlist.begin(), formatlist.end(),
-			lyx::compare_memfun(&Format::name, name));
+			FormatNamesEqual(name));
 	if (cit != formatlist.end())
 		return &(*cit);
 	else
@@ -103,9 +112,9 @@ int Formats::getNumber(string const & name) const
 {
 	FormatList::const_iterator cit =
 		find_if(formatlist.begin(), formatlist.end(),
-			lyx::compare_memfun(&Format::name, name));
+			FormatNamesEqual(name));
 	if (cit != formatlist.end())
-		return cit - formatlist.begin();
+		return distance(formatlist.begin(), cit);
 	else
 		return -1;
 }
@@ -123,7 +132,7 @@ void Formats::add(string const & name, string const & extension,
 {
 	FormatList::iterator it =
 		find_if(formatlist.begin(), formatlist.end(),
-			lyx::compare_memfun(&Format::name, name));
+			FormatNamesEqual(name));
 	if (it == formatlist.end())
 		formatlist.push_back(Format(name, extension, prettyname,
 					    shortcut, ""));
@@ -138,7 +147,7 @@ void Formats::erase(string const & name)
 {
 	FormatList::iterator it =
 		find_if(formatlist.begin(), formatlist.end(),
-			lyx::compare_memfun(&Format::name, name));
+			FormatNamesEqual(name));
 	if (it != formatlist.end())
 		formatlist.erase(it);
 }
@@ -155,7 +164,7 @@ void Formats::setViewer(string const & name, string const & command)
 	add(name);
 	FormatList::iterator it =
 		find_if(formatlist.begin(), formatlist.end(),
-			lyx::compare_memfun(&Format::name, name));
+			FormatNamesEqual(name));
 	if (it != formatlist.end())
 		it->setViewer(command);
 }

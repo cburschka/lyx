@@ -77,9 +77,10 @@ public:
 		return converterlist_[i];
 	}
 	///
-	Converter const * getConverter(std::string const & from, std::string const & to);
+	Converter const * getConverter(std::string const & from,
+				       std::string const & to) const;
 	///
-	int getNumber(std::string const & from, std::string const & to);
+	int getNumber(std::string const & from, std::string const & to) const;
 	///
 	void add(std::string const & from, std::string const & to,
 		 std::string const & command, std::string const & flags);

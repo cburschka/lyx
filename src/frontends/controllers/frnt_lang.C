@@ -24,7 +24,10 @@ using std::vector;
 
 namespace {
 
-struct Sorter {
+struct Sorter
+	: public std::binary_function<frnt::LanguagePair,
+				      frnt::LanguagePair, bool>
+{
 	bool operator()(frnt::LanguagePair const & lhs,
 			frnt::LanguagePair const & rhs) const {
 		return lhs.first < rhs.first;

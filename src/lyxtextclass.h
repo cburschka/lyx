@@ -227,7 +227,7 @@ private:
 	LayoutList layoutlist_;
 	/// CharStyles available to this layout
 	mutable CharStyles charstylelist_;
-	
+
 	/// available types of float, eg. figure, algorithm.
 	boost::shared_ptr<FloatList> floatlist_;
 
