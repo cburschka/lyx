@@ -1708,10 +1708,7 @@ bool Buffer::readFile(LyXLex & lex, Paragraph * par)
 						     "Use LyX 0.10.x to read this!"));
 					return false;
 				} else if (file_format < 220) {
-					//Alert::alert(_("Warning!"),
-					//	     _("Old LyX file format found. "
-					//	       "Running conversion script"));
-					string command = "lyxconvert "
+					string const command = "lyx2lyx "
 						+ QuoteName(filename_);
 					cmd_ret const ret = RunCommand(command);
 					if (ret.first) {
