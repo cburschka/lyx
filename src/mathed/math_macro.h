@@ -84,10 +84,10 @@ private:
 		///
 		MathedRowSt * row;
 		///
-		MathedArray * array;
+		MathedArray array;
 		///
 		MacroArgumentBase()
-			: x(0), y(0), row(0), array(0)
+			: x(0), y(0), row(0)
 			{}
 	};
 	std::vector<MacroArgumentBase> args_;

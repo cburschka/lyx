@@ -15,10 +15,7 @@ MathSqrtInset::MathSqrtInset(short st)
 
 MathedInset * MathSqrtInset::Clone()
 {   
-	MathSqrtInset * p = new MathSqrtInset(GetStyle());
-	MathedIter it(array);
-	p->setData(it.Copy());
-	return p;
+	return new MathSqrtInset(*this);
 }
 
 

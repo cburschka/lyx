@@ -26,7 +26,6 @@ MathedRowSt * MathParInset::getRowSt() const
 MathParInset::MathParInset(short st, string const & nm, short ot)
 	: MathedInset(nm, ot, st)
 {
-	array = 0;
 	ascent = 8;
 	width = 4;
 	descent = 0;
@@ -48,11 +47,6 @@ MathParInset::MathParInset(MathParInset * p)
 
 MathParInset::~MathParInset()
 {
-	if (array) {
-		MathedIter it(array);
-		it.Clear();
-		delete array;
-	}
 }
 
 
@@ -64,18 +58,16 @@ MathedInset * MathParInset::Clone()
 
 void MathParInset::setData(MathedArray * a)
 {
-	array = a;
+	array = *a;
 	
 	// A standard paragraph shouldn't have any tabs nor CRs.
-	if (array) {
-		MathedIter it(array);
-		while (it.OK()) {
-			char c = it.GetChar();
-			if (c == LM_TC_TAB || c == LM_TC_CR) 
-				it.Delete();
-			else
-				it.Next();
-		}
+	MathedIter it(&array);
+	while (it.OK()) {
+		char c = it.GetChar();
+		if (c == LM_TC_TAB || c == LM_TC_CR) 
+			it.Delete();
+		else
+			it.Next();
 	}
 }
 
@@ -91,11 +83,9 @@ MathParInset::draw(Painter & pain, int x, int y)
 	
 	xo_ = x;
 	yo_ = y; 
-	if (!array || array->empty()) {
-		if (array) {
-			MathedXIter data(this);
-			data.GetPos(x, y);
-		}
+	if (array.empty()) {
+		MathedXIter data(this);
+		data.GetPos(x, y);
 		pain.rectangle(x, y - df_asc, df_width, df_asc, LColor::mathline);
 		return;
 	}  
@@ -187,8 +177,7 @@ MathParInset::Metrics()
 	ascent = df_asc;//mathed_char_height(LM_TC_VAR, size, 'I', asc, des); 
 	width = df_width;
 	descent = 0;
-	if (!array) return;
-	if (array->empty()) return;
+	if (array.empty()) return;
 	
 	ascent = 0;
 	MathedXIter data(this);
@@ -284,10 +273,10 @@ MathParInset::Metrics()
 
 void MathParInset::Write(ostream & os, bool fragile)
 {
-	if (!array) return;
+	if (array.empty()) return;
 	int brace = 0;
 	latexkeys const * l;
-	MathedIter data(array);
+	MathedIter data(&array);
 	// hack
 	MathedRowSt const * crow = getRowSt();   
 	data.Reset();
@@ -442,7 +431,7 @@ bool MathParInset::Permit(short f) const
 
 MathedArray * MathParInset::GetData()
 {
-	return array;
+	return &array;
 }
 
 

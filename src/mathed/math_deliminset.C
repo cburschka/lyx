@@ -17,10 +17,7 @@ MathDelimInset::MathDelimInset(int l, int r, short st)
 
 MathedInset * MathDelimInset::Clone()
 {   
-	MathDelimInset * p = new MathDelimInset(left_, right_, GetStyle());
-	MathedIter it(array);
-	p->setData(it.Copy());
-	return p;
+	return new MathDelimInset(*this);
 }
 
 

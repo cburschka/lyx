@@ -1,3 +1,11 @@
+2001-02-14  André Pönitz  <poenitz@htwm.de>
+
+	* math_parinset.[Ch]: make array a real MathArray, not just a
+	  pointer to one.
+
+	* several files: subsequent changes
+
+
 2001-02-19  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* array.C (MathedArray): Fix compilation problem.

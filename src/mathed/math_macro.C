@@ -69,20 +69,14 @@ MathMacro::MathMacro(MathMacro * m):
 	SetName(tmplate_->GetName());
 	for (int i = 0; i < tmplate_->getNoArgs(); ++i) {
 		m->setArgumentIdx(i);
-		MathedIter it(m->GetData());
 		args_[i].row   = m->args_[i].row;
-		args_[i].array = it.Copy();
+		args_[i].array = *(m->GetData());
 	}
 }
 
 
 MathMacro::~MathMacro()
 {
-	for (idx_ = 0; idx_ < nargs_; ++idx_) {
-		MathedIter it(args_[idx_].array);
-		it.Clear();
-		delete args_[idx_].row;
-	}
 }
 
 
@@ -142,7 +136,7 @@ int MathMacro::getMaxArgumentIdx() const
 
 MathedArray * MathMacro::GetData() 
 { 
-	return args_[idx_].array; 
+	return &args_[idx_].array; 
 } 
 
 
@@ -175,7 +169,7 @@ void MathMacro::SetFocus(int x, int y)
 
 void MathMacro::setData(MathedArray * a)
 {
-	args_[idx_].array = a;
+	args_[idx_].array = *a;
 }
 
 

@@ -41,13 +41,9 @@ MathRootInset::~MathRootInset()
 
 MathedInset * MathRootInset::Clone()
 {
-	MathRootInset * p = new MathRootInset(GetStyle());
-	MathedIter it(array);
-	MathedIter itr(uroot_->GetData());
-	p->setData(it.Copy());
+	MathRootInset * p = new MathRootInset(*this);
+	p->uroot_ = (MathParInset *) p->uroot_->Clone();
 	p->setArgumentIdx(0);
-	p->setData(itr.Copy());
-	
 	return p;
 }
 
@@ -84,7 +80,7 @@ void MathRootInset::GetXY(int & x, int & y) const
 MathedArray * MathRootInset::GetData()
 {
 	if (idx_ == 1)
-		return array;
+		return &array;
 	else
 		return uroot_->GetData();
 }

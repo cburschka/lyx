@@ -2,6 +2,7 @@
 #ifndef MATH_PARINSET_H
 #define MATH_PARINSET_H
 
+#include "array.h"
 #include "math_inset.h"
 #include "math_defs.h"
 
@@ -80,7 +81,7 @@ public:
 	}
 protected:
 	/// Paragraph data is stored here
-	MathedArray * array;
+	MathedArray array;
 	/// 
 	short flag;
 	///

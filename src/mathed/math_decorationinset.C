@@ -24,10 +24,7 @@ bool MathDecorationInset::GetLimits() const
 
 MathedInset * MathDecorationInset::Clone()
 {   
-   MathDecorationInset * p = new MathDecorationInset(deco_, GetStyle());
-   MathedIter it(array);
-   p->setData(it.Copy());
-   return p;
+	return new MathDecorationInset(*this);
 }
 
 

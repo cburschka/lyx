@@ -32,12 +32,9 @@ MathFracInset::~MathFracInset()
 
 MathedInset * MathFracInset::Clone()
 {   
-	MathFracInset * p = new MathFracInset(GetType());
-	MathedIter itn(array);
-	MathedIter itd(den_->GetData());
-	p->SetData(itn.Copy(), itd.Copy());
-	p->idx_ = idx_;
-	p->dh_ = dh_;
+	MathFracInset * p = new MathFracInset(*this);
+	// this cast will go again...
+	p->den_ = (MathParInset*) (p->den_->Clone());
 	return p;
 }
 
@@ -91,7 +88,7 @@ void MathFracInset::GetXY(int & x, int & y) const
 MathedArray * MathFracInset::GetData()
 {
 	if (idx_ == 0)
-		return array;
+		return &array;
 	else
 		return den_->GetData();
 }
