@@ -22,7 +22,7 @@ What's new
 
 ** Updates
 
-- it is now possible to open documents which use a textclasse for
+- it is now possible to open documents which use a textclass for
   which no LaTeX support is installed. The documents can be normally
   edited, but they can of course not be previewed or printed. Note
   that the format of the file .lyx/textclasses.lst has changed as a
@@ -32,6 +32,8 @@ What's new
 - add support for drag-n-drop opening of lyx files [Qt only]
 
 - add support for opening files with LyX in finder [Qt/Mac only]
+
+- make MacOSX build relocatable
 
 - add support for \boldsymbol in math editor
 

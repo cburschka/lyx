@@ -246,10 +246,11 @@ void LyX::init(bool gui)
 	// 1) -sysdir command line parameter
 	// 2) LYX_DIR_13x environment variable
 	// 3) Maybe <path of binary>/TOP_SRCDIR/lib
-	// 4) <path of binary>/../share/<name of binary>/
-	// 4a) repeat 4 after following the Symlink if <path of
+	// 4) <path of binary>/../Resources/<name of binary>/  [for LyX/Mac]
+	// 5) <path of binary>/../share/<name of binary>/
+	// 5a) repeat 4 after following the Symlink if <path of
 	//     binary> is a symbolic link.
-	// 5) hardcoded lyx_dir
+	// 6) hardcoded lyx_dir
 	// The directory is checked for the presence of the file
 	// "chkconfig.ltx", and if that is present, the directory
 	// is accepted as the system directory.
@@ -267,6 +268,10 @@ void LyX::init(bool gui)
 		lyxerr[Debug::INIT] << "LYX_DIR_13x: " << lyxdir << endl;
 		searchpath += lyxdir + ';';
 	}
+
+	// Path of binary/../Resources/
+	searchpath += NormalizePath(AddPath(binpath, "../Resources/") + 
+				    OnlyFilename(binname)) + ';';
 
 	string fullbinpath = binpath;
 	FileInfo file(fullbinname, true);
@@ -381,6 +386,23 @@ void LyX::init(bool gui)
 	if (!path_shown)
 		lyxerr[Debug::INIT] << "System directory: '"
 				    << system_lyxdir << '\'' << endl;
+
+	//
+	// Set PATH for LyX/Mac 
+	// LyX/Mac is a relocatable application bundle; here we add to
+	// the PATH so it can find binaries like reLyX inside its own
+	// application bundle, and also append PATH elements that it
+	// needs to run latex, previewers, etc.
+	//
+
+	if (system_lyxdir == NormalizePath(AddPath(binpath, "../Resources/") +
+                                   OnlyFilename(binname))) {
+	  string oldpath = GetEnv("PATH");
+	  string newpath = "PATH=" + oldpath + ":" + binpath + ":";
+	  newpath += "/sw/bin:/usr/local/bin:/usr/local/teTeX/bin/powerpc-apple-darwin-current";
+	  PutEnv(newpath);
+	  lyxerr[Debug::INIT] << "Running from LyX/Mac bundle. Setting PATH to: " << GetEnv("PATH") << endl;
+	}
 
 	//
 	// Determine user lyx-dir

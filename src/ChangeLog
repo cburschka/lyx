@@ -1,3 +1,8 @@
+2003-12-12  Ronald Florence <ron@18james.com>
+
+	* lyx_main.C: determine system directory and set PATH for
+	relocatable LyX/Mac bundle.
+
 2003-12-04  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* BufferView_pimpl.C (viewDispatch): new method, called by the qt
