@@ -1,7 +1,12 @@
+2004-07-26  Lars Gullik Bjonnes  <larsbj@gullik.net>
+
+	* configure.ac: add code that some xforms tests are run only once
+	even if both xforms and gtk are configured. 
+
 2004-06-09  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* Makefile.am (SUBDIRS): remove m4 directory (does not have a
-	Makefile.am). 
+	Makefile.am).
 
 2004-06-09  Lars Gullik Bjonnes  <larsbj@gullik.net>
 

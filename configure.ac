@@ -164,15 +164,16 @@ dnl problems with the AC_REQUIRE contained in QT_DO_IT_ALL.
 for frontend in $FRONTENDS ; do
   case "$frontend" in
     xforms)
-	  XFORMS_DO_IT_ALL
+	  [ x$gtk_done = x1 ] || XFORMS_DO_IT_ALL
 	  FRONTENDS_PROGS="$FRONTENDS_PROGS lyx-xforms\$(EXEEXT)"
-	  FRONTENDS_SUBDIRS="$FRONTENDS_SUBDIRS xforms"
+	  [ x$gtk_done = x1 ] || FRONTENDS_SUBDIRS="$FRONTENDS_SUBDIRS xforms"
 	  RPM_FRONTEND="xforms"
 	  RPM_FRONTEND_DEPS='libforms >= 1.0'
 	  FRONTEND_INFO="${FRONTEND_INFO}\
   XForms Frontend:\n\
       libXpm version:\t\t${XPM_VERSION}\n\
       libforms version:\t\t${XFORMS_VERSION}\n"
+	  xforms_done=1
 	  ;;
   dnl   gnome)
   dnl     XFORMS_DO_IT_ALL
@@ -187,10 +188,11 @@ for frontend in $FRONTENDS ; do
   dnl     FRONTEND_LIBS="@XPM_LIB@ @XFORMS_LIB@ ${GNOME_FRONTEND_LIBS}"
   dnl	;;
     gtk)
-	  XFORMS_DO_IT_ALL
+	  [ x$xforms_done = x1 ] || XFORMS_DO_IT_ALL
 	  PKG_CHECK_MODULES(GTK_FRONTEND, gtkmm-2.0 libglademm-2.0)
 	  FRONTENDS_PROGS="$FRONTENDS_PROGS lyx-gtk\$(EXEEXT)"
-	  FRONTENDS_SUBDIRS="$FRONTENDS_SUBDIRS xforms gtk"
+	  [ x$xforms_done = x1 ] || FRONTENDS_SUBDIRS="$FRONTENDS_SUBDIRS xforms"
+	  FRONTENDS_SUBDIRS="$FRONTENDS_SUBDIRS gtk"
 	  RPM_FRONTEND="gtk"
 	  RPM_FRONTEND_DEPS='gtkmm >= 2.2.0'
 	  GTKMM_VERSION=`pkg-config --modversion gtkmm-2.0`
@@ -199,6 +201,7 @@ for frontend in $FRONTENDS ; do
   GTK Frontend:\n\
     libgtkmm version:\t\t${GTKMM_VERSION}\n\
     libglademm version:\t\t${LIBGLADEMM_VERSION}\n"
+	  gtk_done=1
 	  ;;
 
     qt)

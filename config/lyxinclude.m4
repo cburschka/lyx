@@ -212,12 +212,12 @@ if test x$GXX = xyes; then
       3.1*)    CXXFLAGS="$lyx_opt -finline-limit=500 -fno-exceptions";;
       3.2*)    CXXFLAGS="$lyx_opt -fno-exceptions";;
       3.3*)    CXXFLAGS="$lyx_opt -fno-exceptions";;
-      3.4*)    CXXFLAGS="$lyx_opt -fno-exceptions";;
+      3.4*|3.5*)    CXXFLAGS="$lyx_opt -fno-exceptions";;
       *)       CXXFLAGS="$lyx_opt";;
     esac
     if test x$enable_debug = xyes ; then
 	case $gxx_version in
-	    3.4*) CXXFLAGS="-g $CXXFLAGS"
+	    3.4*|3.5*) CXXFLAGS="-g $CXXFLAGS"
 		AC_DEFINE(_GLIBCXX_DEBUG, 1, [libstdc++ debug mode])
 		AC_DEFINE(_GLIBCXX_DEBUG_PEDANTIC, 1, [libstdc++ pedantic debug mode])
 		;;
@@ -229,9 +229,10 @@ if test x$GXX = xyes; then
     case $gxx_version in
 	2.95.*) CXXFLAGS="$CXXFLAGS -W -Wall";;
 	2.96*)  CXXFLAGS="$CXXFLAGS -W -Wall";;
-	3.1*)  CXXFLAGS="$CXXFLAGS -W -Wall";;
-	3.4*)   CXXFLAGS="$CXXFLAGS -Wextra -Wall";;
-	*)      CXXFLAGS="$CXXFLAGS -W -Wall";;
+	3.1*) CXXFLAGS="$CXXFLAGS -W -Wall";;
+	3.2*) CXXFLAGS="$CXXFLAGS -W -Wall";;
+	3.3*) CXXFLAGS="$CXXFLAGS -W -Wall";;
+	*)    CXXFLAGS="$CXXFLAGS -Wextra -Wall";;
     esac
   fi
 fi])dnl
