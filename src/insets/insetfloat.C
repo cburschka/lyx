@@ -239,16 +239,21 @@ int InsetFloat::latex(Buffer const * buf,
 		placement = buf_placement;
 	}
 
-	os << "\\begin{" << tmptype << "}";
+	// The \n is used to force \begin{<floatname>} to appear in a new line.
+	// The % is needed to prevent two consecutive \n chars in the case
+	// when the current output line is empty.
+	os << "%\n\\begin{" << tmptype << "}";
 	// We only output placement if different from the def_placement.
 	if (!placement.empty()) {
 		os << "[" << placement << "]";
 	}
-
-	os << "%\n";
+	os << "\n";
 
 	int const i = inset.latex(buf, os, fragile, fp);
-	os << "\\end{" << tmptype << "}%\n";
+
+	// The \n is used to force \end{<floatname>} to appear in a new line.
+	// In this case, we do not case if the current output line is empty.
+	os << "\n\\end{" << tmptype << "}\n";
 
 	return i + 2;
 }
