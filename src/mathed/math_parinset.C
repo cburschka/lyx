@@ -106,7 +106,7 @@ MathParInset::draw(Painter & pain, int x, int y)
 		byte cx = data.GetChar();
 		if (cx >= ' ') {
 			string s = data.GetString();
-			drawStr(pain, data.FCode(), size(), x, y, s);
+			drawStr(pain, data.fcode(), size(), x, y, s);
 			mathed_char_height(LM_TC_CONST, size(), 'y', asc, des);
 			limits = false;
 		}
@@ -197,7 +197,7 @@ MathParInset::Metrics()
 		cx = data.GetChar();      
 		if (cx >= ' ') {
 			string s = data.GetString();
-			mathed_string_height(data.FCode(),
+			mathed_string_height(data.fcode(),
 					     size(), s, asc, des);
 			if (asc > ascent) ascent = asc;
 			if (des > descent) descent = des;
@@ -303,39 +303,39 @@ void MathParInset::Write(ostream & os, bool fragile)
 		if (cx >= ' ') {
 			string str = data.GetString();
 			
-			if (data.FCode() >= LM_TC_RM && data.FCode() <= LM_TC_TEXTRM) {
-				os << '\\' << math_font_name[data.FCode()-LM_TC_RM] << '{';
+			if (data.fcode() >= LM_TC_RM && data.fcode() <= LM_TC_TEXTRM) {
+				os << '\\' << math_font_name[data.fcode()-LM_TC_RM] << '{';
 			}
 			for (string::const_iterator s = str.begin();
 			     s != str.end(); ++s) {
 				byte c = *s;
-				if (MathIsSymbol(data.FCode())) {
-					l = lm_get_key_by_id(c, (data.FCode() == LM_TC_BSYM) ?
+				if (MathIsSymbol(data.fcode())) {
+					l = lm_get_key_by_id(c, (data.fcode() == LM_TC_BSYM) ?
 							     LM_TK_BIGSYM : LM_TK_SYM);
 					if (l) {
 						os << '\\' << l->name << ' ';
 					} else {
 #warning this does not compile on gcc 2.97
 						//lyxerr << "Illegal symbol code[" << c
-						//   << " " << str.end() - s << " " << data.FCode() << "]";
+						//   << " " << str.end() - s << " " << data.fcode() << "]";
 					}
 				} else {
 					// Is there a standard logical XOR?
-					if ((data.FCode() == LM_TC_TEX && c != '{' && c != '}') ||
-					    (data.FCode() == LM_TC_SPECIAL))
+					if ((data.fcode() == LM_TC_TEX && c != '{' && c != '}') ||
+					    (data.fcode() == LM_TC_SPECIAL))
 						os << '\\';
 					else {
 						if (c == '{') ++brace;
 						if (c == '}') --brace;
 					}
-					if (c == '}' && data.FCode() == LM_TC_TEX && brace < 0) 
+					if (c == '}' && data.fcode() == LM_TC_TEX && brace < 0) 
 						lyxerr <<"Math warning: Unexpected closing brace."
 						       << endl;
 					else	       
 						os << char(c);
 				}
 			}
-			if (data.FCode()>= LM_TC_RM && data.FCode()<= LM_TC_TEXTRM)
+			if (data.fcode()>= LM_TC_RM && data.fcode()<= LM_TC_TEXTRM)
 				os << '}';
 		} else     
 			if (MathIsInset(cx)) {

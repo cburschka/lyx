@@ -224,7 +224,7 @@ void MathedXIter::SetData(MathParInset * pp)
 string const MathedXIter::GetString() const
 {
 	string s = MathedIter::GetString();
-	x += mathed_string_width(fcode, size, s);
+	x += mathed_string_width(fcode(), size, s);
 	return s;
 }
 
@@ -247,7 +247,7 @@ bool MathedXIter::Next()
 		byte c = GetChar();
 		if (c >= ' ') {
 //	  lyxerr << "WD[" << fcode << " " << size << " " << c << endl;
-			w = mathed_char_width(fcode, size, c);
+			w = mathed_char_width(fcode(), size, c);
 		} else
 			if (c == LM_TC_TAB && p) {
 //	 w = p->GetTab(col + 1);
@@ -530,7 +530,7 @@ void MathedXIter::IMetrics(int pos2, int & width, int & ascent, int & descent)
 	while (pos < pos2) {
 		cx = GetChar();
 		if (cx >= ' ') {
-			mathed_char_height(FCode(), size, cx, asc, des);
+			mathed_char_height(fcode(), size, cx, asc, des);
 			if (asc > ascent) ascent = asc;
 			if (des > descent) descent = des;
 			limit = false;

@@ -97,7 +97,9 @@ public:
 	/// Try to adjust tabs in the expected place, as in eqnarrays
 	void adjustTabs();
 	///
-	short FCode() const { return fcode; }
+	short fcode() const;
+	///
+	void fcode(short) const;
 	///
 	int getPos() const { return pos; }
 	///
@@ -122,7 +124,7 @@ protected:
 	///
 	int flags;
 	///
-	mutable short fcode;
+	mutable short fcode_;
 	///
 	mutable int pos;
 	///

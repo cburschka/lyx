@@ -1150,7 +1150,7 @@ void MathedCursor::GetPos(int & x, int & y)
 
 short MathedCursor::GetFCode()
 {
-	return cursor->FCode();
+	return cursor->fcode();
 }
 
 
