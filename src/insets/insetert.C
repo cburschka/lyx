@@ -355,7 +355,7 @@ int InsetERT::latex(Buffer const *, ostream & os, bool /*fragile*/,
 			// ignore all struck out text
 			if (isDeletedText(*par, i))
 				continue;
- 
+
 			if (par->isNewline(i)) {
 				os << '\n';
 				++lines;
@@ -449,7 +449,7 @@ Inset::RESULT InsetERT::localDispatch(FuncRequest const & cmd)
 		result = DISPATCHED;
 	}
 	break;
-		
+
 	case LFUN_MOUSE_PRESS:
 		lfunMousePress(cmd);
 		result = DISPATCHED;

@@ -357,7 +357,7 @@ void LyXScreen::redraw(LyXText * text, BufferView * bv)
 		return;
 	}
 
-	
+
 
 	workarea().getPainter().start();
 
@@ -434,24 +434,25 @@ void LyXScreen::drawFromTo(LyXText * text, BufferView * bv,
 		RowPainter rp(*bv, *text, *row);
 
 		if (rp.paint(y + yo, xo, y + text->top_y()))
-			text->markChangeInDraw(bv, row, prev);
+			text->markChangeInDraw(row, prev);
 
 		internal = internal && (st != LyXText::CHANGED_IN_DRAW);
 		while (internal && text->status() == LyXText::CHANGED_IN_DRAW) {
-			text->fullRebreak(bv);
-			text->setCursor(bv, text->cursor.par(), text->cursor.pos());
-			text->postPaint(*bv, 0);
+			text->fullRebreak();
+			text->setCursor(text->cursor.par(),
+					text->cursor.pos());
+			text->postPaint(0);
 			Row * prev = row->previous();
 			RowPainter rp(*bv, *text, *row);
 			if (rp.paint(y + yo, xo, y + text->top_y()))
-				text->markChangeInDraw(bv, row, prev);
+				text->markChangeInDraw(row, prev);
 		}
 		y += row->height();
 		row = row->next();
 	}
 
 	// maybe we have to clear the screen at the bottom
-	if ((y < y2) && text->isTopLevel()) {
+	if ((y < y2) && !text->isInInset()) {
 		workarea().getPainter().fillRectangle(0, y,
 			workarea().workWidth(), y2 - y,
 			LColor::bottomarea);
@@ -469,6 +470,6 @@ void LyXScreen::drawOneRow(LyXText * text, BufferView * bv, Row * row,
 		Row * prev = row->previous();
 		RowPainter rp(*bv, *text, *row);
 		if (rp.paint(y, xo, y + text->top_y()))
-			text->markChangeInDraw(bv, row, prev);
+			text->markChangeInDraw(row, prev);
 	}
 }

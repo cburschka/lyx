@@ -112,7 +112,7 @@ Inset * createInset(FuncRequest const & cmd)
 		// Try and generate a valid index entry.
 		InsetCommandParams icp("index");
 		string const contents = cmd.argument.empty() ?
-			bv->getLyXText()->getStringToIndex(bv) :
+			bv->getLyXText()->getStringToIndex() :
 			cmd.argument;
 		icp.setContents(contents);
 
@@ -200,14 +200,14 @@ Inset * createInset(FuncRequest const & cmd)
 			return inset;
 
 		} else if (name == "external") {
-			InsetExternal::Params iep;			
+			InsetExternal::Params iep;
 			InsetExternalMailer::string2params(cmd.argument, iep);
 			InsetExternal * inset = new InsetExternal;
 			inset->setFromParams(iep);
 			return inset;
 
 		} else if (name == "graphics") {
-			InsetGraphicsParams igp;			
+			InsetGraphicsParams igp;
 			InsetGraphicsMailer::string2params(cmd.argument, igp);
 			InsetGraphics * inset = new InsetGraphics;
 			string const fpath = cmd.view()->buffer()->filePath();

@@ -337,7 +337,7 @@ bool Buffer::readBody(LyXLex & lex, ParagraphList::iterator pit)
 		}
 	} else {
 		// We are inserting into an existing document
-		users->text->breakParagraph(users, paragraphs);
+		users->text->breakParagraph(paragraphs);
 		markDirty();
 
 		// We don't want to adopt the parameters from the
@@ -406,8 +406,8 @@ bool Buffer::readBody(LyXLex & lex, ParagraphList::iterator pit)
 
 int
 Buffer::readParagraph(LyXLex & lex, string const & token,
-                      ParagraphList & pars, ParagraphList::iterator & pit,
-                      Paragraph::depth_type & depth)
+		      ParagraphList & pars, ParagraphList::iterator & pit,
+		      Paragraph::depth_type & depth)
 {
 	static Change current_change;
 	int unknown = 0;

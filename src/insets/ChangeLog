@@ -1,6 +1,10 @@
+2003-03-17  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* adjust for BufferView* arg removal from lyxtext.
+
 2003-03-17  John Levon  <levon@movementarian.org>
 
-	* most files: remove the "cleared" parameter 
+	* most files: remove the "cleared" parameter
 	to draw in favour of always clearing. Associated
 	code removal.
 

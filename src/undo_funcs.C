@@ -66,7 +66,7 @@ void finishNoUndo(BufferView * bv)
 	freezeUndo();
 	bv->unlockInset(bv->theLockingInset());
 	finishUndo();
-	bv->text->postPaint(*bv, 0);
+	bv->text->postPaint(0);
 	unFreezeUndo();
 }
 
@@ -96,7 +96,7 @@ bool textHandleUndo(BufferView * bv, Undo & undo)
 				num = -1;
 			}
 		}
-		t->setCursorIntern(bv, firstUndoParagraph(bv, num), 0);
+		t->setCursorIntern(firstUndoParagraph(bv, num), 0);
 	}
 
 	// replace the paragraphs with the undo informations
@@ -186,9 +186,9 @@ bool textHandleUndo(BufferView * bv, Undo & undo)
 	if (before) { // if we have a par before the undopar
 		Inset * it = before->inInset();
 		if (it)
-			it->getLyXText(bv)->setCursorIntern(bv, before, 0);
+			it->getLyXText(bv)->setCursorIntern(before, 0);
 		else
-			bv->text->setCursorIntern(bv, before, 0);
+			bv->text->setCursorIntern(before, 0);
 	}
 // we are not ready for this we cannot set the cursor for a paragraph
 // which is not already in a row of LyXText!!!
@@ -212,7 +212,7 @@ bool textHandleUndo(BufferView * bv, Undo & undo)
 	if (undopar)
 		it = static_cast<UpdatableInset*>(undopar->inInset());
 	if (it) {
-		it->getLyXText(bv)->redoParagraphs(bv,
+		it->getLyXText(bv)->redoParagraphs(
 						   it->getLyXText(bv)->cursor,
 						   endpar);
 		if (tmppar) {
@@ -224,19 +224,19 @@ bool textHandleUndo(BufferView * bv, Undo & undo)
 			} else {
 				t = bv->text;
 			}
-			t->setCursorIntern(bv, tmppar, undo.cursor_pos);
+			t->setCursorIntern(tmppar, undo.cursor_pos);
 			// clear any selection and set the selection cursor
 			// for an evt. new selection.
 			t->clearSelection();
 			t->selection.cursor = t->cursor;
-			t->updateCounters(bv);
+			t->updateCounters();
 			bv->fitCursor();
 		}
 		bv->updateInset(it, false);
-		bv->text->setCursorIntern(bv, bv->text->cursor.par(),
+		bv->text->setCursorIntern(bv->text->cursor.par(),
 					  bv->text->cursor.pos());
 	} else {
-		bv->text->redoParagraphs(bv, bv->text->cursor, endpar);
+		bv->text->redoParagraphs(bv->text->cursor, endpar);
 		if (tmppar) {
 			LyXText * t;
 			Inset * it = tmppar->inInset();
@@ -246,12 +246,12 @@ bool textHandleUndo(BufferView * bv, Undo & undo)
 			} else {
 				t = bv->text;
 			}
-			t->setCursorIntern(bv, tmppar, undo.cursor_pos);
+			t->setCursorIntern(tmppar, undo.cursor_pos);
 			// clear any selection and set the selection cursor
 			// for an evt. new selection.
 			t->clearSelection();
 			t->selection.cursor = t->cursor;
-			t->updateCounters(bv);
+			t->updateCounters();
 		}
 	}
 
@@ -266,7 +266,7 @@ bool textHandleUndo(BufferView * bv, Undo & undo)
 		}
 
 	finishUndo();
-	bv->text->postPaint(*bv, 0);
+	bv->text->postPaint(0);
 	return true;
 }
 

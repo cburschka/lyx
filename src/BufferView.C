@@ -349,7 +349,7 @@ bool BufferView::removeAutoInsets()
 	// loop once at most.  However for safety we iterate rather than just
 	// make this an if () conditional.
 	while ((cursor_par_prev || cursor_par_next)
-	       && text->setCursor(this,
+	       && text->setCursor(
 				  cursor_par_prev ? cursor_par_prev : cursor_par_next,
 				  0)) {
 		// We just removed cursor_par so have to fix the "cursor"
@@ -379,7 +379,7 @@ bool BufferView::removeAutoInsets()
 		Paragraph * par_prev = par ? par->previous() : 0;
 		bool removed = false;
 
-		if (text->setCursor(this, par, 0)
+		if (text->setCursor(par, 0)
 		    && cursor_par == par_prev) {
 			// The previous setCursor line was deleted and that
 			// was the cursor_par line.  This can only happen if an
@@ -443,14 +443,14 @@ bool BufferView::removeAutoInsets()
 		}
 		if (removed) {
 			found = true;
-			text->redoParagraph(this);
+			text->redoParagraph();
 		}
 	}
 
 	// It is possible that the last line is empty if it was cursor_par
 	// and/or only had an error inset on it.  So we set the cursor to the
 	// start of the doc to force its removal and ensure a valid saved cursor
-	if (text->setCursor(this, text->ownerParagraph(), 0)
+	if (text->setCursor(text->ownerParagraph(), 0)
 	    && 0 == cursor_par_next) {
 		cursor_par = cursor_par_prev;
 		cursor_pos = cursor_par->size();
@@ -463,7 +463,7 @@ bool BufferView::removeAutoInsets()
 	}
 
 	// restore the original cursor in its corrected location.
-	text->setCursorIntern(this, cursor_par, cursor_pos);
+	text->setCursorIntern(cursor_par, cursor_pos);
 
 	return found;
 }
@@ -504,13 +504,13 @@ void BufferView::insertErrors(TeXErrors & terr)
 
 		freezeUndo();
 		InsetError * new_inset = new InsetError(msgtxt);
-		text->setCursorIntern(this, texrowpar, tmppos);
-		text->insertInset(this, new_inset);
-		text->fullRebreak(this);
+		text->setCursorIntern(texrowpar, tmppos);
+		text->insertInset(new_inset);
+		text->fullRebreak();
 		unFreezeUndo();
 	}
 	// Restore the cursor position
-	text->setCursorIntern(this, cursor.par(), cursor.pos());
+	text->setCursorIntern(cursor.par(), cursor.pos());
 }
 
 
@@ -529,7 +529,7 @@ void BufferView::setCursorFromRow(int row)
 	} else {
 		texrowpar = buffer()->getParFromID(tmpid);
 	}
-	text->setCursor(this, texrowpar, tmppos);
+	text->setCursor(texrowpar, tmppos);
 }
 
 
@@ -552,7 +552,7 @@ bool BufferView::gotoLabel(string const & label)
 		if (find(labels.begin(),labels.end(),label)
 		     != labels.end()) {
 			beforeChange(text);
-			text->setCursor(this, it.getPar(), it.getPos());
+			text->setCursor(it.getPar(), it.getPos());
 			text->selection.cursor = text->cursor;
 			update(text, BufferView::SELECT|BufferView::FITCUR);
 			return true;
@@ -608,7 +608,7 @@ void BufferView::copyEnvironment()
 void BufferView::pasteEnvironment()
 {
 	if (available()) {
-		text->pasteEnvironmentType(this);
+		text->pasteEnvironmentType();
 		owner()->message(_("Paragraph environment type set"));
 		update(text, BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 	}
@@ -623,7 +623,7 @@ WordLangTuple const BufferView::nextWord(float & value)
 		return WordLangTuple();
 	}
 
-	return text->selectNextWordToSpellcheck(this, value);
+	return text->selectNextWordToSpellcheck(value);
 }
 
 
@@ -636,7 +636,7 @@ void BufferView::selectLastWord()
 	hideCursor();
 	beforeChange(text);
 	text->selection.cursor = cur;
-	text->selectSelectedWord(this);
+	text->selectSelectedWord();
 	toggleSelection(false);
 	update(text, BufferView::SELECT|BufferView::FITCUR);
 }
@@ -648,7 +648,7 @@ void BufferView::endOfSpellCheck()
 
 	hideCursor();
 	beforeChange(text);
-	text->selectSelectedWord(this);
+	text->selectSelectedWord();
 	text->clearSelection();
 	update(text, BufferView::SELECT|BufferView::FITCUR);
 }
@@ -669,9 +669,9 @@ void BufferView::replaceWord(string const & replacestring)
 
 	// clear the selection (if there is any)
 	toggleSelection(false);
-	tt->replaceSelectionWithString(this, replacestring);
+	tt->replaceSelectionWithString(replacestring);
 
-	tt->setSelectionRange(this, replacestring.length());
+	tt->setSelectionRange(replacestring.length());
 
 	// Go back so that replacement string is also spellchecked
 	for (string::size_type i = 0; i < replacestring.length() + 1; ++i) {
@@ -709,12 +709,12 @@ bool BufferView::lockInset(UpdatableInset * inset)
 			InsetList::iterator end = pit->insetlist.end();
 			for (; it != end; ++it) {
 				if (it.getInset() == inset) {
-					text->setCursorIntern(this, &*pit, it.getPos());
+					text->setCursorIntern(&*pit, it.getPos());
 					theLockingInset(inset);
 					return true;
 				}
 				if (it.getInset()->getInsetFromID(id)) {
-					text->setCursorIntern(this, &*pit, it.getPos());
+					text->setCursorIntern(&*pit, it.getPos());
 					it.getInset()->edit(this);
 					return theLockingInset()->lockInsetInInset(this, inset);
 				}
@@ -736,7 +736,7 @@ void BufferView::showLockedInsetCursor(int x, int y, int asc, int desc)
 		    cursor.par()->isInset(cursor.pos() - 1) &&
 		    (cursor.par()->getInset(cursor.pos() - 1) ==
 		     locking_inset))
-			text->setCursor(this, cursor,
+			text->setCursor(cursor,
 					cursor.par(), cursor.pos() - 1);
 		LyXScreen::Cursor_Shape shape = LyXScreen::BAR_SHAPE;
 		LyXText * txt = getLyXText();
@@ -852,14 +852,14 @@ bool BufferView::ChangeInsets(Inset::Code code,
 			// The test it.size()==1 was needed to prevent crashes.
 			// How to set the cursor corretly when it.size()>1 ??
 			if (it.size() == 1) {
-				text->setCursorIntern(this, par, 0);
-				text->redoParagraphs(this, text->cursor,
+				text->setCursorIntern(par, 0);
+				text->redoParagraphs(text->cursor,
 						     text->cursor.par()->next());
-				text->fullRebreak(this);
+				text->fullRebreak();
 			}
 		}
 	}
-	text->setCursorIntern(this, cursor.par(), cursor.pos());
+	text->setCursorIntern(cursor.par(), cursor.pos());
 	return need_update;
 }
 

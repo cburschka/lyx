@@ -224,11 +224,11 @@ bool CutAndPaste::pasteSelection(Paragraph ** par, Paragraph ** endpar,
 		pos = (*par)->size();
 
 	// many paragraphs
-	
+
 	// make a copy of the simple cut_buffer
 #if 1
 	ParagraphList::iterator it = paragraphs.begin();
-	
+
 	ParagraphList simple_cut_clone;
 	simple_cut_clone.insert(simple_cut_clone.begin(),
 				new Paragraph(*it, false));
@@ -251,13 +251,13 @@ bool CutAndPaste::pasteSelection(Paragraph ** par, Paragraph ** endpar,
 	// Temporary set *par as previous of tmpbuf as we might have
 	// to realize the font.
 	tmpbuf->previous(*par);
-	
+
 	// make sure there is no class difference
 	SwitchLayoutsBetweenClasses(textclass, tc, &*tmpbuf,
 				    current_view->buffer()->params);
-	
+
 	Paragraph::depth_type max_depth = (*par)->getMaxDepthAfter();
-	
+
 	while (tmpbuf != paragraphs.end()) {
 		// If we have a negative jump so that the depth would
 		// go below 0 depth then we have to redo the delta to
@@ -300,14 +300,14 @@ bool CutAndPaste::pasteSelection(Paragraph ** par, Paragraph ** endpar,
 	// make the buf exactly the same layout than
 	// the cursor paragraph
 	paragraphs.begin()->makeSameLayout(*par);
-	
+
 	// find the end of the buffer
 	ParagraphList::iterator lastbuffer = paragraphs.begin();
 	while (boost::next(lastbuffer) != paragraphs.end())
 		++lastbuffer;
-	
+
 	bool paste_the_end = false;
-	
+
 	// open the paragraph for inserting the buf
 	// if necessary
 	if (((*par)->size() > pos) || !(*par)->next()) {
@@ -317,17 +317,17 @@ bool CutAndPaste::pasteSelection(Paragraph ** par, Paragraph ** endpar,
 	}
 	// set the end for redoing later
 	*endpar = (*par)->next()->next();
-	
+
 	// paste it!
 	lastbuffer->next((*par)->next());
 	(*par)->next()->previous(&*lastbuffer);
-	
+
 	(*par)->next(&*paragraphs.begin());
 	paragraphs.begin()->previous(*par);
-	
+
 	if ((*par)->next() == lastbuffer)
 		lastbuffer = *par;
-	
+
 	mergeParagraph(current_view->buffer()->params,
 		       current_view->buffer()->paragraphs, *par);
 	// store the new cursor position
@@ -350,7 +350,7 @@ bool CutAndPaste::pasteSelection(Paragraph ** par, Paragraph ** endpar,
 	}
 	// restore the simple cut buffer
 	paragraphs = simple_cut_clone;
-	
+
 	return true;
 }
 
@@ -408,10 +408,10 @@ int CutAndPaste::SwitchLayoutsBetweenClasses(textclass_type c1,
 			InsetError * new_inset = new InsetError(s);
 			LyXText * txt = current_view->getLyXText();
 			LyXCursor cur = txt->cursor;
-			txt->setCursorIntern(current_view, par, 0);
-			txt->insertInset(current_view, new_inset);
-			txt->fullRebreak(current_view);
-			txt->setCursorIntern(current_view, cur.par(), cur.pos());
+			txt->setCursorIntern(par, 0);
+			txt->insertInset(new_inset);
+			txt->fullRebreak();
+			txt->setCursorIntern(cur.par(), cur.pos());
 			unFreezeUndo();
 		}
 	}

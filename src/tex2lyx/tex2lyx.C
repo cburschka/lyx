@@ -46,19 +46,20 @@ void parse(Parser & p, ostream & os, unsigned flags, const mode_type mode);
 char const OPEN = '<';
 char const CLOSE = '>';
 
-// rather brutish way to code table structure in a string:
-//
-//  \begin{tabular}{ccc}
-//    1 & 2 & 3\\ \hline
-//    \multicolumn{2}{c}{4} & 5\\ 
-//    6 & 7 \\ 
-//  \end{tabular}
-//
-// gets "translated" to:
-//  
-//  1 TAB 2 TAB 3 LINE
-//  HLINE 2 MULT c MULT 4 TAB 5 LINE
-//  5 TAB 7 LINE
+/* rather brutish way to code table structure in a string:
+
+  \begin{tabular}{ccc}
+    1 & 2 & 3\\ \hline
+    \multicolumn{2}{c}{4} & 5 //
+    6 & 7 \\
+  \end{tabular}
+
+ gets "translated" to:
+
+  1 TAB 2 TAB 3 LINE
+  HLINE 2 MULT c MULT 4 TAB 5 LINE
+  5 TAB 7 LINE
+*/
 
 char const TAB   = '\001';
 char const LINE  = '\002';
@@ -158,7 +159,7 @@ string const trim(string const & a, char const * p = " \t\n\r")
 
 void split(string const & s, vector<string> & result, char delim = ',')
 {
-	istringstream is(s);	
+	istringstream is(s);
 	string t;
 	while (getline(is, t, delim))
 		result.push_back(t);
@@ -174,7 +175,7 @@ map<string, string> split_map(string const & s)
 	for (size_t i = 0; i < v.size(); ++i) {
 		size_t const pos   = v[i].find('=');
 		string const index = v[i].substr(0, pos);
-		string const value = v[i].substr(pos + 1, string::npos);	
+		string const value = v[i].substr(pos + 1, string::npos);
 		res[trim(index)] = trim(value);
 	}
 	return res;
@@ -186,8 +187,8 @@ string join(vector<string> const & input, char const * delim)
 	ostringstream os;
 	for (size_t i = 0; i != input.size(); ++i) {
 		if (i)
-			os << delim;	
-		os << input[i]; 
+			os << delim;
+		os << input[i];
 	}
 	return os.str();
 }
@@ -266,7 +267,7 @@ void handle_par(ostream & os)
 		return;
 	os << "\n\\layout ";
 	string s = curr_env();
-	if (s == "document" || s == "table") 
+	if (s == "document" || s == "table")
 		os << "Standard\n\n";
 	else if (s == "lyxcode")
 		os << "LyX-Code\n\n";
@@ -285,23 +286,23 @@ void handle_package(string const & name, string const & options)
 	if (name == "a4wide") {
 		h_papersize = "a4paper";
 		h_paperpackage = "widemarginsa4";
-	} else if (name == "ae") 
+	} else if (name == "ae")
 		h_fontscheme = "ae";
-	else if (name == "aecompl") 
+	else if (name == "aecompl")
 		h_fontscheme = "ae";
-	else if (name == "amsmath") 
+	else if (name == "amsmath")
 		h_use_amsmath = "1";
-	else if (name == "amssymb") 
+	else if (name == "amssymb")
 		h_use_amsmath = "1";
-	else if (name == "babel") 
+	else if (name == "babel")
 		; // ignore this
-	else if (name == "fontenc") 
+	else if (name == "fontenc")
 		; // ignore this
-	else if (name == "inputenc") 
+	else if (name == "inputenc")
 		h_inputencoding = options;
-	else if (name == "makeidx") 
+	else if (name == "makeidx")
 		; // ignore this
-	else if (name == "verbatim") 
+	else if (name == "verbatim")
 		; // ignore this
 	else if (is_known(name, known_languages)) {
 		h_language = name;
@@ -373,7 +374,7 @@ void handle_tabular(Parser & p, ostream & os, mode_type mode)
 			cells.push_back(string());
 		os << "<row";
 		if (hlines)
-			os << " topline=\"true\"";	
+			os << " topline=\"true\"";
 		os << ">\n";
 		for (size_t c = 0; c < cols; ++c) {
 			os << "<cell";
@@ -400,7 +401,7 @@ void handle_tabular(Parser & p, ostream & os, mode_type mode)
 		os << "</row>\n";
 	}
 	os << "</lyxtabular>\n";
-	end_inset(os);	
+	end_inset(os);
 }
 
 
@@ -457,7 +458,7 @@ void parse_preamble(Parser & p, ostream & os)
 		// cat codes
 		//
 		if (t.cat() == catLetter ||
-			  t.cat() == catSpace || 
+			  t.cat() == catSpace ||
 			  t.cat() == catSuper ||
 			  t.cat() == catSub ||
 			  t.cat() == catOther ||
@@ -489,7 +490,7 @@ void parse_preamble(Parser & p, ostream & os)
 			p.setCatCode('@', catLetter);
 			h_preamble << "\\makeatletter\n";
 		}
-			
+
 		else if (t.cs() == "makeatother") {
 			p.setCatCode('@', catOther);
 			h_preamble << "\\makeatother\n";
@@ -526,8 +527,8 @@ void parse_preamble(Parser & p, ostream & os)
 		else if (t.cs() == "documentclass") {
 			vector<string> opts;
 			split(p.getArg('[', ']'), opts, ',');
-			handle_opt(opts, known_languages, h_language); 
-			handle_opt(opts, known_fontsizes, h_paperfontsize); 
+			handle_opt(opts, known_languages, h_language);
+			handle_opt(opts, known_fontsizes, h_paperfontsize);
 			h_quotes_language = h_language;
 			h_options = join(opts, ",");
 			h_textclass = p.getArg('{', '}');
@@ -572,9 +573,9 @@ void parse_preamble(Parser & p, ostream & os)
 		else if (t.cs() == "setcounter") {
 			string const name = p.getArg('{', '}');
 			string const content = p.getArg('{', '}');
-			if (name == "secnumdepth") 
+			if (name == "secnumdepth")
 				h_secnumdepth = content;
-			else if (name == "tocdepth") 
+			else if (name == "tocdepth")
 				h_tocdepth = content;
 			else
 				h_preamble << "\\setcounter{" << name << "}{" << content << "}\n";
@@ -587,10 +588,10 @@ void parse_preamble(Parser & p, ostream & os)
 				h_paragraph_separation = "skip";
 			else if (name == "parindent")
 				h_paragraph_separation = "skip";
-			else 
+			else
 				h_preamble << "\\setlength{" + name + "}{" + content + "}\n";
 		}
-	
+
 		else if (t.cs() == "par")
 			h_preamble << '\n';
 
@@ -701,8 +702,8 @@ void parse(Parser & p, ostream & os, unsigned flags, const mode_type mode)
 		}
 
 		else if (t.cat() == catLetter ||
-			       t.cat() == catSpace || 
-		         t.cat() == catSuper ||
+			       t.cat() == catSpace ||
+			 t.cat() == catSuper ||
 			       t.cat() == catSub ||
 			       t.cat() == catOther ||
 			       t.cat() == catParameter)
@@ -717,7 +718,7 @@ void parse(Parser & p, ostream & os, unsigned flags, const mode_type mode)
 					os << ' ';
 				else if (mode == TEXT_MODE)
 					os << "\\SpecialChar ~\n";
-				else 
+				else
 					os << '~';
 			} else
 				os << t.character();
@@ -793,7 +794,7 @@ void parse(Parser & p, ostream & os, unsigned flags, const mode_type mode)
 			p.setCatCode('@', catLetter);
 			handle_ert(os, "\\makeatletter\n");
 		}
-			
+
 		else if (t.cs() == "makeatother") {
 			p.setCatCode('@', catOther);
 			handle_ert(os, "\\makeatother\n");
@@ -860,13 +861,13 @@ void parse(Parser & p, ostream & os, unsigned flags, const mode_type mode)
 				handle_par(os);
 				parse(p, os, FLAG_END, mode);
 			} else if (is_math_env(name)) {
-				begin_inset(os, "Formula ");	
+				begin_inset(os, "Formula ");
 				os << "\\begin{" << name << "}";
 				parse(p, os, FLAG_END, MATH_MODE);
 				os << "\\end{" << name << "}";
-				end_inset(os);	
+				end_inset(os);
 			} else if (name == "tabular") {
-				if (mode == TEXT_MODE) 
+				if (mode == TEXT_MODE)
 					handle_tabular(p, os, mode);
 				else {
 					os << "\\begin{" << name << "}";
@@ -883,7 +884,7 @@ void parse(Parser & p, ostream & os, unsigned flags, const mode_type mode)
 					 << "\n"
 					 << "\\layout Standard\n";
 				parse(p, os, FLAG_END, mode);
-				end_inset(os);	
+				end_inset(os);
 			} else if (name == "thebibliography") {
 				p.verbatimItem(); // swallow next arg
 				parse(p, os, FLAG_END, mode);
@@ -928,8 +929,8 @@ void parse(Parser & p, ostream & os, unsigned flags, const mode_type mode)
 		else if (t.cs() == "documentclass") {
 			vector<string> opts;
 			split(p.getArg('[', ']'), opts, ',');
-			handle_opt(opts, known_languages, h_language); 
-			handle_opt(opts, known_fontsizes, h_paperfontsize); 
+			handle_opt(opts, known_languages, h_language);
+			handle_opt(opts, known_fontsizes, h_paperfontsize);
 			h_quotes_language = h_language;
 			h_options = join(opts, ",");
 			h_textclass = p.getArg('{', '}');
@@ -1001,14 +1002,14 @@ void parse(Parser & p, ostream & os, unsigned flags, const mode_type mode)
 
 		else if (t.cs() == "multicolumn" && mode == TEXT_MODE) {
 			// brutish...
-			parse(p, os, FLAG_ITEM, mode); 
+			parse(p, os, FLAG_ITEM, mode);
 			os << MULT;
-			parse(p, os, FLAG_ITEM, mode); 
+			parse(p, os, FLAG_ITEM, mode);
 			os << MULT;
-			parse(p, os, FLAG_ITEM, mode); 
+			parse(p, os, FLAG_ITEM, mode);
 		}
 
-		else if (t.cs() == "hline" && mode == TEXT_MODE) 
+		else if (t.cs() == "hline" && mode == TEXT_MODE)
 			os << HLINE;
 
 		else if (t.cs() == "textrm") {
@@ -1151,7 +1152,7 @@ void parse(Parser & p, ostream & os, unsigned flags, const mode_type mode)
 			else handle_ert(os, "\"{" + name + "}");
 		}
 
-		else if (t.cs() == "ss") 
+		else if (t.cs() == "ss")
 			os << "ß";
 
 		else if (t.cs() == "input")
@@ -1213,7 +1214,7 @@ int main(int argc, char * argv[])
 	parse(p, cout, FLAG_END, TEXT_MODE);
 	cout << "\n\\the_end";
 
-	return 0;	
-}	
+	return 0;
+}
 
 // }])

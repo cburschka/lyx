@@ -404,9 +404,9 @@ void InsertAsciiFile(BufferView * bv, string const & f, bool asParagraph)
 	if (flag)
 		bv->beforeChange(bv->text);
 	if (!asParagraph)
-		bv->getLyXText()->insertStringAsLines(bv, tmpstr);
+		bv->getLyXText()->insertStringAsLines(tmpstr);
 	else
-		bv->getLyXText()->insertStringAsParagraphs(bv, tmpstr);
+		bv->getLyXText()->insertStringAsParagraphs(tmpstr);
 	if (flag)
 		bv->update(bv->text,
 			   BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);

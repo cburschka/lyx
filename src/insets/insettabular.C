@@ -1505,7 +1505,7 @@ void InsetTabular::resetPos(BufferView * bv) const
 	} else if (the_locking_inset &&
 		 (tabular->GetWidthOfColumn(actcell) > bv->workWidth()-20))
 	{
-		int xx = cursor_.x() - offset + bv->text->getRealCursorX(bv);
+		int xx = cursor_.x() - offset + bv->text->getRealCursorX();
 		if (xx > (bv->workWidth()-20)) {
 			scroll(bv, -(xx - bv->workWidth() + 60));
 			updateLocal(bv, FULL, false);

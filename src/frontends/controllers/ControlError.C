@@ -28,4 +28,3 @@ void ControlError::clearParams()
 {
 	params_.erase();
 }
-

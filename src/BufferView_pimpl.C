@@ -308,13 +308,13 @@ int BufferView::Pimpl::resizeCurrentBuffer()
 		// Mechanism when setting the cursor.
 		bv_->text->selection.mark(mark_set);
 		if (selection) {
-			bv_->text->setCursor(bv_, selstartpar, selstartpos);
+			bv_->text->setCursor(selstartpar, selstartpos);
 			bv_->text->selection.cursor = bv_->text->cursor;
-			bv_->text->setCursor(bv_, selendpar, selendpos);
-			bv_->text->setSelection(bv_);
-			bv_->text->setCursor(bv_, par, pos);
+			bv_->text->setCursor(selendpar, selendpos);
+			bv_->text->setSelection();
+			bv_->text->setCursor(par, pos);
 		} else {
-			bv_->text->setCursor(bv_, par, pos);
+			bv_->text->setCursor(par, pos);
 			bv_->text->selection.cursor = bv_->text->cursor;
 			bv_->text->selection.set(false);
 		}
@@ -376,9 +376,9 @@ void BufferView::Pimpl::scrollDocView(int value)
 	int const last = static_cast<int>((bv_->text->top_y() + workarea().workHeight() - height));
 
 	if (vbt->cursor.y() < first)
-		vbt->setCursorFromCoordinates(bv_, 0, first);
+		vbt->setCursorFromCoordinates(0, first);
 	else if (vbt->cursor.y() > last)
-		vbt->setCursorFromCoordinates(bv_, 0, last);
+		vbt->setCursorFromCoordinates(0, last);
 }
 
 
@@ -503,19 +503,19 @@ void BufferView::Pimpl::update()
 		screen().update(*bv_);
 		bool fitc = false;
 		while (bv_->text->status() == LyXText::CHANGED_IN_DRAW) {
-			bv_->text->fullRebreak(bv_);
-			bv_->text->setCursor(bv_, bv_->text->cursor.par(),
+			bv_->text->fullRebreak();
+			bv_->text->setCursor(bv_->text->cursor.par(),
 					     bv_->text->cursor.pos());
 			if (bv_->text->selection.set()) {
-				bv_->text->setCursor(bv_, bv_->text->selection.start,
+				bv_->text->setCursor(bv_->text->selection.start,
 						     bv_->text->selection.start.par(),
 						     bv_->text->selection.start.pos());
-				bv_->text->setCursor(bv_, bv_->text->selection.end,
+				bv_->text->setCursor(bv_->text->selection.end,
 						     bv_->text->selection.end.par(),
 						     bv_->text->selection.end.pos());
 			}
 			fitc = true;
-			bv_->text->postPaint(*bv_, 0);
+			bv_->text->postPaint(0);
 			screen().update(*bv_);
 		}
 
@@ -574,7 +574,7 @@ void BufferView::Pimpl::update(LyXText * text, BufferView::UpdateCodes f)
 		text->selection.cursor = text->cursor;
 	}
 
-	text->fullRebreak(bv_);
+	text->fullRebreak();
 
 	if (text->inset_owner) {
 		text->inset_owner->setUpdateStatus(bv_, InsetText::NONE);
@@ -680,7 +680,7 @@ void BufferView::Pimpl::restorePosition(unsigned int i)
 	if (!par)
 		return;
 
-	bv_->text->setCursor(bv_, par,
+	bv_->text->setCursor(par,
 			     min(par->size(), saved_positions[i].par_pos));
 
 	update(bv_->text, BufferView::SELECT | BufferView::FITCUR);
@@ -940,7 +940,7 @@ void BufferView::Pimpl::trackChanges()
 		buf->undostack.clear();
 	} else {
 		bv_->update(bv_->text, BufferView::SELECT | BufferView::FITCUR);
-		bv_->text->setCursor(bv_, &(*buf->paragraphs.begin()), 0);
+		bv_->text->setCursor(&(*buf->paragraphs.begin()), 0);
 #warning changes FIXME
 		//moveCursorUpdate(false);
 
@@ -1224,7 +1224,7 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev_in)
 	case LFUN_PARAGRAPH_APPLY:
 		setParagraphParams(*bv_, ev.argument);
 		break;
-		
+
 	case LFUN_THESAURUS_ENTRY:
 	{
 		string arg = ev.argument;
@@ -1236,7 +1236,7 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev_in)
 			// FIXME
 			if (arg.size() > 100 || arg.empty()) {
 				// Get word or selection
-				bv_->getLyXText()->selectWordWhenUnderCursor(bv_, LyXText::WHOLE_WORD);
+				bv_->getLyXText()->selectWordWhenUnderCursor(LyXText::WHOLE_WORD);
 				arg = bv_->getLyXText()->selectionAsString(buffer_, false);
 				// FIXME: where is getLyXText()->unselect(bv_) ?
 			}
@@ -1256,12 +1256,12 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev_in)
 
 	case LFUN_ACCEPT_ALL_CHANGES: {
 		bv_->update(bv_->text, BufferView::SELECT | BufferView::FITCUR);
-		bv_->text->setCursor(bv_, &(*bv_->buffer()->paragraphs.begin()), 0);
+		bv_->text->setCursor(&(*bv_->buffer()->paragraphs.begin()), 0);
 #warning FIXME changes
 		//moveCursorUpdate(false);
 
 		while (lyxfind::findNextChange(bv_)) {
-			bv_->getLyXText()->acceptChange(bv_);
+			bv_->getLyXText()->acceptChange();
 		}
 		update(bv_->text,
 			BufferView::SELECT | BufferView::FITCUR | BufferView::CHANGE);
@@ -1270,12 +1270,12 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev_in)
 
 	case LFUN_REJECT_ALL_CHANGES: {
 		bv_->update(bv_->text, BufferView::SELECT | BufferView::FITCUR);
-		bv_->text->setCursor(bv_, &(*bv_->buffer()->paragraphs.begin()), 0);
+		bv_->text->setCursor(&(*bv_->buffer()->paragraphs.begin()), 0);
 #warning FIXME changes
 		//moveCursorUpdate(false);
 
 		while (lyxfind::findNextChange(bv_)) {
-			bv_->getLyXText()->rejectChange(bv_);
+			bv_->getLyXText()->rejectChange();
 		}
 		update(bv_->text,
 			BufferView::SELECT | BufferView::FITCUR | BufferView::CHANGE);
@@ -1283,14 +1283,14 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev_in)
 	}
 
 	case LFUN_ACCEPT_CHANGE: {
-		bv_->getLyXText()->acceptChange(bv_);
+		bv_->getLyXText()->acceptChange();
 		update(bv_->text,
 			BufferView::SELECT | BufferView::FITCUR | BufferView::CHANGE);
 		break;
 	}
 
 	case LFUN_REJECT_CHANGE: {
-		bv_->getLyXText()->rejectChange(bv_);
+		bv_->getLyXText()->rejectChange();
 		update(bv_->text,
 			BufferView::SELECT | BufferView::FITCUR | BufferView::CHANGE);
 		break;
@@ -1325,13 +1325,13 @@ bool BufferView::Pimpl::insertInset(Inset * inset, string const & lout)
 	beforeChange(bv_->text);
 	if (!lout.empty()) {
 		update(bv_->text, BufferView::SELECT|BufferView::FITCUR);
-		bv_->text->breakParagraph(bv_, bv_->buffer()->paragraphs);
+		bv_->text->breakParagraph(bv_->buffer()->paragraphs);
 		update(bv_->text, BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 
 		if (!bv_->text->cursor.par()->empty()) {
 			bv_->text->cursorLeft(bv_);
 
-			bv_->text->breakParagraph(bv_, bv_->buffer()->paragraphs);
+			bv_->text->breakParagraph(bv_->buffer()->paragraphs);
 			update(bv_->text, BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 		}
 
@@ -1349,9 +1349,9 @@ bool BufferView::Pimpl::insertInset(Inset * inset, string const & lout)
 			lay = tclass.defaultLayoutName();
 		}
 
-		bv_->text->setLayout(bv_, lay);
+		bv_->text->setLayout(lay);
 
-		bv_->text->setParagraph(bv_, 0, 0,
+		bv_->text->setParagraph(0, 0,
 				   0, 0,
 				   VSpace(VSpace::NONE), VSpace(VSpace::NONE),
 				   Spacing(),
@@ -1361,7 +1361,7 @@ bool BufferView::Pimpl::insertInset(Inset * inset, string const & lout)
 		update(bv_->text, BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 	}
 
-	bv_->text->insertInset(bv_, inset);
+	bv_->text->insertInset(inset);
 	update(bv_->text, BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 
 	unFreezeUndo();
@@ -1377,7 +1377,7 @@ void BufferView::Pimpl::updateInset(Inset * inset, bool mark_dirty)
 	// first check for locking insets
 	if (bv_->theLockingInset()) {
 		if (bv_->theLockingInset() == inset) {
-			if (bv_->text->updateInset(bv_, inset)) {
+			if (bv_->text->updateInset(inset)) {
 				update();
 				if (mark_dirty) {
 					buffer_->markDirty();
@@ -1386,7 +1386,7 @@ void BufferView::Pimpl::updateInset(Inset * inset, bool mark_dirty)
 				return;
 			}
 		} else if (bv_->theLockingInset()->updateInsetInInset(bv_, inset)) {
-			if (bv_->text->updateInset(bv_,  bv_->theLockingInset())) {
+			if (bv_->text->updateInset(bv_->theLockingInset())) {
 				update();
 				if (mark_dirty) {
 					buffer_->markDirty();
@@ -1406,7 +1406,7 @@ void BufferView::Pimpl::updateInset(Inset * inset, bool mark_dirty)
 	hideCursor();
 	if (tl_inset == inset) {
 		update(bv_->text, BufferView::UPDATE);
-		if (bv_->text->updateInset(bv_, inset)) {
+		if (bv_->text->updateInset(inset)) {
 			if (mark_dirty) {
 				update(bv_->text,
 				       BufferView::SELECT
@@ -1420,7 +1420,7 @@ void BufferView::Pimpl::updateInset(Inset * inset, bool mark_dirty)
 	} else if (static_cast<UpdatableInset *>(tl_inset)
 			   ->updateInsetInInset(bv_, inset))
 	{
-		if (bv_->text->updateInset(bv_, tl_inset)) {
+		if (bv_->text->updateInset(tl_inset)) {
 			update();
 			updateScrollbar();
 		}

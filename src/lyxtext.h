@@ -69,7 +69,7 @@ public:
 	/// Constructor
 	LyXText(BufferView *);
 	/// sets inset as owner
-	LyXText(InsetText *);
+	LyXText(BufferView *, InsetText *);
 
 	/// Destructor
 	~LyXText();
@@ -88,7 +88,7 @@ private:
 	 *  declared mutable because removeRow is const
 	 */
 	mutable Row * top_row_;
-	/** the pixel offset with respect to this row of top_y 
+	/** the pixel offset with respect to this row of top_y
 	 *  declared mutable because removeRow is const
 	 */
 	mutable int top_row_offset_;
@@ -103,7 +103,7 @@ public:
 	UpdatableInset * the_locking_inset;
 
 	///
-	int getRealCursorX(BufferView *) const;
+	int getRealCursorX() const;
 	///
 	LyXFont const getFont(Buffer const *, Paragraph * par,
 		lyx::pos_type pos) const;
@@ -114,35 +114,34 @@ public:
 	///
 	void setCharFont(Buffer const *, Paragraph * par,
 			 lyx::pos_type pos, LyXFont const & font);
-	void setCharFont(BufferView *, Paragraph * par,
+	void setCharFont(Paragraph * par,
 			 lyx::pos_type pos, LyXFont const & font, bool toggleall);
 
 	/// return true if the row changed
-	void markChangeInDraw(BufferView * bv, Row * row, Row * next);
+	void markChangeInDraw(Row * row, Row * next);
 	///
-	void breakAgainOneRow(BufferView *, Row * row);
+	void breakAgainOneRow(Row * row);
 	/// what you expect when pressing <enter> at cursor position
-	void breakParagraph(BufferView *,
-			    ParagraphList & paragraphs, char keep_layout = 0);
+	void breakParagraph(ParagraphList & paragraphs, char keep_layout = 0);
 
 	/** set layout over selection and make a total rebreak of
 	  those paragraphs
 	  */
-	Paragraph * setLayout(BufferView *, LyXCursor & actual_cursor,
+	Paragraph * setLayout(LyXCursor & actual_cursor,
 			      LyXCursor & selection_start,
 			      LyXCursor & selection_end,
 			      string const & layout);
 	///
-	void setLayout(BufferView *, string const & layout);
+	void setLayout(string const & layout);
 
 	/** increment depth over selection and make a total rebreak of those
 	  paragraphs
 	  */
-	void incDepth(BufferView *);
+	void incDepth();
 
 	/** decrement depth over selection and make a total rebreak of those
 	  paragraphs */
-	void decDepth(BufferView *);
+	void decDepth();
 
 	/// get the depth at current cursor position
 	int getDepth() const;
@@ -151,39 +150,39 @@ public:
 	  paragraphs.
 	  toggleall defaults to false.
 	  */
-	void setFont(BufferView *, LyXFont const &, bool toggleall = false);
+	void setFont(LyXFont const &, bool toggleall = false);
 
 	/** deletes and inserts again all paragaphs between the cursor
 	  and the specified par. The Cursor is needed to set the refreshing
 	  parameters.
 	  This function is needed after SetLayout and SetFont etc.
 	  */
-	void redoParagraphs(BufferView *, LyXCursor const & cursor,
+	void redoParagraphs(LyXCursor const & cursor,
 			    Paragraph const * end_par) const;
 	///
-	void redoParagraph(BufferView *) const;
+	void redoParagraph() const;
 
 	///
-	void toggleFree(BufferView *, LyXFont const &, bool toggleall = false);
+	void toggleFree(LyXFont const &, bool toggleall = false);
 
 	///
-	string getStringToIndex(BufferView *);
+	string getStringToIndex();
 
 	/** recalculates the heights of all previous rows of the
 	    specified paragraph.  needed, if the last characters font
 	    has changed.
 	    */
-	void redoHeightOfParagraph(BufferView *);
+	void redoHeightOfParagraph();
 
 	/** insert a character, moves all the following breaks in the
 	  same Paragraph one to the right and make a little rebreak
 	  */
-	void insertChar(BufferView *, char c);
+	void insertChar(char c);
 	///
-	void insertInset(BufferView *, Inset * inset);
+	void insertInset(Inset * inset);
 
 	/// Completes the insertion with a full rebreak
-	void fullRebreak(BufferView *);
+	void fullRebreak();
 
 	///
 	mutable Row * need_break_row;
@@ -197,15 +196,19 @@ public:
 	/**
 	 * Mark position y as the starting point for a repaint
 	 */
-	void postPaint(BufferView & bv, int start_y);
+	void postPaint(int start_y);
 
 	/**
 	 * Mark the given row at position y as needing a repaint.
 	 */
-	void postRowPaint(BufferView & bv, Row * row, int start_y);
+	void postRowPaint(Row * row, int start_y);
 
 	///
 	Inset::RESULT dispatch(FuncRequest const & cmd);
+
+	BufferView * bv();
+
+	BufferView * bv() const;
 
 	friend class LyXScreen;
 
@@ -247,7 +250,7 @@ public:
 	/** returns the column near the specified x-coordinate of the row
 	 x is set to the real beginning of this column
 	 */
-	lyx::pos_type getColumnNearX(BufferView *, Row * row,
+	lyx::pos_type getColumnNearX(Row * row,
 					    int & x, bool & boundary) const;
 
 	/** returns a pointer to a specified row. y is set to the beginning
@@ -309,7 +312,7 @@ public:
 	mutable LyXCursor toggle_end_cursor;
 
 	/// need the selection cursor:
-	void setSelection(BufferView *);
+	void setSelection();
 	///
 	void clearSelection() const;
 	///
@@ -319,40 +322,40 @@ public:
 	void getWord(LyXCursor & from, LyXCursor & to,
 		     word_location const) const;
 	/// just selects the word the cursor is in
-	void selectWord(BufferView *, word_location const);
+	void selectWord(word_location const);
 	/// returns the inset at cursor (if it exists), 0 otherwise
 	Inset * getInset() const;
 
 	/// accept selected change
-	void acceptChange(BufferView * bv);
+	void acceptChange();
 
 	/// reject selected change
-	void rejectChange(BufferView * bv);
+	void rejectChange();
 
 	/** 'selects" the next word, where the cursor is not in
 	 and returns this word as string. THe cursor will be moved
 	 to the beginning of this word.
 	 With SelectSelectedWord can this be highlighted really
 	 */
-	WordLangTuple const selectNextWordToSpellcheck(BufferView *, float & value) const;
+	WordLangTuple const selectNextWordToSpellcheck(float & value) const;
 	///
-	void selectSelectedWord(BufferView *);
+	void selectSelectedWord();
 	/// returns true if par was empty and was removed
-	bool setCursor(BufferView *, Paragraph * par,
+	bool setCursor(Paragraph * par,
 		       lyx::pos_type pos,
 		       bool setfont = true,
 		       bool boundary = false) const;
 	///
-	void setCursor(BufferView *, LyXCursor &, Paragraph * par,
+	void setCursor(LyXCursor &, Paragraph * par,
 		       lyx::pos_type pos,
 		       bool boundary = false) const;
 	///
-	void setCursorIntern(BufferView *, Paragraph * par,
+	void setCursorIntern(Paragraph * par,
 			     lyx::pos_type pos,
 			     bool setfont = true,
 			     bool boundary = false) const;
 	///
-	void setCurrentFont(BufferView *) const;
+	void setCurrentFont() const;
 
 	///
 	bool isBoundary(Buffer const *, Paragraph * par,
@@ -363,47 +366,46 @@ public:
 			 LyXFont const & font) const;
 
 	///
-	void setCursorFromCoordinates(BufferView *, int x, int y) const;
+	void setCursorFromCoordinates(int x, int y) const;
 	///
-	void setCursorFromCoordinates(BufferView *, LyXCursor &,
+	void setCursorFromCoordinates(LyXCursor &,
 				      int x, int y) const;
 	///
-	void cursorUp(BufferView *, bool selecting = false) const;
+	void cursorUp(bool selecting = false) const;
 	///
-	void cursorDown(BufferView *, bool selecting = false) const;
+	void cursorDown(bool selecting = false) const;
 	///
-	void cursorLeft(BufferView *, bool internal = true) const;
+	void cursorLeft(bool internal = true) const;
 	///
-	void cursorRight(BufferView *, bool internal = true) const;
+	void cursorRight(bool internal = true) const;
 	///
-	void cursorLeftOneWord(BufferView *) const;
+	void cursorLeftOneWord() const;
 	///
-	void cursorRightOneWord(BufferView *) const;
+	void cursorRightOneWord() const;
 	///
-	void cursorUpParagraph(BufferView *) const;
+	void cursorUpParagraph() const;
 	///
-	void cursorDownParagraph(BufferView *) const;
+	void cursorDownParagraph() const;
 	///
-	void cursorHome(BufferView *) const;
+	void cursorHome() const;
 	///
-	void cursorEnd(BufferView *) const;
+	void cursorEnd() const;
 	///
-	void cursorPrevious(BufferView * bv);
+	void cursorPrevious();
 	///
-	void cursorNext(BufferView * bv);
+	void cursorNext();
 	///
-	void cursorTab(BufferView *) const;
+	void cursorTab() const;
 	///
-	void cursorTop(BufferView *) const;
+	void cursorTop() const;
 	///
-	void cursorBottom(BufferView *) const;
+	void cursorBottom() const;
 	///
-	void Delete(BufferView *);
+	void Delete();
 	///
-	void backspace(BufferView *);
+	void backspace();
 	///
-	bool selectWordWhenUnderCursor(BufferView *,
-				       word_location const);
+	bool selectWordWhenUnderCursor(word_location);
 	///
 	enum TextCase {
 		///
@@ -414,22 +416,22 @@ public:
 		text_uppercase = 2
 	};
 	/// Change the case of the word at cursor position.
-	void changeCase(BufferView &, TextCase action);
+	void changeCase(TextCase action);
 	///
-	void transposeChars(BufferView &);
+	void transposeChars();
 
 	///
-	void toggleInset(BufferView *);
+	void toggleInset();
 	///
-	void cutSelection(BufferView *, bool doclear = true, bool realcut = true);
+	void cutSelection(bool doclear = true, bool realcut = true);
 	///
-	void copySelection(BufferView *);
+	void copySelection();
 	///
-	void pasteSelection(BufferView *);
+	void pasteSelection();
 	///
 	void copyEnvironmentType();
 	///
-	void pasteEnvironmentType(BufferView *);
+	void pasteEnvironmentType();
 
 	/** the DTP switches for paragraphs. LyX will store the top settings
 	 always in the first physical paragraph, the bottom settings in the
@@ -437,14 +439,13 @@ public:
 	 settings are given to the new one. So I can make shure, they do not
 	 duplicate themself (and you cannnot make dirty things with them! )
 	 */
-	void setParagraph(BufferView *,
-			  bool line_top, bool line_bottom,
+	void setParagraph(bool line_top, bool line_bottom,
 			  bool pagebreak_top, bool pagebreak_bottom,
 			  VSpace const & space_top,
 			  VSpace const & space_bottom,
 			  Spacing const & spacing,
 			  LyXAlignment align,
-			  string labelwidthstring,
+			  string const & labelwidthstring,
 			  bool noindent);
 
 	/* these things are for search and replace */
@@ -453,38 +454,38 @@ public:
 	 * Sets the selection from the current cursor position to length
 	 * characters to the right. No safety checks.
 	 */
-	void setSelectionRange(BufferView *, lyx::pos_type length);
+	void setSelectionRange(lyx::pos_type length);
 
 	/** simple replacing. The font of the first selected character
 	  is used
 	  */
-	void replaceSelectionWithString(BufferView *, string const & str);
+	void replaceSelectionWithString(string const & str);
 
 	/// needed to insert the selection
-	void insertStringAsLines(BufferView *, string const & str);
+	void insertStringAsLines(string const & str);
 	/// needed to insert the selection
-	void insertStringAsParagraphs(BufferView *, string const & str);
+	void insertStringAsParagraphs(string const & str);
 
 	/// Find next inset of some specified type.
-	bool gotoNextInset(BufferView *, std::vector<Inset::Code> const & codes,
+	bool gotoNextInset(std::vector<Inset::Code> const & codes,
 			   string const & contents = string()) const;
 	///
-	void gotoInset(BufferView * bv, std::vector<Inset::Code> const & codes,
-						bool same_content);
+	void gotoInset(std::vector<Inset::Code> const & codes,
+		       bool same_content);
 	///
-	void gotoInset(BufferView * bv, Inset::Code code, bool same_content);
+	void gotoInset(Inset::Code code, bool same_content);
 	///
 
 	/* for the greater insets */
 
 	/// returns false if inset wasn't found
-	bool updateInset(BufferView *, Inset *);
+	bool updateInset(Inset *);
 	///
-	void checkParagraph(BufferView *, Paragraph * par, lyx::pos_type pos);
+	void checkParagraph(Paragraph * par, lyx::pos_type pos);
 	///
-	int workWidth(BufferView &) const;
+	int workWidth() const;
 	///
-	int workWidth(BufferView &, Inset * inset) const;
+	int workWidth(Inset * inset) const;
 	///
 	void computeBidiTables(Buffer const *, Row * row) const;
 
@@ -529,15 +530,15 @@ private:
 	void cursorLeftOneWord(LyXCursor &) const;
 
 	///
-	float getCursorX(BufferView *, Row *, lyx::pos_type pos,
-					 lyx::pos_type last, bool boundary) const;
+	float getCursorX(Row *, lyx::pos_type pos,
+			 lyx::pos_type last, bool boundary) const;
 	/// used in setlayout
 	void makeFontEntriesLayoutSpecific(Buffer const &, Paragraph & par);
 
 	/** forces the redrawing of a paragraph. Needed when manipulating a
 	    right address box
 	    */
-	void redoDrawingOfParagraph(BufferView *, LyXCursor const & cursor);
+	void redoDrawingOfParagraph(LyXCursor const & cursor);
 
 	/** Copybuffer for copy environment type.
 	  Asger has learned that this should be a buffer-property instead
@@ -555,45 +556,42 @@ private:
 	void removeParagraph(Row * row) const;
 
 	/// insert the specified paragraph behind the specified row
-	void insertParagraph(BufferView *,
-			     Paragraph * par, Row * row) const;
+	void insertParagraph(Paragraph * par, Row * row) const;
 
 	/** appends  the implizit specified paragraph behind the specified row,
 	 * start at the implizit given position */
-	void appendParagraph(BufferView *, Row * row) const;
+	void appendParagraph(Row * row) const;
 
 	///
-	void breakAgain(BufferView *, Row * row) const;
+	void breakAgain(Row * row) const;
 	/// Calculate and set the height of the row
-	void setHeightOfRow(BufferView *, Row * row_ptr) const;
+	void setHeightOfRow(Row * row_ptr) const;
 
 	// fix the cursor `cur' after a characters has been deleted at `where'
 	// position. Called by deleteEmptyParagraphMechanism
-	void fixCursorAfterDelete(BufferView * bv,
-				  LyXCursor & cur,
+	void fixCursorAfterDelete(LyXCursor & cur,
 				  LyXCursor const & where) const;
 
 	/// delete double space (false) or empty paragraphs (true) around old_cursor
-	bool deleteEmptyParagraphMechanism(BufferView *,
-					   LyXCursor const & old_cursor) const;
+	bool deleteEmptyParagraphMechanism(LyXCursor const & old_cursor) const;
 
 public:
 	/** Updates all counters starting BEHIND the row. Changed paragraphs
 	 * with a dynamic left margin will be rebroken. */
-	void updateCounters(BufferView *) const;
+	void updateCounters() const;
 	///
-	void update(BufferView * bv, bool changed = true);
+	void update(bool changed = true);
 	/**
 	 * Returns an inset if inset was hit, or 0 if not.
 	 * If hit, the coordinates are changed relative to the inset.
 	 */
-	Inset * checkInsetHit(BufferView * bv, int & x, int & y) const;
+	Inset * checkInsetHit(int & x, int & y) const;
 
 	///
-	int singleWidth(BufferView *, Paragraph * par,
+	int singleWidth(Paragraph * par,
 		lyx::pos_type pos) const;
 	///
-	int singleWidth(BufferView *, Paragraph * par,
+	int singleWidth(Paragraph * par,
 		lyx::pos_type pos, char c) const;
 
 	/// return the color of the canvas
@@ -611,13 +609,13 @@ public:
 	 * in LaTeX the beginning of the text fits in some cases
 	 * (for example sections) exactly the label-width.
 	 */
-	int leftMargin(BufferView *, Row const * row) const;
+	int leftMargin(Row const * row) const;
 	///
 	int rightMargin(Buffer const &, Row const & row) const;
 
 	/** this calculates the specified parameters. needed when setting
 	 * the cursor and when creating a visible row */
-	void prepareToPrint(BufferView *, Row * row, float & x,
+	void prepareToPrint(Row * row, float & x,
 			    float & fill_separator,
 			    float & fill_hfill,
 			    float & fill_label_hfill,
@@ -627,11 +625,11 @@ private:
 	///
 	void setCounter(Buffer const *, Paragraph * par) const;
 	///
-	void deleteWordForward(BufferView *);
+	void deleteWordForward();
 	///
-	void deleteWordBackward(BufferView *);
+	void deleteWordBackward();
 	///
-	void deleteLineForward(BufferView *);
+	void deleteLineForward();
 
 	/*
 	 * some low level functions
@@ -640,19 +638,19 @@ private:
 
 	/// return the pos value *before* which a row should break.
 	/// for example, the pos at which IsNewLine(pos) == true
-	lyx::pos_type rowBreakPoint(BufferView &, Row const & row) const;
+	lyx::pos_type rowBreakPoint(Row const & row) const;
 
 	/// returns the minimum space a row needs on the screen in pixel
-	int fill(BufferView &, Row & row, int workwidth) const;
+	int fill(Row & row, int workwidth) const;
 
 	/**
 	 * returns the minimum space a manual label needs on the
 	 * screen in pixels
 	 */
-	int labelFill(BufferView &, Row const & row) const;
+	int labelFill(Row const & row) const;
 
 	/// FIXME
-	int labelEnd(BufferView &, Row const & row) const;
+	int labelEnd(Row const & row) const;
 
 	///
 	mutable std::vector<lyx::pos_type> log2vis_list;
@@ -681,11 +679,7 @@ public:
 	// set it searching first for the right owner using the paragraph id
 	void ownerParagraph(int id, Paragraph *) const;
 
-	/// return true if this is the outer-most lyxtext
-	bool isTopLevel() const;
-
-	/// return true if this is owned by an inset. FIXME: why the difference
-	/// with isTopLevel() ??
+	/// return true if this is owned by an inset.
 	bool isInInset() const;
 };
 

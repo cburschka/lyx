@@ -255,7 +255,7 @@ void TransManager::insertVerbatim(string const & str, LyXText * text)
 	string::size_type const l = str.length();
 
 	for (string::size_type i = 0; i < l; ++i) {
-		text->insertChar(current_view, str[i]);
+		text->insertChar(str[i]);
 	}
 }
 
@@ -274,7 +274,7 @@ void TransManager::insert(string const & str, LyXText * text)
 		// Could not find an encoding
 		InsetLatexAccent ins(str);
 		if (ins.canDisplay()) {
-			text->insertInset(current_view,
+			text->insertInset(
 					  new InsetLatexAccent(ins));
 		} else {
 			insertVerbatim(str, text);

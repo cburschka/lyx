@@ -236,9 +236,9 @@ void changeDepth(BufferView * bv, LyXText * text, int decInc)
 	bv->hideCursor();
 	bv->update(bv->text, BufferView::SELECT|BufferView::FITCUR);
 	if (decInc >= 0)
-		text->incDepth(bv);
+		text->incDepth();
 	else
-		text->decDepth(bv);
+		text->decDepth();
 	if (text->inset_owner)
 		bv->updateInset((Inset *)text->inset_owner, true);
 	bv->update(bv->text, BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
@@ -398,7 +398,7 @@ void toggleAndShow(BufferView * bv, LyXFont const & font, bool toggleall)
 
 	bv->hideCursor();
 	bv->update(text, BufferView::SELECT | BufferView::FITCUR);
-	text->toggleFree(bv, font, toggleall);
+	text->toggleFree(font, toggleall);
 	bv->update(text, BufferView::SELECT | BufferView::FITCUR | BufferView::CHANGE);
 
 	if (font.language() != ignore_language ||
@@ -408,7 +408,7 @@ void toggleAndShow(BufferView * bv, LyXFont const & font, bool toggleall)
 		if (cursor.boundary() !=
 		    text->isBoundary(bv->buffer(), cursor.par(), cursor.pos(),
 				     text->real_current_font))
-			text->setCursor(bv, cursor.par(), cursor.pos(),
+			text->setCursor(cursor.par(), cursor.pos(),
 					false, !cursor.boundary());
 	}
 }

@@ -426,8 +426,7 @@ void setParagraphParams(BufferView & bv, string const & data)
 	params.read(lex);
 
 	LyXText * text = bv.getLyXText();
-	text->setParagraph(&bv,
-			   params.lineTop(),
+	text->setParagraph(params.lineTop(),
 			   params.lineBottom(),
 			   params.pagebreakTop(),
 			   params.pagebreakBottom(),

@@ -1,3 +1,7 @@
+2003-03-17  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* adjust for BufferView* arg removal from lyxtext.
+
 2003-03-17  John Levon  <levon@movementarian.org>
 
 	* screen.h:
@@ -8,7 +12,7 @@
 
 	* Dialogs.h: remove showParagraph and updateParagraph.
 	* guiapi.[Ch]: remove gui_ShowParagraph and gui_UpdateParagraph.
-	
+
 2003-03-12  Angus Leeming  <leeming@lyx.org>
 
 	* Dialogs.[Ch] (hide): rejig as a static method. Hide the signal
@@ -101,7 +105,7 @@
 
 	* guiapi.[Ch]: provide a C-interface to the new Dialogs::show
 	method. Retire the old functions that called dead Dialogs methods.
-	
+
 2003-02-21  Angus Leeming  <leeming@lyx.org>
 
 	* Timeout.[Ch]: define a Timeout::Impl abstract base class from

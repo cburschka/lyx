@@ -323,7 +323,7 @@ public:
 
 	/// mark the inset contents as erased (for change tracking)
 	virtual void markErased() {}
- 
+
 	/** Adds a LaTeX snippet to the Preview Loader for transformation
 	 *  into a bitmap image. Does not start the laoding process.
 	 *

@@ -69,17 +69,15 @@ LyXFont const RowPainter::getFont(pos_type pos) const
 
 int RowPainter::singleWidth(lyx::pos_type pos) const
 {
-	BufferView * bv(perv(bv_));
 	Paragraph * par(const_cast<Paragraph*>(&par_));
-	return text_.singleWidth(bv, par, pos);
+	return text_.singleWidth(par, pos);
 }
 
 
 int RowPainter::singleWidth(lyx::pos_type pos, char c) const
 {
-	BufferView * bv(perv(bv_));
 	Paragraph * par(const_cast<Paragraph*>(&par_));
-	return text_.singleWidth(bv, par, pos, c);
+	return text_.singleWidth(par, pos, c);
 }
 
 
@@ -99,9 +97,8 @@ char const RowPainter::transformChar(char c, lyx::pos_type pos) const
 
 int RowPainter::leftMargin() const
 {
-	BufferView * bv(perv(bv_));
 	Row * row(const_cast<Row *>(&row_));
-	return text_.leftMargin(bv, row);
+	return text_.leftMargin(row);
 }
 
 
@@ -631,7 +628,7 @@ void RowPainter::paintFirst()
 	}
 
 	// the top margin
-	if (!row_.previous() && text_.isTopLevel())
+	if (!row_.previous() && !text_.isInInset())
 		y_top += PAPER_MARGIN;
 
 	// draw a top pagebreak
@@ -778,7 +775,7 @@ void RowPainter::paintLast()
 	int y_bottom = row_.height() - 1;
 
 	// the bottom margin
-	if (!row_.next() && text_.isTopLevel())
+	if (!row_.next() && !text_.isInInset())
 		y_bottom -= PAPER_MARGIN;
 
 	int const ww = bv_.workWidth();
@@ -980,9 +977,8 @@ bool RowPainter::paint(int y_offset, int x_offset, int y)
 
 	// FIXME: must be a cleaner way here. Aren't these calculations
 	// belonging to row metrics ?
-	BufferView * bv(const_cast<BufferView *>(&bv_));
 	Row * row(const_cast<Row *>(&row_));
-	text_.prepareToPrint(bv, row, x_, separator_, hfill_, label_hfill_);
+	text_.prepareToPrint(row, x_, separator_, hfill_, label_hfill_);
 
 	// FIXME: what is this fixing ?
 	if (text_.isInInset() && (x_ < 0))

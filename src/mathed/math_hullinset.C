@@ -391,7 +391,7 @@ void MathHullInset::footer_write(WriteStream & os) const
 	else if (type_ == "eqnarray" || type_ == "align" || type_ == "flalign"
 		 || type_ == "alignat" || type_ == "xalignat"
 		 || type_ == "gather" || type_ == "multline")
-	        os << "\\end{" << type_ << star(n) << "}\n";
+		os << "\\end{" << type_ << star(n) << "}\n";
 
 	else if (type_ == "xxalignat")
 		os << "\\end{" << type_ << "}\n";

@@ -348,7 +348,7 @@ private:
 	///
 	void saveLyXTextState(LyXText *) const;
 	///
-	void restoreLyXTextState(BufferView *, LyXText *) const;
+	void restoreLyXTextState(LyXText *) const;
 	///
 	void reinitLyXText() const;
 	///

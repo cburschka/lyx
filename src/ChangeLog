@@ -1,3 +1,9 @@
+2003-03-17  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* lyxtext.h: remove BufferView* as first arg from almost all class
+	functions.
+	* other files: adjust.
+
 2003-03-17  John Levon  <levon@movementarian.org>
 
 	* lyxtext.h:
@@ -17,11 +23,11 @@
 	* text3.C: add helper functions for setting refresh_row/y
 
 2003-03-14  Kayvan Sylvan  <kayvan@sylvan.com>
- 
- 	* paragraph_pimpl.C (simpleTeXSpecialChars): Added fix for the
- 	newline inset which *can* get inserted in the pass_thru layouts.
- 	This is primarily for literate documents.
- 
+
+	* paragraph_pimpl.C (simpleTeXSpecialChars): Added fix for the
+	newline inset which *can* get inserted in the pass_thru layouts.
+	This is primarily for literate documents.
+
 2003-03-14  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* buffer.C: increment LYX_FORMAT to 223
@@ -73,7 +79,7 @@
 	Probably only temporary. Let's see how things pan out.
 
 	* BufferView.C (unlockInset):
-	* BufferView_pimpl.C (fitCursor): 
+	* BufferView_pimpl.C (fitCursor):
 	replace Dialogs::updateParagraph with dispatch(LFUN_PARAGRAPH_UPDATE).
 
 	* BufferView_pimpl.C (dispatch): code for LFUNs LAYOUT_PARAGRAPH,
@@ -90,8 +96,8 @@
 
 	* lyxfunc.C:
 	* text3.C:
-	* factory.C: make it aware of InsetEnv 
-	
+	* factory.C: make it aware of InsetEnv
+
 2003-03-13  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* text2.C (setCursor): never ask for one past last

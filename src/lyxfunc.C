@@ -121,8 +121,8 @@ inline
 void LyXFunc::moveCursorUpdate(bool flag, bool selecting)
 {
 	if (selecting || TEXT(flag)->selection.mark()) {
-		TEXT(flag)->setSelection(view());
-		if (TEXT(flag)->isTopLevel())
+		TEXT(flag)->setSelection();
+		if (!TEXT(flag)->isInInset())
 		    view()->toggleToggle();
 	}
 	view()->update(TEXT(flag), BufferView::SELECT|BufferView::FITCUR);
@@ -825,7 +825,7 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 				if (TEXT()->cursor.irow()->previous()) {
 #if 1
 					TEXT()->setCursorFromCoordinates(
-						view(), TEXT()->cursor.ix() + inset_x,
+						TEXT()->cursor.ix() + inset_x,
 						TEXT()->cursor.iy() -
 						TEXT()->cursor.irow()->baseline() - 1);
 					TEXT()->cursor.x_fix(TEXT()->cursor.x());
@@ -842,7 +842,7 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 				if (TEXT()->cursor.irow()->next()) {
 #if 1
 					TEXT()->setCursorFromCoordinates(
-						view(), TEXT()->cursor.ix() + inset_x,
+						TEXT()->cursor.ix() + inset_x,
 						TEXT()->cursor.iy() -
 						TEXT()->cursor.irow()->baseline() +
 						TEXT()->cursor.irow()->height() + 1);
@@ -1105,12 +1105,12 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 		break;
 
 	case LFUN_FREEFONT_APPLY:
-                apply_freefont(view());
-                break;
+		apply_freefont(view());
+		break;
 
-        case LFUN_FREEFONT_UPDATE:
-                update_and_apply_freefont(view(), argument);
-                break;
+	case LFUN_FREEFONT_UPDATE:
+		update_and_apply_freefont(view(), argument);
+		break;
 
 	case LFUN_RECONFIGURE:
 		Reconfigure(view());
@@ -1235,12 +1235,12 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 		owner->getDialogs().showDocument();
 		break;
 
-        case LFUN_LAYOUT_CHARACTER: {
-                string data = freefont2string();
-                if (!data.empty())
-                        owner->getDialogs().show("character", data);
-                break;
-        }
+	case LFUN_LAYOUT_CHARACTER: {
+		string data = freefont2string();
+		if (!data.empty())
+			owner->getDialogs().show("character", data);
+		break;
+	}
 
 	case LFUN_LAYOUT_TABULAR:
 	    if (view()->theLockingInset()) {
@@ -1336,7 +1336,7 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 			par->inInset()->edit(view());
 		}
 		// Set the cursor
-		view()->getLyXText()->setCursor(view(), par, 0);
+		view()->getLyXText()->setCursor(par, 0);
 		view()->switchKeyMap();
 		owner->view_state_changed();
 

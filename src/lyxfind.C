@@ -57,7 +57,7 @@ int LyXReplace(BufferView * bv,
 		text->clearSelection();
 		bv->unlockInset(bv->theLockingInset());
 		text = bv->text;
-		text->cursorTop(bv);
+		text->cursorTop();
 		// override search direction because we search top to bottom
 		fw = true;
 	}
@@ -94,8 +94,8 @@ int LyXReplace(BufferView * bv,
 			bv->hideCursor();
 			bv->update(text, BufferView::SELECT|BufferView::FITCUR);
 			bv->toggleSelection(false);
-			text->replaceSelectionWithString(bv, replacestr);
-			text->setSelectionRange(bv, replacestr.length());
+			text->replaceSelectionWithString(replacestr);
+			text->setSelectionRange(replacestr.length());
 			bv->update(text, BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 			++replace_count;
 		}
@@ -128,7 +128,7 @@ bool LyXFind(BufferView * bv,
 		// We now are in the main text but if we did a forward
 		// search we have to put the cursor behind the inset.
 		if (forward) {
-			bv->text->cursorRight(bv, true);
+			bv->text->cursorRight(true);
 		}
 	}
 	// If we arrive here we are in the main text again so we
@@ -154,7 +154,7 @@ bool LyXFind(BufferView * bv,
 	if (result == SR_FOUND) {
 		bv->unlockInset(bv->theLockingInset());
 		bv->update(text, BufferView::SELECT|BufferView::FITCUR);
-		text->setSelectionRange(bv, searchstr.length());
+		text->setSelectionRange(searchstr.length());
 		bv->toggleSelection(false);
 		bv->update(text, BufferView::SELECT|BufferView::FITCUR);
 	} else if (result == SR_NOT_FOUND) {
@@ -251,12 +251,12 @@ SearchResult SearchForward(BufferView * bv, LyXText * text, string const & str,
 	}
 
 	if (par) {
-		text->setCursor(bv, par, pos);
+		text->setCursor(par, pos);
 		return SR_FOUND;
 	} else {
 		// make sure we end up at the end of the text,
 		// not the start point of the last search
-		text->setCursor(bv, prev_par, prev_par->size());
+		text->setCursor(prev_par, prev_par->size());
 		return SR_NOT_FOUND;
 	}
 }
@@ -301,11 +301,11 @@ SearchResult SearchBackward(BufferView * bv, LyXText * text,
 	} while (par && !IsStringInText(par, pos, str, cs, mw));
 
 	if (par) {
-		text->setCursor(bv, par, pos);
+		text->setCursor(par, pos);
 		return SR_FOUND;
 	} else {
 		// go to the last part of the unsuccessful search
-		text->setCursor(bv, prev_par, 0);
+		text->setCursor(prev_par, 0);
 		return SR_NOT_FOUND;
 	}
 }
@@ -340,7 +340,7 @@ SearchResult nextChange(BufferView * bv, LyXText * text, pos_type & length)
 	}
 
 	if (par) {
-		text->setCursor(bv, par, pos);
+		text->setCursor(par, pos);
 		Change orig_change = par->lookupChangeFull(pos);
 		pos_type end = pos;
 
@@ -359,7 +359,7 @@ SearchResult nextChange(BufferView * bv, LyXText * text, pos_type & length)
 	} else {
 		// make sure we end up at the end of the text,
 		// not the start point of the last search
-		text->setCursor(bv, prev_par, prev_par->size());
+		text->setCursor(prev_par, prev_par->size());
 		return SR_NOT_FOUND;
 	}
 }
@@ -397,7 +397,7 @@ bool findNextChange(BufferView * bv)
 
 		// We now are in the main text but if we did a forward
 		// search we have to put the cursor behind the inset.
-		bv->text->cursorRight(bv, true);
+		bv->text->cursorRight(true);
 	}
 	// If we arrive here we are in the main text again so we
 	// just start searching from the root LyXText at the position
@@ -422,7 +422,7 @@ bool findNextChange(BufferView * bv)
 	if (result == SR_FOUND) {
 		bv->unlockInset(bv->theLockingInset());
 		bv->update(text, BufferView::SELECT|BufferView::FITCUR);
-		text->setSelectionRange(bv, length);
+		text->setSelectionRange(length);
 		bv->toggleSelection(false);
 		bv->update(text, BufferView::SELECT|BufferView::FITCUR);
 	} else if (result == SR_NOT_FOUND) {
