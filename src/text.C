@@ -78,9 +78,11 @@ int LyXText::top_y() const
 		return 0;
 
 	int y = 0;
-	for (Row * row = firstRow();
-	     row && row != anchor_row_; row = row->next()) {
-		y += row->height();
+
+	RowList::iterator rit = rows().begin();
+	RowList::iterator end = rows().end();
+	for (; rit != end && rit != anchor_row_; ++rit) {
+		y += rit->height();
 	}
 	return y + anchor_row_offset_;
 }
@@ -88,7 +90,7 @@ int LyXText::top_y() const
 
 void LyXText::top_y(int newy)
 {
-	if (!firstRow())
+	if (rows().empty())
 		return;
 	lyxerr[Debug::GUI] << "setting top y = " << newy << endl;
 
@@ -993,6 +995,7 @@ LColor::color LyXText::backgroundColor() const
 		return LColor::background;
 }
 
+
 void LyXText::setHeightOfRow(Row * row)
 {
 	// get the maximum ascent and the maximum descent
@@ -1299,12 +1302,12 @@ void LyXText::setHeightOfRow(Row * row)
 	}
 	row->width(int(maxwidth + x));
 	if (inset_owner) {
-		Row * r = firstRow();
 		width = max(0, workWidth());
-		while (r) {
-			if (r->width() > width)
-				width = r->width();
-			r = r->next();
+		RowList::iterator rit = rows().begin();
+		RowList::iterator end = rows().end();
+		for (; rit != end; ++rit) {
+			if (rit->width() > width)
+				width = rit->width();
 		}
 	}
 }
@@ -1326,7 +1329,8 @@ void LyXText::appendParagraph(RowList::iterator rowit)
 
 		if (z < last) {
 			++z;
-			rowit = insertRow(rowit, rowit->par(), z);
+			rowit = rowlist_.insert(rowit->next(),
+						new Row(rowit->par(), z));
 		} else {
 			done = true;
 		}
@@ -1355,7 +1359,7 @@ void LyXText::breakAgain(Row * row)
 			if (!row->next() || (row->next() && row->next()->par() != row->par())) {
 				// insert a new row
 				++z;
-				insertRow(row, row->par(), z);
+				rowlist_.insert(row->next(), new Row(row->par(), z));
 				row = row->next();
 			} else  {
 				row = row->next();
@@ -1400,7 +1404,7 @@ void LyXText::breakAgainOneRow(Row * row)
 		    || (row->next() && row->next()->par() != row->par())) {
 			// insert a new row
 			++z;
-			insertRow(row, row->par(), z);
+			rowlist_.insert(row->next(), new Row(row->par(), z));
 			row = row->next();
 		} else  {
 			row = row->next();
@@ -1518,7 +1522,7 @@ void LyXText::breakParagraph(ParagraphList & paragraphs, char keep_layout)
 	  && cursor.par()->next()->isNewline(0))
 	   cursor.par()->next()->erase(0);
 
-	insertParagraph(cursor.par()->next(), cursor.row());
+	insertParagraph(cursor.par()->next(), cursor.row()->next());
 	updateCounters();
 
 	// This check is necessary. Otherwise the new empty paragraph will
@@ -2768,84 +2772,50 @@ void LyXText::backspace()
 // returns pointer to a specified row
 Row * LyXText::getRow(Paragraph * par, pos_type pos, int & y) const
 {
-	if (!firstRow())
+	if (rows().empty())
 		return 0;
 
-	Row * tmprow = firstRow();
 	y = 0;
 
 	// find the first row of the specified paragraph
-	while (tmprow->next() && tmprow->par() != par) {
-		y += tmprow->height();
-		tmprow = tmprow->next();
+	RowList::iterator rit = rows().begin();
+	RowList::iterator end = rows().end();
+	while (boost::next(rit) != end && rit->par() != par) {
+		y += rit->height();
+		++rit;
 	}
 
 	// now find the wanted row
-	while (tmprow->pos() < pos
-	       && tmprow->next()
-	       && tmprow->next()->par() == par
-	       && tmprow->next()->pos() <= pos) {
-		y += tmprow->height();
-		tmprow = tmprow->next();
+	while (rit->pos() < pos
+	       && boost::next(rit) != end
+	       && boost::next(rit)->par() == par
+	       && boost::next(rit)->pos() <= pos) {
+		y += rit->height();
+		++rit;
 	}
 
-	return tmprow;
+	return &*rit;
 }
 
 
 Row * LyXText::getRowNearY(int & y) const
 {
-#if 1
 	// If possible we should optimize this method. (Lgb)
-	Row * tmprow = firstRow();
 	int tmpy = 0;
 
-	while (tmprow->next() && tmpy + tmprow->height() <= y) {
-		tmpy += tmprow->height();
-		tmprow = tmprow->next();
+	RowList::iterator rit = rows().begin();
+	RowList::iterator end = rows().end();
+
+	while (boost::next(rit) != end && tmpy + rit->height() <= y) {
+		tmpy += rit->height();
+		++rit;
 	}
 
 	y = tmpy;   // return the real y
 
 	//lyxerr << "returned y = " << y << endl;
 
-	return tmprow;
-#else
-	// Search from the current cursor position.
-
-	Row * tmprow = cursor.row();
-	int tmpy = cursor.y() - tmprow->baseline();
-
-	lyxerr << "cursor.y() = " << tmpy << endl;
-	lyxerr << "tmprow->height() = " << tmprow->height() << endl;
-	lyxerr << "tmprow->baseline() = " << tmprow->baseline() << endl;
-	lyxerr << "first = " << first << endl;
-	lyxerr << "y = " << y << endl;
-
-	if (y < tmpy) {
-		lyxerr << "up" << endl;
-		do {
-			tmpy -= tmprow->height();
-			tmprow = tmprow->previous();
-		} while (tmprow && tmpy - tmprow->height() >= y);
-	} else if (y > tmpy) {
-		lyxerr << "down" << endl;
-
-		while (tmprow->next() && tmpy + tmprow->height() <= y) {
-			tmpy += tmprow->height();
-			tmprow = tmprow->next();
-		}
-	} else {
-		lyxerr << "equal" << endl;
-	}
-
-	y = tmpy; // return the real y
-
-	lyxerr << "returned y = " << y << endl;
-
-	return tmprow;
-
-#endif
+	return &*rit;
 }
 
 

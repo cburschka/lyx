@@ -23,7 +23,8 @@ class Row {
 public:
 	///
 	Row();
-
+	///
+	Row(Paragraph * pa, lyx::pos_type po);
 	///
 	void par(Paragraph * p);
 	///

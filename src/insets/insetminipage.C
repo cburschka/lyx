@@ -120,7 +120,7 @@ dispatch_result InsetMinipage::localDispatch(FuncRequest const & cmd)
 		/* FIXME: I refuse to believe we have to live
 		 * with ugliness like this ... */
 		LyXText * t = inset.getLyXText(cmd.view());
-		t->need_break_row = t->firstRow();
+		t->need_break_row = &*t->rows().begin();
 		t->fullRebreak();
 		inset.update(cmd.view(), true);
 		t->setCursorIntern(t->cursor.par(), t->cursor.pos());

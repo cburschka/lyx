@@ -1,3 +1,29 @@
+2003-03-30  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* text2.C (init): adjust
+	(insertRow): remove function
+	(insertParagraph): adjust
+	(redoParagraphs): adjust
+	(fullRebreak): adjust
+	(updateCounters): adjust
+
+	* text.C (top_y): rewrite to use RowList iterators.
+	(top_y): adjust
+	(setHeightOfRow): rewrite to sue RowList iterators.
+	(appendParagraph): adjust
+	(breakAgain): adjust
+	(breakAgainOneRow): adjust
+	(breakParagraph): adjust
+	(getRow): adjust
+	(getRowNearY): adjust, and remove commented code.
+
+	* lyxtext.h (firstRow): delete function
+	(lastRow): delete function
+	(rows): new function (const and non-const versions.)
+	(insertRow): delete function
+
+	* lyxrow.[Ch] (Row): new constructor taking a par and a pos
+
 2003-03-29  John Levon  <levon@movementarian.org>
 
 	* BufferView_pimpl.C: always update scrollbar top

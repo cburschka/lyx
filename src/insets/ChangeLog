@@ -1,3 +1,16 @@
+2003-03-30  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* insettext.C (ascent): adjust for RowList
+	(descent): ditto
+	(draw): ditto
+	(getLyXText): adjust
+	(toggleSelection): adjust
+
+	* insetminipage.C (localDispatch): adjust for RowList
+
+	* insetert.C (localDispatch): adjust for RowList
+	(getMaxWidth): adjust for RowList
+
 2003-03-29  John Levon  <levon@movementarian.org>
 
 	* insetert.C: Alert cleanup

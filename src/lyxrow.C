@@ -28,6 +28,12 @@ Row::Row()
 {}
 
 
+Row::Row(Paragraph * pa, pos_type po)
+	: par_(pa), pos_(po), fill_(0), height_(0), width_(0),
+	  ascent_of_text_(0), baseline_(0), next_(0), previous_(0)
+{}
+
+
 Paragraph * Row::par()
 {
 	return par_;

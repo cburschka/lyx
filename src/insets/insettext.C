@@ -297,7 +297,7 @@ void InsetText::read(Buffer const * buf, LyXLex & lex)
 
 int InsetText::ascent(BufferView * bv, LyXFont const &) const
 {
-	insetAscent = getLyXText(bv)->firstRow()->ascent_of_text() +
+	insetAscent = getLyXText(bv)->rows().begin()->ascent_of_text() +
 		TEXT_TO_INSET_OFFSET;
 	return insetAscent;
 }
@@ -306,7 +306,7 @@ int InsetText::ascent(BufferView * bv, LyXFont const &) const
 int InsetText::descent(BufferView * bv, LyXFont const &) const
 {
 	LyXText * llt = getLyXText(bv);
-	insetDescent = llt->height - llt->firstRow()->ascent_of_text() +
+	insetDescent = llt->height - llt->rows().begin()->ascent_of_text() +
 		TEXT_TO_INSET_OFFSET;
 	return insetDescent;
 }
@@ -396,15 +396,17 @@ void InsetText::draw(BufferView * bv, LyXFont const & f,
 	}
 	x += TEXT_TO_INSET_OFFSET;
 
-	Row * row = lt->firstRow();
-	int y_offset = baseline - row->ascent_of_text();
+	RowList::iterator rowit = lt->rows().begin();
+	RowList::iterator end = lt->rows().end();
+
+	int y_offset = baseline - rowit->ascent_of_text();
 	int ph = pain.paperHeight();
 	int first = 0;
 	int y = y_offset;
-	while ((row != 0) && ((y+row->height()) <= 0)) {
-		y += row->height();
-		first += row->height();
-		row = row->next();
+	while ((rowit != end) && ((y + rowit->height()) <= 0)) {
+		y += rowit->height();
+		first += rowit->height();
+		++rowit;
 	}
 	if (y_offset < 0) {
 		lt->top_y(-y_offset);
@@ -417,12 +419,12 @@ void InsetText::draw(BufferView * bv, LyXFont const & f,
 
 	int yf = y_offset + first;
 	y = 0;
-	while ((row != 0) && (yf < ph)) {
-		RowPainter rp(*bv, *lt, *row);
+	while ((rowit != end) && (yf < ph)) {
+		RowPainter rp(*bv, *lt, *rowit);
 		rp.paint(y + y_offset + first, int(x), y + lt->top_y());
-		y += row->height();
-		yf += row->height();
-		row = row->next();
+		y += rowit->height();
+		yf += rowit->height();
+		++rowit;
 	}
 
 	lt->clearPaint();
@@ -2155,7 +2157,7 @@ LyXText * InsetText::getLyXText(BufferView const * lbv,
 		if (recursive && the_locking_inset)
 			return the_locking_inset->getLyXText(lbv, true);
 		LyXText * lt = cached_text.get();
-		lyx::Assert(lt && lt->firstRow()->par() == &*(paragraphs.begin()));
+		lyx::Assert(lt && lt->rows().begin()->par() == &*(paragraphs.begin()));
 		return lt;
 	}
 	// Super UGLY! (Lgb)
@@ -2524,12 +2526,13 @@ void InsetText::toggleSelection(BufferView * bv, bool kill_selection)
 
 	int x = top_x + TEXT_TO_INSET_OFFSET;
 
-	Row * row = lt->firstRow();
-	int y_offset = top_baseline - row->ascent_of_text();
+	RowList::iterator rowit = lt->rows().begin();
+	RowList::iterator end = lt->rows().end();
+	int y_offset = top_baseline - rowit->ascent_of_text();
 	int y = y_offset;
-	while ((row != 0) && ((y+row->height()) <= 0)) {
-		y += row->height();
-		row = row->next();
+	while ((rowit != end) && ((y + rowit->height()) <= 0)) {
+		y += rowit->height();
+		++rowit;
 	}
 	if (y_offset < 0)
 		y_offset = y;

@@ -455,7 +455,7 @@ Inset::RESULT InsetERT::localDispatch(FuncRequest const & cmd)
 		 * taken by the text).
 		 */
 		LyXText * t = inset.getLyXText(cmd.view());
-		t->need_break_row = t->firstRow();
+		t->need_break_row = &*t->rows().begin();
 		t->fullRebreak();
 		t->setCursorIntern(t->cursor.par(), t->cursor.pos());
 		inset.update(cmd.view(), true);
@@ -677,11 +677,11 @@ int InsetERT::getMaxWidth(BufferView * bv, UpdatableInset const * in) const
 	if (status_ != Inlined || w < 0)
 		return w;
 	LyXText * text = inset.getLyXText(bv);
-	int rw = text->firstRow()->width();
+	int rw = text->rows().begin()->width();
 	if (!rw)
 		rw = w;
 	rw += 40;
-	if (!text->firstRow()->next() && rw < w)
+	if (text->rows().size() == 1 && rw < w)
 		return -1;
 	return w;
 }

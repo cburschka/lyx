@@ -80,20 +80,17 @@ void LyXText::init(BufferView * bview, bool reinit)
 		copylayouttype.erase();
 		top_y(0);
 		clearPaint();
-	} else if (firstRow())
+	} else if (!rowlist_.empty())
 		return;
 
 	Paragraph * par = ownerParagraph();
 	current_font = getFont(bview->buffer(), par, 0);
 
 	while (par) {
-		if (rowlist_.empty())
-			insertParagraph(par, rowlist_.end());
-		else
-			insertParagraph(par, lastRow());
+		insertParagraph(par, rowlist_.end());
 		par = par->next();
 	}
-	setCursorIntern(firstRow()->par(), 0);
+	setCursorIntern(rowlist_.begin()->par(), 0);
 	selection.cursor = cursor;
 
 	updateCounters();
@@ -261,23 +258,6 @@ void LyXText::setCharFont(Buffer const * buf, Paragraph * par,
 }
 
 
-// inserts a new row before the specified row, increments
-// the touched counters
-RowList::iterator
- LyXText::insertRow(RowList::iterator rowit, Paragraph * par,
-		    pos_type pos)
-{
-	Row * tmprow = new Row;
-	tmprow->par(par);
-	tmprow->pos(pos);
-
-	if (rowit == rowlist_.end())
-		return rowlist_.insert(rowlist_.begin(), tmprow);
-	else
-		return rowlist_.insert(boost::next(rowit), tmprow);
-}
-
-
 // removes the row and reset the touched counters
 void LyXText::removeRow(Row * row)
 {
@@ -329,7 +309,7 @@ void LyXText::removeParagraph(Row * row)
 void LyXText::insertParagraph(Paragraph * par, RowList::iterator rowit)
 {
 	// insert a new row, starting at position 0
-	RowList::iterator rit = insertRow(rowit, par, 0);
+	RowList::iterator rit = rowlist_.insert(rowit, new Row(par, 0));
 
 	// and now append the whole paragraph before the new row
 	appendParagraph(rit);
@@ -748,10 +728,15 @@ void LyXText::redoParagraphs(LyXCursor const & cur,
 	tmppar = first_phys_par;
 	do {
 		if (tmppar) {
-			insertParagraph(tmppar, tmprow);
+			if (!tmprow) {
+				insertParagraph(tmppar, rowlist_.begin());
+			} else {
+				insertParagraph(tmppar, tmprow->next());
+			}
+			
 
 			if (!tmprow) {
-				tmprow = firstRow();
+				tmprow = &*rows().begin();
 			}
 			while (tmprow->next()
 			       && tmprow->next()->par() == tmppar) {
@@ -766,7 +751,7 @@ void LyXText::redoParagraphs(LyXCursor const & cur,
 		setHeightOfRow(prevrow);
 		const_cast<LyXText *>(this)->postPaint(y - prevrow->height());
 	} else {
-		setHeightOfRow(firstRow());
+		setHeightOfRow(&*rows().begin());
 		const_cast<LyXText *>(this)->postPaint(0);
 	}
 
@@ -778,7 +763,7 @@ void LyXText::redoParagraphs(LyXCursor const & cur,
 
 void LyXText::fullRebreak()
 {
-	if (!firstRow()) {
+	if (rows().empty()) {
 		init(bv());
 		return;
 	}
@@ -1287,15 +1272,15 @@ void LyXText::setCounter(Buffer const * buf, Paragraph * par)
 // Updates all counters. Paragraphs with changed label string will be rebroken
 void LyXText::updateCounters()
 {
-	Row * row = firstRow();
-	Paragraph * par = row->par();
+	RowList::iterator rowit = rows().begin();
+	Paragraph * par = rowit->par();
 
 	// CHECK if this is really needed. (Lgb)
 	bv()->buffer()->params.getLyXTextClass().counters().reset();
 
 	while (par) {
-		while (row->par() != par)
-			row = row->next();
+		while (rowit->par() != par)
+			++rowit;
 
 		string const oldLabel = par->params().labelString();
 
@@ -1305,8 +1290,8 @@ void LyXText::updateCounters()
 		string const & newLabel = par->params().labelString();
 
 		if (oldLabel.empty() && !newLabel.empty()) {
-			removeParagraph(row);
-			appendParagraph(row);
+			removeParagraph(&*rowit);
+			appendParagraph(rowit);
 		}
 
 		par = par->next();

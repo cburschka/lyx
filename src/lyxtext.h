@@ -245,12 +245,14 @@ public:
 	 of the row
 	 */
 	Row * getRow(Paragraph * par, lyx::pos_type pos, int & y) const;
-	/** returns the firstrow, this could be done with the above too but
-	    IMO it's stupid to have to allocate a dummy y all the time I need
-	    the first row
-	*/
-	Row * firstRow() const { return &*rowlist_.begin(); }
-	Row * lastRow() const { return &const_cast<LyXText*>(this)->rowlist_.back(); }
+
+	RowList & rows() {
+		return rowlist_;
+	}
+	RowList const & rows() const {
+		return rowlist_;
+	}
+
 	/** The cursor.
 	  Later this variable has to be removed. There should be now internal
 	  cursor in a text (and thus not in a buffer). By keeping this it is
@@ -508,11 +510,6 @@ private:
 	  */
 	string copylayouttype;
 
-	/** inserts a new row behind the specified row, increments
-	    the touched counters */
-	RowList::iterator
-	insertRow(RowList::iterator rowit,
-		  Paragraph * par, lyx::pos_type pos);
 	/// removes the row and reset the touched counters
 	void removeRow(Row * row);
 
