@@ -197,7 +197,7 @@ void LyXRC::setDefaults() {
 	dpi = 75;
 	// Because a screen typically is wider than a piece of paper:
 	zoom = 150;
-	wheel_jump = 100;
+	wheel_jump = 5;
 	// Default LaTeX font size:
 	font_sizes[LyXFont::SIZE_TINY] = 5.0;
 	font_sizes[LyXFont::SIZE_SCRIPT] = 7.0;
@@ -2124,7 +2124,7 @@ string const LyXRC::getDescription(LyXRCTags tag)
 		break;
 
 	case RC_WHEEL_JUMP:
-		str = _("The wheel movement factor (for mice with wheels or five button mice).");
+		str = _("The number of lines that are scrolled by mice with wheels or five button mice.");
 		break;
 
 	case RC_CONVERTER:
