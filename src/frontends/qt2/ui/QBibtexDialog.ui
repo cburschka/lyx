@@ -11,8 +11,8 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>307</width>
-            <height>232</height>
+            <width>302</width>
+            <height>407</height>
         </rect>
     </property>
     <property stdset="1">
@@ -32,9 +32,9 @@
             <class>QLayoutWidget</class>
             <property stdset="1">
                 <name>name</name>
-                <cstring>Layout7</cstring>
+                <cstring>Layout13</cstring>
             </property>
-            <hbox>
+            <vbox>
                 <property stdset="1">
                     <name>margin</name>
                     <number>0</number>
@@ -51,37 +51,128 @@
                     </property>
                     <property stdset="1">
                         <name>text</name>
-                        <string>&amp;Database</string>
+                        <string>Databases</string>
                     </property>
                     <property>
                         <name>buddy</name>
-                        <cstring>databaseED</cstring>
+                        <cstring>databaseCO</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>alignment</name>
+                        <set>AlignTop|AlignLeft</set>
                     </property>
                     <property>
                         <name>toolTip</name>
                         <string>BibTeX database to use</string>
+                    </property>
+                    <property>
+                        <name>vAlign</name>
                     </property>
                 </widget>
                 <widget>
-                    <class>QLineEdit</class>
+                    <class>QLayoutWidget</class>
                     <property stdset="1">
                         <name>name</name>
-                        <cstring>databaseED</cstring>
+                        <cstring>Layout12</cstring>
                     </property>
-                    <property>
-                        <name>toolTip</name>
-                        <string>BibTeX database to use</string>
-                    </property>
+                    <hbox>
+                        <property stdset="1">
+                            <name>margin</name>
+                            <number>0</number>
+                        </property>
+                        <property stdset="1">
+                            <name>spacing</name>
+                            <number>6</number>
+                        </property>
+                        <widget>
+                            <class>QListBox</class>
+                            <item>
+                                <property>
+                                    <name>text</name>
+                                    <string>New Item</string>
+                                </property>
+                            </item>
+                            <property stdset="1">
+                                <name>name</name>
+                                <cstring>databaseLB</cstring>
+                            </property>
+                            <property stdset="1">
+                                <name>enabled</name>
+                                <bool>true</bool>
+                            </property>
+                            <property>
+                                <name>toolTip</name>
+                                <string>Available BibTeX databases</string>
+                            </property>
+                        </widget>
+                        <widget>
+                            <class>QLayoutWidget</class>
+                            <property stdset="1">
+                                <name>name</name>
+                                <cstring>Layout11</cstring>
+                            </property>
+                            <vbox>
+                                <property stdset="1">
+                                    <name>margin</name>
+                                    <number>0</number>
+                                </property>
+                                <property stdset="1">
+                                    <name>spacing</name>
+                                    <number>6</number>
+                                </property>
+                                <widget>
+                                    <class>QPushButton</class>
+                                    <property stdset="1">
+                                        <name>name</name>
+                                        <cstring>databasePB</cstring>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>text</name>
+                                        <string>&amp;Add ...</string>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>autoDefault</name>
+                                        <bool>false</bool>
+                                    </property>
+                                    <property>
+                                        <name>toolTip</name>
+                                        <string>Add a BibTeX database file</string>
+                                    </property>
+                                </widget>
+                                <spacer>
+                                    <property>
+                                        <name>name</name>
+                                        <cstring>Spacer2</cstring>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>orientation</name>
+                                        <enum>Vertical</enum>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>sizeType</name>
+                                        <enum>Expanding</enum>
+                                    </property>
+                                    <property>
+                                        <name>sizeHint</name>
+                                        <size>
+                                            <width>20</width>
+                                            <height>20</height>
+                                        </size>
+                                    </property>
+                                </spacer>
+                            </vbox>
+                        </widget>
+                    </hbox>
                 </widget>
-            </hbox>
+            </vbox>
         </widget>
         <widget>
             <class>QLayoutWidget</class>
             <property stdset="1">
                 <name>name</name>
-                <cstring>Layout12</cstring>
+                <cstring>Layout16</cstring>
             </property>
-            <hbox>
+            <vbox>
                 <property stdset="1">
                     <name>margin</name>
                     <number>0</number>
@@ -109,86 +200,157 @@
                         <string>The BibTeX style</string>
                     </property>
                 </widget>
-                <spacer>
-                    <property>
-                        <name>name</name>
-                        <cstring>Spacer3</cstring>
-                    </property>
-                    <property stdset="1">
-                        <name>orientation</name>
-                        <enum>Horizontal</enum>
-                    </property>
-                    <property stdset="1">
-                        <name>sizeType</name>
-                        <enum>Expanding</enum>
-                    </property>
-                    <property>
-                        <name>sizeHint</name>
-                        <size>
-                            <width>20</width>
-                            <height>20</height>
-                        </size>
-                    </property>
-                </spacer>
                 <widget>
-                    <class>QComboBox</class>
-                    <item>
-                        <property>
-                            <name>text</name>
-                            <string>plain</string>
-                        </property>
-                    </item>
-                    <item>
-                        <property>
-                            <name>text</name>
-                            <string>unsrt</string>
-                        </property>
-                    </item>
-                    <item>
-                        <property>
-                            <name>text</name>
-                            <string>alpha</string>
-                        </property>
-                    </item>
-                    <item>
-                        <property>
-                            <name>text</name>
-                            <string>abbrv</string>
-                        </property>
-                    </item>
-                    <item>
-                        <property>
-                            <name>text</name>
-                            <string>Other ...</string>
-                        </property>
-                    </item>
+                    <class>QLayoutWidget</class>
                     <property stdset="1">
                         <name>name</name>
-                        <cstring>styleCO</cstring>
+                        <cstring>Layout14</cstring>
                     </property>
-                    <property stdset="1">
-                        <name>sizePolicy</name>
-                        <sizepolicy>
-                            <hsizetype>7</hsizetype>
-                            <vsizetype>0</vsizetype>
-                        </sizepolicy>
-                    </property>
-                    <property>
-                        <name>toolTip</name>
-                        <string>The BibTeX style</string>
-                    </property>
-                    <property>
-                        <name>whatsThis</name>
-                        <string>FIXME !</string>
-                    </property>
+                    <hbox>
+                        <property stdset="1">
+                            <name>margin</name>
+                            <number>0</number>
+                        </property>
+                        <property stdset="1">
+                            <name>spacing</name>
+                            <number>6</number>
+                        </property>
+                        <widget>
+                            <class>QComboBox</class>
+                            <item>
+                                <property>
+                                    <name>text</name>
+                                    <string>plain</string>
+                                </property>
+                            </item>
+                            <item>
+                                <property>
+                                    <name>text</name>
+                                    <string>unsrt</string>
+                                </property>
+                            </item>
+                            <item>
+                                <property>
+                                    <name>text</name>
+                                    <string>alpha</string>
+                                </property>
+                            </item>
+                            <item>
+                                <property>
+                                    <name>text</name>
+                                    <string>abbrv</string>
+                                </property>
+                            </item>
+                            <item>
+                                <property>
+                                    <name>text</name>
+                                    <string>Other ...</string>
+                                </property>
+                            </item>
+                            <property stdset="1">
+                                <name>name</name>
+                                <cstring>styleCO</cstring>
+                            </property>
+                            <property stdset="1">
+                                <name>sizePolicy</name>
+                                <sizepolicy>
+                                    <hsizetype>7</hsizetype>
+                                    <vsizetype>0</vsizetype>
+                                </sizepolicy>
+                            </property>
+                            <property>
+                                <name>toolTip</name>
+                                <string>The BibTeX style</string>
+                            </property>
+                            <property>
+                                <name>whatsThis</name>
+                                <string>FIXME !</string>
+                            </property>
+                        </widget>
+                        <widget>
+                            <class>QLineEdit</class>
+                            <property stdset="1">
+                                <name>name</name>
+                                <cstring>styleED</cstring>
+                            </property>
+                            <property stdset="1">
+                                <name>sizePolicy</name>
+                                <sizepolicy>
+                                    <hsizetype>7</hsizetype>
+                                    <vsizetype>0</vsizetype>
+                                </sizepolicy>
+                            </property>
+                            <property>
+                                <name>toolTip</name>
+                                <string>The name of the style to use</string>
+                            </property>
+                        </widget>
+                    </hbox>
                 </widget>
-            </hbox>
+                <widget>
+                    <class>QLayoutWidget</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>Layout15</cstring>
+                    </property>
+                    <hbox>
+                        <property stdset="1">
+                            <name>margin</name>
+                            <number>0</number>
+                        </property>
+                        <property stdset="1">
+                            <name>spacing</name>
+                            <number>6</number>
+                        </property>
+                        <spacer>
+                            <property>
+                                <name>name</name>
+                                <cstring>Spacer1_2</cstring>
+                            </property>
+                            <property stdset="1">
+                                <name>orientation</name>
+                                <enum>Horizontal</enum>
+                            </property>
+                            <property stdset="1">
+                                <name>sizeType</name>
+                                <enum>MinimumExpanding</enum>
+                            </property>
+                            <property>
+                                <name>sizeHint</name>
+                                <size>
+                                    <width>20</width>
+                                    <height>20</height>
+                                </size>
+                            </property>
+                        </spacer>
+                        <widget>
+                            <class>QPushButton</class>
+                            <property stdset="1">
+                                <name>name</name>
+                                <cstring>stylePB</cstring>
+                            </property>
+                            <property stdset="1">
+                                <name>text</name>
+                                <string>&amp;Browse</string>
+                            </property>
+                            <property stdset="1">
+                                <name>autoDefault</name>
+                                <bool>false</bool>
+                            </property>
+                            <property>
+                                <name>toolTip</name>
+                                <string>Choose a style file</string>
+                            </property>
+                        </widget>
+                    </hbox>
+                </widget>
+            </vbox>
         </widget>
         <widget>
             <class>QLayoutWidget</class>
             <property stdset="1">
                 <name>name</name>
-                <cstring>Layout11</cstring>
+                <cstring>Layout8</cstring>
             </property>
             <hbox>
                 <property stdset="1">
@@ -199,10 +361,25 @@
                     <name>spacing</name>
                     <number>6</number>
                 </property>
+                <widget>
+                    <class>QCheckBox</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>bibtocCB</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>text</name>
+                        <string>Add bibliography to &amp;TOC</string>
+                    </property>
+                    <property>
+                        <name>toolTip</name>
+                        <string>Add bibliography to the table of contents</string>
+                    </property>
+                </widget>
                 <spacer>
                     <property>
                         <name>name</name>
-                        <cstring>Spacer2</cstring>
+                        <cstring>Spacer1_3</cstring>
                     </property>
                     <property stdset="1">
                         <name>orientation</name>
@@ -220,24 +397,6 @@
                         </size>
                     </property>
                 </spacer>
-                <widget>
-                    <class>QLineEdit</class>
-                    <property stdset="1">
-                        <name>name</name>
-                        <cstring>styleED</cstring>
-                    </property>
-                    <property stdset="1">
-                        <name>sizePolicy</name>
-                        <sizepolicy>
-                            <hsizetype>7</hsizetype>
-                            <vsizetype>0</vsizetype>
-                        </sizepolicy>
-                    </property>
-                    <property>
-                        <name>toolTip</name>
-                        <string>The name of the style to use</string>
-                    </property>
-                </widget>
             </hbox>
         </widget>
         <widget>
@@ -308,30 +467,44 @@
 </widget>
 <connections>
     <connection>
+        <sender>databasePB</sender>
+        <signal>clicked()</signal>
+        <receiver>QBibtexDialogBase</receiver>
+        <slot>addPressed()</slot>
+    </connection>
+    <connection>
+        <sender>stylePB</sender>
+        <signal>clicked()</signal>
+        <receiver>QBibtexDialogBase</receiver>
+        <slot>browsePressed()</slot>
+    </connection>
+    <connection>
+        <sender>bibtocCB</sender>
+        <signal>toggled(bool)</signal>
+        <receiver>QBibtexDialogBase</receiver>
+        <slot>change_adaptor()</slot>
+    </connection>
+    <connection>
         <sender>styleCO</sender>
-        <signal>textChanged(const QString&amp;)</signal>
+        <signal>activated(int)</signal>
+        <receiver>QBibtexDialogBase</receiver>
+        <slot>change_adaptor()</slot>
+    </connection>
+    <connection>
+        <sender>styleCO</sender>
+        <signal>activated(const QString&amp;)</signal>
         <receiver>QBibtexDialogBase</receiver>
         <slot>styleChanged(const QString &amp;)</slot>
     </connection>
     <connection>
-        <sender>styleCO</sender>
-        <signal>textChanged(const QString&amp;)</signal>
-        <receiver>QBibtexDialogBase</receiver>
-        <slot>changed_adaptor()</slot>
-    </connection>
-    <connection>
         <sender>styleED</sender>
-        <signal>textChanged(const QString&amp;)</signal>
+        <signal>returnPressed()</signal>
         <receiver>QBibtexDialogBase</receiver>
-        <slot>changed_adaptor()</slot>
+        <slot>change_adaptor()</slot>
     </connection>
-    <connection>
-        <sender>databaseED</sender>
-        <signal>textChanged(const QString&amp;)</signal>
-        <receiver>QBibtexDialogBase</receiver>
-        <slot>changed_adaptor()</slot>
-    </connection>
-    <slot access="public">changed_adaptor()</slot>
+    <slot access="public">addPressed()</slot>
+    <slot access="public">browsePressed()</slot>
+    <slot access="public">change_adaptor()</slot>
     <slot access="public">styleChanged(const QString &amp;)</slot>
 </connections>
 </UI>

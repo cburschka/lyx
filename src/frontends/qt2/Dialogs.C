@@ -13,12 +13,14 @@
 
 // the dialog definitions
 #include "QAboutDialog.h"
+#include "QBibtexDialog.h"
 #include "QCitationDialog.h"
 #include "QIndexDialog.h"
 #include "QRefDialog.h"
 #include "QURLDialog.h"
  
 #include "QAbout.h"
+#include "QBibtex.h"
 #include "QCharacter.h"
 #include "QCitation.h"
 #include "QIndex.h"
@@ -36,14 +38,9 @@
 #include "buffer.h"
 #include "Qt2BC.h"
 
-// xforms implementations
-#include "../xforms/FormError.h"
-#include "../xforms/FormGraphics.h"
-#include "../xforms/FormPreferences.h"
-#include "../xforms/FormTabular.h"
-
 // the controllers
 #include "controllers/ControlAboutlyx.h"
+#include "controllers/ControlBibtex.h"
 #include "controllers/ControlCitation.h"
 #include "controllers/ControlIndex.h"
 #include "controllers/ControlRef.h"
@@ -53,7 +50,6 @@
 #include "controllers/ControlCopyright.h"
 #include "controllers/ControlCredits.h"
 #include "controllers/ControlBibitem.h"
-#include "controllers/ControlBibtex.h"
 #include "controllers/ControlButtons.h"
 #include "controllers/ControlCharacter.h"
 #include "controllers/ControlCitation.h"
@@ -91,6 +87,7 @@ Dialogs::Dialogs(LyXView * lv)
 	// dialogs that have been converted to new scheme
 	add(new GUICitation<QCitation, Qt2BC>(*lv, *this));
 	add(new GUIAboutlyx<QAbout, Qt2BC>(*lv, *this));
+	add(new GUIBibtex<QBibtex, Qt2BC>(*lv, *this));
 	add(new GUIIndex<QIndex, Qt2BC>(*lv, *this));
 	add(new GUIRef<QRef, Qt2BC>(*lv, *this));
 	add(new GUIUrl<QURL, Qt2BC>(*lv, *this));
