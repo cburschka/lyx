@@ -329,21 +329,6 @@ void BufferView::paste()
 }
 
 
-
-
-void BufferView::insertCorrectQuote()
-{
-	char c;
-
-	if (text->cursor.pos())
-		c = text->cursor.par()->getChar(text->cursor.pos() - 1);
-	else 
-		c = ' ';
-
-	insertInset(new InsetQuotes(c, buffer()->params));
-}
-
-
 /* these functions are for the spellchecker */ 
 string const BufferView::nextWord(float & value)
 {

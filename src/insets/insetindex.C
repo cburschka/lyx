@@ -34,6 +34,12 @@ void InsetIndex::edit(BufferView * bv, bool)
 }
 
 
+Inset::Code InsetIndex::lyxCode() const
+{
+ 	return Inset::INDEX_CODE;
+}
+
+
 InsetPrintIndex::InsetPrintIndex(InsetCommandParams const & p, bool)
 	: InsetCommand(p)
 {}
@@ -52,5 +58,5 @@ void InsetPrintIndex::validate(LaTeXFeatures & features) const
 
 Inset::Code InsetPrintIndex::lyxCode() const
 {
- 	return Inset::INDEX_CODE;
+ 	return Inset::INDEX_PRINT_CODE;
 }

@@ -79,6 +79,7 @@
 #include "insets/insettheorem.h"
 #include "insets/insetcaption.h"
 #include "insets/insetfloatlist.h"
+#include "support/textutils.h"
 #include "support/filetools.h"
 #include "support/path.h"
 #include "support/os.h"
@@ -388,7 +389,7 @@ void Buffer::insertErtContents(Paragraph * par, int & pos,
 	if (!ert_comp.contents.empty()) {
 		lyxerr[Debug::INSETS] << "ERT contents:\n"
 		       << ert_comp.contents << endl;
-		Inset * inset = new InsetERT(ert_comp.contents);
+		Inset * inset = new InsetERT(ert_comp.contents, true);
 		par->insertInset(pos++, inset, font);
 		ert_comp.contents.erase();
 	}
@@ -1314,6 +1315,59 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 	return the_end_read;
 }
 
+// needed to insert the selection
+void Buffer::insertStringAsLines(Paragraph *& par, Paragraph::size_type & pos,
+				 LyXFont const & font, 
+				 string const & str) const
+{
+	LyXLayout const & layout = textclasslist.Style(params.textclass, 
+						     par->getLayout());
+	// insert the string, don't insert doublespace
+	bool space_inserted = true;
+	for(string::const_iterator cit = str.begin(); 
+	    cit != str.end(); ++cit) {
+		if (*cit == '\n') {
+			if (par->size() || layout.keepempty) { 
+				par->breakParagraph(params, pos, 
+						    layout.isEnvironment());
+				par = par->next();
+				pos = 0;
+				space_inserted = true;
+			} else {
+				continue;
+			}
+			// do not insert consecutive spaces if !free_spacing
+		} else if ((*cit == ' ' || *cit == '\t')
+			   && space_inserted && !layout.free_spacing) {
+			continue;
+		} else if (*cit == '\t') {
+			if (!layout.free_spacing) {
+				// tabs are like spaces here
+				par->insertChar(pos, ' ', font);
+				++pos;
+				space_inserted = true;
+			} else {
+				const Paragraph::value_type nb = 8 - pos % 8;
+				for (Paragraph::size_type a = 0; 
+				     a < nb ; ++a) {
+					par->insertChar(pos, ' ', font);
+					++pos;
+				}
+				space_inserted = true;
+			}
+		} else if (!IsPrintable(*cit)) {
+			// Ignore unprintables
+			continue;
+		} else {
+			// just insert the character
+			par->insertChar(pos, *cit, font);
+			++pos;
+			space_inserted = (*cit == ' ');
+		}
+
+	}	
+}
+
 
 void Buffer::readInset(LyXLex & lex, Paragraph *& par,
 		       int & pos, LyXFont & font)
@@ -1378,6 +1432,7 @@ void Buffer::readInset(LyXLex & lex, Paragraph *& par,
 			inset = new InsetParent(inscmd, *this);
 		}
 	} else {
+		bool alreadyread = false;
 		if (tmptok == "Quotes") {
 			inset = new InsetQuotes;
 		} else if (tmptok == "External") {
@@ -1388,8 +1443,12 @@ void Buffer::readInset(LyXLex & lex, Paragraph *& par,
 			inset = new InsetFormula;
 		} else if (tmptok == "Figure") {
 			inset = new InsetFig(100, 100, *this);
-		} else if (tmptok == "Info" // backwards compatibility
-			   || tmptok == "Note") {
+		} else if (tmptok == "Info") {// backwards compatibility
+			inset = new InsetNote(this,
+					      lex.getLongString("\\end_inset"),
+					      true);
+			alreadyread = true;
+		} else if (tmptok == "Note") {
 			inset = new InsetNote;
 		} else if (tmptok == "Include") {
 			InsetCommandParams p( "Include" );
@@ -1422,7 +1481,7 @@ void Buffer::readInset(LyXLex & lex, Paragraph *& par,
 			inset = new InsetFloatList;
 		}
 		
-		if (inset) inset->read(this, lex);
+		if (inset && !alreadyread) inset->read(this, lex);
 	}
 	
 	if (inset) {

@@ -325,6 +325,11 @@ void InsetFormula::validate(LaTeXFeatures & features) const
 	par()->Validate(features);
 }
 
+bool InsetFormula::insetAllowed(Inset::Code code) const
+{
+	return code == Inset::LABEL_CODE; 
+}
+
 
 int InsetFormula::ascent(BufferView *, LyXFont const &) const
 {

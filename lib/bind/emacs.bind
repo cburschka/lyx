@@ -42,7 +42,7 @@
 \bind "C-p"                    "up"
 
 # this is "quoted-insert" a total different meaning from "quote-insert"
-\bind "C-q"                    "quote-insert"
+\bind "C-q"                    "self-insert \""
 #bind "C-r"                    "------"
 \bind "C-s"                    "find-replace"
 \bind "M-~S-percent"		"find-replace"
@@ -66,7 +66,7 @@
 \bind "C-~S-slash"             "undo"
 \bind "C-~S-underscore"        "undo"
 
-\bind "S-C-quotedbl"           "quote-insert"
+\bind "~S-C-quotedbl"           "self-insert \""
 
 \bind "C-x a"                  "buffer-auto-save"
 #\bind "C-x b"                 "buffer-previous"

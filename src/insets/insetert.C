@@ -37,7 +37,8 @@ InsetERT::InsetERT() : InsetCollapsable()
 }
 
 
-InsetERT::InsetERT(string const & contents)
+InsetERT::InsetERT(string const & contents, bool collapsed)
+	: InsetCollapsable(collapsed)
 {
 	setLabel(_("666"));
 	LyXFont font(LyXFont::ALL_SANE);

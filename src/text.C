@@ -19,6 +19,7 @@
 #include "support/textutils.h"
 #include "insets/insetbib.h"
 #include "insets/insettext.h"
+#include "insets/insetspecialchar.h"
 #include "lyx_gui_misc.h"
 #include "gettext.h"
 #include "bufferparams.h"
@@ -2157,10 +2158,10 @@ void LyXText::cursorLeftOneWord(LyXCursor  & cur)  const
 	}
 }
 
-/* -------> Select current word. This depends on behaviour of CursorLeftOneWord(), so it is
-			patched as well. */
-
-void LyXText::getWord(LyXCursor & from, LyXCursor & to, word_location loc) const
+/* -------> Select current word. This depends on behaviour of
+CursorLeftOneWord(), so it is patched as well. */
+void LyXText::getWord(LyXCursor & from, LyXCursor & to, 
+		      word_location const loc) const
 {
 	// first put the cursor where we wana start to select the word
 	from = cursor;
@@ -2188,11 +2189,11 @@ void LyXText::getWord(LyXCursor & from, LyXCursor & to, word_location loc) const
 }
 
 
-void LyXText::selectWord(BufferView * bview) 
+void LyXText::selectWord(BufferView * bview, word_location const loc) 
 {
 	LyXCursor from;
 	LyXCursor to;
-	getWord(from, to, WHOLE_WORD);
+	getWord(from, to, loc);
 	if (cursor != from)
 		setCursor(bview, from.par(), from.pos());
 	selection.cursor = cursor;
@@ -2202,17 +2203,21 @@ void LyXText::selectWord(BufferView * bview)
 
 /* -------> Select the word currently under the cursor when:
 			1: no selection is currently set,
-			2: the cursor is not at the borders of the word. */
+	[disabled]	2: the cursor is not at the borders of the word. */
 
-bool LyXText::selectWordWhenUnderCursor(BufferView * bview) 
+bool LyXText::selectWordWhenUnderCursor(BufferView * bview, 
+					word_location const loc) 
 {
-	if (!selection.set() &&
-	    cursor.pos() > 0 && cursor.pos() < cursor.par()->size()
+	if (!selection.set() 
+#if 0
+	    && cursor.pos() > 0 && cursor.pos() < cursor.par()->size()
 	    && !cursor.par()->isSeparator(cursor.pos())
 	    && !cursor.par()->isKomma(cursor.pos())
 	    && !cursor.par()->isSeparator(cursor.pos() -1)
-	    && !cursor.par()->isKomma(cursor.pos() -1)) {
-		selectWord(bview);
+	    && !cursor.par()->isKomma(cursor.pos() -1)
+#endif
+	    ) {
+		selectWord(bview, loc);
 		return true;
 	}
 	return false;
@@ -2291,17 +2296,18 @@ string const LyXText::selectNextWord(BufferView * bview,
 	// Start the selection from here
 	selection.cursor = cursor;
 	
-	ostringstream latex;
+	Inset * inset;
 
 	// and find the end of the word 
 	// (optional hyphens are part of a word)
 	while (cursor.pos() < cursor.par()->size()
 	       && (cursor.par()->isLetter(cursor.pos())) 
-	           || (cursor.par()->getChar(cursor.pos()) == Paragraph::META_INSET
-		       && cursor.par()->getInset(cursor.pos()) != 0
-		       && cursor.par()->getInset(cursor.pos())->latex(bview->buffer(), latex, false, false) == 0
-		       && latex.str() == "\\-"
-			   ))
+	       // assignment is intentional here
+	       || ((inset = getInset())
+		   && inset->lyxCode() == Inset::SPECIALCHAR_CODE
+		   && static_cast<InsetSpecialChar *>(inset)->kind()
+		   	== InsetSpecialChar::HYPHENATION
+		   ))
 		cursor.pos(cursor.pos() + 1);
 
 	// Finally, we copy the word to a string and return it
@@ -2329,16 +2335,17 @@ void LyXText::selectSelectedWord(BufferView * bview)
 	
 	// set the sel cursor
 	selection.cursor = cursor;
-	ostringstream latex;
+	Inset * inset;
 	
 	// now find the end of the word
 	while (cursor.pos() < cursor.par()->size()
 	       && (cursor.par()->isLetter(cursor.pos())
-	           || (cursor.par()->getChar(cursor.pos()) == Paragraph::META_INSET
-		       && cursor.par()->getInset(cursor.pos()) != 0
-		       && cursor.par()->getInset(cursor.pos())->latex(bview->buffer(), latex, false, false) == 0
-		       && latex.str() == "\\-"
-			   )))
+		   // assignment is intentional here
+		   || ((inset = getInset())
+		       && inset->lyxCode() == Inset::SPECIALCHAR_CODE
+		       && static_cast<InsetSpecialChar *>(inset)->kind()
+		       		== InsetSpecialChar::HYPHENATION
+		       )))
 		cursor.pos(cursor.pos() + 1);
 	
 	setCursor(bview, cursor.par(), cursor.pos());

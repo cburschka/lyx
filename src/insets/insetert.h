@@ -30,7 +30,7 @@ public:
 	///
 	InsetERT();
 	///
-	InsetERT(string const & contents);
+	InsetERT(string const & contents, bool collapsed);
 	///
 	virtual void write(Buffer const * buf, std::ostream & os) const;
 	///

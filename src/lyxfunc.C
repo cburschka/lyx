@@ -600,12 +600,14 @@ func_status::value_type LyXFunc::getStatus(int ac,
 	case LFUN_INSET_ERT:
 		code = Inset::ERT_CODE;		
 		break;
+	case LFUN_FIGURE:
 	case LFUN_INSET_GRAPHICS:
 		code = Inset::GRAPHICS_CODE;
 		break;
 	case LFUN_INSET_FOOTNOTE:
 		code = Inset::FOOT_CODE;
 		break;
+	case LFUN_DIALOG_TABULAR_INSERT:
 	case LFUN_INSET_TABULAR:
 		code = Inset::TABULAR_CODE;
 		break;
@@ -621,6 +623,9 @@ func_status::value_type LyXFunc::getStatus(int ac,
 	case LFUN_INSET_FLOAT:
 	case LFUN_INSET_WIDE_FLOAT:
 		code = Inset::FLOAT_CODE;
+		break;
+	case LFUN_FLOAT_LIST:
+		code = Inset::FLOAT_LIST_CODE;
 		break;
 #if 0
 	case LFUN_INSET_LIST:
@@ -642,6 +647,7 @@ func_status::value_type LyXFunc::getStatus(int ac,
 	case LFUN_REF_INSERT:
 		code = Inset::REF_CODE;
 		break;
+	case LFUN_CITATION_CREATE:
 	case LFUN_CITATION_INSERT:
 		code = Inset::CITE_CODE;
 		break;
@@ -650,21 +656,39 @@ func_status::value_type LyXFunc::getStatus(int ac,
 		break;
 	case LFUN_INDEX_INSERT:
 	case LFUN_INDEX_INSERT_LAST:
+	case LFUN_INDEX_CREATE:
 		code = Inset::INDEX_CODE;
 		break;
-#if 0
-	case LFUN_CHILD_INSERT:
-		code = Inset::CHILD_CODE;
+	case LFUN_INDEX_PRINT:
+		code = Inset::INDEX_PRINT_CODE;
 		break;
-#endif
+	case LFUN_CHILD_INSERT:
+		code = Inset::INCLUDE_CODE;
+		break;
 	case LFUN_TOC_INSERT:
 		code = Inset::TOC_CODE;
 		break;
 	case LFUN_PARENTINSERT:
 		code = Inset::PARENT_CODE;
 		break;
+	case LFUN_HTMLURL:
+	case LFUN_URL:
 	case LFUN_INSERT_URL:
 		code = Inset::URL_CODE;
+		break;
+	case LFUN_QUOTE:
+		// always allow this, since we will inset a raw quote
+		// if an inset is not allowed.
+		break;
+	case LFUN_HYPHENATION:
+	case LFUN_LIGATURE_BREAK:
+	case LFUN_HFILL:
+	case LFUN_MENU_SEPARATOR:
+	case LFUN_LDOTS:
+	case LFUN_END_OF_SENTENCE:
+	case LFUN_PROTECTEDSPACE:
+	case LFUN_BREAKLINE:
+		code = Inset::SPECIALCHAR_CODE;
 		break;
 	default:
 		break;

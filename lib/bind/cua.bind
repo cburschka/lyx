@@ -67,7 +67,7 @@
 \bind "C-z"			"undo"
 \bind "C-S-Z"			"redo"
 
-\bind "S-C-quotedbl"		"quote-insert"
+\bind "~S-C-quotedbl"		"self-insert \""
 \bind "C-minus"			"hyphenation-point-insert"
 \bind "M-S-Right"		"depth-increment"
 \bind "M-S-Left"		"depth-decrement"

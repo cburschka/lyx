@@ -145,7 +145,7 @@ void InsetQuotes::parseString(string const & s)
 }
 
 
-string const InsetQuotes::dispString(Language const * doclang) const
+string const InsetQuotes::dispString(Language const * loclang) const
 {
  	string disp;
 	disp += quote_char[quote_index[side_][language_]];
@@ -160,7 +160,7 @@ string const InsetQuotes::dispString(Language const * doclang) const
 			disp = '»';
 
 	// in french, spaces are added inside double quotes
-	if (times_ == DoubleQ && doclang->code() == "fr") {
+	if (times_ == DoubleQ && prefixIs(loclang->code(), "fr")) {
 		if (side_ == LeftQ)
 			disp += " ";
 		else
@@ -183,9 +183,9 @@ int InsetQuotes::descent(BufferView *, LyXFont const & font) const
 }
 
 
-int InsetQuotes::width(BufferView * bv, LyXFont const & font) const
+int InsetQuotes::width(BufferView *, LyXFont const & font) const
 {
-	string text = dispString(bv->buffer()->getLanguage());
+	string const text = dispString(font.language());
 	int w = 0;
 
 	for (string::size_type i = 0; i < text.length(); ++i) {
@@ -215,7 +215,7 @@ LyXFont const InsetQuotes::convertFont(LyXFont const & f) const
 void InsetQuotes::draw(BufferView * bv, LyXFont const & font,
 		       int baseline, float & x, bool) const
 {
-	string text = dispString(bv->buffer()->getLanguage());
+	string const text = dispString(font.language());
 
 	bv->painter().text(int(x), baseline, text, font);
 	x += width(bv, font);
@@ -237,10 +237,8 @@ void InsetQuotes::read(Buffer const *, LyXLex & lex)
 	lex.nextToken();
 	parseString(lex.GetString());
 	lex.next();
-	string tmp(lex.GetString());
-	if (tmp != "\\end_inset")
-		lyxerr << "LyX Warning: Missing \\end_inset "
-			"in InsetQuotes::Read." << endl;
+	if (lex.GetString() != "\\end_inset")
+		lex.printError("Missing \\end_inset at this point");
 }
 
 
@@ -249,8 +247,11 @@ extern bool use_babel;
 int InsetQuotes::latex(Buffer const * buf, ostream & os,
 		       bool /*fragile*/, bool) const
 {
+#ifdef WITH_WARNINGS
+#warning How do we get the local language here??
+#endif
 	string const doclang = buf->getLanguage()->babel();
-	int quoteind = quote_index[side_][language_];
+	const int quoteind = quote_index[side_][language_];
 	string qstr;
 	
 	if (language_ == FrenchQ && times_ == DoubleQ) {
@@ -258,7 +259,7 @@ int InsetQuotes::latex(Buffer const * buf, ostream & os,
 			if (side_ == LeftQ) 
 				qstr = "\\og "; //the spaces are important here
 			else 
-				qstr = " \\fg "; //and here
+				qstr = " \\fg{}"; //and here
 		} else if (doclang == "french") {
 			if (side_ == LeftQ) 
 				qstr = "<< "; //the spaces are important here
@@ -321,7 +322,11 @@ void InsetQuotes::validate(LaTeXFeatures & features) const
 {
 	char type = quote_char[quote_index[side_][language_]];
 
+#ifdef DO_USE_DEFAULT_LANGUAGE
 	if (features.bufferParams().language->lang() == "default" 
+#else
+	if (!use_babel
+#endif
 	    && lyxrc.fontenc != "T1") {
 		if (times_ == SingleQ) 
 			switch (type) {

@@ -698,17 +698,17 @@ int LyXRC::read(string const & filename)
 			int action, res = 0;
 			string seq, cmd;
 			
-			if (lexrc.lex() == LyXLex::LEX_DATA)  {
+			if (lexrc.next()) {
 				seq = lexrc.GetString();
 			} else {
-				lexrc.printError("Bad key sequence: `$$Token'");
+				lexrc.printError("RC_BIND: Missing key sequence");
 				break;
 			}
 			
-			if (lexrc.lex() == LyXLex::LEX_DATA) {
+			if (lexrc.next(true)) {
 				cmd = lexrc.GetString();
 			} else {
-				lexrc.printError("Bad command: `$$Token'");
+				lexrc.printError("RC_BIND: missing command");
 				break;
 			}
 			

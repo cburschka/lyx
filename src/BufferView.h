@@ -133,8 +133,6 @@ public:
 	///
 	string const nextWord(float & value);
 	///
-	void insertCorrectQuote();
-	///
 	bool gotoLabel(string const & label);
 	///
 	void paste();

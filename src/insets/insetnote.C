@@ -17,6 +17,7 @@
 #include "insetnote.h"
 #include "gettext.h"
 #include "lyxfont.h"
+#include "buffer.h"
 #include "BufferView.h"
 #include "lyxtext.h"
 #include "insets/insettext.h"
@@ -25,19 +26,34 @@
 
 using std::ostream;
 
-InsetNote::InsetNote()
-	: InsetCollapsable()
+void InsetNote::init()
 {
 	LyXFont font(LyXFont::ALL_SANE);
 	font.decSize();
 	font.setColor(LColor::note);
 	setLabelFont(font);
-	setAutoCollapse(true);
+	setAutoCollapse(false);
 
 	setLabel(_("note"));
 	setInsetName("Note");
 }
 
+InsetNote::InsetNote()
+	: InsetCollapsable()
+{
+	init();
+}
+
+InsetNote::InsetNote(Buffer const * buf, string const & contents, 
+		     bool collapsed)
+	: InsetCollapsable(collapsed)
+{
+	init();
+
+	Paragraph * par = inset.paragraph();
+	Paragraph::size_type pos = 0;
+	buf->insertStringAsLines(par, pos, labelfont, contents);
+}
 
 Inset * InsetNote::clone(Buffer const &, bool same_id) const
 {

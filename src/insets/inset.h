@@ -106,7 +106,9 @@ public:
 		///
 		CITE_CODE,
 		///
-		FLOAT_LIST_CODE
+		FLOAT_LIST_CODE,
+		///
+		INDEX_PRINT_CODE
 	};
 
 	///

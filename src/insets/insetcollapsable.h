@@ -27,7 +27,7 @@ class LyXText;
 class Paragraph;
 class LyXCursor;
 
-/** A colapsable text inset
+/** A collapsable text inset
   
 */
 class InsetCollapsable : public UpdatableInset {
@@ -41,8 +41,8 @@ public:
 	static int const TEXT_TO_TOP_OFFSET = 2;
 	///
 	static int const TEXT_TO_BOTTOM_OFFSET = 2;
-	///
-	InsetCollapsable();
+	/// inset is initially collapsed if bool = true
+	InsetCollapsable(bool = false);
 	///
 	void read(Buffer const *, LyXLex &);
 	///
@@ -219,7 +219,7 @@ private:
 	///
 	bool autocollapse;
 	///
-	int widthCollapsed;
+	mutable int widthCollapsed;
 	///
 	mutable int oldWidth;
 	///

@@ -1,3 +1,38 @@
+2001-07-22  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* ToolbarDefaults.C (read): 
+	* MenuBackend.C (read): allow escaping in all strings
+
+	* BufferView_pimpl.C (insertAndEditInset): new method.
+	(Dispatch): use insertAndEditInset whenever appropriate.
+
+	* BufferView_pimpl.C (insertNote): removed
+
+	* BufferView_pimpl.C (smartQuote): new method, moved from
+	BufferView; if an insetquote cannot be inserted, insert a '"'
+	character instead.
+
+	* BufferView2.C: remove insertCorrectQuote();
+
+	* lyxfunc.C (getStatus): Add support for all remaingin
+	inset-insert lfuns.
+
+	* trans_mgr.C (insertVerbatim): do not treat '"' specially.
+
+	* lyxrc.C (read): in RC_BIND, allow escaped sequences in the
+	command (necessary to pass " as parameter of self-insert.
+
+	* text.C (selectWordWhenUnderCursor):
+	(selectWord): add word_location parameter
+	(selectWordWhenUnderCursor): same + remove special code for word
+	boundary.
+	(selectNextWord): use kind() to guess type of insetspecialchar,
+	not latex().
+	
+	* buffer.C (insertStringAsLines): new method, extracted from LyXText.
+	(insertErtContents): create ert insets as collapsed.
+	(readInset): better compatibility code for Info inset.
+
 2001-07-20  Juergen Vigna  <jug@sad.it>
 
 	* lyxfunc.C (dispatch): use always LyXFind now!

@@ -46,6 +46,8 @@ public:
 	explicit
 	InsetSpecialChar(Kind k);
 	///
+	Kind kind() const;
+	///
 	int ascent(BufferView *, LyXFont const &) const;
 	///
 	int descent(BufferView *, LyXFont const &) const;
@@ -82,7 +84,7 @@ public:
 	void validate(LaTeXFeatures &) const;
 private:
 	/// And which kind is this?
-	Kind kind;
+	Kind kind_;
 };
 
 #endif

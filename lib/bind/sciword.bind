@@ -45,7 +45,8 @@
 \bind "C-o"	"inset-toggle"
 
 # Insert a quote character. Do I need this?
-\bind "C-q"	"quote-insert"
+# Probably, since we need a way to get a raw quote
+\bind "C-q"	"self-insert \""
 
 # Sciword mnemonic.
 \bind "C-r"	"math-insert sqrt"

@@ -67,6 +67,8 @@ public:
 	///
 	Inset::Code lyxCode() const;
 	///
+	bool insetAllowed(Inset::Code code) const;
+	///
 	virtual RESULT localDispatch(BufferView *, kb_action, string const &);
 	///
 	std::vector<string> const getLabelList() const;

@@ -268,9 +268,10 @@ public:
 	string const selectionAsString(Buffer const *) const;
 	
 	/// select the word we need depending on word_location
-	void getWord(LyXCursor & from, LyXCursor & to, word_location) const;
+	void getWord(LyXCursor & from, LyXCursor & to, 
+		     word_location const) const;
 	/// just selects the word the cursor is in
-	void selectWord(BufferView *);
+	void selectWord(BufferView *, word_location const = WHOLE_WORD);
 	/// returns the inset at cursor (if it exists), 0 otherwise
 	Inset * getInset() const;
 
@@ -351,7 +352,8 @@ public:
 	///
 	void deleteLineForward(BufferView *);
 	///
-	bool selectWordWhenUnderCursor(BufferView *);
+	bool selectWordWhenUnderCursor(BufferView *, 
+				       word_location const = WHOLE_WORD);
 	///
 	enum TextCase {
 		///

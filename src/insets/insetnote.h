@@ -23,8 +23,10 @@
 */
 class InsetNote : public InsetCollapsable {
 public:
-	///
+	/// 
 	InsetNote();
+	/// constructor with initial contents
+	InsetNote(Buffer const *, string const & contents, bool collapsed);
 	///
 	virtual Inset * clone(Buffer const &, bool) const;
 	///
@@ -36,6 +38,10 @@ public:
 	///
 	virtual int latex(Buffer const *, std::ostream &, bool, bool) const
 		{ return 0; }
+private:
+	/// used by the constructors
+	void init();
+
 };
 
 #endif

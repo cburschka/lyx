@@ -1785,65 +1785,10 @@ void LyXText::insertStringAsLines(BufferView * bview, string const & str)
 	
 	setCursorParUndo(bview);
 	
-	bool isEnvironment =
-		textclasslist.Style(bview->buffer()->params.textclass, 
-				    cursor.par()->getLayout()).isEnvironment();
-	bool free_spacing =
-		textclasslist.Style(bview->buffer()->params.textclass, 
-				    cursor.par()->getLayout()).free_spacing;
-	bool keepempty =
-		textclasslist.Style(bview->buffer()->params.textclass, 
-				    cursor.par()->getLayout()).keepempty;
-
 	// only to be sure, should not be neccessary
 	clearSelection(bview);
 	
-	// insert the string, don't insert doublespace
-	bool space_inserted = true;
-	for(string::const_iterator cit = str.begin(); 
-	    cit != str.end(); ++cit) {
-		if (*cit == '\n') {
-			if (par->size() || keepempty) { 
-				par->breakParagraph(bview->buffer()->params, 
-						    pos, isEnvironment);
-				par = par->next();
-				pos = 0;
-				space_inserted = true;
-			} else {
-				continue;
-			}
-			// do not insert consecutive spaces if !free_spacing
-		} else if ((*cit == ' ' || *cit == '\t')
-			   && space_inserted && !free_spacing) {
-			continue;
-		} else if (*cit == '\t') {
-			if (!free_spacing) {
-				// tabs are like spaces here
-				par->insertChar(pos, ' ', 
-						current_font);
-				++pos;
-				space_inserted = true;
-			} else {
-				const Paragraph::value_type nb = 8 - pos % 8;
-				for (Paragraph::size_type a = 0; 
-				     a < nb ; ++a) {
-					par->insertChar(pos, ' ', 
-							current_font);
-					++pos;
-				}
-				space_inserted = true;
-			}
-		} else if (!IsPrintable(*cit)) {
-			// Ignore unprintables
-			continue;
-		} else {
-			// just insert the character
-			par->insertChar(pos, *cit, current_font);
-			++pos;
-			space_inserted = (*cit == ' ');
-		}
-
-	}	
+	bview->buffer()->insertStringAsLines(par, pos, current_font, str);
 
 	redoParagraphs(bview, cursor, endpar);
 	setCursor(bview, cursor.par(), cursor.pos());

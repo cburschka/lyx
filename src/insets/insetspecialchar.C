@@ -24,9 +24,14 @@ using std::ostream;
 using std::max;
 
 InsetSpecialChar::InsetSpecialChar(Kind k)
-	: kind(k)
+	: kind_(k)
 {}
 
+
+InsetSpecialChar::Kind InsetSpecialChar::kind() const
+{
+	return kind_;
+}
 
 int InsetSpecialChar::ascent(BufferView *, LyXFont const & font) const
 {
@@ -42,7 +47,7 @@ int InsetSpecialChar::descent(BufferView *, LyXFont const & font) const
 
 int InsetSpecialChar::width(BufferView *, LyXFont const & font) const
 {
-	switch (kind) {
+	switch (kind_) {
 	case HYPHENATION:
 	{
 		int w = lyxfont::width('-', font);
@@ -82,7 +87,7 @@ void InsetSpecialChar::draw(BufferView * bv, LyXFont const & f,
 	Painter & pain = bv->painter();
 	LyXFont font(f);
 
-	switch (kind) {
+	switch (kind_) {
 	case HYPHENATION:
 	{
 		font.setColor(LColor::special);
@@ -158,7 +163,7 @@ void InsetSpecialChar::draw(BufferView * bv, LyXFont const & f,
 void InsetSpecialChar::write(Buffer const *, ostream & os) const
 {
 	string command;
-	switch (kind) {
+	switch (kind_) {
 	case HYPHENATION:	
 		command = "\\-";	
 		break;
@@ -190,18 +195,18 @@ void InsetSpecialChar::read(Buffer const *, LyXLex & lex)
 	string const command = lex.GetString();
 
 	if (command == "\\-")
-		kind = HYPHENATION;
+		kind_ = HYPHENATION;
 	else if (command == "\\textcompwordmark{}")
-		kind = LIGATURE_BREAK;
+		kind_ = LIGATURE_BREAK;
 	else if (command == "\\@.")
-		kind = END_OF_SENTENCE;
+		kind_ = END_OF_SENTENCE;
 	else if (command == "\\ldots{}")
-		kind = LDOTS;
+		kind_ = LDOTS;
 	else if (command == "\\menuseparator")
-	        kind = MENU_SEPARATOR;
+	        kind_ = MENU_SEPARATOR;
 	else if (command == "\\protected_separator"
 		 || command == "~")
-		kind = PROTECTED_SEPARATOR;
+		kind_ = PROTECTED_SEPARATOR;
 	else
 		lex.printError("InsetSpecialChar: Unknown kind: `$$Token'");
 }
@@ -210,7 +215,7 @@ void InsetSpecialChar::read(Buffer const *, LyXLex & lex)
 int InsetSpecialChar::latex(Buffer const *, ostream & os, bool /*fragile*/,
 			    bool free_space) const
 {
-	switch (kind) {
+	switch (kind_) {
 	case HYPHENATION:	  
 		os << "\\-";	
 		break;
@@ -236,7 +241,7 @@ int InsetSpecialChar::latex(Buffer const *, ostream & os, bool /*fragile*/,
 
 int InsetSpecialChar::ascii(Buffer const *, ostream & os, int) const
 {
-	switch (kind) {
+	switch (kind_) {
 	case HYPHENATION:
 	case LIGATURE_BREAK:
 		break;
@@ -271,13 +276,13 @@ int InsetSpecialChar::docBook(Buffer const * buf, ostream & os) const
 
 Inset * InsetSpecialChar::clone(Buffer const &, bool) const
 {
-	return new InsetSpecialChar(kind);
+	return new InsetSpecialChar(kind_);
 }
 
 
 void InsetSpecialChar::validate(LaTeXFeatures & features) const
 {
-	if (kind == MENU_SEPARATOR) {
+	if (kind_ == MENU_SEPARATOR) {
 		features.lyxarrow = true;
 	}
 }

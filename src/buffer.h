@@ -125,6 +125,9 @@ public:
 					Paragraph::depth_type & depth, 
 					LyXFont &);
 	///
+	void insertStringAsLines(Paragraph *&, Paragraph::size_type &,
+				 LyXFont const &, string const &) const;
+	///
 	void insertErtContents(Paragraph * par, int & pos,
 			       LyXFont const & font,
 			       bool set_inactive = true);

@@ -2660,7 +2660,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		break;
 
 	case LFUN_QUOTE:
-		bv_->insertCorrectQuote();
+		smartQuote();
 		break;
 
 	case LFUN_HTMLURL:
@@ -2671,99 +2671,60 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 			p.setCmdName("htmlurl");
 		else
 			p.setCmdName("url");
-		owner_->getDialogs()->createUrl( p.getAsString() );
+		owner_->getDialogs()->createUrl(p.getAsString());
 	}
 	break;
 	
 	case LFUN_INSERT_URL:
 	{
 		InsetCommandParams p;
-		p.setFromString( argument );
+		p.setFromString(argument);
 
-		InsetUrl * inset = new InsetUrl( p );
+		InsetUrl * inset = new InsetUrl(p);
 		if (!insertInset(inset))
 			delete inset;
 		else
-			updateInset( inset, true );
+			updateInset(inset, true);
 	}
 	break;
 	
 	case LFUN_INSET_TEXT:
-	{
-		InsetText * new_inset = new InsetText;
-		if (insertInset(new_inset))
-			new_inset->edit(bv_);
-		else
-			delete new_inset;
-	}
-	break;
+		insertAndEditInset(new InsetText);
+		break;
 	
 	case LFUN_INSET_ERT:
-	{
-		InsetERT * new_inset = new InsetERT;
-		if (insertInset(new_inset))
-			new_inset->edit(bv_);
-		else
-			delete new_inset;
-	}
-	break;
+		insertAndEditInset(new InsetERT);
+		break;
 	
 	case LFUN_INSET_EXTERNAL:
-	{
-		InsetExternal * new_inset = new InsetExternal;
-		if (insertInset(new_inset))
-			new_inset->edit(bv_);
-		else
-			delete new_inset;
-	}
-	break;
+		insertAndEditInset(new InsetExternal);
+		break;
 	
 	case LFUN_INSET_FOOTNOTE:
-	{
-		InsetFoot * new_inset = new InsetFoot;
-		if (insertInset(new_inset))
-			new_inset->edit(bv_);
-		else
-			delete new_inset;
-	}
-	break;
+		insertAndEditInset(new InsetFoot);
+		break;
 
 	case LFUN_INSET_MARGINAL:
-	{
-		InsetMarginal * new_inset = new InsetMarginal;
-		if (insertInset(new_inset))
-			new_inset->edit(bv_);
-		else
-			delete new_inset;
-	}
-	break;
+		insertAndEditInset(new InsetMarginal);
+		break;
 
 	case LFUN_INSET_MINIPAGE:
-	{
-		InsetMinipage * new_inset = new InsetMinipage;
-		if (insertInset(new_inset))
-			new_inset->edit(bv_);
-		else
-			delete new_inset;
-	}
-	break;
+		insertAndEditInset(new InsetMinipage);
+		break;
+
+	case LFUN_INSERT_NOTE:
+		insertAndEditInset(new InsetNote);
+		break;
 
 	case LFUN_INSET_FLOAT:
-	{
 		// check if the float type exist
 		if (floatList.typeExist(argument)) {
-			InsetFloat * new_inset = new InsetFloat(argument);
-			if (insertInset(new_inset))
-				new_inset->edit(bv_);
-			else
-				delete new_inset;
+			insertAndEditInset(new InsetFloat(argument));
 		} else {
 			lyxerr << "Non-existant float type: "
 			       << argument << endl;
 		}
-		
-	}
-	break;
+		break;
 
 	case LFUN_INSET_WIDE_FLOAT:
 	{
@@ -2784,24 +2745,12 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 	break;
 
 	case LFUN_INSET_LIST:
-	{
-		InsetList * new_inset = new InsetList;
-		if (insertInset(new_inset))
-			new_inset->edit(bv_);
-		else
-			delete new_inset;
-	}
-	break;
+		insertAndEditInset(new InsetList);
+		break;
 
 	case LFUN_INSET_THEOREM:
-	{
-		InsetTheorem * new_inset = new InsetTheorem;
-		if (insertInset(new_inset))
-			new_inset->edit(bv_);
-		else
-			delete new_inset;
-	}
-	break;
+		insertAndEditInset(new InsetTheorem);
+		break;
 
 	case LFUN_INSET_CAPTION:
 	{
@@ -3119,10 +3068,6 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 	}
 	break;
 	
-	case LFUN_INSERT_NOTE:
-		insertNote();
-		break;
-
 	case LFUN_SELFINSERT:
 	{
 		if (argument.empty()) break;
@@ -3145,7 +3090,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 			}
 		}
 		
-		bv_->beforeChange(lt);
+		beforeChange(lt);
 		LyXFont const old_font(lt->real_current_font);
 		
 		string::const_iterator cit = argument.begin();
@@ -3284,14 +3229,31 @@ void BufferView::Pimpl::specialChar(InsetSpecialChar::Kind kind)
 }
 
 
-void BufferView::Pimpl::insertNote()
+void BufferView::Pimpl::smartQuote()
 {
-	Inset * inset = new InsetNote;
-	insertInset(inset);
-	inset->edit(bv_);
+	char c;
+	LyXText * lt = bv_->getLyXText();
+
+	if (lt->cursor.pos())
+		c = lt->cursor.par()->getChar(lt->cursor.pos() - 1);
+	else 
+		c = ' ';
+
+	hideCursor();
+	if (!insertInset(new InsetQuotes(c, bv_->buffer()->params)))
+		Dispatch(LFUN_SELFINSERT, "\"");
 }
 
 
+void BufferView::Pimpl::insertAndEditInset(Inset * inset)
+{
+	if (insertInset(inset))
+		inset->edit(bv_);
+	else
+		delete inset;
+}
+
+ 
 // Open and lock an updatable inset
 bool BufferView::Pimpl::open_new_inset(UpdatableInset * new_inset, bool behind)
 {

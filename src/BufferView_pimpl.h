@@ -139,7 +139,9 @@ private:
 	///
 	void hfill();
 	///
-	void insertNote();
+	void smartQuote();
+	///
+	void insertAndEditInset(Inset *);
 	///
 	void gotoInset(std::vector<Inset::Code> const & codes,
 		       bool same_content);

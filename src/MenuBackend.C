@@ -135,9 +135,9 @@ Menu & Menu::read(LyXLex & lex)
 			optional = true;
 			// fallback to md_item
 		case md_item: {
-			lex.next();
+			lex.next(true);
 			string const name = _(lex.GetString());
-			lex.next();
+			lex.next(true);
 			string const command = lex.GetString();
 			add(MenuItem(MenuItem::Command, name, 
 				     command, optional));
@@ -186,9 +186,9 @@ Menu & Menu::read(LyXLex & lex)
 			break;
 			
 		case md_submenu: {
-			lex.next();
+			lex.next(true);
 			string mlabel = _(lex.GetString());
-			lex.next();
+			lex.next(true);
 			string mname = lex.GetString();
 			add(MenuItem(MenuItem::Submenu, mlabel, mname));
 			break;
@@ -438,7 +438,7 @@ void MenuBackend::read(LyXLex & lex)
 			menubar = true;
 			// fallback to md_menu
 		case md_menu: {
-			lex.next();
+			lex.next(true);
 			string name = lex.GetString();
 			if (hasMenu(name)) {
 				if (getMenu(name).menubar() == menubar) {

@@ -114,7 +114,7 @@ void ToolbarDefaults::read(LyXLex & lex)
 	while (lex.IsOK() && !quit) {
 		switch (lex.lex()) {
 		case TO_ADD:
-			if (lex.next()) {
+			if (lex.next(true)) {
 				func = lex.GetString();
 				lyxerr[Debug::PARSER]
 					<< "Toolbar::read TO_ADD func: `"

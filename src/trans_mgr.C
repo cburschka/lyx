@@ -15,7 +15,6 @@
 #include "buffer.h"
 #include "lyxrc.h"
 #include "support/lstrings.h"
-#include "language.h"
 
 using std::endl;
 using std::pair;
@@ -372,16 +371,7 @@ void TransManager::insertVerbatim(string const & str, LyXText * text)
 	string::size_type const l = str.length();
 	
 	for (string::size_type i = 0; i < l; ++i) {
-		if (str[i] == '\"'
-#ifndef NO_LATEX
-		    && text->getFont(current_view->buffer(),text->cursor.par(),
-				     text->cursor.pos()).latex() == LyXFont::OFF
-#endif
-		    && text->getFont(current_view->buffer(),text->cursor.par(),
-				     text->cursor.pos()).language()->lang() != "hebrew")
-			current_view->insertCorrectQuote();
-		else
-			text->insertChar(current_view, str[i]);
+		text->insertChar(current_view, str[i]);
 	}
 }
 
@@ -390,7 +380,7 @@ void TransManager::insert(string const & str, LyXText * text)
 {
 	// Go through the character encoding only if the current 
 	// encoding (chset_->name()) matches the current font_norm
-	// (lyrxc->font_norm
+	// (lyrxc->font_norm)
 	
 	// Is false to speak about "only if" the current encoding will
 	// almost always be equal to font_norm.

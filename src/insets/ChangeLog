@@ -1,3 +1,34 @@
+2001-07-22  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* insetcollapsable.h: make WidthCollapsed mutable.
+
+	* insetindex.C (lyxCode): InsetIndex returns INDEX_CODE,
+	InsetPrintIndex returns INDEX_PRINT_CODE.
+
+	* inset.h: add INDEX_PRINT_CODE
+
+	* insetcollapsable.C (draw): init widthCollapsed if necessary
+	(width): ditto.
+
+	* insetquotes.C (width): use the local language, not the document
+	language.
+	(draw): ditto.
+	(dispString): add additional spacing for all french languages,
+	like fr_CA.
+	(validate): make it work when there is no default language
+
+	* insetspecialchar.h: rename kind to kind_; add kind() accessor.
+
+	* insetnote.C (init): new method, called by the constructors
+	(InsetNote): new constructor with contents passed as a string
+
+2001-07-21  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* insetfootlike.C (insetAllowed): disallow float in footlike.
+
+	* insetert.C (InsetERT): add collapsed argument to the constrctor
+	with contents.
+
 2001-07-20  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* insetindex.h: shut off warning
