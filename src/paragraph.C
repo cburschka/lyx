@@ -1376,7 +1376,6 @@ string Paragraph::getID() const
 pos_type Paragraph::getFirstWord(Buffer const & buf, ostream & os, OutputParams const & runparams) const
 {
 	pos_type i;
-	LyXLayout_ptr const & style = layout();
 	for (i = 0; i < size(); ++i) {
 		if (isInset(i)) {
 			InsetBase const * inset = getInset(i);

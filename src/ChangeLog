@@ -1,5 +1,9 @@
 2004-10-30  José Matos  <jamatos@lyx.org>
 
+	* paragraph.C (getFirstWord): remove unused variable.
+
+2004-10-30  José Matos  <jamatos@lyx.org>
+
 	* paragraph.C (getFirstWord): the content should always be escaped there.
 	(simpleDocBookOnePar):
 	* output_docbook.C (makeEnvironment): replace reference to CDATA to style pass_thru.
