@@ -17,6 +17,8 @@ public:
 	///
 	MathBraceInset();
 	///
+	MathBraceInset(MathArray const & ar);
+	///
 	MathInset * clone() const;
 	/// we write extra braces in any case...
 	bool extraBraces() const { return true; }

@@ -713,12 +713,10 @@ void Parser::parse_into1(MathGridInset & grid, unsigned flags,
 			parse_into(ar, FLAG_BRACE_LAST, mathmode);
 			// do not create a BraceInset if they were written by LyX
 			// this helps to keep the annoyance of  "a choose b"  to a minimum
-			if (ar.size() == 1 && ar[0]->extraBraces()) {
+			if (ar.size() == 1 && ar[0]->extraBraces())
 				cell->push_back(ar);
-			} else {
-				cell->push_back(MathAtom(new MathBraceInset));
-				cell->back()->cell(0).swap(ar);
-			}
+			else
+				cell->push_back(MathAtom(new MathBraceInset(ar)));
 		}
 
 		else if (t.cat() == catEnd) {
@@ -1001,10 +999,13 @@ void Parser::parse_into1(MathGridInset & grid, unsigned flags,
 		}
 
 		else if (t.cs() == "label") {
+			MathArray ar;
+			parse_into(ar, FLAG_ITEM, false);
 			if (grid.asHullInset()) {
-				MathArray ar;
-				parse_into(ar, FLAG_ITEM, false);
 				grid.asHullInset()->label(cellrow, asString(ar));
+			} else {
+				cell->push_back(createMathInset(t.cs()));
+				cell->push_back(MathAtom(new MathBraceInset(ar)));
 			}
 		}
 

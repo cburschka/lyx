@@ -18,6 +18,13 @@ MathBraceInset::MathBraceInset()
 {}
 
 
+MathBraceInset::MathBraceInset(MathArray const & ar)
+	: MathNestInset(1)
+{
+	cell(0) = ar;
+}
+
+
 MathInset * MathBraceInset::clone() const
 {
 	return new MathBraceInset(*this);
