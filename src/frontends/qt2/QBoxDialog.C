@@ -24,7 +24,7 @@ namespace lyx {
 namespace frontend {
 
 QBoxDialog::QBoxDialog(QBox * form)
-	: QBoxDialogBase(qApp->focusWidget() ? qApp->focusWidget() : qApp->mainWidget(), 0, false, 0),
+	: QBoxDialogBase(0, 0, false, 0),
 	form_(form)
 {
 	connect(restorePB, SIGNAL(clicked()),

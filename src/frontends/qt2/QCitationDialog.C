@@ -34,7 +34,7 @@ namespace lyx {
 namespace frontend {
 
 QCitationDialog::QCitationDialog(QCitation * form)
-	: QCitationDialogBase(qApp->focusWidget() ? qApp->focusWidget() : qApp->mainWidget(), 0, false, 0),
+	: QCitationDialogBase(0, 0, false, 0),
 	form_(form)
 {
 	connect(restorePB, SIGNAL(clicked()),

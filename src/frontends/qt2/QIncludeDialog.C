@@ -22,7 +22,7 @@ namespace lyx {
 namespace frontend {
 
 QIncludeDialog::QIncludeDialog(QInclude * form)
-	: QIncludeDialogBase(qApp->focusWidget() ? qApp->focusWidget() : qApp->mainWidget(), 0, false, 0),
+	: QIncludeDialogBase(0, 0, false, 0),
 	form_(form)
 {
 	connect(okPB, SIGNAL(clicked()),

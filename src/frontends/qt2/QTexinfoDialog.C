@@ -25,7 +25,7 @@ namespace frontend {
 
 
 QTexinfoDialog::QTexinfoDialog(QTexinfo * form)
-	: QTexinfoDialogBase(qApp->focusWidget() ? qApp->focusWidget() : qApp->mainWidget(), 0, false, 0),
+	: QTexinfoDialogBase(0, 0, false, 0),
 	form_(form)
 {
 	connect(closePB, SIGNAL(clicked()),

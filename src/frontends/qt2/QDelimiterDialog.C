@@ -74,7 +74,7 @@ string fix_name(const string & str)
 
 
 QDelimiterDialog::QDelimiterDialog(QMathDelimiter * form)
-	: QDelimiterDialogBase(qApp->focusWidget() ? qApp->focusWidget() : qApp->mainWidget(), 0, false, 0),
+	: QDelimiterDialogBase(0, 0, false, 0),
 	form_(form)
 {
 	setCaption(qt_("LyX: Delimiters"));

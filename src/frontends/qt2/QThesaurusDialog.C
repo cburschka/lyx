@@ -27,7 +27,7 @@ namespace frontend {
 
 
 QThesaurusDialog::QThesaurusDialog(QThesaurus * form)
-	: QThesaurusDialogBase(qApp->focusWidget() ? qApp->focusWidget() : qApp->mainWidget(), 0, false, 0),
+	: QThesaurusDialogBase(0, 0, false, 0),
 	form_(form)
 {
 	// hide the pointless QHeader

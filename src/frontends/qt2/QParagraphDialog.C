@@ -26,7 +26,7 @@ namespace lyx {
 namespace frontend {
 
 QParagraphDialog::QParagraphDialog(QParagraph * form)
-	: QParagraphDialogBase(qApp->focusWidget() ? qApp->focusWidget() : qApp->mainWidget(), 0, false, 0),
+	: QParagraphDialogBase(0, 0, false, 0),
 	form_(form)
 {
 	connect(okPB, SIGNAL(clicked()),

@@ -25,7 +25,7 @@ namespace lyx {
 namespace frontend {
 
 QLPrintDialog::QLPrintDialog(QPrint * f)
-	: QPrintDialogBase(qApp->focusWidget() ? qApp->focusWidget() : qApp->mainWidget(), 0, false, 0),
+	: QPrintDialogBase(0, 0, false, 0),
 	form_(f)
 {
 	connect(printPB, SIGNAL(clicked()),

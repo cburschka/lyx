@@ -29,7 +29,7 @@ namespace frontend {
 
 
 QTabularDialog::QTabularDialog(QTabular * form)
-	: QTabularDialogBase(qApp->focusWidget() ? qApp->focusWidget() : qApp->mainWidget(), 0, false, 0),
+	: QTabularDialogBase(0, 0, false, 0),
 	form_(form)
 {
 	connect(closePB, SIGNAL(clicked()),

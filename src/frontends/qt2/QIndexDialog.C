@@ -23,7 +23,7 @@ namespace lyx {
 namespace frontend {
 
 QIndexDialog::QIndexDialog(QIndex * form)
-	: QIndexDialogBase(qApp->focusWidget() ? qApp->focusWidget() : qApp->mainWidget(), 0, false, 0),
+	: QIndexDialogBase(0, 0, false, 0),
 	form_(form)
 {
 	connect(okPB, SIGNAL(clicked()),

@@ -19,7 +19,7 @@ namespace lyx {
 namespace frontend {
 
 QShowFileDialog::QShowFileDialog(QShowFile * form)
-	: QShowFileDialogBase(qApp->focusWidget() ? qApp->focusWidget() : qApp->mainWidget(), 0, false, 0),
+	: QShowFileDialogBase(0, 0, false, 0),
 	form_(form)
 {
 	connect(closePB, SIGNAL(clicked()),

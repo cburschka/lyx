@@ -22,7 +22,7 @@ namespace lyx {
 namespace frontend {
 
 QTabularCreateDialog::QTabularCreateDialog(QTabularCreate * form)
-	: QTabularCreateDialogBase(qApp->focusWidget() ? qApp->focusWidget() : qApp->mainWidget(), 0, false, 0),
+	: QTabularCreateDialogBase(0, 0, false, 0),
 	form_(form)
 {
 	table->setMinimumSize(100,100);

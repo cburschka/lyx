@@ -28,7 +28,7 @@ namespace lyx {
 namespace frontend {
 
 QVSpaceDialog::QVSpaceDialog(QVSpace * form)
-	: QVSpaceDialogBase(qApp->focusWidget() ? qApp->focusWidget() : qApp->mainWidget(), 0, false, 0),
+	: QVSpaceDialogBase(0, 0, false, 0),
 	form_(form)
 {
 	connect(okPB, SIGNAL(clicked()),

@@ -31,7 +31,7 @@ namespace lyx {
 namespace frontend {
 
 QGraphicsDialog::QGraphicsDialog(QGraphics * form)
-	: QGraphicsDialogBase(qApp->focusWidget() ? qApp->focusWidget() : qApp->mainWidget(), 0, false, 0),
+	: QGraphicsDialogBase(0, 0, false, 0),
 	form_(form)
 {
 	connect(okPB, SIGNAL(clicked()),

@@ -20,7 +20,7 @@ namespace lyx {
 namespace frontend {
 
 QErrorListDialog::QErrorListDialog(QErrorList * form)
-	: QErrorListDialogBase(qApp->focusWidget() ? qApp->focusWidget() : qApp->mainWidget(), 0, false, 0),
+	: QErrorListDialogBase(0, 0, false, 0),
 	form_(form)
 {
 	connect(closePB, SIGNAL(clicked()),

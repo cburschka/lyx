@@ -19,7 +19,7 @@ namespace lyx {
 namespace frontend {
 
 QBibitemDialog::QBibitemDialog(QBibitem * form)
-	: QBibitemDialogBase(qApp->focusWidget() ? qApp->focusWidget() : qApp->mainWidget(), 0, false, 0),
+	: QBibitemDialogBase(0, 0, false, 0),
 	form_(form)
 {
 	connect(okPB, SIGNAL(clicked()),
