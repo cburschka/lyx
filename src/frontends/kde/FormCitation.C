@@ -72,13 +72,13 @@ void FormCitation::createCitation(string const & arg)
 
 void FormCitation::updateButtons()
 { 
-	bool iskey,ischosenkey;
-
-	iskey = !selectedKey.empty();
-	ischosenkey = !selectedChosenKey.empty();
+	bool ischosenkey = !selectedChosenKey.empty();
  
+	vector<string>::const_iterator iter = 
+		find(chosenkeys.begin(), chosenkeys.end(), selectedKey);
+
+	dialog_->add->setEnabled(!selectedKey.empty() && iter == chosenkeys.end());
 	dialog_->remove->setEnabled(ischosenkey);
-	dialog_->add->setEnabled(iskey);
 	dialog_->up->setEnabled(ischosenkey);
 	dialog_->down->setEnabled(ischosenkey);
 }
@@ -147,13 +147,13 @@ void FormCitation::update()
 		dialog_->chosen->setFocusPolicy(QWidget::NoFocus);
 		dialog_->after->setFocusPolicy(QWidget::NoFocus);
 		dialog_->buttonOk->setEnabled(false);
-		dialog_->buttonCancel->setText(_("Close"));
+		dialog_->buttonCancel->setText(_("&Close"));
 	} else {
 		dialog_->keys->setFocusPolicy(QWidget::StrongFocus);
 		dialog_->chosen->setFocusPolicy(QWidget::StrongFocus);
 		dialog_->after->setFocusPolicy(QWidget::StrongFocus);
 		dialog_->buttonOk->setEnabled(true);
-		dialog_->buttonCancel->setText(_("Cancel"));
+		dialog_->buttonCancel->setText(_("&Cancel"));
 	}
 }
 
@@ -314,6 +314,12 @@ void FormCitation::down()
  
 void FormCitation::select_key(const char *key)
 {
+	vector<string>::const_iterator iter = 
+		find(chosenkeys.begin(), chosenkeys.end(), key);
+
+	if (iter!=chosenkeys.end())
+		return;
+
 	selectedKey.erase();
 	selectedKey = key;
 
@@ -328,6 +334,12 @@ void FormCitation::highlight_key(const char *key)
 	for (unsigned int i=0; i < keys.size(); i++) {
 		if (keys[i].first==key) {
 			dialog_->entry->setText(keys[i].second.c_str());
+			dialog_->chosen->clearFocus();
+			dialog_->chosen->clearSelection();
+			dialog_->up->setEnabled(false);
+			dialog_->down->setEnabled(false);
+			dialog_->remove->setEnabled(false);
+			selectedChosenKey.erase();
 			break;
 		}
 	}
@@ -346,6 +358,10 @@ void FormCitation::highlight_chosen(const char *key)
 		if (keys[i].first==key) {
 			if (keys[i].second.compare(dialog_->entry->text()))
 				dialog_->entry->setText(keys[i].second.c_str());
+			dialog_->keys->clearFocus();
+			dialog_->keys->clearSelection();
+			dialog_->add->setEnabled(false);
+			selectedKey.erase();
 			break;
 		}
 	}
