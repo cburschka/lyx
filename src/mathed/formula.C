@@ -414,7 +414,7 @@ void InsetFormula::draw(BufferView * bv, LyXFont const & f,
 			}
 		}
 	}
-	cursor_visible = false;
+	setCursorVisible(false);
 }
 
 
@@ -485,21 +485,21 @@ void InsetFormula::ToggleInsetCursor(BufferView * bv)
 	//  x -= par->xo;
 	y -= par->yo();
 	LyXFont font = WhichFont(LM_TC_TEXTRM, LM_ST_TEXT);
-	int asc = lyxfont::maxAscent(font);
-	int desc = lyxfont::maxDescent(font);
+	int const asc = lyxfont::maxAscent(font);
+	int const desc = lyxfont::maxDescent(font);
 
-	if (cursor_visible)
+	if (isCursorVisible())
 		bv->hideLockedInsetCursor();
 	else
 		bv->showLockedInsetCursor(x, y, asc, desc);
 
-	cursor_visible = !cursor_visible;
+	toggleCursorVisible();
 }
 
 
 void InsetFormula::ShowInsetCursor(BufferView * bv, bool)
 {
-	if (!cursor_visible) {
+	if (!isCursorVisible()) {
 		if (mathcursor) {
 			int x;
 			int y;
@@ -507,8 +507,8 @@ void InsetFormula::ShowInsetCursor(BufferView * bv, bool)
 			//  x -= par->xo;
 			y -= par->yo();
 			LyXFont font = WhichFont(LM_TC_TEXTRM, LM_ST_TEXT);
-			int asc = lyxfont::maxAscent(font);
-			int desc = lyxfont::maxDescent(font);
+			int const asc = lyxfont::maxAscent(font);
+			int const desc = lyxfont::maxDescent(font);
 			bv->fitLockedInsetCursor(x, y, asc, desc);
 		}
 		ToggleInsetCursor(bv);
@@ -518,7 +518,7 @@ void InsetFormula::ShowInsetCursor(BufferView * bv, bool)
 
 void InsetFormula::HideInsetCursor(BufferView * bv)
 {
-	if (cursor_visible)
+	if (isCursorVisible())
 		ToggleInsetCursor(bv);
 }
 
@@ -1037,9 +1037,11 @@ InsetFormula::LocalDispatch(BufferView * bv, kb_action action,
 
 		string new_label = arg;
 		if (new_label.empty()) {
-			string default_label = (lyxrc.label_init_length >= 0) ? "eq:" : "";
-			pair<bool, string> res = old_label.empty()
-				? askForText(_("Enter new label to insert:"), default_label)
+			string const default_label =
+				(lyxrc.label_init_length >= 0) ? "eq:" : "";
+			pair<bool, string> const res = old_label.empty()
+				? askForText(_("Enter new label to insert:"),
+					     default_label)
 				: askForText(_("Enter label:"), old_label);
 			if (!res.first)
 				break;
@@ -1093,7 +1095,8 @@ InsetFormula::LocalDispatch(BufferView * bv, kb_action action,
 		break;
 
 	default:
-		if ((action == -1  || action == LFUN_SELFINSERT) && !arg.empty())  {
+		if ((action == -1  || action == LFUN_SELFINSERT)
+		    && !arg.empty())  {
 			unsigned char c = arg[0];
 			bv->lockedInsetStoreUndo(Undo::INSERT);
 
