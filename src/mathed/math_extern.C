@@ -441,7 +441,7 @@ void extractFunctions(MathArray & ar)
 		// is it a function?
 		if ((*it)->asUnknownInset()) {
 			// it certainly is if it is well known...
-			name = (*it)->asUnknownInset()->name();
+			name = (*it)->name();
 		} else {
 			// is this a user defined function?
 			// it it probably not, if it doesn't have a name.

@@ -79,23 +79,6 @@ protected:
 
 
 
-struct MathScriptChanger : public MathChanger<MathMetricsBase> {
-	///
-	MathScriptChanger(MathMetricsBase & orig);
-	///
-	~MathScriptChanger();
-};
-
-
-struct MathFracChanger : public MathChanger<MathMetricsBase> {
-	///
-	MathFracChanger(MathMetricsBase & orig);
-	///
-	~MathFracChanger();
-};
-
-
-
 struct MathFontChanger : public MathChanger<LyXFont> {
 	///
 	MathFontChanger(LyXFont & orig, char const * font);
@@ -117,6 +100,18 @@ struct MathStyleChanger : public MathChanger<MathMetricsBase> {
 	MathStyleChanger(MathMetricsBase & mb, MathStyles shape);
 	///
 	~MathStyleChanger();
+};
+
+
+struct MathScriptChanger : public MathStyleChanger {
+	///
+	MathScriptChanger(MathMetricsBase & mb);
+};
+
+
+struct MathFracChanger : public MathStyleChanger {
+	///
+	MathFracChanger(MathMetricsBase & mb);
 };
 
 

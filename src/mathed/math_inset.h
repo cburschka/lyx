@@ -62,8 +62,6 @@ class MathStringInset;
 class MathSpaceInset;
 class MathSymbolInset;
 class MathUnknownInset;
-class MathXYMatrixInset;
-class MathXYMatrixInset;
 
 class InsetRef;
 
@@ -211,7 +209,6 @@ public:
 	virtual MathSymbolInset const  * asSymbolInset() const  { return 0; }
 	virtual MathUnknownInset       * asUnknownInset()       { return 0; }
 	virtual MathUnknownInset const * asUnknownInset() const { return 0; }
-	virtual MathXYMatrixInset const* asXYMatrixInset() const{ return 0; }
 	virtual InsetRef               * asInsetRef()           { return 0; }
 
 	/// identifies things that can get scripts

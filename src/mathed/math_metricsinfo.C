@@ -3,6 +3,7 @@
 
 #include "math_metricsinfo.h"
 #include "math_support.h"
+#include "debug.h"
 #include "frontends/Painter.h"
 
 
@@ -33,63 +34,48 @@ void MathPainterInfo::draw(int x, int y, char c)
 }
 
 
+MathStyles smallerScriptStyle(MathStyles st)
+{
+	switch (st) {
+		case LM_ST_DISPLAY:
+		case LM_ST_TEXT:
+			return LM_ST_SCRIPT;
+		case LM_ST_SCRIPT:
+		case LM_ST_SCRIPTSCRIPT:
+			return LM_ST_SCRIPTSCRIPT;
+	}
+	// shut up compiler
+	lyxerr << "should not happen\n";
+	return LM_ST_DISPLAY;
+}
 
 
 MathScriptChanger::MathScriptChanger(MathMetricsBase & mb)
-	: MathChanger<MathMetricsBase>(mb)
+	: MathStyleChanger(mb, smallerScriptStyle(mb.style))
+{}
+
+
+
+MathStyles smallerFracStyle(MathStyles st)
 {
-	save_ = mb;
-	switch (mb.style) {
+	switch (st) {
 		case LM_ST_DISPLAY:
+			return LM_ST_TEXT;
 		case LM_ST_TEXT:
-			mb.style = LM_ST_SCRIPT;
-			mb.font.decSize();
-			mb.font.decSize();
-			break;
+			return LM_ST_SCRIPT;
 		case LM_ST_SCRIPT:
-			mb.style = LM_ST_SCRIPTSCRIPT;
-			mb.font.decSize();
-		default:
-			break;
+		case LM_ST_SCRIPTSCRIPT:
+			return LM_ST_SCRIPTSCRIPT;
 	}
+	// shut up compiler
+	lyxerr << "should not happen\n";
+	return LM_ST_DISPLAY;
 }
 
-MathScriptChanger::~MathScriptChanger()
-{
-	orig_ = save_;
-}
 
-
-
-
-// decrease math size for fractions
 MathFracChanger::MathFracChanger(MathMetricsBase & mb)
-	: MathChanger<MathMetricsBase>(mb)
-{
-	save_ = mb;
-	switch (mb.style) {
-		case LM_ST_DISPLAY:
-			mb.style = LM_ST_TEXT;
-			break;
-		case LM_ST_TEXT:
-			mb.style = LM_ST_SCRIPT;
-			mb.font.decSize();
-			mb.font.decSize();
-			break;
-		case LM_ST_SCRIPT:
-			mb.style = LM_ST_SCRIPTSCRIPT;
-			mb.font.decSize();
-			break;
-		default:
-			break;
-	}
-}
-
-MathFracChanger::~MathFracChanger()
-{
-	orig_ = save_;
-}
-
+	: MathStyleChanger(mb, smallerFracStyle(mb.style))
+{}
 
 
 
@@ -108,22 +94,22 @@ MathShapeChanger::~MathShapeChanger()
 
 
 
-void changeSize(LyXFont & font, int diff)
-{
-	if (diff < 0) {
-		font.decSize();
-		changeSize(font, diff + 1);
-	} else if (diff > 0) {
-		font.incSize();
-		changeSize(font, diff - 1);
-	}
-}
-
 MathStyleChanger::MathStyleChanger(MathMetricsBase & mb, MathStyles style)
 	:	MathChanger<MathMetricsBase>(mb)
 {
+	static const int diff[4][4]  = { { 0, 0, -3, -5 },
+	                                 { 0, 0, -3, -5 },
+	                                 { 3, 3,  0, -2 },
+	                                 { 5, 5,  2,  0 } };
 	save_ = mb;
-	changeSize(mb.font, mb.style - style);
+	int t = diff[mb.style][style];
+	if (t > 0) 
+		while (t--)
+			mb.font.incSize();
+	else 
+		while (t++)
+			mb.font.decSize();
+	mb.style = style;
 }
 
 

@@ -184,8 +184,10 @@ int MathScriptInset::ndes() const
 
 void MathScriptInset::metrics(MathMetricsInfo & mi) const
 {
-	MathNestInset::metrics(mi);
+	cell(2).metrics(mi);
 	MathScriptChanger dummy(mi.base);
+	cell(0).metrics(mi);
+	cell(1).metrics(mi);
 	dim_.w = 0;
 	if (hasLimits()) {
 		dim_.w = nwid();
