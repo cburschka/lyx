@@ -17,10 +17,6 @@
 #\bind "C-e"	"------"
 # Sciword mnemonic.
 \bind "C-f"	"math-insert \frac"
-# Greek for only one character. "math-greek-toggle" is the persistent Greek
-# toggle which nobody really needs when typing math.
-#\bind "C-g"	"math-greek"
-#\bind "C-S-G" "math-greek-toggle"
 
 # Since the toggles don't work in 1.2.0, let's define all letters.
 # lowercase math Greek
