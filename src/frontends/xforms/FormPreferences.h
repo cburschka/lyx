@@ -27,14 +27,16 @@ class LyXView;
 class Dialogs;
 
 struct FD_form_preferences;
-struct FD_form_lnf_general;
+struct FD_form_lnf_misc;
 struct FD_form_screen_fonts;
 struct FD_form_interface;
 struct FD_form_printer;
 struct FD_form_paths;
 struct FD_form_outer_tab;
-struct FD_form_outputs_general;
+struct FD_form_outputs_misc;
 struct FD_form_spellchecker;
+struct FD_form_language;
+struct FD_form_colours;
 
 /** This class provides an XForms implementation of the FormPreferences Dialog.
     The preferences dialog allows users to set/save their preferences.
@@ -46,6 +48,29 @@ public:
 	///
 	~FormPreferences();
 private:
+	///
+	enum State {
+		///
+		COLOURS,
+		///
+		INTERFACE,
+		///
+		LANGUAGE,
+		///
+		LOOKNFEELMISC,
+		///
+		OUTPUTSMISC,
+		///
+		PATHS,
+		///
+		PRINTER,
+		///
+		SCREENFONTS,
+		///
+		SPELLCHECKER,
+		///
+		TABS
+	};
 	/// Update the dialog.
 	virtual void update();
 	///
@@ -63,27 +88,99 @@ private:
 	///
 	virtual FL_FORM * form() const;
 	///
+	void applyInterface();
+	///
+	void applyLnFmisc();
+	///
+	void applyOutputsMisc();
+	///
+	void applyPaths();
+	///
+	void applyPrinter();
+	///
+	void applyScreenFonts();
+	///
 	void applySpellChecker();
 	///
-	void updateSpellChecker();
+	void buildColours();
 	///
-	bool inputSpellChecker();
+	void buildInterface();
+	///
+	void buildLanguage();
+	///
+	void buildLnFmisc();
+	///
+	void buildOutputsMisc();
+	///
+	void buildPaths();
+	///
+	void buildPrinter();
+	///
+	void buildScreenFonts();
+	///
+	void buildSpellchecker();
+	///
+	void feedbackInterface(FL_OBJECT const * const);
+	///
+	void feedbackLnFmisc(FL_OBJECT const * const);
+	///
+	void feedbackOutputsMisc(FL_OBJECT const * const);
+	///
+	void feedbackPaths(FL_OBJECT const * const);
+	///
+	void feedbackPrinter(FL_OBJECT const * const);
+	///
+	void feedbackScreenFonts(FL_OBJECT const * const);
+	///
+	void feedbackSpellChecker(FL_OBJECT const * const);
+	///
+	bool inputPaths(FL_OBJECT const * const);
+	///
+	bool inputScreenFonts();
+	///
+	bool inputSpellChecker(FL_OBJECT const * const);
+	///
+	void updateInterface();
+	///
+	void updateLnFmisc();
+	///
+	void updateOutputsMisc();
+	///
+	void updatePaths();
+	///
+	void updatePrinter();
+	///
+	void updateScreenFonts();
+	///
+	void updateSpellChecker();
+
+	///
+	bool WriteableDir( string const & ) const;
+	///
+	bool ReadableDir( string const & ) const;
+	///
+	bool WriteableFile( string const &, string const & = string() ) const;
+
 	///
 	FD_form_preferences * build_preferences();
 	///
 	FD_form_outer_tab * build_outer_tab();
 	///
-	FD_form_lnf_general * build_lnf_general();
-	///
-	FD_form_screen_fonts * build_screen_fonts();
+	FD_form_colours * build_colours();
 	///
 	FD_form_interface * build_interface();
 	///
-	FD_form_printer * build_printer();
+	FD_form_language * build_language();
+	///
+	FD_form_lnf_misc * build_lnf_misc();
+	///
+	FD_form_outputs_misc * build_outputs_misc();
 	///
 	FD_form_paths * build_paths();
 	///
-	FD_form_outputs_general * build_outputs_general();
+	FD_form_printer * build_printer();
+	///
+	FD_form_screen_fonts * build_screen_fonts();
 	///
 	FD_form_spellchecker * build_spellchecker();
 
@@ -95,20 +192,26 @@ private:
 	FD_form_outer_tab * look_n_feel_tab_;
 	/// reLyX and other import/input stuff
 	FD_form_outer_tab * inputs_tab_;
+	/// Spellchecker, language stuff, etc
+	FD_form_outer_tab * usage_tab_;
 	///
-	FD_form_spellchecker * spellchecker_tab_;
-	///
-	FD_form_lnf_general * lnf_general_;
-	///
-	FD_form_screen_fonts * screen_fonts_;
+	FD_form_colours * colours_;
 	///
 	FD_form_interface * interface_;
 	///
-	FD_form_printer * printer_;
+	FD_form_language * language_;
+	///
+	FD_form_lnf_misc * lnf_misc_;
+	///
+	FD_form_outputs_misc * outputs_misc_;
 	///
 	FD_form_paths * paths_;
 	///
-	FD_form_outputs_general * outputs_general_;
+	FD_form_printer * printer_;
+	///
+	FD_form_screen_fonts * screen_fonts_;
+	///
+	FD_form_spellchecker * spellchecker_;
 };
 
 #endif

@@ -74,7 +74,7 @@ private:
 	///
 	void hideBrowser() const;
 	///
-	void setSize( int, int, int ) const;
+	void setSize( int, int ) const;
 	///
 	FD_form_ref * build_ref();
 	///

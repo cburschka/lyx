@@ -280,6 +280,8 @@ public:
     ///
     int Latex(Buffer const *, std::ostream &, bool, bool) const;
     ///
+    int DocBook(Buffer const * buf, std::ostream & os) const;
+    ///
     // helper function for Latex returns number of newlines
     ///
     int AsciiTopHLine(std::ostream &, int row,

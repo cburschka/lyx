@@ -3260,7 +3260,7 @@ void Buffer::makeDocBookFile(string const & fname, bool nice, bool only_body)
 
 void Buffer::SimpleDocBookOnePar(ostream & os, string & extra,
 				 LyXParagraph * par, int & desc_on,
-				 int depth) 
+				 int depth) const
 {
 	bool emph_flag = false;
 

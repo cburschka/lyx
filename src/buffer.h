@@ -166,6 +166,11 @@ public:
 	void latexParagraphs(std::ostream & os, LyXParagraph * par,
 			     LyXParagraph * endpar, TexRow & texrow) const;
 
+        ///
+	void SimpleDocBookOnePar(std::ostream &, string & extra,
+				 LyXParagraph * par, int & desc_on,
+				 int depth) const ;
+
 	///
 	int runChktex();
 
@@ -366,10 +371,6 @@ private:
         ///
 	void SimpleLinuxDocOnePar(std::ostream & os, LyXParagraph * par,
 				  int desc_on, int depth);
-        ///
-	void SimpleDocBookOnePar(std::ostream &, string & extra,
-				 LyXParagraph * par, int & desc_on,
-				 int depth);
 
 	/// LinuxDoc.
 	void push_tag(std::ostream & os, string const & tag,

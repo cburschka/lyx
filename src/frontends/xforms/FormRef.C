@@ -30,6 +30,9 @@
 using std::sort;
 using std::vector;
 
+static int const minw_hb = 250;
+static int minw_sb;
+
 FormRef::FormRef(LyXView * lv, Dialogs * d)
 	: FormCommand(lv, d, _("Reference")), toggle(GOBACK), dialog_(0)
 {
@@ -78,6 +81,7 @@ void FormRef::build()
 	// Workaround dumb xforms sizing bug
 	minw_ = form()->w;
 	minh_ = form()->h;
+	minw_sb = minw_;
 
 	// Name is irrelevant to LaTeX documents
 	if ( lv_->buffer()->isLatex() ) {
@@ -156,7 +160,7 @@ void FormRef::showBrowser() const
 	fl_show_object( dialog_->button_update );
 	fl_show_object( dialog_->sort );
 
-	setSize( minw_, minh_, 0 );
+	setSize( minw_sb, 0 );
 
 	fl_deactivate_object( dialog_->type );
 	fl_set_object_lcol( dialog_->type, FL_INACTIVE );
@@ -173,7 +177,7 @@ void FormRef::hideBrowser() const
 	fl_hide_object( dialog_->button_update );
 	fl_hide_object( dialog_->sort );
 
-	setSize( 250, minh_, 280 );
+	setSize( minw_hb, 280 );
 
 	fl_activate_object( dialog_->type );
 	fl_set_object_lcol( dialog_->type, FL_BLACK );
@@ -184,7 +188,7 @@ void FormRef::hideBrowser() const
 }
 
 
-void FormRef::setSize( int w, int h, int dx ) const
+void FormRef::setSize( int w, int dx ) const
 {
 	static int x1 = dialog_->name->x;
 	static int y1 = dialog_->name->y;
@@ -201,7 +205,6 @@ void FormRef::setSize( int w, int h, int dx ) const
 
 	if ( form()->w != w ) {
 		minw_ = w;
-		minh_ = h;
 		fl_set_form_size( form(), minw_, minh_ );
 	} else
 		return;

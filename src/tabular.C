@@ -2247,6 +2247,96 @@ int LyXTabular::Latex(Buffer const * buf,
 }
 
 
+int LyXTabular::DocBook(Buffer const * buf, ostream & os) const
+{
+    int ret = 0;
+    int cell = 0;
+
+    //+---------------------------------------------------------------------
+    //+                      first the opening preamble                    +
+    //+---------------------------------------------------------------------
+
+    os << "<tgroup cols=\"" << columns_
+       << "\" colsep=\"1\" rowsep=\"1\">" << endl;
+    
+    for (int i = 0; i < columns_; ++i) {
+        os << "<colspec colname=\"col" << i << "\" align=\"";
+	switch (column_info[i].alignment) {
+	case LYX_ALIGN_LEFT:
+	    os << "left";
+	    break;
+	case LYX_ALIGN_RIGHT:
+	    os << "right";
+	    break;
+	default:
+	    os << "center";
+	    break;
+	}
+	os << "\"/>" << endl;
+	++ret;
+    }
+
+    //+---------------------------------------------------------------------
+    //+                      the single row and columns (cells)            +
+    //+---------------------------------------------------------------------
+
+    os << "<tbody>" << endl;
+    for(int i = 0; i < rows_; ++i) {
+        os << "<row>" << endl;
+	for(int j = 0; j < columns_; ++j) {
+	    if (IsPartOfMultiColumn(i,j))
+	        continue;
+	    
+	    os << "<entry align=\"";
+	    switch(GetAlignment(cell)) {
+	    case LYX_ALIGN_LEFT:
+	        os << "left";
+		break;
+	    case LYX_ALIGN_RIGHT:
+	        os << "right";
+		break;
+	    default:
+	        os << "center";
+		break;
+	    }
+	    
+	    os << "\" valign=\"";
+	    switch(GetVAlignment(cell)) {
+	    case LYX_VALIGN_TOP:
+	        os << "top";
+		break;
+	    case LYX_VALIGN_BOTTOM:
+	        os << "bottom";
+		break;
+	    case LYX_VALIGN_CENTER:
+	        os << "middle";
+	    }
+	    os << "\"";
+	    
+	    if (IsMultiColumn(cell)) {
+	        os << " namest=\"col" << j << "\" ";
+		os << "nameend=\"col" << j + cells_in_multicolumn(cell) - 1<< "\"";
+	    }
+	    
+	    os << ">";
+	    ret += GetCellInset(cell)->DocBook(buf, os);
+	    os << "</entry>";
+	    ++cell;
+	}
+	os << "</row>" << endl;
+    }
+    os << "</tbody>" << endl;
+    //+---------------------------------------------------------------------
+    //+                      the closing of the tabular                    +
+    //+---------------------------------------------------------------------
+
+    os << "</tgroup>";
+    ++ret;
+
+    return ret;
+}
+
+
 static void print_n_chars(ostream & os, unsigned char ch, int const n)
 {
     for(int i=0; i < n; ++i)

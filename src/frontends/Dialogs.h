@@ -127,8 +127,6 @@ public:
 	///
 	Signal1<void, InsetTabular *> updateTabular;
 	///
-	Signal1<void, InsetTabular *> hideTabular;
-	///
 	Signal0<void> showTabularCreate;
 	///
 	Signal1<void, InsetCommand *> showTOC;

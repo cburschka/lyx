@@ -1,3 +1,33 @@
+2000-10-27  Angus Leeming <a.leeming@ic.ac.uk>
+
+	* src/frontends/Dialogs.h: remove hideTabular signal as it is no
+	longer used.
+
+	* src/frontends/xforms/FormRef.[Ch]: fix bug when setting the min
+	size. 
+
+	* src/frontends/xforms/FormPreferences.[Ch]:
+	* src/frontends/xforms/forms/form_preferences.fd: lots and lots!
+	Reorganised as modules based on tabs. Much easier to follow the
+	flow and to add new tabs. Added warning and feedback messages.
+	Added new tabs.
+
+2000-10-27  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/tabular.h (DocBook): add std:: qualifier.
+
+2000-10-26  José Abílio Matos <jamatos@fep.up.pt>
+
+	* src/buffer.h (SimpleDocBookOnePar): becomes public and const.
+	* src/buffer.C (SimpleDocBookOnePar): this method goes const.
+
+	* insettabular.h
+	* insettabular.C (DocBook): uses the tabular methods to export
+	docbook
+
+	* src/insets/insettext.h
+	* src/insets/insettext.C (DocBook): Implemented export for docbooc.
+
 2000-10-26  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/frontends/ButtonPolicies.h (operator<<): reinsert for State

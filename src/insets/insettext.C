@@ -1091,6 +1091,22 @@ int InsetText::Ascii(Buffer const * buf, ostream & os, int linelen) const
 }
 
 
+int InsetText::DocBook(Buffer const * buf, ostream & os) const
+{
+    LyXParagraph * p = par;
+    unsigned int lines = 0;
+    int desc=0;
+    
+    string tmp;
+    while (p) {
+	buf->SimpleDocBookOnePar(os,tmp,p,desc,0);
+	p = p->next;
+    }
+    
+    return lines;
+}
+
+
 void InsetText::Validate(LaTeXFeatures & features) const
 {
     LyXParagraph * p = par;

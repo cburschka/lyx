@@ -937,9 +937,9 @@ int InsetTabular::Linuxdoc(Buffer const *, ostream &) const
 }
 
 
-int InsetTabular::DocBook(Buffer const *, ostream &) const
+int InsetTabular::DocBook(Buffer const * buf, ostream & os) const
 {
-    return 0;
+    return tabular->DocBook(buf,os);
 }
 
 

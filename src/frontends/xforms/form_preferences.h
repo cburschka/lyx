@@ -5,17 +5,21 @@
 #define FD_form_preferences_h_
 
 /** Callbacks, globals and object handlers **/
+extern  "C" void C_FormBaseInputCB(FL_OBJECT *, long);
 extern  "C" void C_FormBaseApplyCB(FL_OBJECT *, long);
 extern  "C" void C_FormBaseCancelCB(FL_OBJECT *, long);
 extern  "C" void C_FormBaseOKCB(FL_OBJECT *, long);
 extern  "C" void C_FormBaseRestoreCB(FL_OBJECT *, long);
 
-
 extern  "C" void C_FormBaseInputCB(FL_OBJECT *, long);
 
 extern  "C" void C_FormBaseInputCB(FL_OBJECT *, long);
 
 extern  "C" void C_FormBaseInputCB(FL_OBJECT *, long);
+
+extern  "C" void C_FormBaseInputCB(FL_OBJECT *, long);
+
+
 
 extern  "C" void C_FormBaseInputCB(FL_OBJECT *, long);
 
@@ -65,8 +69,8 @@ struct FD_form_screen_fonts {
 	FL_OBJECT *input_huge;
 	FL_OBJECT *input_huger;
 };
-struct FD_form_outputs_general {
-	~FD_form_outputs_general();
+struct FD_form_outputs_misc {
+	~FD_form_outputs_misc();
 
 	FL_FORM *form;
 	FL_OBJECT *counter_line_len;
@@ -88,8 +92,18 @@ struct FD_form_spellchecker {
 	FL_OBJECT *check_compound_words;
 	FL_OBJECT *check_input_enc;
 };
-struct FD_form_lnf_general {
-	~FD_form_lnf_general();
+struct FD_form_language {
+	~FD_form_language();
+
+	FL_FORM *form;
+};
+struct FD_form_colours {
+	~FD_form_colours();
+
+	FL_FORM *form;
+};
+struct FD_form_lnf_misc {
+	~FD_form_lnf_misc();
 
 	FL_FORM *form;
 	FL_OBJECT *check_banner;
