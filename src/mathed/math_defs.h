@@ -26,6 +26,7 @@
 
 #include <cstdio>
 #include "LString.h"
+#include "debug.h"
 
 #include "array.h"
 

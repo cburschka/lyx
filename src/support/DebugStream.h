@@ -22,6 +22,16 @@
 #include <iostream>
 #endif
 
+#ifdef MODERN_STL
+using std::ostream;
+using std::streambuf;
+using std::streamsize;
+using std::filebuf;
+using std::cerr;
+using std::ios;
+using std::endl; 
+#endif
+
 #ifdef TEST_DEBUGSTREAM
 #include <string>
 struct Debug {
@@ -90,7 +100,7 @@ struct Debug {
     debug[Debug::type(Debug::INFO | Debug::CRIT)] << "...info/crit...\n";
 
 */
-class DebugStream : public std::ostream {
+class DebugStream : public ostream {
 public:
 	/// Constructor, sets the debug level to t.
 	DebugStream(Debug::type t = Debug::NONE);
@@ -136,7 +146,7 @@ public:
 	    current debug level otherwise the real debug stream
 	    is used.
 	*/
-	std::ostream & debug(Debug::type t = Debug::ANY) {
+	ostream & debug(Debug::type t = Debug::ANY) {
 		if (dt & t) return *this;
 		return nullstream;
 	}
@@ -145,14 +155,14 @@ public:
 	/** This is an operator to give a more convenient use:
 	    dbgstream[Debug::INFO] << "Info!\n";
 	*/
-	std::ostream & operator[](Debug::type t) {
+	ostream & operator[](Debug::type t) {
 		return debug(t);
 	}
 private:
 	/// The current debug level
 	Debug::type dt;
 	/// The no-op stream.
-	std::ostream nullstream;
+	ostream nullstream;
 	struct debugstream_internal;
 	debugstream_internal * internal;
 };

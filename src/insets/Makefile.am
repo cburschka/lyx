@@ -4,7 +4,7 @@ noinst_PROGRAMS = insets.o
 LIBS=
 LDFLAGS=
 ETAGS_ARGS = --c++
-INCLUDES = -I${srcdir}/../
+INCLUDES = -I${srcdir}/../ -I${srcdir}/../support
 CXXLINK = $(LD) -r -o $(noinst_PROGRAMS)
 
 insets_o_SOURCES = \

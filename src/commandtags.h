@@ -10,6 +10,7 @@
 #ifndef COMMANDTAGS_H
 #define COMMANDTAGS_H
 
+#include "debug.h"
 
 /** These are all the lyxfunctions (as enums).
  */
@@ -240,7 +241,6 @@ enum kb_action {
 	LFUN_LASTACTION  /* this marks the end of the table */
 };
 
-class ostream;
 ostream & operator<<(ostream &, kb_action);
 #endif
 

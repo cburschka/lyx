@@ -27,12 +27,12 @@ ostream & operator<<(ostream & o, Debug::type t)
     that is the intention. You can call it a no-op streambuffer, and
     the ostream that uses it will be a no-op stream.
 */
-class nullbuf : public std::streambuf {
+class nullbuf : public streambuf {
 protected:
 	///
 	virtual int sync() { return 0; }
 	/// 
-	virtual std::streamsize xsputn(char const *, std::streamsize n) {
+	virtual streamsize xsputn(char const *, streamsize n) {
 		// fakes a purge of the buffer by returning n
 		return n;
 	}
@@ -46,11 +46,11 @@ protected:
 /** A streambuf that sends the output to two different streambufs. These
     can be any kind of streambufs.
 */
-class teebuf : public std::streambuf {
+class teebuf : public streambuf {
 public:
 	///
-	teebuf(std::streambuf * b1, std::streambuf * b2)
-		: std::streambuf(), sb1(b1), sb2(b2) {}
+	teebuf(streambuf * b1, streambuf * b2)
+		: streambuf(), sb1(b1), sb2(b2) {}
 protected:
 	///
 	virtual int sync() {
@@ -63,7 +63,7 @@ protected:
 #endif
 	}
 	///
-	virtual std::streamsize xsputn(char const * p, std::streamsize n) {
+	virtual streamsize xsputn(char const * p, streamsize n) {
 #ifdef MODERN_STL
 		sb2->sputn(p, n);
 		return sb1->sputn(p, n);
@@ -84,17 +84,17 @@ protected:
 	}
 private:
 	///
-	std::streambuf * sb1;
+	streambuf * sb1;
 	///
-	std::streambuf * sb2;
+	streambuf * sb2;
 };
 
 ///
-class debugbuf : public std::streambuf {
+class debugbuf : public streambuf {
 public:
 	///
-	debugbuf(std::streambuf * b)
-		: std::streambuf(), sb(b) {}
+	debugbuf(streambuf * b)
+		: streambuf(), sb(b) {}
 protected:
 	///
 	virtual int sync() {
@@ -105,7 +105,7 @@ protected:
 #endif
 	}
 	///
-	virtual std::streamsize xsputn(char const * p, std::streamsize n) {
+	virtual streamsize xsputn(char const * p, streamsize n) {
 #ifdef MODERN_STL
 		return sb->sputn(p, n);
 #else
@@ -122,29 +122,29 @@ protected:
 	}
 private:
 	///
-	std::streambuf * sb;
+	streambuf * sb;
 };
 
 /// So that public parts of DebugStream does not need to know about filebuf
 struct DebugStream::debugstream_internal {
 	/// Used when logging to file.
-	std::filebuf fbuf;
+	filebuf fbuf;
 };
 
 /// Constructor, sets the debug level to t.
 DebugStream::DebugStream(Debug::type t)
-	: std::ostream(new debugbuf(std::cerr.rdbuf())),
+	: ostream(new debugbuf(cerr.rdbuf())),
 	  dt(t), nullstream(new nullbuf), internal(0) {}
 
 	
 /// Constructor, sets the log file to f, and the debug level to t.
 DebugStream::DebugStream(char const * f, Debug::type t)
-	: std::ostream(new debugbuf(std::cerr.rdbuf())),
+	: ostream(new debugbuf(cerr.rdbuf())),
 	  dt(t), nullstream(new nullbuf),
 	  internal(new debugstream_internal)
 {
-	internal->fbuf.open(f, std::ios::out|std::ios::app);
-	delete rdbuf(new teebuf(std::cerr.rdbuf(),
+	internal->fbuf.open(f, ios::out|ios::app);
+	delete rdbuf(new teebuf(cerr.rdbuf(),
 				&internal->fbuf));
 }
 
@@ -165,8 +165,8 @@ void DebugStream::logFile(char const * f)
 	} else {
 		internal = new debugstream_internal;
 	}
-	internal->fbuf.open(f, std::ios::out|std::ios::app);
-	delete rdbuf(new teebuf(std::cerr.rdbuf(),
+	internal->fbuf.open(f, ios::out|ios::app);
+	delete rdbuf(new teebuf(cerr.rdbuf(),
 				&internal->fbuf));
 }
 
@@ -250,12 +250,12 @@ int main(int, char **)
 	// support partial specialization. In egcs this should not be
 	// needed.
 	debugstream << "automatic " << &i 
-		    << ", free store " << p << std::endl;
+		    << ", free store " << p << endl;
 	delete p;
 	/*
 	for (int j = 0; j < 200000; ++j) {
 		DebugStream tmp;
-		tmp << "Test" << std::endl;
+		tmp << "Test" << endl;
 	}
 	*/
 }

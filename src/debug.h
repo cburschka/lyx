@@ -82,10 +82,11 @@ struct Debug {
 	}
 };
 
-///
-ostream & operator<<(ostream & o, Debug::type t);
 
 #include "support/DebugStream.h"
+
+///
+ostream & operator<<(ostream & o, Debug::type t);
 
 extern DebugStream lyxerr;
 

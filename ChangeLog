@@ -1,3 +1,21 @@
+1999-10-13  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/support/DebugStream.[Ch]: remove the explicit std:: before
+	streams classes and types, add the proper 'using' statements when
+	MODERN_STL is defined.
+	
+	* src/debug.h: move the << operator definition after the inclusion
+	of DebugStream.h
+
+	* src/support/filetools.C: include "LAssert.h", which is needed
+	later. 
+
+	* src/insets/Makefile.am, src/mathed/Makefile.am: add src/support
+	to includes. 
+
+	* src/lyxfont.h, src/commandtags.h, src/mathed/math_defs.h:
+	include "debug.h" to define a proper ostream.
+
 1999-10-12  Asger Alstrup Nielsen  <alstrup@alstrup.galaxy.dk>
 
 	* src/sys*: Cleaned up the Systemcall stuff a bit. Added "kill(int)"

@@ -27,6 +27,7 @@
 #include "FileInfo.h"
 #include "pathstack.h"        // I know it's OS/2 specific (SMiyata)
 #include "gettext.h"
+#include "LAssert.h"
 
 // Which part of this is still necessary? (JMarc).
 #if HAVE_DIRENT_H

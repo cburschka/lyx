@@ -4,7 +4,7 @@ noinst_PROGRAMS = mathed.o
 LIBS=
 LDFLAGS=
 ETAGS_ARGS = --c++
-INCLUDES = -I${top_srcdir}/images -I${srcdir}/../
+INCLUDES = -I${top_srcdir}/images -I${srcdir}/../ -I${srcdir}/../support
 CXXLINK = $(LD) -r -o $(noinst_PROGRAMS)
 
 mathed_o_SOURCES = array.h \

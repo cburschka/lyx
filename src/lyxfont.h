@@ -17,6 +17,7 @@
 
 #include FORMS_H_LOCATION
 #include "LString.h"
+#include "debug.h"
 
 // It might happen that locale.h defines ON and OFF. This is not good
 // for us, since we use these names below. But of course this is due
