@@ -70,7 +70,7 @@ Template XFig
 		Product "\\input{$$Basename.pstex_t}"
 		UpdateCommand "python $$Sysdir/scripts/fig2pstex.py $$FName $$Parameters"
 		UpdateResult "$$Basename.pstex_t"
-		Requirement "graphicx"	
+		Requirement "graphicx"
 	FormatEnd
 	Format PDFLaTeX
 		Product "\\begin{picture}(0,0)\\includegraphics{$$Basename}\\end{picture}"
