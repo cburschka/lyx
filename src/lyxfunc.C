@@ -1202,10 +1202,6 @@ string const LyXFunc::dispatch(int ac,
 		owner->getDialogs()->showAboutlyx();
 		break;
 
-	case LFUN_HELP_COPYRIGHT:
-	case LFUN_HELP_CREDITS:
-		
-
         case LFUN_HELP_OPEN:
 	{
 		string const arg = argument;
@@ -1230,8 +1226,6 @@ string const LyXFunc::dispatch(int ac,
 		break;
         }
 
-	case LFUN_HELP_VERSION:
-	
 		// --- version control -------------------------------
 	case LFUN_VC_REGISTER:
 	{

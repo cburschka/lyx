@@ -1,3 +1,11 @@
+2001-09-02  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* commandtags.h: removed redundant LFUNs, LFUN_HELP_COPYRIGHT,
+	LFUN_HELP_CREDITS, LFUN_HELP_VERSION.
+
+	* LyXAction.C (init):
+	* lyxfunc.C (dispatch): associated code removal.
+
 2001-09-07  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* lyxfont.h (isSymbolFont): shut off warning
