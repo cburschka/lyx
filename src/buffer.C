@@ -286,6 +286,7 @@ ErtComp ert_comp;
 
 #warning And _why_ is this here? (Lgb)
 int unknown_layouts;
+int unknown_tokens;
 
 } // anon
 
@@ -301,6 +302,7 @@ int unknown_layouts;
 bool Buffer::readLyXformat2(LyXLex & lex, Paragraph * par)
 {
 	unknown_layouts = 0;
+	unknown_tokens = 0;
 #ifndef NO_COMPABILITY
 	ert_comp.contents.erase();
 	ert_comp.active = false;
@@ -365,7 +367,19 @@ bool Buffer::readLyXformat2(LyXLex & lex, Paragraph * par)
 		}
 		WriteAlert(_("Textclass Loading Error!"), s,
 			   _("When reading " + fileName()));
-	}	
+	}
+
+	if (unknown_tokens > 0) {
+		string s = _("Encountered ");
+		if (unknown_tokens == 1) {
+			s += _("one unknown token");
+		} else {
+			s += tostr(unknown_tokens);
+			s += _(" unknown tokens");
+		}
+		WriteAlert(_("Textclass Loading Error!"), s,
+			   _("When reading " + fileName()));
+	}
 
 	return the_end_read;
 }
@@ -1151,14 +1165,14 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 		} else {
 #endif
 		// This should be insurance for the future: (Asger)
-		lex.printError("Unknown token `$$Token'. "
-			       "Inserting as text.");
-		string::const_iterator cit = token.begin();
-		string::const_iterator end = token.end();
-		for (; cit != end; ++cit) {
-			par->insertChar(pos, (*cit), font);
-			++pos;
-		}
+		++unknown_tokens;
+		lex.eatLine();
+		string const s = _("Unknown token: ") + token
+			+ " " + lex.text()  + "\n";
+
+		InsetError * new_inset = new InsetError(s);
+		par->insertInset(pos, new_inset);
+
 #ifndef NO_COMPABILITY
 		}
 #endif
