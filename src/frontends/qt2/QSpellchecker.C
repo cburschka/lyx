@@ -51,7 +51,7 @@ void QSpellchecker::update_contents()
 	dialog_->wordED->setText("");
 	dialog_->replaceCO->clear();
 	dialog_->suggestionsLB->clear();
-	dialog_->spellcheckPR->setProgress(0.0);
+	dialog_->spellcheckPR->setProgress(0);
 }
 
 
@@ -109,6 +109,8 @@ void QSpellchecker::partialUpdate(int id)
 		while (!(w = controller().getSuggestion()).empty()) {
 			dialog_->suggestionsLB->insertItem(w.c_str());
 		}
+
+		dialog_->suggestionChanged(dialog_->wordED->text());
 	}
 		break;
 

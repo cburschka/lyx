@@ -1,5 +1,12 @@
 2002-12-12  John Levon  <levon@movementarian.org>
 
+	* QSpellcheckerDialog.h:
+	* QSpellcheckerDialog.C:
+	* QSpellchecker.C: place broken word in replace box
+	  for user fixing
+ 
+2002-12-12  John Levon  <levon@movementarian.org>
+
 	* FileDialog_private.C: don't mess with windows z-ordering
 	  when opening a dialog (appear above focusWidget)
  

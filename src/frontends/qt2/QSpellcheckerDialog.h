@@ -24,6 +24,9 @@ class QSpellcheckerDialog : public QSpellcheckerDialogBase {
 	Q_OBJECT
 public:
 	QSpellcheckerDialog(QSpellchecker * form);
+public slots:
+	virtual void suggestionChanged(const QString &);
+ 
 protected slots:
 	virtual void stop();
 	virtual void acceptClicked();
@@ -31,7 +34,6 @@ protected slots:
 	virtual void addClicked();
 	virtual void replaceClicked();
 	virtual void ignoreClicked();
-	virtual void suggestionChanged(const QString &);
 	virtual void replaceChanged(const QString &);
 	virtual void reject();
 
