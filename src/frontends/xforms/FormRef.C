@@ -112,7 +112,9 @@ void FormRef::update()
 			      controller().getBufferNum() + 1);
 	}
 
-	refs_ = controller().getLabelList(string());
+	string const name = controller().getBufferName(fl_get_choice(dialog_->choice_buffer) - 1);
+	refs_ = controller().getLabelList(name);
+
 	updateBrowser(refs_);
 }
 

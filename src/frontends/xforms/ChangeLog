@@ -1,3 +1,9 @@
+2002-08-16  Michael Schmitt  <Michael.Schmitt@teststep.org>
+
+	* FormRef.C (update): fix bug in the cross reference dialog which
+	has the effect that the buffer choice and the list of labels are
+	not synchronized if you re-open the dialog.
+
 2002-07-18  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* xformsGImage.C (init_graphics): disable handling of ps files in
