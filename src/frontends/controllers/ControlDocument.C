@@ -67,11 +67,10 @@ void ControlDocument::apply()
 	if (!bufferIsAvailable())
 		return;
 
-	setLanguage();
-
 	classApply();
 
 	view().apply();
+	setLanguage();
 	buffer()->params = *bp_;
 
 	lv_.view()->redoCurrentBuffer();
