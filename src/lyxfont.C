@@ -827,7 +827,7 @@ int LyXFont::latexWriteStartChanges(ostream & os, LyXFont const & base,
 	// \noun{} is a LyX special macro
 	if (f.noun() == ON) {
 		os << "\\noun{";
-		count += 8;
+		count += 6;
 		env = true; //We have opened a new environment
 	}
 	if (f.size() != INHERIT_SIZE) {
