@@ -1,3 +1,8 @@
+
+2002-05-13  André Pönitz <poenitz@gmx.net>
+
+	* math_cursor.C: fix crash on paste as reported by Piroux Geoffroy
+
 2002-04-24  Juergen Vigna  <jug@sad.it>
 
 	* formulabase.C (insetButtonPress): set the mathcursor in case we

@@ -130,7 +130,7 @@ struct Selection
 	{
 		if (data_.nargs() == 1) {
 			// single cell/part of cell
-			cursor.insert(data_.cell(0));
+			cursor.paste(data_.cell(0));
 		} else {
 			// mulitple cells
 			idx_type idx; // index of upper left cell
