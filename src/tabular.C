@@ -2357,48 +2357,44 @@ int LyXTabular::docBook(Buffer const * buf, ostream & os) const
 	//+                      Long Tabular case                             +
 	//+---------------------------------------------------------------------
 
-#warning Jose please have a look here I changed the longtable header/footer
-#warning ---- options so I had to disable the docbook code (Jug 20011219)
-#if 0
-	if (IsLongTabular()) {
-		// Header
-		if (endhead.row || endfirsthead.row) {
-			os << "<thead>\n";
-			if (endfirsthead.row) {
-				docbookRow(buf, os, endfirsthead.row - 1);
+	// output header info
+	if (haveLTHead() || haveLTFirstHead()) {
+		os << "<thead>\n";
+		++ret;
+		for (int i = 0; i < rows_; ++i) {
+			if (row_info[i].endhead || row_info[i].endfirsthead) {
+				ret += docbookRow(buf, os, i);
 			}
-			if (endhead.row && endhead.row != endfirsthead.row) {
-				docbookRow(buf, os, endhead.row - 1);
-			}
-			os << "</thead>\n";
 		}
-
-		// Footer
-		if (endfoot.row || endlastfoot.row) {
-			os << "<tfoot>\n";
-			if (endfoot.row) {
-				docbookRow(buf, os, endfoot.row - 1);
-			}
-			if (endlastfoot.row && endlastfoot.row != endfoot.row) {
-				docbookRow(buf, os, endlastfoot.row - 1);
-			}
-			os << "</tfoot>\n";
-		}
+		os << "<thead>\n";
+		++ret;
 	}
-#endif
+	// output footer info
+	if (haveLTFoot() || haveLTLastFoot()) {
+		os << "<tfoot>\n";
+		++ret;
+		for (int i = 0; i < rows_; ++i) {
+			if (row_info[i].endfoot || row_info[i].endlastfoot) {
+				ret += docbookRow(buf, os, i);
+			}
+		}
+		os << "</tfoot>\n";
+		++ret;
+	}
+
 	//+---------------------------------------------------------------------
 	//+                      the single row and columns (cells)            +
 	//+---------------------------------------------------------------------
 
 	os << "<tbody>\n";
+	++ret;
 	for (int i = 0; i < rows_; ++i) {
-		if (!IsLongTabular() || (
-		   !row_info[i].endhead && !row_info[i].endfirsthead &&
-		   !row_info[i].endfoot && !row_info[i].endlastfoot)) {
-			docbookRow(buf, os, i);
+		if (isValidRow(i)) {
+			ret += docbookRow(buf, os, i);
 		}
 	}
 	os << "</tbody>\n";
+	++ret;
 	//+---------------------------------------------------------------------
 	//+                      the closing of the tabular                    +
 	//+---------------------------------------------------------------------
