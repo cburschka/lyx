@@ -367,7 +367,7 @@ ${srcdir}/POTFILES.in: $(POTFILE_IN_DEPS)
 	rm -f $@-t \
 	&& ( cd $(top_srcdir); \
 	     grep -l "_(\".*\")" `find src \( -name '*.[Cch]' -o -name '*.C.in' \) -print` |\
-	     sed -e '/xforms.forms/d' | grep -v -e "src/support/path_defines.C$$" |\
+	     sed -e '/xforms.forms/d'| grep -v -e "src/support/package.C$$" |\
 	     sort | uniq ) > $@-t \
 	&& mv $@-t $@
 

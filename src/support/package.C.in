@@ -80,7 +80,7 @@ void init_package(string const & command_line_arg0,
 
 Package const & package()
 {
-	BOOST_ASSERT(initialised_);
+	// BOOST_ASSERT(initialised_);
 	return package_;
 }
 
@@ -98,7 +98,7 @@ string const get_home_dir();
 string const get_locale_dir(string const & system_support_dir);
 
 string const get_system_support_dir(string const & abs_binary,
-			       string const & command_line_system_support_dir);
+				    string const & command_line_system_support_dir);
 
 string const get_temp_dir();
 
@@ -659,9 +659,14 @@ bool check_env_var_dir(string const & dir,
 	bool const success = (fi.isOK() && fi.isDir());
 
 	if (!success) {
-		lyxerr << bformat(_("Invalid %1% environment variable.\n"
-				    "%2% is not a directory."),
-				  env_var, dir)
+		// Put this string on a single line so that the gettext
+		// search mechanism in po/Makefile.in.in will register
+		// package.C.in as a file containing strings that need
+		// translation.
+		string const fmt =
+		_("Invalid %1% environment variable.\n%2% is not a directory.");
+		
+		lyxerr << bformat(fmt, env_var, dir)
 		       << std::endl;
 	}
 
