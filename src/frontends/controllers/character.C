@@ -126,7 +126,7 @@ vector<SizePair> const getSizeData()
 
 vector<BarPair> const getBarData()
 {
-	vector<BarPair> bar(6);
+	vector<BarPair> bar(5);
 
 	BarPair pr;
 	pr.first = _("No change");  pr.second = IGNORE;
@@ -138,7 +138,7 @@ vector<BarPair> const getBarData()
 	pr.first = _("Noun");       pr.second = NOUN_TOGGLE;
 	bar[3] = pr;
 	pr.first = _("Reset");      pr.second = INHERIT;
-	bar[5] = pr;
+	bar[4] = pr;
 	
 	return bar;
 }
