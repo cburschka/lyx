@@ -11,40 +11,44 @@
 #include <config.h>
 
 #include "textcursor.h"
-#include "paragraph.h"
-#include "ParagraphList_fwd.h"
-#include "debug.h"
 
-#include <string>
 
-using std::string;
+LyXCursor const & TextCursor::selStart() const
+{
+	if (!selection.set())
+		return cursor;
+	return selection.cursor < cursor ? selection.cursor : cursor;
+}
+
+
+LyXCursor const & TextCursor::selEnd() const
+{
+	if (!selection.set())
+		return cursor;
+	return selection.cursor < cursor ? cursor : selection.cursor;
+}
+
+
+LyXCursor & TextCursor::selStart()
+{
+	TextCursor const & t = *this;
+	return const_cast<LyXCursor &>(t.selStart());
+}
+
+
+LyXCursor & TextCursor::selEnd()
+{
+	TextCursor const & t = *this;
+	return const_cast<LyXCursor &>(t.selEnd());
+}
 
 
 void TextCursor::setSelection()
 {
 	selection.set(true);
-
-	if (selection.cursor.par() == cursor.par())
-		if (selection.cursor.pos() < cursor.pos()) {
-			selection.end = cursor;
-			selection.start = selection.cursor;
-		} else {
-			selection.end = selection.cursor;
-			selection.start = cursor;
-		}
-	else if (selection.cursor.par() < cursor.par() ||
-		 (selection.cursor.par() == cursor.par()
-		  && selection.cursor.pos() < cursor.pos())) {
-		selection.end = cursor;
-		selection.start = selection.cursor;
-	} else {
-		selection.end = selection.cursor;
-		selection.start = cursor;
-	}
-
 	// a selection with no contents is not a selection
-	if (selection.start.par() == selection.end.par() &&
-	    selection.start.pos() == selection.end.pos())
+	if (cursor.par() == selection.cursor.par() &&
+	    cursor.pos() == selection.cursor.pos())
 	{
 		selection.set(false);
 	}
@@ -55,8 +59,6 @@ void TextCursor::clearSelection()
 {
 	selection.set(false);
 	selection.mark(false);
-	selection.end    = cursor;
-	selection.start  = cursor;
 	selection.cursor = cursor;
 }
 

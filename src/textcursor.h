@@ -50,10 +50,7 @@ struct Selection {
 	void mark(bool m) {
 		mark_ = m;
 	}
-	LyXCursor cursor; // temporary cursor to hold a cursor position
-				// until setSelection is called!
-	LyXCursor start;  // start of a REAL selection
-	LyXCursor end;    // end of a REAL selection
+	LyXCursor cursor; // the other end of the selection
 private:
 	bool set_; // former selection
 	bool mark_; // former mark_set
@@ -70,8 +67,11 @@ struct TextCursor {
 	LyXCursor cursor;
 
 	Selection selection;
-	// this is used to handle XSelection events in the right manner
-	Selection xsel_cache;
+
+	LyXCursor const & selStart() const;
+	LyXCursor const & selEnd() const;
+	LyXCursor & selStart();
+	LyXCursor & selEnd();
 };
 
 #endif

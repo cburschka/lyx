@@ -391,14 +391,14 @@ void RowPainter::paintSelection()
 	bool const is_rtl = pit_->isRightToLeftPar(bv_.buffer()->params());
 
 	// the current selection
-	int const startx = text_.selection.start.x();
-	int const endx = text_.selection.end.x();
-	int const starty = text_.selection.start.y();
-	int const endy = text_.selection.end.y();
-	ParagraphList::iterator startpit = text_.getPar(text_.selection.start);
-	ParagraphList::iterator endpit = text_.getPar(text_.selection.end);
-	RowList::iterator startrow = startpit->getRow(text_.selection.start.pos());
-	RowList::iterator endrow = endpit->getRow(text_.selection.end.pos());
+	int const startx = text_.selStart().x();
+	int const endx = text_.selEnd().x();
+	int const starty = text_.selStart().y();
+	int const endy = text_.selEnd().y();
+	ParagraphList::iterator startpit = text_.getPar(text_.selStart());
+	ParagraphList::iterator endpit = text_.getPar(text_.selEnd());
+	RowList::iterator startrow = startpit->getRow(text_.selStart().pos());
+	RowList::iterator endrow = endpit->getRow(text_.selEnd().pos());
 	int const h = row_.height();
 
 	int const row_y = pit_->y + row_.y_offset();
@@ -468,9 +468,9 @@ void RowPainter::paintSelection()
 		}
 
 		if (((startpit != pit_ && startrow != rit_)
-				|| text_.selection.start.pos() <= pos) &&
+				|| text_.selStart().pos() <= pos) &&
 			((endpit != pit_ && endrow != rit_)
-				|| pos < text_.selection.end.pos())) {
+				|| pos < text_.selEnd().pos())) {
 			// Here we do not use x_ as xo_ was added to x_.
 			pain_.fillRectangle(int(old_tmpx), yo_,
 				int(tmpx - old_tmpx + 1), h, LColor::selection);

@@ -1,4 +1,17 @@
-2003-12-12  Alfredo Braunstein  <abraunst@libero.it>
+2003-12-12  Alfredo Braunstein  <abraunst@lyx.org>
+
+	* textcursor.[Ch] (selStart,selEnd): add new methods 
+	remove selection::start, end, use LyXCursor::operator<
+	* lyxcursor.[Ch] (operator<): add
+	* BufferView_pimpl.[Ch]: add new struct xsel_cache_
+	* BufferView.[Ch] (unsetXSel): add
+	* text2.C (clearSelection): use unsetXSel,adjust
+	* text.C: adjust
+	* text3.C: adjust
+	* rowpainter.C: adjust
+	* bufferview_funcs.C (put_selection_at): adjust
+
+2003-12-12  Alfredo Braunstein  <abraunst@lyx.org>
 
 	* BufferView_pimpl.C: small coord. correction
 

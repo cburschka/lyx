@@ -193,7 +193,12 @@ private:
 	void MenuInsertLyXFile(std::string const & filen);
 	/// our workarea
 	WorkArea & workarea() const;
-
+	/// this is used to handle XSelection events in the right manner
+	struct {
+		LyXCursor cursor;
+		LyXCursor selection_cursor;
+		bool set;
+	} xsel_cache_;
 	///
 	LCursor cursor_;
 };

@@ -999,6 +999,8 @@ DispatchResult LyXText::dispatch(FuncRequest const & cmd)
 	case LFUN_BEGINNINGBUFSEL:
 		if (in_inset_)
 			return DispatchResult(false);
+		if (!selection.set())
+			selection.cursor = cursor;
 		cursorTop();
 		finishChange(bv, true);
 		break;
@@ -1006,6 +1008,8 @@ DispatchResult LyXText::dispatch(FuncRequest const & cmd)
 	case LFUN_ENDBUFSEL:
 		if (in_inset_)
 			return DispatchResult(false);
+		if (!selection.set())
+			selection.cursor = cursor;
 		cursorBottom();
 		finishChange(bv, true);
 		break;
@@ -1076,10 +1080,10 @@ DispatchResult LyXText::dispatch(FuncRequest const & cmd)
 		bool change_layout = (current_layout != layout);
 
 		if (!change_layout && selection.set() &&
-			selection.start.par() != selection.end.par())
+			selStart().par() != selEnd().par())
 		{
-			ParagraphList::iterator spit = getPar(selection.start);
-			ParagraphList::iterator epit = boost::next(getPar(selection.end));
+			ParagraphList::iterator spit = getPar(selStart());
+			ParagraphList::iterator epit = boost::next(getPar(selEnd()));
 			while (spit != epit) {
 				if (spit->layout()->name() != current_layout) {
 					change_layout = true;

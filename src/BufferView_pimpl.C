@@ -114,6 +114,8 @@ BufferView::Pimpl::Pimpl(BufferView * bv, LyXView * owner,
 	: bv_(bv), owner_(owner), buffer_(0), cursor_timeout(400),
 	  using_xterm_cursor(false), cursor_(bv)
 {
+	xsel_cache_.set = false;
+
 	workarea_.reset(WorkAreaFactory::create(xpos, ypos, width, height));
 	screen_.reset(LyXScreenFactory::create(workarea()));
 
@@ -390,10 +392,10 @@ void BufferView::Pimpl::resizeCurrentBuffer()
 
 	par = bv_->text()->cursor.par();
 	pos = bv_->text()->cursor.pos();
-	selstartpar = bv_->text()->selection.start.par();
-	selstartpos = bv_->text()->selection.start.pos();
-	selendpar = bv_->text()->selection.end.par();
-	selendpos = bv_->text()->selection.end.pos();
+	selstartpar = bv_->text()->selStart().par();
+	selstartpos = bv_->text()->selStart().pos();
+	selendpar = bv_->text()->selEnd().par();
+	selendpos = bv_->text()->selEnd().pos();
 	selection = bv_->text()->selection.set();
 	mark_set = bv_->text()->selection.mark();
 	bv_->text()->textwidth_ = bv_->workWidth();
@@ -526,20 +528,22 @@ void BufferView::Pimpl::selectionRequested()
 
 	LyXText * text = bv_->getLyXText();
 
-	if (text->selection.set() &&
-		(!bv_->text()->xsel_cache.set() ||
-		 text->selection.start != bv_->text()->xsel_cache.start ||
-		 text->selection.end != bv_->text()->xsel_cache.end))
+	if (!text->selection.set()) {
+		xsel_cache_.set = false;
+		return;
+	}
+
+	if (!xsel_cache_.set ||
+	    text->cursor != xsel_cache_.cursor ||
+	    text->selection.cursor != xsel_cache_.selection_cursor)
 	{
-		bv_->text()->xsel_cache = text->selection;
+		xsel_cache_.cursor = text->cursor;
+		xsel_cache_.selection_cursor = text->selection.cursor;
+		xsel_cache_.set = text->selection.set();
 		sel = text->selectionAsString(*bv_->buffer(), false);
-	} else if (!text->selection.set()) {
-		sel = string();
-		bv_->text()->xsel_cache.set(false);
-	}
-	if (!sel.empty()) {
-		workarea().putClipboard(sel);
-	}
+		if (!sel.empty())
+			workarea().putClipboard(sel);
+	} 
 }
 
 
@@ -548,7 +552,7 @@ void BufferView::Pimpl::selectionLost()
 	if (available()) {
 		screen().hideCursor();
 		bv_->getLyXText()->clearSelection();
-		bv_->text()->xsel_cache.set(false);
+		xsel_cache_.set = false;
 	}
 }
 
@@ -631,8 +635,8 @@ Change const BufferView::Pimpl::getCurrentChange()
 	if (!text->selection.set())
 		return Change(Change::UNCHANGED);
 
-	return text->getPar(text->selection.start)
-		->lookupChangeFull(text->selection.start.pos());
+	return text->getPar(text->selStart())
+		->lookupChangeFull(text->selStart().pos());
 }
 
 

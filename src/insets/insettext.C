@@ -546,18 +546,7 @@ void InsetText::collapseParagraphs(BufferView * bv)
 			first->insertChar(first_par_size, ' ');
 		}
 
-#warning probably broken
-		if (text_.selection.set()) {
-			if (text_.selection.start.par() == 1) {
-				text_.selection.start.par(1);
-				text_.selection.start.pos(text_.selection.start.pos() + first_par_size);
-			}
-			if (text_.selection.end.par() == 2) {
-				text_.selection.end.par(1);
-				text_.selection.end.pos(text_.selection.end.pos() + first_par_size);
-			}
-		}
-
+		text_.clearSelection();
 		mergeParagraph(bv->buffer()->params(), paragraphs(), first);
 	}
 }

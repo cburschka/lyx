@@ -301,7 +301,7 @@ void put_selection_at(BufferView * bv, PosIterator const & cur,
 		text->setSelectionRange(length);
 		text->setSelection();
 		if (backwards)
-			text->cursor = text->selection.start;
+			std::swap(text->cursor, text->selection.cursor);
 	}
 
 	bv->fitCursor();

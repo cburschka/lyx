@@ -68,6 +68,12 @@ BufferView::~BufferView()
 }
 
 
+void BufferView::unsetXSel()
+{
+	pimpl_->xsel_cache_.set = false;
+}
+
+
 Buffer * BufferView::buffer() const
 {
 	return pimpl_->buffer_;

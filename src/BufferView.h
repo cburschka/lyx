@@ -182,6 +182,9 @@ public:
 	/// return target x position of cursor
 	int x_target() const;
 
+	/// clear the X selection
+	void unsetXSel();
+
 	/// access to cursor
 	LCursor & cursor();
 	/// access to cursor

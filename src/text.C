@@ -1129,9 +1129,9 @@ void LyXText::acceptChange()
 	if (!selection.set() && cursorPar()->size())
 		return;
 
-	if (selection.start.par() == selection.end.par()) {
-		LyXCursor & startc = selection.start;
-		LyXCursor & endc = selection.end;
+	if (selStart().par() == selEnd().par()) {
+		LyXCursor const & startc = selStart();
+		LyXCursor const & endc = selEnd();
 		recordUndo(Undo::INSERT, this, startc.par());
 		getPar(startc)->acceptChange(startc.pos(), endc.pos());
 		finishUndo();
@@ -1148,9 +1148,9 @@ void LyXText::rejectChange()
 	if (!selection.set() && cursorPar()->size())
 		return;
 
-	if (selection.start.par() == selection.end.par()) {
-		LyXCursor & startc = selection.start;
-		LyXCursor & endc = selection.end;
+	if (selStart().par() == selEnd().par()) {
+		LyXCursor const & startc = selStart();
+		LyXCursor const & endc = selEnd();
 		recordUndo(Undo::INSERT, this, startc.par());
 		getPar(startc)->rejectChange(startc.pos(), endc.pos());
 		finishUndo();
@@ -1206,8 +1206,6 @@ void LyXText::deleteLineForward()
 		cursorRight(bv());
 	} else {
 		LyXCursor tmpcursor = cursor;
-		// We can't store the row over a regular setCursor
-		// so we set it to 0 and reset it afterwards.
 		selection.set(true); // to avoid deletion
 		cursorEnd();
 		setCursor(tmpcursor, tmpcursor.par(), tmpcursor.pos());
@@ -1229,8 +1227,8 @@ void LyXText::changeCase(LyXText::TextCase action)
 	LyXCursor to;
 
 	if (selection.set()) {
-		from = selection.start;
-		to = selection.end;
+		from = selStart();
+		to = selEnd();
 	} else {
 		from = cursor;
 		getWord(from, to, lyx::PARTIAL_WORD);
@@ -1514,10 +1512,10 @@ string LyXText::selectionAsString(Buffer const & buffer, bool label) const
 		return string();
 
 	// should be const ...
-	ParagraphList::iterator startpit = getPar(selection.start);
-	ParagraphList::iterator endpit = getPar(selection.end);
-	size_t const startpos = selection.start.pos();
-	size_t const endpos = selection.end.pos();
+	ParagraphList::iterator startpit = getPar(selStart());
+	ParagraphList::iterator endpit = getPar(selEnd());
+	size_t const startpos = selStart().pos();
+	size_t const endpos = selEnd().pos();
 
 	if (startpit == endpit)
 		return startpit->asString(buffer, startpos, endpos, label);
