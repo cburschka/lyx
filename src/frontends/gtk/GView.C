@@ -97,7 +97,7 @@ void GView::message(string const & msg)
 
 void GView::showViewState()
 {
-	message(getLyXFunc().view_status_message());
+	message(getLyXFunc().viewStatusMessage());
 }
 
 
@@ -112,16 +112,16 @@ void GView::busy(bool yes) const
 	if (yes ) {
 		view()->hideCursor();
 		Gdk::Cursor cursor(Gdk::WATCH);
-		const_cast<GView*>(this)->get_window()->set_cursor(cursor);
-		const_cast<GView*>(this)->set_sensitive(false);
+		const_cast<GView *>(this)->get_window()->set_cursor(cursor);
+		const_cast<GView *>(this)->set_sensitive(false);
 	} else {
-		const_cast<GView*>(this)->get_window()->set_cursor();
-		const_cast<GView*>(this)->set_sensitive(true);
+		const_cast<GView *>(this)->get_window()->set_cursor();
+		const_cast<GView *>(this)->set_sensitive(true);
 	}
 }
 
 
 void GView::clearMessage()
 {
-	message(getLyXFunc().view_status_message());
+	message(getLyXFunc().viewStatusMessage());
 }

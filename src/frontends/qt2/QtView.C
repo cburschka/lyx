@@ -116,7 +116,7 @@ void QtView::focus_command_widget()
 
 void QtView::update_view_state_qt()
 {
-	statusBar()->message(toqstr(getLyXFunc().view_status_message()));
+	statusBar()->message(toqstr(getLyXFunc().viewStatusMessage()));
 	statusbar_timer_.stop();
 }
 
@@ -127,7 +127,7 @@ void QtView::update_view_state()
 	if (statusbar_timer_.isActive())
 		return;
 
-	statusBar()->message(toqstr(getLyXFunc().view_status_message()));
+	statusBar()->message(toqstr(getLyXFunc().viewStatusMessage()));
 }
 
 
@@ -155,5 +155,5 @@ void QtView::busy(bool yes) const
 	if (yes)
 		QApplication::setOverrideCursor(Qt::waitCursor);
 	else
-	        QApplication::restoreOverrideCursor();
+		QApplication::restoreOverrideCursor();
 }

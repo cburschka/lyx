@@ -1920,6 +1920,7 @@ string LCursor::currentState()
 void LCursor::replaceWord(string const & replacestring)
 {
 	LyXText * t = text();
+	BOOST_ASSERT(t);
 
 	t->replaceSelectionWithString(*this, replacestring);
 	t->setSelectionRange(*this, replacestring.length());

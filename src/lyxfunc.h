@@ -45,7 +45,7 @@ public:
 	void dispatch(FuncRequest const &, bool verbose = false);
 
 	/// return the status bar state string
-	std::string const view_status_message();
+	std::string const viewStatusMessage();
 
 	///
 	typedef boost::shared_ptr<LyXKeySym> LyXKeySymPtr;

@@ -55,12 +55,15 @@ XFormsView::XFormsView(int width, int height)
 	create_form_form_main(width, height);
 	fl_set_form_atclose(getForm(), C_XFormsView_atCloseMainFormCB, 0);
 
-	view_state_con = view_state_changed.connect(boost::bind(&XFormsView::show_view_state, this));
-	focus_con = focus_command_buffer.connect(boost::bind(&XMiniBuffer::focus, minibuffer_.get()));
+	view_state_con =
+		view_state_changed.connect(boost::bind(&XFormsView::show_view_state, this));
+	focus_con =
+		focus_command_buffer.connect(boost::bind(&XMiniBuffer::focus, minibuffer_.get()));
 
 	// Make sure the buttons are disabled if needed.
 	updateToolbar();
-	redraw_con = getDialogs().redrawGUI().connect(boost::bind(&XFormsView::redraw, this));
+	redraw_con =
+		getDialogs().redrawGUI().connect(boost::bind(&XFormsView::redraw, this));
 }
 
 
@@ -188,13 +191,13 @@ void XFormsView::message(string const & str)
 
 void XFormsView::clearMessage()
 {
-	message(getLyXFunc().view_status_message());
+	message(getLyXFunc().viewStatusMessage());
 }
 
 
 void XFormsView::show_view_state()
 {
-	message(getLyXFunc().view_status_message());
+	message(getLyXFunc().viewStatusMessage());
 }
 
 

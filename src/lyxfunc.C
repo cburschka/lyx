@@ -1729,18 +1729,16 @@ void LyXFunc::setStatusMessage(string const & m) const
 }
 
 
-string const LyXFunc::view_status_message()
+string const LyXFunc::viewStatusMessage()
 {
 	// When meta-fake key is pressed, show the key sequence so far + "M-".
-	if (wasMetaKey()) {
+	if (wasMetaKey())
 		return keyseq.print() + "M-";
-	}
 
 	// Else, when a non-complete key sequence is pressed,
 	// show the available options.
-	if (keyseq.length() > 0 && !keyseq.deleted()) {
+	if (keyseq.length() > 0 && !keyseq.deleted())
 		return keyseq.printOptions();
-	}
 
 	if (!view()->available())
 		return _("Welcome to LyX!");
