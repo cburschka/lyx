@@ -33,7 +33,7 @@ typedef Qt2CB<ControlPrint, Qt2DB<QLPrintDialog> > base_class;
 
 
 QPrint::QPrint()
-	: base_class(qt_("LyX: Print Document"))
+	: base_class(_("LyX: Print Document"))
 {
 }
 

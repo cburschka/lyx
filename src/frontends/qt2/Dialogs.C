@@ -179,13 +179,13 @@ Dialog * Dialogs::build(string const & name)
 	} else if (name == "index") {
 		dialog->setController(new ControlCommand(*dialog, name));
 		dialog->setView(new QIndex(*dialog,
-					   qt_("LyX: Index Entry"),
+					   _("LyX: Index Entry"),
 					   qt_("&Keyword")));
 		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
 	} else if (name == "label") {
 		dialog->setController(new ControlCommand(*dialog, name));
 		dialog->setView(new QIndex(*dialog,
-					   qt_("LyX: Label"),
+					   _("LyX: Label"),
 					   qt_("&Label")));
 		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
 	} else if (name == "log") {

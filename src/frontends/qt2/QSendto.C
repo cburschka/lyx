@@ -31,7 +31,7 @@ typedef Qt2CB<ControlSendto, Qt2DB<QSendtoDialog> > base_class;
 
 
 QSendto::QSendto()
-	: base_class(qt_("LyX: Send Document to Command"))
+	: base_class(_("LyX: Send Document to Command"))
 {
 }
 

@@ -79,7 +79,7 @@ private:
 template <class Dialog>
 class Qt2DB: public Qt2Base {
 protected:
-	Qt2DB(QString const &);
+	Qt2DB(string const &);
 
 	/// update the dialog
 	virtual void update();
@@ -97,7 +97,7 @@ protected:
 
 
 template <class Dialog>
-Qt2DB<Dialog>::Qt2DB(QString const & t)
+Qt2DB<Dialog>::Qt2DB(string const & t)
 	: Qt2Base(t)
 {}
 
@@ -155,12 +155,12 @@ public:
 
 protected:
 	///
-	Qt2CB(QString const &);
+	Qt2CB(string const &);
 };
 
 
 template <class Controller, class Base>
-Qt2CB<Controller, Base>::Qt2CB(QString const & t)
+Qt2CB<Controller, Base>::Qt2CB(string const & t)
 	: Base(t)
 {}
 

@@ -52,7 +52,7 @@ typedef Qt2CB<ControlDocument, Qt2DB<QDocumentDialog> > base_class;
 
 
 QDocument::QDocument()
-	: base_class(qt_("LyX: Document Settings"))
+	: base_class(_("LyX: Document Settings"))
 {
 	vector<frnt::LanguagePair> const langs = frnt::getLanguageData(false);
 	lang_ = getSecond(langs);

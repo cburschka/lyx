@@ -64,7 +64,7 @@ typedef Qt2CB<ControlPrefs, Qt2DB<QPrefsDialog> > base_class;
 
 
 QPrefs::QPrefs()
-	: base_class(qt_("LyX: Preferences"))
+	: base_class(_("LyX: Preferences"))
 {
 }
 

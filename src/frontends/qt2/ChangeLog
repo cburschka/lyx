@@ -1,3 +1,23 @@
+2003-05-22  Angus Leeming  <leeming@lyx.org>
+
+	compile fixes.
+	* QDialogView.h: QController and QView c-tors take a string not a
+	QString.
+	* Qt2Base.h: ditto for the Qt2DB and Qt2CB c-tors.
+
+	* QDocument.C (c-tor):
+	* QPrefs.C (c-tor):
+	* QPrint.C (c-tor):
+	* QSearch.C (c-tor):
+	* QSendto.C (c-tor):
+	* QSpellchecker.C (c-tor):
+	* QTexinfo.C (c-tor): pass a string not a QString to the base class.
+
+	* QIndex.[Ch](c-tor): pass it a string, not a QString.
+
+	* Dialogs.C (build): the title passed to the Index dialog is a string,
+	not a QString.
+
 2003-05-21  Alfredo Braunstein  <abraunst@libero.it>
 
 	* Qt2Base.[Ch]:

@@ -29,7 +29,7 @@ typedef Qt2CB<ControlSpellchecker, Qt2DB<QSpellcheckerDialog> > base_class;
 
 
 QSpellchecker::QSpellchecker()
-	: base_class(qt_("LyX: Spell-check Document"))
+	: base_class(_("LyX: Spell-check Document"))
 {
 }
 

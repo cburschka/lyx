@@ -25,7 +25,7 @@
 typedef QController<ControlCommand, QView<QIndexDialog> > base_class;
 
 
-QIndex::QIndex(Dialog & parent, QString const & title, QString const & label)
+QIndex::QIndex(Dialog & parent, string const & title, QString const & label)
 	: base_class(parent, title), label_(label)
 {
 }

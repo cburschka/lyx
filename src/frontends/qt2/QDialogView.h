@@ -83,7 +83,7 @@ private:
 template <class GUIDialog>
 class QView: public QDialogView {
 protected:
-	QView(Dialog &, QString const &);
+	QView(Dialog &, string const &);
 
 	/// update the dialog
 	virtual void update();
@@ -101,7 +101,7 @@ protected:
 
 
 template <class GUIDialog>
-QView<GUIDialog>::QView(Dialog & p, QString const & t)
+QView<GUIDialog>::QView(Dialog & p, string const & t)
 	: QDialogView(p, t)
 {}
 
@@ -149,7 +149,7 @@ class QController: public Base
 {
 protected:
 	///
-	QController(Dialog &, QString const &);
+	QController(Dialog &, string const &);
 public:
 	/// The parent controller
 	Controller & controller();
@@ -159,7 +159,7 @@ public:
 
 
 template <class Controller, class Base>
-QController<Controller, Base>::QController(Dialog & p, QString const & t)
+QController<Controller, Base>::QController(Dialog & p, string const & t)
 	: Base(p, t)
 {}
 
