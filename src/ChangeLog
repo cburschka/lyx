@@ -1,3 +1,12 @@
+2001-03-16  Juergen Vigna  <jug@sad.it>
+
+	* BufferView_pimpl.C (workAreaButtonRelease): return only on button==2
+	otherwise it won't open options-dialogs.
+
+	* buffer.C: honor pextraWidth(p) on converting minipages.
+
+	* tabular.C (l_getline): changed the functions to strip trailing \r.
+
 2001-03-16  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* BufferView_pimpl.C:

@@ -763,7 +763,8 @@ void BufferView::Pimpl::workAreaButtonRelease(int x, int y,
 	
 	selection_possible = false;
 	
-	if (button >= 2) return;
+	if (button == 2)
+		return;
 
 	bv_->setState();
 	owner_->showState();

@@ -1,3 +1,12 @@
+2001-03-16  Juergen Vigna  <jug@sad.it>
+
+	* insetminipage.C (width): modified with to be a string
+	(widthp): added widthp (for % width) support functions.
+	(InsetButtonRelease): added to open the options dialog on button==3.
+	(~InsetMinipage): added to hide the dialog.
+
+	* insetminipage.h: added hideDialog signal
+
 2001-03-15  Lars Gullik Bjønnes  <larsbj@trylle.birdstep.com>
 
 	* insetminipage.h: change the order or Position to match

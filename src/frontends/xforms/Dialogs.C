@@ -48,6 +48,7 @@
 #include "FormToc.h"
 #include "FormUrl.h"
 #include "FormVCLog.h"
+#include "FormMinipage.h"
 
 // Signal enabling all visible popups to be redrawn if so desired.
 // E.g., when the GUI colours have been remapped.
@@ -84,6 +85,7 @@ Dialogs::Dialogs(LyXView * lv)
 	add(new FormToc(lv, this));
 	add(new FormUrl(lv, this));
 	add(new FormVCLog(lv, this));
+	add(new FormMinipage(lv, this));
 	
 	// reduce the number of connections needed in
 	// dialogs by a simple connection here.

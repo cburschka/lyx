@@ -1,0 +1,32 @@
+// File modified by fdfix.sh for use by lyx (with xforms >= 0.88) and gettext
+/** Header file generated with fdesign **/
+
+#ifndef FD_form_minipage_h_
+#define FD_form_minipage_h_
+
+/** Callbacks, globals and object handlers **/
+extern  "C" void C_FormBaseDeprecatedInputCB(FL_OBJECT *, long);
+extern  "C" void C_FormBaseDeprecatedCancelCB(FL_OBJECT *, long);
+extern  "C" void C_FormBaseDeprecatedApplyCB(FL_OBJECT *, long);
+extern  "C" void C_FormBaseDeprecatedOKCB(FL_OBJECT *, long);
+extern  "C" void C_FormBaseDeprecatedRestoreCB(FL_OBJECT *, long);
+
+
+/**** Forms and Objects ****/
+struct FD_form_minipage {
+	~FD_form_minipage();
+
+	FL_FORM *form;
+	FL_OBJECT *input_width;
+	FL_OBJECT *input_widthp;
+	FL_OBJECT *group_alignment;
+	FL_OBJECT *radio_top;
+	FL_OBJECT *radio_middle;
+	FL_OBJECT *radio_bottom;
+	FL_OBJECT *button_cancel;
+	FL_OBJECT *button_apply;
+	FL_OBJECT *button_ok;
+	FL_OBJECT *button_restore;
+};
+
+#endif /* FD_form_minipage_h_ */

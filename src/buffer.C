@@ -512,6 +512,9 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, LyXParagraph *& par,
 					// parameters to set options in the
 					// minipage inset.
 					InsetMinipage::Position imp = static_cast<InsetMinipage::Position>(minipar->params.pextraAlignment());
+					string pextraWidth = minipar->params.pextraWidth();
+					string pextraWidthp = minipar->params.pextraWidthp();
+					bool pextraHfill = minipar->params.pextraHfill();
 					LyXParagraph * tmp = minipar;
 					while (tmp) {
 						tmp->params.pextraType(0);
@@ -525,10 +528,13 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, LyXParagraph *& par,
 					
 					InsetMinipage * mini = new InsetMinipage;
 					mini->pos(imp);
+					mini->width(pextraWidth);
+					mini->widthp(pextraWidthp);
 					mini->inset->par = minipar;
 					// Insert the minipage last in the
 					// previous paragraph.
 					par->previous()->InsertInset(par->previous()->size(), mini);
+#warning insert a hfill-character here if pextraHfill == true
 					minipar = par;
 				} else {
 					lyxerr << "new minipage par" << endl;
@@ -568,6 +574,9 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, LyXParagraph *& par,
 				// do want to use some of these parameters
 				// to set options in the minipage inset.
 				InsetMinipage::Position imp = static_cast<InsetMinipage::Position>(minipar->params.pextraAlignment());
+				string pextraWidth = minipar->params.pextraWidth();
+				string pextraWidthp = minipar->params.pextraWidthp();
+				bool pextraHfill = minipar->params.pextraHfill();
 				LyXParagraph * tmp = minipar;
 				while (tmp) {
 					tmp->params.pextraType(0);
@@ -581,8 +590,11 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, LyXParagraph *& par,
 				
 				InsetMinipage * mini = new InsetMinipage;
 				mini->pos(imp);
+				mini->width(pextraWidth);
+				mini->widthp(pextraWidthp);
 				mini->inset->par = minipar;
 				par->previous()->InsertInset(par->previous()->size(), mini);
+#warning insert a hfill-character here if pextraHfill == true
 				minipar = 0;
 			} else if (par->params.pextraType() == LyXParagraph::PEXTRA_MINIPAGE) {
 				

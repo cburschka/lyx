@@ -90,6 +90,10 @@ libxforms_la_SOURCES = \
 	FormMaths.h \
 	form_maths.C \
 	form_maths.h \
+	FormMinipage.C \
+	FormMinipage.h \
+	form_minipage.C \
+	form_minipage.h \
 	FormParagraph.C \
 	FormParagraph.h \
 	form_paragraph.C \

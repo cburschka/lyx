@@ -17,9 +17,12 @@
 #include "gettext.h"
 #include "lyxfont.h"
 #include "BufferView.h"
+#include "LyXView.h"
+#include "frontends/Dialogs.h"
 #include "lyxtext.h"
 #include "insets/insettext.h"
 #include "support/LOstream.h"
+#include "support/lstrings.h"
 #include "debug.h"
 
 using std::ostream;
@@ -66,6 +69,12 @@ InsetMinipage::InsetMinipage()
 	setLabelFont(font);
 	setAutoCollapse(false);
 	setInsetName("Minipage");
+}
+
+
+InsetMinipage::~InsetMinipage()
+{
+	hideDialog();
 }
 
 
@@ -150,13 +159,52 @@ void InsetMinipage::height(LyXLength const & ll)
 }
 
 
-LyXLength const & InsetMinipage::width() const
+string const & InsetMinipage::width() const
 {
 	return width_;
 }
 
 
-void InsetMinipage::width(LyXLength const & ll)
+void InsetMinipage::width(string const & ll)
 {
 	width_ = ll;
+}
+
+int InsetMinipage::widthp() const
+{
+	return widthp_;
+}
+
+
+void InsetMinipage::widthp(int ll)
+{
+	widthp_ = ll;
+}
+
+
+void InsetMinipage::widthp(string const & ll)
+{
+	widthp_ = strToInt(ll);
+}
+
+
+void InsetMinipage::InsetButtonRelease(BufferView * bv, int x, int y,
+				       int button)
+{
+    if (button == 3) {
+#if 0
+// we have to check first if we have a locking inset and if this locking inset
+// has a popup menu with the 3rd button
+	if (the_locking_inset) {
+	    UpdatableInset * i;
+	    if ((i=the_locking_inset->GetFirstLockingInsetOfType(TABULAR_CODE))) {
+		i->InsetButtonRelease(bv, x, y, button);
+		return;
+	    }
+	}
+#endif
+	bv->owner()->getDialogs()->showMinipage(this);
+	return;
+    }
+    InsetCollapsable::InsetButtonRelease(bv, x, y, button);
 }

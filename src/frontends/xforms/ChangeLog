@@ -1,3 +1,13 @@
+2001-03-16  Juergen Vigna  <jug@sad.it>
+
+	* Dialogs.C (Dialogs): create minipage options dialog.
+
+	* forms/form_minipage.fd: 
+	* form_minipage.C: 
+	* form_minipage.h: 
+	* FormMinipage.C: 
+	* FormMinipage.h: new files for the minipage options dialog.
+
 2001-03-16  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* FormMaths.[Ch]: make the FD_ structs to private. Create appropriate

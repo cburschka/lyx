@@ -18,6 +18,7 @@
 
 #include "insetcollapsable.h"
 #include "vspace.h"
+#include <sigc++/signal_system.h>
 
 /** The minipage inset
   
@@ -39,6 +40,8 @@ public:
 	};
 	///
 	InsetMinipage();
+	///
+	~InsetMinipage();
 	///
 	void Write(Buffer const * buf, std::ostream & os) const;
 	///
@@ -64,9 +67,20 @@ public:
 	///
 	void height(LyXLength const &);
 	///
-	LyXLength const & width() const;
+	string const & width() const;
 	///
-	void width(LyXLength const &);
+	void width(string const &);
+	///
+	int widthp() const;
+	///
+	void widthp(int);
+	///
+	void widthp(string const &);
+	///
+	SigC::Signal0<void> hideDialog;
+	///
+	void InsetButtonRelease(BufferView * bv, int x, int y, int button);
+
 private:
 	///
 	Position pos_;
@@ -75,7 +89,9 @@ private:
 	///
 	LyXLength height_;
 	///
-	LyXLength width_;
+	string width_;
+	///
+	int widthp_;
 };
 
 #endif

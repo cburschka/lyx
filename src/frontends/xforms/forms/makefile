@@ -42,7 +42,8 @@ SRCS := form_bibitem.fd \
 	form_tabular.fd \
 	form_tabular_create.fd \
 	form_toc.fd \
-	form_url.fd
+	form_url.fd \
+	form_minipage.fd
 
 OBJS := $(SRCS:.fd=.C)
 
