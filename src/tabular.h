@@ -479,10 +479,6 @@ private:
 	typedef std::vector<columnstruct> column_vector;
 
 	///
-	void read(Buffer const * buf, std::istream & is,
-	          LyXLex & lex, string const & l, int const version);
-	///
-	///
 	int rows_;
 	///
 	int columns_;

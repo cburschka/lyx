@@ -1083,25 +1083,6 @@ void LyXTabular::write(Buffer const * buf, ostream & os) const
 }
 
 
-void LyXTabular::read(Buffer const * buf, LyXLex & lex)
-{
-	string line;
-	istream & is = lex.getStream();
-
-	l_getline(is, line);
-	if (!prefixIs(line, "<lyxtabular ")
-		&& !prefixIs(line, "<LyXTabular ")) {
-		lyx::Assert(false);
-		return;
-	}
-
-	int version;
-	if (!getTokenValue(line, "version", version))
-		return;
-	lyx::Assert(version >= 2);
-	read(buf, is, lex, line, version);
-}
-
 void LyXTabular::setHeaderFooterRows(int hr, int fhr, int fr, int lfr)
 {
 	// set header info
@@ -1179,10 +1160,24 @@ void LyXTabular::setHeaderFooterRows(int hr, int fhr, int fr, int lfr)
 	}
 }
 
-void LyXTabular::read(Buffer const * buf, istream & is,
-                      LyXLex & lex, string const & l, int const version)
+
+void LyXTabular::read(Buffer const * buf, LyXLex & lex)
 {
-	string line(l);
+	string line;
+	istream & is = lex.getStream();
+
+	l_getline(is, line);
+	if (!prefixIs(line, "<lyxtabular ")
+		&& !prefixIs(line, "<LyXTabular ")) {
+		lyx::Assert(false);
+		return;
+	}
+
+	int version;
+	if (!getTokenValue(line, "version", version))
+		return;
+	lyx::Assert(version >= 2);
+
 	int rows_arg;
 	if (!getTokenValue(line, "rows", rows_arg))
 		return;
