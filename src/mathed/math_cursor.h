@@ -165,6 +165,8 @@ public:
 	///
 	void selClear();
 	///
+	void selGet(MathArray & ar);
+	///
 	void drawSelection(Painter & pain) const;
 	///
 	void handleFont(MathTextCodes t);

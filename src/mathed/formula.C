@@ -315,7 +315,7 @@ InsetFormula::localDispatch(BufferView * bv, kb_action action,
 	return result;
 }
 
-
+#if 0
 void InsetFormula::handleExtern(const string & arg)
 {
 	// where are we?
@@ -357,7 +357,54 @@ void InsetFormula::handleExtern(const string & arg)
 	mathed_parse_cell(ar, is);
 	mathcursor->end();
 }
+#endif
 
+void InsetFormula::handleExtern(const string & arg)
+{
+	// where are we?
+	if (!mathcursor)
+		return; 
+
+	MathArray ar;
+	if (mathcursor->selection())
+		mathcursor->selGet(ar);
+	else 
+		ar = mathcursor->cursor().cell();
+
+	// parse args
+	string lang;
+	string extra;
+	istringstream iss(arg.c_str());
+	iss >> lang >> extra;
+	if (extra.empty())
+		extra = "noextra";	
+
+	// strip last '=' and everything behind
+	stripFromLastEqualSign(ar);
+
+	// create normalized expression
+	//string outfile = lyx::tempName("maple.out");
+	string outfile = "/tmp/lyx2" + lang + ".out";
+	ostringstream os;
+	os << "[" << extra << ' ';
+	ar.writeNormal(os); 
+	os << "]";
+	string code = os.str().c_str();
+
+	// run external sript
+	string script = "lyx2" + arg + " '" + code + "' " + outfile;
+	lyxerr << "calling: " << script << endl;
+	Systemcalls cmd(Systemcalls::System, script, 0);
+
+	// append a '='
+	//ar.push_back(MathAtom(new MathCharInset('=')));
+	
+	// append result
+	MathArray br;
+	ifstream is(outfile.c_str());
+	mathed_parse_cell(br, is);
+	mathcursor->insert(br);
+}
 
 bool InsetFormula::display() const
 {

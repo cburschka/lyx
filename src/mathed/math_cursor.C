@@ -557,6 +557,9 @@ void MathCursor::delLine()
 
 	if (par()->nrows() > 1)
 		par()->delRow(row());
+
+	if (pos() > size())
+		pos() = size();
 }
 
 
@@ -699,6 +702,7 @@ void MathCursor::selDel()
 	seldump("selDel");
 	if (selection_) {
 		theSelection.erase(*this);
+		pos() = 0;
 		selClear();
 	}
 }
@@ -741,6 +745,18 @@ void MathCursor::selClear()
 	seldump("selClear");
 	selection_ = false;
 }
+
+
+void MathCursor::selGet(MathArray & ar)
+{
+	seldump("selGet");
+	if (selection_)
+		return;
+
+	theSelection.grab(*this);
+	ar = theSelection.glue();
+}
+
 
 
 void MathCursor::drawSelection(Painter & pain) const
