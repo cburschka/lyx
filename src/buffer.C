@@ -148,21 +148,26 @@ extern int tex_code_break_column;
 
 
 Buffer::Buffer(string const & file, bool ronly)
+	: paragraph(0), lyx_clean(true), bak_clean(true),
+	  unnamed(false), dep_clean(0), read_only(ronly),
+	  filename(file), users(0)
 {
 	lyxerr[Debug::INFO] << "Buffer::Buffer()" << endl;
-	filename = file;
+//	filename = file;
 	filepath = OnlyPath(file);
-	paragraph = 0;
-	lyx_clean = true;
-	bak_clean = true;
-	dep_clean = 0;
-	read_only = ronly;
-	unnamed = false;
-	users = 0;
+//	paragraph = 0;
+//	lyx_clean = true;
+//	bak_clean = true;
+//	dep_clean = 0;
+//	read_only = ronly;
+//	unnamed = false;
+//	users = 0;
 	lyxvc.buffer(this);
-	if (read_only || (lyxrc.use_tempdir)) {
+	if (read_only || lyxrc.use_tempdir) {
 		tmppath = CreateBufferTmpDir();
-	} else tmppath.erase();
+	} else {
+		tmppath.erase();
+	}
 }
 
 
@@ -332,7 +337,7 @@ bool Buffer::readLyXformat2(LyXLex & lex, Paragraph * par)
 	} else {
 		// We are inserting into an existing document
 		users->text->breakParagraph(users);
-		first_par = users->text->firstParagraph();
+		first_par = users->text->ownerParagraph();
 		pos = 0;
 		markDirty();
 		// We don't want to adopt the parameters from the

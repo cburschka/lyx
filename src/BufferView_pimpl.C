@@ -3465,9 +3465,9 @@ void BufferView::Pimpl::gotoInset(vector<Inset::Code> const & codes,
  
 	if (!bv_->text->gotoNextInset(bv_, codes, contents)) {
 		if (bv_->text->cursor.pos() 
-		    || bv_->text->cursor.par() != bv_->text->firstParagraph()) {
+		    || bv_->text->cursor.par() != bv_->text->ownerParagraph()) {
 			LyXCursor tmp = bv_->text->cursor;
-			bv_->text->cursor.par(bv_->text->firstParagraph());
+			bv_->text->cursor.par(bv_->text->ownerParagraph());
 			bv_->text->cursor.pos(0);
 			if (!bv_->text->gotoNextInset(bv_, codes, contents)) {
 				bv_->text->cursor = tmp;

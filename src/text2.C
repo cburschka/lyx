@@ -863,9 +863,9 @@ void LyXText::redoParagraphs(BufferView * bview, LyXCursor const & cur,
 	if (!tmprow->previous()) {
 		// a trick/hack for UNDO
 		// This is needed because in an UNDO/REDO we could have changed
-		// the firstParagrah() so the paragraph inside the row is NOT
+		// the ownerParagrah() so the paragraph inside the row is NOT
 		// my really first par anymore. Got it Lars ;) (Jug 20011206)
-		first_phys_par = firstParagraph();
+		first_phys_par = ownerParagraph();
 	} else {
 		first_phys_par = tmprow->par();
 		while (tmprow->previous()
@@ -1852,13 +1852,6 @@ void LyXText::pasteSelection(BufferView * bview)
 }
 
 
-// returns a pointer to the very first Paragraph
-Paragraph * LyXText::firstParagraph() const
-{
-	return ownerParagraph();
-}
-
-
 // sets the selection over the number of characters of string, no check!!
 void LyXText::setSelectionOverString(BufferView * bview, string const & str)
 {
@@ -2076,7 +2069,7 @@ bool LyXText::updateInset(BufferView * bview, Inset * inset)
   
 	// check every paragraph
   
-	Paragraph * par = firstParagraph();
+	Paragraph * par = ownerParagraph();
 	do {
 		pos = par->getPositionOfInset(inset);
 		if (pos != -1) {
@@ -2564,7 +2557,7 @@ void LyXText::toggleAppendix(BufferView * bview)
 	bool start = !par->params().startOfAppendix();
 
 	// ensure that we have only one start_of_appendix in this document
-	Paragraph * tmp = firstParagraph();
+	Paragraph * tmp = ownerParagraph();
 	for (; tmp; tmp = tmp->next()) {
 		tmp->params().startOfAppendix(false);
 	}

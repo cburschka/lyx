@@ -1,3 +1,13 @@
+2002-01-13  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* text2.C (firstParagraph): removed member function, all uses
+	replaces with ownerParagraph
+	(redoParagraphs): here
+	(updateInset): here
+	(toggleAppendix): here
+	* BufferView2.C (insertErrors): here
+	(setCursorFromRow): here
+
 2002-01-13  Allan Rae  <rae@lyx.org>
 
 	* BufferView2.C (removeAutoInsets): ensure we have a valid cursor if

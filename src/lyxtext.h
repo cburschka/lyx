@@ -107,8 +107,6 @@ public:
 	                 lyx::pos_type pos, LyXFont const & font);
 	void setCharFont(BufferView *, Paragraph * par,
 	                 lyx::pos_type pos, LyXFont const & font, bool toggleall);
-	/// returns a pointer to the very first Paragraph
-	Paragraph * firstParagraph() const;
   
 	/// what you expect when pressing <enter> at cursor position
 	void breakParagraph(BufferView *, char keep_layout = 0);

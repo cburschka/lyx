@@ -235,7 +235,7 @@ void BufferView::insertErrors(TeXErrors & terr)
 		Paragraph * texrowpar = 0;
 
 		if (tmpid == -1) {
-			texrowpar = text->firstParagraph();
+			texrowpar = text->ownerParagraph();
 			tmppos = 0;
 		} else {
 			texrowpar = buffer()->getParFromID(tmpid);
@@ -264,7 +264,7 @@ void BufferView::setCursorFromRow(int row)
 	Paragraph * texrowpar;
 
 	if (tmpid == -1) {
-		texrowpar = text->firstParagraph();
+		texrowpar = text->ownerParagraph();
 		tmppos = 0;
 	} else {
 		texrowpar = buffer()->getParFromID(tmpid);
