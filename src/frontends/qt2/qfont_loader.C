@@ -140,6 +140,34 @@ bool isSymbolFamily(LyXFont::FONT_FAMILY family)
 }
 
 
+bool isChosenFont(QFont & font, string const & family)
+{
+	lyxerr[Debug::FONT] << "raw: " << fromqstr(font.rawName()) << endl;
+
+	QFontInfo fi(font);
+
+	// Note Qt lies about family quite often
+	lyxerr[Debug::FONT] << "alleged fi family: "
+		<< fromqstr(fi.family()) << endl;
+
+	// So we check rawName first
+	if (contains(fromqstr(font.rawName()), family)) {
+		lyxerr[Debug::FONT] << " got it ";
+		return true;
+	}
+
+	// Qt 3.2 beta1 returns "xft" for all xft fonts
+	if (font.rawName() == "xft") {
+		if (contains(fromqstr(fi.family()), family)) {
+			lyxerr[Debug::FONT] << " got it (Xft) ";
+			return true;
+		}
+	}
+
+	return false;
+}
+
+
 pair<QFont, bool> const getSymbolFont(string const & family)
 {
 	lyxerr[Debug::FONT] << "Looking for font family "
@@ -150,16 +178,15 @@ pair<QFont, bool> const getSymbolFont(string const & family)
 	QFont font;
 	font.setFamily(toqstr(family));
 
-	// Note Qt lies about family, so we use rawName.
-	if (contains(fromqstr(font.rawName()), family)) {
-		lyxerr[Debug::FONT] << " got it !" << endl;
+	if (isChosenFont(font, family)) {
+		lyxerr[Debug::FONT] << "normal!" << endl;
 		return make_pair<QFont, bool>(font, true);
 	}
 
 	font.setFamily(toqstr(upper));
 
-	if (contains(fromqstr(font.rawName()), upper)) {
-		lyxerr[Debug::FONT] << " got it (uppercase version) !" << endl;
+	if (isChosenFont(font, upper)) {
+		lyxerr[Debug::FONT] << "upper!" << endl;
 		return make_pair<QFont, bool>(font, true);
 	}
 
@@ -167,8 +194,8 @@ pair<QFont, bool> const getSymbolFont(string const & family)
 
 	font.setRawName(toqstr(getRawName(family)));
 
-	if (contains(fromqstr(font.rawName()), family)) {
-		lyxerr[Debug::FONT] << " got it (raw version) !" << endl;
+	if (isChosenFont(font, family)) {
+		lyxerr[Debug::FONT] << "raw version!" << endl;
 		return make_pair<QFont, bool>(font, true);
 	}
 
