@@ -200,7 +200,7 @@ int FileDialog::Private::minh_ = 0;
 
 namespace {
 
-bool regexMatch(string const & a, string const & pattern)
+bool globMatch(string const & a, string const & pattern)
 {
 	// We massage the pattern a bit so that the usual
 	// shell pattern we all are used to will work.
@@ -340,7 +340,7 @@ void FileDialog::Private::Reread()
 		    || fileInfo.isChar()
 		    || fileInfo.isBlock()
 		    || fileInfo.isFifo()) {
-			if (!regexMatch(fname, mask_))
+			if (!globMatch(fname, mask_))
 				continue;
 		} else if (!(isDir = fileInfo.isDir()))
 			continue;
