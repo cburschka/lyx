@@ -345,8 +345,10 @@ AC_DEFUN(LYX_CXX_STL_STRING,[
 	    using std::string;
 	],[
 	    string a("hello there");
-	    a.clear();
+	    a.erase();
 	    a = "hey";
+	    char s[] = "y";
+	    int t = a.compare(a.length() - 1, 1, s);
 	    a.erase();
 	],[
 	    with_included_string=no
