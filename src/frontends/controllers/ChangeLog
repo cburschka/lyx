@@ -1,5 +1,9 @@
 2002-08-14  Angus Leeming  <leeming@lyx.org>
 
+	* GUI.h: public derivation from boost::noncopyable.
+
+2002-08-14  Angus Leeming  <leeming@lyx.org>
+
 	* GUI.h: class GUI deries from boost::noncopyable
 
 	* ControlButtons.h: no longer derives from DialogBase, but instead

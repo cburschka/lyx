@@ -1,5 +1,11 @@
 2002-08-14  Angus Leeming  <leeming@lyx.org>
 
+	* FormBaseDeprecated.h: public derivation from boost::noncopyable.
+
+	* forms/form_document.fd: remove declaration of file 'psnfss2.xpm'
+
+2002-08-14  Angus Leeming  <leeming@lyx.org>
+
 	* FormBaseDeprecated.h: no longer derives from DialogBase, but instead
 	derives directly from boost::noncopyable.
 	(show): made public.

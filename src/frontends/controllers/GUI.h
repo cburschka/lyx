@@ -18,7 +18,7 @@
  */
 template <typename Controller, typename GUIview,
 	  typename Policy,     typename GUIbc>
-class GUI : boost::noncopyable {
+class GUI : public boost::noncopyable {
 public:
 	///
 	GUI(LyXView & lv, Dialogs & d);

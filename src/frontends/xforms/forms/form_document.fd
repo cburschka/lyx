@@ -1521,10 +1521,10 @@ callback:
 argument: 
 
 --------------------
-class: FL_PIXMAPBUTTON
+class: FL_BUTTON
 type: NORMAL_BUTTON
 box: 135 105 260 180
-boxtype: FL_NO_BOX
+boxtype: FL_UP_BOX
 colors: FL_COL1 FL_YELLOW
 alignment: FL_ALIGN_BOTTOM
 style: FL_NORMAL_STYLE
@@ -1535,10 +1535,8 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: bmtable_bullet_panel
-callback: 
-argument: 
-	file: psnfss2.xpm
-	fullpath: 1
+callback: C_FormBaseDeprecatedInputCB
+argument: 0
 
 --------------------
 class: FL_FRAME
