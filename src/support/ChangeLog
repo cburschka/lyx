@@ -1,3 +1,7 @@
+2002-05-02  Herbert Voss  <voss@perce.de>
+
+	* filetools.C: getline -> std::getline.
+
 2002-05-02  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* lyxstring.C (operator>>): try a new version of the operator>>
