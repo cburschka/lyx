@@ -17,6 +17,7 @@
 #include "funcrequest.h"
 #include "gettext.h"
 #include "lyxlex.h"
+#include "paragraph.h"
 
 #include "support/std_sstream.h"
 

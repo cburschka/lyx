@@ -1,5 +1,56 @@
 2003-09-06  Angus Leeming  <leeming@lyx.org>
 
+	* support/types.h: add a 'depth_type' typedef, used to store the
+	nesting depth of a paragraph.
+
+	* paragraph.h:
+	* ParameterStruct.h: use this lyx::depth_type typedef rather than
+	defining explicitly.
+
+	* buffer.h:
+	* paragraph_funcs.h:
+	* ParagraphParameters.h:
+	* sgml.h: use lyx::depth_type rather than Paragraph or
+	ParameterStruct's depth_type.
+
+	* buffer.h
+	* paragraph_funcs.h: no need to #include paragraph.h anymore.
+
+	* BufferView.C:
+	* BufferView_pimpl.C:
+	* CutAndPaste.C:
+	* ParagraphParameters.C:
+	* buffer_funcs.C:
+	* bufferlist.C:
+	* bufferview_funcs.C:
+	* lyx_cb.C:
+	* lyxfunc.C:
+	* tabular.C:
+	* text3.C:
+	* toc.C:
+	* undo_funcs.C:
+	* frontends/LyXView.C:
+	* frontends/controllers/ControlDocument.C:
+	* frontends/controllers/ControlErrorList.C:
+	* insets/insetbibitem.C:
+	* insets/insetbranch.C:
+	* insets/insetcaption.C:
+	* insets/insetcollapsable.C:
+	* insets/insetenv.C:
+	* insets/insetert.C:
+	* insets/insetfloat.C:
+	* insets/insetfoot.C:
+	* insets/insetfootlike.C:
+	* insets/insetnewline.C:
+	* insets/insetquotes.C:
+	* insets/insettabular.C:
+	* insets/insettext.C:
+	* insets/insetwrap.C: must now explicitly #include "paragraph.h".
+
+	* frontends/controllers/ControlChanges.C: #include "changes.h".
+
+2003-09-06  Angus Leeming  <leeming@lyx.org>
+
 	* ParagraphList_fwd.h: new file, forward-declaring Paragraph rather than
 	#including paragraph.h.
 

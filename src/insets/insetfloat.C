@@ -23,6 +23,7 @@
 #include "iterators.h"
 #include "LaTeXFeatures.h"
 #include "lyxlex.h"
+#include "paragraph.h"
 
 #include "support/lstrings.h"
 #include "support/tostr.h"

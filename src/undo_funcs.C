@@ -21,6 +21,7 @@
 #include "buffer.h"
 #include "insets/updatableinset.h"
 #include "iterators.h"
+#include "paragraph.h"
 
 
 /// The flag used by FinishUndo().

@@ -18,6 +18,7 @@
 // the following are needed just to get the layout of the enclosing
 // paragraph. This seems a bit too much to me (JMarc)
 #include "lyxlayout.h"
+#include "paragraph.h"
 #include "paragraph_funcs.h"
 
 #include "support/std_ostream.h"

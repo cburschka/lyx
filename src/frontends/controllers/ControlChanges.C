@@ -13,6 +13,7 @@
 #include "ControlChanges.h"
 #include "buffer.h"
 #include "BufferView.h"
+#include "changes.h"
 #include "funcrequest.h"
 #include "lyxfind.h"
 #include "support/lstrings.h"

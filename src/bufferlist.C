@@ -17,6 +17,7 @@
 #include "debug.h"
 #include "lyx_cb.h"
 #include "gettext.h"
+#include "paragraph.h"
 #include "TextCache.h"
 
 #include "frontends/Alert.h"

@@ -15,6 +15,7 @@
 #include "BufferView.h"
 #include "funcrequest.h"
 #include "lyxlex.h"
+#include "paragraph.h"
 
 #include "frontends/font_metrics.h"
 

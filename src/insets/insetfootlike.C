@@ -14,6 +14,7 @@
 
 #include "buffer.h"
 #include "metricsinfo.h"
+#include "paragraph.h"
 
 using std::ostream;
 

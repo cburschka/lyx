@@ -29,6 +29,7 @@
 #include "lyxrc.h"
 #include "lyxtext.h"
 #include "MenuBackend.h"
+#include "paragraph.h"
 
 #include "controllers/ControlCommandBuffer.h"
 

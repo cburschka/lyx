@@ -24,7 +24,7 @@
 #include "lyxtext.h"
 #include "gettext.h"
 #include "BufferView.h"
-
+#include "paragraph.h"
 
 #include "frontends/lyx_gui.h"
 #include "frontends/LyXView.h"

@@ -20,6 +20,7 @@
 #include "gettext.h"
 #include "lyxlex.h"
 #include "lyxrow.h"
+#include "paragraph.h"
 #include "ParagraphParameters.h"
 
 #include "frontends/LyXView.h"

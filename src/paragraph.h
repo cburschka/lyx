@@ -54,8 +54,8 @@ public:
 	};
 	///
 	typedef char value_type;
-	/// The same as ParameterStruct::depth_type
-	typedef unsigned int depth_type;
+	///
+	typedef lyx::depth_type depth_type;
 
 	///
 	Paragraph();

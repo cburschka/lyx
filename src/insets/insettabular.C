@@ -22,6 +22,7 @@
 #include "lyx_cb.h"
 #include "lyxlex.h"
 #include "metricsinfo.h"
+#include "paragraph.h"
 #include "paragraph_funcs.h"
 #include "ParagraphParameters.h"
 #include "undo_funcs.h"

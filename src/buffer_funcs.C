@@ -16,6 +16,7 @@
 #include "bufferlist.h"
 #include "buffer.h"
 #include "gettext.h"
+#include "paragraph.h"
 #include "vc-backend.h"
 #include "LaTeX.h"
 

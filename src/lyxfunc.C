@@ -44,6 +44,7 @@
 #include "TextCache.h"
 #include "lyxfind.h"
 #include "undo_funcs.h"
+#include "paragraph.h"
 #include "ParagraphParameters.h"
 
 #include "insets/insetcommand.h"

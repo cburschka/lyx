@@ -18,6 +18,7 @@
 #include "iterators.h"
 #include "lyxtextclasslist.h"
 #include "gettext.h"
+#include "paragraph.h"
 #include "paragraph_funcs.h"
 #include "insets/insetinclude.h"
 #include "insets/insettabular.h"

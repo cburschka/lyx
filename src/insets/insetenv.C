@@ -14,6 +14,7 @@
 
 #include "bufferparams.h"
 #include "gettext.h"
+#include "paragraph.h"
 #include "paragraph_funcs.h"
 #include "texrow.h"
 

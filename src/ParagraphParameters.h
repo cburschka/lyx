@@ -74,7 +74,7 @@ public:
 	///
 	void align(LyXAlignment);
 	///
-	typedef ParameterStruct::depth_type depth_type;
+	typedef lyx::depth_type depth_type;
 	///
 	depth_type depth() const;
 	///

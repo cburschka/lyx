@@ -26,6 +26,7 @@
 #include "language.h"
 #include "lyxtext.h"
 #include "undo_funcs.h"
+#include "paragraph.h"
 #include "paragraph_funcs.h"
 
 #include "frontends/Alert.h"

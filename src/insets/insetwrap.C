@@ -21,6 +21,7 @@
 #include "gettext.h"
 #include "LaTeXFeatures.h"
 #include "lyxlex.h"
+#include "paragraph.h"
 
 #include "support/tostr.h"
 

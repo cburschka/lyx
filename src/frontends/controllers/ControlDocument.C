@@ -22,6 +22,7 @@
 #include "language.h"
 #include "lyxtextclasslist.h"
 #include "CutAndPaste.h"
+#include "paragraph.h"
 
 #include "frontends/LyXView.h"
 #include "frontends/Alert.h"

@@ -20,6 +20,7 @@
 #include "FloatList.h"
 #include "gettext.h"
 #include "metricsinfo.h"
+#include "paragraph.h"
 
 #include "frontends/Painter.h"
 #include "frontends/font_metrics.h"

@@ -13,7 +13,7 @@
 #ifndef SGML_H
 #define SGML_H
 
-#include "paragraph.h"
+#include "support/types.h"
 
 #include "support/std_string.h"
 #include <algorithm>
@@ -29,11 +29,11 @@ namespace sgml {
 std::pair<bool, string> escapeChar(char c);
 
 /// FIXME
-int openTag(std::ostream & os, Paragraph::depth_type depth,
+int openTag(std::ostream & os, lyx::depth_type depth,
 	    bool mixcont, string const & latexname);
 
 /// FIXME
-int closeTag(std::ostream & os, Paragraph::depth_type depth,
+int closeTag(std::ostream & os, lyx::depth_type depth,
 	    bool mixcont, string const & latexname);
 }
 

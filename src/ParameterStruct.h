@@ -16,13 +16,15 @@
 #include "Spacing.h"
 #include "layout.h"
 #include "lyxlength.h"
+#include "support/types.h"
+
 
 ///
 struct ParameterStruct {
 	///
-	ParameterStruct();
+	typedef lyx::depth_type depth_type;
 	///
-	typedef unsigned int depth_type;
+	ParameterStruct();
 	///
 	VSpace added_space_top;
 	///

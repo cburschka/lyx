@@ -16,6 +16,7 @@
 #include "debug.h"
 #include "lyxtext.h"
 #include "metricsinfo.h"
+#include "paragraph.h"
 #include "paragraph_funcs.h"
 
 #include "frontends/font_metrics.h"

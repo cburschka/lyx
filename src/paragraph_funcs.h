@@ -12,14 +12,16 @@
 #ifndef PARAGRAPH_FUNCS_H
 #define PARAGRAPH_FUNCS_H
 
-#include "paragraph.h"
 #include "ParagraphList_fwd.h"
 #include "support/types.h"
+
+#include "support/std_string.h"
 
 class Buffer;
 class BufferParams;
 class TexRow;
 class LatexRunParams;
+class LyXFont;
 class LyXLex;
 class InsetOld;
 
@@ -48,7 +50,7 @@ void mergeParagraph(BufferParams const & bparams,
 /// for the environments
 ParagraphList::iterator depthHook(ParagraphList::iterator pit,
 				  ParagraphList const & plist,
-				  Paragraph::depth_type depth);
+				  lyx::depth_type depth);
 
 ParagraphList::iterator outerHook(ParagraphList::iterator pit,
 				  ParagraphList const & plist);

@@ -16,6 +16,7 @@
 #include "debug.h"
 #include "iterators.h"
 #include "lyxtext.h"
+#include "paragraph.h"
 
 
 using std::endl;

@@ -23,6 +23,7 @@
 #include "buffer.h"
 #include "debug.h"
 #include "lyxlex.h"
+#include "paragraph.h"
 
 #include "insets/insettabular.h"
 

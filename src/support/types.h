@@ -26,6 +26,8 @@ namespace lyx
 	// used there...
 	typedef std::vector<char>::difference_type   pos_type;
 
+	/// a type for the nesting depth of a paragraph
+	typedef unsigned int depth_type;
 
 // set this to '0' if you want to have really safe types
 #if 1

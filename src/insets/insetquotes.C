@@ -20,6 +20,7 @@
 #include "lyxlex.h"
 #include "lyxrc.h"
 #include "metricsinfo.h"
+#include "paragraph.h"
 #include "paragraph_funcs.h"
 
 #include "frontends/font_metrics.h"

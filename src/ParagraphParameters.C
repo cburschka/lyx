@@ -23,6 +23,7 @@
 #include "support/std_sstream.h"
 #include "gettext.h"
 #include "lyxtext.h"
+#include "paragraph.h"
 
 #include "frontends/LyXView.h"
 

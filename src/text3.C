@@ -23,6 +23,7 @@
 #include "debug.h"
 #include "buffer.h"
 #include "lyxrow.h"
+#include "paragraph.h"
 #include "ParagraphParameters.h"
 #include "gettext.h"
 #include "factory.h"

@@ -16,6 +16,7 @@
 #include "funcrequest.h"
 #include "LyXAction.h"
 #include "iterators.h"
+#include "paragraph.h"
 
 #include "insets/insetfloat.h"
 #include "insets/insetwrap.h"

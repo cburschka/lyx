@@ -20,6 +20,7 @@
 #include "language.h"
 #include "lyxlex.h"
 #include "metricsinfo.h"
+#include "paragraph.h"
 #include "WordLangTuple.h"
 
 #include "frontends/Alert.h"

@@ -36,6 +36,7 @@
 #include "lyxtext.h"
 #include "lyxrc.h"
 #include "lastfiles.h"
+#include "paragraph.h"
 #include "paragraph_funcs.h"
 #include "ParagraphParameters.h"
 #include "TextCache.h"
