@@ -90,7 +90,6 @@ void GPainter::point(int x, int y, LColor_color c)
 {
 	setForeground(owner_.getGC(), c);
 	owner_.getPixmap()->draw_point(owner_.getGC(), x, y);
-	return *this;
 }
 
 
@@ -103,7 +102,6 @@ void GPainter::line(int x1, int y1,
 	setForeground(owner_.getGC(), col);
 	setLineParam(owner_.getGC(), ls, lw);
 	owner_.getPixmap()->draw_line(owner_.getGC(), x1, y1, x2, y2);
-	return *this;
 }
 
 
@@ -121,7 +119,6 @@ void GPainter::lines(int const * xp, int const * yp, int np,
 		points[i].set_y(yp[i]);
 	}
 	owner_.getPixmap()->draw_lines(owner_.getGC(), points);
-	return *this;
 }
 
 
@@ -133,7 +130,6 @@ void GPainter::rectangle(int x, int y, int w, int h,
 	setForeground(owner_.getGC(), col);
 	setLineParam(owner_.getGC(), ls, lw);
 	owner_.getPixmap()->draw_rectangle(owner_.getGC(), false, x, y, w, h);
-	return *this;
 }
 
 
@@ -142,7 +138,6 @@ void GPainter::fillRectangle(int x, int y, int w, int h,
 {
 	setForeground(owner_.getGC(), col);
 	owner_.getPixmap()->draw_rectangle(owner_.getGC(), true, x, y, w, h);
-	return *this;
 }
 
 
@@ -157,7 +152,6 @@ void GPainter::fillPolygon(int const * xp, int const * yp,
 		points[i].set_y(yp[i]);
 	}
 	owner_.getPixmap()->draw_polygon(owner_.getGC(), true, points);
-	return *this;
 }
 
 
@@ -167,7 +161,6 @@ void GPainter::arc(int x, int y, unsigned int w, unsigned int h,
 	setForeground(owner_.getGC(), col);
 	owner_.getPixmap()->draw_arc(owner_.getGC(),
 				     false, x, y, w, h, a1, a2);
-	return *this;
 }
 
 
@@ -180,7 +173,6 @@ void GPainter::image(int x, int y, int w, int h,
 	GC gc = GDK_GC_XGC(owner_.getGC()->gobj());
 	XCopyArea(owner_.getDisplay(), image.getPixmap(), pixmap,
 		  gc, 0, 0, w, h, x, y);
-	return *this;
 }
 
 
@@ -196,7 +188,7 @@ void GPainter::text(int x, int y, std::string const & s, LyXFont const & f)
 void GPainter::text(int x, int y, char c, LyXFont const & f)
 {
 	char s[2] = { c, '\0' };
-	return text(x, y, s, 1, f);
+	text(x, y, s, 1, f);
 }
 
 
@@ -246,7 +238,6 @@ void GPainter::text(int x, int y, wchar_t const * s, int ls, LyXFont const & f)
 	}
 	if (f.underbar() == LyXFont::ON)
 		underline(f, x, y, font_metrics::width(s, ls, f));
-	return *this;
 }
 
 
@@ -261,5 +252,5 @@ void GPainter::text(int x, int y, char const * s, size_t ls, LyXFont const & f)
 		std::copy(us, us + ls, wcs.get());
 	} else
 		len = mbstowcs(wcs.get(), s, ls + 1);
-	return text(x, y, wcs.get(), len, f);
+	text(x, y, wcs.get(), len, f);
 }
