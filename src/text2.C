@@ -2173,7 +2173,7 @@ void LyXText::CutSelection(bool doclear)
    
 		// paste the paragraphs again, if possible
 		if (doclear)
-			sel_start_cursor.par->Next()->ClearParagraph();
+			sel_start_cursor.par->Next()->StripLeadingSpaces(simple_cut_buffer_textclass);
 		if (sel_start_cursor.par->FirstPhysicalPar()->HasSameLayout(sel_start_cursor.par->Next())
 		    || 
 		    !sel_start_cursor.par->Next()->Last())
@@ -2182,7 +2182,7 @@ void LyXText::CutSelection(bool doclear)
 
 	// sometimes necessary
 	if (doclear)
-		sel_start_cursor.par->ClearParagraph();
+		sel_start_cursor.par->StripLeadingSpaces(simple_cut_buffer_textclass);
 
 	RedoParagraphs(sel_start_cursor, endpar);
    
@@ -2272,7 +2272,7 @@ void LyXText::CutSelection(bool doclear)
 
     // sometimes necessary
     if (doclear)
-	sel_start_cursor.par->ClearParagraph();
+	sel_start_cursor.par->StripLeadingSpaces(buffer->params.textclass);
 
     RedoParagraphs(sel_start_cursor, endpar);
    
@@ -2631,7 +2631,7 @@ void LyXText::PasteSelection()
 				lastbuffer->ParFromPos(lastbuffer->Last())->PasteParagraph();
 	 
 			} else
-				lastbuffer->Next()->ClearParagraph();
+				lastbuffer->Next()->StripLeadingSpaces(buffer->params.textclass);
 		}
 
 		// restore the simple cut buffer
@@ -3579,7 +3579,8 @@ void LyXText::DeleteEmptyParagraphMechanism(LyXCursor const & old_cursor) const
 	// MISSING
 
 	// If the pos around the old_cursor were spaces, delete one of them.
-	if (old_cursor.par != cursor.par || old_cursor.pos != cursor.pos) { // Only if the cursor has really moved
+	if (old_cursor.par != cursor.par || old_cursor.pos != cursor.pos) { 
+		// Only if the cursor has really moved
 		
 		if (old_cursor.pos > 0
 		    && old_cursor.pos < old_cursor.par->Last()
@@ -3710,7 +3711,7 @@ void LyXText::DeleteEmptyParagraphMechanism(LyXCursor const & old_cursor) const
 			}
 		}
 		if (!deleted) {
-			if (old_cursor.par->ClearParagraph()) {
+			if (old_cursor.par->StripLeadingSpaces(buffer->params.textclass)) {
 				RedoParagraphs(old_cursor, old_cursor.par->Next());
 				// correct cursor y
 				SetCursorIntern(cursor.par, cursor.pos);

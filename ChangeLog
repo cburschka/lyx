@@ -1,3 +1,18 @@
+2000-05-26  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/lyxparagraph.h: renamed ClearParagraph() to
+	StripLeadingSpaces() and moved it to paragraph.C. We pass the
+	textclass as parameter, and do nothing if free_spacing is
+	true. This fixes part of the line-delete-forward problems.
+
+	* src/CutAndPaste.C (cutSelection): use StripLeadingSpaces.
+	(pasteSelection): ditto.
+	(SwitchLayoutsBetweenClasses): more translatable strings.
+
+	* src/text2.C (CutSelection): use StripLeadingSpaces.
+	(PasteSelection): ditto.
+	(DeleteEmptyParagraphMechanism): ditto.
+
 2000-05-26  Juergen Vigna  <jug@sad.it>
 
 	* src/TabularLayout.C (TabularOptionsCB): removed delete-table as this

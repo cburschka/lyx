@@ -3201,11 +3201,14 @@ void LyXText::DeleteWordBackward()
 /* -------> Kill to end of line. */
 void LyXText::DeleteLineForward()
 {
-	LyXCursor tmpcursor = cursor;
+	
+
 	if (!cursor.par->Last())
+		// Paragraph is empty, so we just go to the right
 		CursorRight();
-	// CHECK See comment on top of text.C
 	else {
+		// CHECK See comment on top of text.C
+		LyXCursor tmpcursor = cursor;
 		CursorEnd();
 		sel_cursor = cursor;
 		cursor = tmpcursor;
@@ -3219,11 +3222,7 @@ void LyXText::DeleteLineForward()
 }
 
 
-// Change the case of a word at cursor position. The meaning of action
-// is:
-// 0  change to lowercase
-// 1  capitalize word
-// 2  change to uppercase
+// Change the case of a word at cursor position. 
 // This function directly manipulates LyXParagraph::text because there
 // is no LyXParagraph::SetChar currently. I did what I could to ensure
 // that it is correct. I guess part of it should be moved to

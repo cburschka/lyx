@@ -1489,6 +1489,22 @@ LyXParagraph * LyXParagraph::FirstSelfrowPar()
 		return tmppar;
 }
 
+int LyXParagraph::StripLeadingSpaces(LyXTextClassList::size_type tclass) 
+{
+	if (textclasslist.Style(tclass, GetLayout()).free_spacing)
+		return 0;
+	
+	int i = 0;
+	if (!IsDummy() && !table){
+		while (Last()
+		       && (IsNewline(0) || IsLineSeparator(0))){
+			Erase(0);
+			++i;
+		}
+	}
+	return i;
+}
+
 
 LyXParagraph * LyXParagraph::Clone() const
 {

@@ -474,18 +474,7 @@ public:
 	LyXParagraph * FirstSelfrowPar();
 
 	///
-	int ClearParagraph() {
-		int i = 0;
-		if (!IsDummy() && !table){
-			while (Last()
-			       && (IsNewline(0) 
-				   || IsLineSeparator(0))){
-				Erase(0);
-				++i;
-			}
-		}
-		return i;
-	}
+	int StripLeadingSpaces(LyXTextClassList::size_type tclass); 
 	
 	/** A paragraph following a footnote is a "dummy". A paragraph
 	  with a footnote in it is stored as three paragraphs:

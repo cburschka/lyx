@@ -123,7 +123,7 @@ bool CutAndPaste::cutSelection(LyXParagraph * startpar, LyXParagraph ** endpar,
    
 	// paste the paragraphs again, if possible
 	if (doclear)
-	    startpar->Next()->ClearParagraph();
+	    startpar->Next()->StripLeadingSpaces(textclass);
 	if (startpar->FirstPhysicalPar()->HasSameLayout(startpar->Next()) || 
 	    !startpar->Next()->Last()) {
 	    startpar->ParFromPos(start)->PasteParagraph();
@@ -341,7 +341,7 @@ bool CutAndPaste::pasteSelection(LyXParagraph ** par, LyXParagraph ** endpar,
 		lastbuffer->MakeSameLayout(lastbuffer->next);
 		lastbuffer->ParFromPos(lastbuffer->Last())->PasteParagraph();
 	    } else
-		lastbuffer->Next()->ClearParagraph();
+		lastbuffer->Next()->StripLeadingSpaces(tc);
 	}
 	// restore the simple cut buffer
 	buf = simple_cut_clone;
@@ -388,12 +388,12 @@ int CutAndPaste::SwitchLayoutsBetweenClasses(LyXTextClassList::size_type c1,
 	
 	if (name != textclasslist.NameOfLayout(c2, par->layout)) {
 	    ++ret;
-	    string s = "Layout had to be changed from\n"
-		+ name + " to "
-		+ textclasslist.NameOfLayout(c2, par->layout)
-		+ "\nbecause of class conversion from\n"
-		+ textclasslist.NameOfClass(c1) + " to "
-		+ textclasslist.NameOfClass(c2);
+	    string s = _("Layout had to be changed from\n")
+		    + name + _(" to ")
+		    + textclasslist.NameOfLayout(c2, par->layout)
+		    + _("\nbecause of class conversion from\n")
+		    + textclasslist.NameOfClass(c1) + _(" to ")
+		    + textclasslist.NameOfClass(c2);
 	    InsetError * new_inset = new InsetError(s);
 	    par->InsertChar(0, LyXParagraph::META_INSET);
 	    par->InsertInset(0, new_inset);
