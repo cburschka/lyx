@@ -942,6 +942,8 @@ FuncStatus BufferView::Pimpl::getStatus(FuncRequest const & cmd)
 	case LFUN_MARK_ON:
 	case LFUN_SETMARK:
 	case LFUN_CENTER:
+	case LFUN_BEGINNINGBUF:
+	case LFUN_ENDBUF:
 	case LFUN_BEGINNINGBUFSEL:
 	case LFUN_ENDBUFSEL:
 		flag.enabled(true);

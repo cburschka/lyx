@@ -454,18 +454,26 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		finishChange(cur, false);
 		break;
 
-	case LFUN_BEGINNINGBUF:
-		if (!cur.mark())
-			cur.clearSelection();
-		cursorTop(cur);
-		finishChange(cur, false);
+	case LFUN_BEGINNINGBUF:	
+		if (cur.size() == 1) {
+			if (!cur.mark())
+				cur.clearSelection();
+			cursorTop(cur);
+			finishChange(cur, false);
+		} else {
+			cur.undispatched();
+		}
 		break;
 
 	case LFUN_ENDBUF:
-		if (!cur.mark())
-			cur.clearSelection();
-		cursorBottom(cur);
-		finishChange(cur, false);
+		if (cur.size() == 1) {
+			if (!cur.mark())
+				cur.clearSelection();
+			cursorBottom(cur);
+			finishChange(cur, false);
+		} else {
+			cur.undispatched();
+		}
 		break;
 
 	case LFUN_RIGHT:
@@ -1827,8 +1835,6 @@ bool LyXText::getStatus(LCursor & cur, FuncRequest const & cmd,
 	case LFUN_DELETE_LINE_FORWARD:
 	case LFUN_WORDRIGHT:
 	case LFUN_WORDLEFT:
-	case LFUN_ENDBUF:
-	case LFUN_BEGINNINGBUF:
 	case LFUN_RIGHT:
 	case LFUN_RIGHTSEL:
 	case LFUN_LEFT:
@@ -1934,6 +1940,11 @@ bool LyXText::getStatus(LCursor & cur, FuncRequest const & cmd,
 	case LFUN_ESCAPE:
 	case LFUN_KEYMAP_TOGGLE:
 		// these are handled in our dispatch()
+		enable = true;
+		break;
+
+	case LFUN_ENDBUF:
+	case LFUN_BEGINNINGBUF:
 		enable = true;
 		break;
 

@@ -542,15 +542,11 @@ void MathNestInset::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 
 	case LFUN_PRIORSEL:
 	case LFUN_PRIOR:
-	case LFUN_BEGINNINGBUFSEL:
-	case LFUN_BEGINNINGBUF:
 		cmd = FuncRequest(LFUN_FINISHED_LEFT);
 		break;
 
 	case LFUN_NEXTSEL:
 	case LFUN_NEXT:
-	case LFUN_ENDBUFSEL:
-	case LFUN_ENDBUF:
 		cmd = FuncRequest(LFUN_FINISHED_RIGHT);
 		break;
 
