@@ -74,7 +74,7 @@ if [ ${RESOLUTION} -gt 150 ]; then
 	ALPHA=2
 fi
 
-gs -q -dNOPAUSE -dBATCH -dSAFER -sDEVICE=pnm -sOutputFile=${BASE}%03d.ppm \
+gs -q -dNOPAUSE -dBATCH -dSAFER -sDEVICE=pnmraw -sOutputFile=${BASE}%03d.ppm \
     -dGraphicsAlphaBit=${ALPHA} -dTextAlphaBits=${ALPHA} -r${RESOLUTION} \
     ${PSFILE}
 
