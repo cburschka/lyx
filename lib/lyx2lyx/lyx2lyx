@@ -1,0 +1,173 @@
+#! /usr/bin/env python
+# Copyright (C) 2002 José Matos <jamatos@lyx.org>
+#
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License
+# as published by the Free Software Foundation; either version 2
+# of the License, or (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+
+import getopt, sys, string, re
+from error import error, warning
+from parser_tools import set_format
+
+version = "0.0.2"
+
+# Allow the dummy object to be able to carry related data
+# like a C struct
+class struct:
+    pass
+
+# options object, with default values
+opt = struct()
+
+opt.output = sys.stdout
+opt.input = sys.stdin
+opt.start = None
+opt.end = None
+opt.quiet = 0
+
+format = re.compile(r"(\d)[\.,]?(\d\d)")
+fileformat = re.compile(r"\\lyxformat\s*(\S*)")
+lst_ft = ["210", "215", "216", "217", "218", "220"]
+format_name = {"210" : "2.10", "215":"2.15", "216": "2.16",
+               "217" : "2.17", "218":"218" , "220":"220"}
+def usage():
+    print """Usage: lyx2lyx [options] file1
+Convert old lyx file <file1> to newer format.
+Options:
+    -h, --help			this information
+    -v, --version		output version information and exit
+    -l, --list			list all available formats
+    -d, --debug level		level=0..2 (O_ no debug information,2_verbose)
+				default: level=1
+    -f, --from version		initial version (optional)
+    -t, --to version		final version (optional)
+    -o, --output name		name of the output file or else goes to stdout
+    -q, --quiet			same as --debug=0"""
+
+
+def parse_options(argv):
+    _options =  ["help", "version", "list", "from=", "to=", "output=", "quiet"]
+    try:
+       opts, args = getopt.getopt(argv[1:], "f:hlo:qt:v", _options)
+    except getopt.error:
+        usage()
+        sys.exit(2)
+
+    for o, a in opts:
+        if o in ("-h", "--help"):
+            usage()
+            sys.exit()
+        if o in ("-v", "--version"):
+            print "lyxconvert, version %s" %(version)
+            print "Copyright (C) 2002 LyX Team"
+            sys.exit()
+        if o in ("-d", "--debug"):
+            opt.debug = int(a)
+        if o in ("-q", "--quiet"):
+            opt.debug = 0
+        if o in ("-l", "--list"):
+            print lst_ft
+            sys.exit()
+        if o in ("-o", "--output"):
+            opt.output = open(a, "w")
+        if o in ("-f", "--from"):
+            opt.start = lyxformat(a)
+        if o in ("-t", "--to"):
+            opt.end = lyxformat(a)
+
+    if not opt.end:
+        opt.end = lst_ft[len(lst_ft)-1]
+
+    if opt.start and opt.start == opt.end:
+        sys.stderr.write(error.same_format)
+        sys.exit()
+
+    if opt.start > opt.end:
+        sys.stderr.write(error.newer_format)
+        sys.exit(1)
+
+    if args:
+        opt.input = open(args[0])
+
+def lyxformat(fmt):
+    result = format.match(fmt)
+    if result:
+        fmt = result.group(1)+result.group(2)
+    else:
+        sys.stderr.write(fmt + ": " + error.invalid_format)
+        sys.exit(2)
+    if fmt not in lst_ft:
+        sys.stderr.write(fmt + ": " + error.format_not_supported)
+        sys.exit(1)
+    return fmt
+
+def read_file(file, header, body):
+    """Reads a file into the header and body parts"""
+    fmt = None
+    while 1:
+        line = file.readline()
+        if not line:
+            sys.stderr.write(error.invalid_file)
+            sys.exit(3)
+
+        line = line[:-1]
+        if not line:
+            break
+
+        header.append(line)
+        result = fileformat.match(line)
+        if result:
+            fmt = lyxformat(result.group(1))
+
+    while 1:
+        line = file.readline()
+        if not line:
+            break
+        body.append(line[:-1])
+
+    if not fmt:
+        sys.stderr.write(error.invalid_file)
+        sys.exit(3)
+    return fmt
+
+def write_file(file, header, body):
+    for line in header:
+        file.write(line+"\n")
+    file.write("\n")
+    for line in body:
+        file.write(line+"\n")
+
+def main(argv):
+    parse_options(argv)
+
+    header, body = [], []
+    fmt =  read_file(opt.input, header, body)
+
+    if opt.start:
+        if opt.start != fmt:
+            print warning.dont_match + ":", opt.start, fmt
+    else:
+        opt.start = fmt
+
+    # Convertion chain
+    start = lst_ft.index(opt.start)
+    end = lst_ft.index(opt.end)
+
+    for fmt in lst_ft[start:end]:
+        __import__("lyxconvert_" + fmt).convert(header,body)
+
+    set_format(header,format_name[opt.end])
+    write_file(opt.output, header, body)
+    
+if __name__ == "__main__":
+    main(sys.argv)
