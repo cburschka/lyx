@@ -1,5 +1,8 @@
 2002-01-13  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
+	* bufferlist.C (readFile): create the buffer _after_ checking that
+	the file exists.
+
 	* lyxfunc.C (verboseDispatch): fix handling of arguments
 
 	* lyxrc.C (setDefaults): do not initialize document_path to $HOME.

@@ -1,5 +1,8 @@
 2002-01-13  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
+	* insetinclude.C (loadIfNeeded): do not call bufferlist.readFile
+	if file does not exist
+
 	* figinset.C (browseFile): add shortcuts to directory buttons
 
 	* insettext.C (updateLocal): update menubar and toolbar here too.

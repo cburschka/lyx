@@ -357,8 +357,6 @@ void BufferList::emergencyWrite(Buffer * buf)
 
 Buffer * BufferList::readFile(string const & s, bool ronly)
 {
-	Buffer * b = bstore.newBuffer(s, ronly);
-
 	string ts(s);
 	string e = OnlyPath(s);
 	string a = e;
@@ -371,6 +369,8 @@ Buffer * BufferList::readFile(string const & s, bool ronly)
 		return 0;
 	}
  
+	Buffer * b = bstore.newBuffer(s, ronly);
+
 	// Check if emergency save file exists and is newer.
 	e += OnlyFilename(s) + ".emergency";
 	FileInfo fileInfoE(e);
