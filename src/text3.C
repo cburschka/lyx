@@ -1136,6 +1136,9 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		finishUndo();
 		cur.x_target() = cursorX(cur.top());
 
+		if (bv->fitCursor())
+			selection_possible = false;
+
 		// Insert primary selection with middle mouse
 		// if there is a local selection in the current buffer,
 		// insert this
