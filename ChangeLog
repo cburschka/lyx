@@ -1,3 +1,12 @@
+2000-09-05  Dekel Tsur  <dekel@math.tau.ac.il>
+
+	* src/mathed/math_macro.C (Metrics): Set the size of the template
+
+	* src/mathed/formulamacro.C (Latex): Fixed the returned value
+
+	* src/Spacing.C (writeEnvirBegin): avoid crash with old-style
+	streams. 
+
 2000-08-04  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/bmtable.c (fl_set_bmtable_pixmap_file): use C-style
@@ -11,7 +20,7 @@
 	
 2000-07-31  Matej Cepl <CeplM@seznam.cz>
 
-	* lib/kbd/czech.kmap: new file. standard Czech keyboard as found
+	* lib/kbd/czech.kmap: new file. Standard Czech keyboard as found
 	on usual typewriter.
 
 	* lib/kbd/czech-prg.kmap: simpler czech kmap (which was the

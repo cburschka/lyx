@@ -77,7 +77,7 @@ int InsetFormulaMacro::Latex(ostream & os, bool /*fragile*/,
 			     bool /*free_spacing*/) const
 {
 	tmacro->WriteDef(os, true); // or false?
-	return 1;
+	return 2;
 }
 
 

@@ -113,6 +113,7 @@ void MathMacro::Metrics()
 {
     if (nargs > 0)
       tmplate->update(this);
+    tmplate->SetStyle(size);
     tmplate->Metrics();
     width = tmplate->Width();
     ascent = tmplate->Ascent();
