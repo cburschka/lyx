@@ -80,6 +80,6 @@ namespace font_metrics {
 		int & width, 
 		int & ascent, 
 		int & descent);
-};
+}
 
 #endif // FONT_METRICS_H
