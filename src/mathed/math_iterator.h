@@ -42,10 +42,6 @@ public:
 	MathIterator();
 	/// start with given inset
 	explicit MathIterator(MathInset * p);
-	///
-	CursorSlice const & operator*() const;
-	///
-	CursorSlice const & operator->() const;
 	/// move on one step
 	void operator++();
 	/// move on several steps

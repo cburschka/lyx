@@ -51,18 +51,6 @@ void MathIterator::pop()
 }
 
 
-CursorSlice const & MathIterator::operator*() const
-{
-	return back();
-}
-
-
-CursorSlice const & MathIterator::operator->() const
-{
-	return back();
-}
-
-
 void MathIterator::goEnd()
 {
 	CursorSlice & top = back();
