@@ -25,18 +25,6 @@
 #include "deco.xbm"
 
 
-static char const * decoration_names[] = {
-	"widehat", "widetilde", "overbrace", "overleftarrow", "overrightarrow",
-	"overline", "underbrace", "underline", "underleftarrow", "underrightarrow",
-	"underleftrightarrow", "overleftrightarrow",
-	"hat", "acute", "bar", "dot",
-	"check", "grave", "vec", "ddot",
-	"breve", "tilde"
-};
-
-
-static int const nr_decoration_names = sizeof(decoration_names) / sizeof(char const *);
-
 FormMathsDeco::FormMathsDeco(LyXView & lv, Dialogs & d,
 			     FormMathsPanel const & p)
 	: FormMathsSub(lv, d, p, _("Maths Decorations & Accents"), false)
@@ -71,8 +59,8 @@ void FormMathsDeco::build()
 
 void FormMathsDeco::apply()
 {
-	if (deco_ < nr_decoration_names)
-		parent_.insertSymbol(decoration_names[deco_]);
+	if (deco_ < nr_latex_deco)
+		parent_.insertSymbol(latex_deco[deco_]);
 }
 
 
