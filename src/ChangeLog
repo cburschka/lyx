@@ -1,3 +1,8 @@
+2001-04-14  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* src/exporter.C (Export): Give an error message when path to file 
+	contains spaces.
+
 2001-04-13  Juergen Vigna  <jug@sad.it>
 
 	* tabular.C (GetAdditionalHeight): changed parameter from cell to row.
