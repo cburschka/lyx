@@ -1,3 +1,14 @@
+1999-11-17  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/lyx_cb.C (RunLinuxDoc): add a cast to please dec cxx.
+
+	* src/chset.C: add "using std::ifstream;" to please dec cxx.
+
+	* src/lyx_main.C (init), INSTALL.OS2: the environment variable
+	which is used to point to LyX data is now LYX_DIR_11x.
+
+	* lyx.man: convert to a unix text file; small updates.
+
 1999-11-15  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/support/LSubstring.[Ch]: made the second arg of most of the

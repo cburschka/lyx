@@ -1254,7 +1254,10 @@ int RunLinuxDoc(int flag, string const & filename)
 		if (!current_view->available())
 			return 0;
 		current_view->buffer()->makeLinuxDocFile(name, 0);
-		BufferParams::PAPER_SIZE ps = current_view->buffer()->params.papersize;
+#ifdef WITH_WARNINGS
+#warning remove this once we have a proper geometry class
+#endif
+		BufferParams::PAPER_SIZE ps = static_cast<BufferParams::PAPER_SIZE>(current_view->buffer()->params.papersize);
 		switch (ps) {
 		case BufferParams::PAPER_A4PAPER:  add_flags = "-p a4";     break;
 		case BufferParams::PAPER_USLETTER: add_flags = "-p letter"; break;

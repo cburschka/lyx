@@ -177,7 +177,7 @@ void LyX::init(int */*argc*/, char **argv)
 
 	// Directories are searched in this order:
 	// 1) -sysdir command line parameter
-	// 2) LYX_DIR_10x environment variable
+	// 2) LYX_DIR_11x environment variable
 	// 3) Maybe <path of binary>/TOP_SRCDIR/lib
 	// 4) <path of binary>/../share/<name of binary>/
 	// 4a) repeat 4 after following the Symlink if <path of
@@ -194,11 +194,11 @@ void LyX::init(int */*argc*/, char **argv)
 	if (!system_lyxdir.empty())
 		searchpath= MakeAbsPath(system_lyxdir) + ';';
 
-	// LYX_DIR_10x environment variable
-	string lyxdir = GetEnvPath("LYX_DIR_10x");
+	// LYX_DIR_11x environment variable
+	string lyxdir = GetEnvPath("LYX_DIR_11x");
 	
 	if (!lyxdir.empty()) {
-		lyxerr[Debug::INIT] << "LYX_DIR_10x: " << lyxdir << endl;
+		lyxerr[Debug::INIT] << "LYX_DIR_11x: " << lyxdir << endl;
 		searchpath += lyxdir + ';';
 	}
 
@@ -257,7 +257,7 @@ void LyX::init(int */*argc*/, char **argv)
 	// Warn if environment variable is set, but unusable
 	if (!lyxdir.empty()) {
 		if (system_lyxdir != NormalizePath(lyxdir)) {
-			lyxerr <<_("LYX_DIR_10x environment variable no good.")
+			lyxerr <<_("LYX_DIR_11x environment variable no good.")
 			       << '\n'
 			       << _("System directory set to: ") 
 			       << system_lyxdir << endl;
@@ -269,7 +269,7 @@ void LyX::init(int */*argc*/, char **argv)
 	if (system_lyxdir.empty()) {
 		lyxerr <<_("LyX Warning! Couldn't determine system directory.")
 		       <<_("Try the '-sysdir' command line parameter or")
-		       <<_("set the environment variable LYX_DIR_10x to the "
+		       <<_("set the environment variable LYX_DIR_11x to the "
 			   "LyX system directory")
 		       << _("containing the file `chkconfig.ltx'.") << endl;
 		if (!path_shown)

@@ -5,6 +5,7 @@
 #endif
 
 #include <fstream>
+using std::ifstream;
 
 #include "chset.h"
 #include "support/filetools.h"

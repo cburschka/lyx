@@ -3,7 +3,7 @@
 .\"
 .\"  tbl lyx.1 | nroff -man | less
 .\"
-.TH LYX 1 "October 1998" "Version 1.0" "LyX 1.0"
+.TH LYX 1 "November 1999" "Version 1.1" "LyX 1.1"
 .SH NAME
 lyx \- A Document Processor
 .\"
@@ -157,7 +157,7 @@ specifies the application name under which resources are to be
 obtained, rather than the default executable file name. 
 .SH ENVIRONMENT
 .TP
-.B LYX_DIR_10x
+.B LYX_DIR_11x
 can be used to specify which system directory to use.
 .PP
 The system directory is determined by searching for the file
@@ -165,7 +165,7 @@ The system directory is determined by searching for the file
 .br
 1) -sysdir command line parameter
 .br
-2) LYX_DIR_10x environment variable
+2) LYX_DIR_11x environment variable
 .br
 3) Maybe <path of binary>/TOP_SRCDIR/lib
 .br
@@ -229,7 +229,6 @@ performance on slow systems.
 .SH AUTHOR
 Copyright
 .Cr
-1995, 1996, 1997, 1998 by Matthias Ettrich (ettrich@informatik.uni-tuebingen.de)
+1995, 1996, 1997, 1998, 1999 by Matthias Ettrich (ettrich@informatik.uni-tuebingen.de)
 and the rest of the \fBLyX Team\fR (See Credits under the Help menu
 item).
-
