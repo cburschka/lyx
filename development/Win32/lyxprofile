@@ -1,26 +1,28 @@
-PATH="/usr/local/lyx/bin:/usr/local/bin:/usr/X11R6/bin:/usr/bin:/bin:$PATH"
+# Set up your home directory (in Cygwin syntax)
+export HOME="//x/YourHomeDirectory"
+
+# Set up your Language (if you do not want English)
+# export LANG=DE
+
+# ========================================================
+# Below this line you should not change anything if you're
+# not familiar with configuration of an unix application!
+# ========================================================
+export PATH="/usr/bin:/usr/local/bin:/usr/X11R6/bin:/bin:$PATH"
+export USER="`id -un`"
+export DISPLAY=127.0.0.1:0.0
+export MAKE_MODE=unix
+
 unset DOSDRIVE
 unset DOSDIR
 unset TMPDIR
 unset TMP
-
-USER="`id -un`"
-
-# Set up USER's home directory; no spaces allowed in the path!
-export HOME=//c/Docs/Lyx
-
-export USER PATH
 
 for i in /etc/profile.d/*.sh ; do
   if [ -f $i ]; then
     . $i
   fi
 done
-
-export DISPLAY=localhost:0
-
-export MAKE_MODE=unix
-
 
 cd "$HOME"
 

@@ -158,3 +158,7 @@ string os::slashify_path(string p) {
 string os::external_path(string p) {
 	return p;
 }
+
+string os::internal_path(string p) {
+	return p;
+}

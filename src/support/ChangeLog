@@ -1,3 +1,12 @@
+2001-07-02  Claus Hentschel  <claus.hentschel@mbau.fh-hannover.de>
+
+	* os_win32.C: 
+	* os_unix.C:
+	* os_os2.C:
+	* os.h: add internal_path method, which converts a unix-type file
+	name to the type known to the underlying file system (currently
+	only useful on cygwin) [from Ruurd A. Reitsma and Claus Hentschel]
+
 2001-08-18  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* smart_ptr.h: new file

@@ -45,14 +45,18 @@ public:
 
 	// no-op on UNIX, '\\'->'/' on OS/2 and Win32, ':'->'/' on MacOS, etc.
 	static string slashify_path(string p);
+	// converts a host OS path to unix style
 	static string external_path(string p);
+	// converts a unix path to host OS style
+	static string internal_path(string p);
 	static void warn(string mesg);
 private:
 	static string binpath_;
 	static string binname_;
 	static string tmpdir_;
 	static os::shell_type _shell;
-	static unsigned long cp_;	// Used only on OS/2 to determine file system encoding.
+	// Used only on OS/2 to determine file system encoding.
+	static unsigned long cp_;	
 
 	// Never initialize static variables in the header!
 	// Anyway I bet this class will never be constructed.

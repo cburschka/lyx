@@ -263,11 +263,11 @@ int MenuRunChktex(Buffer * buffer)
 			s = _("No warnings found.");
 		} else if (ret == 1) {
 			s = _("One warning found.");
-			t = _("Use 'Edit->Go to Error' to find it.");
+			t = _("Use `Navigate->Error' to find it.");
 		} else {
 			s += tostr(ret);
 			s += _(" warnings found.");
-			t = _("Use 'Edit->Go to Error' to find them.");
+			t = _("Use `Navigate->Error' to find them.");
 		}
 		WriteAlert(_("Chktex run successfully"), s, t);
 	} else {

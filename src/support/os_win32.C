@@ -81,3 +81,18 @@ string os::external_path(string p) {
 		<< dos_path << "]" << endl;
 	return dos_path;
 }
+
+// (Claus H.) Parsing the latex log file in an Win32 environment all
+// files are mentioned in Win32/DOS syntax. Because LyX uses the dep file
+// entries to check if any file has been changed we must retranslate
+// the Win32/DOS pathnames into Cygwin pathnames.
+string os::internal_path(string p) {
+	char pp[256];
+	cygwin_conv_to_posix_path(p.c_str(), pp);
+	string const posix_path = MakeLatexName(pp);
+	lyxerr[Debug::DEPEND]
+		<< "<Win32 path correction> ["
+		<< p << "]->>["
+		<< posix_path << "]" << endl;
+	return posix_path;
+}
