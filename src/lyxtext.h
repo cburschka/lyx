@@ -413,8 +413,7 @@ private:
 
 	/// sets row.end to the pos value *after* which a row should break.
 	/// for example, the pos after which isNewLine(pos) == true
-	lyx::pos_type rowBreakPoint(ParagraphList::iterator pit,
-		Row const & row) const;
+	void rowBreakPoint(ParagraphList::iterator pit, Row & row) const;
 
 	/// returns the minimum space a row needs on the screen in pixel
 	int fill(ParagraphList::iterator pit, Row & row, int workwidth) const;

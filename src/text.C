@@ -464,29 +464,34 @@ pos_type addressBreakPoint(pos_type i, Paragraph const & par)
 };
 
 
-pos_type LyXText::rowBreakPoint(ParagraphList::iterator pit,
-	Row const & row) const
+void LyXText::rowBreakPoint(ParagraphList::iterator pit, Row & row) const
 {
 	// maximum pixel width of a row.
 	int width = workWidth() - rightMargin(*pit, *bv()->buffer(), row);
 
 	// inset->textWidth() returns -1 via workWidth(),
 	// but why ?
-	if (width < 0)
-		return pit->size();
+	if (width < 0) {
+		row.endpos(pit->size() + 1);
+		return;
+	}
 
 	LyXLayout_ptr const & layout = pit->layout();
 
-	if (layout->margintype == MARGIN_RIGHT_ADDRESS_BOX)
-		return addressBreakPoint(row.pos(), *pit);
+	if (layout->margintype == MARGIN_RIGHT_ADDRESS_BOX) {
+		row.endpos(addressBreakPoint(row.pos(), *pit) + 1);
+		return;
+	}
 
 	pos_type const pos = row.pos();
 	pos_type const body_pos = pit->beginningOfBody();
 	pos_type const last = pit->size();
 	pos_type point = last;
 
-	if (pos == last)
-		return last;
+	if (pos == last) {
+		row.endpos(last + 1);
+		return;
+	}
 
 	// Now we iterate through until we reach the right margin
 	// or the end of the par, then choose the possible break
@@ -591,7 +596,7 @@ pos_type LyXText::rowBreakPoint(ParagraphList::iterator pit,
 	if (body_pos && point < body_pos)
 		point = body_pos - 1;
 
-	return point;
+	row.endpos(point + 1);
 }
 
 
@@ -1970,8 +1975,8 @@ void LyXText::redoParagraphInternal(ParagraphList::iterator pit)
 	int const ww = workWidth();
 	for (pos_type z = 0; z < pit->size() + 1; ) {
 		Row row(z);
-		z = rowBreakPoint(pit, row) + 1;
-		row.endpos(z);
+		rowBreakPoint(pit, row);
+		z = row.endpos();
 		int const f = fill(pit, row, ww);
 		unsigned int const w = ww - f;
 		pit->width = std::max(pit->width, w);
