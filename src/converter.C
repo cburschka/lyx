@@ -800,7 +800,7 @@ bool Converters::scanLog(Buffer const * buffer, string const & command,
 		}
 		if (need_redraw) {
 			bv->redraw();
-			bv->fitCursor(bv->text);
+			bv->fitCursor();
 		}
 		bv->owner()->allowInput();
 	}
@@ -867,7 +867,7 @@ bool Converters::runLaTeX(Buffer const * buffer, string const & command)
 		// error insets after we ran LaTeX this must be run:
 		if (need_redraw) {
 			bv->redraw();
-			bv->fitCursor(bv->text);
+			bv->fitCursor();
 		}
 	}
 

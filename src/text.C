@@ -440,12 +440,14 @@ void LyXText::draw(BufferView * bview, Row const * row,
 			tmpinset->update(bview, font, false);
 			tmpinset->draw(bview, font, offset+row->baseline(), x,
 			               cleared);
-#ifdef SEEMS_TO_BE_NOT_NEEDED
-			if (status_ == CHANGED_IN_DRAW) {
-				UpdateInset(bview, tmpinset);
-				status(bview, CHANGED_IN_DRAW);
+			if (!need_break_row &&
+			    bview->text->status() == CHANGED_IN_DRAW)
+			{
+				if (row->previous() && row->previous()->par() == row->par())
+					breakAgainOneRow(bview, row->previous());
+				setCursor(bview, cursor.par(), cursor.pos());
+				need_break_row = const_cast<Row *>(row);
 			}
-#endif
 		}
 		++vpos;
 

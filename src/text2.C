@@ -779,7 +779,7 @@ void LyXText::redoDrawingOfParagraph(BufferView * bview, LyXCursor const & cur)
 // and the specified par 
 // This function is needed after SetLayout and SetFont etc.
 void LyXText::redoParagraphs(BufferView * bview, LyXCursor const & cur,
-			     Paragraph const * endpar) const
+                             Paragraph const * endpar) const
 {
 	Row * tmprow2;
 	Paragraph * tmppar = 0;
@@ -797,7 +797,8 @@ void LyXText::redoParagraphs(BufferView * bview, LyXCursor const & cur,
 	} else {
 		first_phys_par = tmprow->par();
 		while (tmprow->previous()
-		       && tmprow->previous()->par() == first_phys_par) {
+		       && tmprow->previous()->par() == first_phys_par)
+		{
 			tmprow = tmprow->previous();
 			y -= tmprow->height();
 		}
@@ -807,8 +808,8 @@ void LyXText::redoParagraphs(BufferView * bview, LyXCursor const & cur,
 	status(bview, LyXText::NEED_MORE_REFRESH);
 	refresh_y = y;
 	refresh_row = tmprow->previous();	 /* the real refresh row will
-						    be deleted, so I store
-						    the previous here */ 
+	                                        be deleted, so I store
+	                                        the previous here */ 
 	// remove it
 	if (tmprow->next())
 		tmppar = tmprow->next()->par();
@@ -824,7 +825,7 @@ void LyXText::redoParagraphs(BufferView * bview, LyXCursor const & cur,
    
 	// remove the first one
 	tmprow2 = tmprow;     /* this is because tmprow->previous()
-				 can be 0 */
+	                         can be 0 */
 	tmprow = tmprow->previous();
 	removeRow(tmprow2);
    

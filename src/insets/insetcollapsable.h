@@ -98,7 +98,7 @@ public:
 	void insetKeyPress(XKeyEvent *);
 	///
 	UpdatableInset::RESULT localDispatch(BufferView *, kb_action,
-					     string const &);
+	                                     string const &);
 	///
 	int latex(Buffer const *, std::ostream &,
 		  bool fragile, bool free_spc) const;

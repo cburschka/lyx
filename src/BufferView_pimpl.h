@@ -37,7 +37,7 @@ struct BufferView::Pimpl : public SigC::Object {
 	///
 	void redraw();
 	/// Return true if the cursor was fitted.
-	bool fitCursor(LyXText *);
+	bool fitCursor();
 	///
 	void redoCurrentBuffer();
 	///

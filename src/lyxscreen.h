@@ -71,7 +71,7 @@ public:
 	///
 	void hideCursor();
 	///
-	void cursorToggle(LyXText const *, BufferView const *);
+	void cursorToggle(BufferView *) const;
 	///
 	void showManualCursor(LyXText const *, int x, int y,
 			      int asc, int desc,
@@ -102,7 +102,7 @@ private:
 
 	/// y1 and y2 are coordinates of the screen
 	void drawFromTo(LyXText *, BufferView *, int y1, int y2,
-			int y_offset = 0, int x_offset = 0);
+	                int y_offset = 0, int x_offset = 0, bool internal=false);
 
 	/// y is a coordinate of the text
 	void drawOneRow(LyXText *, BufferView *, Row * row,

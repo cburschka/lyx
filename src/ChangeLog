@@ -1,3 +1,13 @@
+2001-08-02  Juergen Vigna  <jug@sad.it>
+
+	* BufferView_pimpl.C (update): redone this function so that we
+	update the text again if there was a CHANGE_IN_DRAW.
+
+	* screen.C (cursorToggle): removed LyXText parameter and recoded.
+	(drawFromTo): added a new internal bool which is used by draw() and
+	redraw() function.
+	(general): some cursor drawing problems fixed.
+
 2001-08-01  Juergen Vigna  <jug@sad.it>
 
 	* lyxfind.C (LyXFind): fixed

@@ -1132,7 +1132,7 @@ string const LyXFunc::dispatch(int ac,
 	case LFUN_REMOVEERRORS:
 		if (owner->view()->removeAutoInsets()) {
 			owner->view()->redraw();
-			owner->view()->fitCursor(TEXT());
+			owner->view()->fitCursor();
 		}
 		break;
 

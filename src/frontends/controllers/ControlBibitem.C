@@ -50,5 +50,5 @@ void ControlBibitem::applyParamsToInset()
 	// We need to do a redraw because the maximum
 	// InsetBibKey width could have changed
 	lv_.view()->redraw();
-	lv_.view()->fitCursor(lv_.view()->getLyXText());
+	lv_.view()->fitCursor();
 }

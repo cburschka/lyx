@@ -89,9 +89,9 @@ void BufferView::redraw()
 }
 
 
-void BufferView::fitCursor(LyXText * text)
+void BufferView::fitCursor()
 {
-	pimpl_->fitCursor(text);
+	pimpl_->fitCursor();
 }
 
 

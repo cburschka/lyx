@@ -256,7 +256,7 @@ void BufferView::Pimpl::redraw()
 }
 
 
-bool BufferView::Pimpl::fitCursor(LyXText * text)
+bool BufferView::Pimpl::fitCursor()
 {
 	lyx::Assert(screen_.get());
 
@@ -266,7 +266,7 @@ bool BufferView::Pimpl::fitCursor(LyXText * text)
 		bv_->theLockingInset()->fitInsetCursor(bv_);
 		ret = true;
 	} else {
-		ret = screen_->fitCursor(text, bv_);
+		ret = screen_->fitCursor(bv_->text, bv_);
 	}
 
 	bv_->owner()->getDialogs()->updateParagraph();
@@ -558,7 +558,7 @@ void BufferView::Pimpl::workAreaMotionNotify(int x, int y, unsigned int state)
       
 	bv_->text->setSelection(bv_);
 	screen_->toggleToggle(bv_->text, bv_);
-	fitCursor(bv_->text);
+	fitCursor();
 #if 0
 	screen_->showCursor(bv_->text, bv_);
 #else
@@ -621,7 +621,11 @@ void BufferView::Pimpl::workAreaButtonPress(int xpos, int ypos,
 	screen_->toggleSelection(bv_->text, bv_);
 	bv_->text->clearSelection();
 	bv_->text->fullRebreak(bv_);
+#if 0
 	screen_->update(bv_->text, bv_);
+#else
+	update();
+#endif
 	updateScrollbar();
 	
 	// Single left click in math inset?
@@ -650,7 +654,7 @@ void BufferView::Pimpl::workAreaButtonPress(int xpos, int ypos,
 	bv_->text->cursor.x_fix(bv_->text->cursor.x());
 	
 	owner_->updateLayoutChoice();
-	if (fitCursor(bv_->text)) {
+	if (fitCursor()) {
 		selection_possible = false;
 	}
 	
@@ -943,7 +947,7 @@ void BufferView::Pimpl::workAreaExpose()
 			// fitCursor() ensures we don't jump back
 			// to the start of the document on vertical
 			// resize
-			fitCursor(bv_->text);
+			fitCursor();
 
 			// The main window size has changed, repaint most stuff
 			redraw();
@@ -966,7 +970,18 @@ void BufferView::Pimpl::update()
 	if (screen_.get() &&
 		(!bv_->theLockingInset() || !bv_->theLockingInset()->nodraw()))
 	{
+		LyXText::text_status st = bv_->text->status();
 		screen_->update(bv_->text, bv_);
+		while(bv_->text->status() == LyXText::CHANGED_IN_DRAW) {
+			if (bv_->text->fullRebreak(bv_)) {
+				st = LyXText::NEED_MORE_REFRESH;
+				bv_->text->setCursor(bv_, bv_->text->cursor.par(),
+									 bv_->text->cursor.pos());
+				fitCursor();
+			}
+			bv_->text->status(bv_, st);
+			screen_->update(bv_->text, bv_);
+		}
 	}
 }
 
@@ -1026,7 +1041,7 @@ void BufferView::Pimpl::update(LyXText * text, BufferView::UpdateCodes f)
 	}
 		
 	if ((f & FITCUR)) {
-		fitCursor(text);
+		fitCursor();
 	}
 
 	if ((f & CHANGE)) {
@@ -1060,7 +1075,7 @@ void BufferView::Pimpl::cursorToggle()
 	}
 
 	if (!bv_->theLockingInset()) {
-		screen_->cursorToggle(bv_->text, bv_);
+		screen_->cursorToggle(bv_);
 	} else {
 		bv_->theLockingInset()->toggleInsetCursor(bv_);
 	}
@@ -2985,8 +3000,6 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 	case LFUN_INDEX_CREATE:
 	{
 		InsetCommandParams p("index");
-		LyXText * lt = bv_->getLyXText();
-		
 		if (argument.empty()) {
 			string const idxstring(bv_->getLyXText()->getStringToIndex(bv_));
 			if (!idxstring.empty()) 

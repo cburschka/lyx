@@ -89,11 +89,11 @@ void LyXScreen::setCursorColor()
 
 void LyXScreen::redraw(LyXText * text, BufferView * bv)
 {
-	drawFromTo(text, bv, 0, owner.height());
+	drawFromTo(text, bv, 0, owner.height(), 0, 0, text == bv->text);
 	expose(0, 0, owner.workWidth(), owner.height());
 	if (cursor_visible) {
 		cursor_visible = false;
-		showCursor(text, bv);
+		bv->showCursor();
 	}
 }
 
@@ -112,7 +112,8 @@ void LyXScreen::expose(int x, int y, int exp_width, int exp_height)
 
 
 void LyXScreen::drawFromTo(LyXText * text, BufferView * bv,
-			   int y1, int y2, int y_offset, int x_offset)
+                           int y1, int y2, int y_offset, int x_offset,
+                           bool internal)
 {
 	int y_text = text->first + y1;
    
@@ -124,13 +125,19 @@ void LyXScreen::drawFromTo(LyXText * text, BufferView * bv,
 	// y1 is now the real beginning of row on the screen
 	
 	while (row != 0 && y < y2) {
-		LyXText::text_status st = bv->text->status();
-		do {
-			bv->text->status(bv, st);
+		LyXText::text_status st = text->status();
+		text->getVisibleRow(bv, y + y_offset,
+		                    x_offset, row, y + text->first);
+		while(internal && text->status() == LyXText::CHANGED_IN_DRAW) {
+			if (text->fullRebreak(bv)) {
+				st = LyXText::NEED_MORE_REFRESH;
+				text->setCursor(bv, text->cursor.par(), text->cursor.pos());
+				bv->fitCursor();
+			}
+			text->status(bv, st);
 			text->getVisibleRow(bv, y + y_offset,
-					    x_offset, row, y + text->first);
-		} while (bv->text->status() == LyXText::CHANGED_IN_DRAW);
-		bv->text->status(bv, st);
+			                    x_offset, row, y + text->first);
+		}
 		y += row->height();
 		row = row->next();
 	}
@@ -154,32 +161,39 @@ void LyXScreen::drawOneRow(LyXText * text, BufferView * bv, Row * row,
 	if (((y + row->height()) > 0) &&
 	    ((y - row->height()) <= static_cast<int>(owner.height()))) {
 		// ok there is something visible
+#if 0
 		LyXText::text_status st = bv->text->status();
 		do {
 			bv->text->status(bv, st);
 			text->getVisibleRow(bv, y, x_offset, row,
 					    y + text->first);
-		} while (bv->text->status() == LyXText::CHANGED_IN_DRAW);
+		} while (!text->inset_owner &&
+		         text->status() == LyXText::CHANGED_IN_DRAW);
 		bv->text->status(bv, st);
+#else
+		text->getVisibleRow(bv, y, x_offset, row, y + text->first);
+#endif
 	}
 	force_clear = false;
 }
 
 
 /* draws the screen, starting with textposition y. uses as much already
-* printed pixels as possible */
+ * printed pixels as possible */
 void LyXScreen::draw(LyXText * text, BufferView * bv, unsigned int y)
 {
 	if (cursor_visible) hideCursor();
 
 	int const old_first = text->first;
+	bool internal = (text == bv->text);
 	text->first = y;
 
 	// is any optimiziation possible?
 	if ((y - old_first) < owner.height()
-	    && (old_first - y) < owner.height()) {
+	    && (old_first - y) < owner.height())
+	{
 		if (text->first < old_first) {
-			drawFromTo(text, bv, 0, old_first - text->first);
+			drawFromTo(text, bv, 0, old_first - text->first, 0, 0, internal);
 			XCopyArea (fl_get_display(),
 				   owner.getWin(),
 				   owner.getWin(),
@@ -197,8 +211,8 @@ void LyXScreen::draw(LyXText * text, BufferView * bv, unsigned int y)
 			       old_first - text->first);
 		} else  {
 			drawFromTo(text, bv,
-				   owner.height() + old_first - text->first,
-				   owner.height());
+			           owner.height() + old_first - text->first,
+			           owner.height(), 0, 0, internal);
 			XCopyArea (fl_get_display(),
 				   owner.getWin(),
 				   owner.getWin(),
@@ -215,7 +229,7 @@ void LyXScreen::draw(LyXText * text, BufferView * bv, unsigned int y)
 		}
 	} else {
 		// make a dumb new-draw 
-		drawFromTo(text, bv, 0, owner.height());
+		drawFromTo(text, bv, 0, owner.height(), 0, 0, internal);
 		expose(0, 0, owner.workWidth(), owner.height());
 	}
 }
@@ -360,12 +374,12 @@ void LyXScreen::hideCursor()
 }
 
 
-void LyXScreen::cursorToggle(LyXText const * text, BufferView const * bv)
+void LyXScreen::cursorToggle(BufferView * bv) const
 {
 	if (cursor_visible)
-		hideCursor();
+		bv->hideCursor();
 	else
-		showCursor(text, bv);
+		bv->showCursor();
 }
 
 
@@ -435,9 +449,13 @@ void LyXScreen::update(LyXText * text, BufferView * bv,
 		// ok I will update the current cursor row
 		drawOneRow(text, bv, text->refresh_row, text->refresh_y,
 			   y_offset, x_offset);
-		text->status(bv, LyXText::UNCHANGED);
-		expose(0, text->refresh_y - text->first + y_offset,
-		       owner.workWidth(), text->refresh_row->height());
+		// this because if we had a major update the refresh_row could
+		// have been set to 0!
+		if (text->refresh_row) {
+			text->status(bv, LyXText::UNCHANGED);
+			expose(0, text->refresh_y - text->first + y_offset,
+				   owner.workWidth(), text->refresh_row->height());
+		}
 	}
 	break;
 	case LyXText::CHANGED_IN_DRAW: // just to remove the warning

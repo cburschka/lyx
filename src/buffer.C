@@ -3454,7 +3454,7 @@ int Buffer::runChktex()
 	// error insets after we ran chktex, this must be run:
 	if (removedErrorInsets || res){
 		users->redraw();
-		users->fitCursor(users->text);
+		users->fitCursor();
 	}
 	users->owner()->allowInput();
 
@@ -3761,7 +3761,7 @@ void Buffer::resizeInsets(BufferView * bv)
 void Buffer::redraw()
 {
 	users->redraw(); 
-	users->fitCursor(users->text); 
+	users->fitCursor(); 
 }
 
 

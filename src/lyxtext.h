@@ -174,10 +174,10 @@ public:
    
 	/** Completes the insertion with a full rebreak.
 	    Returns true if something was broken. */
-        bool fullRebreak(BufferView *);
+	bool fullRebreak(BufferView *);
 
 	///
-	Row * need_break_row;
+	mutable Row * need_break_row;
 	///
 	mutable int refresh_y;
 	///

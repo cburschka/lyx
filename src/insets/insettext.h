@@ -350,7 +350,7 @@ private:
 	///
 	mutable int inset_y;
 	///
-	mutable unsigned int old_max_width;
+	mutable int old_max_width;
 	///
 	bool no_selection;
 	///
@@ -382,6 +382,7 @@ private:
 		bool selendboundary;
 		bool selection;
 		bool mark_set;
+		bool refresh;
 	} sstate;
 	///
 	// this is needed globally so we know that we're using it actually and
