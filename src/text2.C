@@ -40,7 +40,6 @@
 #include "font.h"
 #include "debug.h"
 
-#define FIX_DOUBLE_SPACE 1
 //#define USE_OLD_CUT_AND_PASTE 1
 
 using std::copy;
@@ -1087,8 +1086,11 @@ void LyXText::ToggleFree(LyXFont const & font, bool toggleall)
 	}
 
 	// Try implicit word selection
+	// If there is a change in the language the implicit word selection 
+	// is disabled.
 	LyXCursor resetCursor = cursor;
-	int implicitSelection = SelectWordWhenUnderCursor();
+	bool implicitSelection = (font.language() == ignore_language)
+		? SelectWordWhenUnderCursor() : false;
 
 	// Set font
 	SetFont(font, toggleall);
@@ -1995,22 +1997,6 @@ void LyXText::CutSelection(bool doclear)
 	   (Lgb)
 	*/
 
-#ifndef FIX_DOUBLE_SPACE
-	bool space_wrapped =
-		sel_end_cursor.par->IsLineSeparator(sel_end_cursor.pos);
-	if (sel_end_cursor.pos > 0
-	    && sel_end_cursor.par->IsLineSeparator(sel_end_cursor.pos - 1)) {
-		// please break before a space at the end
-		sel_end_cursor.pos--;
-		space_wrapped = true;
-	}
-	// cut behind a space if there is one
-	while (sel_start_cursor.par->Last() > sel_start_cursor.pos
-	       && sel_start_cursor.par->IsLineSeparator(sel_start_cursor.pos)
-	       && (sel_start_cursor.par != sel_end_cursor.par
-		   || sel_start_cursor.pos < sel_end_cursor.pos))
-		sel_start_cursor.pos++; 
-#endif
 	// there are two cases: cut only within one paragraph or
 	// more than one paragraph
    
@@ -2033,55 +2019,19 @@ void LyXText::CutSelection(bool doclear)
 			}
 			simple_cut_buffer->InsertFromMinibuffer(simple_cut_buffer->Last());
 		}
-#ifndef FIX_DOUBLE_SPACE
-		// check for double spaces
-		if (sel_start_cursor.pos &&
-		    sel_start_cursor.par->Last() > sel_start_cursor.pos
-		    && sel_start_cursor.par
-		    ->IsLineSeparator(sel_start_cursor.pos - 1)
-		    && sel_start_cursor.par
-		    ->IsLineSeparator(sel_start_cursor.pos)) {
-			sel_start_cursor.par->Erase(sel_start_cursor.pos);
-		}
-		if (space_wrapped)
-			simple_cut_buffer->InsertChar(i - sel_start_cursor.pos,
-						      ' ');
-#endif
 		endpar = sel_end_cursor.par->Next();
 	} else {
 		// cut more than one paragraph
    
 		sel_end_cursor.par
 			->BreakParagraphConservative(sel_end_cursor.pos);
-#ifndef FIX_DOUBLE_SPACE
-		// insert a space at the end if there was one
-		if (space_wrapped)
-			sel_end_cursor.par
-				->InsertChar(sel_end_cursor.par->Last(), ' ');
-#endif
 		sel_end_cursor.par = sel_end_cursor.par->Next();
 		sel_end_cursor.pos = 0;
    
 		cursor = sel_end_cursor;
 
-#ifndef FIX_DOUBLE_SPACE
-		// please break behind a space, if there is one.
-		// The space should be copied too
-		if (sel_start_cursor.par
-		    ->IsLineSeparator(sel_start_cursor.pos))
-			sel_start_cursor.pos++;
-#endif   
 		sel_start_cursor.par
 			->BreakParagraphConservative(sel_start_cursor.pos);
-#ifndef FIX_DOUBLE_SPACE
-		if (!sel_start_cursor.pos
-		    || sel_start_cursor.par
-		    ->IsLineSeparator(sel_start_cursor.pos - 1)
-		    || sel_start_cursor.par
-		    ->IsNewline(sel_start_cursor.pos - 1)) {
-			sel_start_cursor.par->Next()->InsertChar(0, ' ');
-		}
-#endif
 		// store the endparagraph for redoing later
 		endpar = sel_end_cursor.par->Next(); /* needed because
 							the sel_end_
@@ -2120,17 +2070,6 @@ void LyXText::CutSelection(bool doclear)
 		    || 
 		    !sel_start_cursor.par->Next()->Last())
 			sel_start_cursor.par->ParFromPos(sel_start_cursor.pos)->PasteParagraph();
-
-#ifndef FIX_DOUBLE_SPACE
-		// maybe a forgotten blank
-		if (sel_start_cursor.pos 
-		    && sel_start_cursor.par
-		    ->IsLineSeparator(sel_start_cursor.pos)
-		    && sel_start_cursor.par
-		    ->IsLineSeparator(sel_start_cursor.pos - 1)) {
-			sel_start_cursor.par->Erase(sel_start_cursor.pos);
-		}
-#endif
 	}
 
 	// sometimes necessary
@@ -2282,14 +2221,13 @@ void LyXText::CopySelection()
 	// set the textclass
 	simple_cut_buffer_textclass = buffer->params->textclass;
 
-#ifdef FIX_DOUBLE_SPACE
 	// copy behind a space if there is one
 	while (sel_start_cursor.par->Last() > sel_start_cursor.pos
 	       && sel_start_cursor.par->IsLineSeparator(sel_start_cursor.pos)
 	       && (sel_start_cursor.par != sel_end_cursor.par
 		   || sel_start_cursor.pos < sel_end_cursor.pos))
 		sel_start_cursor.pos++; 
-#endif
+
 	// there are two cases: copy only within one paragraph
 	// or more than one paragraph
 	if (sel_start_cursor.par->ParFromPos(sel_start_cursor.pos) 
@@ -2383,14 +2321,12 @@ void LyXText::CopySelection()
 	}
 	/* table stuff -- end */
    
-#ifdef FIX_DOUBLE_SPACE
 	// copy behind a space if there is one
 	while (sel_start_cursor.par->Last() > sel_start_cursor.pos
 	       && sel_start_cursor.par->IsLineSeparator(sel_start_cursor.pos)
 	       && (sel_start_cursor.par != sel_end_cursor.par
 		   || sel_start_cursor.pos < sel_end_cursor.pos))
 		sel_start_cursor.pos++; 
-#endif
 
 	CutAndPaste cap;
 
@@ -2450,12 +2386,6 @@ void LyXText::PasteSelection()
 	if (!simple_cut_buffer->next) {
 		// only within a paragraph
 
-#ifndef FIX_DOUBLE_SPACE
-		// please break behind a space, if there is one
-		while (tmpcursor.par->Last() > tmpcursor.pos
-		       && tmpcursor.par->IsLineSeparator(tmpcursor.pos))
-			tmpcursor.pos++; 
-#endif
 		tmppar = simple_cut_buffer->Clone();
 		/* table stuff -- begin */
 		bool table_too_small = false;
@@ -2471,7 +2401,6 @@ void LyXText::PasteSelection()
 					else
 						table_too_small = true;
 				} else {
-#ifdef FIX_DOUBLE_SPACE
 					// This is an attempt to fix the
 					// "never insert a space at the
 					// beginning of a paragraph" problem.
@@ -2484,12 +2413,6 @@ void LyXText::PasteSelection()
 						tmpcursor.par->InsertFromMinibuffer(tmpcursor.pos);
 						tmpcursor.pos++;
 					}
-#else
-					simple_cut_buffer->CutIntoMinibuffer(0);
-					simple_cut_buffer->Erase(0);
-					tmpcursor.par->InsertFromMinibuffer(tmpcursor.pos);
-					tmpcursor.pos++;
-#endif
 				}
 			}
 		} else {
@@ -2501,7 +2424,6 @@ void LyXText::PasteSelection()
 			// the beginning of the paragraph the space should
 			// be removed.
 			while (simple_cut_buffer->size()) {
-#ifdef FIX_DOUBLE_SPACE
 				// This is an attempt to fix the
 				// "never insert a space at the
 				// beginning of a paragraph" problem.
@@ -2514,12 +2436,6 @@ void LyXText::PasteSelection()
 					tmpcursor.par->InsertFromMinibuffer(tmpcursor.pos);
 					tmpcursor.pos++;
 				}
-#else
-				simple_cut_buffer->CutIntoMinibuffer(0);
-				simple_cut_buffer->Erase(0);
-				tmpcursor.par->InsertFromMinibuffer(tmpcursor.pos);
-				tmpcursor.pos++;
-#endif
 			}
 		}
 		delete simple_cut_buffer;
@@ -2562,13 +2478,6 @@ void LyXText::PasteSelection()
 		while (lastbuffer->Next())
 			lastbuffer = lastbuffer->Next();
      
-#ifndef FIX_DOUBLE_SPACE
-		// Please break behind a space, if there is one. The space 
-		// should be copied too.
-		if (cursor.par->Last() > cursor.pos
-		    && cursor.par->IsLineSeparator(cursor.pos))
-			cursor.pos++; 
-#endif
 		bool paste_the_end = false;
 
 		// open the paragraph for inserting the simple_cut_buffer
@@ -2578,15 +2487,6 @@ void LyXText::PasteSelection()
 			paste_the_end = true;
 		}
 
-#ifndef FIX_DOUBLE_SPACE
-		// be careful with double spaces
-		if ((!cursor.par->Last()
-		     || cursor.par->IsLineSeparator(cursor.pos - 1)
-		     || cursor.par->IsNewline(cursor.pos - 1))
-		    && simple_cut_buffer->text.size()
-		    && simple_cut_buffer->IsLineSeparator(0))
-			simple_cut_buffer->Erase(0);
-#endif
 		// set the end for redoing later
 		endpar = cursor.par->ParFromPos(cursor.pos)->next->Next();
      
@@ -2612,41 +2512,14 @@ void LyXText::PasteSelection()
 		// maybe some pasting
 		if (lastbuffer->Next() && paste_the_end) {
 			if (lastbuffer->Next()->HasSameLayout(lastbuffer)) {
-#ifndef FIX_DOUBLE_SPACE
-				// be careful with double spaces
-				if ((!lastbuffer->Last()
-				     || lastbuffer->IsLineSeparator(lastbuffer->Last() - 1)
-				     || lastbuffer->IsNewline(lastbuffer->Last() - 1))
-				    && lastbuffer->Next()->Last()
-				    && lastbuffer->Next()->IsLineSeparator(0))
-					lastbuffer->Next()->Erase(0);
-#endif
 				lastbuffer->ParFromPos(lastbuffer->Last())->PasteParagraph();
 	 
 			} else if (!lastbuffer->Next()->Last()) {
 				lastbuffer->Next()->MakeSameLayout(lastbuffer);
-#ifndef FIX_DOUBLE_SPACE
-				// be careful witth double spaces
-				if ((!lastbuffer->Last()
-				     || lastbuffer->IsLineSeparator(lastbuffer->Last() - 1)
-				     || lastbuffer->IsNewline(lastbuffer->Last() - 1))
-				    && lastbuffer->Next()->Last()
-				    && lastbuffer->Next()->IsLineSeparator(0))
-					lastbuffer->Next()->Erase(0);
-#endif
 				lastbuffer->ParFromPos(lastbuffer->Last())->PasteParagraph();
 	 
 			} else if (!lastbuffer->Last()) {
 				lastbuffer->MakeSameLayout(lastbuffer->next);
-#ifndef FIX_DOUBLE_SPACE
-				// be careful witth double spaces
-				if ((!lastbuffer->Last()
-				     || lastbuffer->IsLineSeparator(lastbuffer->Last() - 1)
-				     || lastbuffer->IsNewline(lastbuffer->Last() - 1))
-				    && lastbuffer->Next()->Last()
-				    && lastbuffer->Next()->IsLineSeparator(0))
-					lastbuffer->Next()->Erase(0);
-#endif
 				lastbuffer->ParFromPos(lastbuffer->Last())->PasteParagraph();
 	 
 			} else
@@ -2856,7 +2729,6 @@ void LyXText::InsertStringA(string const & str)
 					++pos;
 				}
                         } else if (str[i] == ' ') {
-#if 1
 				InsetSpecialChar * new_inset =
 					new InsetSpecialChar(InsetSpecialChar::PROTECTED_SEPARATOR);
 				if (par->InsertInsetAllowed(new_inset)) {
@@ -2866,14 +2738,9 @@ void LyXText::InsertStringA(string const & str)
 				} else {
 					delete new_inset;
 				}
-#else
-				par->InsertChar(pos, LyXParagraph::META_PROTECTED_SEPARATOR);
-				par->SetFont(pos, current_font);
-#endif
 				++pos;
 			} else if (str[i] == '\t') {
 				for (a = pos; a < (pos / 8 + 1) * 8 ; ++a) {
-#if 1
 				InsetSpecialChar * new_inset =
 					new InsetSpecialChar(InsetSpecialChar::PROTECTED_SEPARATOR);
 				if (par->InsertInsetAllowed(new_inset)) {
@@ -2883,10 +2750,6 @@ void LyXText::InsertStringA(string const & str)
 				} else {
 					delete new_inset;
 				}
-#else
-					par->InsertChar(a, LyXParagraph::META_PROTECTED_SEPARATOR);
-					par->SetFont(a, current_font);
-#endif
 				}
 				pos = a;
 			} else if (str[i] != 13 && 
@@ -2921,7 +2784,6 @@ void LyXText::InsertStringA(string const & str)
                                         break;
                         } else {
                                 if (!par->size()) { // par is empty
-#if 1
 					InsetSpecialChar * new_inset =
 						new InsetSpecialChar(InsetSpecialChar::PROTECTED_SEPARATOR);
 					if (par->InsertInsetAllowed(new_inset)) {
@@ -2931,10 +2793,6 @@ void LyXText::InsertStringA(string const & str)
 					} else {
 						delete new_inset;
 					}
-#else
-                                        par->InsertChar(pos, LyXParagraph::META_PROTECTED_SEPARATOR);
-					par->SetFont(pos, current_font);
-#endif
                                         ++pos;
                                 }
                                 par->BreakParagraph(pos, flag);
@@ -3155,6 +3013,7 @@ void LyXText::SetCursor(LyXParagraph * par,
 	SetCursorIntern(par, pos, setfont);
 	DeleteEmptyParagraphMechanism(old_cursor);
 }
+
 
 void LyXText::SetCursor(LyXCursor & cur, LyXParagraph * par,
 			LyXParagraph::size_type pos) const
@@ -3588,7 +3447,6 @@ void LyXText::DeleteEmptyParagraphMechanism(LyXCursor const & old_cursor) const
 
 	bool deleted = false;
 	
-#ifdef FIX_DOUBLE_SPACE
 	/* Ok I'll put some comments here about what is missing.
 	   I have fixed BackSpace (and thus Delete) to not delete
 	   double-spaces automagically. I have also changed Cut,
@@ -3630,8 +3488,7 @@ void LyXText::DeleteEmptyParagraphMechanism(LyXCursor const & old_cursor) const
 			return;
 		}
 	}
-#endif
-#if 1
+
 	// Do not delete empty paragraphs with keepempty set.
 	if ((textclasslist.Style(buffer->params.textclass,
 				 old_cursor.par->GetLayout())).keepempty)
@@ -3734,14 +3591,9 @@ void LyXText::DeleteEmptyParagraphMechanism(LyXCursor const & old_cursor) const
 				}
 				
 				// correct cursor y
-#if 1
+
 				SetCursorIntern(cursor.par, cursor.pos);
-#else
-				SetCursor(cursor.par, cursor.pos);
-#endif			
-				/* if (cursor.y > old_cursor.y)
-				   cursor.y -= old_cursor.row->height; */ 
-	 
+
 				if (sel_cursor.par  == old_cursor.par
 				    && sel_cursor.pos == sel_cursor.pos) {
 					// correct selection
@@ -3753,16 +3605,11 @@ void LyXText::DeleteEmptyParagraphMechanism(LyXCursor const & old_cursor) const
 			if (old_cursor.par->ClearParagraph()) {
 				RedoParagraphs(old_cursor, old_cursor.par->Next());
 				// correct cursor y
-#if 1
 				SetCursorIntern(cursor.par, cursor.pos);
-#else
-				SetCursor(cursor.par, cursor.pos);
-#endif
 				sel_cursor = cursor;
 			}
 		}
 	}
-#endif
 }
 
 

@@ -50,7 +50,6 @@ using std::istringstream;
 #include "insets/insetinclude.h"
 #include "insets/insetbib.h"
 #include "insets/insettext.h"
-//#include "insets/insetnumber.h"
 #include "insets/insetert.h"
 #include "insets/insetgraphics.h"
 #include "insets/insetfoot.h"
@@ -995,6 +994,8 @@ string LyXFunc::Dispatch(int ac,
 		
 	case LFUN_FREE:
 		Free(owner->view());
+		owner->view()->setState();
+		owner->getMiniBuffer()->Set(CurrentState(owner->view()));
 		break;
 		
 	case LFUN_TEX:
@@ -1677,19 +1678,14 @@ string LyXFunc::Dispatch(int ac,
 
 		// --- text changing commands ------------------------
 	case LFUN_BREAKLINE:
-#if 1
 		owner->view()->beforeChange();
 		owner->view()->text->InsertChar(LyXParagraph::META_NEWLINE);
 		owner->view()->smallUpdate(1);
 		SetUpdateTimer(0.01);
 		moveCursorUpdate(false);
-#else
-		owner->view()->newline();
-#endif
 		break;
 		
 	case LFUN_PROTECTEDSPACE:
-#if 1
 	{
 		LyXLayout const & style =
 			textclasslist.Style(owner->view()->buffer()->params.textclass,
@@ -1703,15 +1699,7 @@ string LyXFunc::Dispatch(int ac,
 		}
 		moveCursorUpdate(false);
 	}
-#else
-		owner->view()->beforeChange();
-		owner->view()->text->
-			InsertChar(LyXParagraph::META_PROTECTED_SEPARATOR);
-		owner->view()->smallUpdate(1);
-		SetUpdateTimer();
-                moveCursorUpdate(false);
-#endif
-		break;
+	break;
 		
 	case LFUN_SETMARK:
 		if(owner->view()->text->mark_set) {
@@ -2032,15 +2020,6 @@ string LyXFunc::Dispatch(int ac,
 		new_inset->Edit(owner->view(), 0, 0, 0);
 	}
 	break;
-#if 0
-	case LFUN_INSET_NUMBER:
-	{
-		InsetNumber * new_inset = new InsetNumber(owner->buffer());
-		owner->view()->insertInset(new_inset);
-		new_inset->Edit(owner->view(), 0, 0, 0);
-	}
-	break;
-#endif
 	case LFUN_INSET_ERT:
 	{
 		InsetERT * new_inset = new InsetERT(owner->buffer());
@@ -2649,20 +2628,6 @@ string LyXFunc::Dispatch(int ac,
 			}
 			
 			owner->view()->beforeChange();
-
-#if 0
-			if (isdigit(argument[0]) &&
-			    (lyxrc.number_inset == "true" ||
-			     (lyxrc.number_inset == "rtl" &&
-			      owner->view()->text->real_current_font.isVisibleRightToLeft() 
-			      ))) {
-				UpdatableInset * tmpinset = new InsetNumber(owner->buffer());
-				owner->view()->open_new_inset(tmpinset);
-				tmpinset->LocalDispatch(owner->view(), action,
-							argument);
-				return string();
-			}
-#endif
 			
 			for (string::size_type i = 0;
 			     i < argument.length(); ++i) {

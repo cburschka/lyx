@@ -84,6 +84,8 @@ public:
     ///
     int Latex(std::ostream &, bool fragile, bool free_spc) const;
     ///
+    int Ascii(std::ostream &) const { return 0; }
+    ///
     int Linuxdoc(std::ostream &) const { return 0; }
     ///
     int DocBook(std::ostream &) const { return 0; }

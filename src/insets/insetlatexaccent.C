@@ -627,6 +627,13 @@ int InsetLatexAccent::Latex(ostream & os,
 }
 
 
+int InsetLatexAccent::Ascii(ostream & os) const
+{
+	os << contents;
+	return 0;
+}
+
+
 int InsetLatexAccent::Linuxdoc(ostream & os) const
 {
 	os << contents;

@@ -250,6 +250,7 @@ int InsetQuotes::Latex(ostream & os, bool /*fragile*/, bool) const
 
 	// protect against !` and ?` ligatures.
 	// Is it very bad of us to always protect against those ligatures?
+	// CHECK
 #if 0
 	if ((suffixIs(file, '?') || suffixIs(file, '!'))
 	    && qstr[0] == '`')
@@ -260,6 +261,13 @@ int InsetQuotes::Latex(ostream & os, bool /*fragile*/, bool) const
 #endif
 
 	os << qstr;
+	return 0;
+}
+
+
+int InsetQuotes::Ascii(ostream & os) const
+{
+	os << "\"";
 	return 0;
 }
 

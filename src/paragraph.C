@@ -3129,20 +3129,13 @@ void LyXParagraph::SimpleTeXSpecialChars(ostream & os, TexRow & texrow,
 			    && running_font.isRightToLeft()) {
 				os << "\\L{";
 				close = true;
-			} else if (inset->LyxCode() == Inset::NUMBER_CODE
-				   && running_font.isRightToLeft()) {
-				os << "{\\beginL ";
-				close = true;
 			}
 
 			int tmp = inset->Latex(os, style.isCommand(),
 					       style.free_spacing);
 
 			if (close)
-				if (inset->LyxCode() == Inset::NUMBER_CODE)
-					os << "\\endL}";
-				else
-					os << "}";
+				os << "}";
 
 			if (tmp) {
 				column = 0;
@@ -3403,10 +3396,9 @@ bool LyXParagraph::RoffContTableRows(ostream & os,
 			switch (c) {
 			case LyXParagraph::META_INSET:
 				if ((inset = GetInset(i))) {
-#if 1
 #ifdef HAVE_SSTREAM
 					stringstream ss(ios::in | ios::out);
-					inset->Latex(ss, true);
+					inset->Ascii(ss);
 					ss.seekp(0);
 					ss.get(c);
 					while (!ss) {
@@ -3418,7 +3410,7 @@ bool LyXParagraph::RoffContTableRows(ostream & os,
 					}
 #else
 					strstream ss;
-					inset->Latex(ss, true);
+					inset->Ascii(ss);
 					ss.seekp(0);
 					ss.get(c);
 					while (!ss) {
@@ -3429,27 +3421,6 @@ bool LyXParagraph::RoffContTableRows(ostream & os,
 						ss.get(c);
 					}
 					delete [] ss.str();
-#endif
-#else
-					fstream fs(fname2.c_str(),
-						   ios::in|ios::out);
-					if (!fs) {
-						WriteAlert(_("LYX_ERROR:"),
-							   _("Cannot open temporary file:"),
-							   fname2);
-						return false;
-					}
-					inset->Latex(fs, true);
-					fs.seekp(0);
-					fs.get(c);
-					while (!fs) {
-						if (c == '\\')
-							os << "\\\\";
-						else
-							os << c;
-						fs.get(c);
-					}
-					fs.close();
 #endif
 				}
 				break;

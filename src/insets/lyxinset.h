@@ -91,8 +91,6 @@ public:
 		///
 		SPECIALCHAR_CODE,
 		///
-		NUMBER_CODE,
-		///
 		TABULAR_CODE
 	};
 
@@ -145,7 +143,8 @@ public:
 	 */
 	virtual int Latex(std::ostream &, bool fragile,
 			  bool free_spc) const = 0;
-
+	///
+	virtual int Ascii(std::ostream &) const = 0;
 	///
 	virtual int Linuxdoc(std::ostream &) const = 0;
 	///

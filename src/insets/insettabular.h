@@ -110,6 +110,8 @@ public:
     ///
     int Latex(std::ostream &, bool, bool) const;
     ///
+    int Ascii(std::ostream &) const;
+    ///
     int Linuxdoc(std::ostream &) const;
     ///
     int DocBook(std::ostream &) const;

@@ -84,6 +84,13 @@ int InsetRef::Latex(ostream & os,
 }
 
 
+int InsetRef::Ascii(ostream & os) const
+{
+	os << "[" << getContents() << "]";
+	return 0;
+}
+
+
 int InsetRef::Linuxdoc(ostream & os) const
 {
 	os << "<ref id=\"" << getContents()

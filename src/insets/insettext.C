@@ -56,10 +56,12 @@
 
 using std::ostream;
 using std::ifstream;
+using std::endl;
 using std::min;
 using std::max;
 
 extern unsigned char getCurrentTextClass(Buffer *);
+
 
 InsetText::InsetText(Buffer * buf)
 {
@@ -74,6 +76,7 @@ InsetText::InsetText(InsetText const & ins, Buffer * buf)
     init(buf, &ins);
     autoBreakRows = ins.autoBreakRows;
 }
+
 
 void InsetText::init(Buffer * buf, InsetText const * ins)
 {
@@ -374,6 +377,7 @@ void InsetText::InsetUnlock(BufferView * bv)
     no_selection = false;
 }
 
+
 bool InsetText::LockInsetInInset(BufferView * bv, UpdatableInset * inset)
 {
     lyxerr[Debug::INSETS] << "InsetText::LockInsetInInset(" << inset << "): ";
@@ -403,6 +407,7 @@ bool InsetText::LockInsetInInset(BufferView * bv, UpdatableInset * inset)
     lyxerr[Debug::INSETS] << "NOT OK" << endl;
     return false;
 }
+
 
 bool InsetText::UnlockInsetInInset(BufferView * bv, UpdatableInset * inset,
 				   bool lr)
@@ -792,7 +797,7 @@ InsetText::LocalDispatch(BufferView * bv,
 }
 
 
-int InsetText::Latex(ostream & os, bool /*fragile*/, bool) const
+int InsetText::Latex(ostream & os, bool /*fragile*/, bool /*fp*/) const
 {
 	TexRow texrow;
 	int ret = par->SimpleTeXOnePar(os, texrow);
@@ -922,11 +927,13 @@ LyXFont InsetText::GetFont(LyXParagraph * par, int pos) const
     return tmpfont;
 }
 
+
 // the font for drawing may be different from the real font
 LyXFont InsetText::GetDrawFont(LyXParagraph * par, int pos) const
 {
     return GetFont(par, pos);
 }
+
 
 int InsetText::BeginningOfMainBody(LyXParagraph * par) const
 {
@@ -1047,7 +1054,8 @@ void InsetText::resetPos(Painter & pain) const
 
     cursor.y = top_baseline;
     actrow = 0;
-    for(unsigned int i = 0; (i < (rows.size()-1)) && (rows[i].pos <= cursor.pos);
+    for(unsigned int i = 0;
+	(i < (rows.size()-1)) && (rows[i].pos <= cursor.pos);
 	++i) {
 	cursor.y = rows[i].baseline;
 	actrow = i;
@@ -1307,7 +1315,7 @@ void InsetText::computeTextRows(Painter & pain, float x) const
 	    (par->GetChar(p + 1)==LyXParagraph::META_INSET))
 	    inset = par->GetInset(p + 1);
 	if (inset) {
-	    inset->setOwner(this);
+		inset->setOwner(const_cast<InsetText*>(this)); // is this safe?
 	    if (inset->display()) {
 		if (!is_first_word_in_row && (width >= maxWidth)) {
 		    // we have to split also the row above
@@ -1408,7 +1416,8 @@ void InsetText::computeBaselines(int baseline) const
     }
 }
 
-void InsetText::UpdateLocal(BufferView *bv, bool flag)
+
+void InsetText::UpdateLocal(BufferView * bv, bool flag)
 {
     if (flag) {
 	computeTextRows(bv->painter(), xpos);
@@ -1419,6 +1428,7 @@ void InsetText::UpdateLocal(BufferView *bv, bool flag)
 	resetPos(bv->painter());
 }
 
+
 bool InsetText::cutSelection()
 {
     if (!hasSelection())
@@ -1426,7 +1436,7 @@ bool InsetText::cutSelection()
 
     CutAndPaste cap;
 
-    LyXParagraph *endpar = par;
+    LyXParagraph * endpar = par;
     int start, end;
     if (selection_start > selection_end) {
 	    start = selection_end;
@@ -1438,6 +1448,7 @@ bool InsetText::cutSelection()
 
     return cap.cutSelection(par, &endpar, start, end,buffer->params.textclass);
 }
+
 
 bool InsetText::copySelection()
 {
@@ -1457,6 +1468,7 @@ bool InsetText::copySelection()
     return cap.copySelection(par, par, start, end, buffer->params.textclass);
 }
 
+
 bool InsetText::pasteSelection()
 {
     CutAndPaste cap;
@@ -1473,6 +1485,7 @@ bool InsetText::pasteSelection()
     return cap.pasteSelection(&actpar, &endpar, cursor.pos,
 			      buffer->params.textclass);
 }
+
 
 bool InsetText::checkAndActivateInset(BufferView * bv, int x, int y,
 				      int button)
@@ -1495,6 +1508,7 @@ bool InsetText::checkAndActivateInset(BufferView * bv, int x, int y,
     }
     return false;
 }
+
 
 int InsetText::getMaxTextWidth(Painter & pain, UpdatableInset const * inset,
 			       int x) const

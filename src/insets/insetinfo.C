@@ -139,6 +139,12 @@ int InsetInfo::Latex(ostream &,
 }
 
 
+int InsetInfo::Ascii(ostream &) const
+{
+	return 0;
+}
+
+
 int InsetInfo::Linuxdoc(ostream &) const
 {
 	return 0;

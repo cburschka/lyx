@@ -50,6 +50,8 @@ public:
 	///
 	int Latex(string & file, signed char fragile, bool free_spc);
 	///
+	int Ascii(string & file) const;
+	///
 	int Linuxdoc(string & file);
 	///
 	int DocBook(string & file);

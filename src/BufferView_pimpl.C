@@ -939,7 +939,8 @@ void BufferView::Pimpl::workAreaButtonRelease(int x, int y, unsigned int button)
  * If hit, the coordinates are changed relative to the inset. 
  * Otherwise coordinates are not changed, and false is returned.
  */
-Inset * BufferView::Pimpl::checkInsetHit(int & x, int & y, unsigned int /* button */)
+Inset * BufferView::Pimpl::checkInsetHit(int & x, int & y,
+					 unsigned int /* button */)
 {
 	if (!screen)
 		return 0;
@@ -948,9 +949,10 @@ Inset * BufferView::Pimpl::checkInsetHit(int & x, int & y, unsigned int /* butto
   
 	LyXCursor cursor;
 	bv_->text->SetCursorFromCoordinates(cursor, x, y_tmp);
+#if 0 // Are you planning to use this Jürgen? (Lgb)
 	bool move_cursor = ((cursor.par != bv_->text->cursor.par) ||
 			    (cursor.pos != bv_->text->cursor.pos));
-
+#endif
 	if (cursor.pos < cursor.par->Last()
 	    && cursor.par->GetChar(cursor.pos) == LyXParagraph::META_INSET
 	    && cursor.par->GetInset(cursor.pos)

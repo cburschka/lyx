@@ -106,6 +106,13 @@ int InsetLatex::Latex(string & file, signed char /*fragile*/, bool /*fs*/)
 }
 
 
+int InsetLatex::Ascii(string & file)
+{
+	file += contents;
+	return 0;
+}
+
+
 int InsetLatex::Linuxdoc(string & file)
 {
 	file += contents;

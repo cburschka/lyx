@@ -190,12 +190,11 @@ int InsetSpecialChar::Latex(ostream & os, bool /*fragile*/,
 	return 0;
 }
 
-
-int InsetSpecialChar::Linuxdoc(ostream & os) const
+int InsetSpecialChar::Ascii(ostream & os) const
 {
 	switch (kind) {
-	case HYPHENATION:	  os << "";	break;
-	case END_OF_SENTENCE:	  os << "";	break;
+	case HYPHENATION:	                break;
+	case END_OF_SENTENCE:	  os << ".";	break;
 	case LDOTS:		  os << "...";	break;
 	case MENU_SEPARATOR:      os << "->";   break;
 	case PROTECTED_SEPARATOR: os << " ";   break;
@@ -204,16 +203,15 @@ int InsetSpecialChar::Linuxdoc(ostream & os) const
 }
 
 
+int InsetSpecialChar::Linuxdoc(ostream & os) const
+{
+	return Ascii(os);
+}
+
+
 int InsetSpecialChar::DocBook(ostream & os) const
 {
-	switch (kind) {
-	case HYPHENATION:	  os << "";	break;
-	case END_OF_SENTENCE:	  os << "";	break;
-	case LDOTS:		  os << "...";	break;
-	case MENU_SEPARATOR:      os << "->";   break;
-	case PROTECTED_SEPARATOR: os << " ";   break;
-	}
-	return 0;
+	return Ascii(os);
 }
 
 

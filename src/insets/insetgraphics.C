@@ -334,6 +334,12 @@ int InsetGraphics::Latex(ostream & os,
 }
 
 
+int InsetGraphics::Ascii(ostream &) const
+{
+	return 0;
+}
+
+
 int InsetGraphics::Linuxdoc(ostream &) const
 {
 	return 0;

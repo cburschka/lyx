@@ -111,6 +111,12 @@ int InsetError::Latex(ostream &,
 }
 
 
+int InsetError::Ascii(ostream &) const
+{
+	return 0;
+}
+
+
 int InsetError::Linuxdoc(ostream &) const
 {
 	return 0;

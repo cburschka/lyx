@@ -1,3 +1,35 @@
+2000-04-23  Dekel Tsur  <dekel@math.tau.ac.il>
+
+	* A lot of files: Added Ascii(ostream &) methods to all inset
+	classes. Used when exporting to ASCII.
+	
+	* src/buffer.C (writeFileAscii,RoffAsciiTable)
+	* src/paragraph.C (RoffContTableRows): Use the Ascii() methods
+	instead of Latex()
+
+	* src/text2.C (ToggleFree): Disabled implicit word selection when
+	there is a change in the language
+	
+	* src/insets/insetspecialchar.C (Linuxdoc,DocBook): Fixed a bug:
+	no output was generated for end-of-sentence inset.
+	
+	* src/insets/lyxinset.h
+	* src/buffer.C
+	* src/lyxfunc.C
+	* src/paragraph.C: Removed the insetnumber code
+
+	* src/text.C (SelectWordWhenUnderCursor): Cleaned the code.
+
+2000-04-22  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/buffer.C (parseSingleLyXformat2Token): remove no_isolatin1,
+	no_babel and no_epsfig completely from the file.
+	(parseSingleLyXformat2Token): add handling for per-paragraph
+	spacing as written by klyx.
+
+	* src/insets/figinset.C: applied patch by Andre. Made it work with
+	ostringstream too.
+
 2000-04-20  Juergen Vigna  <jug@sad.it>
 
 	* src/insets/insettext.C (cutSelection): 

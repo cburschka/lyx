@@ -276,7 +276,11 @@ void MathParInset::Write(ostream & os, bool fragile)
 			   << "} ";
 		}
 	}
-#if 1
+
+	// CHECK
+	// Just make sure that the correct number of braces are output.
+	// (Lgb)
+#if 0
 	while (brace > 0) {
 		os << '}';
 		--brace;
@@ -330,12 +334,12 @@ void mathed_write(MathParInset * p, ostream & os, int * newlines,
 	   os << "\\( "; // changed from " \\( " (Albrecht Dress)
    } 
    else {
-	   // Thinko!
+	   // CHECK
 	   // Is this '\n' really needed, what can go wrong
 	   //if it is not there? The reason why I want to avoid this is
 	   // because of the "backlook" into the output stream.
 	   // Lgb.
-#warning Thinko!
+#warning CHECK
 #if 0
      if (!suffixIs(outf, '\n')) {
        // in batchmode we need to make sure

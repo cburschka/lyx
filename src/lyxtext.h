@@ -285,7 +285,7 @@ public:
 	///
 	void DeleteLineForward();
 	///
-	int SelectWordWhenUnderCursor();
+	bool SelectWordWhenUnderCursor();
 
 	enum TextCase {
 		text_lowercase = 0,

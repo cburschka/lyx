@@ -45,8 +45,6 @@ static const int LYX_PAPER_MARGIN = 20;
 // ale070405
 extern int bibitemMaxWidth(Painter &, LyXFont const &);
 
-#define FIX_DOUBLE_SPACE 1
-
 static int iso885968x[] = {
 	0xbc,	// 0xa8 = fathatan
 	0xbd,	// 0xa9 = dammatan
@@ -2326,23 +2324,13 @@ void LyXText::InsertCharInTable(char c)
 
 	jumped_over_space = false;
 	if (IsLineSeparatorChar(c)) {
-
-#ifndef FIX_DOUBLE_SPACE
-		/* avoid double blanks but insert the new blank because
-		 * of a possible font change */
-		if (cursor.pos < lastpos &&
-		    cursor.par->IsLineSeparator(cursor.pos)) {
-			cursor.par->Erase(cursor.pos);
-			jumped_over_space = true;
-		} else
-#endif
-			if ((cursor.pos > 0 && 
-			  cursor.par->IsLineSeparator(cursor.pos - 1))
-			 || (cursor.pos > 0 && cursor.par->IsNewline(cursor.pos - 1))
-			  || (cursor.pos == 0 &&
-			      !(cursor.par->Previous()
-			      && cursor.par->Previous()->footnoteflag
-			      == LyXParagraph::OPEN_FOOTNOTE)))
+		if ((cursor.pos > 0 && 
+		     cursor.par->IsLineSeparator(cursor.pos - 1))
+		    || (cursor.pos > 0 && cursor.par->IsNewline(cursor.pos - 1))
+		    || (cursor.pos == 0 &&
+			!(cursor.par->Previous()
+			  && cursor.par->Previous()->footnoteflag
+			  == LyXParagraph::OPEN_FOOTNOTE)))
 			return;
 	} else if (IsNewlineChar(c)) {
             if (!IsEmptyTableCell()) {
@@ -2467,8 +2455,7 @@ void LyXText::BackspaceInTable()
 		if (cursor.par->IsNewline(cursor.pos)) {
 			/* nothing :-) */
 			return;
-		}
-		else {
+		} else {
 			cursor.par->Erase(cursor.pos);
 			
 			/* refresh the positions */
@@ -2477,28 +2464,6 @@ void LyXText::BackspaceInTable()
 				tmprow = tmprow->next;
 				tmprow->pos--;
 			}
-
-#ifndef FIX_DOUBLE_SPACE
-			/* delete superfluous blanks */ 
-			if (cursor.pos < cursor.par->Last() - 1 &&
-			(cursor.par->IsLineSeparator(cursor.pos))) {
-				
-				if (cursor.pos == BeginningOfMainBody(cursor.par)
-				|| !cursor.pos 
-				|| cursor.par->IsLineSeparator(cursor.pos - 1)) {
-					cursor.par->Erase(cursor.pos);
-					/* refresh the positions */
-					tmprow = row;
-					while (tmprow->next && 
-					       tmprow->next->par == row->par) {
-						tmprow = tmprow->next;
-						tmprow->pos--;
-					}
-					if (cursor.pos)   /* move one character left */
-						cursor.pos--;
-				}
-			}
-#endif
 		}
       
 		CheckParagraphInTable(cursor.par, cursor.pos);
@@ -2522,18 +2487,9 @@ void LyXText::BackspaceInTable()
 /* just a macro to make some thing easier. */ 
 void LyXText::RedoParagraph() const
 {
-#if 1
-	// I suspect this version will work
-	// also.
 	ClearSelection();
 	RedoParagraphs(cursor, cursor.par->Next());
 	SetCursorIntern(cursor.par, cursor.pos);
-#else
-	LyXCursor tmpcursor = cursor;
-	ClearSelection();
-	RedoParagraphs(cursor, cursor.par->Next());
-	SetCursorIntern(tmpcursor.par, tmpcursor.pos);
-#endif
 }
 
 
@@ -2587,34 +2543,6 @@ void LyXText::InsertChar(char c)
 	bool jumped_over_space = false;
    
 	if (!freeSpacing && IsLineSeparatorChar(c)) {
-#ifndef FIX_DOUBLE_SPACE
-		if (cursor.pos < lastpos
-		    && cursor.par->IsLineSeparator(cursor.pos)) {
-			/* the user inserted a space before a space. So we
-			 * will just make a CursorRight. BUT: The font of this
-			 * space should be set to current font. That is why
-			 * we need to rebreak perhaps. If there is a protected
-			 * blank at the end of a row we have to force
-			 * a rebreak.*/ 
-	   
-			owner_->owner()->getMiniBuffer()
-				->Set(_("You cannot type two spaces this way. "
-					" Please read the Tutorial."));
-#if 1
-			// How can this ever happen?
-			if (cursor.pos == RowLast(cursor.row)
-			    && !IsLineSeparatorChar(c))
-				cursor.row->fill = -1;  // force rebreak
-			cursor.par->Erase(cursor.pos);
-			jumped_over_space = true;
-#else
-			// Seems to me that this works just as well.
-			CursorRight();
-			charInserted();
-			return;
-#endif
-		} else
-#endif   
 		if ((cursor.pos > 0 
 		     && cursor.par->IsLineSeparator(cursor.pos - 1))
 		    || (cursor.pos > 0
@@ -3049,19 +2977,18 @@ void LyXText::SelectWord()
 			1: no selection is currently set,
 			2: the cursor is not at the borders of the word. */
 
-int LyXText::SelectWordWhenUnderCursor() 
+bool LyXText::SelectWordWhenUnderCursor() 
 {
-	if ( selection ) return 0;
-	if ( cursor.pos < cursor.par->Last()
-		 && !cursor.par->IsSeparator(cursor.pos)
-		 && !cursor.par->IsKomma(cursor.pos)
-		 && cursor.pos 
-		 && !cursor.par->IsSeparator(cursor.pos -1)
-		 && !cursor.par->IsKomma(cursor.pos -1) ) {
+	if (!selection &&
+	    cursor.pos > 0 && cursor.pos < cursor.par->Last()
+	    && !cursor.par->IsSeparator(cursor.pos)
+	    && !cursor.par->IsKomma(cursor.pos)
+	    && !cursor.par->IsSeparator(cursor.pos -1)
+	    && !cursor.par->IsKomma(cursor.pos -1) ) {
 		SelectWord();
-		return 1;
+		return true;
 	}
-	return 0;
+	return false;
 }
 
 
@@ -3312,16 +3239,11 @@ void LyXText::Delete()
 	// and that can very well delete the par or par->previous in
 	// old_cursor. Will a solution where we compare paragraph id's
 	//work better?
-#if 1
 	if ((cursor.par->previous ? cursor.par->previous->id() : 0)
 	    == old_cur_par_prev_id
 	    && cursor.par->id() != old_cur_par_id)
 		return; // delete-empty-paragraph-mechanism has done it
-#else
-	if (cursor.par->previous == old_cursor.par->previous
-	    && cursor.par != old_cursor.par)
-		return; // delete-empty-paragraph-mechanism has done it
-#endif
+
 	// if you had success make a backspace
 	if (old_cursor.par != cursor.par || old_cursor.pos != cursor.pos) {
 		LyXCursor tmpcursor = cursor;
@@ -3530,28 +3452,6 @@ void LyXText::Backspace()
 				tmprow->pos--;
 			}
 
-#ifndef FIX_DOUBLE_SPACE
-			// delete superfluous blanks 
-			if (cursor.pos < cursor.par->Last() - 1 &&
-			    (cursor.par->IsLineSeparator(cursor.pos))) {
-				
-				if (cursor.pos == BeginningOfMainBody(cursor.par)
-				    || !cursor.pos 
-				    || cursor.par->IsLineSeparator(cursor.pos - 1)) {
-					cursor.par->Erase(cursor.pos);
-					// refresh the positions
-					tmprow = row;
-					while (tmprow->next && 
-					       tmprow->next->par == row->par) {
-						tmprow = tmprow->next;
-						tmprow->pos--;
-					}
-					if (cursor.pos)   // move one character left
-						cursor.pos--;
-				}
-			}
-#endif
-			
 			// delete newlines at the beginning of paragraphs
 			while (cursor.par->Last() &&
 			       cursor.par->IsNewline(cursor.pos) &&
@@ -4305,40 +4205,6 @@ void LyXText::GetVisibleRow(int offset, Row * row_ptr, long y)
 			} else if (row_ptr->par->IsSeparator(pos)) {
 				tmpx = x;
 				x+= SingleWidth(row_ptr->par, pos);
-#warning Think about this.
-#if 0
-				/* -------> Only draw protected spaces when
-				 * not in free-spacing mode. */
-				if (row_ptr->par->GetChar(pos) == LyXParagraph::META_PROTECTED_SEPARATOR && !layout.free_spacing) {
-					pain.line(int(tmpx),
-						  offset + row_ptr->baseline - 3,
-						  int(tmpx),
-						  offset + row_ptr->baseline - 1,
-						  LColor::vfillline);
-					
-					pain.line(int(tmpx),
-						  offset + row_ptr->baseline - 1,
-						  int(x - 2),
-						  offset + row_ptr->baseline - 1,
-						  LColor::vfillline);
-					
-					pain.line(int(x - 2),
-						  offset + row_ptr->baseline - 3,
-						  int(x - 2),
-						  offset + row_ptr->baseline - 1,
-						  LColor::vfillline);
-					
-					/* what about underbars? */
-					font = GetFont(row_ptr->par, pos); 
-					if (font.underbar() == LyXFont::ON
-					    && font.latex() != LyXFont::ON) {
-						pain.line(int(tmpx),
-							  offset + row_ptr->baseline + 2,
-							  int(x - tmpx),
-							  offset + row_ptr->baseline + 2);
-					}
-				}
-#endif
 				++vpos;
 			} else
 				draw(row_ptr, vpos, offset, x);
@@ -4441,47 +4307,9 @@ void LyXText::GetVisibleRow(int offset, Row * row_ptr, long y)
 				x += 2;
 				++vpos;
 			} else if (row_ptr->par->IsSeparator(pos)) {
-#if 0
-				tmpx = x;
-#endif
 				x += SingleWidth(row_ptr->par, pos);
 				if (pos >= main_body)
 					x += fill_separator;
-#warning Think about this
-#if 0
-				/* -------> Only draw protected spaces when
-				 * not in free-spacing mode. */
-				if (row_ptr->par->GetChar(pos) == LyXParagraph::META_PROTECTED_SEPARATOR && !layout.free_spacing) {
-					
-					pain.line(int(tmpx),
-						  offset + row_ptr->baseline - 3,
-						  int(tmpx),
-						  offset + row_ptr->baseline - 1,
-						  LColor::vfillline);
-					
-					pain.line(int(tmpx),
-						  offset + row_ptr->baseline - 1,
-						  int(x - 2),
-						  offset + row_ptr->baseline - 1,
-						  LColor::vfillline);
-					
-					pain.line(int(x - 2),
-						  offset + row_ptr->baseline - 3,
-						  int(x - 2),
-						  offset + row_ptr->baseline - 1,
-						  LColor::vfillline);
-					
-					/* what about underbars? */
-					font = GetFont(row_ptr->par, pos); 
-					if (font.underbar() == LyXFont::ON
-					    && font.latex() != LyXFont::ON) {
-						pain.line(int(tmpx),
-							  offset + row_ptr->baseline + 2,
-							  int(x - tmpx),
-							  offset + row_ptr->baseline + 2);
-					}
-				}
-#endif
 				++vpos;
 			} else
 				draw(row_ptr, vpos, offset, x);

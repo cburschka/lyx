@@ -185,6 +185,16 @@ int InsetUrl::Latex(ostream & os,
 }
 
 
+int InsetUrl::Ascii(ostream & os) const
+{
+	if (getOptions().empty())
+		os << "[" << getContents() << "]";
+	else
+		os << "[" << getContents() << "||" <<  getOptions() << "]";
+	return 0;
+}
+
+
 int InsetUrl::Linuxdoc(ostream & os) const
 {
 	os << "<" << getCmdName()

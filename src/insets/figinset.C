@@ -28,6 +28,12 @@
 
 #include <config.h>
 
+#include <fstream>
+#include <queue>
+#include <list>
+#include <algorithm>
+#include <vector>
+
 #include <unistd.h>
 #include <csignal>
 #include <sys/wait.h>
@@ -36,11 +42,6 @@
 #include <cstdlib>
 #include <cctype>
 #include <cmath>
-#include <fstream>
-#include <queue>
-#include <list>
-#include <algorithm>
-#include <vector>
 
 #include "figinset.h"
 #include "lyx.h"
@@ -58,7 +59,6 @@
 #include "support/lyxlib.h"
 #include "Painter.h"
 #include "font.h"
-//#include "lyx_cb.h"
 #include "bufferview_funcs.h"
 #include "ColorHandler.h"
 
@@ -72,6 +72,7 @@ using std::vector;
 using std::find;
 using std::flush;
 using std::endl;
+using std::ostringstream;
 
 extern BufferView * current_view;
 extern FL_OBJECT * figinset_canvas;
@@ -147,12 +148,27 @@ void addpidwait(int pid)
 }
 
 
+static
+string make_tmp(int pid)
+{
+	return system_tempdir + "/~lyxgs" + tostr(pid) + ".ps";
+}
+
+
+static
+void kill_gs(int pid, int sig)
+{
+	if (lyxerr.debugging()) 
+		lyxerr << "Killing gs " << pid << endl;
+	lyx::kill(pid, sig);
+	unlink(make_tmp(pid).c_str());
+}
+
+
 extern "C" // static
 int GhostscriptMsg(FL_OBJECT *, Window, int, int,
 		   XEvent * ev, void *)
 {
-	char tmp[128];
-
 	XClientMessageEvent * e = reinterpret_cast<XClientMessageEvent*>(ev);
 
 	if(lyxerr.debugging()) {
@@ -162,7 +178,6 @@ int GhostscriptMsg(FL_OBJECT *, Window, int, int,
 
 	// just kill gs, that way it will work for sure
 	// This loop looks like S**T so it probably is...
-	//for (bitmaps_type::size_type i = 0; i < bitmaps.size(); ++i)
 	for (bitmaps_type::iterator it = bitmaps.begin();
 	     it != bitmaps.end(); ++it)
 		if (static_cast<long>((*it)->bitmap) ==
@@ -272,31 +287,13 @@ int GhostscriptMsg(FL_OBJECT *, Window, int, int,
 					}
 				}
 			  noim:
-				if (lyxerr.debugging()) {
-					lyxerr << "Killing gs " 
-					       << p->gspid << endl;
-				}
-				lyx::kill(p->gspid, SIGHUP);
-
-				sprintf(tmp, "%s/~lyxgs%d.ps",
-					system_tempdir.c_str(), 
-					p->gspid);
-				unlink(tmp);
+				kill_gs(p->gspid, SIGHUP);
 				if (forkstat == 0) {
 					XCloseDisplay(tmpdisp);
 					_exit(0);
 				}
 			} else {
-				if (lyxerr.debugging()) {
-					lyxerr << "Killing gs " 
-					       << p->gspid << endl;
-				}
-				lyx::kill(p->gspid, SIGHUP);
-
-				sprintf(tmp, "%s/~lyxgs%d.ps", 
-					system_tempdir.c_str(),
-					p->gspid);
-				unlink(tmp);
+				kill_gs(p->gspid, SIGHUP);
 			}
 			break;
 		}
@@ -405,15 +402,17 @@ void InitFigures()
 	gs_color = false;
 	if (lyxrc.use_gui) {
 		fl_add_canvas_handler(figinset_canvas, ClientMessage,
-							GhostscriptMsg, current_view->owner()->getMainForm());
+				      GhostscriptMsg,
+				      current_view->owner()->getMainForm());
 
 		local_gc_copy = createGC();
 
-		Visual * vi = DefaultVisual(fl_display, DefaultScreen(fl_display));
+		Visual * vi = DefaultVisual(fl_display,
+					    DefaultScreen(fl_display));
 		if (lyxerr.debugging()) {
 			printf("Visual ID: %ld, class: %d, bprgb: %d, mapsz: %d\n", 
-						 vi->visualid, vi->c_class, 
-						 vi->bits_per_rgb, vi->map_entries);
+			       vi->visualid, vi->c_class, 
+			       vi->bits_per_rgb, vi->map_entries);
 		}
 		color_visual = ( (vi->c_class == StaticColor) ||
 				 (vi->c_class == PseudoColor) ||
@@ -457,12 +456,9 @@ void freefigdata(figdata * tmpdata)
 
 	if (tmpdata->gspid > 0) {
 		int pid = tmpdata->gspid;
-		char buf[128];
 		// kill ghostscript and unlink it's files
 		tmpdata->gspid = -1;
-		lyx::kill(pid, SIGKILL);
-		sprintf(buf, "%s/~lyxgs%d.ps", system_tempdir.c_str(), pid);
-		unlink(buf);
+		kill_gs(pid, SIGKILL);
 	}
 
 	if (tmpdata->bitmap) XFreePixmap(fl_display, tmpdata->bitmap);
@@ -487,7 +483,7 @@ void runqueue()
 	}
 	
 	while (gsrunning < MAXGS) {
-		char tbuf[384], tbuf2[80];
+		//char tbuf[384]; //, tbuf2[80];
 		Atom * prop;
 		int nprop, i;
 
@@ -517,15 +513,13 @@ void runqueue()
 			return;
 		}
 		if (pid == 0) { // child
-			char ** env, rbuf[80], gbuf[40];
+			char ** env;
 			int ne = 0;
 			Display * tempdisp = XOpenDisplay(XDisplayName(0));
 
 			// create translation file
-			sprintf(tbuf, "%s/~lyxgs%d.ps", system_tempdir.c_str(),
-				int(getpid()));
-			
-			ofstream ofs(tbuf);
+			ofstream ofs;
+			ofs.open(make_tmp(getpid()).c_str());
 			ofs << "gsave clippath pathbbox grestore\n"
 			    << "4 dict begin\n"
 			    << "/ury exch def /urx exch def /lly exch def "
@@ -542,18 +536,35 @@ void runqueue()
 			ofs.close(); // Don't remove this.
 
 			// gs process - set ghostview environment first
-			sprintf(tbuf2, "GHOSTVIEW=%ld %ld", fl_get_canvas_id(
-				figinset_canvas), p->data->bitmap);
-
+#ifdef HAVE_SSTREAM
+			ostringstream t2;
+#else
+			char tbuf2[80];
+			ostrstream t2(tbuf2, sizeof(tbuf));
+#endif
+			t2 << "GHOSTVIEW=" << fl_get_canvas_id(figinset_canvas)
+			   << ' ' << p->data->bitmap;
+#ifndef HAVE_SSTREAM
+			<< '\0';
+#endif
 			// now set up ghostview property on a window
-			sprintf(tbuf, "0 0 0 0 %d %d 72 72 0 0 0 0",
-				p->data->wid, p->data->hgh);
 			// #warning BUG seems that the only bug here
 			// might be the hardcoded dpi.. Bummer!
+#ifdef HAVE_SSTREAM
+			ostringstream t1;
+#else
+			char tbuf[384];
+			ostrstream t1(tbuf, sizeof(tbuf));
+#endif
+			t1 << "0 0 0 0 " << p->data->wid << ' '
+			   << p->data->hgh << " 72 72 0 0 0 0";
+#ifndef HAVE_SSTREAM
+			<< '\0';
+#endif
 			
 			if (lyxerr.debugging()) {
 				lyxerr << "Will set GHOSTVIEW property to ["
-				       << tbuf << "]" << endl;
+				       << t1.str() << "]" << endl;
 			}
 			// wait until property is deleted if executing multiple
 			// ghostscripts
@@ -585,9 +596,6 @@ void runqueue()
 				}
 				XFree(reinterpret_cast<char *>(prop)); // jc:
 				if (err) break;
-				// release the server
-				//XUngrabServer(tempdisp);
-				//XFlush(tempdisp);
 				// ok, property found, we must wait until
 				// ghostscript deletes it
 				if (lyxerr.debugging()) {
@@ -606,27 +614,34 @@ void runqueue()
 					XInternAtom(tempdisp, "GHOSTVIEW", false),
 					XInternAtom(tempdisp, "STRING", false),
 					8, PropModeAppend, 
-					reinterpret_cast<unsigned char*>(tbuf),
-					strlen(tbuf));
+					reinterpret_cast<unsigned char*>(const_cast<char*>(t1.str().c_str())),
+					t1.str().size());
 			XUngrabServer(tempdisp);
 			XFlush(tempdisp);
-			
+
+#ifdef HAVE_SSTREAM
+			ostringstream t3;
+#else
+			char tbuf[384];
+			ostrstream t3(tbuf, sizeof(tbuf));
+#endif
 			switch (p->data->flags & 3) {
-			case 0: tbuf[0] = 'H'; break; // Hidden
-			case 1: tbuf[0] = 'M'; break; // Mono
-			case 2: tbuf[0] = 'G'; break; // Gray
+			case 0: t3 << 'H'; break; // Hidden
+			case 1: t3 << 'M'; break; // Mono
+			case 2: t3 << 'G'; break; // Gray
 			case 3:
 				if (color_visual) 
-					tbuf[0] = 'C'; // Color
+					t3 << 'C'; // Color
 				else 
-					tbuf[0] = 'G'; // Gray
+					t3 << 'G'; // Gray
 				break;
 			}
-			
-			sprintf(tbuf + 1, " %ld %ld",
-				BlackPixelOfScreen(
-				DefaultScreenOfDisplay(tempdisp)),
-				background_pixel);
+	
+			t3 << ' ' << BlackPixelOfScreen(DefaultScreenOfDisplay(tempdisp))
+			   << ' ' << background_pixel;
+#ifndef HAVE_SSTREAM
+			<< '\0';
+#endif
 
 			XGrabServer(tempdisp);
 			XChangeProperty(tempdisp, 
@@ -635,8 +650,8 @@ void runqueue()
 						    "GHOSTVIEW_COLORS", false),
 					XInternAtom(tempdisp, "STRING", false),
 					8, PropModeReplace, 
-					reinterpret_cast<unsigned char*>(tbuf),
-					strlen(tbuf));
+					reinterpret_cast<unsigned char*>(const_cast<char*>(t3.str().c_str())),
+					t3.str().size());
 			XUngrabServer(tempdisp);
 			XFlush(tempdisp);
 			
@@ -646,10 +661,18 @@ void runqueue()
 			XCloseDisplay(tempdisp);
 
 			// set up environment
-			while (environ[ne]) ++ne;
+			while (environ[ne])
+				++ne;
 			typedef char * char_p;
 			env = new char_p[ne + 2];
+#ifdef HAVE_SSTREAM
+			string tmp = t2.str().c_str();
+			env[0] = new char[tmp.size() + 1];
+			std::copy(tmp.begin(), tmp.end(), env[0]);
+			env[0][tmp.size()] = '\0';
+#else
 			env[0] = tbuf2;
+#endif
 			::memcpy(&env[1], environ, sizeof(char*) * (ne + 1));
 			environ = env;
 
@@ -657,16 +680,17 @@ void runqueue()
 			// close(0);
 			// close(1); do NOT close. If GS writes out
 			// errors it would hang. (Matthias 290596) 
-			sprintf(rbuf, "-r%gx%g", p->rx, p->ry);
-			sprintf(gbuf, "-g%dx%d", p->data->wid, p->data->hgh);
+
+			string rbuf = "-r" + tostr(p->rx) + "x" + tostr(p->ry);
+			string gbuf = "-g" + tostr(p->data->wid) + "x" + tostr(p->data->hgh);
+
 			// now chdir into dir with .eps file, to be on the safe
 			// side
 			::chdir(OnlyPath(p->data->fname).c_str());
 			// make temp file name
-			sprintf(tbuf, "%s/~lyxgs%d.ps", system_tempdir.c_str(),
-				int(::getpid()));
+			string tmpf = make_tmp(getpid());
 			if (lyxerr.debugging()) {
-				lyxerr << "starting gs " << tbuf << " "
+				lyxerr << "starting gs " << tmpf << " "
 				       << p->data->fname
 				       << ", pid: " << getpid() << endl;
 			}
@@ -676,7 +700,7 @@ void runqueue()
 					 "-sDEVICE=x11",
 					 "-dNOPAUSE", "-dQUIET",
 					 "-dSAFER", 
-					 rbuf, gbuf, tbuf, 
+					 rbuf.c_str(), gbuf.c_str(), tmpf.c_str(), 
 					 p->data->fname.c_str(), 
 					 "showpage.ps", "quit.ps", "-", 0);
 			// if we are still there, an error occurred.
@@ -685,7 +709,7 @@ void runqueue()
 			lyxerr.debug() << "Cmd: " 
 				       << lyxrc.ps_command
 				       << " -sDEVICE=x11 "
-				       << tbuf << ' '
+				       << tmpf.c_str() << ' '
 				       << p->data->fname << endl;
 			_exit(0);	// no gs?
 		}
@@ -722,8 +746,8 @@ void addwait(int psx, int psy, int pswid, int pshgh, figdata * data)
 
 static
 figdata * getfigdata(int wid, int hgh, string const & fname, 
-			    int psx, int psy, int pswid, int pshgh, 
-			    int raw_wid, int raw_hgh, float angle, char flags)
+		     int psx, int psy, int pswid, int pshgh, 
+		     int raw_wid, int raw_hgh, float angle, char flags)
 {
 	/* first search for an exact match with fname and width/height */
 
@@ -832,11 +856,7 @@ void sigchldchecker(pid_t pid, int * status)
 				p->broken = false;
 			} else {
 				// remove temporary files
-				char tmp[128];
-				sprintf(tmp, "%s/~lyxgs%d.ps", 
-					system_tempdir.c_str(),
-					p->gspid);
-				unlink(tmp);
+				unlink(make_tmp(p->gspid).c_str());
 				p->gspid = -1;
 				p->broken = true;
 			}
@@ -1150,6 +1170,12 @@ int InsetFig::Latex(ostream & os,
 }
 
 
+int InsetFig::Ascii(ostream &) const
+{
+	return 0;
+}
+
+
 int InsetFig::Linuxdoc(ostream &) const
 {
 	return 0;
@@ -1271,6 +1297,31 @@ Inset::Code InsetFig::LyxCode() const
 }
 
 
+static
+string stringify(InsetFig::HWTYPE hw, float f, string suffix)
+{
+	string res;
+	switch (hw) {
+		case InsetFig::DEF:
+			break;
+		case InsetFig::CM:// \resizebox*{h-length}{v-length}{text}
+			res = tostr(f) + "cm";
+			break;
+		case InsetFig::IN: 
+			res = tostr(f) + "in";
+			break;
+		case InsetFig::PER_PAGE:
+			res = tostr(f/100) + "\\text" + suffix;
+			break;
+		case InsetFig::PER_COL:
+			// Doesn't occur for htype...
+			res = tostr(f/100) + "\\column" + suffix;
+			break;
+	}
+	return res;
+}
+
+
 void InsetFig::Regenerate() const
 {
 	string cmdbuf;
@@ -1288,69 +1339,8 @@ void InsetFig::Regenerate() const
 	string fname2 = MakeRelPath(fname, buf1);
 
 	string gcmd = "\\includegraphics{" + fname2 + '}';
-	
-	switch (wtype) {
-	case DEF:
-		break;
-	case CM:{// \resizebox*{h-length}{v-length}{text}
-		char buf[10];
-		sprintf(buf, "%g", xwid); // should find better
-		resizeW = buf;
-		resizeW += "cm";
-		break;
-	}
-	case IN: {
-		char buf[10];
-		sprintf(buf, "%g", xwid);
-		resizeW = buf;
-		resizeW += "in";
-		break;
-	}
-	case PER_PAGE:{
-		char buf[10];
-		sprintf(buf, "%g", xwid/100);
-		resizeW = buf;
-		resizeW += "\\textwidth";
-		break;
-	}
-	case PER_COL:{
-		char buf[10];
-		sprintf(buf, "%g", xwid/100);
-		resizeW = buf;
-		resizeW += "\\columnwidth";
-		break;
-	}
-	}
-
-	switch (htype) {
-	case DEF:
-		break;
-	case CM: {
-		char buf[10];
-		sprintf(buf, "%g", xhgh);
-		resizeH = buf;
-		resizeH += "cm";
-		break;
-	}
-	case IN:{
-		char buf[10];
-		sprintf(buf, "%g", xhgh);
-		resizeH = buf;
-		resizeH += "in";
-		break;
-	}
-	case PER_PAGE: {
-		char buf[10];
-		sprintf(buf, "%g", xhgh/100);
-		resizeH = buf;
-		resizeH += "\\textheight";
-		break;
-	}
-	case PER_COL: {
-                // Doesn't occur; case exists to suppress compiler warnings.
-	        break;
-	}
-	}
+	resizeW = stringify(wtype, xwid, "width");
+	resizeH = stringify(htype, xhgh, "height");
 
 	if (!resizeW.empty() || !resizeH.empty()) {
 		recmd = "\\resizebox*{";
@@ -1368,12 +1358,8 @@ void InsetFig::Regenerate() const
 	
 	
 	if (angle != 0) {
-		char buf[10];
-		sprintf(buf, "%g", angle);
 		// \rotatebox{angle}{text}
-		rotate = "\\rotatebox{";
-		rotate += buf;
-		rotate += "}{";
+		rotate = "\\rotatebox{" + tostr(angle) + "}{";
 	}
 
 	cmdbuf = recmd;
@@ -1406,8 +1392,8 @@ void InsetFig::TempRegenerate()
 	float txhgh = atof(fl_get_input(form->Height));
 
 	if (!tfname || !*tfname) {
-	        cmd = "\\fbox{\\rule[-0.5in]{0pt}{1in}";
-	        cmd += _("empty figure path");
+		cmd = "\\fbox{\\rule[-0.5in]{0pt}{1in}";
+		cmd += _("empty figure path");
 		cmd += '}';
 		return;
 	}
@@ -1416,69 +1402,9 @@ void InsetFig::TempRegenerate()
 	string fname2 = MakeRelPath(tfname, buf1);
 	// \includegraphics*[<llx,lly>][<urx,ury>]{file}
 	string gcmd = "\\includegraphics{" + fname2 + '}';
-	
-	switch (twtype) {
-	case DEF:
-		break;
-	case CM: {// \resizebox*{h-length}{v-length}{text}
-		char buf[10];
-		sprintf(buf, "%g", txwid); // should find better
-		resizeW = buf;
-		resizeW += "cm";
-		break;
-	}
-	case IN: {
-		char buf[10];
-		sprintf(buf, "%g", txwid);
-		resizeW = buf;
-		resizeW += "in";
-		break;
-	}
-	case PER_PAGE: {
-		char buf[10];
-		sprintf(buf, "%g", txwid/100);
-		resizeW = buf;
-		resizeW += "\\textwidth";
-		break;
-	}
-	case PER_COL: {
-		char buf[10];
-		sprintf(buf, "%g", txwid/100);
-		resizeW = buf;
-		resizeW += "\\columnwidth";
-		break;
-	}
-	}
 
-	switch (thtype) {
-	case DEF:
-		break;
-	case CM: {
-		char buf[10];
-		sprintf(buf, "%g", txhgh);
-		resizeH = buf;
-		resizeH += "cm";
-		break;
-	}
-	case IN: {
-		char buf[10];
-		sprintf(buf, "%g", txhgh);
-		resizeH = buf;
-		resizeH += "in";
-		break;
-	}
-	case PER_PAGE: {
-		char buf[10];
-		sprintf(buf, "%g", txhgh/100);
-		resizeH = buf;
-		resizeH += "\\textheight";
-		break;
-	}
-	case PER_COL: {
-                // Doesn't occur; case exists to suppress compiler warnings.
-	        break;
-	}
-	}
+	resizeW = stringify(twtype, txwid, "width"); 	
+	resizeH = stringify(thtype, txhgh, "height"); 	
 
 	// \resizebox*{h-length}{v-length}{text}
 	if (!resizeW.empty() || !resizeH.empty()) {
@@ -1496,17 +1422,11 @@ void InsetFig::TempRegenerate()
 	}
 	
 	if (tangle != 0) {
-		char buf[10];
-		sprintf(buf, "%g", tangle);
 		// \rotatebox{angle}{text}
-		rotate = "\\rotatebox{";
-		rotate += buf;
-		rotate += "}{";
+		rotate = "\\rotatebox{" + tostr(tangle) + "}{";
 	}
 
-	cmdbuf = recmd;
-	cmdbuf += rotate;
-	cmdbuf += gcmd;
+	cmdbuf = recmd + rotate + gcmd;
 	if (!rotate.empty()) cmdbuf += '}';
 	if (!recmd.empty()) cmdbuf += '}';
 	if (psubfigure && !tsubcap.empty()) {
@@ -1663,9 +1583,6 @@ void InsetFig::GetPSSizes()
 		if (c == '%' && lastchar == '%') {
 			ifs >> p;
 			if (p.empty()) break;
-			// we should not use this, with it we cannot
-			// discover bounding box and end of file.
-			//if (strcmp(p, "EndComments") == 0) break;
 			lyxerr.debug() << "Token: `" << p << "'" << endl;
 			if (p == "BoundingBox:") {
 				float fpsx, fpsy, fpswid, fpshgh;
@@ -1944,8 +1861,6 @@ void EnableFigurePanel(FD_Figure * const form)
 
 void InsetFig::RestoreForm()
 {
-	char buf[32];
-
 	EnableFigurePanel(form);
 
 	twtype = wtype;
@@ -1983,12 +1898,9 @@ void InsetFig::RestoreForm()
 	fl_set_button(form->Subfigure, (subfigure != 0));
 	pflags = flags;
 	psubfigure = subfigure;
-	sprintf(buf, "%g", xwid);
-	fl_set_input(form->Width, buf);
-	sprintf(buf, "%g", xhgh);
-	fl_set_input(form->Height, buf);
-	sprintf(buf, "%g", angle);
-	fl_set_input(form->Angle, buf);
+	fl_set_input(form->Width, tostr(xwid).c_str());
+	fl_set_input(form->Height, tostr(xhgh).c_str());
+	fl_set_input(form->Angle, tostr(angle).c_str());
 	if (!fname.empty()){
 		string buf1 = OnlyPath(owner->fileName());
 		string fname2 = MakeRelPath(fname, buf1);
@@ -2080,14 +1992,13 @@ void InsetFig::BrowseFile()
 		once = 1;
 		
 		if (contains(p, "#") || contains(p, "~") || contains(p, "$")
-		    || contains(p, "%") || contains(p, " ")) 
-			{
-				WriteAlert(_("Filename can't contain any "
-					     "of these characters:"),
-					   // xgettext:no-c-format
-					   _("space, '#', '~', '$' or '%'.")); 
-				error = true;
-			}
+		    || contains(p, "%") || contains(p, " ")) {
+			WriteAlert(_("Filename can't contain any "
+				     "of these characters:"),
+				   // xgettext:no-c-format
+				   _("space, '#', '~', '$' or '%'.")); 
+			error = true;
+		}
 	} while (error);
 
 	if (form) fl_set_input(form->EpsFile, buf.c_str());

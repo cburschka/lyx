@@ -51,6 +51,8 @@ public:
 	virtual int Latex(std::ostream &,
 			  bool fragile, bool free_spc) const;
 	///
+	int Ascii(std::ostream &) const;
+	///
 	virtual int Linuxdoc(std::ostream &) const;
 	///
 	virtual int DocBook(std::ostream &) const;

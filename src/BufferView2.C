@@ -508,14 +508,8 @@ void BufferView::newline()
 	if (available()) {
 		hideCursor();
 		update(-2);
-#if 0
-		InsetSpecialChar * new_inset =
-			new InsetSpecialChar(InsetSpecialChar::NEWLINE);
-		insertInset(new_inset);
-#else
 		text->InsertChar(LyXParagraph::META_NEWLINE);
 		update(-1);
-#endif
 	}
 }
 
@@ -525,14 +519,9 @@ void BufferView::protectedBlank()
 	if (available()) {
 		hideCursor();
 		update(-2);
-#if 1
 		InsetSpecialChar * new_inset =
 			new InsetSpecialChar(InsetSpecialChar::PROTECTED_SEPARATOR);
 		insertInset(new_inset);
-#else
-		text->InsertChar(LyXParagraph::META_PROTECTED_SEPARATOR);
-		update(-1);
-#endif
 	}
 }
 

@@ -53,6 +53,12 @@ int InsetLabel::Latex(ostream & os,
 	return 0;
 }
 
+int InsetLabel::Ascii(ostream & os) const
+{
+	os << "<" << getContents()  << ">";
+	return 0;
+}
+
 
 int InsetLabel::Linuxdoc(ostream & os) const
 {

@@ -204,6 +204,12 @@ int InsetCommand::Latex(ostream & os, bool /*fragile*/, bool/*fs*/) const
 }
 
 
+int InsetCommand::Ascii(ostream &) const
+{
+	return 0;
+}
+
+
 int InsetCommand::Linuxdoc(ostream &) const
 {
 	return 0;
