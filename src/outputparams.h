@@ -15,6 +15,9 @@
 #include "support/types.h"
 
 
+class ExportData;
+
+
 struct OutputParams {
 	//
 	enum FLAVOR {
@@ -26,7 +29,7 @@ struct OutputParams {
 	OutputParams()
 		: flavor(LATEX), nice(false), moving_arg(false),
 		  free_spacing(false), use_babel(false),
-		  mixed_content(false), linelen(0)
+		  mixed_content(false), linelen(0), exportdata(0)
 	{}
 
 	/** The latex that we export depends occasionally on what is to
@@ -65,6 +68,12 @@ struct OutputParams {
 	/** Line length to use with ascii export.
 	*/
 	lyx::size_type linelen;
+
+	/** Export data filled in by the latex(), docbook() etc methods.
+	    This is a hack: Make it possible to add stuff to constant
+	    OutputParams instances.
+	*/
+	ExportData *exportdata;
 };
 
 #endif // LATEXRUNPARAMS_H

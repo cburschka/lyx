@@ -69,6 +69,8 @@ Template RasterImage
 		UpdateFormat eps
 		UpdateResult "$$AbsPath$$Basename.eps"
 		Requirement "graphicx"
+		ReferencedFile latex "$$AbsPath$$Basename.eps"
+		ReferencedFile dvi   "$$AbsPath$$Basename.eps"
 	FormatEnd
 	Format PDFLaTeX
 		TransformOption Rotate RotationLatexOption
@@ -80,6 +82,7 @@ Template RasterImage
 		UpdateFormat png
 		UpdateResult "$$AbsPath$$Basename.png"
 		Requirement "graphicx"
+		ReferencedFile latex "$$AbsPath$$Basename.png"
 	FormatEnd
 	Format Ascii
 		Product "$$Contents(\"$$AbsPath$$Basename.asc\")"
@@ -90,6 +93,8 @@ Template RasterImage
 		Product "<graphic fileref=\"$$AbsOrRelPathMaster$$Basename.eps\"></graphic>"
 		UpdateFormat eps
 		UpdateResult "$$AbsPath$$Basename.eps"
+		ReferencedFile docbook     "$$AbsPath$$Basename.eps"
+		ReferencedFile docbook-xml "$$AbsPath$$Basename.eps"
 	FormatEnd
 	Format LinuxDoc
 		Product "[Bitmap: $$FName]"
@@ -116,6 +121,9 @@ Template XFig
 		Requirement "graphicx"
 		# Preamble WarnNotFound
 		# Preamble InputOrWarn
+		ReferencedFile latex "$$AbsPath$$Basename.pstex_t"
+		ReferencedFile latex "$$AbsPath$$Basename.pstex"
+		ReferencedFile dvi   "$$AbsPath$$Basename.pstex"
 	FormatEnd
 	Format PDFLaTeX
 		TransformCommand Rotate RotationLatexCommand
@@ -126,6 +134,8 @@ Template XFig
 		Requirement "graphicx"
 		# Preamble WarnNotFound
 		# Preamble InputOrWarn
+		ReferencedFile latex "$$AbsPath$$Basename.pdftex_t"
+		ReferencedFile latex "$$AbsPath$$Basename.pdftex"
 	FormatEnd
 	Format Ascii
 		Product "$$Contents(\"$$AbsPath$$Basename.asc\")"
@@ -136,6 +146,8 @@ Template XFig
 		Product "<graphic fileref=\"$$AbsOrRelPathMaster$$Basename.eps\"></graphic>"
 		UpdateFormat eps
 		UpdateResult "$$AbsPath$$Basename.eps"
+		ReferencedFile docbook     "$$AbsPath$$Basename.eps"
+		ReferencedFile docbook-xml "$$AbsPath$$Basename.eps"
 	FormatEnd
 	Format LinuxDoc
 		Product "[XFig: $$FName]"
@@ -170,6 +182,7 @@ Template ChessDiagram
 	Format LaTeX
 		Product "\\loadgame{$$AbsOrRelPathMaster$$Basename}\\showboard"
 		Requirement "chess"
+		ReferencedFile latex "$$AbsPath$$Basename$$Extension"
 	FormatEnd
 	Format Ascii
 		Product "$$Contents(\"$$AbsPath$$Basename.asc\")"

@@ -17,6 +17,7 @@
 #include <string>
 
 class Buffer;
+class ExportData;
 class InsetExternalParams;
 
 namespace lyx {
@@ -33,10 +34,17 @@ void editExternal(InsetExternalParams const & params,
 		  Buffer const & buffer);
 
 
-/// Substitute meta-variables in string s, making use of params and buffer.
+/** Substitute meta-variables in string \p s, making use of \p params and
+    \p buffer.
+    If \p external_in_tmpdir is true, all files are assumed to be in the
+    master buffers temp path, and the mangled filename is used.
+    Otherwise, the output filename (absolute or relative to the parent
+    document, as written in the .lyx file) is used.
+*/
 std::string const doSubstitution(InsetExternalParams const & params,
 				 Buffer const & buffer,
-				 std::string const & s);
+                                 std::string const & s,
+                                 bool external_in_tmpdir = false);
 
 
 /** Write the output for a specific file format
@@ -48,6 +56,7 @@ int writeExternal(InsetExternalParams const &,
 		  std::string const & format,
 		  Buffer const &,
 		  std::ostream &,
+		  ExportData &,
 		  bool external_in_tmpdir = false);
 
 } // namespace external

@@ -19,6 +19,7 @@
 #include "buffer.h"
 #include "converter.h"
 #include "debug.h"
+#include "exporter.h"
 #include "format.h"
 
 #include "support/filetools.h"
@@ -58,31 +59,32 @@ void editExternal(InsetExternalParams const & params, Buffer const & buffer)
 }
 
 
-namespace {
-
-/** Substitute meta-variables in the string \p s.
-    \p filename has to be the filename as read from the .lyx file (this
-    can be an absolute path or a path relative to the parent document).
-    Otherwise, the $$AbsOrRelPath* variables would not work.
-    If we are using a temporary directory, \p filename is the mangled name.
-*/
 string const doSubstitution(InsetExternalParams const & params,
 			    Buffer const & buffer, string const & s,
-			    string const & filename)
+			    bool external_in_tmpdir)
 {
+	Buffer const * m_buffer = buffer.getMasterBuffer();
+	string const parentpath = external_in_tmpdir ?
+		m_buffer->temppath() :
+		buffer.filePath();
+	string const filename = external_in_tmpdir ?
+		params.filename.mangledFilename() :
+		params.filename.outputFilename(parentpath);
 	string result;
 	string const basename = support::ChangeExtension(
 			support::OnlyFilename(filename), string());
-	string const absname = support::MakeAbsPath(filename, buffer.filePath());
+	string const absname = support::MakeAbsPath(filename, parentpath);
 	string const filepath = support::OnlyPath(filename);
 	string const abspath = support::OnlyPath(absname);
-	Buffer const * m_buffer = buffer.getMasterBuffer();
+	string const masterpath = external_in_tmpdir ?
+		m_buffer->temppath() :
+		m_buffer->filePath();
 	string relToMasterPath = support::OnlyPath(
-			support::MakeRelPath(absname, m_buffer->filePath()));
+			support::MakeRelPath(absname, masterpath));
 	if (relToMasterPath == "./")
 		relToMasterPath.clear();
 	string relToParentPath = support::OnlyPath(
-			support::MakeRelPath(absname, buffer.filePath()));
+			support::MakeRelPath(absname, parentpath));
 	if (relToParentPath == "./")
 		relToParentPath.clear();
 
@@ -131,6 +133,9 @@ string const doSubstitution(InsetExternalParams const & params,
 	return result;
 }
 
+
+namespace {
+
 /** update the file represented by the template.
     If \param external_in_tmpdir == true, then the generated file is
     place in the buffer's temporary directory.
@@ -138,6 +143,7 @@ string const doSubstitution(InsetExternalParams const & params,
 void updateExternal(InsetExternalParams const & params,
 		    string const & format,
 		    Buffer const & buffer,
+                    ExportData & exportdata,
 		    bool external_in_tmpdir)
 {
 	Template const * const et_ptr = getTemplatePtr(params);
@@ -185,8 +191,6 @@ void updateExternal(InsetExternalParams const & params,
 		return; // FAILURE
 	}
 
-	string from_file = params.filename.outputFilename(buffer.filePath());
-
 	// The master buffer. This is useful when there are multiple levels
 	// of include files
 	Buffer const * m_buffer = buffer.getMasterBuffer();
@@ -209,19 +213,33 @@ void updateExternal(InsetExternalParams const & params,
 			}
 		}
 
-		from_file = temp_file;
 		abs_from_file = temp_file;
 	}
 
 	string const to_file = doSubstitution(params, buffer,
 					      outputFormat.updateResult,
-					      from_file);
+	                                      external_in_tmpdir);
 
 	string const abs_to_file =
 		support::MakeAbsPath(to_file, external_in_tmpdir
 			? m_buffer->temppath()
 			: buffer.filePath());
 
+	// record the referenced files for the exporter
+	typedef Template::Format::FileMap FileMap;
+	FileMap::const_iterator rit  = outputFormat.referencedFiles.begin();
+	FileMap::const_iterator rend = outputFormat.referencedFiles.end();
+	for (; rit != rend; ++rit) {
+		vector<string>::const_iterator fit  = rit->second.begin();
+		vector<string>::const_iterator fend = rit->second.end();
+		for (; fit != fend; ++fit) {
+			string const file = doSubstitution(params, buffer,
+			                                   *fit,
+			                                   external_in_tmpdir);
+			exportdata.addExternalFile(rit->first, file);
+		}
+	}
+	
 	// Do we need to perform the conversion?
 	// Yes if to_file does not exist or if from_file is newer than to_file
 	if (support::compare_timestamps(abs_from_file, abs_to_file) < 0)
@@ -248,6 +266,7 @@ string const substituteOptions(InsetExternalParams const & params,
 int writeExternal(InsetExternalParams const & params,
 		  string const & format,
 		  Buffer const & buffer, ostream & os,
+                  ExportData & exportdata,
 		  bool external_in_tmpdir)
 {
 	Template const * const et_ptr = getTemplatePtr(params);
@@ -264,32 +283,14 @@ int writeExternal(InsetExternalParams const & params,
 		return 0;
 	}
 
-	updateExternal(params, format, buffer, external_in_tmpdir);
-
-	string from_file = params.filename.outputFilename(buffer.filePath());
-	if (external_in_tmpdir && !from_file.empty()) {
-		// We are running stuff through LaTeX
-		from_file =
-			support::MakeAbsPath(params.filename.mangledFilename(),
-			                     buffer.getMasterBuffer()->temppath());
-	}
+	updateExternal(params, format, buffer, exportdata, external_in_tmpdir);
 
 	string str = doSubstitution(params, buffer, cit->second.product,
-				    from_file);
+	                            external_in_tmpdir);
 	str = substituteCommands(params, str, format);
 	str = substituteOptions(params, str, format);
 	os << str;
 	return int(lyx::count(str.begin(), str.end(),'\n') + 1);
-}
-
-
-/// Substitute meta-variables in this string
-string const doSubstitution(InsetExternalParams const & params,
-			    Buffer const & buffer, string const & s)
-{
-	string const buffer_path = buffer.filePath();
-	string const filename = params.filename.outputFilename(buffer_path);
-	return doSubstitution(params, buffer, s, filename);
 }
 
 namespace {

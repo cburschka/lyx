@@ -146,6 +146,18 @@ public:
 			ost << "\t\tPreamble " << *pit << '\n';
 		}
 
+		typedef Template::Format::FileMap FileMap;
+		FileMap::const_iterator rit  = ft.referencedFiles.begin();
+		FileMap::const_iterator rend = ft.referencedFiles.end();
+		for (; rit != rend; ++rit) {
+			vector<string>::const_iterator fit  = rit->second.begin();
+			vector<string>::const_iterator fend = rit->second.end();
+			for (; fit != fend; ++fit) {
+				ost << "\t\tReferencedFile " << rit->first
+				    << " \"" << *fit << "\"\n";
+			}
+		}
+
 		ost << "\tFormatEnd\n";
 	}
 private:
@@ -452,6 +464,7 @@ void Template::Format::readFormat(LyXLex & lex)
 		FO_PREAMBLE,
 		FO_TRANSFORMCOMMAND,
 		FO_TRANSFORMOPTION,
+		FO_REFERENCEDFILE,
 		FO_END
 	};
 
@@ -460,6 +473,7 @@ void Template::Format::readFormat(LyXLex & lex)
 		{ "option", FO_OPTION },
 		{ "preamble", FO_PREAMBLE },
 		{ "product", FO_PRODUCT },
+		{ "referencedfile", FO_REFERENCEDFILE },
 		{ "requirement", FO_REQUIREMENT },
 		{ "transformcommand", FO_TRANSFORMCOMMAND },
 		{ "transformoption", FO_TRANSFORMOPTION },
@@ -518,6 +532,15 @@ void Template::Format::readFormat(LyXLex & lex)
 			lex.next(true);
 			string const opt = lex.getString();
 			options.push_back(Option(name, opt));
+			break;
+		}
+
+		case FO_REFERENCEDFILE: {
+			lex.next(true);
+			string const format = lex.getString();
+			lex.next(true);
+			string const file = lex.getString();
+			referencedFiles[format].push_back(file);
 			break;
 		}
 

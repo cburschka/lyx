@@ -1,3 +1,21 @@
+2004-06-01  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* ExternalSupport.[Ch] (doSubstitution): exchange filename argument
+	with external_in_tmpdir and compute filename ourself
+	* ExternalSupport.[Ch] (updateExternal): add exportdata argument and
+	use it to store referenced file(s)
+	* ExternalSupport.C (writeExternal): write relative filename if
+	running latex
+	* ExternalTemplate.[Ch]: add ReferencedFile command
+	* insetgraphics.C (prepareFile, docbook, linuxdoc): add file to
+	runparams.exportdata
+	* insetgraphics.C (prepareFile): write relative filename if
+	running latex
+	* insetinclude.C (latex, docbook, linuxdoc): add file to
+	runparams.exportdata and write it to the temp dir instead of
+	writing it to the final destination
+	* insetinclude.C (docbook, linuxdoc): don't copy runparams
+
 2004-05-19  Angus Leeming  <leeming@lyx.org>
 
 	* insetcite.[Ch]: small change because namespace biblio is

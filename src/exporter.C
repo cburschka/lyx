@@ -29,13 +29,20 @@
 #include "outputparams.h"
 #include "frontends/Alert.h"
 
+#include "support/FileInfo.h"
 #include "support/filetools.h"
+#include "support/lyxlib.h"
+#include "support/os.h"
 
 using lyx::support::AddName;
 using lyx::support::bformat;
 using lyx::support::ChangeExtension;
 using lyx::support::contains;
+using lyx::support::MakeAbsPath;
 using lyx::support::MakeDisplayPath;
+using lyx::support::OnlyFilename;
+using lyx::support::OnlyPath;
+using lyx::support::prefixIs;
 
 using std::find;
 using std::string;
@@ -53,6 +60,72 @@ vector<string> const Backends(Buffer const & buffer)
 	return v;
 }
 
+
+/// ask the user what to do if a file already exists
+int checkOverwrite(string const & filename)
+{
+	if (lyx::support::FileInfo(filename, true).exist()) {
+		string text = bformat(_("The file %1$s already exists.\n\n"
+					"Do you want to over-write that file?"),
+		                      MakeDisplayPath(filename));
+		return Alert::prompt(_("Over-write file?"),
+		                     text, 0, 2,
+		                     _("&Over-write"), _("Over-write &all"),
+		                     _("&Cancel export"));
+	}
+	return 0;
+}
+
+
+enum CopyStatus {
+	SUCCESS,
+	FORCE,
+	CANCEL
+};
+
+
+/** copy file \p sourceFile to \p destFile. If \p force is false, the user
+ *  will be asked before existing files are overwritten.
+ *  \return 
+ *  - SUCCESS if this file got copied
+ *  - FORCE   if subsequent calls should not ask for confirmation before
+ *            overwriting files anymore.
+ *  - CANCEL  if the export should be cancelled
+ */
+CopyStatus copyFile(string const & sourceFile, string const & destFile,
+                   bool force)
+{
+	CopyStatus ret = force ? FORCE : SUCCESS;
+
+	// Only copy files that are in our tmp dir, all other files would
+	// overwrite themselves. This check could be changed to
+	// boost::filesystem::equivalent(sourceFile, destFile) if export to
+	// other directories than the document directory is desired.
+	if (!prefixIs(OnlyPath(sourceFile), lyx::support::os::getTmpDir()))
+		return ret;
+
+	if (!force) {
+		switch(checkOverwrite(destFile)) {
+		case 0:
+			ret = SUCCESS;
+			break;
+		case 1:
+			ret = FORCE;
+			break;
+		default:
+			return CANCEL;
+		}
+	}
+
+	if (!lyx::support::copy(sourceFile, destFile))
+		Alert::error(_("Couldn't copy file"),
+		             bformat(_("Copying %1$s to %2$s failed."),
+		                     MakeDisplayPath(sourceFile),
+		                     MakeDisplayPath(destFile)));
+
+	return ret;
+}
+
 } //namespace anon
 
 
@@ -63,6 +136,8 @@ bool Exporter::Export(Buffer * buffer, string const & format,
 	OutputParams runparams;
 	runparams.flavor = OutputParams::LATEX;
 	runparams.linelen = lyxrc.ascii_linelen;
+	ExportData exportdata;
+	runparams.exportdata = &exportdata;
 	vector<string> backends = Backends(*buffer);
 	if (find(backends.begin(), backends.end(), format) == backends.end()) {
 		for (vector<string>::const_iterator it = backends.begin();
@@ -115,18 +190,37 @@ bool Exporter::Export(Buffer * buffer, string const & format,
 		buffer->makeLaTeXFile(filename, buffer->filePath(), runparams);
 	}
 
-	string outfile_base = (put_in_tempdir)
-		? filename : buffer->getLatexName(false);
-
-	if (!converters.convert(buffer, filename, outfile_base,
+	if (!converters.convert(buffer, filename, filename,
 				backend_format, format, result_file))
 		return false;
 
-	if (!put_in_tempdir)
-		buffer->message(_("Document exported as ")
-				      + formats.prettyName(format)
-				      + _(" to file `")
-				      + MakeDisplayPath(result_file) +'\'');
+	if (!put_in_tempdir) {
+		string const tmp_result_file = result_file;
+		result_file = ChangeExtension(buffer->fileName(),
+		                              formats.extension(format));
+		// We need to copy referenced files (e. g. included graphics
+		// if format == "dvi") to the result dir.
+		vector<ExportedFile> const files = exportdata.externalFiles(format);
+		string const dest = OnlyPath(result_file);
+		CopyStatus status = SUCCESS;
+		for (vector<ExportedFile>::const_iterator it = files.begin();
+				it != files.end() && status != CANCEL; ++it)
+			status = copyFile(it->sourceName,
+			                  MakeAbsPath(it->exportName, dest),
+			                  status == FORCE);
+		if (status == CANCEL) {
+			buffer->message(_("Document export cancelled."));
+		} else {
+			// Finally copy the main file
+			status = copyFile(tmp_result_file, result_file,
+			                  status == FORCE);
+			buffer->message(bformat(_("Document exported as %1$s"
+			                          "to file `%2$s'"),
+			                        formats.prettyName(format),
+			                        MakeDisplayPath(result_file)));
+		}
+	}
+
 	return true;
 }
 
@@ -172,4 +266,48 @@ Exporter::GetExportableFormats(Buffer const & buffer, bool only_viewable)
 		result.insert(result.end(), r.begin(), r.end());
 	}
 	return result;
+}
+
+
+ExportedFile::ExportedFile(string const & s, string const & e) :
+	sourceName(s), exportName(e) {}
+
+
+bool operator==(ExportedFile const & f1, ExportedFile const & f2)
+{
+	return f1.sourceName == f2.sourceName &&
+	       f1.exportName == f2.exportName;
+
+}
+
+
+void ExportData::addExternalFile(string const & format,
+                                 string const & sourceName,
+                                 string const & exportName)
+{
+	BOOST_ASSERT(lyx::support::AbsolutePath(sourceName));
+
+	// Make sure that we have every file only once, otherwise copyFile()
+	// would ask several times if it should overwrite a file.
+	vector<ExportedFile> & files = externalfiles[format];
+	ExportedFile file(sourceName, exportName);
+	if (find(files.begin(), files.end(), file) == files.end())
+		files.push_back(file);
+}
+
+
+void ExportData::addExternalFile(string const & format,
+                                 string const & sourceName)
+{
+	addExternalFile(format, sourceName, OnlyFilename(sourceName));
+}
+
+
+vector<ExportedFile> const
+ExportData::externalFiles(string const & format) const
+{
+	FileMap::const_iterator cit = externalfiles.find(format);
+	if (cit != externalfiles.end())
+		return cit->second;
+	return vector<ExportedFile>();
 }

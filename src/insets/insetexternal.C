@@ -22,6 +22,7 @@
 #include "cursor.h"
 #include "debug.h"
 #include "dispatchresult.h"
+#include "exporter.h"
 #include "funcrequest.h"
 #include "gettext.h"
 #include "LaTeXFeatures.h"
@@ -687,32 +688,37 @@ int InsetExternal::latex(Buffer const & buf, ostream & os,
 			et.formats.find("PDFLaTeX");
 		if (cit != et.formats.end())
 			return external::writeExternal(params_, "PDFLaTeX",
-					     buf, os, external_in_tmpdir);
+			                               buf, os,
+			                               *(runparams.exportdata),
+			                               external_in_tmpdir);
 	}
-
-	return external::writeExternal(params_, "LaTeX",
-				       buf, os, external_in_tmpdir);
+	return external::writeExternal(params_, "LaTeX", buf, os,
+	                               *(runparams.exportdata),
+	                               external_in_tmpdir);
 }
 
 
 int InsetExternal::plaintext(Buffer const & buf, ostream & os,
-			 OutputParams const &) const
+			 OutputParams const & runparams) const
 {
-	return external::writeExternal(params_, "Ascii", buf, os);
+	return external::writeExternal(params_, "Ascii", buf, os,
+	                               *(runparams.exportdata));
 }
 
 
 int InsetExternal::linuxdoc(Buffer const & buf, ostream & os,
-			    OutputParams const &) const
+			    OutputParams const & runparams) const
 {
-	return external::writeExternal(params_, "LinuxDoc", buf, os);
+	return external::writeExternal(params_, "LinuxDoc", buf, os,
+	                               *(runparams.exportdata));
 }
 
 
 int InsetExternal::docbook(Buffer const & buf, ostream & os,
-			   OutputParams const &) const
+			   OutputParams const & runparams) const
 {
-	return external::writeExternal(params_, "DocBook", buf, os);
+	return external::writeExternal(params_, "DocBook", buf, os,
+	                               *(runparams.exportdata));
 }
 
 

@@ -58,6 +58,7 @@ TODO
 #include "cursor.h"
 #include "debug.h"
 #include "dispatchresult.h"
+#include "exporter.h"
 #include "format.h"
 #include "funcrequest.h"
 #include "gettext.h"
@@ -93,6 +94,7 @@ using lyx::support::GetExtension;
 using lyx::support::getExtFromContents;
 using lyx::support::IsFileReadable;
 using lyx::support::LibFileSearch;
+using lyx::support::OnlyFilename;
 using lyx::support::rtrim;
 using lyx::support::subst;
 using lyx::support::Systemcall;
@@ -453,6 +455,10 @@ string const InsetGraphics::prepareFile(Buffer const & buf,
 
 	if (zipped) {
 		if (params().noUnzip) {
+			// We don't know wether latex can actually handle
+			// this file, but we can't check, because that would
+			// mean to unzip the file and thereby making the
+			// noUnzip parameter meaningless.
 			lyxerr[Debug::GRAPHICS]
 				<< "\tpass zipped file to LaTeX.\n";
 			// LaTeX needs the bounding box file in the tmp dir
@@ -462,7 +468,10 @@ string const InsetGraphics::prepareFile(Buffer const & buf,
 				                 ChangeExtension(temp_file, "bb"));
 			if (status == FAILURE)
 				return orig_file;
-			return temp_file;
+			runparams.exportdata->addExternalFile("latex", temp_file);
+			runparams.exportdata->addExternalFile("latex", bb_file);
+			runparams.exportdata->addExternalFile("dvi", temp_file);
+			return OnlyFilename(temp_file);
 		}
 
 		string const unzipped_temp_file = unzippedFileName(temp_file);
@@ -493,8 +502,12 @@ string const InsetGraphics::prepareFile(Buffer const & buf,
 	lyxerr[Debug::GRAPHICS]
 		<< "\tthe orig file is: " << orig_file << endl;
 
-	if (from == to)
-		return stripExtensionIfPossible(temp_file, to);
+	if (from == to) {
+		// The extension of temp_file might be != to!
+		runparams.exportdata->addExternalFile("latex", temp_file);
+		runparams.exportdata->addExternalFile("dvi", temp_file);
+		return OnlyFilename(stripExtensionIfPossible(temp_file, to));
+	}
 
 	string const to_file_base = RemoveExtension(temp_file);
 	string const to_file = ChangeExtension(to_file_base, to);
@@ -507,7 +520,9 @@ string const InsetGraphics::prepareFile(Buffer const & buf,
 			<< bformat(_("No conversion of %1$s is needed after all"),
 				   rel_file)
 			<< std::endl;
-		return to_file_base;
+		runparams.exportdata->addExternalFile("latex", to_file);
+		runparams.exportdata->addExternalFile("dvi", to_file);
+		return OnlyFilename(to_file_base);
 	}
 
 	lyxerr[Debug::GRAPHICS]
@@ -523,13 +538,16 @@ string const InsetGraphics::prepareFile(Buffer const & buf,
 		string const command =
 			"sh " + LibFileSearch("scripts", "convertDefault.sh") +
 				' ' + from + ':' + temp_file + ' ' +
-				to + ':' + to_file_base + '.' + to;
+				to + ':' + to_file;
 		lyxerr[Debug::GRAPHICS]
 			<< "No converter defined! I use convertDefault.sh:\n\t"
 			<< command << endl;
 		Systemcall one;
 		one.startscript(Systemcall::Wait, command);
-		if (!IsFileReadable(ChangeExtension(to_file_base, to))) {
+		if (IsFileReadable(to_file)) {
+			runparams.exportdata->addExternalFile("latex", to_file);
+			runparams.exportdata->addExternalFile("dvi", to_file);
+		} else {
 			string str = bformat(_("No information for converting %1$s "
 				"format files to %2$s.\n"
 				"Try defining a convertor in the preferences."), from, to);
@@ -537,7 +555,7 @@ string const InsetGraphics::prepareFile(Buffer const & buf,
 		}
 	}
 
-	return to_file_base;
+	return OnlyFilename(to_file_base);
 }
 
 
@@ -651,6 +669,8 @@ int InsetGraphics::linuxdoc(Buffer const & buf, ostream & os,
 				params().filename.relFilename(buf.filePath()):
 				params().filename.absFilename();
 
+	runparams.exportdata->addExternalFile("linuxdoc",
+	                                      params().filename.absFilename());
 	os << "<eps file=\"" << file_name << "\">\n";
 	os << "<img src=\"" << file_name << "\">";
 	return 0;
@@ -658,14 +678,18 @@ int InsetGraphics::linuxdoc(Buffer const & buf, ostream & os,
 
 
 // For explanation on inserting graphics into DocBook checkout:
-// http://en.tldp.org/LDP/LDP-Author-Guide/inserting-pictures.html
+// http://en.tldp.org/LDP/LDP-Author-Guide/html/inserting-pictures.html
 // See also the docbook guide at http://www.docbook.org/
 int InsetGraphics::docbook(Buffer const &, ostream & os,
-			   OutputParams const &) const
+			   OutputParams const & runparams) const
 {
 	// In DocBook v5.0, the graphic tag will be eliminated from DocBook, will
 	// need to switch to MediaObject. However, for now this is sufficient and
 	// easier to use.
+	runparams.exportdata->addExternalFile("docbook",
+	                                      params().filename.absFilename());
+	runparams.exportdata->addExternalFile("docbook-xml",
+	                                      params().filename.absFilename());
 	os << "<graphic fileref=\"&" << graphic_label << ";\">";
 	return 0;
 }

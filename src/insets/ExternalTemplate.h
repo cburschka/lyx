@@ -76,6 +76,11 @@ struct Template {
 		/// The factory functions for each supported transformation.
 		std::map<TransformID, TransformStore> command_transformers;
 		std::map<TransformID, TransformStore> option_transformers;
+
+		typedef std::map<std::string,
+		                 std::vector<std::string> > FileMap;
+		/// Referenced files for some formats
+		FileMap referencedFiles;
 	};
 	///
 	typedef std::map<std::string, Format> Formats;

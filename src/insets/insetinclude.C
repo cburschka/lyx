@@ -20,6 +20,7 @@
 #include "cursor.h"
 #include "debug.h"
 #include "dispatchresult.h"
+#include "exporter.h"
 #include "funcrequest.h"
 #include "gettext.h"
 #include "LaTeXFeatures.h"
@@ -332,13 +333,15 @@ int InsetInclude::latex(Buffer const & buffer, ostream & os,
 	}
 
 	// write it to a file (so far the complete file)
-	string writefile = ChangeExtension(included_file, ".tex");
+	string const exportfile = ChangeExtension(incfile, ".tex");
+	string const mangled = FileName(ChangeExtension(included_file,
+	                                                ".tex")).mangledFilename();
+	string const writefile = MakeAbsPath(mangled, m_buffer->temppath());
 
-	if (!runparams.nice) {
-		incfile = FileName(writefile).mangledFilename();
-		writefile = MakeAbsPath(incfile, m_buffer->temppath());
-	}
+	if (!runparams.nice)
+		incfile = mangled;
 	lyxerr[Debug::LATEX] << "incfile:" << incfile << endl;
+	lyxerr[Debug::LATEX] << "exportfile:" << exportfile << endl;
 	lyxerr[Debug::LATEX] << "writefile:" << writefile << endl;
 
 	if (loadIfNeeded(buffer, params_)) {
@@ -366,7 +369,7 @@ int InsetInclude::latex(Buffer const & buffer, ostream & os,
 		tmp->makeLaTeXFile(writefile,
 				   OnlyPath(masterFilename(buffer)),
 				   runparams, false);
-	} else if (!runparams.nice) {
+	} else {
 		// Copy the file to the temp dir, so that .aux files etc.
 		// are not created in the original dir. Files included by
 		// this file will be found via input@path, see ../buffer.C.
@@ -388,6 +391,9 @@ int InsetInclude::latex(Buffer const & buffer, ostream & os,
 	if (isVerbatim(params_)) {
 		os << '\\' << params_.getCmdName() << '{' << incfile << '}';
 	} else if (type(params_) == INPUT) {
+		runparams.exportdata->addExternalFile("latex", writefile,
+		                                      exportfile);
+
 		// \input wants file with extension (default is .tex)
 		if (!IsLyXFilename(included_file)) {
 			os << '\\' << params_.getCmdName() << '{' << incfile << '}';
@@ -397,6 +403,9 @@ int InsetInclude::latex(Buffer const & buffer, ostream & os,
 			   <<  '}';
 		}
 	} else {
+		runparams.exportdata->addExternalFile("latex", writefile,
+		                                      exportfile);
+
 		// \include don't want extension and demands that the
 		// file really have .tex
 		os << '\\' << params_.getCmdName() << '{'
@@ -428,31 +437,34 @@ int InsetInclude::linuxdoc(Buffer const & buffer, ostream & os,
 
 	string const included_file = includedFilename(buffer, params_);
 
+	// write it to a file (so far the complete file)
+	string const exportfile = ChangeExtension(incfile, ".sgml");
+	string writefile = ChangeExtension(included_file, ".sgml");
+
 	if (loadIfNeeded(buffer, params_)) {
 		Buffer * tmp = bufferlist.getBuffer(included_file);
 
-		// write it to a file (so far the complete file)
-		string writefile = ChangeExtension(included_file, ".sgml");
-
-		if (!runparams.nice) {
-			incfile = FileName(writefile).mangledFilename();
-			writefile = MakeAbsPath(incfile,
-			                        buffer.getMasterBuffer()->temppath());
-		}
+		writefile = MakeAbsPath(FileName(writefile).mangledFilename(),
+		                        buffer.getMasterBuffer()->temppath());
+		if (!runparams.nice)
+			incfile = writefile;
 
 		lyxerr[Debug::LATEX] << "incfile:" << incfile << endl;
+		lyxerr[Debug::LATEX] << "exportfile:" << exportfile << endl;
 		lyxerr[Debug::LATEX] << "writefile:" << writefile << endl;
 
-		OutputParams runp = runparams;
-		tmp->makeLinuxDocFile(writefile, runp, true);
+		tmp->makeLinuxDocFile(writefile, runparams, true);
 	}
 
 	if (isVerbatim(params_)) {
 		os << "<![CDATA["
 		   << GetFileContents(included_file)
 		   << "]]>";
-	} else
+	} else {
+		runparams.exportdata->addExternalFile("linuxdoc", writefile,
+		                                      exportfile);
 		os << '&' << include_label << ';';
+	}
 
 	return 0;
 }
@@ -469,24 +481,30 @@ int InsetInclude::docbook(Buffer const & buffer, ostream & os,
 
 	string const included_file = includedFilename(buffer, params_);
 
+	// write it to a file (so far the complete file)
+	string const exportfile = ChangeExtension(incfile, ".sgml");
+	string writefile = ChangeExtension(included_file, ".sgml");
+
 	if (loadIfNeeded(buffer, params_)) {
 		Buffer * tmp = bufferlist.getBuffer(included_file);
 
-		// write it to a file (so far the complete file)
-		string writefile = ChangeExtension(included_file, ".sgml");
-
-		if (!runparams.nice) {
-			incfile = FileName(writefile).mangledFilename();
-			writefile = MakeAbsPath(incfile,
-			                        buffer.getMasterBuffer()->temppath());
-		}
+		string const mangled = FileName(writefile).mangledFilename();
+		writefile = MakeAbsPath(mangled,
+		                        buffer.getMasterBuffer()->temppath());
+		if (!runparams.nice)
+			incfile = mangled;
 
 		lyxerr[Debug::LATEX] << "incfile:" << incfile << endl;
+		lyxerr[Debug::LATEX] << "exportfile:" << exportfile << endl;
 		lyxerr[Debug::LATEX] << "writefile:" << writefile << endl;
 
-		OutputParams runp = runparams;
-		tmp->makeDocBookFile(writefile, runp, true);
+		tmp->makeDocBookFile(writefile, runparams, true);
 	}
+
+	runparams.exportdata->addExternalFile("docbook", writefile,
+	                                      exportfile);
+	runparams.exportdata->addExternalFile("docbook-xml", writefile,
+	                                      exportfile);
 
 	if (isVerbatim(params_)) {
 		os << "<inlinegraphic fileref=\""

@@ -13,6 +13,7 @@
 #ifndef EXPORTER_H
 #define EXPORTER_H
 
+#include <map>
 #include <string>
 #include <vector>
 
@@ -42,4 +43,44 @@ public:
 	GetExportableFormats(Buffer const & buffer, bool only_viewable);
 	///
 };
+
+
+struct ExportedFile {
+	ExportedFile(std::string const &, std::string const &);
+	/// absolute name of the source file
+	std::string sourceName;
+	/// final name that the exported file should get (absolute name or
+	/// relative to the directory of the master document)
+	std::string exportName;
+};
+
+
+bool operator==(ExportedFile const &, ExportedFile const &);
+
+
+class ExportData {
+public:
+	/** add a referenced file for one format.
+	 *  No inset should ever write any file outside the tempdir.
+	 *  Instead, files that need to be exported have to be registered
+	 *  with this method.
+	 *  Then the exporter mechanism copies them to the right place, asks
+	 *  for confirmation before overwriting existing files etc.
+	 */
+	void addExternalFile(std::string const &, std::string const &,
+	                     std::string const &);
+	/// add a referenced file for one format.
+	/// The final name is the source file name without path
+	void addExternalFile(std::string const &, std::string const &);
+	/// get referenced files for one format
+	std::vector<ExportedFile> const
+	externalFiles(std::string const &) const;
+private:
+	typedef std::map<std::string, std::vector<ExportedFile> > FileMap;
+	/** Files that are referenced by the export result in the
+	 *  different formats.
+	 */
+	FileMap externalfiles;
+};
+
 #endif
