@@ -46,8 +46,6 @@ public:
 	void add(int , bool doclean = true);
 	/// name of func instead of kb_action
 	void add(string const & , bool doclean = true);
-	/// invokes the n'th icon in the toolbar
-	void push(int);
 	/// update the state of the icons
 	void update();
 

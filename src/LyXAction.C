@@ -383,7 +383,6 @@ void LyXAction::init()
 		  N_("Toggle cursor does/doesn't follow the scrollbar"),
 		  ReadOnly },
 		{ LFUN_ADD_TO_TOOLBAR, "toolbar-add-to", "", NoBuffer },
-		{ LFUN_PUSH_TOOLBAR, "toolbar-push", "", NoBuffer },
 		{ LFUN_UNDO, "undo", N_("Undo"), Noop },
 		{ LFUN_UP, "up", "", ReadOnly },
 		{ LFUN_UPSEL, "up-select", "", ReadOnly },

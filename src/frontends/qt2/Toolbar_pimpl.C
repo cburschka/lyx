@@ -269,19 +269,3 @@ void Toolbar::Pimpl::add(int action, bool)
 	}
 	}
 }
-
-
-void Toolbar::Pimpl::push(int)
-{
-#if 0
-	lyxerr[Debug::GUI] << "Toolbar::push: trying to trigger no `"
-			       << nth << '\'' << endl;
-	
-	if (nth <= 0 || nth >= int(toollist.size())) {
-		// item nth not found...
-		return;
-	}
-
-	fl_trigger_object(toollist[nth - 1].icon);
-#endif
-}

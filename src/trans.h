@@ -1,6 +1,14 @@
 // -*- C++ -*-
-#ifndef Trans_h
-#define Trans_h
+/**
+ * \file trans.h
+ * Copyright 2002 the LyX Team
+ * Read the file COPYING
+ *
+ * \author unknown
+ */
+
+#ifndef TRANS_H
+#define TRANS_H
 
 #ifdef __GNUG__
 #pragma interface
@@ -19,7 +27,6 @@ class TransManager;
 /**
   Trans: holds a .kmap file
   */
-//class Trans : public TransInterface {
 class Trans {
 public:
 	///
@@ -75,4 +82,4 @@ string const & Trans::Match(unsigned char c)
 	return dummy;
 }
 
-#endif
+#endif // TRANS_H

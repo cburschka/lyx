@@ -430,20 +430,6 @@ void Toolbar::Pimpl::clean()
 }
 
 
-void Toolbar::Pimpl::push(int nth)
-{
-	lyxerr[Debug::GUI] << "Toolbar::push: trying to trigger no `"
-			   << nth << '\'' << endl;
-
-	if (nth <= 0 || nth >= int(toollist.size())) {
-		// item nth not found...
-		return;
-	}
-
-	fl_trigger_object(toollist[nth - 1].icon);
-}
-
-
 void Toolbar::Pimpl::reset()
 {
 	//toollist = 0; // what is this supposed to do?

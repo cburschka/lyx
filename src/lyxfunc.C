@@ -1329,18 +1329,6 @@ void LyXFunc::dispatch(kb_action action, string argument, bool verbose)
 	}
 	break;
 
-	// --- toolbar ----------------------------------
-	case LFUN_PUSH_TOOLBAR:
-	{
-		int nth = strToInt(argument);
-		if (nth <= 0) {
-			setErrorMessage(N_("Push-toolbar needs argument > 0"));
-		} else {
-			owner->getToolbar()->push(nth);
-		}
-	}
-	break;
-
 	case LFUN_ADD_TO_TOOLBAR:
 	{
 		if (lyxerr.debugging(Debug::GUI)) {

@@ -92,12 +92,6 @@ void Toolbar::clearLayoutList()
 }
 
 
-void Toolbar::push(int nth)
-{
-	pimpl_->push(nth);
-}
-
-
 void Toolbar::add(string const & func, bool doclean)
 {
 	int const tf = lyxaction.LookupFunc(func);
