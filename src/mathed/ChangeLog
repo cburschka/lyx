@@ -3,6 +3,10 @@
 	* formulabase.[Ch] (searchForward, searchBackward): change the
 	bool const & params to bool.
 
+2002-01-14	Martin Vermeer <martin.vermeer@hut.fi>
+	* math_macrotable.C: added macros for Blackboard Bold,
+	Calligraphic symbols support in mathed. Kludge.
+
 2002-01-14  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* math_mathmlstream.C (operator<<): use lyx::count rather than

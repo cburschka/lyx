@@ -62,6 +62,7 @@ void FormMathsDelim::build()
 	fl_set_pixmap_data(dialog_->button_pix, const_cast<char**>(delim0));
 	dialog_->radio_left->u_ldata = 0;
 	dialog_->radio_right->u_ldata = 1;
+	dialog_->radio_both->u_ldata = 2;
  
 	fl_set_bmtable_data(dialog_->bmtable, 6, 4,
 			    delim_width, delim_height, delim_bits);
@@ -74,6 +75,7 @@ void FormMathsDelim::build()
 	bc().addReadOnly(dialog_->bmtable);
 	bc().addReadOnly(dialog_->radio_right);
 	bc().addReadOnly(dialog_->radio_left);
+	bc().addReadOnly(dialog_->radio_both);
 	bc().addReadOnly(dialog_->button_pix);
 }
 
@@ -97,9 +99,10 @@ bool FormMathsDelim::input(FL_OBJECT *, long)
 
 	int const i = fl_get_bmtable(dialog_->bmtable);
 	int const button = fl_get_bmtable_numb(dialog_->bmtable);
-	bool const both = (button == FL_MIDDLE_MOUSE);
+	bool const both = (button == FL_MIDDLE_MOUSE) 
+			|| (fl_get_button(dialog_->radio_both) != 0);
 	
-	if (i>= 0) {
+	if (i >= 0) {
 		if (side || (button == FL_RIGHT_MOUSE))
 			right = i;
 		else {

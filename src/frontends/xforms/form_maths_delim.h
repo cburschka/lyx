@@ -17,13 +17,14 @@ struct FD_form_maths_delim {
 
 	FL_FORM *form;
 	FL_OBJECT *bmtable;
-	FL_OBJECT *lado;
-	FL_OBJECT *radio_right;
-	FL_OBJECT *radio_left;
 	FL_OBJECT *button_cancel;
 	FL_OBJECT *button_pix;
 	FL_OBJECT *button_apply;
 	FL_OBJECT *button_ok;
+	FL_OBJECT *lado;
+	FL_OBJECT *radio_both;
+	FL_OBJECT *radio_right;
+	FL_OBJECT *radio_left;
 };
 
 #endif /* FD_form_maths_delim_h_ */

@@ -132,6 +132,8 @@ ButtonPolicy::SMInput FormThesaurus::input(FL_OBJECT * obj, long)
 			fl_set_input(dialog_->input_replace, "");
 			return ButtonPolicy::SMI_APPLY;
 		}
+		return ButtonPolicy::SMI_NOOP;
+
 	} else if (obj == dialog_->button_replace) {
 		string rep(fl_get_input(dialog_->input_replace));
 		if (!rep.empty())
@@ -143,8 +145,11 @@ ButtonPolicy::SMInput FormThesaurus::input(FL_OBJECT * obj, long)
 		return ButtonPolicy::SMI_NOOP;
 	}
 
-	setReplace(fl_get_input(dialog_->input_entry),
-		strip(frontStrip(fl_get_browser_line(obj, fl_get_browser(obj)))));
+	int const line = fl_get_browser(obj);
+	if (line > 0) {
+		setReplace(fl_get_input(dialog_->input_entry),
+			   strip(frontStrip(fl_get_browser_line(obj, line))));
+	}
 
 	if (clickline_ == fl_get_browser(obj)) {
 		updateMeanings(fl_get_input(dialog_->input_replace));

@@ -105,11 +105,21 @@ void FormMathsBitmap::build()
 void FormMathsBitmap::addBitmap(int nt, int nx, int ny, int bw, int bh,
 				unsigned char const * data, bool vert)
 {
+	// Add a bitmap to a button panel: one bitmap per panel.
+	// nt is the number of buttons and nx, ny the nr. of buttons 
+	// in x and y direction.
+	// bw, bh and data are the bitmap dimensions width, height and
+	// bit pattern; these come directly from an .xbm file included
+	// as source.
+	// vert indicates whether the next button panel within this
+	// window will be below (true, default) or next to this one.
+	//
+	// The scaling of the bitmap on top of the buttons will be 
+	// correct if the nx, ny values are given correctly.
 	int wx = bw + ww_ / 2;
 	int wy = bh + ww_ / 2;
 	wx += (wx % nx);
 	wy += (wy % ny);
-
 	FL_OBJECT * obj = fl_create_bmtable(1, x_, y_, wx, wy, "");
 	fl_set_object_lcol(obj, FL_BLUE);
 	fl_set_object_boxtype(obj, FL_UP_BOX);
@@ -147,7 +157,13 @@ int FormMathsBitmap::GetIndex(FL_OBJECT * ob)
 
 void FormMathsBitmap::apply()
 {
-	parent_.insertSymbol(latex_chosen_);
+	unsigned int i = latex_chosen_.find(' ');
+	if (i != string::npos) {
+		parent_.dispatchFunc(LFUN_MATH_MODE);
+		parent_.insertSymbol(latex_chosen_.substr(0,i));
+		parent_.insertSymbol(latex_chosen_.substr(i + 1), false);
+	} else 
+		parent_.insertSymbol(latex_chosen_);
 }
 
 

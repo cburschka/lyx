@@ -21,7 +21,7 @@
 typedef FormCB<ControlSpellchecker, FormDB<FD_form_spellchecker> > base_class;
 
 FormSpellchecker::FormSpellchecker(ControlSpellchecker & c)
-	: base_class(c, _("LyX: Spellchecker"), false), clickline_(-1)
+	: base_class(c, _("LyX: Spellchecker"), false)
 {}
 
 
@@ -31,6 +31,9 @@ void FormSpellchecker::build()
 	
 	fl_set_slider_bounds(dialog_->slider, 0.0, 100.0);
 	fl_set_slider_step(dialog_->slider, 1.0);
+
+	fl_set_browser_dblclick_callback(dialog_->browser,
+					 C_FormBaseInputCB, 2);
 
 	// Manage the buttons
 	bc().setCancel(dialog_->done);
@@ -45,55 +48,58 @@ void FormSpellchecker::build()
 
 void FormSpellchecker::update()
 {
-	string w = "";
+	string const w;
 	fl_set_input(dialog_->input, w.c_str());
 	fl_set_object_label(dialog_->text, w.c_str());
 	fl_clear_browser(dialog_->browser);
 	fl_set_slider_value(dialog_->slider, 0);
 }
 
-void FormSpellchecker::hide()
-{
-	clickline_ = -1;
-	
-	if (form() && form()->visible)
-		fl_hide_form(form());
-}
-
-ButtonPolicy::SMInput FormSpellchecker::input(FL_OBJECT * obj, long)
+ButtonPolicy::SMInput FormSpellchecker::input(FL_OBJECT * obj, long val)
 {
 	if (obj == dialog_->replace) {
-		string const tmp = fl_get_input(dialog_->input);
+		string const tmp = getStringFromInput(dialog_->input);
 		controller().replace(tmp);
+
 	} else if (obj == dialog_->start) {
 		controller().check();
 		stop(false);
+
 	} else if (obj == dialog_->stop) {
 		controller().stop();
 		stop(true);
+
 	} else if (obj == dialog_->ignore) {
 		controller().check();
+
 	} else if (obj == dialog_->accept) {
 		controller().ignoreAll();
+
 	} else if (obj == dialog_->insert) {
 		controller().insert();
+
 	} else if (obj == dialog_->options) {
 		controller().options();
+
 	} else if (obj == dialog_->browser) {
-		int const sel = fl_get_browser(dialog_->browser);
-		if (sel < 1)
+		int const line = fl_get_browser(dialog_->browser);
+		string const tmp =
+			getStringFromBrowser(dialog_->browser, line);
+		if (tmp.empty())
 			return ButtonPolicy::SMI_NOOP;
 
-		if (clickline_ == sel) {
-			string const tmp = fl_get_input(dialog_->input);
-			controller().replace(tmp);
-		}
+		if (val != 2) {
+			// single-click
+			// place the chosen string in the input as feedback
+			fl_set_input(dialog_->input, tmp.c_str());
 
-		clickline_ = sel;
-		char const * cptmp = fl_get_browser_line(dialog_->browser,
-							 clickline_);
-		string const tmp = (cptmp) ? cptmp : "";
-		fl_set_input(dialog_->input, tmp.c_str());
+		} else {
+			// double-click
+			controller().replace(tmp);
+			// reset the browser so that the following
+			// single-click callback doesn't do anything
+			fl_deselect_browser_line(dialog_->browser, line);
+		}
 	}
 
 	return ButtonPolicy::SMI_VALID;

@@ -90,6 +90,17 @@ vector<string> const getVectorFromChoice(FL_OBJECT * ob)
 }
 
 
+/// Given an fl_input, return its contents.
+string const getStringFromInput(FL_OBJECT * ob)
+{
+	if (!ob || ob->objclass != FL_INPUT)
+		return string();
+
+	char const * tmp = fl_get_input(ob);
+	return (tmp) ? tmp : string();
+}
+
+
 // Given an fl_browser, return the contents of line
 string const getStringFromBrowser(FL_OBJECT * ob, int line)
 {

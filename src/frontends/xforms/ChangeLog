@@ -1,3 +1,50 @@
+2002-01-15  John Levon  <moz@compsoc.man.ac.uk>
+
+	* FormThesaurus.C: fix a crash
+
+2002-1-15  Martin Vermeer <martin.vermeer@hut.fi>
+
+        * FormMathsDelim.C:
+        * form_maths_delim_C:
+        * form_maths_delim.h:
+        * form_maths_delin.fd:
+        Put three radio buttons on the delimiters pop-up. It works as follows:
+        
+                                left mouse     middle mouse        right mouse
+        ----------------------------------------------------------------------
+        Left radio button   |       (               ()                   )
+        Middle radio button |       ()              ()                   )
+        Right radio button  |        )               )                   )
+        ----------------------------------------------------------------------
+
+	Where 
+
+	(       left-side delimiter selected
+	)       right-side delimiter selected
+	()      "symmnetric pair" selected, of which the clicked delimiter is
+		the left one. 
+		So, if the middle radio button is activated ("()\nBoth")
+		and you click on "[" with the default (left) mouse button, you
+		get the delimiter pair "[]".
+		A shortcut for this (if the leftmost radio button is on) is
+		simply clicking the middle mouse button.
+
+	To create equal pairs, either have the middle radio button on and use
+	Mouse-left, or have the left radio button on and use Mouse-middle.
+
+	To create unequal pairs, you should have either the left or middle radio
+	button on, and do: "Mouse-left ( Mouse-right >" to create "(>".
+
+2002-01-15  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* FormSpellchecker.[Ch]: a bit of a clean up, leaving the functionality
+	unchanged:
+	Remove the clickline_ member variable and hide() method;
+	Use fl_set_browser_dblclick_callback;
+	Constify a few temporary variables;
+	Use xforms_helpers' wrappers functions returning string rather than
+	the raw xforms functions returning char const *.
+
 2002-01-14  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* DropDown.C: include <cctype> for isprint()
@@ -6,6 +53,13 @@
 
 	* FormMinipage.C (apply, update): MinipageParams::width renamed
 	as MinipageParams::pageWidth.
+
+2002-01-14	Martin Vermeer <martin.vermeer@hut.fi>
+
+	* FormMathsBitmap.C:
+	  FormMathsPanel.C:
+	  MathsSymbols.C: Blackboard Bold and Calligraphic std symbols
+	added to math panel's 'misc' sub-panel.
 
 2002-01-14  Angus Leeming  <a.leeming@ic.ac.uk>
 

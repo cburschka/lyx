@@ -33,8 +33,6 @@ private:
 	void build();
 	/// 
 	void update();
-	/// 
-	void hide();
 
 	/// enable/disable widgets when start/stop
 	void stop(bool);
@@ -45,9 +43,6 @@ private:
 	/// show an error message
 	void showMessage(const char * msg);
 
-	/// line clicked in browser, necessary for double clicking
-	int clickline_;
-	
 	/// Filter the inputs
 	virtual ButtonPolicy::SMInput input(FL_OBJECT *, long);
    

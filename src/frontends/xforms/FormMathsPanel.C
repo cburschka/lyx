@@ -83,7 +83,7 @@ FormMathsPanel::FormMathsPanel(LyXView * lv, Dialogs * d)
 	boperator_.reset(new FormMathsBitmap(lv, d, *this, latex));
 
 	latex.resize(nr_latex_brel);
-	for (StringVec::size_type i = 0; i<latex.size(); ++i) {
+	for (StringVec::size_type i = 0; i < latex.size(); ++i) {
 		latex[i] = latex_brel[i];
 	}
 	brelats_.reset(new FormMathsBitmap(lv, d, *this, latex));
@@ -95,7 +95,7 @@ FormMathsPanel::FormMathsPanel(LyXView * lv, Dialogs * d)
 	greek_.reset(new FormMathsBitmap(lv, d, *this, latex));
 
 	latex.resize(nr_latex_misc);
-	for (StringVec::size_type i = 0; i<latex.size(); ++i) {
+	for (StringVec::size_type i = 0; i < latex.size(); ++i) {
 		latex[i] = latex_misc[i];
 	}
 	misc_.reset(new FormMathsBitmap(lv, d, *this, latex));
@@ -173,6 +173,8 @@ void FormMathsPanel::build()
 	greek_->addBitmap(28, 7, 4, greek_width, greek_height, greek_bits);
 
 	misc_->addBitmap(29, 5, 6, misc_width, misc_height, misc_bits);
+	misc_->addBitmap(6, 3, 2, misc2_width, misc2_height, misc2_bits, false);
+	misc_->addBitmap(4, 2, 2, misc3_width, misc3_height, misc3_bits);
  
 	dots_->addBitmap(4, 4, 1, dots_width, dots_height, dots_bits);
 
@@ -296,9 +298,12 @@ bool FormMathsPanel::input(FL_OBJECT *, long data)
 }
 
 
-void FormMathsPanel::insertSymbol(string const & sym) const
+void FormMathsPanel::insertSymbol(string const & sym, bool bs) const
 {
-	lv_->getLyXFunc()->dispatch(LFUN_INSERT_MATH, '\\' + sym);
+	if (bs) 
+		lv_->getLyXFunc()->dispatch(LFUN_INSERT_MATH, '\\' + sym);
+	else 
+		lv_->getLyXFunc()->dispatch(LFUN_INSERT_MATH, sym);
 }
 
 

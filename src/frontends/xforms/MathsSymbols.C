@@ -129,7 +129,11 @@ char const * latex_misc[] = {
 	"Re", "Im", "aleph", "wp", "hbar",
 	"angle", "top", "bot", "Vert", "neg",
 	"flat", "natural", "sharp", "surd", "triangle",
-	"diamondsuit", "heartsuit", "clubsuit", "spadesuit", ""
+	"diamondsuit", "heartsuit", "clubsuit", "spadesuit", 
+	"mathbb N", "mathbb Z", "mathbb Q", 
+	"mathbb R", "mathbb C", "mathbb H",
+	"mathcal F", "mathcal L", 
+	"mathcal H", "mathcal O",""
 };
 
 int const nr_latex_misc = sizeof(latex_misc) / sizeof(char const *);
@@ -257,16 +261,31 @@ static char const ** pixmapFromBitmapData(char const * s, int wx, int hx)
 			dh = 5;
 			break;
 		case 5:
-			w = misc_width;
-			h = misc_height;
-			bdata = misc_bits;
-			dw = 5;
-			dh = 6;
+			if (id < 29) {
+				w = misc_width;
+				h = misc_height;
+				bdata = misc_bits;
+				dw = 5;
+				dh = 6;
+			} else if (id > 36) {
+				w = misc3_width;
+				h = misc3_height;
+				bdata = misc3_bits;
+				dw = 3;
+				dh = 2;
+				id -= 37;
+			} else {
+				w = misc2_width;
+				h = misc2_height;
+				bdata = misc2_bits;
+				dw = 2;
+				dh = 2;
+				id -= 29;
+			}
 			break;
 		}
 		int ww = w / dw;
 		int hh = h / dh;
-
 		XImage * xima = XCreateImage(fl_get_display(), 0, 1, XYBitmap, 0,
 					     const_cast<char*>(reinterpret_cast<char const *>(bdata)), w, h, 8, 0);
 		xima->byte_order = LSBFirst;

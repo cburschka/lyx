@@ -10,13 +10,13 @@ SnapGrid: 2
 =============== FORM ===============
 Name: form_maths_delim
 Width: 250
-Height: 260
-Number of Objects: 10
+Height: 307
+Number of Objects: 11
 
 --------------------
 class: FL_BOX
 type: UP_BOX
-box: 0 0 250 260
+box: 0 0 250 307
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -34,7 +34,7 @@ argument:
 --------------------
 class: FL_BUTTON
 type: PUSH_BUTTON
-box: 40 70 170 140
+box: 42 112 170 140
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -47,7 +47,79 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: bmtable
 callback: C_FormBaseDeprecatedInputCB
-argument:
+argument: 0
+
+--------------------
+class: FL_BUTTON
+type: NORMAL_BUTTON
+box: 168 268 70 30
+boxtype: FL_UP_BOX
+colors: FL_COL1 FL_COL1
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: Cancel|^[
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: button_cancel
+callback: C_FormBaseDeprecatedCancelCB
+argument: 0
+
+--------------------
+class: FL_PIXMAPBUTTON
+type: NORMAL_BUTTON
+box: 100 58 50 40
+boxtype: FL_UP_BOX
+colors: FL_COL1 FL_COL1
+alignment: FL_ALIGN_BOTTOM
+style: FL_NORMAL_STYLE
+size: FL_DEFAULT_SIZE
+lcol: FL_BLACK
+label: 
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: button_pix
+callback: C_FormBaseDeprecatedApplyCB
+argument: 0
+
+--------------------
+class: FL_BUTTON
+type: NORMAL_BUTTON
+box: 90 268 70 30
+boxtype: FL_UP_BOX
+colors: FL_COL1 FL_COL1
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: Apply|#A
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: button_apply
+callback: C_FormBaseDeprecatedApplyCB
+argument: 0
+
+--------------------
+class: FL_BUTTON
+type: RETURN_BUTTON
+box: 12 268 70 30
+boxtype: FL_UP_BOX
+colors: FL_COL1 FL_COL1
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: OK
+shortcut: ^M
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: button_ok
+callback: C_FormBaseDeprecatedOKCB
+argument: 0
 
 --------------------
 class: FL_BEGIN_GROUP
@@ -70,38 +142,56 @@ argument:
 --------------------
 class: FL_ROUND3DBUTTON
 type: RADIO_BUTTON
-box: 40 40 80 30
+box: 80 8 80 30
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_YELLOW
 alignment: FL_ALIGN_CENTER
 style: FL_NORMAL_STYLE
 size: FL_NORMAL_SIZE
 lcol: FL_BLACK
-label: Right|#R
+label: ()\nBoth|#B
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: radio_right
-callback:
-argument:
+name: radio_both
+callback: 
+argument: 
 
 --------------------
 class: FL_ROUND3DBUTTON
 type: RADIO_BUTTON
-box: 40 10 80 30
+box: 162 8 80 30
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_YELLOW
 alignment: FL_ALIGN_CENTER
 style: FL_NORMAL_STYLE
 size: FL_NORMAL_SIZE
 lcol: FL_BLACK
-label: Left|#L
+label: )\nRight|#R
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: radio_right
+callback: 
+argument: 
+
+--------------------
+class: FL_ROUND3DBUTTON
+type: RADIO_BUTTON
+box: 8 8 80 30
+boxtype: FL_NO_BOX
+colors: FL_COL1 FL_YELLOW
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: (\nLeft|#L
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: radio_left
-callback:
-argument:
+callback: 
+argument: 
 
 --------------------
 class: FL_END_GROUP
@@ -119,78 +209,6 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: 
 callback: 
-argument: 
-
---------------------
-class: FL_BUTTON
-type: NORMAL_BUTTON
-box: 170 220 70 30
-boxtype: FL_UP_BOX
-colors: FL_COL1 FL_COL1
-alignment: FL_ALIGN_CENTER
-style: FL_NORMAL_STYLE
-size: FL_NORMAL_SIZE
-lcol: FL_BLACK
-label: Cancel|^[
-shortcut: 
-resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
-name: button_cancel
-callback: C_FormBaseDeprecatedCancelCB
-argument: 
-
---------------------
-class: FL_PIXMAPBUTTON
-type: NORMAL_BUTTON
-box: 130 20 50 40
-boxtype: FL_UP_BOX
-colors: FL_COL1 FL_COL1
-alignment: FL_ALIGN_BOTTOM
-style: FL_NORMAL_STYLE
-size: FL_DEFAULT_SIZE
-lcol: FL_BLACK
-label: 
-shortcut: 
-resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
-name: button_pix
-callback: C_FormBaseDeprecatedApplyCB
-argument: 
-
---------------------
-class: FL_BUTTON
-type: NORMAL_BUTTON
-box: 90 220 70 30
-boxtype: FL_UP_BOX
-colors: FL_COL1 FL_COL1
-alignment: FL_ALIGN_CENTER
-style: FL_NORMAL_STYLE
-size: FL_NORMAL_SIZE
-lcol: FL_BLACK
-label: Apply|#A
-shortcut: 
-resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
-name: button_apply
-callback: C_FormBaseDeprecatedApplyCB
-argument: 
-
---------------------
-class: FL_BUTTON
-type: RETURN_BUTTON
-box: 10 220 70 30
-boxtype: FL_UP_BOX
-colors: FL_COL1 FL_COL1
-alignment: FL_ALIGN_CENTER
-style: FL_NORMAL_STYLE
-size: FL_NORMAL_SIZE
-lcol: FL_BLACK
-label: OK
-shortcut: ^M
-resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
-name: button_ok
-callback: C_FormBaseDeprecatedOKCB
 argument: 
 
 ==============================

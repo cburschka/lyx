@@ -63,7 +63,7 @@ public:
 	///
 	void setActive(FormMathsSub *) const;
 	/// dispatch a symbol insert 
-	void insertSymbol(string const & sym) const;
+	void insertSymbol(string const & sym, bool bs = true) const;
 	/// dispatch an LFUN:
 	void dispatchFunc(kb_action action) const;
 private:
