@@ -452,12 +452,6 @@ bool BufferView::lockInset(UpdatableInset * inset)
 					theLockingInset(inset);
 					return true;
 				}
-				if (it->inset->getInsetFromID(id)) {
-					text->setCursorIntern(pit, it->pos);
-					FuncRequest cmd(this, LFUN_INSET_EDIT, "left");
-					it->inset->localDispatch(cmd);
-					return theLockingInset()->lockInsetInInset(this, inset);
-				}
 			}
 		}
 		return false;
