@@ -1168,7 +1168,7 @@ bool MathCursor::goUp()
 
 	// if not, apply brute force.
 	return
-		bruteUpDown(formula()->upperY() + 24, xarray().yo() - 4 - xarray().ascent());
+		bruteUpDown(formula()->upperY(), xarray().yo() - 4 - xarray().ascent());
 }
 
 
