@@ -601,8 +601,8 @@ dist_imagesmath_DATA = \
 	images/math/surd.xpm \
 	images/math/swarrow.xpm \
 	images/math/tau.xpm \
-	images/math/textrm_0.xpm \
-	images/math/textrm_A.xpm \
+	images/math/textrm_Oe.xpm \
+	images/math/textrm_AA.xpm \
 	images/math/therefore.xpm \
 	images/math/theta.xpm \
 	images/math/theta2.xpm \
