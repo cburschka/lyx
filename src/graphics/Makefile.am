@@ -6,10 +6,6 @@ INCLUDES = -I$(srcdir)/.. $(BOOST_INCLUDES)
 
 EXTRA_DIST = GraphicsImageXPM.C GraphicsImageXPM.h
 
-if USE_BASIC_IMAGE_LOADER
-GRAPHICSIMAGEXPM = GraphicsImageXPM.C GraphicsImageXPM.h
-endif
-
 libgraphics_la_SOURCES = \
 	GraphicsCache.h \
 	GraphicsCache.C \
@@ -21,7 +17,7 @@ libgraphics_la_SOURCES = \
 	GraphicsImage.C \
 	GraphicsLoader.h \
 	GraphicsLoader.C \
-	$(GRAPHICSIMAGEXPM) GraphicsParams.C \
+	GraphicsParams.C \
 	GraphicsParams.h \
 	GraphicsSupport.h \
 	GraphicsSupport.C \
