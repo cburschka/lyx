@@ -1,18 +1,21 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) 1998,1999 Free Software Foundation, Inc.
 # FIRST AUTHOR Victor Lavrenko <lyx@lavrenko.pp.ru>, 1998.
-# Edited by Vitaly Lipatov <vitlav@mail.ru>, 2001
+# Edited by Vitaly Lipatov <vitlav@mail.ru>, 2001-2002
 #
 # Временные заметки переводчика:
 # Difficult words:
-# typeset, float, depth, inset
+# typeset, depth, inset
 #
 # Solved:
 # column - колонка, center - по центру, caption - подпись, mode - режим
 # environment depth - уровень окружения
 # table of content depth - глубина окружения
-# math mode - математический режим (?)
+# math mode - математический режим
 # check spell - проверка правописания
+# float - плавающий объект
+# convert - преобразование
+# minipage - мини-страница
 #
 # Слова, которых я избегал:
 # графа, столбец, кадр, список, индекс, перечень, специальный, мода, орфография
@@ -23,13 +26,14 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 1.0.1\n"
-"POT-Creation-Date: 2002-01-11 13:16+0100\n"
-"PO-Revision-Date: 2000-01-20 02:51+01:00\n"
-"Last-Translator: Vitaly Lipatov <vitlav@mail.ru>\n"
-"Language-Team: Russian <ru@li.org>\n"
+"POT-Creation-Date: 2002-01-19 15:31+0300\n"
+"PO-Revision-Date: 2002-02-16 12:07MSK\n"
+"Last-Translator: Vitaly Lipatov <lav@altlinux.ru>\n"
+"Language-Team: russian <ru@li.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=koi8-r\n"
+"Content-Type: text/plain; charset=KOI8-R\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 0.9.5\n"
 
 #: src/buffer.C:323
 msgid "Couldn't set the layout for "
@@ -59,17 +63,15 @@ msgstr "Во время чтения "
 
 #: src/buffer.C:335
 msgid "Encountered "
-msgstr ""
+msgstr "Обнаружен "
 
 #: src/buffer.C:337
-#, fuzzy
 msgid "one unknown token"
-msgstr "Неизвестная команда"
+msgstr "один неизвестный токен"
 
 #: src/buffer.C:340
-#, fuzzy
 msgid " unknown tokens"
-msgstr "Неизвестная команда"
+msgstr "неизвестных токенов"
 
 #: src/CutAndPaste.C:449 src/buffer.C:397
 msgid "Layout had to be changed from\n"
@@ -103,9 +105,8 @@ msgid "-- substituting default"
 msgstr "-- подстановка по умолчанию"
 
 #: src/buffer.C:992
-#, fuzzy
 msgid "Unknown token: "
-msgstr "Неизвестная команда"
+msgstr "Неизвестный токен"
 
 #: src/buffer.C:1121
 #, c-format
@@ -282,7 +283,7 @@ msgstr "' доступен только для чтения."
 #. viewing/editing, if so: load it.
 #: src/bufferlist.C:516
 msgid "Do you want to retrieve file under version control?"
-msgstr "Вы хотите открыть документ?"
+msgstr "Вы хотите получить файл из системы контроля версий?"
 
 #: src/bufferlist.C:524
 msgid "Cannot open specified file:"
@@ -294,7 +295,7 @@ msgstr "Создать новый документ с таким именем?"
 
 #: src/BufferView2.C:63
 msgid "Specified file is unreadable: "
-msgstr "Указанный файл не удается прочитать: "
+msgstr "Указанный файл не удаётся прочитать: "
 
 #
 #: src/BufferView2.C:73
@@ -315,15 +316,15 @@ msgstr "Нет дальнейшей информации для отмены действия"
 
 #: src/BufferView2.C:451
 msgid "Redo not yet supported in math mode"
-msgstr "Повторить отмененное действие в математическом режиме пока невозможно"
+msgstr "Повторить отменённое действие в математическом режиме пока невозможно"
 
 #: src/BufferView2.C:456 src/LyXAction.C:357
 msgid "Redo"
-msgstr "Повторить отмененное действие"
+msgstr "Повторить отменённое действие"
 
 #: src/BufferView2.C:461
 msgid "No further redo information"
-msgstr "Нет дальнейшей информации для повторения отмененного действия"
+msgstr "Нет дальнейшей информации для повторения отменённого действия"
 
 #: src/BufferView2.C:558
 msgid "Paragraph environment type copied"
@@ -367,7 +368,7 @@ msgstr "Смягчить"
 
 #: src/bufferview_funcs.C:145
 msgid "Changed environment depth (in possible range, maybe not)"
-msgstr "Изменен уровень окружения (в допустимых пределах, а может и нет)"
+msgstr "Изменён уровень окружения (в допустимых пределах, а может и нет)"
 
 #: src/bufferview_funcs.C:267
 msgid "Font: "
@@ -416,7 +417,7 @@ msgstr "Предупреждение ChkTeX #"
 
 #: src/ColorHandler.C:83
 msgid "LyX: Unknown X11 color "
-msgstr ""
+msgstr "LyX: Неизвестный цвет X11"
 
 #
 #: src/ColorHandler.C:84
@@ -425,7 +426,7 @@ msgstr " от "
 
 #: src/ColorHandler.C:85
 msgid "     Using black instead, sorry!."
-msgstr "     Используем вместе это черный, извините!"
+msgstr "     Используем вместо этого чёрный, извините!"
 
 #: src/ColorHandler.C:92
 msgid "LyX: X11 color "
@@ -463,7 +464,7 @@ msgstr ") вместо этого.\n"
 
 #: src/ColorHandler.C:149
 msgid "Pixel ["
-msgstr ""
+msgstr "Точка ["
 
 #
 #: src/ColorHandler.C:149
@@ -615,7 +616,7 @@ msgstr ""
 "\n"
 "из-за преобразования класса из\n"
 
-#: src/CutAndPaste.C:479 src/insets/insettext.C:969 src/text.C:3956
+#: src/CutAndPaste.C:479 src/insets/insettext.C:970 src/text.C:3956
 #: src/text.C:3964 src/text.C:3991 src/text2.C:2191 src/text2.C:2304
 msgid "Impossible operation"
 msgstr "Недопустимая операция"
@@ -625,7 +626,7 @@ msgid "Can't paste float into float!"
 msgstr "Запрещается копировать плавающий объект в плавающий объект!"
 
 #: src/CutAndPaste.C:481 src/insets/insetert.C:67
-#: src/insets/insettabular.C:1702 src/insets/insettext.C:971 src/text.C:3958
+#: src/insets/insettabular.C:1702 src/insets/insettext.C:972 src/text.C:3958
 #: src/text.C:3966 src/text.C:3993
 msgid "Sorry."
 msgstr "Извините."
@@ -797,12 +798,12 @@ msgstr "Документы"
 
 #: src/MenuBackend.C:413 src/ext_l10n.h:12 src/ext_l10n.h:17
 msgid "New...|N"
-msgstr "Новый..."
+msgstr "Создать..."
 
 #
 #: src/ext_l10n.h:13 src/ext_l10n.h:18
 msgid "New from Template...|T"
-msgstr "Новый из шаблона"
+msgstr "Создать из шаблона"
 
 #
 #: src/MenuBackend.C:414 src/ext_l10n.h:14 src/ext_l10n.h:19
@@ -817,7 +818,7 @@ msgstr "Импортировать из..."
 #
 #: src/ext_l10n.h:16 src/ext_l10n.h:29
 msgid "Exit|x"
-msgstr "Выход"
+msgstr "Выйти"
 
 #
 #: src/ext_l10n.h:20
@@ -837,7 +838,7 @@ msgstr "Сохранить как"
 #
 #: src/ext_l10n.h:23
 msgid "Revert to Saved|d"
-msgstr "Вернуться к сохраненному"
+msgstr "Вернуться к сохранённому"
 
 #
 #: src/ext_l10n.h:24
@@ -852,12 +853,12 @@ msgstr "Экспортировать в..."
 #
 #: src/ext_l10n.h:27
 msgid "Print...|P"
-msgstr "Печать..."
+msgstr "Напечатать..."
 
 #
 #: src/ext_l10n.h:28
 msgid "Fax...|F"
-msgstr "Факс..."
+msgstr "Отправить по факсу..."
 
 #
 #: src/ext_l10n.h:30
@@ -906,7 +907,7 @@ msgstr "Отменить последнее действие"
 #
 #: src/ext_l10n.h:39
 msgid "Redo|d"
-msgstr "Повторить отмененное действие"
+msgstr "Повторить отменённое действие"
 
 #
 #: src/ext_l10n.h:40
@@ -949,7 +950,7 @@ msgstr "Математическая панель"
 #
 #: src/ext_l10n.h:48
 msgid "Spellchecker...|S"
-msgstr "Проверка правописания"
+msgstr "Проверить правописание"
 
 #
 #: src/ext_l10n.h:49
@@ -974,7 +975,7 @@ msgstr "вставлять абзацами"
 #
 #: src/ext_l10n.h:55
 msgid "Open/Close|O"
-msgstr "Открыть/Закрыть..."
+msgstr "Раскрыть/Закрыть..."
 
 #
 #: src/ext_l10n.h:56
@@ -983,7 +984,7 @@ msgstr "Смягчить"
 
 #: src/ext_l10n.h:57
 msgid "Open All Figures/Tables|F"
-msgstr "Открыть все рисунки и таблицы"
+msgstr "Раскрыть все рисунки и таблицы"
 
 #: src/ext_l10n.h:58
 msgid "Close All Figures/Tables|T"
@@ -992,7 +993,7 @@ msgstr "Закрыть все рисунки и таблицы"
 #
 #: src/ext_l10n.h:59
 msgid "Open All Footnotes/Marginal Notes|A"
-msgstr "Открыть все сноски и примечания на полях"
+msgstr "Раскрыть все сноски и примечания на полях"
 
 #: src/ext_l10n.h:60
 msgid "Close All Footnotes/Marginal Notes|C"
@@ -1094,7 +1095,7 @@ msgstr "Ссылку на источник цитирования..."
 #
 #: src/ext_l10n.h:80
 msgid "Cross Reference...|R"
-msgstr "Перекрестную ссылку..."
+msgstr "Перекрёстную ссылку..."
 
 #
 #: src/ext_l10n.h:81
@@ -2224,9 +2225,8 @@ msgid "RunningAuthor"
 msgstr ""
 
 #: src/ext_l10n.h:345
-#, fuzzy
 msgid "RunningTitle"
-msgstr "Обработка с помощью LaTeX..."
+msgstr ""
 
 #: src/ext_l10n.h:346
 msgid "Running_LaTeX_Title"
@@ -2321,9 +2321,8 @@ msgid "Stadt"
 msgstr ""
 
 #: src/ext_l10n.h:369
-#, fuzzy
 msgid "Standard"
-msgstr "Стандартный"
+msgstr ""
 
 #: src/ext_l10n.h:370
 msgid "State"
@@ -2868,7 +2867,7 @@ msgstr "Применить"
 #: src/mathed/math_forms.C:130 src/mathed/math_forms.C:198 src/print_form.C:34
 #: src/sp_form.C:42
 msgid "Cancel|^["
-msgstr "Отмена"
+msgstr "Отмена|^["
 
 #: src/form1.C:123
 msgid "Display Frame|#F"
@@ -3046,9 +3045,8 @@ msgid "Replace All|#A#a"
 msgstr "Заменить все"
 
 #: src/frontends/gnome/FormCitation.C:371
-#, fuzzy
 msgid "_Add new citation"
-msgstr "Вставить цитату"
+msgstr "Добавить новую цитату"
 
 #: src/frontends/gnome/FormCitation.C:372
 msgid "_Edit/remove citation(s)"
@@ -3085,7 +3083,6 @@ msgstr ""
 
 #: src/frontends/gnome/FormCitation.C:549
 #: src/frontends/gnome/FormCitation.C:639 src/frontends/kde/citationdlg.C:54
-#, fuzzy
 msgid "Text after"
 msgstr "Текст после"
 
@@ -3335,7 +3332,7 @@ msgstr "ОК"
 #: src/frontends/kde/dlg/tabcreatedlgdata.C:60 src/frontends/kde/indexdlg.C:65
 #: src/frontends/kde/refdlg.C:92 src/frontends/kde/urldlg.C:58
 msgid "&Cancel"
-msgstr "Отмена"
+msgstr "&Отмена"
 
 #. tooltips
 #: src/frontends/kde/citationdlg.C:93
@@ -3361,7 +3358,7 @@ msgid ""
 "1995-2000 LyX Team"
 msgstr ""
 "LyX is Copyright (C) 1995 by Matthias Ettrich,\n"
-"1995-1998 LyX Team"
+"1995-2000 LyX Team"
 
 #: src/frontends/kde/dlg/copyrightdlgdata.C:78
 msgid ""
@@ -3561,15 +3558,15 @@ msgstr "Все страницы"
 #
 #: src/frontends/kde/dlg/printdlgdata.C:162
 msgid "&Even pages"
-msgstr "Четные стр."
+msgstr "Чётные стр."
 
 #: src/frontends/kde/dlg/printdlgdata.C:192
 msgid "From"
-msgstr ""
+msgstr "От"
 
 #: src/frontends/kde/dlg/printdlgdata.C:208
 msgid "To"
-msgstr ""
+msgstr "до"
 
 #: src/frontends/kde/dlg/printdlgdata.C:220
 msgid "&Odd pages"
@@ -3728,7 +3725,7 @@ msgstr ""
 #. tooltips
 #: src/frontends/kde/indexdlg.C:27 src/frontends/kde/indexdlg.C:28
 msgid "Index entry"
-msgstr "Отступ"
+msgstr ""
 
 #: src/frontends/kde/paradlg.C:34
 msgid "&General"
@@ -3756,7 +3753,7 @@ msgstr "Абзац с отступом"
 #
 #: src/frontends/kde/paraextradlg.C:27
 msgid "Minipage"
-msgstr "Мини-страницы"
+msgstr "Мини-страница"
 
 #: src/frontends/kde/paraextradlg.C:28
 msgid "Wrap text around floats (floatflt)"
@@ -4059,7 +4056,7 @@ msgstr "Восстановить"
 #: src/frontends/xforms/form_tabular_create.C:39
 #: src/frontends/xforms/form_url.C:57 src/lyx.C:110
 msgid "Cancel|#C^["
-msgstr "Отмена"
+msgstr "Отмена|^["
 
 #: src/frontends/xforms/FormCopyright.C:20
 msgid "Copyright and Warranty"
@@ -4068,9 +4065,7 @@ msgstr "Авторские права и гарантии"
 #
 #: src/frontends/xforms/FormCopyright.C:51
 msgid "LyX is Copyright (C) 1995 by Matthias Ettrich, 1995-2000 LyX Team"
-msgstr ""
-"LyX is Copyright (C) 1995 by Matthias Ettrich,\n"
-"1995-1998 LyX Team"
+msgstr "LyX is Copyright (C) 1995 by Matthias Ettrich, 1995-2000 LyX Team"
 
 #
 #: src/frontends/xforms/FormCopyright.C:56
@@ -4122,7 +4117,7 @@ msgid ""
 " Default | Custom | USletter | USlegal | USexecutive | A3 | A4 | A5 | B3 | "
 "B4 | B5 "
 msgstr ""
-" по умолчанию | пользовательский | US-письмо | US-документ | US-записка | A3 "
+" по умолчанию | пользовательский | USletter | USlegal | USexecutive | A3 "
 "| A4 | A5 | B3 | B4 | B5 "
 
 #: src/frontends/xforms/FormDocument.C:120
@@ -4187,22 +4182,22 @@ msgstr "Установлен формат документа"
 
 #: src/frontends/xforms/FormDocument.C:426
 msgid "Converting document to new document class..."
-msgstr "Конвертирую документ в новый класс документа..."
+msgstr "Преобразую документ к новому классу документа..."
 
 #: src/frontends/xforms/FormDocument.C:435
 msgid "One paragraph couldn't be converted"
-msgstr "Один абзац не может быть сконвертирован"
+msgstr "Один абзац не может быть преобразован"
 
 #: src/frontends/xforms/FormDocument.C:438
 msgid " paragraphs couldn't be converted"
-msgstr " абзацев не может быть сконвертировано"
+msgstr " абзацев не может быть преобразовано"
 
 #. problem changing class -- warn user and retain old style
 #: src/frontends/xforms/FormDocument.C:440
 #: src/frontends/xforms/FormDocument.C:447
 #: src/frontends/xforms/FormDocument.C:1108
 msgid "Conversion Errors!"
-msgstr "Ошибки конвертации!"
+msgstr "Ошибки преобразования!"
 
 #: src/frontends/xforms/FormDocument.C:441
 msgid "into chosen document class"
@@ -4221,8 +4216,7 @@ msgstr "Возвращаюсь к оригинальному классу документа."
 #
 #: src/frontends/xforms/FormDocument.C:826
 msgid "Document is read-only. No changes to layout permitted."
-msgstr ""
-"Документ доступен только для чтения. Никакие изменения формата недопустимы."
+msgstr "Документ доступен только для чтения. Никакие изменения формата недопустимы."
 
 #: src/frontends/xforms/FormDocument.C:1100
 msgid "Should I set some parameters to"
@@ -4358,7 +4352,7 @@ msgstr ""
 #: src/frontends/xforms/form_document.C:286
 msgid "Spacing|#g"
 msgstr ""
-"Межстрочный\n"
+"Междустрочный\n"
 "интервал"
 
 #: src/frontends/xforms/form_document.C:294
@@ -4438,7 +4432,7 @@ msgstr ""
 
 #: src/frontends/xforms/form_document.C:468
 msgid "Table of contents depth"
-msgstr "Глубина содержания"
+msgstr "Глубина нумерации в содержании"
 
 #: src/frontends/xforms/form_document.C:473
 msgid "PS Driver:|#S"
@@ -4774,7 +4768,7 @@ msgstr ""
 #: src/frontends/xforms/form_preferences.C:38
 #: src/frontends/xforms/form_print.C:63
 msgid "Cancel|C#C^["
-msgstr "Отмена"
+msgstr "Отменаl|^["
 
 #
 #: src/frontends/xforms/FormPreferences.C:68
@@ -4845,11 +4839,10 @@ msgstr "Проверка правописания"
 
 #: src/frontends/xforms/FormPreferences.C:533
 msgid "LyX objects that can be assigned a color."
-msgstr ""
+msgstr "Объекты LyX, которым может быть назначен цвет."
 
 #: src/frontends/xforms/FormPreferences.C:536
-msgid ""
-"Modify the LyX object's color. Note: you must then \"Apply\" the change."
+msgid "Modify the LyX object's color. Note: you must then \"Apply\" the change."
 msgstr ""
 
 #: src/frontends/xforms/FormPreferences.C:544
@@ -4862,7 +4855,7 @@ msgstr ""
 
 #: src/frontends/xforms/FormPreferences.C:742
 msgid "GUI background"
-msgstr ""
+msgstr "Фон GUI"
 
 # msgstr "Фон интерфейса пользователя"
 #: src/frontends/xforms/FormPreferences.C:748
@@ -5033,7 +5026,9 @@ msgstr ""
 #: src/frontends/xforms/FormPreferences.C:1794
 #: src/frontends/xforms/FormPreferences.C:1802
 msgid "Key maps"
-msgstr "Назначения клавиш"
+msgstr ""
+"Готовые\n"
+"раскладки"
 
 #
 #: src/frontends/xforms/FormPreferences.C:1798
@@ -5045,7 +5040,7 @@ msgstr "Клавиатурная раскладка"
 #: src/frontends/xforms/FormPreferences.C:1979
 msgid " default | US letter | legal | executive | A3 | A4 | A5 | B5 "
 msgstr ""
-" по умолчанию | пользовательский | US-письмо | US-документ | US-записка | A3 "
+" по умолчанию | пользовательский | US letter | legal | executive | A3 "
 "| A4 | A5 | B3 | B4 | B5 "
 
 #
@@ -5117,12 +5112,12 @@ msgstr "Сохранить"
 
 #: src/frontends/xforms/form_preferences.C:105 src/lyxfont.C:42
 msgid "Roman"
-msgstr "Roman"
+msgstr "Романский"
 
 #
 #: src/frontends/xforms/form_preferences.C:108
 msgid "Sans Serif"
-msgstr "Без засечек"
+msgstr "Рубленый"
 
 #: src/frontends/xforms/form_preferences.C:111 src/lyxfont.C:42
 msgid "Typewriter"
@@ -5202,7 +5197,7 @@ msgstr "Огромнее"
 
 #: src/frontends/xforms/form_preferences.C:202
 msgid "Ascii line length|#A"
-msgstr "Длина текстового файла"
+msgstr "Длина строки текстового файла"
 
 #
 #: src/frontends/xforms/form_preferences.C:214
@@ -5243,6 +5238,8 @@ msgstr "Использовать другой язык:"
 #: src/frontends/xforms/form_preferences.C:288
 msgid "Use escape characters|#e"
 msgstr ""
+"Использовать игнорируемые\n"
+"символы в слове"
 
 #
 #: src/frontends/xforms/form_preferences.C:298
@@ -5279,18 +5276,23 @@ msgid ""
 "Keyboard\n"
 "map|#K"
 msgstr ""
-"Использовать\n"
+"Исполь-\n"
+"зовать\n"
 "раскладку\n"
 "клавиатуры"
 
 #: src/frontends/xforms/form_preferences.C:406
 msgid "RtL support|#R"
 msgstr ""
+"Поддержка ввода\n"
+"справа налево"
 
 #
 #: src/frontends/xforms/form_preferences.C:414
 msgid "Mark foreign|#M"
-msgstr "Помечать иностранные слова"
+msgstr ""
+"Помечать\n"
+"иностранные слова"
 
 #: src/frontends/xforms/form_preferences.C:422
 msgid "Auto begin|#b"
@@ -5303,12 +5305,16 @@ msgstr ""
 #
 #: src/frontends/xforms/form_preferences.C:438
 msgid "Command start|#s"
-msgstr "Команда начала языка"
+msgstr ""
+"Команда\n"
+"начала языка"
 
 #
 #: src/frontends/xforms/form_preferences.C:445
 msgid "Command end|#e"
-msgstr "Команда окончания языка:"
+msgstr ""
+"Команда\n"
+"окончания языка:"
 
 #
 #: src/frontends/xforms/form_preferences.C:452
@@ -5364,7 +5370,7 @@ msgstr ""
 
 #: src/frontends/xforms/form_preferences.C:592
 msgid "All converters|#A"
-msgstr "Все конверторы"
+msgstr "Все преобразователи"
 
 #
 #: src/frontends/xforms/form_preferences.C:600
@@ -5451,7 +5457,7 @@ msgstr "Курсор следует за полосой прокрутки"
 
 #: src/frontends/xforms/form_preferences.C:796
 msgid "Wheel mouse jump"
-msgstr ""
+msgstr "Коэффициент для колёсика мыши"
 
 #: src/frontends/xforms/form_preferences.C:827
 msgid "Popup Font"
@@ -5533,11 +5539,11 @@ msgstr "тип бумаги"
 
 #: src/frontends/xforms/form_preferences.C:911
 msgid "even pages"
-msgstr "четные страницы"
+msgstr "чётные страницы"
 
 #: src/frontends/xforms/form_preferences.C:914
 msgid "odd pages"
-msgstr "нечетные страницы"
+msgstr "нечётные страницы"
 
 #
 #: src/frontends/xforms/form_preferences.C:917
@@ -5578,6 +5584,8 @@ msgstr "Имя"
 #: src/frontends/xforms/form_preferences.C:938
 msgid "adapt output"
 msgstr ""
+"передавать имя принтера\n"
+"команде печати"
 
 #: src/frontends/xforms/form_preferences.C:941
 msgid "Printer Command and Flags"
@@ -5623,7 +5631,7 @@ msgstr "Временный каталог"
 #: src/LyXAction.C:137 src/LyXAction.C:145 src/frontends/xforms/FormPrint.C:41
 #: src/frontends/xforms/form_print.C:129
 msgid "Print"
-msgstr "Печатать"
+msgstr "Напечатать"
 
 #: src/frontends/xforms/form_print.C:37
 msgid "Printer|#P"
@@ -5641,11 +5649,11 @@ msgstr "Все страницы"
 
 #: src/frontends/xforms/form_print.C:79
 msgid "Only Odd Pages|#O"
-msgstr "Нечетные стр."
+msgstr "Нечётные страницы"
 
 #: src/frontends/xforms/form_print.C:86
 msgid "Only Even Pages|#E"
-msgstr "Четные стр."
+msgstr "Чётные страницы"
 
 #: src/frontends/xforms/form_print.C:97
 msgid "Normal Order|#N"
@@ -5657,11 +5665,11 @@ msgstr "Обратный"
 
 #: src/frontends/xforms/form_print.C:112
 msgid "Pages:"
-msgstr "Стр.:"
+msgstr "Стр. от:"
 
 #: src/frontends/xforms/form_print.C:116
 msgid "Count:"
-msgstr "Кол-во:"
+msgstr "Количество:"
 
 #
 #: src/frontends/xforms/form_print.C:121
@@ -5671,7 +5679,7 @@ msgstr "Собирать"
 #
 #: src/frontends/xforms/form_print.C:127
 msgid "to"
-msgstr " от "
+msgstr "до  "
 
 #: src/frontends/xforms/form_print.C:132
 msgid "Order"
@@ -6204,7 +6212,7 @@ msgstr "Ошибка открытия"
 
 #: src/insets/insetert.C:28
 msgid "ERT"
-msgstr ""
+msgstr "LaTeX"
 
 #
 #: src/insets/insetert.C:59
@@ -6217,11 +6225,11 @@ msgstr "Недопустимая операция!"
 
 #: src/insets/insetert.C:66
 msgid "Not permitted to change font-types inside ERT-insets!"
-msgstr "Не разрешено изменять тип шрифта внутри ERT (в режиме LaTeX)"
+msgstr "Не разрешено изменять свойства шрифта внутри ERT (в режиме LaTeX)"
 
 #: src/insets/insetexternal.C:155 src/insets/insetexternal.C:159
 msgid "External inset file"
-msgstr ""
+msgstr "Файл внешнего объекта"
 
 #: src/insets/insetexternal.C:174
 #, no-c-format
@@ -6242,7 +6250,7 @@ msgstr "Внешний объект"
 #: src/insets/insetfloat.C:84 src/insets/insetfloat.C:206
 #: src/insets/insetfloat.C:211
 msgid "float:"
-msgstr ""
+msgstr "плавающий:"
 
 #
 #: src/insets/insetfloat.C:150
@@ -6266,7 +6274,7 @@ msgstr "неизвестная ошибка"
 
 #: src/insets/insetgraphics.C:227
 msgid "Loading..."
-msgstr ""
+msgstr "Загрузка..."
 
 #
 #: src/insets/insetgraphics.C:231
@@ -6297,8 +6305,8 @@ msgstr "Имя файла:"
 #: src/insets/insetinclude.C:67 src/insets/insetinclude.C:68
 msgid "Visible space|#s"
 msgstr ""
-"Видимый\n"
-"промежуток"
+"Показывать\n"
+"пробелы"
 
 #: src/insets/insetinclude.C:72 src/insets/insetinclude.C:73
 msgid "Verbatim|#V"
@@ -6306,11 +6314,11 @@ msgstr "Буквально"
 
 #: src/insets/insetinclude.C:76 src/insets/insetinclude.C:77
 msgid "Use input|#i"
-msgstr "Через input"
+msgstr "Прямо здесь"
 
 #: src/insets/insetinclude.C:80 src/insets/insetinclude.C:81
 msgid "Use include|#U"
-msgstr "Через include"
+msgstr "С новой страницы"
 
 #. launches dialog
 #: src/insets/insetinclude.C:117 src/lyx_cb.C:197 src/lyxfunc.C:3054
@@ -6320,24 +6328,24 @@ msgstr "Документы"
 
 #: src/insets/insetinclude.C:121
 msgid "Select Child Document"
-msgstr "Выберите подчиненный документ"
+msgstr "Выберите подчинённый документ"
 
 #: src/insets/insetinclude.C:277 src/insets/insetinclude.C:318
 msgid "Include"
-msgstr "Включить"
+msgstr "Включить файл"
 
 #: src/insets/insetinclude.C:314
 msgid "Input"
-msgstr "Вставить"
+msgstr "Вставка файла"
 
 #: src/insets/insetinclude.C:316
 msgid "Verbatim Input"
-msgstr "Буквальный input"
+msgstr "Буквальная вставка файла"
 
 #
 #: src/insets/insetindex.C:20
 msgid "Idx"
-msgstr ""
+msgstr "Индекс"
 
 #
 #: src/insets/insetinfo.C:198
@@ -6352,7 +6360,7 @@ msgstr "Введите метку:"
 #
 #: src/insets/insetlist.C:42
 msgid "list"
-msgstr ""
+msgstr "список"
 
 #
 #: src/insets/insetlist.C:72
@@ -6362,7 +6370,7 @@ msgstr "Открытый список"
 #
 #: src/insets/insetmarginal.C:33
 msgid "margin"
-msgstr ""
+msgstr "поле"
 
 #
 #: src/insets/insetmarginal.C:50
@@ -6372,12 +6380,12 @@ msgstr "Открытая заметка на полях"
 #
 #: src/insets/insetminipage.C:60
 msgid "minipage"
-msgstr ""
+msgstr "мини-страница"
 
 #
 #: src/insets/insetminipage.C:90
 msgid "Opened Minipage Inset"
-msgstr "Открытая министраница"
+msgstr "Открытая мини-страница"
 
 #: src/insets/insetparent.C:42
 msgid "Parent:"
@@ -6398,26 +6406,26 @@ msgid "Opened Text Inset"
 msgstr "Открытый текст"
 
 #
-#: src/insets/insettext.C:970
+#: src/insets/insettext.C:971
 msgid "Cannot include more than one paragraph!"
 msgstr "Ячейка таблицы не может включать более одного абзаца!"
 
-#: src/insets/insettext.C:1036 src/lyxfunc.C:1260
+#: src/insets/insettext.C:1037 src/lyxfunc.C:1260
 msgid "Layout "
 msgstr "Формат "
 
-#: src/insets/insettext.C:1036 src/lyxfunc.C:1261
+#: src/insets/insettext.C:1037 src/lyxfunc.C:1261
 msgid " not known"
 msgstr " не известно"
 
 #
-#: src/insets/insettext.C:1089 src/lyxfunc.C:2113
+#: src/insets/insettext.C:1090 src/lyxfunc.C:2113
 msgid "Unknown spacing argument: "
-msgstr "Отсутствует аргумент"
+msgstr "Отсутствует аргумент: "
 
 #: src/insets/insettheorem.C:39
 msgid "theorem"
-msgstr ""
+msgstr "теорема"
 
 #
 #: src/insets/insettheorem.C:68
@@ -6504,7 +6512,7 @@ msgstr "Семейство:"
 
 #: src/layout_forms.C:28
 msgid "Series:|#S"
-msgstr "Тип:"
+msgstr "Серия:"
 
 #: src/layout_forms.C:33
 msgid "Shape:|#H"
@@ -6553,7 +6561,7 @@ msgstr "ничего"
 #
 #: src/LColor.C:53
 msgid "black"
-msgstr "Черный"
+msgstr "Чёрный"
 
 #
 #: src/LColor.C:54
@@ -6568,7 +6576,7 @@ msgstr "Красный"
 #
 #: src/LColor.C:56
 msgid "green"
-msgstr "Зеленый"
+msgstr "Зелёный"
 
 #
 #: src/LColor.C:57
@@ -6588,7 +6596,7 @@ msgstr "Пурпурный"
 #
 #: src/LColor.C:60
 msgid "yellow"
-msgstr "Желтый"
+msgstr "Жёлтый"
 
 #: src/LColor.C:61
 msgid "cursor"
@@ -6730,7 +6738,7 @@ msgstr "Ошибка"
 
 #: src/LColor.C:93
 msgid "end-of-line marker"
-msgstr ""
+msgstr "маркер конца строки"
 
 #
 #: src/LColor.C:94
@@ -6739,16 +6747,16 @@ msgstr "Открытая вставка"
 
 #: src/LColor.C:95
 msgid "vfill line"
-msgstr ""
+msgstr "линия верт. клея"
 
 #: src/LColor.C:96
 msgid "top/bottom line"
-msgstr ""
+msgstr "верхняя/нижняя линия"
 
 #
 #: src/LColor.C:97
 msgid "table line"
-msgstr ""
+msgstr "линия таблицы"
 
 #
 #: src/LColor.C:98
@@ -6762,32 +6770,32 @@ msgstr ""
 
 #: src/LColor.C:102
 msgid "bottom area"
-msgstr ""
+msgstr "нижняя область"
 
 #
 #: src/LColor.C:103
 msgid "page break"
-msgstr "Разрывы страниц"
+msgstr "разрыв страницы"
 
 #: src/LColor.C:104
 msgid "top of button"
-msgstr ""
+msgstr "верх кнопки"
 
 #: src/LColor.C:105
 msgid "bottom of button"
-msgstr ""
+msgstr "низ кнопки"
 
 #: src/LColor.C:106
 msgid "left of button"
-msgstr ""
+msgstr "левый край кнопки"
 
 #: src/LColor.C:107
 msgid "right of button"
-msgstr ""
+msgstr "правый край кнопки"
 
 #: src/LColor.C:108
 msgid "button background"
-msgstr ""
+msgstr "фон кнопки"
 
 #: src/LColor.C:109
 msgid "inherit"
@@ -6861,15 +6869,15 @@ msgstr "Импортировать документ"
 
 #: src/LyXAction.C:140
 msgid "Get the printer parameters"
-msgstr ""
+msgstr "Получить параметры принтера"
 
 #: src/LyXAction.C:141
 msgid "New document"
-msgstr "Новый документ"
+msgstr "Создать новый документ"
 
 #: src/LyXAction.C:143
 msgid "New document from template"
-msgstr "Новый документ по шаблону"
+msgstr "Создать документ по шаблону"
 
 #: src/LyXAction.C:144
 msgid "Open"
@@ -6877,7 +6885,7 @@ msgstr "Открыть"
 
 #: src/LyXAction.C:147
 msgid "Revert to saved"
-msgstr "Вернуться к сохраненному"
+msgstr "Вернуться к сохранённому"
 
 #
 #: src/LyXAction.C:149
@@ -6909,7 +6917,7 @@ msgstr "Перейти на один символ назад"
 
 #: src/LyXAction.C:161
 msgid "Go one char forward"
-msgstr "Перейти на один символ вперед"
+msgstr "Перейти на один символ вперёд"
 
 #: src/LyXAction.C:164
 msgid "Insert citation"
@@ -7000,7 +7008,7 @@ msgstr "Переключить выделительный шрифт"
 
 #: src/LyXAction.C:213
 msgid "Toggle user defined style"
-msgstr "Переключить стиль шрифта"
+msgstr "Переключить стиль символов, определённый пользователем"
 
 #: src/LyXAction.C:215
 msgid "Toggle noun style"
@@ -7008,11 +7016,11 @@ msgstr "Переключить шрифт имён собственных"
 
 #: src/LyXAction.C:216
 msgid "Toggle roman font style"
-msgstr "Переключить шрифт Roman"
+msgstr "Переключить шрифт Романский"
 
 #: src/LyXAction.C:218
 msgid "Toggle sans font style"
-msgstr "Переключить шрифт Без засечек"
+msgstr "Переключить шрифт Рубленый"
 
 #: src/LyXAction.C:219
 msgid "Set font size"
@@ -7024,7 +7032,7 @@ msgstr "Показать статус шрифта"
 
 #: src/LyXAction.C:223
 msgid "Toggle font underline"
-msgstr "Переключить подчеркивание"
+msgstr "Переключить подчёркивание"
 
 #: src/LyXAction.C:225 src/LyXAction.C:229
 msgid "Insert Footnote"
@@ -7289,11 +7297,11 @@ msgstr "Описание недоступно!"
 
 #: src/lyx.C:41
 msgid "Encapsulated Postscript (*.eps, *.ps)|#E"
-msgstr ""
+msgstr "EPS-рисунок на отдельной строке (*.eps, *.ps)"
 
 #: src/lyx.C:43
 msgid "Inlined EPS (*.eps, *.ps)|#I"
-msgstr ""
+msgstr "EPS-рисунок как символ в строке (*.eps, *.ps)"
 
 #
 #: src/lyx.C:75
@@ -7325,7 +7333,7 @@ msgstr ""
 
 #: src/lyx_cb.C:171
 msgid "Save failed. Rename and try again?"
-msgstr "Сохранить не удалось. Переименовать и попытаться еще раз?"
+msgstr "Сохранить не удалось. Переименовать и попытаться ещё раз?"
 
 #: src/lyx_cb.C:173
 msgid "(If not, document is not saved.)"
@@ -7489,11 +7497,11 @@ msgstr "Вам стоит перезапустить LyX для использования всех"
 
 #: src/lyx_cb.C:988
 msgid "updated document class specifications."
-msgstr "обновленных спецификаций классов документов."
+msgstr "обновлённых спецификаций классов документов."
 
 #: src/lyxfont.C:42
 msgid "Sans serif"
-msgstr "Без засечек"
+msgstr "Рубленый"
 
 #: src/lyxfont.C:42
 msgid "Symbol"
@@ -7595,7 +7603,7 @@ msgstr "Выделительный шрифт "
 
 #: src/lyxfont.C:404
 msgid "Underline "
-msgstr "Подчеркнутый "
+msgstr "Подчёркнутый "
 
 #: src/lyxfont.C:407
 msgid "Noun "
@@ -7739,7 +7747,7 @@ msgstr "Это допустимо только в математическом режиме!"
 
 #: src/lyxfunc.C:2761
 msgid "Opening child document "
-msgstr "Открываю подчиненный документ "
+msgstr "Открываю подчинённый документ "
 
 #: src/lyxfunc.C:2793
 msgid "Unknown kind of footnote"
@@ -7858,7 +7866,7 @@ msgstr "Ошибка вставки документа"
 
 #: src/lyx_gui.C:315
 msgid " No change %l| Roman | Sans Serif | Typewriter %l| Reset "
-msgstr " Без изменений %l| Roman | Без засечек | Машинописный %l| Сброс"
+msgstr " Без изменений %l| Романский | Рубленый | Машинописный %l| Сброс"
 
 #: src/lyx_gui.C:317
 msgid " No change %l| Medium | Bold %l| Reset "
@@ -7888,8 +7896,8 @@ msgid ""
 " No change %l| No color | Black | White | Red | Green | Blue | Cyan | "
 "Magenta | Yellow %l| Reset "
 msgstr ""
-" Без изменений %l| Бесцветный | Черный | Белый | Красный | Зеленый | Голубой "
-"| Синий | Пурпурный | Желтый %l| Сброс "
+" Без изменений %l| Бесцветный | Чёрный | Белый | Красный | Зелёный | Голубой "
+"| Синий | Пурпурный | Жёлтый %l| Сброс "
 
 #: src/lyx_gui.C:333
 msgid " English %l| German | French "
@@ -7908,7 +7916,7 @@ msgstr "Сброс"
 
 #: src/lyx_gui.C:405
 msgid "LyX Banner"
-msgstr "LyX-баннер"
+msgstr "LyX-заставка"
 
 #: src/lyx_gui_misc.C:341
 msgid "Dismiss"
@@ -7945,17 +7953,16 @@ msgstr "'. Выхожу."
 
 #: src/lyx_main.C:219
 msgid "Warning: could not determine path of binary."
-msgstr "Предупреждение: не удается определить путь к исполняемому файлу."
+msgstr "Предупреждение: не удаётся определить путь к исполняемому файлу."
 
 #: src/lyx_main.C:221
 msgid "If you have problems, try starting LyX with an absolute path."
-msgstr ""
-"Если у вас есть возникли проблемы, попытайтесь запустить LyX с полным путем."
+msgstr "Если у вас есть возникли проблемы, попытайтесь запустить LyX с полным путём."
 
 #
 #: src/lyx_main.C:311
 msgid "LYX_DIR_11x environment variable no good."
-msgstr "Переменная окружения LYX_DIR_12 --- это не есть хорошо."
+msgstr "Переменная окружения LYX_DIR_12 некорректна."
 
 #: src/lyx_main.C:313
 msgid "System directory set to: "
@@ -8001,7 +8008,7 @@ msgstr "Вы указали неверный LyX-каталог."
 
 #: src/lyx_main.C:564
 msgid "You don't have a personal LyX directory."
-msgstr "У Вас нет личного LyX-каталога,"
+msgstr "У Вас нет личного LyX-каталога."
 
 #: src/lyx_main.C:566
 msgid "It is needed to keep your own configuration."
@@ -8072,6 +8079,23 @@ msgid ""
 "                  and file.xxx is the file to be imported.\n"
 "Check the LyX man page for more details."
 msgstr ""
+"Использование: lyx [ ключи командной строки ] [ имя_файла.lyx ... ]\n"
+"Возможные ключи (будьте внимательны к регистру букв):\n"
+"\t-help              данная подсказка\n"
+"\t-userdir dir       попробовать установить каталог пользователя в dir\n"
+"\t-sysdir dir        попробовать установить системный каталог в dir\n"
+"\t-geometry WxH+X+Y  установить размер главного окна при запуске\n"
+"\t-dbg feature[,feature]...\n"
+"                  select the features to debug.\n"
+"                  Type `lyx -dbg' to see the list of features\n"
+"\t-x [--execute] command\n"
+"                  где command это команда lyx которую следует выполнить.\n"
+"\t-e [--export] fmt\n"
+"                  где fmt это формат, в который нужно экспортировать файл.\n"
+"\t-i [--import] fmt file.xxx\n"
+"                  где fmt это формат импорта из файла\n"
+"                  file.xxx.\n"
+"Смотрите страницу man по LyX для более подробного объяснения."
 
 #: src/lyx_main.C:749
 msgid "List of supported debug flags:"
@@ -8093,21 +8117,23 @@ msgstr "Отсутствует строка команды после ключа -x!"
 
 #: src/lyx_main.C:808
 msgid "Missing file type [eg latex, ps...] after "
-msgstr ""
+msgstr "Пропущен тип файла [например latex, ps...] после"
 
 #: src/lyx_main.C:810 src/lyx_main.C:825
 msgid " switch!"
-msgstr ""
+msgstr " переключить!"
 
 #: src/lyx_main.C:823
 msgid "Missing type [eg latex, ps...] after "
-msgstr ""
+msgstr "Пропущен тип [например latex, ps...] после "
 
 #: src/lyxrc.C:1650
 msgid ""
 "The font encoding used for the LaTeX2e fontenc package. T1 is highly "
 "recommended for non-English languages."
 msgstr ""
+"Кодировка символов, используемая пакетом fontenc LaTeX. Для всех языков, "
+"кроме английского, особенно рекомендуется кодировка T1."
 
 #: src/lyxrc.C:1654
 msgid ""
@@ -8119,8 +8145,7 @@ msgstr ""
 
 #: src/lyxrc.C:1658
 msgid "Your favorite print program, e.g. \"dvips\", \"dvilj4\"."
-msgstr ""
-"Программа печати, которой вы пользуетесь, например \"dvips\", \"dvilj4\"."
+msgstr "Программа печати, которой вы пользуетесь, например \"dvips\", \"dvilj4\"."
 
 #: src/lyxrc.C:1662
 msgid "The option to print only even pages."
@@ -8160,13 +8185,13 @@ msgstr "Опция для задания размеров бумаги."
 
 #: src/lyxrc.C:1698
 msgid "Option to pass to the print program to print on a specific printer."
-msgstr ""
+msgstr "Опция для указания программе печати печатать на указанном принтере."
 
 #: src/lyxrc.C:1702
 msgid ""
 "Select for LyX to pass the name of the destination printer to your print "
 "command."
-msgstr ""
+msgstr "Выберите, чтобы LyX передавал имя принтера вашей команде печати."
 
 #: src/lyxrc.C:1706
 msgid "Option to pass to the print program to print to a file."
@@ -8194,12 +8219,17 @@ msgid ""
 "If you specify a printer name in the print dialog, the following argument is "
 "prepended along with the printer name after the spool command."
 msgstr ""
+"Если вы укажете имя принтера в диалоге печати, следующий аргумент prepended "
+"along с именем принтера после команды печати."
 
 #: src/lyxrc.C:1726
 msgid ""
 "DPI (dots per inch) of your monitor is auto-detected by LyX. If that goes "
 "wrong, override the setting here."
 msgstr ""
+"DPI (количество точек на дюйм) вашего монитора определяется LyX "
+"автоматически. Если LyX сделал это неправильно, вы можете указать правильное "
+"значение здесь."
 
 #: src/lyxrc.C:1731
 #, no-c-format
@@ -8235,8 +8265,7 @@ msgid "The encoding for the menu/popups fonts."
 msgstr "Кодировка для шрифтов меню."
 
 #: src/lyxrc.C:1764
-msgid ""
-"The time interval between auto-saves (in seconds). 0 means no auto-save."
+msgid "The time interval between auto-saves (in seconds). 0 means no auto-save."
 msgstr ""
 "Интервал времени между автосохранениями (в секундах). 0 означает не "
 "выполнять автосохранение."
@@ -8352,6 +8381,9 @@ msgid ""
 "if you can't spellcheck words with international letters in them. This may "
 "not work with all dictionaries."
 msgstr ""
+"Укажите, передавать ли параметр входной кодировки -T в ispell. Включите это, "
+"если вы не можете проверить правописания слов с международными буквами в "
+"них. Это может работать не со всеми словарями."
 
 #: src/lyxrc.C:1864
 msgid ""
@@ -8360,9 +8392,8 @@ msgid ""
 msgstr "Укажите дополнительный язык. По умолчанию используется язык документа."
 
 #: src/lyxrc.C:1869
-msgid ""
-"Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
-msgstr ""
+msgid "Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
+msgstr "Укажите дополнительный личный словарный файл. Например \".ispell_english\"."
 
 #: src/lyxrc.C:1874
 msgid "Specify additional chars that can be part of a word."
@@ -8374,6 +8405,9 @@ msgid ""
 "existing size for a match. Use this if the scalable fonts look bad and you "
 "have many fixed size fonts."
 msgstr ""
+"Разрешить использование масштабируемых экранных шрифтов? Если нет, LyX будет "
+"использовать ближайший существующий размер. Используйте эту опцию если "
+"масштабируемые шрифты выглядят плохо, а у вас есть много растровых шрифтов."
 
 #: src/lyxrc.C:1882
 msgid ""
@@ -8386,12 +8420,18 @@ msgid ""
 "LyX normally doesn't update the cursor position if you move the scrollbar. "
 "Set to true if you'd prefer to always have the cursor on screen."
 msgstr ""
+"Обычно LyX не обновляет позицию курсора если вы перемещаете текст полосой "
+"прокрутки. Укажите этот пункт, если вы предпочитаете всегда видеть текст на "
+"экране."
 
 #: src/lyxrc.C:1890
 msgid ""
 "Sets whether LyX asks for a second confirmation to exit when you have "
 "changed documents. (LyX will still ask to save changed documents.)"
 msgstr ""
+"Указывает, будет ли LyX повторно спрашивать подтверждение при выходе, когда "
+"у вас есть изменённые документы. (В любом случае LyX будет продолжать "
+"предлагать сохранить изменённые документы.)"
 
 #: src/lyxrc.C:1894
 msgid ""
@@ -8410,12 +8450,11 @@ msgid ""
 "the backup file in the same directory as the original file."
 msgstr ""
 "Здесь указывается путь для запоминания резервных файлов. Если указана пустая "
-"строкаLyX будет создавать резервный файл в том каталоге, где находится "
+"строка, LyX будет создавать резервный файл в том каталоге, где находится "
 "редактируемый файл. "
 
 #: src/lyxrc.C:1906
-msgid ""
-"Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
+msgid "Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
 msgstr ""
 "Выберите для включения поддержки языков справа налево (таких как еврейский, "
 "арабский)."
@@ -8454,12 +8493,11 @@ msgstr ""
 msgid ""
 "Select if a language switching command is needed at the beginning of the "
 "document."
-msgstr ""
+msgstr "Выберите, если в начале документа требуется команда переключения языка."
 
 #: src/lyxrc.C:1930
-msgid ""
-"Select if a language switching command is needed at the end of the document."
-msgstr ""
+msgid "Select if a language switching command is needed at the end of the document."
+msgstr "Выберите, если в конце документа требуется команда переключения языка."
 
 #: src/lyxrc.C:1934
 msgid ""
@@ -8470,11 +8508,11 @@ msgstr ""
 
 #: src/lyxrc.C:1938
 msgid "The latex command for changing back to the language of the document."
-msgstr ""
+msgstr "Команда latex для изменения языка документа обратно."
 
 #: src/lyxrc.C:1942
 msgid "The latex command for local changing of the language."
-msgstr ""
+msgstr "Команда latex для локального изменения языка."
 
 #: src/lyxrc.C:1947
 #, no-c-format
@@ -8485,29 +8523,32 @@ msgstr ""
 
 #: src/lyxrc.C:1951
 msgid "De-select if you don't want the startup banner."
-msgstr ""
+msgstr "Уберите, если вы не хотите видеть заставку при запуске."
 
 #: src/lyxrc.C:1955
 msgid "The wheel movement factor (for mice with wheels or five button mice)."
-msgstr ""
+msgstr "Коэффициент для мышей с колёсиком."
 
 #: src/lyxrc.C:1968
 msgid ""
 "This sets the behaviour if you want to be asked for a filename when creating "
 "a new document or wait until you save it and be asked then."
 msgstr ""
+"Укажите, если вы хотите, чтобы LyX спрашивал вас о имени файла при создании "
+"нового документа. Иначе вы будете спрошены об имени файла при его первом "
+"сохранении."
 
 #: src/lyxrc.C:1972
 msgid "New documents will be assigned this language."
-msgstr ""
+msgstr "Новые документы будут создаваться в этом языке."
 
 #: src/lyxrc.C:1976
 msgid "Maximum number of words in the initialization string for a new label"
-msgstr ""
+msgstr "Максимальное число слов в инициализационной строке для новой метки."
 
 #: src/LyXSendto.C:40
 msgid "Send Document to Command"
-msgstr "Переслать документ в команду"
+msgstr "Переслать документ команде"
 
 #: src/lyxvc.C:94 src/lyxvc.C:127
 msgid "Save document and proceed?"
@@ -8520,11 +8561,11 @@ msgstr "LyX VC: Первоначальное описание"
 #
 #: src/lyxvc.C:108
 msgid "(no initial description)"
-msgstr ""
+msgstr "(нет первоначального описания)"
 
 #: src/lyxvc.C:113
 msgid "This document has NOT been registered."
-msgstr ""
+msgstr "Этот документ не был зарегистрирован."
 
 #: src/lyxvc.C:139
 msgid "LyX VC: Log Message"
@@ -8532,7 +8573,7 @@ msgstr "LyX VC: Сообщение для журнала сообщений"
 
 #: src/lyxvc.C:142
 msgid "(no log message)"
-msgstr ""
+msgstr "(нет сообщений в журнале)"
 
 #: src/lyxvc.C:157
 msgid "Ignore changes and proceed with check out?"
@@ -8551,7 +8592,7 @@ msgstr "в документ с момента последней заливки."
 
 #: src/lyxvc.C:174
 msgid "Do you still want to do it?"
-msgstr "Вы все еще хотите это сделать?"
+msgstr "Вы все ещё хотите это сделать?"
 
 #
 #: src/lyxvc.C:277
@@ -8756,7 +8797,7 @@ msgstr "DVI|#D"
 
 #: src/print_form.C:41
 msgid "Postscript|#P"
-msgstr "Postscript|#P"
+msgstr "Postscript"
 
 #: src/print_form.C:43
 msgid "LaTeX|#T"
@@ -8821,7 +8862,7 @@ msgstr "Использовать другой личный словарь:"
 
 #: src/sp_form.C:48
 msgid "Extra special chars allowed in words:|#E"
-msgstr "Допускать наличие в словах следущих символов:"
+msgstr "Допускать наличие в словах следующих символов:"
 
 #: src/sp_form.C:54
 msgid "Dictionary"
@@ -8891,35 +8932,35 @@ msgstr "Внутренняя ошибка LyX!"
 msgid "Could not test if directory is writeable"
 msgstr "Невозможно проверить каталог на запись"
 
-#: src/support/filetools.C:410
+#: src/support/filetools.C:412
 msgid "Error! Cannot open directory:"
 msgstr "Ошибка открытия каталога "
 
-#: src/support/filetools.C:428
+#: src/support/filetools.C:430
 msgid "Error! Could not remove file:"
 msgstr "Ошибка удаления файла "
 
-#: src/support/filetools.C:453
+#: src/support/filetools.C:455
 msgid "Error! Couldn't create temporary directory:"
 msgstr "Ошибка создания временного каталога "
 
-#: src/support/filetools.C:469
+#: src/support/filetools.C:471
 msgid "Error! Couldn't delete temporary directory:"
 msgstr "Ошибка удаления временного каталога "
 
-#: src/support/filetools.C:522
+#: src/support/filetools.C:524
 msgid "Internal error!"
 msgstr "Внутренняя ошибка!"
 
-#: src/support/filetools.C:523
+#: src/support/filetools.C:525
 msgid "Call to createDirectory with invalid name"
 msgstr "Вызов createDirectory с неверным именем"
 
-#: src/support/filetools.C:528
+#: src/support/filetools.C:530
 msgid "Error! Couldn't create directory:"
 msgstr "Ошибка создания каталога "
 
-#: src/support/filetools.C:1133
+#: src/support/filetools.C:1135
 msgid "Could not delete auto-save file!"
 msgstr "Ошибка удаления файла автосохранения!"
 
@@ -8957,7 +8998,7 @@ msgid ""
 "No font change defined. Use Character under the Layout menu to define font "
 "change."
 msgstr ""
-"Не определен шрифт изменений. Используйте 'Формат->Символы'\n"
+"Не определён шрифт изменений. Используйте меню 'Формат->Символ'\n"
 "для определения шрифта изменений"
 
 #: src/text2.C:2192 src/text2.C:2305
@@ -8972,8 +9013,7 @@ msgstr "извините."
 msgid ""
 "You cannot insert a space at the beginning of a paragraph.  Please read the "
 "Tutorial."
-msgstr ""
-"Вы не можете вставлять пробел в начале абзаца (см. Помощь|Самоучитель)."
+msgstr "Вы не можете вставлять пробел в начале абзаца (см. Помощь|Самоучитель)."
 
 #: src/text.C:2000
 msgid "You cannot type two spaces this way.  Please read the Tutorial."
@@ -8999,3 +9039,4 @@ msgstr "Вы не можете вставить параграф-отступ в мини-страницу!"
 #: src/text.C:3992
 msgid "Float would include float!"
 msgstr "Плавающий объект будет включать плавающий объект!"
+
