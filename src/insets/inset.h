@@ -291,8 +291,6 @@ protected:
 	mutable int top_baseline;
 	///
 	mutable int scx;
-	/// Used to identify the inset for cursor positioning when undoing
-	unsigned int id_;
 	///
 	mutable Dimension dim_;
 
@@ -316,7 +314,7 @@ class InsetOld_code {
 	InsetOld::Code val_;
 public:
 	InsetOld_code(InsetOld::Code val) : val_(val) {}
-	operator InsetOld::Code() const{ return val_; }
+	operator InsetOld::Code() const { return val_; }
 };
 
 
@@ -324,13 +322,13 @@ public:
  * returns true if pointer argument is valid
  * and points to an editable inset
  */
-bool isEditableInset(InsetOld const * i);
+bool isEditableInset(InsetOld const * inset);
 
 
 /**
  * returns true if pointer argument is valid
  * and points to a highly editable inset
  */
-bool isHighlyEditableInset(InsetOld const * i);
+bool isHighlyEditableInset(InsetOld const * inset);
 
 #endif
