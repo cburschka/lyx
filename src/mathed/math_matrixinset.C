@@ -221,7 +221,7 @@ bool MathMatrixInset::numberedType() const
 }
 
 
-void MathMatrixInset::Validate(LaTeXFeatures & features)
+void MathMatrixInset::Validate(LaTeXFeatures & features) const
 {
 	features.amsstyle = ams();
 
@@ -230,40 +230,11 @@ void MathMatrixInset::Validate(LaTeXFeatures & features)
 	//if (features.amsstyle)
 	//  return;
 
-	//Validate1(features);
-
 	features.boldsymbol = true;
-	features.binom      = true;
-}
+	//features.binom      = true;
 
-/*
-void MathMatrixInset::Validate1(LaTeXFeatures & features)
-{
-	MathIter it(cell());
-
-	while (it.OK() && !(features.binom && features.boldsymbol)) {
-		MathInset * p = it.nextInset();
-		if (p) {
-			p = it.GetActiveInset();
-			if (p) {
-				if (!features.binom && p->GetType() == LM_OT_MACRO &&
-				    p->name() == "binom") {
-					features.binom = true;
-				} else {
-					for (int i = 0; i <= p->getMaxArgumentIdx(); ++i) {
-						p->setArgumentIdx(i);
-						Validate1(features, p);
-					}
-				}
-			} else {
-				if (!features.boldsymbol && p->name() == "boldsymbol") 
-					features.boldsymbol = true;
-			}
-		}
-		it.Next();
-	}
+	MathInset::Validate(features);
 }
-*/
 
 
 void MathMatrixInset::header_write(std::ostream & os) const

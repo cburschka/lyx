@@ -39,6 +39,8 @@
 */
 
 
+class LaTeXFeatures;
+
 class MathInset {
 public: 
 	/** A math inset has a name (usually its LaTeX name),
@@ -187,6 +189,8 @@ public:
 	void dump() const;
 
 	///
+	void Validate(LaTeXFeatures & features) const;
+
 	///
 	static int workwidth;
 protected:

@@ -26,6 +26,7 @@
 class MathInset;
 class MathMacro;
 class Painter;
+class LaTeXFeatures;
 
 #ifdef __GNUG__
 #pragma interface
@@ -116,6 +117,8 @@ public:
 	void Write(std::ostream &, bool) const;
 	///
 	void WriteNormal(std::ostream &) const;
+	///
+	void Validate(LaTeXFeatures &) const;
 private:
 	///
 	typedef std::vector<unsigned char>           buffer_type;

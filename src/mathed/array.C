@@ -339,3 +339,11 @@ void MathArray::WriteNormal(ostream & os) const
 	Write(os, true);
 }
 
+
+void MathArray::Validate(LaTeXFeatures & features) const
+{
+	for (int pos = 0; pos < size(); next(pos)) 
+		if (isInset(pos)) 
+			nextInset(pos)->Validate(features);
+}
+

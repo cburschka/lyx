@@ -56,6 +56,8 @@ public:
 	/// Put the cursor in the last position
 	void last();
 	///
+	bool plainLeft();
+	///
 	bool plainRight();
 	///
 	void Delete();

@@ -49,7 +49,7 @@ public:
 	///
 	std::vector<string> const getLabelList() const;
 	///
-	void Validate(LaTeXFeatures & features);
+	void Validate(LaTeXFeatures & features) const;
 
 	///
 	void addRow(int);

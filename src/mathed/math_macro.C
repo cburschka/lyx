@@ -28,6 +28,7 @@
 #include "math_macrotable.h"
 #include "math_macrotemplate.h"
 #include "Painter.h"
+#include "LaTeXFeatures.h"
 
 using std::endl;
 
@@ -182,4 +183,12 @@ bool MathMacro::idxLeft(int &, int &) const
 bool MathMacro::idxRight(int &, int &) const
 {
 	return false;
+}
+
+
+void MathMacro::Validate(LaTeXFeatures & features) const
+{
+	if (name_ == "binom")
+		features.binom = true;
+	MathInset::Validate(features);
 }

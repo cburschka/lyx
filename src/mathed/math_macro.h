@@ -62,6 +62,9 @@ public:
 	///
 	bool idxRight(int &, int &) const;
 
+	///
+	void Validate(LaTeXFeatures &) const;
+
 private:
 	///
 	MathMacroTemplate const * const tmplate_;

@@ -153,6 +153,11 @@ bool MathCursor::isInside(MathInset * p) const
 }
 
 
+bool MathCursor::plainLeft()
+{
+	return array().prev(cursor_);
+}
+
 bool MathCursor::Left(bool sel)
 {
 	dump("Left 1");
@@ -165,8 +170,8 @@ bool MathCursor::Left(bool sel)
 			MacroModeClose();
 		return true;
 	}
-	clearLastCode();
 	SelHandle(sel);
+	clearLastCode();
 
 	bool result = false;
 
@@ -214,9 +219,8 @@ bool MathCursor::Right(bool sel)
 		MacroModeClose();
 		return true;
 	}
-
-	clearLastCode();
 	SelHandle(sel);
+	clearLastCode();
 
 	bool result = false;
 
@@ -322,9 +326,8 @@ void MathCursor::Home()
 	if (macro_mode)
 		MacroModeClose();
 	clearLastCode();
-	if (!par_->idxHome(idx_, cursor_)) {
+	if (!par_->idxHome(idx_, cursor_)) 
 		pop();
-	}
 	dump("Home 2");
 }
 

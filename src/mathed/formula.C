@@ -123,6 +123,7 @@ void InsetFormula::draw(BufferView * bv, LyXFont const &,
 {
 	int x = int(xx) - 1;
 	y -= 2;
+
 	MathInset::workwidth = bv->workWidth();
 	Painter & pain = bv->painter();
 
@@ -130,22 +131,20 @@ void InsetFormula::draw(BufferView * bv, LyXFont const &,
 	int w = par()->width();
 	int h = par()->height();
 	int a = par()->ascent();
-	pain.fillRectangle(int(x), y - a, w, h, LColor::mathbg);
+	pain.fillRectangle(x, y - a, w, h, LColor::mathbg);
 
-	if (mathcursor) {
-		if (mathcursor->formula() == this) {
-			if (mathcursor->Selection()) {
-				int xp[10];
-				int yp[10];
-				int n;
-				mathcursor->SelGetArea(xp, yp, n);
-				pain.fillPolygon(xp, yp, n, LColor::selection);
-			}
-			pain.rectangle(int(x), y - a, w, h, LColor::mathframe);
+	if (mathcursor && mathcursor->formula() == this) {
+		if (mathcursor->Selection()) {
+			int xp[10];
+			int yp[10];
+			int n;
+			mathcursor->SelGetArea(xp, yp, n);
+			pain.fillPolygon(xp, yp, n, LColor::selection);
 		}
+		pain.rectangle(x, y - a, w, h, LColor::mathframe);
 	}
 
-	par()->draw(pain, int(x), y);
+	par()->draw(pain, x, y);
 	xx += par()->width();
 
 	setCursorVisible(false);

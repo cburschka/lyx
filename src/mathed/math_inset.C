@@ -357,3 +357,9 @@ bool MathInset::covers(int x, int y) const
 		y >= yo_ - ascent_ &&
 		y <= yo_ + descent_;
 }
+
+void MathInset::Validate(LaTeXFeatures & features) const
+{
+	for (int i = 0; i < nargs(); ++i)
+		cell(i).Validate(features);
+}
