@@ -118,10 +118,10 @@ bool textHandleUndo(BufferView * bv, Undo & undo)
 			deletepar = before->next();
 		else
 			deletepar = firstUndoParagraph(bv, undo.number_of_inset_id);
-		Paragraph * tmppar2 = undo.pars.front();
+		// this surprisingly fills the undo! (Andre')
+		size_t par = 0;
 		while (deletepar && deletepar != behind) {
 			deletelist.push_back(deletepar);
-			Paragraph * tmppar = deletepar;
 			deletepar = deletepar->next();
 
 			// A memory optimization for edit:
@@ -129,8 +129,8 @@ bool textHandleUndo(BufferView * bv, Undo & undo)
 			// is stored in the undo. So restore
 			// the text informations.
 			if (undo.kind == Undo::EDIT) {
-				tmppar2->setContentsFromPar(*tmppar);
-				tmppar2 = tmppar2->next();
+				undo.pars[par]->setContentsFromPar(*deletelist.back());
+				++par;
 			}
 		}
 	}
@@ -147,9 +147,9 @@ bool textHandleUndo(BufferView * bv, Undo & undo)
 	}
 
 	// Put the new stuff in the list if there is one.
-	Paragraph * undopar     = undo.pars.empty() ? 0 : undo.pars.front();
-	if (undopar) {
-		undopar->previous(before);
+	Paragraph * undopar = undo.pars.empty() ? 0 : undo.pars.front();
+	if (!undo.pars.empty()) {
+		undo.pars.front()->previous(before);
 		if (before)
 			before->next(undopar);
 		else {
@@ -173,7 +173,6 @@ bool textHandleUndo(BufferView * bv, Undo & undo)
 			} else {
 				bv->buffer()->paragraphs.set(behind);
 			}
-
 			undopar = behind;
 		}
 	}

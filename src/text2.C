@@ -963,7 +963,7 @@ void LyXText::setParagraph(bool line_top, bool line_bottom,
 			++endpit;
 			undoendpit = endpit;
 		}
-	} else if (endpit!= pars_end) {
+	} else if (endpit != pars_end) {
 		// because of parindents etc.
 		++endpit;
 	}
