@@ -1,5 +1,10 @@
 2002-07-22  John Levon  <moz@compsoc.man.ac.uk>
 
+	* QLyXKeySym.C: return 0 when text_ is empty
+	  for getISOEncoded() 
+
+2002-07-22  John Levon  <moz@compsoc.man.ac.uk>
+
 	* QCommandBuffer.C: probably compile fix
 
 	* QtView.C:

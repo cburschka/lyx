@@ -56,6 +56,8 @@ string QLyXKeySym::getSymbolName() const
  
 char QLyXKeySym::getISOEncoded() const
 {
+	if (!text_.length()) 
+		return 0;
 	// FIXME
 	return text_.latin1()[0];
 }
