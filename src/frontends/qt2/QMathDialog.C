@@ -105,6 +105,10 @@ void QMathDialog::showingPanel(int num)
 		return;
 
 	addPanel(num);
+
+	// Qt needs to catch up. Dunno why. 
+	qApp->processEvents();
+ 
 	panel_initialised[num] = true;
 }
 
