@@ -1,3 +1,17 @@
+2000-11-02  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* lib/reLyX/MakePreamble.pm (translate_preamble): fix reading of
+	class names with non-letter characters (from Yves Bastide).
+
+2000-10-30  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/buffer.C (readFile): compare float with float, not with int.
+
+2000-10-25  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* src/mathed/formula.C (mathed_string_width): Use string instead
+	of a constant size char array.
+                                      
 2000-10-24  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* lib/kbd/latvian.kmap: new file from Janne Pänkälä (epa@iki.fi)

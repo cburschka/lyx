@@ -179,7 +179,7 @@ sub translate_preamble {
 
     # Read the document class, in braces, then convert it to a textclass
     # However, if the user input a different class with the -c option, use that
-    s/\s*\{(\w+)\}//;
+    s/\s*\{(\S+)\s*\}//;
     my $class = $1;
     $class = $true_class if $true_class; # override from -c option
     die "no document class in file, no -c option given\n" unless $class;

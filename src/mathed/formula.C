@@ -200,21 +200,18 @@ LyXFont mathed_get_font(short type, int size)
 
 int mathed_string_width(short type, int size, byte const * s, int ls)
 {
-    LyXFont f = WhichFont(type, size);
+	string st;
+	if (MathIsBinary(type))
+		for (int i = 0; i < ls; ++i) {
+			st += ' ';
+			st += s[i];
+			st += ' ';
+		}
+	else
+		st = string(reinterpret_cast<char const *>(s), ls);
 
-    byte sx[80];
-    if (MathIsBinary(type)) {
-	byte * ps = &sx[0];
-	for (int i = 0; i < ls && i < 75; ++i) {
-	    *(ps++) = ' ';
-	    *(ps++) = s[i];
-	    *(ps++) = ' ';
-	}
-	*(ps++) = '\0';
-	ls *= 3;
-	s = &sx[0];
-    }
-    return lyxfont::width(reinterpret_cast<char const *>(s), ls, f);
+	LyXFont const f = WhichFont(type, size);
+	return lyxfont::width(st, f);
 }
 
 
@@ -256,11 +253,14 @@ void MathedInset::drawStr(Painter & pain, short type, int siz,
 	string st;
 	if (MathIsBinary(type)) {
 		for (int i = 0; i < ls; ++i) {
-			st += string(" ") + char(s[i]) + ' ';
+			st += ' ';
+			st += char(s[i]);
+			st += ' ';
 		}
 	} else {
 		st = string(reinterpret_cast<char const *>(s), ls);
 	}
+	
 	LyXFont mf = mathed_get_font(type, siz);
 	pain.text(x, y, st, mf);
 }
