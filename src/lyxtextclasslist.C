@@ -32,7 +32,7 @@ using std::endl;
 using std::find_if;
 using std::make_pair;
 using std::sort;
-
+using std::string;
 using std::pair;
 
 

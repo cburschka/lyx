@@ -21,7 +21,7 @@ public:
 	///
 	ControlShowFile(Dialog &);
 	///
-	virtual bool initialiseParams(string const & data);
+	virtual bool initialiseParams(std::string const & data);
 	///
 	virtual void clearParams();
 	///
@@ -29,13 +29,13 @@ public:
 	///
 	virtual bool isBufferDependent() const { return false; }
 	///
-	string getFileContents();
+	std::string getFileContents();
 	///
-	string getFileName();
+	std::string getFileName();
 
 private:
 	///
-	string filename_;
+	std::string filename_;
 };
 
 #endif // CONTROLSHOWFILE_H

@@ -16,7 +16,7 @@
 #include "math_data.h"
 #include "math_nestinset.h"
 #include "metricsinfo.h"
-#include "support/std_string.h"
+
 
 class MathMacroTemplate;
 
@@ -25,7 +25,7 @@ class MathMacroTemplate;
 class MathMacro : public MathNestInset {
 public:
 	/// A macro can be built from an existing template
-	explicit MathMacro(string const &);
+	explicit MathMacro(std::string const &);
 	///
 	MathMacro(MathMacro const &);
 	///
@@ -66,7 +66,7 @@ private:
 	///
 	void operator=(MathMacro const &);
 	///
-	string name() const;
+	std::string name() const;
 	///
 	bool defining() const;
 	///

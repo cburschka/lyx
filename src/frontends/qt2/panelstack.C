@@ -20,6 +20,8 @@
 
 #include <boost/assert.hpp>
 
+using std::string;
+
 
 PanelStack::PanelStack(QWidget * parent, const char * name)
 	: QWidget(parent, name)

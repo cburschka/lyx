@@ -16,7 +16,8 @@
 #define LANGUAGE_H
 
 #include <map>
-#include "support/std_string.h"
+#include <string>
+
 
 class Encoding;
 
@@ -26,22 +27,22 @@ public:
 	///
 	Language() : RightToLeft_(false) {}
 	///
-	Language(string const & l, string const & b, string const & d,
-		 bool rtl, Encoding const * e, string const & c,
-		 string const & o)
+	Language(std::string const & l, std::string const & b, std::string const & d,
+		 bool rtl, Encoding const * e, std::string const & c,
+		 std::string const & o)
 		: lang_(l), babel_(b), display_(d), RightToLeft_(rtl),
 		  encoding_(e), code_(c), latex_options_(o)
 		{}
 	///
-	string const & lang() const {
+	std::string const & lang() const {
 		return lang_;
 	}
 	///
-	string const & babel() const {
+	std::string const & babel() const {
 		return babel_;
 	}
 	///
-	string const & display() const {
+	std::string const & display() const {
 		return display_;
 	}
 	///
@@ -53,43 +54,43 @@ public:
 		return encoding_;
 	}
 	///
-	string const & code() const {
+	std::string const & code() const {
 		return code_;
 	}
 	///
-	string const & latex_options() const {
+	std::string const & latex_options() const {
 		return latex_options_;
 	}
 private:
 	///
-	string lang_;
+	std::string lang_;
 	///
-	string babel_;
+	std::string babel_;
 	///
-	string display_;
+	std::string display_;
 	///
 	bool RightToLeft_;
 	///
 	Encoding const * encoding_;
 	///
-	string code_;
+	std::string code_;
 	///
-	string latex_options_;
+	std::string latex_options_;
 };
 
 class Languages
 {
 public:
 	///
-	typedef std::map<string, Language> LanguageList;
+	typedef std::map<std::string, Language> LanguageList;
 	///
 	typedef LanguageList::const_iterator const_iterator;
 	///
 	typedef LanguageList::size_type size_type;
 	///
-	void read(string const & filename);
+	void read(std::string const & filename);
 	///
-	Language const * getLanguage(string const & language) const;
+	Language const * getLanguage(std::string const & language) const;
 	///
 	size_type size() const {
 		return languagelist.size();

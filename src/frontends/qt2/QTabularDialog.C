@@ -23,6 +23,8 @@
 #include <qpushbutton.h>
 #include <qlineedit.h>
 
+using std::string;
+
 
 QTabularDialog::QTabularDialog(QTabular * form)
 	: QTabularDialogBase(0, 0, false, 0),

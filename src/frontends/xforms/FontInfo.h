@@ -13,10 +13,9 @@
 #ifndef FONTINFO_H
 #define FONTINFO_H
 
-
-#include "support/std_string.h"
-
 #include <boost/scoped_array.hpp>
+
+#include <string>
 
 /** This class manages a font.
     The idea is to create a FontInfo object with a font name pattern with a
@@ -32,7 +31,7 @@ public:
 	FontInfo() { init(); }
 
 	///
-	explicit FontInfo(string const & pat)
+	explicit FontInfo(std::string const & pat)
 		: pattern(pat) { init(); }
 
 	/// Does any font match our pattern?
@@ -48,23 +47,23 @@ public:
 	}
 
 	/// Get existing pattern
-	string const & getPattern() const { return pattern; }
+	std::string const & getPattern() const { return pattern; }
 
 	/// Set new pattern
-	void setPattern(string const & pat);
+	void setPattern(std::string const & pat);
 
 	/** Return full name of font close to this size.
 	  If impossible, result is the empty string */
-	string const getFontname(int size);
+	std::string const getFontname(int size);
 private:
 	/// Font pattern (with wildcard for size)
-	string pattern;
+	std::string pattern;
 
 	/// Available size list
 	boost::scoped_array<int> sizes;
 
 	/// Corresponding name list
-	boost::scoped_array<string> strings;
+	boost::scoped_array<std::string> strings;
 
 	/// Number of matches
 	int matches;
@@ -85,7 +84,7 @@ private:
 	void query();
 
 	/// Build newly sized font string
-	string const resize(string const &, int size) const;
+	std::string const resize(std::string const &, int size) const;
 };
 
 #endif // FONTINFO_H

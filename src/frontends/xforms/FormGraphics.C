@@ -45,6 +45,7 @@ using lyx::support::token;
 using std::endl;
 
 using std::vector;
+using std::string;
 
 
 namespace {

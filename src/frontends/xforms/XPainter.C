@@ -30,6 +30,8 @@
 
 using lyx::support::uppercase;
 
+using std::string;
+
 
 XPainter::XPainter(XWorkArea & xwa)
 	: Painter(), owner_(xwa)

@@ -16,6 +16,8 @@
 #include "math_support.h"
 #include "dimension.h"
 
+
+using std::string;
 using std::auto_ptr;
 
 

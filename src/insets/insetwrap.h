@@ -25,9 +25,9 @@ struct InsetWrapParams {
 	void read(LyXLex &);
 
 	///
-	string type;
+	std::string type;
 	///
-	string placement;
+	std::string placement;
 	///
 	LyXLength width;
 };
@@ -38,7 +38,7 @@ struct InsetWrapParams {
 class InsetWrap : public InsetCollapsable {
 public:
 	///
-	InsetWrap(BufferParams const &, string const &);
+	InsetWrap(BufferParams const &, std::string const &);
 	///
 	~InsetWrap();
 	///
@@ -59,7 +59,7 @@ public:
 	///
 	int docbook(Buffer const &, std::ostream &, bool mixcont) const;
 	///
-	string const editMessage() const;
+	std::string const editMessage() const;
 	///
 	bool insetAllowed(InsetOld::Code) const;
 	///
@@ -87,16 +87,16 @@ public:
 	///
 	virtual InsetBase & inset() const { return inset_; }
 	///
-	virtual string const & name() const { return name_; }
+	virtual std::string const & name() const { return name_; }
 	///
-	virtual string const inset2string(Buffer const &) const;
+	virtual std::string const inset2string(Buffer const &) const;
 	///
-	static void string2params(string const &, InsetWrapParams &);
+	static void string2params(std::string const &, InsetWrapParams &);
 	///
-	static string const params2string(InsetWrapParams const &);
+	static std::string const params2string(InsetWrapParams const &);
 private:
 	///
-	static string const name_;
+	static std::string const name_;
 	///
 	InsetWrap & inset_;
 };

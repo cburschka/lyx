@@ -14,7 +14,6 @@
 
 #include <iosfwd>
 
-#include "support/std_string.h"
 
 ///
 class Spacing {
@@ -38,7 +37,7 @@ public:
 	Spacing(Spacing::Space sp, float val = 1.0) {
 		set(sp, val);
 	}
-	Spacing(Spacing::Space sp, string const & val) {
+	Spacing(Spacing::Space sp, std::string const & val) {
 		set(sp, val);
 	}
 	///
@@ -52,13 +51,13 @@ public:
 	///
 	void set(Spacing::Space sp, float val = 1.0);
 	///
-	void set(Spacing::Space sp, string const & val) ;
+	void set(Spacing::Space sp, std::string const & val) ;
 	///
 	void writeFile(std::ostream &, bool para = false) const;
 	///
-	string const writeEnvirBegin() const;
+	std::string const writeEnvirBegin() const;
 	///
-	string const writeEnvirEnd() const;
+	std::string const writeEnvirEnd() const;
 
 private:
 	///
@@ -66,7 +65,7 @@ private:
 	///
 	float value;
 	/// names of line spacing
-	static string const spacing_string[];
+	static std::string const spacing_string[];
 };
 
 

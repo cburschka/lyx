@@ -31,7 +31,7 @@ using lyx::support::strToInt;
 
 using std::find;
 using std::find_if;
-
+using std::string;
 using std::vector;
 
 

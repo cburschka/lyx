@@ -28,6 +28,7 @@ using lyx::support::user_lyxdir;
 
 using std::ostream;
 using std::ostringstream;
+using std::string;
 
 
 ControlAboutlyx::ControlAboutlyx(Dialog & parent)

@@ -14,7 +14,6 @@
 #define XPAINTER_H
 
 #include "frontends/Painter.h"
-#include "support/std_string.h"
 
 #include <X11/Xlib.h>
 
@@ -96,7 +95,7 @@ public:
 
 	/// draw a string at position x, y (y is the baseline)
 	virtual Painter & text(int x, int y,
-		string const & str, LyXFont const & f);
+		std::string const & str, LyXFont const & f);
 
 	/** Draw a string at position x, y (y is the baseline)
 	 *  This is just for fast drawing

@@ -26,9 +26,9 @@ struct LyXLex::Pimpl : boost::noncopyable {
 	///
 	Pimpl(keyword_item * tab, int num);
 	///
-	string const getString() const;
+	std::string const getString() const;
 	///
-	void printError(string const & message) const;
+	void printError(std::string const & message) const;
 	///
 	void printTable(std::ostream & os);
 	///
@@ -36,7 +36,7 @@ struct LyXLex::Pimpl : boost::noncopyable {
 	///
 	void popTable();
 	///
-	bool setFile(string const & filename);
+	bool setFile(std::string const & filename);
 	///
 	void setStream(std::istream & i);
 	///
@@ -52,7 +52,7 @@ struct LyXLex::Pimpl : boost::noncopyable {
 	///
 	bool nextToken();
 	///
-	void pushToken(string const &);
+	void pushToken(std::string const &);
 	/// fb__ is only used to open files, the stream is accessed through is.
 	std::filebuf fb__;
 	/// gz__ is only used to open files, the stream is accessed through is.
@@ -61,7 +61,7 @@ struct LyXLex::Pimpl : boost::noncopyable {
 	/// the stream that we use.
 	std::istream is;
 	///
-	string name;
+	std::string name;
 	///
 	keyword_item * table;
 	///
@@ -73,7 +73,7 @@ struct LyXLex::Pimpl : boost::noncopyable {
 	///
 	int lineno;
 	///
-	string pushTok;
+	std::string pushTok;
 	///
 	char commentChar;
 private:

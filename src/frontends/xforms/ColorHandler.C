@@ -32,6 +32,7 @@ using std::pow;
 #endif
 
 using std::endl;
+using std::string;
 
 
 namespace {

@@ -29,7 +29,7 @@ using lyx::support::ChangeExtension;
 using lyx::support::MakeDisplayPath;
 
 using std::find;
-
+using std::string;
 using std::vector;
 
 

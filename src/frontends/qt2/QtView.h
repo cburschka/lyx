@@ -44,7 +44,7 @@ public:
 	virtual void busy(bool) const;
 
 	/// display a status message
-	virtual void message(string const & str);
+	virtual void message(std::string const & str);
 
 	/// clear status message
 	virtual void clearMessage();
@@ -73,7 +73,7 @@ private:
 	 * @param t main window title
 	 * @param it iconified (short) title
 	 */
-	virtual void setWindowTitle(string const & t, string const & it);
+	virtual void setWindowTitle(std::string const & t, std::string const & it);
 
 	QTimer statusbar_timer_;
 

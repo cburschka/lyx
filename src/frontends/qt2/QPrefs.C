@@ -58,7 +58,7 @@ using lyx::support::strToDbl;
 using std::endl;
 using std::setfill;
 using std::setw;
-
+using std::string;
 using std::ostringstream;
 using std::pair;
 using std::vector;

@@ -17,7 +17,8 @@
 #include "lyxfont.h"
 #include "layout.h"
 #include "Spacing.h"
-#include "support/std_string.h"
+
+#include <string>
 
 class LyXLex;
 class LyXTextClass;
@@ -44,25 +45,25 @@ public:
 	///
 	void readSpacing(LyXLex &);
 	///
-	string const & name() const;
+	std::string const & name() const;
 	///
-	void setName(string const & n);
+	void setName(std::string const & n);
 	///
-	string const & obsoleted_by() const;
+	std::string const & obsoleted_by() const;
 	///
-	string const & depends_on() const;
+	std::string const & depends_on() const;
 	///
-	string const & latexname() const { return latexname_; }
+	std::string const & latexname() const { return latexname_; }
 	///
-	string const & labelstring() const { return labelstring_; }
+	std::string const & labelstring() const { return labelstring_; }
 	///
-	string const & endlabelstring() const { return endlabelstring_; }
+	std::string const & endlabelstring() const { return endlabelstring_; }
 	///
-	string const & preamble() const { return preamble_; }
+	std::string const & preamble() const { return preamble_; }
 	///
-	string const & latexparam() const { return latexparam_; }
+	std::string const & latexparam() const { return latexparam_; }
 	///
-	string const & labelstring_appendix() const {
+	std::string const & labelstring_appendix() const {
 		return labelstring_appendix_;
 	}
 	/** Default font for this layout/environment.
@@ -93,15 +94,15 @@ public:
 	LyXFont reslabelfont;
 
 	/// Text that dictates how wide the left margin is on the screen
-	string leftmargin;
+	std::string leftmargin;
 	/// Text that dictates how wide the right margin is on the screen
-	string rightmargin;
+	std::string rightmargin;
 	/// Text that dictates how much space to leave after a potential label
-	string labelsep;
+	std::string labelsep;
 	/// Text that dictates how much space to leave before a potential label
-	string labelindent;
+	std::string labelindent;
 	/// Text that dictates the width of the indentation of indented pars
-	string parindent;
+	std::string parindent;
 	///
 	float parskip;
 	///
@@ -143,11 +144,11 @@ public:
 	/// show this in toc
 	int toclevel;
 	/// for new environment insets
-	string latexheader;
+	std::string latexheader;
 	/// for new environment insets
-	string latexfooter;
+	std::string latexfooter;
 	/// for new environment insets
-	string latexparagraph;
+	std::string latexparagraph;
 
 	/** true when the fragile commands in the paragraph need to be
 	    \protect'ed. */
@@ -176,36 +177,36 @@ public:
 	/// Does this layout allow for an optional parameter?
 	int optionalargs;
 	/// Which counter to step
-	string counter;
+	std::string counter;
 
 private:
 	/// Name of the layout/paragraph environment
-	string name_;
+	std::string name_;
 
 	/** Name of an layout that has replaced this layout.
 	    This is used to rename a layout, while keeping backward
 	    compatibility
 	*/
-	string obsoleted_by_;
+	std::string obsoleted_by_;
 
 	/** Name of an layout which preamble must come before this one
 	    This is used when the preamble snippet uses macros defined in
 	    another preamble
 	 */
-	string depends_on_;
+	std::string depends_on_;
 
 	/// LaTeX name for environment
-	string latexname_;
+	std::string latexname_;
 	/// Label string. "Abstract", "Reference", "Caption"...
-	string labelstring_;
+	std::string labelstring_;
 	///
-	string endlabelstring_;
+	std::string endlabelstring_;
 	/// Label string inside appendix. "Appendix", ...
-	string labelstring_appendix_;
+	std::string labelstring_appendix_;
 	/// LaTeX parameter for environment
-	string latexparam_;
+	std::string latexparam_;
 	/// Macro definitions needed for this layout
-	string preamble_;
+	std::string preamble_;
 };
 
 #endif

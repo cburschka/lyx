@@ -27,6 +27,8 @@
 
 using lyx::support::LibFileSearch;
 
+using std::string;
+
 
 BulletsModule::BulletsModule(QWidget * parent,  const char * name, WFlags fl)
 	: BulletsModuleBase(parent, name, fl), tmpbulletset(0)

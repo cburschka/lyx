@@ -15,7 +15,6 @@
 #ifndef LYXFONT_H
 #define LYXFONT_H
 
-#include "support/std_string.h"
 #include <iosfwd>
 
 class LColor_color;
@@ -233,25 +232,25 @@ public:
 	void setLanguage(Language const * l);
 
 	/// Set family after LyX text format
-	LyXFont & setLyXFamily(string const &);
+	LyXFont & setLyXFamily(std::string const &);
 
 	/// Set series after LyX text format
-	LyXFont & setLyXSeries(string const &);
+	LyXFont & setLyXSeries(std::string const &);
 
 	/// Set shape after LyX text format
-	LyXFont & setLyXShape(string const &);
+	LyXFont & setLyXShape(std::string const &);
 
 	/// Set size after LyX text format
-	LyXFont & setLyXSize(string const &);
+	LyXFont & setLyXSize(std::string const &);
 
 	/// Returns misc flag after LyX text format
-	LyXFont::FONT_MISC_STATE setLyXMisc(string const &);
+	LyXFont::FONT_MISC_STATE setLyXMisc(std::string const &);
 
 	/// Sets color after LyX text format
-	LyXFont & setLyXColor(string const &);
+	LyXFont & setLyXColor(std::string const &);
 
 	/// Returns size of font in LaTeX text notation
-	string const latexSize() const;
+	std::string const latexSize() const;
 
 	/** Updates font settings according to request.
 	    If an attribute is IGNORE, the attribute is left as it is.
@@ -297,7 +296,7 @@ public:
 				 LyXFont const & next) const;
 
 	/// Build GUI description of font state
-	string const stateText(BufferParams * params) const;
+	std::string const stateText(BufferParams * params) const;
 
 	///
 	LColor_color realColor() const;

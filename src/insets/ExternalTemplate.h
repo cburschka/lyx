@@ -14,7 +14,7 @@
 
 #include <boost/function.hpp>
 #include <boost/utility.hpp>
-#include "support/std_string.h"
+
 #include <iosfwd>
 #include <map>
 #include <vector>
@@ -34,19 +34,19 @@ struct Template {
 	void dumpFormats(std::ostream &) const;
 
 	/// What is the name of this template in the LyX format?
-	string lyxName;
+	std::string lyxName;
 	/// What will the button in the GUI say?
-	string guiName;
+	std::string guiName;
 	/// A short help text
-	string helpText;
+	std::string helpText;
 	/** The format of the input file. Can be "*", in which case we try and
 	 *   ascertain the format from the contents of the file.
 	 */
-	string inputFormat;
+	std::string inputFormat;
 	/// A file extension regular expression for the file browser
-	string fileRegExp;
+	std::string fileRegExp;
 	/// What command should be executed to edit the file?
-	string editCommand;
+	std::string editCommand;
 	/// Should we do automatic production of the output?
 	bool automaticProduction;
 
@@ -58,18 +58,18 @@ struct Template {
 		void readFormat(LyXLex &);
 
 		/// The text that should be inserted into the exported file
-		string product;
+		std::string product;
 		/// The filename of the resulting file
-		string updateResult;
+		std::string updateResult;
 		/// The format of this file.
-		string updateFormat;
+		std::string updateFormat;
 		/// What features does this external inset require?
-		string requirement;
+		std::string requirement;
 		/// A collection of preamble snippets identified by name.
-		std::vector<string> preambleNames;
+		std::vector<std::string> preambleNames;
 	};
 	///
-	typedef std::map<string, Format> Formats;
+	typedef std::map<std::string, Format> Formats;
 	///
 	Formats formats;
 };
@@ -81,11 +81,11 @@ struct Template {
 class TemplateManager : boost::noncopyable {
 public:
 	/// Map from the LyX name of the template to the template structure
-	typedef std::map<string, Template> Templates;
+	typedef std::map<std::string, Template> Templates;
 	/** Map from the LyX name of the preamble definition to the preamble
 	 *  definition itself.
 	 */
-	typedef std::map<string, string> PreambleDefs;
+	typedef std::map<std::string, std::string> PreambleDefs;
 
 	static TemplateManager & get();
 	Templates & getTemplates();
@@ -93,14 +93,14 @@ public:
 	/** return the template by LyX name.
 	 *  If it isn't found, return 0.
 	 */
-	Template const * getTemplateByName(string const & name) const;
+	Template const * getTemplateByName(std::string const & name) const;
 	/** return the preamble definition by LyX name.
-	 *  If it isn't found, return an empty string.
+	 *  If it isn't found, return an empty std::string.
 	 */
-	string const getPreambleDefByName(string const & name) const;
+	std::string const getPreambleDefByName(std::string const & name) const;
 private:
 	TemplateManager();
-	void readTemplates(string const & path);
+	void readTemplates(std::string const & path);
 	void dumpTemplates(std::ostream &) const;
 	void dumpPreambleDefs(std::ostream &) const;
 

@@ -16,8 +16,6 @@
 #include "FuncStatus.h"
 #include "funcrequest.h"
 
-#include "support/std_string.h"
-
 #include <boost/shared_ptr.hpp>
 
 #include <vector>
@@ -73,23 +71,23 @@ public:
 	explicit MenuItem(Kind kind);
 
 	MenuItem(Kind kind,
-		 string const & label,
-		 string const & command = string(),
+		 std::string const & label,
+		 std::string const & command = std::string(),
 		 bool optional = false);
 
 	MenuItem(Kind kind,
-		 string const & label,
+		 std::string const & label,
 		 FuncRequest const & func,
 		 bool optional = false);
 
 	/// This one is just to please boost::shared_ptr<>
 	~MenuItem();
 	/// The label of a given menuitem
-	string const label() const;
+	std::string const label() const;
 	/// The keyboard shortcut (usually underlined in the entry)
-	string const shortcut() const;
+	std::string const shortcut() const;
 	/// The complete label, with label and shortcut separated by a '|'
-	string const fulllabel() const { return label_;}
+	std::string const fulllabel() const { return label_;}
 	/// The kind of entry
 	Kind kind() const { return kind_; }
 	/// the action (if relevant)
@@ -103,11 +101,11 @@ public:
 	/// returns the status of the lfun associated with this entry
 	void status(FuncStatus const & status) { status_ = status; }
 	/// returns the binding associated to this action
-	string const binding() const;
+	std::string const binding() const;
 	/// the description of the  submenu (if relevant)
-	string const & submenuname() const { return submenuname_; }
+	std::string const & submenuname() const { return submenuname_; }
 	/// set the description of the  submenu
-	void submenuname(string const & name) { submenuname_ = name; }
+	void submenuname(std::string const & name) { submenuname_ = name; }
 	///
 	Menu * submenu() const { return submenu_.get(); }
 	///
@@ -118,11 +116,11 @@ private:
 	///
 	Kind kind_;
 	///
-	string label_;
+	std::string label_;
 	///
 	FuncRequest func_;
 	///
-	string submenuname_;
+	std::string submenuname_;
 	///
 	bool optional_;
 	///
@@ -142,20 +140,20 @@ public:
 	///
 	typedef ItemList::size_type size_type;
 	///
-	explicit Menu(string const & name = string())
+	explicit Menu(std::string const & name = std::string())
 		: name_(name) {}
 	///
 	Menu & add(MenuItem const &, LyXView const * view = 0);
 	///
 	Menu & read(LyXLex &);
 	///
-	string const & name() const { return name_; }
+	std::string const & name() const { return name_; }
 	///
 	bool empty() const { return items_.empty(); }
 	///
 	ItemList::size_type size() const { return items_.size(); }
 	///
-	bool hasSubmenu(string const &) const;
+	bool hasSubmenu(std::string const &) const;
 	///
 	const_iterator begin() const {
 		return items_.begin();
@@ -173,7 +171,7 @@ private:
 	///
 	ItemList items_;
 	///
-	string name_;
+	std::string name_;
 };
 
 
@@ -189,11 +187,11 @@ public:
 	///
 	void add(Menu const &);
 	///
-	bool hasMenu(string const &) const;
+	bool hasMenu(std::string const &) const;
 	///
-	Menu & getMenu(string const &);
+	Menu & getMenu(std::string const &);
 	///
-	Menu const & getMenu(string const &) const;
+	Menu const & getMenu(std::string const &) const;
 	///
 	Menu const & getMenubar() const;
 	///

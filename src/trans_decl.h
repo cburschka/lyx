@@ -15,8 +15,8 @@
 
 #include "tex-accent.h"
 
-#include "support/std_string.h"
 #include <list>
+#include <string>
 
 
 ///
@@ -24,7 +24,7 @@ struct Keyexc {
 	/// character to make exception
 	char c;
 	/// exception data
-	string data;
+	std::string data;
 	/// Combination with another deadkey
 	bool combined;
 	/// The accent comined with
@@ -37,7 +37,7 @@ typedef std::list<Keyexc> KmodException;
 ///
 struct KmodInfo {
 	///
-	string data;
+	std::string data;
 	///
 	tex_accent accent;
 	///

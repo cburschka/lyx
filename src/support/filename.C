@@ -19,6 +19,9 @@
 #include <boost/assert.hpp>
 
 
+using std::string;
+
+
 namespace lyx {
 namespace support {
 

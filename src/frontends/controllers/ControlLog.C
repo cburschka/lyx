@@ -14,6 +14,9 @@
 #include "ControlLog.h"
 
 
+using std::string;
+
+
 ControlLog::ControlLog(Dialog & parent)
 	: Dialog::Controller(parent)
 {}

@@ -46,7 +46,7 @@ namespace os = lyx::support::os;
 
 using std::endl;
 using std::getline;
-
+using std::string;
 using std::ifstream;
 using std::ostream;
 using std::pair;

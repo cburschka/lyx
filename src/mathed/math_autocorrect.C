@@ -22,6 +22,7 @@
 
 using lyx::support::LibFileSearch;
 
+using std::string;
 using std::ifstream;
 using std::istream;
 using std::istringstream;

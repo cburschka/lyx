@@ -28,6 +28,8 @@
 
 using lyx::support::trim;
 
+using std::string;
+
 
 bool Tooltips::enabled_ = true;
 

@@ -41,6 +41,7 @@ using lyx::support::QuoteName;
 using lyx::support::Systemcall;
 
 using std::endl;
+using std::string;
 
 
 ControlPrint::ControlPrint(LyXView & lv, Dialogs & d)

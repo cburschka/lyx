@@ -21,7 +21,6 @@
 #include <boost/shared_ptr.hpp>
 #include <boost/signals/trackable.hpp>
 
-#include "support/std_string.h"
 
 class BufferView;
 class FuncRequest;
@@ -47,10 +46,10 @@ public:
 	void dispatch(FuncRequest const &, bool verbose = false);
 
 	/// Dispatch via a string argument
-	void dispatch(string const & s, bool verbose = false);
+	void dispatch(std::string const & s, bool verbose = false);
 
 	/// return the status bar state string
-	string const view_status_message();
+	std::string const view_status_message();
 
 	///
 	typedef boost::shared_ptr<LyXKeySym> LyXKeySymPtr;
@@ -66,15 +65,15 @@ public:
 	/// True if lyxfunc reports an error
 	bool errorStat() const { return errorstat; }
 	/// Buffer to store result messages
-	void setMessage(string const & m) const;
+	void setMessage(std::string const & m) const;
 	/// Buffer to store result messages
-	void setErrorMessage(string const &) const;
+	void setErrorMessage(std::string const &) const;
 	/// Buffer to store result messages from getStatus
-	void setStatusMessage(string const &) const;
+	void setStatusMessage(std::string const &) const;
 	/// Buffer to store result messages
-	string const getMessage() const { return dispatch_buffer; }
+	std::string const getMessage() const { return dispatch_buffer; }
 	/// Buffer to store result messages
-	string const getStatusMessage() const { return status_buffer; }
+	std::string const getStatusMessage() const { return status_buffer; }
 	/// Handle a accented char key sequence
 	void handleKeyFunc(kb_action action);
 
@@ -104,24 +103,24 @@ private:
 	/** Buffer to store messages and result data. Is there a
 	    good reason to have this one as static in Dispatch? (Ale)
 	*/
-	mutable string dispatch_buffer;
+	mutable std::string dispatch_buffer;
 	/** Buffer to store messages and result data from getStatus
 	*/
-	mutable string status_buffer;
+	mutable std::string status_buffer;
 
 	/// send a post-dispatch status message
-	void sendDispatchMessage(string const & msg, FuncRequest const & ev, bool verbose);
+	void sendDispatchMessage(std::string const & msg, FuncRequest const & ev, bool verbose);
 
 	// I think the following should be moved to BufferView. (Asger)
 
 	///
-	void menuNew(string const & argument, bool fromTemplate);
+	void menuNew(std::string const & argument, bool fromTemplate);
 
 	///
-	void open(string const &);
+	void open(std::string const &);
 
 	///
-	void doImport(string const &);
+	void doImport(std::string const &);
 
 	///
 	void closeBuffer();

@@ -12,9 +12,7 @@
 #ifndef FORMTHESAURUS_H
 #define FORMTHESAURUS_H
 
-
 #include "FormDialogView.h"
-
 
 class ControlThesaurus;
 struct FD_thesaurus;
@@ -35,10 +33,10 @@ private:
 	virtual void update();
 
 	/// set the replace word properly
-	void setReplace(string const & templ, string const & nstr);
+	void setReplace(std::string const & templ, std::string const & nstr);
 
 	/// update browser entries
-	void updateMeanings(string const & str);
+	void updateMeanings(std::string const & str);
 
 	/// Filter the inputs
 	virtual ButtonPolicy::SMInput input(FL_OBJECT *, long);
@@ -47,7 +45,7 @@ private:
 	int clickline_;
 
 	/// current string
-	string str_;
+	std::string str_;
 };
 
 #endif // FORMTHESAURUS_H

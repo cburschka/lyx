@@ -17,6 +17,9 @@
 #include "insets/insettabular.h"
 
 
+using std::string;
+
+
 ControlTabular::ControlTabular(Dialog & parent)
 	: Dialog::Controller(parent), active_cell_(-1)
 {}

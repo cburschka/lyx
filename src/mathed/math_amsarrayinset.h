@@ -19,9 +19,9 @@
 class MathAMSArrayInset : public MathGridInset {
 public:
 	///
-	MathAMSArrayInset(string const & name, int m, int n);
+	MathAMSArrayInset(std::string const & name, int m, int n);
 	///
-	MathAMSArrayInset(string const & name);
+	MathAMSArrayInset(std::string const & name);
 	///
 	virtual std::auto_ptr<InsetBase> clone() const;
 	///
@@ -45,7 +45,7 @@ private:
 	char const * name_right() const;
 
 	///
-	string name_;
+	std::string name_;
 };
 
 #endif

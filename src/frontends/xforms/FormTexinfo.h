@@ -39,7 +39,7 @@ private:
 	ControlTexinfo::texFileSuffix activeStyle;
 
 	///
-	typedef std::vector<string> ContentsType;
+	typedef std::vector<std::string> ContentsType;
 	std::map<ControlTexinfo::texFileSuffix, ContentsType> texdata_;
 };
 

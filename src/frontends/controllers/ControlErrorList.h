@@ -28,7 +28,7 @@ public:
 	///
 	virtual bool isBufferDependent() const { return true; }
 	///
-	virtual bool initialiseParams(string const & data);
+	virtual bool initialiseParams(std::string const & data);
 	///
 	virtual void clearParams();
 	///
@@ -37,14 +37,14 @@ public:
 	/// goto this error in the parent bv
 	void goTo(int item);
 	/// return the parent document name
-	string const & name();
+	std::string const & name();
 	///
 	ErrorList const & errorList() const;
 private:
 	///
 	ErrorList errorlist_;
 	///
-	string name_;
+	std::string name_;
 };
 
 #endif // CONTROLERRORLIST_H

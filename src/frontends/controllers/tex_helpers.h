@@ -12,8 +12,6 @@
 #ifndef TEX_HELPERS_H
 #define TEX_HELPERS_H
 
-
-#include "support/std_string.h"
 #include <vector>
 
 
@@ -27,12 +25,12 @@ void texhash();
 /** Fill \c contents from one of the three texfiles.
  *  Each entry in the file list is returned as a name_with_path
  */
-void getTexFileList(string const & filename, std::vector<string> & contents);
+void getTexFileList(std::string const & filename, std::vector<std::string> & contents);
 
 /// get the options of stylefile
-string const getListOfOptions(string const & classname, string const & type);
+std::string const getListOfOptions(std::string const & classname, std::string const & type);
 
 /// get a class with full path from the list
-string const getTexFileFromList(string const & classname, string const & type);
+std::string const getTexFileFromList(std::string const & classname, std::string const & type);
 
 #endif // TEX_HELPERS_H

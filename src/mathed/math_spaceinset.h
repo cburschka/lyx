@@ -21,7 +21,7 @@ public:
 	///
 	explicit MathSpaceInset(int sp);
 	///
-	explicit MathSpaceInset(string const & name);
+	explicit MathSpaceInset(std::string const & name);
 	///
 	virtual std::auto_ptr<InsetBase> clone() const;
 	///

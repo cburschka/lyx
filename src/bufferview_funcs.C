@@ -42,6 +42,7 @@ using lyx::support::bformat;
 
 using std::istringstream;
 using std::ostringstream;
+using std::string;
 
 
 namespace {
@@ -374,7 +375,7 @@ string const currentState(BufferView * bv)
 		state << inset << " id: " << inset->id()
 		      << " text: " << inset->getLyXText(bv, true)
 						<< " owner: " << inset->owner();
-	else 
+	else
 		state << -1;
 #endif
 	return state.str();

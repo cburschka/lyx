@@ -34,6 +34,8 @@ using lyx::support::QuoteName;
 using lyx::support::subst;
 using lyx::support::Systemcall;
 
+using std::string;
+
 
 namespace {
 

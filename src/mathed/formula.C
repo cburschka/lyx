@@ -30,6 +30,7 @@
 #include "support/std_sstream.h"
 
 
+using std::string;
 using std::ostream;
 using std::ostringstream;
 using std::vector;

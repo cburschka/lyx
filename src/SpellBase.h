@@ -13,7 +13,7 @@
 #ifndef SPELL_BASE_H
 #define SPELL_BASE_H
 
-#include "support/std_string.h" // can't forward declare...
+#include <string>
 
 class BufferParams;
 class WordLangTuple;
@@ -49,10 +49,10 @@ public:
 	virtual void accept(WordLangTuple const &) = 0;
 
 	/// return the next near miss after a MISSED result
-	virtual string const nextMiss() = 0;
+	virtual std::string const nextMiss() = 0;
 
 	/// give an error message on messy exit
-	virtual string const error() = 0;
+	virtual std::string const error() = 0;
 
 };
 

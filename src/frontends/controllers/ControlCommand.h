@@ -26,13 +26,13 @@ public:
 	    it knows what to do with the rest of the contents.
 	    An empty name indicates that no action will occur on 'Apply'.
 	 */
-	ControlCommand(Dialog &, string const & lfun_name = string());
+	ControlCommand(Dialog &, std::string const & lfun_name = std::string());
 	///
 	InsetCommandParams & params() { return params_; }
 	///
 	InsetCommandParams const & params() const { return params_; }
 	///
-	virtual bool initialiseParams(string const & data);
+	virtual bool initialiseParams(std::string const & data);
 	/// clean-up on hide.
 	virtual void clearParams();
 	/// clean-up on hide.
@@ -44,7 +44,7 @@ private:
 	///
 	InsetCommandParams params_;
 	/// Flags what action is taken by Kernel::dispatch()
-	string const lfun_name_;
+	std::string const lfun_name_;
 };
 
 

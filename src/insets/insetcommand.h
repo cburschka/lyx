@@ -43,7 +43,7 @@ public:
 	virtual void read(Buffer const &, LyXLex & lex)
 		{ p_.read(lex); }
 	/// Can remove one InsetBibKey is modified
-	void scanCommand(string const & c) { p_.scanCommand(c); };
+	void scanCommand(std::string const & c) { p_.scanCommand(c); };
 	///
 	virtual int latex(Buffer const &, std::ostream &,
 			  LatexRunParams const &) const;
@@ -61,29 +61,29 @@ public:
 	///
 	virtual dispatch_result localDispatch(FuncRequest const & cmd);
 	///
-	string const & getContents() const { return p_.getContents(); }
+	std::string const & getContents() const { return p_.getContents(); }
 	///
-	void setContents(string const & c) { p_.setContents(c); }
+	void setContents(std::string const & c) { p_.setContents(c); }
 	///
-	string const & getOptions() const { return p_.getOptions(); }
+	std::string const & getOptions() const { return p_.getOptions(); }
 	///
 	ButtonRenderer & button() const { return button_; }
 
 protected:
 	///
-	string const getCommand() const { return p_.getCommand(); }
+	std::string const getCommand() const { return p_.getCommand(); }
 	///
-	string const & getCmdName() const { return p_.getCmdName(); }
+	std::string const & getCmdName() const { return p_.getCmdName(); }
 	///
-	void setCmdName(string const & n) { p_.setCmdName(n); }
+	void setCmdName(std::string const & n) { p_.setCmdName(n); }
 	///
-	void setOptions(string const & o) { p_.setOptions(o); }
+	void setOptions(std::string const & o) { p_.setOptions(o); }
 	///
 	void setParams(InsetCommandParams const &);
 	///
 	virtual BufferView * view() const;
 	/// This should provide the text for the button
-	virtual string const getScreenLabel(Buffer const &) const = 0;
+	virtual std::string const getScreenLabel(Buffer const &) const = 0;
 
 private:
 	///
@@ -96,21 +96,21 @@ private:
 class InsetCommandMailer : public MailInset {
 public:
 	///
-	InsetCommandMailer(string const & name, InsetCommand & inset);
+	InsetCommandMailer(std::string const & name, InsetCommand & inset);
 	///
 	virtual InsetBase & inset() const { return inset_; }
 	///
-	virtual string const & name() const { return name_; }
+	virtual std::string const & name() const { return name_; }
 	///
-	virtual string const inset2string(Buffer const &) const;
+	virtual std::string const inset2string(Buffer const &) const;
 	///
-	static void string2params(string const &, InsetCommandParams &);
+	static void string2params(std::string const &, InsetCommandParams &);
 	///
-	static string const params2string(string const & name,
+	static std::string const params2string(std::string const & name,
 					  InsetCommandParams const &);
 private:
 	///
-	string const name_;
+	std::string const name_;
 	///
 	InsetCommand & inset_;
 };

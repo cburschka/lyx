@@ -16,15 +16,14 @@
 
 #include "ButtonController.h"
 #include "BCView.h"
-#include "support/std_string.h"
 #include "gettext.h"
 
 class GBC : public GuiBC<Gtk::Button, Gtk::Widget>
 {
 public:
 	GBC(ButtonController const & parent,
-	    string const & cancel = _("Cancel"),
-	    string const & close = _("Close"));
+	    std::string const & cancel = _("Cancel"),
+	    std::string const & close = _("Close"));
 private:
 	/// Updates the button sensitivity (enabled/disabled)
 	void setButtonEnabled(Gtk::Button *, bool enabled) const;
@@ -33,7 +32,7 @@ private:
 	void setWidgetEnabled(Gtk::Widget *, bool enabled) const;
 
 	/// Set the label on the button
-	void setButtonLabel(Gtk::Button *, string const & label) const;
+	void setButtonLabel(Gtk::Button *, std::string const & label) const;
 };
 
 #endif

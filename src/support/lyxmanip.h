@@ -12,7 +12,6 @@
 #ifndef LYX_MANIP_H
 #define LYX_MANIP_H
 
-#include "support/std_string.h"
 #include "support/std_ostream.h"
 
 ///
@@ -33,7 +32,7 @@ NewLineAndDepth_ newlineAndDepth(int n)
 inline
 std::ostream & operator<<(std::ostream & os, NewLineAndDepth_ const & nlad_)
 {
-	os << string(nlad_.depth_, ' ');
+	os << std::string(nlad_.depth_, ' ');
 	return os;
 }
 

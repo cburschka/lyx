@@ -37,6 +37,7 @@ using lyx::support::rtrim;
 using std::istringstream;
 using std::ostream;
 using std::ostringstream;
+using std::string;
 
 
 // Initialize static member var.

@@ -30,7 +30,7 @@ using lyx::support::subst;
 
 using std::endl;
 using std::make_pair;
-
+using std::string;
 using std::vector;
 
 

@@ -22,7 +22,7 @@
 #include <algorithm>
 
 using std::make_pair;
-
+using std::string;
 using std::pair;
 
 

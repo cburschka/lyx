@@ -15,7 +15,7 @@
 #ifndef LYX_LENGTH_H
 #define LYX_LENGTH_H
 
-#include "support/std_string.h"
+#include <string>
 
 /**
  * LyXLength - Represents latex length measurement
@@ -51,7 +51,7 @@ public:
 	LyXLength(double v, LyXLength::UNIT u);
 
 	/// "data" must be a decimal number, followed by a unit
-	explicit LyXLength(string const & data);
+	explicit LyXLength(std::string const & data);
 
 	///
 	double value() const;
@@ -66,15 +66,15 @@ public:
 	///
 	bool empty() const;
 	/// return string representation
-	string const asString() const;
+	std::string const asString() const;
 	/// return string representation for LaTeX
-	string const asLatexString() const;
+	std::string const asLatexString() const;
 	/// return the on-screen size of this length
 	int inPixels(int text_width, int em_width = 0) const;
 	/// return the on-screen size of this length of an image
 	int inBP() const;
 
-	friend bool isValidLength(string const & data, LyXLength * result);
+	friend bool isValidLength(std::string const & data, LyXLength * result);
 
 private:
 	///
@@ -89,7 +89,7 @@ bool operator==(LyXLength const & l1, LyXLength const & l2);
 bool operator!=(LyXLength const & l1, LyXLength const & l2);
 /** If "data" is valid, the length represented by it is
     stored into "result", if that is not 0. */
-bool isValidLength(string const & data, LyXLength * result = 0);
+bool isValidLength(std::string const & data, LyXLength * result = 0);
 /// return the name of the given unit number
 char const * stringFromUnit(int unit);
 

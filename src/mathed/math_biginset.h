@@ -13,14 +13,14 @@
 #define MATH_BIGINSET_H
 
 #include "math_diminset.h"
-#include "support/std_string.h"
 
+#include <string>
 
 /// Inset for \bigl & Co.
 class MathBigInset : public MathDimInset {
 public:
 	///
-	MathBigInset(string const & name, string const & delim);
+	MathBigInset(std::string const & name, std::string const & delim);
 	///
 	virtual std::auto_ptr<InsetBase> clone() const;
 	///
@@ -39,9 +39,9 @@ private:
 	double increase() const;
 
 	/// \bigl or what?
-	string const name_;
+	std::string const name_;
 	/// ( or [ or Vert...
-	string const delim_;
+	std::string const delim_;
 };
 
 #endif

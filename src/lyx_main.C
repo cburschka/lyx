@@ -73,7 +73,7 @@ using lyx::support::user_lyxdir;
 namespace os = lyx::support::os;
 
 using std::endl;
-
+using std::string;
 using std::vector;
 
 #ifndef CXX_GLOBAL_CSTD

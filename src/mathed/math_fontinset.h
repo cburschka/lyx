@@ -31,7 +31,7 @@ public:
 	/// are we in math mode, text mode, or unsure?
 	mode_type currentMode() const;
 	///
-	string name() const;
+	std::string name() const;
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///

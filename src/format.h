@@ -12,58 +12,56 @@
 #ifndef FORMAT_H
 #define FORMAT_H
 
-
-#include "support/std_string.h"
-
 #include <vector>
+#include <string>
 
 class Buffer;
 
 class Format {
 public:
 	///
-	Format(string const & n, string const & e, string const & p,
-	       string const & s, string const & v);
+	Format(std::string const & n, std::string const & e, std::string const & p,
+	       std::string const & s, std::string const & v);
 	///
 	bool dummy() const;
 	///
 	bool isChildFormat() const;
 	///
-	string const parentFormat() const;
+	std::string const parentFormat() const;
 	///
-	string const & name() const {
+	std::string const & name() const {
 		return name_;
 	}
 	///
-	string const & extension() const {
+	std::string const & extension() const {
 		return extension_;
 	}
 	///
-	string const & prettyname() const {
+	std::string const & prettyname() const {
 		return prettyname_;
 	}
 	///
-	string const & shortcut() const {
+	std::string const & shortcut() const {
 		return shortcut_;
 	}
 	///
-	string const & viewer() const {
+	std::string const & viewer() const {
 		return viewer_;
 	}
 	///
-	void setViewer(string const & v) {
+	void setViewer(std::string const & v) {
 		viewer_ = v;
 	}
 private:
-	string name_;
+	std::string name_;
 	///
-	string extension_;
+	std::string extension_;
 	///
-	string prettyname_;
+	std::string prettyname_;
 	///
-	string shortcut_;
+	std::string shortcut_;
 	///
-	string viewer_;
+	std::string viewer_;
 };
 
 
@@ -81,27 +79,27 @@ public:
 		return formatlist[i];
 	}
 	///
-	Format const * getFormat(string const & name) const;
+	Format const * getFormat(std::string const & name) const;
 	///
-	int getNumber(string const & name) const;
+	int getNumber(std::string const & name) const;
 	///
-	void add(string const & name);
+	void add(std::string const & name);
 	///
-	void add(string const & name, string const & extension,
-		 string const & prettyname, string const & shortcut);
+	void add(std::string const & name, std::string const & extension,
+		 std::string const & prettyname, std::string const & shortcut);
 	///
-	void erase(string const & name);
+	void erase(std::string const & name);
 	///
 	void sort();
 	///
-	void setViewer(string const & name, string const & command);
+	void setViewer(std::string const & name, std::string const & command);
 	///
-	bool view(Buffer const & buffer, string const & filename,
-		  string const & format_name) const;
+	bool view(Buffer const & buffer, std::string const & filename,
+		  std::string const & format_name) const;
 	///
-	string const prettyName(string const & name) const;
+	std::string const prettyName(std::string const & name) const;
 	///
-	string const extension(string const & name) const;
+	std::string const extension(std::string const & name) const;
 	///
 	const_iterator begin() const {
 		return formatlist.begin();

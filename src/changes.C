@@ -17,9 +17,10 @@
 
 #include <boost/assert.hpp>
 
+using lyx::pos_type;
 
 using std::endl;
-using lyx::pos_type;
+using std::string;
 
 
 bool operator==(Change const & l, Change const & r)

@@ -32,7 +32,7 @@ public:
 	///
 	ControlExternal(Dialog &);
 	///
-	virtual bool initialiseParams(string const & data);
+	virtual bool initialiseParams(std::string const & data);
 	/// clean-up on hide.
 	virtual void clearParams();
 	/// clean-up on hide.
@@ -48,13 +48,13 @@ public:
 	///
 	void editExternal();
 	///
-	std::vector<string> const getTemplates() const;
+	std::vector<std::string> const getTemplates() const;
 	///
-	int getTemplateNumber(string const &) const;
+	int getTemplateNumber(std::string const &) const;
 	///
 	lyx::external::Template getTemplate(int) const;
 	///
-	string const Browse(string const &) const;
+	std::string const Browse(std::string const &) const;
 private:
 	///
 	boost::scoped_ptr<InsetExternal::Params> params_;

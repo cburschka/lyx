@@ -55,7 +55,7 @@ using lyx::support::OnlyPath;
 using lyx::support::subst;
 
 using std::endl;
-
+using std::string;
 using std::auto_ptr;
 using std::istringstream;
 using std::ostream;
@@ -190,7 +190,7 @@ Types type(InsetCommandParams const & params)
 		return VERBAST;
 	return INCLUDE;
 }
- 
+
 
 bool isVerbatim(InsetCommandParams const & params)
 {

@@ -36,10 +36,10 @@ private:
 	/// build the dialog
 	virtual void build_dialog();
 
-	void find(string const & str, bool casesens,
+	void find(std::string const & str, bool casesens,
 		  bool words, bool backwards);
 
-	void replace(string const & findstr, string const & replacestr,
+	void replace(std::string const & findstr, std::string const & replacestr,
 		bool casesens, bool words, bool all);
 };
 

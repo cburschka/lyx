@@ -30,7 +30,7 @@ using std::endl;
 using std::getline;
 using std::lower_bound;
 using std::sort;
-
+using std::string;
 using std::ios;
 using std::istream;
 using std::ostream;

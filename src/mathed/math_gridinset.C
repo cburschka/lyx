@@ -27,6 +27,7 @@ using std::max;
 using std::min;
 using std::swap;
 
+using std::string;
 using std::auto_ptr;
 using std::istream;
 using std::istringstream;

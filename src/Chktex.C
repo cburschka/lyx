@@ -30,7 +30,7 @@ using lyx::support::split;
 using lyx::support::Systemcall;
 
 using std::getline;
-
+using std::string;
 using std::ifstream;
 
 

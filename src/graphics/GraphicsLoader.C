@@ -20,6 +20,9 @@
 #include <boost/bind.hpp>
 
 
+using std::string;
+
+
 namespace lyx {
 namespace graphics {
 

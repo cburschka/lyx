@@ -12,11 +12,11 @@
 #ifndef GPAINTER_H
 #define GPAINTER_H
 
+#include "frontends/Painter.h"
+
 #include <X11/Xft/Xft.h>
 
 #include <map>
-#include "frontends/Painter.h"
-#include "support/std_string.h"
 
 class LyXFont;
 class GWorkArea;
@@ -99,7 +99,7 @@ public:
 
 	/// draw a string at position x, y (y is the baseline)
 	virtual Painter & text(int x, int y,
-		string const & str, LyXFont const & f);
+		std::string const & str, LyXFont const & f);
 
 	/** Draw a string at position x, y (y is the baseline)
 	 *  This is just for fast drawing

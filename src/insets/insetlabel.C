@@ -19,6 +19,7 @@
 
 using lyx::support::escape;
 
+using std::string;
 using std::ostream;
 
 

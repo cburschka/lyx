@@ -57,7 +57,7 @@ using lyx::support::strToUnsignedInt;
 using std::endl;
 using std::for_each;
 using std::max;
-
+using std::string;
 using std::auto_ptr;
 using std::ostream;
 using std::vector;

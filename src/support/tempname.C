@@ -13,13 +13,13 @@
 #include <cstdlib>
 #include <unistd.h>
 
-#include "support/std_string.h"
 #include "support/lyxlib.h"
 #include "support/filetools.h"
 #include "support/tostr.h"
 #include "debug.h"
 #include "os.h"
 
+using std::string;
 using std::endl;
 
 namespace {

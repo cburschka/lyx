@@ -23,6 +23,7 @@
 
 using std::endl;
 using std::ostringstream;
+using std::string;
 
 
 Counter::Counter()

@@ -31,6 +31,7 @@ using std::isupper;
 #endif
 
 using std::vector;
+using std::string;
 
 
 typedef FormController<ControlThesaurus, FormView<FD_thesaurus> > base_class;

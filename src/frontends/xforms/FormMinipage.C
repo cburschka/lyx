@@ -28,6 +28,8 @@ using lyx::support::getStringFromVector;
 using lyx::support::isStrDbl;
 using lyx::support::subst;
 
+using std::string;
+
 
 typedef FormController<ControlMinipage, FormView<FD_minipage> > base_class;
 

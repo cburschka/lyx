@@ -18,8 +18,6 @@
 #ifndef TOOLTIPS_H
 #define TOOLTIPS_H
 
-#include "support/std_string.h"
-
 #include <boost/signals/signal0.hpp>
 #include <boost/signals/trackable.hpp>
 
@@ -34,7 +32,7 @@ public:
 	Tooltips();
 
 	/// Initialise a tooltip for this ob.
-	void init(FL_OBJECT * ob, string const & tip);
+	void init(FL_OBJECT * ob, std::string const & tip);
 
 	/// Are the tooltips on or off?
 	static bool enabled() { return enabled_; }
@@ -58,7 +56,7 @@ private:
 	static boost::signal0<void> toggled;
 
 	/// The tooltips are stored so that they can be turned on and off.
-	typedef std::map<FL_OBJECT *, string> TooltipsMap;
+	typedef std::map<FL_OBJECT *, std::string> TooltipsMap;
 
 	TooltipsMap tooltipsMap;
 };

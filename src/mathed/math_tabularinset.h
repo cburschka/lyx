@@ -19,12 +19,12 @@
 class MathTabularInset : public MathGridInset {
 public:
 	///
-	MathTabularInset(string const &, int m, int n);
+	MathTabularInset(std::string const &, int m, int n);
 	///
-	MathTabularInset(string const &, int m, int n,
-		char valign, string const & halign);
+	MathTabularInset(std::string const &, int m, int n,
+		char valign, std::string const & halign);
 	///
-	MathTabularInset(string const &, char valign, string const & halign);
+	MathTabularInset(std::string const &, char valign, std::string const & halign);
 	///
 	virtual std::auto_ptr<InsetBase> clone() const;
 	///
@@ -45,7 +45,7 @@ public:
 
 private:
 	///
-	string name_;
+	std::string name_;
 };
 
 #endif

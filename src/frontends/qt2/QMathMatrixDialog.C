@@ -25,6 +25,7 @@
 #include "emptytable.h"
 
 using std::ostringstream;
+using std::string;
 
 
 static char h_align_str[80] = "c";

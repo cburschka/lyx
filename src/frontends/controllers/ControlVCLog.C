@@ -22,6 +22,7 @@ using lyx::support::unlink;
 
 using std::endl;
 using std::ostream;
+using std::string;
 
 
 ControlVCLog::ControlVCLog(Dialog & parent)

@@ -12,16 +12,17 @@
 #ifndef USERINFO_H
 #define USERINFO_H
 
-#include "support/std_string.h"
+#include <string>
+
 
 namespace lyx {
 namespace support {
 
 /// return the current user's real name
-string const user_name();
+std::string const user_name();
 
 /// return the current user's e-mail address
-string const user_email();
+std::string const user_email();
 
 } // namespace support
 } // namespace lyx

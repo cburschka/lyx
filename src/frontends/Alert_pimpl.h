@@ -11,15 +11,16 @@
 
 // GUI-specific implementations
 
-#include "support/std_string.h"
 #include <utility>
+#include <string>
 
-int prompt_pimpl(string const & title, string const & question,
+
+int prompt_pimpl(std::string const & title, std::string const & question,
            int default_button, int escape_button,
-	   string const & b1, string const & b2, string const & b3);
+	   std::string const & b1, std::string const & b2, std::string const & b3);
 
-void warning_pimpl(string const & title, string const & warning);
-void error_pimpl(string const & title, string const & warning);
-void information_pimpl(string const & title, string const & warning);
+void warning_pimpl(std::string const & title, std::string const & warning);
+void error_pimpl(std::string const & title, std::string const & warning);
+void information_pimpl(std::string const & title, std::string const & warning);
 
-std::pair<bool, string> const askForText_pimpl(string const & msg, string const & dflt);
+std::pair<bool, std::string> const askForText_pimpl(std::string const & msg, std::string const & dflt);

@@ -14,7 +14,6 @@
 #define LYXDEBUG_H
 
 
-#include "support/std_string.h"
 #include "support/debugstream.h"
 
 /** Ideally this should have been a namespace, but since we try to be
@@ -85,7 +84,7 @@ struct lyx_debug_trait {
 	/** A function to convert symbolic string names on debug levels
 	    to their numerical value.
 	*/
-	static type value(string const & val);
+	static type value(std::string const & val);
 
 	/** Display the tags and descriptions of the current debug level
 	    of ds

@@ -17,6 +17,8 @@
 #include "LaTeXFeatures.h"
 #include "LColor.h"
 
+
+using std::string;
 using std::auto_ptr;
 
 

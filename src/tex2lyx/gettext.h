@@ -12,10 +12,11 @@
 #ifndef GETTEXT_H
 #define GETTEXT_H
 
-#include "support/std_string.h"
+#include <string>
+
 
 ///
-string const _(string const &);
+std::string const _(std::string const &);
 
 /// for detecting static strings
 #define N_(str) (str)

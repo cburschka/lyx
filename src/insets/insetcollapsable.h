@@ -96,7 +96,7 @@ public:
 	void setFont(BufferView *, LyXFont const &, bool toggleall = false,
 		 bool selectall = false);
 	///
-	void setLabel(string const & l) const;
+	void setLabel(std::string const & l) const;
 	///
 	void setLabelFont(LyXFont & f);
 #if 0
@@ -108,7 +108,7 @@ public:
 	///
 	void deleteLyXText(BufferView *, bool recursive=true) const;
 	/// Appends \c list with all labels found within this inset.
-	void getLabelList(Buffer const &, std::vector<string> & list) const;
+	void getLabelList(Buffer const &, std::vector<std::string> & list) const;
 	///
 	int scroll(bool recursive=true) const;
 	///
@@ -140,9 +140,9 @@ public:
 	bool nextChange(BufferView * bv, lyx::pos_type & length);
 
 	///
-	bool searchForward(BufferView * bv, string const & str,
+	bool searchForward(BufferView * bv, std::string const & str,
 			   bool = true, bool = false);
-	bool searchBackward(BufferView * bv, string const & str,
+	bool searchBackward(BufferView * bv, std::string const & str,
 			    bool = true, bool = false);
 
 	///
@@ -188,7 +188,7 @@ private:
 	mutable int topbaseline;
 
 	///
-	mutable string label;
+	mutable std::string label;
 #if 0
 	///
 	bool autocollapse;

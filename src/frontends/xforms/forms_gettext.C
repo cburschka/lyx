@@ -15,6 +15,8 @@
 
 namespace support = lyx::support;
 
+using std::string;
+
 
 // Extract shortcut from "<identifier>|<shortcut>" string
 string const scex(string const & str)

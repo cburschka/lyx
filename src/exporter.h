@@ -14,7 +14,7 @@
 #define EXPORTER_H
 
 #include <vector>
-#include "support/std_string.h"
+
 
 class Buffer;
 class Format;
@@ -23,18 +23,18 @@ class Exporter {
 public:
 	///
 	static
-	bool Export(Buffer * buffer, string const & format,
-		    bool put_in_tempdir, string & result_file);
+	bool Export(Buffer * buffer, std::string const & format,
+		    bool put_in_tempdir, std::string & result_file);
 	///
 	static
-	bool Export(Buffer * buffer, string const & format,
+	bool Export(Buffer * buffer, std::string const & format,
 		    bool put_in_tempdir);
 	///
 	static
-	bool Preview(Buffer * buffer, string const & format);
+	bool Preview(Buffer * buffer, std::string const & format);
 	///
 	static
-	bool IsExportable(Buffer const & buffer, string const & format);
+	bool IsExportable(Buffer const & buffer, std::string const & format);
 	///
 	static
 	std::vector<Format const *> const

@@ -12,9 +12,8 @@
 #ifndef QDELIMITERDIALOG_H
 #define QDELIMITERDIALOG_H
 
-
 #include "ui/QDelimiterDialogBase.h"
-#include "support/std_string.h"
+
 
 class QMathDelimiter;
 class IconPalette;
@@ -25,19 +24,19 @@ class QDelimiterDialog : public QDelimiterDialogBase {
 public:
 	QDelimiterDialog(QMathDelimiter * form);
 public slots:
-	void ldelim_clicked(const string & str);
-	void rdelim_clicked(const string & str);
+	void ldelim_clicked(const std::string & str);
+	void rdelim_clicked(const std::string & str);
 	void insertClicked();
 protected:
 	//needed ? virtual void closeEvent(QCloseEvent * e);
 private:
-	void set_label(QLabel * label, const string & str);
+	void set_label(QLabel * label, const std::string & str);
 
 	/// symbol of left delimiter
-	string left_;
+	std::string left_;
 
 	/// symbol of right delimiter
-	string right_;
+	std::string right_;
 
 	/// owning form
 	QMathDelimiter * form_;

@@ -12,8 +12,6 @@
 #ifndef TOOLBAR_H
 #define TOOLBAR_H
 
-
-#include "support/std_string.h"
 #include "ToolbarBackend.h"
 
 class LyXView;
@@ -38,7 +36,7 @@ public:
 	void update(bool in_math, bool in_table);
 
 	/// update the layout combox
-	virtual void setLayout(string const & layout) = 0;
+	virtual void setLayout(std::string const & layout) = 0;
 	/**
 	 * Populate the layout combox - returns whether we did a full
 	 * update or not

@@ -15,7 +15,8 @@
 #include "ParagraphList_fwd.h"
 #include "support/types.h"
 
-#include "support/std_string.h"
+#include <string>
+
 
 class Buffer;
 class BufferParams;
@@ -70,7 +71,7 @@ void latexParagraphs(Buffer const & buf,
 		     std::ostream & ofs,
 		     TexRow & texrow,
 		     LatexRunParams const &,
-		     string const & everypar = string());
+		     std::string const & everypar = std::string());
 
 /// read a paragraph from a .lyx file. Returns number of unrecognised tokens
 int readParagraph(Buffer & buf, Paragraph & par, LyXLex & lex);

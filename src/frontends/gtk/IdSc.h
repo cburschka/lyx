@@ -12,16 +12,16 @@
 #ifndef ID_SC_H
 #define ID_SC_H
 
-#include "support/std_string.h"
+#include <string>
 
 namespace id_sc
 {
 
 /// Extract shortcut from "<identifer>|<shortcut>" string
-string const shortcut(string const &);
+std::string const shortcut(std::string const &);
 
 /// Extract identifier from "<identifer>|<shortcut>" string
-string const id(string const &);
+std::string const id(std::string const &);
 
 }
 

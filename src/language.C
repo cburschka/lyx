@@ -20,6 +20,8 @@
 #include "lyxrc.h"
 
 using std::endl;
+using std::string;
+
 
 Languages languages;
 Language const * english_language;

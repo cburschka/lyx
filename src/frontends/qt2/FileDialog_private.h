@@ -15,7 +15,6 @@
 
 #include "frontends/FileDialog.h"
 #include <qfiledialog.h>
-#include "support/std_string.h"
 
 class QToolButton;
 
@@ -23,17 +22,17 @@ class LyXFileDialog : public QFileDialog
 {
 	Q_OBJECT
 public:
-	LyXFileDialog(string const & p, string const & m, string const & t,
+	LyXFileDialog(std::string const & p, std::string const & m, std::string const & t,
 		      FileDialog::Button const & b1,
 		      FileDialog::Button const & b2);
 public slots:
 	void buttonClicked();
 private:
 	QToolButton * b1_;
-	string b1_dir_;
+	std::string b1_dir_;
 
 	QToolButton * b2_;
-	string b2_dir_;
+	std::string b2_dir_;
 };
 
 #endif // FILEDIALOG_PRIVATE_H

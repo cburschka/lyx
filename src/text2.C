@@ -65,6 +65,7 @@ using lyx::support::bformat;
 
 using std::endl;
 using std::ostringstream;
+using std::string;
 
 
 LyXText::LyXText(BufferView * bv, InsetText * inset, bool ininset,

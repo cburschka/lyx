@@ -29,6 +29,8 @@
 
 using lyx::support::strToInt;
 
+using std::string;
+
 
 typedef FormCB<ControlPrint, FormDB<FD_print> > base_class;
 

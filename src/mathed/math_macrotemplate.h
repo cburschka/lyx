@@ -15,10 +15,12 @@
 
 #include "math_data.h"
 #include "math_nestinset.h"
-#include "support/std_string.h"
+
+#include <string>
 
 
 class MathMacro;
+
 
 //class MathMacroTemplate : public MathInset, boost::noncopyable
 
@@ -28,7 +30,7 @@ public:
 	///
 	MathMacroTemplate();
 	///
-	MathMacroTemplate(string const & name, int nargs, string const & type,
+	MathMacroTemplate(std::string const & name, int nargs, std::string const & type,
 		MathArray const & = MathArray(), MathArray const & = MathArray());
 	///
 	explicit MathMacroTemplate(std::istream & is);
@@ -41,7 +43,7 @@ public:
 	///
 	void numargs(int);
 	///
-	string name() const;
+	std::string name() const;
 	///
 	void draw(PainterInfo &, int x, int y) const;
 	///
@@ -54,9 +56,9 @@ private:
 	///
 	int numargs_;
 	///
-	string name_;
+	std::string name_;
 	/// newcommand or renewcommand or def
-	string type_;
+	std::string type_;
 };
 
 #endif

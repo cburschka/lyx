@@ -135,7 +135,7 @@ private:
 	///
 	FL_OBJECT * fbullet;
 	///
-	std::vector<string> lang_;
+	std::vector<std::string> lang_;
 	/// Contains all legal branches for this doc
 	BranchList branchlist_;
 };

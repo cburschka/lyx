@@ -18,7 +18,7 @@
 #include "QDialogView.h"
 
 
-QDialogView::QDialogView(Dialog & parent, string const & t)
+QDialogView::QDialogView(Dialog & parent, std::string const & t)
 	: Dialog::View(parent,t), updating_(false)
 {}
 

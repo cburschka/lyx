@@ -36,7 +36,7 @@ public:
 	ControlInclude(Dialog &);
 
 	///
-	virtual bool initialiseParams(string const & data);
+	virtual bool initialiseParams(std::string const & data);
 	/// clean-up on hide.
 	virtual void clearParams();
 	/// clean-up on hide.
@@ -50,13 +50,13 @@ public:
 	void setParams(InsetCommandParams const &);
 
 	/// Browse for a file
-	string const Browse(string const &, Type);
+	std::string const Browse(std::string const &, Type);
 
 	/// load a file
-	void load(string const & file);
+	void load(std::string const & file);
 
 	/// test if file exist
-	bool fileExists(string const & file);
+	bool fileExists(std::string const & file);
 private:
 	///
 	InsetCommandParams params_;

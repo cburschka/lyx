@@ -25,7 +25,7 @@ struct FD_browser;
 class FormBrowser : public FormView<FD_browser> {
 public:
 	///
-	FormBrowser(Dialog &, string const &, bool allowResize = true);
+	FormBrowser(Dialog &, std::string const &, bool allowResize = true);
 private:
 	/// Build the dialog.
 	virtual void build();

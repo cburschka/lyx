@@ -21,8 +21,10 @@
 
 #include "support/lstrings.h"
 
+
 using lyx::support::escape;
 
+using std::string;
 using std::ostream;
 
 

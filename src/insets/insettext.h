@@ -21,7 +21,6 @@
 
 #include "frontends/mouse_state.h"
 
-#include "support/std_string.h"
 
 class Buffer;
 class BufferParams;
@@ -70,7 +69,7 @@ public:
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
 	///
-	string const editMessage() const;
+	std::string const editMessage() const;
 	///
 	bool isTextInset() const { return true; }
 	///
@@ -120,7 +119,7 @@ public:
 	///
 	void writeParagraphData(Buffer const &, std::ostream &) const;
 	///
-	void setText(string const &, LyXFont const &);
+	void setText(std::string const &, LyXFont const &);
 	///
 	void setAutoBreakRows(bool);
 	///
@@ -140,7 +139,7 @@ public:
 	///
 	bool showInsetDialog(BufferView *) const;
 	/// Appends \c list with all labels found within this inset.
-	void getLabelList(Buffer const &, std::vector<string> & list) const;
+	void getLabelList(Buffer const &, std::vector<std::string> & list) const;
 	///
 	int scroll(bool recursive = true) const;
 	///
@@ -181,10 +180,10 @@ public:
 	bool nextChange(BufferView *, lyx::pos_type & length);
 
 	///
-	bool searchForward(BufferView *, string const &,
+	bool searchForward(BufferView *, std::string const &,
 			   bool = true, bool = false);
 	///
-	bool searchBackward(BufferView *, string const &,
+	bool searchBackward(BufferView *, std::string const &,
 			    bool = true, bool = false);
 	///
 	bool checkInsertChar(LyXFont &);

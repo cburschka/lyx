@@ -31,10 +31,11 @@
 
 #include "support/std_sstream.h"
 
+
 using lyx::support::bformat;
 
 using std::endl;
-
+using std::string;
 using std::ostream;
 using std::ostringstream;
 

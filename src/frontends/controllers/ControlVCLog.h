@@ -20,7 +20,7 @@ public:
 	///
 	ControlVCLog(Dialog &);
 	/// Nothing to initialise in this case.
-	virtual bool initialiseParams(string const &) { return true; }
+	virtual bool initialiseParams(std::string const &) { return true; }
 	///
 	virtual void clearParams() {}
 	///
@@ -30,7 +30,7 @@ public:
 	/// put the log file into the ostream
 	void getVCLogFile(std::ostream & ss) const;
 	/// get the filename of the buffer
-	string const getBufferFileName() const;
+	std::string const getBufferFileName() const;
 };
 
 #endif // CONTROLVCLOG_H

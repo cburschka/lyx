@@ -46,7 +46,7 @@ using std::gmtime;
 
 using std::endl;
 using std::getline;
-
+using std::string;
 using std::ifstream;
 
 

@@ -36,7 +36,7 @@ public:
 	void add(ToolbarBackend::Toolbar const & tb);
 
 	/// add an item to a toolbar
-	void add(FuncRequest const &, string const & tooltip);
+	void add(FuncRequest const &, std::string const & tooltip);
 
 	/// display toolbar, not implemented
 	void displayToolbar(ToolbarBackend::Toolbar const & tb, bool show);
@@ -45,7 +45,7 @@ public:
 	void update();
 
 	/// select the right layout in the combox
-	void setLayout(string const & layout);
+	void setLayout(std::string const & layout);
 	/// Populate the layout combox.
 	void updateLayoutList();
 	/// Drop down the layout list

@@ -20,6 +20,10 @@
 #include <boost/bind.hpp>
 #include <boost/signals/trackable.hpp>
 
+
+using std::string;
+
+
 namespace lyx {
 namespace support {
 

@@ -17,7 +17,6 @@
 #ifndef GRAPHICSCONVERTER_H
 #define GRAPHICSCONVERTER_H
 
-#include "support/std_string.h"
 #include <boost/signals/signal1.hpp>
 #include <boost/scoped_ptr.hpp>
 #include <boost/utility.hpp>
@@ -28,14 +27,14 @@ namespace graphics {
 class Converter : boost::noncopyable {
 public:
 	/// Can the conversion be performed?
-	static bool isReachable(string const & from_format_name,
-				string const & to_format_name);
+	static bool isReachable(std::string const & from_format_name,
+				std::string const & to_format_name);
 
 	/** One Converter per conversion ensures that the (hidden) signal
 	 *  is always connected to the expected slot.
 	 */
-	Converter(string const & from_file,   string const & to_file_base,
-		  string const & from_format, string const & to_format);
+	Converter(std::string const & from_file,   std::string const & to_file_base,
+		  std::string const & from_format, std::string const & to_format);
 
 	/// Define an empty d-tor out-of-line to keep boost::scoped_ptr happy.
 	~Converter();
@@ -56,7 +55,7 @@ public:
 	 *  If conversion fails or has not been completed, however, it
 	 *  returns an empty string.
 	 */
-	string const & convertedFile() const;
+	std::string const & convertedFile() const;
 
 private:
 	/// Use the Pimpl idiom to hide the internals.

@@ -19,14 +19,14 @@
 class MathArrayInset : public MathGridInset {
 public:
 	///
-	MathArrayInset(string const &, int m, int n);
+	MathArrayInset(std::string const &, int m, int n);
 	///
-	MathArrayInset(string const &, int m, int n,
-		char valign, string const & halign);
+	MathArrayInset(std::string const &, int m, int n,
+		char valign, std::string const & halign);
 	///
-	MathArrayInset(string const &, char valign, string const & halign);
+	MathArrayInset(std::string const &, char valign, std::string const & halign);
 	/// convienience constructor from whitespace/newline seperated data
-	MathArrayInset(string const &, string const & str);
+	MathArrayInset(std::string const &, std::string const & str);
 	///
 	virtual std::auto_ptr<InsetBase> clone() const;
 	///
@@ -49,7 +49,7 @@ public:
 
 private:
 	///
-	string name_;
+	std::string name_;
 };
 
 #endif

@@ -12,7 +12,6 @@
 #ifndef PREVIEWIMAGE_H
 #define PREVIEWIMAGE_H
 
-#include "support/std_string.h"
 #include <boost/scoped_ptr.hpp>
 
 class InsetOld;
@@ -29,14 +28,14 @@ public:
 	 *  descent = height * (1 - ascent_frac)
 	 */
 	PreviewImage(PreviewLoader & parent,
-		     string const & latex_snippet,
-		     string const & bitmap_file,
+		     std::string const & latex_snippet,
+		     std::string const & bitmap_file,
 		     double ascent_frac);
 	///
 	~PreviewImage();
 
 	///
-	string const & snippet() const;
+	std::string const & snippet() const;
 	///
 	int ascent() const;
 	///

@@ -19,6 +19,7 @@
 #include "dimension.h"
 #include "ParagraphList_fwd.h"
 
+
 class Buffer;
 class LColor_color;
 class FuncRequest;
@@ -163,7 +164,7 @@ public:
 	///
 	int width() const;
 	/// what appears in the minibuffer when opening
-	virtual string const editMessage() const;
+	virtual std::string const editMessage() const;
 	///
 	virtual EDITABLE editable() const;
 	///
@@ -196,9 +197,9 @@ public:
 	virtual bool directWrite() const;
 
 	///
-	void setInsetName(string const & s) { name_ = s; }
+	void setInsetName(std::string const & s) { name_ = s; }
 	///
-	string const & getInsetName() const { return name_; }
+	std::string const & getInsetName() const { return name_; }
 	///
 	void setOwner(UpdatableInset * inset) { owner_ = inset; }
 	///
@@ -324,7 +325,7 @@ private:
 	///
 	UpdatableInset * owner_;
 	///
-	string name_;
+	std::string name_;
 	/** We store the LColor::color value as an int to get LColor.h out
 	 *  of the header file.
 	 */

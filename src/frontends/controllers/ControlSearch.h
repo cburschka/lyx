@@ -14,7 +14,6 @@
 
 
 #include "ControlDialog_impl.h"
-#include "support/std_string.h"
 
 /** A controller for Search dialogs.
  */
@@ -24,11 +23,11 @@ public:
 	ControlSearch(LyXView &, Dialogs &);
 
 	/// Searches occurence of string
-	void find(string const & search,
+	void find(std::string const & search,
 		  bool casesensitive, bool matchword, bool forward);
 
 	/// Replaces occurence of string
-	void replace(string const & search, string const & replace,
+	void replace(std::string const & search, std::string const & replace,
 		     bool casesensitive, bool matchword, bool all);
 private:
 	/// not needed.

@@ -30,6 +30,8 @@
 
 using lyx::support::LibFileSearch;
 
+using std::string;
+
 
 namespace {
 

@@ -59,6 +59,7 @@ using lyx::support::uppercase;
 
 using std::max;
 using std::endl;
+using std::string;
 
 
 /// top, right, bottom pixel margin

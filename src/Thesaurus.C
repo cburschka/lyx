@@ -12,9 +12,12 @@
 
 #include "Thesaurus.h"
 
-#ifdef HAVE_LIBAIKSAURUS
-
 #include <algorithm>
+#include <string>
+
+using std::string;
+
+#ifdef HAVE_LIBAIKSAURUS
 
 using std::sort;
 

@@ -15,6 +15,8 @@
 #include "math_mathmlstream.h"
 #include "math_streamstr.h"
 
+
+using std::string;
 using std::auto_ptr;
 
 

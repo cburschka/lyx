@@ -23,7 +23,7 @@ public:
 	///
 	MathCommentInset();
 	///
-	explicit MathCommentInset(string const &);
+	explicit MathCommentInset(std::string const &);
 	///
 	virtual std::auto_ptr<InsetBase> clone() const;
 	///

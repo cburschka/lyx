@@ -36,7 +36,7 @@ public:
 	/// identifies FracInsets
 	MathFracInset const * asFracInset() const;
 	///
-	string name() const;
+	std::string name() const;
 
 	///
 	void write(WriteStream & os) const;

@@ -47,6 +47,7 @@ using lyx::support::LibFileSearch;
 
 using std::min;
 using std::max;
+using std::string;
 
 
 namespace {

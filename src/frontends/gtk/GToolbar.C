@@ -25,6 +25,8 @@
 #include "support/lstrings.h"
 #include "debug.h"
 
+using std::string;
+
 
 namespace
 {

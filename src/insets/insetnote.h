@@ -22,7 +22,7 @@
 	///
 	void read(LyXLex & lex);
 	///
-	string type;
+	std::string type;
 };
 
 
@@ -34,7 +34,7 @@ public:
 	///
 
 
-	InsetNote(BufferParams const &, string const &);
+	InsetNote(BufferParams const &, std::string const &);
 	/// Copy constructor
 	InsetNote(InsetNote const &);
 	///
@@ -42,7 +42,7 @@ public:
 	///
 	virtual std::auto_ptr<InsetBase> clone() const;
 	///
-	string const editMessage() const;
+	std::string const editMessage() const;
 	///
 	InsetOld::Code lyxCode() const { return InsetOld::NOTE_CODE; }
 	///
@@ -85,21 +85,21 @@ private:
 class InsetNoteMailer : public MailInset {
 public:
 	///
-	InsetNoteMailer(string const & name, InsetNote & inset);
+	InsetNoteMailer(std::string const & name, InsetNote & inset);
 	///
 	virtual InsetBase & inset() const { return inset_; }
 	///
-	virtual string const & name() const { return name_; }
+	virtual std::string const & name() const { return name_; }
 	///
-	virtual string const inset2string(Buffer const &) const;
+	virtual std::string const inset2string(Buffer const &) const;
 	///
-	static string const params2string(string const &, InsetNoteParams const &);
+	static std::string const params2string(std::string const &, InsetNoteParams const &);
 	///
-	static void string2params(string const &, InsetNoteParams &);
+	static void string2params(std::string const &, InsetNoteParams &);
 
 private:
 	///
-	string const name_;
+	std::string const name_;
 	///
 	InsetNote & inset_;
 };

@@ -21,6 +21,8 @@
 #include <qlistview.h>
 #include <qlineedit.h>
 
+using std::string;
+
 
 
 QThesaurusDialog::QThesaurusDialog(QThesaurus * form)

@@ -27,9 +27,9 @@ public:
 	///
 	InsetFormulaMacro();
 	/// construct a macro hull from its name and the number of arguments
-	explicit InsetFormulaMacro(string const & name, int nargs, string const & t);
+	explicit InsetFormulaMacro(std::string const & name, int nargs, std::string const & t);
 	/// constructs a mocro from its LaTeX definition
-	explicit InsetFormulaMacro(string const & s);
+	explicit InsetFormulaMacro(std::string const & s);
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
@@ -61,7 +61,7 @@ private:
 	///
 	void read(std::istream & is);
 	/// prefix in inset
-	string prefix() const;
+	std::string prefix() const;
 };
 
 #endif

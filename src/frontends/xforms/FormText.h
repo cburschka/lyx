@@ -22,7 +22,7 @@ struct FD_text;
 class FormText : public FormController<ControlCommand, FormView<FD_text> > {
 public:
 	///
-	FormText(Dialog &, string const & title, string const & label);
+	FormText(Dialog &, std::string const & title, std::string const & label);
 private:
 	/// Set the Params variable for the Controller.
 	virtual void apply();
@@ -32,7 +32,7 @@ private:
 	virtual void update();
 
 	///
-	string const label_;
+	std::string const label_;
 };
 
 #endif // FORMTEXT_H

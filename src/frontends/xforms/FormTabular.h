@@ -47,7 +47,7 @@ private:
 	virtual ButtonPolicy::SMInput input(FL_OBJECT *, long);
 
 	///
-	virtual int checkLongtableOptions(FL_OBJECT *, string &);
+	virtual int checkLongtableOptions(FL_OBJECT *, std::string &);
 
 	///
 	boost::scoped_ptr<FD_tabular_options> tabular_options_;

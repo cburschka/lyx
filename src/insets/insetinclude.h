@@ -55,14 +55,14 @@ public:
 	 *  \param list the list of labels in the child buffer.
 	 */
 	void getLabelList(Buffer const & buffer,
-			  std::vector<string> & list) const;
+			  std::vector<std::string> & list) const;
 	/** Fills \c keys
 	 *  \param buffer the Buffer containing this inset.
 	 *  \param keys the list of bibkeys in the child buffer.
 	 */
 	///
 	void fillWithBibKeys(Buffer const & buffer,
-		std::vector<std::pair<string,string> > & keys) const;
+		std::vector<std::pair<std::string,std::string> > & keys) const;
 	///
 	EDITABLE editable() const { return IS_EDITABLE; }
 	///
@@ -88,7 +88,7 @@ private:
 	/// set the parameters
 	void set(InsetCommandParams const & params, Buffer const &);
 	/// get the text displayed on the button
-	string const getScreenLabel(Buffer const &) const;
+	std::string const getScreenLabel(Buffer const &) const;
 	///
 	void write(std::ostream &) const;
 	///
@@ -97,7 +97,7 @@ private:
 	/// the parameters
 	InsetCommandParams params_;
 	/// holds the entity name that defines the file location (SGML)
-	string const include_label;
+	std::string const include_label;
 
 	/// Use the Pimpl idiom to hide the internals of the previewer.
 	class PreviewImpl;
@@ -120,16 +120,16 @@ public:
 	///
 	virtual InsetBase & inset() const { return inset_; }
 	///
-	virtual string const & name() const { return name_; }
+	virtual std::string const & name() const { return name_; }
 	///
-	virtual string const inset2string(Buffer const &) const;
+	virtual std::string const inset2string(Buffer const &) const;
 	///
-	static void string2params(string const &, InsetCommandParams &);
+	static void string2params(std::string const &, InsetCommandParams &);
 	///
-	static string const params2string(InsetCommandParams const &);
+	static std::string const params2string(InsetCommandParams const &);
 private:
 	///
-	static string const name_;
+	static std::string const name_;
 	///
 	InsetInclude & inset_;
 };

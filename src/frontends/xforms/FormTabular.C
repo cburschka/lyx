@@ -29,7 +29,7 @@ using lyx::support::getStringFromVector;
 using lyx::support::isStrDbl;
 
 using std::bind2nd;
-
+using std::string;
 using std::vector;
 
 

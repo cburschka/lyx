@@ -18,7 +18,7 @@
 class MathUnknownInset : public MathDimInset {
 public:
 	///
-	explicit MathUnknownInset(string const & name,
+	explicit MathUnknownInset(std::string const & name,
 		bool final = true, bool black = false);
 	///
 	virtual std::auto_ptr<InsetBase> clone() const;
@@ -27,9 +27,9 @@ public:
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
 	///
-	void setName(string const & name);
+	void setName(std::string const & name);
 	///
-	string name() const;
+	std::string name() const;
 	/// identifies UnknownInsets
 	MathUnknownInset const * asUnknownInset() const { return this; }
 	/// identifies UnknownInsets
@@ -53,7 +53,7 @@ public:
 	bool final() const;
 private:
 	///
-	string name_;
+	std::string name_;
 	/// are we finished creating the name?
 	bool final_;
 	///

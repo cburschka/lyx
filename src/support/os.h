@@ -12,7 +12,8 @@
 #ifndef OS_H
 #define OS_H
 
-#include "support/std_string.h"
+#include <string>
+
 
 /// wrap OS specific stuff
 namespace lyx {
@@ -28,32 +29,32 @@ enum shell_type {
 // do some work just once
 void init(int * argc, char ** argv[]);
 // returns path of LyX binary
-string binpath();
+std::string binpath();
 // returns name of LyX binary
-string binname();
+std::string binname();
 //
-void setTmpDir(string const & p);
+void setTmpDir(std::string const & p);
 //
-string getTmpDir();
+std::string getTmpDir();
 //
-string current_root();
+std::string current_root();
 //
 shell_type shell();
 // DBCS aware!
-string::size_type common_path(string const & p1, string const & p2);
+std::string::size_type common_path(std::string const & p1, std::string const & p2);
 // no-op on UNIX, '\\'->'/' on OS/2 and Win32, ':'->'/' on MacOS, etc.
-string slashify_path(string const & p);
+std::string slashify_path(std::string const & p);
 // converts a host OS path to unix style
-string external_path(string const & p);
+std::string external_path(std::string const & p);
 // converts a unix path to host OS style
-string internal_path(string const & p);
+std::string internal_path(std::string const & p);
 // is path absolute?
-bool is_absolute_path(string const & p);
+bool is_absolute_path(std::string const & p);
 // returns a string suitable to be passed to popen when
 // same for popen().
 	char const * popen_read_mode();
 //
-void warn(string const & mesg);
+void warn(std::string const & mesg);
 
 } // namespace os
 } // namespace support

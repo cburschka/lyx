@@ -31,6 +31,7 @@ using std::find;
 using std::max;
 
 using std::vector;
+using std::string;
 
 
 namespace {

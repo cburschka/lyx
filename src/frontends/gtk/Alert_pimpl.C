@@ -14,6 +14,8 @@
 #include "frontends/Alert.h"
 #include "frontends/Alert_pimpl.h"
 
+using std::string;
+
 
 namespace {
 

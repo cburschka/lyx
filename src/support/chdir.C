@@ -14,7 +14,7 @@
 
 #include "support/lyxlib.h"
 
-int lyx::support::chdir(string const & name)
+int lyx::support::chdir(std::string const & name)
 {
 #ifndef __EMX__
 	return ::chdir(name.c_str());

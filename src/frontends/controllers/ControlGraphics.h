@@ -31,7 +31,7 @@ public:
 	///
 	ControlGraphics(Dialog &);
 	///
-	virtual bool initialiseParams(string const & data);
+	virtual bool initialiseParams(std::string const & data);
 	/// clean-up on hide.
 	virtual void clearParams();
 	/// clean-up on hide.
@@ -44,13 +44,13 @@ public:
 	InsetGraphicsParams const & params() const { return *params_.get(); }
 
 	/// Browse for a file
-	string const Browse(string const &);
+	std::string const Browse(std::string const &);
 	/// Read the Bounding Box from a eps or ps-file
-	string const readBB(string const & file);
+	std::string const readBB(std::string const & file);
 	/// Control the bb
 	bool bbChanged;
 	/// test if file exist
-	bool isFilenameValid(string const & fname) const;
+	bool isFilenameValid(std::string const & fname) const;
 
 private:
 	///
@@ -60,10 +60,10 @@ private:
 namespace frnt {
 
 /// get the units for the bounding box
-std::vector<string> const getBBUnits();
+std::vector<std::string> const getBBUnits();
 
-/// The (tranlated) GUI string and it's LaTeX equivalent.
-typedef std::pair<string, string> RotationOriginPair;
+/// The (tranlated) GUI std::string and it's LaTeX equivalent.
+typedef std::pair<std::string, std::string> RotationOriginPair;
 ///
 std::vector<RotationOriginPair> getRotationOriginData();
 

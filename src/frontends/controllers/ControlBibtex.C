@@ -23,6 +23,7 @@
 
 using lyx::support::OnlyFilename;
 
+using std::string;
 using std::pair;
 using std::vector;
 

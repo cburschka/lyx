@@ -96,6 +96,8 @@
 #include "ams_ops.xbm"
 
 
+using std::string;
+
 
 namespace {
 

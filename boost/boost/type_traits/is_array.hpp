@@ -1,4 +1,3 @@
-
 // (C) Copyright Dave Abrahams, Steve Cleary, Beman Dawes, Howard
 // Hinnant & John Maddock 2000.  Permission to copy, use, modify,
 // sell and distribute this software is granted provided this
@@ -49,8 +48,8 @@ yes_type BOOST_TT_DECL is_array_tester2(...);
 
 template< typename T >
 struct is_array_impl
-{ 
-    BOOST_STATIC_CONSTANT(bool, value = 
+{
+    BOOST_STATIC_CONSTANT(bool, value =
         sizeof(::boost::detail::is_array_tester2(
             ::boost::detail::is_array_tester1(
                 ::boost::type_traits::wrap<T>()

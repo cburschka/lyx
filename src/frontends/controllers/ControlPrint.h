@@ -16,7 +16,6 @@
 
 #include "ControlDialog_impl.h"
 
-#include "support/std_string.h"
 
 class PrinterParams;
 
@@ -28,7 +27,7 @@ public:
 	ControlPrint(LyXView &, Dialogs &);
 
 	/// Browse for a file
-	string const Browse(string const &);
+	std::string const Browse(std::string const &);
 	///
 	PrinterParams & params() const;
 private:

@@ -15,7 +15,8 @@
 #define GRAPHICSPARAMS_H
 
 #include "GraphicsTypes.h"
-#include "support/std_string.h"
+
+#include <string>
 #include <iosfwd>
 
 
@@ -29,7 +30,7 @@ struct BoundingBox {
 	///
 	BoundingBox();
 	///
-	BoundingBox(string const &);
+	BoundingBox(std::string const &);
 
 	/// 0 0 0 0 is empty!
 	bool empty() const;
@@ -54,7 +55,7 @@ struct Params
 	unsigned int scale;
 
 	/// The image filename.
-	string filename;
+	std::string filename;
 
 	/** Note that the BoundingBox is always relative to the BoundingBox
 	 *  as stored in the EPS file.

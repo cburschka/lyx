@@ -22,6 +22,8 @@
 
 using lyx::support::OnlyFilename;
 
+using std::string;
+
 
 typedef FormController<ControlTexinfo, FormView<FD_texinfo> > base_class;
 

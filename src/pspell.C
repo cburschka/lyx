@@ -27,6 +27,7 @@ extern "C" {
 #include <boost/assert.hpp>
 
 using std::endl;
+using std::string;
 
 
 PSpell::PSpell(BufferParams const &, string const & lang)

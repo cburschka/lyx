@@ -13,20 +13,19 @@
 #define GTEXT_H
 
 #include "GViewBase.h"
-#include "support/std_string.h"
 
 class ControlCommand;
 
 class GText : public GViewCB<ControlCommand, GViewGladeB>
 {
 public:
-	GText(Dialog & parent, string const & title, string const & label);
+	GText(Dialog & parent, std::string const & title, std::string const & label);
 private:
 	virtual void apply();
 	virtual void update();
 	virtual void doBuild();
 	void onEntryChanged();
-	string const label_;
+	std::string const label_;
 	Gtk::Entry * entry_;
 };
 

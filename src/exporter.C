@@ -38,7 +38,7 @@ using lyx::support::contains;
 using lyx::support::MakeDisplayPath;
 
 using std::find;
-
+using std::string;
 using std::vector;
 
 

@@ -16,7 +16,6 @@
 #include "forms_fwd.h"
 
 #include "Color.h"
-#include "support/std_string.h"
 
 #include <algorithm>
 #include <vector>
@@ -24,16 +23,16 @@
 class LyXLength;
 
 /// parse "&Save" etc. to <"Save", "#S">. Does not handle &&
-std::pair<string, string> parse_shortcut(string const & str);
+std::pair<std::string, std::string> parse_shortcut(std::string const & str);
 
 // A wrapper for the xforms routine, but this one accepts uint args
 unsigned long fl_getmcolor(int i, unsigned int * r, unsigned int * g,
 			   unsigned int * b);
 
 // what we always need for lengths
-string const choice_Length_All =
+std::string const choice_Length_All =
     "cm|mm|in|text%%|col%%|page%%|line%%|ex|em|pt|sp|bp|dd|pc|cc|mu";
-string const choice_Length_WithUnit =
+std::string const choice_Length_WithUnit =
     "cm|mm|in|ex|em|pt|sp|bp|dd|pc|cc|mu";	// all with a Unit
 
 /// return the (in)active state of the object
@@ -42,34 +41,34 @@ bool isActive(FL_OBJECT * ob);
 /// Set an FL_OBJECT to activated or deactivated
 void setEnabled(FL_OBJECT *, bool enable);
 
-/// Take a string and add breaks so that it fits into a desired label width, w
-string formatted(string const &label, int w,
+/// Take a std::string and add breaks so that it fits into a desired label width, w
+std::string formatted(std::string const &label, int w,
 		 int = 12 /*FL_NORMAL_SIZE*/, int = 0 /*FL_NORMAL_STYLE*/);
 
 /// Given an fl_choice or an fl_browser, create a vector of its entries
-std::vector<string> const getVector(FL_OBJECT *);
+std::vector<std::string> const getVector(FL_OBJECT *);
 
 /** Given an fl_input, an fl_choice or an fl_browser, return an entry
     \c num is the position for the string, where 0 means "current item"
  */
-string const getString(FL_OBJECT * ob, int num = 0);
+std::string const getString(FL_OBJECT * ob, int num = 0);
 
-/// Given input and choice widgets, create a string such as "1cm"
-string getLengthFromWidgets(FL_OBJECT * input, FL_OBJECT * choice);
+/// Given input and choice widgets, create a std::string such as "1cm"
+std::string getLengthFromWidgets(FL_OBJECT * input, FL_OBJECT * choice);
 
 /** Given a string such as "1cm", set the input and choice widgets.
     If the string is empty, the choice will be set to default_unit.
  */
 void updateWidgetsFromLengthString(FL_OBJECT * input, FL_OBJECT * choice,
-				   string const & str,
-				   string const & default_unit);
+				   std::string const & str,
+				   std::string const & default_unit);
 
 /** Given a LyXLength, set the input and choice widgets.
     If the length is null, the choice will be set to default_unit.
  */
 void updateWidgetsFromLength(FL_OBJECT * input, FL_OBJECT * choice,
 			     LyXLength const & len,
-			     string const & default_unit);
+			     std::string const & default_unit);
 
 
 /** Return the position of val in the vector if found.
@@ -94,8 +93,8 @@ void setCursorColor(int color);
 struct XformsColor : public NamedColor {
 	int colorID;
 	XformsColor() : NamedColor(), colorID(0) {}
-	static bool read(string const &);
-	static bool write(string const &);
+	static bool read(std::string const &);
+	static bool write(std::string const &);
 };
 
 
@@ -105,17 +104,17 @@ struct XformsColor : public NamedColor {
 class RWInfo {
 public:
 	///
-	static bool WriteableDir(string const & dir);
+	static bool WriteableDir(std::string const & dir);
 	///
-	static bool ReadableDir(string const & dir);
+	static bool ReadableDir(std::string const & dir);
 	///
-	static bool WriteableFile(string const & file);
+	static bool WriteableFile(std::string const & file);
 	///
-	static bool ReadableFile(string const & file);
+	static bool ReadableFile(std::string const & file);
 	///
-	static string const & ErrorMessage() { return error_message; }
+	static std::string const & ErrorMessage() { return error_message; }
 private:
 	///
-	static string error_message;
+	static std::string error_message;
 };
 #endif // XFORMSHELPERS_H

@@ -21,6 +21,10 @@
 #include "QChanges.h"
 #include "Qt2BC.h"
 
+
+using std::string;
+
+
 typedef QController<ControlChanges, QView<QChangesDialog> > base_class;
 
 

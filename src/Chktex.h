@@ -12,10 +12,11 @@
 #ifndef CHKTEX_H
 #define CHKTEX_H
 
-#include "support/std_string.h"
-
 class LyXLex;
 class TeXErrors;
+
+#include <string>
+
 
 ///
 class Chktex {
@@ -25,8 +26,8 @@ public:
 	  @param file name of the (temporary) latex file.
 	  @param path name of the files original path.
 	*/
-	Chktex(string const & cmd, string const & file,
-	       string const & path);
+	Chktex(std::string const & cmd, std::string const & file,
+	       std::string const & path);
 
 	/** Runs chktex.
 	    @return -1 if fail, number of messages otherwise.
@@ -37,13 +38,13 @@ private:
 	int scanLogFile(TeXErrors &);
 
 	///
-	string cmd;
+	std::string cmd;
 
 	///
-	string file;
+	std::string file;
 
 	///
-	string path;
+	std::string path;
 };
 
 #endif

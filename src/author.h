@@ -14,30 +14,30 @@
 
 #include <map>
 #include <iosfwd>
+#include <string>
 
-#include "support/std_string.h"
 
 class Author {
 public:
 	Author() {}
 
-	Author(string const & name, string const & email)
+	Author(std::string const & name, std::string const & email)
 		: name_(name), email_(email) {}
 
-	string const name() const {
+	std::string const name() const {
 		return name_;
 	}
 
-	string const email() const {
+	std::string const email() const {
 		return email_;
 	}
 
 	friend  std::istream & operator>>(std::istream & os, Author & a);
 
 private:
-	string name_;
+	std::string name_;
 
-	string email_;
+	std::string email_;
 };
 
 

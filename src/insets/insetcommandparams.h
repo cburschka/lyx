@@ -12,12 +12,12 @@
 #ifndef INSETCOMMANDPARAMS_H
 #define INSETCOMMANDPARAMS_H
 
-
-#include "support/std_string.h"
-
+#include <string>
 #include <iosfwd>
 
+
 class LyXLex;
+
 
 class InsetCommandParams {
 public:
@@ -25,29 +25,29 @@ public:
 	InsetCommandParams();
 	///
 	explicit
-	InsetCommandParams(string const & n,
-			    string const & c = string(),
-			    string const & o = string());
+	InsetCommandParams(std::string const & n,
+			    std::string const & c = std::string(),
+			    std::string const & o = std::string());
 	///
 	void read(LyXLex &);
 	/// Parse the command
-	void scanCommand(string const &);
+	void scanCommand(std::string const &);
 	///
 	void write(std::ostream &) const;
 	/// Build the complete LaTeX command
-	string const getCommand() const;
+	std::string const getCommand() const;
 	///
-	string const & getCmdName() const { return cmdname; }
+	std::string const & getCmdName() const { return cmdname; }
 	///
-	string const & getOptions() const { return options; }
+	std::string const & getOptions() const { return options; }
 	///
-	string const & getContents() const { return contents; }
+	std::string const & getContents() const { return contents; }
 	///
-	void setCmdName(string const & n) { cmdname = n; }
+	void setCmdName(std::string const & n) { cmdname = n; }
 	///
-	void setOptions(string const & o) { options = o; }
+	void setOptions(std::string const & o) { options = o; }
 	///
-	void setContents(string const & c) { contents = c; }
+	void setContents(std::string const & c) { contents = c; }
 	///
 	bool preview() const { return preview_; }
 	///
@@ -55,11 +55,11 @@ public:
 
 private:
 	///
-	string cmdname;
+	std::string cmdname;
 	///
-	string contents;
+	std::string contents;
 	///
-	string options;
+	std::string options;
 	///
 	bool preview_;
 };

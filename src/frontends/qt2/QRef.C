@@ -28,6 +28,7 @@
 #include "qt_helpers.h"
 
 using std::vector;
+using std::string;
 
 
 typedef QController<ControlRef, QView<QRefDialog> > base_class;

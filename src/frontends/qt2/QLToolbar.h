@@ -41,7 +41,7 @@ public:
 	void add(ToolbarBackend::Toolbar const & tb);
 
 	/// add an item to a toolbar
-	void add(QToolBar * tb, FuncRequest const &, string const & tooltip);
+	void add(QToolBar * tb, FuncRequest const &, std::string const & tooltip);
 
 	/// show or hide a toolbar
 	void displayToolbar(ToolbarBackend::Toolbar const & tb, bool show);
@@ -50,7 +50,7 @@ public:
 	void update();
 
 	/// select the right layout in the combox
-	void setLayout(string const & layout);
+	void setLayout(std::string const & layout);
 	/// Populate the layout combox.
 	void updateLayoutList();
 	/// Drop down the layout list
@@ -58,7 +58,7 @@ public:
 	/// Erase the layout list
 	void clearLayoutList();
 private:
-	void changed_layout(string const & sel);
+	void changed_layout(std::string const & sel);
 
 	void button_selected(QToolButton * button);
 
@@ -66,7 +66,7 @@ private:
 
 	boost::scoped_ptr<ToolbarProxy> proxy_;
 
-	std::map<string, QToolBar *> toolbars_;
+	std::map<std::string, QToolBar *> toolbars_;
 
 	QLComboBox * combo_;
 

@@ -25,7 +25,7 @@ using lyx::support::isStrInt;
 using lyx::support::strToInt;
 
 using std::setw;
-
+using std::string;
 using std::ostream;
 
 namespace {

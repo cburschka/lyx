@@ -20,7 +20,6 @@
 #include "forms_fwd.h"
 #include <X11/X.h> // Window
 
-#include "support/std_string.h"
 #include <vector>
 
 
@@ -43,17 +42,17 @@ public:
 	void update();
 
 	/// Opens a top-level submenu given its name
-	void openByName(string const &);
+	void openByName(std::string const &);
 
 	///
 	static void MenuCallback(FL_OBJECT *, long);
 
 private:
 	///
-	void add_toc(int menu, string const & extra_label,
+	void add_toc(int menu, std::string const & extra_label,
 		     std::vector<int> & smn, Window win);
 	///
-	void add_references(int menu, string const & extra_label,
+	void add_references(int menu, std::string const & extra_label,
 			    std::vector<int> & smn, Window win);
 	///
 	int create_submenu(Window win, XFormsView * view,

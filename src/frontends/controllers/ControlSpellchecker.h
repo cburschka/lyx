@@ -15,7 +15,6 @@
 #include <boost/scoped_ptr.hpp>
 
 #include "ControlDialog_impl.h"
-#include "support/std_string.h"
 #include "WordLangTuple.h"
 
 class SpellBase;
@@ -34,10 +33,10 @@ public:
 	~ControlSpellchecker();
 
 	/// replace word with replacement
-	void replace(string const &);
+	void replace(std::string const &);
 
 	/// replace all occurances of word
-	void replaceAll(string const &);
+	void replaceAll(std::string const &);
 
 	/// insert word in personal dictionary
 	void insert();
@@ -50,10 +49,10 @@ public:
 	void check();
 
 	/// get suggestion
-	string const getSuggestion() const;
+	std::string const getSuggestion() const;
 
 	/// get word
-	string const getWord() const;
+	std::string const getWord() const;
 
 	/// returns progress value
 	int getProgress() const { return oldval_; }

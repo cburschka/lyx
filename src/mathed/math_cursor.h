@@ -16,7 +16,9 @@
 
 #include "math_inset.h"
 #include "math_iterator.h"
-#include "support/std_string.h"
+
+#include <string>
+
 
 class InsetFormulaBase;
 class BufferView;
@@ -59,9 +61,9 @@ public:
 	///
 	void insert(MathArray const &);
 	///
-	void insert2(string const &);
+	void insert2(std::string const &);
 	///
-	void paste(string const & data);
+	void paste(std::string const & data);
 	/// return false for empty math insets
 	bool erase();
 	/// return false for empty math insets
@@ -93,7 +95,7 @@ public:
 	///
 	void niceInsert(MathAtom const &);
 	///
-	void niceInsert(string const &);
+	void niceInsert(std::string const &);
 
 	/// in pixels from top of screen
 	void setPos(int x, int y);
@@ -159,11 +161,11 @@ public:
 	void selClearOrDel();
 	/// draws light-blue selection background
 	void drawSelection(PainterInfo & pi) const;
-	/// replace selected stuff with at, placing the former 
+	/// replace selected stuff with at, placing the former
 	// selection in given cell of atom
 	void handleNest(MathAtom const & at, int cell = 0);
 	/// remove this as soon as LyXFunc::getStatus is "localized"
-	string getLastCode() const { return "mathnormal"; }
+	std::string getLastCode() const { return "mathnormal"; }
 	///
 	bool isInside(MathInset const *) const;
 	///
@@ -219,7 +221,7 @@ public:
 	/// local dispatcher
 	dispatch_result dispatch(FuncRequest const & cmd);
 	/// describe the situation
-	string info() const;
+	std::string info() const;
 	/// dump selection information for debugging
 	void seldump(char const * str) const;
 	/// dump selection information for debugging
@@ -227,13 +229,13 @@ public:
 	/// moves on
 	void setSelection(MathIterator const & where, size_type n);
 	/// grab selection marked by anchor and current cursor
-	string grabSelection() const;
+	std::string grabSelection() const;
 	/// guess what
-	string grabAndEraseSelection();
+	std::string grabAndEraseSelection();
 	///
 	void insert(char c);
 	///
-	void insert(string const & str);
+	void insert(std::string const & str);
 	/// lock/unlock inset
 	void insetToggle();
 
@@ -243,7 +245,7 @@ public:
 	/// injects content of a cell into parent
 	void pullArg();
 	/// split font inset etc
-	void handleFont(string const & font);
+	void handleFont(std::string const & font);
 
 private:
 	/// moves cursor index one cell to the left
@@ -269,7 +271,7 @@ private:
 	void eraseSelection();
 
 	/// the name of the macro we are currently inputting
-	string macroName() const;
+	std::string macroName() const;
 	/// where in the curent cell does the macro name start?
 	difference_type macroNamePos() const;
 	/// can we enter the inset?

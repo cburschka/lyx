@@ -16,7 +16,6 @@
 #ifndef PREVIEWEDINSET_H
 #define PREVIEWEDINSET_H
 
-#include "support/std_string.h"
 #include <boost/signals/trackable.hpp>
 #include <boost/signals/connection.hpp>
 
@@ -75,12 +74,12 @@ private:
 	/// Does the owning inset want a preview?
 	virtual bool previewWanted(Buffer const &) const = 0;
 	/// a wrapper to Inset::latex
-	virtual string const latexString(Buffer const &) const = 0;
+	virtual std::string const latexString(Buffer const &) const = 0;
 
 	///
 	InsetOld & inset_;
 	///
-	string snippet_;
+	std::string snippet_;
 
 	/// We don't own this. Cached for efficiency reasons.
 	mutable PreviewImage const * pimage_;

@@ -44,7 +44,7 @@ namespace support = lyx::support;
 namespace external = lyx::external;
 
 using std::endl;
-
+using std::string;
 using std::auto_ptr;
 using std::istringstream;
 using std::ostream;

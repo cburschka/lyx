@@ -13,8 +13,9 @@
 #ifndef MATH_INSET_H
 #define MATH_INSET_H
 
-#include "support/std_string.h"
 #include "insets/insetbase.h"
+
+#include <string>
 
 /**
 
@@ -203,7 +204,7 @@ public:
 	virtual bool takesLimits() const { return false; }
 
 	/// char char code if possible
-	virtual void handleFont(string const &) {}
+	virtual void handleFont(std::string const &) {}
 	/// is this inset equal to a given other inset?
 	virtual bool match(MathAtom const &) const { return false; }
 	/// replace things by other things
@@ -248,13 +249,13 @@ public:
 	/// LyXInset stuff
 	virtual bool numberedType() const { return false; }
 	/// hull type
-	virtual string const & getType() const;
+	virtual std::string const & getType() const;
 	/// change type
-	virtual void mutate(string const &) {}
+	virtual void mutate(std::string const &) {}
 	/// how is the inset called in the .lyx file?
-	virtual string fileInsetLabel() const;
+	virtual std::string fileInsetLabel() const;
 	/// usually the latex name
-	virtual string name() const;
+	virtual std::string name() const;
 
 protected:
 	/// a dirty hack

@@ -12,6 +12,9 @@
 
 #include "lyx_sty.h"
 
+using std::string;
+
+
 //\NeedsTeXFormat{LaTeX2e}
 //\ProvidesPackage{lyx}[1996/01/11 LLE v0.2 (LyX LaTeX Extensions)]
 //\message{LyX LaTeX Extensions (LLE v0.2) of 11-Jan-1996.}

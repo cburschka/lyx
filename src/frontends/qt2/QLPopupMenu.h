@@ -17,8 +17,6 @@
 
 #include "funcrequest.h"
 
-#include "support/std_string.h"
-
 #include <vector>
 #include <utility>
 
@@ -39,7 +37,7 @@ class QLPopupMenu : public QPopupMenu {
 	Q_OBJECT
 public:
 	QLPopupMenu(QLMenubar * owner,
-		    string const & name, bool toplevel);
+		    std::string const & name, bool toplevel);
 
 	/// populate the menu
 	void populate(Menu * menu);
@@ -53,7 +51,7 @@ private:
 	QLMenubar * owner_;
 
 	/// the name of this menu
-	string name_;
+	std::string name_;
 
 	///
 	typedef std::vector<FuncRequest> Funcs;

@@ -21,7 +21,7 @@ public:
 	///
 	RefInset();
 	///
-	explicit RefInset(string const & data);
+	explicit RefInset(std::string const & data);
 	///
 	virtual std::auto_ptr<InsetBase> clone() const;
 	///
@@ -31,7 +31,7 @@ public:
 	///
 	dispatch_result dispatch(FuncRequest const & cmd, idx_type & idx, pos_type & pos);
 	///
-	string const screenLabel() const;
+	std::string const screenLabel() const;
 	///
 	void validate(LaTeXFeatures & features) const;
 	///
@@ -49,17 +49,17 @@ public:
 
 	struct ref_type_info {
 		///
-		string latex_name;
+		std::string latex_name;
 		///
-		string gui_name;
+		std::string gui_name;
 		///
-		string short_gui_name;
+		std::string short_gui_name;
 	};
 	static ref_type_info types[];
 	///
-	static int getType(string const & name);
+	static int getType(std::string const & name);
 	///
-	static string const & getName(int type);
+	static std::string const & getName(int type);
 };
 
 #endif

@@ -23,7 +23,6 @@
 
 #include "support/types.h"
 
-#include "support/std_string.h"
 
 class Buffer;
 class BufferParams;
@@ -80,9 +79,9 @@ public:
 	bool isMultiLingual(BufferParams const &);
 
 	///
-	string const asString(Buffer const &, bool label) const;
+	std::string const asString(Buffer const &, bool label) const;
 	///
-	string const asString(Buffer const &, lyx::pos_type beg, lyx::pos_type end,
+	std::string const asString(Buffer const &, lyx::pos_type beg, lyx::pos_type end,
 			      bool label) const;
 
 	///
@@ -185,12 +184,12 @@ public:
 	int beginningOfBody() const;
 
 	///
-	string const & getLabelstring() const;
+	std::string const & getLabelstring() const;
 
 	/// the next two functions are for the manual labels
-	string const getLabelWidthString() const;
+	std::string const getLabelWidthString() const;
 	///
-	void setLabelWidthString(string const & s);
+	void setLabelWidthString(std::string const & s);
 	///
 	char getAlign() const;
 	/// The nesting depth of a paragraph

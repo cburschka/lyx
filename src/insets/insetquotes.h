@@ -64,7 +64,7 @@ public:
 	  \end{itemize}
 	  */
 	explicit
-	InsetQuotes(string const & str = "eld");
+	InsetQuotes(std::string const & str = "eld");
 	/// Create the right quote inset after character c
 	InsetQuotes(char c, BufferParams const & params);
 	///
@@ -110,8 +110,8 @@ private:
 	 */
 	InsetQuotes(quote_language l, quote_side s, quote_times t);
 	///
-	void parseString(string const &);
+	void parseString(std::string const &);
 	///
-	string const dispString(Language const *) const;
+	std::string const dispString(Language const *) const;
 };
 #endif

@@ -23,7 +23,7 @@ public:
 	///
 	ControlTexinfo(Dialog &);
 	/// Nothing to initialise in this case.
-	virtual bool initialiseParams(string const &) { return true; }
+	virtual bool initialiseParams(std::string const &) { return true; }
 	///
 	virtual void clearParams() {}
 	///
@@ -35,9 +35,9 @@ public:
 	/// the file extensions
 	enum texFileSuffix {cls, sty, bst};
 	/// show contents af a file
-	void viewFile(string const & filename) const;
+	void viewFile(std::string const & filename) const;
 	/// show all classoptions
-	string const getClassOptions(string const & filename) const;
+	std::string const getClassOptions(std::string const & filename) const;
 private:
 	///
 	virtual void apply() {}
@@ -48,6 +48,6 @@ private:
  *  Each entry in the file list is returned as a pair<name_with_path, name_only>
  */
 void getTexFileList(ControlTexinfo::texFileSuffix type,
-		    std::vector<string> & contents);
+		    std::vector<std::string> & contents);
 
 #endif // CONTROLTEXINFO_H

@@ -92,6 +92,7 @@ using lyx::support::system_lyxdir;
 using std::endl;
 using std::make_pair;
 using std::min;
+using std::string;
 
 
 extern BufferList bufferlist;

@@ -15,12 +15,12 @@
 #define LATEX_H
 
 #include "latexrunparams.h"
-#include "support/std_string.h"
-#include <vector>
-#include <set>
 
 #include <boost/utility.hpp>
 #include <boost/signals/signal1.hpp>
+
+#include <vector>
+#include <set>
 
 class DepTable;
 
@@ -32,16 +32,16 @@ private:
 		///
 		Error () : error_in_line(0) {}
 		///
-		Error(int line, string const & desc, string const & text)
+		Error(int line, std::string const & desc, std::string const & text)
 			: error_in_line(line),
 			  error_desc(desc),
 			  error_text(text) {}
 		/// what line in the TeX file the error occured in
 		int error_in_line;
 		/// The kind of error
-		string error_desc;
+		std::string error_desc;
 		/// The line/cmd that caused the error.
-		string error_text;
+		std::string error_text;
 	};
 public:
 	///
@@ -51,8 +51,8 @@ public:
 	///
 	Errors::const_iterator end() const { return errors.end(); }
 	///
-	void insertError(int line, string const & error_desc,
-			 string const & error_text);
+	void insertError(int line, std::string const & error_desc,
+			 std::string const & error_text);
 private:
 	///
 	Errors errors;
@@ -64,13 +64,13 @@ public:
 	///
 	Aux_Info() {}
 	///
-	string aux_file;
+	std::string aux_file;
 	///
-	std::set<string> citations;
+	std::set<std::string> citations;
 	///
-	std::set<string> databases;
+	std::set<std::string> databases;
 	///
-	std::set<string> styles;
+	std::set<std::string> styles;
 };
 
 
@@ -125,15 +125,15 @@ public:
 	};
 
 	/// This signal emits an informative message
-	boost::signal1<void, string> message;
+	boost::signal1<void, std::string> message;
 
 
 	/**
 	   cmd = the latex command, file = name of the (temporary) latex file,
 	   path = name of the files original path.
 	*/
-	LaTeX(string const & cmd, LatexRunParams const &,
-	      string const & file, string const & path);
+	LaTeX(std::string const & cmd, LatexRunParams const &,
+	      std::string const & file, std::string const & path);
 
 	/// runs LaTeX several times
 	int run(TeXErrors &);
@@ -149,22 +149,22 @@ private:
 	int startscript();
 
 	/// The dependency file.
-	string depfile;
+	std::string depfile;
 
 	///
 	void deplog(DepTable & head);
 
 	///
-	bool runMakeIndex(string const &);
+	bool runMakeIndex(std::string const &);
 
 	///
-	std::vector<Aux_Info> const scanAuxFiles(string const &);
+	std::vector<Aux_Info> const scanAuxFiles(std::string const &);
 
 	///
-	Aux_Info const scanAuxFile(string const &);
+	Aux_Info const scanAuxFile(std::string const &);
 
 	///
-	void scanAuxFile(string const &, Aux_Info &);
+	void scanAuxFile(std::string const &, Aux_Info &);
 
 	///
 	void updateBibtexDependencies(DepTable &,
@@ -177,19 +177,19 @@ private:
 	void deleteFilesOnError() const;
 
 	///
-	string cmd;
+	std::string cmd;
 
 	///
-	string file;
+	std::string file;
 
 	///
-	string path;
+	std::string path;
 
 	/// used by scanLogFile
 	int num_errors;
 
 	/// The name of the final output file.
-	string output_file;
+	std::string output_file;
 
 	///
 	LatexRunParams runparams;

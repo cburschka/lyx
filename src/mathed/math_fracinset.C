@@ -19,6 +19,7 @@
 #include "frontends/Painter.h"
 
 
+using std::string;
 using std::max;
 using std::auto_ptr;
 

@@ -24,7 +24,7 @@ public:
 	///
 	virtual std::auto_ptr<InsetBase> clone() const;
 	///
-	string name() const;
+	std::string name() const;
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///

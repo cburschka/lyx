@@ -18,7 +18,6 @@
 #ifndef PREVIEWLOADER_H
 #define PREVIEWLOADER_H
 
-#include "support/std_string.h"
 #include <boost/utility.hpp>
 #include <boost/scoped_ptr.hpp>
 #include <boost/signals/signal1.hpp>
@@ -42,7 +41,7 @@ public:
 	/** Is there an image already associated with this snippet of LaTeX?
 	 *  If so, returns a pointer to it, else returns 0.
 	 */
-	PreviewImage const * preview(string const & latex_snippet) const;
+	PreviewImage const * preview(std::string const & latex_snippet) const;
 
 	///
 	enum Status {
@@ -57,13 +56,13 @@ public:
 	};
 
 	/// How far have we got in loading the image?
-	Status status(string const & latex_snippet) const;
+	Status status(std::string const & latex_snippet) const;
 
 	/// Add a snippet of LaTeX to the queue for processing.
-	void add(string const & latex_snippet) const;
+	void add(std::string const & latex_snippet) const;
 
 	/// Remove this snippet of LaTeX from the PreviewLoader.
-	void remove(string const & latex_snippet) const;
+	void remove(std::string const & latex_snippet) const;
 
 	/** We have accumulated several latex snippets with status "InQueue".
 	 *  Initiate their transformation into bitmap images.

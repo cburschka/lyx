@@ -59,7 +59,7 @@ using std::sscanf;
 
 using std::endl;
 using std::getline;
-
+using std::string;
 using std::ifstream;
 using std::set;
 using std::vector;

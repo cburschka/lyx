@@ -40,6 +40,8 @@ using lyx::support::OnlyFilename;
 using lyx::support::OnlyPath;
 using lyx::support::unlink;
 
+using std::string;
+
 
 extern BufferList bufferlist;
 

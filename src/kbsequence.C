@@ -22,6 +22,7 @@
 #include "frontends/LyXKeySymFactory.h"
 
 using std::make_pair;
+using std::string;
 
 
 FuncRequest const &

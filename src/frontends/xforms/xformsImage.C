@@ -35,11 +35,13 @@
 
 #include <boost/tuple/tuple.hpp>
 
+
 using lyx::support::float_equal;
 using lyx::support::prefixIs;
 using lyx::support::rtrim;
 
 using std::find_if;
+using std::string;
 
 
 namespace {

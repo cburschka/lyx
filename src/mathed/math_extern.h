@@ -12,8 +12,8 @@
 #ifndef MATH_EXTERN_H
 #define MATH_EXTERN_H
 
+#include <string>
 
-#include "support/std_string.h"
 
 class NormalStream;
 class MapleStream;
@@ -35,7 +35,7 @@ void octave(MathArray const &, OctaveStream &);
 bool extractNumber(MathArray const & ar, int & i);
 bool extractNumber(MathArray const & ar, double & i);
 
-MathArray pipeThroughExtern(string const & lang, string const & extra,
+MathArray pipeThroughExtern(std::string const & lang, std::string const & extra,
 	MathArray const & ar);
 
 #endif

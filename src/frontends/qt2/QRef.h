@@ -12,10 +12,10 @@
 #ifndef QREF_H
 #define QREF_H
 
-
 #include "QDialogView.h"
+
 #include <vector>
-#include "support/std_string.h"
+
 
 class ControlRef;
 class QRefDialog;
@@ -64,7 +64,7 @@ private:
 	bool at_ref_;
 
 	/// the references
-	std::vector<string> refs_;
+	std::vector<std::string> refs_;
 };
 
 #endif // QREF_H

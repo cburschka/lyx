@@ -16,9 +16,11 @@
 #include "math_streamstr.h"
 #include "math_symbolinset.h"
 #include "debug.h"
+
 #include <boost/scoped_ptr.hpp>
 
 
+using std::string;
 using std::auto_ptr;
 using std::endl;
 

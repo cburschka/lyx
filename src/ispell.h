@@ -29,7 +29,7 @@ class ForkedProcess;
 /// i/a spell process-based spellchecker
 class ISpell : public SpellBase {
 public:
-	ISpell(BufferParams const & params, string const & lang);
+	ISpell(BufferParams const & params, std::string const & lang);
 
 	~ISpell();
 
@@ -46,10 +46,10 @@ public:
 	virtual void accept(WordLangTuple const & word);
 
 	/// return the next near miss after a MISSED result
-	virtual string const nextMiss();
+	virtual std::string const nextMiss();
 
 	/// give an error message on messy exit
-	virtual string const error();
+	virtual std::string const error();
 
 private:
 	/// read some data. Returns true on an error. Sets err_read
@@ -72,7 +72,7 @@ private:
 	char buf[BUFSIZ];
 
 	/// spell error
-	string error_;
+	std::string error_;
 
 	boost::scoped_ptr<lyx::support::ForkedProcess> child_;
 

@@ -16,6 +16,10 @@
 
 #include <cerrno>
 
+
+using std::string;
+
+
 #if !S_IRUSR
 # if S_IREAD
 #  define S_IRUSR S_IREAD

@@ -21,6 +21,8 @@
 using lyx::support::token;
 using lyx::support::trim;
 
+using std::string;
+
 
 bool operator==(Author const & l, Author const & r)
 {

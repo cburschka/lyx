@@ -17,6 +17,8 @@
 #include "ButtonController.h"
 #include "ControlButtons.h"
 
+using std::string;
+
 
 Qt2Base::Qt2Base(string const & t)
 	: ViewBase(t), updating_(false)

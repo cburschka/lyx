@@ -173,7 +173,7 @@ private:
 	///
 	lyx::pos_type size() const { return owner_->size(); }
 	/// match a string against a particular point in the paragraph
-	bool isTextAt(string const & str, lyx::pos_type pos) const;
+	bool isTextAt(std::string const & str, lyx::pos_type pos) const;
 
 	/// for recording and looking up changes in revision tracking mode
 	boost::scoped_ptr<Changes> changes_;

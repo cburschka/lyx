@@ -14,23 +14,22 @@
 
 #include <vector>
 #include <utility>
-#include "support/std_string.h"
-
+#include <string>
 
 namespace lyx {
 namespace support {
 
 /// remove directory and all contents, returns 0 on success
-int destroyDir(string const & tmpdir);
+int destroyDir(std::string const & tmpdir);
 
 ///
-string const CreateBufferTmpDir(string const & pathfor = string());
+std::string const CreateBufferTmpDir(std::string const & pathfor = std::string());
 
 /// Creates directory. Returns true on success
-bool createDirectory(string const & name, int permissions);
+bool createDirectory(std::string const & name, int permissions);
 
 ///
-string const CreateLyXTmpDir(string const & deflt);
+std::string const CreateLyXTmpDir(std::string const & deflt);
 
 /** Find file by searching several directories.
   Uses a string of paths separated by ";"s to find a file to open.
@@ -39,32 +38,32 @@ string const CreateLyXTmpDir(string const & deflt);
     If path entry begins with $$User/, use user_lyxdir.
     Example: "$$User/doc;$$LyX/doc".
 */
-string const FileOpenSearch(string const & path, string const & name,
-		       string const & ext = string());
+std::string const FileOpenSearch(std::string const & path, std::string const & name,
+		       std::string const & ext = std::string());
 
 /** Returns the real name of file name in directory path, with optional
   extension ext.
   The file is searched in the given path (unless it is an absolute
   file name), first directly, and then with extension .ext (if given).
   */
-string const FileSearch(string const & path, string const & name,
-		  string const & ext = string());
+std::string const FileSearch(std::string const & path, std::string const & name,
+		  std::string const & ext = std::string());
 
 /// Returns a vector of all files in directory dir having extension ext.
-std::vector<string> const DirList(string const & dir,
-				  string const & ext = string());
+std::vector<std::string> const DirList(std::string const & dir,
+				  std::string const & ext = std::string());
 
 /** Is directory read only?
   returns
     true: dir writeable
     false: not writeable
 */
-bool IsDirWriteable (string const & path);
+bool IsDirWriteable (std::string const & path);
 
 /** Is a file readable ?
   Returns true if the file `path' is readable.
  */
-bool IsFileReadable (string const & path);
+bool IsFileReadable (std::string const & path);
 
 /** Is file read only?
   returns
@@ -72,13 +71,13 @@ bool IsFileReadable (string const & path);
     0: read_only
    -1: error (doesn't exist, no access, anything else)
   */
-int IsFileWriteable (string const & path);
+int IsFileWriteable (std::string const & path);
 
 ///
-bool IsLyXFilename(string const & filename);
+bool IsLyXFilename(std::string const & filename);
 
 ///
-bool IsSGMLFilename(string const & filename);
+bool IsSGMLFilename(std::string const & filename);
 
 /** Returns the path of a library data file.
   Search the file name.ext in the subdirectory dir of
@@ -89,16 +88,16 @@ bool IsSGMLFilename(string const & filename);
   \end{enumerate}
     The third parameter `ext' is optional.
 */
-string const LibFileSearch(string const & dir, string const & name,
-		     string const & ext = string());
+std::string const LibFileSearch(std::string const & dir, std::string const & name,
+		     std::string const & ext = std::string());
 
 /** Same as LibFileSearch(), but tries first to find an
   internationalized version of the file by prepending $LANG_ to the
   name
   */
-string const
-i18nLibFileSearch(string const & dir, string const & name,
-		  string const & ext = string());
+std::string const
+i18nLibFileSearch(std::string const & dir, std::string const & name,
+		  std::string const & ext = std::string());
 
 /** Takes a command such as "sh $$s/convertDefault.sh file.in file.out"
  *  and replaces "$$s/" with the path to the "most important" of LyX's
@@ -106,66 +105,66 @@ i18nLibFileSearch(string const & dir, string const & name,
  *  "$$s/" is removed. Executing the command will still fail, but the
  *  error message will make some sort of sense ;-)
  */
-string const LibScriptSearch(string const & command);
+std::string const LibScriptSearch(std::string const & command);
 
 ///
-string const GetEnv(string const & envname);
+std::string const GetEnv(std::string const & envname);
 
 /// A helper function.
-string const GetEnvPath(string const & name);
+std::string const GetEnvPath(std::string const & name);
 
 /// Substitutes active latex characters with underscores in filename
-string const MakeLatexName(string const & file);
+std::string const MakeLatexName(std::string const & file);
 
 /// Put the name in quotes suitable for the current shell
-string const QuoteName(string const & file);
+std::string const QuoteName(std::string const & file);
 
 /// Add a filename to a path. Any path from filename is stripped first.
-string const AddName(string const & path, string const & fname);
+std::string const AddName(std::string const & path, std::string const & fname);
 
 /// Append sub-directory(ies) to path in an intelligent way
-string const AddPath(string const & path, string const & path2);
+std::string const AddPath(std::string const & path, std::string const & path2);
 
 /** Change extension of oldname to extension.
  If oldname does not have an extension, it is appended.
  If the extension is empty, any extension is removed from the name.
  */
-string const
-ChangeExtension(string const & oldname, string const & extension);
+std::string const
+ChangeExtension(std::string const & oldname, std::string const & extension);
 
 /// Return the extension of the file (not including the .)
-string const GetExtension(string const & name);
+std::string const GetExtension(std::string const & name);
 
 /// Return the type of the file as an extension from contents
-string const getExtFromContents(string const & name);
+std::string const getExtFromContents(std::string const & name);
 
 /// check for zipped file
-bool zippedFile(string const & name);
+bool zippedFile(std::string const & name);
 
 /// \return the name that LyX will give to the unzipped file.
-string const unzippedFileName(string const & zipped_file);
+std::string const unzippedFileName(std::string const & zipped_file);
 
 /// unzip a file
-string const unzipFile(string const & zipped_file);
+std::string const unzipFile(std::string const & zipped_file);
 
 /// Returns true is path is absolute
-bool AbsolutePath(string const & path);
+bool AbsolutePath(std::string const & path);
 
 /// Create absolute path. If impossible, don't do anything
-string const ExpandPath(string const & path);
+std::string const ExpandPath(std::string const & path);
 
 /** Convert relative path into absolute path based on a basepath.
   If relpath is absolute, just use that.
   If basepath doesn't exist use CWD.
   */
-string const MakeAbsPath(string const & RelPath = string(),
-			 string const & BasePath = string());
+std::string const MakeAbsPath(std::string const & RelPath = std::string(),
+			 std::string const & BasePath = std::string());
 
 /** Creates a nice compact path for displaying. The parameter
   threshold, if given, specifies the maximal length of the path.
   */
-string const
-MakeDisplayPath(string const & path, unsigned int threshold = 1000);
+std::string const
+MakeDisplayPath(std::string const & path, unsigned int threshold = 1000);
 
 /** Makes relative path out of absolute path.
   If it is deeper than basepath,
@@ -174,43 +173,43 @@ MakeDisplayPath(string const & path, unsigned int threshold = 1000);
   different, then the absolute path will be used as relative path
   WARNING: the absolute path and base path must really be absolute paths!!!
   */
-string const
-MakeRelPath(string const & abspath, string const & basepath);
+std::string const
+MakeRelPath(std::string const & abspath, std::string const & basepath);
 
 /// Strip filename from path name
-string const OnlyPath(string const & fname);
+std::string const OnlyPath(std::string const & fname);
 
 /** Normalize a path. Constracts path/../path
  *  Also converts paths like /foo//bar ==> /foo/bar
  */
-string const NormalizePath(string const & path);
+std::string const NormalizePath(std::string const & path);
 
 /// Strips path from filename
-string const OnlyFilename(string const & fname);
+std::string const OnlyFilename(std::string const & fname);
 
-/// Get the contents of a file as a huge string
-string const GetFileContents(string const & fname);
+/// Get the contents of a file as a huge std::string
+std::string const GetFileContents(std::string const & fname);
 
 /** Check and Replace Environmentvariables ${NAME} in Path.
     Replaces all occurences of these, if they are found in the
     environment.
     Variables are defined by Var := '${' [a-zA-Z_][a-zA-Z_0-9]* '}'
 */
-string const ReplaceEnvironmentPath(string const & path);
+std::string const ReplaceEnvironmentPath(std::string const & path);
 
 /* Set \c link to the path \c file points to as a symbolic link.
    If \c resolve is true, then \c link is an absolute path
    Returns true if successful */
-bool LyXReadLink(string const & file, string & link, bool resolve = false);
+bool LyXReadLink(std::string const & file, std::string & link, bool resolve = false);
 
 /// Uses kpsewhich to find tex files
-string const findtexfile(string const & fil, string const & format);
+std::string const findtexfile(std::string const & fil, std::string const & format);
 
 /// remove the autosave-file and give a Message if it can't be done
-void removeAutosaveFile(string const & filename);
+void removeAutosaveFile(std::string const & filename);
 
 /// read the BoundingBox entry from a ps/eps/pdf-file
-string const readBB_from_PSFile(string const & file);
+std::string const readBB_from_PSFile(std::string const & file);
 
 /** \param file1, file2 the two files to be compared. Must have absolute paths.
  *  \returns 1 if \c file1 has a more recent timestamp than \c file2,
@@ -219,11 +218,11 @@ string const readBB_from_PSFile(string const & file);
  *  If one of the files does not exist, the return value indicates the file
  *  which does exist. Eg, if \c file1 exists but \c file2 does not, return 1.
  */
-int compare_timestamps(string const & file1, string const & file2);
+int compare_timestamps(std::string const & file1, std::string const & file2);
 
-typedef std::pair<int, string> cmd_ret;
+typedef std::pair<int, std::string> cmd_ret;
 
-cmd_ret const RunCommand(string const & cmd);
+cmd_ret const RunCommand(std::string const & cmd);
 
 } // namespace support
 } // namespace lyx

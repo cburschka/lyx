@@ -13,6 +13,8 @@
 #include "ControlToc.h"
 
 using std::vector;
+using std::string;
+
 
 class Buffer;
 

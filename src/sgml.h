@@ -15,7 +15,6 @@
 
 #include "support/types.h"
 
-#include "support/std_string.h"
 #include <iosfwd>
 #include <utility>
 
@@ -26,15 +25,15 @@ namespace sgml {
  * to an SGML entity. Returns true
  * if it was a whitespace character.
  */
-std::pair<bool, string> escapeChar(char c);
+std::pair<bool, std::string> escapeChar(char c);
 
 /// FIXME
 int openTag(std::ostream & os, lyx::depth_type depth,
-	    bool mixcont, string const & latexname);
+	    bool mixcont, std::string const & latexname);
 
 /// FIXME
 int closeTag(std::ostream & os, lyx::depth_type depth,
-	    bool mixcont, string const & latexname);
+	    bool mixcont, std::string const & latexname);
 }
 
 #endif // SGML_H

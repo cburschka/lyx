@@ -31,6 +31,7 @@
 #include "combox.h"
 
 using std::endl;
+using std::string;
 
 
 // some constants

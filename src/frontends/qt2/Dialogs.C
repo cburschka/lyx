@@ -77,6 +77,8 @@
 
 #include "qt_helpers.h"
 
+using std::string;
+
 
 namespace {
 

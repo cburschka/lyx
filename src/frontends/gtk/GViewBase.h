@@ -22,7 +22,7 @@
 class GViewBase : public Dialog::View, public SigC::Object
 {
 public:
-	GViewBase(Dialog &, string const &, bool allowResize);
+	GViewBase(Dialog &, std::string const &, bool allowResize);
 	virtual ~GViewBase();
 protected:
 	// Build the dialog
@@ -50,7 +50,7 @@ template <class Dialog>
 class GViewDB : public GViewBase
 {
 protected:
-	GViewDB(Dialog &, string const &, bool allowResize);
+	GViewDB(Dialog &, std::string const &, bool allowResize);
 	virtual const Gtk::Window * window() const;
 	virtual Gtk::Window * window();
 	boost::scoped_ptr<Dialog> dialog_;
@@ -58,7 +58,7 @@ protected:
 
 
 template <class Dialog>
-GViewDB<Dialog>::GViewDB(Dialog & parent, string const & t, bool allowResize) :
+GViewDB<Dialog>::GViewDB(Dialog & parent, std::string const & t, bool allowResize) :
 	GViewBase(parent, t, allowResize)
 {
 }
@@ -81,7 +81,7 @@ const Gtk::Window * GViewDB<Dialog>::window() const
 class GViewGladeB : public GViewBase
 {
 protected:
-	GViewGladeB(Dialog & parent, string const & t, bool allowResize);
+	GViewGladeB(Dialog & parent, std::string const & t, bool allowResize);
 	virtual const Gtk::Window * window() const;
 	virtual Gtk::Window * window();
 	Glib::RefPtr<Gnome::Glade::Xml> xml_;
@@ -95,12 +95,12 @@ public:
 	Controller & controller();
 	Controller const & controller() const;
 protected:
-	GViewCB(Dialog & parent, string const & t, bool allowResize = false);
+	GViewCB(Dialog & parent, std::string const & t, bool allowResize = false);
 };
 
 
 template <class Controller, class Base>
-GViewCB<Controller, Base>::GViewCB(Dialog & parent, string const & t,
+GViewCB<Controller, Base>::GViewCB(Dialog & parent, std::string const & t,
 				   bool allowResize) :
 	Base(parent, t, allowResize)
 {

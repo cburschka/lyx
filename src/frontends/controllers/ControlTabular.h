@@ -25,7 +25,7 @@ public:
 
 	ControlTabular(Dialog &);
 	///
-	virtual bool initialiseParams(string const & data);
+	virtual bool initialiseParams(std::string const & data);
 	/// clean-up on hide.
 	virtual void clearParams();
 	/// We use set() instead.
@@ -40,7 +40,7 @@ public:
 	/// return true if units should default to metric
 	bool useMetricUnits() const;
 	/// set a parameter
-	void set(LyXTabular::Feature, string const & arg = string());
+	void set(LyXTabular::Feature, std::string const & arg = std::string());
 
 	/// borders
 	void toggleTopLine();
@@ -48,9 +48,9 @@ public:
 	void toggleLeftLine();
 	void toggleRightLine();
 
-	void setSpecial(string const & special);
+	void setSpecial(std::string const & special);
 
-	void setWidth(string const & width);
+	void setWidth(std::string const & width);
 
 	void toggleMultiColumn();
 

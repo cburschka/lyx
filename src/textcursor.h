@@ -16,7 +16,6 @@
 #define TEXTCURSOR_H
 
 #include "lyxcursor.h"
-#include "support/std_string.h"
 
 class Buffer;
 
@@ -69,7 +68,7 @@ struct TextCursor {
 	///
 	void clearSelection();
 	///
-	string const selectionAsString(Buffer const & buffer, bool label) const;
+	std::string const selectionAsString(Buffer const & buffer, bool label) const;
 
 	// actual cursor position
 	LyXCursor cursor;

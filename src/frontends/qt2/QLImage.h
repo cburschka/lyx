@@ -46,7 +46,7 @@ private:
 	 * The process is asynchronous, so this method starts the loading.
 	 * When finished, the Image::finishedLoading signal is emitted.
 	 */
-	virtual void load_impl(string const & filename);
+	virtual void load_impl(std::string const & filename);
 	/**
 	 * Generate the pixmap, based on the current state of
 	 * image_ (clipped, rotated, scaled etc).

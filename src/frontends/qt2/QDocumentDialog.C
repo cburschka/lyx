@@ -24,7 +24,6 @@
 #include "bufferparams.h"
 #include "lyxrc.h"
 
-
 #include <qlabel.h>
 #include <qmultilineedit.h>
 #include <qlineedit.h>
@@ -36,6 +35,8 @@
 #include "lengthcombo.h"
 
 using lyx::support::token;
+
+using std::string;
 
 
 QDocumentDialog::QDocumentDialog(QDocument * form)

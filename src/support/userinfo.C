@@ -19,6 +19,8 @@
 #include <unistd.h>
 #include <sys/types.h>
 
+using std::string;
+
 namespace lyx {
 namespace support {
 

@@ -12,13 +12,15 @@
 #ifndef FILE_INFO_H
 #define FILE_INFO_H
 
-#include <ctime>
+#include <boost/utility.hpp>
 
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <unistd.h>
-#include <boost/utility.hpp>
-#include "support/std_string.h"
+
+#include <ctime>
+#include <string>
+
 
 namespace lyx {
 namespace support {
@@ -36,13 +38,13 @@ public:
 	/** Get information about file.
 	    If link is true, the information is about the link itself, not
 	    the file that is obtained by tracing the links. */
-	explicit FileInfo(string const & path, bool link = false);
+	explicit FileInfo(std::string const & path, bool link = false);
 
 	/// File descriptor
 	explicit FileInfo(int fildes);
 
 	/// Query a new file
-	FileInfo & newFile(string const & path, bool link = false);
+	FileInfo & newFile(std::string const & path, bool link = false);
 
 	/// Query a new file descriptor
 	FileInfo & newFile(int fildes);
@@ -54,7 +56,7 @@ public:
 	mode_t getMode() const;
 
 	/// Constructs standard mode string (ls style)
-	string modeString() const;
+	std::string modeString() const;
 
 	///
 	time_t getModificationTime() const;
@@ -135,7 +137,7 @@ private:
 	///
 	int err_;
 	///
-	string fname_;
+	std::string fname_;
 };
 
 } // namespace support

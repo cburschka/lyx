@@ -14,6 +14,9 @@
 #include "math_mathmlstream.h"
 #include "support/std_ostream.h"
 
+using std::string;
+
+
 WriteStream & operator<<(WriteStream & ws, string const & s)
 {
 	ws << s.c_str();

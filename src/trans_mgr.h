@@ -16,7 +16,6 @@
 
 #include "chset.h"
 #include "trans_decl.h"
-#include "support/std_string.h"
 
 class LyXText;
 class Trans;
@@ -27,11 +26,11 @@ public:
 	///
 	virtual ~TransState() {}
 	///
-	virtual string const normalkey(char) = 0;
+	virtual std::string const normalkey(char) = 0;
 	///
 	virtual bool backspace() = 0;
 	///
-	virtual string const deadkey(char, KmodInfo) = 0;
+	virtual std::string const deadkey(char, KmodInfo) = 0;
 	///
 	static char const TOKEN_SEP;
 };
@@ -73,11 +72,11 @@ public:
 	///
 	TransInitState();
 	///
-	virtual string const normalkey(char);
+	virtual std::string const normalkey(char);
 	///
 	virtual bool backspace() { return true; }
 	///
-	virtual string const deadkey(char, KmodInfo);
+	virtual std::string const deadkey(char, KmodInfo);
 };
 
 
@@ -87,14 +86,14 @@ public:
 	///
 	TransDeadkeyState();
 	///
-	virtual string const normalkey(char);
+	virtual std::string const normalkey(char);
 	///
 	virtual bool backspace() {
 		currentState = init_state_;
 		return false;
 	}
 	///
-	virtual string const deadkey(char, KmodInfo);
+	virtual std::string const deadkey(char, KmodInfo);
 };
 
 
@@ -104,7 +103,7 @@ public:
 	///
 	TransCombinedState();
 	///
-	virtual string const normalkey(char);
+	virtual std::string const normalkey(char);
 	///
 	virtual bool backspace() {
 		// cancel the second deadkey
@@ -115,7 +114,7 @@ public:
 		return false;
 	}
 	///
-	virtual string const deadkey(char, KmodInfo);
+	virtual std::string const deadkey(char, KmodInfo);
 };
 
 
@@ -146,18 +145,18 @@ private:
 	///
 	CharacterSet chset_;
 	///
-	void insert(string const &, LyXText *);
+	void insert(std::string const &, LyXText *);
 	///
-	void insertVerbatim(string const &, LyXText *);
+	void insertVerbatim(std::string const &, LyXText *);
 public:
 	///
 	TransManager();
 	///
 	virtual ~TransManager();
 	///
-	int SetPrimary(string const &);
+	int SetPrimary(std::string const &);
 	///
-	int SetSecondary(string const &);
+	int SetSecondary(std::string const &);
 	///
 	void EnablePrimary();
 	///
@@ -165,7 +164,7 @@ public:
 	///
 	void DisableKeymap();
 	///
-	bool setCharset(string const &);
+	bool setCharset(std::string const &);
 	///
 	bool backspace() {
 		return trans_fsm_.currentState->backspace();
@@ -173,23 +172,23 @@ public:
 	///
 	void TranslateAndInsert(char, LyXText *);
 	///
-	string const deadkey(char, KmodInfo);
+	std::string const deadkey(char, KmodInfo);
 	///
-	string const normalkey(char);
+	std::string const normalkey(char);
 	///
 	void deadkey(char, tex_accent, LyXText *);
 };
 
 
 inline
-string const TransManager::normalkey(char c)
+std::string const TransManager::normalkey(char c)
 {
 	return trans_fsm_.currentState->normalkey(c);
 }
 
 
 inline
-string const TransManager::deadkey(char c, KmodInfo t)
+std::string const TransManager::deadkey(char c, KmodInfo t)
 {
 	return trans_fsm_.currentState->deadkey(c, t);
 }

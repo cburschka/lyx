@@ -60,6 +60,7 @@ using std::setfill;
 using std::setw;
 using std::ostringstream;
 using std::vector;
+using std::string;
 
 
 extern BufferList bufferlist;

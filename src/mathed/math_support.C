@@ -28,6 +28,8 @@
 
 #include <map>
 
+
+using std::string;
 using std::max;
 using std::endl;
 

@@ -16,6 +16,8 @@
 
 #include <functional>
 
+
+using std::string;
 using std::bind2nd;
 using std::binary_function;
 

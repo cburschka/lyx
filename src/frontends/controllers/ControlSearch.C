@@ -20,6 +20,9 @@
 #include "support/tostr.h"
 
 
+using std::string;
+
+
 ControlSearch::ControlSearch(LyXView & lv, Dialogs & d)
 	: ControlDialogBD(lv, d)
 {}

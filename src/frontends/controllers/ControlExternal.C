@@ -20,9 +20,11 @@
 
 #include "insets/ExternalTemplate.h"
 
+
 namespace external = lyx::external;
 
 using std::vector;
+using std::string;
 
 
 ControlExternal::ControlExternal(Dialog & parent)

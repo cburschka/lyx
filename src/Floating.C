@@ -14,6 +14,8 @@
 
 #include "Floating.h"
 
+using std::string;
+
 
 Floating::Floating()
 {}

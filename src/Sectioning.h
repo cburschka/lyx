@@ -12,39 +12,39 @@
 #ifndef SECTIONING_H
 #define SECTIONING_H
 
+#include "lyxfont.h"
+
 #include <map>
 
-#include "support/std_string.h"
-#include "lyxfont.h"
 
 ///
 class Section {
 public:
 	///
-	string const & name() const;
+	std::string const & name() const;
 	///
 	int level() const;
 	///
-	string const & indent() const;
+	std::string const & indent() const;
 	///
-	string const & beforeskip() const;
+	std::string const & beforeskip() const;
 	///
-	string const & afterskip() const;
+	std::string const & afterskip() const;
 	///
 	LyXFont const & style() const;
 	///
 	bool display() const;
 private:
 	///
-	string name_;
+	std::string name_;
 	///
 	int level_;
 	///
-	string indent_;
+	std::string indent_;
 	///
-	string beforeskip_;
+	std::string beforeskip_;
 	///
-	string afterskip_;
+	std::string afterskip_;
 	///
 	LyXFont style_;
 };
@@ -54,7 +54,7 @@ private:
 class SectioningList {
 private:
 	///
-	typedef std::map<string, Section> List_;
+	typedef std::map<std::string, Section> List_;
 	///
 	List_ list_;
 };

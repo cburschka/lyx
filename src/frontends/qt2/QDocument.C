@@ -37,9 +37,11 @@
 #include "lengthcombo.h"
 
 
+using lyx::support::bformat;
 
 using std::vector;
-using lyx::support::bformat;
+using std::string;
+
 
 typedef Qt2CB<ControlDocument, Qt2DB<QDocumentDialog> > base_class;
 

@@ -13,7 +13,8 @@
 #define METRICSINFO_H
 
 #include "lyxfont.h"
-#include "support/std_string.h"
+
+#include <string>
 
 class Painter;
 class BufferView;
@@ -48,7 +49,7 @@ struct MetricsBase {
 	/// current math style (display/text/script/..)
 	Styles style;
 	/// name of current font - mathed specific
-	string fontname;
+	std::string fontname;
 	/// This is the width available in pixels
 	int textwidth;
 };
@@ -176,9 +177,9 @@ struct WidthChanger : public Changer<MetricsBase>
 
 
 // temporarily change the used color
-struct ColorChanger : public Changer<LyXFont, string> {
+struct ColorChanger : public Changer<LyXFont, std::string> {
 	///
-	ColorChanger(LyXFont & font, string const & color);
+	ColorChanger(LyXFont & font, std::string const & color);
 	///
 	~ColorChanger();
 };

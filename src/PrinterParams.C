@@ -16,6 +16,8 @@
 
 #include <boost/assert.hpp>
 
+using std::string;
+
 
 PrinterParams::PrinterParams(Target t,
 			     string const & pname,

@@ -21,7 +21,7 @@
 class CommandInset : public MathNestInset {
 public:
 	///
-	explicit CommandInset(string const & name);
+	explicit CommandInset(std::string const & name);
 	///
 	virtual std::auto_ptr<InsetBase> clone() const;
 	///
@@ -35,14 +35,14 @@ public:
 	///
 	dispatch_result dispatch(FuncRequest const & cmd, idx_type & idx, pos_type & pos);
 	///
-	virtual string const screenLabel() const;
+	virtual std::string const screenLabel() const;
 	/// generate something that will be understood by the Dialogs.
-	string const createDialogStr(string const & name) const;
+	std::string const createDialogStr(std::string const & name) const;
 
-	string const & commandname() const { return name_; }
+	std::string const & commandname() const { return name_; }
 
 private:
-	string name_;
+	std::string name_;
 	mutable bool set_label_;
 	mutable ButtonRenderer button_;
 };

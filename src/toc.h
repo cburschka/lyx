@@ -13,11 +13,10 @@
 #ifndef TOC_H
 #define TOC_H
 
-#include "support/std_string.h"
-
 #include <map>
 #include <iosfwd>
 #include <vector>
+#include <string>
 
 class Buffer;
 class LyXView;
@@ -31,10 +30,10 @@ namespace toc {
 
 ///
 struct TocItem {
-	TocItem(int par_id, int d, string const & s)
+	TocItem(int par_id, int d, std::string const & s)
 		: id_(par_id), depth(d), str(s) {}
 	///
-	string const asString() const;
+	std::string const asString() const;
 	/// set cursor in LyXView to this TocItem
 	void goTo(LyXView & lv_) const;
 	/// the action corresponding to the goTo above
@@ -44,26 +43,26 @@ struct TocItem {
 	/// nesting depth
 	int depth;
 	///
-	string str;
+	std::string str;
 };
 
 ///
 typedef std::vector<TocItem> Toc;
 ///
-typedef std::map<string, Toc> TocList;
+typedef std::map<std::string, Toc> TocList;
 
 ///
 TocList const getTocList(Buffer const &);
 
 ///
-std::vector<string> const getTypes(Buffer const &);
+std::vector<std::string> const getTypes(Buffer const &);
 
 ///
-void asciiTocList(string const &, Buffer const &, std::ostream &);
+void asciiTocList(std::string const &, Buffer const &, std::ostream &);
 
 /** Given the cmdName of the TOC param, returns the type used
     by ControlToc::getContents() */
-string const getType(string const & cmdName);
+std::string const getType(std::string const & cmdName);
 
 inline
 bool operator==(TocItem const & a, TocItem const & b)

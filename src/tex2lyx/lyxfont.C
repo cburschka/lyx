@@ -16,6 +16,8 @@
 
 using lyx::support::ascii_lowercase;
 
+using std::string;
+
 
 LyXFont & LyXFont::lyxRead(LyXLex & lex)
 {

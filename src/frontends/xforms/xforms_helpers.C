@@ -39,6 +39,7 @@ using std::make_pair;
 
 using std::ofstream;
 using std::vector;
+using std::string;
 
 
 bool isActive(FL_OBJECT * ob)

@@ -12,9 +12,8 @@
 #ifndef QLKEY_H
 #define QLKEY_H
 
-
 #include <qnamespace.h>
-#include "support/std_string.h"
+
 
 /**
  * Return true if the key event is a modifier.
@@ -40,7 +39,7 @@ bool q_is_modifier(int qkey)
  * Return the numeric Qt Key corresponding to the
  * given symbol name.
  */
-int string_to_qkey(string const & str)
+int string_to_qkey(std::string const & str)
 {
 	// FIX! (Lgb)
 
@@ -343,7 +342,7 @@ int string_to_qkey(string const & str)
  * Convert the Qt keypress into a string understandable
  * by the LyX core (same as XKeysymToString).
  */
-string const qkey_to_string(int lkey)
+std::string const qkey_to_string(int lkey)
 {
 	switch (lkey) {
 	case Qt::Key_Escape: return "Escape";

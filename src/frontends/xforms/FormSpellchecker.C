@@ -23,6 +23,9 @@
 #include "lyx_forms.h"
 
 
+using std::string;
+
+
 typedef FormCB<ControlSpellchecker, FormDB<FD_spellchecker> > base_class;
 
 FormSpellchecker::FormSpellchecker()

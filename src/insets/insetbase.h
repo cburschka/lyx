@@ -12,8 +12,7 @@
 #ifndef INSETBASE_H
 #define INSETBASE_H
 
-#include "support/std_string.h"
-
+#include <string>
 #include <vector>
 #include <memory>
 
@@ -104,7 +103,7 @@ public:
 	virtual void validate(LaTeXFeatures &) const {}
 	/// Appends \c list with all labels found within this inset.
 	virtual void getLabelList(Buffer const &,
-				  std::vector<string> & /* list */) const {}
+				  std::vector<std::string> & /* list */) const {}
 };
 
 #endif

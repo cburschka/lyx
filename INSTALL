@@ -366,9 +366,6 @@ notify us.
     then you need to upgrade the version of the xforms library you have
     installed.
 
-  o On solaris 2.6, you may have to compile with --with-included-string
-    if compiling with gcc 2.95.2.
-
   o On SUN Sparc Solaris 8, you need gnumake. The LyX makefiles do not
     work with Solaris make.
 

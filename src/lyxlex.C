@@ -31,7 +31,7 @@ using lyx::support::subst;
 using lyx::support::trim;
 
 using std::endl;
-
+using std::string;
 using std::istream;
 using std::ostream;
 

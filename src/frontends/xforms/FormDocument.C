@@ -56,7 +56,7 @@ using lyx::support::LibFileSearch;
 
 using std::bind2nd;
 using std::endl;
-
+using std::string;
 using std::vector;
 
 

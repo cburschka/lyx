@@ -35,6 +35,7 @@
 
 //#define FILEDEBUG 1
 
+using std::string;
 using std::endl;
 #ifndef CXX_GLOBAL_CSTD
 using std::isalpha;

@@ -12,9 +12,10 @@
 #ifndef HELPERFUNCS_H
 #define HELPERFUNCS_H
 
-#include "support/std_string.h"
 #include <utility>
 #include <vector>
+#include <string>
+
 
 /** Launch a file dialog and return the chosen file.
     filename: a suggested filename.
@@ -22,15 +23,15 @@
     pattern: *.ps etc.
     dir1 = (name, dir), dir2 = (name, dir): extra buttons on the dialog.
 */
-string const
-browseFile(string const & filename,
-	   string const & title,
-	   string const & pattern,
+std::string const
+browseFile(std::string const & filename,
+	   std::string const & title,
+	   std::string const & pattern,
 	   bool save = false,
-	   std::pair<string,string> const & dir1 =
-	   std::make_pair(string(), string()),
-	   std::pair<string,string> const & dir2 =
-	   std::make_pair(string(), string()));
+	   std::pair<std::string,std::string> const & dir1 =
+	   std::make_pair(std::string(), std::string()),
+	   std::pair<std::string,std::string> const & dir2 =
+	   std::make_pair(std::string(), std::string()));
 
 
 /* Wrapper around browseFile which tries to provide a filename
@@ -39,16 +40,16 @@ browseFile(string const & filename,
    of the form "../baz/foo.txt", an absolute path is returned. This is
    intended to be useful for insets which encapsulate files/
 */
-string const
-browseRelFile(string const & filename,
-	      string const & refpath,
-	      string const & title,
-	      string const & pattern,
+std::string const
+browseRelFile(std::string const & filename,
+	      std::string const & refpath,
+	      std::string const & title,
+	      std::string const & pattern,
 	      bool save = false,
-	      std::pair<string,string> const & dir1 =
-	      std::make_pair(string(), string()),
-	      std::pair<string,string> const & dir2 =
-	      std::make_pair(string(), string()));
+	      std::pair<std::string,std::string> const & dir1 =
+	      std::make_pair(std::string(), std::string()),
+	      std::pair<std::string,std::string> const & dir2 =
+	      std::make_pair(std::string(), std::string()));
 
 
 /** Launch a file dialog and return the chosen directory.
@@ -56,17 +57,17 @@ browseRelFile(string const & filename,
     title: the title of the dialog.
     dir1 = (name, dir), dir2 = (name, dir): extra buttons on the dialog.
 */
-string const
-browseDir(string const & pathname,
-	   string const & title,
-	   std::pair<string,string> const & dir1 =
-	   std::make_pair(string(), string()),
-	   std::pair<string,string> const & dir2 =
-	   std::make_pair(string(), string()));
+std::string const
+browseDir(std::string const & pathname,
+	   std::string const & title,
+	   std::pair<std::string,std::string> const & dir1 =
+	   std::make_pair(std::string(), std::string()),
+	   std::pair<std::string,std::string> const & dir2 =
+	   std::make_pair(std::string(), std::string()));
 
 
 /// Returns a vector of units that can be used to create a valid LaTeX length.
-std::vector<string> const getLatexUnits();
+std::vector<std::string> const getLatexUnits();
 
 
 /** Functions to extract vectors of the first and second elems from a

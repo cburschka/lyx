@@ -12,8 +12,7 @@
 #ifndef KERNEL_H
 #define KERNEL_H
 
-
-#include "support/std_string.h"
+#include <string>
 
 
 class Buffer;
@@ -47,7 +46,7 @@ public:
 	 *  It must, therefore, ask the kernel to provide this information.
 	 *  \param name is used to identify the dialog to the kernel.
 	 */
-	void updateDialog(string const & name) const;
+	void updateDialog(std::string const & name) const;
 
 	/** A request from the Controller that future changes to the data
 	 *  stored by the dialog are not applied to the inset currently
@@ -55,7 +54,7 @@ public:
 	 *  a new inset at the cursor position.
 	 *  \param name is used to identify the dialog to the kernel.
 	 */
-	void disconnect(string const & name) const;
+	void disconnect(std::string const & name) const;
 
 	/** \name Kernel Wrappers
 	 *  Simple wrapper functions to Buffer methods.
@@ -63,7 +62,7 @@ public:
 	//@{
 	bool isBufferAvailable() const;
 	bool isBufferReadonly() const;
-	string const bufferFilepath() const;
+	std::string const bufferFilepath() const;
 	//@}
 
 	/** \enum DocTypes used to flag the different kinds of buffer

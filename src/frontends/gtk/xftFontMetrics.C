@@ -23,6 +23,8 @@
 
 #include <boost/scoped_array.hpp>
 
+using std::string;
+
 
 namespace {
 

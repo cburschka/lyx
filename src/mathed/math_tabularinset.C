@@ -17,6 +17,8 @@
 
 #include <iterator>
 
+
+using std::string;
 using std::auto_ptr;
 
 

@@ -29,6 +29,7 @@
 #endif
 
 using std::endl;
+using std::string;
 
 
 QWorkArea::QWorkArea(int, int, int, int)

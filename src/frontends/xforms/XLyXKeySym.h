@@ -12,8 +12,6 @@
 #ifndef XLYXKEYSYM_H
 #define XLYXKEYSYM_H
 
-
-#include "support/std_string.h"
 #include <X11/Xlib.h>
 #include "frontends/LyXKeySym.h"
 
@@ -27,7 +25,7 @@ public:
 	/// X11 specific initialization with an X11 KeySym
 	void initFromKeySym(KeySym);
 
-	virtual void init(string const & symbolname);
+	virtual void init(std::string const & symbolname);
 
 	virtual ~XLyXKeySym() {}
 
@@ -37,14 +35,14 @@ public:
 	/// Is this a modifier key only?
 	virtual bool isModifier() const;
 
-	virtual string getSymbolName() const;
+	virtual std::string getSymbolName() const;
 
 	/**
 	 * Return the value of the keysym into the local ISO encoding.
 	 * This converts the LyXKeySym to a 8-bit encoded character.
 	 * This relies on user to use the right encoding.
 	 */
-	virtual char getISOEncoded(string const & encoding) const;
+	virtual char getISOEncoded(std::string const & encoding) const;
 
 	///
 	unsigned int keysym() const {

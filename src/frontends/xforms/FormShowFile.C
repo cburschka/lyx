@@ -19,6 +19,9 @@
 #include "lyx_forms.h"
 
 
+using std::string;
+
+
 FormShowFile::FormShowFile(Dialog & parent)
 	: FormController<ControlShowFile, FormBrowser>(parent, _("Show File"))
 {}

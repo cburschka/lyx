@@ -12,8 +12,6 @@
 #ifndef BUFFER_LIST_H
 #define BUFFER_LIST_H
 
-#include "support/std_string.h"
-
 #include <boost/utility.hpp>
 
 #include <vector>
@@ -33,7 +31,7 @@ public:
 	bool quitWriteAll();
 
 	/// create a new buffer
-	Buffer * newBuffer(string const & s, bool ronly = false);
+	Buffer * newBuffer(std::string const & s, bool ronly = false);
 
 	/// delete a buffer
 	void release(Buffer * b);
@@ -42,10 +40,10 @@ public:
 	void closeAll();
 
 	/// returns a vector with all the buffers filenames
-	std::vector<string> const getFileNames() const;
+	std::vector<std::string> const getFileNames() const;
 
 	/// FIXME
-	void updateIncludedTeXfiles(string const &, LatexRunParams const &);
+	void updateIncludedTeXfiles(std::string const &, LatexRunParams const &);
 
 	/// emergency save for all buffers
 	void emergencyWriteAll();
@@ -60,18 +58,18 @@ public:
 	Buffer * first();
 
 	/// returns true if the buffer exists already
-	bool exists(string const &) const;
+	bool exists(std::string const &) const;
 
 	/// returns true if the buffer is loaded
 	bool isLoaded(Buffer const * b) const;
 
 	/// returns a pointer to the buffer with the given name.
-	Buffer * getBuffer(string const &);
+	Buffer * getBuffer(std::string const &);
 	/// returns a pointer to the buffer with the given number.
 	Buffer * getBuffer(unsigned int);
 
 	/// reset current author for all buffers
-	void setCurrentAuthor(string const & name, string const & email);
+	void setCurrentAuthor(std::string const & name, std::string const & email);
 
 private:
 	/// ask to save a buffer on quit, returns false if should cancel

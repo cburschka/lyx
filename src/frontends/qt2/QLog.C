@@ -26,6 +26,7 @@
 
 using std::ifstream;
 using std::ostringstream;
+using std::string;
 
 typedef QController<ControlLog, QView<QLogDialog> > base_class;
 

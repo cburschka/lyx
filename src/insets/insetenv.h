@@ -18,7 +18,7 @@
 class InsetEnvironment : public InsetText {
 public:
 	///
-	InsetEnvironment(BufferParams const &, string const & name);
+	InsetEnvironment(BufferParams const &, std::string const & name);
 	///
 	InsetEnvironment(InsetEnvironment const &);
 	///
@@ -33,7 +33,7 @@ public:
 	int latex(Buffer const &, std::ostream &,
 		  LatexRunParams const &) const;
 	///
-	string const editMessage() const;
+	std::string const editMessage() const;
 	///
 	InsetOld::EDITABLE editable() const { return HIGHLY_EDITABLE; }
 	///

@@ -69,7 +69,6 @@ libsupport_la_SOURCES = \
 	std_istream.h \
 	std_ostream.h \
 	std_sstream.h \
-	std_string.h \
 	systemcall.C \
 	systemcall.h \
 	tempname.C \

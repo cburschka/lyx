@@ -16,6 +16,10 @@
 #include "path.h"
 #include "lyxlib.h"
 
+
+using std::string;
+
+
 namespace lyx {
 namespace support {
 

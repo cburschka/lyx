@@ -22,7 +22,7 @@
 
 #include <queue>
 #include <utility>
-#include "support/std_string.h"
+
 
 namespace lyx {
 namespace support {
@@ -30,13 +30,13 @@ namespace support {
 class ForkedCallQueue {
 public:
 	/// A process in the queue
-	typedef std::pair<string, Forkedcall::SignalTypePtr> Process;
+	typedef std::pair<std::string, Forkedcall::SignalTypePtr> Process;
         /** Add a process to the queue. Processes are forked sequentially
 	 *  only one is running at a time.
          *  Connect to the returned signal and you'll be informed when
          *  the process has ended.
          */
-	Forkedcall::SignalTypePtr add(string const & process);
+	Forkedcall::SignalTypePtr add(std::string const & process);
 	/// Query whether the queue is running a forked process now.
 	bool running() const;
 	/// Get the and only instance of the class

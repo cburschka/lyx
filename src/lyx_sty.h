@@ -16,43 +16,43 @@
 #ifndef LYX_STY_H
 #define LYX_STY_H
 
-#include "support/std_string.h"
+#include <string>
 
 ///
-extern string const lyx_def;
+extern std::string const lyx_def;
 ///
-extern string const lyxline_def;
+extern std::string const lyxline_def;
 ///
-extern string const noun_def;
+extern std::string const noun_def;
 ///
-extern string const lyxarrow_def;
+extern std::string const lyxarrow_def;
 ///
-extern string const quotedblbase_def;
+extern std::string const quotedblbase_def;
 ///
-extern string const quotesinglbase_def;
+extern std::string const quotesinglbase_def;
 ///
-extern string const guillemotleft_def;
+extern std::string const guillemotleft_def;
 ///
-extern string const guillemotright_def;
+extern std::string const guillemotright_def;
 ///
-extern string const guilsinglleft_def;
+extern std::string const guilsinglleft_def;
 ///
-extern string const guilsinglright_def;
+extern std::string const guilsinglright_def;
 ///
-extern string const paragraphleftindent_def;
+extern std::string const paragraphleftindent_def;
 ///
-extern string const floatingfootnote_def;
+extern std::string const floatingfootnote_def;
 ///
-extern string const minipageindent_def;
+extern std::string const minipageindent_def;
 ///
-extern string const boldsymbol_def;
+extern std::string const boldsymbol_def;
 ///
-extern string const binom_def;
+extern std::string const binom_def;
 ///
-extern string const mathcircumflex_def;
+extern std::string const mathcircumflex_def;
 ///
-extern string const tabularnewline_def;
+extern std::string const tabularnewline_def;
 ///
-extern string const lyxgreyedout_def;
+extern std::string const lyxgreyedout_def;
 
 #endif // LYX_STY_H

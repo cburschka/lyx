@@ -14,8 +14,6 @@
 #define LATEXFEATURES_H
 
 
-#include "support/std_string.h"
-
 #include <set>
 #include <list>
 #include <map>
@@ -42,41 +40,41 @@ public:
 	///
 	LaTeXFeatures(Buffer const &, BufferParams const &);
 	/// The packages needed by the document
-	string const getPackages() const;
+	std::string const getPackages() const;
 	/// The macros definitions needed by the document
-	string const getMacros() const;
+	std::string const getMacros() const;
 	///
-	string const getBabelOptions() const;
+	std::string const getBabelOptions() const;
 	/// The definitions needed by the document's textclass
-	string const getTClassPreamble() const;
+	std::string const getTClassPreamble() const;
 	/// The sgml definitions needed by the document (dobook/linuxdoc)
-	string const getLyXSGMLEntities() const;
+	std::string const getLyXSGMLEntities() const;
 	/// The SGML Required to include the files added with includeFile();
-	string const getIncludedFiles(string const & fname) const;
+	std::string const getIncludedFiles(std::string const & fname) const;
 	/// Include a file for use with the SGML entities
-	void includeFile(string const & key, string const & name);
+	void includeFile(std::string const & key, std::string const & name);
 	/// The float definitions.
 	void getFloatDefinitions(std::ostream & os) const;
 	/// Print requirements to lyxerr
 	void showStruct() const;
 	///
-	void addExternalPreamble(string const &);
+	void addExternalPreamble(std::string const &);
 	/// Provide a string name-space to the requirements
-	void require(string const & name);
+	void require(std::string const & name);
 	/// Is the package required?
-	bool isRequired(string const & name) const;
+	bool isRequired(std::string const & name) const;
 	///
-	void useFloat(string const & name);
+	void useFloat(std::string const & name);
 	///
 	void useLanguage(Language const *);
 	///
 	bool hasLanguages() const;
 	///
-	string getLanguages() const;
+	std::string getLanguages() const;
 	///
-	std::set<string> getEncodingSet(string const & doc_encoding) const;
+	std::set<std::string> getEncodingSet(std::string const & doc_encoding) const;
 	///
-	void useLayout(string const & lyt);
+	void useLayout(std::string const & lyt);
 	///
 	Buffer const & buffer() const;
 	///
@@ -85,10 +83,10 @@ public:
 	bool useBabel() const;
 
 private:
-	std::list<string> usedLayouts_;
+	std::list<std::string> usedLayouts_;
 
 	/// Static preamble bits from the external material insets
-	typedef std::list<string> FeaturesList;
+	typedef std::list<std::string> FeaturesList;
 	///
 	FeaturesList features_;
 	///
@@ -98,11 +96,11 @@ private:
 	///
 	LanguageList UsedLanguages_;
 	///
-	typedef std::set<string> UsedFloats;
+	typedef std::set<std::string> UsedFloats;
 	///
 	UsedFloats usedFloats_;
 	///
-	typedef std::map<string , string> FileMap;
+	typedef std::map<std::string , std::string> FileMap;
 	///
 	FileMap IncludedFiles_;
 	///

@@ -23,6 +23,8 @@
 
 #include "support/std_sstream.h"
 
+
+using std::string;
 using std::auto_ptr;
 using std::istringstream;
 using std::ostream;
@@ -162,7 +164,7 @@ int InsetBranch::linuxdoc(Buffer const & buf, std::ostream & os) const
 	string const branch_sel = buf.params().branchlist().allSelected();
 	if (branch_sel.find(params_.branch, 0) != string::npos)
 		return inset.linuxdoc(buf, os);
- 	return 0;
+	return 0;
 }
 
 

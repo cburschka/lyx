@@ -17,6 +17,8 @@
 #include <boost/bind.hpp>
 #include <boost/signals/signal2.hpp>
 
+
+using std::string;
 using std::endl;
 
 

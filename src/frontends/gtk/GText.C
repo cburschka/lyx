@@ -18,6 +18,9 @@
 #include "GText.h"
 #include "IdSc.h"
 
+using std::string;
+
+
 GText::GText(Dialog & parent, string const & title, string const & label)
 	: GViewCB<ControlCommand, GViewGladeB>(parent, title),
 	  label_(label), entry_(0)

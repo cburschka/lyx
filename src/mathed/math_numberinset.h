@@ -21,7 +21,7 @@
 class MathNumberInset : public MathInset {
 public:
 	///
-	explicit MathNumberInset(string const & s);
+	explicit MathNumberInset(std::string const & s);
 	///
 	virtual std::auto_ptr<InsetBase> clone() const;
 	///
@@ -29,7 +29,7 @@ public:
 	///
 	void draw(PainterInfo &, int x, int y) const;
 	///
-	string str() const { return str_; }
+	std::string str() const { return str_; }
 	///
 	MathNumberInset * asNumberInset() { return this; }
 
@@ -46,6 +46,6 @@ public:
 
 private:
 	/// the number as string
-	string str_;
+	std::string str_;
 };
 #endif

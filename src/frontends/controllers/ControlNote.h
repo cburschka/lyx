@@ -23,7 +23,7 @@ public:
 	///
 	ControlNote(Dialog &);
 	///
-	virtual bool initialiseParams(string const & data);
+	virtual bool initialiseParams(std::string const & data);
 	///
 	virtual void clearParams();
 	///
@@ -41,6 +41,6 @@ private:
 };
 
 ///
-void note_gui_tokens(std::vector<string> &, std::vector<string> &);
+void note_gui_tokens(std::vector<std::string> &, std::vector<std::string> &);
 
 #endif // CONTROLNOTE_H

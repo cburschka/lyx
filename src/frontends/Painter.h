@@ -13,8 +13,7 @@
 #ifndef PAINTER_H
 #define PAINTER_H
 
-
-#include "support/std_string.h"
+#include <string>
 
 
 class LColor_color;
@@ -140,7 +139,7 @@ public:
 
 	/// draw a string at position x, y (y is the baseline)
 	virtual Painter & text(int x, int y,
-		string const & str, LyXFont const & f) = 0;
+		std::string const & str, LyXFont const & f) = 0;
 
 	/**
 	 * Draw a string at position x, y (y is the baseline)
@@ -161,14 +160,14 @@ public:
 	 * around the text with the given color.
 	 */
 	Painter & rectText(int x, int baseline,
-		string const & string,
+		std::string const & str,
 		LyXFont const & font,
 		LColor_color back,
 		LColor_color frame);
 
 	/// draw a string and enclose it inside a button frame
 	Painter & buttonText(int x,
-		int baseline, string const & s,
+		int baseline, std::string const & s,
 		LyXFont const & font);
 
 protected:

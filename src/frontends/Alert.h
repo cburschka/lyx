@@ -28,21 +28,21 @@ namespace Alert {
  * "Yes" or "No", I will personally come around to your house and
  * slap you with fish, and not in an enjoyable way either.
  */
-int prompt(string const & title, string const & question,
+int prompt(std::string const & title, std::string const & question,
            int default_button, int cancel_button,
-	   string const & b1, string const & b2, string const & b3 = string());
+	   std::string const & b1, std::string const & b2, std::string const & b3 = std::string());
 
 /**
  * Display a warning to the user. Title should be a short (general) summary.
  * Only use this if the user cannot perform some remedial action.
  */
-void warning(string const & title, string const & message);
+void warning(std::string const & title, std::string const & message);
 
 /**
  * Display a warning to the user. Title should be a short (general) summary.
  * Only use this if the user cannot perform some remedial action.
  */
-void error(string const & title, string const & message);
+void error(std::string const & title, std::string const & message);
 
 /**
  * Informational message. Use very very sparingly. That is, you must
@@ -50,12 +50,12 @@ void error(string const & title, string const & message);
  * and reciting the Nicene Creed, whilst running uphill and also
  * eating.
  */
-void information(string const & title, string const & message);
+void information(std::string const & title, std::string const & message);
 
 /// Asks for a text. DO NOT USE !!
-std::pair<bool, string> const
-askForText(string const & msg,
-	   string const & dflt = string());
+std::pair<bool, std::string> const
+askForText(std::string const & msg,
+	   std::string const & dflt = std::string());
 
 }
 

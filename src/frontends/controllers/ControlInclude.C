@@ -32,6 +32,7 @@ using lyx::support::MakeAbsPath;
 using lyx::support::OnlyPath;
 
 using std::pair;
+using std::string;
 
 
 ControlInclude::ControlInclude(Dialog & parent)

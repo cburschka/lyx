@@ -25,7 +25,6 @@
 #define GRAPHICSLOADER_H
 
 #include "GraphicsTypes.h"
-#include "support/std_string.h"
 
 #include <boost/signals/signal0.hpp>
 #include <boost/scoped_ptr.hpp>
@@ -43,9 +42,9 @@ public:
 	/// Must use the reset methods to make this instance usable.
 	Loader();
 	/// The image is not transformed, just displayed as-is.
-	Loader(string const & file_with_path, DisplayType = ColorDisplay);
+	Loader(std::string const & file_with_path, DisplayType = ColorDisplay);
 	/// The image is transformed before display.
-	Loader(string const & file_with_path, Params const &);
+	Loader(std::string const & file_with_path, Params const &);
 	///
 	Loader(Loader const &);
 
@@ -55,15 +54,15 @@ public:
 	Loader & operator=(Loader const &);
 
 	/// The file can be changed, or the display params, or both.
-	void reset(string const & file_with_path,
+	void reset(std::string const & file_with_path,
 		   DisplayType = ColorDisplay) const;
 	///
-	void reset(string const & file_with_path, Params const &) const;
+	void reset(std::string const & file_with_path, Params const &) const;
 	///
 	void reset(Params const &) const;
 
 	/// Returns the absolute path of the loaded (loading?) file.
-	string const & filename() const;
+	std::string const & filename() const;
 	///
 	bool empty() const { return filename().empty(); }
 

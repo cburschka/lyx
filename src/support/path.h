@@ -12,8 +12,9 @@
 #ifndef PATH_H
 #define PATH_H
 
-#include "support/std_string.h"
 #include <boost/utility.hpp>
+
+#include <string>
 
 namespace lyx {
 namespace support {
@@ -34,7 +35,7 @@ namespace support {
 class Path : boost::noncopyable {
 public:
 	/// change to the given directory
-	explicit Path(string const & path);
+	explicit Path(std::string const & path);
 
 	/// set cwd to the previous value if needed
 	~Path();
@@ -45,7 +46,7 @@ private:
 	/// whether we are in the new cwd or not
 	bool popped_;
 	/// the previous cwd
-	string pushedDir_;
+	std::string pushedDir_;
 };
 
 // To avoid the wrong usage:

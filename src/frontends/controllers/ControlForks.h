@@ -16,7 +16,6 @@
 
 #include <boost/signals/connection.hpp>
 
-#include "support/std_string.h"
 #include <vector>
 #include <sys/types.h>
 
@@ -31,7 +30,7 @@ public:
 	///
 	std::vector<pid_t> const getPIDs() const;
 	///
-	string const getCommand(pid_t) const;
+	std::string const getCommand(pid_t) const;
 	///
 	void kill(pid_t);
 private:

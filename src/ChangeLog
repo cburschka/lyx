@@ -1,3 +1,7 @@
+2003-10-06  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* All most all file in all subdirs: Make <string> be the prefered
+	way of getting to std::string, add using declarations.
 
 2003-10-06  André Pönitz  <poenitz@gmx.net>
 
@@ -24,7 +28,7 @@
 
 2003-09-26  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
-	* lyx_main.C: remove the global debug object 
+	* lyx_main.C: remove the global debug object
 
 	* debug.h: adjust for new debugstream
 

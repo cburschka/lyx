@@ -13,10 +13,6 @@
 #ifndef FORMFILEDIALOG_H
 #define FORMFILEDIALOG_H
 
-
-
-#include "support/std_string.h"
-
 #include "forms_fwd.h"
 
 #include "frontends/FileDialog.h"
@@ -32,11 +28,11 @@ class Dialogs;
 class DirEntry {
 public:
 	///
-	string name_;
+	std::string name_;
 	///
-	string displayed_;
+	std::string displayed_;
 	///
-	string ls_entry_;
+	std::string ls_entry_;
 };
 
 
@@ -57,19 +53,19 @@ public:
 	~Private();
 
 	/// sets file selector user button action
-	void SetButton(int iIndex, string const & pszName = string(),
-		       string const & pszPath = string());
+	void SetButton(int iIndex, std::string const & pszName = std::string(),
+		       std::string const & pszPath = std::string());
 	/// gets last dialog directory
-	string const GetDirectory() const;
+	std::string const GetDirectory() const;
 	/// launches dialog and returns selected file
-	string const Select(string const & pszTitle = string(),
-		       string const & pszPath = string(),
-		       string const & pszMask = string(),
-		       string const & pszSuggested = string());
+	std::string const Select(std::string const & pszTitle = std::string(),
+		       std::string const & pszPath = std::string(),
+		       std::string const & pszMask = std::string(),
+		       std::string const & pszSuggested = std::string());
 	/// launches dialog and returns selected directory
-	string const SelectDir(string const & pszTitle = string(),
-		       string const & pszPath = string(),
-		       string const & pszSuggested = string());
+	std::string const SelectDir(std::string const & pszTitle = std::string(),
+		       std::string const & pszPath = std::string(),
+		       std::string const & pszSuggested = std::string());
 	/// XForms objects callback (static)
 	static void FileDlgCB(FL_OBJECT *, long);
 	/// Callback for double click in list
@@ -87,15 +83,15 @@ private:
 	///
 	static int minh_;
 	///
-	string user_path1_;
+	std::string user_path1_;
 	///
-	string user_path2_;
+	std::string user_path2_;
 	///
-	string directory_;
+	std::string directory_;
 	///
-	string mask_;
+	std::string mask_;
 	///
-	string file_name_;
+	std::string file_name_;
 	///
 	int depth_;
 	///
@@ -103,7 +99,7 @@ private:
 	///
 	long last_time_;
 	///
-	string info_line_;
+	std::string info_line_;
 	///
 	typedef std::vector<DirEntry> DirEntries;
 	///
@@ -120,11 +116,11 @@ private:
 	/// updates dialog list to match class directory
 	void Reread();
 	/// sets dialog current directory
-	void SetDirectory(string const & pszPath);
+	void SetDirectory(std::string const & pszPath);
 	/// sets dialog file mask
-	void SetMask(string const & pszNewMask);
+	void SetMask(std::string const & pszNewMask);
 	/// sets dialog information line
-	void SetInfoLine(string const & pszLine);
+	void SetInfoLine(std::string const & pszLine);
 	/// handle dialog during file selection
 	bool RunDialog();
 	/// Handle callback from list

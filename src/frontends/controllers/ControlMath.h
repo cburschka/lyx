@@ -24,15 +24,15 @@ public:
 	ControlMath(Dialog &);
 
 	/// Nothing to initialise in this case.
-	virtual bool initialiseParams(string const &) { return true; }
+	virtual bool initialiseParams(std::string const &) { return true; }
 	virtual void clearParams() {}
 	virtual void dispatchParams() {}
 	virtual bool isBufferDependent() const { return true; }
 
 	/// dispatch an LFUN
-	void dispatchFunc(kb_action action, string const & arg = string()) const;
+	void dispatchFunc(kb_action action, std::string const & arg = std::string()) const;
 	/// Insert a math symbol into the doc.
-	void dispatchInsert(string const & name) const;
+	void dispatchInsert(std::string const & name) const;
 	/// Insert a subscript.
 	void dispatchSubscript() const;
 	/// Insert a superscript.
@@ -40,15 +40,15 @@ public:
 	/// Insert a cube root
 	void dispatchCubeRoot() const;
 	/// Insert a matrix
-	void dispatchMatrix(string const & str) const;
+	void dispatchMatrix(std::string const & str) const;
 	/// Insert a delimiter
-	void dispatchDelim(string const & str) const;
+	void dispatchDelim(std::string const & str) const;
 	/// Wwitch between display and inline
 	void dispatchToggleDisplay() const;
 	/** A request to the kernel to launch a dialog.
 	 *  \param name the dialog identifier.
 	 */
-	void showDialog(string const & name) const;
+	void showDialog(std::string const & name) const;
 };
 
 
@@ -85,6 +85,6 @@ extern int const nr_latex_ams_ops;
  * Return the mangled XPM filename of the given
  * math symbol.
  */
-string const find_xpm(string const & name);
+std::string const find_xpm(std::string const & name);
 
 #endif // NOT CONTROLMATH

@@ -34,6 +34,7 @@ using lyx::support::subst;
 using lyx::support::token;
 using lyx::support::trim;
 
+using std::string;
 using std::ostringstream;
 using std::vector;
 

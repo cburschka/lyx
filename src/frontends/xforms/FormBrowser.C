@@ -15,6 +15,9 @@
 #include "xformsBC.h"
 
 
+using std::string;
+
+
 FormBrowser::FormBrowser(Dialog & parent,
 			 string const & title, bool allowResize)
 	: FormView<FD_browser>(parent, title, allowResize)

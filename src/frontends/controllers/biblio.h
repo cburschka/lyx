@@ -12,8 +12,6 @@
 #ifndef BIBLIOHELPERS_H
 #define BIBLIOHELPERS_H
 
-
-#include "support/std_string.h"
 #include <map>
 #include <vector>
 
@@ -49,27 +47,27 @@ enum Direction {
 };
 
 /// First entry is the bibliography key, second the data
-typedef std::map<string, string> InfoMap;
+typedef std::map<std::string, std::string> InfoMap;
 
 /// Returns a vector of bibliography keys
-std::vector<string> const getKeys(InfoMap const &);
+std::vector<std::string> const getKeys(InfoMap const &);
 
 /** Returns the BibTeX data associated with a given key.
     Empty if no info exists. */
-string const getInfo(InfoMap const &, string const &);
+std::string const getInfo(InfoMap const &, std::string const &);
 
 // rturn the year from the bibtex data record
-string const getYear(InfoMap const & map, string const & key);
+std::string const getYear(InfoMap const & map, std::string const & key);
 
 /// return the short form of an authorlist
-string const getAbbreviatedAuthor(InfoMap const & map, string const & key);
+std::string const getAbbreviatedAuthor(InfoMap const & map, std::string const & key);
 
 // return only the family name
-string const familyName(string const & name);
+std::string const familyName(std::string const & name);
 
 /** Search a BibTeX info field for the given key and return the
     associated field. */
-string const parseBibTeX(string data, string const & findkey);
+std::string const parseBibTeX(std::string data, std::string const & findkey);
 
 /** Returns an iterator to the first key that meets the search
     criterion, or end() if unsuccessful.
@@ -83,11 +81,11 @@ string const parseBibTeX(string data, string const & findkey);
     an enum defining the search direction.
 */
 
-std::vector<string>::const_iterator
+std::vector<std::string>::const_iterator
 searchKeys(InfoMap const & map,
-	   std::vector<string> const & keys_to_search,
-	   string const & search_expression,
-	   std::vector<string>::const_iterator start,
+	   std::vector<std::string> const & keys_to_search,
+	   std::string const & search_expression,
+	   std::vector<std::string>::const_iterator start,
 	   Search,
 	   Direction,
 	   bool caseSensitive=false);
@@ -105,7 +103,7 @@ struct CitationStyle {
 };
 
 /// Given the LaTeX command, return the appropriate CitationStyle
-CitationStyle const getCitationStyle(string const & command);
+CitationStyle const getCitationStyle(std::string const & command);
 
 /** Returns the LaTeX citation command
 
@@ -114,7 +112,7 @@ The CiteStyle enum,
 a flag forcing the full author list,
 a flag forcing upper case, e.g. "della Casa" becomes "Della Case"
 */
-string const getCiteCommand(CiteStyle, bool full, bool forceUCase);
+std::string const getCiteCommand(CiteStyle, bool full, bool forceUCase);
 
 /// Returns a vector of available Citation styles.
 std::vector<CiteStyle> const getCiteStyles(bool usingNatbib);
@@ -132,8 +130,8 @@ std::vector<CiteStyle> const getCiteStyles(bool usingNatbib);
    the InfoMap of bibkeys info,
    the available citation styles
 */
-std::vector<string> const
-getNumericalStrings(string const & key,
+std::vector<std::string> const
+getNumericalStrings(std::string const & key,
 		    InfoMap const & map,
 		    std::vector<CiteStyle> const & styles);
 
@@ -149,8 +147,8 @@ getNumericalStrings(string const & key,
    the InfoMap of bibkeys info,
    the available citation styles
 */
-std::vector<string> const
-getAuthorYearStrings(string const & key,
+std::vector<std::string> const
+getAuthorYearStrings(std::string const & key,
 		     InfoMap const & map,
 		     std::vector<CiteStyle> const & styles);
 } // namespace biblio

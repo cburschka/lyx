@@ -13,6 +13,8 @@
 
 #include "GBC.h"
 
+using std::string;
+
 
 GBC::GBC(ButtonController const & parent,
 	 string const & cancel, string const & close)

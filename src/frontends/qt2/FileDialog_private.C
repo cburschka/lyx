@@ -21,6 +21,8 @@
 
 using lyx::support::split;
 
+using std::string;
+
 
 namespace {
 

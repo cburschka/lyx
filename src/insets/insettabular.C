@@ -45,7 +45,7 @@ using lyx::support::strToInt;
 using std::endl;
 using std::max;
 using std::swap;
-
+using std::string;
 using std::auto_ptr;
 using std::istringstream;
 using std::ostream;

@@ -38,7 +38,7 @@ using lyx::support::sum;
 using std::endl;
 using std::flush;
 using std::getline;
-
+using std::string;
 using std::ofstream;
 using std::ifstream;
 

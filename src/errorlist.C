@@ -12,6 +12,8 @@
 
 #include "errorlist.h"
 
+using std::string;
+
 
 ErrorItem::ErrorItem(string const & error, string const & description,
 		     int par_id, int pos_start, int pos_end)
@@ -23,5 +25,3 @@ ErrorItem::ErrorItem(string const & error, string const & description,
 ErrorItem::ErrorItem()
 	: par_id(-1),  pos_start(0),  pos_end(0)
 {}
-
-

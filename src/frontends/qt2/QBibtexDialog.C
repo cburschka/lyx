@@ -26,6 +26,8 @@
 
 using lyx::support::ChangeExtension;
 
+using std::string;
+
 
 QBibtexDialog::QBibtexDialog(QBibtex * form)
 	: QBibtexDialogBase(0, 0, false, 0),

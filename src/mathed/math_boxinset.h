@@ -13,7 +13,8 @@
 #define MATH_BOXINSET_H
 
 #include "math_nestinset.h"
-#include "support/std_string.h"
+
+#include <string>
 
 
 class LyXFont;
@@ -23,7 +24,7 @@ class LyXFont;
 class MathBoxInset : public MathNestInset {
 public:
 	///
-	explicit MathBoxInset(string const & name);
+	explicit MathBoxInset(std::string const & name);
 	///
 	virtual std::auto_ptr<InsetBase> clone() const;
 	///
@@ -41,7 +42,7 @@ public:
 
 private:
 	///
-	string name_;
+	std::string name_;
 };
 
 

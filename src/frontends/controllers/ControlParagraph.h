@@ -22,7 +22,7 @@ public:
 	///
 	ControlParagraph(Dialog &);
 	///
-	virtual bool initialiseParams(string const & data);
+	virtual bool initialiseParams(std::string const & data);
 	/// clean-up on hide.
 	virtual void clearParams();
 	/// clean-up on hide.

@@ -23,7 +23,7 @@ public:
 	///
 	ControlThesaurus(Dialog &);
 	///
-	virtual bool initialiseParams(string const & data);
+	virtual bool initialiseParams(std::string const & data);
 	///
 	virtual void clearParams();
 	///
@@ -32,23 +32,23 @@ public:
 	virtual bool isBufferDependent() const { return true; }
 
 	/// replace the particular string
-	void replace(string const & newstr);
+	void replace(std::string const & newstr);
 
 	/// get meanings
-	Thesaurus::Meanings const & getMeanings(string const & str);
+	Thesaurus::Meanings const & getMeanings(std::string const & str);
 
 	/// the text
-	string const & text() const { return oldstr_; }
+	std::string const & text() const { return oldstr_; }
 
 private:
 	/// last string looked up
-	string laststr_;
+	std::string laststr_;
 
 	/// entries for last string
 	Thesaurus::Meanings meanings_;
 
 	/// original string
-	string oldstr_;
+	std::string oldstr_;
 
 	/// not needed.
 	virtual void apply() {}

@@ -43,7 +43,7 @@ private:
 	virtual void build_dialog();
 
 	/// languages
-	std::vector<string> lang_;
+	std::vector<std::string> lang_;
 
 	/// converters
 	Converters converters_;

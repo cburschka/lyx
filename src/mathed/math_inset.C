@@ -18,6 +18,8 @@
 
 #include "formulabase.h"
 
+
+using std::string;
 using std::ostream;
 using std::endl;
 

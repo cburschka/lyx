@@ -21,6 +21,7 @@
 #include "debug.h"
 
 
+using std::string;
 using std::auto_ptr;
 
 

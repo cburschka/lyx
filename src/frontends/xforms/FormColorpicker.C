@@ -25,6 +25,9 @@
 #include "lyx_forms.h"
 
 
+using std::string;
+
+
 namespace {
 
 enum GuiColors {

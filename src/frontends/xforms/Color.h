@@ -16,8 +16,7 @@
 #ifndef COLOR_H
 #define COLOR_H
 
-
-#include "support/std_string.h"
+#include <string>
 
 
 class LColor_color;
@@ -31,7 +30,7 @@ bool getRGBColor(LColor_color col,
 
 struct RGBColor;
 /// returns a string of form #rrggbb, given an RGBColor struct
-string const X11hexname(RGBColor const & col);
+std::string const X11hexname(RGBColor const & col);
 
 struct HSVColor {
 	double h;
@@ -52,16 +51,16 @@ struct RGBColor {
 		: r(red), g(green), b(blue) {}
 	RGBColor(HSVColor const &);
 	/// \param x11hexname is of the form "#ffa071"
-	RGBColor(string const & x11hexname);
+	RGBColor(std::string const & x11hexname);
 };
 
 struct NamedColor : public RGBColor {
-	string name;
+	std::string name;
 	NamedColor() : RGBColor() {}
-	NamedColor(string const & n, RGBColor const & c)
+	NamedColor(std::string const & n, RGBColor const & c)
 		: RGBColor(c), name(n) {}
 	RGBColor const & color() const { return *this; }
-	string const & getname() const { return name; }
+	std::string const & getname() const { return name; }
 };
 
 inline

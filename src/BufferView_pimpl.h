@@ -64,9 +64,9 @@ struct BufferView::Pimpl : public boost::signals::trackable {
 	 * change but don't need the full update() logic
 	 */
 	///
-	bool newFile(string const &, string const &, bool);
+	bool newFile(std::string const &, std::string const &, bool);
 	///
-	bool loadLyXFile(string const &, bool);
+	bool loadLyXFile(std::string const &, bool);
 	///
 	void workAreaResize();
 	///
@@ -106,7 +106,7 @@ struct BufferView::Pimpl : public boost::signals::trackable {
 	///
 	void center();
 	///
-	bool insertInset(InsetOld * inset, string const & lout = string());
+	bool insertInset(InsetOld * inset, std::string const & lout = std::string());
 	///
 	void updateInset(InsetOld const * inset);
 	/// a function should be executed from the workarea
@@ -152,8 +152,8 @@ private:
 	 * string. May only be used with InsetCommand-derived insets
 	 * Returns true if a screen update is needed.
 	 */
-	bool ChangeInsets(InsetOld::Code code, string const & from,
-			  string const & to);
+	bool ChangeInsets(InsetOld::Code code, std::string const & from,
+			  std::string const & to);
 
 	///
 	friend class BufferView;
@@ -171,13 +171,13 @@ private:
 	///
 	Timeout cursor_timeout;
 	///
-	void stuffClipboard(string const &) const;
+	void stuffClipboard(std::string const &) const;
 	///
 	bool using_xterm_cursor;
 	///
 	struct Position {
 		/// Filename
-		string filename;
+		std::string filename;
 		/// Cursor paragraph Id
 		int par_id;
 		/// Cursor position
@@ -185,7 +185,7 @@ private:
 		///
 		Position() : par_id(0), par_pos(0) {}
 		///
-		Position(string const & f, int id, lyx::pos_type pos)
+		Position(std::string const & f, int id, lyx::pos_type pos)
 			: filename(f), par_id(id), par_pos(pos) {}
 	};
 	///
@@ -193,7 +193,7 @@ private:
 	/// Get next inset of this class from current cursor position
 	InsetOld * getInsetByCode(InsetOld::Code code);
 	///
-	void MenuInsertLyXFile(string const & filen);
+	void MenuInsertLyXFile(std::string const & filen);
 	/// our workarea
 	WorkArea & workarea() const;
 };

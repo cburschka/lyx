@@ -31,6 +31,7 @@ using lyx::support::OnlyPath;
 using lyx::support::Systemcall;
 
 using std::endl;
+using std::string;
 
 
 // The global fontloader

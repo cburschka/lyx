@@ -30,7 +30,7 @@ public:
 	/**
 	 * Initialise the spellchecker with the given buffer params and language.
 	 */
-	PSpell(BufferParams const & params, string const & lang);
+	PSpell(BufferParams const & params, std::string const & lang);
 
 	virtual ~PSpell();
 
@@ -50,21 +50,21 @@ public:
 	virtual void accept(WordLangTuple const &);
 
 	/// return the next near miss after a MISSED result
-	virtual string const nextMiss();
+	virtual std::string const nextMiss();
 
 	/// give an error message on messy exit
-	virtual string const error();
+	virtual std::string const error();
 
 private:
 	/// add a manager of the given language
-	void addManager(string const & lang);
+	void addManager(std::string const & lang);
 
 	struct Manager {
 		PspellManager * manager;
 		PspellConfig * config;
 	};
 
-	typedef std::map<string, struct Manager> Managers;
+	typedef std::map<std::string, struct Manager> Managers;
 
 	/// the managers
 	Managers managers_;

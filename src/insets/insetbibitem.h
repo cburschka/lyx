@@ -39,7 +39,7 @@ public:
 	///
 	void read(Buffer const &, LyXLex & lex);
 	///
-	virtual string const getScreenLabel(Buffer const &) const;
+	virtual std::string const getScreenLabel(Buffer const &) const;
 	///
 	EDITABLE editable() const { return IS_EDITABLE; }
 	///
@@ -51,7 +51,7 @@ public:
 	///
 	int getCounter() const { return counter; }
 	///
-	string const getBibLabel() const;
+	std::string const getBibLabel() const;
 
 private:
 	///

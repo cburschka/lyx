@@ -15,6 +15,9 @@
 #include "insets/insetfloat.h"
 
 
+using std::string;
+
+
 ControlFloat::ControlFloat(Dialog & parent)
 	: Dialog::Controller(parent)
 {}

@@ -23,8 +23,11 @@
 
 #include "support/lstrings.h"
 
+
 using lyx::support::strToDbl;
 using lyx::support::strToInt;
+
+using std::string;
 
 
 // some stuff for inset locking

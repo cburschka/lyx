@@ -17,6 +17,8 @@
 #include "LColor.h"
 #include "paragraph.h"
 
+
+using std::string;
 using std::auto_ptr;
 using std::ostream;
 

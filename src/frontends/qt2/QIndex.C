@@ -22,6 +22,8 @@
 #include <qlineedit.h>
 #include <qpushbutton.h>
 
+using std::string;
+
 typedef QController<ControlCommand, QView<QIndexDialog> > base_class;
 
 

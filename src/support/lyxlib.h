@@ -15,41 +15,42 @@
 #ifndef LYX_LIB_H
 #define LYX_LIB_H
 
-#include "support/std_string.h"
+#include <string>
+
 
 namespace lyx {
 namespace support {
 
 /// get the current working directory
-string const getcwd();
+std::string const getcwd();
 /// change to a directory, 0 is returned on success.
-int chdir(string const & name);
+int chdir(std::string const & name);
 /**
  * rename a file, returns false if it fails.
  * It can handle renames across partitions.
  */
-bool rename(string const & from, string const & to);
+bool rename(std::string const & from, std::string const & to);
 /// copy a file, returns false it it fails
-bool copy(string const & from, string const & to);
+bool copy(std::string const & from, std::string const & to);
 /// generates a checksum of a file
-unsigned long sum(string const & file);
+unsigned long sum(std::string const & file);
 /// FIXME: some point to this hmm ?
 int kill(int pid, int sig);
 /// FIXME: same here
 void abort();
 /// create the given directory with the given mode
-int mkdir(string const & pathname, unsigned long int mode);
-/// put a C string into the environment
+int mkdir(std::string const & pathname, unsigned long int mode);
+/// put a C std::string into the environment
 int putenv(char const * str);
 /// unlink the given file
-int unlink(string const & file);
+int unlink(std::string const & file);
 /// remove the given directory
-int rmdir(string const & file);
+int rmdir(std::string const & file);
 /// convert the given string to an integer
-int atoi(string const & nstr);
+int atoi(std::string const & nstr);
 /// (securely) create a temporary file in the given dir with the given prefix
-string const tempName(string const & dir = string(),
-		      string const & mask = string());
+std::string const tempName(std::string const & dir = std::string(),
+		      std::string const & mask = std::string());
 
 
 /**

@@ -20,6 +20,8 @@
 #include <qpushbutton.h>
 #include <qcombobox.h>
 
+using std::string;
+
 
 typedef Qt2CB<ControlSearch, Qt2DB<QSearchDialog> > base_class;
 

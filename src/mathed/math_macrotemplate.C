@@ -17,6 +17,8 @@
 #include "debug.h"
 #include "LColor.h"
 
+
+using std::string;
 using std::auto_ptr;
 using std::endl;
 

@@ -53,7 +53,7 @@ private:
 	///
 	std::vector<GC> colorGCcache;
 	///
-	GC getGCForeground(string const & s);
+	GC getGCForeground(std::string const & s);
 	///
 	typedef std::map<int, GC> LineGCCache;
 	///

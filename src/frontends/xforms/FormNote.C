@@ -22,6 +22,9 @@
 #include "lyx_forms.h"
 
 
+using std::string;
+
+
 typedef FormController<ControlNote, FormView<FD_note> > base_class;
 
 FormNote::FormNote(Dialog & parent)
@@ -65,4 +68,3 @@ void FormNote::apply()
 	int i = fl_get_choice(dialog_->choice_type);
 	controller().params().type = ids_[i - 1];
 }
-

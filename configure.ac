@@ -74,19 +74,6 @@ dnl LYX_CXX_RTTI
 AC_CHECK_HEADERS(ostream istream sstream locale limits ios)
 LYX_CXX_STL_MODERN_STREAMS
 
-###
-AC_ARG_WITH(included-string,
-    AC_HELP_STRING([--with-included-string],[use std::string through namespace lyx]),
-       [lyx_cv_with_included_string=$withval
-	AC_MSG_RESULT([$with_included_string])],
-       [AC_CACHE_CHECK([],lyx_cv_with_included_string,[lyx_cv_with_included_string=no])])
-if test x$lyx_cv_with_included_string = xyes ; then
-    AC_DEFINE(USE_INCLUDED_STRING, 1,
-	[Define to use std::string through namespace lyx.])
-    lyx_flags="$lyx_flags included-string"
-fi
-
-
 ### and now some special lyx flags.
 AC_ARG_ENABLE(assertions,
   AC_HELP_STRING([--enable-assertions],[add runtime sanity checks in the program]),,

@@ -22,7 +22,7 @@
 using lyx::support::split;
 
 using std::endl;
-
+using std::string;
 using std::pair;
 
 

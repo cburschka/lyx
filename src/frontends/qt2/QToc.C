@@ -29,6 +29,7 @@ using std::endl;
 using std::pair;
 using std::stack;
 using std::vector;
+using std::string;
 
 
 typedef QController<ControlToc, QView<QTocDialog> > base_class;

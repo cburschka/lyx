@@ -44,6 +44,7 @@ using lyx::support::LibFileSearch;
 using lyx::support::RunCommand;
 using lyx::support::subst;
 
+using std::string;
 using std::endl;
 using std::find_if;
 

@@ -107,7 +107,7 @@ using lyx::support::user_lyxdir;
 
 using std::endl;
 using std::make_pair;
-
+using std::string;
 using std::istringstream;
 
 

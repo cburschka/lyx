@@ -14,6 +14,9 @@
 #include "ControlButtons.h"
 
 
+using std::string;
+
+
 ViewBase::ViewBase(string const & t)
 	: controller_ptr_(0), title_(t)
 {}

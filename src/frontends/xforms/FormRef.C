@@ -29,7 +29,7 @@ using lyx::support::getStringFromVector;
 using std::find;
 using std::max;
 using std::sort;
-
+using std::string;
 using std::vector;
 
 

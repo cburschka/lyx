@@ -31,6 +31,7 @@ using lyx::support::LibFileSearch;
 
 using std::abs;
 using std::endl;
+using std::string;
 
 
 //extern void AutoSave(BufferView *);

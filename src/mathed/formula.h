@@ -27,7 +27,7 @@ public:
 	///
 	explicit InsetFormula(BufferView *);
 	///
-	explicit InsetFormula(string const & data);
+	explicit InsetFormula(std::string const & data);
 	///
 	InsetFormula(InsetFormula const &);
 	///
@@ -61,7 +61,7 @@ public:
 	bool insetAllowed(InsetOld::Code code) const;
 	/// Appends \c list with all labels found within this inset.
 	void getLabelList(Buffer const &,
-			  std::vector<string> & list) const;
+			  std::vector<std::string> & list) const;
 	///
 	MathAtom const & par() const { return par_; }
 	///
@@ -71,7 +71,7 @@ public:
 	///
 	void addPreview(lyx::graphics::PreviewLoader &) const;
 	///
-	void mutate(string const & type);
+	void mutate(std::string const & type);
 
 private:
 	/// available in AMS only?

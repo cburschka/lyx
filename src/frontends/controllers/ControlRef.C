@@ -22,6 +22,8 @@ using lyx::support::MakeAbsPath;
 using lyx::support::MakeDisplayPath;
 
 using std::vector;
+using std::string;
+
 
 extern BufferList bufferlist;
 

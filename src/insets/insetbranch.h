@@ -22,7 +22,7 @@
 	///
 	void read(LyXLex & lex);
 	///
-	string branch;
+	std::string branch;
 	/// Hack -- MV
 	BranchList branchlist;
  };
@@ -36,7 +36,7 @@ public:
 	///
 
 
-	InsetBranch(BufferParams const &, string const &);
+	InsetBranch(BufferParams const &, std::string const &);
 	/// Copy constructor
 	InsetBranch(InsetBranch const &);
 	///
@@ -44,7 +44,7 @@ public:
 	///
 	virtual std::auto_ptr<InsetBase> clone() const;
 	///
-	string const editMessage() const;
+	std::string const editMessage() const;
 	///
 	InsetOld::Code lyxCode() const { return InsetOld::BRANCH_CODE; }
 	///
@@ -87,21 +87,21 @@ private:
 class InsetBranchMailer : public MailInset {
 public:
 	///
-	InsetBranchMailer(string const & name, InsetBranch & inset);
+	InsetBranchMailer(std::string const & name, InsetBranch & inset);
 	///
 	virtual InsetBase & inset() const { return inset_; }
 	///
-	virtual string const & name() const { return name_; }
+	virtual std::string const & name() const { return name_; }
 	///
-	virtual string const inset2string(Buffer const &) const;
+	virtual std::string const inset2string(Buffer const &) const;
 	///
-	static string const params2string(string const &, InsetBranchParams const &);
+	static std::string const params2string(std::string const &, InsetBranchParams const &);
 	///
-	static void string2params(string const &, InsetBranchParams &);
+	static void string2params(std::string const &, InsetBranchParams &);
 
 private:
 	///
-	string const name_;
+	std::string const name_;
 	///
 	InsetBranch & inset_;
 };

@@ -1,4 +1,3 @@
-
 //  (C) Copyright David Abrahams Steve Cleary, Beman Dawes, Howard
 //  Hinnant & John Maddock 2000-2002.  Permission to copy, use,
 //  modify, sell and distribute this software is granted provided this
@@ -26,7 +25,7 @@
 // should be the last #include
 #include "boost/type_traits/detail/bool_trait_def.hpp"
 
-namespace boost { 
+namespace boost {
 
 #ifndef BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION
 
@@ -108,4 +107,3 @@ BOOST_TT_AUX_BOOL_TRAIT_DEF1(is_reference,T,::boost::detail::is_reference_impl<T
 #include "boost/type_traits/detail/bool_trait_undef.hpp"
 
 #endif // BOOST_TT_IS_REFERENCE_HPP_INCLUDED
-

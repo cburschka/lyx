@@ -15,10 +15,10 @@
 
 #include "lfuns.h"
 
-#include "support/std_string.h"
 #include <boost/utility.hpp>
-#include <map>
 
+#include <map>
+#include <string>
 
 class FuncRequest;
 
@@ -34,14 +34,14 @@ private:
 	/// information for an action
 	struct func_info {
 		/// the action name
-		string name;
+		std::string name;
 		/// the func_attrib values set
 		unsigned int attrib;
 	};
 
 public:
 	/// type for map between a function name and its action
-	typedef std::map<string, kb_action> func_map;
+	typedef std::map<std::string, kb_action> func_map;
 	/// type for map between an action and its info
 	typedef std::map<kb_action, func_info> info_map;
 
@@ -60,10 +60,10 @@ public:
 	 * If you include arguments in func_name, a new pseudoaction
 	 * will be created if needed.
 	 */
-	FuncRequest lookupFunc(string const & func_name) const;
+	FuncRequest lookupFunc(std::string const & func_name) const;
 
 	/// Return the name (and argument) associated with the given (pseudo) action
-	string const getActionName(kb_action action) const;
+	std::string const getActionName(kb_action action) const;
 
 	/// True if the command has `flag' set
 	bool funcHasFlag(kb_action action, func_attrib flag) const;
@@ -81,7 +81,7 @@ private:
 	/// populate the action container with our actions
 	void init();
 	/// add the given action
-	void newFunc(kb_action, string const & name, unsigned int attrib);
+	void newFunc(kb_action, std::string const & name, unsigned int attrib);
 
 	/**
 	 * This is a list of all the LyXFunc names with the

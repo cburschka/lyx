@@ -18,6 +18,9 @@
 #include "lyx_forms.h"
 
 
+using std::string;
+
+
 xformsBC::xformsBC(ButtonController const & parent,
 		   string const & cancel, string const & close)
 	: GuiBC<FL_OBJECT, FL_OBJECT>(parent, cancel, close)

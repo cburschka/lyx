@@ -37,6 +37,7 @@ using lyx::support::prefixIs;
 using lyx::support::split;
 
 using std::vector;
+using std::string;
 
 
 typedef FormController<ControlBibtex, FormView<FD_bibtex> > base_class;

@@ -70,7 +70,7 @@ using lyx::support::trim;
 
 using std::max;
 using std::sort;
-
+using std::string;
 using std::map;
 
 

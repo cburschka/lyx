@@ -49,7 +49,7 @@ using lyx::support::rtrim;
 using lyx::support::tokenPos;
 
 using std::endl;
-
+using std::string;
 using std::istringstream;
 using std::ostream;
 using std::ostringstream;

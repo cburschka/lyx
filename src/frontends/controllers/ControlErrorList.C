@@ -20,6 +20,7 @@
 
 
 using std::endl;
+using std::string;
 
 
 ControlErrorList::ControlErrorList(Dialog & d)

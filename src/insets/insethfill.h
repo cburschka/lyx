@@ -24,7 +24,7 @@ public:
 		return std::auto_ptr<InsetBase>(new InsetHFill);
 	}
 	///
-	string const getScreenLabel(Buffer const &) const { return getContents(); }
+	std::string const getScreenLabel(Buffer const &) const { return getContents(); }
 	///
 	InsetOld::Code lyxCode() const { return InsetOld::HFILL_CODE; }
 	///

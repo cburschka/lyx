@@ -12,8 +12,7 @@
 #ifndef MAILINSET_H
 #define MAILINSET_H
 
-
-#include "support/std_string.h"
+#include <string>
 
 
 class InsetBase;
@@ -32,13 +31,13 @@ public:
 	///
 	void hideDialog() const;
 	///
-	virtual string const inset2string(Buffer const &) const = 0;
+	virtual std::string const inset2string(Buffer const &) const = 0;
 
 protected:
 	///
 	virtual InsetBase & inset() const = 0;
 	///
-	virtual string const & name() const = 0;
+	virtual std::string const & name() const = 0;
 };
 
 

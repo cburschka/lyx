@@ -14,7 +14,6 @@
 
 
 #include "ui/QSearchDialogBase.h"
-#include "support/std_string.h"
 
 class QSearch;
 class QCloseEvent;
@@ -36,7 +35,7 @@ protected:
 
 private:
 	// add a string to the combo if needed
-	void remember(string const & find, QComboBox & combo);
+	void remember(std::string const & find, QComboBox & combo);
 
 	QSearch * form_;
 };

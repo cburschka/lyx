@@ -24,7 +24,7 @@ public:
 	ControlCitation(Dialog &);
 
 	///
-	virtual bool initialiseParams(string const & data);
+	virtual bool initialiseParams(std::string const & data);
 	/// clean-up on hide.
 	virtual void clearParams();
 
@@ -39,7 +39,7 @@ public:
 	///
 	bool usingNatbib() const;
 	/// Possible citations based on this key
-	std::vector<string> const getCiteStrings(string const & key) const;
+	std::vector<std::string> const getCiteStrings(std::string const & key) const;
 
 	/// available CiteStyle-s (depends on availability of Natbib
 	static std::vector<biblio::CiteStyle> const & getCiteStyles() {

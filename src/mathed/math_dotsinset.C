@@ -16,6 +16,8 @@
 #include "math_support.h"
 #include "math_parser.h"
 
+
+using std::string;
 using std::auto_ptr;
 
 

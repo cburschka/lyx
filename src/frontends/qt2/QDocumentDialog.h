@@ -27,7 +27,6 @@
 #include "ui/MarginsModuleBase.h"
 #include "ui/PreambleModuleBase.h"
 
-#include "support/std_string.h"
 
 class QDocument;
 class FloatPlacement;
@@ -40,8 +39,8 @@ public:
 	QDocumentDialog(QDocument *);
 	~QDocumentDialog();
 
-	void updateFontsize(string const &, string const &);
-	void updatePagestyle(string const &, string const &);
+	void updateFontsize(std::string const &, std::string const &);
+	void updatePagestyle(std::string const &, std::string const &);
 
 	void showPreamble();
 

@@ -15,6 +15,9 @@
 #include "insets/insetwrap.h"
 
 
+using std::string;
+
+
 ControlWrap::ControlWrap(Dialog & parent)
 	: Dialog::Controller(parent)
 {}

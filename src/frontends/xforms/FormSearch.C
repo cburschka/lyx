@@ -21,6 +21,9 @@
 #include "lyx_forms.h"
 
 
+using std::string;
+
+
 typedef FormCB<ControlSearch, FormDB<FD_search> > base_class;
 
 FormSearch::FormSearch()

@@ -31,7 +31,7 @@ class Tooltips;
 class FormDialogView : public Dialog::View {
 public:
 	///
-	FormDialogView(Dialog &, string const &, bool allowResize);
+	FormDialogView(Dialog &, std::string const &, bool allowResize);
 	///
 	virtual ~FormDialogView();
 
@@ -78,7 +78,7 @@ protected:
 	/** Send the warning message from the daughter class to the
 	    message_widget direct. The message will persist till the mouse
 	    movesto a new object. */
-	void postWarning(string const & warning);
+	void postWarning(std::string const & warning);
 	/// Reset the message_widget_
 	void clearMessage();
 
@@ -103,11 +103,11 @@ private:
 
 	/** Get the feedback message for ob.
 	    Called if warning_posted_ == false. */
-	virtual string const getFeedback(FL_OBJECT * /* ob */)
-		{ return string(); }
+	virtual std::string const getFeedback(FL_OBJECT * /* ob */)
+		{ return std::string(); }
 
 	/// Post the feedback message for ob to message_widget_
-	void postMessage(string const & message);
+	void postMessage(std::string const & message);
 
 	/** Variable used to decide whether to remove the existing feedback
 	    message or not (if it is in fact a warning) */
@@ -134,7 +134,7 @@ template <class FL_dialog>
 class FormView: public FormDialogView {
 protected:
 	///
-	FormView(Dialog &, string const &, bool allowResize=true);
+	FormView(Dialog &, std::string const &, bool allowResize=true);
 	/// Pointer to the actual instantiation of xform's form
 	virtual FL_FORM * form() const;
 	/// Real GUI implementation.
@@ -143,7 +143,7 @@ protected:
 
 
 template <class FL_dialog>
-FormView<FL_dialog>::FormView(Dialog & parent, string const & t,
+FormView<FL_dialog>::FormView(Dialog & parent, std::string const & t,
 			      bool allowResize)
 	: FormDialogView(parent, t, allowResize)
 {}
@@ -166,13 +166,13 @@ public:
 
 protected:
 	///
-	FormController(Dialog &, string const &, bool allowResize = true);
+	FormController(Dialog &, std::string const &, bool allowResize = true);
 };
 
 
 template <class Controller, class Base>
 FormController<Controller, Base>::FormController(Dialog & p,
-						 string const & t, bool resize)
+						 std::string const & t, bool resize)
 	: Base(p, t, resize)
 {}
 

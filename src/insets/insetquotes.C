@@ -29,10 +29,11 @@
 
 #include "support/lstrings.h"
 
+
 using lyx::support::prefixIs;
 
 using std::endl;
-
+using std::string;
 using std::auto_ptr;
 using std::ostream;
 

@@ -29,7 +29,7 @@ public:
 		return std::auto_ptr<InsetBase>(new InsetCitation(params()));
 	}
 	///
-	string const getScreenLabel(Buffer const &) const;
+	std::string const getScreenLabel(Buffer const &) const;
 	///
 	EDITABLE editable() const { return IS_EDITABLE; }
 	///
@@ -66,13 +66,13 @@ private:
 		///
 		InsetCommandParams params;
 		///
-		string generated_label;
+		std::string generated_label;
 		///
-		string screen_label;
+		std::string screen_label;
 	};
 
 	/// This function does the donkey work of creating the pretty label
-	string const generateLabel(Buffer const &) const;
+	std::string const generateLabel(Buffer const &) const;
 	///
 	Cache::Style getStyle(Buffer const & buffer) const;
 

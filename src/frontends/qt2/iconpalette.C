@@ -22,7 +22,7 @@
 using std::endl;
 using std::make_pair;
 using std::max;
-
+using std::string;
 using std::vector;
 
 

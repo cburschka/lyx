@@ -23,6 +23,8 @@
 
 using lyx::support::contains;
 
+using std::string;
+
 
 // FIXME: set disabled doesn't work properly
 FloatPlacement::FloatPlacement(QWidget * parent, char * name)

@@ -14,7 +14,6 @@
 
 #include <map>
 
-#include "support/std_string.h"
 
 class Floating;
 
@@ -22,7 +21,7 @@ class Floating;
 class FloatList {
 public:
 	///
-	typedef std::map<string, Floating> List;
+	typedef std::map<std::string, Floating> List;
 	///
 	typedef List::const_iterator const_iterator;
 	///
@@ -34,15 +33,15 @@ public:
 	///
 	void newFloat(Floating const & fl);
 	///
-	string const defaultPlacement(string const & t) const;
+	std::string const defaultPlacement(std::string const & t) const;
 	///
-	bool typeExist(string const & t) const;
+	bool typeExist(std::string const & t) const;
 	///
-	Floating const & getType(string const & t) const;
+	Floating const & getType(std::string const & t) const;
 	///
-	void erase(string const & t);
+	void erase(std::string const & t);
 	///
-	const_iterator operator[](string const & t) const;
+	const_iterator operator[](std::string const & t) const;
 private:
 	///
 	List list;

@@ -66,6 +66,7 @@ using lyx::support::split;
 using lyx::support::unlink;
 
 using std::endl;
+using std::string;
 
 
 // provide an empty mkfifo() if we do not have one. This disables the
@@ -138,6 +139,7 @@ void LyXComm::closeConnection()
 
 	ready = false;
 }
+
 
 int LyXComm::startPipe(string const & filename, bool write)
 {

@@ -14,7 +14,6 @@
 #ifndef LYXFIND_H
 #define LYXFIND_H
 
-#include "support/std_string.h"
 #include "support/types.h"
 
 class BufferView;
@@ -34,7 +33,7 @@ enum SearchResult {
 
 
 int replace(BufferView * bv,
-	       string const &, string const &,
+	       std::string const &, std::string const &,
 	       bool, bool = true, bool = false,
 	       bool = false, bool = false);
 
@@ -44,7 +43,7 @@ int replace(BufferView * bv,
  * we want to go. This does also update the screen.
  */
 bool find(BufferView *,
-	     string const & searchstr, bool forward,
+	     std::string const & searchstr, bool forward,
 	     bool casesens = true, bool matchwrd = false);
 
 /**
@@ -56,7 +55,7 @@ bool find(BufferView *,
  */
 
 SearchResult find(BufferView *, LyXText * text,
-		     string const & searchstr, bool forward,
+		     std::string const & searchstr, bool forward,
 		     bool casesens = true, bool matchwrd = false);
 
 /// find the next change in the buffer

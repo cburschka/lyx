@@ -13,17 +13,18 @@
 #define MATH_FACTORY_H
 
 
-#include "support/std_string.h"
+#include <string>
+
 
 class MathAtom;
 class MathArray;
 
-MathAtom createMathInset(string const &);
+MathAtom createMathInset(std::string const &);
 
 /** Fills ar with the contents of str.
  *  str is created by the frontend dialog's and returned to the LyX core.
  *  The function returns true if successful.
  */
-bool createMathInset_fromDialogStr(string const &, MathArray &);
+bool createMathInset_fromDialogStr(std::string const &, MathArray &);
 
 #endif

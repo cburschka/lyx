@@ -12,7 +12,6 @@
 #include <gtkmm.h>
 
 #include "GPainter.h"
-#include "support/std_string.h"
 #include "debug.h"
 #include "GWorkArea.h"
 #include "lyxrc.h"
@@ -31,6 +30,8 @@
 #include <X11/Xft/Xft.h>
 
 #include <cmath>
+
+using std::string;
 
 
 GPainter::GPainter(GWorkArea & xwa)
@@ -189,7 +190,7 @@ Painter & GPainter::image(int x, int y,
 
 
 Painter & GPainter::text(int x, int y,
-	string const & s, LyXFont const & f)
+	std::string const & s, LyXFont const & f)
 {
 	size_t size = s.length() + 1;
 	wchar_t * wcs = (wchar_t *) alloca(size * sizeof(wchar_t));

@@ -22,6 +22,7 @@ using std::abs;
 using std::dec;
 using std::endl;
 using std::hex;
+using std::string;
 
 
 namespace {

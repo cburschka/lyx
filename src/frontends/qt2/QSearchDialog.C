@@ -21,6 +21,8 @@
 #include <qcheckbox.h>
 #include <qlineedit.h>
 
+using std::string;
+
 namespace {
 
 void uniqueInsert(QComboBox * box, QString const & text)

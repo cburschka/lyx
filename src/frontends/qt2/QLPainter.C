@@ -25,6 +25,7 @@
 #include <qpainter.h>
 
 using std::endl;
+using std::string;
 
 
 QLPainter::QLPainter(QWorkArea & qwa)

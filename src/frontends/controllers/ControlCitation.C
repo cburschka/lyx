@@ -15,6 +15,8 @@
 #include "buffer.h"
 #include "bufferparams.h"
 
+
+using std::string;
 using std::vector;
 using std::pair;
 
@@ -31,7 +33,7 @@ bool ControlCitation::initialiseParams(string const & data)
 {
 	ControlCommand::initialiseParams(data);
 
-	vector<pair<string,string> > blist;
+	vector<pair<string, string> > blist;
 	kernel().buffer().fillWithBibKeys(blist);
 
 	typedef std::map<string, string>::value_type InfoMapValue;

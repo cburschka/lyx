@@ -40,17 +40,17 @@ enum FONT_STATE {
 };
 
 ///
-typedef std::pair<string, LyXFont::FONT_FAMILY> FamilyPair;
+typedef std::pair<std::string, LyXFont::FONT_FAMILY> FamilyPair;
 ///
-typedef std::pair<string, LyXFont::FONT_SERIES> SeriesPair;
+typedef std::pair<std::string, LyXFont::FONT_SERIES> SeriesPair;
 ///
-typedef std::pair<string, LyXFont::FONT_SHAPE>  ShapePair;
+typedef std::pair<std::string, LyXFont::FONT_SHAPE>  ShapePair;
 ///
-typedef std::pair<string, LyXFont::FONT_SIZE>   SizePair;
+typedef std::pair<std::string, LyXFont::FONT_SIZE>   SizePair;
 ///
-typedef std::pair<string, FONT_STATE> BarPair;
+typedef std::pair<std::string, FONT_STATE> BarPair;
 ///
-typedef std::pair<string, LColor_color> ColorPair;
+typedef std::pair<std::string, LColor_color> ColorPair;
 
 ///
 std::vector<FamilyPair>   const getFamilyData();

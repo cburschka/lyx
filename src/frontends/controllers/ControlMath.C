@@ -22,6 +22,8 @@ using lyx::support::compare;
 using lyx::support::LibFileSearch;
 using lyx::support::subst;
 
+using std::string;
+
 
 ControlMath::ControlMath(Dialog & dialog)
 	: Dialog::Controller(dialog)

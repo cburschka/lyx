@@ -16,6 +16,9 @@
 #include "support/tostr.h"
 
 
+using std::string;
+
+
 ControlTabularCreate::ControlTabularCreate(Dialog & parent)
 	: Dialog::Controller(parent)
 {}

@@ -14,7 +14,6 @@
 
 #include "math_inset.h"
 #include "lyxlength.h"
-#include "support/std_string.h"
 
 
 /// The \kern primitive
@@ -27,7 +26,7 @@ public:
 	///
 	explicit MathKernInset(LyXLength const & wid);
 	///
-	explicit MathKernInset(string const & wid);
+	explicit MathKernInset(std::string const & wid);
 	///
 	virtual std::auto_ptr<InsetBase> clone() const;
 	///

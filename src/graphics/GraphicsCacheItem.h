@@ -34,7 +34,6 @@
 #include <boost/scoped_ptr.hpp>
 #include <boost/signals/signal0.hpp>
 
-#include "support/std_string.h"
 
 class InsetGraphics;
 
@@ -48,13 +47,13 @@ class Converter;
 class CacheItem : boost::noncopyable {
 public:
 	///
-	CacheItem(string const & file);
+	CacheItem(std::string const & file);
 
 	/// Define an empty d-tor out-of-line to keep boost::scoped_ptr happy.
 	~CacheItem();
 
 	///
-	string const & filename() const;
+	std::string const & filename() const;
 
 	/// It's in the cache. Now start the loading process.
 	void startLoading() const;

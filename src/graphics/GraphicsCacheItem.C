@@ -24,6 +24,7 @@
 
 #include <boost/bind.hpp>
 
+
 namespace support = lyx::support;
 
 using support::ChangeExtension;
@@ -38,6 +39,8 @@ using support::unzipFile;
 using support::zippedFile;
 
 using std::endl;
+using std::string;
+
 
 namespace lyx {
 namespace graphics {

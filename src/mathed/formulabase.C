@@ -43,6 +43,7 @@ using lyx::support::atoi;
 using lyx::support::split;
 using lyx::support::token;
 
+using std::string;
 using std::abs;
 using std::endl;
 using std::max;
@@ -130,7 +131,7 @@ void InsetFormulaBase::handleFont2(BufferView * bv, string const & arg)
 	bool b;
 	bv_funcs::string2font(arg, font, b);
 	if (font.color() != LColor::inherit) {
-		MathAtom at = createMathInset("color"); 
+		MathAtom at = createMathInset("color");
 		asArray(lcolor.getGUIName(font.color()), at.nucleus()->cell(0));
 		mathcursor->handleNest(at, 1);
 	}

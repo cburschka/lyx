@@ -17,10 +17,10 @@
 #ifndef LYXLEX_H
 #define LYXLEX_H
 
+#include <boost/utility.hpp>
+
 #include <iosfwd>
 
-#include "support/std_string.h"
-#include <boost/utility.hpp>
 
 ///
 struct keyword_item {
@@ -57,7 +57,7 @@ public:
 	/// file is open and end of file is not reached
 	bool isOK() const;
 	/// return true if able to open file, else false
-	bool setFile(string const & filename);
+	bool setFile(std::string const & filename);
 	///
 	void setStream(std::istream & is);
 	///
@@ -81,7 +81,7 @@ public:
 	*/
 	bool nextToken();
 	/// Push a token, that next token got from lyxlex.
-	void pushToken(string const &);
+	void pushToken(std::string const &);
 
 	///
 	int getLineNo() const;
@@ -93,7 +93,7 @@ public:
 	///
 	float getFloat() const;
 	///
-	string const getString() const;
+	std::string const getString() const;
 
 	/** Get a long string, ended by the tag `endtag'.
 	    This string can span several lines. The first line
@@ -102,7 +102,7 @@ public:
 	    each following line. This mechanism does not work
 	    perfectly if you use tabs.
 	*/
-	string const getLongString(string const & endtag);
+	std::string const getLongString(std::string const & endtag);
 
 	///
 	bool eatLine();
@@ -122,7 +122,7 @@ public:
 	    and file name. If message contains the substring `$$Token',
 	    it is replaced with the value of GetString()
 	*/
-	void printError(string const & message) const;
+	void printError(std::string const & message) const;
 
 	/**
 	   Prints the current token table on the supplied ostream.

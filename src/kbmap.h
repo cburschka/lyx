@@ -20,7 +20,6 @@
 
 #include <boost/shared_ptr.hpp>
 
-#include "support/std_string.h"
 #include <vector>
 
 class kb_sequence;
@@ -35,13 +34,13 @@ public:
 	 * occurs.
 	 * See kb_sequence::parse for the syntax of the seq string
 	 */
-	string::size_type bind(string const & seq, FuncRequest const & func);
+	std::string::size_type bind(std::string const & seq, FuncRequest const & func);
 
 	// Parse a bind file
-	bool read(string const & bind_file);
+	bool read(std::string const & bind_file);
 
 	/// print all available keysyms
-	string const print() const;
+	std::string const print() const;
 
 	///
 	typedef boost::shared_ptr<LyXKeySym> LyXKeySymPtr;
@@ -57,15 +56,15 @@ public:
 	       key_modifier::state mod, kb_sequence * seq) const;
 
 	/// Given an action, find all keybindings.
-	string const findbinding(FuncRequest const & func,
-				 string const & prefix = string()) const;
+	std::string const findbinding(FuncRequest const & func,
+				 std::string const & prefix = std::string()) const;
 
 	/**
 	 * Returns a string of the given keysym, with modifiers.
 	 * @param key the key as a keysym
 	 * @param mod the modifiers
 	 */
-	static string const printKeysym(LyXKeySymPtr key,
+	static std::string const printKeysym(LyXKeySymPtr key,
 					key_modifier::state mod);
 
 	typedef std::pair<key_modifier::state, key_modifier::state> modifier_pair;
@@ -94,7 +93,7 @@ private:
 		    unsigned int r = 0);
 
 	///  Returns a string of the given key
-	string const printKey(kb_key const & key) const;
+	std::string const printKey(kb_key const & key) const;
 
 	/// is the table empty ?
 	bool empty() const {

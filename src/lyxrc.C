@@ -47,6 +47,7 @@ using std::endl;
 using std::ios;
 using std::ofstream;
 using std::ostream;
+using std::string;
 
 
 namespace lyx {

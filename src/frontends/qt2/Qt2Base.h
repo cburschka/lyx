@@ -28,7 +28,7 @@ class Qt2Base : public QObject, public ViewBase {
 	Q_OBJECT
 public:
 	///
-	Qt2Base(string const &);
+	Qt2Base(std::string const &);
 	///
 	virtual ~Qt2Base() {}
 protected:
@@ -78,7 +78,7 @@ private:
 template <class Dialog>
 class Qt2DB: public Qt2Base {
 protected:
-	Qt2DB(string const &);
+	Qt2DB(std::string const &);
 
 	/// update the dialog
 	virtual void update();
@@ -96,7 +96,7 @@ protected:
 
 
 template <class Dialog>
-Qt2DB<Dialog>::Qt2DB(string const & t)
+Qt2DB<Dialog>::Qt2DB(std::string const & t)
 	: Qt2Base(t)
 {}
 
@@ -154,12 +154,12 @@ public:
 
 protected:
 	///
-	Qt2CB(string const &);
+	Qt2CB(std::string const &);
 };
 
 
 template <class Controller, class Base>
-Qt2CB<Controller, Base>::Qt2CB(string const & t)
+Qt2CB<Controller, Base>::Qt2CB(std::string const & t)
 	: Base(t)
 {}
 

@@ -13,8 +13,11 @@
 #include "ControlShowFile.h"
 #include "support/filetools.h"
 
+
 using lyx::support::GetFileContents;
 using lyx::support::OnlyFilename;
+
+using std::string;
 
 
 ControlShowFile::ControlShowFile(Dialog & parent)

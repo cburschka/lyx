@@ -33,7 +33,7 @@ public:
 	int latex(Buffer const &, std::ostream &,
 		  LatexRunParams const &) const;
 	///
-	string const editMessage() const;
+	std::string const editMessage() const;
 };
 
 #endif

@@ -30,6 +30,7 @@
 
 using lyx::support::bformat;
 
+using std::string;
 using std::auto_ptr;
 using std::ostream;
 

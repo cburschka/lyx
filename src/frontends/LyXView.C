@@ -47,6 +47,7 @@ using lyx::support::MakeDisplayPath;
 using lyx::support::OnlyFilename;
 
 using std::endl;
+using std::string;
 
 
 string current_layout;

@@ -13,7 +13,6 @@
 #ifndef DEP_TABLE_H
 #define DEP_TABLE_H
 
-#include "support/std_string.h"
 #include <map>
 
 ///
@@ -22,28 +21,28 @@ public:
 	/** This one is a little bit harder since we need the absolute
 	  filename. Should we insert files with .sty .cls etc as
 	  extension? */
-	void insert(string const & f, bool upd = false);
+	void insert(std::string const & f, bool upd = false);
 	///
 	void update();
 
 	///
-	void write(string const & f) const;
+	void write(std::string const & f) const;
 	/// returns true if dep file was read successfully
-	bool read(string const & f);
+	bool read(std::string const & f);
 	/// returns true if any of the files has changed
 	bool sumchange() const;
 	/// return true if fil has changed.
-	bool haschanged(string const & fil) const;
+	bool haschanged(std::string const & fil) const;
 	/// return true if a file with extension ext has changed.
-	bool extchanged(string const & ext) const;
+	bool extchanged(std::string const & ext) const;
 	///
-	bool exist(string const & fil) const;
+	bool exist(std::string const & fil) const;
 	/// returns true if any files with ext exist
-	bool ext_exist(string const & ext) const;
+	bool ext_exist(std::string const & ext) const;
 	///
-	void remove_files_with_extension(string const &);
+	void remove_files_with_extension(std::string const &);
 	///
-	void remove_file(string const &);
+	void remove_file(std::string const &);
 private:
 	///
 	struct dep_info {
@@ -57,7 +56,7 @@ private:
 		bool changed() const;
 	};
 	///
-	typedef std::map<string, dep_info> DepList;
+	typedef std::map<std::string, dep_info> DepList;
 	///
 	DepList deplist;
 };

@@ -15,9 +15,13 @@
 #include "GMiniBuffer.h"
 #include "debug.h"
 #include "bufferview_funcs.h"
+
+#include "frontends/controllers/ControlCommandBuffer.h"
+
 #include <boost/bind.hpp>
 #include <vector>
-#include "frontends/controllers/ControlCommandBuffer.h"
+
+using std::string;
 
 
 GMiniBuffer::GMiniBuffer(GView * view, ControlCommandBuffer & control) :

@@ -24,8 +24,10 @@
 
 #include "support/filetools.h"
 
-using std::endl;
 using lyx::support::i18nLibFileSearch;
+
+using std::endl;
+using std::string;
 
 
 string const kb_keymap::printKeysym(LyXKeySymPtr key,

@@ -26,6 +26,7 @@
 using lyx::support::LibFileSearch;
 
 using std::vector;
+using std::string;
 
 
 namespace {

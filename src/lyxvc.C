@@ -32,7 +32,7 @@ using lyx::support::MakeDisplayPath;
 using lyx::support::tempName;
 
 using std::endl;
-
+using std::string;
 using std::pair;
 
 

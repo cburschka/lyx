@@ -15,8 +15,8 @@
 #ifndef COUNTERS_H
 #define COUNTERS_H
 
-#include "support/std_string.h"
 #include <map>
+#include <string>
 
 
 /// This represents a single counter.
@@ -35,16 +35,16 @@ public:
 	///
 	void reset();
 	/// Returns the master counter of this counter
-	string master() const;
+	std::string master() const;
 	/// sets the master counter for this counter
-	void setMaster(string const & m);
+	void setMaster(std::string const & m);
 private:
 	///
 	int value_;
 	/// contains master counter name; master counter is the counter
 	/// that, if stepped (incremented) zeroes this counter. E.g.
 	/// "subparagraph"'s master is "paragraph".
-	string master_;
+	std::string master_;
 };
 
 
@@ -53,38 +53,38 @@ private:
 class Counters {
 public:
 	/// Add a new counter to array.
-	void newCounter(string const & newc);
+	void newCounter(std::string const & newc);
 	/// Add new counter having oldc as its master.
-	void newCounter(string const & newc, string const & oldc);
+	void newCounter(std::string const & newc, std::string const & oldc);
 	///
-	void set(string const & ctr, int val);
+	void set(std::string const & ctr, int val);
 	///
-	void addto(string const & ctr, int val);
+	void addto(std::string const & ctr, int val);
 	///
-	int value(string const & ctr) const;
+	int value(std::string const & ctr) const;
 	/// Step (increment by one) counter named by arg, and
 	/// zeroes slave counter(s) for which it is the master.
 	/// NOTE sub-slaves not zeroed! That happens at slave's
 	/// first step 0->1. Seems to be sufficient.
-	void step(string const & ctr);
+	void step(std::string const & ctr);
 	/// Reset all counters.
 	void reset();
 	/// Reset counters matched by match string.
-	void reset(string const & match);
+	void reset(std::string const & match);
 	/// Copy counters whose name matches match from the &from to
 	/// the &to array of counters. Empty string matches all.
-	void copy(Counters & from, Counters & to, string const & match = string());
+	void copy(Counters & from, Counters & to, std::string const & match = std::string());
 	/// A complete expanded label, like 2.1.4 for a subsubsection
 	/// according to the given format
-	string counterLabel(string const & format);
+	std::string counterLabel(std::string const & format);
 	/// A complete label, like 1.a for enumerations
-	string enumLabel(string const & ctr, string const & langtype = "latin");
+	std::string enumLabel(std::string const & ctr, std::string const & langtype = "latin");
 private:
 	/// A counter label's single item, 1 for subsection number in
 	/// the 2.1.4 subsubsection number label.
-	string labelItem(string const & ctr, string const & numbertype);
+	std::string labelItem(std::string const & ctr, std::string const & numbertype);
 	/// Maps counter (layout) names to actual counters.
-	typedef std::map<string, Counter> CounterList;
+	typedef std::map<std::string, Counter> CounterList;
 	/// Instantiate.
 	CounterList counterList;
 

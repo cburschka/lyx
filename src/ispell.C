@@ -38,6 +38,7 @@ using std::strpbrk;
 
 using std::endl;
 using std::max;
+using std::string;
 
 
 namespace {

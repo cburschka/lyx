@@ -24,6 +24,8 @@
 
 using lyx::support::OnlyFilename;
 
+using std::string;
+
 
 typedef QController<ControlTexinfo, QView<QTexinfoDialog> > base_class;
 

@@ -26,8 +26,6 @@
 #ifndef FORKEDCALL_H
 #define FORKEDCALL_H
 
-#include "support/std_string.h"
-
 #include <boost/shared_ptr.hpp>
 #include <boost/signals/signal2.hpp>
 #include <boost/function/function0.hpp>
@@ -95,7 +93,7 @@ public:
 	void setRetValue(int r) { retval_ = r; }
 
 	/// Returns the identifying command (for display in the GUI perhaps).
-	string const & command() const { return command_; }
+	std::string const & command() const { return command_; }
 
 	/// is the process running ?
 	bool running() const;
@@ -122,7 +120,7 @@ protected:
 	SignalTypePtr signal_;
 
 	/// identifying command (for display in the GUI perhaps).
-	string command_;
+	std::string command_;
 
 	/// Process ID of child
 	pid_t pid_;
@@ -157,10 +155,10 @@ public:
 	 *  The other startscript command can be executed either blocking
 	 *  or non-blocking, but no signal will be emitted on finishing.
 	 */
-	int startscript(Starttype, string const & what);
+	int startscript(Starttype, std::string const & what);
 
 	///
-	int startscript(string const & what, SignalTypePtr);
+	int startscript(std::string const & what, SignalTypePtr);
 
 private:
 	///

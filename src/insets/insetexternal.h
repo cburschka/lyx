@@ -21,7 +21,6 @@
 #include <boost/scoped_ptr.hpp>
 #include <boost/signals/trackable.hpp>
 
-#include "support/std_string.h"
 
 class RenderInset;
 
@@ -39,9 +38,9 @@ class InsetExternal : public InsetOld, public boost::signals::trackable
 		TempName(TempName const &);
 		~TempName();
 		TempName & operator=(TempName const &);
-		string const & operator()() const { return tempname_; }
+		std::string const & operator()() const { return tempname_; }
 	private:
-		string tempname_;
+		std::string tempname_;
 	};
 
 public:
@@ -53,11 +52,11 @@ public:
 		bool read(Buffer const &, LyXLex &);
 
 		/// The name of the tempfile used for manipulations.
-		string const & tempname() const { return tempname_(); }
+		std::string const & tempname() const { return tempname_(); }
 
 		/// the current template used
-		void settemplate(string const &);
-		string const & templatename() const { return templatename_; }
+		void settemplate(std::string const &);
+		std::string const & templatename() const { return templatename_; }
 
 		/// the filename
 		lyx::support::FileName filename;
@@ -68,7 +67,7 @@ public:
 
 	private:
 		TempName tempname_;
-		string templatename_;
+		std::string templatename_;
 	};
 
 	InsetExternal();
@@ -123,7 +122,7 @@ public:
 	    If \param external_in_tmpdir == true, then the generated file is
 	    place in the buffer's temporary directory.
 	*/
-	void updateExternal(string const &, Buffer const &,
+	void updateExternal(std::string const &, Buffer const &,
 			    bool external_in_tmpdir) const;
 
 private:
@@ -137,7 +136,7 @@ private:
 	    If \param external_in_tmpdir == true, then the generated file is
 	    place in the buffer's temporary directory.
 	*/
-	int write(string const & format, Buffer const &, std::ostream &,
+	int write(std::string const & format, Buffer const &, std::ostream &,
 		  bool external_in_tmpdir = false) const;
 
 	/// the current params
@@ -157,18 +156,18 @@ public:
 	///
 	virtual InsetBase & inset() const { return inset_; }
 	///
-	virtual string const & name() const { return name_; }
+	virtual std::string const & name() const { return name_; }
 	///
-	virtual string const inset2string(Buffer const &) const;
+	virtual std::string const inset2string(Buffer const &) const;
 	///
-	static void string2params(string const &, Buffer const &,
+	static void string2params(std::string const &, Buffer const &,
 				  InsetExternal::Params &);
 	///
-	static string const params2string(InsetExternal::Params const &,
+	static std::string const params2string(InsetExternal::Params const &,
 					  Buffer const &);
 private:
 	///
-	static string const name_;
+	static std::string const name_;
 	///
 	InsetExternal & inset_;
 };

@@ -19,8 +19,6 @@
 #include <boost/signals/trackable.hpp>
 #include <boost/signals/signal0.hpp>
 
-#include "support/std_string.h"
-
 class Buffer;
 class Toolbar;
 class Intl;
@@ -103,7 +101,7 @@ public:
 	//@}
 
 	/// sets the layout in the toolbar layout selection
-	void setLayout(string const & layout);
+	void setLayout(std::string const & layout);
 	/// updates the possible layouts selectable
 	void updateLayoutChoice();
 
@@ -119,7 +117,7 @@ public:
 	boost::signal0<void> view_state_changed;
 
 	/// display a message in the view
-	virtual void message(string const &) = 0;
+	virtual void message(std::string const &) = 0;
 
 	/// clear any temporary message and replace with current status
 	virtual void clearMessage() = 0;
@@ -148,7 +146,7 @@ private:
 	 * @param t main window title
 	 * @param it iconified (short) title
 	 */
-	virtual void setWindowTitle(string const & t, string const & it) = 0;
+	virtual void setWindowTitle(std::string const & t, std::string const & it) = 0;
 
 	/// called on timeout
 	void autoSave();

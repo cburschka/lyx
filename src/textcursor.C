@@ -13,6 +13,10 @@
 #include "textcursor.h"
 #include "paragraph.h"
 
+#include <string>
+
+using std::string;
+
 
 void TextCursor::setSelection()
 {

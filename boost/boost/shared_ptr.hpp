@@ -238,7 +238,7 @@ public:
         BOOST_ASSERT(px != 0);
         return px;
     }
-    
+
     T * get() const // never throws
     {
         return px;
@@ -404,7 +404,7 @@ using std::basic_ostream;
 template<class E, class T, class Y> basic_ostream<E, T> & operator<< (basic_ostream<E, T> & os, shared_ptr<Y> const & p)
 # else
 template<class E, class T, class Y> std::basic_ostream<E, T> & operator<< (std::basic_ostream<E, T> & os, shared_ptr<Y> const & p)
-# endif 
+# endif
 {
     os << p.get();
     return os;
@@ -437,7 +437,7 @@ template<class D, class T> D * get_deleter(shared_ptr<T> const & p)
 
 #ifdef BOOST_MSVC
 # pragma warning(pop)
-#endif    
+#endif
 
 #endif  // #if defined(BOOST_NO_MEMBER_TEMPLATES) && !defined(BOOST_MSVC6_MEMBER_TEMPLATES)
 

@@ -27,6 +27,7 @@
 using lyx::support::trim;
 
 using std::vector;
+using std::string;
 
 
 typedef FormCB<ControlSendto, FormDB<FD_sendto> > base_class;

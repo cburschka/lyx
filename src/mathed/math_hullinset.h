@@ -23,7 +23,7 @@ public:
 	///
 	MathHullInset();
 	///
-	explicit MathHullInset(string const & type);
+	explicit MathHullInset(std::string const & type);
 	///
 	virtual std::auto_ptr<InsetBase> clone() const;
 	///
@@ -37,9 +37,9 @@ public:
 	///
 	void drawT(TextPainter &, int x, int y) const;
 	///
-	string label(row_type row) const;
+	std::string label(row_type row) const;
 	///
-	void label(row_type row, string const & label);
+	void label(row_type row, std::string const & label);
 	///
 	void numbered(row_type row, bool num);
 	///
@@ -54,7 +54,7 @@ public:
 	dispatch_result dispatch(FuncRequest const & cmd, idx_type & idx, pos_type & pos);
 	/// Appends \c list with all labels found within this inset.
 	void getLabelList(Buffer const &,
-			  std::vector<string> & list) const;
+			  std::vector<std::string> & list) const;
 	///
 	void validate(LaTeXFeatures & features) const;
 	/// identifies MatrixInsets
@@ -74,9 +74,9 @@ public:
 	void delCol(col_type col);
 
 	/// get type
-	string const & getType() const;
+	std::string const & getType() const;
 	/// change type
-	void mutate(string const &);
+	void mutate(std::string const &);
 
 	///
 	int defaultColSpace(col_type col);
@@ -88,7 +88,7 @@ public:
 	bool idxLast(idx_type &, pos_type &) const;
 
 	///
-	string fileInsetLabel() const;
+	std::string fileInsetLabel() const;
 	///
 	void write(WriteStream & os) const;
 	///
@@ -100,11 +100,11 @@ public:
 
 protected:
 	///
-	string eolString(row_type row, bool fragile) const;
+	std::string eolString(row_type row, bool fragile) const;
 
 private:
 	///
-	void setType(string const & type);
+	void setType(std::string const & type);
 	///
 	void validate1(LaTeXFeatures & features);
 	///
@@ -112,7 +112,7 @@ private:
 	///
 	void footer_write(WriteStream &) const;
 	///
-	string nicelabel(row_type row) const;
+	std::string nicelabel(row_type row) const;
 	///
 	void doExtern(FuncRequest const & func, idx_type & idx, pos_type & pos);
 	///
@@ -125,11 +125,11 @@ private:
 	bool colChangeOK() const;
 
 	/// "none", "simple", "display", "eqnarray",...
-	string type_;
+	std::string type_;
 	///
 	std::vector<int> nonum_;
 	///
-	std::vector<string> label_;
+	std::vector<std::string> label_;
 };
 
 #endif

@@ -45,7 +45,7 @@ private:
 	/// Update dialog before/whilst showing it.
 	virtual void update();
 	/// Update the BoundingBox info.
-	void updateBB(string const & filename, string const & bb_inset);
+	void updateBB(std::string const & filename, std::string const & bb_inset);
 	/// Filter the inputs on callback from xforms
 	virtual ButtonPolicy::SMInput input(FL_OBJECT *, long);
 
@@ -57,7 +57,7 @@ private:
 	boost::scoped_ptr<FD_graphics_extra> extra_;
 
 	/// Store the LaTeX names for the rotation origins.
-	std::vector<string> origins_;
+	std::vector<std::string> origins_;
 };
 
 #endif  // FORMGRAPHICS_H

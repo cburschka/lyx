@@ -34,7 +34,7 @@ public:
 	///
 	int docbook(Buffer const &, std::ostream &, bool mixcont) const;
 	///
-	string const editMessage() const;
+	std::string const editMessage() const;
 };
 
 #endif

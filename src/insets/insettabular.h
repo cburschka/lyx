@@ -47,7 +47,6 @@
 
 #include "inset.h"
 #include "tabular.h"
-#include "support/std_string.h"
 #include "frontends/mouse_state.h"
 
 class FuncStatus;
@@ -77,7 +76,7 @@ public:
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
 	///
-	string const editMessage() const;
+	std::string const editMessage() const;
 	//
 	void insetUnlock(BufferView *);
 	///
@@ -125,10 +124,10 @@ public:
 	/// Get the absolute document x,y of the cursor
 	virtual void getCursor(BufferView &, int &, int &) const;
 	///
-	bool tabularFeatures(BufferView * bv, string const & what);
+	bool tabularFeatures(BufferView * bv, std::string const & what);
 	///
 	void tabularFeatures(BufferView * bv, LyXTabular::Feature feature,
-			     string const & val = string());
+			     std::string const & val = std::string());
 	///
 	int getActCell() const { return actcell; }
 	///
@@ -144,9 +143,9 @@ public:
 	///
 	bool showInsetDialog(BufferView *) const;
 	///
-	FuncStatus getStatus(string const & argument) const;
+	FuncStatus getStatus(std::string const & argument) const;
 	/// Appends \c list with all labels found within this inset.
-	void getLabelList(Buffer const &, std::vector<string> & list) const;
+	void getLabelList(Buffer const &, std::vector<std::string> & list) const;
 	///
 	int scroll(bool recursive=true) const;
 	///
@@ -176,9 +175,9 @@ public:
 	/// find next change
 	bool nextChange(BufferView *, lyx::pos_type & length);
 	///
-	bool searchForward(BufferView *, string const &,
+	bool searchForward(BufferView *, std::string const &,
 			   bool = true, bool = false);
-	bool searchBackward(BufferView *, string const &,
+	bool searchBackward(BufferView *, std::string const &,
 			    bool = true, bool = false);
 
 	// this should return true if we have a "normal" cell, otherwise true.
@@ -282,7 +281,7 @@ private:
 	///
 	WordLangTuple selectNextWordInt(BufferView *, float & value) const;
 	///
-	bool insertAsciiString(BufferView *, string const & buf, bool usePaste);
+	bool insertAsciiString(BufferView *, std::string const & buf, bool usePaste);
 
 	//
 	// Private structures and variables
@@ -335,20 +334,20 @@ public:
 	///
 	virtual InsetBase & inset() const { return inset_; }
 	///
-	virtual string const & name() const { return name_; }
+	virtual std::string const & name() const { return name_; }
 	///
-	virtual string const inset2string(Buffer const &) const;
+	virtual std::string const inset2string(Buffer const &) const;
 	/// Returns the active cell if successful, else -1.
-	static int string2params(string const &, InsetTabular &);
+	static int string2params(std::string const &, InsetTabular &);
 	///
-	static string const params2string(InsetTabular const &);
+	static std::string const params2string(InsetTabular const &);
 private:
 	///
-	static string const name_;
+	static std::string const name_;
 	///
 	InsetTabular & inset_;
 };
 
-string const featureAsString(LyXTabular::Feature feature);
+std::string const featureAsString(LyXTabular::Feature feature);
 
 #endif

@@ -26,6 +26,8 @@ using lyx::support::prefixIs;
 using lyx::support::rtrim;
 using lyx::support::strToDbl;
 
+using std::string;
+
 
 namespace {
 

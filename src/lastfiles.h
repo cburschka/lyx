@@ -12,10 +12,10 @@
 #ifndef LASTFILES_H
 #define LASTFILES_H
 
+#include <boost/utility.hpp>
+
 #include <deque>
 
-#include "support/std_string.h"
-#include <boost/utility.hpp>
 
 /** The latest documents loaded.
     This class takes care of the last .lyx files used by the LyX user. It
@@ -26,7 +26,7 @@
 class LastFiles : boost::noncopyable {
 public:
 	///
-	typedef std::deque<string> Files;
+	typedef std::deque<std::string> Files;
 
 	///
 	typedef Files::const_iterator const_iterator;
@@ -37,7 +37,7 @@ public:
 	    @param num number of files to remember.
 	*/
 	explicit
-	LastFiles(string const & file,
+	LastFiles(std::string const & file,
 		  bool dostat = true, unsigned int num = 4);
 
 	/** Insert #file# into the list.
@@ -47,18 +47,18 @@ public:
 	    file in the list is popped from the end.
 	    @param file the file to insert in the list.
 	*/
-	void newFile(string const & file);
+	void newFile(std::string const & file);
 	/** Writes the lastfiles table to disk.
 	    Writes one file on each line, this way we can at least have
 	    some special chars (e.g. space), but newline in filenames
 	    are thus not allowed.
 	    @param file the file we write the lastfiles list to.
 	*/
-	void writeFile(string const & file) const;
+	void writeFile(std::string const & file) const;
 	/** Return file #n# in the lastfiles list.
 	    @param n number in the list to get
 	*/
-	string const operator[](unsigned int n) const;
+	std::string const operator[](unsigned int n) const;
 	/// Iterator to the beginning of the list.
 	Files::const_iterator begin() const { return files.begin(); }
 	/// Iterator to the end of the list.
@@ -95,7 +95,7 @@ private:
 	    LastFiles has been initialized with #dostat = false#.
 	    @param file the file containing the lastfiles.
 	*/
-	void readFile(string const & file);
+	void readFile(std::string const & file);
 	/** Used by the constructor to set the number of stored last files.
 	    @param num the number of lastfiles to set.
 	*/

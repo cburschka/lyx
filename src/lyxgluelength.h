@@ -16,8 +16,6 @@
 
 #include "lyxlength.h"
 
-#include "support/std_string.h"
-
 
 class LyXGlueLength {
 public:
@@ -36,7 +34,7 @@ public:
 	  1.2 cm  //  4mm +2pt  //  2cm -4mm +2mm  //  4+0.1-0.2cm
 	  The traditional Latex format is also accepted, like
 	  4cm plus 10pt minus 10pt */
-	explicit LyXGlueLength(string const & data);
+	explicit LyXGlueLength(std::string const & data);
 
 	///
 	LyXLength const & len() const;
@@ -47,11 +45,11 @@ public:
 
 
 	/// conversion
-	string const asString() const;
+	std::string const asString() const;
 	///
-	string const asLatexString() const;
+	std::string const asLatexString() const;
 
-	friend bool isValidGlueLength(string const & data,
+	friend bool isValidGlueLength(std::string const & data,
 				      LyXGlueLength* result);
 
 private:
@@ -69,6 +67,6 @@ bool operator==(LyXGlueLength const & l1, LyXGlueLength const & l2);
 bool operator!=(LyXGlueLength const & l1, LyXGlueLength const & l2);
 /** If "data" is valid, the length represented by it is
     stored into "result", if that is not 0. */
-bool isValidGlueLength(string const & data, LyXGlueLength * result = 0);
+bool isValidGlueLength(std::string const & data, LyXGlueLength * result = 0);
 
 #endif // LYXGLUELENGTH_H

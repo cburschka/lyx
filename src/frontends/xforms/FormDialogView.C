@@ -29,6 +29,8 @@
 using lyx::support::bformat;
 using lyx::support::LibFileSearch;
 
+using std::string;
+
 
 extern "C" {
 

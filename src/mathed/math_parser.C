@@ -71,6 +71,7 @@ using std::atoi;
 using std::endl;
 using std::fill;
 
+using std::string;
 using std::ios;
 using std::istream;
 using std::istringstream;

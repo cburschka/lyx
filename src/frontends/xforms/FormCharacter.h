@@ -56,7 +56,7 @@ private:
 	///
 	std::vector<LColor_color>            color_;
 	///
-	std::vector<string>                lang_;
+	std::vector<std::string>                lang_;
 };
 
 #endif

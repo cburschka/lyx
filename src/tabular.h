@@ -234,7 +234,7 @@ public:
 	///
 	bool setMColumnPWidth(int cell, LyXLength const & width);
 	///
-	void setAlignSpecial(int cell, string const & special, Feature what);
+	void setAlignSpecial(int cell, std::string const & special, Feature what);
 	///
 	LyXAlignment getAlignment(int cell, bool onlycolumn = false) const;
 	///
@@ -246,7 +246,7 @@ public:
 	///
 	LyXLength const getMColumnPWidth(int cell) const;
 	///
-	string const getAlignSpecial(int cell, int what) const;
+	std::string const getAlignSpecial(int cell, int what) const;
 	///
 	int getWidthOfCell(int cell) const;
 	///
@@ -375,7 +375,7 @@ public:
 	///
 	void validate(LaTeXFeatures &) const;
 	/// Appends \c list with all labels found within this inset.
-	void getLabelList(Buffer const &, std::vector<string> & list) const;
+	void getLabelList(Buffer const &, std::vector<std::string> & list) const;
 	///
 //private:
 	///
@@ -405,7 +405,7 @@ public:
 		///
 		bool rotate;
 		///
-		string align_special;
+		std::string align_special;
 		///
 		LyXLength p_width; // this is only set for multicolumn!!!
 		///
@@ -461,7 +461,7 @@ public:
 		///
 		LyXLength p_width;
 		///
-		string align_special;
+		std::string align_special;
 	};
 	///
 	typedef std::vector<columnstruct> column_vector;

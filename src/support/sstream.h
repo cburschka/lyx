@@ -35,7 +35,7 @@ the executable file might be covered by the GNU General Public License. */
 #ifndef SSTREAM_H
 #define SSTREAM_H
 
-#include "support/std_string.h"
+#include <string>
 #include <iostream>
 #include <streambuf.h>
 
@@ -54,7 +54,7 @@ namespace std
       rpos(0), bufsize(1)
     { }
 
-    explicit stringbuf(const string &s, int which=ios::in|ios::out) :
+    explicit stringbuf(const std::string &s, int which=ios::in|ios::out) :
       streambuf(which), buf(s), mode(static_cast<ios::open_mode>(which)),
       bufsize(1)
     {
@@ -69,13 +69,13 @@ namespace std
       rpos = (mode & ios::ate ? s.size() : 0);
     }
 
-    string str() const
+    std::string str() const
     {
       const_cast<stringbuf*>(this)->sync();  // Sigh, really ugly hack
       return buf;
     };
 
-    void str(const string& s)
+    void str(const std::string& s)
     {
       buf = s;
       if(mode & ios::in)
@@ -94,9 +94,9 @@ namespace std
     inline virtual int overflow(int = EOF);
     inline virtual int underflow();
   private:
-    string			buf;
+    std::string			buf;
     ios::open_mode		mode;
-    string::size_type	rpos;
+    std::string::size_type	rpos;
     streamsize			bufsize;
     char			defbuf;
   };
@@ -105,11 +105,11 @@ namespace std
   protected:
     stringbuf __my_sb;
   public:
-    string str() const
+    std::string str() const
     {
       return static_cast<stringbuf*>(_strbuf)->str();
     }
-    void str(const string& s)
+    void str(const std::string& s)
     {
       clear();
       static_cast<stringbuf*>(_strbuf)->str(s);
@@ -126,7 +126,7 @@ namespace std
       init (&__my_sb);
     }
 
-    stringstreambase(const string& s, int which) :
+    stringstreambase(const std::string& s, int which) :
       __my_sb(s, which)
     {
       init (&__my_sb);
@@ -139,7 +139,7 @@ namespace std
       stringstreambase(which)
     { }
 
-    istringstream(const string& s, int which=ios::in) :
+    istringstream(const std::string& s, int which=ios::in) :
       stringstreambase(s, which)
     { }
   };
@@ -150,7 +150,7 @@ namespace std
       stringstreambase(which)
     { }
 
-    ostringstream(const string& s, int which=ios::out) :
+    ostringstream(const std::string& s, int which=ios::out) :
       stringstreambase(s, which)
     { }
   };
@@ -161,7 +161,7 @@ namespace std
       stringstreambase(which)
     { }
 
-    stringstream(const string &s, int which=ios::in|ios::out) :
+    stringstream(const std::string &s, int which=ios::in|ios::out) :
       stringstreambase(s, which)
     { }
   };
@@ -176,7 +176,7 @@ inline int stringbuf::sync()
   streamsize n = pptr() - pbase();
   if(n)
     {
-      buf.replace(rpos, string::npos, pbase(), n);
+      buf.replace(rpos, std::string::npos, pbase(), n);
       //if(buf.size() - rpos != n)
       if (buf.size() != n + rpos)
 	return EOF;
@@ -199,9 +199,9 @@ inline int stringbuf::overflow(int ch)
 
   if(ch != EOF)
     {
-      string::size_type oldSize = buf.size();
+      std::string::size_type oldSize = buf.size();
 
-      buf.replace(rpos, string::npos, 1, ch);
+      buf.replace(rpos, std::string::npos, 1, ch);
       if(buf.size() - oldSize != 1)
 	return EOF;
       ++rpos;
@@ -221,8 +221,8 @@ inline int stringbuf::underflow()
       return EOF;
     }
 
-  string::size_type n = egptr() - eback();
-  string::size_type s;
+  std::string::size_type n = egptr() - eback();
+  std::string::size_type s;
 
   s = buf.copy(eback(), n, rpos);
   pbump(pbase() - pptr());

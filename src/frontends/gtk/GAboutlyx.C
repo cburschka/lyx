@@ -20,6 +20,7 @@
 #include "version.h"
 
 using std::ostringstream;
+using std::string;
 
 
 namespace {

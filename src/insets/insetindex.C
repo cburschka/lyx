@@ -16,6 +16,8 @@
 #include "LaTeXFeatures.h"
 #include "metricsinfo.h"
 
+
+using std::string;
 using std::ostream;
 
 

@@ -15,6 +15,10 @@
 
 #include "support/lyxlib.h"
 
+
+using std::string;
+
+
 namespace {
 
 inline

@@ -75,7 +75,7 @@ public:
 	int latex(Buffer const &, std::ostream &,
 		  LatexRunParams const &) const;
 	///
-	string const editMessage() const;
+	std::string const editMessage() const;
 	///
 	bool insetAllowed(InsetOld::Code) const;
 	/** returns true if, when outputing LaTeX, font changes should
@@ -106,16 +106,16 @@ public:
 	///
 	virtual InsetBase & inset() const { return inset_; }
 	///
-	virtual string const & name() const { return name_; }
+	virtual std::string const & name() const { return name_; }
 	///
-	virtual string const inset2string(Buffer const &) const;
+	virtual std::string const inset2string(Buffer const &) const;
 	///
-	static void string2params(string const &, InsetMinipage::Params &);
+	static void string2params(std::string const &, InsetMinipage::Params &);
 	///
-	static string const params2string(InsetMinipage::Params const &);
+	static std::string const params2string(InsetMinipage::Params const &);
 private:
 	///
-	static string const name_;
+	static std::string const name_;
 	///
 	InsetMinipage & inset_;
 };

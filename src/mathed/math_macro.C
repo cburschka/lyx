@@ -21,6 +21,7 @@
 #include "LaTeXFeatures.h"
 
 
+using std::string;
 using std::max;
 using std::auto_ptr;
 using std::endl;

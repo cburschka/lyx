@@ -14,6 +14,9 @@
 #include "funcrequest.h"
 
 
+using std::string;
+
+
 void getTexFileList(ControlTexinfo::texFileSuffix type,
 		    std::vector<string> & list)
 {

@@ -12,8 +12,7 @@
 #ifndef MATH_STREAMSTR_H
 #define MATH_STREAMSTR_H
 
-
-#include "support/std_string.h"
+#include <string>
 
 class WriteStream;
 class NormalStream;
@@ -27,11 +26,11 @@ class OctaveStream;
 // writing strings directly
 //
 
-WriteStream & operator<<(WriteStream & ws, string const & s);
-NormalStream & operator<<(NormalStream & ns, string const & s);
-MapleStream & operator<<(MapleStream & ms, string const & s);
-MaximaStream & operator<<(MaximaStream & ms, string const & s);
-MathematicaStream & operator<<(MathematicaStream & ms, string const & s);
-MathMLStream & operator<<(MathMLStream & ms, string const & s);
-OctaveStream & operator<<(OctaveStream & os, string const & s);
+WriteStream & operator<<(WriteStream & ws, std::string const & s);
+NormalStream & operator<<(NormalStream & ns, std::string const & s);
+MapleStream & operator<<(MapleStream & ms, std::string const & s);
+MaximaStream & operator<<(MaximaStream & ms, std::string const & s);
+MathematicaStream & operator<<(MathematicaStream & ms, std::string const & s);
+MathMLStream & operator<<(MathMLStream & ms, std::string const & s);
+OctaveStream & operator<<(OctaveStream & os, std::string const & s);
 #endif

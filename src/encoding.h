@@ -13,8 +13,9 @@
 #ifndef ENCODING_H
 #define ENCODING_H
 
-#include "support/std_string.h"
 #include <map>
+#include <string>
+
 
 ///
 typedef unsigned short int Uchar;
@@ -25,17 +26,17 @@ public:
 	///
 	Encoding() {}
 	///
-	Encoding(string const & n, string const & l, Uchar const * e)
+	Encoding(std::string const & n, std::string const & l, Uchar const * e)
 		: Name_(n), LatexName_(l) {
 		for (int i = 0; i < 256; ++i)
 			encoding_table[i] = e[i];
 	}
 	///
-	string const & Name() const {
+	std::string const & Name() const {
 		return Name_;
 	}
 	///
-	string const & LatexName() const {
+	std::string const & LatexName() const {
 		return LatexName_;
 	}
 	///
@@ -44,9 +45,9 @@ public:
 	}
 private:
 	///
-	string Name_;
+	std::string Name_;
 	///
-	string LatexName_;
+	std::string LatexName_;
 	///
 	Uchar encoding_table[256];
 };
@@ -56,13 +57,13 @@ extern Encoding symbol_encoding;
 class Encodings {
 public:
 	///
-	typedef std::map<string, Encoding> EncodingList;
+	typedef std::map<std::string, Encoding> EncodingList;
 	///
 	Encodings();
 	///
-	void read(string const & filename);
+	void read(std::string const & filename);
 	///
-	Encoding const * getEncoding(string const & encoding) const;
+	Encoding const * getEncoding(std::string const & encoding) const;
 	///
 	Encoding const * symbol_encoding() {
 		return &symbol_encoding_;

@@ -13,8 +13,6 @@
 #ifndef LYXSERVER_H
 #define LYXSERVER_H
 
-#include "support/std_string.h"
-
 #include <boost/signals/trackable.hpp>
 
 class LyXFunc;
@@ -35,10 +33,10 @@ public:
 	  This is one of the small things that would have been a lot
 	  cleaner with a Signal/Slot thing.
 	 */
-	typedef void (*ClientCallbackfct)(LyXServer *, string const &);
+	typedef void (*ClientCallbackfct)(LyXServer *, std::string const &);
 
 	/// Construct with pipe-basename and callback to receive messages
-	LyXComm(string const & pip, LyXServer * cli, ClientCallbackfct ccb = 0)
+	LyXComm(std::string const & pip, LyXServer * cli, ClientCallbackfct ccb = 0)
 		: pipename(pip), client(cli), clientcb(ccb) {
 		ready = false;
 		openConnection();
@@ -53,19 +51,19 @@ public:
 	void emergencyCleanup();
 
 	/// Send message
-	void send(string const &);
+	void send(std::string const &);
 
 	/// asynch ready-to-be-read notification
 	void read_ready();
 
 private:
 	/// the filename of the in pipe
-	string const inPipeName() {
+	std::string const inPipeName() {
 		return pipename + ".in";
 	}
 
 	/// the filename of the out pipe
-	string const outPipeName() {
+	std::string const outPipeName() {
 		return pipename + ".out";
 	}
 
@@ -76,10 +74,10 @@ private:
 	void closeConnection();
 
 	/// start a pipe
-	int startPipe(string const &, bool);
+	int startPipe(std::string const &, bool);
 
 	/// finish a pipe
-	void endPipe(int &, string const &, bool);
+	void endPipe(int &, std::string const &, bool);
 
 	/// This is -1 if not open
 	int infd;
@@ -91,7 +89,7 @@ private:
 	bool ready;
 
 	/// Base of pipename including path
-	string pipename;
+	std::string pipename;
 
 	/// The client
 	LyXServer * client;
@@ -116,12 +114,12 @@ public:
 	// lyxserver is using a buffer that is being edited with a bufferview.
 	// With a common buffer list this is not a problem, maybe. (Alejandro)
 	///
-	LyXServer(LyXFunc * f, string const & pip)
+	LyXServer(LyXFunc * f, std::string const & pip)
 		: numclients(0), func(f), pipes(pip, (this), callback) {}
 	///
 	~LyXServer();
 	///
-	void notifyClient(string const &);
+	void notifyClient(std::string const &);
 
 	/// whilst crashing etc.
 	void emergencyCleanup() {
@@ -130,14 +128,14 @@ public:
 
 private:
 	///
-	static void callback(LyXServer *, string const & msg);
+	static void callback(LyXServer *, std::string const & msg);
 	/// Names and number of current clients
 	enum {
 		///
 		MAX_CLIENTS = 10
 	};
 	///
-	string clients[MAX_CLIENTS];
+	std::string clients[MAX_CLIENTS];
 	///
 	int numclients;
 	///

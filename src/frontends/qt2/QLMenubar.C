@@ -21,6 +21,7 @@
 
 
 using std::pair;
+using std::string;
 
 
 QLMenubar::QLMenubar(LyXView * view, MenuBackend const & mbe)

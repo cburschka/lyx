@@ -1,5 +1,5 @@
 //  (C) Copyright Gennadiy Rozental 2002.
-//  (C) Copyright Daryle Walker 2000-2001. 
+//  (C) Copyright Daryle Walker 2000-2001.
 //  Permission to copy, use, modify, sell and distribute this software
 //  is granted provided this copyright notice appears in all copies.
 //  This software is provided "as is" without express or implied warranty,
@@ -9,7 +9,7 @@
 //
 //  File        : $RCSfile: nullstream.hpp,v $
 //
-//  Version     : $Id: nullstream.hpp,v 1.3 2003/02/15 21:57:25 rogeeff Exp $
+//  Version     : $Id: nullstream.hpp,v 1.1 2003/09/26 14:27:18 larsbj Exp $
 //
 //  Description : simulate /dev/null stream
 // ***************************************************************************

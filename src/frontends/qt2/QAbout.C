@@ -31,6 +31,7 @@ using std::getline;
 
 using std::istringstream;
 using std::ostringstream;
+using std::string;
 
 
 typedef QController<ControlAboutlyx, QView<QAboutDialog> > base_class;

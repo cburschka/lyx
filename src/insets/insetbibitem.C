@@ -27,7 +27,7 @@ using lyx::support::prefixIs;
 using lyx::support::strToInt;
 
 using std::max;
-
+using std::string;
 using std::auto_ptr;
 
 

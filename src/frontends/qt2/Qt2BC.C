@@ -17,6 +17,8 @@
 #include <qbutton.h>
 #include <qlineedit.h>
 
+using std::string;
+
 
 Qt2BC::Qt2BC(ButtonController const & parent,
 	     string const & cancel, string const & close)

@@ -20,6 +20,9 @@
 #include "lyx_forms.h"
 
 
+using std::string;
+
+
 typedef FormController<ControlChanges, FormView<FD_changes> > base_class;
 
 FormChanges::FormChanges(Dialog & parent)

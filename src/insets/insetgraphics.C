@@ -100,7 +100,7 @@ using lyx::support::unzippedFileName;
 namespace os = lyx::support::os;
 
 using std::endl;
-
+using std::string;
 using std::auto_ptr;
 using std::istringstream;
 using std::ostream;

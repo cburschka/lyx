@@ -14,6 +14,10 @@
 
 #include "support/lyxlib.h"
 
+
+using std::string;
+
+
 bool lyx::support::rename(string const & from, string const & to)
 {
 #ifdef __EMX__

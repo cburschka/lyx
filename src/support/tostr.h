@@ -15,23 +15,19 @@
 #ifndef TOSTR_H
 #define TOSTR_H
 
-#include "support/std_string.h"
-
-// When trying to convert this to a template using std::stringstream,
-// note that this will pull in the whole of <string> in more than 150
-// files, even when configuring --with-included-strings !
+#include <string>
 
 /// convert things to strings
-string const tostr(bool b);
+std::string const tostr(bool b);
 ///
-string const tostr(int);
+std::string const tostr(int);
 ///
-string const tostr(unsigned int);
+std::string const tostr(unsigned int);
 ///
-string const tostr(long int);
+std::string const tostr(long int);
 ///
-string const tostr(double);
+std::string const tostr(double);
 ///
-string const tostr(string const & s);
+std::string const tostr(std::string const & s);
 
 #endif

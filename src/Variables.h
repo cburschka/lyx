@@ -13,7 +13,6 @@
 #ifndef VARIABLES_H
 #define VARIABLES_H
 
-#include "support/std_string.h"
 #include <map>
 
 
@@ -21,16 +20,16 @@
 class Variables {
 public:
 	///
-	void set(string const &, string const &);
+	void set(std::string const &, std::string const &);
 	///
-	string const get(string const &) const;
+	std::string const get(std::string const &) const;
 	///
-	bool isSet(string const & var) const;
+	bool isSet(std::string const & var) const;
 	///
-	string const expand(string const &) const;
+	std::string const expand(std::string const &) const;
 private:
 	///
-	typedef std::map<string, string> Vars;
+	typedef std::map<std::string, std::string> Vars;
 	///
 	Vars vars_;
 };

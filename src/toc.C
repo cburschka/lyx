@@ -30,6 +30,7 @@
 using std::vector;
 using std::max;
 using std::ostream;
+using std::string;
 
 namespace lyx {
 namespace toc {

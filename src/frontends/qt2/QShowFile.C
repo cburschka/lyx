@@ -21,6 +21,8 @@
 #include <qtextview.h>
 #include <qpushbutton.h>
 
+using std::string;
+
 typedef QController<ControlShowFile, QView<QShowFileDialog> > base_class;
 
 

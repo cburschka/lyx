@@ -13,11 +13,11 @@
 #ifndef XWORKAREA_H
 #define XWORKAREA_H
 
-
 #include "frontends/WorkArea.h"
 #include "XPainter.h"
 
 #include "lyx_forms.h"
+
 
 ///
 class XWorkArea : public WorkArea {
@@ -53,9 +53,9 @@ public:
 	/// a selection exists
 	virtual void haveSelection(bool) const;
 	///
-	virtual string const getClipboard() const;
+	virtual std::string const getClipboard() const;
 	///
-	virtual void putClipboard(string const &) const;
+	virtual void putClipboard(std::string const &) const;
 
 	/// handles SelectionRequest X Event, to fill the clipboard
 	int event_cb(XEvent * xev);

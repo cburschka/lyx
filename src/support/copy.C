@@ -13,11 +13,13 @@
 #include <fstream>
 
 #include "support/lyxlib.h"
-#include "support/std_string.h"
+
 
 using std::ifstream;
 using std::ofstream;
 using std::ios;
+using std::string;
+
 
 bool lyx::support::copy(string const & from, string const & to)
 {

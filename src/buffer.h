@@ -22,7 +22,6 @@
 #include <boost/signals/signal0.hpp>
 #include <boost/signals/signal1.hpp>
 
-#include "support/std_string.h"
 #include <iosfwd>
 #include <map>
 #include <utility>
@@ -65,7 +64,7 @@ public:
 	    \param file
 	    \param b  optional \c false by default
 	*/
-	explicit Buffer(string const & file, bool b = false);
+	explicit Buffer(std::string const & file, bool b = false);
 
 	/// Destructor
 	~Buffer();
@@ -73,7 +72,7 @@ public:
 	/** High-level interface to buffer functionality.
 	    This function parses a command string and executes it
 	*/
-	bool dispatch(string const & command, bool * result = 0);
+	bool dispatch(std::string const & command, bool * result = 0);
 
 	/// Maybe we know the function already by number...
 	bool dispatch(FuncRequest const & func, bool * result = 0);
@@ -82,9 +81,9 @@ public:
 	void loadAutoSaveFile();
 
 	/// load a new file
-	bool readFile(string const & filename);
+	bool readFile(std::string const & filename);
 
-	bool readFile(string const & filename, ParagraphList::iterator pit);
+	bool readFile(std::string const & filename, ParagraphList::iterator pit);
 
 	/// read the header, returns number of unknown tokens
 	int readHeader(LyXLex & lex);
@@ -96,14 +95,14 @@ public:
 	bool readBody(LyXLex &, ParagraphList::iterator pit);
 
 	/// This parses a single token
-	int readParagraph(LyXLex &, string const & token,
+	int readParagraph(LyXLex &, std::string const & token,
 			  ParagraphList & pars,
 			  ParagraphList::iterator & pit,
 			  lyx::depth_type & depth);
 
 	///
 	void insertStringAsLines(ParagraphList::iterator &, lyx::pos_type &,
-				 LyXFont const &, string const &);
+				 LyXFont const &, std::string const &);
 	///
 	ParIterator getParFromID(int id) const;
 	/// do we have a paragraph with this id?
@@ -112,7 +111,7 @@ public:
 	/// This signal is emitted when a parsing error shows up.
 	boost::signal1<void, ErrorItem> error;
 	/// This signal is emitted when some message shows up.
-	boost::signal1<void, string> message;
+	boost::signal1<void, std::string> message;
 	/// This signal is emitted when the buffer busy status change.
 	boost::signal1<void, bool> busy;
 	/// This signal is emitted when the buffer readonly status change.
@@ -132,24 +131,24 @@ public:
 	bool save() const;
 
 	/// Write file. Returns \c false if unsuccesful.
-	bool writeFile(string const &) const;
+	bool writeFile(std::string const &) const;
 
 	///
-	void writeFileAscii(string const &, int);
+	void writeFileAscii(std::string const &, int);
 	///
 	void writeFileAscii(std::ostream &, int);
 	///
-	string const asciiParagraph(Paragraph const &, unsigned int linelen,
+	std::string const asciiParagraph(Paragraph const &, unsigned int linelen,
 				    bool noparbreak = false) const;
 	/// Just a wrapper for the method below, first creating the ofstream.
-	void makeLaTeXFile(string const & filename,
-			   string const & original_path,
+	void makeLaTeXFile(std::string const & filename,
+			   std::string const & original_path,
 			   LatexRunParams const &,
 			   bool output_preamble = true,
 			   bool output_body = true);
 	///
 	void makeLaTeXFile(std::ostream & os,
-			   string const & original_path,
+			   std::string const & original_path,
 			   LatexRunParams const &,
 			   bool output_preamble = true,
 			   bool output_body = true);
@@ -163,15 +162,15 @@ public:
 				  ParagraphList::iterator par,
 				  lyx::depth_type depth) const;
 	///
-	void makeLinuxDocFile(string const & filename,
+	void makeLinuxDocFile(std::string const & filename,
 			      bool nice, bool only_body = false);
 	///
-	void makeDocBookFile(string const & filename,
+	void makeDocBookFile(std::string const & filename,
 			     bool nice, bool only_body = false);
 	/// returns the main language for the buffer (document)
 	Language const * getLanguage() const;
 	/// get l10n translated to the buffers language
-	string const B_(string const & l10n) const;
+	std::string const B_(std::string const & l10n) const;
 
 	///
 	int runChktex();
@@ -180,7 +179,7 @@ public:
 	///
 	bool isBakClean() const;
 	///
-	bool isDepClean(string const & name) const;
+	bool isDepClean(std::string const & name) const;
 
 	/// mark the main lyx file as not needing saving
 	void markClean() const;
@@ -189,7 +188,7 @@ public:
 	void markBakClean();
 
 	///
-	void markDepClean(string const & name);
+	void markDepClean(std::string const & name);
 
 	///
 	void setUnnamed(bool flag = true);
@@ -201,25 +200,25 @@ public:
 	void markDirty();
 
 	/// Returns the buffer's filename. It is always an absolute path.
-	string const & fileName() const;
+	std::string const & fileName() const;
 
 	/// Returns the the path where the buffer lives.
 	/// It is always an absolute path.
-	string const & filePath() const;
+	std::string const & filePath() const;
 
 	/** A transformed version of the file name, adequate for LaTeX.
 	    \param no_path optional if \c true then the path is stripped.
 	*/
-	string const getLatexName(bool no_path = true) const;
+	std::string const getLatexName(bool no_path = true) const;
 
 	/// Get the name and type of the log.
-	std::pair<LogType, string> const getLogName() const;
+	std::pair<LogType, std::string> const getLogName() const;
 
 	/// Change name of buffer. Updates "read-only" flag.
-	void setFileName(string const & newfile);
+	void setFileName(std::string const & newfile);
 
 	/// Name of the document's parent
-	void setParentName(string const &);
+	void setParentName(std::string const &);
 
 	/// Is buffer read-only?
 	bool isReadonly() const;
@@ -251,9 +250,9 @@ public:
 	void validate(LaTeXFeatures &) const;
 
 	/// return all bibkeys from buffer and its childs
-	void fillWithBibKeys(std::vector<std::pair<string, string> > & keys) const;
+	void fillWithBibKeys(std::vector<std::pair<std::string, std::string> > & keys) const;
 	///
-	void getLabelList(std::vector<string> &) const;
+	void getLabelList(std::vector<std::string> &) const;
 
 	///
 	void changeLanguage(Language const * from, Language const * to);
@@ -288,7 +287,7 @@ public:
 	LyXVC const & lyxvc() const;
 
 	/// Where to put temporary files.
-	string const & temppath() const;
+	std::string const & temppath() const;
 
 	/** If we are writing a nice LaTeX file or not.
 	    While writing as LaTeX, tells whether we are
@@ -373,7 +372,7 @@ private:
 	    \param par if != 0 insert the file.
 	    \return \c false if method fails.
 	*/
-	bool readFile(LyXLex &, string const & filename,
+	bool readFile(LyXLex &, std::string const & filename,
 		      ParagraphList::iterator pit);
 
 	bool do_writeFile(std::ostream & ofs) const;

@@ -25,9 +25,9 @@ struct InsetFloatParams {
 	///
 	void read(LyXLex & lex);
 	///
-	string type;
+	std::string type;
 	///
-	string placement;
+	std::string placement;
 	///
 	bool wide;
 };
@@ -39,7 +39,7 @@ struct InsetFloatParams {
 class InsetFloat : public InsetCollapsable {
 public:
 	///
-	InsetFloat(BufferParams const &, string const &);
+	InsetFloat(BufferParams const &, std::string const &);
 	///
 	InsetFloat(InsetFloat const &);
 	///
@@ -64,7 +64,7 @@ public:
 	///
 	int docbook(Buffer const &, std::ostream &, bool mixcont) const;
 	///
-	string const editMessage() const;
+	std::string const editMessage() const;
 	///
 	bool insetAllowed(InsetOld::Code) const;
 	/** returns true if, when outputing LaTeX, font changes should
@@ -96,16 +96,16 @@ public:
 	///
 	virtual InsetBase & inset() const { return inset_; }
 	///
-	virtual string const & name() const { return name_; }
+	virtual std::string const & name() const { return name_; }
 	///
-	virtual string const inset2string(Buffer const &) const;
+	virtual std::string const inset2string(Buffer const &) const;
 	///
-	static void string2params(string const &, InsetFloatParams &);
+	static void string2params(std::string const &, InsetFloatParams &);
 	///
-	static string const params2string(InsetFloatParams const &);
+	static std::string const params2string(InsetFloatParams const &);
 private:
 	///
-	static string const name_;
+	static std::string const name_;
 	///
 	InsetFloat & inset_;
 };

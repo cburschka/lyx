@@ -26,6 +26,8 @@
 
 using lyx::support::strToDbl;
 
+using std::string;
+
 
 typedef QController<ControlMinipage, QView<QMinipageDialog> > base_class;
 

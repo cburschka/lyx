@@ -26,11 +26,11 @@ public:
 	ControlBibtex(Dialog &);
 
 	/// Browse for a file
-	string const Browse(string const &, string const &, string const &);
+	std::string const Browse(std::string const &, std::string const &, std::string const &);
 	/// get the list of bst files
-	void getBibStyles(std::vector<string> & data) const;
+	void getBibStyles(std::vector<std::string> & data) const;
 	/// get the list of bib files
-	void getBibFiles(std::vector<string> & data) const;
+	void getBibFiles(std::vector<std::string> & data) const;
 	/// build filelists of all availabe bib/bst/cls/sty-files. done through
 	/// kpsewhich and an external script, saved in *Files.lst
 	void rescanBibStyles() const;

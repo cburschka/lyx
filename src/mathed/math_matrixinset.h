@@ -22,7 +22,7 @@ public:
 	///
 	MathMatrixInset(MathGridInset const &);
 	///
-	MathMatrixInset(string const & str);
+	MathMatrixInset(std::string const & str);
 	///
 	virtual std::auto_ptr<InsetBase> clone() const;
 	/// identifies MatrixInsets

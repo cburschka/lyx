@@ -28,7 +28,7 @@ using lyx::support::contains;
 using lyx::support::trim;
 
 using std::endl;
-
+using std::string;
 using std::auto_ptr;
 using std::ostream;
 

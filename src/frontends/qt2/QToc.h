@@ -35,7 +35,7 @@ private:
 	void updateType();
 
 	/// select an entry
-	void select(string const & text);
+	void select(std::string const & text);
 
 	/// set the depth
 	void set_depth(int depth);

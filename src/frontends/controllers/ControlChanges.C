@@ -23,6 +23,8 @@
 
 using lyx::support::rtrim;
 
+using std::string;
+
 
 ControlChanges::ControlChanges(Dialog & parent)
 	: Dialog::Controller(parent)

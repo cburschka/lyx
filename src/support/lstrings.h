@@ -17,20 +17,20 @@
 #define LSTRINGS_H
 
 #include <vector>
+#include <string>
 
-#include "support/std_string.h"
 
 namespace lyx {
 namespace support {
 
 ///
-int compare_no_case(string const & s, string const & s2);
+int compare_no_case(std::string const & s, std::string const & s2);
 
 ///
-int compare_ascii_no_case(string const & s, string const & s2);
+int compare_ascii_no_case(std::string const & s, std::string const & s2);
 
 ///
-int compare_no_case(string const & s, string const & s2, unsigned int len);
+int compare_no_case(std::string const & s, std::string const & s2, unsigned int len);
 
 ///
 inline
@@ -55,22 +55,22 @@ int compare(char const * a, char const * b, unsigned int len)
 }
 
 ///
-bool isStrInt(string const & str);
+bool isStrInt(std::string const & str);
 
-/// does the string represent an unsigned integer value ?
-bool isStrUnsignedInt(string const & str);
+/// does the std::string represent an unsigned integer value ?
+bool isStrUnsignedInt(std::string const & str);
 
 ///
-int strToInt(string const & str);
+int strToInt(std::string const & str);
 
 /// convert string to an unsigned integer
-unsigned int strToUnsignedInt(string const & str);
+unsigned int strToUnsignedInt(std::string const & str);
 
 ///
-bool isStrDbl(string const & str);
+bool isStrDbl(std::string const & str);
 
 ///
-double strToDbl(string const & str);
+double strToDbl(std::string const & str);
 
 ///
 char lowercase(char c);
@@ -79,44 +79,44 @@ char lowercase(char c);
 char uppercase(char c);
 
 /// same as lowercase(), but ignores locale
-string const ascii_lowercase(string const &);
+std::string const ascii_lowercase(std::string const &);
 
 ///
-string const lowercase(string const &);
+std::string const lowercase(std::string const &);
 
 ///
-string const uppercase(string const &);
+std::string const uppercase(std::string const &);
 
-/// Does the string start with this prefix?
-bool prefixIs(string const &, string const &);
+/// Does the std::string start with this prefix?
+bool prefixIs(std::string const &, std::string const &);
 
 /// Does the string end with this char?
-bool suffixIs(string const &, char);
+bool suffixIs(std::string const &, char);
 
-/// Does the string end with this suffix?
-bool suffixIs(string const &, string const &);
-
-///
-bool contains(string const & a, string const & b);
+/// Does the std::string end with this suffix?
+bool suffixIs(std::string const &, std::string const &);
 
 ///
-bool contains(string const & a, char b);
+bool contains(std::string const & a, std::string const & b);
+
+///
+bool contains(std::string const & a, char b);
 
 /// This should probably we rewritten to be more general.
 class contains_functor {
 public:
-	typedef string first_argument_type;
-	typedef string second_argument_type;
+	typedef std::string first_argument_type;
+	typedef std::string second_argument_type;
 	typedef bool result_type;
 
-	bool operator()(string const & haystack, string const & needle) const {
+	bool operator()(std::string const & haystack, std::string const & needle) const {
 		return contains(haystack, needle);
 	}
 };
 
 
 ///
-bool containsOnly(string const &, string const &);
+bool containsOnly(std::string const &, std::string const &);
 
 /** Extracts a token from this string at the nth delim.
     Doesn't modify the original string. Similar to strtok.
@@ -126,7 +126,7 @@ bool containsOnly(string const &, string const &);
     token("a;bc;d", ';', 2) == "d";
     \endcode
 */
-string const token(string const & a, char delim, int n);
+std::string const token(std::string const & a, char delim, int n);
 
 
 /** Search a token in this string using the delim.
@@ -138,36 +138,36 @@ string const token(string const & a, char delim, int n);
     tokenPos("a;bc;d", ';', "d") == 2;
     \endcode
 */
-int tokenPos(string const & a, char delim, string const & tok);
+int tokenPos(std::string const & a, char delim, std::string const & tok);
 
 
 /// Substitute all \a oldchar with \a newchar
-string const subst(string const & a, char oldchar, char newchar);
+std::string const subst(std::string const & a, char oldchar, char newchar);
 
 /// substitutes all instances of \a oldstr with \a newstr
-string const subst(string const & a,
-		   string const & oldstr, string const & newstr);
+std::string const subst(std::string const & a,
+		   std::string const & oldstr, std::string const & newstr);
 
 /** Trims characters off the end and beginning of a string.
     \code
     trim("ccabccc", "c") == "ab".
     \endcode
 */
-string const trim(string const & a, char const * p = " ");
+std::string const trim(std::string const & a, char const * p = " ");
 
 /** Trims characters off the end of a string.
     \code
     rtrim("abccc", "c") == "ab".
     \endcode
 */
-string const rtrim(string const & a, char const * p = " ");
+std::string const rtrim(std::string const & a, char const * p = " ");
 
 /** Trims characters off the beginning of a string.
     \code
    ltrim("ababcdef", "ab") = "cdef"
     \endcode
 */
-string const ltrim(string const & a, char const * p = " ");
+std::string const ltrim(std::string const & a, char const * p = " ");
 
 /** Splits the string by the first delim.
     Splits the string by the first appearance of delim.
@@ -178,37 +178,37 @@ string const ltrim(string const & a, char const * p = " ");
     s1= ""; s2= "a;bc".split(s1, ';') -> s1 == "a"; s2 == "bc";
     \endcode
 */
-string const split(string const & a, string & piece, char delim);
+std::string const split(std::string const & a, std::string & piece, char delim);
 
 /// Same as split but does not return a piece
-string const split(string const & a, char delim);
+std::string const split(std::string const & a, char delim);
 
 /// Same as split but uses the last delim.
-string const rsplit(string const & a, string & piece, char delim);
+std::string const rsplit(std::string const & a, std::string & piece, char delim);
 
 /// Escapes non ASCII chars
-string const escape(string const & lab);
+std::string const escape(std::string const & lab);
 
 /// gives a vector of stringparts which have the delimiter delim
-std::vector<string> const getVectorFromString(string const & str,
-					      string const & delim = ",");
+std::vector<std::string> const getVectorFromString(std::string const & str,
+					      std::string const & delim = std::string(","));
 
 // the same vice versa
-string const getStringFromVector(std::vector<string> const & vec,
-				 string const & delim = ",");
+std::string const getStringFromVector(std::vector<std::string> const & vec,
+				 std::string const & delim = std::string(","));
 
 // wrapper around boost::format using one argument %1$s
-string bformat(string const & fmt, string const & arg1);
+std::string bformat(std::string const & fmt, std::string const & arg1);
 // arguments %1$s and %2$s
-string bformat(string const & fmt, string const & arg1, string const & arg2);
+std::string bformat(std::string const & fmt, std::string const & arg1, std::string const & arg2);
 // arguments %1$d and %2$d
-string bformat(string const & fmt, int arg1, int arg2);
+std::string bformat(std::string const & fmt, int arg1, int arg2);
 // arguments %1$s and %2$s and %3$s
-string bformat(string const & fmt, string const & arg1, string const & arg2,
-               string const & arg3);
+std::string bformat(std::string const & fmt, std::string const & arg1, std::string const & arg2,
+               std::string const & arg3);
 // arguments %1$s and %2$s and %3$s and %4$s
-string bformat(string const & fmt, string const & arg1, string const & arg2,
-               string const & arg3, string const & arg4);
+std::string bformat(std::string const & fmt, std::string const & arg1, std::string const & arg2,
+               std::string const & arg3, std::string const & arg4);
 
 } // namespace support
 } // namespace lyx

@@ -25,6 +25,8 @@
 
 #include "support/std_sstream.h"
 
+
+using std::string;
 using std::auto_ptr;
 using std::istringstream;
 using std::ostream;

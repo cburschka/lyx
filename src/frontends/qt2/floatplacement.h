@@ -10,8 +10,6 @@
  * Full author contact details are available in file CREDITS.
  */
 
-#include "support/std_string.h"
-
 #include <qwidget.h>
 
 class QCheckBox;
@@ -27,10 +25,10 @@ public:
 	void useWide();
 
 	void set(InsetFloatParams const & params);
-	void set(string const & placement);
+	void set(std::string const & placement);
 
-	string const get(bool & wide) const;
-	string const get() const;
+	std::string const get(bool & wide) const;
+	std::string const get() const;
 
 public slots:
 	void tbhpClicked();

@@ -33,7 +33,7 @@ public:
 	/// small wrapper for the time being
 	virtual dispatch_result localDispatch(FuncRequest const & cmd);
 	///
-	string const getScreenLabel(Buffer const &) const;
+	std::string const getScreenLabel(Buffer const &) const;
 	///
 	EDITABLE editable() const { return IS_EDITABLE; }
 	///
@@ -43,13 +43,13 @@ public:
 		  LatexRunParams const &) const;
 	///
 	void fillWithBibKeys(Buffer const & buffer,
-		std::vector<std::pair<string,string> > & keys) const;
+		std::vector<std::pair<std::string,std::string> > & keys) const;
 	///
-	std::vector<string> const getFiles(Buffer const &) const;
+	std::vector<std::string> const getFiles(Buffer const &) const;
 	///
-	bool addDatabase(string const &);
+	bool addDatabase(std::string const &);
 	///
-	bool delDatabase(string const &);
+	bool delDatabase(std::string const &);
 };
 
 #endif // INSET_BIBTEX_H

@@ -16,6 +16,8 @@
 #include "math_streamstr.h"
 #include "debug.h"
 
+
+using std::string;
 using std::auto_ptr;
 using std::endl;
 

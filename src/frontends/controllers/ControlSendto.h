@@ -14,7 +14,6 @@
 
 
 #include "ControlDialog_impl.h"
-#include "support/std_string.h"
 
 #include <vector>
 
@@ -35,15 +34,15 @@ public:
 	void setFormat(Format const *);
 
 	/// The command to be executed
-	string const getCommand() const { return command_; };
-	void setCommand(string const &);
+	std::string const getCommand() const { return command_; };
+	void setCommand(std::string const &);
 private:
 	///
 	virtual void apply();
 	///
 	Format const * format_;
 	///
-	string command_;
+	std::string command_;
 };
 
 #endif // CONTROLSENDTO_H

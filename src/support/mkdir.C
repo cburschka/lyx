@@ -15,11 +15,9 @@
 #include <fcntl.h>
 #include <unistd.h>
 
-#include "support/std_string.h"
-
 #include "lyxlib.h"
 
-int lyx::support::mkdir(string const & pathname, unsigned long int mode)
+int lyx::support::mkdir(std::string const & pathname, unsigned long int mode)
 {
 	// FIXME: why don't we have mode_t in lyx::mkdir prototype ??
 	return ::mkdir(pathname.c_str(), mode_t(mode));

@@ -15,15 +15,18 @@
 
 #include "math_nestinset.h"
 
+#include <string>
+
+
 // f(x) in one block (as opposed to 'f','(','x',')' or 'f','x')
 // for interfacing external programs
 
 class MathExFuncInset : public MathNestInset {
 public:
 	///
-	explicit MathExFuncInset(string const & name);
+	explicit MathExFuncInset(std::string const & name);
 	///
-	MathExFuncInset(string const & name, MathArray const & ar);
+	MathExFuncInset(std::string const & name, MathArray const & ar);
 	///
 	virtual std::auto_ptr<InsetBase> clone() const;
 	///
@@ -31,7 +34,7 @@ public:
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
 	///
-	string name() const;
+	std::string name() const;
 
 	///
 	void maple(MapleStream &) const;
@@ -46,6 +49,6 @@ public:
 
 private:
 	///
-	string const name_;
+	std::string const name_;
 };
 #endif

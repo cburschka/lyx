@@ -14,16 +14,17 @@
 #define MATH_DELIMINSET_H
 
 #include "math_nestinset.h"
-#include "support/std_string.h"
+
+#include <string>
 
 
 /// A delimiter
 class MathDelimInset : public MathNestInset {
 public:
 	///
-	MathDelimInset(string const & left, string const & right);
+	MathDelimInset(std::string const & left, std::string const & right);
 	///
-	MathDelimInset(string const & left, string const & right, MathArray const &);
+	MathDelimInset(std::string const & left, std::string const & right, MathArray const &);
 	///
 	virtual std::auto_ptr<InsetBase> clone() const;
 	///
@@ -56,9 +57,9 @@ public:
 	///
 	void octave(OctaveStream &) const;
 	///
-	string left_;
+	std::string left_;
 	///
-	string right_;
+	std::string right_;
 private:
 	///
 	mutable int dw_;

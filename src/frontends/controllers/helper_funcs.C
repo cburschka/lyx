@@ -28,6 +28,7 @@ using lyx::support::prefixIs;
 
 using std::pair;
 using std::vector;
+using std::string;
 
 
 string const browseFile(string const & filename,

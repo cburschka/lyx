@@ -72,7 +72,7 @@ using std::back_inserter;
 using std::copy;
 using std::endl;
 using std::make_pair;
-
+using std::string;
 using std::ifstream;
 using std::ios;
 using std::istream_iterator;

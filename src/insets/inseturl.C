@@ -19,8 +19,10 @@
 
 #include "support/lstrings.h"
 
+
 using lyx::support::subst;
 
+using std::string;
 using std::ostream;
 
 

@@ -50,16 +50,16 @@ private:
 	void findBiblio(biblio::Direction const dir);
 
 	///
-	void updateBrowser(FL_OBJECT *, std::vector<string> const &) const;
+	void updateBrowser(FL_OBJECT *, std::vector<std::string> const &) const;
 	///
 	void setBibButtons(State) const;
 	///
 	void setCiteButtons(State) const;
 
 	/// used keys (left panel)
-	std::vector<string> citekeys;
+	std::vector<std::string> citekeys;
 	/// available keys (right panel)
-	std::vector<string> bibkeys;
+	std::vector<std::string> bibkeys;
 };
 
 #endif // FORMCITATION_H

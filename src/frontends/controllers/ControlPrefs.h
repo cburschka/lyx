@@ -14,7 +14,6 @@
 
 
 #include "ControlDialog_impl.h"
-#include "support/std_string.h"
 #include "lyxrc.h"
 
 
@@ -35,22 +34,22 @@ public:
 	LyXRC const & rc() const { return rc_; }
 
 	/// various file pickers
-	string const browsebind(string const & file);
-	string const browseUI(string const & file);
-	string const browsekbmap(string const & file);
-	string const browsedict(string const & file);
+	std::string const browsebind(std::string const & file);
+	std::string const browseUI(std::string const & file);
+	std::string const browsekbmap(std::string const & file);
+	std::string const browsedict(std::string const & file);
 
 	/// general browse
-	string const browse(string const & file, string const & title);
+	std::string const browse(std::string const & file, std::string const & title);
 
 	/// browse directory
-	string const browsedir(string const & path, string const & title);
+	std::string const browsedir(std::string const & path, std::string const & title);
 
 	/// redraw widgets (for xforms color change)
 	void redrawGUI();
 
 	/// set a color
-	void setColor(LColor_color col, string const & hex);
+	void setColor(LColor_color col, std::string const & hex);
 
 	/// update the screen fonts after change
 	void updateScreenFonts();

@@ -21,7 +21,7 @@ using std::endl;
 using std::find_if;
 using std::for_each;
 using std::make_pair;
-
+using std::string;
 using std::ostream;
 
 extern BufferList bufferlist;

@@ -48,7 +48,7 @@ private:
 	void useClassDefaults();
 
 	/// FIXME
-	std::vector<string> lang_;
+	std::vector<std::string> lang_;
 };
 
 #endif // QDOCUMENT_H

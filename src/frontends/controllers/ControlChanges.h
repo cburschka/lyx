@@ -22,7 +22,7 @@ public:
 	///
 	ControlChanges(Dialog &);
 	/// Nothing to initialise in this case.
-	virtual bool initialiseParams(string const &) { return true; }
+	virtual bool initialiseParams(std::string const &) { return true; }
 	///
 	virtual void clearParams() {}
 	///
@@ -34,10 +34,10 @@ public:
 	bool find();
 
 	/// return date of change
-	string const getChangeDate();
+	std::string const getChangeDate();
 
 	/// return author of change
-	string const getChangeAuthor();
+	std::string const getChangeAuthor();
 
 	/// accept the current merge
 	void accept();

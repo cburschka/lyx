@@ -18,6 +18,7 @@
 #include "math_support.h"
 
 
+using std::string;
 using std::max;
 using std::auto_ptr;
 

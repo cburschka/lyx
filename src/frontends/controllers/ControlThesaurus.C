@@ -18,6 +18,10 @@
 
 #include "frontends/LyXView.h"
 
+
+using std::string;
+
+
 ControlThesaurus::ControlThesaurus(Dialog & parent)
 	: Dialog::Controller(parent)
 {}

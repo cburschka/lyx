@@ -14,7 +14,6 @@
 
 #include "lyxgluelength.h"
 
-#include "support/std_string.h"
 
 class BufferParams;
 class BufferView;
@@ -43,7 +42,7 @@ public:
 	explicit VSpace(LyXGlueLength const & l);
 
 	/// Constructor for reading from a .lyx file
-	explicit VSpace(string const & data);
+	explicit VSpace(std::string const & data);
 
 	/// return the type of vertical space
 	vspace_kind kind() const;
@@ -60,9 +59,9 @@ public:
 	// conversion
 
 	/// how it goes into the LyX file
-	string const asLyXCommand() const;
+	std::string const asLyXCommand() const;
 	/// the latex representation
-	string const asLatexCommand(BufferParams const & params) const;
+	std::string const asLatexCommand(BufferParams const & params) const;
 	/// the size of the space on-screen
 	int inPixels(BufferView const & bv) const;
 

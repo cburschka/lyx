@@ -14,8 +14,6 @@
 #ifndef CONTROLCOMMANDBUFFER_H
 #define CONTROLCOMMANDBUFFER_H
 
-#include "support/std_string.h"
-
 #include <vector>
 
 
@@ -32,32 +30,32 @@ public:
 	ControlCommandBuffer(LyXView & lv);
 
 	/// return the previous history entry if any
-	string const historyUp();
+	std::string const historyUp();
 
 	/// return the next history entry if any
-	string const historyDown();
+	std::string const historyDown();
 
 	/// return the font and depth in the active BufferView as a message.
-	string const getCurrentState() const;
+	std::string const getCurrentState() const;
 
 	/// return the possible completions
-	std::vector<string> const completions(string const & prefix,
-					      string & new_prefix);
+	std::vector<std::string> const completions(std::string const & prefix,
+					      std::string & new_prefix);
 
 	/// dispatch a command
-	void dispatch(string const & str);
+	void dispatch(std::string const & str);
 private:
 	/// controlling LyXView
 	LyXView & lv_;
 
 	/// available command names
-	std::vector<string> commands_;
+	std::vector<std::string> commands_;
 
 	/// command history
-	std::vector<string> history_;
+	std::vector<std::string> history_;
 
 	/// current position in command history
-	std::vector<string>::const_iterator history_pos_;
+	std::vector<std::string>::const_iterator history_pos_;
 };
 
 #endif // CONTROLCOMMANDBUFFER_H

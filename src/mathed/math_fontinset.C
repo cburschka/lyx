@@ -17,6 +17,7 @@
 #include "LaTeXFeatures.h"
 #include "support/std_ostream.h"
 
+using std::string;
 using std::auto_ptr;
 
 

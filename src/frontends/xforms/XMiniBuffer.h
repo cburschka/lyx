@@ -16,7 +16,6 @@
 
 #include "lyx_forms.h"
 
-#include "support/std_string.h"
 #include <boost/scoped_ptr.hpp>
 #include <boost/shared_ptr.hpp>
 #include <boost/signals/connection.hpp>
@@ -44,7 +43,7 @@ public:
 	int peek_event(FL_OBJECT *, int, int, XEvent * xev);
 
 	/// show a message
-	void message(string const & str);
+	void message(std::string const & str);
 
 	/// focus the buffer for editing mode
 	void focus() { messageMode(false); }
@@ -66,13 +65,13 @@ private:
 	void idle_timeout();
 
 	/// set the minibuffer content in editing mode
-	void set_input(string const &);
+	void set_input(std::string const &);
 
 	/// go into message mode
 	void messageMode(bool on = true);
 
 	/// show a temporary message whilst in edit mode
-	void show_info(string const & info, string const & input, bool append = true);
+	void show_info(std::string const & info, std::string const & input, bool append = true);
 
 	/// the dropdown menu
 	boost::shared_ptr<FL_FREEBROWSER> freebrowser_;
@@ -99,7 +98,7 @@ private:
 	ControlCommandBuffer & controller_;
 
 	/// stored input when showing info
-	string stored_input_;
+	std::string stored_input_;
 
 	/// are we showing an informational temporary message ?
 	bool info_shown_;

@@ -47,7 +47,7 @@ using lyx::support::bformat;
 using lyx::support::MakeAbsPath;
 
 using std::find;
-
+using std::string;
 using std::vector;
 
 

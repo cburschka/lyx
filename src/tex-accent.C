@@ -14,6 +14,8 @@
 #include "tex-accent.h"
 #include "support/tostr.h"
 
+using std::string;
+
 /* the names used by TeX and XWindows for deadkeys/accents are not the same
    so here follows a table to clearify the differences. Please correct this
    if I got it wrong

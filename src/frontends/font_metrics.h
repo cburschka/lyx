@@ -13,7 +13,8 @@
 #ifndef FONT_METRICS_H
 #define FONT_METRICS_H
 
-#include "support/std_string.h"
+#include <string>
+
 
 class LyXFont;
 
@@ -60,17 +61,17 @@ namespace font_metrics {
 		return width(&c, 1, f);
 	}
 	/// return the width of the string in the font
-	inline int width(string const & s, LyXFont const & f) {
+	inline int width(std::string const & s, LyXFont const & f) {
 		if (s.empty()) return 0;
 		return width(s.data(), s.length(), f);
 	}
 	/// FIXME ??
-	int signedWidth(string const & s, LyXFont const & f);
+	int signedWidth(std::string const & s, LyXFont const & f);
 	/**
 	 * fill in width,ascent,descent with the values for the
 	 * given string in the font.
 	 */
-	void rectText(string const & str, LyXFont const & font,
+	void rectText(std::string const & str, LyXFont const & font,
 		int & width,
 		int & ascent,
 		int & descent);
@@ -78,7 +79,7 @@ namespace font_metrics {
 	 * fill in width,ascent,descent with the values for the
 	 * given string in the font for a button.
 	 */
-	void buttonText(string const & str, LyXFont const & font,
+	void buttonText(std::string const & str, LyXFont const & font,
 		int & width,
 		int & ascent,
 		int & descent);

@@ -24,17 +24,17 @@ public:
 	///
 	ControlRef(Dialog &);
 	///
-	std::vector<string> const getLabelList(string const &) const;
+	std::vector<std::string> const getLabelList(std::string const &) const;
 	///
-	void gotoRef(string const &);
+	void gotoRef(std::string const &);
 	///
 	void gotoBookmark();
 	///
-	std::vector<string> const getBufferList() const;
+	std::vector<std::string> const getBufferList() const;
 	///
 	int getBufferNum() const;
 	///
-	string const getBufferName(int num) const;
+	std::string const getBufferName(int num) const;
 private:
 	/** disconnect from the inset when the Apply button is pressed.
 	 Allows easy insertion of multiple references. */

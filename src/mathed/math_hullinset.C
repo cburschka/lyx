@@ -35,6 +35,7 @@ using lyx::support::trim;
 using std::endl;
 using std::max;
 
+using std::string;
 using std::auto_ptr;
 using std::istringstream;
 using std::ostringstream;

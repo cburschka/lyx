@@ -24,6 +24,8 @@
 #include "frontends/font_metrics.h"
 #include "frontends/Painter.h"
 
+
+using std::string;
 using std::max;
 using std::auto_ptr;
 using std::ostream;

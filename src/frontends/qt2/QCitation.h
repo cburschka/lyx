@@ -46,12 +46,12 @@ private:
 	/// set the styles combo
 	void updateStyle();
 
-	void updateBrowser(QListBox *, std::vector<string> const &) const;
+	void updateBrowser(QListBox *, std::vector<std::string> const &) const;
 
 	/// selected keys
-	std::vector<string> citekeys;
+	std::vector<std::string> citekeys;
 	/// available bib keys
-	std::vector<string> bibkeys;
+	std::vector<std::string> bibkeys;
 };
 
 #endif // QCITATION_H

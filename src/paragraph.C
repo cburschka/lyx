@@ -46,7 +46,7 @@ using lyx::support::contains;
 using lyx::support::subst;
 
 using std::endl;
-
+using std::string;
 using std::ostream;
 using std::ostringstream;
 

@@ -43,7 +43,7 @@ public:
 	virtual std::auto_ptr<InsetBase> clone() const;
 	///
 	InsetERT(BufferParams const &,
-		 Language const *, string const & contents, bool collapsed);
+		 Language const *, std::string const & contents, bool collapsed);
 	///
 	~InsetERT();
 	///
@@ -53,7 +53,7 @@ public:
 	///
 	void write(Buffer const & buf, std::ostream & os) const;
 	///
-	string const editMessage() const;
+	std::string const editMessage() const;
 	///
 	bool insertInset(BufferView *, InsetOld *);
 	///
@@ -125,7 +125,7 @@ private:
 	///
 	void init();
 	///
-	string const get_new_label() const;
+	std::string const get_new_label() const;
 	///
 	void setButtonLabel() const;
 	///
@@ -147,16 +147,16 @@ public:
 	///
 	virtual InsetBase & inset() const { return inset_; }
 	///
-	virtual string const & name() const { return name_; }
+	virtual std::string const & name() const { return name_; }
 	///
-	virtual string const inset2string(Buffer const &) const;
+	virtual std::string const inset2string(Buffer const &) const;
 	///
-	static void string2params(string const &, InsetERT::ERTStatus &);
+	static void string2params(std::string const &, InsetERT::ERTStatus &);
 	///
-	static string const params2string(InsetERT::ERTStatus);
+	static std::string const params2string(InsetERT::ERTStatus);
 private:
 	///
-	static string const name_;
+	static std::string const name_;
 	///
 	InsetERT & inset_;
 };

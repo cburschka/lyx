@@ -21,6 +21,7 @@
 using lyx::support::rsplit;
 
 using std::endl;
+using std::string;
 
 
 FileDialog::FileDialog(string const &t, kb_action s, Button b1, Button b2)

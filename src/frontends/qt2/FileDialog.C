@@ -26,7 +26,7 @@ struct FileDialog::Private {
 };
 
 
-FileDialog::FileDialog(string const & t,
+FileDialog::FileDialog(std::string const & t,
 		       kb_action s, Button b1, Button b2)
 	: private_(new FileDialog::Private), title_(t), success_(s)
 {
@@ -41,11 +41,11 @@ FileDialog::~FileDialog()
 }
 
 
-FileDialog::Result const FileDialog::save(string const & path,
-					    string const & mask,
-					    string const & suggested)
+FileDialog::Result const FileDialog::save(std::string const & path,
+					    std::string const & mask,
+					    std::string const & suggested)
 {
-	string filter(mask);
+	std::string filter(mask);
 	if (mask.empty())
 		filter = _("All files (*)");
 
@@ -71,11 +71,11 @@ FileDialog::Result const FileDialog::save(string const & path,
 }
 
 
-FileDialog::Result const FileDialog::open(string const & path,
-					    string const & mask,
-					    string const & suggested)
+FileDialog::Result const FileDialog::open(std::string const & path,
+					    std::string const & mask,
+					    std::string const & suggested)
 {
-	string filter(mask);
+	std::string filter(mask);
 	if (mask.empty())
 		filter = _("All files (*)");
 
@@ -99,10 +99,10 @@ FileDialog::Result const FileDialog::open(string const & path,
 }
 
 
-FileDialog::Result const FileDialog::opendir(string const & path,
-					    string const & suggested)
+FileDialog::Result const FileDialog::opendir(std::string const & path,
+					    std::string const & suggested)
 {
-	string filter = _("Directories");
+	std::string filter = _("Directories");
 
 	LyXFileDialog dlg(path, filter, title_, private_->b1, private_->b2);
 	lyxerr[Debug::GUI] << "Select with path \"" << path

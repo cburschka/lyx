@@ -15,6 +15,8 @@
 
 using lyx::support::split;
 
+using std::string;
+
 
 /// Extract shortcut from "<identifer>|#<shortcut>" string
 string const id_sc::shortcut(string const & idsc)

@@ -31,6 +31,8 @@
 
 using lyx::support::strToInt;
 
+using std::string;
+
 
 typedef QController<ControlExternal, QView<QExternalDialog> > base_class;
 

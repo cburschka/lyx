@@ -12,13 +12,12 @@
 #ifndef FORMS_GETTEXT_H
 #define FORMS_GETTEXT_H
 
-
-#include "support/std_string.h"
+#include <string>
 
 /// Extract shortcut from "<identifer>|<shortcut>" string
-string const scex(string const &);
+std::string const scex(std::string const &);
 
 /// Extract identifier from "<identifer>|<shortcut>" string
-string const idex(string const &);
+std::string const idex(std::string const &);
 
 #endif // FORMS_GETTEXT_H

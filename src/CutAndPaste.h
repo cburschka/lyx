@@ -17,7 +17,6 @@
 #include "ParagraphList_fwd.h"
 #include "support/types.h"
 
-#include "support/std_string.h"
 #include <vector>
 
 class Buffer;
@@ -30,7 +29,7 @@ class Paragraph;
 namespace CutAndPaste {
 
 ///
-std::vector<string>
+std::vector<std::string>
 CutAndPaste::availableSelections(Buffer const & buffer);
 
 ///

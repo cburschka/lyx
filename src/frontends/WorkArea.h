@@ -20,7 +20,6 @@
 #include <boost/signals/signal1.hpp>
 #include <boost/signals/signal2.hpp>
 
-#include "support/std_string.h"
 
 class Painter;
 class FuncRequest;
@@ -61,9 +60,9 @@ public:
 	/// a selection exists
 	virtual void haveSelection(bool) const = 0;
 	/// get the X clipboard contents
-	virtual string const getClipboard() const = 0;
+	virtual std::string const getClipboard() const = 0;
 	/// fill the clipboard
-	virtual void putClipboard(string const &) const = 0;
+	virtual void putClipboard(std::string const &) const = 0;
 
 	/// work area dimensions have changed
 	boost::signal0<void> workAreaResize;

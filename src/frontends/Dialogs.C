@@ -20,6 +20,9 @@
 #include <boost/bind.hpp>
 
 
+using std::string;
+
+
 // Note that static boost signals break some compilers, so this wrapper
 // initialises the signal dynamically when it is first invoked.
 template<typename Signal>

@@ -54,6 +54,7 @@ using std::ostream;
 using std::ostringstream;
 using std::pair;
 using std::vector;
+using std::string;
 
 
 namespace {

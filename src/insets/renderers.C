@@ -27,8 +27,11 @@
 
 #include "support/filetools.h"
 
+
 using lyx::support::AbsolutePath;
 using lyx::support::OnlyFilename;
+
+using std::string;
 
 
 RenderInset::RenderInset()

@@ -13,9 +13,8 @@
 #ifndef QPARAGRAPH_H
 #define QPARAGRAPH_H
 
-
 #include "QDialogView.h"
-#include "support/std_string.h"
+
 #include <vector>
 
 class ControlParagraph;
@@ -37,7 +36,7 @@ private:
 	/// build the dialog
 	virtual void build_dialog();
 
-	std::vector<string> units_;
+	std::vector<std::string> units_;
 };
 
 #endif // QPARAGRAPH_H

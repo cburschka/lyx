@@ -15,7 +15,7 @@
 #ifndef SYSTEMCALL_H
 #define SYSTEMCALL_H
 
-#include "support/std_string.h"
+#include <string>
 
 namespace lyx {
 namespace support {
@@ -42,7 +42,7 @@ public:
 	 *  The string "what" contains a commandline with arguments separated
 	 *  by spaces.
 	 */
-	int startscript(Starttype how, string const & what);
+	int startscript(Starttype how, std::string const & what);
 };
 
 } // namespace support

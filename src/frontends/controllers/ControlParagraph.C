@@ -19,8 +19,10 @@
 #include "ParagraphParameters.h"
 #include "support/std_sstream.h"
 
+
 using std::istringstream;
 using std::ostringstream;
+using std::string;
 
 
 ControlParagraph::ControlParagraph(Dialog & parent)

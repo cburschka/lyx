@@ -37,6 +37,7 @@ using std::for_each;
 using std::make_pair;
 using std::pair;
 using std::vector;
+using std::string;
 
 
 typedef limited_stack<pair<ParagraphList, textclass_type> > CutStack;

@@ -43,7 +43,7 @@ private:
 	void getBB();
 
 	/// Store the LaTeX names for the rotation origins.
-	std::vector<string> origin_ltx;
+	std::vector<std::string> origin_ltx;
 
 };
 

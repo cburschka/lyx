@@ -14,6 +14,8 @@
 #include <gdk/gdkkeysyms.h>
 #include "GLyXKeySym.h"
 
+using std::string;
+
 
 GLyXKeySym::GLyXKeySym() : keyval_(GDK_VoidSymbol)
 {

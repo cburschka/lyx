@@ -23,7 +23,7 @@
 using lyx::support::subst;
 
 using std::make_pair;
-
+using std::string;
 using std::pair;
 
 

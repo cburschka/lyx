@@ -15,7 +15,6 @@
 
 
 #include "graphics/GraphicsTypes.h"
-#include "support/std_string.h"
 #include "lyxlength.h"
 #include "support/filename.h"
 
@@ -51,20 +50,20 @@ struct InsetGraphicsParams
 	bool noUnzip;
 
 	/// The bounding box with "xLB yLB yRT yRT ", divided by a space!
-	string bb;
+	std::string bb;
 	/// clip image
 	bool clip;
 
 	/// Rotation angle.
 	float rotateAngle;
 	/// Origin point of rotation
-	string rotateOrigin;
+	std::string rotateOrigin;
 	/// Do we have a subcaption?
 	bool subcaption;
 	/// The text of the subcaption.
-	string subcaptionText;
+	std::string subcaptionText;
 	/// any userdefined special command
-	string special;
+	std::string special;
 
 	///
 	InsetGraphicsParams();
@@ -73,9 +72,9 @@ struct InsetGraphicsParams
 	///
 	InsetGraphicsParams & operator=(InsetGraphicsParams const &);
 	/// Save the parameters in the LyX format stream.
-	void Write(std::ostream & os, string const & bufpath) const;
+	void Write(std::ostream & os, std::string const & bufpath) const;
 	/// If the token belongs to our parameters, read it.
-	bool Read(LyXLex & lex, string const & token, string const & bufpath);
+	bool Read(LyXLex & lex, std::string const & token, std::string const & bufpath);
 	/// convert
   // Only a subset of InsetGraphicsParams is needed for display purposes.
   // This function also interrogates lyxrc to ascertain whether

@@ -16,8 +16,6 @@
 #ifndef FORKEDCONTR_H
 #define FORKEDCONTR_H
 
-#include "support/std_string.h"
-
 #include <boost/signals/signal0.hpp>
 #include <boost/signals/trackable.hpp>
 
@@ -59,7 +57,7 @@ public:
 	std::vector<pid_t> const getPIDs() const;
 
 	/// Get the command string of the process.
-	string const getCommand(pid_t) const;
+	std::string const getCommand(pid_t) const;
 
 	/** Kill this process prematurely and remove it from the list.
 	 *  The process is killed within tolerance secs.

@@ -31,6 +31,8 @@
 using lyx::support::getStringFromVector;
 using lyx::support::strToInt;
 
+using std::string;
+
 
 typedef FormController<ControlExternal, FormView<FD_external> > base_class;
 

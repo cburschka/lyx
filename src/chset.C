@@ -34,7 +34,7 @@ using std::make_pair;
 
 using std::ifstream;
 using std::pair;
-
+using std::string;
 
 
 bool CharacterSet::loadFile(string const & fname)

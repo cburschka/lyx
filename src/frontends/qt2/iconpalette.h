@@ -14,7 +14,7 @@
 
 
 #include <qwidget.h>
-#include "support/std_string.h"
+
 #include <utility>
 #include <vector>
 
@@ -31,9 +31,9 @@ public:
 	IconPalette(QWidget * parent, char const * name = 0);
 
 	/// add a button
-	void add(QPixmap const & pixmap, string name, string tooltip);
+	void add(QPixmap const & pixmap, std::string name, std::string tooltip);
 signals:
-	void button_clicked(const string &);
+	void button_clicked(const std::string &);
 protected:
 	virtual void resizeEvent(QResizeEvent * e);
 protected slots:
@@ -43,7 +43,7 @@ private:
 
 	QGridLayout * layout_;
 
-	typedef std::pair<QPushButton *, string> Button;
+	typedef std::pair<QPushButton *, std::string> Button;
 
 	std::vector<Button> buttons_;
 };

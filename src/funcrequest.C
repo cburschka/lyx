@@ -22,6 +22,7 @@ using std::getline;
 
 using std::istringstream;
 using std::vector;
+using std::string;
 
 
 FuncRequest::FuncRequest()

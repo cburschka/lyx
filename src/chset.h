@@ -15,8 +15,8 @@
 
 #include <map>
 #include <utility>
+#include <string>
 
-#include "support/std_string.h"
 
 /// a class for mapping char strings such as "\^{A}" to the integer value
 class CharacterSet {
@@ -29,21 +29,21 @@ public:
 	 * and parses it. This function is only intended to be
 	 * called once.
 	 */
-	bool loadFile(string const & charset);
+	bool loadFile(std::string const & charset);
 	/// return the name of the current charset
-	string const & getName() const;
+	std::string const & getName() const;
 	/**
 	 * Return the encoded charset value of the given string.
 	 *
 	 * The bool value is false if an encoding could not be found
 	 * in this charset, and true otherwise.
 	 */
-	std::pair<bool, int> const encodeString(string const &) const;
+	std::pair<bool, int> const encodeString(std::string const &) const;
 private:
 	/// charset name
-	string name_;
+	std::string name_;
 	///
-	typedef std::map<string, unsigned char> Cdef;
+	typedef std::map<std::string, unsigned char> Cdef;
 	/// mapping from string representation to encoded value
 	Cdef map_;
 };

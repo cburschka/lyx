@@ -16,6 +16,7 @@
 #include "BufferView.h"
 #include "LColor.h"
 
+using std::string;
 
 
 MetricsBase::MetricsBase()
@@ -184,5 +185,3 @@ ColorChanger::~ColorChanger()
 {
 	orig_.setColor(lcolor.getFromGUIName(save_));
 }
-
-

@@ -46,7 +46,7 @@ using lyx::support::bformat;
 using lyx::support::subst;
 
 using std::endl;
-
+using std::string;
 using std::istringstream;
 using std::ostream;
 

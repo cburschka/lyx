@@ -23,7 +23,7 @@ class xformsBC : public GuiBC<FL_OBJECT, FL_OBJECT> {
 public:
 	///
 	xformsBC(ButtonController const &,
-		 string const & = _("Cancel"), string const & = _("Close"));
+		 std::string const & = _("Cancel"), std::string const & = _("Close"));
 
 private:
 	/// Updates the button sensitivity (enabled/disabled)
@@ -33,7 +33,7 @@ private:
 	void setWidgetEnabled(FL_OBJECT *, bool enabled) const;
 
 	/// Set the label on the button
-	void setButtonLabel(FL_OBJECT *, string const & label) const;
+	void setButtonLabel(FL_OBJECT *, std::string const & label) const;
 };
 
 #endif // XFORMSBC_H

@@ -16,6 +16,8 @@
 #include "metricsinfo.h"
 #include "toc.h"
 
+
+using std::string;
 using std::ostream;
 
 

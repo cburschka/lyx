@@ -16,8 +16,6 @@
 
 #include <boost/utility.hpp>
 
-#include "support/std_string.h"
-
 #include <vector>
 
 class LyXTextClass;
@@ -40,7 +38,7 @@ public:
 
 	/// Gets textclass number from name, -1 if textclass name does not exist
 	std::pair<bool, lyx::textclass_type> const
-	NumberOfClass(string const & textclass) const;
+	NumberOfClass(std::string const & textclass) const;
 
 	///
 	LyXTextClass const & operator[](lyx::textclass_type textclass) const;

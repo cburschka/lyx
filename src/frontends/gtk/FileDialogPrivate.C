@@ -11,9 +11,9 @@
 #include <config.h>
 #include <gtkmm.h>
 
-#include "support/std_string.h"
-
 #include "FileDialogPrivate.h"
+
+using std::string;
 
 
 FileDialog::Private::Private(string const & title,

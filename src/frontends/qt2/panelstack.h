@@ -11,8 +11,6 @@
 #ifndef PANELSTACK_H
 #define PANELSTACK_H
 
-#include "support/std_string.h"
-
 #include <qwidget.h>
 
 #include <map>
@@ -28,20 +26,20 @@ public:
 	PanelStack(QWidget * parent = 0, const char * name = "panelstack");
 
 	/// add a category with no associated panel
-	void addCategory(string const & name, string const & parent = string());
+	void addCategory(std::string const & name, std::string const & parent = std::string());
 
 	/// add a widget panel with a given name, under the given parent
-	void addPanel(QWidget * panel, string const & name, string const & parent = string());
+	void addPanel(QWidget * panel, std::string const & name, std::string const & parent = std::string());
 
 	/// set current panel by logical name
-	void setCurrentPanel(string const &);
+	void setCurrentPanel(std::string const &);
 
 public slots:
 	/// set current panel from an item
 	void switchPanel(QListViewItem * i);
 
 private:
-	typedef std::map<string, QListViewItem *> PanelMap;
+	typedef std::map<std::string, QListViewItem *> PanelMap;
 
 	PanelMap panel_map_;
 

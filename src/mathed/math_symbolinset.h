@@ -27,7 +27,7 @@ public:
 	///
 	explicit MathSymbolInset(char const * name);
 	///
-	explicit MathSymbolInset(string const & name);
+	explicit MathSymbolInset(std::string const & name);
 	///
 	virtual std::auto_ptr<InsetBase> clone() const;
 	///
@@ -43,7 +43,7 @@ public:
 	/// identifies SymbolInset as such
 	MathSymbolInset const * asSymbolInset() const { return this; }
 	/// the LaTeX name of the symbol (without the backslash)
-	string name() const;
+	std::string name() const;
 	///
 	bool match(MathAtom const &) const;
 	/// request "external features"

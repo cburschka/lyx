@@ -23,7 +23,6 @@
 #include "support/copied_ptr.h"
 #include "support/types.h"
 
-#include "support/std_string.h"
 #include <vector>
 
 
@@ -57,7 +56,7 @@ public:
 	~BufferParams();
 
 	/// read a header token, if unrecognised, return it or an unknown class name
-	string const readToken(LyXLex & lex, string const & token);
+	std::string const readToken(LyXLex & lex, std::string const & token);
 
 	///
 	void writeFile(std::ostream &) const;
@@ -92,7 +91,7 @@ public:
 	///
 	InsetQuotes::quote_times quotes_times;
 	///
-	string fontsize;
+	std::string fontsize;
 	///
 	lyx::textclass_type textclass;
 	///
@@ -110,29 +109,29 @@ public:
 	///
 	bool use_geometry;
 	///
-	string paperwidth;
+	std::string paperwidth;
 	///
-	string paperheight;
+	std::string paperheight;
 	///
-	string leftmargin;
+	std::string leftmargin;
 	///
-	string topmargin;
+	std::string topmargin;
 	///
-	string rightmargin;
+	std::string rightmargin;
 	///
-	string bottommargin;
+	std::string bottommargin;
 	///
-	string headheight;
+	std::string headheight;
 	///
-	string headsep;
+	std::string headsep;
 	///
-	string footskip;
+	std::string footskip;
 
 	/* some LaTeX options */
 	/// The graphics driver
-	string graphicsDriver;
+	std::string graphicsDriver;
 	///
-	string fonts;
+	std::string fonts;
 	///
 	Spacing & spacing();
 	Spacing const & spacing() const;
@@ -146,19 +145,19 @@ public:
 	BranchList & branchlist();
 	BranchList const & branchlist() const;
 	///
-	string inputenc;
+	std::string inputenc;
 	///
-	string preamble;
+	std::string preamble;
 	///
-	string options;
+	std::string options;
 	///
-	string float_placement;
+	std::string float_placement;
 	///
 	unsigned int columns;
 	///
 	LyXTextClass::PageSides sides;
 	///
-	string pagestyle;
+	std::string pagestyle;
 	/// \param index should lie in the range 0 <= \c index <= 3.
 	Bullet & temp_bullet(lyx::size_type index);
 	Bullet const & temp_bullet(lyx::size_type index) const;
@@ -186,7 +185,7 @@ public:
 	/// revision tracking for this buffer ?
 	bool tracking_changes;
 	/// Time ago we agreed that this was a buffer property [ale990407]
-	string parentname;
+	std::string parentname;
 	///
 	bool compressed;
 
@@ -197,9 +196,9 @@ public:
 	/// map of the file's author IDs to buffer author IDs
 	std::vector<int> author_map;
 	///
-	string const dvips_options() const;
+	std::string const dvips_options() const;
 	///
-	string const paperSizeName() const;
+	std::string const paperSizeName() const;
 
 private:
 	/** Use the Pimpl idiom to hide those member variables that would otherwise

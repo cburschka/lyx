@@ -30,7 +30,7 @@ using lyx::support::subst;
 
 using std::endl;
 using std::for_each;
-
+using std::string;
 using std::vector;
 
 

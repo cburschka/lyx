@@ -19,7 +19,6 @@
 
 #include "support/types.h"
 
-#include "support/std_string.h"
 #include <iosfwd>
 
 class BufferView;
@@ -90,13 +89,13 @@ public:
 	///
 	void appendix(bool);
 	///
-	string const & labelString() const;
+	std::string const & labelString() const;
 	///
-	void labelString(string const &);
+	void labelString(std::string const &);
 	///
-	string const & labelWidthString() const;
+	std::string const & labelWidthString() const;
 	///
-	void labelWidthString(string const &);
+	void labelWidthString(std::string const &);
 	///
 	LyXLength const & leftIndent() const;
 	///
@@ -122,12 +121,12 @@ private:
     The function also generates some additional info needed by the
     Paragraph dialog.
  */
-void params2string(Paragraph const & par, string & data);
+void params2string(Paragraph const & par, std::string & data);
 
 /** Given \param data, an encoding of the ParagraphParameters generated
     in the Paragraph dialog, this function sets the current paragraph
     appropriately.
  */
-void setParagraphParams(BufferView & bv, string const & data);
+void setParagraphParams(BufferView & bv, std::string const & data);
 
 #endif

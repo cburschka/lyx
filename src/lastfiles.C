@@ -25,7 +25,7 @@ using std::copy;
 using std::endl;
 using std::find;
 using std::getline;
-
+using std::string;
 using std::ifstream;
 using std::ofstream;
 using std::ostream_iterator;

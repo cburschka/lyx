@@ -23,6 +23,7 @@
 
 using std::max;
 using std::vector;
+using std::string;
 
 
 extern  "C" void C_FormDialogView_CancelCB(FL_OBJECT *, long);

@@ -40,7 +40,7 @@ using lyx::support::trim;
 
 using std::bind2nd;
 using std::remove_if;
-
+using std::string;
 using std::vector;
 
 

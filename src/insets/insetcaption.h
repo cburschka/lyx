@@ -30,7 +30,7 @@ public:
 	///
 	virtual InsetOld::Code lyxCode() const;
 	///
-	virtual string const editMessage() const;
+	virtual std::string const editMessage() const;
 	///
 	virtual void draw(PainterInfo & pi, int x, int y) const;
 	///

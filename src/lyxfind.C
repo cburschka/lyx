@@ -29,6 +29,8 @@
 using lyx::support::lowercase;
 using lyx::support::uppercase;
 
+using std::string;
+
 
 namespace lyx {
 namespace find {

@@ -11,8 +11,6 @@
 #ifndef MESSAGES_H
 #define MESSAGES_H
 
-#include "support/std_string.h"
-
 #include <boost/scoped_ptr.hpp>
 
 ///
@@ -21,11 +19,11 @@ public:
 	///
 	Messages();
 	///
-	Messages(string const & l);
+	Messages(std::string const & l);
 	///
 	~Messages();
 	///
-	string const get(string const & msg) const;
+	std::string const get(std::string const & msg) const;
 private:
 	class Pimpl;
 	boost::scoped_ptr<Pimpl> pimpl_;

@@ -23,6 +23,8 @@
 #include <qpushbutton.h>
 #include <qlineedit.h>
 
+using std::string;
+
 typedef QController<ControlCommand, QView<QURLDialog> > base_class;
 
 QURL::QURL(Dialog & parent)

@@ -13,14 +13,13 @@
 #define MATH_XARROWINSET_H
 
 #include "math_fracbase.h"
-#include "support/std_string.h"
 
 
 /// Wide arrows like \xrightarrow
 class MathXArrowInset : public MathFracbaseInset {
 public:
 	///
-	explicit MathXArrowInset(string const & name);
+	explicit MathXArrowInset(std::string const & name);
 	///
 	virtual std::auto_ptr<InsetBase> clone() const;
 	///
@@ -36,6 +35,6 @@ private:
 	///
 	bool upper() const;
 	///
-	string const name_;
+	std::string const name_;
 };
 #endif

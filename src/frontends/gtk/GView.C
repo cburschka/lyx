@@ -23,6 +23,9 @@
 #include "lyxfunc.h"
 #include <boost/bind.hpp>
 
+using std::string;
+
+
 BufferView * current_view;
 
 GView * GView::view_ = 0;

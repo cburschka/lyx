@@ -24,7 +24,7 @@ public:
 
 	//@{
 	/// Instantiate Dialog::Controller methods.
-	virtual bool initialiseParams(string const &) { return true; }
+	virtual bool initialiseParams(std::string const &) { return true; }
 	virtual void clearParams() {}
 	virtual void dispatchParams() {}
 	virtual bool isBufferDependent() const { return false; }
@@ -33,10 +33,10 @@ public:
 	//@{
 	/// Provide the View with specific pieces of information.
 	void getCredits(std::ostream &) const;
-	string const getCopyright() const;
-	string const getLicense() const;
-	string const getDisclaimer() const;
-	string const getVersion() const;
+	std::string const getCopyright() const;
+	std::string const getLicense() const;
+	std::string const getDisclaimer() const;
+	std::string const getVersion() const;
 	//@}
 };
 

@@ -33,7 +33,7 @@ class FormBase : public ViewBase
 {
 public:
 	///
-	FormBase(string const &, bool allowResize);
+	FormBase(std::string const &, bool allowResize);
 	///
 	virtual ~FormBase();
 
@@ -80,7 +80,7 @@ protected:
 	/** Send the warning message from the daughter class to the
 	    message_widget direct. The message will persist till the mouse
 	    movesto a new object. */
-	void postWarning(string const & warning);
+	void postWarning(std::string const & warning);
 	/// Reset the message_widget_
 	void clearMessage();
 
@@ -105,11 +105,11 @@ private:
 
 	/** Get the feedback message for ob.
 	    Called if warning_posted_ == false. */
-	virtual string const getFeedback(FL_OBJECT * /* ob */)
-		{ return string(); }
+	virtual std::string const getFeedback(FL_OBJECT * /* ob */)
+		{ return std::string(); }
 
 	/// Post the feedback message for ob to message_widget_
-	void postMessage(string const & message);
+	void postMessage(std::string const & message);
 
 	/** Variable used to decide whether to remove the existing feedback
 	    message or not (if it is in fact a warning) */
@@ -137,7 +137,7 @@ class FormDB: public FormBase
 {
 protected:
 	///
-	FormDB(string const &, bool allowResize=true);
+	FormDB(std::string const &, bool allowResize=true);
 	/// Pointer to the actual instantiation of xform's form
 	virtual FL_FORM * form() const;
 	/// Real GUI implementation.
@@ -146,7 +146,7 @@ protected:
 
 
 template <class Dialog>
-FormDB<Dialog>::FormDB(string const & t, bool allowResize)
+FormDB<Dialog>::FormDB(std::string const & t, bool allowResize)
 	: FormBase(t, allowResize)
 {}
 
@@ -169,12 +169,12 @@ public:
 
 protected:
 	///
-	FormCB(string const &, bool allowResize = true);
+	FormCB(std::string const &, bool allowResize = true);
 };
 
 
 template <class Controller, class Base>
-FormCB<Controller, Base>::FormCB(string const & t, bool allowResize)
+FormCB<Controller, Base>::FormCB(std::string const & t, bool allowResize)
 	: Base(t, allowResize)
 {}
 

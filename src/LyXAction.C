@@ -26,7 +26,7 @@ using lyx::support::split;
 using lyx::support::trim;
 
 using std::endl;
-
+using std::string;
 using std::ostream;
 
 

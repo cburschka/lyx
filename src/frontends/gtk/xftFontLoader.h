@@ -13,7 +13,7 @@
 #define XFT_FONT_LOADER_H
 
 #include "lyxfont.h"
-#include "support/std_string.h"
+
 #include <X11/Xft/Xft.h>
 
 class GWorkArea;
@@ -61,7 +61,7 @@ private:
 				    LyXFont::FONT_SERIES series,
 				    LyXFont::FONT_SHAPE shape,
 				    LyXFont::FONT_SIZE size);
-	string familyString(LyXFont::FONT_FAMILY family);
+	std::string familyString(LyXFont::FONT_FAMILY family);
 	/// Reset font handler
 	void reset();
 

@@ -32,7 +32,7 @@ public:
 	/// code of the inset
 	InsetOld::Code lyxCode() const { return InsetOld::OPTARG_CODE; }
 	/// return an message upon editing
-	string const editMessage() const;
+	std::string const editMessage() const;
 
 	/// Standard LaTeX output -- short-circuited
 	int latex(Buffer const &, std::ostream &,

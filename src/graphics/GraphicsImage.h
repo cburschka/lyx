@@ -24,8 +24,6 @@
 #ifndef GRAPHICSIMAGE_H
 #define GRAPHICSIMAGE_H
 
-#include "support/std_string.h"
-
 #include <boost/shared_ptr.hpp>
 #include <boost/function/function0.hpp>
 #include <boost/signals/signal1.hpp>
@@ -48,7 +46,7 @@ public:
 	static boost::function0<ImagePtr> newImage;
 
 	/// Return the list of loadable formats.
-	typedef std::vector<string> FormatList;
+	typedef std::vector<std::string> FormatList;
 	///
 	static boost::function0<FormatList> loadableFormats;
 
@@ -78,7 +76,7 @@ public:
 	 *  The caller should expect this process to be asynchronous and
 	 *  so should connect to the "finished" signal above.
 	 */
-	void load(string const & filename);
+	void load(std::string const & filename);
 
 	/** Generate the pixmap.
 	 *  Uses the params to decide on color, grayscale etc.
@@ -124,7 +122,7 @@ private:
 	 *  The caller should expect this process to be asynchronous and
 	 *  so should connect to the "finished" signal above.
 	 */
-	virtual void load_impl(string const & filename) = 0;
+	virtual void load_impl(std::string const & filename) = 0;
 
 	/** Generate the pixmap.
 	 *  Uses the params to decide on color, grayscale etc.
@@ -172,7 +170,7 @@ bool Image::isDrawable() const
 
 
 inline
-void Image::load(string const & filename)
+void Image::load(std::string const & filename)
 {
 	return load_impl(filename);
 }

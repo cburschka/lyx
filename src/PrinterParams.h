@@ -33,9 +33,9 @@ struct PrinterParams {
 	///
 	Target target;
 	///
-	string printer_name;
+	std::string printer_name;
 	///
-	string file_name;
+	std::string file_name;
 	///
 	bool all_pages;
 	/** Print a page range. Both from_page and to_page used to be strings
@@ -76,8 +76,8 @@ struct PrinterParams {
 	void testInvariant() const;
 	///
 	PrinterParams(Target t = PRINTER,
-		      string const & pname = lyxrc.printer,
-		      string const & fname = string(),
+		      std::string const & pname = lyxrc.printer,
+		      std::string const & fname = std::string(),
 		      bool all = true,
 		      unsigned int from = 1,
 		      unsigned int to = 0,

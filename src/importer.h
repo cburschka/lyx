@@ -15,7 +15,7 @@
 #define IMPORTER_H
 
 #include <vector>
-#include "support/std_string.h"
+
 
 class LyXView;
 class Format;
@@ -24,8 +24,8 @@ class Importer {
 public:
 	///
 	static
-	bool Import(LyXView * lv, string const & filename,
-		    string const & format);
+	bool Import(LyXView * lv, std::string const & filename,
+		    std::string const & format);
 
 	///
 	static
@@ -33,6 +33,6 @@ public:
 private:
 	///
 	static
-	std::vector<string> const Loaders();
+	std::vector<std::string> const Loaders();
 };
 #endif

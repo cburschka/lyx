@@ -49,6 +49,7 @@ using std::exit;
 
 using std::map;
 using std::vector;
+using std::string;
 
 
 extern BufferList bufferlist;

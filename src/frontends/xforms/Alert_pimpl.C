@@ -22,8 +22,10 @@
 
 #include "lyx_forms.h"
 
+
 using std::make_pair;
 using std::pair;
+using std::string;
 
 
 void warning_pimpl(string const &, string const & message)

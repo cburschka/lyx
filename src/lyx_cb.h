@@ -12,7 +12,7 @@
 #ifndef LYX_CB_H
 #define LYX_CB_H
 
-#include "support/std_string.h"
+#include <string>
 
 class Buffer;
 class BufferView;
@@ -23,19 +23,19 @@ extern bool quitting;
 ///
 bool MenuWrite(Buffer * buffer);
 /// write the given file, or ask if no name given
-bool WriteAs(Buffer * buffer, string const & filename = string());
+bool WriteAs(Buffer * buffer, std::string const & filename = std::string());
 ///
 void QuitLyX();
 ///
 void AutoSave(BufferView * bv);
 ///
-void NewFile(BufferView * bv, string const & filename);
+void NewFile(BufferView * bv, std::string const & filename);
 ///
-void InsertAsciiFile(BufferView * bv, string const & f, bool asParagraph);
+void InsertAsciiFile(BufferView * bv, std::string const & f, bool asParagraph);
 ///
-string getContentsOfAsciiFile(BufferView * bv, string const & f, bool asParagraph);
+std::string getContentsOfAsciiFile(BufferView * bv, std::string const & f, bool asParagraph);
 ///
-string const getPossibleLabel(BufferView const & bv);
+std::string const getPossibleLabel(BufferView const & bv);
 ///
 void Reconfigure(BufferView * bv);
 #endif

@@ -42,6 +42,9 @@ template class boost::detail::crc_table_t<32, 0x04C11DB7, true>;
 #include <sys/mman.h>
 
 
+using std::string;
+
+
 unsigned long lyx::support::sum(string const & file)
 {
 	lyxerr[Debug::FILES] << "lyx::sum() using mmap (lightning fast)"

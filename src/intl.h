@@ -17,8 +17,6 @@
 
 #include "trans_mgr.h"
 
-#include "support/std_string.h"
-
 
 /**
  * This class is used for managing keymaps
@@ -59,9 +57,9 @@ private:
 	/// is key mapping enabled ?
 	bool keymapon;
 	/// the primary language keymap
-	string & prim_lang;
+	std::string & prim_lang;
 	/// the secondary language keymap
-	string & sec_lang;
+	std::string & sec_lang;
 	/// the translation manager
 	TransManager trans;
 };

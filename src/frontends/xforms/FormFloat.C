@@ -28,6 +28,8 @@
 
 using lyx::support::contains;
 
+using std::string;
+
 
 namespace {
 

@@ -15,7 +15,7 @@
 #define QLMENUBAR_H
 
 #include "frontends/Menubar.h"
-#include "support/std_string.h"
+
 #include <map>
 
 class LyXView;
@@ -28,7 +28,7 @@ public:
 	QLMenubar(LyXView *, MenuBackend const &);
 
 	/// opens a top-level submenu given its name
-	void openByName(string const &);
+	void openByName(std::string const &);
 
 	/// update the state of the menuitems - not needed
 	void update();
@@ -45,7 +45,7 @@ private:
 	/// menu controller
 	MenuBackend const & menubackend_;
 
-	typedef std::map<string, QLPopupMenu *> NameMap;
+	typedef std::map<std::string, QLPopupMenu *> NameMap;
 
 	/// name to menu for openByName
 	NameMap name_map_;

@@ -19,6 +19,9 @@
 #include "lyx_forms.h"
 
 
+using std::string;
+
+
 FormLog::FormLog(Dialog & parent)
 	: FormController<ControlLog, FormBrowser>(parent, _("LaTeX Log"))
 {}

@@ -13,13 +13,12 @@
 #define MATH_SPLITINSET_H
 
 #include "math_gridinset.h"
-#include "support/std_string.h"
 
 
 class MathSplitInset : public MathGridInset {
 public:
 	///
-	explicit MathSplitInset(string const & name);
+	explicit MathSplitInset(std::string const & name);
 	///
 	virtual std::auto_ptr<InsetBase> clone() const;
 	///
@@ -30,7 +29,7 @@ public:
 	char defaultColAlign(col_type);
 private:
 	///
-	string name_;
+	std::string name_;
 };
 
 #endif

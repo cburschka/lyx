@@ -13,7 +13,6 @@
 #define INSET_LATEX_ACCENT_H
 
 #include "inset.h"
-#include "support/std_string.h"
 
 class Dimension;
 
@@ -32,7 +31,7 @@ public:
 	InsetLatexAccent();
 	///
 	explicit
-	InsetLatexAccent(string const & string);
+	InsetLatexAccent(std::string const & str);
 	///
 	void metrics(MetricsInfo &, Dimension &) const;
 	///
@@ -117,7 +116,7 @@ private:
 	/// Check if we know the modifier and can display it ok on screen.
 	void checkContents();
 	///
-	string contents;
+	std::string contents;
 	/// can display as proper char
 	bool  candisp;
 	/// modifier type

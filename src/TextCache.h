@@ -12,8 +12,6 @@
 #ifndef TEXT_CACHE_H
 #define TEXT_CACHE_H
 
-#include "support/std_string.h"
-
 #include <iosfwd>
 #include <map>
 
@@ -117,7 +115,7 @@ public:
 	LyXText * findFit(Buffer * b, int p);
 	/** Lists all the LyXText's currently in the cache.
 	    Uses msg as header for the list. */
-	void show(std::ostream & o, string const & msg);
+	void show(std::ostream & o, std::string const & msg);
 	/// Gives info on a single LyXText (buffer and width)
 	static void show(std::ostream & o, value_type const &);
 	/** Adds a LyXText to the cache iff its buffer is

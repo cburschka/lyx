@@ -36,14 +36,14 @@ public:
 	///
 	void write(WriteStream & os) const;
 	///
-	void setWidth(string const & width);
+	void setWidth(std::string const & width);
 	///
-	void setPosition(string const & pos);
+	void setPosition(std::string const & pos);
 private:
 	/// width on screen
 	int lyx_width_;
 	/// width for TeX
-	string tex_width_;
+	std::string tex_width_;
 	/// one of htb
 	char position_;
 };

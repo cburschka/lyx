@@ -32,6 +32,7 @@ using std::setw;
 
 using std::istringstream;
 using std::ostringstream;
+using std::string;
 
 
 namespace {

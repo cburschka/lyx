@@ -15,6 +15,8 @@
 #include "ControlButtons.h"
 #include "support/filetools.h"
 
+using std::string;
+
 
 GViewBase::GViewBase(Dialog & parent, string const & t, bool allowResize) :
 	Dialog::View(parent, t), allowResize_(allowResize)

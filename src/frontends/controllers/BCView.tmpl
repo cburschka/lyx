@@ -21,7 +21,7 @@
 
 template <class Button, class Widget>
 GuiBC<Button, Widget>::GuiBC(ButtonController const & parent,
-			     string const & cancel, string const & close)
+			     std::string const & cancel, std::string const & close)
 	: BCView(parent),
 	  cancel_label_(cancel), close_label_(close),
 	  okay_(0), apply_(0), cancel_(0), restore_(0)

@@ -12,9 +12,8 @@
 #ifndef QMATHDIALOG_H
 #define QMATHDIALOG_H
 
-
 #include "ui/QMathDialogBase.h"
-#include "support/std_string.h"
+
 
 class QMath;
 class IconPalette;
@@ -33,7 +32,7 @@ public slots:
 	virtual void subscriptClicked();
 	virtual void superscriptClicked();
 	virtual void equationClicked();
-	void symbol_clicked(const string &);
+	void symbol_clicked(const std::string &);
 	void insertSpace(int id);
 	void insertRoot(int id);
 	void insertStyle(int id);

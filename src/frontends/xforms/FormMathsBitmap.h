@@ -53,7 +53,7 @@ class FormMathsBitmap
 	: public FormController<ControlMath, FormView<FD_maths_bitmap> > {
 public:
 	///
-	FormMathsBitmap(Dialog &, string const &, std::vector<string> const &);
+	FormMathsBitmap(Dialog &, std::string const &, std::vector<std::string> const &);
 	///
 	void addBitmap(BitmapStore const &);
 
@@ -74,9 +74,9 @@ private:
 	FL_OBJECT * buildBitmap(BitmapStore const & bmstore);
 
 	/// The latex names associated with each symbol
-	std::vector<string> latex_;
+	std::vector<std::string> latex_;
 	/// The latex name chosen
-	string latex_chosen_;
+	std::string latex_chosen_;
 
 	/** Temporary store for bitmap data passed to addBitmap()
 	 *  but before the FL_OBJECT is created in build().

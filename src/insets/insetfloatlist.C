@@ -29,7 +29,7 @@
 using lyx::support::bformat;
 
 using std::endl;
-
+using std::string;
 using std::ostream;
 
 

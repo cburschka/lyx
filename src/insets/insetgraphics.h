@@ -88,20 +88,20 @@ private:
 	void statusChanged();
 
 	/// Read the inset native format
-	void readInsetGraphics(LyXLex & lex, string const & bufpath);
+	void readInsetGraphics(LyXLex & lex, std::string const & bufpath);
 
 	/// Get the status message, depends on the image loading status.
-	string const statusMessage() const;
+	std::string const statusMessage() const;
 	/// Create the options for the latex command.
-	string const createLatexOptions() const;
+	std::string const createLatexOptions() const;
 	/// Convert the file if needed, and return the location of the file.
-	string const prepareFile(Buffer const & buf, LatexRunParams const &) const;
+	std::string const prepareFile(Buffer const & buf, LatexRunParams const &) const;
 
 	///
 	InsetGraphicsParams params_;
 
 	/// holds the entity name that defines the graphics location (SGML).
-	string const graphic_label;
+	std::string const graphic_label;
 
 	/// The thing that actually draws the image on LyX's screen.
 	boost::scoped_ptr<GraphicRenderer> const graphic_;
@@ -117,19 +117,19 @@ public:
 	///
 	virtual InsetBase & inset() const { return inset_; }
 	///
-	virtual string const & name() const { return name_; }
+	virtual std::string const & name() const { return name_; }
 	///
-	virtual string const inset2string(Buffer const &) const;
+	virtual std::string const inset2string(Buffer const &) const;
 	///
-	static void string2params(string const & data,
+	static void string2params(std::string const & data,
 				  Buffer const & buffer,
 				  InsetGraphicsParams &);
 	///
-	static string const params2string(InsetGraphicsParams const &,
+	static std::string const params2string(InsetGraphicsParams const &,
 					  Buffer const &);
 private:
 	///
-	static string const name_;
+	static std::string const name_;
 	///
 	InsetGraphics & inset_;
 };

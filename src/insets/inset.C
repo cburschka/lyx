@@ -21,6 +21,9 @@
 #include "LColor.h"
 
 
+using std::string;
+
+
 // Initialization of the counter for the inset id's,
 unsigned int InsetOld::inset_id = 0;
 
@@ -172,4 +175,3 @@ bool isHighlyEditableInset(InsetOld const * i)
 {
 	return i && i->editable() == InsetOld::HIGHLY_EDITABLE;
 }
-

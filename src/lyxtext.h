@@ -101,9 +101,9 @@ public:
 	setLayout(LyXCursor & actual_cursor,
 		  LyXCursor & selection_start,
 		  LyXCursor & selection_end,
-		  string const & layout);
+		  std::string const & layout);
 	///
-	void setLayout(string const & layout);
+	void setLayout(std::string const & layout);
 
 	/**
 	 * Increase or decrease the nesting depth of the selected paragraph(s)
@@ -138,7 +138,7 @@ public:
 	void toggleFree(LyXFont const &, bool toggleall = false);
 
 	///
-	string getStringToIndex();
+	std::string getStringToIndex();
 
 	/** insert a character, moves all the following breaks in the
 	  same Paragraph one to the right and make a little rebreak
@@ -320,7 +320,7 @@ public:
 			  VSpace const & space_bottom,
 			  Spacing const & spacing,
 			  LyXAlignment align,
-			  string const & labelwidthstring,
+			  std::string const & labelwidthstring,
 			  bool noindent);
 
 	/* these things are for search and replace */
@@ -334,16 +334,16 @@ public:
 	/** simple replacing. The font of the first selected character
 	  is used
 	  */
-	void replaceSelectionWithString(string const & str);
+	void replaceSelectionWithString(std::string const & str);
 
 	/// needed to insert the selection
-	void insertStringAsLines(string const & str);
+	void insertStringAsLines(std::string const & str);
 	/// needed to insert the selection
-	void insertStringAsParagraphs(string const & str);
+	void insertStringAsParagraphs(std::string const & str);
 
 	/// Find next inset of some specified type.
 	bool gotoNextInset(std::vector<InsetOld::Code> const & codes,
-			   string const & contents = string());
+			   std::string const & contents = std::string());
 	///
 	void gotoInset(std::vector<InsetOld::Code> const & codes,
 		       bool same_content);

@@ -44,7 +44,7 @@ public:
 	///
 	virtual InsetOld::Code lyxCode() const;
 	/// what appears in the minibuffer when opening
-	virtual string const editMessage() const;
+	virtual std::string const editMessage() const;
 	///
 	virtual void fitInsetCursor(BufferView *) const;
 	/// FIXME
@@ -70,10 +70,10 @@ public:
 	BufferView * view() const;
 
 	///
-	virtual bool searchForward(BufferView *, string const &,
+	virtual bool searchForward(BufferView *, std::string const &,
 				   bool = true, bool = false);
 	///
-	virtual bool searchBackward(BufferView *, string const &,
+	virtual bool searchBackward(BufferView *, std::string const &,
 				    bool = true, bool = false);
 	///
 	virtual bool isTextInset() const { return true; }
@@ -85,14 +85,14 @@ public:
 	virtual EDITABLE editable() const { return HIGHLY_EDITABLE; }
 	///
 	bool display() const;
-	// return the selection as string
-	string selectionAsString() const;
+	// return the selection as std::string
+	std::string selectionAsString() const;
 
 private:
 	/// unimplemented
 	void operator=(const InsetFormulaBase &);
 	/// common base for handling accents
-	void handleAccent(BufferView * bv, string const & arg, string const & name);
+	void handleAccent(BufferView * bv, std::string const & arg, std::string const & name);
 	/// lfun handler
 	dispatch_result lfunMousePress(FuncRequest const &);
 	///
@@ -107,9 +107,9 @@ protected:
 
 protected:
 	///
-	void handleFont(BufferView * bv, string const & arg, string const & font);
+	void handleFont(BufferView * bv, std::string const & arg, std::string const & font);
 	///
-	void handleFont2(BufferView * bv, string const & arg);
+	void handleFont2(BufferView * bv, std::string const & arg);
 
 	///
 	mutable int xo_;

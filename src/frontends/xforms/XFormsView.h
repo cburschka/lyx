@@ -38,7 +38,7 @@ public:
 	 * @param xpos requested y position (or 0)
 	 * @param title window title
 	 */
-	void show(int xpos, int ypos, string const & t = string("LyX"));
+	void show(int xpos, int ypos, std::string const & t = std::string("LyX"));
 
 	/// get the xforms main form
 	FL_FORM * getForm() const;
@@ -51,7 +51,7 @@ public:
 	static int atCloseMainFormCB(FL_FORM *, void *);
 
 	/// display a status message
-	virtual void message(string const & str);
+	virtual void message(std::string const & str);
 
 	/// clear back to normal status message
 	virtual void clearMessage();
@@ -62,7 +62,7 @@ private:
 	 * @param t main window title
 	 * @param it iconified (short) title
 	 */
-	virtual void setWindowTitle(string const & t, string const & it);
+	virtual void setWindowTitle(std::string const & t, std::string const & it);
 
 	/// update the minibuffer state message
 	void show_view_state();

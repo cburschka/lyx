@@ -12,7 +12,7 @@
 #ifndef VC_BACKEND_H
 #define VC_BACKEND_H
 
-#include "support/std_string.h"
+#include <string>
 
 class Buffer;
 
@@ -28,9 +28,9 @@ public:
 	virtual ~VCS() {}
 
 	/// register a file for version control
-	virtual void registrer(string const & msg) = 0;
+	virtual void registrer(std::string const & msg) = 0;
 	/// check in the current revision
-	virtual void checkIn(string const & msg) = 0;
+	virtual void checkIn(std::string const & msg) = 0;
 	/// check out for editing
 	virtual void checkOut() = 0;
 	/// revert current edits
@@ -41,15 +41,15 @@ public:
 	 * getLog - read the revision log into the given file
 	 * @param fname file name to read into
 	 */
-	virtual void getLog(string const &) = 0;
+	virtual void getLog(std::string const &) = 0;
 	/// return the current version description
-	virtual string const versionString() const = 0;
+	virtual std::string const versionString() const = 0;
 	/// return the current version
-	string const & version() const {
+	std::string const & version() const {
 		return version_;
 	}
 	/// return the user who has locked the file
-	string const & locker() const { return locker_; }
+	std::string const & locker() const { return locker_; }
 	/// set the owning buffer
 	void owner(Buffer * b) { owner_ = b; }
 	/// return the owning buffer
@@ -66,13 +66,13 @@ protected:
 	 * @param path the path from which to execute
 	 * @return exit status
 	 */
-	static int doVCCommand(string const & cmd, string const & path);
+	static int doVCCommand(std::string const & cmd, std::string const & path);
 
 	/**
 	 * The master VC file. For RCS this is *,v or RCS/ *,v. master should
 	 * have full path.
 	 */
-	string master_;
+	std::string master_;
 
 	/// The status of the VC controlled file.
 	VCStatus vcstatus;
@@ -81,10 +81,10 @@ protected:
 	 * The version of the VC file. I am not sure if this can be a
 	 * string or if it must be a float/int.
 	 */
-	string version_;
+	std::string version_;
 
 	/// The user currently keeping the lock on the VC file.
-	string locker_;
+	std::string locker_;
 	/// The buffer using this VC
 	Buffer * owner_;
 };
@@ -95,16 +95,16 @@ class RCS : public VCS {
 public:
 
 	explicit
-	RCS(string const & m);
+	RCS(std::string const & m);
 
 	/// return the revision file for the given file, if found
-	static string const find_file(string const & file);
+	static std::string const find_file(std::string const & file);
 
-	static void retrieve(string const & file);
+	static void retrieve(std::string const & file);
 
-	virtual void registrer(string const & msg);
+	virtual void registrer(std::string const & msg);
 
-	virtual void checkIn(string const & msg);
+	virtual void checkIn(std::string const & msg);
 
 	virtual void checkOut();
 
@@ -112,9 +112,9 @@ public:
 
 	virtual void undoLast();
 
-	virtual void getLog(string const &);
+	virtual void getLog(std::string const &);
 
-	virtual string const versionString() const {
+	virtual std::string const versionString() const {
 		return "RCS: " + version_;
 	}
 
@@ -128,14 +128,14 @@ class CVS : public VCS {
 public:
 	///
 	explicit
-	CVS(string const & m, string const & f);
+	CVS(std::string const & m, std::string const & f);
 
 	/// return the revision file for the given file, if found
-	static string const find_file(string const & file);
+	static std::string const find_file(std::string const & file);
 
-	virtual void registrer(string const & msg);
+	virtual void registrer(std::string const & msg);
 
-	virtual void checkIn(string const & msg);
+	virtual void checkIn(std::string const & msg);
 
 	virtual void checkOut();
 
@@ -143,9 +143,9 @@ public:
 
 	virtual void undoLast();
 
-	virtual void getLog(string const &);
+	virtual void getLog(std::string const &);
 
-	virtual string const versionString() const {
+	virtual std::string const versionString() const {
 		return "CVS: " + version_;
 	}
 
@@ -153,6 +153,6 @@ protected:
 	virtual void scanMaster();
 
 private:
-	string file_;
+	std::string file_;
 };
 #endif // VCBACKEND_H

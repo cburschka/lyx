@@ -17,7 +17,8 @@
 
 #include <boost/utility.hpp>
 
-#include "support/std_string.h"
+#include <string>
+
 
 class Buffer;
 class Change;
@@ -76,10 +77,10 @@ public:
 	/// reload the contained buffer
 	void reload();
 	/// create a new buffer based on template
-	bool newFile(string const & fname, string const & tname,
+	bool newFile(std::string const & fname, std::string const & tname,
 		     bool named = true);
 	/// load a buffer into the view
-	bool loadLyXFile(string const & name, bool tolastfiles = true);
+	bool loadLyXFile(std::string const & name, bool tolastfiles = true);
 
 	/// fit the user cursor within the visible view
 	bool fitCursor();
@@ -137,14 +138,14 @@ public:
 	/// Select the "current" word
 	void selectLastWord();
 	/// replace the currently selected word
-	void replaceWord(string const & replacestring);
+	void replaceWord(std::string const & replacestring);
 	/// Update after spellcheck finishes
 	void endOfSpellCheck();
 	/// return the next word
 	WordLangTuple const nextWord(float & value);
 
 	/// move cursor to the named label
-	void gotoLabel(string const & label);
+	void gotoLabel(std::string const & label);
 
 	/// undo last action
 	void undo();
@@ -154,7 +155,7 @@ public:
 	/// get the stored error list
 	ErrorList const & getErrorList() const;
 	/// show the error list to the user
-	void showErrorList(string const &) const;
+	void showErrorList(std::string const &) const;
 	/// set the cursor based on the given TeX source row
 	void setCursorFromRow(int row);
 
@@ -162,10 +163,10 @@ public:
 	 * Insert an inset into the buffer.
 	 * Place it in a layout of lout,
 	 */
-	bool insertInset(InsetOld * inset, string const & lout = string());
+	bool insertInset(InsetOld * inset, std::string const & lout = std::string());
 
 	/// Inserts a lyx file at cursor position. return false if it fails
-	bool insertLyXFile(string const & file);
+	bool insertLyXFile(std::string const & file);
 
 	/// FIXME
 	bool fitLockedInsetCursor(int x, int y, int asc, int desc);
@@ -189,12 +190,12 @@ public:
 	void switchKeyMap();
 
 	/// FIXME
-	bool ChangeRefsIfUnique(string const & from, string const & to);
+	bool ChangeRefsIfUnique(std::string const & from, std::string const & to);
 
 	/// get the contents of the window system clipboard
-	string const getClipboard() const;
+	std::string const getClipboard() const;
 	/// fill the window system clipboard
-	void stuffClipboard(string const &) const;
+	void stuffClipboard(std::string const &) const;
 	/// tell the window system we have a selection
 	void haveSelection(bool sel);
 

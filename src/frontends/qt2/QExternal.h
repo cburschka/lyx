@@ -37,7 +37,7 @@ private:
 	virtual void build_dialog();
 
 	/// get the right helptext
-	string const helpText() const;
+	std::string const helpText() const;
 };
 
 #endif // QEXTERNAL_H

@@ -32,7 +32,7 @@ using lyx::support::subst;
 using std::endl;
 using std::find_if;
 using std::remove_if;
-
+using std::string;
 using std::ostream;
 
 

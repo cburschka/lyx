@@ -21,6 +21,8 @@
 
 using lyx::support::isStrDbl;
 
+using std::string;
+
 
 void addCheckedLyXLength(BCView & bcview,
 			 FL_OBJECT * input, FL_OBJECT * label)

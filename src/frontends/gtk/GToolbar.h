@@ -15,7 +15,6 @@
 #include <gtkmm.h>
 #include "frontends/Toolbar.h"
 #include "ToolbarBackend.h"
-#include "support/std_string.h"
 
 
 class GToolbar : public Toolbar, public SigC::Object
@@ -39,7 +38,7 @@ public:
 	void update();
 
 	/// select the right layout in the combox
-	void setLayout(string const & layout);
+	void setLayout(std::string const & layout);
 
 	/// Populate the layout combox; re-do everything if force is true.
 	void updateLayoutList();

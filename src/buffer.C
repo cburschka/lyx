@@ -123,6 +123,7 @@ using std::ofstream;
 using std::pair;
 using std::stack;
 using std::vector;
+using std::string;
 
 
 // all these externs should eventually be removed.

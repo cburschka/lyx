@@ -28,6 +28,8 @@
 
 using lyx::support::strToDbl;
 
+using std::string;
+
 
 typedef QController<ControlWrap, QView<QWrapDialog> > base_class;
 

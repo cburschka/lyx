@@ -12,9 +12,6 @@
 #ifndef QTHELPERS_H
 #define QTHELPERS_H
 
-
-#include "support/std_string.h"
-
 #include <utility>
 
 #include "lyxlength.h"
@@ -23,19 +20,19 @@ class LengthCombo;
 class QLineEdit;
 class QString;
 
-string makeFontName(string const & family, string const & foundry);
+std::string makeFontName(std::string const & family, std::string const & foundry);
 
-std::pair<string,string> parseFontName(string const & name);
+std::pair<std::string,std::string> parseFontName(std::string const & name);
 
 /// method to get a LyXLength from widgets
-string widgetsToLength(QLineEdit const * input, LengthCombo const * combo);
+std::string widgetsToLength(QLineEdit const * input, LengthCombo const * combo);
 
 /// method to set widgets from a LyXLength
 void lengthToWidgets(QLineEdit * input, LengthCombo * combo,
-	string const & len, LyXLength::UNIT default_unit);
+	std::string const & len, LyXLength::UNIT default_unit);
 
 /// format a string to the given width
-string const formatted(string const & text, int w = 80);
+std::string const formatted(std::string const & text, int w = 80);
 
 /**
  * toqstr - convert char * into unicode
@@ -52,7 +49,7 @@ QString const toqstr(char const * str);
  * Use this whenever there's a user-visible string that is encoded
  * for the locale (menus, dialogs etc.)
  */
-QString const toqstr(string const & str);
+QString const toqstr(std::string const & str);
 
 
 /**
@@ -68,7 +65,7 @@ QString const qt_(char const * str);
  *
  * Use this in qt2/ instead of qt_()
  */
-QString const qt_(string const & str);
+QString const qt_(std::string const & str);
 
 
 /**
@@ -76,6 +73,6 @@ QString const qt_(string const & str);
  *
  * Return the QString encoded in the locale
  */
-string const fromqstr(QString const & str);
+std::string const fromqstr(QString const & str);
 
 #endif // QTHELPERS_H

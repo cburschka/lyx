@@ -17,6 +17,7 @@
 
 
 using std::vector;
+using std::string;
 
 
 ControlNote::ControlNote(Dialog & parent)

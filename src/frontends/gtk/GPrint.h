@@ -12,7 +12,6 @@
 #ifndef GPRINT_H
 #define GPRINT_H
 
-#include "support/std_string.h"
 #include "GViewBase.h"
 
 class ControlPrint;
@@ -20,7 +19,7 @@ class ControlPrint;
 class GPrint : public GViewCB<ControlPrint, GViewGladeB>
 {
 public:
-	GPrint(Dialog & parent, string title = "Print Document");
+	GPrint(Dialog & parent, std::string title = "Print Document");
 private:
 	virtual void apply();
 	virtual void update();
@@ -46,4 +45,3 @@ private:
 };
 
 #endif
-

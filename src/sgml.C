@@ -21,6 +21,7 @@ using std::make_pair;
 
 using std::ostream;
 using std::pair;
+using std::string;
 
 
 namespace sgml {

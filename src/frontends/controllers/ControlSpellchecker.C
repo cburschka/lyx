@@ -34,9 +34,11 @@
 
 #include "frontends/Alert.h"
 
+
 using lyx::support::bformat;
 
 using std::endl;
+using std::string;
 
 
 ControlSpellchecker::ControlSpellchecker(LyXView & lv, Dialogs & d)

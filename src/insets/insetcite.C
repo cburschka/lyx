@@ -30,6 +30,7 @@ using lyx::support::ltrim;
 using lyx::support::rtrim;
 using lyx::support::split;
 
+using std::string;
 using std::ostream;
 using std::vector;
 using std::map;

@@ -15,8 +15,6 @@
 #ifndef FILEMONITOR_H
 #define FILEMONITOR_H
 
-#include "support/std_string.h"
-
 #include <boost/utility.hpp>
 #include <boost/scoped_ptr.hpp>
 #include <boost/signals/signal0.hpp>
@@ -29,16 +27,16 @@ public:
 	/** Once monitoring begins, the file will be monitored every
 	 *  interval ms.
 	 */
-	FileMonitor(string const & file_with_path, int interval);
+	FileMonitor(std::string const & file_with_path, int interval);
 
 	/// Define an empty d-tor out-of-line to keep boost::scoped_ptr happy.
 	~FileMonitor();
 
 	///
-	void reset(string const & file_with_path) const;
+	void reset(std::string const & file_with_path) const;
 
 	///
-	string const & filename() const;
+	std::string const & filename() const;
 
 	/// Begin monitoring the file
 	void start() const;

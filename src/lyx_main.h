@@ -17,7 +17,7 @@
 #include <boost/scoped_ptr.hpp>
 #include <boost/utility.hpp>
 
-#include "support/std_string.h"
+#include <string>
 
 
 class ErrorItem;
@@ -49,13 +49,13 @@ private:
 	/// check, set up and configure the user dir if necessary
 	void queryUserLyXDir(bool explicit_userdir);
 	/// read lyxrc/preferences
-	void readRcFile(string const & name);
+	void readRcFile(std::string const & name);
 	/// read the given ui (menu/toolbar) file
-	void readUIFile(string const & name);
+	void readUIFile(std::string const & name);
 	/// read the given languages file
-	void readLanguagesFile(string const & name);
+	void readLanguagesFile(std::string const & name);
 	/// read the given encodings file
-	void readEncodingsFile(string const & name);
+	void readEncodingsFile(std::string const & name);
 	/// parsing of non-gui LyX options. Returns true if gui
 	bool easyParse(int & argc, char * argv[]);
 	/// shows up a parsing error on screen
@@ -64,7 +64,7 @@ private:
 	/// has this user started lyx for the first time?
 	bool first_start;
 	/// the parsed command line batch command if any
-	string batch_command;
+	std::string batch_command;
 };
 
 #endif // LYX_MAIN_H

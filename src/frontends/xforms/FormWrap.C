@@ -28,6 +28,8 @@
 using lyx::support::getStringFromVector;
 using lyx::support::subst;
 
+using std::string;
+
 
 typedef FormController<ControlWrap, FormView<FD_wrap> > base_class;
 

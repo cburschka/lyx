@@ -12,7 +12,8 @@
 #ifndef LYX_VC_H
 #define LYX_VC_H
 
-#include "support/std_string.h"
+#include <string>
+
 
 class VCS;
 class Buffer;
@@ -44,7 +45,7 @@ public:
 	  the appropiate actions is taken. Returns true if the file is under
 	  control by a VCS.
 	  */
-	bool file_found_hook(string const & fn);
+	bool file_found_hook(std::string const & fn);
 
 	/** This function should be run when a file is requested for loading,
 	  but it does not exist. This function will then check for a VC master
@@ -53,7 +54,7 @@ public:
 	  viewing/editing. Returns true if the file is under control by a VCS
 	  and the user wants to view/edit it.
 	  */
-	static bool file_not_found_hook(string const & fn);
+	static bool file_not_found_hook(std::string const & fn);
 
 	///
 	void buffer(Buffer *);
@@ -78,7 +79,7 @@ public:
 	 * It is the caller's responsibility to unlink the
 	 * file after use.
 	 */
-	const string getLogFile() const;
+	const std::string getLogFile() const;
 
 	///
 	void toggleReadOnly();
@@ -87,12 +88,12 @@ public:
 	bool inUse();
 
 	/// Returns the version number.
-	//string const & version() const;
+	//std::string const & version() const;
 	/// Returns the version number.
-	string const versionString() const;
+	std::string const versionString() const;
 
 	/// Returns the userid of the person who has locked the doc.
-	string const & locker() const;
+	std::string const & locker() const;
 
 private:
 	///

@@ -24,6 +24,7 @@
 #include "QGraphicsDialog.h"
 #include "QGraphics.h"
 
+using std::string;
 
 
 QGraphicsDialog::QGraphicsDialog(QGraphics * form)

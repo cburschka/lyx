@@ -11,7 +11,6 @@
 
 #include <config.h>
 
-
 #include "debug.h"
 #include "support/lstrings.h"
 
@@ -37,6 +36,7 @@ using lyx::support::split;
 using lyx::support::trim;
 
 using std::vector;
+using std::string;
 
 
 typedef QController<ControlBibtex, QView<QBibtexDialog> > base_class;

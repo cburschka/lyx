@@ -81,9 +81,9 @@ public:
 	/// a selection exists
 	virtual void haveSelection(bool) const;
 	///
-	virtual string const getClipboard() const;
+	virtual std::string const getClipboard() const;
 	///
-	virtual void putClipboard(string const &) const;
+	virtual void putClipboard(std::string const &) const;
 	void inputCommit(gchar * str);
 private:
 	bool onExpose(GdkEventExpose * event);
@@ -106,7 +106,7 @@ private:
 	XftDraw * draw_;
 	ColorHandler colorHandler_;
 	GtkIMContext * imContext_;
-	string inputCache_;
+	std::string inputCache_;
 };
 
 #endif

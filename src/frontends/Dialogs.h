@@ -15,9 +15,6 @@
 #include <boost/signals/signal0.hpp>
 #include <boost/signals/signal1.hpp>
 
-#include "support/std_string.h"
-
-
 class Dialog;
 class InsetBase;
 class LyXView;
@@ -92,7 +89,7 @@ public:
 	    the dialog. Several of these dialogs do not need any data,
 	    so it defaults to string().
 	*/
-	void show(string const & name, string const & data = string());
+	void show(std::string const & name, std::string const & data = std::string());
 
 	/** \param name == "bibtex", "citation" etc; an identifier used to
 	    launch a particular dialog.
@@ -105,46 +102,46 @@ public:
 	    dialog on 'Apply'; should it be used to create a new inset at
 	    the current cursor position or modify an existing, 'open' inset?
 	*/
-	void show(string const & name, string const & data, InsetBase * inset);
+	void show(std::string const & name, std::string const & data, InsetBase * inset);
 
 	/** \param name == "citation", "bibtex" etc; an identifier used
 	    to update the contents of a particular dialog with \param data .
 	    See the comments to 'show', above.
 	*/
-	void update(string const & name, string const & data);
+	void update(std::string const & name, std::string const & data);
 
 	/// is the dialog currently visible?
-	bool visible(string const & name) const;
+	bool visible(std::string const & name) const;
 
 	/** All Dialogs of the given \param name will be closed if they are
 	    connected to the given \param inset.
 	*/
-	static void hide(string const & name, InsetBase * inset);
+	static void hide(std::string const & name, InsetBase * inset);
 	///
-	void disconnect(string const & name);
+	void disconnect(std::string const & name);
 	///
-	InsetBase * getOpenInset(string const & name) const;
+	InsetBase * getOpenInset(std::string const & name) const;
 private:
 	///
-	void hideSlot(string const & name, InsetBase * inset);
+	void hideSlot(std::string const & name, InsetBase * inset);
 	///
 	void redraw() const;
 	///
-	bool isValidName(string const & name) const;
+	bool isValidName(std::string const & name) const;
 	///
-	Dialog * find_or_build(string const & name);
+	Dialog * find_or_build(std::string const & name);
 	///
-	Dialog * build(string const & name);
+	Dialog * build(std::string const & name);
 
 	///
 	LyXView & lyxview_;
 	///
-	std::map<string, InsetBase *> open_insets_;
+	std::map<std::string, InsetBase *> open_insets_;
 
 	///
 	typedef boost::shared_ptr<Dialog> DialogPtr;
 	///
-	std::map<string, DialogPtr> dialogs_;
+	std::map<std::string, DialogPtr> dialogs_;
 
 	/// the stuff below is slated to go...
 	void init_pimpl();

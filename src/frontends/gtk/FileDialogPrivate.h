@@ -18,18 +18,18 @@
 class FileDialog::Private : public SigC::Object
 {
 public:
-	Private(string const & title,
+	Private(std::string const & title,
 		kb_action action,
 		FileDialog::Button b1, FileDialog::Button b2);
-	FileDialog::Result const open(string const & path,
-				      string const & mask,
-				      string const & suggested);
-	FileDialog::Result const opendir(string const & path,
-					 string const & suggested);
+	FileDialog::Result const open(std::string const & path,
+				      std::string const & mask,
+				      std::string const & suggested);
+	FileDialog::Result const opendir(std::string const & path,
+					 std::string const & suggested);
 
-	FileDialog::Result const save(string const & path,
-				      string const & mask,
-				      string const & suggested);
+	FileDialog::Result const save(std::string const & path,
+				      std::string const & mask,
+				      std::string const & suggested);
 
 private:
 	void onButton1Clicked();
@@ -37,8 +37,8 @@ private:
 	Gtk::FileSelection fileSelection_;
 	Gtk::Button button1_;
 	Gtk::Button button2_;
-	string dir1_;
-	string dir2_;
+	std::string dir1_;
+	std::string dir2_;
 	kb_action action_;
 };
 

@@ -17,6 +17,7 @@
 #include <X11/keysym.h>
 
 using std::endl;
+using std::string;
 
 
 XLyXKeySym::XLyXKeySym()

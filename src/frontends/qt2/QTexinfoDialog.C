@@ -20,6 +20,7 @@
 #include <qcombobox.h>
 
 using std::vector;
+using std::string;
 
 
 QTexinfoDialog::QTexinfoDialog(QTexinfo * form)

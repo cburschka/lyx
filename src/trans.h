@@ -16,7 +16,6 @@
 
 #include "trans_decl.h"
 
-#include "support/std_string.h"
 #include <map>
 
 
@@ -35,36 +34,36 @@ public:
 	~Trans();
 
 	///
-	int Load(string const & language);
+	int Load(std::string const & language);
 	///
 	bool IsDefined() const;
 	///
-	string const & GetName() const;
+	std::string const & GetName() const;
 	///
-	string const process(char, TransManager &);
+	std::string const process(char, TransManager &);
 	///
 	bool isAccentDefined(tex_accent, KmodInfo &) const;
 
 private:
 	///
-	void AddDeadkey(tex_accent, string const &);
+	void AddDeadkey(tex_accent, std::string const &);
 	///
 	void FreeKeymap();
 	///
 	int Load(LyXLex &);
 	///
-	string const & Match(unsigned char c);
+	std::string const & Match(unsigned char c);
 	///
 	void InsertException(KmodException & exclist, char c,
-			     string const & data, bool = false,
+			     std::string const & data, bool = false,
 			     tex_accent = TEX_NOACCENT);
 	///
 	void FreeException(KmodException & exclist);
 
 	///
-	string name_;
+	std::string name_;
 	///
-	std::map<int, string> keymap_;
+	std::map<int, std::string> keymap_;
 	///
 	std::map<int, KmodInfo> kmod_list_;
 };
@@ -72,13 +71,13 @@ private:
 
 ///
 inline
-string const & Trans::Match(unsigned char c)
+std::string const & Trans::Match(unsigned char c)
 {
-	std::map<int, string>::iterator it = keymap_.find(c);
+	std::map<int, std::string>::iterator it = keymap_.find(c);
 	if (it != keymap_.end()) {
 		return it->second;
 	}
-	static string dummy;
+	static std::string dummy;
 	return dummy;
 }
 

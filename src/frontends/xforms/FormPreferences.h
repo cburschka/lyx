@@ -68,7 +68,7 @@ private:
 	/// Build the dialog
 	virtual void build();
 	/// control which feedback message is output
-	string const getFeedback(FL_OBJECT *);
+	std::string const getFeedback(FL_OBJECT *);
 
 	/// Converters tabfolder
 	boost::scoped_ptr<FD_preferences_inner_tab> converters_tab_;
@@ -100,7 +100,7 @@ private:
 		///
 		void build();
 		///
-		string const feedback(FL_OBJECT const * const) const;
+		std::string const feedback(FL_OBJECT const * const) const;
 		///
 		void input(FL_OBJECT const * const);
 		///
@@ -146,7 +146,7 @@ private:
 		///
 		void build();
 		///
-		string const feedback(FL_OBJECT const * const) const;
+		std::string const feedback(FL_OBJECT const * const) const;
 		///
 		bool input(FL_OBJECT const * const);
 		///
@@ -166,9 +166,9 @@ private:
 		///
 		bool Input();
 		///
-		string const GetFrom() const;
+		std::string const GetFrom() const;
 		///
-		string const GetTo() const;
+		std::string const GetTo() const;
 
 		///
 		FormPreferences & parent_;
@@ -190,7 +190,7 @@ private:
 		///
 		void build();
 		///
-		string const feedback(FL_OBJECT const * const) const;
+		std::string const feedback(FL_OBJECT const * const) const;
 		///
 		bool input(FL_OBJECT const * const);
 		///
@@ -228,7 +228,7 @@ private:
 		///
 		void build();
 		///
-		string const feedback(FL_OBJECT const * const) const;
+		std::string const feedback(FL_OBJECT const * const) const;
 		///
 		void update(LyXRC const & rc);
 
@@ -253,7 +253,7 @@ private:
 		///
 		void build();
 		///
-		string const feedback(FL_OBJECT const * const) const;
+		std::string const feedback(FL_OBJECT const * const) const;
 		///
 		bool input(FL_OBJECT const * const);
 		///
@@ -280,7 +280,7 @@ private:
 		///
 		void build();
 		///
-		string const feedback(FL_OBJECT const * const) const;
+		std::string const feedback(FL_OBJECT const * const) const;
 		///
 		bool input(FL_OBJECT const * const);
 		///
@@ -292,7 +292,7 @@ private:
 		///
 		boost::scoped_ptr<FD_preferences_language> dialog_;
 		///
-		std::vector<string> lang_;
+		std::vector<std::string> lang_;
 	};
 	///
 	friend class Language;
@@ -309,7 +309,7 @@ private:
 		///
 		void build();
 		///
-		string const feedback(FL_OBJECT const * const) const;
+		std::string const feedback(FL_OBJECT const * const) const;
 		///
 		void update(LyXRC const & rc);
 
@@ -333,7 +333,7 @@ private:
 		///
 		void build();
 		///
-		string const feedback(FL_OBJECT const * const) const;
+		std::string const feedback(FL_OBJECT const * const) const;
 		///
 		void update(LyXRC const & rc);
 
@@ -357,7 +357,7 @@ private:
 		///
 		void build();
 		///
-		string const feedback(FL_OBJECT const * const) const;
+		std::string const feedback(FL_OBJECT const * const) const;
 		///
 		void update(LyXRC const & rc);
 
@@ -382,7 +382,7 @@ private:
 		///
 		void build();
 		///
-		string const feedback(FL_OBJECT const * const) const;
+		std::string const feedback(FL_OBJECT const * const) const;
 		///
 		bool input(FL_OBJECT const * const);
 		///
@@ -409,7 +409,7 @@ private:
 		///
 		void build();
 		///
-		string const feedback(FL_OBJECT const * const) const;
+		std::string const feedback(FL_OBJECT const * const) const;
 		///
 		void update(LyXRC const & rc);
 
@@ -434,7 +434,7 @@ private:
 		///
 		void build();
 		///
-		string const feedback(FL_OBJECT const * const) const;
+		std::string const feedback(FL_OBJECT const * const) const;
 		///
 		bool input();
 		///
@@ -461,7 +461,7 @@ private:
 		///
 		void build();
 		///
-		string const feedback(FL_OBJECT const * const) const;
+		std::string const feedback(FL_OBJECT const * const) const;
 		///
 		bool input(FL_OBJECT const * const);
 		///

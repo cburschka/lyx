@@ -52,6 +52,7 @@ using std::min;
 
 using std::pair;
 using std::vector;
+using std::string;
 
 
 namespace {

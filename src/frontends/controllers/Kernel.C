@@ -20,6 +20,9 @@
 #include "frontends/LyXView.h"
 
 
+using std::string;
+
+
 Kernel::Kernel(LyXView & lyxview)
 	: lyxview_(lyxview)
 {}

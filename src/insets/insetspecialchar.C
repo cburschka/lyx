@@ -23,6 +23,8 @@
 #include "frontends/font_metrics.h"
 #include "frontends/Painter.h"
 
+
+using std::string;
 using std::auto_ptr;
 using std::ostream;
 

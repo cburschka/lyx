@@ -17,7 +17,6 @@
 
 #include <vector>
 
-#include "support/std_string.h"
 
 class LyXLex;
 
@@ -36,7 +35,7 @@ public:
 	};
 
 	/// action, tooltip
-	typedef std::pair<FuncRequest, string> Item;
+	typedef std::pair<FuncRequest, std::string> Item;
 
 	/// the toolbar items
 	typedef std::vector<Item> Items;
@@ -56,7 +55,7 @@ public:
 	/// a toolbar
 	struct Toolbar {
 		/// toolbar UI name
-		string name;
+		std::string name;
 		/// toolbar contents
 		Items items;
 		/// flags
@@ -85,12 +84,12 @@ public:
 	void readToolbars(LyXLex &);
 
 	/// return a full path of an XPM for the given action
-	static string const getIcon(FuncRequest const &);
+	static std::string const getIcon(FuncRequest const &);
 
 private:
 	/// add the given lfun with tooltip if relevant
 	void add(Toolbar & tb, FuncRequest const &,
-		 string const & tooltip = string());
+		 std::string const & tooltip = std::string());
 
 	/// all the toolbars
 	Toolbars toolbars;

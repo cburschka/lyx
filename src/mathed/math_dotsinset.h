@@ -29,7 +29,7 @@ public:
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
 	///
-	string name() const;
+	std::string name() const;
 protected:
 	/// cache for the thing's height
 	mutable int dh_;

@@ -37,8 +37,9 @@
 #include "support/textutils.h"
 
 
-using std::max;
 using lyx::pos_type;
+using std::max;
+using std::string;
 
 extern int PAPER_MARGIN;
 extern int CHANGEBAR_MARGIN;

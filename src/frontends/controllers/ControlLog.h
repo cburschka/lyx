@@ -25,7 +25,7 @@ public:
 	///
 	ControlLog(Dialog &);
 	///
-	virtual bool initialiseParams(string const & data);
+	virtual bool initialiseParams(std::string const & data);
 	///
 	virtual void clearParams();
 	///
@@ -33,12 +33,12 @@ public:
 	///
 	virtual bool isBufferDependent() const { return true; }
 	///
-	std::pair<Buffer::LogType, string> const & logfile() const {
+	std::pair<Buffer::LogType, std::string> const & logfile() const {
 		return logfile_;
 	}
 private:
 
-	std::pair<Buffer::LogType, string> logfile_;
+	std::pair<Buffer::LogType, std::string> logfile_;
 };
 
 #endif // CONTROLLOG_H

@@ -21,8 +21,10 @@
 
 #include <boost/bind.hpp>
 
+
 using lyx::support::ForkedcallsController;
 
+using std::string;
 using std::vector;
 
 

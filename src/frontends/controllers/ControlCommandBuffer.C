@@ -26,7 +26,7 @@ using lyx::support::prefixIs;
 
 using std::back_inserter;
 using std::transform;
-
+using std::string;
 using std::vector;
 
 

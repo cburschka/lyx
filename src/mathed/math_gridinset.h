@@ -14,7 +14,6 @@
 
 #include "math_nestinset.h"
 #include "lyxlength.h"
-#include "support/std_string.h"
 
 
 /** Gridded math inset base class.
@@ -31,7 +30,7 @@ public:
 		/// a dummy cell before a multicolumn cell
 		int dummy_;
 		/// special multi colums alignment
-		string align_;
+		std::string align_;
 		/// these should be a per-cell property, but ok to have it here
 		/// for single-column grids like paragraphs
 		mutable int glue_;
@@ -87,11 +86,11 @@ public:
 	/// sets nrows and ncols to 1
 	MathGridInset();
 	/// constructor from columns description, creates one row
-	MathGridInset(char valign, string const & halign);
+	MathGridInset(char valign, std::string const & halign);
 	/// Note: columns first!
 	MathGridInset(col_type m, row_type n);
 	///
-	MathGridInset(col_type m, row_type n, char valign, string const & halign);
+	MathGridInset(col_type m, row_type n, char valign, std::string const & halign);
 	/// Ensures that the dialog is closed.
 	~MathGridInset();
 	///
@@ -107,13 +106,13 @@ public:
 	///
 	void drawT(TextPainter & pi, int x, int y) const;
 	///
-	void halign(string const & align);
+	void halign(std::string const & align);
 	///
 	void halign(char c, col_type col);
 	///
 	char halign(col_type col) const;
 	///
-	string halign() const;
+	std::string halign() const;
 	///
 	void valign(char c);
 	///
@@ -224,11 +223,11 @@ protected:
 	/// returns y offset of cell compared to inset
 	int cellYOffset(idx_type idx) const;
 	/// returns proper 'end of line' code for LaTeX
-	virtual string eolString(row_type row, bool fragile = false) const;
+	virtual std::string eolString(row_type row, bool fragile = false) const;
 	/// returns proper 'end of column' code for LaTeX
-	virtual string eocString(col_type col, col_type lastcol) const;
+	virtual std::string eocString(col_type col, col_type lastcol) const;
 	/// extract number of columns from alignment string
-	col_type guessColumns(string const & halign) const;
+	col_type guessColumns(std::string const & halign) const;
 	/// splits cells and shifts right part to the next cell
 	void splitCell(idx_type &, pos_type & pos);
 

@@ -35,7 +35,7 @@ private:
 	virtual void update();
 
 	///
-	void updateBrowser(std::vector<string> const &) const;
+	void updateBrowser(std::vector<std::string> const &) const;
 
 	///
 	void switch_go_button();
@@ -43,7 +43,7 @@ private:
 	///
 	bool at_ref_;
 	///
-	std::vector<string> refs_;
+	std::vector<std::string> refs_;
 };
 
 #endif // FORMREF_H

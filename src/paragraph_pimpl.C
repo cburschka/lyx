@@ -31,8 +31,7 @@ using lyx::pos_type;
 
 using std::endl;
 using std::upper_bound;
-using std::lower_bound;
-
+using std::string;
 using std::ostream;
 
 

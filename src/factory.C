@@ -60,6 +60,7 @@
 using lyx::support::compare_ascii_no_case;
 
 using std::endl;
+using std::string;
 
 
 InsetOld * createInset(FuncRequest const & cmd)

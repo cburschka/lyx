@@ -16,6 +16,8 @@
 
 #include "gettext.h"
 
+using std::string;
+
 
 int const num_units = LyXLength::UNIT_NONE;
 

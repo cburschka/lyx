@@ -24,6 +24,7 @@
 #include "format.h"
 
 using std::vector;
+using std::string;
 
 typedef Qt2CB<ControlSendto, Qt2DB<QSendtoDialog> > base_class;
 

@@ -28,10 +28,10 @@ public:
 	void goTo(lyx::toc::TocItem const &);
 
 	/// Return the list of types available
-	std::vector<string> const getTypes() const;
+	std::vector<std::string> const getTypes() const;
 
 	/// Given a type, returns the contents
-	lyx::toc::Toc const getContents(string const & type) const;
+	lyx::toc::Toc const getContents(std::string const & type) const;
 };
 
 #endif // CONTROLTOC_H

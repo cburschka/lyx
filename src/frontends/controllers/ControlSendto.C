@@ -31,6 +31,7 @@ using lyx::support::Systemcall;
 using lyx::support::trim;
 
 using std::vector;
+using std::string;
 
 
 ControlSendto::ControlSendto(LyXView & lv, Dialogs & d)

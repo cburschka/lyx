@@ -45,6 +45,7 @@ using frnt::SizePair;
 using lyx::support::getStringFromVector;
 
 using std::vector;
+using std::string;
 
 
 typedef FormController<ControlCharacter, FormView<FD_character> > base_class;

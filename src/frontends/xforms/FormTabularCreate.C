@@ -20,6 +20,7 @@
 #include "lyx_forms.h"
 
 using std::make_pair;
+using std::string;
 
 
 typedef FormController<ControlTabularCreate, FormView<FD_tabular_create> > base_class;

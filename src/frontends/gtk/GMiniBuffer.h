@@ -14,7 +14,7 @@
 #define GMINI_BUFFER_H
 
 #include "frontends/Timeout.h"
-#include "support/std_string.h"
+
 class ControlCommandBuffer;
 
 class GMiniBuffer : public SigC::Object
@@ -22,7 +22,7 @@ class GMiniBuffer : public SigC::Object
 public:
 	GMiniBuffer(GView * view, ControlCommandBuffer & control);
 	~GMiniBuffer();
-	void message(string const & str);
+	void message(std::string const & str);
 	/// go into edit mode
 	void editMode();
 private:

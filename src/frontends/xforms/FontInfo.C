@@ -31,6 +31,7 @@ using lyx::support::token;
 
 using std::abs;
 using std::endl;
+using std::string;
 
 
 /// Load font close to this size

@@ -51,9 +51,9 @@ struct ParameterStruct {
 	///
 	bool appendix;
 	///
-	string labelstring;
+	std::string labelstring;
 	///
-	string labelwidthstring;
+	std::string labelwidthstring;
 	///
 	LyXLength leftindent;
 };

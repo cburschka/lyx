@@ -21,6 +21,9 @@
 #include "funcrequest.h"
 #include "LColor.h"
 
+using std::string;
+
+
 ColorCache colorCache;
 
 

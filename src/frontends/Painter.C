@@ -19,6 +19,7 @@
 #include "lyxfont.h"
 
 using std::max;
+using std::string;
 
 
 Painter & Painter::button(int x, int y, int w, int h)

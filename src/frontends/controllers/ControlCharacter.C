@@ -22,6 +22,8 @@
 
 using bv_funcs::font2string;
 
+using std::string;
+
 
 ControlCharacter::ControlCharacter(Dialog & parent)
 	: Dialog::Controller(parent),

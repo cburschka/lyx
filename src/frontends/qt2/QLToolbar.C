@@ -27,6 +27,7 @@
 #include <qtoolbar.h>
 
 using std::endl;
+using std::string;
 
 
 class QLComboBox : public QComboBox {

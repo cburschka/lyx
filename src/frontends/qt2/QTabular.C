@@ -28,6 +28,8 @@
 #include "lengthcombo.h"
 #include "qsetborder.h"
 
+using std::string;
+
 
 typedef QController<ControlTabular, QView<QTabularDialog> > base_class;
 

@@ -13,8 +13,6 @@
 #ifndef QLYXKEYSYM_H
 #define QLYXKEYSYM_H
 
-
-#include "support/std_string.h"
 #include "frontends/LyXKeySym.h"
 
 #include <qstring.h>
@@ -36,7 +34,7 @@ public:
 	void set(QKeyEvent * ev);
 
 	/// set from a LyX symbolic name
-	virtual void init(string const & symbolname);
+	virtual void init(std::string const & symbolname);
 
 	/// Is this a valid key?
 	virtual bool isOK() const;
@@ -45,7 +43,7 @@ public:
 	virtual bool isModifier() const;
 
 	/// return the LyX symbolic name
-	virtual string getSymbolName() const;
+	virtual std::string getSymbolName() const;
 
 	/// Is this normal insertable text ? (last ditch attempt only)
 	virtual bool isText() const;
@@ -55,7 +53,7 @@ public:
 	 * This converts the LyXKeySym to a 8-bit encoded character.
 	 * This relies on user to use the right encoding.
 	 */
-	virtual char getISOEncoded(string const & encoding) const;
+	virtual char getISOEncoded(std::string const & encoding) const;
 	///
 	int key() const {
 		return key_;

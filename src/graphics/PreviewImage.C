@@ -21,6 +21,8 @@
 
 namespace support = lyx::support;
 
+using std::string;
+
 
 namespace lyx {
 namespace graphics {

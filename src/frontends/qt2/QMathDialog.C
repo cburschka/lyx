@@ -26,6 +26,7 @@
 #include <qlistbox.h>
 #include <qpopupmenu.h>
 
+using std::string;
 
 
 class QScrollViewSingle : public QScrollView {

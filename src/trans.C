@@ -22,7 +22,7 @@ using lyx::support::contains;
 using lyx::support::LibFileSearch;
 
 using std::endl;
-
+using std::string;
 using std::map;
 
 

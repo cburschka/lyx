@@ -23,6 +23,8 @@
 #include <qpixmap.h>
 #include <qcheckbox.h>
 
+using std::string;
+
 namespace {
 
 char const * delim[] = {

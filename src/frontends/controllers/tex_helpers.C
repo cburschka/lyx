@@ -36,6 +36,7 @@ using lyx::support::Systemcall;
 using lyx::support::token;
 using lyx::support::user_lyxdir;
 
+using std::string;
 using std::endl;
 
 

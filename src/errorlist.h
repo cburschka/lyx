@@ -12,20 +12,19 @@
 #ifndef ERRORLIST_H
 #define ERRORLIST_H
 
-#include "support/std_string.h"
-
 #include <vector>
+#include <string>
 
 class Buffer;
 
 /// A class to hold an error item
 struct ErrorItem {
-	string error;
-	string description;
+	std::string error;
+	std::string description;
 	int par_id;
 	int pos_start;
 	int pos_end;
-	ErrorItem(string const & error, string const & description,
+	ErrorItem(std::string const & error, std::string const & description,
 		  int parid, int posstart, int posend);
 	ErrorItem();
 };

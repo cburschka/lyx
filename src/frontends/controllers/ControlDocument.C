@@ -36,6 +36,8 @@ using lyx::support::AddPath;
 using lyx::support::bformat;
 using lyx::support::user_lyxdir;
 
+using std::string;
+
 
 ControlDocument::ControlDocument(LyXView & lv, Dialogs & d)
 	: ControlDialogBD(lv, d), bp_(0)

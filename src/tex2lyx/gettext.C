@@ -13,6 +13,9 @@
 
 #include "gettext.h"
 
+using std::string;
+
+
 string const _(string const & str)
 {
 	return str;

@@ -18,15 +18,18 @@
 
 #include "math_nestinset.h"
 
+#include <string>
+
+
 // cell(0) is stuff before the 'd', cell(1) the stuff after
 class MathExIntInset : public MathNestInset {
 public:
 	///
-	explicit MathExIntInset(string const & name_);
+	explicit MathExIntInset(std::string const & name_);
 	///
 	virtual std::auto_ptr<InsetBase> clone() const;
 	///
-	void symbol(string const &);
+	void symbol(std::string const &);
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
@@ -49,7 +52,7 @@ private:
 	bool hasScripts() const;
 
 	///
-	string symbol_;
+	std::string symbol_;
 };
 
 #endif

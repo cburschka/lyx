@@ -14,7 +14,7 @@
 
 
 #include "Kernel.h"
-#include "support/std_string.h"
+
 #include <boost/utility.hpp>
 #include <boost/scoped_ptr.hpp>
 
@@ -31,13 +31,13 @@ public:
 	/// \param lv is the access point for the dialog to the LyX kernel.
 	/// \param name is the identifier given to the dialog by its parent
 	/// container.
-	Dialog(LyXView & lv, string const & name);
+	Dialog(LyXView & lv, std::string const & name);
 	~Dialog();
 
 	/** The Dialog's name is the means by which a dialog identifies
 	 *  itself to the kernel.
 	 */
-	string const & name() const { return name_; }
+	std::string const & name() const { return name_; }
 
 	/** \name Buttons
 	 *  These methods are publicly accessible because they are invoked
@@ -57,8 +57,8 @@ public:
 	//@{
 	/// \param data is a string encoding of the data to be displayed.
 	/// It is passed to the Controller to be translated into a useable form.
-	void show(string const & data);
-	void update(string const & data);
+	void show(std::string const & data);
+	void update(std::string const & data);
 
 	void hide();
 	bool isVisible() const;
@@ -113,7 +113,7 @@ private:
 
 	bool is_closing_;
 	Kernel kernel_;
-	string name_;
+	std::string name_;
 	boost::scoped_ptr<ButtonController> bc_ptr_;
 	boost::scoped_ptr<Controller> controller_ptr_;
 	boost::scoped_ptr<View> view_ptr_;
@@ -138,7 +138,7 @@ public:
 	 *  \param data is a string encoding of the parameters to be displayed.
 	 *  \return true if the translation was successful.
 	 */
-	virtual bool initialiseParams(string const & data) = 0;
+	virtual bool initialiseParams(std::string const & data) = 0;
 
 	/// Enable the controller to clean up its data structures.
 	virtual void clearParams() = 0;
@@ -186,7 +186,7 @@ public:
 	/** \param parent Dialog owning this Controller.
 	 *  \param title  is the dialog title displayed by the WM.
 	 */
-	View(Dialog & parent, string title);
+	View(Dialog & parent, std::string title);
 	virtual ~View() {}
 
 	/** \name Generic View
@@ -224,9 +224,9 @@ public:
 	virtual void partialUpdate(int id);
 
 	/// sets the title of the dialog (window caption)
-	void setTitle(string const &);
+	void setTitle(std::string const &);
 	/// gets the title of the dialog (window caption)
-	string const & getTitle() const;
+	std::string const & getTitle() const;
 
 	/** \name View Access
 	 *  Enable the derived classes to access the other parts of the whole.
@@ -248,7 +248,7 @@ protected:
 
 private:
 	Dialog & p_;
-	string title_;
+	std::string title_;
 };
 
 

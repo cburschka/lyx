@@ -16,6 +16,9 @@
 #include "insets/insetcommand.h"
 
 
+using std::string;
+
+
 ControlCommand::ControlCommand(Dialog & dialog, string const & lfun_name)
 	: Dialog::Controller(dialog),
 	  lfun_name_(lfun_name)

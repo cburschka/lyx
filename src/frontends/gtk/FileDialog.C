@@ -13,6 +13,8 @@
 
 #include "FileDialogPrivate.h"
 
+using std::string;
+
 
 FileDialog::FileDialog(string const & title,
 		       kb_action action,

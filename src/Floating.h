@@ -12,7 +12,7 @@
 #ifndef FLOATING_H
 #define FLOATING_H
 
-#include "support/std_string.h"
+#include <string>
 
 /** This is a "float layout" object. It contains the parameters for how to
     handle the different kinds of floats, default ones and user created ones.
@@ -25,41 +25,41 @@ public:
 	///
 	Floating();
 	///
-	Floating(string const & type, string const & placement,
-		 string const & ext, string const & within,
-		 string const & style, string const & name,
-		 string const & listName, bool builtin = false);
+	Floating(std::string const & type, std::string const & placement,
+		 std::string const & ext, std::string const & within,
+		 std::string const & style, std::string const & name,
+		 std::string const & listName, bool builtin = false);
 	///
-	string const & type() const;
+	std::string const & type() const;
 	///
-	string const & placement() const;
+	std::string const & placement() const;
 	///
-	string const & ext() const;
+	std::string const & ext() const;
 	///
-	string const & within() const;
+	std::string const & within() const;
 	///
-	string const & style() const;
+	std::string const & style() const;
 	///
-	string const & name() const;
+	std::string const & name() const;
 	///
-	string const & listName() const;
+	std::string const & listName() const;
 	///
 	bool builtin() const;
 private:
 	///
-	string type_;
+	std::string type_;
 	///
-	string placement_;
+	std::string placement_;
 	///
-	string ext_;
+	std::string ext_;
 	///
-	string within_;
+	std::string within_;
 	///
-	string style_;
+	std::string style_;
 	///
-	string name_;
+	std::string name_;
 	///
-	string listName_;
+	std::string listName_;
 	///
 	bool builtin_;
 };

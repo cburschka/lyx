@@ -101,6 +101,8 @@
 
 #include <vector>
 
+using std::string;
+
 
 namespace {
 

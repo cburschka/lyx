@@ -53,6 +53,7 @@
 #include "xforms_helpers.h"
 
 using std::ostringstream;
+using std::string;
 
 
 extern BufferList bufferlist;

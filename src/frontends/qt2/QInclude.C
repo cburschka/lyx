@@ -23,6 +23,8 @@
 #include <qcheckbox.h>
 #include <qcombobox.h>
 
+using std::string;
+
 
 typedef QController<ControlInclude, QView<QIncludeDialog> > base_class;
 

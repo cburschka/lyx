@@ -24,7 +24,7 @@ public:
 
 	virtual void prohibitInput() const;
 	virtual void allowInput() const;
-	virtual void message(string const &);
+	virtual void message(std::string const &);
 	Gtk::VBox & getVBox() { return *vbox_.get(); }
 	GView();
 	bool on_delete_event(GdkEventAny * event);
@@ -38,7 +38,7 @@ public:
 private:
 	void showViewState();
 	bool onFocusIn(GdkEventFocus * event);
-	virtual void setWindowTitle(string const & t, string const & it);
+	virtual void setWindowTitle(std::string const & t, std::string const & it);
 	static GView * view_;
 	std::auto_ptr<Gtk::VBox> vbox_;
 	boost::scoped_ptr<GMiniBuffer> minibuffer_;

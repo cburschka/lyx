@@ -24,6 +24,8 @@
 
 using lyx::support::compare;
 
+using std::string;
+
 
 typedef FormController<ControlCommand, FormView<FD_bibitem> > base_class;
 

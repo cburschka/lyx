@@ -35,7 +35,7 @@
 using lyx::support::contains;
 
 using std::endl;
-
+using std::string;
 using std::auto_ptr;
 using std::istringstream;
 using std::ostream;

@@ -41,6 +41,7 @@ using std::bind2nd;
 using std::remove_if;
 
 using std::vector;
+using std::string;
 
 
 namespace

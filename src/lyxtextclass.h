@@ -13,8 +13,6 @@
 #include "lyxlayout.h"
 #include "lyxlayout_ptr_fwd.h"
 
-#include "support/std_string.h"
-
 #include <boost/shared_ptr.hpp>
 
 #include <vector>
@@ -33,9 +31,9 @@ public:
 	typedef LayoutList::const_iterator const_iterator;
 	/// Construct a layout with default values. Actual values loaded later.
 	explicit
-	LyXTextClass(string const & = string(),
-		     string const & = string(),
-		     string const & = string(),
+	LyXTextClass(std::string const & = std::string(),
+		     std::string const & = std::string(),
+		     std::string const & = std::string(),
 		     bool = false);
 
 	/// check whether the TeX class is available
@@ -47,7 +45,7 @@ public:
 	const_iterator end() const { return layoutlist_.end(); }
 
 	/// Performs the read of the layout file.
-	bool Read(string const & filename, bool merge = false);
+	bool Read(std::string const & filename, bool merge = false);
 	///
 	void readOutputType(LyXLex &);
 	///
@@ -61,10 +59,10 @@ public:
 	///
 	void readCounter(LyXLex &);
 	///
-	bool hasLayout(string const & name) const;
+	bool hasLayout(std::string const & name) const;
 
 	///
-	LyXLayout_ptr const & operator[](string const & vname) const;
+	LyXLayout_ptr const & operator[](std::string const & vname) const;
 
 	/// Sees to that the textclass structure has been loaded
 	bool load() const;
@@ -76,25 +74,25 @@ public:
 	/// The Counters present in this document class.
 	Counters & counters() const;
 	///
-	string const & defaultLayoutName() const;
+	std::string const & defaultLayoutName() const;
 	///
 	LyXLayout_ptr const & defaultLayout() const;
 	///
-	string const & name() const;
+	std::string const & name() const;
 	///
-	string const & latexname() const;
+	std::string const & latexname() const;
 	///
-	string const & description() const;
+	std::string const & description() const;
 	///
-	string const & opt_fontsize() const;
+	std::string const & opt_fontsize() const;
 	///
-	string const & opt_pagestyle() const;
+	std::string const & opt_pagestyle() const;
 	///
-	string const & options() const;
+	std::string const & options() const;
 	///
-	string const & pagestyle() const;
+	std::string const & pagestyle() const;
 	///
-	string const & preamble() const;
+	std::string const & preamble() const;
 
 	/// Packages that are already loaded by the class
 	enum Provides {
@@ -135,41 +133,41 @@ public:
 	LyXFont const & defaultfont() const;
 
 	/// Text that dictates how wide the left margin is on the screen
-	string const & leftmargin() const;
+	std::string const & leftmargin() const;
 
 	/// Text that dictates how wide the right margin is on the screen
-	string const & rightmargin() const;
+	std::string const & rightmargin() const;
 
 	/// The type of command used to produce a title
 	LYX_TITLE_LATEX_TYPES titletype() const;
 	/// The name of the title command
-	string const & titlename() const;
+	std::string const & titlename() const;
 
 	///
 	int size() const;
 private:
 	///
-	bool delete_layout(string const &);
+	bool delete_layout(std::string const &);
 	///
 	bool do_readStyle(LyXLex &, LyXLayout &);
 	/// Layout file name
-	string name_;
+	std::string name_;
 	/// document class name
-	string latexname_;
+	std::string latexname_;
 	/// document class description
-	string description_;
+	std::string description_;
 	/// Specific class options
-	string opt_fontsize_;
+	std::string opt_fontsize_;
 	///
-	string opt_pagestyle_;
+	std::string opt_pagestyle_;
 	///
-	string options_;
+	std::string options_;
 	///
-	string pagestyle_;
+	std::string pagestyle_;
 	///
-	string defaultlayout_;
+	std::string defaultlayout_;
 	/// preamble text to support layout styles
-	string preamble_;
+	std::string preamble_;
 	/// latex packages loaded by document class.
 	Provides provides_;
 	///
@@ -189,15 +187,15 @@ private:
 	*/
 	LyXFont defaultfont_;
 	/// Text that dictates how wide the left margin is on the screen
-	string leftmargin_;
+	std::string leftmargin_;
 
 	/// Text that dictates how wide the right margin is on the screen
-	string rightmargin_;
+	std::string rightmargin_;
 
 	/// The type of command used to produce a title
 	LYX_TITLE_LATEX_TYPES titletype_;
 	/// The name of the title command
-	string titlename_;
+	std::string titlename_;
 
 	/// Paragraph styles used in this layout
 	LayoutList layoutlist_;

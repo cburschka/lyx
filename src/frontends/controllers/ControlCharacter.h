@@ -25,7 +25,7 @@ public:
 	///
 	ControlCharacter(Dialog &);
 	///
-	virtual bool initialiseParams(string const & data);
+	virtual bool initialiseParams(std::string const & data);
 	///
 	virtual void clearParams();
 	///
@@ -46,7 +46,7 @@ public:
 	///
 	void setColor(LColor_color);
 	///
-	void setLanguage(string const &);
+	void setLanguage(std::string const &);
 	///
 	void setToggleAll(bool);
 
@@ -63,7 +63,7 @@ public:
 	///
 	LColor_color getColor() const;
 	///
-	string getLanguage() const;
+	std::string getLanguage() const;
 	///
 	bool getToggleAll() const;
 private:

@@ -23,6 +23,8 @@ using std::strtol;
 #endif
 
 using std::endl;
+using std::string;
+
 
 Encodings encodings;
 

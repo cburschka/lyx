@@ -24,6 +24,7 @@
 using lyx::support::getStringFromVector;
 
 using std::vector;
+using std::string;
 
 
 typedef FormController<ControlToc, FormView<FD_toc> > base_class;

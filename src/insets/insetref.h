@@ -23,17 +23,17 @@ class InsetRef : public InsetCommand {
 public:
 	struct type_info {
 		///
-		string latex_name;
+		std::string latex_name;
 		///
-		string gui_name;
+		std::string gui_name;
 		///
-		string short_gui_name;
+		std::string short_gui_name;
 	};
 	static type_info types[];
 	///
-	static int getType(string const & name);
+	static int getType(std::string const & name);
 	///
-	static string const & getName(int type);
+	static std::string const & getName(int type);
 
 
 	InsetRef(InsetCommandParams const &, Buffer const &);
@@ -48,7 +48,7 @@ public:
 	///
 	dispatch_result localDispatch(FuncRequest const & cmd);
 	///
-	string const getScreenLabel(Buffer const &) const;
+	std::string const getScreenLabel(Buffer const &) const;
 	///
 	EDITABLE editable() const { return IS_EDITABLE; }
 	///

@@ -61,7 +61,7 @@ public:
 	virtual RenderInset * clone() const;
 
 	/// This should provide the text for the button
-	void update(string const &, bool editable);
+	void update(std::string const &, bool editable);
 
 	/// compute the size of the object returned in dim
 	virtual void metrics(MetricsInfo & mi, Dimension & dim) const;
@@ -75,7 +75,7 @@ public:
 
 private:
 	/// The stored data.
-	string text_;
+	std::string text_;
 	bool editable_;
 	Box button_box_;
 };
@@ -111,7 +111,7 @@ private:
 	GraphicRenderer & operator=(GraphicRenderer const &);
 
 	/// The message to display instead of the graphic itself.
-	string const statusMessage() const;
+	std::string const statusMessage() const;
 
 	/// Is the image ready to draw, or should we display a message instead?
 	bool readyToDisplay() const;

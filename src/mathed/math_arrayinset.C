@@ -21,6 +21,7 @@
 
 using std::getline;
 
+using std::string;
 using std::auto_ptr;
 using std::istringstream;
 using std::istream_iterator;

@@ -16,6 +16,9 @@
 #include "BCView.h"
 
 
+using std::string;
+
+
 Dialog::Dialog(LyXView & lv, string const & name)
 	: is_closing_(false), kernel_(lv), name_(name),
 	  bc_ptr_(new ButtonController)

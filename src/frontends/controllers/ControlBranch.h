@@ -23,7 +23,7 @@ public:
 	///
 	ControlBranch(Dialog &);
 	///
-	virtual bool initialiseParams(string const & data);
+	virtual bool initialiseParams(std::string const & data);
 	///
 	virtual void clearParams();
 	///

@@ -19,6 +19,9 @@
 #  include <locale.h>
 #endif
 
+using std::string;
+
+
 namespace {
 
 Messages & getLyXMessages()

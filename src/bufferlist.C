@@ -42,7 +42,7 @@ using std::endl;
 using std::find;
 using std::find_if;
 using std::for_each;
-
+using std::string;
 using std::vector;
 
 

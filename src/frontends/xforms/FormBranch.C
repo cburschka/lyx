@@ -22,6 +22,9 @@
 #include "lyx_forms.h"
 
 
+using std::string;
+
+
 typedef FormController<ControlBranch, FormView<FD_branch> > base_class;
 
 FormBranch::FormBranch(Dialog & parent)
@@ -62,4 +65,3 @@ void FormBranch::apply()
 
 	controller().params().branch = type;
 }
-

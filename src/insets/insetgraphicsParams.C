@@ -31,6 +31,7 @@ using lyx::support::readBB_from_PSFile;
 using lyx::support::strToInt;
 using lyx::support::token;
 
+using std::string;
 using std::ostream;
 
 

@@ -16,7 +16,7 @@
 #define LENGTH_COMMON_H
 
 #include "lyxlength.h"
-#include "support/std_string.h"
+
 
 /// the number of units possible
 extern int const num_units;
@@ -31,7 +31,7 @@ extern char const * unit_name_gui[];
 extern char const * unit_name_ltx[];
 
 /// return the unit given a string representation such as "cm"
-LyXLength::UNIT unitFromString(string const & data);
+LyXLength::UNIT unitFromString(std::string const & data);
 
 
 #endif // LENGTH_COMMON_H

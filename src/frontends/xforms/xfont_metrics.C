@@ -27,6 +27,8 @@
 
 using lyx::support::uppercase;
 
+using std::string;
+
 
 namespace {
 

@@ -21,6 +21,8 @@
 #include "QNote.h"
 #include "Qt2BC.h"
 
+using std::string;
+
 
 typedef QController<ControlNote, QView<QNoteDialog> > base_class;
 

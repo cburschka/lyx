@@ -26,6 +26,8 @@
 
 using lyx::support::rtrim;
 
+using std::string;
+
 
 typedef FormController<ControlInclude, FormView<FD_include> > base_class;
 

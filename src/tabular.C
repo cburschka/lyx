@@ -48,6 +48,7 @@ using std::istream;
 using std::ostream;
 using std::ostringstream;
 using std::vector;
+using std::string;
 
 #ifndef CXX_GLOBAL_CSTD
 using std::strlen;

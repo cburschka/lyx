@@ -24,6 +24,7 @@
 #include "QCitation.h"
 
 using std::vector;
+using std::string;
 
 
 QCitationDialog::QCitationDialog(QCitation * form)
@@ -216,7 +217,7 @@ void QCitationDialog::find(biblio::Direction dir)
 	biblio::InfoMap const & theMap = form_->controller().bibkeysInfo();
 
 	biblio::Search const type = add_->searchTypeCB->isChecked()
-	       	? biblio::REGEX : biblio::SIMPLE;
+		? biblio::REGEX : biblio::SIMPLE;
 
 	vector<string>::const_iterator start = form_->bibkeys.begin();
 	int const sel = add_->availableLB->currentItem();

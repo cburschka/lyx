@@ -13,6 +13,8 @@
 #ifndef GETTEXT_H
 #define GETTEXT_H
 
+#include <string>
+
 /*
  * Native Language Support
  *
@@ -41,12 +43,11 @@
  *   Panic/fatal (that should not happen) messages need not be translated
  */
 
-#include "support/std_string.h"
 
 //#ifdef ENABLE_NLS
 
 ///
-string const _(string const &);
+std::string const _(std::string const &);
 
 //#else // ENABLE_NLS
 

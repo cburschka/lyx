@@ -16,6 +16,8 @@
 #include "debug.h"
 #include "lyxfunc.h"
 
+using std::string;
+
 namespace
 {
 

@@ -12,8 +12,6 @@
 #ifndef FRNT_LANG_H
 #define FRNT_LANG_H
 
-
-#include "support/std_string.h"
 #include <utility>
 #include <vector>
 
@@ -22,7 +20,7 @@
 namespace frnt {
 
 ///
-typedef std::pair<string, string> LanguagePair;
+typedef std::pair<std::string, std::string> LanguagePair;
 
 /** If the caller is the character dialog, add "No change" and "Reset"
  *  to the vector.

@@ -22,7 +22,7 @@
 #include <map>
 
 using std::endl;
-
+using std::string;
 using std::map;
 
 

@@ -41,6 +41,7 @@ using lyx::support::strToInt;
 using lyx::support::token;
 
 using std::vector;
+using std::string;
 
 
 typedef QController<ControlGraphics, QView<QGraphicsDialog> > base_class;

@@ -15,6 +15,9 @@
 #include "funcrequest.h"
 
 
+using std::string;
+
+
 ControlMinipage::ControlMinipage(Dialog & parent)
 	: Dialog::Controller(parent)
 {}

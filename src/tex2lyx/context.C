@@ -16,6 +16,8 @@
 
 using std::ostream;
 using std::endl;
+using std::string;
+
 
 namespace {
 

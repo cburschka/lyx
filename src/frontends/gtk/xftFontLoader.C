@@ -27,6 +27,7 @@
 #include "frontends/lyx_gui.h"
 
 using std::endl;
+using std::string;
 
 // The global fontLoader
 xftFontLoader fontLoader;

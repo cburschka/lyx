@@ -37,7 +37,7 @@ using lyx::support::strToInt;
 
 using std::endl;
 using std::min;
-
+using std::string;
 using std::auto_ptr;
 using std::ostream;
 

@@ -42,6 +42,8 @@
 #include <cstdlib>
 #include <unistd.h>
 
+
+using std::string;
 using std::endl;
 
 #ifndef CXX_GLOBAL_CSTD

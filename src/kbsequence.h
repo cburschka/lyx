@@ -17,7 +17,7 @@
 
 #include <boost/shared_ptr.hpp>
 
-#include "support/std_string.h"
+#include <string>
 #include <vector>
 
 class kb_keymap;
@@ -59,19 +59,19 @@ public:
 	 * Prefixes can also be ignored by using the Tilde "~"
 	 * f.ex.: "~S-Space".
 	 */
-	string::size_type parse(string const & s);
+	std::string::size_type parse(std::string const & s);
 
 	/**
 	 * Return the current sequence as a string.
 	 * @see parse()
 	 */
-	string const print() const;
+	std::string const print() const;
 
 	/**
 	 * Return the current sequence and available options as
 	 * a string. No options are added if no curmap kb map exists.
 	 */
-	string const printOptions() const;
+	std::string const printOptions() const;
 
 	/// Mark the sequence as deleted.
 	void mark_deleted();

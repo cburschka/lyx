@@ -21,7 +21,8 @@
 #include "paper.h"
 #include "graphics/GraphicsTypes.h"
 
-#include "support/std_string.h"
+#include <string>
+
 
 /// This contains the runtime configuration of LyX
 class LyXRC //: public noncopyable {
@@ -137,73 +138,73 @@ enum LyXRCTags {
 	///
 	void setDefaults();
 	///
-	int read(string const & filename);
+	int read(std::string const & filename);
 	///
-	void write(string const & filename) const;
+	void write(std::string const & filename) const;
 	///
 	void print() const;
 	///
 	void output(std::ostream & os) const;
 	///
-	static string const getDescription(LyXRCTags);
+	static std::string const getDescription(LyXRCTags);
 	///
-	string bind_file;
+	std::string bind_file;
 	///
-	string ui_file;
+	std::string ui_file;
 	///
-	string printer;
+	std::string printer;
 	///
-	string print_command;
+	std::string print_command;
 	///
-	string print_evenpage_flag;
+	std::string print_evenpage_flag;
 	///
-	string print_oddpage_flag;
+	std::string print_oddpage_flag;
 	///
-	string print_pagerange_flag;
+	std::string print_pagerange_flag;
 	///
-	string print_copies_flag;
+	std::string print_copies_flag;
 	///
-	string print_collcopies_flag;
+	std::string print_collcopies_flag;
 	///
-	string print_reverse_flag;
+	std::string print_reverse_flag;
 	///
-	string print_landscape_flag;
+	std::string print_landscape_flag;
 	///
-	string print_to_printer;
+	std::string print_to_printer;
 	///
 	bool print_adapt_output;
 	///
-	string print_to_file;
+	std::string print_to_file;
 	///
-	string print_file_extension;
+	std::string print_file_extension;
 	///
-	string print_extra_options;
+	std::string print_extra_options;
 	///
-	string print_spool_command;
+	std::string print_spool_command;
 	///
-	string print_spool_printerprefix;
+	std::string print_spool_printerprefix;
 	///
-	string print_paper_flag;
+	std::string print_paper_flag;
 	///
-	string print_paper_dimension_flag;
+	std::string print_paper_dimension_flag;
 	///
-	string custom_export_command;
+	std::string custom_export_command;
 	///
-	string custom_export_format;
+	std::string custom_export_format;
 	/// postscript interpreter (in general "gs", if it is installed)
-	string ps_command;
+	std::string ps_command;
 	/// option for telling the dvi viewer about the paper size
-	string view_dvi_paper_option;
+	std::string view_dvi_paper_option;
 	/// default paper size for local xdvi/dvips/ghostview/whatever
 	PAPER_SIZE default_papersize;
 	/// command to run chktex incl. options
-	string chktex_command;
+	std::string chktex_command;
 	///
-	string document_path;
+	std::string document_path;
 	///
-	string template_path;
+	std::string template_path;
 	///
-	string tempdir_path;
+	std::string tempdir_path;
 	///
 	bool use_tempdir;
 	///
@@ -213,13 +214,13 @@ enum LyXRCTags {
 	///
 	bool check_lastfiles;
 	/// filename for lastfiles file
-	string lastfiles;
+	std::string lastfiles;
 	/// maximal number of lastfiles
 	unsigned int num_lastfiles;
 	/// shall a backup file be created
 	bool make_backup;
 	/// A directory for storing backup files
-	string backupdir_path;
+	std::string backupdir_path;
 	/// Zoom factor for screen fonts
 	unsigned int zoom;
 	/// parameter for button_4 and button_5 (scrollwheel)
@@ -231,25 +232,25 @@ enum LyXRCTags {
 	/// DPI of monitor
 	float dpi;
 	///
-	string fontenc;
+	std::string fontenc;
 	///
-	string roman_font_name;
+	std::string roman_font_name;
 	///
-	string sans_font_name;
+	std::string sans_font_name;
 	///
-	string typewriter_font_name;
+	std::string typewriter_font_name;
 	///
-	string roman_font_foundry;
+	std::string roman_font_foundry;
 	///
-	string sans_font_foundry;
+	std::string sans_font_foundry;
 	///
-	string typewriter_font_foundry;
+	std::string typewriter_font_foundry;
 	///
-	string popup_bold_font;
+	std::string popup_bold_font;
 	///
-	string popup_normal_font;
+	std::string popup_normal_font;
 	///
-	string font_norm;
+	std::string font_norm;
 	///
 	enum FontEncoding {
 		///
@@ -274,17 +275,17 @@ enum LyXRCTags {
 	///
 	void set_font_norm_type();
 	///
-	string popup_font_encoding;
+	std::string popup_font_encoding;
 	///
 	unsigned int autosave;
 	///
-	string ascii_roff_command;
+	std::string ascii_roff_command;
 	///
 	unsigned int ascii_linelen;
 	/// use library instead of process
 	bool use_spell_lib;
 	/// Ispell command
-	string isp_command;
+	std::string isp_command;
 	/// Accept compound words in spellchecker?
 	bool isp_accept_compound;
 	/// Pass input encoding switch to ispell?
@@ -296,33 +297,33 @@ enum LyXRCTags {
 	/// Use escape chars?
 	bool isp_use_esc_chars;
 	/// Alternate language for ispell
-	string isp_alt_lang;
+	std::string isp_alt_lang;
 	/// Alternate personal dictionary file for ispell
-	string isp_pers_dict;
+	std::string isp_pers_dict;
 	/// Escape characters
-	string isp_esc_chars;
+	std::string isp_esc_chars;
 	///
 	bool use_kbmap;
 	///
-	string primary_kbmap;
+	std::string primary_kbmap;
 	///
-	string secondary_kbmap;
+	std::string secondary_kbmap;
 	///
-	string lyxpipes;
+	std::string lyxpipes;
 	///
-	string date_insert_format;
+	std::string date_insert_format;
 	///
-	string language_package;
+	std::string language_package;
 	///
 	bool language_auto_begin;
 	///
 	bool language_auto_end;
 	///
-	string language_command_begin;
+	std::string language_command_begin;
 	///
-	string language_command_end;
+	std::string language_command_end;
 	///
-	string language_command_local;
+	std::string language_command_local;
 	///
 	bool language_global_options;
 	///
@@ -334,7 +335,7 @@ enum LyXRCTags {
 	///
 	bool mark_foreign_language;
 	///
-	string default_language;
+	std::string default_language;
 	///
 	bool cursor_follows_scrollbar;
 	///
@@ -352,9 +353,9 @@ enum LyXRCTags {
 	///
 	float preview_scale_factor;
 	/// user name
-	string user_name;
+	std::string user_name;
 	/// user email
-	string user_email;
+	std::string user_email;
 };
 
 ///

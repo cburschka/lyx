@@ -15,7 +15,6 @@
 
 #include "ControlDialog_impl.h"
 
-#include "support/std_string.h"
 
 /** A controller for Preamble dialogs.
  */
@@ -25,9 +24,9 @@ public:
 	ControlPreamble(LyXView &, Dialogs &);
 
 	///
-	string const & params() const;
+	std::string const & params() const;
 	///
-	void params(string const & newparams);
+	void params(std::string const & newparams);
 private:
 	/// Get changed parameters and Dispatch them to the kernel.
 	virtual void apply();
@@ -37,7 +36,7 @@ private:
 	virtual void clearParams();
 
 	///
-	string params_;
+	std::string params_;
 };
 
 #endif // CONTROLPREAMBLE_H

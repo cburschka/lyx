@@ -28,6 +28,7 @@ using lyx::support::lowercase;
 
 using std::endl;
 using std::find_if;
+using std::string;
 
 
 namespace lyx {

@@ -19,7 +19,6 @@
 #ifndef LCOLOR_H
 #define LCOLOR_H
 
-#include "support/std_string.h"
 #include <boost/scoped_ptr.hpp>
 
 /**
@@ -195,42 +194,42 @@ public:
 
 	///
 	void LColor::fill(LColor::color c,
-			string const & lyxname,
-			string const & x11name = string(),
-			string const & latexname = string(),
-			string const & guiname = string());
+			std::string const & lyxname,
+			std::string const & x11name = std::string(),
+			std::string const & latexname = std::string(),
+			std::string const & guiname = std::string());
 
 	/// set the given LyX color to the color defined by the X11 name given
-	void setColor(LColor::color col, string const & x11name);
+	void setColor(LColor::color col, std::string const & x11name);
 	/// set the given LyX color to the color defined by the X11 name given
-	bool setColor(string const & lyxname, string const & x11name);
+	bool setColor(std::string const & lyxname, std::string const & x11name);
 
 	/// Get GUI name of color
-	string const getGUIName(LColor::color c) const;
+	std::string const getGUIName(LColor::color c) const;
 	///
-	string const getGUIName(string const & s) const;
+	std::string const getGUIName(std::string const & s) const;
 
 	/// Get X11 name of color
-	string const getX11Name(LColor::color c) const;
+	std::string const getX11Name(LColor::color c) const;
 	///
-	string const getX11Name(string const & s) const;
+	std::string const getX11Name(std::string const & s) const;
 
 	/// Get LaTeX name of color
-	string const getLaTeXName(LColor::color c) const;
+	std::string const getLaTeXName(LColor::color c) const;
 	///
-	string const getLaTeXName(string const & s) const;
+	std::string const getLaTeXName(std::string const & s) const;
 
 	/// Get LyX name of color
-	string const getLyXName(LColor::color c) const;
+	std::string const getLyXName(LColor::color c) const;
 	/// (string-to-string version not needed as it is identity)
 
 	///
 	size_t size() const;
 
 	/// get the color from the GUI name
-	LColor::color getFromGUIName(string const & guiname) const;
+	LColor::color getFromGUIName(std::string const & guiname) const;
 	/// get the color from the LyX name
-	LColor::color getFromLyXName(string const & lyxname) const;
+	LColor::color getFromLyXName(std::string const & lyxname) const;
 private:
 	///
 	struct Pimpl;

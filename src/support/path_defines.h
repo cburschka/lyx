@@ -12,27 +12,28 @@
 #ifndef PATH_DEFINES_H
 #define PATH_DEFINES_H
 
-#include "support/std_string.h"
+#include <string>
+
 
 namespace lyx {
 namespace support {
 
-string const & lyx_localedir();
+std::string const & lyx_localedir();
 
 /// The absolute path to the lyx support files we're actually going to use.
-string const & system_lyxdir();
+std::string const & system_lyxdir();
 
 /// Set the absolute path to the lyx support files (from the command line).
-void system_lyxdir(string const &);
+void system_lyxdir(std::string const &);
 
 /// The absolute path to the lyx support files in the build directory
-string const & build_lyxdir();
+std::string const & build_lyxdir();
 
 /// The absolute path to the user-level lyx support files.
-string const & user_lyxdir();
+std::string const & user_lyxdir();
 
 /// Set the absolute path to the user-level lyx support files.
-void user_lyxdir(string const &);
+void user_lyxdir(std::string const &);
 
 /** \returns true if the user lyx dir existed already and did not need
  *  to be created afresh.

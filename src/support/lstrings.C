@@ -11,7 +11,6 @@
 
 #include <config.h>
 
-#include "support/std_string.h"
 #include "lstrings.h"
 #include "support/std_sstream.h"
 #include "debug.h"
@@ -28,7 +27,7 @@
 #include <cstdlib>
 
 using std::transform;
-
+using std::string;
 using std::vector;
 
 #ifndef CXX_GLOBAL_CSTD

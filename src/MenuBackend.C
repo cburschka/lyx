@@ -55,7 +55,7 @@ using std::endl;
 using std::find_if;
 using std::max;
 using std::sort;
-
+using std::string;
 using std::vector;
 
 

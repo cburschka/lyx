@@ -16,6 +16,8 @@
 
 #include "support/std_sstream.h"
 
+
+using std::string;
 using std::abs;
 
 

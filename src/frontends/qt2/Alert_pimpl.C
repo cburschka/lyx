@@ -22,9 +22,12 @@
 
 #include <algorithm>
 
+using lyx::support::bformat;
+
 using std::pair;
 using std::make_pair;
-using lyx::support::bformat;
+using std::string;
+
 
 int prompt_pimpl(string const & tit, string const & question,
            int default_button, int cancel_button,

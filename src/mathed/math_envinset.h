@@ -14,12 +14,14 @@
 
 #include "math_nestinset.h"
 
+#include <string>
+
 
 /// Environtments á la \begin{something}...\end{something}
 class MathEnvInset : public MathNestInset {
 public:
 	///
-	MathEnvInset(string const & name_);
+	MathEnvInset(std::string const & name_);
 	///
 	virtual std::auto_ptr<InsetBase> clone() const;
 	///
@@ -35,7 +37,7 @@ public:
 
 private:
 	/// name of that environment
-	string name_;
+	std::string name_;
 };
 
 #endif

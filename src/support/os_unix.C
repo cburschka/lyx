@@ -16,6 +16,10 @@
 #include "support/filetools.h"
 #include "support/lstrings.h"
 
+
+using std::string;
+
+
 namespace {
 
 string binpath_;

@@ -19,6 +19,7 @@
 using std::endl;
 using std::make_pair;
 using std::pair;
+using std::string;
 
 
 int Alert::prompt(string const & title, string const & question,

@@ -22,6 +22,9 @@
 #include "frontends/LyXView.h"
 
 
+using std::string;
+
+
 ControlPreamble::ControlPreamble(LyXView & lv, Dialogs & d)
 	: ControlDialogBD(lv, d)
 {}

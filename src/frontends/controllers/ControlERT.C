@@ -15,6 +15,9 @@
 #include "funcrequest.h"
 
 
+using std::string;
+
+
 ControlERT::ControlERT(Dialog & parent)
 	: Dialog::Controller(parent), status_(InsetERT::Collapsed)
 {}

@@ -20,6 +20,8 @@
 
 #include <boost/assert.hpp>
 
+using std::string;
+
 
 /** The four LaTeX itemize environment default bullets
  */

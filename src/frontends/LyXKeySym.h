@@ -12,7 +12,7 @@
 #ifndef LYXKEYSYM_H
 #define LYXKEYSYM_H
 
-#include "support/std_string.h"
+#include <string>
 
 /**
  * This is a base class for representing a keypress.
@@ -27,7 +27,7 @@ public:
 	virtual ~LyXKeySym() {}
 
 	/// Initialize with the name of a key. F. ex. "space" or "a"
-	virtual void init(string const & symbolname) = 0;
+	virtual void init(std::string const & symbolname) = 0;
 
 	/// Is this a valid key?
 	virtual bool isOK() const = 0;
@@ -39,14 +39,14 @@ public:
 	virtual bool isText() const { return false; }
 
 	/// What is the symbolic name of this key? F.ex. "Return" or "c"
-	virtual string getSymbolName() const = 0;
+	virtual std::string getSymbolName() const = 0;
 
 	/**
 	 * Return the value of the keysym into the local ISO encoding.
 	 * This converts the LyXKeySym to a 8-bit encoded character.
 	 * This relies on user to use the right encoding.
 	 */
-	virtual char getISOEncoded(string const & encoding) const = 0;
+	virtual char getISOEncoded(std::string const & encoding) const = 0;
 };
 
 

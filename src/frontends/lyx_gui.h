@@ -12,7 +12,7 @@
 #ifndef LYX_GUI_H
 #define LYX_GUI_H
 
-#include "support/std_string.h"
+
 #include "FuncStatus.h"
 
 #include <vector>
@@ -30,13 +30,13 @@ namespace lyx_gui {
 extern bool use_gui;
 
 /// return a suitable serif font name (called from non-gui context too !)
-string const roman_font_name();
+std::string const roman_font_name();
 
 /// return a suitable sans serif font name (called from non-gui context too !)
-string const sans_font_name();
+std::string const sans_font_name();
 
 /// return a suitable monospaced font name (called from non-gui context too !)
-string const typewriter_font_name();
+std::string const typewriter_font_name();
 
 /// parse command line and do basic initialisation
 void parse_init(int & argc, char * argv[]);
@@ -51,7 +51,7 @@ void parse_lyxrc();
  * Start the main event loop, after executing the given
  * batch commands, and loading the given documents
  */
-void start(string const & batch, std::vector<string> const & files);
+void start(std::string const & batch, std::vector<std::string> const & files);
 
 /**
  * Synchronise all pending events.
@@ -72,7 +72,7 @@ FuncStatus getStatus(FuncRequest const & ev);
 /** Eg, passing LColor::black returns "000000",
  *      passing LColor::white returns "ffffff".
  */
-string const hexname(LColor_color col);
+std::string const hexname(LColor_color col);
 
 /**
  * update an altered GUI color

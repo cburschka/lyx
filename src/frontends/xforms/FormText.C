@@ -25,6 +25,8 @@
 
 using lyx::support::trim;
 
+using std::string;
+
 
 typedef FormController<ControlCommand, FormView<FD_text> > base_class;
 

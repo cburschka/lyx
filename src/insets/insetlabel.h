@@ -28,13 +28,13 @@ public:
 	///
 	virtual dispatch_result localDispatch(FuncRequest const & cmd);
 	///
-	string const getScreenLabel(Buffer const &) const { return getContents(); }
+	std::string const getScreenLabel(Buffer const &) const { return getContents(); }
 	///
 	EDITABLE editable() const { return IS_EDITABLE; }
 	///
 	InsetOld::Code lyxCode() const { return InsetOld::LABEL_CODE; }
 	/// Appends \c list with this label
-	void getLabelList(Buffer const &, std::vector<string> & list) const;
+	void getLabelList(Buffer const &, std::vector<std::string> & list) const;
 	///
 	int latex(Buffer const &, std::ostream &,
 		  LatexRunParams const &) const;

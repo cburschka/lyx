@@ -36,6 +36,7 @@ using lyx::support::system_lyxdir;
 using lyx::support::user_lyxdir;
 
 using std::pair;
+using std::string;
 
 
 extern BufferList bufferlist;

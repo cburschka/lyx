@@ -35,7 +35,7 @@ using lyx::support::OnlyPath;
 
 using std::endl;
 using std::find;
-
+using std::string;
 using std::list;
 using std::ostream;
 using std::ostringstream;

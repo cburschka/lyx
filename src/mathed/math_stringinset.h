@@ -22,7 +22,7 @@
 class MathStringInset : public MathInset {
 public:
 	///
-	explicit MathStringInset(string const & s);
+	explicit MathStringInset(std::string const & s);
 	///
 	virtual std::auto_ptr<InsetBase> clone() const;
 	///
@@ -30,7 +30,7 @@ public:
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
 	///
-	string str() const { return str_; }
+	std::string str() const { return str_; }
 	///
 	MathStringInset * asStringInset() { return this; }
 
@@ -49,6 +49,6 @@ public:
 
 private:
 	/// the string
-	string str_;
+	std::string str_;
 };
 #endif

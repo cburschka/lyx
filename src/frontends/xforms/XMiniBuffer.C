@@ -24,7 +24,9 @@
 
 #include <boost/bind.hpp>
 
+
 using std::vector;
+using std::string;
 
 
 namespace {

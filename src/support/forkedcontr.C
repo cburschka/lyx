@@ -28,9 +28,10 @@
 #include <unistd.h>
 #include <sys/wait.h>
 
+
 using std::endl;
 using std::find_if;
-
+using std::string;
 using std::vector;
 
 #ifndef CXX_GLOBAL_CSTD

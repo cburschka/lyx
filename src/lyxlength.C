@@ -24,6 +24,7 @@
 
 using std::abs;
 using std::ostringstream;
+using std::string;
 
 
 LyXLength::LyXLength()

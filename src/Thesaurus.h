@@ -15,7 +15,6 @@
 #include <vector>
 #include <map>
 
-#include "support/std_string.h"
 #ifdef HAVE_LIBAIKSAURUS
 #include AIKSAURUS_H_LOCATION
 #endif
@@ -31,12 +30,12 @@ public:
 	///
 	~Thesaurus();
 
-	typedef std::map<string, std::vector<string> > Meanings;
+	typedef std::map<std::string, std::vector<std::string> > Meanings;
 
 	/**
 	 * look up some text in the thesaurus
 	 */
-	Meanings lookup(string const & text);
+	Meanings lookup(std::string const & text);
 
 private:
 #ifdef HAVE_LIBAIKSAURUS

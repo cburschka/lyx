@@ -23,6 +23,7 @@ using lyx::support::subst;
 using lyx::support::trim;
 
 using std::endl;
+using std::string;
 
 
 //  The order of the LayoutTags enum is no more important. [asierra300396]
@@ -450,7 +451,7 @@ bool LyXLayout::Read(LyXLex & lexrc, LyXTextClass const & tclass)
 	}
 	lexrc.popTable();
 
-	if (labelstring_appendix_.empty())	
+	if (labelstring_appendix_.empty())
 		labelstring_appendix_ = labelstring_;
 	return error;
 }

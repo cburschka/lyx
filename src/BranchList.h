@@ -30,32 +30,33 @@
 #ifndef BRANCHES_H
 #define BRANCHES_H
 
-#include "support/std_string.h"
+#include <string>
 #include <list>
+
 
 class Branch {
 public:
 	///
-	string const getBranch() const;
+	std::string const getBranch() const;
 	///
-	void setBranch(string const &);
+	void setBranch(std::string const &);
 	///
 	bool getSelected() const;
 	///
 	void setSelected(bool);
 	///
-	string const getColor() const;
+	std::string const getColor() const;
 	///
-	void setColor(string const &);
+	void setColor(std::string const &);
 
 
 private:
 	///
-	string branch_;
+	std::string branch_;
 	///
 	bool selected_;
 	///
-	string color_;
+	std::string color_;
 };
 
 
@@ -78,29 +79,29 @@ public:
 	///
 	List::const_iterator end() const { return list.end(); }
 	///
-	string getColor(string const &) const;
+	std::string getColor(std::string const &) const;
 	///
-	void setColor(string const &, string const &);
+	void setColor(std::string const &, std::string const &);
 	/// Select/deselect multiple branches given in '|'-separated string
-	void setSelected(string const &, bool);
+	void setSelected(std::string const &, bool);
 	/// Add multiple branches to list
-	void add(string const &);
+	void add(std::string const &);
 	/// remove a branch from list by name
-	void remove(string const &);
+	void remove(std::string const &);
 	/// return whether this branch is selected
-	bool selected(string const &) const;
+	bool selected(std::string const &) const;
 	/// return, as a '|'-separated string, all branch names
-	string allBranches() const;
+	std::string allBranches() const;
 	///
-	string allSelected() const;
+	std::string allSelected() const;
 	///
-	string const separator() const;
+	std::string const separator() const;
 
 private:
 	///
 	List list;
 	///
-	string separator_;
+	std::string separator_;
 };
 
 #endif

@@ -15,6 +15,10 @@
 #include "funcrequest.h"
 #include "insets/insetbranch.h"
 
+
+using std::string;
+
+
 ControlBranch::ControlBranch(Dialog & parent)
 	: Dialog::Controller(parent)
 {}
@@ -40,4 +44,3 @@ void ControlBranch::dispatchParams()
 	string const lfun = InsetBranchMailer::params2string(string("branch"), params());
 	kernel().dispatch(FuncRequest(LFUN_INSET_APPLY, lfun));
 }
-
