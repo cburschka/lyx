@@ -1,5 +1,7 @@
 <!DOCTYPE UI><UI>
 <class>QAboutDialogBase</class>
+<include location="global">config.h</include>
+<include location="local">gettext.h</include>
 <widget>
     <class>QDialog</class>
     <property stdset="1">
@@ -11,7 +13,7 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>448</width>
+            <width>444</width>
             <height>454</height>
         </rect>
     </property>

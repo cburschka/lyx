@@ -1,5 +1,7 @@
 <!DOCTYPE UI><UI>
 <class>QDocumentDialogBase</class>
+<include location="global">config.h</include>
+<include location="local">gettext.h</include>
 <widget>
     <class>QDialog</class>
     <property stdset="1">

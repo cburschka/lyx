@@ -16,7 +16,12 @@ DISTCLEANFILES = $(UIDIALOGS) *.orig *.rej *~ *.bak core
  
 libqt2ui_la_SOURCES = $(UIDIALOGS)
 
+# a pattern to change tr() to _()
+
+SED=sed
+SEDREPLACETR=s,[^A-Za-z]tr[ ]*(,_(,g
+SEDREMOVEEMPTY=s,_[ ]*([ ]*""[ ]*),"",g
 %Base.h: %.ui
 	$(UIC) $< -o $@
 %Base.C: %Base.h %.ui
-	$(UIC) -impl $^ -o $@
+	$(UIC) -impl $^ | $(SED) '$(SEDREPLACETR);$(SEDREMOVEEMPTY)' > $@
