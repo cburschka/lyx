@@ -87,9 +87,8 @@ unsigned char getuchar(std::istream * is)
 {
 	char c = 0;
 	is->get(c);
-	if (!is->good()) {
+	if (!is->good())
 		lyxerr << "The input stream is not well..." << endl;
-	}
 	
 	return static_cast<unsigned char>(c);
 }
@@ -326,7 +325,7 @@ int yylex()
 				}
 				while (lexcode[c] == LexSpace && yyis->good()) 
 					c = getuchar(yyis);
-				if (yyis->good() && lexcode[c] != LexSpace)
+				if (lexcode[c] != LexSpace)
 					yyis->putback(c);
 			
 				//lyxerr[Debug::MATHED] << "reading: text '" << yytext << "'\n";
@@ -354,7 +353,7 @@ int yylex()
 
 MathScriptInset * prevScriptInset(MathArray const & array)
 {
-	MathInset * p = array.back_inset();
+	MathInset * p = array.back();
 	return (p && p->isScriptInset()) ? static_cast<MathScriptInset *>(p) : 0;
 }
 
@@ -363,7 +362,7 @@ MathInset * lastScriptInset(MathArray & array, bool up, bool down, int limits)
 {
 	MathScriptInset * p = prevScriptInset(array);
 	if (!p) {
-		MathInset * b = array.back_inset();
+		MathInset * b = array.back();
 		if (b && b->isScriptable()) {
 			p = new MathScriptInset(up, down, b->clone());
 			array.pop_back();	
@@ -694,12 +693,12 @@ void mathed_parse_into(MathArray & array, unsigned flags)
 			unsigned char c = getuchar(yyis);
 			if (c == '[') {
 				array.push_back(new MathRootInset);
-				mathed_parse_into(array.back_inset()->cell(0), FLAG_BRACK_END);
-				mathed_parse_into(array.back_inset()->cell(1), FLAG_ITEM);
+				mathed_parse_into(array.back()->cell(0), FLAG_BRACK_END);
+				mathed_parse_into(array.back()->cell(1), FLAG_ITEM);
 			} else {
 				yyis->putback(c);
 				array.push_back(new MathSqrtInset);
-				mathed_parse_into(array.back_inset()->cell(0), FLAG_ITEM);
+				mathed_parse_into(array.back()->cell(0), FLAG_ITEM);
 			}
 			break;
 		}

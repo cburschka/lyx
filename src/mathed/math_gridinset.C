@@ -30,7 +30,7 @@ MathGridInset::ColInfo::ColInfo()
 
 
 MathGridInset::MathGridInset(int m, int n, string const & nm)
-	: MathInset(m * n, nm), rowinfo_(n), colinfo_(m), v_align_('c')
+	: MathNestInset(m * n, nm), rowinfo_(n), colinfo_(m), v_align_('c')
 {
 	if (m <= 0)
 		lyxerr << "positve number of columns expected\n";
@@ -77,7 +77,7 @@ char MathGridInset::valign() const
 void MathGridInset::metrics(MathStyles st)
 {
 	// let the cells adjust themselves
-	MathInset::metrics(st);
+	MathNestInset::metrics(st);
 	size_ = st;
 
 	// adjust vertical structure

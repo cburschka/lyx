@@ -7,7 +7,7 @@
 
 
 MathSizeInset::MathSizeInset(MathStyles st)
-	: MathInset(1), style_(st)
+	: MathNestInset(1), style_(st)
 {
 	name_ = verbose();
 }

@@ -2,7 +2,7 @@
 #ifndef MATH_SCRIPTINSET_H
 #define MATH_SCRIPTINSET_H
 
-#include "math_inset.h"
+#include "math_nestinset.h"
 
 #ifdef __GNUG__
 #pragma interface
@@ -13,7 +13,7 @@
  */
 
 
-class MathScriptInset : public MathInset {
+class MathScriptInset : public MathNestInset {
 public:
 	///
 	MathScriptInset();

@@ -20,7 +20,7 @@
 #include "Painter.h"
 
 MathRootInset::MathRootInset()
-	: MathInset(2)
+	: MathNestInset(2)
 {}
 
 
@@ -32,7 +32,7 @@ MathInset * MathRootInset::clone() const
 
 void MathRootInset::metrics(MathStyles st)
 {
-	MathInset::metrics(st);
+	MathNestInset::metrics(st);
 	size_    = st;
 	ascent_  = std::max(xcell(0).ascent()  + 5, xcell(1).ascent())  + 2;
 	descent_ = std::max(xcell(1).descent() + 5, xcell(0).descent()) + 2;

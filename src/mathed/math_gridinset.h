@@ -2,7 +2,7 @@
 #ifndef MATH_GRID_H
 #define MATH_GRID_H
 
-#include "math_inset.h"
+#include "math_nestinset.h"
 
 #ifdef __GNUG__
 #pragma interface
@@ -14,7 +14,7 @@
     \author André Pönitz 2001
 */
 
-class MathGridInset : public MathInset {
+class MathGridInset : public MathNestInset {
 
 	/// additional per-row information
 	struct RowInfo {

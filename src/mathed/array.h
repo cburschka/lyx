@@ -92,7 +92,7 @@ public:
 	///
 	void pop_back();
 	///
-	MathInset * back_inset() const;
+	MathInset * back() const;
 
 	///
 	void dump(std::ostream &) const;
@@ -116,8 +116,6 @@ public:
 	///
 	void setCode(int pos, MathTextCodes t);
 	///
-	bool isInset(int pos) const;
-	///
 	void write(std::ostream &, bool) const;
 	///
 	void writeNormal(std::ostream &) const;
@@ -125,12 +123,7 @@ public:
 	void validate(LaTeXFeatures &) const;
 private:
 	///
-	typedef std::vector<unsigned char>           buffer_type;
-	///
-	typedef unsigned char                        value_type;
-
-	///
-	int item_size(int pos) const;
+	typedef std::vector<MathInset *>           buffer_type;
 	///
 	void deep_copy(int pos1, int pos2);
 	/// Buffer

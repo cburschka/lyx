@@ -26,9 +26,9 @@
 int MathInset::workwidth;
 
 
-MathInset::MathInset(int nargs, string const & name)
+MathInset::MathInset(string const & name)
 	: name_(name), width_(0), ascent_(0), descent_(0),
-		size_(LM_ST_DISPLAY), code_(LM_TC_MIN), cells_(nargs), xo_(0), yo_(0)
+		size_(LM_ST_DISPLAY), code_(LM_TC_MIN), xo_(0), yo_(0)
 {}
 
 
@@ -113,89 +113,67 @@ void MathInset::yo(int y)
 
 int MathInset::nargs() const
 {
-	return cells_.size();
+	return 0;
 }
 
 
-MathXArray & MathInset::xcell(int i)
+MathXArray dummyCell;
+
+MathXArray & MathInset::xcell(int)
 {
-	return cells_[i];
+	lyxerr << "I don't have a cell\n";
+	return dummyCell;
 }
 
 
-MathXArray const & MathInset::xcell(int i) const
+MathXArray const & MathInset::xcell(int) const
 {
-	return cells_[i];
+	lyxerr << "I don't have a cell\n";
+	return dummyCell;
 }
 
 
-MathArray & MathInset::cell(int i)
+MathArray & MathInset::cell(int)
 {
-	return cells_[i].data_;
+	lyxerr << "I don't have a cell\n";
+	return dummyCell.data_;
 }
 
 
-MathArray const & MathInset::cell(int i) const
+MathArray const & MathInset::cell(int) const
 {
-	return cells_[i].data_;
+	lyxerr << "I don't have a cell\n";
+	return dummyCell.data_;
 }
 
 
-void MathInset::substitute(MathArray & array, MathMacro const & m) const
+void MathInset::substitute(MathArray & array, MathMacro const &) const
 {
-	MathInset * p = clone();
-	for (int i = 0; i < nargs(); ++i)
-		p->cell(i).substitute(m);
-	array.push_back(p);
+	array.push_back(clone());
 }
 
 
-void MathInset::metrics(MathStyles st)
+bool MathInset::idxNext(int &, int &) const
 {
-	size_ = st;
-	for (int i = 0; i < nargs(); ++i)
-		xcell(i).metrics(st);
+	return false;
 }
 
 
-void MathInset::draw(Painter & pain, int x, int y)
+bool MathInset::idxRight(int &, int &) const
 {
-	xo_ = x;
-	yo_ = y;
-	for (int i = 0; i < nargs(); ++i)
-		xcell(i).draw(pain, x + xcell(i).xo(), y + xcell(i).yo());
+	return false;
 }
 
 
-bool MathInset::idxNext(int & idx, int & pos) const
+bool MathInset::idxPrev(int &, int &) const
 {
-	if (idx + 1 >= nargs())
-		return false;
-	++idx;
-	pos = 0;
-	return true;
+	return false;
 }
 
 
-bool MathInset::idxRight(int & idx, int & pos) const
+bool MathInset::idxLeft(int &, int &) const
 {
-	return idxNext(idx, pos);
-}
-
-
-bool MathInset::idxPrev(int & idx, int & pos) const
-{
-	if (idx == 0)
-		return false;
-	--idx;
-	pos = cell(idx).size();
-	return true;
-}
-
-
-bool MathInset::idxLeft(int & idx, int & pos) const
-{
-	return idxPrev(idx, pos);
+	return false;
 }
 
 
@@ -211,42 +189,27 @@ bool MathInset::idxDown(int &, int &) const
 }
 
 
-bool MathInset::idxFirst(int & i, int & pos) const
+bool MathInset::idxFirst(int &, int &) const
 {
-	if (nargs() == 0)
-		return false;
-	i = 0;
-	pos = 0;
-	return true;
+	return false;
 }
 
 
-bool MathInset::idxLast(int & i, int & pos) const
+bool MathInset::idxLast(int &, int &) const
 {
-	if (nargs() == 0)
-		return false;
-	i = nargs() - 1;
-	pos = cell(i).size();
-	return true;
+	return false;
 }
 
 
-bool MathInset::idxHome(int & /* idx */, int & pos) const
+bool MathInset::idxHome(int &, int &) const
 {
-	if (pos == 0)
-		return false;
-	pos = 0;
-	return true;
+	return false;
 }
 
 
-bool MathInset::idxEnd(int & idx, int & pos) const
+bool MathInset::idxEnd(int &, int &) const
 {
-	if (pos == cell(idx).size())
-		return false;
-
-	pos = cell(idx).size();
-	return true;
+	return false;
 }
 
 
@@ -312,28 +275,19 @@ void MathInset::dump() const
 {
 	lyxerr << "---------------------------------------------\n";
 	write(lyxerr, false);
-	lyxerr << "\n";
-	for (int i = 0; i < nargs(); ++i)
-		lyxerr << cell(i) << "\n";
-	lyxerr << "---------------------------------------------\n";
+	lyxerr << "\n---------------------------------------------\n";
 }
 
 
-void MathInset::push_back(unsigned char ch, MathTextCodes fcode)
+void MathInset::push_back(unsigned char, MathTextCodes)
 {
-	if (nargs())
-		cells_.back().data_.push_back(ch, fcode);
-	else
-		lyxerr << "can't push without a cell\n";
+	lyxerr << "can't push without a cell\n";
 }
 
 
 void MathInset::push_back(MathInset * p)
 {
-	if (nargs())
-		cells_.back().data_.push_back(p);
-	else
-		lyxerr << "can't push without a cell\n";
+	lyxerr << "can't push without a cell\n";
 }
 
 
@@ -347,11 +301,8 @@ bool MathInset::covers(int x, int y) const
 }
 
 
-void MathInset::validate(LaTeXFeatures & features) const
-{
-	for (int i = 0; i < nargs(); ++i)
-		cell(i).validate(features);
-}
+void MathInset::validate(LaTeXFeatures &) const
+{}
 
 
 std::vector<int> MathInset::idxBetween(int from, int to) const

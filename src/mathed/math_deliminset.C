@@ -10,7 +10,7 @@
 
 
 MathDelimInset::MathDelimInset(int l, int r)
-	: MathInset(1), left_(l), right_(r)
+	: MathNestInset(1), left_(l), right_(r)
 {}
 
 

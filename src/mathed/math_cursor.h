@@ -99,7 +99,7 @@ public:
 	///
 	bool plainLeft();
 	///
-	bool plainRight();
+	void plainRight();
 	///
 	void plainErase();
 	///

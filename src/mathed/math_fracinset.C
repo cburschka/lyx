@@ -9,7 +9,7 @@
 
 
 MathFracInset::MathFracInset(string const & name)
-	: MathInset(2, name)
+	: MathNestInset(2, name)
 {}
 
 

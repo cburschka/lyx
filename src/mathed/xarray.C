@@ -31,21 +31,12 @@ void MathXArray::metrics(MathStyles st)
 	width_   = 0;
 	style_   = st;
 
-	for (int pos = 0; pos < data_.size(); data_.next(pos)) {
-		int asc;
-		int des;
-		int wid;
+	for (int pos = 0; pos < data_.size(); ++pos) {
 		MathInset * p = data_.nextInset(pos);
-		if (p) {
-			p->metrics(st);
-			asc = p->ascent();
-			des = p->descent();
-			wid = p->width();
-		} else {
-			char cx = data_.getChar(pos); 
-			MathTextCodes fc = data_.getCode(pos); 
-			mathed_char_dim(fc, style_, cx, asc, des, wid);
-		}
+		p->metrics(st);
+		int asc = p->ascent();
+		int des = p->descent();
+		int wid = p->width();
 		ascent_  = max(ascent_, asc);
 		descent_ = max(descent_, des);
 		width_   += wid;
@@ -63,19 +54,10 @@ void MathXArray::draw(Painter & pain, int x, int y)
 		return;
 	}
 
-	for (int pos = 0; pos < data_.size(); data_.next(pos)) {
+	for (int pos = 0; pos < data_.size(); ++pos) {
 		MathInset * p = data_.nextInset(pos);
-		if (p) {
-			p->draw(pain, x, y);
-			x += p->width();
-		} else {
-			char cx = data_.getChar(pos);
-			MathTextCodes fc = data_.getCode(pos);
-			string s;
-			s += cx;
-			drawStr(pain, fc, style_, x, y, s);
-			x += mathed_char_width(fc, style_, cx);
-		}
+		p->draw(pain, x, y);
+		x += p->width();
 	}
 }
 
@@ -84,7 +66,7 @@ int MathXArray::pos2x(int targetpos) const
 {
 	int x = 0;
 	targetpos = min(targetpos, data_.size());
-	for (int pos = 0; pos < targetpos; data_.next(pos)) 
+	for (int pos = 0; pos < targetpos; ++pos) 
 		x += width(pos);
 	return x;
 }
@@ -95,26 +77,23 @@ int MathXArray::x2pos(int targetx) const
 	int pos   = 0;
 	int lastx = 0;
 	int currx = 0;
-	while (currx < targetx && pos < data_.size()) {
+	for ( ; currx < targetx && pos < data_.size(); ++pos) {
 		lastx = currx;
 		currx += width(pos);
- 		data_.next(pos);
 	}
 	if (abs(lastx - targetx) < abs(currx - targetx))
 		data_.prev(pos);
 	return pos;
 }
 
+
 int MathXArray::width(int pos) const
 {
 	if (pos >= data_.size())
 		return 0;
-
-	if (data_.isInset(pos)) 
-		return data_.nextInset(pos)->width();
-	else 
-		return mathed_char_width(data_.getCode(pos), style_, data_.getChar(pos));
+	return data_.nextInset(pos)->width();
 }
+
 
 std::ostream & operator<<(std::ostream & os, MathXArray const & ar)
 {

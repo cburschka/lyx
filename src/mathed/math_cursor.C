@@ -259,9 +259,9 @@ bool MathCursor::left(bool sel)
 }
 
 
-bool MathCursor::plainRight()
+void MathCursor::plainRight()
 {
-	return array().next(cursor().pos_);
+	++cursor().pos_;
 }
 
 
@@ -419,7 +419,7 @@ void MathCursor::insert(MathInset * p)
 	}
 
 	array().insert(cursor().pos_, p);
-	array().next(cursor().pos_);
+	++cursor().pos_;
 }
 
 
@@ -731,7 +731,7 @@ void MathCursor::macroModeOpen()
 	if (!imacro_) {
 		imacro_ = new MathFuncInset("");
 		array().insert(cursor().pos_, imacro_);
-		array().next(cursor().pos_);
+		++cursor().pos_;
 		//insert(imacro_);
 	} else
 		lyxerr << "Math Warning: Already in macro mode" << endl;
@@ -856,8 +856,8 @@ void MathCursor::handleFont(MathTextCodes t)
 		getSelection(i1, i2); 
 		if (i1.idx_ == i2.idx_) {
 			MathArray & ar = i1.cell();
-			for (int pos = i1.pos_; pos != i2.pos_; ar.next(pos))
-				if (!ar.isInset(pos) && isalnum(ar.getChar(pos))) { 
+			for (int pos = i1.pos_; pos != i2.pos_; ++pos)
+				if (isalnum(ar.getChar(pos))) { 
 					MathTextCodes c = ar.getCode(pos) == t ? LM_TC_VAR : t;
 					ar.setCode(pos, c);
 				}

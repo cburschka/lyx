@@ -2,7 +2,7 @@
 #ifndef MATH_DECORATIONINSET_H
 #define MATH_DECORATIONINSET_H
 
-#include "math_inset.h"
+#include "math_nestinset.h"
 
 #ifdef __GNUG__
 #pragma interface
@@ -14,7 +14,7 @@
 
 struct latexkeys;
 
-class MathDecorationInset : public MathInset {
+class MathDecorationInset : public MathNestInset {
 public:
 	///
 	explicit MathDecorationInset(latexkeys const *);

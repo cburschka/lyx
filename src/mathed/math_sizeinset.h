@@ -2,7 +2,7 @@
 #ifndef MATHSIZEINSET_H
 #define MATHSIZEINSET_H
 
-#include "math_inset.h"
+#include "math_nestinset.h"
 #include "math_defs.h"
 
 #ifdef __GNUG__
@@ -13,7 +13,7 @@
     \author André Poenitz
 */
 
-class MathSizeInset : public MathInset {
+class MathSizeInset : public MathNestInset {
 public:
 	///
 	explicit MathSizeInset(MathStyles st);

@@ -105,6 +105,8 @@ Misc:
 - Just moving the cursor in a math inset causes changing the buffer status
   to (changed).
 
+- disable the insert->label menu item when in inline formula.
+
 
 Eran Tromer:
 
@@ -156,6 +158,12 @@ Rainer Dorsch:
 
 - Entering \mathbf{c} in math mode is displayed as written (without
   backslash)
+
+- I know the latex code of a lot of math symbols displayed by lyx,
+  but not all of them. Thus I have to use the math panel for only a single
+  symbol in a formula. I think it would be very useful, if the latex code
+  of the symbol would be displayed as a hint, if the mouse positioned over
+  it.
 
 
 Marcus (Suran@gmx.net) 

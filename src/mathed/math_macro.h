@@ -24,7 +24,7 @@
 #include <vector>
 #include <iosfwd>
 
-#include "math_inset.h"
+#include "math_nestinset.h"
 #include "math_macroarg.h"
 
 class MathMacroTemplate;
@@ -34,7 +34,7 @@ class MathMacroTemplate;
     \author Alejandro Aguilar Sierra <asierra@servidor.unam.mx>
     \version November 1996
  */
-class MathMacro : public MathInset {
+class MathMacro : public MathNestInset {
 public:
 	/// A macro can be built from an existing template
 	explicit MathMacro(MathMacroTemplate const &);

@@ -33,12 +33,12 @@
 using std::endl;
 
 MathMacro::MathMacro(MathMacroTemplate const & t)
-	: MathInset(t.numargs(), t.name()), tmplate_(&t)
+	: MathNestInset(t.numargs(), t.name()), tmplate_(&t)
 {}
 
 
 MathMacro::MathMacro(MathMacro const & t)
-	: MathInset(t), tmplate_(t.tmplate_) // don't copy 'expanded_'!
+	: MathNestInset(t), tmplate_(t.tmplate_) // don't copy 'expanded_'!
 {}
 
 
@@ -164,13 +164,13 @@ void MathMacro::writeNormal(std::ostream & os) const
 
 bool MathMacro::idxUp(int & idx, int & pos) const
 {
-	return MathInset::idxLeft(idx, pos);
+	return MathNestInset::idxLeft(idx, pos);
 }
 
 
 bool MathMacro::idxDown(int & idx, int & pos) const
 {
-	return MathInset::idxRight(idx, pos);
+	return MathNestInset::idxRight(idx, pos);
 }
 
 

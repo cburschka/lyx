@@ -1,13 +1,12 @@
-
 #ifdef __GNUG__
 #pragma implementation
 #endif
 
 #include "math_inset.h"
+#include "math_charinset.h"
 #include "debug.h"
 #include "array.h"
 #include "math_scriptinset.h"
-#include "math_parser.h"
 #include "mathed/support.h"
 
 using std::ostream;
@@ -39,11 +38,8 @@ MathArray::MathArray(MathArray const & array, int from, int to)
 
 void MathArray::deep_copy(int pos1, int pos2)
 {
-	for (int pos = pos1; pos < pos2; next(pos)) 
-		if (isInset(pos)) {
-			MathInset * p = nextInset(pos)->clone();
-			memcpy(&bf_[pos + 1], &p, sizeof(p));
-		}
+	for (int pos = pos1; pos < pos2; ++pos) 
+		bf_[pos] = bf_[pos]->clone();
 }
 
 
@@ -52,7 +48,7 @@ bool MathArray::next(int & pos) const
 	if (pos >= size() - 1)
 		return false;
 
-	pos += item_size(pos);
+	++pos;
 	return true;
 }
 
@@ -62,7 +58,7 @@ bool MathArray::prev(int & pos) const
 	if (pos == 0)
 		return false;
 
-	pos -= item_size(pos - 1);
+	--pos;
 	return true;
 }
 
@@ -74,21 +70,11 @@ bool MathArray::last(int & pos) const
 }
 
 
-int MathArray::item_size(int pos) const
-{
-	return 2 + (isInset(pos) ? sizeof(MathInset*) : 1);
-}
-
-
 void MathArray::substitute(MathMacro const & m)
 {
 	MathArray tmp;
-	for (int pos = 0; pos < size(); next(pos)) {
-		if (isInset(pos)) 
-			nextInset(pos)->substitute(tmp, m);
-		else 
-			tmp.push_back(getChar(pos), getCode(pos));
-	}
+	for (int pos = 0; pos < size(); ++pos) 
+		bf_[pos]->substitute(tmp, m);
 	swap(tmp);
 }
 
@@ -103,28 +89,23 @@ MathArray & MathArray::operator=(MathArray const & array)
 
 MathInset * MathArray::nextInset(int pos) const
 {
-	if (!isInset(pos))
-		return 0;
-	MathInset * p;
-	memcpy(&p, &bf_[0] + pos + 1, sizeof(p));
-	return p;
+	return (pos == size()) ? 0 : bf_[pos];
 }
 
 
 MathInset * MathArray::prevInset(int pos) const
 {
-	if (!prev(pos))
-		return 0;
-	return nextInset(pos);
+	return (pos == 0) ? 0 : bf_[pos - 1];
 }
 
 
 unsigned char MathArray::getChar(int pos) const
 {
-	return pos < size() ? bf_[pos + 1] : '\0';
+	return (pos == size()) ? 0 : (bf_[pos]->getChar());
 }
 
 
+/*
 string MathArray::getString(int & pos) const
 {
 	string s;
@@ -139,35 +120,30 @@ string MathArray::getString(int & pos) const
 
 	return s;
 }
+*/
 
 
 MathTextCodes MathArray::getCode(int pos) const
 {
-	return pos < size() ? MathTextCodes(bf_[pos]) : LM_TC_MIN;
+	return pos < size() ? (bf_[pos]->code()) : LM_TC_MIN;
 }
 
 
 void MathArray::setCode(int pos, MathTextCodes t)
 {
-	if (pos > size() || isInset(pos))
-		return;
-	bf_[pos] = t;
-	bf_[pos + 2] = t;
+	bf_[pos]->code(t);
 }
-
 
 
 void MathArray::insert(int pos, MathInset * p)
 {
-	bf_.insert(bf_.begin() + pos, 2 + sizeof(p), LM_TC_INSET);
-	memcpy(&bf_[pos + 1], &p, sizeof(p));
+	bf_.insert(bf_.begin() + pos, p);
 }
 
 
 void MathArray::insert(int pos, unsigned char b, MathTextCodes t)
 {
-	bf_.insert(bf_.begin() + pos, 3, t);
-	bf_[pos + 1] = b;
+	bf_.insert(bf_.begin() + pos, new MathCharInset(b, t));
 }
 
 
@@ -229,29 +205,20 @@ void MathArray::erase()
 
 void MathArray::erase(int pos)
 {
-	if (pos < static_cast<int>(bf_.size()))
-		erase(pos, pos + item_size(pos));
+	if (pos < size())
+		bf_.erase(bf_.begin() + pos);
 }
 
 
 void MathArray::erase(int pos1, int pos2)
 {
-	for (int pos = pos1; pos < pos2; next(pos))
-		if (isInset(pos))
-			delete nextInset(pos);
+	for (int pos = pos1; pos < pos2; ++pos)
+		delete nextInset(pos);
 	bf_.erase(bf_.begin() + pos1, bf_.begin() + pos2);
 }
 
 
-bool MathArray::isInset(int pos) const
-{
-	if (pos >= size())
-		return false;
-	return MathIsInset(static_cast<MathTextCodes>(bf_[pos]));
-}
-
-
-MathInset * MathArray::back_inset() const
+MathInset * MathArray::back() const
 {
 	return prevInset(size());
 }
@@ -267,12 +234,8 @@ void MathArray::dump2(ostream & os) const
 
 void MathArray::dump(ostream & os) const
 {
-	for (int pos = 0; pos < size(); next(pos)) {
-		if (isInset(pos)) 
-			os << "<inset: " << nextInset(pos) << ">";
-		else 
-			os << "<" << int(bf_[pos]) << " " << int(bf_[pos+1]) << ">";
-	}
+	for (int pos = 0; pos < size(); ++pos)
+		os << "<" << nextInset(pos) << ">";
 }
 
 
@@ -285,61 +248,8 @@ std::ostream & operator<<(std::ostream & os, MathArray const & ar)
 
 void MathArray::write(ostream & os, bool fragile) const
 {
-	if (empty())
-		return;
-
-	int brace = 0;
-	
-	for (int pos = 0; pos < size(); next(pos)) {
-		if (isInset(pos)) {
-
-			nextInset(pos)->write(os, fragile);
-
-		} else {
-
-			MathTextCodes fcode = getCode(pos);
-			unsigned char c = getChar(pos);
-
-			if (MathIsSymbol(fcode)) {
-				latexkeys const * l = lm_get_key_by_id(c, LM_TK_SYM);
-
-				if (l == 0) {
-					l = lm_get_key_by_id(c, LM_TK_BIGSYM);
-				}
-
-				if (l) {
-					os << '\\' << l->name << ' ';
-				} else {
-					lyxerr << "Could not find the LaTeX name for  " << c << " and fcode " << fcode << "!" << std::endl;
-				}
-			} else {
-				if (fcode >= LM_TC_RM && fcode <= LM_TC_TEXTRM) 
-					os << '\\' << math_font_name[fcode - LM_TC_RM] << '{';
-
-				// Is there a standard logical XOR?
-				if ((fcode == LM_TC_TEX && c != '{' && c != '}') ||
-						(fcode == LM_TC_SPECIAL))
-					os << '\\';
-				else {
-					if (c == '{')
-						++brace;
-					if (c == '}')
-						--brace;
-				}
-				if (c == '}' && fcode == LM_TC_TEX && brace < 0) 
-					lyxerr <<"Math warning: Unexpected closing brace.\n";
-				else	       
-					os << c;
-			}
-
-			if (fcode >= LM_TC_RM && fcode <= LM_TC_TEXTRM)
-				os << '}';
-			
-		}
-	}
-
-	if (brace > 0)
-		os << string(brace, '}');
+	for (int pos = 0; pos < size(); ++pos)
+		nextInset(pos)->write(os, fragile);
 }
 
 
@@ -356,9 +266,8 @@ void MathArray::writeNormal(ostream & os) const
 
 void MathArray::validate(LaTeXFeatures & features) const
 {
-	for (int pos = 0; pos < size(); next(pos)) 
-		if (isInset(pos)) 
-			nextInset(pos)->validate(features);
+	for (int pos = 0; pos < size(); ++pos)
+		nextInset(pos)->validate(features);
 }
 
 

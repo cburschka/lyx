@@ -68,9 +68,8 @@ int getCols(short int type)
 // used for "intelligent splitting"
 int firstRelOp(MathArray const & array)
 {
-	for (int pos = 0; pos < array.size(); array.next(pos))
-		if (!array.isInset(pos) &&
-				MathIsRelOp(array.getChar(pos), array.getCode(pos)))
+	for (int pos = 0; pos < array.size(); ++pos)
+		if (MathIsRelOp(array.getChar(pos), array.getCode(pos)))
 			return pos;
 	return array.size();
 }
@@ -228,7 +227,7 @@ void MathMatrixInset::validate(LaTeXFeatures & features) const
 	features.boldsymbol = true;
 	//features.binom      = true;
 
-	MathInset::validate(features);
+	MathNestInset::validate(features);
 }
 
 

@@ -2,7 +2,7 @@
 #ifndef MATH_DELIMINSET_H
 #define MATH_DELIMINSET_H
 
-#include "math_inset.h"
+#include "math_nestinset.h"
 
 #ifdef __GNUG__
 #pragma interface
@@ -11,7 +11,7 @@
 /** A delimiter
     \author Alejandro Aguilar Sierra
 */
-class MathDelimInset : public MathInset {
+class MathDelimInset : public MathNestInset {
 public:
 	///
 	MathDelimInset(int, int);

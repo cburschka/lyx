@@ -44,7 +44,7 @@ class LaTeXFeatures;
 class MathInset {
 public: 
 	///
-	explicit MathInset(int na = 0, string const & nm = string());
+	explicit MathInset(string const & nm = string());
 
 	/// the virtual base destructor
 	virtual ~MathInset() {}
@@ -74,7 +74,7 @@ public:
 	///
 	virtual void setName(string const & n);
 	///
-	MathStyles size() const;
+	virtual MathStyles size() const;
 
 	/// Where should we go when we press the up cursor key?
 	virtual bool idxUp(int & idx, int & pos) const;
@@ -116,29 +116,29 @@ public:
 	// deletes a cell range and moves the cursor 
 	virtual void idxDeleteRange(int from, int to);
 	// returns list of cell indices that are "between" from and to for
-	// selction purposes
+	// selection purposes
 	virtual std::vector<int> idxBetween(int from, int to) const;
 
 	///
-	int nargs() const;
+	virtual int nargs() const;
 
 	///
-	MathArray & cell(int);
+	virtual MathArray & cell(int);
 	///
-	MathArray const & cell(int) const;
+	virtual MathArray const & cell(int) const;
 	///
-	MathXArray & xcell(int);
+	virtual MathXArray & xcell(int);
 	///
-	MathXArray const & xcell(int) const;
+	virtual MathXArray const & xcell(int) const;
 			
 	///
-	int xo() const;
+	virtual int xo() const;
 	///
-	int yo() const;
+	virtual int yo() const;
 	///
-	void xo(int tx);
+	virtual void xo(int tx);
 	///
-	void yo(int ty);
+	virtual void yo(int ty);
 	///
 
 	///
@@ -162,9 +162,9 @@ public:
 	virtual void userSetSize(MathStyles &) {}
 
 	///
-	void getXY(int & x, int & y) const;
+	virtual void getXY(int & x, int & y) const;
 	///
-	bool covers(int x, int y) const;
+	virtual bool covers(int x, int y) const;
 	/// identifies things that can get scripts
 	virtual bool isScriptable() const { return false; }
 	/// identifies ScriptInsets
@@ -175,28 +175,30 @@ public:
 	virtual bool isGrid() const { return false; }
 	/// identifies ArrayInsets
 	virtual bool isArray() const { return false; }
+	/// identifies Charinsets
+	virtual bool isCharInset() const { return false; }
 	///
 	virtual bool isActive() const { return nargs() > 0; }
-	/// identifies insets that display scripts directly above and below
-
-
 	///
-	void push_back(MathInset *);
-	///
-	void push_back(unsigned char ch, MathTextCodes fcode);
-	///
-	void dump() const;
+	virtual char getChar() const { return 0; }
 
 	///
-	void validate(LaTeXFeatures & features) const;
+	virtual void push_back(MathInset *);
+	///
+	virtual void push_back(unsigned char ch, MathTextCodes fcode);
+	///
+	virtual void dump() const;
+
+	///
+	virtual void validate(LaTeXFeatures & features) const;
 
 	///
 	static int workwidth;
 
 	/// the inherited text style
-	MathTextCodes code() const;
+	virtual MathTextCodes code() const;
 	///
-	void code(MathTextCodes t);
+	virtual void code(MathTextCodes t);
 
 protected:
 	/// usually the LaTeX name of the thingy
@@ -213,15 +215,6 @@ protected:
 	MathStyles size_;
 	/// the inherited text style
 	MathTextCodes code_;
-
-protected:
-	///
-	typedef std::vector<MathXArray> cells_type;
-	/**
-	 * The contents of the inset are contained here.
-	 * Each inset is build from a number of insets.
-	 */
-	cells_type cells_;
 
 private:
 	/// the following are used for positioning the cursor with the mouse

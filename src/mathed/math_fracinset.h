@@ -2,7 +2,7 @@
 #ifndef MATH_FRACINSET_H
 #define MATH_FRACINSET_H
 
-#include "math_inset.h"
+#include "math_nestinset.h"
 
 #ifdef __GNUG__
 #pragma interface
@@ -11,7 +11,7 @@
 /** Fraction like objects (frac, stackrel, binom)
     \author Alejandro Aguilar Sierra
  */
-class MathFracInset : public MathInset {
+class MathFracInset : public MathNestInset {
 public:
 	///
 	explicit MathFracInset(const string & name);

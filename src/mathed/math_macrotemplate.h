@@ -2,7 +2,7 @@
 #ifndef MATH_MACROTEMPLATE_H
 #define MATH_MACROTEMPLATE_H
 
-#include "math_inset.h"
+#include "math_nestinset.h"
 
 #ifdef __GNUG__
 #pragma interface
@@ -15,7 +15,7 @@ class MathMacro;
  */
 //class MathMacroTemplate : public MathInset, boost::noncopyable 
 
-class MathMacroTemplate : public MathInset {
+class MathMacroTemplate : public MathNestInset {
 public:
 	///
 	MathMacroTemplate();

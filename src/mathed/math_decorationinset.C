@@ -12,7 +12,7 @@ using std::ostream;
 
 
 MathDecorationInset::MathDecorationInset(latexkeys const * key)
-	: MathInset(1), key_(key)
+	: MathNestInset(1), key_(key)
 {
 	upper_ = key_->id != LM_underline && key_->id != LM_underbrace;
 }

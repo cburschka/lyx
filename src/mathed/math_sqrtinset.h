@@ -2,7 +2,7 @@
 #ifndef MATH_SQRTINSET_H
 #define MATH_SQRTINSET_H
 
-#include "math_inset.h"
+#include "math_nestinset.h"
 
 #ifdef __GNUG__
 #pragma interface
@@ -11,7 +11,7 @@
 /** The square root inset.
     \author Alejandro Aguilar Siearra
  */
-class MathSqrtInset : public MathInset {
+class MathSqrtInset : public MathNestInset {
 public:
 	///
 	MathSqrtInset();

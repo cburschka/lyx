@@ -9,7 +9,7 @@
 
 
 MathSqrtInset::MathSqrtInset()
-	: MathInset(1)
+	: MathNestInset(1)
 {}
 
 

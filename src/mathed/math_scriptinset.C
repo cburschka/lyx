@@ -7,17 +7,17 @@
 
 
 MathScriptInset::MathScriptInset()
-	: MathInset(2), up_(false), down_(false), limits_(0), symbol_(0)
+	: MathNestInset(2), up_(false), down_(false), limits_(0), symbol_(0)
 {}
 
 
 MathScriptInset::MathScriptInset(bool up, bool down, MathInset * symbol)
-	: MathInset(2), up_(up), down_(down), limits_(0), symbol_(symbol)
+	: MathNestInset(2), up_(up), down_(down), limits_(0), symbol_(symbol)
 {}
 
 
 MathScriptInset::MathScriptInset(MathScriptInset const & p)
-	: MathInset(p), up_(p.up_), down_(p.down_),
+	: MathNestInset(p), up_(p.up_), down_(p.down_),
 		limits_(p.limits_), symbol_(p.symbol_ ? p.symbol_->clone() : 0)
 {}
 

@@ -20,6 +20,8 @@ libmathed_la_SOURCES = \
 	formulamacro.h \
 	math_arrayinset.C \
 	math_arrayinset.h \
+	math_charinset.C \
+	math_charinset.h \
 	math_cursor.C \
 	math_cursor.h \
 	math_decorationinset.C \
@@ -48,6 +50,8 @@ libmathed_la_SOURCES = \
 	math_macrotable.h \
 	math_matrixinset.C \
 	math_matrixinset.h \
+	math_nestinset.C \
+	math_nestinset.h \
 	math_parser.C \
 	math_parser.h \
 	math_rootinset.C \

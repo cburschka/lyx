@@ -15,7 +15,7 @@
 #ifndef MATH_ROOT_H
 #define MATH_ROOT_H
 
-#include "math_inset.h"
+#include "math_nestinset.h"
 #include "symbol_def.h"
 
 #ifdef __GNUG__
@@ -26,7 +26,7 @@
     \author Alejandro Aguilar Sierra
     \version January 1999
  */
-class MathRootInset : public MathInset {
+class MathRootInset : public MathNestInset {
 public:
 	///
 	MathRootInset();
