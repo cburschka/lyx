@@ -98,7 +98,7 @@ bool textHandleUndo(BufferView * bv, Undo & undo)
 		t->setCursorIntern(undoParagraphs(bv, num).begin(), 0);
 	}
 
-	// Set the right(new) inset-owner of the paragraph if there is any. 
+	// Set the right(new) inset-owner of the paragraph if there is any.
 	if (!undo.pars.empty()) {
 		Inset * in = 0;
 		if (before != end)
@@ -123,7 +123,7 @@ bool textHandleUndo(BufferView * bv, Undo & undo)
 		}
 		// this surprisingly fills the undo! (Andre')
 		size_t par = 0;
-		//while (deletepar && deletepar != *behind) 
+		//while (deletepar && deletepar != *behind)
 		while (deletepar != *behind) {
 			deletelist.push_back(&*deletepar);
 			++deletepar;
@@ -160,9 +160,11 @@ bool textHandleUndo(BufferView * bv, Undo & undo)
 			int id = undoParagraphs(bv, undo.number_of_inset_id).front().id();
 			ParIterator op = bv->buffer()->getParFromID(id);
 			if (op != end && op->inInset()) {
-				static_cast<InsetText*>(op->inInset())->paragraph(undopar);
+#warning FIXME reimplementaion needed here
+				//static_cast<InsetText*>(op->inInset())->paragraph(undopar);
 			} else {
-				bv->buffer()->paragraphs.set(undopar);
+#warning FIXME reimplementation needed here
+				//bv->buffer()->paragraphs.set(undopar);
 			}
 		}
 	} else {
@@ -173,9 +175,11 @@ bool textHandleUndo(BufferView * bv, Undo & undo)
 			int id = undoParagraphs(bv, undo.number_of_inset_id).front().id();
 			ParIterator op = bv->buffer()->getParFromID(id);
 			if (op != end && op->inInset()) {
-				static_cast<InsetText*>(op->inInset())->paragraph(&**behind);
+#warning FIXME reimplementation needed here
+				//static_cast<InsetText*>(op->inInset())->paragraph(&**behind);
 			} else {
-				bv->buffer()->paragraphs.set(&**behind);
+#warning FIXME reimplementation needed here
+				//bv->buffer()->paragraphs.set(&**behind);
 			}
 			undopar = &**behind;
 		}
@@ -336,12 +340,12 @@ bool createUndo(BufferView * bv, Undo::undo_kind kind,
 	if (kind == Undo::EDIT) {
 		for (size_t i = 0, n = undo_pars.size(); i < n; ++i)
 			undo_pars[i]->clearContents();
-	}		
+	}
 
 	int cursor_par = undoCursor(bv).par()->id();
 	int cursor_pos = undoCursor(bv).pos();
 
-	//lyxerr << "createUndo: inset_id: " << inset_id << "  before_number: " 
+	//lyxerr << "createUndo: inset_id: " << inset_id << "  before_number: "
 	//	<< before_number << "  behind_number: " << behind_number << "\n";
 	u.reset(new Undo(kind, inset_id,
 		before_number, behind_number,

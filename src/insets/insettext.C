@@ -2346,24 +2346,6 @@ LyXCursor const & InsetText::cursor(BufferView * bv) const
 }
 
 
-void InsetText::paragraph(Paragraph * p)
-{
-	// GENERAL COMMENT: We don't have to free the old paragraphs as the
-	// caller of this function has to take care of it. This IS important
-	// as we could have to insert a paragraph before this one and just
-	// link the actual to a new ones next and set it with this function
-	// and are done!
-	paragraphs.set(p);
-	// set ourself as owner for all the paragraphs inserted!
-	for_each(paragraphs.begin(), paragraphs.end(),
-		 boost::bind(&Paragraph::setInsetOwner, _1, this));
-
-	reinitLyXText();
-	// redraw myself when asked for
-	need_update = INIT;
-}
-
-
 Inset * InsetText::getInsetFromID(int id_arg) const
 {
 	if (id_arg == id())

@@ -15,6 +15,8 @@
 class ControlButtons;
 class ButtonController;
 
+#include "LString.h"
+
 #include <boost/utility.hpp>
 
 class ViewBase : boost::noncopyable {

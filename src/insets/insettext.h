@@ -196,8 +196,6 @@ public:
 	///
 	LyXCursor const & cursor(BufferView *) const;
 	///
-	void paragraph(Paragraph *);
-	///
 	bool allowSpellcheck() const { return true; }
 	///
 	WordLangTuple const
