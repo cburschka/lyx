@@ -99,6 +99,7 @@ dispatch_result InsetCommand::localDispatch(FuncRequest const & cmd)
 	return result;
 }
 
+
 InsetCommandMailer::InsetCommandMailer(string const & name,
 				       InsetCommand & inset)
 	: name_(name), inset_(inset)

@@ -271,17 +271,16 @@ bool Row::hfillExpansion(pos_type pos) const
 	if (isParStart())
 		return true;
 
-	// in some labels  it does not count
+	// in some labels it does not count
 	if (par()->layout()->margintype != MARGIN_MANUAL
 	    && pos < par()->beginningOfBody())
 		return false;
 
 	// if there is anything between the first char of the row and
-	// the sepcified position that is not a newline and not a hfill,
+	// the specified position that is not a newline and not a hfill,
 	// the hfill will count, otherwise not
 	pos_type i = this->pos();
-	while (i < pos && (par()->isNewline(i)
-			   || par()->isHfill(i)))
+	while (i < pos && (par()->isNewline(i) || par()->isHfill(i)))
 		++i;
 
 	return i != pos;

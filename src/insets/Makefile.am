@@ -57,6 +57,8 @@ libinsets_la_SOURCES = \
 	insetgraphicsParams.C \
 	insetgraphics.C \
 	insetgraphics.h \
+	insethfill.C \
+	insethfill.h \
 	insetinclude.C \
 	insetinclude.h \
 	insetindex.C \

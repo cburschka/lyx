@@ -27,6 +27,7 @@
 #include "insets/insetfloat.h"
 #include "insets/insetfoot.h"
 #include "insets/insetgraphics.h"
+#include "insets/insethfill.h"
 #include "insets/insetinclude.h"
 #include "insets/insetindex.h"
 #include "insets/insetlabel.h"
@@ -55,6 +56,9 @@ Inset * createInset(FuncRequest const & cmd)
 	BufferParams const & params = bv->buffer()->params;
 
 	switch (cmd.action) {
+	case LFUN_HFILL:
+		return new InsetHFill();
+
 	case LFUN_INSET_MINIPAGE:
 		return new InsetMinipage(params);
 

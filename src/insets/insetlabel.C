@@ -96,6 +96,7 @@ int InsetLabel::latex(Buffer const *, ostream & os,
 	return 0;
 }
 
+
 int InsetLabel::ascii(Buffer const *, ostream & os, int) const
 {
 	os << '<' << getContents()  << '>';
