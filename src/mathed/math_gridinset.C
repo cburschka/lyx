@@ -863,6 +863,7 @@ void MathGridInset::write(WriteStream & os) const
 {
 	for (row_type row = 0; row < nrows(); ++row) {
 		os << verboseHLine(rowinfo_[row].lines_);
+		// don't write & and empty cells at end of line
 		for (col_type col = 0; col < ncols(); ++col)
 			os << cell(index(row, col)) << eocString(col);
 		os << eolString(row, os.fragile());

@@ -607,24 +607,23 @@ void MathHullInset::mutate(string const & newtype)
 }
 
 
+string MathHullInset::eolString(row_type row, bool fragile) const
+{
+	string res;
+	if (numberedType()) {
+		if (!label_[row].empty())
+			res += "\\label{" + label_[row] + "}";
+		if (nonum_[row])
+			res += "\\nonumber ";
+	}
+	return res + MathGridInset::eolString(row, fragile);
+}
+
+
 void MathHullInset::write(WriteStream & os) const
 {
 	header_write(os);
-
-	bool n = numberedType();
-
-	for (row_type row = 0; row < nrows(); ++row) {
-		for (col_type col = 0; col < ncols(); ++col)
-			os << cell(index(row, col)) << eocString(col);
-		if (n) {
-			if (!label_[row].empty())
-				os << "\\label{" << label_[row] << "}";
-			if (nonum_[row])
-				os << "\\nonumber ";
-		}
-		os << eolString(row);
-	}
-
+	MathGridInset::write(os);
 	footer_write(os);
 }
 

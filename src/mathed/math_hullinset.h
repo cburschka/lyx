@@ -89,6 +89,10 @@ public:
 	///
 	void infoize(std::ostream & os) const;
 
+protected:
+	///	
+	string eolString(row_type row, bool fragile) const;
+
 private:
 	///
 	void setType(string const & type);

@@ -216,9 +216,9 @@ protected:
 	/// returns y offset of cell compared to inset
 	int cellYOffset(idx_type idx) const;
 	/// returns proper 'end of line' code for LaTeX
-	string eolString(row_type row, bool fragile = false) const;
+	virtual string eolString(row_type row, bool fragile = false) const;
 	/// returns proper 'end of column' code for LaTeX
-	string eocString(col_type col) const;
+	virtual string eocString(col_type col) const;
 	/// extract number of columns from alignment string
 	col_type guessColumns(string const & halign) const;
 	/// splits cells and shifts right part to the next cell
