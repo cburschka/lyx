@@ -2,8 +2,6 @@
 #ifndef MATH_MACROTEMPLATE_H
 #define MATH_MACROTEMPLATE_H
 
-#include <set>
-
 #include "math_inset.h"
 
 #ifdef __GNUG__
@@ -38,13 +36,8 @@ public:
 private:
 	///
 	int numargs_;
-	///
-	std::set<MathMacro *> users_;
-
 	/// unimplemented
 	void operator=(MathMacroTemplate const &);
-	/// unimplemented
-	//MathMacroTemplate(MathMacroTemplate const &);
 };
 
 #endif

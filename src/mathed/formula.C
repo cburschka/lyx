@@ -64,10 +64,8 @@ InsetFormula::InsetFormula(MathInsetTypes t)
 
 
 InsetFormula::InsetFormula(string const & s)
-	: InsetFormulaBase(0)
+	: InsetFormulaBase(mathed_parse(s))
 {
-	istringstream is(s.c_str());
-	par(mathed_parse(is));
 	Metrics();
 }
 

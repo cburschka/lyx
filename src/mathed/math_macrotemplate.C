@@ -8,12 +8,12 @@
 
 
 MathMacroTemplate::MathMacroTemplate() :
-	MathInset(1, "undefined", LM_OT_MACRO), numargs_(0), users_()
+	MathInset(1, "undefined", LM_OT_MACRO), numargs_(0)
 {}
 
 
 MathMacroTemplate::MathMacroTemplate(string const & nm, int numargs) :
-	MathInset(1, nm, LM_OT_MACRO), numargs_(numargs), users_()
+	MathInset(1, nm, LM_OT_MACRO), numargs_(numargs)
 {}
 
 

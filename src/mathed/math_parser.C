@@ -819,6 +819,12 @@ void mathed_parse(MathArray & array, unsigned flags)
 
 }
 
+MathInset * mathed_parse(string const & str)
+{
+	istringstream is(str.c_str());
+	return mathed_parse(is);
+}
+
 
 MathInset * mathed_parse(istream & is)
 {

@@ -120,6 +120,18 @@ void MathMacroTable::builtinMacros()
 	}
 
 	{
+		MathMacroTemplate * t = new MathMacroTemplate("land", 0);
+		t->push_back(LM_wedge, LM_TC_SYMB);
+		insertTemplate(t);
+	}
+
+	{
+		MathMacroTemplate * t = new MathMacroTemplate("lor", 0);
+		t->push_back(LM_vee, LM_TC_SYMB);
+		insertTemplate(t);
+	}
+
+	{
 		MathMacroTemplate * t = new MathMacroTemplate("to", 0);
 		t->push_back(LM_rightarrow, LM_TC_SYMB);
 		insertTemplate(t);
@@ -130,6 +142,7 @@ void MathMacroTable::builtinMacros()
 		t->push_back(LM_bot, LM_TC_BOP);
 		insertTemplate(t);
 	}
+
 /*
 	{
 		MathMacroTemplate & m = createTemplate("lint", 4);

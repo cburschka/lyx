@@ -117,6 +117,7 @@ latexkeys const * in_word_set(string const & str);
 latexkeys const * lm_get_key_by_id(unsigned int id, short tc);
 
 
+MathInset * mathed_parse(string const &);
 MathInset * mathed_parse(std::istream &);
 MathInset * mathed_parse(LyXLex &);
 
