@@ -30,7 +30,7 @@ MathCharInset::MathCharInset(char c, MathTextCodes t)
 }
 
 
-MathTextCodes MathCharInset::nativeCode(char c) const
+MathTextCodes MathCharInset::nativeCode(char c)
 {
 	if (isalpha(c))
 		return LM_TC_VAR;

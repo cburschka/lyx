@@ -168,7 +168,7 @@ Selection theSelection;
 
 
 MathCursor::MathCursor(InsetFormulaBase * formula, bool left)
-	: formula_(formula), lastcode_(LM_TC_VAR), selection_(false)
+	: formula_(formula), lastcode_(LM_TC_MIN), selection_(false)
 {
 	left ? first() : last();
 }
@@ -300,11 +300,11 @@ bool MathCursor::left(bool sel)
 	dump("Left 1");
 	if (inMacroMode()) {
 		macroModeClose();
-		lastcode_ = LM_TC_VAR;
+		lastcode_ = LM_TC_MIN;
 		return true;
 	}
 	selHandle(sel);
-	lastcode_ = LM_TC_VAR;
+	lastcode_ = LM_TC_MIN;
 
 	if (hasPrevAtom() && openable(prevAtom(), sel)) {
 		if (prevAtom()->isHyperActive()) {
@@ -323,11 +323,11 @@ bool MathCursor::right(bool sel)
 	dump("Right 1");
 	if (inMacroMode()) {
 		macroModeClose();
-		lastcode_ = LM_TC_VAR;
+		lastcode_ = LM_TC_MIN;
 		return true;
 	}
 	selHandle(sel);
-	lastcode_ = LM_TC_VAR;
+	lastcode_ = LM_TC_MIN;
 
 	if (hasNextAtom() && openable(nextAtom(), sel)) {
 		if (nextAtom()->isHyperActive()) {
@@ -396,7 +396,7 @@ void MathCursor::home(bool sel)
 	dump("home 1");
 	selHandle(sel);
 	macroModeClose();
-	lastcode_ = LM_TC_VAR;
+	lastcode_ = LM_TC_MIN;
 	if (!par()->idxHome(idx(), pos())) 
 		popLeft();
 	dump("home 2");
@@ -408,7 +408,7 @@ void MathCursor::end(bool sel)
 	dump("end 1");
 	selHandle(sel);
 	macroModeClose();
-	lastcode_ = LM_TC_VAR;
+	lastcode_ = LM_TC_MIN;
 	if (!par()->idxEnd(idx(), pos()))
 		popRight();
 	dump("end 2");
@@ -1412,7 +1412,7 @@ bool MathCursor::interpret(char c)
 	}
 
 	// no special circumstances, so insert the character without any fuss
-	insert(c, lastcode_);
+	insert(c, lastcode_ == LM_TC_MIN ? MathCharInset::nativeCode(c) : lastcode_);
 	lastcode_ = LM_TC_MIN;
 	return true;
 }

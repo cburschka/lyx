@@ -21,7 +21,7 @@ public:
 	///
 	MathInset * clone() const;
 	///
-	MathTextCodes nativeCode(char c) const;
+	static MathTextCodes nativeCode(char c);
 	///
 	void metrics(MathMetricsInfo const & st) const;
 	///
