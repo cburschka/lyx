@@ -36,7 +36,7 @@ struct InsetGraphicsParams
 	    NONE		// only keep a frame in place.
 	};
 	///
-	enum sizeType {
+	enum sizeType {		// for latex and/or lyx
 	    DEFAULT_SIZE,	// like none
 	    WH,			// width/height values
 	    SCALE		// percentage value
@@ -47,40 +47,42 @@ struct InsetGraphicsParams
 	bool subcaption;
 	/// The text of the subcaption.
 	string subcaptionText;
-	/// The bounding box with "xLB yLB yRT yRT ", divided by a space!
 	/// Do we rotate?
 	bool rotate;
 	/// Origin point of rotation
 	string rotateOrigin;
 	/// Rotation angle.
 	float rotateAngle;
-	string bb;
 	/// clip image 
 	bool clip;
 	/// draft mode
 	bool draft;
-	/// How to display the image
-	DisplayType display;
-	/// any userdefined special command
-	string special;
-	/// three possible values for rescaling
+	/// what to do with zipped files
+	bool noUnzip;
+	/// The bounding box with "xLB yLB yRT yRT ", divided by a space!
+	string bb;
+	/// Type of rescaling 
+	sizeType size_type;
+	/// three possible values for rescaling (latex)
 	LyXLength width;
 	///
 	LyXLength height;
 	///
 	int scale;
-	/// Type of rescaling
-	sizeType size_type;
 	/// Keep the ratio between height and width when resizing.
 	bool keepAspectRatio;
+	/// any userdefined special command
+	string special;
+	/// How to display the image inside lyx
+	DisplayType display;
 	/// the size for the view inside lyx
+	/// Typ of the LyXView, same as for latex
+	sizeType lyxsize_type;
 	LyXLength lyxwidth;
 	///
 	LyXLength lyxheight;
-	/// Typ of rescaling the Screen
+	/// Typ of rescaling the Screen inside lyx
 	int lyxscale;
-	/// Typ of the LyXView, same as for latex
-	sizeType lyxsize_type;
 	///
 	InsetGraphicsParams();
 	///

@@ -30,7 +30,6 @@
 #include "sigc++/signal_system.h"
 
 class Dialogs;
-class LyXImage;
 
 ///
 class InsetGraphics : public Inset, public SigC::Object {
@@ -113,10 +112,6 @@ private:
 	string const createLatexOptions() const;
 	/// Convert the file if needed, and return the location of the file.
 	string const prepareFile(Buffer const * buf) const;
-	/// The graphics cache handle.
-	mutable boost::shared_ptr<GraphicsCacheItem> cacheHandle;
-	/// is the pixmap initialized?
-	mutable bool imageLoaded;
 	///
 	InsetGraphicsParams params;
 };

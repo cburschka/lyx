@@ -46,6 +46,7 @@ struct FD_form_file {
 	FL_OBJECT *button_clip;
 	FL_OBJECT *button_draft;
 	FL_OBJECT *check_rotate;
+	FL_OBJECT *button_nounzip;
 };
 struct FD_form_size {
 	~FD_form_size();
@@ -61,19 +62,17 @@ struct FD_form_size {
 	FL_OBJECT *input_height;
 	FL_OBJECT *choice_height_units;
 	FL_OBJECT *check_aspectratio;
+	FL_OBJECT *button_lyx_values;
 };
 struct FD_form_bbox {
 	~FD_form_bbox();
 
 	FL_FORM *form;
-	FL_OBJECT *input_bb_x0;
-	FL_OBJECT *choice_bb_x0;
 	FL_OBJECT *input_bb_x1;
-	FL_OBJECT *choice_bb_x1;
-	FL_OBJECT *input_bb_y0;
-	FL_OBJECT *choice_bb_y0;
 	FL_OBJECT *input_bb_y1;
-	FL_OBJECT *choice_bb_y1;
+	FL_OBJECT *input_bb_x0;
+	FL_OBJECT *input_bb_y0;
+	FL_OBJECT *choice_bb_units;
 	FL_OBJECT *button_getBB;
 };
 struct FD_form_special {
@@ -100,6 +99,7 @@ struct FD_form_lyxview {
 	FL_OBJECT *choice_width_lyxwidth;
 	FL_OBJECT *input_lyxheight;
 	FL_OBJECT *choice_width_lyxheight;
+	FL_OBJECT *button_latex_values;
 };
 
 #endif /* FD_form_graphics_h_ */

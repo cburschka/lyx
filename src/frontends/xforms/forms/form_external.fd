@@ -35,7 +35,7 @@ class: FL_CHOICE
 type: NORMAL_CHOICE
 box: 130 10 300 30
 boxtype: FL_FRAME_BOX
-colors: FL_COL1 FL_BLACK
+colors: FL_COL1 FL_RIGHT_BCOL
 alignment: FL_ALIGN_LEFT
 style: FL_NORMAL_STYLE
 size: FL_NORMAL_SIZE
@@ -125,7 +125,7 @@ class: FL_BUTTON
 type: NORMAL_BUTTON
 box: 435 50 110 30
 boxtype: FL_UP_BOX
-colors: FL_COL1 FL_BLACK
+colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
 style: FL_NORMAL_STYLE
 size: FL_NORMAL_SIZE
@@ -143,7 +143,7 @@ class: FL_BUTTON
 type: NORMAL_BUTTON
 box: 435 90 110 30
 boxtype: FL_UP_BOX
-colors: FL_COL1 FL_BLACK
+colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
 style: FL_NORMAL_STYLE
 size: FL_NORMAL_SIZE
@@ -161,7 +161,7 @@ class: FL_BUTTON
 type: NORMAL_BUTTON
 box: 435 130 110 30
 boxtype: FL_UP_BOX
-colors: FL_COL1 FL_BLACK
+colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
 style: FL_NORMAL_STYLE
 size: FL_NORMAL_SIZE
@@ -179,7 +179,7 @@ class: FL_BUTTON
 type: RETURN_BUTTON
 box: 255 270 90 30
 boxtype: FL_UP_BOX
-colors: FL_COL1 FL_BLACK
+colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
 style: FL_NORMAL_STYLE
 size: FL_NORMAL_SIZE
@@ -197,7 +197,7 @@ class: FL_BUTTON
 type: NORMAL_BUTTON
 box: 355 270 90 30
 boxtype: FL_UP_BOX
-colors: FL_COL1 FL_BLACK
+colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
 style: FL_NORMAL_STYLE
 size: FL_NORMAL_SIZE

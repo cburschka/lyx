@@ -1,5 +1,13 @@
 2002-02-08  Herbert Voss  <voss@lyx.org>
 
+	* insetgraphic.C: 
+	* insetgraphicsParams.[Ch]: adding new Option noUnzip to
+	prevent LyX from unzipping when this should be handled
+	by latex vis the graphic.cfg.
+	clean up the code
+
+2002-02-08  Herbert Voss  <voss@lyx.org>
+
 	* insetgraphic.C: prepareFile(): fix bug when file doesn't
 	exists, than return filename with extension
 

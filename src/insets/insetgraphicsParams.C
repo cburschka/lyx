@@ -97,17 +97,18 @@ void InsetGraphicsParams::init()
 	bb = string();			// bounding box
 	draft = false;			// draft mode
 	clip = false;			// clip image
-	display = DEFAULT;
+	display = DEFAULT;		// see pref
 	subcaption = false;		// subfigure
+	noUnzip = false;		// unzip files
 	width = LyXLength();		// set to 0pt
 	height = LyXLength();
 	lyxwidth = LyXLength();		// for the view in lyx
-	lyxheight = LyXLength();
-	scale = 0;
-	lyxscale = 0;
+	lyxheight = LyXLength();	// also set to 0pt
+	scale = 0;			// unit is %
+	lyxscale = 0;			// same for lyxview
 	size_type = DEFAULT_SIZE;	// do nothing
 	lyxsize_type = DEFAULT_SIZE;	// do nothing
-	keepAspectRatio = false;	//
+	keepAspectRatio = false;	// only for latex
 	rotate = false;			// Rotating 
 	rotateOrigin = "center";	// Origin
 	rotateAngle = 0.0;		// in degrees
@@ -123,6 +124,7 @@ void InsetGraphicsParams::copy(InsetGraphicsParams const & igp)
 	display = igp.display;
 	subcaption = igp.subcaption;
 	subcaptionText = igp.subcaptionText;
+	noUnzip = igp.noUnzip;
 	keepAspectRatio = igp.keepAspectRatio;
 	width = igp.width;
 	height = igp.height;
@@ -147,6 +149,7 @@ bool operator==(InsetGraphicsParams const & left,
 	        left.clip == right.clip &&
 	        left.display == right.display &&
 	        left.subcaption == right.subcaption &&
+		left.noUnzip == right.noUnzip &&
 	        left.subcaptionText == right.subcaptionText &&
 	        left.keepAspectRatio == right.keepAspectRatio &&
 	        left.width == right.width &&
@@ -188,13 +191,15 @@ void InsetGraphicsParams::Write(Buffer const * buf, ostream & os) const
 		os << "\tclip\n";
 	if (draft)			// draft mode
 		os << "\tdraft\n";
-	// Save the display type
+	// Save the display type for the view inside lyx
 	os << "\tdisplay " << displayTranslator.find(display) << '\n';
 	// Save the subcaption status
 	if (subcaption)
 	    os << "\tsubcaption\n";
 	if (!subcaptionText.empty())
 	    os << "\tsubcaptionText \"" << subcaptionText << '\"' << '\n';
+	if (noUnzip)
+	    os << "\tnoUnzip\n";
     // we always need the size type
     // 0: no special
     // 1: width/height combination
@@ -216,6 +221,7 @@ void InsetGraphicsParams::Write(Buffer const * buf, ostream & os) const
 		os << "\trotateOrigin " << rotateOrigin << '\n';
 	if (!special.empty())
 		os << "\tspecial " << special << '\n';
+	// the values for the view in lyx
 	os << "\tlyxsize_type " <<  lyxsize_type << '\n';
 	if (!lyxwidth.zero())		// the lyx-viewsize
 	    os << "\tlyxwidth " << lyxwidth.asString() << '\n';
@@ -254,19 +260,8 @@ bool InsetGraphicsParams::Read(Buffer const * buf, LyXLex & lex,
 	} else if (token == "subcaptionText") {
 		lex.next();
 		subcaptionText = lex.getString();
-	} else if (token == "widthResize") {
-		if (lex.next()) {
-		    string const token = lex.getString();
-		    if (token == "scale") {
-			lex.next();
-			scale = lex.getInteger();
-			size_type = SCALE;
-		    }
-		    else {
-			width = convertResizeValue(token, lex);
-			size_type = WH;
-		    }
-		}
+	} else if (token == "noUnzip") {
+		noUnzip = true;
 	} else if (token == "size_type") {
 		lex.next();
 		switch (lex.getInteger()) {
@@ -280,9 +275,6 @@ bool InsetGraphicsParams::Read(Buffer const * buf, LyXLex & lex,
 		lex.next();
 		width = LyXLength(lex.getString());
 		size_type = WH;
-	} else if (token == "heightResize") {
-		if (lex.next())
-			height = convertResizeValue(lex.getString(), lex);
 	} else if (token == "height") {
 		lex.next();
 		height = LyXLength(lex.getString());
@@ -318,8 +310,27 @@ bool InsetGraphicsParams::Read(Buffer const * buf, LyXLex & lex,
 	} else if (token == "lyxscale") {
 		lex.next();
 		lyxscale = lex.getInteger();
-	} else {
-		// If it's none of the above, its not ours.
+	// now the compytibility stuff for "old" 1.2.0 files which uses
+	// the first try of the new graphic inset. Can be deleted, when
+	// 1.3 comes out
+	} else if (token == "widthResize") {
+		if (lex.next()) {
+		    string const token = lex.getString();
+		    if (token == "scale") {
+			lex.next();
+			scale = lex.getInteger();
+			size_type = SCALE;
+		    }
+		    else {
+			width = convertResizeValue(token, lex);
+			size_type = WH;
+		    }
+		}
+	} else if (token == "heightResize") {
+		if (lex.next())
+			height = convertResizeValue(lex.getString(), lex);
+	// end compytibility stuff
+	} else {	// If it's none of the above, its not ours.
 		return false;
 	}
 	return true;

@@ -31,6 +31,7 @@ FD_form_external * FormExternal::build_external()
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_boxtype(obj, FL_FRAME_BOX);
+    fl_set_object_color(obj, FL_COL1, FL_RIGHT_BCOL);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_gravity(obj, FL_NorthWest, FL_NorthEast);
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
@@ -66,7 +67,6 @@ FD_form_external * FormExternal::build_external()
     fdui->button_edit = obj = fl_add_button(FL_NORMAL_BUTTON, 435, 50, 110, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
-    fl_set_object_color(obj, FL_COL1, FL_BLACK);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_gravity(obj, FL_NorthEast, FL_NorthEast);
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
@@ -75,7 +75,6 @@ FD_form_external * FormExternal::build_external()
     fdui->button_view = obj = fl_add_button(FL_NORMAL_BUTTON, 435, 90, 110, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
-    fl_set_object_color(obj, FL_COL1, FL_BLACK);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_gravity(obj, FL_NorthEast, FL_NorthEast);
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
@@ -84,12 +83,10 @@ FD_form_external * FormExternal::build_external()
     fdui->button_update = obj = fl_add_button(FL_NORMAL_BUTTON, 435, 130, 110, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
-    fl_set_object_color(obj, FL_COL1, FL_BLACK);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_gravity(obj, FL_NorthEast, FL_NorthEast);
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
   fdui->button_ok = obj = fl_add_button(FL_RETURN_BUTTON, 255, 270, 90, 30, _("OK"));
-    fl_set_object_color(obj, FL_COL1, FL_BLACK);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_gravity(obj, FL_SouthEast, FL_SouthEast);
     fl_set_object_callback(obj, C_FormBaseOKCB, 0);
@@ -98,7 +95,6 @@ FD_form_external * FormExternal::build_external()
     fdui->button_apply = obj = fl_add_button(FL_NORMAL_BUTTON, 355, 270, 90, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
-    fl_set_object_color(obj, FL_COL1, FL_BLACK);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_gravity(obj, FL_SouthEast, FL_SouthEast);
     fl_set_object_callback(obj, C_FormBaseApplyCB, 0);

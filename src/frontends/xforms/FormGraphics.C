@@ -42,6 +42,7 @@ int const WIDTH_MAXDIGITS = 10;
 int const HEIGHT_MAXDIGITS = 10;
 int const ROTATE_MAXCHARS = 4;
 int const FILENAME_MAXCHARS = 1024;
+string defaultUnit = "cm"; 
  
 } // namespace anon
 
@@ -97,6 +98,7 @@ void FormGraphics::build()
 	bc().addReadOnly(file_->check_rotate);
 	bc().addReadOnly(file_->button_clip);
 	bc().addReadOnly(file_->button_draft);
+	bc().addReadOnly(file_->button_nounzip);
 
 	// the lyxview section
 	lyxview_.reset(build_lyxview());
@@ -143,10 +145,7 @@ void FormGraphics::build()
 	fl_set_input_return (bbox_->input_bb_y1, FL_RETURN_CHANGED);
 
 	string const bb_units = "pt|cm|in";
-	fl_addto_choice(bbox_->choice_bb_x0, bb_units.c_str());
-	fl_addto_choice(bbox_->choice_bb_y0, bb_units.c_str());
-	fl_addto_choice(bbox_->choice_bb_x1, bb_units.c_str());
-	fl_addto_choice(bbox_->choice_bb_y1, bb_units.c_str());
+	fl_addto_choice(bbox_->choice_bb_units, bb_units.c_str());
 	bc().addReadOnly(bbox_->button_getBB);
 
 	// the rotate section
@@ -188,6 +187,7 @@ void FormGraphics::apply()
 	    igp.rotateOrigin = string();
 	igp.draft = fl_get_button(file_->button_draft);
 	igp.clip = fl_get_button(file_->button_clip);
+	igp.noUnzip = fl_get_button(file_->button_nounzip);
 
 	// the lyxview section
 	if (fl_get_button(lyxview_->radio_pref))
@@ -236,22 +236,22 @@ void FormGraphics::apply()
 		bb = "0 ";
 	    else
 		bb = getLengthFromWidgets(bbox_->input_bb_x0,
-			bbox_->choice_bb_x0)+" ";
+			bbox_->choice_bb_units)+" ";
 	    if (getStringFromInput(bbox_->input_bb_y0).empty())
 		bb += "0 ";
 	    else
 		bb += (getLengthFromWidgets(bbox_->input_bb_y0,
-			bbox_->choice_bb_y0)+" ");
+			bbox_->choice_bb_units)+" ");
 	    if (getStringFromInput(bbox_->input_bb_x1).empty())
 		bb += "0 ";
 	    else
 		bb += (getLengthFromWidgets(bbox_->input_bb_x1,
-			bbox_->choice_bb_x1)+" ");
+			bbox_->choice_bb_units)+" ");
 	    if (getStringFromInput(bbox_->input_bb_y1).empty())
 		bb += "0 ";
 	    else
 		bb += (getLengthFromWidgets(bbox_->input_bb_y1,
-			bbox_->choice_bb_y1)+" ");
+			bbox_->choice_bb_units)+" ");
 	    igp.bb = bb;
 	}
 
@@ -261,10 +261,8 @@ void FormGraphics::apply()
 
 
 void FormGraphics::update() {	
-	string unit = "cm";
 	if (lyxrc.default_papersize < 3)
-	    unit = "in";
-	string const defaultUnit = string(unit); 
+	    defaultUnit = string("in"); 
 	// Update dialog with details from inset
 	InsetGraphicsParams & igp = controller().params();
 
@@ -287,6 +285,7 @@ void FormGraphics::update() {
 		   fl_get_button(file_->check_rotate));
 	fl_set_button(file_->button_draft, igp.draft);
 	fl_set_button(file_->button_clip, igp.clip);
+	fl_set_button(file_->button_nounzip, igp.noUnzip);
 
 	// the lyxview section
 	switch (igp.display) {
@@ -404,16 +403,16 @@ void FormGraphics::update() {
 	    LyXLength anyLength;
 	    anyLength = LyXLength(token(igp.bb,' ',0));
 	    updateWidgetsFromLength(bbox_->input_bb_x0,
-	    		bbox_->choice_bb_x0,anyLength,"pt");
+	    		bbox_->choice_bb_units,anyLength,"pt");
 	    anyLength = LyXLength(token(igp.bb,' ',1));
 	    updateWidgetsFromLength(bbox_->input_bb_y0,
-	    		bbox_->choice_bb_y0,anyLength,"pt");
+	    		bbox_->choice_bb_units,anyLength,"pt");
 	    anyLength = LyXLength(token(igp.bb,' ',2));
 	    updateWidgetsFromLength(bbox_->input_bb_x1,
-	    		bbox_->choice_bb_x1,anyLength,"pt");
+	    		bbox_->choice_bb_units,anyLength,"pt");
 	    anyLength = LyXLength(token(igp.bb,' ',3));
 	    updateWidgetsFromLength(bbox_->input_bb_y1,
-	    		bbox_->choice_bb_y1,anyLength,"pt");
+	    		bbox_->choice_bb_units,anyLength,"pt");
 	}
 
 	// the special section
@@ -471,13 +470,23 @@ ButtonPolicy::SMInput FormGraphics::input(FL_OBJECT * ob, long)
 	    	setEnabled(lyxview_->input_lyxheight, 0);
 	    	setEnabled(lyxview_->choice_width_lyxheight, 0);
 	    	setEnabled(lyxview_->input_lyxscale, 1);
+	} else if (ob == lyxview_->button_latex_values) {
+	    LyXLength dummy = LyXLength(getLengthFromWidgets(size_->input_width,
+		size_->choice_width_units));
+	    updateWidgetsFromLength(lyxview_->input_lyxwidth,
+		lyxview_->choice_width_lyxwidth, dummy, defaultUnit);
+	    dummy = LyXLength(getLengthFromWidgets(size_->input_height,
+		size_->choice_width_units));
+	    updateWidgetsFromLength(lyxview_->input_lyxheight,
+		lyxview_->choice_width_lyxheight, dummy, defaultUnit);
+	    string const scale = fl_get_input(size_->input_scale);
+	    fl_set_input(lyxview_->input_lyxscale, scale.c_str());
 
 	// the bb section
 	} else if (!controller().bbChanged && 
-		   (ob == bbox_->input_bb_x0  || ob == bbox_->input_bb_y0 ||
-		    ob == bbox_->input_bb_x1  || ob == bbox_->input_bb_y1 ||
-		    ob == bbox_->choice_bb_x0 || ob == bbox_->choice_bb_y0 ||
-		    ob == bbox_->choice_bb_x1 || ob == bbox_->choice_bb_y1)) {
+		  (ob == bbox_->choice_bb_units ||
+                   ob == bbox_->input_bb_x0 || ob == bbox_->input_bb_y0 ||
+		   ob == bbox_->input_bb_x1 || ob == bbox_->input_bb_y1)) {
 	    controller().bbChanged = true; 
 	} else if (ob == bbox_->button_getBB) {
 	    string const filename = getStringFromInput(file_->input_filename);
@@ -485,19 +494,19 @@ ButtonPolicy::SMInput FormGraphics::input(FL_OBJECT * ob, long)
 		string const fileWithAbsPath = MakeAbsPath(filename, OnlyPath(filename)); 	
 		string bb = controller().readBB(fileWithAbsPath);
 		lyxerr << "getBB::BoundingBox = " << bb << "\n";
-		if (!bb.empty()) {		
-			updateWidgetsFromLengthString(bbox_->input_bb_x0,
-						      bbox_->choice_bb_x0,
-						      token(bb,' ',0), "pt");
-			updateWidgetsFromLengthString(bbox_->input_bb_y0,
-						      bbox_->choice_bb_y0,
-						      token(bb,' ',1), "pt");
-			updateWidgetsFromLengthString(bbox_->input_bb_x1,
-						      bbox_->choice_bb_x1,
-						      token(bb,' ',2), "pt");
-			updateWidgetsFromLengthString(bbox_->input_bb_y1,
-						      bbox_->choice_bb_y1,
-						      token(bb,' ',3), "pt");
+		if (!bb.empty()) {
+		    updateWidgetsFromLengthString(bbox_->input_bb_x0,
+		                      bbox_->choice_bb_units,
+		                      token(bb,' ',0), "pt");
+		    updateWidgetsFromLengthString(bbox_->input_bb_y0,
+		                      bbox_->choice_bb_units,
+		                      token(bb,' ',1), "pt");
+		    updateWidgetsFromLengthString(bbox_->input_bb_x1,
+		                      bbox_->choice_bb_units,
+		                      token(bb,' ',2), "pt");
+		    updateWidgetsFromLengthString(bbox_->input_bb_y1,
+		                      bbox_->choice_bb_units,
+		                      token(bb,' ',3), "pt");
 		}
 		controller().bbChanged = false;
 	    }
@@ -524,6 +533,17 @@ ButtonPolicy::SMInput FormGraphics::input(FL_OBJECT * ob, long)
 	    	setEnabled(size_->choice_height_units, 0);
 		setEnabled(size_->check_aspectratio, 0);
 	    	setEnabled(size_->input_scale, 1);
+	} else if (ob == size_->button_lyx_values) {
+	    LyXLength dummy = LyXLength(getLengthFromWidgets(
+		lyxview_->input_lyxwidth, lyxview_->choice_width_lyxwidth));
+	    updateWidgetsFromLength(size_->input_width,
+		size_->choice_width_units, dummy, defaultUnit);
+	    dummy = LyXLength(getLengthFromWidgets(lyxview_->input_lyxheight,
+		lyxview_->choice_width_lyxheight));
+	    updateWidgetsFromLength(size_->input_height,
+		size_->choice_height_units, dummy, defaultUnit);
+	    string const scale = fl_get_input(lyxview_->input_lyxscale);
+	    fl_set_input(size_->input_scale, scale.c_str());
 	}
 
 	// check if the input is valid

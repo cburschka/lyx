@@ -1,3 +1,22 @@
+2002-02-10  Rob Lahaye  <lahaye@users.sourceforge.net>
+	* forms/form_external.fd:
+	* form_external.C: change color2 of a few buttons into the
+	proper grey color.
+
+2002-02-08  Herbert Voss  <voss@lyx.org>
+
+	* forms/form_graphics.fd:
+	* FormGraphics.C:
+	* form_graphics.[Ch]: Adding buttons for unzip-Option,
+	getValues from LyX/LaTeXfolder
+
+2002-02-08  Rob Lahaye  <lahaye@users.sourceforge.net>
+
+	* forms/form_graphics.fd:
+	* FormGraphics.C:
+	* form_graphics.[Ch]: simplify the bounding box folder
+	of the Graphic GUI
+	
 2002-02-08  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* Menubar_pimpl.C (create_submenu): work around an xforms bug (?)
