@@ -57,22 +57,6 @@ private:
 
 	PaneMap pane_map_;
 
-/*
-QPrefAsciiModule
-QPrefDateModule
-QPrefKeyboardModule
-QPrefLatexModule
-QPrefScreenFontsModule
-QPrefColorsModule
-QPrefDisplayModule
-QPrefPathsModule
-QPrefSpellcheckerModule
-QPrefConvertersModule
-QPrefFileformatsModule
-QPrefLanguageModule
-QPrefPrinterModule
-QPrefUIModule
-*/ 
 	QPrefAsciiModule * asciiModule;
 	QPrefDateModule * dateModule;
 	QPrefKeyboardModule * keyboardModule;

@@ -14,13 +14,32 @@
 #pragma implementation
 #endif
 
+#include "support/lstrings.h"
+ 
 #include "ControlPrefs.h"
 #include "QPrefsDialog.h"
+#include "ui/QPrefAsciiModule.h"
+#include "ui/QPrefDateModule.h"
+#include "ui/QPrefKeyboardModule.h"
+#include "ui/QPrefLatexModule.h"
+#include "ui/QPrefScreenFontsModule.h"
+#include "ui/QPrefColorsModule.h"
+#include "ui/QPrefDisplayModule.h"
+#include "ui/QPrefPathsModule.h"
+#include "ui/QPrefSpellcheckerModule.h"
+#include "ui/QPrefConvertersModule.h"
+#include "ui/QPrefFileformatsModule.h"
+#include "ui/QPrefLanguageModule.h"
+#include "ui/QPrefPrinterModule.h"
+#include "ui/QPrefUIModule.h"
 #include "QPrefs.h"
 #include "Qt2BC.h"
 #include "lyxrc.h"
 
 #include <qpushbutton.h>
+#include <qcheckbox.h>
+#include <qlineedit.h>
+#include <qspinbox.h>
  
 typedef Qt2CB<ControlPrefs, Qt2DB<QPrefsDialog> > base_class;
 
@@ -420,6 +439,59 @@ void QPrefs::update_contents()
 {
 	LyXRC const & rc(controller().rc());
 
+	QPrefLanguageModule * langmod(dialog_->languageModule);
+ 
+	// FIXME: remove rtl_support bool
+	langmod->rtlCB->setChecked(rc.rtl_support);
+	langmod->markForeignCB->setChecked(rc.mark_foreign_language); 
+	langmod->autoBeginCB->setChecked(rc.language_auto_begin); 
+	langmod->autoEndCB->setChecked(rc.language_auto_end); 
+	langmod->useBabelCB->setChecked(rc.language_use_babel);
+	langmod->globalCB->setChecked(rc.language_global_options);
+	langmod->languagePackageED->setText(rc.language_package.c_str());
+	langmod->startCommandED->setText(rc.language_command_begin.c_str());
+	langmod->endCommandED->setText(rc.language_command_end.c_str());
+
+
+	QPrefUIModule * uimod(dialog_->uiModule); 
+
+	uimod->uiFileED->setText(rc.bind_file.c_str());
+	uimod->bindFileED->setText(rc.ui_file.c_str());
+	uimod->cursorFollowsCB->setChecked(rc.cursor_follows_scrollbar); 
+	uimod->wheelMouseSB->setValue(rc.wheel_jump);
+	// convert to minutes
+	int mins(rc.wheel_jump / 60);
+	if (rc.wheel_jump && !mins)
+		mins = 1;
+	uimod->autoSaveSB->setValue(mins);
+ 
+ 
+	QPrefKeyboardModule * keymod(dialog_->keyboardModule);
+
+	// FIXME: can derive CB from the two EDs 
+	keymod->keymapCB->setChecked(rc.use_kbmap);
+	keymod->firstKeymapED->setText(rc.primary_kbmap.c_str());
+	keymod->secondKeymapED->setText(rc.secondary_kbmap.c_str());
+ 
+
+	QPrefAsciiModule * ascmod(dialog_->asciiModule);
+
+	ascmod->asciiLinelengthSB->setValue(rc.ascii_linelen);
+	ascmod->asciiRoffED->setText(rc.ascii_roff_command.c_str());
+
+
+	QPrefDateModule * datemod(dialog_->dateModule);
+
+	datemod->DateED->setText(rc.date_insert_format.c_str());
+
+
+	QPrefLatexModule * latexmod(dialog_->latexModule);
+
+	latexmod->latexEncodingED->setText(rc.fontenc.c_str());
+	latexmod->latexChecktexED->setText(rc.chktex_command.c_str()); 
+	latexmod->latexAutoresetCB->setChecked(rc.auto_reset_options);
+	latexmod->latexDviPaperED->setText(rc.view_dvi_paper_option.c_str());
+
 #if 0 
 	local_converters = converters;
 	local_converters.update(local_formats);
@@ -428,69 +500,11 @@ void QPrefs::update_contents()
 	local_formats = formats;
 	UpdateBrowser();
 
-	fl_set_input(dialog_->input_date_format,
-		     rc.date_insert_format.c_str());
-
-	fl_set_input(dialog_->input_popup_normal_font,
-		     rc.popup_normal_font.c_str());
-	fl_set_input(dialog_->input_popup_bold_font,
-		     rc.popup_bold_font.c_str());
-	fl_set_input(dialog_->input_popup_font_encoding,
-		     rc.popup_font_encoding.c_str());
-	fl_set_input(dialog_->input_bind_file,
-		     rc.bind_file.c_str());
-	fl_set_input(dialog_->input_ui_file,
-		     rc.ui_file.c_str());
-	fl_set_button(dialog_->check_override_x_dead_keys,
-		      rc.override_x_deadkeys);
-
-	fl_set_button(dialog_->check_use_kbmap,
-		      rc.use_kbmap);
-
 	int const pos = int(findPos(lang_, rc.default_language));
 	combo_default_lang->select(pos + 1);
 
-	if (rc.use_kbmap) {
-		fl_set_input(dialog_->input_kbmap1,
-			     rc.primary_kbmap.c_str());
-		fl_set_input(dialog_->input_kbmap2,
-			     rc.secondary_kbmap.c_str());
-	} else {
-		fl_set_input(dialog_->input_kbmap1, "");
-		fl_set_input(dialog_->input_kbmap2, "");
-	}
-
-	fl_set_button(dialog_->check_rtl_support, rc.rtl_support);
-	fl_set_button(dialog_->check_mark_foreign,
-		      rc.mark_foreign_language);
-	fl_set_button(dialog_->check_auto_begin, rc.language_auto_begin);
-	fl_set_button(dialog_->check_auto_end, rc.language_auto_end);
-	fl_set_button(dialog_->check_use_babel, rc.language_use_babel);
-	fl_set_button(dialog_->check_global_options,
-		      rc.language_global_options);
-
-	fl_set_input(dialog_->input_package,
-		     rc.language_package.c_str());
-	fl_set_input(dialog_->input_command_begin,
-		     rc.language_command_begin.c_str());
-	fl_set_input(dialog_->input_command_end,
-		     rc.language_command_end.c_str());
-
-	// Activate/Deactivate the input fields dependent on the state of the
-	// buttons.
-	input(0);
-
-
-	fl_set_button(dialog_->check_auto_region_delete,
-		      rc.auto_region_delete);
-	fl_set_button(dialog_->check_cursor_follows_scrollbar,
-		      rc.cursor_follows_scrollbar);
-	fl_set_button(dialog_->check_dialogs_iconify_with_main,
-		      rc.dialogs_iconify_with_main);
 	fl_set_button(dialog_->check_preview_latex,
 		      rc.preview);
-	fl_set_counter_value(dialog_->counter_autosave, rc.autosave);
-	fl_set_counter_value(dialog_->counter_wm_jump, rc.wheel_jump);
 
 	switch (rc.display_graphics) {
 		case grfx::NoDisplay:		fl_set_choice(dialog_->choice_display, 4); break;
@@ -500,23 +514,8 @@ void QPrefs::update_contents()
 		default:			fl_set_choice(dialog_->choice_display, 3); break;
 	}
 
-
- 
-	fl_set_counter_value(dialog_->counter_line_len,
-			     rc.ascii_linelen);
-	fl_set_input(dialog_->input_tex_encoding,
-		     rc.fontenc.c_str());
 	fl_set_choice(dialog_->choice_default_papersize,
 		      rc.default_papersize + 1);
-	fl_set_input(dialog_->input_ascii_roff,
-		     rc.ascii_roff_command.c_str());
-	fl_set_input(dialog_->input_checktex,
-		     rc.chktex_command.c_str());
-	fl_set_input(dialog_->input_paperoption,
-		     rc.view_dvi_paper_option.c_str());
-	fl_set_button(dialog_->check_autoreset_classopt,
-		      rc.auto_reset_options);
-
 
 	fl_set_input(dialog_->input_default_path,
 		     rc.document_path.c_str());
