@@ -70,12 +70,6 @@ public:
 
 	/// resize event has happened
 	void resize();
-	/**
-	 * Repaint the pixmap. Used for when we don't want
-	 * to go through the full update() logic, just a simple
-	 * repaint of the whole screen.
-	 */
-	void repaint();
 
 	/// reload the contained buffer
 	void reload();

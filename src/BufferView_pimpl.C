@@ -319,7 +319,7 @@ void BufferView::Pimpl::buffer(Buffer * b)
 		textcache.clear();
 	}
 
-	repaint();
+	update();
 	updateScrollbar();
 	owner_->updateMenubar();
 	owner_->updateToolbar();
@@ -366,7 +366,7 @@ void BufferView::Pimpl::redoCurrentBuffer()
 		resizeCurrentBuffer();
 		updateScrollbar();
 		owner_->updateLayoutChoice();
-		repaint();
+		update();
 	}
 }
 
@@ -463,14 +463,6 @@ int BufferView::Pimpl::resizeCurrentBuffer()
 	updateScrollbar();
 
 	return 0;
-}
-
-
-void BufferView::Pimpl::repaint()
-{
-	// Regenerate the screen.
-	lyxerr << "BufferView::repaint()\n";
-	screen().redraw(*bv_);
 }
 
 
@@ -635,9 +627,8 @@ void BufferView::Pimpl::workAreaResize()
 		}
 	}
 
-	if (widthChange || heightChange) {
-		repaint();
-	}
+	if (widthChange || heightChange)
+		update();
 
 	// always make sure that the scrollbar is sane.
 	updateScrollbar();
@@ -1226,9 +1217,8 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev_in)
 			if (name == "bibitem") {
 				// We need to do a redraw because the maximum
 				// InsetBibitem width could have changed
-#warning please check you mean repaint() not update(),
-#warning and whether the repaint() is needed at all
-				bv_->repaint();
+#warning check whether the update() is needed at all
+				bv_->update();
 				bv_->fitCursor();
 			}
 		} else {

@@ -1231,7 +1231,6 @@ void InsetTabular::calculate_dimensions_of_cells(MetricsInfo & mi) const
 #endif
 
 	int cell = -1;
-	bool changed = false;
 	for (int i = 0; i < tabular.rows(); ++i) {
 		int maxAsc = 0;
 		int maxDesc = 0;

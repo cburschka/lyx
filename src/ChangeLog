@@ -1,3 +1,11 @@
+
+2003-08-01  André Pönitz  <poenitz@gmx.net>
+
+	* BufferView.[Ch]:
+	* BufferView_pimpl.[Ch]:
+	* lyxfunc.C:
+	* text3.C: merge BufferView::repaint() and BufferView::update()
+
 2003-08-01  José Matos  <jamatos@lyx.org>
 
 	* buffer.[Ch]: file_format is no longer a buffer data element.

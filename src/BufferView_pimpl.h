@@ -59,8 +59,6 @@ struct BufferView::Pimpl : public boost::signals::trackable {
 	///
 	bool loadLyXFile(string const &, bool);
 	///
-	void repaint();
-	///
 	void workAreaResize();
 	///
 	void updateScrollbar();

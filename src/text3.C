@@ -71,8 +71,6 @@ namespace {
 			lt->setSelection();
 			if (lt->isInInset())
 				bv->updateInset(lt->inset_owner);
-			else
-				bv->repaint();
 		}
 		bv->update();
 
@@ -1324,7 +1322,7 @@ InsetOld::RESULT LyXText::dispatch(FuncRequest const & cmd)
 		if (!bv->text->selection.set())
 			bv->update(BufferView::UPDATE);
 		bv->text->setSelection();
-		bv->repaint();
+		bv->update();
 		bv->fitCursor();
 		break;
 	}

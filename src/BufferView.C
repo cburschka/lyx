@@ -130,12 +130,6 @@ void BufferView::resize()
 }
 
 
-void BufferView::repaint()
-{
-	pimpl_->repaint();
-}
-
-
 bool BufferView::fitCursor()
 {
 	return pimpl_->fitCursor();

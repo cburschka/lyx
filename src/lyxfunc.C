@@ -118,7 +118,7 @@ void LyXFunc::moveCursorUpdate()
 	if (lt->selection.mark()) {
 		lt->setSelection();
 		if (!lt->isInInset())
-		    view()->repaint();
+			view()->update();
 	}
 	view()->update(lt, BufferView::SELECT);
 	view()->switchKeyMap();
@@ -1535,7 +1535,7 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 		// if values really changed...but not very important right now. (Lgb)
 		// All visible buffers will need resize
 		view()->resize();
-		view()->repaint();
+		view()->update();
 	}
 	break;
 
@@ -1574,7 +1574,7 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 #endif
 		}
 
-		view()->repaint();
+		view()->update();
 		break;
 	}
 
