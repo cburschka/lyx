@@ -1,5 +1,10 @@
 2002-12-19  John Levon  <levon@movementarian.org>
 
+	* ui/QPrefsDialog.ui: remove auto-default stuff - it was
+	  confusing
+
+2002-12-19  John Levon  <levon@movementarian.org>
+
 	* QLyXKeySym.C: do not attempt to compare Qt::Key_unknowns
  
 2002-12-19  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
