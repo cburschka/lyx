@@ -307,20 +307,32 @@ string const
 i18nLibFileSearch(string const & dir, string const & name,
 		  string const & ext)
 {
-	// this comment is from intl/dcigettext.c. We try to mimick this
-	// behaviour here.
+	// the following comments are from intl/dcigettext.c. We try
+	// to mimick this behaviour here.
 	/* The highest priority value is the `LANGUAGE' environment
 	   variable. But we don't use the value if the currently
 	   selected locale is the C locale. This is a GNU extension. */
+	/* [Otherwise] We have to proceed with the POSIX methods of
+	   looking to `LC_ALL', `LC_xxx', and `LANG'. On some systems
+	   this can be done by the `setlocale' function itself.  */
 
-	string const lc_all = GetEnv("LC_ALL");
-	string lang = GetEnv("LANGUAGE");
-	if (lang.empty() || lc_all == "C") {
-		lang = lc_all;
+#if defined HAVE_SETLOCALE && defined HAVE_LC_MESSAGES && defined HAVE_LOCALE_NULL
+	lang = setlocale(LC_MESSAGES, NULL);
+#else
+	string lang = GetEnv("LC_ALL");
+	if (lang.empty()) {
+		lang = GetEnv("LC_MESSAGES");
 		if (lang.empty()) {
 			lang = GetEnv("LANG");
+			if (lang.empty())
+				lang = "C";
 		}
 	}
+#endif
+
+	string const language = GetEnv("LANGUAGE");
+	if (lang != "C" && !language.empty())
+		lang = language;
 
 	lang = token(lang, '_', 0);
 
