@@ -348,10 +348,6 @@ string const LaTeXFeatures::getTClassPreamble() const
 		}
 	}
 
-	// DEC's implementation of ostringstream has a bug which can be
-	// overcome with this forcing.
-	tcpreamble.seekp(std::ios::beg);
-
 	return tcpreamble.str().c_str();
 }	
 
