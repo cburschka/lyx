@@ -28,7 +28,7 @@
 #pragma interface
 #endif
 
-#include "xarray.h"
+#include "math_xdata.h"
 #include "math_defs.h"
 
 /** Abstract base class for all math objects.

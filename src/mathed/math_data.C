@@ -8,8 +8,8 @@
 #include "math_stringinset.h"
 #include "math_mathmlstream.h"
 #include "math_support.h"
+#include "math_data.h"
 #include "debug.h"
-#include "array.h"
 #include "support/LAssert.h"
 
 
@@ -17,8 +17,8 @@ MathArray::MathArray()
 {}
 
 
-MathArray::MathArray(MathArray const & array, size_type from, size_type to)
-	: bf_(array.begin() + from, array.begin() + to)
+MathArray::MathArray(MathArray const & ar, size_type from, size_type to)
+	: bf_(ar.begin() + from, ar.begin() + to)
 {}
 
 
@@ -62,9 +62,9 @@ void MathArray::insert(size_type pos, MathAtom const & t)
 }
 
 
-void MathArray::insert(size_type pos, MathArray const & array)
+void MathArray::insert(size_type pos, MathArray const & ar)
 {
-	bf_.insert(begin() + pos, array.begin(), array.end());
+	bf_.insert(begin() + pos, ar.begin(), ar.end());
 }
 
 
@@ -74,9 +74,9 @@ void MathArray::push_back(MathAtom const & t)
 }
 
 
-void MathArray::push_back(MathArray const & array)
+void MathArray::push_back(MathArray const & ar)
 {
-	insert(size(), array);
+	insert(size(), ar);
 }
 
 
@@ -86,10 +86,10 @@ void MathArray::clear()
 }
 
 
-void MathArray::swap(MathArray & array)
+void MathArray::swap(MathArray & ar)
 {
-	if (this != &array) 
-		bf_.swap(array.bf_);
+	if (this != &ar) 
+		bf_.swap(ar.bf_);
 }
 
 

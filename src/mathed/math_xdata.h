@@ -4,7 +4,8 @@
 #define MATHEDXARRAY_H
 
 #include <iosfwd>
-#include "array.h"
+
+#include "math_data.h"
 #include "math_metricsinfo.h"
 
 #ifdef __GNUG__

@@ -8,10 +8,6 @@ BOOST_INCLUDES = -I$(top_srcdir)/boost
 INCLUDES = -I${srcdir}/../ $(SIGC_CFLAGS) $(BOOST_INCLUDES)
 
 libmathed_la_SOURCES = \
-	array.C \
-	array.h \
-	xarray.C \
-	xarray.h \
 	formulabase.C \
 	formulabase.h \
 	formula.C \
@@ -34,6 +30,8 @@ libmathed_la_SOURCES = \
 	math_charinset.h \
 	math_cursor.C \
 	math_cursor.h \
+	math_data.C \
+	math_data.h \
 	math_decorationinset.C \
 	math_decorationinset.h \
 	math_defs.h \
@@ -107,4 +105,6 @@ libmathed_la_SOURCES = \
 	math_support.C \
 	math_support.h \
 	math_symbolinset.C \
-	math_symbolinset.h
+	math_symbolinset.h \
+	math_xdata.C \
+	math_xdata.h

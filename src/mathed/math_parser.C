@@ -53,7 +53,6 @@ point to write some macros:
 #endif
 
 #include "math_parser.h"
-#include "array.h"
 #include "math_inset.h"
 #include "math_arrayinset.h"
 #include "math_braceinset.h"
@@ -72,9 +71,9 @@ point to write some macros:
 #include "math_specialcharinset.h"
 #include "math_splitinset.h"
 #include "math_sqrtinset.h"
-#include "debug.h"
 #include "math_support.h"
 #include "lyxlex.h"
+#include "debug.h"
 #include "support/lstrings.h"
 
 using std::istream;

@@ -4,7 +4,6 @@
 #pragma implementation
 #endif
 
-#include "xarray.h"
 #include "math_inset.h"
 #include "math_scriptinset.h"
 #include "math_support.h"

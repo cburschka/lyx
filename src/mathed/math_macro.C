@@ -19,7 +19,6 @@
 #endif
 
 #include "math_macro.h"
-#include "array.h"
 #include "support/lstrings.h"
 #include "support/LAssert.h"
 #include "debug.h"
