@@ -125,6 +125,11 @@ public:
 	std::vector<int> idxBetween(int from, int to) const;
 
 protected:
+	/// returns proper 'end of line' code for LaTeX
+	string eolString(int row) const;
+	/// returns proper 'end of column' code for LaTeX
+	string eocString(int col) const;
+
 	/// row info
 	std::vector<RowInfo> rowinfo_;
 	/// column info

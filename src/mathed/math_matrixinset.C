@@ -141,11 +141,8 @@ void MathMatrixInset::write(std::ostream & os, bool fragile) const
 	bool n = numberedType();
 
 	for (int row = 0; row < nrows(); ++row) {
-		if (row)
-			os << " \\\\\n";
 		for (int col = 0; col < ncols(); ++col) {
-			if (col)
-				os << " & ";
+			os << eocString(col);
 			cell(index(row, col)).write(os, fragile);
 		}
 		if (n) {
@@ -154,6 +151,7 @@ void MathMatrixInset::write(std::ostream & os, bool fragile) const
 			if (nonum_[row])
 				os << "\\nonumber ";
 		}
+		os << eolString(row);
 	}
 
   footer_write(os);

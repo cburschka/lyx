@@ -303,7 +303,7 @@ int Parser::yylex()
 	
 	while (is_.good()) {
 		unsigned char c = getuchar();
-		//lyxerr << "reading byte: '" << c << "' code: " << lexcode[c] << endl;
+		lyxerr << "reading byte: '" << c << "' code: " << lexcode[c] << endl;
 		
 		if (lexcode[c] == LexNewLine) {
 			++lineno_; 
@@ -672,6 +672,8 @@ void Parser::parse_into(MathArray & array, unsigned flags)
 			break;
 		
 		case LM_TK_NEWLINE:
+		{
+			lexArg('['); // ignore things like  \\[5pt] for a while
 			if (flags & FLAG_NEWLINE) {
 				flags &= ~FLAG_NEWLINE;
 				--plevel;
@@ -680,6 +682,7 @@ void Parser::parse_into(MathArray & array, unsigned flags)
 			lyxerr[Debug::MATHED]
 				<< "found newline unexpectedly, array: '" << array << "'\n";
 			break;
+		}
 		
 		case LM_TK_PROTECT: 
 			break;

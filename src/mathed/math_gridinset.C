@@ -206,14 +206,34 @@ void MathGridInset::draw(Painter & pain, int x, int y) const
 void MathGridInset::write(std::ostream & os, bool fragile) const
 {
 	for (int row = 0; row < nrows(); ++row) {
-		if (row)
-			os << " \\\\\n";
 		for (int col = 0; col < ncols(); ++col) {
-			if (col)
-				os << " & ";
 			cell(index(row, col)).write(os, fragile);
+			os << eocString(row);
 		}
+		os << eolString(row);
 	}
+}
+
+
+string MathGridInset::eolString(int row) const
+{
+	if (row == nrows() - 1)	
+		return "";
+
+	// make sure an upcoming '[' does not break anything
+	MathArray const & c = cell(index(row + 1, 0));
+	if (c.size() && (*c.begin())->getChar() == '[')
+		return "\\\\[0pt]\n";
+
+	return "\\\\\n";
+}
+
+
+string MathGridInset::eocString(int col) const
+{
+	if (col == ncols() - 1)
+		return "";
+	return " & ";
 }
 
 
