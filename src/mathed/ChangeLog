@@ -1,3 +1,9 @@
+2005-01-19  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* math_decorationinset.C (ams): remove again \overleftarrow and
+	\overrightarrow, which do not require amslatex (although amslatex
+	redefines them).
+
 2005-01-09  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* math_parser.C (parse1): handle style commands that are not inside

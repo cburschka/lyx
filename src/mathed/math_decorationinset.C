@@ -92,8 +92,6 @@ bool MathDecorationInset::wide() const
 bool MathDecorationInset::ams() const
 {
 	return
-			key_->name == "overleftarrow" ||
-			key_->name == "overrightarrow" ||
 			key_->name == "overleftrightarrow" ||
 			key_->name == "underleftarrow" ||
 			key_->name == "underrightarrow" ||
