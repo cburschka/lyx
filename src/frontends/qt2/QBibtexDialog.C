@@ -60,7 +60,7 @@ void QBibtexDialog::browsePressed()
 	if (!file.isNull()) {
 		string const filen = ChangeExtension(fromqstr(file), "");
 		bool present = false;
-		int pres = 0;
+		unsigned int pres = 0;
 
 		for (unsigned int i = 0; i != styleCB->count(); i++) {
 			if (fromqstr(styleCB->text(i)) == filen) {
@@ -100,7 +100,7 @@ void QBibtexDialog::browseBibPressed()
 
 void QBibtexDialog::addPressed()
 {
-	QString const file = addBibED->text();
+	QString const file = addBibCB->currentText();
 	if (!file.isNull()) {
 		string const f = ChangeExtension(file.latin1(), "");
 		bool present = false;

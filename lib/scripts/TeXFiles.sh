@@ -4,27 +4,31 @@
 # TeX class files	-> option cls 
 # TeX style files 	-> option sty
 # bibtex style files 	-> option bst
+# bibtex database files -> option bib
 #
 # with the help
 # of kpsewhich and creates a 
-# bstFiles.lst, clsFiles.lst, styFiles.lst
+# bstFiles.lst, clsFiles.lst, styFiles.lst, bibFiles.lst
 # without any parameter all files are created.
 #
 # Herbert Voss <voss@perce.org>
 #
 # Updates from Jean-Marc Lasgouttes.
 #
+# bib support added by Juergen Spitzmueller (v0.3)
+#
 CLS_STYLEFILE=clsFiles.lst
 STY_STYLEFILE=styFiles.lst
 BST_STYLEFILE=bstFiles.lst
-version='$Id: TeXFiles.sh,v 0.2 2001-10-15'
+BIB_FILES=bibFiles.lst
+version='$Id: TeXFiles.sh,v 0.3 2003-02-14'
 progname=`echo $0 | sed 's%.*/%%'`
-usage="Usage: TeXFiles.sh [-version | cls | sty | bst] 
+usage="Usage: TeXFiles.sh [-version | cls | sty | bst | bib ] 
        Default is without any Parameters,
        so that all files will be created"
 
 types=$1
-test -z "$types" && types="cls sty bst"
+test -z "$types" && types="cls sty bst bib"
 
 #
 # MS-DOS and MS-Windows define $COMSPEC or $ComSpec and use ';' to separate
@@ -59,6 +63,8 @@ for type in $types ; do
         kpsetype=.tex;;
    bst) outfile=$BST_STYLEFILE
         kpsetype=.bst;;
+   bib) outfile=$BIB_FILES
+        kpsetype=.bib;;
    *)   echo "ERROR: unknown type $type"
         exit 1;;
   esac

@@ -9,7 +9,10 @@
 	* QBibtexDialog.C: Fix browsing mechanism of *.sty files (bug 773).
 
 	* ui/QBibtexDialogBase.ui: Remove unused Update button (bug 773).
+ 	Replace addBib LineEdit with ComboBox.
 
+	* QBibtex.C: Insert available .bib-files into addBibCB. 
+	
 2003-02-13  John Levon  <levon@movementarian.org>
 
 	* ui/QSpellcheckerDialogBase.ui: A&dd not &Add, bug 884

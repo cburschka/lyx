@@ -71,6 +71,18 @@ void QBibtex::update_contents()
 		if (!bib.empty())
 			dialog_->databaseLB->insertItem(toqstr(bib));
 	}
+	
+	dialog_->addBibCB->clear();
+
+	vector<string> const bib_str = getVectorFromString(
+		controller().getBibFiles(), "\n");
+	for (vector<string>::const_iterator it = bib_str.begin();
+		it != bib_str.end(); ++it) {
+		string bibItem(ChangeExtension(*it, ""));
+		dialog_->addBibCB->insertItem(toqstr(bibItem));
+	}
+	dialog_->addBibCB->clearEdit();
+
 
 	string bibtotoc = "bibtotoc";
 	string bibstyle(controller().params().getOptions());

@@ -1,4 +1,7 @@
-2003-02-09  Juergen Spitzmueller  <j.spitzmueller@gmx.de>
+2003-02-14  Juergen Spitzmueller  <j.spitzmueller@gmx.de>
+
+	* ControlBibtex.[Ch]: new function getBibFiles() (provides list
+	of available *.bib-files from bibFiles.lst).
 
 	* tex_helpers.C (getTexFileList): sort and dis-duplicate
 	listWithoutPath correctly.

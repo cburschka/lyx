@@ -26,7 +26,9 @@ public:
 	string const Browse(string const &, string const &, string const &);
 	/// get the list of bst files
 	string const getBibStyles() const;
-	/// build filelists of all availabe bst/cls/sty-files. done through
+	/// get the list of bib files
+	string const getBibFiles() const;
+	/// build filelists of all availabe bib/bst/cls/sty-files. done through
 	/// kpsewhich and an external script, saved in *Files.lst
 	void rescanBibStyles() const;
 private:

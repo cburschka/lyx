@@ -76,6 +76,18 @@ string const ControlBibtex::getBibStyles() const
 }
 
 
+string const ControlBibtex::getBibFiles() const
+{
+	string list = getTexFileList("bibFiles.lst", false);
+	// test, if we have a valid list, otherwise run rescan
+	if (list.empty()) {
+		rescanBibStyles();
+		list = getTexFileList("bibFiles.lst", false);
+	}
+	return list;
+}
+
+
 void ControlBibtex::rescanBibStyles() const
 {
 	rescanTexStyles();
