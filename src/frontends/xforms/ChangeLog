@@ -1,5 +1,33 @@
 2002-02-06  Angus Leeming  <a.leeming@ic.ac.uk>
 
+	Stabilise the tooltip interface and get Jürgen's patch to work ;-)
+
+	* Tooltips.[Ch]: new files. A wrapper to the tooltip code with a nice
+	clean interface. Means that FormBase, FormBaseDeprecated and
+	Tollbar_pimpl can all use the same code to have tooltips. No bloat.
+
+	* FormBase.C: add a Tooltips instance and interface with it.
+	(setTooltipLevel): removed. Replaced by fillTooltipChoice and
+	setTooltipLevel(ob).
+	(getVerboseTooltip, getMinimalTooltip) now passed a const FL_OBJECT.
+
+	* FormBibtex.[Ch]:
+	* FormCitation.[Ch]:
+	* FormTexinfo.[Ch]:
+	* Makefile.am: altered appropriately.
+	
+2002-02-06  Juergen Spitzmueller  <j.spitzmueller@gmx.de>
+
+	* forms/form_texinfo.fd:
+	* forms/form_bibtex.fd:
+	* forms/form_citation.fd: delete text_info field again, add help choice
+
+	* FormBibtex.[Ch]:
+	* FormCitation.[Ch]:
+	* FormTexinfo.[Ch]: Implement new Tooltip behaviour.
+
+2002-02-06  Angus Leeming  <a.leeming@ic.ac.uk>
+
 	* FormBase.[Ch]: can now chose the verbosity of the tooltip through
 	a new method setTooltipLevel(). In turn this determines which of the
 	new virtual methods, getVerboseTooltip() or getMinimalTooltip() gets

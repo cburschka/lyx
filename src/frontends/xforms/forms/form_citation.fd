@@ -9,13 +9,13 @@ Unit of measure: FL_COORD_PIXEL
 =============== FORM ===============
 Name: form_citation
 Width: 680
-Height: 480
-Number of Objects: 27
+Height: 440
+Number of Objects: 26
 
 --------------------
 class: FL_BOX
 type: UP_BOX
-box: 0 0 680 480
+box: 0 0 680 440
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -58,7 +58,7 @@ alignment: FL_ALIGN_TOP_LEFT
 style: FL_NORMAL_STYLE
 size: FL_NORMAL_SIZE
 lcol: FL_BLACK
-label: Bibliography keys|#B
+label: Bibliography keys|#y
 shortcut: 
 resize: FL_RESIZE_X
 gravity: FL_North FL_SouthEast
@@ -393,7 +393,7 @@ argument: 0
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 10 395 100 30
+box: 220 400 100 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -411,7 +411,7 @@ argument: 0
 --------------------
 class: FL_BUTTON
 type: RETURN_BUTTON
-box: 360 395 90 30
+box: 360 400 90 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -429,7 +429,7 @@ argument: 0
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 470 395 90 30
+box: 470 400 90 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -447,7 +447,7 @@ argument: 0
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 580 395 90 30
+box: 580 400 90 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -463,40 +463,22 @@ callback: C_FormBaseCancelCB
 argument: 0
 
 --------------------
-class: FL_TEXT
-type: NORMAL_TEXT
-box: 10 440 660 30
-boxtype: FL_FLAT_BOX
-colors: FL_COL1 FL_MCOL
-alignment: FL_ALIGN_LEFT|FL_ALIGN_INSIDE
+class: FL_CHOICE
+type: NORMAL_CHOICE
+box: 80 400 130 30
+boxtype: FL_FRAME_BOX
+colors: FL_COL1 FL_BLACK
+alignment: FL_ALIGN_LEFT
 style: FL_NORMAL_STYLE
 size: FL_DEFAULT_SIZE
 lcol: FL_BLACK
-label: 
+label: Help:|#H
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: text_info
-callback: 
-argument: 
-
---------------------
-class: FL_FRAME
-type: ENGRAVED_FRAME
-box: 10 430 660 1
-boxtype: FL_NO_BOX
-colors: FL_BLACK FL_COL1
-alignment: FL_ALIGN_CENTER
-style: FL_NORMAL_STYLE
-size: FL_DEFAULT_SIZE
-lcol: FL_BLACK
-label: 
-shortcut: 
-resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
-name: 
-callback: 
-argument: 
+name: choice_help
+callback: C_FormBaseInputCB
+argument: 0
 
 ==============================
 create_the_forms

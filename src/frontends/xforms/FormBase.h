@@ -26,11 +26,11 @@
 #include "ButtonPolicies.h"
 
 class xformsBC;
-
+class Tooltips;
 
 /** This class is an XForms GUI base class.
  */
-class FormBase : public ViewBC<xformsBC>
+class FormBase : public ViewBC<xformsBC>, public SigC::Object
 {
 public:
 	///
@@ -43,7 +43,7 @@ public:
 	///
 	FormBase(ControlButtons &, string const &, bool allowResize);
 	///
-	virtual ~FormBase() {}
+	virtual ~FormBase();
 
 	/** input callback function.
 	    Invoked only by C_FormBaseInputCB and by C_FormBasePrehandler */
@@ -52,8 +52,8 @@ public:
 	void FeedbackCB(FL_OBJECT *, int event);
 
 	/** Return the tooltip dependent on the value of tooltip_level_
-	    Invoked only by setTooltipHandler and by TooltipTimerCB */
-	string const getTooltip(FL_OBJECT *) const;
+	    currently non-const becuase it gets connected to a SigC::slot */
+	string getTooltip(FL_OBJECT const *);
 
 protected:
 	/// Build the dialog
@@ -62,9 +62,6 @@ protected:
 	void hide();
 	/// Create the dialog if necessary, update it and display it.
 	void show();
-
-	/// Set's how verbose the tooltips are going to be
-	void setTooltipLevel(TooltipLevel level);
 
 	/// Prepare the way to produce a tooltip when the mouse is over ob.
 	void setTooltipHandler(FL_OBJECT * ob);
@@ -82,6 +79,12 @@ protected:
 	    clear_feedback(). */
 	void setWarningPosted(bool);
 
+	/** Fill the tooltips chooser with the standard descriptions
+	    and set it to the tooltips_level_ */
+	void fillTooltipChoice(FL_OBJECT *);
+	/// Set tooltips_level_ from the chooser.
+	void setTooltipLevel(FL_OBJECT *);
+	
 private:
 	/// Pointer to the actual instantiation of xform's form
 	virtual FL_FORM * form() const = 0;
@@ -93,9 +96,9 @@ private:
 	virtual void redraw();
 
 	/// These methods can be overridden in the daughter classes.
-	virtual string const getMinimalTooltip(FL_OBJECT *) const
+	virtual string const getMinimalTooltip(FL_OBJECT const *) const
 		{ return string(); }
-	virtual string const getVerboseTooltip(FL_OBJECT *) const
+	virtual string const getVerboseTooltip(FL_OBJECT const *) const
 		{ return string(); }
 
 	/// Post feedback for ob. Defaults to nothing
@@ -114,10 +117,8 @@ private:
 	/** Variable used to decide whether to remove the existing feedback
 	    message or not (if it is infact a warning) */
 	bool warning_posted_;
-	/// Enables tooltips for crappy GUI libraries...
-#if FL_REVISION < 89
-	FL_OBJECT * tooltip_timer_;
-#endif
+	///
+	Tooltips * tooltip_;
 	/// How verbose are the tooltips?
 	TooltipLevel tooltip_level_;
 };

@@ -38,16 +38,10 @@ void FormTexinfo::build() {
 	fl_set_button(dialog_->button_fullPath, 1);
 	updateStyles(ControlTexinfo::cls);
 
-	setPrehandler(dialog_->button_rescan);
-	setPrehandler(dialog_->button_view);
-	setPrehandler(dialog_->button_texhash);
-	setPrehandler(dialog_->button_fullPath);
-	setPrehandler(dialog_->browser);
-	setPrehandler(dialog_->radio_cls);
-	setPrehandler(dialog_->radio_sty);
-	setPrehandler(dialog_->radio_bst);
-	setPrehandler(dialog_->message);
+	// the help choice
+	fillTooltipChoice(dialog_->choice_help);
 
+	// setting up the help mechanism
 	setTooltipHandler(dialog_->button_rescan);
 	setTooltipHandler(dialog_->button_view);
 	setTooltipHandler(dialog_->button_texhash);
@@ -56,14 +50,13 @@ void FormTexinfo::build() {
 	setTooltipHandler(dialog_->radio_cls);
 	setTooltipHandler(dialog_->radio_sty);
 	setTooltipHandler(dialog_->radio_bst);
-	setTooltipHandler(dialog_->message);
 }
 
 
 ButtonPolicy::SMInput FormTexinfo::input(FL_OBJECT * ob, long) {
 
 	if (ob == dialog_->radio_cls) {
-		updateStyles(ControlTexinfo::cls); 
+		updateStyles(ControlTexinfo::cls);
 
 	} else if (ob == dialog_->radio_sty) {
 		updateStyles(ControlTexinfo::sty); 
@@ -98,6 +91,11 @@ ButtonPolicy::SMInput FormTexinfo::input(FL_OBJECT * ob, long) {
 		}
 	}
 
+	if (ob == dialog_->choice_help) {
+		setTooltipLevel(dialog_->choice_help);
+		return ButtonPolicy::SMI_NOOP;
+	}
+
 	return ButtonPolicy::SMI_VALID;
 }
 
@@ -115,18 +113,18 @@ void FormTexinfo::updateStyles(ControlTexinfo::texFileSuffix whichStyle)
 }
 
 
-string const FormTexinfo::getMinimalTooltip(FL_OBJECT * ob) const
+string const FormTexinfo::getMinimalTooltip(FL_OBJECT const * ob) const
 {
 	string str;
 
 	if (ob == dialog_->radio_cls) {
-		str = N_("");
+		str = N_("Available LaTeX Classes");
 
 	} else if (ob == dialog_->radio_sty) {
-		str = _("");
+		str = _("Available LaTeX Styles");
 
 	} else if (ob == dialog_->radio_bst) {
-		str = _("");
+		str = _("Available BibTeX Styles");
 
 	} else if (ob == dialog_->button_rescan) {
 		str = _("Rescan File List");
@@ -135,7 +133,7 @@ string const FormTexinfo::getMinimalTooltip(FL_OBJECT * ob) const
 		str = _("Show Full Path or not");
 
 	} else if (ob == dialog_->button_texhash) {
-		str = _("");
+		str = _("Execute Script \"Texhash\"");
 
 	} else if (ob == dialog_->button_view) {
 		str = N_("View Content of the File");
@@ -146,7 +144,7 @@ string const FormTexinfo::getMinimalTooltip(FL_OBJECT * ob) const
 }
 
 
-string const FormTexinfo::getVerboseTooltip(FL_OBJECT * ob) const
+string const FormTexinfo::getVerboseTooltip(FL_OBJECT const * ob) const
 {
 	string str;
 

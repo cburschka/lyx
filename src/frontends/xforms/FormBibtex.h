@@ -38,7 +38,9 @@ private:
 	/// Filter the inputs on callback from xforms
 	virtual ButtonPolicy::SMInput input(FL_OBJECT *, long);
 	/// tooltips
-	string const getVerboseTooltip(FL_OBJECT *) const;
+	string const getVerboseTooltip(FL_OBJECT const *) const;
+	///
+	string const getMinimalTooltip(FL_OBJECT const *) const;
 
 	/// Fdesign generated method
 	FD_form_bibtex * build_bibtex();

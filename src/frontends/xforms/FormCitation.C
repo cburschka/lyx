@@ -154,6 +154,8 @@ void FormCitation::build()
 
 	fl_set_button(dialog_->button_search_case, 0);
 	fl_set_button(dialog_->button_search_type, 0);
+	// the help choice
+	fillTooltipChoice(dialog_->choice_help);
 
         // Manage the ok, apply, restore and cancel/close buttons
 	bc().setOK(dialog_->button_ok);
@@ -170,23 +172,6 @@ void FormCitation::build()
 	bc().addReadOnly(dialog_->input_after);
 	bc().addReadOnly(dialog_->button_full_author_list);
 	bc().addReadOnly(dialog_->button_force_uppercase);
-
-	//set up the feedback mechanism
-	setPrehandler(dialog_->button_add);
-	setPrehandler(dialog_->button_del);
-	setPrehandler(dialog_->button_up);
-	setPrehandler(dialog_->button_down);
-	setPrehandler(dialog_->browser_cite);
-	setPrehandler(dialog_->browser_bib);
-	setPrehandler(dialog_->browser_info);
-	setPrehandler(dialog_->choice_style);
-	setPrehandler(dialog_->input_before);
-	setPrehandler(dialog_->input_after);
-	setPrehandler(dialog_->button_full_author_list);
-	setPrehandler(dialog_->button_force_uppercase);
-	setPrehandler(dialog_->input_search);
-	setPrehandler(dialog_->button_search_case);
-	setPrehandler(dialog_->button_search_type);
 
 	//set up the tooltip mechanism
 	setTooltipHandler(dialog_->button_add);
@@ -399,6 +384,11 @@ ButtonPolicy::SMInput FormCitation::input(FL_OBJECT * ob, long)
 		activate = ButtonPolicy::SMI_VALID;
 	}
 
+	if (ob == dialog_->choice_help) {
+		setTooltipLevel(dialog_->choice_help);
+		return ButtonPolicy::SMI_NOOP;
+	}
+
 	string currentCitekey;
 	if (!citekeys.empty())
 		currentCitekey = citekeys[0];
@@ -495,7 +485,7 @@ void FormCitation::setCiteButtons(State status) const
 }
 
 
-string const FormCitation::getMinimalTooltip(FL_OBJECT * ob) const
+string const FormCitation::getMinimalTooltip(FL_OBJECT const * ob) const
 {
 	string str;
 
@@ -546,7 +536,7 @@ string const FormCitation::getMinimalTooltip(FL_OBJECT * ob) const
 }
 
 
-string const FormCitation::getVerboseTooltip(FL_OBJECT * ob) const
+string const FormCitation::getVerboseTooltip(FL_OBJECT const * ob) const
 {
 	string str;
 
@@ -578,7 +568,7 @@ string const FormCitation::getVerboseTooltip(FL_OBJECT * ob) const
 		str = N_("Activate if you want to print all authors in a reference with more than three authors, and not \"<First Author> et.al.\" (Natbib).");
 
 	} else if (ob == dialog_->button_force_uppercase) {
-		str = N_("Activate if you want to print the first character of the author name as uppercase (\"Van Gogh\", not \"van Gogh\". Useful at the beginning of sentences (Natbib).");
+		str = N_("Activate if you want to print the first character of the author name as uppercase (\"Van Gogh\", not \"van Gogh\"). Useful at the beginning of sentences (Natbib).");
 
 	} else if (ob == dialog_->input_before) {
 		str = N_("Optional text which appears before the citation reference, e.g. \"see <Ref>\"");

@@ -22,9 +22,9 @@ FD_form_bibtex * FormBibtex::build_bibtex()
   FL_OBJECT *obj;
   FD_form_bibtex *fdui = new FD_form_bibtex;
 
-  fdui->form = fl_bgn_form(FL_NO_BOX, 450, 215);
+  fdui->form = fl_bgn_form(FL_NO_BOX, 450, 160);
   fdui->form->u_vdata = this;
-  obj = fl_add_box(FL_UP_BOX, 0, 0, 450, 215, "");
+  obj = fl_add_box(FL_UP_BOX, 0, 0, 450, 160, "");
   {
     char const * const dummy = N_("Database:|#D");
     fdui->database = obj = fl_add_input(FL_NORMAL_INPUT, 90, 10, 245, 30, idex(_(dummy)));
@@ -67,9 +67,13 @@ FD_form_bibtex * FormBibtex::build_bibtex()
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
-  fdui->text_info = obj = fl_add_text(FL_NORMAL_TEXT, 10, 166, 431, 42, "");
-    fl_set_object_lalign(obj, FL_ALIGN_LEFT|FL_ALIGN_INSIDE);
-  obj = fl_add_frame(FL_ENGRAVED_FRAME, 10, 159, 429, 1, "");
+  {
+    char const * const dummy = N_("Help:|#H");
+    fdui->choice_help = obj = fl_add_choice(FL_NORMAL_CHOICE, 89, 120, 136, 29, idex(_(dummy)));
+    fl_set_button_shortcut(obj, scex(_(dummy)), 1);
+  }
+    fl_set_object_boxtype(obj, FL_FRAME_BOX);
+    fl_set_object_callback(obj, C_FormBaseInputCB, 0);
   fl_end_form();
 
   fdui->form->fdui = fdui;

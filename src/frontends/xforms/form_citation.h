@@ -41,7 +41,7 @@ struct FD_form_citation {
 	FL_OBJECT *button_ok;
 	FL_OBJECT *button_apply;
 	FL_OBJECT *button_cancel;
-	FL_OBJECT *text_info;
+	FL_OBJECT *choice_help;
 };
 
 #endif /* FD_form_citation_h_ */

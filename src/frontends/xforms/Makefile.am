@@ -191,6 +191,8 @@ libxforms_la_SOURCES = \
 	Timeout_pimpl.h \
 	Toolbar_pimpl.C \
 	Toolbar_pimpl.h \
+	Tooltips.C \
+	Tooltips.h \
 	xforms_helpers.C \
 	xforms_helpers.h \
 	xformsBC.C \

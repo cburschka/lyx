@@ -20,35 +20,8 @@
 #include "FormBase.h"
 #include "xformsBC.h"
 #include "support/LAssert.h"
+#include "Tooltips.h"
 #include "xforms_helpers.h" // formatted
-
-#if FL_REVISION < 89
-
-namespace {
-
-int TooltipHandler(FL_OBJECT *ob, int event);
-
-void TooltipTimerCB(FL_OBJECT * timer, long data);
- 
-}
-
-extern "C" {
-
-static int C_FormBaseTooltipHandler(FL_OBJECT * ob, int event,
-				    FL_Coord, FL_Coord, int, void *)
-{
-	return TooltipHandler(ob, event);
-}
-
-static void C_FormBaseTooltipTimerCB(FL_OBJECT * ob, long data)
-{
-	TooltipTimerCB(ob, data);
-}
-
-}
- 
-#endif // FL_REVISION < 89
-
 
 extern "C" {
 
@@ -66,14 +39,18 @@ static int C_FormBasePrehandler(FL_OBJECT * ob, int event,
 
 FormBase::FormBase(ControlButtons & c, string const & t, bool allowResize)
 	: ViewBC<xformsBC>(c), minw_(0), minh_(0), allow_resize_(allowResize),
-	  title_(t), warning_posted_(false), tooltip_level_(VERBOSE_TOOLTIP)
+	  title_(t), warning_posted_(false), tooltip_level_(NO_TOOLTIP)
 
 {
-#if FL_REVISION < 89
-	tooltip_timer_ = 0;
-#endif
+	tooltip_ = new Tooltips;
+	tooltip_->getTooltip.connect(SigC::slot(this, &FormBase::getTooltip));
 }
 
+
+FormBase::~FormBase()
+{
+	delete tooltip_;
+}
 
 void FormBase::redraw()
 {
@@ -179,27 +156,11 @@ void FormBase::FeedbackCB(FL_OBJECT * ob, int event)
 
 void FormBase::setTooltipHandler(FL_OBJECT * ob)
 {
-	lyx::Assert(ob);
-
-#if FL_REVISION < 89
-	if (!tooltip_timer_) {
-		fl_addto_form(form());
-		tooltip_timer_ = fl_add_timer(FL_HIDDEN_TIMER, 0, 0, 0, 0, "");
-		fl_end_form();
-	}
-
-	fl_set_object_posthandler(ob, C_FormBaseTooltipHandler);
-	ob->u_cdata = reinterpret_cast<char *>(tooltip_timer_);
-
-#else
-	string const help(getTooltip(ob));
-	if (!help.empty())
-		fl_set_object_helper(ob, help.c_str());	
-#endif // FL_REVISION < 89
+	tooltip_->activateTooltip(ob);
 }
 
 
-string const FormBase::getTooltip(FL_OBJECT * ob) const
+string FormBase::getTooltip(FL_OBJECT const * ob)
 {
 	lyx::Assert(ob);
 
@@ -223,9 +184,44 @@ string const FormBase::getTooltip(FL_OBJECT * ob) const
 }
 		
 
-void FormBase::setTooltipLevel(TooltipLevel level)
+/// Fill the tooltips chooser with the standard descriptions
+void FormBase::fillTooltipChoice(FL_OBJECT * ob)
 {
-	tooltip_level_ = level;
+	lyx::Assert(ob && ob->objclass == FL_CHOICE);
+
+	fl_clear_choice(ob);
+	fl_addto_choice(ob, _(" None | Normal | Verbose "));
+
+	switch(tooltip_level_){
+	case NO_TOOLTIP:
+		fl_set_choice(ob, 1);
+		break;
+	case MINIMAL_TOOLTIP:
+		fl_set_choice(ob, 2);
+		break;
+	case VERBOSE_TOOLTIP:
+		fl_set_choice(ob, 3);
+		break;
+	}
+}
+
+
+void FormBase::setTooltipLevel(FL_OBJECT * ob)
+{
+	lyx::Assert(ob && ob->objclass == FL_CHOICE &&
+		    fl_get_choice_maxitems(ob) == 3);
+
+	switch(fl_get_choice(ob)){
+	case 1:
+		tooltip_level_ = NO_TOOLTIP;
+		break;
+	case 2:
+		tooltip_level_ = MINIMAL_TOOLTIP;
+		break;
+	case 3:
+		tooltip_level_ = VERBOSE_TOOLTIP;
+		break;
+	}
 }
 
 
@@ -327,48 +323,3 @@ static int C_FormBasePrehandler(FL_OBJECT * ob, int event,
 }
  
 } // extern "C"
-
-
-#if FL_REVISION < 89
-
-namespace {
-
-void TooltipTimerCB(FL_OBJECT * timer, long data)
-{
-	FL_OBJECT * ob = reinterpret_cast<FL_OBJECT*>(data);
-	lyx::Assert(ob && ob->form);
-
-	string const help = GetForm(timer)->getTooltip(ob);
-	if (help.empty())
-		return;
-
-	fl_show_oneliner(help.c_str(),
-			 ob->form->x + ob->x,
-			 ob->form->y + ob->y + ob->h);
-}
-
-
-// post_handler for bubble-help (Matthias)
-int TooltipHandler(FL_OBJECT *ob, int event)
-{
-	lyx::Assert(ob);
-	FL_OBJECT * timer = reinterpret_cast<FL_OBJECT *>(ob->u_cdata);
-	lyx::Assert(timer);
-
-	// We do not test for empty help here, since this can never happen
-	if (event == FL_ENTER){
-		fl_set_object_callback(timer,
-				       C_FormBaseTooltipTimerCB,
-				       reinterpret_cast<long>(ob));
-		fl_set_timer(timer, 1);
-	}
-	else if (event != FL_MOTION){
-		fl_set_timer(timer, 0);
-		fl_hide_oneliner();
-	}
-	return 0;
-}
-
-} // namespace anon
-
-#endif // FL_REVISION < 89

@@ -37,6 +37,8 @@ void FormBibtex::build()
 {
 	dialog_.reset(build_bibtex());
 
+	// the help choice
+	fillTooltipChoice(dialog_->choice_help);
 	fl_set_input_return(dialog_->database, FL_RETURN_CHANGED);
 	fl_set_input_return(dialog_->style, FL_RETURN_CHANGED);
 
@@ -50,12 +52,12 @@ void FormBibtex::build()
 	bc().addReadOnly(dialog_->style);
 	bc().addReadOnly(dialog_->radio_bibtotoc);
 
-	// set up the feedback mechanism
-	setPrehandler(dialog_->database_browse);
-	setPrehandler(dialog_->database);
-	setPrehandler(dialog_->style_browse);
-	setPrehandler(dialog_->style);
-	setPrehandler(dialog_->radio_bibtotoc);
+	// set up the help mechanism
+	setTooltipHandler(dialog_->database_browse);
+	setTooltipHandler(dialog_->database);
+	setTooltipHandler(dialog_->style_browse);
+	setTooltipHandler(dialog_->style);
+	setTooltipHandler(dialog_->radio_bibtotoc);
 }
 
 
@@ -92,6 +94,11 @@ ButtonPolicy::SMInput FormBibtex::input(FL_OBJECT * ob, long)
 		}
 	}
   
+	if (ob == dialog_->choice_help) {
+		setTooltipLevel(dialog_->choice_help);
+		return ButtonPolicy::SMI_NOOP;
+	}
+
 	if (!compare(fl_get_input(dialog_->database),"")) {
 		return ButtonPolicy::SMI_NOOP;
 	}
@@ -183,7 +190,30 @@ void FormBibtex::apply()
 }
 
 
-string const FormBibtex::getVerboseTooltip(FL_OBJECT * ob) const
+string const FormBibtex::getMinimalTooltip(FL_OBJECT const * ob) const
+{
+	string str;
+
+	if (ob == dialog_->database) {
+		str = N_("The BibTeX Database");
+
+	} else if (ob == dialog_->database_browse) {
+		str = _("Browse for BibTeX databases.");
+
+	} else if (ob == dialog_->style) {
+		str = _("The BibTeX style to use");
+
+	} else if (ob == dialog_->style_browse) {
+		str = _("Browse for BibTeX stylefiles.");
+
+	} else if (ob == dialog_->radio_bibtotoc) {
+		str = _("Bibliography to Table of Contents");
+	}
+
+	return str;
+}
+
+string const FormBibtex::getVerboseTooltip(FL_OBJECT const * ob) const
 {
 	string str;
 

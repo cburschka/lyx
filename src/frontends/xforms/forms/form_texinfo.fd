@@ -10,13 +10,13 @@ SnapGrid: 1
 =============== FORM ===============
 Name: form_texinfo
 Width: 513
-Height: 394
-Number of Objects: 14
+Height: 353
+Number of Objects: 13
 
 --------------------
 class: FL_BOX
 type: UP_BOX
-box: 0 0 513 394
+box: 0 0 513 353
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -195,27 +195,9 @@ callback: C_FormBaseInputCB
 argument: 2
 
 --------------------
-class: FL_TEXT
-type: NORMAL_TEXT
-box: 14 323 482 56
-boxtype: FL_FLAT_BOX
-colors: FL_COL1 FL_MCOL
-alignment: FL_ALIGN_LEFT|FL_ALIGN_INSIDE
-style: FL_NORMAL_STYLE
-size: FL_DEFAULT_SIZE
-lcol: FL_BLACK
-label: 
-shortcut: 
-resize: FL_RESIZE_ALL
-gravity: FL_SouthWest FL_SouthEast
-name: message
-callback: 
-argument: 
-
---------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 15 271 135 30
+box: 14 270 131 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -233,7 +215,7 @@ argument: 0
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 408 272 90 30
+box: 409 313 90 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -249,22 +231,22 @@ callback: C_FormBaseCancelCB
 argument: 0
 
 --------------------
-class: FL_FRAME
-type: ENGRAVED_FRAME
-box: 13 312 485 1
-boxtype: FL_NO_BOX
-colors: FL_BLACK FL_COL1
-alignment: FL_ALIGN_CENTER
+class: FL_CHOICE
+type: NORMAL_CHOICE
+box: 344 270 155 29
+boxtype: FL_FRAME_BOX
+colors: FL_COL1 FL_BLACK
+alignment: FL_ALIGN_LEFT
 style: FL_NORMAL_STYLE
 size: FL_DEFAULT_SIZE
 lcol: FL_BLACK
-label: 
+label: Help:|#H
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: 
-callback: 
-argument: 
+name: choice_help
+callback: C_FormBaseInputCB
+argument: 0
 
 ==============================
 create_the_form
