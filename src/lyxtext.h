@@ -161,15 +161,12 @@ public:
 	///
 	void insertInset(InsetOld * inset);
 
-	/// Completes the insertion with a rebreak from 'need_break_row' on
+	/// Completes the insertion with a rebreak
 	void partialRebreak();
 	/// a full rebreak of the whole text
 	void fullRebreak();
 	/// compute text metrics
 	void metrics(MetricsInfo & mi, Dimension & dim);
-
-	///
-	RowList::iterator need_break_row;
 
 	/// clear any pending paints
 	void clearPaint();

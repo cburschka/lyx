@@ -1,3 +1,11 @@
+
+2003-07-26  André Pönitz  <poenitz@gmx.net>
+
+	*	lyxtext.h:
+	* text.C:
+	* text2.C: get rid of LyXText::need_break_row
+
+
 2003-07-27  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* toc.[Ch]: put namespace toc inside namespace lyx

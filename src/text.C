@@ -1634,8 +1634,6 @@ void LyXText::breakParagraph(ParagraphList & paragraphs, char keep_layout)
 
 	if (boost::next(cursorRow()) != rows().end())
 		breakAgain(boost::next(cursorRow()));
-
-	need_break_row = rows().end();
 }
 
 
@@ -1808,15 +1806,8 @@ void LyXText::insertChar(char c)
 			real_current_font = realtmpfont;
 			setCursor(cursor.par(), cursor.pos() + 1,
 				  false, cursor.boundary());
+
 			// cursor MUST be in row now.
-
-			RowList::iterator next_row = boost::next(row);
-			if (next_row != rows().end() &&
-			    next_row->par() == row->par())
-				need_break_row = next_row;
-			else
-				need_break_row = rows().end();
-
 			// check, wether the last characters font has changed.
 			if (cursor.pos() && cursor.pos() == cursor.par()->size()
 			    && rawparfont != rawtmpfont)
@@ -1860,14 +1851,6 @@ void LyXText::insertChar(char c)
 		    != cursor.boundary())
 			setCursor(cursor.par(), cursor.pos(), false,
 			  !cursor.boundary());
-
-		next_row = boost::next(row);
-
-		if (next_row != rows().end() &&
-		    next_row->par() == row->par())
-			need_break_row = next_row;
-		else
-			need_break_row = rows().end();
 	} else {
 		// FIXME: similar code is duplicated all over - make resetHeightOfRow
 		setHeightOfRow(row);
@@ -2611,14 +2594,8 @@ void LyXText::backspace()
 				if (row->pos() >= row->par()->size()) {
 					// remove it
 					removeRow(row);
-					need_break_row = rows().end();
 				} else {
 					breakAgainOneRow(row);
-					if (boost::next(row) != rows().end() &&
-					    boost::next(row)->par() == row->par())
-						need_break_row = boost::next(row);
-					else
-						need_break_row = rows().end();
 				}
 
 				// set the dimensions of the row above
@@ -2665,12 +2642,6 @@ void LyXText::backspace()
 			}
 
 			setCursor(cursor.par(), cursor.pos(), false, cursor.boundary());
-
-			if (boost::next(row) != rows().end() &&
-			    boost::next(row)->par() == row->par())
-				need_break_row = boost::next(row);
-			else
-				need_break_row = rows().end();
 		} else  {
 			// set the dimensions of the row
 			row->fill(fill(row, workWidth()));

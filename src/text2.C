@@ -65,7 +65,6 @@ LyXText::LyXText(BufferView * bv)
 	  inset_owner(0), the_locking_inset(0), bv_owner(bv)
 {
 	anchor_row_ = rows().end();
-	need_break_row = rows().end();
 	need_refresh_ = true;
 }
 
@@ -75,7 +74,6 @@ LyXText::LyXText(BufferView * bv, InsetText * inset)
 	  inset_owner(inset), the_locking_inset(0), bv_owner(bv)
 {
 	anchor_row_ = rows().end();
-	need_break_row = rows().end();
 	need_refresh_ = true;
 }
 
@@ -85,7 +83,6 @@ void LyXText::init(BufferView * bview)
 	bv_owner = bview;
 
 	rowlist_.clear();
-	need_break_row = rows().end();
 	width = height = 0;
 	need_refresh_ = true;
 
@@ -701,7 +698,6 @@ void LyXText::metrics(MetricsInfo & mi, Dimension & dim)
 
 	// rebuild row cache
 	rowlist_.clear();
-	need_break_row = rows().end();
 	width = height = 0;
 
 	anchor_row_ = rows().end();
@@ -747,14 +743,7 @@ void LyXText::partialRebreak()
 		init(bv());
 		return;
 	}
-
-	RowList::iterator rows_end = rows().end();
-
-	if (need_break_row != rows_end) {
-		breakAgain(need_break_row);
-		need_break_row = rows_end;
-		return;
-	}
+	breakAgain(rows().begin());
 }
 
 
