@@ -260,11 +260,12 @@ private:
 	bool posRight();
 	/// moves position somehow up or down
 	bool goUpDown(bool up);
-	/// moves position into box
-	bool bruteFind(int xo, int yo, int xlow, int xhigh, int ylow, int yhigh);
+	/// moves position closest to (x, y) in given box
+	bool bruteFind(int x, int y, int xlow, int xhigh, int ylow, int yhigh);
+	/// moves position closest to (x, y) in current cell
+	void bruteFind2(int x, int y);
 	/// are we in a nucleus of a script inset?
 	bool inNucleus() const;
-
 
 	/// grab grid marked by anchor and current cursor 
 	MathGridInset grabSelection() const;
@@ -273,9 +274,9 @@ private:
 	/// guess what
 	MathGridInset grabAndEraseSelection();
 
-	///
+	/// the name of the macro we are currently inputting
 	string macroName() const;
-	///
+	/// where in the curent cell does the macro name start?
 	MathInset::difference_type macroNamePos() const;
 	/// can we enter the inset?
 	bool openable(MathAtom const &, bool selection) const;

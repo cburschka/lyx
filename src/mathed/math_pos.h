@@ -23,6 +23,8 @@ public:
 	MathArray & cell(MathArray::idx_type idx) const;
 	/// gets screen position of the thing
 	void getPos(int & x, int & y) const;
+	/// set position
+	void setPos(MathArray::pos_type pos);
 
 public:
 	/// pointer to an inset

@@ -262,7 +262,8 @@ void MathCursor::last()
 }
 
 
-bool positionable(MathIterator const & cursor, MathIterator const & anchor)
+bool positionable
+	(MathIterator const & cursor, MathIterator const & anchor)
 {
 	// avoid deeper nested insets when selecting
 	if (cursor.size() > anchor.size())
@@ -1003,8 +1004,12 @@ bool MathCursor::goUpDown(bool up)
 	while (1) {
 		///lyxerr << "updown: We are in " << *par() << " idx: " << idx() << '\n';
 		// ask inset first
-		if (par()->idxUpDown(idx(), pos(), up, targetx_))
+		if (par()->idxUpDown(idx(), pos(), up, targetx_)) {
+			// try to find best position within this inset
+			if (!selection())
+				bruteFind2(xo, yo);
 			return true;
+		}
 
 		// no such inset found, just take something "above"
 		///lyxerr << "updown: handled by strange case\n";
@@ -1058,6 +1063,31 @@ bool MathCursor::bruteFind
 	if (best_dist < 1e10)
 		Cursor_ = best_cursor;
 	return best_dist < 1e10;
+}
+
+
+void MathCursor::bruteFind2(int x, int y)
+{
+	double best_dist = 1e10;
+
+	MathIterator it = Cursor_;
+	it.back().setPos(0);
+	MathIterator et = Cursor_;
+	et.back().setPos(it.cell().size());
+	while (1) {
+		int xo, yo;
+		it.back().getPos(xo, yo);
+		double d = (x - xo) * (x - xo) + (y - yo) * (y - yo);
+		// '<=' in order to take the last possible position
+		// this is important for clicking behind \sum in e.g. '\sum_i a'
+		if (d <= best_dist) {
+			best_dist = d;
+			Cursor_   = it;
+		}
+		if (it == et)
+			break;
+		++it;
+	}
 }
 
 

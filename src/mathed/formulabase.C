@@ -297,7 +297,8 @@ Inset::RESULT InsetFormulaBase::lfunMouseRelease(FuncRequest const & cmd)
 	BufferView * bv = cmd.view();
 	hideInsetCursor(bv);
 	showInsetCursor(bv);
-	bv->updateInset(this, false);
+	bv->updateInset(this, true);
+	//lyxerr << "lfunMouseRelease: buttons: " << cmd.button() << "\n";
 
 	if (cmd.button() == mouse_button::button3) {
 		// try to dispatch to enclosed insets first
@@ -336,6 +337,12 @@ Inset::RESULT InsetFormulaBase::lfunMousePress(FuncRequest const & cmd)
 	BufferView * bv = cmd.view();
 	releaseMathCursor(bv);
 	mathcursor = new MathCursor(this, cmd.x == 0);
+	//lyxerr << "lfunMousePress: buttons: " << cmd.button() << "\n";
+
+	if (cmd.button() == mouse_button::button3) {
+		mathcursor->dispatch(cmd);
+		return DISPATCHED;
+	}
 
 	if (cmd.button() == mouse_button::button1) {
 		// just set the cursor here
@@ -346,12 +353,6 @@ Inset::RESULT InsetFormulaBase::lfunMousePress(FuncRequest const & cmd)
 		mathcursor->selClear();
 		mathcursor->setPos(cmd.x + xo_, cmd.y + yo_);
 		mathcursor->dispatch(cmd);
-		return DISPATCHED;
-	}
-
-	if (cmd.button() == mouse_button::button3) {
-		mathcursor->dispatch(cmd);
-		//delete mathcursor;
 		return DISPATCHED;
 	}
 
@@ -368,10 +369,13 @@ Inset::RESULT InsetFormulaBase::lfunMouseMotion(FuncRequest const & cmd)
 	if (mathcursor->dispatch(FuncRequest(cmd)) != MathInset::UNDISPATCHED)
 		return DISPATCHED;
 
-	if (abs(cmd.x - first_x) < 2 && abs(cmd.y - first_y) < 2) {
-		//lyxerr << "insetMotionNotify: ignored\n";
+	// only select with button 1
+	if (cmd.button() != mouse_button::button1) 
 		return DISPATCHED;
-	}
+
+	if (abs(cmd.x - first_x) < 2 && abs(cmd.y - first_y) < 2)
+		return DISPATCHED;
+	
 	first_x = cmd.x;
 	first_y = cmd.y;
 

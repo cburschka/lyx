@@ -44,6 +44,12 @@ void MathCursorPos::getPos(int & x, int & y) const
 }
 
 
+void MathCursorPos::setPos(MathArray::pos_type pos)
+{
+	pos_ = pos;
+}
+
+
 std::ostream & operator<<(std::ostream & os, MathCursorPos const & p)
 {
 	os << "(par: " << p.par_ << " idx: " << p.idx_ << " pos: " << p.pos_ << ")";

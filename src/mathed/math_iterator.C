@@ -77,8 +77,8 @@ void MathIterator::goEnd()
 
 void MathIterator::operator++()
 {
-	MathCursorPos   & top = back();
-	MathArray & ar  = top.par_->cell(top.idx_);
+	MathCursorPos & top = back();
+	MathArray     & ar  = top.par_->cell(top.idx_);
 
 	// move into the current inset if possible
 	// it is impossible for pos() == size()!
