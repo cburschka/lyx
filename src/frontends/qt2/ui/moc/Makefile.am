@@ -1,6 +1,7 @@
 include $(top_srcdir)/config/common.am
+include $(srcdir)/../../Makefile.dialogs
 
-DISTCLEANFILES += $(libqt2uimoc_la_SOURCES)
+DISTCLEANFILES += $(UIMOCDIALOGS)
 
 noinst_LTLIBRARIES = libqt2uimoc.la
 
@@ -12,8 +13,6 @@ INCLUDES = -I$(top_srcdir)/src/ \
 	$(BOOST_INCLUDES)
 
 AM_CXXFLAGS = -DQT_CLEAN_NAMESPACE -DQT_GENUINE_STR
-
-include $(srcdir)/../../Makefile.dialogs
 
 nodist_libqt2uimoc_la_SOURCES = $(UIMOCDIALOGS)
 

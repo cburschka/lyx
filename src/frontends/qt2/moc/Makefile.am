@@ -1,6 +1,7 @@
 include $(top_srcdir)/config/common.am
+include $(srcdir)/../Makefile.dialogs
 
-DISTCLEANFILES += $(libqt2moc_la_SOURCES)
+DISTCLEANFILES += $(MOCDIALOGS)
 
 noinst_LTLIBRARIES = libqt2moc.la
 
@@ -13,8 +14,6 @@ INCLUDES = -I$(top_srcdir)/src/ \
 	$(BOOST_INCLUDES)
 
 AM_CXXFLAGS = -DQT_CLEAN_NAMESPACE -DQT_GENUINE_STR
-
-include $(srcdir)/../Makefile.dialogs
 
 #libqt2moc_la_SOURCES = FileDialog_private_moc.C \
 #	emptytable_moc.C \

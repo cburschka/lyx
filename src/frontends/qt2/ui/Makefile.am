@@ -10,7 +10,7 @@ INCLUDES = -I$(top_srcdir)/src/ -I$(top_srcdir)/src/frontends/ \
 AM_CXXFLAGS = -DQT_CLEAN_NAMESPACE -DQT_GENUINE_STR
 
 
-SUBDIRS =. moc
+SUBDIRS = . moc
 
 include $(srcdir)/../Makefile.dialogs
 

@@ -40,8 +40,6 @@ DIALOGSOURCES = \
 	QCharacter.C QCharacterDialog.C \
 	QCitation.h QCitationDialog.h \
 	QCitation.C QCitationDialog.C \
-	QDocument.C QDocument.h \
-	QDocumentDialog.C QDocumentDialog.h \
 	QError.h QErrorDialog.h \
 	QError.C QErrorDialog.C \
 	QERT.h QERTDialog.h \
@@ -60,8 +58,6 @@ DIALOGSOURCES = \
 	QLog.C QLogDialog.C \
 	QMinipage.h QMinipageDialog.h \
 	QMinipage.C QMinipageDialog.C \
-	QParagraph.C QParagraph.h \
-	QParagraphDialog.C QParagraphDialog.h \
 	QPreamble.h QPreambleDialog.h \
 	QPreamble.C QPreambleDialog.C \
 	QPrint.h QPrintDialog.h \

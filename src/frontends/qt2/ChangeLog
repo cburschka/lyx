@@ -1,6 +1,18 @@
 2002-04-08  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
-	* xforms/Makefile.am (EXTRA_DIST): delete 
+	* xforms/Makefile.am (link_files): use correct _SOURCES variable.
+
+	* ui/moc/Makefile.am: move include to top
+	(DISTCLEANFILES): take the UIMOCDIALOGS variable instead
+
+	* ui/Makefile.am: ws change
+
+	* moc/Makefile.am: move include to top
+
+	* Makefile.am (EXTRA_DIST): some file taken from...
+	* Makefile.dialogs (DIALOGSOURCES):here
+
+	* xforms/Makefile.am (EXTRA_DIST): delete
 	(libqt2xforms_la_SOURCES): change to...
 	(nodist_libqt2xforms_la_SOURCES): this
 
