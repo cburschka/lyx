@@ -17,8 +17,6 @@
 #ifndef INSET_FORMULA_MACRO_H 
 #define INSET_FORMULA_MACRO_H
 
-#include <boost/smart_ptr.hpp>
-
 #include "formula.h"
 
 #ifdef __GNUG__
@@ -27,6 +25,9 @@
 
 class MathMacroTemplate;
 
+// InsetFormulaMacro's ParInset is the ParInset of the macro definition
+// which in turn is stored in the global MathMacroTable.
+// No copying/updating needed anymore...
 
 ///
 class InsetFormulaMacro: public InsetFormula {
@@ -37,8 +38,6 @@ public:
 	explicit
 	InsetFormulaMacro(string name, int na);
 	///
-	~InsetFormulaMacro();
-	///
 	int ascent(BufferView *, LyXFont const &) const;
 	///
 	int descent(BufferView *, LyXFont const &) const;
@@ -48,7 +47,7 @@ public:
 	void draw(BufferView *,LyXFont const &, int, float &, bool) const;
 	///
 	void Read(Buffer const *, LyXLex & lex);
-        ///
+	///
 	void Write(Buffer const *, std::ostream & os) const;
 	///
 	int Latex(Buffer const *, std::ostream & os, bool fragile,
@@ -64,24 +63,15 @@ public:
 	/// what appears in the minibuffer when opening
 	string const EditMessage() const;
 	///
-	void Edit(BufferView *, int x, int y, unsigned int button);
-	///
-	void InsetUnlock(BufferView *);
-	///
 	RESULT LocalDispatch(BufferView *, kb_action, string const &);
-
 private:
+	/// prefix in inset
+	string prefix() const;
 	///
-        bool opened_;
-	///
-        string name_;
-	///
-        boost::shared_ptr<MathMacroTemplate> tmacro_;
+	MathMacroTemplate * tmacro() const;
 };
 
-
-inline
-Inset::Code InsetFormulaMacro::LyxCode() const
+inline Inset::Code InsetFormulaMacro::LyxCode() const
 {
 	return Inset::MATHMACRO_CODE;
 }

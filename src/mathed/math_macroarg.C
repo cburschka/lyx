@@ -4,66 +4,63 @@
 #pragma implementation
 #endif
 
+#include "math_macro.h"
 #include "math_macroarg.h"
 #include "mathed/support.h"
 #include "Lsstream.h"
+#include "debug.h"
 
+
+using namespace std;
 
 MathMacroArgument::MathMacroArgument(int n)
-	: MathParInset(LM_ST_TEXT, "", LM_OT_MACRO_ARG),
-	  expnd_mode_(false), number_(n)
-{}
-
+	: MathedInset(string(), LM_OT_MACRO_ARG, LM_ST_TEXT),
+		number_(n)
+{
+	if (n < 1 || n > 9) {
+		lyxerr << "MathMacroArgument::MathMacroArgument: wrong Argument id: "
+			<< n << endl;
+		lyx::Assert(0);
+	}
+}
 
 MathedInset * MathMacroArgument::Clone()
 {
+	//return new MathMacroArgument(*this);
 	return this;
 }
 
-
-void MathMacroArgument::setExpand(bool e)
+int MathMacroArgument::number() const
 {
-	expnd_mode_ = e;
+	return number_;
+}
+
+void MathMacroArgument::substitute(MathMacro * /*m*/)
+{
+	lyxerr << "Calling MathMacroArgument::substitute!\n";
+	//return m->arg(number_)->Clone();
 }
 
 
-bool MathMacroArgument::getExpand() const
+void MathMacroArgument::draw(Painter & pain, int x, int y)
 {
-	return expnd_mode_;
+	char str[] = "#0";
+	str[1] += number_; 
+	drawStr(pain, LM_TC_TEX, size(), x, y, str);
 }
 
-
-void MathMacroArgument::draw(Painter & pain, int x, int baseline)
-{
-	if (expnd_mode_) {
-		MathParInset::draw(pain, x, baseline);
-	} else {
-		std::ostringstream ost;
-		ost << '#' << number_;
-		drawStr(pain, LM_TC_TEX, size(), x, baseline, ost.str().c_str());
-	}
-}
 
 void MathMacroArgument::Metrics()
 {
-	if (expnd_mode_) {
-		MathParInset::Metrics();
-	} else {
-		std::ostringstream ost;
-		ost << '#' << number_;
-		width = mathed_string_width(LM_TC_TEX, size(),
-					    ost.str().c_str());
-		mathed_string_height(LM_TC_TEX, size(), ost.str().c_str(),
-				     ascent, descent);
-	}
+	char str[] = "#0";
+	str[1] += number_; 
+	width = mathed_string_width(LM_TC_TEX, size(), str);
+	mathed_string_height(LM_TC_TEX, size(), str, ascent, descent);
 }
 
 
-void MathMacroArgument::Write(std::ostream & os, bool fragile)
+void MathMacroArgument::Write(std::ostream & os, bool /*fragile*/)
 {
-	if (expnd_mode_) {
-		MathParInset::Write(os, fragile);
-	} else {
-		os << '#' << number_ << ' ';
-	}
+	os << '#' << number_ << ' ';
 }
+

@@ -111,6 +111,8 @@ public:
 	///
 	MathedArray * GetData() const;
 	///
+	byte at() const;
+	///
 	byte & at(int pos);
 	///
 	byte at(int pos) const;

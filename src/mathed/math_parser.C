@@ -50,20 +50,20 @@ using std::istream;
 using std::endl;
 
 
-extern MathMatrixInset * create_multiline(short int type, int cols);
+extern MathMatrixInset create_multiline(short int type, int cols);
 
 namespace {
 
 enum {
-	FLAG_BRACE      = 1,	//  A { needed
-	FLAG_BRACE_ARG  = 2,	//  Next { is argument
-	FLAG_BRACE_OPT  = 4,	//  Optional {
-	FLAG_BRACE_LAST = 8,	//  Last } ends the parsing process
-	FLAG_BRACK_ARG  = 16,	//  Optional [
-	FLAG_RIGHT	= 32,      //  Next right ends the parsing process
-	FLAG_END	= 64,      //  Next end ends the parsing process
-	FLAG_BRACE_FONT = 128,	//  Next } closes a font
-	FLAG_BRACK_END  = 256   // Next ] ends the parsing process
+	FLAG_BRACE      = 1,    //  A { needed
+	FLAG_BRACE_ARG  = 2,    //  Next { is argument
+	FLAG_BRACE_OPT  = 4,    //  Optional {
+	FLAG_BRACE_LAST = 8,    //  Last } ends the parsing process
+	FLAG_BRACK_ARG  = 16,   //  Optional [
+	FLAG_RIGHT      = 32,   //  Next right ends the parsing process
+	FLAG_END        = 64,   //  Next end ends the parsing process
+	FLAG_BRACE_FONT = 128,  //  Next } closes a font
+	FLAG_BRACK_END  = 256   //  Next ] ends the parsing process
 };
 
 
@@ -87,9 +87,6 @@ MathedInsetTypes mathed_env = LM_OT_MIN;
 
 
 } // namespace anon
-
-
-string mathed_label;
 
 
 int const latex_mathenv_num = 12;
@@ -147,14 +144,13 @@ bool yy_mtextmode= false;
 inline
 void mathPrintError(string const & msg) 
 {
-	lyxerr << "Line ~" << yylineno << ": Math parse error: "
-	       << msg << endl;
+	lyxerr << "Line ~" << yylineno << ": Math parse error: " << msg << endl;
 }
 
 
 void LexInitCodes()
 {
-	for (int i = 0;  i <= 255; ++i) {
+	for (int i = 0; i <= 255; ++i) {
 		if (isalpha(i))
 			lexcode[i] = LexAlpha;
 		else if (isdigit(i))
@@ -201,8 +197,7 @@ char LexGetArg(char lf, bool accept_spaces = false)
 			if (!lf) 
 				lf = c;
 			else if (c != lf) {
-				lyxerr << "Math parse error: unexpected '"
-				       << c << "'" << endl;
+				lyxerr << "Math parse error: unexpected '" << c << "'" << endl;
 				return '\0';
 			}
 			break;
@@ -213,8 +208,7 @@ char LexGetArg(char lf, bool accept_spaces = false)
 		((lf == '[') ? ']'
 		 : ((lf == '(') ? ')' : 0));
 	if (!rg) {
-		lyxerr << "Math parse error: unknown bracket '"
-		       << lf << "'" << endl;
+		lyxerr << "Math parse error: unknown bracket '" << lf << "'" << endl;
 		return '\0';
 	}
 	char * p = &yytext[0];
@@ -321,7 +315,9 @@ int yylex(void)
 					++p;
 				}
 				*p = '\0';
-				if (yyis->good()) yyis->putback(c);
+				if (yyis->good())
+					yyis->putback(c);
+				//lyxerr << "reading: '" << yytext.data() << "'\n";
 				latexkeys const * l = in_word_set (yytext.data(), strlen(yytext.data()));
 				if (l) {
 					if (l->token == LM_TK_BEGIN || l->token == LM_TK_END) { 
@@ -366,9 +362,9 @@ int nestaccent[8];
 inline
 void setAccent(int ac)
 {
-	if (ac > 0 && accent < 8) {
+	if (ac > 0 && accent < 8)
 		nestaccent[accent++] = ac;
-	} else
+	else
 	  accent = 0;  // consumed!
 }
 
@@ -404,13 +400,21 @@ MathedInset * doAccent(MathedInset * p)
 	return ac;
 }
 
+
+void do_insert(MathedIter & it, MathedInset * m, MathedTextCodes t)
+{
+	if (accent) 
+		it.insertInset(doAccent(m), t);
+	else
+		it.insertInset(m, t);
+}
+
 } // namespace anon
 
 
 /**
  */
-void mathed_parse(MathedArray & array, unsigned flags = 0,
-			    MathParInset ** mtx = 0)
+void mathed_parse(MathedArray & array, MathParInset * & par, unsigned flags)
 {
 	int t = yylex();
 	int tprev = 0;
@@ -419,16 +423,22 @@ void mathed_parse(MathedArray & array, unsigned flags = 0,
 	static int size = LM_ST_TEXT;
 	MathedTextCodes varcode = LM_TC_VAR;
 	MathedInset * binset = 0;
-	static MathMacroTemplate * macro = 0;
 	
+	string last_label;              // last label seen
+	bool   last_numbered = true;    // have we seen '\nonumber' lately? 
+
 	int brace = 0;
 	int acc_brace = 0;
 	int acc_braces[8];
-	MathParInset * mt = (mtx) ? *mtx : 0;
 
 	++plevel;
 	MathedIter data(&array);
 	while (t) {
+		//lyxerr << "t: " << t << " par: " << par << " flags: " << flags;
+		//lyxerr << "label: '" << last_label << "' ";
+		//array.dump(lyxerr);
+		//lyxerr << "\n";
+
 		if ((flags & FLAG_BRACE) && t != LM_TK_OPEN) {
 			if ((flags & FLAG_BRACK_ARG) && t == '[') {
 			} else {
@@ -441,42 +451,38 @@ void mathed_parse(MathedArray & array, unsigned flags = 0,
 		switch (t) {
 			
 		case LM_TK_ALPHA:
-			if (accent) {
-				data.insertInset(doAccent(yylval.i, varcode),
-						 LM_TC_INSET);
-			} else
+			if (accent) 
+				data.insertInset(doAccent(yylval.i, varcode), LM_TC_INSET);
+			else
 				data.insert(yylval.i, varcode);  //LM_TC_VAR);
 			break;
 
 		case LM_TK_ARGUMENT:
-			if (macro) {
-				data.insertInset(macro
-						 ->getMacroPar(yylval.i - 1),
-						 LM_TC_INSET);
-			} else {
-				lyxerr[Debug::MATHED] << "mathed_parse: macro arg outside macro def." << endl;
-			}
-			
+		{
+			data.insertInset(new MathMacroArgument(yylval.i), LM_TC_INSET);
 			break;
+		}
 
 		case LM_TK_NEWCOMMAND:
 		{
 			int na = 0; 
 			
 			LexGetArg('{');
-			string const name(&yytext[1]);
+			string name = &yytext[1];
 			
-			// ugly trick to be removed soon (lyx3)
 			char const c = yyis->peek();
 			if (c == '[') {
 				LexGetArg('[');
 				na = lyx::atoi(yytext.data());
 			}  
-			macro = new MathMacroTemplate(name, na);
+			//lyxerr << "LM_TK_NEWCOMMAND: name: " << name << " " << na << endl;
+#ifdef WITH_WARNINGS
+#warning dirty
+#endif
+			par->SetName(name);
+			par->xo(na); // abuse xo
 			flags = FLAG_BRACE|FLAG_BRACE_LAST;
 
-			*mtx = macro;
-			macro->setData(array);
 			break;
 		}
 		
@@ -528,10 +534,9 @@ void mathed_parse(MathedArray & array, unsigned flags = 0,
 			}
 			if (brace == 0 && (flags & FLAG_BRACE_LAST)) {
 				--plevel;
-				return;
-			} else {
-				data.insert('}', LM_TC_TEX);
+				goto clean_up;
 			}
+			data.insert('}', LM_TC_TEX);
 			break;
 		
 		case '[':
@@ -551,17 +556,16 @@ void mathed_parse(MathedArray & array, unsigned flags = 0,
 		case ']':
 			if (flags & FLAG_BRACK_END) {
 				--plevel;
-				return;
-			} else
-				data.insert(']', LM_TC_CONST);
+				goto clean_up;
+			}
+			data.insert(']', LM_TC_CONST);
 			break;
 		
 		case '^':
 		{  
-			MathParInset * p = new MathParInset(size, "",
-							    LM_OT_SCRIPT);
+			MathParInset * p = new MathParInset(size, "", LM_OT_SCRIPT);
 			MathedArray ar;
-			mathed_parse(ar, FLAG_BRACE_OPT|FLAG_BRACE_LAST);
+			mathed_parse(ar, par, FLAG_BRACE_OPT|FLAG_BRACE_LAST);
 			p->setData(ar);
 			// lyxerr << "UP[" << p->GetStyle() << "]" << endl;
 			data.insertInset(p, LM_TC_UP);
@@ -573,7 +577,7 @@ void mathed_parse(MathedArray & array, unsigned flags = 0,
 			MathParInset * p = new MathParInset(size, "",
 							    LM_OT_SCRIPT);
 			MathedArray ar;
-			mathed_parse(ar, FLAG_BRACE_OPT|FLAG_BRACE_LAST);
+			mathed_parse(ar, par, FLAG_BRACE_OPT|FLAG_BRACE_LAST);
 			p->setData(ar);
 			data.insertInset(p, LM_TC_DOWN);
 			break;
@@ -587,22 +591,29 @@ void mathed_parse(MathedArray & array, unsigned flags = 0,
 			break;
 		
 		case '&':    // Tab
-			if ((flags & FLAG_END) && mt
-			    && data.getCol()<mt->GetColumns() - 1) {
-				data.setNumCols(mt->GetColumns());
-				data.insert('T', LM_TC_TAB);
-			} else 
-				mathPrintError("Unexpected tab");
-			// debug info. [made that conditional -JMarc]
-			if (lyxerr.debugging(Debug::MATHED))
-				lyxerr << data.getCol() << " "
-				       << mt->GetColumns() << endl;
+			data.insert('T', LM_TC_TAB);
+#ifdef WITH_WARNINGS
+#warning look here
+#endif
+			data.setNumCols(par->GetColumns());
 			break;
 		
 		case LM_TK_NEWLINE:
-			if (mt && (flags & FLAG_END)) {
-				if (mt->Permit(LMPF_ALLOW_CR)) {
-					mt->getRowSt().push_back();
+			//lyxerr << "reading line " << par->getRowSt().size() << "\n";
+			if (flags & FLAG_END) {
+				if (par->Permit(LMPF_ALLOW_CR)) {
+					par->getRowSt().push_back();
+					if (last_numbered) {
+						//lyxerr << "line " << par->getRowSt().size() << " not numbered\n";
+						par->getRowSt().back().setNumbered(false);
+						last_numbered = true;
+					}
+					if (last_label.size()) {
+						//lyxerr << "line " << par->getRowSt().size() << " labeled: "
+						//	<< last_label << endl;
+						par->getRowSt().back().setLabel(last_label);
+						last_label.erase();
+					}
 					data.insert('K', LM_TC_CR);
 				} else 
 					mathPrintError("Unexpected newline");
@@ -639,16 +650,14 @@ void mathed_parse(MathedArray & array, unsigned flags = 0,
 			break;
 
 		case LM_TK_BOP:
-			if (accent) {
+			if (accent)
 				data.insertInset(doAccent(yylval.i, LM_TC_BOP), LM_TC_INSET);
-			} else
+			else
 				data.insert(yylval.i, LM_TC_BOP);
 			break;
 
 		case LM_TK_STY:
-			if (mt) {
-				mt->UserSetSize(yylval.l->id);
-			}
+			par->UserSetSize(yylval.l->id);
 			break; 
 
 		case LM_TK_SPACE:
@@ -670,38 +679,44 @@ void mathed_parse(MathedArray & array, unsigned flags = 0,
 			// fallthru
 		case LM_TK_FRAC:
 		{
-			MathFracInset * fc = new MathFracInset(fractype);
+			MathFracInset fc(fractype);
 			MathedArray num;
-			mathed_parse(num, FLAG_BRACE|FLAG_BRACE_LAST);
+			mathed_parse(num, par, FLAG_BRACE|FLAG_BRACE_LAST);
 			MathedArray den;
-			mathed_parse(den, FLAG_BRACE|FLAG_BRACE_LAST);
-			fc->SetData(num, den);
-			data.insertInset(fc, LM_TC_ACTIVE_INSET);
+			mathed_parse(den, par, FLAG_BRACE|FLAG_BRACE_LAST);
+			fc.SetData(num, den);
+			data.insertInset(fc.Clone(), LM_TC_ACTIVE_INSET);
 			break;
 		}
 		
 		case LM_TK_SQRT:
 		{	    
-			MathParInset * rt;
-			
 			char c;
 			yyis->get(c);
 			
 			if (c == '[') {
-				rt = new MathRootInset(size);
-				rt->setArgumentIdx(0);
-				MathedArray ar;
-				mathed_parse(ar, FLAG_BRACK_END, &rt);
-				rt->setData(ar); // I belive that line is not needed (Lgb)
-				rt->setArgumentIdx(1);
+				MathRootInset rt(size);
+
+				MathedArray ar1;
+				mathed_parse(ar1, par, FLAG_BRACK_END);
+				rt.setArgumentIdx(0);
+				rt.setData(ar1); // I belive that line is not needed (Lgb)
+
+				MathedArray ar2;
+				mathed_parse(ar2, par, FLAG_BRACE|FLAG_BRACE_LAST);
+
+				rt.setArgumentIdx(1);
+				rt.setData(ar2); // I belive that this line is not needed (Lgb)
+
+				data.insertInset(rt.Clone(), LM_TC_ACTIVE_INSET);
 			} else {
 				yyis->putback(c);
-				rt = new MathSqrtInset(size);
+				MathSqrtInset rt(size);
+				MathedArray ar;
+				mathed_parse(ar, par, FLAG_BRACE|FLAG_BRACE_LAST);
+				rt.setData(ar); // I belive that this line is not needed (Lgb)
+				data.insertInset(rt.Clone(), LM_TC_ACTIVE_INSET);
 			}
-			MathedArray ar;
-			mathed_parse(ar, FLAG_BRACE|FLAG_BRACE_LAST, &rt);
-			rt->setData(ar); // I belive that this line is not needed (Lgb)
-			data.insertInset(rt, LM_TC_ACTIVE_INSET);
 			break;
 		}
 		
@@ -712,7 +727,7 @@ void mathed_parse(MathedArray & array, unsigned flags = 0,
 				lfd = (lfd == LM_TK_SYM) ? yylval.l->id: yylval.i;
 //	 lyxerr << "L[" << lfd << " " << lfd << "]";
 			MathedArray ar;
-			mathed_parse(ar, FLAG_RIGHT);
+			mathed_parse(ar, par, FLAG_RIGHT);
 			int rgd = yylex();
 //	 lyxerr << "R[" << rgd << "]";
 			if (rgd == LM_TK_SYM || rgd == LM_TK_STR || rgd == LM_TK_BOP || rgd == LM_TK_SPECIAL)
@@ -727,11 +742,10 @@ void mathed_parse(MathedArray & array, unsigned flags = 0,
 		case LM_TK_RIGHT:
 			if (flags & FLAG_RIGHT) { 
 				--plevel;
-				return;
-			} else {
-				mathPrintError("Unmatched right delimiter");
-//	    panic = true;
+				goto clean_up;
 			}
+			mathPrintError("Unmatched right delimiter");
+//	  panic = true;
 			break;
 		
 		case LM_TK_FONT:
@@ -745,7 +759,7 @@ void mathed_parse(MathedArray & array, unsigned flags = 0,
 			MathDecorationInset * sq = new MathDecorationInset(yylval.l->id,
 									   size);
 			MathedArray ar;
-			mathed_parse(ar, FLAG_BRACE|FLAG_BRACE_LAST);
+			mathed_parse(ar, par, FLAG_BRACE|FLAG_BRACE_LAST);
 			sq->setData(ar);
 			data.insertInset(sq, LM_TC_ACTIVE_INSET);
 			break;
@@ -756,11 +770,9 @@ void mathed_parse(MathedArray & array, unsigned flags = 0,
 			break;
 			
 		case LM_TK_NONUM:
-			if (mt) {
-				if (!mt->getRowSt().size())
-					mt->getRowSt().push_back();
-				mt->getRowSt().back().setNumbered(false);
-			}
+			//lyxerr << "prepare line " << par->getRowSt().size()
+			//	<< " not numbered\n";
+			last_numbered = false;
 			break;
 		
 		case LM_TK_PMOD:
@@ -780,26 +792,21 @@ void mathed_parse(MathedArray & array, unsigned flags = 0,
 
 		case LM_TK_UNDEF:
 		{
-			
-			MathMacro * p = 
-				MathMacroTable::mathMTable.createMacro(yylval.s);
-			if (p) {
-				if (accent) 
-					data.insertInset(doAccent(p), p->getTCode());
-				else
-					data.insertInset(p, p->getTCode());
-				for (int i = 0; p->setArgumentIdx(i); ++i) {
+			// save this value, yylval.s might get overwritten soon
+			const string name = yylval.s;
+			//lyxerr << "LM_TK_UNDEF: str = " << name << endl;
+			if (MathMacroTable::hasTemplate(name)) {
+				MathMacro * m = MathMacroTable::cloneTemplate(name);
+				//lyxerr << "Macro: " << m->GetData() << endl;
+				for (int i = 0; i < m->nargs(); ++i) {
 					MathedArray ar;
-					mathed_parse(ar, FLAG_BRACE|FLAG_BRACE_LAST);
-					p->setData(ar);
+					mathed_parse(ar, par, FLAG_BRACE|FLAG_BRACE_LAST);
+					m->setData(ar, i);
 				}
+				do_insert(data, m, m->getTCode());
 			} else {
-				MathedInset * q = new MathFuncInset(yylval.s, LM_OT_UNDEF);
-				if (accent) {
-					data.insertInset(doAccent(q), LM_TC_INSET);
-				} else {
-					data.insertInset(q, LM_TC_INSET);
-				}
+				MathedInset * q = new MathFuncInset(name, LM_OT_UNDEF);
+				do_insert(data, q, LM_TC_INSET);
 			}
 			break;
 		}
@@ -811,14 +818,19 @@ void mathed_parse(MathedArray & array, unsigned flags = 0,
 			if (lyxerr.debugging(Debug::MATHED))
 				lyxerr << "[" << yylval.i << "]" << endl;
 			--plevel;
-			if (mt) { // && (flags & FLAG_END)) {
-				mt->setData(array);
-				array.clear();
-			}
-			return;
+
+			//if (mt) { // && (flags & FLAG_END)) {
+			//	par.setData(array);
+			//	array.clear();
+			//}
+#ifdef WITH_WARNINGS
+#warning Look here
+#endif
+			goto clean_up;
 
 		case LM_TK_BEGIN:
 			if (yylval.i == LM_OT_MATRIX) {
+				//lyxerr << "###### Reading LM_OT_MATRIX \n";
 				char ar[120];
 				char ar2[8];
 				ar[0] = ar2[0] = '\0'; 
@@ -829,30 +841,34 @@ void mathed_parse(MathedArray & array, unsigned flags = 0,
 				}
 				strcpy(ar, yytext.data());
 				int const nc = parse_align(ar, ar2);
+
 				MathParInset * mm = new MathMatrixInset(nc, 0);
 				mm->SetAlign(ar2[0], ar);
-				data.insertInset(mm, LM_TC_ACTIVE_INSET);
 				MathedArray dat;
-				mathed_parse(dat, FLAG_END, &mm);
+				mathed_parse(dat, mm, FLAG_END);
+				data.insertInset(mm, LM_TC_ACTIVE_INSET);
+				mm->setData(dat);
+
 			} else if (is_eqn_type(yylval.i)) {
+				//lyxerr << "###### Reading is_eqn_type \n";
 				if (plevel!= 0) {
 					mathPrintError("Misplaced environment");
 					break;
 				}
-				if (!mt) {
-					mathPrintError("0 paragraph.");
-					panic = true;
-				}
 				
 				mathed_env = static_cast<MathedInsetTypes>(yylval.i);
 				if (mathed_env != LM_OT_MIN) {
+					//lyxerr << "###### Reading mathed_env != LM_OT_MIN \n";
 					size = LM_ST_DISPLAY;
 					if (is_multiline(mathed_env)) {
+						//lyxerr << "###### Reading is_multiline(mathed_env) \n";
 						int cols = 1;
 						if (is_multicolumn(mathed_env)) {
+              //lyxerr << "###### Reading is_multicolumn(mathed_env) \n";
 							if (mathed_env != LM_OT_ALIGNAT &&
 							    mathed_env != LM_OT_ALIGNATN &&
 							    yyis->good()) {
+                 //lyxerr << "###### Reading is !align\n";
 								char c;
 								yyis->get(c);
 								if (c != '%')
@@ -862,46 +878,35 @@ void mathed_parse(MathedArray & array, unsigned flags = 0,
 							LexGetArg('{');
 							cols = strToInt(string(yytext.data()));
 						}
-						mt = create_multiline(mathed_env, cols);
-						if (mtx) *mtx = mt;
+#ifdef WITH_WARNINGS
+#warning look here
+#endif
+						//mt = create_multiline(mathed_env, cols);
+						//if (mtx) *mtx = mt;
+
+						//MathMatrixInset mat = create_multiline(mathed_env, cols);
+						//data.insertInset(mat.Clone(), LM_TC_ACTIVE_INSET);
+
+						par = new MathMatrixInset(create_multiline(mathed_env, cols));
 						flags |= FLAG_END;
-//		     data.Insert(' ', LM_TC_TAB);
-//		     data.Insert(' ', LM_TC_TAB);
-//		     data.Reset();
 					}
-					mt->SetStyle(size);
-					mt->SetType(mathed_env);
+					par->SetStyle(size);
+					par->SetType(mathed_env);
 				}
 				
 				lyxerr[Debug::MATHED] << "MATH BEGIN[" << mathed_env << "]" << endl;
 			} else {
-//	     lyxerr << "MATHCRO[" << yytext << "]";
-				MathMacro * p = 
-					MathMacroTable::mathMTable.createMacro(yytext.data());
-				if (p) {
-					data.insertInset(p, p->getTCode());
-					p->setArgumentIdx(0);
-					//mathed_parse(p->GetData(), FLAG_END, reinterpret_cast<MathParInset**>(&p));
-					MathedArray dat;
-					mathed_parse(dat, FLAG_END, reinterpret_cast<MathParInset**>(&p));
-//		 for (int i = 0; p->setArgumentIdx(i); ++i)
-//		   p->SetData(mathed_parse(FLAG_BRACE|FLAG_BRACE_LAST));
-				} else 
-					mathPrintError("Unrecognized environment");
+				MathMacro * m = MathMacroTable::cloneTemplate(yytext.data());
+				data.insertInset(m, m->getTCode());
+				MathedArray dat;
+				mathed_parse(dat, par, FLAG_END);
 			}
 			break;
 		
 		case LM_TK_MACRO:
 		{ 
-			MathedInset * p = 
-				MathMacroTable::mathMTable.createMacro(yylval.l->name);
-			
-			if (p) {
-				if (accent) {
-					data.insertInset(doAccent(p), LM_TC_INSET);
-				} else
-					data.insertInset(p, static_cast<MathMacro*>(p)->getTCode());
-			}
+			MathMacro * m = MathMacroTable::cloneTemplate(yylval.l->name);
+			do_insert(data, m, m->getTCode());
 			break;
 		}
 		
@@ -915,14 +920,9 @@ void mathed_parse(MathedArray & array, unsigned flags = 0,
 				panic = true;
 				break;
 			} 
-			if (mt) {
-				if (!mt->getRowSt().size())
-					mt->getRowSt().push_back();
-				mt->getRowSt().back().setLabel(yytext.data());
-			} else {
-				mathed_label = yytext.data();
-			}
-			lyxerr[Debug::MATHED] << "Label[" << mathed_label << "]" << endl;
+			last_label = yytext.data();
+			//lyxerr << "prepare line " << par->getRowSt().size()
+			//	<< " label: " << last_label << endl;
 			break;
 		}
 		
@@ -945,11 +945,26 @@ void mathed_parse(MathedArray & array, unsigned flags = 0,
 		
 		if ((flags & FLAG_BRACE_OPT)/* && t!= '^' && t!= '_'*/) {
 			flags &= ~FLAG_BRACE_OPT;
-			//data.Insert (LM_TC_CLOSE);
 			break;
 		}
 	}
 	--plevel;
+
+clean_up:
+
+	if (last_numbered == false) {
+		//lyxerr << "last line " << par->getRowSt().size() << " not numbered\n";
+		if (par->getRowSt().size() == 0)
+			par->getRowSt().push_back();
+		par->getRowSt().back().setNumbered(false);
+	}
+	if (last_label.size()) {
+		//lyxerr << "last line " << par->getRowSt().size() << " labeled: "
+		//	<< last_label << endl;
+		if (par->getRowSt().size() == 0)
+			par->getRowSt().push_back();
+		par->getRowSt().back().setLabel(last_label);
+	}
 }
 
 
@@ -957,8 +972,6 @@ void mathed_parser_file(istream & is, int lineno)
 {
 	yyis = &is;
 	yylineno = lineno;
-	if (!MathMacroTable::built)
-		MathMacroTable::mathMTable.builtinMacros();
 }
 
 

@@ -77,6 +77,8 @@ public:
 	///
 	MathParInset * getCurrentPar() const;
 	///
+	void SetCursorData(MathParInset *);
+	///
 	void SetPar(MathParInset *);
 	///
 	void Interpret(string const &);
@@ -131,8 +133,11 @@ public:
 	void toggleLastCode(MathedTextCodes t);
 	///
 	MathedTextCodes getLastCode() const;
+
+	/// true iff cursor points to data
+	bool hasData(MathedArray const &);
 	
-protected:
+//protected:
 	///
 	bool macro_mode;
 	

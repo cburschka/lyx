@@ -104,7 +104,7 @@ protected:
 	int sx_;
 	///
 	int sw_;
-	/// true= center, false= left align (default)
+	/// true == center, false == left align (default)
 	bool limits_;
 	/// 
 	MathedRowContainer::iterator crow_;

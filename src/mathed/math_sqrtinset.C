@@ -24,8 +24,7 @@ MathedInset * MathSqrtInset::Clone()
 }
 
 
-void
-MathSqrtInset::draw(Painter & pain, int x, int y)
+void MathSqrtInset::draw(Painter & pain, int x, int y)
 { 
 	MathParInset::draw(pain, x + hmax_ + 2, y); 
 	int const h = ascent;
@@ -50,16 +49,16 @@ void MathSqrtInset::Write(ostream & os, bool fragile)
 }
 
 
-void
-MathSqrtInset::Metrics()
+void MathSqrtInset::Metrics()
 {
 	MathParInset::Metrics();
-	ascent += 4;
+	ascent  += 4;
 	descent += 2;
 	int a;
 	int b;
 	hmax_ = mathed_char_height(LM_TC_VAR, size(), 'I', a, b);
-	if (hmax_ < 10) hmax_ = 10;
+	if (hmax_ < 10)
+		hmax_ = 10;
 	wbody_ = width + 4;
 	width += hmax_ + 4;
 }

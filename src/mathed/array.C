@@ -5,9 +5,11 @@
 #pragma implementation
 #endif
 
+#include "debug.h"
 #include "array.h"
 #include "math_iter.h"
 #include "math_inset.h"
+#include "math_macro.h"
 
 #include "support/LOstream.h"
 
@@ -73,6 +75,29 @@ void MathedArray::deep_copy()
 		if (it.IsInset()) {
 			MathedInset * inset = it.GetInset();
 			inset = inset->Clone();
+			raw_pointer_insert(inset, it.getPos() + 1);
+		}
+		it.Next();
+	}
+}
+
+void MathedArray::substitute(MathMacro * m)
+{
+	if (m->nargs() == 0)
+		return;
+
+	MathedIter it(this);
+	while (it.OK()) {
+		if (it.IsInset()) {
+			MathedInset * inset = it.GetInset();
+			if (inset->GetType() == LM_OT_MACRO_ARG) {
+				int n = static_cast<MathMacroArgument *>(inset)->number() - 1;
+				//lyxerr << "substituting an argument inset: " << n << "\n";
+				inset = m->arg(n)->Clone();
+			} else {
+				inset->substitute(m);
+				//lyxerr << "substituting in an ordinary inset\n";
+			}
 			raw_pointer_insert(inset, it.getPos() + 1);
 		}
 		it.Next();
@@ -284,7 +309,7 @@ byte & MathedArray::operator[](int i)
 }
 
 
-void MathedArray::dump(ostream & os) const
+void MathedArray::dump2(ostream & os) const
 {
 	buffer_type::const_iterator cit = bf_.begin();
 	buffer_type::const_iterator end = bf_.end();
@@ -292,6 +317,30 @@ void MathedArray::dump(ostream & os) const
 		os << (*cit);
 	}
 	os << endl;
+}
+
+void MathedArray::dump(ostream & os) const
+{
+	MathedIter it( const_cast<MathedArray*>(this) );
+	while (it.OK()) {
+		if (it.IsInset()) {
+			MathedInset * inset = it.GetInset();
+			os << "<inset: " << inset << ">";
+		} 
+		else if (it.IsTab())
+			os << "<tab>";
+		else if (it.IsCR())
+			os << "<cr>";
+		else if (it.IsScript())
+			os << "<script>";
+		else if (it.IsFont())
+			os << "<font: " << int(it.at()) << ">";
+		else if (it.at() >= 32 && it.at() < 127)
+			os << it.at();
+		else
+			os << "<unknown: " << int(it.at()) << ">";
+		it.Next();
+	}
 }
 
 	

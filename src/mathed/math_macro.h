@@ -22,6 +22,7 @@
 #endif
 
 #include <vector>
+#include <iosfwd>
 #include <boost/smart_ptr.hpp>
 
 #include "math_parinset.h"
@@ -36,9 +37,8 @@ class MathMacroTemplate;
  */
 class MathMacro : public MathParInset {
 public:
-	/// A macro can only be built from an existing template
-	explicit
-	MathMacro(boost::shared_ptr<MathMacroTemplate> const &);
+	/// A macro can be built from an existing template
+	explicit MathMacro(MathMacroTemplate const &);
 	///
 	void draw(Painter &, int, int);
 	///
@@ -47,12 +47,14 @@ public:
 	MathedInset * Clone();
 	///
 	void Write(std::ostream &, bool fragile);
-	///
+	/// Index 0 is the template, index 1..nargs() are the parameters
 	bool setArgumentIdx(int);
 	///
 	int getArgumentIdx() const;
 	///
 	int getMaxArgumentIdx() const;
+	///
+	int nargs() const;
 	///
 	int GetColumns() const;
 	///
@@ -66,23 +68,38 @@ public:
 	///
 	void setData(MathedArray const &);
 	///
+	void setData(MathedArray const &, int);
+	///
 	MathedTextCodes getTCode() const;
 	///
 	bool Permit(short) const;
 	///
-	MathMacroArgument const & getArg(int i) const;
-	//boost::shared_ptr<MathMacroArgument> getArg(int i);
+	void expand();
+	///
+	void dump(ostream & os) const;
+	///
+	MathParInset const * arg(int) const;
+	///
+	MathParInset * arg(int);
+	///
+	MathMacroTemplate * tmplate() const;
 private:
 	///
-	boost::shared_ptr<MathMacroTemplate> tmplate_;
-	///
-	//std::vector<boost::shared_ptr<MathMacroArgument> > args_;
-	std::vector<MathMacroArgument> args_;
+	MathMacroTemplate * tmplate_;
+	/// our arguments
+	std::vector< boost::shared_ptr<MathParInset> > args_;
+	/// the expanded version fror drawing
+	boost::shared_ptr<MathParInset> expanded_;
 	///
 	int idx_;
-	///
-	//int nargs_;
-	///
-	MathedTextCodes tcode_;
+
+	/// unimplemented
+	void operator=(MathMacro const &);
 };
+
+inline ostream & operator<<(ostream & os, MathMacro const & m)
+{
+	m.dump(os);
+	return os;
+}
 #endif

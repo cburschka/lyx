@@ -9,162 +9,58 @@
 #include "macro_support.h"
 #include "support/LOstream.h"
 #include "support/LAssert.h"
+#include "debug.h"
+#include "Painter.h"
 
-using std::ostream;
+using namespace std;
+
+MathMacroTemplate::MathMacroTemplate() :
+	MathParInset(LM_ST_TEXT, "undefined", LM_OT_MACRO),
+	na_(0), users_()
+{}
+
+MathMacroTemplate::MathMacroTemplate(string const & nm, int na) :
+	MathParInset(LM_ST_TEXT, nm, LM_OT_MACRO),
+	na_(na), users_()
+{}
 
 
-MathMacroTemplate::MathMacroTemplate(string const & nm, int na):
-	MathParInset(LM_ST_TEXT, nm, LM_OT_MACRO), 
-	edit_(false),
-	nargs_(na)
+int MathMacroTemplate::nargs() const
 {
-	if (nargs_ > 0) {
-		tcode_ = LM_TC_ACTIVE_INSET;
-		for (int i = 0; i < nargs_; ++i) {
-			args_.push_back(MathMacroArgument(i + 1));
-		}
-		//for (int i = 0; i < nargs_; ++i) {
-		//	MathMacroArgument * ma = new MathMacroArgument(i + 1);
-		//	args_.push_back(boost::shared_ptr<MathMacroArgument>(ma));
-		//}
-	} else {
-		tcode_ = LM_TC_INSET;
-		// Here is  nargs != args_.size()
-		//args = 0;
-	}
+	return na_;
 }
 
 
-void  MathMacroTemplate::setTCode(MathedTextCodes t)
+void MathMacroTemplate::WriteDef(ostream & os, bool fragile) const
 {
-	tcode_ = t;
-}
+	os << "\n\\newcommand{\\" << name << "}";
 
+	if (na_ > 0 )
+		os << "[" << na_ << "]";
 
-MathedTextCodes MathMacroTemplate::getTCode() const
-{
-	return tcode_;
-}
-
-
-int MathMacroTemplate::getNoArgs() const
-{
-	return nargs_;
-}
-
-
-void MathMacroTemplate::setEditMode(bool ed)
-{
-	if (ed) {
-		edit_ = true;
-		for (int i = 0; i < nargs_; ++i) {
-			args_[i].setExpand(false);
-		}
-	} else {
-		edit_ = false;
-		for (int i = 0; i < nargs_; ++i) {
-			args_[i].setExpand(true);
-		}
-	}
-}
-
-
-void MathMacroTemplate::draw(Painter & pain, int x, int y)
-{
-	int x2;
-	int y2;
-	bool expnd = (nargs_ > 0) ? args_[0].getExpand() : false;
-	if (edit_) {
-		for (int i = 0; i < nargs_; ++i) {
-			args_[i].setExpand(false);
-		}
-		x2 = x;
-		y2 = y;
-	} else {
-		for (int i = 0; i < nargs_; ++i) {
-			args_[i].setExpand(true);
-		}
-		x2 = xo();
-		y2 = yo();
-	}
-	MathParInset::draw(pain, x, y);
-	xo(x2);
-	yo(y2);
-	for (int i = 0; i < nargs_; ++i) {
-		args_[i].setExpand(expnd);
-	}
+	os << "{";
+#ifdef WITH_WARNINGS
+#warning stupid cast
+#endif
+	const_cast<MathMacroTemplate *>(this)->Write(os, fragile);
+	os << "}\n";
 }
 
 
 void MathMacroTemplate::Metrics()
 {
-	bool const expnd = (nargs_ > 0) ? args_[0].getExpand() : false;
-    
-	if (edit_) {
-		for (int i = 0; i < nargs_; ++i) {
-			args_[i].setExpand(false);
-		}
-	} else {
-		for (int i = 0; i < nargs_; ++i) {
-			args_[i].setExpand(true);
-		}
-	}
 	MathParInset::Metrics();
-	for (int i = 0; i < nargs_; ++i) {
-		args_[i].setExpand(expnd);
-	}
+	width   += 4;
+	ascent  += 2;
+	descent += 2;
 }
 
 
-void MathMacroTemplate::WriteDef(ostream & os, bool fragile)
+void MathMacroTemplate::draw(Painter & pain, int x, int y)
 {
-	os << "\n\\newcommand{\\" << name << "}";
-
-	if (nargs_ > 0 ) 
-		os << "[" << nargs_ << "]";
-
-	os << "{";
-
-	for (int i = 0; i < nargs_; ++i) {
-		args_[i].setExpand(false);
-	}
-
-	Write(os, fragile);
-	os << "}\n";
-}
-
-
-void MathMacroTemplate::GetMacroXY(int i, int & x, int & y) const
-{
-	args_[i].GetXY(x, y);
-}
-
-
-MathParInset * MathMacroTemplate::getMacroPar(int i) const
-{
-	if (i >= 0 && i < nargs_) {
-		MathParInset * p = const_cast<MathParInset *>
-		        (static_cast<MathParInset const *>(&args_[i]));
-		lyx::Assert(p);
-		return p;
-	} else 
-		return 0;
-}
-
-void MathMacroTemplate::setMacroPar(int i, MathedArray const & ar)
-{
-	if (i >= 0 && i < nargs_)
-		args_[i].setData(ar);
-}
-
-
-
-void MathMacroTemplate::SetMacroFocus(int &idx, int x, int y)
-{
-	for (int i = 0; i < nargs_; ++i) {
-		if (args_[i].Inside(x, y)) {
-			idx = i;
-			break;
-		}
-	}
+	MathParInset::draw(pain, x + 2, y + 1);
+	int w = Width();
+	int a = Ascent();
+	int h = Height();
+	pain.rectangle(x, y - a, w, h, LColor::blue);
 }

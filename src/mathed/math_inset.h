@@ -30,6 +30,7 @@
 #include "symbol_def.h"
 
 class Painter;
+class MathMacro;
 
 /** Abstract base class for all math objects.
     A math insets is for use of the math editor only, it isn't a
@@ -50,6 +51,8 @@ public:
 	virtual void Write(std::ostream &, bool fragile) = 0;
 	/// Reproduces itself
 	virtual MathedInset * Clone() = 0;
+	/// Reproduces itself with macro arguments substituted
+	virtual void substitute(MathMacro * macro);
 	/// Compute the size of the object
 	virtual void Metrics() = 0; 
 	/// 

@@ -174,9 +174,13 @@ void MathedXIter::Merge(MathedArray const & a)
 
 void MathedXIter::SetData(MathParInset * pp)
 {
+	//if (p_ && pp != p_) {
+	//	lyxerr << "MathedXIter::SetData: " << p_ << " " << pp << endl;
+	//}
 	p_ = pp;
 	x_ = y_ = 0;
 	array = &p_->GetData();
+	//lyxerr << "MathedXIter::SetData: " << p_ << " " << *array << endl;
 	ncols = p_->GetColumns();
 	crow_ = container().begin();
 	if (p_->Permit(LMPF_ALLOW_CR))
@@ -300,10 +304,10 @@ bool MathedXIter::Prev()
 	do {
 		ipush();
 		Next();
-	} while (pos<pos2);
+	} while (pos < pos2);
 	ipop();
 	
-	return (!IsCR());
+	return !IsCR();
 }
 
 
@@ -339,8 +343,8 @@ bool MathedXIter::Up()
 
 bool MathedXIter::Down()
 {
-	int xp = x_;
-	int colp= col;
+	int xp   = x_;
+	int colp = col;
 	// int rowp = row
 	
 	bool res = (IsCR()) ? true : goNextCode(LM_TC_CR);
@@ -397,11 +401,11 @@ void MathedXIter::delRow()
 	ipush();
 //    while (Next()) {
 	do {
-		if (IsCR()) {
+		if (IsCR()) 
 			break;
-		} else if (!IsTab()) {
+
+		if (!IsTab()) 
 			line_empty = false;
-		}
 	} while (Next());
 
 	int const p1 = getPos();
@@ -463,9 +467,9 @@ void MathedXIter::fitCoord(int /*xx*/, int yy)
 
 void MathedXIter::setTab(int tx, int tab)
 {
-	if (crow_ && tab <= ncols) {
+	if (crow_ && tab <= ncols)
 		crow_->setTab(tab, tx);
-	} else
+	else
 		lyxerr << "MathErr: No tabs allowed here" << endl;
 }
 
@@ -492,8 +496,10 @@ void MathedXIter::IMetrics(int pos2, int & width, int & ascent, int & descent)
 	bool limit = false;
 	
 	descent = ascent = width = 0;
-	if (!array) return;
-	if (array->empty()) return;
+	if (!array)
+		return;
+	if (array->empty())
+		return;
 //    if  (pos2 > array->last) return;
 	x1 = x_; 
 	while (pos < pos2) {

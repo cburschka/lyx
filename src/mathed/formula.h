@@ -24,9 +24,9 @@
 #include <iosfwd>
 
 #include "insets/lyxinset.h"
+#include <boost/smart_ptr.hpp>
 
 class MathParInset;
-class MathedCursor;
 class Buffer;
 
 ///
@@ -112,15 +112,12 @@ protected:
 	///
 	void UpdateLocal(BufferView * bv);
 	///
-    	MathParInset * par;
-	///
-	static MathedCursor * mathcursor;
+	//boost::shared_ptr<MathParInset> par;
+	MathParInset * par;
     
 private:
 	///
 	bool disp_flag_;
-	///
-	string label_;
 };
 
 
@@ -144,6 +141,6 @@ LyXFont const InsetFormula::ConvertFont(LyXFont const & f) const
 inline
 bool InsetFormula::display() const
 {
-	return (disp_flag_) ? true : false;
+	return disp_flag_;
 }
 #endif

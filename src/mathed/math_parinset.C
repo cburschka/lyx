@@ -8,10 +8,10 @@
 #include "math_iter.h"
 #include "array.h"
 #include "math_xiter.h"
+#include "math_parser.h"
 #include "LColor.h"
 #include "mathed/support.h"
 #include "Painter.h"
-#include "math_parser.h"
 #include "math_rowst.h"
 #include "math_parinset.h"
 #include "debug.h"
@@ -26,14 +26,23 @@ MathedRowContainer & MathParInset::getRowSt()
 	return row_;
 }
 
+string MathParInset::label() const
+{
+	if (row_.size() == 0) {
+		lyxerr << "Warning: Empty rowst when accessing label!\n";
+		return string();
+	}
+	return row_.back().getLabel();
+}
+
 
 MathParInset::MathParInset(short st, string const & nm, short ot)
 	: MathedInset(nm, ot, st)
 {
-	ascent = 8;
-	width = 4;
+	ascent  = 8;
+	width   = 4;
 	descent = 0;
-	flag = 1;
+	flag    = 1;
 	if (objtype == LM_OT_SCRIPT)
 		flag |= LMPF_SCRIPT;
 }
@@ -43,6 +52,13 @@ MathedInset * MathParInset::Clone()
 {
 	return new MathParInset(*this);
 }
+
+void MathParInset::substitute(MathMacro * m)
+{
+	//lyxerr << "called: MathParInset::substitute, m: " << m << endl;
+	array.substitute(m);
+}
+
 
 
 void MathParInset::setData(MathedArray const & a)
@@ -61,26 +77,24 @@ void MathParInset::setData(MathedArray const & a)
 }
 
 
-void 
-MathParInset::draw(Painter & pain, int x, int y)
+void MathParInset::draw(Painter & pain, int x, int y)
 {
 	byte cxp = 0;
-	int xp = 0;
-	int asc = df_asc;
-	int des = 0;
+	int xp   = 0;
+	int asc  = df_asc;
+	int des  = 0;
 	bool limits = false;
 	
 	xo_ = x;
 	yo_ = y;
 	MathedXIter data(this);
 	if (array.empty()) {
-		//MathedXIter data(this);
 		data.GetPos(x, y);
 		pain.rectangle(x, y - df_asc, df_width, df_asc,
 			       LColor::mathline);
 		return;
 	}
-	//MathedXIter data(this);
+
 	data.GoBegin();
 	while (data.OK()) {
 		data.GetPos(x, y);
@@ -154,23 +168,23 @@ MathParInset::draw(Painter & pain, int x, int y)
 }
 
 
-void 
-MathParInset::Metrics()
+void MathParInset::Metrics()
 {
 	byte cx;
 	byte cxp = 0;
 	int ls;
 	int asc = df_asc;
 	int des = 0;
-	int tb = 0;
+	int tb  = 0;
 	int tab = 0;
 	
 	bool limits = false;
 	
 	ascent = df_asc;//mathed_char_height(LM_TC_VAR, size, 'I', asc, des); 
-	width = df_width;
+	width  = df_width;
 	descent = 0;
-	if (array.empty()) return;
+	if (array.empty())
+		return;
 	
 	ascent = 0;
 	MathedXIter data(this);
@@ -181,8 +195,10 @@ MathParInset::Metrics()
 			string const s = data.GetString();
 			mathed_string_height(data.fcode(),
 					     size(), s, asc, des);
-			if (asc > ascent) ascent = asc;
-			if (des > descent) descent = des;
+			if (asc > ascent)
+				ascent = asc;
+			if (des > descent)
+				descent = des;
 			limits = false;
 			mathed_char_height(LM_TC_CONST, size(), 'y', asc, des);
 		} else if (MathIsInset(cx)) {
@@ -198,8 +214,10 @@ MathParInset::Metrics()
 				asc = p->Ascent();
 				des = p->Descent();
 			}
-			if (asc > ascent) ascent = asc;
-			if (des > descent) descent = des;
+			if (asc > ascent)
+				ascent = asc;
+			if (des > descent)
+				descent = des;
 			if (cx!= LM_TC_UP && cx!= LM_TC_DOWN)
 				limits = p->GetLimits();
 			data.Next();
@@ -208,7 +226,8 @@ MathParInset::Metrics()
 			int y;
 			data.GetIncPos(x, y);
 			if (data.IsFirst() || cxp == LM_TC_TAB || cxp == LM_TC_CR) {
-				if (ascent < df_asc) ascent = df_asc;
+				if (ascent < df_asc)
+					ascent = df_asc;
 				tb = x;
 			}
 			data.setTab(x - tb, tab);
@@ -222,7 +241,8 @@ MathParInset::Metrics()
 				int y;
 				data.GetIncPos(x, y);
 				if (data.IsFirst() || cxp == LM_TC_TAB || cxp == LM_TC_CR) {
-					if (ascent < df_asc) ascent = df_asc;
+					if (ascent < df_asc)
+						ascent = df_asc;
 					tb = x;
 				} 
 				data.setTab(x - tb, tab);
@@ -232,7 +252,8 @@ MathParInset::Metrics()
 					int y;
 					data.GetIncPos(x, y);
 					data.setTab(x, tab);
-					if (ascent < df_asc) ascent = df_asc;
+					if (ascent < df_asc)
+						ascent = df_asc;
 				} 
 			tb = tab = 0;
 			data.subMetrics(ascent, descent);
@@ -251,7 +272,8 @@ MathParInset::Metrics()
 	// No matter how simple is a matrix, it is NOT a subparagraph
 	if (isMatrix()) {
 		if (cxp == LM_TC_TAB) {
-			if (ascent<df_asc) ascent = df_asc;
+			if (ascent < df_asc)
+				ascent = df_asc;
 			data.setTab(0, tab);
 		} else {
 			data.setTab(width - tb, tab);
@@ -265,7 +287,9 @@ MathParInset::Metrics()
 
 void MathParInset::Write(ostream & os, bool fragile)
 {
-	if (array.empty()) return;
+	if (array.empty())
+		return;
+
 	int brace = 0;
 	latexkeys const * l;
 	MathedIter data(&array);
@@ -275,9 +299,8 @@ void MathParInset::Write(ostream & os, bool fragile)
 	
 	if (!Permit(LMPF_FIXED_SIZE)) { 
 		l = lm_get_key_by_id(size(), LM_TK_STY);
-		if (l) {
+		if (l)
 			os << '\\' << l->name << ' ';
-		}
 	}
 	while (data.OK()) {
 		byte cx = data.GetChar();
@@ -308,8 +331,10 @@ void MathParInset::Write(ostream & os, bool fragile)
 					    (data.fcode() == LM_TC_SPECIAL))
 						os << '\\';
 					else {
-						if (c == '{') ++brace;
-						if (c == '}') --brace;
+						if (c == '{')
+							++brace;
+						if (c == '}')
+							--brace;
 					}
 					if (c == '}' && data.fcode() == LM_TC_TEX && brace < 0) 
 						lyxerr <<"Math warning: Unexpected closing brace."
@@ -320,7 +345,7 @@ void MathParInset::Write(ostream & os, bool fragile)
 			}
 			if (data.fcode()>= LM_TC_RM && data.fcode()<= LM_TC_TEXTRM)
 				os << '}';
-		} else     
+		} else {
 			if (MathIsInset(cx)) {
 				MathedInset * p = data.GetInset();
 				if (cx == LM_TC_UP)
@@ -331,7 +356,7 @@ void MathParInset::Write(ostream & os, bool fragile)
 				if (cx == LM_TC_UP || cx == LM_TC_DOWN)
 					os << '}';
 				data.Next();
-			} else
+			} else {
 				switch (cx) {
 				case LM_TC_TAB:
 				{
@@ -363,6 +388,8 @@ void MathParInset::Write(ostream & os, bool fragile)
 					lyxerr << "WMath Error: unrecognized code[" << cx << "]";
 					return;
 				}     
+			}
+		}
 	}
 	
 	if (crow) {
@@ -402,23 +429,22 @@ void MathParInset::GetXY(int & x, int & y) const
 
 void MathParInset::UserSetSize(short sz)
 {
-   if (sz >= 0) {
-       size(sz);      
-       flag = flag & ~LMPF_FIXED_SIZE;
-   }
+	if (sz >= 0) {
+		size(sz);      
+		flag = flag & ~LMPF_FIXED_SIZE;
+	}
 }
 
 
 void MathParInset::SetStyle(short sz) 
 {
-    if (Permit(LMPF_FIXED_SIZE)) {
-	if (Permit(LMPF_SCRIPT)) 
-	  sz = (sz < LM_ST_SCRIPT) ? LM_ST_SCRIPT: LM_ST_SCRIPTSCRIPT;
-	if (Permit(LMPF_SMALLER) && sz < LM_ST_SCRIPTSCRIPT) {
-	    ++sz;
-	} 
-	MathedInset::SetStyle(sz);
-    }
+	if (Permit(LMPF_FIXED_SIZE)) {
+		if (Permit(LMPF_SCRIPT)) 
+			sz = (sz < LM_ST_SCRIPT) ? LM_ST_SCRIPT: LM_ST_SCRIPTSCRIPT;
+		if (Permit(LMPF_SMALLER) && sz < LM_ST_SCRIPTSCRIPT) 
+			++sz;
+		MathedInset::SetStyle(sz);
+	}
 }
 
 

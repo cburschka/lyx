@@ -5,36 +5,35 @@
 #include <map>
 #include "LString.h"
 
-#include <boost/utility.hpp>
-#include <boost/smart_ptr.hpp>
-
 #ifdef __GNUG__
 #pragma interface
 #endif
 
-class MathMacroTemplate;
+
 class MathMacro;
+class MathMacroTemplate;
 
 ///
-class MathMacroTable : boost::noncopyable {
+struct MathMacroTable {
 public:
 	///
-	void addTemplate(boost::shared_ptr<MathMacroTemplate> const &);
+	static MathMacroTemplate & provideTemplate(string const &, int);
 	///
-	MathMacro * createMacro(string const &) const;
+	static MathMacroTemplate & provideTemplate(string const &);
 	///
-	boost::shared_ptr<MathMacroTemplate> const
-	getTemplate(string const &) const;
+	static bool hasTemplate(string const &);
 	///
-	void builtinMacros();
-	///
-	static MathMacroTable mathMTable;
-	///
-	static bool built;
+	static MathMacro * cloneTemplate(string const &);
 private:
 	///
-	typedef std::map<string, boost::shared_ptr<MathMacroTemplate> > table_type;
+	static void builtinMacros();
 	///
-	table_type macro_table;
+	static bool built;
+	///
+	typedef std::map<string, MathMacroTemplate *> table_type;
+	//
+	static table_type macro_table;
+	///
+	static void dump();
 };
 #endif

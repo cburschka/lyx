@@ -105,6 +105,8 @@ public:
 	void erase(iterator & it);
 	/// access to last row
 	MathedRowStruct & back();
+	/// access to last row
+	MathedRowStruct const & back() const;
 	/// append empty element
 	void push_back();
 	///

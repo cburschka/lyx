@@ -21,6 +21,7 @@
 #pragma implementation
 #endif
 
+#include "debug.h"
 #include "math_iter.h"
 #include "math_inset.h"
 #include "symbol_def.h"
@@ -37,7 +38,8 @@ int MathedInset::workWidth;
 
 
 MathedInset::MathedInset(string const & nm, short ot, short st)
-	: name(nm), objtype(ot), width(0), ascent(0), descent(0), size_(st) 
+	: name(nm), objtype(ot), width(0), ascent(0), descent(0),
+	  size_(st)
 {}
 
 
@@ -58,6 +60,10 @@ void MathedInset::drawStr(Painter & pain, short type, int siz,
 	
 	LyXFont const mf = mathed_get_font(type, siz);
 	pain.text(x, y, st, mf);
+}
+
+void MathedInset::substitute(MathMacro *)
+{
 }
 
 
@@ -159,7 +165,6 @@ void MathedInset::size(short s)
 {
 	size_ = s;
 }
-
 
 void MathedInset::incSize()
 {

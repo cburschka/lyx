@@ -2,13 +2,9 @@
 #ifndef MATHMACROTEMPLATE
 #define MATHMACROTEMPLATE
 
-#include <vector>
-
-#include <boost/utility.hpp>
-//#include <boost/smart_ptr.hpp>
+#include <set>
 
 #include "math_parinset.h"
-#include "math_macroarg.h"
 
 #ifdef __GNUG__
 #pragma interface
@@ -19,44 +15,32 @@ class MathMacro;
 /** This class contains the macro definition
     \author Alejandro Aguilar Sierra
  */
-class MathMacroTemplate : public MathParInset, boost::noncopyable {
+//class MathMacroTemplate : public MathParInset, boost::noncopyable 
+
+class MathMacroTemplate : public MathParInset {
 public:
-	friend class MathMacro;
-	
-	/// A template constructor needs all the data
-	explicit
-	MathMacroTemplate(string const &, int na);
+	///
+	MathMacroTemplate();
+	///
+	MathMacroTemplate(std::string const & name, int nargs);
+	///
+	void WriteDef(std::ostream &, bool fragile) const;
+	/// Number of arguments
+	int nargs() const;
 	///
 	void draw(Painter &, int, int);
 	///
 	void Metrics();
-	///
-	void WriteDef(std::ostream &, bool fragile);
-	/// useful for special insets
-	void setTCode(MathedTextCodes t);
-	///
-	MathedTextCodes getTCode() const;
-	/// Number of arguments
-	int getNoArgs() const;
-	///
-	void GetMacroXY(int, int &, int &) const;
-	///
-	MathParInset * getMacroPar(int) const;
-	///
-	void setMacroPar(int, MathedArray const &);
-	///
-	void SetMacroFocus(int &, int, int);
-	///
-	void setEditMode(bool);
 private:
-	/// Are we in edit mode or not?
-	bool edit_;
 	///
-	MathedTextCodes tcode_;
+	int na_;
 	///
-	//std::vector<boost::shared_ptr<MathMacroArgument> > args_;
-	std::vector<MathMacroArgument> args_;
-	///
-	int nargs_;
+	std::set<MathMacro *> users_;
+
+	/// unimplemented
+	void operator=(MathMacroTemplate const &);
+	/// unimplemented
+	MathMacroTemplate(MathMacroTemplate const &);
 };
+
 #endif

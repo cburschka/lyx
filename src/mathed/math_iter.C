@@ -60,6 +60,11 @@ void MathedIter::fcode(short c) const
 	fcode_ = c; 
 }
 
+byte MathedIter::at() const
+{
+	return (*array)[pos]; 
+}
+
 byte MathedIter::at(int p) const
 {
 	return (*array)[p]; 

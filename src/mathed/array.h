@@ -22,6 +22,7 @@
 #include "mathed/support.h"
 
 class MathedInset;
+class MathMacro;
 
 #ifdef __GNUG__
 #pragma interface
@@ -113,8 +114,12 @@ public:
 	void need_size(int needed);
 	///
 	void dump(std::ostream &) const;
+	///
+	void dump2(std::ostream &) const;
 	/// creates copies of all embedded insets
 	void deep_copy();
+	///
+	void substitute(MathMacro *);
 private:
 	/// Buffer
 	buffer_type bf_;
@@ -138,4 +143,12 @@ private:
 	/// Last position inserted.
 	int last_;
 };
+
+inline 
+ostream & operator<<(ostream & os, MathedArray const & ar)
+{
+	ar.dump(os);
+	return os;
+}
+
 #endif

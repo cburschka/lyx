@@ -24,6 +24,7 @@
 #include "math_cursor.h"
 #include "math_parser.h"
 #include "math_macro.h"
+#include "math_macroarg.h"
 #include "math_macrotable.h"
 #include "math_macrotemplate.h"
 #include "lyx_main.h"
@@ -39,51 +40,39 @@
 using std::ostream;
 using std::istream;
 
+extern MathedCursor * mathcursor;
+
 InsetFormulaMacro::InsetFormulaMacro()
 	: InsetFormula(true)
 {
-	opened_ = false;
+	par = &MathMacroTable::provideTemplate("unknown", 0);
 }
 
 
 InsetFormulaMacro::InsetFormulaMacro(string nm, int na)
-        : InsetFormula(true), name_(nm)
+  : InsetFormula(true)
 {
-	tmacro_ = MathMacroTable::mathMTable.getTemplate(name_);
-	if (!tmacro_.get()) {
-		tmacro_.reset(new MathMacroTemplate(name_, na));
-		MathMacroTable::mathMTable.addTemplate(tmacro_);
-	}
-	opened_ = false;
-}
-
-
-InsetFormulaMacro::~InsetFormulaMacro()
-{
-	// We do not want the InsetFormula destructor to
-	// delete this. That is taken care of elsewhere (Lgb)
-	par = 0;
+	par = &MathMacroTable::provideTemplate(nm, na);
 }
 
 
 Inset * InsetFormulaMacro::Clone(Buffer const &) const
 {
-	// This should really use a proper copy constructor
-	return new InsetFormulaMacro(name_, 0);
+	return new InsetFormulaMacro(*this);
 }
 
 
 void InsetFormulaMacro::Write(Buffer const *, ostream & os) const
 {
 	os << "FormulaMacro ";
-	tmacro_->WriteDef(os, false);
+	tmacro()->WriteDef(os, false);
 }
 
 
 int InsetFormulaMacro::Latex(Buffer const *, ostream & os, bool /*fragile*/, 
 			     bool /*free_spacing*/) const
 {
-	tmacro_->WriteDef(os, true); // or false?
+	tmacro()->WriteDef(os, true); // or false?
 	return 2;
 }
 
@@ -104,20 +93,19 @@ void InsetFormulaMacro::Read(Buffer const *, LyXLex & lex)
 {
 	istream & is = lex.getStream();
 	mathed_parser_file(is, lex.GetLineNo());
+
+	MathParInset * tmp = new MathParInset;
 	MathedArray ar;
-	
-	mathed_parse(ar, 0, reinterpret_cast<MathParInset **>(&tmacro_));
-	// Since tmacro_ == 0 when mathed_parse is called we need to set
-	// its contents explicitly afterwards (Lgb)
-	tmacro_->setData(ar);
+	mathed_parse(ar, tmp, 0);
+	par = &MathMacroTable::provideTemplate(tmp->GetName(), tmp->xo());
+	par->setData(ar);
+	//cerr << "## InsetFormulaMacro::Read name: " << tmp->GetName() << endl;
+	//cerr << "## InsetFormulaMacro::Read nargs: " << tmp->xo() << endl;
+	//cerr << "## InsetFormulaMacro::Read 1: " << ar << endl;
 	
 	// Update line number
 	lex.setLineNo(mathed_parser_lineno());
 	
-	MathMacroTable::mathMTable.addTemplate(tmacro_);
-	name_ = tmacro_->GetName();
-	par = tmacro_.get();
-
 	// reading of end_inset in the inset!!!
 	while (lex.IsOK()) {
 		lex.nextToken();
@@ -126,33 +114,26 @@ void InsetFormulaMacro::Read(Buffer const *, LyXLex & lex)
 	}
 }
 
-
 int InsetFormulaMacro::ascent(BufferView * pain, LyXFont const & f) const
 {
-	if (opened_) {
-		return InsetFormula::ascent(pain, f);
-	}
-	return lyxfont::maxAscent(f) + 3;
+	return InsetFormula::ascent(pain, f);
 }
 
 
 int InsetFormulaMacro::descent(BufferView * pain, LyXFont const & f) const
 {
-	if (opened_) {
-		return InsetFormula::descent(pain, f);
-	}
-	return lyxfont::maxDescent(f) + 1;
+	return InsetFormula::descent(pain, f);
 }
 
 
+string InsetFormulaMacro::prefix() const
+{
+	return string(" ") + _("Macro: ") + par->GetName() + ": ";
+}
+
 int InsetFormulaMacro::width(BufferView * bv, LyXFont const & f) const
 {
-	if (opened_) {
-		return InsetFormula::width(bv, f);
-	}
-	string ilabel(_("Macro: "));
-	ilabel += name_;
-	return 6 + lyxfont::width(ilabel, f);
+	return 10 + lyxfont::width(prefix(), f) + InsetFormula::width(bv, f);
 }
 
 
@@ -161,25 +142,25 @@ void InsetFormulaMacro::draw(BufferView * bv, LyXFont const & f,
 {
 	Painter & pain = bv->painter();
 	LyXFont font(f);
-	if (opened_) {
-		tmacro_->setEditMode(true);
-		InsetFormula::draw(bv, font, baseline, x, cleared);
-		tmacro_->setEditMode(false);	
-	} else {
-		font.setColor(LColor::math);
-		
-		int const y = baseline - ascent(bv, font) + 1;
-		int const w = width(bv, font) - 2;
-		int const h = (ascent(bv, font) + descent(bv, font) - 2);
+
+	// label
+	font.setColor(LColor::math);
 	
-		pain.fillRectangle(int(x), y, w, h, LColor::mathbg);
-		pain.rectangle(int(x), y, w, h, LColor::mathframe);
-		
-		string s(_("Macro: "));
-		s += name_;
-		pain.text(int(x + 2), baseline, s, font);
-		x +=  width(bv, font) - 1;
-	}
+	int const y = baseline - ascent(bv, font) + 1;
+	int const w = width(bv, font) - 2;
+	int const h = (ascent(bv, font) + descent(bv, font) - 2);
+
+	pain.fillRectangle(int(x), y, w, h, LColor::mathbg);
+	pain.rectangle(int(x), y, w, h, LColor::mathframe);
+	
+	pain.text(int(x + 2), baseline, prefix(), font);
+	x += width(bv, font);
+
+	// formula
+	float t = InsetFormula::width(bv, f) + 5;
+	x -= t;
+	InsetFormula::draw(bv, font, baseline, x, cleared);
+	x += t;
 }
 
 
@@ -189,41 +170,24 @@ string const InsetFormulaMacro::EditMessage() const
 }
 
 
-void InsetFormulaMacro::Edit(BufferView * bv, int x, int y,unsigned int button)
-{
-	opened_ = true;
-	par = static_cast<MathParInset*>(tmacro_->Clone());
-	InsetFormula::Edit(bv, x, y, button);
-}
-
-	       
-void InsetFormulaMacro::InsetUnlock(BufferView * bv)
-{
-	opened_ = false;
-	tmacro_->setData(par->GetData());
-	tmacro_->setEditMode(false);
-	InsetFormula::InsetUnlock(bv);
-}
-
-
 UpdatableInset::RESULT
 InsetFormulaMacro::LocalDispatch(BufferView * bv,
 				 kb_action action, string const & arg)
 {
 	if (action == LFUN_MATH_MACROARG) {
-		int const i = lyx::atoi(arg) - 1;
-		if (i >= 0 && i < tmacro_->getNoArgs()) {
-			mathcursor->insertInset(tmacro_->getMacroPar(i),
-						 LM_TC_INSET);
+		int const i = lyx::atoi(arg);
+		if (i > 0 && i <= tmacro()->nargs()) {
+			mathcursor->insertInset(new MathMacroArgument(i), LM_TC_INSET);
 			InsetFormula::UpdateLocal(bv);
 		}
 	
 		return DISPATCHED;
 	}
-	tmacro_->setEditMode(true);
-	tmacro_->Metrics();
-	RESULT result = InsetFormula::LocalDispatch(bv, action, arg);
-	tmacro_->setEditMode(false);
-    
-	return result;
+	par->Metrics();
+	return InsetFormula::LocalDispatch(bv, action, arg);
+}
+
+MathMacroTemplate * InsetFormulaMacro::tmacro() const
+{
+	return static_cast<MathMacroTemplate *>(par);
 }

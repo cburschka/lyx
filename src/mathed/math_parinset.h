@@ -24,6 +24,8 @@ public:
 		     short ot = LM_OT_MIN);
 	///
 	virtual MathedInset * Clone();
+	///
+	virtual void substitute(MathMacro *);
 	/// Draw the object on a drawable
 	virtual void draw(Painter &, int x, int baseline);
 	/// Write LaTeX code
@@ -76,7 +78,9 @@ public:
 	int yo() const;
 	///
 	void clear();
-protected:
+	///
+	string label() const;
+//protected:
 	/// Paragraph data is stored here
 	MathedArray array;
 	/// 

@@ -34,9 +34,9 @@
 #include "mathed/support.h"
 #include "math_macrotemplate.h"
 #include "macro_support.h"
+#include "Painter.h"
 
-using std::ostream;
-using std::endl;
+using namespace std;
 
 ostream & operator<<(ostream & o, MathedTextCodes mtc)
 {
@@ -44,25 +44,15 @@ ostream & operator<<(ostream & o, MathedTextCodes mtc)
 }
 
 
-MathMacro::MathMacro(boost::shared_ptr<MathMacroTemplate> const & t)
-	: MathParInset(LM_ST_TEXT, "", LM_OT_MACRO),
-	  tmplate_(t)
+MathMacro::MathMacro(MathMacroTemplate const & t)
+	: MathParInset(LM_ST_TEXT, t.GetName(), LM_OT_MACRO),
+	  tmplate_(const_cast<MathMacroTemplate *>(&t)),
+		args_(t.nargs()),
+		idx_(-1)
 {
-	//nargs_ = tmplate_->getNoArgs();
-	int const n = tmplate_->getNoArgs();
-	
-	tcode_ = tmplate_->getTCode();
-
-	for (int i = 0; i < n; ++i) {
-		args_.push_back(MathMacroArgument(t->args_[i]));
-	}
-	//for (int i = 0; i < nargs_; ++i) {
-	//	MathMacroArgument * ma = new MathMacroArgument(*t->args_[i]);
-	//	args_.push_back(boost::shared_ptr<MathMacroArgument>(ma));
-	//}
-	
-	idx_ = 0;
-	SetName(tmplate_->GetName());
+	array = tmplate_->GetData();
+	for (int i = 0; i < nargs(); ++i) 
+		args_[i].reset(new MathParInset);
 }
 
 
@@ -72,129 +62,229 @@ MathedInset * MathMacro::Clone()
 }
 
 
+void MathMacro::expand()
+{
+	expanded_.reset(static_cast<MathParInset *>(tmplate_->Clone()));
+	expanded_->substitute(this);
+}
+
+
+
+MathParInset const * MathMacro::arg(int i) const
+{
+	if (i < 0 || i >= nargs()) {
+		lyxerr << "Illegal index " << i << " max: " << nargs() << endl;
+		lyx::Assert(0);
+		return 0;
+	}
+
+	return i >= 0 ? args_[i].get() : static_cast<MathParInset const *>(this);
+}
+
+MathParInset * MathMacro::arg(int i) 
+{
+	if (i < 0 || i >= nargs()) {
+		lyxerr << "Illegal index " << i << " max: " << nargs() << endl;
+		lyx::Assert(0);
+		return 0;
+	}
+
+	return i >= 0 ? args_[i].get() : static_cast<MathParInset *>(this);
+}
+
+
+MathMacroTemplate * MathMacro::tmplate() const
+{
+	return const_cast<MathMacroTemplate *>(tmplate_);
+}
+
+
+extern bool is_mathcursor_inside(MathParInset *);
+
+
 void MathMacro::Metrics()
 {
-	for (unsigned int i = 0; i < args_.size(); ++i) 
-		tmplate_->args_[i] = getArg(i);
-	tmplate_->SetStyle(size());
-	tmplate_->Metrics();
-	width = tmplate_->Width();
-	ascent = tmplate_->Ascent();
-	descent = tmplate_->Descent();
+
+	if (is_mathcursor_inside(this)) {
+
+		tmplate_->Metrics();
+		width   = tmplate_->Width()   + 4;
+		ascent  = tmplate_->Ascent()  + 2;
+		descent = tmplate_->Descent() + 2;
+
+		width +=  mathed_string_width(LM_TC_TEXTRM, size(), GetName()) + 10;
+
+		for (int i = 0; i < nargs(); ++i) {
+			MathParInset * p = arg(i);
+			p->Metrics();
+			if (p->Width() + 30 > width) 
+				width = p->Width() + 30;
+			descent += p->Height() + 10;
+		}
+	} else {
+		expand();
+		expanded_->Metrics();
+		width   = expanded_->Width()   + 4;
+		ascent  = expanded_->Ascent()  + 2;
+		descent = expanded_->Descent() + 2;
+
+	}
 }
 
 
 void MathMacro::draw(Painter & pain, int x, int y)
 {
-	xo(x);
-	yo(y);
-	Metrics();
-	tmplate_->SetStyle(size());
-	tmplate_->draw(pain, x, y);
+	LColor::color col;
+
+	if (is_mathcursor_inside(this)) {
+		int h = y + Descent() - 2;
+		for (int i = nargs() - 1; i >= 0; --i) {
+			MathParInset * p = arg(i);
+			h -= p->Descent() + 5;
+			p->draw(pain, x + 30, h);
+			char str[] = "#1:";
+			str[1] += i;
+			drawStr(pain, LM_TC_TEX, size(), x + 1, h, str);
+			h -= p->Ascent() + 5;
+		}
+
+		h -= tmplate_->Descent();
+		int w =  mathed_string_width(LM_TC_TEXTRM, size(), GetName());
+		drawStr(pain, LM_TC_TEXTRM, size(), x + 2, h, GetName());
+		tmplate_->draw(pain, x + w + 12, h);
+
+		col = LColor::red;
+	} else {
+		expanded_->draw(pain, x + 2, y - 1);
+		col = LColor::black;
+	}
+
+	int w = Width();
+	int a = Ascent();
+	int h = Height();
+	pain.rectangle(x, y - a, w, h, col);
 }
 
 
 bool MathMacro::setArgumentIdx(int i)
 {
-	if (i >= 0 && 0 < (args_.size() - i)) {
+	if (i >= 0 && 0 < (nargs() - i)) {
 		idx_ = i;
 		return true;
 	} else
 		return false;
+	idx_ = i;
+	return true;
 }
 
 
 int MathMacro::getArgumentIdx() const 
 { 
+	//lyxerr << "MathMacro::getArgumentIdx: res: " << idx_ << endl;
 	return idx_;
 }
 
 
 int MathMacro::getMaxArgumentIdx() const 
 { 
-	return args_.size() - 1;
+	return nargs() - 1;
+}
+
+
+
+int MathMacro::nargs() const 
+{ 
+	return args_.size();
 } 
 
 
 MathedArray & MathMacro::GetData() 
 { 
-	return args_[idx_].GetData(); 
+	//lyxerr << "MathMacro::GetData: " << *this << endl;
+	return idx_ >= 0 ? arg(idx_)->GetData() : MathParInset::GetData(); 
 } 
 
 
 MathedArray const & MathMacro::GetData() const
 { 
-	return args_[idx_].GetData(); 
+	//lyxerr << "MathMacro::GetData: " << *this << endl;
+	return idx_ >= 0 ? arg(idx_)->GetData() : MathParInset::GetData(); 
 } 
 
 
 int MathMacro::GetColumns() const
 {
-	return tmplate_->getMacroPar(idx_)->GetColumns();
+	return idx_ >= 0 ? arg(idx_)->GetColumns() : MathParInset::GetColumns();
 }
 
 
 void MathMacro::GetXY(int & x, int & y) const
 {
-	const_cast<MathMacro*>(this)->Metrics();
-	tmplate_->GetMacroXY(idx_, x, y);
+	if (idx_ >= 0)
+		arg(idx_)->GetXY(x, y);
+	else
+		MathParInset::GetXY(x, y);
 }
 
 
 bool MathMacro::Permit(short f) const
 {
-	return (args_.size() > 0) ?
-		tmplate_->getMacroPar(idx_)->Permit(f) :
-		MathParInset::Permit(f);
+	return idx_ >= 0 ? arg(idx_)->Permit(f) : MathParInset::Permit(f);
 }
 
 
 void MathMacro::SetFocus(int x, int y)
 {
-	Metrics();
-	tmplate_->SetMacroFocus(idx_, x, y);
+	idx_ = -1;
+	for (int i = 0; i < nargs(); ++i) {
+		if (arg(i)->Inside(x, y)) {
+			idx_ = i;
+			break;
+		}
+	}
+}
+
+void MathMacro::setData(MathedArray const & a, int i)
+{
+	arg(i)->setData(a);
 }
 
 
 void MathMacro::setData(MathedArray const & a)
 {
-	args_[idx_].setData(a);
+	if (idx_ >= 0)
+		arg(idx_)->setData(a);
+	else
+		array = a;
 }
 
 
 MathedTextCodes MathMacro::getTCode() const
 {
-	return tcode_;
+	return nargs() ? LM_TC_ACTIVE_INSET : LM_TC_INSET;
+	//return LM_TC_INSET;
 }
 	
+void MathMacro::dump(ostream & os) const
+{
+	os << "\n macro: '" << this << "'\n";
+	os << " name: '" << name << "'\n";
+	os << " idx: '" << idx_ << "'\n";
+	os << " data: '" << array << "'\n";
+	os << " nargs: '" << nargs() << "'\n";
+	for (int i = 0; i < nargs(); ++i)
+		os << "  " << arg(i) << ": " << arg(i)->GetData() << endl;
+	os << endl;
+}
 
 void MathMacro::Write(ostream & os, bool fragile)
 {
 	os << '\\' << name;
-
-	int const n = args_.size();
-	
-	if (n > 0) {
+	for (int i = 0; i < nargs(); ++i) {
 		os << '{';
-		
-		for (int i = 0; i < n; ++i) {
-			array = args_[i].GetData();
-			MathParInset::Write(os, fragile);
-			if (i < n - 1)  
-				os << "}{";
-		}
+		arg(i)->Write(os, fragile);
 		os << '}';
-	} else
+	}
+	if (nargs() == 0) 
 		os << ' ';
 }
-
-
-MathMacroArgument const & MathMacro::getArg(int i) const
-{
-	return args_[i];
-}
-//boost::shared_ptr<MathMacroArgument> MathMacro::getArg(int i)
-//{
-//	return args_[i];
-//}
-

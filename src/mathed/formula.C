@@ -64,6 +64,10 @@ extern char const * latex_mathenv[];
 // this is only used by Whichfont and mathed_init_fonts (Lgb)
 LyXFont * Math_Fonts = 0;
 
+
+MathedCursor * mathcursor = 0;
+
+
 namespace {
 
 LyXFont::FONT_SIZE lfont_size = LyXFont::SIZE_NORMAL;
@@ -82,8 +86,6 @@ void mathedValidate(LaTeXFeatures & features, MathParInset * par);
 
 } // namespaces
 
-
-MathedCursor * InsetFormula::mathcursor = 0;
 
 
 LyXFont WhichFont(short type, int size)
@@ -235,21 +237,22 @@ InsetFormula::InsetFormula(MathParInset * p)
 		new MathParInset(*p);
 	//   mathcursor = 0;
 
-	disp_flag_ = (par->GetType()>0);
+	disp_flag_ = par->GetType() > 0;
 }
 
 
 InsetFormula::~InsetFormula()
 {
-	delete par;
+#ifdef WITH_WARNINGS
+#warning leak this for a while...
+#endif
+	//delete par;
 }
 
 
 Inset * InsetFormula::Clone(Buffer const &) const
 {
-	InsetFormula * f = new InsetFormula(par);
-	f->label_ = label_;
-	return f;
+	return new InsetFormula(par);
 }
 
 
@@ -262,11 +265,7 @@ void InsetFormula::Write(Buffer const * buf, ostream & os) const
 
 int InsetFormula::Latex(Buffer const *, ostream & os, bool fragile, bool) const
 {
-	//#ifdef WITH_WARNINGS
-	//#warning Alejandro, the number of lines is not returned in this case
-	// This problem will disapear at 0.13.
-	//#endif
-	return mathed_write(par, os, fragile, label_);
+	return mathed_write(par, os, fragile, par->label()); 
 }
 
 
@@ -308,21 +307,24 @@ void InsetFormula::Read(Buffer const *buffer, LyXLex & lex)
 
 	mathed_parser_file(is, lex.GetLineNo());
 
-	// Silly hack to read labels.
-	mathed_label.erase();
-
 	MathedArray ar;
-	mathed_parse(ar, 0, &par);
+	mathed_parse(ar, par, 0);
+	if (par->isMatrix()) {
+		//lyxerr << "################## InsetFormula::Read: IsMatrix\n";
+		static_cast<MathMatrixInset*>(par)->setData(ar);
+	}
+	else {
+		par->setData(ar);
+		//lyxerr << "################## InsetFormula::Read: keine Matrix\n";
+	}
+
+	//lyxerr << "InsetFormula::Read: par: " << par << " " << par->GetData() << endl;
+
 	par->Metrics();
 	disp_flag_ = (par->GetType() > 0);
 
 	// Update line number
 	lex.setLineNo(mathed_parser_lineno());
-
-	if (!mathed_label.empty()) {
-		label_ = mathed_label;
-		mathed_label.erase();
-	}
 
 	// reading of end_inset in the inset!!!
 	while (lex.IsOK()) {
@@ -393,15 +395,13 @@ void InsetFormula::draw(BufferView * bv, LyXFont const & f,
 
 		if (is_singlely_numbered(par->GetType())) {
 			string str;
-			if (!label_.empty())
-				str = string("(") + label_ + ")";
+			if (!par->label().empty())
+				str = string("(") + par->label() + ")";
 			else
 				str = string("(#)");
 			pain.text(int(x + 20), baseline, str, wfont);
 		} else {
-			MathMatrixInset * mt =
-				static_cast<MathMatrixInset*>(par);
-			MathedRowContainer::iterator crow = mt->getRowSt().begin();
+			MathedRowContainer::iterator crow = par->getRowSt().begin();
 			while (crow) {
 				int const y = baseline + crow->getBaseline();
 				if (crow->isNumbered()) {
@@ -459,12 +459,12 @@ void InsetFormula::InsetUnlock(BufferView * bv)
 
 
 // Now a symbol can be inserted only if the inset is locked
-void InsetFormula::InsertSymbol(BufferView * bv, string const & s)
+void InsetFormula::InsertSymbol(BufferView *, string const & s)
 {
 	if (s.empty() || !mathcursor)
 		return;
 	mathcursor->Interpret(s);
-	UpdateLocal(bv);
+	// Andre: UpdateLocal(bv);
 }
 
 
@@ -547,9 +547,14 @@ void InsetFormula::display(bool dspf)
 			}
 			par->SetType(LM_OT_MIN);
 			par->SetStyle(LM_ST_TEXT);
+#ifdef WITH_WARNINGS
+#warning Labels
+#endif
+/*
 			if (!label_.empty()) {
 				label_.erase();
 			}
+*/
 		}
 		disp_flag_ = dspf;
 	}
@@ -558,23 +563,10 @@ void InsetFormula::display(bool dspf)
 
 vector<string> const InsetFormula::getLabelList() const
 {
-	//#ifdef WITH_WARNINGS
-	//#warning This is dirty, I know. Ill clean it at 0.11
-	// Correction, the only way to clean this is with a new kernel: 0.13.
-	//#endif
-
 	vector<string> label_list;
-
-	if (is_multi_numbered(par->GetType())) {
-		MathMatrixInset * mt = static_cast<MathMatrixInset*>(par);
-		MathedRowContainer::iterator crow = mt->getRowSt().begin();
-		while (crow) {
-			if (!crow->getLabel().empty())
-				label_list.push_back(crow->getLabel());
-			++crow;
-		}
-	} else if (!label_.empty())
-		label_list.push_back(label_);
+	MathedRowContainer::iterator crow = par->getRowSt().begin();
+	for ( ; crow; ++crow)
+		label_list.push_back(crow->getLabel());
 
 	return label_list;
 }
@@ -671,7 +663,14 @@ UpdatableInset::RESULT
 InsetFormula::LocalDispatch(BufferView * bv, kb_action action,
 			    string const & arg)
 {
+	//lyxerr << "InsetFormula::LocalDispatch: act: " << action
+	//	<< " arg: '" << arg << "' cursor: " << mathcursor << "\n";
 	//   extern char *dispatch_result;
+
+	if (!mathcursor) {
+		return UNDISPATCHED;
+	}
+
 	MathedTextCodes varcode = LM_TC_MIN;
 	bool was_macro = mathcursor->InMacroMode();
 	bool sel = false;
@@ -695,6 +694,7 @@ InsetFormula::LocalDispatch(BufferView * bv, kb_action action,
 		result = DISPATCH_RESULT(mathcursor->Right(sel));
 		if (!sel && (result == DISPATCHED))
 			result = DISPATCHED_NOUPDATE;
+		UpdateLocal(bv);
 		break;
 
 
@@ -705,6 +705,7 @@ InsetFormula::LocalDispatch(BufferView * bv, kb_action action,
 		result = DISPATCH_RESULT(mathcursor->Left(sel));
 		if (!sel && (result == DISPATCHED))
 			result = DISPATCHED_NOUPDATE;
+		UpdateLocal(bv);
 		break;
 
 
@@ -715,6 +716,7 @@ InsetFormula::LocalDispatch(BufferView * bv, kb_action action,
 		result = DISPATCH_RESULT(mathcursor->Up(sel));
 		if (!sel && (result == DISPATCHED))
 			result = DISPATCHED_NOUPDATE;
+		UpdateLocal(bv);
 		break;
 
 
@@ -725,6 +727,7 @@ InsetFormula::LocalDispatch(BufferView * bv, kb_action action,
 		result = DISPATCH_RESULT(mathcursor->Down(sel));
 		if (!sel && (result == DISPATCHED))
 			result = DISPATCHED_NOUPDATE;
+		UpdateLocal(bv);
 		break;
 
 
@@ -741,6 +744,7 @@ InsetFormula::LocalDispatch(BufferView * bv, kb_action action,
 	case LFUN_DELETE_LINE_FORWARD:
 		bv->lockedInsetStoreUndo(Undo::DELETE);
 		mathcursor->DelLine();
+		// Andre:
 		UpdateLocal(bv);
 		break;
 
@@ -749,11 +753,17 @@ InsetFormula::LocalDispatch(BufferView * bv, kb_action action,
 		bv->lockedInsetStoreUndo(Undo::INSERT);
 		byte c = arg.empty() ? '1' : arg[0];
 		mathcursor->Insert(c, LM_TC_CR);
-		if (!label_.empty()) {
+#ifdef WITH_WARNINGS
+#warning Labels
+#endif
+/*
+		if (!par->label().empty()) {
 			mathcursor->setLabel(label_);
 			label_.erase();
 		}
+*/
 		par = mathcursor->GetPar();
+		// Andre:
 		UpdateLocal(bv);
 	}
 	break;
@@ -767,6 +777,7 @@ InsetFormula::LocalDispatch(BufferView * bv, kb_action action,
 	case LFUN_TABINSERT:
 		bv->lockedInsetStoreUndo(Undo::INSERT);
 		mathcursor->Insert('T', LM_TC_TAB);
+		// Andre:
 		UpdateLocal(bv);
 		break;
 
@@ -810,12 +821,14 @@ InsetFormula::LocalDispatch(BufferView * bv, kb_action action,
 			mathcursor->MacroModeClose();
 		bv->lockedInsetStoreUndo(Undo::INSERT);
 		mathcursor->SelPaste();
+		// Andre:
 		UpdateLocal(bv);
 		break;
 
 	case LFUN_CUT:
 		bv->lockedInsetStoreUndo(Undo::DELETE);
 		mathcursor->SelCut();
+		// Andre:
 		UpdateLocal(bv);
 		break;
 
@@ -880,24 +893,29 @@ InsetFormula::LocalDispatch(BufferView * bv, kb_action action,
 			short type = par->GetType();
 			if (is_numbered(type)) {
 				--type;
+#ifdef WITH_WARNINGS
+#warning Labels
+#endif
+/*
 				if (!label_.empty()) {
 					label_.erase();
 				}
+*/
 				bv->owner()->getLyXFunc()->Dispatch(LFUN_MESSAGE, _("No number"));
 			} else {
 				++type;
 				bv->owner()->getLyXFunc()->Dispatch(LFUN_MESSAGE, _("Number"));
 			}
 			par->SetType(type);
+			// Andre:
 			UpdateLocal(bv);
 		}
 		break;
 
 	case LFUN_MATH_NONUMBER:
 		if (is_multi_numbered(par->GetType())) {
-				//	   MathMatrixInset *mt = (MathMatrixInset*)par;
 				//BUG
-				//	   mt->SetNumbered(!mt->IsNumbered());
+				//	   par->SetNumbered(!par->IsNumbered());
 
 #ifdef WITH_WARNINGS
 #warning This is a terrible hack! We should find a better solution.
@@ -907,6 +925,7 @@ InsetFormula::LocalDispatch(BufferView * bv, kb_action action,
 					return DISPATCHED;
 			}
 			mathcursor->setNumbered();
+			// Andre:
 			UpdateLocal(bv);
 		}
 		break;
@@ -914,14 +933,16 @@ InsetFormula::LocalDispatch(BufferView * bv, kb_action action,
 	case LFUN_MATH_LIMITS:
 		bv->lockedInsetStoreUndo(Undo::INSERT);
 		if (mathcursor->Limits())
+			// Andre:
 			UpdateLocal(bv);
 		// fall through!
 
 	case LFUN_MATH_SIZE:
 		if (!arg.empty()) {
 			latexkeys const * l = in_word_set(arg);
-			int const sz = (l) ? l->id: -1;
+			int const sz = l ? l->id : -1;
 			mathcursor->SetSize(sz);
+			// Andre:
 			UpdateLocal(bv);
 			break;
 		}
@@ -952,11 +973,12 @@ InsetFormula::LocalDispatch(BufferView * bv, kb_action action,
 			n = 1;
 		}
 
-		MathMatrixInset * p = new MathMatrixInset(m, n);
-		if (mathcursor && p) {
+		if (mathcursor) {
+			MathMatrixInset * p = new MathMatrixInset(m, n);
 			if (k > 2 && int(strlen(s)) > m)
 				p->SetAlign(s[0], &s[1]);
 			mathcursor->insertInset(p, LM_TC_ACTIVE_INSET);
+			// Andre:
 			UpdateLocal(bv);
 		}
 		break;
@@ -1008,6 +1030,7 @@ InsetFormula::LocalDispatch(BufferView * bv, kb_action action,
 
 		MathDelimInset * p = new MathDelimInset(ilf, irg);
 		mathcursor->insertInset(p, LM_TC_ACTIVE_INSET);
+		// Andre:
 		UpdateLocal(bv);
 		break;
 	}
@@ -1017,6 +1040,7 @@ InsetFormula::LocalDispatch(BufferView * bv, kb_action action,
 		sp = new MathSpaceInset(1);
 		mathcursor->insertInset(sp, LM_TC_INSET);
 		space_on = true;
+		// Andre:
 		UpdateLocal(bv);
 		break;
 
@@ -1027,7 +1051,7 @@ InsetFormula::LocalDispatch(BufferView * bv, kb_action action,
 			break;
 
 		string old_label = is_multiline(par->GetType())
-			? mathcursor->getLabel() : label_;
+			? mathcursor->getLabel() : par->label();
 
 #ifdef WITH_WARNINGS
 #warning This is a terrible hack! We should find a better solution.
@@ -1065,13 +1089,18 @@ InsetFormula::LocalDispatch(BufferView * bv, kb_action action,
 		if (!new_label.empty() && bv->ChangeRefsIfUnique(old_label, new_label))
 			bv->redraw();
 
+#ifdef WITH_WARNINGS
+#warning Labels
+#endif
+/*
 		if (is_multi_numbered(par->GetType())) {
 			mathcursor->setLabel(new_label);
-			// MathMatrixInset *mt = (MathMatrixInset*)par;
-			// mt->SetLabel(new_label);
+			// par->SetLabel(new_label);
 		} else
 			label_ = new_label;
+*/
 
+		// Andre:
 		UpdateLocal(bv);
 		break;
 	}
@@ -1079,6 +1108,7 @@ InsetFormula::LocalDispatch(BufferView * bv, kb_action action,
 	case LFUN_MATH_DISPLAY:
 		bv->lockedInsetStoreUndo(Undo::EDIT);
 		display(!disp_flag_);
+		// Andre:
 		UpdateLocal(bv);
 		break;
 
@@ -1215,11 +1245,11 @@ InsetFormula::LocalDispatch(BufferView * bv, kb_action action,
 			} else if (c == '\\') {
 				if (was_macro)
 					mathcursor->MacroModeClose();
-				bv->owner()->getLyXFunc()
-					->Dispatch(LFUN_MESSAGE,
-						   _("TeX mode"));
+				// This line nukes the mathcursor. Why?
+				//bv->owner()->getLyXFunc()->Dispatch(LFUN_MESSAGE, _("TeX mode"));
 				mathcursor->setLastCode(LM_TC_TEX);
 			}
+			// Andre:
 			UpdateLocal(bv);
 		} else if (action == LFUN_MATH_PANEL) {
 			result = UNDISPATCHED;
@@ -1229,24 +1259,27 @@ InsetFormula::LocalDispatch(BufferView * bv, kb_action action,
 		}
 	}
 	
-	if (was_macro != mathcursor->InMacroMode()
+	//UpdateLocal(bv);
+	
+	// Andre:
+	if ((mathcursor && was_macro != mathcursor->InMacroMode())
 	    && action >= 0
 	    && action != LFUN_BACKSPACE) 
-		UpdateLocal(bv);
+  		UpdateLocal(bv);
 
 	if (sp && !space_on)
 		sp = 0;
 
-	if (mathcursor->Selection() || was_selection)
+	if (mathcursor && (mathcursor->Selection() || was_selection))
 		ToggleInsetSelection(bv);
 
-	if ((result == DISPATCHED) || (result == DISPATCHED_NOUPDATE) ||
-	    (result == UNDISPATCHED))
+	if (result == DISPATCHED || result == DISPATCHED_NOUPDATE ||
+	    result == UNDISPATCHED)
 		ShowInsetCursor(bv);
 	else
 		bv->unlockInset(this);
 
-	return result;
+	return result;  // original version
 }
 
 

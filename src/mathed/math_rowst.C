@@ -12,60 +12,72 @@ MathedRowStruct::MathedRowStruct()
 	: asc_(0), desc_(0), y_(0), numbered_(true)
 {}
 
+
 string const & MathedRowStruct::getLabel() const
 {
 	return label_;
 }
+
 
 bool MathedRowStruct::isNumbered() const
 {
 	return numbered_;
 }
 
+
 int MathedRowStruct::getBaseline() const
 {
 	return y_;
 }
+
 
 void MathedRowStruct::setBaseline(int b)
 {
 	y_ = b;
 }
 
+
 int MathedRowStruct::ascent() const
 {
 	return asc_;
 }
+
 
 int MathedRowStruct::descent() const
 {
 	return desc_;
 }
 
+
 void MathedRowStruct::ascent(int a)
 {
 	asc_ = a;
 }
+
 
 void MathedRowStruct::descent(int d)
 {
 	desc_ = d;
 }
 
+
 int MathedRowStruct::getTab(unsigned int i) const
 {
 	return i < widths_.size() ? widths_[i] : 0;
 }
+
 
 void MathedRowStruct::setLabel(string const & l)
 {
 	label_ = l;
 }
 
+
 void MathedRowStruct::setNumbered(bool nf)
 {
 	numbered_ = nf;
 }
+
 
 void MathedRowStruct::setTab(unsigned int i, int t)
 {
@@ -86,6 +98,7 @@ MathedRowContainer::iterator MathedRowContainer::begin()
 	return iterator(this);
 }
 
+
 MathedRowContainer::iterator MathedRowContainer::end()
 {
 	iterator it(this);
@@ -93,28 +106,40 @@ MathedRowContainer::iterator MathedRowContainer::end()
 	return it;
 }
 
+
 bool MathedRowContainer::empty() const
 {
 	return data_.size() == 0;
 }
+
 
 void MathedRowContainer::insert(iterator const & it)
 {
 	lyx::Assert(it.st_ == this);
 	data_.insert(data_.begin() + it.pos_, MathedRowStruct());
 }
-		
+
+
 void MathedRowContainer::erase(iterator & it)
 {
 	lyx::Assert(it.st_ == this);
 	data_.erase(data_.begin() + it.pos_);
 }
 
+
 MathedRowStruct & MathedRowContainer::back()
 {
 	lyx::Assert(data_.size());
 	return data_.back();
 }
+
+
+MathedRowStruct const & MathedRowContainer::back() const
+{
+	lyx::Assert(data_.size());
+	return data_.back();
+}
+
 
 void MathedRowContainer::push_back()
 {
@@ -137,14 +162,17 @@ MathedRowContainer::iterator::iterator()
 	: st_(0), pos_(0)
 {}
 
+
 MathedRowContainer::iterator::iterator(MathedRowContainer * m)
 	: st_(m), pos_(0)
 {}
+
 
 MathedRowContainer::iterator::operator void *() const
 {
 	return (void *)(st_ && pos_ < st_->size());
 }
+
 
 MathedRowStruct * MathedRowContainer::iterator::operator->()
 {
@@ -152,11 +180,13 @@ MathedRowStruct * MathedRowContainer::iterator::operator->()
 	return &st_->data_[pos_];
 }
 
+
 MathedRowStruct const * MathedRowContainer::iterator::operator->() const
 {
 	lyx::Assert(st_);
 	return &st_->data_[pos_];
 }
+
 
 void MathedRowContainer::iterator::operator++()
 {
@@ -164,11 +194,13 @@ void MathedRowContainer::iterator::operator++()
 	++pos_;
 }
 
+
 bool MathedRowContainer::iterator::is_last() const
 {
 	lyx::Assert(st_);
 	return pos_ == st_->size() - 1;
 }
+
 
 bool MathedRowContainer::iterator::operator==(const iterator & it) const
 {
