@@ -16,13 +16,22 @@
 #define INCL_DOSERRORS
 #include <os2.h>
 
-string os::binpath_ = string();
-string os::binname_ = string();
-string os::tmpdir_ = string();
-os::shell_type os::_shell = os::UNIX;
-unsigned long os::cp_ = 0;
+namespace {
 
-void os::init(int * argc, char ** argv[]) {
+string binpath_;
+string binname_;
+string tmpdir_;
+os::shell_type shell_ = os::UNIX;
+unsigned long cp_ = 0;
+
+}
+
+
+namespace os {
+
+
+void init(int * argc, char ** argv[])
+{
 	if (argc != 0 /* This is a hack! */) {
 		_wildcard(argc, argv);
 		PTIB ptib = new TIB[1];
@@ -35,7 +44,7 @@ void os::init(int * argc, char ** argv[]) {
 		rc = DosQueryModuleName(ppib->pib_hmte, 256L, tmp);
 		if (rc != NO_ERROR)
 			exit(rc);
-		string p(tmp);
+		string p = tmp;
 		p = slashify_path(p);
 		binname_ = OnlyFilename(p);
 		binname_.erase(binname_.length()-4, string::npos);
@@ -50,16 +59,19 @@ void os::init(int * argc, char ** argv[]) {
 				sh = "cmd.exe";
 		}
 		sh = lowercase(sh);	// DosMapCase() is an overkill here
-		if (contains(sh, "cmd.exe")
-		    || contains(sh, "4os2.exe"))
-			_shell = os::CMD_EXE;
+		if (contains(sh, "cmd.exe") || contains(sh, "4os2.exe"))
+			shell_ = os::CMD_EXE;
 		else
-			_shell = os::UNIX;
+			shell_ = os::UNIX;
 	}
+
 	static bool initialized = false;
-	if (initialized) return;
+	if (initialized)
+		return;
 	initialized = true;
-	ULONG CPList[3] = {0}, CPList_size;
+
+	ULONG CPList[3] = {0};
+	ULONG CPList_size;
 	APIRET rc = DosQueryCp(3 * sizeof(ULONG), CPList, &CPList_size);
 	if (rc != NO_ERROR)
 		exit(rc);
@@ -69,13 +81,18 @@ void os::init(int * argc, char ** argv[]) {
 	cp_ = CPList[1];
 }
 
-void os::warn(string /*mesg*/) {
+
+void warn(string const & /*mesg*/)
+{
 	return;
 }
 
-string os::current_root() {
+
+string current_root()
+{
 	APIRET rc;
-	ULONG drv_num, drv_map;
+	ULONG drv_num;
+	ULONG drv_map;
 	rc = DosQueryCurrentDisk(&drv_num, &drv_map);
 	if (rc != NO_ERROR)
 		exit(rc);
@@ -85,19 +102,22 @@ string os::current_root() {
 	return tmp;
 }
 
-string::size_type os::common_path(string const &p1, string const &p2) {
+
+string::size_type common_path(string const & p1, string const & p2)
+{
 	static bool initialized = false;
 	if (!initialized) {
 		init(0, 0);
 		initialized = true;
 	}
+
 	COUNTRYCODE cntry;
 	cntry.country = 0;
 	cntry.codepage = cp_;
 	string temp1 = slashify_path(p1);
 	string temp2 = slashify_path(p2);
-	char * tmp1 = const_cast<char*> (temp1.c_str());
-	char * tmp2 = const_cast<char*> (temp2.c_str());
+	char * tmp1 = const_cast<char *> (temp1.c_str());
+	char * tmp2 = const_cast<char *> (temp2.c_str());
 	/* rc = */ DosMapCase(p1.length(), &cntry, tmp1);
 	// if (rc != NO_ERROR)
 	//	exit(rc);
@@ -105,20 +125,26 @@ string::size_type os::common_path(string const &p1, string const &p2) {
 	// if (rc != NO_ERROR)
 	//	exit(rc);
 	// This algorithm works only if paths are slashified on DBCS systems.
-	string::size_type i = 0,
-			p1_len = p1.length(),
-			p2_len = p2.length();
-	while (i < p1_len && i < p2_len && tmp1[i] == tmp2[i]) ++i;
+	string::size_type i = 0;
+	string::size_type p1_len = p1.length();
+	string::size_type p2_len = p2.length();
+	while (i < p1_len && i < p2_len && tmp1[i] == tmp2[i])
+		++i;
 	if ((i < p1_len && i < p2_len)
 	    || (i < p1_len && tmp1[i] != '/' && i == p2_len)
-	    || (i < p2_len && tmp2[i] != '/' && i == p1_len)) {
-		if (i) --i;     // here was the last match
-		while (i && tmp1[i] != '/') --i;
+	    || (i < p2_len && tmp2[i] != '/' && i == p1_len))
+	{
+		if (i)
+			--i;     // here was the last match
+		while (i && tmp1[i] != '/')
+			--i;
 	}
 	return i;
 }
 
-string os::slashify_path(string p) {
+
+string slashify_path(string const & p)
+{
 	static bool initialized = false;
 	static bool leadbyte[256] = {false};
 	if (!initialized) {
@@ -156,17 +182,19 @@ string os::slashify_path(string p) {
 }
 
 
-string os::external_path(string const &p) {
+string external_path(string const & p)
+{
 	return p;
 }
 
 
-string os::internal_path(string const &p) {
+string internal_path(string const & p)
+{
 	return p;
 }
 
 
-bool os::is_absolute_path(string const & p)
+bool is_absolute_path(string const & p)
 {
 	return (p.length() > 1
 		&& isalpha(static_cast<unsigned char>(p[0]))
@@ -174,16 +202,41 @@ bool os::is_absolute_path(string const & p)
 }
 
 
-// returns a string suitable to be passed to fopen when
-// reading a file
-char const * os::read_mode()
+// returns a string suitable to be passed to popen when
+// reading a pipe
+char const * popen_read_mode()
 {
 	return "r";
 }
 
-// returns a string suitable to be passed to popen when
-// reading a pipe
-char const * os::popen_read_mode()
+
+string binpath()
 {
-	return "r";
+	return binpath_;
 }
+
+
+string binname()
+{
+	return binname_;
+}
+
+
+void setTmpDir(string const & p)
+{
+	tmpdir_ = p;
+}
+
+
+string getTmpDir()
+{
+	return tmpdir_;
+}
+
+
+shell_type shell()
+{
+	return shell_;
+}
+
+} // end namespace os
