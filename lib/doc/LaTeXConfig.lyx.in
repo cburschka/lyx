@@ -360,16 +360,16 @@ Additional document classes
 aa
 \layout Description
 
-Found: @chk_aapaper@
+Found: @chk_aa@
 \layout Description
 
-CTAN: N/A (available from Springer's ftp site
+CTAN: N/A (available from ftp site
 \family typewriter 
- ftp.springer.de
+ ftp.edpsciences.org
 \family default 
  in directory 
 \family typewriter 
-/pub/tex/latex/aa
+/pub/aa/
 \family default 
 )
 \layout Description
@@ -378,16 +378,13 @@ Notes: The document class
 \family sans 
 aa
 \family default 
- can be used to write articles for submission to the scientific journal
+ (Version 5.01) can be used to write articles for submission to the 
+ scientific journal
  
 \emph on 
 Astronomy and Astrophysics
 \emph default 
- and the accompanying 
-\emph on 
-Supplement Series 
-\emph default 
-published by Springer -Verlag.
+published by EDP Sciences.
 \layout Subsection
 
 aastex

@@ -1,0 +1,201 @@
+#% Do not delete the line below; configure depends on this
+#  \DeclareLaTeXClass[aa]{article (A&A V4)}
+#
+# Author: Peter Sütterlin <pit@uni-sw.gwdg.de>
+
+# This is for the old Springer layout of A&A (aa.cls version 4.x)
+# If you still have this, please upgrade to version 5 (see Extended.lyx)
+#
+# If you want to keep the layout for old papers I'd suggest to rename
+# the old style file to aa-old and change the second line in this file to
+# 
+#  \DeclareLaTeXClass[aa-old]{article (A&A V4)}
+#
+# and reconfigure LyX (after running texhash, of course).
+
+# General textclass parameters
+Columns			2
+Sides			2
+MaxCounter		Counter_Section
+SecNumDepth		3
+TocDepth		0
+PageStyle		Plain
+
+DefaultFont
+  Family		Roman
+  Series		Medium
+  Shape			Up
+  Size			Normal
+  Color			None
+EndFont
+
+# Standard style definition
+Style Standard
+  Margin  		Static
+  LatexType 		Paragraph
+  LatexName 		dummy
+  ParIndent		MM
+  ParSkip 		0.4
+  Align 		Block
+  AlignPossible 	Block, Left, Right, Center
+  LabelType 		No_Label
+End
+
+# I want to keep the entries in a logical order.
+# Therefore I'll define the entries first, then fill them
+
+Style Itemize
+  End
+Style Enumerate
+  End
+Style Description
+  End
+Style List
+  End
+Style Caption
+  End
+Style LaTeX
+  End
+Style Section
+  End
+Style Subsection
+  End
+Style Subsubsection
+  End
+Style Title
+  End
+Style Subtitle
+  End
+Style Author
+  End
+Style Address
+  End
+Style Email
+  End
+Style Offprint
+  End
+Style Thesaurus
+  End
+Style Date
+  End
+Style Abstract 
+  End
+Style Acknowledgement
+  End
+Style Bibliography
+  End
+
+# OK, now we have a more or less consistent Ordering. Now fill the
+# definitions. 
+# First, the standard includes
+
+Input stdlists.inc
+Input stdlayouts.inc
+Input stdsections.inc
+Input stdtitle.inc
+Input stdstruct.inc
+
+# Remove unwanted Styles
+
+NoStyle Quotation
+NoStyle	Quote
+NoStyle	Verse
+NoStyle Chapter
+NoStyle Paragraph
+NoStyle Subparagraph
+NoStyle Part
+
+# Definitions only valid for A&A style
+Input aapaper.inc
+
+# Redefine some things
+
+# Section style redefinition
+Style Section
+  TopSep		2.0
+  BottomSep		1.3
+  Font 
+    Size		Normal
+  EndFont
+End
+
+# Subsection style redefinition
+Style Subsection
+  TopSep		1.7
+  BottomSep		1.1
+  Font 
+    Series 		Medium
+    Size		Normal
+    Shape		Italic
+  EndFont
+End
+
+# Subsubsection style redefinition
+Style Subsubsection
+  TopSep		1.7
+  BottomSep		1.1
+  Font 
+    Series 		Medium
+    Size		Normal
+  EndFont
+End
+
+# Title style redefinition
+Style Title
+  TopSep		2
+  BottomSep		1.3
+  Align			Left
+  AlignPossible		Left
+  Font 
+    Series		Bold
+  EndFont
+End
+
+# Author style redefinition
+Style Author
+  Align			Left
+  AlignPossible		Left
+  LabelType		No_Label
+  Font 
+    Size		Normal
+    Series		Bold
+  EndFont
+End
+
+# Date style redefinition
+Style Date
+  LabelSep		""
+  TopSep		1.2
+  Align			Left
+  AlignPossible		Left
+  Font 
+    Size		Small
+  EndFont
+End
+
+# Abstract style redefinition
+Style Abstract 
+  LeftMargin            ""
+  RightMargin           ""
+  ParIndent		""
+  TopSep		1.4
+  BottomSep		0.7
+  LabelType		Top_Environment
+  Font 
+    Size		Normal
+  EndFont
+  LabelFont 
+    Series		Bold
+    Size		Normal
+  EndFont
+End 
+
+# Bibliography style redefinition
+Style Bibliography
+  Align			Left
+  AlignPossible		Left
+  LabelFont 
+    Series		Bold
+  EndFont
+End
+

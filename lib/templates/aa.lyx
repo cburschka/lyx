@@ -1,12 +1,13 @@
-#This file was created by <pit> Mon Nov 24 23:26:21 1997
-#LyX 0.11 (C) 1995-1997 Matthias Ettrich and the LyX Team
-\lyxformat 2.15
+#LyX 1.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 218
 \textclass aa
 \language english
+\inputencoding auto
 \fontscheme times
 \graphics default
 \paperfontsize default
 \spacing single 
+\papersize Default
 \paperpackage a4
 \use_geometry 0
 \use_amsmath 0
@@ -15,13 +16,12 @@
 \tocdepth 3
 \paragraph_separation indent
 \defskip medskip
+\quotes_language english
+\quotes_times 2
 \papercolumns 2
 \papersides 2
 \paperpagestyle default
 
-\layout Thesaurus
-
-Put the Thesaurus codes here
 \layout Title
 
 This is your Title
@@ -54,28 +54,44 @@ inst{
 \layout Address
 
 Here 
+\newline 
+
 \latex latex 
+
+\backslash 
+email{
+\latex default 
+myaddress
+\latex latex 
+}
+\newline 
 
 \backslash 
 and
 \latex default 
  There
-\layout Offprint
+\newline 
 
-Me
-\layout Email
+\latex latex 
+
+\backslash 
+email{
+\latex default 
+youraddress
+\latex latex 
+}
+\layout Offprint
 
 Me
 \layout Date
 
-Received / Accepted
+Received ; Accepted
 \layout Abstract
 
 Short abstract
-\layout Abstract
-
-
 \latex latex 
+
+\newline 
 
 \backslash 
 keywords{
