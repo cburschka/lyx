@@ -74,16 +74,18 @@ string SpaceLess(string const & file)
 	
 	for (string::size_type i = 0; i < name.length(); ++i) {
 		name[i] &= 0x7f; // set 8th bit to 0
-		if (!isgraph(name[i])) name[i] = '_'; // get rid of cntrl chars
 	};
+
 	// ok so we scan through the string twice, but who cares.
-	string change("/");
+	string keep("abcdefghijklmnopqrstuvwxyz"
+		"ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+		"@!\"'()*+,-./0123456789:;<=>?[]`|");
+	
 	string::size_type pos = 0;
-	while ((pos = name.find_first_of(change, pos)) != string::npos) {
-		name[pos] = '-';
+	while ((pos = name.find_first_not_of(change, pos)) != string::npos) {
+		name[pos] = '_';
 	}
-	string temp = AddName(path, name);
-	return temp;
+	return AddName(path, name);
 }
 
 
