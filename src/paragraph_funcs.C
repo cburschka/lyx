@@ -28,6 +28,9 @@ void breakParagraph(BufferParams const & bparams,
 {
 	// create a new paragraph
 	Paragraph * tmp = new Paragraph(par);
+	// without doing that we get a crash when typing <Return> at the
+	// end of a paragraph
+	tmp->layout(bparams.getLyXTextClass().defaultLayout());
 	// remember to set the inset_owner
 	tmp->setInsetOwner(par->inInset());
 	
