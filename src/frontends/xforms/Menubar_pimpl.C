@@ -110,7 +110,7 @@ void Menubar::Pimpl::makeMenubar(Menu const &menu)
 		string label = i->label();
 		string shortcut = "#" + i->shortcut();
 		int width = string_width(label);
-		obj = fl_add_button(FL_TOUCH_BUTTON,
+		obj = fl_add_button(FL_MENU_BUTTON,
 				    air + moffset, yloc,
 				    width + mbadd,
 				    mbheight, 
