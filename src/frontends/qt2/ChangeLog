@@ -1,3 +1,14 @@
+2002-08-15  Angus Leeming  <leeming@lyx.org>
+
+	* Dialogs.C:
+	* Dialogs2.C
+	* Dialogs_impl.h: the brave new world of Dialog creation.
+
+	* guiapi.C: discard.
+
+	* Makefile.am: add new files Dialogs2.C Dialogs_impl.h and
+	remove guiapi.C.
+
 2002-08-14  John Levon  <levon@movementarian.org>
 
 	* Alert_pimpl.C: remove xforms header

@@ -19,6 +19,8 @@ include $(srcdir)/Makefile.dialogs
 libqt2_la_SOURCES = \
 	Alert_pimpl.C \
 	Dialogs.C \
+	Dialogs2.C \
+	Dialogs_impl.h \
 	FileDialog.C \
 	FileDialog_private.C \
 	LyXKeySymFactory.C \
@@ -52,7 +54,6 @@ libqt2_la_SOURCES = \
 	WorkAreaFactory.C \
 	emptytable.C \
 	emptytable.h \
-	guiapi.C \
 	io_callback.h \
 	lengthcombo.C \
 	lengthcombo.h \

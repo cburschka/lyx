@@ -1,27 +1,76 @@
 /**
  * \file qt2/Dialogs.C
- * Copyright 2001 the LyX Team
- * Read the file COPYING
+ * Copyright 1995 Matthias Ettrich
+ * Copyright 1995-2001 The LyX Team.
+ * See the file COPYING.
  *
+ * \author Allan Rae, rae@lyx.org
+ * \author Angus Leeming <leeming@lyx.org>
  */
 
 #include <config.h>
 
-#include "Dialogs.h"
- 
-LyXView * dialogs_lyxview;
+#ifdef __GNUG__
+#pragma implementation
+#endif
 
-Dialogs::Dialogs(LyXView * lv)
+#include "Dialogs_impl.h"
+
+
+Dialogs::Dialogs(LyXView & lv)
+	: pimpl_(new Impl(lv, *this))
 {
-	dialogs_lyxview = lv;
- 
 	// reduce the number of connections needed in
 	// dialogs by a simple connection here.
 	hideAll.connect(hideBufferDependent);
 }
 
 
-bool Dialogs::tooltipsEnabled(void)
+Dialogs::~Dialogs()
+{}
+
+
+void Dialogs::toggleTooltips()
+{}
+
+
+/// Are the tooltips on or off?
+bool Dialogs::tooltipsEnabled()
 {
 	return false;
 }
+
+
+Dialogs::Impl::Impl(LyXView & lv, Dialogs & d)
+	: aboutlyx(lv, d),
+	  bibitem(lv, d),
+	  bibtex(lv, d),
+	  character(lv, d),
+	  citation(lv, d),
+	  error(lv, d),
+	  ert(lv, d),
+	  external(lv, d),
+	  file(lv, d),
+	  floats(lv, d),
+	  graphics(lv, d),
+	  include(lv, d),
+	  index(lv, d),
+	  logfile(lv, d),
+	  minipage(lv, d),
+	  paragraph(lv, d),
+	  preamble(lv, d),
+	  print(lv, d),
+	  ref(lv, d),
+	  search(lv, d),
+	  spellchecker(lv, d),
+	  tabularcreate(lv, d),
+	  texinfo(lv, d),
+
+#ifdef HAVE_LIBAIKSAURUS
+	  thesaurus(lv, d),
+#endif
+
+	  toc(lv, d),
+	  url(lv, d),
+	  vclogfile(lv, d)
+{}
