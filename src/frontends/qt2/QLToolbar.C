@@ -23,6 +23,7 @@
 #include "QLToolbar.h"
 
 #include <qcombobox.h>
+#include <qtoolbar.h>
 
 using std::endl;
 

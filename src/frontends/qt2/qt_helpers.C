@@ -19,6 +19,8 @@
 #include <qlineedit.h>
 #include <qtextcodec.h>
 
+#include <algorithm>
+
 using std::make_pair;
 
 using std::pair;

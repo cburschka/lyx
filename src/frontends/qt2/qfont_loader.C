@@ -27,6 +27,7 @@
 #include <X11/Xlib.h>
 #include "support/systemcall.h"
 #include "support/filetools.h"
+#include <algorithm>
 #endif
 
 using namespace lyx::support;
