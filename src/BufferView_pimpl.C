@@ -603,10 +603,6 @@ void BufferView::Pimpl::cursorToggle()
 		return;
 	}
 
-	/* FIXME */
-	extern void reapSpellchecker(void);
-	reapSpellchecker();
-
 	if (!bv_->theLockingInset()) {
 		screen().cursorToggle(bv_);
 	} else {

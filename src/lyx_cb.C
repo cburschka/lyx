@@ -31,6 +31,7 @@
 
 #include "support/FileInfo.h"
 #include "support/filetools.h"
+#include "support/forkedcall.h"
 #include "support/path.h"
 #include "support/systemcall.h"
 #include "support/lstrings.h"
@@ -243,6 +244,82 @@ void QuitLyX()
 }
 
 
+namespace {
+
+class AutoSaveBuffer : public ForkedProcess {
+public:
+	///
+	AutoSaveBuffer(BufferView & bv, string const & fname)
+		: bv_(bv), fname_(fname) {}
+	///
+	virtual ForkedProcess * clone() const {
+		return new AutoSaveBuffer(*this);
+	}
+	///
+	int start();
+private:
+	///
+	virtual int generateChild();
+	///
+	BufferView & bv_;
+	string fname_;
+};
+
+
+int AutoSaveBuffer::start()
+{
+	command_ = _("Auto-saving $$f");
+	command_ = subst(command_, "$$f", fname_);
+	return runNonBlocking();
+}
+
+
+int AutoSaveBuffer::generateChild()
+{
+	// tmp_ret will be located (usually) in /tmp
+	// will that be a problem?
+	pid_t const pid = fork(); // If you want to debug the autosave
+	// you should set pid to -1, and comment out the
+	// fork.
+	if (pid == 0 || pid == -1) {
+		// pid = -1 signifies that lyx was unable
+		// to fork. But we will do the save
+		// anyway.
+		bool failed = false;
+
+		string const tmp_ret = lyx::tempName(string(), "lyxauto");
+		if (!tmp_ret.empty()) {
+			bv_.buffer()->writeFile(tmp_ret);
+			// assume successful write of tmp_ret
+			if (!lyx::rename(tmp_ret, fname_)) {
+				failed = true;
+				// most likely couldn't move between filesystems
+				// unless write of tmp_ret failed
+				// so remove tmp file (if it exists)
+				lyx::unlink(tmp_ret);
+			}
+		} else {
+			failed = true;
+		}
+
+		if (failed) {
+			// failed to write/rename tmp_ret so try writing direct
+			if (!bv_.buffer()->writeFile(fname_)) {
+				// It is dangerous to do this in the child,
+				// but safe in the parent, so...
+				if (pid == -1)
+					bv_.owner()->message(_("Autosave failed!"));
+			}
+		}
+		if (pid == 0) { // we are the child so...
+			_exit(0);
+		}
+	}
+	return pid;
+}
+ 
+} // namespace anon
+
 
 void AutoSave(BufferView * bv)
 	// should probably be moved into BufferList (Lgb)
@@ -260,51 +337,14 @@ void AutoSave(BufferView * bv)
 	bv->owner()->message(_("Autosaving current document..."));
 
 	// create autosave filename
-	string fname =	bv->buffer()->filePath();
+	string fname = bv->buffer()->filePath();
 	fname += "#";
 	fname += OnlyFilename(bv->buffer()->fileName());
 	fname += "#";
 
-	// tmp_ret will be located (usually) in /tmp
-	// will that be a problem?
-	pid_t const pid = fork(); // If you want to debug the autosave
-	// you should set pid to -1, and comment out the
-	// fork.
-	if (pid == 0 || pid == -1) {
-		// pid = -1 signifies that lyx was unable
-		// to fork. But we will do the save
-		// anyway.
-		bool failed = false;
-
-		string const tmp_ret = lyx::tempName(string(), "lyxauto");
-		if (!tmp_ret.empty()) {
-			bv->buffer()->writeFile(tmp_ret);
-			// assume successful write of tmp_ret
-			if (!lyx::rename(tmp_ret, fname)) {
-				failed = true;
-				// most likely couldn't move between filesystems
-				// unless write of tmp_ret failed
-				// so remove tmp file (if it exists)
-				lyx::unlink(tmp_ret);
-			}
-		} else {
-			failed = true;
-		}
-
-		if (failed) {
-			// failed to write/rename tmp_ret so try writing direct
-			if (!bv->buffer()->writeFile(fname)) {
-				// It is dangerous to do this in the child,
-				// but safe in the parent, so...
-				if (pid == -1)
-					bv->owner()->message(_("Autosave failed!"));
-			}
-		}
-		if (pid == 0) { // we are the child so...
-			_exit(0);
-		}
-	}
-
+	AutoSaveBuffer autosave(*bv, fname);
+	autosave.start();
+	
 	bv->buffer()->markBakClean();
 	bv->owner()->resetAutosaveTimer();
 }

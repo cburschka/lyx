@@ -1,3 +1,14 @@
+2002-10-25  Angus Leeming  <leeming@lyx.org>
+
+	* BufferView_pimpl.C (cursorToggle): remove reapSpellchecker hack.
+
+	* ispell.[Ch] (setError): new method.
+	* ispell.C (c-tor): move out child process into new class LaunchIspell.
+	Use setError() insetead of goto END.
+
+	* lyx_cb.C (AutoSave): move out child process into new class
+	AutoSaveBuffer.
+
 2002-10-30  John Levon  <levon@movementarian.org>
 
 	* text3.C: make start appendix undoable

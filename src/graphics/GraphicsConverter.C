@@ -48,7 +48,7 @@ struct Converter::Impl : public boost::signals::trackable {
 	 *  Cleans-up the temporary files, emits the finishedConversion
 	 *  signal and removes the Converter from the list of all processes.
 	 */
-	void converted(string const & cmd, pid_t pid, int retval);
+	void converted(pid_t pid, int retval);
 
 	/** At the end of the conversion process inform the outside world
 	 *  by emitting a signal.
@@ -191,7 +191,7 @@ Converter::Impl::Impl(string const & from_file,   string const & to_file_base,
 void Converter::Impl::startConversion()
 {
 	if (!valid_process_) {
-		converted(string(), 0, 1);
+		converted(0, 1);
 		return;
 	}
 
@@ -200,19 +200,18 @@ void Converter::Impl::startConversion()
 	convert_ptr.reset(new Forkedcall::SignalType);
 
 	convert_ptr->connect(
-		boost::bind(&Impl::converted, this, _1, _2, _3));
+		boost::bind(&Impl::converted, this, _1, _2));
 
 	Forkedcall call;
 	int retval = call.startscript(script_command_, convert_ptr);
 	if (retval > 0) {
 		// Unable to even start the script, so clean-up the mess!
-		converted(string(), 0, 1);
+		converted(0, 1);
 	}
 }
 
 
-void Converter::Impl::converted(string const & /* cmd */,
-				pid_t /* pid */, int retval)
+void Converter::Impl::converted(pid_t /* pid */, int retval)
 {
 	if (finished_)
 		// We're done already!

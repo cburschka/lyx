@@ -48,6 +48,9 @@ public:
 	virtual string const error();
 
 private:
+	///
+	void setError();
+
 	/// instream to communicate with ispell
 	FILE * in;
 	/// outstream to communicate with ispell

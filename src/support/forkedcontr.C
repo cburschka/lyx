@@ -71,14 +71,12 @@ ForkedcallsController::~ForkedcallsController()
 }
 
 
-// Add child process information to the list of controlled processes
-void ForkedcallsController::addCall(Forkedcall const &newcall)
+void ForkedcallsController::addCall(ForkedProcess const & newcall)
 {
 	if (!timeout_->running())
 		timeout_->start();
 
-	Forkedcall * call = new Forkedcall(newcall);
-	forkedCalls.push_back(call);
+	forkedCalls.push_back(newcall.clone());
 	childrenChanged();
 }
 
@@ -91,7 +89,7 @@ void ForkedcallsController::timer()
 
 	for (ListType::iterator it = forkedCalls.begin();
 	     it != forkedCalls.end(); ++it) {
-		Forkedcall * actCall = *it;
+		ForkedProcess * actCall = *it;
 
 		pid_t pid = actCall->pid();
 		int stat_loc;

@@ -1,3 +1,12 @@
+2002-10-25  Angus Leeming  <leeming@lyx.org>
+
+	* GraphicsConverter.C (Impl::converted)
+	* PreviewLoader.C (Impl::finishedGenerating): no longer receives a
+	string as first arg, reflecting change in ForkedCall interface.
+
+	* PreviewLoader.C: use pid rather than command as identifier in
+	InProgress map.
+
 2002-10-18  Angus Leeming  <leeming@lyx.org>
 
 	* GraphicsCacheItem.C (findTargetFormat): add debug message.

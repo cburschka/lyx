@@ -102,12 +102,14 @@ struct InProgress {
 	///
 	pid_t pid;
 	///
+	string command;
+	///
 	string metrics_file;
 	///
 	BitmapFile snippets;
 };
 
-typedef map<string, InProgress>  InProgressProcesses;
+typedef map<pid_t, InProgress>  InProgressProcesses;
 
 typedef InProgressProcesses::value_type InProgressProcess;
 
@@ -139,7 +141,7 @@ struct PreviewLoader::Impl : public boost::signals::trackable {
 
 private:
 	/// Called by the Forkedcall process that generated the bitmap files.
-	void finishedGenerating(string const &, pid_t, int);
+	void finishedGenerating(pid_t, int);
 	///
 	void dumpPreamble(ostream &) const;
 	///
@@ -481,7 +483,7 @@ void PreviewLoader::Impl::startLoading()
 	// Initiate the conversion from LaTeX to bitmap images files.
 	Forkedcall::SignalTypePtr convert_ptr(new Forkedcall::SignalType);
 	convert_ptr->connect(
-		boost::bind(&Impl::finishedGenerating, this, _1, _2, _3));
+		boost::bind(&Impl::finishedGenerating, this, _1, _2));
 
 	Forkedcall call;
 	int ret = call.startscript(command, convert_ptr);
@@ -495,28 +497,28 @@ void PreviewLoader::Impl::startLoading()
 
 	// Store the generation process in a list of all such processes
 	inprogress.pid = call.pid();
-	in_progress_[command] = inprogress;
+	inprogress.command = command;
+	in_progress_[inprogress.pid] = inprogress;
 }
 
 
-void PreviewLoader::Impl::finishedGenerating(string const & command,
-					     pid_t /* pid */, int retval)
+void PreviewLoader::Impl::finishedGenerating(pid_t pid, int retval)
 {
+	// Paranoia check!
+	InProgressProcesses::iterator git = in_progress_.find(pid);
+	if (git == in_progress_.end()) {
+		lyxerr << "PreviewLoader::finishedGenerating(): unable to find "
+			"data for PID " << pid << endl;
+		return;
+	}
+
+	string const command = git->second.command;
 	string const status = retval > 0 ? "failed" : "succeeded";
 	lyxerr[Debug::GRAPHICS] << "PreviewLoader::finishedInProgress("
 				<< retval << "): processing " << status
 				<< " for " << command << endl;
 	if (retval > 0)
 		return;
-
-	// Paranoia check!
-	InProgressProcesses::iterator git = in_progress_.find(command);
-	if (git == in_progress_.end()) {
-		lyxerr << "PreviewLoader::finishedGenerating(): unable to find "
-			"data for\n"
-		       << command << "!" << endl;
-		return;
-	}
 
 	// Read the metrics file, if it exists
 	vector<double> ascent_fractions(git->second.snippets.size());

@@ -33,11 +33,12 @@
 #include "LString.h"
 
 #include <boost/shared_ptr.hpp>
-#include <boost/signals/signal3.hpp>
+#include <boost/signals/signal2.hpp>
+#include <boost/function/function0.hpp>
 
 #include <sys/types.h>
 
-class Forkedcall {
+class ForkedProcess {
 public:
 	///
 	enum Starttype {
@@ -48,25 +49,14 @@ public:
 	};
 
 	///
-	Forkedcall();
-
-	/** Start the child process.
-	 *
-	 *  The command "what" is passed to fork() for execution.
-	 *
-	 *  There are two startscript commands available. They differ in that
-	 *  the second receives a signal that is executed on completion of
-	 *  the command. This makes sense only for a command executed
-	 *  in the background, ie DontWait.
-	 *
-	 *  The other startscript command can be executed either blocking
-	 *  or non-blocking, but no signal will be emitted on finishing.
-	 */
-	int startscript(Starttype, string const & what);
+	ForkedProcess();
+	///
+	virtual ~ForkedProcess() {}
+	///
+	virtual ForkedProcess * clone() const = 0;
 
 	/** A SignalType signal is can be emitted once the forked process
 	 *  has finished. It passes:
-	 *  the commandline string;
 	 *  the PID of the child and;
 	 *  the return value from the child.
 	 *
@@ -74,7 +64,7 @@ public:
 	 *  we can return easily to C++ methods, rather than just globally
 	 *  accessible functions.
 	 */
-	typedef boost::signal3<void, string const &, pid_t, int> SignalType;
+	typedef boost::signal2<void, pid_t, int> SignalType;
 
 	/** The signal is connected in the calling routine to the desired
 	 *  slot. We pass a shared_ptr rather than a reference to the signal
@@ -85,9 +75,6 @@ public:
 	 *  It doesn't matter if the slot disappears, SigC takes care of that.
 	 */
 	typedef boost::shared_ptr<SignalType> SignalTypePtr;
-
-	///
-	int startscript(string const & what, SignalTypePtr);
 
 	/** Invoking the following methods makes sense only if the command
 	 *  is running asynchronously!
@@ -108,6 +95,9 @@ public:
 	 */
 	void setRetValue(int r) { retval_ = r; }
 
+	/// Returns the identifying command (for display in the GUI perhaps).
+	string const & command() const { return command_; }
+
 	/** Kill child prematurely.
 	 *  First, a SIGHUP is sent to the child.
 	 *  If that does not end the child process within "tolerance"
@@ -115,14 +105,21 @@ public:
 	 *  When the child is dead, the callback is called.
 	 */
 	void kill(int tolerance = 5);
-	///
-	string const & command() const { return command_; }
 
-private:
+protected:
+	/** Wait for child process to finish.
+	 *  Returns returncode from child.
+	 */
+	int runBlocking();
+	/** Do not wait for child process to finish.
+	 *  Returns returncode from child.
+	 */
+	int runNonBlocking();
+
 	/// Callback function
 	SignalTypePtr signal_;
 
-	/// Commmand line
+	/// identifying command (for display in the GUI perhaps).
 	string command_;
 
 	/// Process ID of child
@@ -130,12 +127,42 @@ private:
 
 	/// Return value from child
 	int retval_;
-
-	///
-	pid_t generateChild();
+private:
+	/// generate child in background
+	virtual int generateChild() = 0;
 
 	/// Wait for child process to finish. Updates returncode from child.
 	int waitForChild();
+};
+
+
+class Forkedcall : public ForkedProcess {
+public:
+	///
+	virtual ForkedProcess * clone() const {
+		return new Forkedcall(*this);
+	}
+
+	/** Start the child process.
+	 *
+	 *  The command "what" is passed to execvp() for execution.
+	 *
+	 *  There are two startscript commands available. They differ in that
+	 *  the second receives a signal that is executed on completion of
+	 *  the command. This makes sense only for a command executed
+	 *  in the background, ie DontWait.
+	 *
+	 *  The other startscript command can be executed either blocking
+	 *  or non-blocking, but no signal will be emitted on finishing.
+	 */
+	int startscript(Starttype, string const & what);
+
+	///
+	int startscript(string const & what, SignalTypePtr);
+
+private:
+	///
+	virtual int generateChild();
 };
 
 #endif // FORKEDCALL_H

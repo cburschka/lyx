@@ -53,62 +53,6 @@ using std::strerror;
 #endif
 
 
-Forkedcall::Forkedcall()
-	: pid_(0), retval_(0)
-{}
-
-
-int Forkedcall::startscript(Starttype wait, string const & what)
-{
-	if (wait == Wait) {
-		command_ = what;
-		retval_  = 0;
-
-		pid_ = generateChild();
-		if (pid_ <= 0) { // child or fork failed.
-			retval_ = 1;
-		} else {
-			retval_ = waitForChild();
-		}
-
-		return retval_;
-	}
-
-	// DontWait
-	retval_ = startscript(what, SignalTypePtr());
-	return retval_;
-}
-
-
-int Forkedcall::startscript(string const & what, SignalTypePtr signal)
-{
-	command_ = what;
-	signal_  = signal;
-	retval_  = 0;
-
-	pid_ = generateChild();
-	if (pid_ <= 0) { // child or fork failed.
-		retval_ = 1;
-		return retval_;
-	}
-
-	// Non-blocking execution.
-	// Integrate into the Controller
-	ForkedcallsController & contr = ForkedcallsController::get();
-	contr.addCall(*this);
-
-	return retval_;
-}
-
-
-void Forkedcall::emitSignal()
-{
-	if (signal_.get()) {
-		signal_->operator()(command_, pid_, retval_);
-	}
-}
-
-
 namespace {
 
 class Murder : public boost::signals::trackable {
@@ -157,9 +101,55 @@ private:
 } // namespace anon
 
 
-void Forkedcall::kill(int tol)
+ForkedProcess::ForkedProcess()
+	: pid_(0), retval_(0)
+{}
+
+
+void ForkedProcess::emitSignal()
 {
-	lyxerr << "Forkedcall::kill(" << tol << ")" << std::endl;
+	if (signal_.get()) {
+		signal_->operator()(pid_, retval_);
+	}
+}
+
+
+// Wait for child process to finish.
+int ForkedProcess::runBlocking() 
+{
+	retval_  = 0;
+	pid_ = generateChild();
+	if (pid_ <= 0) { // child or fork failed.
+		retval_ = 1;
+		return retval_;
+	}
+
+	retval_ = waitForChild();
+	return retval_;
+}
+
+
+// Do not wait for child process to finish.
+int ForkedProcess::runNonBlocking()
+{
+	retval_ = 0;
+	pid_ = generateChild();
+	if (pid_ <= 0) { // child or fork failed.
+		retval_ = 1;
+		return retval_;
+	}
+
+	// Non-blocking execution.
+	// Integrate into the Controller
+	ForkedcallsController & contr = ForkedcallsController::get();
+	contr.addCall(*this);
+
+	return retval_;
+}
+
+void ForkedProcess::kill(int tol)
+{
+	lyxerr << "ForkedProcess::kill(" << tol << ")" << std::endl;
 	if (pid() == 0) {
 		lyxerr << "Can't kill non-existent process!" << endl;
 		return;
@@ -184,7 +174,8 @@ void Forkedcall::kill(int tol)
 
 
 // Wait for child process to finish. Returns returncode from child.
-int Forkedcall::waitForChild() {
+int ForkedProcess::waitForChild()
+{
 	// We'll pretend that the child returns 1 on all error conditions.
 	retval_ = 1;
 	int status;
@@ -219,8 +210,30 @@ int Forkedcall::waitForChild() {
 }
 
 
+int Forkedcall::startscript(Starttype wait, string const & what)
+{
+	if (wait != Wait) {
+		retval_ = startscript(what, SignalTypePtr());
+		return retval_;
+	}
+
+	command_ = what;
+	signal_.reset();
+	return runBlocking();
+}
+
+
+int Forkedcall::startscript(string const & what, SignalTypePtr signal)
+{
+	command_ = what;
+	signal_  = signal;
+
+	return runNonBlocking();
+}
+
+
 // generate child in background
-pid_t Forkedcall::generateChild()
+int Forkedcall::generateChild()
 {
 	const int MAX_ARGV = 255;
 	char *syscmd = 0;
@@ -254,7 +267,8 @@ pid_t Forkedcall::generateChild()
 
 #ifndef __EMX__
 	pid_t cpid = ::fork();
-	if (cpid == 0) { // child
+	if (cpid == 0) {
+		// Child
 		execvp(syscmd, argv);
 		// If something goes wrong, we end up here
 		string args;
@@ -263,15 +277,24 @@ pid_t Forkedcall::generateChild()
 			args += string(" ") + argv[i++];
 		lyxerr << "execvp of \"" << syscmd << args << "\" failed: "
 		       << strerror(errno) << endl;
+		_exit(1);
 	}
 #else
 	pid_t cpid = spawnvp(P_SESSION|P_DEFAULT|P_MINIMIZE|P_BACKGROUND,
 			     syscmd, argv);
 #endif
 
-	if (cpid < 0) { // error
-		lyxerr << "Could not fork: "
-		       << strerror(errno) << endl;
+	if (cpid < 0) {
+		// Error.
+		lyxerr << "Could not fork: " << strerror(errno) << endl;
+	}
+
+	// Clean-up.
+	delete [] syscmd;
+	for (int i = 0; i < MAX_ARGV; ++i) {
+		if (argv[i] == 0)
+			break;
+		delete [] argv[i];
 	}
 
 	return cpid;
