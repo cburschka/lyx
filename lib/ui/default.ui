@@ -150,11 +150,11 @@ Menuset
 	Item "Include File...|I" "buffer-child-insert"
 	Submenu "Import ascii file|a" "insert_ascii"
 	Item "Insert LyX file|X" "file-insert"
-	Item "Insert external material...|e" "external-inset-insert"
+	Item "Insert external material...|e" "external-insert"
 	Separator
 	Item "Footnote|F" "footnote-insert"
 	Item "Marginnote|M" "marginpar-insert"
-	Submenu "Floats|a" "floats"
+	Submenu "Floats|a" "insert_floats"
 	Separator
 	Submenu "Lists & TOC|T" "insert_toc"
 	Separator
