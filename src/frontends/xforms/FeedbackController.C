@@ -42,7 +42,12 @@ void FeedbackController::setMessageWidget(FL_OBJECT * ob)
 // preemptive handler for feedback messages
 void FeedbackController::MessageCB(FL_OBJECT * ob, int event)
 {
-	lyx::Assert(ob && message_widget_);
+	if (!message_widget_) {
+		// fail silently.
+		return;
+	}
+
+	lyx::Assert(ob);
 
 	switch (event) {
 	case FL_ENTER:

@@ -1,3 +1,12 @@
+2002-03-09  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* FeedbackController.C (MessageCB): fix crash by removing
+	Assert(message_widget_) and returning silently in this case.
+	Can happen quite justifiably.
+
+	* Most files: consistent comments at the top of the file, usable by
+	sourcedoc.
+
 2002-03-09  Herbert Voss  <voss@lyx.org>
 
 	* FormGraphics.C: test if file exists, simplify an if command
