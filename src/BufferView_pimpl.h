@@ -136,8 +136,6 @@ private:
 			   int & x, int & y) const;
 	///
 	friend class BufferView;
-	/// open and lock an updatable inset
-	bool open_new_inset(UpdatableInset * new_inset, bool behind = false);
 	///
 	void hfill();
 

@@ -53,7 +53,6 @@
 #include "insets/insetcite.h"
 #include "insets/insetgraphics.h"
 #include "insets/insetmarginal.h"
-#include "insets/insettabular.h"
 #include "insets/insetcaption.h"
 #include "insets/insetfloatlist.h"
 
@@ -68,7 +67,6 @@
 #include <boost/bind.hpp>
 #include <boost/signals/connection.hpp>
 
-#include <cstdio>
 #include <unistd.h>
 #include <sys/wait.h>
 
@@ -1560,25 +1558,6 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev)
 	}
 	break;
 
-	case LFUN_TABULAR_INSERT:
-	{
-		if (ev.argument.empty()) {
-			owner_->getDialogs().showTabularCreate();
-			break;
-		}
-
-		int r = 2;
-		int c = 2;
-		::sscanf(ev.argument.c_str(),"%d%d", &r, &c);
-		InsetTabular * new_inset =
-			new InsetTabular(*buffer_, r, c);
-		bool const rtl =
-			bv_->getLyXText()->real_current_font.isRightToLeft();
-		if (!open_new_inset(new_inset, rtl))
-			delete new_inset;
-	}
-	break;
-
 
 	// --- accented characters ---------------------------
 
@@ -1787,22 +1766,6 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev)
 		return bv_->getLyXText()->dispatch(cmd);
 	} // end of switch
 
-	return true;
-}
-
-
-// Open and lock an updatable inset
-bool BufferView::Pimpl::open_new_inset(UpdatableInset * new_inset, bool behind)
-{
-	LyXText * lt = bv_->getLyXText();
-
-	beforeChange(lt);
-	finishUndo();
-	if (!insertInset(new_inset)) {
-		delete new_inset;
-		return false;
-	}
-	new_inset->edit(bv_, !behind);
 	return true;
 }
 
