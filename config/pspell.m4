@@ -1,4 +1,4 @@
-# Macro to add for using pspell spellchecker libraries!
+# Macro to add for using pspell spellchecker libraries!     -*- sh -*-
 # @author@: Jürgen Vigna
 
 AC_DEFUN(CHECK_WITH_PSPELL,
@@ -43,7 +43,7 @@ AC_DEFUN(CHECK_WITH_PSPELL,
     fi
 
     if test "$USE_PSPELL" = "yes"; then
-      AC_DEFINE(USE_PSPELL)
+      AC_DEFINE(USE_PSPELL, 1, [Define as 1 to use the pspell library])
       PSPELL_INCLUDES="-I$pspell_use_include"
       PSPELL_LIBS="-L$pspell_use_lib -lpspell"
       USE_PSPELL="yes ($pspell_use_include $pspell_use_lib)"

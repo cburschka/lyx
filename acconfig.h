@@ -28,8 +28,6 @@
 
 #undef HAVE_LIBSM
 
-#undef USE_PSPELL
-
 /* Define as 1 if the MKSTEMP function is declared */
 #undef HAVE_DECL_MKSTEMP
 

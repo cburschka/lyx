@@ -80,15 +80,12 @@ AC_LIBTOOL_WIN32_DLL
 LYX_PROG_LIBTOOL
 
 ### Some checks on what the C++ compiler can(not) do
-LYX_CXX_MUTABLE
-LYX_CXX_PARTIAL
+dnl we do not need that currently (and probably all our supported
+dnl compiler allow that)  
+dnl LYX_CXX_PARTIAL
 LYX_CXX_EXPLICIT
-dnl we do not use stl stack, or at least not on gcc 2.7, which was the 
-dnl cause for this test. 
-dnl LYX_CXX_STL_STACK
 LYX_CXX_STL_STRING
 LYX_CXX_GOOD_STD_STRING
-LYX_CXX_NAMESPACES
 LYX_CXX_CHEADERS
 LYX_CXX_GLOBAL_CSTD
 LYX_STD_COUNT

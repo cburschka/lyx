@@ -1,3 +1,11 @@
+2001-07-05  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* INSTALL: update various requirements
+
+	* configure.in: do not test for namespace, mutable
+
+	* acconfig.h: remove entry for USE_PSPELL
+
 2001-07-04  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* ABOUT-NLS: updated from gettext 0.10.38

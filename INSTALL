@@ -35,11 +35,12 @@ You will need to have both an Xforms library and Xpm library to compile
 LyX.  It is imperative that you have the correct versions of these 
 libraries, and their associated header files.
 
-As of LyX version 1.1.5, you will need to have Xforms library and header
-version 0.88 or 0.89.  Version 0.88 is a stable release and the
-recommended version.  On some systems, such as linux ELF, there are shared 
-library versions of the Xforms library, which require an installation step 
-to configure the system.
+As of LyX version 1.1.5, you will need to have Xforms library and
+header version 0.88 or 0.89.  Version 0.88 is a stable release and the
+recommended version, but 0.89.6 seems to be work very well too.  On
+some systems, such as linux ELF, there are shared library versions of
+the Xforms library, which require an installation step to configure
+the system.
 
 Xforms is available (free) only in binary format, source code is not
 available.  If it is not available for your machine, contact the Xforms
@@ -61,23 +62,23 @@ libXpm can be found at:
 	    (or similar locations at other sunsites like sunsite.unc.edu)
 
 You will also need a recent C++ compiler, where recent means that the
-compilers are close to C++ standard conforming. Compilers that are
-known to compile LyX are gcc 2.8.1 and 2.95.x, the various versions of
-egcs and Digital C++ version 6.1. Please tell us your experience with
-other compilers. It is _not_ possible to compile LyX with gcc 2.7.x,
-and this is not likely to change in the future.
+compilers are close to C++ standard conforming.  Compilers that are
+known to compile LyX are egcs 1.1.x, gcc 2.95.x and later, and Digital
+C++ version 6.1 and later.  Please tell us your experience with other
+compilers.  It is _not_ possible to compile LyX with gcc 2.7.x and
+2.8.x, and this is not likely to change in the future.
 
 Note that, contrary to LyX 1.0.x, LyX 1.1.x makes great use of C++
 Standard Template Library (STL); this means that gcc users will have
 to install the relevant libstdc++ library to be able to compile this
 version.
 
-If you make modifications to files in src/ (for example by applying a 
-patch), you will need to have the GNU gettext package installed, due to 
-some dependencies in the makefiles. You can find the latest (alpha) 
-version from:
+If you make modifications to files in src/ (for example by applying a
+patch), you will need to have the GNU gettext package installed, due
+to some dependencies in the makefiles. You can find the latest version
+from:
 
-    ftp://alpha.gnu.org/gnu/gettext-0.10.xx.tar.gz.
+    ftp://ftp.gnu.org/gnu/gettext-0.10.xx.tar.gz.
 
 LyX contains a hack to work around this, but you should not rely too
 much on it.

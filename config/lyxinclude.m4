@@ -138,7 +138,19 @@ done
 AC_DEFUN(LYX_PROG_CXX_WORKS,
 [AC_LANG_SAVE
 AC_LANG_CPLUSPLUS
-AC_TRY_COMPILER([class foo { int bar; }; int main(){return(0);}], ac_cv_prog_cxx_works, ac_cv_prog_cxx_cross)
+AC_TRY_COMPILER(
+[class foo {
+   // we require the mutable keyword 
+   mutable int bar; 
+ }; 
+ // we require namespace support
+ namespace baz {
+   int bar;
+ }
+ int main() {
+   return(0);
+ }
+], ac_cv_prog_cxx_works, ac_cv_prog_cxx_cross)
 AC_LANG_RESTORE
 if test $ac_cv_prog_cxx_works = no; then
   CXX=
@@ -238,6 +250,7 @@ fi
 ])dnl
 
 
+dnl NOT USED CURRENTLY*************************************
 dnl Usage: LYX_CXX_RTTI : checks whether the C++ compiler
 dnl   supports RTTI
 AC_DEFUN(LYX_CXX_RTTI,[
@@ -295,6 +308,7 @@ if test $lyx_cv_explicit = no ; then
 fi])
 
 
+dnl NOT USED CURRENTLY*************************************
 dnl Usage: LYX_CXX_STL_STACK : checks whether the C++ compiler
 dnl   has a working stl stack template
 AC_DEFUN(LYX_CXX_STL_STACK,[
@@ -361,7 +375,8 @@ AC_DEFUN(LYX_CXX_STL_STRING,[
     AC_MSG_CHECKING(whether the included std::string should be used)
     AC_ARG_WITH(included-string,
        [  --with-included-string  use LyX string class instead of STL string],
-       [lyx_cv_with_included_string=$withval],
+       [lyx_cv_with_included_string=$withval
+        AC_MSG_RESULT([$with_included_string])],
        [AC_CACHE_CHECK([],lyx_cv_with_included_string,
 	[AC_TRY_COMPILE([
 	    #include <string>
@@ -442,33 +457,7 @@ AC_DEFUN(LYX_REGEX,[
     AM_CONDITIONAL(USE_REGEX, test x$lyx_regex = xyes)
 ])
 
-
-dnl LYX_CXX_MUTABLE
-AC_DEFUN(LYX_CXX_MUTABLE, [
-    AC_REQUIRE([LYX_PROG_CXX])
-    AC_CACHE_CHECK([if C++ compiler supports mutable],
-    lyx_cv_cxx_mutable,[
-	AC_TRY_COMPILE(
-	[
-	class k {       
-		mutable char *c;
-	public:
-		void foo() const { c=0; }
-	};
-	],[
-	],[
-	lyx_cv_cxx_mutable=yes
-	],[
-	lyx_cv_cxx_mutable=no
-	])
-    ])
-    if test $lyx_cv_cxx_mutable = yes ; then
-	AC_DEFINE(HAVE_MUTABLE, 1,
-	[Defined if your compiler suports 'mutable'.])
-    fi
-])
-
-
+dnl NOT USED CURRENTLY*************************************
 dnl LYX_CXX_PARTIAL
 AC_DEFUN(LYX_CXX_PARTIAL, [
     AC_REQUIRE([LYX_PROG_CXX])
@@ -493,28 +482,6 @@ AC_DEFUN(LYX_CXX_PARTIAL, [
     if test x$lyx_cv_cxx_partial_specialization = xyes ; then
 	AC_DEFINE(HAVE_PARTIAL_SPECIALIZATION, 1, 
 	[Defined if your compiler supports partial specialization.])
-    fi
-])
-
-
-dnl Usage: LYX_CXX_NAMESPACES : checks whether the C++ compiler
-dnl   has a correct namespace handling and define CXX_WORKING_NAMESPACES 
-dnl   if true. This macro does not do a thourough test, but it should be 
-dnl   good enough to suit our needs.
-AC_DEFUN(LYX_CXX_NAMESPACES,[
-    AC_CACHE_CHECK(for correct namespaces support,lyx_cv_cxx_namespace,
-    [AC_TRY_COMPILE([
-    namespace foo {
-	int bar;
-    }
-    ],[
-        foo::bar = 0;
-	return 0;
-    ],lyx_cv_cxx_namespace=yes,lyx_cv_cxx_namespace=no)
-    ])
-    if test x$lyx_cv_cxx_namespace = xyes ; then
-	AC_DEFINE(CXX_WORKING_NAMESPACES, 1, 
-	[Define if your C++ compiler has correct support for namespaces])
     fi
 ])
 
@@ -642,10 +609,11 @@ case "$lyx_cv_xfversion" in
 Version $lyx_cv_xfversion of xforms is not compatible with LyX. 
    This version of LyX works best with versions 0.88 (recommended) and later.) ;;
     0.88*) ;;
-    0.89*) LYX_WARNING(dnl
+    0.89[012345]) LYX_WARNING(dnl
 LyX should work ok with version $lyx_cv_xfversion of xforms[,] but
-it is an unproven version and might still have some bugs. If you
-have problems[,] please use version 0.88 instead.) ;;
+it is an unproven version and might still have some bugs. You should 
+probably use version 0.89.6 (or 0.88) instead) ;;
+    0.89*) ;;
        *) LYX_WARNING(dnl
 Version $lyx_cv_xfversion of xforms might not be compatible with LyX[,] 
  since it is newer than 0.88. You might have slight problems with it.);;

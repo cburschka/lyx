@@ -1,3 +1,12 @@
+2001-07-05  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* lyxinclude.m4: remove LYX_CXX_NAMESPACE, LYX_CXX_MUTABLE
+	(LYX_PROG_CXX_WORKS): check for namespace support, mutable keyword
+	(LYX_PATH_XFORMS): do not warn against xforms 0.89.6
+
+	* pspell.m4 (CHECK_WITH_PSPELL): add the documentation for the
+	USE_PSPELL define.
+
 2001-07-04  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* codeset.m4:
