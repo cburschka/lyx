@@ -284,7 +284,7 @@ int LyXText::singleWidth(ParagraphList::iterator pit,
 	if (pos >= pit->size())
 		return 0;
 
-	LyXFont const & font = getFont(bv()->buffer(), pit, pos);
+	LyXFont const & font = getFont(pit, pos);
 
 	// The most common case is handled first (Asger)
 	if (IsPrintable(c)) {
@@ -594,7 +594,7 @@ int LyXText::leftMargin(Row const & row) const
 		}
 	}
 
-	LyXFont const labelfont = getLabelFont(bv()->buffer(), row.par());
+	LyXFont const labelfont = getLabelFont(row.par());
 	switch (layout->margintype) {
 	case MARGIN_DYNAMIC:
 		if (!layout->leftmargin.empty()) {
@@ -819,7 +819,7 @@ pos_type LyXText::rowBreakPoint(Row const & row) const
 	pos_type i = pos;
 
 	// We re-use the font resolution for the entire font span when possible
-	LyXFont font = getFont(bv()->buffer(), pit, i);
+	LyXFont font = getFont(pit, i);
 	lyx::pos_type endPosOfFontSpan = pit->getEndPosOfFontSpan(i);
 
 	for (; i < last; ++i) {
@@ -834,8 +834,7 @@ pos_type LyXText::rowBreakPoint(Row const & row) const
 
 		// add the auto-hfill from label end to the body
 		if (body_pos && i == body_pos) {
-			thiswidth = font_metrics::width(layout->labelsep,
-				getLabelFont(bv()->buffer(), pit));
+			thiswidth = font_metrics::width(layout->labelsep, getLabelFont(pit));
 			if (pit->isLineSeparator(i - 1))
 				thiswidth -= singleWidth(pit, i - 1);
 			int left_margin = labelEnd(row);
@@ -847,7 +846,7 @@ pos_type LyXText::rowBreakPoint(Row const & row) const
 			if (IsPrintable(c)) {
 				if (pos > endPosOfFontSpan) {
 					// We need to get the next font
-					font = getFont(bv()->buffer(), pit, i);
+					font = getFont(pit, i);
 					endPosOfFontSpan = pit->getEndPosOfFontSpan(i);
 				}
 				if (! font.language()->RightToLeft()) {
@@ -961,11 +960,11 @@ int LyXText::fill(RowList::iterator row, int paper_width) const
 
 	if (! pit->empty() && i <= last) {
 		// We re-use the font resolution for the entire span when possible
-		LyXFont font = getFont(bv()->buffer(), pit, i);
+		LyXFont font = getFont(pit, i);
 		lyx::pos_type endPosOfFontSpan = pit->getEndPosOfFontSpan(i);
 		while (i <= last) {
 			if (body_pos > 0 && i == body_pos) {
-				w += font_metrics::width(layout->labelsep, getLabelFont(bv()->buffer(), pit));
+				w += font_metrics::width(layout->labelsep, getLabelFont(pit));
 				if (pit->isLineSeparator(i - 1))
 					w -= singleWidth(pit, i - 1);
 				int left_margin = labelEnd(*row);
@@ -978,7 +977,7 @@ int LyXText::fill(RowList::iterator row, int paper_width) const
 				if (IsPrintable(c)) {
 					if (i > endPosOfFontSpan) {
 						// We need to get the next font
-						font = getFont(bv()->buffer(), pit, i);
+						font = getFont(pit, i);
 						endPosOfFontSpan = pit->getEndPosOfFontSpan(i);
 					}
 					if (! font.language()->RightToLeft()) {
@@ -1000,7 +999,7 @@ int LyXText::fill(RowList::iterator row, int paper_width) const
 		}
 	}
 	if (body_pos > 0 && body_pos > last) {
-		w += font_metrics::width(layout->labelsep, getLabelFont(bv()->buffer(), pit));
+		w += font_metrics::width(layout->labelsep, getLabelFont(pit));
 		if (last >= 0 && pit->isLineSeparator(last))
 			w -= singleWidth(pit, last);
 		int const left_margin = labelEnd(*row);
@@ -1054,7 +1053,7 @@ int LyXText::labelFill(Row const & row) const
 	int fill = 0;
 	string const & labwidstr = pit->params().labelWidthString();
 	if (!labwidstr.empty()) {
-		LyXFont const labfont = getLabelFont(bv()->buffer(), pit);
+		LyXFont const labfont = getLabelFont(pit);
 		int const labwidth = font_metrics::width(labwidstr, labfont);
 		fill = max(labwidth - w, 0);
 	}
@@ -1095,13 +1094,13 @@ void LyXText::setHeightOfRow(RowList::iterator rit)
 	// as max get the first character of this row then it can increase but not
 	// decrease the height. Just some point to start with so we don't have to
 	// do the assignment below too often.
-	LyXFont font = getFont(bv()->buffer(), pit, rit->pos());
+	LyXFont font = getFont(pit, rit->pos());
 	LyXFont::FONT_SIZE const tmpsize = font.size();
-	font = getLayoutFont(bv()->buffer(), pit);
+	font = getLayoutFont(pit);
 	LyXFont::FONT_SIZE const size = font.size();
 	font.setSize(tmpsize);
 
-	LyXFont labelfont = getLabelFont(bv()->buffer(), pit);
+	LyXFont labelfont = getLabelFont(pit);
 
 	float spacing_val = 1.0;
 	if (!pit->params().spacing().isDefault()) {
@@ -1124,7 +1123,7 @@ void LyXText::setHeightOfRow(RowList::iterator rit)
 
 	if (!pit->empty()) {
 		// We re-use the font resolution for the entire font span when possible
-		LyXFont font = getFont(bv()->buffer(), pit, rit->pos());
+		LyXFont font = getFont(pit, rit->pos());
 		lyx::pos_type endPosOfFontSpan = pit->getEndPosOfFontSpan(rit->pos());
 
 		// Optimisation
@@ -1138,7 +1137,7 @@ void LyXText::setHeightOfRow(RowList::iterator rit)
 			if (IsPrintable(c)) {
 				if (pos > endPosOfFontSpan) {
 					// We need to get the next font
-					font = getFont(bv()->buffer(), pit, pos);
+					font = getFont(pit, pos);
 					endPosOfFontSpan = par.getEndPosOfFontSpan(pos);
 				}
 				if (! font.language()->RightToLeft()) {
@@ -1152,7 +1151,7 @@ void LyXText::setHeightOfRow(RowList::iterator rit)
 			} else {
 				// Special handling of insets - are any larger?
 				if (par.isInset(pos)) {
-					LyXFont const tmpfont = getFont(bv()->buffer(), pit, pos);
+					LyXFont const tmpfont = getFont(pit, pos);
 					InsetOld const * tmpinset = par.getInset(pos);
 					if (tmpinset) {
 #if 1 // this is needed for deep update on initialitation
@@ -1229,8 +1228,7 @@ void LyXText::setHeightOfRow(RowList::iterator rit)
 		// there height depends on the font of the nearest character
 		if (pit->params().lineTop())
 
-			maxasc += 2 * font_metrics::ascent('x', getFont(bv()->buffer(),
-					pit, 0));
+			maxasc += 2 * font_metrics::ascent('x', getFont(pit, 0));
 		// and now the pagebreaks
 		if (pit->params().pagebreakTop())
 			maxasc += 3 * defaultRowHeight();
@@ -1340,9 +1338,7 @@ void LyXText::setHeightOfRow(RowList::iterator rit)
 		// there height depends on the font of the nearest character
 		if (pit->params().lineBottom())
 			maxdesc += 2 * font_metrics::ascent('x',
-						       getFont(bv()->buffer(),
-							       pit,
-							       max(pos_type(0), pit->size() - 1)));
+					getFont(pit, max(pos_type(0), pit->size() - 1)));
 
 		// and now the pagebreaks
 		if (pit->params().pagebreakBottom())
@@ -1668,12 +1664,8 @@ void LyXText::insertChar(char c)
 			    !(contains(number_seperators, c) &&
 			      cursor.pos() >= 1 &&
 			      cursor.pos() < cursor.par()->size() &&
-			      getFont(bv()->buffer(),
-				      cursor.par(),
-				      cursor.pos()).number() == LyXFont::ON &&
-			      getFont(bv()->buffer(),
-				      cursor.par(),
-				      cursor.pos() - 1).number() == LyXFont::ON)
+			      getFont(cursor.par(), cursor.pos()).number() == LyXFont::ON &&
+			      getFont(cursor.par(), cursor.pos() - 1).number() == LyXFont::ON)
 			   )
 				number(bv()); // Set current_font.number to OFF
 		} else if (IsDigit(c) &&
@@ -1687,16 +1679,16 @@ void LyXText::insertChar(char c)
 				     cursor.par()->isSeparator(cursor.pos() - 2) ||
 				     cursor.par()->isNewline(cursor.pos() - 2))
 				  ) {
-					setCharFont(bv()->buffer(),
+					setCharFont(
 						    cursor.par(),
 						    cursor.pos() - 1,
 						    current_font);
 				} else if (contains(number_seperators, c) &&
 					   cursor.pos() >= 2 &&
-					   getFont(bv()->buffer(),
+					   getFont(
 						   cursor.par(),
 						   cursor.pos() - 2).number() == LyXFont::ON) {
-					setCharFont(bv()->buffer(),
+					setCharFont(
 						    cursor.par(),
 						    cursor.pos() - 1,
 						    current_font);
@@ -1765,7 +1757,7 @@ void LyXText::insertChar(char c)
 		// Here case LyXText::InsertInset  already inserted the character
 		cursor.par()->insertChar(cursor.pos(), c);
 	}
-	setCharFont(bv()->buffer(), cursor.par(), cursor.pos(), rawtmpfont);
+	setCharFont(cursor.par(), cursor.pos(), rawtmpfont);
 
 	if (!jumped_over_space) {
 		// refresh the positions
@@ -2002,9 +1994,7 @@ void LyXText::prepareToPrint(RowList::iterator rit, int & x,
 		if (body_pos > 0 &&
 		    (body_pos - 1 > last ||
 		     !pit->isLineSeparator(body_pos - 1))) {
-			x += font_metrics::width(layout->labelsep,
-					    getLabelFont(bv()->buffer(),
-							 pit));
+			x += font_metrics::width(layout->labelsep, getLabelFont(pit));
 			if (body_pos - 1 <= last)
 				x += fill_label_hfill;
 		}
@@ -2177,9 +2167,7 @@ LyXText::selectNextWordToSpellcheck(float & value)
 	// Start the selection from here
 	selection.cursor = cursor;
 
-	string lang_code(
-		getFont(bv()->buffer(), cursor.par(), cursor.pos())
-			.language()->code());
+	string lang_code = getFont(cursor.par(), cursor.pos()).language()->code();
 	// and find the end of the word (insets like optional hyphens
 	// and ligature break are part of a word)
 	while (cursor.pos() < cursor.par()->size()
@@ -2545,8 +2533,7 @@ void LyXText::backspace()
 			if (cursor.pos() < cursor.par()->size()
 			    && !cursor.par()->isSeparator(cursor.pos())) {
 				cursor.par()->insertChar(cursor.pos(), ' ');
-				setCharFont(bv()->buffer(), cursor.par(),
-					    cursor.pos(), current_font);
+				setCharFont(cursor.par(), cursor.pos(), current_font);
 				// refresh the positions
 				tmprow = row;
 				while (boost::next(tmprow) != rows().end() &&

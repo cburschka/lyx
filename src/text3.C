@@ -114,7 +114,7 @@ namespace {
 		// get inset dimensions
 		Assert(par->getInset(pos));
 
-		LyXFont const & font = text.getFont(bv->buffer(), par, pos);
+		LyXFont const & font = text.getFont(par, pos);
 
 		int const width = inset->width();
 		int const inset_x = font.isVisibleRightToLeft()
@@ -249,11 +249,8 @@ void LyXText::cursorPrevious()
 	int y = top_y();
 
 	if (cursorRow() == rows().begin()) {
-		if (y > 0) {
-			int new_y = bv()->text->top_y() - bv()->workHeight();
-			//bv()->screen().draw(bv()->text, bv(), new_y < 0 ? 0 : new_y);
+		if (y > 0)
 			bv()->updateScrollbar();
-		}
 		return;
 	}
 
@@ -270,9 +267,6 @@ void LyXText::cursorPrevious()
 		return;
 		// This is what we used to do, so we wouldn't skip right past
 		// tall rows, but it's not working right now.
-#if 0
-		new_y = bv->text->top_y() - bv->workHeight();
-#endif
 	} else {
 		if (inset_owner) {
 			new_y = bv()->text->cursor.iy()
@@ -1296,8 +1290,7 @@ InsetOld::RESULT LyXText::dispatch(FuncRequest const & cmd)
 		if (bv->theLockingInset()) {
 			InsetOld * tli = bv->theLockingInset();
 			LyXCursor cursor = bv->text->cursor;
-			LyXFont font = bv->text->getFont(bv->buffer(),
-							 cursor.par(), cursor.pos());
+			LyXFont font = bv->text->getFont(cursor.par(), cursor.pos());
 			int width = tli->width();
 			int inset_x = font.isVisibleRightToLeft()
 				? cursor.ix() - width : cursor.ix();

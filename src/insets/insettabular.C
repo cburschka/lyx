@@ -2688,7 +2688,7 @@ bool InsetTabular::insertAsciiString(BufferView * bv, string const & buf,
 			if (cols < columns) {
 				InsetText & inset = loctab->getCellInset(cell);
 				LyXFont const font = inset.getLyXText(bv)->
-					getFont(bv->buffer(), inset.paragraphs.begin(), 0);
+					getFont(inset.paragraphs.begin(), 0);
 				inset.setText(buf.substr(op, p - op), font);
 				++cols;
 				++cell;
@@ -2699,7 +2699,7 @@ bool InsetTabular::insertAsciiString(BufferView * bv, string const & buf,
 			if (cols < columns) {
 				InsetText & inset = tabular.getCellInset(cell);
 				LyXFont const font = inset.getLyXText(bv)->
-					getFont(bv->buffer(), inset.paragraphs.begin(), 0);
+					getFont(inset.paragraphs.begin(), 0);
 				inset.setText(buf.substr(op, p - op), font);
 			}
 			cols = ocol;
@@ -2715,7 +2715,7 @@ bool InsetTabular::insertAsciiString(BufferView * bv, string const & buf,
 	if (cell < cells && op < len) {
 		InsetText & inset = loctab->getCellInset(cell);
 		LyXFont const font = inset.getLyXText(bv)->
-			getFont(bv->buffer(), inset.paragraphs.begin(), 0);
+			getFont(inset.paragraphs.begin(), 0);
 		inset.setText(buf.substr(op, len - op), font);
 	}
 

@@ -462,8 +462,9 @@ LyXFont const Paragraph::getFont(BufferParams const & bparams, pos_type pos,
 	LyXFont tmpfont = getFontSettings(bparams, pos);
 	tmpfont.realize(layoutfont);
 	tmpfont.realize(outerfont);
+	tmpfont.realize(bparams.getLyXTextClass().defaultfont());
 
-	return realizeFont(tmpfont, bparams);
+	return tmpfont;
 }
 
 
@@ -475,8 +476,9 @@ LyXFont const Paragraph::getLabelFont(BufferParams const & bparams,
 	LyXFont tmpfont = lout->labelfont;
 	tmpfont.setLanguage(getParLanguage(bparams));
 	tmpfont.realize(outerfont);
+	tmpfont.realize(bparams.getLyXTextClass().defaultfont());
 
-	return realizeFont(tmpfont, bparams);
+	return tmpfont;
 }
 
 
@@ -488,8 +490,9 @@ LyXFont const Paragraph::getLayoutFont(BufferParams const & bparams,
 	LyXFont tmpfont = lout->font;
 	tmpfont.setLanguage(getParLanguage(bparams));
 	tmpfont.realize(outerfont);
+	tmpfont.realize(bparams.getLyXTextClass().defaultfont());
 
-	return realizeFont(tmpfont, bparams);
+	return tmpfont;
 }
 
 
@@ -1158,15 +1161,10 @@ bool Paragraph::isWord(pos_type pos) const
 Language const *
 Paragraph::getParLanguage(BufferParams const & bparams) const
 {
-	if (!empty()) {
+	if (!empty())
 		return getFirstFontSettings().language();
 #warning FIXME we should check the prev par as well (Lgb)
-#if 0
-	} else if (previous_) {
-		return previous_->getParLanguage(bparams);
-#endif
-	}else
-		return bparams.language;
+	return bparams.language;
 }
 
 

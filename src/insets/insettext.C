@@ -1529,7 +1529,8 @@ void InsetText::fitInsetCursor(BufferView * bv) const
 		the_locking_inset->fitInsetCursor(bv);
 		return;
 	}
-	LyXFont const font = text_.getFont(bv->buffer(), cpar(), cpos());
+
+	LyXFont const font = text_.getFont(cpar(), cpos());
 
 	int const asc = font_metrics::maxAscent(font);
 	int const desc = font_metrics::maxDescent(font);
@@ -1847,12 +1848,11 @@ void InsetText::setFrameColor(BufferView * bv, LColor::color col)
 }
 
 
-int InsetText::cx(BufferView * bv) const
+int InsetText::cx(BufferView *) const
 {
 	int x = text_.cursor.x() + top_x + TEXT_TO_INSET_OFFSET;
 	if (the_locking_inset) {
-		LyXFont font = text_.getFont(bv->buffer(), text_.cursor.par(),
-					    text_.cursor.pos());
+		LyXFont font = text_.getFont(text_.cursor.par(), text_.cursor.pos());
 		if (font.isVisibleRightToLeft())
 			x -= the_locking_inset->width();
 	}
@@ -1860,12 +1860,11 @@ int InsetText::cx(BufferView * bv) const
 }
 
 
-int InsetText::cix(BufferView * bv) const
+int InsetText::cix(BufferView *) const
 {
 	int x = text_.cursor.ix() + top_x + TEXT_TO_INSET_OFFSET;
 	if (the_locking_inset) {
-		LyXFont font = text_.getFont(bv->buffer(), text_.cursor.par(),
-					    text_.cursor.pos());
+		LyXFont font = text_.getFont(text_.cursor.par(), text_.cursor.pos());
 		if (font.isVisibleRightToLeft())
 			x -= the_locking_inset->width();
 	}

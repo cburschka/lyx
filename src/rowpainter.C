@@ -139,7 +139,7 @@ RowPainter::RowPainter(BufferView const & bv, LyXText const & text,
 /// "temporary"
 LyXFont const RowPainter::getFont(pos_type pos) const
 {
-	return text_.getFont(bv_.buffer(), pit_, pos);
+	return text_.getFont(pit_, pos);
 }
 
 
@@ -157,7 +157,7 @@ int RowPainter::singleWidth(lyx::pos_type pos, char c) const
 
 LyXFont const RowPainter::getLabelFont() const
 {
-	return text_.getLabelFont(bv_.buffer(), pit_);
+	return text_.getLabelFont(pit_);
 }
 
 

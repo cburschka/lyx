@@ -14,7 +14,18 @@
 
 2003-07-26  André Pönitz  <poenitz@gmx.net>
 
-	* lyxtext.h:
+	* paragraph_func.[Ch]:	
+	* paragraph.C (realizeFont): inline it whereever it is used
+		
+	* rowpainter.C:
+	* text.C:
+	* text2.C:
+	* text3.C: remove Buffer * parameter from a bunch of get*Font functions
+
+
+2003-07-26  André Pönitz  <poenitz@gmx.net>
+
+	*	lyxtext.h:
 	* text.C:
 	* text2.C: get rid of LyXText::need_break_row
 

@@ -60,6 +60,8 @@ public:
 	LyXFont current_font;
 	/// the current font
 	LyXFont real_current_font;
+	/// our buffer's default layout font
+	//LyXFont defaultfont_;
 private:
 	/** the 'anchor' row: the position of this row remains constant
 	 *  with respect to the top of the screen
@@ -85,16 +87,13 @@ public:
 	///
 	int getRealCursorX() const;
 	///
-	LyXFont const getFont(Buffer const *, ParagraphList::iterator pit,
-		lyx::pos_type pos) const;
+	LyXFont getFont(ParagraphList::iterator pit, lyx::pos_type pos) const;
 	///
-	LyXFont const getLayoutFont(Buffer const *,
-				    ParagraphList::iterator pit) const;
+	LyXFont getLayoutFont(ParagraphList::iterator pit) const;
 	///
-	LyXFont const getLabelFont(Buffer const *,
-				   ParagraphList::iterator pit) const;
+	LyXFont getLabelFont(ParagraphList::iterator pit) const;
 	///
-	void setCharFont(Buffer const *, ParagraphList::iterator pit,
+	void setCharFont(ParagraphList::iterator pit,
 			 lyx::pos_type pos, LyXFont const & font);
 	void setCharFont(ParagraphList::iterator pit,
 			 lyx::pos_type pos,
@@ -420,7 +419,7 @@ private:
 	float getCursorX(RowList::iterator rit, lyx::pos_type pos,
 			 lyx::pos_type last, bool boundary) const;
 	/// used in setlayout
-	void makeFontEntriesLayoutSpecific(Buffer const &, Paragraph & par);
+	void makeFontEntriesLayoutSpecific(BufferParams const &, Paragraph & par);
 
 	/** forces the redrawing of a paragraph. Needed when manipulating a
 	    right address box

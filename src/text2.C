@@ -92,7 +92,7 @@ void LyXText::init(BufferView * bview)
 	ParagraphList::iterator pit = ownerParagraphs().begin();
 	ParagraphList::iterator end = ownerParagraphs().end();
 
-	current_font = getFont(bview->buffer(), pit, 0);
+	current_font = getFont(pit, 0);
 
 	for (; pit != end; ++pit)
 		insertParagraph(pit, rowlist_.end());
@@ -111,24 +111,25 @@ void LyXText::init(BufferView * bview)
 // smaller. (Asger)
 // If position is -1, we get the layout font of the paragraph.
 // If position is -2, we get the font of the manual label of the paragraph.
-LyXFont const LyXText::getFont(Buffer const * buf, ParagraphList::iterator pit,
-			       pos_type pos) const
+LyXFont LyXText::getFont(ParagraphList::iterator pit, pos_type pos) const
 {
 	Assert(pos >= 0);
 
 	LyXLayout_ptr const & layout = pit->layout();
+#warning broken?
+	BufferParams const & params = bv()->buffer()->params;
 
 	// We specialize the 95% common case:
 	if (!pit->getDepth()) {
 		if (layout->labeltype == LABEL_MANUAL
 		    && pos < pit->beginningOfBody()) {
 			// 1% goes here
-			LyXFont f = pit->getFontSettings(buf->params, pos);
+			LyXFont f = pit->getFontSettings(params, pos);
 			if (pit->inInset())
 				pit->inInset()->getDrawFont(f);
 			return f.realize(layout->reslabelfont);
 		} else {
-			LyXFont f = pit->getFontSettings(buf->params, pos);
+			LyXFont f = pit->getFontSettings(params, pos);
 			if (pit->inInset())
 				pit->inInset()->getDrawFont(f);
 			return f.realize(layout->resfont);
@@ -147,7 +148,7 @@ LyXFont const LyXText::getFont(Buffer const * buf, ParagraphList::iterator pit,
 		layoutfont = layout->font;
 	}
 
-	LyXFont tmpfont = pit->getFontSettings(buf->params, pos);
+	LyXFont tmpfont = pit->getFontSettings(params, pos);
 	tmpfont.realize(layoutfont);
 
 	if (pit->inInset())
@@ -155,13 +156,13 @@ LyXFont const LyXText::getFont(Buffer const * buf, ParagraphList::iterator pit,
 
 	// Realize with the fonts of lesser depth.
 	tmpfont.realize(outerFont(pit, ownerParagraphs()));
+	//tmpfont.realize(defaultfont_);
 
-	return realizeFont(tmpfont, buf->params);
+	return tmpfont;
 }
 
 
-LyXFont const LyXText::getLayoutFont(Buffer const * buf,
-				     ParagraphList::iterator pit) const
+LyXFont LyXText::getLayoutFont(ParagraphList::iterator pit) const
 {
 	LyXLayout_ptr const & layout = pit->layout();
 
@@ -169,16 +170,16 @@ LyXFont const LyXText::getLayoutFont(Buffer const * buf,
 		return layout->resfont;
 	}
 
-	LyXFont font(layout->font);
+	LyXFont font = layout->font;
 	// Realize with the fonts of lesser depth.
 	font.realize(outerFont(pit, ownerParagraphs()));
+	//font.realize(defaultfont_);
 
-	return realizeFont(font, buf->params);
+	return font;
 }
 
 
-LyXFont const LyXText::getLabelFont(Buffer const * buf,
-				    ParagraphList::iterator pit) const
+LyXFont LyXText::getLabelFont(ParagraphList::iterator pit) const
 {
 	LyXLayout_ptr const & layout = pit->layout();
 
@@ -186,11 +187,12 @@ LyXFont const LyXText::getLabelFont(Buffer const * buf,
 		return layout->reslabelfont;
 	}
 
-	LyXFont font(layout->labelfont);
+	LyXFont font = layout->labelfont;
 	// Realize with the fonts of lesser depth.
 	font.realize(outerFont(pit, ownerParagraphs()));
+	//font.realize(defaultfont_);
 
-	return realizeFont(layout->labelfont, buf->params);
+	return font;
 }
 
 
@@ -198,30 +200,27 @@ void LyXText::setCharFont(ParagraphList::iterator pit,
 			  pos_type pos, LyXFont const & fnt,
 			  bool toggleall)
 {
-	Buffer const * buf = bv()->buffer();
-	LyXFont font = getFont(buf, pit, pos);
-	font.update(fnt, buf->params.language, toggleall);
+	BufferParams const & params = bv()->buffer()->params;
+	LyXFont font = getFont(pit, pos);
+	font.update(fnt, params.language, toggleall);
 	// Let the insets convert their font
 	if (pit->isInset(pos)) {
 		InsetOld * inset = pit->getInset(pos);
 		if (isEditableInset(inset)) {
-			UpdatableInset * uinset =
-				static_cast<UpdatableInset *>(inset);
-			uinset->setFont(bv(), fnt, toggleall, true);
+			static_cast<UpdatableInset *>(inset)
+				->setFont(bv(), fnt, toggleall, true);
 		}
 	}
 
-	// Plug thru to version below:
-	setCharFont(buf, pit, pos, font);
+	// Plug through to version below:
+	setCharFont(pit, pos, font);
 }
 
 
-void LyXText::setCharFont(Buffer const * buf, ParagraphList::iterator pit,
-			  pos_type pos, LyXFont const & fnt)
+void LyXText::setCharFont(
+	ParagraphList::iterator pit, pos_type pos, LyXFont const & fnt)
 {
-	LyXFont font(fnt);
-
-	LyXTextClass const & tclass = buf->params.getLyXTextClass();
+	LyXFont font = fnt;
 	LyXLayout_ptr const & layout = pit->layout();
 
 	// Get concrete layout font to reduce against
@@ -244,7 +243,7 @@ void LyXText::setCharFont(Buffer const * buf, ParagraphList::iterator pit,
 		}
 	}
 
-	layoutfont.realize(tclass.defaultfont());
+	//layoutfont.realize(defaultfont_);
 
 	// Now, reduce font against full layout font
 	font.reduce(layoutfont);
@@ -343,7 +342,7 @@ void LyXText::toggleInset()
 
 /* used in setlayout */
 // Asger is not sure we want to do this...
-void LyXText::makeFontEntriesLayoutSpecific(Buffer const & buf,
+void LyXText::makeFontEntriesLayoutSpecific(BufferParams const & params,
 					    Paragraph & par)
 {
 	LyXLayout_ptr const & layout = par.layout();
@@ -356,7 +355,7 @@ void LyXText::makeFontEntriesLayoutSpecific(Buffer const & buf,
 		else
 			layoutfont = layout->font;
 
-		LyXFont tmpfont = par.getFontSettings(buf.params, pos);
+		LyXFont tmpfont = par.getFontSettings(params, pos);
 		tmpfont.reduce(layoutfont);
 		par.setFont(pos, tmpfont);
 	}
@@ -395,7 +394,7 @@ LyXText::setLayout(LyXCursor & cur, LyXCursor & sstart_cur,
 
 	do {
 		pit->applyLayout(lyxlayout);
-		makeFontEntriesLayoutSpecific(*bv()->buffer(), *pit);
+		makeFontEntriesLayoutSpecific(bv()->buffer()->params, *pit);
 		ParagraphList::iterator fppit = pit;
 		fppit->params().spaceTop(lyxlayout->fill_top ?
 					 VSpace(VSpace::VFILL)
@@ -551,11 +550,9 @@ void LyXText::setFont(LyXFont const & font, bool toggleall)
 		// Determine basis font
 		LyXFont layoutfont;
 		if (cursor.pos() < cursor.par()->beginningOfBody()) {
-			layoutfont = getLabelFont(bv()->buffer(),
-						  cursor.par());
+			layoutfont = getLabelFont(cursor.par());
 		} else {
-			layoutfont = getLayoutFont(bv()->buffer(),
-						   cursor.par());
+			layoutfont = getLayoutFont(cursor.par());
 		}
 		// Update current font
 		real_current_font.update(font,
@@ -1615,8 +1612,7 @@ float LyXText::getCursorX(RowList::iterator rit,
 		if (body_pos > 0 && pos == body_pos - 1) {
 			x += fill_label_hfill +
 				font_metrics::width(
-					rit_par->layout()->labelsep,
-					getLabelFont(bv()->buffer(), rit_par));
+					rit_par->layout()->labelsep, getLabelFont(rit_par));
 			if (rit_par->isLineSeparator(body_pos - 1))
 				x -= singleWidth(rit_par, body_pos - 1);
 		}
@@ -1695,9 +1691,8 @@ void LyXText::setCurrentFont()
 			}
 	}
 
-	current_font =
-		pit->getFontSettings(bv()->buffer()->params, pos);
-	real_current_font = getFont(bv()->buffer(), pit, pos);
+	current_font = pit->getFontSettings(bv()->buffer()->params, pos);
+	real_current_font = getFont(pit, pos);
 
 	if (cursor.pos() == pit->size() &&
 	    isBoundary(bv()->buffer(), *pit, cursor.pos()) &&
@@ -1752,8 +1747,7 @@ LyXText::getColumnNearX(RowList::iterator rit, int & x, bool & boundary) const
 		last_tmpx = tmpx;
 		if (body_pos > 0 && c == body_pos - 1) {
 			tmpx += fill_label_hfill +
-				font_metrics::width(layout->labelsep,
-					       getLabelFont(bv()->buffer(), rit_par));
+				font_metrics::width(layout->labelsep, getLabelFont(rit_par));
 			if (rit_par->isLineSeparator(body_pos - 1))
 				tmpx -= singleWidth(rit_par, body_pos - 1);
 		}

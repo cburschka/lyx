@@ -71,9 +71,6 @@ void latexParagraphs(Buffer const * buf,
 /// read a paragraph from a .lyx file. Returns number of unrecognised tokens
 int readParagraph(Buffer & buf, Paragraph & par, LyXLex & lex);
 
-LyXFont const realizeFont(LyXFont const & font,
-			  BufferParams const & params);
-
 LyXFont const outerFont(ParagraphList::iterator pit,
 			ParagraphList const & plist);
 

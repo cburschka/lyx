@@ -1021,13 +1021,3 @@ LyXFont const outerFont(ParagraphList::iterator pit,
 
 	return tmpfont;
 }
-
-
-LyXFont const realizeFont(LyXFont const & font,
-			  BufferParams const & params)
-{
-	LyXTextClass const & tclass = params.getLyXTextClass();
-	LyXFont tmpfont(font);
-	tmpfont.realize(tclass.defaultfont());
-	return tmpfont;
-}
