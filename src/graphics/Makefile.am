@@ -23,4 +23,13 @@ libgraphics_la_SOURCES = \
 	GraphicsLoader.C \
 	$(GRAPHICSIMAGEXPM) GraphicsParams.C \
 	GraphicsParams.h \
-	GraphicsTypes.h
+	GraphicsTypes.h \
+	PreviewImage.h \
+	PreviewImage.C \
+	PreviewLoader.h \
+	PreviewLoader.C \
+	PreviewMetrics.h \
+	PreviewMetrics.C \
+	Previews.h \
+	Previews.C
+

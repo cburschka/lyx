@@ -37,9 +37,9 @@
 #include "graphics/GraphicsImageXPM.h"
 #endif
 
-
+#include "Lsstream.h"
+#include <iomanip>
 #include <fcntl.h>
-
 #include <boost/bind.hpp>
 
 #ifndef CXX_GLOBAL_CSTD
@@ -49,6 +49,9 @@ using std::exit;
 using std::vector;
 using std::hex;
 using std::endl;
+using std::setbase;
+using std::setfill;
+using std::setw;
 
 extern bool finished;
 extern BufferList bufferlist;
@@ -308,3 +311,31 @@ void lyx_gui::init_graphics()
 	Image::loadableFormats = boost::bind(&ImageXPM::loadableFormats);
 #endif
 }
+
+
+string const lyx_gui::hexname(LColor::color col)
+{
+	string const name = lcolor.getX11Name(col);
+	Display * const display = fl_get_display();
+	Colormap const cmap = fl_state[fl_get_vclass()].colormap;
+	XColor xcol, ccol;
+
+	if (XLookupColor(display, cmap, name.c_str(), &xcol, &ccol) == 0) {
+			lyxerr << "X can't find color \""
+			       << lcolor.getLyXName(col)
+			       << "\"" << endl;
+			return string();
+	}
+
+	ostringstream os;
+
+	// Note that X stores the RGB values in the range 0 - 65535
+	// whilst we require them in the range 0 - 255.
+	os << setbase(16) << setfill('0')
+	   << setw(2) << (xcol.red   / 256)
+	   << setw(2) << (xcol.green / 256)
+	   << setw(2) << (xcol.blue  / 256);
+
+	return os.str().c_str();
+}
+

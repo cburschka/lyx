@@ -70,6 +70,8 @@
 
 #include "mathed/formulabase.h"
 
+#include "graphics/Previews.h"
+
 #include "support/LAssert.h"
 #include "support/lstrings.h"
 #include "support/filetools.h"
@@ -238,6 +240,9 @@ void BufferView::Pimpl::buffer(Buffer * b)
 	owner_->updateToolbar();
 	owner_->updateLayoutChoice();
 	owner_->updateWindowTitle();
+
+	if (grfx::Previews::activated() && buffer_)
+		grfx::Previews::get().generateBufferPreviews(buffer_);
 }
 
 

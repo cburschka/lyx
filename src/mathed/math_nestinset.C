@@ -6,8 +6,11 @@
 #include "math_cursor.h"
 #include "math_mathmlstream.h"
 #include "formulabase.h"
+#include "BufferView.h"
 #include "debug.h"
 #include "frontends/Painter.h"
+#include "graphics/PreviewLoader.h"
+#include "graphics/Previews.h"
 
 
 MathNestInset::MathNestInset(idx_type nargs)
@@ -240,6 +243,17 @@ MathArray MathNestInset::glue() const
 void MathNestInset::notifyCursorLeaves()
 {
 	//lyxerr << "leaving " << *this << "\n";
-	if (mathcursor)
-		mathcursor->formula()->updatePreview();
+	if (!mathcursor || !grfx::Previews::activated())
+		return;
+
+	InsetFormulaBase * inset = mathcursor->formula();
+	BufferView * bufferview = inset->view();
+	if (!bufferview || !bufferview->buffer())
+		return;
+
+	grfx::Previews & previews = grfx::Previews::get();
+	grfx::PreviewLoader & loader = previews.loader(bufferview->buffer());
+
+	inset->generatePreview(loader);
+	loader.startLoading();
 }

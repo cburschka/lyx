@@ -1,5 +1,16 @@
 2002-07-05  Angus Leeming  <leeming@lyx.org>
 
+	* BufferView_pimpl.C (buffer): generate previews if desired.
+
+	* LColor.h: add "preview" to the color enum.
+
+	* LColor.C (LColor): add a corresponding entry to the items array.
+
+	* buffer.C (~Buffer): remove any previewed LaTeX snippets assocoated
+	with this buffer.
+
+2002-07-05  Angus Leeming  <leeming@lyx.org>
+
 	* buffer.[Ch] (makeLaTeXFile): create two methods where there was one.
 	The body of the code is now in the method that is passed an ostream &
 	rather than a file name.

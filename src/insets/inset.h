@@ -32,6 +32,9 @@ class LyXCursor;
 
 struct LaTeXFeatures;
 
+namespace grfx {
+	class PreviewLoader;
+}
 
 /// Insets
 class Inset {
@@ -323,6 +326,16 @@ public:
 	   time this is the width of the workarea, but if there is a
 	   minipage somewhere, it will be the width of this minipage */
 	virtual int latexTextWidth(BufferView *) const;
+
+	/** Adds a LaTeX snippet to the Preview Loader for transformation
+	 *  into a bitmap image. Also connects to PreviewLoader::imageReady
+	 *  so that the inset is informed when the image has been generated
+	 *  in order to initiate its loading into LyX.
+	 *
+	 *  Most insets have no interest in this capability, so the method
+	 *  defaults to empty.
+	 */
+	virtual void generatePreview(grfx::PreviewLoader &) const {}
 
 protected:
 	///

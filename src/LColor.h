@@ -77,6 +77,8 @@ public:
 		selection,
 		/// Text color in LaTeX mode
 		latex,
+		/// The color used for previews
+		preview,
 
 		/// Text color for notes
 		note,

@@ -9,11 +9,9 @@
 
 #ifndef LYX_GUI_H
 #define LYX_GUI_H
-
-#include <config.h>
-
-#include "LString.h"
-
+ 
+#include "LColor.h"
+#include "LString.h" 
 #include <vector>
 
 class Dialogs;
@@ -38,6 +36,11 @@ namespace lyx_gui {
 
 	/// initialise graphics
 	void init_graphics();
+
+	/** Eg, passing LColor::black returns "000000",
+	 *      passing LColor::white returns "ffffff".
+	 */
+	string const hexname(LColor::color col);
 }
 
 #endif // LYX_GUI_H

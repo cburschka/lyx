@@ -26,27 +26,36 @@
 #include "math_charinset.h"
 #include "math_arrayinset.h"
 #include "math_deliminset.h"
-#include "lyx_main.h"
-#include "BufferView.h"
-#include "gettext.h"
-#include "debug.h"
-#include "support/LOstream.h"
-#include "support/LAssert.h"
-#include "support/lyxlib.h"
-#include "support/systemcall.h"
-#include "support/filetools.h"
-#include "frontends/Alert.h"
-#include "frontends/LyXView.h"
-#include "frontends/Painter.h"
-#include "graphics/GraphicsImage.h"
-#include "lyxrc.h"
 #include "math_hullinset.h"
 #include "math_support.h"
 #include "math_mathmlstream.h"
 #include "textpainter.h"
 
+#include "lyx_main.h"
+#include "BufferView.h"
+#include "gettext.h"
+#include "debug.h"
+#include "lyxrc.h"
+
+#include "support/LOstream.h"
+#include "support/LAssert.h"
+#include "support/lyxlib.h"
+#include "support/systemcall.h"
+#include "support/filetools.h"
+
+#include "frontends/Alert.h"
+#include "frontends/LyXView.h"
+#include "frontends/Painter.h"
+
+#include "graphics/GraphicsImage.h"
+#include "graphics/PreviewLoader.h"
+#include "graphics/PreviewImage.h"
+#include "graphics/Previews.h"
+
 #include <fstream>
 #include <boost/bind.hpp>
+#include <boost/signals/trackable.hpp>
+#include <boost/signals/connection.hpp>
 #include <boost/utility.hpp>
 
 using std::ostream;
@@ -58,21 +67,57 @@ using std::vector;
 using std::getline;
 
 
+struct InsetFormula::PreviewImpl : public boost::signals::trackable {
+	///
+	PreviewImpl(InsetFormula & p) : parent_(p), pimage_(0) {}
+
+	///
+	void generatePreview(grfx::PreviewLoader & previewer);
+
+	/** This method is connected to the grfx::PreviewLoader::imageReady
+	 *  signal.
+	 */
+	void previewReady(grfx::PreviewImage const &);
+	
+	/// A helper method.
+	string const latexString() const;
+
+	///
+	bool usePreview() const;
+
+	///
+	InsetFormula & parent_;
+	///
+	mutable grfx::PreviewImage const * pimage_;
+	///
+	boost::signals::connection connection_;
+};
+
+
 
 InsetFormula::InsetFormula()
-	: par_(MathAtom(new MathHullInset)), loader_(0)
+	: par_(MathAtom(new MathHullInset)),
+	  preview_(new PreviewImpl(*this))
+{}
+
+
+InsetFormula::InsetFormula(InsetFormula const & other)
+	: par_(other.par_),
+	  preview_(new PreviewImpl(*this))
 {}
 
 
 InsetFormula::InsetFormula(BufferView * bv)
-	: par_(MathAtom(new MathHullInset)), loader_(0)
+	: par_(MathAtom(new MathHullInset)),
+	  preview_(new PreviewImpl(*this))
 {
 	view_ = bv;
 }
 
 
 InsetFormula::InsetFormula(string const & data)
-	: par_(MathAtom(new MathHullInset)), loader_(0)
+	: par_(MathAtom(new MathHullInset)),
+	  preview_(new PreviewImpl(*this))
 {
 	if (!data.size())
 		return;
@@ -80,6 +125,10 @@ InsetFormula::InsetFormula(string const & data)
 		lyxerr << "cannot interpret '" << data << "' as math\n";
 }
 
+
+
+InsetFormula::~InsetFormula()
+{}
 
 
 Inset * InsetFormula::clone(Buffer const &, bool) const
@@ -173,8 +222,9 @@ void InsetFormula::draw(BufferView * bv, LyXFont const & font,
 
 	MathPainterInfo pi(bv->painter());
 
-	if (canPreview()) {
-		pi.pain.image(x + 1, y - a + 1, w - 2, h - 2, *(loader_->image()));
+	if (preview_->usePreview()) {
+		pi.pain.image(x + 1, y - a + 1, w - 2, h - 2, 
+			      *(preview_->pimage_->image()));
 	} else {
 		//pi.base.style = display() ? LM_ST_DISPLAY : LM_ST_TEXT;
 		pi.base.style = LM_ST_TEXT;
@@ -389,26 +439,23 @@ bool InsetFormula::insetAllowed(Inset::Code code) const
 
 int InsetFormula::ascent(BufferView *, LyXFont const &) const
 {
-	const int a = par_->ascent();
-	if (!canPreview())
-		return a + 1;
-	return a + 1 - (par_->height() - loader_->image()->getHeight()) / 2;
+	return preview_->usePreview() ?
+		1 + preview_->pimage_->ascent() : 1 + par_->ascent();
 }
 
 
 int InsetFormula::descent(BufferView *, LyXFont const &) const
 {
-	const int d = par_->descent();
-	if (!canPreview())
-		return d + 1;
-	return d + 1 - (par_->height() - loader_->image()->getHeight()) / 2;
+	return preview_->usePreview() ?
+		1 + preview_->pimage_->descent() : 1 + par_->descent();
 }
 
 
 int InsetFormula::width(BufferView * bv, LyXFont const & font) const
 {
 	metrics(bv, font);
-	return canPreview() ? loader_->image()->getWidth() : par_->width();
+	return preview_->usePreview() ?
+		preview_->pimage_->width() : par_->width();
 }
 
 
@@ -429,79 +476,78 @@ void InsetFormula::mutate(string const & type )
 // preview stuff
 //
 
-bool InsetFormula::canPreview() const
+void InsetFormula::generatePreview(grfx::PreviewLoader & ploader) const
 {
-	return lyxrc.preview && loader_ && !par_->asNestInset()->editing()
-		&& loader_->status() == grfx::Ready;
+	// Do nothing if no preview is desired.
+	if (!grfx::Previews::activated())
+		return;
+
+	preview_->generatePreview(ploader);
 }
 
 
-void InsetFormula::statusChanged()
+void InsetFormula::PreviewImpl::generatePreview(grfx::PreviewLoader & ploader)
 {
-	lyxerr << "### InsetFormula::statusChanged called!, status: "
-		<< loader_->status() << "\n";
-	if (loader_->status() == grfx::Ready)
-		view()->updateInset(this, false);
-	else if (loader_->status() == grfx::WaitingToLoad)
-		loader_->startLoading();
-}
+	// Generate the LaTeX snippet.
+	string const snippet = latexString();
 
-
-void InsetFormula::updatePreview()
-{
-	// nothing to be done if no preview requested
-	lyxerr << "### updatePreview() called\n";
-	if (!lyxrc.preview)
+	pimage_ = ploader.preview(snippet);
+	if (pimage_)
 		return;
 
-	// get LaTeX
-	ostringstream ls;
-	WriteStream wi(ls, false, false);
-	par_->write(wi);
-	string const data = ls.str();
-
-	// the preview cache, maps contents to image loaders
-	typedef std::map<string, boost::shared_ptr<grfx::Loader> > cache_type;
-	static cache_type theCache;
-	static int theCounter = 0;
-
-	// set our loader corresponding to our current data
-	cache_type::const_iterator it = theCache.find(data);
-
-	// is this old data?
-	if (it != theCache.end()) {
-		// we have already a loader, connect to it anyway
-		//lyxerr << "### updatePreview(), old loader: " << loader_ << "\n";
-		loader_ = it->second.get();
-		loader_->statusChanged.connect
-			(boost::bind(&InsetFormula::statusChanged, this));
-		return;
+	// If this is the first time of calling, connect to the
+	// grfx::PreviewLoader signal that'll inform us when the preview image
+	// is ready for loading.
+	if (!connection_.connected()) {
+		connection_ = ploader.imageReady.connect(
+			boost::bind(&PreviewImpl::previewReady, this, _1));
 	}
 
-	// construct new file name
-	static string const dir = OnlyPath(lyx::tempName());
-	ostringstream os;
-	os << dir << theCounter++ << ".lyxpreview";
-	string file = os.str();
+	ploader.add(snippet);
+}
 
-	// the real work starts
-	//lyxerr << "### updatePreview(), new file " << file << "\n";
-	std::ofstream of(file.c_str());
-	of << "\\batchmode"
-		 << "\\documentclass{article}"
-		 << "\\usepackage{amssymb}"
-		 << "\\thispagestyle{empty}"
-		 << "\\pdfoutput=0"
-		 << "\\begin{document}"
-		 << data
-		 << "\\end{document}\n";
-	of.close();
 
-	// now we are done, start actual loading we will get called back via
-	// InsetFormula::statusChanged() if this is finished
-	theCache[data].reset(new grfx::Loader(file));
-	//lyxerr << "### updatePreview(), new loader: " << loader_ << "\n";
-	loader_ = theCache.find(data)->second.get();
-	loader_->startLoading();
-	loader_->statusChanged.connect(boost::bind(&InsetFormula::statusChanged, this));
+bool InsetFormula::PreviewImpl::usePreview() const
+{
+	BufferView * view = parent_.view();
+
+	if (!grfx::Previews::activated() ||
+	    parent_.par_->asNestInset()->editing() ||
+	    !view || !view->buffer())
+		return false;
+
+	// If the cached grfx::PreviewImage is invalid, update it.
+	string const snippet = latexString();
+	if (!pimage_ || snippet != pimage_->snippet()) {
+		grfx::PreviewLoader & ploader =
+			grfx::Previews::get().loader(view->buffer());
+		pimage_ = ploader.preview(snippet);
+	}
+
+	if (!pimage_)
+		return false;
+
+	return pimage_->image();
+}
+
+
+string const InsetFormula::PreviewImpl::latexString() const
+{
+	ostringstream ls;
+	WriteStream wi(ls, false, false);
+	parent_.par_->write(wi);
+	return ls.str().c_str();
+}
+
+
+void InsetFormula::PreviewImpl::previewReady(grfx::PreviewImage const & pimage)
+{
+	// Check snippet against the Inset's current contents
+	if (latexString() != pimage.snippet())
+		return;
+
+	pimage_ = &pimage;
+	BufferView * view = parent_.view();
+	if (view)
+		view->updateInset(&parent_, false);
 }

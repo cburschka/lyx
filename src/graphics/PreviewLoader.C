@@ -1,0 +1,506 @@
+/*
+ *  \file PreviewLoader.C
+ *  Copyright 2002 the LyX Team
+ *  Read the file COPYING
+ *
+ * \author Angus Leeming <a.leeming@ic.ac.uk>
+ */
+
+#include <config.h>
+
+#ifdef __GNUG__
+#pragma implementation
+#endif
+
+#include "PreviewLoader.h"
+#include "PreviewImage.h"
+#include "PreviewMetrics.h"
+
+#include "buffer.h"
+#include "bufferparams.h"
+#include "converter.h"
+#include "debug.h"
+#include "lyxrc.h"
+#include "LColor.h"
+
+#include "insets/inset.h"
+
+#include "frontends/lyx_gui.h" // hexname
+
+#include "support/filetools.h"
+#include "support/forkedcall.h"
+#include "support/lstrings.h"
+#include "support/lyxlib.h"
+
+#include <boost/bind.hpp>
+#include <boost/signals/trackable.hpp>
+
+#include <fstream>
+#include <iomanip>
+#include <map>
+
+using std::endl;
+using std::ofstream;
+using std::ostream;
+using std::setfill;
+using std::setw;
+
+
+namespace {
+
+string const unique_filename()
+{
+	
+	static string dir;
+	if (dir.empty()) {
+		string const tmp = lyx::tempName();
+		lyx::unlink(tmp);
+		dir = OnlyPath(tmp);
+	}
+
+	static int theCounter = 0;
+	ostringstream os;
+	os << dir << theCounter++ << "lyxpreview";
+
+	return os.str().c_str();
+}
+
+} // namespace anon
+
+
+namespace grfx {
+
+struct PreviewLoader::Impl : public boost::signals::trackable {
+	///
+	Impl(PreviewLoader & p, Buffer const & b);
+	///
+	PreviewImage const * preview(string const & latex_snippet) const;
+	///
+	PreviewLoader::Status status(string const & latex_snippet) const;
+	///
+	void add(string const & latex_snippet);
+	///
+	void remove(string const & latex_snippet);
+	///
+	void startLoading();
+
+private:
+	/// Called by the Forkedcall process that generated the bitmap files.
+	void finishedGenerating(string const &, pid_t, int);
+	///
+	void dumpPreamble(ostream &) const;
+	///
+	void dumpData(ostream &) const;
+
+	///
+	static void setConverter();
+	/// We don't own this
+	static Converter const * pconverter_;
+
+	/** The cache allows easy retrieval of already-generated images
+	 *  using the LaTeX snippet as the identifier.
+	 */
+	typedef boost::shared_ptr<PreviewImage> PreviewImagePtr;
+	///
+	typedef std::map<string, PreviewImagePtr> Cache;
+	///
+	Cache cache_;
+
+	/** The map stores the LaTeX snippet and the name of the generated
+	 *  bitmap image file.
+	 */
+	typedef std::map<string, string> PendingMap;
+	///
+	PendingMap pending_;
+
+	/// Store info on a currently executing, forked process.
+	struct InProgress {
+		///
+		typedef std::map<string, string> PendingMap;
+		///
+		InProgress() {}
+		///
+		InProgress(string const & mf, PendingMap const & s)
+			: metrics_file(mf), snippets(s)
+		{}
+		///
+		string metrics_file;
+		///
+		PendingMap snippets;
+	};
+	friend class InProgress;
+	
+	/// Store all forked processes so that we can proceed thereafter.
+	typedef std::map<string, InProgress> InProgressMap;
+	///
+	InProgressMap in_progress_;
+
+	///
+	string filename_base_;
+	///
+	PreviewLoader & parent_;
+	///
+	Buffer const & buffer_;
+};
+
+
+Converter const * PreviewLoader::Impl::pconverter_;
+
+
+PreviewLoader::PreviewLoader(Buffer const & b)
+	: pimpl_(new Impl(*this, b))
+{}
+
+
+PreviewLoader::~PreviewLoader()
+{}
+
+
+PreviewImage const * PreviewLoader::preview(string const & latex_snippet) const
+{
+	return pimpl_->preview(latex_snippet);
+}
+
+
+PreviewLoader::Status PreviewLoader::status(string const & latex_snippet) const
+{
+	return pimpl_->status(latex_snippet);
+}
+
+
+void PreviewLoader::add(string const & latex_snippet)
+{
+	pimpl_->add(latex_snippet);
+}
+
+
+void PreviewLoader::remove(string const & latex_snippet)
+{
+	pimpl_->remove(latex_snippet);
+}
+
+
+void PreviewLoader::startLoading()
+{
+	pimpl_->startLoading();
+}
+
+
+void PreviewLoader::Impl::setConverter()
+{
+	if (pconverter_)
+		return;
+
+	string const from = "lyxpreview";
+
+	Formats::FormatList::const_iterator it  = formats.begin();
+	Formats::FormatList::const_iterator end = formats.end();
+
+	for (; it != end; ++it) {
+		string const to = it->name();
+		if (from == to)
+			continue;
+		Converter const * ptr = converters.getConverter(from, to);
+		if (ptr) {
+			pconverter_ = ptr;
+			break;
+		}
+	}
+
+	if (pconverter_)
+		return;
+
+	static bool first = true;
+	if (!first)
+		return;
+
+	first = false;
+	lyxerr << "PreviewLoader::startLoading()\n"
+	       << "No converter from \"lyxpreview\" format has been defined." 
+	       << endl;
+}
+
+
+PreviewLoader::Impl::Impl(PreviewLoader & p, Buffer const & b)
+	: filename_base_(unique_filename()), parent_(p), buffer_(b)
+{}
+
+
+PreviewImage const *
+PreviewLoader::Impl::preview(string const & latex_snippet) const
+{
+	Cache::const_iterator it = cache_.find(latex_snippet);
+	return (it == cache_.end()) ? 0 : it->second.get();
+}
+
+
+PreviewLoader::Status
+PreviewLoader::Impl::status(string const & latex_snippet) const
+{
+	Cache::const_iterator cit = cache_.find(latex_snippet);
+	if (cit != cache_.end())
+		return PreviewLoader::Ready;
+
+	PendingMap::const_iterator pit = pending_.find(latex_snippet);
+	if (pit != pending_.end())
+		return PreviewLoader::InQueue;
+
+	InProgressMap::const_iterator git  = in_progress_.begin();
+	InProgressMap::const_iterator gend = in_progress_.end();
+
+	for (; git != gend; ++git) {
+		PendingMap::const_iterator pit =
+			git->second.snippets.find(latex_snippet);
+		if (pit != git->second.snippets.end())
+			return PreviewLoader::Processing;
+	}
+
+	return PreviewLoader::NotFound;
+}
+
+
+void PreviewLoader::Impl::add(string const & latex_snippet)
+{
+	if (!pconverter_) {
+		setConverter();
+		if (!pconverter_)
+			return;
+	}
+
+	Cache::const_iterator cit = cache_.find(latex_snippet);
+	if (cit != cache_.end())
+		return;
+
+	PendingMap::const_iterator pit = pending_.find(latex_snippet);
+	if (pit != pending_.end())
+		return;
+
+	int const snippet_counter = int(pending_.size()) + 1;
+	ostringstream os;
+	os << filename_base_
+	   << setfill('0') << setw(3) << snippet_counter
+	   << "." << pconverter_->to;
+	string const image_filename = os.str().c_str();
+
+	pending_[latex_snippet] = image_filename;
+}
+
+
+void PreviewLoader::Impl::remove(string const & latex_snippet)
+{
+	Cache::iterator cit = cache_.find(latex_snippet);
+	if (cit != cache_.end())
+		cache_.erase(cit);
+
+	PendingMap::iterator pit = pending_.find(latex_snippet);
+	if (pit != pending_.end())
+		pending_.erase(pit);
+
+	InProgressMap::iterator git  = in_progress_.begin();
+	InProgressMap::iterator gend = in_progress_.end();
+
+	while (git != gend) {
+		InProgressMap::iterator curr = git;
+		++git;
+
+		PendingMap::iterator pit =
+			curr->second.snippets.find(latex_snippet);
+		if (pit != curr->second.snippets.end())
+			curr->second.snippets.erase(pit);
+
+		if (curr->second.snippets.empty())
+			in_progress_.erase(curr);
+	}
+}
+
+
+void PreviewLoader::Impl::startLoading()
+{
+	if (pending_.empty())
+		return;
+
+	if (!pconverter_) {
+		setConverter();
+		if (!pconverter_)
+			return;
+	}
+
+	lyxerr[Debug::GRAPHICS] << "PreviewLoader::startLoading()" << endl;
+
+	// Output the LaTeX file.
+	string const latexfile = filename_base_ + ".tex";
+
+	ofstream of(latexfile.c_str());
+	dumpPreamble(of);
+	of << "\n\\begin{document}\n";
+	dumpData(of);
+	of << "\n\\end{document}\n";
+	of.close();
+
+	// The conversion command.
+	ostringstream cs;
+	cs << pconverter_->command << " " << latexfile << " "
+	   << tostr(0.01 * lyxrc.dpi * lyxrc.zoom);
+
+	// Store the generation process in a list of all generating processes
+	// (I anticipate that this will be small!)
+	string const command = cs.str().c_str();
+	string const metrics_file = filename_base_ + ".metrics";
+	in_progress_[command] = InProgress(metrics_file, pending_);
+
+	// Reset the filename and clear the data, so we're ready to
+	// start afresh.
+	pending_.clear();
+	filename_base_ = unique_filename();
+
+	// Initiate the conversion from LaTeX to bitmap images files.
+	Forkedcall::SignalTypePtr convert_ptr;
+	convert_ptr.reset(new Forkedcall::SignalType);
+
+	convert_ptr->connect(
+		boost::bind(&Impl::finishedGenerating, this, _1, _2, _3));
+
+	Forkedcall call;
+	int ret = call.startscript(command, convert_ptr);
+
+	if (ret != 0) {
+		InProgressMap::iterator it = in_progress_.find(command);
+		if (it != in_progress_.end())
+			in_progress_.erase(it);
+		
+		lyxerr[Debug::GRAPHICS] << "PreviewLoader::startLoading()\n"
+					<< "Unable to start process \n"
+					<< command << endl;
+	}
+}
+
+
+void PreviewLoader::Impl::finishedGenerating(string const & command,
+					     pid_t /* pid */, int retval)
+{
+	string const status = retval > 0 ? "failed" : "succeeded";
+	lyxerr[Debug::GRAPHICS] << "PreviewLoader::finishedInProgress("
+				<< retval << "): processing " << status
+				<< " for " << command << endl;
+	if (retval > 0)
+		return;
+
+	InProgressMap::iterator git = in_progress_.find(command);
+	if (git == in_progress_.end()) {
+		lyxerr << "PreviewLoader::finishedGenerating(): unable to find "
+			"data for\n"
+		       << command << "!" << endl;
+		return;
+	}
+
+	// Read the metrics file, if it exists
+	PreviewMetrics metrics_file(git->second.metrics_file);
+	
+	// Add these newly generated bitmap files to the cache and
+	// start loading them into LyX.
+	PendingMap::const_iterator it  = git->second.snippets.begin();
+	PendingMap::const_iterator end = git->second.snippets.end();
+
+	int metrics_counter = 0;
+	for (; it != end; ++it) {
+		string const & snip = it->first;
+
+		// Paranoia check
+		Cache::const_iterator chk = cache_.find(snip);
+		if (chk != cache_.end())
+			continue;
+
+		// Mental note (Angus, 4 July 2002, having just found out the
+		// hard way :-().
+		// We /must/ first add to the cache and then start the
+		// image loading process.
+		// If not, then outside functions can be called before by the
+		// image loader before the PreviewImage is properly constucted.
+		// This can lead to all sorts of horribleness if such a
+		// function attempts to access its internals.
+		string const & file = it->second;
+		double af = metrics_file.ascent_fraction(metrics_counter++);
+		PreviewImagePtr ptr(new PreviewImage(parent_, snip, file, af));
+
+		cache_[snip] = ptr;
+
+		ptr->startLoading();
+	}
+
+	in_progress_.erase(git);
+}
+
+
+void PreviewLoader::Impl::dumpPreamble(ostream & os) const
+{
+	// Why on earth is Buffer::makeLaTeXFile a non-const method?
+	Buffer & tmp = const_cast<Buffer &>(buffer_);
+	// Dump the preamble only.
+	tmp.makeLaTeXFile(os, string(), true, false, true);
+
+	// Loop over the insets in the buffer and dump all the math-macros.
+	Buffer::inset_iterator it  = buffer_.inset_const_iterator_begin();
+	Buffer::inset_iterator end = buffer_.inset_const_iterator_end();
+
+	for (; it != end; ++it) {
+		if ((*it)->lyxCode() == Inset::MATHMACRO_CODE) {
+			(*it)->latex(&buffer_, os, true, true);
+		}
+	}
+
+	// Use the preview style file to ensure that each snippet appears on a
+	// fresh page.
+	os << "\n"
+	   << "\\usepackage[active,dvips,tightpage]{preview}\n"
+	   << "\n";
+
+	// This piece of PostScript magic ensures that the foreground and
+	// background colors are the same as the LyX screen.
+	string fg = lyx_gui::hexname(LColor::preview);
+	if (fg.empty()) fg = "000000";
+
+	string bg = lyx_gui::hexname(LColor::background);
+	if (bg.empty()) bg = "ffffff";
+	
+	os << "\\AtBeginDocument{\\AtBeginDvi{%\n"
+	   << "\\special{!userdict begin/bop-hook{//bop-hook exec\n"
+	   << "<" << fg << bg << ">{255 div}forall setrgbcolor\n"
+	   << "clippath fill setrgbcolor}bind def end}}}\n";
+}
+
+
+namespace {
+
+typedef std::pair<string, string> StrPair;
+
+struct CompSecond {
+	bool operator()(StrPair const & lhs, StrPair const & rhs)
+	{
+		return lhs.second < rhs.second;
+	}
+};
+
+} // namespace anon
+
+
+void PreviewLoader::Impl::dumpData(ostream & os) const
+{
+	if (pending_.empty())
+		return;
+
+	// Sorting by image filename ensures that the snippets are put into
+	// the LaTeX file in the expected order.
+	std::vector<StrPair> vec(pending_.begin(), pending_.end());
+	std::sort(vec.begin(), vec.end(), CompSecond());
+	
+	std::vector<StrPair>::const_iterator it  = vec.begin();
+	std::vector<StrPair>::const_iterator end = vec.end();
+
+	for (; it != end; ++it) {
+		os << "\\begin{preview}\n"
+		   << it->first 
+		   << "\n\\end{preview}\n\n";
+	}
+}
+
+} // namespace grfx

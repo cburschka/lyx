@@ -1,5 +1,18 @@
 2002-07-05  Angus Leeming  <leeming@lyx.org>
 
+	* PreviewImage.h:
+	* PreviewImage.C:
+	* PreviewLoader.h:
+	* PreviewLoader.C:
+	* PreviewMetrics.h:
+	* PreviewMetrics.C:
+	* Previews.h:
+	* Previews.C: new files. The previewed LaTeX snippet stuff.
+
+	* Makefile.am: add these files.
+
+2002-07-05  Angus Leeming  <leeming@lyx.org>
+
 	* GraphicsLoader.h: whitespace.
 
 2002-07-04  Lars Gullik Bjønnes  <larsbj@birdstep.com>

@@ -23,8 +23,8 @@
 
 #include "formulabase.h"
 #include "math_atom.h"
-#include "graphics/GraphicsTypes.h"
-#include "graphics/GraphicsLoader.h"
+
+#include <boost/scoped_ptr.hpp>
 
 class MathHullInset;
 
@@ -37,6 +37,10 @@ public:
 	explicit InsetFormula(BufferView *);
 	///
 	explicit InsetFormula(const string & data);
+	///
+	InsetFormula(InsetFormula const &);
+	///
+	~InsetFormula();
 	///
 	int ascent(BufferView *, LyXFont const &) const;
 	///
@@ -78,6 +82,8 @@ public:
 	///
 	MathAtom & par() { return par_; }
 	///
+	void generatePreview(grfx::PreviewLoader &) const;
+	///
 	void mutate(string const & type);
 
 private:
@@ -91,16 +97,14 @@ private:
 	MathHullInset const * hull() const;
 	///
 	void handleExtern(string const & arg);
-	///
-	void statusChanged();
-	///
-	void updatePreview();
-	///
-	bool canPreview() const;
 
 	/// contents
 	MathAtom par_;
-	/// non owning pointer
-	mutable grfx::Loader * loader_;
+
+	/// Use the Pimpl idiom to hide the internals of the previewer.
+	class PreviewImpl;
+	friend class PreviewImpl;
+	/// The pointer never changes although *preview_'s contents may.
+	boost::scoped_ptr<PreviewImpl> const preview_;
 };
 #endif

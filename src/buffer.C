@@ -83,6 +83,8 @@
 #include "frontends/Dialogs.h"
 #include "frontends/Alert.h"
 
+#include "graphics/Previews.h"
+
 #include "support/textutils.h"
 #include "support/filetools.h"
 #include "support/path.h"
@@ -194,6 +196,9 @@ Buffer::~Buffer()
 		par = tmppar;
 	}
 	paragraph = 0;
+
+	// Remove any previewed LaTeX snippets assocoated with this buffer.
+	grfx::Previews::get().removeLoader(this);
 }
 
 
