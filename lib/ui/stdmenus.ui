@@ -317,14 +317,14 @@ Menuset
 #
  
 	Menu "document"
+		Submenu "Change tracking|C" "edit_change"
 		OptItem "Build Program|B" "build-program"
 		Item "LaTeX Log File...|L" "latex-view-log"
 		Item "Table of Contents...|T" "toc-view"
-		Separator
-		Submenu "Change tracking|C" "edit_change"
 		Item "LaTeX Preamble...|P" "layout-preamble"
-		Item "Settings...|S" "layout-document"
 		Item "Start Appendix Here|A" "appendix"
+		Separator
+		Item "Settings...|S" "layout-document"
 	End
  
 	Menu "edit_change"
@@ -363,15 +363,14 @@ Menuset
 		Item "Spellchecker...|S" "spellchecker"
 		OptItem "Thesaurus...|T" "thesaurus-entry"
 		OptItem "Check TeX|h" "buffer-chktex"
-		Separator
 		Item "View Child Processes...|C" "show-forks"
 		Item "TeX Information...|I" "help-Texinfo"
 		Separator
 # A LOT of applications have Tools->Prefs. Remember this
 # should be rarely used - Edit menu is not a good place to
 # have it.
-		Item "Preferences...|P" "dialog-preferences"
 		Item "Reconfigure|R" "reconfigure"
+		Item "Preferences...|P" "dialog-preferences"
 	End
  
 #
