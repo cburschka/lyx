@@ -1,3 +1,8 @@
+2001-03-01  Juergen Vigna  <jug@sad.it>
+
+	* src/insets/insettext.C (SetFont): don't call Undo on a simple
+	setfont without selection (as it is done in LyXText).
+
 2001-02-11  José Matos  <jamatos@fep.up.pt>
 
 	* buffer.C (makeDocBookFile): command styles now have a parameter as

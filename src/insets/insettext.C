@@ -1364,7 +1364,8 @@ UpdatableInset * InsetText::GetFirstLockingInsetOfType(Inset::Code c)
 
 void InsetText::SetFont(BufferView * bv, LyXFont const & font, bool toggleall)
 {
-    bv->text->SetUndo(bv->buffer(), Undo::EDIT,
+    if (TEXT(bv)->selection) {
+	bv->text->SetUndo(bv->buffer(), Undo::EDIT,
 #ifndef NEW_INSETS
 	      bv->text->cursor.par()->ParFromPos(bv->text->cursor.pos())->previous,
 	      bv->text->cursor.par()->ParFromPos(bv->text->cursor.pos())->next
@@ -1372,7 +1373,8 @@ void InsetText::SetFont(BufferView * bv, LyXFont const & font, bool toggleall)
 	      bv->text->cursor.par()->previous,
 	      bv->text->cursor.par()->next
 #endif
-	    );
+	);
+    }
     TEXT(bv)->SetFont(bv, font, toggleall);
     bv->fitCursor(TEXT(bv));
     UpdateLocal(bv, CURSOR_PAR, true);
