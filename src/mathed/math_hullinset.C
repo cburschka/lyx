@@ -442,6 +442,8 @@ void MathHullInset::appendRow()
 
 void MathHullInset::delRow(row_type row)
 {
+	if (nrows() <= 1)
+		return;
 	MathGridInset::delRow(row);
 	nonum_.erase(nonum_.begin() + row);
 	label_.erase(label_.begin() + row);
@@ -480,6 +482,8 @@ void MathHullInset::addCol(col_type col)
 
 void MathHullInset::delCol(col_type col)
 {
+	if (ncols() <= 1)
+		return;
 	switch (getType()) {
 		case LM_OT_ALIGNAT:
 		case LM_OT_XALIGNAT:

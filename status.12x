@@ -20,7 +20,7 @@ What's new
 
 LyX 1.2.1 is a maintenance release which fixes many bugs in version
 1.2.0. We hope in this way to enhance world happiness, allowing the
-developpers to continue busily to prepare the next major release
+developers to continue busily to prepare the next major release
 1.3.0. There are a lot of fixes in there, and upgrading is highly
 recommended.
 
@@ -36,17 +36,17 @@ recommended.
 
 - revert to the old behaviour when creating new floats (figure,
   table...): the empty paragraph in the float now is a caption. It
-  seems that 1.2.0 behaviour was confusing to many people
+  seems that 1.2.0 behaviour was confusing too many people
 
-- when the cursor is inside a collapsable inset, `Edit>Open/close
+- when the cursor is inside a collapsible inset, `Edit>Open/close
   float' will leave it after the inset after closing it (this should
   help entering of ERT insets)
 
-- update finnish, danish, french and russian localizations
+- update Finnish, Danish, French and Russian localizations
 
 - update Tutorial to 1.2.x features
 
-- better support for entering cyrillic and greek alphabets
+- better support for entering Cyrillic and Greek alphabets
 
 - cleanup shortcuts for section layouts. Starred versions are now
   obtained by prepending a * to the section number (M-p asterisk 0, ...,
@@ -57,15 +57,15 @@ recommended.
 - support the numpad direction keys as equivalent to normal cursor
   keys
 
-- it is now possible to specify a non-existant file name on the command
+- it is now possible to specify a non-existent file name on the command
   line and have this file created for you
 
 - new class cl2emult; update template for IEEEtran; small update to
   heb-article and hollywood textclasses
 
-** Bugfixes
+** Bug fixes
 
-- fix positionning of cursor after undo
+- fix positioning of cursor after undo
 
 - fix bug where error insets were not correctly removed
 
@@ -75,7 +75,7 @@ recommended.
 
 - fix opening of a bibitem inset in a RTL paragraph
 
-- do not open/collapse collapsable insets on mouse button 3
+- do not open/collapse collapsible insets on mouse button 3
 
 - fix a crash when using iso10646-1 encoding
 
@@ -90,7 +90,7 @@ recommended.
 - save preamble too when using 'save as document defaults' in document
   layout dialog
 
-- fix startup of LyX when turkish locale is in effect
+- fix startup of LyX when Turkish locale is in effect
 
 - fix latex output when there is a font change around a float or a
   tabular (this fixes compatibility with some 1.1.6 files)
@@ -150,9 +150,12 @@ recommended.
 - fix bug where cursor would jump when inserting fractions of
   superscripts in a math formula
 
-- fix key bindings for super/subscripts in maths
+- fix crash when trying to remove the only row or column in a math
+  array
 
-- fix key bindings for greek letters Lambda and Psi in maths
+- fix key bindings for super/subscripts in math
+
+- fix key bindings for Greek letters Lambda and Psi in math
 
 - fix access to minibuffer via M-x for sciword bindings
 
@@ -187,7 +190,7 @@ recommended.
 
 - fix latex import when using --with-version-suffix configure flag
 
-- make latex import script (reLyX) honor the LYX_DIR_12x envirnment
+- make latex import script (reLyX) honor the LYX_DIR_12x environment
   variable, like the rest of LyX
 
 - honor --with-extra-XXX when searching for AikSaurus library
