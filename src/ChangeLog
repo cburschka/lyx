@@ -4,6 +4,9 @@
 	in NEW_INSETS
 	(redoDrawingOfParagraph): ditto
 	(redoParagraphs): ditto
+	(cutSelection): don't create a object for CutAndPaste use the
+	static method directly
+	(pasteSelection): ditto
 
 	* bufferview_funcs.[Ch]: move ProhibitInput and AllowInput to
 	LyXview (+ rename)

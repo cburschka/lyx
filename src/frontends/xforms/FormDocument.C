@@ -382,8 +382,7 @@ bool FormDocument::class_apply()
 			// successfully loaded
 			redo = true;
 			setMinibuffer(lv_, _("Converting document to new document class..."));
-			CutAndPaste cap;
-			int ret = cap.SwitchLayoutsBetweenClasses(
+			int ret = CutAndPaste::SwitchLayoutsBetweenClasses(
 			    params.textclass, new_class,
 			    lv_->buffer()->paragraph);
 			if (ret) {

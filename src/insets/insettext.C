@@ -993,9 +993,8 @@ InsetText::localDispatch(BufferView * bv,
 	}
 	case LFUN_PASTE:
 		if (!autoBreakRows) {
-			CutAndPaste cap;
 
-			if (cap.nrOfParagraphs() > 1) {
+			if (CutAndPaste::nrOfParagraphs() > 1) {
 				WriteAlert(_("Impossible operation"),
 						   _("Cannot include more than one paragraph!"),
 						   _("Sorry."));

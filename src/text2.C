@@ -1708,22 +1708,20 @@ void LyXText::cutSelection(BufferView * bview, bool doclear)
 		selection.start.par()->previous(),
 		undoendpar);
     
-	CutAndPaste cap;
-
 	// there are two cases: cut only within one paragraph or
 	// more than one paragraph
 	if (selection.start.par() == selection.end.par()) {
 		// only within one paragraph
 		endpar = selection.end.par();
 		int pos = selection.end.pos();
-		cap.cutSelection(selection.start.par(), &endpar,
+		CutAndPaste::cutSelection(selection.start.par(), &endpar,
 				 selection.start.pos(), pos,
 				 bview->buffer()->params.textclass, doclear);
 		selection.end.pos(pos);
 	} else {
 		endpar = selection.end.par();
 		int pos = selection.end.pos();
-		cap.cutSelection(selection.start.par(), &endpar,
+		CutAndPaste::cutSelection(selection.start.par(), &endpar,
 				 selection.start.pos(), pos,
 				 bview->buffer()->params.textclass, doclear);
 		cursor.par(endpar);
@@ -1778,9 +1776,7 @@ void LyXText::copySelection(BufferView * bview)
 		   || selection.start.pos() < selection.end.pos()))
 		selection.start.pos(selection.start.pos() + 1); 
 
-	CutAndPaste cap;
-
-	cap.copySelection(selection.start.par(), selection.end.par(),
+	CutAndPaste::copySelection(selection.start.par(), selection.end.par(),
 			  selection.start.pos(), selection.end.pos(),
 			  bview->buffer()->params.textclass);
 }
@@ -1788,10 +1784,8 @@ void LyXText::copySelection(BufferView * bview)
 
 void LyXText::pasteSelection(BufferView * bview)
 {
-	CutAndPaste cap;
-
 	// this does not make sense, if there is nothing to paste
-	if (!cap.checkPastePossible(cursor.par()))
+	if (!CutAndPaste::checkPastePossible(cursor.par()))
 		return;
 
 	setUndo(bview->buffer(), Undo::INSERT,
@@ -1802,7 +1796,7 @@ void LyXText::pasteSelection(BufferView * bview)
 	Paragraph * actpar = cursor.par();
 
 	int pos = cursor.pos();
-	cap.pasteSelection(&actpar, &endpar, pos,
+	CutAndPaste::pasteSelection(&actpar, &endpar, pos,
 			   bview->buffer()->params.textclass);
     
 	redoParagraphs(bview, cursor, endpar);

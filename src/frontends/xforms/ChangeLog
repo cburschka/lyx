@@ -1,5 +1,8 @@
 2001-07-03  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
+	* FormDocument.C (class_apply): call CutAndPaste::'s staitc method
+	directly. 
+
 	* Toolbar_pimpl.h: make owner be a XFormsView, small changes
 	because of this.
 
