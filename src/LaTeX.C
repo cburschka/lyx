@@ -32,6 +32,7 @@
 #include "support/systemcall.h"
 #include "support/os.h"
 #include "support/path.h"
+#include <cstdio>  // sscanf
 
 using std::ifstream;
 using std::getline;
