@@ -1,3 +1,8 @@
+2002-01-17  Juergen Vigna  <jug@sad.it>
+
+	* insettext.C (draw): width() function was called without setting
+	the right top_x which could lead to wrong insetWidth setting!
+
 2002-01-16  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* insetbib.C (getFiles): uncomment Path variable.

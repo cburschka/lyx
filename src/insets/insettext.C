@@ -350,15 +350,13 @@ void InsetText::draw(BufferView * bv, LyXFont const & f,
 	int old_x = top_x;
 	if (top_x != int(x)) {
 		top_x = int(x);
+		topx_set = true;
 		int nw = getMaxWidth(bv, this);
 		if (nw > 0 && old_max_width != nw) {
 			need_update = INIT;
 			old_max_width = nw;
 			bv->text->status(bv, LyXText::CHANGED_IN_DRAW);
-			topx_set = true;
 			return;
-		} else {
-			top_x = old_x;
 		}
 	}
 
@@ -370,15 +368,11 @@ void InsetText::draw(BufferView * bv, LyXFont const & f,
 
 	// repaint the background if needed
 	if (cleared && backgroundColor() != LColor::background) {
-		top_x = int(x);
 		clearInset(bv, baseline, cleared);
-		top_x = old_x;
 	}
 
 	// no draw is necessary !!!
 	if ((drawFrame_ == LOCKED) && !locked && !par->size()) {
-		top_x = int(x);
-		topx_set = true;
 		top_baseline = baseline;
 		x += width(bv, f);
 		if (need_update & CLEAR_FRAME)
@@ -392,15 +386,15 @@ void InsetText::draw(BufferView * bv, LyXFont const & f,
 		x += static_cast<float>(scroll());
 
 	// if top_x differs we did it already
-	if (!cleared && (top_x == int(x))
+	if (!cleared && (old_x == int(x))
 	    && ((need_update&(INIT|FULL)) || (top_baseline != baseline)
-		||(last_drawn_width != insetWidth))) {
+		||(last_drawn_width != insetWidth)))
+	{
 		// Condition necessary to eliminate bug 59 attachment 37
-		if (baseline > 0) clearInset(bv, baseline, cleared);
+		if (baseline > 0)
+			clearInset(bv, baseline, cleared);
 	}
 
-	top_x = int(x);
-	topx_set = true;
 	if (cleared)
 		frame_is_visible = false;
 
