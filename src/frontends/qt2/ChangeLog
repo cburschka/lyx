@@ -1,3 +1,20 @@
+2002-01-25  Edwin Leuven  <leuven@fee.uva.nl>
+
+	* Makefile.am:
+	* Dialogs.C:
+	* Makefile.dialogs:
+	* QFloat.h:
+	* QFloat.C:
+	* QFloatDialog.h:
+	* QFloatDialog.C:
+	* ui/QFloatDialog.ui: add float dialog
+
+2002-01-25  John Levon  <moz@compsoc.man.ac.uk>
+
+	* Makefile.am:
+	* Makefile.dialogs: don't compile QPar/Doc
+	  for now, as they cause problems
+ 
 2002-01-20  John Levon  <moz@compsoc.man.ac.uk>
 
 	* Makefile.am:

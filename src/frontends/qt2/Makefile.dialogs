@@ -6,16 +6,15 @@ DIALOGS = \
 	QBibtex \
 	QCharacter \
 	QCitation \
-	QDocument \
 	QError \
 	QERT \
 	QExternal \
+	QFloat \
 	QGraphics \
 	QInclude \
 	QIndex \
 	QLog \
 	QMinipage \
-	QParagraph \
 	QPreamble \
 	QPrint \
 	QRef \
@@ -39,14 +38,14 @@ DIALOGSOURCES = \
 	QCharacter.C QCharacterDialog.C \
 	QCitation.h QCitationDialog.h \
 	QCitation.C QCitationDialog.C \
-	QDocument.h QDocumentDialog.h \
-	QDocument.C QDocumentDialog.C \
 	QError.h QErrorDialog.h \
 	QError.C QErrorDialog.C \
 	QERT.h QERTDialog.h \
 	QERT.C QERTDialog.C \
 	QExternal.h QExternalDialog.h \
 	QExternal.C QExternalDialog.C \
+	QFloat.h QFloatDialog.h \
+	QFloat.C QFloatDialog.C \
 	QGraphics.h QGraphicsDialog.h \
 	QGraphics.C QGraphicsDialog.C \
 	QInclude.h QIncludeDialog.h \
@@ -57,8 +56,6 @@ DIALOGSOURCES = \
 	QLog.C QLogDialog.C \
 	QMinipage.h QMinipageDialog.h \
 	QMinipage.C QMinipageDialog.C \
-	QParagraph.h QParagraphDialog.h \
-	QParagraph.C QParagraphDialog.C \
 	QPreamble.h QPreambleDialog.h \
 	QPreamble.C QPreambleDialog.C \
 	QPrint.h QPrintDialog.h \
@@ -88,16 +85,15 @@ MOCDIALOGS = \
 	QBibtexDialog_moc.C \
 	QCharacterDialog_moc.C \
 	QCitationDialog_moc.C \
-	QDocumentDialog_moc.C \
 	QErrorDialog_moc.C \
 	QERTDialog_moc.C \
 	QExternalDialog_moc.C \
+	QFloatDialog_moc.C \
 	QGraphicsDialog_moc.C \
 	QIncludeDialog_moc.C \
 	QIndexDialog_moc.C \
 	QLogDialog_moc.C \
 	QMinipageDialog_moc.C \
-	QParagraphDialog_moc.C \
 	QPreambleDialog_moc.C \
 	QPrintDialog_moc.C \
 	QRefDialog_moc.C \
@@ -121,14 +117,14 @@ UIDIALOGS = \
 	QCharacterDialogBase.C \
 	QCitationDialogBase.h \
 	QCitationDialogBase.C \
-	QDocumentDialogBase.h \
-	QDocumentDialogBase.C \
 	QErrorDialogBase.C \
 	QErrorDialogBase.h \
 	QERTDialogBase.C \
 	QERTDialogBase.h \
 	QExternalDialogBase.C \
 	QExternalDialogBase.h \
+	QFloatDialogBase.C \
+	QFloatDialogBase.h \
 	QGraphicsDialogBase.C \
 	QGraphicsDialogBase.h \
 	QIncludeDialogBase.h \
@@ -139,8 +135,6 @@ UIDIALOGS = \
 	QLogDialogBase.C \
 	QMinipageDialogBase.h \
 	QMinipageDialogBase.C \
-	QParagraphDialogBase.h \
-	QParagraphDialogBase.C \
 	QPreambleDialogBase.h \
 	QPreambleDialogBase.C \
 	QPrintDialogBase.h \
@@ -170,16 +164,15 @@ UIMOCDIALOGS = \
 	QBibtexDialogBase_moc.C \
 	QCharacterDialogBase_moc.C \
 	QCitationDialogBase_moc.C \
-	QDocumentDialogBase_moc.C \
 	QErrorDialogBase_moc.C \
 	QERTDialogBase_moc.C \
 	QExternalDialogBase_moc.C \
+	QFloatDialogBase_moc.C \
 	QGraphicsDialogBase_moc.C \
 	QIncludeDialogBase_moc.C \
 	QIndexDialogBase_moc.C \
 	QLogDialogBase_moc.C \
 	QMinipageDialogBase_moc.C \
-	QParagraphDialogBase_moc.C \
 	QPreambleDialogBase_moc.C \
 	QPrintDialogBase_moc.C \
 	QRefDialogBase_moc.C \
@@ -191,6 +184,8 @@ UIMOCDIALOGS = \
 	QTocDialogBase_moc.C \
 	QURLDialogBase_moc.C \
 	QVCLogDialogBase_moc.C
+
+
 
 
 

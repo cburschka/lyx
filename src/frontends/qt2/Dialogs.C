@@ -20,6 +20,7 @@
 #include "QErrorDialog.h"
 #include "QERTDialog.h"
 #include "QExternalDialog.h"
+#include "QFloatDialog.h"
 #include "QGraphicsDialog.h"
 #include "QIncludeDialog.h"
 #include "QIndexDialog.h"
@@ -45,6 +46,7 @@
 #include "QError.h"
 #include "QERT.h"
 #include "QExternal.h"
+#include "QFloat.h"
 #include "QGraphics.h"
 #include "QInclude.h"
 #include "QIndex.h"
@@ -73,8 +75,6 @@
 #include "xforms/FormBrowser.h"
 #include "xforms/form_browser.h"
 #include "xforms/FormDocument.h"
-#include "xforms/FormFloat.h"
-#include "xforms/form_float.h"
 #include "xforms/FormMathsPanel.h"
 #include "xforms/FormParagraph.h"
 #include "xforms/FormPreferences.h"
@@ -98,6 +98,7 @@ Dialogs::Dialogs(LyXView * lv)
 	add(new GUIError<QError, Qt2BC>(*lv, *this));
 	add(new GUIERT<QERT, Qt2BC>(*lv, *this));
 	add(new GUIExternal<QExternal, Qt2BC>(*lv, *this));
+	add(new GUIFloat<QFloat, Qt2BC>(*lv, *this));
 	add(new GUIGraphics<QGraphics, Qt2BC>(*lv, *this));
 	add(new GUIInclude<QInclude, Qt2BC>(*lv, *this));
 	add(new GUIIndex<QIndex, Qt2BC>(*lv, *this));
@@ -116,7 +117,6 @@ Dialogs::Dialogs(LyXView * lv)
 	add(new GUIVCLog<QVCLog, Qt2BC>(*lv, *this));
 
 	// dialogs not yet converted
-	add(new GUIFloat<FormFloat, xformsBC>(*lv, *this));
 	add(new GUIShowFile<FormShowFile, xformsBC>(*lv, *this));
 
 	// dialogs not yet MVCd

@@ -43,7 +43,7 @@ void QTexinfo::build_dialog()
 	bc().setCancel(dialog_->closePB);
 }
 
- 
+
 void QTexinfo::updateStyles(ControlTexinfo::texFileSuffix whichStyle)
 {
 	bool const withFullPath = dialog_->path->isChecked();
@@ -61,6 +61,7 @@ void QTexinfo::updateStyles(ControlTexinfo::texFileSuffix whichStyle)
 	activeStyle = whichStyle;
 }
 
+ 
 void QTexinfo::updateStyles()
 {
 	updateStyles(activeStyle);

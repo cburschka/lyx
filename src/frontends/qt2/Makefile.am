@@ -18,7 +18,6 @@ libqt2_la_LIBADD = \
 	ui/libqt2ui.la \
 	moc/libqt2moc.la \
 	ui/moc/libqt2uimoc.la \
-	../controllers/ButtonControllerBase.lo \
 	../xforms/combox.lo \
 	../xforms/Alert_pimpl.lo \
 	../xforms/Color.lo \
@@ -26,7 +25,6 @@ libqt2_la_LIBADD = \
 	../xforms/FormBase.lo \
 	../xforms/FormBaseDeprecated.lo	\
 	../xforms/FormBrowser.lo \
-	../xforms/FormFloat.lo \
 	../xforms/FormMathsBitmap.lo \
 	../xforms/FormMathsDeco.lo \
 	../xforms/FormMathsDelim.lo \
@@ -47,7 +45,6 @@ libqt2_la_LIBADD = \
 	../xforms/bmtable.lo \
 	../xforms/form_browser.lo \
 	../xforms/form_document.lo \
-	../xforms/form_float.lo \
 	../xforms/form_preferences.lo \
 	../xforms/form_tabular.lo \
 	../xforms/form_maths_deco.lo \
@@ -61,7 +58,7 @@ libqt2_la_LIBADD = \
 	../xforms/xformsBC.lo \
 	../xforms/xforms_helpers.lo \
 	@LYX_LIBS@ @FRONTEND_LDFLAGS@ @FRONTEND_LIBS@
-
+ 
 LIBS=
 #LDFLAGS= $(libqt2_la_OBJADD)
 ETAGS_ARGS = --lang=c++
