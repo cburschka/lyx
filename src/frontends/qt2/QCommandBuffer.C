@@ -51,7 +51,6 @@ QCommandBuffer::QCommandBuffer(QtView * view, ControlCommandBuffer & control)
 	edit_->show();
 	setStretchableWidget(edit_);
  
-	setMinimumSize(sizeHint()); 
 	show();
  
 	connect(edit_, SIGNAL(escapePressed()), this, SLOT(cancel()));
