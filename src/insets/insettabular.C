@@ -455,8 +455,13 @@ void InsetTabular::doDispatch(LCursor & cur, FuncRequest & cmd)
 			break;
 		}
 
-		//if (cmd.button() == mouse_button::button2)
-		//	dispatch(cur, FuncRequest(LFUN_PASTESELECTION, "paragraph"));
+		if (cmd.button() == mouse_button::button2) {
+			// FIXME: pasting multiple cells (with insettabular's own
+			// LFUN_PASTESELECTION still does not work! (jspitzm)
+			cmd = FuncRequest(LFUN_PASTESELECTION, "paragraph");
+			cell(cur.idx())->dispatch(cur, cmd);
+			break;
+		}
 
 		// we'll pop up the table dialog on release
 		if (cmd.button() == mouse_button::button3)
@@ -623,10 +628,14 @@ void InsetTabular::doDispatch(LCursor & cur, FuncRequest & cmd)
 	}
 
 	case LFUN_CUT:
-		if (copySelection(cur)) {
-			recordUndo(cur, Undo::DELETE);
-			cutSelection(cur);
+		if (tablemode(cur)) {
+			if (copySelection(cur)) {
+				recordUndo(cur, Undo::DELETE);
+				cutSelection(cur);
+			}
 		}
+		else
+			cell(cur.idx())->dispatch(cur, cmd);
 		break;
 
 	case LFUN_BACKSPACE:
@@ -641,8 +650,11 @@ void InsetTabular::doDispatch(LCursor & cur, FuncRequest & cmd)
 	case LFUN_COPY:
 		if (!cur.selection())
 			break;
-		finishUndo();
-		copySelection(cur);
+		if (tablemode(cur)) {
+			finishUndo();
+			copySelection(cur);
+		} else
+			cell(cur.idx())->dispatch(cur, cmd);
 		break;
 
 	case LFUN_PASTESELECTION: {

@@ -1,5 +1,9 @@
 2005-03-17  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
+	* insettabular.C (doDispatch): get middle mouse button back again
+	(partially), pass LFUN_CUT and LFUN_PASTE to insettext's dispatch
+	when only a part of the cell is selected (fix bug 1799)
+	
 	* insettabular.C: handle some more character attributes in 
 	M. Vermeers method (when multiple cells in tables are selected); 
 	disable some more senseless lfuns when multiple cells are selected 
