@@ -57,6 +57,10 @@ public:
 	std::auto_ptr<InsetBase> clone() const;
 	///
 	InsetBase::Code lyxCode() const { return MATHMACRO_CODE; }
+	///
+	std::string const & getInsetName() const { return name_; }
+	///
+	EDITABLE editable() const { return HIGHLY_EDITABLE; }
 private:
 	///
 	MathAtom & tmpl() const;

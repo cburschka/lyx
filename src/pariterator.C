@@ -8,9 +8,7 @@
  * Full author contact details are available in file CREDITS.
  */
 
-
 #include <config.h>
-
 
 #include "pariterator.h"
 
@@ -21,6 +19,7 @@
 #include "insets/inset.h"
 
 using lyx::par_type;
+
 
 ///
 /// ParIterator
@@ -56,6 +55,7 @@ ParIterator & ParIterator::operator++()
 
 ParIterator & ParIterator::operator--()
 {
+#warning look here
 //	DocIterator::backwardPar();
 	return *this;
 }
@@ -102,13 +102,15 @@ bool operator!=(ParIterator const & iter1, ParIterator const & iter2)
 	return !(iter1 == iter2);
 }
 
-DocIterator
-makeDocIterator(ParIterator const & par, lyx::pos_type pos)
+
+DocIterator makeDocIterator(ParIterator const & par, lyx::pos_type pos)
 {
 	DocIterator dit(par);
 	dit.pos() = pos;
 	return dit;
 }
+
+
 
 ///
 /// ParConstIterator

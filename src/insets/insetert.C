@@ -200,7 +200,7 @@ int InsetERT::docbook(Buffer const &, ostream & os,
 		++par;
 		if (par != end) {
 			os << "\n";
-			lines ++;
+			++lines;
 		}
 	}
 
