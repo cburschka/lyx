@@ -1,13 +1,23 @@
+2001-02-12  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* math_defs.h (struct MathedRowSt): make all private variables end
+	with '_', initialize in initializer list instead of in function
+	body.
+
 2001-02-12  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* formula.C (LocalDispatch): Change the default action of
 	break-line to create an align* environment instead of eqnarray*.
 
-	* math_inset.C (Metrics): Correct drawing of the multline environment.
+	* math_inset.C (Metrics): Correct drawing of the multline
+	environment.
 
 2001-02-12  André Pönitz  <poenitz@htwm.de>
-	* array.[hC]: replace private variable maxsize_ with call 
-	to bf_.size() 
+	
+	* array.[hC]: replace private variable maxsize_ with call to
+	bf_.size()
+	* math_defs.h: replace int[] by std::vector<int> for
+	MathedRowSt::widths
 
 2001-02-09  Lars Gullik Bjønnes  <larsbj@lyx.org>
 

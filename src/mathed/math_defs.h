@@ -409,61 +409,55 @@ class MathParInset: public MathedInset  {
     It allows to manage the extra info independently of the paragraph data.  
     Only used for multiline paragraphs.
  */
-struct MathedRowSt {    
-    ///
-    explicit
-    MathedRowSt(int n) {
-	    w = new int[n + 1]; // this leaks
-	    asc = desc = y = 0;
-	    for (int i = 0 ; i < n + 1 ; ++i)
-	      w[i] = 0;
-	    next = 0;
-	    numbered = true;
-    }
-    ///
-    ~MathedRowSt() {
-	    delete[] w;
-    }
-    /// Should be const but...
-    MathedRowSt * getNext() const  { return next; }
-    /// ...we couldn't use this.
-    void setNext(MathedRowSt * n) { next = n; }
-    ///
-    string const & getLabel() const { return label; }
-    ///
-    bool isNumbered() const { return numbered; }
-    ///
-    int  getBaseline() const { return y; }
-    ///
-    void setBaseline(int b) { y = b; }
-    ///
-    int ascent() const { return asc; }
-    ///
-    int descent() const { return desc; }
-    ///
-    void ascent(int a) { asc = a; }
-    ///
-    void descent(int d) { desc = d; }
-    ///
-    int  getTab(int i) const { return w[i]; }
-    /// 
-    void setLabel(string const & l) { label = l; }
-    ///
-    void setNumbered(bool nf) { numbered = nf; }
-    ///
-    void setTab(int i, int t) { w[i] = t; }
-    
- private:
-    /// Vericals 
-    int asc, desc, y;
-    /// widths 
-    int * w;
-    /// 
-    string label;
-    ///
-    bool numbered;
-    ///
-    MathedRowSt * next;
+struct MathedRowSt
+{
+	///
+	explicit
+	MathedRowSt(int n)
+		: asc_(0), desc_(0), y_(0), widths_(n + 1, 0),
+		  numbered_(true), next_(0)
+		{}
+	/// Should be const but...
+	MathedRowSt * getNext() const  { return next_; }
+	/// ...we couldn't use this.
+	void setNext(MathedRowSt * n) { next_ = n; }
+	///
+	string const & getLabel() const { return label_; }
+	///
+	bool isNumbered() const { return numbered_; }
+	///
+	int  getBaseline() const { return y_; }
+	///
+	void setBaseline(int b) { y_ = b; }
+	///
+	int ascent() const { return asc_; }
+	///
+	int descent() const { return desc_; }
+	///
+	void ascent(int a) { asc_ = a; }
+	///
+	void descent(int d) { desc_ = d; }
+	///
+	int  getTab(int i) const { return widths_[i]; }
+	/// 
+	void setLabel(string const & l) { label_ = l; }
+	///
+	void setNumbered(bool nf) { numbered_ = nf; }
+	///
+	void setTab(int i, int t) { widths_[i] = t; }
+private:
+	/// Vericals 
+	int asc_;
+	int desc_;
+	int y_;
+	/// widths 
+	std::vector<int> widths_;
+	/// 
+	string label_;
+	///
+	bool numbered_;
+	///
+	MathedRowSt * next_;
 };
 
 
