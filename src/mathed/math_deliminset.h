@@ -22,7 +22,7 @@ public:
 
 #warning Remove this ass soon the Math panel patch is applied
 	///
-	///MathDelimInset(int, int) : MathNestInset(2) {}
+	MathDelimInset(int, int) : MathNestInset(2) {}
 
 	///
 	MathInset * clone() const;
