@@ -9,6 +9,7 @@ AM_CXXFLAGS = $(PCH_FLAGS)
 
 libboostsignals_la_SOURCES = \
 	connection.cpp \
+	named_slot_map.cpp \
 	signal_base.cpp \
 	slot.cpp \
 	trackable.cpp

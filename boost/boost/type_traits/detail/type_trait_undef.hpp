@@ -1,16 +1,15 @@
-//-----------------------------------------------------------------------------
-// boost/type_traits/detail/type_trait_undef.hpp header file
-// See http://www.boost.org for updates, documentation, and revision history.
-//-----------------------------------------------------------------------------
-//
-// Copyright (c) 2002
-// Aleksey Gurtovoy
-//
-// Use, modification and distribution are subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt).
 
-// no include guards, the header is intended for multiple inclusion!
+// NO INCLUDE GUARDS, THE HEADER IS INTENDED FOR MULTIPLE INCLUSION
+
+// Copyright Aleksey Gurtovoy 2002-2004
+//
+// Distributed under the Boost Software License, Version 1.0. 
+// (See accompanying file LICENSE_1_0.txt or copy at 
+// http://www.boost.org/LICENSE_1_0.txt)
+
+// $Source: /cvsroot/boost/boost/boost/type_traits/detail/type_trait_undef.hpp,v $
+// $Date: 2004/09/02 15:41:27 $
+// $Revision: 1.6 $
 
 #undef BOOST_TT_AUX_TYPE_TRAIT_DEF1
 #undef BOOST_TT_AUX_TYPE_TRAIT_SPEC1

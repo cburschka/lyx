@@ -21,6 +21,9 @@
 
 #include <boost/cregex.hpp>
 #include <boost/regex.hpp>
+#ifndef BOOST_NO_INCLASS_MEMBER_INITIALIZATION
+#  include <boost/integer_traits.hpp>
+#endif
 #if !defined(BOOST_NO_STD_STRING)
 #include <map>
 #include <list>
@@ -113,7 +116,7 @@ void RegExData::update()
       for(unsigned int i = 0; i < m.size(); ++i)
       {
          if(m[i].matched) strings[i] = std::string(m[i].first, m[i].second);
-         positions[i] = m[i].matched ? m[i].first - pbase : -1;
+         positions[i] = m[i].matched ? m[i].first - pbase : RegEx::npos;
       }
    }
 #ifndef BOOST_REGEX_NO_FILEITER
@@ -122,7 +125,7 @@ void RegExData::update()
       for(unsigned int i = 0; i < fm.size(); ++i)
       {
          if(fm[i].matched) strings[i] = to_string(fm[i].first, fm[i].second);
-         positions[i] = fm[i].matched ? fm[i].first - fbase : -1;
+         positions[i] = fm[i].matched ? fm[i].first - fbase : RegEx::npos;
       }
    }
 #endif
@@ -585,8 +588,15 @@ std::string RegEx::What(int i)const
    return result;
 }
 
-const unsigned int RegEx::npos = ~0u;
-
+#ifndef __MINGW32__
+#ifndef BOOST_NO_INCLASS_MEMBER_INITIALIZATION
+const std::size_t RegEx::npos = ::boost::integer_traits<std::size_t>::const_max;
+#elif defined(BOOST_HAS_LONG_LONG)
+const std::size_t RegEx::npos = ~0ULL;
+#else
+const std::size_t RegEx::npos = ~0UL;
+#endif
+#endif
 
 } // namespace boost
 

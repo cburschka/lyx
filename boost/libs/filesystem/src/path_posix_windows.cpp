@@ -22,6 +22,9 @@
 // the library is being built (possibly exporting rather than importing code)
 #define BOOST_FILESYSTEM_SOURCE 
 
+#include <boost/filesystem/path.hpp>
+#include <boost/filesystem/exception.hpp>
+
 // BOOST_POSIX or BOOST_WINDOWS specify which API to use.
 # if !defined( BOOST_WINDOWS ) && !defined( BOOST_POSIX )
 #   if defined(_WIN32) || defined(__WIN32__) || defined(WIN32) || defined(__CYGWIN__)
@@ -31,8 +34,6 @@
 #   endif
 # endif
 
-#include <boost/filesystem/path.hpp>
-#include <boost/filesystem/exception.hpp>
 
 namespace fs = boost::filesystem;
 
@@ -44,6 +45,7 @@ namespace fs = boost::filesystem;
 #include <boost/throw_exception.hpp>
 #include <cstring>  // SGI MIPSpro compilers need this
 #include <vector>
+#include <algorithm> // for lexicographical_compare
 #include <cassert>
 
 #include <boost/config/abi_prefix.hpp> // must be the last header
@@ -287,7 +289,11 @@ namespace boost
         if ( m_path == "." ) m_path = "";
 
         // directory-placeholder
-        if ( *itr == '.' && ((itr+1) == src.end() || *(itr+1) == '/') )
+        if ( *itr == '.' && ((itr+1) == src.end() || *(itr+1) == '/'
+#         ifdef BOOST_WINDOWS
+          || *(itr+1) == '\\'
+#         endif
+          ) )
         {
           if ( empty() ) m_path += '.';
           ++itr;
@@ -298,13 +304,20 @@ namespace boost
         {
           // append '/' if needed
           if ( !empty()
-              && *(m_path.end()-1) != ':' && *(m_path.end()-1) != '/' )
+#         ifdef BOOST_WINDOWS
+            && *(m_path.end()-1) != ':'
+#         endif
+            && *(m_path.end()-1) != '/' )
               m_path += '/';
 
           // parent-directory
           if ( *itr == '.'
             && (itr+1) != src.end() && *(itr+1) == '.'
-            && ((itr+2) == src.end() || *(itr+2) == '/') )
+            && ((itr+2) == src.end() || *(itr+2) == '/'
+#           ifdef BOOST_WINDOWS
+            || *(itr+2) == '\\'
+#           endif
+           ) )
           {
             m_path += "..";
             ++itr;
@@ -626,6 +639,14 @@ namespace boost
       safe_to_write_check = false;
       return default_check;
     }
+
+    //  path operator<  ------------------------------------------------------//
+    bool path::operator<( const path & that ) const
+    {
+      return std::lexicographical_compare(
+        begin(), end(), that.begin(), that.end() );
+    }
+
 
 // path::iterator implementation  --------------------------------------------// 
 

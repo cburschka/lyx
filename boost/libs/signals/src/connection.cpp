@@ -1,6 +1,6 @@
 // Boost.Signals library
 
-// Copyright Doug Gregor 2001-2003. Use, modification and
+// Copyright Douglas Gregor 2001-2004. Use, modification and
 // distribution is subject to the Boost Software License, Version
 // 1.0. (See accompanying file LICENSE_1_0.txt or copy at
 // http://www.boost.org/LICENSE_1_0.txt)
@@ -14,6 +14,103 @@
 
 namespace boost {
   namespace BOOST_SIGNALS_NAMESPACE {
+
+    connection::connection(const connection& other) :
+      con(other.con), controlling_connection(other.controlling_connection)
+    {
+    }
+
+    connection::~connection()
+    {
+      if (controlling_connection) {
+        disconnect();
+      }
+    }
+
+    void
+    connection::reset(BOOST_SIGNALS_NAMESPACE::detail::basic_connection* new_con)
+    {
+      con.reset(new_con);
+    }
+
+    bool connection::operator==(const connection& other) const
+    {
+      return con.get() == other.con.get();
+    }
+
+    bool connection::operator<(const connection& other) const
+    {
+      return con.get() < other.con.get();
+    }
+
+    connection& connection::operator=(const connection& other)
+    {
+      connection(other).swap(*this);
+      return *this;
+    }
+
+    void connection::swap(connection& other)
+    {
+      this->con.swap(other.con);
+      std::swap(this->controlling_connection, other.controlling_connection);
+    }
+
+    void swap(connection& c1, connection& c2)
+    {
+      c1.swap(c2);
+    }
+
+    scoped_connection::scoped_connection(const connection& other) :
+      connection(other),
+      released(false)
+    {
+    }
+
+    scoped_connection::scoped_connection(const scoped_connection& other) :
+      connection(other),
+      released(other.released)
+    {
+    }
+
+    scoped_connection::~scoped_connection()
+    {
+      if (!released) {
+        this->disconnect();
+      }
+    }
+
+    connection scoped_connection::release()
+    {
+      released = true;
+      return *this;
+    }
+
+    void scoped_connection::swap(scoped_connection& other)
+    {
+      this->connection::swap(other);
+      bool other_released = other.released;
+      other.released = this->released;
+      this->released = other_released;
+    }
+
+    void swap(scoped_connection& c1, scoped_connection& c2)
+    {
+      c1.swap(c2);
+    }
+
+    scoped_connection&
+    scoped_connection::operator=(const connection& other)
+    {
+      scoped_connection(other).swap(*this);
+      return *this;
+    }
+
+    scoped_connection&
+    scoped_connection::operator=(const scoped_connection& other)
+    {
+      scoped_connection(other).swap(*this);
+      return *this;
+    }
 
     void
     connection::add_bound_object(const BOOST_SIGNALS_NAMESPACE::detail::bound_object& b)

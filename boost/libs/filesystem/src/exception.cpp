@@ -192,7 +192,7 @@ namespace boost
   namespace filesystem
   {
 //  filesystem_error m_imp class  --------------------------------------------//
-//  see www.boost.org/more/error_handling.html for implemenation rationale
+//  see www.boost.org/more/error_handling.html for implementation rationale
 
     class filesystem_error::m_imp
     {
@@ -223,8 +223,9 @@ namespace boost
     filesystem_error::filesystem_error(
       const std::string & who,
       const path & path1,
-      const std::string & message )
-      : m_sys_err(0), m_err(other_error)
+      const std::string & message,
+      error_code ec )
+      : m_sys_err(0), m_err(ec)
     {
       try
       {
