@@ -1,3 +1,8 @@
+2005-01-07  Ruurd Reitsma  <rareitsma@yahoo.com>
+
+	* qfont_metrics.C (ascent, descent): correct the metrics returned
+	by Qt/Win 3.2.1 non-commercial edition.
+
 2005-01-05  Angus Leeming  <leeming@lyx.org>
 
 	* QGraphics.C: remove unnecessary "#include support/FileInfo.h".
