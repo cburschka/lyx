@@ -188,6 +188,19 @@ for frontend in $FRONTENDS ; do
   dnl     FRONTEND_INCLUDES="${GNOME_FRONTEND_CFLAGS}"
   dnl     FRONTEND_LIBS="@XPM_LIB@ @XFORMS_LIB@ ${GNOME_FRONTEND_LIBS}"
   dnl	;;
+    gtk)
+	  XFORMS_DO_IT_ALL
+    	  PKG_CHECK_MODULES(GTK_FRONTEND, gtkmm-2.0 libglademm-2.0)
+	  FRONTENDS_PROGS="$FRONTENDS_PROGS lyx-gtk\$(EXEEXT)"
+	  FRONTENDS_SUBDIRS="$FRONTENDS_SUBDIRS xforms gtk"
+	  RPM_FRONTEND="gtk"
+	  RPM_FRONTEND_DEPS='gtkmm >= 2.2.0'
+	  GTKMM_VERSION=`pkg-config --modversion gtkmm-2.0`
+	  LIBGLADEMM_VERSION=`pkg-config --modversion libglademm-2.0`
+	  FRONTEND_INFO="    libgtkmm version:             ${GTKMM_VERSION}\n\
+    libglademm version:           ${LIBGLADEMM_VERSION}\n"
+	  ;;
+
     qt)
 	  QT_DO_IT_ALL
 	  FRONTENDS_PROGS="$FRONTENDS_PROGS lyx-qt\$(EXEEXT)"
@@ -395,6 +408,8 @@ AC_CONFIG_FILES([Makefile \
        src/frontends/xforms/lyx_forms.h-tmp:src/frontends/xforms/lyx_forms.h.in \
        src/frontends/xforms/lyx_xpm.h-tmp:src/frontends/xforms/lyx_xpm.h.in \
        src/frontends/xforms/forms/Makefile \
+       src/frontends/gtk/Makefile \
+       src/frontends/gtk/glade/Makefile \
        src/frontends/qt2/Makefile \
        src/frontends/qt2/moc/Makefile \
        src/frontends/qt2/ui/Makefile \

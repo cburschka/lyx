@@ -1,0 +1,355 @@
+/**
+ * \file GWorkArea.C
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
+ *
+ * \author Huang Ying
+ *
+ * Full author contact details are available in file CREDITS
+ */
+
+#include <config.h>
+#include <gtkmm.h>
+#include <X11/Xft/Xft.h>
+
+#include "GWorkArea.h"
+#include "debug.h"
+#include "funcrequest.h"
+#include "GView.h"
+#include "GtkmmX.h"
+#include "GLyXKeySym.h"
+
+ColorCache colorCache;
+
+
+void ColorCache::clear()
+{
+	MapIt it = cache_.begin();
+	for (; it != cache_.end(); ++it)
+		delete it->second;
+	cache_.clear();
+	MapIt2 it2 = cache2_.begin();
+	for (; it2 != cache2_.end(); ++it2)
+		delete it2->second;
+	cache2_.clear();
+}
+
+
+XftColor * ColorHandler::getXftColor(LColor::color clr)
+{
+	XftColor * xclr = colorCache.getXftColor(clr);
+	if (!xclr) {
+		xclr = new XftColor;
+		Colormap colormap = GDK_COLORMAP_XCOLORMAP(
+			owner_.getColormap()->gobj());
+		Visual * visual = GDK_VISUAL_XVISUAL(
+			owner_.getColormap()->get_visual()->gobj());
+		XftColorAllocName(owner_.getDisplay(), visual, colormap,
+				  lcolor.getX11Name(clr).c_str(), xclr);
+		colorCache.cacheXftColor(clr, xclr);
+	}
+	return xclr;
+}
+
+
+Gdk::Color * ColorHandler::getGdkColor(LColor::color clr)
+{
+	Gdk::Color * gclr = colorCache.getColor(clr);
+	if (!gclr) {
+		gclr = new Gdk::Color;
+		gclr->parse(lcolor.getX11Name(clr));
+		owner_.getColormap()->alloc_color(*gclr);
+		colorCache.cacheColor(clr, gclr);
+	}
+	return gclr;
+}
+
+
+namespace
+{
+
+
+mouse_button::state gtkButtonState(unsigned int state)
+{
+	mouse_button::state b = mouse_button::none;
+	if (state & GDK_BUTTON1_MASK)
+		b = mouse_button::button1;
+	else if (state & GDK_BUTTON2_MASK)
+		b = mouse_button::button2;
+	else if (state & GDK_BUTTON3_MASK)
+		b = mouse_button::button3;
+	else if (state & GDK_BUTTON3_MASK)
+		b = mouse_button::button3;
+	else if (state & GDK_BUTTON4_MASK)
+		b = mouse_button::button4;
+	else if (state & GDK_BUTTON5_MASK)
+		b = mouse_button::button5;
+	return b;
+}
+
+
+key_modifier::state gtkKeyState(guint state)
+{
+	key_modifier::state k = key_modifier::none;
+	if (state & GDK_CONTROL_MASK)
+		k |= key_modifier::ctrl;
+	if (state & GDK_SHIFT_MASK)
+		k |= key_modifier::shift;
+	if (state & GDK_MOD1_MASK)
+		k |= key_modifier::alt;
+	return k;
+}
+
+
+void inputCommitRelay(GtkIMContext */*imcontext*/, gchar * str, GWorkArea * area)
+{
+	area->inputCommit(str);
+}
+
+
+}
+
+
+GWorkArea::GWorkArea(int width, int height)
+	: workAreaPixmap_(0), painter_(*this), draw_(0), colorHandler_(*this)
+{
+	workArea_.set_size_request(width, height);
+	workArea_.set_double_buffered(false);
+	workArea_.add_events(Gdk::STRUCTURE_MASK | Gdk::EXPOSURE_MASK |
+			     Gdk::BUTTON_PRESS_MASK | Gdk::BUTTON_RELEASE_MASK |
+			     Gdk::KEY_PRESS_MASK | Gdk::BUTTON1_MOTION_MASK);
+	workArea_.signal_expose_event().connect(
+		SigC::slot(*this, &GWorkArea::onExpose));
+	workArea_.signal_configure_event().connect(
+		SigC::slot(*this, &GWorkArea::onConfigure));
+	workArea_.signal_button_press_event().connect(
+		SigC::slot(*this, &GWorkArea::onButtonPress));
+	workArea_.signal_button_release_event().connect(
+		SigC::slot(*this, &GWorkArea::onButtonRelease));
+	workArea_.signal_key_press_event().connect(
+		SigC::slot(*this, &GWorkArea::onKeyPress));
+	workArea_.signal_motion_notify_event().connect(
+		SigC::slot(*this, &GWorkArea::onMotionNotify));
+	workArea_.show();
+	vscrollbar_.get_adjustment()->signal_value_changed().connect(
+		SigC::slot(*this, &GWorkArea::onScroll));
+	vscrollbar_.show();
+	hbox_.children().push_back(Gtk::Box_Helpers::Element(workArea_));
+	hbox_.children().push_back(
+		Gtk::Box_Helpers::Element(vscrollbar_,Gtk::PACK_SHRINK));
+	hbox_.show();
+	GView::instance()->getVBox().children().push_back(
+		Gtk::Box_Helpers::Element(hbox_));
+	workArea_.set_flags(workArea_.get_flags() | Gtk::CAN_DEFAULT |
+			    Gtk::CAN_FOCUS);
+	workArea_.grab_default();
+	GView::instance()->setGWorkArea(&workArea_);
+	imContext_ = GTK_IM_CONTEXT(gtk_im_multicontext_new());
+	g_signal_connect(G_OBJECT(imContext_), "commit",
+			 G_CALLBACK(&inputCommitRelay),
+			 this);
+}
+
+
+GWorkArea::~GWorkArea()
+{
+	g_object_unref(imContext_);
+}
+
+
+bool GWorkArea::onExpose(GdkEventExpose * event)
+{
+	workArea_.get_window()->draw_drawable(
+		workArea_.get_style()->get_black_gc(),
+		workAreaPixmap_,
+		event->area.x, event->area.y,
+		event->area.x, event->area.y,
+		event->area.width, event->area.height);
+	return true;
+}
+
+
+bool GWorkArea::onConfigure(GdkEventConfigure * /*event*/)
+{
+	int x, y, width, height, depth;
+	workArea_.get_window()->get_geometry(x, y, width, height, depth);
+	if (draw_)
+		XftDrawDestroy(draw_);
+	workAreaPixmap_ = Gdk::Pixmap::create(workArea_.get_window(),
+					      width, height, depth);
+	Pixmap pixmap = GDK_PIXMAP_XID(workAreaPixmap_->gobj());
+	Colormap colormap = GDK_COLORMAP_XCOLORMAP(
+		workArea_.get_colormap()->gobj());
+	Visual * visual = GDK_VISUAL_XVISUAL(
+		workArea_.get_colormap()->get_visual()->gobj());
+	draw_ = XftDrawCreate(getDisplay(), pixmap,
+			      visual, colormap);
+	if (!workAreaGC_) {
+		workAreaGC_ = Gdk::GC::create(workArea_.get_window());
+		Gdk::Cursor cursor(Gdk::XTERM);
+		workArea_.get_window()->set_cursor(cursor);
+		gtk_im_context_set_client_window(
+			imContext_, workArea_.get_window()->gobj());
+	}
+	workAreaResize();
+	return true;
+}
+
+
+void GWorkArea::setScrollbarParams(int height, int pos, int line_height)
+{
+	Gtk::Adjustment * adjustment = vscrollbar_.get_adjustment();
+	adjustment->set_lower(0);
+	int workAreaHeight = workHeight();
+	if (!height || height < workAreaHeight) {
+		adjustment->set_upper(workAreaHeight);
+		adjustment->set_page_size(workAreaHeight);
+		adjustment->set_value(0);
+		adjustment->changed();
+		return;
+	}
+	adjustment->set_step_increment(line_height);
+	adjustment->set_page_increment(workAreaHeight - line_height);
+	adjustment->set_upper(height);
+	adjustment->set_page_size(workAreaHeight);
+	adjustment->set_value(pos);
+	adjustment->changed();
+}
+
+
+void GWorkArea::onScroll()
+{
+	double val = vscrollbar_.get_adjustment()->get_value();
+	scrollDocView(static_cast<int>(val));
+}
+
+
+bool GWorkArea::onButtonPress(GdkEventButton * event)
+{
+	kb_action ka = LFUN_MOUSE_PRESS;
+	switch (event->type) {
+	case GDK_BUTTON_PRESS:
+		ka = LFUN_MOUSE_PRESS;
+		break;
+	case GDK_2BUTTON_PRESS:
+		ka = LFUN_MOUSE_DOUBLE;
+		break;
+	case GDK_3BUTTON_PRESS:
+		ka = LFUN_MOUSE_TRIPLE;
+		break;
+	default:
+		break;
+	}
+	dispatch(FuncRequest(ka,
+			     static_cast<int>(event->x),
+			     static_cast<int>(event->y),
+			     static_cast<mouse_button::state>(event->button)));
+	workArea_.grab_focus();
+	return true;
+}
+
+
+bool GWorkArea::onButtonRelease(GdkEventButton * event)
+{
+	dispatch(FuncRequest(LFUN_MOUSE_RELEASE,
+			     static_cast<int>(event->x),
+			     static_cast<int>(event->y),
+			     static_cast<mouse_button::state>(event->button)));
+	return true;
+}
+
+
+bool GWorkArea::onMotionNotify(GdkEventMotion * event)
+{
+	static guint32 timeBefore;
+	Gtk::Adjustment * adjustment = vscrollbar_.get_adjustment();
+	double step = adjustment->get_step_increment();
+	double value = adjustment->get_value();
+	if (event->x < 0)
+		value -= step;
+	else if (event->x > workArea_.get_height())
+		value += step;
+	if (value != adjustment->get_value()) {
+		if (event->time - timeBefore > 200) {
+			adjustment->set_value(value);
+			adjustment->value_changed();
+		}
+		timeBefore = event->time;
+	}
+	dispatch(FuncRequest(LFUN_MOUSE_MOTION,
+			     static_cast<int>(event->x),
+			     static_cast<int>(event->y),
+			     gtkButtonState(event->state)));
+	return true;
+}
+
+
+void GWorkArea::inputCommit(gchar * str)
+{
+	inputCache_ = Glib::locale_from_utf8(str);
+}
+
+
+bool GWorkArea::onKeyPress(GdkEventKey * event)
+{
+#ifdef I18N
+	inputCache_ = "";
+	bool inputGet = gtk_im_context_filter_keypress(imContext_, event);
+	// cope with ascii
+	if ((inputGet && inputCache_.size() == 1 && inputCache_[0] < 128) ||
+	    !inputGet) {
+#endif
+		GLyXKeySym *glk = new GLyXKeySym(event->keyval);
+		workAreaKeyPress(LyXKeySymPtr(glk),
+				 gtkKeyState(event->state));
+#ifdef I18N
+	} else if (!inputCache_.empty())
+		workAreaCJK_IMprocess(inputCache_.size(), inputCache_.data());
+#endif
+	return true;
+}
+
+
+void GWorkArea::onClipboardGet(Gtk::SelectionData & /*selection_data*/,
+			       guint /*info*/)
+{
+	selectionRequested();	
+}
+
+
+void GWorkArea::onClipboardClear()
+{
+//	selectionLost();
+}
+
+
+void GWorkArea::haveSelection(bool toHave) const
+{
+	if (toHave) {
+		Glib::RefPtr<Gtk::Clipboard> clipboard =
+			Gtk::Clipboard::get(GDK_SELECTION_PRIMARY);
+		std::vector<Gtk::TargetEntry> listTargets;
+		listTargets.push_back(Gtk::TargetEntry("UTF8_STRING"));
+		clipboard->set(listTargets,
+			       SigC::slot(const_cast<GWorkArea&>(*this),
+					  &GWorkArea::onClipboardGet),
+			       SigC::slot(const_cast<GWorkArea&>(*this),
+					  &GWorkArea::onClipboardClear));
+	}
+}
+
+
+string const GWorkArea::getClipboard() const
+{
+	Glib::RefPtr<Gtk::Clipboard> clipboard =
+		Gtk::Clipboard::get(GDK_SELECTION_PRIMARY);
+	return Glib::locale_from_utf8(clipboard->wait_for_text());
+}
+
+
+void GWorkArea::putClipboard(string const & str) const
+{
+	Glib::RefPtr<Gtk::Clipboard> clipboard =
+		Gtk::Clipboard::get(GDK_SELECTION_PRIMARY);
+	clipboard->set_text(Glib::locale_to_utf8(str));
+}

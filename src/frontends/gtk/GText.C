@@ -1,0 +1,77 @@
+/**
+ * \file GText.C
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
+ *
+ * \author Huang Ying
+ *
+ * Full author contact details are available in file CREDITS
+ */
+
+#include <config.h>
+#include <gtkmm.h>
+#include <libglademm.h>
+
+#include "support/lstrings.h"
+#include "support/filetools.h"
+#include "ControlCommand.h"
+#include "GText.h"
+#include "IdSc.h"
+
+GText::GText(Dialog & parent, string const & title, string const & label)
+	: GViewCB<ControlCommand, GViewGladeB>(parent, title),
+	  label_(label), entry_(0)
+{
+}
+
+void GText::apply()
+{
+	string const contents = Glib::locale_from_utf8(entry_->get_text());
+	controller().params().setContents(contents);
+}
+
+void GText::update()
+{
+	string const contents = lyx::support::trim(
+		controller().params().getContents());
+	entry_->set_text(Glib::locale_to_utf8(contents));
+}
+
+void GText::doBuild()
+{
+	string const gladeName =
+		lyx::support::LibFileSearch("glade", "text", "glade");
+	xml_ = Gnome::Glade::Xml::create(gladeName);
+	Gtk::Label * label;
+	Gtk::Button * restore;
+	Gtk::Button * cancel;
+	Gtk::Button * apply;
+	Gtk::Button * ok;
+	xml_->get_widget("Label", label);
+	xml_->get_widget("Text", entry_);
+	xml_->get_widget("Restore", restore);
+	xml_->get_widget("Cancel", cancel);
+	xml_->get_widget("Apply", apply);
+	xml_->get_widget("OK", ok);
+	label->set_text(Glib::locale_to_utf8(id_sc::id(label_)));
+	bcview().setOK(ok);
+	bcview().setApply(apply);
+	bcview().setCancel(cancel);
+	bcview().setRestore(restore);
+	bcview().addReadOnly(entry_);
+	ok->signal_clicked().connect(
+		SigC::slot(*this, &GViewBase::onOK));
+	apply->signal_clicked().connect(
+		SigC::slot(*this, &GViewBase::onApply));
+	cancel->signal_clicked().connect(
+		SigC::slot(*this, &GViewBase::onCancel));
+	restore->signal_clicked().connect(
+		SigC::slot(*this, &GViewBase::onRestore));
+	entry_->signal_changed().connect(
+		SigC::slot(*this, &GText::onEntryChanged));
+}
+
+void GText::onEntryChanged()
+{
+	bc().valid(!entry_->get_text().empty());
+}

@@ -31,7 +31,7 @@ OTHERLIBS = $(BOOST_LIBS) $(INTLLIBS) $(AIKSAURUS_LIBS) @LIBS@
 
 bin_PROGRAMS = lyx 
 noinst_PROGRAMS = $(FRONTENDS_PROGS)
-EXTRA_PROGRAMS = lyx-xforms lyx-qt
+EXTRA_PROGRAMS = lyx-xforms lyx-qt lyx-gtk
 
 lyx_xforms_LDADD = $(lyx_OBJECTS) $(LYX_PRE_LIBS) \
 	frontends/xforms/libxforms.la $(LYX_POST_LIBS) $(OTHERLIBS) 
@@ -41,6 +41,10 @@ lyx_xforms_SOURCES = main.C
 lyx_qt_LDADD = $(lyx_OBJECTS) $(LYX_PRE_LIBS) \
 	frontends/qt2/libqt2.la $(LYX_POST_LIBS) $(OTHERLIBS)
 lyx_qt_SOURCES = main.C
+
+lyx_gtk_LDADD = $(lyx_OBJECTS) $(LYX_PRE_LIBS) \
+	frontends/gtk/libgtk.la $(LYX_POST_LIBS) $(OTHERLIBS)
+lyx_gtk_SOURCES = main.C
 
 lyx$(EXEEXT): $(FRONTENDS_PROGS)
 	rm -f $@
