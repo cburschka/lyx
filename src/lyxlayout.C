@@ -33,6 +33,7 @@ enum LayoutTags {
 	LT_ALIGNPOSSIBLE,
 	LT_MARGIN,
 	LT_BOTTOMSEP,
+	LT_COMMANDDEPTH,
 	LT_COPYSTYLE,
 	LT_DEPENDSON,
 	LT_OBSOLETEDBY,
@@ -80,7 +81,8 @@ enum LayoutTags {
 	LT_SPACING,
 	LT_TOPSEP,
 	LT_TOCLEVEL,
-	LT_INTITLE
+	LT_INNERTAG,
+	LT_INTITLE // keep this last!
 };
 
 /////////////////////
@@ -118,6 +120,7 @@ LyXLayout::LyXLayout ()
 	pass_thru = false;
 	is_environment = false;
 	toclevel = 0;
+	commanddepth = 0;
 }
 
 
@@ -126,52 +129,54 @@ bool LyXLayout::Read(LyXLex & lexrc, LyXTextClass const & tclass)
 {
 	// This table is sorted alphabetically [asierra 30March96]
 	keyword_item layoutTags[] = {
-		{ "align",		LT_ALIGN },
-		{ "alignpossible",	LT_ALIGNPOSSIBLE },
-		{ "bottomsep",		LT_BOTTOMSEP },
-		{ "copystyle",          LT_COPYSTYLE },
-		{ "dependson",		LT_DEPENDSON },
-		{ "end",		LT_END },
-		{ "endlabelstring",	LT_ENDLABELSTRING },
-		{ "endlabeltype",	LT_ENDLABELTYPE },
-		{ "fill_bottom",	LT_FILL_BOTTOM },
-		{ "fill_top",		LT_FILL_TOP },
-		{ "font",		LT_FONT },
-		{ "freespacing",	LT_FREE_SPACING },
-		{ "intitle",            LT_INTITLE },
-		{ "itemsep",		LT_ITEMSEP },
-		{ "keepempty",		LT_KEEPEMPTY },
-		{ "labelbottomsep",	LT_LABEL_BOTTOMSEP },
-		{ "labelcounter",    LT_LABELCOUNTER },
-		{ "labelfont",		LT_LABELFONT },
-		{ "labelindent",	LT_LABELINDENT },
-		{ "labelsep",		LT_LABELSEP },
-		{ "labelstring",	LT_LABELSTRING },
+		{ "align",          LT_ALIGN },
+		{ "alignpossible",  LT_ALIGNPOSSIBLE },
+		{ "bottomsep",      LT_BOTTOMSEP },
+		{ "commanddepth",   LT_COMMANDDEPTH },
+		{ "copystyle",      LT_COPYSTYLE },
+		{ "dependson",      LT_DEPENDSON },
+		{ "end",            LT_END },
+		{ "endlabelstring", LT_ENDLABELSTRING },
+		{ "endlabeltype",   LT_ENDLABELTYPE },
+		{ "fill_bottom",    LT_FILL_BOTTOM },
+		{ "fill_top",       LT_FILL_TOP },
+		{ "font",           LT_FONT },
+		{ "freespacing",    LT_FREE_SPACING },
+		{ "innertag",       LT_INNERTAG },
+		{ "intitle",        LT_INTITLE },
+		{ "itemsep",        LT_ITEMSEP },
+		{ "keepempty",      LT_KEEPEMPTY },
+		{ "labelbottomsep", LT_LABEL_BOTTOMSEP },
+		{ "labelcounter",   LT_LABELCOUNTER },
+		{ "labelfont",      LT_LABELFONT },
+		{ "labelindent",    LT_LABELINDENT },
+		{ "labelsep",       LT_LABELSEP },
+		{ "labelstring",    LT_LABELSTRING },
 		{ "labelstringappendix", LT_LABELSTRING_APPENDIX },
-		{ "labeltype",		LT_LABELTYPE },
-		{ "latexfooter",		LT_LATEXFOOTER },
-		{ "latexheader",		LT_LATEXHEADER },
-		{ "latexname",		LT_LATEXNAME },
-		{ "latexparagraph",		LT_LATEXPARAGRAPH },
-		{ "latexparam",		LT_LATEXPARAM },
-		{ "latextype",		LT_LATEXTYPE },
-		{ "leftmargin",		LT_LEFTMARGIN },
-		{ "margin",		LT_MARGIN },
-		{ "needprotect",	LT_NEED_PROTECT },
-		{ "newline",		LT_NEWLINE },
-		{ "nextnoindent",	LT_NEXTNOINDENT },
-		{ "obsoletedby",	LT_OBSOLETEDBY },
-		{ "optionalargs",	LT_OPTARGS },
-		{ "parindent",		LT_PARINDENT },
-		{ "parsep",		LT_PARSEP },
-		{ "parskip",		LT_PARSKIP },
-		{ "passthru",		LT_PASS_THRU },
-		{ "preamble",		LT_PREAMBLE },
-		{ "rightmargin",	LT_RIGHTMARGIN },
-		{ "spacing",		LT_SPACING },
-		{ "textfont",		LT_TEXTFONT },
-		{ "toclevel",            LT_TOCLEVEL },
-		{ "topsep",		LT_TOPSEP }
+		{ "labeltype",      LT_LABELTYPE },
+		{ "latexfooter",    LT_LATEXFOOTER },
+		{ "latexheader",    LT_LATEXHEADER },
+		{ "latexname",      LT_LATEXNAME },
+		{ "latexparagraph", LT_LATEXPARAGRAPH },
+		{ "latexparam",     LT_LATEXPARAM },
+		{ "latextype",      LT_LATEXTYPE },
+		{ "leftmargin",     LT_LEFTMARGIN },
+		{ "margin",         LT_MARGIN },
+		{ "needprotect",    LT_NEED_PROTECT },
+		{ "newline",        LT_NEWLINE },
+		{ "nextnoindent",   LT_NEXTNOINDENT },
+		{ "obsoletedby",    LT_OBSOLETEDBY },
+		{ "optionalargs",   LT_OPTARGS },
+		{ "parindent",      LT_PARINDENT },
+		{ "parsep",         LT_PARSEP },
+		{ "parskip",        LT_PARSKIP },
+		{ "passthru",       LT_PASS_THRU },
+		{ "preamble",       LT_PREAMBLE },
+		{ "rightmargin",    LT_RIGHTMARGIN },
+		{ "spacing",        LT_SPACING },
+		{ "textfont",       LT_TEXTFONT },
+		{ "toclevel",       LT_TOCLEVEL },
+		{ "topsep",         LT_TOPSEP }
 	};
 
 	bool error = false;
@@ -314,6 +319,11 @@ bool LyXLayout::Read(LyXLex & lexrc, LyXTextClass const & tclass)
 				nextnoindent = false;
 			break;
 
+		case LT_COMMANDDEPTH:
+			lexrc.next();
+			commanddepth = lexrc.getInteger();
+			break;
+
 		case LT_LATEXNAME:
 			if (lexrc.next())
 				latexname_ = lexrc.getString();
@@ -322,6 +332,11 @@ bool LyXLayout::Read(LyXLex & lexrc, LyXTextClass const & tclass)
 		case LT_LATEXPARAM:
 			if (lexrc.next())
 				latexparam_ = lexrc.getString();
+			break;
+
+		case LT_INNERTAG:
+			if (lexrc.next())
+				innertag_ = lexrc.getString();
 			break;
 
 		case LT_PREAMBLE:

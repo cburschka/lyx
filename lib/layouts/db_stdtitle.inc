@@ -1,8 +1,9 @@
 # Textclass definition file for docbook.
 # Author : José Abílio Oliveira Matos <jamatos@lyx.org>
-
-# This file is the counterpart of stdstile.inc
-# It is desireable, as far as possible, to have the same look and feeling for
+# Modified Martin Vermeer <martin.vermeer@hut.fi> 
+#
+# This file is the counterpart of stdstyle.inc
+# It is desirable, as far as possible, to have the same look and feel for
 # related layouts in latex and docbook.
 
 Input stdtitle.inc
@@ -11,7 +12,8 @@ Input stdtitle.inc
 Style Title
 	LatexType             Command
 	LatexName             articleinfo
-	LatexParam            "2|"
+	CommandDepth          2
+	InnerTag              "title"
 End
 
 

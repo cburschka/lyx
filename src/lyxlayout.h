@@ -63,6 +63,8 @@ public:
 	///
 	std::string const & latexparam() const { return latexparam_; }
 	///
+	std::string const & innertag() const { return innertag_; }
+	///
 	std::string const & labelstring_appendix() const {
 		return labelstring_appendix_;
 	}
@@ -178,6 +180,8 @@ public:
 	int optionalargs;
 	/// Which counter to step
 	std::string counter;
+	/// Depth of XML command
+	int commanddepth;
 
 private:
 	/// Name of the layout/paragraph environment
@@ -205,6 +209,8 @@ private:
 	std::string labelstring_appendix_;
 	/// LaTeX parameter for environment
 	std::string latexparam_;
+	/// Internal tag to use (e.g., <title></title> for sect header)
+	std::string innertag_;
 	/// Macro definitions needed for this layout
 	std::string preamble_;
 };

@@ -55,16 +55,13 @@ void docbookParagraphs(Buffer const & buf,
 	Paragraph::depth_type cmd_depth = 0;
 	Paragraph::depth_type depth = 0; // paragraph depth
 
-	string item_name;
 	string command_name;
 
 	ParagraphList::iterator par = const_cast<ParagraphList&>(paragraphs).begin();
 	ParagraphList::iterator pend = const_cast<ParagraphList&>(paragraphs).end();
 
 	for (; par != pend; ++par) {
-		string sgmlparam;
-		string c_depth;
-		string c_params;
+		string inner_tag;
 		int desc_on = 0; // description mode
 
 		LyXLayout_ptr const & style = par->layout();
@@ -91,6 +88,7 @@ void docbookParagraphs(Buffer const & buf,
 		}
 
 		// Write opening SGML tags.
+		string item_name;
 		switch (style->latextype) {
 		case LATEX_PARAGRAPH:
 			sgml::openTag(os, depth + command_depth,
@@ -104,11 +102,9 @@ void docbookParagraphs(Buffer const & buf,
 			
 			command_name = style->latexname();
 
-			sgmlparam = style->latexparam();
-			c_params = split(sgmlparam, c_depth,'|');
-
-			cmd_depth = atoi(c_depth);
-
+			cmd_depth = style->commanddepth;
+			inner_tag = style->innertag();
+			
 			if (command_flag) {
 				if (cmd_depth < command_base) {
 					for (Paragraph::depth_type j = command_depth;
@@ -150,9 +146,8 @@ void docbookParagraphs(Buffer const & buf,
 			}
 
 			sgml::openTag(os, depth + command_depth, false, command_name);
-
-			item_name = c_params.empty() ? "title" : c_params;
-			sgml::openTag(os, depth + 1 + command_depth, false, item_name);
+			// Inner tagged header text, e.g. <title> for sectioning:
+			sgml::openTag(os, depth + 1 + command_depth, false, inner_tag);
 			break;
 
 		case LATEX_ENVIRONMENT:
@@ -208,9 +203,7 @@ void docbookParagraphs(Buffer const & buf,
 		// write closing SGML tags
 		switch (style->latextype) {
 		case LATEX_COMMAND:
-			end_tag = c_params.empty() ? "title" : c_params;
-			sgml::closeTag(os, depth + command_depth,
-				     false, end_tag);
+			sgml::closeTag(os, depth + command_depth, false, inner_tag);
 			break;
 		case LATEX_ENVIRONMENT:
 			if (!style->latexparam().empty()) {
