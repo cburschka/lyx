@@ -304,7 +304,7 @@ bool BufferView::insertLyXFile(string const & filen)
 	if (!ifs) {
 		string const file = MakeDisplayPath(fname, 50);
 		string const text =
-			bformat(_("Could not open the specified document\n"), file);
+			bformat(_("Could not open the specified document %1$s\n"), file);
 		Alert::error(_("Could not open file"), text);
 		return false;
 	}
