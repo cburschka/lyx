@@ -20,9 +20,10 @@
 #include "figure_form.h"
 #include "insets/figinset.h"
 #include "BufferView.h"
-#include "minibuffer.h"
 #include "lyxtext.h"
 #include "LyXView.h"
+#include "lyxfunc.h"
+#include "gettext.h"
 
 extern FD_form_figure * fd_form_figure;
 extern BufferView * current_view;
@@ -49,12 +50,16 @@ void FigureApplyCB(FL_OBJECT *, long)
 	Buffer * buffer = current_view->buffer();
 	if (buffer->isReadonly()) // paranoia
 		return;
-	
-	current_view->owner()->getMiniBuffer()->Set(_("Inserting figure..."));
+
+	current_view->owner()->getLyXFunc()
+		->Dispatch(LFUN_MESSAGE,
+			   _("Inserting figure..."));
 	if (fl_get_button(fd_form_figure->radio_inline)) {
 		InsetFig * new_inset = new InsetFig(100, 20, *buffer);
 		current_view->insertInset(new_inset);
-		current_view->owner()->getMiniBuffer()->Set(_("Figure inserted"));
+		current_view->owner()->getLyXFunc()
+			->Dispatch(LFUN_MESSAGE,
+				   _("Figure inserted"));
 		new_inset->Edit(current_view, 0, 0, 0);
 		return;
 	}
@@ -114,7 +119,8 @@ void FigureApplyCB(FL_OBJECT *, long)
 	current_view->insertInset(new_inset);
 	new_inset->Edit(current_view, 0, 0, 0);
 	current_view->update(current_view->text, BufferView::SELECT|BufferView::FITCUR);
-	current_view->owner()->getMiniBuffer()->Set(_("Figure inserted"));
+	current_view->owner()->getLyXFunc()->Dispatch(LFUN_MESSAGE,
+						      _("Figure inserted"));
 	current_view->text->UnFreezeUndo();
 	current_view->setState();
 }

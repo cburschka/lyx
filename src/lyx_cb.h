@@ -14,7 +14,7 @@ extern bool quitting;
 void ShowMessage(Buffer const * buf,
 		 string const & msg1,
 		 string const & msg2 = string(),
-		 string const & msg3 = string(), int delay = 6);
+		 string const & msg3 = string());
 ///
 bool MenuWrite(BufferView * bv, Buffer * buffer);
 /// write the given file, or ask if no name given

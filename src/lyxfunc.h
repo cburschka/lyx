@@ -2,6 +2,8 @@
 #ifndef LYXFUNC_H
 #define LYXFUNC_H
 
+#include <sigc++/signal_system.h>
+
 #ifdef __GNUG__
 #pragma interface
 #endif
@@ -13,7 +15,7 @@
 #include "LString.h"
 
 class LyXView;
-class auto_mem_buffer;
+
 
 /** This class encapsulates all the LyX command operations. 
     This is the class of the LyX's "high level event handler".
@@ -21,7 +23,7 @@ class auto_mem_buffer;
     keyboard or from the GUI. All GUI objects, including buttons and
     menus should use this class and never call kernel functions directly.
 */
-class LyXFunc {
+class LyXFunc : public SigC::Object {
 public:
 	/// The status of a function.
 	enum func_status {
@@ -46,9 +48,12 @@ public:
 	/// The same but uses the name of a lyx command.
 	string const Dispatch(string const & cmd);
 
-	/// Same again but for xtl buffers.  Still looking for better idea.
-	bool Dispatch(int action, auto_mem_buffer &);
+	///
+	void miniDispatch(string const & cmd);
 
+	///
+	void initMiniBuffer();
+		
 	///
 	int processKeySym(KeySym k, unsigned int state);
 

@@ -78,7 +78,9 @@ void ToolbarDefaults::init()
 
 	add(LFUN_FIGURE);
 	add(LFUN_DIALOG_TABULAR_INSERT);
+#if 0
 	//add(LFUN_MELT);
+#endif
 }
 
 

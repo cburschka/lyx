@@ -21,10 +21,10 @@
 #include "lyxcursor.h"
 #include "lyxparagraph.h"
 #include "layout.h"
+#include "lyxrow.h"
 
 class Buffer;
 class BufferParams;
-class Row;
 class BufferView;
 class InsetText;
 
@@ -666,4 +666,23 @@ private:
 	LyXParagraph * OwnerParagraph(LyXParagraph *) const;
 };
 
+
+/* returns a pointer to the row near the specified y-coordinate
+ * (relative to the whole text). y is set to the real beginning
+ * of this row */
+inline
+Row * LyXText::GetRowNearY(int & y) const
+{
+	// If possible we should optimize this method. (Lgb)
+	Row * tmprow = firstrow;
+	int tmpy = 0;
+	
+	while (tmprow->next() && tmpy + tmprow->height() <= y) {
+		tmpy += tmprow->height();
+		tmprow = tmprow->next();
+	}
+	
+	y = tmpy;   // return the real y
+	return tmprow;
+}
 #endif

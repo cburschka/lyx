@@ -19,7 +19,6 @@
 
 #include "gettext.h"
 #include "lyxfont.h"
-#include "language.h"
 #include "debug.h"
 #include "lyxrc.h"
 #include "lyxlex.h"
@@ -156,11 +155,6 @@ bool LyXFont::FontBits::operator!=(LyXFont::FontBits const & fb1) const
 }
 
 
-LyXFont::LyXFont()
-	: bits(sane), lang(default_language)
-{}
-
-
 LyXFont::LyXFont(LyXFont::FONT_INIT1)
 	: bits(inherit), lang(default_language)
 {}
@@ -191,33 +185,9 @@ LyXFont::LyXFont(LyXFont::FONT_INIT3, Language const * l)
 {}
 
 
-LyXFont::FONT_FAMILY LyXFont::family() const 
-{
-	return bits.family;
-}
-
-
-LyXFont::FONT_SERIES LyXFont::series() const
-{
-	return bits.series;
-}
-
-
-LyXFont::FONT_SIZE LyXFont::size() const
-{
-	return bits.size;
-}
-
-
 LyXFont::FONT_MISC_STATE LyXFont::underbar() const
 {
 	return bits.underbar;
-}
-
-
-LyXFont::FONT_MISC_STATE LyXFont::noun() const
-{
-	return bits.noun;
 }
 
 

@@ -17,7 +17,7 @@
    \author Lars Gullik Bjønnes
 */
 template<class Share>
-class ShareContainer : public boost::noncopyable {
+class ShareContainer : boost::noncopyable {
 public:
 	///
 	typedef std::vector<boost::shared_ptr<Share> > Params;

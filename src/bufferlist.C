@@ -23,7 +23,6 @@
 
 #include "bufferlist.h"
 #include "lyx_main.h"
-#include "minibuffer.h"
 #include "support/FileInfo.h"
 #include "support/filetools.h"
 #include "support/lyxmanip.h"
@@ -491,11 +490,6 @@ Buffer * BufferList::loadLyXFile(string const & filename, bool tolastfiles)
 	bool ro = false;
 	switch (IsFileWriteable(s)) {
 	case 0:
-#if 0
-		current_view->owner()->getMiniBuffer()->
-			Set(_("File `") + MakeDisplayPath(s, 50) +
-			    _("' is read-only."));
-#endif
 		ro = true;
 		// Fall through
 	case 1:

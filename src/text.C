@@ -13,9 +13,9 @@
 #include <cctype>
 #include <algorithm>
 
+#include "lyxtext.h"
 #include "layout.h"
 #include "lyxparagraph.h"
-#include "lyxtext.h"
 #include "support/textutils.h"
 #include "insets/insetbib.h"
 #include "insets/insettext.h"
@@ -23,11 +23,9 @@
 #include "gettext.h"
 #include "bufferparams.h"
 #include "buffer.h"
-#include "minibuffer.h"
 #include "debug.h"
 #include "lyxrc.h"
 #include "LyXView.h"
-#include "lyxrow.h"
 #include "Painter.h"
 #include "tracer.h"
 #include "font.h"
@@ -35,6 +33,7 @@
 #include "lyxscreen.h"
 #include "bufferview_funcs.h"
 #include "language.h"
+#include "lyxfunc.h"
 
 using std::max;
 using std::min;
@@ -2110,9 +2109,13 @@ void LyXText::InsertChar(BufferView * bview, char c)
 #endif
 			    )) {
 	   		if (cursor.pos() == 0 )
-				bview->owner()->getMiniBuffer()->Set(_("You cannot insert a space at the beginning of a paragraph.  Please read the Tutorial."));
+				bview->owner()->getLyXFunc()
+					->Dispatch(LFUN_MESSAGE,
+						   _("You cannot insert a space at the beginning of a paragraph.  Please read the Tutorial."));
 			else
-				bview->owner()->getMiniBuffer()->Set(_("You cannot type two spaces this way.  Please read the Tutorial."));
+				bview->owner()->getLyXFunc()
+					->Dispatch(LFUN_MESSAGE,
+						   _("You cannot type two spaces this way.  Please read the Tutorial."));
 			charInserted();
 			return;
 		}

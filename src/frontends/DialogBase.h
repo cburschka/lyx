@@ -26,7 +26,7 @@
     satisfy that request.  Thus a dialog will have to "pull" the necessary
     details from the core of the program.
  */
-class DialogBase : public SigC::Object, public boost::noncopyable
+class DialogBase : public SigC::Object, boost::noncopyable
 {
 public:
 	/**@name Constructors and Deconstructors */

@@ -22,7 +22,6 @@
 #include "insets/insetinfo.h"
 #include "insets/insetspecialchar.h"
 #include "LyXView.h"
-#include "minibuffer.h"
 #include "bufferlist.h"
 #include "support/FileInfo.h"
 #include "lyxscreen.h"
@@ -33,6 +32,8 @@
 #include "insets/insetcommand.h" //ChangeRefs
 #include "support/lyxfunctional.h" //equal_1st_in_pair
 #include "language.h"
+#include "gettext.h"
+#include "lyxfunc.h"
 
 extern BufferList bufferlist;
 
@@ -424,7 +425,8 @@ void BufferView::insertNote()
 void BufferView::openStuff()
 {
 	if (available()) {
-		owner()->getMiniBuffer()->Set(_("Open/Close..."));
+		owner()->getLyXFunc()->Dispatch(LFUN_MESSAGE,
+						_("Open/Close..."));
 		hideCursor();
 		beforeChange(text);
 		update(text, BufferView::SELECT|BufferView::FITCUR);
@@ -438,7 +440,8 @@ void BufferView::openStuff()
 void BufferView::toggleFloat()
 {
 	if (available()) {
-		owner()->getMiniBuffer()->Set(_("Open/Close..."));
+		owner()->getLyXFunc()->Dispatch(LFUN_MESSAGE,
+						_("Open/Close..."));
 		hideCursor();
 		beforeChange(text);
 		update(text, BufferView::SELECT|BufferView::FITCUR);
@@ -452,12 +455,13 @@ void BufferView::toggleFloat()
 void BufferView::menuUndo()
 {
 	if (available()) {
-		owner()->getMiniBuffer()->Set(_("Undo"));
+		owner()->getLyXFunc()->Dispatch(LFUN_MESSAGE, _("Undo"));
 		hideCursor();
 		beforeChange(text);
 		update(text, BufferView::SELECT|BufferView::FITCUR);
 		if (!text->TextUndo(this))
-			owner()->getMiniBuffer()->Set(_("No further undo information"));
+			owner()->getLyXFunc()->Dispatch(LFUN_MESSAGE,
+							_("No forther undo information"));
 		else
 			update(text, BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 		setState();
@@ -468,17 +472,20 @@ void BufferView::menuUndo()
 void BufferView::menuRedo()
 {
 	if (theLockingInset()) {
-		owner()->getMiniBuffer()->Set(_("Redo not yet supported in math mode"));
+		owner()->getLyXFunc()->Dispatch(LFUN_MESSAGE,
+						_("Redo not yet supported in math mode"));
 		return;
 	}    
    
 	if (available()) {
-		owner()->getMiniBuffer()->Set(_("Redo"));
+		owner()->getLyXFunc()->Dispatch(LFUN_MESSAGE,
+						_("Redo"));
 		hideCursor();
 		beforeChange(text);
 		update(text, BufferView::SELECT|BufferView::FITCUR);
 		if (!text->TextRedo(this))
-			owner()->getMiniBuffer()->Set(_("No further redo information"));
+			owner()->getLyXFunc()->Dispatch(LFUN_MESSAGE,
+							_("No further redo information"));
 		else
 			update(text, BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 		setState();
@@ -570,6 +577,7 @@ void BufferView::hfill()
 	}
 }
 
+
 void BufferView::copyEnvironment()
 {
 	if (available()) {
@@ -578,7 +586,8 @@ void BufferView::copyEnvironment()
 		toggleSelection();
 		text->ClearSelection(this);
 		update(text, BufferView::SELECT|BufferView::FITCUR);
-		owner()->getMiniBuffer()->Set(_("Paragraph environment type copied"));
+		owner()->getLyXFunc()->Dispatch(LFUN_MESSAGE,
+						_("Paragraph environment type copied"));
 	}
 }
 
@@ -587,7 +596,8 @@ void BufferView::pasteEnvironment()
 {
 	if (available()) {
 		text->pasteEnvironmentType(this);
-		owner()->getMiniBuffer()->Set(_("Paragraph environment type set"));
+		owner()->getLyXFunc()->Dispatch(LFUN_MESSAGE,
+						_("Paragraph environment type set"));
 		update(text, BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 	}
 }
@@ -601,7 +611,7 @@ void BufferView::copy()
 		toggleSelection();
 		text->ClearSelection(this);
 		update(text, BufferView::SELECT|BufferView::FITCUR);
-		owner()->getMiniBuffer()->Set(_("Copy"));
+		owner()->getLyXFunc()->Dispatch(LFUN_MESSAGE, _("Copy"));
 	}
 }
 
@@ -612,7 +622,7 @@ void BufferView::cut()
 		update(text, BufferView::SELECT|BufferView::FITCUR);
 		text->CutSelection(this);
 		update(text, BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
-		owner()->getMiniBuffer()->Set(_("Cut"));
+		owner()->getLyXFunc()->Dispatch(LFUN_MESSAGE, _("Cut"));
 	}
 }
 
@@ -620,8 +630,9 @@ void BufferView::cut()
 void BufferView::paste()
 {
 	if (!available()) return;
-	
-	owner()->getMiniBuffer()->Set(_("Paste"));
+
+	owner()->getLyXFunc()->Dispatch(LFUN_MESSAGE, _("Paste"));
+
 	hideCursor();
 	// clear the selection
 	toggleSelection();
@@ -666,10 +677,14 @@ void BufferView::gotoInset(std::vector<Inset::Code> const & codes,
 				text->cursor.pos(0);
 				if (!text->GotoNextInset(this, codes, contents)) {
 					text->cursor = tmp;
-					owner()->getMiniBuffer()->Set(_("No more insets"));
+					owner()->getLyXFunc()
+						->Dispatch(LFUN_MESSAGE,
+							   _("No more insets"));
 				}
 			} else {
-				owner()->getMiniBuffer()->Set(_("No more insets"));
+				owner()->getLyXFunc()
+					->Dispatch(LFUN_MESSAGE,
+						   _("No more insets"));
 			}
 	}
 	update(text, BufferView::SELECT|BufferView::FITCUR);
@@ -864,11 +879,6 @@ void BufferView::updateInset(Inset * inset, bool mark_dirty)
 			if (text->UpdateInset(this, inset)) {
 				update();
 				if (mark_dirty) {
-#if 0
-					if (buffer()->isLyxClean())
-						owner()->getMiniBuffer()->
-							setTimer(4);
-#endif
 					buffer()->markDirty();
 				}
 				updateScrollbar();
@@ -878,11 +888,6 @@ void BufferView::updateInset(Inset * inset, bool mark_dirty)
 			if (text->UpdateInset(this, theLockingInset())) {
 				update();
 				if (mark_dirty){
-#if 0
-					if (buffer()->isLyxClean())
-						owner()->getMiniBuffer()->
-							setTimer(4);
-#endif
 					buffer()->markDirty();
 				}
 				updateScrollbar();
@@ -906,7 +911,8 @@ void BufferView::updateInset(Inset * inset, bool mark_dirty)
 }
 
 
-bool BufferView::ChangeInsets(Inset::Code code, string const & from, string const & to)
+bool BufferView::ChangeInsets(Inset::Code code,
+			      string const & from, string const & to)
 {
 	bool flag = false;
 	LyXParagraph * par = buffer()->paragraph;

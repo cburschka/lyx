@@ -30,7 +30,7 @@
   This class should ideally be enclosed inside class BufferList, but that
   gave me an "internal gcc error".
   */
-class BufferStorage : public boost::noncopyable {
+class BufferStorage : boost::noncopyable {
 public:
 	///
 	typedef std::vector<Buffer *> Container;
@@ -68,7 +68,7 @@ private:
 
 /** The class govern all open buffers.
  */
-class BufferList : public boost::noncopyable {
+class BufferList : boost::noncopyable {
 public:
 	///
  	BufferList();

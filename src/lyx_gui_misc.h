@@ -22,8 +22,6 @@
 #include "LString.h"
 #include <utility>  /* needed for pair<> definition */
 
-class MiniBuffer;
-
 /// Prevents LyX from being killed when the close box is pressed in a popup.
 extern "C" int CancelCloseBoxCB(FL_FORM *, void *);
 
@@ -48,9 +46,6 @@ char const * flyx_shortcut_extract(char const * sc);
 char const * flyx_ident_extract(char const * sc);
 /// Shortcut for flyx_ident_extract
 #define idex flyx_ident_extract
-
-/// Show status message
-void WriteStatus(MiniBuffer * minib, string const & s);
 
 /// Show message
 void WriteAlert(string const & s1, string const & s2 = string(), 

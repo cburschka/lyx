@@ -23,13 +23,13 @@
 #include "figure_form.h"
 #include "lyx_cb.h"
 #include "lyx_main.h"
-#include "minibuffer.h"
 #include "print_form.h"
 #include "sp_form.h"
 #include "LyXView.h"
 #include "bufferview_funcs.h"
 #include "support/filetools.h"
 #include "lyxrc.h"
+#include "lyxfunc.h"
 
 using std::pair;
 using std::make_pair;
@@ -136,26 +136,17 @@ char const * flyx_ident_extract(char const * sc)
 }
 
 
-void WriteStatus(MiniBuffer * minib, string const & s)
-{
-	if (minib) {
-		minib->Set(s);
-		minib->Store();
-	} else
-		lyxerr << s << endl;
-}
-
-
 //
 void WriteAlert(string const & s1, string const & s2, string const & s3)
 {
-	MiniBuffer * minibuffer = 0;
+	LyXFunc * lfun = 0;
 	if (current_view && current_view->owner())
-		minibuffer = current_view->owner()->getMiniBuffer();
-	if (minibuffer) {
+		lfun = current_view->owner()->getLyXFunc();
+	if (lfun) {
 		/// Write to minibuffer
 		ProhibitInput(current_view);
-		minibuffer->Set(s1, s2, s3);
+		string const msg = s1 + ' ' + s2 + ' ' + s3;
+		lfun->Dispatch(LFUN_MESSAGE, msg);
 		fl_set_resource("flAlert.dismiss.label", _("Dismiss"));
 		fl_show_alert(s1.c_str(), s2.c_str(), s3.c_str(), 0);
 		AllowInput(current_view);

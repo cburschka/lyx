@@ -26,13 +26,14 @@
 #include "LyXView.h"
 #include "lyxrc.h"
 #include "lyxtext.h"
-#include "minibuffer.h"
 #include "frontends/FileDialog.h"
 #include "insets/insetlabel.h"
 #include "support/FileInfo.h"
 #include "support/filetools.h"
 #include "support/path.h"
 #include "support/syscall.h"
+#include "lyxfunc.h"
+#include "gettext.h"
 
 using std::vector;
 using std::ifstream;
@@ -112,12 +113,13 @@ void ToggleLockedInsetCursor(int x, int y, int asc, int desc);
 void ShowMessage(Buffer const * buf,
 		 string const & msg1,
 		 string const & msg2,
-		 string const & msg3, int delay)
+		 string const & msg3)
 {
-	if (lyxrc.use_gui)
-		buf->getUser()->owner()->getMiniBuffer()->Set(msg1, msg2,
-							      msg3, delay);
-	else
+	if (lyxrc.use_gui) {
+		string const str = msg1 + ' ' + msg2 + ' ' + msg3;
+		buf->getUser()->owner()->getLyXFunc()->Dispatch(LFUN_MESSAGE,
+								str);
+	} else
 		lyxerr << msg1 << msg2 << msg3 << endl;
 }
 
@@ -315,7 +317,9 @@ void AutoSave(BufferView * bv)
 		return;
 	}
 
-	bv->owner()->getMiniBuffer()->Set(_("Autosaving current document..."));
+	bv->owner()->getLyXFunc()
+		->Dispatch(LFUN_MESSAGE,
+			   _("Autosaving current document..."));
 	
 	// create autosave filename
 	string fname = 	OnlyPath(bv->buffer()->fileName());
@@ -355,7 +359,9 @@ void AutoSave(BufferView * bv)
 				// It is dangerous to do this in the child,
 				// but safe in the parent, so...
 				if (pid == -1)
-					bv->owner()->getMiniBuffer()->Set(_("Autosave Failed!"));
+					bv->owner()->getLyXFunc()
+						->Dispatch(LFUN_MESSAGE,
+							   _("Autosave Failed!"));
 			}
 		}
 		if (pid == 0) { // we are the child so...
@@ -567,14 +573,16 @@ void MenuLayoutSave(BufferView * bv)
 // reconfigure the automatic settings.
 void Reconfigure(BufferView * bv)
 {
-	bv->owner()->getMiniBuffer()->Set(_("Running configure..."));
+	bv->owner()->getLyXFunc()->Dispatch(LFUN_MESSAGE,
+					    _("Running configure..."));
 
 	// Run configure in user lyx directory
 	Path p(user_lyxdir);
 	Systemcalls one(Systemcalls::System, 
 			AddName(system_lyxdir, "configure"));
 	p.pop();
-	bv->owner()->getMiniBuffer()->Set(_("Reloading configuration..."));
+	bv->owner()->getLyXFunc()->Dispatch(LFUN_MESSAGE,
+					    _("Reloading configuration..."));
 	lyxrc.read(LibFileSearch(string(), "lyxrc.defaults"));
 	WriteAlert(_("The system has been reconfigured."), 
 		   _("You need to restart LyX to make use of any"),

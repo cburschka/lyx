@@ -1,3 +1,4 @@
+// -*- C++ -*-
 /*
  * emptytable.h
  * (C) 2000 LyX Team

@@ -46,7 +46,6 @@
 #include "tex-strings.h"
 #include "layout.h"
 #include "bufferview_funcs.h"
-#include "minibuffer.h"
 #include "lyxfont.h"
 #include "version.h"
 #include "mathed/formulamacro.h"
@@ -3483,7 +3482,8 @@ int Buffer::runChktex()
 	}
 
 	Path p(path); // path to LaTeX file
-	users->owner()->getMiniBuffer()->Set(_("Running chktex..."));
+	users->owner()->getLyXFunc()->Dispatch(LFUN_MESSAGE,
+					       _("Running chktex..."));
 
 	// Remove all error insets
 	bool const removedErrorInsets = users->removeAutoInsets();

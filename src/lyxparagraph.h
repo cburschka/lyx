@@ -24,6 +24,7 @@
 
 #include "insets/lyxinset.h"
 #include "ParagraphParameters.h"
+#include "support/LAssert.h"
 
 class BufferParams;
 class LyXBuffer;
@@ -250,7 +251,7 @@ public:
 	
 private:
 	///
-	array<int, 10> counter_;
+	boost::array<int, 10> counter_;
 public:
 	///
 	void setCounter(int i, int v);
@@ -641,6 +642,23 @@ public:
 };
 
 
+#ifdef NEW_INSETS
+inline
+LyXParagraph::value_type
+LyXParagraph::GetChar(LyXParagraph::size_type pos) const
+{
+	Assert(pos <= size());
+	// This is stronger, and I belive that this is the assertion
+	// that we should really use. (Lgb)
+	//Assert(pos < size());
+
+	// Then this has no meaning. (Lgb)
+	if (!size() || pos == size()) return '\0';
+	
+	return text[pos];
+}
+#endif
+
 inline
 int LyXParagraph::id() const
 {
@@ -711,6 +729,17 @@ inline
 void LyXParagraph::SetChar(size_type pos, value_type c)
 {
 	text[pos] = c;
+}
+
+
+inline
+LyXTextClass::size_type LyXParagraph::GetLayout() const
+{
+#ifndef NEW_INSETS
+	return FirstPhysicalPar()->layout;
+#else
+	return layout;
+#endif
 }
 
 

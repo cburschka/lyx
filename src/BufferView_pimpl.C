@@ -17,7 +17,6 @@
 #include "LyXView.h"
 #include "commandtags.h"
 #include "lyxfunc.h"
-#include "minibuffer.h"
 #include "font.h"
 #include "bufferview_funcs.h"
 #include "TextCache.h"
@@ -56,6 +55,8 @@
 #include "insets/insettheorem.h"
 #include "insets/insetcaption.h"
 #include "mathed/formulamacro.h"
+#include "gettext.h"
+
 extern LyXTextClass::size_type current_layout;
 extern int greek_kb_flag;
 
@@ -222,7 +223,7 @@ void BufferView::Pimpl::buffer(Buffer * b)
 	}
 	// should update layoutchoice even if we don't have a buffer.
 	owner_->updateLayoutChoice();
-	owner_->getMiniBuffer()->Init();
+
 	owner_->updateWindowTitle();
 }
 
@@ -287,7 +288,8 @@ int BufferView::Pimpl::resizeCurrentBuffer()
 
 	ProhibitInput(bv_);
 
-	owner_->getMiniBuffer()->Set(_("Formatting document..."));   
+	owner_->getLyXFunc()->Dispatch(LFUN_MESSAGE,
+				       _("Formatting document..."));
 
 	if (bv_->text) {
 		par = bv_->text->cursor.par();
@@ -344,7 +346,7 @@ int BufferView::Pimpl::resizeCurrentBuffer()
 	// this will scroll the screen such that the cursor becomes visible
 	updateScrollbar();
 	redraw();
-	owner_->getMiniBuffer()->Init();
+
 	bv_->setState();
 	AllowInput(bv_);
 
@@ -359,8 +361,6 @@ void BufferView::Pimpl::updateScreen()
 {
 	// Regenerate the screen.
 	screen_.reset(new LyXScreen(workarea_));
-	//delete screen_;
-	//screen_ = new LyXScreen(workarea_);
 }
 
 
@@ -634,7 +634,8 @@ void BufferView::Pimpl::workAreaButtonPress(int xpos, int ypos,
 		UpdatableInset * inset = static_cast<UpdatableInset *>(inset_hit);
 		selection_possible = false;
 		owner_->updateLayoutChoice();
-		owner_->getMiniBuffer()->Set(inset->EditMessage());
+		owner_->getLyXFunc()->Dispatch(LFUN_MESSAGE,
+					       inset->EditMessage());
 		inset->InsetButtonPress(bv_, xpos, ypos, button);
 		inset->Edit(bv_, xpos, ypos, button);
 		return;
@@ -796,7 +797,9 @@ void BufferView::Pimpl::workAreaButtonRelease(int x, int y,
 			bv_->text->SetCursorParUndo(bv_->buffer());
 		}
 
-		owner_->getMiniBuffer()->Set(inset_hit->EditMessage());
+		owner_->getLyXFunc()->Dispatch(LFUN_MESSAGE,
+					       inset_hit->EditMessage());
+
 		if (inset_hit->Editable()==Inset::HIGHLY_EDITABLE) {
 			// Highly editable inset, like math
 			UpdatableInset *inset = (UpdatableInset *)inset_hit;
@@ -1019,9 +1022,6 @@ void BufferView::Pimpl::workAreaExpose()
 
 			// The main window size has changed, repaint most stuff
 			redraw();
-			// ...including the minibuffer
-			owner_->getMiniBuffer()->Init();
-
 		} else if (screen_.get())
 		    screen_->Redraw(bv_->text, bv_);
 	} else {
@@ -1100,14 +1100,7 @@ void BufferView::Pimpl::update(LyXText * text, BufferView::UpdateCodes f)
       	}
 
 	if ((f & CHANGE)) {
-		if (buffer_->isLyxClean()) {
-			buffer_->markDirty();
-#if 0
-			owner_->getMiniBuffer()->setTimer(4);
-#endif
-		} else {
-			buffer_->markDirty();
-		}
+		buffer_->markDirty();
 	}
 }
 
@@ -1218,8 +1211,10 @@ void BufferView::Pimpl::savePosition(unsigned int i)
 	saved_positions[i] = Position(buffer_->fileName(),
 				      bv_->text->cursor.par()->id(),
 				      bv_->text->cursor.pos());
-	if (i > 0)
-		owner_->getMiniBuffer()->Set(_("Saved bookmark"), tostr(i));
+	if (i > 0) {
+		string const str = _("Saved bookmark") + ' ' + tostr(i);
+		owner_->getLyXFunc()->Dispatch(LFUN_MESSAGE, str);
+	}
 }
 
 
@@ -1251,8 +1246,10 @@ void BufferView::Pimpl::restorePosition(unsigned int i)
 			     min(par->size(), saved_positions[i].par_pos));
 #endif
 	update(bv_->text, BufferView::SELECT|BufferView::FITCUR);
-	if (i > 0)
-		owner_->getMiniBuffer()->Set(_("Moved to bookmark"), tostr(i));
+	if (i > 0) {
+		string const str = _("Moved to bookmark") + ' ' + tostr(i);
+		owner_->getLyXFunc()->Dispatch(LFUN_MESSAGE, str);
+	}
 }
 
 
@@ -1470,7 +1467,8 @@ void BufferView::Pimpl::MenuInsertLyXFile(string const & filen)
 
 		// check selected filename
 		if (filename.empty()) {
-			owner_->getMiniBuffer()->Set(_("Canceled."));
+			owner_->getLyXFunc()->Dispatch(LFUN_MESSAGE,
+						       _("Canceled."));
 			return;
 		}
 	}
@@ -1482,16 +1480,18 @@ void BufferView::Pimpl::MenuInsertLyXFile(string const & filen)
 		filename += ".lyx";
 
 	// Inserts document
-	owner_->getMiniBuffer()->Set(_("Inserting document"),
-				     MakeDisplayPath(filename), "...");
+	string const s1 = _("Inserting document") + ' '
+		+ MakeDisplayPath(filename) + " ...";
+	owner_->getLyXFunc()->Dispatch(LFUN_MESSAGE, s1);
 	bool const res = bv_->insertLyXFile(filename);
 	if (res) {
-		owner_->getMiniBuffer()->Set(_("Document"),
-					     MakeDisplayPath(filename),
-					     _("inserted."));
+		string const str = _("Document") + ' '
+			+ MakeDisplayPath(filename) + ' ' + _("inserted.");
+		owner_->getLyXFunc()->Dispatch(LFUN_MESSAGE, str);
 	} else {
-		owner_->getMiniBuffer()->Set(_("Could not insert document"),
-					     MakeDisplayPath(filename));
+		string const str = _("Could not insert document") + ' '
+			+ MakeDisplayPath(filename);
+		owner_->getLyXFunc()->Dispatch(LFUN_MESSAGE, str);
 	}
 }
 

@@ -6,10 +6,11 @@
 #include "ShareContainer.h"
 #include "LString.h"
 #include "layout.h"
+#include "ParameterStruct.h"
 
 class VSpace;
 class Spacing;
-struct ParameterStruct;
+
 
 // Not yet... lyx 1.3.x or so
 //#define NO_PEXTRA_REALLY 1
@@ -115,4 +116,11 @@ private:
 	///
 	static ShareContainer<ParameterStruct> container;
 };
+
+
+inline
+char ParagraphParameters::depth() const
+{
+	return param->depth;
+}
 #endif

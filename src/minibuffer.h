@@ -2,9 +2,11 @@
 #ifndef MINIBUFFER_H
 #define MINIBUFFER_H
 
+#include <sigc++/signal_system.h>
+#include <vector>
+
 #include FORMS_H_LOCATION
 #include "LString.h"
-#include "gettext.h"
 #include "frontends/Timeout.h"
 
 #ifdef __GNUG__
@@ -16,49 +18,63 @@ class LyXView;
 ///
 class MiniBuffer : public SigC::Object {
 public:
+	enum State {
+		spaces,
+		nospaces
+	};
+	
 	///
 	MiniBuffer(LyXView * o,
 		   FL_Coord x, FL_Coord y, FL_Coord h, FL_Coord w);
 
 	///
-	bool shows_no_match;
+	void addSet(string const &,
+		    string const & = string());
 
-#if 0
 	///
-	void setTimer(unsigned int a) {
-		timer.setTimeout(a * 1000);
-	}
-#endif
+	void message(string const & str);
+	///
+	void messagePush(string const & str);
+	///
+	void messagePop();
 	
+	/** Makes the minibuffer wait for a string to be inserted.
+	    Waits for a string to be inserted into the minibuffer, when
+	    the string has been insterted the signal stringReady is
+	    emitted.
+	*/
+	void getString(State space,
+		       vector<string> const & completion,
+		       vector<string> & history);
 	///
-	void Set(string const & = string(),
-		 string const & = string(),
-		 string const & = string(),
-		 unsigned int delay_secs = 6);
-	/// 
-	string const GetText() const { return text; }
+	void redraw();
 	///
-	void Init();
+        int peek_event(FL_OBJECT *, int, int);
 	///
-	void PrepareForCommand();
-	/** allows to store and reset the contents one time. Usefull
-	  for status messages like "load font" (Matthias)
-	  */
-	void Store();
+	SigC::Signal1<void, string const &> stringReady;
 	///
-	void Reset();
+	//SigC::Signal0<void> escape;
 	///
-	void Activate();
-	///
-	void Deactivate();
-	///
-	static void ExecutingCB(FL_OBJECT * ob, long);
-	///
-        static int  peek_event(FL_OBJECT *, int, FL_Coord, FL_Coord,
-			       int, void *);
+	SigC::Signal0<void> timeout;
 private:
 	///
-	LyXView * owner;
+	void activate();
+	///
+	void deactivate();
+	///
+	void prepare();
+	///
+	void stored_slot();
+	///
+	void stored_set(string const &);
+	///
+	void init();
+	///
+	string stored_input;
+	///
+	bool stored_;
+	///
+	LyXView * owner_;
 	///
 	string text;
 	///
@@ -68,30 +84,16 @@ private:
 	///
 	Timeout timer;
 	///
+	Timeout stored_timer;
+	///
 	FL_OBJECT * the_buffer;
 	///
-	string cur_cmd;
-        ///
-        enum{ MAX_HISTORY = 10 };
-        ///
-        mutable string history[MAX_HISTORY];
-        ///
-        mutable int history_idx;
+	vector<string> completion_;
 	///
-	mutable int history_cnt;
-        ///
-        void addHistory(string const & cmd) const { 
-	        if (history_cnt == 0
-		    || (history_cnt > 0
-			&& cmd != history[(history_cnt - 1) % MAX_HISTORY])) {
-		    history[history_cnt % MAX_HISTORY] = cmd;
-		    ++history_cnt;
-		}
-	        history_idx = history_cnt;
-	}
-        ///
-        string const getHistory() const {
-		return history[history_idx % MAX_HISTORY];
-	}
+	vector<string> * history_;
+	///
+	vector<string>::iterator hist_iter;
+	///
+	State state_;
 };
 #endif

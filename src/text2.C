@@ -17,6 +17,7 @@
 #pragma implementation "lyxtext.h"
 #endif
 
+#include "lyxtext.h"
 #include "LString.h"
 #include "lyxparagraph.h"
 #include "insets/inseterror.h"
@@ -28,15 +29,12 @@
 #include "LyXView.h"
 #include "support/textutils.h"
 #include "undo.h"
-#include "minibuffer.h"
 #include "buffer.h"
 #include "bufferparams.h"
 #include "lyx_gui_misc.h"
-#include "lyxtext.h"
 #include "gettext.h"
 #include "BufferView.h"
 #include "LyXView.h"
-#include "lyxrow.h"
 #include "CutAndPaste.h"
 #include "Painter.h"
 #include "font.h"
@@ -44,6 +42,7 @@
 #include "lyxrc.h"
 #include "FloatList.h"
 #include "language.h"
+#include "lyxfunc.h"
 
 using std::copy;
 using std::find;
@@ -1317,33 +1316,15 @@ void  LyXText::CursorBottom(BufferView * bview) const
 }
    
    
-/* returns a pointer to the row near the specified y-coordinate
-* (relative to the whole text). y is set to the real beginning
-* of this row */
-Row * LyXText::GetRowNearY(int & y) const
-{
-	Row * tmprow = firstrow;
-	int tmpy = 0;
-
-	while (tmprow->next() && tmpy + tmprow->height() <= y) {
-		tmpy += tmprow->height();
-		tmprow = tmprow->next();
-	}
-
-	y = tmpy;   // return the real y
-	return tmprow;
-}
-
-
 void LyXText::ToggleFree(BufferView * bview,
 			 LyXFont const & font, bool toggleall)
 {
 	// If the mask is completely neutral, tell user
 	if (font == LyXFont(LyXFont::ALL_IGNORE)) {
 		// Could only happen with user style
-		bview->owner()->getMiniBuffer()
-			->Set(_("No font change defined. Use Character under"
-				" the Layout menu to define font change."));
+		bview->owner()->getLyXFunc()
+			->Dispatch(LFUN_MESSAGE,
+				   _("No font change defined. Use Character under the Layout menu to define font change."));
 		return;
 	}
 

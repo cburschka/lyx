@@ -25,6 +25,7 @@
 #pragma implementation
 #endif
 
+#include "support/lyxalgo.h"
 #include "version.h"
 #include "kbmap.h"
 #include "lyxfunc.h"
@@ -112,9 +113,45 @@ extern LyXTextClass::size_type current_layout;
 
 extern void ShowLatexLog();
 
+
+#if 0
+
+///
+class MiniBufferController : public SigC::Object {
+public:
+	///
+	MiniBufferController() {
+		minibuffer
+			.cmdReady
+			.connect(slot(this,
+				      &MiniBufferController::receiveCommand));
+		minibuffer
+			.argReady
+			.connect(slot(this,
+				      &MiniBufferController::receiveArg));
+	}
+	///
+	void receiveCmd(string const & cmd) {}
+	///
+	void receiveArg(string const & arg) {}
+	
+	
+private:
+};
+
+namespace {
+
+MiniBufferController mb_ctrl;
+
+}
+#endif
+
+
 /* === globals =========================================================== */
 
+// Initialization of static member var
 bool LyXFunc::show_sc = true;
+
 
 LyXFunc::LyXFunc(LyXView * o)
 	: owner(o)
@@ -125,13 +162,15 @@ LyXFunc::LyXFunc(LyXView * o)
 	setupLocalKeymap();
 }
 
+
 inline
-LyXText * LyXFunc::TEXT(bool flag=true) const
+LyXText * LyXFunc::TEXT(bool flag = true) const
 {
 	if (flag)
 		return owner->view()->text;
 	return owner->view()->getLyXText();
 }
+
 
 // I changed this func slightly. I commented out the ...FinishUndo(),
 // this means that all places that used to have a moveCursorUpdate, now
@@ -208,7 +247,8 @@ int LyXFunc::processKeySym(KeySym keysym, unsigned int state)
 				owner->showState();
 			} else {
 				tli->UnlockInsetInInset(owner->view(),
-							tli->GetLockingInset(),true);
+							tli->GetLockingInset(),
+							true);
 			}
 			//return 0;
 			return FL_PREEMPT;
@@ -239,7 +279,8 @@ int LyXFunc::processKeySym(KeySym keysym, unsigned int state)
 	// Mostly, meta_fake_bit = 0. RVDK_PATCH_5.
 	if ((action != LFUN_CANCEL) && (action != LFUN_META_FAKE)) {
 		if (lyxerr.debugging(Debug::KEY)) {
-			lyxerr << "meta_fake_bit is [" << meta_fake_bit << "]" << endl;
+			lyxerr << "meta_fake_bit is ["
+			       << meta_fake_bit << "]" << endl;
 		}
 		// remove Caps Lock and Mod2 as a modifiers
 		action = keyseq.addkey(keysym,
@@ -247,7 +288,8 @@ int LyXFunc::processKeySym(KeySym keysym, unsigned int state)
 				       &(ShiftMask|ControlMask
 					 |Mod1Mask));
 		if (lyxerr.debugging(Debug::KEY)) {
-			lyxerr << "action now set to [" << action << "]" << endl;
+			lyxerr << "action now set to ["
+			       << action << "]" << endl;
 		}
 	}
 	// Dont remove this unless you know what you are doing.
@@ -271,14 +313,14 @@ int LyXFunc::processKeySym(KeySym keysym, unsigned int state)
 	if (keyseq.length > 1 || keyseq.length < -1) {
 		string buf;
 		keyseq.print(buf);
-		owner->getMiniBuffer()->Set(buf);
+		owner->message(buf);
 	}
 
 	if (action == -1) {
 		if (keyseq.length < -1) { // unknown key sequence...
 			string buf;
 			keyseq.print(buf);
-			owner->getMiniBuffer()->Set(_("Unknown sequence:"), buf);
+			owner->message(_("Unknown sequence:") + ' ' + buf);
 			return 0;
 		}
 	
@@ -335,12 +377,15 @@ int LyXFunc::processKeySym(KeySym keysym, unsigned int state)
 	return 0;
 } 
 
+
 LyXFunc::func_status LyXFunc::getStatus(int ac) const
 {
 	return getStatus(ac, string());
 }
 
-LyXFunc::func_status LyXFunc::getStatus(int ac, string const & not_to_use_arg) const
+
+LyXFunc::func_status LyXFunc::getStatus(int ac,
+					string const & not_to_use_arg) const
 {
         kb_action action;
         func_status flag = LyXFunc::OK;
@@ -411,8 +456,10 @@ LyXFunc::func_status LyXFunc::getStatus(int ac, string const & not_to_use_arg) c
 		break;
 
 	case LFUN_INSERTFOOTNOTE:
+#if 0
 	case LFUN_FOOTMELT:
 	case LFUN_MARGINMELT:
+#endif
 		// Disable insertion of floats in a tabular.
 		disable = false;
 		if (owner->view()->theLockingInset()) {
@@ -512,6 +559,12 @@ LyXFunc::func_status LyXFunc::getStatus(int ac, string const & not_to_use_arg) c
 }
 
 
+// temporary dispatch method
+void LyXFunc::miniDispatch(string const & s) 
+{
+	Dispatch(s);
+}
+
 string const LyXFunc::Dispatch(string const & s) 
 {
 	// Split command string into command and argument
@@ -524,7 +577,7 @@ string const LyXFunc::Dispatch(string const & s)
 
 
 string const LyXFunc::Dispatch(int ac,
-			 string const & do_not_use_this_arg)
+			       string const & do_not_use_this_arg)
 {
 	lyxerr[Debug::ACTION] << "LyXFunc::Dispatch: action[" << ac
 			      <<"] arg[" << do_not_use_this_arg << "]" << endl;
@@ -596,7 +649,8 @@ string const LyXFunc::Dispatch(int ac,
 			if (!comname.empty()) {
 				comname = strip(comname);
 				commandshortcut = "(" + comname + ')';
-				owner->getMiniBuffer()->Set(commandshortcut);
+				owner->message(commandshortcut);
+
 				// Here we could even add a small pause,
 				// to annoy the user and make him learn
 				// the shortcuts.
@@ -747,14 +801,22 @@ string const LyXFunc::Dispatch(int ac,
 		}
 		string buf;
 		keyseq.print(buf, true);
-		owner->getMiniBuffer()->Set(buf, string(), string(), 1);
+		//owner->getMiniBuffer()->Set(buf, string(), string(), 1);
+		owner->message(buf);
 	}
 	break;
 
 	// --- Misc -------------------------------------------
 	case LFUN_EXEC_COMMAND:
-		owner->getMiniBuffer()->PrepareForCommand(); 
-		break;
+	{
+		vector<string> allCmds;
+		transform(lyxaction.func_begin(), lyxaction.func_end(),
+			  back_inserter(allCmds), lyx::firster());
+		static vector<string> hist;
+		owner->getMiniBuffer()->getString(MiniBuffer::nospaces,
+						  allCmds, hist);
+	}
+	break;
 		
 	case LFUN_CANCEL:                   // RVDK_PATCH_5
 		keyseq.reset();
@@ -802,9 +864,11 @@ string const LyXFunc::Dispatch(int ac,
 		
 	case LFUN_MENUWRITE:
 		if (!owner->buffer()->isUnnamed()) {
-			owner->getMiniBuffer()->Set(_("Saving document"),
-						    MakeDisplayPath(owner->buffer()->fileName()),
-						    "...");
+			string const s1 = _("Saving document") + ' '
+				+ MakeDisplayPath(owner->buffer()->fileName()
+						  + "...");
+			
+			owner->message(s1);
 			MenuWrite(owner->view(), owner->buffer());
 		} else
 			WriteAs(owner->view(), owner->buffer());
@@ -1011,22 +1075,25 @@ string const LyXFunc::Dispatch(int ac,
 		owner->getDialogs()->showCredits();
 		break;
 
-        case LFUN_HELP_OPEN: {
-		string arg = argument;
+        case LFUN_HELP_OPEN:
+	{
+		string const arg = argument;
 		if (arg.empty()) {
 			setErrorMessage(N_("Missing argument"));
 			break;
 		}
 		ProhibitInput(owner->view());
-		string fname = i18nLibFileSearch("doc", arg, "lyx");
+		string const fname = i18nLibFileSearch("doc", arg, "lyx");
 		if (fname.empty()) {
 			lyxerr << "LyX: unable to find documentation file `"
 			       << arg << "'. Bad installation?" << endl;
 			AllowInput(owner->view());
 			break;
 		}
-		owner->getMiniBuffer()->Set(_("Opening help file"),
-					    MakeDisplayPath(fname),"...");
+		string const str = _("Opening help file") + ' '
+			+ MakeDisplayPath(fname) + "...";
+		
+		owner->message(str);
 		owner->view()->buffer(bufferlist.loadLyXFile(fname,false));
 		AllowInput(owner->view());
 		break;
@@ -1466,6 +1533,18 @@ string const LyXFunc::Dispatch(int ac,
 		break;
 	}
 
+	case LFUN_MESSAGE:
+		owner->message(argument);
+		break;
+
+	case LFUN_MESSAGE_PUSH:
+		owner->messagePush(argument);
+		break;
+
+	case LFUN_MESSAGE_POP:
+		owner->messagePop();
+		break;
+
 	default:
 		// Then if it was none of the above
 		if (!owner->view()->Dispatch(action, argument))
@@ -1479,19 +1558,11 @@ exit_with_message:
 
 	if (res.empty()) {
 		if (!commandshortcut.empty()) {
-			string const newbuf =
-				owner->getMiniBuffer()->GetText();
-			if (newbuf != commandshortcut) {
-				owner->getMiniBuffer()->Set(newbuf
-							    + " " +
-							    commandshortcut);
-			}
+			owner->getMiniBuffer()->addSet(commandshortcut);
 		}
 	} else {
-		string msg(_(res));
-		msg += " ";
-		msg += commandshortcut;
-		owner->getMiniBuffer()->Set(msg);
+		string const msg(_(res) + ' ' + commandshortcut);
+		owner->message(msg);
 	}
 
 	return res;
@@ -1521,14 +1592,19 @@ void LyXFunc::MenuNew(bool fromTemplate)
 	
 	if (lyxrc.new_ask_filename) {
 		FileDialog fileDlg(owner, _("Enter filename for new document"),
-			LFUN_SELECT_FILE_SYNC,
-			make_pair(string(_("Documents")), string(lyxrc.document_path)),
-			make_pair(string(_("Templates")), string(lyxrc.template_path)));
+				   LFUN_SELECT_FILE_SYNC,
+			make_pair(string(_("Documents")),
+				  string(lyxrc.document_path)),
+			make_pair(string(_("Templates")),
+				  string(lyxrc.template_path)));
 
-		FileDialog::Result result = fileDlg.Select(initpath, _("*.lyx|LyX Documents (*.lyx)"), _("newfile"));
+		FileDialog::Result result =
+			fileDlg.Select(initpath,
+				       _("*.lyx|LyX Documents (*.lyx)"),
+				       _("newfile"));
 	
 		if (result.second.empty()) {
-			owner->getMiniBuffer()->Set(_("Canceled."));
+			Dispatch(LFUN_MESSAGE, _("Canceled."));
 			lyxerr.debug() << "New Document Cancelled." << endl;
 			return;
 		}
@@ -1541,10 +1617,10 @@ void LyXFunc::MenuNew(bool fromTemplate)
 
 		// Check if the document already is open
 		if (bufferlist.exists(s)) {
-			switch (AskConfirmation(_("Document is already open:"), 
-					       MakeDisplayPath(s, 50),
-					       _("Do you want to close that document now?\n"
-						 "('No' will just switch to the open version)")))
+			switch (AskConfirmation(_("Document is already open:"),
+						MakeDisplayPath(s, 50),
+						_("Do you want to close that document now?\n"
+						  "('No' will just switch to the open version)")))
 			{
 			case 1: // Yes: close the document
 				if (!bufferlist.close(bufferlist.getBuffer(s)))
@@ -1555,7 +1631,7 @@ void LyXFunc::MenuNew(bool fromTemplate)
 				owner->view()->buffer(bufferlist.getBuffer(s));
 				return;
 			case 3: // Cancel: Do nothing
-				owner->getMiniBuffer()->Set(_("Canceled."));
+				Dispatch(LFUN_MESSAGE, _("Canceled."));
 				return;
 			}
 		}
@@ -1567,14 +1643,14 @@ void LyXFunc::MenuNew(bool fromTemplate)
 					MakeDisplayPath(s, 50),
 					_("Do you want to open the document?"))) {
 				// loads document
-				owner->getMiniBuffer()->Set(_("Opening document"), 
-							    MakeDisplayPath(s), "...");
+				Dispatch(LFUN_MESSAGE, _("Opening document")
+					 + ' ' + MakeDisplayPath(s) + "...");
 				XFlush(fl_get_display());
 				owner->view()->buffer(
 					bufferlist.loadLyXFile(s));
-				owner->getMiniBuffer()->Set(_("Document"),
-							    MakeDisplayPath(s),
-							    _("opened."));
+				Dispatch(LFUN_MESSAGE, _("Document")
+					 + ' ' + MakeDisplayPath(s) + ' '
+					 + _("opened."));
 				return;
 			}
 		}
@@ -1596,10 +1672,14 @@ void LyXFunc::MenuNew(bool fromTemplate)
 	if (fromTemplate) {
 		FileDialog fileDlg(owner, _("Select template file"),
 			LFUN_SELECT_FILE_SYNC,
-			make_pair(string(_("Documents")), string(lyxrc.document_path)),
-			make_pair(string(_("Templates")), string(lyxrc.template_path)));
+			make_pair(string(_("Documents")),
+				  string(lyxrc.document_path)),
+			make_pair(string(_("Templates")),
+				  string(lyxrc.template_path)));
 
-		FileDialog::Result result = fileDlg.Select(initpath, _("*.lyx|LyX Documents (*.lyx)"));
+		FileDialog::Result result =
+			fileDlg.Select(initpath,
+				       _("*.lyx|LyX Documents (*.lyx)"));
 	
 		if (result.first == FileDialog::Later)
 			return;
@@ -1633,10 +1713,14 @@ void LyXFunc::Open(string const & fname)
 	if (fname.empty()) {
 		FileDialog fileDlg(owner, _("Select document to open"),
 			LFUN_FILE_OPEN,
-			make_pair(string(_("Documents")), string(lyxrc.document_path)),
-			make_pair(string(_("Examples")), string(AddPath(system_lyxdir, "examples"))));
+			make_pair(string(_("Documents")),
+				  string(lyxrc.document_path)),
+			make_pair(string(_("Examples")),
+				  string(AddPath(system_lyxdir, "examples"))));
 
-		FileDialog::Result result = fileDlg.Select(initpath, "*.lyx|LyX Documents (*.lyx)");
+		FileDialog::Result result =
+			fileDlg.Select(initpath,
+				       "*.lyx|LyX Documents (*.lyx)");
 	
 		if (result.first == FileDialog::Later)
 			return;
@@ -1645,7 +1729,7 @@ void LyXFunc::Open(string const & fname)
  
 		// check selected filename
 		if (filename.empty()) {
-			owner->getMiniBuffer()->Set(_("Canceled."));
+			Dispatch(LFUN_MESSAGE, _("Canceled."));
 			return;
 		}
 	} else
@@ -1658,17 +1742,19 @@ void LyXFunc::Open(string const & fname)
 		filename += ".lyx";
 
 	// loads document
-	owner->getMiniBuffer()->Set(_("Opening document"),
-				    MakeDisplayPath(filename), "...");
+	Dispatch(LFUN_MESSAGE,
+		 _("Opening document") + ' '
+		 + MakeDisplayPath(filename) + "...");
 	Buffer * openbuf = bufferlist.loadLyXFile(filename);
 	if (openbuf) {
 		owner->view()->buffer(openbuf);
-		owner->getMiniBuffer()->Set(_("Document"),
-					    MakeDisplayPath(filename),
-					    _("opened."));
+		Dispatch(LFUN_MESSAGE,
+			 _("Document") + ' '
+			 + MakeDisplayPath(filename) + ' ' + _("opened."));
 	} else {
-		owner->getMiniBuffer()->Set(_("Could not open document"),
-					    MakeDisplayPath(filename));
+		Dispatch(LFUN_MESSAGE,
+			 _("Could not open document") + ' '
+			 + MakeDisplayPath(filename));
 	}
 }
 
@@ -1696,13 +1782,17 @@ void LyXFunc::doImport(string const & argument)
 
 		FileDialog fileDlg(owner, text, 
 			LFUN_IMPORT,
-			make_pair(string(_("Documents")), string(lyxrc.document_path)),
-			make_pair(string(_("Examples")), string(AddPath(system_lyxdir, "examples"))));
+			make_pair(string(_("Documents")),
+				  string(lyxrc.document_path)),
+			make_pair(string(_("Examples")),
+				  string(AddPath(system_lyxdir, "examples"))));
 			
-		string const extension = "*." + formats.Extension(format) + "| " +
-			formats.PrettyName(format) + " (*." + formats.Extension(format) + ")";
+		string const extension = "*." + formats.Extension(format)
+			+ "| " + formats.PrettyName(format)
+			+ " (*." + formats.Extension(format) + ")";
 
-		FileDialog::Result result = fileDlg.Select(initpath, extension);
+		FileDialog::Result result = fileDlg.Select(initpath,
+							   extension);
 
 		if (result.first == FileDialog::Later)
 			return;
@@ -1710,8 +1800,8 @@ void LyXFunc::doImport(string const & argument)
 		filename = result.second;
  
 		// check selected filename
-		if (filename.empty()) 
-			owner->getMiniBuffer()->Set(_("Canceled."));
+		if (filename.empty())
+			Dispatch(LFUN_MESSAGE, _("Canceled."));
 	}
 
 	// still no filename? abort
@@ -1726,9 +1816,9 @@ void LyXFunc::doImport(string const & argument)
 	// Check if the document already is open
 	if (bufferlist.exists(lyxfile)) {
 		switch (AskConfirmation(_("Document is already open:"), 
-				       MakeDisplayPath(lyxfile, 50),
-				       _("Do you want to close that document now?\n"
-					 "('No' will just switch to the open version)")))
+					MakeDisplayPath(lyxfile, 50),
+					_("Do you want to close that document now?\n"
+					  "('No' will just switch to the open version)")))
 			{
 			case 1: // Yes: close the document
 				if (!bufferlist.close(bufferlist.getBuffer(lyxfile)))
@@ -1739,7 +1829,7 @@ void LyXFunc::doImport(string const & argument)
 				owner->view()->buffer(bufferlist.getBuffer(lyxfile));
 				return;
 			case 3: // Cancel: Do nothing
-				owner->getMiniBuffer()->Set(_("Canceled."));
+				Dispatch(LFUN_MESSAGE, _("Canceled."));
 				return;
 			}
 	}
@@ -1749,11 +1839,11 @@ void LyXFunc::doImport(string const & argument)
 	if (f.exist() && !AskQuestion(_("A document by the name"), 
 				      MakeDisplayPath(lyxfile),
 				      _("already exists. Overwrite?"))) {
-		owner->getMiniBuffer()->Set(_("Canceled."));
+		Dispatch(LFUN_MESSAGE, _("Canceled"));
 		return;
 	}
 	// filename should be valid now
-
+	
 	Importer::Import(owner, filename, format);
 }
 
@@ -1798,3 +1888,50 @@ void LyXFunc::setMessage(string const & m)
 {
 	dispatch_buffer = m;
 }
+
+
+void LyXFunc::initMiniBuffer() 
+{
+	string text = _("Welcome to LyX!");
+	
+	// When meta-fake key is pressed, show the key sequence so far + "M-".
+	if (wasMetaKey()) {
+		keyseqStr();
+		text += "M-";
+	}
+
+	// Else, when a non-complete key sequence is pressed,
+	// show the available options.
+	else if (keyseqUncomplete()) 
+		text = keyseqOptions();
+   
+	// Else, show the buffer state.
+	else if (owner->view()->available()) {
+		Buffer * tmpbuf = owner->buffer();
+		
+		string const nicename = 
+			MakeDisplayPath(tmpbuf->fileName());
+		// Should we do this instead? (kindo like emacs)
+		// leaves more room for other information
+		text = "LyX: ";
+		text += nicename;
+		if (tmpbuf->lyxvc.inUse()) {
+			text += " [";
+			text += tmpbuf->lyxvc.version();
+			text += ' ';
+			text += tmpbuf->lyxvc.locker();
+			if (tmpbuf->isReadonly())
+				text += " (RO)";
+			text += ']';
+		} else if (tmpbuf->isReadonly())
+			text += " [RO]";
+		if (!tmpbuf->isLyxClean())
+			text += _(" (Changed)");
+	} else {
+		if (text != _("Welcome to LyX!")) // this is a hack
+			text = _("* No document open *");
+	}
+	
+	owner->message(text);
+}
+

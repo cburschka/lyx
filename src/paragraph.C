@@ -988,14 +988,14 @@ LyXParagraph::GetChar(LyXParagraph::size_type pos) const
 	}
 }
 #else
-LyXParagraph::value_type
-LyXParagraph::GetChar(LyXParagraph::size_type pos) const
-{
-	Assert(pos <= size());
-	if (!size() || pos == size()) return '\0';
-	
-	return text[pos];
-}
+//LyXParagraph::value_type
+//LyXParagraph::GetChar(LyXParagraph::size_type pos) const
+//{
+//	Assert(pos <= size());
+//	if (!size() || pos == size()) return '\0';
+//	
+//	return text[pos];
+//}
 #endif
 
 
@@ -1870,16 +1870,6 @@ int LyXParagraph::GetEndLabel(BufferParams const & bparams) const
 }
 
 
-LyXTextClass::size_type LyXParagraph::GetLayout() const
-{
-#ifndef NEW_INSETS
-	return FirstPhysicalPar()->layout;
-#else
-	return layout;
-#endif
-}
-
-
 char LyXParagraph::GetDepth() const
 {
 #ifndef NEW_INSETS
@@ -1991,30 +1981,7 @@ void LyXParagraph::SetOnlyLayout(BufferParams const & bparams,
 #else
 void LyXParagraph::SetOnlyLayout(LyXTextClass::size_type new_layout)
 {
-#if 0
-	LyXParagraph * par = this;
-	LyXParagraph * ppar = 0;
-	LyXParagraph * npar = 0;
-	
-	par->layout = new_layout;
-	
-	if (par->previous()) {
-		ppar = par->previous();
-		while(ppar
-		      && ppar->previous()
-		      && (ppar->params.depth() > par->params.depth()))
-			ppar = ppar->previous();
-	}
-	if (par->next()) {
-		npar = par->next();
-		while(npar
-		      && npar->next()
-		      && (npar->params.depth() > par->params.depth()))
-			npar = npar->next();
-	}
-#else
 	layout = new_layout;
-#endif
 }
 #endif
 

@@ -68,7 +68,7 @@ void LyXLex::Pimpl::verifyTable()
 {
 	// Check if the table is sorted and if not, sort it.
 	if (table
-	    && !sorted(table, table + no_items, compare_tags())) {
+	    && !lyx::sorted(table, table + no_items, compare_tags())) {
 		lyxerr << "The table passed to LyXLex is not sorted!\n"
 		       << "Tell the developers to fix it!" << endl;
 		// We sort it anyway to avoid problems.

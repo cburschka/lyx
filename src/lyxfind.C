@@ -7,20 +7,20 @@
 #include "lyxtext.h"
 #include "lyxfind.h"
 #include "LyXView.h"
-#include "minibuffer.h"
 #include "lyx_gui_misc.h"
 #include "support/textutils.h"
 #include "support/lstrings.h"
 #include "BufferView.h"
 #include "buffer.h"
+#include "gettext.h"
 
 int LyXReplace(BufferView * bv,
-		string const & searchstr,
-		string const & replacestr,
-		bool const & casesens,
-		bool const & matchwrd,
-		bool const & forward,
-		bool const & replaceall)
+	       string const & searchstr,
+	       string const & replacestr,
+	       bool const & casesens,
+	       bool const & matchwrd,
+	       bool const & forward,
+	       bool const & replaceall)
 {
    int replace_count = 0;
  

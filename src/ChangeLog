@@ -1,5 +1,84 @@
 2001-04-17  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
+	* minibuffer.[Ch]: reimplement so that commands is initiated and
+	run from lyxfunc, simplified som handling, and made the completion
+	and history code for complete. wip. 
+
+	* lyxfunc.C (processKeySym): call message
+	(miniDispatch): new temporary method
+	(LFUN_EXEC_COMMAND): reimplement for new minibuffer
+	(LFUN_MESSAGE): implement
+	(LFUN_MESSAGE_PUSH): implement
+	(LFUN_MESSAGE_POP): implement
+	(initMiniBuffer): the initial/defualt minibuffer message.
+
+	* lyxfont.[Ch]: inline some more getters
+
+	* lyx_gui_misc.C (WriteAlert): use LFUN_MESSAGE
+
+	* lyx_gui_misc.[Ch] (WriteStatus): remove method 
+
+	* lyx_cb.[Ch] (ShowMessage): remove delay arg, use LFUN_MESSAGE
+	(AutoSave): use LFUN_MESSAGE
+	(Reconfigure): ditto
+
+	* importer.C (Import): constify som local vars, use LFUN_MESSAGE
+
+	* figureForm.C: use LFUN_MESSAGE
+
+	* converter.C (runLaTeX): use LFUN_MESSAGE
+
+	* bufferview_funcs.C: use LFUN_MESSAGE
+	(Melt): ditto
+	(changeDepth): ditto
+
+	* bufferparams.h: use boost::
+
+	* bufferlist.h: inherit privately from noncopyable
+
+	* bufferlist.C (loadLyXFile): remove some commented code.
+
+	* buffer.C (runChktex): use LFUN_MESSAGE
+
+	* ShareContainer.h: inherit privately from noncopyable
+
+	* ParagraphParameters.[hC] (depth): inline it.
+
+	* LyXView.[Ch] (LyXView): connect the minibuffer signals to lyxfunc
+	methods.
+	(message): new method
+	(messagePush): ditto
+	(messagePop): ditto
+	(show): init minibuffer
+	(showState): direct call
+
+	* LaTeX.[Ch]: inherit privately from noncopyable
+	(run): change second arg to LyXFunc*, use LFUN_MESSAGE
+	instead of WriteStatus.
+
+	* FontLoader.C (doLoad): use LFUN_MESSAGE_PUSH and LFUN_MESSAGE_POP
+
+	* BufferView_pimpl.C (buffer): don't init minibuffer
+	(workAreaButtonPress): use LFUN_MESSAGE
+	(workAreaButtonRelease): ditto
+	(savePosition): ditto
+	(restorePosition): ditto
+	(MenuInsertLyXFile): ditto
+	(workAreaExpose): don't init minibuffer
+	(update): remove commented code, simplify
+
+	* BufferView2.C (openStuff): use LFUN_MESSAGE
+	(toggleFloat): ditto
+	(menuUndo): ditto
+	(menuRedo): ditto
+	(copyEnvironment): ditto
+	(pasteEnvironment): ditto
+	(copy): ditto
+	(cut): ditto
+	(paste): ditto
+	(gotoInset): ditto
+	(updateInset): remove some commented code
+
 	* lastfiles.h: inherit privately from noncopyable
 	* layout.h: ditto
 	* lyx_gui.h: ditto

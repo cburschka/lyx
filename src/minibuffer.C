@@ -13,129 +13,211 @@
 #include <config.h>
 
 #ifdef __GNUG__
-#pragma implementation "minibuffer.h"
+#pragma implementation
 #endif
 
+#include "minibuffer.h"
+
+#include "support/lyxalgo.h"
 #include "support/filetools.h"
-#include "lyx_main.h" 
-#include "lyxfunc.h"
-#include FORMS_H_LOCATION
-#include "minibuffer.h"  
 #include "LyXView.h"
-#include "debug.h"
 #include "gettext.h"
 #include "LyXAction.h"
 #include "BufferView.h"
-#include "buffer.h"
+
 
 using std::endl;
 using SigC::slot;
 
-extern bool keyseqUncomplete();
-extern string keyseqOptions(int l = 190);
-extern string keyseqStr(int l = 190);
 extern LyXAction lyxaction;
+
+
+namespace {
+
+struct prefix {
+	string p;
+	prefix(string const & s) 
+		: p(s) {}
+	bool operator()(string const & s) const {
+		return prefixIs(s, p);
+	}
+};
+
+} // end of anon namespace
+
 
 MiniBuffer::MiniBuffer(LyXView * o, FL_Coord x, FL_Coord y,
 		       FL_Coord h, FL_Coord w)
-	: owner(o)
+	: stored_(false), owner_(o), state_(spaces)
 {
-	text = _("Welcome to LyX!");
-	shows_no_match = true;
-	history_idx = history_cnt = 0;
 	add(FL_NORMAL_INPUT, x, y, h, w);
-	timer.timeout.connect(slot(this, &MiniBuffer::Init));
+	timer.setTimeout(6000);
+	timer.timeout.connect(slot(this, &MiniBuffer::init));
+	stored_timer.setTimeout(1500);
+	stored_timer.timeout.connect(slot(this, &MiniBuffer::stored_slot));
+	deactivate();
 }
 
 
-void MiniBuffer::ExecutingCB(FL_OBJECT * ob, long)
+void MiniBuffer::stored_slot() 
 {
-	MiniBuffer * obj = static_cast<MiniBuffer*>(ob->u_vdata);
-	lyxerr.debug() << "Getting ready to execute: " << obj->cur_cmd << endl;
-	obj->owner->view()->focus(true);
-
-	if (obj->cur_cmd.empty()) { 
-		obj->Init();
-		return ; 
+	if (stored_) {
+		stored_ = false;
+		fl_set_input(the_buffer, stored_input.c_str());
 	}
-	obj->Set(_("Executing:"), obj->cur_cmd);
-	obj->addHistory(obj->cur_cmd);
-	
-	// Dispatch only returns requested data for a few commands (ale)
-	string const res = obj->owner->getLyXFunc()->Dispatch(obj->cur_cmd);
-	lyxerr.debug() << "Minibuffer Res: " << res << endl;
-	obj->shows_no_match = false;
-
-	return ;
 }
 
 
-extern "C"
-void C_MiniBuffer_ExecutingCB(FL_OBJECT * ob, long)
+void MiniBuffer::stored_set(string const & str) 
 {
-	MiniBuffer * obj = static_cast<MiniBuffer*>(ob->u_vdata);
-	obj->Init();
+	stored_input = str;
+	stored_ = true;
+	stored_timer.start();
 }
 
 
-// This is not as dirty as it seems, the hidden buttons removed by this
-// function were just kludges for an uncomplete keyboard callback (ale)
-int MiniBuffer::peek_event(FL_OBJECT * ob, int event, FL_Coord, FL_Coord,
-			   int key, void */*xev*/)
+int MiniBuffer::peek_event(FL_OBJECT * ob, int event, int key)
 {
-	MiniBuffer * mini = static_cast<MiniBuffer*>(ob->u_vdata);
-
 	switch (event) {
 	case FL_KEYBOARD:
+	{
+		char const * tmp = fl_get_input(ob);
+		string input = tmp ? tmp : "";
+		if (stored_) {
+			stored_timer.stop();
+			input = stored_input;
+			fl_set_input(ob, input.c_str());
+			stored_ = false;
+		}
+		
 		switch (key) {
 		case XK_Down:
-			mini->history_idx++;
-			if (!mini->getHistory().empty()) {
-				fl_set_input(ob, mini->getHistory().c_str());
-			} else
-				mini->history_idx--;
+			if (hist_iter != history_->end()) {
+				++hist_iter;
+			}
+			if (hist_iter == history_->end()) {
+				// no further history
+				stored_set(input);
+				fl_set_input(ob, _("[End of history]"));
+			} else {
+				fl_set_input(ob, (*hist_iter).c_str());
+			}
 			return 1; 
 		case XK_Up:
-			if (mini->history_idx > 0) mini->history_idx--;
-			fl_set_input(ob, mini->getHistory().c_str());
+			if (hist_iter == history_->begin()) {
+				// no further history
+				stored_set(input);
+				fl_set_input(ob, _("[Beginning of history]"));
+			} else {
+				--hist_iter;
+				fl_set_input(ob, (*hist_iter).c_str());
+			}
 			return 1; 
 		case 9:
 		case XK_Tab:
 		{
-			// complete or increment the command
-			string const s(lyxaction.getApproxFuncName(fl_get_input(ob)));
-			if (!s.empty())
-				fl_set_input(ob, s.c_str());
+			// Completion handling.
+			
+			vector<string> comp;
+			lyx::copy_if(completion_.begin(),
+				     completion_.end(),
+				     back_inserter(comp), prefix(input));
+
+			if (comp.empty()) {
+				// No matches
+				string const tmp = input + _(" [no match]");
+				stored_set(input);
+				fl_set_input(ob, tmp.c_str());
+			} else if (comp.size() == 1) {
+				// Perfect match
+				string const tmp =
+					comp[0] + _(" [sole completion]");
+				stored_set(comp[0]);
+				fl_set_input(ob, tmp.c_str());
+			} else {
+				// More that one match
+				// Find maximal avaliable prefix
+				string const tmp = comp[0];
+				string test(input);
+				test += tmp[test.length()];
+				while (test.length() < tmp.length()) {
+					vector<string> vtmp;
+					lyx::copy_if(comp.begin(),
+						     comp.end(),
+						     back_inserter(vtmp),
+						     prefix(test));
+					if (vtmp.size() != comp.size()) {
+						test.erase(test.length() - 1);
+						break;
+					}
+					test += tmp[test.length()];
+				}
+				fl_set_input(ob, test.c_str());
+				
+				// How should the possible matches
+				// be visualized?
+				std::copy(comp.begin(), comp.end(),
+					  ostream_iterator<string>(cerr, "\n"));
+			}
 			return 1; 
 		}
 		case 27:
 		case XK_Escape:
 			// Abort
-			mini->owner->view()->focus(true);
-			mini->Init();
+			owner_->view()->focus(true);
+			init();
+			deactivate();
+			//escape.emit();
 			return 1; 
 		case 13:
 		case XK_Return:
-			// Execute a command. 
-			mini->cur_cmd = string(fl_get_input(ob));
-			ExecutingCB(ob, 0);
+		{
+			// First check for match
+			vector<string>::const_iterator cit =
+				std::find(completion_.begin(),
+					  completion_.end(),
+					  input);
+			if (cit == completion_.end()) {
+				// no such func/item
+				stored_set(input);
+				string const tmp = input + _(" [no match]");
+				fl_set_input(ob, tmp.c_str());
+			} else {
+				// Return the inputted string
+				deactivate();
+				owner_->view()->focus(true);
+				history_->push_back(input);
+				stringReady.emit(input);
+			}
 			return 1;
+		}
+		case XK_space:
+		{
+			// Depending on the input state spaces might not
+			// be allowed.
+			switch (state_) {
+			case spaces:
+				return 0;
+			case nospaces:
+			{
+				stored_set(input);
+				string const tmp = input + _(" [no match]");
+				fl_set_input(ob, tmp.c_str());
+				return 1;
+			}
+			}
+			
+		}
+		
 		default:
 			return 0;
 		}
-	case FL_PUSH:
-		// This actually clears the buffer.
-		mini->PrepareForCommand();
-		return 1;
-	case FL_DRAW:
-		//lyxerr << "Minibuffer event: DRAW" << endl;
-		break;
+	}
 	default:
 		//lyxerr << "Unhandled minibuffer event!" << endl;
 		break;
 	}
 	
-
 	return 0;
 }
 
@@ -143,17 +225,19 @@ int MiniBuffer::peek_event(FL_OBJECT * ob, int event, FL_Coord, FL_Coord,
 extern "C"
 int C_MiniBuffer_peek_event(FL_OBJECT * ob, int event, 
 			    FL_Coord, FL_Coord,
-			    int key, void * xev)
+			    int key, void * /*xev*/)
 {
-	return MiniBuffer::peek_event(ob, event, 0, 0, key, xev);
+	MiniBuffer * mini = static_cast<MiniBuffer*>(ob->u_vdata);
+	return mini->peek_event(ob, event, key);
 }
 
 
-void MiniBuffer::PrepareForCommand()
+void MiniBuffer::prepare()
 {
 	text.erase();
 	fl_set_input(the_buffer, "");
-	fl_set_focus_object(owner->getForm(), the_buffer);
+	activate();
+	fl_set_focus_object(owner_->getForm(), the_buffer);
 }
 
 
@@ -168,8 +252,7 @@ FL_OBJECT * MiniBuffer::add(int type, FL_Coord x, FL_Coord y,
         fl_set_object_gravity(obj, SouthWestGravity, SouthEastGravity);
         fl_set_object_color(obj, FL_MCOL, FL_MCOL);
         fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-	fl_set_object_callback(obj, C_MiniBuffer_ExecutingCB, 0);
-
+	
 	// To intercept Up, Down, Table for history
         fl_set_object_prehandler(obj, C_MiniBuffer_peek_event);
         obj->u_vdata = this;
@@ -181,103 +264,78 @@ FL_OBJECT * MiniBuffer::add(int type, FL_Coord x, FL_Coord y,
 }
 
 
-// Added optional arg `delay_secs', defaults to 4.
-//When 0, no timeout is done. RVDK_PATCH_5 
-void MiniBuffer::Set(string const& s1, string const& s2,
-		     string const& s3, unsigned int delay_secs)
+void MiniBuffer::message(string const & str) 
 {
-	if (delay_secs)
-		timer.setTimeout(delay_secs * 1000).restart();
-	else
-		timer.stop();
-	
-	string const ntext = strip(s1 + ' ' + s2 + ' ' + s3);
-
+	timer.restart();
+	string const ntext = strip(str);
 	if (!the_buffer->focus) {
 		fl_set_input(the_buffer, ntext.c_str());
-		XFlush(fl_get_display());
 		text = ntext;
 	}
 }
 
 
-void MiniBuffer::Init()
+void MiniBuffer::messagePush(string const & str) 
 {
-	// If we have focus, we don't want to change anything.
-	if (the_buffer->focus)
-		return;
-
-	// When meta-fake key is pressed, show the key sequence so far + "M-".
-	if (owner->getLyXFunc()->wasMetaKey()) {
-		text = owner->getLyXFunc()->keyseqStr();
-		text += " M-";
-	}
-
-	// Else, when a non-complete key sequence is pressed,
-	// show the available options.
-	else if (owner->getLyXFunc()->keyseqUncomplete()) 
-		text = owner->getLyXFunc()->keyseqOptions();
-   
-	// Else, show the buffer state.
-	else if (owner->view()->available()) {
-		string const nicename = 
-			MakeDisplayPath(owner->buffer()->
-					fileName());
-		// Should we do this instead? (kindo like emacs)
-		// leaves more room for other information
-		text = "LyX: ";
-		text += nicename;
-		if (owner->buffer()->lyxvc.inUse()) {
-			text += " [";
-			text += owner->buffer()->lyxvc.version();
-			text += ' ';
-			text += owner->buffer()->lyxvc.locker();
-			if (owner->buffer()->isReadonly())
-				text += " (RO)";
-			text += ']';
-		} else if (owner->buffer()->isReadonly())
-			text += " [RO]";
-		if (!owner->buffer()->isLyxClean())
-			text += _(" (Changed)");
-	} else {
-		if (text != _("Welcome to LyX!")) // this is a hack
-			text = _("* No document open *");
-	}
-	
-
-	fl_set_input(the_buffer, text.c_str());
-
-	timer.stop();
-
-	XFlush(fl_get_display());
+	text_stored = text;
+	message(str);
 }
 
 
-// allows to store and reset the contents one time. Usefull for
-// status messages like "load font" (Matthias)
-void MiniBuffer::Store()
+void MiniBuffer::messagePop()
 {
-	text_stored = fl_get_input(the_buffer);
-}
-
-
-void MiniBuffer::Reset()
-{
-	if (!text_stored.empty()){
-		Set(text_stored);
+	if (!text_stored.empty()) {
+		message(text_stored);
 		text_stored.erase();
 	}
 }
 
 
-void MiniBuffer::Activate()
+void MiniBuffer::addSet(string const & s1, string const & s2)
+{
+	string const str = text + ' ' +  s1 + ' ' + s2;
+	message(str);
+}
+
+
+void MiniBuffer::getString(State spaces,
+			   vector<string> const & completion,
+			   vector<string> & history)
+{
+	state_ = spaces;
+	completion_ = completion;
+	history_ = &history;
+	hist_iter = history_->end();
+	prepare();
+}
+
+
+void MiniBuffer::init()
+{
+	// If we have focus, we don't want to change anything.
+	if (the_buffer->focus)
+		return;
+
+	timeout.emit();
+	timer.stop();
+}
+
+
+void MiniBuffer::activate()
 {
 	fl_activate_object(the_buffer);
 	fl_redraw_object(the_buffer);
 }
 
 
-void MiniBuffer::Deactivate()
+void MiniBuffer::deactivate()
 {
+	fl_redraw_object(the_buffer);
 	fl_deactivate_object(the_buffer);
+}
+
+
+void MiniBuffer::redraw() 
+{
+	fl_redraw_object(the_buffer);
 }

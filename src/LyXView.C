@@ -38,6 +38,7 @@
 #include "ToolbarDefaults.h"
 #include "lyx_gui_misc.h"	// [update,Close,Redraw]AllBufferRelatedDialogs
 #include "bufferview_funcs.h" // CurrentState()
+#include "gettext.h"
 
 using std::endl;
 
@@ -57,6 +58,13 @@ LyXView::LyXView(int width, int height)
 	fl_set_form_atclose(form_, C_LyXView_atCloseMainFormCB, 0);
 	lyxerr[Debug::INIT] << "Initializing LyXFunc" << endl;
 	lyxfunc = new LyXFunc(this);
+
+	// Connect the minibuffer signals
+	minibuffer->stringReady.connect(SigC::slot(lyxfunc,
+						   &LyXFunc::miniDispatch));
+	minibuffer->timeout.connect(SigC::slot(lyxfunc,
+					       &LyXFunc::initMiniBuffer));
+	
 	intl = new Intl;
 
 	// Make sure the buttons are disabled if needed.
@@ -90,7 +98,7 @@ LyXView::~LyXView()
 void LyXView::redraw() {
 	lyxerr[Debug::INFO] << "LyXView::redraw()" << endl;
 	fl_redraw_form(form_);
-	minibuffer->Activate();
+	minibuffer->redraw();
 }
 
 
@@ -141,6 +149,24 @@ LyXFunc * LyXView::getLyXFunc() const
 MiniBuffer * LyXView::getMiniBuffer() const
 {
 	return minibuffer;
+}
+
+
+void LyXView::message(string const & str)
+{
+	minibuffer->message(str);
+}
+
+
+void LyXView::messagePush(string const & str)
+{
+	minibuffer->messagePush(str);
+}
+
+
+void LyXView::messagePop()
+{
+	minibuffer->messagePop();
 }
 
 
@@ -208,7 +234,7 @@ void LyXView::setPosition(int x, int y)
 void LyXView::show(int place, int border, string const & title)
 {
 	fl_show_form(form_, place, border, title.c_str());
-	minibuffer->Init();
+	lyxfunc->initMiniBuffer();
 #if FL_REVISION < 89 || (FL_REVISION == 89 && FL_FIXLEVEL < 5)
 	InitLyXLookup(fl_get_display(), form_->window);
 #endif
@@ -358,7 +384,7 @@ void LyXView::updateWindowTitle()
 	string title = "LyX";
 
 	if (view()->available()) {
-		string cur_title = buffer()->fileName();
+		string const cur_title = buffer()->fileName();
 		if (!cur_title.empty()){
 			title += ": " + MakeDisplayPath(cur_title, 30);
 			if (!buffer()->isLyxClean())
@@ -377,7 +403,7 @@ void LyXView::updateWindowTitle()
 
 void LyXView::showState()
 {
-	getMiniBuffer()->Set(CurrentState(view()));
+	message(CurrentState(view()));
 	getToolbar()->update();
 	menubar->update();
 }

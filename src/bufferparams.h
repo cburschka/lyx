@@ -190,9 +190,9 @@ public:
 	///
 	string pagestyle;
 	///
-	array<Bullet, 4> temp_bullets;
+	boost::array<Bullet, 4> temp_bullets;
 	///
-	array<Bullet, 4> user_defined_bullets;
+	boost::array<Bullet, 4> user_defined_bullets;
 	///
 	void readPreamble(LyXLex &);
 	///

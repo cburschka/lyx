@@ -39,7 +39,7 @@ class Dialogs;
   view is supposed (at least IMHO) to be another class, that shows its output
   in one or more LyXView's.
  */
-class LyXView : public SigC::Object, public boost::noncopyable {
+class LyXView : public SigC::Object, boost::noncopyable {
 public:
 	/// constructor
 	LyXView(int w, int h);
@@ -84,6 +84,13 @@ public:
 	MiniBuffer * getMiniBuffer() const;
 
 	///
+	void message(string const &);
+	///
+	void messagePush(string const & str);
+	///
+	void messagePop();
+	
+	///
 	Menubar * getMenubar() const;
 
 	///
@@ -100,7 +107,6 @@ public:
 
 	/// Updates the title of the window
 	void updateWindowTitle();
-
 
 	/// Show state (toolbar and font in minibuffer)
 	void showState();

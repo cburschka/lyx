@@ -1,3 +1,4 @@
+// -*- C++ -*-
 /*
  * lengthentry.h
  * (C) 2001 LyX Team

@@ -26,7 +26,7 @@
 
 #include <boost/utility.hpp>
 
-class MiniBuffer;
+class LyXFunc;
 
 ///
 class TeXErrors {
@@ -97,7 +97,7 @@ bool operator!=(Aux_Info const & a, Aux_Info const & o)
 
 
 ///
-class LaTeX : public boost::noncopyable {
+class LaTeX : boost::noncopyable {
 public:
 	/** Return values from scanLogFile() and run() (to come)
 	    
@@ -152,7 +152,7 @@ public:
 	virtual ~LaTeX() {}
 	
 	/// runs LaTeX several times
-	int run(TeXErrors &, MiniBuffer *);
+	int run(TeXErrors &, LyXFunc *);
 
 	///
 	int getNumErrors() { return num_errors;}

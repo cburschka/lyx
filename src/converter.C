@@ -25,10 +25,11 @@
 #include "bufferview_funcs.h"
 #include "LaTeX.h"
 #include "LyXView.h"
-#include "minibuffer.h"
 #include "lyx_gui_misc.h"
 #include "lyx_cb.h" // ShowMessage()
 #include "support/lyxfunctional.h"
+#include "lyxfunc.h"
+#include "gettext.h"
 
 using std::vector;
 using std::queue;
@@ -817,7 +818,8 @@ bool Converters::runLaTeX(Buffer const * buffer, string const & command)
 
 	if (bv) {
 		ProhibitInput(bv);
-		bv->owner()->getMiniBuffer()->Set(_("Running LaTeX..."));
+		bv->owner()->getLyXFunc()->Dispatch(LFUN_MESSAGE,
+						    _("Running LaTeX..."));
 		// Remove all error insets
 		need_redraw = bv->removeAutoInsets();
 	}
@@ -827,7 +829,7 @@ bool Converters::runLaTeX(Buffer const * buffer, string const & command)
 	TeXErrors terr;
 	LaTeX latex(command, name, buffer->filepath);
 	int result = latex.run(terr,
-			       bv ? bv->owner()->getMiniBuffer() : 0);
+			       bv ? bv->owner()->getLyXFunc() : 0);
 	
 
 	if (bv) {
