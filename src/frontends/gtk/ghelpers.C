@@ -12,8 +12,8 @@
 
 #include "ghelpers.h"
 
+#include "lyxrc.h"
 #include "debug.h"
-#include "lengthcommon.h"
 
 #include "support/filetools.h"
 #include "support/path_defines.h"
@@ -23,6 +23,46 @@ using std::vector;
 
 namespace lyx {
 namespace frontend {
+
+string const getDefaultUnit()
+{
+	switch (lyxrc.default_papersize) {
+		case PAPER_DEFAULT: return "cm";
+		case PAPER_USLETTER:
+		case PAPER_LEGALPAPER:
+		case PAPER_EXECUTIVEPAPER: return "in"; break;
+		case PAPER_A3PAPER:
+		case PAPER_A4PAPER:
+		case PAPER_A5PAPER:
+		case PAPER_B5PAPER: return "cm"; break;
+	}
+}
+
+
+void unitsComboFromLength(Gtk::ComboBox * combo,
+                           Gtk::TreeModelColumn<Glib::ustring> const & stringcol,
+                           LyXLength const & len,
+                           std::string defunit)
+{
+	string unit = stringFromUnit(len.unit());
+	if (unit.empty())
+		unit = defunit;
+
+	Gtk::TreeModel::iterator it = combo->get_model()->children().begin();
+	Gtk::TreeModel::iterator end = combo->get_model()->children().end();
+	for (; it != end ; ++it) {
+		if ((*it)[stringcol] == unit) {
+			combo->set_active(it);
+			return;
+		}
+	}
+
+	// Fallen through, we didn't find the target length!
+	combo->set_active(0);
+	lyxerr << "unitsComboFromLength: couldn't find "
+		"target unit '" << unit << "'\n";
+}
+
 
 vector<string> const buildLengthUnitList()
 {

@@ -54,7 +54,7 @@
 #include "GMathDelim.h"
 #include "FormBibitem.h"
 #include "FormBibtex.h"
-#include "FormBox.h"
+#include "GBox.h"
 #include "FormBranch.h"
 #include "GChanges.h"
 #include "GCharacter.h"
@@ -190,8 +190,9 @@ Dialogs::DialogPtr Dialogs::build(string const & name)
 		dialog->setView(new FormBibtex(*dialog));
 		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
 	} else if (name == "box") {
+		dialog->bc().view(new GBC(dialog->bc()));
 		dialog->setController(new ControlBox(*dialog));
-		dialog->setView(new FormBox(*dialog));
+		dialog->setView(new GBox(*dialog));
 		dialog->bc().bp(new OkApplyCancelReadOnlyPolicy);
 	} else if (name == "changes") {
 		dialog->bc().view(new GBC(dialog->bc()));

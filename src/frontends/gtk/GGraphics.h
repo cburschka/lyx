@@ -45,9 +45,6 @@ private:
 	void PopulateComboBox(Gtk::ComboBox * combo,
 				  std::vector<std::string> const & strings);
 
-	void updateComboFromLength(Gtk::ComboBox * combo,
-			     LyXLength const & len);
-
 	bool updating_;
 
 	/// Store the LaTeX names for the rotation origins.

@@ -43,7 +43,7 @@ mouse_button::state gButtonToLyx(guint gdkbutton)
 	case 5:
 		return mouse_button::button5;
 	}
-	
+
 	// This shouldn't happen, according to gdk docs
 	lyxerr << "gButtonToLyx: unhandled button index\n";
 	return mouse_button::button1;

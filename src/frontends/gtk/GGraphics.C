@@ -192,18 +192,6 @@ void GGraphics::doBuild()
 	// Store the identifiers for later
 	origins_ = getSecond(origindata);
 	PopulateComboBox(origincombo_, getFirst(origindata));
-
-	// set the right default unit
-	switch (lyxrc.default_papersize) {
-		case PAPER_DEFAULT: break;
-		case PAPER_USLETTER:
-		case PAPER_LEGALPAPER:
-		case PAPER_EXECUTIVEPAPER: defaultUnit = "in"; break;
-		case PAPER_A3PAPER:
-		case PAPER_A4PAPER:
-		case PAPER_A5PAPER:
-		case PAPER_B5PAPER: defaultUnit = "cm"; break;
-	}
 }
 
 
@@ -236,28 +224,6 @@ void GGraphics::PopulateComboBox(Gtk::ComboBox * combo,
 	Gtk::CellRendererText * cell = Gtk::manage(new Gtk::CellRendererText);
 	combo->pack_start(*cell, true);
 	combo->add_attribute(*cell, "text", 0);
-}
-
-
-void GGraphics::updateComboFromLength(Gtk::ComboBox * combo,
-			     LyXLength const & len)
-{
-	string unit = stringFromUnit(len.unit());
-	if (unit.empty())
-		unit = defaultUnit;
-
-	Gtk::TreeModel::iterator it = combo->get_model()->children().begin();
-	Gtk::TreeModel::iterator end = combo->get_model()->children().end();
-	for (; it != end ; ++it) {
-		if ((*it)[stringcol_] == unit) {
-			combo->set_active(it);
-			return;
-		}
-	}
-	// Fallen through, we didn't find the target length!
-	combo->set_active(0);
-	lyxerr << "GGraphics::updateComboFromLength: couldn't find "
-		"target unit '" << unit << "'\n";
 }
 
 
@@ -368,6 +334,9 @@ void GGraphics::apply()
 
 
 void GGraphics::update() {
+	// set the right default unit
+	defaultUnit = getDefaultUnit();
+
 	// Update dialog with details from inset
 	InsetGraphicsParams & igp = controller().params();
 
@@ -397,9 +366,11 @@ void GGraphics::update() {
 
 	outputscalespin_->get_adjustment()->set_value(igp.scale);
 	widthspin_->get_adjustment()->set_value(igp.width.value());
-	updateComboFromLength(widthunitscombo_, igp.width);
+	unitsComboFromLength(widthunitscombo_, stringcol_,
+	                     igp.width, defaultUnit);
 	heightspin_->get_adjustment()->set_value(igp.height.value());
-	updateComboFromLength(heightunitscombo_, igp.height);
+	unitsComboFromLength(heightunitscombo_, stringcol_,
+	                     igp.height, defaultUnit);
 
 	if (!float_equal(igp.scale, 0.0, 0.05)) {
 		// scaling sizing mode
@@ -470,7 +441,8 @@ void GGraphics::updateBB(string const & filename, string const & bb_inset)
 			righttopxspin_->set_text("");
 			righttopyspin_->set_text("");
 		}
-		updateComboFromLength(bbunitscombo_,LyXLength("bp"));
+		unitsComboFromLength(bbunitscombo_, stringcol_,
+		                     LyXLength("bp"), defaultUnit);
 	} else {
 		// get the values from the inset
 		lyxerr[Debug::GRAPHICS]
@@ -480,7 +452,7 @@ void GGraphics::updateBB(string const & filename, string const & bb_inset)
 		LyXLength anyLength;
 		anyLength = LyXLength(token(bb_inset, ' ', 0));
 
-		updateComboFromLength(bbunitscombo_, anyLength);
+		unitsComboFromLength(bbunitscombo_, stringcol_, anyLength, defaultUnit);
 
 		leftbottomxspin_->get_adjustment()->set_value(anyLength.value());
 
@@ -533,7 +505,8 @@ void GGraphics::onBBFromFileClicked()
 			leftbottomyspin_->set_text(token(bb, ' ', 1));
 			righttopxspin_->set_text(token(bb, ' ', 2));
 			righttopyspin_->set_text(token(bb, ' ', 3));
-			updateComboFromLength(bbunitscombo_,LyXLength("bp"));
+			unitsComboFromLength(bbunitscombo_, stringcol_,
+			                     LyXLength("bp"), defaultUnit);
 		}
 		controller().bbChanged = false;
 	} else {
@@ -541,7 +514,8 @@ void GGraphics::onBBFromFileClicked()
 		leftbottomyspin_->set_text("");
 		righttopxspin_->set_text("");
 		righttopyspin_->set_text("");
-		updateComboFromLength(bbunitscombo_,LyXLength("bp"));
+		unitsComboFromLength(bbunitscombo_, stringcol_,
+		                     LyXLength("bp"), defaultUnit);
 	}
 	bc().input(ButtonPolicy::SMI_VALID);
 }

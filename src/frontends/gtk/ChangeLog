@@ -1,3 +1,11 @@
+2004-11-14  John Spray  <spray_john@users.sourceforge.net>
+
+	* The Box dialog:
+	  Dialogs.C, Makefile.am, GBox.C, GBox.h
+	* ghelpers.[Ch], GGraphics.[Ch]: new functions unitsComboFromLength
+		and getDefaultUnit take functionality that was in GGraphics into 
+		ghelpers
+
 2004-11-08  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* GToolbar.C (selected): use layoutSelected()

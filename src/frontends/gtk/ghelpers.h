@@ -12,11 +12,22 @@
 #ifndef GHELPERS_H
 #define GHELPERS_H
 
+#include "lengthcommon.h"
+
+#include <gtkmm.h>
+
 #include <string>
 #include <vector>
 
 namespace lyx {
 namespace frontend {
+
+std::string const getDefaultUnit();
+
+void unitsComboFromLength(Gtk::ComboBox * combo,
+                           Gtk::TreeModelColumn<Glib::ustring> const & stringcol,
+                           LyXLength const & len,
+                           std::string defunit);
 
 std::vector<std::string> const buildLengthUnitList();
 
