@@ -487,7 +487,7 @@ FuncStatus LyXFunc::getStatus(kb_action action,
 		break;
 	}
 	case LFUN_MATH_VALIGN:
-		if (mathcursor) {
+		if (mathcursor && mathcursor->formula()->getType() != LM_OT_SIMPLE) {
 			char align = mathcursor->valign();
 			if (align == '\0') {
 				disable = true;
@@ -507,7 +507,7 @@ FuncStatus LyXFunc::getStatus(kb_action action,
 		break;
 
 	case LFUN_MATH_HALIGN:
-		if (mathcursor) {
+		if (mathcursor && mathcursor->formula()->getType() != LM_OT_SIMPLE) {
 			char align = mathcursor->halign();
 			if (align == '\0') {
 				disable = true;
@@ -561,7 +561,8 @@ FuncStatus LyXFunc::getStatus(kb_action action,
 	case LFUN_MATH_ROW_DELETE:
 	case LFUN_MATH_COLUMN_INSERT:
 	case LFUN_MATH_COLUMN_DELETE:
-		disable = !mathcursor || !mathcursor->halign();
+		disable = !mathcursor || !mathcursor->halign() ||
+			mathcursor->formula()->getType() == LM_OT_SIMPLE;
 		break;
 
 	default:
