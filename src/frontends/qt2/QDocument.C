@@ -337,6 +337,10 @@ void QDocument::apply()
 	params.papersize2 = VMARGIN_PAPER_TYPE(
 		dialog_->pageLayoutModule->papersizeCO->currentItem());
 
+	// custom, A3, B3 and B4 paper sizes need geometry
+	int psize = dialog_->pageLayoutModule->papersizeCO->currentItem();
+	bool geom_papersize = (psize == 1 || psize == 5 || psize == 8 || psize == 9);
+
 	params.paperwidth = widgetsToLength(dialog_->pageLayoutModule->paperwidthLE,
 		dialog_->pageLayoutModule->paperwidthUnitCO);
 
@@ -355,7 +359,8 @@ void QDocument::apply()
 
 	// margins
 	params.use_geometry =
-		(dialog_->marginsModule->marginCO->currentItem() == 1);
+		(dialog_->marginsModule->marginCO->currentItem() == 1
+		|| geom_papersize);
 
 	int margin = dialog_->marginsModule->marginCO->currentItem();
 	if (margin > 0) {
