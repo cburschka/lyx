@@ -145,7 +145,7 @@ AC_LANG_C
 AC_C_CONST
 AC_C_INLINE
 # Do the real setup now
-AM_GNU_GETTEXT
+LYX_GNU_GETTEXT
 # a hack for those who try to change LyX, but do not have gettext installed 
 case  "${XGETTEXT}" in 
  *:) XGETTEXT='cp ${srcdir}/lyx.pot ./${PACKAGE}.po ; :'

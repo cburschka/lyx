@@ -1,5 +1,10 @@
 1999-11-17  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
+	* configure.in: Use LYX_GNU_GETTEXT.
+
+	* acinclude.m4 (LYX_GNU_GETTEXT): new macro, essentially a copy of
+	AM_GNU_GETTEXT with a bug fixed. 
+
 	* src/lyx_cb.C (RunLinuxDoc): add a cast to please dec cxx.
 
 	* src/chset.C: add "using std::ifstream;" to please dec cxx.
