@@ -1,3 +1,8 @@
+2003-11-06  José Matos  <jamatos@lyx.org>
+
+	* lyxconvert_224.py (convert_breaks): Create an empty paragraph for
+	possible upper page and line breaks, if necessary.
+
 2003-10-27  José Matos  <jamatos@lyx.org>
 
 	* lyxconvert_223.py:

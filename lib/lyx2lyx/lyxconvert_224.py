@@ -203,13 +203,29 @@ def convert_breaks(lines):
         lines[i] = ""
         i = i + 1
 
-        if pb_top != -1:
-            lines.insert(i, "\\newpage ")
-            i = i + 1
+        #  Create an empty paragraph for line and page break that belong
+        # above the paragraph
+        #  To simplify the code, and maintain the same insertion point,
+        # I inserted by reverse order. It looks funny. :-)
+        if pb_top !=-1 or line_top != -1:
+            k = i - 3
+            lines.insert(k, '')
+            lines.insert(k, '\\end_layout')
 
-        if line_top != -1:
-            lines.insert(i, "\\lyxline ")
-            i = i + 1
+            if line_top != -1:
+                lines.insert(k, '')
+                lines.insert(k, "\\lyxline ")
+                i = i + 2
+
+            if pb_top != -1:
+                lines.insert(k, '')
+                lines.insert(k, "\\newpage ")
+                i = i + 2
+
+            lines.insert(k, '')
+            lines.insert(k, '')
+            lines.insert(k, '\\begin_layout Standard')
+            i = i + 5
 
         # Ensure that nested style are converted later.
         k = find_end_of(lines, i, "\\begin_layout", "\\end_layout")
