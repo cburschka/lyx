@@ -118,9 +118,7 @@ enum LyXRCTags {
 	RC_PREVIEW,
 	RC_PREVIEW_HASHED_LABELS,
 	RC_PREVIEW_SCALE_FACTOR,
-#ifdef USE_PSPELL
-	RC_USE_PSPELL,
-#endif
+	RC_USE_SPELL_LIB,
 	RC_USER_NAME,
 	RC_USER_EMAIL,
 	RC_LAST
@@ -280,10 +278,9 @@ enum LyXRCTags {
 	string ascii_roff_command;
 	///
 	unsigned int ascii_linelen;
+	/// use library instead of process
+	bool use_spell_lib;
 	/// Ispell command
-#ifdef USE_PSPELL
-	bool use_pspell;
-#endif
 	string isp_command;
 	/// Accept compound words in spellchecker?
 	bool isp_accept_compound;

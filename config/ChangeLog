@@ -1,5 +1,15 @@
 2003-03-25  John Levon  <levon@movementarian.org>
 
+	* Makefile.am:
+	* aspell.m4: add
+
+	* pspell.m4: some more fixes
+
+	* configure.in:
+	* configure.ac: prefer new aspell to pspell
+
+2003-03-25  John Levon  <levon@movementarian.org>
+
 	* pspell.m4: fix up the tests again
 
 2003-03-24  Lars Gullik Bjønnes  <larsbj@gullik.net>

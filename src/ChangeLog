@@ -1,3 +1,13 @@
+2003-03-25  John Levon  <levon@movementarian.org>
+
+	* Makefile.am:
+	* aspell_local.h:
+	* aspell.C: add new aspell support
+
+	* lyxrc.h:
+	* lyxrc.C: Make use_pspell be use_spell_lib. Always
+	have it accessible.
+
 2003-03-25  Angus Leeming  <leeming@lyx.org>
 
 	* lfuns.h:

@@ -24,6 +24,10 @@
 #include "ispell.h"
 #ifdef USE_PSPELL
 # include "pspell.h"
+#else
+#ifdef USE_ASPELL
+# include "aspell_local.h"
+#endif
 #endif
 
 #include "frontends/Alert.h"
@@ -55,6 +59,30 @@ void ControlSpellchecker::clearParams()
 	endSession();
 }
 
+namespace {
+
+SpellBase * getSpeller(BufferParams const & bp)
+{
+	string lang = (lyxrc.isp_use_alt_lang)
+	              ? lyxrc.isp_alt_lang
+		      : bp.language->code();
+
+#ifdef USE_ASPELL
+	if (lyxrc.use_spell_lib)
+		return new ASpell(bp, lang);
+#endif
+#ifdef USE_PSPELL
+	if (lyxrc.use_spell_lib)
+		return new PSpell(bp, lang);
+#endif
+
+	lang = (lyxrc.isp_use_alt_lang) ?
+		lyxrc.isp_alt_lang : bp.language->lang();
+
+	return new ISpell(bp, lang);
+}
+
+}
 
 void ControlSpellchecker::startSession()
 {
@@ -66,23 +94,7 @@ void ControlSpellchecker::startSession()
 		return;
 	}
 
-	// create spell object
-	string tmp;
-#ifdef USE_PSPELL
-	if (lyxrc.use_pspell) {
-		tmp = (lyxrc.isp_use_alt_lang) ?
-			lyxrc.isp_alt_lang : buffer()->params.language->code();
-
-		speller_.reset(new PSpell(buffer()->params, tmp));
-	} else {
-#endif
-		tmp = (lyxrc.isp_use_alt_lang) ?
-			lyxrc.isp_alt_lang : buffer()->params.language->lang();
-
-		speller_.reset(new ISpell(buffer()->params, tmp));
-#ifdef USE_PSPELL
-	}
-#endif
+	speller_.reset(getSpeller(buffer()->params));
 
 	// reset values to initial
 	newval_ = 0.0;

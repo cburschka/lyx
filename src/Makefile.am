@@ -87,6 +87,8 @@ lyx_SOURCES = \
 	ToolbarDefaults.C \
 	ToolbarDefaults.h \
 	WordLangTuple.h \
+	aspell.C \
+	aspell_local.h \
 	author.C \
 	author.h \
 	boost.C \

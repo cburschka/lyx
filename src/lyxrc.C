@@ -141,9 +141,9 @@ keyword_item lyxrcTags[] = {
 	{ "\\use_escape_chars", LyXRC::RC_USE_ESC_CHARS },
 	{ "\\use_input_encoding", LyXRC::RC_USE_INP_ENC },
 	{ "\\use_personal_dictionary", LyXRC::RC_USE_PERS_DICT },
-#ifdef USE_PSPELL
-	{ "\\use_pspell", LyXRC::RC_USE_PSPELL },
-#endif
+	// compatibility with versions older than 1.4.0 only
+	{ "\\use_pspell", LyXRC::RC_USE_SPELL_LIB },
+	{ "\\use_spell_lib", LyXRC::RC_USE_SPELL_LIB },
 	{ "\\use_tempdir", LyXRC::RC_USETEMPDIR },
 	{ "\\user_email", LyXRC::RC_USER_EMAIL },
 	{ "\\user_name", LyXRC::RC_USER_NAME },
@@ -227,9 +227,7 @@ void LyXRC::setDefaults() {
 	backupdir_path.erase();
 	display_graphics = grfx::ColorDisplay;
 	// Spellchecker settings:
-#ifdef USE_PSPELL
-	use_pspell = true;
-#endif
+	use_spell_lib = true;
 	isp_command = "ispell";
 	isp_accept_compound = false;
 	isp_use_input_encoding = false;
@@ -879,13 +877,11 @@ int LyXRC::read(string const & filename)
 			}
 			break;
 			// Spellchecker settings:
-#ifdef USE_PSPELL
-		case RC_USE_PSPELL:
+		case RC_USE_SPELL_LIB:
 			if (lexrc.next()) {
-				use_pspell = lexrc.getBool();
+				use_spell_lib = lexrc.getBool();
 			}
 			break;
-#endif
 		case RC_SPELL_COMMAND:
 			if (lexrc.next()) {
 				isp_command = lexrc.getString();
@@ -1628,12 +1624,10 @@ void LyXRC::output(ostream & os) const
 		os << "\n#\n"
 		   << "# SPELLCHECKER SECTION ##############################\n"
 		   << "#\n\n";
-#ifdef USE_PSPELL
-	case RC_USE_PSPELL:
-		if (use_pspell != system_lyxrc.use_pspell) {
-			os << "\\use_pspell " << tostr(use_pspell) << '\n';
+	case RC_USE_SPELL_LIB:
+		if (use_spell_lib != system_lyxrc.use_spell_lib) {
+			os << "\\use_spell_lib " << tostr(use_spell_lib) << '\n';
 		}
-#endif
 	case RC_SPELL_COMMAND:
 		if (isp_command != system_lyxrc.isp_command) {
 			os << "\\spell_command \"" << isp_command << "\"\n";
