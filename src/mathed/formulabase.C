@@ -412,13 +412,19 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 		updateLocal(bv, false);
 		break;
 
+	case LFUN_HOMESEL:
+		sel = true;
+
 	case LFUN_HOME:
-		mathcursor->home();
+		mathcursor->home(sel);
 		updateLocal(bv, false);
 		break;
 
+	case LFUN_ENDSEL:
+		sel = true;
+
 	case LFUN_END:
-		mathcursor->end();
+		mathcursor->end(sel);
 		updateLocal(bv, false);
 		break;
 
@@ -492,8 +498,6 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 		mathcursor->selCopy();
 		break;
 
-	case LFUN_HOMESEL:
-	case LFUN_ENDSEL:
 	case LFUN_WORDRIGHTSEL:
 	case LFUN_WORDLEFTSEL:
 		break;

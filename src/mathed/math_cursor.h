@@ -73,9 +73,9 @@ public:
 	///
 	void backspace();
 	///
-	void home();
+	void home(bool sel = false);
 	///
-	void end();
+	void end(bool sel = false);
 	///
 	bool right(bool sel = false);
 	///

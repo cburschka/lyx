@@ -439,7 +439,7 @@ void Parser::tokenize(string const & buffer)
 		}
 	}
 
-#if 1
+#if 0
 	lyxerr << "\nTokens: ";
 	for (unsigned i = 0; i < tokens_.size(); ++i)
 		lyxerr << tokens_[i];

@@ -368,9 +368,10 @@ void MathCursor::setPos(int x, int y)
 }
 
 
-void MathCursor::home()
+void MathCursor::home(bool sel)
 {
 	dump("home 1");
+	selHandle(sel);
 	macroModeClose();
 	lastcode_ = LM_TC_VAR;
 	if (!par()->idxHome(idx(), pos())) 
@@ -379,9 +380,10 @@ void MathCursor::home()
 }
 
 
-void MathCursor::end()
+void MathCursor::end(bool sel)
 {
 	dump("end 1");
+	selHandle(sel);
 	macroModeClose();
 	lastcode_ = LM_TC_VAR;
 	if (!par()->idxEnd(idx(), pos()))
