@@ -113,11 +113,11 @@ void rectText(string const & str, LyXFont const & f,
 	int & ascent, 
 	int & descent)
 {
-	QFontMetrics const & metrics(metrics(f));
+	QFontMetrics const & m(metrics(f));
  
 	w = width(str, f);
-	ascent = metrics.ascent();
-	descent = metrics.descent();
+	ascent = m.ascent();
+	descent = m.descent();
 }
 
 
@@ -127,13 +127,13 @@ void buttonText(string const & str, LyXFont const & f,
 	int & ascent, 
 	int & descent)
 {
-	QFontMetrics const & metrics(metrics(f));
+	QFontMetrics const & m(metrics(f));
  
 	static int const d = 3;
 	
 	w = width(str, f) + d * 2 + 2;
-	ascent = metrics.ascent() + d;
-	descent = metrics.descent() + d;
+	ascent = m.ascent() + d;
+	descent = m.descent() + d;
 }
 
 } // namespace font_metrics
