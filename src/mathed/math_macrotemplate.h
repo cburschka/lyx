@@ -43,12 +43,11 @@ public:
 	///
 	MathParInset * getMacroPar(int) const;
 	///
+	void setMacroPar(int, MathedArray const &);
+	///
 	void SetMacroFocus(int &, int, int);
 	///
 	void setEditMode(bool);
-	
-	/// Replace the appropriate arguments with a specific macro's data
-	void update(MathMacro const & m);
 private:
 	/// Are we in edit mode or not?
 	bool edit_;

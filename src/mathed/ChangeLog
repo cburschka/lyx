@@ -1,3 +1,10 @@
+
+2001-02-14  André Pönitz  <poenitz@htwm.de>
+  * math_macrotemplate.[Ch]:
+    math_macro.C: move update() functionality to the macro
+
+	* math_rowst.h: split MathedRowSt into "data" and "list"
+
 2001-03-01  Lars Gullik Bjønnes  <larsbj@trylle.birdstep.com>
 
 	* math_macrotemplate.C (update): use MathMacro::getArg, and

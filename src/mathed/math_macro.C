@@ -74,8 +74,8 @@ MathedInset * MathMacro::Clone()
 
 void MathMacro::Metrics()
 {
-	if (args_.size() > 0)
-		tmplate_->update(*this);
+	for (int i = 0; i < args_.size(); ++i) 
+    tmplate_->args_[i] = getArg(i);
 	tmplate_->SetStyle(size());
 	tmplate_->Metrics();
 	width = tmplate_->Width();

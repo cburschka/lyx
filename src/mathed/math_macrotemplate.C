@@ -116,14 +116,6 @@ void MathMacroTemplate::Metrics()
 }
 
 
-void MathMacroTemplate::update(MathMacro const & macro)
-{
-	for (int i = 0; i < nargs_; ++i) {
-		args_[i] = macro.getArg(i);
-	}
-}
-
-
 void MathMacroTemplate::WriteDef(ostream & os, bool fragile)
 {
 	os << "\n\\newcommand{\\" << name << "}";
@@ -158,6 +150,13 @@ MathParInset * MathMacroTemplate::getMacroPar(int i) const
 	} else 
 		return 0;
 }
+
+void MathMacroTemplate::setMacroPar(int i, MathedArray const & ar)
+{
+	if (i >= 0 && i < nargs_)
+		args_[i].setData(ar);
+}
+
 
 
 void MathMacroTemplate::SetMacroFocus(int &idx, int x, int y)
