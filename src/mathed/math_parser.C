@@ -144,7 +144,8 @@ enum {
 	FLAG_SIMPLE     = 1 << 8,  //  next $ leaves the loop
 	FLAG_EQUATION   = 1 << 9,  //  next \] leaves the loop
 	FLAG_SIMPLE2    = 1 << 10, //  next \) leaves the loop
-	FLAG_OPTION     = 1 << 11  //  read [...] style option
+	FLAG_OPTION     = 1 << 11, //  read [...] style option
+	FLAG_BRACED     = 1 << 12  //  read {...} style argument
 };
 
 
@@ -229,6 +230,8 @@ public:
 	bool parse(MathAtom & at);
 	///
 	void parse(MathArray & array, unsigned flags, mode_type mode);
+	///
+	MathArray parse(unsigned flags, mode_type mode);
 	///
 	int lineno() const { return lineno_; }
 	///
@@ -518,6 +521,14 @@ bool Parser::parse(MathAtom & at)
 }
 
 
+MathArray Parser::parse(unsigned flags, mode_type mode)
+{
+	MathArray ar;
+	parse(ar, flags, mode);
+	return ar;
+}
+
+
 void Parser::parse(MathArray & array, unsigned flags, mode_type mode)
 {
 	MathGridInset grid(1, 1);
@@ -570,6 +581,21 @@ void Parser::parse1(MathGridInset & grid, unsigned flags,
 
 			// handle only this single token, leave the loop if done
 			flags |= FLAG_LEAVE;
+		}
+
+
+		if (flags & FLAG_BRACED) {
+			if (t.cat() == catSpace)
+				continue;
+
+			if (t.cat() != catBegin) {
+				error("opening brace expected");
+				return;
+			}
+
+			// skip the brace and collect everything to the next matching
+			// closing brace
+			flags = FLAG_BRACE_LAST;
 		}
 
 
@@ -903,9 +929,12 @@ void Parser::parse1(MathGridInset & grid, unsigned flags,
 
 		else if (t.cs() == "begin") {
 			string const name = getArg('{', '}');
+
 			if (name == "array" || name == "subarray") {
-				string const valign = getArg('[', ']') + 'c';
-				string const halign = getArg('{', '}');
+				string const valign =
+					asString(parse(FLAG_OPTION, MathInset::VERBATIM_MODE)) + 'c';
+				string const halign =
+					asString(parse(FLAG_ITEM, MathInset::VERBATIM_MODE));
 				cell->push_back(MathAtom(new MathArrayInset(name, valign[0], halign)));
 				parse2(cell->back(), FLAG_END, mode, false);
 			}
@@ -1002,8 +1031,7 @@ void Parser::parse1(MathGridInset & grid, unsigned flags,
 		}
 
 		else if (t.cs() == "label") {
-			MathArray ar;
-			parse(ar, FLAG_ITEM, MathInset::VERBATIM_MODE);
+			MathArray ar = parse(FLAG_ITEM, MathInset::VERBATIM_MODE);
 			if (grid.asHullInset()) {
 				grid.asHullInset()->label(cellrow, asString(ar));
 			} else {
@@ -1074,6 +1102,7 @@ void Parser::parse1(MathGridInset & grid, unsigned flags,
 					// read optional positioning and width
 					MathArray pos, width;
 					parse(pos, FLAG_OPTION, MathInset::VERBATIM_MODE);
+
 					parse(width, FLAG_ITEM, MathInset::VERBATIM_MODE);
 					cell->push_back(createMathInset(t.cs()));
 					parse(cell->back().nucleus()->cell(0), FLAG_ITEM, MathInset::TEXT_MODE);

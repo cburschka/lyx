@@ -80,6 +80,7 @@ class UpdatableInset;
 class MathMacroTemplate;
 class MathPosFinder;
 class Dimension;
+class FuncRequest;
 
 
 class MathInset {
@@ -280,7 +281,7 @@ public:
 	/// dump content to stderr for debugging
 	virtual void dump() const;
 	/// local dispatcher
-	virtual int dispatch(string const & cmd, idx_type idx, pos_type pos);
+	virtual int dispatch(FuncRequest const & cmd, idx_type idx, pos_type pos);
 
 	/// LyXInset stuff
 	/// write labels into a list

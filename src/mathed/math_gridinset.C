@@ -74,6 +74,7 @@ MathGridInset::MathGridInset(char v, string const & h)
 	setDefaults();
 	valign(v);
 	halign(h);
+	//lyxerr << "created grid with " << ncols() << " columns\n";
 }
 
 
@@ -141,6 +142,8 @@ void MathGridInset::halign(string const & hh)
 {
 	col_type col = 0;
 	for (string::const_iterator it = hh.begin(); it != hh.end(); ++it) {
+		if (col >= ncols())
+			break;
 		char c = *it;
 		if (c == '|') {
 			colinfo_[col].lines_++;
@@ -149,7 +152,7 @@ void MathGridInset::halign(string const & hh)
 			++col;
 			colinfo_[col].lines_ = 0;
 		} else {
-			lyxerr << "unkown column separator: '" << c << "'\n";
+			lyxerr << "unknown column separator: '" << c << "'\n";
 		}
 	}
 
@@ -169,6 +172,10 @@ MathGridInset::col_type MathGridInset::guessColumns(string const & hh) const
 	for (string::const_iterator it = hh.begin(); it != hh.end(); ++it)
 		if (*it == 'c' || *it == 'l' || *it == 'r')
 			++col;
+	// let's have at least one column, even if we did not recognize its 
+	// alignment
+	if (col == 0)
+		col = 1;
 	return col;
 }
 

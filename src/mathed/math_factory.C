@@ -96,7 +96,7 @@ void initSymbols()
 
 		// special case of pre-defined macros
 		if (line.size() > 8 && line.substr(0, 5) == "\\def\\") {
-			lyxerr << "defining: '" << line << "'\n";
+			//lyxerr << "defining: '" << line << "'\n";
 			istringstream is(line);
 			MathMacroTable::create(MathAtom(new MathMacroTemplate(is)));
 			continue;

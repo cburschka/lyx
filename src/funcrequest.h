@@ -30,10 +30,21 @@ struct FuncRequest {
 		: action(act), argument(arg)
 	{}
 
+	/// for mouse events
+	FuncRequest(kb_action act, int ax, int ay, int aextra)
+		: action(act), argument(), x(ax), y(ay), extra(aextra)
+	{}
+
 	/// the action
 	kb_action action;
 	/// the action's string argument
 	string argument;
+	/// the x coordinate of a mouse press
+	int x;
+	/// the y coordinate of a mouse press
+	int y;
+	/// some extra information (like button number)
+	int extra;
 };
 
 #endif // FUNCREQUEST_H

@@ -36,28 +36,33 @@ void RefInset::infoize(std::ostream & os) const
 }
 
 
-int RefInset::dispatch(string const & cmd, idx_type, pos_type)
+int RefInset::dispatch(FuncRequest const & cmd, idx_type, pos_type)
 {
-	if (cmd == "mouse-3-release") {
-		lyxerr << "trying to goto ref" << cell(0) << "\n";
-		mathcursor->formula()->view()->owner()->getLyXFunc()->
-			dispatch(FuncRequest(LFUN_REF_GOTO, asString(cell(0))));
-		return 1; // dispatched
+	switch (cmd.action) {
+		case LFUN_MOUSE_RELEASE:
+			if (cmd.extra == 3) {
+				lyxerr << "trying to goto ref" << cell(0) << "\n";
+				mathcursor->formula()->view()->owner()->getLyXFunc()->
+					dispatch(FuncRequest(LFUN_REF_GOTO, asString(cell(0))));
+				return 1; // dispatched
+			}
+			if (cmd.extra == 1) {
+				lyxerr << "trying to open ref" << cell(0) << "\n";
+				// Eventually trigger dialog with button 3 not 1
+		//		mathcursor->formula()->view()->owner()->getDialogs()
+		//			->showRef(this);
+				return 1; // dispatched
+			}
+			break;
+		case LFUN_MOUSE_PRESS:	
+		case LFUN_MOUSE_MOTION:
+			// eat other mouse commands
+			return 1;
+		default:
+			break;
 	}
-
-	if (cmd == "mouse-1-release") {
-		lyxerr << "trying to open ref" << cell(0) << "\n";
-		// FuncRequestually trigger dialog with button 3 not 1
-//		mathcursor->formula()->view()->owner()->getDialogs()
-//			->showRef(this);
-		return 1; // dispatched
-	}
-
-	// eat other mouse commands
-	if (cmd.substr(0, 6) == "mouse-")	
-		return 1;
-
-	return 0; // undispatched
+	// not our business
+	return 0;
 }
 
 

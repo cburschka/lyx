@@ -1701,7 +1701,7 @@ void MathCursor::handleExtern(const string & arg)
 }
 
 
-int MathCursor::dispatch(string const & cmd)
+int MathCursor::dispatch(FuncRequest const & cmd)
 {
 	// try to dispatch to adajcent items if they are not editable
 	// actually, this should only happen for mouse clicks...
@@ -1714,7 +1714,8 @@ int MathCursor::dispatch(string const & cmd)
 
 	for (int i = Cursor_.size() - 1; i >= 0; --i) {
 		MathCursorPos & pos = Cursor_[i];
-		if (int res = pos.par_->dispatch(cmd, pos.idx_, pos.pos_))
+		int const res = pos.par_->dispatch(cmd, pos.idx_, pos.pos_);
+		if (res)
 			return res;
 	}
 	return 0;

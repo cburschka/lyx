@@ -287,7 +287,7 @@ void InsetFormulaBase::updateLocal(BufferView * bv, bool dirty)
 
 
 bool InsetFormulaBase::insetButtonRelease(BufferView * bv,
-	int /*x*/, int /*y*/, mouse_button::state button)
+	int x, int y, mouse_button::state button)
 {
 	if (!mathcursor)
 		return false;
@@ -299,7 +299,7 @@ bool InsetFormulaBase::insetButtonRelease(BufferView * bv,
 
 	if (button == mouse_button::button3) {
 		// try to dispatch to enclosed insets first
-		if (mathcursor->dispatch("mouse-3-release"))
+		if (mathcursor->dispatch(FuncRequest(LFUN_MOUSE_RELEASE, x, y, 3)))
 			return true;
 
 		// launch math panel for right mouse button
@@ -309,7 +309,7 @@ bool InsetFormulaBase::insetButtonRelease(BufferView * bv,
 
 	if (button == mouse_button::button1) {
 		// try to dispatch to enclosed insets first
-		if (mathcursor->dispatch("mouse-1-release"))
+		if (mathcursor->dispatch(FuncRequest(LFUN_MOUSE_RELEASE, x, y, 1)))
 			return true;
 
 		// try to set the cursor
@@ -329,7 +329,7 @@ void InsetFormulaBase::insetButtonPress(BufferView * bv,
 	//lyxerr << "insetButtonPress: "
 	//	<< x << " " << y << " but: " << button << "\n";
 	//lyxerr << "formula: ";
-	par()->dump();
+	//par()->dump();
 
 	releaseMathCursor(bv);
 	mathcursor = new MathCursor(this, x == 0);
@@ -343,14 +343,14 @@ void InsetFormulaBase::insetButtonPress(BufferView * bv,
 		mathcursor->selClear();
 		mathcursor->setPos(x + xo_, y + yo_);
 
-		if (mathcursor->dispatch("mouse-1-press")) {
+		if (mathcursor->dispatch(FuncRequest(LFUN_MOUSE_PRESS, x, y, 1))) {
 			//delete mathcursor;
 			return;
 		}
 
 	}
 	if (button == mouse_button::button3) {
-		if (mathcursor->dispatch("mouse-3-press")) {
+		if (mathcursor->dispatch(FuncRequest(LFUN_MOUSE_PRESS, x, y, 3))) {
 			//delete mathcursor;
 			return;
 		}
@@ -366,11 +366,11 @@ void InsetFormulaBase::insetMotionNotify(BufferView * bv,
 		return;
 
 	if (button == mouse_button::button1)
-		if (mathcursor->dispatch("mouse-1-motion"))
+		if (mathcursor->dispatch(FuncRequest(LFUN_MOUSE_MOTION, x, y, 1)))
 			return;
 
 	if (button == mouse_button::button3)
-		if (mathcursor->dispatch("mouse-3-motion"))
+		if (mathcursor->dispatch(FuncRequest(LFUN_MOUSE_MOTION, x, y, 3)))
 			return;
 
 	if (abs(x - first_x) < 2 && abs(y - first_y) < 2) {

@@ -1,3 +1,10 @@
+
+2002-08-07  André Pönitz <poenitz@gmx.net>
+
+	* commandtags.h: new LFUN_MOUSE_(PRESS|MOTION|RELEASE)
+
+	* funcrequest.h: extension to keep mouse (x,y) position
+
 2002-08-12  Juergen Vigna  <jug@sad.it>
 
 	* BufferView2.C (insertErrors): forbid undo when inserting error

@@ -238,7 +238,7 @@ public:
 	unsigned depth() const;
 
 	/// local dispatcher
-	int dispatch(string const & cmd);
+	int dispatch(FuncRequest const & cmd);
 	/// describe the situation
 	string info() const;
 	/// dump selection information for debugging
