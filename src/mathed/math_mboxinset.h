@@ -15,10 +15,8 @@
 #include "math_diminset.h"
 #include "lyxtext.h"
 
-class BufferView;
 
-
-// not yet a substitute for the real text inset...
+// almost a substitute for the real text inset...
 
 class MathMBoxInset : public MathDimInset {
 public:
@@ -34,10 +32,15 @@ public:
 	void priv_dispatch(LCursor & cur, FuncRequest & cmd);
 
 	///
+	bool inMathed() const { return false; }
+	///
+	bool isActive() const { return true; }
+
+	///
 	void write(WriteStream & os) const;
 	///
-	bool inMathed() const { return false; }
-
+	int latex(Buffer const &, std::ostream & os,
+			OutputParams const & runparams) const;
 	///
 	LyXText * getText(int) const;
 	///

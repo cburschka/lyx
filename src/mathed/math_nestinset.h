@@ -93,6 +93,9 @@ public:
 	void write(WriteStream & os) const;
 	/// writes [, name(), and args in []
 	void normalize(NormalStream & os) const;
+	///
+	int latex(Buffer const &, std::ostream & os,
+			OutputParams const & runparams) const;
 
 protected:
 	///

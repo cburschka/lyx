@@ -82,8 +82,6 @@ public:
 	bool idxLast(LCursor &) const;
 
 	///
-	std::string fileInsetLabel() const;
-	///
 	void write(WriteStream & os) const;
 	///
 	void mathmlize(MathMLStream &) const;
@@ -96,9 +94,6 @@ public:
 	void write(Buffer const &, std::ostream & os) const;
 	///
 	void read(Buffer const &, LyXLex & lex);
-	///
-	int latex(Buffer const &, std::ostream &,
-		  OutputParams const &) const;
 	///
 	int plaintext(Buffer const &, std::ostream &,
 		  OutputParams const &) const;

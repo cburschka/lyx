@@ -897,12 +897,6 @@ bool MathHullInset::getStatus(LCursor & cur, FuncRequest const & cmd,
 }
 
 
-string MathHullInset::fileInsetLabel() const
-{
-	return "Formula";
-}
-
-
 /////////////////////////////////////////////////////////////////////
 
 #include "formulamacro.h"
@@ -1104,7 +1098,7 @@ bool MathHullInset::searchBackward(BufferView * bv, string const & what,
 void MathHullInset::write(Buffer const &, std::ostream & os) const
 {
 	WriteStream wi(os, false, false);
-	os << fileInsetLabel() << ' ';
+	os << "Formula ";
 	write(wi);
 }
 
@@ -1114,15 +1108,6 @@ void MathHullInset::read(Buffer const &, LyXLex & lex)
 	MathAtom at;
 	mathed_parse_normal(at, lex);
 	operator=(*at->asHullInset());
-}
-
-
-int MathHullInset::latex(Buffer const &, ostream & os,
-			OutputParams const & runparams) const
-{
-	WriteStream wi(os, runparams.moving_arg, true);
-	write(wi);
-	return wi.line();
 }
 
 

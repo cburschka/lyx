@@ -135,9 +135,3 @@ ostream & operator<<(ostream & os, MathAtom const & at)
 	at->write(wi);
 	return os;
 }
-
-
-string MathInset::fileInsetLabel() const
-{
-	return "Formula";
-}

@@ -29,13 +29,14 @@
 
 #include "BufferView.h"
 #include "FuncStatus.h"
+#include "LColor.h"
 #include "bufferview_funcs.h"
 #include "cursor.h"
 #include "debug.h"
 #include "dispatchresult.h"
 #include "funcrequest.h"
 #include "gettext.h"
-#include "LColor.h"
+#include "outputparams.h"
 #include "undo.h"
 
 #include "support/std_sstream.h"
@@ -298,6 +299,15 @@ void MathNestInset::normalize(NormalStream & os) const
 	for (size_t i = 0; i < nargs(); ++i)
 		os << ' ' << cell(i);
 	os << ']';
+}
+
+
+int MathNestInset::latex(Buffer const &, std::ostream & os,
+			OutputParams const & runparams) const
+{
+	WriteStream wi(os, runparams.moving_arg, true);
+	write(wi);
+	return wi.line();
 }
 
 

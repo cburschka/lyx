@@ -19,7 +19,9 @@
 #include "bufferparams.h"
 #include "debug.h"
 #include "metricsinfo.h"
+#include "output_latex.h"
 #include "paragraph.h"
+#include "texrow.h"
 
 using std::auto_ptr;
 using std::endl;
@@ -52,9 +54,8 @@ void MathMBoxInset::metrics(MetricsInfo & mi, Dimension & dim) const
 
 void MathMBoxInset::draw(PainterInfo & pi, int x, int y) const
 {
-	text_.draw(pi, x + 1, y);
+	text_.draw(pi, x + 1, y - text_.ascent());
 	drawMarkers(pi, x, y);
-	setPosCache(pi, x, y);
 }
 
 
@@ -63,6 +64,17 @@ void MathMBoxInset::write(WriteStream & os) const
 	os << "\\mbox{\n";
 	text_.write(*bv_->buffer(), os.os());
 	os << "}";
+}
+
+
+int MathMBoxInset::latex(Buffer const & buf, std::ostream & os,
+			OutputParams const & runparams) const
+{
+	os << "\\mbox{\n";
+	TexRow texrow;
+	latexParagraphs(buf, text_.paragraphs(), os, texrow, runparams);
+	os << "}";
+	return texrow.rows();
 }
 
 
@@ -81,6 +93,5 @@ LyXText * MathMBoxInset::getText(int) const
 void MathMBoxInset::getCursorPos(CursorSlice const & cur, int & x, int & y) const
 {
 	x = text_.cursorX(cur);
-	//y = text_.cursorY(cur);
-	y = 100;
+	y = text_.cursorY(cur);
 }

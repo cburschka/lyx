@@ -173,8 +173,6 @@ public:
 	virtual std::string const & getType() const;
 	/// change type
 	virtual void mutate(std::string const &) {}
-	/// how is the inset called in the .lyx file?
-	virtual std::string fileInsetLabel() const;
 	/// usually the latex name
 	virtual std::string name() const;
 };
