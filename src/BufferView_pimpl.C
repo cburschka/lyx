@@ -417,8 +417,6 @@ void BufferView::Pimpl::updateScrollbar()
 // Callback for scrollbar slider
 void BufferView::Pimpl::scrollCB(double value)
 {
-	extern bool cursor_follows_scrollbar;
-	
 	if (buffer_ == 0) return;
 
 	current_scrollbar_value = long(value);
@@ -430,7 +428,7 @@ void BufferView::Pimpl::scrollCB(double value)
 
 	screen_->Draw(bv_->text, current_scrollbar_value);
 
-	if (cursor_follows_scrollbar) {
+	if (lyxrc.cursor_follows_scrollbar) {
 		LyXText * vbt = bv_->text;
 		int height = vbt->DefaultHeight();
 		

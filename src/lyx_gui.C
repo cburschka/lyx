@@ -67,7 +67,6 @@ static int height = 510;
 static int xpos   = -1;
 static int ypos   = -1;
 static char geometry[40];
-bool	   cursor_follows_scrollbar;
 
 
 FL_resource res[] =

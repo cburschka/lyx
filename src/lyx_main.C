@@ -398,7 +398,7 @@ void LyX::init(int */*argc*/, char **argv, bool gui)
 	//
 
 	ReadRcFile("lyxrc.defaults");
-//	system_lyxrc = lyxrc;
+	system_lyxrc = lyxrc;
 	// If there is a preferences file we read that instead
 	// of the old lyxrc file.
 	if (!ReadRcFile("preferences"))

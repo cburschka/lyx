@@ -90,7 +90,6 @@
 using std::pair;
 using std::endl;
 
-extern bool cursor_follows_scrollbar;
 
 extern void InsertAsciiFile(BufferView *, string const &, bool);
 extern void math_insert_symbol(string const &);
@@ -2859,7 +2858,7 @@ string const LyXFunc::Dispatch(int ac,
 	break;
 #endif
 	case LFUN_TOGGLECURSORFOLLOW:
-		cursor_follows_scrollbar = !cursor_follows_scrollbar;
+		lyxrc.cursor_follows_scrollbar = !lyxrc.cursor_follows_scrollbar;
 		break;
 		
 	case LFUN_KMAP_OFF:		// keymap off

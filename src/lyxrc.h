@@ -20,7 +20,10 @@
 #include <boost/utility.hpp>
 
 /// This contains the runtime configuration of LyX
-class LyXRC : public noncopyable {
+class LyXRC //: public noncopyable {
+// after 1.1.6 I will use a LyXRCStruct here and then this can be made
+// noncopyable again.  For now I want to minimise changes.  ARRae 20001010
+{
 public:
 	///
 	LyXRC();
@@ -227,10 +230,12 @@ public:
 	bool new_ask_filename;
 	///
 	string default_language;
+	///
+	bool cursor_follows_scrollbar;
 };
 
 ///
 extern LyXRC lyxrc;
 ///
-//extern LyXRC system_lyxrc;
+extern LyXRC system_lyxrc;
 #endif
