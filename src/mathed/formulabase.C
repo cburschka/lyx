@@ -298,7 +298,7 @@ void InsetFormulaBase::insetButtonPress(BufferView * bv,
 {
 	//lyxerr << "insetButtonPress: "
 	//	<< x << " " << y << " but: " << button << "\n";
-
+#if 0
 	switch (button) {
 		default:
 		case 1:
@@ -332,6 +332,21 @@ void InsetFormulaBase::insetButtonPress(BufferView * bv,
 			bv->owner()->getDialogs()->showMathPanel();
 			break;
 	}
+#else
+	if (button == 1 || !mathcursor) {
+		delete mathcursor;
+		mathcursor = new MathCursor(this, x == 0);
+		metrics(bv);
+		first_x = x;
+		first_y = y;
+		mathcursor->selClear();
+		mathcursor->setPos(x + xo_, y + yo_);
+	}
+	if (button == 3) {
+		// launch math panel for right mouse button
+		bv->owner()->getDialogs()->showMathPanel();
+	}
+#endif
 	bv->updateInset(this, false);
 }
 
