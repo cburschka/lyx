@@ -70,9 +70,13 @@ vector<Format const *> const ControlSendto::allFormats() const
 		Formats::const_iterator fo_it  = formats.begin();
 		Formats::const_iterator fo_end = formats.end();
 		for (; fo_it != fo_end; ++fo_it) {
-			if (converters.isReachable(*ex_it, fo_it->name())) {
+			// we need to hide the default graphic export formats
+			// from the external menu, because we need them only
+			// for the internal lyx-view and external latex run
+			string const name = fo_it->name();
+			if (name != "eps" && name != "xpm" && name != "png" &&
+			    converters.isReachable(*ex_it, name))
 				to.push_back(&(*fo_it));
-			}
 		}
 	}
 

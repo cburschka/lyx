@@ -353,6 +353,15 @@ void Menu::expand(Menu & tomenu, Buffer * buf) const
 				if ((*fit)->dummy())
 					continue;
 				string label = (*fit)->prettyname();
+				// we need to hide the default graphic export
+				// formats from the external menu, because we
+				// need them only for the internal lyx-view and
+				// external latex run
+				if (label == "EPS" ||
+				    label == "XPM" ||
+				    label == "PNG")
+					continue;
+
 				if (cit->kind() == MenuItem::ImportFormats)
 					if ((*fit)->name() == "text")
 						label = _("Ascii text as lines");

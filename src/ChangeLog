@@ -3,6 +3,11 @@
 	* BufferView_pimpl.C (Dispatch): Check that float type exists when 
 	inserting list of floats.
 
+2002-04-25  Herbert Voss  <voss@lyx.org>
+
+	* MenuBackend.C (expand): don't add the graphics extensions to the
+	export menu
+
 2002-04-24  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* CutAndPaste.C (SwitchLayoutsBetweenClasses): when converting a
