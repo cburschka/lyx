@@ -1,12 +1,12 @@
-/** Header file generated with fdesign on Fri Jul 28 11:50:10 2000.**/
+/** Header file generated with fdesign on Wed Aug  2 13:56:56 2000.**/
 
 #ifndef FD_form_citation_h_
 #define FD_form_citation_h_
 
 /** Callbacks, globals and object handlers **/
-extern  "C" void C_FormCitationInputCB(FL_OBJECT *, long);
-extern  "C" void C_FormCitationOKCB(FL_OBJECT *, long);
-extern  "C" void C_FormCitationCancelCB(FL_OBJECT *, long);
+extern  "C" void C_FormCommandInputCB(FL_OBJECT *, long);
+extern  "C" void C_FormCommandOKCB(FL_OBJECT *, long);
+extern  "C" void C_FormCommandCancelCB(FL_OBJECT *, long);
 
 
 /**** Forms and Objects ****/

@@ -1,4 +1,4 @@
-/** Header file generated with fdesign on Mon Jul 31 12:55:35 2000.**/
+/** Header file generated with fdesign on Wed Aug  2 13:56:57 2000.**/
 
 #ifndef FD_form_tabular_h_
 #define FD_form_tabular_h_

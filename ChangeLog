@@ -1,3 +1,12 @@
+2000-08-02  Allan Rae  <rae@lyx.org>
+
+	* src/frontends/xforms/Makefile.am: A few forgotten files
+
+	* src/frontends/xforms/FormCommand.C (showInset): The rest of the
+	Signals-not-copyable-problem Lars' started commenting out.
+
+	* src/frontends/xforms/form_toc.[hC]: new files.  TOC crashes lyx.
+
 2000-08-01  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/insets/insetcommand.h: Signals is not copyable so anoter

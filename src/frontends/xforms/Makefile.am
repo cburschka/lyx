@@ -9,8 +9,15 @@ LIBS=
 LDFLAGS=
 LYXDATADIRS = forms
 ETAGS_ARGS = --lang=c++
+# Alphabetical order please.  It makes it easier to figure out what's missing. 
 libxforms_la_SOURCES = \
 	Dialogs.C \
+	FormCitation.C \
+	FormCitation.h \
+	form_citation.C \
+	form_citation.h \
+	FormCommand.C \
+	FormCommand.h \
 	FormCopyright.C \
 	FormCopyright.h \
 	form_copyright.C \
@@ -27,18 +34,14 @@ libxforms_la_SOURCES = \
 	FormPrint.h \
 	form_print.C \
 	form_print.h \
-	FormGraphics.C \
-	FormGraphics.h \
-	form_graphics.C \
-	form_graphics.h \
-	FormCitation.C \
-	FormCitation.h \
-	form_citation.C \
-	form_citation.h \
 	FormTabular.C \
 	FormTabular.h \
 	form_tabular.C \
 	form_tabular.h \
+	FormToc.C \
+	FormToc.h \
+	form_toc.C \
+	form_toc.h \
 	FormUrl.C \
 	FormUrl.h \
 	form_url.C \

@@ -39,7 +39,10 @@ void FormCommand::showInset( InsetCommand * const inset )
 	if( dialogIsOpen || inset == 0 ) return;
 
 	inset_ = inset;
-	ih_ = inset_->hide.connect(slot(this, &FormCommand::hide));
+	// companion to Lars' commenting out in insetcommand.
+	// need a better plan perhaps since there seems to be a small
+	// flaw here if we copy an inset while it's visible
+	//	ih_ = inset_->hide.connect(slot(this, &FormCommand::hide));
 
 	params = inset->params();
 	show();

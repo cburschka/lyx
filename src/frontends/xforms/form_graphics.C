@@ -1,4 +1,4 @@
-// File modified by fdfix.sh for use by lyx (with xforms >= 0.86) and gettext
+// File modified by fdfix.sh for use by lyx (with xforms >= 0.88) and gettext
 #include <config.h>
 #include "lyx_gui_misc.h"
 #include "gettext.h"
@@ -22,9 +22,11 @@ FD_form_graphics * FormGraphics::build_graphics()
     fl_set_object_resize(obj, FL_RESIZE_NONE);
   obj = fl_add_frame(FL_ENGRAVED_FRAME, 10, 310, 390, 30, "");
   obj = fl_add_frame(FL_ENGRAVED_FRAME, 230, 250, 170, 50, "");
-  fdui->input_filename = obj = fl_add_input(FL_NORMAL_INPUT, 90, 20, 210, 30, idex(_("Graphics File|F#F")));fl_set_button_shortcut(obj, scex(_("Graphics File|F#F")), 1);
+  fdui->input_filename = obj = fl_add_input(FL_NORMAL_INPUT, 90, 20, 210, 30, idex(_("Graphics File|F#F")));
+    fl_set_button_shortcut(obj, scex(_("Graphics File|F#F")), 1);
     fl_set_object_callback(obj, C_FormGraphicsInputCB, 0);
-  fdui->button_browse = obj = fl_add_button(FL_NORMAL_BUTTON, 310, 20, 90, 30, idex(_("Browse|B#B")));fl_set_button_shortcut(obj, scex(_("Browse|B#B")), 1);
+  fdui->button_browse = obj = fl_add_button(FL_NORMAL_BUTTON, 310, 20, 90, 30, idex(_("Browse|B#B")));
+    fl_set_button_shortcut(obj, scex(_("Browse|B#B")), 1);
     fl_set_object_callback(obj, C_FormGraphicsBrowseCB, 0);
   obj = fl_add_labelframe(FL_ENGRAVED_FRAME, 10, 70, 200, 160, _("Width"));
     fl_set_object_lalign(obj, FL_ALIGN_CENTER);
@@ -40,9 +42,11 @@ FD_form_graphics * FormGraphics::build_graphics()
     fl_set_object_lalign(obj, FL_ALIGN_CENTER);
   fdui->button_ok = obj = fl_add_button(FL_RETURN_BUTTON, 10, 350, 70, 30, _("Ok"));
     fl_set_object_callback(obj, C_FormGraphicsOKCB, 0);
-  fdui->button_apply = obj = fl_add_button(FL_NORMAL_BUTTON, 100, 350, 70, 30, idex(_("Apply|A#A")));fl_set_button_shortcut(obj, scex(_("Apply|A#A")), 1);
+  fdui->button_apply = obj = fl_add_button(FL_NORMAL_BUTTON, 100, 350, 70, 30, idex(_("Apply|A#A")));
+    fl_set_button_shortcut(obj, scex(_("Apply|A#A")), 1);
     fl_set_object_callback(obj, C_FormGraphicsApplyCB, 0);
-  fdui->button_cancel = obj = fl_add_button(FL_NORMAL_BUTTON, 190, 350, 70, 30, idex(_("Cancel|C#C^[")));fl_set_button_shortcut(obj, scex(_("Cancel|C#C^[")), 1);
+  fdui->button_cancel = obj = fl_add_button(FL_NORMAL_BUTTON, 190, 350, 70, 30, idex(_("Cancel|C#C^[")));
+    fl_set_button_shortcut(obj, scex(_("Cancel|C#C^[")), 1);
     fl_set_object_callback(obj, C_FormGraphicsCancelCB, 0);
 
   fdui->radio_button_group_width = fl_bgn_group();
@@ -88,7 +92,8 @@ FD_form_graphics * FormGraphics::build_graphics()
     fl_set_object_callback(obj, C_FormGraphicsInputCB, 0);
   fdui->input_subcaption = obj = fl_add_input(FL_NORMAL_INPUT, 120, 310, 280, 30, "");
     fl_set_object_callback(obj, C_FormGraphicsInputCB, 0);
-  fdui->check_subcaption = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 10, 310, 110, 30, idex(_("Subcaption|S#S")));fl_set_button_shortcut(obj, scex(_("Subcaption|S#S")), 1);
+  fdui->check_subcaption = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 10, 310, 110, 30, idex(_("Subcaption|S#S")));
+    fl_set_button_shortcut(obj, scex(_("Subcaption|S#S")), 1);
     fl_set_object_callback(obj, C_FormGraphicsInputCB, 0);
   fl_end_form();
 
