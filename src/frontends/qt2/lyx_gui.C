@@ -48,6 +48,8 @@
 #include "io_callback.h"
 
 #include <qapplication.h>
+#include <qwidget.h> 
+#include <qpaintdevicemetrics.h> 
 
 #ifndef CXX_GLOBAL_CSTD
 using std::exit;
@@ -60,8 +62,14 @@ using std::endl;
 extern BufferList bufferlist;
 
 namespace {
-	/// good ol' "easy to use" Qt again
-	float getDPI() { return 95; }
+
+float getDPI()
+{ 
+	QWidget w;
+	QPaintDeviceMetrics pdm(&w);
+	return pdm.logicalDpiY();
+}
+
 }
 
 // FIXME: wrong place !
