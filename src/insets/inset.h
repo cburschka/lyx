@@ -66,7 +66,7 @@ public:
 		///
 		LABEL_CODE, // 10
 		///
-		IGNORE_CODE,
+		NOTE_CODE,
 		///
 		ACCENT_CODE,
 		///

@@ -298,7 +298,7 @@ void LyXComm::read_ready()
 		if (rerrno != 0) {
 			lyxerr << "LyXComm: " << strerror(rerrno) << endl;
 			if (!lsbuf.empty()) {
-				lyxerr << "LyxComm: truncated command: "
+				lyxerr << "LyXComm: truncated command: "
 				       << lsbuf << endl;
 				lsbuf.erase();
 			}
@@ -505,7 +505,7 @@ void LyXServer::callback(LyXServer * serv, string const & msg)
 
 
 /* ---F+------------------------------------------------------------------ *\
-   Function  : LyxNotifyClient
+   Function  : LyXNotifyClient
    Called by : WorkAreaKeyPress
    Purpose   : send a notify messge to a client
    Parameters: s - string to send

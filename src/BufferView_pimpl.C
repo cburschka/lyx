@@ -1571,7 +1571,7 @@ bool BufferView::Pimpl::dispatch(kb_action action, string const & argument)
 		break;
 
 	case LFUN_GOTONOTE:
-		gotoInset(Inset::IGNORE_CODE, false);
+		gotoInset(Inset::NOTE_CODE, false);
 		break;
 
 	case LFUN_REFERENCE_GOTO:
@@ -2814,12 +2814,16 @@ bool BufferView::Pimpl::dispatch(kb_action action, string const & argument)
 	}
 	break;
 
-	case LFUN_INSET_TABULAR:
+	case LFUN_TABULAR_INSERT:
 	{
+		if (argument.empty()) {
+			owner_->getDialogs()->showTabularCreate();
+			break;
+		}
+ 
 		int r = 2;
 		int c = 2;
-		if (!argument.empty())
-			::sscanf(argument.c_str(),"%d%d", &r, &c);
+		::sscanf(argument.c_str(),"%d%d", &r, &c);
 		InsetTabular * new_inset =
 			new InsetTabular(*buffer_, r, c);
 		bool const rtl =

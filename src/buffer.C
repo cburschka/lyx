@@ -1810,7 +1810,7 @@ bool Buffer::save() const
 	}
 
 	if (writeFile(fileName())) {
-		markLyxClean();
+		markClean();
 		removeAutosaveFile(fileName());
 	} else {
 		// Saving failed, so backup is not backup

@@ -1,12 +1,10 @@
-/* This file is part of
- * ======================================================
+/**
+ * \file lyxcursor.C
+ * Copyright 1995-2001 the LyX Team
+ * Read the file COPYING
  *
- *           LyX, The Document Processor
- *
- *           Copyright 1995 Matthias Ettrich
- *           Copyright 1995-2001 The LyX Team.
- *
- * ====================================================== */
+ * \author Matthias Ettrich
+ */
 
 #include <config.h>
 

@@ -208,7 +208,7 @@ void XFormsView::show_view_state()
 // placed in BufferView. If "all BufferViews" then LyXGUI (I think) should
 // run "prohibitInput" on all LyXViews which will run prohibitInput on all
 // BufferViews. Or is it perhaps just the (input in) BufferViews in the
-// current LyxView that should be prohibited (Lgb) (This applies to
+// current LyXView that should be prohibited (Lgb) (This applies to
 // "allowInput" as well.)
 void XFormsView::prohibitInput() const
 {

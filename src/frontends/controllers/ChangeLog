@@ -1,3 +1,10 @@
+2002-08-04  John Levon  <levon@movementarian.org>
+
+	* ControlSpellchecker.h:
+	* ControlSpellchecker.C: some cleanups
+ 
+	* ControlTabularCreate.C: s/LFUN_INSET_TABULAR/LFUN_TABULAR_INSERT/ 
+ 
 2002-08-02  Edwin Leuven <leuven@fee.uva.nl>
 
 	* ControlParagraph.[Ch] (changedParagraph): new method invoked when

@@ -1,13 +1,8 @@
-/* This file is part of
- * ======================================================
- *
- *           LyX, The Document Processor
- *
- *           Copyright 2001 The LyX Team.
- *
- * ======================================================
- *
+/**
  * \file ControlSpellchecker.C
+ * Copyright 2001 the LyX Team
+ * Read the file COPYING
+ *
  * \author Edwin Leuven <leuven@fee.uva.nl>
  */
 
@@ -33,28 +28,15 @@
 
 #include "support/lstrings.h"
 
-# include "sp_ispell.h"
+#include "ispell.h"
 #ifdef USE_PSPELL
-# include "sp_pspell.h"
-#endif
-
-#include <sys/types.h> // needed by <sys/select.h> at least on freebsd
-
-#ifdef HAVE_SYS_SELECT_H
-# ifdef HAVE_STRINGS_H
-   // <strings.h> is needed at least on AIX because FD_ZERO uses bzero().
-   // BUT we cannot include both string.h and strings.h on Irix 6.5 :(
-#  ifdef _AIX
-#   include <strings.h>
-#  endif
-# endif
-#include <sys/select.h>
+# include "pspell.h"
 #endif
 
 ControlSpellchecker::ControlSpellchecker(LyXView & lv, Dialogs & d)
 	: ControlDialogBD(lv, d),
 	  rtl_(false), newval_(0.0), oldval_(0), newvalue_(0), count_(0),
-	  stop_(false), result_(SpellBase::ISP_OK), speller_(0)
+	  stop_(false), speller_(0)
 {}
 
 
@@ -87,12 +69,7 @@ void ControlSpellchecker::setParams()
 			rtl_ = lv_.buffer()->params.language->RightToLeft();
 		}
 
-		if (speller_->error() != 0) {
-#if 0
-			message_ = speller_->error();
-			// show error message
-			view().partialUpdate(2);
-#endif
+		if (!speller_->error().empty()) {
 			clearParams();
 			return;
 		}
@@ -102,7 +79,7 @@ void ControlSpellchecker::setParams()
 
 void ControlSpellchecker::check()
 {
-	result_ = SpellBase::ISP_OK;
+	SpellBase::Result res = SpellBase::OK;
 	stop_ = false;
 
 	// clear any old selection
@@ -110,8 +87,7 @@ void ControlSpellchecker::check()
 	lv_.view()->toggleSelection(true);
 	lv_.view()->update(text, BufferView::SELECT);
 
-	while ((result_==SpellBase::ISP_OK || result_==SpellBase::ISP_IGNORE) &&
-	       !stop_) {
+	while ((res == SpellBase::OK || res == SpellBase::IGNORE) && !stop_) {
 		word_ = lv_.view()->nextWord(newval_);
 
 		if (word_.empty()) {
@@ -131,14 +107,14 @@ void ControlSpellchecker::check()
 
 		if (!speller_->alive()) clearParams();
 
-		result_ = speller_->check(word_);
+		res = speller_->check(word_);
 	}
 
 	if (!stop_ && !word_.empty())
 		lv_.view()->selectLastWord();
 
 	// set suggestions
-	if (result_!=SpellBase::ISP_OK && result_!=SpellBase::ISP_IGNORE) {
+	if (res != SpellBase::OK && res != SpellBase::IGNORE) {
 		view().partialUpdate(1);
 	}
 }
@@ -167,24 +143,20 @@ void ControlSpellchecker::insert()
 
 string ControlSpellchecker::getSuggestion()
 {
-	// this is needed because string tmp = nextmiss()
-	// segfaults when nextMiss is 0
-	string tmp;
-	char const * w = speller_->nextMiss();
+	string miss(speller_->nextMiss());
 
-	if (w!=0) {
-		tmp = w;
-		if (rtl_) std::reverse(tmp.begin(), tmp.end());
-	}
+	if (rtl_)
+		std::reverse(miss.begin(), miss.end());
 
-	return tmp;
+	return miss;
 }
 
 
 string ControlSpellchecker::getWord()
 {
 	string tmp = word_;
-	if (rtl_) std::reverse(tmp.begin(), tmp.end());
+	if (rtl_)
+		std::reverse(tmp.begin(), tmp.end());
 	return tmp;
 }
 
@@ -247,6 +219,5 @@ void ControlSpellchecker::clearParams()
 	count_ = 0;
 	message_.erase();
 	stop_ = false;
-	result_ = SpellBase::ISP_OK;
 	speller_ = 0;
 }

@@ -236,6 +236,7 @@ BufferView::UpdateCodes operator|(BufferView::UpdateCodes uc1,
 		(static_cast<int>(uc1) | static_cast<int>(uc2));
 }
 
+
 bool BufferView::dispatch(kb_action action, string const & argument)
 {
 	return pimpl_->dispatch(action, argument);

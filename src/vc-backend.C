@@ -173,7 +173,7 @@ void RCS::checkIn(string const & msg)
 
 void RCS::checkOut()
 {
-	owner_->markLyxClean();
+	owner_->markClean();
 	doVCCommand("co -q -l \""
 		    + OnlyFilename(owner_->fileName()) + "\"", owner_->filePath());
 	owner_->getUser()->owner()->getLyXFunc()->dispatch(LFUN_MENURELOAD);
@@ -185,7 +185,7 @@ void RCS::revert()
 	doVCCommand("co -f -u" + version() + " \""
 		    + OnlyFilename(owner_->fileName()) + "\"", owner_->filePath());
 	// We ignore changes and just reload!
-	owner_->markLyxClean();
+	owner_->markClean();
 	owner_->getUser()->owner()
 		->getLyXFunc()->dispatch(LFUN_MENURELOAD);
 }
@@ -317,7 +317,7 @@ void CVS::revert()
 
 	doVCCommand("rm -f \"" + fil + "\"; cvs update \"" + fil + "\"",
 		    owner_->filePath());
-	owner_->markLyxClean();
+	owner_->markClean();
 	owner_->getUser()->owner()
 		->getLyXFunc()->dispatch(LFUN_MENURELOAD);
 }

@@ -58,7 +58,7 @@ bool BufferView::insertLyXFile(string const & filen)
 	// Copyright CHT Software Service GmbH
 	// Uwe C. Schroeder
 	//
-	// Insert a Lyxformat - file into current buffer
+	// Insert a LyXformat - file into current buffer
 	//
 	// Moved from lyx_cb.C (Lgb)
 {

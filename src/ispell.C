@@ -1,14 +1,10 @@
-/* This file is part of
- * ======================================================
+/**
+ * \file ispell.C
+ * Copyright 2002 the LyX Team
+ * Read the file COPYING
  *
- *           LyX, The Document Processor
- *
- *           Copyright 2001 The LyX Team.
- *
- * ======================================================
- *
- * \file sp_pspell.C
- * \author Kevin Atkinson
+ * \author unknown
+ * \author John Levon <levon@movementarian.org>
  */
 
 #include <config.h>
@@ -23,6 +19,7 @@
 #include <fcntl.h>
 #include <cstdio>
 
+// FIXME: do we need any of this horrible gook ? 
 #if TIME_WITH_SYS_TIME
 # include <sys/time.h>
 # include <ctime>
@@ -51,7 +48,7 @@
 #include "language.h"
 #include "debug.h"
 #include "encoding.h"
-#include "sp_ispell.h"
+#include "ispell.h"
 
 #ifndef CXX_GLOBAL_CSTD
 using std::strcpy;
@@ -67,169 +64,9 @@ namespace {
 	pid_t isp_pid = -1;
 }
 
-///
-// ------------------- start special pspell code/class --------------------
-///
-#ifdef USE_PSPELL
-
-#include "support/LAssert.h"
-
-#define USE_ORIGINAL_MANAGER_FUNCS 1
-# include <pspell/pspell.h>
-
-#include "sp_pspell.h"
-
-
-PSpell::PSpell()
-	: sc(0), els(0), spell_error_object(0), flag(ISP_UNKNOWN),
-	  alive_(false)
-{
-}
-
-
-PSpell::PSpell(BufferParams const & params, string const & lang)
-	: sc(0), els(0), spell_error_object(0), flag(ISP_UNKNOWN),
-	  alive_(false)
-{
-	initialize(params, lang);
-}
-
-
-PSpell::~PSpell()
-{
-	cleanUp();
-	close();
-	if (els)
-		delete_pspell_string_emulation(els);
-}
-
-
-void PSpell::initialize(BufferParams const &, string const & lang)
-{
-	PspellConfig * config = new_pspell_config();
-	config->replace("language-tag", lang.c_str());
-	spell_error_object = new_pspell_manager(config);
-	if (pspell_error_number(spell_error_object) != 0) {
-		error_ = pspell_error_message(spell_error_object);
-	} else {
-		error_ = 0;
-		sc = to_pspell_manager(spell_error_object);
-		spell_error_object = 0;
-		alive_ = true;
-	}
-}
-
-
-void PSpell::cleanUp()
-{
-	if (spell_error_object) {
-		delete_pspell_can_have_error(spell_error_object);
-		spell_error_object = 0;
-	}
-}
-
-
-enum PSpell::spellStatus PSpell::check(string const & word)
-{
-	if (!sc)
-		return flag;
-
-	int word_ok = pspell_manager_check(sc, word.c_str());
-	lyx::Assert(word_ok != -1);
-
-	if (word_ok) {
-		flag = ISP_OK;
-	} else {
-		PspellWordList const * sugs =
-			pspell_manager_suggest(sc, word.c_str());
-		lyx::Assert(sugs != 0);
-		els = pspell_word_list_elements(sugs);
-		if (pspell_word_list_empty(sugs))
-			flag = ISP_UNKNOWN;
-		else
-			flag = ISP_MISSED;
-	}
-	return flag;
-}
-
-
-void PSpell::close()
-{
-	if (sc)
-		pspell_manager_save_all_word_lists(sc);
-}
-
-
-void PSpell::insert(string const & word)
-{
-	if (sc)
-		pspell_manager_add_to_personal(sc, word.c_str());
-}
-
-
-void PSpell::accept(string const & word)
-{
-	if (sc)
-		pspell_manager_add_to_session(sc, word.c_str());
-}
-
-
-void PSpell::store(string const & mis, string const & cor)
-{
-	if (sc)
-		pspell_manager_store_replacement(sc, mis.c_str(), cor.c_str());
-}
-
-
-char const * PSpell::nextMiss()
-{
-	if (els)
-		return pspell_string_emulation_next(els);
-	return "";
-}
-
-
-char const * PSpell::error()
-{
-	return error_;
-}
-
-
-#endif
-
-///
-// ------------------- start special ispell code/class --------------------
-///
-
-ISpell::ISpell()
-	: str(0), flag(ISP_UNKNOWN)
-{}
-
 
 ISpell::ISpell(BufferParams const & params, string const & lang)
-	: str(0), flag(ISP_UNKNOWN)
-{
-	initialize(params, lang);
-}
-
-
-ISpell::~ISpell()
-{
-	delete[] str;
-}
-
-
-char const * ISpell::nextMiss()
-{
-	if (str == 0 || *(e+1) == '\0') return 0;
-	b = e + 2;
-	e = strpbrk(b, ",\n");
-	*e = '\0';
-	return b;
-}
-
-
-void ISpell::initialize(BufferParams const & params, string const & lang)
+	: str(0)
 {
 	static char o_buf[BUFSIZ];  // jc: it could be smaller
 	int pipein[2];
@@ -363,6 +200,9 @@ void ISpell::initialize(BufferParams const & params, string const & lang)
 		// Hmm...what are we using this id msg for? Nothing? (Lgb)
 		// Actually I used it to tell if it's truly Ispell or if it's
 		// aspell -- (kevinatk@home.com)
+		// But no code actually used the results for anything useful
+		// so I removed it again. Perhaps we can remove this code too. 
+		// - jbl
 		char buf[2048];
 		fd_set infds;
 		struct timeval tv;
@@ -386,14 +226,7 @@ void ISpell::initialize(BufferParams const & params, string const & lang)
 			// there is only one fd in infds.
 			fgets(buf, 2048, in);
 
-			// determine if the spell checker is really Aspell
-			if (strstr(buf, "Aspell"))
-				actual_spell_checker = ASC_ASPELL;
-			else
-				actual_spell_checker = ASC_ISPELL;
-
 			fputs("!\n", out); // Set terse mode (silently accept correct words)
-
 
 		} else if (retval == 0) {
 			// timeout. Give nice message to user.
@@ -426,6 +259,12 @@ void ISpell::initialize(BufferParams const & params, string const & lang)
 }
 
 
+ISpell::~ISpell()
+{
+	delete[] str;
+}
+
+
 /* FIXME: this is a minimalist solution until the above
  * code is able to work with forkedcall.h. We only need
  * to reap the zombies here.
@@ -436,6 +275,19 @@ void reapSpellchecker(void)
 		return;
 
 	waitpid(isp_pid, 0, WNOHANG);
+}
+
+
+string const ISpell::nextMiss()
+{
+	if (str == 0 || *(e+1) == '\0')
+		return "";
+	char * b = e + 2;
+	e = strpbrk(b, ",\n");
+	*e = '\0';
+	if (b)
+		return b;
+	return "";
 }
 
 
@@ -451,10 +303,12 @@ void ISpell::cleanUp()
 }
 
 
-enum ISpell::spellStatus ISpell::check(string const & word)
+enum ISpell::Result ISpell::check(string const & word)
 {
-	//Please rewrite to use string.
+	// FIXME Please rewrite to use string.
 
+	Result res;
+ 
 	::fputs(word.c_str(), out);
 	::fputc('\n', out);
 
@@ -463,43 +317,46 @@ enum ISpell::spellStatus ISpell::check(string const & word)
 
 	// I think we have to check if ispell is still alive here because
 	// the signal-handler could have disabled blocking on the fd
-	if (!alive()) return ISP_UNKNOWN;
+	if (!alive())
+		return UNKNOWN;
 
 	switch (*buf) {
-	case '*': // Word found
-		flag = ISP_OK;
+	case '*':
+		res = OK;
 		break;
-	case '+': // Word found through affix removal
-		flag = ISP_ROOT;
+	case '+':
+		res = ROOT;
 		break;
-	case '-': // Word found through compound formation
-		flag = ISP_COMPOUNDWORD;
+	case '-':
+		res = COMPOUNDWORD;
 		break;
-	case '\n': // Number or when in terse mode: no problems
-		flag = ISP_IGNORE;
+	case '\n':
+		res = IGNORE;
 		break;
 	case '#': // Not found, no near misses and guesses
-		flag = ISP_UNKNOWN;
+		res = UNKNOWN;
 		break;
 	case '?': // Not found, and no near misses, but guesses (guesses are ignored)
 	case '&': // Not found, but we have near misses
 	{
-		flag = ISP_MISSED;
+		res = MISSED;
 		char * p = strpbrk(buf, ":");
 		str = new char[strlen(p) + 1];
 		e   = str;
 		strcpy(str, p);
 		break;
 	}
-	default: // This shouldn't happend, but you know Murphy
-		flag = ISP_UNKNOWN;
+	default: // This shouldn't happen, but you know Murphy
+		res = UNKNOWN;
 	}
 
 	*buf = 0;
-	if (flag!= ISP_IGNORE) {
-		while (*buf!= '\n') fgets(buf, 255, in); /* wait for ispell to finish */
+	if (res != IGNORE) {
+		/* wait for ispell to finish */
+		while (*buf!= '\n')
+			fgets(buf, 255, in);
 	}
-	return flag;
+	return res;
 }
 
 
@@ -533,19 +390,9 @@ void ISpell::accept(string const & word)
 }
 
 
-void ISpell::store(string const & mis, string const & cor)
+string const ISpell::error()
 {
-	if (actual_spell_checker == ASC_ASPELL) {
-		::fputs("$$ra ", out);
-		::fputs(mis.c_str(), out);
-		::fputc(',', out);
-		::fputs(cor.c_str(), out);
-		::fputc('\n', out);
-	}
-}
-
-
-char const * ISpell::error()
-{
-	return error_;
+	if (error_)
+		return error_;
+	return "";
 }

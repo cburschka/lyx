@@ -1,3 +1,45 @@
+2002-08-04  John Levon  <levon@movementarian.org>
+
+	* BufferView.h:
+	* BufferView.C: cosmetic change
+ 
+	* BufferView_pimpl.C: s/IGNORE_CODE/NOTE_CODE/
+ 
+	* bufferlist.C:
+	* buffer.h:
+	* buffer.C:
+	* lyxcb.h:
+	* lyxcb.C:
+	* lyxserver.C: 
+	* lyxvc.C: 
+	* vc-backend.C: 
+	* BufferView2.C: purge all "Lyx" not "LyX" strings
+ 
+	* lyxcursor.h:
+	* lyxcursor.C: attempt to add some documentation
+ 
+	* lyxfunc.C:
+	* commandtags.h:
+	* LyXAction.C: 
+	* ToolbarDefaults.C: 
+	* BufferView_pimpl.C: remove LFUN_DIALOG_TABULAR_INSERT and
+	  merge with LFUN_TABULAR_INSERT
+
+	* Makefile.am: 
+	* SpellBase.h:
+	* ispell.h:
+	* ispell.C: 
+	* pspell.h:
+	* pspell.C: split up i/pspell implementations into separate
+	  files, many cleanups
+
+	* lyxlex.C: unrevert, with a proper fix for prefix.length() == 0 
+ 
+	* text2.C: some cleanup
+ 
+	* lyxfunc.C: don't check for isp_command == "none" any more, it
+	  didn't make any sense
+ 
 2002-08-02  John Levon  <levon@movementarian.org>
 
 	* buffer.C: s/lyxconvert/lyx2lyx/

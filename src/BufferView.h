@@ -1,7 +1,8 @@
 // -*- C++ -*-
-/** \file
- *  Copyright 2002 the LyX Team
- *  Read the file COPYING
+/**
+ * \file BufferView.h
+ * Copyright 2002 the LyX Team
+ * Read the file COPYING
  *
  *  \author Lars Gullik Bjønnes
 */

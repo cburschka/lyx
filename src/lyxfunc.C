@@ -345,9 +345,6 @@ FuncStatus LyXFunc::getStatus(kb_action action,
 	case LFUN_REDO:
 		disable = buf->redostack.empty();
 		break;
-	case LFUN_SPELLCHECK:
-		disable = lyxrc.isp_command == "none";
-		break;
 #ifndef HAVE_LIBAIKSAURUS
 	case LFUN_THESAURUS_ENTRY:
 		disable = true;
@@ -514,8 +511,7 @@ FuncStatus LyXFunc::getStatus(kb_action action,
 	case LFUN_INSET_FOOTNOTE:
 		code = Inset::FOOT_CODE;
 		break;
-	case LFUN_DIALOG_TABULAR_INSERT:
-	case LFUN_INSET_TABULAR:
+	case LFUN_TABULAR_INSERT:
 		code = Inset::TABULAR_CODE;
 		break;
 	case LFUN_INSET_EXTERNAL:
@@ -546,7 +542,7 @@ FuncStatus LyXFunc::getStatus(kb_action action,
 		code = Inset::CAPTION_CODE;
 		break;
 	case LFUN_INSERT_NOTE:
-		code = Inset::IGNORE_CODE;
+		code = Inset::NOTE_CODE;
 		break;
 	case LFUN_INSERT_LABEL:
 		code = Inset::LABEL_CODE;
@@ -1052,10 +1048,6 @@ void LyXFunc::dispatch(kb_action action, string argument, bool verbose)
 		break;
 	}
 
-	case LFUN_DIALOG_TABULAR_INSERT:
-		owner->getDialogs()->showTabularCreate();
-		break;
-
 	case LFUN_AUTOSAVE:
 		AutoSave(owner->view().get());
 		break;
@@ -1195,7 +1187,7 @@ void LyXFunc::dispatch(kb_action action, string argument, bool verbose)
 	case LFUN_FILE_NEW:
 	{
 		// servercmd: argument must be <file>:<template>
-		Buffer * tmpbuf = NewLyxFile(argument);
+		Buffer * tmpbuf = NewFile(argument);
 		if (tmpbuf)
 			owner->view()->buffer(tmpbuf);
 	}
@@ -1249,8 +1241,7 @@ void LyXFunc::dispatch(kb_action action, string argument, bool verbose)
 		break; // RVDK_PATCH_5
 
 	case LFUN_SPELLCHECK:
-		if (lyxrc.isp_command != "none")
-			owner->getDialogs()->showSpellchecker();
+		owner->getDialogs()->showSpellchecker();
 		break;
 
 	// --- lyxserver commands ----------------------------

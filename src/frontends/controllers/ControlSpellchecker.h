@@ -20,8 +20,9 @@
 #endif
 
 #include "ControlDialog_impl.h"
-#include "sp_base.h"
 
+class SpellBase;
+ 
 /** A controller for Spellchecker dialogs.
  */
 class ControlSpellchecker : public ControlDialogBD {
@@ -92,9 +93,6 @@ private:
 
 	/// set to true to stop checking
 	bool stop_;
-
-	/// spellchecker status
-	enum SpellBase::spellStatus result_;
 
 	/// The actual spellchecker object
 	SpellBase * speller_;

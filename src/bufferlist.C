@@ -141,7 +141,7 @@ bool BufferList::qwriteAll()
 	BufferStorage::iterator it = bstore.begin();
 	BufferStorage::iterator end = bstore.end();
 	for (; it != end; ++it) {
-		if (!(*it)->isLyxClean()) {
+		if (!(*it)->isClean()) {
 			string fname;
 			if ((*it)->isUnnamed())
 				fname = OnlyFilename((*it)->fileName());
@@ -181,7 +181,7 @@ bool BufferList::close(Buffer * buf)
 	if (buf->getUser())
 		buf->getUser()->insetUnlock();
 
-	if (buf->paragraph && !buf->isLyxClean() && !quitting) {
+	if (buf->paragraph && !buf->isClean() && !quitting) {
 		if (buf->getUser())
 			buf->getUser()->owner()->prohibitInput();
 		string fname;
@@ -301,7 +301,7 @@ void BufferList::emergencyWrite(Buffer * buf)
 
 
 	// No need to save if the buffer has not changed.
-	if (buf->isLyxClean())
+	if (buf->isClean())
 		return;
 
 	lyxerr << fmt(_("lyx: Attempting to save document %s as..."),
@@ -316,7 +316,7 @@ void BufferList::emergencyWrite(Buffer * buf)
 		s += ".emergency";
 		lyxerr << "  " << s << endl;
 		if (buf->writeFile(s)) {
-			buf->markLyxClean();
+			buf->markClean();
 			lyxerr << _("  Save seems successful. Phew.") << endl;
 			return;
 		} else {
@@ -329,7 +329,7 @@ void BufferList::emergencyWrite(Buffer * buf)
 	s += ".emergency";
 	lyxerr << " " << s << endl;
 	if (buf->writeFile(s)) {
-		buf->markLyxClean();
+		buf->markClean();
 		lyxerr << _("  Save seems successful. Phew.") << endl;
 		return;
 	}
@@ -343,7 +343,7 @@ void BufferList::emergencyWrite(Buffer * buf)
 	s += ".emergency";
 	lyxerr << " " << s << endl;
 	if (buf->writeFile(s)) {
-		buf->markLyxClean();
+		buf->markClean();
 		lyxerr << _("  Save seems successful. Phew.") << endl;
 		return;
 	}

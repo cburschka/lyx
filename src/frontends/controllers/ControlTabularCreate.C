@@ -53,5 +53,5 @@ void ControlTabularCreate::apply()
 
 	string const val(tostr(params().first) + " " + tostr(params().second));
 
-	lv_.getLyXFunc()->dispatch(LFUN_INSET_TABULAR, val);
+	lv_.getLyXFunc()->dispatch(LFUN_TABULAR_INSERT, val);
 }

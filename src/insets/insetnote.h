@@ -34,7 +34,7 @@ public:
 	///
 	string const editMessage() const;
 	///
-	Inset::Code lyxCode() const { return Inset::IGNORE_CODE; }
+	Inset::Code lyxCode() const { return Inset::NOTE_CODE; }
 	///
 	void write(Buffer const *, std::ostream &) const;
 	///

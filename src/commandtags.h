@@ -250,7 +250,7 @@ enum kb_action {
 	LFUN_INSET_GRAPHICS,            // Lgb 20000226
 	LFUN_INSET_FOOTNOTE,            // Jug 20000307
 	LFUN_PARAGRAPH_SPACING,         // Lgb 20000411
-	LFUN_INSET_TABULAR,             // Jug 20000412
+	LFUN_TABULAR_INSERT,            // Jug 20000412
 	LFUN_LOFVIEW, // 230            // Dekel 20000519
 	LFUN_LOTVIEW,                   // Dekel 20000519
 	LFUN_LOAVIEW,                   // Dekel 20000519
@@ -275,7 +275,6 @@ enum kb_action {
 	LFUN_UPDATE,                    // Dekel 20000805
 	LFUN_INDEX_INSERT,              // Angus 20000803
 	LFUN_SCREEN_FONT_UPDATE,        // ARRae 20000813
-	LFUN_DIALOG_TABULAR_INSERT, // 250 // Jug 20000825 (old table-insert)
 	LFUN_GOTO_PARAGRAPH,            // Dekel 20000826
 	LFUN_REFERENCE_GOTO,            // Dekel 20010114
 	LFUN_BOOKMARK_SAVE,             // Dekel 20010127

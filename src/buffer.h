@@ -35,9 +35,6 @@ class LaTeXFeatures;
 class Language;
 class ParIterator;
 
-// When lyx 1.3.x starts we should enable this
-// btw. we should also test this with 1.2 so that we
-// do not get any surprises. (Lgb)
 #define NO_COMPABILITY 1
 
 ///
@@ -200,15 +197,15 @@ public:
 	Language const * getLanguage() const;
 	///
 	int runChktex();
-	///
-	bool isLyxClean() const;
+	/// return true if the main lyx file does not need saving
+	bool isClean() const;
 	///
 	bool isBakClean() const;
 	///
 	bool isDepClean(string const & name) const;
 
-	///
-	void markLyxClean() const;
+	/// mark the main lyx file as not needing saving
+	void markClean() const;
 
 	///
 	void markBakClean();
@@ -394,6 +391,7 @@ public:
 			}
 			return tmp;
 		}
+
 		///
 		Inset * operator*() { return *it; }
 
@@ -463,7 +461,7 @@ Language const * Buffer::getLanguage() const
 
 
 inline
-bool Buffer::isLyxClean() const
+bool Buffer::isClean() const
 {
 	return lyx_clean;
 }
@@ -477,7 +475,7 @@ bool Buffer::isBakClean() const
 
 
 inline
-void Buffer::markLyxClean() const
+void Buffer::markClean() const
 {
 	if (!lyx_clean) {
 		lyx_clean = true;

@@ -1,15 +1,14 @@
-/* This file is part of
- * ======================================================
+/**
+ * \file lyxlex.C
+ * Copyright 1996-2002 the LyX Team
+ * Read the file COPYING
  *
- *           LyX, The Document Processor
+ * Generalized simple lexical analyzer.
+ * It can be used for simple syntax parsers, like lyxrc,
+ * texclass and others to come.
  *
- *           Copyright 1996-2001 The LyX Team.
- *
- *   Generalized simple lexical analizer.
- *   It can be used for simple syntax parsers, like lyxrc,
- *   texclass and others to come.   [asierra30/03/96]
- *
- * ====================================================== */
+ * \author Alejandro Aguilar Sierra <asierra@servidor.unam.mx>
+ */
 
 #include <config.h>
 
@@ -168,29 +167,28 @@ string const LyXLex::getLongString(string const & endtoken)
 
 		// We do a case independent comparison, like search_kw
 		// does.
-		if (compare_ascii_no_case(token, endtoken) != 0) {
-			string tmpstr = getString();
-			if (firstline) {
-				unsigned int i = 0;
-				while (i < tmpstr.length()
-				      && tmpstr[i] == ' ') {
-					++i;
-					prefix += ' ';
-				}
-				firstline = false;
-				lyxerr[Debug::PARSER] << "Prefix = `" << prefix
-						      << '\'' << endl;
-			}
-
-			if (!prefix.empty()
-			    && prefixIs(tmpstr, prefix)) {
-				tmpstr.erase(0, prefix.length() - 1);
-			}
-			str += ltrim(tmpstr, "\t") + '\n';
-		}
-		else // token == endtoken
+		if (compare_ascii_no_case(token, endtoken) == 0)	
 			break;
+
+		string tmpstr = getString();
+		if (firstline) {
+			string::size_type i(tmpstr.find_first_not_of(' '));
+			if (i != string::npos)
+				prefix = tmpstr.substr(0, i);
+			firstline = false;
+			lyxerr[Debug::PARSER]
+				<< "Prefix = `" << prefix << "\'" << endl;
+		}
+
+		// further lines in long strings may have the same
+		// whitespace prefix as the first line. Remove it.
+		if (prefix.length() && prefixIs(tmpstr, prefix)) {
+			tmpstr.erase(0, prefix.length() - 1);
+		}
+ 
+		str += ltrim(tmpstr, "\t") + '\n';
 	}
+ 
 	if (!isOK()) {
 		printError("Long string not ended by `" + endtoken + '\'');
 	}

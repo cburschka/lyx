@@ -317,7 +317,7 @@ void AutoSave(BufferView * bv)
 // create new file with template
 // SERVERCMD !
 //
-Buffer * NewLyxFile(string const & filename)
+Buffer * NewFile(string const & filename)
 {
 	// Split argument by :
 	string name;

@@ -27,7 +27,7 @@ void QuitLyX();
 ///
 void AutoSave(BufferView * bv);
 ///
-Buffer * NewLyxFile(string const & filename);
+Buffer * NewFile(string const & filename);
 ///
 void InsertAsciiFile(BufferView * bv, string const & f, bool asParagraph);
 ///

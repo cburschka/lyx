@@ -91,7 +91,7 @@ void ToolbarDefaults::init()
 	add(SEPARATOR);
 
 	add(LFUN_INSET_GRAPHICS);
-	add(LFUN_DIALOG_TABULAR_INSERT);
+	add(LFUN_TABULAR_INSERT);
 }
 
 

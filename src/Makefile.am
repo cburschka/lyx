@@ -177,10 +177,11 @@ lyx_SOURCES = \
 	paragraph.h \
 	paragraph_pimpl.C \
 	paragraph_pimpl.h \
-	sp_base.h \
-	sp_spell.C \
-	sp_ispell.h \
-	sp_pspell.h \
+	SpellBase.h \
+	ispell.h \
+	ispell.C \
+	pspell.h \
+	pspell.C \
 	tabular.C \
 	tabular.h \
 	tabular-old.C \

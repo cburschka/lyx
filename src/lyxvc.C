@@ -108,7 +108,7 @@ void LyXVC::registrer()
 	}
 
 	// If the document is changed, we might want to save it
-	if (!vcs->owner()->isLyxClean() &&
+	if (!vcs->owner()->isClean() &&
 	    Alert::askQuestion(_("Changes in document:"),
 			MakeDisplayPath(filename, 50),
 			_("Save document and proceed?"))) {
@@ -118,7 +118,7 @@ void LyXVC::registrer()
 
 	// Maybe the save fails, or we answered "no". In both cases,
 	// the document will be dirty, and we abort.
-	if (!vcs->owner()->isLyxClean()) {
+	if (!vcs->owner()->isClean()) {
 		return;
 	}
 
@@ -141,7 +141,7 @@ void LyXVC::registrer()
 void LyXVC::checkIn()
 {
 	// If the document is changed, we might want to save it
-	if (!vcs->owner()->isLyxClean() &&
+	if (!vcs->owner()->isClean() &&
 	    Alert::askQuestion(_("Changes in document:"),
 			MakeDisplayPath(vcs->owner()->fileName(), 50),
 			_("Save document and proceed?"))) {
@@ -151,7 +151,7 @@ void LyXVC::checkIn()
 
 	// Maybe the save fails, or we answered "no". In both cases,
 	// the document will be dirty, and we abort.
-	if (!vcs->owner()->isLyxClean()) {
+	if (!vcs->owner()->isClean()) {
 		return;
 	}
 
@@ -171,7 +171,7 @@ void LyXVC::checkIn()
 void LyXVC::checkOut()
 {
 	lyxerr[Debug::LYXVC] << "LyXVC: checkOut" << endl;
-	if (!vcs->owner()->isLyxClean()
+	if (!vcs->owner()->isClean()
 	    && !Alert::askQuestion(_("Changes in document:"),
 			   MakeDisplayPath(vcs->owner()->fileName(), 50),
 			   _("Ignore changes and proceed with check out?"))) {

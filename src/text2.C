@@ -45,7 +45,6 @@
 
 using std::vector;
 using std::copy;
-using std::find;
 using std::endl;
 using std::find;
 using std::pair;
@@ -968,30 +967,26 @@ string const LyXText::selectionAsString(Buffer const * buffer,
 					bool label) const
 {
 	if (!selection.set()) return string();
-	string result;
 
-	// Special handling if the whole selection is within one paragraph
-	if (selection.start.par() == selection.end.par()) {
-		result += selection.start.par()->asString(buffer,
-							  selection.start.pos(),
-							  selection.end.pos(),
-							  label);
-		return result;
+	// should be const ...
+	Paragraph * startpar(selection.start.par());
+	Paragraph * endpar(selection.end.par());
+	pos_type const startpos(selection.start.pos());
+	pos_type const endpos(selection.end.pos());
+	 
+	if (startpar == endpar) {
+		return startpar->asString(buffer, startpos, endpos, label);
 	}
 
-	// The selection spans more than one paragraph
+	string result;
 
 	// First paragraph in selection
-	result += selection.start.par()->asString(buffer,
-						  selection.start.pos(),
-						  selection.start.par()->size(),
-						  label)
-		+ "\n\n";
+	result += startpar->asString(buffer, startpos, startpar->size(), label) + "\n\n";
 
 	// The paragraphs in between (if any)
 	LyXCursor tmpcur(selection.start);
 	tmpcur.par(tmpcur.par()->next());
-	while (tmpcur.par() != selection.end.par()) {
+	while (tmpcur.par() != endpar) {
 		result += tmpcur.par()->asString(buffer, 0,
 						 tmpcur.par()->size(),
 						 label) + "\n\n";
@@ -999,8 +994,7 @@ string const LyXText::selectionAsString(Buffer const * buffer,
 	}
 
 	// Last paragraph in selection
-	result += selection.end.par()->asString(buffer, 0,
-						selection.end.pos(), label);
+	result += endpar->asString(buffer, 0, endpos, label);
 
 	return result;
 }
@@ -2229,6 +2223,30 @@ void LyXText::setCursorFromCoordinates(BufferView * bview, int x, int y) const
 }
 
 
+namespace {
+
+	/**
+	 * return true if the cursor given is at the end of a row,
+	 * and the next row is filled by an inset that spans an entire
+	 * row.
+	 */
+	bool beforeFullRowInset(Row & row, LyXCursor & cur) {
+		if (!row.next())
+			return false;
+		Row const & next = *row.next();
+
+		if (next.pos() != cur.pos() || next.par() != cur.par())
+			return false;
+		if (!cur.par()->isInset(cur.pos()))
+			return false;
+		Inset const * inset = cur.par()->getInset(cur.pos());
+		if (inset->needFullRow() || inset->display())
+			return true;
+		return false;
+	}
+}
+ 
+
 void LyXText::setCursorFromCoordinates(BufferView * bview, LyXCursor & cur,
 				       int x, int y) const
 {
@@ -2242,16 +2260,8 @@ void LyXText::setCursorFromCoordinates(BufferView * bview, LyXCursor & cur,
 	cur.x(x);
 	cur.y(y + row->baseline());
 	cur.row(row);
-	Inset * ins;
-	if (row->next() && row->next()->pos() == cur.pos() &&
-		cur.par() == row->next()->par() &&
-		cur.par()->getChar(cur.pos()) == Paragraph::META_INSET &&
-		(ins=cur.par()->getInset(cur.pos())) &&
-		(ins->needFullRow() || ins->display()))
-	{
-		// we enter here if we put the cursor on the end of the row before
-		// a inset which uses a full row and in that case we HAVE to calculate
-		// the right (i) values.
+ 
+	if (beforeFullRowInset(*row, cur)) {
 		pos_type last = rowLastPrintable(row);
 		float x = getCursorX(bview, row->next(), cur.pos(), last, bound);
 		cur.ix(int(x));
