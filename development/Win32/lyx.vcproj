@@ -2931,6 +2931,23 @@
 						</FileConfiguration>
 					</File>
 					<File
+						RelativePath="..\..\src\frontends\qt2\QGraphics.h">
+						<FileConfiguration
+							Name="Debug|Win32">
+							<Tool
+								Name="VCCustomBuildTool"
+								CommandLine=""
+								Outputs=""/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Release|Win32">
+							<Tool
+								Name="VCCustomBuildTool"
+								CommandLine=""
+								Outputs=""/>
+						</FileConfiguration>
+					</File>
+					<File
 						RelativePath="..\..\src\frontends\qt2\QGraphicsDialog.C">
 						<FileConfiguration
 							Name="Debug|Win32">
@@ -7873,25 +7890,6 @@
 							</FileConfiguration>
 						</File>
 						<File
-							RelativePath="..\..\src\frontends\qt2\QGraphics.h">
-							<FileConfiguration
-								Name="Debug|Win32">
-								<Tool
-									Name="VCCustomBuildTool"
-									CommandLine="%QTDIR%\bin\moc -o $(InputDir)moc\$(InputName)_moc.C $(InputPath)
-"
-									Outputs="$(InputDir)moc\$(InputName)_moc.C"/>
-							</FileConfiguration>
-							<FileConfiguration
-								Name="Release|Win32">
-								<Tool
-									Name="VCCustomBuildTool"
-									CommandLine="%QTDIR%\bin\moc -o $(InputDir)moc\$(InputName)_moc.C $(InputPath)
-"
-									Outputs="$(InputDir)moc\$(InputName)_moc.C"/>
-							</FileConfiguration>
-						</File>
-						<File
 							RelativePath="..\..\src\frontends\qt2\QGraphicsDialog.h">
 							<FileConfiguration
 								Name="Debug|Win32">
@@ -8609,9 +8607,6 @@
 						</File>
 						<File
 							RelativePath="..\..\src\frontends\qt2\moc\qfontexample_moc.C">
-						</File>
-						<File
-							RelativePath="..\..\src\frontends\qt2\moc\QGraphics_moc.C">
 						</File>
 						<File
 							RelativePath="..\..\src\frontends\qt2\moc\QGraphicsDialog_moc.C">
