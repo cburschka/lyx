@@ -1132,7 +1132,25 @@ Paragraph * Paragraph::TeXOnePar(Buffer const * buf,
 			texrow.newline();
 		}
 	}
-
+	
+	if (!next_ && language->babel() != doc_language->babel()) {
+		// Since \selectlanguage write the language to the aux
+		// file, we need to reset the language at the end of
+		// footnote or float.
+		
+		if (lyxrc.language_command_end.empty())
+			os << '\n'
+			   << subst(lyxrc.language_command_begin,
+				    "$$lang",
+				    doc_language->babel());
+		else
+			os << '\n'
+			   << subst(lyxrc.language_command_end,
+				    "$$lang",
+				    language->babel());
+		texrow.newline();
+	}
+	
 	if ((in == 0) || !in->forceDefaultParagraphs(in)) {
 		further_blank_line = false;
 		if (params().lineBottom()) {
@@ -1163,28 +1181,12 @@ Paragraph * Paragraph::TeXOnePar(Buffer const * buf,
 	}
 
 	// we don't need it for the last paragraph!!!
+	// Note from JMarc: we will re-add a \n explicitely in
+	// TeXEnvironment, because it is needed in this case
 	if (next_) {
 		os << '\n';
 		texrow.newline();
-	} else {
-		// Since \selectlanguage write the language to the aux file,
-		// we need to reset the language at the end of footnote or
-		// float.
-
-		if (language->babel() != doc_language->babel()) {
-			if (lyxrc.language_command_end.empty())
-				os << subst(lyxrc.language_command_begin,
-					    "$$lang",
-					    doc_language->babel())
-				   << endl;
-			else
-				os << subst(lyxrc.language_command_end,
-					    "$$lang",
-					    language->babel())
-				   << endl;
-			texrow.newline();
-		}
-	}
+	} 
 
 	lyxerr[Debug::LATEX] << "TeXOnePar...done " << next_ << endl;
 	return next_;
@@ -1575,7 +1577,13 @@ Paragraph * Paragraph::TeXEnvironment(Buffer const * buf,
 	do {
 		par = par->TeXOnePar(buf, bparams, os, texrow, false);
 
-		if (par && par->params().depth() > params().depth()) {
+		if (!par) {
+			// Make sure that the last paragraph is
+			// correctly terminated (because TeXOnePar does
+			// not add a \n in this case)
+			os << '\n';
+			texrow.newline();
+		} else if (par->params().depth() > params().depth()) {
 			    if (par->layout()->isParagraph()) {
 
 			    // Thinko!

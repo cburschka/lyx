@@ -19,22 +19,35 @@ What's new
 
 ** Updates
 
+
 - updated basque, danish, italian and romanian localizations; updated basque
   and german documentations
 
+
 ** Bug fixes
+
+
+* LaTeX output:
 
 - partly fix handling of included files; external insets are still not
   working correctly [bug #605]
 
-- fix toggling of short title inset in some cases
+- fix nesting of language change commands, especially important for
+  arabic [bug #1404]
 
-- use opening quotation marks after an opening square bracket
+- fix missing line break in front of \end{...} in some cases [bug #1225]
 
 - fix running makeindex and bibtex when the file name contains some
   special characters [bug #1526]
 
 - Prevent clashes with LaTeX packages defining "\boldsymbol".
+
+
+* User Interface:
+
+- use opening quotation marks after an opening square bracket
+
+- fix toggling of short title inset in some cases
 
 - when the autodetection of latex classes cannot be done for some
   reason, provide a sensible list of textclasses
@@ -43,6 +56,9 @@ What's new
 
 - honor correctly the various locale-related environment variables when 
   looking for translated help files
+
+
+* Configuration/Installation:
 
 - when running under windows, configure correctly the ps and pdf
   viewers [bug #1508]
