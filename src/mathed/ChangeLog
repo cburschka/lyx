@@ -1,5 +1,10 @@
 2004-05-04  Angus Leeming  <leeming@lyx.org>
 
+	* math_scriptinset.C (up, down, notifyCursorLeaves): ensure that
+	accessor index is valid.
+
+2004-05-04  Angus Leeming  <leeming@lyx.org>
+
 	* formulamacro.C:
 	* math_binaryopinset.C:
 	* math_nestinset.C:

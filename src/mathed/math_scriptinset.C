@@ -42,6 +42,7 @@ MathScriptInset::MathScriptInset(bool up)
 MathScriptInset::MathScriptInset(MathAtom const & at, bool up)
 	: MathNestInset(2), cell_1_is_up_(up), limits_(0)
 {
+	BOOST_ASSERT(nargs() >= 1);
 	cell(0).push_back(at);
 }
 
@@ -83,24 +84,40 @@ bool MathScriptInset::idxLast(LCursor & cur) const
 
 MathArray const & MathScriptInset::down() const
 {
-	return nargs() == 2 ? cell(2) : cell(1);
+#if 1
+	if (nargs() == 3)
+		return cell(2);
+	BOOST_ASSERT(nargs() > 1);
+	return cell(1);
+#else
+	return nargs() == 3 ? cell(2) : cell(1);
+#endif
 }
 
 
 MathArray & MathScriptInset::down()
 {
-	return nargs() == 2 ? cell(2) : cell(1);
+#if 1
+	if (nargs() == 3)
+		return cell(2);
+	BOOST_ASSERT(nargs() > 1);
+	return cell(1);
+#else
+	return nargs() == 3 ? cell(2) : cell(1);
+#endif
 }
 
 
 MathArray const & MathScriptInset::up() const
 {
+	BOOST_ASSERT(nargs() > 1);
 	return cell(1);
 }
 
 
 MathArray & MathScriptInset::up()
 {
+	BOOST_ASSERT(nargs() > 1);
 	return cell(1);
 }
 
@@ -544,9 +561,9 @@ void MathScriptInset::notifyCursorLeaves(idx_type idx)
 	MathNestInset::notifyCursorLeaves(idx);
 
 	// remove empty scripts if possible
-	if (idx == 2 && cell(2).empty()) {
+	if (idx == 2 && nargs() > 2 && cell(2).empty()) {
 		removeScript(false); // must be a subscript...
-	} else if (idx == 1 && cell(1).empty()) {
+	} else if (idx == 1 && nargs() > 1 && cell(1).empty()) {
 		if (nargs() == 2) {
 			cell_1_is_up_ = false;
 			cell(1) = cell(2);
