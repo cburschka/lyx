@@ -1,3 +1,8 @@
+2001-02-10  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* insettext.C (LocalDispatch): Restore the language if the inset
+	becomes empty.
+
 2001-02-09  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* insettext.C (moveRightIntern): Update the selection cursor.

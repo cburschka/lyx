@@ -65,13 +65,15 @@ MathedInsetTypes mathed_env = LM_OT_MIN;
 string mathed_label;
 
 
-int const latex_mathenv_num = 10;
+int const latex_mathenv_num = 12;
 char const * latex_mathenv[latex_mathenv_num] = { 
    "math", 
    "displaymath", 
    "equation", 
    "eqnarray*",
    "eqnarray",
+   "align*",
+   "align",
    "alignat*",
    "alignat",
    "multline*",
@@ -809,6 +811,15 @@ LyxArrayBase * mathed_parse(unsigned flags, LyxArrayBase * array,
 		 if (is_multiline(mathed_env)) {
 		     int cols = 1;
 		     if (is_multicolumn(mathed_env)) {
+			 if (mathed_env != LM_OT_ALIGNAT &&
+			     mathed_env != LM_OT_ALIGNATN &&
+			     yyis->good()) {
+			     char c;
+			     yyis->get(c);
+			     if (c != '%')
+				     lyxerr << "Math parse error: unexpected '"
+					    << c << "'" << endl;
+			 }
 			 LexGetArg('{');
 			 cols = strToInt(string(yytext));
 		     }

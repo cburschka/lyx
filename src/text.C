@@ -2196,21 +2196,18 @@ void LyXText::PrepareToPrint(BufferView * bview,
 
         bool const is_rtl =
 		row->par()->isRightToLeftPar(bview->buffer()->params);
-#ifndef NEW_INSETS
-
 	if (is_rtl) {
-		x = RightMargin(bview->buffer(), row);
+		x = (workWidth(bview) > 0)
+			? RightMargin(bview->buffer(), row) : 0;
+#ifndef NEW_INSETS
 		if (row->par()->footnoteflag == LyXParagraph::OPEN_FOOTNOTE) {
 			LyXFont font(LyXFont::ALL_SANE);
 			font.setSize(LyXFont::SIZE_SMALL);
 			x += lyxfont::width("Mwide-figM", font);
 		}
-	} else
 #endif
-		if (workWidth(bview) > 0)
-		x = LeftMargin(bview, row);
-	else
-		x = 0;
+	} else
+		x = (workWidth(bview) > 0) ? LeftMargin(bview, row) : 0;
 	
 	// is there a manual margin with a manual label
 	if (textclasslist.Style(bview->buffer()->params.textclass,

@@ -464,7 +464,11 @@ void MathMatrixInset::Metrics()
     }
     descent = h - ascent + 2;
     
-   
+    // Increase ws[i] for 'R' columns (except the first one)
+    for (i = 1; i < nc; ++i)
+	if (h_align[i] == 'R')
+	    ws[i] += 10*df_width;
+
    // Adjust local tabs
     cxrow = row;
     width = MATH_COLSEP;
@@ -477,12 +481,18 @@ void MathMatrixInset::Metrics()
 		isvoid = true;
 	    }
 	    switch (h_align[i]) {
-	     case 'l': lf = 0; break;
-	     case 'c': lf = (ws[i] - cxrow->getTab(i))/2; 
-		       break;
-	     case 'r': lf = ws[i] - cxrow->getTab(i); break;
+	    case 'l':
+		lf = 0;
+		break;
+	    case 'c':
+		lf = (ws[i] - cxrow->getTab(i))/2; 
+		break;
+	    case 'r':
+	    case 'R':
+		lf = ws[i] - cxrow->getTab(i);
+		break;
 	    }
-	    ww = (isvoid) ? lf: lf + cxrow->getTab(i);
+	    ww = (isvoid) ? lf : lf + cxrow->getTab(i);
 	    cxrow->setTab(i, lf + rg);
 	    rg = ws[i] - ww + MATH_COLSEP;
 	    if (cxrow == row) width += ws[i] + MATH_COLSEP;

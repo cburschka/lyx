@@ -145,6 +145,10 @@ enum MathedInsetTypes  {
 	/// A multiline numbered paragraph
 	LM_OT_MPARN,
 	///
+	LM_OT_ALIGN,
+	///
+	LM_OT_ALIGNN,
+	///
 	LM_OT_ALIGNAT,
 	///
 	LM_OT_ALIGNATN,
@@ -683,7 +687,8 @@ bool is_singlely_numbered(short int type)
 inline
 bool is_multi_numbered(short int type)
 {
-	return type == LM_OT_MPARN || type == LM_OT_ALIGNATN;
+	return type == LM_OT_MPARN || type == LM_OT_ALIGNN
+		|| type == LM_OT_ALIGNATN;
 }
 
 inline
@@ -695,7 +700,8 @@ bool is_numbered(short int type)
 inline
 bool is_multicolumn(short int type)
 {
-	return type == LM_OT_ALIGNAT || type == LM_OT_ALIGNATN;
+	return type == LM_OT_ALIGN || type == LM_OT_ALIGNN
+		|| type == LM_OT_ALIGNAT || type == LM_OT_ALIGNATN;
 }
 
 #endif

@@ -336,8 +336,12 @@ void mathed_write(MathParInset * p, ostream & os, int * newlines,
 	     os << "\\begin{"
 		<< latex_mathenv[mathed_env]
 		<< "}";
-	     if (mathed_env == LM_OT_ALIGNAT || mathed_env == LM_OT_ALIGNATN)
+	     if (is_multicolumn(mathed_env)) {
+		     if (mathed_env != LM_OT_ALIGNAT
+			 && mathed_env != LM_OT_ALIGNATN)
+			     os << "%";
 		     os << "{" << p->GetColumns()/2 << "}";
+	     }
 	     os << "\n";
      }
      ++number_of_newlines;

@@ -1,3 +1,12 @@
+2001-02-10  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* text.C (PrepareToPrint): RTL Fix.
+
+	* paragraph.C (GetUChar): New method.
+	(String):  Use GetUChar.
+
+	* buffer.C (asciiParagraph): Use GetUChar.
+
 2001-02-09  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* text.C (GetVisibleRow): Fix selection drawing for RTL text in tables.

@@ -337,6 +337,12 @@ MathMatrixInset * create_multiline(short int type, int cols)
 		cols = 1;
 
 	switch (type) {
+	case LM_OT_ALIGN:
+	case LM_OT_ALIGNN:
+		columns = 2*cols;
+		for (int i = 0; i < cols; ++i)
+			align += "Rl";
+		break;
 	case LM_OT_ALIGNAT:
 	case LM_OT_ALIGNATN:
 		columns = 2*cols;
@@ -377,8 +383,11 @@ void MathedCursor::Insert(byte c, MathedTextCodes t)
 	 short int type = LM_OT_MPAR;
 	 int cols = 1;
 	 if (c >= '1' && c <= '9') {
+		 type = LM_OT_ALIGN;
+		 cols = c - '1' + 1;
+	 } else if (c >= 'A' && c <= 'I') {
 		 type = LM_OT_ALIGNAT;
-		 cols = c - '0';
+		 cols = c - 'A' + 1;
 	 } else if (c == 'm')
 		 type = LM_OT_MULTLINE;
 	 else if (c == 'e')
