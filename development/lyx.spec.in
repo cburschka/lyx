@@ -1,16 +1,19 @@
+%define frontend @RPM_FRONTEND@
+%define frontdep @RPM_FRONTEND_DEPS@
+
 Summary: A WYSIWYM (What You See Is What You Mean) frontend to LaTeX
 Name: @PACKAGE@
 Version: @VERSION@
-Release: 1
+Release: 1_%{frontend}
 Copyright: see COPYING file
-Group: X11/Editors
-Url: http://www.lyx.org/
+Group: Applications/Publishing
+URL: http://www.lyx.org/
 Packager: Kayvan A. Sylvan <kayvan@sylvan.com>
-Source: ftp://ftp.lyx.org/pub/lyx/stable/lyx-%{PACKAGE_VERSION}.tar.gz
-BuildRoot: %{_tmppath}/%{name}-root
-Icon: lyx.xpm
-Prefix: /usr
-Requires: xforms >= 0.89, tetex-xdvi, tetex, tetex-latex
+Source: ftp://ftp.lyx.org/pub/lyx/stable/%{name}-%{version}.tar.gz
+BuildRoot: %{_tmppath}/%{name}-%{version}-root
+Icon: %{name}.xpm
+Prefix: %{_prefix}
+Requires: %{frontdep}, tetex-xdvi, tetex, tetex-latex
 Obsoletes: tetex-lyx
 
 %description
@@ -30,14 +33,16 @@ to the backends (like LaTeX) that are specifically designed for the task.
 With LyX, the author can concentrate on the contents of his writing,
 and let the computer take care of the rest.
 
+This is LyX built with the %{frontend} frontend.
+
 %prep
 %setup
 
 %build
 unset LINGUAS || true
-./configure --prefix=%{_prefix} --mandir=%{_mandir} \
-	--bindir=%{_bindir} --datadir=%{_datadir} \
-	--without-warnings --disable-debug --enable-optimization=-O2
+./configure --with-frontend=%{frontend} --prefix=%{_prefix} \
+	--mandir=%{_mandir} --bindir=%{_bindir} --datadir=%{_datadir} \
+ 	--without-warnings --disable-debug --enable-optimization=-O2
 make
 
 %install
@@ -52,13 +57,13 @@ gzip -f9 ${RPM_BUILD_ROOT}%{_mandir}/man?/*
 #
 TEXMF=%{_datadir}/texmf
 mkdir -p ${RPM_BUILD_ROOT}${TEXMF}/tex/latex
-mv ${RPM_BUILD_ROOT}%{_datadir}/lyx/tex \
-      ${RPM_BUILD_ROOT}/${TEXMF}/tex/latex/lyx
+mv ${RPM_BUILD_ROOT}%{_datadir}/%{name}/tex \
+      ${RPM_BUILD_ROOT}/${TEXMF}/tex/latex/%{name}
 
 #
 # Miscellaneous files
 #
-cp -a lib/images/lyx.xpm ${RPM_BUILD_ROOT}%{_datadir}/lyx/images/
+cp -a lib/images/%{name}.xpm ${RPM_BUILD_ROOT}%{_datadir}/%{name}/images/
 cp lib/reLyX/README README.reLyX
 
 %clean
@@ -77,14 +82,13 @@ fi
 # Now configure LyX
 #
 echo "Configuring LyX for your system..."
-cd %{_datadir}/lyx
+cd %{_datadir}/%{name}
 ./configure --srcdir
 
 # Fix reLyX perl program if the prefix is non-standard
 if [ "%{_prefix}" != "/usr" ]
 then
-    perl -pi -e "s!/usr/share/lyx!%{_datadir}/lyx!" \
-        %{_bindir}/reLyX
+    perl -pi -e "s!/usr/share/%{name}!%{_datadir}/%{name}!" %{_bindir}/reLyX
 fi
 
 %postun

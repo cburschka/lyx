@@ -148,6 +148,8 @@ case "$lyx_use_frontend" in
 	LYX_PATH_XFORMS
 	LYX_CHECK_XFORMS_IMAGE_LOADER
 	FRONTEND="xforms"
+        RPM_FRONTEND="xforms"
+        RPM_FRONTEND_DEPS='libforms >= 1.0'
 	FRONTEND_GUILIB="xforms/*.lo xforms/forms/*.lo"
 	FRONTEND_INCLUDES="-I\$(srcdir)/xforms"
 	case "$host" in
@@ -177,6 +179,8 @@ dnl     FRONTEND_LIBS="@XPM_LIB@ @XFORMS_LIB@ ${GNOME_FRONTEND_LIBS}"
 dnl	;;
   qt)
     QT_DO_IT_ALL
+    RPM_FRONTEND="qt"
+    RPM_FRONTEND_DEPS='qt >= 2.2.1'
     FRONTEND="qt2"
     FRONTEND_GUILIB="qt2/*.lo qt2/ui/*.lo qt2/moc/*.lo qt2/ui/moc/*.lo"
     FRONTEND_LDFLAGS="\$(QT_LDFLAGS)"
@@ -375,6 +379,10 @@ AC_CONFIG_FILES([Makefile \
        src/frontends/qt2/ui/moc/Makefile \
        src/frontends/gnome/Makefile \
 ])
+
+AC_SUBST(RPM_FRONTEND, 'xforms')
+AC_SUBST(RPM_FRONTEND_DEPS, 'libforms >= 1.0')
+
 AC_OUTPUT
 # show version information
 echo

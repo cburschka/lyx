@@ -1,3 +1,9 @@
+2003-02-20  Kayvan A. Sylvan <kayvan@sylvan.com>
+
+	* configure.ac, configure.in: add RPM_FRONTEND stuff to
+	automatically generate an xforms or qt specific lyx.spec
+	file.
+
 2003-02-18  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* Makefile.am (EXTRA_DIST): add pkg.m4, relyx_configure.ac and
