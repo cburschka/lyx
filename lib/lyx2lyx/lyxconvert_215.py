@@ -107,6 +107,30 @@ def remove_vcid(lines):
     if i != -1:
         del lines[i]
 
+def remove_space_in_units(lines):
+    margins = ["\\topmargin","\\rightmargin",
+               "\\leftmargin","\\bottommargin"]
+
+    unit_rexp = re.compile(r'[^ ]* (.*) (.*)')
+
+    begin_preamble = find_token(lines,"\\begin_preamble", 0)
+    end_preamble = find_token(lines, "\\end_preamble", 0)
+    for margin in margins:
+        i = 0
+        while 1:
+            i = find_token(lines, margin, i)
+            if i == -1:
+                break
+
+            if i > begin_preamble and i < end_preamble:
+                i = i + 1
+                continue
+
+            result = unit_rexp.search(lines[i])
+            if result:
+                lines[i] = margin + " " + result.group(1) + result.group(2)
+            i = i + 1
+
 def convert(header,body):
     remove_vcid(header)
     remove_cursor(body)
@@ -114,6 +138,7 @@ def convert(header,body):
     replace_protected_separator(body)
     merge_formula_inset(body)
     update_tabular(body)
+    remove_space_in_units(header)
 
 if __name__ == "__main__":
     pass
