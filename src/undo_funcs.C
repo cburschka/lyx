@@ -32,13 +32,13 @@ bool textUndo(BufferView * bv)
 	if (undo) {
 		finishUndo();
 		if (!undo_frozen) {
-			Paragraph * first = bv->text->getParFromID(undo->number_of_before_par);
+			Paragraph * first = bv->buffer()->getParFromID(undo->number_of_before_par);
 			if (!first)
 				first = firstUndoParagraph(bv, undo->number_of_inset_id);
 			if (first) {
 				bv->buffer()->redostack.push(
 					createUndo(bv, undo->kind, first,
-							   bv->text->getParFromID(undo->number_of_behind_par)));
+							   bv->buffer()->getParFromID(undo->number_of_behind_par)));
 			}
 		}
 	}
@@ -53,13 +53,13 @@ bool textRedo(BufferView * bv)
 	if (undo) {
 		finishUndo();
 		if (!undo_frozen) {
-			Paragraph * first = bv->text->getParFromID(undo->number_of_before_par);
+			Paragraph * first = bv->buffer()->getParFromID(undo->number_of_before_par);
 			if (!first)
 				first = firstUndoParagraph(bv, undo->number_of_inset_id);
 			if (first) {
 				bv->buffer()->undostack.push(
 					createUndo(bv, undo->kind, first,
-					           bv->text->getParFromID(undo->number_of_behind_par)));
+					           bv->buffer()->getParFromID(undo->number_of_behind_par)));
 			}
 		}
 	}
@@ -73,9 +73,9 @@ bool textHandleUndo(BufferView * bv, Undo * undo)
 	bool result = false;
 	if (undo) {
 		Paragraph * before =
-			bv->text->getParFromID(undo->number_of_before_par); 
+			bv->buffer()->getParFromID(undo->number_of_before_par); 
 		Paragraph * behind =
-			bv->text->getParFromID(undo->number_of_behind_par); 
+			bv->buffer()->getParFromID(undo->number_of_behind_par); 
 		Paragraph * tmppar;
 		Paragraph * tmppar2;
 		Paragraph * endpar;
@@ -158,7 +158,7 @@ bool textHandleUndo(BufferView * bv, Undo * undo)
 		} else
 			endpar = behind;
     
-		tmppar = bv->text->getParFromID(undo->number_of_cursor_par);
+		tmppar = bv->buffer()->getParFromID(undo->number_of_cursor_par);
 		UpdatableInset* it = static_cast<UpdatableInset*>(tmppar3->InInset());
 		if (it) {
 			it->getLyXText(bv)->redoParagraphs(bv, it->getLyXText(bv)->cursor,

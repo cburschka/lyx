@@ -1326,7 +1326,7 @@ string const LyXFunc::Dispatch(int ac,
 
 		int id;
 		istr >> id;
-		Paragraph * par = TEXT()->getParFromID(id);
+		Paragraph * par = owner->buffer()->getParFromID(id);
 		if (par == 0) {
 			lyxerr[Debug::INFO] << "No matching paragraph found! ["
 					    << id << "]" << std::endl;

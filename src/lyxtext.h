@@ -443,9 +443,6 @@ public:
 	int numberOfCell(Paragraph * par,
 			 Paragraph::size_type pos) const;
 	///
-	Paragraph * getParFromID(int id) const;
-
-	///
 	void removeTableRow(LyXCursor & cursor) const;
 	///
 	bool isEmptyTableCell() const;

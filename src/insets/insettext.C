@@ -1826,6 +1826,7 @@ void InsetText::clearInset(Painter & pain, int baseline, bool & cleared) const
 	need_update = FULL;
 }
 
+
 Paragraph * InsetText::getParFromID(int id) const
 {
 	Paragraph * result = par;
@@ -1838,6 +1839,7 @@ Paragraph * InsetText::getParFromID(int id) const
 	return result;
 }
 
+
 Paragraph * InsetText::firstParagraph() const
 {
 	Paragraph * result;
@@ -1847,6 +1849,7 @@ Paragraph * InsetText::firstParagraph() const
 	return par;
 }
 
+
 LyXCursor const & InsetText::cursor(BufferView * bv) const
 {
 		if (the_locking_inset)
@@ -1854,10 +1857,12 @@ LyXCursor const & InsetText::cursor(BufferView * bv) const
 		return getLyXText(bv)->cursor;
 }
 
+
 Paragraph * InsetText::paragraph() const
 {
 	return par;
 }
+
 
 void InsetText::paragraph(Paragraph * p)
 {
@@ -1872,6 +1877,7 @@ void InsetText::paragraph(Paragraph * p)
 	// redraw myself when asked for
 	need_update |= INIT;
 }
+
 
 Inset * InsetText::getInsetFromID(int id_arg) const
 {

@@ -546,11 +546,10 @@ Paragraph * Paragraph::Pimpl::TeXDeeper(Buffer const * buf,
 
 Paragraph * Paragraph::Pimpl::getParFromID(int id) const
 {
+	InsetList::const_iterator cit = owner_->insetlist.begin();
 	InsetList::const_iterator lend = owner_->insetlist.end();
 	Paragraph * result;
-	for (InsetList::const_iterator cit = owner_->insetlist.begin();
-	     cit != lend; ++cit)
-	{
+	for (; cit != lend; ++cit) {
 		if ((result = cit->inset->getParFromID(id)))
 			return result;
 	}

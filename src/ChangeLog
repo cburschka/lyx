@@ -1,3 +1,17 @@
+2001-07-09  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* text2.C (getParFromID): removed
+
+	* buffer.C (getParFromID): new method moved form lyxtext.
+	* BufferView2.C (insertErrors): adjust
+	(setCursorFromRow): adjust
+	* BufferView_pimpl.C (restorePosition): adjust
+	* lyxfunc.C (Dispatch): adjust
+	* undo_funcs.C (textUndo): adjust
+	(textRedo): adjust
+	(textHandleUndo): adjust
+	(textHandleUndo): adjust
+
 2001-07-08  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* buffer.C: up' the LYX_FORMAT

@@ -128,6 +128,8 @@ public:
 	void insertErtContents(Paragraph * par, int & pos,
 			       LyXFont const & font,
 			       bool set_inactive = true);
+	///
+	Paragraph * getParFromID(int id) const;
 private:
 	/// Parse a single inset.
 	void readInset(LyXLex &, Paragraph *& par, int & pos, LyXFont &);

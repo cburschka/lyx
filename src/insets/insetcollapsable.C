@@ -498,20 +498,24 @@ int InsetCollapsable::scroll(bool recursive) const
 	return sx;
 }
 
+
 Paragraph * InsetCollapsable::getParFromID(int id) const
 {
 	return inset.getParFromID(id);
 }
+
 
 Paragraph * InsetCollapsable::firstParagraph() const
 {
 	return inset.firstParagraph();
 }
 
+
 LyXCursor const & InsetCollapsable::cursor(BufferView * bv) const
 {
 	return inset.cursor(bv);
 }
+
 
 Inset * InsetCollapsable::getInsetFromID(int id_arg) const
 {

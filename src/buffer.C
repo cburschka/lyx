@@ -3689,3 +3689,21 @@ Inset * Buffer::getInsetFromID(int id_arg) const
 	}
 	return 0;
 }
+
+
+Paragraph * Buffer::getParFromID(int id) const
+{
+	if (id < 0) return 0;
+	Paragraph * par = paragraph;
+	while (par) {
+		if (par->id() == id) {
+			return par;
+		}
+		Paragraph * tmp = par->getParFromID(id);
+		if (tmp) {
+			return tmp;
+		}
+		par = par->next();
+	}
+	return 0;
+}

@@ -2392,8 +2392,8 @@ void InsetTabular::getSelection(int & srow, int & erow, int & scol, int & ecol) 
 Paragraph * InsetTabular::getParFromID(int id) const
 {
 	Paragraph * result;
-	for(int i=0; i < tabular->rows(); ++i) {
-		for(int j=0; j < tabular->columns(); ++j) {
+	for(int i = 0; i < tabular->rows(); ++i) {
+		for(int j = 0; j < tabular->columns(); ++j) {
 			if ((result = tabular->GetCellInset(i, j)->getParFromID(id)))
 				return result;
 		}

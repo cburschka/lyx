@@ -2402,20 +2402,6 @@ void LyXText::deleteEmptyParagraphMechanism(BufferView * bview,
 }
 
 
-Paragraph * LyXText::getParFromID(int id) const
-{
-	if (id < 0)
-		return 0;
-	Paragraph * result = firstParagraph();
-	Paragraph * ires = 0;
-	while (result && result->id() != id) {
-		if ((ires = result->getParFromID(id)))
-			return ires;
-		result = result->next();
-	}
-	return result;
-}
-
 void LyXText::toggleAppendix(BufferView * bview)
 {
 	Paragraph * par = cursor.par();
@@ -2459,7 +2445,7 @@ Paragraph * LyXText::ownerParagraph(Paragraph * p) const
 
 Paragraph * LyXText::ownerParagraph(int id, Paragraph * p) const
 {
-	Paragraph * op = getParFromID(id);
+	Paragraph * op = bv_owner->buffer()->getParFromID(id);
 	if (op && op->InInset()) {
 		static_cast<InsetText *>(op->InInset())->paragraph(p);
 	} else {
