@@ -37,6 +37,7 @@ FL_APPEVENT_CB fl_set_preemptive_callback(Window, FL_APPEVENT_CB, void *);
 using std::endl;
 using std::abs;
 using std::hex;
+using std::dec;
 
 namespace {
 

@@ -50,6 +50,7 @@ using std::exit;
 
 using std::vector;
 using std::hex;
+using std::dec;
 using std::endl;
 using std::setbase;
 using std::setfill;
