@@ -374,16 +374,18 @@ void InsetTabular::draw(BufferView * bv, LyXFont const & font, int baseline,
 		// Here we use rectangular backgroundColor patches to clean up
 		// within a cell around the cell's red inset box. As follows:
 		//
-		//  +---+            +---+
-		//  |   |            |   |   The rectangles are A, B and C
+		//  +--------------------+
+		//  |         C          |   The rectangles are A, B and C
 		//  | A |------------| B |   below, origin top left (tx, ty), 
 		//  |   |  inset box |   |   dimensions w(idth), h(eight).
 		//  +---+------------+---+   x grows rightward, y downward
 		//  |         D          |
 		//  +--------------------+
 		//
+#if 0
 		// clear only if we didn't have a change
 		if (bv->text->status() != LyXText::CHANGED_IN_DRAW) {
+#endif
 			// clear before the inset
 			int tx, ty, w, h;
 			tx = nx + 1; 
@@ -409,7 +411,16 @@ void InsetTabular::draw(BufferView * bv, LyXFont const & font, int baseline,
 			h = tabular->GetDescentOfRow(i) -
 				the_locking_inset->descent(bv, font) - 1;
 			pain.fillRectangle(tx, ty, w, h, backgroundColor());
+			// clear above the inset
+			tx = nx + 1;
+			ty = baseline - tabular->GetAscentOfRow(i) + 1;
+			w = tabular->GetWidthOfColumn(cell) -
+				tabular->GetAdditionalWidth(cell) - 1;
+			h = tabular->GetAscentOfRow(i) - the_locking_inset->ascent(bv, font);
+			pain.fillRectangle(tx, ty, w, h, backgroundColor());
+#if 0
 		}
+#endif
 	}
 	x -= ADD_TO_TABULAR_WIDTH;
 	x += width(bv, font);
@@ -648,9 +659,6 @@ bool InsetTabular::lockInsetInInset(BufferView * bv, UpdatableInset * inset)
 			if (in->getInsetFromID(id)) {
 				actcell = i;
 				in->edit(bv);
-//				the_locking_inset = in;
-//				locked = true;
-//				resetPos(bv);
 				return the_locking_inset->lockInsetInInset(bv, inset);
 			}
 		}

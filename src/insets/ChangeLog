@@ -1,3 +1,8 @@
+2002-02-20  Juergen Vigna  <jug@sad.it>
+
+	* insettabular.C (draw): clear the parts around a cellinset ALWAYS
+	and also above (was missing).
+
 2002-02-20  José Matos  <jamatos@fep.up.pt>
 
 	* insetinclude.h: include_label made string const.
