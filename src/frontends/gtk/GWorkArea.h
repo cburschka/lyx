@@ -93,6 +93,7 @@ private:
 	bool onExpose(GdkEventExpose * event);
 	bool onConfigure(GdkEventConfigure * event);
 	void onScroll();
+	bool onScrollWheel(GdkEventScroll * event);
 	bool onButtonPress(GdkEventButton * event);
 	bool onButtonRelease(GdkEventButton * event);
 	bool onMotionNotify(GdkEventMotion * event);

@@ -174,6 +174,8 @@ GWorkArea::GWorkArea(LyXView & owner, int width, int height)
 	workArea_.show();
 	vscrollbar_.get_adjustment()->signal_value_changed().connect(
 		SigC::slot(*this, &GWorkArea::onScroll));
+	workArea_.signal_scroll_event().connect(
+		SigC::slot(*this, &GWorkArea::onScrollWheel));		
 	vscrollbar_.show();
 	hbox_.children().push_back(Gtk::Box_Helpers::Element(workArea_));
 	hbox_.children().push_back(
@@ -340,6 +342,23 @@ void GWorkArea::onScroll()
 	scrollDocView(static_cast<int>(val));
 }
 
+bool GWorkArea::onScrollWheel(GdkEventScroll * event)
+{
+	Gtk::Adjustment * adjustment = vscrollbar_.get_adjustment();
+
+	double step;
+	if (event->state & GDK_CONTROL_MASK)
+		step = adjustment->get_page_increment();
+	else
+		step = adjustment->get_step_increment();
+	
+	if (event->direction == GDK_SCROLL_UP)
+		step *= -1.0f;
+
+	adjustment->set_value(adjustment->get_value() + step);
+
+	return true;
+}
 
 bool GWorkArea::onButtonPress(GdkEventButton * event)
 {
