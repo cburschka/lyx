@@ -44,8 +44,6 @@ public:
 	explicit MathIterator(MathInset * p);
 	/// move on one step
 	void operator++();
-	/// move on several steps
-	void jump(difference_type);
 	/// helper for iend
 	void goEnd();
 	/// read access to top most item

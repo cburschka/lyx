@@ -853,7 +853,7 @@ bool InsetFormulaBase::searchForward(BufferView * bv, string const & str,
 			//metrics(bv);
 			mathcursor->setSelection(it, ar.size());
 			current = it;
-			it.jump(ar.size());
+			it.back().pos_ += ar.size();
 			bv->update();
 			return true;
 		}

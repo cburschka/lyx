@@ -99,14 +99,6 @@ void MathIterator::operator++()
 }
 
 
-void MathIterator::jump(difference_type i)
-{
-	back().pos_ += i;
-	//BOOST_ASSERT(back().pos_ >= 0);
-	BOOST_ASSERT(back().pos_ <= cell().size());
-}
-
-
 bool MathIterator::normal() const
 {
 	return back().pos_ < cell().size();
