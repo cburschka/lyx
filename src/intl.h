@@ -68,9 +68,7 @@ private:
 	///
 	void update();
 	///
-	static void LCombo(int i, void *); // callback
-	///
-	static void LCombo2(int i, void *); // callback
+	static void LCombo(int i, void *, Combox *); // callback
 	///
 	void Keymap(long code);
 	///

@@ -1175,7 +1175,7 @@ void MenuInsertLabel(char const * arg)
 
 // candidate for move to LyXView
 // This is only used in toolbar.C
-void LayoutsCB(int sel, void *)
+void LayoutsCB(int sel, void *, Combox *)
 {
 	string tmp = tostr(sel);
 	current_view->owner()->getLyXFunc()->Dispatch(LFUN_LAYOUTNO,

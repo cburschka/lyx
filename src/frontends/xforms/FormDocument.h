@@ -61,7 +61,7 @@ public:
     ///
     static void InputCB(FL_OBJECT *, long);
     ///
-    static void ComboInputCB(int, void *);
+    static void ComboInputCB(int, void *, Combox *);
     ///
     static void ChoiceClassCB(FL_OBJECT *, long);
     ///

@@ -1,3 +1,21 @@
+2000-09-14  Juergen Vigna  <jug@sad.it>
+
+	* src/frontends/xforms/FormDocument.C (ComboInputCB): fixed the
+	callback to check which combo called it and do the right action.
+
+	* src/combox.C (combo_cb): added combo * to the callbacks.
+	(Hide): moved call of callback after Ungrab of the pointer.
+
+	* src/intl.h: removed LCombo2 function.
+
+	* src/intl.C (LCombo): added Combox * to call and removed LCombo2
+	function as this can now be handled in one function.
+
+	* src/combox.h: added Combox * to callback prototype.
+
+	* src/frontends/xforms/Toolbar_pimpl.C: 
+	* src/lyx_cb.C (LayoutsCB): added Combox * to function call.
+
 2000-09-14  Garst Reese    <reese@isn.net>
 
 	* lib/tex/hollywood.cls changed length of parenthicals to 1.5in

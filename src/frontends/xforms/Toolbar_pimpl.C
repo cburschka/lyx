@@ -32,7 +32,7 @@
 using std::endl;
 
 // this one is not "C" because combox callbacks are really C++ %-|
-extern void LayoutsCB(int, void *);
+extern void LayoutsCB(int, void *, Combox *);
 extern char const ** get_pixmap_from_symbol(char const * arg, int, int);
 extern LyXAction lyxaction;
 

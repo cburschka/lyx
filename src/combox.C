@@ -274,10 +274,12 @@ void Combox::Hide(int who)
 		else
 			fl_set_object_label(label,
 					    fl_get_browser_line(browser, sel));		
-	        if (callback) callback(sel, cb_arg);
+//	        if (callback) callback(sel, cb_arg);
 	}
         XUngrabPointer(fl_display, 0);
 	XFlush(fl_display);
+	if (!who && browser && label && callback)
+	    callback(sel, cb_arg, this);
         if (form) {
 		fl_hide_form(form);
 		XSetInputFocus(fl_display, save_window,
@@ -338,7 +340,7 @@ void Combox::combo_cb(FL_OBJECT * ob, long data)
 			combo->select(--i); 
 			if (combo->callback)
 				combo->callback(combo->sel,
-						combo->cb_arg);
+						combo->cb_arg, combo);
 			break;
 		}
 		case 3: 
@@ -346,7 +348,7 @@ void Combox::combo_cb(FL_OBJECT * ob, long data)
 			combo->select(++i);  
 			if (combo->callback)
 				combo->callback(combo->sel,
-						combo->cb_arg);
+						combo->cb_arg, combo);
 			break;
 		}
 		default: combo->Show(); break;

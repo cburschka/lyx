@@ -41,8 +41,10 @@ enum combox_type {
 	FL_COMBOX_INPUT
 };
 
+class Combox;
+
 /// callback prototype
-typedef void (*FL_COMBO_CB) (int, void *);
+typedef void (*FL_COMBO_CB) (int, void *, Combox *);
 /// pre post prototype
 typedef void (*FL_COMBO_PRE_POST) ();
 

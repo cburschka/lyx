@@ -183,22 +183,15 @@ void Intl::KeyMapSec()
 	}
 }
 
-
-void Intl::LCombo(int, void * v)
+void Intl::LCombo(int, void * v, Combox * combox)
 {
 	Intl * itl = static_cast<Intl*>(v);
-	itl->Keymap(23);
+	if (combox == itl->Language)
+	    itl->Keymap(23);
+	else if (combox == itl->Language2)
+	    itl->Keymap(43);
 	return;
 }
-
-
-void Intl::LCombo2(int, void * v)
-{
-	Intl * itl = static_cast<Intl*>(v);
-	itl->Keymap(43);
-	return;
-}
-
 
 void Intl::DispatchCallback(FL_OBJECT * ob, long code)
 {
@@ -234,7 +227,7 @@ void Intl::InitKeyMapper(bool on)
 	Language = new Combox(FL_COMBOX_DROPLIST);
 	Language2 = new Combox(FL_COMBOX_DROPLIST);
 	Language->setcallback(LCombo, this);
-	Language2->setcallback(LCombo2, this);
+	Language2->setcallback(LCombo, this);
 
 	fd_form_keymap = create_form_KeyMap();
 

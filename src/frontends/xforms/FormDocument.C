@@ -163,7 +163,7 @@ void FormDocument::build()
     fl_addto_choice(class_->choice_doc_spacing,
 		    _(" Single | OneHalf | Double | Other "));
     fl_addto_choice(class_->choice_doc_fontsize, "default|10|11|12");
-    for (n=0; tex_fonts[n][0]; ++n) {
+   for (n=0; tex_fonts[n][0]; ++n) {
 	fl_addto_choice(class_->choice_doc_fonts,tex_fonts[n]);
     }
     fl_addto_choice(class_->choice_doc_pagestyle,
@@ -853,10 +853,11 @@ void FormDocument::InputCB(FL_OBJECT * ob, long)
     pre->bc_->valid(pre->CheckDocumentInput(ob,0));
 }
 
-void FormDocument::ComboInputCB(int, void * v)
+void FormDocument::ComboInputCB(int, void * v, Combox * combox)
 {
     FormDocument * pre = static_cast<FormDocument*>(v);
-//    pre->CheckChoiceClass(0, 0);
+    if (combox == pre->combo_doc_class)
+	pre->CheckChoiceClass(0, 0);
     pre->bc_->valid(pre->CheckDocumentInput(0,0));
 }
 
