@@ -1,39 +1,31 @@
-================================================================
-README for Win32 by Ruurd Reitsma (R.A.Reitsma@wbmt.tudelft.nl)
-================================================================
+================
+README for Win32
+================
 
-Lyx has been ported to Win32 using the Cygwin environement. The port
-consists of a few small tweaks to deal with DOS-style pathnames, so
-LyX can use Win32 TeX distros like fptex and MiKTeX. There's also a
-cygwin TeTeX port, but the native Win32 ports have a definite speed
-advantage. Besides that, nothing fancy.
+LyX has been ported to Win32 using the Cygwin environement.
+See README.Cygwin for details.
 
-The prerequisites are (obviously?):
+In addition, Ruurd Reitsma has created a native port of LyX on Win32
+using the binary Qt/Win32 2.3.0 library. It is not clear whether we
+are legally allowed to distribute this library. Certainly, using it
+goes against the spirit of Open Source software and we have chosen,
+therefore, not to provide formal support for Ruurd's port.
 
-* cygwin installation (http://www.cygwin.com/).
-* decent X server; eXceed, X-Win32, or maybe even Cygwin/XFree86.
-* working TeX installation; fpTex, MikTex.
+Having said that, you'll find the executable, together with lots of
+useful tips, on Ruurd's site: http://www.home.zonnet.nl/rareitsma/lyx/
+The Win32 pages on the LyX wiki will also be useful:
+http://wiki.lyx.org/pmwiki.php/LyX/LyX
+Finally, you'll find lots of friendly help on the lyx users'
+mailing list: lyx-users@lists.lyx.org
 
-It should compile out of the box, but there might be some libraries
-missing in the final link step. You'll have to add them to the Makefile
-by hand. Be sure to include -lregex, because cygwin's builtin regex is
-sortof weird (filedialogs will turn up empty...)
+Trolltech has stated that they do not intend to release
+Qt/Win under the GPL. However, it is likely that a native port of LyX
+to Windows will be supported formally in the future, for two reasons:
 
-If you want to run lyx with no console windows open, there's a small
-program in development/Win32 that will set the proper environment vars
-and start lyx.
+* A frontend for LyX using the Gtk libraries is under active 
+development. The Gtk libraries for Win32 are indeed released under 
+the GPL.
 
-Compile with:
-
-gcc lyxwin32.C -O2 -o lyxwin32 -static -Wall -Wno-format \
--Wstrict-prototypes -Wmissing-prototypes -mwindows -e _mainCRTStartup
-
-Also make sure the latex binaries are in your Windows path. Windvi and
-Yap are auto detected, and you might want to make a symlink to Adobe
-Acrobat so it's detected too:
-
-ln -s //c/Program\ Files/adobe/Acrobat\ 4.0/Reader/AcroRd32.exe \
-/usr/bin/acroread
-
-Many thanks to Steven van Dijk, Claus Hentschel and Miyata Shigeru for
-starting the porting business.
+* Some success has been reported compiling LyX on Win32 using the 
+GPL-ed port of qt/x11 to Win32 by the kde-cygwin project. See 
+http://kde-cygwin.sourceforge.net/qt3-win32/index.php

@@ -1,3 +1,12 @@
+2004-11-25  Angus Leeming  <leeming@lyx.org>
+
+	* README.Cygwin: new file, containing the current contents of
+	README.Win32.
+
+	* README.Win32: rewritten to explain why we don't currently
+	provide formal support for a native Win32 port (other than
+	one based on Cygwin) and how that may change in the future.
+
 2004-11-29  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* configure.ac: do not include broken_headers.h; do not check for
