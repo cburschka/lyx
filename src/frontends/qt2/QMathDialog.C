@@ -148,7 +148,7 @@ QMathDialog::QMathDialog(QMath * form)
 	m->insertTearOffHandle();
 	m->insertItem(qt_("Roman	\\mathrm"), 1);
 	m->insertItem(qt_("Bold	\\mathbf"), 2);
-	m->insertItem(qt_("San serif	\\mathsf"), 3);
+	m->insertItem(qt_("Sans serif	\\mathsf"), 3);
 	m->insertItem(qt_("Italic	\\mathit"), 4);
 	m->insertItem(qt_("Typewriter	\\mathtt"), 5);
 	m->insertItem(qt_("Blackboard	\\mathbb"), 6);
