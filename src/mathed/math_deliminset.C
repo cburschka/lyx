@@ -23,37 +23,17 @@ MathInset * MathDelimInset::clone() const
 }
 
 
-string MathDelimInset::latexName(string const & name)
-{
-	if (name == "(")
-		return name;
-	if (name == "[")
-		return name;
-	if (name == ".")
-		return name;
-	if (name == ")")
-		return name;
-	if (name == "]")
-		return name;
-	if (name == "/")
-		return name;
-	if (name == "|")
-		return name;
-	return "\\" + name + " ";
-}
-
-
 void MathDelimInset::write(WriteStream & os) const
 {
-	os << "\\left" << latexName(left_) << cell(0)
-	   << "\\right" << latexName(right_);
+	os << "\\left" << convertDelimToLatexName(left_) << cell(0)
+	   << "\\right" << convertDelimToLatexName(right_);
 }
 
 
 void MathDelimInset::normalize(NormalStream & os) const
 {
-	os << "[delim " << latexName(left_) << ' '
-	   << latexName(right_) << ' ' << cell(0) << ']';
+	os << "[delim " << convertDelimToLatexName(left_) << ' '
+	   << convertDelimToLatexName(right_) << ' ' << cell(0) << ']';
 }
 
 

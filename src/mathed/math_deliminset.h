@@ -16,7 +16,7 @@
 class MathDelimInset : public MathNestInset {
 public:
 	///
-	MathDelimInset(string const &, string const &);
+	MathDelimInset(string const & left, string const & right);
 	///
 	MathInset * clone() const;
 	///
@@ -51,7 +51,5 @@ public:
 private:
 	///
 	int dw() const;
-	///
-	static string latexName(string const & name);
 };
 #endif

@@ -812,3 +812,24 @@ char const * math_font_name(MathTextCodes code)
 		return theFontNames[code - LM_TC_RM];
 	return 0;
 }
+
+string convertDelimToLatexName(string const & name)
+{
+	if (name == "(")
+		return name;
+	if (name == "[")
+		return name;
+	if (name == ".")
+		return name;
+	if (name == ")")
+		return name;
+	if (name == "]")
+		return name;
+	if (name == "/")
+		return name;
+	if (name == "|")
+		return name;
+	return "\\" + name + " ";
+}
+
+

@@ -59,5 +59,6 @@ void smallerStyleFrac(MathMetricsInfo & st);
 
 char const * math_font_name(MathTextCodes type);
 
+string convertDelimToLatexName(string const & name);
 
 #endif
