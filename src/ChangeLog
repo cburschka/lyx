@@ -1,3 +1,8 @@
+2005-01-09  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* CutAndPaste.C (pasteSelectionHelper): fix bug 1332 (preserve the
+	layout if pasting into an empty paragraph)
+
 2005-01-07  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
 	* tex-accent.C: add <string>

@@ -151,8 +151,12 @@ pasteSelectionHelper(Buffer const & buffer, ParagraphList & pars,
 		}
 	}
 
-	// Make the buf exactly the same layout as the cursor paragraph.
-	insertion.begin()->makeSameLayout(pars[pit]);
+	bool const empty = pars[pit].empty();
+	if (!empty) {
+		// Make the buf exactly the same layout as the cursor
+		// paragraph.
+		insertion.begin()->makeSameLayout(pars[pit]);
+	}
 
 	// Prepare the paragraphs and insets for insertion.
 	// A couple of insets store buffer references so need updating.
@@ -182,15 +186,24 @@ pasteSelectionHelper(Buffer const & buffer, ParagraphList & pars,
 	std::swap(in.paragraphs(), insertion);
 
 	// Split the paragraph for inserting the buf if necessary.
-	bool did_split = false;
-	if (pars[pit].size() || pit + 1 == pit_type(pars.size())) {
+	if (!empty)
 		breakParagraphConservative(buffer.params(), pars, pit, pos);
-		did_split = true;
-	}
 
 	// Paste it!
-	pars.insert(pars.begin() + pit + 1, insertion.begin(), insertion.end());
-	mergeParagraph(buffer.params(), pars, pit);
+	if (empty) {
+		pars.insert(pars.begin() + pit, insertion.begin(),
+		            insertion.end());
+
+		// merge the empty par with the last par of the insertion
+		mergeParagraph(buffer.params(), pars,
+		               pit + insertion.size() - 1);
+	} else {
+		pars.insert(pars.begin() + pit + 1, insertion.begin(),
+		            insertion.end());
+
+		// merge the first par of the insertion with the current par
+		mergeParagraph(buffer.params(), pars, pit);
+	}
 
 	pit_type last_paste = pit + insertion.size() - 1;
 
@@ -199,7 +212,7 @@ pasteSelectionHelper(Buffer const & buffer, ParagraphList & pars,
 	pos = pars[last_paste].size();
 
 	// Maybe some pasting.
-	if (did_split && last_paste + 1 != pit_type(pars.size())) {
+	if (!empty && last_paste + 1 != pit_type(pars.size())) {
 		if (pars[last_paste + 1].hasSameLayout(pars[last_paste])) {
 			mergeParagraph(buffer.params(), pars, last_paste);
 		} else if (pars[last_paste + 1].empty()) {
