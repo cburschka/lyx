@@ -1,3 +1,9 @@
+2003-03-10  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* configure.ac: 
+	* configure.in: remove special handling of linking order for
+	cygwin
+
 2003-03-05  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* lyxinclude213.m4: add a AC_HELP_STRING

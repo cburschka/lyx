@@ -152,14 +152,7 @@ case "$lyx_use_frontend" in
         RPM_FRONTEND_DEPS='libforms >= 1.0'
 	FRONTEND_GUILIB="xforms/*.lo xforms/forms/*.lo"
 	FRONTEND_INCLUDES="-I\$(srcdir)/xforms"
-	case "$host" in
-	  *cygwin)
-	    FRONTEND_LIBS="@XFORMS_LIB@ @XFORMS_IMAGE_LIB@ @XPM_LIB@"
-	    ;;
-	  *)
-	    FRONTEND_LIBS="@XFORMS_IMAGE_LIB@ @XFORMS_LIB@ @XPM_LIB@"
-	    ;;
-	esac
+	FRONTEND_LIBS="@XFORMS_IMAGE_LIB@ @XFORMS_LIB@ @XPM_LIB@"
 	FRONTEND_INFO="    libXpm version:               ${XPM_VERSION}\n\
     libforms version:             ${XFORMS_VERSION}\n"
 	;;
