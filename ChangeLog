@@ -1,5 +1,8 @@
 2000-07-25  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
+	* src/lyxrc.C (read): do not use LyXLex::lex() to parse set_color
+	arguments. 
+
 	* lib/ui/default.ui: fix a couple of typos.
 
 	* config/gnome/gtk.m4: added (and added to the list of files in 
