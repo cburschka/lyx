@@ -25,7 +25,8 @@ lyx.1:
 	cp -p $(srcdir)/lyx.man lyx.1
 
 dist-hook:
-	cd $(distdir) ; rm -rf `find config -name \*CVS\*` ; \
+	cd $(distdir) ; \
+	rm -rf `find config -name \*CVS\*` ; \
 	rm -rf `find development -name \*CVS\*` ; \
 	rm -rf `find images -name \*CVS\*`
 
@@ -39,7 +40,7 @@ bindist:
 	mkdir $(bindistdir)
 	if test -f README.bin ; then \
 	  $(INSTALL) README.bin  $(bindistdir)/README.bin ; \
-	fi 
+	fi
 	$(MAKE) $(AM_MAKEFLAGS) install-strip prefix=`pwd`/$(bindistdir)
 	(cd $(bindistdir) ; tar cf - .) | gzip >$(bindistfile)
 	rm -rf $(bindistdir)
@@ -49,7 +50,7 @@ bindist:
 	  echo "*** WARNING: You did not provide a README.bin file." ; \
 	  echo "*** Please make one now from the example file" ; \
 	  echo "***   development/tools/README.bin.example" ; \
-	fi  
+	fi
 	@echo "*** It should mention any problem concerning your binary"
 	@echo "*** distribution and refer to *you* in case of problem."
 	@echo "*** $(bindistfile) has been created."
