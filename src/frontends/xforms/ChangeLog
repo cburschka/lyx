@@ -1,5 +1,23 @@
 2002-10-22  Rob Lahaye  <lahaye@snu.ac.kr>
 
+	* FeedbackController.C: use the NORMAL rather than the SMALL sized font
+	to display messages in the message_widget.
+
+	* FormGraphics.h: remove un-needed #include.
+
+	* FormPrint.C (build): minimal change due to change in
+	RadioButtonGroup's semantics.
+
+	* RadioButtonGroup.[Ch]: something of a clean-up.
+	(reset): removed.
+	(set): new method, accepting an FL_OBJECT *.
+
+	* xforms_helpers.[Ch] (setEnabled): change lcol setting from
+	FL_BLACK to FL_LCOL.
+	(getString) use line=0 instead of line=-1 as default case;
+
+2002-10-22  Rob Lahaye  <lahaye@snu.ac.kr>
+
 	* forms/form_aboutlyx.fd: implement the text widgets as browsers
 
 	* FormAboutlyx.C (build): Rearrange tabs. Add Build-info. Prettify.

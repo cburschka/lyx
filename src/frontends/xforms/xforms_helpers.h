@@ -45,9 +45,10 @@ string formatted(string const &label, int w,
 /// Given an fl_choice or an fl_browser, create a vector of its entries
 std::vector<string> const getVector(FL_OBJECT *);
 
-/// Given an fl_input, an fl_choice or an fl_browser, return an entry
-/** \c num is the position for the string, where -1 means "current item" */
-string const getString(FL_OBJECT * ob, int num = -1);
+/** Given an fl_input, an fl_choice or an fl_browser, return an entry
+    \c num is the position for the string, where 0 means "current item"
+ */
+string const getString(FL_OBJECT * ob, int num = 0);
 
 /// Given input and choice widgets, create a string such as "1cm"
 string getLengthFromWidgets(FL_OBJECT * input, FL_OBJECT * choice);

@@ -39,7 +39,7 @@ void FeedbackController::setMessageWidget(FL_OBJECT * ob)
 {
 	lyx::Assert(ob && ob->objclass == FL_TEXT);
 	message_widget_ = ob;
-	fl_set_object_lsize(message_widget_, FL_SMALL_SIZE);
+	fl_set_object_lsize(message_widget_, FL_NORMAL_SIZE);
 }
 
 
@@ -140,10 +140,10 @@ void FeedbackController::postMessage(string const & message)
 	else
 		str = message;
 
-	str = formatted(str, message_widget_->w-10, FL_SMALL_SIZE);
+	str = formatted(str, message_widget_->w - 10, FL_NORMAL_SIZE);
 
 	fl_set_object_label(message_widget_, str.c_str());
-	FL_COLOR const label_color = warning_posted_ ? FL_TOMATO : FL_BLACK;
+	FL_COLOR const label_color = warning_posted_ ? FL_RED : FL_BLACK;
 	fl_set_object_lcol(message_widget_, label_color);
 
 	if (!message_widget_->visible)

@@ -29,6 +29,7 @@
 #include <algorithm>
 #include <fstream>
 #include <vector>
+
 #include FORMS_H_LOCATION
 
 using std::ofstream;
@@ -46,7 +47,7 @@ void setEnabled(FL_OBJECT * ob, bool enable)
 {
 	if (enable) {
 		fl_activate_object(ob);
-		fl_set_object_lcol(ob, FL_BLACK);
+		fl_set_object_lcol(ob, FL_LCOL);
 	} else {
 		fl_deactivate_object(ob);
 		fl_set_object_lcol(ob, FL_INACTIVE);
@@ -83,15 +84,17 @@ vector<string> const getVector(FL_OBJECT * ob)
 ///
 string const getString(FL_OBJECT * ob, int line)
 {
-	char const * tmp = 0;
+	// Negative line value does not make sense.
+	lyx::Assert(line >= 0);
 
+	char const * tmp = 0;
 	switch (ob->objclass) {
 	case FL_INPUT:
-		lyx::Assert(line == -1);
 		tmp = fl_get_input(ob);
 		break;
+
 	case FL_BROWSER:
-		if (line == -1)
+		if (line == 0)
 			line = fl_get_browser(ob);
 
 		if (line >= 1 && line <= fl_get_browser_maxline(ob))
@@ -99,7 +102,7 @@ string const getString(FL_OBJECT * ob, int line)
 		break;
 
 	case FL_CHOICE:
-		if (line == -1)
+		if (line == 0)
 			line = fl_get_choice(ob);
 
 		if (line >= 1 && line <= fl_get_choice_maxitems(ob))
@@ -110,7 +113,7 @@ string const getString(FL_OBJECT * ob, int line)
 		lyx::Assert(0);
 	}
 
-	return (tmp) ? trim(tmp) : string();
+	return tmp ? trim(tmp) : string();
 }
 
 string getLengthFromWidgets(FL_OBJECT * input, FL_OBJECT * choice)
@@ -123,7 +126,7 @@ string getLengthFromWidgets(FL_OBJECT * input, FL_OBJECT * choice)
 	if (length.empty())
 		return string();
 
-	//don't return unit-from-choice if the input(field) contains a unit
+	// don't return unit-from-choice if the input(field) contains a unit
 	if (isValidGlueLength(length))
 		return length;
 

@@ -6,6 +6,7 @@
  * Licence details can be found in the file COPYING.
  *
  * \author Baruch Even
+ * \author Rob Lahaye
  *
  * Full author contact details are available in file CREDITS
  */
@@ -23,28 +24,28 @@
 #include <utility>
 #include "forms_fwd.h"
 
-/** This class simplifies the work with a group of radio buttons,
- * the idea is that you register a bunch of radio buttons with the accompanying
- * value for each radio button and then you get to query or set the active
- * button in a single function call.
+/** This class simplifies interaction with a group of radio buttons:
+ *  one, and only one, can be selected.
+ *  The idea is that you register a bunch of radio buttons with
+ *  an accompanying value. Then you can get or set the active button with a
+ *  single function call.
+ *  It is necessary to also group a family of radio buttons in the
+ *  corresponding .fd file in order to unset the previously chosen button
+ *  when a new one is selected.
  */
 class RadioButtonGroup {
 public:
 	///
 	typedef lyx::size_type size_type;
 
-	/// Constructor. Allocate space for 'n' items in the group.
-	RadioButtonGroup(unsigned n = 5) : map(n) {};
+	/// Register a radio button with its corresponding value.
+	void init(FL_OBJECT * ob, size_type value);
 
-	/// Register a radio button with it's corresponding value.
-	void init(FL_OBJECT * button, size_type value);
-	/// Reset registrations.
-	void reset();
-
-	// Set the active button.
+	// Set a single active button.
 	void set(size_type value);
+	void set(FL_OBJECT * ob);
 
-	// Get the active button.
+	// Get the active button's value.
 	size_type get() const;
 
 private:

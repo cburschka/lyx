@@ -34,8 +34,7 @@ using std::make_pair;
 typedef FormCB<ControlPrint, FormDB<FD_print> > base_class;
 
 FormPrint::FormPrint()
-	: base_class(_("Print")),
-	  target_(2), which_pages_(2)
+	: base_class(_("Print"))
 {}
 
 
@@ -70,10 +69,8 @@ void FormPrint::build()
 	bc().addReadOnly(dialog_->check_sorted_copies);
 	bc().addReadOnly(dialog_->check_reverse_order);
 
-	target_.reset();
 	target_.init(dialog_->radio_printer, PrinterParams::PRINTER);
 	target_.init(dialog_->radio_file,    PrinterParams::FILE);
-	which_pages_.reset();
 	which_pages_.init(dialog_->radio_all_pages, true);
 	which_pages_.init(dialog_->radio_from_to,   false);
 	

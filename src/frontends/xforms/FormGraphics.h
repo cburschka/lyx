@@ -18,7 +18,6 @@
 #endif
 
 #include "FormBase.h"
-#include "RadioButtonGroup.h"
 
 #include <boost/scoped_ptr.hpp>
 

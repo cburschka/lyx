@@ -6,6 +6,7 @@
  * Licence details can be found in the file COPYING.
  *
  * \author Baruch Even
+ * \author Rob Lahaye
  *
  * Full author contact details are available in file CREDITS
  */
@@ -22,24 +23,16 @@
 #include "debug.h" // for lyxerr
 #include "support/lyxfunctional.h"
 
-//#include <functional>
 #include <algorithm>
 #include <iterator>
 
 using std::find_if;
-//using std::bind2nd;
 using std::endl;
 
 
-void RadioButtonGroup::init(FL_OBJECT *button, size_type value)
+void RadioButtonGroup::init(FL_OBJECT * ob, size_type value)
 {
-	map.push_back(ButtonValuePair(button, value));
-}
-
-
-void RadioButtonGroup::reset()
-{
-	map.clear();
+	map.push_back(ButtonValuePair(ob, value));
 }
 
 
@@ -49,15 +42,19 @@ void RadioButtonGroup::set(size_type value)
 		find_if(map.begin(), map.end(),
 			lyx::equal_2nd_in_pair<ButtonValuePair>(value));
 
-	// If we found nothing, report it and return
-	if (it == map.end()) {
-		lyxerr << "BUG: Requested value in RadioButtonGroup doesn't exists"
-		       << endl;
+	if (it != map.end()) {
+		set(it->first);
+	} else {
+		// We found nothing: report it and do nothing.
+		lyxerr << "BUG: Requested value in RadioButtonGroup "
+			"doesn't exist" << endl;
 	}
-	else {
-		fl_set_button(it->first, 1);
-	}
+}
 
+
+void RadioButtonGroup::set(FL_OBJECT * ob)
+{
+	fl_set_button(ob, 1);
 }
 
 
@@ -72,18 +69,15 @@ struct is_set_button {
 
 RadioButtonGroup::size_type RadioButtonGroup::get() const
 {
-	// Find the first button that is active
+	// Find the active button.
 	ButtonValueMap::const_iterator it =
 		find_if(map.begin(), map.end(),
 			is_set_button<ButtonValuePair> ());
 
-	// If such a button was found, return its value.
-	if (it != map.end()) {
+	if (it != map.end())
 		return it->second;
-	}
 
-	lyxerr << "BUG: No radio button found to be active." << endl;
-
-	// Else return 0.
+	// We found nothing: report it and return 0
+	lyxerr << "BUG: No active radio button found." << endl;
 	return 0;
 }
