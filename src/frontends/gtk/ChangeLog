@@ -1,3 +1,8 @@
+2004-07-21  Lars Gullik Bjonnes  <larsbj@gullik.net>
+
+	* lyx_gui.C (register_socket_callback): add stub
+	(unregister_socket_callback): add stub
+
 2004-05-26  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
 	* Makefile.am: dont create a separate xforms.lo use he files

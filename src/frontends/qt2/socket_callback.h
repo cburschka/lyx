@@ -18,9 +18,8 @@
 #include <qobject.h>
 #include <qsocketnotifier.h>
 #include <boost/scoped_ptr.hpp>
+#include <boost/function.hpp>
 
-class LyXServerSocket;
-class LyXDataSocket;
 
 /**
  * socket_callback - a simple wrapper for asynchronous socket notification
@@ -34,17 +33,14 @@ class socket_callback : public QObject {
 	Q_OBJECT
 public:
 	/// connect a connection notification from the LyXServerSocket
-	socket_callback(LyXServerSocket * server);
-	socket_callback(LyXDataSocket * data);
+	socket_callback(int fd, boost::function<void()> func);
 public slots:
-	void server_received();
-	void data_received();
+        void data_received();
 private:
 	/// our notifier
 	boost::scoped_ptr<QSocketNotifier> sn_;
-
-	LyXServerSocket * server_;
-	LyXDataSocket * data_;
+	/// The callback function
+	boost::function<void()> func_;
 };
 
 #endif // SOCKET_CALLBACK_H

@@ -1,3 +1,20 @@
+2004-07-21  Lars Gullik Bjonnes  <larsbj@gullik.net>
+
+	* lyxsocket.C (LyXServerSocket): reduce max outstanding clients to 3
+	(LyXServerSocket): register the callback
+	(LyXServerSocket): unregister the callback
+	(fd): delete function
+	(serverCallback): improve error checking and setup the callbacks.
+	(dataCallback): change arg to fd.
+	(writeln): new func (copied fro the client socket) used for server
+	write to client.
+	(LyXDataSocket): simplify
+	(~LyXDataSocket): close ann unregiser callback
+	(server): delete function
+	(fd): delete function
+	(readln): small changes, improve some std::string usage
+	(writeln): constify a bit
+
 2004-06-24  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* kbmap.C (find1keybinding): new method, only used by LyX/Mac with
@@ -40,16 +57,16 @@
 
 	* tex-strings.C: add "none" to string_paperpackages[], fixes
 	off-by-one-error in the paperpackage selection.
-	
+
 	* lyxlex.[Ch]:
-	* tex-strings.[Ch]: char const * string[n] 
+	* tex-strings.[Ch]: char const * string[n]
 	-> char const * const string[]
 
 2004-06-10  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* lyxfunc.C (getStatus): if lyx_gui::getStatus disables the
 	command, return early.
- 
+
 2004-06-18  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
 	* debug.h: add DEBUG to enum and fix size of ANY.

@@ -291,27 +291,26 @@ void start(string const & batch, vector<string> const & files)
 	lyxerr[Debug::GUI] << "Creating view: " << width << 'x' << height
 			   << '+' << xpos << '+' << ypos << endl;
 
-	boost::shared_ptr<XFormsView> view_ptr(new XFormsView(width, height));
-	LyX::ref().addLyXView(view_ptr);
+	boost::shared_ptr<XFormsView> view(new XFormsView(width, height));
+	LyX::ref().addLyXView(view);
 
-	XFormsView & view = *view_ptr.get();
-	view.show(xpos, ypos, "LyX");
-	view.init();
+	view->show(xpos, ypos, "LyX");
+	view->init();
 
 	// FIXME: some code below needs moving
 
-	lyxserver = new LyXServer(&view.getLyXFunc(), lyxrc.lyxpipes);
-	lyxsocket = new LyXServerSocket(&view.getLyXFunc(),
+	lyxserver = new LyXServer(&view->getLyXFunc(), lyxrc.lyxpipes);
+	lyxsocket = new LyXServerSocket(&view->getLyXFunc(),
 			  os::slashify_path(os::getTmpDir() + "/lyxsocket"));
 
 	vector<string>::const_iterator cit = files.begin();
 	vector<string>::const_iterator end = files.end();
 	for (; cit != end; ++cit)
-		view.view()->loadLyXFile(*cit, true);
+		view->view()->loadLyXFile(*cit, true);
 
 	// handle the batch commands the user asked for
 	if (!batch.empty())
-		view.getLyXFunc().dispatch(lyxaction.lookupFunc(batch));
+		view->getLyXFunc().dispatch(lyxaction.lookupFunc(batch));
 
 	// enter the event loop
 	while (!finished) {
@@ -398,21 +397,8 @@ void C_read_callback(int, void * data)
 	comm->read_ready();
 }
 
-extern "C"
-void C_datasocket_callback(int, void * data)
-{
-	LyXDataSocket * client = static_cast<LyXDataSocket *>(data);
-	client->server()->dataCallback(client);
 }
 
-extern "C"
-void C_serversocket_callback(int, void * data)
-{
-	LyXServerSocket * server = static_cast<LyXServerSocket *>(data);
-	server->serverCallback();
-}
-
-}
 
 void set_read_callback(int fd, LyXComm * comm)
 {
@@ -424,25 +410,34 @@ void remove_read_callback(int fd)
 	fl_remove_io_callback(fd, FL_READ, C_read_callback);
 }
 
-void set_datasocket_callback(LyXDataSocket * p)
+
+namespace {
+
+std::map<int, boost::function<void()> > socket_callbacks;
+
+extern "C"
+void C_socket_callback(int fd, void *)
 {
-	fl_add_io_callback(p->fd(), FL_READ, C_datasocket_callback, p);
+	socket_callbacks[fd]();
 }
 
-void remove_datasocket_callback(LyXDataSocket * p)
+
+} // NS anon
+
+
+void register_socket_callback(int fd, boost::function<void()> func)
 {
-	fl_remove_io_callback(p->fd(), FL_READ, C_datasocket_callback);
+	socket_callbacks[fd] = func;
+	fl_add_io_callback(fd, FL_READ, C_socket_callback, 0);
 }
 
-void set_serversocket_callback(LyXServerSocket * p)
+
+void unregister_socket_callback(int fd)
 {
-	fl_add_io_callback(p->fd(), FL_READ, C_serversocket_callback, p);
+	fl_remove_io_callback(fd, FL_READ, C_socket_callback);
+	socket_callbacks.erase(fd);
 }
 
-void remove_serversocket_callback(LyXServerSocket * p)
-{
-	fl_remove_io_callback(p->fd(), FL_READ, C_serversocket_callback);
-}
 
 string const roman_font_name()
 {

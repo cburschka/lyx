@@ -15,6 +15,8 @@
 
 #include "FuncStatus.h"
 
+#include <boost/function.hpp>
+
 #include <string>
 #include <vector>
 
@@ -96,16 +98,14 @@ bool font_available(LyXFont const & font);
  * add a callback for I/O read notification
  */
 void set_read_callback(int fd, LyXComm * comm);
-void set_datasocket_callback(LyXDataSocket *);
-void set_serversocket_callback(LyXServerSocket *);
+void register_socket_callback(int fd, boost::function<void()> func);
 
 /**
  * remove a I/O read callback
  * @param fd file descriptor
  */
 void remove_read_callback(int fd);
-void remove_datasocket_callback(LyXDataSocket *);
-void remove_serversocket_callback(LyXServerSocket *);
+void unregister_socket_callback(int fd);
 
 } // namespace lyx_gui
 

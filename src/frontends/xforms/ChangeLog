@@ -1,3 +1,9 @@
+2004-07-21  Lars Gullik Bjonnes  <larsbj@gullik.net>
+
+	* lyx_gui.C (register_socket_callback): new func
+	(unregister_socket_callback): new func
+	(C_datasocket_callback,C_serversocket_callback): delete func
+
 2004-06-21  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* FormCitation.C: Don't allow incomplete input (fix bug 1617).

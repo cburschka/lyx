@@ -49,6 +49,7 @@
 #include <iomanip>
 #include <fcntl.h>
 #include <boost/bind.hpp>
+#include <boost/function.hpp>
 
 //just for xforms
 #include "lyx_forms.h"
@@ -442,19 +443,12 @@ void lyx_gui::remove_read_callback(int fd)
 }
 
 
-void lyx_gui::set_datasocket_callback(LyXDataSocket * /* p */)
+void lyx_gui::register_socket_callback(int /*fd*/,
+				       boost::function<void()> /*func*/)
 {}
 
 
-void lyx_gui::remove_datasocket_callback(LyXDataSocket * /* p */)
-{}
-
-
-void lyx_gui::set_serversocket_callback(LyXServerSocket * /* p */)
-{}
-
-
-void lyx_gui::remove_serversocket_callback(LyXServerSocket * /* p */)
+void lyx_gui::unregister_socket_callback(int /*fd*/)
 {}
 
 

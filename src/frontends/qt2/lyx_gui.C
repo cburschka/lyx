@@ -35,6 +35,7 @@
 // All is well if the namespace is visible first.
 #include <boost/signals/signal1.hpp>
 #include <boost/bind.hpp>
+#include <boost/shared_ptr.hpp>
 
 #include "QtView.h"
 #include "io_callback.h"
@@ -57,6 +58,8 @@ using lyx::frontend::QtView;
 
 namespace os = lyx::support::os;
 
+using boost::shared_ptr;
+
 #ifndef CXX_GLOBAL_CSTD
 using std::exit;
 #endif
@@ -78,7 +81,7 @@ float getDPI()
 }
 
 map<int, io_callback *> io_callbacks;
-map<int, socket_callback *> socket_callbacks;
+map<int, shared_ptr<socket_callback> > socket_callbacks;
 
 } // namespace anon
 
@@ -250,9 +253,9 @@ FuncStatus getStatus(FuncRequest const & ev)
 	// application can still be accessed without giving focus to
 	// the main window. In this case, we want to disable the menu
 	// entries that are buffer-related.
-	if (use_gui 
+	if (use_gui
 	    && qApp->activeWindow() != qApp->mainWidget()
-	    && !lyxaction.funcHasFlag(ev.action, LyXAction::NoBuffer)) 
+	    && !lyxaction.funcHasFlag(ev.action, LyXAction::NoBuffer))
 		flag.enabled(false);
 #endif
 
@@ -301,34 +304,17 @@ void remove_read_callback(int fd)
 }
 
 
-void set_datasocket_callback(LyXDataSocket * p)
+void register_socket_callback(int fd, boost::function<void()> func)
 {
-	socket_callbacks[p->fd()] = new socket_callback(p);
+	socket_callbacks[fd] = shared_ptr<socket_callback>(new socket_callback(fd, func));
 }
 
-void set_serversocket_callback(LyXServerSocket * p)
+
+void unregister_socket_callback(int fd)
 {
-	socket_callbacks[p->fd()] = new socket_callback(p);
+	socket_callbacks.erase(fd);
 }
 
-void remove_socket_callback(int fd)
-{
-	map<int, socket_callback *>::iterator it = socket_callbacks.find(fd);
-	if (it != socket_callbacks.end()) {
-		delete it->second;
-		socket_callbacks.erase(it);
-	}
-}
-
-void remove_datasocket_callback(LyXDataSocket * p)
-{
-	remove_socket_callback(p->fd());
-}
-
-void remove_serversocket_callback(LyXServerSocket * p)
-{
-	remove_socket_callback(p->fd());
-}
 
 string const roman_font_name()
 {
