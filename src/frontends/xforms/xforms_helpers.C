@@ -174,91 +174,6 @@ string getLengthFromWidgets(FL_OBJECT * input, FL_OBJECT * choice)
 }
 
 
-#if 0
-// old code which can be deleted if the new one, now enabled,
-// works satisfyingly (JSpitzm, 11/02/2002)
-// this should definitely be the other way around!!!
-void updateWidgetsFromLength(FL_OBJECT * input, FL_OBJECT * choice,
-			     LyXLength const & len,
-			     string const & default_unit)
-{
-	if (len.zero())
-		updateWidgetsFromLengthString(input, choice,
-					      string(), default_unit);
-	// use input field only for gluelengths
-	else if (!isValidLength(len) && !isStrDbl(len)) {
-		fl_set_input(input, len.c_str());
-		fl_set_choice_text(choice, default_unit.c_str());
-	}
-	else
-		updateWidgetsFromLengthString(input, choice,
-					      len.asString(), default_unit);
-
-}
-
-
-// Most of the code here is a poor duplication of the parser code
-// which is in LyXLength. Use that instead
-void updateWidgetsFromLengthString(FL_OBJECT * input, FL_OBJECT * choice,
-				   string const & str,
-				   string const & default_unit)
-{
-	// Paranoia check
-	lyx::Assert(input  && input->objclass  == FL_INPUT &&
-		    choice && choice->objclass == FL_CHOICE);
-
-	if (str.empty()) {
-		fl_set_input(input, "");
-		int unitpos = 1; // xforms has Fortran-style indexing
-		for(int i = 0; i < fl_get_choice_maxitems(choice); ++i) {
-			string const text = fl_get_choice_item_text(choice,i+1);
-			if (default_unit ==
-			    lowercase(strip(frontStrip(text)))) {
-				unitpos = i+1;
-				break;
-			}
-		}
-		fl_set_choice(choice, unitpos);
-		return;
-	}
-
-	// The unit is presumed to begin at the first char a-z
-	// or with the char '%'
-	string const tmp = lowercase(strip(frontStrip(str)));
-
-	string::const_iterator p = tmp.begin();
-	for (; p != tmp.end(); ++p) {
-		if ((*p >= 'a' && *p <= 'z') || *p == '%')
-			break;
-	}
-
-	string len = "0";
-	int unitpos = 1; // xforms has Fortran-style indexing
-
-	if (p == tmp.end()) {
-		if (isStrDbl(tmp))
-			len = tmp;
-
-	} else {
-		string tmplen = string(tmp.begin(), p);
-		if (isStrDbl(tmplen))
-			len = tmplen;
-		string unit = string(p, tmp.end());
-		unit = subst(unit, "%", "%%");
-
-		for(int i = 0; i < fl_get_choice_maxitems(choice); ++i) {
-			string const text = fl_get_choice_item_text(choice,i+1);
-			if (unit == lowercase(strip(frontStrip(text)))) {
-				unitpos = i+1;
-				break;
-			}
-		}
-	}
-
-	fl_set_input(input,   len.c_str());
-	fl_set_choice(choice, unitpos);
-}
-#else
 void updateWidgetsFromLengthString(FL_OBJECT * input, FL_OBJECT * choice,
 				   string const & str,
 				   string const & default_unit)
@@ -266,6 +181,9 @@ void updateWidgetsFromLengthString(FL_OBJECT * input, FL_OBJECT * choice,
 	// use input field only for gluelengths
 	if (!isValidLength(str) && !isStrDbl(str)) {
 		fl_set_input(input, str.c_str());
+		// we assume that "default_unit" is in the choice as "we"
+		// have control over that!
+		// No need to check for it's precence in the choice, therefore.
 		fl_set_choice_text(choice, default_unit.c_str());
 	} else {
 		updateWidgetsFromLength(input, choice,
@@ -289,11 +207,21 @@ void updateWidgetsFromLength(FL_OBJECT * input, FL_OBJECT * choice,
 		ostringstream buffer;
 		buffer << len.value();
 		fl_set_input(input, buffer.str().c_str());
-		fl_set_choice_text(choice,
-		    subst(stringFromUnit(len.unit()),"%","%%").c_str());
+
+		// Set the choice to the desired unit, if present in the choice.
+		// Else set the choice to the default unit.
+		string const unit = subst(stringFromUnit(len.unit()),"%","%%");
+
+		vector<string> const vec = getVectorFromChoice(choice);
+		vector<string>::const_iterator it =
+			std::find(vec.begin(), vec.end(), unit);
+		if (it != vec.end()) {
+			fl_set_choice_text(choice, unit.c_str());
+		} else {
+			fl_set_choice_text(choice, default_unit.c_str());
+		}
 	}
 }
-#endif
 
 
 // Take a string and add breaks so that it fits into a desired label width, w
@@ -302,65 +230,6 @@ string formatted(string const & sin, int w, int size, int style)
 	string sout;
 	if (sin.empty()) return sout;
 
-#if 0
-	// FIX: Q: Why cant this be done by a one pass algo? (Lgb)
-
-	// breaks in up into a vector of individual words
-	vector<string> sentence;
-	string word;
-	for (string::const_iterator sit = sin.begin();
-	     sit != sin.end(); ++sit) {
-		if ((*sit) == ' ' || (*sit) == '\n') {
-			if (!word.empty()) {
-				sentence.push_back(word);
-				word.erase();
-			}
-			if ((*sit) == '\n') word += '\n';
-
-		} else {
-			word += (*sit);
-		}
-	}
-
-	// Flush remaining contents of word
-	if (!word.empty()) sentence.push_back(word);
-
-	string line;
-	string line_plus_word;
-	for (vector<string>::const_iterator vit = sentence.begin();
-	     vit != sentence.end(); ++vit) {
-		string word(*vit);
-
-		char c = word[0];
-		if (c == '\n') {
-			sout += line + '\n';
-			word.erase(0,1);
-			line_plus_word.erase();
-			line.erase();
-		}
-
-		if (!line_plus_word.empty()) line_plus_word += ' ';
-		line_plus_word += word;
-
-		int const length = fl_get_string_width(style, size,
-						       line_plus_word.c_str(),
-						       int(line_plus_word.length()));
-		if (length >= w) {
-			sout += line + '\n';
-			line_plus_word = word;
-		}
-
-		line = line_plus_word;
-	}
-	// Flush remaining contents of line
-	if (!line.empty()) {
-		sout += line;
-	}
-
-	if (sout[sout.length() - 1] == '\n')
-		sout.erase(sout.length() - 1);
-
-#else
 	string::size_type curpos = 0;
 	string line;
 	for(;;) {
@@ -409,7 +278,6 @@ string formatted(string const & sin, int w, int size, int style)
 
 		curpos = nxtpos+1;
 	}
-#endif
 
 	return sout;
 }

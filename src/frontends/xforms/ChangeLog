@@ -1,3 +1,9 @@
+2002-03-22  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* xforms_helper.C (updateWidgetsFromLength): fix crash when trying to
+	set the choice to a unit that isn't present in the choice!
+	Also remove #if 0 sections of code.
+
 2002-03-21  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* several files: ws cleanup
@@ -38,8 +44,8 @@
 	* Tooltips.[Ch] (initTooltip): renamed init. In the 0.89 version, no
 	longer call fl_set_object_helper as this routine respects line breaks
 	only if the dialog is visible.
-	(getTooltip): renamed get.
-	(toggleTooltips): renamed set and made public,
+	(getTooltip): renamed as get.
+	(toggleTooltips): renamed as set and made public.
 
 	* FormBase.C (show):
 	* FormBaseDeprecated.C (show): move tooltip-inards into Tooltip.
