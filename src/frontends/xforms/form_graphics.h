@@ -57,9 +57,9 @@ struct FD_form_size {
 	FL_OBJECT *radio_wh;
 	FL_OBJECT *input_scale;
 	FL_OBJECT *input_width;
-	FL_OBJECT *choice_width_units;
+	FL_OBJECT *choice_width;
 	FL_OBJECT *input_height;
-	FL_OBJECT *choice_height_units;
+	FL_OBJECT *choice_height;
 	FL_OBJECT *check_aspectratio;
 	FL_OBJECT *button_lyx_values;
 };
@@ -95,9 +95,9 @@ struct FD_form_lyxview {
 	FL_OBJECT *radio_color;
 	FL_OBJECT *radio_nodisplay;
 	FL_OBJECT *input_lyxwidth;
-	FL_OBJECT *choice_width_lyxwidth;
+	FL_OBJECT *choice_lyxwidth;
 	FL_OBJECT *input_lyxheight;
-	FL_OBJECT *choice_width_lyxheight;
+	FL_OBJECT *choice_lyxheight;
 	FL_OBJECT *button_latex_values;
 };
 

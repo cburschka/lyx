@@ -12,15 +12,14 @@
 #ifndef RADIOBUTTONGROUP_H
 #define RADIOBUTTONGROUP_H
 
-#include <vector>
-#include <utility>
-
-#include FORMS_H_LOCATION
-
 #ifdef __GNUG__
 #pragma interface
 #endif
 
+#include "support/types.h"
+#include <vector>
+#include <utility>
+#include FORMS_H_LOCATION
 
 /** This class simplifies the work with a group of radio buttons,
  * the idea is that you register a bunch of radio buttons with the accompanying
@@ -29,23 +28,26 @@
  */
 class RadioButtonGroup {
 public:
+	///
+	typedef lyx::size_type size_type;
+
 	/// Constructor. Allocate space for 'n' items in the group.
 	RadioButtonGroup(unsigned n = 5) : map(n) {};
 
 	/// Register a radio button with it's corresponding value.
-	void registerRadioButton(FL_OBJECT * button, int value);
+	void init(FL_OBJECT * button, size_type value);
 	/// Reset registrations.
 	void reset();
 
 	// Set the active button.
-	void setButton(int value);
+	void set(size_type value);
 
 	// Get the active button.
-	int getButton();
+	size_type get() const;
 
 private:
 	///
-	typedef std::pair<FL_OBJECT *, int> ButtonValuePair;
+	typedef std::pair<FL_OBJECT *, size_type> ButtonValuePair;
 	///
 	typedef std::vector<ButtonValuePair> ButtonValueMap;
 	///

@@ -234,7 +234,7 @@ FD_form_size * FormGraphics::build_size()
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
-  fdui->choice_width_units = obj = fl_add_choice(FL_NORMAL_CHOICE, 290, 130, 60, 30, "");
+  fdui->choice_width = obj = fl_add_choice(FL_NORMAL_CHOICE, 290, 130, 60, 30, "");
     fl_set_object_boxtype(obj, FL_FRAME_BOX);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
@@ -245,7 +245,7 @@ FD_form_size * FormGraphics::build_size()
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
-  fdui->choice_height_units = obj = fl_add_choice(FL_NORMAL_CHOICE, 290, 165, 60, 30, "");
+  fdui->choice_height = obj = fl_add_choice(FL_NORMAL_CHOICE, 290, 165, 60, 30, "");
     fl_set_object_boxtype(obj, FL_FRAME_BOX);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
@@ -494,7 +494,7 @@ FD_form_lyxview * FormGraphics::build_lyxview()
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
-  fdui->choice_width_lyxwidth = obj = fl_add_choice(FL_NORMAL_CHOICE, 425, 155, 50, 30, "");
+  fdui->choice_lyxwidth = obj = fl_add_choice(FL_NORMAL_CHOICE, 425, 155, 50, 30, "");
     fl_set_object_boxtype(obj, FL_FRAME_BOX);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
@@ -505,7 +505,7 @@ FD_form_lyxview * FormGraphics::build_lyxview()
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
-  fdui->choice_width_lyxheight = obj = fl_add_choice(FL_NORMAL_CHOICE, 425, 190, 50, 30, "");
+  fdui->choice_lyxheight = obj = fl_add_choice(FL_NORMAL_CHOICE, 425, 190, 50, 30, "");
     fl_set_object_boxtype(obj, FL_FRAME_BOX);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);

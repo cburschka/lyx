@@ -4,6 +4,13 @@
 
 	* xforms_helpers.C: rearrange #includes.
 
+	* RadioButtonGroup.[Ch]: rename some of the methods. Remove #if 0 code.
+
+	* FormPrint.C: changes associated with changes to RadioButtonGroup.
+
+	* FormGraphics.C:
+	* forms/form_graphics.fd: rename some of the widgets.
+
 2002-03-22  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* FormGraphics.C (input): don't activate the Ok, Apply buttons if the

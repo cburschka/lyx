@@ -80,29 +80,22 @@ void FormPrint::build()
 	fl_set_input_maxchars(dialog_->input_count, 4);     // 9999
 
 	target_.reset();
-	target_.registerRadioButton(dialog_->radio_printer,
-				    PrinterParams::PRINTER);
-	target_.registerRadioButton(dialog_->radio_file,
-				    PrinterParams::FILE);
+	target_.init(dialog_->radio_printer, PrinterParams::PRINTER);
+	target_.init(dialog_->radio_file,    PrinterParams::FILE);
 	order_.reset();
-	order_.registerRadioButton(dialog_->radio_order_reverse,
-				   true);
-	order_.registerRadioButton(dialog_->radio_order_normal,
-				   false);
+	order_.init(dialog_->radio_order_reverse, true);
+	order_.init(dialog_->radio_order_normal,  false);
 	which_.reset();
-	which_.registerRadioButton(dialog_->radio_odd_pages,
-				   PrinterParams::ODD);
-	which_.registerRadioButton(dialog_->radio_even_pages,
-				   PrinterParams::EVEN);
-	which_.registerRadioButton(dialog_->radio_all_pages,
-				   PrinterParams::ALL);
+	which_.init(dialog_->radio_odd_pages,  PrinterParams::ODD);
+	which_.init(dialog_->radio_even_pages, PrinterParams::EVEN);
+	which_.init(dialog_->radio_all_pages,  PrinterParams::ALL);
 }
 
 
 void FormPrint::apply()
 {
 	PrinterParams::WhichPages
-		wp(static_cast<PrinterParams::WhichPages>(which_.getButton()));
+		wp(static_cast<PrinterParams::WhichPages>(which_.get()));
 
 	string from;
 	int to(0);
@@ -116,13 +109,13 @@ void FormPrint::apply()
 	}
 
 	PrinterParams::Target
-		t(static_cast<PrinterParams::Target>(target_.getButton()));
+		t(static_cast<PrinterParams::Target>(target_.get()));
 
 	PrinterParams const pp(t,
 			       string(fl_get_input(dialog_->input_printer)),
 			       string(fl_get_input(dialog_->input_file)),
 			       wp, from, to,
-			       static_cast<bool>(order_.getButton()),
+			       static_cast<bool>(order_.get()),
 			       !static_cast<bool>(fl_get_button(dialog_->check_collated)),
 			       strToInt(fl_get_input(dialog_->input_count)));
 
@@ -137,9 +130,9 @@ void FormPrint::update()
 	fl_set_input(dialog_->input_printer, pp.printer_name.c_str());
 	fl_set_input(dialog_->input_file, pp.file_name.c_str());
 
-	target_.setButton(pp.target);
-	order_.setButton(pp.reverse_order);
-	which_.setButton(pp.which_pages);
+	target_.set(pp.target);
+	order_.set(pp.reverse_order);
+	which_.set(pp.which_pages);
 
 	// hmmm... maybe a bit weird but maybe not
 	// we might just be remembering the last

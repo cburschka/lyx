@@ -597,7 +597,7 @@ label:
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: choice_width_units
+name: choice_width
 callback: C_FormBaseInputCB
 argument: 0
 
@@ -633,7 +633,7 @@ label:
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: choice_height_units
+name: choice_height
 callback: C_FormBaseInputCB
 argument: 0
 
@@ -1281,7 +1281,7 @@ label:
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: choice_width_lyxwidth
+name: choice_lyxwidth
 callback: C_FormBaseInputCB
 argument: 0
 
@@ -1317,7 +1317,7 @@ label:
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: choice_width_lyxheight
+name: choice_lyxheight
 callback: C_FormBaseInputCB
 argument: 0
 
