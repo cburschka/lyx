@@ -1,3 +1,7 @@
+2003-02-14  John Levon  <levon@movementarian.org>
+
+	* LyXView.h: prohibit/allowInput() -> busy(bool)
+
 2003-02-08  John Levon  <levon@movementarian.org>
 
 	* Dialogs.h: add showMergeChanges()

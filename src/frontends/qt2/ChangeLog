@@ -1,3 +1,9 @@
+2003-02-14  John Levon  <levon@movementarian.org>
+
+	* QtView.h:
+	* QtView.C: change prohibit/allowInput() to be busy(bool),
+	  and actually implement the busy cursor
+
 2003-02-09  Juergen Spitzmueller  <j.spitzmueller@gmx.de>
 
 	* QBibtexDialog.C: Fix browsing mechanism of *.sty files (bug 773).

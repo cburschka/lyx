@@ -1,3 +1,10 @@
+2003-02-14  John Levon  <levon@movementarian.org>
+
+	* FileDialog.C: remove spurious prohibit/allowInput()
+
+	* XFormsView.h:
+	* XFormsView.C: prohibit/allowInput() -> busy(bool)
+
 2003-02-10  Juergen Spitzmueller  <j.spitzmueller@gmx.de>
 
 	* FormDocument.C: Reset paperpackage to NONE when 

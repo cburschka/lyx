@@ -35,6 +35,7 @@
 #include "qt_helpers.h"
 
 #include <qapplication.h>
+#include <qcursor.h>
 #include <qpixmap.h>
 #include <qmenubar.h>
 #include <qstatusbar.h>
@@ -146,16 +147,10 @@ void QtView::show()
 }
 
 
-// it's not at all clear that these are actually
-// needed anywhere in the source. Something to
-// check on a rainy day.
-void QtView::prohibitInput() const
+void QtView::busy(bool yes) const
 {
-	//setFocusPolicy(QWidget::NoFocus);
-}
-
-
-void QtView::allowInput() const
-{
-	//setFocusPolicy(QWidget::strongFocus);
+	if (yes)
+		QApplication::setOverrideCursor(Qt::waitCursor);
+	else
+	        QApplication::restoreOverrideCursor();
 }

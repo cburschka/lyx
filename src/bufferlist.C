@@ -181,8 +181,6 @@ bool BufferList::close(Buffer * buf)
 		buf->getUser()->insetUnlock();
 
 	if (!buf->paragraphs.empty() && !buf->isClean() && !quitting) {
-		if (buf->getUser())
-			buf->getUser()->owner()->prohibitInput();
 		string fname;
 		if (buf->isUnnamed())
 			fname = OnlyFilename(buf->fileName());
@@ -200,8 +198,6 @@ bool BufferList::close(Buffer * buf)
 					lastfiles->newFile(buf->fileName());
 					reask = false;
 				} else {
-					if (buf->getUser())
-						buf->getUser()->owner()->allowInput();
 					return false;
 				}
 				break;
@@ -212,13 +208,9 @@ bool BufferList::close(Buffer * buf)
 				reask = false;
 				break;
 			case 3: // Cancel
-				if (buf->getUser())
-					buf->getUser()->owner()->allowInput();
 				return false;
 			}
 		}
-		if (buf->getUser())
-			buf->getUser()->owner()->allowInput();
 	}
 
 	bstore.release(buf);

@@ -64,10 +64,8 @@ public:
 	 */
 	void init();
 
-	/// start modal operation
-	virtual void prohibitInput() const = 0;
-	/// end modal operation
-	virtual void allowInput() const = 0;
+	/// show busy cursor
+	virtual void busy(bool) const = 0;
 
 	//@{ generic accessor functions
 

@@ -3142,7 +3142,7 @@ int Buffer::runChktex()
 {
 	if (!users->text) return 0;
 
-	users->owner()->prohibitInput();
+	users->owner()->busy(true);
 
 	// get LaTeX-Filename
 	string const name = getLatexName();
@@ -3181,7 +3181,7 @@ int Buffer::runChktex()
 		users->repaint();
 		users->fitCursor();
 	}
-	users->owner()->allowInput();
+	users->owner()->busy(false);
 
 	return res;
 }

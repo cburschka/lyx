@@ -44,10 +44,8 @@ public:
 	FL_FORM * getForm() const;
 	/// redraw the main form.
 	virtual void redraw();
-	///
-	virtual void prohibitInput() const;
-	///
-	virtual void allowInput() const;
+	/// show busy cursor
+	virtual void busy(bool) const;
 
 	/// callback for close event from window manager
 	static int atCloseMainFormCB(FL_FORM *, void *);

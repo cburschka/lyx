@@ -119,6 +119,8 @@ void Formats::add(string const & name)
 }
 
 
+// FIXME: horrednously mis-named, especially given the other ::add
+// function
 void Formats::add(string const & name, string const & extension,
 		  string const & prettyname, string const & shortcut)
 {
@@ -828,7 +830,7 @@ bool Converters::scanLog(Buffer const * buffer, string const & command,
 
 	BufferView * bv = buffer->getUser();
 	if (bv) {
-		bv->owner()->prohibitInput();
+		bv->owner()->busy(true);
 		// all error insets should have been removed by now
 	}
 
@@ -843,7 +845,7 @@ bool Converters::scanLog(Buffer const * buffer, string const & command,
 			bv->repaint();
 			bv->fitCursor();
 		}
-		bv->owner()->allowInput();
+		bv->owner()->busy(false);
 	}
 
 	if ((result & LaTeX::ERRORS)) {
@@ -886,7 +888,7 @@ bool Converters::runLaTeX(Buffer const * buffer, string const & command)
 	BufferView * bv = buffer->getUser();
 
 	if (bv) {
-		bv->owner()->prohibitInput();
+		bv->owner()->busy(true);
 		bv->owner()->message(_("Running LaTeX..."));
 		// all the autoinsets have already been removed
 	}
@@ -933,7 +935,7 @@ bool Converters::runLaTeX(Buffer const * buffer, string const & command)
 	}
 
 	if (bv)
-		bv->owner()->allowInput();
+		bv->owner()->busy(false);
 
 	int const ERROR_MASK =
 			LaTeX::NO_LOGFILE |

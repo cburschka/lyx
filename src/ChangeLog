@@ -1,3 +1,13 @@
+2003-02-14  John Levon  <levon@movementarian.org>
+
+	* BufferView_pimpl.C:
+	* bufferlist.C:
+	* buffer.C:
+	* converter.C:
+	* lyx_cb.C:
+	* lyxfunc.C: change prohibit/allowInput to busy(bool), as
+	  it's a more accurate name. Remove some pointless uses.
+
 2003-02-14  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* text2.C (LyXText): change order of initilizers to shut off

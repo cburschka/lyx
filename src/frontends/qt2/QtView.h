@@ -37,10 +37,8 @@ public:
 	/// show - display the top-level window
 	void show();
 
-	/// start modal operation
-	virtual void prohibitInput() const;
-	/// end modal operation
-	virtual void allowInput() const;
+	/// show busy cursor
+	virtual void busy(bool) const;
 
 	/// display a status message
 	virtual void message(string const & str);

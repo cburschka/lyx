@@ -1139,12 +1139,10 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 			setErrorMessage(N_("Missing argument"));
 			break;
 		}
-		owner->prohibitInput();
 		string const fname = i18nLibFileSearch("doc", arg, "lyx");
 		if (fname.empty()) {
 			lyxerr << "LyX: unable to find documentation file `"
 			       << arg << "'. Bad installation?" << endl;
-			owner->allowInput();
 			break;
 		}
 		ostringstream str;
@@ -1157,7 +1155,6 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 #endif
 		owner->message(STRCONV(str.str()));
 		view()->buffer(bufferlist.loadLyXFile(fname, false));
-		owner->allowInput();
 		break;
 	}
 

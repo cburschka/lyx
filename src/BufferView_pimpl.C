@@ -263,8 +263,8 @@ int BufferView::Pimpl::resizeCurrentBuffer()
 	bool selection = false;
 	bool mark_set  = false;
 
-	owner_->prohibitInput();
-
+	owner_->busy(true);
+ 
 	owner_->message(_("Formatting document..."));
 
 	if (bv_->text) {
@@ -328,7 +328,7 @@ int BufferView::Pimpl::resizeCurrentBuffer()
 	bv_->text->first_y = screen().topCursorVisible(bv_->text->cursor, bv_->text->first_y);
 
 	switchKeyMap();
-	owner_->allowInput();
+	owner_->busy(false);
 
 	updateScrollbar();
 

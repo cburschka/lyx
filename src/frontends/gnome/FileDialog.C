@@ -109,9 +109,7 @@ FileDialog::open(string const & path, string const & mask,
 	private_->set_complete(mask);
 	private_->set_filename(path+suggested);
 
-	lv_->prohibitInput();
 	string const filename = private_->exec();
-	lv_->allowInput();
 
 	// Collect the info and return it for synchronous dialog.
 	return FileDialog::Result(Chosen, filename);

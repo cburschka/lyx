@@ -197,40 +197,34 @@ void XFormsView::show_view_state()
 }
 
 
-// How should this actually work? Should it prohibit input in all BufferViews,
-// or just in the current one? If "just the current one", then it should be
-// placed in BufferView. If "all BufferViews" then LyXGUI (I think) should
-// run "prohibitInput" on all LyXViews which will run prohibitInput on all
-// BufferViews. Or is it perhaps just the (input in) BufferViews in the
-// current LyXView that should be prohibited (Lgb) (This applies to
-// "allowInput" as well.)
-void XFormsView::prohibitInput() const
+void XFormsView::busy(bool yes) const
 {
-	view()->hideCursor();
+	if (yes) {
+		view()->hideCursor();
 
-	static Cursor cursor;
-	static bool cursor_undefined = true;
+		static Cursor cursor;
+		static bool cursor_undefined = true;
 
-	if (cursor_undefined) {
-		cursor = XCreateFontCursor(fl_get_display(), XC_watch);
+		if (cursor_undefined) {
+			cursor = XCreateFontCursor(fl_get_display(), XC_watch);
+			XFlush(fl_get_display());
+			cursor_undefined = false;
+		}
+
+		/// set the cursor to the watch for all forms and the canvas
+		XDefineCursor(fl_get_display(), getForm()->window, cursor);
+
 		XFlush(fl_get_display());
-		cursor_undefined = false;
+
+		/// we only need to deactivate to prevent resetting the cursor
+		/// to I-beam over the workarea
+		fl_deactivate_all_forms();
+	} else {
+		/// reset the cursor from the watch for all forms and the canvas
+
+		XUndefineCursor(fl_get_display(), getForm()->window);
+
+		XFlush(fl_get_display());
+		fl_activate_all_forms();
 	}
-
-	/* set the cursor to the watch for all forms and the canvas */
-	XDefineCursor(fl_get_display(), getForm()->window, cursor);
-
-	XFlush(fl_get_display());
-	fl_deactivate_all_forms();
-}
-
-
-void XFormsView::allowInput() const
-{
-	/* reset the cursor from the watch for all forms and the canvas */
-
-	XUndefineCursor(fl_get_display(), getForm()->window);
-
-	XFlush(fl_get_display());
-	fl_activate_all_forms();
 }

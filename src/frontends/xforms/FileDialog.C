@@ -13,9 +13,6 @@
 
 #include "FormFiledialog.h"
 #include "frontends/FileDialog.h"
-// temp. hack until Allow/prohibitInput is not
-// needed any more in src/ - for now it's simplest
-// to leave it there
 #include "frontends/LyXView.h"
 #include "bufferview_funcs.h"
 #include "gettext.h"
@@ -58,14 +55,10 @@ FileDialog::Result const FileDialog::opendir(string const & path, string const &
 
 	// no support for asynchronous selection yet
 
-	lv_->prohibitInput();
-
 	FileDialog::Result result;
 
 	result.first = FileDialog::Chosen;
 	result.second = private_->SelectDir(title_, path, suggested);
-
-	lv_->allowInput();
 
 	return result;
 }
@@ -88,14 +81,10 @@ FileDialog::Result const FileDialog::open(string const & path, string const & ma
 
 	// no support for asynchronous selection yet
 
-	lv_->prohibitInput();
-
 	FileDialog::Result result;
 
 	result.first = FileDialog::Chosen;
 	result.second = private_->Select(title_, path, filter, suggested);
-
-	lv_->allowInput();
 
 	return result;
 }
