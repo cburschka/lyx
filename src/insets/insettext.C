@@ -405,8 +405,6 @@ void InsetText::update(BufferView * bv, LyXFont const & font, bool reinit)
     if (need_update == INIT) {
 	resizeLyXText(bv);
 	need_update = FULL;
-//	if (!owner() && bv->text)
-//	    bv->text->UpdateInset(bv, this);
     }
     int oldw = insetWidth;
 #if 1
@@ -424,20 +422,7 @@ void InsetText::update(BufferView * bv, LyXFont const & font, bool reinit)
 //		   textWidth(bv->painter()),static_cast<int>(TEXT(bv)->width));
 	resizeLyXText(bv);
 	need_update = FULL;
-#if 0
-	if (owner()) {
-	    owner()->update(bv, font, reinit);
-	    return;
-	} else {
-	    update(bv, font, reinit);
-	}
-#else
-#if 1
 	update(bv, font, reinit);
-#else
-	UpdateLocal(bv, INIT, false);
-#endif
-#endif
 	return;
     }
     if ((need_update==CURSOR_PAR) && (TEXT(bv)->status==LyXText::UNCHANGED) &&
@@ -1510,7 +1495,7 @@ LyXText * InsetText::getLyXText(BufferView * bv) const
 
 void InsetText::deleteLyXText(BufferView * bv, bool recursive) const
 {
-    if (cache.find(bv) == cache.end())
+    if ((cache.find(bv) == cache.end()) || !cache[bv])
 	return;
     delete cache[bv];
     cache.erase(bv);
@@ -1528,7 +1513,7 @@ void InsetText::resizeLyXText(BufferView * bv) const
 {
     if (!par->next && !par->size()) // resize not neccessary!
 	return;
-    if (cache.find(bv) == cache.end())
+    if ((cache.find(bv) == cache.end()) || !cache[bv])
 	return;
 
     LyXParagraph * lpar = 0;

@@ -221,6 +221,10 @@ private:
     bool hasSelection() const { return ((sel_pos_start != sel_pos_end) ||
 				       (sel_cell_start != sel_cell_end));}
     ///
+    void clearSelection() const {
+	sel_pos_start = sel_pos_end = sel_cell_start = sel_cell_end = 0;
+    }
+    ///
     bool ActivateCellInset(BufferView *, int x = 0, int y = 0, int button = 0,
 			   bool behind = false);
     ///

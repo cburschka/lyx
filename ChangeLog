@@ -1,3 +1,21 @@
+2000-11-10  Juergen Vigna  <jug@sad.it>
+
+	* src/insets/insettext.C (resizeLyXText): check !cache[bv]
+	(deleteLyXText): ditto
+
+	* src/insets/insettabular.C (InsetButtonPress): don't clear the
+	selection on mouse-button-3.
+
+	* src/insets/insettabular.h: new function clearSelection(), use this
+	functions inside insettabular.C.
+
+	* src/insets/insettabular.C (TabularFeatures): clear the selection
+	on remove_row/column.
+
+	* src/insets/inset.C (scroll): fixed some scroll stuff.
+
+	* src/insets/insettabular.C (draw): fixed another minor draw problem.
+
 2000-11-10  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* lib/CREDITS: add Yves Bastide

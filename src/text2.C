@@ -3501,9 +3501,9 @@ Undo * LyXText::CreateUndo(Buffer * buf, Undo::undo_kind kind,
 			end = end->next;
 	}
 
-	if (start && end
-	    && start != end->next
-	    && (before != behind || (!before && !behind))) {
+	if (start && end && (start != end->next) &&
+	    ((before != behind) || (!before && !behind)))
+	{
 		tmppar = start;
 		tmppar2 = tmppar->Clone();
 		tmppar2->id(tmppar->id());

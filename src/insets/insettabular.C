@@ -129,9 +129,9 @@ InsetTabular::InsetTabular(Buffer const & buf, int rows, int columns)
     locked = no_selection = cursor_visible = false;
     cursor.x_fix(-1);
     oldcell = -1;
-    actcell = 0;
+    actrow = actcell = 0;
     cursor.pos(0);
-    sel_pos_start = sel_pos_end = sel_cell_start = sel_cell_end = 0;
+    clearSelection();
     need_update = INIT;
 }
 
@@ -144,7 +144,7 @@ InsetTabular::InsetTabular(InsetTabular const & tab, Buffer const & buf)
     locked = no_selection = cursor_visible = false;
     cursor.x_fix(-1);
     oldcell = -1;
-    actcell = 0;
+    actrow = actcell = 0;
     cursor.pos(0);
     sel_pos_start = sel_pos_end = sel_cell_start = sel_cell_end = 0;
     need_update = INIT;
@@ -292,6 +292,7 @@ void InsetTabular::draw(BufferView * bv, LyXFont const & font, int baseline,
 	}
         i = tabular->row_of_cell(actcell);
 	if (the_locking_inset == tabular->GetCellInset(cell)) {
+#if 0
 	    LyXText::text_status st = bv->text->status;
 	    do {
 		cx = nx + tabular->GetBeginningOfTextInCell(cell);
@@ -310,12 +311,38 @@ void InsetTabular::draw(BufferView * bv, LyXFont const & font, int baseline,
 			baseline - tabular->GetAscentOfRow(i) + 1,
 			tabular->GetWidthOfColumn(cell) -
 			tabular->GetBeginningOfTextInCell(cell) -
-			the_locking_inset->width(bv,font) - 1,
+			the_locking_inset->width(bv,font) -
+			tabular->GetAdditionalWidth(cell) - 1,
 			tabular->GetAscentOfRow(i) +
 			tabular->GetDescentOfRow(i) - 1);
 		}
 		tabular->GetCellInset(cell)->draw(bv,font,baseline, cx, false);
 	    } while(bv->text->status == LyXText::CHANGED_IN_DRAW);
+#else
+	    cx = nx + tabular->GetBeginningOfTextInCell(cell);
+	    if (need_update == CELL) {
+		// clear before the inset
+		pain.fillRectangle(
+		    nx + 1,
+		    baseline - tabular->GetAscentOfRow(i) + 1,
+		    int(cx - nx - 1),
+		    tabular->GetAscentOfRow(i) +
+		    tabular->GetDescentOfRow(i) - 1);
+		// clear behind the inset
+		pain.fillRectangle(
+		    int(cx + the_locking_inset->width(bv,font) + 1),
+		    baseline - tabular->GetAscentOfRow(i) + 1,
+		    tabular->GetWidthOfColumn(cell) -
+		    tabular->GetBeginningOfTextInCell(cell) -
+		    the_locking_inset->width(bv,font) -
+		    tabular->GetAdditionalWidth(cell) - 1,
+		    tabular->GetAscentOfRow(i) +
+		    tabular->GetDescentOfRow(i) - 1);
+	    }
+	    tabular->GetCellInset(cell)->draw(bv,font,baseline, cx, false);
+	    if (bv->text->status == LyXText::CHANGED_IN_DRAW)
+		return;
+#endif
 	}
     }
     x -= ADD_TO_TABULAR_WIDTH;
@@ -592,8 +619,8 @@ bool InsetTabular::InsertInset(BufferView * bv, Inset * inset)
 
 void InsetTabular::InsetButtonPress(BufferView * bv, int x, int y, int button)
 {
-    if (hasSelection()) {
-	sel_pos_start = sel_pos_end = sel_cell_start = sel_cell_end = 0;
+    if (hasSelection() && (button != 3)) {
+	clearSelection();
 	UpdateLocal(bv, SELECTION, false);
     }
     no_selection = false;
@@ -1117,7 +1144,10 @@ void InsetTabular::resetPos(BufferView * bv) const
 	}
     }
     static int const offset = ADD_TO_TABULAR_WIDTH + 2;
-    cursor.x(getCellXPos(actcell) + offset);
+    int new_x = getCellXPos(actcell);
+    new_x += offset;
+    cursor.x(new_x);
+//    cursor.x(getCellXPos(actcell) + offset);
     if (((cursor.x() - offset) > 20) &&
 	((cursor.x()-offset+tabular->GetWidthOfColumn(actcell)) >
 	 (bv->workWidth()-20)))
@@ -1387,6 +1417,7 @@ void InsetTabular::TabularFeatures(BufferView * bv,
 	if ((row+1) > tabular->rows())
 	    --row;
 	actcell = tabular->GetCellNumber(row, column);
+	clearSelection();
 	UpdateLocal(bv, INIT, true);
 	break;
     case LyXTabular::DELETE_COLUMN:
@@ -1394,6 +1425,7 @@ void InsetTabular::TabularFeatures(BufferView * bv,
 	if ((column+1) > tabular->columns())
 	    --column;
 	actcell = tabular->GetCellNumber(row, column);
+	clearSelection();
 	UpdateLocal(bv, INIT, true);
 	break;
     case LyXTabular::M_TOGGLE_LINE_TOP:

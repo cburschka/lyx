@@ -167,6 +167,10 @@ void UpdatableInset::scroll(BufferView * bv, float s) const
 {
     LyXFont font;
 
+    if (!s) {
+	scx = 0;
+	return;
+    }
     if (((top_x - scx) > 0) && 
 	(top_x - scx + width(bv, font)) < bv->workWidth())
 	return;
@@ -189,7 +193,7 @@ void UpdatableInset::scroll(BufferView * bv, float s) const
 void UpdatableInset::scroll(BufferView * bv, int offset) const
 {
     if (offset > 0) {
-	if (!scx && top_x > 0)
+	if (!scx && top_x >= 20)
 	    return;
 	if ((top_x + offset) > 20)
 	    scx += offset - (top_x - scx + offset - 20);
