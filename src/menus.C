@@ -55,6 +55,7 @@
 using std::vector;
 using std::endl;
 using std::max;
+using std::min;
 using std::sort;
 
 extern FD_form_screen * fd_form_screen;
@@ -1283,21 +1284,27 @@ void Menus::ShowEditMenu(FL_OBJECT * ob, long)
 }
 
 vector<int>::size_type const max_number_of_menus = 32;
+unsigned int const max_number_of_items = 25;
+
+string Limit_string_length(string const & str) {
+	string::size_type const max_item_length = 45;
+
+	if (str.size() > max_item_length)
+		return str.substr(0, max_item_length-3) + "...";
+	else
+		return str;
+}
 
 void Add_to_toc_menu(vector<Buffer::TocItem> const & toclist, 
 		     unsigned int from, unsigned int to, int depth,
 		     int menu, vector<int> & menus, FL_OBJECT * ob)
 {
-	unsigned int const max_number_of_items = 25;
-	string::size_type const max_item_length = 45;
 	if (to - from <= max_number_of_items) {
 		for (unsigned int i = from; i < to; ++i) {
 			string entry(4 * max(0, toclist[i].depth - depth),' ');
 			entry += toclist[i].str;
-			if (entry.size() > max_item_length)
-				entry = entry.substr(0, max_item_length-3) + "...";
-			entry += "%x";
-			entry += tostr(i + 1);
+			entry = Limit_string_length(entry);
+			entry += "%x" + tostr(i + 1);
 			fl_addtopup(menu, entry.c_str());
 		}
 	} else {
@@ -1316,8 +1323,7 @@ void Add_to_toc_menu(vector<Buffer::TocItem> const & toclist,
 
 			string entry(4 * max(0, toclist[pos].depth - depth), ' ');
 			entry += toclist[pos].str;
-			if (entry.size() > max_item_length)
-				entry = entry.substr(0, max_item_length-3) + "...";
+			entry = Limit_string_length(entry);
 
 			if (new_pos == pos + 1) {
 				entry += "%x";
@@ -1372,10 +1378,15 @@ void Menus::ShowTocMenu(FL_OBJECT * ob, long)
 		if (!toclist[j].empty()) {
 			int menu2 = fl_newpup(FL_ObjWin(ob));
 			menus.push_back(menu2);
-			for (unsigned int i = 0; i < toclist[j].size(); ++i)
-				fl_addtopup(menu2,
-					    (toclist[j][i].str + "%x"
-					     + tostr(i+1+j*BIG_NUM)).c_str());
+			for (unsigned int i = 0; i < toclist[j].size(); ++i) {
+				if (i > max_number_of_items) {
+					fl_addtopup(menu2, ". . .%d");
+					break;
+				}
+				string entry = Limit_string_length(toclist[j][i].str);
+				entry += "%x" + tostr(i+1+j*BIG_NUM);
+				fl_addtopup(menu2, entry.c_str());
+			}
 			if (j == max_nonempty) {
 				string tmp = _(MenuNames[j-1]);
 				tmp += "%l";
@@ -1437,8 +1448,8 @@ void Add_to_refs_menu(vector<string> const & label_list, int offset,
 				fl_addtopup(menu, ". . .%d");
 				break;
 			}
-			size_type j = std::min(label_list.size(),
-					       i+max_number_of_items2);
+			size_type j = min(label_list.size(),
+					  i+max_number_of_items2);
 
 			string entry;
 			if (label_list[i].size() > max_item_length2)

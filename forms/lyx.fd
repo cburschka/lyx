@@ -492,8 +492,8 @@ size: FL_DEFAULT_SIZE
 lcol: FL_BLACK
 label: Type|Tt#t
 shortcut: 
-resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
+resize: FL_RESIZE_NONE
+gravity: FL_SouthEast FL_SouthEast
 name: toctype
 callback: TocUpdateCB
 argument: 0
@@ -553,7 +553,7 @@ lcol: FL_BLACK
 label: Update|#U
 shortcut: 
 resize: FL_RESIZE_NONE
-gravity: FL_SouthEast FL_SouthEast
+gravity: FL_NorthEast FL_NorthEast
 name: 
 callback: RefUpdateCB
 argument: 0
@@ -571,7 +571,7 @@ lcol: FL_BLACK
 label: Close|#C^[
 shortcut: 
 resize: FL_RESIZE_NONE
-gravity: FL_SouthEast FL_SouthEast
+gravity: FL_NorthEast FL_NorthEast
 name: 
 callback: RefHideCB
 argument: 0
@@ -589,7 +589,7 @@ lcol: FL_BLACK
 label: Insert Reference|#I^M
 shortcut: 
 resize: FL_RESIZE_NONE
-gravity: FL_SouthWest FL_SouthWest
+gravity: FL_NorthEast FL_NorthEast
 name: ref
 callback: RefSelectCB
 argument: 0
@@ -607,7 +607,7 @@ lcol: FL_BLACK
 label: Insert Page Number|#P
 shortcut: 
 resize: FL_RESIZE_NONE
-gravity: FL_SouthWest FL_SouthWest
+gravity: FL_NorthEast FL_NorthEast
 name: pageref
 callback: RefSelectCB
 argument: 1
@@ -625,7 +625,7 @@ lcol: FL_BLACK
 label: Go to Reference|#G
 shortcut: 
 resize: FL_RESIZE_NONE
-gravity: FL_SouthWest FL_SouthWest
+gravity: FL_NorthEast FL_NorthEast
 name: gotoref
 callback: RefSelectCB
 argument: 5
@@ -643,7 +643,7 @@ lcol: FL_BLACK
 label: Name|#N
 shortcut: 
 resize: FL_RESIZE_X
-gravity: FL_SouthWest FL_SouthEast
+gravity: FL_NorthEast FL_NorthEast
 name: ref_name
 callback: 
 argument: 
@@ -660,8 +660,8 @@ size: FL_NORMAL_SIZE
 lcol: FL_BLACK
 label: Sort keys|#S
 shortcut: 
-resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
+resize: FL_RESIZE_NONE
+gravity: FL_SouthEast FL_SouthEast
 name: sort
 callback: RefUpdateCB
 argument: 0
@@ -680,7 +680,7 @@ lcol: FL_BLACK
 label: Insert vReference|#V
 shortcut: 
 resize: FL_RESIZE_NONE
-gravity: FL_SouthWest FL_SouthWest
+gravity: FL_NorthEast FL_NorthEast
 name: vref
 callback: RefSelectCB
 argument: 2
@@ -698,7 +698,7 @@ lcol: FL_BLACK
 label: Insert vPage Number|#N
 shortcut: 
 resize: FL_RESIZE_NONE
-gravity: FL_SouthWest FL_SouthWest
+gravity: FL_NorthEast FL_NorthEast
 name: vpageref
 callback: RefSelectCB
 argument: 3
@@ -716,7 +716,7 @@ lcol: FL_BLACK
 label: Insert Pretty Ref|#T
 shortcut: 
 resize: FL_RESIZE_NONE
-gravity: FL_SouthWest FL_SouthWest
+gravity: FL_NorthEast FL_NorthEast
 name: prettyref
 callback: RefSelectCB
 argument: 4
@@ -734,7 +734,7 @@ lcol: FL_BLACK
 label: Go Back|#B
 shortcut: 
 resize: FL_RESIZE_NONE
-gravity: FL_SouthWest FL_SouthWest
+gravity: FL_NorthEast FL_NorthEast
 name: back
 callback: RefSelectCB
 argument: 6

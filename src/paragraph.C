@@ -4314,7 +4314,8 @@ string LyXParagraph::String(bool label)
 		}
 	}
 
-	if (next && next->footnoteflag != LyXParagraph::NO_FOOTNOTE)
+	if (next && next->footnoteflag != LyXParagraph::NO_FOOTNOTE &&
+	    footnoteflag == LyXParagraph::NO_FOOTNOTE)
 		s += NextAfterFootnote()->String(false);
 
 	if (!IsDummy()) {

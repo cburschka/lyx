@@ -1,3 +1,23 @@
+2000-06-06  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* lib/bind/de_menus.bind: updated
+
+2000-06-05  Dekel Tsur  <dekel@math.tau.ac.il>
+
+	* forms/lyx.fd: Correct gravity for objects in form_toc and form_ref
+
+2000-06-05  Lars Gullik Bjønnes  <larsbj@lyx.org>
+  
+  	* src/bufferlist.C (close): test of buf->getuser() == NULL
+2000-06-05  Dekel Tsur  <dekel@math.tau.ac.il>
+
+	* src/menus.C (Limit_string_length): New function
+	(ShowTocMenu): Limit the number of items/length of items in the
+ 	LOT/LOF/LOA menus.
+
+	* src/paragraph.C (String): Correct result for a paragraph inside
+ 	a footnote.
+
 2000-06-05  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/bufferlist.C (close): test of buf->getuser() == NULL

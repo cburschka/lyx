@@ -662,7 +662,7 @@ bool RunSpellChecker(BufferView * bv)
 			  "Check /usr/lib/ispell or set another\n"
 			  "dictionary in the Spellchecker Options menu."), "", "");
 		fclose(out);
-		return true;
+		return false;
 	}
 
 	// Put ispell in terse mode to improve speed
