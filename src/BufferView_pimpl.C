@@ -397,10 +397,8 @@ void BufferView::Pimpl::updateScreen()
 
 void BufferView::Pimpl::updateScrollbar()
 {
-	/* If the text is smaller than the working area, the scrollbar
-	 * maximum must be the working area height. No scrolling will
-	 * be possible */
 	if (!bv_->text) {
+		lyxerr[Debug::GUI] << "no text in updateScrollbar" << endl;
 		workarea_.setScrollbar(0, 1.0);
 		return;
 	}
@@ -408,42 +406,36 @@ void BufferView::Pimpl::updateScrollbar()
 	long const text_height = bv_->text->height;
 	long const work_height = workarea_.height();
 
+	double const lineh = bv_->text->defaultHeight();
+	double const slider_size =
+		(text_height == 0) ? 1.0 : 1.0 / double(text_height);
+
+	lyxerr[Debug::GUI] << "text_height now " << text_height << endl;
+	lyxerr[Debug::GUI] << "work_height " << work_height << endl;
+ 
+	/* If the text is smaller than the working area, the scrollbar
+	 * maximum must be the working area height. No scrolling will
+	 * be possible */
 	if (text_height <= work_height) {
+		lyxerr[Debug::GUI] << "doc smaller than workarea !" << endl;
 		workarea_.setScrollbarBounds(0.0, 0.0);
 		current_scrollbar_value = bv_->text->first_y;
 		workarea_.setScrollbar(current_scrollbar_value, 1.0);
 		return;
 	}
 
-	double const lineh = bv_->text->defaultHeight();
-	double const slider_size =
-		(text_height == 0) ? 1.0 : 1.0 / double(text_height);
-
-	static long old_text_height;
-	static double old_lineh;
-	static double old_slider_size;
-
-	if (text_height != old_text_height) {
-		workarea_.setScrollbarBounds(0.0,
-					     text_height - work_height);
-		old_text_height = text_height;
-	}
-	if (lineh != old_lineh) {
-		workarea_.setScrollbarIncrements(lineh);
-		old_lineh = lineh;
-	}
-	if (current_scrollbar_value != bv_->text->first_y
-	    || slider_size != old_slider_size) {
-		current_scrollbar_value = bv_->text->first_y;
-		workarea_.setScrollbar(current_scrollbar_value, slider_size);
-		old_slider_size = slider_size;
-	}
+	workarea_.setScrollbarBounds(0.0, text_height - work_height);
+	workarea_.setScrollbarIncrements(lineh);
+	current_scrollbar_value = bv_->text->first_y;
+	workarea_.setScrollbar(current_scrollbar_value, slider_size);
 }
 
 
 // Callback for scrollbar slider
 void BufferView::Pimpl::scrollCB(double value)
 {
+	lyxerr[Debug::GUI] << "scrollCB of " << value << endl;
+ 
 	if (!buffer_) return;
 
 	current_scrollbar_value = long(value);
