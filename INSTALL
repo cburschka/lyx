@@ -84,7 +84,7 @@ point to make is that you must ensure that both LyX and the Qt libraries
 are compiled with the same C++ compiler.
 
 Note that if Qt is using Xft2/fontconfig, you may need to install the
-latex-ttf-fonts package, tobe found on ftp://ftp.lyx.org/ to get maths
+latex-ttf-fonts package (available on ftp://ftp.lyx.org/) to get maths
 symbols displayed properly. To find out, type:
 	ldd `which lyx` | grep fontconfig
 at the console. Both RH8 and Debian unstable distributions are known
