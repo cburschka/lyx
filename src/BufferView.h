@@ -117,8 +117,6 @@ public:
 	/// return the parent language of the given inset
 	Language const * getParentLanguage(InsetOld * inset) const;
 
-	/// replace the currently selected word
-	void replaceWord(std::string const & replacestring);
 	/// simple replacing. Use the font of the first selected character 
 	void replaceSelectionWithString(std::string const & str);
 

@@ -13,16 +13,17 @@
 #include <config.h>
 
 #include "ControlCommandBuffer.h"
-#include "bufferview_funcs.h"
+
+#include "BufferView.h"
+#include "cursor.h"
 #include "lyxfunc.h"
 #include "LyXAction.h"
 #include "funcrequest.h"
 
 #include "frontends/LyXView.h"
+
 #include "support/lyxalgo.h"
 #include "support/lstrings.h"
-
-using bv_funcs::currentState;
 
 using lyx::support::prefixIs;
 
@@ -66,9 +67,9 @@ string const ControlCommandBuffer::historyUp()
 string const ControlCommandBuffer::historyDown()
 {
 	if (history_pos_ == history_.end())
-		return "";
+		return string();
 	if (history_pos_ + 1 == history_.end())
-		return "";
+		return string();
 
 	return *(++history_pos_);
 }
@@ -76,7 +77,7 @@ string const ControlCommandBuffer::historyDown()
 
 string const ControlCommandBuffer::getCurrentState() const
 {
-	return currentState(lv_.view().get());
+	return lv_.view()->cursor().currentState();
 }
 
 
@@ -98,9 +99,9 @@ ControlCommandBuffer::completions(string const & prefix, string & new_prefix)
 		return vector<string>();
 	}
 
-	// find maximal avaliable prefix
+	// find maximal available prefix
 	string const tmp = comp[0];
-	string test(prefix);
+	string test = prefix;
 	if (tmp.length() > test.length())
 		test += tmp[test.length()];
 	while (test.length() < tmp.length()) {

@@ -18,6 +18,7 @@
 
 
 class BufferView;
+class LCursor;
 class LyXFont;
 class LyXText;
 class PosIterator;
@@ -45,17 +46,8 @@ enum DEPTH_CHANGE {
 	DEC_DEPTH
 };
 
-/// Increase or decrease the nesting depth of the selected paragraph(s)
-void changeDepth(BufferView *, LyXText *, DEPTH_CHANGE);
-
 /// Returns whether something would be changed by changeDepth
-bool changeDepthAllowed(BufferView *, LyXText *, DEPTH_CHANGE);
-
-/// Returns the current font and depth as a message.
-std::string const currentState(BufferView *);
-/// replace selection with insertion
-void replaceSelection(LyXText * lt);
-
+bool changeDepthAllowed(LCursor & cur, LyXText * text, DEPTH_CHANGE);
 
 }; // namespace bv_funcs
 

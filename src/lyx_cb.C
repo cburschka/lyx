@@ -361,9 +361,9 @@ void InsertAsciiFile(BufferView * bv, string const & f, bool asParagraph)
 	if (bv->text() == bv->getLyXText())
 		bv->cursor().clearSelection();
 	if (asParagraph)
-		bv->getLyXText()->insertStringAsParagraphs(tmpstr);
+		bv->getLyXText()->insertStringAsParagraphs(bv->cursor(), tmpstr);
 	else
-		bv->getLyXText()->insertStringAsLines(tmpstr);
+		bv->getLyXText()->insertStringAsLines(bv->cursor(), tmpstr);
 	bv->update();
 }
 

@@ -5,6 +5,7 @@
 	* text.C:
 	* text2.C:
 	* text3.C: add LCursor & parameter to most cursor movement functions
+	  remove usage of LyXText::cursorRow() and cursorPar()
 
 	* cursor.[Ch]: add textRow() needed members
 

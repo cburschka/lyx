@@ -324,26 +324,6 @@ void BufferView::gotoLabel(string const & label)
 }
 
 
-void BufferView::replaceWord(string const & replacestring)
-{
-	if (!available())
-		return;
-
-	LyXText * t = getLyXText();
-
-	t->replaceSelectionWithString(replacestring);
-	t->setSelectionRange(replacestring.length());
-
-	// Go back so that replacement string is also spellchecked
-	for (string::size_type i = 0; i < replacestring.length() + 1; ++i)
-		t->cursorLeft(cursor(), this);
-
-	// FIXME: should be done through LFUN
-	buffer()->markDirty();
-	update();
-}
-
-
 void BufferView::hideCursor()
 {
 	screen().hideCursor();
@@ -455,7 +435,7 @@ void BufferView::putSelectionAt(PosIterator const & cur,
 	cursor().updatePos();
 
 	if (length) {
-		text->setSelectionRange(length);
+		text->setSelectionRange(cursor(), length);
 		cursor().setSelection();
 		if (backwards)
 			swap(cursor().cursor_, cursor().anchor_);

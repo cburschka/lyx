@@ -186,7 +186,9 @@ bool performUndoOrRedo(BufferView & bv, Undo const & undo)
 	text->updateCounters();
 
 	// rebreak the entire lyxtext
-	buf.text().fullRebreak();
+#warning needed?
+	text->redoParagraphs(buf.paragraphs().begin(), buf.paragraphs().end());
+	bv.cursor().resetAnchor();
 
 	ParIterator pit2 = num2pit(buf, undo.text);
 	advance(pit2, undo.cursor_par);
@@ -287,6 +289,12 @@ void recordUndo(Undo::undo_kind kind,
 void recordUndo(LCursor & cur, Undo::undo_kind kind)
 {
 	recordUndo(kind, cur, cur.par(), cur.par());
+}
+
+
+void recordUndoSelection(LCursor & cur, Undo::undo_kind kind)
+{
+	recordUndo(kind, cur, cur.selBegin().par(), cur.selEnd().par());
 }
 
 

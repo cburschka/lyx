@@ -12,11 +12,16 @@
 #include <config.h>
 
 #include "trans_mgr.h"
-#include "trans.h"
-#include "lyxtext.h"
+
+#include "BufferView.h"
+#include "cursor.h"
 #include "debug.h"
-#include "insets/insetlatexaccent.h"
 #include "lyxrc.h"
+#include "lyxtext.h"
+#include "trans.h"
+
+#include "insets/insetlatexaccent.h"
+
 #include "support/lstrings.h"
 
 using lyx::support::split;
@@ -260,11 +265,8 @@ void  TransManager::TranslateAndInsert(char c, LyXText * text)
 
 void TransManager::insertVerbatim(string const & str, LyXText * text)
 {
-	string::size_type const l = str.length();
-
-	for (string::size_type i = 0; i < l; ++i) {
-		text->insertChar(str[i]);
-	}
+	for (string::size_type i = 0, n = str.size(); i < n; ++i)
+		text->insertChar(text->bv()->cursor(), str[i]);
 }
 
 
@@ -282,15 +284,13 @@ void TransManager::insert(string const & str, LyXText * text)
 		// Could not find an encoding
 		InsetLatexAccent ins(str);
 		if (ins.canDisplay()) {
-			text->insertInset(
-					  new InsetLatexAccent(ins));
+			text->bv()->cursor().insert(new InsetLatexAccent(ins));
 		} else {
 			insertVerbatim(str, text);
 		}
 		return;
 	}
-	string tmp;
-	tmp += static_cast<char>(enc.second);
+	string const tmp(1, static_cast<char>(enc.second));
 	insertVerbatim(tmp, text);
 }
 

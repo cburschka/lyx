@@ -11,8 +11,9 @@
 
 #include <config.h>
 
-#include "support/std_sstream.h"
 #include "Spacing.h"
+
+#include "support/std_sstream.h"
 
 using std::ios;
 using std::istringstream;

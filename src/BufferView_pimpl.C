@@ -65,8 +65,6 @@
 
 #include <boost/bind.hpp>
 
-using bv_funcs::currentState;
-
 using lyx::pos_type;
 
 using lyx::support::AddPath;
@@ -975,7 +973,6 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & cmd)
 		<< " button[" << cmd.button() << ']'
 		<< endl;
 
-	LyXTextClass const & tclass = buffer_->params().getLyXTextClass();
 	LCursor & cur = bv_->cursor();
 
 	switch (cmd.action) {
@@ -1015,7 +1012,7 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & cmd)
 		break;
 
 	case LFUN_FONT_STATE:
-		owner_->getLyXFunc().setMessage(currentState(bv_));
+		cur.message(cur.currentState());
 		break;
 
 	case LFUN_INSERT_LABEL: {
@@ -1049,30 +1046,12 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & cmd)
 
 		if (!label.empty())
 			bv_->gotoLabel(label);
+		break;
 	}
-	break;
 
 	case LFUN_PARAGRAPH_APPLY:
 		setParagraphParams(*bv_, cmd.argument);
 		break;
-
-	case LFUN_THESAURUS_ENTRY: {
-		string arg = cmd.argument;
-
-		if (arg.empty()) {
-			arg = cur.selectionAsString(false);
-			// FIXME
-			if (arg.size() > 100 || arg.empty()) {
-				// Get word or selection
-				bv_->getLyXText()->selectWordWhenUnderCursor(lyx::WHOLE_WORD);
-				arg = cur.selectionAsString(false);
-				// FIXME: where is getLyXText()->unselect(bv_) ?
-			}
-		}
-
-		bv_->owner()->getDialogs().show("thesaurus", arg);
-		break;
-	}
 
 	case LFUN_TRACK_CHANGES:
 		trackChanges();
@@ -1083,31 +1062,19 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & cmd)
 		break;
 
 	case LFUN_ACCEPT_ALL_CHANGES: {
-		bv_->text()->setCursor(0, 0);
+		bv_->cursor().reset();
 #warning FIXME changes
 		while (lyx::find::findNextChange(bv_))
-			bv_->getLyXText()->acceptChange();
+			bv_->getLyXText()->acceptChange(bv_->cursor());
 		update();
 		break;
 	}
 
 	case LFUN_REJECT_ALL_CHANGES: {
-		bv_->text()->setCursor(0, 0);
+		bv_->cursor().reset();
 #warning FIXME changes
 		while (lyx::find::findNextChange(bv_))
-			bv_->getLyXText()->rejectChange();
-		update();
-		break;
-	}
-
-	case LFUN_ACCEPT_CHANGE: {
-		bv_->getLyXText()->acceptChange();
-		update();
-		break;
-	}
-
-	case LFUN_REJECT_CHANGE: {
-		bv_->getLyXText()->rejectChange();
+			bv_->getLyXText()->rejectChange(bv_->cursor());
 		update();
 		break;
 	}

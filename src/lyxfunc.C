@@ -82,8 +82,6 @@
 #include "support/std_sstream.h"
 #include "support/os.h"
 
-using bv_funcs::changeDepth;
-using bv_funcs::currentState;
 using bv_funcs::DEC_DEPTH;
 using bv_funcs::freefont2string;
 using bv_funcs::INC_DEPTH;
@@ -257,19 +255,19 @@ void LyXFunc::processKeySym(LyXKeySymPtr keysym, key_modifier::state state)
 }
 
 
-FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
+FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 {
 	FuncStatus flag;
 	Buffer * buf = owner->buffer();
 	LCursor & cur = view()->cursor();
 
-	if (ev.action == LFUN_NOACTION) {
+	if (cmd.action == LFUN_NOACTION) {
 		setStatusMessage(N_("Nothing to do"));
 		flag.disabled(true);
 		return flag;
 	}
 
-	switch (ev.action) {
+	switch (cmd.action) {
 	case LFUN_UNKNOWN_ACTION:
 #ifndef HAVE_LIBAIKSAURUS
 	case LFUN_THESAURUS_ENTRY:
@@ -278,7 +276,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 		flag.disabled(true);
 		break;
 	default:
-		flag |= lyx_gui::getStatus(ev);
+		flag |= lyx_gui::getStatus(cmd);
 	}
 
 	if (flag.unknown()) {
@@ -290,13 +288,13 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 	setStatusMessage(N_("Command disabled"));
 
 	// Check whether we need a buffer
-	if (!lyxaction.funcHasFlag(ev.action, LyXAction::NoBuffer)) {
+	if (!lyxaction.funcHasFlag(cmd.action, LyXAction::NoBuffer)) {
 		// Yes we need a buffer, do we have one?
 		if (buf) {
 			// yes
 			// Can we use a readonly buffer?
 			if (buf->isReadonly() &&
-			    !lyxaction.funcHasFlag(ev.action,
+			    !lyxaction.funcHasFlag(cmd.action,
 						   LyXAction::ReadOnly)) {
 				// no
 				setStatusMessage(N_("Document is read-only"));
@@ -317,10 +315,10 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 	// I would really like to avoid having this switch and rather try to
 	// encode this in the function itself.
 	bool disable = false;
-	switch (ev.action) {
+	switch (cmd.action) {
 	case LFUN_EXPORT:
-		disable = ev.argument != "custom"
-			&& !Exporter::IsExportable(*buf, ev.argument);
+		disable = cmd.argument != "custom"
+			&& !Exporter::IsExportable(*buf, cmd.argument);
 		break;
 	case LFUN_UNDO:
 		disable = buf->undostack().empty();
@@ -349,11 +347,11 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 		break;
 
 	case LFUN_DEPTH_MIN:
-		disable = !changeDepthAllowed(view(), view()->getLyXText(), DEC_DEPTH);
+		disable = !changeDepthAllowed(cur, view()->getLyXText(), DEC_DEPTH);
 		break;
 
 	case LFUN_DEPTH_PLUS:
-		disable = !changeDepthAllowed(view(), view()->getLyXText(), INC_DEPTH);
+		disable = !changeDepthAllowed(cur, view()->getLyXText(), INC_DEPTH);
 		break;
 
 	case LFUN_LAYOUT:
@@ -377,15 +375,15 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 				disable = true;
 				break;
 			}
-			if (ev.argument.empty()) {
+			if (cmd.argument.empty()) {
 				flag.clear();
 				break;
 			}
-			if (!contains("tcb", ev.argument[0])) {
+			if (!contains("tcb", cmd.argument[0])) {
 				disable = true;
 				break;
 			}
-			flag.setOnOff(ev.argument[0] == align);
+			flag.setOnOff(cmd.argument[0] == align);
 		} else {
 			disable = true;
 
@@ -394,15 +392,15 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 				disable = true;
 				break;
 			}
-			if (ev.argument.empty()) {
+			if (cmd.argument.empty()) {
 				flag.clear();
 				break;
 			}
-			if (!contains("lcr", ev.argument[0])) {
+			if (!contains("lcr", cmd.argument[0])) {
 				disable = true;
 				break;
 			}
-			flag.setOnOff(ev.argument[0] == align);
+			flag.setOnOff(cmd.argument[0] == align);
 
 			disable = !mathcursor::halign();
 			break;
@@ -413,7 +411,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 			//ret.disabled(true);
 			InsetTabular * tab = cur.innerInsetTabular();
 			if (tab) {
-				ret = tab->getStatus(ev.argument);
+				ret = tab->getStatus(cmd.argument);
 				flag |= ret;
 				disable = false;
 			} else {
@@ -422,7 +420,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 		} else {
 			static InsetTabular inset(*buf, 1, 1);
 			disable = true;
-			FuncStatus ret = inset.getStatus(ev.argument);
+			FuncStatus ret = inset.getStatus(cmd.argument);
 			if (ret.onoff(true) || ret.onoff(false))
 				flag.setOnOff(false);
 		}
@@ -447,7 +445,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 		break;
 	case LFUN_BOOKMARK_GOTO:
 		disable = !view()->
-			isSavedPosition(strToUnsignedInt(ev.argument));
+			isSavedPosition(strToUnsignedInt(cmd.argument));
 		break;
 
 	case LFUN_MERGE_CHANGES:
@@ -474,25 +472,25 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 		InsetOld::Code code = inset->lyxCode();
 		switch (code) {
 			case InsetOld::TABULAR_CODE:
-				disable = ev.argument != "tabular";
+				disable = cmd.argument != "tabular";
 				break;
 			case InsetOld::ERT_CODE:
-				disable = ev.argument != "ert";
+				disable = cmd.argument != "ert";
 				break;
 			case InsetOld::FLOAT_CODE:
-				disable = ev.argument != "float";
+				disable = cmd.argument != "float";
 				break;
 			case InsetOld::WRAP_CODE:
-				disable = ev.argument != "wrap";
+				disable = cmd.argument != "wrap";
 				break;
 			case InsetOld::NOTE_CODE:
-				disable = ev.argument != "note";
+				disable = cmd.argument != "note";
 				break;
 			case InsetOld::BRANCH_CODE:
-				disable = ev.argument != "branch";
+				disable = cmd.argument != "branch";
 				break;
 			case InsetOld::BOX_CODE:
-				disable = ev.argument != "box";
+				disable = cmd.argument != "box";
 				break;
 			default:
 				break;
@@ -502,7 +500,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 
 	case LFUN_MATH_MUTATE:
 		if (cur.inMathed())
-			//flag.setOnOff(mathcursor::formula()->hullType() == ev.argument);
+			//flag.setOnOff(mathcursor::formula()->hullType() == cmd.argument);
 			flag.setOnOff(false);
 		else
 			disable = true;
@@ -519,7 +517,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 		break;
 
 	case LFUN_DIALOG_SHOW: {
-		string const name = ev.getArg(0);
+		string const name = cmd.getArg(0);
 		if (!buf) {
 			disable = !(name == "aboutlyx" ||
 				    name == "file" ||
@@ -549,43 +547,43 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 
 	// the functions which insert insets
 	InsetOld::Code code = InsetOld::NO_CODE;
-	switch (ev.action) {
+	switch (cmd.action) {
 	case LFUN_DIALOG_SHOW_NEW_INSET:
-		if (ev.argument == "bibitem")
+		if (cmd.argument == "bibitem")
 			code = InsetOld::BIBITEM_CODE;
-		else if (ev.argument == "bibtex")
+		else if (cmd.argument == "bibtex")
 			code = InsetOld::BIBTEX_CODE;
-		else if (ev.argument == "box")
+		else if (cmd.argument == "box")
 			code = InsetOld::BOX_CODE;
-		else if (ev.argument == "branch")
+		else if (cmd.argument == "branch")
 			code = InsetOld::BRANCH_CODE;
-		else if (ev.argument == "citation")
+		else if (cmd.argument == "citation")
 			code = InsetOld::CITE_CODE;
-		else if (ev.argument == "ert")
+		else if (cmd.argument == "ert")
 			code = InsetOld::ERT_CODE;
-		else if (ev.argument == "external")
+		else if (cmd.argument == "external")
 			code = InsetOld::EXTERNAL_CODE;
-		else if (ev.argument == "float")
+		else if (cmd.argument == "float")
 			code = InsetOld::FLOAT_CODE;
-		else if (ev.argument == "graphics")
+		else if (cmd.argument == "graphics")
 			code = InsetOld::GRAPHICS_CODE;
-		else if (ev.argument == "include")
+		else if (cmd.argument == "include")
 			code = InsetOld::INCLUDE_CODE;
-		else if (ev.argument == "index")
+		else if (cmd.argument == "index")
 			code = InsetOld::INDEX_CODE;
-		else if (ev.argument == "label")
+		else if (cmd.argument == "label")
 			code = InsetOld::LABEL_CODE;
-		else if (ev.argument == "note")
+		else if (cmd.argument == "note")
 			code = InsetOld::NOTE_CODE;
-		else if (ev.argument == "ref")
+		else if (cmd.argument == "ref")
 			code = InsetOld::REF_CODE;
-		else if (ev.argument == "toc")
+		else if (cmd.argument == "toc")
 			code = InsetOld::TOC_CODE;
-		else if (ev.argument == "url")
+		else if (cmd.argument == "url")
 			code = InsetOld::URL_CODE;
-		else if (ev.argument == "vspace")
+		else if (cmd.argument == "vspace")
 			code = InsetOld::VSPACE_CODE;
-		else if (ev.argument == "wrap")
+		else if (cmd.argument == "wrap")
 			code = InsetOld::WRAP_CODE;
 		break;
 
@@ -700,7 +698,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 		flag.disabled(true);
 
 	// A few general toggles
-	switch (ev.action) {
+	switch (cmd.action) {
 	case LFUN_TOOLTIPS_TOGGLE:
 		flag.setOnOff(owner->getDialogs().tooltipsEnabled());
 		break;
@@ -715,7 +713,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 	case LFUN_SWITCHBUFFER:
 		// toggle on the current buffer, but do not toggle off
 		// the other ones (is that a good idea?)
-		if (ev.argument == buf->fileName())
+		if (cmd.argument == buf->fileName())
 			flag.setOnOff(true);
 		break;
 	case LFUN_TRACK_CHANGES:
@@ -729,7 +727,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 	// the font related toggles
 	if (cur.inTexted()) {
 		LyXFont const & font = cur.text()->real_current_font;
-		switch (ev.action) {
+		switch (cmd.action) {
 		case LFUN_EMPH:
 			flag.setOnOff(font.emph() == LyXFont::ON);
 			break;
@@ -753,7 +751,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 		}
 	} else {
 		string tc = mathcursor::getLastCode();
-		switch (ev.action) {
+		switch (cmd.action) {
 		case LFUN_BOLD:
 			flag.setOnOff(tc == "mathbf");
 			break;
@@ -783,10 +781,11 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 
 	// this one is difficult to get right. As a half-baked
 	// solution, we consider only the first action of the sequence
-	if (ev.action == LFUN_SEQUENCE) {
+	if (cmd.action == LFUN_SEQUENCE) {
 		// argument contains ';'-terminated commands
 #warning LyXAction arguments not handled here.
-		flag = getStatus(FuncRequest(lyxaction.lookupFunc(token(ev.argument, ';', 0))));
+		flag = getStatus(FuncRequest(
+			lyxaction.lookupFunc(token(cmd.argument, ';', 0))));
 	}
 
 	return flag;
@@ -1750,7 +1749,7 @@ string const LyXFunc::view_status_message()
 	if (!view()->available())
 		return _("Welcome to LyX!");
 
-	return currentState(view());
+	return view()->cursor().currentState();
 }
 
 

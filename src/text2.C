@@ -279,7 +279,7 @@ LyXText::setLayout(ParagraphList::iterator start,
 
 
 // set layout over selection and make a total rebreak of those paragraphs
-void LyXText::setLayout(string const & layout)
+void LyXText::setLayout(LCursor & cur, string const & layout)
 {
 	// special handling of new environment insets
 	BufferParams const & params = bv()->buffer()->params();
@@ -291,18 +291,15 @@ void LyXText::setLayout(string const & layout)
 		bv()->owner()->dispatch(FuncRequest(LFUN_ENDSEL));
 		bv()->owner()->dispatch(FuncRequest(LFUN_CUT));
 		InsetBase * inset = new InsetEnvironment(params, layout);
-		insertInset(inset);
+		insertInset(cur, inset);
 		//inset->edit(bv());
 		//bv()->owner()->dispatch(FuncRequest(LFUN_PASTE));
 		return;
 	}
 
-	ParagraphList::iterator start =
-		getPar(bv()->cursor().selBegin().par());
-	ParagraphList::iterator end =
-		boost::next(getPar(bv()->cursor().selEnd().par()));
+	ParagraphList::iterator start = getPar(cur.selBegin().par());
+	ParagraphList::iterator end = boost::next(getPar(cur.selEnd().par()));
 	ParagraphList::iterator endpit = setLayout(start, end, layout);
-
 	redoParagraphs(start, endpit);
 	updateCounters();
 }
@@ -311,16 +308,16 @@ void LyXText::setLayout(string const & layout)
 namespace {
 
 
-void getSelectionSpan(LyXText & text,
+void getSelectionSpan(LCursor & cur, LyXText & text,
 	ParagraphList::iterator & beg,
 	ParagraphList::iterator & end)
 {
-	if (!text.bv()->cursor().selection()) {
-		beg = text.cursorPar();
+	if (!cur.selection()) {
+		beg = text.getPar(cur.par());
 		end = boost::next(beg);
 	} else {
-		beg = text.getPar(text.bv()->cursor().selBegin());
-		end = boost::next(text.getPar(text.bv()->cursor().selEnd()));
+		beg = text.getPar(cur.selBegin());
+		end = boost::next(text.getPar(cur.selEnd()));
 	}
 }
 
@@ -343,10 +340,10 @@ bool changeDepthAllowed(bv_funcs::DEPTH_CHANGE type,
 }
 
 
-bool LyXText::changeDepthAllowed(bv_funcs::DEPTH_CHANGE type)
+bool LyXText::changeDepthAllowed(LCursor & cur, bv_funcs::DEPTH_CHANGE type)
 {
 	ParagraphList::iterator beg, end; 
-	getSelectionSpan(*this, beg, end);
+	getSelectionSpan(cur, *this, beg, end);
 	int max_depth = 0;
 	if (beg != paragraphs().begin())
 		max_depth = boost::prior(beg)->getMaxDepthAfter();
@@ -360,12 +357,11 @@ bool LyXText::changeDepthAllowed(bv_funcs::DEPTH_CHANGE type)
 }
 
 
-void LyXText::changeDepth(bv_funcs::DEPTH_CHANGE type)
+void LyXText::changeDepth(LCursor & cur, bv_funcs::DEPTH_CHANGE type)
 {
 	ParagraphList::iterator beg, end;
-	getSelectionSpan(*this, beg, end);
-	
-	recUndo(parOffset(beg), parOffset(end) - 1);
+	getSelectionSpan(cur, *this, beg, end);
+	recordUndoSelection(cur);
 
 	int max_depth = 0;
 	if (beg != paragraphs().begin())
@@ -388,17 +384,17 @@ void LyXText::changeDepth(bv_funcs::DEPTH_CHANGE type)
 
 
 // set font over selection and make a total rebreak of those paragraphs
-void LyXText::setFont(LyXFont const & font, bool toggleall)
+void LyXText::setFont(LCursor & cur, LyXFont const & font, bool toggleall)
 {
-	LCursor & cur = bv()->cursor();
 	// if there is no selection just set the current_font
 	if (!cur.selection()) {
 		// Determine basis font
 		LyXFont layoutfont;
-		if (cursor().pos() < cursorPar()->beginOfBody())
-			layoutfont = getLabelFont(cursorPar());
+		ParagraphList::iterator pit = getPar(cur.par());
+		if (cur.pos() < pit->beginOfBody())
+			layoutfont = getLabelFont(pit);
 		else
-			layoutfont = getLayoutFont(cursorPar());
+			layoutfont = getLayoutFont(pit);
 
 		// Update current font
 		real_current_font.update(font,
@@ -415,7 +411,7 @@ void LyXText::setFont(LyXFont const & font, bool toggleall)
 	}
 
 	// ok we have a selection.
-	recUndo(cur.selBegin().par(), cur.selEnd().par());
+	recordUndoSelection(cur);
 	freezeUndo();
 
 	ParagraphList::iterator beg = getPar(cur.selBegin().par());
@@ -468,12 +464,12 @@ void LyXText::cursorBottom(LCursor & cur)
 }
 
 
-void LyXText::toggleFree(LyXFont const & font, bool toggleall)
+void LyXText::toggleFree(LCursor & cur, LyXFont const & font, bool toggleall)
 {
 	// If the mask is completely neutral, tell user
 	if (font == LyXFont(LyXFont::ALL_IGNORE)) {
 		// Could only happen with user style
-		bv()->owner()->message(_("No font change defined. "
+		cur.message(_("No font change defined. "
 			"Use Character under the Layout menu to define font change."));
 		return;
 	}
@@ -481,45 +477,44 @@ void LyXText::toggleFree(LyXFont const & font, bool toggleall)
 	// Try implicit word selection
 	// If there is a change in the language the implicit word selection
 	// is disabled.
-	CursorSlice resetCursor = cursor();
+	CursorSlice resetCursor = cur.current();
 	bool implicitSelection =
 		font.language() == ignore_language
 		&& font.number() == LyXFont::IGNORE
-		&& selectWordWhenUnderCursor(lyx::WHOLE_WORD_STRICT);
+		&& selectWordWhenUnderCursor(cur, lyx::WHOLE_WORD_STRICT);
 
 	// Set font
-	setFont(font, toggleall);
+	setFont(cur, font, toggleall);
 
 	// Implicit selections are cleared afterwards
-	//and cursor is set to the original position.
+	// and cursor is set to the original position.
 	if (implicitSelection) {
-		bv()->cursor().clearSelection();
-		cursor() = resetCursor;
-		bv()->cursor().resetAnchor();
+		cur.clearSelection();
+		cur.current() = resetCursor;
+		cur.resetAnchor();
 	}
 }
 
 
-string LyXText::getStringToIndex()
+string LyXText::getStringToIndex(LCursor & cur)
 {
-	LCursor & cur = bv()->cursor();
 	// Try implicit word selection
 	// If there is a change in the language the implicit word selection
 	// is disabled.
-	CursorSlice const reset_cursor = cursor();
+	CursorSlice const reset_cursor = cur.current();
 	bool const implicitSelection =
-		selectWordWhenUnderCursor(lyx::PREVIOUS_WORD);
+		selectWordWhenUnderCursor(cur, lyx::PREVIOUS_WORD);
 
 	string idxstring;
 	if (!cur.selection())
-		bv()->owner()->message(_("Nothing to index!"));
+		cur.message(_("Nothing to index!"));
 	else if (cur.selBegin().par() != cur.selEnd().par())
-		bv()->owner()->message(_("Cannot index more than one paragraph!"));
+		cur.message(_("Cannot index more than one paragraph!"));
 	else
 		idxstring = cur.selectionAsString(false);
 
 	// Reset cursors to their original position.
-	cursor() = reset_cursor;
+	cur.current() = reset_cursor;
 	cur.resetAnchor();
 
 	// Clear the implicit selection.
@@ -859,24 +854,20 @@ void LyXText::updateCounters()
 }
 
 
-void LyXText::insertInset(InsetBase * inset)
+void LyXText::insertInset(LCursor & cur, InsetBase * inset)
 {
-	if (!cursorPar()->insetAllowed(inset->lyxCode()))
-		return;
-
-	recUndo(cursor().par());
+	recordUndo(cur);
 	freezeUndo();
-	cursorPar()->insertInset(cursor().pos(), inset);
+	cur.paragraph().insertInset(cur.pos(), inset);
 	// Just to rebreak and refresh correctly.
 	// The character will not be inserted a second time
-	insertChar(Paragraph::META_INSET);
+	insertChar(cur, Paragraph::META_INSET);
 	// If we enter a highly editable inset the cursor should be before
 	// the inset. After an undo LyX tries to call inset->edit(...)
 	// and fails if the cursor is behind the inset and getInset
 	// does not return the inset!
 	if (isHighlyEditableInset(inset))
-		cursorLeft(bv()->cursor(), true);
-
+		cursorLeft(cur, true);
 	unFreezeUndo();
 }
 
@@ -902,10 +893,10 @@ void LyXText::cutSelection(bool doclear, bool realcut)
 	// and cur.selEnd()
 
 	// make sure that the depth behind the selection are restored, too
+	recordUndoSelection(cur);
 	ParagraphList::iterator begpit = getPar(cur.selBegin().par());
 	ParagraphList::iterator endpit = getPar(cur.selEnd().par());
 	ParagraphList::iterator undopit = undoSpan(endpit);
-	recUndo(cur.selBegin().par(), parOffset(undopit) - 1);
 
 	int endpos = cur.selEnd().pos();
 
@@ -913,7 +904,7 @@ void LyXText::cutSelection(bool doclear, bool realcut)
 	boost::tie(endpit, endpos) = realcut ?
 		CutAndPaste::cutSelection(bufparams,
 					  paragraphs(),
-					  begpit , endpit,
+					  begpit, endpit,
 					  cur.selBegin().pos(), endpos,
 					  bufparams.textclass,
 					  doclear)
@@ -930,8 +921,8 @@ void LyXText::cutSelection(bool doclear, bool realcut)
 	// cutSelection can invalidate the cursor so we need to set
 	// it anew. (Lgb)
 	// we prefer the end for when tracking changes
-	cursor().pos(endpos);
-	cursor().par(parOffset(endpit));
+	cur.pos() = endpos;
+	cur.par() = parOffset(endpit);
 
 	// need a valid cursor. (Lgb)
 	cur.clearSelection();
@@ -967,14 +958,13 @@ void LyXText::copySelection()
 }
 
 
-void LyXText::pasteSelection(size_t sel_index)
+void LyXText::pasteSelection(LCursor & cur, size_t sel_index)
 {
-	LCursor & cur = bv()->cursor();
 	// this does not make sense, if there is nothing to paste
 	if (!CutAndPaste::checkPastePossible())
 		return;
 
-	recUndo(cursor().par());
+	recordUndo(cur);
 
 	ParagraphList::iterator endpit;
 	PitPosPair ppp;
@@ -1000,12 +990,10 @@ void LyXText::pasteSelection(size_t sel_index)
 }
 
 
-void LyXText::setSelectionRange(lyx::pos_type length)
+void LyXText::setSelectionRange(LCursor & cur, lyx::pos_type length)
 {
 	if (!length)
 		return;
-
-	LCursor & cur = bv()->cursor();
 	cur.resetAnchor();
 	while (length--)
 		cursorRight(cur, true);
@@ -1014,10 +1002,9 @@ void LyXText::setSelectionRange(lyx::pos_type length)
 
 
 // simple replacing. The font of the first selected character is used
-void LyXText::replaceSelectionWithString(string const & str)
+void LyXText::replaceSelectionWithString(LCursor & cur, string const & str)
 {
-	LCursor & cur = bv()->cursor();
-	recUndo(cur.par());
+	recordUndo(cur);
 	freezeUndo();
 
 	// Get font setting before we cut
@@ -1042,34 +1029,32 @@ void LyXText::replaceSelectionWithString(string const & str)
 
 
 // needed to insert the selection
-void LyXText::insertStringAsLines(string const & str)
+void LyXText::insertStringAsLines(LCursor & cur, string const & str)
 {
-	LCursor & cur = bv()->cursor();
-	ParagraphList::iterator pit = cursorPar();
+	ParagraphList::iterator pit = getPar(cur.par());
+	ParagraphList::iterator endpit = boost::next(pit);
 	pos_type pos = cursor().pos();
-	ParagraphList::iterator endpit = boost::next(cursorPar());
-	recordUndo(cur, Undo::ATOMIC);
+	recordUndo(cur);
 
 	// only to be sure, should not be neccessary
 	cur.clearSelection();
 	bv()->buffer()->insertStringAsLines(pit, pos, current_font, str);
 
-	redoParagraphs(cursorPar(), endpit);
+	redoParagraphs(getPar(cur.par()), endpit);
 	cur.resetAnchor();
-	setCursor(parOffset(pit), pos);
+	setCursor(cur.par(), pos);
 	cur.setSelection();
 }
 
 
 // turn double CR to single CR, others are converted into one
 // blank. Then insertStringAsLines is called
-void LyXText::insertStringAsParagraphs(string const & str)
+void LyXText::insertStringAsParagraphs(LCursor & cur, string const & str)
 {
-	string linestr(str);
+	string linestr = str;
 	bool newline_inserted = false;
-	string::size_type const siz = linestr.length();
 
-	for (string::size_type i = 0; i < siz; ++i) {
+	for (string::size_type i = 0, siz = linestr.size(); i < siz; ++i) {
 		if (linestr[i] == '\n') {
 			if (newline_inserted) {
 				// we know that \r will be ignored by
@@ -1085,7 +1070,7 @@ void LyXText::insertStringAsParagraphs(string const & str)
 			newline_inserted = false;
 		}
 	}
-	insertStringAsLines(linestr);
+	insertStringAsLines(cur, linestr);
 }
 
 
@@ -1196,6 +1181,7 @@ void LyXText::setCurrentFont()
 		real_current_font.setNumber(LyXFont::OFF);
 	}
 }
+
 
 // x is an absolute screen coord
 // returns the column near the specified x-coordinate of the row
@@ -1479,7 +1465,7 @@ bool LyXText::cursorRight(LCursor & cur, bool internal)
 
 void LyXText::cursorUp(LCursor & cur, bool selecting)
 {
-	Row const & row = *cursorRow();
+	Row const & row = cur.textRow();
 	int x = cur.x_target();
 	int y = cursorY(cur.current()) - row.baseline() - 1;
 	setCursorFromCoordinates(x, y);
@@ -1702,17 +1688,17 @@ bool LyXText::isInInset() const
 }
 
 
-bool LyXText::toggleInset()
+bool LyXText::toggleInset(LCursor & cur)
 {
-	InsetBase * inset = bv()->cursor().nextInset();
+	InsetBase * inset = cur.nextInset();
 	// is there an editable inset at cursor position?
 	if (!isEditableInset(inset))
 		return false;
-	//bv()->owner()->message(inset->editMessage());
+	cur.message(inset->editMessage());
 
 	// do we want to keep this?? (JMarc)
 	if (!isHighlyEditableInset(inset))
-		recUndo(cursor().par());
+		recordUndo(cur);
 
 	if (inset->isOpen())
 		inset->close();

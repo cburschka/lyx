@@ -52,8 +52,6 @@
 
 #include <boost/bind.hpp>
 
-using bv_funcs::replaceSelection;
-
 using lyx::pos_type;
 
 using lyx::graphics::PreviewLoader;
@@ -279,7 +277,7 @@ void InsetText::sanitizeEmptyText(BufferView & bv)
 	    && bv.getParentLanguage(this) != text_.current_font.language()) {
 		LyXFont font(LyXFont::ALL_IGNORE);
 		font.setLanguage(bv.getParentLanguage(this));
-		text_.setFont(font, false);
+		text_.setFont(bv.cursor(), font, false);
 	}
 }
 
@@ -329,7 +327,7 @@ DispatchResult InsetText::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 	    paragraphs().size() == 1) {
 		LyXFont font(LyXFont::ALL_IGNORE);
 		font.setLanguage(cur.bv().getParentLanguage(this));
-		text_.setFont(font, false);
+		text_.setFont(cur, font, false);
 	}
 
 	//lyxerr << "InsetText::priv_dispatch (end)" << endl;

@@ -15,25 +15,25 @@
 #ifndef PAPER_H
 #define PAPER_H
 
- ///
- enum PAPER_SIZE {
-	 ///
-	 PAPER_DEFAULT,
-	 ///
-	 PAPER_USLETTER,
-	 ///
-	 PAPER_LEGALPAPER,
-	 ///
-	 PAPER_EXECUTIVEPAPER,
-	 ///
-	 PAPER_A3PAPER,
-	 ///
-	 PAPER_A4PAPER,
-	 ///
-	 PAPER_A5PAPER,
-	 ///
-	 PAPER_B5PAPER
- };
+///
+enum PAPER_SIZE {
+	///
+	PAPER_DEFAULT,
+	///
+	PAPER_USLETTER,
+	///
+	PAPER_LEGALPAPER,
+	///
+	PAPER_EXECUTIVEPAPER,
+	///
+	PAPER_A3PAPER,
+	///
+	PAPER_A4PAPER,
+	///
+	PAPER_A5PAPER,
+	///
+	PAPER_B5PAPER
+};
 
 ///
 enum PAPER_PACKAGES {

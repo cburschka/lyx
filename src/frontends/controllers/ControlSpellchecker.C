@@ -16,12 +16,11 @@
 #include "buffer.h"
 #include "bufferparams.h"
 #include "BufferView.h"
-#include "bufferview_funcs.h"
+#include "cursor.h"
 #include "debug.h"
 #include "gettext.h"
 #include "language.h"
 #include "lyxrc.h"
-
 #include "PosIterator.h"
 #include "paragraph.h"
 
@@ -235,16 +234,16 @@ void ControlSpellchecker::check()
 
 	lyxerr[Debug::GUI] << "Found word \"" << word_.word() << "\"" << endl;
 
-	if (!word_.word().empty()) {
-		int const size = word_.word().size();
-		advance(cur, -size);
-		bufferview()->putSelectionAt(cur, size, false);
-		advance(cur, size);
-	} else {
+	if (word_.word().empty()) {
 		showSummary();
 		endSession();
 		return;
 	}
+
+	int const size = word_.word().size();
+	advance(cur, -size);
+	bufferview()->putSelectionAt(cur, size, false);
+	advance(cur, size);
 
 	// set suggestions
 	if (res != SpellBase::OK && res != SpellBase::IGNORE) {
@@ -292,7 +291,9 @@ void ControlSpellchecker::showSummary()
 
 void ControlSpellchecker::replace(string const & replacement)
 {
-	bufferview()->replaceWord(replacement);
+	bufferview()->cursor().replaceWord(replacement);
+	bufferview()->buffer()->markDirty();
+	bufferview()->update();
 	// fix up the count
 	--count_;
 	check();

@@ -388,8 +388,8 @@ int replace(BufferView * bv, string const & searchstr,
 
 	LyXText * text = bv->getLyXText();
 
-	text->replaceSelectionWithString(replacestr);
-	text->setSelectionRange(replacestr.length());
+	text->replaceSelectionWithString(bv->cursor(), replacestr);
+	text->setSelectionRange(bv->cursor(), replacestr.length());
 	bv->cursor().current() = fw ? bv->cursor().selEnd() : bv->cursor().selBegin();
 	bv->buffer()->markDirty();
 	find(bv, searchstr, cs, mw, fw);

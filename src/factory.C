@@ -154,7 +154,7 @@ InsetBase * createInset(BufferView * bv, FuncRequest const & cmd)
 		// Try and generate a valid index entry.
 		InsetCommandParams icp("index");
 		string const contents = cmd.argument.empty() ?
-			bv->getLyXText()->getStringToIndex() :
+			bv->getLyXText()->getStringToIndex(bv->cursor()) :
 			cmd.argument;
 		icp.setContents(contents);
 

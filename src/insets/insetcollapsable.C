@@ -348,15 +348,14 @@ InsetCollapsable::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 			return lfunMouseRelease(cur, cmd);
 
 		case LFUN_INSET_TOGGLE:
-			if (inset.text_.toggleInset())
+			if (inset.text_.toggleInset(cur))
 				return DispatchResult(true, true);
 			if (status_ == Open) {
 				setStatus(Inlined);
 				return DispatchResult(true, true);
-			} else {
-				setStatus(Collapsed);
-				return DispatchResult(false, FINISHED_RIGHT);
 			}
+			setStatus(Collapsed);
+			return DispatchResult(false, FINISHED_RIGHT);
 
 		default:
 			return inset.dispatch(cur, cmd);

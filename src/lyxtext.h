@@ -79,22 +79,19 @@ public:
 		  ParagraphList::iterator end,
 		  std::string const & layout);
 	///
-	void setLayout(std::string const & layout);
+	void setLayout(LCursor & cur, std::string const & layout);
 
 	/// Increase or decrease the nesting depth of the selected paragraph(s)
-	void changeDepth(bv_funcs::DEPTH_CHANGE type);
+	void changeDepth(LCursor & cur, bv_funcs::DEPTH_CHANGE type);
 
 	/// Returns whether something would be changed by changeDepth
-	bool changeDepthAllowed(bv_funcs::DEPTH_CHANGE type);
+	bool changeDepthAllowed(LCursor & cur, bv_funcs::DEPTH_CHANGE type);
 
 	/// get the depth at current cursor position
 	int getDepth() const;
 
-	/** set font over selection and make a total rebreak of those
-	  paragraphs.
-	  toggleall defaults to false.
-	  */
-	void setFont(LyXFont const &, bool toggleall = false);
+	/// Set font over selection paragraphs and rebreak.
+	void setFont(LCursor & cur, LyXFont const &, bool toggleall = false);
 
 	/// rebreaks all paragaphs between the given pars.
 	void redoParagraphs(ParagraphList::iterator begin,
@@ -102,18 +99,18 @@ public:
 	/// rebreaks the given par
 	void redoParagraph(ParagraphList::iterator pit);
 	/// rebreaks the cursor par
-	void redoParagraph();
+	void redoParagraph(LCursor & cur);
 
 	///
-	void toggleFree(LyXFont const &, bool toggleall = false);
+	void toggleFree(LCursor & cur, LyXFont const &, bool toggleall = false);
 
 	///
-	std::string getStringToIndex();
+	std::string getStringToIndex(LCursor & cur);
 
 	/// insert a character at cursor position
-	void insertChar(char c);
+	void insertChar(LCursor & cur, char c);
 	/// insert an inset at cursor position
-	void insertInset(InsetBase * inset);
+	void insertInset(LCursor & cur, InsetBase * inset);
 
 	/// a full rebreak of the whole text
 	void fullRebreak();
@@ -137,10 +134,10 @@ public:
 	ParagraphList::iterator getPar(lyx::paroffset_type par) const;
 	///
 	int parOffset(ParagraphList::iterator pit) const;
-	/// convenience
+	/// # FIXME: should not be used
 	ParagraphList::iterator cursorPar() const;
-	///
-	RowList::iterator cursorRow() const;
+	// Returns the current font and depth as a message.
+	std::string LyXText::currentState(LCursor & cur);
 
 	/** returns an iterator pointing to the row near the specified
 	  * y-coordinate (relative to the whole text). y is set to the
@@ -162,12 +159,12 @@ public:
 	 */
 	void getWord(CursorSlice & from, CursorSlice & to, lyx::word_location const);
 	/// just selects the word the cursor is in
-	void selectWord(lyx::word_location loc);
+	void selectWord(LCursor & cur, lyx::word_location loc);
 
 	/// accept selected change
-	void acceptChange();
+	void acceptChange(LCursor & cur);
 	/// reject selected change
-	void rejectChange();
+	void rejectChange(LCursor & cur);
 
 	/// returns true if par was empty and was removed
 	bool setCursor(lyx::paroffset_type par, lyx::pos_type pos,
@@ -224,7 +221,7 @@ public:
 	///
 	void backspace(LCursor & cur);
 	///
-	bool selectWordWhenUnderCursor(lyx::word_location);
+	bool selectWordWhenUnderCursor(LCursor & cur, lyx::word_location);
 	///
 	enum TextCase {
 		///
@@ -235,16 +232,16 @@ public:
 		text_uppercase = 2
 	};
 	/// Change the case of the word at cursor position.
-	void changeCase(TextCase action);
+	void changeCase(LCursor & cur, TextCase action);
 
 	/// returns success
-	bool toggleInset();
+	bool toggleInset(LCursor & cur);
 	///
 	void cutSelection(bool doclear = true, bool realcut = true);
 	///
 	void copySelection();
 	///
-	void pasteSelection(size_t sel_index = 0);
+	void pasteSelection(LCursor & cur, size_t sel_index = 0);
 
 	/** the DTP switches for paragraphs. LyX will store the top settings
 	 always in the first physical paragraph, the bottom settings in the
@@ -263,16 +260,16 @@ public:
 	 * Sets the selection from the current cursor position to length
 	 * characters to the right. No safety checks.
 	 */
-	void setSelectionRange(lyx::pos_type length);
-	/** simple replacing. The font of the first selected character
-	  is used
-	  */
-	void replaceSelectionWithString(std::string const & str);
+	void setSelectionRange(LCursor & cur, lyx::pos_type length);
+	/// simply replace using the font of the first selected character
+	void replaceSelectionWithString(LCursor & cur, std::string const & str);
+	/// replace selection helper
+	void replaceSelection(LCursor & cur);
 
 	/// needed to insert the selection
-	void insertStringAsLines(std::string const & str);
+	void insertStringAsLines(LCursor & cur, std::string const & str);
 	/// needed to insert the selection
-	void insertStringAsParagraphs(std::string const & str);
+	void insertStringAsParagraphs(LCursor & cur, std::string const & str);
 
 	/// Find next inset of some specified type.
 	bool gotoNextInset(std::vector<InsetOld_code> const & codes,

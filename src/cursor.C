@@ -35,6 +35,8 @@
 #include "mathed/math_support.h"
 
 #include "support/limited_stack.h"
+#include "support/std_sstream.h"
+
 #include "frontends/LyXView.h"
 
 #include <boost/assert.hpp>
@@ -255,7 +257,7 @@ void LCursor::getDim(int & asc, int & des) const
 		asc = 10;
 		des = 10;
 	} else {
-		Row const & row = *text()->cursorRow();
+		Row const & row = textRow();
 		asc = row.baseline();
 		des = row.height() - asc;
 	}
@@ -568,7 +570,7 @@ MathArray & LCursor::cell()
 }
 
 
-void LCursor::info(std::ostream & os)
+void LCursor::info(std::ostream & os) const
 {
 	for (int i = 1, n = depth(); i < n; ++i) {
 		cursor_[i].inset()->infoize(os);
@@ -1031,7 +1033,7 @@ void LCursor::insert(InsetBase * inset)
 	if (inMathed())
 		insert(MathAtom(inset));
 	else
-		text()->insertInset(inset);
+		text()->insertInset(*this, inset);
 }
 
 
@@ -1829,8 +1831,7 @@ InsetBase * LCursor::nextInset()
 		return 0;
 	if (inMathed()) 
 		return nextAtom().nucleus();
-	Paragraph & par = paragraph();
-	return par.isInset(pos()) ? par.getInset(pos()) : 0;
+	return paragraph().isInset(pos()) ? paragraph().getInset(pos()) : 0;
 }
 
 
@@ -1840,8 +1841,17 @@ InsetBase * LCursor::prevInset()
 		return 0;
 	if (inMathed()) 
 		return prevAtom().nucleus();
-	Paragraph & par = paragraph();
-	return par.isInset(pos() - 1) ? par.getInset(pos() - 1) : 0;
+	return paragraph().isInset(pos() - 1) ? paragraph().getInset(pos() - 1) : 0;
+}
+
+
+InsetBase const * LCursor::prevInset() const
+{
+	if (pos() == 0)
+		return 0;
+	if (inMathed()) 
+		return prevAtom().nucleus();
+	return paragraph().isInset(pos() - 1) ? paragraph().getInset(pos() - 1) : 0;
 }
 
 
@@ -1892,3 +1902,29 @@ string LCursor::selectionAsString(bool label) const
 #warning an mathed?
 	return string();
 }
+
+
+string LCursor::currentState()
+{
+	if (inMathed()) {
+		std::ostringstream os;
+		info(os);
+		return os.str();
+	}
+	return text()->currentState(*this);
+}
+
+
+// only used by the spellchecker
+void LCursor::replaceWord(string const & replacestring)
+{
+	LyXText * t = text();
+
+	t->replaceSelectionWithString(*this, replacestring);
+	t->setSelectionRange(*this, replacestring.length());
+
+	// Go back so that replacement string is also spellchecked
+	for (string::size_type i = 0; i < replacestring.length() + 1; ++i)
+		t->cursorLeft(*this, true);
+}
+

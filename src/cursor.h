@@ -146,6 +146,8 @@ public:
 	std::string selectionAsString(bool label) const;
 	///
 	void paste(std::string const & data);
+	///
+	std::string currentState();
 
 	//
 	// access to the 'current' cursor slice
@@ -189,6 +191,8 @@ public:
 	InsetBase * nextInset();
 	/// the inset just in front of the cursor
 	InsetBase * prevInset();
+	/// the inset just in front of the cursor
+	InsetBase const * prevInset() const;
 
 	//
 	// math-specific part
@@ -276,11 +280,13 @@ public:
 	/// access to owning BufferView
 	BufferView & bv() const; 
 	/// get some interesting description of current position
-	void info(std::ostream & os);
+	void info(std::ostream & os) const;
 	/// are we in math mode (2), text mode (1) or unsure (0)?
 	int currentMode();
 	/// reset cursor
 	void reset();
+	/// for spellchecking
+	void replaceWord(std::string const & replacestring);
 
 	/// output
 	friend std::ostream & operator<<(std::ostream & os, LCursor const & cur);

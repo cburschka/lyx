@@ -102,6 +102,8 @@ void recordUndo(LCursor & cur, Undo::undo_kind kind, lyx::paroffset_type from);
 
 /// convienience: prepare undo for the single paragraph containing the cursor
 void recordUndo(LCursor & cur, Undo::undo_kind kind = Undo::ATOMIC);
+/// convienience: prepare undo for the selected paragraphs
+void recordUndoSelection(LCursor & cur, Undo::undo_kind kind = Undo::ATOMIC);
 
 /// convienience: prepare undo for the single paragraph containing the cursor
 void recordUndoFullDocument(LCursor & cur);
