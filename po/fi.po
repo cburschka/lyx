@@ -59,8 +59,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: lyx 1.1.6\n"
-"POT-Creation-Date: 2002-05-16 01:51+0200\n"
-"PO-Revision-Date: 2002-04-29 15:12+0300\n"
+"POT-Creation-Date: 2002-05-16 16:21+0300\n"
+"PO-Revision-Date: 2002-05-09 23:09+0300\n"
 "Last-Translator: Pauli Virtanen <pauli.virtanen@hut.fi>\n"
 "Language-Team: Finnish <fi@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -261,8 +261,8 @@ msgstr "  Tallennus epäonnistui! Yrittää..."
 msgid "  Save failed! Bummer. Document is lost."
 msgstr "  Tallennus epäonnistui! Asiakirja on hävinnyt."
 
-#: src/bufferlist.C:369 src/bufferlist.C:481 src/BufferView2.C:72
-#: src/BufferView2.C:82 src/lyx_cb.C:218
+#: src/BufferView2.C:72 src/BufferView2.C:82 src/bufferlist.C:369
+#: src/bufferlist.C:481 src/lyx_cb.C:218
 msgid "Error!"
 msgstr "Virhe!"
 
@@ -380,8 +380,8 @@ msgstr ", Syvyys: "
 msgid ", Spacing: "
 msgstr ", Välit: "
 
-#: src/bufferview_funcs.C:182 src/frontends/qt2/QDocument.C:111
-#: src/ext_l10n.h:654
+#: src/bufferview_funcs.C:182 src/ext_l10n.h:654
+#: src/frontends/qt2/QDocument.C:111
 msgid "Single"
 msgstr "Yksink."
 
@@ -389,15 +389,15 @@ msgstr "Yksink."
 msgid "Onehalf"
 msgstr "Puolikas"
 
-#: src/bufferview_funcs.C:189 src/frontends/qt2/QDocument.C:113
-#: src/frontends/xforms/form_tabular.C:492
+#: src/bufferview_funcs.C:189 src/ext_l10n.h:656
+#: src/frontends/qt2/QDocument.C:113 src/frontends/xforms/form_tabular.C:492
 #: src/frontends/xforms/form_tabular.C:494
 #: src/frontends/xforms/form_tabular.C:508
 #: src/frontends/xforms/form_tabular.C:510
 #: src/frontends/xforms/form_tabular.C:512
 #: src/frontends/xforms/form_tabular.C:514
 #: src/frontends/xforms/form_tabular.C:516
-#: src/frontends/xforms/form_tabular.C:518 src/ext_l10n.h:656
+#: src/frontends/xforms/form_tabular.C:518
 msgid "Double"
 msgstr "Kaksink."
 
@@ -421,11 +421,11 @@ msgstr "Tallensi kirjanmerkin"
 msgid "Moved to bookmark"
 msgstr "Siirtyi kirjanmerkille"
 
-#: src/BufferView_pimpl.C:1612
+#: src/BufferView_pimpl.C:1611
 msgid "Select LyX document to insert"
 msgstr "Valitse lisättävä LyX-asiakirja"
 
-#: src/BufferView_pimpl.C:1614 src/frontends/controllers/ControlBibtex.C:68
+#: src/BufferView_pimpl.C:1613 src/frontends/controllers/ControlBibtex.C:68
 #: src/frontends/controllers/ControlExternal.C:166
 #: src/frontends/controllers/ControlGraphics.C:154
 #: src/frontends/controllers/ControlInclude.C:71 src/lyx_cb.C:113
@@ -433,91 +433,96 @@ msgstr "Valitse lisättävä LyX-asiakirja"
 msgid "Documents|#o#O"
 msgstr "Asiakirjat|#A#a"
 
-#: src/BufferView_pimpl.C:1616 src/lyxfunc.C:1865 src/lyxfunc.C:1942
+#: src/BufferView_pimpl.C:1615 src/lyxfunc.C:1865 src/lyxfunc.C:1942
 msgid "Examples|#E#e"
 msgstr "Esimerkit|#E#e"
 
-#: src/BufferView_pimpl.C:1621 src/frontends/controllers/ControlInclude.C:67
+#: src/BufferView_pimpl.C:1620 src/frontends/controllers/ControlInclude.C:67
 msgid "*.lyx| LyX Documents (*.lyx)"
 msgstr "*.lyx| LyX-asiakirjat (*.lyx)"
 
 #. Cancel: Do nothing
-#: src/BufferView_pimpl.C:1630 src/lyxfunc.C:1749 src/lyxfunc.C:1776
+#: src/BufferView_pimpl.C:1629 src/lyxfunc.C:1749 src/lyxfunc.C:1776
 #: src/lyxfunc.C:1879 src/lyxfunc.C:1959 src/lyxfunc.C:1987
 msgid "Canceled."
 msgstr "Peruttu."
 
-#: src/BufferView_pimpl.C:1642
+#: src/BufferView_pimpl.C:1641
 msgid "Inserting document"
 msgstr "Lisätään asiakirja"
 
-#: src/BufferView_pimpl.C:1648 src/frontends/xforms/FormDocument.C:327
-#: src/lyxfunc.C:1797 src/lyxfunc.C:1907 src/ext_l10n.h:637
+#: src/BufferView_pimpl.C:1647 src/ext_l10n.h:637
+#: src/frontends/xforms/FormDocument.C:327 src/lyxfunc.C:1797
+#: src/lyxfunc.C:1907
 msgid "Document"
 msgstr "Asiakirja"
 
-#: src/BufferView_pimpl.C:1649
+#: src/BufferView_pimpl.C:1648
 msgid "inserted."
 msgstr "lisätty."
 
-#: src/BufferView_pimpl.C:1653
+#: src/BufferView_pimpl.C:1652
 msgid "Could not insert document"
 msgstr "Asiakirjaa ei voi lisätä"
 
-#: src/BufferView_pimpl.C:1819
+#: src/BufferView_pimpl.C:1818
 msgid "LyX function 'layout' needs an argument."
-msgstr ""
+msgstr "LyXin funktio \"layout\" vaatii parametrin."
 
-#: src/BufferView_pimpl.C:1837 src/insets/insettext.C:1463
+#: src/BufferView_pimpl.C:1836 src/insets/insettext.C:1458
 msgid "Layout "
 msgstr "Muotoilu "
 
-#: src/BufferView_pimpl.C:1838 src/insets/insettext.C:1463
+#: src/BufferView_pimpl.C:1837 src/insets/insettext.C:1458
 msgid " not known"
 msgstr " tuntematon"
 
-#: src/BufferView_pimpl.C:2034 src/insets/inseterror.C:55
+#: src/BufferView_pimpl.C:2033 src/insets/inseterror.C:55
 #: src/insets/inseterror.C:77 src/lyxfunc.C:1889
 msgid "Error"
 msgstr "Virhe"
 
-#: src/BufferView_pimpl.C:2035
+#: src/BufferView_pimpl.C:2034
 msgid "Couldn't find this label"
 msgstr "Nimikettä ei löytynyt"
 
-#: src/BufferView_pimpl.C:2036
+#: src/BufferView_pimpl.C:2035
 msgid "in current document."
 msgstr "tässä asiakirjassa"
 
-#: src/BufferView_pimpl.C:2533
+#: src/BufferView_pimpl.C:2532
 msgid "Mark removed"
 msgstr "Merkintä poistettu"
 
-#: src/BufferView_pimpl.C:2540
+#: src/BufferView_pimpl.C:2539
 msgid "Mark set"
 msgstr "Merkintä asetettu"
 
-#: src/BufferView_pimpl.C:2671
+#: src/BufferView_pimpl.C:2670
 msgid "Mark off"
 msgstr "Merkintä pois päältä"
 
-#: src/BufferView_pimpl.C:2684
+#: src/BufferView_pimpl.C:2683
 msgid "Mark on"
 msgstr "Merkintä päälle"
 
-#: src/BufferView_pimpl.C:2858 src/insets/insettext.C:1516
+#: src/BufferView_pimpl.C:2857 src/insets/insettext.C:1511
 msgid "Unknown spacing argument: "
 msgstr "Tuntematon väliparametri: "
 
-#: src/BufferView_pimpl.C:3213
+#: src/BufferView_pimpl.C:3212
 msgid "Word `"
 msgstr "Sana '"
 
-#: src/BufferView_pimpl.C:3371
+#: src/BufferView_pimpl.C:3213
+msgid "' indexed."
+msgstr "' lisätty hakemistoon."
+
+#: src/BufferView_pimpl.C:3370
 msgid "Unknown function!"
 msgstr "Tuntematon toiminto!"
 
-#: src/BufferView_pimpl.C:3634 src/BufferView_pimpl.C:3637
+#: src/BufferView_pimpl.C:3633 src/BufferView_pimpl.C:3636
 msgid "No more insets"
 msgstr "Ei muita muistiinpanoja"
 
@@ -603,7 +608,7 @@ msgid "No information for converting from "
 msgstr "Ei tietoja muunnokselle "
 
 # FIXME: Cannot translate properly!
-#: src/converter.C:581 src/CutAndPaste.C:425 src/CutAndPaste.C:428
+#: src/CutAndPaste.C:425 src/CutAndPaste.C:428 src/converter.C:581
 msgid " to "
 msgstr " -> "
 
@@ -807,6 +812,4048 @@ msgstr "Asiakirja viety nimellä "
 msgid " to file `"
 msgstr " tiedostoon '"
 
+#: src/MenuBackend.C:541 src/MenuBackend.C:548 src/ext_l10n.h:1
+#: src/ext_l10n.h:4
+msgid "File|F"
+msgstr "Tiedosto|T"
+
+#: src/MenuBackend.C:542 src/ext_l10n.h:2 src/ext_l10n.h:5
+msgid "Edit|E"
+msgstr "Muokkaa|k"
+
+#: src/ext_l10n.h:3 src/ext_l10n.h:11
+msgid "Help|H"
+msgstr "Ohje|O"
+
+#: src/ext_l10n.h:6
+msgid "Insert|I"
+msgstr "Lisää|L"
+
+#: src/ext_l10n.h:7
+msgid "Layout|L"
+msgstr "Muotoile|U"
+
+#: src/ext_l10n.h:8
+msgid "View|V"
+msgstr "Näytä|N"
+
+#: src/ext_l10n.h:9
+msgid "Navigate|N"
+msgstr "Siirry|S"
+
+#: src/MenuBackend.C:544 src/ext_l10n.h:10
+msgid "Documents|D"
+msgstr "Asiakirjat|A"
+
+#: src/MenuBackend.C:511 src/ext_l10n.h:12 src/ext_l10n.h:17
+msgid "New...|N"
+msgstr "Uusi...|U"
+
+#: src/ext_l10n.h:13 src/ext_l10n.h:18
+msgid "New from Template...|T"
+msgstr "Uusi mallin mukaan...|m"
+
+#: src/MenuBackend.C:512 src/ext_l10n.h:14 src/ext_l10n.h:19
+msgid "Open...|O"
+msgstr "Avaa...|A"
+
+#: src/MenuBackend.C:513 src/ext_l10n.h:15 src/ext_l10n.h:25
+msgid "Import|I"
+msgstr "Tuo|o"
+
+#: src/ext_l10n.h:16 src/ext_l10n.h:29
+msgid "Exit|x"
+msgstr "Lopeta|e"
+
+#: src/ext_l10n.h:20
+msgid "Close|C"
+msgstr "Sulje|S"
+
+#: src/ext_l10n.h:21
+msgid "Save|S"
+msgstr "Tallenna|T"
+
+#: src/ext_l10n.h:22
+msgid "Save As...|A"
+msgstr "Tallenna nimellä...|n"
+
+#: src/ext_l10n.h:23
+msgid "Revert to Saved|R"
+msgstr "Hylkää muutokset|H"
+
+#: src/ext_l10n.h:24
+msgid "Version Control|V"
+msgstr "Versiohallinta|r"
+
+#: src/ext_l10n.h:26
+msgid "Export|E"
+msgstr "Vie|V"
+
+#: src/ext_l10n.h:27
+msgid "Print...|P"
+msgstr "Tulosta...|l"
+
+#: src/ext_l10n.h:28
+msgid "Fax...|F"
+msgstr "Faksaa...|F"
+
+#: src/ext_l10n.h:30
+msgid "Register|R"
+msgstr "Rekisteröi|R"
+
+#: src/ext_l10n.h:31
+msgid "Check In Changes|I"
+msgstr "Kirjaa muutokset|K"
+
+#: src/ext_l10n.h:32
+msgid "Check Out for Edit|O"
+msgstr "Kirjaa ulos muokattavaksi|u"
+
+#: src/ext_l10n.h:33
+msgid "Revert to Last Version|L"
+msgstr "Palauta viimeisin versio|v"
+
+#: src/ext_l10n.h:34
+msgid "Undo Last Check In|U"
+msgstr "Peru viimeisin kirjaaminen|P"
+
+#: src/ext_l10n.h:35
+msgid "Show History|H"
+msgstr "Näytä historia|h"
+
+#: src/ext_l10n.h:36
+msgid "Custom...|C"
+msgstr "Muu...|M"
+
+#: src/ext_l10n.h:37 src/ext_l10n.h:54
+msgid "Preferences...|P"
+msgstr "Asetukset...|e"
+
+#: src/ext_l10n.h:38 src/ext_l10n.h:55
+msgid "Reconfigure|R"
+msgstr "Konfiguroi uudelleen|n"
+
+#: src/ext_l10n.h:39
+msgid "Undo|U"
+msgstr "Kumoa|K"
+
+#: src/ext_l10n.h:40
+msgid "Redo|d"
+msgstr "Tee uudelleen|T"
+
+#: src/ext_l10n.h:41
+msgid "Cut|C"
+msgstr "Leikkaa|L"
+
+#: src/ext_l10n.h:42
+msgid "Copy|o"
+msgstr "Kopioi|o"
+
+#: src/ext_l10n.h:43
+msgid "Paste|a"
+msgstr "Liitä|i"
+
+#: src/ext_l10n.h:44
+msgid "Paste External Selection|x"
+msgstr "Liitä ulkoinen valinta|v"
+
+#: src/ext_l10n.h:45
+msgid "Find & Replace...|F"
+msgstr "Etsi tai korvaa...|r"
+
+#: src/ext_l10n.h:46
+msgid "Tabular|T"
+msgstr "Taulukko|a"
+
+#: src/ext_l10n.h:47
+msgid "Math|M"
+msgstr "Matematiikka|M"
+
+#: src/ext_l10n.h:48
+msgid "Read Only"
+msgstr "Vain luku"
+
+#: src/ext_l10n.h:49
+msgid "Spellchecker...|S"
+msgstr "Oikoluku...|u"
+
+#: src/ext_l10n.h:50
+msgid "Thesaurus..."
+msgstr "Synonyymit..."
+
+#: src/ext_l10n.h:51
+msgid "Check TeX|h"
+msgstr "Tarkista TeX|X"
+
+#: src/ext_l10n.h:52
+msgid "Remove All Error Boxes|E"
+msgstr "Poista kaikki virhelaatikot|P"
+
+#: src/ext_l10n.h:53
+msgid "Open/Close float|l"
+msgstr "Avaa tai sulje irrallinen osa|A"
+
+#: src/ext_l10n.h:56
+msgid "as Lines|L"
+msgstr "Riveinä|R"
+
+#: src/ext_l10n.h:57
+msgid "as Paragraphs|P"
+msgstr "Kappaleina|K"
+
+#: src/ext_l10n.h:58
+msgid "Multicolumn|M"
+msgstr "Yhdistetyt sarakkeet|Y"
+
+#: src/ext_l10n.h:59
+msgid "Line Top|T"
+msgstr "Viiva yllä|V"
+
+#: src/ext_l10n.h:60
+msgid "Line Bottom|B"
+msgstr "Viiva alla|a"
+
+#: src/ext_l10n.h:61
+msgid "Line Left|L"
+msgstr "Viiva vasemmalla|i"
+
+#: src/ext_l10n.h:62
+msgid "Line Right|R"
+msgstr "Viiva oikealla|o"
+
+#: src/ext_l10n.h:63
+msgid "Align Left|e"
+msgstr "Tasaa vasemmalle|m"
+
+#: src/ext_l10n.h:64 src/ext_l10n.h:88
+msgid "Align Center|C"
+msgstr "Keskitä|K"
+
+#: src/ext_l10n.h:65
+msgid "Align Right|i"
+msgstr "Tasaa oikealle|T"
+
+#: src/ext_l10n.h:66
+msgid "V.Align Top|o"
+msgstr "Pystytasaa ylös|ö"
+
+#: src/ext_l10n.h:67
+msgid "V.Align Center|n"
+msgstr "Pystytasaa keskelle|P"
+
+#: src/ext_l10n.h:68
+msgid "V.Align Bottom|V"
+msgstr "Pystytasaa alas|s"
+
+#: src/ext_l10n.h:69
+msgid "Add Row|A"
+msgstr "Lisää rivi|L"
+
+#: src/ext_l10n.h:70
+msgid "Delete Row|w"
+msgstr "Poista rivi|r"
+
+#: src/ext_l10n.h:71
+msgid "Add Column|u"
+msgstr "Lisää sarake|ä"
+
+#: src/ext_l10n.h:72
+msgid "Delete Column|D"
+msgstr "Poista sarake|e"
+
+#: src/ext_l10n.h:73
+msgid "Make eqnarray|e"
+msgstr "Tee kaavataulukko|k"
+
+#: src/ext_l10n.h:74
+msgid "Make multline|m"
+msgstr "Tee monirivi|m"
+
+#: src/ext_l10n.h:75
+msgid "Make align 1 column|1"
+msgstr "Tee 1 tasaava sarake|1"
+
+#: src/ext_l10n.h:76
+msgid "Make align 2 columns|2"
+msgstr "Tee 2 tasaavaa saraketta|2"
+
+#: src/ext_l10n.h:77
+msgid "Make align 3 columns|3"
+msgstr "Tee 3 tasaavaa saraketta|3"
+
+#: src/ext_l10n.h:78
+msgid "Make alignat 2 columns|2"
+msgstr "Tee 2 tasaavaa (alignat) saraketta|2"
+
+#: src/ext_l10n.h:79
+msgid "Make alignat 3 columns|3"
+msgstr "Tee 3 tasaavaa (alignat) saraketta|3"
+
+#: src/ext_l10n.h:80
+msgid "Toggle numbering|n"
+msgstr "Numerointi pois/päälle|N"
+
+#: src/ext_l10n.h:81
+msgid "Toggle numbering of line|u"
+msgstr "Rivin numerointi pois/päälle|r"
+
+#: src/ext_l10n.h:82
+msgid "Toggle limits|l"
+msgstr "Rajat pois/päälle|p"
+
+#: src/ext_l10n.h:83
+msgid "Inline formula|I"
+msgstr "Kaava tekstissä|K"
+
+#: src/ext_l10n.h:84
+msgid "Displayed formula|D"
+msgstr "Kaavaesitys|i"
+
+#: src/ext_l10n.h:85
+msgid "Eqnarray environment|q"
+msgstr "Yhtälötaulukkoympäristö|Y"
+
+#: src/ext_l10n.h:86
+msgid "Align environment|A"
+msgstr "Tasausympäristö|T"
+
+#: src/ext_l10n.h:87
+msgid "Align Left|f"
+msgstr "Tasaa vasemmalle|v"
+
+#: src/ext_l10n.h:89
+msgid "Align Right|R"
+msgstr "Tasaa oikealle|s"
+
+#: src/ext_l10n.h:90
+msgid "V.Align Top|T"
+msgstr "Pystytasaa ylös"
+
+#: src/ext_l10n.h:91
+msgid "V.Align Center|e"
+msgstr "Pystytasaa keskelle"
+
+#: src/ext_l10n.h:92
+msgid "V.Align Bottom|B"
+msgstr "Pystytasaa alas"
+
+#: src/ext_l10n.h:93
+msgid "Add Row"
+msgstr "Lisää rivi"
+
+#: src/ext_l10n.h:94
+msgid "Delete Row"
+msgstr "Poista rivi"
+
+#: src/ext_l10n.h:95
+msgid "Add Column"
+msgstr "Lisää sarake"
+
+#: src/ext_l10n.h:96
+msgid "Delete Column"
+msgstr "Poista sarake"
+
+#: src/ext_l10n.h:97
+msgid "Math|h"
+msgstr "Matematiikka|M"
+
+#: src/ext_l10n.h:98
+msgid "Special Character|S"
+msgstr "Erikoismerkki|E"
+
+#: src/ext_l10n.h:99
+msgid "Citation Reference...|C"
+msgstr "Lähdeviite...|L"
+
+#: src/ext_l10n.h:100
+msgid "Cross Reference...|R"
+msgstr "Viittaus...|V"
+
+#: src/ext_l10n.h:101
+msgid "Label...|L"
+msgstr "Nimike...|N"
+
+#: src/ext_l10n.h:102
+msgid "Footnote|F"
+msgstr "Alaviite|A"
+
+#: src/ext_l10n.h:103
+msgid "Marginal Note|M"
+msgstr "Reunahuomautus|R"
+
+#: src/ext_l10n.h:104
+msgid "Index Entry...|I"
+msgstr "Hakemistoviite...|H"
+
+#: src/ext_l10n.h:105
+msgid "Index Entry of Preceding Word|W"
+msgstr "Edeltävän sanan hakemistoviite|d"
+
+#: src/ext_l10n.h:106
+msgid "URL...|U"
+msgstr "URL...|U"
+
+#: src/ext_l10n.h:107 src/ext_l10n.h:162
+msgid "Note|N"
+msgstr "Muistiinpano|i"
+
+#: src/ext_l10n.h:108
+msgid "Lists & TOC|O"
+msgstr "Luettelo|o"
+
+#: src/ext_l10n.h:109
+msgid "TeX|T"
+msgstr "TeX|X"
+
+#: src/ext_l10n.h:110
+msgid "Minipage|p"
+msgstr "Pienoissivu|P"
+
+#: src/ext_l10n.h:111
+msgid "Graphics...|G"
+msgstr "Grafiikka...|G"
+
+#: src/ext_l10n.h:112
+msgid "Tabular Material...|b"
+msgstr "Taulukko...|T"
+
+#: src/ext_l10n.h:113
+msgid "Floats|a"
+msgstr "Irrallinen osa|s"
+
+#: src/ext_l10n.h:114
+msgid "Include File...|d"
+msgstr "Sisällytä tiedosto...|y"
+
+#: src/ext_l10n.h:115
+msgid "Insert File|e"
+msgstr "Lisää tiedosto|ä"
+
+#: src/ext_l10n.h:116
+msgid "External Material...|x"
+msgstr "Ulkoinen aineisto...|k"
+
+#: src/ext_l10n.h:117
+msgid "Superscript|S"
+msgstr "Yläindeksi|Y"
+
+#: src/ext_l10n.h:118
+msgid "Subscript|u"
+msgstr "Alaindeksi|A"
+
+#: src/ext_l10n.h:119
+msgid "HFill|H"
+msgstr "Vaakatäyttö|V"
+
+#: src/ext_l10n.h:120
+msgid "Hyphenation Point|P"
+msgstr "Tavutuskohta|T"
+
+#: src/ext_l10n.h:121
+msgid "Ligature break|k"
+msgstr "Yhdyskirjasinkatko|h"
+
+#: src/ext_l10n.h:122
+msgid "Protected Blank|B"
+msgstr "Kova välilyönti|K"
+
+#: src/ext_l10n.h:123
+msgid "Linebreak|L"
+msgstr "Rivinvaihto|R"
+
+#: src/ext_l10n.h:124
+msgid "Ellipsis|i"
+msgstr "Ellipsis (...)|E"
+
+#: src/ext_l10n.h:125
+msgid "End of Sentence|E"
+msgstr "Virkkeen lopun piste|p"
+
+#: src/ext_l10n.h:126
+msgid "Ordinary Quote|Q"
+msgstr "Tavallinen lainausmerkki (\")|l"
+
+#: src/ext_l10n.h:127
+msgid "Menu Separator|M"
+msgstr "Valikkoerotinmerkki|m"
+
+#: src/ext_l10n.h:128
+msgid "Inline Formula|I"
+msgstr "Kaava tekstissä|K"
+
+#: src/ext_l10n.h:129
+msgid "Display Formula|D"
+msgstr "Kaavaesitys|e"
+
+#: src/ext_l10n.h:130
+msgid "Eqnarray environment|E"
+msgstr "Yhtälötaulukkoympäristö|Y"
+
+#: src/ext_l10n.h:131
+msgid "AMS align environment|A"
+msgstr "AMS-tasausympäristö|t"
+
+#: src/ext_l10n.h:132
+msgid "AMS alignat environment|t"
+msgstr "AMS-tasausympäristö (alignat)|a"
+
+#: src/ext_l10n.h:133
+msgid "AMS xalignat environment|x"
+msgstr "AMS-tasausympäristö (xalignat)|s"
+
+#: src/ext_l10n.h:134
+msgid "AMS xxalignat environment"
+msgstr "AMS-tasausympäristö (xxalignat)|u"
+
+#: src/ext_l10n.h:135
+msgid "Array environment|y"
+msgstr "Taulukkoympäristö|u"
+
+#: src/ext_l10n.h:136
+msgid "Cases environment|C"
+msgstr "Tapausympäristö|p"
+
+#: src/ext_l10n.h:137
+msgid "Math Panel...|l"
+msgstr "Matematiikkapaneeli...|M"
+
+#: src/ext_l10n.h:138
+msgid "Table of Contents|C"
+msgstr "Sisällysluettelo|S"
+
+#: src/ext_l10n.h:139
+msgid "Index List|I"
+msgstr "Hakemisto|H"
+
+#: src/ext_l10n.h:140
+msgid "BibTeX Reference...|B"
+msgstr "BibTeXin lähdeviitteet...|B"
+
+#: src/ext_l10n.h:141
+msgid "LyX Document...|X"
+msgstr "LyX-asiakirja...|a"
+
+#: src/ext_l10n.h:142
+msgid "Ascii as Lines...|L"
+msgstr "Ascii-teksti riveinä...|r"
+
+#: src/ext_l10n.h:143
+msgid "Ascii as Paragraphs...|P"
+msgstr "Ascii-teksti kappaleina...|k"
+
+#: src/ext_l10n.h:144
+msgid "Character...|C"
+msgstr "Merkki...|M"
+
+#: src/ext_l10n.h:145
+msgid "Paragraph...|P"
+msgstr "Kappale...|K"
+
+#: src/ext_l10n.h:146
+msgid "Document...|D"
+msgstr "Asiakirja...|A"
+
+#: src/ext_l10n.h:147
+msgid "Tabular...|T"
+msgstr "Taulukko...|T"
+
+#: src/ext_l10n.h:148
+msgid "Emphasize Style|E"
+msgstr "Korostus|r"
+
+#: src/ext_l10n.h:149
+msgid "Noun Style|N"
+msgstr "Nimityyli|N"
+
+#: src/ext_l10n.h:150
+msgid "Bold Style|B"
+msgstr "Lihavointi|L"
+
+#: src/ext_l10n.h:151
+msgid "TeX Style|X"
+msgstr "TeX-tyyli|X"
+
+#: src/ext_l10n.h:152
+msgid "Change Environment Depth|v"
+msgstr "Vaihda ympäristötasoa|V"
+
+#: src/ext_l10n.h:153
+msgid "Preamble...|r"
+msgstr "Aloitusosa...|o"
+
+#: src/ext_l10n.h:154
+msgid "Start Appendix here|A"
+msgstr "Aloita liite tästä|i"
+
+#: src/ext_l10n.h:155
+msgid "Build Program|B"
+msgstr "Käännä ohjelma|K"
+
+#: src/ext_l10n.h:156
+msgid "Update|U"
+msgstr "Päivitä|v"
+
+#: src/ext_l10n.h:157
+msgid "LaTeX Logfile|L"
+msgstr "LaTeXin lokitiedosto|L"
+
+#: src/ext_l10n.h:158
+msgid "Table of Contents|T"
+msgstr "Sisällysluettelo|S"
+
+#: src/ext_l10n.h:159
+msgid "Child processes|C"
+msgstr "Lapsiprosessit|r"
+
+#: src/ext_l10n.h:160
+msgid "TeX Information|X"
+msgstr "TeX-tietoja|X"
+
+#: src/ext_l10n.h:161
+msgid "Error|E"
+msgstr "Virhe|r"
+
+#: src/ext_l10n.h:163
+msgid "Refs|R"
+msgstr "Viitteet|V"
+
+#: src/ext_l10n.h:164
+msgid "Bookmarks|B"
+msgstr "Kirjanmerkit|#m"
+
+#: src/ext_l10n.h:165
+msgid "Save Bookmark 1|S"
+msgstr "Tallenna kirjanmerkki 1|T"
+
+#: src/ext_l10n.h:166
+msgid "Save Bookmark 2"
+msgstr "Tallenna kirjanmerkki 2|a"
+
+#: src/ext_l10n.h:167
+msgid "Save Bookmark 3"
+msgstr "Tallenna kirjanmerkki 3|l"
+
+#: src/ext_l10n.h:168
+msgid "Goto Bookmark 1|1"
+msgstr "Siirry kirjanmerkille 1|1"
+
+#: src/ext_l10n.h:169
+msgid "Goto Bookmark 2|2"
+msgstr "Siirry kirjanmerkille 2|2"
+
+#: src/ext_l10n.h:170
+msgid "Goto Bookmark 3|3"
+msgstr "Siirry kirjanmerkille 3|3"
+
+#: src/ext_l10n.h:171
+msgid "Tooltips|o"
+msgstr "Vinkit|V"
+
+#: src/ext_l10n.h:172
+msgid "Introduction|I"
+msgstr "Johdanto|J"
+
+#: src/ext_l10n.h:173
+msgid "Tutorial|T"
+msgstr "Opastus|O"
+
+#: src/ext_l10n.h:174
+msgid "User's Guide|U"
+msgstr "Käyttöopas|K"
+
+#: src/ext_l10n.h:175
+msgid "Extended Features|E"
+msgstr "Lisäominaisuudet|L"
+
+#: src/ext_l10n.h:176
+msgid "Customization|C"
+msgstr "Mukauttaminen|M"
+
+#: src/ext_l10n.h:177
+msgid "Reference Manual|R"
+msgstr "Hakuteos|H"
+
+#: src/ext_l10n.h:178
+msgid "FAQ|F"
+msgstr "Usein kysytyt kysymykset|U"
+
+#: src/ext_l10n.h:179
+msgid "Table of Contents|a"
+msgstr "Sisällysluettelo|S"
+
+#: src/ext_l10n.h:180
+msgid "LaTeX Configuration|L"
+msgstr "LaTeX-asetukset|a"
+
+#: src/ext_l10n.h:181
+msgid "About LyX|X"
+msgstr "LyXistä|y"
+
+#: src/ext_l10n.h:183
+msgid "Accepted"
+msgstr "Hyväksytty"
+
+#: src/ext_l10n.h:184
+msgid "Acknowledgement"
+msgstr "Kiitos"
+
+#: src/ext_l10n.h:185
+msgid "Acknowledgement*"
+msgstr "Kiitos*"
+
+#: src/ext_l10n.h:186
+msgid "Acknowledgements"
+msgstr "Kiitokset"
+
+#: src/ext_l10n.h:187
+msgid "Acknowledgments"
+msgstr "Kiitokset"
+
+#: src/ext_l10n.h:188
+msgid "ACT"
+msgstr "NÄYTÖS"
+
+#: src/ext_l10n.h:189
+msgid "Addchap"
+msgstr "Lisäkappale"
+
+#: src/ext_l10n.h:190
+msgid "Addchap*"
+msgstr "Lisäkappale*"
+
+#: src/ext_l10n.h:191
+msgid "Addition"
+msgstr "Lisäys"
+
+#: src/ext_l10n.h:192
+msgid "Address"
+msgstr "Osoite"
+
+#: src/ext_l10n.h:193
+msgid "AddressForOffprints"
+msgstr "Eripainososoite"
+
+#: src/ext_l10n.h:194
+msgid "Addsec"
+msgstr "Osoiteosa"
+
+#: src/ext_l10n.h:195
+msgid "Addsec*"
+msgstr "Osoiteosa*"
+
+#: src/ext_l10n.h:196
+msgid "Adresse"
+msgstr "Osoite"
+
+#: src/ext_l10n.h:197
+msgid "Affil"
+msgstr "Järjestö"
+
+#: src/ext_l10n.h:198
+msgid "Affiliation"
+msgstr "Järjestö"
+
+#: src/FloatList.C:47 src/ext_l10n.h:199
+msgid "Algorithm"
+msgstr "Algoritmi"
+
+#: src/ext_l10n.h:200
+msgid "AMS"
+msgstr "AMS"
+
+#: src/ext_l10n.h:201
+msgid "And"
+msgstr "Ja"
+
+#: src/ext_l10n.h:202
+msgid "Anlagen"
+msgstr "Laitos"
+
+#: src/ext_l10n.h:203
+msgid "Anrede"
+msgstr "Puhuttelu"
+
+#: src/ext_l10n.h:204
+msgid "Appendices"
+msgstr "Liitteet"
+
+#: src/ext_l10n.h:205
+msgid "Appendix"
+msgstr "Liite"
+
+#: src/ext_l10n.h:206
+msgid "Arrow"
+msgstr "Nuoli"
+
+#: src/ext_l10n.h:207
+msgid "AT_RISE:"
+msgstr "NOUSTESSA:"
+
+#: src/ext_l10n.h:208
+msgid "Author"
+msgstr "Tekijä"
+
+#: src/ext_l10n.h:209
+msgid "Author_Email"
+msgstr "Tekijän sähköposti"
+
+#: src/ext_l10n.h:210
+msgid "Authorgroup"
+msgstr "Tekijäryhmä"
+
+#: src/ext_l10n.h:211
+msgid "Authorinfo"
+msgstr "Tekijätiedot"
+
+#: src/ext_l10n.h:212
+msgid "Author_Running"
+msgstr "Tekijä (jatko)"
+
+#: src/ext_l10n.h:213
+msgid "Author_URL"
+msgstr "Tekijän URL"
+
+#: src/ext_l10n.h:214
+msgid "Axiom"
+msgstr "Aksiooma"
+
+#: src/ext_l10n.h:215
+msgid "Backaddress"
+msgstr "Palautusosoite"
+
+#: src/ext_l10n.h:216
+msgid "Bank"
+msgstr "Pankki"
+
+#: src/ext_l10n.h:217
+msgid "BankAccount"
+msgstr "Pankkitili"
+
+#: src/ext_l10n.h:218
+msgid "BankCode"
+msgstr "Pankkikoodi"
+
+#: src/ext_l10n.h:219
+msgid "Betreff"
+msgstr "Aihe"
+
+#: src/ext_l10n.h:220
+msgid "Bibliography"
+msgstr "Kirjallisuutta"
+
+#: src/ext_l10n.h:221
+msgid "Biography"
+msgstr "Elämäkerta"
+
+#: src/ext_l10n.h:222
+msgid "BLZ"
+msgstr "BLZ"
+
+#: src/ext_l10n.h:223
+msgid "BoardCentered"
+msgstr "LautaKeskellä"
+
+#: src/ext_l10n.h:224
+msgid "Brieftext"
+msgstr "Kirjeteksti"
+
+#: src/ext_l10n.h:225
+msgid "Caption"
+msgstr "Kuvateksti"
+
+#: src/ext_l10n.h:226
+msgid "Case"
+msgstr "Tapaus"
+
+#: src/ext_l10n.h:227 src/frontends/qt2/lengthcombo.C:29
+msgid "cc"
+msgstr "kopio"
+
+#: src/ext_l10n.h:228
+msgid "CC"
+msgstr "Jakelu"
+
+#: src/ext_l10n.h:229
+msgid "CenteredCaption"
+msgstr "Keskitetty_kuvateksti"
+
+#: src/ext_l10n.h:230
+msgid "Chapter"
+msgstr "Luku"
+
+#: src/ext_l10n.h:231
+msgid "Chapter*"
+msgstr "Luku*"
+
+#: src/ext_l10n.h:232
+msgid "Chapter_Exercises"
+msgstr "Harjoitusluku"
+
+#: src/ext_l10n.h:233
+msgid "ChessBoard"
+msgstr "Shakkilauta"
+
+#: src/ext_l10n.h:234
+msgid "Citta"
+msgstr "Citta"
+
+#: src/ext_l10n.h:235
+msgid "Claim"
+msgstr "Väite"
+
+#: src/ext_l10n.h:236
+msgid "Claim*"
+msgstr "Väite*"
+
+#: src/ext_l10n.h:237
+msgid "Closing"
+msgstr "Lopuksi"
+
+#: src/ext_l10n.h:238
+msgid "Code"
+msgstr "Koodi"
+
+#: src/ext_l10n.h:239
+msgid "Comment"
+msgstr "Huomautus"
+
+#: src/ext_l10n.h:240
+msgid "Conclusion"
+msgstr "Päätelmä"
+
+#: src/ext_l10n.h:241
+msgid "Conclusion*"
+msgstr "Päätelmä*"
+
+#: src/ext_l10n.h:242
+msgid "Condition"
+msgstr "Ehto"
+
+#: src/ext_l10n.h:243
+msgid "Conjecture"
+msgstr "Otaksuma"
+
+#: src/ext_l10n.h:244
+msgid "Conjecture*"
+msgstr "Otaksuma*"
+
+#: src/ext_l10n.h:245
+msgid "CopNum"
+msgstr "Kopiomäärä"
+
+#: src/ext_l10n.h:246 src/ext_l10n.h:534
+msgid "Copyright"
+msgstr "Copyright"
+
+#: src/ext_l10n.h:247
+msgid "Corollary"
+msgstr "Seurauslause"
+
+#: src/ext_l10n.h:248
+msgid "Corollary*"
+msgstr "Seurauslause*"
+
+#: src/ext_l10n.h:249
+msgid "Criterion"
+msgstr "Kriteeri"
+
+#: src/ext_l10n.h:250
+msgid "CrossList"
+msgstr "Viittausluettelo"
+
+#: src/ext_l10n.h:251
+msgid "Current_Address"
+msgstr "Nykyinen osoite"
+
+#: src/ext_l10n.h:252
+msgid "CURTAIN"
+msgstr "ESIRIPPU"
+
+#: src/ext_l10n.h:253
+msgid "Customer"
+msgstr "Asiakas"
+
+#: src/ext_l10n.h:254
+msgid "Data"
+msgstr "Data"
+
+#: src/ext_l10n.h:255
+msgid "Date"
+msgstr "Päiväys"
+
+#: src/ext_l10n.h:256
+msgid "Datum"
+msgstr "Päiväys"
+
+#: src/ext_l10n.h:257
+msgid "Dedication"
+msgstr "Omistuskirjoitus"
+
+#: src/ext_l10n.h:258
+msgid "Dedicatory"
+msgstr "Omistuskirjoitus"
+
+#: src/ext_l10n.h:259
+msgid "Definition"
+msgstr "Määritelmä"
+
+#: src/ext_l10n.h:260
+msgid "Definition*"
+msgstr "Määritelmä*"
+
+#: src/ext_l10n.h:261
+msgid "Description"
+msgstr "Kuvausluettelo"
+
+#: src/ext_l10n.h:262
+msgid "Dialogue"
+msgstr "Vuoropuhelu"
+
+#: src/ext_l10n.h:263
+msgid "Email"
+msgstr "Sähköposti"
+
+#: src/ext_l10n.h:264
+msgid "EMail"
+msgstr "Sähköposti"
+
+#: src/ext_l10n.h:265
+msgid "encl"
+msgstr "liitteet"
+
+#: src/ext_l10n.h:266
+msgid "Encl."
+msgstr "Liitteet"
+
+#: src/ext_l10n.h:267
+msgid "Encl"
+msgstr "Liitteet"
+
+#: src/ext_l10n.h:268
+msgid "End_All_Slides"
+msgstr "Kaikkien kalvojen loppu"
+
+#: src/ext_l10n.h:269
+msgid "Enumerate"
+msgstr "Numeroitu luettelo"
+
+#: src/ext_l10n.h:270
+msgid "Example"
+msgstr "Esimerkki"
+
+#: src/ext_l10n.h:271
+msgid "Example*"
+msgstr "Esimerkki*"
+
+#: src/ext_l10n.h:272
+msgid "Exercise"
+msgstr "Harjoitus"
+
+#: src/ext_l10n.h:273
+msgid "EXT."
+msgstr "ULKO."
+
+#: src/ext_l10n.h:274
+msgid "Extratitle"
+msgstr "Lisäotsikko"
+
+#: src/ext_l10n.h:275
+msgid "Fact"
+msgstr "Fakta"
+
+#: src/ext_l10n.h:276
+msgid "Fact*"
+msgstr "Fakta*"
+
+#: src/ext_l10n.h:277
+msgid "FADE_IN:"
+msgstr "NÄKYVIINHÄIVYTYS:"
+
+#: src/ext_l10n.h:278
+msgid "FADE_OUT:"
+msgstr "NÄKYVISTÄHÄIVYTYS:"
+
+#: src/ext_l10n.h:279
+msgid "FADE_OUT"
+msgstr "NÄKYVISTÄHÄIVYTYS"
+
+#: src/ext_l10n.h:280
+msgid "FigCaption"
+msgstr "Kuvateksti"
+
+#: src/ext_l10n.h:281
+msgid "FirstAuthor"
+msgstr "Ensimm. tekijä"
+
+#: src/ext_l10n.h:282
+msgid "FirstName"
+msgstr "Etunimi"
+
+#: src/ext_l10n.h:283
+msgid "FitBitmap"
+msgstr "Sovita bittikartta"
+
+#: src/ext_l10n.h:284
+msgid "FitFigure"
+msgstr "Sovita kuva"
+
+#: src/ext_l10n.h:285
+msgid "Foilhead"
+msgstr "Kalvon alku"
+
+#: src/ext_l10n.h:286
+msgid "Footernote"
+msgstr "Alareunamuistiinpano"
+
+#: src/ext_l10n.h:287
+msgid "FourAffiliations"
+msgstr "Neljä järjestöä"
+
+#: src/ext_l10n.h:288
+msgid "FourAuthors"
+msgstr "Neljä tekijää"
+
+#: src/ext_l10n.h:289
+msgid "FrontMatter"
+msgstr "Etuteksti"
+
+#: src/ext_l10n.h:290
+msgid "General"
+msgstr "Yleinen"
+
+#: src/ext_l10n.h:291
+msgid "Gruss"
+msgstr "Lopuksi"
+
+#: src/ext_l10n.h:292
+msgid "Headnote"
+msgstr "Yläreunamuistiinpano"
+
+#: src/ext_l10n.h:293
+msgid "HideMoves"
+msgstr ""
+
+#: src/ext_l10n.h:294
+msgid "HighLight"
+msgstr "Korostus"
+
+#: src/ext_l10n.h:295
+msgid "HTTP"
+msgstr "HTTP"
+
+#: src/ext_l10n.h:296
+msgid "IhrSchreiben"
+msgstr "IhrSchreiben"
+
+#: src/ext_l10n.h:297
+msgid "IhrZeichen"
+msgstr "IhrZeichen"
+
+#: src/ext_l10n.h:298
+msgid "Institute"
+msgstr "Laitos"
+
+#: src/ext_l10n.h:299
+msgid "Institution"
+msgstr "Laitos"
+
+#: src/ext_l10n.h:300
+msgid "INT."
+msgstr "SISÄ."
+
+#: src/ext_l10n.h:301
+msgid "INTERCUT"
+msgstr ""
+
+#: src/ext_l10n.h:302
+msgid "InvisibleText"
+msgstr "Näkymätön_teksti"
+
+#: src/ext_l10n.h:303
+msgid "Invoice"
+msgstr "Lasku"
+
+#: src/ext_l10n.h:304
+msgid "Itemize"
+msgstr "Luettelo"
+
+#: src/ext_l10n.h:305
+msgid "Journal"
+msgstr "Lehti"
+
+#: src/ext_l10n.h:306
+msgid "Keyword"
+msgstr "Avainsana"
+
+#: src/ext_l10n.h:307
+msgid "Keywords"
+msgstr "Avainsanat"
+
+#: src/ext_l10n.h:308
+msgid "KnightMove"
+msgstr "Ratsun siirto"
+
+#: src/ext_l10n.h:309
+msgid "Konto"
+msgstr "Tili"
+
+#: src/ext_l10n.h:310
+msgid "Labeling"
+msgstr "Otsikoitu kappale"
+
+#: src/ext_l10n.h:311
+msgid "Land"
+msgstr "Maa"
+
+#: src/ext_l10n.h:312
+msgid "LandscapeSlide"
+msgstr "Vaakakalvo"
+
+#: src/ext_l10n.h:313
+msgid "LaTeX"
+msgstr "LaTeX"
+
+#: src/ext_l10n.h:314
+msgid "LaTeX_Title"
+msgstr "LaTeX-teoksen nimi"
+
+#: src/ext_l10n.h:315
+msgid "Left_Header"
+msgstr "Vasen yläotsikko"
+
+#: src/ext_l10n.h:316
+msgid "Lemma"
+msgstr "Apulause"
+
+#: src/ext_l10n.h:317
+msgid "Lemma*"
+msgstr "Apulause*"
+
+#: src/ext_l10n.h:318
+msgid "Letter"
+msgstr "Kirje"
+
+#: src/ext_l10n.h:319
+msgid "List"
+msgstr "Lista"
+
+#: src/ext_l10n.h:320
+msgid "ListOfSlides"
+msgstr "Kalvoluettelo"
+
+#: src/ext_l10n.h:321
+msgid "Literal"
+msgstr "Sanatarkasti"
+
+#: src/ext_l10n.h:322
+msgid "Location"
+msgstr "Sijainti"
+
+#: src/ext_l10n.h:323
+msgid "Lowertitleback"
+msgstr "Alatunnisteteksti"
+
+#: src/ext_l10n.h:324
+msgid "LyX-Code"
+msgstr "LyX-koodi"
+
+#: src/ext_l10n.h:325
+msgid "Mail"
+msgstr "Posti"
+
+#: src/ext_l10n.h:326
+msgid "Mainline"
+msgstr ""
+
+#: src/ext_l10n.h:327
+msgid "MarkBoth"
+msgstr "Merkitse molemmat"
+
+#: src/ext_l10n.h:328
+msgid "MathLetters"
+msgstr "Matematiikkakirjaimet"
+
+#: src/ext_l10n.h:329
+msgid "MeinZeichen"
+msgstr "MeinZeichen"
+
+#: src/ext_l10n.h:330
+msgid "Minisec"
+msgstr "Pienoiskappale"
+
+#: src/ext_l10n.h:331 src/frontends/xforms/Menubar_pimpl.C:279
+#: src/frontends/xforms/Menubar_pimpl.C:352
+msgid "More"
+msgstr "Lisää"
+
+#: src/ext_l10n.h:332
+msgid "msnumber"
+msgstr "msnumero"
+
+#: src/ext_l10n.h:333
+msgid "My_Address"
+msgstr "Osoitteeni"
+
+#: src/ext_l10n.h:334
+msgid "Myref"
+msgstr "Viitteeni"
+
+#: src/ext_l10n.h:335
+msgid "MyRef"
+msgstr "Viitteeni"
+
+#: src/ext_l10n.h:336
+msgid "Name"
+msgstr "Nimi"
+
+#: src/ext_l10n.h:337
+msgid "Narrative"
+msgstr "Kerronta"
+
+#: src/ext_l10n.h:338
+msgid "Notation"
+msgstr "Merkintätapa"
+
+#: src/ext_l10n.h:339
+msgid "Note"
+msgstr "Muistiinpano"
+
+#: src/ext_l10n.h:340
+msgid "Note*"
+msgstr "Muistiinpano*"
+
+#: src/ext_l10n.h:341
+msgid "NoteToEditor"
+msgstr "Huomautus toimittajalle"
+
+#: src/ext_l10n.h:342
+msgid "Offprint"
+msgstr "Eripainos"
+
+#: src/ext_l10n.h:343
+msgid "Offprints"
+msgstr "Eripainokset"
+
+# Now this wasn't very obvious.
+#: src/ext_l10n.h:344
+msgid "Offsets"
+msgstr "Uusintapainosten välittäjä"
+
+#: src/ext_l10n.h:345
+msgid "Oggetto"
+msgstr "Oggetto"
+
+#: src/ext_l10n.h:346
+msgid "Opening"
+msgstr "Aloitus"
+
+#: src/ext_l10n.h:347
+msgid "Ort"
+msgstr "Postitoimipaikka"
+
+#: src/ext_l10n.h:348
+msgid "Overlay"
+msgstr "Kalvokerros"
+
+#: src/ext_l10n.h:349
+msgid "PACS"
+msgstr "PACS"
+
+#: src/ext_l10n.h:350 src/ext_l10n.h:920
+msgid "Paragraph"
+msgstr "Osakappale"
+
+#: src/ext_l10n.h:351
+msgid "Paragraph*"
+msgstr "Osakappale*"
+
+#: src/ext_l10n.h:352
+msgid "Part"
+msgstr "Osa"
+
+#: src/ext_l10n.h:353
+msgid "Part*"
+msgstr "Osa*"
+
+#: src/ext_l10n.h:354
+msgid "Petit"
+msgstr "Petit"
+
+#: src/ext_l10n.h:355
+msgid "Phone"
+msgstr "Puhelin"
+
+#: src/ext_l10n.h:356
+msgid "Place"
+msgstr "Paikka"
+
+#: src/ext_l10n.h:357
+msgid "PlaceFigure"
+msgstr "Kuvan paikka"
+
+#: src/ext_l10n.h:358
+msgid "PlaceTable"
+msgstr "Taulukon paikka"
+
+#: src/ext_l10n.h:359
+msgid "PortraitSlide"
+msgstr "Pystykalvo"
+
+#: src/ext_l10n.h:360
+msgid "PostalCommend"
+msgstr "Postimerkintä"
+
+#: src/ext_l10n.h:361
+msgid "PostalComment"
+msgstr "Postihuomautus"
+
+#: src/ext_l10n.h:362
+msgid "Postvermerk"
+msgstr "Postimerkintä"
+
+#: src/ext_l10n.h:363
+msgid "Preprint"
+msgstr "Esipainos"
+
+#: src/ext_l10n.h:364
+msgid "Problem"
+msgstr "Ongelma"
+
+#: src/ext_l10n.h:365
+msgid "ProgressContents"
+msgstr "Esityksen etenemisluettelo"
+
+#: src/ext_l10n.h:366
+msgid "Proof"
+msgstr "Todistus"
+
+#: src/ext_l10n.h:367
+msgid "Property"
+msgstr "Ominaisuus"
+
+#: src/ext_l10n.h:368
+msgid "Proposition"
+msgstr "Väittämä"
+
+#: src/ext_l10n.h:369
+msgid "Proposition*"
+msgstr "Väittämä*"
+
+#: src/ext_l10n.h:370
+msgid "ps"
+msgstr "ps"
+
+#: src/ext_l10n.h:371
+msgid "PS"
+msgstr "PS"
+
+#: src/ext_l10n.h:372
+msgid "Publishers"
+msgstr "Julkaisijat"
+
+#: src/ext_l10n.h:373
+msgid "Question"
+msgstr "Kysymys"
+
+#: src/ext_l10n.h:374
+msgid "Quotation"
+msgstr "Sitaatti"
+
+#: src/ext_l10n.h:375
+msgid "Quote"
+msgstr "Lainaus"
+
+#: src/ext_l10n.h:376
+msgid "Received"
+msgstr "Vastaanotettu"
+
+#: src/ext_l10n.h:377 src/ext_l10n.h:1101 src/ext_l10n.h:1109
+#: src/frontends/xforms/FormRef.C:33
+msgid "Reference"
+msgstr "Viite"
+
+#: src/ext_l10n.h:379
+msgid "Remark"
+msgstr "Huomautus"
+
+#: src/ext_l10n.h:380
+msgid "Remark*"
+msgstr "Huomautus*"
+
+#: src/ext_l10n.h:381
+msgid "Remarks"
+msgstr "Huomautukset"
+
+#: src/ext_l10n.h:382
+msgid "RetourAdresse"
+msgstr "Palautusosoite"
+
+#: src/ext_l10n.h:383
+msgid "ReturnAddress"
+msgstr "Palautusosoite"
+
+#: src/ext_l10n.h:384
+msgid "Revision"
+msgstr "Versio"
+
+#: src/ext_l10n.h:385
+msgid "RevisionHistory"
+msgstr "Versiohistoriikki"
+
+#: src/ext_l10n.h:386
+msgid "RevisionRemark"
+msgstr "Versiohuomautus"
+
+#: src/ext_l10n.h:387
+msgid "REVTEX_Title"
+msgstr "REVTEX-teoksen nimi"
+
+#: src/ext_l10n.h:388
+msgid "Right_Address"
+msgstr "Oikea osoite"
+
+#: src/ext_l10n.h:389
+msgid "Right_Header"
+msgstr "Oikea yläotsikko"
+
+#: src/ext_l10n.h:390
+msgid "RightHeader"
+msgstr "Oikea yläotsikko"
+
+#: src/ext_l10n.h:391
+msgid "Rotatefoilhead"
+msgstr "Kiertyvä kalvon alku"
+
+#: src/ext_l10n.h:392
+msgid "RunningAuthor"
+msgstr "Tekijä (jatko)"
+
+#: src/ext_l10n.h:393
+msgid "Running_LaTeX_Title"
+msgstr "LaTeX-teoksen nimi (jatko)"
+
+#: src/ext_l10n.h:394
+msgid "RunningTitle"
+msgstr "Teoksen nimi (jatko)"
+
+#: src/ext_l10n.h:395
+msgid "Scene"
+msgstr "Kohtaus"
+
+#: src/ext_l10n.h:396
+msgid "SCENE"
+msgstr "KOHTAUS"
+
+#: src/ext_l10n.h:397
+msgid "SCENE*"
+msgstr "KOHTAUS*"
+
+#: src/ext_l10n.h:398
+msgid "Scrap"
+msgstr "Koodinpätkä"
+
+#: src/ext_l10n.h:399
+msgid "Section"
+msgstr "Kappale"
+
+#: src/ext_l10n.h:400
+msgid "Section*"
+msgstr "Kappale*"
+
+#: src/ext_l10n.h:401
+msgid "Send_To_Address"
+msgstr "Lähetysosoite"
+
+#: src/ext_l10n.h:402
+msgid "Seriate"
+msgstr "Luetelma"
+
+#: src/ext_l10n.h:403
+msgid "SGML"
+msgstr "SGML"
+
+#: src/ext_l10n.h:404
+msgid "ShortFoilhead"
+msgstr "Lyhyt kalvon alku"
+
+#: src/ext_l10n.h:405
+msgid "ShortRotatefoilhead"
+msgstr "Lyhyt kiertyvä kalvon alku"
+
+#: src/ext_l10n.h:406
+msgid "ShortTitle"
+msgstr "Lyhyt teoksen nimi"
+
+#: src/ext_l10n.h:407
+msgid "Signature"
+msgstr "Allekirjoitus"
+
+#: src/ext_l10n.h:408
+msgid "Slide"
+msgstr "Kalvo"
+
+#: src/ext_l10n.h:409
+msgid "Slide*"
+msgstr "Kalvo*"
+
+#: src/ext_l10n.h:410
+msgid "SlideContents"
+msgstr "Kalvon sisältö*"
+
+#: src/ext_l10n.h:411
+msgid "SlideHeading"
+msgstr "Kalvon otsikko"
+
+#: src/ext_l10n.h:412
+msgid "SlideSubHeading"
+msgstr "Kalvon alaotsikko"
+
+#: src/ext_l10n.h:413
+msgid "Solution"
+msgstr "Ratkaisu"
+
+#: src/ext_l10n.h:414
+msgid "Speaker"
+msgstr "Puhuja"
+
+#: src/ext_l10n.h:415
+msgid "Specialmail"
+msgstr "Erikoisposti"
+
+#: src/ext_l10n.h:416
+msgid "Stadt"
+msgstr "Kaupunki"
+
+#: src/ext_l10n.h:417 src/insets/insetref.C:110
+msgid "Standard"
+msgstr "Perusteksti"
+
+#: src/ext_l10n.h:418
+msgid "State"
+msgstr "Maa"
+
+#: src/ext_l10n.h:419
+msgid "Strasse"
+msgstr "Katu"
+
+#: src/ext_l10n.h:420
+msgid "Street"
+msgstr "Katu"
+
+#: src/ext_l10n.h:421
+msgid "Subject"
+msgstr "Aihe"
+
+#: src/ext_l10n.h:422
+msgid "Subjectclass"
+msgstr "Aiheluokka"
+
+#: src/ext_l10n.h:423
+msgid "Subparagraph"
+msgstr "Aliosakappale"
+
+#: src/ext_l10n.h:424
+msgid "Subparagraph*"
+msgstr "Aliosakappale*"
+
+#: src/ext_l10n.h:425
+msgid "Subsection"
+msgstr "Alikappale"
+
+#: src/ext_l10n.h:426
+msgid "Subsection*"
+msgstr "Alikappale*"
+
+#: src/ext_l10n.h:427
+msgid "SubSection"
+msgstr "Alikappale"
+
+#: src/ext_l10n.h:428
+msgid "Subsubsection"
+msgstr "Alialikappale"
+
+#: src/ext_l10n.h:429
+msgid "Subsubsection*"
+msgstr "Alialikappale*"
+
+#: src/ext_l10n.h:430
+msgid "Subtitle"
+msgstr "Alaotsikko"
+
+#: src/ext_l10n.h:431
+msgid "SubTitle"
+msgstr "Alaotsikko"
+
+#: src/ext_l10n.h:432
+msgid "SubVariation"
+msgstr "Alimuunnelma"
+
+#: src/ext_l10n.h:433
+msgid "SubVariation2"
+msgstr "Alimuunnelma 2"
+
+#: src/ext_l10n.h:434
+msgid "SubVariation3"
+msgstr "Alimuunnelma 3"
+
+#: src/ext_l10n.h:435
+msgid "SubVariation4"
+msgstr "Alimuunnelma 4"
+
+#: src/ext_l10n.h:436
+msgid "SubVariation5"
+msgstr "Alimuunnelma 5"
+
+#: src/ext_l10n.h:437
+msgid "Summary"
+msgstr "Yhteenveto"
+
+#: src/ext_l10n.h:438
+msgid "Surname"
+msgstr "Sukunimi"
+
+#: src/ext_l10n.h:439
+msgid "TableComments"
+msgstr "Huomautusluettelo"
+
+#: src/ext_l10n.h:440
+msgid "TableRefs"
+msgstr "Viiteluettelo"
+
+#: src/ext_l10n.h:441
+msgid "Telefax"
+msgstr "Faksi"
+
+#: src/ext_l10n.h:442
+msgid "Telefon"
+msgstr "Puhelin"
+
+#: src/ext_l10n.h:443
+msgid "Telephone"
+msgstr "Puhelin"
+
+#: src/ext_l10n.h:444
+msgid "Telex"
+msgstr "Telex"
+
+#: src/ext_l10n.h:445
+msgid "Thanks"
+msgstr "Kiitokset"
+
+#: src/ext_l10n.h:446
+msgid "Theorem"
+msgstr "Lause"
+
+#: src/ext_l10n.h:447
+msgid "Theorem*"
+msgstr "Lause*"
+
+#: src/ext_l10n.h:448
+msgid "TheoremTemplate"
+msgstr "Lausemalli"
+
+#: src/ext_l10n.h:449 src/ext_l10n.h:1175 src/frontends/qt2/QThesaurus.C:28
+msgid "Thesaurus"
+msgstr "Synonyymit"
+
+#: src/ext_l10n.h:450
+msgid "ThickLine"
+msgstr "Paksu viiva"
+
+#: src/ext_l10n.h:451
+msgid "ThreeAffiliations"
+msgstr "Kolme järjestöä"
+
+#: src/ext_l10n.h:452
+msgid "ThreeAuthors"
+msgstr "Kolme tekijää"
+
+#: src/ext_l10n.h:453
+msgid "TickList"
+msgstr "Ransk. viiva -luettelo"
+
+#: src/ext_l10n.h:454
+msgid "Title"
+msgstr "Teoksen nimi"
+
+#: src/ext_l10n.h:455
+msgid "Titlehead"
+msgstr "Nimisivun ylätunniste"
+
+#: src/ext_l10n.h:456
+msgid "TITLE_OVER:"
+msgstr "OTSIKKO_YLLÄ:"
+
+#: src/ext_l10n.h:457
+msgid "TOC_Author"
+msgstr "SIS Tekijä"
+
+#: src/ext_l10n.h:458
+msgid "TOC_Title"
+msgstr "SIS Otsikko"
+
+#: src/ext_l10n.h:459
+msgid "Topic"
+msgstr "Aihe"
+
+#: src/ext_l10n.h:460
+msgid "Town"
+msgstr "Kaupunki"
+
+#: src/ext_l10n.h:461
+msgid "Transition"
+msgstr "Siirtyminen"
+
+#: src/ext_l10n.h:462
+msgid "Trans_Keywords"
+msgstr "Käännetyt avainsanat"
+
+#: src/ext_l10n.h:463
+msgid "TranslatedAbstract"
+msgstr "KäännettyTiivistelmä"
+
+#: src/ext_l10n.h:464
+msgid "Translated_Title"
+msgstr "Käännetty_teoksen_nimi"
+
+#: src/ext_l10n.h:465
+msgid "Translator"
+msgstr "Kääntäjä"
+
+#: src/ext_l10n.h:466
+msgid "TwoAffiliations"
+msgstr "Kaksi järjestöä"
+
+#: src/ext_l10n.h:467
+msgid "TwoAuthors"
+msgstr "Kaksi tekijää"
+
+#: src/ext_l10n.h:468
+msgid "Unterschrift"
+msgstr "Allekirjoitus"
+
+#: src/ext_l10n.h:469
+msgid "Uppertitleback"
+msgstr "Ylätunnisteteksti"
+
+#: src/ext_l10n.h:470 src/ext_l10n.h:1193 src/ext_l10n.h:1196
+#: src/frontends/qt2/QURL.C:25
+msgid "URL"
+msgstr "URL"
+
+#: src/ext_l10n.h:471
+msgid "Variation"
+msgstr "Muunnelma"
+
+#: src/ext_l10n.h:472
+msgid "Verbatim"
+msgstr "Sellaisenaan"
+
+#: src/ext_l10n.h:473
+msgid "Verse"
+msgstr "Säe"
+
+#: src/ext_l10n.h:474
+msgid "Verteiler"
+msgstr "Jakelija"
+
+#: src/ext_l10n.h:475
+msgid "VisibleText"
+msgstr "Näkyvä teksti"
+
+#: src/ext_l10n.h:476
+msgid "Yourmail"
+msgstr "Vastaanottajan osoite"
+
+#: src/ext_l10n.h:477
+msgid "YourMail"
+msgstr "Vastaanottajan osoite"
+
+#: src/ext_l10n.h:478
+msgid "Yourref"
+msgstr "Viitteesi"
+
+#: src/ext_l10n.h:479
+msgid "YourRef"
+msgstr "Viitteesi"
+
+#: src/ext_l10n.h:480
+msgid "Zusatz"
+msgstr "Lisäys"
+
+#: src/ext_l10n.h:481
+msgid "Afrikaans"
+msgstr "Afrikaans"
+
+#: src/ext_l10n.h:482
+msgid "American"
+msgstr "Amerikka"
+
+#: src/ext_l10n.h:483
+msgid "Arabic"
+msgstr "Arabia"
+
+#: src/ext_l10n.h:484
+msgid "Austrian"
+msgstr "Itävalta"
+
+#: src/ext_l10n.h:485
+msgid "Bahasa"
+msgstr "Bahasa"
+
+#: src/ext_l10n.h:486
+msgid "Basque"
+msgstr "Baski"
+
+#: src/ext_l10n.h:487
+msgid "Portuguese (Brazil)"
+msgstr "Portugali (Brasilia)"
+
+#: src/ext_l10n.h:488
+msgid "Breton"
+msgstr "Breton"
+
+#: src/ext_l10n.h:489
+msgid "British"
+msgstr "Britti"
+
+#: src/ext_l10n.h:490
+msgid "Bulgarian"
+msgstr "Bulgaria"
+
+#: src/ext_l10n.h:491
+msgid "Canadian"
+msgstr "Kanada"
+
+#: src/ext_l10n.h:492
+msgid "French Canadian"
+msgstr "Ranskalainen Kanada"
+
+#: src/ext_l10n.h:493
+msgid "Catalan"
+msgstr "Katalaani"
+
+#: src/ext_l10n.h:494
+msgid "Croatian"
+msgstr "Kroatia"
+
+#: src/ext_l10n.h:495
+msgid "Czech"
+msgstr "Tshekki"
+
+#: src/ext_l10n.h:496
+msgid "Danish"
+msgstr "Tanska"
+
+#: src/ext_l10n.h:497
+msgid "Dutch"
+msgstr "Hollanti"
+
+#: src/ext_l10n.h:498 src/language.C:40
+msgid "English"
+msgstr "Englanti"
+
+#: src/ext_l10n.h:499
+msgid "Esperanto"
+msgstr "Esperanto"
+
+#: src/ext_l10n.h:500
+msgid "Estonian"
+msgstr "Viro"
+
+#: src/ext_l10n.h:501
+msgid "Finnish"
+msgstr "Suomi"
+
+#: src/ext_l10n.h:502
+msgid "French"
+msgstr "Ranska"
+
+#: src/ext_l10n.h:503
+msgid "French (GUTenberg)"
+msgstr "Ranska (GUTenberg)"
+
+#: src/ext_l10n.h:504
+msgid "Galician"
+msgstr "Galician"
+
+#: src/ext_l10n.h:505
+msgid "German"
+msgstr "Saksa"
+
+#: src/ext_l10n.h:506
+msgid "German (new spelling)"
+msgstr "Saksa (uusi oikeinkirjoitus)"
+
+#: src/ext_l10n.h:507 src/frontends/xforms/FormMathsPanel.C:103
+#: src/frontends/xforms/form_maths_panel.C:35
+msgid "Greek"
+msgstr "Kreikka"
+
+#: src/ext_l10n.h:508
+msgid "Hebrew"
+msgstr "Heprea"
+
+#: src/ext_l10n.h:509
+msgid "Irish"
+msgstr "Irlanti"
+
+#: src/ext_l10n.h:510
+msgid "Italian"
+msgstr "Italia"
+
+#: src/ext_l10n.h:511
+msgid "Lsorbian"
+msgstr "Lsorbian"
+
+#: src/ext_l10n.h:512
+msgid "Magyar"
+msgstr "Unkari"
+
+#: src/ext_l10n.h:513
+msgid "Norsk"
+msgstr "Norja"
+
+#: src/ext_l10n.h:514
+msgid "Polish"
+msgstr "Puola"
+
+#: src/ext_l10n.h:515
+msgid "Portugese"
+msgstr "Portugali"
+
+#: src/ext_l10n.h:516
+msgid "Romanian"
+msgstr "Romania"
+
+#: src/ext_l10n.h:517
+msgid "Russian"
+msgstr "Venäjä"
+
+#: src/ext_l10n.h:518
+msgid "Scottish"
+msgstr "Skotti"
+
+#: src/ext_l10n.h:519
+msgid "Serbian"
+msgstr "Serbia"
+
+#: src/ext_l10n.h:520
+msgid "Serbo-Croatian"
+msgstr "Serbo-kroatia"
+
+#: src/ext_l10n.h:521
+msgid "Spanish"
+msgstr "Espanja"
+
+#: src/ext_l10n.h:522
+msgid "Slovak"
+msgstr "Slovakia"
+
+#: src/ext_l10n.h:523
+msgid "Slovene"
+msgstr "Slovenia"
+
+#: src/ext_l10n.h:524
+msgid "Swedish"
+msgstr "Ruotsi"
+
+#: src/ext_l10n.h:525
+msgid "Thai"
+msgstr "Thai"
+
+#: src/ext_l10n.h:526
+msgid "Turkish"
+msgstr "Turkki"
+
+#: src/ext_l10n.h:527
+msgid "Ukrainian"
+msgstr "Ukraina"
+
+#: src/ext_l10n.h:528
+msgid "Usorbian"
+msgstr "Usorbian"
+
+#: src/ext_l10n.h:529
+msgid "Welsh"
+msgstr "Wales"
+
+#: src/ext_l10n.h:530 src/frontends/qt2/QAbout.C:32
+#: src/frontends/xforms/FormAboutlyx.C:28
+msgid "About LyX"
+msgstr "LyXistä"
+
+#: src/ext_l10n.h:531
+msgid "Version"
+msgstr "Versio"
+
+#: src/ext_l10n.h:532
+msgid "Version goes here"
+msgstr "Versio tähän"
+
+#: src/ext_l10n.h:533 src/frontends/xforms/FormAboutlyx.C:65
+msgid "Credits"
+msgstr "Kiitokset"
+
+#: src/ext_l10n.h:535 src/ext_l10n.h:546 src/ext_l10n.h:600 src/ext_l10n.h:767
+#: src/ext_l10n.h:776 src/ext_l10n.h:794 src/ext_l10n.h:799 src/ext_l10n.h:875
+#: src/ext_l10n.h:894 src/ext_l10n.h:905 src/ext_l10n.h:919
+#: src/ext_l10n.h:1070 src/ext_l10n.h:1119 src/ext_l10n.h:1129
+#: src/ext_l10n.h:1131 src/ext_l10n.h:1143 src/ext_l10n.h:1173
+#: src/ext_l10n.h:1185 src/ext_l10n.h:1190 src/ext_l10n.h:1200
+#: src/ext_l10n.h:1204 src/frontends/qt2/QParagraphDialog.C:49
+msgid "&Close"
+msgstr "Sul&je"
+
+#: src/ext_l10n.h:536
+msgid "LyX: Enter text"
+msgstr "LyX: Syötä tekstiä"
+
+#: src/ext_l10n.h:537
+msgid "&Dummy"
+msgstr "&Tyhjä"
+
+#: src/ext_l10n.h:538 src/ext_l10n.h:570 src/ext_l10n.h:603 src/ext_l10n.h:762
+#: src/ext_l10n.h:775 src/ext_l10n.h:900 src/frontends/qt2/QSpellchecker.C:114
+#: src/frontends/xforms/form_bibitem.C:35
+#: src/frontends/xforms/form_bibtex.C:35
+#: src/frontends/xforms/form_citation.C:173
+#: src/frontends/xforms/form_document.C:47 src/frontends/xforms/form_ert.C:72
+#: src/frontends/xforms/form_external.C:89
+#: src/frontends/xforms/form_filedialog.C:89
+#: src/frontends/xforms/form_float.C:74 src/frontends/xforms/form_forks.C:53
+#: src/frontends/xforms/form_include.C:42 src/frontends/xforms/form_index.C:44
+#: src/frontends/xforms/form_maths_delim.C:49
+#: src/frontends/xforms/form_minipage.C:81
+#: src/frontends/xforms/form_paragraph.C:181
+#: src/frontends/xforms/form_print.C:53 src/frontends/xforms/form_ref.C:86
+#: src/frontends/xforms/form_sendto.C:46
+#: src/frontends/xforms/form_tabular_create.C:28
+#: src/frontends/xforms/form_url.C:64
+msgid "OK"
+msgstr "OK"
+
+#: src/ext_l10n.h:539 src/ext_l10n.h:1063 src/frontends/qt2/Alert_pimpl.C:45
+#: src/frontends/qt2/QParagraphDialog.C:49
+msgid "&Cancel"
+msgstr "&Peru"
+
+#: src/ext_l10n.h:540 src/ext_l10n.h:897 src/frontends/qt2/QIndex.C:23
+#: src/frontends/xforms/FormIndex.C:24 src/insets/insetindex.C:61
+msgid "Index"
+msgstr "Hakemisto"
+
+#: src/ext_l10n.h:541
+msgid "&Key"
+msgstr "&Avainsana"
+
+#: src/ext_l10n.h:542
+msgid "The citation key"
+msgstr "Lainauksen avainsana"
+
+#: src/ext_l10n.h:543
+msgid "&Label"
+msgstr "&Nimike"
+
+#: src/ext_l10n.h:544
+msgid "The label as it appears in the document"
+msgstr "Nimike sellaisena kuin se näkyy asiakirjassa."
+
+#: src/ext_l10n.h:545 src/ext_l10n.h:598 src/ext_l10n.h:792 src/ext_l10n.h:797
+#: src/ext_l10n.h:873 src/ext_l10n.h:893 src/ext_l10n.h:917
+#: src/ext_l10n.h:1062 src/ext_l10n.h:1068 src/ext_l10n.h:1118
+#: src/ext_l10n.h:1158 src/ext_l10n.h:1199
+msgid "&OK"
+msgstr "&OK"
+
+#: src/ext_l10n.h:547
+msgid "Bibtex"
+msgstr "Bibtex"
+
+#: src/ext_l10n.h:548
+msgid "Databases"
+msgstr "Tietokannat"
+
+#: src/ext_l10n.h:549
+msgid "BibTeX database to use"
+msgstr "Käytettävä BiBTeX-tietokanta"
+
+#: src/ext_l10n.h:550 src/ext_l10n.h:626 src/ext_l10n.h:628
+#: src/ext_l10n.h:1167
+msgid "New Item"
+msgstr "Uusi kohta"
+
+#: src/ext_l10n.h:551
+msgid "Available BibTeX databases"
+msgstr "BiBTeX-tietokannat saatavilla"
+
+#: src/ext_l10n.h:552
+msgid "&Add ..."
+msgstr "&Lisää..."
+
+#: src/ext_l10n.h:553
+msgid "Add a BibTeX database file"
+msgstr "Lisää BiBTeX-tietokantatiedosto"
+
+#: src/ext_l10n.h:554
+msgid "&Delete"
+msgstr "&Poista"
+
+#: src/ext_l10n.h:555
+msgid "Remove the selected database"
+msgstr "Poista valittu tietokanta"
+
+#: src/ext_l10n.h:556
+msgid "&Style"
+msgstr "&Tyyli"
+
+#: src/ext_l10n.h:557 src/ext_l10n.h:563
+msgid "The BibTeX style"
+msgstr "BibTeX-tyyli"
+
+#: src/ext_l10n.h:558 src/ext_l10n.h:644 src/frontends/qt2/QDocument.C:126
+msgid "plain"
+msgstr "tavallinen"
+
+#: src/ext_l10n.h:559
+msgid "unsrt"
+msgstr "ei järjestystä"
+
+#: src/ext_l10n.h:560
+msgid "alpha"
+msgstr "numeroin"
+
+#: src/ext_l10n.h:561
+msgid "abbrv"
+msgstr "lyhentein"
+
+#: src/ext_l10n.h:562 src/frontends/qt2/QBibtex.C:114
+#: src/frontends/qt2/QBibtexDialog.C:77
+msgid "Other ..."
+msgstr "Muu..."
+
+#: src/ext_l10n.h:564
+msgid "FIXME !"
+msgstr "KORJAA !"
+
+#: src/ext_l10n.h:565
+msgid "The name of the style to use"
+msgstr "Käytettävän tyylin nimi"
+
+#: src/ext_l10n.h:566
+msgid "&Browse"
+msgstr "&Selaa"
+
+#: src/ext_l10n.h:567
+msgid "Choose a style file"
+msgstr "Valitse tyylitiedosto"
+
+#: src/ext_l10n.h:568
+msgid "Add bibliography to &TOC"
+msgstr "Lisää &lähdeluettelo sisällysluetteloon"
+
+#: src/ext_l10n.h:569
+msgid "Add bibliography to the table of contents"
+msgstr "Lisää lähdeluettelo sisällysluetteloon"
+
+#. /
+#: src/LyXAction.C:157 src/ext_l10n.h:571 src/ext_l10n.h:605
+#: src/ext_l10n.h:764 src/ext_l10n.h:901
+#: src/frontends/controllers/ButtonController.h:73 src/lyxfunc.C:1082
+msgid "Cancel"
+msgstr "Peru"
+
+#: src/ext_l10n.h:572 src/frontends/qt2/QCharacter.C:31
+msgid "Character"
+msgstr "Merkki"
+
+#: src/ext_l10n.h:573
+msgid "&Family:"
+msgstr "&Tyyli:"
+
+#: src/ext_l10n.h:574
+msgid "Font family"
+msgstr "Kirjasinperhe"
+
+#: src/ext_l10n.h:575
+msgid "&Series:"
+msgstr "&Sarja:"
+
+#: src/ext_l10n.h:576 src/ext_l10n.h:583
+msgid "Font series"
+msgstr "Kirjasinsarja:"
+
+#: src/ext_l10n.h:577 src/ext_l10n.h:705
+msgid "&Language:"
+msgstr "&Kieli:"
+
+#: src/ext_l10n.h:578 src/ext_l10n.h:586 src/ext_l10n.h:704
+#: src/frontends/xforms/FormDocument.C:331
+#: src/frontends/xforms/FormPreferences.C:258
+msgid "Language"
+msgstr "Kieli"
+
+#: src/ext_l10n.h:579 src/ext_l10n.h:582
+msgid "Font shape"
+msgstr "Kirjasinmuoto"
+
+#: src/ext_l10n.h:580 src/ext_l10n.h:585
+msgid "Font color"
+msgstr "Kirjasimen väri"
+
+#: src/ext_l10n.h:581
+msgid "S&hape:"
+msgstr "&Muoto"
+
+#: src/ext_l10n.h:584
+msgid "&Color:"
+msgstr "&Väri"
+
+#: src/ext_l10n.h:587
+msgid "&Toggle all"
+msgstr "&Kaikki pois/päälle"
+
+#: src/ext_l10n.h:588
+msgid "toggle font on all of the above"
+msgstr "Muuta kaikkien ylläolevien kirjasinta"
+
+#: src/ext_l10n.h:589
+msgid "Never toggled"
+msgstr "Koko alueeseen vaikuttavat"
+
+#: src/ext_l10n.h:590 src/ext_l10n.h:818
+msgid "Si&ze:"
+msgstr "K&oko"
+
+#: src/ext_l10n.h:591
+msgid "Font size"
+msgstr "Kirjainkoko"
+
+#: src/ext_l10n.h:592
+msgid "Always toggled"
+msgstr "Alueen asetuksia muuttavat"
+
+#: src/ext_l10n.h:593 src/ext_l10n.h:595
+msgid "Other font settings"
+msgstr "Muut kirjasinasetukset"
+
+#: src/ext_l10n.h:594
+msgid "&Misc:"
+msgstr "&Sekal.:"
+
+#: src/ext_l10n.h:596
+msgid "Auto apply"
+msgstr "Toteuta itsestään"
+
+#: src/ext_l10n.h:597
+msgid "Apply each change automatically"
+msgstr "Ota kukin muutos käyttöön automaattisesti"
+
+#: src/ext_l10n.h:599 src/ext_l10n.h:604 src/ext_l10n.h:763 src/ext_l10n.h:793
+#: src/ext_l10n.h:798 src/ext_l10n.h:874 src/ext_l10n.h:918
+#: src/ext_l10n.h:1061 src/ext_l10n.h:1069
+msgid "&Apply"
+msgstr "&Toteuta"
+
+#: src/ext_l10n.h:601 src/frontends/qt2/QCitation.C:45
+#: src/frontends/xforms/FormCitation.C:117
+msgid "Citation"
+msgstr "Lähdeviite"
+
+#: src/ext_l10n.h:602 src/ext_l10n.h:761 src/ext_l10n.h:796 src/ext_l10n.h:872
+#: src/ext_l10n.h:916 src/ext_l10n.h:1060
+msgid "&Restore"
+msgstr "Pala&uta"
+
+#: src/ext_l10n.h:606
+msgid "Text after"
+msgstr "Seuraava teksti"
+
+#: src/ext_l10n.h:607 src/frontends/xforms/form_citation.C:116
+msgid "Citation style"
+msgstr "Lähdeviitetyyli"
+
+#: src/ext_l10n.h:608
+msgid "Natbib citation style to use"
+msgstr "Käytettävä natbib-lähdeviitetyyli"
+
+#: src/ext_l10n.h:609
+msgid "Text before"
+msgstr "Edeltävä teksti"
+
+#: src/ext_l10n.h:610 src/frontends/xforms/form_citation.C:73 src/lyxvc.C:122
+msgid "Info"
+msgstr "Tietoja"
+
+#: src/ext_l10n.h:611
+msgid "Citation entry"
+msgstr "Lähdeviite"
+
+#: src/ext_l10n.h:612 src/frontends/qt2/QSearch.C:31
+#: src/frontends/xforms/form_citation.C:78
+msgid "Search"
+msgstr "Etsi"
+
+#: src/ext_l10n.h:613
+msgid "Search the available citations"
+msgstr "Etsi mahdollisista lähteistä"
+
+#: src/ext_l10n.h:614
+msgid "Regular E&xpression"
+msgstr "Säännöllinen &lauseke"
+
+#: src/ext_l10n.h:615
+msgid "Interpret search entry as a regular expression"
+msgstr "Tulkitse etsittävä teksti säännölliseksi lausekkeeksi"
+
+#: src/ext_l10n.h:616
+msgid "&Previous"
+msgstr "&Edellinen"
+
+#: src/ext_l10n.h:617
+msgid "&Case sensitive"
+msgstr "Sama &kirjainkoko"
+
+#: src/ext_l10n.h:618
+msgid "Make the search case-sensitive"
+msgstr "Ota kirjainkoko huomioon etsinnässä"
+
+#: src/ext_l10n.h:619
+msgid "&Next"
+msgstr "&Seuraava"
+
+#: src/ext_l10n.h:620
+msgid "Add the selected citation"
+msgstr "Lisää valittu lähdeviite"
+
+#: src/ext_l10n.h:621
+msgid "Remove the selected citation"
+msgstr "Poista valittu lähdeviite"
+
+#: src/ext_l10n.h:622
+msgid "Move the selected citation up"
+msgstr "Siirrä valittua lähdeviitettä ylös"
+
+#: src/ext_l10n.h:623
+msgid "Move the selected citation down"
+msgstr "Siirrä valittua lähdeviitettä alas"
+
+#: src/ext_l10n.h:624
+msgid "Available"
+msgstr "Saatavilla"
+
+#: src/ext_l10n.h:625
+msgid "Selected"
+msgstr "Valittu"
+
+#: src/ext_l10n.h:627
+msgid "Available citation keys"
+msgstr "Mahdolliset avaimet"
+
+#: src/ext_l10n.h:629
+msgid "Citations currently selected"
+msgstr "Valitut lähteet"
+
+#: src/ext_l10n.h:630
+msgid "Text to place after citation"
+msgstr "Lainauksen jälkeen tuleva teksti"
+
+#: src/ext_l10n.h:631
+msgid "&Full author list"
+msgstr "Täydellinen tekijä&luettelo"
+
+#: src/ext_l10n.h:632
+msgid "List all authors"
+msgstr "Luettele kaikki tekijät"
+
+#: src/ext_l10n.h:633
+msgid "Force &upper case"
+msgstr "Pakota &iso kirjain"
+
+#: src/ext_l10n.h:634
+msgid "Force upper case in citation"
+msgstr "Pakota iso kirjain lainaukseen"
+
+#: src/ext_l10n.h:635
+msgid "Text to place before citation"
+msgstr "Lainausta edeltävä teksti"
+
+#: src/ext_l10n.h:636 src/frontends/xforms/FormDocument.C:58
+msgid "Document Layout"
+msgstr "Asiakirjan tyylipohja"
+
+#: src/ext_l10n.h:638
+msgid "&Fonts:"
+msgstr "&Kirjasimet:"
+
+#: src/ext_l10n.h:639
+msgid "&Pagestyle:"
+msgstr "&Sivutyyli:"
+
+#: src/ext_l10n.h:640
+msgid "Defa&ult Skip:"
+msgstr "&Oletusväli:"
+
+#: src/ext_l10n.h:641
+msgid "F&ont Size:"
+msgstr "Kirjaink&oko:"
+
+#. the document language page
+#: src/ext_l10n.h:642 src/ext_l10n.h:658 src/ext_l10n.h:707 src/ext_l10n.h:738
+#: src/ext_l10n.h:857 src/frontends/qt2/QDocument.C:116
+#: src/frontends/qt2/QDocument.C:124 src/frontends/qt2/QDocument.C:152
+#: src/frontends/qt2/QDocument.C:196 src/frontends/qt2/QDocument.C:575
+#: src/frontends/qt2/QDocument.C:579
+msgid "default"
+msgstr "oletus"
+
+#: src/ext_l10n.h:643 src/frontends/qt2/QDocument.C:125
+msgid "empty"
+msgstr "tyhjä"
+
+#: src/ext_l10n.h:645 src/frontends/qt2/QDocument.C:127
+msgid "headings"
+msgstr "yläotsikot"
+
+#: src/ext_l10n.h:646 src/frontends/qt2/QDocument.C:128
+msgid "fancy"
+msgstr "hienot"
+
+#: src/ext_l10n.h:647
+msgid "Spacin&g:"
+msgstr "&Välit:"
+
+#: src/ext_l10n.h:648
+msgid "E&xtra Options:"
+msgstr "&Lisäasetukset:"
+
+#: src/ext_l10n.h:649
+msgid "&Class:"
+msgstr "&Luokka:"
+
+#: src/ext_l10n.h:650
+msgid "smallskip"
+msgstr "pieni väli"
+
+#: src/ext_l10n.h:651
+msgid "medskip"
+msgstr "keskisuuri väli"
+
+#: src/ext_l10n.h:652
+msgid "bigskip"
+msgstr "suuri väli"
+
+#: src/ext_l10n.h:653
+msgid "length"
+msgstr "pituus"
+
+#: src/ext_l10n.h:655 src/frontends/qt2/QDocument.C:112
+msgid "OneHalf"
+msgstr "Puolikas"
+
+#: src/ext_l10n.h:657 src/frontends/qt2/QDocument.C:114
+msgid "Other"
+msgstr "Muu"
+
+#: src/ext_l10n.h:659 src/frontends/qt2/QDocument.C:117
+msgid "10"
+msgstr "10"
+
+#: src/ext_l10n.h:660 src/frontends/qt2/QDocument.C:118
+msgid "11"
+msgstr "11"
+
+#: src/ext_l10n.h:661 src/frontends/qt2/QDocument.C:119
+msgid "12"
+msgstr "12"
+
+#: src/ext_l10n.h:662 src/frontends/xforms/form_document.C:256
+msgid "Sides"
+msgstr "Sivu"
+
+#: src/ext_l10n.h:663
+msgid "O&ne"
+msgstr "&Yksi"
+
+#: src/ext_l10n.h:664
+msgid "&Two"
+msgstr "&Kaksi"
+
+#: src/ext_l10n.h:665 src/frontends/xforms/form_tabular_create.C:45
+msgid "Columns"
+msgstr "Sarakkeita"
+
+#: src/ext_l10n.h:666
+msgid "On&e"
+msgstr "Yk&si"
+
+#: src/ext_l10n.h:667
+msgid "T&wo"
+msgstr "K&aksi"
+
+#: src/ext_l10n.h:668 src/frontends/xforms/form_document.C:254
+msgid "Separation"
+msgstr "Kappaleväli"
+
+#: src/ext_l10n.h:669
+msgid "&Indent"
+msgstr "Sisenn&ys"
+
+#: src/ext_l10n.h:670
+msgid "S&kip"
+msgstr "V&äli"
+
+#: src/ext_l10n.h:671 src/frontends/xforms/FormDocument.C:329
+msgid "Paper"
+msgstr "Sivu"
+
+#: src/ext_l10n.h:672
+msgid "&Papersize:"
+msgstr "&Paperikoko:"
+
+#: src/ext_l10n.h:673 src/frontends/qt2/QDocument.C:72 src/lyxfont.C:573
+msgid "Default"
+msgstr "Oletus"
+
+#: src/ext_l10n.h:674 src/ext_l10n.h:1011 src/ext_l10n.h:1020
+#: src/frontends/qt2/QDocument.C:73
+msgid "Custom"
+msgstr "Muu"
+
+#: src/ext_l10n.h:675 src/frontends/qt2/QDocument.C:74
+msgid "USletter"
+msgstr "US letter"
+
+#: src/ext_l10n.h:676 src/frontends/qt2/QDocument.C:75
+msgid "USlegal"
+msgstr "US legal"
+
+#: src/ext_l10n.h:677 src/frontends/qt2/QDocument.C:76
+msgid "USexecutive"
+msgstr "US executive"
+
+#: src/ext_l10n.h:678 src/frontends/qt2/QDocument.C:77
+msgid "A3"
+msgstr "A3"
+
+#: src/ext_l10n.h:679 src/frontends/qt2/QDocument.C:79
+msgid "A5"
+msgstr "A5"
+
+#: src/ext_l10n.h:680 src/frontends/qt2/QDocument.C:80
+msgid "B3"
+msgstr "B3"
+
+#: src/ext_l10n.h:681 src/frontends/qt2/QDocument.C:81
+msgid "B4"
+msgstr "B4"
+
+#: src/ext_l10n.h:682 src/frontends/qt2/QDocument.C:82
+msgid "B5"
+msgstr "B5"
+
+#: src/ext_l10n.h:683
+msgid "&Special:"
+msgstr "&Erikois:"
+
+#: src/ext_l10n.h:684 src/ext_l10n.h:1005 src/ext_l10n.h:1014
+#: src/ext_l10n.h:1048 src/frontends/qt2/QDocument.C:84
+msgid "None"
+msgstr "Ei mikään"
+
+#: src/ext_l10n.h:685 src/frontends/qt2/QDocument.C:85
+msgid "A4 small Margins (only portrait)"
+msgstr "A4, kapeat reunukset (vain pysty)"
+
+#: src/ext_l10n.h:686 src/frontends/qt2/QDocument.C:86
+msgid "A4 very small Margins (only portrait)"
+msgstr "A4, hyvin kapeat reunukset (vain pysty)"
+
+#: src/ext_l10n.h:687 src/frontends/qt2/QDocument.C:87
+msgid "A4 very wide margins (only portrait)"
+msgstr "A4, hyvin leveät reunukset (vain pysty)"
+
+#: src/ext_l10n.h:688
+msgid "&Use Geometry Package"
+msgstr "Käytä \"&Geometry\"-pakettia"
+
+#: src/ext_l10n.h:689 src/frontends/xforms/form_document.C:123
+msgid "Orientation"
+msgstr "Asento"
+
+#: src/ext_l10n.h:690
+msgid "P&ortrait"
+msgstr "&Pysty"
+
+#: src/ext_l10n.h:691
+msgid "&Landscape"
+msgstr "&Vaaka"
+
+#: src/ext_l10n.h:692 src/frontends/xforms/form_document.C:143
+msgid "Margins"
+msgstr "Reunukset"
+
+#: src/ext_l10n.h:693
+msgid "&Right:"
+msgstr "&Oikea:"
+
+#: src/ext_l10n.h:694
+msgid "&Bottom:"
+msgstr "&Ala:"
+
+#: src/ext_l10n.h:695
+msgid "L&eft:"
+msgstr "&Vasen:"
+
+#: src/ext_l10n.h:696
+msgid "&Top:"
+msgstr "&Ylä:"
+
+#: src/ext_l10n.h:697
+msgid "Custom Papersize"
+msgstr "Muu paperikoko"
+
+#: src/ext_l10n.h:698 src/ext_l10n.h:907
+msgid "&Width:"
+msgstr "&Leveys:"
+
+#: src/ext_l10n.h:699
+msgid "&Height:"
+msgstr "&Korkeus:"
+
+#: src/ext_l10n.h:700
+msgid "Foot/Head Margins"
+msgstr "Sivuotsikkotila"
+
+#: src/ext_l10n.h:701
+msgid "&Footskip:"
+msgstr "Alav&iiteväli:"
+
+#: src/ext_l10n.h:702
+msgid "Hea&dsep:"
+msgstr "&Sivuots. väli:"
+
+#: src/ext_l10n.h:703
+msgid "Headhe&ight:"
+msgstr "Sivuo&ts. kork.:"
+
+#: src/ext_l10n.h:706
+msgid "Enco&ding:"
+msgstr "&Merkistö:"
+
+#: src/ext_l10n.h:708 src/frontends/qt2/QDocument.C:153
+msgid "auto"
+msgstr "automaattinen"
+
+#: src/ext_l10n.h:709 src/frontends/qt2/QDocument.C:154
+msgid "latin1"
+msgstr "latin1"
+
+#: src/ext_l10n.h:710 src/frontends/qt2/QDocument.C:155
+msgid "latin2"
+msgstr "latin2"
+
+#: src/ext_l10n.h:711 src/frontends/qt2/QDocument.C:156
+msgid "latin3"
+msgstr "latin3"
+
+#: src/ext_l10n.h:712 src/frontends/qt2/QDocument.C:157
+msgid "latin4"
+msgstr "latin4"
+
+#: src/ext_l10n.h:713 src/frontends/qt2/QDocument.C:158
+msgid "latin5"
+msgstr "latin5"
+
+#: src/ext_l10n.h:714 src/frontends/qt2/QDocument.C:159
+msgid "latin9"
+msgstr "latin9"
+
+#: src/ext_l10n.h:715 src/frontends/qt2/QDocument.C:160
+msgid "koi8-r"
+msgstr "koi8-r"
+
+#: src/ext_l10n.h:716 src/frontends/qt2/QDocument.C:161
+msgid "koi8-u"
+msgstr "koi8-u"
+
+#: src/ext_l10n.h:717 src/frontends/qt2/QDocument.C:162
+msgid "cp866"
+msgstr "cp866"
+
+#: src/ext_l10n.h:718 src/frontends/qt2/QDocument.C:163
+msgid "cp1251"
+msgstr "cp1251"
+
+#: src/ext_l10n.h:719 src/frontends/qt2/QDocument.C:164
+msgid "iso88595"
+msgstr "iso88595"
+
+#: src/ext_l10n.h:720
+msgid "Quote Style"
+msgstr "Lainausmerkit"
+
+#: src/ext_l10n.h:721
+msgid "&Type:"
+msgstr "&Tyyppi:"
+
+#: src/ext_l10n.h:722 src/frontends/qt2/QDocument.C:171
+msgid "``text''"
+msgstr "``teksti''"
+
+#: src/ext_l10n.h:723 src/frontends/qt2/QDocument.C:172
+msgid "''text''"
+msgstr "''teksti''"
+
+#: src/ext_l10n.h:724 src/frontends/qt2/QDocument.C:173
+msgid ",,text``"
+msgstr ",,teksti``"
+
+#: src/ext_l10n.h:725 src/frontends/qt2/QDocument.C:174
+msgid ",,text''"
+msgstr ",,teksti''"
+
+#: src/ext_l10n.h:726
+msgid "Â«textÂ»"
+msgstr "«teksti»"
+
+#: src/ext_l10n.h:727
+msgid "Â»textÂ«"
+msgstr "»teksti«"
+
+#: src/ext_l10n.h:728
+msgid "&Single"
+msgstr "&Yksink."
+
+#: src/ext_l10n.h:729
+msgid "&Double"
+msgstr "&Kaksink."
+
+#: src/ext_l10n.h:730 src/ext_l10n.h:853
+#: src/frontends/xforms/FormDocument.C:333
+msgid "Extra"
+msgstr "Lisä"
+
+#: src/ext_l10n.h:731
+msgid "F&loat Placement:"
+msgstr "Irrallisten &sijoitus:"
+
+#: src/ext_l10n.h:732
+msgid "S&ection number depth:"
+msgstr "Otsikkotasojen &lkm.:"
+
+#: src/ext_l10n.h:733
+msgid "&Table of contents depth:"
+msgstr "Sisällysluettelo&tasojen lkm."
+
+#: src/ext_l10n.h:734
+msgid "P&S Driver:"
+msgstr "PS-&ajuri:"
+
+#: src/ext_l10n.h:735
+msgid "Use A&MS Math"
+msgstr "Käytä pakettia AMS &Math"
+
+#: src/ext_l10n.h:736 src/frontends/xforms/FormDocument.C:335
+msgid "Bullets"
+msgstr "Merkit"
+
+#: src/ext_l10n.h:737
+msgid "Si&ze"
+msgstr "K&oko"
+
+#: src/ext_l10n.h:739 src/frontends/qt2/QDocument.C:197
+#: src/frontends/xforms/form_preferences.C:171
+msgid "tiny"
+msgstr "pikkuruinen"
+
+#: src/ext_l10n.h:740 src/frontends/qt2/QDocument.C:198
+msgid "script"
+msgstr "indeksi"
+
+#: src/ext_l10n.h:741 src/frontends/qt2/QDocument.C:199
+msgid "footnote"
+msgstr "alaviite"
+
+#: src/ext_l10n.h:742 src/frontends/qt2/QDocument.C:200
+#: src/frontends/xforms/form_preferences.C:180
+msgid "small"
+msgstr "pieni"
+
+#: src/ext_l10n.h:743 src/frontends/qt2/QDocument.C:201
+#: src/frontends/xforms/form_preferences.C:183
+msgid "normal"
+msgstr "tavallinen"
+
+#: src/ext_l10n.h:744 src/frontends/qt2/QDocument.C:202
+#: src/frontends/xforms/form_preferences.C:186
+msgid "large"
+msgstr "suuri"
+
+#: src/ext_l10n.h:745 src/frontends/controllers/character.C:105
+#: src/frontends/qt2/QDocument.C:203 src/lyxfont.C:56
+msgid "Large"
+msgstr "Suuri"
+
+#: src/ext_l10n.h:746 src/frontends/qt2/QDocument.C:204
+msgid "LARGE"
+msgstr "suurin"
+
+#: src/ext_l10n.h:747 src/frontends/qt2/QDocument.C:205
+#: src/frontends/xforms/form_preferences.C:195
+msgid "huge"
+msgstr "valtava"
+
+#: src/ext_l10n.h:748 src/frontends/controllers/character.C:111
+#: src/frontends/qt2/QDocument.C:206 src/lyxfont.C:57
+msgid "Huge"
+msgstr "Valtava"
+
+#: src/ext_l10n.h:749 src/frontends/xforms/form_document.C:608
+msgid "Bullet Depth"
+msgstr "Taso"
+
+#: src/ext_l10n.h:750
+msgid "&1"
+msgstr "&1"
+
+#: src/ext_l10n.h:751
+msgid "&2"
+msgstr "&2"
+
+#: src/ext_l10n.h:752
+msgid "&3"
+msgstr "&3"
+
+#: src/ext_l10n.h:753
+msgid "&4"
+msgstr "&4"
+
+#: src/ext_l10n.h:754
+msgid "&Standard"
+msgstr "&Oletus"
+
+#: src/ext_l10n.h:755
+msgid "&Maths"
+msgstr "&Matem"
+
+#: src/ext_l10n.h:756
+msgid "&Ding 1"
+msgstr "&Ding 1"
+
+#: src/ext_l10n.h:757
+msgid "D&ing 2"
+msgstr "D&ing 2"
+
+#: src/ext_l10n.h:758
+msgid "Di&ng 3"
+msgstr "Di&ng 3"
+
+#: src/ext_l10n.h:759
+msgid "Din&g 4"
+msgstr "Din&g 4"
+
+#: src/ext_l10n.h:760
+msgid "&LaTeX"
+msgstr "&LaTeX"
+
+#: src/ext_l10n.h:765 src/frontends/qt2/QError.C:23
+#: src/frontends/xforms/FormError.C:24
+msgid "LaTeX Error"
+msgstr "LaTeX-virhe"
+
+#: src/ext_l10n.h:766 src/ext_l10n.h:780
+msgid "LaTeX error messages"
+msgstr "LaTeX-virheviestit"
+
+#: src/ext_l10n.h:768
+msgid "ERT inset display"
+msgstr "ERT-osion näyttäminen"
+
+#: src/ext_l10n.h:769
+msgid "&Inline"
+msgstr "&Tekstin seassa"
+
+#: src/ext_l10n.h:770
+msgid "Show ERT inline"
+msgstr "Näytä ERT-osioiden sisältö tekstin seassa"
+
+#: src/ext_l10n.h:771
+msgid "&Collapsed"
+msgstr "&Laskostettu"
+
+#: src/ext_l10n.h:772
+msgid "Show ERT button only"
+msgstr "Näytä vain ERT-osion painike"
+
+#: src/ext_l10n.h:773
+msgid "&Open"
+msgstr "&Avaa"
+
+#: src/ext_l10n.h:774
+msgid "Show ERT contents"
+msgstr "Näytä ERT-osion sisältö"
+
+#: src/ext_l10n.h:777
+msgid "External Material"
+msgstr "Ulkoinen aineisto"
+
+#: src/ext_l10n.h:778
+msgid "&Template"
+msgstr "&Mallipohjat"
+
+#: src/ext_l10n.h:779
+msgid "Available templates"
+msgstr "Mahdolliset mallit"
+
+#: src/ext_l10n.h:781
+msgid "&Edit file"
+msgstr "&Muokkaa tiedostoa"
+
+#: src/ext_l10n.h:782
+msgid "Edit the file externally"
+msgstr "Muokkaa tiedostoa ulkoisesti"
+
+#: src/ext_l10n.h:783
+msgid "&View file"
+msgstr "&Katsele tiedostoa"
+
+#: src/ext_l10n.h:784
+msgid "View the file"
+msgstr "Katsele tiedostoa"
+
+#: src/ext_l10n.h:785 src/ext_l10n.h:903 src/ext_l10n.h:1103
+#: src/ext_l10n.h:1189 src/ext_l10n.h:1202
+msgid "&Update"
+msgstr "&Päivitä"
+
+#: src/ext_l10n.h:786
+msgid "Update the material"
+msgstr "Päivitä materiaali"
+
+#: src/ext_l10n.h:787 src/ext_l10n.h:1075
+msgid "&File"
+msgstr "&Tiedosto"
+
+#: src/ext_l10n.h:788
+msgid "Filename"
+msgstr "Tiedostonimi"
+
+#: src/ext_l10n.h:789 src/ext_l10n.h:810 src/ext_l10n.h:891
+#: src/ext_l10n.h:1079
+msgid "&Browse ..."
+msgstr "&Selaa..."
+
+#: src/ext_l10n.h:790
+msgid "&Parameters"
+msgstr "&Parametrit"
+
+#: src/ext_l10n.h:791
+msgid "Parameters"
+msgstr "Parametrit"
+
+#: src/ext_l10n.h:795 src/ext_l10n.h:806 src/ext_l10n.h:1160
+msgid "Form1"
+msgstr "Lomake1"
+
+#: src/ext_l10n.h:800 src/frontends/xforms/form_float.C:29
+msgid "Placement"
+msgstr "Sijoittelu"
+
+#: src/ext_l10n.h:801
+msgid "Bottom of the page"
+msgstr "Sivun alaosaan"
+
+#: src/ext_l10n.h:802
+msgid "Top of the page"
+msgstr "Sivun yläosaan"
+
+#: src/ext_l10n.h:803
+msgid "Page of floats"
+msgstr "Irrallisten sivulle"
+
+#: src/ext_l10n.h:804
+msgid "Here, if possible"
+msgstr "Tähän jos mahdollista"
+
+#: src/ext_l10n.h:805
+msgid "Here, definitely"
+msgstr "Tähän ehdottomasti"
+
+#. add the different tabfolders
+#: src/ext_l10n.h:807 src/frontends/xforms/FormGraphics.C:189
+msgid "File"
+msgstr "Tiedosto"
+
+#: src/ext_l10n.h:808
+msgid "&File:"
+msgstr "&Tiedosto:"
+
+#: src/ext_l10n.h:809 src/ext_l10n.h:890
+msgid "File name to include"
+msgstr "Valitse sisällytettävä tiedosto"
+
+#: src/ext_l10n.h:811 src/ext_l10n.h:892
+msgid "Select a file"
+msgstr "Valitse tiedosto"
+
+#: src/ext_l10n.h:812
+msgid "Screen Options"
+msgstr "Näyttöasetukset"
+
+#: src/ext_l10n.h:813 src/ext_l10n.h:829
+#: src/frontends/xforms/form_minipage.C:28
+msgid "Width"
+msgstr "Leveys"
+
+#: src/ext_l10n.h:814
+msgid "Monochrome"
+msgstr "Mustavalkoinen"
+
+#: src/ext_l10n.h:815
+msgid "Grayscale"
+msgstr "Harmaasävyinen"
+
+#: src/ext_l10n.h:816
+msgid "Color"
+msgstr "Värillinen"
+
+#: src/ext_l10n.h:817
+msgid "Do not display"
+msgstr "Älä näytä"
+
+#: src/ext_l10n.h:819
+msgid "S&how:"
+msgstr "&Näytä:"
+
+#: src/ext_l10n.h:820 src/ext_l10n.h:830
+msgid "Height"
+msgstr "Korkeus"
+
+#: src/ext_l10n.h:821
+msgid "&Draft mode"
+msgstr "&Luonnostila"
+
+#: src/ext_l10n.h:822
+msgid "draft mode"
+msgstr "luonnostila"
+
+#: src/ext_l10n.h:823 src/frontends/xforms/form_preferences.C:201
+msgid "Size"
+msgstr "Koko"
+
+#: src/ext_l10n.h:824
+msgid "&Scale"
+msgstr "&Skaalaa"
+
+#: src/ext_l10n.h:825
+msgid "&Default"
+msgstr "&Oletus"
+
+#: src/ext_l10n.h:826
+msgid "&Custom"
+msgstr "&Muu"
+
+#: src/ext_l10n.h:827 src/frontends/xforms/form_graphics.C:227
+#: src/frontends/xforms/form_graphics.C:444
+#, no-c-format
+msgid "%"
+msgstr "%"
+
+#: src/ext_l10n.h:828
+msgid "Keep aspect&ratio"
+msgstr "Säilytä &sivusuhde"
+
+#: src/ext_l10n.h:831
+msgid "EPS Options"
+msgstr "EPS-asetukset"
+
+#: src/ext_l10n.h:832
+msgid "Bounding box"
+msgstr "Rajauslaatikko"
+
+#: src/ext_l10n.h:833
+msgid "Left &bottom:"
+msgstr "Ala&vasen:"
+
+#: src/ext_l10n.h:834
+msgid "Right &top:"
+msgstr "Ylä&oikea:"
+
+#: src/ext_l10n.h:835
+msgid "Y"
+msgstr "Y"
+
+#: src/ext_l10n.h:836
+msgid "X"
+msgstr "X"
+
+#: src/ext_l10n.h:837 src/ext_l10n.h:840 src/ext_l10n.h:843 src/ext_l10n.h:846
+#: src/frontends/qt2/lengthcombo.C:21
+msgid "pt"
+msgstr "pt"
+
+#: src/ext_l10n.h:838 src/ext_l10n.h:841 src/ext_l10n.h:844 src/ext_l10n.h:847
+#: src/frontends/qt2/lengthcombo.C:19
+msgid "cm"
+msgstr "cm"
+
+#: src/ext_l10n.h:839 src/ext_l10n.h:842 src/ext_l10n.h:845 src/ext_l10n.h:848
+#: src/frontends/qt2/lengthcombo.C:20
+msgid "in"
+msgstr "\""
+
+#: src/ext_l10n.h:849
+msgid "&Get"
+msgstr "&Hae"
+
+#: src/ext_l10n.h:850
+msgid "Get bounding box from file"
+msgstr "Hae rajauslaatikko tiedostosta"
+
+#: src/ext_l10n.h:851
+msgid "&Clip to bounding box"
+msgstr "&Leikkaa rajauslaatikkoon"
+
+#: src/ext_l10n.h:852
+msgid "clip to bounding box"
+msgstr "Leikkaa kuva rajauslaatikkoon"
+
+#: src/ext_l10n.h:854
+msgid "Rotation"
+msgstr "Kierto"
+
+#: src/ext_l10n.h:855
+msgid "&Angle:"
+msgstr "Ku&lma:"
+
+#: src/ext_l10n.h:856
+msgid "&Origin:"
+msgstr "Kesk&us:"
+
+#: src/ext_l10n.h:858
+msgid "leftTop"
+msgstr "ylävasen"
+
+#: src/ext_l10n.h:859
+msgid "leftBottom"
+msgstr "alavasen"
+
+#: src/ext_l10n.h:860
+msgid "leftBaseline"
+msgstr "vasen"
+
+#: src/ext_l10n.h:861 src/frontends/controllers/ControlGraphics.C:202
+msgid "center"
+msgstr "keskellä"
+
+#: src/ext_l10n.h:862
+msgid "centerTop"
+msgstr "ylä"
+
+#: src/ext_l10n.h:863
+msgid "centerBottom"
+msgstr "ala"
+
+#: src/ext_l10n.h:864
+msgid "centerBaseline"
+msgstr "keskellä"
+
+#: src/ext_l10n.h:865
+msgid "rightTop"
+msgstr "yläoikea"
+
+#: src/ext_l10n.h:866
+msgid "rightBottom"
+msgstr "alaoikea"
+
+#: src/ext_l10n.h:867
+msgid "rightBaseline"
+msgstr "oikea"
+
+#: src/ext_l10n.h:868
+msgid "referencePoint"
+msgstr "viitepiste"
+
+#: src/ext_l10n.h:869
+msgid "LaTeX options"
+msgstr "LaTeX-valinnat"
+
+#: src/ext_l10n.h:870
+msgid "Su&bfigure"
+msgstr "&Alikuva"
+
+#: src/ext_l10n.h:871
+msgid "The sub-caption for the figure"
+msgstr "Kuvan alikuvateksti"
+
+#: src/ext_l10n.h:876
+msgid "Include File"
+msgstr "Sisällytä tiedosto"
+
+#: src/ext_l10n.h:877
+msgid "Include type"
+msgstr "Sisällytystyyppi"
+
+#: src/ext_l10n.h:878
+msgid "&Include"
+msgstr "&Sisällytä"
+
+#: src/ext_l10n.h:879 src/ext_l10n.h:881 src/ext_l10n.h:883 src/ext_l10n.h:886
+#: src/ext_l10n.h:888
+msgid "FIXME"
+msgstr "KORJAA"
+
+#: src/ext_l10n.h:880
+msgid "I&nput"
+msgstr "S&yöte"
+
+#: src/ext_l10n.h:882
+msgid "&Verbatim"
+msgstr "S&ellaisenaan"
+
+#: src/ext_l10n.h:884
+msgid "Options"
+msgstr "Asetukset"
+
+#: src/ext_l10n.h:885
+msgid "&Don't typeset"
+msgstr "Älä la&do"
+
+#: src/ext_l10n.h:887
+msgid "Visible &Space"
+msgstr "&Näkyvä väli"
+
+#: src/ext_l10n.h:889
+msgid "&Filename:"
+msgstr "&Tiedostonimi:"
+
+#: src/ext_l10n.h:895
+msgid "&Load"
+msgstr "&Lataa"
+
+#: src/ext_l10n.h:896
+msgid "Load the file"
+msgstr "Lataa tiedosto"
+
+#: src/ext_l10n.h:898 src/ext_l10n.h:1176
+msgid "&Keyword"
+msgstr "&Avainsana"
+
+#: src/ext_l10n.h:899 src/ext_l10n.h:1031 src/ext_l10n.h:1177
+msgid "Index entry"
+msgstr "Hakemistoviite"
+
+#: src/ext_l10n.h:902 src/frontends/qt2/QLog.C:33
+msgid "Log"
+msgstr "Loki"
+
+#: src/ext_l10n.h:904 src/ext_l10n.h:1203
+msgid "Update the display"
+msgstr "Päivitä näyttö"
+
+#: src/ext_l10n.h:906
+msgid "Minipage settings"
+msgstr "Pienoissivuasetukset"
+
+#: src/ext_l10n.h:908 src/ext_l10n.h:1057
+msgid "Top"
+msgstr "Yllä"
+
+#: src/ext_l10n.h:909 src/ext_l10n.h:1058
+msgid "Middle"
+msgstr "Keskellä"
+
+#: src/ext_l10n.h:910 src/ext_l10n.h:1059
+msgid "Bottom"
+msgstr "Alla"
+
+#: src/ext_l10n.h:911
+msgid "Vertical alignment"
+msgstr "Pystytasaus"
+
+#: src/ext_l10n.h:912
+msgid "A&lignment:"
+msgstr "&Tasaus:"
+
+#: src/ext_l10n.h:913
+msgid "Units of width value"
+msgstr "Leveysarvon yksiköt"
+
+#: src/ext_l10n.h:914
+msgid "Width value"
+msgstr "Leveysarvo"
+
+#: src/ext_l10n.h:915
+msgid "&Units:"
+msgstr "&Yksiköt:"
+
+#: src/ext_l10n.h:921
+msgid "&Alignment and Spacing"
+msgstr "&Tasaus ja välit"
+
+#: src/ext_l10n.h:922
+msgid "Alignment:"
+msgstr "Tasaus:"
+
+#: src/ext_l10n.h:923
+msgid "Justified"
+msgstr "Tasattu"
+
+#: src/ext_l10n.h:924
+msgid "Left"
+msgstr "Vasen"
+
+#: src/ext_l10n.h:925
+msgid "Right"
+msgstr "Oikea"
+
+#: src/ext_l10n.h:926
+msgid "Centered"
+msgstr "Keskellä"
+
+#: src/ext_l10n.h:927
+msgid "No indentation"
+msgstr "Ei sisennystä"
+
+#: src/ext_l10n.h:928
+msgid "Spacing"
+msgstr "Välit"
+
+#: src/ext_l10n.h:929 src/ext_l10n.h:940 src/ext_l10n.h:951 src/ext_l10n.h:962
+#: src/ext_l10n.h:973 src/ext_l10n.h:984 src/ext_l10n.h:1037
+msgid "Centimetres"
+msgstr "Senttimetriä"
+
+#: src/ext_l10n.h:930 src/ext_l10n.h:941 src/ext_l10n.h:952 src/ext_l10n.h:963
+#: src/ext_l10n.h:974 src/ext_l10n.h:985 src/ext_l10n.h:1038
+msgid "Inches"
+msgstr "Tuumaa"
+
+#: src/ext_l10n.h:931 src/ext_l10n.h:942 src/ext_l10n.h:953 src/ext_l10n.h:964
+#: src/ext_l10n.h:975 src/ext_l10n.h:986 src/ext_l10n.h:1039
+msgid "Points"
+msgstr "Pistettä"
+
+#: src/ext_l10n.h:932 src/ext_l10n.h:943 src/ext_l10n.h:954 src/ext_l10n.h:965
+#: src/ext_l10n.h:976 src/ext_l10n.h:987 src/ext_l10n.h:1040
+msgid "Millimetres"
+msgstr "Millimetriä"
+
+#: src/ext_l10n.h:933 src/ext_l10n.h:944 src/ext_l10n.h:955 src/ext_l10n.h:966
+#: src/ext_l10n.h:977 src/ext_l10n.h:988 src/ext_l10n.h:1041
+msgid "Picas"
+msgstr "Picaa"
+
+#: src/ext_l10n.h:934 src/ext_l10n.h:945 src/ext_l10n.h:956 src/ext_l10n.h:967
+#: src/ext_l10n.h:978 src/ext_l10n.h:989 src/ext_l10n.h:1042
+msgid "ex Units"
+msgstr "ex-yksikköä"
+
+#: src/ext_l10n.h:935 src/ext_l10n.h:946 src/ext_l10n.h:957 src/ext_l10n.h:968
+#: src/ext_l10n.h:979 src/ext_l10n.h:990 src/ext_l10n.h:1043
+msgid "em Units"
+msgstr "em-yksikköä"
+
+#: src/ext_l10n.h:936 src/ext_l10n.h:947 src/ext_l10n.h:958 src/ext_l10n.h:969
+#: src/ext_l10n.h:980 src/ext_l10n.h:991 src/ext_l10n.h:1044
+msgid "Scaled Points"
+msgstr "Skaalattua pistettä"
+
+#: src/ext_l10n.h:937 src/ext_l10n.h:948 src/ext_l10n.h:959 src/ext_l10n.h:970
+#: src/ext_l10n.h:981 src/ext_l10n.h:992 src/ext_l10n.h:1045
+msgid "Big/PS Points"
+msgstr "Big/PS-pistettä"
+
+#: src/ext_l10n.h:938 src/ext_l10n.h:949 src/ext_l10n.h:960 src/ext_l10n.h:971
+#: src/ext_l10n.h:982 src/ext_l10n.h:993 src/ext_l10n.h:1046
+msgid "Didot Points"
+msgstr "Didot-pistettä"
+
+#: src/ext_l10n.h:939 src/ext_l10n.h:950 src/ext_l10n.h:961 src/ext_l10n.h:972
+#: src/ext_l10n.h:983 src/ext_l10n.h:994 src/ext_l10n.h:1047
+msgid "Cicero Points"
+msgstr "Cicero-pistettä"
+
+#: src/ext_l10n.h:995 src/ext_l10n.h:997
+msgid "Units:"
+msgstr "Yksiköt:"
+
+#: src/ext_l10n.h:996 src/ext_l10n.h:998
+msgid "Unit of Size, Stretch and Slink"
+msgstr "Koon, venymän ja kutistuman yksikkö"
+
+#: src/ext_l10n.h:999
+msgid "Value:"
+msgstr "Arvo:"
+
+#: src/ext_l10n.h:1000
+msgid "Amount of spacing"
+msgstr "Välin määrä"
+
+#: src/ext_l10n.h:1001
+msgid "Stretch:"
+msgstr "Venymä:"
+
+#: src/ext_l10n.h:1002
+msgid "Margin by which paragraph is allowed to increase"
+msgstr "Määrä, jonka verran kappale voi kasvaa"
+
+#: src/ext_l10n.h:1003
+msgid "Shrink:"
+msgstr "Kutistuma:"
+
+#: src/ext_l10n.h:1004
+msgid "Margin by which paragraph is allowed to decrease"
+msgstr "Määrä, jonka verran kappale voi pienetä"
+
+#: src/ext_l10n.h:1006 src/ext_l10n.h:1015
+msgid "DefSkip"
+msgstr "Oletusväli"
+
+#: src/ext_l10n.h:1007 src/ext_l10n.h:1016
+msgid "SmallSkip"
+msgstr "Pieni väli"
+
+#: src/ext_l10n.h:1008 src/ext_l10n.h:1017
+msgid "MedSkip"
+msgstr "Keskisuuri väli"
+
+#: src/ext_l10n.h:1009 src/ext_l10n.h:1018
+msgid "BigSkip"
+msgstr "Suuri väli"
+
+#: src/ext_l10n.h:1010 src/ext_l10n.h:1019
+msgid "VFill"
+msgstr "Vaakatäyttö"
+
+#: src/ext_l10n.h:1012
+msgid "Above:"
+msgstr "Yllä:"
+
+#: src/ext_l10n.h:1013
+msgid "Below:"
+msgstr "Alla:"
+
+#: src/ext_l10n.h:1021
+msgid "Keep space at the top of the page"
+msgstr "Säilytä väli sivun ylälaidassa"
+
+#: src/ext_l10n.h:1022
+msgid "Keep space at top of the page"
+msgstr "Säilytä väli sivun ylälaidassa"
+
+#: src/ext_l10n.h:1023
+msgid "Keep space at the bottom of the page"
+msgstr "Säilytä väli sivun alalaidassa"
+
+#: src/ext_l10n.h:1024
+msgid "List environment"
+msgstr "Luetteloympäristö"
+
+#: src/ext_l10n.h:1025
+msgid "Label width:"
+msgstr "Nimikeleveys:"
+
+#: src/ext_l10n.h:1026
+msgid "Label width in list environment"
+msgstr "Nimikkeen leveys luetteloympäristössä"
+
+#: src/ext_l10n.h:1027
+msgid "&Lines and Page breaks"
+msgstr "&Viivat ja sivunvaihdot"
+
+#: src/ext_l10n.h:1028
+msgid "Page break"
+msgstr "Sivunvaihto"
+
+#: src/ext_l10n.h:1029 src/ext_l10n.h:1033
+msgid "above paragraph"
+msgstr "ennen kappaletta"
+
+#: src/ext_l10n.h:1030 src/ext_l10n.h:1034
+msgid "below paragraph"
+msgstr "kappaleen jälkeen"
+
+#: src/ext_l10n.h:1032
+msgid "Line"
+msgstr "Viiva"
+
+#: src/ext_l10n.h:1035
+msgid "&Extra options"
+msgstr "&Lisäasetukset"
+
+#: src/ext_l10n.h:1036
+msgid "Unit:"
+msgstr "Yksikkö:"
+
+#: src/ext_l10n.h:1049 src/frontends/qt2/QMinipage.C:33
+msgid "Minipage"
+msgstr "Pienoissivu"
+
+#: src/ext_l10n.h:1050
+msgid "Wrap text around floats"
+msgstr "Teksti kiertää irralliset osat"
+
+#: src/ext_l10n.h:1051
+msgid "Indent whole paragraph"
+msgstr "Sisennä koko kappale"
+
+#: src/ext_l10n.h:1052
+msgid "Width:"
+msgstr "Leveys:"
+
+#: src/ext_l10n.h:1053
+msgid "Minipage options"
+msgstr "Pienoissivuasetukset"
+
+#: src/ext_l10n.h:1054
+msgid "Start new minipage"
+msgstr "Aloita uusi pienoissivu"
+
+#: src/ext_l10n.h:1055
+msgid "HFill between minipage paragraphs"
+msgstr "Vaakatäyttö pienoissivukappaleiden välissä"
+
+#: src/ext_l10n.h:1056
+msgid "Vertical Alignment:"
+msgstr "Pystytasaus:"
+
+#: src/ext_l10n.h:1064
+msgid "LaTeX pre-amble"
+msgstr "LaTeX-aloitusosa"
+
+#: src/ext_l10n.h:1065
+msgid "The LaTeX pre-amble"
+msgstr "LaTeX-aloitusosa"
+
+#: src/ext_l10n.h:1066
+msgid "&Edit ..."
+msgstr "&Muokkaa..."
+
+#: src/ext_l10n.h:1067
+msgid "Edit the pre-amble in an external editor"
+msgstr "Muokkaa aloitusosaa toisella editorilla"
+
+#: src/LyXAction.C:138 src/LyXAction.C:145 src/ext_l10n.h:1071
+#: src/frontends/qt2/QPrint.C:35 src/frontends/xforms/FormPrint.C:35
+#: src/frontends/xforms/form_print.C:133
+msgid "Print"
+msgstr "Tulosta"
+
+#: src/ext_l10n.h:1072
+msgid "Print Destination"
+msgstr "Tulosteen kohde"
+
+#: src/ext_l10n.h:1073
+msgid "P&rinter"
+msgstr "&Tulostin"
+
+#: src/ext_l10n.h:1074
+msgid "Send output to the printer"
+msgstr "Syötä tuloste tulostimelle"
+
+#: src/ext_l10n.h:1076 src/ext_l10n.h:1078
+msgid "Send output to a file"
+msgstr "Syötä tuloste tiedostoon"
+
+#: src/ext_l10n.h:1077
+msgid "Send output to the given printer"
+msgstr "Syötä tuloste annetulle tulostimelle"
+
+#: src/ext_l10n.h:1080
+msgid "Pages"
+msgstr "Sivut"
+
+#: src/ext_l10n.h:1081
+msgid "&All"
+msgstr "&Kaikki"
+
+#: src/ext_l10n.h:1082
+msgid "Print all pages"
+msgstr "Tulosta joka sivu"
+
+#: src/ext_l10n.h:1083
+msgid "&Odd"
+msgstr "&Parittomat"
+
+#: src/ext_l10n.h:1084
+msgid "Print odd pages only"
+msgstr "Tulosta vain parittomat sivut"
+
+#: src/ext_l10n.h:1085
+msgid "&Even"
+msgstr "&Parilliset"
+
+#: src/ext_l10n.h:1086
+msgid "Print even pages only"
+msgstr "Tulosta vain parilliset sivut"
+
+#: src/ext_l10n.h:1087
+msgid "&Last page:"
+msgstr "&Viimeinen sivu:"
+
+#: src/ext_l10n.h:1088
+msgid "Page number to print to"
+msgstr "Sivu, johon asti tulostetaan"
+
+#: src/ext_l10n.h:1089
+msgid "Re&verse order"
+msgstr "&Käänteinen järjestys"
+
+#: src/ext_l10n.h:1090
+msgid "Print in reverse order"
+msgstr "Tulosta käänteisessä järjestyksessä"
+
+#: src/ext_l10n.h:1091
+msgid "Page number to print from"
+msgstr "Sivu, josta tulostus alkaa"
+
+#: src/ext_l10n.h:1092
+msgid "Ran&ge"
+msgstr "&Alue"
+
+#: src/ext_l10n.h:1093
+msgid "Set a range of pages to print"
+msgstr "Tulostettava sivualue"
+
+#: src/ext_l10n.h:1094
+msgid "&Starting range:"
+msgstr "&Aloitusalue:"
+
+#: src/ext_l10n.h:1095 src/frontends/xforms/form_print.C:139
+msgid "Copies"
+msgstr "Kopiot"
+
+#: src/ext_l10n.h:1096
+msgid "Number of copies"
+msgstr "Kopioiden määrä"
+
+#: src/ext_l10n.h:1097
+msgid "&Collate"
+msgstr "&Järjestetty"
+
+#: src/ext_l10n.h:1098
+msgid "Collate copies"
+msgstr "Järjestä kopiot"
+
+#: src/ext_l10n.h:1099
+msgid "&Print"
+msgstr "&Tulosta"
+
+#: src/LyXAction.C:130 src/ext_l10n.h:1100 src/ext_l10n.h:1159
+#: src/frontends/controllers/ButtonController.h:74
+#: src/frontends/xforms/FormMathsPanel.C:71
+#: src/frontends/xforms/FormMathsPanel.C:407
+#: src/frontends/xforms/form_maths_deco.C:32
+#: src/frontends/xforms/form_maths_space.C:73
+#: src/frontends/xforms/form_maths_style.C:35
+msgid "Close"
+msgstr "Sulje"
+
+#: src/ext_l10n.h:1102 src/ext_l10n.h:1187
+msgid "&Type"
+msgstr "&Tyyppi"
+
+#: src/ext_l10n.h:1104
+msgid "Update the reference list"
+msgstr "Päivitä viiteluettelo"
+
+#: src/ext_l10n.h:1105
+msgid "Sort"
+msgstr "Järjestä"
+
+#: src/ext_l10n.h:1106
+msgid "Sort references in alphabetical order"
+msgstr "Järjestä viitteet aakkosjärjestykseen"
+
+#: src/ext_l10n.h:1107 src/frontends/qt2/QRef.C:103
+msgid "&Goto"
+msgstr "&Siirry"
+
+#: src/ext_l10n.h:1108
+msgid "Move the document cursor to reference"
+msgstr "Siirrä kohdistin viitteelle"
+
+#: src/ext_l10n.h:1110
+msgid "Page number"
+msgstr "Sivunumero"
+
+#: src/ext_l10n.h:1111
+msgid "Ref on page xxx"
+msgstr "Viittaus sivulla xxx"
+
+#: src/ext_l10n.h:1112
+msgid "On page xxx"
+msgstr "Sivulla xxx"
+
+#: src/ext_l10n.h:1113
+msgid "Pretty reference"
+msgstr "Hieno viittaus"
+
+#: src/ext_l10n.h:1114
+msgid "Reference as it appears in output"
+msgstr "Viite sellaisena kuin se on tulosteessa"
+
+#: src/ext_l10n.h:1115
+msgid "&Reference:"
+msgstr "&Viittaus:"
+
+#: src/ext_l10n.h:1116
+msgid "&Name:"
+msgstr "&Nimi:"
+
+#: src/ext_l10n.h:1117
+msgid "Available references"
+msgstr "Mahdolliset viitteet"
+
+#: src/ext_l10n.h:1120
+msgid "Search and replace"
+msgstr "Etsi ja korvaa"
+
+#: src/ext_l10n.h:1121
+msgid "&Find:"
+msgstr "&Etsi:"
+
+#: src/ext_l10n.h:1122
+msgid "Replace &with:"
+msgstr "K&orvaava teksti:"
+
+#: src/ext_l10n.h:1123
+msgid "Case &sensitive"
+msgstr "&Sama kirjainkoko"
+
+#: src/ext_l10n.h:1124
+msgid "Match whole words onl&y"
+msgstr "Löydä &vain kokonaiset sanat"
+
+#: src/ext_l10n.h:1125
+msgid "Find &Next"
+msgstr "Etsi &seuraava"
+
+#: src/ext_l10n.h:1126 src/ext_l10n.h:1134 src/ext_l10n.h:1183
+msgid "&Replace"
+msgstr "&Korvaa"
+
+#: src/ext_l10n.h:1127
+msgid "Replace &All "
+msgstr "Korvaa k&aikki"
+
+#: src/ext_l10n.h:1128
+msgid "Search &backwards"
+msgstr "Etsi &edellinen"
+
+#: src/ext_l10n.h:1130
+msgid "File: "
+msgstr "Tiedosto: "
+
+#: src/ext_l10n.h:1132 src/frontends/qt2/QSpellchecker.C:27
+msgid "Spellchecker"
+msgstr "Oikoluin"
+
+#: src/ext_l10n.h:1133
+msgid "Suggestions:"
+msgstr "Ehdotukset:"
+
+#: src/ext_l10n.h:1135
+msgid "Replace word with current choice"
+msgstr "Haluatko korvata sanan nykyisellä valinnalla"
+
+#: src/ext_l10n.h:1136
+msgid "&Add"
+msgstr "&Lisää"
+
+#: src/ext_l10n.h:1137
+msgid "Add the word to your personal dictionary"
+msgstr "Lisää sana käyttäjän sanastoon"
+
+#: src/ext_l10n.h:1138
+msgid "&Ignore"
+msgstr "&Ohita"
+
+#: src/ext_l10n.h:1139
+msgid "Ignore this word"
+msgstr "Ohita tämä sana"
+
+#: src/ext_l10n.h:1140
+msgid "&Accept"
+msgstr "&Hyväksy"
+
+#: src/ext_l10n.h:1141
+msgid "Accept word for this session"
+msgstr "Hyväksy sana tässä istunnossa"
+
+#: src/ext_l10n.h:1142
+msgid "&Options..."
+msgstr "&Asetukset..."
+
+#: src/ext_l10n.h:1144
+msgid "How far spellchecking has got"
+msgstr "Kuinka pitkällä oikoluku on"
+
+#: src/ext_l10n.h:1145 src/frontends/xforms/form_spellchecker.C:37
+msgid "Suggestions"
+msgstr "Ehdotukset"
+
+#: src/ext_l10n.h:1146
+msgid "Replacement:"
+msgstr "Korvaava:"
+
+#: src/ext_l10n.h:1147
+msgid "Current word"
+msgstr "Nykyinen sana"
+
+#: src/ext_l10n.h:1148
+msgid "Unknown:"
+msgstr "Tuntematon:"
+
+#: src/ext_l10n.h:1149
+msgid "Replace with selected word"
+msgstr "Korvaa valitulla sanalla"
+
+#: src/ext_l10n.h:1150
+msgid "&Start..."
+msgstr "&Aloita"
+
+#: src/ext_l10n.h:1151
+msgid "Start spellcheck"
+msgstr "Käynnistä oikoluku"
+
+#: src/ext_l10n.h:1152 src/frontends/qt2/QTabularCreate.C:28
+msgid "Insert table"
+msgstr "Lisää taulukko"
+
+#: src/ext_l10n.h:1153
+msgid "&Rows:"
+msgstr "&Rivejä:"
+
+#: src/ext_l10n.h:1154
+msgid "Number of rows"
+msgstr "Rivien määrä"
+
+#: src/ext_l10n.h:1155
+msgid "&Columns:"
+msgstr "&Sarakkeita:"
+
+#: src/ext_l10n.h:1156
+msgid "Number of columns"
+msgstr "Sarakkeiden määrä"
+
+#: src/ext_l10n.h:1157
+msgid "Resize this to the correct table dimensions"
+msgstr "Muuta tämän koko oikeita taulukon mittoja vastaavaksi"
+
+#: src/ext_l10n.h:1161
+msgid "LaTeX classes"
+msgstr "LaTeX-luokat"
+
+#: src/ext_l10n.h:1162
+msgid "LaTeX styles"
+msgstr "LaTeX-tyylit"
+
+#: src/ext_l10n.h:1163
+msgid "BibTeX styles"
+msgstr "BibTeX-tyylit"
+
+#: src/ext_l10n.h:1164
+msgid "Selected classes or styles"
+msgstr "Valitut luokat tai tyylit"
+
+#: src/ext_l10n.h:1165
+msgid "Show &path"
+msgstr "Näytä &polku"
+
+#: src/ext_l10n.h:1166
+msgid "Toggles view of the file list"
+msgstr "Näyttää tai piilottaa tiedostoluettelon"
+
+#: src/ext_l10n.h:1168
+msgid "Installed files"
+msgstr "Asennetut tiedostot"
+
+#: src/ext_l10n.h:1169
+msgid "&Rescan"
+msgstr "&Päivitä"
+
+#: src/ext_l10n.h:1170
+msgid "Built new file list"
+msgstr "Loi uuden tiedostoluettelon"
+
+#: src/ext_l10n.h:1171
+msgid "&View"
+msgstr "&Katsele"
+
+#: src/ext_l10n.h:1172
+msgid ""
+"Show contents of marked file. Only possible when files are shown with path"
+msgstr ""
+"Näytä merkityn tiedoston sisältö. Mahdollista vain kun tiedostot näkyvät "
+"polkuineen."
+
+#: src/ext_l10n.h:1174
+msgid "Close this dialog"
+msgstr "Sulje tämä ikkuna"
+
+#: src/ext_l10n.h:1178
+msgid "Entry"
+msgstr "Kohta"
+
+#: src/ext_l10n.h:1179
+msgid "Thesaurus entries"
+msgstr "Synonyymit"
+
+#: src/ext_l10n.h:1180
+msgid "Select a related word"
+msgstr "Valitse kytkeytyvä sana"
+
+#: src/ext_l10n.h:1181
+msgid "&Selection"
+msgstr "&Valinta"
+
+#: src/ext_l10n.h:1182
+msgid "The selected entry"
+msgstr "Valittu kohta"
+
+#: src/ext_l10n.h:1184
+msgid "Replace the entry with the selection"
+msgstr "Korvaa kohta valinnalla"
+
+#: src/ext_l10n.h:1186
+msgid "Table Of Contents"
+msgstr "Sisällysluettelo"
+
+#: src/ext_l10n.h:1188
+msgid "Contents list"
+msgstr "Sisällysluettelo"
+
+#: src/ext_l10n.h:1191
+msgid "Insert URL"
+msgstr "Lisää URL"
+
+#: src/ext_l10n.h:1192
+msgid "&URL"
+msgstr "&URL"
+
+#: src/ext_l10n.h:1194
+msgid "&Name"
+msgstr "&Nimi"
+
+#: src/ext_l10n.h:1195
+msgid "Name associated with the URL"
+msgstr "URL:ään liittyvä nimi"
+
+#: src/ext_l10n.h:1197
+msgid "&Generate hyperlink"
+msgstr "&Luo hyperlinkki"
+
+#: src/ext_l10n.h:1198
+msgid "Output as a hyperlink ?"
+msgstr "Tuota hyperlinkki?"
+
+#: src/ext_l10n.h:1201
+msgid "Version control log"
+msgstr "Versiohallintaloki"
+
 #. Insert the latex builtin float-types
 #. (these will later be read from a layout file)
 #. table
@@ -825,10 +4872,6 @@ msgstr "Kuva"
 #: src/FloatList.C:40
 msgid "List of Figures"
 msgstr "Kuvat"
-
-#: src/FloatList.C:47 src/ext_l10n.h:199
-msgid "Algorithm"
-msgstr "Algoritmi"
 
 #: src/FloatList.C:48
 msgid "List of Algorithms"
@@ -849,23 +4892,6 @@ msgstr " ym."
 #: src/frontends/controllers/biblio.C:258
 msgid "No year"
 msgstr "Ei vuotta"
-
-#. /
-#: src/frontends/controllers/ButtonController.h:73 src/LyXAction.C:157
-#: src/lyxfunc.C:1082 src/ext_l10n.h:571 src/ext_l10n.h:605 src/ext_l10n.h:764
-#: src/ext_l10n.h:901
-msgid "Cancel"
-msgstr "Peru"
-
-#: src/frontends/controllers/ButtonController.h:74
-#: src/frontends/xforms/form_maths_deco.C:32
-#: src/frontends/xforms/FormMathsPanel.C:71
-#: src/frontends/xforms/FormMathsPanel.C:407
-#: src/frontends/xforms/form_maths_space.C:73
-#: src/frontends/xforms/form_maths_style.C:35 src/LyXAction.C:130
-#: src/ext_l10n.h:1100 src/ext_l10n.h:1159
-msgid "Close"
-msgstr "Sulje"
 
 #: src/frontends/controllers/character.C:33
 #: src/frontends/controllers/character.C:53
@@ -945,11 +4971,6 @@ msgstr "Pieni"
 msgid "Normal"
 msgstr "Tavallinen"
 
-#: src/frontends/controllers/character.C:105 src/frontends/qt2/QDocument.C:203
-#: src/lyxfont.C:56 src/ext_l10n.h:745
-msgid "Large"
-msgstr "Suuri"
-
 #: src/frontends/controllers/character.C:107 src/lyxfont.C:57
 msgid "Larger"
 msgstr "Suurempi"
@@ -957,11 +4978,6 @@ msgstr "Suurempi"
 #: src/frontends/controllers/character.C:109 src/lyxfont.C:57
 msgid "Largest"
 msgstr "Suurin"
-
-#: src/frontends/controllers/character.C:111 src/frontends/qt2/QDocument.C:206
-#: src/lyxfont.C:57 src/ext_l10n.h:748
-msgid "Huge"
-msgstr "Valtava"
 
 #: src/frontends/controllers/character.C:113 src/lyxfont.C:57
 msgid "Huger"
@@ -1104,52 +5120,39 @@ msgstr "Valitse kuvatiedosto"
 msgid "Clipart|#C#c"
 msgstr "Leikekuva|#L#l"
 
-#: src/frontends/controllers/ControlGraphics.C:202 src/ext_l10n.h:861
-msgid "center"
-msgstr "keskellä"
-
 #: src/frontends/controllers/ControlGraphics.C:203
-#, fuzzy
 msgid "left top"
 msgstr "ylävasen"
 
 #: src/frontends/controllers/ControlGraphics.C:203
-#, fuzzy
 msgid "left bottom"
 msgstr "alavasen"
 
 #: src/frontends/controllers/ControlGraphics.C:203
-#, fuzzy
 msgid "left baseline"
 msgstr "vasen"
 
 #: src/frontends/controllers/ControlGraphics.C:204
-#, fuzzy
 msgid "center top"
 msgstr "ylä"
 
 #: src/frontends/controllers/ControlGraphics.C:204
-#, fuzzy
 msgid "center bottom"
 msgstr "ala"
 
 #: src/frontends/controllers/ControlGraphics.C:204
-#, fuzzy
 msgid "center baseline"
 msgstr "keskellä"
 
 #: src/frontends/controllers/ControlGraphics.C:205
-#, fuzzy
 msgid "right top"
 msgstr "yläoikea"
 
 #: src/frontends/controllers/ControlGraphics.C:205
-#, fuzzy
 msgid "right bottom"
 msgstr "alaoikea"
 
 #: src/frontends/controllers/ControlGraphics.C:205
-#, fuzzy
 msgid "right baseline"
 msgstr "oikea"
 
@@ -1237,6 +5240,7 @@ msgid "Filename can't contain any of these characters:"
 msgstr "Seuraavat merkit eivät ole sallittuja tiedostonnimissä:"
 
 #: src/frontends/controllers/helper_funcs.C:61
+#, c-format
 msgid "space, '#', '~', '$' or '%'."
 msgstr "välilyönti, '#', '~', '$' tai '%'."
 
@@ -1248,11 +5252,6 @@ msgstr "&Kyllä"
 msgid "&No"
 msgstr "&Ei"
 
-#: src/frontends/qt2/Alert_pimpl.C:45 src/frontends/qt2/QParagraphDialog.C:49
-#: src/ext_l10n.h:539 src/ext_l10n.h:1063
-msgid "&Cancel"
-msgstr "&Peru"
-
 #: src/frontends/qt2/Alert_pimpl.C:51
 msgid "LyX: "
 msgstr "LyX: "
@@ -1260,21 +5259,6 @@ msgstr "LyX: "
 #: src/frontends/qt2/FileDialog.C:43
 msgid "*|All files"
 msgstr "*|Kaikki tiedostot"
-
-#: src/frontends/qt2/lengthcombo.C:19 src/ext_l10n.h:838 src/ext_l10n.h:841
-#: src/ext_l10n.h:844 src/ext_l10n.h:847
-msgid "cm"
-msgstr "cm"
-
-#: src/frontends/qt2/lengthcombo.C:20 src/ext_l10n.h:839 src/ext_l10n.h:842
-#: src/ext_l10n.h:845 src/ext_l10n.h:848
-msgid "in"
-msgstr "\""
-
-#: src/frontends/qt2/lengthcombo.C:21 src/ext_l10n.h:837 src/ext_l10n.h:840
-#: src/ext_l10n.h:843 src/ext_l10n.h:846
-msgid "pt"
-msgstr "pt"
 
 #: src/frontends/qt2/lengthcombo.C:22
 msgid "mm"
@@ -1304,10 +5288,6 @@ msgstr "bp"
 msgid "dd"
 msgstr "dd"
 
-#: src/frontends/qt2/lengthcombo.C:29 src/ext_l10n.h:227
-msgid "cc"
-msgstr "kopio"
-
 #: src/frontends/qt2/lengthcombo.C:30
 msgid "mu"
 msgstr "mu"
@@ -1323,17 +5303,13 @@ msgid "%c"
 msgstr "%c"
 
 #: src/frontends/qt2/lengthcombo.C:33
+#, c-format
 msgid "%l"
 msgstr "%l"
 
 #: src/frontends/qt2/lengthcombo.C:38
 msgid "FIXME - describe the units."
 msgstr "FIXME - kuvaile yksiköitä."
-
-#: src/frontends/qt2/QAbout.C:32 src/frontends/xforms/FormAboutlyx.C:28
-#: src/ext_l10n.h:530
-msgid "About LyX"
-msgstr "LyXistä"
 
 #: src/frontends/qt2/QBibitem.C:26
 msgid "Bibliography Item"
@@ -1342,11 +5318,6 @@ msgstr "Lähdeviite"
 #: src/frontends/qt2/QBibtex.C:29
 msgid "BibTeX"
 msgstr "BibTeX"
-
-#: src/frontends/qt2/QBibtex.C:114 src/frontends/qt2/QBibtexDialog.C:77
-#: src/ext_l10n.h:562
-msgid "Other ..."
-msgstr "Muu..."
 
 #: src/frontends/qt2/QBibtexDialog.C:46
 msgid "BibTeX style files (*.bst)"
@@ -1364,15 +5335,6 @@ msgstr "BiBTeX-tietokannat (*.bib)"
 msgid "Select a BibTeX database to add"
 msgstr "Valitse lisättävä BibTeX-tietokanta"
 
-#: src/frontends/qt2/QCharacter.C:31 src/ext_l10n.h:572
-msgid "Character"
-msgstr "Merkki"
-
-#: src/frontends/qt2/QCitation.C:45 src/frontends/xforms/FormCitation.C:117
-#: src/ext_l10n.h:601
-msgid "Citation"
-msgstr "Lähdeviite"
-
 #: src/frontends/qt2/QCitationDialog.C:48
 #: src/frontends/xforms/FormCitation.C:476
 msgid "Not yet supported"
@@ -1382,112 +5344,9 @@ msgstr "Ei vielä tuettu"
 msgid "Document Settings"
 msgstr "Asiakirjan asetukset"
 
-#: src/frontends/qt2/QDocument.C:72 src/lyxfont.C:573 src/ext_l10n.h:673
-msgid "Default"
-msgstr "Oletus"
-
-#: src/frontends/qt2/QDocument.C:73 src/ext_l10n.h:674 src/ext_l10n.h:1011
-#: src/ext_l10n.h:1020
-msgid "Custom"
-msgstr "Muu"
-
-#: src/frontends/qt2/QDocument.C:74 src/ext_l10n.h:675
-msgid "USletter"
-msgstr "US letter"
-
-#: src/frontends/qt2/QDocument.C:75 src/ext_l10n.h:676
-msgid "USlegal"
-msgstr "US legal"
-
-#: src/frontends/qt2/QDocument.C:76 src/ext_l10n.h:677
-msgid "USexecutive"
-msgstr "US executive"
-
-#: src/frontends/qt2/QDocument.C:77 src/ext_l10n.h:678
-msgid "A3"
-msgstr "A3"
-
 #: src/frontends/qt2/QDocument.C:78
 msgid "A4"
 msgstr "A4"
-
-#: src/frontends/qt2/QDocument.C:79 src/ext_l10n.h:679
-msgid "A5"
-msgstr "A5"
-
-#: src/frontends/qt2/QDocument.C:80 src/ext_l10n.h:680
-msgid "B3"
-msgstr "B3"
-
-#: src/frontends/qt2/QDocument.C:81 src/ext_l10n.h:681
-msgid "B4"
-msgstr "B4"
-
-#: src/frontends/qt2/QDocument.C:82 src/ext_l10n.h:682
-msgid "B5"
-msgstr "B5"
-
-#: src/frontends/qt2/QDocument.C:84 src/ext_l10n.h:684 src/ext_l10n.h:1005
-#: src/ext_l10n.h:1014 src/ext_l10n.h:1048
-msgid "None"
-msgstr "Ei mikään"
-
-#: src/frontends/qt2/QDocument.C:85 src/ext_l10n.h:685
-msgid "A4 small Margins (only portrait)"
-msgstr "A4, kapeat reunukset (vain pysty)"
-
-#: src/frontends/qt2/QDocument.C:86 src/ext_l10n.h:686
-msgid "A4 very small Margins (only portrait)"
-msgstr "A4, hyvin kapeat reunukset (vain pysty)"
-
-#: src/frontends/qt2/QDocument.C:87 src/ext_l10n.h:687
-msgid "A4 very wide margins (only portrait)"
-msgstr "A4, hyvin leveät reunukset (vain pysty)"
-
-#: src/frontends/qt2/QDocument.C:112 src/ext_l10n.h:655
-msgid "OneHalf"
-msgstr "Puolikas"
-
-#: src/frontends/qt2/QDocument.C:114 src/ext_l10n.h:657
-msgid "Other"
-msgstr "Muu"
-
-#. the document language page
-#: src/frontends/qt2/QDocument.C:116 src/frontends/qt2/QDocument.C:124
-#: src/frontends/qt2/QDocument.C:152 src/frontends/qt2/QDocument.C:196
-#: src/frontends/qt2/QDocument.C:575 src/frontends/qt2/QDocument.C:579
-#: src/ext_l10n.h:642 src/ext_l10n.h:658 src/ext_l10n.h:707 src/ext_l10n.h:738
-#: src/ext_l10n.h:857
-msgid "default"
-msgstr "oletus"
-
-#: src/frontends/qt2/QDocument.C:117 src/ext_l10n.h:659
-msgid "10"
-msgstr "10"
-
-#: src/frontends/qt2/QDocument.C:118 src/ext_l10n.h:660
-msgid "11"
-msgstr "11"
-
-#: src/frontends/qt2/QDocument.C:119 src/ext_l10n.h:661
-msgid "12"
-msgstr "12"
-
-#: src/frontends/qt2/QDocument.C:125 src/ext_l10n.h:643
-msgid "empty"
-msgstr "tyhjä"
-
-#: src/frontends/qt2/QDocument.C:126 src/ext_l10n.h:558 src/ext_l10n.h:644
-msgid "plain"
-msgstr "tavallinen"
-
-#: src/frontends/qt2/QDocument.C:127 src/ext_l10n.h:645
-msgid "headings"
-msgstr "yläotsikot"
-
-#: src/frontends/qt2/QDocument.C:128 src/ext_l10n.h:646
-msgid "fancy"
-msgstr "hienot"
 
 #: src/frontends/qt2/QDocument.C:130
 msgid "Smallskip"
@@ -1505,70 +5364,6 @@ msgstr "Suuri väli"
 msgid "Length"
 msgstr "Pituus"
 
-#: src/frontends/qt2/QDocument.C:153 src/ext_l10n.h:708
-msgid "auto"
-msgstr "automaattinen"
-
-#: src/frontends/qt2/QDocument.C:154 src/ext_l10n.h:709
-msgid "latin1"
-msgstr "latin1"
-
-#: src/frontends/qt2/QDocument.C:155 src/ext_l10n.h:710
-msgid "latin2"
-msgstr "latin2"
-
-#: src/frontends/qt2/QDocument.C:156 src/ext_l10n.h:711
-msgid "latin3"
-msgstr "latin3"
-
-#: src/frontends/qt2/QDocument.C:157 src/ext_l10n.h:712
-msgid "latin4"
-msgstr "latin4"
-
-#: src/frontends/qt2/QDocument.C:158 src/ext_l10n.h:713
-msgid "latin5"
-msgstr "latin5"
-
-#: src/frontends/qt2/QDocument.C:159 src/ext_l10n.h:714
-msgid "latin9"
-msgstr "latin9"
-
-#: src/frontends/qt2/QDocument.C:160 src/ext_l10n.h:715
-msgid "koi8-r"
-msgstr "koi8-r"
-
-#: src/frontends/qt2/QDocument.C:161 src/ext_l10n.h:716
-msgid "koi8-u"
-msgstr "koi8-u"
-
-#: src/frontends/qt2/QDocument.C:162 src/ext_l10n.h:717
-msgid "cp866"
-msgstr "cp866"
-
-#: src/frontends/qt2/QDocument.C:163 src/ext_l10n.h:718
-msgid "cp1251"
-msgstr "cp1251"
-
-#: src/frontends/qt2/QDocument.C:164 src/ext_l10n.h:719
-msgid "iso88595"
-msgstr "iso88595"
-
-#: src/frontends/qt2/QDocument.C:171 src/ext_l10n.h:722
-msgid "``text''"
-msgstr "``teksti''"
-
-#: src/frontends/qt2/QDocument.C:172 src/ext_l10n.h:723
-msgid "''text''"
-msgstr "''teksti''"
-
-#: src/frontends/qt2/QDocument.C:173 src/ext_l10n.h:724
-msgid ",,text``"
-msgstr ",,teksti``"
-
-#: src/frontends/qt2/QDocument.C:174 src/ext_l10n.h:725
-msgid ",,text''"
-msgstr ",,teksti''"
-
 #: src/frontends/qt2/QDocument.C:175
 msgid "«text»"
 msgstr "«teksti»"
@@ -1576,43 +5371,6 @@ msgstr "«teksti»"
 #: src/frontends/qt2/QDocument.C:176
 msgid "»text«"
 msgstr "»teksti«"
-
-#: src/frontends/qt2/QDocument.C:197
-#: src/frontends/xforms/form_preferences.C:171 src/ext_l10n.h:739
-msgid "tiny"
-msgstr "pikkuruinen"
-
-#: src/frontends/qt2/QDocument.C:198 src/ext_l10n.h:740
-msgid "script"
-msgstr "indeksi"
-
-#: src/frontends/qt2/QDocument.C:199 src/ext_l10n.h:741
-msgid "footnote"
-msgstr "alaviite"
-
-#: src/frontends/qt2/QDocument.C:200
-#: src/frontends/xforms/form_preferences.C:180 src/ext_l10n.h:742
-msgid "small"
-msgstr "pieni"
-
-#: src/frontends/qt2/QDocument.C:201
-#: src/frontends/xforms/form_preferences.C:183 src/ext_l10n.h:743
-msgid "normal"
-msgstr "tavallinen"
-
-#: src/frontends/qt2/QDocument.C:202
-#: src/frontends/xforms/form_preferences.C:186 src/ext_l10n.h:744
-msgid "large"
-msgstr "suuri"
-
-#: src/frontends/qt2/QDocument.C:204 src/ext_l10n.h:746
-msgid "LARGE"
-msgstr "suurin"
-
-#: src/frontends/qt2/QDocument.C:205
-#: src/frontends/xforms/form_preferences.C:195 src/ext_l10n.h:747
-msgid "huge"
-msgstr "valtava"
 
 #: src/frontends/qt2/QDocument.C:234 src/frontends/xforms/FormDocument.C:362
 msgid "Document layout set"
@@ -1668,11 +5426,6 @@ msgstr "vaihtuvat valitun asiakirjaluokan oletusarvoiksi?"
 msgid "Unable to switch to new document class."
 msgstr "En voi vaihtaa uuteen asiakirjaluokkaan"
 
-#: src/frontends/qt2/QError.C:23 src/frontends/xforms/FormError.C:24
-#: src/ext_l10n.h:765
-msgid "LaTeX Error"
-msgstr "LaTeX-virhe"
-
 #: src/frontends/qt2/QERT.C:23
 msgid "LaTeX ERT"
 msgstr "LaTeX"
@@ -1702,15 +5455,6 @@ msgstr "Kuva"
 msgid "Include"
 msgstr "Sisällytä"
 
-#: src/frontends/qt2/QIndex.C:23 src/frontends/xforms/FormIndex.C:24
-#: src/insets/insetindex.C:61 src/ext_l10n.h:540 src/ext_l10n.h:897
-msgid "Index"
-msgstr "Hakemisto"
-
-#: src/frontends/qt2/QLog.C:33 src/ext_l10n.h:902
-msgid "Log"
-msgstr "Loki"
-
 #: src/frontends/qt2/QLog.C:51 src/frontends/xforms/FormLog.C:31
 msgid "Build log"
 msgstr "Build-loki"
@@ -1727,10 +5471,6 @@ msgstr "Build-lokitiedostoa ei ole"
 msgid "No LaTeX log file found"
 msgstr "LaTeXin lokitiedostoa ei ole"
 
-#: src/frontends/qt2/QMinipage.C:33 src/ext_l10n.h:1049
-msgid "Minipage"
-msgstr "Pienoissivu"
-
 #: src/frontends/qt2/QParagraph.C:166 src/frontends/xforms/FormParagraph.C:336
 msgid "Paragraph layout set"
 msgstr "Kappaletyyli asetettu"
@@ -1738,16 +5478,6 @@ msgstr "Kappaletyyli asetettu"
 #: src/frontends/qt2/QParagraph.C:174
 msgid "LyX: Paragraph Settings"
 msgstr "LyX: Kappaleen asetukset"
-
-#: src/frontends/qt2/QParagraphDialog.C:49 src/ext_l10n.h:535
-#: src/ext_l10n.h:546 src/ext_l10n.h:600 src/ext_l10n.h:767 src/ext_l10n.h:776
-#: src/ext_l10n.h:794 src/ext_l10n.h:799 src/ext_l10n.h:875 src/ext_l10n.h:894
-#: src/ext_l10n.h:905 src/ext_l10n.h:919 src/ext_l10n.h:1070
-#: src/ext_l10n.h:1119 src/ext_l10n.h:1129 src/ext_l10n.h:1131
-#: src/ext_l10n.h:1143 src/ext_l10n.h:1173 src/ext_l10n.h:1185
-#: src/ext_l10n.h:1190 src/ext_l10n.h:1200 src/ext_l10n.h:1204
-msgid "&Close"
-msgstr "Sul&je"
 
 #. FIXME: should be cleverer here
 #: src/frontends/qt2/QParagraphDialog.C:56
@@ -1766,12 +5496,6 @@ msgstr "Anna editoriohjelma"
 #: src/frontends/qt2/QPreambleDialog.C:63
 msgid "Editor"
 msgstr "Muokkain"
-
-#: src/frontends/qt2/QPrint.C:35 src/frontends/xforms/form_print.C:133
-#: src/frontends/xforms/FormPrint.C:35 src/LyXAction.C:138 src/LyXAction.C:145
-#: src/ext_l10n.h:1071
-msgid "Print"
-msgstr "Tulosta"
 
 #: src/frontends/qt2/QPrintDialog.C:48
 msgid "PostScript files (*.ps)"
@@ -1793,68 +5517,22 @@ msgstr "&Palaa"
 msgid "Go back"
 msgstr "Palaa"
 
-#: src/frontends/qt2/QRef.C:103 src/ext_l10n.h:1107
-msgid "&Goto"
-msgstr "&Siirry"
-
 #: src/frontends/qt2/QRef.C:105 src/frontends/xforms/FormRef.C:77
 #: src/frontends/xforms/FormRef.C:194 src/frontends/xforms/FormRef.C:211
 msgid "Go to reference"
 msgstr "Siirry viitteeseen"
 
-#: src/frontends/qt2/QSearch.C:31 src/frontends/xforms/form_citation.C:78
-#: src/ext_l10n.h:612
-msgid "Search"
-msgstr "Etsi"
-
 #: src/frontends/qt2/QShowFile.C:23
 msgid "ShowFile"
 msgstr "Näytä tiedosto"
-
-#: src/frontends/qt2/QSpellchecker.C:27 src/ext_l10n.h:1132
-msgid "Spellchecker"
-msgstr "Oikoluin"
 
 #: src/frontends/qt2/QSpellchecker.C:114
 msgid "Spellcheck complete"
 msgstr "Oikoluku valmis"
 
-#: src/frontends/qt2/QSpellchecker.C:114
-#: src/frontends/xforms/form_bibitem.C:35
-#: src/frontends/xforms/form_bibtex.C:35
-#: src/frontends/xforms/form_citation.C:173
-#: src/frontends/xforms/form_document.C:47 src/frontends/xforms/form_ert.C:72
-#: src/frontends/xforms/form_external.C:89
-#: src/frontends/xforms/form_filedialog.C:89
-#: src/frontends/xforms/form_float.C:74 src/frontends/xforms/form_forks.C:53
-#: src/frontends/xforms/form_include.C:42 src/frontends/xforms/form_index.C:44
-#: src/frontends/xforms/form_maths_delim.C:49
-#: src/frontends/xforms/form_minipage.C:81
-#: src/frontends/xforms/form_paragraph.C:181
-#: src/frontends/xforms/form_print.C:53 src/frontends/xforms/form_ref.C:86
-#: src/frontends/xforms/form_sendto.C:46
-#: src/frontends/xforms/form_tabular_create.C:28
-#: src/frontends/xforms/form_url.C:64 src/ext_l10n.h:538 src/ext_l10n.h:570
-#: src/ext_l10n.h:603 src/ext_l10n.h:762 src/ext_l10n.h:775 src/ext_l10n.h:900
-msgid "OK"
-msgstr "OK"
-
-#: src/frontends/qt2/QTabularCreate.C:28 src/ext_l10n.h:1152
-msgid "Insert table"
-msgstr "Lisää taulukko"
-
-#: src/frontends/qt2/QThesaurus.C:28 src/ext_l10n.h:449 src/ext_l10n.h:1175
-msgid "Thesaurus"
-msgstr "Synonyymit"
-
 #: src/frontends/qt2/QToc.C:39
 msgid "Table of contents"
 msgstr "Sisällysluettelo"
-
-#: src/frontends/qt2/QURL.C:25 src/ext_l10n.h:470 src/ext_l10n.h:1193
-#: src/ext_l10n.h:1196
-msgid "URL"
-msgstr "URL"
 
 #: src/frontends/qt2/QVCLog.C:30
 msgid "VCLog"
@@ -1922,10 +5600,9 @@ msgstr "Varoitus! "
 msgid "*"
 msgstr "*"
 
-#: src/frontends/xforms/form_aboutlyx.C:29
-#: src/frontends/xforms/form_forks.C:66
 #: src/frontends/xforms/FormMathsBitmap.C:89
-#: src/frontends/xforms/form_search.C:73
+#: src/frontends/xforms/form_aboutlyx.C:29
+#: src/frontends/xforms/form_forks.C:66 src/frontends/xforms/form_search.C:73
 #: src/frontends/xforms/form_tabular.C:31
 msgid "Close|^["
 msgstr "Sulje|^["
@@ -1945,10 +5622,6 @@ msgstr "Tekijänoikeus ja versio"
 #: src/frontends/xforms/FormAboutlyx.C:63
 msgid "License and Warranty"
 msgstr "Lisenssi ja takuu"
-
-#: src/frontends/xforms/FormAboutlyx.C:65 src/ext_l10n.h:533
-msgid "Credits"
-msgstr "Kiitokset"
 
 #: src/frontends/xforms/form_bibitem.C:29
 msgid "Key:|#K"
@@ -2009,7 +5682,6 @@ msgid "Browse your directory for BibTeX stylefiles."
 msgstr "Selaa hakemistostasi BibTeX-tyylitiedostoja."
 
 #: src/frontends/xforms/FormBibtex.C:68
-#, fuzzy
 msgid ""
 "The BibTeX style to use (only one allowed). Insert it without the default "
 "extension \".bst\" and without path. Most of the bibstyles are stored in "
@@ -2164,10 +5836,6 @@ msgstr "@2->"
 msgid "#&B"
 msgstr "#&B"
 
-#: src/frontends/xforms/form_citation.C:73 src/lyxvc.C:122 src/ext_l10n.h:610
-msgid "Info"
-msgstr "Tietoja"
-
 #: src/frontends/xforms/form_citation.C:87
 msgid "Regular Expression|#R"
 msgstr "Säännöllinen lauseke|#l"
@@ -2183,10 +5851,6 @@ msgstr "Edellinen|#E"
 #: src/frontends/xforms/form_citation.C:109
 msgid "Next|#N"
 msgstr "Seuraava|#S"
-
-#: src/frontends/xforms/form_citation.C:116 src/ext_l10n.h:607
-msgid "Citation style"
-msgstr "Lähdeviitetyyli"
 
 #: src/frontends/xforms/form_citation.C:130
 msgid "Full author list|#F"
@@ -2323,12 +5987,10 @@ msgid "Use Class Defaults|#C"
 msgstr "Käytä luokan oletuksia|#l"
 
 #: src/frontends/xforms/form_document.C:94
-#, fuzzy
 msgid "Paper size"
 msgstr "Paperikoko"
 
 #: src/frontends/xforms/form_document.C:96
-#, fuzzy
 msgid "Paper size:|#P"
 msgstr "Paperikoko:|#a"
 
@@ -2340,10 +6002,6 @@ msgstr "Leveys:|#L"
 msgid "Height:|#H"
 msgstr "Korkeus:|#K"
 
-#: src/frontends/xforms/form_document.C:123 src/ext_l10n.h:689
-msgid "Orientation"
-msgstr "Asento"
-
 #: src/frontends/xforms/form_document.C:126
 msgid "Portrait|#r"
 msgstr "Pysty|#P"
@@ -2351,10 +6009,6 @@ msgstr "Pysty|#P"
 #: src/frontends/xforms/form_document.C:134
 msgid "Landscape|#L"
 msgstr "Vaaka|#V"
-
-#: src/frontends/xforms/form_document.C:143 src/ext_l10n.h:692
-msgid "Margins"
-msgstr "Reunukset"
 
 #: src/frontends/xforms/form_document.C:145
 msgid "Custom sizes|#M"
@@ -2392,17 +6046,9 @@ msgstr "Sivuots. väli:|#ä"
 msgid "Footskip:|#F"
 msgstr "Alaviiteväli:|#A"
 
-#: src/frontends/xforms/form_document.C:254 src/ext_l10n.h:668
-msgid "Separation"
-msgstr "Kappaleväli"
-
 #: src/frontends/xforms/form_document.C:255
 msgid "Page cols"
 msgstr "Palstat"
-
-#: src/frontends/xforms/form_document.C:256 src/ext_l10n.h:662
-msgid "Sides"
-msgstr "Sivu"
 
 #: src/frontends/xforms/form_document.C:258
 msgid "Fonts:|#F"
@@ -2417,9 +6063,8 @@ msgid "Class:|#l"
 msgstr "Luokka:|#A"
 
 #: src/frontends/xforms/form_document.C:282
-#, fuzzy
 msgid "Page style:|#P"
-msgstr "Sivuotsikkotyyli:|#S"
+msgstr "Sivutyyli:|#S"
 
 #: src/frontends/xforms/form_document.C:290
 msgid "Spacing|#g"
@@ -2533,10 +6178,6 @@ msgstr "3|#3"
 msgid "4|#4"
 msgstr "4|#4"
 
-#: src/frontends/xforms/form_document.C:608 src/ext_l10n.h:749
-msgid "Bullet Depth"
-msgstr "Taso"
-
 #: src/frontends/xforms/form_document.C:613
 msgid "Standard|#S"
 msgstr "Oletus|#O"
@@ -2561,18 +6202,13 @@ msgstr "Ding 3|#n"
 msgid "Ding 4|#g"
 msgstr "Ding 4|#g"
 
-#: src/frontends/xforms/FormDocument.C:58 src/ext_l10n.h:636
-msgid "Document Layout"
-msgstr "Asiakirjan tyylipohja"
-
 #: src/frontends/xforms/FormDocument.C:110
-#, fuzzy
 msgid ""
 " Default | Custom | US letter | US legal | US executive | A3 | A4 | A5 | B3 "
 "| B4 | B5 "
 msgstr ""
-" Oletus | Oma | USletter | USlegal | USexecutive | A3 | A4 | A5 | B3 | B4 | "
-"B5 "
+" Oletus | Muu | US letter | US legal | US executive | A3 | A4 | A5 | B3 | B4 "
+"| B5 "
 
 #: src/frontends/xforms/FormDocument.C:113
 msgid " None | Small Margins | Very small Margins | Very wide Margins "
@@ -2581,7 +6217,6 @@ msgstr ""
 "reunukset"
 
 #: src/frontends/xforms/FormDocument.C:201
-#, fuzzy
 msgid " Single | OneHalf | Double | Custom "
 msgstr " Yksinkertainen | Puolitoista | Kaksinkertainen | Muu "
 
@@ -2605,25 +6240,6 @@ msgid ""
 msgstr ""
 " oletus | pikkuruinen | indeksi | alaviite | pieni | tavallinen | suuri | "
 "suurempi | suurin | valtava | valtavin"
-
-#: src/frontends/xforms/FormDocument.C:329 src/ext_l10n.h:671
-msgid "Paper"
-msgstr "Sivu"
-
-#: src/frontends/xforms/FormDocument.C:331
-#: src/frontends/xforms/FormPreferences.C:258 src/ext_l10n.h:578
-#: src/ext_l10n.h:586 src/ext_l10n.h:704
-msgid "Language"
-msgstr "Kieli"
-
-#: src/frontends/xforms/FormDocument.C:333 src/ext_l10n.h:730
-#: src/ext_l10n.h:853
-msgid "Extra"
-msgstr "Lisä"
-
-#: src/frontends/xforms/FormDocument.C:335 src/ext_l10n.h:736
-msgid "Bullets"
-msgstr "Merkit"
 
 #: src/frontends/xforms/FormDocument.C:338
 msgid ""
@@ -2738,10 +6354,6 @@ msgstr "Käyttäjä2|#2"
 #: src/frontends/xforms/FormFiledialog.C:398
 msgid "Warning! Couldn't open directory."
 msgstr "Varoitus! Ei voinut avata hakemistoa."
-
-#: src/frontends/xforms/form_float.C:29 src/ext_l10n.h:800
-msgid "Placement"
-msgstr "Sijoittelu"
 
 #: src/frontends/xforms/form_float.C:33
 msgid "Top of the page|#T"
@@ -2868,12 +6480,6 @@ msgstr "Muu|M"
 msgid "Value|#V"
 msgstr "Arvo|#r"
 
-#: src/frontends/xforms/form_graphics.C:227
-#: src/frontends/xforms/form_graphics.C:444 src/ext_l10n.h:827
-#, no-c-format
-msgid "%"
-msgstr "%"
-
 #: src/frontends/xforms/form_graphics.C:231
 #: src/frontends/xforms/form_graphics.C:491
 msgid "Width|#W"
@@ -2966,11 +6572,6 @@ msgstr "Älä näytä|#Ä"
 #: src/frontends/xforms/form_graphics.C:513
 msgid "Get LaTeX size|#L"
 msgstr "Hae LaTeX-koko|#L"
-
-#. add the different tabfolders
-#: src/frontends/xforms/FormGraphics.C:189 src/ext_l10n.h:807
-msgid "File"
-msgstr "Tiedosto"
 
 #: src/frontends/xforms/FormGraphics.C:190
 msgid "LyX View"
@@ -3110,11 +6711,6 @@ msgstr "Sulje "
 msgid "Functions"
 msgstr "Funktiot"
 
-#: src/frontends/xforms/form_maths_panel.C:35
-#: src/frontends/xforms/FormMathsPanel.C:103 src/ext_l10n.h:507
-msgid "Greek"
-msgstr "Kreikka"
-
 #: src/frontends/xforms/form_maths_panel.C:39
 #: src/frontends/xforms/form_maths_panel.C:94
 msgid "­ Û"
@@ -3130,17 +6726,17 @@ msgstr "± ´"
 msgid "£ @"
 msgstr "£ @"
 
-#: src/frontends/xforms/form_maths_panel.C:51
-#: src/frontends/xforms/form_maths_panel.C:114
 #: src/frontends/xforms/FormMathsPanel.C:109
 #: src/frontends/xforms/FormPreferences.C:225
 #: src/frontends/xforms/FormPreferences.C:242
 #: src/frontends/xforms/FormPreferences.C:250
+#: src/frontends/xforms/form_maths_panel.C:51
+#: src/frontends/xforms/form_maths_panel.C:114
 msgid "Misc"
 msgstr "Sekal."
 
-#: src/frontends/xforms/form_maths_panel.C:77
 #: src/frontends/xforms/FormMathsPanel.C:116
+#: src/frontends/xforms/form_maths_panel.C:77
 msgid "Dots"
 msgstr "Pisteet"
 
@@ -3227,11 +6823,6 @@ msgstr ""
 #: src/frontends/xforms/FormMathsStyle.C:41
 msgid "Maths Styles & Fonts"
 msgstr "Matematiikkatyylit ja -kirjasimet"
-
-#: src/frontends/xforms/form_minipage.C:28 src/ext_l10n.h:813
-#: src/ext_l10n.h:829
-msgid "Width"
-msgstr "Leveys"
 
 #: src/frontends/xforms/form_minipage.C:31
 #: src/frontends/xforms/form_paragraph.C:28
@@ -3354,7 +6945,6 @@ msgid " None | Defskip | Smallskip | Medskip | Bigskip | VFill | Length "
 msgstr " Ei | Oletus | Pieni | Keski | Suuri | Pystytäyttö | Annettu pituus "
 
 #: src/frontends/xforms/FormParagraph.C:129
-#, fuzzy
 msgid " Default | Single | OneHalf | Double | Custom "
 msgstr " Oletus | Yksinkertainen | Puolitoista | Kaksinkertainen | Muu "
 
@@ -3362,7 +6952,7 @@ msgstr " Oletus | Yksinkertainen | Puolitoista | Kaksinkertainen | Muu "
 msgid "LaTeX preamble"
 msgstr "LaTeX-aloitusosa"
 
-#: src/frontends/xforms/form_preferences.C:39 src/LyXAction.C:154
+#: src/LyXAction.C:154 src/frontends/xforms/form_preferences.C:39
 msgid "Save"
 msgstr "Tallenna"
 
@@ -3422,10 +7012,6 @@ msgstr "suurin"
 #: src/frontends/xforms/form_preferences.C:198
 msgid "huger"
 msgstr "valtavin"
-
-#: src/frontends/xforms/form_preferences.C:201 src/ext_l10n.h:823
-msgid "Size"
-msgstr "Koko"
 
 #: src/frontends/xforms/form_preferences.C:225
 msgid "Popup Fonts & Encoding"
@@ -3504,7 +7090,6 @@ msgstr "HSV"
 msgid "RGB"
 msgstr "RGB"
 
-#: src/frontends/xforms/form_preferences.C:387
 #: src/frontends/xforms/FormPreferences.C:1073
 #: src/frontends/xforms/FormPreferences.C:1074
 #: src/frontends/xforms/FormPreferences.C:1112
@@ -3513,6 +7098,7 @@ msgstr "RGB"
 #: src/frontends/xforms/FormPreferences.C:1343
 #: src/frontends/xforms/FormPreferences.C:1386
 #: src/frontends/xforms/FormPreferences.C:1388
+#: src/frontends/xforms/form_preferences.C:387
 msgid "Modify|#M"
 msgstr "Muuta|#M"
 
@@ -3596,8 +7182,8 @@ msgstr "Käytä syötteen merkistöä|#m"
 msgid "Advanced Options"
 msgstr "Lisäasetukset"
 
-#: src/frontends/xforms/form_preferences.C:608
 #: src/frontends/xforms/FormPreferences.C:219
+#: src/frontends/xforms/form_preferences.C:608
 msgid "Interface"
 msgstr "Käyttöliittymä"
 
@@ -3689,12 +7275,12 @@ msgstr "Nimien pääte|#e"
 msgid "Viewer|#V"
 msgstr "Katselin|#s"
 
-#: src/frontends/xforms/form_preferences.C:814
-#: src/frontends/xforms/form_preferences.C:887
 #: src/frontends/xforms/FormPreferences.C:1104
 #: src/frontends/xforms/FormPreferences.C:1106
 #: src/frontends/xforms/FormPreferences.C:1377
 #: src/frontends/xforms/FormPreferences.C:1379
+#: src/frontends/xforms/form_preferences.C:814
+#: src/frontends/xforms/form_preferences.C:887
 msgid "Add|#A"
 msgstr "Lisää|#L"
 
@@ -4106,9 +7692,8 @@ msgid "Keyboard map"
 msgstr "Näppäinkartta"
 
 #: src/frontends/xforms/FormPreferences.C:1984
-#, fuzzy
 msgid " default | US letter | US legal | US executive | A3 | A4 | A5 | B5 "
-msgstr " oletus | US letter | legal | executive | A3 | A4 | A5 | B5 "
+msgstr " oletus | US letter | US legal | US executive | A3 | A4 | A5 | B5 "
 
 #: src/frontends/xforms/FormPreferences.C:2230
 msgid "Default path"
@@ -4202,10 +7787,6 @@ msgstr "-"
 msgid "Order"
 msgstr "Sivujärj."
 
-#: src/frontends/xforms/form_print.C:139 src/ext_l10n.h:1095
-msgid "Copies"
-msgstr "Kopiot"
-
 #: src/frontends/xforms/form_print.C:142
 msgid "Print to"
 msgstr "Kohde"
@@ -4237,11 +7818,6 @@ msgstr "Viitetyyppi|#e"
 #: src/frontends/xforms/form_ref.C:73
 msgid "Goto reference|#G"
 msgstr "Siirry viitteeseen|#S"
-
-#: src/frontends/xforms/FormRef.C:33 src/ext_l10n.h:377 src/ext_l10n.h:1101
-#: src/ext_l10n.h:1109
-msgid "Reference"
-msgstr "Viite"
 
 #: src/frontends/xforms/FormRef.C:139
 msgid "*** No labels found in document ***"
@@ -4312,10 +7888,6 @@ msgstr ""
 #: src/frontends/xforms/form_spellchecker.C:34
 msgid "Replace"
 msgstr "Korvaa"
-
-#: src/frontends/xforms/form_spellchecker.C:37 src/ext_l10n.h:1145
-msgid "Suggestions"
-msgstr "Ehdotukset"
 
 #: src/frontends/xforms/form_spellchecker.C:42
 msgid "Spellchecker Options...|#O"
@@ -4568,10 +8140,6 @@ msgstr "Pitkä taulukko"
 msgid "Wrong Cursor position, updated window"
 msgstr "Kohdistin oli väärässä paikassa, ikkuna päivittyi"
 
-#: src/frontends/xforms/form_tabular_create.C:45 src/ext_l10n.h:665
-msgid "Columns"
-msgstr "Sarakkeita"
-
 #: src/frontends/xforms/FormTabularCreate.C:29
 msgid "Insert Tabular"
 msgstr "Lisää taulukko"
@@ -4723,11 +8291,6 @@ msgstr "Virhe!  Ei voi tulostaa!"
 msgid "Check 'range of pages'!"
 msgstr "Tarkista sivualue."
 
-#: src/frontends/xforms/Menubar_pimpl.C:279
-#: src/frontends/xforms/Menubar_pimpl.C:352 src/ext_l10n.h:331
-msgid "More"
-msgstr "Lisää"
-
 #: src/frontends/xforms/Menubar_pimpl.C:375
 #, c-format
 msgid "No Table of contents%i"
@@ -4832,7 +8395,7 @@ msgid "Not permitted to change font-types inside ERT-insets!"
 msgstr "Kirjasinlajia ei voi vaihtaa ERT-osioiden sisällä!"
 
 #: src/insets/insetert.C:251 src/insets/insettabular.C:2051
-#: src/insets/insettext.C:1395
+#: src/insets/insettext.C:1392
 msgid "Sorry."
 msgstr "Valitettavasti."
 
@@ -4969,7 +8532,7 @@ msgstr "pienoissivu"
 msgid "Opened Minipage Inset"
 msgstr "Pienoissivuosio avattiin"
 
-#: src/insets/insetnote.C:39 src/LColor.C:65
+#: src/LColor.C:65 src/insets/insetnote.C:39
 msgid "note"
 msgstr "muistiinpano"
 
@@ -4980,10 +8543,6 @@ msgstr "Muistiinpano-osio avattu"
 #: src/insets/insetparent.C:43
 msgid "Parent:"
 msgstr "Pääasiakirja:"
-
-#: src/insets/insetref.C:110 src/ext_l10n.h:417
-msgid "Standard"
-msgstr "Perusteksti"
 
 #: src/insets/insetref.C:110
 msgid "Ref: "
@@ -5033,15 +8592,15 @@ msgstr "Sarakkeiden yhdistäminen toimii vain vaakasuuntaan."
 msgid "Opened Text Inset"
 msgstr "Tekstiosio avattiin"
 
-#: src/insets/insettext.C:1393
+#: src/insets/insettext.C:1390
 msgid "Impossible operation"
 msgstr "Mahdoton toiminto"
 
-#: src/insets/insettext.C:1394
+#: src/insets/insettext.C:1391
 msgid "Cannot include more than one paragraph!"
 msgstr "Tämä osio voi sisältää vain yhden kappaleen!"
 
-#: src/insets/insettext.C:1642
+#: src/insets/insettext.C:1637
 msgid "Error : LatexType Command not allowed here.\n"
 msgstr "Virhe : LatexType-komentoa ei voi käyttää tässä.\n"
 
@@ -5068,10 +8627,6 @@ msgstr "HtmlUrl: "
 #: src/kbsequence.C:166
 msgid "   options: "
 msgstr "   valinnat: "
-
-#: src/language.C:40 src/ext_l10n.h:498
-msgid "English"
-msgstr "Englanti"
 
 #: src/LaTeX.C:191 src/LaTeX.C:276 src/LaTeX.C:332
 msgid "LaTeX run number"
@@ -5958,7 +9513,7 @@ msgstr "Tuntematon funktio ("
 msgid "Saving document"
 msgstr "Asiakirja tallentuu"
 
-#: src/lyxfunc.C:1268 src/mathed/formulabase.C:944
+#: src/lyxfunc.C:1268 src/mathed/formulabase.C:940
 msgid "Missing argument"
 msgstr "Argumentti puuttuu"
 
@@ -6071,7 +9626,7 @@ msgstr "Peruttu"
 msgid "Welcome to LyX!"
 msgstr "Tervetuloa LyXiin!"
 
-#: src/lyxfunc.C:2091 src/LyXView.C:230
+#: src/LyXView.C:230 src/lyxfunc.C:2091
 msgid " (Changed)"
 msgstr " (Muuttunut)"
 
@@ -6822,11 +10377,11 @@ msgstr "Haluatko kuitenkin tehdä se?"
 msgid " (read only)"
 msgstr " (kirjoitussuojattu)"
 
-#: src/mathed/formulabase.C:141 src/mathed/formulabase.C:918
+#: src/mathed/formulabase.C:151 src/mathed/formulabase.C:914
 msgid "Math editor mode"
 msgstr "Matematiikkaeditoritila"
 
-#: src/mathed/formulabase.C:661
+#: src/mathed/formulabase.C:657
 msgid "Invalid action in math mode!"
 msgstr "Kelvoton toiminto matematiikkatilassa!"
 
@@ -6858,18 +10413,6 @@ msgstr "Ascii-teksti kappaleina"
 msgid " (wide)"
 msgstr " (leveä)"
 
-#: src/MenuBackend.C:511 src/ext_l10n.h:12 src/ext_l10n.h:17
-msgid "New...|N"
-msgstr "Uusi...|U"
-
-#: src/MenuBackend.C:512 src/ext_l10n.h:14 src/ext_l10n.h:19
-msgid "Open...|O"
-msgstr "Avaa...|A"
-
-#: src/MenuBackend.C:513 src/ext_l10n.h:15 src/ext_l10n.h:25
-msgid "Import|I"
-msgstr "Tuo|o"
-
 #: src/MenuBackend.C:514
 msgid "Quit|Q"
 msgstr "Lopeta|e"
@@ -6885,19 +10428,6 @@ msgstr "LinuxDoc...|L"
 #: src/MenuBackend.C:532
 msgid "Emphasize"
 msgstr "Korosta"
-
-#: src/MenuBackend.C:541 src/MenuBackend.C:548 src/ext_l10n.h:1
-#: src/ext_l10n.h:4
-msgid "File|F"
-msgstr "Tiedosto|T"
-
-#: src/MenuBackend.C:542 src/ext_l10n.h:2 src/ext_l10n.h:5
-msgid "Edit|E"
-msgstr "Muokkaa|k"
-
-#: src/MenuBackend.C:544 src/ext_l10n.h:10
-msgid "Documents|D"
-msgstr "Asiakirjat|A"
 
 #: src/minibuffer.C:134
 msgid "[End of history]"
@@ -7008,3550 +10538,6 @@ msgstr "Sivunvaihto (ala)"
 msgid "Space below"
 msgstr "Väli alla"
 
-#: src/ext_l10n.h:3 src/ext_l10n.h:11
-msgid "Help|H"
-msgstr "Ohje|O"
-
-#: src/ext_l10n.h:6
-msgid "Insert|I"
-msgstr "Lisää|L"
-
-#: src/ext_l10n.h:7
-msgid "Layout|L"
-msgstr "Muotoile|U"
-
-#: src/ext_l10n.h:8
-msgid "View|V"
-msgstr "Näytä|N"
-
-#: src/ext_l10n.h:9
-msgid "Navigate|N"
-msgstr "Siirry|S"
-
-#: src/ext_l10n.h:13 src/ext_l10n.h:18
-msgid "New from Template...|T"
-msgstr "Uusi mallin mukaan...|m"
-
-#: src/ext_l10n.h:16 src/ext_l10n.h:29
-msgid "Exit|x"
-msgstr "Lopeta|e"
-
-#: src/ext_l10n.h:20
-msgid "Close|C"
-msgstr "Sulje|S"
-
-#: src/ext_l10n.h:21
-msgid "Save|S"
-msgstr "Tallenna|T"
-
-#: src/ext_l10n.h:22
-msgid "Save As...|A"
-msgstr "Tallenna nimellä...|n"
-
-#: src/ext_l10n.h:23
-msgid "Revert to Saved|R"
-msgstr "Hylkää muutokset|H"
-
-#: src/ext_l10n.h:24
-msgid "Version Control|V"
-msgstr "Versiohallinta|r"
-
-#: src/ext_l10n.h:26
-msgid "Export|E"
-msgstr "Vie|V"
-
-#: src/ext_l10n.h:27
-msgid "Print...|P"
-msgstr "Tulosta...|l"
-
-#: src/ext_l10n.h:28
-msgid "Fax...|F"
-msgstr "Faksaa...|F"
-
-#: src/ext_l10n.h:30
-msgid "Register|R"
-msgstr "Rekisteröi|R"
-
-#: src/ext_l10n.h:31
-msgid "Check In Changes|I"
-msgstr "Kirjaa muutokset|K"
-
-#: src/ext_l10n.h:32
-msgid "Check Out for Edit|O"
-msgstr "Kirjaa ulos muokattavaksi|u"
-
-#: src/ext_l10n.h:33
-msgid "Revert to Last Version|L"
-msgstr "Palauta viimeisin versio|v"
-
-#: src/ext_l10n.h:34
-msgid "Undo Last Check In|U"
-msgstr "Peru viimeisin kirjaaminen|P"
-
-#: src/ext_l10n.h:35
-msgid "Show History|H"
-msgstr "Näytä historia|h"
-
-#: src/ext_l10n.h:36
-msgid "Custom...|C"
-msgstr "Muu...|M"
-
-#: src/ext_l10n.h:37 src/ext_l10n.h:54
-msgid "Preferences...|P"
-msgstr "Asetukset...|e"
-
-#: src/ext_l10n.h:38 src/ext_l10n.h:55
-msgid "Reconfigure|R"
-msgstr "Konfiguroi uudelleen|n"
-
-#: src/ext_l10n.h:39
-msgid "Undo|U"
-msgstr "Kumoa|K"
-
-#: src/ext_l10n.h:40
-msgid "Redo|d"
-msgstr "Tee uudelleen|T"
-
-#: src/ext_l10n.h:41
-msgid "Cut|C"
-msgstr "Leikkaa|L"
-
-#: src/ext_l10n.h:42
-msgid "Copy|o"
-msgstr "Kopioi|o"
-
-#: src/ext_l10n.h:43
-msgid "Paste|a"
-msgstr "Liitä|i"
-
-#: src/ext_l10n.h:44
-msgid "Paste External Selection|x"
-msgstr "Liitä ulkoinen valinta|v"
-
-#: src/ext_l10n.h:45
-msgid "Find & Replace...|F"
-msgstr "Etsi tai korvaa...|r"
-
-#: src/ext_l10n.h:46
-msgid "Tabular|T"
-msgstr "Taulukko|a"
-
-#: src/ext_l10n.h:47
-msgid "Math|M"
-msgstr "Matematiikka|M"
-
-#: src/ext_l10n.h:48
-msgid "Read Only"
-msgstr "Vain luku"
-
-#: src/ext_l10n.h:49
-msgid "Spellchecker...|S"
-msgstr "Oikoluku...|u"
-
-#: src/ext_l10n.h:50
-msgid "Thesaurus..."
-msgstr "Synonyymit..."
-
-#: src/ext_l10n.h:51
-msgid "Check TeX|h"
-msgstr "Tarkista TeX|X"
-
-#: src/ext_l10n.h:52
-msgid "Remove All Error Boxes|E"
-msgstr "Poista kaikki virhelaatikot|P"
-
-#: src/ext_l10n.h:53
-msgid "Open/Close float|l"
-msgstr "Avaa tai sulje irrallinen osa|A"
-
-#: src/ext_l10n.h:56
-msgid "as Lines|L"
-msgstr "Riveinä|R"
-
-#: src/ext_l10n.h:57
-msgid "as Paragraphs|P"
-msgstr "Kappaleina|K"
-
-#: src/ext_l10n.h:58
-msgid "Multicolumn|M"
-msgstr "Yhdistetyt sarakkeet|Y"
-
-#: src/ext_l10n.h:59
-msgid "Line Top|T"
-msgstr "Viiva yllä|V"
-
-#: src/ext_l10n.h:60
-msgid "Line Bottom|B"
-msgstr "Viiva alla|a"
-
-#: src/ext_l10n.h:61
-msgid "Line Left|L"
-msgstr "Viiva vasemmalla|i"
-
-#: src/ext_l10n.h:62
-msgid "Line Right|R"
-msgstr "Viiva oikealla|o"
-
-#: src/ext_l10n.h:63
-msgid "Align Left|e"
-msgstr "Tasaa vasemmalle|m"
-
-#: src/ext_l10n.h:64 src/ext_l10n.h:88
-msgid "Align Center|C"
-msgstr "Keskitä|K"
-
-#: src/ext_l10n.h:65
-msgid "Align Right|i"
-msgstr "Tasaa oikealle|T"
-
-#: src/ext_l10n.h:66
-msgid "V.Align Top|o"
-msgstr "Pystytasaa ylös|ö"
-
-#: src/ext_l10n.h:67
-msgid "V.Align Center|n"
-msgstr "Pystytasaa keskelle|P"
-
-#: src/ext_l10n.h:68
-msgid "V.Align Bottom|V"
-msgstr "Pystytasaa alas|s"
-
-#: src/ext_l10n.h:69
-msgid "Add Row|A"
-msgstr "Lisää rivi|L"
-
-#: src/ext_l10n.h:70
-msgid "Delete Row|w"
-msgstr "Poista rivi|r"
-
-#: src/ext_l10n.h:71
-msgid "Add Column|u"
-msgstr "Lisää sarake|ä"
-
-#: src/ext_l10n.h:72
-msgid "Delete Column|D"
-msgstr "Poista sarake|e"
-
-#: src/ext_l10n.h:73
-msgid "Make eqnarray|e"
-msgstr "Tee kaavataulukko|k"
-
-#: src/ext_l10n.h:74
-msgid "Make multline|m"
-msgstr "Tee monirivi|m"
-
-#: src/ext_l10n.h:75
-msgid "Make align 1 column|1"
-msgstr "Tee 1 tasaava sarake|1"
-
-#: src/ext_l10n.h:76
-msgid "Make align 2 columns|2"
-msgstr "Tee 2 tasaavaa saraketta|2"
-
-#: src/ext_l10n.h:77
-msgid "Make align 3 columns|3"
-msgstr "Tee 3 tasaavaa saraketta|3"
-
-#: src/ext_l10n.h:78
-msgid "Make alignat 2 columns|2"
-msgstr "Tee 2 tasaavaa (alignat) saraketta|2"
-
-#: src/ext_l10n.h:79
-msgid "Make alignat 3 columns|3"
-msgstr "Tee 3 tasaavaa (alignat) saraketta|3"
-
-#: src/ext_l10n.h:80
-msgid "Toggle numbering|n"
-msgstr "Numerointi pois/päälle|N"
-
-#: src/ext_l10n.h:81
-msgid "Toggle numbering of line|u"
-msgstr "Rivin numerointi pois/päälle|r"
-
-#: src/ext_l10n.h:82
-msgid "Toggle limits|l"
-msgstr "Rajat pois/päälle|p"
-
-#: src/ext_l10n.h:83
-msgid "Inline formula|I"
-msgstr "Kaava tekstissä|K"
-
-#: src/ext_l10n.h:84
-msgid "Displayed formula|D"
-msgstr "Kaavaesitys|i"
-
-#: src/ext_l10n.h:85
-msgid "Eqnarray environment|q"
-msgstr "Yhtälötaulukkoympäristö|Y"
-
-#: src/ext_l10n.h:86
-msgid "Align environment|A"
-msgstr "Tasausympäristö|T"
-
-#: src/ext_l10n.h:87
-msgid "Align Left|f"
-msgstr "Tasaa vasemmalle|v"
-
-#: src/ext_l10n.h:89
-msgid "Align Right|R"
-msgstr "Tasaa oikealle|s"
-
-#: src/ext_l10n.h:90
-msgid "V.Align Top|T"
-msgstr "Pystytasaa ylös"
-
-#: src/ext_l10n.h:91
-msgid "V.Align Center|e"
-msgstr "Pystytasaa keskelle"
-
-#: src/ext_l10n.h:92
-msgid "V.Align Bottom|B"
-msgstr "Pystytasaa alas"
-
-#: src/ext_l10n.h:93
-msgid "Add Row"
-msgstr "Lisää rivi"
-
-#: src/ext_l10n.h:94
-msgid "Delete Row"
-msgstr "Poista rivi"
-
-#: src/ext_l10n.h:95
-msgid "Add Column"
-msgstr "Lisää sarake"
-
-#: src/ext_l10n.h:96
-msgid "Delete Column"
-msgstr "Poista sarake"
-
-#: src/ext_l10n.h:97
-msgid "Math|h"
-msgstr "Matematiikka|M"
-
-#: src/ext_l10n.h:98
-msgid "Special Character|S"
-msgstr "Erikoismerkki|E"
-
-#: src/ext_l10n.h:99
-msgid "Citation Reference...|C"
-msgstr "Lähdeviite...|L"
-
-#: src/ext_l10n.h:100
-msgid "Cross Reference...|R"
-msgstr "Viittaus...|V"
-
-#: src/ext_l10n.h:101
-msgid "Label...|L"
-msgstr "Nimike...|N"
-
-#: src/ext_l10n.h:102
-msgid "Footnote|F"
-msgstr "Alaviite|A"
-
-#: src/ext_l10n.h:103
-msgid "Marginal Note|M"
-msgstr "Reunahuomautus|R"
-
-#: src/ext_l10n.h:104
-msgid "Index Entry...|I"
-msgstr "Hakemistoviite...|H"
-
-#: src/ext_l10n.h:105
-msgid "Index Entry of Preceding Word|W"
-msgstr "Edeltävän sanan hakemistoviite|d"
-
-#: src/ext_l10n.h:106
-msgid "URL...|U"
-msgstr "URL...|U"
-
-#: src/ext_l10n.h:107 src/ext_l10n.h:162
-msgid "Note|N"
-msgstr "Muistiinpano|i"
-
-#: src/ext_l10n.h:108
-msgid "Lists & TOC|O"
-msgstr "Luettelo|o"
-
-#: src/ext_l10n.h:109
-msgid "TeX|T"
-msgstr "TeX|X"
-
-#: src/ext_l10n.h:110
-msgid "Minipage|p"
-msgstr "Pienoissivu|P"
-
-#: src/ext_l10n.h:111
-msgid "Graphics...|G"
-msgstr "Grafiikka...|G"
-
-#: src/ext_l10n.h:112
-msgid "Tabular Material...|b"
-msgstr "Taulukko...|T"
-
-#: src/ext_l10n.h:113
-msgid "Floats|a"
-msgstr "Irrallinen osa|s"
-
-#: src/ext_l10n.h:114
-msgid "Include File...|d"
-msgstr "Sisällytä tiedosto...|y"
-
-#: src/ext_l10n.h:115
-msgid "Insert File|e"
-msgstr "Lisää tiedosto|ä"
-
-#: src/ext_l10n.h:116
-msgid "External Material...|x"
-msgstr "Ulkoinen aineisto...|k"
-
-#: src/ext_l10n.h:117
-msgid "Superscript|S"
-msgstr "Yläindeksi|Y"
-
-#: src/ext_l10n.h:118
-msgid "Subscript|u"
-msgstr "Alaindeksi|A"
-
-#: src/ext_l10n.h:119
-msgid "HFill|H"
-msgstr "Vaakatäyttö|V"
-
-#: src/ext_l10n.h:120
-msgid "Hyphenation Point|P"
-msgstr "Tavutuskohta|T"
-
-#: src/ext_l10n.h:121
-msgid "Ligature break|k"
-msgstr "Yhdyskirjasinkatko|h"
-
-#: src/ext_l10n.h:122
-msgid "Protected Blank|B"
-msgstr "Kova välilyönti|K"
-
-#: src/ext_l10n.h:123
-msgid "Linebreak|L"
-msgstr "Rivinvaihto|R"
-
-#: src/ext_l10n.h:124
-msgid "Ellipsis|i"
-msgstr "Ellipsis (...)|E"
-
-#: src/ext_l10n.h:125
-msgid "End of Sentence|E"
-msgstr "Virkkeen lopun piste|p"
-
-#: src/ext_l10n.h:126
-msgid "Ordinary Quote|Q"
-msgstr "Tavallinen lainausmerkki (\")|l"
-
-#: src/ext_l10n.h:127
-msgid "Menu Separator|M"
-msgstr "Valikkoerotinmerkki|m"
-
-#: src/ext_l10n.h:128
-msgid "Inline Formula|I"
-msgstr "Kaava tekstissä|K"
-
-#: src/ext_l10n.h:129
-msgid "Display Formula|D"
-msgstr "Kaavaesitys|e"
-
-#: src/ext_l10n.h:130
-msgid "Eqnarray environment|E"
-msgstr "Yhtälötaulukkoympäristö|Y"
-
-#: src/ext_l10n.h:131
-msgid "AMS align environment|A"
-msgstr "AMS-tasausympäristö|t"
-
-#: src/ext_l10n.h:132
-msgid "AMS alignat environment|t"
-msgstr "AMS-tasausympäristö (alignat)|a"
-
-#: src/ext_l10n.h:133
-msgid "AMS xalignat environment|x"
-msgstr "AMS-tasausympäristö (xalignat)|s"
-
-#: src/ext_l10n.h:134
-msgid "AMS xxalignat environment"
-msgstr "AMS-tasausympäristö (xxalignat)|u"
-
-#: src/ext_l10n.h:135
-msgid "Array environment|y"
-msgstr "Taulukkoympäristö|u"
-
-#: src/ext_l10n.h:136
-msgid "Cases environment|C"
-msgstr "Tapausympäristö|p"
-
-#: src/ext_l10n.h:137
-msgid "Math Panel...|l"
-msgstr "Matematiikkapaneeli...|M"
-
-#: src/ext_l10n.h:138
-msgid "Table of Contents|C"
-msgstr "Sisällysluettelo|S"
-
-#: src/ext_l10n.h:139
-msgid "Index List|I"
-msgstr "Hakemisto|H"
-
-#: src/ext_l10n.h:140
-msgid "BibTeX Reference...|B"
-msgstr "BibTeXin lähdeviitteet...|B"
-
-#: src/ext_l10n.h:141
-msgid "LyX Document...|X"
-msgstr "LyX-asiakirja...|a"
-
-#: src/ext_l10n.h:142
-msgid "Ascii as Lines...|L"
-msgstr "Ascii-teksti riveinä...|r"
-
-#: src/ext_l10n.h:143
-msgid "Ascii as Paragraphs...|P"
-msgstr "Ascii-teksti kappaleina...|k"
-
-#: src/ext_l10n.h:144
-msgid "Character...|C"
-msgstr "Merkki...|M"
-
-#: src/ext_l10n.h:145
-msgid "Paragraph...|P"
-msgstr "Kappale...|K"
-
-#: src/ext_l10n.h:146
-msgid "Document...|D"
-msgstr "Asiakirja...|A"
-
-#: src/ext_l10n.h:147
-msgid "Tabular...|T"
-msgstr "Taulukko...|T"
-
-#: src/ext_l10n.h:148
-msgid "Emphasize Style|E"
-msgstr "Korostus|r"
-
-#: src/ext_l10n.h:149
-msgid "Noun Style|N"
-msgstr "Nimityyli|N"
-
-#: src/ext_l10n.h:150
-msgid "Bold Style|B"
-msgstr "Lihavointi|L"
-
-#: src/ext_l10n.h:151
-msgid "TeX Style|X"
-msgstr "TeX-tyyli|X"
-
-#: src/ext_l10n.h:152
-msgid "Change Environment Depth|v"
-msgstr "Vaihda ympäristötasoa|V"
-
-#: src/ext_l10n.h:153
-msgid "Preamble...|r"
-msgstr "Aloitusosa...|o"
-
-#: src/ext_l10n.h:154
-msgid "Start Appendix here|A"
-msgstr "Aloita liite tästä|i"
-
-#: src/ext_l10n.h:155
-msgid "Build Program|B"
-msgstr "Käännä ohjelma|K"
-
-#: src/ext_l10n.h:156
-msgid "Update|U"
-msgstr "Päivitä|v"
-
-#: src/ext_l10n.h:157
-msgid "LaTeX Logfile|L"
-msgstr "LaTeXin lokitiedosto|L"
-
-#: src/ext_l10n.h:158
-msgid "Table of Contents|T"
-msgstr "Sisällysluettelo|S"
-
-#: src/ext_l10n.h:159
-msgid "Child processes|C"
-msgstr "Lapsiprosessit|r"
-
-#: src/ext_l10n.h:160
-msgid "TeX Information|X"
-msgstr "TeX-tietoja|X"
-
-#: src/ext_l10n.h:161
-msgid "Error|E"
-msgstr "Virhe|r"
-
-#: src/ext_l10n.h:163
-msgid "Refs|R"
-msgstr "Viitteet|V"
-
-#: src/ext_l10n.h:164
-msgid "Bookmarks|B"
-msgstr "Kirjanmerkit|#m"
-
-#: src/ext_l10n.h:165
-msgid "Save Bookmark 1|S"
-msgstr "Tallenna kirjanmerkki 1|T"
-
-#: src/ext_l10n.h:166
-msgid "Save Bookmark 2"
-msgstr "Tallenna kirjanmerkki 2|a"
-
-#: src/ext_l10n.h:167
-msgid "Save Bookmark 3"
-msgstr "Tallenna kirjanmerkki 3|l"
-
-#: src/ext_l10n.h:168
-msgid "Goto Bookmark 1|1"
-msgstr "Siirry kirjanmerkille 1|1"
-
-#: src/ext_l10n.h:169
-msgid "Goto Bookmark 2|2"
-msgstr "Siirry kirjanmerkille 2|2"
-
-#: src/ext_l10n.h:170
-msgid "Goto Bookmark 3|3"
-msgstr "Siirry kirjanmerkille 3|3"
-
-#: src/ext_l10n.h:171
-msgid "Tooltips|o"
-msgstr "Vinkit|V"
-
-#: src/ext_l10n.h:172
-msgid "Introduction|I"
-msgstr "Johdanto|J"
-
-#: src/ext_l10n.h:173
-msgid "Tutorial|T"
-msgstr "Opastus|O"
-
-#: src/ext_l10n.h:174
-msgid "User's Guide|U"
-msgstr "Käyttöopas|K"
-
-#: src/ext_l10n.h:175
-msgid "Extended Features|E"
-msgstr "Lisäominaisuudet|L"
-
-#: src/ext_l10n.h:176
-msgid "Customization|C"
-msgstr "Mukauttaminen|M"
-
-#: src/ext_l10n.h:177
-msgid "Reference Manual|R"
-msgstr "Hakuteos|H"
-
-#: src/ext_l10n.h:178
-msgid "FAQ|F"
-msgstr "Usein kysytyt kysymykset|U"
-
-#: src/ext_l10n.h:179
-msgid "Table of Contents|a"
-msgstr "Sisällysluettelo|S"
-
-#: src/ext_l10n.h:180
-msgid "LaTeX Configuration|L"
-msgstr "LaTeX-asetukset|a"
-
-#: src/ext_l10n.h:181
-msgid "About LyX|X"
-msgstr "LyXistä|y"
-
-#: src/ext_l10n.h:183
-msgid "Accepted"
-msgstr "Hyväksytty"
-
-#: src/ext_l10n.h:184
-msgid "Acknowledgement"
-msgstr "Kiitos"
-
-#: src/ext_l10n.h:185
-msgid "Acknowledgement*"
-msgstr "Kiitos*"
-
-#: src/ext_l10n.h:186
-msgid "Acknowledgements"
-msgstr "Kiitokset"
-
-#: src/ext_l10n.h:187
-msgid "Acknowledgments"
-msgstr "Kiitokset"
-
-#: src/ext_l10n.h:188
-msgid "ACT"
-msgstr "NÄYTÖS"
-
-#: src/ext_l10n.h:189
-msgid "Addchap"
-msgstr "Lisäkappale"
-
-#: src/ext_l10n.h:190
-msgid "Addchap*"
-msgstr "Lisäkappale*"
-
-#: src/ext_l10n.h:191
-msgid "Addition"
-msgstr "Lisäys"
-
-#: src/ext_l10n.h:192
-msgid "Address"
-msgstr "Osoite"
-
-#: src/ext_l10n.h:193
-msgid "AddressForOffprints"
-msgstr "Eripainososoite"
-
-#: src/ext_l10n.h:194
-msgid "Addsec"
-msgstr "Osoiteosa"
-
-#: src/ext_l10n.h:195
-msgid "Addsec*"
-msgstr "Osoiteosa*"
-
-#: src/ext_l10n.h:196
-msgid "Adresse"
-msgstr "Osoite"
-
-#: src/ext_l10n.h:197
-msgid "Affil"
-msgstr "Järjestö"
-
-#: src/ext_l10n.h:198
-msgid "Affiliation"
-msgstr "Järjestö"
-
-#: src/ext_l10n.h:200
-msgid "AMS"
-msgstr "AMS"
-
-#: src/ext_l10n.h:201
-msgid "And"
-msgstr "Ja"
-
-#: src/ext_l10n.h:202
-msgid "Anlagen"
-msgstr "Laitos"
-
-#: src/ext_l10n.h:203
-msgid "Anrede"
-msgstr "Puhuttelu"
-
-#: src/ext_l10n.h:204
-msgid "Appendices"
-msgstr "Liitteet"
-
-#: src/ext_l10n.h:205
-msgid "Appendix"
-msgstr "Liite"
-
-#: src/ext_l10n.h:206
-msgid "Arrow"
-msgstr "Nuoli"
-
-#: src/ext_l10n.h:207
-msgid "AT_RISE:"
-msgstr "NOUSTESSA:"
-
-#: src/ext_l10n.h:208
-msgid "Author"
-msgstr "Tekijä"
-
-#: src/ext_l10n.h:209
-msgid "Author_Email"
-msgstr "Tekijän sähköposti"
-
-#: src/ext_l10n.h:210
-msgid "Authorgroup"
-msgstr "Tekijäryhmä"
-
-#: src/ext_l10n.h:211
-msgid "Authorinfo"
-msgstr "Tekijätiedot"
-
-#: src/ext_l10n.h:212
-msgid "Author_Running"
-msgstr "Tekijä (jatko)"
-
-#: src/ext_l10n.h:213
-msgid "Author_URL"
-msgstr "Tekijän URL"
-
-#: src/ext_l10n.h:214
-msgid "Axiom"
-msgstr "Aksiooma"
-
-#: src/ext_l10n.h:215
-msgid "Backaddress"
-msgstr "Palautusosoite"
-
-#: src/ext_l10n.h:216
-msgid "Bank"
-msgstr "Pankki"
-
-#: src/ext_l10n.h:217
-msgid "BankAccount"
-msgstr "Pankkitili"
-
-#: src/ext_l10n.h:218
-msgid "BankCode"
-msgstr "Pankkikoodi"
-
-#: src/ext_l10n.h:219
-msgid "Betreff"
-msgstr "Aihe"
-
-#: src/ext_l10n.h:220
-msgid "Bibliography"
-msgstr "Kirjallisuutta"
-
-#: src/ext_l10n.h:221
-msgid "Biography"
-msgstr "Elämäkerta"
-
-#: src/ext_l10n.h:222
-msgid "BLZ"
-msgstr "BLZ"
-
-#: src/ext_l10n.h:223
-msgid "BoardCentered"
-msgstr "LautaKeskellä"
-
-#: src/ext_l10n.h:224
-msgid "Brieftext"
-msgstr "Kirjeteksti"
-
-#: src/ext_l10n.h:225
-msgid "Caption"
-msgstr "Kuvateksti"
-
-#: src/ext_l10n.h:226
-msgid "Case"
-msgstr "Tapaus"
-
-#: src/ext_l10n.h:228
-msgid "CC"
-msgstr "Jakelu"
-
-#: src/ext_l10n.h:229
-msgid "CenteredCaption"
-msgstr "Keskitetty_kuvateksti"
-
-#: src/ext_l10n.h:230
-msgid "Chapter"
-msgstr "Luku"
-
-#: src/ext_l10n.h:231
-msgid "Chapter*"
-msgstr "Luku*"
-
-#: src/ext_l10n.h:232
-msgid "Chapter_Exercises"
-msgstr "Harjoitusluku"
-
-#: src/ext_l10n.h:233
-msgid "ChessBoard"
-msgstr "Shakkilauta"
-
-#: src/ext_l10n.h:234
-msgid "Citta"
-msgstr "Citta"
-
-#: src/ext_l10n.h:235
-msgid "Claim"
-msgstr "Väite"
-
-#: src/ext_l10n.h:236
-msgid "Claim*"
-msgstr "Väite*"
-
-#: src/ext_l10n.h:237
-msgid "Closing"
-msgstr "Lopuksi"
-
-#: src/ext_l10n.h:238
-msgid "Code"
-msgstr "Koodi"
-
-#: src/ext_l10n.h:239
-msgid "Comment"
-msgstr "Huomautus"
-
-#: src/ext_l10n.h:240
-msgid "Conclusion"
-msgstr "Päätelmä"
-
-#: src/ext_l10n.h:241
-msgid "Conclusion*"
-msgstr "Päätelmä*"
-
-#: src/ext_l10n.h:242
-msgid "Condition"
-msgstr "Ehto"
-
-#: src/ext_l10n.h:243
-msgid "Conjecture"
-msgstr "Otaksuma"
-
-#: src/ext_l10n.h:244
-msgid "Conjecture*"
-msgstr "Otaksuma*"
-
-#: src/ext_l10n.h:245
-msgid "CopNum"
-msgstr "Kopiomäärä"
-
-#: src/ext_l10n.h:246 src/ext_l10n.h:534
-msgid "Copyright"
-msgstr "Copyright"
-
-#: src/ext_l10n.h:247
-msgid "Corollary"
-msgstr "Seurauslause"
-
-#: src/ext_l10n.h:248
-msgid "Corollary*"
-msgstr "Seurauslause*"
-
-#: src/ext_l10n.h:249
-msgid "Criterion"
-msgstr "Kriteeri"
-
-#: src/ext_l10n.h:250
-msgid "CrossList"
-msgstr "Viittausluettelo"
-
-#: src/ext_l10n.h:251
-msgid "Current_Address"
-msgstr "Nykyinen osoite"
-
-#: src/ext_l10n.h:252
-msgid "CURTAIN"
-msgstr "ESIRIPPU"
-
-#: src/ext_l10n.h:253
-msgid "Customer"
-msgstr "Asiakas"
-
-#: src/ext_l10n.h:254
-msgid "Data"
-msgstr "Data"
-
-#: src/ext_l10n.h:255
-msgid "Date"
-msgstr "Päiväys"
-
-#: src/ext_l10n.h:256
-msgid "Datum"
-msgstr "Päiväys"
-
-#: src/ext_l10n.h:257
-msgid "Dedication"
-msgstr "Omistuskirjoitus"
-
-#: src/ext_l10n.h:258
-msgid "Dedicatory"
-msgstr "Omistuskirjoitus"
-
-#: src/ext_l10n.h:259
-msgid "Definition"
-msgstr "Määritelmä"
-
-#: src/ext_l10n.h:260
-msgid "Definition*"
-msgstr "Määritelmä*"
-
-#: src/ext_l10n.h:261
-msgid "Description"
-msgstr "Kuvausluettelo"
-
-#: src/ext_l10n.h:262
-msgid "Dialogue"
-msgstr "Vuoropuhelu"
-
-#: src/ext_l10n.h:263
-msgid "Email"
-msgstr "Sähköposti"
-
-#: src/ext_l10n.h:264
-msgid "EMail"
-msgstr "Sähköposti"
-
-#: src/ext_l10n.h:265
-msgid "encl"
-msgstr "liitteet"
-
-#: src/ext_l10n.h:266
-msgid "Encl."
-msgstr "Liitteet"
-
-#: src/ext_l10n.h:267
-msgid "Encl"
-msgstr "Liitteet"
-
-#: src/ext_l10n.h:268
-msgid "End_All_Slides"
-msgstr "Kaikkien kalvojen loppu"
-
-#: src/ext_l10n.h:269
-msgid "Enumerate"
-msgstr "Numeroitu luettelo"
-
-#: src/ext_l10n.h:270
-msgid "Example"
-msgstr "Esimerkki"
-
-#: src/ext_l10n.h:271
-msgid "Example*"
-msgstr "Esimerkki*"
-
-#: src/ext_l10n.h:272
-msgid "Exercise"
-msgstr "Harjoitus"
-
-#: src/ext_l10n.h:273
-msgid "EXT."
-msgstr "ULKO."
-
-#: src/ext_l10n.h:274
-msgid "Extratitle"
-msgstr "Lisäotsikko"
-
-#: src/ext_l10n.h:275
-msgid "Fact"
-msgstr "Fakta"
-
-#: src/ext_l10n.h:276
-msgid "Fact*"
-msgstr "Fakta*"
-
-#: src/ext_l10n.h:277
-msgid "FADE_IN:"
-msgstr "NÄKYVIINHÄIVYTYS:"
-
-#: src/ext_l10n.h:278
-msgid "FADE_OUT:"
-msgstr "NÄKYVISTÄHÄIVYTYS:"
-
-#: src/ext_l10n.h:279
-msgid "FADE_OUT"
-msgstr "NÄKYVISTÄHÄIVYTYS"
-
-#: src/ext_l10n.h:280
-msgid "FigCaption"
-msgstr "Kuvateksti"
-
-#: src/ext_l10n.h:281
-msgid "FirstAuthor"
-msgstr "Ensimm. tekijä"
-
-#: src/ext_l10n.h:282
-msgid "FirstName"
-msgstr "Etunimi"
-
-#: src/ext_l10n.h:283
-msgid "FitBitmap"
-msgstr "Sovita bittikartta"
-
-#: src/ext_l10n.h:284
-msgid "FitFigure"
-msgstr "Sovita kuva"
-
-#: src/ext_l10n.h:285
-msgid "Foilhead"
-msgstr "Kalvon alku"
-
-#: src/ext_l10n.h:286
-msgid "Footernote"
-msgstr "Alareunamuistiinpano"
-
-#: src/ext_l10n.h:287
-msgid "FourAffiliations"
-msgstr "Neljä järjestöä"
-
-#: src/ext_l10n.h:288
-msgid "FourAuthors"
-msgstr "Neljä tekijää"
-
-#: src/ext_l10n.h:289
-msgid "FrontMatter"
-msgstr "Etuteksti"
-
-#: src/ext_l10n.h:290
-msgid "General"
-msgstr "Yleinen"
-
-#: src/ext_l10n.h:291
-msgid "Gruss"
-msgstr "Lopuksi"
-
-#: src/ext_l10n.h:292
-msgid "Headnote"
-msgstr "Yläreunamuistiinpano"
-
-#: src/ext_l10n.h:293
-msgid "HideMoves"
-msgstr ""
-
-#: src/ext_l10n.h:294
-msgid "HighLight"
-msgstr "Korostus"
-
-#: src/ext_l10n.h:295
-msgid "HTTP"
-msgstr "HTTP"
-
-#: src/ext_l10n.h:296
-msgid "IhrSchreiben"
-msgstr "IhrSchreiben"
-
-#: src/ext_l10n.h:297
-msgid "IhrZeichen"
-msgstr "IhrZeichen"
-
-#: src/ext_l10n.h:298
-msgid "Institute"
-msgstr "Laitos"
-
-#: src/ext_l10n.h:299
-msgid "Institution"
-msgstr "Laitos"
-
-#: src/ext_l10n.h:300
-msgid "INT."
-msgstr "SISÄ."
-
-#: src/ext_l10n.h:301
-msgid "INTERCUT"
-msgstr ""
-
-#: src/ext_l10n.h:302
-msgid "InvisibleText"
-msgstr "Näkymätön_teksti"
-
-#: src/ext_l10n.h:303
-msgid "Invoice"
-msgstr "Lasku"
-
-#: src/ext_l10n.h:304
-msgid "Itemize"
-msgstr "Luettelo"
-
-#: src/ext_l10n.h:305
-msgid "Journal"
-msgstr "Lehti"
-
-#: src/ext_l10n.h:306
-msgid "Keyword"
-msgstr "Avainsana"
-
-#: src/ext_l10n.h:307
-msgid "Keywords"
-msgstr "Avainsanat"
-
-#: src/ext_l10n.h:308
-msgid "KnightMove"
-msgstr "Ratsun siirto"
-
-#: src/ext_l10n.h:309
-msgid "Konto"
-msgstr "Tili"
-
-#: src/ext_l10n.h:310
-msgid "Labeling"
-msgstr "Otsikoitu kappale"
-
-#: src/ext_l10n.h:311
-msgid "Land"
-msgstr "Maa"
-
-#: src/ext_l10n.h:312
-msgid "LandscapeSlide"
-msgstr "Vaakakalvo"
-
-#: src/ext_l10n.h:313
-msgid "LaTeX"
-msgstr "LaTeX"
-
-#: src/ext_l10n.h:314
-msgid "LaTeX_Title"
-msgstr "LaTeX-teoksen nimi"
-
-#: src/ext_l10n.h:315
-msgid "Left_Header"
-msgstr "Vasen yläotsikko"
-
-#: src/ext_l10n.h:316
-msgid "Lemma"
-msgstr "Apulause"
-
-#: src/ext_l10n.h:317
-msgid "Lemma*"
-msgstr "Apulause*"
-
-#: src/ext_l10n.h:318
-msgid "Letter"
-msgstr "Kirje"
-
-#: src/ext_l10n.h:319
-msgid "List"
-msgstr "Lista"
-
-#: src/ext_l10n.h:320
-msgid "ListOfSlides"
-msgstr "Kalvoluettelo"
-
-#: src/ext_l10n.h:321
-msgid "Literal"
-msgstr "Sanatarkasti"
-
-#: src/ext_l10n.h:322
-msgid "Location"
-msgstr "Sijainti"
-
-#: src/ext_l10n.h:323
-msgid "Lowertitleback"
-msgstr "Alatunnisteteksti"
-
-#: src/ext_l10n.h:324
-msgid "LyX-Code"
-msgstr "LyX-koodi"
-
-#: src/ext_l10n.h:325
-msgid "Mail"
-msgstr "Posti"
-
-#: src/ext_l10n.h:326
-msgid "Mainline"
-msgstr ""
-
-#: src/ext_l10n.h:327
-msgid "MarkBoth"
-msgstr "Merkitse molemmat"
-
-#: src/ext_l10n.h:328
-msgid "MathLetters"
-msgstr "Matematiikkakirjaimet"
-
-#: src/ext_l10n.h:329
-msgid "MeinZeichen"
-msgstr "MeinZeichen"
-
-#: src/ext_l10n.h:330
-msgid "Minisec"
-msgstr "Pienoiskappale"
-
-#: src/ext_l10n.h:332
-msgid "msnumber"
-msgstr "msnumero"
-
-#: src/ext_l10n.h:333
-msgid "My_Address"
-msgstr "Osoitteeni"
-
-#: src/ext_l10n.h:334
-msgid "Myref"
-msgstr "Viitteeni"
-
-#: src/ext_l10n.h:335
-msgid "MyRef"
-msgstr "Viitteeni"
-
-#: src/ext_l10n.h:336
-msgid "Name"
-msgstr "Nimi"
-
-#: src/ext_l10n.h:337
-msgid "Narrative"
-msgstr "Kerronta"
-
-#: src/ext_l10n.h:338
-msgid "Notation"
-msgstr "Merkintätapa"
-
-#: src/ext_l10n.h:339
-msgid "Note"
-msgstr "Muistiinpano"
-
-#: src/ext_l10n.h:340
-msgid "Note*"
-msgstr "Muistiinpano*"
-
-#: src/ext_l10n.h:341
-msgid "NoteToEditor"
-msgstr "Huomautus toimittajalle"
-
-#: src/ext_l10n.h:342
-msgid "Offprint"
-msgstr "Eripainos"
-
-#: src/ext_l10n.h:343
-msgid "Offprints"
-msgstr "Eripainokset"
-
-# Now this wasn't very obvious.
-#: src/ext_l10n.h:344
-msgid "Offsets"
-msgstr "Uusintapainosten välittäjä"
-
-#: src/ext_l10n.h:345
-msgid "Oggetto"
-msgstr "Oggetto"
-
-#: src/ext_l10n.h:346
-msgid "Opening"
-msgstr "Aloitus"
-
-#: src/ext_l10n.h:347
-msgid "Ort"
-msgstr "Postitoimipaikka"
-
-#: src/ext_l10n.h:348
-msgid "Overlay"
-msgstr "Kalvokerros"
-
-#: src/ext_l10n.h:349
-msgid "PACS"
-msgstr "PACS"
-
-#: src/ext_l10n.h:350 src/ext_l10n.h:920
-msgid "Paragraph"
-msgstr "Osakappale"
-
-#: src/ext_l10n.h:351
-msgid "Paragraph*"
-msgstr "Osakappale*"
-
-#: src/ext_l10n.h:352
-msgid "Part"
-msgstr "Osa"
-
-#: src/ext_l10n.h:353
-msgid "Part*"
-msgstr "Osa*"
-
-#: src/ext_l10n.h:354
-msgid "Petit"
-msgstr "Petit"
-
-#: src/ext_l10n.h:355
-msgid "Phone"
-msgstr "Puhelin"
-
-#: src/ext_l10n.h:356
-msgid "Place"
-msgstr "Paikka"
-
-#: src/ext_l10n.h:357
-msgid "PlaceFigure"
-msgstr "Kuvan paikka"
-
-#: src/ext_l10n.h:358
-msgid "PlaceTable"
-msgstr "Taulukon paikka"
-
-#: src/ext_l10n.h:359
-msgid "PortraitSlide"
-msgstr "Pystykalvo"
-
-#: src/ext_l10n.h:360
-msgid "PostalCommend"
-msgstr "Postimerkintä"
-
-#: src/ext_l10n.h:361
-msgid "PostalComment"
-msgstr "Postihuomautus"
-
-#: src/ext_l10n.h:362
-msgid "Postvermerk"
-msgstr "Postimerkintä"
-
-#: src/ext_l10n.h:363
-msgid "Preprint"
-msgstr "Esipainos"
-
-#: src/ext_l10n.h:364
-msgid "Problem"
-msgstr "Ongelma"
-
-#: src/ext_l10n.h:365
-msgid "ProgressContents"
-msgstr "Esityksen etenemisluettelo"
-
-#: src/ext_l10n.h:366
-msgid "Proof"
-msgstr "Todistus"
-
-#: src/ext_l10n.h:367
-msgid "Property"
-msgstr "Ominaisuus"
-
-#: src/ext_l10n.h:368
-msgid "Proposition"
-msgstr "Väittämä"
-
-#: src/ext_l10n.h:369
-msgid "Proposition*"
-msgstr "Väittämä*"
-
-#: src/ext_l10n.h:370
-msgid "ps"
-msgstr "ps"
-
-#: src/ext_l10n.h:371
-msgid "PS"
-msgstr "PS"
-
-#: src/ext_l10n.h:372
-msgid "Publishers"
-msgstr "Julkaisijat"
-
-#: src/ext_l10n.h:373
-msgid "Question"
-msgstr "Kysymys"
-
-#: src/ext_l10n.h:374
-msgid "Quotation"
-msgstr "Sitaatti"
-
-#: src/ext_l10n.h:375
-msgid "Quote"
-msgstr "Lainaus"
-
-#: src/ext_l10n.h:376
-msgid "Received"
-msgstr "Vastaanotettu"
-
-#: src/ext_l10n.h:379
-msgid "Remark"
-msgstr "Huomautus"
-
-#: src/ext_l10n.h:380
-msgid "Remark*"
-msgstr "Huomautus*"
-
-#: src/ext_l10n.h:381
-msgid "Remarks"
-msgstr "Huomautukset"
-
-#: src/ext_l10n.h:382
-msgid "RetourAdresse"
-msgstr "Palautusosoite"
-
-#: src/ext_l10n.h:383
-msgid "ReturnAddress"
-msgstr "Palautusosoite"
-
-#: src/ext_l10n.h:384
-msgid "Revision"
-msgstr "Versio"
-
-#: src/ext_l10n.h:385
-msgid "RevisionHistory"
-msgstr "Versiohistoriikki"
-
-#: src/ext_l10n.h:386
-msgid "RevisionRemark"
-msgstr "Versiohuomautus"
-
-#: src/ext_l10n.h:387
-msgid "REVTEX_Title"
-msgstr "REVTEX-teoksen nimi"
-
-#: src/ext_l10n.h:388
-msgid "Right_Address"
-msgstr "Oikea osoite"
-
-#: src/ext_l10n.h:389
-msgid "Right_Header"
-msgstr "Oikea yläotsikko"
-
-#: src/ext_l10n.h:390
-msgid "RightHeader"
-msgstr "Oikea yläotsikko"
-
-#: src/ext_l10n.h:391
-msgid "Rotatefoilhead"
-msgstr "Kiertyvä kalvon alku"
-
-#: src/ext_l10n.h:392
-msgid "RunningAuthor"
-msgstr "Tekijä (jatko)"
-
-#: src/ext_l10n.h:393
-msgid "Running_LaTeX_Title"
-msgstr "LaTeX-teoksen nimi (jatko)"
-
-#: src/ext_l10n.h:394
-msgid "RunningTitle"
-msgstr "Teoksen nimi (jatko)"
-
-#: src/ext_l10n.h:395
-msgid "Scene"
-msgstr "Kohtaus"
-
-#: src/ext_l10n.h:396
-msgid "SCENE"
-msgstr "KOHTAUS"
-
-#: src/ext_l10n.h:397
-msgid "SCENE*"
-msgstr "KOHTAUS*"
-
-#: src/ext_l10n.h:398
-msgid "Scrap"
-msgstr "Koodinpätkä"
-
-#: src/ext_l10n.h:399
-msgid "Section"
-msgstr "Kappale"
-
-#: src/ext_l10n.h:400
-msgid "Section*"
-msgstr "Kappale*"
-
-#: src/ext_l10n.h:401
-msgid "Send_To_Address"
-msgstr "Lähetysosoite"
-
-#: src/ext_l10n.h:402
-msgid "Seriate"
-msgstr "Luetelma"
-
-#: src/ext_l10n.h:403
-msgid "SGML"
-msgstr "SGML"
-
-#: src/ext_l10n.h:404
-msgid "ShortFoilhead"
-msgstr "Lyhyt kalvon alku"
-
-#: src/ext_l10n.h:405
-msgid "ShortRotatefoilhead"
-msgstr "Lyhyt kiertyvä kalvon alku"
-
-#: src/ext_l10n.h:406
-msgid "ShortTitle"
-msgstr "Lyhyt teoksen nimi"
-
-#: src/ext_l10n.h:407
-msgid "Signature"
-msgstr "Allekirjoitus"
-
-#: src/ext_l10n.h:408
-msgid "Slide"
-msgstr "Kalvo"
-
-#: src/ext_l10n.h:409
-msgid "Slide*"
-msgstr "Kalvo*"
-
-#: src/ext_l10n.h:410
-msgid "SlideContents"
-msgstr "Kalvon sisältö*"
-
-#: src/ext_l10n.h:411
-msgid "SlideHeading"
-msgstr "Kalvon otsikko"
-
-#: src/ext_l10n.h:412
-msgid "SlideSubHeading"
-msgstr "Kalvon alaotsikko"
-
-#: src/ext_l10n.h:413
-msgid "Solution"
-msgstr "Ratkaisu"
-
-#: src/ext_l10n.h:414
-msgid "Speaker"
-msgstr "Puhuja"
-
-#: src/ext_l10n.h:415
-msgid "Specialmail"
-msgstr "Erikoisposti"
-
-#: src/ext_l10n.h:416
-msgid "Stadt"
-msgstr "Kaupunki"
-
-#: src/ext_l10n.h:418
-msgid "State"
-msgstr "Maa"
-
-#: src/ext_l10n.h:419
-msgid "Strasse"
-msgstr "Katu"
-
-#: src/ext_l10n.h:420
-msgid "Street"
-msgstr "Katu"
-
-#: src/ext_l10n.h:421
-msgid "Subject"
-msgstr "Aihe"
-
-#: src/ext_l10n.h:422
-msgid "Subjectclass"
-msgstr "Aiheluokka"
-
-#: src/ext_l10n.h:423
-msgid "Subparagraph"
-msgstr "Aliosakappale"
-
-#: src/ext_l10n.h:424
-msgid "Subparagraph*"
-msgstr "Aliosakappale*"
-
-#: src/ext_l10n.h:425
-msgid "Subsection"
-msgstr "Alikappale"
-
-#: src/ext_l10n.h:426
-msgid "Subsection*"
-msgstr "Alikappale*"
-
-#: src/ext_l10n.h:427
-msgid "SubSection"
-msgstr "Alikappale"
-
-#: src/ext_l10n.h:428
-msgid "Subsubsection"
-msgstr "Alialikappale"
-
-#: src/ext_l10n.h:429
-msgid "Subsubsection*"
-msgstr "Alialikappale*"
-
-#: src/ext_l10n.h:430
-msgid "Subtitle"
-msgstr "Alaotsikko"
-
-#: src/ext_l10n.h:431
-msgid "SubTitle"
-msgstr "Alaotsikko"
-
-#: src/ext_l10n.h:432
-msgid "SubVariation"
-msgstr "Alimuunnelma"
-
-#: src/ext_l10n.h:433
-msgid "SubVariation2"
-msgstr "Alimuunnelma 2"
-
-#: src/ext_l10n.h:434
-msgid "SubVariation3"
-msgstr "Alimuunnelma 3"
-
-#: src/ext_l10n.h:435
-msgid "SubVariation4"
-msgstr "Alimuunnelma 4"
-
-#: src/ext_l10n.h:436
-msgid "SubVariation5"
-msgstr "Alimuunnelma 5"
-
-#: src/ext_l10n.h:437
-msgid "Summary"
-msgstr "Yhteenveto"
-
-#: src/ext_l10n.h:438
-msgid "Surname"
-msgstr "Sukunimi"
-
-#: src/ext_l10n.h:439
-msgid "TableComments"
-msgstr "Huomautusluettelo"
-
-#: src/ext_l10n.h:440
-msgid "TableRefs"
-msgstr "Viiteluettelo"
-
-#: src/ext_l10n.h:441
-msgid "Telefax"
-msgstr "Faksi"
-
-#: src/ext_l10n.h:442
-msgid "Telefon"
-msgstr "Puhelin"
-
-#: src/ext_l10n.h:443
-msgid "Telephone"
-msgstr "Puhelin"
-
-#: src/ext_l10n.h:444
-msgid "Telex"
-msgstr "Telex"
-
-#: src/ext_l10n.h:445
-msgid "Thanks"
-msgstr "Kiitokset"
-
-#: src/ext_l10n.h:446
-msgid "Theorem"
-msgstr "Lause"
-
-#: src/ext_l10n.h:447
-msgid "Theorem*"
-msgstr "Lause*"
-
-#: src/ext_l10n.h:448
-msgid "TheoremTemplate"
-msgstr "Lausemalli"
-
-#: src/ext_l10n.h:450
-msgid "ThickLine"
-msgstr "Paksu viiva"
-
-#: src/ext_l10n.h:451
-msgid "ThreeAffiliations"
-msgstr "Kolme järjestöä"
-
-#: src/ext_l10n.h:452
-msgid "ThreeAuthors"
-msgstr "Kolme tekijää"
-
-#: src/ext_l10n.h:453
-msgid "TickList"
-msgstr "Ransk. viiva -luettelo"
-
-#: src/ext_l10n.h:454
-msgid "Title"
-msgstr "Teoksen nimi"
-
-#: src/ext_l10n.h:455
-msgid "Titlehead"
-msgstr "Nimisivun ylätunniste"
-
-#: src/ext_l10n.h:456
-msgid "TITLE_OVER:"
-msgstr "OTSIKKO_YLLÄ:"
-
-#: src/ext_l10n.h:457
-msgid "TOC_Author"
-msgstr "SIS Tekijä"
-
-#: src/ext_l10n.h:458
-msgid "TOC_Title"
-msgstr "SIS Otsikko"
-
-#: src/ext_l10n.h:459
-msgid "Topic"
-msgstr "Aihe"
-
-#: src/ext_l10n.h:460
-msgid "Town"
-msgstr "Kaupunki"
-
-#: src/ext_l10n.h:461
-msgid "Transition"
-msgstr "Siirtyminen"
-
-#: src/ext_l10n.h:462
-msgid "Trans_Keywords"
-msgstr "Käännetyt avainsanat"
-
-#: src/ext_l10n.h:463
-msgid "TranslatedAbstract"
-msgstr "KäännettyTiivistelmä"
-
-#: src/ext_l10n.h:464
-msgid "Translated_Title"
-msgstr "Käännetty_teoksen_nimi"
-
-#: src/ext_l10n.h:465
-msgid "Translator"
-msgstr "Kääntäjä"
-
-#: src/ext_l10n.h:466
-msgid "TwoAffiliations"
-msgstr "Kaksi järjestöä"
-
-#: src/ext_l10n.h:467
-msgid "TwoAuthors"
-msgstr "Kaksi tekijää"
-
-#: src/ext_l10n.h:468
-msgid "Unterschrift"
-msgstr "Allekirjoitus"
-
-#: src/ext_l10n.h:469
-msgid "Uppertitleback"
-msgstr "Ylätunnisteteksti"
-
-#: src/ext_l10n.h:471
-msgid "Variation"
-msgstr "Muunnelma"
-
-#: src/ext_l10n.h:472
-msgid "Verbatim"
-msgstr "Sellaisenaan"
-
-#: src/ext_l10n.h:473
-msgid "Verse"
-msgstr "Säe"
-
-#: src/ext_l10n.h:474
-msgid "Verteiler"
-msgstr "Jakelija"
-
-#: src/ext_l10n.h:475
-msgid "VisibleText"
-msgstr "Näkyvä teksti"
-
-#: src/ext_l10n.h:476
-msgid "Yourmail"
-msgstr "Vastaanottajan osoite"
-
-#: src/ext_l10n.h:477
-msgid "YourMail"
-msgstr "Vastaanottajan osoite"
-
-#: src/ext_l10n.h:478
-msgid "Yourref"
-msgstr "Viitteesi"
-
-#: src/ext_l10n.h:479
-msgid "YourRef"
-msgstr "Viitteesi"
-
-#: src/ext_l10n.h:480
-msgid "Zusatz"
-msgstr "Lisäys"
-
-#: src/ext_l10n.h:481
-msgid "Afrikaans"
-msgstr "Afrikaans"
-
-#: src/ext_l10n.h:482
-msgid "American"
-msgstr "Amerikka"
-
-#: src/ext_l10n.h:483
-msgid "Arabic"
-msgstr "Arabia"
-
-#: src/ext_l10n.h:484
-msgid "Austrian"
-msgstr "Itävalta"
-
-#: src/ext_l10n.h:485
-msgid "Bahasa"
-msgstr "Bahasa"
-
-#: src/ext_l10n.h:486
-msgid "Basque"
-msgstr "Baski"
-
-#: src/ext_l10n.h:487
-msgid "Portuguese (Brazil)"
-msgstr "Portugali (Brasilia)"
-
-#: src/ext_l10n.h:488
-msgid "Breton"
-msgstr "Breton"
-
-#: src/ext_l10n.h:489
-msgid "British"
-msgstr "Britti"
-
-#: src/ext_l10n.h:490
-msgid "Bulgarian"
-msgstr "Bulgaria"
-
-#: src/ext_l10n.h:491
-msgid "Canadian"
-msgstr "Kanada"
-
-#: src/ext_l10n.h:492
-msgid "French Canadian"
-msgstr "Ranskalainen Kanada"
-
-#: src/ext_l10n.h:493
-msgid "Catalan"
-msgstr "Katalaani"
-
-#: src/ext_l10n.h:494
-msgid "Croatian"
-msgstr "Kroatia"
-
-#: src/ext_l10n.h:495
-msgid "Czech"
-msgstr "Tshekki"
-
-#: src/ext_l10n.h:496
-msgid "Danish"
-msgstr "Tanska"
-
-#: src/ext_l10n.h:497
-msgid "Dutch"
-msgstr "Hollanti"
-
-#: src/ext_l10n.h:499
-msgid "Esperanto"
-msgstr "Esperanto"
-
-#: src/ext_l10n.h:500
-msgid "Estonian"
-msgstr "Viro"
-
-#: src/ext_l10n.h:501
-msgid "Finnish"
-msgstr "Suomi"
-
-#: src/ext_l10n.h:502
-msgid "French"
-msgstr "Ranska"
-
-#: src/ext_l10n.h:503
-msgid "French (GUTenberg)"
-msgstr "Ranska (GUTenberg)"
-
-#: src/ext_l10n.h:504
-msgid "Galician"
-msgstr "Galician"
-
-#: src/ext_l10n.h:505
-msgid "German"
-msgstr "Saksa"
-
-#: src/ext_l10n.h:506
-msgid "German (new spelling)"
-msgstr "Saksa (uusi oikeinkirjoitus)"
-
-#: src/ext_l10n.h:508
-msgid "Hebrew"
-msgstr "Heprea"
-
-#: src/ext_l10n.h:509
-msgid "Irish"
-msgstr "Irlanti"
-
-#: src/ext_l10n.h:510
-msgid "Italian"
-msgstr "Italia"
-
-#: src/ext_l10n.h:511
-msgid "Lsorbian"
-msgstr "Lsorbian"
-
-#: src/ext_l10n.h:512
-msgid "Magyar"
-msgstr "Unkari"
-
-#: src/ext_l10n.h:513
-msgid "Norsk"
-msgstr "Norja"
-
-#: src/ext_l10n.h:514
-msgid "Polish"
-msgstr "Puola"
-
-#: src/ext_l10n.h:515
-msgid "Portugese"
-msgstr "Portugali"
-
-#: src/ext_l10n.h:516
-msgid "Romanian"
-msgstr "Romania"
-
-#: src/ext_l10n.h:517
-msgid "Russian"
-msgstr "Venäjä"
-
-#: src/ext_l10n.h:518
-msgid "Scottish"
-msgstr "Skotti"
-
-#: src/ext_l10n.h:519
-msgid "Serbian"
-msgstr "Serbia"
-
-#: src/ext_l10n.h:520
-msgid "Serbo-Croatian"
-msgstr "Serbo-kroatia"
-
-#: src/ext_l10n.h:521
-msgid "Spanish"
-msgstr "Espanja"
-
-#: src/ext_l10n.h:522
-msgid "Slovak"
-msgstr "Slovakia"
-
-#: src/ext_l10n.h:523
-msgid "Slovene"
-msgstr "Slovenia"
-
-#: src/ext_l10n.h:524
-msgid "Swedish"
-msgstr "Ruotsi"
-
-#: src/ext_l10n.h:525
-msgid "Thai"
-msgstr "Thai"
-
-#: src/ext_l10n.h:526
-msgid "Turkish"
-msgstr "Turkki"
-
-#: src/ext_l10n.h:527
-msgid "Ukrainian"
-msgstr "Ukraina"
-
-#: src/ext_l10n.h:528
-msgid "Usorbian"
-msgstr "Usorbian"
-
-#: src/ext_l10n.h:529
-msgid "Welsh"
-msgstr "Wales"
-
-#: src/ext_l10n.h:531
-msgid "Version"
-msgstr "Versio"
-
-#: src/ext_l10n.h:532
-msgid "Version goes here"
-msgstr "Versio tähän"
-
-#: src/ext_l10n.h:536
-msgid "LyX: Enter text"
-msgstr "LyX: Syötä tekstiä"
-
-#: src/ext_l10n.h:537
-msgid "&Dummy"
-msgstr "&Tyhjä"
-
-#: src/ext_l10n.h:541
-msgid "&Key"
-msgstr "&Avainsana"
-
-#: src/ext_l10n.h:542
-msgid "The citation key"
-msgstr "Lainauksen avainsana"
-
-#: src/ext_l10n.h:543
-msgid "&Label"
-msgstr "&Nimike"
-
-#: src/ext_l10n.h:544
-msgid "The label as it appears in the document"
-msgstr "Nimike sellaisena kuin se näkyy asiakirjassa."
-
-#: src/ext_l10n.h:545 src/ext_l10n.h:598 src/ext_l10n.h:792 src/ext_l10n.h:797
-#: src/ext_l10n.h:873 src/ext_l10n.h:893 src/ext_l10n.h:917
-#: src/ext_l10n.h:1062 src/ext_l10n.h:1068 src/ext_l10n.h:1118
-#: src/ext_l10n.h:1158 src/ext_l10n.h:1199
-msgid "&OK"
-msgstr "&OK"
-
-#: src/ext_l10n.h:547
-msgid "Bibtex"
-msgstr "Bibtex"
-
-#: src/ext_l10n.h:548
-msgid "Databases"
-msgstr "Tietokannat"
-
-#: src/ext_l10n.h:549
-msgid "BibTeX database to use"
-msgstr "Käytettävä BiBTeX-tietokanta"
-
-#: src/ext_l10n.h:550 src/ext_l10n.h:626 src/ext_l10n.h:628
-#: src/ext_l10n.h:1167
-msgid "New Item"
-msgstr "Uusi kohta"
-
-#: src/ext_l10n.h:551
-msgid "Available BibTeX databases"
-msgstr "BiBTeX-tietokannat saatavilla"
-
-#: src/ext_l10n.h:552
-msgid "&Add ..."
-msgstr "&Lisää..."
-
-#: src/ext_l10n.h:553
-msgid "Add a BibTeX database file"
-msgstr "Lisää BiBTeX-tietokantatiedosto"
-
-#: src/ext_l10n.h:554
-msgid "&Delete"
-msgstr "&Poista"
-
-#: src/ext_l10n.h:555
-msgid "Remove the selected database"
-msgstr "Poista valittu tietokanta"
-
-#: src/ext_l10n.h:556
-msgid "&Style"
-msgstr "&Tyyli"
-
-#: src/ext_l10n.h:557 src/ext_l10n.h:563
-msgid "The BibTeX style"
-msgstr "BibTeX-tyyli"
-
-#: src/ext_l10n.h:559
-msgid "unsrt"
-msgstr "ei järjestystä"
-
-#: src/ext_l10n.h:560
-msgid "alpha"
-msgstr "numeroin"
-
-#: src/ext_l10n.h:561
-msgid "abbrv"
-msgstr "lyhentein"
-
-#: src/ext_l10n.h:564
-msgid "FIXME !"
-msgstr "KORJAA !"
-
-#: src/ext_l10n.h:565
-msgid "The name of the style to use"
-msgstr "Käytettävän tyylin nimi"
-
-#: src/ext_l10n.h:566
-msgid "&Browse"
-msgstr "&Selaa"
-
-#: src/ext_l10n.h:567
-msgid "Choose a style file"
-msgstr "Valitse tyylitiedosto"
-
-#: src/ext_l10n.h:568
-msgid "Add bibliography to &TOC"
-msgstr "Lisää &lähdeluettelo sisällysluetteloon"
-
-#: src/ext_l10n.h:569
-msgid "Add bibliography to the table of contents"
-msgstr "Lisää lähdeluettelo sisällysluetteloon"
-
-#: src/ext_l10n.h:573
-msgid "&Family:"
-msgstr "&Tyyli:"
-
-#: src/ext_l10n.h:574
-msgid "Font family"
-msgstr "Kirjasinperhe"
-
-#: src/ext_l10n.h:575
-msgid "&Series:"
-msgstr "&Sarja:"
-
-#: src/ext_l10n.h:576 src/ext_l10n.h:583
-msgid "Font series"
-msgstr "Kirjasinsarja:"
-
-#: src/ext_l10n.h:577 src/ext_l10n.h:705
-msgid "&Language:"
-msgstr "&Kieli:"
-
-#: src/ext_l10n.h:579 src/ext_l10n.h:582
-msgid "Font shape"
-msgstr "Kirjasinmuoto"
-
-#: src/ext_l10n.h:580 src/ext_l10n.h:585
-msgid "Font color"
-msgstr "Kirjasimen väri"
-
-#: src/ext_l10n.h:581
-msgid "S&hape:"
-msgstr "&Muoto"
-
-#: src/ext_l10n.h:584
-msgid "&Color:"
-msgstr "&Väri"
-
-#: src/ext_l10n.h:587
-msgid "&Toggle all"
-msgstr "&Kaikki pois/päälle"
-
-#: src/ext_l10n.h:588
-msgid "toggle font on all of the above"
-msgstr "Muuta kaikkien ylläolevien kirjasinta"
-
-#: src/ext_l10n.h:589
-msgid "Never toggled"
-msgstr "Koko alueeseen vaikuttavat"
-
-#: src/ext_l10n.h:590 src/ext_l10n.h:818
-msgid "Si&ze:"
-msgstr "K&oko"
-
-#: src/ext_l10n.h:591
-msgid "Font size"
-msgstr "Kirjainkoko"
-
-#: src/ext_l10n.h:592
-msgid "Always toggled"
-msgstr "Alueen asetuksia muuttavat"
-
-#: src/ext_l10n.h:593 src/ext_l10n.h:595
-msgid "Other font settings"
-msgstr "Muut kirjasinasetukset"
-
-#: src/ext_l10n.h:594
-msgid "&Misc:"
-msgstr "&Sekal.:"
-
-#: src/ext_l10n.h:596
-msgid "Auto apply"
-msgstr "Toteuta itsestään"
-
-#: src/ext_l10n.h:597
-msgid "Apply each change automatically"
-msgstr "Ota kukin muutos käyttöön automaattisesti"
-
-#: src/ext_l10n.h:599 src/ext_l10n.h:604 src/ext_l10n.h:763 src/ext_l10n.h:793
-#: src/ext_l10n.h:798 src/ext_l10n.h:874 src/ext_l10n.h:918
-#: src/ext_l10n.h:1061 src/ext_l10n.h:1069
-msgid "&Apply"
-msgstr "&Toteuta"
-
-#: src/ext_l10n.h:602 src/ext_l10n.h:761 src/ext_l10n.h:796 src/ext_l10n.h:872
-#: src/ext_l10n.h:916 src/ext_l10n.h:1060
-msgid "&Restore"
-msgstr "Pala&uta"
-
-#: src/ext_l10n.h:606
-msgid "Text after"
-msgstr "Seuraava teksti"
-
-#: src/ext_l10n.h:608
-msgid "Natbib citation style to use"
-msgstr "Käytettävä natbib-lähdeviitetyyli"
-
-#: src/ext_l10n.h:609
-msgid "Text before"
-msgstr "Edeltävä teksti"
-
-#: src/ext_l10n.h:611
-msgid "Citation entry"
-msgstr "Lähdeviite"
-
-#: src/ext_l10n.h:613
-msgid "Search the available citations"
-msgstr "Etsi mahdollisista lähteistä"
-
-#: src/ext_l10n.h:614
-msgid "Regular E&xpression"
-msgstr "Säännöllinen &lauseke"
-
-#: src/ext_l10n.h:615
-msgid "Interpret search entry as a regular expression"
-msgstr "Tulkitse etsittävä teksti säännölliseksi lausekkeeksi"
-
-#: src/ext_l10n.h:616
-msgid "&Previous"
-msgstr "&Edellinen"
-
-#: src/ext_l10n.h:617
-msgid "&Case sensitive"
-msgstr "Sama &kirjainkoko"
-
-#: src/ext_l10n.h:618
-msgid "Make the search case-sensitive"
-msgstr "Ota kirjainkoko huomioon etsinnässä"
-
-#: src/ext_l10n.h:619
-msgid "&Next"
-msgstr "&Seuraava"
-
-#: src/ext_l10n.h:620
-msgid "Add the selected citation"
-msgstr "Lisää valittu lähdeviite"
-
-#: src/ext_l10n.h:621
-msgid "Remove the selected citation"
-msgstr "Poista valittu lähdeviite"
-
-#: src/ext_l10n.h:622
-msgid "Move the selected citation up"
-msgstr "Siirrä valittua lähdeviitettä ylös"
-
-#: src/ext_l10n.h:623
-msgid "Move the selected citation down"
-msgstr "Siirrä valittua lähdeviitettä alas"
-
-#: src/ext_l10n.h:624
-msgid "Available"
-msgstr "Saatavilla"
-
-#: src/ext_l10n.h:625
-msgid "Selected"
-msgstr "Valittu"
-
-#: src/ext_l10n.h:627
-msgid "Available citation keys"
-msgstr "Mahdolliset avaimet"
-
-#: src/ext_l10n.h:629
-msgid "Citations currently selected"
-msgstr "Valitut lähteet"
-
-#: src/ext_l10n.h:630
-msgid "Text to place after citation"
-msgstr "Lainauksen jälkeen tuleva teksti"
-
-#: src/ext_l10n.h:631
-msgid "&Full author list"
-msgstr "Täydellinen tekijä&luettelo"
-
-#: src/ext_l10n.h:632
-msgid "List all authors"
-msgstr "Luettele kaikki tekijät"
-
-#: src/ext_l10n.h:633
-msgid "Force &upper case"
-msgstr "Pakota &iso kirjain"
-
-#: src/ext_l10n.h:634
-msgid "Force upper case in citation"
-msgstr "Pakota iso kirjain lainaukseen"
-
-#: src/ext_l10n.h:635
-msgid "Text to place before citation"
-msgstr "Lainausta edeltävä teksti"
-
-#: src/ext_l10n.h:638
-msgid "&Fonts:"
-msgstr "&Kirjasimet:"
-
-#: src/ext_l10n.h:639
-msgid "&Pagestyle:"
-msgstr "&Sivutyyli:"
-
-#: src/ext_l10n.h:640
-msgid "Defa&ult Skip:"
-msgstr "&Oletusväli:"
-
-#: src/ext_l10n.h:641
-msgid "F&ont Size:"
-msgstr "Kirjaink&oko:"
-
-#: src/ext_l10n.h:647
-msgid "Spacin&g:"
-msgstr "&Välit:"
-
-#: src/ext_l10n.h:648
-msgid "E&xtra Options:"
-msgstr "&Lisäasetukset:"
-
-#: src/ext_l10n.h:649
-msgid "&Class:"
-msgstr "&Luokka:"
-
-#: src/ext_l10n.h:650
-msgid "smallskip"
-msgstr "pieni väli"
-
-#: src/ext_l10n.h:651
-msgid "medskip"
-msgstr "keskisuuri väli"
-
-#: src/ext_l10n.h:652
-msgid "bigskip"
-msgstr "suuri väli"
-
-#: src/ext_l10n.h:653
-msgid "length"
-msgstr "pituus"
-
-#: src/ext_l10n.h:663
-msgid "O&ne"
-msgstr "&Yksi"
-
-#: src/ext_l10n.h:664
-msgid "&Two"
-msgstr "&Kaksi"
-
-#: src/ext_l10n.h:666
-msgid "On&e"
-msgstr "Yk&si"
-
-#: src/ext_l10n.h:667
-msgid "T&wo"
-msgstr "K&aksi"
-
-#: src/ext_l10n.h:669
-msgid "&Indent"
-msgstr "Sisenn&ys"
-
-#: src/ext_l10n.h:670
-msgid "S&kip"
-msgstr "V&äli"
-
-#: src/ext_l10n.h:672
-msgid "&Papersize:"
-msgstr "&Paperikoko:"
-
-#: src/ext_l10n.h:683
-msgid "&Special:"
-msgstr "&Erikois:"
-
-#: src/ext_l10n.h:688
-msgid "&Use Geometry Package"
-msgstr "Käytä \"&Geometry\"-pakettia"
-
-#: src/ext_l10n.h:690
-msgid "P&ortrait"
-msgstr "&Pysty"
-
-#: src/ext_l10n.h:691
-msgid "&Landscape"
-msgstr "&Vaaka"
-
-#: src/ext_l10n.h:693
-msgid "&Right:"
-msgstr "&Oikea:"
-
-#: src/ext_l10n.h:694
-msgid "&Bottom:"
-msgstr "&Ala:"
-
-#: src/ext_l10n.h:695
-msgid "L&eft:"
-msgstr "&Vasen:"
-
-#: src/ext_l10n.h:696
-msgid "&Top:"
-msgstr "&Ylä:"
-
-#: src/ext_l10n.h:697
-msgid "Custom Papersize"
-msgstr "Muu paperikoko"
-
-#: src/ext_l10n.h:698 src/ext_l10n.h:907
-msgid "&Width:"
-msgstr "&Leveys:"
-
-#: src/ext_l10n.h:699
-msgid "&Height:"
-msgstr "&Korkeus:"
-
-#: src/ext_l10n.h:700
-msgid "Foot/Head Margins"
-msgstr "Sivuotsikkotila"
-
-#: src/ext_l10n.h:701
-msgid "&Footskip:"
-msgstr "Alav&iiteväli:"
-
-#: src/ext_l10n.h:702
-msgid "Hea&dsep:"
-msgstr "&Sivuots. väli:"
-
-#: src/ext_l10n.h:703
-msgid "Headhe&ight:"
-msgstr "Sivuo&ts. kork.:"
-
-#: src/ext_l10n.h:706
-msgid "Enco&ding:"
-msgstr "&Merkistö:"
-
-#: src/ext_l10n.h:720
-msgid "Quote Style"
-msgstr "Lainausmerkit"
-
-#: src/ext_l10n.h:721
-msgid "&Type:"
-msgstr "&Tyyppi:"
-
-#: src/ext_l10n.h:726
-msgid "Â«textÂ»"
-msgstr "«teksti»"
-
-#: src/ext_l10n.h:727
-msgid "Â»textÂ«"
-msgstr "»teksti«"
-
-#: src/ext_l10n.h:728
-msgid "&Single"
-msgstr "&Yksink."
-
-#: src/ext_l10n.h:729
-msgid "&Double"
-msgstr "&Kaksink."
-
-#: src/ext_l10n.h:731
-msgid "F&loat Placement:"
-msgstr "Irrallisten &sijoitus:"
-
-#: src/ext_l10n.h:732
-msgid "S&ection number depth:"
-msgstr "Otsikkotasojen &lkm.:"
-
-#: src/ext_l10n.h:733
-msgid "&Table of contents depth:"
-msgstr "Sisällysluettelo&tasojen lkm."
-
-#: src/ext_l10n.h:734
-msgid "P&S Driver:"
-msgstr "PS-&ajuri:"
-
-#: src/ext_l10n.h:735
-msgid "Use A&MS Math"
-msgstr "Käytä pakettia AMS &Math"
-
-#: src/ext_l10n.h:737
-msgid "Si&ze"
-msgstr "K&oko"
-
-#: src/ext_l10n.h:750
-msgid "&1"
-msgstr "&1"
-
-#: src/ext_l10n.h:751
-msgid "&2"
-msgstr "&2"
-
-#: src/ext_l10n.h:752
-msgid "&3"
-msgstr "&3"
-
-#: src/ext_l10n.h:753
-msgid "&4"
-msgstr "&4"
-
-#: src/ext_l10n.h:754
-msgid "&Standard"
-msgstr "&Oletus"
-
-#: src/ext_l10n.h:755
-msgid "&Maths"
-msgstr "&Matem"
-
-#: src/ext_l10n.h:756
-msgid "&Ding 1"
-msgstr "&Ding 1"
-
-#: src/ext_l10n.h:757
-msgid "D&ing 2"
-msgstr "D&ing 2"
-
-#: src/ext_l10n.h:758
-msgid "Di&ng 3"
-msgstr "Di&ng 3"
-
-#: src/ext_l10n.h:759
-msgid "Din&g 4"
-msgstr "Din&g 4"
-
-#: src/ext_l10n.h:760
-msgid "&LaTeX"
-msgstr "&LaTeX"
-
-#: src/ext_l10n.h:766 src/ext_l10n.h:780
-msgid "LaTeX error messages"
-msgstr "LaTeX-virheviestit"
-
-#: src/ext_l10n.h:768
-msgid "ERT inset display"
-msgstr "ERT-osion näyttäminen"
-
-#: src/ext_l10n.h:769
-msgid "&Inline"
-msgstr "&Tekstin seassa"
-
-#: src/ext_l10n.h:770
-msgid "Show ERT inline"
-msgstr "Näytä ERT-osioiden sisältö tekstin seassa"
-
-#: src/ext_l10n.h:771
-msgid "&Collapsed"
-msgstr "&Laskostettu"
-
-#: src/ext_l10n.h:772
-msgid "Show ERT button only"
-msgstr "Näytä vain ERT-osion painike"
-
-#: src/ext_l10n.h:773
-msgid "&Open"
-msgstr "&Avaa"
-
-#: src/ext_l10n.h:774
-msgid "Show ERT contents"
-msgstr "Näytä ERT-osion sisältö"
-
-#: src/ext_l10n.h:777
-msgid "External Material"
-msgstr "Ulkoinen aineisto"
-
-#: src/ext_l10n.h:778
-msgid "&Template"
-msgstr "&Mallipohjat"
-
-#: src/ext_l10n.h:779
-msgid "Available templates"
-msgstr "Mahdolliset mallit"
-
-#: src/ext_l10n.h:781
-msgid "&Edit file"
-msgstr "&Muokkaa tiedostoa"
-
-#: src/ext_l10n.h:782
-msgid "Edit the file externally"
-msgstr "Muokkaa tiedostoa ulkoisesti"
-
-#: src/ext_l10n.h:783
-msgid "&View file"
-msgstr "&Katsele tiedostoa"
-
-#: src/ext_l10n.h:784
-msgid "View the file"
-msgstr "Katsele tiedostoa"
-
-#: src/ext_l10n.h:785 src/ext_l10n.h:903 src/ext_l10n.h:1103
-#: src/ext_l10n.h:1189 src/ext_l10n.h:1202
-msgid "&Update"
-msgstr "&Päivitä"
-
-#: src/ext_l10n.h:786
-msgid "Update the material"
-msgstr "Päivitä materiaali"
-
-#: src/ext_l10n.h:787 src/ext_l10n.h:1075
-msgid "&File"
-msgstr "&Tiedosto"
-
-#: src/ext_l10n.h:788
-msgid "Filename"
-msgstr "Tiedostonimi"
-
-#: src/ext_l10n.h:789 src/ext_l10n.h:810 src/ext_l10n.h:891
-#: src/ext_l10n.h:1079
-msgid "&Browse ..."
-msgstr "&Selaa..."
-
-#: src/ext_l10n.h:790
-msgid "&Parameters"
-msgstr "&Parametrit"
-
-#: src/ext_l10n.h:791
-msgid "Parameters"
-msgstr "Parametrit"
-
-#: src/ext_l10n.h:795 src/ext_l10n.h:806 src/ext_l10n.h:1160
-msgid "Form1"
-msgstr "Lomake1"
-
-#: src/ext_l10n.h:801
-msgid "Bottom of the page"
-msgstr "Sivun alaosaan"
-
-#: src/ext_l10n.h:802
-msgid "Top of the page"
-msgstr "Sivun yläosaan"
-
-#: src/ext_l10n.h:803
-msgid "Page of floats"
-msgstr "Irrallisten sivulle"
-
-#: src/ext_l10n.h:804
-msgid "Here, if possible"
-msgstr "Tähän jos mahdollista"
-
-#: src/ext_l10n.h:805
-msgid "Here, definitely"
-msgstr "Tähän ehdottomasti"
-
-#: src/ext_l10n.h:808
-msgid "&File:"
-msgstr "&Tiedosto:"
-
-#: src/ext_l10n.h:809 src/ext_l10n.h:890
-msgid "File name to include"
-msgstr "Valitse sisällytettävä tiedosto"
-
-#: src/ext_l10n.h:811 src/ext_l10n.h:892
-msgid "Select a file"
-msgstr "Valitse tiedosto"
-
-#: src/ext_l10n.h:812
-msgid "Screen Options"
-msgstr "Näyttöasetukset"
-
-#: src/ext_l10n.h:814
-msgid "Monochrome"
-msgstr "Mustavalkoinen"
-
-#: src/ext_l10n.h:815
-msgid "Grayscale"
-msgstr "Harmaasävyinen"
-
-#: src/ext_l10n.h:816
-msgid "Color"
-msgstr "Värillinen"
-
-#: src/ext_l10n.h:817
-msgid "Do not display"
-msgstr "Älä näytä"
-
-#: src/ext_l10n.h:819
-msgid "S&how:"
-msgstr "&Näytä:"
-
-#: src/ext_l10n.h:820 src/ext_l10n.h:830
-msgid "Height"
-msgstr "Korkeus"
-
-#: src/ext_l10n.h:821
-msgid "&Draft mode"
-msgstr "&Luonnostila"
-
-#: src/ext_l10n.h:822
-msgid "draft mode"
-msgstr "luonnostila"
-
-#: src/ext_l10n.h:824
-msgid "&Scale"
-msgstr "&Skaalaa"
-
-#: src/ext_l10n.h:825
-msgid "&Default"
-msgstr "&Oletus"
-
-#: src/ext_l10n.h:826
-msgid "&Custom"
-msgstr "&Muu"
-
-#: src/ext_l10n.h:828
-msgid "Keep aspect&ratio"
-msgstr "Säilytä &sivusuhde"
-
-#: src/ext_l10n.h:831
-msgid "EPS Options"
-msgstr "EPS-asetukset"
-
-#: src/ext_l10n.h:832
-msgid "Bounding box"
-msgstr "Rajauslaatikko"
-
-#: src/ext_l10n.h:833
-msgid "Left &bottom:"
-msgstr "Ala&vasen:"
-
-#: src/ext_l10n.h:834
-msgid "Right &top:"
-msgstr "Ylä&oikea:"
-
-#: src/ext_l10n.h:835
-msgid "Y"
-msgstr "Y"
-
-#: src/ext_l10n.h:836
-msgid "X"
-msgstr "X"
-
-#: src/ext_l10n.h:849
-msgid "&Get"
-msgstr "&Hae"
-
-#: src/ext_l10n.h:850
-msgid "Get bounding box from file"
-msgstr "Hae rajauslaatikko tiedostosta"
-
-#: src/ext_l10n.h:851
-msgid "&Clip to bounding box"
-msgstr "&Leikkaa rajauslaatikkoon"
-
-#: src/ext_l10n.h:852
-msgid "clip to bounding box"
-msgstr "Leikkaa kuva rajauslaatikkoon"
-
-#: src/ext_l10n.h:854
-msgid "Rotation"
-msgstr "Kierto"
-
-#: src/ext_l10n.h:855
-msgid "&Angle:"
-msgstr "Ku&lma:"
-
-#: src/ext_l10n.h:856
-msgid "&Origin:"
-msgstr "Kesk&us:"
-
-#: src/ext_l10n.h:858
-msgid "leftTop"
-msgstr "ylävasen"
-
-#: src/ext_l10n.h:859
-msgid "leftBottom"
-msgstr "alavasen"
-
-#: src/ext_l10n.h:860
-msgid "leftBaseline"
-msgstr "vasen"
-
-#: src/ext_l10n.h:862
-msgid "centerTop"
-msgstr "ylä"
-
-#: src/ext_l10n.h:863
-msgid "centerBottom"
-msgstr "ala"
-
-#: src/ext_l10n.h:864
-msgid "centerBaseline"
-msgstr "keskellä"
-
-#: src/ext_l10n.h:865
-msgid "rightTop"
-msgstr "yläoikea"
-
-#: src/ext_l10n.h:866
-msgid "rightBottom"
-msgstr "alaoikea"
-
-#: src/ext_l10n.h:867
-msgid "rightBaseline"
-msgstr "oikea"
-
-#: src/ext_l10n.h:868
-msgid "referencePoint"
-msgstr "viitepiste"
-
-#: src/ext_l10n.h:869
-msgid "LaTeX options"
-msgstr "LaTeX-valinnat"
-
-#: src/ext_l10n.h:870
-msgid "Su&bfigure"
-msgstr "&Alikuva"
-
-#: src/ext_l10n.h:871
-msgid "The sub-caption for the figure"
-msgstr "Kuvan alikuvateksti"
-
-#: src/ext_l10n.h:876
-msgid "Include File"
-msgstr "Sisällytä tiedosto"
-
-#: src/ext_l10n.h:877
-msgid "Include type"
-msgstr "Sisällytystyyppi"
-
-#: src/ext_l10n.h:878
-msgid "&Include"
-msgstr "&Sisällytä"
-
-#: src/ext_l10n.h:879 src/ext_l10n.h:881 src/ext_l10n.h:883 src/ext_l10n.h:886
-#: src/ext_l10n.h:888
-msgid "FIXME"
-msgstr "KORJAA"
-
-#: src/ext_l10n.h:880
-msgid "I&nput"
-msgstr "S&yöte"
-
-#: src/ext_l10n.h:882
-msgid "&Verbatim"
-msgstr "S&ellaisenaan"
-
-#: src/ext_l10n.h:884
-msgid "Options"
-msgstr "Asetukset"
-
-#: src/ext_l10n.h:885
-msgid "&Don't typeset"
-msgstr "Älä la&do"
-
-#: src/ext_l10n.h:887
-msgid "Visible &Space"
-msgstr "&Näkyvä väli"
-
-#: src/ext_l10n.h:889
-msgid "&Filename:"
-msgstr "&Tiedostonimi:"
-
-#: src/ext_l10n.h:895
-msgid "&Load"
-msgstr "&Lataa"
-
-#: src/ext_l10n.h:896
-msgid "Load the file"
-msgstr "Lataa tiedosto"
-
-#: src/ext_l10n.h:898 src/ext_l10n.h:1176
-msgid "&Keyword"
-msgstr "&Avainsana"
-
-#: src/ext_l10n.h:899 src/ext_l10n.h:1031 src/ext_l10n.h:1177
-msgid "Index entry"
-msgstr "Hakemistoviite"
-
-#: src/ext_l10n.h:904 src/ext_l10n.h:1203
-msgid "Update the display"
-msgstr "Päivitä näyttö"
-
-#: src/ext_l10n.h:906
-msgid "Minipage settings"
-msgstr "Pienoissivuasetukset"
-
-#: src/ext_l10n.h:908 src/ext_l10n.h:1057
-msgid "Top"
-msgstr "Yllä"
-
-#: src/ext_l10n.h:909 src/ext_l10n.h:1058
-msgid "Middle"
-msgstr "Keskellä"
-
-#: src/ext_l10n.h:910 src/ext_l10n.h:1059
-msgid "Bottom"
-msgstr "Alla"
-
-#: src/ext_l10n.h:911
-msgid "Vertical alignment"
-msgstr "Pystytasaus"
-
-#: src/ext_l10n.h:912
-msgid "A&lignment:"
-msgstr "&Tasaus:"
-
-#: src/ext_l10n.h:913
-msgid "Units of width value"
-msgstr "Leveysarvon yksiköt"
-
-#: src/ext_l10n.h:914
-msgid "Width value"
-msgstr "Leveysarvo"
-
-#: src/ext_l10n.h:915
-msgid "&Units:"
-msgstr "&Yksiköt:"
-
-#: src/ext_l10n.h:921
-msgid "&Alignment and Spacing"
-msgstr "&Tasaus ja välit"
-
-#: src/ext_l10n.h:922
-msgid "Alignment:"
-msgstr "Tasaus:"
-
-#: src/ext_l10n.h:923
-msgid "Justified"
-msgstr "Tasattu"
-
-#: src/ext_l10n.h:924
-msgid "Left"
-msgstr "Vasen"
-
-#: src/ext_l10n.h:925
-msgid "Right"
-msgstr "Oikea"
-
-#: src/ext_l10n.h:926
-msgid "Centered"
-msgstr "Keskellä"
-
-#: src/ext_l10n.h:927
-msgid "No indentation"
-msgstr "Ei sisennystä"
-
-#: src/ext_l10n.h:928
-msgid "Spacing"
-msgstr "Välit"
-
-#: src/ext_l10n.h:929 src/ext_l10n.h:940 src/ext_l10n.h:951 src/ext_l10n.h:962
-#: src/ext_l10n.h:973 src/ext_l10n.h:984 src/ext_l10n.h:1037
-msgid "Centimetres"
-msgstr "Senttimetriä"
-
-#: src/ext_l10n.h:930 src/ext_l10n.h:941 src/ext_l10n.h:952 src/ext_l10n.h:963
-#: src/ext_l10n.h:974 src/ext_l10n.h:985 src/ext_l10n.h:1038
-msgid "Inches"
-msgstr "Tuumaa"
-
-#: src/ext_l10n.h:931 src/ext_l10n.h:942 src/ext_l10n.h:953 src/ext_l10n.h:964
-#: src/ext_l10n.h:975 src/ext_l10n.h:986 src/ext_l10n.h:1039
-msgid "Points"
-msgstr "Pistettä"
-
-#: src/ext_l10n.h:932 src/ext_l10n.h:943 src/ext_l10n.h:954 src/ext_l10n.h:965
-#: src/ext_l10n.h:976 src/ext_l10n.h:987 src/ext_l10n.h:1040
-msgid "Millimetres"
-msgstr "Millimetriä"
-
-#: src/ext_l10n.h:933 src/ext_l10n.h:944 src/ext_l10n.h:955 src/ext_l10n.h:966
-#: src/ext_l10n.h:977 src/ext_l10n.h:988 src/ext_l10n.h:1041
-msgid "Picas"
-msgstr "Picaa"
-
-#: src/ext_l10n.h:934 src/ext_l10n.h:945 src/ext_l10n.h:956 src/ext_l10n.h:967
-#: src/ext_l10n.h:978 src/ext_l10n.h:989 src/ext_l10n.h:1042
-msgid "ex Units"
-msgstr "ex-yksikköä"
-
-#: src/ext_l10n.h:935 src/ext_l10n.h:946 src/ext_l10n.h:957 src/ext_l10n.h:968
-#: src/ext_l10n.h:979 src/ext_l10n.h:990 src/ext_l10n.h:1043
-msgid "em Units"
-msgstr "em-yksikköä"
-
-#: src/ext_l10n.h:936 src/ext_l10n.h:947 src/ext_l10n.h:958 src/ext_l10n.h:969
-#: src/ext_l10n.h:980 src/ext_l10n.h:991 src/ext_l10n.h:1044
-msgid "Scaled Points"
-msgstr "Skaalattua pistettä"
-
-#: src/ext_l10n.h:937 src/ext_l10n.h:948 src/ext_l10n.h:959 src/ext_l10n.h:970
-#: src/ext_l10n.h:981 src/ext_l10n.h:992 src/ext_l10n.h:1045
-msgid "Big/PS Points"
-msgstr "Big/PS-pistettä"
-
-#: src/ext_l10n.h:938 src/ext_l10n.h:949 src/ext_l10n.h:960 src/ext_l10n.h:971
-#: src/ext_l10n.h:982 src/ext_l10n.h:993 src/ext_l10n.h:1046
-msgid "Didot Points"
-msgstr "Didot-pistettä"
-
-#: src/ext_l10n.h:939 src/ext_l10n.h:950 src/ext_l10n.h:961 src/ext_l10n.h:972
-#: src/ext_l10n.h:983 src/ext_l10n.h:994 src/ext_l10n.h:1047
-msgid "Cicero Points"
-msgstr "Cicero-pistettä"
-
-#: src/ext_l10n.h:995 src/ext_l10n.h:997
-msgid "Units:"
-msgstr "Yksiköt:"
-
-#: src/ext_l10n.h:996 src/ext_l10n.h:998
-msgid "Unit of Size, Stretch and Slink"
-msgstr "Koon, venymän ja kutistuman yksikkö"
-
-#: src/ext_l10n.h:999
-msgid "Value:"
-msgstr "Arvo:"
-
-#: src/ext_l10n.h:1000
-msgid "Amount of spacing"
-msgstr "Välin määrä"
-
-#: src/ext_l10n.h:1001
-msgid "Stretch:"
-msgstr "Venymä:"
-
-#: src/ext_l10n.h:1002
-msgid "Margin by which paragraph is allowed to increase"
-msgstr "Määrä, jonka verran kappale voi kasvaa"
-
-#: src/ext_l10n.h:1003
-msgid "Shrink:"
-msgstr "Kutistuma:"
-
-#: src/ext_l10n.h:1004
-msgid "Margin by which paragraph is allowed to decrease"
-msgstr "Määrä, jonka verran kappale voi pienetä"
-
-#: src/ext_l10n.h:1006 src/ext_l10n.h:1015
-msgid "DefSkip"
-msgstr "Oletusväli"
-
-#: src/ext_l10n.h:1007 src/ext_l10n.h:1016
-msgid "SmallSkip"
-msgstr "Pieni väli"
-
-#: src/ext_l10n.h:1008 src/ext_l10n.h:1017
-msgid "MedSkip"
-msgstr "Keskisuuri väli"
-
-#: src/ext_l10n.h:1009 src/ext_l10n.h:1018
-msgid "BigSkip"
-msgstr "Suuri väli"
-
-#: src/ext_l10n.h:1010 src/ext_l10n.h:1019
-msgid "VFill"
-msgstr "Vaakatäyttö"
-
-#: src/ext_l10n.h:1012
-msgid "Above:"
-msgstr "Yllä:"
-
-#: src/ext_l10n.h:1013
-msgid "Below:"
-msgstr "Alla:"
-
-#: src/ext_l10n.h:1021
-msgid "Keep space at the top of the page"
-msgstr "Säilytä väli sivun ylälaidassa"
-
-#: src/ext_l10n.h:1022
-msgid "Keep space at top of the page"
-msgstr "Säilytä väli sivun ylälaidassa"
-
-#: src/ext_l10n.h:1023
-msgid "Keep space at the bottom of the page"
-msgstr "Säilytä väli sivun alalaidassa"
-
-#: src/ext_l10n.h:1024
-msgid "List environment"
-msgstr "Luetteloympäristö"
-
-#: src/ext_l10n.h:1025
-msgid "Label width:"
-msgstr "Nimikeleveys:"
-
-#: src/ext_l10n.h:1026
-msgid "Label width in list environment"
-msgstr "Nimikkeen leveys luetteloympäristössä"
-
-#: src/ext_l10n.h:1027
-msgid "&Lines and Page breaks"
-msgstr "&Viivat ja sivunvaihdot"
-
-#: src/ext_l10n.h:1028
-msgid "Page break"
-msgstr "Sivunvaihto"
-
-#: src/ext_l10n.h:1029 src/ext_l10n.h:1033
-msgid "above paragraph"
-msgstr "ennen kappaletta"
-
-#: src/ext_l10n.h:1030 src/ext_l10n.h:1034
-msgid "below paragraph"
-msgstr "kappaleen jälkeen"
-
-#: src/ext_l10n.h:1032
-msgid "Line"
-msgstr "Viiva"
-
-#: src/ext_l10n.h:1035
-msgid "&Extra options"
-msgstr "&Lisäasetukset"
-
-#: src/ext_l10n.h:1036
-msgid "Unit:"
-msgstr "Yksikkö:"
-
-#: src/ext_l10n.h:1050
-msgid "Wrap text around floats"
-msgstr "Teksti kiertää irralliset osat"
-
-#: src/ext_l10n.h:1051
-msgid "Indent whole paragraph"
-msgstr "Sisennä koko kappale"
-
-#: src/ext_l10n.h:1052
-msgid "Width:"
-msgstr "Leveys:"
-
-#: src/ext_l10n.h:1053
-msgid "Minipage options"
-msgstr "Pienoissivuasetukset"
-
-#: src/ext_l10n.h:1054
-msgid "Start new minipage"
-msgstr "Aloita uusi pienoissivu"
-
-#: src/ext_l10n.h:1055
-msgid "HFill between minipage paragraphs"
-msgstr "Vaakatäyttö pienoissivukappaleiden välissä"
-
-#: src/ext_l10n.h:1056
-msgid "Vertical Alignment:"
-msgstr "Pystytasaus:"
-
-#: src/ext_l10n.h:1064
-msgid "LaTeX pre-amble"
-msgstr "LaTeX-aloitusosa"
-
-#: src/ext_l10n.h:1065
-msgid "The LaTeX pre-amble"
-msgstr "LaTeX-aloitusosa"
-
-#: src/ext_l10n.h:1066
-msgid "&Edit ..."
-msgstr "&Muokkaa..."
-
-#: src/ext_l10n.h:1067
-msgid "Edit the pre-amble in an external editor"
-msgstr "Muokkaa aloitusosaa toisella editorilla"
-
-#: src/ext_l10n.h:1072
-msgid "Print Destination"
-msgstr "Tulosteen kohde"
-
-#: src/ext_l10n.h:1073
-msgid "P&rinter"
-msgstr "&Tulostin"
-
-#: src/ext_l10n.h:1074
-msgid "Send output to the printer"
-msgstr "Syötä tuloste tulostimelle"
-
-#: src/ext_l10n.h:1076 src/ext_l10n.h:1078
-msgid "Send output to a file"
-msgstr "Syötä tuloste tiedostoon"
-
-#: src/ext_l10n.h:1077
-msgid "Send output to the given printer"
-msgstr "Syötä tuloste annetulle tulostimelle"
-
-#: src/ext_l10n.h:1080
-msgid "Pages"
-msgstr "Sivut"
-
-#: src/ext_l10n.h:1081
-msgid "&All"
-msgstr "&Kaikki"
-
-#: src/ext_l10n.h:1082
-msgid "Print all pages"
-msgstr "Tulosta joka sivu"
-
-#: src/ext_l10n.h:1083
-msgid "&Odd"
-msgstr "&Parittomat"
-
-#: src/ext_l10n.h:1084
-msgid "Print odd pages only"
-msgstr "Tulosta vain parittomat sivut"
-
-#: src/ext_l10n.h:1085
-msgid "&Even"
-msgstr "&Parilliset"
-
-#: src/ext_l10n.h:1086
-msgid "Print even pages only"
-msgstr "Tulosta vain parilliset sivut"
-
-#: src/ext_l10n.h:1087
-msgid "&Last page:"
-msgstr "&Viimeinen sivu:"
-
-#: src/ext_l10n.h:1088
-msgid "Page number to print to"
-msgstr "Sivu, johon asti tulostetaan"
-
-#: src/ext_l10n.h:1089
-msgid "Re&verse order"
-msgstr "&Käänteinen järjestys"
-
-#: src/ext_l10n.h:1090
-msgid "Print in reverse order"
-msgstr "Tulosta käänteisessä järjestyksessä"
-
-#: src/ext_l10n.h:1091
-msgid "Page number to print from"
-msgstr "Sivu, josta tulostus alkaa"
-
-#: src/ext_l10n.h:1092
-msgid "Ran&ge"
-msgstr "&Alue"
-
-#: src/ext_l10n.h:1093
-msgid "Set a range of pages to print"
-msgstr "Tulostettava sivualue"
-
-#: src/ext_l10n.h:1094
-msgid "&Starting range:"
-msgstr "&Aloitusalue:"
-
-#: src/ext_l10n.h:1096
-msgid "Number of copies"
-msgstr "Kopioiden määrä"
-
-#: src/ext_l10n.h:1097
-msgid "&Collate"
-msgstr "&Järjestetty"
-
-#: src/ext_l10n.h:1098
-msgid "Collate copies"
-msgstr "Järjestä kopiot"
-
-#: src/ext_l10n.h:1099
-msgid "&Print"
-msgstr "&Tulosta"
-
-#: src/ext_l10n.h:1102 src/ext_l10n.h:1187
-msgid "&Type"
-msgstr "&Tyyppi"
-
-#: src/ext_l10n.h:1104
-msgid "Update the reference list"
-msgstr "Päivitä viiteluettelo"
-
-#: src/ext_l10n.h:1105
-msgid "Sort"
-msgstr "Järjestä"
-
-#: src/ext_l10n.h:1106
-msgid "Sort references in alphabetical order"
-msgstr "Järjestä viitteet aakkosjärjestykseen"
-
-#: src/ext_l10n.h:1108
-msgid "Move the document cursor to reference"
-msgstr "Siirrä kohdistin viitteelle"
-
-#: src/ext_l10n.h:1110
-msgid "Page number"
-msgstr "Sivunumero"
-
-#: src/ext_l10n.h:1111
-msgid "Ref on page xxx"
-msgstr "Viittaus sivulla xxx"
-
-#: src/ext_l10n.h:1112
-msgid "On page xxx"
-msgstr "Sivulla xxx"
-
-#: src/ext_l10n.h:1113
-msgid "Pretty reference"
-msgstr "Hieno viittaus"
-
-#: src/ext_l10n.h:1114
-msgid "Reference as it appears in output"
-msgstr "Viite sellaisena kuin se on tulosteessa"
-
-#: src/ext_l10n.h:1115
-msgid "&Reference:"
-msgstr "&Viittaus:"
-
-#: src/ext_l10n.h:1116
-msgid "&Name:"
-msgstr "&Nimi:"
-
-#: src/ext_l10n.h:1117
-msgid "Available references"
-msgstr "Mahdolliset viitteet"
-
-#: src/ext_l10n.h:1120
-msgid "Search and replace"
-msgstr "Etsi ja korvaa"
-
-#: src/ext_l10n.h:1121
-msgid "&Find:"
-msgstr "&Etsi:"
-
-#: src/ext_l10n.h:1122
-msgid "Replace &with:"
-msgstr "K&orvaava teksti:"
-
-#: src/ext_l10n.h:1123
-msgid "Case &sensitive"
-msgstr "&Sama kirjainkoko"
-
-#: src/ext_l10n.h:1124
-msgid "Match whole words onl&y"
-msgstr "Löydä &vain kokonaiset sanat"
-
-#: src/ext_l10n.h:1125
-msgid "Find &Next"
-msgstr "Etsi &seuraava"
-
-#: src/ext_l10n.h:1126 src/ext_l10n.h:1134 src/ext_l10n.h:1183
-msgid "&Replace"
-msgstr "&Korvaa"
-
-#: src/ext_l10n.h:1127
-msgid "Replace &All "
-msgstr "Korvaa k&aikki"
-
-#: src/ext_l10n.h:1128
-msgid "Search &backwards"
-msgstr "Etsi &edellinen"
-
-#: src/ext_l10n.h:1130
-msgid "File: "
-msgstr "Tiedosto: "
-
-#: src/ext_l10n.h:1133
-msgid "Suggestions:"
-msgstr "Ehdotukset:"
-
-#: src/ext_l10n.h:1135
-msgid "Replace word with current choice"
-msgstr "Haluatko korvata sanan nykyisellä valinnalla"
-
-#: src/ext_l10n.h:1136
-msgid "&Add"
-msgstr "&Lisää"
-
-#: src/ext_l10n.h:1137
-msgid "Add the word to your personal dictionary"
-msgstr "Lisää sana käyttäjän sanastoon"
-
-#: src/ext_l10n.h:1138
-msgid "&Ignore"
-msgstr "&Ohita"
-
-#: src/ext_l10n.h:1139
-msgid "Ignore this word"
-msgstr "Ohita tämä sana"
-
-#: src/ext_l10n.h:1140
-msgid "&Accept"
-msgstr "&Hyväksy"
-
-#: src/ext_l10n.h:1141
-msgid "Accept word for this session"
-msgstr "Hyväksy sana tässä istunnossa"
-
-#: src/ext_l10n.h:1142
-msgid "&Options..."
-msgstr "&Asetukset..."
-
-#: src/ext_l10n.h:1144
-msgid "How far spellchecking has got"
-msgstr "Kuinka pitkällä oikoluku on"
-
-#: src/ext_l10n.h:1146
-msgid "Replacement:"
-msgstr "Korvaava:"
-
-#: src/ext_l10n.h:1147
-msgid "Current word"
-msgstr "Nykyinen sana"
-
-#: src/ext_l10n.h:1148
-msgid "Unknown:"
-msgstr "Tuntematon:"
-
-#: src/ext_l10n.h:1149
-msgid "Replace with selected word"
-msgstr "Korvaa valitulla sanalla"
-
-#: src/ext_l10n.h:1150
-msgid "&Start..."
-msgstr "&Aloita"
-
-#: src/ext_l10n.h:1151
-msgid "Start spellcheck"
-msgstr "Käynnistä oikoluku"
-
-#: src/ext_l10n.h:1153
-msgid "&Rows:"
-msgstr "&Rivejä:"
-
-#: src/ext_l10n.h:1154
-msgid "Number of rows"
-msgstr "Rivien määrä"
-
-#: src/ext_l10n.h:1155
-msgid "&Columns:"
-msgstr "&Sarakkeita:"
-
-#: src/ext_l10n.h:1156
-msgid "Number of columns"
-msgstr "Sarakkeiden määrä"
-
-#: src/ext_l10n.h:1157
-msgid "Resize this to the correct table dimensions"
-msgstr "Muuta tämän koko oikeita taulukon mittoja vastaavaksi"
-
-#: src/ext_l10n.h:1161
-msgid "LaTeX classes"
-msgstr "LaTeX-luokat"
-
-#: src/ext_l10n.h:1162
-msgid "LaTeX styles"
-msgstr "LaTeX-tyylit"
-
-#: src/ext_l10n.h:1163
-msgid "BibTeX styles"
-msgstr "BibTeX-tyylit"
-
-#: src/ext_l10n.h:1164
-msgid "Selected classes or styles"
-msgstr "Valitut luokat tai tyylit"
-
-#: src/ext_l10n.h:1165
-msgid "Show &path"
-msgstr "Näytä &polku"
-
-#: src/ext_l10n.h:1166
-msgid "Toggles view of the file list"
-msgstr "Näyttää tai piilottaa tiedostoluettelon"
-
-#: src/ext_l10n.h:1168
-msgid "Installed files"
-msgstr "Asennetut tiedostot"
-
-#: src/ext_l10n.h:1169
-msgid "&Rescan"
-msgstr "&Päivitä"
-
-#: src/ext_l10n.h:1170
-msgid "Built new file list"
-msgstr "Loi uuden tiedostoluettelon"
-
-#: src/ext_l10n.h:1171
-msgid "&View"
-msgstr "&Katsele"
-
-#: src/ext_l10n.h:1172
-msgid ""
-"Show contents of marked file. Only possible when files are shown with path"
-msgstr ""
-"Näytä merkityn tiedoston sisältö. Mahdollista vain kun tiedostot näkyvät "
-"polkuineen."
-
-#: src/ext_l10n.h:1174
-msgid "Close this dialog"
-msgstr "Sulje tämä ikkuna"
-
-#: src/ext_l10n.h:1178
-msgid "Entry"
-msgstr "Kohta"
-
-#: src/ext_l10n.h:1179
-msgid "Thesaurus entries"
-msgstr "Synonyymit"
-
-#: src/ext_l10n.h:1180
-msgid "Select a related word"
-msgstr "Valitse kytkeytyvä sana"
-
-#: src/ext_l10n.h:1181
-msgid "&Selection"
-msgstr "&Valinta"
-
-#: src/ext_l10n.h:1182
-msgid "The selected entry"
-msgstr "Valittu kohta"
-
-#: src/ext_l10n.h:1184
-msgid "Replace the entry with the selection"
-msgstr "Korvaa kohta valinnalla"
-
-#: src/ext_l10n.h:1186
-msgid "Table Of Contents"
-msgstr "Sisällysluettelo"
-
-#: src/ext_l10n.h:1188
-msgid "Contents list"
-msgstr "Sisällysluettelo"
-
-#: src/ext_l10n.h:1191
-msgid "Insert URL"
-msgstr "Lisää URL"
-
-#: src/ext_l10n.h:1192
-msgid "&URL"
-msgstr "&URL"
-
-#: src/ext_l10n.h:1194
-msgid "&Name"
-msgstr "&Nimi"
-
-#: src/ext_l10n.h:1195
-msgid "Name associated with the URL"
-msgstr "URL:ään liittyvä nimi"
-
-#: src/ext_l10n.h:1197
-msgid "&Generate hyperlink"
-msgstr "&Luo hyperlinkki"
-
-#: src/ext_l10n.h:1198
-msgid "Output as a hyperlink ?"
-msgstr "Tuota hyperlinkki?"
-
-#: src/ext_l10n.h:1201
-msgid "Version control log"
-msgstr "Versiohallintaloki"
-
-#~ msgid "' indexed."
-#~ msgstr "' lisätty hakemistoon."
-
 #~ msgid ""
 #~ "The BibTeX style to use (only one allowed). Insert it without the default "
 #~ "extension \".bst\" and without path. Most of the bibstyles are stored in "
@@ -10570,3 +10556,559 @@ msgstr "Versiohallintaloki"
 #~ msgstr ""
 #~ "Käytä tätä, jos haluat kaikkien tekijöiden näkyvän viitteessä vaikka "
 #~ "heitä olisi enemmän kuin kolme, eikä vain \"<Eräs tekijä> ym.\" (Natbib)."
+
+#~ msgid "Encoding"
+#~ msgstr "Merkistö"
+
+#~ msgid "Flags|#F"
+#~ msgstr "Asetukset|#A"
+
+#~ msgid "Flags that control the converter behavior"
+#~ msgstr "Asetukset, jotka vaikuttavat muuntimen toimintaan."
+
+#~ msgid "Caesar et al."
+#~ msgstr "Caesar ym."
+
+#~ msgid "No database"
+#~ msgstr "Ei tietokantaa"
+
+#~ msgid "Unable to convert file "
+#~ msgstr "Ei voinut muuntaa tiedostoa "
+
+#~ msgid " to a loadable format."
+#~ msgstr " ladattavaan muotoon."
+
+#~ msgid " List"
+#~ msgstr "luettelo"
+
+#~ msgid "empty figure path"
+#~ msgstr "Kuvien hakupolku on tyhjä"
+
+#~ msgid " not found"
+#~ msgstr " ei löytynyt"
+
+#~ msgid "Wide "
+#~ msgstr "Leveä "
+
+#~ msgid "_Add new citation"
+#~ msgstr "_Lisää uusi lähdeviite"
+
+#~ msgid "_Edit/remove citation(s)"
+#~ msgstr "_Muokkaa/poista lähdeviitteet"
+
+#~ msgid " Citation: Select action "
+#~ msgstr " Lähdeviite: Valitse toiminto "
+
+#~ msgid "Use Regular Expression"
+#~ msgstr "Käytä säännöllistä lauseketta"
+
+#~ msgid " Insert Citation: Enter keyword(s) or regular expression "
+#~ msgstr " Lisää lähdeviite: Syötä avainsana(t) tai säännöllinen lauseke "
+
+#~ msgid "Key"
+#~ msgstr "Avain"
+
+#~ msgid "Author(s)"
+#~ msgstr "Tekijä(t)"
+
+#~ msgid "Year"
+#~ msgstr "Vuosi"
+
+#~ msgid " Insert Citation: Select citation "
+#~ msgstr " Lisää lähdeviite: Valitse lähdeviite "
+
+#~ msgid "_Remove"
+#~ msgstr "_Poista"
+
+#~ msgid "_Up"
+#~ msgstr "_Ylös"
+
+#~ msgid "_Down"
+#~ msgstr "_Alas"
+
+#~ msgid " Citation: Edit "
+#~ msgstr " Lähdeviite: Muokkaa "
+
+#~ msgid "--- No such key in the database ---"
+#~ msgstr "--- Halutunlaista avainta ei ole tietokannassa ---"
+
+#~ msgid " Index "
+#~ msgstr " Hakemisto "
+
+#~ msgid "Goto reference"
+#~ msgstr "Siirry viitteeseen"
+
+#~ msgid " Reference "
+#~ msgstr " Viite "
+
+#~ msgid " Reference: Select reference "
+#~ msgstr " Viite: Valitse viite "
+
+#~ msgid "Ref"
+#~ msgstr "Viite"
+
+#~ msgid "Page"
+#~ msgstr "Sivu"
+
+#~ msgid "TextRef"
+#~ msgstr "Tekstiviite"
+
+#~ msgid "TextPage"
+#~ msgstr "Sivuviite"
+
+#~ msgid "Type:"
+#~ msgstr "Tyyppi:"
+
+#~ msgid "Name:"
+#~ msgstr "Nimi:"
+
+#~ msgid " Reference: "
+#~ msgstr " Viite: "
+
+#~ msgid "*** No Document ***"
+#~ msgstr "*** Ei asiakirjaa ***"
+
+#~ msgid "File "
+#~ msgstr "Tiedosto "
+
+#~ msgid ""
+#~ "\n"
+#~ "isn't readable or doesn't exist!"
+#~ msgstr ""
+#~ "\n"
+#~ "ei ole luettavissa tai olemassa!"
+
+#~ msgid " none | ispell | aspell "
+#~ msgstr " ei mikään | ispell | aspell "
+
+#~ msgid "Floats & Insets|I"
+#~ msgstr "Osiot ja irralliset|j"
+
+#~ msgid "Melt|M"
+#~ msgstr "Poista irrallisuus|P"
+
+#~ msgid "Open All Figures/Tables|F"
+#~ msgstr "Avaa kaikki kuvat ja taulukot|v"
+
+#~ msgid "Close All Figures/Tables|T"
+#~ msgstr "Sulje kaikki kuvat ja taulukot|S"
+
+#~ msgid "Open All Footnotes/Marginal Notes|A"
+#~ msgstr "Avaa kaikki alaviitteet ja reunahuomautukset|k"
+
+#~ msgid "Close All Footnotes/Marginal Notes|C"
+#~ msgstr "Sulje kaikki alaviitteet ja reunahuomautukset|l"
+
+#~ msgid "Change environment depth"
+#~ msgstr "Muuta ympäristötasoa"
+
+#~ msgid "Insert a new Text Inset"
+#~ msgstr "Lisää uusi tekstiosio"
+
+#~ msgid "File Type"
+#~ msgstr "Tiedostotyyppi"
+
+#~ msgid "DVI|#D"
+#~ msgstr "DVI|#D"
+
+#~ msgid "Postscript|#P"
+#~ msgstr "PostScript|#P"
+
+#~ msgid "LaTeX|#T"
+#~ msgstr "LaTeX|#T"
+
+#~ msgid "LyX|#L"
+#~ msgstr "LyX|#L"
+
+#~ msgid "Ascii|#s"
+#~ msgstr "Ascii|#s"
+
+#~ msgid "Inline Formula|h"
+#~ msgstr "Kaava tekstissä|K"
+
+#~ msgid "Symbols|S"
+#~ msgstr "Symbolit|S"
+
+#~ msgid "Blackboard bold N (Natural)"
+#~ msgstr "Vahvennettu N (luonnolliset luvut)"
+
+#~ msgid "Blackboard bold Z (Integer)"
+#~ msgstr "Vahvennettu Z (kokonaisluvut)"
+
+#~ msgid "Blackboard bold Q (Rational)"
+#~ msgstr "Vahvennettu Q (rationaaliluvut)"
+
+#~ msgid "Blackboard bold R (Real)"
+#~ msgstr "Vahvennettu R (reaaliluvut)"
+
+#~ msgid "Blackboard bold C (Complex)"
+#~ msgstr "Vahvennettu C (kompleksiluvut)"
+
+#~ msgid "Blackboard bold H (Quaternions)"
+#~ msgstr "Vahvennettu H (Kvaternionit)"
+
+#~ msgid "Calligraphic F (Fourier)"
+#~ msgstr "Kauno-F (Fourier)"
+
+#~ msgid "Calligraphic L (Laplace)"
+#~ msgstr "Kauno-L (Laplace)"
+
+#~ msgid "Calligraphic H (Hankel)"
+#~ msgstr "Kauno-H (Hankel)"
+
+#~ msgid "Calligraphic O (Landau)"
+#~ msgstr "Kauno-O (Landau)"
+
+#~ msgid "EPS file|#E"
+#~ msgstr "EPS-tied.|#E"
+
+#~ msgid "Full Screen Preview|#v"
+#~ msgstr "Koko näytön esikatselu|#ö"
+
+#~ msgid "Display Frame|#F"
+#~ msgstr "Näytä kehys|#y"
+
+#~ msgid "Do Translations|#r"
+#~ msgstr "Tee muunnokset|#k"
+
+#~ msgid "Angle:|#L"
+#~ msgstr "Kulma:|"
+
+#~ msgid "% of Page|#g"
+#~ msgstr "% sivusta|#v"
+
+#~ msgid "Default|#t"
+#~ msgstr "Oletus|#l"
+
+#~ msgid "cm|#m"
+#~ msgstr "cm|#m"
+
+#~ msgid "inches|#h"
+#~ msgstr "tuumaa|#u"
+
+#~ msgid "Display"
+#~ msgstr "Näytä"
+
+#~ msgid "Display in Color|#D"
+#~ msgstr "Näytä värillisenä|#r"
+
+#~ msgid "Do not display this figure|#y"
+#~ msgstr "Älä näytä tätä kuvaa|#Ä"
+
+#~ msgid "Display as Grayscale|#i"
+#~ msgstr "Näytä harmaasävyisenä|#h"
+
+#~ msgid "Display as Monochrome|#s"
+#~ msgstr "Näytä mustavalkoisena|#N"
+
+#~ msgid "Default|#U"
+#~ msgstr "Oletus|#O"
+
+#~ msgid "cm|#c"
+#~ msgstr "cm|#c"
+
+#~ msgid "inches|#n"
+#~ msgstr "tuumaa|#t"
+
+#~ msgid "% of Page|#P"
+#~ msgstr "% sivusta|#i"
+
+#~ msgid "% of Column|#o"
+#~ msgstr "% palstasta|#p"
+
+#~ msgid "Caption|#k"
+#~ msgstr "Kuvateksti|"
+
+#~ msgid "Subfigure|#q"
+#~ msgstr "Alikuva|#A"
+
+#~ msgid "Encapsulated Postscript (*.eps, *.ps)|#E"
+#~ msgstr "EPS-tiedosto (*.eps, *.ps)|#E"
+
+#~ msgid "Inlined EPS (*.eps, *.ps)|#I"
+#~ msgstr "Inline-EPS (*.eps, *.ps)|#i"
+
+#~ msgid "Type"
+#~ msgstr "Tyyppi"
+
+#~ msgid "Insert Figure"
+#~ msgstr "Lisää kuva"
+
+#~ msgid "Inserting figure..."
+#~ msgstr "Lisätään kuva..."
+
+#~ msgid "Figure inserted"
+#~ msgstr "Kuva lisätty"
+
+#~ msgid "Maths Bitmaps"
+#~ msgstr "Matematiikkakuvat"
+
+#~ msgid "[render error]"
+#~ msgstr "[piirtämisvirhe]"
+
+#~ msgid "[rendering ... ]"
+#~ msgstr "[piirretään ...]"
+
+#~ msgid "[no file]"
+#~ msgstr "[ei tiedostoa]"
+
+#~ msgid "[bad file name]"
+#~ msgstr "[virheellinen tiedostonnimi]"
+
+#~ msgid "[not displayed]"
+#~ msgstr "[ei näytetä]"
+
+#~ msgid "[no ghostscript]"
+#~ msgstr "[ghostscript puuttuu]"
+
+#~ msgid "[unknown error]"
+#~ msgstr "[tuntematon virhe]"
+
+#~ msgid "Opened figure"
+#~ msgstr "Kuva avattiin"
+
+#~ msgid "Select an EPS figure"
+#~ msgstr "Valitse EPS-kuva"
+
+#~ msgid "*ps| PostScript documents"
+#~ msgstr "*ps| PostScript-asiakirjat"
+
+#~ msgid "Unknown Error"
+#~ msgstr "Tuntematon virhe"
+
+#~ msgid "Documents"
+#~ msgstr "Asiakirjat"
+
+#~ msgid "Old-Graphics..."
+#~ msgstr "Vanha grafiikka..."
+
+#~ msgid "TeX Infos"
+#~ msgstr "TeX-tietoja"
+
+#~ msgid "Copyright notice goes here"
+#~ msgstr "Tekijänoikeustiedot tähän"
+
+#~ msgid "Warranty goes here"
+#~ msgstr "Takuu tähän"
+
+#~ msgid "GPL goes here"
+#~ msgstr "GPL tähän"
+
+#~ msgid "Bibliography keys"
+#~ msgstr "Lähteet"
+
+#~ msgid "Inset keys"
+#~ msgstr "Lainatut lähteet"
+
+#~ msgid "&Color"
+#~ msgstr "&Väri"
+
+#~ msgid "Graphics parameters"
+#~ msgstr "Grafiikka-asetukset"
+
+#~ msgid "Width of graphics"
+#~ msgstr "Grafiikan leveys"
+
+#~ msgid "&Rotation:"
+#~ msgstr "&Kierto:"
+
+#~ msgid "Sca&le Height"
+#~ msgstr "&Skaalauskorkeus:"
+
+#~ msgid "inches"
+#~ msgstr "tuumaa"
+
+#~ msgid "% of page"
+#~ msgstr "% sivusta"
+
+#~ msgid "Height units"
+#~ msgstr "Korkeusyksiköt"
+
+#~ msgid "% of column"
+#~ msgstr "% palstasta"
+
+#~ msgid "Width units"
+#~ msgstr "Leveysyksiköt"
+
+#~ msgid "Height of graphics"
+#~ msgstr "Grafiikan korkeus"
+
+#~ msgid "&Subcaption:"
+#~ msgstr "&Alikuvateksti:"
+
+#~ msgid "The sub-caption of the figure"
+#~ msgstr "Kuvan alikuvateksti"
+
+#~ msgid "Matching nouns"
+#~ msgstr "Sopivat substantiivit"
+
+#~ msgid "&Adjectives"
+#~ msgstr "&Adjektiivit"
+
+#~ msgid "A&dverbs"
+#~ msgstr "A&dverbit"
+
+#~ msgid "&Other"
+#~ msgstr "&Muut"
+
+#~ msgid "'#', '~', '$' or '%'."
+#~ msgstr "'#', '~', '$' tai '%'."
+
+#~ msgid "Refresh"
+#~ msgstr "Päivitä"
+
+#~ msgid "<No Name>"
+#~ msgstr "<Ei nimeä>"
+
+#~ msgid "ex units"
+#~ msgstr "ex-yksikköä"
+
+#~ msgid "em units"
+#~ msgstr "em-yksikköä"
+
+#~ msgid "Scaled points"
+#~ msgstr "Skaalattua pistettä"
+
+#~ msgid "Big/PS points"
+#~ msgstr "Big/PS-pistettä"
+
+#~ msgid "Didot points"
+#~ msgstr "Didot-pistettä"
+
+#~ msgid "Cicero points"
+#~ msgstr "Cicero-pistettä"
+
+#~ msgid "Mathematical units"
+#~ msgstr "Matemaattiset yksiköt"
+
+#~ msgid "Percent of page"
+#~ msgstr "Prosenttia sivusta"
+
+#~ msgid "Percent of column"
+#~ msgstr "Prosenttia palstasta"
+
+#~ msgid "Percent of line width"
+#~ msgstr "Prosenttia rivin leveydestä"
+
+#~ msgid "LyX: Table of Contents"
+#~ msgstr "LyX: Sisällysluettelo"
+
+#~ msgid "Text before|#T"
+#~ msgstr "Edeltävä teksti|#d"
+
+#~ msgid "Text after|#e"
+#~ msgstr "Seuraava teksti|#Ss"
+
+#~ msgid "Right:|#R"
+#~ msgstr "Oikea:|#i"
+
+#~ msgid "Display Options"
+#~ msgstr "Näyttöasetukset"
+
+#~ msgid "Display in LyX|#D"
+#~ msgstr "Näytä värillisenä|#y"
+
+#~ msgid "Subcaption"
+#~ msgstr "Alikuvateksti"
+
+#~ msgid "Subcaption|#u"
+#~ msgstr "Alikuvateksti|#A"
+
+#~ msgid "OK "
+#~ msgstr "OK "
+
+#~ msgid "Menu Font"
+#~ msgstr "Valikon kirjasin"
+
+#~ msgid "User"
+#~ msgstr "Käyttäjä"
+
+#~ msgid "Help"
+#~ msgstr "Ohje"
+
+#~ msgid "H"
+#~ msgstr "O"
+
+#~ msgid "starts rescan ..."
+#~ msgstr "käynnistää uudelleenskannauksen ..."
+
+#~ msgid "View full path or only file name"
+#~ msgstr "Näytä koko polku tai vain tiedoston nimi"
+
+#~ msgid "starts texhash and rescan..."
+#~ msgstr "käynnistää texhashin ja uudelleenskannauksen ..."
+
+#~ msgid "views a selected file"
+#~ msgstr "katsele valittua tiedostoa"
+
+#~ msgid "Nouns"
+#~ msgstr "Nominit"
+
+#~ msgid "Verbs"
+#~ msgstr "Verbit"
+
+#~ msgid "Adjectives"
+#~ msgstr "Adjektiivit"
+
+#~ msgid "Adverbs"
+#~ msgstr "Adverbit"
+
+#~ msgid "Templates"
+#~ msgstr "Mallipohjat"
+
+#~ msgid "The font for menus (and groups titles in popups)."
+#~ msgstr "Valikoiden sekä valintaikkunoiden ryhmien otsikoiden kirjasin."
+
+#~ msgid "The font for popups."
+#~ msgstr "Valintaikkunoiden kirjasin."
+
+#~ msgid "The default path for your documents."
+#~ msgstr "Asiakirjojen oletushakemisto."
+
+#~ msgid ""
+#~ "Allow the use of scalable screen fonts? If false, LyX will use the "
+#~ "closest existing size for a match. Use this if the scalable fonts look "
+#~ "bad and you have many fixed size fonts."
+#~ msgstr ""
+#~ "Sallitko skaalautuvien näyttökirjasinten käytön? Jos et, niin LyX käyttää "
+#~ "lähinnä sopivaa kokoa. Tee näin, jos skaalautuvat kirjasimet näyttävät "
+#~ "rumilta ja sinulla on paljon tavallisia kirjasinlajeja."
+
+#~ msgid "&Help"
+#~ msgstr "&Ohje"
+
+#~ msgid "Bring up help file"
+#~ msgstr "Näytä ohjetiedosto"
+
+#~ msgid "Text|#T"
+#~ msgstr "Teksti|#T"
+
+#~ msgid "Script|#S"
+#~ msgstr "Alaindeksi|#A"
+
+#~ msgid "Bold|#B"
+#~ msgstr "Lihavoitu|#L"
+
+#~ msgid "Calligraphy|#C"
+#~ msgstr "Kauno|#K"
+
+#~ msgid "scriptscript|#p"
+#~ msgstr "ala-alaindeksi|#d"
+
+#~ msgid "Fixed|#x"
+#~ msgstr "Tasalevyinen|#l"
+
+#~ msgid "Italic|#I"
+#~ msgstr "Kursiivi|#r"
+
+#~ msgid "BB Bold|#o"
+#~ msgstr "Vahvennos|#V"
+
+#~ msgid "Fraktur|#F"
+#~ msgstr "Fraktuura|#F"
+
+#~ msgid "Reset|#R"
+#~ msgstr "Palauta|#u"
+
+#~ msgid "Document|#o#O"
+#~ msgstr "Asiakirja|#A#a"
