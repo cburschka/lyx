@@ -1,5 +1,6 @@
 #include "math_symbolinset.h"
 #include "math_parser.h"
+#include "debug.h"
 #include "support.h"
 #include "support/LOstream.h"
 
@@ -7,7 +8,8 @@
 using std::ostream;
 
 MathSymbolInset::MathSymbolInset(const latexkeys * l)
-	: sym_(l), h_(0) {}
+	: sym_(l), h_(0)
+{}
 
 
 MathInset * MathSymbolInset::clone() const
@@ -69,18 +71,21 @@ void MathSymbolInset::metrics(MathMetricsInfo const & mi) const
 			ascent_  += h_;
 			descent_ -= h_;
 		}
-		return;
+	} else {
+		if (sym_->id > 0 && sym_->id < 255 && math_font_available(LM_TC_SYMB))
+			mathed_char_dim(code2(), mi_, sym_->id, ascent_, descent_, width_);
+		else
+			mathed_string_dim(LM_TC_TEX, mi_, sym_->name, ascent_, descent_, width_);
 	}
-
-	if (sym_->id > 0 && sym_->id < 255 && math_font_available(LM_TC_SYMB))
-		mathed_char_dim(code2(), mi_, sym_->id, ascent_, descent_, width_);
-	else
-		mathed_string_dim(LM_TC_TEX, mi_, sym_->name, ascent_, descent_, width_);
+	if (isRelOp())
+		width_ +=  mathed_char_width(LM_TC_TEX, mi_, 'I');
 }
 
 
 void MathSymbolInset::draw(Painter & pain, int x, int y) const
 {  
+	if (isRelOp())
+		x += mathed_char_width(LM_TC_TEX, mi_, 'I') / 2;
 	MathTextCodes Code = code();
 	if (sym_->latex_font_id > 0 && math_font_available(Code))
 		drawChar(pain, Code, mi_, x, y - h_, sym_->latex_font_id);
@@ -92,7 +97,7 @@ void MathSymbolInset::draw(Painter & pain, int x, int y) const
 
 
 bool MathSymbolInset::isRelOp() const
-{
+{	
 	return sym_->type == LMB_RELATION;
 }
 

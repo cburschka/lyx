@@ -92,7 +92,7 @@ void MathMacroTable::builtinMacros()
 	create("owns",         0, "\\ni");
 	create("gets",         0, "\\leftarrow");
 	create("to",           0, "\\rightarrow");
-	create("|",            0, "\\parallel");
+	create("|",            0, "\\Vert");
 
 	create("longleftrightarrow", 0, "\\leftarrow\\kern-6mu\\rightarrow");
 	create("Longleftrightarrow", 0, "\\Leftarrow\\kern-6mu\\Rightarrow");

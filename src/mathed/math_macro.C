@@ -105,9 +105,9 @@ void MathMacro::metrics(MathMetricsInfo const & mi) const
 	expanded_ = tmplate_->xcell(0);
 	expanded_.data_.substitute(*this);
 	expanded_.metrics(mi_);
-	width_   = expanded_.width()   + 6;
-	ascent_  = expanded_.ascent()  + 3;
-	descent_ = expanded_.descent() + 3;
+	width_   = expanded_.width();
+	ascent_  = expanded_.ascent();
+	descent_ = expanded_.descent();
 }
 
 
@@ -145,7 +145,7 @@ void MathMacro::draw(Painter & pain, int x, int y) const
 		return;
 	}
 
-	expanded_.draw(pain, x + 3, y);
+	expanded_.draw(pain, x, y);
 }
 
 

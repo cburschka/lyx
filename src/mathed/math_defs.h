@@ -127,26 +127,6 @@ enum MathSymbolTypes {
 	LMB_RELATION,
 	///
 	LMB_OPERATOR,
-	///
-	LMB_BOP = (LMB_RELATION | LMB_OPERATOR)
-};
-
-
-/// Paragraph permissions
-enum MathParFlag {
-	LMPF_BASIC = 0,
-	/// If false can use a non-standard size
-	LMPF_FIXED_SIZE = 1,
-	/// If true can insert newlines 
-	LMPF_ALLOW_CR  = 2,
-	/// If true can use tabs
-	LMPF_ALLOW_TAB = 4,
-	/// If true can insert new columns
-	LMPF_ALLOW_NEW_COL = 8,
-	/// Smaller than current size (frac)
-	LMPF_SMALLER = 16,
-	/// Script size (subscript, stackrel)
-	LMPF_SCRIPT = 32
 };
 
 #endif
