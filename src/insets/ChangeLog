@@ -1,3 +1,8 @@
+2002-06-26  André Pönitz <poenitz@gmx.net>
+
+	* insetgraphics.C: use os::external_path where necesaary according to a
+	patch from Claus Hentschel)
+
 2002-06-25  Angus Leeming  <leeming@lyx.org>
 
 	* insetgraphics.[Ch]: The inset now assumes the responsibility for
