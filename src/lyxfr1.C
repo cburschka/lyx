@@ -36,7 +36,6 @@
 #include "support/textutils.h"
 
 extern BufferView * current_view; // called too many times in this file...
-extern MiniBuffer * minibuffer;
 
 // Maximum length copied from the current selection to the search string
 const int LYXSEARCH_MAXLEN =  128;
@@ -214,14 +213,16 @@ void LyXFindReplace1::SearchReplaceAllCB()
 	} while( SearchCB(true) );
 	if( replace_count == 0 ) {
 		LyXBell();	
-		minibuffer->Set(_("String not found!"));
+		current_view->owner()->getMiniBuffer()->Set(
+			_("String not found!"));
 	} else {
-		if( replace_count == 1 ) {
-			minibuffer->Set(_("1 string has been replaced."));
+		if (replace_count == 1) {
+			current_view->owner()->getMiniBuffer()->Set(
+				_("1 string has been replaced."));
 		} else {
 			string str = tostr(replace_count);
 			str += _(" strings have been replaced.");
-			minibuffer->Set(str);
+			current_view->owner()->getMiniBuffer()->Set(str);
 		}
 	}
 }
@@ -257,11 +258,11 @@ bool LyXFindReplace1::SearchCB(bool fForward)
 		// set the new selection 
 		SetSelectionOverLenChars(current_view->text, iLenSelected);
 		current_view->getScreen()->ToggleSelection(false);
-		minibuffer->Set(_("Found."));
+		current_view->owner()->getMiniBuffer()->Set(_("Found."));
 		result = true;
 	} else {
 		LyXBell();
-		minibuffer->Set(_("String not found!"));
+		current_view->owner()->getMiniBuffer()->Set(_("String not found!"));
 		result = false;
 	}
    

@@ -32,10 +32,12 @@
 #include "lyx_gui_misc.h"
 #include "lyxtext.h"
 #include "gettext.h"
+#include "BufferView.h"
+#include "LyXView.h"
+
+extern BufferView * current_view;
 
 using std::copy;
-
-extern MiniBuffer * minibuffer;
 
 // Constructor
 LyXText::LyXText(int pw, Buffer * p)
@@ -181,7 +183,7 @@ void LyXText::SetCharFont(LyXParagraph * par,
 			  LyXParagraph::size_type pos,
 			  LyXFont font)
 {
-	/* let the insets convert their font */ 
+	// Let the insets convert their font
 	if (par->GetChar(pos) == LyXParagraph::META_INSET) {
 		if (par->GetInset(pos))
 			font = par->GetInset(pos)->ConvertFont(font);
@@ -330,10 +332,10 @@ void LyXText::ToggleFootnote()
 	LyXParagraph * par = cursor.par->ParFromPos(cursor.pos);
 	if (par->next && par->next->footnoteflag == LyXParagraph::CLOSED_FOOTNOTE){
 		OpenFootnote();
-		minibuffer->Set(_("Opened float"));
+		current_view->owner()->getMiniBuffer()->Set(_("Opened float"));
 	}
 	else {
-		minibuffer->Set(_("Closed float"));
+		current_view->owner()->getMiniBuffer()->Set(_("Closed float"));
 		CloseFootnote();
 	}
 }
@@ -347,7 +349,7 @@ void LyXText::OpenStuff()
 	else if (cursor.pos < cursor.par->Last() 
 		 && cursor.par->GetChar(cursor.pos) == LyXParagraph::META_INSET
 		 && cursor.par->GetInset(cursor.pos)->Editable()) {
-		minibuffer->Set(cursor.par->GetInset(cursor.pos)->EditMessage());
+		current_view->owner()->getMiniBuffer()->Set(cursor.par->GetInset(cursor.pos)->EditMessage());
 		if (cursor.par->GetInset(cursor.pos)->Editable() != 2)
 			SetCursorParUndo();
 		cursor.par->GetInset(cursor.pos)->Edit(0, 0);
@@ -371,7 +373,7 @@ void LyXText::CloseFootnote()
       
 		if (!par->next
 		    || par->next->footnoteflag != LyXParagraph::OPEN_FOOTNOTE) {
-			minibuffer->Set(_("Nothing to do"));
+			current_view->owner()->getMiniBuffer()->Set(_("Nothing to do"));
 			return;
 		}
    
@@ -1046,7 +1048,7 @@ void LyXText::ToggleFree(LyXFont font, bool toggleall)
 	// If the mask is completely neutral, tell user
 	if (font == LyXFont(LyXFont::ALL_IGNORE)){
 		// Could only happen with user style
-		minibuffer->Set(_("No font change defined. Use Character under"
+		current_view->owner()->getMiniBuffer()->Set(_("No font change defined. Use Character under"
 				  " the Layout menu to define font change."));
 		return;
 	}
@@ -1057,7 +1059,7 @@ void LyXText::ToggleFree(LyXFont font, bool toggleall)
 
 	// Set font
 	SetFont(font, toggleall);
-	//minibuffer->Set(_("Font style changed"));
+	//current_view->owner()->getMiniBuffer()->Set(_("Font style changed"));
 
 	/* Implicit selections are cleared afterwards and cursor is set to the
 	   original position. */

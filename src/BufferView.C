@@ -1300,14 +1300,14 @@ void BufferView::CursorToggleCB(FL_OBJECT * ob, long)
 {
 	BufferView * view = static_cast<BufferView*>(ob->u_vdata);
 	
-	/* quite a nice place for asyncron Inset updating, isn't it? */
-	// actually no! This is run even if no buffer exist... so (Lgb)
+	// Quite a nice place for asyncron Inset updating, isn't it?
+	// Actually no! This is run even if no buffer exist... so (Lgb)
 	if (view && !view->buffer_) {
 		goto set_timer_and_return;
 	}
 
 	// NOTE:
-	// On my quest to solve the gs rendre hangups I am now
+	// On my quest to solve the gs render hangups I am now
 	// disabling the SIGHUP completely, and will do a wait
 	// now and then instead. If the guess that xforms somehow
 	// destroys something is true, this is likely (hopefully)
@@ -1480,7 +1480,7 @@ void BufferView::cursorPrevious()
 	Row * cursorrow = text->cursor.row;
 	text->SetCursorFromCoordinates(text->cursor.x_fix, y);
 	text->FinishUndo();
-	// this is to allow jumping over large insets
+	// This is to allow jumping over large insets
 	if ((cursorrow == text->cursor.row))
 		text->CursorUp();
 	
@@ -1501,7 +1501,7 @@ void BufferView::cursorNext()
 	Row * cursorrow = text->cursor.row;
 	text->SetCursorFromCoordinates(text->cursor.x_fix, y + work_area->h);
 	text->FinishUndo();
-	/* this is to allow jumping over large insets */
+	// This is to allow jumping over large insets
 	if ((cursorrow == text->cursor.row))
 		text->CursorDown();
 	
@@ -1543,7 +1543,6 @@ void BufferView::restorePosition()
 } 
 
 
-// candidate for move to BufferView
 void BufferView::update(signed char f)
 {
 	owner()->updateLayoutChoice();

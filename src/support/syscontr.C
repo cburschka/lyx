@@ -64,6 +64,7 @@ SystemcallsSingletoncontroller::addCall(Systemcalls const &newcall) {
 
 void 
 SystemcallsSingletoncontroller::timer() {
+	lyxerr << "Tick" << endl;
 	// check each entry of our list, if it's finished
         ControlledCalls *prev = 0;
 	for (ControlledCalls *actCall= sysCalls; actCall; actCall= actCall->next)

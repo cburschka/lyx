@@ -14,9 +14,9 @@
 #include "lyx_gui_misc.h"
 #include "BufferView.h"
 #include "gettext.h"
+#include "LyXView.h"
 
 extern FD_form_paper * fd_form_paper;
-extern MiniBuffer * minibuffer;
 extern BufferView * current_view;
 
 
@@ -180,7 +180,7 @@ void MenuLayoutPaper()
 
 void PaperApplyCB(FL_OBJECT *, long)
 {
-	if (! current_view->available()) 
+	if (!current_view->available()) 
 		return;
 	
 	BufferParams * params = &current_view->buffer()->params;
@@ -204,7 +204,7 @@ void PaperApplyCB(FL_OBJECT *, long)
 	params->headsep = fl_get_input(fd->input_head_sep);
 	params->footskip = fl_get_input(fd->input_foot_skip);
 	current_view->buffer()->setPaperStuff();
-	minibuffer->Set(_("Paper layout set"));
+	current_view->owner()->getMiniBuffer()->Set(_("Paper layout set"));
 	current_view->buffer()->markDirty();
 	
 	return;

@@ -12,9 +12,9 @@
 #include "lyxparagraph.h"
 #include "gettext.h"
 #include "lyxtext.h"
+#include "LyXView.h"
 
 extern FD_form_paragraph_extra * fd_form_paragraph_extra;
-extern MiniBuffer * minibuffer;
 extern BufferView * current_view;
 extern void BeforeChange();
 static bool CheckInputWidth();
@@ -198,7 +198,8 @@ void ParagraphExtraApplyCB(FL_OBJECT *, long)
 		text->SetParagraphExtraOpt(type, width, widthp, alignment, hfill,
 					   start_minipage);
 		current_view->update(1);
-		minibuffer->Set(_("ParagraphExtra layout set"));
+		current_view->owner()->getMiniBuffer()->
+			Set(_("ParagraphExtra layout set"));
 	}
 	return;
 }

@@ -39,10 +39,10 @@
 #include "debug.h"
 #include "lyx_gui_misc.h"
 #include "support/LOstream.h"
+#include "LyXView.h"
 
 extern void UpdateInset(Inset * inset, bool mark_dirty = true);
 extern void LockedInsetStoreUndo(Undo::undo_kind);
-extern MiniBuffer * minibuffer;
 extern void ShowLockedInsetCursor(long, long, int, int);
 extern void HideLockedInsetCursor(long, long, int, int);
 extern void FitLockedInsetCursor(long, long, int, int);
@@ -871,7 +871,7 @@ bool InsetFormula::LocalDispatch(int action, char const * arg)
     {
        if (!greek_kb_flag) {
 	  greek_kb_flag = 1;
-	  minibuffer->Set(_("Math greek mode on"));
+	  current_view->owner()->getMiniBuffer()->Set(_("Math greek mode on"));
        } else
 	 greek_kb_flag = 0;
        break;
@@ -882,9 +882,9 @@ bool InsetFormula::LocalDispatch(int action, char const * arg)
     {
        greek_kb_flag = (greek_kb_flag) ? 0 : 2;
        if (greek_kb_flag)
-	 minibuffer->Set(_("Math greek keyboard on"));
+	 current_view->owner()->getMiniBuffer()->Set(_("Math greek keyboard on"));
        else
-	 minibuffer->Set(_("Math greek keyboard off"));
+	 current_view->owner()->getMiniBuffer()->Set(_("Math greek keyboard off"));
        break;
     }  
    
@@ -899,7 +899,7 @@ bool InsetFormula::LocalDispatch(int action, char const * arg)
     {
 //       varcode = LM_TC_TEX;
 	mathcursor->setLastCode(LM_TC_TEX);
-       minibuffer->Set(_("TeX mode")); 
+       current_view->owner()->getMiniBuffer()->Set(_("TeX mode")); 
        break;
     }
 
@@ -914,10 +914,10 @@ bool InsetFormula::LocalDispatch(int action, char const * arg)
 	     if (!label.empty()) {
 		     label.clear();
 	     }
-	     minibuffer->Set(_("No number"));  
+	     current_view->owner()->getMiniBuffer()->Set(_("No number"));  
 	  } else {
 	     type++;
-             minibuffer->Set(_("Number"));
+             current_view->owner()->getMiniBuffer()->Set(_("Number"));
 	  }
 	  par->SetType(type);
 	  UpdateLocal();
@@ -1075,7 +1075,7 @@ bool InsetFormula::LocalDispatch(int action, char const * arg)
     case LFUN_MATH_MODE:  
     {
 	if (mathcursor->getLastCode()!= LM_TC_TEXTRM) {
-	    minibuffer->Set(_("math text mode"));
+	    current_view->owner()->getMiniBuffer()->Set(_("math text mode"));
 	    varcode = LM_TC_TEXTRM;
 	} else {
 	    varcode = LM_TC_VAR;
@@ -1084,12 +1084,12 @@ bool InsetFormula::LocalDispatch(int action, char const * arg)
 	break; 
     }
     case LFUN_UNDO:
-      minibuffer->Set(_("Invalid action in math mode!"));
+      current_view->owner()->getMiniBuffer()->Set(_("Invalid action in math mode!"));
       break;
 
     //------- dummy actions
     case LFUN_EXEC_COMMAND:
-       minibuffer->ExecCommand(); 
+       current_view->owner()->getMiniBuffer()->ExecCommand(); 
        break;
        
     default:
@@ -1190,7 +1190,7 @@ bool InsetFormula::LocalDispatch(int action, char const * arg)
 	   if (c == '\\') {
 	      if (was_macro)
 		mathcursor->MacroModeClose();
-	      minibuffer->Set(_("TeX mode")); 
+	      current_view->owner()->getMiniBuffer()->Set(_("TeX mode")); 
 	       mathcursor->setLastCode(LM_TC_TEX);
 	   } 
 	 UpdateLocal();

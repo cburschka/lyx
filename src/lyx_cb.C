@@ -62,11 +62,9 @@
 #include "gettext.h"
 #include "layout.h"
 
-extern MiniBuffer * minibuffer;
 extern Combox * combo_language;
 extern BufferList bufferlist;
 extern void show_symbols_form();
-extern FD_form_main * fd_form_main;
 extern FD_form_title * fd_form_title;
 extern FD_form_paragraph * fd_form_paragraph;
 extern FD_form_character * fd_form_character;
@@ -226,7 +224,8 @@ void ProhibitInput()
 	}
    
 	/* set the cursor to the watch for all forms and the canvas */ 
-	XDefineCursor(fl_display, fd_form_main->form_main->window, cursor);
+	XDefineCursor(fl_display, current_view->owner()->getForm()->window, 
+		      cursor);
 	if (fd_form_paragraph->form_paragraph->visible)
 		XDefineCursor(fl_display,
 			      fd_form_paragraph->form_paragraph->window,
@@ -262,7 +261,7 @@ void AllowInput()
 
 	/* reset the cursor from the watch for all forms and the canvas */
    
-	XUndefineCursor(fl_display, fd_form_main->form_main->window);
+	XUndefineCursor(fl_display, current_view->owner()->getForm()->window);
 	if (fd_form_paragraph->form_paragraph->visible)
 		XUndefineCursor(fl_display,
 				fd_form_paragraph->form_paragraph->window);
@@ -270,7 +269,7 @@ void AllowInput()
 		XUndefineCursor(fl_display,
 				fd_form_character->form_character->window);
 	if (current_view->getWorkArea()->belowmouse)
-		SetXtermCursor(fd_form_main->form_main->window);
+		SetXtermCursor(current_view->owner()->getForm()->window);
 
 	XFlush(fl_display);
 	fl_activate_all_forms();
@@ -287,7 +286,7 @@ void FreeUpdateTimer()
 
 void SetUpdateTimer(float time)
 {
-	fl_set_timer(fd_form_main->timer_update, time);
+	fl_set_timer(current_view->owner()->getMainForm()->timer_update, time);
 	updatetimer = 1;
 }
 
@@ -321,7 +320,7 @@ void SmallUpdate(signed char f)
 	if (f == 1 || f == -1) {
 		if (current_view->buffer()->isLyxClean()) {
 			current_view->buffer()->markDirty();
-			minibuffer->setTimer(4);
+			current_view->owner()->getMiniBuffer()->setTimer(4);
 		}
 		else {
 			current_view->buffer()->markDirty();
@@ -379,7 +378,7 @@ void MenuWriteAs(Buffer * buffer)
 	AllowInput();
 
 	if (fname.empty()) {
-		minibuffer->Set(_("Canceled."));
+		current_view->owner()->getMiniBuffer()->Set(_("Canceled."));
 		return;
 	}
 
@@ -408,7 +407,7 @@ void MenuWriteAs(Buffer * buffer)
 				buffer->fileName(s);
 				buffer->markDirty();
 
-				minibuffer->Set(_("Document renamed to '"),
+				current_view->owner()->getMiniBuffer()->Set(_("Document renamed to '"),
 						MakeDisplayPath(s),
 						_("', but not saved..."));
 			}
@@ -603,10 +602,12 @@ bool RunScript(Buffer * buffer, bool wait,
 #ifdef WITH_WARNINGS
 #warning What should we do here?
 #endif		
-		minibuffer->Set(_("Executing command:"), cmd);
+		current_view->owner()->getMiniBuffer()->Set(
+			_("Executing command:"), cmd);
 		result = one.startscript(Systemcalls::System, cmd);
 	} else {
-		minibuffer->Set(_("Executing command:"), cmd);
+		current_view->owner()->getMiniBuffer()->Set(
+			_("Executing command:"), cmd);
 		result = one.startscript(wait ? Systemcalls::Wait
 					 : Systemcalls::DontWait, cmd);
 	}
@@ -828,19 +829,20 @@ void MenuMakeLaTeX(Buffer * buffer)
 	    !AskQuestion(_("File already exists:"), 
 			 MakeDisplayPath(s, 50),
 			 _("Do you want to overwrite the file?"))) {
-		minibuffer->Set(_("Canceled"));
+		current_view->owner()->getMiniBuffer()->Set(_("Canceled"));
 		return;
 	}
 	
 	if (buffer->isDocBook())
-		minibuffer->Set(_("DocBook does not have a latex backend"));
+		current_view->owner()->getMiniBuffer()->Set(
+			_("DocBook does not have a latex backend"));
 	else {
 		if (buffer->isLinuxDoc())
 			RunLinuxDoc(0, buffer->fileName());
 		else
 			buffer->makeLaTeXFile(s, string(), true);
-		minibuffer->Set(_("Nice LaTeX file saved as"),
-				MakeDisplayPath(s));
+		current_view->owner()->getMiniBuffer()->Set(
+			_("Nice LaTeX file saved as"), MakeDisplayPath(s));
 		buffer->markDviDirty();
 	}
 }
@@ -864,17 +866,17 @@ void MenuMakeLinuxDoc(Buffer * buffer)
 	    !AskQuestion(_("File already exists:"), 
 			 MakeDisplayPath(s, 50),
 			 _("Do you want to overwrite the file?"))) {
-		minibuffer->Set(_("Canceled"));
+		current_view->owner()->getMiniBuffer()->Set(_("Canceled"));
 		return;
 	}
 	
-	minibuffer->Set(_("Building LinuxDoc SGML file `"),
-			MakeDisplayPath(s), "'..."); 
+	current_view->owner()->getMiniBuffer()->Set(
+		_("Building LinuxDoc SGML file `"), MakeDisplayPath(s),"'...");
 	
 	buffer->makeLinuxDocFile(s, 65);
 	buffer->redraw();
-	minibuffer->Set(_("LinuxDoc SGML file save as"),
-			MakeDisplayPath(s)); 
+	current_view->owner()->getMiniBuffer()->Set(
+		_("LinuxDoc SGML file save as"), MakeDisplayPath(s)); 
 }
 
 
@@ -897,16 +899,16 @@ void MenuMakeDocBook(Buffer * buffer)
 	    !AskQuestion(_("File already exists:"), 
 			 MakeDisplayPath(s, 50),
 			 _("Do you want to overwrite the file?"))) {
-		minibuffer->Set(_("Canceled"));
+		current_view->owner()->getMiniBuffer()->Set(_("Canceled"));
 		return;
 	}
 	
-	minibuffer->Set(_("Building DocBook SGML file `"),
+	current_view->owner()->getMiniBuffer()->Set(_("Building DocBook SGML file `"),
 			MakeDisplayPath(s), "'..."); 
 	
 	buffer->makeDocBookFile(s, 65);
 	buffer->redraw();
-	minibuffer->Set(_("DocBook SGML file save as"),
+	current_view->owner()->getMiniBuffer()->Set(_("DocBook SGML file save as"),
 			MakeDisplayPath(s)); 
 }
 
@@ -924,13 +926,13 @@ void MenuMakeAscii(Buffer * buffer)
 	    !AskQuestion(_("File already exists:"), 
 			 MakeDisplayPath(s, 50),
 			 _("Do you want to overwrite the file?"))) {
-		minibuffer->Set(_("Canceled"));
+		current_view->owner()->getMiniBuffer()->Set(_("Canceled"));
 		return;
 	}
 	
 	buffer->writeFileAscii(s, lyxrc->ascii_linelen);
 	
-	minibuffer->Set(_("Ascii file saved as"), MakeDisplayPath(s));
+	current_view->owner()->getMiniBuffer()->Set(_("Ascii file saved as"), MakeDisplayPath(s));
 }
 
 
@@ -973,10 +975,10 @@ void MenuMakeHTML(Buffer * buffer)
 	Systemcalls one;
 	int res = one.startscript(Systemcalls::System, tmp);
 	if (res == 0) {
-		minibuffer->Set(_("Document exported as HTML to file `")
+		current_view->owner()->getMiniBuffer()->Set(_("Document exported as HTML to file `")
 				+ MakeDisplayPath(result) +'\'');
 	} else {
-		minibuffer->Set(_("Unable to convert to HTML the file `")
+		current_view->owner()->getMiniBuffer()->Set(_("Unable to convert to HTML the file `")
 				+ MakeDisplayPath(infile) 
 				+ '\'');
 	}
@@ -1032,7 +1034,7 @@ void MenuExport(Buffer * buffer, string const & extyp)
 		MenuMakeHTML(buffer);
 	}
 	else {
-		minibuffer->Set(_("Unknown export type: ")+ extyp);
+		current_view->owner()->getMiniBuffer()->Set(_("Unknown export type: ")+ extyp);
 	}
 }
 
@@ -1077,7 +1079,7 @@ void AutoSave()
 		return;
 	}
 
-	minibuffer->Set(_("Autosaving current document..."));
+	current_view->owner()->getMiniBuffer()->Set(_("Autosaving current document..."));
 	
 	// create autosave filename
 	string fname = 	OnlyPath(current_view->buffer()->fileName());
@@ -1117,7 +1119,7 @@ void AutoSave()
 				// It is dangerous to do this in the child,
 				// but safe in the parent, so...
 				if (pid == -1)
-					minibuffer->Set(_("Autosave Failed!"));
+					current_view->owner()->getMiniBuffer()->Set(_("Autosave Failed!"));
 			}
 		}
 		if (pid == 0) { // we are the child so...
@@ -1288,7 +1290,7 @@ void MenuPasteSelection(char at)
 		return;
 	XConvertSelection(fl_display,
 			  XA_PRIMARY, XA_STRING, data_prop, 
-			  fd_form_main->form_main->window, 0);
+			  current_view->owner()->getForm()->window, 0);
 	XFlush(fl_display);
 }
 
@@ -1299,7 +1301,7 @@ extern "C" void FootCB(FL_OBJECT *, long)
 	if (!current_view->available()) 
 		return;
 	
-	minibuffer->Set(_("Inserting Footnote..."));
+	current_view->owner()->getMiniBuffer()->Set(_("Inserting Footnote..."));
 	current_view->getScreen()->HideCursor();
 	current_view->update(-2);
 	current_view->text->InsertFootnoteEnvironment(LyXParagraph::FOOTNOTE);
@@ -1363,7 +1365,7 @@ int RunLinuxDoc(int flag, string const & filename)
 	Systemcalls one;
 	switch (flag) {
 	case -1: /* Import file */
-		minibuffer->Set(_("Importing LinuxDoc SGML file `"), 
+		current_view->owner()->getMiniBuffer()->Set(_("Importing LinuxDoc SGML file `"), 
 				MakeDisplayPath(filename), "'...");
 		s2 = "sgml2lyx " + lyxrc->sgml_extra_options + ' ' 
 			+ name;
@@ -1371,14 +1373,14 @@ int RunLinuxDoc(int flag, string const & filename)
 			errorcode = 1;
 		break;
 	case 0: /* TeX output asked */
-		minibuffer->Set(_("Converting LinuxDoc SGML to TeX file..."));
+		current_view->owner()->getMiniBuffer()->Set(_("Converting LinuxDoc SGML to TeX file..."));
 		s2 = "sgml2latex " + add_flags + " -o tex "
 			+ lyxrc->sgml_extra_options + ' ' + name;
 		if (one.startscript(Systemcalls::System, s2)) 
 			errorcode = 1;
 		break;
 	case 1: /* dvi output asked */
-		minibuffer->Set(_("Converting LinuxDoc SGML to dvi file..."));
+		current_view->owner()->getMiniBuffer()->Set(_("Converting LinuxDoc SGML to dvi file..."));
 		s2 = "sgml2latex " + add_flags + " -o dvi "
 			+ lyxrc->sgml_extra_options + ' ' + name;
 		if (one.startscript(Systemcalls::System, s2)) {
@@ -1431,7 +1433,7 @@ int RunDocBook(int flag, string const & filename)
 	switch (flag) {
 	case 1: /* dvi output asked */
 	{
-		minibuffer->Set(_("Converting DocBook SGML to dvi file..."));
+		current_view->owner()->getMiniBuffer()->Set(_("Converting DocBook SGML to dvi file..."));
 		string s2 = "sgmltools --backend dvi " + name;
 		if (one.startscript(Systemcalls::System, s2)) {
 			errorcode = 1;
@@ -2134,7 +2136,7 @@ void NoteCB()
 void OpenStuff()
 {
 	if (current_view->available()) {
-		minibuffer->Set(_("Open/Close..."));
+		current_view->owner()->getMiniBuffer()->Set(_("Open/Close..."));
 		current_view->getScreen()->HideCursor();
 		BeforeChange();
 		current_view->update(-2);
@@ -2148,7 +2150,7 @@ void OpenStuff()
 void ToggleFloat()
 {
 	if (current_view->available()) {
-		minibuffer->Set(_("Open/Close..."));
+		current_view->owner()->getMiniBuffer()->Set(_("Open/Close..."));
 		current_view->getScreen()->HideCursor();
 		BeforeChange();
 		current_view->update(-2);
@@ -2162,17 +2164,17 @@ void ToggleFloat()
 void MenuUndo()
 {
 /*	if (current_view->buffer()->the_locking_inset) {
-	minibuffer->Set(_("Undo not yet supported in math mode"));
+	current_view->owner()->getMiniBuffer()->Set(_("Undo not yet supported in math mode"));
 	return;
 	}*/
    
 	if (current_view->available()) {
-		minibuffer->Set(_("Undo"));
+		current_view->owner()->getMiniBuffer()->Set(_("Undo"));
 		current_view->getScreen()->HideCursor();
 		BeforeChange();
 		current_view->update(-2);
 		if (!current_view->text->TextUndo())
-			minibuffer->Set(_("No further undo information"));
+			current_view->owner()->getMiniBuffer()->Set(_("No further undo information"));
 		else
 			current_view->update(-1);
 	}
@@ -2183,17 +2185,17 @@ void MenuUndo()
 void MenuRedo()
 {
 	if (current_view->buffer()->the_locking_inset) {
-		minibuffer->Set(_("Redo not yet supported in math mode"));
+		current_view->owner()->getMiniBuffer()->Set(_("Redo not yet supported in math mode"));
 		return;
 	}    
    
 	if (current_view->available()) {
-		minibuffer->Set(_("Redo"));
+		current_view->owner()->getMiniBuffer()->Set(_("Redo"));
 		current_view->getScreen()->HideCursor();
 		BeforeChange();
 		current_view->update(-2);
 		if (!current_view->text->TextRedo())
-			minibuffer->Set(_("No further redo information"));
+			current_view->owner()->getMiniBuffer()->Set(_("No further redo information"));
 		else
 			current_view->update(-1);
 	}
@@ -2423,7 +2425,7 @@ void ToggleAndShow(LyXFont const & font)
 extern "C" void MarginCB(FL_OBJECT *, long)
 {
 	if (current_view->available()) {
-		minibuffer->Set(_("Inserting margin note..."));
+		current_view->owner()->getMiniBuffer()->Set(_("Inserting margin note..."));
 		current_view->getScreen()->HideCursor();
 		current_view->update(-2);
 		current_view->text->InsertFootnoteEnvironment(LyXParagraph::MARGIN);
@@ -2465,7 +2467,7 @@ void CopyEnvironmentCB()
 		current_view->getScreen()->ToggleSelection();
 		current_view->text->ClearSelection();
 		current_view->update(-2);
-		minibuffer->Set(_("Paragraph environment type copied"));
+		current_view->owner()->getMiniBuffer()->Set(_("Paragraph environment type copied"));
 	}
 }
 
@@ -2475,7 +2477,7 @@ void PasteEnvironmentCB()
 {
 	if (current_view->available()) {
 		current_view->text->pasteEnvironmentType();
-		minibuffer->Set(_("Paragraph environment type set"));
+		current_view->owner()->getMiniBuffer()->Set(_("Paragraph environment type set"));
 		current_view->update(1);
 	}
 }
@@ -2490,7 +2492,7 @@ void CopyCB()
 		current_view->getScreen()->ToggleSelection();
 		current_view->text->ClearSelection();
 		current_view->update(-2);
-		minibuffer->Set(_("Copy"));
+		current_view->owner()->getMiniBuffer()->Set(_("Copy"));
 	}
 }
 
@@ -2503,7 +2505,7 @@ void CutCB()
 		current_view->update(-2);
 		current_view->text->CutSelection();
 		current_view->update(1);
-		minibuffer->Set(_("Cut"));
+		current_view->owner()->getMiniBuffer()->Set(_("Cut"));
 	}
 }
 
@@ -2513,7 +2515,7 @@ void PasteCB()
 {
 	if (!current_view->available()) return;
 	
-	minibuffer->Set(_("Paste"));
+	current_view->owner()->getMiniBuffer()->Set(_("Paste"));
 	current_view->getScreen()->HideCursor();
 	/* clear the selection */
 	current_view->getScreen()->ToggleSelection();
@@ -2536,7 +2538,7 @@ extern "C" void MeltCB(FL_OBJECT *, long)
 {
 	if (!current_view->available()) return;
 	
-	minibuffer->Set(_("Melt"));
+	current_view->owner()->getMiniBuffer()->Set(_("Melt"));
 	current_view->getScreen()->HideCursor();
 	BeforeChange();
 	current_view->update(-2);
@@ -2571,7 +2573,7 @@ extern "C" void DepthCB(FL_OBJECT * ob, long decInc)
 		else
 			current_view->text->DecDepth();
 		current_view->update(1);
-		minibuffer->Set(_("Changed environment depth"
+		current_view->owner()->getMiniBuffer()->Set(_("Changed environment depth"
 				  " (in possible range, maybe not)"));
 	}
 }
@@ -2808,7 +2810,7 @@ extern "C" void ParagraphApplyCB(FL_OBJECT *, long)
 					 labelwidthstring,
 					 noindent);
 	current_view->update(1);
-	minibuffer->Set(_("Paragraph layout set"));
+	current_view->owner()->getMiniBuffer()->Set(_("Paragraph layout set"));
 }
 
 
@@ -2991,7 +2993,7 @@ extern "C" void DocumentApplyCB(FL_OBJECT *, long)
 		if (textclasslist.Load(new_class)) {
 			// successfully loaded
 			redo = true;
-			minibuffer->Set(_("Converting document to new document class..."));
+			current_view->owner()->getMiniBuffer()->Set(_("Converting document to new document class..."));
 			int ret = current_view->text->
 				SwitchLayoutsBetweenClasses(current_view->buffer()->
 							    params.textclass,
@@ -3094,7 +3096,7 @@ extern "C" void DocumentApplyCB(FL_OBJECT *, long)
 	if (redo)
 		current_view->redoCurrentBuffer();
    
-	minibuffer->Set(_("Document layout set"));
+	current_view->owner()->getMiniBuffer()->Set(_("Document layout set"));
 	current_view->buffer()->markDirty();
 
         params->options = 
@@ -3145,11 +3147,11 @@ void GotoNote()
 				current_view->text->cursor.pos = 0;
 				if (!current_view->text->GotoNextNote()) {
 					current_view->text->cursor = tmp;
-					minibuffer->Set(_("No more notes"));
+					current_view->owner()->getMiniBuffer()->Set(_("No more notes"));
 					LyXBell();
 				}
 			} else {
-				minibuffer->Set(_("No more notes"));
+				current_view->owner()->getMiniBuffer()->Set(_("No more notes"));
 				LyXBell();
 			}
 	}
@@ -3181,7 +3183,7 @@ extern "C" void QuotesApplyCB(FL_OBJECT *, long)
 	if (!current_view->available())
 		return;
 	
-	minibuffer->Set(_("Quotes type set"));
+	current_view->owner()->getMiniBuffer()->Set(_("Quotes type set"));
 	//current_view->buffer()->params.quotes_language = 
 	//	fl_get_choice(fd_form_quotes->choice_quotes_language) - 1;
 	InsetQuotes::quote_language lga = InsetQuotes::EnglishQ;
@@ -3245,7 +3247,7 @@ extern "C" void PreambleApplyCB(FL_OBJECT *, long)
 	current_view->buffer()->params.preamble = 
 		fl_get_input(fd_form_preamble->input_preamble);
 	current_view->buffer()->markDirty();
-	minibuffer->Set(_("LaTeX preamble set"));
+	current_view->owner()->getMiniBuffer()->Set(_("LaTeX preamble set"));
 }
 
    
@@ -3271,7 +3273,7 @@ extern "C" void TableApplyCB(FL_OBJECT *, long)
 		return;
 	}
  
-	minibuffer->Set(_("Inserting table..."));
+	current_view->owner()->getMiniBuffer()->Set(_("Inserting table..."));
 
 	int ysize = int(fl_get_slider_value(fd_form_table->slider_columns) + 0.5);
 	int xsize = int(fl_get_slider_value(fd_form_table->slider_rows) + 0.5);
@@ -3333,7 +3335,7 @@ extern "C" void TableApplyCB(FL_OBJECT *, long)
 	current_view->text->UnFreezeUndo();
      
 	current_view->update(1);
-	minibuffer->Set(_("Table inserted"));
+	current_view->owner()->getMiniBuffer()->Set(_("Table inserted"));
 }
 
 
@@ -3540,12 +3542,12 @@ extern "C" void FigureApplyCB(FL_OBJECT *, long)
 	if(buffer->isReadonly()) // paranoia
 		return;
 	
-	minibuffer->Set(_("Inserting figure..."));
+	current_view->owner()->getMiniBuffer()->Set(_("Inserting figure..."));
 	if (fl_get_button(fd_form_figure->radio_inline)
 	    || current_view->text->cursor.par->table) {
 		InsetFig * new_inset = new InsetFig(100, 20, buffer);
 		buffer->insertInset(new_inset);
-		minibuffer->Set(_("Figure inserted"));
+		current_view->owner()->getMiniBuffer()->Set(_("Figure inserted"));
 		new_inset->Edit(0, 0);
 		return;
 	}
@@ -3596,7 +3598,7 @@ extern "C" void FigureApplyCB(FL_OBJECT *, long)
 	buffer->insertInset(new_inset);
 	new_inset->Edit(0, 0);
 	current_view->update(0);
-	minibuffer->Set(_("Figure inserted"));
+	current_view->owner()->getMiniBuffer()->Set(_("Figure inserted"));
 	current_view->text->UnFreezeUndo();
 }
 
@@ -3626,7 +3628,7 @@ extern "C" void ScreenApplyCB(FL_OBJECT *, long)
 	// All buffers will need resize
 	bufferlist.resize();
 
-	minibuffer->Set(_("Screen options set"));
+	current_view->owner()->getMiniBuffer()->Set(_("Screen options set"));
 }
 
 
@@ -3665,14 +3667,14 @@ void LaTeXOptions()
 // reconfigure the automatic settings.
 void Reconfigure()
 {
-	minibuffer->Set(_("Running configure..."));
+	current_view->owner()->getMiniBuffer()->Set(_("Running configure..."));
 
 	// Run configure in user lyx directory
 	Path p(user_lyxdir);
 	Systemcalls one(Systemcalls::System, 
 			AddName(system_lyxdir, "configure"));
 	p.pop();
-	minibuffer->Set(_("Reloading configuration..."));
+	current_view->owner()->getMiniBuffer()->Set(_("Reloading configuration..."));
 	lyxrc->read(LibFileSearch(string(), "lyxrc.defaults"));
 	WriteAlert(_("The system has been reconfigured."), 
 		   _("You need to restart LyX to make use of any"),
@@ -4040,7 +4042,7 @@ void UpdateInset(Inset * inset, bool mark_dirty)
 			current_view->update();
 			if (mark_dirty){
 				if (current_view->buffer()->isLyxClean())
-					minibuffer->setTimer(4);
+					current_view->owner()->getMiniBuffer()->setTimer(4);
 				current_view->buffer()->markDirty();
 			}
 			current_view->updateScrollbar();

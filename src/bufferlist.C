@@ -32,9 +32,9 @@
 #include "lyxtext.h"
 #include "lyx_cb.h"
 #include "gettext.h"
+#include "LyXView.h"
 
 extern BufferView * current_view;
-extern MiniBuffer * minibuffer;
 extern void SmallUpdate(signed char);
 extern void BeforeChange();
 extern int RunLinuxDoc(int, string const &);
@@ -127,7 +127,7 @@ bool BufferList::QwriteAll()
 // Should probably be moved to somewhere else: BufferView? LyXView?
 bool BufferList::write(Buffer * buf, bool makeBackup)
 {
-	minibuffer->Set(_("Saving document"),
+	current_view->owner()->getMiniBuffer()->Set(_("Saving document"),
 			MakeDisplayPath(buf->fileName()), "...");
 
 	// We don't need autosaves in the immediate future. (Asger)
@@ -201,8 +201,9 @@ bool BufferList::write(Buffer * buf, bool makeBackup)
 	if (buf->writeFile(buf->fileName(), false)) {
 		buf->markLyxClean();
 
-		minibuffer->Set(_("Document saved as"),
-				MakeDisplayPath(buf->fileName()));
+		current_view->owner()->getMiniBuffer()->
+			Set(_("Document saved as"),
+			MakeDisplayPath(buf->fileName()));
 
 		// now delete the autosavefile
 		string a = OnlyPath(buf->fileName());
@@ -222,7 +223,7 @@ bool BufferList::write(Buffer * buf, bool makeBackup)
 			string s = buf->fileName() + '~';
 			rename(s.c_str(), buf->fileName().c_str());
 		}
-		minibuffer->Set(_("Save failed!"));
+		current_view->owner()->getMiniBuffer()->Set(_("Save failed!"));
 		return false;
 	}
 
@@ -578,8 +579,9 @@ Buffer * BufferList::loadLyXFile(string const & filename, bool tolastfiles)
 	bool ro = false;
 	switch (IsFileWriteable(s)) {
 	case 0:
-		minibuffer->Set(_("File `")+MakeDisplayPath(s, 50)+
-				_("' is read-only."));
+		current_view->owner()->getMiniBuffer()->
+			Set(_("File `")+MakeDisplayPath(s, 50)+
+			_("' is read-only."));
 		ro = true;
 		// Fall through
 	case 1:

@@ -42,41 +42,10 @@ T * lstrchr(T const * t, int c)
 
 
 ///
-inline int compare_no_case(string const & s, string const & s2)
-{
-	// ANSI C
-	string::const_iterator p = s.begin();
-	string::const_iterator p2 = s2.begin();
-
-	while (p != s.end() && p2 != s2.end()) {
-		if (tolower(*p) != tolower(*p2))
-			return (tolower(*p) < tolower(*p2)) ? -1 : 1;
-		++p;
-		++p2;
-	}
-
-	return s.size() - s2.size();
-}
-
+int compare_no_case(string const & s, string const & s2);
 
 ///
-inline int compare_no_case(string const & s, string const & s2,
-			   unsigned int len)
-{
-//#warning verify this func please
-	string::const_iterator p = s.begin();
-	string::const_iterator p2 = s2.begin();
-	unsigned int i = 0;
-	while (i < len && p != s.end() && p2 != s2.end()) {
-		if (tolower(*p) != tolower(*p2))
-			return (tolower(*p) < tolower(*p2)) ? -1 : 1;
-		++i;
-		++p;
-		++p2;
-	}
-	return s.size() - s2.size();
-}
-
+int compare_no_case(string const & s, string const & s2, unsigned int len);
 
 ///
 inline int compare(char const * a, char const * b)

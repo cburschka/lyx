@@ -30,8 +30,8 @@
 #include "print_form.h"
 #include "sp_form.h"
 #include "insets/insetindex.h"
+#include "LyXView.h"
 
-extern MiniBuffer *minibuffer;
 extern BufferView *current_view;
 
 extern FD_form_paragraph * fd_form_paragraph;
@@ -341,6 +341,9 @@ const char* flyx_ident_extract(char const *sc)
 //
 void WriteAlert(string const & s1, string const & s2, string const & s3)
 {
+	MiniBuffer * minibuffer = 0;
+	if (current_view && current_view->owner())
+		minibuffer = current_view->owner()->getMiniBuffer();
 	if (minibuffer) {
 		ProhibitInput();
 		minibuffer->Set(s1, s2, s3);

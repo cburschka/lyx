@@ -12,6 +12,50 @@
 using std::count;
 using std::transform;
 
+int compare_no_case(string const & s, string const & s2)
+{
+	// ANSI C
+	string::const_iterator p = s.begin();
+	string::const_iterator p2 = s2.begin();
+
+	while (p != s.end() && p2 != s2.end()) {
+		int const lc1 = tolower(*p);
+		int const lc2 = tolower(*p2);
+		if (lc1 != lc2)
+			return (lc1 < lc2) ? -1 : 1;
+		++p;
+		++p2;
+	}
+	
+	if (s.size() == s2.size())
+		return 0;
+	if (s.size() < s2.size())
+		return -1;
+	return 1;
+}
+
+int compare_no_case(string const & s, string const & s2, unsigned int len)
+{
+//#warning verify this func please
+	string::const_iterator p = s.begin();
+	string::const_iterator p2 = s2.begin();
+	unsigned int i = 0;
+	while (i < len && p != s.end() && p2 != s2.end()) {
+		int const lc1 = tolower(*p);
+		int const lc2 = tolower(*p2);
+		if (lc1 != lc2)
+			return (lc1 < lc2) ? -1 : 1;
+		++i;
+		++p;
+		++p2;
+	}
+	if (s.size() == s2.size())
+		return 0;
+	if (s.size() < s2.size())
+		return -1;
+	return 1;
+}
+
 bool isStrInt(string const & str)
 {
 	if (str.empty()) return false;

@@ -28,6 +28,7 @@
 #include "lyxscreen.h"
 #include "minibuffer.h"
 #include "debug.h"
+#include "LyXView.h"
 
 static const int LYX_PAPER_MARGIN = 20;
 
@@ -39,9 +40,6 @@ extern int UnlockInset(UpdatableInset * inset);
 
 // ale070405
 extern int bibitemMaxWidth(LyXFont const &);
-
-// dnaber 1999-02-02
-extern MiniBuffer * minibuffer;
 
 int LyXText::SingleWidth(LyXParagraph * par,
 			 LyXParagraph::size_type pos)
@@ -61,7 +59,7 @@ int LyXText::SingleWidth(LyXParagraph * par,
 		return font.width(c);
 
 	} else if (IsHfillChar(c)) {
-		return 3;	/* because of the representation
+		return 3;	/* Because of the representation
 				 * as vertical lines */
 
 	} else if (c == LyXParagraph::META_FOOTNOTE ||
@@ -116,8 +114,7 @@ int LyXText::SingleWidth(LyXParagraph * par,
 }
 
 
-/* returns the paragraph position of the last character in the 
- * specified row */
+// Returns the paragraph position of the last character in the specified row
 LyXParagraph::size_type LyXText::RowLast(Row * row)
 {
 	if (row->next == 0)
@@ -2237,7 +2234,7 @@ void  LyXText::InsertChar(char c)
 			 * blank at the end of a row we have to force
 			 * a rebreak.*/ 
 	   
-			minibuffer->Set(_("You cannot type two spaces this way.  Please read the Tutorial."));
+			current_view->owner()->getMiniBuffer()->Set(_("You cannot type two spaces this way.  Please read the Tutorial."));
 			if (cursor.pos == RowLast(cursor.row)
 			    && !IsLineSeparatorChar(c))
 				cursor.row->fill = -1;    /* force rebreak  */
@@ -2254,9 +2251,9 @@ void  LyXText::InsertChar(char c)
 				    && cursor.par->Previous()->footnoteflag
 				    == LyXParagraph::OPEN_FOOTNOTE))) {
 	   		if (cursor.pos == 0 )
-				minibuffer->Set(_("You cannot insert a space at the beginning of a paragraph.  Please read the Tutorial."));
+				current_view->owner()->getMiniBuffer()->Set(_("You cannot insert a space at the beginning of a paragraph.  Please read the Tutorial."));
 			else
-				minibuffer->Set(_("You cannot type two spaces this way.  Please read the Tutorial."));
+				current_view->owner()->getMiniBuffer()->Set(_("You cannot type two spaces this way.  Please read the Tutorial."));
 			charInserted();
 			return;
 		}

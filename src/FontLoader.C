@@ -23,8 +23,10 @@
 #include "debug.h"
 #include "lyxrc.h"	// lyxrc.font_*
 extern LyXRC * lyxrc;
+#include "BufferView.h"
+#include "LyXView.h"
 #include "minibuffer.h"
-extern MiniBuffer *minibuffer;
+extern BufferView * current_view;
 
 // Initialize font loader
 FontLoader::FontLoader()
@@ -213,8 +215,8 @@ XFontStruct * FontLoader::doLoad(LyXFont::FONT_FAMILY family,
 		font = "fixed";
 	}
 
-	minibuffer->Store();
-	minibuffer->Set(_("Loading font into X-Server..."));
+	current_view->owner()->getMiniBuffer()->Store();
+	current_view->owner()->getMiniBuffer()->Set(_("Loading font into X-Server..."));
 
 	XFontStruct * fs = XLoadQueryFont(fl_display, font.c_str());
 
@@ -243,7 +245,7 @@ XFontStruct * FontLoader::doLoad(LyXFont::FONT_FAMILY family,
 			       << "' matched by\n" << font << endl;
 		}
 	}
-	minibuffer->Reset();
+	current_view->owner()->getMiniBuffer()->Reset();
 
 	fontstruct[family][series][shape][size] = fs;
 	return fs;

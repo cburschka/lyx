@@ -118,7 +118,6 @@ static int gs_allcolors;		// number of all colors
 static pidwait * pw = 0;		// pid wait list
 
 
-extern FD_form_main * fd_form_main;
 extern Colormap color_map;
 
 void addpidwait(int pid)
@@ -381,7 +380,7 @@ void InitFigures()
 	}
 
 	fl_add_canvas_handler(figinset_canvas, ClientMessage,
-			      GhostscriptMsg, fd_form_main);
+			      GhostscriptMsg, current_view->owner()->getMainForm());
 
 	// now we have to init color_map
 	if (!color_map) color_map = DefaultColormap(fl_display,
@@ -1132,8 +1131,8 @@ void InsetFig::Write(ostream & os)
 	}
 	if (!subcaption.empty())
 		os << "subcaption " << subcaption << "\n";
-	if (wtype) os << "width " << wtype << " " << xwid << "\n";
-	if (htype) os << "height " << htype << " " << xhgh << "\n";
+	if (wtype) os << "width " << static_cast<int>(wtype) << " " << xwid << "\n";
+	if (htype) os << "height " << static_cast<int>(htype) << " " << xhgh << "\n";
 	if (angle != 0) os << "angle " << angle << "\n";
 	os << "flags " << flags << "\n";
 	if (subfigure) os << "subfigure\n";

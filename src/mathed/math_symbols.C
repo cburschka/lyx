@@ -44,7 +44,6 @@ extern void BeforeChange();
 extern void Update(signed char);
 extern int UnlockInset(UpdatableInset *);
 extern short greek_kb_flag;
-extern MiniBuffer * minibuffer;
 
 extern BufferView * current_view;
 
@@ -307,7 +306,7 @@ extern "C" void math_cb(FL_OBJECT* ob, long data)
   
    if (s)  {
       if (current_view->available() && lyxrc->display_shortcuts) {
-	  minibuffer->Set("Inserting symbol ", s);
+	  current_view->owner()->getMiniBuffer()->Set("Inserting symbol ", s);
       }
       current_view->owner()->getLyXFunc()->Dispatch(LFUN_INSERT_MATH, s);
    }      

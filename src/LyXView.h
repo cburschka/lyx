@@ -43,7 +43,6 @@ struct  FD_form_main {
 };
 
 
-
 /**
   This class is the form containing the view of the buffer. The actual buffer
   view is supposed (at least IMHO) to be another class, that shows its output
@@ -74,6 +73,9 @@ public:
 
 	///
 	BufferView * view() { return bufferview; }
+
+	/// returns a pointer to the main form.
+	FD_form_main * getMainForm() { return _form_main; }
 
 	/// returns a pointer to the form.
 	FL_FORM * getForm() { return _form; }
@@ -133,7 +135,7 @@ public:
 	static void UpdateTimerCB(FL_OBJECT *, long);
 private:
 	/// makes the main form.
-	FD_form_main * create_form_form_main(int width, int height);
+	void create_form_form_main(int width, int height);
 	/// A pointer to the form.	
 	FD_form_main * _form_main;
 	/// A pointer to the form.	

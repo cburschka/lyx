@@ -1,3 +1,9 @@
+1999-12-19  Asger Alstrup Nielsen  <alstrup@diku.dk>
+
+	* The global MiniBuffer * minibuffer variable is dead.
+	
+	* The global FD_form_main * fd_form_main variable is dead.
+
 1999-12-17  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/toolbar.C (set): condition #warning on WITH_WARNINGS

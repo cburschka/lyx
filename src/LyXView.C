@@ -32,11 +32,6 @@
 #include "lyxtext.h"
 
 extern FD_form_document * fd_form_document;
-FD_form_main * fd_form_main; /* a pointer to the one in LyXView
-				should be removed as soon as possible */
-
-MiniBuffer * minibuffer;/* a pointer to the one in LyXView
-			   should be removed as soon as possible */
 
 extern void AutoSave();
 extern char updatetimer;
@@ -50,7 +45,7 @@ extern "C" int C_LyXView_atCloseMainFormCB(FL_FORM *, void *);
 
 LyXView::LyXView(int width, int height)
 {
-	fd_form_main = create_form_form_main(width, height);
+	create_form_form_main(width, height);
 	fl_set_form_atclose(_form, C_LyXView_atCloseMainFormCB, 0);
 	lyxerr[Debug::INIT] << "Initializing LyXFunc" << endl;
 	lyxfunc = new LyXFunc(this);
@@ -154,7 +149,7 @@ void LyXView::show(int place, int border, char const * title)
 }
 
 
-FD_form_main * LyXView::create_form_form_main(int width, int height)
+void LyXView::create_form_form_main(int width, int height)
 	/* to make this work as it should, .lyxrc should have been
 	 * read first; OR maybe this one should be made dynamic.
 	 * Hmmmm. Lgb. 
@@ -212,7 +207,6 @@ FD_form_main * LyXView::create_form_form_main(int width, int height)
 
 	minibuffer = new MiniBuffer(this, air, height-(25+air), 
 				    width-(2*air), 25);
-	::minibuffer = minibuffer; // to be removed later
 
 	//
 	// TIMERS
@@ -250,8 +244,6 @@ FD_form_main * LyXView::create_form_form_main(int width, int height)
 	fl_set_form_minsize(fdui->form_main, 50, 50);
 	
 	fl_end_form();
-
-	return fdui;
 }
 
 
@@ -285,10 +277,10 @@ void LyXView::invalidateLayoutChoice()
 
 void LyXView::updateLayoutChoice()
 {
-	/* update the layout display */
+	// Update the layout display
 	if (!toolbar->combox) return;
 
-	// this has a bi-effect that the layouts are not showed when no
+	// This has a side-effect that the layouts are not showed when no
 	// document is loaded.
 	if (bufferview == 0 || bufferview->buffer() == 0) {
 		toolbar->combox->clear();
@@ -302,7 +294,7 @@ void LyXView::updateLayoutChoice()
 		toolbar->combox->clear();
 		for (int i = 0;
 		     textclasslist.NameOfLayout(buffer()->
-						params.textclass, i) != "@@end@@";
+			 params.textclass, i) != "@@end@@";
 		     i++) {
 			LyXLayout const & layout = textclasslist.
 				Style(buffer()->params.textclass, i);
@@ -328,7 +320,7 @@ void LyXView::updateLayoutChoice()
 
 void LyXView::UpdateDocumentClassChoice()
 {
-	// update the document class display in the document form
+	// Update the document class display in the document form
 	if (fd_form_document) {
 		fl_clear_choice(fd_form_document->choice_class);
 		for (int i = 0;
@@ -349,7 +341,7 @@ int LyXView::KeyPressMask_raw_callback(FL_FORM * fl, void * xev)
 
 	// funny. Even though the raw_callback is registered with KeyPressMask,
 	// also KeyRelease-events are passed through:-(
-	// [It seems that xforms puts them in pairs... (JMarc)]
+	// [It seems that XForms puts them in pairs... (JMarc)]
 	if (static_cast<XEvent*>(xev)->type == KeyPress
 	    && view->bufferview->getWorkArea()->focus
 	    && view->bufferview->getWorkArea()->active)
