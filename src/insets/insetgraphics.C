@@ -42,12 +42,10 @@ Known BUGS:
     * Bug in FileDlg class (src/filedlg.[hC]) when selecting a file and then
         pressing ok, it counts as if no real selection done. Apparently
         when choosing a file it doesn't update the select file input line.
-	* Inline viewing is still not completely operational, in fact it is now
-		disabled. To enable it enable the define:
-		INSETGRAPHICS_INLINE_VIEW
 	* If we are trying to create a file in a read-only directory and there
 		are graphics that need converting, the converting will fail because
 		it is done in-place, into the same directory as the original image.
+		This needs to be fixed in the src/converter.C file
  
 TODO Before initial production release:
     * Replace insetfig everywhere
@@ -61,6 +59,7 @@ TODO Before initial production release:
     * Extract the general logic of the dialog in order to allow easier porting
         to Gnome/KDE, and put the general logic in frontends and the inherited
         platform dependent code in the appropriate dirs.
+		(Something of this kind is getting done by the GUII guys)
    
 TODO Extended features:
  
@@ -129,8 +128,6 @@ TODO Extended features:
 #pragma implementation
 #endif 
 
-#define INSETGRAPHICS_INLINE_VIEW
-
 #include "insets/insetgraphics.h"
 #include "insets/insetgraphicsParams.h"
 #include "graphics/GraphicsCache.h"
@@ -170,7 +167,7 @@ string const RemoveExtension(string const & filename)
 
 // Initialize only those variables that do not have a constructor.
 InsetGraphics::InsetGraphics()
-	: cacheHandle(0), pixmap(0), updateImage(false)
+	: cacheHandle(0), imageLoaded(false)
 {}
 
 InsetGraphics::~InsetGraphics()
@@ -184,7 +181,6 @@ InsetGraphics::statusMessage() const
 {
 	char const * msg = 0;
 
-#ifdef INSETGRAPHICS_INLINE_VIEW
 	if (cacheHandle) {
 		switch (cacheHandle->getImageStatus()) {
 		case GraphicsCacheItem::UnknownError:
@@ -208,16 +204,14 @@ InsetGraphics::statusMessage() const
 			break;
 		}
 	}
-#else
-	msg = _("Inline view disabled");
-#endif
 
 	return msg;
 }
 
 int InsetGraphics::ascent(BufferView *, LyXFont const &) const
 {
-	if (pixmap)
+	LyXImage * pixmap = 0;
+	if (cacheHandle && (pixmap = cacheHandle->getImage()))
 		return pixmap->getHeight();
 	else
 		return 50;
@@ -233,7 +227,9 @@ int InsetGraphics::descent(BufferView *, LyXFont const &) const
 
 int InsetGraphics::width(BufferView *, LyXFont const & font) const
 {
-	if (pixmap)
+	LyXImage * pixmap = 0;
+	
+	if (cacheHandle && (pixmap = cacheHandle->getImage()))
 		return pixmap->getWidth();
 	else {
 		char const * msg = statusMessage();
@@ -261,17 +257,12 @@ void InsetGraphics::draw(BufferView * bv, LyXFont const & font,
 
 	// This will draw the graphics. If the graphics has not been loaded yet,
 	// we draw just a rectangle.
-	if (pixmap) {
+	if (imageLoaded) {
 
 		paint.image(int(old_x) + 2, baseline - lascent,
 		             lwidth - 4, lascent + ldescent,
-		             pixmap);
+					 cacheHandle->getImage());
 	} else {
-#ifdef INSETGRAPHICS_INLINE_VIEW
-		if (!updateImage) {
-			updateImage = true;
-			updateInset();
-		}
 		
 		// Get the image status, default to unknown error.
 		GraphicsCacheItem::ImageStatus status = GraphicsCacheItem::UnknownError;
@@ -280,14 +271,12 @@ void InsetGraphics::draw(BufferView * bv, LyXFont const & font,
 		
 		// Check if the image is now ready.
 		if (status == GraphicsCacheItem::Loaded) {
-			// It is, get it and inform the world.
-			pixmap = cacheHandle->getImage();
+			imageLoaded = true;
 
 			// Tell BufferView we need to be updated!
 			bv->text->status = LyXText::CHANGED_IN_DRAW;
 			return;
 		}
-#endif
 
 		char const * msg = statusMessage();
 		
@@ -452,6 +441,11 @@ InsetGraphics::prepareFile(Buffer const *buf) const
 	if (!buf->niceFile) {
 		string const temp = AddName(buf->tmppath, params.filename);
 		outfile = RemoveExtension(temp);
+		
+		//lyxerr << "buf::tmppath = " << buf->tmppath << "\n";
+		//lyxerr << "filename = " << params.filename << "\n";
+		//lyxerr << "temp = " << temp << "\n";
+		//lyxerr << "outfile = " << outfile << endl;
 	} else {
 		string const path = OnlyPath(buf->fileName());
 		string const relname = MakeRelPath(params.filename, path);
@@ -581,21 +575,18 @@ void InsetGraphics::Validate(LaTeXFeatures & features) const
 // dialog.
 void InsetGraphics::updateInset() const
 {
-#ifdef INSETGRAPHICS_INLINE_VIEW	
-	if (updateImage) {
-		GraphicsCache * gc = GraphicsCache::getInstance();
-		GraphicsCacheItem * temp = 0;
+	GraphicsCache * gc = GraphicsCache::getInstance();
+	GraphicsCacheItem * temp = 0;
 
-		if (!params.filename.empty()) {
-			temp = gc->addFile(params.filename);
-		}
-
-		delete cacheHandle;
-		cacheHandle = temp;
+	if (!params.filename.empty()) {
+		temp = gc->addFile(params.filename);
 	}
-#else
-	cacheHandle = 0;
-#endif
+
+	// Mark the image as unloaded so that it gets updated.
+	imageLoaded = false;
+
+	delete cacheHandle;
+	cacheHandle = temp;
 }
 
 bool InsetGraphics::setParams(InsetGraphicsParams const & params)
@@ -627,8 +618,7 @@ Inset * InsetGraphics::Clone(Buffer const &) const
 		newInset->cacheHandle = cacheHandle->Clone();
 	else
 		newInset->cacheHandle = 0;
-	newInset->pixmap = pixmap;
-	newInset->updateImage = updateImage;
+	newInset->imageLoaded = imageLoaded;
 
 	newInset->setParams(getParams());
 

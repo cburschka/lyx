@@ -82,18 +82,16 @@ GraphicsCacheItem::copy(GraphicsCacheItem const & gci)
 void
 GraphicsCacheItem::destroy()
 {
-	if (pimpl) {
-		--(pimpl->refCount);
-		if (pimpl->refCount == 0) {
-			{   // We are deleting the pimpl but we want to mark it deleted
-				// even before it is deleted.
-				GraphicsCacheItem_pimpl * temp = pimpl;
-				pimpl = 0;
-				delete temp; temp = 0;
-			}
-			GraphicsCache * gc = GraphicsCache::getInstance();
-			gc->removeFile(filename_);
-		}
+	if (!pimpl) 
+		return;
+
+	--(pimpl->refCount);
+	if (pimpl->refCount == 0) {
+		delete pimpl;
+		pimpl = 0;
+
+		GraphicsCache * gc = GraphicsCache::getInstance();
+		gc->removeFile(filename_);
 	}
 }
 

@@ -115,10 +115,8 @@ private:
 	/// The graphics cache handle.
 	mutable GraphicsCacheItem * cacheHandle;
 
-	/// The pixmap
-	mutable LyXImage * pixmap;
 	/// is the pixmap initialized?
-	mutable bool updateImage;
+	mutable bool imageLoaded;
 
 	InsetGraphicsParams params;
 };

@@ -36,14 +36,8 @@ GraphicsCache::getInstance()
 
 GraphicsCache::~GraphicsCache()
 {
-	// Free the map.
-	//std::foreach(map.begin(), map.end(), ...);
-//#warning This is a bogus reason to not clean up after your self. (Lgb)
-	// TODO: Clean up here (BE)
-	
-	// This is not really needed, it will only happen on program close and in
-	// any case the OS will release those resources (not doing it may have 
-	// a good effect on closing time).
+	// The map elements should have already been eliminated.
+	Assert(cache.empty());
 	
 	delete singleton;
 }
@@ -78,6 +72,7 @@ GraphicsCache::removeFile(string const & filename)
 	// We do not destroy the GraphicsCacheItem since we are here because
 	// the last copy of it is being erased.
 
-	if (cache.find(filename) != cache.end())
-		cache.erase(filename);
+	CacheType::iterator it = cache.find(filename);
+	if (it != cache.end())
+		cache.erase(it);
 }

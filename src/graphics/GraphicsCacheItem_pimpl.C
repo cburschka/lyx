@@ -108,8 +108,8 @@ GraphicsCacheItem_pimpl::renderXPM(string const & filename)
 	temp = ChangeExtension(filename, string());
 	
 	// Add some stuff to have it a unique temp file.
+	// This tempfile is deleted in loadXPMImage after it is loaded to memory.
 	xpmfile = lyx::tempName(string(), temp);
-#warning When is this tempfile unlinked? (Lgb)
 	xpmfile = ChangeExtension(xpmfile, ".xpm");	
 	
 	command += xpmfile;
@@ -136,7 +136,7 @@ GraphicsCacheItem_pimpl::loadXPMImage()
 {
 	lyxerr << "Loading XPM Image... ";
 	
-	if (imageLoader->loadImage(xpmfile)) {
+	if (imageLoader->loadImage(xpmfile) == ImageLoader::OK) {
 		lyxerr << "Success." << endl;
 		image_ = imageLoader->getImage();
 		imageStatus_ = GraphicsCacheItem::Loaded;

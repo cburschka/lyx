@@ -1,3 +1,13 @@
+2001-02-20  Baruch Even  <baruch@ev-en.org>
+
+	* GraphicsCache.C: Cleared up the confusion on when and how it is
+	emptied.
+
+	* GraphicsCacheItem.C: Indentation change.
+
+	* GraphicsCacheItem_pimpl.C: Fixed the loading logic so that it will
+	figure correctly when the image has been loaded successfully.
+
 2001-02-08  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* ImageLoader.C: add a "using" directive.
