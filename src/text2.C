@@ -1339,13 +1339,23 @@ void LyXText::setCounter(Buffer const * buf, Paragraph * par) const
 
 		// the caption hack:
 		if (layout->labeltype == LABEL_SENSITIVE) {
-			bool isOK (par->inInset() && par->inInset()->owner() &&
-				   (par->inInset()->owner()->lyxCode() == Inset::FLOAT_CODE));
+			Paragraph * tmppar = par;
+			Inset * in = 0;
+			bool isOK = false;
+			while (tmppar && tmppar->inInset()
+			       // the single '=' is intended below
+			       && (in = tmppar->inInset()->owner())) {
+				if (in->lyxCode() == Inset::FLOAT_CODE) {
+					isOK = true;
+					break;
+				} else {
+					tmppar = in->parOwner();
+				}
+			}
 
 			if (isOK) {
-				InsetFloat * tmp = static_cast<InsetFloat*>(par->inInset()->owner());
 				Floating const & fl
-					= floatList.getType(tmp->type());
+					= floatList.getType(static_cast<InsetFloat*>(in)->type());
 
 				buf->counters().step(fl.name());
 				
