@@ -16,6 +16,7 @@
 
 #include "gettext.h"
 #include "LColor.h"
+#include "lyxrc.h"
 #include "metricsinfo.h"
 
 #include "frontends/font_metrics.h"
@@ -82,8 +83,19 @@ boost::signals::connection RenderGraphic::connect(slot_type const & slot) const
 
 namespace {
 
-string const statusMessage(graphics::ImageStatus status)
+bool displayGraphic(graphics::Params const & params)
 {
+	return params.display != graphics::NoDisplay &&
+		lyxrc.display_graphics != graphics::NoDisplay;
+}
+	
+
+string const statusMessage(graphics::Params const & params,
+			   graphics::ImageStatus status)
+{
+	if (!displayGraphic(params))
+		return _("Not shown.");
+
 	switch (status) {
 	case graphics::WaitingToLoad:
 		return _("Not shown.");
@@ -92,7 +104,7 @@ string const statusMessage(graphics::ImageStatus status)
 	case graphics::Converting:
 		return _("Converting to loadable format...");
 	case graphics::Loaded:
-		return _("Loaded into memory. Must now generate pixmap.");
+		return _("Loaded into memory. Generating pixmap...");
 	case graphics::ScalingEtc:
 		return _("Scaling etc...");
 	case graphics::Ready:
@@ -124,7 +136,7 @@ bool readyToDisplay(graphics::Loader const & loader)
 
 void RenderGraphic::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	bool image_ready = readyToDisplay(loader_);
+	bool image_ready = displayGraphic(params_) && readyToDisplay(loader_);
 
 	dim.asc = image_ready ? loader_.image()->getHeight() : 50;
 	dim.des = 0;
@@ -144,7 +156,7 @@ void RenderGraphic::metrics(MetricsInfo & mi, Dimension & dim) const
 			font_width = font_metrics::width(justname, msgFont);
 		}
 
-		string const msg = statusMessage(loader_.status());
+		string const msg = statusMessage(params_, loader_.status());
 		if (!msg.empty()) {
 			msgFont.setSize(LyXFont::SIZE_TINY);
 			font_width = std::max(font_width,
@@ -160,18 +172,17 @@ void RenderGraphic::metrics(MetricsInfo & mi, Dimension & dim) const
 
 void RenderGraphic::draw(PainterInfo & pi, int x, int y) const
 {
-	if (params_.display != graphics::NoDisplay &&
-	    loader_.status() == graphics::WaitingToLoad)
-		loader_.startLoading();
-
-	if (params_.display != graphics::NoDisplay &&
-	    !loader_.monitoring())
-		loader_.startMonitoring();
+	if (displayGraphic(params_)) {
+		if (loader_.status() == graphics::WaitingToLoad)
+			loader_.startLoading();
+		if (!loader_.monitoring())
+			loader_.startMonitoring();
+	}
 
 	// This will draw the graphics. If the graphics has not been
 	// loaded yet, we draw just a rectangle.
 
-	if (readyToDisplay(loader_)) {
+	if (displayGraphic(params_) && readyToDisplay(loader_)) {
 		pi.pain.image(x + InsetOld::TEXT_TO_INSET_OFFSET,
 			      y - dim_.asc,
 			      dim_.wid - 2 * InsetOld::TEXT_TO_INSET_OFFSET,
@@ -198,7 +209,7 @@ void RenderGraphic::draw(PainterInfo & pi, int x, int y) const
 		}
 
 		// Print the message.
-		string const msg = statusMessage(loader_.status());
+		string const msg = statusMessage(params_, loader_.status());
 		if (!msg.empty()) {
 			msgFont.setSize(LyXFont::SIZE_TINY);
 			pi.pain.text(x + InsetOld::TEXT_TO_INSET_OFFSET + 6,

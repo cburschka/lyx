@@ -1,5 +1,12 @@
 2004-05-04  Angus Leeming  <leeming@lyx.org>
 
+	* insetgraphics.C: remove unused header file "lyxrc.h".
+
+	* render_graphic.C: squash bug 1372: Misleading graphics label when
+	deactivating lyx view.
+
+2004-05-04  Angus Leeming  <leeming@lyx.org>
+
 	* insetbibitem.C:
 	* insetcaption.C:
 	* insetgraphics.C:
