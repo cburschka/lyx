@@ -29,16 +29,6 @@ public:
 	~FormRef();
 	///
 private:
-	///
-	enum Goto {
-		///
-		GOREF,
-		///
-		GOBACK,
-		///
-		GOFIRST
-	};
-
 	/// Disconnect signals. Also perform any necessary housekeeping.
 	virtual void disconnect();
 
@@ -59,7 +49,7 @@ private:
 	FD_form_ref * build_ref();
 
 	///
-	Goto toggle;
+	bool at_ref;
 	/// 
 	std::vector<string> refs;
 

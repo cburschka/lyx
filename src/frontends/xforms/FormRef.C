@@ -33,9 +33,11 @@ using std::max;
 using std::sort;
 using std::vector;
 
+bool saved_position;
+
 FormRef::FormRef(LyXView * lv, Dialogs * d)
 	: FormCommand(lv, d, _("Reference"), new NoRepeatedApplyPolicy),
-	  toggle(GOBACK), dialog_(0)
+	  at_ref(false), dialog_(0)
 {
 	// let the dialog be shown
 	// These are permanent connections so we won't bother
@@ -102,9 +104,7 @@ void FormRef::update()
 			      InsetRef::getType(params.getCmdName()) + 1);
 	}
 
-	lv_->getLyXFunc()->Dispatch(LFUN_BOOKMARK_SAVE, "0");
-
-	toggle = GOBACK;
+	at_ref = false;
 	fl_set_object_label(dialog_->button_go, _("Goto reference"));
 
 	// Name is irrelevant to LaTeX/Literate documents, while
@@ -192,7 +192,6 @@ void FormRef::apply()
 	} else {
 		lv_->getLyXFunc()->Dispatch(LFUN_REF_INSERT,
 					    params.getAsString());
-		lv_->getLyXFunc()->Dispatch(LFUN_BOOKMARK_SAVE, "0");
 	}
 }
 
@@ -207,29 +206,17 @@ bool FormRef::input(FL_OBJECT *, long data)
 		// No change to data
 		activate = false;
 		
-		toggle = static_cast<Goto>(toggle + 1);
-		if (toggle == GOFIRST ) toggle = GOREF;
-	
-		switch (toggle) {
-		case GOREF:
-		{
+		at_ref = !at_ref;
+		if (at_ref) {
+			lv_->getLyXFunc()->Dispatch(LFUN_BOOKMARK_SAVE, "0");
 			lv_->getLyXFunc()->
 				Dispatch(LFUN_REF_GOTO,
 					 fl_get_input(dialog_->ref));
 	  		fl_set_object_label(dialog_->button_go, _("Go back"));
-		}
-		break;
-
-		case GOBACK:
-		{
+		} else {
 			lv_->getLyXFunc()->Dispatch(LFUN_BOOKMARK_GOTO, "0");
 			fl_set_object_label(dialog_->button_go,
 					    _("Goto reference"));
-		}
-		break;
-
-		default:
-			break;
 		}
 	}
 	break;
@@ -245,8 +232,9 @@ bool FormRef::input(FL_OBJECT *, long data)
 			fl_set_input(dialog_->ref, s.c_str());
 		}
 
-		toggle = GOBACK;
-		lv_->getLyXFunc()->Dispatch(LFUN_BOOKMARK_GOTO, "0");
+		if (at_ref)
+			lv_->getLyXFunc()->Dispatch(LFUN_BOOKMARK_GOTO, "0");
+		at_ref = false;
 		fl_set_object_label(dialog_->button_go, _("Goto reference"));
 
 		fl_activate_object(dialog_->type);
