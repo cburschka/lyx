@@ -18,9 +18,10 @@
 
 #include "support/FileInfo.h"
 #include "support/filetools.h"
-#include "support/systemcall.h"
-#include "support/path.h"
 #include "support/lstrings.h"
+#include "support/lyxlib.h"
+#include "support/path.h"
+#include "support/systemcall.h"
 
 #include "support/BoostFormat.h"
 

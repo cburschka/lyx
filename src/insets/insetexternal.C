@@ -36,6 +36,7 @@
 #include "support/forkedcall.h"
 #include "support/lstrings.h"
 #include "support/lyxalgo.h"
+#include "support/lyxlib.h"
 #include "support/path.h"
 #include "support/path_defines.h"
 #include "support/tostr.h"
@@ -463,7 +464,7 @@ void InsetExternal::validate(LaTeXFeatures & features) const
 		features.require(cit->second.requirement);
 	}
 	if (!cit->second.preamble.empty()) {
-		features.addExternalPreamble(cit->second.preamble + "\n");
+		features.addExternalPreamble(cit->second.preamble);
 	}
 }
 

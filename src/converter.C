@@ -28,6 +28,7 @@
 
 #include "support/filetools.h"
 #include "support/lyxfunctional.h"
+#include "support/lyxlib.h"
 #include "support/path.h"
 #include "support/tostr.h"
 #include "support/systemcall.h"

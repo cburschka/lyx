@@ -13,7 +13,6 @@
 #define PATH_H
 
 #include "LString.h"
-#include "lyxlib.h"
 #include <boost/utility.hpp>
 
 namespace lyx {
@@ -35,24 +34,10 @@ namespace support {
 class Path : boost::noncopyable {
 public:
 	/// change to the given directory
-	explicit
-	Path(string const & path)
-		: popped_(false)
-	{
-		if (!path.empty()) {
-			pushedDir_ = getcwd();
-			if (pushedDir_.empty() || chdir(path))
-				/* FIXME: throw */;
-		} else {
-			popped_ = true;
-		}
-	}
+	explicit Path(string const & path);
 
 	/// set cwd to the previous value if needed
-	~Path()
-	{
-		if (!popped_) pop();
-	}
+	~Path();
 
 	/// set cwd to the previous value if needed
 	int pop();
@@ -68,7 +53,9 @@ private:
 // Path p("/tmp");  // right
 // we add this macro:
 ///
+#ifndef PATH_C
 #define Path(x) unnamed_Path;
+#endif
 // Tip gotten from Bobby Schmidt's column in C/C++ Users Journal
 
 } // namespace support

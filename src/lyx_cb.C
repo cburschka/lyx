@@ -38,10 +38,11 @@
 #include "support/FileInfo.h"
 #include "support/filetools.h"
 #include "support/forkedcall.h"
+#include "support/lstrings.h"
+#include "support/lyxlib.h"
 #include "support/path.h"
 #include "support/path_defines.h"
 #include "support/systemcall.h"
-#include "support/lstrings.h"
 
 #include <fstream>
 #include <algorithm>

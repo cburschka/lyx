@@ -1,3 +1,7 @@
+2003-09-04  Angus Leeming  <leeming@lyx.org>
+
+	* Chktex.C, converter.C, lyx_cb.C: add #include "support/lyxlib.h".
+
 2003-09-03  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* lyxfunc.C (dispatch): if fitCursor did something be sure to

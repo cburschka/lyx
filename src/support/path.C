@@ -10,10 +10,33 @@
 
 #include <config.h>
 
+// Needed to prevent the definition of the unnamed_Path macro in the header file.
+#define PATH_C
+
 #include "path.h"
+#include "lyxlib.h"
 
 namespace lyx {
 namespace support {
+
+Path::Path(string const & path)
+	: popped_(false)
+{
+	if (!path.empty()) {
+		pushedDir_ = getcwd();
+		if (pushedDir_.empty() || chdir(path))
+			/* FIXME: throw */;
+	} else {
+		popped_ = true;
+	}
+}
+
+
+Path::~Path()
+{
+	if (!popped_) pop();
+}
+
 
 int Path::pop()
 {
