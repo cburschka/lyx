@@ -61,14 +61,6 @@ class Paragraph;
 class InsetTabular : public UpdatableInset {
 public:
 	///
-	enum UpdateCodes {
-		NONE = 0,
-		CURSOR = 1,
-		CELL = 2,
-		FULL = 4,
-		INIT = 5
-	};
-	///
 	InsetTabular(Buffer const &, int rows = 1, int columns = 1);
 	///
 	InsetTabular(InsetTabular const &);
@@ -89,7 +81,7 @@ public:
 	//
 	void insetUnlock(BufferView *);
 	///
-	void updateLocal(BufferView *, UpdateCodes) const;
+	void updateLocal(BufferView *) const;
 	///
 	bool lockInsetInInset(BufferView *, UpdatableInset *);
 	///
@@ -330,8 +322,6 @@ private:
 	bool no_selection;
 	///
 	mutable bool locked;
-	///
-	mutable UpdateCodes need_update;
 	///
 	mutable int in_reset_pos;
 };

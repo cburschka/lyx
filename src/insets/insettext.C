@@ -1764,7 +1764,7 @@ void InsetText::resizeLyXText(BufferView * bv, bool /*force*/) const
 	}
 #endif
 
-#if 1
+#if 0
 	text_.top_y(bv->screen().topCursorVisible(&text_));
 	if (!owner()) {
 		const_cast<InsetText*>(this)->updateLocal(bv, false);
