@@ -5,30 +5,37 @@
 #
 # Ein paar generelle Richtlinien für eine einheitliche Übersetzung (Vorschlag von M. Schmitt):
 #
+#   advanced      -> erweitert(e)
+#   bind (file)   -> Tastaturkürzel(-Datei)
 #   border        -> Rahmen
-#   inline        -> eingebettet
-#   key           -> Schlüssel
+#   browse        -> durchsuchen
+#   button        -> Knopf 
 #   command       -> Befehl
 #   display       -> Anzeige/anzeigen
+#   extension     -> (Datei-)endung
 #   extra ...     -> Zusatz-... / Extra (im Ausnahmefall)
-#   Miscellaneous -> Verschiedenes
-#   bind (file)   -> Tastaturkürzel(-Datei)
-#   layout        -> layout
 #   font          -> Schrift
-#   template      -> Vorlage
-#   option        -> Option
-#   setting       -> Einstellung
-#   restore       -> zurücksetzen
-#   browse        -> durchsuchen
-#   set           -> festlegen / ... ein / (set to -> setzen auf)
-#   math          -> Mathe
 #   graphics      -> Grafik (Einzahl!)
+#   inline        -> eingebettet
+#   key           -> Schlüssel
+#   label         -> Marke
+#   layout        -> layout
+#   math          -> Mathe
+#   Miscellaneous -> Verschiedenes
+#   option        -> Option
+#   remove        -> entfernen
+#   restore       -> zurücksetzen
+#   set           -> festlegen / ... ein / (set to -> setzen auf)
+#   setting       -> Einstellung
+#   shortcut      -> Kürzel
+#   show          -> anzeigen / zeige ...
+#   template      -> Vorlage
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: LyX 1.2.0\n"
+"Project-Id-Version: LyX 1.3.0\n"
 "POT-Creation-Date: 2003-01-14 02:14+0100\n"
-"PO-Revision-Date: 2002-12-20 19:00+0100\n"
+"PO-Revision-Date: 2002-01-14 03:00+0100\n"
 "Last-Translator: Michael Schmitt <Michael.Schmitt@teststep.org>\n"
 "Language-Team: German <de@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -147,9 +154,8 @@ msgid "Add bibliography to TOC|#T"
 msgstr "Literaturliste ins Inhaltsverzeichnis|#I"
 
 #: ../src/frontends/xforms/forms/form_bibtex.fd:170
-#, fuzzy
 msgid "Styles:|#y"
-msgstr "Stile|#t"
+msgstr "Stile:|#t"
 
 #: ../src/frontends/xforms/forms/form_bibtex.fd:188
 #: ../src/frontends/xforms/forms/form_preferences.fd:737
@@ -253,19 +259,16 @@ msgid "These are always toggled"
 msgstr "Immer Umschalten"
 
 #: ../src/frontends/xforms/forms/form_citation.fd:44
-#, fuzzy
 msgid "Inset keys:|#I"
-msgstr "Schlüssel in Einfügung|#E"
+msgstr "Schlüssel in Einfügung:|#E"
 
 #: ../src/frontends/xforms/forms/form_citation.fd:62
-#, fuzzy
 msgid "Bibliography keys:|#k"
-msgstr "Schlüssel in Literaturliste|#L"
+msgstr "Schlüssel in Literaturliste:|#L"
 
 #: ../src/frontends/xforms/forms/form_citation.fd:80
-#, fuzzy
 msgid "Info:"
-msgstr "Informationen"
+msgstr "Informationen:"
 
 #: ../src/frontends/xforms/forms/form_citation.fd:116
 #: ../src/frontends/xforms/forms/form_forks.fd:115
@@ -436,9 +439,8 @@ msgid "Page style:|#P"
 msgstr "Seiten-Stil:|#n"
 
 #: ../src/frontends/xforms/forms/form_document.fd:866
-#, fuzzy
 msgid "Spacing:|#g"
-msgstr "Abstand|#A"
+msgstr "Abstand:|#A"
 
 #: ../src/frontends/xforms/forms/form_document.fd:884
 msgid "Extra Options:|#X"
@@ -501,19 +503,16 @@ msgid "Float Placement:|#L"
 msgstr "Platzierung von Floats:|#P"
 
 #: ../src/frontends/xforms/forms/form_document.fd:1401
-#, fuzzy
 msgid "Section number depth:"
-msgstr "Tiefe der Abschnittsnummerierung"
+msgstr "Tiefe der Abschnittsnummerierung:"
 
 #: ../src/frontends/xforms/forms/form_document.fd:1423
-#, fuzzy
 msgid "Table of contents depth:"
-msgstr "Tiefe im Inhaltsverzeichnis"
+msgstr "Tiefe im Inhaltsverzeichnis:"
 
 #: ../src/frontends/xforms/forms/form_document.fd:1445
-#, fuzzy
 msgid "PS Driver:|#S"
-msgstr "PostScript-Treiber|#T"
+msgstr "PostScript-Treiber:|#T"
 
 #: ../src/frontends/xforms/forms/form_document.fd:1463
 msgid "Use AMS Math|#M"
@@ -524,9 +523,8 @@ msgid "Use Natbib|#N"
 msgstr "Natbib verwenden|#N"
 
 #: ../src/frontends/xforms/forms/form_document.fd:1499
-#, fuzzy
 msgid "Citation style:|#i"
-msgstr "Zitat-Stil|#i"
+msgstr "Zitat-Stil:|#i"
 
 #: ../src/frontends/xforms/forms/form_document.fd:1541
 msgid "Bullet depth"
@@ -823,21 +821,19 @@ msgstr "Dateiname:|#D"
 
 #: ../src/frontends/xforms/forms/form_include.fd:151
 msgid "Visible space|#s"
-msgstr "Sichtbares Leerzeichen|#L"
+msgstr "Sichtb. Leerzeichen|#L"
 
 #: ../src/frontends/xforms/forms/form_include.fd:187
 msgid "Verbatim|#V"
 msgstr "Unformatiert|#U"
 
 #: ../src/frontends/xforms/forms/form_include.fd:205
-#, fuzzy
 msgid "Use input|#i"
-msgstr "Input encoding verwenden|#I"
+msgstr "'input' verwenden|#i"
 
 #: ../src/frontends/xforms/forms/form_include.fd:223
-#, fuzzy
 msgid "Use include|#U"
-msgstr "Priv. Bind|#P#p"
+msgstr "'include' verwenden|#v"
 
 #: ../src/frontends/xforms/forms/form_include.fd:259
 msgid "Preview|#p"
@@ -1066,7 +1062,6 @@ msgid "Line spacing:|#s"
 msgstr "Zeilenabstand:|#Z"
 
 #: ../src/frontends/xforms/forms/form_paragraph.fd:332
-#, fuzzy
 msgid "Maximum label width:|#M"
 msgstr "Max. Marken-Breite:|#M"
 
@@ -1317,9 +1312,8 @@ msgid "Use input encoding|#i"
 msgstr "Input encoding verwenden|#I"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1439
-#, fuzzy
 msgid "Advanced Options"
-msgstr "Weitergehende Optionen"
+msgstr "Erweiterte Optionen"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1457
 #: src/frontends/xforms/FormPreferences.C:207
@@ -1403,19 +1397,16 @@ msgid "Format|#F"
 msgstr "Format|#F"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1919
-#, fuzzy
 msgid "GUI name|#G"
 msgstr "Name im GUI|#G"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1937
-#, fuzzy
 msgid "Shortcut|#S"
 msgstr "Kürzel|#K"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1955
-#, fuzzy
 msgid "Extension|#E"
-msgstr "Datei Endung|#E"
+msgstr "Dateiendung|#D"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1973
 #, fuzzy
@@ -1544,7 +1535,6 @@ msgid "to printer"
 msgstr "zum Drucker"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2706
-#, fuzzy
 msgid "file extension"
 msgstr "Dateiendung"
 
@@ -1553,17 +1543,14 @@ msgid "spool command"
 msgstr "Spool-Befehl"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2742
-#, fuzzy
 msgid "paper type"
 msgstr "Papiertyp"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2760
-#, fuzzy
 msgid "even pages"
 msgstr "gerade Seiten"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2778
-#, fuzzy
 msgid "odd pages"
 msgstr "ungerade Seiten"
 
@@ -1573,9 +1560,8 @@ msgid "collated"
 msgstr "&Schließen"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2814
-#, fuzzy
 msgid "landscape"
-msgstr "&Querformat"
+msgstr "Querformat"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2832
 #, fuzzy
@@ -1592,7 +1578,6 @@ msgid "spool printer prefix"
 msgstr "Druckername"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2886
-#, fuzzy
 msgid "paper size"
 msgstr "Papiergröße"
 
@@ -1601,9 +1586,8 @@ msgid "Ascii line length|#A"
 msgstr ""
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2986
-#, fuzzy
 msgid "TeX encoding|#T"
-msgstr "TeX Kodierung|#T"
+msgstr "TeX-Kodierung|#T"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:3004
 msgid "Default paper size|#p"
@@ -1622,12 +1606,10 @@ msgid "checktex|#c"
 msgstr ""
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:3076
-#, fuzzy
 msgid "DVI paper option|#D"
-msgstr "DVI Seitengröße"
+msgstr "DVI-Papieroption|#D"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:3094
-#, fuzzy
 msgid "Autoreset Class Options on change|#u"
 msgstr "Klassenoptionen bei Wechsel automatisch zurücksetzen|#K"
 
@@ -1699,29 +1681,25 @@ msgid "Reference:|#e"
 msgstr "Querverweis:|#Q"
 
 #: ../src/frontends/xforms/forms/form_ref.fd:243
-#, fuzzy
 msgid "Go to|#G"
-msgstr "Gehe zu"
+msgstr "Gehe zu|#G"
 
 #: ../src/frontends/xforms/forms/form_search.fd:44
-#, fuzzy
 msgid "Find:|#F"
-msgstr "Datei|D"
+msgstr "Finde:|#F"
 
 #: ../src/frontends/xforms/forms/form_search.fd:62
-#, fuzzy
 msgid "Replace with:|#w"
-msgstr "Ersetze durch|#E"
+msgstr "Ersetze durch:|#E"
 
 #: ../src/frontends/xforms/forms/form_search.fd:80
 msgid "Find next"
-msgstr ""
+msgstr "Finde nächstes"
 
 #: ../src/frontends/xforms/forms/form_search.fd:98
 #: ../src/frontends/xforms/forms/form_spellchecker.fd:224
-#, fuzzy
 msgid "Replace|#R"
-msgstr "Ersetzen"
+msgstr "Ersetzen|#E"
 
 #: ../src/frontends/xforms/forms/form_search.fd:152
 msgid "Match word|#M"
@@ -1745,7 +1723,7 @@ msgstr "Befehl|#B"
 
 #: ../src/frontends/xforms/forms/form_spellchecker.fd:44
 msgid "Word count"
-msgstr ""
+msgstr "Wortanzahl"
 
 #: ../src/frontends/xforms/forms/form_spellchecker.fd:62
 #: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:221
@@ -1763,23 +1741,20 @@ msgstr "Vorschläge:|#V"
 
 #: ../src/frontends/xforms/forms/form_spellchecker.fd:134
 #: src/frontends/xforms/FormSpellchecker.C:140
-#, fuzzy
 msgid "Start|#S"
-msgstr "Sortieren"
+msgstr "Starten|#S"
 
 #: ../src/frontends/xforms/forms/form_spellchecker.fd:152
-#, fuzzy
 msgid "Add|#d"
 msgstr "Hinzufügen|#H"
 
 #: ../src/frontends/xforms/forms/form_spellchecker.fd:170
-#, fuzzy
 msgid "Ignore|#I"
-msgstr "Ignorieren"
+msgstr "Ignorieren|#I"
 
 #: ../src/frontends/xforms/forms/form_spellchecker.fd:188
 msgid "Accept|#A"
-msgstr "Übernehmen|#b"
+msgstr "Akzeptieren|#A"
 
 #: ../src/frontends/xforms/forms/form_spellchecker.fd:206
 #: ../src/frontends/xforms/forms/form_thesaurus.fd:62
@@ -1815,9 +1790,8 @@ msgid "Unset Borders|#U"
 msgstr "Rahmen aus|#a"
 
 #: ../src/frontends/xforms/forms/form_tabular.fd:266
-#, fuzzy
 msgid "Longtable|#L"
-msgstr "Lange Tabelle"
+msgstr "Lange Tabelle|#L"
 
 #: ../src/frontends/xforms/forms/form_tabular.fd:284
 #: ../src/frontends/xforms/forms/form_tabular.fd:1200
@@ -2015,23 +1989,20 @@ msgid "Contents"
 msgstr "Inhalt"
 
 #: ../src/frontends/xforms/forms/form_texinfo.fd:80
-#, fuzzy
 msgid "Show Path|#P"
-msgstr "Pfad anzeigen"
+msgstr "Pfad zeigen|#P"
 
 #: ../src/frontends/xforms/forms/form_texinfo.fd:134
 msgid "Run TeXhash|#T"
 msgstr ""
 
 #: ../src/frontends/xforms/forms/form_thesaurus.fd:44
-#, fuzzy
 msgid "Replace|^R"
-msgstr "Ersetzen"
+msgstr "Ersetzen|#E"
 
 #: ../src/frontends/xforms/forms/form_thesaurus.fd:80
-#, fuzzy
 msgid "Entry : "
-msgstr "Eintrag:"
+msgstr "Eintrag : "
 
 #: ../src/frontends/xforms/forms/form_thesaurus.fd:98
 msgid "Selection :"
@@ -2424,7 +2395,7 @@ msgstr "Ausgewähles Zitat einfügen"
 
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:289
 msgid "Remove the selected citation"
-msgstr "Ausgewähltes Zitat löschen"
+msgstr "Ausgewähltes Zitat entfernen"
 
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:315
 msgid "Move the selected citation up"
@@ -2564,9 +2535,8 @@ msgid "Use LaTeX default settings"
 msgstr "LaTeX-Standardeinstellungen verwenden"
 
 #: ../src/frontends/qt2/ui/QFloatDialogBase.ui:60
-#, fuzzy
 msgid "Advanced placement options"
-msgstr "Weitergehende Optionen"
+msgstr "Erweiterte Platzierungsoptionen"
 
 #: ../src/frontends/qt2/ui/QFloatDialogBase.ui:94
 #, fuzzy
@@ -2832,9 +2802,8 @@ msgid "Preferences"
 msgstr "Einstellungen"
 
 #: ../src/frontends/qt2/ui/QPrefsDialogBase.ui:103
-#, fuzzy
 msgid "&Save"
-msgstr "Speichern"
+msgstr "&Speichern"
 
 #: ../src/frontends/qt2/ui/QPrefAsciiModule.ui:22
 msgid "ASCII settings"
@@ -2863,9 +2832,8 @@ msgid "Colors"
 msgstr "Farben"
 
 #: ../src/frontends/qt2/ui/QPrefColorsModule.ui:56
-#, fuzzy
 msgid "&Colors"
-msgstr "Farben"
+msgstr "&Farben"
 
 #: ../src/frontends/qt2/ui/QPrefColorsModule.ui:93
 #, fuzzy
@@ -2884,15 +2852,13 @@ msgstr "Formatkonvertierung"
 
 #: ../src/frontends/qt2/ui/QPrefConvertersModule.ui:106
 #: ../src/frontends/qt2/ui/QPrefFileformatsModule.ui:86
-#, fuzzy
 msgid "&New"
-msgstr "&Nächster"
+msgstr "&Neu"
 
 #: ../src/frontends/qt2/ui/QPrefConvertersModule.ui:117
 #: ../src/frontends/qt2/ui/QPrefFileformatsModule.ui:110
-#, fuzzy
 msgid "&Remove"
-msgstr "&Wiederherstellen"
+msgstr "&Entfernen"
 
 #: ../src/frontends/qt2/ui/QPrefConvertersModule.ui:176
 #, fuzzy
@@ -2915,19 +2881,16 @@ msgstr "&Zusatz-Flag:"
 
 #: ../src/frontends/qt2/ui/QPrefConvertersModule.ui:281
 #: ../src/frontends/qt2/ui/QPrefFileformatsModule.ui:282
-#, fuzzy
 msgid "&Modify"
-msgstr "Ändern|#d"
+msgstr "&Ändern"
 
 #: ../src/frontends/qt2/ui/QPrefDateModule.ui:22
-#, fuzzy
 msgid "Date Format"
-msgstr "Datumsformat|#D"
+msgstr "Datumsformat"
 
 #: ../src/frontends/qt2/ui/QPrefDateModule.ui:56
-#, fuzzy
 msgid "&Date format:"
-msgstr "Datumsformat|#D"
+msgstr "&Datumsformat:"
 
 #: ../src/frontends/qt2/ui/QPrefDateModule.ui:71
 msgid "Date format for strftime output"
@@ -2969,14 +2932,12 @@ msgid "File Formats"
 msgstr "Dateiformate"
 
 #: ../src/frontends/qt2/ui/QPrefFileformatsModule.ui:56
-#, fuzzy
 msgid "&File formats"
-msgstr "Formate"
+msgstr "Datei&formate"
 
 #: ../src/frontends/qt2/ui/QPrefFileformatsModule.ui:169
-#, fuzzy
 msgid "&GUI name:"
-msgstr "Name im GUI|#G"
+msgstr "Name im &GUI:"
 
 #: ../src/frontends/qt2/ui/QPrefFileformatsModule.ui:184
 #, fuzzy
@@ -2989,14 +2950,12 @@ msgid "&Viewer:"
 msgstr "Anzeigen"
 
 #: ../src/frontends/qt2/ui/QPrefFileformatsModule.ui:228
-#, fuzzy
 msgid "S&hortcut:"
-msgstr "Kürzel|#K"
+msgstr "&Kürzel:"
 
 #: ../src/frontends/qt2/ui/QPrefFileformatsModule.ui:243
-#, fuzzy
 msgid "E&xtension:"
-msgstr "Datei Endung|#E"
+msgstr "Datei&endung:"
 
 #: ../src/frontends/qt2/ui/QPrefKeyboardModule.ui:22
 #: src/frontends/qt2/QPrefsDialog.C:137
@@ -3282,9 +3241,8 @@ msgid "&Even pages:"
 msgstr "gerade Seiten"
 
 #: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:434
-#, fuzzy
 msgid "File ex&tension:"
-msgstr "Dateiendung"
+msgstr "Datei&endung:"
 
 #: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:456
 #, fuzzy
@@ -3421,9 +3379,8 @@ msgid "aspell"
 msgstr ""
 
 #: ../src/frontends/qt2/ui/QPrefSpellcheckerModule.ui:232
-#, fuzzy
 msgid "Accept compound &words"
-msgstr "Zusammengeschriebene Worte erlauben|#Z"
+msgstr "&Zusammengesetzte Wörter erlauben"
 
 #: ../src/frontends/qt2/ui/QPrefSpellcheckerModule.ui:243
 #, fuzzy
@@ -3435,9 +3392,8 @@ msgid "UI"
 msgstr ""
 
 #: ../src/frontends/qt2/ui/QPrefUIModule.ui:56
-#, fuzzy
 msgid "B&rowse..."
-msgstr "Durchsuchen..."
+msgstr "&Durchsuchen..."
 
 #: ../src/frontends/qt2/ui/QPrefUIModule.ui:67
 msgid "&User interface file:"
@@ -3458,14 +3414,12 @@ msgid "W&heel mouse scroll :"
 msgstr "Wheel Maus Vorschub"
 
 #: ../src/frontends/qt2/ui/QPrefUIModule.ui:201
-#, fuzzy
 msgid "Cursor follo&ws scrollbar"
-msgstr "Cursor folgt Rollbalken|#C"
+msgstr "Cursor folgt &Rollbalken"
 
 #: ../src/frontends/qt2/ui/QPrefUIModule.ui:214
-#, fuzzy
 msgid "Documents"
-msgstr "Dokument"
+msgstr "Dokumente"
 
 #: ../src/frontends/qt2/ui/QPrefUIModule.ui:233
 #, fuzzy
@@ -3571,7 +3525,7 @@ msgstr "Thesaurus"
 
 #: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:79
 msgid "Entry"
-msgstr "Eintrag:"
+msgstr "Eintrag"
 
 #: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:110
 msgid "Thesaurus entries"
@@ -3673,7 +3627,7 @@ msgstr "&Marke"
 #: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:122
 #: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:140
 msgid "The label as it appears in the document"
-msgstr "Name der Marke, wie er im Dokument erscheint."
+msgstr "Die Marke, wie sie im Dokument erscheint"
 
 #: ../src/frontends/qt2/ui/QAboutDialogBase.ui:22
 #: src/frontends/qt2/QAbout.C:39 src/frontends/xforms/FormAboutlyx.C:33
@@ -4366,19 +4320,16 @@ msgid "Below paragraph"
 msgstr "Unter dem Absatz"
 
 #: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:498
-#, fuzzy
 msgid "&Lines && Pagebreaks"
-msgstr "Linien und Seitenumbruch"
+msgstr "&Linien && Seitenumbrüche"
 
 #: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:521
-#, fuzzy
 msgid "Label width"
-msgstr "Markenbreite:"
+msgstr "Markenbreite"
 
 #: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:540
-#, fuzzy
 msgid "Lon&gest label"
-msgstr "Längste Marke:|#g"
+msgstr "Län&gste Marke"
 
 #: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:564
 #, fuzzy
@@ -8383,12 +8334,10 @@ msgid "No Documents Open!"
 msgstr "Keine Dokumente geöffnet!"
 
 #: src/MenuBackend.C:378
-#, fuzzy
 msgid "ASCII text as lines"
 msgstr "ASCII-Text als Zeilen"
 
 #: src/MenuBackend.C:380
-#, fuzzy
 msgid "ASCII text as paragraphs"
 msgstr "ASCII-Text als Absätze"
 
@@ -9830,7 +9779,7 @@ msgstr "Bildschirmschriften"
 #. output
 #: src/frontends/qt2/QPrefsDialog.C:142
 msgid "ASCII"
-msgstr ""
+msgstr "ASCII"
 
 #: src/frontends/qt2/QPrefsDialog.C:144
 #, fuzzy
@@ -12831,19 +12780,16 @@ msgid "Sorry, has to exit :-("
 msgstr "\"textclass.lst\". LyX muß leider beendet werden!"
 
 #: src/lyxvc.C:82
-#, fuzzy
 msgid "File not saved"
-msgstr "Dateiname"
+msgstr "Datei nicht gespeichert"
 
 #: src/lyxvc.C:83
-#, fuzzy
 msgid "You must save the file"
-msgstr "Lade die  Datei"
+msgstr "Sie müssen die Datei speichern"
 
 #: src/lyxvc.C:84
-#, fuzzy
 msgid "before it can be registered."
-msgstr "Dieses Dokument wurde NICHT registriert."
+msgstr "bevor sie registriert werden kann."
 
 #: src/lyxvc.C:114 src/lyxvc.C:146
 msgid "Save document and proceed?"
@@ -12911,7 +12857,7 @@ msgstr "Fehler! Verzeichnis kann nicht gelesen werden:"
 
 #: src/support/filetools.C:468
 msgid "Error! Could not remove file:"
-msgstr "Fehler! Datei konnte nicht gelöscht werden:"
+msgstr "Fehler! Datei konnte nicht entfernt werden:"
 
 #: src/support/filetools.C:492 src/support/filetools.C:528
 msgid "Error! Couldn't create temporary directory:"
@@ -13029,7 +12975,7 @@ msgstr "Marke ein"
 
 #: src/text3.C:962
 msgid "Mark removed"
-msgstr "Marke gelöscht"
+msgstr "Marke entfernt"
 
 #: src/text3.C:966
 msgid "Mark set"
@@ -13038,21 +12984,3 @@ msgstr "Marke gesetzt"
 #: src/text3.C:1086
 msgid "LyX function 'layout' needs an argument."
 msgstr "Die LyX-Funktion 'layout' benötigt ein Argument."
-
-#~ msgid "Replacement:|#R"
-#~ msgstr "Ersetzung:|#E"
-
-#~ msgid "Enter editor program"
-#~ msgstr "Verwendeter Editor"
-
-#~ msgid "OK  "
-#~ msgstr "OK  "
-
-#~ msgid "Ascii"
-#~ msgstr "ASCII"
-
-#~ msgid "latex text"
-#~ msgstr "LaTeX Text"
-
-#~ msgid "Canceled"
-#~ msgstr "Abgebrochen."
