@@ -176,8 +176,6 @@ public:
 	/// remove this as soon as LyXFunc::getStatus is "localized"
 	string getLastCode() const { return "mathnormal"; }
 	///
-	void pullArg(bool goright);
-	///
 	bool isInside(MathInset const *) const;
 	///
 	char valign() const;
@@ -266,6 +264,8 @@ public:
 
 
 private:
+	/// injects content of a cell into parent
+	void pullArg();
 	/// moves cursor index one cell to the left
 	bool idxLeft();
 	/// moves cursor index one cell to the right

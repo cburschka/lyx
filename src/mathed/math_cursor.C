@@ -52,7 +52,7 @@
 #include <algorithm>
 #include <cctype>
 
-#define FILEDEBUG 0
+//#define FILEDEBUG 1
 
 using std::endl;
 using std::min;
@@ -173,7 +173,7 @@ bool MathCursor::openable(MathAtom const & t, bool sel) const
 	if (t->asScriptInset())
 		return false;
 
-	if (sel) {
+	if (!sel) {
 		// we can't move into anything new during selection
 		if (depth() == Anchor_.size())
 			return false;
@@ -339,6 +339,7 @@ void MathCursor::markErase()
 
 void MathCursor::plainInsert(MathAtom const & t)
 {
+	dump("plainInsert");
 	array().insert(pos(), t);
 	++pos();
 }
@@ -436,7 +437,7 @@ void MathCursor::backspace()
 {
 	autocorrect_ = false;
 	if (pos() == 0) {
-		pullArg(false);
+		pullArg();
 		return;
 	}
 
@@ -814,7 +815,7 @@ void MathCursor::popToEnclosingHull()
 }
 
 
-void MathCursor::pullArg(bool goright)
+void MathCursor::pullArg()
 {
 	dump("pullarg");
 	MathArray a = array();
@@ -835,8 +836,7 @@ void MathCursor::pullArg(bool goright)
 	if (popLeft()) {
 		plainErase();
 		array().insert(pos(), a);
-		if (goright)
-			pos() += a.size();
+		Anchor_ = Cursor_;
 	} else {
 		formula()->mutateToText();
 	}
