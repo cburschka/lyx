@@ -1,3 +1,7 @@
+2003-06-06  José Matos  <jamatos@fep.up.pt>
+
+	* buffer.C (makeDocBookFile): fix bug #821
+
 2003-06-06  Alfredo Braunstein  <abraunst@libero.it>
 
 	* BufferView_pimpl.C (dispatch): use Dialogs::visible

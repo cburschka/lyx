@@ -1644,7 +1644,7 @@ void Buffer::makeDocBookFile(string const & fname, bool nice, bool only_body)
 
 		// environment tag closing
 		for (; depth > par->params().depth(); --depth) {
-			if (environment_inner[depth] != "!-- --") {
+			if (environment_inner[depth] != "!-- --" && !environment_inner[depth].empty()) {
 				item_name = "listitem";
 				sgml::closeTag(ofs, command_depth + depth, false, item_name);
 				if (environment_inner[depth] == "varlistentry")
