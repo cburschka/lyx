@@ -51,17 +51,22 @@ string const getNatbibLabel(Buffer const * buffer,
 			    string const & before, string const & after,
 			    bool numerical)
 {
-	// Only reload the bibkeys if we have to...
-	map<Buffer const *, bool>::iterator lit = loading_buffer.find(buffer);
-	if (lit != loading_buffer.end())
-		loading_buffer[buffer] = true;
-
 	typedef std::map<Buffer const *, biblio::InfoMap> CachedMap;
 	static CachedMap cached_keys;
 
-	CachedMap::iterator kit = cached_keys.find(buffer);
+	// Only load the bibkeys once if we're loading up the buffer,
+	// else load them afresh each time.
+	map<Buffer const *, bool>::iterator lit = loading_buffer.find(buffer);
+	if (lit == loading_buffer.end())
+		loading_buffer[buffer] = true;
 
-	if (!loading_buffer[buffer] || kit == cached_keys.end()) {
+	bool loadkeys = !loading_buffer[buffer];
+	if (!loadkeys) {
+		CachedMap::iterator kit = cached_keys.find(buffer);
+		loadkeys = kit == cached_keys.end();
+	}
+
+	if (loadkeys) {
 		// build the keylist
 		typedef vector<std::pair<string, string> > InfoType;
 		InfoType bibkeys = buffer->getBibkeyList();
@@ -74,7 +79,7 @@ string const getNatbibLabel(Buffer const * buffer,
 			infomap[bit->first] = bit->second;
 		}
 		if (infomap.empty())
-		return string();
+			return string();
 
 		cached_keys[buffer] = infomap;
 	}
@@ -310,12 +315,18 @@ string const InsetCitation::getScreenLabel(Buffer const * buffer) const
 }
 
 
+void InsetCitation::setLoadingBuffer(Buffer const * buffer, bool state) const
+{
+	// Doesn't matter if there is no bv->buffer() entry in the map.
+	loading_buffer[buffer] = state;
+}
+
+
 void InsetCitation::edit(BufferView * bv, int, int, mouse_button::state)
 {
 	// A call to edit() indicates that we're no longer loading the
 	// buffer but doing some real work.
-	// Doesn't matter if there is no bv->buffer() entry in the map.
-	loading_buffer[bv->buffer()] = false;
+	setLoadingBuffer(bv->buffer(), false);
 
 	bv->owner()->getDialogs().showCitation(this);
 }

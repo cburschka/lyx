@@ -1119,8 +1119,11 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev)
 		InsetCitation * inset = new InsetCitation(p);
 		if (!insertInset(inset))
 			delete inset;
-		else
+		else {
+			inset->setLoadingBuffer(bv_->buffer(), false);
 			updateInset(inset, true);
+		}
+		
 	}
 	break;
 

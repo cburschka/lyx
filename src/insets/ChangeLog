@@ -1,3 +1,11 @@
+2002-10-09  Angus Leeming  <leeming@lyx.org>
+
+	* insetcite.[Ch] (setLoadingBuffer): new method, invoked by
+	BufferView::dispatch that turns off this optimisation when a new inset
+	is inserted.
+
+	* insetcite.C (getNatbibLabel): correct logic of when and when not to
+	reload the BibTeX keys.
 
 2002-10-11 André Pönitz <poenitz@gmx.net>
 
