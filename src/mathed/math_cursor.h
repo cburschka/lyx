@@ -160,8 +160,8 @@ public:
 	void breakLine();
 	/// read contents of line into an array
 	void readLine(MathArray & ar) const;
-	///
-	MathTextCodes getLastCode() const;
+	/// remove this as soon as LyXFunc::getStatus is "localized"
+	MathTextCodes getLastCode() const { return lastcode_; }
 	///
 	void pullArg(bool goright);
 	///
