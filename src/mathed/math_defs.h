@@ -31,6 +31,8 @@
 
 #include "array.h"
 
+class Painter;
+
 
 ///
 enum math_align {
@@ -224,9 +226,14 @@ class MathedInset  {
     MathedInset(MathedInset *);
     ///
     virtual ~MathedInset() {}
-    
+
+#ifdef USE_PAINTER
+	/// Draw the object
+	virtual void draw(Painter &, int x, int baseline) = 0;	
+#else
     /// Draw the object 
     virtual void Draw(int x, int baseline) = 0;
+#endif
 
     /// Write LaTeX and Lyx code
     virtual void Write(ostream &) = 0;
@@ -267,8 +274,10 @@ class MathedInset  {
     virtual void  SetStyle(short st) { size = st; } // Metrics();
     ///
     virtual void  SetName(char const * n) { name = n; }
+#ifndef USE_PAINTER
     /// 
     void setDrawable(long unsigned int d) { pm = d; }
+#endif
  
  protected:
     ///
@@ -283,14 +292,20 @@ class MathedInset  {
     int descent;
     ///
     short size;
+#ifndef USE_PAINTER
     /// This works while only one process can draw unless
     /// the process have their own data
-    static long unsigned int pm;
+    static unsigned long pm;
+#endif
     /// Default metrics
     static int df_asc, df_des, df_width;
 
     /// In a near future maybe we use a better fonts renderer than X
+#ifdef USE_PAINTER
+    void drawStr(Painter &, short, int, int, int, byte *, int);
+#else
     void drawStr(short, int, int, int, byte *, int);
+#endif
 	///
     friend class MathedCursor;
 	///
@@ -332,7 +347,11 @@ class MathParInset: public MathedInset  {
     virtual MathedInset * Clone();
 
     /// Draw the object on a drawable
+#ifdef USE_PAINTER
+    virtual void draw(Painter &, int x, int baseline);
+#else
     virtual void Draw(int x, int baseline);
+#endif
 
     /// Write LaTeX code
     virtual void Write(ostream &);
@@ -490,8 +509,13 @@ class MathMatrixInset: public MathParInset {
     MathedInset * Clone();
     ///
     virtual ~MathMatrixInset();
+#ifdef USE_PAINTER
+	///
+	void draw(Painter &, int, int);
+#else
     ///
     void Draw(int, int);
+#endif
     ///
     void Write(ostream &);
     ///

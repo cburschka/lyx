@@ -36,8 +36,13 @@ class MathRootInset: public MathSqrtInset {
     ~MathRootInset();
     ///
     MathedInset * Clone();
+#ifdef USE_PAINTER
+	///
+	void draw(Painter &, int x, int baseline);
+#else
     ///
     void Draw(int x, int baseline);
+#endif
     ///
     void Write(ostream &);
     ///

@@ -24,6 +24,17 @@ public:
 	InsetFig(int tmpx, int tmpy, Buffer *);
 	///
 	~InsetFig();
+#ifdef USE_PAINTER
+	///
+	int ascent(Painter &, LyXFont const & font) const;
+	///
+	int descent(Painter &, LyXFont const & font) const;
+	///
+	int width(Painter &, LyXFont const & font) const;
+	///
+	void draw(Painter &, LyXFont const & font,
+		  int baseline, float & x) const;
+#else
 	///
 	int Ascent(LyXFont const & font) const;
 	///
@@ -32,6 +43,7 @@ public:
 	int Width(LyXFont const & font) const;
 	///
 	void Draw(LyXFont font, LyXScreen & scr, int baseline, float & x);
+#endif
 	///
 	void Write(ostream &);
 	///

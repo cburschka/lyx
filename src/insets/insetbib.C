@@ -472,6 +472,23 @@ void BibitemUpdate(Combox * combox)
 
 
 // ale070405 This function maybe shouldn't be here. We'll fix this at 0.13.
+#ifdef USE_PAINTER
+int bibitemMaxWidth(Painter & pain, LyXFont const & font)
+{
+	int w = 0;
+	// Does look like a hack? It is! (but will change at 0.13)
+	LyXParagraph * par = current_view->buffer()->paragraph;
+    
+	while (par) {
+		if (par->bibkey) {
+			int wx = par->bibkey->width(pain, font);
+			if (wx > w) w = wx;
+		}
+		par = par->next;
+	}
+	return w;
+}
+#else
 int bibitemMaxWidth(LyXFont const & font)
 {
 	int w = 0;
@@ -487,9 +504,36 @@ int bibitemMaxWidth(LyXFont const & font)
 	}
 	return w;
 }
+#endif
 
 
-// ale070405 
+// ale070405
+#ifdef USE_PAINTER
+string bibitemWidthest(Painter & pain)
+{
+	int w = 0;
+	// Does look like a hack? It is! (but will change at 0.13)
+	LyXParagraph * par = current_view->buffer()->paragraph;
+	InsetBibKey * bkey = 0;
+	LyXFont font;
+      
+	while (par) {
+		if (par->bibkey) {
+			int wx = par->bibkey->width(pain, font);
+			if (wx > w) {
+				w = wx;
+				bkey = par->bibkey;
+			}
+		}
+		par = par->next;
+	}
+    
+	if (bkey && !bkey->getScreenLabel().empty())
+		return bkey->getScreenLabel();
+    
+	return "99";
+}
+#else
 string bibitemWidthest()
 {
 	int w = 0;
@@ -514,3 +558,4 @@ string bibitemWidthest()
     
 	return "99";
 }
+#endif

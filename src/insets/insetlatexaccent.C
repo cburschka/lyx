@@ -19,6 +19,7 @@
 #include "lyxrc.h"
 #include "lyxdraw.h"
 #include "support/lstrings.h"
+#include "Painter.h"
 
 extern LyXRC * lyxrc;
 
@@ -252,6 +253,26 @@ void InsetLatexAccent::checkContents()
 }
 
 
+#ifdef USE_PAINTER
+int InsetLatexAccent::ascent(Painter &, LyXFont const & font) const
+{
+	// This function is a bit too simplistix and is just a
+	// "try to make a fit for all accents" approach, to
+	// make it better we need to know what kind of accent is
+	// used and add to max based on that.
+	int max;
+	if (candisp) {
+		if (ic == ' ')
+			max = font.ascent('a');
+		else
+			max = font.ascent(ic);
+		if (plusasc) 
+			max += (font.maxAscent() + 3) / 3;
+	} else
+		max = font.maxAscent() + 4;
+	return max;
+}
+#else
 int InsetLatexAccent::Ascent(LyXFont const & font) const
 {
 	// This function is a bit too simplistix and is just a
@@ -270,8 +291,25 @@ int InsetLatexAccent::Ascent(LyXFont const & font) const
 		max = font.maxAscent() + 4;
 	return max;
 }
+#endif
 
 
+#ifdef USE_PAINTER
+int InsetLatexAccent::descent(Painter &, LyXFont const & font) const
+{
+	int max;
+	if (candisp) {
+		if (ic == ' ') 
+			max = font.descent('a');
+                else
+                	max = font.descent(ic);
+                if (plusdesc)
+                	max += 3;
+	} else
+		max = font.maxDescent() + 4;
+	return max;
+}
+#else
 int InsetLatexAccent::Descent(LyXFont const & font) const
 {
 	int max;
@@ -286,8 +324,18 @@ int InsetLatexAccent::Descent(LyXFont const & font) const
 		max = font.maxDescent() + 4;
 	return max;
 }
+#endif
 
 
+#ifdef USE_PAINTER
+int InsetLatexAccent::width(Painter &, LyXFont const & font) const
+{
+	if (candisp)
+		return font.textWidth(&ic, 1);
+        else
+                return font.stringWidth(contents) + 4;
+}
+#else
 int InsetLatexAccent::Width(LyXFont const & font) const
 {
 	if (candisp)
@@ -295,6 +343,7 @@ int InsetLatexAccent::Width(LyXFont const & font) const
         else
                 return font.stringWidth(contents) + 4;
 }
+#endif
 
 
 int InsetLatexAccent::Lbearing(LyXFont const & font) const
@@ -309,6 +358,49 @@ int InsetLatexAccent::Rbearing(LyXFont const & font) const
 }
 
 
+#ifdef USE_PAINTER
+bool InsetLatexAccent::DisplayISO8859_9(Painter & pain, LyXFont const & font,
+					int baseline, 
+					float & x) const
+{
+	unsigned char tmpic = ic;
+	
+	switch (modtype) {
+	case CEDILLA:
+	{
+		if (ic == 'c') tmpic = 0xe7;
+		if (ic == 'C') tmpic = 0xc7;
+		if (ic == 's') tmpic = 0xfe;
+		if (ic == 'S') tmpic = 0xde;
+		break;
+	}
+	case BREVE:
+	{	if (ic == 'g') tmpic = 0xf0;
+	if (ic == 'G') tmpic = 0xd0;
+	break;
+	}
+	case UMLAUT:
+	{
+		if (ic == 'o') tmpic = 0xf6;
+		if (ic == 'O') tmpic = 0xd6;
+		if (ic == 'u') tmpic = 0xfc;
+		if (ic == 'U') tmpic = 0xdc;
+		break;
+	}
+	case DOT: 	 if (ic == 'I') tmpic = 0xdd; break;
+	case DOT_LESS_I: tmpic = 0xfd; break;
+	default:	 return false;
+	}
+	if (tmpic != ic) {
+		char ch = char(tmpic);
+		pain.text(x, baseline, ch, font);
+		x += width(pain, font);
+		return true;
+	}
+	else
+		return false;
+}
+#else
 bool InsetLatexAccent::DisplayISO8859_9(LyXFont font,
 					LyXScreen & scr,
 					int baseline, 
@@ -351,8 +443,314 @@ bool InsetLatexAccent::DisplayISO8859_9(LyXFont font,
 	else
 		return false;
 }
+#endif
 
 
+#ifdef USE_PAINTER
+void InsetLatexAccent::draw(Painter & pain, LyXFont const & font,
+			    int baseline, float & x) const
+{
+	if (lyxrc->font_norm == "iso8859-9")
+		if (DisplayISO8859_9(pain, font, baseline, x))	
+			return;
+	
+	/* draw it! */ 
+	// All the manually drawn accents in this function could use an
+	// overhaul. Different ways of drawing (what metrics to use)
+	// should also be considered.
+	
+	if (candisp) {
+		int asc = ascent(pain, font);
+		int desc = descent(pain, font);
+		int wid = width(pain, font);
+		float x2 = x + (Rbearing(font) - Lbearing(font)) / 2.0;
+		float hg;
+		int y;
+		if (plusasc) {
+			// mark at the top
+			hg = font.maxDescent();
+			y = baseline - asc;
+
+			if (font.shape() == LyXFont::ITALIC_SHAPE)
+				x2 += (4.0 * hg) / 5.0; // italic
+		} else {
+			// at the bottom
+			hg = desc;
+			y = baseline;
+		}
+
+		float hg35 = float(hg * 3.0) / 5.0;
+
+		// display with proper accent mark
+		// first the letter
+		pain.text(int(x), baseline, ic, font);
+
+#if 0
+		GC pgc = GetAccentGC(font, int((hg + 3.0) / 5.0));
+#endif
+
+		if (remdot) {
+			int tmpvar = baseline - font.ascent('i');
+			float tmpx = 0;
+			if (font.shape() == LyXFont::ITALIC_SHAPE)
+				tmpx += (8.0 * hg) / 10.0; // italic
+			lyxerr[Debug::KEY] << "Removing dot." << endl;
+			// remove the dot first
+			pain.fillRectangle(int(x + tmpx), tmpvar, wid,
+					   font.ascent('i') -
+					   font.ascent('x') - 1,
+					   LColor::background);
+			// the five lines below is a simple hack to
+			// make the display of accent 'i' and 'j'
+			// better. It makes the accent be written
+			// closer to the top of the dot-less 'i' or 'j'.
+			char tmpic = ic; // store the ic when we
+			ic = 'x';        // calculates the ascent of
+			asc = ascent(pain, font); // the dot-less version (here: 'x')
+			ic = tmpic;      // set the orig ic back
+			y = baseline - asc; // update to new y coord.
+		}
+		// now the rest - draw within (x, y, x+wid, y+hg)
+		switch (modtype) {
+		case ACUTE:     // acute
+ 		{
+			pain.line(int(x2), int(y + hg),
+				  int(x2 + hg35), y + hg35);
+			break;
+		}
+		case GRAVE:     // grave
+		{
+			pain.line(int(x2), int(y + hg),
+				  int(x2 - hg35), y + hg35);
+			break;
+		}
+		case MACRON:     // macron
+		{
+			pain.line(int(x2 - wid * 0.4),
+				  int(y + hg),
+				  int(x2 + wid * 0.4),
+				  int(y + hg));
+			break;
+		}
+		case TILDE:     // tilde
+		{
+			if (hg35 > 2.0) hg35 -= 1.0;
+			x2 += (hg35 / 2.0);
+			int xp[4], yp[4];
+			
+			xp[0] = int(x2 - 2.0 * hg35);
+			yp[0] = int(y + hg);
+			
+			xp[1] = int(x2 - hg35);
+			yp[1] = int(y + hg35);
+			
+			xp[2] = int(x2);
+			yp[2] = int(y + hg);
+			
+			xp[3] = int(x2 + hg35);
+			yp[3] = int(y + hg35);
+			
+			pain.lines(xp, yp, 4);
+			break;
+		}
+		case UNDERBAR:     // underbar
+		{
+			pain.line(int(x2 - wid * 0.4),
+				  y + hg / 2.0,
+				  int(x2 + wid * 0.4),
+				  y + hg / 2.0);
+			break;
+		}
+		case CEDILLA:     // cedilla
+		{
+			int xp[4], yp[4];
+			
+			xp[0] = int(x2);
+			yp[0] = y;
+			
+			xp[1] = int(x2);
+			yp[1] = y + int(hg / 3.0);
+			
+			xp[2] = int(x2 + (hg / 3.0));
+			yp[2] = y + int(hg / 2.0);
+			
+			xp[3] = int(x2 - (hg / 4.0));
+			yp[3] = y + int(hg);
+
+			pain.lines(xp, yp, 4);
+			break;
+		}
+		case UNDERDOT:     // underdot
+		{
+			pain.arc(int(x2), y + hg35,
+				     3, 3, 0, 360 * 64);
+			break;
+		}
+
+		case DOT:    // dot
+		{
+			pain.arc(int(x2), y + hg * 0.5,
+				     (hg + 3.0)/5.0,
+				     (hg + 3.0)/5.0,
+				     0, 360 * 64);
+			break;
+		}
+
+		case CIRCLE:     // circle
+		{
+			pain.arc(int(x2 - (hg / 2.0)),
+				 y + (hg / 2.0), hg, hg , 0,
+				 360 * 64);
+			break;
+		}
+		case TIE:     // tie
+		{
+			pain.arc(int(x2 + hg35), y + hg / 2.0,
+				 2 * hg, hg, 0, 360 * 32);
+			break;
+		}
+		case BREVE:     // breve
+		{
+			pain.arc(int(x2 - (hg / 2.0)), y,
+				 hg, hg, 0, -360*32);
+			break;
+		}
+		case CARON:    // caron
+		{
+			int xp[3], yp[3];
+			
+			xp[0] = int(x2 - hg35); yp[0] = int(y + hg35);
+			xp[1] = int(x2);        yp[1] = int(y + hg);
+			xp[2] = int(x2 + hg35); yp[2] = int(y + hg35);
+			pain.lines(xp, yp, 3);
+			break;
+		}
+		case SPECIAL_CARON:    // special caron
+		{
+			switch (ic) {
+			case 'L': wid = int(4.0 * wid / 5.0); break;
+			case 't': y -= int(hg35 / 2.0); break;
+			}
+			int xp[3], yp[3];
+			xp[0] = int(x + wid);
+			yp[0] = int(y + hg35 + hg);
+			
+			xp[1] = int(x + wid + (hg35 / 2.0));
+			yp[1] = int(y + hg + (hg35 / 2.0));
+			
+			xp[2] = int(x + wid + (hg35 / 2.0));
+			yp[2] = y + int(hg);
+
+			pain.lines(xp, yp, 3);
+			break;
+		}
+		case HUNGARIAN_UMLAUT:    // hung. umlaut
+		{
+			int xs1[2], xs2[2], ys1[2], ys2[2];
+			
+			xs1[0] = int(x2 - (hg / 2.0));
+			ys1[0] = int(y + hg);
+			
+			xs2[0] = int(x2 + hg35 - (hg / 2.0));
+			ys2[0] = int(y + hg35);
+			
+			xs1[1] = int(x2 + (hg / 2.0));
+			ys1[1] = int(y + hg);
+			
+			xs2[1] = int(x2 + hg35 + (hg / 2.0));
+			ys2[1] = int(y + hg35);
+
+			pain.segments(xs1, ys1, xs2, ys2, 2);
+			break;
+		}
+		case UMLAUT:    // umlaut
+		{
+			float rad = hg / 2.0;
+			if (rad <= 1.0) {
+				pain.point(int(x2 - 4.0 * hg / 7.0),
+					   y + hg35);
+				pain.point(int(x2 + 4.0 * hg / 7.0),
+					   y + hg35);
+			} else {
+				rad += .5; // this ensures that f.ex. 1.5 will
+				// not be rounded down to .5 and then
+				// converted to int = 0
+				pain.arc(int(x2 - 2.0 * hg / 4.0),
+					     y + hg35,
+					     rad, rad,
+					     0, 360 * 64);
+				pain.arc(int(x2 + 2.0 * hg / 4.0),
+					    y + hg35,
+					    rad, rad, 0, 360*64);
+			}
+			break;
+		}
+		case CIRCUMFLEX:    // circumflex
+		{
+			int xp[3], yp[3];
+			
+			xp[0] = int(x2 - hg35); yp[0] = y + int(hg);
+			xp[1] = int(x2);        yp[1] = int(y + hg35);
+			xp[2] = int(x2 + hg35); yp[2] = y + int(hg);
+			pain.lines(xp, yp, 3);
+			break;
+		}
+		case OGONEK:    // ogonek
+		{
+			// this does probably not look like an ogonek, so
+			// it should certainly be refined
+			int xp[4], yp[4];
+			
+			xp[0] = int(x2);
+			yp[0] = y;
+			
+			xp[1] = int(x2);
+			yp[1] = y + int(hg35);
+			
+			xp[2] = int(x2 - hg35);
+			yp[2] = y + int(hg / 2.0);
+			
+			xp[3] = int(x2 + hg / 4.0);
+			yp[3] = y + int(hg);
+
+			pain.lines(xp, yp, 4);
+			break;
+		}
+		case lSLASH:
+		case LSLASH:
+		{
+			int xp[2], yp[2];
+			
+ 			xp[0] = int(x);
+			yp[0] = y + int(3.0 * hg);
+			
+ 			xp[1] = int(x + float(wid) * 0.75);
+			yp[1] = y + int(hg);
+			
+ 			pain.lines(xp, yp, 2);
+ 			break;
+		}
+		case DOT_LESS_I: // dotless-i
+		case DOT_LESS_J: // dotless-j
+		{
+			// nothing to do for these
+			break;
+		}
+		}
+	} else {
+		pain.fillRectangle(int(x + 1),
+				   baseline - ascent(pain, font) + 1,
+				   width(pain, font) - 2,
+				   ascent(pain, font)
+				   + descent(pain, font) - 2);
+		pain.rectangle(int(x + 1), baseline - ascent(pain, font) + 1,
+			       width(pain, font) - 2,
+			       ascent(pain, font) + descent(pain, font) - 2);
+		pain.text(int(x + 2), baseline, contents, font);
+	}
+	x +=  width(pain, font);
+}
+#else
 void InsetLatexAccent::Draw(LyXFont font,
 			    LyXScreen & scr,
 			    int baseline, 
@@ -462,7 +860,6 @@ void InsetLatexAccent::Draw(LyXFont font,
 		}
 		case CEDILLA:     // cedilla
 		{
-#if 1
 			XPoint p[4];
 			p[0].x = int(x2);          p[0].y = y;
 			p[1].x = int(x2);          p[1].y = y + int(hg / 3.0);
@@ -470,44 +867,28 @@ void InsetLatexAccent::Draw(LyXFont font,
 			p[2].y = y + int(hg / 2.0);
 			p[3].x = int(x2 - (hg / 4.0)); p[3].y = y + int(hg);
 			scr.drawLines(pgc, p, 4);
-#endif
-			//scr.drawLine(pgc,
-			//	     x2, y,
-			//	     x2 - hg / 4.0, y + hg);
-			// and then we need a circle thingie.
-			// ...
 			break;
 		}
 		case UNDERDOT:     // underdot
 		{
-#if 1
 			scr.fillArc(pgc, int(x2), y + hg35,
 				    3, 3, 0, 360*64);
-#endif
-			//scr.drawText(font, "·", 1, y + 2 * hg, x2);
 			break;
 		}
 
 		case DOT:    // dot
 		{
-#if 1
 			scr.fillArc(pgc, int(x2), y + hg * 0.5,
 				    (hg + 3.0)/5.0,
 				    (hg + 3.0)/5.0, 0, 360*64);
-#endif
-			//scr.drawText(font, "·", 1, y + 2.0 * hg, x2);
 			break;
 		}
 
 		case CIRCLE:     // circle
 		{
-#if 1
 			scr.drawArc(pgc, int(x2 - (hg / 2.0)),
 				    y + (hg / 2.0), hg, hg, 0,
 				    360*64);
-#endif
-			//scr.drawText(font, "°", 1, y + 2.0 * hg, x2);
-			
 			break;
 		}
 		case TIE:     // tie
@@ -640,6 +1021,7 @@ void InsetLatexAccent::Draw(LyXFont font,
 	}
 	x +=  Width(font);
 }
+#endif
 
 
 void InsetLatexAccent::Write(ostream & os)

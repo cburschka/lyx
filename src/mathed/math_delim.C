@@ -21,6 +21,8 @@
 #include <cstdlib>
 #include "symbol_def.h"
 #include "math_inset.h"
+#include "LColor.h"
+#include "Painter.h"
 
 /* 
  * Internal struct of a drawing: code n x1 y1 ... xn yn, where code is:
@@ -296,7 +298,73 @@ static int search_deco(int code)
    if (!math_deco_table[i].code) i = -1;
    return i;
 }
-      
+
+
+#ifdef USE_PAINTER
+void mathed_draw_deco(Painter & pain, int x, int y, int w, int h, int code)
+{
+	Matriz mt, sqmt;
+	float xx, yy, x2, y2;
+	int i = 0;
+   
+	int j = search_deco(code);   
+	if (j < 0) return;
+   
+	int r = math_deco_table[j].angle;
+	float * d = math_deco_table[j].data;
+	
+	if (h > 70 && (math_deco_table[j].code == int('(') || math_deco_table[j].code == int(')')))
+		d = parenthHigh;
+	
+	mt.rota(r);
+	mt.escala(w, h);
+   
+	int n = (w < h) ? w: h;
+	sqmt.rota(r);
+	sqmt.escala(n, n);
+	if (r > 0 && r < 3) y += h;   
+	if (r >= 2) x += w;   
+	do {
+		code = int(d[i++]);
+		switch (code) {
+		case 0: break;
+		case 1: 
+		case 3:
+		{
+			xx = d[i++]; yy = d[i++];
+			x2 = d[i++]; y2 = d[i++];
+			if (code == 3) 
+				sqmt.transf(xx, yy, xx, yy);
+			else
+				mt.transf(xx, yy, xx, yy);
+			mt.transf(x2, y2, x2, y2);
+			pain.line(x + int(xx), y + int(yy),
+				  x + int(x2), y + int(y2),
+				  LColor::mathline);
+			break;
+		}	 
+		case 2: 
+		case 4:
+		{
+			int xp[32], yp[32];
+			n = int(d[i++]);
+			for (j = 0; j < n; ++j) {
+				xx = d[i++]; yy = d[i++];
+//	     lyxerr << " " << xx << " " << yy << " ";
+				if (code == 4) 
+					sqmt.transf(xx, yy, xx, yy);
+				else
+					mt.transf(xx, yy, xx, yy);
+				xp[j] = x + int(xx);
+				yp[j] = y + int(yy);
+				//  lyxerr << "P[" << j " " << xx << " " << yy << " " << x << " " << y << "]";
+			}
+			pain.lines(xp, yp, n, LColor::mathline);
+		}
+		}
+	} while (code);
+}
+#else
 void mathed_draw_deco(Window win, int x, int y, int w, int h, int code)
 {
    Matriz mt, sqmt;
@@ -361,7 +429,31 @@ void mathed_draw_deco(Window win, int x, int y, int w, int h, int code)
       }
    } while (code);
 }
+#endif
 
+
+#ifdef USE_PAINTER
+void
+MathDelimInset::draw(Painter & pain, int x, int y)
+{ 
+	xo = x;  yo = y; 
+	MathParInset::draw(pain, x + dw + 2, y - dh); 
+	
+	if (left == '.') {
+		pain.line(x + 4, yo - ascent,
+			  x + 4, yo + descent,
+			  LColor::mathcursor);
+	} else
+		mathed_draw_deco(pain, x, y - ascent, dw, Height(), left);
+	x += Width()-dw-2;
+	if (right == '.') {
+		pain.line(x + 4, yo - ascent,
+			  x + 4, yo + descent,
+			  LColor::mathcursor);
+	} else
+		mathed_draw_deco(pain, x, y-ascent, dw, Height(), right);
+}
+#else
 void
 MathDelimInset::Draw(int x, int y)
 { 
@@ -383,6 +475,8 @@ MathDelimInset::Draw(int x, int y)
    else
      mathed_draw_deco(pm, x, y-ascent, dw, Height(), right);
 }
+#endif
+
 
 void
 MathDelimInset::Metrics()
@@ -401,12 +495,21 @@ MathDelimInset::Metrics()
 }
 
 
+#ifdef USE_PAINTER
+void
+MathDecorationInset::draw(Painter & pain, int x, int y)
+{ 
+   MathParInset::draw(pain, x + (width - dw) / 2, y);
+   mathed_draw_deco(pain, x, y + dy, width, dh, deco);
+}
+#else
 void
 MathDecorationInset::Draw(int x, int y)
 { 
    MathParInset::Draw(x+(width-dw)/2, y);
    mathed_draw_deco(pm, x, y+dy, width, dh, deco);
 }
+#endif
 
 
 void
@@ -430,6 +533,22 @@ MathDecorationInset::Metrics()
    width = w;
 }
 
+
+#ifdef USE_PAINTER
+void
+MathAccentInset::draw(Painter & pain, int x, int y)
+{
+    int dw = width - 2;
+
+    if (inset) {
+	inset->draw(pain, x, y);
+    } else {
+	drawStr(pain, fn, size, x, y, &c, 1);
+    }
+    x += (code == LM_not) ? (width-dw) / 2 : 2;
+    mathed_draw_deco(pain, x, y - dy, dw, dh, code);
+}
+#else
 void
 MathAccentInset::Draw(int x, int y)
 {
@@ -453,6 +572,8 @@ MathAccentInset::Draw(int x, int y)
     x += (code == LM_not) ? (width-dw)/2: 2;
     mathed_draw_deco(pm, x, y-dy, dw, dh, code);
 }
+#endif
+
 
 void
 MathAccentInset::Metrics()
@@ -482,6 +603,16 @@ MathAccentInset::Metrics()
 }
 
 
+#ifdef USE_PAINTER
+void
+MathDotsInset::draw(Painter & pain, int x, int y)
+{
+   mathed_draw_deco(pain, x + 2, y - dh, width - 2, ascent, code);
+   if (code == LM_vdots || code == LM_ddots) ++x; 
+   if (code != LM_vdots) --y;
+   mathed_draw_deco(pain, x + 2, y - dh, width - 2, ascent, code);
+}
+#else
 void
 MathDotsInset::Draw(int x, int y)
 {
@@ -489,7 +620,9 @@ MathDotsInset::Draw(int x, int y)
    if (code == LM_vdots || code == LM_ddots) ++x; 
    if (code!= LM_vdots) --y;
    mathed_draw_deco(pm, x + 2, y - dh, width - 2, ascent, code);
-}     
+}
+#endif
+
 
 void
 MathDotsInset::Metrics()

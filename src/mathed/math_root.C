@@ -109,6 +109,17 @@ void MathRootInset::Metrics()
 }
 
 
+#ifdef USE_PAINTER
+void MathRootInset::draw(Painter & pain, int x, int y)
+{
+    int idxp = idx;
+
+    idx = 1;
+    uroot->draw(pain, x, y - dh);
+    MathSqrtInset::draw(pain, x + wroot, y);
+    idx = idxp;
+}
+#else
 void MathRootInset::Draw(int x, int y)
 {
     int idxp = idx;
@@ -119,6 +130,7 @@ void MathRootInset::Draw(int x, int y)
     XFlush(fl_display);
     idx = idxp;
 }
+#endif
 
 
 void MathRootInset::SetStyle(short st)

@@ -39,6 +39,7 @@
 #include "lyx_gui_misc.h"
 #include "support/LOstream.h"
 #include "LyXView.h"
+#include "Painter.h"
 
 extern void UpdateInset(BufferView *, Inset * inset, bool mark_dirty = true);
 
@@ -141,9 +142,14 @@ LyXFont WhichFont(short type, int size)
 	     lyxerr << "Mathed Error: wrong font size: " << size << endl;
 	break;
     }
-    
+
+#ifdef USE_PAINTER
     if (type != LM_TC_TEXTRM) 
-      f.setColor(LyXFont::MATH);
+      f.setColor(LColor::math);
+#else
+    if (type != LM_TC_TEXTRM)
+	    f.setColor(LyXFont::MATH);
+#endif    
     return f;
 }
 
@@ -183,7 +189,16 @@ void mathed_init_fonts() //removed 'static' because DEC cxx does not
     MathedInset::df_width = f.width('I');    
 }
 
-
+#ifdef USE_PAINTER
+LyXFont mathed_get_font(short type, int size)
+{
+	LyXFont f = WhichFont(type, size);
+	if (type == LM_TC_TEX) {
+		f.setLatex(LyXFont::ON);
+	}
+	return f;
+}
+#else
 void mathed_set_font(short type, int size)
 {
     if (!canvasGC) {
@@ -200,6 +215,7 @@ void mathed_set_font(short type, int size)
     } else
       mathGC = f.getGC();
 }
+#endif
 
 
 int mathed_string_width(short type, int size, byte const * s, int ls)
@@ -256,6 +272,23 @@ int mathed_char_height(short type, int size, byte c, int & asc, int & des)
 
 
 // In a near future maybe we use a better fonts renderer
+#ifdef USE_PAINTER
+void MathedInset::drawStr(Painter & pain, short type, int size,
+			  int x, int y, byte * s, int ls)
+{
+	string st;
+	if (MathIsBinary(type)) {
+		for (int i = 0; i < ls; ++i) {
+#warning What conversion should be done for s[i] here?
+			st += string(" ") + char(s[i]) + ' ';
+		}
+	} else {
+		st = string(reinterpret_cast<char*>(s), ls);
+	}
+	LyXFont mf = mathed_get_font(type, size);
+	pain.text(x, y, st, mf);
+}
+#else
 void MathedInset::drawStr(short type, int siz, int x, int y, byte * s, int ls)
 {
     mathed_set_font(type, siz);
@@ -275,6 +308,7 @@ void MathedInset::drawStr(short type, int siz, int x, int y, byte * s, int ls)
     XDrawString(fl_display, pm, gc, x, y, reinterpret_cast<char*>(s), ls);
     XFlush(fl_display);
 }
+#endif
 
 
 InsetFormula::InsetFormula(bool display)
@@ -395,26 +429,108 @@ void InsetFormula::Read(LyXLex & lex)
 }
 
 
+#ifdef USE_PAINTER
+int InsetFormula::ascent(Painter &, LyXFont const &) const
+{
+   return par->Ascent() + ((disp_flag) ? 8 : 1);
+}
+#else
 int InsetFormula::Ascent(LyXFont const &) const
 {
    return par->Ascent() + ((disp_flag) ? 8 : 1);
 }
+#endif
 
 
+#ifdef USE_PAINTER
+int InsetFormula::descent(Painter &, LyXFont const &) const
+{
+   return par->Descent() + ((disp_flag) ? 8 : 1);
+}
+#else
 int InsetFormula::Descent(LyXFont const &) const
 {
    return par->Descent() + ((disp_flag) ? 8 : 1);
 }
+#endif
 
 
+#ifdef USE_PAINTER
+int InsetFormula::width(Painter &, LyXFont const & f) const
+{
+    lfont_size = f.size();
+    par->Metrics();
+    return par->Width(); //+2;
+}
+#else
 int InsetFormula::Width(LyXFont const & f) const
 {
     lfont_size = f.size();
     par->Metrics();
     return par->Width(); //+2;
 }
+#endif
 
 
+#ifdef USE_PAINTER
+void InsetFormula::draw(Painter & pain, LyXFont const &,
+			int baseline, float & x) const
+{
+	LyXFont font = mathed_get_font(LM_TC_TEXTRM, LM_ST_TEXT);
+
+	lfont_size = font.size();
+	/// Let's try to wait a bit with this... (Lgb)
+	//UpdatableInset::draw(pain, font, baseline, x);
+	
+	// otherwise a segfault could occur
+	// in some XDrawRectangles (i.e. matrix) (Matthias)
+	if (mathcursor && mathcursor->GetPar() == par) { 
+		if (mathcursor->Selection()) {
+			int n;
+			int * xp = 0;
+			int * yp = 0;
+			mathcursor->SelGetArea(xp, yp, n);
+			pain.fillPolygon(xp, yp, n, LColor::selection);
+		}
+		mathcursor->draw(pain, int(x), baseline);
+	} else {
+		par->draw(pain, int(x), baseline);
+	}
+	x += float(width(pain, font));
+	
+	if (par->GetType() == LM_OT_PARN || par->GetType() == LM_OT_MPARN) {
+		LyXFont font = WhichFont(LM_TC_BF, par->size);
+		font.setLatex(LyXFont::OFF);
+		
+		if (par->GetType() == LM_OT_PARN) {
+			string str;
+			if (!label.empty())
+				str = string("(") + label + ")";
+			else
+				str = string("(#)");
+			pain.text(int(x + 20), baseline, str, font);
+		} else if (par->GetType() == LM_OT_MPARN) {
+			MathMatrixInset * mt =
+				static_cast<MathMatrixInset*>(par);
+			int y;
+			MathedRowSt const * crow = mt->getRowSt();
+			while (crow) {
+				y = baseline + crow->getBaseline();
+				if (crow->isNumbered()) {
+					string str;
+					if (crow->getLabel())
+						str = string("(") + crow->getLabel() + ")";
+					else
+						str = "(#)";
+					pain.text(int(x + 20), y, str, font);
+				}
+				crow = crow->getNext();
+			}
+		}
+	}
+	cursor_visible = false;
+}
+#else
 void InsetFormula::Draw(LyXFont f, LyXScreen & scr, int baseline, float & x)
 {
 	// This is Alejandros domain so I'll use this
@@ -469,6 +585,7 @@ void InsetFormula::Draw(LyXFont f, LyXScreen & scr, int baseline, float & x)
    }
    cursor_visible = false;
 }
+#endif
 
 
 void InsetFormula::Edit(int x, int y)
@@ -1211,6 +1328,23 @@ bool InsetFormula::LocalDispatch(int action, char const * arg)
 }
 
 
+#ifdef USE_PAINTER
+void
+MathFuncInset::draw(Painter & pain, int x, int y)
+{ 
+	if (name && name[0] > ' ') {
+		LyXFont font = WhichFont(LM_TC_TEXTRM, size);
+		font.setLatex(LyXFont::ON);
+	        x += (font.textWidth("I", 1) + 3) / 4;
+		if (mono_video) {
+			int a = font.maxAscent();
+			int d = font.maxDescent();
+			pain.fillRectangle(x, y - a, font.textWidth(name, strlen(name)), a + d);
+		}
+		pain.text(x, y, name, font);
+	}
+}
+#else
 void
 MathFuncInset::Draw(int x, int y)
 { 
@@ -1228,7 +1362,7 @@ MathFuncInset::Draw(int x, int y)
 		font.drawString(name, pm, y, x);
 	}
 }
-
+#endif
 
 void MathFuncInset::Metrics() 
 {

@@ -4,8 +4,8 @@
  * 
  *           LyX, The Document Processor
  * 	 
- *	    Copyright 1995 Matthias Ettrich
- *          Copyright 1995-1999 The LyX Team
+ *           Copyright 1995 Matthias Ettrich
+ *           Copyright 1995-2000 The LyX Team
  *
  * ====================================================== */
 
@@ -24,6 +24,10 @@ class LyXText;
 struct Row;
 typedef unsigned short Dimension;
 
+class BufferView;
+
+#define NEW_WA 1
+
 /** The class LyXScreen is used for the main Textbody.
     Concretely, the screen is held in a pixmap.  This pixmap is kept up to
     date and used to optimize drawing on the screen.
@@ -32,12 +36,15 @@ typedef unsigned short Dimension;
 class LyXScreen {
 public:
 	///
-	LyXScreen(Window window,
+	LyXScreen(BufferView *, Window window,
+#ifdef NEW_WA
+		  Pixmap p,
+#endif
 		  Dimension width, 
 		  Dimension height,
 		  Dimension offset_x,
 		  Dimension offset_y,
-		  LyXText *text_ptr);
+		  LyXText * text_ptr);
 	///
 	~LyXScreen();
 
@@ -86,6 +93,7 @@ public:
 	    or only current row */
 	void SmallUpdate();
 
+#ifndef USE_PAINTER
 	/** Functions for drawing into the LyXScreen. The number of
 	    drawing functions should be minimized, now there
 	    is too many. And also there is mixed X and XForms drawing
@@ -132,7 +140,7 @@ public:
 	///
 	int drawString(LyXFont const & font, string const & str,
 		       int baseline, int x);
-		
+#endif
 	/// first visible pixel-row
 	long first;
 
@@ -148,6 +156,9 @@ private:
 	/// y is a coordinate of the text
 	void DrawOneRow(Row * row, long & y_text);
 
+	///
+	BufferView * owner;
+	
 	///
 	LyXText * text;
 
@@ -178,11 +189,15 @@ private:
 	///
 	Row * screen_refresh_row;
 	///
-	friend class InsetFormula;  
+	friend class InsetFormula;
+#ifdef USE_PAINTER
+	///
+	GC gc_copy;
+#endif
 };
 
 // Some of the easy to inline draw methods:
-
+#ifndef USE_PAINTER
 inline
 void LyXScreen::drawPoint(GC gc, int x, int y)
 {
@@ -315,5 +330,6 @@ int LyXScreen::drawString(LyXFont const & font, string const & str,
 {
 	return font.drawString(str, foreground, baseline, x);
 }
+#endif
 
 #endif

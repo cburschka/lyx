@@ -265,10 +265,14 @@ bool LyXFindReplace1::SearchCB(bool fForward)
 		current_view->owner()->getMiniBuffer()->Set(_("String not found!"));
 		result = false;
 	}
-   
+
+#ifdef NEW_WA
+	if (current_view->focus())
+		current_view->getScreen()->ShowCursor();
+#else
 	if (current_view->getWorkArea()->focus)
 		current_view->getScreen()->ShowCursor();
-
+#endif
 	return result;
 }
 

@@ -253,10 +253,9 @@ void fl_set_bmtable_pixmap_data(FL_OBJECT * ob, int nx, int ny,
 			char ** pdata)
 {
 	BMTABLE_SPEC * sp = (BMTABLE_SPEC *)ob->spec;
-	extern Colormap color_map;
 	if (sp) {
 		Pixmap dummy_shapemask = 0;
-		XpmAttributes dumb_attributes;
+		XpmAttributes dumb_attributes = { 0 };
 		sp->nx = nx;
 		sp->ny = ny; 
 		sp->bx = FL_abs(ob->bw);
@@ -266,7 +265,7 @@ void fl_set_bmtable_pixmap_data(FL_OBJECT * ob, int nx, int ny,
 		sp->i = -1;
 		sp->maxi = sp->nx * sp->ny;
 		sp->bdata = 0;
-		dumb_attributes.colormap = color_map;
+		dumb_attributes.colormap = fl_state[fl_get_vclass()].colormap;
 		dumb_attributes.closeness = 30000;
 		dumb_attributes.valuemask = XpmColormap | XpmCloseness;
 		if (XCreatePixmapFromData(fl_display, fl_winget(), pdata,
@@ -279,7 +278,6 @@ void fl_set_bmtable_pixmap_data(FL_OBJECT * ob, int nx, int ny,
 				XFreePixmap(fl_display, dummy_shapemask);
 			}
 		}
-		XFlush(fl_display);
 	}
 }
 
@@ -315,11 +313,11 @@ void fl_set_bmtable_file(FL_OBJECT * ob, int nx, int ny, char const * filename)
 
 void fl_set_bmtable_pixmap_file(FL_OBJECT *ob, int nx, int ny, char const *filename)
 {	
-	extern Colormap color_map;
+  //extern Colormap color_map;
 	BMTABLE_SPEC *sp = (BMTABLE_SPEC *)ob->spec;
 	if (sp) {
 		Pixmap dummy_shapemask = 0;
-		XpmAttributes dumb_attributes;
+		XpmAttributes dumb_attributes = { 0 };
 		sp->nx = nx;
 		sp->ny = ny; 
 		sp->bx = FL_abs(ob->bw);
@@ -330,7 +328,7 @@ void fl_set_bmtable_pixmap_file(FL_OBJECT *ob, int nx, int ny, char const *filen
 		sp->maxi = sp->nx * sp->ny;
 		sp->bdata = 0;
 
-		dumb_attributes.colormap = color_map;
+		dumb_attributes.colormap = fl_state[fl_get_vclass()].colormap;
 		dumb_attributes.closeness = 30000;
 		dumb_attributes.valuemask = XpmColormap | XpmCloseness;
    
@@ -344,7 +342,7 @@ void fl_set_bmtable_pixmap_file(FL_OBJECT *ob, int nx, int ny, char const *filen
 				XFreePixmap(fl_display, dummy_shapemask);
 			}
 		}
-		XFlush(fl_display);
+		//XFlush(fl_display);
 	}
 }
 

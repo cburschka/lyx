@@ -19,6 +19,7 @@
 #include "LString.h"
 #include "debug.h"
 #include "direction.h"
+#include "LColor.h"
 
 // It might happen that locale.h defines ON and OFF. This is not good
 // for us, since we use these names below. But of course this is due
@@ -34,6 +35,8 @@
 #endif
 
 class LyXLex;
+
+#define NEW_BITS 1
 
 ///
 class LyXFont {
@@ -145,7 +148,8 @@ public:
 		///
 		IGNORE
 	};
- 
+
+#ifndef USE_PAINTER
 	///
 	enum FONT_COLOR {
 		///
@@ -175,7 +179,8 @@ public:
 		///
 		IGNORE_COLOR
 	};
-
+#endif
+	
 	/// Trick to overload constructor and make it megafast
 	enum FONT_INIT1 {
 		///
@@ -237,9 +242,14 @@ public:
 
 	///
 	FONT_MISC_STATE latex() const;
- 
+
+#ifdef USE_PAINTER
+	///
+	LColor::color color() const;
+#else
 	///
 	FONT_COLOR color() const;
+#endif
 
  	///
 	FONT_DIRECTION direction() const;
@@ -263,8 +273,13 @@ public:
 	LyXFont & setNoun(LyXFont::FONT_MISC_STATE n);
 	///
 	LyXFont & setLatex(LyXFont::FONT_MISC_STATE l);
+#ifdef USE_PAINTER
+	///
+	LyXFont & setColor(LColor::color c);
+#else
 	///
 	LyXFont & setColor(LyXFont::FONT_COLOR c);
+#endif
  	///
 	LyXFont & setDirection(LyXFont::FONT_DIRECTION d);
 
@@ -315,7 +330,7 @@ public:
 	bool resolved() const;
  
 	/// Read a font specification from LyXLex. Used for layout files.
-	LyXFont & lyxRead(LyXLex&);
+	LyXFont & lyxRead(LyXLex &);
  
 	/// Writes the changes from this font to orgfont in .lyx format in file
 	void lyxWriteChanges(LyXFont const & orgfont, ostream &) const;
@@ -369,14 +384,25 @@ public:
 	int signedStringWidth(string const & s) const;
 
 	/// Draws text and returns width of text
-	int drawText(char const*, int n, Pixmap, int baseline, int x) const;
+	int drawText(char const *, int n, Pixmap, int baseline, int x) const;
 
 	///
 	int drawString(string const &, Pixmap pm, int baseline, int x) const;
 
+#ifdef USE_PAINTER
+	///
+	LColor::color realColor() const;
+#endif
+
+	///
+	XID getFontID() const {
+		return getXFontstruct()->fid;
+	}
+	
+#ifndef USE_PAINTER
 	///
 	GC getGC() const;
-
+#endif
 	///
 	friend inline
 	bool operator==(LyXFont const & font1, LyXFont const & font2) {
@@ -393,22 +419,78 @@ public:
 	bool equalExceptLatex(LyXFont const &) const;
 
 private:
+#ifdef NEW_BITS
+	///
+	struct FontBits {
+		bool operator==(FontBits const & fb1) const {
+			return fb1.family == family &&
+				fb1.series == series &&
+				fb1.shape == shape &&
+				fb1.size == size &&
+				fb1.color == color &&
+				fb1.emph == emph &&
+				fb1.underbar == underbar &&
+				fb1.noun == noun &&
+				fb1.latex == latex &&
+				fb1.direction == direction;
+		}
+		bool operator!=(FontBits const & fb1) const {
+			return !(fb1 == *this);
+		}
+		
+		FONT_FAMILY family;
+		FONT_SERIES series;
+		FONT_SHAPE shape;
+		FONT_SIZE size;
+#ifdef USE_PAINTER
+		LColor::color color;
+#else
+		FONT_COLOR color;
+#endif
+		FONT_MISC_STATE emph;
+		FONT_MISC_STATE underbar;
+		FONT_MISC_STATE noun;
+		FONT_MISC_STATE latex;
+		FONT_DIRECTION direction;
+	};
+#else
 	/// This have to be at least 32 bits, but 64 or more does not hurt
 	typedef unsigned int ui32;
+#endif
 
 	/** Representation: bit table
 	    Layout of bit table:
-	    11 1111 111 122 222 222 2233
+	        11 1111 111 122 222 222 2233
 	    Bit 012 34 567 8901 2345 678 901 234 567 8901
-	    FFF SS SSS SSSS CCCC EEE UUU NNN LLL
-	    aaa ee hhh iiii oooo mmm nnn ooo aaa
-	    mmm rr aaa zzzz llll ppp ddd uuu ttt
+	        FFF SS SSS SSSS CCCC EEE UUU NNN LLL
+	        aaa ee hhh iiii oooo mmm nnn ooo aaa
+	        mmm rr aaa zzzz llll ppp ddd uuu ttt
 
+	    Bit 76543210 76543210 76543210 76543210
+                                                --- Fam_Pos
+					      --    Ser_Pos
+					   ---      Sha_Pos
+	 			      ----          Siz_Pos
+				  ----              Col_Pos
+			      ---                   Emp_Pos
+			   ---                      Und_Pos
+		       - --                         Nou_Pos
+		    ---                             Lat_Pos
+		----                                Dir_Pos
+		
 	    Some might think this is a dirty representation, but it gives
-	    us at least 25% speed-up, so why not?
-	*/
-	ui32 bits;
+	    us at least 25% speed-up, so why not? (Asger)
 
+	    First of all it is a maintence nightmare...and now that we need
+	    to enlarge the Color bits with 2 (from 4 to 6), we have a problem
+	    since a 32 bit entity is not large enough... (Lgb)
+	*/
+
+#ifdef NEW_BITS
+	FontBits bits;
+#else
+	ui32 bits;
+	
 	///
 	enum FONT_POSITION {
 		///
@@ -450,25 +532,46 @@ private:
 		///
 		Misc_Mask = 0x07
 	};
+#endif
+
+	
+#ifdef NEW_BITS
+	/// Sane font
+	static FontBits sane;
+	
+	/// All inherit font
+	static FontBits inherit;
  
+	/// All ignore font
+	static FontBits ignore;
+
+#else
 	/// Sane font
 	enum {	sane = ui32(ROMAN_FAMILY) << Fam_Pos
 		| ui32(MEDIUM_SERIES) << Ser_Pos
 		| ui32(UP_SHAPE) << Sha_Pos
 		| ui32(SIZE_NORMAL) << Siz_Pos
+#ifdef USE_PAINTER
+		| ui32(LColor::none) << Col_Pos
+#else
 		| ui32(NONE) << Col_Pos
+#endif
 		| ui32(OFF) << Emp_Pos
 		| ui32(OFF) << Und_Pos
 		| ui32(OFF) << Nou_Pos
 		| ui32(OFF) << Lat_Pos
 		| ui32(LTR_DIR) << Dir_Pos};
- 
+	
 	/// All inherit font
 	enum{ inherit = ui32(INHERIT_FAMILY) << Fam_Pos
 		      | ui32(INHERIT_SERIES) << Ser_Pos
 		      | ui32(INHERIT_SHAPE) << Sha_Pos
 		      | ui32(INHERIT_SIZE) << Siz_Pos
+#ifdef USE_PAINTER
+		      | ui32(LColor::inherit) << Col_Pos
+#else
 		      | ui32(INHERIT_COLOR) << Col_Pos
+#endif
 		      | ui32(INHERIT) << Emp_Pos
 		      | ui32(INHERIT) << Und_Pos
 		      | ui32(INHERIT) << Nou_Pos
@@ -480,13 +583,17 @@ private:
 		      | ui32(IGNORE_SERIES) << Ser_Pos
 		      | ui32(IGNORE_SHAPE) << Sha_Pos
 		      | ui32(IGNORE_SIZE) << Siz_Pos
+#ifdef USE_PAINTER
+		      | ui32(LColor::ignore) << Col_Pos
+#else
 		      | ui32(IGNORE_COLOR) << Col_Pos
+#endif
 		      | ui32(IGNORE) << Emp_Pos
 		      | ui32(IGNORE) << Und_Pos
 		      | ui32(IGNORE) << Nou_Pos
 		      | ui32(IGNORE) << Lat_Pos
 		      | ui32(IGNORE_DIR) << Dir_Pos};
- 
+#endif
 	/// Updates a misc setting according to request
 	LyXFont::FONT_MISC_STATE setMisc(LyXFont::FONT_MISC_STATE newfont,
 					 LyXFont::FONT_MISC_STATE org);
@@ -495,7 +602,7 @@ private:
 	LyXFont::FONT_SHAPE realShape() const;
 
 	///
-	XFontStruct* getXFontstruct() const;
+	XFontStruct * getXFontstruct() const;
 };
 
 ostream & operator<<(ostream &, LyXFont::FONT_MISC_STATE);
@@ -537,8 +644,178 @@ inline LyXFont & LyXFont::operator=(LyXFont const & x)
 }
 
 
+#ifdef NEW_BITS
 // You don't have to understand the stuff below :-)
 // It works, and it's bloody fast. (Asger)
+// And impossible to work with. (Lgb)
+
+inline
+LyXFont::FONT_FAMILY LyXFont::family() const 
+{
+	return bits.family;
+}
+
+
+inline
+LyXFont::FONT_SERIES LyXFont::series() const
+{
+	return bits.series;
+}
+
+
+inline
+LyXFont::FONT_SHAPE LyXFont::shape() const
+{
+	return bits.shape;
+}
+
+
+inline
+LyXFont::FONT_SIZE LyXFont::size() const
+{
+	return bits.size;
+}
+
+
+inline
+LyXFont::FONT_MISC_STATE LyXFont::emph() const
+{
+	return bits.emph;
+}
+
+
+inline
+LyXFont::FONT_MISC_STATE LyXFont::underbar() const
+{
+	return bits.underbar;
+}
+
+
+inline
+LyXFont::FONT_MISC_STATE LyXFont::noun() const
+{
+	return bits.noun;
+}
+
+
+inline
+LyXFont::FONT_MISC_STATE LyXFont::latex() const 
+{
+	return bits.latex;
+}
+
+
+#ifdef USE_PAINTER
+inline
+LColor::color LyXFont::color() const 
+{
+	return bits.color;
+}
+#else
+inline
+LyXFont::FONT_COLOR LyXFont::color() const 
+{
+	return bits.color;
+}
+#endif
+
+
+inline
+LyXFont::FONT_DIRECTION LyXFont::direction() const 
+{
+	return bits.direction;
+}
+
+inline
+LyXFont & LyXFont::setFamily(LyXFont::FONT_FAMILY f)
+{
+	bits.family = f;
+	return *this;
+}
+
+
+inline
+LyXFont & LyXFont::setSeries(LyXFont::FONT_SERIES s)
+{
+	bits.series = s;
+	return *this;
+}
+
+
+inline
+LyXFont & LyXFont::setShape(LyXFont::FONT_SHAPE s)
+{
+	bits.shape = s;
+	return *this;
+}
+
+
+inline
+LyXFont & LyXFont::setSize(LyXFont::FONT_SIZE s)
+{
+	bits.size = s;
+	return *this;
+}
+
+
+inline
+LyXFont & LyXFont::setEmph(LyXFont::FONT_MISC_STATE e)
+{
+	bits.emph = e;
+	return *this;
+}
+
+
+inline
+LyXFont & LyXFont::setUnderbar(LyXFont::FONT_MISC_STATE u)
+{
+	bits.underbar = u;
+	return *this;
+}
+
+
+inline
+LyXFont & LyXFont::setNoun(LyXFont::FONT_MISC_STATE n)
+{
+	bits.noun = n;
+	return *this;
+}
+
+inline
+LyXFont & LyXFont::setLatex(LyXFont::FONT_MISC_STATE l)
+{
+	bits.latex = l;
+	return *this;
+}
+
+
+#ifdef USE_PAINTER
+inline
+LyXFont & LyXFont::setColor(LColor::color c)
+{
+	bits.color = c;
+	return *this;
+}
+#else
+inline
+LyXFont & LyXFont::setColor(LyXFont::FONT_COLOR c)
+{
+	bits.color = c;
+	return *this;
+}
+#endif
+
+inline
+LyXFont & LyXFont::setDirection(LyXFont::FONT_DIRECTION d)
+{
+	bits.direction = d;
+	return *this;
+}
+#else
+// You don't have to understand the stuff below :-)
+// It works, and it's bloody fast. (Asger)
+// And impossible to work with. (Lgb)
+
 inline LyXFont::FONT_FAMILY LyXFont::family() const 
 {
 	return LyXFont::FONT_FAMILY((bits >> Fam_Pos) & Fam_Mask);
@@ -587,10 +864,18 @@ inline LyXFont::FONT_MISC_STATE LyXFont::latex() const
 }
 
 
-inline LyXFont::FONT_COLOR LyXFont::color() const 
+#ifdef USE_PAINTER
+inline LColor::color LyXFont::color() const 
 {
-	return LyXFont::FONT_COLOR((bits >> Col_Pos) & Col_Mask);
+	return LColor::color((bits >> Col_Pos) & Col_Mask);
 }
+#else
+inline LyXFont::FONT_COLOR LyXFont::color() const
+{
+	return FONT_COLOR((bits >> Col_Pos) & Col_Mask);
+}
+#endif
+
 
 inline LyXFont::FONT_DIRECTION LyXFont::direction() const 
 {
@@ -660,12 +945,21 @@ inline LyXFont & LyXFont::setLatex(LyXFont::FONT_MISC_STATE l)
 }
 
 
+#ifdef USE_PAINTER
+inline LyXFont & LyXFont::setColor(LColor::color c)
+{
+	bits &= ~(Col_Mask << Col_Pos);
+	bits |= ui32(c) << Col_Pos;
+	return *this;
+}
+#else
 inline LyXFont & LyXFont::setColor(LyXFont::FONT_COLOR c)
 {
 	bits &= ~(Col_Mask << Col_Pos);
 	bits |= ui32(c) << Col_Pos;
 	return *this;
 }
+#endif
 
 inline LyXFont & LyXFont::setDirection(LyXFont::FONT_DIRECTION d)
 {
@@ -673,5 +967,6 @@ inline LyXFont & LyXFont::setDirection(LyXFont::FONT_DIRECTION d)
 	bits |= ui32(d) << Dir_Pos;
 	return *this;
 }
+#endif
 
 #endif

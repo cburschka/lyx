@@ -22,6 +22,7 @@
 #include "buffer.h"
 #include "LaTeXFeatures.h"
 #include "support/lstrings.h"
+#include "Painter.h"
 
 // Quotes. Used for the various quotes. German, English, French,
 // Danish, Polish, all either double or single.
@@ -155,18 +156,50 @@ string InsetQuotes::DispString() const
 }
 
 
+#ifdef USE_PAINTER
+int InsetQuotes::ascent(Painter &, LyXFont const & font) const
+{
+	return font.maxAscent();
+}
+#else
 int InsetQuotes::Ascent(LyXFont const & font) const
 {
 	return font.maxAscent();
 }
+#endif
 
 
+#ifdef USE_PAINTER
+int InsetQuotes::descent(Painter &, LyXFont const & font) const
+{
+	return font.maxDescent();
+}
+#else
 int InsetQuotes::Descent(LyXFont const & font) const
 {
 	return font.maxDescent();
 }
+#endif
 
 
+#ifdef USE_PAINTER
+int InsetQuotes::width(Painter &, LyXFont const & font) const
+{
+	string text = DispString();
+	int w = 0;
+
+	for (string::size_type i = 0; i < text.length(); ++i) {
+		if (text[i] == ' ')
+			w += font.width('i');
+		else if (i == 0 || text[i] != text[i-1])
+			w += font.width(text[i]);
+		else
+			w += font.width(',');
+	}
+
+	return w;
+}
+#else
 int InsetQuotes::Width(LyXFont const & font) const
 {
 	string text = DispString();
@@ -183,6 +216,7 @@ int InsetQuotes::Width(LyXFont const & font) const
 
 	return w;
 }
+#endif
 
 
 LyXFont InsetQuotes::ConvertFont(LyXFont font)
@@ -193,6 +227,16 @@ LyXFont InsetQuotes::ConvertFont(LyXFont font)
 }
 
 
+#ifdef USE_PAINTER
+void InsetQuotes::draw(Painter & pain, LyXFont const & font,
+		       int baseline, float & x) const
+{
+	string text = DispString();
+
+	pain.text(int(x), baseline, text, font);
+	x += width(pain, font);
+}
+#else
 void InsetQuotes::Draw(LyXFont font, LyXScreen & scr,
 		       int baseline, float & x)
 {
@@ -201,6 +245,7 @@ void InsetQuotes::Draw(LyXFont font, LyXScreen & scr,
 	scr.drawString(font, text, baseline, int(x));
 	x += Width(font);
 }
+#endif
 
 
 void InsetQuotes::Write(ostream & os)

@@ -26,6 +26,7 @@ class Buffer;
 class BufferParams;
 class LyXScreen;
 class Row;
+class BufferView;
 
 /**
   This class holds the mapping between buffer paragraphs and screen rows.
@@ -58,11 +59,14 @@ public:
 	mutable LyXFont real_current_font;
 
 	/// Constructor
-	LyXText(int paperwidth, Buffer *);
+	LyXText(BufferView *, int paperwidth, Buffer *);
    
 	/// Destructor
 	~LyXText();
-   
+
+	///
+	void owner(BufferView *);
+	
 	///
 	LyXFont GetFont(LyXParagraph * par,
 			LyXParagraph::size_type pos) const;
@@ -285,9 +289,14 @@ public:
 	/** returns a printed row in a pixmap. The y value is needed to
 	  decide, wether it is selected text or not. This is a strange
 	  solution but faster.
-	 */ 
+	 */
+#ifdef USE_PAINTER
+	void GetVisibleRow(int offset, 
+			   Row * row_ptr, long y);
+#else
 	void GetVisibleRow(LyXScreen & scr, int offset, 
 			   Row * row_ptr, long y);
+#endif
 					   
 	/* footnotes: */
 	///
@@ -474,6 +483,9 @@ public:
 	///
 	unsigned short paperWidth() const { return paperwidth; }
 private:
+	///
+	BufferView * owner_;
+	
 	/// width of the paper
 	unsigned short  paperwidth;
 
@@ -543,10 +555,17 @@ private:
 	///
 	int SingleWidth(LyXParagraph * par,
 			LyXParagraph::size_type pos, char c) const;
+#ifdef USE_PAINTER
+	///
+	void draw(Row const * row,
+		  LyXParagraph::size_type & pos,
+		  int offset, float & x);
+#else
 	///
 	void Draw(Row const * row, LyXParagraph::size_type & pos,
 		  LyXScreen & scr,
 		  int offset, float & x);
+#endif
 	/// get the next breakpoint in a given paragraph
 	LyXParagraph::size_type NextBreakPoint(Row const * row,
 					       int width) const;
@@ -610,7 +629,8 @@ private:
 				     LyXParagraph::size_type offset) const;
 
 	/// Maps positions in the visual string to positions in logical string.
-	inline LyXParagraph::size_type log2vis(LyXParagraph::size_type pos) const {
+	inline
+	LyXParagraph::size_type log2vis(LyXParagraph::size_type pos) const {
 		if (bidi_start == -1)
 			return pos;
 		else
@@ -618,7 +638,8 @@ private:
 	}
 
 	/// Maps positions in the logical string to positions in visual string.
-	inline LyXParagraph::size_type vis2log(LyXParagraph::size_type pos) const {
+	inline
+	LyXParagraph::size_type vis2log(LyXParagraph::size_type pos) const {
 		if (bidi_start == -1)
 			return pos;
 		else

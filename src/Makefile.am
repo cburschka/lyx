@@ -28,6 +28,8 @@ lyx_SOURCES = \
 	ImportLaTeX.h \
 	ImportNoweb.C \
 	ImportNoweb.h \
+	LColor.C \
+	LColor.h \
 	LString.h \
 	LaTeX.C \
 	LaTeX.h \
@@ -42,6 +44,10 @@ lyx_SOURCES = \
 	LyXView.C \
 	LyXView.h \
 	Makefile.in \
+	Painter.C \
+	Painter.h \
+	PainterBase.C \
+	PainterBase.h \
 	PaperLayout.C \
 	ParagraphExtra.C \
 	Spacing.C \
@@ -49,6 +55,8 @@ lyx_SOURCES = \
 	TableLayout.C \
 	TextCache.C \
 	TextCache.h \
+	WorkArea.C \
+	WorkArea.h \
 	bibforms.h \
 	bmtable.c \
 	bmtable.h \

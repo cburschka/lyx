@@ -17,6 +17,7 @@
 #include "insetcommand.h"
 #include "lyxdraw.h"
 #include "debug.h"
+#include "Painter.h"
 
 InsetCommand::InsetCommand()
 {
@@ -30,22 +31,49 @@ InsetCommand::InsetCommand(string const & cmd, string const & arg,
 }
 
 
+#ifdef USE_PAINTER
+int InsetCommand::ascent(Painter &, LyXFont const & font) const
+{
+	LyXFont f = font;
+	f.decSize();
+	return f.maxAscent() + 3;
+}
+#else
 int InsetCommand::Ascent(LyXFont const & font) const
 {
 	LyXFont f = font;
 	f.decSize();
 	return f.maxAscent() + 3;
 }
+#endif
 
 
+#ifdef USE_PAINTER
+int InsetCommand::descent(Painter &, LyXFont const & font) const
+{
+	LyXFont f = font;
+	f.decSize();
+	return f.maxDescent() + 3;
+}
+#else
 int InsetCommand::Descent(LyXFont const & font) const
 {
 	LyXFont f = font;
 	f.decSize();
 	return f.maxDescent() + 3;
 }
+#endif
 
 
+#ifdef USE_PAINTER
+int InsetCommand::width(Painter &, LyXFont const & font) const
+{
+	LyXFont f = font;
+	f.decSize();
+	string s = getScreenLabel();
+	return 10 + f.stringWidth(s);
+}
+#else
 int InsetCommand::Width(LyXFont const & font) const
 {
 	LyXFont f = font;
@@ -53,8 +81,44 @@ int InsetCommand::Width(LyXFont const & font) const
 	string s = getScreenLabel();
 	return 10 + f.stringWidth(s);
 }
+#endif
 
 
+#ifdef USE_PAINTER
+void InsetCommand::draw(Painter & pain, LyXFont const & font,
+			int baseline, float & x) const
+{
+	// Draw it as a box with the LaTeX text
+	x += 3;
+
+	pain.fillRectangle(int(x), baseline - ascent(pain, font) + 1,
+			   width(pain, font) - 6,
+			   ascent(pain, font) + descent(pain, font) - 2,
+			   LColor::insetbg);
+        // Tell whether this slows down the drawing  (ale)
+	// lets draw editable and non-editable insets differently
+        if (Editable()) {
+		int y = baseline - ascent(pain, font) + 1;
+		int w = width(pain, font) - 6;
+		int h = ascent(pain, font) + descent(pain, font) - 2;
+		pain.rectangle(int(x), y, w, h, LColor::insetframe);
+	} else {
+		
+		pain.rectangle(int(x), baseline - ascent(pain, font) + 1,
+			       width(pain, font) - 6,
+			       ascent(pain, font) + descent(pain, font) - 2,
+			       LColor::insetframe); 
+	}
+        string s = getScreenLabel();
+       	LyXFont f(font);
+	f.decSize();
+	f.setColor(LColor::none);
+	f.setLatex(LyXFont::OFF);
+	pain.text(int(x + 2), baseline, s, f);
+	
+	x +=  width(pain, font) - 3;
+}
+#else
 void InsetCommand::Draw(LyXFont font, LyXScreen & scr,
 		      int baseline, float & x)
 {
@@ -86,6 +150,7 @@ void InsetCommand::Draw(LyXFont font, LyXScreen & scr,
 
 	x +=  Width(font) - 3;
 }
+#endif
 
 
 // In lyxf3 this will be just LaTeX

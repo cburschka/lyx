@@ -21,6 +21,11 @@
 #include "lyxlex.h"
 #include "lyxscreen.h"
 
+//#define USE_PAINTER 1
+
+#ifdef USE_PAINTER
+class Painter;
+#endif
 
 class Buffer;
 struct LaTeXFeatures;
@@ -80,6 +85,17 @@ public:
 
 	///
 	virtual ~Inset() {}
+#ifdef USE_PAINTER
+	///
+	virtual int ascent(Painter &, LyXFont const &) const = 0;
+	///
+	virtual int descent(Painter &, LyXFont const &) const = 0;
+	///
+	virtual int width(Painter &, LyXFont const &) const = 0;
+	///
+	virtual void draw(Painter &, LyXFont const &,
+			  int baseline, float & x) const = 0;
+#else
 	///
 	virtual int Ascent(LyXFont const & font) const = 0;
 	///
@@ -87,10 +103,11 @@ public:
 	///
 	virtual int Width(LyXFont const & font) const = 0;
 	///
-	virtual LyXFont ConvertFont(LyXFont font);
-	///
 	virtual void Draw(LyXFont font, LyXScreen & scr,
 			  int baseline, float & x) = 0;
+#endif
+	///
+	virtual LyXFont ConvertFont(LyXFont font);
 	/// what appears in the minibuffer when opening
 	virtual char const * EditMessage() const {return _("Opened inset");}
 	///
@@ -200,6 +217,6 @@ public:
 	bool isCursorVisible() const { return cursor_visible; }
 protected:
 	///
-	bool cursor_visible;
+	mutable bool cursor_visible;
 };
 #endif

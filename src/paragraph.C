@@ -43,7 +43,11 @@ extern LyXRC * lyxrc;
 
 
 // ale970405
+#ifdef USE_PAINTER
+extern string bibitemWidthest(Painter &);
+#else
 extern string bibitemWidthest();
+#endif
 
 // this is a minibuffer
 static char minibuffer_char;
@@ -344,10 +348,17 @@ void LyXParagraph::validate(LaTeXFeatures & features) const
 					     << endl;
 		}
 		switch ((*cit).font.color()) {
+#ifdef USE_PAINTER
+		case LColor::none:
+		case LColor::inherit:
+		case LColor::ignore:
+			break;
+#else
 		case LyXFont::NONE:
 		case LyXFont::INHERIT_COLOR:
 		case LyXFont::IGNORE_COLOR:
 			break;
+#endif
 		default:
 			features.color = true;
 			lyxerr[Debug::LATEX] << "Color enabled. Font: "
@@ -3403,7 +3414,12 @@ LyXParagraph * LyXParagraph::TeXEnvironment(string & file, TexRow & texrow,
 		} else if (style.labeltype == LABEL_BIBLIO) {
 			// ale970405
 			file += "\\begin{" + style.latexname() + "}{"
+#ifdef USE_PAINTER
+				+ bibitemWidthest(current_view->painter())
+				+ "}\n";
+#else
 				+ bibitemWidthest() + "}\n";
+#endif
 		} else if (style.latextype == LATEX_ITEM_ENVIRONMENT) {
 #ifdef FANCY_FOOTNOTE_CODE
 			if (foot_count < 0) {

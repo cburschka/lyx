@@ -20,8 +20,14 @@
 #include "math_cursor.h"
 #include "math_parser.h"
 #include "debug.h"
+#include "lyxfont.h"
+#include "Painter.h"
 
+#ifdef USE_PAINTER
+extern LyXFont mathed_get_font(short type, int size);
+#else
 extern void mathed_set_font(short type, int style);
+#endif
 extern int mathed_char_width(short type, int style, byte c);
 extern int mathed_string_width(short type, int style, byte const* s, int ls);
 extern int mathed_string_height(short, int, byte const*, int, int&, int&);
@@ -30,8 +36,30 @@ extern int mathed_char_height(short, int, byte, int&, int&);
 GC canvasGC= 0, mathGC= 0, mathLineGC= 0, latexGC= 0, cursorGC= 0, mathFrameGC= 0;
 
 
-long unsigned int MathedInset::pm;
+#ifndef USE_PAINTER
+unsigned long MathedInset::pm;
+#endif
 
+#ifdef USE_PAINTER
+void
+MathSpaceInset::draw(Painter & pain, int x, int y)
+{ 
+
+// XPoint p[4] = {{++x, y-3}, {x, y}, {x+width-2, y}, {x+width-2, y-3}};
+
+// Sadly, HP-UX CC can't handle that kind of initialization.
+
+   int xp[4];
+   int yp[4];
+   
+   xp[0] = ++x;            yp[0] = y - 3;
+   xp[1] = x;	           yp[1] = y;
+   xp[2] = x + width - 2;  yp[2] = y;
+   xp[3] = x + width - 2;  yp[3] = y - 3;
+
+   pain.lines(xp, yp, 4, (space) ? LColor::latex : LColor::math);
+}
+#else
 void
 MathSpaceInset::Draw(int x, int y)
 { 
@@ -49,7 +77,96 @@ MathSpaceInset::Draw(int x, int y)
    XDrawLines(fl_display, pm,(space) ? latexGC: mathGC, p, 4, CoordModeOrigin);
    XFlush(fl_display);
 }
+#endif
 
+
+#ifdef USE_PAINTER
+void 
+MathParInset::draw(Painter & pain, int x, int y)
+{
+   byte cx, cxp = 0;
+   int xp = 0, ls;
+   int asc = df_asc, des = 0;
+   bool limits = false;
+    
+   xo = x;  yo = y; 
+   if (!array || array->empty()) {
+       if (array) {
+	   MathedXIter data(this);
+	   data.GetPos(x, y);
+       }
+       pain.rectangle(x, y - df_asc, df_width, df_asc, LColor::mathline);
+      return;
+   }  
+   MathedXIter data(this);
+   data.GoBegin();
+   while (data.OK()) {
+      data.GetPos(x, y);
+      cx = data.GetChar();
+      if (cx >= ' ') {
+	 byte * s = data.GetString(ls);
+	  drawStr(pain, data.FCode(), size, x, y, s, ls);
+	  mathed_char_height(LM_TC_CONST, size, 'y', asc, des);
+	  limits = false;
+      } else {
+	  if (cx == 0) break;
+	 if (MathIsInset(cx)) {
+	    int yy = y;
+	    MathedInset * p = data.GetInset();
+	    if (cx == LM_TC_UP) {
+	       if (limits) {
+		  x -= (xp>p->Width()) ? p->Width()+(xp-p->Width())/2: xp;  
+		  yy -= (asc + p->Descent()+4);
+	       } else
+		  yy -= (p->Descent()>asc) ? p->Descent()+4: asc;
+	    } else
+	    if (cx == LM_TC_DOWN) {
+	       if (limits) {
+		  x -= (xp>p->Width()) ? p->Width()+(xp-p->Width())/2: xp;
+		  yy += des + p->Ascent() + 2;
+	       } else
+		 yy += des + p->Ascent()/2;
+	    } else {
+	       asc = p->Ascent();
+	       des = p->Descent();
+	    }
+	    p->draw(pain, x, yy);
+	    if (cx!= LM_TC_UP && cx!= LM_TC_DOWN) {
+	       limits = p->GetLimits();
+	       if (limits) xp = p->Width();
+	    }
+	    data.Next();
+	 } else 
+	   if (cx == LM_TC_TAB) {
+	       if ((cxp == cx || cxp == LM_TC_CR || data.IsFirst())) { // && objtype == L
+		       pain.rectangle(x, y - df_asc, df_width, df_asc,
+				      LColor::mathline);
+	       }
+	      data.Next();
+	      limits = false;
+	   } else
+	    if (cx == LM_TC_CR) {
+		if (cxp == LM_TC_TAB || cxp == LM_TC_CR || data.IsFirst()) { //  && objtype == LM_OT_MATRIX) {
+			pain.rectangle(x, y - df_asc, df_width, df_asc,
+				       LColor::mathline);
+		}
+		data.Next();
+		limits = false;
+	    }
+	 else {	 
+		 lyxerr << "GMathed Error: Unrecognized code[" << cx
+			<< "]" << endl;
+	    break;
+	 }
+      }
+      cxp = cx;
+   }
+   if (cxp == LM_TC_TAB || cxp == LM_TC_CR) { // && objtype == LM_OT_MATRIX) {
+      data.GetPos(x, y);
+      pain.rectangle(x, y - df_asc, df_width, df_asc, LColor::mathline);
+   }
+}
+#else
 void 
 MathParInset::Draw(int x, int y)
 {
@@ -139,6 +256,7 @@ MathParInset::Draw(int x, int y)
       XFlush(fl_display);
    }
 }
+#endif
 
 
 void 
@@ -248,19 +366,41 @@ MathParInset::Metrics()
 }
 
 
+#ifdef USE_PAINTER
+void
+MathSqrtInset::draw(Painter & pain, int x, int y)
+{ 
+   MathParInset::draw(pain, x + hmax + 2, y); 
+   int h = ascent;
+   int d = descent;
+   int h2 = Height() / 2;
+   int w2 = (Height() > 4 * hmax) ? hmax : hmax / 2; 
+   int xp[4], yp[4];
+   xp[0] = x + hmax + wbody; yp[0] = y - h;
+   xp[1] = x + hmax;         yp[1] = y - h;
+   xp[2] = x + w2;           yp[2] = y + d;
+   xp[3] = x;                yp[3] = y + d - h2;
+   pain.lines(xp, yp, 4, LColor::mathline);
+}
+#else
 void
 MathSqrtInset::Draw(int x, int y)
 { 
    MathParInset::Draw(x+hmax+2, y); 
-   int h= ascent, d= descent, h2= Height()/2, w2 = (Height()>4*hmax)?hmax:hmax/2; 
+   int h = ascent;
+   int d = descent;
+   int h2 = Height() / 2;
+   int w2 = (Height() > 4 * hmax) ? hmax : hmax / 2; 
    XPoint p[4];
-   p[0].x = x + hmax + wbody, p[0].y = y-h;
-   p[1].x = x+hmax,    p[1].y = y-h;
-   p[2].x = x+w2,      p[2].y = y+d;
-   p[3].x = x,         p[3].y = y+d-h2;
+   p[0].x = x + hmax + wbody; p[0].y = y - h;
+   p[1].x = x + hmax;    p[1].y = y - h;
+   p[2].x = x + w2;      p[2].y = y + d;
+   p[3].x = x;         p[3].y = y + d - h2;
    XDrawLines(fl_display, pm, mathLineGC, p, 4, CoordModeOrigin);
    XFlush(fl_display);
 }
+#endif
+
 
 void
 MathSqrtInset::Metrics()
@@ -270,11 +410,29 @@ MathSqrtInset::Metrics()
    descent += 2;
    int a, b;
    hmax = mathed_char_height(LM_TC_VAR, size, 'I', a, b);
-   if (hmax<10) hmax = 10;
+   if (hmax < 10) hmax = 10;
    wbody = width + 4;
    width += hmax + 4;
 }
 
+
+#ifdef USE_PAINTER
+void
+MathFracInset::draw(Painter & pain, int x, int y)
+{ 
+    short idxp = idx;
+    short sizex = size;
+    
+    idx = 0;
+    if (size == LM_ST_DISPLAY) ++size;
+    MathParInset::draw(pain, x + (width - w0) / 2, y - des0);
+    den->draw(pain, x + (width - w1) / 2, y + den->Ascent() + 2 - dh);
+    size = sizex;
+    if (objtype == LM_OT_FRAC)
+	    pain.line(x + 2, y - dh, x + width - 4, y - dh, LColor::mathline);
+    idx = idxp;
+}
+#else
 void
 MathFracInset::Draw(int x, int y)
 { 
@@ -283,14 +441,17 @@ MathFracInset::Draw(int x, int y)
     
     idx = 0;
     if (size == LM_ST_DISPLAY) ++size;
-    MathParInset::Draw(x+(width-w0)/2, y - des0);
-    den->Draw(x+(width-w1)/2, y + den->Ascent() + 2 - dh);
+    MathParInset::Draw(x + (width - w0) / 2, y - des0);
+    den->Draw(x + (width - w1) / 2, y + den->Ascent() + 2 - dh);
     size = sizex;
     if (objtype == LM_OT_FRAC)
-      XDrawLine(fl_display, pm, mathLineGC, x+2, y-dh, x+width-4, y - dh);
+      XDrawLine(fl_display, pm, mathLineGC,
+		x + 2, y - dh, x + width - 4, y - dh);
     XFlush(fl_display);
     idx = idxp;
 }
+#endif
+
 
 void
 MathFracInset::Metrics()
@@ -317,6 +478,33 @@ MathFracInset::Metrics()
 }
 
 
+#ifdef USE_PAINTER
+void
+MathBigopInset::draw(Painter & pain, int x, int y)
+{
+   int ls;
+   char c;
+   char const *s;
+   short t;
+   
+   if (sym < 256 || sym == LM_oint) {
+      ls = 1;
+      c = (sym == LM_oint) ? LM_int : sym;
+      s = &c;
+      t = LM_TC_BSYM;
+   } else {
+      s = name;
+      ls = strlen(name);
+      t = LM_TC_TEXTRM;
+   }
+   if (sym == LM_oint) {
+	   pain.arc(x, y - 5 * width / 4, width, width, 0, 360*64,
+		    LColor::mathline);
+	   ++x;
+   }
+   pain.text(x, y, s, ls, mathed_get_font(t, size));
+}
+#else
 void
 MathBigopInset::Draw(int x, int y)
 {
@@ -344,7 +532,37 @@ MathBigopInset::Draw(int x, int y)
    XDrawString(fl_display, pm, mathGC, x, y, s, ls);
    XFlush(fl_display);
 }
+#endif
 
+
+#ifdef USE_PAINTER
+void
+MathBigopInset::Metrics()
+{   
+	int ls;
+	char c;
+	char const *s;
+	short t;
+	
+	if (sym < 256 || sym == LM_oint) {
+		ls = 1;
+		c = (sym == LM_oint) ? LM_int: sym;
+		s = &c;
+		t = LM_TC_BSYM;
+	} else {
+		s = name;
+		ls = strlen(name);
+		t = LM_TC_TEXTRM;
+	}
+	mathed_string_height(t, size,
+			     reinterpret_cast<const unsigned char*>(s),
+			     ls, ascent, descent);
+	width = mathed_string_width(t, size,
+				    reinterpret_cast<const unsigned char*>(s),
+				    ls);
+	if (sym == LM_oint) width += 2;
+}
+#else
 void
 MathBigopInset::Metrics()
 {   
@@ -368,4 +586,5 @@ MathBigopInset::Metrics()
    width = mathed_string_width(t, size, reinterpret_cast<const unsigned char*>(s), ls);
    if (sym == LM_oint) width += 2;
 }
+#endif
 

@@ -37,7 +37,7 @@ class MathedCursor {
     ///
     void Insert(byte, MathedTextCodes t = LM_TC_MIN);
     ///
-    void Insert(MathedInset*, int t = LM_TC_INSET);
+    void Insert(MathedInset *, int t = LM_TC_INSET);
     ///
     void Home();
     ///
@@ -56,10 +56,17 @@ class MathedCursor {
     bool Push();
     /// Pull out an argument from its container inset
     bool pullArg();
+#ifdef USE_PAINTER
+    ///
+    void draw(Painter &, int x, int y);
+    ///
+    void Redraw(Painter &);
+#else
     ///
     void Draw(long unsigned pm, int x, int y);
     ///
     void Redraw();
+#endif
     ///
     void Delete();
     ///
@@ -115,9 +122,13 @@ class MathedCursor {
     ///
     void SelClear();
     ///
-    void SelBalance();  
+    void SelBalance();
+#ifdef USE_PAINTER
+	void SelGetArea(int * xp, int * yp, int & n);
+#else
     ///
     XPoint * SelGetArea(int &);
+#endif
     ///
     void clearLastCode() { lastcode = LM_TC_MIN; }
     ///

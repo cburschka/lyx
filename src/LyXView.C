@@ -351,8 +351,14 @@ int LyXView::KeyPressMask_raw_callback(FL_FORM * fl, void * xev)
 	// also KeyRelease-events are passed through:-(
 	// [It seems that XForms puts them in pairs... (JMarc)]
 	if (static_cast<XEvent*>(xev)->type == KeyPress
+#ifdef NEW_WA
+	    && view->bufferview->focus()
+	    && view->bufferview->active())
+#else
 	    && view->bufferview->getWorkArea()->focus
-	    && view->bufferview->getWorkArea()->active) {
+	    && view->bufferview->getWorkArea()->active)
+#endif
+		{
 #ifdef USE_XSYNC
 		last_time_pressed = xke->time;
 		last_key_pressed = xke->keycode;
@@ -363,8 +369,14 @@ int LyXView::KeyPressMask_raw_callback(FL_FORM * fl, void * xev)
 	}
 #ifdef USE_XSYNC
 	else if (static_cast<XEvent*>(xev)->type == KeyRelease
+#ifdef NEW_WA
+		 && view->bufferview->focus()
+		 && view->bufferview->active())
+#else
 		   && view->bufferview->getWorkArea()->focus
-		   && view->bufferview->getWorkArea()->active) {
+		   && view->bufferview->getWorkArea()->active)
+#endif
+{
 		last_time_released = xke->time;
 		last_key_released = xke->keycode;
 		last_state_released = xke->state;

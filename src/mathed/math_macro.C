@@ -119,6 +119,19 @@ void MathMacro::Metrics()
 }
 
 
+#ifdef USE_PAINTER
+void MathMacro::draw(Painter & pain, int x, int y)
+{
+    xo = x;  yo = y;
+    Metrics();
+    tmplate->update(this);
+    tmplate->SetStyle(size);
+    mathGC = latexGC;
+    tmplate->draw(pain, x, y);
+    for (int i = 0; i < nargs; ++i)
+      tmplate->GetMacroXY(i, args[i].x, args[i].y);
+}
+#else
 void MathMacro::Draw(int x, int y)
 {
     xo = x;  yo = y;
@@ -130,6 +143,7 @@ void MathMacro::Draw(int x, int y)
     for (int i = 0; i < nargs; ++i)
       tmplate->GetMacroXY(i, args[i].x, args[i].y);
 }
+#endif
 
 
 int MathMacro::GetColumns()
@@ -222,6 +236,18 @@ MathMacroArgument::MathMacroArgument(int n)
 }
 
 
+#ifdef USE_PAINTER
+void MathMacroArgument::draw(Painter & pain, int x, int baseline)
+{
+    if (expnd_mode) {
+	MathParInset::draw(pain, x, baseline);
+    } else {
+	unsigned char s[3];
+	sprintf(reinterpret_cast<char*>(s), "#%d", number);
+	drawStr(pain, LM_TC_TEX, size, x, baseline, &s[0], 2);
+    }
+}
+#else
 void MathMacroArgument::Draw(int x, int baseline)
 {
     if (expnd_mode) {
@@ -232,6 +258,7 @@ void MathMacroArgument::Draw(int x, int baseline)
 	drawStr(LM_TC_TEX, size, x, baseline, &s[0], 2);
     }
 }
+#endif
 
 
 void MathMacroArgument::Metrics()
@@ -310,6 +337,30 @@ void MathMacroTemplate::setEditMode(bool ed)
 }
 
 
+#ifdef USE_PAINTER
+void MathMacroTemplate::draw(Painter & pain, int x, int y)
+{
+    int x2, y2;
+    bool expnd = (nargs > 0) ? args[0].getExpand(): false;
+    if (flags & MMF_Edit) {
+	for (int i = 0; i < nargs; ++i) {
+	    args[i].setExpand(false);
+	}
+      x2 = x; y2 = y;
+    } else {
+	for (int i = 0; i < nargs; ++i) {
+	    args[i].setExpand(true);
+	}
+      x2 = xo; y2 = yo;
+    }
+    MathParInset::draw(pain, x, y);
+    xo = x2; yo = y2;
+    
+    for (int i = 0; i < nargs; ++i) {
+	args[i].setExpand(expnd);
+    }
+}
+#else
 void MathMacroTemplate::Draw(int x, int y)
 {
     int x2, y2;
@@ -332,6 +383,7 @@ void MathMacroTemplate::Draw(int x, int y)
 	args[i].setExpand(expnd);
     }
 }
+#endif
 
 
 void MathMacroTemplate::Metrics()

@@ -244,9 +244,10 @@ void AllowInput()
 	if (fd_form_character->form_character->visible)
 		XUndefineCursor(fl_display,
 				fd_form_character->form_character->window);
+#ifndef NEW_WA
 	if (current_view->getWorkArea()->belowmouse)
 		SetXtermCursor(current_view->owner()->getForm()->window);
-
+#endif
 	XFlush(fl_display);
 	fl_activate_all_forms();
 }
@@ -2270,6 +2271,21 @@ LyXFont UserFreeFont()
 	}
 
 	pos = fl_get_choice(fd_form_character->choice_color);
+#ifdef USE_PAINTER
+	switch(pos) {
+	case 1: font.setColor(LColor::ignore); break;
+	case 2: font.setColor(LColor::none); break;
+	case 3: font.setColor(LColor::black); break;
+	case 4: font.setColor(LColor::white); break;
+	case 5: font.setColor(LColor::red); break;
+	case 6: font.setColor(LColor::green); break;
+	case 7: font.setColor(LColor::blue); break;
+	case 8: font.setColor(LColor::cyan); break;
+	case 9: font.setColor(LColor::magenta); break;
+	case 10: font.setColor(LColor::yellow); break;
+	case 11: font.setColor(LColor::inherit); break;
+	}
+#else
 	switch(pos) {
 	case 1: font.setColor(LyXFont::IGNORE_COLOR); break;
 	case 2: font.setColor(LyXFont::NONE); break;
@@ -2283,7 +2299,7 @@ LyXFont UserFreeFont()
 	case 10: font.setColor(LyXFont::YELLOW); break;
 	case 11: font.setColor(LyXFont::INHERIT_COLOR); break;
 	}
-
+#endif
 	return font; 
 }
 

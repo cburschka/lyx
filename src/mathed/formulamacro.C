@@ -31,6 +31,7 @@
 #include "lyxscreen.h"
 #include "lyxdraw.h"
 #include "gettext.h"
+#include "Painter.h"
 
 
 InsetFormulaMacro::InsetFormulaMacro()
@@ -115,6 +116,16 @@ void InsetFormulaMacro::Read(LyXLex & lex)
 }
 
 
+#ifdef USE_PAINTER
+int InsetFormulaMacro::ascent(Painter & pain, LyXFont const & f) const
+{
+    if (opened) {
+	tmacro->update();
+	return InsetFormula::ascent(pain, f);
+    }
+    return f.maxAscent()+3;
+}
+#else
 int InsetFormulaMacro::Ascent(LyXFont const & f) const
 {
     if (opened) {
@@ -123,8 +134,19 @@ int InsetFormulaMacro::Ascent(LyXFont const & f) const
     }
     return f.maxAscent()+3;
 }
+#endif
 
 
+#ifdef USE_PAINTER
+int InsetFormulaMacro::descent(Painter & pain, LyXFont const & f) const
+{
+    if (opened) {
+	tmacro->update();
+	return InsetFormula::descent(pain, f);
+    }
+    return f.maxDescent()+1;
+}
+#else
 int InsetFormulaMacro::Descent(LyXFont const & f) const
 {
     if (opened) {
@@ -133,8 +155,21 @@ int InsetFormulaMacro::Descent(LyXFont const & f) const
     }
     return f.maxDescent()+1;
 }
+#endif
 
 
+#ifdef USE_PAINTER
+int InsetFormulaMacro::width(Painter & pain, LyXFont const & f) const
+{
+    if (opened) {
+	tmacro->update();
+	return InsetFormula::width(pain, f);
+    }
+    string ilabel(_("Macro: "));
+    ilabel += name;
+    return 6 + f.stringWidth(ilabel);
+}
+#else
 int InsetFormulaMacro::Width(LyXFont const & f) const
 {
     if (opened) {
@@ -145,8 +180,37 @@ int InsetFormulaMacro::Width(LyXFont const & f) const
     ilabel += name;
     return 6 + f.stringWidth(ilabel);
 }
+#endif
 
 
+#ifdef USE_PAINTER
+void InsetFormulaMacro::draw(Painter & pain, LyXFont const & f,
+			     int baseline, float & x) const
+{
+	LyXFont font(f);
+	tmacro->update();
+	if (opened) {
+		tmacro->setEditMode(true);
+		InsetFormula::draw(pain, font, baseline, x);
+		tmacro->setEditMode(false);	
+	} else {
+		font.setColor(LColor::math);
+		
+		int y = baseline - ascent(pain, font) + 1;
+		int w = width(pain, font) - 2;
+		int h = (ascent(pain, font) + descent(pain, font) - 2);
+
+	
+		pain.fillRectangle(int(x), y, w, h, LColor::mathbg);
+		pain.rectangle(int(x), y, w, h, LColor::mathframe);
+		
+		string s(_("Macro: "));
+		s += name;
+		pain.text(int(x + 2), baseline, s, font);
+		x +=  width(pain, font) - 1;
+	}
+}
+#else
 void InsetFormulaMacro::Draw(LyXFont font, LyXScreen & scr,
 			     int baseline, float & x)
 {
@@ -171,6 +235,7 @@ void InsetFormulaMacro::Draw(LyXFont font, LyXScreen & scr,
 	x +=  Width(font) - 1;
     }
 }
+#endif
 
 
 void InsetFormulaMacro::Edit(int x, int y)

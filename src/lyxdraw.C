@@ -1,4 +1,7 @@
+
 #include <config.h>
+
+#ifndef USE_PAINTER
 
 #include "lyxdraw.h"
 #include "debug.h"
@@ -418,7 +421,11 @@ GC GetLightedGC()
 }
 
 
+#ifdef USE_PAINTER
+GC GetColorGC(LColor::color color)
+#else
 GC GetColorGC(LyXFont::FONT_COLOR color)
+#endif
 {
 	if (color_gc[color]) return color_gc[color];
 		       
@@ -549,3 +556,5 @@ GC getGC(gc_type typ)
 	}
 	return gc;
 }
+
+#endif

@@ -1,3 +1,14 @@
+2000-02-10  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* a lot of files: The Painter, LColor and WorkArea from the old
+	devel branch has been ported to lyx-devel. Some new files and a
+	lot of #ifdeffed code. The new workarea is enabled by default, but
+	if you want to test the new Painter and LColor you have to compile
+	with USE_PAINTER defined (do this in config.h f.ex.) There are
+	still some rought edges, and I'd like some help to clear those
+	out. It looks stable (loads and displays the Userguide very well).
+	
+
 2000-02-10  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/buffer.C (pop_tag): revert to the previous implementation

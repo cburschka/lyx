@@ -416,10 +416,17 @@ void MathMatrixInset::SetData(LyxArrayBase * a)
 }
 
 
+#ifdef USE_PAINTER
+void MathMatrixInset::draw(Painter & pain, int x, int baseline)
+{
+    MathParInset::draw(pain, x, baseline);
+}
+#else
 void MathMatrixInset::Draw(int x, int baseline)
 {
     MathParInset::Draw(x, baseline);
-}                
+}
+#endif
 
 
 void MathMatrixInset::Metrics()

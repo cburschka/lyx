@@ -42,8 +42,9 @@ extern BufferView * current_view;
 
 using std::copy;
 
-LyXText::LyXText(int pw, Buffer * p)
+LyXText::LyXText(BufferView * bv, int pw, Buffer * p)
 {
+	owner_ = bv;
 	firstrow = 0;
 	lastrow = 0;
 	currentrow = 0;
@@ -95,6 +96,12 @@ LyXText::~LyXText()
 	}
 }
 
+
+void LyXText::owner(BufferView * bv)
+{
+	if (owner_) lyxerr << "LyXText::owner_ already set!" << endl;
+	owner_ = bv;
+}
 
 // Gets the fully instantiated font at a given position in a paragraph
 // Basically the same routine as LyXParagraph::getFont() in paragraph.C.

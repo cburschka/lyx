@@ -65,6 +65,7 @@ using std::flush;
 #include "lyx_gui_misc.h" // CancelCloseBoxCB
 #include "support/FileInfo.h"
 #include "support/lyxlib.h"
+#include "Painter.h"
 
 extern BufferView * current_view;
 extern FL_OBJECT * figinset_canvas;
@@ -112,7 +113,29 @@ static int gs_allcolors;		// number of all colors
 
 static list<int> pidwaitlist; // pid wait list
 
-extern Colormap color_map;
+//extern Colormap color_map;
+
+
+
+static
+GC createGC()
+{
+	XGCValues val;
+	val.foreground = BlackPixel(fl_display, 
+				    DefaultScreen(fl_display));
+	
+	val.function=GXcopy;
+	val.graphics_exposures = false;
+	val.line_style = LineSolid;
+	val.line_width = 0;
+	return XCreateGC(fl_display, RootWindow(fl_display, 0), 
+			 GCForeground | GCFunction | GCGraphicsExposures
+			 | GCLineWidth | GCLineStyle , &val);
+}
+
+static
+GC local_gc_copy;
+
 
 void addpidwait(int pid)
 {
@@ -158,11 +181,15 @@ extern "C" int GhostscriptMsg(FL_OBJECT *, Window, int, int,
 				//XColor * cmap;
 				XWindowAttributes wa;
 				register XImage * im;
-				int i, y, wid1, spc1 = gs_spc-1,
-					spc2 = gs_spc * gs_spc, wid = p->wid,
-					forkstat;
+				int i;
+				int y;
+				int wid1;
+				int spc1 = gs_spc-1;
+				int spc2 = gs_spc * gs_spc;
+				int wid = p->wid;
+				int forkstat;
 				Display * tmpdisp;
-				GC gc = getGC(gc_copy);
+				GC gc = local_gc_copy;
 
 				XGetWindowAttributes(fl_display,
 						     fl_get_canvas_id(
@@ -212,7 +239,11 @@ extern "C" int GhostscriptMsg(FL_OBJECT *, Window, int, int,
 				// query current colormap
 					XColor * cmap = new XColor[gs_allcolors];
 					for (i = 0; i < gs_allcolors; ++i) cmap[i].pixel = i;
+#if 1
+					XQueryColors(tmpdisp, fl_state[fl_get_vclass()].colormap, cmap, gs_allcolors);
+#else
 					XQueryColors(tmpdisp, color_map, cmap, gs_allcolors);
+#endif
 					XFlush(tmpdisp);
 					wid1 = p->wid - 1;
 				// now we process all the image
@@ -297,8 +328,10 @@ static void AllocColors(int num)
 		xcol.green = 65535 * ((i / num) % num) / (num - 1);
 		xcol.blue = 65535 * (i % num) / (num - 1);
 		xcol.flags = DoRed | DoGreen | DoBlue;
-		if (!XAllocColor(fl_display, color_map, &xcol)) {
-			if (i) XFreeColors(fl_display, color_map,
+		if (!XAllocColor(fl_display,
+				 fl_state[fl_get_vclass()].colormap, &xcol)) {
+			if (i) XFreeColors(fl_display,
+					   fl_state[fl_get_vclass()].colormap,
 					   gs_pixels, i, 0);
 			if(lyxerr.debugging()) {
 				lyxerr << "Cannot allocate color cube "
@@ -335,8 +368,10 @@ void AllocGrays(int num)
 	for (int i = 0; i < num; ++i) {
 		xcol.red = xcol.green = xcol.blue = 65535 * i / (num - 1);
 		xcol.flags = DoRed | DoGreen | DoBlue;
-		if (!XAllocColor(fl_display, color_map, &xcol)) {
-			if (i) XFreeColors(fl_display, color_map,
+		if (!XAllocColor(fl_display,
+				 fl_state[fl_get_vclass()].colormap, &xcol)) {
+			if (i) XFreeColors(fl_display,
+					   fl_state[fl_get_vclass()].colormap,
 					   gs_pixels, i, 0);
 			if (lyxerr.debugging()) {
 				lyxerr << "Cannot allocate grayscale " 
@@ -358,12 +393,8 @@ void InitFigures()
 	bmparrsize = figarrsize = figallocchunk;
 	typedef Figref * Figref_p;
 	figures = new Figref_p[figallocchunk];
-	//figures = static_cast<Figref**>
-	//	(malloc(sizeof(Figref*) * figallocchunk));
 	typedef figdata * figdata_p;
 	bitmaps = new figdata_p[figallocchunk];
-	//bitmaps = static_cast<figdata**>
-	//(malloc(sizeof(figdata*) * figallocchunk));
 
 	unsigned int k;
 	for (unsigned int i = 0; i < 256; ++i) {
@@ -376,12 +407,15 @@ void InitFigures()
 	fl_add_canvas_handler(figinset_canvas, ClientMessage,
 			      GhostscriptMsg, current_view->owner()->getMainForm());
 
+#if 0
 	// now we have to init color_map
 	if (!color_map) color_map = DefaultColormap(fl_display,
 						    DefaultScreen(fl_display));
+#endif
 	// allocate color cube on pseudo-color display
 	// first get visual
 	gs_color = false;
+	local_gc_copy = createGC();
 
 	Visual * vi = DefaultVisual(fl_display, DefaultScreen(fl_display));
 	if (lyxerr.debugging()) {
@@ -410,8 +444,6 @@ void InitFigures()
 
 void DoneFigures()
 {
-	//free(figures);
-	//free(bitmaps);
 	delete[] figures;
 	delete[] bitmaps;
 	figarrsize = 0;
@@ -422,12 +454,14 @@ void DoneFigures()
 	fl_remove_canvas_handler(figinset_canvas, ClientMessage,
 				 GhostscriptMsg);
 
+#if 0
 	if (gs_color) {
 		lyxerr.debug() << "Freeing up the colors..." << endl;
 		XFreeColors(fl_display, color_map, gs_pixels,
 			    gs_num_pixels, 0);
 		/******????????????????? what's planes in this case ??????***/
 	}
+#endif
 }
 
 
@@ -609,6 +643,17 @@ static void runqueue()
 				break;
 			}
 
+#ifdef USE_PAINTER
+			if (reverse_video) {
+				sprintf(tbuf+1, " %ld %ld", WhitePixelOfScreen(
+					DefaultScreenOfDisplay(fl_display)),
+					fl_get_pixel(FL_BLACK));
+			} else {
+				sprintf(tbuf+1, " %ld %ld", BlackPixelOfScreen(
+					DefaultScreenOfDisplay(fl_display)),
+					fl_get_pixel(FL_WHITE));
+			}
+#else
 			if (reverse_video) {
 				sprintf(tbuf+1, " %ld %ld", WhitePixelOfScreen(
 					DefaultScreenOfDisplay(fl_display)),
@@ -618,6 +663,7 @@ static void runqueue()
 					DefaultScreenOfDisplay(fl_display)),
 					background_pixels);
 			}
+#endif
 
 			XChangeProperty(tempdisp, 
 					fl_get_canvas_id(figinset_canvas),
@@ -638,8 +684,6 @@ static void runqueue()
 			while (environ[ne]) ++ne;
 			typedef char * char_p;
 			env = new char_p[ne + 2];
-			//env = static_cast<char **>
-			//	(malloc(sizeof(char*) * (ne + 2)));
 			env[0] = tbuf2;
 			memcpy(&env[1], environ, sizeof(char*) * (ne + 1));
 			environ = env;
@@ -735,12 +779,9 @@ static figdata * getfigdata(int wid, int hgh, string const & fname,
 		bmparrsize += figallocchunk;
 		typedef figdata * figdata_p;
 		figdata ** tmp = new figdata_p[bmparrsize];
-		//figdata ** tmp = static_cast<figdata**>
-		//	(malloc(sizeof(figdata*) * bmparrsize));
 		memcpy(tmp, bitmaps,
 		       sizeof(figdata*) * (bmparrsize - figallocchunk));
 		delete[] bitmaps;
-		//free(bitmaps);
 		bitmaps = tmp;
 	}
 	figdata * p = new figdata;
@@ -799,7 +840,6 @@ static void makeupdatelist(figdata * p)
 				       << figures[i]->inset
 				       << endl;
 			}
-			//UpdateInset(figures[i]->inset);
 			// add inset figures[i]->inset into to_update list
 			PutInsetIntoInsetUpdateList(figures[i]->inset);
 		}
@@ -907,12 +947,9 @@ static void RegisterFigure(InsetFig * fi)
 		figarrsize += figallocchunk;
 		typedef Figref * Figref_p;
 		Figref ** tmp = new Figref_p[figarrsize];
-		//Figref ** tmp = static_cast<Figref**>
-		//	(malloc(sizeof(Figref*)*figarrsize));
 		memcpy(tmp, figures,
 		       sizeof(Figref*)*(figarrsize-figallocchunk));
 		delete[] figures;
-		//free(figures);
 		figures = tmp;
 	}
 	Figref * tmpfig = new Figref;
@@ -1013,24 +1050,98 @@ InsetFig::~InsetFig()
 }
 
 
+#ifdef USE_PAINTER
+int InsetFig::ascent(Painter &, LyXFont const &) const
+{
+	return hgh + 3;
+}
+#else
 int InsetFig::Ascent(LyXFont const &) const
 {
 	return hgh + 3;
 }
+#endif
 
 
+#ifdef USE_PAINTER
+int InsetFig::descent(Painter &, LyXFont const &) const
+{
+	return 1;
+}
+#else
 int InsetFig::Descent(LyXFont const &) const
 {
 	return 1;
 }
+#endif
 
 
+#ifdef USE_PAINTER
+int InsetFig::width(Painter &, LyXFont const &) const
+{
+	return wid + 2;
+}
+#else
 int InsetFig::Width(LyXFont const &) const
 {
 	return wid + 2;
 }
+#endif
 
 
+#ifdef USE_PAINTER
+void InsetFig::draw(Painter & pain, LyXFont const & f,
+		    int baseline, float & x) const
+{
+	LyXFont font(f);
+	
+	if (bitmap_waiting) getbitmaps();
+	
+	// I wish that I didn't have to use this
+	// but the figinset code is so complicated so
+	// I don't want to fiddle with it now.
+
+#if 0
+	unsigned long pm = pain.getScreen()->getForeground();
+	if (figure && figure->data && figure->data->bitmap &&
+	    !figure->data->reading && !figure->data->broken) {
+		// draw the bitmap
+		XCopyArea(fl_display, figure->data->bitmap, pm, getGC(gc_copy),
+			  0, 0, wid, hgh, int(x+1), baseline-hgh);
+		XFlush(fl_display);
+		if (flags & 4) XDrawRectangle(fl_display, pm, getGC(gc_copy),
+					      int(x), baseline - hgh - 1,
+					      wid+1, hgh+1);
+	} else {
+#endif
+		char * msg = 0;
+		// draw frame
+		pain.rectangle(x, baseline - hgh - 1, wid + 1, hgh + 1);
+
+		if (figure && figure->data) {
+			if (figure->data->broken)  msg = _("[render error]");
+			else if (figure->data->reading) msg = _("[rendering ... ]");
+		} else 
+			if (fname.empty()) msg = _("[no file]");
+			else if ((flags & 3) == 0) msg = _("[not displayed]");
+			else if (lyxrc->ps_command.empty()) msg = _("[no ghostscript]");
+		
+		if (!msg) msg = _("[unknown error]");
+		
+		font.setFamily(LyXFont::SANS_FAMILY);
+		font.setSize(LyXFont::SIZE_FOOTNOTE);
+		string justname = OnlyFilename (fname);
+		pain.text(int(x + 8), baseline - font.maxAscent() - 4,
+			  justname, font);
+		
+		font.setSize(LyXFont::SIZE_TINY);
+		pain.text(int(x + 8), baseline - 4, msg, strlen(msg), font);
+#if 0
+	}
+#endif
+	x += width(pain, font);    // ?
+}
+#else
 void InsetFig::Draw(LyXFont font, LyXScreen & scr, int baseline, float & x)
 {
 	if (bitmap_waiting) getbitmaps();
@@ -1043,16 +1154,16 @@ void InsetFig::Draw(LyXFont font, LyXScreen & scr, int baseline, float & x)
 	if (figure && figure->data && figure->data->bitmap &&
 	    !figure->data->reading && !figure->data->broken) {
 		// draw the bitmap
-		XCopyArea(fl_display, figure->data->bitmap, pm, getGC(gc_copy),
+		XCopyArea(fl_display, figure->data->bitmap, pm, local_gc_copy,
 			  0, 0, wid, hgh, int(x+1), baseline-hgh);
 		XFlush(fl_display);
-		if (flags & 4) XDrawRectangle(fl_display, pm, getGC(gc_copy),
+		if (flags & 4) XDrawRectangle(fl_display, pm, local_gc_copy,
 					      int(x), baseline - hgh - 1,
 					      wid+1, hgh+1);
 	} else {
 		char * msg = 0;
 		// draw frame
-		XDrawRectangle(fl_display, pm, getGC(gc_copy),
+		XDrawRectangle(fl_display, pm, local_gc_copy,
 			       int(x),
 			       baseline - hgh - 1, wid+1, hgh+1);
 		if (figure && figure->data) {
@@ -1079,6 +1190,7 @@ void InsetFig::Draw(LyXFont font, LyXScreen & scr, int baseline, float & x)
 	}
 	x += Width(font);    // ?
 }
+#endif
 
 
 void InsetFig::Write(ostream & os)
@@ -1324,7 +1436,6 @@ void InsetFig::Regenerate()
 		cmd = "\\fbox{\\rule[-0.5in]{0pt}{1in}";
 	        cmd += _("empty figure path");
 		cmd += '}';
-		//if (form) fl_set_object_label(form->cmd, "");
 		return;
 	}
 
@@ -1434,8 +1545,6 @@ void InsetFig::Regenerate()
 	}
 	
 	cmd = cmdbuf;
-
-	//if (form) fl_set_object_label(form->cmd, cmd.c_str());
 }
 
 
@@ -1452,8 +1561,6 @@ void InsetFig::TempRegenerate()
 	float txhgh = atof(fl_get_input(form->Height));
 
 	if (!tfname || !*tfname) {
-		//fl_set_object_label(form->cmd, "");
-		//fl_redraw_object(form->cmd);
 	        cmd = "\\fbox{\\rule[-0.5in]{0pt}{1in}";
 	        cmd += _("empty figure path");
 		cmd += '}';

@@ -63,6 +63,7 @@
 #include "ImportLaTeX.h"
 #include "ImportNoweb.h"
 #include "layout.h"
+#include "WorkArea.h"
 
 extern bool cursor_follows_scrollbar;
 
@@ -662,10 +663,20 @@ string LyXFunc::Dispatch(int ac,
 	case LFUN_CENTER: // this is center and redraw.
 		owner->view()->beforeChange();
 		if (owner->view()->text->cursor.y >
-		    owner->view()->getWorkArea()->h / 2)	{
+#ifdef NEW_WA
+		    owner->view()->getWorkArea()->height() / 2)
+#else
+		    owner->view()->getWorkArea()->h / 2)
+#endif
+			{
 			owner->view()->getScreen()->
 				Draw(owner->view()->text->cursor.y -
-				     owner->view()->getWorkArea()->h / 2);
+#ifdef NEW_WA
+				     owner->view()->getWorkArea()->height() / 2
+#else
+				     owner->view()->getWorkArea()->h / 2
+#endif
+					);
 		} else { // <= 
 			owner->view()->getScreen()->
 				Draw(0);
@@ -1299,6 +1310,34 @@ string LyXFunc::Dispatch(int ac,
 		
 	case LFUN_LEFT:
 	{
+#ifdef USE_PAINTER
+		// This is soooo ugly. Isn`t it possible to make
+		// it simpler? (Lgb)
+		LyXText * txt = owner->view()->text;
+		LyXDirection direction = txt->cursor.par->getParDirection();
+		if(!txt->mark_set) owner->view()->beforeChange();
+		owner->view()->update(-2);
+		if (direction == LYX_DIR_LEFT_TO_RIGHT)
+			txt->CursorLeft();
+		if (txt->cursor.pos < txt->cursor.par->Last()
+		    && txt->cursor.par->GetChar(txt->cursor.pos)
+		    == LyXParagraph::META_INSET
+		    && txt->cursor.par->GetInset(txt->cursor.pos)
+		    && txt->cursor.par->GetInset(txt->cursor.pos)->Editable() == 2) {
+			Inset * tmpinset = txt->cursor.par->GetInset(txt->cursor.pos);
+			setMessage(tmpinset->EditMessage());
+			tmpinset->Edit(tmpinset->width(owner->view()->painter(),
+						       txt->GetFont(txt->cursor.par,
+								    txt->cursor.pos)), 0);
+			break;
+		}
+		if  (direction == LYX_DIR_RIGHT_TO_LEFT)
+			txt->CursorRight();
+
+		owner->view()->text->FinishUndo();
+		moveCursorUpdate(false);
+		owner->getMiniBuffer()->Set(CurrentState());
+#else
 		// This is soooo ugly. Isn`t it possible to make
 		// it simpler? (Lgb)
 		LyXText * txt = owner->view()->text;
@@ -1324,6 +1363,7 @@ string LyXFunc::Dispatch(int ac,
 		owner->view()->text->FinishUndo();
 		moveCursorUpdate(false);
 		owner->getMiniBuffer()->Set(CurrentState());
+#endif
 	}
 	break;
 		
@@ -1970,10 +2010,20 @@ string LyXFunc::Dispatch(int ac,
 		// Recenter screen
 		owner->view()->beforeChange();
 		if (owner->view()->text->cursor.y >
-		    owner->view()->getWorkArea()->h / 2)	{
+#ifdef NEW_WA
+		    owner->view()->getWorkArea()->height() / 2
+#else
+		    owner->view()->getWorkArea()->h / 2
+#endif
+			) {
 			owner->view()->getScreen()->
 				Draw(owner->view()->text->cursor.y -
-				     owner->view()->getWorkArea()->h/2);
+#ifdef NEW_WA
+				     owner->view()->getWorkArea()->height() / 2
+#else
+				     owner->view()->getWorkArea()->h / 2
+#endif
+					);
 		} else { // <= 
 			owner->view()->getScreen()->
 				Draw(0);

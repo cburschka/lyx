@@ -4,8 +4,8 @@
  *
  *           LyX, The Document Processor
  * 	 
- *	    Copyright 1995 Matthias Ettrich
- *          Copyright 1996-2000 The LyX Team.
+ *           Copyright 1995 Matthias Ettrich
+ *           Copyright 1995-2000 The LyX Team.
  *
  * ====================================================== */
 
@@ -32,6 +32,16 @@ public:
 	///
 	InsetCommand(string const & name, string const & arg = string(), 
 		     string const & opt = string());
+#ifdef USE_PAINTER
+	///
+	int ascent(Painter &, LyXFont const &) const;
+	///
+	int descent(Painter &, LyXFont const &) const;
+	///
+	int width(Painter &, LyXFont const &) const;
+	///
+	void draw(Painter &, LyXFont const &, int baseline, float & x) const;
+#else
 	///
 	int Ascent(LyXFont const & font) const;
 	///
@@ -40,6 +50,7 @@ public:
 	int Width(LyXFont const & font) const;
 	///
 	void Draw(LyXFont, LyXScreen & scr, int baseline, float & x);
+#endif
 	///
 	void Write(ostream &);
 	/// Parse the command.

@@ -42,8 +42,13 @@ class MathMacro : public MathParInset
     MathMacro(MathMacro *);
 	///
     ~MathMacro();
+#ifdef USE_PAINTER
+	///
+	void draw(Painter &, int, int);
+#else
 	///
     void Draw(int, int);
+#endif
 	///
     void Metrics();
 	///
@@ -115,8 +120,13 @@ class MathMacroArgument: public MathParInset
     MathedInset * Clone() { return this; }
 	///
     void Metrics();
+#ifdef USE_PAINTER
+	///
+	void draw(Painter &, int x, int baseline);
+#else
 	///
     void Draw(int x, int baseline);
+#endif
 	///
     void Write(ostream &);
 	///
@@ -144,8 +154,13 @@ class MathMacroTemplate: public MathParInset
     MathMacroTemplate(char const *, int na = 0, int f = 0);
 	///
     ~MathMacroTemplate();
+#ifdef USE_PAINTER
+	///
+	void draw(Painter &, int, int);
+#else
 	///
     void Draw(int, int);
+#endif
 	///
     void Metrics();
 	///

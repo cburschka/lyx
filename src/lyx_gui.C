@@ -297,10 +297,12 @@ void LyXGUI::init()
 	// 0.13 it should be moved again...
 	lyxserver = new LyXServer(lyxViews->getLyXFunc(), lyxrc->lyxpipes);
 
+#ifndef USE_PAINTER
 	// This is to make sure we get the selection color
 	getGC(gc_selection);
 	// This is to make sure we set the background_pixels
 	getGC(gc_clear);
+#endif
 }
 
 

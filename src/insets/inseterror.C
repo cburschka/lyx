@@ -18,6 +18,7 @@
 #include "lyxdraw.h"
 #include "gettext.h"
 #include "lyx_gui_misc.h" // CancelCloseBoxCB
+#include "Painter.h"
 
 /* Error, used for the LaTeX-Error Messages */
 
@@ -44,30 +45,80 @@ InsetError::~InsetError()
 }
 
 
+#ifdef USE_PAINTER
+int InsetError::ascent(Painter &, LyXFont const & font) const
+{
+	LyXFont efont;
+	efont.setSize(font.size()).decSize();
+	return efont.maxAscent() + 1;
+}
+#else
 int InsetError::Ascent(LyXFont const & font) const
 {
 	LyXFont efont;
 	efont.setSize(font.size()).decSize();
 	return efont.maxAscent()+1;
 }
+#endif
 
 
+#ifdef USE_PAINTER
+int InsetError::descent(Painter &, LyXFont const & font) const
+{
+	LyXFont efont;
+	efont.setSize(font.size()).decSize();
+	return efont.maxDescent() + 1;
+}
+#else
 int InsetError::Descent(LyXFont const & font) const
 {
 	LyXFont efont;
 	efont.setSize(font.size()).decSize();
 	return efont.maxDescent()+1;
 }
+#endif
 
 
+#ifdef USE_PAINTER
+int InsetError::width(Painter &, LyXFont const & font) const
+{
+	LyXFont efont;
+	efont.setSize(font.size()).decSize();
+	return 6 + efont.textWidth(_("Error"), strlen(_("Error")));
+}
+#else
 int InsetError::Width(LyXFont const & font) const
 {
 	LyXFont efont;
 	efont.setSize(font.size()).decSize();
 	return 6 + efont.textWidth(_("Error"), strlen(_("Error")));
 }
+#endif
 
 
+#ifdef USE_PAINTER
+void InsetError::draw(Painter & pain, LyXFont const & font,
+		      int baseline, float & x) const
+{
+	LyXFont efont;
+	efont.setSize(font.size()).decSize();
+	efont.setColor(LColor::error);
+   
+	// Draw as "Error" in a framed box
+	x += 1;
+	pain.fillRectangle(int(x), baseline - ascent(pain, font) + 1,
+			  width(pain, font) - 2,
+			  ascent(pain, font) + descent(pain, font) - 2,
+			   LColor::insetbg);
+	pain.rectangle(int(x), baseline - ascent(pain, font) + 1,
+		       width(pain, font) - 2,
+		       ascent(pain, font) + descent(pain, font) - 2,
+		       LColor::error);
+	pain.text(int(x + 2), baseline, _("Error"), efont);
+
+	x +=  width(pain, font) - 1;
+}
+#else
 void InsetError::Draw(LyXFont font, LyXScreen & scr,
 		      int baseline, float & x)
 {
@@ -87,7 +138,7 @@ void InsetError::Draw(LyXFont font, LyXScreen & scr,
 
 	x +=  Width(font) - 1;
 }
-
+#endif
 
 void InsetError::Write(ostream &)
 {

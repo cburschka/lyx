@@ -240,7 +240,11 @@ XFontStruct * FontLoader::doLoad(LyXFont::FONT_FAMILY family,
 			f.setUnderbar(LyXFont::INHERIT);
 			f.setNoun(LyXFont::INHERIT);
 			f.setLatex(LyXFont::INHERIT);
+#ifdef USE_PAINTER
+			f.setColor(LColor::inherit);
+#else
 			f.setColor(LyXFont::INHERIT_COLOR);
+#endif
 			lyxerr << "Font '" << f.stateText() 
 			       << "' matched by\n" << font << endl;
 		}

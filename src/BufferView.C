@@ -34,8 +34,12 @@ using std::for_each;
 #include "insets/lyxinset.h"
 #include "minibuffer.h"
 #include "lyxscreen.h"
+
+#ifndef NEW_WA
 #include "up.xpm"
 #include "down.xpm"
+#endif
+
 #include "debug.h"
 #include "lyxdraw.h"
 #include "lyx_gui_misc.h"
@@ -48,6 +52,7 @@ using std::for_each;
 #include "intl.h"
 #include "lyxrc.h"
 #include "lyxrow.h"
+#include "WorkArea.h"
 
 using std::find_if;
 
@@ -65,8 +70,10 @@ extern InsetUpdateStruct * InsetUpdateList;
 extern void UpdateInsetUpdateList();
 extern void FreeUpdateTimer();
 
+#ifndef NEW_WA
 // This is _very_ temporary
 FL_OBJECT * figinset_canvas;
+#endif
 
 BufferView::BufferView(LyXView * o, int xpos, int ypos,
 		       int width, int height)
@@ -75,17 +82,25 @@ BufferView::BufferView(LyXView * o, int xpos, int ypos,
 	buffer_ = 0;
 	text = 0;
 	screen = 0;
-	work_area = 0;
+#ifdef NEW_WA
+	workarea = new WorkArea(this, xpos, ypos, width, height);
+#else
 	figinset_canvas = 0;
+	work_area = 0;
 	scrollbar = 0;
 	button_down = 0;
 	button_up = 0;
+#endif
 	timer_cursor = 0;
-	current_scrollbar_value = 0;
 	create_view(xpos, ypos, width, height);
+	current_scrollbar_value = 0;
 	// Activate the timer for the cursor 
 	fl_set_timer(timer_cursor, 0.4);
+#ifdef NEW_WA
+	workarea->setFocus();
+#else
 	fl_set_focus_object(owner_->getForm(), work_area);
+#endif
 	work_area_focus = true;
 	lyx_focus = false;
 	the_locking_inset = 0;
@@ -98,7 +113,15 @@ BufferView::~BufferView()
 	delete text;
 }
 
-	      
+
+#ifdef USE_PAINTER
+Painter & BufferView::painter() 
+{
+	return workarea->getPainter();
+}
+#endif
+
+
 void BufferView::buffer(Buffer * b)
 {
 	lyxerr[Debug::INFO] << "Setting buffer in BufferView ("
@@ -150,7 +173,11 @@ void BufferView::buffer(Buffer * b)
 		lyxerr[Debug::INFO] << "  No Buffer!" << endl;
 		owner_->getMenus()->hideMenus();
 		updateScrollbar();
+#ifdef NEW_WA
+		workarea->redraw();
+#else
 		fl_redraw_object(work_area);
+#endif
 
 		// Also remove all remaining text's from the testcache.
 		// (there should not be any!) (if there is any it is a
@@ -170,13 +197,34 @@ void BufferView::updateScreen()
 {
 	// Regenerate the screen.
 	delete screen;
+#ifdef NEW_WA
+	screen = new LyXScreen(this,
+			       workarea->getWin(),
+			       workarea->getPixmap(),
+			       workarea->workWidth(),
+			       workarea->height(),
+			       workarea->xpos(),
+			       workarea->ypos(),
+			       text);
+#else
 	screen = new LyXScreen(FL_ObjWin(work_area),
 			       work_area->w,
 			       work_area->h,
 			       work_area->x,
 			       work_area->y,
 			       text);
+#endif
 }
+
+
+#ifdef NEW_WA
+void BufferView::resize(int xpos, int ypos, int width, int height)
+{
+	workarea->resize(xpos, ypos, width, height);
+	update(3);
+	redraw();
+}
+#endif
 
 
 void BufferView::resize()
@@ -187,23 +235,30 @@ void BufferView::resize()
 }
 
 
+#ifndef NEW_WA
 static bool lgb_hack = false;
+#endif
 
 void BufferView::redraw()
 {
 	lyxerr[Debug::INFO] << "BufferView::redraw()" << endl;
+#ifdef NEW_WA
+	workarea->redraw();
+#else
 	lgb_hack = true;
 	fl_redraw_object(work_area);
 	fl_redraw_object(scrollbar);
 	fl_redraw_object(button_down);
 	fl_redraw_object(button_up);
 	lgb_hack = false;
+#endif
 }
 
 
 void BufferView::fitCursor()
 {
 	if (screen) screen->FitCursor();
+	updateScrollbar();
 }
 
 
@@ -220,8 +275,12 @@ void BufferView::updateScrollbar()
 	 * be possible */
 
 	if (!buffer_) {
+#ifdef NEW_WA
+		workarea->setScrollbar(0, 1.0);
+#else
 		fl_set_slider_value(scrollbar, 0);
 		fl_set_slider_size(scrollbar, scrollbar->h);
+#endif
 		return;
 	}
 	
@@ -237,27 +296,65 @@ void BufferView::updateScrollbar()
 		cbsf = screen->first;
 
 	// check if anything has changed.
+#ifdef NEW_WA
+	if (max2 == cbth &&
+	    height2 == workarea->height() &&
+	    current_scrollbar_value == cbsf)
+		return; // no
+	max2 = cbth;
+	height2 = workarea->height();
+	current_scrollbar_value = cbsf;
+#else
 	if (max2 == cbth &&
 	    height2 == work_area->h &&
 	    current_scrollbar_value == cbsf)
 		return;	      // no
-	
 	max2 = cbth;
 	height2 = work_area->h;
 	current_scrollbar_value = cbsf;
+#endif
 
 	if (cbth <= height2) { // text is smaller than screen
+#ifdef NEW_WA
+		workarea->setScrollbar(0, 1.0); // right?
+#else
 		fl_set_slider_size(scrollbar, scrollbar->h);
+#endif
 		return;
 	}
-	
+
+#ifdef NEW_WA
+	long maximum_height = workarea->height() * 3 / 4 + cbth;
+#else
 	long maximum_height = work_area->h * 3 / 4 + cbth;
+#endif
 	long value = cbsf;
 
 	// set the scrollbar
+#ifdef NEW_WA
+	double hfloat = workarea->height();
+#else
 	double hfloat = work_area->h;
+#endif
 	double maxfloat = maximum_height;
-   
+
+#ifdef NEW_WA
+	float slider_size = 0.0;
+	int slider_value = value;
+
+	workarea->setScrollbarBounds(0, text->height - workarea->height());
+	double lineh = text->DefaultHeight();
+	workarea->setScrollbarIncrements(lineh);
+	if (maxfloat > 0.0) {
+		if ((hfloat / maxfloat) * float(height2) < 3)
+			slider_size = 3.0/float(height2);
+		else
+			slider_size = hfloat / maxfloat;
+	} else
+		slider_size = hfloat;
+
+	workarea->setScrollbar(slider_value, slider_size / workarea->height());
+#else
 	fl_set_slider_value(scrollbar, value);
 	fl_set_slider_bounds(scrollbar, 0,
 			     maximum_height - work_area->h);
@@ -275,6 +372,7 @@ void BufferView::updateScrollbar()
 	} else
 		fl_set_slider_size(scrollbar, hfloat);
 	fl_set_slider_precision(scrollbar, 0);
+#endif
 }
 
 
@@ -315,11 +413,19 @@ int BufferView::resizeCurrentBuffer()
 		selection = text->selection;
 		mark_set = text->mark_set;
 		delete text;
+#ifdef NEW_WA
+		text = new LyXText(this, workarea->workWidth(), buffer_);
+#else
 		text = new LyXText(work_area->w, buffer_);
+#endif
 	} else {
 		// See if we have a text in TextCache that fits
 		// the new buffer_ with the correct width.
+#ifdef NEW_WA
+		text = textcache.findFit(buffer_, workarea->workWidth());
+#else
 		text = textcache.findFit(buffer_, work_area->w);
+#endif
 		if (text) {
 			if (lyxerr.debugging()) {
 				lyxerr << "Found a LyXText that fits:\n";
@@ -328,7 +434,11 @@ int BufferView::resizeCurrentBuffer()
 			if (lyxerr.debugging())
 				textcache.show(lyxerr, "resizeCurrentBuffer");
 		} else {
+#ifdef NEW_WA
+			text = new LyXText(this, workarea->workWidth(), buffer_);
+#else
 			text = new LyXText(work_area->w, buffer_);
+#endif
 		}
 	}
 	updateScreen();
@@ -399,6 +509,14 @@ void BufferView::gotoError()
 }
 
 
+#ifdef NEW_WA
+extern "C" {
+	void C_BufferView_CursorToggleCB(FL_OBJECT * ob, long buf)
+	{
+		BufferView::CursorToggleCB(ob, buf);
+	}
+}
+#else
 extern "C" {
 // Just a bunch of C wrappers around static members of BufferView
 	void C_BufferView_UpCB(FL_OBJECT * ob, long buf)
@@ -433,11 +551,13 @@ extern "C" {
 						     0, 0, key, xev);
 	}
 }
+#endif
 
 
 void BufferView::create_view(int xpos, int ypos, int width, int height)
 {
 	FL_OBJECT * obj;
+#ifndef NEW_WA
 	int const bw = abs(fl_get_border_width());
 
 	// a hack for the figinsets (Matthias)
@@ -523,7 +643,7 @@ void BufferView::create_view(int xpos, int ypos, int width, int height)
 
 	// Remove the blue feedback rectangle
 	fl_set_pixmapbutton_focus_outline(obj, 0);
-
+#endif
 	//
 	// TIMERS
 	//
@@ -537,6 +657,24 @@ void BufferView::create_view(int xpos, int ypos, int width, int height)
 
 
 // Callback for scrollbar up button
+#ifdef NEW_WA
+void BufferView::UpCB(long time, int button)
+{
+	if (buffer_ == 0) return;
+
+	switch (button) {
+	case 3:
+		ScrollUpOnePage();
+		break;
+	case 2:
+		ScrollDownOnePage();
+		break;
+	default:
+		ScrollUp(time);
+		break;
+	}
+}
+#else
 void BufferView::UpCB(FL_OBJECT * ob, long)
 {
 	BufferView * view = static_cast<BufferView*>(ob->u_vdata);
@@ -557,6 +695,7 @@ void BufferView::UpCB(FL_OBJECT * ob, long)
 		view->ScrollUp(time++); break;
 	}
 }
+#endif
 
 
 static inline
@@ -567,6 +706,41 @@ void waitForX()
 
 
 // Callback for scrollbar slider
+#ifdef NEW_WA
+void BufferView::ScrollCB(double value)
+{
+	extern bool cursor_follows_scrollbar;
+	
+	if (buffer_ == 0) return;
+
+	current_scrollbar_value = long(value);
+	if (current_scrollbar_value < 0)
+		current_scrollbar_value = 0;
+   
+	if (!screen)
+		return;
+
+	screen->Draw(current_scrollbar_value);
+
+	if (cursor_follows_scrollbar) {
+		LyXText * vbt = text;
+		int height = vbt->DefaultHeight();
+		
+		if (vbt->cursor.y < screen->first + height) {
+			vbt->SetCursorFromCoordinates(0,
+						      screen->first +
+						      height);
+		} else if (vbt->cursor.y >
+			   screen->first + workarea->height() - height) {
+			vbt->SetCursorFromCoordinates(0,
+						      screen->first +
+						      workarea->height()  -
+						      height);
+		}
+	}
+	waitForX();
+}
+#else
 void BufferView::ScrollCB(FL_OBJECT * ob, long)
 {
 	BufferView * view = static_cast<BufferView*>(ob->u_vdata);
@@ -602,9 +776,28 @@ void BufferView::ScrollCB(FL_OBJECT * ob, long)
 	}
 	waitForX();
 }
+#endif
 
 
 // Callback for scrollbar down button
+#ifdef NEW_WA
+void BufferView::DownCB(long time, int button)
+{
+	if (buffer_ == 0) return;
+	
+	switch (button) {
+	case 2:
+		ScrollUpOnePage();
+		break;
+	case 3:
+		ScrollDownOnePage();
+		break;
+	default:
+		ScrollDown(time);
+		break;
+	}
+}
+#else
 void BufferView::DownCB(FL_OBJECT * ob, long)
 {
 	BufferView * view = static_cast<BufferView*>(ob->u_vdata);
@@ -626,8 +819,37 @@ void BufferView::DownCB(FL_OBJECT * ob, long)
 		view->ScrollDown(time++); break;
 	}
 }
+#endif
 
 
+#ifdef NEW_WA
+int BufferView::ScrollUp(long time)
+{
+	if (buffer_ == 0) return 0;
+	if (!screen) return 0;
+   
+	double value = workarea->getScrollbarValue();
+   
+	if (value == 0) return 0;
+
+	float add_value =  (text->DefaultHeight()
+			    + float(time) * float(time) * 0.125);
+   
+	if (add_value > workarea->height())
+		add_value = float(workarea->height() -
+				  text->DefaultHeight());
+   
+	value -= add_value;
+
+	if (value < 0)
+		value = 0;
+   
+	workarea->setScrollbarValue(value);
+   
+	ScrollCB(value); 
+	return 0;
+}
+#else
 int BufferView::ScrollUp(long time)
 {
 	if (buffer_ == 0) return 0;
@@ -654,8 +876,39 @@ int BufferView::ScrollUp(long time)
 	ScrollCB(scrollbar, 0); 
 	return 0;
 }
+#endif
 
 
+#ifdef NEW_WA
+int BufferView::ScrollDown(long time)
+{
+	if (buffer_ == 0) return 0;
+	if (!screen) return 0;
+   
+	double value= workarea->getScrollbarValue();
+	pair<double, double> p = workarea->getScrollbarBounds();
+	double max = p.second;
+	
+	if (value == max) return 0;
+
+	float add_value =  (text->DefaultHeight()
+			    + float(time) * float(time) * 0.125);
+   
+	if (add_value > workarea->height())
+		add_value = float(workarea->height() -
+				  text->DefaultHeight());
+   
+	value += add_value;
+   
+	if (value > max)
+		value = max;
+
+	workarea->setScrollbarValue(value);
+	
+	ScrollCB(value); 
+	return 0;
+}
+#else
 int BufferView::ScrollDown(long time)
 {
 	if (buffer_ == 0) return 0;
@@ -684,8 +937,28 @@ int BufferView::ScrollDown(long time)
 	ScrollCB(scrollbar, 0); 
 	return 0;
 }
+#endif
 
 
+#ifdef NEW_WA
+void BufferView::ScrollUpOnePage()
+{
+	if (buffer_ == 0) return;
+	if (!screen) return;
+   
+	long y = screen->first;
+
+	if (!y) return;
+
+	Row * row = text->GetRowNearY(y);
+
+	y = y - workarea->height() + row->height;
+
+	workarea->setScrollbarValue(y);
+	
+	ScrollCB(y); 
+}
+#else
 void BufferView::ScrollUpOnePage(long /*time*/)
 {
 	if (buffer_ == 0) return;
@@ -703,8 +976,28 @@ void BufferView::ScrollUpOnePage(long /*time*/)
    
 	ScrollCB(scrollbar, 0); 
 }
+#endif
 
 
+#ifdef NEW_WA
+void BufferView::ScrollDownOnePage()
+{
+	if (buffer_ == 0) return;
+	if (!screen) return;
+   
+	long y = screen->first;
+
+	if (y > text->height - workarea->height())
+		return;
+   
+	y += workarea->height();
+	text->GetRowNearY(y);
+
+	workarea->setScrollbarValue(y);
+	
+	ScrollCB(y); 
+}
+#else
 void BufferView::ScrollDownOnePage(long /*time*/)
 {
 	if (buffer_ == 0) return;
@@ -724,8 +1017,10 @@ void BufferView::ScrollDownOnePage(long /*time*/)
    
 	ScrollCB(scrollbar, 0); 
 }
+#endif
 
 
+#ifndef NEW_WA
 int BufferView::work_area_handler(FL_OBJECT * ob, int event,
 				  FL_Coord, FL_Coord ,
 				  int /*key*/, void * xev)
@@ -827,7 +1122,47 @@ int BufferView::work_area_handler(FL_OBJECT * ob, int event,
 	}
 	return 1;
 }
+#endif
 
+
+#ifdef NEW_WA
+void BufferView::WorkAreaMotionNotify(int x, int y, unsigned int state)
+{
+	if (buffer_ == 0 || !screen) return;
+
+	// Check for inset locking
+	if (the_locking_inset) {
+		LyXCursor cursor = text->cursor;
+		the_locking_inset->
+			InsetMotionNotify(x - cursor.x,
+					  y - cursor.y,
+					  state);
+		return;
+	}
+
+	// Only use motion with button 1
+	if (!state & Button1MotionMask)
+		return; 
+   
+	/* The selection possible is needed, that only motion events are 
+	 * used, where the bottom press event was on the drawing area too */
+	if (selection_possible) {
+		screen->HideCursor();
+
+		text->SetCursorFromCoordinates(x, y + screen->first);
+      
+		if (!text->selection)
+			update(-3); // Maybe an empty line was deleted
+      
+		text->SetSelection();
+		screen->ToggleToggle();
+		if (screen->FitCursor())
+			updateScrollbar(); 
+		screen->ShowCursor();
+	}
+	return;
+}
+#else
 int BufferView::WorkAreaMotionNotify(FL_OBJECT * ob, Window,
 				     int /*w*/, int /*h*/,
 				     XEvent * ev, void * /*d*/)
@@ -870,11 +1205,149 @@ int BufferView::WorkAreaMotionNotify(FL_OBJECT * ob, Window,
 	}
 	return 0;
 }
+#endif
 
-
+#ifdef USE_PAINTER
+extern int bibitemMaxWidth(Painter &, LyXFont const &);
+#else
 extern int bibitemMaxWidth(LyXFont const &);
+#endif
 
 // Single-click on work area
+#ifdef NEW_WA
+void BufferView::WorkAreaButtonPress(int xpos, int ypos, unsigned int button)
+{
+	last_click_x = -1;
+	last_click_y = -1;
+
+	if (buffer_ == 0 || !screen) return;
+
+	Inset * inset_hit = checkInsetHit(xpos, ypos);
+
+	// ok ok, this is a hack.
+	if (button == 4 || button == 5) {
+		switch (button) {
+		case 4:
+			ScrollUp(100); // This number is only temporary
+			break;
+		case 5:
+			ScrollDown(100);
+			break;
+		}
+	}
+	
+	if (the_locking_inset) {
+		// We are in inset locking mode
+		
+		/* Check whether the inset was hit. If not reset mode,
+		   otherwise give the event to the inset */
+		if (inset_hit) {
+			the_locking_inset->
+				InsetButtonPress(xpos, ypos,
+						 button);
+			return;
+		} else {
+			unlockInset(the_locking_inset);
+		}
+	}
+	
+	selection_possible = true;
+	screen->HideCursor();
+	
+	// Right button mouse click on a table
+	if (button == 3 &&
+	    (text->cursor.par->table ||
+	     text->MouseHitInTable(xpos, ypos + screen->first))) {
+		// Set the cursor to the press-position
+		text->SetCursorFromCoordinates(xpos, ypos + screen->first);
+		bool doit = true;
+		
+		// Only show the table popup if the hit is in
+		// the table, too
+		if (!text->HitInTable(text->cursor.row, xpos))
+			doit = false;
+		
+		// Hit above or below the table?
+		if (doit) {
+			if (!text->selection) {
+				screen->ToggleSelection();
+				text->ClearSelection();
+				text->FullRebreak();
+				screen->Update();
+				updateScrollbar();
+			}
+			// Popup table popup when on a table.
+			// This is obviously temporary, since we
+			// should be able to popup various
+			// context-sensitive-menus with the
+			// the right mouse. So this should be done more
+			// general in the future. Matthias.
+			selection_possible = false;
+			owner_->getLyXFunc()
+				->Dispatch(LFUN_LAYOUT_TABLE,
+					   "true");
+			return;
+		}
+	}
+	
+	int screen_first = screen->first;
+	
+	// Middle button press pastes if we have a selection
+	bool paste_internally = false;
+	if (button == 2
+	    && text->selection) {
+		owner_->getLyXFunc()->Dispatch(LFUN_COPY);
+		paste_internally = true;
+	}
+	
+	// Clear the selection
+	screen->ToggleSelection();
+	text->ClearSelection();
+	text->FullRebreak();
+	screen->Update();
+	updateScrollbar();
+	
+	// Single left click in math inset?
+	if (inset_hit != 0 && inset_hit->Editable() == 2) {
+		// Highly editable inset, like math
+		selection_possible = false;
+		owner_->updateLayoutChoice();
+		owner_->getMiniBuffer()->Set(inset_hit->EditMessage());
+		inset_hit->Edit(xpos, ypos);
+		return;
+	} 
+	
+	// Right click on a footnote flag opens float menu
+	if (button == 3) { 
+		selection_possible = false;
+		return;
+	}
+	
+	text->SetCursorFromCoordinates(xpos, ypos + screen_first);
+	text->FinishUndo();
+	text->sel_cursor = text->cursor;
+	text->cursor.x_fix = text->cursor.x;
+	
+	owner_->updateLayoutChoice();
+	if (screen->FitCursor()){
+		updateScrollbar();
+		selection_possible = false;
+	}
+	
+	// Insert primary selection with middle mouse
+	// if there is a local selection in the current buffer,
+	// insert this
+	if (button == 2) {
+		if (paste_internally)
+			owner_->getLyXFunc()->Dispatch(LFUN_PASTE);
+		else
+			owner_->getLyXFunc()->Dispatch(LFUN_PASTESELECTION,
+						       "paragraph");
+		selection_possible = false;
+		return;
+	}
+}
+#else
 int BufferView::WorkAreaButtonPress(FL_OBJECT * ob, Window,
 				    int /*w*/, int /*h*/,
 				    XEvent * ev, void */*d*/)
@@ -1039,8 +1512,164 @@ int BufferView::WorkAreaButtonPress(FL_OBJECT * ob, Window,
 	
 	return 0;
 }
+#endif
 
 
+#ifdef NEW_WA
+void BufferView::WorkAreaButtonRelease(int x, int y, unsigned int button)
+{
+	if (buffer_ == 0 || screen == 0) return;
+
+	// If we hit an inset, we have the inset coordinates in these
+	// and inset_hit points to the inset.  If we do not hit an
+	// inset, inset_hit is 0, and inset_x == x, inset_y == y.
+	Inset * inset_hit = checkInsetHit(x, y);
+
+	if (the_locking_inset) {
+		// We are in inset locking mode.
+
+		/* LyX does a kind of work-area grabbing for insets.
+		   Only a ButtonPress Event outside the inset will 
+		   force a InsetUnlock. */
+		the_locking_inset->
+			InsetButtonRelease(x, x, button);
+		return;
+	}
+	
+	selection_possible = false;
+        if (text->cursor.par->table) {
+                int cell = text->
+                        NumberOfCell(text->cursor.par,
+                                     text->cursor.pos);
+                if (text->cursor.par->table->IsContRow(cell) &&
+                    text->cursor.par->table->
+                    CellHasContRow(text->cursor.par->table->
+                                   GetCellAbove(cell))<0) {
+                        text->CursorUp();
+                }
+        }
+	
+	if (button >= 2) return;
+
+	SetState();
+	owner_->getMiniBuffer()->Set(CurrentState());
+
+	// Did we hit an editable inset?
+	if (inset_hit != 0) {
+		// Inset like error, notes and figures
+		selection_possible = false;
+#ifdef WITH_WARNINGS
+#warning fix this proper in 0.13
+#endif
+		// Following a ref shouldn't issue
+		// a push on the undo-stack
+		// anylonger, now that we have
+		// keybindings for following
+		// references and returning from
+		// references.  IMHO though, it
+		// should be the inset's own business
+		// to push or not push on the undo
+		// stack. They don't *have* to
+		// alter the document...
+		// (Joacim)
+		// ...or maybe the SetCursorParUndo()
+		// below isn't necessary at all anylonger?
+		if (inset_hit->LyxCode() == Inset::REF_CODE) {
+			text->SetCursorParUndo();
+		}
+
+		owner_->getMiniBuffer()->Set(inset_hit->EditMessage());
+		inset_hit->Edit(x, y);
+		return;
+	}
+
+	// check whether we want to open a float
+	if (text) {
+		bool hit = false;
+		char c = ' ';
+		if (text->cursor.pos <
+		    text->cursor.par->Last()) {
+			c = text->cursor.par->
+				GetChar(text->cursor.pos);
+		}
+		if (c == LyXParagraph::META_FOOTNOTE
+		    || c == LyXParagraph::META_MARGIN
+		    || c == LyXParagraph::META_FIG
+		    || c == LyXParagraph::META_TAB
+		    || c == LyXParagraph::META_WIDE_FIG
+		    || c == LyXParagraph::META_WIDE_TAB
+                    || c == LyXParagraph::META_ALGORITHM){
+			hit = true;
+		} else if (text->cursor.pos - 1 >= 0) {
+			c = text->cursor.par->
+				GetChar(text->cursor.pos - 1);
+			if (c == LyXParagraph::META_FOOTNOTE
+			    || c == LyXParagraph::META_MARGIN
+			    || c == LyXParagraph::META_FIG
+			    || c == LyXParagraph::META_TAB
+			    || c == LyXParagraph::META_WIDE_FIG 
+			    || c == LyXParagraph::META_WIDE_TAB
+			    || c == LyXParagraph::META_ALGORITHM){
+				// We are one step too far to the right
+				text->CursorLeft();
+				hit = true;
+			}
+		}
+		if (hit == true) {
+			toggleFloat();
+			selection_possible = false;
+			return;
+		}
+	}
+
+	// Do we want to close a float? (click on the float-label)
+	if (text->cursor.row->par->footnoteflag == 
+	    LyXParagraph::OPEN_FOOTNOTE
+	    //&& text->cursor.pos == 0
+	    && text->cursor.row->previous &&
+	    text->cursor.row->previous->par->
+	    footnoteflag != LyXParagraph::OPEN_FOOTNOTE){
+		LyXFont font (LyXFont::ALL_SANE);
+		font.setSize(LyXFont::SIZE_FOOTNOTE);
+
+		int box_x = 20; // LYX_PAPER_MARGIN;
+		box_x += font.textWidth(" wide-tab ", 10);
+
+		int screen_first = screen->first;
+
+		if (x < box_x
+		    && y + screen_first > text->cursor.y -
+		    text->cursor.row->baseline
+		    && y + screen_first < text->cursor.y -
+		    text->cursor.row->baseline
+		    + font.maxAscent() * 1.2 + font.maxDescent() * 1.2) {
+			toggleFloat();
+			selection_possible = false;
+			return;
+		}
+	}
+
+	// Maybe we want to edit a bibitem ale970302
+#ifdef USE_PAINTER
+	if (text->cursor.par->bibkey && x < 20 + 
+	    bibitemMaxWidth(painter(),
+			    textclasslist
+			    .TextClass(buffer_->
+				       params.textclass).defaultfont())) {
+		text->cursor.par->bibkey->Edit(0, 0);
+	}
+#else
+	if (text->cursor.par->bibkey && x < 20 + 
+	    bibitemMaxWidth(textclasslist
+			    .TextClass(buffer_->
+				       params.textclass).defaultfont())) {
+		text->cursor.par->bibkey->Edit(0, 0);
+	}
+#endif
+
+	return;
+}
+#else
 int BufferView::WorkAreaButtonRelease(FL_OBJECT * ob, Window ,
 				      int /*w*/, int /*h*/,
 				      XEvent * ev, void * /*d*/)
@@ -1198,13 +1827,81 @@ int BufferView::WorkAreaButtonRelease(FL_OBJECT * ob, Window ,
 
 	return 0;
 }
-
+#endif
 
 /* 
  * Returns an inset if inset was hit. 0 otherwise.
  * If hit, the coordinates are changed relative to the inset. 
  * Otherwise coordinates are not changed, and false is returned.
  */
+#ifdef USE_PAINTER
+Inset * BufferView::checkInsetHit(int & x, int & y)
+{
+	if (!getScreen())
+		return 0;
+  
+	int y_tmp = y + getScreen()->first;
+  
+	LyXCursor & cursor = text->cursor;
+	LyXDirection direction = text->real_current_font.getFontDirection();
+
+	if (cursor.pos < cursor.par->Last()
+	    && cursor.par->GetChar(cursor.pos) == LyXParagraph::META_INSET
+	    && cursor.par->GetInset(cursor.pos)
+	    && cursor.par->GetInset(cursor.pos)->Editable()) {
+
+		// Check whether the inset really was hit
+		Inset * tmpinset = cursor.par->GetInset(cursor.pos);
+		LyXFont font = text->GetFont(cursor.par, cursor.pos);
+		int start_x, end_x;
+		if (direction == LYX_DIR_LEFT_TO_RIGHT) {
+			start_x = cursor.x;
+			end_x = cursor.x + tmpinset->width(painter(), font);
+		} else {
+			start_x = cursor.x - tmpinset->width(painter(), font);
+			end_x = cursor.x;
+		}
+
+		if (x > start_x && x < end_x
+		    && y_tmp > cursor.y - tmpinset->ascent(painter(), font)
+		    && y_tmp < cursor.y + tmpinset->descent(painter(), font)) {
+			x = x - start_x;
+			// The origin of an inset is on the baseline
+			y = y_tmp - (cursor.y); 
+			return tmpinset;
+		}
+	}
+
+	if (cursor.pos - 1 >= 0
+		   && cursor.par->GetChar(cursor.pos - 1) == LyXParagraph::META_INSET
+		   && cursor.par->GetInset(cursor.pos - 1)
+		   && cursor.par->GetInset(cursor.pos - 1)->Editable()) {
+		text->CursorLeft();
+		Inset * tmpinset = cursor.par->GetInset(cursor.pos);
+		LyXFont font = text->GetFont(cursor.par, cursor.pos);
+		int start_x, end_x;
+		if (direction == LYX_DIR_LEFT_TO_RIGHT) {
+			start_x = cursor.x;
+			end_x = cursor.x + tmpinset->width(painter(), font);
+		} else {
+			start_x = cursor.x - tmpinset->width(painter(), font);
+			end_x = cursor.x;
+		}
+		if (x > start_x && x < end_x
+		    && y_tmp > cursor.y - tmpinset->ascent(painter(), font)
+		    && y_tmp < cursor.y + tmpinset->descent(painter(), font)) {
+			x = x - start_x;
+			// The origin of an inset is on the baseline
+			y = y_tmp - (cursor.y); 
+			return tmpinset;
+		} else {
+			text->CursorRight();
+			return 0;
+		}
+	}
+	return 0;
+}
+#else
 Inset * BufferView::checkInsetHit(int & x, int & y)
 {
 	if (!getScreen())
@@ -1271,8 +1968,65 @@ Inset * BufferView::checkInsetHit(int & x, int & y)
 	}
 	return 0;
 }
+#endif
 
+#ifdef NEW_WA
+void BufferView::workAreaExpose()
+{
+	// this is a hack to ensure that we only call this through
+	// BufferView::redraw().
+	//if (!lgb_hack) {
+	//	redraw();
+	//}
+	
+	static int work_area_width = -1;
+	static int work_area_height = -1;
 
+	bool widthChange = workarea->workWidth() != work_area_width;
+	bool heightChange = workarea->height() != work_area_height;
+
+	// update from work area
+	work_area_width = workarea->workWidth();
+	work_area_height = workarea->height();
+	if (buffer_ != 0) {
+		if (widthChange) {
+			// All buffers need a resize
+			bufferlist.resize();
+
+			// Remove all texts from the textcache
+			// This is not _really_ what we want to do. What
+			// we really want to do is to delete in textcache
+			// that does not have a BufferView with matching
+			// width, but as long as we have only one BufferView
+			// deleting all gives the same result.
+			if (lyxerr.debugging())
+				textcache.show(lyxerr, "Expose delete all");
+			textcache.clear();
+		} else if (heightChange) {
+			// Rebuild image of current screen
+			updateScreen();
+			// fitCursor() ensures we don't jump back
+			// to the start of the document on vertical
+			// resize
+			fitCursor();
+
+			// The main window size has changed, repaint most stuff
+			redraw();
+			// ...including the minibuffer
+			owner_->getMiniBuffer()->Init();
+
+		} else if (screen) screen->Redraw();
+	} else {
+		// Grey box when we don't have a buffer
+		workarea->greyOut();
+	}
+
+	// always make sure that the scrollbar is sane.
+	updateScrollbar();
+	owner_->updateLayoutChoice();
+	return;
+}
+#else
 int BufferView::workAreaExpose()
 {
 	if (!work_area || !work_area->form->visible) 
@@ -1333,6 +2087,7 @@ int BufferView::workAreaExpose()
 	owner_->updateLayoutChoice();
 	return 1;
 }
+#endif
 
 
 // Callback for cursor timer
@@ -1440,6 +2195,83 @@ void BufferView::CursorToggleCB(FL_OBJECT * ob, long)
 }
 
 
+#ifdef NEW_WA
+static
+string fromClipboard(Window win, XEvent * event)
+{
+	string strret;
+	if (event->xselection.type == XA_STRING
+	    && event->xselection.property) {
+		Atom tmpatom;
+		unsigned long ul1;
+		unsigned long ul2;
+		unsigned char * uc = 0;
+		int tmpint;
+		if (XGetWindowProperty(
+			event->xselection.display,  // display
+			win,                        // w
+			event->xselection.property, // property
+			0,                          // long_offset	
+			0,                          // logn_length	
+			False,                      // delete	
+			XA_STRING,                  // req_type	
+			&tmpatom,                   // actual_type_return
+			&tmpint,                    // actual_format_return
+			&ul1,
+			&ul2,
+			&uc                         // prop_return	
+			) != Success) {
+			return strret;
+		}
+		if (uc) {
+			free(uc);
+			uc = 0;
+		}
+		if (XGetWindowProperty(
+			event->xselection.display,             // display
+			win,                        // w
+			event->xselection.property, // property
+			0,                          // long_offset
+			ul2/4+1,                    // long_length
+			True,                       // delete
+			XA_STRING,                  // req_type
+			&tmpatom,                   // actual_type_return
+			&tmpint,                    // actual_format_return
+			&ul1,                       // nitems_return
+			&ul2,                       // bytes_after_return
+			&uc                         // prop_return */
+			) != Success) {
+			return strret;
+		}
+		if (uc) {
+			strret = reinterpret_cast<char*>(uc);
+			free(uc); // yes free!
+			uc = 0;
+		}
+	}
+	return strret;
+}
+
+
+void BufferView::WorkAreaSelectionNotify(Window win, XEvent * event)
+{
+	if (buffer_ == 0) return;
+
+	screen->HideCursor();
+	beforeChange();
+	string clb = fromClipboard(win, event);
+	if (!clb.empty()) {
+		if (!ascii_type)
+			text->InsertStringA(clb.c_str());
+		else
+			text->InsertStringB(clb.c_str());
+
+		update(1);
+		
+	}
+}
+
+#else
 int BufferView::WorkAreaSelectionNotify(FL_OBJECT *, Window win,
 					int /*w*/, int /*h*/,
 					XEvent * event, void */*d*/)
@@ -1513,8 +2345,29 @@ int BufferView::WorkAreaSelectionNotify(FL_OBJECT *, Window win,
 	}
 	return 0;
 }
+#endif
 
 
+#ifdef NEW_WA
+void BufferView::cursorPrevious()
+{
+	if (!text->cursor.row->previous) return;
+	
+	long y = getScreen()->first;
+	Row * cursorrow = text->cursor.row;
+	text->SetCursorFromCoordinates(text->cursor.x_fix, y);
+	text->FinishUndo();
+	// This is to allow jumping over large insets
+	if ((cursorrow == text->cursor.row))
+		text->CursorUp();
+	
+  	if (text->cursor.row->height < workarea->height())
+		getScreen()->Draw(text->cursor.y
+				  - text->cursor.row->baseline
+				  + text->cursor.row->height
+				  - workarea->height() + 1 );
+}
+#else
 void BufferView::cursorPrevious()
 {
 	if (!text->cursor.row->previous) return;
@@ -1533,8 +2386,29 @@ void BufferView::cursorPrevious()
 				  + text->cursor.row->height
 				  - work_area->h +1 );
 }
+#endif
 
 
+#ifdef NEW_WA
+void BufferView::cursorNext()
+{
+	if (!text->cursor.row->next) return;
+	
+	long y = getScreen()->first;
+	text->GetRowNearY(y);
+	Row * cursorrow = text->cursor.row;
+	text->SetCursorFromCoordinates(text->cursor.x_fix, y
+				       + workarea->height());
+	text->FinishUndo();
+	// This is to allow jumping over large insets
+	if ((cursorrow == text->cursor.row))
+		text->CursorDown();
+	
+ 	if (text->cursor.row->height < workarea->height())
+		getScreen()->Draw(text->cursor.y
+				  - text->cursor.row->baseline);
+}
+#else
 void BufferView::cursorNext()
 {
 	if (!text->cursor.row->next) return;
@@ -1552,6 +2426,7 @@ void BufferView::cursorNext()
 		getScreen()->Draw(text->cursor.y
 				  - text->cursor.row->baseline);
 }
+#endif
 
 
 bool BufferView::available() const
@@ -1691,4 +2566,22 @@ void BufferView::insetUnlock()
 		text->FinishUndo();
 		inset_slept = false;
 	}
+}
+
+
+bool BufferView::focus() const
+{
+	return workarea->hasFocus();
+}
+
+
+void BufferView::focus(bool f)
+{
+	if (f) workarea->setFocus();
+}
+
+
+bool BufferView::active() const
+{
+	return workarea->active();
 }
