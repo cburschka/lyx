@@ -2713,7 +2713,7 @@ void LyXText::backspace()
 
 // returns pointer to a specified row
 RowList::iterator
-LyXText::getRow(Paragraph * par, pos_type pos, int & y) const
+LyXText::getRow(ParagraphList::iterator pit, pos_type pos, int & y) const
 {
 	y = 0;
 
@@ -2723,7 +2723,7 @@ LyXText::getRow(Paragraph * par, pos_type pos, int & y) const
 	// find the first row of the specified paragraph
 	RowList::iterator rit = rowlist_.begin();
 	RowList::iterator end = rowlist_.end();
-	while (boost::next(rit) != end && rit->par() != par) {
+	while (boost::next(rit) != end && rit->par() != pit) {
 		y += rit->height();
 		++rit;
 	}
@@ -2731,7 +2731,7 @@ LyXText::getRow(Paragraph * par, pos_type pos, int & y) const
 	// now find the wanted row
 	while (rit->pos() < pos
 	       && boost::next(rit) != end
-	       && boost::next(rit)->par() == par
+	       && boost::next(rit)->par() == pit
 	       && boost::next(rit)->pos() <= pos) {
 		y += rit->height();
 		++rit;
@@ -2749,7 +2749,9 @@ RowList::iterator LyXText::getRowNearY(int & y) const
 	RowList::iterator rit = rowlist_.begin();
 	RowList::iterator end = rowlist_.end();
 
-	while (rit != end && boost::next(rit) != end && tmpy + rit->height() <= y) {
+	while (rit != end &&
+	       boost::next(rit) != end &&
+	       tmpy + rit->height() <= y) {
 		tmpy += rit->height();
 		++rit;
 	}

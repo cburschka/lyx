@@ -311,11 +311,11 @@ void LyXText::removeParagraph(RowList::iterator rit)
 }
 
 
-#warning FIXME Convert this to ParagraphList::iterator
-void LyXText::insertParagraph(Paragraph * par, RowList::iterator rowit)
+void LyXText::insertParagraph(ParagraphList::iterator pit,
+			      RowList::iterator rowit)
 {
 	// insert a new row, starting at position 0
-	Row newrow(par, 0);
+	Row newrow(pit, 0);
 	RowList::iterator rit = rowlist_.insert(rowit, newrow);
 
 	// and now append the whole paragraph before the new row
@@ -384,9 +384,10 @@ void LyXText::makeFontEntriesLayoutSpecific(Buffer const & buf,
 }
 
 
-Paragraph * LyXText::setLayout(LyXCursor & cur, LyXCursor & sstart_cur,
-			       LyXCursor & send_cur,
-			       string const & layout)
+ParagraphList::iterator
+LyXText::setLayout(LyXCursor & cur, LyXCursor & sstart_cur,
+		   LyXCursor & send_cur,
+		   string const & layout)
 {
 	Paragraph * endpar = send_cur.par()->next();
 	Paragraph * undoendpar = endpar;
@@ -442,9 +443,9 @@ void LyXText::setLayout(string const & layout)
 		selection.start = cursor;  // dummy selection
 		selection.end = cursor;
 	}
-	Paragraph * endpar = setLayout(cursor, selection.start,
-				       selection.end, layout);
-	redoParagraphs(selection.start, endpar);
+	ParagraphList::iterator endpit = setLayout(cursor, selection.start,
+						   selection.end, layout);
+	redoParagraphs(selection.start, endpit);
 
 	// we have to reset the selection, because the
 	// geometry could have changed
@@ -651,10 +652,9 @@ void LyXText::redoDrawingOfParagraph(LyXCursor const & cur)
 // and the specified par
 // This function is needed after SetLayout and SetFont etc.
 void LyXText::redoParagraphs(LyXCursor const & cur,
-			     Paragraph const * ep)
+			     ParagraphList::iterator endpit)
 {
 	RowList::iterator tmprit = cur.row();
-	ParagraphList::iterator endpit(const_cast<Paragraph*>(ep));
 	int y = cur.y() - tmprit->baseline();
 
 	ParagraphList::iterator first_phys_pit;
@@ -1046,24 +1046,25 @@ void LyXText::setParagraph(bool line_top, bool line_bottom,
 
 
 // set the counter of a paragraph. This includes the labels
-void LyXText::setCounter(Buffer const * buf, Paragraph * par)
+void LyXText::setCounter(Buffer const * buf, ParagraphList::iterator pit)
 {
 	LyXTextClass const & textclass = buf->params.getLyXTextClass();
-	LyXLayout_ptr const & layout = par->layout();
+	LyXLayout_ptr const & layout = pit->layout();
 
-	if (par->previous()) {
+	if (pit != ownerParagraphs().begin()) {
 
-		par->params().appendix(par->previous()->params().appendix());
-		if (!par->params().appendix() && par->params().startOfAppendix()) {
-			par->params().appendix(true);
+		pit->params().appendix(boost::prior(pit)->params().appendix());
+		if (!pit->params().appendix() &&
+		    pit->params().startOfAppendix()) {
+			pit->params().appendix(true);
 			textclass.counters().reset();
 		}
-		par->enumdepth = par->previous()->enumdepth;
-		par->itemdepth = par->previous()->itemdepth;
+		pit->enumdepth = boost::prior(pit)->enumdepth;
+		pit->itemdepth = boost::prior(pit)->itemdepth;
 	} else {
-		par->params().appendix(par->params().startOfAppendix());
-		par->enumdepth = 0;
-		par->itemdepth = 0;
+		pit->params().appendix(pit->params().startOfAppendix());
+		pit->enumdepth = 0;
+		pit->itemdepth = 0;
 	}
 
 	/* Maybe we have to increment the enumeration depth.
@@ -1073,31 +1074,31 @@ void LyXText::setCounter(Buffer const * buf, Paragraph * par)
 	 * AND, bibliographies can't have their depth changed ie. they
 	 *	are always of depth 0
 	 */
-	if (par->previous()
-	    && par->previous()->getDepth() < par->getDepth()
-	    && par->previous()->layout()->labeltype == LABEL_COUNTER_ENUMI
-	    && par->enumdepth < 3
+	if (pit != ownerParagraphs().begin()
+	    && boost::prior(pit)->getDepth() < pit->getDepth()
+	    && boost::prior(pit)->layout()->labeltype == LABEL_COUNTER_ENUMI
+	    && pit->enumdepth < 3
 	    && layout->labeltype != LABEL_BIBLIO) {
-		par->enumdepth++;
+		pit->enumdepth++;
 	}
 
 	// Maybe we have to decrement the enumeration depth, see note above
-	if (par->previous()
-	    && par->previous()->getDepth() > par->getDepth()
+	if (pit != ownerParagraphs().begin()
+	    && boost::prior(pit)->getDepth() > pit->getDepth()
 	    && layout->labeltype != LABEL_BIBLIO) {
-		par->enumdepth = par->depthHook(par->getDepth())->enumdepth;
+		pit->enumdepth = pit->depthHook(pit->getDepth())->enumdepth;
 	}
 
-	if (!par->params().labelString().empty()) {
-		par->params().labelString(string());
+	if (!pit->params().labelString().empty()) {
+		pit->params().labelString(string());
 	}
 
 	if (layout->margintype == MARGIN_MANUAL) {
-		if (par->params().labelWidthString().empty()) {
-			par->setLabelWidthString(layout->labelstring());
+		if (pit->params().labelWidthString().empty()) {
+			pit->setLabelWidthString(layout->labelstring());
 		}
 	} else {
-		par->setLabelWidthString(string());
+		pit->setLabelWidthString(string());
 	}
 
 	// is it a layout that has an automatic label?
@@ -1113,7 +1114,7 @@ void LyXText::setCounter(Buffer const * buf, Paragraph * par)
 			textclass.counters().step(layout->latexname());
 
 			// Is there a label? Useful for Chapter layout
-			if (!par->params().appendix()) {
+			if (!pit->params().appendix()) {
 				s << layout->labelstring();
 			} else {
 				s << layout->labelstring_appendix();
@@ -1121,11 +1122,11 @@ void LyXText::setCounter(Buffer const * buf, Paragraph * par)
 
 			// Use of an integer is here less than elegant. For now.
 			int head = textclass.maxcounter() - LABEL_COUNTER_CHAPTER;
-			if (!par->params().appendix()) {
+			if (!pit->params().appendix()) {
 				numbertype = "sectioning";
 			} else {
 				numbertype = "appendix";
-				if (par->isRightToLeftPar(buf->params))
+				if (pit->isRightToLeftPar(buf->params))
 					langtype = "hebrew";
 				else
 					langtype = "latin";
@@ -1135,7 +1136,7 @@ void LyXText::setCounter(Buffer const * buf, Paragraph * par)
 				.numberLabel(layout->latexname(),
 					     numbertype, langtype, head);
 
-			par->params().labelString(STRCONV(s.str()));
+			pit->params().labelString(STRCONV(s.str()));
 
 			// reset enum counters
 			textclass.counters().reset("enum");
@@ -1147,7 +1148,7 @@ void LyXText::setCounter(Buffer const * buf, Paragraph * par)
 			// (Lgb)
 			string enumcounter("enum");
 
-			switch (par->enumdepth) {
+			switch (pit->enumdepth) {
 			case 2:
 				enumcounter += 'i';
 			case 1:
@@ -1167,14 +1168,14 @@ void LyXText::setCounter(Buffer const * buf, Paragraph * par)
 
 			s << textclass.counters()
 				.numberLabel(enumcounter, "enumeration");
-			par->params().labelString(STRCONV(s.str()));
+			pit->params().labelString(STRCONV(s.str()));
 		}
 	} else if (layout->labeltype == LABEL_BIBLIO) {// ale970302
 		textclass.counters().step("bibitem");
 		int number = textclass.counters().value("bibitem");
-		if (par->bibitem()) {
-			par->bibitem()->setCounter(number);
-			par->params().labelString(layout->labelstring());
+		if (pit->bibitem()) {
+			pit->bibitem()->setCounter(number);
+			pit->params().labelString(layout->labelstring());
 		}
 		// In biblio should't be following counters but...
 	} else {
@@ -1182,18 +1183,19 @@ void LyXText::setCounter(Buffer const * buf, Paragraph * par)
 
 		// the caption hack:
 		if (layout->labeltype == LABEL_SENSITIVE) {
-			Paragraph * tmppar = par;
+			ParagraphList::iterator tmppit = pit;
 			Inset * in = 0;
 			bool isOK = false;
-			while (tmppar && tmppar->inInset()
+			while (tmppit != ownerParagraphs().end() &&
+			       tmppit->inInset()
 			       // the single '=' is intended below
-			       && (in = tmppar->inInset()->owner())) {
+			       && (in = tmppit->inInset()->owner())) {
 				if (in->lyxCode() == Inset::FLOAT_CODE ||
 				    in->lyxCode() == Inset::WRAP_CODE) {
 					isOK = true;
 					break;
 				} else {
-					tmppar = in->parOwner();
+					tmppit = in->parOwner();
 				}
 			}
 
@@ -1221,13 +1223,13 @@ void LyXText::setCounter(Buffer const * buf, Paragraph * par)
 				s = _("Senseless: ");
 			}
 		}
-		par->params().labelString(s);
+		pit->params().labelString(s);
 
 		// reset the enumeration counter. They are always reset
 		// when there is any other layout between
 		// Just fall-through between the cases so that all
 		// enum counters deeper than enumdepth is also reset.
-		switch (par->enumdepth) {
+		switch (pit->enumdepth) {
 		case 0:
 			textclass.counters().reset("enumi");
 		case 1:
@@ -1541,13 +1543,13 @@ void LyXText::insertStringAsParagraphs(string const & str)
 }
 
 
-void LyXText::checkParagraph(Paragraph * par, pos_type pos)
+void LyXText::checkParagraph(ParagraphList::iterator pit, pos_type pos)
 {
 	LyXCursor tmpcursor;
 
 	int y = 0;
 	pos_type z;
-	RowList::iterator row = getRow(par, pos, y);
+	RowList::iterator row = getRow(pit, pos, y);
 	RowList::iterator beg = rows().begin();
 
 	// is there a break one row above
@@ -1581,8 +1583,8 @@ void LyXText::checkParagraph(Paragraph * par, pos_type pos)
 	}
 
 	// check the special right address boxes
-	if (par->layout()->margintype == MARGIN_RIGHT_ADDRESS_BOX) {
-		tmpcursor.par(par);
+	if (pit->layout()->margintype == MARGIN_RIGHT_ADDRESS_BOX) {
+		tmpcursor.par(pit);
 		tmpcursor.row(row);
 		tmpcursor.y(y);
 		tmpcursor.x(0);
@@ -1667,7 +1669,7 @@ void LyXText::setCursor(LyXCursor & cur, ParagraphList::iterator pit,
 
 	// get the cursor y position in text
 	int y = 0;
-	RowList::iterator row = getRow(&*pit, pos, y);
+	RowList::iterator row = getRow(pit, pos, y);
 	RowList::iterator beg = rows().begin();
 
 	RowList::iterator old_row = row;
@@ -2270,6 +2272,7 @@ bool LyXText::deleteEmptyParagraphMechanism(LyXCursor const & old_cursor)
 			tmpcursor = cursor;
 			cursor = old_cursor; // that undo can restore the right cursor position
 			Paragraph * endpar = old_cursor.par()->next();
+#warning FIXME This if clause looks very redundant. (Lgb)
 			if (endpar && endpar->getDepth()) {
 				while (endpar && endpar->getDepth()) {
 					endpar = endpar->next();

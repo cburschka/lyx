@@ -125,10 +125,11 @@ public:
 	/** set layout over selection and make a total rebreak of
 	  those paragraphs
 	  */
-	Paragraph * setLayout(LyXCursor & actual_cursor,
-			      LyXCursor & selection_start,
-			      LyXCursor & selection_end,
-			      string const & layout);
+	ParagraphList::iterator
+	setLayout(LyXCursor & actual_cursor,
+		  LyXCursor & selection_start,
+		  LyXCursor & selection_end,
+		  string const & layout);
 	///
 	void setLayout(string const & layout);
 
@@ -154,7 +155,7 @@ public:
 	  This function is needed after SetLayout and SetFont etc.
 	  */
 	void redoParagraphs(LyXCursor const & cursor,
-			    Paragraph const * end_par);
+			    ParagraphList::iterator endpit);
 	///
 	void redoParagraph();
 
@@ -249,7 +250,7 @@ public:
 	 of the row
 	 */
 	RowList::iterator
-	getRow(Paragraph * par, lyx::pos_type pos, int & y) const;
+	getRow(ParagraphList::iterator pit, lyx::pos_type pos, int & y) const;
 
 	RowList & rows() const {
 		return rowlist_;
@@ -469,7 +470,7 @@ public:
 	/// returns false if inset wasn't found
 	bool updateInset(Inset *);
 	///
-	void checkParagraph(Paragraph * par, lyx::pos_type pos);
+	void checkParagraph(ParagraphList::iterator pit, lyx::pos_type pos);
 	///
 	int workWidth() const;
 	///
@@ -515,7 +516,8 @@ private:
 	void removeParagraph(RowList::iterator rit);
 
 	/// insert the specified paragraph behind the specified row
-	void insertParagraph(Paragraph * par, RowList::iterator rowit);
+	void insertParagraph(ParagraphList::iterator pit,
+			     RowList::iterator rowit);
 
 	/** appends  the implizit specified paragraph behind the specified row,
 	 * start at the implizit given position */
@@ -582,7 +584,7 @@ public:
 
 private:
 	///
-	void setCounter(Buffer const *, Paragraph * par);
+	void setCounter(Buffer const *, ParagraphList::iterator pit);
 	///
 	void deleteWordForward();
 	///

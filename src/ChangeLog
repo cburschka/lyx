@@ -1,5 +1,14 @@
 2003-04-10  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
+	* text2.C (insertParagraph): make it take ParagraphList::iterator
+	as arg.
+	(setLayout): make it return ParagraphList::iterator
+	(redoParagraphs): ditto
+	(setCounter): ditto
+	(checkParagraph): ditto
+
+	* text.C (getRow): make getrow take ParagraphList::iterator as arg
+
 	* text2.C: adjust several funcs.
 	(realizeFont): take a ParagraphList::iterator as arg.
 	(getLayoutFont): ditto
