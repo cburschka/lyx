@@ -49,7 +49,7 @@ private:
 	virtual void build_dialog();
 
 	/// the toc list
-	toc::Toc toclist;
+	lyx::toc::Toc toclist;
 
 	/// depth of list shown
 	int depth_;

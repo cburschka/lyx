@@ -54,7 +54,7 @@ void QToc::updateType()
 	dialog_->typeCO->clear();
 
 	vector<string> const & choice = controller().getTypes();
-	string const & type = toc::getType(controller().params().getCmdName());
+	string const & type = lyx::toc::getType(controller().params().getCmdName());
 
 	for (vector<string>::const_iterator it = choice.begin();
 		it != choice.end(); ++it) {
@@ -78,7 +78,7 @@ void QToc::updateToc(int newdepth)
 {
 	string type = fromqstr(dialog_->typeCO->currentText());
 
-	toc::Toc const & contents = controller().getContents(type);
+	lyx::toc::Toc const & contents = controller().getContents(type);
 
 	// Check if all elements are the same.
 	if (newdepth == depth_ && toclist == contents) {
@@ -106,7 +106,7 @@ void QToc::updateToc(int newdepth)
 	// a QListView parent, rather than QListViewItem; and the
 	// TOC can move in and out an arbitrary number of levels
 
-	for (toc::Toc::const_iterator iter = toclist.begin();
+	for (lyx::toc::Toc::const_iterator iter = toclist.begin();
 	     iter != toclist.end(); ++iter) {
 		if (iter->depth == curdepth) {
 			// insert it after the last one we processed
@@ -160,7 +160,7 @@ void QToc::updateToc(int newdepth)
 
 void QToc::select(string const & text)
 {
-	toc::Toc::const_iterator iter = toclist.begin();
+	lyx::toc::Toc::const_iterator iter = toclist.begin();
 
 	for (; iter != toclist.end(); ++iter) {
 		if (iter->str == text)
