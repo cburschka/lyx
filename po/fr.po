@@ -88,23 +88,25 @@
 # Revue rapide de la messagerie, problèmes en suspens:
 #   - peut-on traduire vRef, PrettyRef,... ?
 #   - les raccourcis restent à revoir
-#-------------------------------------------------------------------------
+# -------------------------------------------------------------------------
 # EG 14 Juin 2000
 # Quelques corrections + que mineures
 # J'ai traduit Include par inclure et input par incorporer, en espérant 
 # que la différence sémantique entre les 2 soit + forte que les 2 termes
 # anglais. Mais après réflexion je suis d'un avis mitigé. 
-#-------------------------------------------------------------------------
+# -------------------------------------------------------------------------
 # JPC 20 Juin 2000
 # correction confusion entre One/Two de Pagination et One/Two de Colonnes
-# dans Layout->Document (!)
+# dans Layout->Document
 # correction menu d'accès aux documents d'aide
-# raccourcissement titre "Base de données" tronqué dans la fenêtre
+# -------------------------------------------------------------------------
+# JPC 27 Juin 2000
+# reprise des 4 ou 5 "fuzzy" non traités précédemment
 
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.1.4\n"
-"POT-Creation-Date: 2000-06-14 17:36+0200\n"
+"POT-Creation-Date: 2000-06-06 14:13+0200\n"
 "PO-Revision-Date: 2000-03-10 02:56+01:00\n"
 "Last-Translator:  Jean-Pierre Chrétien <chretien@cert.fr>\n"
 "Language-Team: lyxfr <http://www.bde.enseeiht.fr/~faucheo/lyxfr.html>\n"
@@ -392,7 +394,7 @@ msgstr "Désolé."
 msgid "Open/Close..."
 msgstr "Ouvrir/Fermer..."
 
-#: src/BufferView2.C:430 src/LyXAction.C:363
+#: src/BufferView2.C:430 src/LyXAction.C:362
 msgid "Undo"
 msgstr "Annuler"
 
@@ -404,7 +406,7 @@ msgstr "Pas d'information d'annulation disponible"
 msgid "Redo not yet supported in math mode"
 msgstr "Refaire n'est pas disponible en mode mathématique"
 
-#: src/BufferView2.C:451 src/LyXAction.C:321
+#: src/BufferView2.C:451 src/LyXAction.C:320
 msgid "Redo"
 msgstr "Recommencer"
 
@@ -420,15 +422,15 @@ msgstr "Le style de l'environnement du paragraphe a été recopié"
 msgid "Paragraph environment type set"
 msgstr "Le style de l'environnement du paragraphe a été paramétré"
 
-#: src/BufferView2.C:576 src/LyXAction.C:161
+#: src/BufferView2.C:576 src/LyXAction.C:160
 msgid "Copy"
 msgstr "Copier"
 
-#: src/BufferView2.C:587 src/LyXAction.C:162
+#: src/BufferView2.C:587 src/LyXAction.C:161
 msgid "Cut"
 msgstr "Couper"
 
-#: src/BufferView2.C:596 src/LyXAction.C:312
+#: src/BufferView2.C:596 src/LyXAction.C:311
 msgid "Paste"
 msgstr "Coller"
 
@@ -448,7 +450,7 @@ msgstr "Insertion d'une note en marge..."
 msgid "Error! unknown language"
 msgstr "Erreur ! langage inconnu"
 
-#: src/LyXAction.C:296 src/bufferview_funcs.C:86
+#: src/LyXAction.C:295 src/bufferview_funcs.C:86
 msgid "Melt"
 msgstr "Inclure"
 
@@ -636,7 +638,7 @@ msgstr "LyX: ne peut allouer '"
 
 #: src/ColorHandler.C:139
 msgid "' for "
-msgstr " pour "
+msgstr "' pour "
 
 #: src/ColorHandler.C:140
 msgid " with (r,g,b)=("
@@ -737,7 +739,6 @@ msgid "Layout had to be changed from\n"
 msgstr "Le style de paragraphe a changé de\n"
 
 #: src/CutAndPaste.C:392 src/CutAndPaste.C:395
-#, fuzzy
 msgid " to "
 msgstr " vers "
 
@@ -1124,7 +1125,7 @@ msgstr "type HTML"
 msgid "HTML type|#H"
 msgstr "type HTML"
 
-#: src/LyXAction.C:119 src/insets/form_url.C:31 src/insets/inseterror.C:179
+#: src/LyXAction.C:118 src/insets/form_url.C:31 src/insets/inseterror.C:179
 #: src/latexoptions.C:47 src/layout_forms.C:240 src/layout_forms.C:567
 #: src/layout_forms.C:795 src/lyx.C:125 src/lyx_sendfax.C:109 src/lyxvc.C:262
 #: src/mathed/math_forms.C:177
@@ -2197,7 +2198,6 @@ msgid "depth bar"
 msgstr "barre de profondeur"
 
 #: src/LColor.C:69
-#, fuzzy
 msgid "language"
 msgstr "Langue"
 
@@ -2371,405 +2371,405 @@ msgstr "Sélectionner caractère précédent"
 msgid "Insert bibtex"
 msgstr "Insertion BibTeX"
 
-#: src/LyXAction.C:110
+#: src/LyXAction.C:109
 msgid "Build program"
 msgstr "Compiler programme"
 
-#: src/LyXAction.C:111
+#: src/LyXAction.C:110
 msgid "Autosave"
 msgstr "Sauvegarde automatique"
 
-#: src/LyXAction.C:113
+#: src/LyXAction.C:112
 msgid "Go to beginning of document"
 msgstr "Aller au début du document"
 
-#: src/LyXAction.C:115
+#: src/LyXAction.C:114
 msgid "Select to beginning of document"
 msgstr "Sélectionner jusqu'au début du document"
 
-#: src/LyXAction.C:118
+#: src/LyXAction.C:117
 msgid "Check TeX"
 msgstr "Vérification TeX"
 
-#: src/LyXAction.C:121
+#: src/LyXAction.C:120
 msgid "Go to end of document"
 msgstr "Aller à la fin du document"
 
-#: src/LyXAction.C:123
+#: src/LyXAction.C:122
 msgid "Select to end of document"
 msgstr "Sélectionner jusqu'à la fin du document"
 
-#: src/LyXAction.C:124
+#: src/LyXAction.C:123
 msgid "Export to"
 msgstr "Exporter vers"
 
-#: src/LyXAction.C:125
+#: src/LyXAction.C:124
 msgid "Fax"
 msgstr "Télécopie"
 
-#: src/LyXAction.C:128
+#: src/LyXAction.C:127
 msgid "Import document"
 msgstr "Importer document"
 
-#: src/LyXAction.C:131
+#: src/LyXAction.C:130
 msgid "New document"
 msgstr "Nouveau document"
 
-#: src/LyXAction.C:133
+#: src/LyXAction.C:132
 msgid "New document from template"
 msgstr "Nouveau document depuis modèle"
 
-#: src/LyXAction.C:134
+#: src/LyXAction.C:133
 msgid "Open"
 msgstr "Ouvrir"
 
-#: src/LyXAction.C:135 src/lyx_cb.C:840 src/print_form.C:72
+#: src/LyXAction.C:134 src/lyx_cb.C:840 src/print_form.C:72
 msgid "Print"
 msgstr "Imprimer"
 
-#: src/LyXAction.C:137
+#: src/LyXAction.C:136
 msgid "Revert to saved"
 msgstr "Revenir à la sauvegarde"
 
 # à revoir
-#: src/LyXAction.C:139
+#: src/LyXAction.C:138
 msgid "Toggle read-only"
 msgstr "(Non) éditable"
 
-#: src/LyXAction.C:140
+#: src/LyXAction.C:139
 msgid "Update DVI"
 msgstr "Mise à jour DVI"
 
-#: src/LyXAction.C:143
+#: src/LyXAction.C:142
 msgid "Update PostScript"
 msgstr "Mise à jour PostScript"
 
-#: src/LyXAction.C:144
+#: src/LyXAction.C:143
 msgid "View DVI"
 msgstr "Visualiser DVI"
 
-#: src/LyXAction.C:146
+#: src/LyXAction.C:145
 msgid "View PostScript"
 msgstr "Visualiser PostScript"
 
-#: src/LyXAction.C:147 src/lyx_sendfax_main.C:280
+#: src/LyXAction.C:146 src/lyx_sendfax_main.C:280
 msgid "Save"
 msgstr "Enregistrer"
 
-#: src/LyXAction.C:148
+#: src/LyXAction.C:147
 msgid "Save As"
 msgstr "Enregistrer sous"
 
-#: src/LyXAction.C:150 src/lyxfunc.C:698
+#: src/LyXAction.C:149 src/lyxfunc.C:698
 msgid "Cancel"
 msgstr "Annuler"
 
-#: src/LyXAction.C:151
+#: src/LyXAction.C:150
 msgid "Go one char back"
 msgstr "Caractère précédent"
 
-#: src/LyXAction.C:153
+#: src/LyXAction.C:152
 msgid "Go one char forward"
 msgstr "Caractère suivant"
 
-#: src/LyXAction.C:156
+#: src/LyXAction.C:155
 msgid "Insert citation"
 msgstr "Insérer citation"
 
-#: src/LyXAction.C:159
+#: src/LyXAction.C:158
 msgid "Execute command"
 msgstr "Exécuter commande"
 
-#: src/LyXAction.C:168
+#: src/LyXAction.C:167
 msgid "Decrement environment depth"
 msgstr "Décrémenter la profondeur d'environnement"
 
-#: src/LyXAction.C:170
+#: src/LyXAction.C:169
 msgid "Increment environment depth"
 msgstr "Incrémenter la profondeur d'environnement"
 
-#: src/LyXAction.C:172
+#: src/LyXAction.C:171
 msgid "Change environment depth"
 msgstr "Changer la profondeur d'environnement"
 
-#: src/LyXAction.C:173
+#: src/LyXAction.C:172
 msgid "Insert ... dots"
 msgstr "Insérer points de suspension"
 
-#: src/LyXAction.C:174
+#: src/LyXAction.C:173
 msgid "Go down"
 msgstr "Vers le bas"
 
-#: src/LyXAction.C:176
+#: src/LyXAction.C:175
 msgid "Select next line"
 msgstr "Sélectionner la ligne suivante"
 
-#: src/LyXAction.C:178
+#: src/LyXAction.C:177
 msgid "Choose Paragraph Environment"
 msgstr "Choisir l'environnement du paragraphe"
 
-#: src/LyXAction.C:180
+#: src/LyXAction.C:179
 msgid "Insert end of sentence period"
 msgstr "Insérer un point final"
 
-#: src/LyXAction.C:181
+#: src/LyXAction.C:180
 msgid "Go to next error"
 msgstr "Erreur suivante"
 
-#: src/LyXAction.C:183
+#: src/LyXAction.C:182
 msgid "Remove all error boxes"
 msgstr "Enlever toutes les marques d'erreur"
 
-#: src/LyXAction.C:185
+#: src/LyXAction.C:184
 msgid "Insert a new ERT Inset"
 msgstr "Insérer un nouveau ERT"
 
-#: src/LyXAction.C:186 src/lyx_cb.C:2930
+#: src/LyXAction.C:185 src/lyx_cb.C:2930
 msgid "Insert Figure"
 msgstr "Insérer figure"
 
-#: src/LyXAction.C:188
+#: src/LyXAction.C:187
 msgid "Insert Graphics"
 msgstr "Insérer graphique"
 
-#: src/LyXAction.C:193 src/lyxfr0.C:94
+#: src/LyXAction.C:192 src/lyxfr0.C:94
 msgid "Find & Replace"
 msgstr "Rechercher et Remplacer"
 
-#: src/LyXAction.C:195
+#: src/LyXAction.C:194
 msgid "Toggle bold"
 msgstr "Gras/Maigre"
 
-#: src/LyXAction.C:196
+#: src/LyXAction.C:195
 msgid "Toggle code style"
 msgstr "Code/Texte"
 
-#: src/LyXAction.C:197
+#: src/LyXAction.C:196
 msgid "Default font style"
 msgstr "Style de police par défaut"
 
-#: src/LyXAction.C:199
+#: src/LyXAction.C:198
 msgid "Toggle emphasize"
 msgstr "Mettre/ne pas mettre en évidence"
 
-#: src/LyXAction.C:200
+#: src/LyXAction.C:199
 msgid "Toggle user defined style"
 msgstr "(Dés)activer le style utilisateur"
 
 # à revoir
-#: src/LyXAction.C:202
+#: src/LyXAction.C:201
 msgid "Toggle noun style"
 msgstr "(Dés)activer style nom propre"
 
-#: src/LyXAction.C:203
+#: src/LyXAction.C:202
 msgid "Toggle roman font style"
 msgstr "(Dés)activer le style romain"
 
-#: src/LyXAction.C:205
+#: src/LyXAction.C:204
 msgid "Toggle sans font style"
 msgstr "(Dés)activer le style sans empattements"
 
-#: src/LyXAction.C:206
+#: src/LyXAction.C:205
 msgid "Set font size"
 msgstr "Taille de la police"
 
-#: src/LyXAction.C:207
+#: src/LyXAction.C:206
 msgid "Show font state"
 msgstr "Paramètres de la police"
 
-#: src/LyXAction.C:210
+#: src/LyXAction.C:209
 msgid "Toggle font underline"
 msgstr "(Dés)activer le soulignement"
 
-#: src/LyXAction.C:211 src/LyXAction.C:214
+#: src/LyXAction.C:210 src/LyXAction.C:213
 msgid "Insert Footnote"
 msgstr "Insérer une note de bas de page"
 
-#: src/LyXAction.C:215
+#: src/LyXAction.C:214
 msgid "Select next char"
 msgstr "Sélectionner"
 
-#: src/LyXAction.C:218
+#: src/LyXAction.C:217
 msgid "Insert horizontal fill"
 msgstr "Insérer un ressort horizontal"
 
-#: src/LyXAction.C:221
+#: src/LyXAction.C:220
 msgid "Insert hyphenation point"
 msgstr "Insérer un point de césure"
 
-#: src/LyXAction.C:223
+#: src/LyXAction.C:222
 msgid "Insert index item"
 msgstr "Insérer une marque d'index"
 
-#: src/LyXAction.C:225
+#: src/LyXAction.C:224
 msgid "Insert last index item"
 msgstr "Insérer la dernière marque d'index"
 
-#: src/LyXAction.C:226
+#: src/LyXAction.C:225
 msgid "Insert index list"
 msgstr "Inserer la liste d'index"
 
-#: src/LyXAction.C:228
+#: src/LyXAction.C:227
 msgid "Turn off keymap"
 msgstr "Désactiver la réaffectation des touches du clavier"
 
-#: src/LyXAction.C:231
+#: src/LyXAction.C:230
 msgid "Use primary keymap"
 msgstr "Réaffectation principale"
 
-#: src/LyXAction.C:233
+#: src/LyXAction.C:232
 msgid "Use secondary keymap"
 msgstr "Réaffectation secondaire"
 
-#: src/LyXAction.C:234
+#: src/LyXAction.C:233
 msgid "Toggle keymap"
 msgstr "(Dés)Activer la réaffectation des touches"
 
-#: src/LyXAction.C:236
+#: src/LyXAction.C:235
 msgid "Insert Label"
 msgstr "Insérer étiquette"
 
-#: src/LyXAction.C:238
+#: src/LyXAction.C:237
 msgid "Change language"
 msgstr "Langue"
 
-#: src/LyXAction.C:239
+#: src/LyXAction.C:238
 msgid "View LaTeX log"
 msgstr "Fichier journal LaTeX"
 
-#: src/LyXAction.C:244
+#: src/LyXAction.C:243
 msgid "Copy paragraph environment type"
 msgstr "Copier le type d'environnement paragraphe"
 
-#: src/LyXAction.C:250
+#: src/LyXAction.C:249
 msgid "Paste paragraph environment type"
 msgstr "Coller le type d'environnement paragraphe"
 
-#: src/LyXAction.C:257
+#: src/LyXAction.C:256
 msgid "Go to beginning of line"
 msgstr "Aller au début de la ligne"
 
-#: src/LyXAction.C:259
+#: src/LyXAction.C:258
 msgid "Select to beginning of line"
 msgstr "Sélectionner depuis le début de ligne"
 
-#: src/LyXAction.C:261
+#: src/LyXAction.C:260
 msgid "Go to end of line"
 msgstr "Aller à la fin de la ligne"
 
-#: src/LyXAction.C:263
+#: src/LyXAction.C:262
 msgid "Select to end of line"
 msgstr "Sélectionner jusqu'à la fin de la ligne"
 
-#: src/LyXAction.C:265
+#: src/LyXAction.C:264
 msgid "Insert list of algorithms"
 msgstr "Insérer liste des algorithmes"
 
-#: src/LyXAction.C:267
+#: src/LyXAction.C:266
 msgid "View list of algorithms"
 msgstr "Liste des algorithmes"
 
-#: src/LyXAction.C:269
+#: src/LyXAction.C:268
 msgid "Insert list of figures"
 msgstr "Insérer liste des figures"
 
-#: src/LyXAction.C:271
+#: src/LyXAction.C:270
 msgid "View list of figures"
 msgstr "Liste des figures"
 
-#: src/LyXAction.C:273
+#: src/LyXAction.C:272
 msgid "Insert list of tables"
 msgstr "Insérer liste des tableaux"
 
-#: src/LyXAction.C:275
+#: src/LyXAction.C:274
 msgid "View list of tables"
 msgstr "Liste des tableaux"
 
-#: src/LyXAction.C:276
+#: src/LyXAction.C:275
 msgid "Exit"
 msgstr "Quitter"
 
-#: src/LyXAction.C:278
+#: src/LyXAction.C:277
 msgid "Insert Margin note"
 msgstr "Insérer note en marge"
 
-#: src/LyXAction.C:284
+#: src/LyXAction.C:283
 msgid "Math Greek"
 msgstr "Lettres mathématiques grecques"
 
-#: src/LyXAction.C:287
+#: src/LyXAction.C:286
 msgid "Insert math symbol"
 msgstr "Insérer un symbole math."
 
-#: src/LyXAction.C:292
+#: src/LyXAction.C:291
 msgid "Math mode"
 msgstr "Mode Mathématique"
 
-#: src/LyXAction.C:304
+#: src/LyXAction.C:303
 msgid "Go one paragraph down"
 msgstr "Descendre d'un paragraphe"
 
-#: src/LyXAction.C:306
+#: src/LyXAction.C:305
 msgid "Select next paragraph"
 msgstr "Sélectionner le paragraphe suivant"
 
-#: src/LyXAction.C:308
+#: src/LyXAction.C:307
 msgid "Go one paragraph up"
 msgstr "Remonter d'un paragraphe"
 
-#: src/LyXAction.C:310
+#: src/LyXAction.C:309
 msgid "Select previous paragraph"
 msgstr "Sélectionner le paragraphe précédent"
 
-#: src/LyXAction.C:317
+#: src/LyXAction.C:316
 msgid "Insert protected space"
 msgstr "Insérer une espace insécable"
 
-#: src/LyXAction.C:318
+#: src/LyXAction.C:317
 msgid "Insert quote"
 msgstr "Insérer un guillemet"
 
-#: src/LyXAction.C:320
+#: src/LyXAction.C:319
 msgid "Reconfigure"
 msgstr "Reconfigurer"
 
-#: src/LyXAction.C:325
+#: src/LyXAction.C:324
 msgid "Insert cross reference"
 msgstr "Insérer une référence croisée"
 
-#: src/LyXAction.C:348 src/lyx_cb.C:2942
+#: src/LyXAction.C:347 src/lyx_cb.C:2942
 msgid "Insert Table"
 msgstr "Insérer un tableau"
 
-#: src/LyXAction.C:350
+#: src/LyXAction.C:349
 msgid "Insert a new Tabular Inset"
 msgstr "Nouvel insert de tableau"
 
-#: src/LyXAction.C:351
+#: src/LyXAction.C:350
 msgid "Toggle TeX style"
 msgstr "(Dés)activer le  mode TeX"
 
-#: src/LyXAction.C:353
+#: src/LyXAction.C:352
 msgid "Insert a new Text Inset"
 msgstr "Nouvel insert de texte"
 
-#: src/LyXAction.C:355
+#: src/LyXAction.C:354
 msgid "Insert table of contents"
 msgstr "Table des matières"
 
-#: src/LyXAction.C:357
+#: src/LyXAction.C:356
 msgid "View table of contents"
 msgstr "Afficher la table des matières"
 
-#: src/LyXAction.C:359
+#: src/LyXAction.C:358
 msgid "Toggle cursor does/doesn't follow the scrollbar"
 msgstr "(Dés)activer le suivi de l'ascenseur par le curseur"
 
-#: src/LyXAction.C:371
+#: src/LyXAction.C:370
 msgid "Register document under version control"
 msgstr "Mettre le document sous contrôle de version"
 
-#: src/LyXAction.C:598
+#: src/LyXAction.C:597
 msgid "No description available!"
 msgstr "Pas de description disponible !"
 
@@ -3772,9 +3772,8 @@ msgid "Expect problems."
 msgstr "Attendez vous à des problèmes."
 
 #: src/lyx_main.C:528
-#, fuzzy
 msgid "You have specified an invalid LyX directory."
-msgstr "Vous ne possédez pas de répertoire LyX personnel."
+msgstr "Vous avec spécifié un répertoire LyX incorrect."
 
 #: src/lyx_main.C:529
 msgid "You don't have a personal LyX directory."
@@ -3830,7 +3829,6 @@ msgid "Setting debug level to "
 msgstr "Niveau de débogage "
 
 #: src/lyx_main.C:592
-#, fuzzy
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
 "Command line switches (case sensitive):\n"
@@ -3848,8 +3846,9 @@ msgid ""
 msgstr ""
 "Usage: lyx [paramètres ] [ name.lyx ... ]\n"
 "Paramètres (attention à la casse) :\n"
-"\t-help           message d'aide\n"
-"\t-sysdir x       positionner le répertoire système sur x\n"
+"\t-help           résumé d'utilisation\n"
+"\t-userdir dir    positionner le répertoire utilisateur sur dir\n"
+"\t-sysdir dir     positionner le répertoire système sur dir\n"
 "\t-width x        gère la largeur de la fenêtre\n"
 "\t-height y       gère la hauteur de la fenêtre\n"
 "\t-xpos x         positionne la fenêtre à l'abscisse x\n"
@@ -3868,9 +3867,8 @@ msgid "Missing directory for -sysdir switch!"
 msgstr "Il manque un répertoire pour le paramètre -sysdir !"
 
 #: src/lyx_main.C:643
-#, fuzzy
 msgid "Missing directory for -userdir switch!"
-msgstr "Il manque un répertoire pour le paramètre -sysdir !"
+msgstr "Il manque un répertoire pour le paramètre -userdir !"
 
 #: src/lyx_main.C:666
 msgid "Missing command string after  -x switch!"
@@ -4058,7 +4056,7 @@ msgstr "Mode texte mathématique"
 
 #: src/mathed/formula.C:1069
 msgid "Invalid action in math mode!"
-msgstr "Action invalide en mode mathématique !"
+msgstr "Action incorrecte en mode mathématique !"
 
 #: src/mathed/formulamacro.C:143 src/mathed/formulamacro.C:169
 msgid "Macro: "
@@ -5530,31 +5528,31 @@ msgstr "Erreur interne de Lyx !"
 msgid "Could not test if directory is writeable"
 msgstr "Impossible de déterminer si le répertoire est modifiable."
 
-#: src/support/filetools.C:374
+#: src/support/filetools.C:370
 msgid "Error! Cannot open directory:"
 msgstr "Erreur ! Impossible d'ouvrir le répertoire :"
 
-#: src/support/filetools.C:387
+#: src/support/filetools.C:383
 msgid "Error! Could not remove file:"
 msgstr "Erreur ! Impossible de supprimer le fichier :"
 
-#: src/support/filetools.C:401
+#: src/support/filetools.C:397
 msgid "Error! Couldn't create temporary directory:"
 msgstr "Erreur ! Impossible de créer le répertoire temporaire :"
 
-#: src/support/filetools.C:417
+#: src/support/filetools.C:413
 msgid "Error! Couldn't delete temporary directory:"
 msgstr "Erreur ! Impossible de supprimer le répertoire temporaire :"
 
-#: src/support/filetools.C:470
+#: src/support/filetools.C:466
 msgid "Internal error!"
 msgstr "Erreur interne !"
 
-#: src/support/filetools.C:471
+#: src/support/filetools.C:467
 msgid "Call to createDirectory with invalid name"
-msgstr "Appel à createDirectory avec un nom invalide"
+msgstr "Appel à createDirectory avec un nom incorrect"
 
-#: src/support/filetools.C:476
+#: src/support/filetools.C:472
 msgid "Error! Couldn't create directory:"
 msgstr "Erreur ! Impossible de créer le répertoire :"
 

@@ -251,17 +251,34 @@ the source code directory.  After you have installed LyX for one
 architecture, use `make distclean' before reconfiguring for another
 architecture.
 
-Stripping LyX
--------------
+Preparing a binary distribution for the use of others
+------------------------------------------------------
 
-A LyX binary for linux is about 1M when compiled without debug-information 
-and with dynamic libraries.  If yours is much bigger you probably compiled 
-it with debug-informations (-g).  If you don't want to debug LyX just enter
+  o Compile LyX with the right compiler switches for your
+    architecture. In particular you might want to ensure that
+    libraries like xforms and xpm are statically linked. To this end,
+    you can use a command like
 
-          strip src/lyx
+                make LYX_LIBS='/foo/libforms.a /bar/libXpm.a'
 
-before installing.  Note that this is done automatically for public
-versions.
+    Moreover, make sure you use the --without-latex-config switch
+    of configure, since others might not be interested by your
+   configuration :-) 
+
+  o Create a file README.bin describing your distribution and
+    referring to *you* if problems arise. As a model, you can use the 
+    file development/tools/README.bin.example, which can be a good
+    starting point. 
+
+  o Type `make bindist'. This will create a file
+    lyx-1.xx.yy-bin.tar.gz. Rename it to reflect you architecture 
+    and the peculiarities of your build (e.g. static vs. dynamic).
+
+  o Check that everything is correct by unpacking the distribution 
+    in some private place and running it. In particular, check the 
+    output of `ldd lyx' to know which libraries are really needed.
+
+  o Upload your binary file to ftp.lyx.org:/pub/lyx/uploads.
 
 
 Problems
