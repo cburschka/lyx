@@ -134,6 +134,8 @@ What's new
 - mention in INSTALL file that the qt frontend is selected using
   --with-frontend=qt
 
+- fix library ordering problem with cygwin
+
 - fix problem in generation of the reLyX and noweb2lyx scripts
 
 - add a few autoconf-related files that were missing from the
