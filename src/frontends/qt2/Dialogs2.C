@@ -118,12 +118,6 @@ void Dialogs::showSpellchecker()
 }
 
 
-void Dialogs::showTabularCreate()
-{
-	pimpl_->tabularcreate.controller().show();
-}
-
-
 void Dialogs::showTexinfo()
 {
 	pimpl_->texinfo.controller().show();

@@ -13,7 +13,8 @@
 #define QTABULARCREATE_H
 
 
-#include "Qt2Base.h"
+#include "QDialogView.h"
+
 
 class ControlTabularCreate;
 class QTabularCreateDialog;
@@ -21,13 +22,13 @@ class QTabularCreateDialog;
 
 ///
 class QTabularCreate
-	: public Qt2CB<ControlTabularCreate, Qt2DB<QTabularCreateDialog> >
+	: public QController<ControlTabularCreate, QView<QTabularCreateDialog> >
 {
 public:
 	///
 	friend class QTabularCreateDialog;
 	///
-	QTabularCreate();
+	QTabularCreate(Dialog &);
 private:
 	/// Apply changes
 	virtual void apply();

@@ -117,12 +117,6 @@ void gui_ShowSpellchecker(Dialogs & d)
 }
 
 
-void gui_ShowTabularCreate(Dialogs & d)
-{
-	d.showTabularCreate();
-}
-
-
 void gui_ShowTexinfo(Dialogs & d)
 {
 	d.showTexinfo();

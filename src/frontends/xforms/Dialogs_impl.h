@@ -79,10 +79,6 @@
 #include "FormSpellchecker.h"
 #include "forms/form_spellchecker.h"
 
-#include "ControlTabularCreate.h"
-#include "FormTabularCreate.h"
-#include "forms/form_tabular_create.h"
-
 #include "ControlTexinfo.h"
 #include "FormTexinfo.h"
 #include "forms/form_texinfo.h"
@@ -141,9 +137,6 @@ SendtoDialog;
 typedef GUI<ControlSpellchecker, FormSpellchecker, NoRepeatedApplyReadOnlyPolicy, xformsBC>
 SpellcheckerDialog;
 
-typedef GUI<ControlTabularCreate, FormTabularCreate, OkApplyCancelReadOnlyPolicy, xformsBC>
-TabularCreateDialog;
-
 typedef GUI<ControlTexinfo, FormTexinfo, OkCancelPolicy, xformsBC>
 TexinfoDialog;
 
@@ -173,7 +166,6 @@ struct Dialogs::Impl {
 	SearchDialog        search;
 	SendtoDialog        sendto;
 	SpellcheckerDialog  spellchecker;
-	TabularCreateDialog tabularcreate;
 	TexinfoDialog       texinfo;
 
 #ifdef HAVE_LIBAIKSAURUS

@@ -13,8 +13,7 @@
 #ifndef FORMTABULARCREATE_H
 #define FORMTABULARCREATE_H
 
-
-#include "FormBase.h"
+#include "FormDialogView.h"
 
 class ControlTabularCreate;
 struct FD_tabular_create;
@@ -23,10 +22,10 @@ struct FD_tabular_create;
     Dialog.
  */
 class FormTabularCreate :
-	public FormCB<ControlTabularCreate, FormDB<FD_tabular_create> > {
+	public FormController<ControlTabularCreate, FormView<FD_tabular_create> > {
 public:
 	///
-	FormTabularCreate();
+	FormTabularCreate(Dialog &);
 private:
 	/// Apply from dialog
 	virtual void apply();

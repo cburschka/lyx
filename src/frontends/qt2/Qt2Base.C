@@ -10,13 +10,11 @@
 
 #include <config.h>
 
-
 #include <qdialog.h>
 #include <qapplication.h>
 
 #include "debug.h"
 #include "QtLyXView.h"
-#include "Dialogs.h"
 #include "Qt2Base.h"
 #include "Qt2BC.h"
 #include "ControlButtons.h"

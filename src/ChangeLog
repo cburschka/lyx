@@ -1,3 +1,8 @@
+2003-03-09  Angus Leeming  <leeming@lyx.org>
+
+	* factory.C (createInset): call Dialogs::show("tabularcreate") rather
+	than Dialogs::showTabularCreate().
+
 2003-03-09  John Levon  <levon@movementarian.org>
 
 	* lyxtext.h:

@@ -12,29 +12,30 @@
 #ifndef CONTROLTABULARCREATE_H
 #define CONTROLTABULARCREATE_H
 
+#include "Dialog.h"
 #include <utility>
-
-
-#include "ControlDialog_impl.h"
 
 /** A controller for the TabularCreate Dialog.
  */
-class ControlTabularCreate : public ControlDialogBD {
+class ControlTabularCreate : public Dialog::Controller {
 public:
 	///
-	ControlTabularCreate(LyXView &, Dialogs &);
-
-	typedef std::pair<unsigned int, unsigned int> rowsCols;
+	ControlTabularCreate(Dialog &);
+	///
+	virtual void initialiseParams(string const &);
+	/// clean-up on hide.
+	virtual void clearParams();
+	///
+	virtual void dispatchParams();
+	///
+	virtual bool isBufferDependent() const { return true; }
 
 	///
-	rowsCols & params();
+	typedef std::pair<unsigned int, unsigned int> rowsCols;
+	///
+	rowsCols & params() { return params_; }
+
 private:
-	/// Apply from dialog
-	virtual void apply();
-
-	/// set the params before show or update
-	virtual void setParams();
-
 	/// rows, cols params
 	rowsCols params_;
 };

@@ -105,8 +105,6 @@ public:
 	void showSendto();
 	/// bring up the spellchecker
 	void showSpellchecker();
-	///
-	void showTabularCreate();
 	/// show the TexInfo
 	void showTexinfo();
 	/// show the thesaurus dialog

@@ -2,6 +2,18 @@
 
 	* Dialogs.C:
 	* Dialogs2.C:
+	* Dialogs_impl.h: remove tabularcreate dialog.
+
+	* Dialogs3.C: add tabularcreate dialog.
+
+	* FormTabularCreate.[Ch]:
+	* forms/form_tabular_create.fd: changes to use the new Dialog-based
+	scheme.
+
+2003-03-09  Angus Leeming  <leeming@lyx.org>
+
+	* Dialogs.C:
+	* Dialogs2.C:
 	* Dialogs_impl.h: remove tabular dialog.
 
 	* Dialogs3.C: add tabular dialog.

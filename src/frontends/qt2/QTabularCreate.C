@@ -21,11 +21,11 @@
 #include <qspinbox.h>
 #include <qpushbutton.h>
 
-typedef Qt2CB<ControlTabularCreate, Qt2DB<QTabularCreateDialog> > base_class;
+typedef QController<ControlTabularCreate, QView<QTabularCreateDialog> > base_class;
 
 
-QTabularCreate::QTabularCreate()
-	: base_class(qt_("LyX: Insert Table"))
+QTabularCreate::QTabularCreate(Dialog & parent)
+	: base_class(parent, qt_("LyX: Insert Table"))
 {
 }
 

@@ -10,41 +10,30 @@
 
 #include <config.h>
 
-
 #include "ControlTabularCreate.h"
-#include "ViewBase.h"
-#include "ButtonControllerBase.h"
-#include "lyxfunc.h"
 #include "funcrequest.h"
-
-
 #include "support/lstrings.h"
 
 
-ControlTabularCreate::ControlTabularCreate(LyXView & lv, Dialogs & d)
-	: ControlDialogBD(lv, d)
+ControlTabularCreate::ControlTabularCreate(Dialog & parent)
+	: Dialog::Controller(parent)
 {}
 
 
-ControlTabularCreate::rowsCols & ControlTabularCreate::params()
+void ControlTabularCreate::initialiseParams(string const &)
 {
-	return params_;
+	params_.first = params_.second = 5;
 }
 
 
-void ControlTabularCreate::setParams()
+void ControlTabularCreate::clearParams()
 {
-	bc().valid(); // so that the user can press Ok
+	params_.first = params_.second = 0;
 }
 
 
-void ControlTabularCreate::apply()
+void ControlTabularCreate::dispatchParams()
 {
-	if (!bufferIsAvailable())
-		return;
-
-	view().apply();
-
-	string const val = tostr(params().first) + ' ' + tostr(params().second);
-	lyxfunc().dispatch(FuncRequest(LFUN_TABULAR_INSERT, val));
+	string data = tostr(params().first) + ' ' + tostr(params().second);
+	kernel().dispatch(FuncRequest(LFUN_TABULAR_INSERT, data));
 }

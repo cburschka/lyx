@@ -24,10 +24,10 @@
 using std::make_pair;
 
 
-typedef FormCB<ControlTabularCreate, FormDB<FD_tabular_create> > base_class;
+typedef FormController<ControlTabularCreate, FormView<FD_tabular_create> > base_class;
 
-FormTabularCreate::FormTabularCreate()
-	: base_class(_("Insert Tabular"))
+FormTabularCreate::FormTabularCreate(Dialog & parent)
+	: base_class(parent, _("Insert Tabular"))
 {}
 
 

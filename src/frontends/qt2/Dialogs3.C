@@ -24,6 +24,7 @@
 #include "ControlMinipage.h"
 #include "ControlRef.h"
 #include "ControlTabular.h"
+#include "ControlTabularCreate.h"
 #include "ControlToc.h"
 #include "ControlWrap.h"
 
@@ -57,6 +58,8 @@
 #include "QRefDialog.h"
 #include "QTabular.h"
 #include "QTabularDialog.h"
+#include "QTabularCreate.h"
+#include "QTabularCreateDialog.h"
 #include "QToc.h"
 #include "QTocDialog.h"
 #include "QURL.h"
@@ -86,8 +89,8 @@ namespace {
 char const * const dialognames[] = { "bibitem", "bibtex", "citation",
 				     "error", "ert", "external", "float",
 				     "graphics", "include", "index", "label",
-				     "minipage", "ref", "tabular", "toc",
-				     "url", "wrap" };
+				     "minipage", "ref", "tabular",
+				     "tabularcreate", "toc", "url", "wrap" };
 
 char const * const * const end_dialognames =
 	dialognames + (sizeof(dialognames) / sizeof(char *));
@@ -179,6 +182,10 @@ Dialog * Dialogs::build(string const & name)
 		dialog->setController(new ControlTabular(*dialog));
 		dialog->setView(new QTabular(*dialog));
 		dialog->setButtonController(new NoRepeatedApplyReadOnlyBC);
+	} else if (name == "tabularcreate") {
+		dialog->setController(new ControlTabularCreate(*dialog));
+		dialog->setView(new QTabularCreate(*dialog));
+		dialog->setButtonController(new OkApplyCancelReadOnlyBC);
 	} else if (name == "toc") {
 		dialog->setController(new ControlToc(*dialog));
 		dialog->setView(new QToc(*dialog));
