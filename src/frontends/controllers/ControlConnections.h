@@ -95,7 +95,7 @@ protected:
 	LyXFunc & lyxfunc();
 	///
 	LyXFunc const & lyxfunc() const;
-	
+
 
 	///
 	LyXView & lv_;

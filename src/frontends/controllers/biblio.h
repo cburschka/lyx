@@ -12,12 +12,13 @@
 #ifndef BIBLIOHELPERS_H
 #define BIBLIOHELPERS_H
 
-#include <map>
-#include <vector>
-
 #ifdef __GNUG__
 #pragma interface
 #endif
+
+#include "LString.h"
+#include <map>
+#include <vector>
 
 /** Functions of use to citation and bibtex GUI controllers and views */
 namespace biblio
