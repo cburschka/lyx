@@ -535,6 +535,8 @@ void QDocument::update_contents()
 		dialog_->layoutModule->optionsLE->setText("");
 	}
 
+	dialog_->layoutModule->floatPlacementLE->setText(toqstr(params.float_placement));
+
 	// paper
 	int const psize = params.papersize2;
 	dialog_->paperModule->papersizeCO->setCurrentItem(psize);
