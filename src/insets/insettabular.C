@@ -450,8 +450,8 @@ void InsetTabular::drawCellLines(Painter & pain, int x, int baseline,
 			  on_off ? Painter::line_onoffdash : Painter::line_solid);
 	}
 	on_off = !tabular->BottomLine(cell);
-	pain.line(x,baseline +  tabular->GetDescentOfRow(row),
-		  x2, baseline +  tabular->GetDescentOfRow(row),
+	pain.line(x, baseline + tabular->GetDescentOfRow(row),
+		  x2, baseline + tabular->GetDescentOfRow(row),
 		  on_off ? LColor::tabularonoffline : LColor::tabularline,
 		  on_off ? Painter::line_onoffdash : Painter::line_solid);
 	if (!tabular->LeftAlreadyDrawed(cell)) {
@@ -491,8 +491,8 @@ void InsetTabular::drawCellSelection(Painter & pain, int x, int baseline,
 
 	if ((column >= cs) && (column <= ce) && (row >= rs) && (row <= re)) {
 		int w = tabular->GetWidthOfColumn(cell);
-		int h = tabular->GetAscentOfRow(row) + tabular->GetDescentOfRow(row);
-		pain.fillRectangle(x, baseline - tabular->GetAscentOfRow(row),
+		int h = tabular->GetAscentOfRow(row) + tabular->GetDescentOfRow(row)-1;
+		pain.fillRectangle(x, baseline - tabular->GetAscentOfRow(row) + 1,
 				   w, h, LColor::selection);
 	}
 }

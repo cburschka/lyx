@@ -1,3 +1,7 @@
+2002-04-23  Juergen Vigna  <jug@sad.it>
+
+	* insettabular.C (drawCellSelection): fix off by 1 error.
+
 2002-04-22  Juergen Vigna  <jug@sad.it>
 
 	* insettabular.C (setFont): rewoke full selection if it was asked,
