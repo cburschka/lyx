@@ -1,11 +1,12 @@
-/*
+/**
  * \file FeedbackController.C
  * Copyright 2002 the LyX Team
  * Read the file COPYING
  *
  * \author Angus Leeming, a.leeming@ic.ac.uk
- *
- * A common interface for posting feedback messages to a message widget in
+ */
+
+/* A common interface for posting feedback messages to a message widget in
  * xforms.
  * Derive FormBase and FormBaseDeprecated from it, so daughter classes of
  * either can interface tooltips in the same way.

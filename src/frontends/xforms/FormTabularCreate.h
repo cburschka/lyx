@@ -1,15 +1,11 @@
 // -*- C++ -*-
-/* This file is part of
- * ======================================================
- * 
- *           LyX, The Document Processor
- * 	 
- *	    Copyright 1995 Matthias Ettrich
- *          Copyright 1995-2001 The LyX Team.
- *
- *======================================================
- *
+/**
  * \file FormTabularCreate.h
+ * Copyright 1995 Matthias Ettrich
+ * Copyright 1995-2001 the LyX Team
+ * Read the file COPYING
+ *
+ * \author unknown.
  */
 
 #ifndef FORMTABULARCREATE_H

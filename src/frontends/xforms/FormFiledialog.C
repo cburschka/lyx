@@ -4,7 +4,7 @@
  * Read the file COPYING
  *
  * \author unknown
- * \author John Levon
+ * \author John Levon, moz@compsoc.man.ac.uk
  */
 
 #include <config.h>

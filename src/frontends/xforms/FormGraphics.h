@@ -1,14 +1,9 @@
 // -*- C++ -*-
-/* This file is part of
- * ====================================================== 
- *
- *           LyX, The Document Processor
- *
- *           Copyright 2000-2001 The LyX Team.
- *
- * ======================================================
- *
+/**
  * \file FormGraphics.h
+ * Copyright 2000-2001 the LyX Team
+ * Read the file COPYING
+ *
  * \author Baruch Even, baruch.even@writeme.com
  * \author Herbert Voss, voss@lyx.org
  */

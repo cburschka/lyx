@@ -1,12 +1,12 @@
-/* This file is part of
- * =================================================
- * 
- *          LyX, The Document Processor
- *          Copyright 1995 Matthias Ettrich.
- *          Copyright 1995-2001 The LyX Team.
+/**
+ * \file RadioButtonGroup.C
+ * Copyright 1995 Matthias Ettrich.
+ * Copyright 1995-2001 The LyX Team.
+ * Copyright 2000 Baruch Even
+ * See the file COPYING.
  *
- *          This file Copyright 2000 Baruch Even
- * ================================================= */
+ * \author Baruch Even, baruch.even@writeme.com
+ */
 
 #include <config.h> 
 

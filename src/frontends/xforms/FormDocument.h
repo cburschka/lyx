@@ -1,14 +1,11 @@
 // -*- C++ -*-
-/* This file is part of
- * ======================================================
- * 
- *           LyX, The Document Processor
- * 	 
- *           Copyright 2000-2001 The LyX Team.
+/**
+ * \file FormDocument.h
+ * Copyright 2000-2002 the LyX Team
+ * Read the file COPYING
  *
- *           @author Jürgen Vigna
- *
- *======================================================*/
+ * \author Jürgen Vigna, jug@sad.it
+ */
 
 #ifndef FORM_DOCUMENT_H
 #define FORM_DOCUMENT_H
@@ -34,7 +31,6 @@ struct FD_form_doc_bullet;
 
 /** This class provides an XForms implementation of the FormDocument dialog.
     The table-layout-form here changes values for latex-tabulars
-    @author Jürgen Vigna
  */
 class FormDocument : public FormBaseBD {
 public:

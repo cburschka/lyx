@@ -5,7 +5,7 @@
  *
  * \author Alejandro Aguilar Sierra
  * \author John Levon, moz@compsoc.man.ac.uk
- * \author Angus Leeming, a.leeming@.ac.uk
+ * \author Angus Leeming, a.leeming@ic.ac.uk
  */
 
 #include <config.h>

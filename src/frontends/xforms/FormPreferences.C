@@ -1,14 +1,9 @@
-/* This file is part of
- * ======================================================
- * 
- *           LyX, The Document Processor
- * 	 
- *	    Copyright 1995 Matthias Ettrich
- *          Copyright 1995-2001 The LyX Team.
+/**
+ * \file FormPreferences.C
+ * Copyright 2000-2001 The LyX Team.
+ * See the file COPYING.
  *
- *======================================================*/
-/* FormPreferences.C
- * FormPreferences Interface Class Implementation
+ * \author Angus Leeming, a.leeming@ic.ac.uk
  */
 
 #include <config.h>

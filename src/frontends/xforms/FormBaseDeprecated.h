@@ -1,12 +1,16 @@
 // -*- C++ -*-
-/* This file is part of
- * ====================================================== 
+/**
+ * \file FormBase.h
+ * Copyright 2000-2002 the LyX Team
+ * Read the file COPYING
  *
- *           LyX, The Document Processor
- *
- *           Copyright 2000-2001 The LyX Team.
- *
- * ======================================================
+ * \author Angus Leeming, a.leeming@ic.ac.uk
+ */
+
+/* A base class for those remaining xforms dialogs that haven't yet undergone
+ * the controller-view split.
+ * It is meant to be used solely as the parent class to FormBaseBI
+ * and FormBaseBD.
  */
 
 #ifndef FORMBASEDEPRECATED_H
@@ -28,14 +32,6 @@ class Buffer;
 class Dialogs;
 class LyXView;
 class Tooltips;
-
-/** This class is an XForms GUI base class.
-    It is meant to be used solely as the parent class to FormBaseBI
-    and FormBaseBD.
-    It has now been superceeded by the Controller/View split.
-    See FormBase.[Ch] for the way to go!
-    @author Angus Leeming
- */
 
 class FormBaseDeprecated : public DialogBase, public FeedbackController
 {

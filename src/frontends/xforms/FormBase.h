@@ -1,14 +1,13 @@
 // -*- C++ -*-
-/* This file is part of
- * ====================================================== 
+/**
+ * \file FormBase.h
+ * Copyright 2000-2002 the LyX Team
+ * Read the file COPYING
  *
- *           LyX, The Document Processor
- *
- *           Copyright 2000-2001 The LyX Team.
- *
- * ======================================================
- *
- * \author Angus Leeming <a.leeming@ic.ac.uk>
+ * \author Angus Leeming, a.leeming@ic.ac.uk
+ */
+
+/* A base class for the MCV-ed xforms dialogs.
  */
 
 #ifndef FORMBASE_H

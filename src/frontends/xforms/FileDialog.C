@@ -3,32 +3,28 @@
  * Copyright 2001 the LyX Team
  * Read the file COPYING
  *
- * \author John Levon
+ * \author John Levon, moz@compsoc.man.ac.uk
  */
+
+#include <config.h>
 
 #ifdef __GNUG__
 #pragma implementation
 #endif
 
-#include <config.h>
-#include <gettext.h>
-#include <utility>
-
-#include "commandtags.h"
-
-#include "support/lstrings.h" 
-
+#include "FormFiledialog.h"
+#include "frontends/FileDialog.h"
 // temp. hack until Allow/prohibitInput is not
 // needed any more in src/ - for now it's simplest
 // to leave it there 
 #include "LyXView.h" 
 #include "bufferview_funcs.h"
- 
-#include "frontends/FileDialog.h"
-
-#include "FormFiledialog.h"
-
+#include "gettext.h"
+#include "commandtags.h"
 #include "debug.h"
+#include "support/lstrings.h" 
+#include <utility>
+
 
 using std::make_pair;
 using std::pair;

@@ -3,10 +3,14 @@
  * Copyright 2001 the LyX Team
  * Read the file COPYING
  *
- * \author John Levon <moz@compsoc.man.ac.uk>
+ * \author John Levon, moz@compsoc.man.ac.uk
  */
 
 #include <config.h>
+
+#ifdef __GNUG__
+#pragma implementation
+#endif
 
 #include "DropDown.h"
 #include "xforms_helpers.h"

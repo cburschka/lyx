@@ -1,4 +1,9 @@
-/** Collection of some useful xform helper functions
+/**
+ * \file xforms_helpers.C
+ * Copyright 2000-2002 The LyX Team.
+ * See the file COPYING.
+ *
+ * \author Angus Leeming, a.leeming@ic.ac.uk
  */
 
 #include <config.h>

@@ -1,14 +1,8 @@
-// -*- C++ -*-
-/* This file is part of
- * ====================================================== 
- *
- *           LyX, The Document Processor
- *
- *           Copyright 2000-2001 The LyX Team.
- *
- * ======================================================
- *
+/**
  * \file FormCitation.C
+ * Copyright 2000-2001 The LyX Team.
+ * See the file COPYING.
+ *
  * \author Angus Leeming, a.leeming@ic.ac.uk
  */
 

@@ -1,17 +1,12 @@
 // -*- C++ -*-
-/* This file is part of
- * ======================================================
- * 
- *           LyX, The Document Processor
- * 	 
- *	    Copyright 1995 Matthias Ettrich
- *          Copyright 1995-2001 The LyX Team.
+/**
+ * \file FormPreferences.h
+ * Copyright 1995-2002 the LyX Team
+ * Copyright 1999-2001 Allan Rae
+ * Read the file COPYING
  *
- *	    This file copyright 1999-2001
- *	    Allan Rae
- *======================================================*/
-/* FormPreferences.h
- * FormPreferences Interface Class
+ * \author Allan Rae, rae@lyx.org
+ * \author Angus Leeming, a.leeming@ic.ac.uk
  */
 
 #ifndef FORMPREFERENCES_H

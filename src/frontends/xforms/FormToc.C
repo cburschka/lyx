@@ -1,13 +1,8 @@
-/* This file is part of
- * ====================================================== 
- *
- *           LyX, The Document Processor
- *
- *           Copyright 2000-2001 The LyX Team.
- *
- * ======================================================
- *
+/**
  * \file FormToc.C
+ * Copyright 2000-2001 The LyX Team.
+ * See the file COPYING.
+ *
  * \author Angus Leeming, a.leeming@ic.ac.uk
  */
 
@@ -84,7 +79,6 @@ void FormToc::updateType()
 	// Update the choice list from scratch
 	fl_clear_choice(dialog_->choice_toc_type);
 	string const choice = getStringFromVector(controller().getTypes(), "|");
-	lyxerr << "choice " << choice << endl; 
 	fl_addto_choice(dialog_->choice_toc_type, choice.c_str());
 
 	// And select the correct one

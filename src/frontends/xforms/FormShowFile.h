@@ -1,10 +1,10 @@
 // -*- C++ -*-
-
-/*
- * FormShowFile.h
+/**
+ * \file FormShowFile.h
+ * Copyright 2001 the LyX Team
+ * Read the file COPYING
  *
- * (C) 2001 LyX Team
- * \author Herbert Voss <voss@perce.de>
+ * \author Herbert Voss, voss@perce.de
  */
 
 #ifndef FORMSHOWFILE_H

@@ -3,7 +3,7 @@
  * Copyright 2001 the LyX Team
  * Read the file COPYING
  *
- * \author Angus Leeming
+ * \author Angus Leeming, a.leeming@ic.ac.uk
  * \date 2001-10-22
  */
 

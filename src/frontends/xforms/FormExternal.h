@@ -1,16 +1,11 @@
 // -*- C++ -*-
-/* This file is part of
- * ====================================================== 
- *
- *           LyX, The Document Processor
- *
- *           Copyright 2000-2001 The LyX Team.
- *
- * ======================================================
- *
+/**
  * \file FormExternal.h
- * \author Asger Alstrup
- * \author John Levon
+ * Copyright 2000-2001 the LyX Team
+ * Read the file COPYING
+ *
+ * \author Asger Alstrup Nielsen
+ * \author John Levon, moz@compsoc.man.ac.uk
  * \author Angus Leeming, a.leeming@ic.ac.uk
  */
 

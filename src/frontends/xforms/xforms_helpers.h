@@ -1,4 +1,11 @@
 // -*- C++ -*-
+/**
+ * \file xforms_helpers.h
+ * Copyright 2002 the LyX Team
+ * Read the file COPYING
+ *
+ * \author Angus Leeming, a.leeming@ic.ac.uk
+ */
 
 #ifndef XFORMSHELPERS_H
 #define XFORMSHELPERS_H

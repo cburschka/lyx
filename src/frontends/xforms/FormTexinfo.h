@@ -4,7 +4,7 @@
  * Copyright 2001 the LyX Team
  * Read the file COPYING
  *
- * \author Herbert Voss <voss@perce.de>
+ * \author Herbert Voss, voss@perce.de
  */
 
 #ifndef FORMTEXINFO_H

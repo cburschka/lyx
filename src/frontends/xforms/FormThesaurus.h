@@ -4,7 +4,7 @@
  * Copyright 2001 the LyX Team
  * Read the file COPYING
  *
- * \author John Levon
+ * \author John Levon, moz@compsoc.man.ac.uk
  */
 
 #ifndef FORMTHESAURUS_H

@@ -3,7 +3,7 @@
  * Copyright 2001 The LyX Team.
  * See the file COPYING.
  *
- * \author Edwin Leuven
+ * \author Edwin Leuven, leuven@fee.uva.nl
  */
 
 #include <config.h>

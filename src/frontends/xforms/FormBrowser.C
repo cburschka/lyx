@@ -1,13 +1,17 @@
-/* FormBrowser.C
- * (C) 2001 LyX Team
- * John Levon, moz@compsoc.man.ac.uk
+/**
+ * \file FormBrowser.C
+ * Copyright 2001 The LyX Team.
+ * See the file COPYING.
+ *
+ * \author John Levon, moz@compsoc.man.ac.uk
  */
+
+#include <config.h>
 
 #ifdef __GNUG__
 #pragma implementation
 #endif
 
-#include <config.h>
 #include "FormBrowser.h"
 #include "form_browser.h"
 #include "xformsBC.h"

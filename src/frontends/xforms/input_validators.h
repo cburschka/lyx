@@ -1,17 +1,14 @@
 // -*- C++ -*-
-/* This file is part of
- * ====================================================== 
+/**
+ * \file input_validators.h
+ * Copyright 2002 the LyX Team
+ * Copyright 1999-2001 Allan Rae
+ * Read the file COPYING
  *
- *           LyX, The Document Processor
- *
- *           Copyright 1995 Matthias Ettrich
- *           Copyright 1995-2001 The LyX Team.
- *
- *           This file Copyright 1999-2001
- *           Allan Rae
- * ====================================================== */
+ * \author Allan Rae, rae@lyx.org
+ */
 
-/** Input validators and filters for xforms.
+/* Input validators and filters for xforms.
  * A collection of input filtering and validating functions for use in
  * XForms dialogs.  Mainly meant for filtering input boxes although may
  * be extended to include other generally useful xforms-specific tools.
@@ -19,6 +16,10 @@
 
 #ifndef INPUT_VALIDATORS_H
 #define INPUT_VALIDATORS_H
+
+#ifdef __GNUG_
+#pragma interface
+#endif
 
 #if defined(__cplusplus)
 extern "C"

@@ -1,10 +1,11 @@
 // -*- C++ -*-
 /*
  * \file FormBrowser.h
+ * Copyright 2001 the LyX Team
+ * Read the file COPYING
  *
- * (C) 2001 LyX Team
- * John Levon, moz@compsoc.man.ac.uk
- * \author Angus Leeming, a.leeming@.ac.uk
+ * \author John Levon, moz@compsoc.man.ac.uk
+ * \author Angus Leeming, a.leeming@ic.ac.uk
  */
 
 #ifndef FORMBROWSER_H

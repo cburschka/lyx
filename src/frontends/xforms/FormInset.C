@@ -1,11 +1,9 @@
-/* This file is part of
- * ====================================================== 
+/**
+ * \file FormInset.C
+ * Copyright 2000-2001 The LyX Team.
+ * See the file COPYING.
  *
- *           LyX, The Document Processor
- *
- *           Copyright 2000-2001 The LyX Team.
- *
- * ======================================================
+ * \author Angus Leeming, a.leeming@ic.ac.uk
  */
 
 #include <config.h>

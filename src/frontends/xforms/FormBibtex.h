@@ -4,8 +4,8 @@
  * Copyright 2001 the LyX Team
  * Read the file COPYING
  *
- * \author Angus Leeming
- * \author John Levon
+ * \author Angus Leeming, a.leeming@ic.ac.uk
+ * \author John Levon, moz@compsoc.man.ac.uk
  */
 
 #ifndef FORMBIBTEX_H

@@ -4,7 +4,7 @@
  * See the file COPYING.
  *
  * \author Allan Rae, rae@lyx.org
- * \author Angus Leeming, a.leeming@.ac.uk
+ * \author Angus Leeming, a.leeming@ic.ac.uk
  */
 
 #include <config.h>

@@ -1,14 +1,9 @@
 // -*- C++ -*-
-/* This file is part of
- * ======================================================
- *
- *           LyX, The Document Processor
- *
- *           Copyright 2001 The LyX Team.
- *
- * ======================================================
- *
+/**
  * \file xformsBC.h
+ * Copyright 2002 the LyX Team
+ * Read the file COPYING
+ *
  * \author Allan Rae, rae@lyx.org
  * \author Angus Leeming, a.leeming@ic.ac.uk
  * \author Baruch Even, baruch.even@writeme.com

@@ -1,15 +1,12 @@
-/* This file is part of
- * ====================================================== 
- * 
- *           LyX, The Document Processor
+/**
+ * \file FormBase.C
+ * Copyright 1995 Matthias Ettrich
+ * Copyright 1995-2001 The LyX Team.
+ * Copyright 1996-1998 Lars Gullik Bjønnes
+ * See the file COPYING.
  *
- *           Copyright 1995 Matthias Ettrich
- *           Copyright 1995-2001 The LyX Team.
- *
- *           This file is Copyright 1996-1998
- *           Lars Gullik Bjønnes
- *
- * ====================================================== */
+ * \author Lars Gullik Bjønnes, larsbj@lyx.org
+ */
 
 //  Added pseudo-action handling, asierra 180296
 

@@ -1,12 +1,14 @@
 // -*- C++ -*-
-/* This file is part of
- * ====================================================== 
+/**
+ * \file FormInset.h
+ * Copyright 2000-2001 the LyX Team
+ * Read the file COPYING
  *
- *           LyX, The Document Processor
- *
- *           Copyright 2000-2001 The LyX Team.
- *
- * ======================================================
+ * \author Angus Leeming, a.leeming@ic.ac.uk
+ */
+
+/* A base class for dialogs connected to insets. This class is temporary in that
+ * it has been superceeded by the controller-view split.
  */
 
 #ifndef FORMCOMMAND_H

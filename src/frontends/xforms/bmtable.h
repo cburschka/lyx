@@ -1,17 +1,15 @@
-/*
- *  File:        bmtable.h
- *  Purpose:     Declaration of the XForms object bmtable. 
- *  Author:      Alejandro Aguilar Sierra <asierra@servidor.unam.mx> 
- *  Created:     November 1995
- *  Description: A bitmap table uses a single bitmap to simulate a 2d array 
- *               of bitmap buttons. It can be used to build bitmap menus.
- *               
- *  Copyright 1995, 1996 Alejandro Aguilar Sierra 
+/**
+ * \file bmtable.h
+ * Copyright 2002 the LyX Team
+ * Copyright 1995-1996 Alejandro Aguilar Sierra
+ * Read the file COPYING
  *
- *  You are free to use and modify this code under the terms of
- *  the GNU General Public Licence version 2 or later. 
- * 
- */ 
+ * \author Alejandro Aguilar Sierra
+ */
+
+/* A bitmap table uses a single bitmap to simulate a 2d array 
+ * of bitmap buttons. It can be used to build bitmap menus.
+ */
 
 #ifndef BMTABLE_H
 #define BMTABLE_H 

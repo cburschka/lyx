@@ -5,7 +5,7 @@
  * Read the file COPYING
  *
  * \author Alejandro Aguilar Sierra
- * \author John Levon
+ * \author John Levon, moz@compsoc.man.ac.uk
  */
 
 #ifndef MATHS_SYMBOLS_H

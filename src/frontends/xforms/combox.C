@@ -1,12 +1,14 @@
-/*
- *  Combox: A combination of two objects (a button and a browser) is
- *          encapsulated to get a combobox-like object. All XForms 
- *          functions are hidden.         
- * 
- *  GNU Copyleft 1996 Alejandro Aguilar Sierra <asierra@servidor.unam.mx>
- *                        and the LyX Team.
- * 
- *  Dependencies:  Only XForms, but created to be used with LyX.
+/**
+ * \file combox.C
+ * Copyright 1996-2002 The LyX Team.
+ * Copyright 1996Alejandro Aguilar Sierra
+ * See the file COPYING.
+ *
+ * \author Alejandro Aguilar Sierra
+ */
+
+/* A combination of two objects (a button and a browser) is encapsulated to
+ * get a combobox-like object. All XForms functions are hidden.         
  * 
  */ 
 

@@ -4,8 +4,8 @@
  * Copyright 2001 The LyX Team.
  * See the file COPYING.
  *
- * \author Edwin Leuven <leuven@fee.uva.nl>
- * \author Angus Leeming <a.leeming@.ac.uk>
+ * \author Edwin Leuven, leuven@fee.uva.nl
+ * \author Angus Leeming, a.leeming@ic.ac.uk
  */
 
 #ifndef FORMABOUTLYX_H

@@ -1,14 +1,19 @@
+// -*- C++ -*-
 /**
  * \file DropDown.h
  * Copyright 2001 the LyX Team
  * Read the file COPYING
  *
- * \author John Levon <moz@compsoc.man.ac.uk>
+ * \author John Levon, moz@compsoc.man.ac.uk
  */
 
 #ifndef DROPDOWN_H
 #define DROPDOWN_H
  
+#ifdef __GNUG_
+#pragma interface
+#endif
+
 #include "LyXView.h"
 #include <sigc++/signal_system.h> 
 #include "LString.h"

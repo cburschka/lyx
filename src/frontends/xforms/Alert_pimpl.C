@@ -3,20 +3,22 @@
  * Copyright 2001 the LyX Team
  * Read the file COPYING
  *
- * \author John Levon <moz@compsoc.man.ac.uk>
+ * \author John Levon, moz@compsoc.man.ac.uk
  */
 
 #include <config.h>
 
-#include FORMS_H_LOCATION
- 
-#include <algorithm>
- 
-#include <gettext.h>
-#include "xforms_helpers.h"
- 
+#ifdef __GNUG__
+#pragma implementation
+#endif
+
 #include "Alert.h"
 #include "Alert_pimpl.h" 
+#include "xforms_helpers.h"
+#include "gettext.h"
+
+#include <algorithm>
+#include FORMS_H_LOCATION
  
 using std::pair;
 using std::make_pair;

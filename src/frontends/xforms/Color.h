@@ -1,13 +1,16 @@
 // -*- C++ -*-
-/* This file is part of
- * ======================================================
- * 
- *           LyX, The Document Processor
- * 	 
- *	    Copyright 1995 Matthias Ettrich
- *          Copyright 1995-2001 The LyX Team.
+/**
+ * \file Color.h
+ * Copyright 1995 Matthias Ettrich
+ * Copyright 1995-2002 The LyX Team.
+ * Read the file COPYING
  *
- *======================================================*/
+ * \author Angus Leeming, a.leeming@ic.ac.uk
+ */
+
+/* structs RGBColor and HSVColor to enable simple conversion between
+ * color spaces.
+ */
 
 #ifndef COLOR_H
 #define COLOR_H

@@ -1,14 +1,11 @@
 // -*- C++ -*-
-/* This file is part of
- * ======================================================
- * 
- *           LyX, The Document Processor
- * 	 
- *           Copyright 2000-2001 The LyX Team.
+/**
+ * \file Tooltips.h
+ * Copyright 2000-2001 the LyX Team
+ * Read the file COPYING
  *
- *           @author Jürgen Vigna
- *
- *======================================================*/
+ * \author Jürgen Vigna, jug@sad.it
+ */
 
 #ifndef FORM_PARAGRAPH_H
 #define FORM_PARAGRAPH_H
@@ -25,7 +22,6 @@ class Paragraph;
 struct FD_form_paragraph;
 
 /** This class provides an XForms implementation of the FormParagraph dialog.
- *           @author Jürgen Vigna
  */
 class FormParagraph : public FormBaseBD {
 public:

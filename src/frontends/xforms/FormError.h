@@ -1,16 +1,10 @@
 // -*- C++ -*-
-/*
+/**
  * \file FormError.h
- * This file is part of
- * ====================================================== 
+ * Copyright 2000-2002 the LyX Team
+ * Read the file COPYING
  *
- *           LyX, The Document Processor
- *
- *           Copyright 2000-2001 The LyX Team.
- *
- * ======================================================
- *
- * \author Angus Leeming, a.leeming@.ac.uk
+ * \author Angus Leeming, a.leeming@ic.ac.uk
  */
 
 #ifndef FORMERROR_H

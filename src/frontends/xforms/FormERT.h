@@ -1,15 +1,10 @@
 // -*- C++ -*-
-/* This file is part of
- * ======================================================
- * 
- *           LyX, The Document Processor
- * 	 
- *          Copyright 2001 The LyX Team.
- *
- *======================================================
- *
+/**
  * \file FormERT.h
- * \author Juergen Vigna, jug@sad.it
+ * Copyright 2001 the LyX Team
+ * Read the file COPYING
+ *
+ * \author Jürgen Vigna, jug@sad.it
  */
 
 #ifndef FORMERT_H

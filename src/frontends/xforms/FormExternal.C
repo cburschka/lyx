@@ -1,15 +1,10 @@
-/* This file is part of
- * ====================================================== 
- *
- *           LyX, The Document Processor
- *
- *           Copyright 2000-2001 The LyX Team.
- *
- * ======================================================
- *
+/**
  * \file FormExternal.C
+ * Copyright 2000-2001 The LyX Team.
+ * See the file COPYING.
+ *
  * \author Asger Alstrup
- * \author John Levon
+ * \author John Levon, moz@compsoc.man.ac.uk
  * \author Angus Leeming, a.leeming@ic.ac.uk
  */
 

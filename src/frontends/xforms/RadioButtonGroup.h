@@ -1,13 +1,12 @@
 // -*- C++ -*-
-/* This file is part of
- * =================================================
- * 
- *          LyX, The Document Processor
- *          Copyright 1995 Matthias Ettrich.
- *          Copyright 1995-2001 The LyX Team.
+/**
+ * \file RadioButtonGroup.h
+ * Copyright 2002 the LyX Team
+ * Copyright 2000 Baruch Even
+ * Read the file COPYING
  *
- *          This file Copyright 2000 Baruch Even
- * ================================================= */
+ * \author Baruch Even, baruch.even@writeme.com
+ */
 
 
 #ifndef RADIOBUTTONGROUP_H
@@ -27,7 +26,6 @@
  * the idea is that you register a bunch of radio buttons with the accompanying
  * value for each radio button and then you get to query or set the active
  * button in a single function call.
- * @author Baruch Even
  */
 class RadioButtonGroup {
 public:

@@ -1,14 +1,9 @@
-/* This file is part of
- * ======================================================
- * 
- *           LyX, The Document Processor
- * 	 
- *	    Copyright 1995 Matthias Ettrich
- *          Copyright 1995-2001 The LyX Team.
+/**
+ * \file FormTabular.C
+ * Copyright 2000-2001 The LyX Team.
+ * See the file COPYING.
  *
- *======================================================*/
-/* FormTabular.C
- * FormTabular Interface Class Implementation
+ * \author Jürgen Vigna, jug@sad.it
  */
 
 #include <config.h>

@@ -4,6 +4,9 @@
  * Read the file COPYING
  *
  * \author Angus Leeming, a.leeming@ic.ac.uk
+ */
+
+/*
  *
  * Tooltips for xforms. xforms 0.89 supports them directly, but 0.88 needs
  * a bit of jiggery pokery. This class wraps it all up in a neat interface.
@@ -210,7 +213,7 @@ void TooltipTimerCB(FL_OBJECT * timer, long data)
 	lyx::Assert(ob && ob->form && timer && timer->u_vdata);
 	FL_FORM * form = ob->form;
 	Tooltips * tooltip = static_cast<Tooltips *>(timer->u_vdata);
-	
+
 	string const help = tooltip->getTooltip(ob);
 	if (help.empty())
 		return;

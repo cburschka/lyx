@@ -4,14 +4,14 @@
  * See the file COPYING.
  *
  * \author Edwin Leuven, leuven@fee.uva.nl
- * \author Angus Leeming, a.leeming@.ac.uk
+ * \author Angus Leeming, a.leeming@ic.ac.uk
  */
+
+#include <config.h>
 
 #ifdef __GNUG__
 #pragma implementation
 #endif
-
-#include <config.h>
 
 #include "xformsBC.h"
 #include "ControlAboutlyx.h"

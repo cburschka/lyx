@@ -1,6 +1,9 @@
-/* FormHelp.C
- * (C) 2001 LyX Team
- * \author Herbert Voss <voss@perce.de>
+/**
+ * \file FormShowFile.C
+ * Copyright 2001 The LyX Team.
+ * See the file COPYING.
+ *
+ * \author Herbert Voss, voss@perce.de
  */
 
 #include <config.h>

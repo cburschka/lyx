@@ -1,13 +1,8 @@
-/* This file is part of
- * ====================================================== 
- *
- *           LyX, The Document Processor
- *
- *           Copyright 2001 The LyX Team.
- *
- * ======================================================
- *
+/**
  * \file FormERT.C
+ * Copyright 2001 The LyX Team.
+ * See the file COPYING.
+ *
  * \author Jürgen Vigna, jug@sad.it
  */
 

@@ -1,12 +1,10 @@
-/* This file is part of
- * ======================================================
+/**
+ * \file Dialogs.C
+ * Copyright 1995 Matthias Ettrich
+ * Copyright 1995-2001 The LyX Team.
+ * See the file COPYING.
  *
- *           LyX, The Document Processor
- *
- *           Copyright 1995 Matthias Ettrich
- *           Copyright 1995-2001 The LyX Team.
- *
- * ======================================================
+ * \author Allan Rae, rae@lyx.org
  */
 
 #include <config.h>

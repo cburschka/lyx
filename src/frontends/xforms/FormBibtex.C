@@ -3,9 +3,9 @@
  * Copyright 2001 the LyX Team
  * Read the file COPYING
  *
- * \author Angus Leeming
- * \author John Levon
- * \author Herbert Voss <voss@lyx.org>
+ * \author Angus Leeming, a.leeming@ic.ac.uk
+ * \author John Levon, moz@compsoc.man.ac.uk
+ * \author Herbert Voss, voss@lyx.org
  */
 
 #ifdef __GNUG__

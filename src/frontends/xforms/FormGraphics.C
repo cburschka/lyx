@@ -1,13 +1,8 @@
-/* This file is part of
- * ====================================================== 
- *
- *           LyX, The Document Processor
- *
- *           Copyright 2000-2001 The LyX Team.
- *
- * ======================================================
- *
+/**
  * \file FormGraphics.C
+ * Copyright 2000-2001 The LyX Team.
+ * See the file COPYING.
+ *
  * \author Baruch Even, baruch.even@writeme.com
  * \author Herbert Voss, voss@perce.de
  */

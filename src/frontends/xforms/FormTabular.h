@@ -1,15 +1,11 @@
 // -*- C++ -*-
-/* This file is part of
- * ======================================================
- * 
- *           LyX, The Document Processor
- * 	 
- *	    Copyright 1995 Matthias Ettrich
- *          Copyright 1995-2001 The LyX Team.
+/**
+ * \file FormTabular.h
+ * Copyright 1995 Matthias Ettrich
+ * Copyright 1995-2001 the LyX Team
+ * Read the file COPYING
  *
- *======================================================*/
-/* FormTabular.h
- * FormTabular Interface Class
+ * \author Jürgen Vigna, jug@sad.it
  */
 
 #ifndef FORMTABULAR_H

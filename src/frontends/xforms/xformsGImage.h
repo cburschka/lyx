@@ -4,10 +4,11 @@
  *  Copyright 2002 the LyX Team
  *  Read the file COPYING
  *
- *  \author Angus Leeming <a.leeming@ic.ac.uk>
- *
- *  An instantiation of GImage that makes use of the xforms lirary routines
- *  to load and store the image in memory.
+ *  \author Angus Leeming, a.leeming@ic.ac.uk
+ */
+
+/* An instantiation of GImage that makes use of the xforms lirary routines
+ * to load and store the image in memory.
  */
 
 #ifndef XFORMS_GRAPHICSIMAGE_H

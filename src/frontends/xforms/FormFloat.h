@@ -1,14 +1,10 @@
 // -*- C++ -*-
-/* This file is part of
- * ======================================================
- * 
- *           LyX, The Document Processor
- * 	 
- *          Copyright 2001 The LyX Team.
- *
- *======================================================
- *
+/**
  * \file FormFloat.h
+ * Copyright 2001 the LyX Team
+ * Read the file COPYING
+ *
+ * \author Lars Gullik Bjønnes, larsbj@lyx.org
  */
 
 #ifndef FORMFLOAT_H
