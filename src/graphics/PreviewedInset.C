@@ -17,6 +17,8 @@
 
 #include "BufferView.h"
 
+#include "insets/inset.h"
+
 #include "support/lstrings.h"
 
 #include <boost/bind.hpp>

@@ -1,3 +1,7 @@
+2003-09-06  Angus Leeming  <leeming@lyx.org>
+
+	* PreviewedInset.C: add #include "insets/inset.h"
+
 2003-09-05  Angus Leeming  <leeming@lyx.org>
 
 	* *.C: strip out redundant #includes. (26 in total.)

@@ -1,5 +1,10 @@
 2003-09-06  Angus Leeming  <leeming@lyx.org>
 
+	* BufferView.[Ch] (ChangeInsets): moved to BufferView_pimpl.[Ch].
+	As a result, can remove the #include "insets/inset.h" from BufferView.h
+
+2003-09-06  Angus Leeming  <leeming@lyx.org>
+
 	* buffer_funcs.C:
 	* buffer.h:
 	* bufferlist.C:

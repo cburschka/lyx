@@ -20,9 +20,13 @@
 
 #include "errorlist.h"
 #include "BufferView.h"
-#include "frontends/Timeout.h"
+
+#include "insets/inset.h"
+
 #include "frontends/key_state.h"
 #include "frontends/LyXKeySym.h"
+#include "frontends/Timeout.h"
+
 #include "support/types.h"
 
 #include <boost/scoped_ptr.hpp>
@@ -139,6 +143,14 @@ private:
 	void trackChanges();
 	/// notify readonly status
 	void showReadonly(bool);
+
+	/**
+	 * Change all insets with the given code's contents to a new
+	 * string. May only be used with InsetCommand-derived insets
+	 * Returns true if a screen update is needed.
+	 */
+	bool ChangeInsets(InsetOld::Code code, string const & from,
+			  string const & to);
 
 	///
 	friend class BufferView;

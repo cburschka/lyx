@@ -12,6 +12,8 @@
 
 #include "insets/renderers.h"
 
+#include "insets/inset.h"
+
 #include "BufferView.h"
 #include "gettext.h"
 #include "metricsinfo.h"

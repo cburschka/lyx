@@ -15,24 +15,24 @@
 #ifndef BUFFER_VIEW_H
 #define BUFFER_VIEW_H
 
-#include "support/std_string.h"
-
-#include "insets/inset.h"
-
 #include <boost/utility.hpp>
 
-class Change;
-class LyXView;
-class LyXText;
-class TeXErrors;
+#include "support/std_string.h"
+
 class Buffer;
-class LyXScreen;
-class Language;
-class Painter;
-class UpdatableInset;
-class WordLangTuple;
+class Change;
 class Encoding;
 class ErrorList;
+class FuncRequest;
+class InsetOld;
+class Language;
+class LyXText;
+class LyXScreen;
+class LyXView;
+class Painter;
+class TeXErrors;
+class UpdatableInset;
+class WordLangTuple;
 
 /**
  * A buffer view encapsulates a view onto a particular
@@ -204,15 +204,6 @@ public:
 private:
 	/// Set the current locking inset
 	void theLockingInset(UpdatableInset * inset);
-
-	/**
-	 * Change all insets with the given code's contents to a new
-	 * string. May only be used with InsetCommand-derived insets
-	 * Returns true if a screen update is needed.
-	 */
-	bool ChangeInsets(InsetOld::Code code, string const & from,
-			  string const & to);
-
 
 	struct Pimpl;
 	friend struct BufferView::Pimpl;

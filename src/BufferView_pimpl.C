@@ -1384,3 +1384,44 @@ void BufferView::Pimpl::updateInset(InsetOld const * inset)
 	update();
 	updateScrollbar();
 }
+
+
+bool BufferView::Pimpl::ChangeInsets(InsetOld::Code code,
+				     string const & from, string const & to)
+{
+	bool need_update = false;
+	LyXCursor cursor = bv_->text->cursor;
+	LyXCursor tmpcursor = cursor;
+	cursor.par(tmpcursor.par());
+	cursor.pos(tmpcursor.pos());
+
+	ParIterator end = bv_->buffer()->par_iterator_end();
+	for (ParIterator it = bv_->buffer()->par_iterator_begin();
+	     it != end; ++it) {
+		bool changed_inset = false;
+		for (InsetList::iterator it2 = it->insetlist.begin();
+		     it2 != it->insetlist.end(); ++it2) {
+			if (it2->inset->lyxCode() == code) {
+				InsetCommand * inset = static_cast<InsetCommand *>(it2->inset);
+				if (inset->getContents() == from) {
+					inset->setContents(to);
+					changed_inset = true;
+				}
+			}
+		}
+		if (changed_inset) {
+			need_update = true;
+
+			// FIXME
+
+			// The test it.size()==1 was needed to prevent crashes.
+			// How to set the cursor corretly when it.size()>1 ??
+			if (it.size() == 1) {
+				bv_->text->setCursorIntern(it.pit(), 0);
+				bv_->text->redoParagraph(bv_->text->cursor.par());
+			}
+		}
+	}
+	bv_->text->setCursorIntern(cursor.par(), cursor.pos());
+	return need_update;
+}
