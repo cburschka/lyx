@@ -36,6 +36,7 @@
 #include "support/LOstream.h"
 #include "debug.h"
 #include "lyxlex.h"
+#include "lyxtext.h"
 #include "lyxfont.h"
 
 using std::ostream;
@@ -155,8 +156,14 @@ InsetFormulaMacro::localDispatch(BufferView * bv,
 			break;
 		}
 		
-		default:
+		default: {
 			result = InsetFormulaBase::localDispatch(bv, action, arg);
+			// force redraw if anything happened
+			if (result != UNDISPATCHED) {
+				bv->text->status(bv, LyXText::NEED_MORE_REFRESH);
+				bv->updateInset(this, false);
+			}
+		}
 	}
 	return result;
 }
