@@ -1910,9 +1910,20 @@ int InsetTabular::getMaxWidth(BufferView * bv,
 	return w;
 }
 
-
-void InsetTabular::resizeLyXText(BufferView *) const
+void InsetTabular::deleteLyXText(BufferView * bv, bool recursive) const
 {
+	resizeLyXText(bv, recursive);
+}
+
+void InsetTabular::resizeLyXText(BufferView * bv, bool force) const
+{
+	if (force) {
+		for(int i=0; i < tabular->rows(); ++i) {
+			for(int j=0; j < tabular->columns(); ++j) {
+				tabular->GetCellInset(i, j)->resizeLyXText(bv, true);
+			}
+		}
+	}
 	need_update = FULL;
 }
 

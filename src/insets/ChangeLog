@@ -1,3 +1,11 @@
+2001-06-07  Juergen Vigna  <jug@sad.it>
+
+	* insettext.C (resizeLyXText): honor the new force flag.
+
+	* lyxinset.h: add 'bool force' parameter to resizeLyXText(...)
+
+	* insettabular.C (deleteLyXText): new function
+
 2001-06-02  John Levon  <moz@compsoc.man.ac.uk>
 
 	* insettheorem.C:

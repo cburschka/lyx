@@ -422,6 +422,12 @@ void InsetText::clearFrame(Painter & pain, bool cleared) const
 
 void InsetText::update(BufferView * bv, LyXFont const & font, bool reinit)
 {
+#if 0
+	int ww = TEXT(bv)->width;
+	TEXT(bv)->BreakParagraph(bv);
+	if (ww != TEXT(bv)->width)
+		reinit = true;
+#endif
 	if (reinit) {
 		need_update |= INIT;
 		resizeLyXText(bv);
@@ -1629,11 +1635,12 @@ void InsetText::deleteLyXText(BufferView * bv, bool recursive) const
 }
 
 
-void InsetText::resizeLyXText(BufferView * bv) const
+void InsetText::resizeLyXText(BufferView * bv, bool force) const
 {
 	if (!par->next() && !par->size()) // no data, resize not neccessary!
 		return;
-	if (getMaxWidth(bv, this) < 0) // one endless line, no resize necessary
+	// one endless line, resize normally not necessary
+	if (!force && getMaxWidth(bv, this) < 0)
 		return;
 	if ((cache.find(bv) == cache.end()) || !cache[bv])
 		return;
@@ -1665,7 +1672,7 @@ void InsetText::resizeLyXText(BufferView * bv) const
 		selection = TEXT(bv)->selection.set();
 		mark_set = TEXT(bv)->selection.mark();
 	}
-	deleteLyXText(bv, (the_locking_inset == 0));
+	deleteLyXText(bv, (the_locking_inset == 0) || force);
 
 	if (lpar) {
 		TEXT(bv)->selection.set(true);

@@ -170,7 +170,9 @@ public:
 	LyXText * getLyXText(BufferView const *,
 			     bool const recursive = false) const;
 	///
-	void resizeLyXText(BufferView *) const;
+	void deleteLyXText(BufferView *, bool recursive = true) const;
+	///
+	void resizeLyXText(BufferView *, bool force = false) const;
 	///
 	void OpenLayoutDialog(BufferView *) const;
 	///

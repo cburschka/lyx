@@ -1501,47 +1501,47 @@ void LyXText::AppendParagraph(BufferView * bview, Row * row) const
 
 void LyXText::BreakAgain(BufferView * bview, Row * row) const
 {
-   bool not_ready = true;
+	bool not_ready = true;
    
-   do  {
-	   // get the next breakpoint
-	LyXParagraph::size_type z = NextBreakPoint(bview, row, workWidth(bview));
-      Row * tmprow = row;
+	do  {
+		// get the next breakpoint
+		LyXParagraph::size_type z = NextBreakPoint(bview, row, workWidth(bview));
+		Row * tmprow = row;
 
-      if (z < row->par()->size()) {
-	 if (!row->next() || (row->next() && row->next()->par() != row->par())) {
-		 // insert a new row
-	    ++z;
-	    InsertRow(row, row->par(), z);
-	    row = row->next();
-	    row->height(0);
-	 } else  {
-	    row = row->next();
-	    ++z;
-	    if (row->pos() == z)
-		    not_ready = false;     // the rest will not change
-	    else {
-	       row->pos(z);
-	    }
-	 }
-      } else {
-	 /* if there are some rows too much, delete them */
-	 /* only if you broke the whole paragraph! */ 
-	 Row * tmprow2 = row;
-	 while (tmprow2->next() && tmprow2->next()->par() == row->par()) {
-	    tmprow2 = tmprow2->next();
-	 }
-	 while (tmprow2 != row) {
-	    tmprow2 = tmprow2->previous();
-	    RemoveRow(tmprow2->next());
-	 }
-	 not_ready = false;
-      }
-       
-      /* set the dimensions of the row */ 
-      tmprow->fill(Fill(bview, tmprow, workWidth(bview)));
-      SetHeightOfRow(bview, tmprow);
-   } while (not_ready);
+		if (z < row->par()->size()) {
+			if (!row->next() || (row->next() && row->next()->par() != row->par())) {
+				// insert a new row
+				++z;
+				InsertRow(row, row->par(), z);
+				row = row->next();
+				row->height(0);
+			} else  {
+				row = row->next();
+				++z;
+				if (row->pos() == z)
+					not_ready = false;     // the rest will not change
+				else {
+					row->pos(z);
+				}
+			}
+		} else {
+			/* if there are some rows too much, delete them */
+			/* only if you broke the whole paragraph! */ 
+			Row * tmprow2 = row;
+			while (tmprow2->next() && tmprow2->next()->par() == row->par()) {
+				tmprow2 = tmprow2->next();
+			}
+			while (tmprow2 != row) {
+				tmprow2 = tmprow2->previous();
+				RemoveRow(tmprow2->next());
+			}
+			not_ready = false;
+		}
+		
+		/* set the dimensions of the row */ 
+		tmprow->fill(Fill(bview, tmprow, workWidth(bview)));
+		SetHeightOfRow(bview, tmprow);
+	} while (not_ready);
 }
 
 

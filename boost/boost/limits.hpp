@@ -11,6 +11,10 @@
 
 #include <boost/config.hpp>
 
+// for now just deactivate the following as otherwise we cannot compile
+// using LString.h and our own string implementation (Jug)
+#define BOOST_NO_LIMITS 1
+
 #ifdef BOOST_NO_LIMITS
 #include <boost/detail/limits.hpp>
 #else

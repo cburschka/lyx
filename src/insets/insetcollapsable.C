@@ -468,9 +468,9 @@ void InsetCollapsable::deleteLyXText(BufferView * bv, bool recursive) const
 }
 
 
-void InsetCollapsable::resizeLyXText(BufferView * bv) const
+void InsetCollapsable::resizeLyXText(BufferView * bv, bool force) const
 {
-	inset.resizeLyXText(bv);
+	inset.resizeLyXText(bv, force);
 	LyXFont font(LyXFont::ALL_SANE);
 	oldWidth = width(bv, font);
 }

@@ -124,7 +124,7 @@ public:
 	///
 	void deleteLyXText(BufferView *, bool recursive=true) const;
 	///
-	void resizeLyXText(BufferView *) const;
+	void resizeLyXText(BufferView *, bool force = false) const;
 	///
 	std::vector<string> const getLabelList() const;
 	///
