@@ -836,8 +836,8 @@ bool FormPreferences::Converters::Add()
 {
 	string const from = GetFrom();
 	string const to = GetTo();
-	string const command = fl_get_input(dialog_->input_converter);
-	string const flags = fl_get_input(dialog_->input_flags);
+	string const command = getString(dialog_->input_converter);
+	string const flags = getString(dialog_->input_flags);
 
 	Converter const * old = converters().getConverter(from, to);
 	converters().add(from, to, command, flags);
@@ -922,7 +922,7 @@ bool FormPreferences::Converters::Input()
 		setEnabled(dialog_->button_delete, true);
 	}
 
-	string const command = rtrim(fl_get_input(dialog_->input_converter));
+	string const command = rtrim(getString(dialog_->input_converter));
 	bool const enable = !(command.empty() || from == to);
 	setEnabled(dialog_->button_add, enable);
 
@@ -1407,12 +1407,12 @@ void FormPreferences::Formats::UpdateBrowser()
 
 bool FormPreferences::Formats::Add()
 {
-	string const name = fl_get_input(dialog_->input_format);
-	string const prettyname = fl_get_input(dialog_->input_gui_name);
-	string const extension = fl_get_input(dialog_->input_extension);
-	string const shortcut =  fl_get_input(dialog_->input_shrtcut);
-	string const viewer =  fl_get_input(dialog_->input_viewer);
-	string const editor =  fl_get_input(dialog_->input_editor);
+	string const name = getString(dialog_->input_format);
+	string const prettyname = getString(dialog_->input_gui_name);
+	string const extension = getString(dialog_->input_extension);
+	string const shortcut =  getString(dialog_->input_shrtcut);
+	string const viewer =  getString(dialog_->input_viewer);
+	string const editor =  getString(dialog_->input_editor);
 
 	Format const * old = formats().getFormat(name);
 	string const old_prettyname = old ? old->prettyname() : string();
@@ -1460,7 +1460,7 @@ bool FormPreferences::Formats::Browser()
 
 bool FormPreferences::Formats::erase()
 {
-	string const name = fl_get_input(dialog_->input_format);
+	string const name = getString(dialog_->input_format);
 
 	if (converters().formatIsUsed(name)) {
 		parent_.postWarning(_("Cannot remove a Format used by a Converter. "
@@ -1477,7 +1477,7 @@ bool FormPreferences::Formats::erase()
 
 bool FormPreferences::Formats::Input()
 {
-	string const name = fl_get_input(dialog_->input_format);
+	string const name = getString(dialog_->input_format);
 	int const sel = formats().getNumber(name);
 	fl_freeze_form(dialog_->form);
 
@@ -1504,7 +1504,7 @@ bool FormPreferences::Formats::Input()
 		setEnabled(dialog_->button_delete, true);
 	}
 
-	string const prettyname = fl_get_input(dialog_->input_gui_name);
+	string const prettyname = getString(dialog_->input_gui_name);
 	bool const enable = !(name.empty() || prettyname.empty());
 	setEnabled(dialog_->button_add, enable);
 
@@ -1526,8 +1526,8 @@ FD_preferences_identity const * FormPreferences::Identity::dialog()
 
 void FormPreferences::Identity::apply(LyXRC & rc) const
 {
-	rc.user_name = fl_get_input(dialog_->input_user_name);
-	rc.user_email = fl_get_input(dialog_->input_user_email);
+	rc.user_name = getString(dialog_->input_user_name);
+	rc.user_email = getString(dialog_->input_user_email);
 }
 
 
@@ -1560,7 +1560,7 @@ FD_preferences_inputs_misc const * FormPreferences::InputsMisc::dialog()
 void FormPreferences::InputsMisc::apply(LyXRC & rc) const
 {
 	rc.date_insert_format =
-		fl_get_input(dialog_->input_date_format);
+		getString(dialog_->input_date_format);
 }
 
 
@@ -1605,12 +1605,12 @@ FD_preferences_interface const * FormPreferences::Interface::dialog()
 void FormPreferences::Interface::apply(LyXRC & rc) const
 {
 	rc.popup_normal_font =
-		fl_get_input(dialog_->input_popup_normal_font);
-	rc.popup_bold_font = fl_get_input(dialog_->input_popup_bold_font);
+		getString(dialog_->input_popup_normal_font);
+	rc.popup_bold_font = getString(dialog_->input_popup_bold_font);
 	rc.popup_font_encoding =
-		fl_get_input(dialog_->input_popup_font_encoding);
-	rc.bind_file = fl_get_input(dialog_->input_bind_file);
-	rc.ui_file = fl_get_input(dialog_->input_ui_file);
+		getString(dialog_->input_popup_font_encoding);
+	rc.bind_file = getString(dialog_->input_bind_file);
+	rc.ui_file = getString(dialog_->input_ui_file);
 }
 
 
@@ -1656,12 +1656,12 @@ bool FormPreferences::Interface::input(FL_OBJECT const * const ob)
 {
 	if (ob == dialog_->button_bind_file_browse) {
 		string f = parent_.controller().browsebind(
-			fl_get_input(dialog_->input_bind_file));
+			getString(dialog_->input_bind_file));
 
 		fl_set_input(dialog_->input_bind_file, f.c_str());
 	} else if (ob == dialog_->button_ui_file_browse) {
 		string f = parent_.controller().browseUI(
-			fl_get_input(dialog_->input_ui_file));
+			getString(dialog_->input_ui_file));
 
 		fl_set_input(dialog_->input_ui_file, f.c_str());
 	}
@@ -1702,8 +1702,8 @@ void FormPreferences::Language::apply(LyXRC & rc)
 	rc.default_language = lang_[pos-1];
 
 	int button = fl_get_button(dialog_->check_use_kbmap);
-	string const name_1 = fl_get_input(dialog_->input_kbmap1);
-	string const name_2 = fl_get_input(dialog_->input_kbmap2);
+	string const name_1 = getString(dialog_->input_kbmap1);
+	string const name_2 = getString(dialog_->input_kbmap2);
 	if (button)
 		button = !(name_1.empty() && name_2.empty());
 	rc.use_kbmap = static_cast<bool>(button);
@@ -1731,9 +1731,9 @@ void FormPreferences::Language::apply(LyXRC & rc)
 	button = fl_get_button(dialog_->check_global_options);
 	rc.language_global_options = static_cast<bool>(button);
 
-	rc.language_package = fl_get_input(dialog_->input_package);
-	rc.language_command_begin = fl_get_input(dialog_->input_command_begin);
-	rc.language_command_end = fl_get_input(dialog_->input_command_end);
+	rc.language_package = getString(dialog_->input_package);
+	rc.language_command_begin = getString(dialog_->input_command_begin);
+	rc.language_command_end = getString(dialog_->input_command_end);
 
 	// Ensure that all is self-consistent.
 	update(rc);
@@ -1831,12 +1831,12 @@ bool FormPreferences::Language::input(FL_OBJECT const * const ob)
 
 	if (ob == dialog_->button_kbmap1_browse) {
 		string f = parent_.controller().browsekbmap(
-			fl_get_input(dialog_->input_kbmap1));
+			getString(dialog_->input_kbmap1));
 
 		fl_set_input(dialog_->input_kbmap1, f.c_str());
 	} else if (ob == dialog_->button_kbmap2_browse) {
 		string f = parent_.controller().browsekbmap(
-			fl_get_input(dialog_->input_kbmap2));
+			getString(dialog_->input_kbmap2));
 
 		fl_set_input(dialog_->input_kbmap2, f.c_str());
 	}
@@ -2060,17 +2060,17 @@ void FormPreferences::OutputsMisc::apply(LyXRC & rc) const
 {
 	rc.ascii_linelen = static_cast<unsigned int>
 		(fl_get_counter_value(dialog_->counter_line_len));
-	rc.fontenc = fl_get_input(dialog_->input_tex_encoding);
+	rc.fontenc = getString(dialog_->input_tex_encoding);
 
 	int const choice =
 		fl_get_choice(dialog_->choice_default_papersize) - 1;
 	rc.default_papersize = static_cast<PAPER_SIZE>(choice);
 
-	rc.ascii_roff_command = fl_get_input(dialog_->input_ascii_roff);
-	rc.chktex_command = fl_get_input(dialog_->input_checktex);
-	rc.bibtex_command = fl_get_input(dialog_->input_bibtex);
-	rc.index_command = fl_get_input(dialog_->input_index);
-	rc.view_dvi_paper_option = fl_get_input(dialog_->input_paperoption);
+	rc.ascii_roff_command = getString(dialog_->input_ascii_roff);
+	rc.chktex_command = getString(dialog_->input_checktex);
+	rc.bibtex_command = getString(dialog_->input_bibtex);
+	rc.index_command = getString(dialog_->input_index);
+	rc.view_dvi_paper_option = getString(dialog_->input_paperoption);
 	rc.auto_reset_options = fl_get_button(dialog_->check_autoreset_classopt);
 }
 
@@ -2168,12 +2168,12 @@ FD_preferences_paths const * FormPreferences::Paths::dialog()
 
 void FormPreferences::Paths::apply(LyXRC & rc)
 {
-	rc.document_path = fl_get_input(dialog_->input_default_path);
-	rc.template_path = fl_get_input(dialog_->input_template_path);
-	rc.tempdir_path  = fl_get_input(dialog_->input_temp_dir);
+	rc.document_path = getString(dialog_->input_default_path);
+	rc.template_path = getString(dialog_->input_template_path);
+	rc.tempdir_path  = getString(dialog_->input_temp_dir);
 
 	int button = fl_get_button(dialog_->check_last_files);
-	string str = fl_get_input(dialog_->input_lastfiles);
+	string str = getString(dialog_->input_lastfiles);
 	if (!button) str.erase();
 
 	rc.check_lastfiles = button;
@@ -2182,14 +2182,14 @@ void FormPreferences::Paths::apply(LyXRC & rc)
 		(fl_get_counter_value(dialog_->counter_lastfiles));
 
 	button = fl_get_button(dialog_->check_make_backups);
-	str = fl_get_input(dialog_->input_backup_path);
+	str = getString(dialog_->input_backup_path);
 	if (!button)
 		str.erase();
 
 	rc.make_backup = button;
 	rc.backupdir_path = str;
 
-	rc.lyxpipes = fl_get_input(dialog_->input_serverpipe);
+	rc.lyxpipes = getString(dialog_->input_serverpipe);
 
 	// update view
 	update(rc);
@@ -2265,7 +2265,7 @@ bool FormPreferences::Paths::input(FL_OBJECT const * const ob)
 	}
 
 	if (!ob || ob == dialog_->input_default_path) {
-		string const name = fl_get_input(dialog_->input_default_path);
+		string const name = getString(dialog_->input_default_path);
 		if (!name.empty() && !RWInfo::WriteableDir(name)) {
 			parent_.postWarning(RWInfo::ErrorMessage());
 			return false;
@@ -2273,7 +2273,7 @@ bool FormPreferences::Paths::input(FL_OBJECT const * const ob)
 	}
 
 	if (!ob || ob == dialog_->input_template_path) {
-		string const name = fl_get_input(dialog_->input_template_path);
+		string const name = getString(dialog_->input_template_path);
 		if (!name.empty() && !RWInfo::ReadableDir(name)) {
 			parent_.postWarning(RWInfo::ErrorMessage());
 			return false;
@@ -2281,7 +2281,7 @@ bool FormPreferences::Paths::input(FL_OBJECT const * const ob)
 	}
 
 	if (!ob || ob == dialog_->input_temp_dir) {
-		string const name = fl_get_input(dialog_->input_temp_dir);
+		string const name = getString(dialog_->input_temp_dir);
 		if (fl_get_button(dialog_->check_make_backups)
 		    && !name.empty()
 		    && !RWInfo::WriteableDir(name)) {
@@ -2291,7 +2291,7 @@ bool FormPreferences::Paths::input(FL_OBJECT const * const ob)
 	}
 
 	if (!ob || ob == dialog_->input_backup_path) {
-		string const name = fl_get_input(dialog_->input_backup_path);
+		string const name = getString(dialog_->input_backup_path);
 		if (fl_get_button(dialog_->check_make_backups)
 		    && !name.empty()
 		    && !RWInfo::WriteableDir(name)) {
@@ -2301,7 +2301,7 @@ bool FormPreferences::Paths::input(FL_OBJECT const * const ob)
 	}
 
 	if (!ob || ob == dialog_->input_lastfiles) {
-		string const name = fl_get_input(dialog_->input_lastfiles);
+		string const name = getString(dialog_->input_lastfiles);
 		if (fl_get_button(dialog_->check_last_files)
 		    && !name.empty()
 		    && !RWInfo::WriteableFile(name)) {
@@ -2311,7 +2311,7 @@ bool FormPreferences::Paths::input(FL_OBJECT const * const ob)
 	}
 
 	if (!ob || ob == dialog_->input_serverpipe) {
-		string const name = fl_get_input(dialog_->input_serverpipe);
+		string const name = getString(dialog_->input_serverpipe);
 		if (!name.empty()) {
 			// strip off the extension
 			string const str = ChangeExtension(name, "");
@@ -2328,32 +2328,32 @@ bool FormPreferences::Paths::input(FL_OBJECT const * const ob)
 
 	if (ob == dialog_->button_default_path_browse) {
 		string f = parent_.controller().browsedir(
-			fl_get_input(dialog_->input_default_path), _("Default path"));
+			getString(dialog_->input_default_path), _("Default path"));
 		if (!f.empty())
 			fl_set_input(dialog_->input_default_path, f.c_str());
 	} else if (ob == dialog_->button_template_path_browse) {
 		string f = parent_.controller().browsedir(
-			fl_get_input(dialog_->input_template_path), _("Template path"));
+			getString(dialog_->input_template_path), _("Template path"));
 		if (!f.empty())
 			fl_set_input(dialog_->input_template_path, f.c_str());
 	} else if (ob == dialog_->button_temp_dir_browse) {
 		string f = parent_.controller().browsedir(
-			fl_get_input(dialog_->input_temp_dir), _("Temporary dir"));
+			getString(dialog_->input_temp_dir), _("Temporary dir"));
 		if (!f.empty())
 			fl_set_input(dialog_->input_temp_dir, f.c_str());
 	} else if (ob == dialog_->button_lastfiles_browse) {
 		string f = parent_.controller().browse(
-			fl_get_input(dialog_->input_lastfiles), _("Last files"));
+			getString(dialog_->input_lastfiles), _("Last files"));
 		if (!f.empty())
 			fl_set_input(dialog_->input_lastfiles, f.c_str());
 	} else if (ob == dialog_->button_backup_path_browse) {
 		string f = parent_.controller().browsedir(
-			fl_get_input(dialog_->input_backup_path), _("Backup path"));
+			getString(dialog_->input_backup_path), _("Backup path"));
 		if (!f.empty())
 			fl_set_input(dialog_->input_backup_path, f.c_str());
 	} else if (ob == dialog_->button_serverpipe_browse) {
 		string f = parent_.controller().browse(
-			fl_get_input(dialog_->input_serverpipe), _("LyX server pipes"));
+			getString(dialog_->input_serverpipe), _("LyX server pipes"));
 		if (!f.empty())
 			fl_set_input(dialog_->input_serverpipe, f.c_str());
 	}
@@ -2411,28 +2411,28 @@ FD_preferences_printer const * FormPreferences::Printer::dialog()
 void FormPreferences::Printer::apply(LyXRC & rc) const
 {
 	rc.print_adapt_output = fl_get_button(dialog_->check_adapt_output);
-	rc.print_command = fl_get_input(dialog_->input_command);
-	rc.print_pagerange_flag = fl_get_input(dialog_->input_page_range);
-	rc.print_copies_flag = fl_get_input(dialog_->input_copies);
-	rc.print_reverse_flag = fl_get_input(dialog_->input_reverse);
-	rc.print_to_printer = fl_get_input(dialog_->input_to_printer);
+	rc.print_command = getString(dialog_->input_command);
+	rc.print_pagerange_flag = getString(dialog_->input_page_range);
+	rc.print_copies_flag = getString(dialog_->input_copies);
+	rc.print_reverse_flag = getString(dialog_->input_reverse);
+	rc.print_to_printer = getString(dialog_->input_to_printer);
 	rc.print_file_extension =
-		fl_get_input(dialog_->input_file_extension);
+		getString(dialog_->input_file_extension);
 	rc.print_spool_command =
-		fl_get_input(dialog_->input_spool_command);
-	rc.print_paper_flag = fl_get_input(dialog_->input_paper_type);
-	rc.print_evenpage_flag = fl_get_input(dialog_->input_even_pages);
-	rc.print_oddpage_flag = fl_get_input(dialog_->input_odd_pages);
-	rc.print_collcopies_flag = fl_get_input(dialog_->input_collated);
-	rc.print_landscape_flag = fl_get_input(dialog_->input_landscape);
-	rc.print_to_file = fl_get_input(dialog_->input_to_file);
+		getString(dialog_->input_spool_command);
+	rc.print_paper_flag = getString(dialog_->input_paper_type);
+	rc.print_evenpage_flag = getString(dialog_->input_even_pages);
+	rc.print_oddpage_flag = getString(dialog_->input_odd_pages);
+	rc.print_collcopies_flag = getString(dialog_->input_collated);
+	rc.print_landscape_flag = getString(dialog_->input_landscape);
+	rc.print_to_file = getString(dialog_->input_to_file);
 	rc.print_extra_options =
-		fl_get_input(dialog_->input_extra_options);
+		getString(dialog_->input_extra_options);
 	rc.print_spool_printerprefix =
-		fl_get_input(dialog_->input_spool_prefix);
+		getString(dialog_->input_spool_prefix);
 	rc.print_paper_dimension_flag =
-		fl_get_input(dialog_->input_paper_size);
-	rc.printer = fl_get_input(dialog_->input_name);
+		getString(dialog_->input_paper_size);
+	rc.printer = getString(dialog_->input_name);
 }
 
 
@@ -2580,7 +2580,7 @@ void FormPreferences::ScreenFonts::apply(LyXRC & rc) const
 	bool changed = false;
 
 	pair<string, string> tmp =
-		parseFontName(fl_get_input(dialog_->input_roman));
+		parseFontName(getString(dialog_->input_roman));
 	if (rc.roman_font_name != tmp.first ||
 	    rc.roman_font_foundry != tmp.second) {
 		changed = true;
@@ -2588,7 +2588,7 @@ void FormPreferences::ScreenFonts::apply(LyXRC & rc) const
 		rc.roman_font_foundry = tmp.second;
 	}
 
-	tmp = parseFontName(fl_get_input(dialog_->input_sans));
+	tmp = parseFontName(getString(dialog_->input_sans));
 	if (rc.sans_font_name != tmp.first ||
 	    rc.sans_font_foundry != tmp.second) {
 		changed = true;
@@ -2596,7 +2596,7 @@ void FormPreferences::ScreenFonts::apply(LyXRC & rc) const
 		rc.sans_font_foundry = tmp.second;
 	}
 
-	tmp = parseFontName(fl_get_input(dialog_->input_typewriter));
+	tmp = parseFontName(getString(dialog_->input_typewriter));
 	if (rc.typewriter_font_name != tmp.first ||
 	    rc.typewriter_font_foundry != tmp.second) {
 		changed = true;
@@ -2604,7 +2604,7 @@ void FormPreferences::ScreenFonts::apply(LyXRC & rc) const
 		rc.typewriter_font_foundry = tmp.second;
 	}
 
-	string str = fl_get_input(dialog_->input_screen_encoding);
+	string str = getString(dialog_->input_screen_encoding);
 	if (rc.font_norm != str) {
 		changed = true;
 		rc.font_norm = str;
@@ -2631,61 +2631,61 @@ void FormPreferences::ScreenFonts::apply(LyXRC & rc) const
 		rc.dpi = ivalue;
 	}
 
-	string dvalue = fl_get_input(dialog_->input_tiny);
+	string dvalue = getString(dialog_->input_tiny);
 	if (rc.font_sizes[LyXFont::SIZE_TINY] != dvalue) {
 		changed = true;
 		rc.font_sizes[LyXFont::SIZE_TINY] = dvalue;
 	}
 
-	dvalue = fl_get_input(dialog_->input_script);
+	dvalue = getString(dialog_->input_script);
 	if (rc.font_sizes[LyXFont::SIZE_SCRIPT] != dvalue) {
 		changed = true;
 		rc.font_sizes[LyXFont::SIZE_SCRIPT] = dvalue;
 	}
 
-	dvalue = fl_get_input(dialog_->input_footnote);
+	dvalue = getString(dialog_->input_footnote);
 	if (rc.font_sizes[LyXFont::SIZE_FOOTNOTE] != dvalue) {
 		changed = true;
 		rc.font_sizes[LyXFont::SIZE_FOOTNOTE] = dvalue;
 	}
 
-	dvalue = fl_get_input(dialog_->input_small);
+	dvalue = getString(dialog_->input_small);
 	if (rc.font_sizes[LyXFont::SIZE_SMALL] != dvalue) {
 		changed = true;
 		rc.font_sizes[LyXFont::SIZE_SMALL] = dvalue;
 	}
 
-	dvalue = fl_get_input(dialog_->input_normal);
+	dvalue = getString(dialog_->input_normal);
 	if (rc.font_sizes[LyXFont::SIZE_NORMAL] != dvalue) {
 		changed = true;
 		rc.font_sizes[LyXFont::SIZE_NORMAL] = dvalue;
 	}
 
-	dvalue = fl_get_input(dialog_->input_large);
+	dvalue = getString(dialog_->input_large);
 	if (rc.font_sizes[LyXFont::SIZE_LARGE] != dvalue) {
 		changed = true;
 		rc.font_sizes[LyXFont::SIZE_LARGE] = dvalue;
 	}
 
-	dvalue = fl_get_input(dialog_->input_larger);
+	dvalue = getString(dialog_->input_larger);
 	if (rc.font_sizes[LyXFont::SIZE_LARGER] != dvalue) {
 		changed = true;
 		rc.font_sizes[LyXFont::SIZE_LARGER] = dvalue;
 	}
 
-	dvalue = fl_get_input(dialog_->input_largest);
+	dvalue = getString(dialog_->input_largest);
 	if (rc.font_sizes[LyXFont::SIZE_LARGEST] != dvalue) {
 		changed = true;
 		rc.font_sizes[LyXFont::SIZE_LARGEST] = dvalue;
 	}
 
-	dvalue = fl_get_input(dialog_->input_huge);
+	dvalue = getString(dialog_->input_huge);
 	if (rc.font_sizes[LyXFont::SIZE_HUGE] != dvalue) {
 		changed = true;
 		rc.font_sizes[LyXFont::SIZE_HUGE] = dvalue;
 	}
 
-	dvalue = fl_get_input(dialog_->input_huger);
+	dvalue = getString(dialog_->input_huger);
 	if (rc.font_sizes[LyXFont::SIZE_HUGER] != dvalue) {
 		changed = true;
 		rc.font_sizes[LyXFont::SIZE_HUGER] = dvalue;
@@ -2795,38 +2795,38 @@ bool FormPreferences::ScreenFonts::input()
 
 	// Make sure that all fonts all have positive entries
 	// Also note that an empty entry is returned as 0.0 by strToDbl
-	if (0.0 >= strToDbl(fl_get_input(dialog_->input_tiny))
-	    || 0.0 >= strToDbl(fl_get_input(dialog_->input_script))
-	    || 0.0 >= strToDbl(fl_get_input(dialog_->input_footnote))
-	    || 0.0 >= strToDbl(fl_get_input(dialog_->input_small))
-	    || 0.0 >= strToDbl(fl_get_input(dialog_->input_normal))
-	    || 0.0 >= strToDbl(fl_get_input(dialog_->input_large))
-	    || 0.0 >= strToDbl(fl_get_input(dialog_->input_larger))
-	    || 0.0 >= strToDbl(fl_get_input(dialog_->input_largest))
-	    || 0.0 >= strToDbl(fl_get_input(dialog_->input_huge))
-	    || 0.0 >= strToDbl(fl_get_input(dialog_->input_huger))) {
+	if (0.0 >= strToDbl(getString(dialog_->input_tiny))
+	    || 0.0 >= strToDbl(getString(dialog_->input_script))
+	    || 0.0 >= strToDbl(getString(dialog_->input_footnote))
+	    || 0.0 >= strToDbl(getString(dialog_->input_small))
+	    || 0.0 >= strToDbl(getString(dialog_->input_normal))
+	    || 0.0 >= strToDbl(getString(dialog_->input_large))
+	    || 0.0 >= strToDbl(getString(dialog_->input_larger))
+	    || 0.0 >= strToDbl(getString(dialog_->input_largest))
+	    || 0.0 >= strToDbl(getString(dialog_->input_huge))
+	    || 0.0 >= strToDbl(getString(dialog_->input_huger))) {
 		activate = false;
 		str = _("Fonts must be positive!");
 
-	} else if (strToDbl(fl_get_input(dialog_->input_tiny)) >
+	} else if (strToDbl(getString(dialog_->input_tiny)) >
 		   // Fontsizes -- tiny < script < footnote etc.
-		   strToDbl(fl_get_input(dialog_->input_script)) ||
-		   strToDbl(fl_get_input(dialog_->input_script)) >
-		   strToDbl(fl_get_input(dialog_->input_footnote)) ||
-		   strToDbl(fl_get_input(dialog_->input_footnote)) >
-		   strToDbl(fl_get_input(dialog_->input_small)) ||
-		   strToDbl(fl_get_input(dialog_->input_small)) >
-		   strToDbl(fl_get_input(dialog_->input_normal)) ||
-		   strToDbl(fl_get_input(dialog_->input_normal)) >
-		   strToDbl(fl_get_input(dialog_->input_large)) ||
-		   strToDbl(fl_get_input(dialog_->input_large)) >
-		   strToDbl(fl_get_input(dialog_->input_larger)) ||
-		   strToDbl(fl_get_input(dialog_->input_larger)) >
-		   strToDbl(fl_get_input(dialog_->input_largest)) ||
-		   strToDbl(fl_get_input(dialog_->input_largest)) >
-		   strToDbl(fl_get_input(dialog_->input_huge)) ||
-		   strToDbl(fl_get_input(dialog_->input_huge)) >
-		   strToDbl(fl_get_input(dialog_->input_huger))) {
+		   strToDbl(getString(dialog_->input_script)) ||
+		   strToDbl(getString(dialog_->input_script)) >
+		   strToDbl(getString(dialog_->input_footnote)) ||
+		   strToDbl(getString(dialog_->input_footnote)) >
+		   strToDbl(getString(dialog_->input_small)) ||
+		   strToDbl(getString(dialog_->input_small)) >
+		   strToDbl(getString(dialog_->input_normal)) ||
+		   strToDbl(getString(dialog_->input_normal)) >
+		   strToDbl(getString(dialog_->input_large)) ||
+		   strToDbl(getString(dialog_->input_large)) >
+		   strToDbl(getString(dialog_->input_larger)) ||
+		   strToDbl(getString(dialog_->input_larger)) >
+		   strToDbl(getString(dialog_->input_largest)) ||
+		   strToDbl(getString(dialog_->input_largest)) >
+		   strToDbl(getString(dialog_->input_huge)) ||
+		   strToDbl(getString(dialog_->input_huge)) >
+		   strToDbl(getString(dialog_->input_huger))) {
 		activate = false;
 
 		str = _("Fonts must be input in the order Tiny > Smallest > Smaller > Small > Normal > Large > Larger > Largest > Huge > Huger.");
@@ -2915,7 +2915,7 @@ void FormPreferences::SpellOptions::apply(LyXRC & rc)
 	} else {
 #else
 		int button = fl_get_button(dialog_->check_alt_lang);
-		choice = fl_get_input(dialog_->input_alt_lang);
+		choice = getString(dialog_->input_alt_lang);
 		if (button && choice.empty()) button = 0;
 		if (!button) choice.erase();
 
@@ -2923,7 +2923,7 @@ void FormPreferences::SpellOptions::apply(LyXRC & rc)
 		rc.isp_alt_lang = choice;
 
 		button = fl_get_button(dialog_->check_escape_chars);
-		choice = fl_get_input(dialog_->input_escape_chars);
+		choice = getString(dialog_->input_escape_chars);
 		if (button && choice.empty()) button = 0;
 		if (!button) choice.erase();
 
@@ -2931,7 +2931,7 @@ void FormPreferences::SpellOptions::apply(LyXRC & rc)
 		rc.isp_esc_chars = choice;
 
 		button = fl_get_button(dialog_->check_personal_dict);
-		choice = fl_get_input(dialog_->input_personal_dict);
+		choice = getString(dialog_->input_personal_dict);
 		if (button && choice.empty()) button = 0;
 		if (!button) choice.erase();
 
@@ -3048,7 +3048,7 @@ bool FormPreferences::SpellOptions::input(FL_OBJECT const * const ob)
 
 	if (ob == dialog_->button_personal_dict) {
 		string f = parent_.controller().browsedict(
-			fl_get_input(dialog_->input_personal_dict));
+			getString(dialog_->input_personal_dict));
 		fl_set_input(dialog_->input_personal_dict, f.c_str());
 	}
 
