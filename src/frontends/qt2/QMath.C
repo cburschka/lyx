@@ -68,7 +68,7 @@ void QMath::superscript()
 }
 
 
-void QMath::insert_symbol(string const & name)
+void QMath::insert(string const & name)
 {
 	current_view->owner()->dispatch(FuncRequest(LFUN_INSERT_MATH, '\\' + name));
 }
@@ -82,6 +82,12 @@ void QMath::insertCubeRoot()
 }
 
 
+void QMath::insertMatrix()
+{
+	current_view->owner()->dispatch(FuncRequest(LFUN_INSERT_MATRIX, "2 2"));
+}
+
+ 
 void QMath::toggleDisplay()
 {
 	current_view->owner()->dispatch(FuncRequest(LFUN_MATH_DISPLAY));

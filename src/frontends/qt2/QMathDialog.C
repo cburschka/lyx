@@ -178,13 +178,13 @@ void QMathDialog::addPanel(int num)
  
 void QMathDialog::symbol_clicked(string str)
 {
-	form_->insert_symbol(str);
+	form_->insert(str);
 }
 
  
 void QMathDialog::fracClicked()
 {
-	form_->insert_symbol("frac");
+	form_->insert("frac");
 }
  
 
@@ -208,12 +208,13 @@ void QMathDialog::expandClicked()
  
 void QMathDialog::functionSelected(const QString & str)
 {
-	form_->insert_symbol(str.latin1()); 
+	form_->insert(str.latin1()); 
 }
 
  
 void QMathDialog::matrixClicked()
 {
+	form_->insertMatrix();
 }
 
  
@@ -246,7 +247,7 @@ void QMathDialog::insertSpace(int id)
 		case 5: str = "qquad"; break;
 		case 6: str = "!"; break;
 	}
-	form_->insert_symbol(str);
+	form_->insert(str);
 }
 
  
@@ -254,13 +255,13 @@ void QMathDialog::insertRoot(int id)
 {
 	switch (id) {
 		case 1:
-			form_->insert_symbol("sqrt");
+			form_->insert("sqrt");
 			break;
 		case 2:
 			form_->insertCubeRoot();
 			break;
 		case 3:
-			form_->insert_symbol("root");
+			form_->insert("root");
 			break;
 	}
 }
@@ -275,7 +276,7 @@ void QMathDialog::insertStyle(int id)
 		case 3: str = "scriptstyle"; break;
 		case 4: str = "scriptscriptstyle"; break;
 	} 
-	form_->insert_symbol(str);
+	form_->insert(str);
 }
 
  
@@ -293,5 +294,5 @@ void QMathDialog::insertFont(int id)
 		case 8: str = "mathcal"; break;
 		case 9: str = "textrm"; break;
 	}
-	form_->insert_symbol(str);
+	form_->insert(str);
 }

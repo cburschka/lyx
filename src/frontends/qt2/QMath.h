@@ -32,10 +32,13 @@ public:
 	virtual void build_dialog();
 
 	/// insert a math symbol into the doc
-	void insert_symbol(string const & name);
+	void insert(string const & name);
  
 	/// insert a cube root
 	void insertCubeRoot();
+ 
+	/// insert a matrix
+	void insertMatrix();
  
 	/// add a subscript
 	void subscript();

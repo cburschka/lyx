@@ -13,8 +13,8 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>319</width>
-            <height>357</height>
+            <width>304</width>
+            <height>356</height>
         </rect>
     </property>
     <property stdset="1">
@@ -161,6 +161,189 @@
                             <class>QLayoutWidget</class>
                             <property stdset="1">
                                 <name>name</name>
+                                <cstring>Layout11</cstring>
+                            </property>
+                            <hbox>
+                                <property stdset="1">
+                                    <name>margin</name>
+                                    <number>0</number>
+                                </property>
+                                <property stdset="1">
+                                    <name>spacing</name>
+                                    <number>6</number>
+                                </property>
+                                <widget>
+                                    <class>QLayoutWidget</class>
+                                    <property stdset="1">
+                                        <name>name</name>
+                                        <cstring>Layout10</cstring>
+                                    </property>
+                                    <grid>
+                                        <property stdset="1">
+                                            <name>margin</name>
+                                            <number>0</number>
+                                        </property>
+                                        <property stdset="1">
+                                            <name>spacing</name>
+                                            <number>6</number>
+                                        </property>
+                                        <widget row="1"  column="1" >
+                                            <class>QPushButton</class>
+                                            <property stdset="1">
+                                                <name>name</name>
+                                                <cstring>fracPB</cstring>
+                                            </property>
+                                            <property stdset="1">
+                                                <name>sizePolicy</name>
+                                                <sizepolicy>
+                                                    <hsizetype>1</hsizetype>
+                                                    <vsizetype>1</vsizetype>
+                                                </sizepolicy>
+                                            </property>
+                                            <property stdset="1">
+                                                <name>text</name>
+                                                <string></string>
+                                            </property>
+                                            <property stdset="1">
+                                                <name>pixmap</name>
+                                                <pixmap>image4</pixmap>
+                                            </property>
+                                            <property>
+                                                <name>toolTip</name>
+                                                <string>Insert fraction (\frac)</string>
+                                            </property>
+                                        </widget>
+                                        <widget row="1"  column="0" >
+                                            <class>QPushButton</class>
+                                            <property stdset="1">
+                                                <name>name</name>
+                                                <cstring>equationPB</cstring>
+                                            </property>
+                                            <property stdset="1">
+                                                <name>sizePolicy</name>
+                                                <sizepolicy>
+                                                    <hsizetype>1</hsizetype>
+                                                    <vsizetype>1</vsizetype>
+                                                </sizepolicy>
+                                            </property>
+                                            <property stdset="1">
+                                                <name>text</name>
+                                                <string></string>
+                                            </property>
+                                            <property stdset="1">
+                                                <name>pixmap</name>
+                                                <pixmap>image5</pixmap>
+                                            </property>
+                                            <property>
+                                                <name>toolTip</name>
+                                                <string>Toggle between display mode</string>
+                                            </property>
+                                        </widget>
+                                        <widget row="0"  column="1" >
+                                            <class>QPushButton</class>
+                                            <property stdset="1">
+                                                <name>name</name>
+                                                <cstring>matrixPB</cstring>
+                                            </property>
+                                            <property stdset="1">
+                                                <name>text</name>
+                                                <string></string>
+                                            </property>
+                                            <property stdset="1">
+                                                <name>pixmap</name>
+                                                <pixmap>image6</pixmap>
+                                            </property>
+                                            <property>
+                                                <name>toolTip</name>
+                                                <string>Insert matrix</string>
+                                            </property>
+                                        </widget>
+                                        <widget row="0"  column="2" >
+                                            <class>QPushButton</class>
+                                            <property stdset="1">
+                                                <name>name</name>
+                                                <cstring>subscriptPB</cstring>
+                                            </property>
+                                            <property stdset="1">
+                                                <name>text</name>
+                                                <string></string>
+                                            </property>
+                                            <property stdset="1">
+                                                <name>pixmap</name>
+                                                <pixmap>image7</pixmap>
+                                            </property>
+                                            <property>
+                                                <name>toolTip</name>
+                                                <string>Subscript</string>
+                                            </property>
+                                        </widget>
+                                        <widget row="1"  column="2" >
+                                            <class>QPushButton</class>
+                                            <property stdset="1">
+                                                <name>name</name>
+                                                <cstring>superscriptPB</cstring>
+                                            </property>
+                                            <property stdset="1">
+                                                <name>text</name>
+                                                <string></string>
+                                            </property>
+                                            <property stdset="1">
+                                                <name>pixmap</name>
+                                                <pixmap>image8</pixmap>
+                                            </property>
+                                            <property>
+                                                <name>toolTip</name>
+                                                <string>Superscript</string>
+                                            </property>
+                                        </widget>
+                                        <widget row="0"  column="0" >
+                                            <class>QPushButton</class>
+                                            <property stdset="1">
+                                                <name>name</name>
+                                                <cstring>delimitersPB</cstring>
+                                            </property>
+                                            <property stdset="1">
+                                                <name>text</name>
+                                                <string></string>
+                                            </property>
+                                            <property stdset="1">
+                                                <name>pixmap</name>
+                                                <pixmap>image9</pixmap>
+                                            </property>
+                                            <property>
+                                                <name>toolTip</name>
+                                                <string>Show delimiter and bracket dialog</string>
+                                            </property>
+                                        </widget>
+                                    </grid>
+                                </widget>
+                                <spacer>
+                                    <property>
+                                        <name>name</name>
+                                        <cstring>Spacer5</cstring>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>orientation</name>
+                                        <enum>Horizontal</enum>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>sizeType</name>
+                                        <enum>Expanding</enum>
+                                    </property>
+                                    <property>
+                                        <name>sizeHint</name>
+                                        <size>
+                                            <width>20</width>
+                                            <height>20</height>
+                                        </size>
+                                    </property>
+                                </spacer>
+                            </hbox>
+                        </widget>
+                        <widget>
+                            <class>QLayoutWidget</class>
+                            <property stdset="1">
+                                <name>name</name>
                                 <cstring>Layout12</cstring>
                             </property>
                             <hbox>
@@ -229,176 +412,10 @@
                                         </widget>
                                     </vbox>
                                 </widget>
-                                <widget>
-                                    <class>QLayoutWidget</class>
-                                    <property stdset="1">
-                                        <name>name</name>
-                                        <cstring>Layout18</cstring>
-                                    </property>
-                                    <vbox>
-                                        <property stdset="1">
-                                            <name>margin</name>
-                                            <number>0</number>
-                                        </property>
-                                        <property stdset="1">
-                                            <name>spacing</name>
-                                            <number>6</number>
-                                        </property>
-                                        <widget>
-                                            <class>QPushButton</class>
-                                            <property stdset="1">
-                                                <name>name</name>
-                                                <cstring>delimitersPB</cstring>
-                                            </property>
-                                            <property stdset="1">
-                                                <name>text</name>
-                                                <string></string>
-                                            </property>
-                                            <property stdset="1">
-                                                <name>pixmap</name>
-                                                <pixmap>image4</pixmap>
-                                            </property>
-                                            <property>
-                                                <name>toolTip</name>
-                                                <string>Show delimiter and bracket dialog</string>
-                                            </property>
-                                        </widget>
-                                        <widget>
-                                            <class>QPushButton</class>
-                                            <property stdset="1">
-                                                <name>name</name>
-                                                <cstring>matrixPB</cstring>
-                                            </property>
-                                            <property stdset="1">
-                                                <name>text</name>
-                                                <string></string>
-                                            </property>
-                                            <property stdset="1">
-                                                <name>pixmap</name>
-                                                <pixmap>image5</pixmap>
-                                            </property>
-                                            <property>
-                                                <name>toolTip</name>
-                                                <string>Show math matrix dialog</string>
-                                            </property>
-                                        </widget>
-                                        <widget>
-                                            <class>QPushButton</class>
-                                            <property stdset="1">
-                                                <name>name</name>
-                                                <cstring>subscriptPB</cstring>
-                                            </property>
-                                            <property stdset="1">
-                                                <name>text</name>
-                                                <string></string>
-                                            </property>
-                                            <property stdset="1">
-                                                <name>pixmap</name>
-                                                <pixmap>image6</pixmap>
-                                            </property>
-                                            <property>
-                                                <name>toolTip</name>
-                                                <string>Subscript</string>
-                                            </property>
-                                        </widget>
-                                        <widget>
-                                            <class>QPushButton</class>
-                                            <property stdset="1">
-                                                <name>name</name>
-                                                <cstring>superscriptPB</cstring>
-                                            </property>
-                                            <property stdset="1">
-                                                <name>text</name>
-                                                <string></string>
-                                            </property>
-                                            <property stdset="1">
-                                                <name>pixmap</name>
-                                                <pixmap>image7</pixmap>
-                                            </property>
-                                            <property>
-                                                <name>toolTip</name>
-                                                <string>Superscript</string>
-                                            </property>
-                                        </widget>
-                                        <widget>
-                                            <class>QPushButton</class>
-                                            <property stdset="1">
-                                                <name>name</name>
-                                                <cstring>fracPB</cstring>
-                                            </property>
-                                            <property stdset="1">
-                                                <name>sizePolicy</name>
-                                                <sizepolicy>
-                                                    <hsizetype>1</hsizetype>
-                                                    <vsizetype>1</vsizetype>
-                                                </sizepolicy>
-                                            </property>
-                                            <property stdset="1">
-                                                <name>text</name>
-                                                <string></string>
-                                            </property>
-                                            <property stdset="1">
-                                                <name>pixmap</name>
-                                                <pixmap>image8</pixmap>
-                                            </property>
-                                            <property>
-                                                <name>toolTip</name>
-                                                <string>Insert fraction (\frac)</string>
-                                            </property>
-                                        </widget>
-                                        <widget>
-                                            <class>QPushButton</class>
-                                            <property stdset="1">
-                                                <name>name</name>
-                                                <cstring>equationPB</cstring>
-                                            </property>
-                                            <property stdset="1">
-                                                <name>sizePolicy</name>
-                                                <sizepolicy>
-                                                    <hsizetype>1</hsizetype>
-                                                    <vsizetype>1</vsizetype>
-                                                </sizepolicy>
-                                            </property>
-                                            <property stdset="1">
-                                                <name>text</name>
-                                                <string></string>
-                                            </property>
-                                            <property stdset="1">
-                                                <name>pixmap</name>
-                                                <pixmap>image9</pixmap>
-                                            </property>
-                                            <property>
-                                                <name>toolTip</name>
-                                                <string>Toggle between display mode</string>
-                                            </property>
-                                        </widget>
-                                        <spacer>
-                                            <property>
-                                                <name>name</name>
-                                                <cstring>Spacer4</cstring>
-                                            </property>
-                                            <property stdset="1">
-                                                <name>orientation</name>
-                                                <enum>Vertical</enum>
-                                            </property>
-                                            <property stdset="1">
-                                                <name>sizeType</name>
-                                                <enum>Expanding</enum>
-                                            </property>
-                                            <property>
-                                                <name>sizeHint</name>
-                                                <size>
-                                                    <width>20</width>
-                                                    <height>20</height>
-                                                </size>
-                                            </property>
-                                        </spacer>
-                                    </vbox>
-                                </widget>
                                 <spacer>
                                     <property>
                                         <name>name</name>
-                                        <cstring>Spacer5</cstring>
+                                        <cstring>Spacer4</cstring>
                                     </property>
                                     <property stdset="1">
                                         <name>orientation</name>
@@ -755,27 +772,27 @@
     </image>
     <image>
         <name>image4</name>
-        <data format="XPM.GZ" length="569">789cd3d7528808f055d0d2e72a2e492cc94c5648ce482c52d04a29cdcdad8c8eb5ade6523232500022630543251d2e253d856405bffcbc54105b19c856360003103711c64d4b03abc402c8135756564608813948e289608026ae8710d7c31087e0a12b8ec55fb8c2017bb851215e6aadb900c1776f11</data>
-    </image>
-    <image>
-        <name>image5</name>
-        <data format="XPM.GZ" length="554">789cd3d7528808f055d0d2e72a2e492cc94c5648ce482c52d04a29cdcdad8c8eb5ade65232325000210543251d2e253d856405bffcbc54105b19c856360082b434b0141640a6b832102011087110421084c57198336a2fa9e2b5d65c00168a5f43</data>
-    </image>
-    <image>
-        <name>image6</name>
-        <data format="XPM.GZ" length="569">789cd3d7528808f055d0d2e72a2e492cc94c5648ce482c52d04a29cdcdad8c8eb5ade6523232500022630543251d2e253d856405bffcbc54105b19c856360003103711c64d4b03abc402a82cae0c0658c4f560c48088278200367120499c38c45f18e25040b238ba7b3000c9e2b5d65c00f2a86971</data>
-    </image>
-    <image>
-        <name>image7</name>
-        <data format="XPM.GZ" length="569">789cd3d7528808f055d0d2e72a2e492cc94c5648ce482c52d04a29cdcdad8c8eb5ade6523232500022630543251d2e253d856405bffcbc54105b19c856360003103711c64d4b03abc40250c59541009b381413144f04032ce27a6082647174f740c531dc4f737188bf30c431c08089d75a7301006ff86b61</data>
-    </image>
-    <image>
-        <name>image8</name>
         <data format="XPM.GZ" length="569">789cd3d7528808f055d0d2e72a2e492cc94c5648ce482c52d04a29cdcdad8c8eb5ade6523232500022630543251d2e253d856405bffcbc54103b11c856360003105719c64d4b03abc40288105706032ce2708246e238ecc5eace4424408cf850f72f8678ad351700b4f269b9</data>
     </image>
     <image>
-        <name>image9</name>
+        <name>image5</name>
         <data format="XPM.GZ" length="569">789cd3d7528808f055d0d2e72a2e492cc94c5648ce482c52d04a29cdcdad8c8eb5ade6523232500022630543251d2e253d856405bffcbc54105b19c856360003103711c64d4b03abc402c814574601d4578f4f3c110cb088c30922c57198438a7b06321c50c56badb90087fe6771</data>
+    </image>
+    <image>
+        <name>image6</name>
+        <data format="XPM.GZ" length="554">789cd3d7528808f055d0d2e72a2e492cc94c5648ce482c52d04a29cdcdad8c8eb5ade65232325000210543251d2e253d856405bffcbc54105b19c856360082b434b0141640a6b832102011087110421084c57198336a2fa9e2b5d65c00168a5f43</data>
+    </image>
+    <image>
+        <name>image7</name>
+        <data format="XPM.GZ" length="569">789cd3d7528808f055d0d2e72a2e492cc94c5648ce482c52d04a29cdcdad8c8eb5ade6523232500022630543251d2e253d856405bffcbc54105b19c856360003103711c64d4b03abc402a82cae0c0658c4f560c48088278200367120499c38c45f18e25040b238ba7b3000c9e2b5d65c00f2a86971</data>
+    </image>
+    <image>
+        <name>image8</name>
+        <data format="XPM.GZ" length="569">789cd3d7528808f055d0d2e72a2e492cc94c5648ce482c52d04a29cdcdad8c8eb5ade6523232500022630543251d2e253d856405bffcbc54105b19c856360003103711c64d4b03abc40250c59541009b381413144f04032ce27a6082647174f740c531dc4f737188bf30c431c08089d75a7301006ff86b61</data>
+    </image>
+    <image>
+        <name>image9</name>
+        <data format="XPM.GZ" length="569">789cd3d7528808f055d0d2e72a2e492cc94c5648ce482c52d04a29cdcdad8c8eb5ade6523232500022630543251d2e253d856405bffcbc54105b19c856360003103711c64d4b03abc402c8135756564608813948e289608026ae8710d7c31087e0a12b8ec55fb8c2017bb851215e6aadb900c1776f11</data>
     </image>
     <image>
         <name>image10</name>
