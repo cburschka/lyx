@@ -197,8 +197,8 @@ usort (\$podata, "cmp");
 
 <p>
 	The following table details the current state of the translations of the
-	LyX GUI for the main LyX development branch (currently 1.3.0cvs).
-	Unfortunately, only a few languages are well-supported. The LyX term may,
+	LyX GUI for the LyX stable branch (currently 1.3.1cvs).
+	Unfortunately, only a few languages are well-supported. The LyX team may,
 	therefore, decide to exclude some of the translations from a formal
 	release in order not to confuse the user with a strongly mixed-language
 	interface.
