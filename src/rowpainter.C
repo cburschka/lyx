@@ -131,7 +131,7 @@ RowPainter::RowPainter(BufferView const & bv, LyXText const & text,
      RowList::iterator rit,
      int y_offset, int x_offset, int y)
 	: bv_(bv), pain_(bv_.painter()), text_(text), row_(rit),
-	  pit_(text.getPar(rit)),
+	  pit_(rit->par()),
 		xo_(x_offset), yo_(y_offset), y_(y)
 {}
 
@@ -169,7 +169,7 @@ char const RowPainter::transformChar(char c, lyx::pos_type pos) const
 
 int RowPainter::leftMargin() const
 {
-	return text_.leftMargin(pit_, *row_);
+	return text_.leftMargin(*row_);
 }
 
 
@@ -255,7 +255,7 @@ void RowPainter::paintArabicComposeChar(pos_type & vpos)
 void RowPainter::paintChars(pos_type & vpos, bool hebrew, bool arabic)
 {
 	pos_type pos = text_.vis2log(vpos);
-	pos_type const last = lastPrintablePos(text_, pit_, row_);
+	pos_type const last = lastPrintablePos(text_, row_);
 	LyXFont orig_font = getFont(pos);
 
 	// first character
@@ -432,7 +432,7 @@ void RowPainter::paintSelection()
 			int(x_), row_->height(), LColor::selection);
 
 	pos_type const body_pos = pit_->beginningOfBody();
-	pos_type const last = lastPrintablePos(text_, pit_, row_);
+	pos_type const last = lastPrintablePos(text_, row_);
 	double tmpx = x_;
 
 	for (pos_type vpos = row_->pos(); vpos <= last; ++vpos)  {
@@ -448,7 +448,7 @@ void RowPainter::paintSelection()
 				tmpx -= singleWidth(body_pos - 1);
 		}
 
-		if (hfillExpansion(text_, pit_, row_, pos)) {
+		if (hfillExpansion(text_, row_, pos)) {
 			tmpx += singleWidth(pos);
 			if (pos >= body_pos)
 				tmpx += hfill_;
@@ -484,7 +484,7 @@ void RowPainter::paintSelection()
 void RowPainter::paintChangeBar()
 {
 	pos_type const start = row_->pos();
-	pos_type const end = lastPrintablePos(text_, pit_, row_);
+	pos_type const end = lastPrintablePos(text_, row_);
 
 	if (!pit_->isChanged(start, end))
 		return;
@@ -524,12 +524,12 @@ void RowPainter::paintDepthBar()
 
 	Paragraph::depth_type prev_depth = 0;
 	if (row_ != text_.rows().begin())
-		prev_depth = text_.getPar(boost::prior(row_))->getDepth();
+		prev_depth = boost::prior(row_)->par()->getDepth();
 	Paragraph::depth_type next_depth = 0;
 
 	RowList::iterator next_row = boost::next(row_);
 	if (next_row != text_.rows().end())
-		next_depth = text_.getPar(next_row)->getDepth();
+		next_depth = next_row->par()->getDepth();
 
 	for (Paragraph::depth_type i = 1; i <= depth; ++i) {
 		int const w = PAPER_MARGIN / 5;
@@ -795,7 +795,7 @@ void RowPainter::paintFirst()
 			double x = x_;
 			if (layout->labeltype == LABEL_CENTERED_TOP_ENVIRONMENT) {
 				x = ((is_rtl ? leftMargin() : x_)
-					 + ww - text_.rightMargin(pit_, *bv_.buffer(), *row_)) / 2;
+					 + ww - text_.rightMargin(*bv_.buffer(), *row_)) / 2;
 				x -= font_metrics::width(str, font) / 2;
 			} else if (is_rtl) {
 				x = ww - leftMargin() -
@@ -875,7 +875,7 @@ void RowPainter::paintLast()
 		string const & str = pit_->layout()->endlabelstring();
 		double const x = is_rtl ?
 			x_ - font_metrics::width(str, font)
-			: ww - text_.rightMargin(pit_, *bv_.buffer(), *row_) - row_->fill();
+			: ww - text_.rightMargin(*bv_.buffer(), *row_) - row_->fill();
 		pain_.text(int(x), yo_ + row_->baseline(), str, font);
 		break;
 	}
@@ -887,7 +887,7 @@ void RowPainter::paintLast()
 
 void RowPainter::paintText()
 {
-	pos_type const last = lastPrintablePos(text_, pit_, row_);
+	pos_type const last = lastPrintablePos(text_, row_);
 	pos_type body_pos = pit_->beginningOfBody();
 	if (body_pos > 0 &&
 		(body_pos - 1 > last || !pit_->isLineSeparator(body_pos - 1))) {
@@ -952,7 +952,7 @@ void RowPainter::paintText()
 
 			pain_.line(int(x_), y1, int(x_), y0, LColor::added_space);
 
-			if (hfillExpansion(text_, pit_, row_, pos)) {
+			if (hfillExpansion(text_, row_, pos)) {
 				int const y2 = (y0 + y1) / 2;
 
 				if (pos >= body_pos) {
@@ -997,7 +997,7 @@ void RowPainter::paint()
 
 	// FIXME: must be a cleaner way here. Aren't these calculations
 	// belonging to row metrics ?
-	text_.prepareToPrint(pit_, row_, x_, separator_, hfill_, label_hfill_);
+	text_.prepareToPrint(row_, x_, separator_, hfill_, label_hfill_);
 
 	// FIXME: what is this fixing ?
 	if (text_.isInInset() && x_ < 0)
@@ -1025,7 +1025,7 @@ void RowPainter::paint()
 	if (row_->isParStart())
 		paintFirst();
 
-	if (isParEnd(text_, pit_, row_))
+	if (isParEnd(text_, row_))
 		paintLast();
 
 	// paint text

@@ -136,6 +136,8 @@ public:
 	void redoParagraph(ParagraphList::iterator pit);
 	/// rebreaks the cursor par
 	void redoParagraph();
+	/// returns first row belongin to some par
+	RowList::iterator firstRow(ParagraphList::iterator pit);
 
 	///
 	void toggleFree(LyXFont const &, bool toggleall = false);
@@ -194,8 +196,8 @@ public:
 	/** returns the column near the specified x-coordinate of the row
 	 x is set to the real beginning of this column
 	 */
-	lyx::pos_type getColumnNearX(ParagraphList::iterator pit,
-		RowList::iterator rit, int & x, bool & boundary) const;
+	lyx::pos_type getColumnNearX(RowList::iterator rit,
+				     int & x, bool & boundary) const;
 
 	/** returns a pointer to a specified row. y is set to the beginning
 	 of the row
@@ -367,8 +369,7 @@ public:
 	int workWidth() const;
 
 	///
-	void computeBidiTables(ParagraphList::iterator pit,
-		Buffer const *, RowList::iterator row) const;
+	void computeBidiTables(Buffer const *, RowList::iterator row) const;
 	/// Maps positions in the visual string to positions in logical string.
 	lyx::pos_type log2vis(lyx::pos_type pos) const;
 	/// Maps positions in the logical string to positions in visual string.
@@ -382,8 +383,7 @@ private:
 	mutable RowList rowlist_;
 
 	///
-	float getCursorX(ParagraphList::iterator pit,
-	     RowList::iterator rit, lyx::pos_type pos,
+	float getCursorX(RowList::iterator rit, lyx::pos_type pos,
 			 lyx::pos_type last, bool boundary) const;
 	/// used in setlayout
 	void makeFontEntriesLayoutSpecific(BufferParams const &, Paragraph & par);
@@ -447,15 +447,13 @@ public:
 	 * in LaTeX the beginning of the text fits in some cases
 	 * (for example sections) exactly the label-width.
 	 */
-	int leftMargin(ParagraphList::iterator pit, Row const & row) const;
+	int leftMargin(Row const & row) const;
 	///
-	int rightMargin(ParagraphList::iterator pit, Buffer const &, Row const & row) const;
+	int rightMargin(Buffer const &, Row const & row) const;
 
 	/** this calculates the specified parameters. needed when setting
 	 * the cursor and when creating a visible row */
-	void prepareToPrint(
-	        ParagraphList::iterator pit,
-	        RowList::iterator row, double & x,
+	void prepareToPrint(RowList::iterator row, double & x,
 			    double & fill_separator,
 			    double & fill_hfill,
 			    double & fill_label_hfill,
@@ -478,8 +476,7 @@ private:
 
 	/// return the pos value *before* which a row should break.
 	/// for example, the pos at which IsNewLine(pos) == true
-	lyx::pos_type rowBreakPoint(ParagraphList::iterator pit,
-		Row const & row) const;
+	lyx::pos_type rowBreakPoint(Row const & row) const;
 
 	/// returns the minimum space a row needs on the screen in pixel
 	int fill(RowList::iterator row, int workwidth) const;
@@ -488,10 +485,10 @@ private:
 	 * returns the minimum space a manual label needs on the
 	 * screen in pixels
 	 */
-	int labelFill(ParagraphList::iterator pit, Row const & row) const;
+	int labelFill(Row const & row) const;
 
 	/// FIXME
-	int labelEnd(ParagraphList::iterator pit, Row const & row) const;
+	int labelEnd(Row const & row) const;
 
 	///
 	mutable std::vector<lyx::pos_type> log2vis_list;
@@ -514,16 +511,6 @@ public:
 
 	/// return true if this is owned by an inset.
 	bool isInInset() const;
-
-	/// compute paragraphlist iterator from rowlist iterator
-	ParagraphList::iterator getPar(RowList::iterator rit) const;
-
-	/// return first row of par
-	RowList::iterator beginRow(ParagraphList::iterator pit) const;
-	/// return row "behind" last of par
-	RowList::iterator endRow(ParagraphList::iterator pit) const;
-	/// return row "behind" last of implizitly given par
-	RowList::iterator endRow(RowList::iterator rit) const;
 
 private:
 	/** Cursor related data.

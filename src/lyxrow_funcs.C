@@ -9,27 +9,24 @@
 #include <algorithm>
 
 using lyx::pos_type;
-
 using std::max;
 using std::min;
 
 
-bool isParEnd(LyXText const & lt,
-	ParagraphList::iterator pit, RowList::iterator rit)
+bool isParEnd(LyXText const & lt, RowList::iterator rit)
 {
 	RowList::iterator next_row = boost::next(rit);
-	return next_row == lt.rows().end() || lt.getPar(next_row) != pit;
+	return next_row == lt.rows().end() || next_row->par() != rit->par();
 }
 
 
-pos_type lastPos(LyXText const & lt,
-	ParagraphList::iterator pit, RowList::iterator rit)
+pos_type lastPos(LyXText const & lt, RowList::iterator rit)
 {
-	if (pit->empty())
+	if (rit->par()->empty())
 		return 0;
 
-	if (isParEnd(lt, pit, rit))
-		return pit->size() - 1;
+	if (isParEnd(lt, rit))
+		return rit->par()->size() - 1;
 
 	return boost::next(rit)->pos() - 1;
 }
@@ -37,9 +34,10 @@ pos_type lastPos(LyXText const & lt,
 
 namespace {
 
-bool nextRowIsAllInset(
-	ParagraphList::iterator pit, RowList::iterator rit, pos_type last)
+bool nextRowIsAllInset(Row const & row, pos_type last)
 {
+	ParagraphList::iterator pit = row.par();
+
 	if (last + 1 >= pit->size())
 		return false;
 
@@ -53,26 +51,27 @@ bool nextRowIsAllInset(
 } // anon namespace
 
 
-pos_type lastPrintablePos(LyXText const & lt,
-	ParagraphList::iterator pit, RowList::iterator rit)
+pos_type lastPrintablePos(LyXText const & lt, RowList::iterator rit)
 {
-	pos_type const last = lastPos(lt, pit, rit);
+	pos_type const last = lastPos(lt, rit);
 
 	// if this row is an end of par, just act like lastPos()
-	if (isParEnd(lt, pit, rit))
+	if (isParEnd(lt, rit))
 		return last;
 
-	if (!nextRowIsAllInset(pit, rit, last) && pit->isSeparator(last))
+	bool const nextrownotinset = !nextRowIsAllInset(*rit, last);
+
+	if (nextrownotinset && rit->par()->isSeparator(last))
 		return last - 1;
 
 	return last;
 }
 
 
-int numberOfSeparators(LyXText const & lt,
-	ParagraphList::iterator pit, RowList::iterator rit)
+int numberOfSeparators(LyXText const & lt, RowList::iterator rit)
 {
-	pos_type const last = lastPrintablePos(lt, pit, rit);
+	pos_type const last = lastPrintablePos(lt, rit);
+	ParagraphList::iterator pit = rit->par();
 	int n = 0;
 	pos_type p = max(rit->pos(), pit->beginningOfBody());
 	for ( ; p < last; ++p)
@@ -84,11 +83,11 @@ int numberOfSeparators(LyXText const & lt,
 
 // This is called _once_ from LyXText and should at least be moved into
 // an anonymous namespace there. (Lgb)
-int numberOfHfills(LyXText const & lt,
-	ParagraphList::iterator pit, RowList::iterator rit)
+int numberOfHfills(LyXText const & lt, RowList::iterator rit)
 {
-	pos_type const last = lastPos(lt, pit, rit);
+	pos_type const last = lastPos(lt, rit);
 	pos_type first = rit->pos();
+	ParagraphList::iterator pit = rit->par();
 
 	// hfill *DO* count at the beginning of paragraphs!
 	if (first) {
@@ -111,11 +110,11 @@ int numberOfHfills(LyXText const & lt,
 
 // This is called _once_ from LyXText and should at least be moved into
 // an anonymous namespace there. (Lgb)
-int numberOfLabelHfills(LyXText const & lt,
-	ParagraphList::iterator pit, RowList::iterator rit)
+int numberOfLabelHfills(LyXText const & lt, RowList::iterator rit)
 {
-	pos_type last = lastPos(lt, pit, rit);
+	pos_type last = lastPos(lt, rit);
 	pos_type first = rit->pos();
+	ParagraphList::iterator pit = rit->par();
 
 	// hfill *DO* count at the beginning of paragraphs!
 	if (first) {
@@ -135,15 +134,16 @@ int numberOfLabelHfills(LyXText const & lt,
 }
 
 
-bool hfillExpansion(LyXText const & lt,
-	ParagraphList::iterator pit, RowList::iterator rit, pos_type pos)
+bool hfillExpansion(LyXText const & lt, RowList::iterator rit, pos_type pos)
 {
+	ParagraphList::iterator pit = rit->par();
+
 	if (!pit->isHfill(pos))
 		return false;
 
 	// at the end of a row it does not count
 	// unless another hfill exists on the line
-	if (pos >= lastPos(lt, pit, rit))
+	if (pos >= lastPos(lt, rit))
 		for (pos_type i = rit->pos(); i < pos && !pit->isHfill(i); ++i)
 			return false;
 

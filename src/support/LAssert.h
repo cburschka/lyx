@@ -18,13 +18,11 @@ namespace support {
 #ifdef ENABLE_ASSERTIONS
 
 /** Live assertion.
-    This is a debug tool to ensure that the assertion holds. If it
-    doesn't hold we run #emergencyCleanup()# and then #lyx::abort".
+    This is a debug tool to ensure that the assertion holds. If it don't hole
+    we run #emergencyCleanup()# and then #lyx::abort".
     @param assertion this should evaluate to true unless you want an abort.
 */
 void Assert(bool assertion);
-/// same as above, print message before aborting
-void Assert(bool assertion, const char * message);
 
 #else
 
@@ -33,8 +31,6 @@ void Assert(bool assertion, const char * message);
 */
 inline
 void Assert(bool /*assertion*/) {}
-inline
-void Assert(bool /*assertion*/, const char * /*message*/) {}
 
 #endif /* ENABLE_ASSERTIONS */
 

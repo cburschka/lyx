@@ -1,23 +1,10 @@
 
-2003-08-14  André Pönitz  <poenitz@gmx.net>
-
-	* lyxrow.[Ch]: remove Row::pit_ member and par() accessors
-
-	* bufferview_funcs.C:
-	* lyxrow_funcs.[Ch]:
-	* lyxtext.h:
-	* rowpainter.C:
-	* text.C:
-	* text2.C:
-	* text3.C: adjust
-
 2003-08-11  André Pönitz  <poenitz@gmx.net>
-
-	* lyxtext.h (getPar):
-	* text.C: new function
 
 	* Makefile.am:
 	* tracer.[Ch]: remove unneeded files
+
+2003-08-11  André Pönitz  <poenitz@gmx.net>
 
 	* InsetList.[Ch]: remove resizeInsetsLyXText()
 
