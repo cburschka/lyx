@@ -2054,7 +2054,7 @@ void LyXFunc::initMiniBuffer()
 		text += nicename;
 		if (tmpbuf->lyxvc.inUse()) {
 			text += " [";
-			text += tmpbuf->lyxvc.version();
+			text += tmpbuf->lyxvc.versionString();
 			text += ' ';
 			text += tmpbuf->lyxvc.locker();
 			if (tmpbuf->isReadonly())
