@@ -557,35 +557,20 @@ void MathScriptInset::notifyCursorLeaves(LCursor & cur)
 {
 	MathNestInset::notifyCursorLeaves(cur);
 
-#if 1
 	// remove empty scripts if possible
-<<<<<<< math_scriptinset.C
-	if (cur.idx() == 2 && cell(2).empty()) {
+	if (nargs() > 2 && cur.idx() == 2 && cell(2).empty()) {
 		// must be a subscript...
 		removeScript(false);
 		// sanitize cursor, even if this slice will be removed immediately
 		cur.idx() = 0;
 		cur.pos() = 0;
-	} else if (cur.idx() == 1 && cell(1).empty()) {
+	} else if (nargs() > 1 && cur.idx() == 1 && cell(1).empty()) {
 		// could be either subscript or super script
 		removeScript(cell_1_is_up_);
 		// sanitize cursor, even if this slice will be removed immediately
 		cur.idx() = 0;
 		cur.pos() = 0;
-=======
-	if (idx == 2 && nargs() > 2 && cell(2).empty()) {
-		removeScript(false); // must be a subscript...
-	} else if (idx == 1 && nargs() > 1 && cell(1).empty()) {
-		if (nargs() == 2) {
-			cell_1_is_up_ = false;
-			cell(1) = cell(2);
-			cells_.pop_back();
-		} else if (nargs() == 1) {
-			cells_.pop_back();
-		}
->>>>>>> 1.114
 	}
-#endif
 }
 
 
