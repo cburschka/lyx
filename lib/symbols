@@ -423,10 +423,43 @@ lyxdabar           msa          57   0 mathord  x
 lyxright           msa          75   0 mathord  x
 lyxleft            msa          76   0 mathord  x
 
-{                  mathnormal   0   0 special  x
-}                  mathnormal   0   0 special  x
-$                  mathnormal   0   0 special  x
-%                  mathnormal   0   0 special  x
+log                lyxblacktext  0   0 func     x
+lg                 lyxblacktext  0   0 func     x
+ln                 lyxblacktext  0   0 func     x
+lim                lyxblacktext  0   0 funclim  x
+limsup             lyxblacktext  0   0 funclim  x
+liminf             lyxblacktext  0   0 funclim  x
+sin                lyxblacktext  0   0 func     x
+arcsin             lyxblacktext  0   0 func     x
+sinh               lyxblacktext  0   0 func     x
+cos                lyxblacktext  0   0 func     x
+arccos             lyxblacktext  0   0 func     x
+cosh               lyxblacktext  0   0 func     x
+tan                lyxblacktext  0   0 func     x
+arctan             lyxblacktext  0   0 func     x
+tanh               lyxblacktext  0   0 func     x
+cot                lyxblacktext  0   0 func     x
+coth               lyxblacktext  0   0 func     x
+sec                lyxblacktext  0   0 func     x
+csc                lyxblacktext  0   0 func     x
+max                lyxblacktext  0   0 funclim  x
+min                lyxblacktext  0   0 funclim  x
+sup                lyxblacktext  0   0 funclim  x
+inf                lyxblacktext  0   0 funclim  x
+arg                lyxblacktext  0   0 func     x
+ker                lyxblacktext  0   0 func     x
+dim                lyxblacktext  0   0 func     x
+hom                lyxblacktext  0   0 func     x
+det                lyxblacktext  0   0 funclim  x
+exp                lyxblacktext  0   0 func     x
+Pr                 lyxblacktext  0   0 funclim  x
+gcd                lyxblacktext  0   0 funclim  x
+deg                lyxblacktext  0   0 func     x
+
+{                  mathnormal    0   0 special  x
+}                  mathnormal    0   0 special  x
+$                  mathnormal    0   0 special  x
+%                  mathnormal    0   0 special  x
 # don't remove the space from the beginning of the next line
- #                 mathnormal   0   0 special  x
+ #                 mathnormal    0   0 special  x
 
