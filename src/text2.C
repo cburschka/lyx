@@ -414,6 +414,7 @@ void LyXText::ToggleFootnote(BufferView * bview)
 #endif
 
 
+#ifndef NEW_INSETS
 void LyXText::OpenStuff(BufferView * bview)
 {
      	if (cursor.pos() == 0 && cursor.par()->bibkey){
@@ -433,6 +434,7 @@ void LyXText::OpenStuff(BufferView * bview)
 	}
 #endif
 }
+#endif
 
 
 #ifndef NEW_INSETS
@@ -537,12 +539,20 @@ LyXParagraph * LyXText::SetLayout(BufferView * bview,
 				  LyXCursor & send_cur,
 				  LyXTextClass::size_type layout)
 {
+#ifndef NEW_INSETS
 	LyXParagraph * endpar = send_cur.par()->LastPhysicalPar()->Next();
+#else
+	LyXParagraph * endpar = send_cur.par()->Next();
+#endif
 	LyXParagraph * undoendpar = endpar;
 
 	if (endpar && endpar->GetDepth()) {
 		while (endpar && endpar->GetDepth()) {
+#ifndef NEW_INSETS
 			endpar = endpar->LastPhysicalPar()->Next();
+#else
+			endpar = endpar->Next();
+#endif
 			undoendpar = endpar;
 		}
 	} else if (endpar) {
@@ -566,7 +576,11 @@ LyXParagraph * LyXText::SetLayout(BufferView * bview,
 #endif
 			cur.par()->SetLayout(bview->buffer()->params, layout);
 			MakeFontEntriesLayoutSpecific(bview->buffer(), cur.par());
+#ifndef NEW_INSETS
 			LyXParagraph * fppar = cur.par()->FirstPhysicalPar();
+#else
+			LyXParagraph * fppar = cur.par();
+#endif
 			fppar->added_space_top = lyxlayout.fill_top ?
 				VSpace(VSpace::VFILL) : VSpace(VSpace::NONE);
 			fppar->added_space_bottom = lyxlayout.fill_bottom ? 
@@ -588,7 +602,11 @@ LyXParagraph * LyXText::SetLayout(BufferView * bview,
 #endif
 		cur.par()->SetLayout(bview->buffer()->params, layout);
 		MakeFontEntriesLayoutSpecific(bview->buffer(), cur.par());
+#ifndef NEW_INSETS
 		LyXParagraph * fppar = cur.par()->FirstPhysicalPar();
+#else
+		LyXParagraph * fppar = cur.par();
+#endif
 		fppar->added_space_top = lyxlayout.fill_top ?
 			VSpace(VSpace::VFILL) : VSpace(VSpace::NONE);
 		fppar->added_space_bottom = lyxlayout.fill_bottom ? 
@@ -668,7 +686,11 @@ void LyXText::SetLayout(BufferView * bview, LyXTextClass::size_type layout)
 	    sel_start_cursor.par()->footnoteflag) {
 		cursor.par()->SetLayout(layout);
 		MakeFontEntriesLayoutSpecific(cursor.par());
+#ifndef NEW_INSETS
 		LyXParagraph* fppar = cursor.par()->FirstPhysicalPar();
+#else
+		LyXParagraph* fppar = cursor.par();
+#endif
 		fppar->added_space_top = lyxlayout.fill_top ?
 			VSpace(VSpace::VFILL) : VSpace(VSpace::NONE);
 		fppar->added_space_bottom = lyxlayout.fill_bottom ? 
@@ -720,12 +742,20 @@ void  LyXText::IncDepth(BufferView * bview)
 
 	// We end at the next paragraph with depth 0
 	LyXParagraph * endpar =
+#ifndef NEW_INSETS
 		sel_end_cursor.par()->LastPhysicalPar()->Next();
+#else
+		sel_end_cursor.par()->Next();
+#endif
 	LyXParagraph * undoendpar = endpar;
 
 	if (endpar && endpar->GetDepth()) {
 		while (endpar && endpar->GetDepth()) {
+#ifndef NEW_INSETS
 			endpar = endpar->LastPhysicalPar()->Next();
+#else
+			endpar = endpar->Next();
+#endif
 			undoendpar = endpar;
 		}
 	}
@@ -748,19 +778,30 @@ void  LyXText::IncDepth(BufferView * bview)
    
 	while (true) {
 		// NOTE: you can't change the depth of a bibliography entry
-		if (cursor.par()->footnoteflag ==
-		    sel_start_cursor.par()->footnoteflag
-		    && textclasslist.Style(bview->buffer()->params.textclass,
+		if (
+#ifndef NEW_INSETS
+			cursor.par()->footnoteflag ==
+		    sel_start_cursor.par()->footnoteflag &&
+#endif
+		    textclasslist.Style(bview->buffer()->params.textclass,
 				      cursor.par()->GetLayout()
 				     ).labeltype != LABEL_BIBLIO) {
 			LyXParagraph * prev =
+#ifndef NEW_INSETS
 				cursor.par()->FirstPhysicalPar()->Previous();
+#else
+				cursor.par()->Previous();
+#endif
 			if (prev 
 			    && (prev->GetDepth() - cursor.par()->GetDepth() > 0
 				|| (prev->GetDepth() == cursor.par()->GetDepth()
 				    && textclasslist.Style(bview->buffer()->params.textclass,
 						      prev->GetLayout()).isEnvironment()))) {
+#ifndef NEW_INSETS
 				cursor.par()->FirstPhysicalPar()->depth++;
+#else
+				cursor.par()->depth++;
+#endif
 				anything_changed = true;
 				}
 		}
@@ -773,11 +814,19 @@ void  LyXText::IncDepth(BufferView * bview)
 	if (!anything_changed) {
 		cursor = sel_start_cursor;
 		while (cursor.par() != sel_end_cursor.par()) {
+#ifndef NEW_INSETS
 			cursor.par()->FirstPhysicalPar()->depth = 0;
+#else
+			cursor.par()->depth = 0;
+#endif
 			cursor.par(cursor.par()->Next());
 		}
+#ifndef NEW_INSETS
 		if (cursor.par()->footnoteflag == sel_start_cursor.par()->footnoteflag)
 			cursor.par()->FirstPhysicalPar()->depth = 0;
+#else
+			cursor.par()->depth = 0;
+#endif
 	}
    
 	RedoParagraphs(bview, sel_start_cursor, endpar);
@@ -805,13 +854,20 @@ void  LyXText::DecDepth(BufferView * bview)
 		sel_start_cursor = cursor; // dummy selection
 		sel_end_cursor = cursor;
 	}
-   
+#ifndef NEW_INSETS
 	LyXParagraph * endpar = sel_end_cursor.par()->LastPhysicalPar()->Next();
+#else
+	LyXParagraph * endpar = sel_end_cursor.par()->Next();
+#endif
 	LyXParagraph * undoendpar = endpar;
 
 	if (endpar && endpar->GetDepth()) {
 		while (endpar && endpar->GetDepth()) {
+#ifndef NEW_INSETS
 			endpar = endpar->LastPhysicalPar()->Next();
+#else
+			endpar = endpar->Next();
+#endif
 			undoendpar = endpar;
 		}
 	}
@@ -831,11 +887,16 @@ void  LyXText::DecDepth(BufferView * bview)
 	cursor = sel_start_cursor;
 
 	while (true) {
+#ifndef NEW_INSETS
 		if (cursor.par()->footnoteflag ==
 		    sel_start_cursor.par()->footnoteflag) {
 			if (cursor.par()->FirstPhysicalPar()->depth)
 				cursor.par()->FirstPhysicalPar()->depth--;
 		}
+#else
+			if (cursor.par()->depth)
+				cursor.par()->depth--;
+#endif
 		if (cursor.par() == sel_end_cursor.par())
 			break;
 		cursor.par(cursor.par()->Next());
@@ -891,12 +952,18 @@ void LyXText::SetFont(BufferView * bview, LyXFont const & font, bool toggleall)
 		sel_end_cursor.par()->ParFromPos(sel_end_cursor.pos())->next); 
 	cursor = sel_start_cursor;
 	while (cursor.par() != sel_end_cursor.par() ||
-	       (cursor.par()->footnoteflag == sel_start_cursor.par()->footnoteflag
-		&& cursor.pos() < sel_end_cursor.pos())) 
+	       (
+#ifndef NEW_INSETS
+		       cursor.par()->footnoteflag == sel_start_cursor.par()->footnoteflag &&
+#endif
+		cursor.pos() < sel_end_cursor.pos())) 
 	{
 		if (cursor.pos() < cursor.par()->Last()
+#ifndef NEW_INSETS
 		    && cursor.par()->footnoteflag
-		    == sel_start_cursor.par()->footnoteflag) {
+		    == sel_start_cursor.par()->footnoteflag
+#endif
+			) {
 			// an open footnote should behave
 			// like a closed one
 			LyXFont newfont = GetFont(bview->buffer(), 
@@ -933,7 +1000,11 @@ void LyXText::RedoHeightOfParagraph(BufferView * bview, LyXCursor const & cur)
 	long y = cur.y() - tmprow->baseline();
 
 	SetHeightOfRow(bview, tmprow);
+#ifndef NEW_INSETS
 	LyXParagraph * first_phys_par = tmprow->par()->FirstPhysicalPar();
+#else
+	LyXParagraph * first_phys_par = tmprow->par();
+#endif
 	// find the first row of the paragraph
 	if (first_phys_par != tmprow->par())
 		while (tmprow->previous()
@@ -962,7 +1033,11 @@ void LyXText::RedoDrawingOfParagraph(BufferView * bview, LyXCursor const & cur)
    
 	long y = cur.y() - tmprow->baseline();
 	SetHeightOfRow(bview, tmprow);
+#ifndef NEW_INSETS
 	LyXParagraph * first_phys_par = tmprow->par()->FirstPhysicalPar();
+#else
+	LyXParagraph * first_phys_par = tmprow->par();
+#endif
 	// find the first row of the paragraph
 	if (first_phys_par != tmprow->par())
 		while (tmprow->previous() && tmprow->previous()->par() != first_phys_par)  {
@@ -1000,7 +1075,11 @@ void LyXText::RedoParagraphs(BufferView * bview, LyXCursor const & cur,
 	if (!tmprow->previous()){
 		first_phys_par = FirstParagraph();   // a trick/hack for UNDO
 	} else {
+#ifndef NEW_INSETS
 		first_phys_par = tmprow->par()->FirstPhysicalPar();
+#else
+		first_phys_par = tmprow->par();
+#endif
 		// find the first row of the paragraph
 		if (first_phys_par != tmprow->par())
 			while (tmprow->previous() &&
@@ -1422,12 +1501,20 @@ void LyXText::SetParagraph(BufferView * bview,
 	}
 
 	// make sure that the depth behind the selection are restored, too
+#ifndef NEW_INSETS
 	LyXParagraph * endpar = sel_end_cursor.par()->LastPhysicalPar()->Next();
+#else
+	LyXParagraph * endpar = sel_end_cursor.par()->Next();
+#endif
 	LyXParagraph * undoendpar = endpar;
 
 	if (endpar && endpar->GetDepth()) {
 		while (endpar && endpar->GetDepth()) {
+#ifndef NEW_INSETS
 			endpar = endpar->LastPhysicalPar()->Next();
+#else
+			endpar = endpar->Next();
+#endif
 			undoendpar = endpar;
 		}
 	}
@@ -1442,13 +1529,20 @@ void LyXText::SetParagraph(BufferView * bview,
 
 	
 	LyXParagraph * tmppar = sel_end_cursor.par();
+#ifndef NEW_INSETS
 	while (tmppar != sel_start_cursor.par()->FirstPhysicalPar()->Previous()) {
 		SetCursor(bview, tmppar->FirstPhysicalPar(), 0);
+#else
+	while (tmppar != sel_start_cursor.par()->Previous()) {
+		SetCursor(bview, tmppar, 0);
+#endif
 		status = LyXText::NEED_MORE_REFRESH;
 		refresh_row = cursor.row();
 		refresh_y = cursor.y() - cursor.row()->baseline();
+#ifndef NEW_INSETS
 		if (cursor.par()->footnoteflag ==
 		    sel_start_cursor.par()->footnoteflag) {
+#endif
 			cursor.par()->line_top = line_top;
 			cursor.par()->line_bottom = line_bottom;
 			cursor.par()->pagebreak_top = pagebreak_top;
@@ -1472,9 +1566,13 @@ void LyXText::SetParagraph(BufferView * bview,
 			}
 			cursor.par()->SetLabelWidthString(labelwidthstring);
 			cursor.par()->noindent = noindent;
+#ifndef NEW_INSETS
 		}
 		
 		tmppar = cursor.par()->FirstPhysicalPar()->Previous();
+#else
+		tmppar = cursor.par()->Previous();
+#endif
 	}
 	
 	RedoParagraphs(bview, sel_start_cursor, endpar);
@@ -1502,12 +1600,20 @@ void LyXText::SetParagraphExtraOpt(BufferView * bview, int type,
 	}
 
 	// make sure that the depth behind the selection are restored, too
+#ifndef NEW_INSETS
 	LyXParagraph * endpar = sel_end_cursor.par()->LastPhysicalPar()->Next();
+#else
+	LyXParagraph * endpar = sel_end_cursor.par()->Next();
+#endif
 	LyXParagraph * undoendpar = endpar;
 
 	if (endpar && endpar->GetDepth()) {
 		while (endpar && endpar->GetDepth()) {
+#ifndef NEW_INSETS
 			endpar = endpar->LastPhysicalPar()->Next();
+#else
+			endpar = endpar->Next();
+#endif
 			undoendpar = endpar;
 		}
 	}
@@ -1521,13 +1627,20 @@ void LyXText::SetParagraphExtraOpt(BufferView * bview, int type,
 		undoendpar);
 	
 	tmppar = sel_end_cursor.par();
+#ifndef NEW_INSETS
 	while(tmppar != sel_start_cursor.par()->FirstPhysicalPar()->Previous()) {
                 SetCursor(bview, tmppar->FirstPhysicalPar(), 0);
+#else
+	while(tmppar != sel_start_cursor.par()->Previous()) {
+                SetCursor(bview, tmppar, 0);
+#endif
                 status = LyXText::NEED_MORE_REFRESH;
                 refresh_row = cursor.row();
                 refresh_y = cursor.y() - cursor.row()->baseline();
+#ifndef NEW_INSETS
                 if (cursor.par()->footnoteflag ==
                     sel_start_cursor.par()->footnoteflag) {
+#endif
                         if (type == LyXParagraph::PEXTRA_NONE) {
                                 if (cursor.par()->pextra_type != LyXParagraph::PEXTRA_NONE) {
                                         cursor.par()->UnsetPExtraType(bview->buffer()->params);
@@ -1540,8 +1653,12 @@ void LyXText::SetParagraphExtraOpt(BufferView * bview, int type,
                                 cursor.par()->pextra_start_minipage = start_minipage;
                                 cursor.par()->pextra_alignment = alignment;
                         }
-                }
+#ifndef NEW_INSETS
+		}
                 tmppar = cursor.par()->FirstPhysicalPar()->Previous();
+#else
+                tmppar = cursor.par()->Previous();
+#endif
         }
 	RedoParagraphs(bview, sel_start_cursor, endpar);
 	ClearSelection();
@@ -1604,9 +1721,10 @@ char const * romanCounter(int n)
 // set the counter of a paragraph. This includes the labels
 void LyXText::SetCounter(Buffer const * buf, LyXParagraph * par) const
 {
+#ifndef NEW_INSETS
 	// this is only relevant for the beginning of paragraph
 	par = par->FirstPhysicalPar();
-	
+#endif
 	LyXLayout const & layout =
 		textclasslist.Style(buf->params.textclass, 
 				    par->GetLayout());
@@ -1617,9 +1735,11 @@ void LyXText::SetCounter(Buffer const * buf, LyXParagraph * par) const
 	/* copy the prev-counters to this one, unless this is the start of a 
 	   footnote or of a bibliography or the very first paragraph */
 	if (par->Previous()
+#ifndef NEW_INSETS
 	    && !(par->Previous()->footnoteflag == LyXParagraph::NO_FOOTNOTE 
 		    && par->footnoteflag == LyXParagraph::OPEN_FOOTNOTE
 		    && par->footnotekind == LyXParagraph::FOOTNOTE)
+#endif
 	    && !(textclasslist.Style(buf->params.textclass,
 				par->Previous()->GetLayout()
 				).labeltype != LABEL_BIBLIO
@@ -1627,15 +1747,24 @@ void LyXText::SetCounter(Buffer const * buf, LyXParagraph * par) const
 		for (int i = 0; i < 10; ++i) {
 			par->setCounter(i, par->Previous()->GetFirstCounter(i));
 		}
+#ifndef NEW_INSETS
 		par->appendix = par->Previous()->FirstPhysicalPar()->appendix;
+#else
+		par->appendix = par->Previous()->appendix;
+#endif
 		if (!par->appendix && par->start_of_appendix){
 		  par->appendix = true;
 		  for (int i = 0; i < 10; ++i) {
 		    par->setCounter(i, 0);
 		  }  
 		}
+#ifndef NEW_INSETS
 		par->enumdepth = par->Previous()->FirstPhysicalPar()->enumdepth;
 		par->itemdepth = par->Previous()->FirstPhysicalPar()->itemdepth;
+#else
+		par->enumdepth = par->Previous()->enumdepth;
+		par->itemdepth = par->Previous()->itemdepth;
+#endif
 	} else {
 		for (int i = 0; i < 10; ++i) {
 			par->setCounter(i, 0);
@@ -1975,9 +2104,9 @@ void LyXText::SetCounter(Buffer const * buf, LyXParagraph * par) const
 				   && par->footnotekind == LyXParagraph::ALGORITHM) {
 				s = (par->getParLanguage(buf->params)->lang() == "hebrew")
 					? ":םתירוגלא" : "Algorithm:";
-			}
+			} else
 #endif
-			else if (isOK) {
+			if (isOK) {
 				InsetFloat * tmp = static_cast<InsetFloat*>(par->InInset()->owner());
 				Floating const & fl
 					= floatList.getType(tmp->type());
@@ -2011,10 +2140,14 @@ void LyXText::UpdateCounters(BufferView * bview, Row * row) const
 	} else {
 		if (row->par()->next
 #ifndef NEW_INSETS
-		    && row->par()->next->footnoteflag != LyXParagraph::OPEN_FOOTNOTE)
+		    && row->par()->next->footnoteflag != LyXParagraph::OPEN_FOOTNOTE
 #endif
-			{
+			) {
+#ifndef NEW_INSETS
 			par = row->par()->LastPhysicalPar()->Next();
+#else
+			par = row->par()->Next();
+#endif
 		} else {
 			par = row->par()->next;
 		}
@@ -2028,8 +2161,11 @@ void LyXText::UpdateCounters(BufferView * bview, Row * row) const
 		
 		/* now  check for the headline layouts. remember that they
 		 * have a dynamic left margin */ 
-		if (!par->IsDummy()
-		    && ( textclasslist.Style(bview->buffer()->params.textclass,
+		if (
+#ifndef NEW_INSETS
+			!par->IsDummy() &&
+#endif
+		    ( textclasslist.Style(bview->buffer()->params.textclass,
 					     par->layout).margintype == MARGIN_DYNAMIC
 			 || textclasslist.Style(bview->buffer()->params.textclass,
 						par->layout).labeltype == LABEL_SENSITIVE)
@@ -2054,8 +2190,11 @@ void LyXText::UpdateCounters(BufferView * bview, Row * row) const
 			}
 #endif
 		}
-     
+#ifndef NEW_INSETS
 		par = par->LastPhysicalPar()->Next();
+#else
+		par = par->Next();
+#endif
      
 	}
 }
@@ -2106,13 +2245,11 @@ void LyXText::CutSelection(BufferView * bview, bool doclear)
    
 	// OK, we have a selection. This is always between sel_start_cursor
 	// and sel_end cursor
-	LyXParagraph * tmppar;
-
 #ifndef NEW_INSETS
 	// Check whether there are half footnotes in the selection
 	if (sel_start_cursor.par()->footnoteflag != LyXParagraph::NO_FOOTNOTE
 	    || sel_end_cursor.par()->footnoteflag != LyXParagraph::NO_FOOTNOTE) {
-		tmppar = sel_start_cursor.par();
+	LyXParagraph * tmppar = sel_start_cursor.par();
 		while (tmppar != sel_end_cursor.par()){
 			if (tmppar->footnoteflag != sel_end_cursor.par()->footnoteflag) {
 				WriteAlert(_("Impossible operation"),
@@ -2138,12 +2275,20 @@ void LyXText::CutSelection(BufferView * bview, bool doclear)
 	/* table stuff -- end */
 #endif
 	// make sure that the depth behind the selection are restored, too
+#ifndef NEW_INSETS
 	LyXParagraph * endpar = sel_end_cursor.par()->LastPhysicalPar()->Next();
+#else
+	LyXParagraph * endpar = sel_end_cursor.par()->Next();
+#endif
 	LyXParagraph * undoendpar = endpar;
     
 	if (endpar && endpar->GetDepth()) {
 		while (endpar && endpar->GetDepth()) {
+#ifndef NEW_INSETS
 			endpar = endpar->LastPhysicalPar()->Next();
+#else
+			endpar = endpar->Next();
+#endif
 			undoendpar = endpar;
 		}
 	} else if (endpar) {
@@ -2151,7 +2296,8 @@ void LyXText::CutSelection(BufferView * bview, bool doclear)
 	}
     
 	SetUndo(bview->buffer(), Undo::DELETE, sel_start_cursor
-		.par()->ParFromPos(sel_start_cursor.pos())->previous, undoendpar);
+		.par()->ParFromPos(sel_start_cursor.pos())->previous,
+		undoendpar);
     
 	CutAndPaste cap;
 
@@ -2212,13 +2358,12 @@ void LyXText::CopySelection(BufferView * bview)
 
 	// ok we have a selection. This is always between sel_start_cursor
 	// and sel_end cursor
-	LyXParagraph * tmppar;
 
 #ifndef NEW_INSETS
 	/* check wether there are half footnotes in the selection */
 	if (sel_start_cursor.par()->footnoteflag != LyXParagraph::NO_FOOTNOTE
 	    || sel_end_cursor.par()->footnoteflag != LyXParagraph::NO_FOOTNOTE) {
-		tmppar = sel_start_cursor.par();
+		LyXParagraph * tmppar = sel_start_cursor.par();
 		while (tmppar != sel_end_cursor.par()) {
 			if (tmppar->footnoteflag !=
 			    sel_end_cursor.par()->footnoteflag) {
@@ -3160,12 +3305,17 @@ void LyXText::DeleteEmptyParagraphMechanism(BufferView * bview,
 		if ( (old_cursor.par()->Last() == 0
 		      || (old_cursor.par()->Last() == 1
 			  && old_cursor.par()->IsLineSeparator(0)))
+#ifndef NEW_INSETS
 		     && old_cursor.par()->FirstPhysicalPar()
-		     == old_cursor.par()->LastPhysicalPar()) {
+		     == old_cursor.par()->LastPhysicalPar()
+#endif
+			) {
 			// ok, we will delete anything
 			
 			// make sure that you do not delete any environments
-			if ((old_cursor.par()->footnoteflag != LyXParagraph::OPEN_FOOTNOTE &&
+#ifndef NEW_INSETS
+			if ((
+				old_cursor.par()->footnoteflag != LyXParagraph::OPEN_FOOTNOTE &&
 			     !(old_cursor.row()->previous() 
 			       && old_cursor.row()->previous()->par()->footnoteflag == LyXParagraph::OPEN_FOOTNOTE)
 			     && !(old_cursor.row()->next() 
@@ -3176,6 +3326,7 @@ void LyXText::DeleteEmptyParagraphMechanism(BufferView * bview,
 				    || (old_cursor.row()->next()
 					&& old_cursor.row()->next()->par()->footnoteflag == LyXParagraph::OPEN_FOOTNOTE))
 				    )) {
+#endif
 				status = LyXText::NEED_MORE_REFRESH;
 				deleted = true;
 				
@@ -3187,7 +3338,11 @@ void LyXText::DeleteEmptyParagraphMechanism(BufferView * bview,
 					LyXParagraph * endpar = old_cursor.par()->next;
 					if (endpar && endpar->GetDepth()) {
 						while (endpar && endpar->GetDepth()) {
+#ifndef NEW_INSETS
 							endpar = endpar->LastPhysicalPar()->Next();
+#else
+							endpar = endpar->Next();
+#endif
 						}
 					}
 					SetUndo(bview->buffer(), Undo::DELETE,
@@ -3222,7 +3377,11 @@ void LyXText::DeleteEmptyParagraphMechanism(BufferView * bview,
 					LyXParagraph * endpar = old_cursor.par()->next;
 					if (endpar && endpar->GetDepth()) {
 						while (endpar && endpar->GetDepth()) {
+#ifndef NEW_INSETS
 							endpar = endpar->LastPhysicalPar()->Next();
+#else
+							endpar = endpar->Next();
+#endif
 						}
 					}
 					SetUndo(bview->buffer(), Undo::DELETE,
@@ -3259,7 +3418,9 @@ void LyXText::DeleteEmptyParagraphMechanism(BufferView * bview,
 					// correct selection
 					sel_cursor = cursor;
 				}
+#ifndef NEW_INSETS
 			}
+#endif
 		}
 		if (!deleted) {
 			if (old_cursor.par()->StripLeadingSpaces(bview->buffer()->params.textclass)) {
@@ -3390,7 +3551,11 @@ bool LyXText::TextHandleUndo(BufferView * bview, Undo * undo)
     
 		// Set the cursor for redoing
 		if (before) {
+#ifndef NEW_INSETS
 			SetCursorIntern(bview, before->FirstSelfrowPar(), 0);
+#else
+			SetCursorIntern(bview, before, 0);
+#endif
 #ifndef NEW_INSETS
 			// check wether before points to a closed float and open it if necessary
 			if (before && before->footnoteflag == LyXParagraph::CLOSED_FOOTNOTE
@@ -3423,11 +3588,11 @@ bool LyXText::TextHandleUndo(BufferView * bview, Undo * undo)
 		if (behind) {
 #ifndef NEW_INSETS
 			if (behind->footnoteflag != LyXParagraph::CLOSED_FOOTNOTE)
-#endif
 				endpar = behind->LastPhysicalPar()->Next();
-#ifndef NEW_INSETS
 			else
 				endpar = behind->NextAfterFootnote()->LastPhysicalPar()->Next();
+#else
+				endpar = behind->Next();
 #endif
 		} else
 			endpar = behind;
@@ -3666,7 +3831,11 @@ bool LyXText::IsEmptyTableCell() const
 
 void LyXText::toggleAppendix(BufferView * bview)
 {
+#ifndef NEW_INSETS
 	LyXParagraph * par = cursor.par()->FirstPhysicalPar();
+#else
+	LyXParagraph * par = cursor.par();
+#endif
 	bool start = !par->start_of_appendix;
 
 	// ensure that we have only one start_of_appendix in this document

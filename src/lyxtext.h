@@ -149,8 +149,10 @@ public:
 	    Returns true if something was broken. */
         bool FullRebreak(BufferView *);
 
+#ifndef NEW_INSETS
 	///
 	LyXParagraph::footnote_flag GetFootnoteFlag(int row);
+#endif
 	///
 	Row * need_break_row;
 	///
@@ -327,6 +329,7 @@ public:
 	void GetVisibleRow(BufferView *, int y_offset, int x_offset,
 			   Row * row_ptr, long y, bool cleared=false);
 
+#ifndef NEW_INSETS
 	/* footnotes: */
 	///
 	void ToggleFootnote(BufferView *);
@@ -348,6 +351,7 @@ public:
 				       LyXParagraph::footnote_kind kind);
 	///
 	void MeltFootnoteEnvironment(BufferView *);
+#endif
 	///
 	void CutSelection(BufferView *, bool = true);
 	///

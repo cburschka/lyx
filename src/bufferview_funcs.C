@@ -16,7 +16,7 @@
 extern FD_form_paragraph * fd_form_paragraph;
 extern FD_form_character * fd_form_character;
 
-
+#ifndef NEW_INSETS
 void Foot(BufferView * bv)
 {
 	if (!bv->available()) 
@@ -29,6 +29,7 @@ void Foot(BufferView * bv)
 	bv->text->InsertFootnoteEnvironment(bv, LyXParagraph::FOOTNOTE);
 	bv->update(BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 }
+#endif
 
 
 void Emph(BufferView * bv)
@@ -55,6 +56,7 @@ void Noun(BufferView * bv)
 }
 
 
+#ifndef NEW_INSETS
 void Margin(BufferView * bv)
 {
 	if (bv->available()) {
@@ -65,6 +67,7 @@ void Margin(BufferView * bv)
 		bv->update(BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 	}
 }
+#endif
 
 
 void Lang(BufferView * bv, string const & l)
@@ -79,6 +82,7 @@ void Lang(BufferView * bv, string const & l)
 }
 
 
+#ifndef NEW_INSETS
 void Melt(BufferView * bv)
 {
 	if (!bv->available()) return;
@@ -90,6 +94,7 @@ void Melt(BufferView * bv)
 	bv->text->MeltFootnoteEnvironment(bv);
 	bv->update(BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 }
+#endif
 
 
 void Tex(BufferView * bv)

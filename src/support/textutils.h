@@ -42,6 +42,7 @@ bool IsInsetChar(char c) {
 }
 
 
+#ifndef NEW_INSETS
 //
 inline
 bool IsFloatChar(char c) {
@@ -53,6 +54,7 @@ bool IsFloatChar(char c) {
 		|| c == LyXParagraph::META_WIDE_FIG
 		|| c == LyXParagraph::META_WIDE_TAB);
 }
+#endif
 
 
 //
@@ -119,11 +121,13 @@ bool IsPrintableNonspace(unsigned char c) {
 // Word is not IsSeparator or IsKomma or IsHfill or IsFloat or IsInset. 
 inline
 bool IsWordChar(unsigned char c) {
-	return !( IsSeparatorChar( c ) 
-		  || IsKommaChar( c )  
-		  || IsHfillChar( c )  
-		  || IsFloatChar( c )  
-		  || IsInsetChar( c ) ) ;
+	return !( IsSeparatorChar( c )
+		  || IsKommaChar( c )
+		  || IsHfillChar( c )
+#ifndef NEW_INSETS
+		  || IsFloatChar( c )
+#endif
+		  || IsInsetChar( c ));
 }
 
 

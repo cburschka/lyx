@@ -957,10 +957,12 @@ string LyXFunc::Dispatch(int ac,
 	case LFUN_GOTONOTE:
 		owner->view()->gotoNote();
 		break;
-		
+
+#ifndef NEW_INSETS
 	case LFUN_OPENSTUFF:
 		owner->view()->openStuff();
 		break;
+#endif
 		
 	case LFUN_HYPHENATION:
 		owner->view()->hyphenationPoint();
@@ -1005,15 +1007,15 @@ string LyXFunc::Dispatch(int ac,
 		owner->view()->setState();
 		owner->getMiniBuffer()->Set(CurrentState(owner->view()));
 		break;
-		
+#ifndef NEW_INSETS		
 	case LFUN_MELT:
 		Melt(owner->view());
 		break;
-		
+#endif
 	case LFUN_RECONFIGURE:
 		Reconfigure(owner->view());
 		break;
-
+#ifndef NEW_INSETS
 	case LFUN_FOOTMELT:
 		if (owner->view()->available()
 		    && !owner->view()->text->selection
@@ -1040,7 +1042,7 @@ string LyXFunc::Dispatch(int ac,
 			Margin(owner->view()); 
 		owner->view()->setState();
 		break;
-		
+#endif
 	case LFUN_HELP_COPYRIGHT:
 		owner->getDialogs()->showCopyright();
 		break;
@@ -2579,7 +2581,7 @@ string LyXFunc::Dispatch(int ac,
 	case LFUN_INSERT_NOTE:
 		owner->view()->insertNote();
 		break;
-		
+#ifndef NEW_INSETS
 	case LFUN_INSERTFOOTNOTE: 
 	{
 		LyXParagraph::footnote_kind kind;
@@ -2606,7 +2608,7 @@ string LyXFunc::Dispatch(int ac,
 		owner->view()->setState();
 	}
 	break;
-	
+#endif	
 	case LFUN_BUFFERBULLETSSELECT:
 		bulletForm();
 		break;

@@ -1258,8 +1258,10 @@ void LyXTabular::OldFormatRead(LyXLex & lex, string const & fl)
 
     LyXParagraph * par = new LyXParagraph;
     LyXParagraph * return_par = 0;
+#ifndef NEW_INSETS
     LyXParagraph::footnote_flag footnoteflag = LyXParagraph::NO_FOOTNOTE;
     LyXParagraph::footnote_kind footnotekind = LyXParagraph::FOOTNOTE;
+#endif
     string token, tmptok;
     int pos = 0;
     char depth = 0;
@@ -1279,9 +1281,13 @@ void LyXTabular::OldFormatRead(LyXLex & lex, string const & fl)
 	if (owner_->BufferOwner()->parseSingleLyXformat2Token(lex, par,
 							      return_par,
 							      token, pos,
-							      depth, font,
+							      depth, font
+#ifndef NEW_INSETS
+							      ,
 							      footnoteflag,
-							      footnotekind))
+							      footnotekind
+#endif
+		))
 	{
 	    // the_end read
 	    lex.pushToken(token);

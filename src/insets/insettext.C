@@ -155,8 +155,10 @@ void InsetText::Read(Buffer const * buf, LyXLex & lex)
     int pos = 0;
     LyXParagraph * return_par = 0;
     char depth = 0; // signed or unsigned?
+#ifndef NEW_INSETS
     LyXParagraph::footnote_flag footnoteflag = LyXParagraph::NO_FOOTNOTE;
     LyXParagraph::footnote_kind footnotekind = LyXParagraph::FOOTNOTE;
+#endif
     LyXFont font(LyXFont::ALL_INHERIT);
 
     LyXParagraph * p = par->next;
@@ -176,8 +178,12 @@ void InsetText::Read(Buffer const * buf, LyXLex & lex)
 	    break;
 	if (const_cast<Buffer*>(buf)->parseSingleLyXformat2Token(lex, par, return_par,
 					    token, pos, depth,
-					    font, footnoteflag,
-					    footnotekind)) {
+					    font
+#ifndef NEW_INSETS
+								 , footnoteflag,
+					    footnotekind
+#endif
+		)) {
 	    // the_end read this should NEVER happen
 	    lex.printError("\\the_end read in inset! Error in document!");
 	    return;

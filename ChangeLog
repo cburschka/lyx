@@ -1,3 +1,13 @@
+2000-07-19  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* lots of files: apply the NEW_INSETS on all code that will not be
+	needed when we move to use the new insets. Enable the define in
+	lyxparagrah.h to try it.
+	
+	* src/insets/insettabular.C (cellstart): change to be a static
+	inline function
+	(InsetTabular): initialize buffer in the initializer list.
+
 2000-07-19  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* src/frontends/xforms/FormPrint.[Ch] : moved #include

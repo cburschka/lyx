@@ -1219,7 +1219,8 @@ void Menus::ShowEditMenu(FL_OBJECT * ob, long)
 	case 19: tmpfunc->Dispatch(LFUN_PASTESELECTION, "line"); break;
 	case 20: tmpfunc->Dispatch(LFUN_PASTESELECTION, "paragraph"); break;
 
-		// floats & insets sub-menu
+#ifndef NEW_INSETS
+	// floats & insets sub-menu
 	case 21: men->currentView()->toggleFloat(); break;
 	case 22: tmpfunc->Dispatch(LFUN_MELT); break;
 	case 23: men->currentView()->allFloats(1, 0); break;
@@ -1227,7 +1228,7 @@ void Menus::ShowEditMenu(FL_OBJECT * ob, long)
 	case 25: men->currentView()->allFloats(1, 1); break;
 	case 26: men->currentView()->allFloats(0, 1); break;
 	case 27: tmpfunc->Dispatch(LFUN_REMOVEERRORS); break;
-
+#endif
 	case 31: tmpfunc->Dispatch(LFUN_TABLE); break;
 		// this is really temporary. We need new function in keybind.C
 		// These should set the minibuffer, too.

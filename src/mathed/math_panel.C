@@ -41,7 +41,7 @@
 #include "matrix.xpm"
 #include "equation.xpm"
 
-static LyXFunc * lyxfunc= 0;
+static LyXFunc * lyxfunc = 0;
 
 //static FD_panel* symb_form= 0;
 

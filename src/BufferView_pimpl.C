@@ -801,6 +801,7 @@ void BufferView::Pimpl::workAreaButtonRelease(int x, int y,
 			c = bv_->text->cursor.par()->
 				GetChar(bv_->text->cursor.pos());
 		}
+#ifndef NEW_INSETS
 		if (c == LyXParagraph::META_FOOTNOTE
 		    || c == LyXParagraph::META_MARGIN
 		    || c == LyXParagraph::META_FIG
@@ -809,9 +810,12 @@ void BufferView::Pimpl::workAreaButtonRelease(int x, int y,
 		    || c == LyXParagraph::META_WIDE_TAB
                     || c == LyXParagraph::META_ALGORITHM){
 			hit = true;
-		} else if (bv_->text->cursor.pos() - 1 >= 0) {
+		} else
+#endif
+			if (bv_->text->cursor.pos() - 1 >= 0) {
 			c = bv_->text->cursor.par()->
 				GetChar(bv_->text->cursor.pos() - 1);
+#ifndef NEW_INSETS
 			if (c == LyXParagraph::META_FOOTNOTE
 			    || c == LyXParagraph::META_MARGIN
 			    || c == LyXParagraph::META_FIG
@@ -823,14 +827,18 @@ void BufferView::Pimpl::workAreaButtonRelease(int x, int y,
 				bv_->text->CursorLeft(bv_);
 				hit = true;
 			}
+#endif
 		}
 		if (hit == true) {
+#ifndef NEW_INSETS
 			bv_->toggleFloat();
+#endif
 			selection_possible = false;
 			return;
 		}
 	}
 
+#ifndef NEW_INSETS
 	// Do we want to close a float? (click on the float-label)
 	if (bv_->text->cursor.row()->par()->footnoteflag == 
 	    LyXParagraph::OPEN_FOOTNOTE
@@ -856,6 +864,7 @@ void BufferView::Pimpl::workAreaButtonRelease(int x, int y,
 			return;
 		}
 	}
+#endif
 
 	// Maybe we want to edit a bibitem ale970302
 	if (bv_->text->cursor.par()->bibkey && x < 20 + 

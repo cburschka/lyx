@@ -33,6 +33,7 @@
 #include "lyxfunc.h"
 #include "insets/insettext.h"
 #include "frontends/Dialogs.h"
+#include "debug.h"
 
 const int ADD_TO_HEIGHT = 2;
 const int ADD_TO_TABULAR_WIDTH = 2;
@@ -43,15 +44,21 @@ using std::max;
 using std::endl;
 using std::swap;
 
-#define cellstart(p) ((p % 2) == 0)
+//#define cellstart(p) ((p % 2) == 0)
+static inline
+bool cellstart(LyXParagraph::size_type p) 
+{
+	return ((p & 2) == 0);
+}
+
 
 InsetTabular::InsetTabular(Buffer * buf, int rows, int columns)
+	: buffer(buf)
 {
     if (rows <= 0)
         rows = 1;
     if (columns <= 0)
         columns = 1;
-    buffer = buf; // set this first!!!
     tabular = new LyXTabular(this, rows,columns);
     // for now make it always display as display() inset
     // just for test!!!
@@ -68,8 +75,8 @@ InsetTabular::InsetTabular(Buffer * buf, int rows, int columns)
 
 
 InsetTabular::InsetTabular(InsetTabular const & tab, Buffer * buf)
+	: buffer(buf)
 {
-    buffer = buf; // set this first
     tabular = new LyXTabular(this, *(tab.tabular));
     the_locking_inset = 0;
     locked = no_selection = cursor_visible = false;

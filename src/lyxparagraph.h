@@ -33,6 +33,10 @@ struct LaTeXFeatures;
 class InsetBibKey;
 class BufferView;
 
+// I dare you to enable this and help me find all the bugs that then show
+// up. (Lgb)
+//#define NEW_INSETS 1
+
 /// A LyXParagraph holds all text, attributes and insets in a text paragraph
 class LyXParagraph  {
 public:
@@ -56,9 +60,9 @@ public:
 		///
 		MINIPAGE_ALIGN_BOTTOM
 	};
-#ifndef NEW_INSETS
 	///
 	enum META_KIND {
+#ifndef NEW_INSETS
 		///
 		META_FOOTNOTE = 1,
 		///
@@ -75,6 +79,10 @@ public:
 		META_WIDE_TAB,
 		///
 		META_HFILL,
+#else
+		///
+		META_HFILL = 1,
+#endif
 		///
 		META_NEWLINE,
 		///
@@ -82,6 +90,7 @@ public:
 		///
 		META_INSET
 	};
+#ifndef NEW_INSETS
 
 	/// The footnoteflag
 	enum footnote_flag {
@@ -162,9 +171,13 @@ public:
 	///
 	LyXParagraph * TeXOnePar(Buffer const *, BufferParams const &,
 				 std::ostream &, TexRow & texrow,
-				 bool moving_arg,
+				 bool moving_arg
+#ifndef NEW_INSETS
+				 ,
 				 std::ostream & foot, TexRow & foot_texrow,
-				 int & foot_count);
+				 int & foot_count
+#endif
+		);
 	///
 	bool SimpleTeXOnePar(Buffer const *, BufferParams const &,
 			     std::ostream &, TexRow & texrow, bool moving_arg);
@@ -333,6 +346,7 @@ public:
 	///
 	LyXParagraph const * Previous() const;
 
+#ifndef NEW_INSETS
 	/** these function are able to hide open and closed footnotes
 	 */ 
 	LyXParagraph * NextAfterFootnote();
@@ -350,6 +364,7 @@ public:
 	LyXParagraph * FirstPhysicalPar();
 	///
 	LyXParagraph const * FirstPhysicalPar() const;
+#endif
 
 	/// returns the physical paragraph
 	LyXParagraph * ParFromPos(size_type pos);
@@ -363,7 +378,7 @@ public:
 	///
 	int BeginningOfMainBody() const;
 	///
-	string GetLabelstring() const;
+	string const & GetLabelstring() const;
 	
 	/// the next two functions are for the manual labels
 	string GetLabelWidthString() const;
@@ -438,10 +453,12 @@ public:
 	Inset * GetInset(size_type pos);
 	///
 	Inset const * GetInset(size_type pos) const;
+#ifndef NEW_INSETS
 	///
 	void OpenFootnote(size_type pos);
 	///
 	void CloseFootnote(size_type pos);
+#endif
 	/// important for cut and paste
 	void CopyIntoMinibuffer(BufferParams const &, size_type pos) const;
 	///
@@ -453,8 +470,10 @@ public:
 	bool IsHfill(size_type pos) const;
 	///
 	bool IsInset(size_type pos) const;
+#ifndef NEW_INSETS
 	///
 	bool IsFloat(size_type pos) const;
+#endif
 	///
 	bool IsNewline(size_type pos) const;
 	///
@@ -483,19 +502,21 @@ public:
 
 	/// returns -1 if inset not found
 	int GetPositionOfInset(Inset * inset) const;
-	
+
+#ifndef NEW_INSETS
 	/// ok and now some footnote functions
 	void OpenFootnotes();
 
 	///
 	void CloseFootnotes();
-   
 	///
 	LyXParagraph * FirstSelfrowPar();
+#endif
 
 	///
 	int StripLeadingSpaces(LyXTextClassList::size_type tclass); 
-	
+
+#ifndef NEW_INSETS
 	/** A paragraph following a footnote is a "dummy". A paragraph
 	  with a footnote in it is stored as three paragraphs:
 	  First a paragraph with the text up to the footnote, then
@@ -503,7 +524,7 @@ public:
 	  the a paragraph with the text after the footnote. Only the
 	  first paragraph keeps information  about layoutparameters, */
 	bool IsDummy() const;
-
+#endif
         /* If I set a PExtra Indent on one paragraph of a ENV_LIST-TYPE
            I have to set it on each of it's elements */
 	///
@@ -594,12 +615,14 @@ private:
 				 std::ostream &, TexRow & texrow,
 				 std::ostream & foot, TexRow & foot_texrow,
 				 int & foot_count);
+#ifndef NEW_INSETS
 	///
 	LyXParagraph * TeXFootnote(Buffer const *, BufferParams const &,
 				   std::ostream &, TexRow & texrow,
 				   std::ostream & foot, TexRow & foot_texrow,
 				   int & foot_count,
 				   bool parent_is_rtl);
+#endif
 	///
 	bool SimpleTeXOneTablePar(Buffer const *, BufferParams const &,
 				  std::ostream &, TexRow & texrow);

@@ -132,9 +132,12 @@ public:
 	bool parseSingleLyXformat2Token(LyXLex &, LyXParagraph *& par,
 					LyXParagraph *& return_par,
 					string const & token, int & pos,
-					char & depth, LyXFont &,
-					LyXParagraph::footnote_flag &,
-					LyXParagraph::footnote_kind &);
+					char & depth, LyXFont &
+#ifndef NEW_INSETS
+					,LyXParagraph::footnote_flag &,
+					LyXParagraph::footnote_kind &
+#endif
+		);
 
 	/** Save file
 	    Takes care of auto-save files and backup file if requested.
@@ -344,16 +347,20 @@ public:
 	/// Used when typesetting to place errorboxes.
 	TexRow texrow;
 private:
+#ifndef NEW_INSETS
         ///
         void linuxDocHandleFootnote(std::ostream & os,
 				    LyXParagraph * & par, int const depth);
+#endif
         ///
 	void DocBookHandleCaption(std::ostream & os, string & inner_tag,
 				  int const depth, int desc_on,
 				  LyXParagraph * & par);
+#ifndef NEW_INSETS
         ///
 	void DocBookHandleFootnote(std::ostream & os,
 				   LyXParagraph * & par, int const depth);
+#endif
 	///
         void sgmlOpenTag(std::ostream & os, int depth,
 			 string const & latexname) const;

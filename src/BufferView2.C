@@ -102,15 +102,21 @@ bool BufferView::removeAutoInsets()
 	bool a = false;
 	while (par) {
 		// this has to be done before the delete
+#ifndef NEW_INSETS
 		if (par->footnoteflag != LyXParagraph::CLOSED_FOOTNOTE)
+#endif
 			text->SetCursor(this, cursor, par, 0);
 		if (par->AutoDeleteInsets()){
 			a = true;
+#ifndef NEW_INSETS
 			if (par->footnoteflag != LyXParagraph::CLOSED_FOOTNOTE){
+#endif
 				text->RedoParagraphs(this, cursor,
 						     cursor.par()->Next());
 				text->FullRebreak(this);
+#ifndef NEW_INSETS
 			}
+#endif
 		}
 		par = par->next;
 	}
@@ -128,9 +134,11 @@ void BufferView::insertErrors(TeXErrors & terr)
 	// Save the cursor position
 	LyXCursor cursor = text->cursor;
 
+#ifndef NEW_INSETS
 	// This is drastic, but it's the only fix, I could find. (Asger)
 	allFloats(1, 0);
 	allFloats(1, 1);
+#endif
 
 	for (TeXErrors::Errors::const_iterator cit = terr.begin();
 	     cit != terr.end();
@@ -307,16 +315,20 @@ bool BufferView::gotoLabel(string const & label)
 	return false;
 }
 
+
+#ifndef NEW_INSETS
 void BufferView::allFloats(char flag, char figmar)
 {
 	if (!available()) return;
 
 	LyXCursor cursor = text->cursor;
 
-	if (!flag && cursor.par()->footnoteflag != LyXParagraph::NO_FOOTNOTE
+	if (!flag
+	    && cursor.par()->footnoteflag != LyXParagraph::NO_FOOTNOTE
 	    && ((figmar 
 		 && cursor.par()->footnotekind != LyXParagraph::FOOTNOTE 
-		 && cursor.par()->footnotekind != LyXParagraph::MARGIN)
+		 && cursor.par()->footnotekind != LyXParagraph::MARGIN
+		    )
 		|| (!figmar
 		    && cursor.par()->footnotekind != LyXParagraph::FIG 
 		    && cursor.par()->footnotekind != LyXParagraph::TAB
@@ -392,6 +404,7 @@ void BufferView::allFloats(char flag, char figmar)
 	fitCursor();
 	//updateScrollbar();
 }
+#endif
 
 
 void BufferView::insertNote()
@@ -402,6 +415,7 @@ void BufferView::insertNote()
 }
 
 
+#ifndef NEW_INSETS
 void BufferView::openStuff()
 {
 	if (available()) {
@@ -428,6 +442,7 @@ void BufferView::toggleFloat()
 		setState();
 	}
 }
+#endif
 
 void BufferView::menuUndo()
 {
@@ -872,14 +887,18 @@ bool BufferView::ChangeRefs(string const & from, string const & to)
 		}
 		if (flag2) {
 			flag = true;
+#ifndef NEW_INSETS
 			if (par->footnoteflag != LyXParagraph::CLOSED_FOOTNOTE){
+#endif
 				// this is possible now, since SetCursor takes
 				// care about footnotes
 				text->SetCursorIntern(this, par, 0);
 				text->RedoParagraphs(this, text->cursor,
 						     text->cursor.par()->Next());
 				text->FullRebreak(this);
+#ifndef NEW_INSETS
 			}
+#endif
 		}
 		par = par->next;
 	}

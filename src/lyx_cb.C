@@ -1436,20 +1436,41 @@ bool UpdateLayoutParagraph()
 		fl_set_button(fd_form_paragraph->radio_align_block, 1);
 		break;
 	}
-	 
+
+#ifndef NEW_INSETS
 	fl_set_button(fd_form_paragraph->check_lines_top,
 		      text->cursor.par()->FirstPhysicalPar()->line_top);
+
 	fl_set_button(fd_form_paragraph->check_lines_bottom,
 		      text->cursor.par()->FirstPhysicalPar()->line_bottom);
+
 	fl_set_button(fd_form_paragraph->check_pagebreaks_top,
 		      text->cursor.par()->FirstPhysicalPar()->pagebreak_top);
+
 	fl_set_button(fd_form_paragraph->check_pagebreaks_bottom,
 		      text->cursor.par()->FirstPhysicalPar()->pagebreak_bottom);
 	fl_set_button(fd_form_paragraph->check_noindent,
 		      text->cursor.par()->FirstPhysicalPar()->noindent);
+#else
+	fl_set_button(fd_form_paragraph->check_lines_top,
+		      text->cursor.par()->line_top);
+	fl_set_button(fd_form_paragraph->check_lines_bottom,
+		      text->cursor.par()->line_bottom);
+	fl_set_button(fd_form_paragraph->check_pagebreaks_top,
+		      text->cursor.par()->pagebreak_top);
+	fl_set_button(fd_form_paragraph->check_pagebreaks_bottom,
+		      text->cursor.par()->pagebreak_bottom);
+	fl_set_button(fd_form_paragraph->check_noindent,
+		      text->cursor.par()->noindent);
+#endif
 	fl_set_input (fd_form_paragraph->input_space_above, "");
-	
+
+#ifndef NEW_INSETS
 	switch (text->cursor.par()->FirstPhysicalPar()->added_space_top.kind()) {
+#else
+	switch (text->cursor.par()->added_space_top.kind()) {
+#endif
+
 	case VSpace::NONE:
 		fl_set_choice (fd_form_paragraph->choice_space_above, 1);
 		break;
@@ -1469,15 +1490,27 @@ bool UpdateLayoutParagraph()
 		fl_set_choice (fd_form_paragraph->choice_space_above, 6);
 		break;
 	case VSpace::LENGTH:
-		fl_set_choice (fd_form_paragraph->choice_space_above, 7); 
+		fl_set_choice (fd_form_paragraph->choice_space_above, 7);
+#ifndef NEW_INSETS
 		fl_set_input  (fd_form_paragraph->input_space_above, 
 			       text->cursor.par()->FirstPhysicalPar()->added_space_top.length().asString().c_str());
+#else
+		fl_set_input  (fd_form_paragraph->input_space_above, 
+			       text->cursor.par()->added_space_top.length().asString().c_str());
+#endif
 		break;
 	}
+#ifndef NEW_INSETS
 	fl_set_button (fd_form_paragraph->check_space_above,
 		       text->cursor.par()->FirstPhysicalPar()->added_space_top.keep());
 	fl_set_input (fd_form_paragraph->input_space_below, "");
 	switch (text->cursor.par()->FirstPhysicalPar()->added_space_bottom.kind()) {
+#else
+	fl_set_button (fd_form_paragraph->check_space_above,
+		       text->cursor.par()->added_space_top.keep());
+	fl_set_input (fd_form_paragraph->input_space_below, "");
+	switch (text->cursor.par()->added_space_bottom.kind()) {
+#endif
 	case VSpace::NONE:
 		fl_set_choice (fd_form_paragraph->choice_space_below,
 			       1);
@@ -1504,7 +1537,8 @@ bool UpdateLayoutParagraph()
 		break;
 	case VSpace::LENGTH:
 		fl_set_choice (fd_form_paragraph->choice_space_below,
-			       7); 
+			       7);
+#ifndef NEW_INSETS
 		fl_set_input  (fd_form_paragraph->input_space_below, 
 			       text->cursor.par()->FirstPhysicalPar()->added_space_bottom.length().asString().c_str());
 		break;
@@ -1514,7 +1548,17 @@ bool UpdateLayoutParagraph()
 
 	fl_set_button(fd_form_paragraph->check_noindent,
 		      text->cursor.par()->FirstPhysicalPar()->noindent);
+#else
+		fl_set_input  (fd_form_paragraph->input_space_below, 
+			       text->cursor.par()->added_space_bottom.length().asString().c_str());
+		break;
+	}
+	fl_set_button (fd_form_paragraph->check_space_below,
+		       text->cursor.par()->added_space_bottom.keep());
 
+	fl_set_button(fd_form_paragraph->check_noindent,
+		      text->cursor.par()->noindent);
+#endif
 	if (current_view->buffer()->isReadonly()) {
 		DisableParagraphLayout();
 	} else {
@@ -2580,7 +2624,8 @@ extern "C" void PreambleOKCB(FL_OBJECT * ob, long data)
 
 /* callbacks for form form_table */
 
-extern "C" void TableApplyCB(FL_OBJECT *, long)
+extern "C"
+void TableApplyCB(FL_OBJECT *, long)
 {
 	if (!current_view->available())
 		return;
@@ -2620,8 +2665,10 @@ extern "C" void TableApplyCB(FL_OBJECT *, long)
 	//if (!fl_get_button(fd_form_table->check_latex)){
 	// insert the new wysiwy table
 	current_view->text->SetLayout(current_view, 0); // standard layout
+#ifndef NEW_INSETS
 	if (current_view->text->cursor.par()->footnoteflag == 
 	    LyXParagraph::NO_FOOTNOTE) {
+#endif
 		current_view->text
 			->SetParagraph(current_view, 0, 0,
 				       0, 0,
@@ -2634,6 +2681,7 @@ extern "C" void TableApplyCB(FL_OBJECT *, long)
 				       LYX_ALIGN_CENTER,
 				       string(),
 				       0);
+#ifndef NEW_INSETS
 	} else {
 		current_view->text
 			->SetParagraph(current_view, 0, 0,
@@ -2644,6 +2692,7 @@ extern "C" void TableApplyCB(FL_OBJECT *, long)
 				       string(),
 				       0);
 	}
+#endif
 	
 	current_view->text->cursor.par()->table =
 		new LyXTable(xsize, ysize);
@@ -2665,13 +2714,15 @@ extern "C" void TableApplyCB(FL_OBJECT *, long)
 }
 
 
-extern "C" void TableCancelCB(FL_OBJECT *, long)
+extern "C"
+void TableCancelCB(FL_OBJECT *, long)
 {
 	fl_hide_form(fd_form_table->form_table);
 }
 
 
-extern "C" void TableOKCB(FL_OBJECT * ob, long data)
+extern "C"
+void TableOKCB(FL_OBJECT * ob, long data)
 {
 	TableApplyCB(ob, data);
 	TableCancelCB(ob, data);
@@ -2703,7 +2754,8 @@ void Table()
 
 
 /* callbacks for form form_figure */
-extern "C" void FigureApplyCB(FL_OBJECT *, long)
+extern "C"
+void FigureApplyCB(FL_OBJECT *, long)
 {
 	if (!current_view->available())
 		return;
@@ -2741,9 +2793,11 @@ extern "C" void FigureApplyCB(FL_OBJECT *, long)
 
 	// The standard layout should always be numer 0;
 	current_view->text->SetLayout(current_view, 0);
-	
+
+#ifndef NEW_INSETS
 	if (current_view->text->cursor.par()->footnoteflag == 
 	    LyXParagraph::NO_FOOTNOTE) {
+#endif
 		current_view->text->
 			SetParagraph(current_view, 0, 0,
 				     0, 0,
@@ -2753,6 +2807,7 @@ extern "C" void FigureApplyCB(FL_OBJECT *, long)
 					     buffer->params.spacing.getValue(),
 					     LyXLength::CM),
 				     LYX_ALIGN_CENTER, string(), 0);
+#ifndef NEW_INSETS
 	} else {
 		current_view->text->SetParagraph(current_view, 0, 0,
 						 0, 0,
@@ -2762,6 +2817,7 @@ extern "C" void FigureApplyCB(FL_OBJECT *, long)
 						 string(),
 						 0);
 	}
+#endif
 	
 	current_view->update(BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
       

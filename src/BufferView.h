@@ -153,14 +153,18 @@ public:
 	void menuUndo();
 	///
 	void menuRedo();
+#ifndef NEW_INSETS
 	///
 	void toggleFloat();
 	///
 	void openStuff();
+#endif
 	///
 	void insertNote();
+#ifndef NEW_INSETS
 	///
 	void allFloats(char flag, char figmar);
+#endif
 	/// removes all autodeletable insets
 	bool removeAutoInsets();
 	///
