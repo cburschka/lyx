@@ -32,6 +32,8 @@ libsupport_la_SOURCES = \
 	boost-inst.C \
 	chdir.C \
 	copy.C \
+	copied_ptr.h \
+	cow_ptr.h \
 	filename.C \
 	filename.h \
 	filetools.C \
