@@ -1,7 +1,7 @@
 include $(top_srcdir)/config/common.am
 include $(srcdir)/../Makefile.dialogs
 
-DISTCLEANFILES += *.C *.h
+CLEANFILES += *.C *Base.h
 
 SUBDIRS = . moc
 
@@ -12,7 +12,8 @@ INCLUDES = -I$(top_srcdir)/src -I$(top_srcdir)/src/frontends \
 	$(QT_INCLUDES) $(BOOST_INCLUDES) \
 	-I$(top_srcdir)/src/frontends/controllers
 
-AM_CXXFLAGS = -DQT_CLEAN_NAMESPACE -DQT_GENUINE_STR -DQT_NO_TRANSLATION
+AM_CPPFLAGS = -DQT_CLEAN_NAMESPACE -DQT_GENUINE_STR -DQT_NO_TRANSLATION
+AM_CXXFLAGS = $(PCH_FLAGS)
 
 noinst_LTLIBRARIES = libqt2ui.la
 
@@ -25,5 +26,5 @@ UICFLAGS=-tr qt_
 
 %.h: %.ui
 	$(UIC) $(UICFLAGS) $< -o $@
-%.C: %.h %.ui
-	$(UIC) $(UICFLAGS) -impl $^ -o $@
+%.C: %.h %.ui $(PCH_FILE)
+	$(UIC) $(UICFLAGS) -impl `echo $^ | sed 's/pch.h.gch//'` -o $@
