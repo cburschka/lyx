@@ -11,6 +11,7 @@
 # 2001-06-15  First version from scratch (due to "Pit").
 # 2001-09-09  Enhanced version (due to "PAP").
 #             Need of ERT is considerably minimized.
+# 2003-03-03  Updated for lyx 1.3.0.
 
 # General textclass parameters
 Columns                 1
@@ -45,7 +46,10 @@ End
 Input stdsections.inc
 NoStyle Chapter
 NoStyle Part
+Input stdstruct.inc
 Input stdlists.inc
+Input stdfloats.inc
+Input stdcounters.inc
 
 # Section style definition
 Style Section
