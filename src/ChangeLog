@@ -1,3 +1,12 @@
+2001-05-29  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* kbsequence.C (parse): de-uglify a bit the parsing code, which
+	relied on 0 terminated strings and other horrors. Bug found due to
+	the new assert in lyxstring!
+
+	* lyx_main.C (defaultKeyBindings): add bindings the cursor-related
+	KP_ keys.
+
 2001-05-29  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* lyx_main.C (defaultKeyBindings): move self-insert KP_ bindings

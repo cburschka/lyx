@@ -103,7 +103,7 @@ int kb_sequence::parse(string const & s)
 		if (s[i] && (s[i]) <= ' ') ++i;
 		if (i >= s.length()) break;
 		
-		if (s[i + 1] == '-')	{ // is implicit that s[i] == true
+		if (i + 1 < s.length() && s[i + 1] == '-')	{
 			switch (s[i]) {
 			case 's': case 'S':
 				mod |= ShiftMask;
@@ -120,7 +120,8 @@ int kb_sequence::parse(string const & s)
 			default:
 				return i + 1;
 			}
-		} else if (s[i] == '~' && s[i + 1] && s[i + 2] == '-') {
+		} else if (i + 2 < s.length() && s[i] == '~'
+			   && s[i + 2] == '-') {
 			switch (s[i + 1]) {
 			case 's': case 'S':
 				nmod |= ShiftMask;
