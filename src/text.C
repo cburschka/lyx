@@ -907,7 +907,7 @@ LyXText::rowBreakPoint(Row const & row) const
 
 
 // returns the minimum space a row needs on the screen in pixel
-int LyXText::fill(Row & row, int paper_width)
+int LyXText::fill(Row & row, int paper_width) const
 {
 	if (paper_width < 0)
 		return 0;

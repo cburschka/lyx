@@ -1,3 +1,8 @@
+2003-03-31  Angus Leeming  <leeming@lyx.org>
+
+	* text.C (fill): ensure that the signature is the same as that in the
+	header file.
+
 2003-03-31  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* text2.C (redoParagraphs): adjust
