@@ -15,7 +15,7 @@
 
 #include "GraphicsImage.h"
 #include "GraphicsParams.h"
-#include <iostream>
+
 
 namespace grfx {
 
@@ -56,4 +56,5 @@ GImage::getScaledDimensions(GParams const & params) const
 
 	return std::make_pair(width, height);
 }
+
 } // namespace grfx

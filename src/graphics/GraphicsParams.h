@@ -7,9 +7,6 @@
  *  \author Angus Leeming <a.leeming@ic.ac.uk>
  *
  *  Used internally by the GraphicsCache.
- *  Only a subset of InsetGraphicsParams is needed for display purposes.
- *  The GraphicsParams c-tor also interrogates lyxrc to ascertain whether
- *  to display or not.
  */
 
 #ifndef GRAPHICSPARAMS_H
