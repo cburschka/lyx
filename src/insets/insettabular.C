@@ -533,7 +533,7 @@ void InsetTabular::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 		int actcol = tabular.column_of_cell(actcell);
 		int column = actcol;
 		if (cur.bv().top_y() + cur.bv().painter().paperHeight()
-				< yo_ + tabular.getHeightOfTabular())
+				< yo() + tabular.getHeightOfTabular())
 		{
 			cur.bv().scrollDocView(
 				cur.bv().top_y() + cur.bv().painter().paperHeight());
@@ -549,10 +549,10 @@ void InsetTabular::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 		//if (hasSelection())
 		//	cur.selection() = false;
 		int column = tabular.column_of_cell(cur.idx());
-		if (yo_ < 0) {
+		if (yo() < 0) {
 			cur.bv().scrollDocView(
 				cur.bv().top_y() - cur.bv().painter().paperHeight());
-			if (yo_ > 0)
+			if (yo() > 0)
 				cur.idx() = column;
 			else
 				cur.idx() = tabular.getCellBelow(first_visible_cell) + column;
