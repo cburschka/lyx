@@ -673,13 +673,28 @@ void LyX::readUIFile(string const & name)
 	enum Uitags {
 		ui_menuset = 1,
 		ui_toolbar,
+		ui_include,
 		ui_last
 	};
 
 	struct keyword_item uitags[ui_last - 1] = {
+		{ "include", ui_include },
 		{ "menuset", ui_menuset },
 		{ "toolbar", ui_toolbar }
 	};
+
+	// Ensure that a file is read only once (prevents include loops)
+	static std::list<string> uifiles;
+	std::list<string>::const_iterator it  = uifiles.begin();
+	std::list<string>::const_iterator end = uifiles.end();
+	it = std::find(it, end, name);
+	if (it != end) {
+		lyxerr[Debug::INIT] << "UI file '" << name
+				    << "' has been read already. "
+				    << "Is this an include loop?"
+				    << endl;
+		return;
+	}
 
 	lyxerr[Debug::INIT] << "About to read " << name << "..." << endl;
 
@@ -690,6 +705,7 @@ void LyX::readUIFile(string const & name)
 		showFileError(name);
 		return;
 	}
+	uifiles.push_back(name);
 
 	lyxerr[Debug::INIT] << "Found " << name
 			    << " in " << ui_path << endl;
@@ -705,6 +721,12 @@ void LyX::readUIFile(string const & name)
 
 	while (lex.isOK()) {
 		switch (lex.lex()) {
+		case ui_include: {
+			lex.next(true);
+			string const file = lex.getString();
+			readUIFile(file);
+			break;
+		}
 		case ui_menuset:
 			menubackend.read(lex);
 			break;
