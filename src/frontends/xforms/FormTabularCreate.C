@@ -11,7 +11,7 @@
 #include <config.h>
 
 #include "FormTabularCreate.h"
-#include "ControlTabularCreate.h"
+#include "controllers/ControlTabularCreate.h"
 #include "forms/form_tabular_create.h"
 
 #include "Tooltips.h"
@@ -51,8 +51,10 @@ void FormTabularCreate::build()
 
 void FormTabularCreate::apply()
 {
-	unsigned int ysize = (unsigned int)(fl_get_slider_value(dialog_->slider_columns) + 0.5);
-	unsigned int xsize = (unsigned int)(fl_get_slider_value(dialog_->slider_rows) + 0.5);
+	size_t ysize = static_cast<size_t>(
+			fl_get_slider_value(dialog_->slider_columns) + 0.5);
+	size_t xsize = static_cast<size_t>(
+			fl_get_slider_value(dialog_->slider_rows) + 0.5);
 
 	controller().params() = make_pair(xsize, ysize);
 }

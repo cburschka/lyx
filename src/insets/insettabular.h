@@ -48,7 +48,8 @@ class CursorSlice;
 class InsetTabular : public UpdatableInset {
 public:
 	///
-	InsetTabular(Buffer const &, int rows = 1, int columns = 1);
+	InsetTabular(Buffer const &, row_type rows = 1,
+	             col_type columns = 1);
 	///
 	~InsetTabular();
 	///
@@ -105,9 +106,9 @@ public:
 	/// number of cells
 	size_t nargs() const;
 	///
-	boost::shared_ptr<InsetText const> cell(int) const;
+	boost::shared_ptr<InsetText const> cell(idx_type) const;
 	///
-	boost::shared_ptr<InsetText> cell(int);
+	boost::shared_ptr<InsetText> cell(idx_type);
 	///
 	LyXText * getText(int) const;
 
@@ -149,7 +150,8 @@ private:
 	virtual std::auto_ptr<InsetBase> doClone() const;
 
 	///
-	void drawCellLines(Painter &, int x, int y, int row, int cell) const;
+	void drawCellLines(Painter &, int x, int y, row_type row,
+	                   idx_type cell) const;
 	///
 	InsetBase * setPos(LCursor & cur, int x, int y) const;
 
@@ -158,7 +160,7 @@ private:
 	///
 	void movePrevCell(LCursor & cur);
 	///
-	int getCellXPos(int cell) const;
+	int getCellXPos(idx_type cell) const;
 	///
 	void resetPos(LCursor & cur) const;
 	///
@@ -174,8 +176,8 @@ private:
 	///
 	bool isRightToLeft(LCursor & cur) const;
 	///
-	void getSelection(LCursor & cur,
-		int & rs, int & re, int & cs, int & ce) const;
+	void getSelection(LCursor & cur, row_type & rs, row_type & re,
+	                  col_type & cs, col_type & ce) const;
 	///
 	bool insertAsciiString(BufferView &, std::string const & buf, bool usePaste);
 	/// are we operating on several cells?
@@ -186,7 +188,7 @@ private:
 	///
 	mutable int cursorx_;
 	///
-	mutable int first_visible_cell;
+	mutable idx_type first_visible_cell;
 };
 
 

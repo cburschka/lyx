@@ -1,3 +1,8 @@
+2004-12-02  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* FormTabular.[Ch], FormTabularCreate.C: use size_t-like types for
+	cell, row and column indices
+
 2004-11-26  Angus Leeming  <leeming@lyx.org>
 
 	* xscreen.C:

@@ -11,13 +11,13 @@
 #include <config.h>
 
 #include "FormTabular.h"
-#include "ControlTabular.h"
 #include "forms/form_tabular.h"
 
 #include "xforms_helpers.h"
 #include "xformsBC.h"
 
 #include "controllers/ButtonController.h"
+#include "controllers/ControlTabular.h"
 #include "controllers/helper_funcs.h"
 
 #include "support/lstrings.h"
@@ -54,7 +54,7 @@ typedef FormController<ControlTabular, FormView<FD_tabular> > base_class;
 
 FormTabular::FormTabular(Dialog & parent)
 	: base_class(parent, _("Table Settings"), scalableTabfolders),
-	closing_(false), actCell_(-1)
+	closing_(false), actCell_(LyXTabular::npos)
 {
 }
 
@@ -156,9 +156,9 @@ void FormTabular::update()
 	LyXLength pwidth;
 	string special;
 
-	int const cell = controller().getActiveCell();
+	LyXTabular::idx_type const cell = controller().getActiveCell();
 	actCell_ = cell;
-	int column = tabular.column_of_cell(cell) + 1;
+	LyXTabular::col_type column = tabular.column_of_cell(cell) + 1;
 	clearMessage();
 	fl_activate_object(column_options_->input_special_alignment);
 	fl_activate_object(cell_options_->input_special_multialign);
@@ -167,7 +167,7 @@ void FormTabular::update()
 	sprintf(buf, "%d", column);
 	fl_set_input(dialog_->input_tabular_column, buf);
 	fl_deactivate_object(dialog_->input_tabular_column);
-	int row = tabular.row_of_cell(cell);
+	LyXTabular::row_type row = tabular.row_of_cell(cell);
 	sprintf(buf, "%d", row + 1);
 	fl_set_input(dialog_->input_tabular_row, buf);
 	fl_deactivate_object(dialog_->input_tabular_row);
@@ -491,7 +491,7 @@ ButtonPolicy::SMInput FormTabular::input(FL_OBJECT * ob, long)
 
 	LyXTabular const & tabular = controller().tabular();
 
-	int const cell = controller().getActiveCell();
+	LyXTabular::idx_type const cell = controller().getActiveCell();
 
 	// ugly hack to auto-apply the stuff that hasn't been
 	// yet. don't let this continue to exist ...

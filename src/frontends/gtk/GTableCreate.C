@@ -53,8 +53,8 @@ void GTableCreate::doBuild()
 
 void GTableCreate::apply()
 {
-	int const rows = rows_->get_value_as_int();
-	int const columns = columns_->get_value_as_int();
+	size_t const rows = rows_->get_value_as_int();
+	size_t const columns = columns_->get_value_as_int();
 	controller().params() = std::make_pair(columns, rows);
 }
 

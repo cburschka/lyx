@@ -34,7 +34,7 @@ public:
 	virtual bool isBufferDependent() const { return true; }
 
 	///
-	typedef std::pair<unsigned int, unsigned int> rowsCols;
+	typedef std::pair<size_t, size_t> rowsCols;
 	///
 	rowsCols & params() { return params_; }
 

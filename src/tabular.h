@@ -172,105 +172,118 @@ public:
 		bool empty;
 	};
 
+	/// type for row numbers
+	typedef size_t row_type;
+	/// type for column numbers
+	typedef size_t col_type;
+	/// type for cell indices
+	typedef size_t idx_type;
+	/// index indicating an invalid position
+	static const idx_type npos = static_cast<idx_type>(-1);
+
 	/// constructor
-	LyXTabular(BufferParams const &, int columns_arg, int rows_arg);
+	LyXTabular(BufferParams const &, col_type columns_arg,
+	           row_type rows_arg);
 
 	/// Returns true if there is a topline, returns false if not
-	bool topLine(int cell, bool onlycolumn = false) const;
+	bool topLine(idx_type cell, bool onlycolumn = false) const;
 	/// Returns true if there is a topline, returns false if not
-	bool bottomLine(int cell, bool onlycolumn = false) const;
+	bool bottomLine(idx_type cell, bool onlycolumn = false) const;
 	/// Returns true if there is a topline, returns false if not
-	bool leftLine(int cell, bool onlycolumn = false) const;
+	bool leftLine(idx_type cell, bool onlycolumn = false) const;
 	/// Returns true if there is a topline, returns false if not
-	bool rightLine(int cell, bool onlycolumn = false) const;
+	bool rightLine(idx_type cell, bool onlycolumn = false) const;
 
 	///
-	bool topAlreadyDrawn(int cell) const;
+	bool topAlreadyDrawn(idx_type cell) const;
 	///
-	bool leftAlreadyDrawn(int cell) const;
+	bool leftAlreadyDrawn(idx_type cell) const;
 	///
-	bool isLastRow(int cell) const;
+	bool isLastRow(idx_type cell) const;
 
 	///
-	int getAdditionalHeight(int row) const;
+	int getAdditionalHeight(row_type row) const;
 	///
-	int getAdditionalWidth(int cell) const;
+	int getAdditionalWidth(idx_type cell) const;
 
 	/* returns the maximum over all rows */
 	///
-	int getWidthOfColumn(int cell) const;
+	int getWidthOfColumn(idx_type cell) const;
 	///
 	int getWidthOfTabular() const;
 	///
-	int getAscentOfRow(int row) const;
+	int getAscentOfRow(row_type row) const;
 	///
-	int getDescentOfRow(int row) const;
+	int getDescentOfRow(row_type row) const;
 	///
 	int getHeightOfTabular() const;
 	///
-	void setAscentOfRow(int row, int height);
+	void setAscentOfRow(row_type row, int height);
 	///
-	void setDescentOfRow(int row, int height);
+	void setDescentOfRow(row_type row, int height);
 	///
-	void setWidthOfCell(int cell, int new_width);
+	void setWidthOfCell(idx_type cell, int new_width);
 	///
-	void setAllLines(int cell, bool line);
+	void setAllLines(idx_type cell, bool line);
 	///
-	void setTopLine(int cell, bool line, bool onlycolumn = false);
+	void setTopLine(idx_type cell, bool line, bool onlycolumn = false);
 	///
-	void setBottomLine(int cell, bool line, bool onlycolumn = false);
+	void setBottomLine(idx_type cell, bool line, bool onlycolumn = false);
 	///
-	void setLeftLine(int cell, bool line, bool onlycolumn = false);
+	void setLeftLine(idx_type cell, bool line, bool onlycolumn = false);
 	///
-	void setRightLine(int cell, bool line, bool onlycolumn = false);
+	void setRightLine(idx_type cell, bool line, bool onlycolumn = false);
 	///
-	void setAlignment(int cell, LyXAlignment align,
+	void setAlignment(idx_type cell, LyXAlignment align,
 			  bool onlycolumn = false);
 	///
-	void setVAlignment(int cell, VAlignment align,
+	void setVAlignment(idx_type cell, VAlignment align,
 			   bool onlycolumn = false);
 	///
-	void setColumnPWidth(int cell, LyXLength const & width);
+	void setColumnPWidth(idx_type cell, LyXLength const & width);
 	///
-	bool setMColumnPWidth(int cell, LyXLength const & width);
+	bool setMColumnPWidth(idx_type cell, LyXLength const & width);
 	///
-	void setAlignSpecial(int cell, std::string const & special, Feature what);
+	void setAlignSpecial(idx_type cell, std::string const & special,
+	                     Feature what);
 	///
-	LyXAlignment getAlignment(int cell, bool onlycolumn = false) const;
+	LyXAlignment getAlignment(idx_type cell,
+	                          bool onlycolumn = false) const;
 	///
-	VAlignment getVAlignment(int cell, bool onlycolumn = false) const;
+	VAlignment getVAlignment(idx_type cell,
+	                         bool onlycolumn = false) const;
 	///
-	LyXLength const getPWidth(int cell) const;
+	LyXLength const getPWidth(idx_type cell) const;
 	///
-	LyXLength const getColumnPWidth(int cell) const;
+	LyXLength const getColumnPWidth(idx_type cell) const;
 	///
-	LyXLength const getMColumnPWidth(int cell) const;
+	LyXLength const getMColumnPWidth(idx_type cell) const;
 	///
-	std::string const getAlignSpecial(int cell, int what) const;
+	std::string const getAlignSpecial(idx_type cell, int what) const;
 	///
-	int getWidthOfCell(int cell) const;
+	int getWidthOfCell(idx_type cell) const;
 	///
-	int getBeginningOfTextInCell(int cell) const;
+	int getBeginningOfTextInCell(idx_type cell) const;
 	///
-	void appendRow(BufferParams const &, int cell);
+	void appendRow(BufferParams const &, idx_type cell);
 	///
-	void deleteRow(int row);
+	void deleteRow(row_type row);
 	///
-	void appendColumn(BufferParams const &, int cell);
+	void appendColumn(BufferParams const &, idx_type cell);
 	///
-	void deleteColumn(int column);
+	void deleteColumn(col_type column);
 	///
-	bool isFirstCellInRow(int cell) const;
+	bool isFirstCellInRow(idx_type cell) const;
 	///
-	int getFirstCellInRow(int row) const;
+	idx_type getFirstCellInRow(row_type row) const;
 	///
-	bool isLastCellInRow(int cell) const;
+	bool isLastCellInRow(idx_type cell) const;
 	///
-	int getLastCellInRow(int row) const;
+	idx_type getLastCellInRow(row_type row) const;
 	///
-	int getNumberOfCells() const;
+	idx_type getNumberOfCells() const;
 	///
-	int numberOfCellsInRow(int cell) const;
+	idx_type numberOfCellsInRow(idx_type cell) const;
 	///
 	void write(Buffer const &, std::ostream &) const;
 	///
@@ -290,21 +303,21 @@ public:
 		  int const depth,
 		  bool onlydata, unsigned char delim) const;
 	///
-	bool isMultiColumn(int cell) const;
+	bool isMultiColumn(idx_type cell) const;
 	///
-	bool isMultiColumnReal(int cell) const;
+	bool isMultiColumnReal(idx_type cell) const;
 	///
-	void setMultiColumn(Buffer *, int cell, int number);
+	void setMultiColumn(Buffer *, idx_type cell, idx_type number);
 	///
-	int unsetMultiColumn(int cell); // returns number of new cells
+	idx_type unsetMultiColumn(idx_type cell); // returns number of new cells
 	///
-	bool isPartOfMultiColumn(int row, int column) const;
+	bool isPartOfMultiColumn(row_type row, col_type column) const;
 	///
-	int row_of_cell(int cell) const;
+	row_type row_of_cell(idx_type cell) const;
 	///
-	int column_of_cell(int cell) const;
+	col_type column_of_cell(idx_type cell) const;
 	///
-	int right_column_of_cell(int cell) const;
+	col_type right_column_of_cell(idx_type cell) const;
 	///
 	void setLongTabular(bool);
 	///
@@ -314,47 +327,47 @@ public:
 	///
 	bool getRotateTabular() const;
 	///
-	void setRotateCell(int cell, bool);
+	void setRotateCell(idx_type cell, bool);
 	///
-	bool getRotateCell(int cell) const;
+	bool getRotateCell(idx_type cell) const;
 	///
 	bool needRotating() const;
 	///
-	bool isLastCell(int cell) const;
+	bool isLastCell(idx_type cell) const;
 	///
-	int getCellAbove(int cell) const;
+	idx_type getCellAbove(idx_type cell) const;
 	///
-	int getCellBelow(int cell) const;
+	idx_type getCellBelow(idx_type cell) const;
 	///
-	int getLastCellAbove(int cell) const;
+	idx_type getLastCellAbove(idx_type cell) const;
 	///
-	int getLastCellBelow(int cell) const;
+	idx_type getLastCellBelow(idx_type cell) const;
 	///
-	int getCellNumber(int row, int column) const;
+	idx_type getCellNumber(row_type row, col_type column) const;
 	///
-	void setUsebox(int cell, BoxType);
+	void setUsebox(idx_type cell, BoxType);
 	///
-	BoxType getUsebox(int cell) const;
+	BoxType getUsebox(idx_type cell) const;
 	//
 	// Long Tabular Options support functions
 	///
-	bool checkLTType(int row, ltType const &) const;
+	bool checkLTType(row_type row, ltType const &) const;
 	///
-	void setLTHead(int row, bool flag, ltType const &, bool first);
+	void setLTHead(row_type row, bool flag, ltType const &, bool first);
 	///
-	bool getRowOfLTHead(int row, ltType &) const;
+	bool getRowOfLTHead(row_type row, ltType &) const;
 	///
-	bool getRowOfLTFirstHead(int row, ltType &) const;
+	bool getRowOfLTFirstHead(row_type row, ltType &) const;
 	///
-	void setLTFoot(int row, bool flag, ltType const &, bool last);
+	void setLTFoot(row_type row, bool flag, ltType const &, bool last);
 	///
-	bool getRowOfLTFoot(int row, ltType &) const;
+	bool getRowOfLTFoot(row_type row, ltType &) const;
 	///
-	bool getRowOfLTLastFoot(int row, ltType &) const;
+	bool getRowOfLTLastFoot(row_type row, ltType &) const;
 	///
-	void setLTNewPage(int row, bool what);
+	void setLTNewPage(row_type row, bool what);
 	///
-	bool getLTNewPage(int row) const;
+	bool getLTNewPage(row_type row) const;
 	///
 	bool haveLTHead() const;
 	///
@@ -366,16 +379,17 @@ public:
 	///
 	// end longtable support
 	///
-	boost::shared_ptr<InsetText> getCellInset(int cell) const;
+	boost::shared_ptr<InsetText> getCellInset(idx_type cell) const;
 	///
-	boost::shared_ptr<InsetText> getCellInset(int row, int column) const;
+	boost::shared_ptr<InsetText> getCellInset(row_type row,
+	                                          col_type column) const;
 	/// Search for \param inset in the tabular, with the
 	///
-	int getCellFromInset(InsetBase const * inset) const;
+	idx_type getCellFromInset(InsetBase const * inset) const;
 	///
-	int rows() const { return rows_; }
+	row_type rows() const { return rows_; }
 	///
-	int columns() const { return columns_;}
+	col_type columns() const { return columns_;}
 	///
 	void validate(LaTeXFeatures &) const;
 	/// Appends \c list with all labels found within this inset.
@@ -393,7 +407,7 @@ public:
 		///
 		void swap(cellstruct & rhs);
 		///
-		int cellno;
+		idx_type cellno;
 		///
 		int width_of_cell;
 		///
@@ -421,7 +435,7 @@ public:
 		///
 		boost::shared_ptr<InsetText> inset;
 	};
-	cellstruct & cellinfo_of_cell(int cell) const;
+	cellstruct & cellinfo_of_cell(idx_type cell) const;
 	///
 	typedef std::vector<cellstruct> cell_vector;
 	///
@@ -477,15 +491,15 @@ public:
 	typedef std::vector<columnstruct> column_vector;
 
 	///
-	int rows_;
+	row_type rows_;
 	///
-	int columns_;
+	col_type columns_;
 	///
-	int numberofcells;
+	idx_type numberofcells;
 	///
-	std::vector<int> rowofcell;
+	std::vector<row_type> rowofcell;
 	///
-	std::vector<int> columnofcell;
+	std::vector<col_type> columnofcell;
 	///
 	row_vector row_info;
 	///
@@ -510,61 +524,63 @@ public:
 	ltType endlastfoot;
 
 	///
-	void init(BufferParams const &, int rows_arg, int columns_arg);
+	void init(BufferParams const &, row_type rows_arg,
+	          col_type columns_arg);
 	///
 	void set_row_column_number_info();
 	/// Returns true if a complete update is necessary, otherwise false
-	bool setWidthOfMulticolCell(int cell, int new_width);
+	bool setWidthOfMulticolCell(idx_type cell, int new_width);
 	///
-	void recalculateMulticolumnsOfColumn(int column);
+	void recalculateMulticolumnsOfColumn(col_type column);
 	/// Returns true if change
-	void calculate_width_of_column(int column);
+	void calculate_width_of_column(col_type column);
 	///
-	bool calculate_width_of_column_NMC(int column); // no multi cells
+	bool calculate_width_of_column_NMC(col_type column); // no multi cells
 	///
 	void calculate_width_of_tabular();
 	///
-	void delete_column(int column);
+	void delete_column(col_type column);
 	///
-	int cells_in_multicolumn(int cell) const;
+	idx_type cells_in_multicolumn(idx_type cell) const;
 	///
-	BoxType useParbox(int cell) const;
+	BoxType useParbox(idx_type cell) const;
 	///
-	void setHeaderFooterRows(int header, int fheader, int footer, int lfooter);
+	void setHeaderFooterRows(row_type header, row_type fheader,
+	                         row_type footer, row_type lfooter);
 	///
 	// helper function for Latex returns number of newlines
 	///
-	int TeXTopHLine(std::ostream &, int row) const;
+	int TeXTopHLine(std::ostream &, row_type row) const;
 	///
-	int TeXBottomHLine(std::ostream &, int row) const;
+	int TeXBottomHLine(std::ostream &, row_type row) const;
 	///
-	int TeXCellPreamble(std::ostream &, int cell) const;
+	int TeXCellPreamble(std::ostream &, idx_type cell) const;
 	///
-	int TeXCellPostamble(std::ostream &, int cell) const;
+	int TeXCellPostamble(std::ostream &, idx_type cell) const;
 	///
 	int TeXLongtableHeaderFooter(std::ostream &, Buffer const & buf,
 				     OutputParams const &) const;
 	///
-	bool isValidRow(int const row) const;
+	bool isValidRow(row_type const row) const;
 	///
-	int TeXRow(std::ostream &, int const row, Buffer const & buf,
+	int TeXRow(std::ostream &, row_type const row, Buffer const & buf,
 		   OutputParams const &) const;
 	///
 	// helper function for ASCII returns number of newlines
 	///
-	int asciiTopHLine(std::ostream &, int row,
+	int asciiTopHLine(std::ostream &, row_type row,
 			  std::vector<unsigned int> const &) const;
 	///
-	int asciiBottomHLine(std::ostream &, int row,
+	int asciiBottomHLine(std::ostream &, row_type row,
 			     std::vector<unsigned int> const &) const;
 	///
 	int asciiPrintCell(Buffer const &, std::ostream &,
 			   OutputParams const &,
-			   int cell, int row, int column,
+			   idx_type cell, row_type row, col_type column,
 			   std::vector<unsigned int> const &,
 					   bool onlydata) const;
 	/// auxiliary function for docbook
-	int docbookRow(Buffer const & buf, std::ostream & os, int,
+	int docbookRow(Buffer const & buf, std::ostream & os, row_type,
 		       OutputParams const &) const;
 
 private:

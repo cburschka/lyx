@@ -25,7 +25,7 @@ namespace lyx {
 namespace frontend {
 
 ControlTabular::ControlTabular(Dialog & parent)
-	: Dialog::Controller(parent), active_cell_(-1)
+	: Dialog::Controller(parent), active_cell_(LyXTabular::npos)
 {}
 
 
@@ -53,11 +53,11 @@ bool ControlTabular::initialiseParams(string const & data)
 void ControlTabular::clearParams()
 {
 	params_.reset();
-	active_cell_ = -1;
+	active_cell_ = LyXTabular::npos;
 }
 
 
-int ControlTabular::getActiveCell() const
+LyXTabular::idx_type ControlTabular::getActiveCell() const
 {
 	return active_cell_;
 }

@@ -66,7 +66,7 @@ private:
 	bool closing_;
 
 	///
-	int actCell_;
+	size_t actCell_;
 };
 
 } // namespace frontend

@@ -1,3 +1,8 @@
+2004-12-02  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* tabular.[Ch]: use size_t-like types for cell, row and column
+	indices
+
 2004-12-01  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* lyxfunc.C (getStatus): do not lose previous information when

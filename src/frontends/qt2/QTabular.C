@@ -92,7 +92,7 @@ bool QTabular::isValid()
 void QTabular::update_borders()
 {
 	LyXTabular const & tabular = controller().tabular();
-	int const cell = controller().getActiveCell();
+	LyXTabular::idx_type const cell = controller().getActiveCell();
 	bool const isMulticolumnCell = tabular.isMultiColumn(cell);
 
 	if (!isMulticolumnCell) {
@@ -134,10 +134,10 @@ void QTabular::update_borders()
 void QTabular::update_contents()
 {
 	LyXTabular const & tabular(controller().tabular());
-	int const cell = controller().getActiveCell();
+	LyXTabular::idx_type const cell = controller().getActiveCell();
 
-	int const row(tabular.row_of_cell(cell));
-	int const col(tabular.column_of_cell(cell));
+	LyXTabular::row_type const row(tabular.row_of_cell(cell));
+	LyXTabular::col_type const col(tabular.column_of_cell(cell));
 
 	dialog_->tabularRowED->setText(toqstr(tostr(row + 1)));
 	dialog_->tabularColumnED->setText(toqstr(tostr(col + 1)));
@@ -333,7 +333,7 @@ void QTabular::closeGUI()
 	LyXTabular const & tabular(controller().tabular());
 
 	// apply the fixed width values
-	int const cell = controller().getActiveCell();
+	LyXTabular::idx_type const cell = controller().getActiveCell();
 	bool const multicol = tabular.isMultiColumn(cell);
 	string width = widgetsToLength(dialog_->widthED, dialog_->widthUnit);
 	string width2;

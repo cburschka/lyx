@@ -36,7 +36,7 @@ public:
 	virtual bool isBufferDependent() const { return true; }
 
 	///
-	int getActiveCell() const;
+	LyXTabular::idx_type getActiveCell() const;
 	/// get the contained tabular
 	LyXTabular const & tabular() const;
 	/// return true if units should default to metric
@@ -71,7 +71,7 @@ public:
 
 private:
 	///
-	int active_cell_;
+	LyXTabular::idx_type active_cell_;
 	///
 	boost::scoped_ptr<LyXTabular> params_;
 };

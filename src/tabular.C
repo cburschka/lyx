@@ -92,6 +92,14 @@ string const write_attribute(string const & name, int const & i)
 }
 
 
+string const write_attribute(string const & name, LyXTabular::idx_type const & i)
+{
+	// we write only true attribute values so we remove a bit of the
+	// file format bloat for tabulars.
+	return i ? write_attribute(name, tostr(i)) : string();
+}
+
+
 string const write_attribute(string const & name, LyXLength const & value)
 {
 	// we write only the value if we really have one same reson as above.
@@ -390,14 +398,16 @@ LyXTabular::ltType::ltType()
 {}
 
 
-LyXTabular::LyXTabular(BufferParams const & bp, int rows_arg, int columns_arg)
+LyXTabular::LyXTabular(BufferParams const & bp, row_type rows_arg,
+                       col_type columns_arg)
 {
 	init(bp, rows_arg, columns_arg);
 }
 
 
 // activates all lines and sets all widths to 0
-void LyXTabular::init(BufferParams const & bp, int rows_arg, int columns_arg)
+void LyXTabular::init(BufferParams const & bp, row_type rows_arg,
+                      col_type columns_arg)
 {
 	rows_    = rows_arg;
 	columns_ = columns_arg;
@@ -408,7 +418,7 @@ void LyXTabular::init(BufferParams const & bp, int rows_arg, int columns_arg)
 	column_info.reserve(10);
 	cell_info.reserve(100);
 	fixCellNums();
-	for (int i = 0; i < rows_; ++i)
+	for (row_type i = 0; i < rows_; ++i)
 		cell_info[i].back().right_line = true;
 	row_info.back().bottom_line = true;
 	row_info.front().bottom_line = true;
@@ -420,9 +430,9 @@ void LyXTabular::init(BufferParams const & bp, int rows_arg, int columns_arg)
 
 void LyXTabular::fixCellNums()
 {
-	int cellno = 0;
-	for (int i = 0; i < rows_; ++i) {
-		for (int j = 0; j < columns_; ++j) {
+	idx_type cellno = 0;
+	for (row_type i = 0; i < rows_; ++i) {
+		for (col_type j = 0; j < columns_; ++j) {
 			// When debugging it can be nice to set
 			// this to true.
 			cell_info[i][j].inset->setDrawFrame(false);
@@ -435,11 +445,11 @@ void LyXTabular::fixCellNums()
 }
 
 
-void LyXTabular::appendRow(BufferParams const & bp, int const cell)
+void LyXTabular::appendRow(BufferParams const & bp, idx_type const cell)
 {
 	++rows_;
 
-	int const row = row_of_cell(cell);
+	row_type const row = row_of_cell(cell);
 
 	row_vector::iterator rit = row_info.begin() + row;
 	row_info.insert(rit, rowstruct());
@@ -447,25 +457,25 @@ void LyXTabular::appendRow(BufferParams const & bp, int const cell)
 	row_info[row] = row_info[row + 1];
 
 	cell_vvector old(rows_ - 1);
-	for (int i = 0; i < rows_ - 1; ++i)
+	for (row_type i = 0; i < rows_ - 1; ++i)
 		swap(cell_info[i], old[i]);
 
 	cell_info = cell_vvector(rows_, cell_vector(columns_, cellstruct(bp)));
 
-	for (int i = 0; i <= row; ++i)
+	for (row_type i = 0; i <= row; ++i)
 		swap(cell_info[i], old[i]);
-	for (int i = row + 2; i < rows_; ++i)
+	for (row_type i = row + 2; i < rows_; ++i)
 		swap(cell_info[i], old[i - 1]);
 
 	if (bp.tracking_changes)
-		for (int j = 0; j < columns_; ++j)
+		for (col_type j = 0; j < columns_; ++j)
 			cell_info[row + 1][j].inset->markNew(true);
 
 	set_row_column_number_info();
 }
 
 
-void LyXTabular::deleteRow(int const row)
+void LyXTabular::deleteRow(row_type const row)
 {
 	// Not allowed to delete last row
 	if (rows_ == 1)
@@ -478,17 +488,17 @@ void LyXTabular::deleteRow(int const row)
 }
 
 
-void LyXTabular::appendColumn(BufferParams const & bp, int const cell)
+void LyXTabular::appendColumn(BufferParams const & bp, idx_type const cell)
 {
 	++columns_;
 
-	int const column = column_of_cell(cell);
+	col_type const column = column_of_cell(cell);
 	column_vector::iterator cit = column_info.begin() + column + 1;
 	column_info.insert(cit, columnstruct());
 	// set the column values of the column before
 	column_info[column + 1] = column_info[column];
 
-	for (int i = 0; i < rows_; ++i) {
+	for (row_type i = 0; i < rows_; ++i) {
 		cell_info[i].insert(cell_info[i].begin() + column + 1, cellstruct(bp));
 
 		// care about multicolumns
@@ -500,7 +510,7 @@ void LyXTabular::appendColumn(BufferParams const & bp, int const cell)
 			cell_info[i][column + 1].multicolumn = LyXTabular::CELL_NORMAL;
 	}
 	//++column;
-	for (int i = 0; i < rows_; ++i) {
+	for (row_type i = 0; i < rows_; ++i) {
 		cell_info[i][column + 1].inset->clear(false);
 		if (bp.tracking_changes)
 			cell_info[i][column + 1].inset->markNew(true);
@@ -509,14 +519,14 @@ void LyXTabular::appendColumn(BufferParams const & bp, int const cell)
 }
 
 
-void LyXTabular::deleteColumn(int const column)
+void LyXTabular::deleteColumn(col_type const column)
 {
 	// Not allowed to delete last column
 	if (columns_ == 1)
 		return;
 
 	column_info.erase(column_info.begin() + column);
-	for (int i = 0; i < rows_; ++i)
+	for (row_type i = 0; i < rows_; ++i)
 		cell_info[i].erase(cell_info[i].begin() + column);
 	--columns_;
 	fixCellNums();
@@ -525,21 +535,27 @@ void LyXTabular::deleteColumn(int const column)
 
 void LyXTabular::set_row_column_number_info()
 {
-	numberofcells = -1;
-	for (int row = 0; row < rows_; ++row) {
-		for (int column = 0; column < columns_; ++column) {
+	numberofcells = 0;
+	for (row_type row = 0; row < rows_; ++row) {
+		for (col_type column = 0; column < columns_; ++column) {
 			if (cell_info[row][column].multicolumn
 				!= LyXTabular::CELL_PART_OF_MULTICOLUMN)
 				++numberofcells;
-			cell_info[row][column].cellno = numberofcells;
+			if (numberofcells == 0)
+				// FIXME: Is this intended?
+				cell_info[row][column].cellno = npos;
+			else
+				cell_info[row][column].cellno =
+					numberofcells - 1;
 		}
 	}
-	++numberofcells; // because this is one more than as we start from 0
 
 	rowofcell.resize(numberofcells);
 	columnofcell.resize(numberofcells);
 
-	for (int row = 0, column = 0, c = 0;
+	row_type row = 0;
+	col_type column = 0;
+	for (idx_type c = 0;
 		 c < numberofcells && row < rows_ && column < columns_;) {
 		rowofcell[c] = row;
 		columnofcell[c] = column;
@@ -556,8 +572,8 @@ void LyXTabular::set_row_column_number_info()
 		}
 	}
 
-	for (int row = 0; row < rows_; ++row) {
-		for (int column = 0; column < columns_; ++column) {
+	for (row_type row = 0; row < rows_; ++row) {
+		for (col_type column = 0; column < columns_; ++column) {
 			if (isPartOfMultiColumn(row,column))
 				continue;
 			cell_info[row][column].inset->setAutoBreakRows(
@@ -567,17 +583,17 @@ void LyXTabular::set_row_column_number_info()
 }
 
 
-int LyXTabular::getNumberOfCells() const
+LyXTabular::idx_type LyXTabular::getNumberOfCells() const
 {
 	return numberofcells;
 }
 
 
-int LyXTabular::numberOfCellsInRow(int const cell) const
+LyXTabular::idx_type LyXTabular::numberOfCellsInRow(idx_type const cell) const
 {
-	int const row = row_of_cell(cell);
-	int result = 0;
-	for (int i = 0; i < columns_; ++i)
+	row_type const row = row_of_cell(cell);
+	idx_type result = 0;
+	for (col_type i = 0; i < columns_; ++i)
 		if (cell_info[row][i].multicolumn != LyXTabular::CELL_PART_OF_MULTICOLUMN)
 			++result;
 	return result;
@@ -585,7 +601,7 @@ int LyXTabular::numberOfCellsInRow(int const cell) const
 
 
 // returns 1 if there is a topline, returns 0 if not
-bool LyXTabular::topLine(int const cell, bool const onlycolumn) const
+bool LyXTabular::topLine(idx_type const cell, bool const onlycolumn) const
 {
 	if (!onlycolumn && isMultiColumn(cell))
 		return cellinfo_of_cell(cell).top_line;
@@ -593,7 +609,7 @@ bool LyXTabular::topLine(int const cell, bool const onlycolumn) const
 }
 
 
-bool LyXTabular::bottomLine(int cell, bool onlycolumn) const
+bool LyXTabular::bottomLine(idx_type const cell, bool onlycolumn) const
 {
 	if (!onlycolumn && isMultiColumn(cell))
 		return cellinfo_of_cell(cell).bottom_line;
@@ -601,7 +617,7 @@ bool LyXTabular::bottomLine(int cell, bool onlycolumn) const
 }
 
 
-bool LyXTabular::leftLine(int cell, bool onlycolumn) const
+bool LyXTabular::leftLine(idx_type cell, bool onlycolumn) const
 {
 	if (!onlycolumn && isMultiColumn(cell) &&
 		(isFirstCellInRow(cell) || isMultiColumn(cell-1)))
@@ -616,7 +632,7 @@ bool LyXTabular::leftLine(int cell, bool onlycolumn) const
 }
 
 
-bool LyXTabular::rightLine(int cell, bool onlycolumn) const
+bool LyXTabular::rightLine(idx_type cell, bool onlycolumn) const
 {
 	if (!onlycolumn && isMultiColumn(cell) &&
 		(isLastCellInRow(cell) || isMultiColumn(cell + 1)))
@@ -631,11 +647,11 @@ bool LyXTabular::rightLine(int cell, bool onlycolumn) const
 }
 
 
-bool LyXTabular::topAlreadyDrawn(int cell) const
+bool LyXTabular::topAlreadyDrawn(idx_type cell) const
 {
-	int row = row_of_cell(cell);
+	row_type row = row_of_cell(cell);
 	if (row > 0 && !getAdditionalHeight(row)) {
-		int column = column_of_cell(cell);
+		col_type column = column_of_cell(cell);
 		--row;
 		while (column
 			   && cell_info[row][column].multicolumn
@@ -650,11 +666,11 @@ bool LyXTabular::topAlreadyDrawn(int cell) const
 }
 
 
-bool LyXTabular::leftAlreadyDrawn(int cell) const
+bool LyXTabular::leftAlreadyDrawn(idx_type cell) const
 {
-	int column = column_of_cell(cell);
+	col_type column = column_of_cell(cell);
 	if (column > 0) {
-		int row = row_of_cell(cell);
+		row_type row = row_of_cell(cell);
 		while (--column &&
 			   (cell_info[row][column].multicolumn ==
 				LyXTabular::CELL_PART_OF_MULTICOLUMN));
@@ -666,13 +682,13 @@ bool LyXTabular::leftAlreadyDrawn(int cell) const
 }
 
 
-bool LyXTabular::isLastRow(int cell) const
+bool LyXTabular::isLastRow(idx_type cell) const
 {
 	return row_of_cell(cell) == rows_ - 1;
 }
 
 
-int LyXTabular::getAdditionalHeight(int row) const
+int LyXTabular::getAdditionalHeight(row_type row) const
 {
 	if (!row || row >= rows_)
 		return 0;
@@ -680,7 +696,7 @@ int LyXTabular::getAdditionalHeight(int row) const
 	bool top = true;
 	bool bottom = true;
 
-	for (int column = 0; column < columns_ && bottom; ++column) {
+	for (col_type column = 0; column < columns_ && bottom; ++column) {
 		switch (cell_info[row - 1][column].multicolumn) {
 		case LyXTabular::CELL_BEGIN_OF_MULTICOLUMN:
 			bottom = cell_info[row - 1][column].bottom_line;
@@ -689,7 +705,7 @@ int LyXTabular::getAdditionalHeight(int row) const
 			bottom = row_info[row - 1].bottom_line;
 		}
 	}
-	for (int column = 0; column < columns_ && top; ++column) {
+	for (col_type column = 0; column < columns_ && top; ++column) {
 		switch (cell_info[row][column].multicolumn) {
 		case LyXTabular::CELL_BEGIN_OF_MULTICOLUMN:
 			top = cell_info[row][column].top_line;
@@ -704,12 +720,12 @@ int LyXTabular::getAdditionalHeight(int row) const
 }
 
 
-int LyXTabular::getAdditionalWidth(int cell) const
+int LyXTabular::getAdditionalWidth(idx_type cell) const
 {
 	// internally already set in setWidthOfCell
 	// used to get it back in text.C
-	int const col = right_column_of_cell(cell);
-	int const row = row_of_cell(cell);
+	col_type const col = right_column_of_cell(cell);
+	row_type const row = row_of_cell(cell);
 	if (col < columns_ - 1 && rightLine(cell) &&
 		leftLine(cell_info[row][col+1].cellno)) // column_info[col+1].left_line)
 	{
@@ -720,12 +736,12 @@ int LyXTabular::getAdditionalWidth(int cell) const
 
 
 // returns the maximum over all rows
-int LyXTabular::getWidthOfColumn(int cell) const
+int LyXTabular::getWidthOfColumn(idx_type cell) const
 {
-	int const column1 = column_of_cell(cell);
-	int const column2 = right_column_of_cell(cell);
+	col_type const column1 = column_of_cell(cell);
+	col_type const column2 = right_column_of_cell(cell);
 	int result = 0;
-	for (int i = column1; i <= column2; ++i)
+	for (col_type i = column1; i <= column2; ++i)
 		result += column_info[i].width_of_column;
 	return result;
 }
@@ -738,23 +754,23 @@ int LyXTabular::getWidthOfTabular() const
 
 
 // returns true if a complete update is necessary, otherwise false
-bool LyXTabular::setWidthOfMulticolCell(int cell, int new_width)
+bool LyXTabular::setWidthOfMulticolCell(idx_type cell, int new_width)
 {
 	if (!isMultiColumn(cell))
 		return false;
 
-	int const row = row_of_cell(cell);
-	int const column1 = column_of_cell(cell);
-	int const column2 = right_column_of_cell(cell);
+	row_type const row = row_of_cell(cell);
+	col_type const column1 = column_of_cell(cell);
+	col_type const column2 = right_column_of_cell(cell);
 	int const old_val = cell_info[row][column2].width_of_cell;
 
 	// first set columns to 0 so we can calculate the right width
-	for (int i = column1; i <= column2; ++i) {
+	for (col_type i = column1; i <= column2; ++i) {
 		cell_info[row][i].width_of_cell = 0;
 	}
 	// set the width to MAX_WIDTH until width > 0
 	int width = new_width + 2 * WIDTH_OF_LINE;
-	int i = column1;
+	col_type i = column1;
 	for (; i < column2 && width > column_info[i].width_of_column; ++i) {
 		cell_info[row][i].width_of_cell = column_info[i].width_of_column;
 		width -= column_info[i].width_of_column;
@@ -773,14 +789,14 @@ bool LyXTabular::setWidthOfMulticolCell(int cell, int new_width)
 }
 
 
-void LyXTabular::recalculateMulticolumnsOfColumn(int column)
+void LyXTabular::recalculateMulticolumnsOfColumn(col_type column)
 {
 	// the last column does not have to be recalculated because all
 	// multicolumns will have here there last multicolumn cell which
 	// always will have the whole rest of the width of the cell.
 	if (column > (columns_ - 2))
 		return;
-	for(int row = 0; row < rows_; ++row) {
+	for(row_type row = 0; row < rows_; ++row) {
 		int mc = cell_info[row][column].multicolumn;
 		int nmc = cell_info[row][column+1].multicolumn;
 		// we only have to update multicolumns which do not have this
@@ -789,7 +805,7 @@ void LyXTabular::recalculateMulticolumnsOfColumn(int column)
 			  (mc == CELL_PART_OF_MULTICOLUMN &&
 			   nmc == CELL_PART_OF_MULTICOLUMN))
 		{
-			int const cellno = cell_info[row][column].cellno;
+			idx_type const cellno = cell_info[row][column].cellno;
 			setWidthOfMulticolCell(cellno,
 					       getWidthOfCell(cellno) - 2 * WIDTH_OF_LINE);
 		}
@@ -798,10 +814,10 @@ void LyXTabular::recalculateMulticolumnsOfColumn(int column)
 
 
 // returns 1 if a complete update is necessary, otherwise 0
-void LyXTabular::setWidthOfCell(int cell, int new_width)
+void LyXTabular::setWidthOfCell(idx_type cell, int new_width)
 {
-	int const row = row_of_cell(cell);
-	int const column1 = column_of_cell(cell);
+	row_type const row = row_of_cell(cell);
+	col_type const column1 = column_of_cell(cell);
 	bool tmp = false;
 	int width = 0;
 	int add_width = 0;
@@ -826,14 +842,15 @@ void LyXTabular::setWidthOfCell(int cell, int new_width)
 			recalculateMulticolumnsOfColumn(column1);
 	}
 	if (tmp) {
-		for (int i = 0; i < columns_; ++i)
+		for (col_type i = 0; i < columns_; ++i)
 			calculate_width_of_column(i);
 		calculate_width_of_tabular();
 	}
 }
 
 
-void LyXTabular::setAlignment(int cell, LyXAlignment align, bool onlycolumn)
+void LyXTabular::setAlignment(idx_type cell, LyXAlignment align,
+                              bool onlycolumn)
 {
 	if (!isMultiColumn(cell) || onlycolumn)
 		column_info[column_of_cell(cell)].alignment = align;
@@ -842,7 +859,8 @@ void LyXTabular::setAlignment(int cell, LyXAlignment align, bool onlycolumn)
 }
 
 
-void LyXTabular::setVAlignment(int cell, VAlignment align, bool onlycolumn)
+void LyXTabular::setVAlignment(idx_type cell, VAlignment align,
+                               bool onlycolumn)
 {
 	if (!isMultiColumn(cell) || onlycolumn)
 		column_info[column_of_cell(cell)].valignment = align;
@@ -851,20 +869,20 @@ void LyXTabular::setVAlignment(int cell, VAlignment align, bool onlycolumn)
 }
 
 
-void LyXTabular::setColumnPWidth(int cell, LyXLength const & width)
+void LyXTabular::setColumnPWidth(idx_type cell, LyXLength const & width)
 {
-	int const j = column_of_cell(cell);
+	col_type const j = column_of_cell(cell);
 
 	column_info[j].p_width = width;
-	for (int i = 0; i < rows_; ++i) {
-		int const cell = getCellNumber(i, j);
+	for (row_type i = 0; i < rows_; ++i) {
+		idx_type const cell = getCellNumber(i, j);
 		// because of multicolumns
 		getCellInset(cell)->setAutoBreakRows(!getPWidth(cell).zero());
 	}
 }
 
 
-bool LyXTabular::setMColumnPWidth(int cell, LyXLength const & width)
+bool LyXTabular::setMColumnPWidth(idx_type cell, LyXLength const & width)
 {
 	if (!isMultiColumn(cell))
 		return false;
@@ -875,7 +893,7 @@ bool LyXTabular::setMColumnPWidth(int cell, LyXLength const & width)
 }
 
 
-void LyXTabular::setAlignSpecial(int cell, string const & special,
+void LyXTabular::setAlignSpecial(idx_type cell, string const & special,
 				 LyXTabular::Feature what)
 {
 	if (what == SET_SPECIAL_MULTI)
@@ -885,7 +903,7 @@ void LyXTabular::setAlignSpecial(int cell, string const & special,
 }
 
 
-void LyXTabular::setAllLines(int cell, bool line)
+void LyXTabular::setAllLines(idx_type cell, bool line)
 {
 	setTopLine(cell, line);
 	setBottomLine(cell, line);
@@ -894,9 +912,9 @@ void LyXTabular::setAllLines(int cell, bool line)
 }
 
 
-void LyXTabular::setTopLine(int cell, bool line, bool onlycolumn)
+void LyXTabular::setTopLine(idx_type cell, bool line, bool onlycolumn)
 {
-	int const row = row_of_cell(cell);
+	row_type const row = row_of_cell(cell);
 	if (onlycolumn || !isMultiColumn(cell))
 		row_info[row].top_line = line;
 	else
@@ -904,7 +922,7 @@ void LyXTabular::setTopLine(int cell, bool line, bool onlycolumn)
 }
 
 
-void LyXTabular::setBottomLine(int cell, bool line, bool onlycolumn)
+void LyXTabular::setBottomLine(idx_type cell, bool line, bool onlycolumn)
 {
 	if (onlycolumn || !isMultiColumn(cell))
 		row_info[row_of_cell(cell)].bottom_line = line;
@@ -913,7 +931,7 @@ void LyXTabular::setBottomLine(int cell, bool line, bool onlycolumn)
 }
 
 
-void LyXTabular::setLeftLine(int cell, bool line, bool onlycolumn)
+void LyXTabular::setLeftLine(idx_type cell, bool line, bool onlycolumn)
 {
 	if (onlycolumn || !isMultiColumn(cell))
 		column_info[column_of_cell(cell)].left_line = line;
@@ -922,7 +940,7 @@ void LyXTabular::setLeftLine(int cell, bool line, bool onlycolumn)
 }
 
 
-void LyXTabular::setRightLine(int cell, bool line, bool onlycolumn)
+void LyXTabular::setRightLine(idx_type cell, bool line, bool onlycolumn)
 {
 	if (onlycolumn || !isMultiColumn(cell))
 		column_info[right_column_of_cell(cell)].right_line = line;
@@ -931,7 +949,7 @@ void LyXTabular::setRightLine(int cell, bool line, bool onlycolumn)
 }
 
 
-LyXAlignment LyXTabular::getAlignment(int cell, bool onlycolumn) const
+LyXAlignment LyXTabular::getAlignment(idx_type cell, bool onlycolumn) const
 {
 	if (!onlycolumn && isMultiColumn(cell))
 		return cellinfo_of_cell(cell).alignment;
@@ -940,7 +958,7 @@ LyXAlignment LyXTabular::getAlignment(int cell, bool onlycolumn) const
 
 
 LyXTabular::VAlignment
-LyXTabular::getVAlignment(int cell, bool onlycolumn) const
+LyXTabular::getVAlignment(idx_type cell, bool onlycolumn) const
 {
 	if (!onlycolumn && isMultiColumn(cell))
 		return cellinfo_of_cell(cell).valignment;
@@ -948,7 +966,7 @@ LyXTabular::getVAlignment(int cell, bool onlycolumn) const
 }
 
 
-LyXLength const LyXTabular::getPWidth(int cell) const
+LyXLength const LyXTabular::getPWidth(idx_type cell) const
 {
 	if (isMultiColumn(cell))
 		return cellinfo_of_cell(cell).p_width;
@@ -956,13 +974,13 @@ LyXLength const LyXTabular::getPWidth(int cell) const
 }
 
 
-LyXLength const LyXTabular::getColumnPWidth(int cell) const
+LyXLength const LyXTabular::getColumnPWidth(idx_type cell) const
 {
 	return column_info[column_of_cell(cell)].p_width;
 }
 
 
-LyXLength const LyXTabular::getMColumnPWidth(int cell) const
+LyXLength const LyXTabular::getMColumnPWidth(idx_type cell) const
 {
 	if (isMultiColumn(cell))
 		return cellinfo_of_cell(cell).p_width;
@@ -970,7 +988,7 @@ LyXLength const LyXTabular::getMColumnPWidth(int cell) const
 }
 
 
-string const LyXTabular::getAlignSpecial(int cell, int what) const
+string const LyXTabular::getAlignSpecial(idx_type cell, int what) const
 {
 	if (what == SET_SPECIAL_MULTI)
 		return cellinfo_of_cell(cell).align_special;
@@ -978,19 +996,19 @@ string const LyXTabular::getAlignSpecial(int cell, int what) const
 }
 
 
-int LyXTabular::getWidthOfCell(int cell) const
+int LyXTabular::getWidthOfCell(idx_type cell) const
 {
-	int const row = row_of_cell(cell);
-	int const column1 = column_of_cell(cell);
-	int const column2 = right_column_of_cell(cell);
+	row_type const row = row_of_cell(cell);
+	col_type const column1 = column_of_cell(cell);
+	col_type const column2 = right_column_of_cell(cell);
 	int result = 0;
-	for (int i = column1; i <= column2; ++i)
+	for (col_type i = column1; i <= column2; ++i)
 		result += cell_info[row][i].width_of_cell;
 	return result;
 }
 
 
-int LyXTabular::getBeginningOfTextInCell(int cell) const
+int LyXTabular::getBeginningOfTextInCell(idx_type cell) const
 {
 	int x = 0;
 
@@ -1013,13 +1031,13 @@ int LyXTabular::getBeginningOfTextInCell(int cell) const
 }
 
 
-bool LyXTabular::isFirstCellInRow(int cell) const
+bool LyXTabular::isFirstCellInRow(idx_type cell) const
 {
 	return column_of_cell(cell) == 0;
 }
 
 
-int LyXTabular::getFirstCellInRow(int row) const
+LyXTabular::idx_type LyXTabular::getFirstCellInRow(row_type row) const
 {
 	if (row > rows_ - 1)
 		row = rows_ - 1;
@@ -1027,13 +1045,13 @@ int LyXTabular::getFirstCellInRow(int row) const
 }
 
 
-bool LyXTabular::isLastCellInRow(int cell) const
+bool LyXTabular::isLastCellInRow(idx_type cell) const
 {
 	return right_column_of_cell(cell) == columns_ - 1;
 }
 
 
-int LyXTabular::getLastCellInRow(int row) const
+LyXTabular::idx_type LyXTabular::getLastCellInRow(row_type row) const
 {
 	if (row > rows_ - 1)
 		row = rows_ - 1;
@@ -1041,10 +1059,10 @@ int LyXTabular::getLastCellInRow(int row) const
 }
 
 
-void LyXTabular::calculate_width_of_column(int column)
+void LyXTabular::calculate_width_of_column(col_type column)
 {
 	int maximum = 0;
-	for (int i = 0; i < rows_; ++i)
+	for (row_type i = 0; i < rows_; ++i)
 		maximum = max(cell_info[i][column].width_of_cell, maximum);
 	column_info[column].width_of_column = maximum;
 }
@@ -1056,12 +1074,12 @@ void LyXTabular::calculate_width_of_column(int column)
 // column of this multicolumn cell as this gives an added width to the
 // column, all the rest should be adapted!
 //
-bool LyXTabular::calculate_width_of_column_NMC(int column)
+bool LyXTabular::calculate_width_of_column_NMC(col_type column)
 {
 	int const old_column_width = column_info[column].width_of_column;
 	int max = 0;
-	for (int i = 0; i < rows_; ++i) {
-		int cell = getCellNumber(i, column);
+	for (row_type i = 0; i < rows_; ++i) {
+		idx_type cell = getCellNumber(i, column);
 		bool ismulti = isMultiColumnReal(cell);
 		if ((!ismulti || column == right_column_of_cell(cell)) &&
 			cell_info[i][column].width_of_cell > max)
@@ -1077,35 +1095,35 @@ bool LyXTabular::calculate_width_of_column_NMC(int column)
 void LyXTabular::calculate_width_of_tabular()
 {
 	width_of_tabular = 0;
-	for (int i = 0; i < columns_; ++i)
+	for (col_type i = 0; i < columns_; ++i)
 		width_of_tabular += column_info[i].width_of_column;
 }
 
 
-int LyXTabular::row_of_cell(int cell) const
+LyXTabular::row_type LyXTabular::row_of_cell(idx_type cell) const
 {
 	if (cell >= numberofcells)
 		return rows_ - 1;
-	if (cell < 0)
+	if (cell == npos)
 		return 0;
 	return rowofcell[cell];
 }
 
 
-int LyXTabular::column_of_cell(int cell) const
+LyXTabular::col_type LyXTabular::column_of_cell(idx_type cell) const
 {
 	if (cell >= numberofcells)
 		return columns_ - 1;
-	if (cell < 0)
+	if (cell == npos)
 		return 0;
 	return columnofcell[cell];
 }
 
 
-int LyXTabular::right_column_of_cell(int cell) const
+LyXTabular::col_type LyXTabular::right_column_of_cell(idx_type cell) const
 {
-	int const row = row_of_cell(cell);
-	int column = column_of_cell(cell);
+	row_type const row = row_of_cell(cell);
+	col_type column = column_of_cell(cell);
 	while (column < columns_ - 1 &&
 		   cell_info[row][column + 1].multicolumn == LyXTabular::CELL_PART_OF_MULTICOLUMN)
 		++column;
@@ -1136,7 +1154,7 @@ void LyXTabular::write(Buffer const & buf, ostream & os) const
 	   << write_attribute("lastFootBottomDL", endlastfoot.bottomDL)
 	   << write_attribute("lastFootEmpty", endlastfoot.empty)
 	   << ">\n";
-	for (int j = 0; j < columns_; ++j) {
+	for (col_type j = 0; j < columns_; ++j) {
 		os << "<column"
 		   << write_attribute("alignment", column_info[j].alignment)
 		   << write_attribute("valignment", column_info[j].valignment)
@@ -1146,7 +1164,7 @@ void LyXTabular::write(Buffer const & buf, ostream & os) const
 		   << write_attribute("special", column_info[j].align_special)
 		   << ">\n";
 	}
-	for (int i = 0; i < rows_; ++i) {
+	for (row_type i = 0; i < rows_; ++i) {
 		os << "<row"
 		   << write_attribute("topline", row_info[i].top_line)
 		   << write_attribute("bottomline", row_info[i].bottom_line)
@@ -1156,7 +1174,7 @@ void LyXTabular::write(Buffer const & buf, ostream & os) const
 		   << write_attribute("endlastfoot", row_info[i].endlastfoot)
 		   << write_attribute("newpage", row_info[i].newpage)
 		   << ">\n";
-		for (int j = 0; j < columns_; ++j) {
+		for (col_type j = 0; j < columns_; ++j) {
 			os << "<cell"
 			   << write_attribute("multicolumn", cell_info[i][j].multicolumn)
 			   << write_attribute("alignment", cell_info[i][j].alignment)
@@ -1181,7 +1199,8 @@ void LyXTabular::write(Buffer const & buf, ostream & os) const
 }
 
 
-void LyXTabular::setHeaderFooterRows(int hr, int fhr, int fr, int lfr)
+void LyXTabular::setHeaderFooterRows(row_type hr, row_type fhr,
+                                     row_type fr, row_type lfr)
 {
 	// set header info
 	while (hr > 0) {
@@ -1322,7 +1341,7 @@ void LyXTabular::read(Buffer const & buf, LyXLex & lex)
 		getTokenValue(line, "lastFootBottomDL", endlastfoot.bottomDL);
 		getTokenValue(line, "lastFootEmpty", endlastfoot.empty);
 	}
-	for (int j = 0; j < columns_; ++j) {
+	for (col_type j = 0; j < columns_; ++j) {
 		l_getline(is,line);
 		if (!prefixIs(line,"<column")) {
 			lyxerr << "Wrong tabular format (expected <column ...> got"
@@ -1337,7 +1356,7 @@ void LyXTabular::read(Buffer const & buf, LyXLex & lex)
 		getTokenValue(line, "special", column_info[j].align_special);
 	}
 
-	for (int i = 0; i < rows_; ++i) {
+	for (row_type i = 0; i < rows_; ++i) {
 		l_getline(is, line);
 		if (!prefixIs(line, "<row")) {
 			lyxerr << "Wrong tabular format (expected <row ...> got"
@@ -1351,7 +1370,7 @@ void LyXTabular::read(Buffer const & buf, LyXLex & lex)
 		getTokenValue(line, "endfoot", row_info[i].endfoot);
 		getTokenValue(line, "endlastfoot", row_info[i].endlastfoot);
 		getTokenValue(line, "newpage", row_info[i].newpage);
-		for (int j = 0; j < columns_; ++j) {
+		for (col_type j = 0; j < columns_; ++j) {
 			l_getline(is, line);
 			if (!prefixIs(line, "<cell")) {
 				lyxerr << "Wrong tabular format (expected <cell ...> got"
@@ -1394,26 +1413,27 @@ void LyXTabular::read(Buffer const & buf, LyXLex & lex)
 }
 
 
-bool LyXTabular::isMultiColumn(int cell) const
+bool LyXTabular::isMultiColumn(idx_type cell) const
 {
 	return cellinfo_of_cell(cell).multicolumn != LyXTabular::CELL_NORMAL;
 }
 
 
-bool LyXTabular::isMultiColumnReal(int cell) const
+bool LyXTabular::isMultiColumnReal(idx_type cell) const
 {
 	return column_of_cell(cell) != right_column_of_cell(cell) &&
 			cellinfo_of_cell(cell).multicolumn != LyXTabular::CELL_NORMAL;
 }
 
 
-LyXTabular::cellstruct & LyXTabular::cellinfo_of_cell(int cell) const
+LyXTabular::cellstruct & LyXTabular::cellinfo_of_cell(idx_type cell) const
 {
 	return cell_info[row_of_cell(cell)][column_of_cell(cell)];
 }
 
 
-void LyXTabular::setMultiColumn(Buffer * buffer, int cell, int number)
+void LyXTabular::setMultiColumn(Buffer * buffer, idx_type cell,
+                                idx_type number)
 {
 	cellstruct & cs = cellinfo_of_cell(cell);
 	cs.multicolumn = CELL_BEGIN_OF_MULTICOLUMN;
@@ -1421,7 +1441,7 @@ void LyXTabular::setMultiColumn(Buffer * buffer, int cell, int number)
 	cs.top_line = row_info[row_of_cell(cell)].top_line;
 	cs.bottom_line = row_info[row_of_cell(cell)].bottom_line;
 	cs.right_line = column_info[column_of_cell(cell+number-1)].right_line;
-	for (int i = 1; i < number; ++i) {
+	for (idx_type i = 1; i < number; ++i) {
 		cellstruct & cs1 = cellinfo_of_cell(cell + i);
 		cs1.multicolumn = CELL_PART_OF_MULTICOLUMN;
 		cs.inset->appendParagraphs(buffer, cs1.inset->paragraphs());
@@ -1431,11 +1451,11 @@ void LyXTabular::setMultiColumn(Buffer * buffer, int cell, int number)
 }
 
 
-int LyXTabular::cells_in_multicolumn(int cell) const
+LyXTabular::idx_type LyXTabular::cells_in_multicolumn(idx_type cell) const
 {
-	int const row = row_of_cell(cell);
-	int column = column_of_cell(cell);
-	int result = 1;
+	row_type const row = row_of_cell(cell);
+	col_type column = column_of_cell(cell);
+	idx_type result = 1;
 	++column;
 	while (column < columns_ &&
 		   cell_info[row][column].multicolumn == CELL_PART_OF_MULTICOLUMN)
@@ -1447,12 +1467,12 @@ int LyXTabular::cells_in_multicolumn(int cell) const
 }
 
 
-int LyXTabular::unsetMultiColumn(int cell)
+LyXTabular::idx_type LyXTabular::unsetMultiColumn(idx_type cell)
 {
-	int const row = row_of_cell(cell);
-	int column = column_of_cell(cell);
+	row_type const row = row_of_cell(cell);
+	col_type column = column_of_cell(cell);
 
-	int result = 0;
+	idx_type result = 0;
 
 	if (cell_info[row][column].multicolumn == CELL_BEGIN_OF_MULTICOLUMN) {
 		cell_info[row][column].multicolumn = CELL_NORMAL;
@@ -1494,13 +1514,13 @@ bool LyXTabular::getRotateTabular() const
 }
 
 
-void LyXTabular::setRotateCell(int cell, bool flag)
+void LyXTabular::setRotateCell(idx_type cell, bool flag)
 {
 	cellinfo_of_cell(cell).rotate = flag;
 }
 
 
-bool LyXTabular::getRotateCell(int cell) const
+bool LyXTabular::getRotateCell(idx_type cell) const
 {
 	return cellinfo_of_cell(cell).rotate;
 }
@@ -1510,15 +1530,15 @@ bool LyXTabular::needRotating() const
 {
 	if (rotate)
 		return true;
-	for (int i = 0; i < rows_; ++i)
-		for (int j = 0; j < columns_; ++j)
+	for (row_type i = 0; i < rows_; ++i)
+		for (col_type j = 0; j < columns_; ++j)
 			if (cell_info[i][j].rotate)
 				return true;
 	return false;
 }
 
 
-bool LyXTabular::isLastCell(int cell) const
+bool LyXTabular::isLastCell(idx_type cell) const
 {
 	if (cell + 1 < numberofcells)
 		return false;
@@ -1526,7 +1546,7 @@ bool LyXTabular::isLastCell(int cell) const
 }
 
 
-int LyXTabular::getCellAbove(int cell) const
+LyXTabular::idx_type LyXTabular::getCellAbove(idx_type cell) const
 {
 	if (row_of_cell(cell) > 0)
 		return cell_info[row_of_cell(cell)-1][column_of_cell(cell)].cellno;
@@ -1534,7 +1554,7 @@ int LyXTabular::getCellAbove(int cell) const
 }
 
 
-int LyXTabular::getCellBelow(int cell) const
+LyXTabular::idx_type LyXTabular::getCellBelow(idx_type cell) const
 {
 	if (row_of_cell(cell) + 1 < rows_)
 		return cell_info[row_of_cell(cell)+1][column_of_cell(cell)].cellno;
@@ -1542,9 +1562,9 @@ int LyXTabular::getCellBelow(int cell) const
 }
 
 
-int LyXTabular::getLastCellAbove(int cell) const
+LyXTabular::idx_type LyXTabular::getLastCellAbove(idx_type cell) const
 {
-	if (row_of_cell(cell) <= 0)
+	if (row_of_cell(cell) == 0)
 		return cell;
 	if (!isMultiColumn(cell))
 		return getCellAbove(cell);
@@ -1552,7 +1572,7 @@ int LyXTabular::getLastCellAbove(int cell) const
 }
 
 
-int LyXTabular::getLastCellBelow(int cell) const
+LyXTabular::idx_type LyXTabular::getLastCellBelow(idx_type cell) const
 {
 	if (row_of_cell(cell) + 1 >= rows_)
 		return cell;
@@ -1562,20 +1582,22 @@ int LyXTabular::getLastCellBelow(int cell) const
 }
 
 
-int LyXTabular::getCellNumber(int row, int column) const
+LyXTabular::idx_type LyXTabular::getCellNumber(row_type row,
+                                               col_type column) const
 {
-	BOOST_ASSERT(column >= 0 || column < columns_ || row >= 0 || row < rows_);
+	BOOST_ASSERT(column != npos && column < columns_ &&
+	             row    != npos && row    < rows_);
 	return cell_info[row][column].cellno;
 }
 
 
-void LyXTabular::setUsebox(int cell, BoxType type)
+void LyXTabular::setUsebox(idx_type cell, BoxType type)
 {
 	cellinfo_of_cell(cell).usebox = type;
 }
 
 
-LyXTabular::BoxType LyXTabular::getUsebox(int cell) const
+LyXTabular::BoxType LyXTabular::getUsebox(idx_type cell) const
 {
 	if (column_info[column_of_cell(cell)].p_width.zero() &&
 		!(isMultiColumn(cell) && !cellinfo_of_cell(cell).p_width.zero()))
@@ -1589,7 +1611,8 @@ LyXTabular::BoxType LyXTabular::getUsebox(int cell) const
 ///
 //  This are functions used for the longtable support
 ///
-void LyXTabular::setLTHead(int row, bool flag, ltType const & hd, bool first)
+void LyXTabular::setLTHead(row_type row, bool flag, ltType const & hd,
+                           bool first)
 {
 	if (first) {
 		endfirsthead = hd;
@@ -1603,7 +1626,7 @@ void LyXTabular::setLTHead(int row, bool flag, ltType const & hd, bool first)
 }
 
 
-bool LyXTabular::getRowOfLTHead(int row, ltType & hd) const
+bool LyXTabular::getRowOfLTHead(row_type row, ltType & hd) const
 {
 	hd = endhead;
 	hd.set = haveLTHead();
@@ -1611,7 +1634,7 @@ bool LyXTabular::getRowOfLTHead(int row, ltType & hd) const
 }
 
 
-bool LyXTabular::getRowOfLTFirstHead(int row, ltType & hd) const
+bool LyXTabular::getRowOfLTFirstHead(row_type row, ltType & hd) const
 {
 	hd = endfirsthead;
 	hd.set = haveLTFirstHead();
@@ -1619,7 +1642,8 @@ bool LyXTabular::getRowOfLTFirstHead(int row, ltType & hd) const
 }
 
 
-void LyXTabular::setLTFoot(int row, bool flag, ltType const & fd, bool last)
+void LyXTabular::setLTFoot(row_type row, bool flag, ltType const & fd,
+                           bool last)
 {
 	if (last) {
 		endlastfoot = fd;
@@ -1633,7 +1657,7 @@ void LyXTabular::setLTFoot(int row, bool flag, ltType const & fd, bool last)
 }
 
 
-bool LyXTabular::getRowOfLTFoot(int row, ltType & fd) const
+bool LyXTabular::getRowOfLTFoot(row_type row, ltType & fd) const
 {
 	fd = endfoot;
 	fd.set = haveLTFoot();
@@ -1641,7 +1665,7 @@ bool LyXTabular::getRowOfLTFoot(int row, ltType & fd) const
 }
 
 
-bool LyXTabular::getRowOfLTLastFoot(int row, ltType & fd) const
+bool LyXTabular::getRowOfLTLastFoot(row_type row, ltType & fd) const
 {
 	fd = endlastfoot;
 	fd.set = haveLTLastFoot();
@@ -1649,13 +1673,13 @@ bool LyXTabular::getRowOfLTLastFoot(int row, ltType & fd) const
 }
 
 
-void LyXTabular::setLTNewPage(int row, bool what)
+void LyXTabular::setLTNewPage(row_type row, bool what)
 {
 	row_info[row].newpage = what;
 }
 
 
-bool LyXTabular::getLTNewPage(int row) const
+bool LyXTabular::getLTNewPage(row_type row) const
 {
 	return row_info[row].newpage;
 }
@@ -1663,7 +1687,7 @@ bool LyXTabular::getLTNewPage(int row) const
 
 bool LyXTabular::haveLTHead() const
 {
-	for (int i = 0; i < rows_; ++i)
+	for (row_type i = 0; i < rows_; ++i)
 		if (row_info[i].endhead)
 			return true;
 	return false;
@@ -1674,7 +1698,7 @@ bool LyXTabular::haveLTFirstHead() const
 {
 	if (endfirsthead.empty)
 		return false;
-	for (int i = 0; i < rows_; ++i)
+	for (row_type i = 0; i < rows_; ++i)
 		if (row_info[i].endfirsthead)
 			return true;
 	return false;
@@ -1683,7 +1707,7 @@ bool LyXTabular::haveLTFirstHead() const
 
 bool LyXTabular::haveLTFoot() const
 {
-	for (int i = 0; i < rows_; ++i)
+	for (row_type i = 0; i < rows_; ++i)
 		if (row_info[i].endfoot)
 			return true;
 	return false;
@@ -1694,7 +1718,7 @@ bool LyXTabular::haveLTLastFoot() const
 {
 	if (endlastfoot.empty)
 		return false;
-	for (int i = 0; i < rows_; ++i)
+	for (row_type i = 0; i < rows_; ++i)
 		if (row_info[i].endlastfoot)
 			return true;
 	return false;
@@ -1703,7 +1727,7 @@ bool LyXTabular::haveLTLastFoot() const
 
 // end longtable support functions
 
-void LyXTabular::setAscentOfRow(int row, int height)
+void LyXTabular::setAscentOfRow(row_type row, int height)
 {
 	if (row >= rows_ || row_info[row].ascent_of_row == height)
 		return;
@@ -1711,7 +1735,7 @@ void LyXTabular::setAscentOfRow(int row, int height)
 }
 
 
-void LyXTabular::setDescentOfRow(int row, int height)
+void LyXTabular::setDescentOfRow(row_type row, int height)
 {
 	if (row >= rows_ || row_info[row].descent_of_row == height)
 		return;
@@ -1719,7 +1743,7 @@ void LyXTabular::setDescentOfRow(int row, int height)
 }
 
 
-int LyXTabular::getAscentOfRow(int row) const
+int LyXTabular::getAscentOfRow(row_type row) const
 {
 	if (row >= rows_)
 		return 0;
@@ -1727,7 +1751,7 @@ int LyXTabular::getAscentOfRow(int row) const
 }
 
 
-int LyXTabular::getDescentOfRow(int row) const
+int LyXTabular::getDescentOfRow(row_type row) const
 {
 	BOOST_ASSERT(row < rows_);
 	return row_info[row].descent_of_row;
@@ -1737,14 +1761,14 @@ int LyXTabular::getDescentOfRow(int row) const
 int LyXTabular::getHeightOfTabular() const
 {
 	int height = 0;
-	for (int row = 0; row < rows_; ++row)
+	for (row_type row = 0; row < rows_; ++row)
 		height += getAscentOfRow(row) + getDescentOfRow(row) +
 			getAdditionalHeight(row);
 	return height;
 }
 
 
-bool LyXTabular::isPartOfMultiColumn(int row, int column) const
+bool LyXTabular::isPartOfMultiColumn(row_type row, col_type column) const
 {
 	BOOST_ASSERT(row < rows_);
 	BOOST_ASSERT(column < columns_);
@@ -1752,23 +1776,24 @@ bool LyXTabular::isPartOfMultiColumn(int row, int column) const
 }
 
 
-int LyXTabular::TeXTopHLine(ostream & os, int row) const
+int LyXTabular::TeXTopHLine(ostream & os, row_type row) const
 {
-	BOOST_ASSERT(row >= 0);
+	// FIXME: assert or return 0 as in TeXBottomHLine()?
+	BOOST_ASSERT(row != npos);
 	BOOST_ASSERT(row < rows_);
 
-	int const fcell = getFirstCellInRow(row);
-	int const n = numberOfCellsInRow(fcell) + fcell;
-	int tmp = 0;
+	idx_type const fcell = getFirstCellInRow(row);
+	idx_type const n = numberOfCellsInRow(fcell) + fcell;
+	idx_type tmp = 0;
 
-	for (int i = fcell; i < n; ++i) {
+	for (idx_type i = fcell; i < n; ++i) {
 		if (topLine(i))
 			++tmp;
 	}
 	if (tmp == n - fcell) {
 		os << "\\hline ";
 	} else if (tmp) {
-		for (int i = fcell; i < n; ++i) {
+		for (idx_type i = fcell; i < n; ++i) {
 			if (topLine(i)) {
 				os << "\\cline{"
 				   << column_of_cell(i) + 1
@@ -1785,23 +1810,24 @@ int LyXTabular::TeXTopHLine(ostream & os, int row) const
 }
 
 
-int LyXTabular::TeXBottomHLine(ostream & os, int row) const
+int LyXTabular::TeXBottomHLine(ostream & os, row_type row) const
 {
-	if (row < 0 || row >= rows_)
+	// FIXME: return 0 or assert as in TeXTopHLine()?
+	if (row == npos || row >= rows_)
 		return 0;
 
-	int const fcell = getFirstCellInRow(row);
-	int const n = numberOfCellsInRow(fcell) + fcell;
-	int tmp = 0;
+	idx_type const fcell = getFirstCellInRow(row);
+	idx_type const n = numberOfCellsInRow(fcell) + fcell;
+	idx_type tmp = 0;
 
-	for (int i = fcell; i < n; ++i) {
+	for (idx_type i = fcell; i < n; ++i) {
 		if (bottomLine(i))
 			++tmp;
 	}
 	if (tmp == n - fcell) {
 		os << "\\hline";
 	} else if (tmp) {
-		for (int i = fcell; i < n; ++i) {
+		for (idx_type i = fcell; i < n; ++i) {
 			if (bottomLine(i)) {
 				os << "\\cline{"
 				   << column_of_cell(i) + 1
@@ -1818,7 +1844,7 @@ int LyXTabular::TeXBottomHLine(ostream & os, int row) const
 }
 
 
-int LyXTabular::TeXCellPreamble(ostream & os, int cell) const
+int LyXTabular::TeXCellPreamble(ostream & os, idx_type cell) const
 {
 	int ret = 0;
 
@@ -1908,7 +1934,7 @@ int LyXTabular::TeXCellPreamble(ostream & os, int cell) const
 }
 
 
-int LyXTabular::TeXCellPostamble(ostream & os, int cell) const
+int LyXTabular::TeXCellPostamble(ostream & os, idx_type cell) const
 {
 	int ret = 0;
 
@@ -1943,7 +1969,7 @@ int LyXTabular::TeXLongtableHeaderFooter(ostream & os, Buffer const & buf,
 			os << "\\hline\n";
 			++ret;
 		}
-		for (int i = 0; i < rows_; ++i) {
+		for (row_type i = 0; i < rows_; ++i) {
 			if (row_info[i].endhead) {
 				ret += TeXRow(os, i, buf, runparams);
 			}
@@ -1965,7 +1991,7 @@ int LyXTabular::TeXLongtableHeaderFooter(ostream & os, Buffer const & buf,
 			os << "\\hline\n";
 			++ret;
 		}
-		for (int i = 0; i < rows_; ++i) {
+		for (row_type i = 0; i < rows_; ++i) {
 			if (row_info[i].endfirsthead) {
 				ret += TeXRow(os, i, buf, runparams);
 			}
@@ -1983,7 +2009,7 @@ int LyXTabular::TeXLongtableHeaderFooter(ostream & os, Buffer const & buf,
 			os << "\\hline\n";
 			++ret;
 		}
-		for (int i = 0; i < rows_; ++i) {
+		for (row_type i = 0; i < rows_; ++i) {
 			if (row_info[i].endfoot) {
 				ret += TeXRow(os, i, buf, runparams);
 			}
@@ -2005,7 +2031,7 @@ int LyXTabular::TeXLongtableHeaderFooter(ostream & os, Buffer const & buf,
 			os << "\\hline\n";
 			++ret;
 		}
-		for (int i = 0; i < rows_; ++i) {
+		for (row_type i = 0; i < rows_; ++i) {
 			if (row_info[i].endlastfoot) {
 				ret += TeXRow(os, i, buf, runparams);
 			}
@@ -2021,7 +2047,7 @@ int LyXTabular::TeXLongtableHeaderFooter(ostream & os, Buffer const & buf,
 }
 
 
-bool LyXTabular::isValidRow(int row) const
+bool LyXTabular::isValidRow(row_type row) const
 {
 	if (!is_long_tabular)
 		return true;
@@ -2030,13 +2056,13 @@ bool LyXTabular::isValidRow(int row) const
 }
 
 
-int LyXTabular::TeXRow(ostream & os, int i, Buffer const & buf,
+int LyXTabular::TeXRow(ostream & os, row_type i, Buffer const & buf,
 		       OutputParams const & runparams) const
 {
-	int cell = getCellNumber(i, 0);
+	idx_type cell = getCellNumber(i, 0);
 
 	int ret = TeXTopHLine(os, i);
-	for (int j = 0; j < columns_; ++j) {
+	for (col_type j = 0; j < columns_; ++j) {
 		if (isPartOfMultiColumn(i, j))
 			continue;
 		ret += TeXCellPreamble(os, cell);
@@ -2084,7 +2110,7 @@ int LyXTabular::latex(Buffer const & buf, ostream & os,
 		os << "\\begin{longtable}{";
 	else
 		os << "\\begin{tabular}{";
-	for (int i = 0; i < columns_; ++i) {
+	for (col_type i = 0; i < columns_; ++i) {
 		if (!column_info[i].align_special.empty()) {
 			os << column_info[i].align_special;
 		} else {
@@ -2148,7 +2174,7 @@ int LyXTabular::latex(Buffer const & buf, ostream & os,
 	//+                      the single row and columns (cells)            +
 	//+---------------------------------------------------------------------
 
-	for (int i = 0; i < rows_; ++i) {
+	for (row_type i = 0; i < rows_; ++i) {
 		if (isValidRow(i)) {
 			ret += TeXRow(os, i, buf, runparams);
 			if (is_long_tabular && row_info[i].newpage) {
@@ -2179,7 +2205,7 @@ int LyXTabular::linuxdoc(Buffer const & buf, ostream & os,
 			 const OutputParams & runparams) const
 {
 	os << "<tabular ca=\"";
-	for (int i = 0; i < columns_; ++i) {
+	for (col_type i = 0; i < columns_; ++i) {
 		switch (column_info[i].alignment) {
 		case LYX_ALIGN_LEFT:
 			os << 'l';
@@ -2193,10 +2219,10 @@ int LyXTabular::linuxdoc(Buffer const & buf, ostream & os,
 		}
 	}
 	os << "\">\n";
-	int cell = 0;
+	idx_type cell = 0;
 	int ret = 0;
-	for (int i = 0; i < rows_; ++i) {
-		for (int j = 0; j < columns_; ++j) {
+	for (row_type i = 0; i < rows_; ++i) {
+		for (col_type j = 0; j < columns_; ++j) {
 			if (isPartOfMultiColumn(i, j))
 				continue;
 			shared_ptr<InsetText> inset = getCellInset(cell);
@@ -2217,14 +2243,14 @@ int LyXTabular::linuxdoc(Buffer const & buf, ostream & os,
 }
 
 
-int LyXTabular::docbookRow(Buffer const & buf, ostream & os, int row,
+int LyXTabular::docbookRow(Buffer const & buf, ostream & os, row_type row,
 			   OutputParams const & runparams) const
 {
 	int ret = 0;
-	int cell = getFirstCellInRow(row);
+	idx_type cell = getFirstCellInRow(row);
 
 	os << "<row>\n";
-	for (int j = 0; j < columns_; ++j) {
+	for (col_type j = 0; j < columns_; ++j) {
 		if (isPartOfMultiColumn(row, j))
 			continue;
 
@@ -2281,7 +2307,7 @@ int LyXTabular::docbook(Buffer const & buf, ostream & os,
 	os << "<tgroup cols=\"" << columns_
 	   << "\" colsep=\"1\" rowsep=\"1\">\n";
 
-	for (int i = 0; i < columns_; ++i) {
+	for (col_type i = 0; i < columns_; ++i) {
 		os << "<colspec colname=\"col" << i << "\" align=\"";
 		switch (column_info[i].alignment) {
 		case LYX_ALIGN_LEFT:
@@ -2309,7 +2335,7 @@ int LyXTabular::docbook(Buffer const & buf, ostream & os,
 	if (haveLTHead() || haveLTFirstHead()) {
 		os << "<thead>\n";
 		++ret;
-		for (int i = 0; i < rows_; ++i) {
+		for (row_type i = 0; i < rows_; ++i) {
 			if (row_info[i].endhead || row_info[i].endfirsthead) {
 				ret += docbookRow(buf, os, i, runparams);
 			}
@@ -2321,7 +2347,7 @@ int LyXTabular::docbook(Buffer const & buf, ostream & os,
 	if (haveLTFoot() || haveLTLastFoot()) {
 		os << "<tfoot>\n";
 		++ret;
-		for (int i = 0; i < rows_; ++i) {
+		for (row_type i = 0; i < rows_; ++i) {
 			if (row_info[i].endfoot || row_info[i].endlastfoot) {
 				ret += docbookRow(buf, os, i, runparams);
 			}
@@ -2336,7 +2362,7 @@ int LyXTabular::docbook(Buffer const & buf, ostream & os,
 
 	os << "<tbody>\n";
 	++ret;
-	for (int i = 0; i < rows_; ++i) {
+	for (row_type i = 0; i < rows_; ++i) {
 		if (isValidRow(i)) {
 			ret += docbookRow(buf, os, i, runparams);
 		}
@@ -2354,14 +2380,14 @@ int LyXTabular::docbook(Buffer const & buf, ostream & os,
 }
 
 
-int LyXTabular::asciiTopHLine(ostream & os, int row,
+int LyXTabular::asciiTopHLine(ostream & os, row_type row,
 			      vector<unsigned int> const & clen) const
 {
-	int const fcell = getFirstCellInRow(row);
-	int const n = numberOfCellsInRow(fcell) + fcell;
-	int tmp = 0;
+	idx_type const fcell = getFirstCellInRow(row);
+	idx_type const n = numberOfCellsInRow(fcell) + fcell;
+	idx_type tmp = 0;
 
-	for (int i = fcell; i < n; ++i) {
+	for (idx_type i = fcell; i < n; ++i) {
 		if (topLine(i)) {
 			++tmp;
 			break;
@@ -2371,7 +2397,7 @@ int LyXTabular::asciiTopHLine(ostream & os, int row,
 		return 0;
 
 	unsigned char ch;
-	for (int i = fcell; i < n; ++i) {
+	for (idx_type i = fcell; i < n; ++i) {
 		if (topLine(i)) {
 			if (leftLine(i))
 				os << "+-";
@@ -2382,7 +2408,7 @@ int LyXTabular::asciiTopHLine(ostream & os, int row,
 			os << "  ";
 			ch = ' ';
 		}
-		int column = column_of_cell(i);
+		col_type column = column_of_cell(i);
 		int len = clen[column];
 		while (column < columns_ - 1
 		       && isPartOfMultiColumn(row, ++column))
@@ -2402,14 +2428,14 @@ int LyXTabular::asciiTopHLine(ostream & os, int row,
 }
 
 
-int LyXTabular::asciiBottomHLine(ostream & os, int row,
+int LyXTabular::asciiBottomHLine(ostream & os, row_type row,
 				 vector<unsigned int> const & clen) const
 {
-	int const fcell = getFirstCellInRow(row);
-	int const n = numberOfCellsInRow(fcell) + fcell;
-	int tmp = 0;
+	idx_type const fcell = getFirstCellInRow(row);
+	idx_type const n = numberOfCellsInRow(fcell) + fcell;
+	idx_type tmp = 0;
 
-	for (int i = fcell; i < n; ++i) {
+	for (idx_type i = fcell; i < n; ++i) {
 		if (bottomLine(i)) {
 			++tmp;
 			break;
@@ -2419,7 +2445,7 @@ int LyXTabular::asciiBottomHLine(ostream & os, int row,
 		return 0;
 
 	unsigned char ch;
-	for (int i = fcell; i < n; ++i) {
+	for (idx_type i = fcell; i < n; ++i) {
 		if (bottomLine(i)) {
 			if (leftLine(i))
 				os << "+-";
@@ -2430,7 +2456,7 @@ int LyXTabular::asciiBottomHLine(ostream & os, int row,
 			os << "  ";
 			ch = ' ';
 		}
-		int column = column_of_cell(i);
+		col_type column = column_of_cell(i);
 		int len = clen[column];
 		while (column < columns_ -1
 		       && isPartOfMultiColumn(row, ++column))
@@ -2452,7 +2478,7 @@ int LyXTabular::asciiBottomHLine(ostream & os, int row,
 
 int LyXTabular::asciiPrintCell(Buffer const & buf, ostream & os,
 			       OutputParams const & runparams,
-			       int cell, int row, int column,
+			       idx_type cell, row_type row, col_type column,
 			       vector<unsigned int> const & clen,
 			       bool onlydata) const
 {
@@ -2514,10 +2540,10 @@ int LyXTabular::plaintext(Buffer const & buf, ostream & os,
 
 	if (!onlydata) {
 		// first all non (real) multicolumn cells!
-		for (int j = 0; j < columns_; ++j) {
+		for (col_type j = 0; j < columns_; ++j) {
 			clen[j] = 0;
-			for (int i = 0; i < rows_; ++i) {
-				int cell = getCellNumber(i, j);
+			for (row_type i = 0; i < rows_; ++i) {
+				idx_type cell = getCellNumber(i, j);
 				if (isMultiColumnReal(cell))
 					continue;
 				ostringstream sstr;
@@ -2527,27 +2553,27 @@ int LyXTabular::plaintext(Buffer const & buf, ostream & os,
 			}
 		}
 		// then all (real) multicolumn cells!
-		for (int j = 0; j < columns_; ++j) {
-			for (int i = 0; i < rows_; ++i) {
-				int cell = getCellNumber(i, j);
+		for (col_type j = 0; j < columns_; ++j) {
+			for (row_type i = 0; i < rows_; ++i) {
+				idx_type cell = getCellNumber(i, j);
 				if (!isMultiColumnReal(cell) || isPartOfMultiColumn(i, j))
 					continue;
 				ostringstream sstr;
 				getCellInset(cell)->plaintext(buf, sstr, runparams);
 				int len = int(sstr.str().length());
-				int const n = cells_in_multicolumn(cell);
-				for (int k = j; len > 0 && k < j + n - 1; ++k)
+				idx_type const n = cells_in_multicolumn(cell);
+				for (col_type k = j; len > 0 && k < j + n - 1; ++k)
 					len -= clen[k];
 				if (len > int(clen[j + n - 1]))
 					clen[j + n - 1] = len;
 			}
 		}
 	}
-	int cell = 0;
-	for (int i = 0; i < rows_; ++i) {
+	idx_type cell = 0;
+	for (row_type i = 0; i < rows_; ++i) {
 		if (!onlydata && asciiTopHLine(os, i, clen))
 			os << string(depth * 2, ' ');
-		for (int j = 0; j < columns_; ++j) {
+		for (col_type j = 0; j < columns_; ++j) {
 			if (isPartOfMultiColumn(i, j))
 				continue;
 			if (onlydata && j > 0)
@@ -2567,19 +2593,21 @@ int LyXTabular::plaintext(Buffer const & buf, ostream & os,
 }
 
 
-shared_ptr<InsetText> LyXTabular::getCellInset(int cell) const
+shared_ptr<InsetText> LyXTabular::getCellInset(idx_type cell) const
 {
 	return cell_info[row_of_cell(cell)][column_of_cell(cell)].inset;
 }
 
 
-shared_ptr<InsetText> LyXTabular::getCellInset(int row, int column) const
+shared_ptr<InsetText> LyXTabular::getCellInset(row_type row,
+                                               col_type column) const
 {
 	return cell_info[row][column].inset;
 }
 
 
-int LyXTabular::getCellFromInset(InsetBase const * inset) const
+LyXTabular::idx_type
+LyXTabular::getCellFromInset(InsetBase const * inset) const
 {
 	// is this inset part of the tabular?
 	if (!inset) {
@@ -2587,7 +2615,7 @@ int LyXTabular::getCellFromInset(InsetBase const * inset) const
 		BOOST_ASSERT(false);
 	}
 
-	for (int cell = 0, n = getNumberOfCells(); cell < n; ++cell)
+	for (idx_type cell = 0, n = getNumberOfCells(); cell < n; ++cell)
 		if (getCellInset(cell).get() == inset) {
 			lyxerr[Debug::INSETTEXT] << "LyXTabular::getCellFromInset: "
 				<< "cell=" << cell << endl;
@@ -2610,7 +2638,7 @@ void LyXTabular::validate(LaTeXFeatures & features) const
 		features.require("longtable");
 	if (needRotating())
 		features.require("rotating");
-	for (int cell = 0; cell < numberofcells; ++cell) {
+	for (idx_type cell = 0; cell < numberofcells; ++cell) {
 		if (getVAlignment(cell) != LYX_VALIGN_TOP ||
 		     (!getPWidth(cell).zero() && !isMultiColumn(cell)))
 			features.require("array");
@@ -2622,13 +2650,13 @@ void LyXTabular::validate(LaTeXFeatures & features) const
 void LyXTabular::getLabelList(Buffer const & buffer,
 			      std::vector<string> & list) const
 {
-	for (int i = 0; i < rows_; ++i)
-		for (int j = 0; j < columns_; ++j)
+	for (row_type i = 0; i < rows_; ++i)
+		for (col_type j = 0; j < columns_; ++j)
 			getCellInset(i, j)->getLabelList(buffer, list);
 }
 
 
-LyXTabular::BoxType LyXTabular::useParbox(int cell) const
+LyXTabular::BoxType LyXTabular::useParbox(idx_type cell) const
 {
 	ParagraphList const & parlist = getCellInset(cell)->paragraphs();
 	ParagraphList::const_iterator cit = parlist.begin();
