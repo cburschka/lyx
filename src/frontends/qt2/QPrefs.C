@@ -31,6 +31,7 @@
 #include "ui/QPrefPrinterModule.h"
 #include "ui/QPrefUIModule.h"
 #include "ui/QPrefIdentityModule.h"
+#include "lyx_gui.h"
 #include "QPrefs.h"
 #include "Qt2BC.h"
 #include "lyxrc.h"
@@ -48,6 +49,7 @@
 #include <qcombobox.h>
 #include <qlistbox.h>
 #include <qlabel.h>
+#include <qfontinfo.h>
 #include "qcoloritem.h"
 
 using std::vector;
@@ -345,9 +347,44 @@ void setComboxFont(QComboBox * cb, string const & family, string const & foundry
 			return;
 		}
 	}
+
+	// Bleh, default fonts, and the names couldn't be found. Hack
+	// for bug 1063. Qt makes baby Jesus cry.
+	
+	QFont font;
+
+	if (family == lyx_gui::roman_font_name()) {
+		font.setStyleHint(QFont::Serif);
+		font.setFamily(lyx_gui::roman_font_name().c_str());
+	} else if (family == lyx_gui::sans_font_name()) {
+		font.setStyleHint(QFont::SansSerif);
+		font.setFamily(lyx_gui::sans_font_name().c_str());
+	} else if (family == lyx_gui::typewriter_font_name()) {
+		font.setStyleHint(QFont::TypeWriter);
+		font.setFamily(lyx_gui::typewriter_font_name().c_str());
+	} else {
+		lyxerr << "FAILED to find the default font !"
+			<< foundry << ", " << family << endl;
+		return;
+	}
+
+	QFontInfo info(font);
+	lyxerr << "Apparent font is " << info.family() << endl;
+
+	for (int i = 0; i < cb->count(); ++i) {
+		lyxerr << "Looking at " << fromqstr(cb->text(i)) << endl;
+		if (compare_no_case(cb->text(i).latin1(), info.family().latin1()) == 0) {
+			cb->setCurrentItem(i);
+			return;
+		}
+	}
+
+	lyxerr << "FAILED to find the font !"
+		<< foundry << ", " << family << endl;
 }
 
-}
+} // end namespace anon
+
 
 void QPrefs::update_contents()
 {

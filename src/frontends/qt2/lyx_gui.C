@@ -48,6 +48,7 @@
 #include <qwidget.h>
 #include <qpaintdevicemetrics.h>
 #include <qfont.h>
+#include <qfontinfo.h>
 
 #include <fcntl.h>
 #include <cstdlib>
@@ -252,9 +253,9 @@ string const roman_font_name()
 		return "serif";
 
 	QFont font;
-	font.setFamily("serif");
 	font.setStyleHint(QFont::Serif);
-	return font.family().latin1();
+	font.setFamily("serif");
+	return QFontInfo(font).family().latin1();
 }
 
 
@@ -264,9 +265,9 @@ string const sans_font_name()
 		return "sans";
 
 	QFont font;
-	font.setFamily("sans");
 	font.setStyleHint(QFont::SansSerif);
-	return font.family().latin1();
+	font.setFamily("sans");
+	return QFontInfo(font).family().latin1();
 }
 
 
@@ -276,9 +277,9 @@ string const typewriter_font_name()
 		return "monospace";
 
 	QFont font;
-	font.setFamily("monospace");
 	font.setStyleHint(QFont::TypeWriter);
-	return font.family().latin1();
+	font.setFamily("monospace");
+	return QFontInfo(font).family().latin1();
 }
 
 }; // namespace lyx_gui
