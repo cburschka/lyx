@@ -1,3 +1,8 @@
+2004-04-29  Angus Leeming  <leeming@lyx.org>
+
+	* FormGraphics.C (apply): don't get caught in a loop when mapping
+	the angle into -360 -> 360 degrees.
+
 2004-04-28  Angus Leeming  <leeming@lyx.org>
 
 	* LayoutEngine.C (updateMetrics): respect the visible() flag when

@@ -1,3 +1,8 @@
+2004-04-29  Angus Leeming  <leeming@lyx.org>
+
+	* QGraphics.C (apply): Remove a #warning statement by
+	fixing the code.
+
 2004-04-28  Angus Leeming  <leeming@lyx.org>
 
 	* QLToolbar.[Ch]: rewrite code to derive from a single Toolbar or

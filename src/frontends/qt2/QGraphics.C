@@ -373,11 +373,9 @@ void QGraphics::apply()
 	igp.lyxscale = strToInt(fromqstr(dialog_->displayscale->text()));
 
 	igp.rotateAngle = strToDbl(fromqstr(dialog_->angle->text()));
-#warning Guess what happens if the user enters '1e30' here?
-	while (igp.rotateAngle < -360.0)
-		igp.rotateAngle += 360.0;
-	while (igp.rotateAngle >  360.0)
-		igp.rotateAngle -= 360.0;
+
+	if (std::abs(igp.rotateAngle) > 360.0)
+		igp.rotateAngle -= 360.0 * floor(igp.rotateAngle / 360.0);
 
 	// save the latex name for the origin. If it is the default
 	// then origin_ltx returns ""

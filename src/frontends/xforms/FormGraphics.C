@@ -401,12 +401,9 @@ void FormGraphics::apply()
 	igp.rotateAngle = strToDbl(getString(extra_->input_rotate_angle));
 
 	// map angle into -360 (clock-wise) to +360 (counter clock-wise)
-	while (igp.rotateAngle <= -360.0) {
-		igp.rotateAngle += 360.0;
-	}
-	while (igp.rotateAngle >=  360.0) {
-		igp.rotateAngle -= 360.0;
-	}
+	if (std::abs(igp.rotateAngle) > 360.0)
+		igp.rotateAngle -= 360.0 * floor(igp.rotateAngle / 360.0);
+
 	fl_set_input(extra_->input_rotate_angle, tostr(igp.rotateAngle).c_str());
 
 	int const origin_pos = fl_get_choice(extra_->choice_origin);
