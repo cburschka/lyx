@@ -153,7 +153,7 @@ int InsetNote::latex(Buffer const * buf, ostream & os,
 	if (pt == "Comment")
 		os << "%\n\\begin{comment}\n"; // remember to validate
 	else if (pt == "Greyedout")
-		os << "%\n\\textcolor[gray]{0.8}{";
+		os << "%\n\\color[gray]{0.8}";
 
 	if (pt != "Note")
 		i = inset.latex(buf, os, runparams);
