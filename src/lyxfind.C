@@ -330,7 +330,7 @@ int replaceAll(BufferView * bv,
 	if (!searchAllowed(bv, searchstr) || buf.isReadonly())
 		return 0;
 
-	recordUndo(Undo::ATOMIC, bv->text(), 0, buf.paragraphs().size() - 1);
+	recordUndoFullDocument(bv->cursor());
 
 	PosIterator cur = buf.pos_iterator_begin();
 	PosIterator const end = buf.pos_iterator_end();

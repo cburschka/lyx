@@ -1833,6 +1833,18 @@ RowList::iterator Paragraph::getRow(pos_type pos)
 }
 
 
+size_t Paragraph::row(pos_type pos) const
+{
+	RowList::const_iterator rit = rows.end();
+	RowList::const_iterator const begin = rows.begin();
+
+	for (--rit; rit != begin && rit->pos() > pos; --rit)
+		;
+
+	return rit - begin;
+}
+
+
 unsigned char Paragraph::transformChar(unsigned char c, pos_type pos) const
 {
 	if (!Encodings::is_arabic(c))

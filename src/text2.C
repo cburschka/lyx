@@ -213,38 +213,6 @@ void LyXText::setCharFont(
 }
 
 
-InsetBase * LyXText::getInset() const
-{
-	ParagraphList::iterator pit = cursorPar();
-	pos_type const pos = cursor().pos();
-
-	if (pos < pit->size() && pit->isInset(pos)) {
-		return pit->getInset(pos);
-	}
-	return 0;
-}
-
-
-bool LyXText::toggleInset()
-{
-	InsetBase * inset = getInset();
-	// is there an editable inset at cursor position?
-	if (!isEditableInset(inset))
-		return false;
-	//bv()->owner()->message(inset->editMessage());
-
-	// do we want to keep this?? (JMarc)
-	if (!isHighlyEditableInset(inset))
-		recUndo(cursor().par());
-
-	if (inset->isOpen())
-		inset->close();
-	else
-		inset->open();
-	return true;
-}
-
-
 // used in setLayout
 // Asger is not sure we want to do this...
 void LyXText::makeFontEntriesLayoutSpecific(BufferParams const & params,
@@ -1086,8 +1054,7 @@ void LyXText::insertStringAsLines(string const & str)
 	ParagraphList::iterator pit = cursorPar();
 	pos_type pos = cursor().pos();
 	ParagraphList::iterator endpit = boost::next(cursorPar());
-
-	recUndo(cursor().par());
+	recordUndo(cur, Undo::ATOMIC);
 
 	// only to be sure, should not be neccessary
 	cur.clearSelection();
@@ -1457,10 +1424,11 @@ DispatchResult LyXText::moveLeftIntern(bool front,
 
 DispatchResult LyXText::moveUp()
 {
-	if (cursorPar() == firstPar() && cursorRow() == firstRow())
+	LCursor & cur = bv()->cursor();
+	if (cur.par() == 0 && cursorRow() == firstRow())
 		return DispatchResult(false, FINISHED_UP);
 	cursorUp(false);
-	bv()->cursor().clearSelection();
+	cur.clearSelection();
 	return DispatchResult(true);
 }
 
@@ -1468,7 +1436,7 @@ DispatchResult LyXText::moveUp()
 DispatchResult LyXText::moveDown()
 {
 	LCursor & cur = bv()->cursor();
-	if (cursorPar() == lastPar() && cursorRow() == lastRow())
+	if (cur.par() == cur.lastpar() && cursorRow() == lastRow())
 		return DispatchResult(false, FINISHED_DOWN);
 	cursorDown(false);
 	cur.clearSelection();
@@ -1738,19 +1706,39 @@ ParagraphList & LyXText::paragraphs() const
 
 void LyXText::recUndo(paroffset_type first, paroffset_type last) const
 {
-	recordUndo(Undo::ATOMIC, this, first, last);
+	recordUndo(bv()->cursor(), Undo::ATOMIC, first, last);
 }
 
 
 void LyXText::recUndo(lyx::paroffset_type par) const
 {
-	recordUndo(Undo::ATOMIC, this, par, par);
+	recordUndo(bv()->cursor(), Undo::ATOMIC, par, par);
 }
 
 
 bool LyXText::isInInset() const
 {
 	return in_inset_;
+}
+
+
+bool LyXText::toggleInset()
+{
+	InsetBase * inset = bv()->cursor().nextInset();
+	// is there an editable inset at cursor position?
+	if (!isEditableInset(inset))
+		return false;
+	//bv()->owner()->message(inset->editMessage());
+
+	// do we want to keep this?? (JMarc)
+	if (!isHighlyEditableInset(inset))
+		recUndo(cursor().par());
+
+	if (inset->isOpen())
+		inset->close();
+	else
+		inset->open();
+	return true;
 }
 
 

@@ -685,7 +685,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 			code = InsetOld::SPACE_CODE;
 		break;
 	case LFUN_INSET_DIALOG_SHOW: {
-		InsetBase * inset = view()->getLyXText()->getInset();
+		InsetBase * inset = view()->cursor().nextInset();
 		disable = !inset;
 		if (inset) {
 			code = inset->lyxCode();
@@ -835,14 +835,6 @@ void LyXFunc::dispatch(FuncRequest const & cmd, bool verbose)
 	// we have not done anything wrong yet.
 	errorstat = false;
 	dispatch_buffer.erase();
-
-#ifdef NEW_DISPATCHER
-	// We try do call the most specific dispatcher first:
-	//  1. the lockinginset's dispatch
-	//  2. the bufferview's dispatch
-	//  3. the lyxview's dispatch
-#endif
-
 	selection_possible = false;
 
 	// We cannot use this function here
@@ -1284,7 +1276,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd, bool verbose)
 			break;
 
 		case LFUN_INSET_DIALOG_SHOW: {
-			InsetBase * inset = view()->getLyXText()->getInset();
+			InsetBase * inset = view()->cursor().nextInset();
 			if (inset)
 				inset->dispatch(view()->cursor(), FuncRequest(LFUN_INSET_DIALOG_SHOW));
 			break;
@@ -1443,7 +1435,8 @@ void LyXFunc::dispatch(FuncRequest const & cmd, bool verbose)
 		}
 	}
 
-	view()->owner()->updateLayoutChoice();
+	if (!view()->cursor().inMathed())
+		view()->owner()->updateLayoutChoice();
 
 	if (view()->available()) {
 		view()->fitCursor();
@@ -1456,7 +1449,8 @@ void LyXFunc::dispatch(FuncRequest const & cmd, bool verbose)
 			view()->buffer()->markDirty();
 	}
 
-	sendDispatchMessage(getMessage(), cmd, verbose);
+	if (!view()->cursor().inMathed())
+		sendDispatchMessage(getMessage(), cmd, verbose);
 }
 
 

@@ -329,6 +329,8 @@ public:
 
 	///
 	RowList::iterator getRow(lyx::pos_type pos);
+	///
+	size_t row(lyx::pos_type pos) const;
 
 	///
 	InsetList insetlist;

@@ -1077,12 +1077,12 @@ MathGridInset::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 			return DispatchResult(true, FINISHED);
 
 		case LFUN_CELL_SPLIT:
-			//recordUndo(cur, Undo::ATOMIC);
+			////recordUndo(cur, Undo::ATOMIC);
 			splitCell(cur);
 			return DispatchResult(true, FINISHED);
 
 		case LFUN_BREAKLINE: {
-			//recordUndo(cur, Undo::INSERT);
+			////recordUndo(cur, Undo::INSERT);
 			row_type const r = cur.row();
 			addRow(r);
 

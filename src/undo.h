@@ -20,8 +20,8 @@
 #include "support/types.h"
 
 class LCursor;
-class LyXText;
 class BufferView;
+
 
 /**
  * These are the elements put on the undo stack. Each object
@@ -30,61 +30,51 @@ class BufferView;
  */
 class Undo {
 public:
-	/**
-	 * The undo kinds are used to combine consecutive undo recordings
-	 * of the same kind.
-	 */
+	/// This is used to combine consecutive undo recordings of the same kind.
 	enum undo_kind {
 		/**
 		 * Insert something - these will combine to one big chunk
 		 * when many inserts come after each other.
 		 */
 		INSERT,
-
 		/**
 		 * Delete something - these will combine to one big chunk
 		 * when many deletes come after each other.
 		 */
 		DELETE,
-
 		/// Atomic - each of these will have its own entry in the stack
 		ATOMIC
 	};
+
 	/// constructor
 	Undo(undo_kind kind, int text, int index,
 		int first_par, int end_par, int cursor_par, int cursor_pos);
 
+public:
 	/// which kind of operation are we recording for?
 	undo_kind kind;
-
 	/// hosting LyXText counted from buffer begin
 	int text;
-
 	/// cell in a tabular or similar
 	int index;
-
 	/// offset to the first paragraph in the paragraph list
 	int first_par;
-
-	/// offset to the last paragraph from the end of parargraph list
+	/// offset to the last paragraph from the end of paragraph list
 	int end_par;
-
 	/// offset to the first paragraph in the paragraph list
 	int cursor_par;
-
 	/// the position of the cursor in the hosting paragraph
 	int cursor_pos;
-
 	/// the contents of the paragraphs saved
 	ParagraphList pars;
 };
 
 
 /// this will undo the last action - returns false if no undo possible
-bool textUndo(BufferView *);
+bool textUndo(BufferView &);
 
 /// this will redo the last undo - returns false if no redo possible
-bool textRedo(BufferView *);
+bool textRedo(BufferView &);
 
 /// makes sure the next operation will be stored
 void finishUndo();
@@ -95,23 +85,26 @@ void freezeUndo();
 /// track undos again
 void unFreezeUndo();
 
+
 /**
- * Record undo information - call with the first paragraph that will be changed
- * and the last paragraph that will be changed. So we give an inclusive
- * range.
+ * Record undo information - call with the current cursor and the 'other
+ * end' of the range of changed  paragraphs.  So we give an inclusive range.
  * This is called before you make the changes to the paragraph, and it
  * will record the original information of the paragraphs in the undo stack.
  */
-void recordUndo(Undo::undo_kind kind,
-	LyXText const * text, lyx::paroffset_type first, lyx::paroffset_type last);
 
-/// convienience: prepare undo when change in a single paragraph
-void recordUndo(Undo::undo_kind kind,
-	LyXText const * text, lyx::paroffset_type par);
+/// the common case: prepare undo for an arbitrary range
+void recordUndo(LCursor & cur, Undo::undo_kind kind,
+	lyx::paroffset_type from, lyx::paroffset_type to);
 
-/// convienience: prepare undo for the paragraph that contains the cursor
-void recordUndo(BufferView *, Undo::undo_kind kind);
-void recordUndo(LCursor &, Undo::undo_kind kind);
+/// convienience: prepare undo for the range between 'from' and cursor.
+void recordUndo(LCursor & cur, Undo::undo_kind kind, lyx::paroffset_type from);
+
+/// convienience: prepare undo for the single paragraph containing the cursor
+void recordUndo(LCursor & cur, Undo::undo_kind kind);
+
+/// convienience: prepare undo for the single paragraph containing the cursor
+void recordUndoFullDocument(LCursor & cur);
 
 /// are we avoiding tracking undos currently?
 extern bool undo_frozen;

@@ -161,12 +161,9 @@ public:
 	void getWord(CursorSlice & from, CursorSlice & to, lyx::word_location const);
 	/// just selects the word the cursor is in
 	void selectWord(lyx::word_location loc);
-	/// returns the inset at cursor (if it exists), 0 otherwise
-	InsetBase * getInset() const;
 
 	/// accept selected change
 	void acceptChange();
-
 	/// reject selected change
 	void rejectChange();
 
@@ -322,12 +319,6 @@ public:
 	ParagraphList & paragraphs() const;
 	/// return true if this is owned by an inset.
 	bool isInInset() const;
-	/// the first of our paragraphs
-	ParagraphList::iterator firstPar() const;
-	/// the last of our paragraphs
-	ParagraphList::iterator lastPar() const;
-	/// one past the last of our paragraphs
-	ParagraphList::iterator endPar() const;
 	
 	/// return first row of text
 	RowList::iterator firstRow() const;
@@ -387,9 +378,9 @@ public:
 	///
 	int cursorY(CursorSlice const & cursor) const;
 
-	/// the topmost cursor slice
+	/// the current cursor slice
 	CursorSlice & cursor();
-	/// the topmost cursor slice
+	/// the current cursor slice
 	CursorSlice const & cursor() const;
 
 	friend class LyXScreen;
@@ -460,16 +451,10 @@ private:
 	/// sets row.end to the pos value *after* which a row should break.
 	/// for example, the pos after which isNewLine(pos) == true
 	void rowBreakPoint(ParagraphList::iterator pit, Row & row) const;
-
 	/// sets row.witdh to the minimum space a row needs on the screen in pixel
 	void fill(ParagraphList::iterator pit, Row & row, int workwidth) const;
-
-	/**
-	 * returns the minimum space a manual label needs on the
-	 * screen in pixels
-	 */
+	/// the minimum space a manual label needs on the screen in pixels
 	int labelFill(ParagraphList::iterator pit, Row const & row) const;
-
 	/// FIXME
 	int labelEnd(ParagraphList::iterator pit) const;
 
@@ -482,7 +467,7 @@ private:
 };
 
 /// return the default height of a row in pixels, considering font zoom
-extern int defaultRowHeight();
+int defaultRowHeight();
 
 ///
 std::string expandLabel(LyXTextClass const & textclass,

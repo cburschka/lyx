@@ -803,7 +803,7 @@ MathHullInset::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 		case LFUN_MATH_NUMBER:
 			//lyxerr << "toggling all numbers" << endl;
 			if (display()) {
-				//recordUndo(cur, Undo::INSERT);
+				////recordUndo(cur, Undo::INSERT);
 				bool old = numberedType();
 				if (type_ == "multline")
 					numbered(nrows() - 1, !old);
@@ -817,7 +817,7 @@ MathHullInset::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 		case LFUN_MATH_NONUMBER:
 			if (display()) {
 				row_type r = (type_ == "multline") ? nrows() - 1 : cur.row();
-				//recordUndo(cur, Undo::INSERT);
+				////recordUndo(cur, Undo::INSERT);
 				bool old = numbered(r);
 				//cur.bv()->owner()->message(old ? _("No number") : _("Number"));
 				numbered(r, !old);
@@ -969,7 +969,7 @@ void MathHullInset::handleFont
 {
 	// this whole function is a hack and won't work for incremental font
 	// changes...
-	recordUndo(cur, Undo::ATOMIC);
+	//recordUndo(cur, Undo::ATOMIC);
 
 	if (cur.inset()->asMathInset()->name() == font)
 		cur.handleFont(font);
@@ -982,7 +982,7 @@ void MathHullInset::handleFont
 
 void MathHullInset::handleFont2(LCursor & cur, string const & arg)
 {
-	recordUndo(cur, Undo::ATOMIC);
+	//recordUndo(cur, Undo::ATOMIC);
 	LyXFont font;
 	bool b;
 	bv_funcs::string2font(arg, font, b);

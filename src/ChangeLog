@@ -1,3 +1,20 @@
+
+2004-02-03  André Pönitz  <poenitz@gmx.net>
+
+	* BufferView.C:
+	* cursor.[Ch]: some additional asserts
+
+	* undo.[Ch]: remove LyXText dependency in interface
+
+	* lyxfunc.C: adjust
+
+	* lyxtext.h (firstPar, lastPar): remove dead functions 
+
+	* text.C:
+	* text2.C:
+	* text3.C:
+	* paragraph.[Ch]: adjust
+
 2004-02-03  Alfredo Braunstein  <abraunst@lyx.org>
 
 	* lyxfind.C (find): fix argument order in call to ::find

@@ -482,13 +482,21 @@ LyXText * LCursor::text() const
 
 Paragraph & LCursor::paragraph()
 {
+	BOOST_ASSERT(!inMathed());
 	return current_ ? current().paragraph() : *bv_->text()->getPar(par());
 }
 
 
 Paragraph const & LCursor::paragraph() const
 {
+	BOOST_ASSERT(!inMathed());
 	return current_ ? current().paragraph() : *bv_->text()->getPar(par());
+}
+
+
+LCursor::par_type LCursor::lastpar() const
+{
+	return inMathed() ? 0 : text()->paragraphs().size() - 1;
 }
 
 
@@ -496,6 +504,18 @@ LCursor::pos_type LCursor::lastpos() const
 {
 	InsetBase * inset = current().inset();
 	return inset && inset->asMathInset() ? cell().size() : paragraph().size();
+}
+
+
+LCursor::row_type LCursor::crow() const
+{
+	return paragraph().row(pos());
+}
+
+
+LCursor::row_type LCursor::lastcrow() const
+{
+	return paragraph().rows.size();
 }
 
 
@@ -1096,9 +1116,8 @@ bool LCursor::erase()
 	}
 
 	// delete empty cells if possible
-#warning FIXME
-	//if (cell().empty() && inset()->idxDelete(idx()))
-	//		return true;
+	if (pos() == lastpos() && inset()->idxDelete(idx()))
+		return true;
 
 	// special behaviour when in last position of cell
 	if (pos() == lastpos()) {
@@ -1789,3 +1808,26 @@ bool LCursor::inMathed() const
 {
 	return formula();
 }
+
+
+InsetBase * LCursor::nextInset()
+{
+	if (pos() == lastpos())
+		return 0;
+	if (inMathed()) 
+		return nextAtom().nucleus();
+	Paragraph & par = paragraph();
+	return par.isInset(pos()) ? par.getInset(pos()) : 0;
+}
+
+
+InsetBase * LCursor::prevInset()
+{
+	if (pos() == 0)
+		return 0;
+	if (inMathed()) 
+		return prevAtom().nucleus();
+	Paragraph & par = paragraph();
+	return par.isInset(pos() - 1) ? par.getInset(pos() - 1) : 0;
+}
+

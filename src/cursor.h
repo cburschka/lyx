@@ -137,7 +137,7 @@ public:
 	//
 	// access to the 'current' cursor slice
 	//
-	/// the current inset
+	/// the containing inset
 	InsetBase * inset() const { return current().inset(); }
 	/// return the cell of the inset this cursor is in
 	idx_type idx() const { return current().idx(); }
@@ -149,12 +149,19 @@ public:
 	par_type par() const { return current().par(); }
 	/// return the paragraph this cursor is in
 	par_type & par() { return current().par(); }
+	/// return the last possible paragraph in this inset
+	par_type lastpar() const;
 	/// return the position within the paragraph
 	pos_type pos() const { return current().pos(); }
 	/// return the position within the paragraph
 	pos_type & pos() { return current().pos(); }
 	/// return the last position within the paragraph
 	pos_type lastpos() const;
+	/// return the display row of the cursor with in the current par
+	row_type crow() const;
+	/// return the display row of the cursor with in the current par
+	row_type lastcrow() const;
+
 	/// return the number of embedded cells
 	size_t nargs() const;
 	/// return the number of embedded cells
@@ -165,6 +172,10 @@ public:
 	row_type row() const;
 	/// return the grid row of the current cell
 	col_type col() const;
+	/// the inset just behind the cursor
+	InsetBase * nextInset();
+	/// the inset just in front of the cursor
+	InsetBase * prevInset();
 
 	//
 	// math-specific part

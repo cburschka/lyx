@@ -333,7 +333,7 @@ void BufferView::undo()
 
 	owner()->message(_("Undo"));
 	cursor().clearSelection();
-	if (!textUndo(this))
+	if (!textUndo(*this))
 		owner()->message(_("No further undo information"));
 	update();
 	switchKeyMap();
@@ -347,7 +347,7 @@ void BufferView::redo()
 
 	owner()->message(_("Redo"));
 	cursor().clearSelection();
-	if (!textRedo(this))
+	if (!textRedo(*this))
 		owner()->message(_("No further redo information"));
 	update();
 	switchKeyMap();

@@ -24,8 +24,6 @@
 #include "lyxtext.h"
 #include "paragraph.h"
 
-#include "insets/updatableinset.h" // for dynamic_cast<UpdatableInset *>
-
 using lyx::paroffset_type;
 
 
@@ -96,12 +94,17 @@ ParIterator num2pit(Buffer & buf, int num)
 
 
 void recordUndo(Undo::undo_kind kind,
-	LyXText * text, paroffset_type first_par, paroffset_type last_par,
+	LCursor & cur, paroffset_type first_par, paroffset_type last_par,
 	limited_stack<Undo> & stack)
 {
-	Buffer & buf = *text->bv()->buffer();
+	if (first_par > last_par) {
+		paroffset_type t = first_par;
+		first_par = last_par;
+		last_par = t;
+	}
 
-	int const end_par = text->paragraphs().size() - last_par;
+	Buffer & buf = *cur.bv().buffer();
+	int const end_par = cur.lastpar() + 1 - last_par;
 
 	// Undo::ATOMIC are always recorded (no overlapping there).
 	// overlapping only with insert and delete inside one paragraph:
@@ -120,9 +123,11 @@ void recordUndo(Undo::undo_kind kind,
 
 	// make and push the Undo entry
 	int textnum;
+	LyXText * text = cur.text();
+	BOOST_ASSERT(text); // not in mathed (yet)
 	ParIterator pit = text2pit(buf, text, textnum);
 	stack.push(Undo(kind, textnum, pit.index(),
-		first_par, end_par, text->cursor().par(), text->cursor().pos()));
+		first_par, end_par, cur.par(), cur.pos()));
 	//lyxerr << "undo record: " << stack.top() << std::endl;
 
 	// record the relevant paragraphs
@@ -144,9 +149,9 @@ void recordUndo(Undo::undo_kind kind,
 
 
 // returns false if no undo possible
-bool performUndoOrRedo(BufferView * bv, Undo const & undo)
+bool performUndoOrRedo(BufferView & bv, Undo const & undo)
 {
-	Buffer & buf = *bv->buffer();
+	Buffer & buf = *bv.buffer();
 	lyxerr << "undo, performing: " << undo << std::endl;
 	ParIterator pit = num2pit(buf, undo.text);
 	LyXText * text = pit.text(buf);
@@ -185,7 +190,7 @@ bool performUndoOrRedo(BufferView * bv, Undo const & undo)
 
 	ParIterator pit2 = num2pit(buf, undo.text);
 	advance(pit2, undo.cursor_par);
-	bv->setCursor(pit2, undo.cursor_pos);
+	bv.setCursor(pit2, undo.cursor_pos);
 
 	finishUndo();
 	return true;
@@ -193,10 +198,10 @@ bool performUndoOrRedo(BufferView * bv, Undo const & undo)
 
 
 // returns false if no undo possible
-bool textUndoOrRedo(BufferView * bv,
+bool textUndoOrRedo(BufferView & bv,
 	limited_stack<Undo> & stack, limited_stack<Undo> & otherstack)
 {
-	Buffer & buf = *bv->buffer();
+	Buffer & buf = *bv.buffer();
 	if (stack.empty()) {
 		// nothing to do
 		finishUndo();
@@ -219,8 +224,8 @@ bool textUndoOrRedo(BufferView * bv,
 			advance(last, plist.size() - undo.end_par + 1);
 			otherstack.top().pars.insert(otherstack.top().pars.begin(), first, last);
 		}
-		otherstack.top().cursor_pos = bv->cursor().pos();
-		otherstack.top().cursor_par = bv->cursor().par();
+		otherstack.top().cursor_pos = bv.cursor().pos();
+		otherstack.top().cursor_par = bv.cursor().par();
 		lyxerr << " undo other: " << otherstack.top() << std::endl;
 	}
 
@@ -254,44 +259,52 @@ void finishUndo()
 }
 
 
-bool textUndo(BufferView * bv)
+bool textUndo(BufferView & bv)
 {
-	return textUndoOrRedo(bv, bv->buffer()->undostack(),
-			      bv->buffer()->redostack());
+	return textUndoOrRedo(bv, bv.buffer()->undostack(),
+			      bv.buffer()->redostack());
 }
 
 
-bool textRedo(BufferView * bv)
+bool textRedo(BufferView & bv)
 {
-	return textUndoOrRedo(bv, bv->buffer()->redostack(),
-			      bv->buffer()->undostack());
+	return textUndoOrRedo(bv, bv.buffer()->redostack(),
+			      bv.buffer()->undostack());
 }
 
 
 void recordUndo(Undo::undo_kind kind,
-	LyXText const * text, paroffset_type first, paroffset_type last)
+	LCursor & cur, paroffset_type first, paroffset_type last)
 {
 	if (undo_frozen)
 		return;
-	Buffer * buf = text->bv()->buffer();
-	recordUndo(kind, const_cast<LyXText *>(text), first, last, buf->undostack());
+	Buffer * buf = cur.bv().buffer();
+	recordUndo(kind, cur, first, last, buf->undostack());
 	buf->redostack().clear();
-}
-
-
-void recordUndo(Undo::undo_kind kind, LyXText const * text, paroffset_type par)
-{
-	recordUndo(kind, text, par, par);
-}
-
-
-void recordUndo(BufferView * bv, Undo::undo_kind kind)
-{
-	recordUndo(bv->cursor(), kind);
 }
 
 
 void recordUndo(LCursor & cur, Undo::undo_kind kind)
 {
-	recordUndo(kind, cur.bv().text(), cur.bv().text()->cursor().par());
+	recordUndo(kind, cur, cur.par(), cur.par());
+}
+
+
+void recordUndo(LCursor & cur, Undo::undo_kind kind, paroffset_type from)
+{
+	recordUndo(kind, cur, cur.par(), from);
+}
+
+
+void recordUndo(LCursor & cur, Undo::undo_kind kind,
+	paroffset_type from, paroffset_type to)
+{
+	recordUndo(kind, cur, from, to);
+}
+
+
+void recordUndoFullDocument(LCursor &)
+{
+	//recordUndo(Undo::ATOMIC,
+	//	cur, 0, cur.bv().text()->paragraphs().size() - 1);
 }

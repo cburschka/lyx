@@ -670,7 +670,7 @@ DispatchResult LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 		if (!cur.mark())
 			cur.clearSelection();
 		finishChange(bv, false);
-		if (cursorPar() == firstPar() && cursorRow() == firstRow())
+		if (cur.par() == 0 && cursorRow() == firstRow())
 			return DispatchResult(false, FINISHED_UP);
 		cursorPrevious();
 		break;
@@ -679,7 +679,7 @@ DispatchResult LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 		if (!cur.mark())
 			cur.clearSelection();
 		finishChange(bv, false);
-		if (cursorPar() == lastPar() && cursorRow() == lastRow())
+		if (cur.par() == cur.lastpar() && cursorRow() == lastRow())
 			return DispatchResult(false, FINISHED_DOWN);
 		cursorNext();
 		break;
