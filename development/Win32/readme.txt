@@ -9,8 +9,8 @@ To compile using MicroSoft Visual Studio 2003.NET, do this:
 3) Apply the win32_kludge.diff using GNU patch. Download from
    http://gnuwin32.sourceforge.net/packages/patch.htm
    and type "patch -p0 < development\win32\win32_kludge.diff"
-   in cmd box with current working directory right outside
-   lyx-devel
+   in cmd box with current working directory lyx-devel. 
+   Make sure that patch is in your path. (c:\program files\gnuwin32\bin)
 4) Open the development\win32\lyx.sln file in Visual Studio,
    compile and run. You can probably also use the free version
    of Microsoft's compiler, but I haven't tried that.

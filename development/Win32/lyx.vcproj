@@ -3808,23 +3808,6 @@
 						</FileConfiguration>
 					</File>
 					<File
-						RelativePath="..\..\src\frontends\qt2\QToc.h">
-						<FileConfiguration
-							Name="Debug|Win32">
-							<Tool
-								Name="VCCustomBuildTool"
-								CommandLine=""
-								Outputs=""/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="Release|Win32">
-							<Tool
-								Name="VCCustomBuildTool"
-								CommandLine=""
-								Outputs=""/>
-						</FileConfiguration>
-					</File>
-					<File
 						RelativePath="..\..\src\frontends\qt2\QTocDialog.C">
 						<FileConfiguration
 							Name="Debug|Win32">
@@ -3852,23 +3835,6 @@
 						</FileConfiguration>
 					</File>
 					<File
-						RelativePath="..\..\src\frontends\qt2\qtTimeout.h">
-						<FileConfiguration
-							Name="Debug|Win32">
-							<Tool
-								Name="VCCustomBuildTool"
-								CommandLine=""
-								Outputs=""/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="Release|Win32">
-							<Tool
-								Name="VCCustomBuildTool"
-								CommandLine=""
-								Outputs=""/>
-						</FileConfiguration>
-					</File>
-					<File
 						RelativePath="..\..\src\frontends\qt2\QtView.C">
 						<FileConfiguration
 							Name="Debug|Win32">
@@ -3879,23 +3845,6 @@
 					</File>
 					<File
 						RelativePath="..\..\src\frontends\qt2\Qurl.c">
-					</File>
-					<File
-						RelativePath="..\..\src\frontends\qt2\QURL.h">
-						<FileConfiguration
-							Name="Debug|Win32">
-							<Tool
-								Name="VCCustomBuildTool"
-								CommandLine=""
-								Outputs=""/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="Release|Win32">
-							<Tool
-								Name="VCCustomBuildTool"
-								CommandLine=""
-								Outputs=""/>
-						</FileConfiguration>
 					</File>
 					<File
 						RelativePath="..\..\src\frontends\qt2\QURLDialog.C">
@@ -3916,23 +3865,6 @@
 						</FileConfiguration>
 					</File>
 					<File
-						RelativePath="..\..\src\frontends\qt2\QVSpace.h">
-						<FileConfiguration
-							Name="Debug|Win32">
-							<Tool
-								Name="VCCustomBuildTool"
-								CommandLine=""
-								Outputs=""/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="Release|Win32">
-							<Tool
-								Name="VCCustomBuildTool"
-								CommandLine=""
-								Outputs=""/>
-						</FileConfiguration>
-					</File>
-					<File
 						RelativePath="..\..\src\frontends\qt2\QVSpaceDialog.C">
 						<FileConfiguration
 							Name="Debug|Win32">
@@ -3948,23 +3880,6 @@
 							<Tool
 								Name="VCCLCompilerTool"
 								CompileAs="2"/>
-						</FileConfiguration>
-					</File>
-					<File
-						RelativePath="..\..\src\frontends\qt2\QWorkArea.h">
-						<FileConfiguration
-							Name="Debug|Win32">
-							<Tool
-								Name="VCCustomBuildTool"
-								CommandLine=""
-								Outputs=""/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="Release|Win32">
-							<Tool
-								Name="VCCustomBuildTool"
-								CommandLine=""
-								Outputs=""/>
 						</FileConfiguration>
 					</File>
 					<File
@@ -8327,6 +8242,25 @@
 							</FileConfiguration>
 						</File>
 						<File
+							RelativePath="..\..\src\frontends\qt2\QToc.h">
+							<FileConfiguration
+								Name="Debug|Win32">
+								<Tool
+									Name="VCCustomBuildTool"
+									CommandLine="%QTDIR%\bin\moc -o $(InputDir)moc\$(InputName)_moc.C $(InputPath)
+"
+									Outputs="$(InputDir)moc\$(InputName)_moc.C"/>
+							</FileConfiguration>
+							<FileConfiguration
+								Name="Release|Win32">
+								<Tool
+									Name="VCCustomBuildTool"
+									CommandLine="%QTDIR%\bin\moc -o $(InputDir)moc\$(InputName)_moc.C $(InputPath)
+"
+									Outputs="$(InputDir)moc\$(InputName)_moc.C"/>
+							</FileConfiguration>
+						</File>
+						<File
 							RelativePath="..\..\src\frontends\qt2\QTocDialog.h">
 							<FileConfiguration
 								Name="Debug|Win32">
@@ -8365,7 +8299,45 @@
 							</FileConfiguration>
 						</File>
 						<File
+							RelativePath="..\..\src\frontends\qt2\qtTimeout.h">
+							<FileConfiguration
+								Name="Debug|Win32">
+								<Tool
+									Name="VCCustomBuildTool"
+									CommandLine="%QTDIR%\bin\moc -o $(InputDir)moc\$(InputName)_moc.C $(InputPath)
+"
+									Outputs="$(InputDir)moc\$(InputName)_moc.C"/>
+							</FileConfiguration>
+							<FileConfiguration
+								Name="Release|Win32">
+								<Tool
+									Name="VCCustomBuildTool"
+									CommandLine="%QTDIR%\bin\moc -o $(InputDir)moc\$(InputName)_moc.C $(InputPath)
+"
+									Outputs="$(InputDir)moc\$(InputName)_moc.C"/>
+							</FileConfiguration>
+						</File>
+						<File
 							RelativePath="..\..\src\frontends\qt2\QtView.h">
+							<FileConfiguration
+								Name="Debug|Win32">
+								<Tool
+									Name="VCCustomBuildTool"
+									CommandLine="%QTDIR%\bin\moc -o $(InputDir)moc\$(InputName)_moc.C $(InputPath)
+"
+									Outputs="$(InputDir)moc\$(InputName)_moc.C"/>
+							</FileConfiguration>
+							<FileConfiguration
+								Name="Release|Win32">
+								<Tool
+									Name="VCCustomBuildTool"
+									CommandLine="%QTDIR%\bin\moc -o $(InputDir)moc\$(InputName)_moc.C $(InputPath)
+"
+									Outputs="$(InputDir)moc\$(InputName)_moc.C"/>
+							</FileConfiguration>
+						</File>
+						<File
+							RelativePath="..\..\src\frontends\qt2\QURL.h">
 							<FileConfiguration
 								Name="Debug|Win32">
 								<Tool
@@ -8403,7 +8375,45 @@
 							</FileConfiguration>
 						</File>
 						<File
+							RelativePath="..\..\src\frontends\qt2\QVSpace.h">
+							<FileConfiguration
+								Name="Debug|Win32">
+								<Tool
+									Name="VCCustomBuildTool"
+									CommandLine="%QTDIR%\bin\moc -o $(InputDir)moc\$(InputName)_moc.C $(InputPath)
+"
+									Outputs="$(InputDir)moc\$(InputName)_moc.C"/>
+							</FileConfiguration>
+							<FileConfiguration
+								Name="Release|Win32">
+								<Tool
+									Name="VCCustomBuildTool"
+									CommandLine="%QTDIR%\bin\moc -o $(InputDir)moc\$(InputName)_moc.C $(InputPath)
+"
+									Outputs="$(InputDir)moc\$(InputName)_moc.C"/>
+							</FileConfiguration>
+						</File>
+						<File
 							RelativePath="..\..\src\frontends\qt2\QVSpaceDialog.h">
+							<FileConfiguration
+								Name="Debug|Win32">
+								<Tool
+									Name="VCCustomBuildTool"
+									CommandLine="%QTDIR%\bin\moc -o $(InputDir)moc\$(InputName)_moc.C $(InputPath)
+"
+									Outputs="$(InputDir)moc\$(InputName)_moc.C"/>
+							</FileConfiguration>
+							<FileConfiguration
+								Name="Release|Win32">
+								<Tool
+									Name="VCCustomBuildTool"
+									CommandLine="%QTDIR%\bin\moc -o $(InputDir)moc\$(InputName)_moc.C $(InputPath)
+"
+									Outputs="$(InputDir)moc\$(InputName)_moc.C"/>
+							</FileConfiguration>
+						</File>
+						<File
+							RelativePath="..\..\src\frontends\qt2\QWorkArea.h">
 							<FileConfiguration
 								Name="Debug|Win32">
 								<Tool
@@ -8467,9 +8477,6 @@
 							RelativePath="..\..\src\frontends\qt2\moc\BulletsModule_moc.C">
 						</File>
 						<File
-							RelativePath="..\..\src\frontends\qt2\moc\checkedwidgets_moc.C">
-						</File>
-						<File
 							RelativePath="..\..\src\frontends\qt2\moc\emptytable_moc.C">
 						</File>
 						<File
@@ -8480,9 +8487,6 @@
 						</File>
 						<File
 							RelativePath="..\..\src\frontends\qt2\moc\iconpalette_moc.C">
-						</File>
-						<File
-							RelativePath="..\..\src\frontends\qt2\moc\lcolorcache_moc.C">
 						</File>
 						<File
 							RelativePath="..\..\src\frontends\qt2\moc\lengthcombo_moc.C">
@@ -8504,13 +8508,7 @@
 							RelativePath="..\..\src\frontends\qt2\moc\panelstack_moc.C">
 						</File>
 						<File
-							RelativePath="..\..\src\frontends\qt2\moc\QAbout_moc.C">
-						</File>
-						<File
 							RelativePath="..\..\src\frontends\qt2\moc\QAboutDialog_moc.C">
-						</File>
-						<File
-							RelativePath="..\..\src\frontends\qt2\moc\QBibitem_moc.C">
 						</File>
 						<File
 							RelativePath="..\..\src\frontends\qt2\moc\QBibitemDialog_moc.C">
@@ -8522,13 +8520,7 @@
 							RelativePath="..\..\src\frontends\qt2\moc\QBibtexDialog_moc.C">
 						</File>
 						<File
-							RelativePath="..\..\src\frontends\qt2\moc\QBox_moc.C">
-						</File>
-						<File
 							RelativePath="..\..\src\frontends\qt2\moc\QBoxDialog_moc.C">
-						</File>
-						<File
-							RelativePath="..\..\src\frontends\qt2\moc\QBranch_moc.C">
 						</File>
 						<File
 							RelativePath="..\..\src\frontends\qt2\moc\QBranchDialog_moc.C">
@@ -8537,25 +8529,13 @@
 							RelativePath="..\..\src\frontends\qt2\moc\QBrowseBox_moc.C">
 						</File>
 						<File
-							RelativePath="..\..\src\frontends\qt2\moc\QChanges_moc.C">
-						</File>
-						<File
 							RelativePath="..\..\src\frontends\qt2\moc\QChangesDialog_moc.C">
-						</File>
-						<File
-							RelativePath="..\..\src\frontends\qt2\moc\QCharacter_moc.C">
 						</File>
 						<File
 							RelativePath="..\..\src\frontends\qt2\moc\QCharacterDialog_moc.C">
 						</File>
 						<File
-							RelativePath="..\..\src\frontends\qt2\moc\QCitation_moc.C">
-						</File>
-						<File
 							RelativePath="..\..\src\frontends\qt2\moc\QCitationDialog_moc.C">
-						</File>
-						<File
-							RelativePath="..\..\src\frontends\qt2\moc\qcoloritem_moc.C">
 						</File>
 						<File
 							RelativePath="..\..\src\frontends\qt2\moc\QCommandBuffer_moc.C">
@@ -8573,40 +8553,19 @@
 							RelativePath="..\..\src\frontends\qt2\moc\QDialogView_moc.C">
 						</File>
 						<File
-							RelativePath="..\..\src\frontends\qt2\moc\QDocument_moc.C">
-						</File>
-						<File
 							RelativePath="..\..\src\frontends\qt2\moc\QDocumentDialog_moc.C">
-						</File>
-						<File
-							RelativePath="..\..\src\frontends\qt2\moc\QErrorList_moc.C">
 						</File>
 						<File
 							RelativePath="..\..\src\frontends\qt2\moc\QErrorListDialog_moc.C">
 						</File>
 						<File
-							RelativePath="..\..\src\frontends\qt2\moc\QERT_moc.C">
-						</File>
-						<File
 							RelativePath="..\..\src\frontends\qt2\moc\QERTDialog_moc.C">
-						</File>
-						<File
-							RelativePath="..\..\src\frontends\qt2\moc\QExternal_moc.C">
 						</File>
 						<File
 							RelativePath="..\..\src\frontends\qt2\moc\QExternalDialog_moc.C">
 						</File>
 						<File
-							RelativePath="..\..\src\frontends\qt2\moc\QFloat_moc.C">
-						</File>
-						<File
 							RelativePath="..\..\src\frontends\qt2\moc\QFloatDialog_moc.C">
-						</File>
-						<File
-							RelativePath="..\..\src\frontends\qt2\moc\qfont_loader_moc.C">
-						</File>
-						<File
-							RelativePath="..\..\src\frontends\qt2\moc\qfontexample_moc.C">
 						</File>
 						<File
 							RelativePath="..\..\src\frontends\qt2\moc\QGraphicsDialog_moc.C">
@@ -8615,34 +8574,13 @@
 							RelativePath="..\..\src\frontends\qt2\moc\qgridview_moc.C">
 						</File>
 						<File
-							RelativePath="..\..\src\frontends\qt2\moc\QInclude_moc.C">
-						</File>
-						<File
 							RelativePath="..\..\src\frontends\qt2\moc\QIncludeDialog_moc.C">
-						</File>
-						<File
-							RelativePath="..\..\src\frontends\qt2\moc\QIndex_moc.C">
 						</File>
 						<File
 							RelativePath="..\..\src\frontends\qt2\moc\QIndexDialog_moc.C">
 						</File>
 						<File
-							RelativePath="..\..\src\frontends\qt2\moc\QLImage_moc.C">
-						</File>
-						<File
-							RelativePath="..\..\src\frontends\qt2\moc\qlkey_moc.C">
-						</File>
-						<File
-							RelativePath="..\..\src\frontends\qt2\moc\QLMenubar_moc.C">
-						</File>
-						<File
-							RelativePath="..\..\src\frontends\qt2\moc\QLog_moc.C">
-						</File>
-						<File
 							RelativePath="..\..\src\frontends\qt2\moc\QLogDialog_moc.C">
-						</File>
-						<File
-							RelativePath="..\..\src\frontends\qt2\moc\QLPainter_moc.C">
 						</File>
 						<File
 							RelativePath="..\..\src\frontends\qt2\moc\QLPopupMenu_moc.C">
@@ -8654,55 +8592,25 @@
 							RelativePath="..\..\src\frontends\qt2\moc\QLToolbar_moc.C">
 						</File>
 						<File
-							RelativePath="..\..\src\frontends\qt2\moc\QLyXKeySym_moc.C">
-						</File>
-						<File
-							RelativePath="..\..\src\frontends\qt2\moc\QMath_moc.C">
-						</File>
-						<File
 							RelativePath="..\..\src\frontends\qt2\moc\QMathDialog_moc.C">
 						</File>
 						<File
 							RelativePath="..\..\src\frontends\qt2\moc\QMathMatrixDialog_moc.C">
 						</File>
 						<File
-							RelativePath="..\..\src\frontends\qt2\moc\QNote_moc.C">
-						</File>
-						<File
 							RelativePath="..\..\src\frontends\qt2\moc\QNoteDialog_moc.C">
-						</File>
-						<File
-							RelativePath="..\..\src\frontends\qt2\moc\QParagraph_moc.C">
 						</File>
 						<File
 							RelativePath="..\..\src\frontends\qt2\moc\QParagraphDialog_moc.C">
 						</File>
 						<File
-							RelativePath="..\..\src\frontends\qt2\moc\QPrefs_moc.C">
-						</File>
-						<File
 							RelativePath="..\..\src\frontends\qt2\moc\QPrefsDialog_moc.C">
-						</File>
-						<File
-							RelativePath="..\..\src\frontends\qt2\moc\QPrint_moc.C">
-						</File>
-						<File
-							RelativePath="..\..\src\frontends\qt2\moc\QRef_moc.C">
 						</File>
 						<File
 							RelativePath="..\..\src\frontends\qt2\moc\QRefDialog_moc.C">
 						</File>
 						<File
-							RelativePath="..\..\src\frontends\qt2\moc\qscreen_moc.C">
-						</File>
-						<File
-							RelativePath="..\..\src\frontends\qt2\moc\QSearch_moc.C">
-						</File>
-						<File
 							RelativePath="..\..\src\frontends\qt2\moc\QSearchDialog_moc.C">
-						</File>
-						<File
-							RelativePath="..\..\src\frontends\qt2\moc\QSendto_moc.C">
 						</File>
 						<File
 							RelativePath="..\..\src\frontends\qt2\moc\QSendtoDialog_moc.C">
@@ -8711,25 +8619,10 @@
 							RelativePath="..\..\src\frontends\qt2\moc\qsetborder_moc.C">
 						</File>
 						<File
-							RelativePath="..\..\src\frontends\qt2\moc\QShowFile_moc.C">
-						</File>
-						<File
 							RelativePath="..\..\src\frontends\qt2\moc\QShowFileDialog_moc.C">
 						</File>
 						<File
-							RelativePath="..\..\src\frontends\qt2\moc\QSpellchecker_moc.C">
-						</File>
-						<File
 							RelativePath="..\..\src\frontends\qt2\moc\QSpellcheckerDialog_moc.C">
-						</File>
-						<File
-							RelativePath="..\..\src\frontends\qt2\moc\Qt2BC_moc.C">
-						</File>
-						<File
-							RelativePath="..\..\src\frontends\qt2\moc\QTabular_moc.C">
-						</File>
-						<File
-							RelativePath="..\..\src\frontends\qt2\moc\QTabularCreate_moc.C">
 						</File>
 						<File
 							RelativePath="..\..\src\frontends\qt2\moc\QTabularCreateDialog_moc.C">
@@ -8738,19 +8631,10 @@
 							RelativePath="..\..\src\frontends\qt2\moc\QTabularDialog_moc.C">
 						</File>
 						<File
-							RelativePath="..\..\src\frontends\qt2\moc\QTexinfo_moc.C">
-						</File>
-						<File
 							RelativePath="..\..\src\frontends\qt2\moc\QTexinfoDialog_moc.C">
 						</File>
 						<File
-							RelativePath="..\..\src\frontends\qt2\moc\QThesaurus_moc.C">
-						</File>
-						<File
 							RelativePath="..\..\src\frontends\qt2\moc\QThesaurusDialog_moc.C">
-						</File>
-						<File
-							RelativePath="..\..\src\frontends\qt2\moc\QtLyXView_moc.C">
 						</File>
 						<File
 							RelativePath="..\..\src\frontends\qt2\moc\QToc_moc.C">
@@ -8781,9 +8665,6 @@
 						</File>
 						<File
 							RelativePath="..\..\src\frontends\qt2\moc\QWorkArea_moc.C">
-						</File>
-						<File
-							RelativePath="..\..\src\frontends\qt2\moc\QWrap_moc.C">
 						</File>
 						<File
 							RelativePath="..\..\src\frontends\qt2\moc\QWrapDialog_moc.C">

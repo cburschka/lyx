@@ -24,8 +24,8 @@
 #include "support/os.h"
 
 #include <boost/assert.hpp>
-#include <boost/tuple/tuple.hpp>
 #include <boost/filesystem/operations.hpp>
+#include <boost/tuple/tuple.hpp>
 
 #include <list>
 #include <utility>
@@ -53,7 +53,6 @@ using std::string;
 
 namespace fs = boost::filesystem;
 
-
 namespace lyx {
 namespace support {
 
@@ -67,7 +66,8 @@ bool initialised_ = false;
 
 void init_package(string const & command_line_arg0,
 		  string const & command_line_system_support_dir,
-		  string const & command_line_user_support_dir)
+		  string const & command_line_user_support_dir,
+		  exe_build_dir_to_top_build_dir top_build_dir_location)
 {
 	// Can do so only once.
 	if (initialised_)
@@ -75,7 +75,8 @@ void init_package(string const & command_line_arg0,
 
 	package_ = Package(command_line_arg0,
 			   command_line_system_support_dir,
-			   command_line_user_support_dir);
+			   command_line_user_support_dir,
+			   top_build_dir_location);
 	initialised_ = true;
 }
 
@@ -94,7 +95,9 @@ namespace {
 
 string const abs_path_from_binary_name(string const & exe);
 
-std::pair<string, string> const get_build_dirs(string const & abs_binary);
+std::pair<string, string> const
+get_build_dirs(string const & abs_binary,
+	       exe_build_dir_to_top_build_dir top_build_dir_location);
 
 string const get_document_dir(string const & home_dir);
 
@@ -118,7 +121,8 @@ get_user_support_dir(string const & default_user_support_dir,
 
 Package::Package(string const & command_line_arg0,
 		 string const & command_line_system_support_dir,
-		 string const & command_line_user_support_dir)
+		 string const & command_line_user_support_dir,
+		 exe_build_dir_to_top_build_dir top_build_dir_location)
 	: explicit_user_support_dir_(false)
 {
 	home_dir_ = get_home_dir();
@@ -130,7 +134,7 @@ Package::Package(string const & command_line_arg0,
 
 	// Is LyX being run in-place from the build tree?
 	boost::tie(build_support_dir_, system_support_dir_) =
-		get_build_dirs(abs_binary);
+		get_build_dirs(abs_binary, top_build_dir_location);
 
 	if (build_support_dir_.empty())
 		system_support_dir_ =
@@ -165,20 +169,20 @@ namespace {
 // configuration-time.
 string const top_srcdir()
 {
-	static string const dir("c:\\lyx\\lyx-devel");
+	static string const dir("%TOP_SRCDIR%");
 	return dir;
 }
 
 
 string const hardcoded_localedir()
 {
-	return string("c:\\lyx\\lyx-devel\\lib\\locale");
+	return string("%LOCALEDIR%");
 }
 
 
 string const hardcoded_system_support_dir()
 {
-	return string("c:\\lyx\\lyx-devel\\lib");
+	return string("%LYX_DIR%");
 }
 
 } // namespace anon
@@ -186,7 +190,7 @@ string const hardcoded_system_support_dir()
 
 string const & Package::top_srcdir() const
 {
-	static string const dir("c:\\lyx\\lyx-devel");
+	static string const dir("%TOP_SRCDIR%");
 	return dir;
 }
 
@@ -225,7 +229,27 @@ string const win32_folder_path(int folder_id)
 #endif
 
 
-std::pair<string, string> const get_build_dirs(string const & abs_binary)
+std::string const
+get_build_support_dir(std::string const & binary_dir,
+		      exe_build_dir_to_top_build_dir top_build_dir_location)
+{
+	string indirection;
+	switch (top_build_dir_location) {
+	case top_build_dir_is_one_level_up:
+		indirection = "../lib";
+		break;
+	case top_build_dir_is_two_levels_up:
+		indirection = "../../lib";
+		break;
+	}
+
+	return NormalizePath(AddPath(binary_dir, indirection));
+}
+
+
+std::pair<string, string> const
+get_build_dirs(string const & abs_binary,
+	       exe_build_dir_to_top_build_dir top_build_dir_location)
 {
 	string const check_text = "Checking whether LyX is run in place...";
 
@@ -242,7 +266,7 @@ std::pair<string, string> const get_build_dirs(string const & abs_binary)
 		// Try and find "lyxrc.defaults".
 		string const binary_dir = OnlyPath(binary);
 		string const build_support_dir =
-			NormalizePath(AddPath(binary_dir, "../lib"));
+			get_build_support_dir(binary_dir, top_build_dir_location);
 
 		if (!FileSearch(build_support_dir, "lyxrc.defaults").empty()) {
 			// Try and find "chkconfig.ltx".
@@ -257,7 +281,18 @@ std::pair<string, string> const get_build_dirs(string const & abs_binary)
 			}
 		}
 
-		break;
+		// Check whether binary is a symbolic link.
+		// If so, resolve it and repeat the exercise.
+		if (!fs::symbolic_link_exists(binary))
+			break;
+
+		string link;
+		if (LyXReadLink(binary, link, true)) {
+			binary = link;
+		} else {
+			// Unable to resolve the link.
+			break;
+		}
 	}
 
 	lyxerr[Debug::INIT] << check_text << " no" << std::endl;
@@ -307,12 +342,12 @@ string const get_locale_dir(string const & system_support_dir)
 	// be "../locale/".)
 	path = NormalizePath(AddPath(system_support_dir, relative_locale_dir()));
 
-	if (fs::is_directory(path))
+	if (fs::exists(path) && fs::is_directory(path))
 		return path;
 
 	// 3. Fall back to the hard-coded LOCALEDIR.
 	path = hardcoded_localedir();
-	if (fs::is_directory(path))
+	if (fs::exists(path) && fs::is_directory(path))
 		return path;
 
 	return string();
@@ -459,7 +494,46 @@ get_system_support_dir(string const & abs_binary,
 			return lyxdir;
 		}
 
-		break;
+		// Check whether binary is a symbolic link.
+		// If so, resolve it and repeat the exercise.
+		if (!fs::symbolic_link_exists(binary))
+			break;
+
+		string link;
+		if (LyXReadLink(binary, link, true)) {
+			binary = link;
+		} else {
+			// Unable to resolve the link.
+			break;
+		}
+	}
+
+	// 4. Repeat the exercise on the directory itself.
+	string binary_dir = OnlyPath(abs_binary);
+	while (true) {
+		// This time test whether the directory is a symbolic link
+		// *before* looking for "chkconfig.ltx".
+		// (We've looked relative to the original already.)
+		if (!fs::symbolic_link_exists(binary))
+			break;
+
+		string link;
+		if (LyXReadLink(binary_dir, link, true)) {
+			binary_dir = link;
+		} else {
+			// Unable to resolve the link.
+			break;
+		}
+
+		// Try and find "chkconfig.ltx".
+		string const lyxdir =
+			NormalizePath(AddPath(binary_dir, relative_lyxdir));
+		searched_dirs.push_back(lyxdir);
+
+		if (!FileSearch(lyxdir, chkconfig_ltx).empty()) {
+			// Success! "chkconfig.ltx" has been found.
+			return lyxdir;
+		}
 	}
 
 	// 5. In desparation, try the hard-coded system support dir.
@@ -604,7 +678,7 @@ bool check_env_var_dir(string const & dir,
 bool check_env_var_dir(string const & dir,
 		       string const & env_var)
 {
-	bool const success = fs::is_directory(dir);
+	bool const success = (fs::exists(dir) && fs::is_directory(dir));
 
 	if (!success) {
 		// Put this string on a single line so that the gettext
@@ -613,7 +687,7 @@ bool check_env_var_dir(string const & dir,
 		// translation.
 		string const fmt =
 		_("Invalid %1$s environment variable.\n%2$s is not a directory.");
-		
+
 		lyxerr << bformat(fmt, env_var, dir)
 		       << std::endl;
 	}
