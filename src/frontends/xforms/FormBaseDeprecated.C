@@ -95,9 +95,9 @@ void FormBaseDeprecated::prepare_to_show()
 {
 	build();
 
-	double const scale = scale_to_fit_tabs(form());
+	double const scale = get_scale_to_fit(form());
 	if (scale > 1.001)
-		scale_form(form(), scale);
+		scale_form_horizontally(form(), scale);
 
 	bc().refresh();
 

@@ -18,20 +18,19 @@
 
 #include "forms_fwd.h"
 
-/** If the form contains a tabfolder, then by how much should the form be
-    scaled (enlarged only) to render the tabs (buttons) visible?
+/** Ascertains the scaling factor needed to ensure that all labels fit
+    within their button.
 
-    Returns 1 if the form does not contain a tabfolder.
-
-    This routine works for two levels of nested tabfolders. (I.e., is sufficient
-    for our current needs.)
+    Tabfolders are searched also by recursively calling this function.
  */
-double scale_to_fit_tabs(FL_FORM * form);
+double get_scale_to_fit(FL_FORM * form);
 
 /** A wrapper for fl_scale_form(form, scale, 1) that scales the parent form
     horizontally, but also scales the leaves (FL_FORMs) of any nested
     tabfolder, should one exist.
+
+    Tabfolders are scaled also by recursively calling this function.
  */
-void scale_form(FL_FORM * form, double scale_factor);
+void scale_form_horizontally(FL_FORM * form, double factor);
 
 #endif // XFORMS_RESIZE_H

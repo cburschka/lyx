@@ -81,11 +81,9 @@ xformsBC & FormBase::bc()
 
 void FormBase::prepare_to_show()
 {
-	double const scale = scale_to_fit_tabs(form());
+	double const scale = get_scale_to_fit(form());
 	if (scale > 1.001)
-		scale_form(form(), scale);
-
-	bc().refresh();
+		scale_form_horizontally(form(), scale);
 
 	// work around dumb xforms sizing bug
 	minw_ = form()->w;
