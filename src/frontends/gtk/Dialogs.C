@@ -69,7 +69,7 @@
 #include "FormLog.h"
 #include "GMathPanel.h"
 #include "FormMathsBitmap.h"
-#include "FormMathsMatrix.h"
+#include "GMathsMatrix.h"
 #include "FormMathsSpace.h"
 #include "FormMathsStyle.h"
 #include "FormNote.h"
@@ -432,9 +432,10 @@ Dialogs::DialogPtr Dialogs::build(string const & name)
 		dialog->setView(new GMathDelim(*dialog));
 		dialog->bc().bp(new OkApplyCancelReadOnlyPolicy);
 	} else if (name == "mathmatrix") {
+		dialog->bc().view(new GBC(dialog->bc()));
 		dialog->setController(new ControlMath(*dialog));
-		dialog->setView(new FormMathsMatrix(*dialog));
-		dialog->bc().bp(new OkApplyCancelReadOnlyPolicy);
+		dialog->setView(new GMathsMatrix(*dialog));
+		dialog->bc().bp(new OkCancelReadOnlyPolicy);
 	} else if (name == "mathspace") {
 		dialog->setController(new ControlMath(*dialog));
 		dialog->setView(new FormMathsSpace(*dialog));

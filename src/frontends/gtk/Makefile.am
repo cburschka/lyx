@@ -32,6 +32,8 @@ libgtk_la_SOURCES = \
 	GMathDelim.h \
 	GMathPanel.C \
 	GMathPanel.h \
+	GMathsMatrix.C \
+	GMathsMatrix.h \
 	GMenubar.C \
 	GMenubar.h \
 	GMiniBuffer.C \
@@ -109,7 +111,6 @@ xforms_objects = \
 	../xforms/FormLog.lo \
 	../xforms/FormMathsBitmap.lo \
 	../xforms/FormMathsDelim.lo \
-	../xforms/FormMathsMatrix.lo \
 	../xforms/FormMathsSpace.lo \
 	../xforms/FormMathsStyle.lo \
 	../xforms/FormNote.lo \
