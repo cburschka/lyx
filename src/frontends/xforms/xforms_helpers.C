@@ -24,6 +24,8 @@
 #include "lyx_forms.h"
 #include "combox.h"
 
+#include <boost/assert.hpp>
+
 #include <fstream>
 
 using lyx::support::AbsolutePath;

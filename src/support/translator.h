@@ -12,6 +12,8 @@
 #ifndef TRANSLATOR_H
 #define TRANSLATOR_H
 
+#include <boost/assert.hpp>
+
 #include <vector>
 #include <utility>
 #include <algorithm>

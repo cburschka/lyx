@@ -21,6 +21,8 @@
 
 #include "lyx_forms.h"
 
+#include <boost/assert.hpp>
+
 using std::endl;
 
 

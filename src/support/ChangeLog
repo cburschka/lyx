@@ -1,3 +1,8 @@
+2003-09-15  Angus Leeming  <leeming@lyx.org>
+
+	* translator.h: add #include <boost/assert.hpp>, so that the template is
+	self-contained.
+
 2003-09-11  Angus Leeming  <leeming@lyx.org>
 
 	* cow_ptr.h: 
