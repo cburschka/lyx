@@ -15,7 +15,7 @@
 
 #include "LString.h"
 #ifdef HAVE_LIBAIKSAURUS
-#include "Aiksaurus.h"
+#include AIKSAURUS_H_LOCATION
 #endif
 
 /**
