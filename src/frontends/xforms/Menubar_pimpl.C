@@ -21,7 +21,7 @@
 #include "kbmap.h"
 #include "buffer.h"
 #include "Dialogs.h"
-#include "LyXView.h"
+#include "XFormsView.h"
 #include "lyxfunc.h"
 #include "FloatList.h"
 #include "support/lstrings.h"
@@ -97,7 +97,7 @@ Menubar::Pimpl::Pimpl(LyXView * view, MenuBackend const & mb)
 
 void Menubar::Pimpl::makeMenubar(Menu const & menu)
 {
-	FL_FORM * form = owner_->getForm(); 
+	FL_FORM * form = static_cast<XFormsView *>(owner_)->getForm(); 
 	int moffset = 0;
 
 	// Create menu frame if there is non yet.
@@ -565,8 +565,8 @@ void Menubar::Pimpl::MenuCallback(FL_OBJECT * ob, long button)
 			       item->submenu(), submenus);
 	if (menu != -1) {
 		// place popup
-		fl_setpup_position(view->getForm()->x + ob->x,
-				   view->getForm()->y + ob->y + ob->h + 10);   
+		fl_setpup_position(static_cast<XFormsView *>(view)->getForm()->x + ob->x,
+				   static_cast<XFormsView *>(view)->getForm()->y + ob->y + ob->h + 10);   
 		int choice = fl_dopup(menu);
 		
 		if (button == 1) {

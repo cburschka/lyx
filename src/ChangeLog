@@ -1,3 +1,24 @@
+2001-07-03  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* text2.C (redoHeightOfParagraph): comment out stuff we don't need
+	in NEW_INSETS
+	(redoDrawingOfParagraph): ditto
+	(redoParagraphs): ditto
+
+	* bufferview_funcs.[Ch]: move ProhibitInput and AllowInput to
+	LyXview (+ rename)
+
+2001-07-03  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* modifications to some other files because of this.
+	
+	* Makefile.am (lyx_SOURCES): add XFormsView
+
+	* XFormsView.[Ch]: new files
+
+	* LyXView.[Ch]: make LyXView a base class for the gui handling for
+	the main window. Move the gui dependand stuff to XFormsView
+
 2001-07-03  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* tabular.C (GetCellInset): update cur_cell also in the row/col

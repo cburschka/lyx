@@ -15,9 +15,10 @@
 #pragma implementation "FontLoader.h"
 #endif
 
-#include "gettext.h"
+#include FORMS_H_LOCATION
 #include "FontLoader.h"
 #include "FontInfo.h"
+#include "gettext.h"
 #include "debug.h"
 #include "lyxrc.h"	// lyxrc.font_*
 #include "BufferView.h"

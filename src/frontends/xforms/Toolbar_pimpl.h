@@ -27,6 +27,8 @@
 #pragma interface
 #endif
 
+class XFormsView;
+
 /** The LyX xforms toolbar class
   */
 struct Toolbar::Pimpl {
@@ -98,7 +100,7 @@ public:
 	/// The list containing all the buttons
 	ToolbarList toollist;
 	///
-	LyXView * owner;
+	XFormsView * owner;
 #if FL_REVISION < 89
 	///
 	FL_OBJECT * bubble_timer;

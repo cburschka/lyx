@@ -41,10 +41,6 @@ extern void Tex(BufferView *);
 ///
 extern void changeDepth(BufferView *, LyXText *, int);
 ///
-extern void ProhibitInput(BufferView *);
-///
-extern void AllowInput(BufferView *);
-///
 extern void Code(BufferView *);
 ///
 extern void Sans(BufferView *);

@@ -15,6 +15,8 @@
 #pragma interface
 #endif
 
+class LyXView;
+
 /** The LyX GUI independent guiruntime class
     The GUI interface is implemented in the corresponding
     frontends GUIRunTime.C file.
@@ -33,5 +35,8 @@ public:
 	/// This is run first in the LyXGUI constructor.
 	static
 	void setDefaults();
+	///
+	static
+	LyXView * createMainView(int w, int h);
 };
 #endif

@@ -1070,25 +1070,25 @@ string const LyXFunc::Dispatch(int ac,
 			setErrorMessage(N_("Missing argument"));
 			break;
 		}
-		ProhibitInput(owner->view());
+		owner->prohibitInput();
 		string const fname = i18nLibFileSearch("doc", arg, "lyx");
 		if (fname.empty()) {
 			lyxerr << "LyX: unable to find documentation file `"
 			       << arg << "'. Bad installation?" << endl;
-			AllowInput(owner->view());
+			owner->allowInput();
 			break;
 		}
 		ostringstream str;
 		str << _("Opening help file") << ' '
 		    << MakeDisplayPath(fname) << "...";
 		owner->message(str.str().c_str());
-		owner->view()->buffer(bufferlist.loadLyXFile(fname,false));
-		AllowInput(owner->view());
+		owner->view()->buffer(bufferlist.loadLyXFile(fname, false));
+		owner->allowInput();
 		break;
         }
 
 	case LFUN_HELP_VERSION: {
-		ProhibitInput(owner->view());
+		owner->prohibitInput();
 		string msg(_("LyX Version "));
 		msg += LYX_VERSION;
 		msg += " of ";
@@ -1098,7 +1098,7 @@ string const LyXFunc::Dispatch(int ac,
 				 + MakeDisplayPath(system_lyxdir)).c_str(),
 				(_("User directory: ") 
 				 + MakeDisplayPath(user_lyxdir)).c_str());
-		AllowInput(owner->view());
+		owner->allowInput();
 		break;
 	}
 	

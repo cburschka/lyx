@@ -18,7 +18,7 @@
 
 #include "support/lstrings.h" 
 
-// temp. hack until Allow/ProhibitInput is not
+// temp. hack until Allow/prohibitInput is not
 // needed any more in src/ - for now it's simplest
 // to leave it there 
 #include "LyXView.h" 
@@ -67,14 +67,14 @@ FileDialog::Result const FileDialog::Select(string const & path, string const & 
 
 	// no support for asynchronous selection yet
 
-	ProhibitInput(lv_->view());
+	lv_->prohibitInput();
 
 	FileDialog::Result result;
 
 	result.first = FileDialog::Chosen;
 	result.second = private_->Select(title_, path, filter, suggested);
  
-	AllowInput(lv_->view());
+	lv_->allowInput();
  
 	return result;
 }

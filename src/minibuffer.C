@@ -23,6 +23,7 @@
 #include "support/lyxalgo.h"
 #include "support/filetools.h"
 #include "LyXView.h"
+#include "XFormsView.h"
 #include "gettext.h"
 #include "LyXAction.h"
 #include "BufferView.h"
@@ -246,7 +247,8 @@ void MiniBuffer::prepare()
 	text.erase();
 	fl_set_input(the_buffer, "");
 	activate();
-	fl_set_focus_object(owner_->getForm(), the_buffer);
+	fl_set_focus_object(static_cast<XFormsView *>(owner_)->getForm(),
+			    the_buffer);
 }
 
 

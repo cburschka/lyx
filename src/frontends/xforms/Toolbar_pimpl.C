@@ -21,7 +21,7 @@
 
 #include "Toolbar_pimpl.h"
 #include "debug.h"
-#include "LyXView.h"
+#include "XFormsView.h"
 #include "lyxfunc.h"
 #include "func_status.h"
 #include "BufferView.h"
@@ -81,7 +81,7 @@ Toolbar::Pimpl::toolbarItem::operator=(toolbarItem const & ti) {
 
 
 Toolbar::Pimpl::Pimpl(LyXView * o, int x, int y)
-	: owner(o), sxpos(x), sypos(y)
+	: owner(static_cast<XFormsView *>(o)), sxpos(x), sypos(y)
 {
 	combox = 0;
 #if FL_REVISION < 89
@@ -268,7 +268,7 @@ namespace {
 
 void ToolbarCB(FL_OBJECT * ob, long ac)
 {
-	LyXView * owner = static_cast<LyXView *>(ob->u_vdata);
+	XFormsView * owner = static_cast<XFormsView *>(ob->u_vdata);
 	
 	string res = owner->getLyXFunc()->Dispatch(int(ac));
 	if (!res.empty())
@@ -529,6 +529,7 @@ void Toolbar::Pimpl::reset()
 	cleaned = false;
 	lightReset();
 }
+
 
 void Toolbar::Pimpl::lightReset() {
 	xpos = sxpos - standardspacing;

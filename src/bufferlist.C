@@ -174,7 +174,7 @@ bool BufferList::close(Buffer * buf)
         if (buf->getUser()) buf->getUser()->insetUnlock();
 	if (buf->paragraph && !buf->isLyxClean() && !quitting) {
 		if (buf->getUser())
-			ProhibitInput(buf->getUser());
+			buf->getUser()->owner()->prohibitInput();
 		string fname;
 		if (buf->isUnnamed())
 			fname = OnlyFilename(buf->fileName());
@@ -193,7 +193,7 @@ bool BufferList::close(Buffer * buf)
 					reask = false;
 				} else {
 					if (buf->getUser())
-						AllowInput(buf->getUser());
+						buf->getUser()->owner()->allowInput();
 					return false;
 				}
 				break;
@@ -205,12 +205,12 @@ bool BufferList::close(Buffer * buf)
 				break;
 			case 3: // Cancel
 				if (buf->getUser())
-					AllowInput(buf->getUser());
+					buf->getUser()->owner()->allowInput();
 				return false;
 			}
 		}
 		if (buf->getUser())
-			AllowInput(buf->getUser());
+			buf->getUser()->owner()->allowInput();
 	}
 
 	bstore.release(buf);

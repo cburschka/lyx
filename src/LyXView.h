@@ -1,63 +1,44 @@
 // -*- C++ -*-
-/* This file is part of
- * ====================================================== 
- * 
- *           LyX, The Document Processor
- *        
- *           Copyright 1995 Matthias Ettrich
- *           Copyright 1995-2001 The LyX Team.
- *
- * ====================================================== */
 
-#ifndef LyXView_H
-#define LyXView_H
+#ifndef LYXVIEW_BASE_H
+#define LYXVIEW_BASE_H
 
 #ifdef __GNUG__
 #pragma interface
 #endif
 
-#include <config.h>
-#include FORMS_H_LOCATION
+#include <boost/utility.hpp>
+#include <sigc++/signal_system.h>
 
 #include "LString.h"
 #include "frontends/Timeout.h"
-#include <boost/utility.hpp>
 #include "layout.h"
 
-class LyXFunc;
+class Buffer;
 class Toolbar;
 class MiniBuffer;
 class Intl;
-class Buffer;
 class Menubar;
 
 class BufferView;
 class Dialogs;
+class LyXFunc;
 
-/**
-  This class is the form containing the view of the buffer. The actual buffer
-  view is supposed (at least IMHO) to be another class, that shows its output
-  in one or more LyXView's.
- */
+///
 class LyXView : public SigC::Object, boost::noncopyable {
 public:
-	/// constructor
-	LyXView(int w, int h);
-
-	/// destructor
-	~LyXView();
-
-	/// Where to place the form.
-	void setPosition(int, int);
-
-	/// Show the main form.
-	void show(int, int, string const & t = string("LyX"));
-
-	/// init (should probably be removed later) (Lgb)
-	void init();
-
+	///
+	LyXView();
+	///
+	virtual ~LyXView();
+	///
+	virtual void init() = 0;
+	///
+	virtual void setPosition(int, int) = 0;
+	///
+	virtual void show(int, int, string const &) = 0;
 	/// Redraw the main form.
-	void redraw();
+	virtual void redraw() = 0;
 
 	/// Resize all BufferViews in this LyXView (because the width changed)
 	void resize();
@@ -67,9 +48,6 @@ public:
 
 	///
 	BufferView * view() const;
-
-	/// returns a pointer to the form.
-	FL_FORM * getForm() const;
 
 	/// return a pointer to the toolbar
 	Toolbar * getToolbar() const;
@@ -116,39 +94,36 @@ public:
 
 	/// Reset autosave timer
 	void resetAutosaveTimer();
-private:
-	/// 
-	LyXFunc * lyxfunc;
-	/// 
-	Toolbar * toolbar;
-	/// 
-	MiniBuffer * minibuffer;
+	///
+	virtual void prohibitInput() const = 0;
+	///
+	virtual void allowInput() const = 0;
+protected:
 	///
 	Menubar * menubar;
-	///
-	Intl * intl;
-	///
-	Dialogs * dialogs_;
-
+	/// 
+	Toolbar * toolbar;
 	/** This is supposed to be a pointer or a list of pointers to the
 	   BufferViews currently being shown in the LyXView. So far
 	   this is not used, but that should change pretty soon. (Lgb) */
 	BufferView * bufferview;
+	/// 
+	MiniBuffer * minibuffer;
 	///
-	void invalidateLayoutChoice();
-public:
-	/** This callback is run when a close event is sent from the
-	  window manager. */
-	static int atCloseMainFormCB(FL_FORM *, void *);
-	/// A callback
-	void AutoSave();
-private:
+	Intl * intl;
 	///
 	Timeout autosave_timeout;
-	/// makes the main form.
-	void create_form_form_main(int width, int height);
-	/// A pointer to the form.	
-	FL_FORM * form_;
+	/// A callback
+	void AutoSave();
+	///
+	void invalidateLayoutChoice();
+private:
+	/// 
+	LyXFunc * lyxfunc;
+	///
+	Dialogs * dialogs_;
+	///
+	virtual void setWindowTitle(string const &) = 0;
 	/** The last textclass layout list in the layout choice selector
 	  This should probably be moved to the toolbar, but for now it's
 	here. (Asger) */

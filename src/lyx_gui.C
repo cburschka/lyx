@@ -49,7 +49,6 @@ FD_form_figure * fd_form_figure;
 extern LyXServer * lyxserver;
 extern bool finished;	// flag, that we are quitting the program
 extern BufferList bufferlist;
-extern GUIRunTime guiruntime;
 extern string user_lyxdir;
 
 FL_CMD_OPT cmdopt[] =
@@ -267,7 +266,7 @@ void LyXGUI::init()
 void LyXGUI::create_forms()
 {
 	lyxerr[Debug::INIT] << "Initializing LyXView..." << endl;
-	lyxViews = new LyXView(width, height);
+	lyxViews = GUIRunTime::createMainView(width, height);
 	lyxerr[Debug::INIT] << "Initializing LyXView...done" << endl;
 
 	// From here down should be done by somebody else. (Lgb)
@@ -312,7 +311,7 @@ void LyXGUI::runTime()
 {
 	if (!gui) return;
 
-	guiruntime.runTime();
+	GUIRunTime::runTime();
 }
 
 

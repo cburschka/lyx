@@ -472,7 +472,7 @@ void InsertAsciiFile(BufferView * bv, string const & f, bool asParagraph)
 void MenuInsertLabel(BufferView * bv, string const & arg)
 {
 	string label(arg);
-	ProhibitInput(bv);
+	bv->owner()->prohibitInput();
 	if (label.empty()) {
 		Paragraph * par = bv->text->cursor.par();
 		LyXLayout const * layout =
@@ -520,7 +520,7 @@ void MenuInsertLabel(BufferView * bv, string const & arg)
 		InsetLabel * inset = new InsetLabel( p );
 		bv->insertInset( inset );
 	}
-	AllowInput(bv);
+	bv->owner()->allowInput();
 }
 
 

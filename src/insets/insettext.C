@@ -1702,7 +1702,7 @@ void InsetText::resizeLyXText(BufferView * bv, bool force) const
 	bool selection = false;
 	bool mark_set = false;
 
-//    ProhibitInput(bv);
+//    bv->owner()->prohibitInput();
 
 	if (locked) {
 		LyXText * t = getLyXText(bv);
@@ -1746,7 +1746,7 @@ void InsetText::resizeLyXText(BufferView * bv, bool force) const
 	
 	// this will scroll the screen such that the cursor becomes visible 
 	bv->updateScrollbar();
-//    AllowInput(bv);
+//    bv->owner()->allowInput();
 	if (the_locking_inset) {
 		/// then resize all LyXText in text-insets
 		inset_x = cx(bv) - top_x + drawTextXOffset;

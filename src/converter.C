@@ -761,7 +761,7 @@ bool Converters::scanLog(Buffer const * buffer, string const & command,
 	BufferView * bv = buffer->getUser();
 	bool need_redraw = false;
 	if (bv) {
-		ProhibitInput(bv);
+		bv->owner()->prohibitInput();
 		// Remove all error insets
 		need_redraw = bv->removeAutoInsets();
 	}
@@ -779,7 +779,7 @@ bool Converters::scanLog(Buffer const * buffer, string const & command,
 			bv->redraw();
 			bv->fitCursor(bv->text);
 		}
-		AllowInput(bv);
+		bv->owner()->allowInput();
 	}
 
 	if ((result & LaTeX::ERRORS)) {
@@ -819,7 +819,7 @@ bool Converters::runLaTeX(Buffer const * buffer, string const & command)
 	bool need_redraw = false;
 
 	if (bv) {
-		ProhibitInput(bv);
+		bv->owner()->prohibitInput();
 		bv->owner()->message(_("Running LaTeX..."));
 		// Remove all error insets
 		need_redraw = bv->removeAutoInsets();
@@ -873,7 +873,7 @@ bool Converters::runLaTeX(Buffer const * buffer, string const & command)
 	}
 
 	if (bv)
-		AllowInput(bv);
+		bv->owner()->allowInput();
  
 	int const ERROR_MASK = 
 			LaTeX::NO_LOGFILE |

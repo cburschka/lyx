@@ -16,6 +16,7 @@
 #endif
 
 #include "GUIRunTime.h"
+#include "XFormsView.h"
 #include "debug.h"
 
 // I keep these here so that it will be processed as early in
@@ -109,4 +110,10 @@ void GUIRunTime::setDefaults()
 			| FL_PDInputFontSize
 			| FL_PDMenuFontSize
 			| FL_PDBorderWidth, &cntl);
+}
+
+
+LyXView * GUIRunTime::createMainView(int w, int h)
+{
+	return new XFormsView(w, h);
 }

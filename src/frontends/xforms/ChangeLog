@@ -1,3 +1,10 @@
+2001-07-03  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* Toolbar_pimpl.h: make owner be a XFormsView, small changes
+	because of this.
+
+	* GUIRunTime.C (createMainView): implement
+
 2001-06-22  John Levon  <moz@compsoc.man.ac.uk>
 
 	* FormCharacter.C:

@@ -1025,7 +1025,7 @@ void FormDocument::CheckChoiceClass(FL_OBJECT * ob, long)
     if (!ob)
 	ob = class_->choice_doc_class;
 
-    ProhibitInput(lv_->view());
+    lv_->prohibitInput();
 
     unsigned int tc = combo_doc_class->get() - 1;
     if (textclasslist.Load(tc)) {
@@ -1047,7 +1047,7 @@ void FormDocument::CheckChoiceClass(FL_OBJECT * ob, long)
 		   _("Reverting to original document class."));
 	combo_doc_class->select(int(lv_->buffer()->params.textclass) + 1);
     }
-    AllowInput(lv_->view());
+    lv_->allowInput();
 }
 
 

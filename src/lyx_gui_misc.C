@@ -137,12 +137,12 @@ void WriteAlert(string const & s1, string const & s2, string const & s3)
 		lview = current_view->owner();
 	if (lview) {
 		/// Write to minibuffer
-		ProhibitInput(current_view);
+		lview->prohibitInput();
 		string const msg = s1 + ' ' + s2 + ' ' + s3;
 		lview->message(msg);
 		fl_set_resource("flAlert.dismiss.label", _("Dismiss"));
 		fl_show_alert(s1.c_str(), s2.c_str(), s3.c_str(), 0);
-		AllowInput(current_view);
+		lview->allowInput();
 	} else {
 		/// Write to lyxerr
 		lyxerr << "----------------------------------------" << endl

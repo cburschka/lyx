@@ -289,7 +289,7 @@ int BufferView::Pimpl::resizeCurrentBuffer()
 	bool selection = false;
 	bool mark_set  = false;
 
-	ProhibitInput(bv_);
+	owner_->prohibitInput();
 
 	owner_->message(_("Formatting document..."));
 
@@ -350,7 +350,7 @@ int BufferView::Pimpl::resizeCurrentBuffer()
 	redraw();
 
 	setState();
-	AllowInput(bv_);
+	owner_->allowInput();
 
 	/// clear the "Formatting Document" message 
 	owner_->message("");

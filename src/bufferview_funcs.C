@@ -103,46 +103,6 @@ void changeDepth(BufferView * bv, LyXText * text, int decInc)
 }
 
 
-// How should this actually work? Should it prohibit input in all BufferViews,
-// or just in the current one? If "just the current one", then it should be
-// placed in BufferView. If "all BufferViews" then LyXGUI (I think) should
-// run "ProhibitInput" on all LyXViews which will run prohibitInput on all
-// BufferViews. Or is it perhaps just the (input in) BufferViews in the
-// current LyxView that should be prohibited (Lgb) (This applies to
-// "AllowInput" as well.)
-void ProhibitInput(BufferView * bv)
-{
-	bv->hideCursor();
-
-	static Cursor cursor;
-	static bool cursor_undefined = true;
-   
-	if (cursor_undefined){
-		cursor = XCreateFontCursor(fl_get_display(), XC_watch);
-		XFlush(fl_get_display());
-		cursor_undefined = false;
-	}
-   
-	/* set the cursor to the watch for all forms and the canvas */ 
-	XDefineCursor(fl_get_display(), bv->owner()->getForm()->window, 
-		      cursor);
-
-	XFlush(fl_get_display());
-	fl_deactivate_all_forms();
-}
-
-
-void AllowInput(BufferView * bv)
-{
-	/* reset the cursor from the watch for all forms and the canvas */
-   
-	XUndefineCursor(fl_get_display(), bv->owner()->getForm()->window);
-
-	XFlush(fl_get_display());
-	fl_activate_all_forms();
-}
-
-
 void Code(BufferView * bv)
 {
 	LyXFont font(LyXFont::ALL_IGNORE);
