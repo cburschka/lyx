@@ -894,7 +894,8 @@ void mathDispatchCreation(BufferView * bv, string const & arg, bool display)
 		} else {
 			// create a macro if we see "\\newcommand" somewhere, and an ordinary
 			// formula otherwise
-			if (sel.find("\\newcommand") == string::npos)
+			if (sel.find("\\newcommand") == string::npos &&
+				  sel.find("\\def") == string::npos)
 				f = new InsetFormula(sel);
 			else {
 				string name;

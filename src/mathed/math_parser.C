@@ -426,17 +426,17 @@ char Parser::getChar()
 }
 
 
-string Parser::getArg(char lf, char rg)
+string Parser::getArg(char left, char right)
 {
 	skipSpaces();
 
 	string result;
 	char c = getChar();
 
-	if (c != lf)
+	if (c != left)
 		putback();
 	else
-		while ((c = getChar()) != rg && good())
+		while ((c = getChar()) != right && good())
 			result += c;
 
 	return result;
@@ -552,8 +552,11 @@ void Parser::tokenize(string const & buffer)
 void Parser::dump() const
 {
 	lyxerr << "\nTokens: ";
-	for (unsigned i = 0; i < tokens_.size(); ++i)
+	for (unsigned i = 0; i < tokens_.size(); ++i) {
+		if (i == pos_)
+			lyxerr << " <#> ";
 		lyxerr << tokens_[i];
+	}
 	lyxerr << "\n";
 }
 
@@ -727,33 +730,64 @@ bool Parser::parse_lines2(MathAtom & t, bool braced)
 
 
 
+
 bool Parser::parse_macro(string & name)
 {
+	int nargs = 0;
 	name = "{error}";
 	skipSpaces();
 
-	if (getToken().cs() != "newcommand") {
-		lyxerr << "\\newcommand expected\n";
+	if (nextToken().cs() == "def") {
+
+		getToken();
+		name = getToken().cs();
+
+		string pars;
+		while (good() && nextToken().cat() != catBegin)
+			pars += getToken().cs();
+	
+		if (!good()) {
+			lyxerr << "bad stream in parse_macro\n";
+			dump();
+			return false;
+		}
+			
+		lyxerr << "read \\def parameter list '" << pars << "'\n";
+		if (!pars.empty()) {
+			lyxerr << "can't handle non-empty parameter lists\n";
+			dump();
+			return false;
+		}
+
+	} else if (nextToken().cs() == "newcommand") {
+
+		getToken();
+
+		if (getToken().cat() != catBegin) {
+			lyxerr << "'{' in \\newcommand expected (1) \n";
+			dump();
+			return false;
+		}
+
+		name = getToken().cs();
+
+		if (getToken().cat() != catEnd) {
+			lyxerr << "'}' expected\n";
+			return false;
+		}
+
+		string arg  = getArg('[', ']');
+		if (!arg.empty())
+			nargs = atoi(arg.c_str());
+
+	} else { 
+		lyxerr << "\\newcommand or \\def  expected\n";
 		return false;
 	}
+
 
 	if (getToken().cat() != catBegin) {
-		lyxerr << "'{' in \\newcommand expected (1)\n";
-		return false;
-	}
-
-	name = getToken().cs();
-
-	if (getToken().cat() != catEnd) {
-		lyxerr << "'}' expected\n";
-		return false;
-	}
-
-	string    arg  = getArg('[', ']');
-	int       narg = arg.empty() ? 0 : atoi(arg.c_str());
-
-	if (getToken().cat() != catBegin) {
-		lyxerr << "'{' in \\newcommand expected (2)\n";
+		lyxerr << "'{' in macro definition expected (2)\n";
 		return false;
 	}
 
@@ -771,7 +805,7 @@ bool Parser::parse_macro(string & name)
 	MathArray ar2;
 	parse_into(ar2, FLAG_ITEM);
 
-	MathMacroTable::create(name, narg, ar1, ar2);
+	MathMacroTable::create(name, nargs, ar1, ar2);
 	return true;
 }
 
