@@ -264,10 +264,12 @@ bool BufferView::open_new_inset(UpdatableInset * new_inset)
 {
 	beforeChange();
 	text->FinishUndo();
-	if (!insertInset(new_inset))
+	if (!insertInset(new_inset)) {
+		delete new_inset;
 		return false;
-	text->CursorLeft(this);
-	update(BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
+	}
+//	text->CursorLeft(this);
+//	update(BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
     	new_inset->Edit(this, 0, 0, 0);
 	return true;
 }

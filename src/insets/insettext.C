@@ -1266,16 +1266,14 @@ bool InsetText::InsertInset(BufferView * bv, Inset * inset)
 	      bv->text->cursor.par()->next
 #endif
 	    );
-    if (inset->Editable() == Inset::IS_EDITABLE) {
-	UpdatableInset * i = static_cast<UpdatableInset *>(inset);
-	i->setOwner(static_cast<UpdatableInset *>(this));
-    }
+    inset->setOwner(this);
     HideInsetCursor(bv);
     TEXT(bv)->InsertInset(bv, inset);
     TEXT(bv)->selection = 0;
+    TEXT(bv)->CursorLeft(bv);
     bv->fitCursor(TEXT(bv));
     UpdateLocal(bv, CURSOR_PAR, true);
-    static_cast<UpdatableInset*>(inset)->Edit(bv, 0, 0, 0);
+//    inset->Edit(bv, 0, 0, 0);
     ShowInsetCursor(bv);
     return true;
 }

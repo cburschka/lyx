@@ -2585,13 +2585,14 @@ string const LyXFunc::Dispatch(int ac,
 	case LFUN_INSERT_MATRIX:
 	{ 	   
 		if (owner->view()->available()) { 
-			owner->view()->
-				open_new_inset(new InsetFormula(false));
-			owner->view()
-				->theLockingInset()
-				->LocalDispatch(owner->view(),
-						action,
-						argument);
+			if (owner->view()->
+			    open_new_inset(new InsetFormula(false)))
+			{
+				owner->view()->theLockingInset()
+					->LocalDispatch(owner->view(),
+							action,
+							argument);
+			}
 		}
 	}	   
 	break;
