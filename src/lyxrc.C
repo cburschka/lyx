@@ -2178,7 +2178,7 @@ string const LyXRC::getDescription(LyXRCTags tag)
 		break;
 
 	case RC_PATH_PREFIX:
-		str = _("Specify those directories which should be"
+		str = _("Specify those directories which should be "
 			 "prepended to the PATH environment variable. "
 			 "Use the OS native format.");
 		break;
