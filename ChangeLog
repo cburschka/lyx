@@ -1,3 +1,30 @@
+2000-11-02  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* lib/ui/default.ui: change Item to OptItem in import menu.
+	Comment out fax stuff.
+
+	* lib/configure.m4: comment out fax-related stuff.
+
+2000-10-31  Angus Leeming <a.leeming@ic.ac.uk>
+
+	* src/frontends/xforms/xform_helpers.[Ch]: new files. Repository for
+	useful xforms helper functions. At present contains only formatted().
+	Input a string and it returns it with line breaks so that in fits
+	inside the label.
+
+	* src/frontends/xforms/Makefile.am: add new files.
+
+	* src/lyxrc.[Ch] (getDescription): new name for getFeedback.
+	* src/lyxrc.C (getDescription): Removed '\n's from strings. Corrected
+	punctuation.
+
+	* src/frontends/xforms/FormPreferences.[Ch]:
+	* src/frontends/xforms/forms/form_preferences.fd: No new functionality
+	but lots of little clean ups. Removed enum State. Make use of
+	formatted(). Constify lots of methods. Perhaps best of all: removed
+	requirement for that horrible reinterpret_cast from pointer to long in
+	feedbackPost().
+
 2000-11-02  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/lyxlookup.C: include FORMS_H_LOCATION to get at FL_REVISION,

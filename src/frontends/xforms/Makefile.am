@@ -83,7 +83,9 @@ libxforms_la_SOURCES = \
 	RadioButtonGroup.h \
 	Toolbar_pimpl.C \
 	Toolbar_pimpl.h \
-	xform_macros.h
+	xform_macros.h \
+	xform_helpers.C \
+	xform_helpers.h
 
 # These still have to be added. Sooner or later. ARRae-20000411
 #	GUI_defaults.C \

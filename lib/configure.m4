@@ -236,17 +236,17 @@ test $CHKTEX = "chktex" && chktex_command="$CHKTEX -n1 -n3 -n6 -n9 -n22 -n25 -n3
 # Search for a spellchecker
 SEARCH_PROG([for a spell-checker], SPELL,ispell)
 
-# Search a Fax handling program
-SEARCH_PROG([for a fax driver], FAX, sendfax faxsend fax)
-if test $FAX = sendfax ; then
-  fax_command="sendfax -n -h '\$\$Host' -c '\$\$Comment' -x '\$\$Enterprise' -d '\$\$Name'@'\$\$Phone' '\$\$FName'"
-elif test $FAX = faxsend ; then
-  fax_command="faxsend '\$\$Phone' '\$\$FName'"
-elif test $FAX = fax ; then
-  fax_command="fax send '\$\$Phone' '\$\$FName'"
-else
-  fax_command="none"
-fi
+dnl # Search a Fax handling program
+dnl SEARCH_PROG([for a fax driver], FAX, sendfax faxsend fax)
+dnl if test $FAX = sendfax ; then
+dnl   fax_command="sendfax -n -h '\$\$Host' -c '\$\$Comment' -x '\$\$Enterprise' -d '\$\$Name'@'\$\$Phone' '\$\$FName'"
+dnl elif test $FAX = faxsend ; then
+dnl   fax_command="faxsend '\$\$Phone' '\$\$FName'"
+dnl elif test $FAX = fax ; then
+dnl   fax_command="fax send '\$\$Phone' '\$\$FName'"
+dnl else
+dnl   fax_command="none"
+dnl fi
 
 # Search for LinuxDoc support
 SEARCH_PROG([for SGML-tools 1.x (LinuxDoc)], LINUXDOC, sgml2lyx)
@@ -422,7 +422,7 @@ cat >lyxrc.defaults <<EOF
 \\ascii_roff_command "$ascii_roff_command"
 \\chktex_command "$chktex_command"
 \\spell_command "$SPELL"
-\\fax_command "$fax_command"
+dnl \\fax_command "$fax_command"
 \\print_spool_command "$print_spool_command"
 \\print_spool_printerprefix "$print_spool_printerprefix"
 \\font_encoding "$chk_fontenc"

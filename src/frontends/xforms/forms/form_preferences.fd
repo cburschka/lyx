@@ -257,7 +257,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_roman
 callback: C_FormBaseInputCB
-argument: SCREENFONTS
+argument: 0
 
 --------------------
 class: FL_INPUT
@@ -275,7 +275,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_sans
 callback: C_FormBaseInputCB
-argument: SCREENFONTS
+argument: 0
 
 --------------------
 class: FL_INPUT
@@ -293,7 +293,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_typewriter
 callback: C_FormBaseInputCB
-argument: SCREENFONTS
+argument: 0
 
 --------------------
 class: FL_COUNTER
@@ -311,7 +311,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: counter_zoom
 callback: C_FormBaseInputCB
-argument: SCREENFONTS
+argument: 0
   bounds: 0 999
   precision: 0
   value: 150
@@ -333,7 +333,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: check_scalable
 callback: C_FormBaseInputCB
-argument: SCREENFONTS
+argument: 0
 	value: 1
 
 --------------------
@@ -352,7 +352,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_screen_encoding
 callback: C_FormBaseInputCB
-argument: SCREENFONTS
+argument: 0
 
 --------------------
 class: FL_INPUT
@@ -370,7 +370,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_script
 callback: C_FormBaseInputCB
-argument: SCREENFONTS
+argument: 0
 
 --------------------
 class: FL_INPUT
@@ -388,7 +388,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_footnote
 callback: C_FormBaseInputCB
-argument: SCREENFONTS
+argument: 0
 
 --------------------
 class: FL_INPUT
@@ -406,7 +406,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_large
 callback: C_FormBaseInputCB
-argument: SCREENFONTS
+argument: 0
 
 --------------------
 class: FL_INPUT
@@ -424,7 +424,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_largest
 callback: C_FormBaseInputCB
-argument: SCREENFONTS
+argument: 0
 
 --------------------
 class: FL_INPUT
@@ -442,7 +442,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_huge
 callback: C_FormBaseInputCB
-argument: SCREENFONTS
+argument: 0
 
 --------------------
 class: FL_INPUT
@@ -460,7 +460,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_normal
 callback: C_FormBaseInputCB
-argument: SCREENFONTS
+argument: 0
 
 --------------------
 class: FL_COUNTER
@@ -478,7 +478,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: counter_dpi
 callback: C_FormBaseInputCB
-argument: SCREENFONTS
+argument: 0
   bounds: 0 999
   precision: 0
   value: 150
@@ -500,7 +500,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_tiny
 callback: C_FormBaseInputCB
-argument: SCREENFONTS
+argument: 0
 
 --------------------
 class: FL_INPUT
@@ -518,7 +518,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_larger
 callback: C_FormBaseInputCB
-argument: SCREENFONTS
+argument: 0
 
 --------------------
 class: FL_INPUT
@@ -536,7 +536,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_small
 callback: C_FormBaseInputCB
-argument: SCREENFONTS
+argument: 0
 
 --------------------
 class: FL_INPUT
@@ -554,7 +554,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_huger
 callback: C_FormBaseInputCB
-argument: SCREENFONTS
+argument: 0
 
 =============== FORM ===============
 Name: form_outputs_misc
@@ -596,7 +596,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: counter_line_len
 callback: C_FormBaseInputCB
-argument: OUTPUTSMISC
+argument: 0
   bounds: 0 120
   precision: 0
   value: 75
@@ -618,7 +618,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_tex_encoding
 callback: C_FormBaseInputCB
-argument: OUTPUTSMISC
+argument: 0
 
 --------------------
 class: FL_CHOICE
@@ -636,7 +636,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: choice_default_papersize
 callback: C_FormBaseInputCB
-argument: OUTPUTSMISC
+argument: 0
 
 --------------------
 class: FL_INPUT
@@ -654,7 +654,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_ascii_roff
 callback: C_FormBaseInputCB
-argument: OUTPUTSMISC
+argument: 0
 
 --------------------
 class: FL_INPUT
@@ -672,7 +672,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_checktex
 callback: C_FormBaseInputCB
-argument: OUTPUTSMISC
+argument: 0
 
 --------------------
 class: FL_LABELFRAME
@@ -732,7 +732,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: choice_spell_command
 callback: C_FormBaseInputCB
-argument: SPELLCHECKER
+argument: 0
 
 --------------------
 class: FL_CHECKBUTTON
@@ -750,7 +750,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: check_alt_lang
 callback: C_FormBaseInputCB
-argument: SPELLCHECKER
+argument: 0
 
 --------------------
 class: FL_INPUT
@@ -768,7 +768,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_alt_lang
 callback: C_FormBaseInputCB
-argument: SPELLCHECKER
+argument: 0
 
 --------------------
 class: FL_CHECKBUTTON
@@ -786,7 +786,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: check_escape_chars
 callback: C_FormBaseInputCB
-argument: SPELLCHECKER
+argument: 0
 
 --------------------
 class: FL_INPUT
@@ -804,7 +804,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_escape_chars
 callback: C_FormBaseInputCB
-argument: SPELLCHECKER
+argument: 0
 
 --------------------
 class: FL_CHECKBUTTON
@@ -822,7 +822,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: check_personal_dict
 callback: C_FormBaseInputCB
-argument: SPELLCHECKER
+argument: 0
 
 --------------------
 class: FL_INPUT
@@ -840,7 +840,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_personal_dict
 callback: C_FormBaseInputCB
-argument: SPELLCHECKER
+argument: 0
 
 --------------------
 class: FL_BUTTON
@@ -858,7 +858,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: button_personal_dict
 callback: C_FormBaseInputCB
-argument: SPELLCHECKER
+argument: 0
 
 --------------------
 class: FL_CHECKBUTTON
@@ -876,7 +876,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: check_compound_words
 callback: C_FormBaseInputCB
-argument: SPELLCHECKER
+argument: 0
 
 --------------------
 class: FL_CHECKBUTTON
@@ -894,7 +894,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: check_input_enc
 callback: C_FormBaseInputCB
-argument: SPELLCHECKER
+argument: 0
 
 =============== FORM ===============
 Name: form_inputs_misc
@@ -936,7 +936,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_date_format
 callback: C_FormBaseInputCB
-argument: INPUTSMISC
+argument: 0
 
 =============== FORM ===============
 Name: form_language
@@ -978,7 +978,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_package
 callback: C_FormBaseInputCB
-argument: LANGUAGE
+argument: 0
 
 --------------------
 class: FL_CHOICE
@@ -996,7 +996,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: choice_default_lang
 callback: C_FormBaseInputCB
-argument: LANGUAGE
+argument: 0
 
 --------------------
 class: FL_CHECKBUTTON
@@ -1014,7 +1014,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: check_use_kbmap
 callback: C_FormBaseInputCB
-argument: LANGUAGE
+argument: 0
 
 --------------------
 class: FL_CHOICE
@@ -1032,7 +1032,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: choice_kbmap_1
 callback: C_FormBaseInputCB
-argument: LANGUAGE
+argument: 0
 
 --------------------
 class: FL_CHOICE
@@ -1050,7 +1050,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: choice_kbmap_2
 callback: C_FormBaseInputCB
-argument: LANGUAGE
+argument: 0
 
 --------------------
 class: FL_CHECKBUTTON
@@ -1068,7 +1068,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: check_rtl_support
 callback: C_FormBaseInputCB
-argument: LANGUAGE
+argument: 0
 
 --------------------
 class: FL_CHECKBUTTON
@@ -1086,7 +1086,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: check_mark_foreign
 callback: C_FormBaseInputCB
-argument: LANGUAGE
+argument: 0
 
 --------------------
 class: FL_CHECKBUTTON
@@ -1104,7 +1104,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: check_auto_begin
 callback: C_FormBaseInputCB
-argument: LANGUAGE
+argument: 0
 
 --------------------
 class: FL_CHECKBUTTON
@@ -1122,7 +1122,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: check_auto_end
 callback: C_FormBaseInputCB
-argument: LANGUAGE
+argument: 0
 
 --------------------
 class: FL_INPUT
@@ -1140,7 +1140,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_command_begin
 callback: C_FormBaseInputCB
-argument: LANGUAGE
+argument: 0
 
 --------------------
 class: FL_INPUT
@@ -1158,7 +1158,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_command_end
 callback: C_FormBaseInputCB
-argument: LANGUAGE
+argument: 0
 
 =============== FORM ===============
 Name: form_colours
@@ -1224,7 +1224,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: check_banner
 callback: C_FormBaseInputCB
-argument: LOOKNFEELMISC
+argument: 0
 	value: 1
 
 --------------------
@@ -1243,7 +1243,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: check_auto_region_delete
 callback: C_FormBaseInputCB
-argument: LOOKNFEELMISC
+argument: 0
 	value: 1
 
 --------------------
@@ -1262,7 +1262,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: check_exit_confirm
 callback: C_FormBaseInputCB
-argument: LOOKNFEELMISC
+argument: 0
 	value: 1
 
 --------------------
@@ -1281,7 +1281,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: check_display_shortcuts
 callback: C_FormBaseInputCB
-argument: LOOKNFEELMISC
+argument: 0
 	value: 1
 
 --------------------
@@ -1300,7 +1300,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: counter_autosave
 callback: C_FormBaseInputCB
-argument: LOOKNFEELMISC
+argument: 0
   bounds: 0 1200
   precision: 0
   value: 300
@@ -1322,7 +1322,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: check_ask_new_file
 callback: C_FormBaseInputCB
-argument: LOOKNFEELMISC
+argument: 0
 	value: 1
 
 --------------------
@@ -1341,7 +1341,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: check_cursor_follows_scrollbar
 callback: C_FormBaseInputCB
-argument: LOOKNFEELMISC
+argument: 0
 	value: 1
 
 --------------------
@@ -1360,7 +1360,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: counter_wm_jump
 callback: C_FormBaseInputCB
-argument: LOOKNFEELMISC
+argument: 0
   bounds: 0 250
   precision: 0
   value: 100
@@ -1406,7 +1406,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_popup_font
 callback: C_FormBaseInputCB
-argument: INTERFACE
+argument: 0
 
 --------------------
 class: FL_INPUT
@@ -1424,7 +1424,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_menu_font
 callback: C_FormBaseInputCB
-argument: INTERFACE
+argument: 0
 
 --------------------
 class: FL_INPUT
@@ -1442,7 +1442,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_popup_encoding
 callback: C_FormBaseInputCB
-argument: INTERFACE
+argument: 0
 
 --------------------
 class: FL_INPUT
@@ -1460,7 +1460,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_bind_file
 callback: C_FormBaseInputCB
-argument: INTERFACE
+argument: 0
 
 --------------------
 class: FL_BUTTON
@@ -1496,7 +1496,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_ui_file
 callback: C_FormBaseInputCB
-argument: INTERFACE
+argument: 0
 
 --------------------
 class: FL_BUTTON
@@ -1532,7 +1532,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: check_override_x_dead_keys
 callback: C_FormBaseInputCB
-argument: INTERFACE
+argument: 0
 	value: 1
 
 =============== FORM ===============
@@ -1575,7 +1575,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_command
 callback: C_FormBaseInputCB
-argument: PRINTER
+argument: 0
 
 --------------------
 class: FL_INPUT
@@ -1593,7 +1593,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_page_range
 callback: C_FormBaseInputCB
-argument: PRINTER
+argument: 0
 
 --------------------
 class: FL_INPUT
@@ -1611,7 +1611,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_copies
 callback: C_FormBaseInputCB
-argument: PRINTER
+argument: 0
 
 --------------------
 class: FL_INPUT
@@ -1629,7 +1629,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_reverse
 callback: C_FormBaseInputCB
-argument: PRINTER
+argument: 0
 
 --------------------
 class: FL_INPUT
@@ -1647,7 +1647,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_to_printer
 callback: C_FormBaseInputCB
-argument: PRINTER
+argument: 0
 
 --------------------
 class: FL_INPUT
@@ -1665,7 +1665,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_file_extension
 callback: C_FormBaseInputCB
-argument: PRINTER
+argument: 0
 
 --------------------
 class: FL_INPUT
@@ -1683,7 +1683,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_spool_command
 callback: C_FormBaseInputCB
-argument: PRINTER
+argument: 0
 
 --------------------
 class: FL_INPUT
@@ -1701,7 +1701,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_paper_type
 callback: C_FormBaseInputCB
-argument: PRINTER
+argument: 0
 
 --------------------
 class: FL_INPUT
@@ -1719,7 +1719,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_even_pages
 callback: C_FormBaseInputCB
-argument: PRINTER
+argument: 0
 
 --------------------
 class: FL_INPUT
@@ -1737,7 +1737,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_odd_pages
 callback: C_FormBaseInputCB
-argument: PRINTER
+argument: 0
 
 --------------------
 class: FL_INPUT
@@ -1755,7 +1755,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_collated
 callback: C_FormBaseInputCB
-argument: PRINTER
+argument: 0
 
 --------------------
 class: FL_INPUT
@@ -1773,7 +1773,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_landscape
 callback: C_FormBaseInputCB
-argument: PRINTER
+argument: 0
 
 --------------------
 class: FL_INPUT
@@ -1791,7 +1791,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_to_file
 callback: C_FormBaseInputCB
-argument: PRINTER
+argument: 0
 
 --------------------
 class: FL_INPUT
@@ -1809,7 +1809,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_extra_options
 callback: C_FormBaseInputCB
-argument: PRINTER
+argument: 0
 
 --------------------
 class: FL_INPUT
@@ -1827,7 +1827,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_spool_prefix
 callback: C_FormBaseInputCB
-argument: PRINTER
+argument: 0
 
 --------------------
 class: FL_INPUT
@@ -1845,7 +1845,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_paper_size
 callback: C_FormBaseInputCB
-argument: PRINTER
+argument: 0
 
 --------------------
 class: FL_INPUT
@@ -1863,7 +1863,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_name
 callback: C_FormBaseInputCB
-argument: PRINTER
+argument: 0
 
 --------------------
 class: FL_CHECKBUTTON
@@ -1881,7 +1881,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: check_adapt_output
 callback: C_FormBaseInputCB
-argument: PRINTER
+argument: 0
 
 --------------------
 class: FL_LABELFRAME
@@ -1941,7 +1941,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_default_path
 callback: C_FormBaseInputCB
-argument: PATHS
+argument: 0
 
 --------------------
 class: FL_BUTTON
@@ -1977,7 +1977,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: counter_lastfiles
 callback: C_FormBaseInputCB
-argument: PATHS
+argument: 0
   bounds: 0 9
   precision: 0
   value: 4
@@ -1999,7 +1999,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_template_path
 callback: C_FormBaseInputCB
-argument: PATHS
+argument: 0
 
 --------------------
 class: FL_BUTTON
@@ -2035,7 +2035,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: check_last_files
 callback: C_FormBaseInputCB
-argument: PATHS
+argument: 0
 	value: 1
 
 --------------------
@@ -2072,7 +2072,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_lastfiles
 callback: C_FormBaseInputCB
-argument: PATHS
+argument: 0
 
 --------------------
 class: FL_BUTTON
@@ -2108,7 +2108,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: check_make_backups
 callback: C_FormBaseInputCB
-argument: PATHS
+argument: 0
 	value: 1
 
 --------------------
@@ -2127,7 +2127,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_backup_path
 callback: C_FormBaseInputCB
-argument: PATHS
+argument: 0
 
 --------------------
 class: FL_BUTTON
@@ -2163,7 +2163,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_serverpipe
 callback: C_FormBaseInputCB
-argument: PATHS
+argument: 0
 
 --------------------
 class: FL_BUTTON
@@ -2199,7 +2199,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_temp_dir
 callback: C_FormBaseInputCB
-argument: PATHS
+argument: 0
 
 --------------------
 class: FL_CHECKBUTTON
@@ -2217,7 +2217,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: check_use_temp_dir
 callback: C_FormBaseInputCB
-argument: PATHS
+argument: 0
 	value: 1
 
 ==============================

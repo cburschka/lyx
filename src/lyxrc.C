@@ -1491,21 +1491,21 @@ void LyXRC::set_font_norm_type()
 		font_norm_type = OTHER_ENCODING;
 }
 
-string LyXRC::getFeedback(LyXRCTags tag)
+string LyXRC::getDescription(LyXRCTags tag)
 {
 	string str;
 	
 	switch( tag ) {
 	case RC_FONT_ENCODING:
-		str = N_("The font encoding used for the LaTeX2e fontenc package.\nT1 is highly recommended for non-English languages.");
+		str = N_("The font encoding used for the LaTeX2e fontenc package. T1 is highly recommended for non-English languages.");
 		break;
 		
 	case RC_PRINTER:
-		str = N_("The default printer to print on. If none is specified, LyX will\nuse the environment variable PRINTER.");
+		str = N_("The default printer to print on. If none is specified, LyX will use the environment variable PRINTER.");
 		break;
 		
 	case RC_PRINT_COMMAND:
-		str = N_("Your favorite print program, eg \"dvips\", \"dvilj4\"");
+		str = N_("Your favorite print program, e.g. \"dvips\", \"dvilj4\".");
 		break;
 		
 	case RC_PRINTEVENPAGEFLAG:
@@ -1517,7 +1517,7 @@ string LyXRC::getFeedback(LyXRCTags tag)
 	case RC_PRINTLANDSCAPEFLAG:
         case RC_PRINTPAPERFLAG:
 	case RC_PRINTPAPERDIMENSIONFLAG:
-		str = N_("Look at the man page for your favorite print program to learn\nwhich options to use.");
+		str = N_("Look at the man page for your favorite print program to learn which options to use.");
 		break;
 		
 	case RC_PRINTTOPRINTER:
@@ -1525,7 +1525,7 @@ string LyXRC::getFeedback(LyXRCTags tag)
 		break;
 		
 	case RC_PRINT_ADAPTOUTPUT:
-		str = N_("Set to true for LyX to pass the name of the destination printer to your\nprint command.");
+		str = N_("Set to true for LyX to pass the name of the destination printer to your print command.");
 		break;
 		
 	case RC_PRINTTOFILE:
@@ -1533,27 +1533,27 @@ string LyXRC::getFeedback(LyXRCTags tag)
 		break;
 		
 	case RC_PRINTFILEEXTENSION:
-		str = N_("Extension of printer program output file. Usually .ps");
+		str = N_("Extension of printer program output file. Usually \".ps\".");
 		break;
 		
 	case RC_PRINTEXSTRAOPTIONS:
-		str = N_("Extra options to pass to printing program after everything else,\nbut before the filename of the DVI file to be printed.");
+		str = N_("Extra options to pass to printing program after everything else, but before the filename of the DVI file to be printed.");
 		break;
 		
 	case RC_PRINTSPOOL_COMMAND:
-		str = N_("When set, this printer option automatically prints to a file and then calls\na separate print spooling program on that file with the given name\nand arguments.");
+		str = N_("When set, this printer option automatically prints to a file and then calls a separate print spooling program on that file with the given name and arguments.");
 		break;
 		
 	case RC_PRINTSPOOL_PRINTERPREFIX:
-		str = N_("If you specify a printer name in the print dialog, the following argument\nis prepended along with the printer name after the spool command.");
+		str = N_("If you specify a printer name in the print dialog, the following argument is prepended along with the printer name after the spool command.");
 		break;
 		
 	case RC_SCREEN_DPI:
-		str = N_("DPI (dots per inch) of your monitor is auto-detected by LyX.\nIf that goes wrong, override the setting here.");
+		str = N_("DPI (dots per inch) of your monitor is auto-detected by LyX. If that goes wrong, override the setting here.");
 		break;
 		
 	case RC_SCREEN_ZOOM:
-		str = N_("The zoom percentage for screen fonts.\nA setting of 100% will make the fonts roughly the same size as on paper.");
+		str = N_("The zoom percentage for screen fonts. A setting of 100% will make the fonts roughly the same size as on paper.");
 		break;
 		
 	case RC_SCREEN_FONT_SIZES:
@@ -1586,7 +1586,7 @@ string LyXRC::getFeedback(LyXRCTags tag)
 		break;
 		
 	case RC_AUTOSAVE:
-		str = N_("The time interval between auto-saves (in seconds).\n0 means no auto-save");
+		str = N_("The time interval between auto-saves (in seconds). 0 means no auto-save.");
 		break;
 		
 	case RC_DOCUMENTPATH:
@@ -1602,7 +1602,7 @@ string LyXRC::getFeedback(LyXRCTags tag)
 		break;
 		
 	case RC_USETEMPDIR:
-		str = N_("Specify to use a temporary directory to store temporary TeX output.\nThis directory is deleted when you quit LyX.");
+		str = N_("Specify to use a temporary directory to store temporary TeX output. This directory is deleted when you quit LyX.");
 		break;
 		
 	case RC_LASTFILES:
@@ -1610,30 +1610,30 @@ string LyXRC::getFeedback(LyXRCTags tag)
 		break;
 		
 	case RC_AUTOREGIONDELETE:
-		str = N_("Set to false if you don't want the current selection to be replaced\nautomatically by what you type.");
+		str = N_("Set to false if you don't want the current selection to be replaced automatically by what you type.");
 		break;
 		
 	case RC_OVERRIDE_X_DEADKEYS:
-		str = N_("Set to true for LyX to take over the handling of the dead keys\n(a.k.a accent keys) that may be defined for your keyboard.");
+		str = N_("Set to true for LyX to take over the handling of the dead keys (a.k.a. accent keys) that may be defined for your keyboard.");
 		break;
 		
 
 	case RC_SERVERPIPE:
-		str = N_("This starts the lyxserver. The pipes get an additional extension\n\".in\" and \".out\". Only for advanced users.");
+		str = N_("This starts the lyxserver. The pipes get an additional extension \".in\" and \".out\". Only for advanced users.");
 		break;
 		
 	case RC_BINDFILE:
-		str = N_("Keybindings file. Can either specify an absolute path,\nor LyX will look in its global and local bind/ directories.");
+		str = N_("Keybindings file. Can either specify an absolute path, or LyX will look in its global and local bind/ directories.");
 		break;
 		
 	case RC_UIFILE:
-		str = N_("The  UI (user interface) file. Can either specify an absolute path,\nor LyX will look in its global and local ui/ directories.");
+		str = N_("The  UI (user interface) file. Can either specify an absolute path, or LyX will look in its global and local ui/ directories.");
 		break;
 		
 	case RC_KBMAP:
 	case RC_KBMAP_PRIMARY:
 	case RC_KBMAP_SECONDARY:
-		str = N_("Use this to set the correct mapping file for your keyboard.\nYou'll need this if you for instance want to type German documents\non an American keyboard.");
+		str = N_("Use this to set the correct mapping file for your keyboard. You'll need this if you for instance want to type German documents on an American keyboard.");
 		break;
 
 #if 0
@@ -1647,11 +1647,11 @@ string LyXRC::getFeedback(LyXRCTags tag)
 		break;
 #endif	
 	case RC_ASCIIROFF_COMMAND:
-		str = N_("Use to define an external program to render tables in the ASCII output.\nE.g. \"groff -t -Tlatin1 $$FName\"  where $$FName is the input file.\nIf \"none\" is specified, an internal routine is used.");
+		str = N_("Use to define an external program to render tables in the ASCII output. E.g. \"groff -t -Tlatin1 $$FName\"  where $$FName is the input file. If \"none\" is specified, an internal routine is used.");
 		break;
 		
 	case RC_ASCII_LINELEN:
-		str = N_("This is the maximum line length of an exported ASCII file\n(LaTeX, SGML or plain text).");
+		str = N_("This is the maximum line length of an exported ASCII file (LaTeX, SGML or plain text).");
 		break;
 		
 	case RC_NUMLASTFILES:
@@ -1673,7 +1673,7 @@ string LyXRC::getFeedback(LyXRCTags tag)
 		break;
 		
 	case RC_ACCEPT_COMPOUND:
-		str = N_("Consider run-together words, such as \"notthe\" for \"not the\",\nas legal words?");
+		str = N_("Consider run-together words, such as \"notthe\" for \"not the\", as legal words?");
 		break;
 		
 	case RC_SPELL_COMMAND:
@@ -1681,17 +1681,17 @@ string LyXRC::getFeedback(LyXRCTags tag)
 		break;
 		
 	case RC_USE_INP_ENC:
-		str = N_("Specify whether to pass the -T input encoding option to ispell.\nEnable this if you can't spellcheck words with international letters\nin them.\nThis may not work with all dictionaries.");
+		str = N_("Specify whether to pass the -T input encoding option to ispell. Enable this if you can't spellcheck words with international letters in them. This may not work with all dictionaries.");
 		break;
 		
 	case RC_USE_ALT_LANG:
 	case RC_ALT_LANG:
-		str = N_("Specify an alternate language.\nThe default is to use the language of the document.");
+		str = N_("Specify an alternate language. The default is to use the language of the document.");
 		break;
 		
 	case RC_USE_PERS_DICT:
 	case RC_PERS_DICT:
-		str = N_("Specify an alternate personal dictionary file.\nE.g. \".ispell_english\".");
+		str = N_("Specify an alternate personal dictionary file. E.g. \".ispell_english\".");
 		break;
 		
 	case RC_USE_ESC_CHARS:
@@ -1700,23 +1700,23 @@ string LyXRC::getFeedback(LyXRCTags tag)
 		break;
 		
 	case RC_SCREEN_FONT_SCALABLE:
-		str = N_("Allow the use of scalable screen fonts? If false, LyX will use the\nclosest existing size for a match. Use this if the scalable fonts\nlook bad and you have many fixed size fonts.");
+		str = N_("Allow the use of scalable screen fonts? If false, LyX will use the closest existing size for a match. Use this if the scalable fonts look bad and you have many fixed size fonts.");
 		break;
 		
 	case RC_CHKTEX_COMMAND:
-		str = N_("Define how to run chktex.\nE.g. \"chktex -n11 -n1 -n3 -n6 -n9 -22 -n25 -n30 -n38\"\nRefer to the ChkTeX documentation.");
+		str = N_("Define how to run chktex. E.g. \"chktex -n11 -n1 -n3 -n6 -n9 -22 -n25 -n30 -n38\" Refer to the ChkTeX documentation.");
 		break;
 		
 	case RC_CURSOR_FOLLOWS_SCROLLBAR:
-		str = N_("LyX normally doesn't update the cursor position if you move the scrollbar.\nSet to true if you'd prefer to always have the cursor on screen.");
+		str = N_("LyX normally doesn't update the cursor position if you move the scrollbar. Set to true if you'd prefer to always have the cursor on screen.");
 		break;
 		
 	case RC_EXIT_CONFIRMATION:
-		str = N_("Sets whether LyX asks for a second confirmation to exit when you have\nchanged documents.\n(LyX will still ask to save changed documents.)");
+		str = N_("Sets whether LyX asks for a second confirmation to exit when you have changed documents. (LyX will still ask to save changed documents.)");
 		break;
 		
 	case RC_DISPLAY_SHORTCUTS:
-		str = N_("LyX continously displays names of last command executed,\nalong with a list of defined short-cuts for it in the minibuffer.\nSet to false if LyX seems slow.");
+		str = N_("LyX continously displays names of last command executed, along with a list of defined short-cuts for it in the minibuffer. Set to false if LyX seems slow.");
 		break;
 		
 	case RC_MAKE_BACKUP:
@@ -1724,7 +1724,7 @@ string LyXRC::getFeedback(LyXRCTags tag)
 		break;
 		
 	case RC_BACKUPDIR_PATH:
-		str = N_("The path for storing backup files. If it is an empty string,\nLyX will store the backup file in the same directory as the original file.");
+		str = N_("The path for storing backup files. If it is an empty string, LyX will store the backup file in the same directory as the original file.");
 		break;
 
 	case RC_RTL_SUPPORT:
@@ -1732,23 +1732,23 @@ string LyXRC::getFeedback(LyXRCTags tag)
 		break;
 		
 	case RC_MARK_FOREIGN_LANGUAGE:
-		str = N_("Use to control the highlighting of words with a language foreign to\nthat of the document.");
+		str = N_("Use to control the highlighting of words with a language foreign to that of the document.");
 		break;
 		
 	case RC_LANGUAGE_PACKAGE:
-		str = N_("The latex command for loading the language package.\nE.g. \"\\usepackage{babel}\", \"\\usepackage{omega}\".");
+		str = N_("The latex command for loading the language package. E.g. \"\\usepackage{babel}\", \"\\usepackage{omega}\".");
 		break;
 		
 	case RC_LANGUAGE_AUTO_BEGIN:
-		str = N_("Use if a language switching command is needed at the beginning\nof the document.");
+		str = N_("Use if a language switching command is needed at the beginning of the document.");
 		break;
 		
 	case RC_LANGUAGE_AUTO_END:
-		str = N_("Use if a language switching command is needed at the end\nof the document.");
+		str = N_("Use if a language switching command is needed at the end of the document.");
 		break;
 		
 	case RC_LANGUAGE_COMMAND_BEGIN:
-		str = N_("The latex command for changing from the language of the document\nto another language.\nE.g. \\selectlanguage{$$lang} where $$lang is substituted by the name\nof the second language.");
+		str = N_("The latex command for changing from the language of the document to another language. E.g. \\selectlanguage{$$lang} where $$lang is substituted by the name of the second language.");
 		break;
 		
 	case RC_LANGUAGE_COMMAND_END:
@@ -1756,7 +1756,7 @@ string LyXRC::getFeedback(LyXRCTags tag)
 		break;
 		
 	case RC_DATE_INSERT_FORMAT:
-		str = N_("This accepts the normal strftime formats; see man strftime for full details.\nE.g.\"%A, %e. %B %Y\".");
+		str = N_("This accepts the normal strftime formats; see man strftime for full details. E.g.\"%A, %e. %B %Y\".");
 		break;
 		
 	case RC_SHOW_BANNER:
@@ -1764,7 +1764,7 @@ string LyXRC::getFeedback(LyXRCTags tag)
 		break;
 		
 	case RC_WHEEL_JUMP:
-		str = N_("The wheel movement factor (for mice with wheels or five button mice)");
+		str = N_("The wheel movement factor (for mice with wheels or five button mice).");
 		break;
 		
 	case RC_CONVERTER:
@@ -1777,7 +1777,7 @@ string LyXRC::getFeedback(LyXRCTags tag)
 		break;
 		
 	case RC_NEW_ASK_FILENAME:
-		str = N_("This sets the behaviour if you want to be asked for a filename when\ncreating a new document or wait until you save it and be asked then.");
+		str = N_("This sets the behaviour if you want to be asked for a filename when creating a new document or wait until you save it and be asked then.");
 		break;
 		
 	case RC_DEFAULT_LANGUAGE:

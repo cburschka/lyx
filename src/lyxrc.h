@@ -139,7 +139,7 @@ enum LyXRCTags {
 	///
 	int ReadBindFile(string const & name = "cua");
 	///
-	static string getFeedback( LyXRCTags );
+	static string getDescription( LyXRCTags );
 	///
 	string bind_file;
 	///

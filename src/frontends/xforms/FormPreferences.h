@@ -54,34 +54,9 @@ public:
 	///
 	static void FeedbackCB(FL_OBJECT *, long);
 	///
-	static int FeedbackPost(FL_OBJECT *ob, int, FL_Coord, FL_Coord,
-				int, void *);
+	void feedbackPost(FL_OBJECT *, int);
 
 private:
-	///
-	enum State {
-		///
-		COLOURS,
-		///
-		INPUTSMISC,
-		///
-		INTERFACE,
-		///
-		LANGUAGE,
-		///
-		LOOKNFEELMISC,
-		///
-		OUTPUTSMISC,
-		///
-		PATHS,
-		///
-		PRINTER,
-		///
-		SCREENFONTS,
-		///
-		SPELLCHECKER
-	};
-
 	/// Update the dialog.
 	virtual void update();
 	///
@@ -97,29 +72,29 @@ private:
 	/// Build the dialog
 	virtual void build();
 	/// control which feedback message is output
-	void feedback( FL_OBJECT * ob );
+	void feedback( FL_OBJECT * );
 	///
 	virtual FL_FORM * form() const;
 	///
-	void applyColours();
+	void applyColours() const;
 	///
-	void applyInputsMisc();
+	void applyInputsMisc() const;
 	///
-	void applyInterface();
+	void applyInterface() const;
 	///
-	void applyLanguage();
+	void applyLanguage() const;
 	///
-	void applyLnFmisc();
+	void applyLnFmisc() const;
 	///
-	void applyOutputsMisc();
+	void applyOutputsMisc() const;
 	///
-	void applyPaths();
+	void applyPaths(); // not const because calls updatePaths!
 	///
-	void applyPrinter();
+	void applyPrinter() const;
 	///
-	void applyScreenFonts();
+	void applyScreenFonts() const;
 	///
-	void applySpellChecker();
+	void applySpellChecker(); // not const because calls updateSpellChecker!
 	///
 	void buildColours();
 	///
@@ -129,7 +104,7 @@ private:
 	///
 	void buildLanguage();
 	///
-	void addLanguages( Combox & );
+	void addLanguages( Combox & ) const;
 	///
 	void buildLnFmisc();
 	///
@@ -143,25 +118,25 @@ private:
 	///
 	void buildSpellchecker();
 	///
-	void feedbackColours(FL_OBJECT const * const);
+	string feedbackColours(FL_OBJECT const * const) const;
 	///
-	void feedbackInputsMisc(FL_OBJECT const * const);
+	string feedbackInputsMisc(FL_OBJECT const * const) const;
 	///
-	void feedbackInterface(FL_OBJECT const * const);
+	string feedbackInterface(FL_OBJECT const * const) const;
 	///
-	void feedbackLanguage(FL_OBJECT const * const);
+	string feedbackLanguage(FL_OBJECT const * const) const;
 	///
-	void feedbackLnFmisc(FL_OBJECT const * const);
+	string feedbackLnFmisc(FL_OBJECT const * const) const;
 	///
-	void feedbackOutputsMisc(FL_OBJECT const * const);
+	string feedbackOutputsMisc(FL_OBJECT const * const) const;
 	///
-	void feedbackPaths(FL_OBJECT const * const);
+	string feedbackPaths(FL_OBJECT const * const) const;
 	///
-	void feedbackPrinter(FL_OBJECT const * const);
+	string feedbackPrinter(FL_OBJECT const * const) const;
 	///
-	void feedbackScreenFonts(FL_OBJECT const * const);
+	string feedbackScreenFonts(FL_OBJECT const * const) const;
 	///
-	void feedbackSpellChecker(FL_OBJECT const * const);
+	string feedbackSpellChecker(FL_OBJECT const * const) const;
 	///
 	bool inputLanguage(FL_OBJECT const * const);
 	///
@@ -261,6 +236,8 @@ private:
 	Combox * combo_kbmap_1;
 	///
 	Combox * combo_kbmap_2;
+	///
+	FL_OBJECT * feedbackObj;
 };
 
 #endif
