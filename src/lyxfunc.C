@@ -420,6 +420,7 @@ FuncStatus LyXFunc::getStatus(kb_action action,
 			    && !tli->getFirstLockingInsetOfType(Inset::TABULAR_CODE));
 		break;
 
+	case LFUN_LAYOUT:
 	case LFUN_LAYOUT_PARAGRAPH: {
 		Inset * inset = TEXT(false)->cursor.par()->inInset();
 		disable = inset && inset->forceDefaultParagraphs(inset);

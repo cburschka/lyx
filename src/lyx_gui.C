@@ -241,6 +241,11 @@ void LyXGUI::init()
  	fl_setpup_fontsize(FL_NORMAL_SIZE);
  	fl_setpup_color(FL_MCOL, FL_BLACK);
 	fl_set_goodies_font(FL_NORMAL_STYLE, FL_NORMAL_SIZE);
+#if FL_REVISION < 89 
+	fl_set_oneliner_font(FL_NORMAL_STYLE, FL_NORMAL_SIZE);
+#else
+	fl_set_tooltip_font(FL_NORMAL_STYLE, FL_NORMAL_SIZE);
+#endif
 
         // all lyxrc settings has to be done here as lyxrc has not yet
         // been read when the GUI is created (Jug)

@@ -1,3 +1,12 @@
+2002-01-20  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* Toolbar_pimpl.C (update): disable layout combox when LFUN_LAYOUT
+	is disabled
+
+	* combox.C (activate): 
+	(deactivate): change color of labels to reflect the state of the
+	combox
+
 2002-01-16  Herbert Voss  <voss@lyx.org>
 
 	* FormExternal.C (build): activate  apply/ok-button when something

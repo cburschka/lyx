@@ -1,5 +1,10 @@
 2002-01-20  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
+	* lyx_gui.C (init): give the toolbar tooltips a normal font.
+
+	* lyxfunc.C (getStatus): handle LFUN_LAYOUT like
+	LFUN_LAYOUT_PARAGRAPHS. 
+
 	* tabular.C (GetCellFromInset): new method. Finds an inset in a
 	tabular. It is possible to provide a possible cell, which will
 	typically be the actcell from the corresponding insettabular

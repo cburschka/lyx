@@ -358,17 +358,31 @@ void Combox::hide(int who)
 
 void Combox::activate()
 {
-	if (browser) fl_activate_object(browser);
-	if (button) fl_activate_object(button);
-	if (label) fl_activate_object(label);
+	if (browser)
+		fl_activate_object(browser);
+	if (button) {
+		fl_activate_object(button);
+		fl_set_object_lcol(button, FL_BLACK);
+	}
+	if (label) {
+		fl_activate_object(label);
+		fl_set_object_lcol(label, FL_BLACK);
+	}
 }
 
 
 void Combox::deactivate()
 {
-	if (browser) fl_deactivate_object(browser);
-	if (button) fl_deactivate_object(button);
-	if (label) fl_deactivate_object(label);
+	if (browser)
+		fl_deactivate_object(browser);
+	if (button) {
+		fl_deactivate_object(button);
+		fl_set_object_lcol(button, FL_INACTIVE);
+	}
+	if (label) {
+		fl_deactivate_object(label);
+		fl_set_object_lcol(label, FL_INACTIVE);
+	}
 }
 
 

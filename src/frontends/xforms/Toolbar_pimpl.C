@@ -211,6 +211,11 @@ void Toolbar::Pimpl::update()
 			}
 			else
 				fl_activate_object(p->icon);
+		} else if (p->action == ToolbarDefaults::LAYOUTS && combox) {
+			if (owner->getLyXFunc()->getStatus(LFUN_LAYOUT).disabled())
+				combox->deactivate();
+			else
+				combox->activate();
 		}
 	}
 }
