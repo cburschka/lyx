@@ -68,11 +68,16 @@ QCommandBuffer::QCommandBuffer(QtView * view, ControlCommandBuffer & control)
 	QPixmap qpup(toqstr(LibFileSearch("images", "up", "xpm")));
 	QPixmap qpdown(toqstr(LibFileSearch("images", "down", "xpm")));
 
-	(new QToolButton(qpup, qt_("Previous command"), "", this, SLOT(up()), this))->show();
-	(new QToolButton(qpdown, qt_("Next command"), "", this, SLOT(down()), this))->show();
+	QToolButton * up = new QToolButton(qpup, qt_("Previous command"), "", this, SLOT(up()), this);
+	up->setFocusPolicy(NoFocus);
+	up->show();
+	QToolButton * down = new QToolButton(qpdown, qt_("Next command"), "", this, SLOT(down()), this);
+	down->setFocusPolicy(NoFocus);
+	down->show();
 
 	edit_ = new QCommandEdit(this);
 	edit_->setMinimumSize(edit_->sizeHint());
+	edit_->setFocusPolicy(ClickFocus);
 	edit_->show();
 	setStretchableWidget(edit_);
 
@@ -80,7 +85,7 @@ QCommandBuffer::QCommandBuffer(QtView * view, ControlCommandBuffer & control)
 
 	connect(edit_, SIGNAL(escapePressed()), this, SLOT(cancel()));
 	connect(edit_, SIGNAL(returnPressed()), this, SLOT(dispatch()));
-	connect(edit_, SIGNAL(rightPressed()), this, SLOT(complete()));
+	connect(edit_, SIGNAL(tabPressed()), this, SLOT(complete()));
 	connect(edit_, SIGNAL(upPressed()), this, SLOT(up()));
 	connect(edit_, SIGNAL(downPressed()), this, SLOT(down()));
 }
@@ -105,6 +110,7 @@ void QCommandBuffer::dispatch()
 	controller_.dispatch(fromqstr(edit_->text()));
 	view_->centralWidget()->setFocus();
 	edit_->setText("");
+	edit_->clearFocus();
 }
 
 
@@ -157,9 +163,10 @@ void QCommandBuffer::complete()
 
 void QCommandBuffer::complete_selected(QString const & str)
 {
-	edit_->setText(str + ' ');
 	QWidget const * widget = static_cast<QWidget const *>(sender());
 	const_cast<QWidget *>(widget)->hide();
+	edit_->setText(str + ' ');
+	edit_->setFocus();
 }
 
 

@@ -1,3 +1,10 @@
+2003-04-05  John Levon  <levon@movementarian.org>
+
+	* QCommandBuffer.C:
+	* QCommandEdit.C:
+	* QCommandEdit.h: use tab instead of right-arrow
+	for completion
+
 2003-04-04  John Levon  <levon@movementarian.org>
 
 	* panelstack.C: hide the pointless header

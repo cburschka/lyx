@@ -12,7 +12,6 @@
 
 #include "QCommandEdit.h"
 
-
 QCommandEdit::QCommandEdit(QWidget * parent)
 	: QLineEdit(parent)
 {
@@ -29,21 +28,25 @@ void QCommandEdit::keyPressEvent(QKeyEvent * e)
 
 	case Key_Up:
 		emit upPressed();
-			break;
+		break;
 
 	case Key_Down:
 		emit downPressed();
-		break;
-
-	case Key_Right:
-		if (cursorPosition() == text().length())
-			emit rightPressed();
-		else
-			QLineEdit::keyPressEvent(e);
 		break;
 
 	default:
 		QLineEdit::keyPressEvent(e);
 		break;
 	}
+}
+
+
+void QCommandEdit::focusOutEvent(QFocusEvent * e)
+{
+	if (e->reason() == QFocusEvent::Tab) {
+		emit tabPressed();
+		return;
+	}
+
+	QLineEdit::focusOutEvent(e);		
 }

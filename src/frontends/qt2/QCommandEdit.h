@@ -29,9 +29,12 @@ signals:
 	void downPressed();
 
 	/// complete
-	void rightPressed();
+	void tabPressed();
+
 protected:
 	virtual void keyPressEvent(QKeyEvent * e);
+
+	virtual void focusOutEvent(QFocusEvent * e);
 };
 
 #endif // QCOMMANDEDIT_H
