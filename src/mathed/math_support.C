@@ -458,14 +458,6 @@ void mathed_draw_deco(PainterInfo & pi, int x, int y, int w, int h,
 				int(x + xx + 0.5), int(y + yy + 0.5),
 				int(x + x2 + 0.5), int(y + y2 + 0.5),
 				LColor::math);
-
-			lyxerr << "drew line "
-			       << "xx=" << xx << ", yy=" << yy
-			       << ", x2 = " << x2 << ", y2 = " << y2 << '\n'
-			       << int(x + xx + 0.5) << ", "
-			       << int(y + yy + 0.5) << ", "
-			       << int(x + x2 + 0.5) << ", "
-			       << int(y + y2 + 0.5) << std::endl;
 		} else {
 			int xp[32];
 			int yp[32];

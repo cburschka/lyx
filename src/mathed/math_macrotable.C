@@ -52,8 +52,8 @@ MathAtom & MathMacroTable::provide(string const & name)
 
 void MathMacroTable::create(MathAtom const & at)
 {
-	lyxerr << "MathMacroTable::create: '"
-		<< at->asMacroTemplate()->name() << "'" << endl;
+	//lyxerr << "MathMacroTable::create: '"
+	//	<< at->asMacroTemplate()->name() << "'" << endl;
 	macro_table[at->asMacroTemplate()->name()] = at;
 }
 
