@@ -156,7 +156,7 @@ const int LYX_FORMAT = 222;
 
 Buffer::Buffer(string const & file, bool ronly)
 	: niceFile(true), lyx_clean(true), bak_clean(true),
-	  unnamed(false), dep_clean(0), read_only(ronly),
+	  unnamed(false), read_only(ronly),
 	  filename_(file), users(0)
 {
 	lyxerr[Debug::INFO] << "Buffer::Buffer()" << endl;
@@ -305,7 +305,7 @@ vector<int> author_ids;
 // changed to be public and have one parameter
 // if par = 0 normal behavior
 // else insert behavior
-// Returns false if "\the_end" is not read for formats >= 2.13. (Asger)
+// Returns false if "\the_end" is not read (Asger)
 bool Buffer::readLyXformat2(LyXLex & lex, Paragraph * par)
 {
 	unknown_layouts = 0;
@@ -3302,34 +3302,16 @@ vector<pair<string, string> > const Buffer::getBibkeyList() const
 
 bool Buffer::isDepClean(string const & name) const
 {
-	DEPCLEAN * item = dep_clean;
-	while (item && item->master != name)
-		item = item->next;
-	if (!item) return true;
-	return item->clean;
+	DepClean::const_iterator it = dep_clean_.find(name);
+	if (it == dep_clean_.end())
+		return true;
+	return it->second;
 }
 
 
 void Buffer::markDepClean(string const & name)
 {
-	if (!dep_clean) {
-		dep_clean = new DEPCLEAN;
-		dep_clean->clean = true;
-		dep_clean->master = name;
-		dep_clean->next = 0;
-	} else {
-		DEPCLEAN * item = dep_clean;
-		while (item && item->master != name)
-			item = item->next;
-		if (item) {
-			item->clean = true;
-		} else {
-			item = new DEPCLEAN;
-			item->clean = true;
-			item->master = name;
-			item->next = 0;
-		}
-	}
+	dep_clean_[name] = true;
 }
 
 
@@ -3536,10 +3518,12 @@ void Buffer::markDirty()
 		updateTitles();
 	}
 	bak_clean = false;
-	DEPCLEAN * tmp = dep_clean;
-	while (tmp) {
-		tmp->clean = false;
-		tmp = tmp->next;
+
+	DepClean::iterator it = dep_clean_.begin();
+	DepClean::const_iterator const end = dep_clean_.end();
+
+	for (; it != end; ++it) {
+		it->second = false;
 	}
 }
 

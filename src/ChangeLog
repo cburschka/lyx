@@ -1,3 +1,8 @@
+2003-02-09  John Levon  <levon@movementarian.org>
+
+	* buffer.h:
+	* buffer.C: replace hand-coded list with a map for the dep clean
+
 2003-02-08  John Levon  <levon@movementarian.org>
 
 	* LaTeX.C: consolidate code into showRunMessage() helper

@@ -39,16 +39,6 @@ class ParIterator;
 class ParConstIterator;
 
 
-///
-struct DEPCLEAN {
-	///
-	bool clean;
-	///
-	string master;
-	///
-	DEPCLEAN * next;
-};
-
 /** The buffer object.
   This is the buffer object. It contains all the informations about
   a document loaded into LyX. I am not sure if the class is complete or
@@ -308,6 +298,11 @@ public:
 	AuthorList & authors();
 
 private:
+	typedef std::map<string, bool> DepClean;
+
+	/// need to regenerate .tex ?
+	DepClean dep_clean_;
+ 
 	/// the author list
 	AuthorList authorlist;
 
@@ -319,9 +314,6 @@ private:
 
 	/// is this a unnamed file (New...)
 	bool unnamed;
-
-	/// is regenerating #.tex# necessary
-	DEPCLEAN * dep_clean;
 
 	/// buffer is r/o
 	bool read_only;
