@@ -14,8 +14,6 @@
 #endif
 
 #include "QLyXKeySym.h"
-
-#include "qevent.h"
 #include "qlkey.h"
  
 QLyXKeySym::QLyXKeySym()
@@ -33,7 +31,6 @@ void QLyXKeySym::set(int key, QString const & text)
 
 void QLyXKeySym::init(string const & symbolname)
 {
-	// FIXME: ARGHH !
 	key_ = string_to_qkey(symbolname);
 }
 
@@ -53,7 +50,6 @@ bool QLyXKeySym::isModifier() const
  
 string QLyXKeySym::getSymbolName() const
 {
-	// FIXME
 	return qkey_to_string(key_);
 }
 
@@ -68,7 +64,5 @@ char QLyXKeySym::getISOEncoded() const
 bool QLyXKeySym::operator==(LyXKeySym const & k) const
 {
 	QLyXKeySym const & o = static_cast<QLyXKeySym const &>(k);
-
-	// FIXME: UGHGHGHGGH
-	return o.key_ == key_ /*&& o.text_ == text_*/;
+	return o.key_ == key_;
 }

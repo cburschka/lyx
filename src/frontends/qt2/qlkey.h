@@ -38,7 +38,7 @@ int string_to_qkey(string const & str)
 	if (str == "Tab") return Qt::Key_Tab;
 	if (str == "BackSpace") return Qt::Key_BackSpace;
 	if (str == "Return") return Qt::Key_Return;
-	if (str == "KP_Enter") // correct ?? return Qt::Key_Enter;
+	if (str == "KP_Enter") return Qt::Key_Enter; // correct ?
 	if (str == "Insert") return Qt::Key_Insert;
 	if (str == "Delete") return Qt::Key_Delete;
 	if (str == "Pause") return Qt::Key_Pause;
@@ -54,7 +54,7 @@ int string_to_qkey(string const & str)
 	if (str == "Next") return Qt::Key_Next;
 	if (str == "Shift_L") return Qt::Key_Shift;
 	if (str == "Control_L") return Qt::Key_Control;
-	if (str == "Alt_L") // correct ? return Qt::Key_Meta;
+	if (str == "Alt_L") return Qt::Key_Meta; // correct ?
 	if (str == "Alt_L") return Qt::Key_Alt;
 	if (str == "Caps_Lock") return Qt::Key_CapsLock;
 	if (str == "Num_Lock") return Qt::Key_NumLock;
@@ -161,7 +161,7 @@ int string_to_qkey(string const & str)
 	if (str == "asciitilde") return Qt::Key_AsciiTilde;
 	if (str == "braceleft") return Qt::Key_BraceLeft;
 	if (str == "braceright") return Qt::Key_BraceRight;
-	if (str == "grave") // ??? return Qt::Key_QuoteLeft;
+	if (str == "grave") return Qt::Key_QuoteLeft; // ???
 	if (str == "notsign") return Qt::Key_notsign;
 	if (str == "nobreakspace") return Qt::Key_nobreakspace;
 	if (str == "exclamdown") return Qt::Key_exclamdown;
@@ -259,8 +259,7 @@ int string_to_qkey(string const & str)
 	if (str == "thorn") return Qt::Key_thorn;
 	if (str == "ydiaeresis") return Qt::Key_ydiaeresis;
 
-	// FIXME: these ones I don't know the names of ... help !
-	// what's here is basically guesses ...
+	// FIXME, correct for all these ? 
 	if (str == "Super_L") return Qt::Key_Super_L;
 	if (str == "Super_R") return Qt::Key_Super_R;
 	if (str == "Menu") return Qt::Key_Menu;
@@ -282,7 +281,7 @@ int string_to_qkey(string const & str)
  */
 string const qkey_to_string(int lkey) 
 {
-	switch(lkey) {
+	switch (lkey) {
 	case Qt::Key_Escape: return "Escape";
 	case Qt::Key_Tab: return "Tab";
 	case Qt::Key_BackSpace: return "BackSpace";

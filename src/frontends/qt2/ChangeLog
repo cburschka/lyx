@@ -1,5 +1,15 @@
 2002-07-22  John Levon  <moz@compsoc.man.ac.uk>
 
+	* QCommandEdit.C: complete if right at end of line
+ 
+	* QLyXKeySym.C: cleanup comments
+ 
+	* QtView.C: prefer const int
+ 
+	* qlkey.h: fix some transliteration errors...
+ 
+2002-07-22  John Levon  <moz@compsoc.man.ac.uk>
+
 	* Toolbar_pimpl.h:
 	* Toolbar_pimpl.C: remove ->push()
  

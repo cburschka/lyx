@@ -41,6 +41,10 @@
  
 using std::endl;
 
+namespace {
+	int const idle_timer_value = 3000;
+}
+ 
 // FIXME: this has to go away
 BufferView * current_view;
 
@@ -69,7 +73,7 @@ QtView::QtView(unsigned int width, unsigned int height)
 	view_state_changed.connect(boost::bind(&QtView::update_view_state, this));
 	connect(&idle_timer_, SIGNAL(timeout()), this, SLOT(update_view_state_qt()));
  
-	idle_timer_.start(3000); 
+	idle_timer_.start(idle_timer_value); 
  
 	focus_command_buffer.connect(boost::bind(&QtView::focus_command_widget, this));
  
@@ -79,7 +83,6 @@ QtView::QtView(unsigned int width, unsigned int height)
  
         //  assign an icon to main form
 	string const iconname = LibFileSearch("images", "lyx", "xpm");
- 
 	if (!iconname.empty())
 		setIcon(QPixmap(iconname.c_str()));
 
@@ -97,7 +100,7 @@ void QtView::message(string const & str)
 {
 	statusBar()->message(str.c_str()); 
 	idle_timer_.stop();
-	idle_timer_.start(3000);
+	idle_timer_.start(idle_timer_value);
 }
 
  

@@ -1,5 +1,6 @@
 This file is intended to be a list of stuff that must be done before
-we can say the first iteration of the Qt frontend is "finished".
+we can say the first iteration of the Qt frontend is "finished". It
+is incomplete.
 
 Those with asterisks are what I perceive as being "big jobs"
 
@@ -21,6 +22,7 @@ Menubar_pimpl
 		- import/export/view/update
 		- navigate
 	- implement openByName
+	- why is note disabled, index enabled with no doc etc. ? 
 
 QAbout
 
@@ -103,8 +105,6 @@ QTexinfo
 QtView
 
 	- decide what to do about prohibit/allowInput 
-	- add autosave timeout
-
  
 Toolbar_pimpl
 

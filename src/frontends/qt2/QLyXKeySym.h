@@ -56,6 +56,7 @@ public:
 private:
 	/// the Qt sym value
 	int key_;
+ 
 	/**
 	 * The generated text from the symbol. This will only be
 	 * filled when the QLyXKeySym is used to pass a key press

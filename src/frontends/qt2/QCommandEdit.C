@@ -30,7 +30,7 @@ void QCommandEdit::keyPressEvent(QKeyEvent * e)
 			break;
 
 		case Key_Right:
-			if (e->state() & ControlButton)
+			if (cursorPosition() == text().length())
 				emit rightPressed();
 			else
 				QLineEdit::keyPressEvent(e);
