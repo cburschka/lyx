@@ -48,7 +48,7 @@ char const * unit_name_gui[num_units + 1] = {
 LyXLength::UNIT unitFromString(string const & data)
 {
 	int i = 0;
-	while (i < num_units && data != unit_name[i])
+	while (i < num_units - 1 && data != unit_name[i])
 		++i;
 	return static_cast<LyXLength::UNIT>(i);
 }

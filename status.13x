@@ -22,7 +22,7 @@ What's new
 - Implement new functions buffer-next and buffer-previous that allow
   to cycle through open buffers; they are respectively bound to
   Ctrl-PageDown and Control-PageUp (except with mac bindings, where
-  <cmd>-tab and <cmd>-backtab are used).
+  <cmd>-tab and <cmd>-backtab are used) [bugs 515 and 1639].
 
 
 ** Bug fixes
@@ -33,12 +33,15 @@ What's new
 
 - Fix LaTeX output of percentage length values <10% [bug 1523].
 
-- fix output of footnotes on the titlepage (a memoir class problem)
+- Fix output of footnotes on the titlepage, which did not work with
+  the memoir class [bug 1677]. 
 
 
 * User Interface:
 
 - Fix crash when using math-mutate with invalid argument.
+
+- Fix crash when entering an invalid unit for a length [bug 1682].
 
 - Fix math fonts display in LyX/Mac.
 

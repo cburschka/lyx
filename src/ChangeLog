@@ -1,3 +1,7 @@
+2004-11-09  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* lengthcommon.C (unitFromString): fix off-by-one error (bug 1682)
+
 2004-11-04  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* lyxlength.C (asLatexString): rewrite to use a ostringstream
