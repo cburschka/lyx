@@ -1,6 +1,6 @@
 #!/bin/sh
 
-ACLOCAL="aclocal -I m4"
+ACLOCAL="aclocal -I ${PWD}/m4"
 AUTOHEADER="autoheader"
 AUTOMAKE="automake -a -c --foreign"
 AUTOCONF="autoconf"

@@ -1,3 +1,7 @@
+2004-05-26  Lars Gullik Bjonnes  <larsbj@gullik.net>
+
+	* Makefile.in.in: change how we generate POTFILES.in a bit
+
 2004-05-26  gettextize  <bug-gnu-gettext@gnu.org>
 
 	* Makefile.in.in: Upgrade to gettext-0.14.1.
@@ -86,14 +90,14 @@
 	* Makefile.in.in: fix escaping of " for qt UI files
 
 2003-03-10  Michael Schmitt  <Michael.Schmitt@teststep.org>
-	
+
 	* pocheck.pl: new perl script that checks the consistency of a
 	given po file
 
 2003-02-14  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
-	* POTFILES.in: 
-	* Makefile.in.in: use a plain sort instead of "sort -f -n" to 
+	* POTFILES.in:
+	* Makefile.in.in: use a plain sort instead of "sort -f -n" to
 	generate POTFILES.in. Hopefully everybody will get the
 	same ordering now.
 

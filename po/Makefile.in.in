@@ -365,8 +365,8 @@ ${srcdir}/POTFILES.in: $(POTFILE_IN_DEPS)
 	LC_ALL=C ; export LC_ALL ; \
 	rm -f $@-t \
 	&& ( cd $(top_srcdir); \
-	     grep -l "_(\".*\")" `find src -name \*.[hHC] -print` |\
-	     sed -e '/xforms.forms/d' | \
+	     grep -l "_(\".*\")" `find src -regex ".*\\.\\(C\\|c\\|h\\|C\\.in\\)" -print` |\
+	     sed -e '/xforms.forms/d' |\
 	     sort | uniq ) > $@-t \
 	&& mv $@-t $@
 
