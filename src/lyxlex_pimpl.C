@@ -352,8 +352,8 @@ bool LyXLex::Pimpl::next(bool esc /* = false */)
 					is.get(cc);
 					c = cc;
 				} while (c > ' ' && c != ',' && is
-					 && (i != LEX_MAX_BUFF-1));
-				if (i == LEX_MAX_BUFF-1) {
+					 && (i != LEX_MAX_BUFF - 1));
+				if (i == LEX_MAX_BUFF - 1) {
 					printError("Line too long");
 				}
 				buff[i] = '\0';
@@ -464,14 +464,14 @@ bool LyXLex::Pimpl::nextToken()
 					is.get(cc);
 					c = cc;
 				} while (c > ' ' && c != '\\' && is
-					 && i != (LEX_MAX_BUFF-1));
+					 && i != (LEX_MAX_BUFF - 1));
 			} else {
 				do {
 					buff[i++] = c;
 					is.get(cc);
 					c = cc;
 				} while (c >= ' ' && c != '\\' && is
-					 && i != (LEX_MAX_BUFF-1));
+					 && i != (LEX_MAX_BUFF - 1));
 			}
 
 			if (i == (LEX_MAX_BUFF - 1)) {

@@ -25,7 +25,7 @@ class kb_keymap;
 class kb_sequence {
 public:
 	typedef std::vector<LyXKeySymPtr> KeySequence;
-	
+
 	friend class kb_keymap;
 
 	///
@@ -105,7 +105,7 @@ private:
 
 	/**
 	 * Array holding the current key sequence as KeySyms.
-	 * If sequence[length-1] < 0xff it can be used as ISO8859 char
+	 * If sequence[length - 1] < 0xff it can be used as ISO8859 char
 	 */
 	KeySequence sequence;
 

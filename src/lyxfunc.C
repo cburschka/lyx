@@ -1358,7 +1358,7 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 			// changed. Suspect so. Leave as-is therefore.
 			if (contains(argument, "|")) {
 				p.setContents(token(argument, '|', 0));
-				p.setOptions( token(argument, '|', 1));
+				p.setOptions(token(argument, '|', 1));
 			} else {
 				p.setContents(argument);
 			}

@@ -30,11 +30,11 @@ public:
 	/// The special toolbar actions
 	enum  ItemType {
 		/// adds space between buttons in the toolbar
-		SEPARATOR=-3,
+		SEPARATOR = -3,
 		/// a special combox insead of a button
-		LAYOUTS=-2,
+		LAYOUTS = -2,
 		/// begin a new line of button (not working)
-		NEWLINE=-1
+		NEWLINE = -1
 	};
 
 	///

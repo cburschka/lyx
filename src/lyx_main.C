@@ -570,7 +570,7 @@ void LyX::queryUserLyXDir(bool explicit_userdir)
 		first_start = false;
 		return;
 	}
- 
+
 	first_start = !explicit_userdir;
 
 	// If the user specified explicitly a directory, ask whether
@@ -635,7 +635,7 @@ void LyX::readUIFile(string const & name)
 		ui_last
 	};
 
-	struct keyword_item uitags[ui_last-1] = {
+	struct keyword_item uitags[ui_last - 1] = {
 		{ "menuset", ui_menuset },
 		{ "toolbar", ui_toolbar }
 	};
@@ -860,7 +860,7 @@ bool LyX::easyParse(int & argc, char * argv[])
 
 		string arg((i + 1 < argc) ? argv[i + 1] : "");
 		string arg2((i + 2 < argc) ? argv[i + 2] : "");
- 
+
 		int const remove = 1 + it->second(arg, arg2);
 
 		// Now, remove used arguments by shifting

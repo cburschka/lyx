@@ -692,7 +692,7 @@ void Paragraph::setFont(pos_type pos, LyXFont const & font)
 			// Merge the singleton block with the next block
 			pimpl_->fontlist.erase(pimpl_->fontlist.begin() + i);
 			if (i > 0 && pimpl_->fontlist[i - 1].font() == font)
-				pimpl_->fontlist.erase(pimpl_->fontlist.begin() + i-1);
+				pimpl_->fontlist.erase(pimpl_->fontlist.begin() + i - 1);
 		} else if (i > 0 && pimpl_->fontlist[i - 1].font() == font) {
 			// Merge the singleton block with the previous block
 			pimpl_->fontlist[i - 1].pos(pos);
