@@ -49,7 +49,7 @@ public:
 	MathInset const * nucleus() const { return nucleus_; }
 	MathInset       * nucleus()       { return nucleus_; }
 	/// access to the inset
-	MathInset * operator->() const { return nucleus_; }
+	MathInset const * operator->() const { return nucleus_; }
 
 private:
 	///

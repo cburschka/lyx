@@ -406,7 +406,7 @@ MathHullInset const * InsetFormula::hull() const
 MathHullInset * InsetFormula::hull()
 {
 	lyx::Assert(par_->asHullInset());
-	return par_->asHullInset();
+	return par_.nucleus()->asHullInset();
 }
 
 Inset::Code InsetFormula::lyxCode() const
@@ -463,7 +463,7 @@ string InsetFormula::hullType() const
 
 void InsetFormula::mutate(string const & type)
 {
-	par()->mutate(type);
+	par_.nucleus()->mutate(type);
 }
 
 

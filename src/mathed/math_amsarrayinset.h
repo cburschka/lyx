@@ -27,6 +27,8 @@ public:
 	void draw(MathPainterInfo & pain, int x, int y) const;
 	///
 	MathAMSArrayInset * asAMSArrayInset() { return this; }
+	///
+	MathAMSArrayInset const * asAMSArrayInset() const { return this; }
 
 	///
 	void write(WriteStream & os) const;

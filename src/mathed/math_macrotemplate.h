@@ -41,6 +41,8 @@ public:
 	void metrics(MathMetricsInfo & st) const;
 	/// identifies macro templates
 	MathMacroTemplate * asMacroTemplate() { return this; }
+	/// identifies macro templates
+	MathMacroTemplate const * asMacroTemplate() const { return this; }
 private:
 	///
 	int numargs_;

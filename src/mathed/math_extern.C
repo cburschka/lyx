@@ -150,7 +150,7 @@ void extractMatrices(MathArray & ar)
 	//lyxerr << "\nMatrices from: " << ar << "\n";
 	// first pass for explicitly delimited stuff
 	for (MathArray::iterator it = ar.begin(); it != ar.end(); ++it) {
-		MathDelimInset * del = (*it)->asDelimInset();
+		MathDelimInset const * del = (*it)->asDelimInset();
 		if (!del)
 			continue;
 		MathInset const * arr = singleItem(del->cell(0));
@@ -161,7 +161,7 @@ void extractMatrices(MathArray & ar)
 
 	// second pass for AMS "pmatrix" etc
 	for (MathArray::iterator it = ar.begin(); it != ar.end(); ++it) {
-		MathAMSArrayInset * ams = (*it)->asAMSArrayInset();
+		MathAMSArrayInset const * ams = (*it)->asAMSArrayInset();
 		if (!ams)
 			continue;
 		*it = MathAtom(new MathMatrixInset(*ams));
@@ -273,7 +273,7 @@ void splitScripts(MathArray & ar)
 		MathArray::iterator it = ar.begin() + i;
 
 		// is this script inset?
-		MathScriptInset * p = (*it)->asScriptInset();
+		MathScriptInset * p = (*it).nucleus()->asScriptInset();
 		if (!p)
 			continue;
 
@@ -312,7 +312,7 @@ void extractExps(MathArray & ar)
 			continue;
 
 		// we need an exponent but no subscript
-		MathScriptInset * sup = (*(it + 1))->asScriptInset();
+		MathScriptInset const * sup = (*(it + 1))->asScriptInset();
 		if (!sup || sup->hasDown())
 			continue;
 
@@ -331,7 +331,7 @@ void extractDets(MathArray & ar)
 {
 	//lyxerr << "\ndet from: " << ar << "\n";
 	for (MathArray::iterator it = ar.begin(); it != ar.end(); ++it) {
-		MathDelimInset * del = (*it)->asDelimInset();
+		MathDelimInset const * del = (*it)->asDelimInset();
 		if (!del)
 			continue;
 		if (!del->isAbs())
@@ -450,7 +450,7 @@ void extractFunctions(MathArray & ar)
 				continue;
 			// guess so, if this is followed by
 			// a DelimInset with a single item in the cell
-			MathDelimInset * del = (*jt)->asDelimInset();
+			MathDelimInset const * del = (*jt)->asDelimInset();
 			if (!del || del->cell(0).size() != 1)
 				continue;
 			// fall trough into main branch
@@ -605,11 +605,11 @@ void extractSums(MathArray & ar)
 		MathExIntInset * p = new MathExIntInset("sum");
 
 		// collect lower bound and summation index
-		MathScriptInset * sub = (*it)->asScriptInset();
+		MathScriptInset const * sub = (*it)->asScriptInset();
 		if (sub && sub->hasDown()) {
 			// try to figure out the summation index from the subscript
-			MathArray & ar = sub->down();
-			MathArray::iterator xt =
+			MathArray const & ar = sub->down();
+			MathArray::const_iterator xt =
 				find_if(ar.begin(), ar.end(), &testEqualSign);
 			if (xt != ar.end()) {
 				// we found a '=', use everything in front of that as index,
@@ -673,7 +673,7 @@ void extractDiff(MathArray & ar)
 		if (!testDiffFrac(*it))
 			continue;
 
-		MathFracInset * f = (*it)->asFracInset();
+		MathFracInset const * f = (*it)->asFracInset();
 		if (!f) {
 			lyxerr << "should not happen\n";
 			continue;
@@ -685,7 +685,7 @@ void extractDiff(MathArray & ar)
 		// collect function, let jt point behind last used item
 		MathArray::iterator jt = it + 1;
 		//int n = 1;
-		MathArray & numer = f->cell(0);
+		MathArray const & numer = f->cell(0);
 		if (numer.size() > 1 && numer[1]->asScriptInset()) {
 			// this is something like  d^n f(x) / d... or  d^n / d...
 			// FIXME
@@ -703,14 +703,15 @@ void extractDiff(MathArray & ar)
 		}
 
 		// collect denominator parts
-		MathArray & denom = f->cell(1);
-		for (MathArray::iterator dt = denom.begin(); dt != denom.end();) {
+		MathArray const & denom = f->cell(1);
+		for (MathArray::const_iterator dt = denom.begin(); dt != denom.end();) {
 			// find the next 'd'
-			MathArray::iterator et = find_if(dt + 1, denom.end(), &testDiffItem);
+			MathArray::const_iterator et
+				= find_if(dt + 1, denom.end(), &testDiffItem);
 
 			// point before this
-			MathArray::iterator st = et - 1;
-			MathScriptInset * script = (*st)->asScriptInset();
+			MathArray::const_iterator st = et - 1;
+			MathScriptInset const * script = (*st)->asScriptInset();
 			if (script && script->hasUp()) {
 				// things like   d.../dx^n
 				int mult = 1;
@@ -763,13 +764,13 @@ void extractLims(MathArray & ar)
 			continue;
 
 		// the next one must be a subscript (without superscript)
-		MathScriptInset * sub = (*(it + 1))->asScriptInset();
+		MathScriptInset const * sub = (*(it + 1))->asScriptInset();
 		if (!sub || !sub->hasDown() || sub->hasUp())
 			continue;
 
 		// and it must contain a -> symbol
-		MathArray & s = sub->down();
-		MathArray::iterator st = find_if(s.begin(), s.end(), &testRightArrow);
+		MathArray const & s = sub->down();
+		MathArray::const_iterator st = find_if(s.begin(), s.end(), &testRightArrow);
 		if (st == s.end())
 			continue;
 
@@ -1033,7 +1034,7 @@ namespace {
 			res.append(mat->cell(0));
 		else {
 			res.push_back(MathAtom(new MathDelimInset("(", ")")));
-			res.back()->cell(0).push_back(at);
+			res.back().nucleus()->cell(0).push_back(at);
 		}
 		return res;
 	}

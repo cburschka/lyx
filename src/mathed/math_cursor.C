@@ -574,11 +574,9 @@ bool MathCursor::down(bool sel)
 
 bool MathCursor::toggleLimits()
 {
-	if (!hasNextAtom())
+	if (!hasNextAtom() || !nextAtom()->asScriptInset())
 		return false;
-	MathScriptInset * t = nextAtom()->asScriptInset();
-	if (!t)
-		return false;
+	MathScriptInset * t = nextAtom().nucleus()->asScriptInset();
 	int old = t->limits();
 	t->limits(old < 0 ? 1 : -1);
 	return old != t->limits();
@@ -587,9 +585,9 @@ bool MathCursor::toggleLimits()
 
 void MathCursor::macroModeClose()
 {
-	MathUnknownInset const * p = inMacroMode();
-	if (!p)
+	if (!inMacroMode())
 		return;
+	MathUnknownInset * p = activeMacro();
 	p->finalize();
 	string s = p->name();
 	--pos();
@@ -601,7 +599,7 @@ void MathCursor::macroModeClose()
 
 string MathCursor::macroName() const
 {
-	return inMacroMode() ? inMacroMode()->name() : string();
+	return inMacroMode() ? activeMacro()->name() : string();
 }
 
 
@@ -752,12 +750,24 @@ MathCursor::pos_type & MathCursor::pos()
 }
 
 
-MathUnknownInset const * MathCursor::inMacroMode() const
+bool MathCursor::inMacroMode() const
 {
 	if (!hasPrevAtom())
-		return 0;
+		return false;
 	MathUnknownInset const * p = prevAtom()->asUnknownInset();
-	return (p && !p->final()) ? p : 0;
+	return p && !p->final();
+}
+
+
+MathUnknownInset * MathCursor::activeMacro()
+{
+	return inMacroMode() ? prevAtom().nucleus()->asUnknownInset() : 0;
+}
+
+
+MathUnknownInset const * MathCursor::activeMacro() const
+{
+	return inMacroMode() ? prevAtom()->asUnknownInset() : 0;
 }
 
 
@@ -859,7 +869,7 @@ void MathCursor::normalize()
 	// remove empty scripts if possible
 	if (1) {
 		for (pos_type i = 0; i < size(); ++i) {
-			MathScriptInset * p = array()[i]->asScriptInset();
+			MathScriptInset * p = array()[i].nucleus()->asScriptInset();
 			if (p) {
 				p->removeEmptyScripts();
 				//if (p->empty())
@@ -1064,7 +1074,8 @@ bool MathCursor::goUpDown(bool up)
 	// Be warned: The 'logic' implemented in this function is highly fragile.
 	// A distance of one pixel or a '<' vs '<=' _really_ matters.
 	// So fiddle around with it only if you know what you are doing!
-  int xo, yo;
+  int xo = 0;
+	int yo = 0;
 	getPos(xo, yo);
 
 	// check if we had something else in mind, if not, this is the future goal
@@ -1076,7 +1087,7 @@ bool MathCursor::goUpDown(bool up)
 	// try neigbouring script insets
 	// try left
 	if (hasPrevAtom()) {
-		MathScriptInset * p = prevAtom()->asScriptInset();
+		MathScriptInset const * p = prevAtom()->asScriptInset();
 		if (p && p->has(up)) {
 			--pos();
 			push(nextAtom());
@@ -1089,7 +1100,7 @@ bool MathCursor::goUpDown(bool up)
 
 	// try right
 	if (hasNextAtom()) {
-		MathScriptInset * p = nextAtom()->asScriptInset();
+		MathScriptInset const * p = nextAtom()->asScriptInset();
 		if (p && p->has(up)) {
 			push(nextAtom());
 			idx() = up;
@@ -1249,7 +1260,7 @@ bool MathCursor::interpret(string const & s)
 
 	if (name == "over" || name == "choose" || name == "atop") {
 		MathAtom t(createMathInset(name));
-		t->asNestInset()->cell(0) = array();
+		t.nucleus()->asNestInset()->cell(0) = array();
 		array().clear();
 		pos() = 0;
 		niceInsert(t);
@@ -1290,7 +1301,7 @@ bool MathCursor::script(bool up)
 		idx() = up;
 		pos() = 0;
 	} else if (hasPrevAtom() && prevAtom()->asScriptInset()) {
-		prevAtom()->asScriptInset()->ensure(up);
+		prevAtom().nucleus()->asScriptInset()->ensure(up);
 		pushRight(prevAtom());
 		idx() = up;
 		pos() = size();
@@ -1302,7 +1313,7 @@ bool MathCursor::script(bool up)
 		pos() = 0;
 	} else {
 		plainInsert(MathAtom(new MathScriptInset(up)));
-		prevAtom()->asScriptInset()->ensure(up);
+		prevAtom().nucleus()->asScriptInset()->ensure(up);
 		pushRight(prevAtom());
 		idx() = up;
 		pos() = 0;
@@ -1321,7 +1332,7 @@ bool MathCursor::interpret(char c)
 		--pos();
 		plainErase();
 		int n = c - '0';
-		MathMacroTemplate * p = formula()->par()->asMacroTemplate();
+		MathMacroTemplate const * p = formula()->par()->asMacroTemplate();
 		if (p && 1 <= n && n <= p->numargs())
 			insert(MathAtom(new MathMacroArgument(c - '0')));
 		else {
@@ -1343,7 +1354,7 @@ bool MathCursor::interpret(char c)
 		}
 
 		if (isalpha(c)) {
-			inMacroMode()->setName(inMacroMode()->name() + c);
+			activeMacro()->setName(activeMacro()->name() + c);
 			return true;
 		}
 
@@ -1407,7 +1418,7 @@ bool MathCursor::interpret(char c)
 			return true;
 		}
 		if (hasPrevAtom() && prevAtom()->asSpaceInset()) {
-			prevAtom()->asSpaceInset()->incSpace();
+			prevAtom().nucleus()->asSpaceInset()->incSpace();
 			return true;
 		}
 		if (popRight())
@@ -1490,10 +1501,10 @@ void MathCursor::insetToggle()
 {
 	if (hasNextAtom()) {
 		// toggle previous inset ...
-		nextAtom()->lock(!nextAtom()->lock());
+		nextAtom().nucleus()->lock(!nextAtom()->lock());
 	} else if (popLeft() && hasNextAtom()) {
 		// ... or enclosing inset if we are in the last inset position
-		nextAtom()->lock(!nextAtom()->lock());
+		nextAtom().nucleus()->lock(!nextAtom()->lock());
 		posRight();
 	}
 }
@@ -1697,10 +1708,10 @@ int MathCursor::dispatch(string const & cmd)
 	// try to dispatch to adajcent items if they are not editable
 	// actually, this should only happen for mouse clicks...
 	if (hasNextAtom() && !openable(nextAtom(), false))
-		if (int res = nextAtom()->dispatch(cmd, 0, 0))
+		if (int res = nextAtom().nucleus()->dispatch(cmd, 0, 0))
 			return res;
 	if (hasPrevAtom() && !openable(prevAtom(), false))
-		if (int res = prevAtom()->dispatch(cmd, 0, 0))
+		if (int res = prevAtom().nucleus()->dispatch(cmd, 0, 0))
 			return res;
 
 	for (int i = Cursor_.size() - 1; i >= 0; --i) {

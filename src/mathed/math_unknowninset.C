@@ -27,7 +27,7 @@ string MathUnknownInset::name() const
 }
 
 
-void MathUnknownInset::setName(string const & name) const
+void MathUnknownInset::setName(string const & name)
 {
 	name_ = name;
 }
@@ -61,7 +61,7 @@ void MathUnknownInset::draw(MathPainterInfo & pi, int x, int y) const
 }
 
 
-void MathUnknownInset::finalize() const
+void MathUnknownInset::finalize()
 {
 	final_ = true;
 }

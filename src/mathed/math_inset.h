@@ -190,6 +190,7 @@ public:
 
 	/// identifies certain types of insets
 	virtual MathAMSArrayInset      * asAMSArrayInset()      { return 0; }
+	virtual MathAMSArrayInset const* asAMSArrayInset() const{ return 0; }
 	virtual MathArrayInset         * asArrayInset()         { return 0; }
 	virtual MathCharInset const    * asCharInset() const    { return 0; }
 	virtual MathDelimInset         * asDelimInset()         { return 0; }
@@ -201,6 +202,7 @@ public:
 	virtual MathHullInset          * asHullInset()          { return 0; }
 	virtual MathHullInset const    * asHullInset() const    { return 0; }
 	virtual MathMacroTemplate      * asMacroTemplate()      { return 0; }
+	virtual MathMacroTemplate const* asMacroTemplate() const{ return 0; }
 	virtual MathMatrixInset const  * asMatrixInset() const  { return 0; }
 	virtual MathNestInset          * asNestInset()          { return 0; }
 	virtual MathNestInset const    * asNestInset() const    { return 0; }
@@ -208,6 +210,7 @@ public:
 	virtual MathScriptInset        * asScriptInset()        { return 0; }
 	virtual MathScriptInset const  * asScriptInset() const  { return 0; }
 	virtual MathSpaceInset         * asSpaceInset()         { return 0; }
+	virtual MathSpaceInset const   * asSpaceInset() const   { return 0; }
 	virtual MathStringInset        * asStringInset()        { return 0; }
 	virtual MathStringInset const  * asStringInset() const  { return 0; }
 	virtual MathSymbolInset const  * asSymbolInset() const  { return 0; }

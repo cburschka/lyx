@@ -23,7 +23,7 @@ public:
 	///
 	void draw(MathPainterInfo & pi, int x, int y) const;
 	///
-	void setName(string const & name) const;
+	void setName(string const & name);
 	///
 	string name() const;
 	/// identifies UnknownInsets
@@ -44,14 +44,14 @@ public:
 	///
 	void octavize(OctaveStream &) const;
 	///
-	void finalize() const;
+	void finalize();
 	///
 	bool final() const;
 private:
 	///
-	mutable string name_;
+	string name_;
 	/// are we finished creating the name?
-	mutable bool final_;
+	bool final_;
 	///
 	bool black_;
 };

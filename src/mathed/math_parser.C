@@ -508,7 +508,7 @@ bool Parser::parse(MathAtom & at)
 		lyxerr << "unusual contents found: " << ar << endl;
 		at = MathAtom(new MathParInset);
 		if (at->nargs() > 0)
-			at->cell(0) = ar;
+			at.nucleus()->cell(0) = ar;
 		else
 			lyxerr << "unusual contents found: " << ar << endl;
 		return true;
@@ -529,7 +529,7 @@ void Parser::parse(MathArray & array, unsigned flags, mode_type mode)
 void Parser::parse2(MathAtom & at, unsigned flags, mode_type mode,
 	bool numbered)
 {
-	parse1(*(at->asGridInset()), flags, mode, numbered);
+	parse1(*(at.nucleus()->asGridInset()), flags, mode, numbered);
 }
 
 
@@ -673,12 +673,12 @@ void Parser::parse1(MathGridInset & grid, unsigned flags,
 					cell->push_back(MathAtom(new MathScriptInset(up)));
 				else if (cell->back()->asScriptInset() &&
 						!cell->back()->asScriptInset()->has(up))
-					cell->back()->asScriptInset()->ensure(up);
+					cell->back().nucleus()->asScriptInset()->ensure(up);
 				else if (cell->back()->asScriptInset())
 					cell->push_back(MathAtom(new MathScriptInset(up)));
 				else
 					cell->back() = MathAtom(new MathScriptInset(cell->back(), up));
-				MathScriptInset * p = cell->back()->asScriptInset();
+				MathScriptInset * p = cell->back().nucleus()->asScriptInset();
 				parse(p->cell(up), FLAG_ITEM, mode);
 				p->limits(limits);
 				limits = 0;
@@ -704,7 +704,7 @@ void Parser::parse1(MathGridInset & grid, unsigned flags,
 
 		else if (t.cs() == "lyxlock") {
 			if (cell->size())
-				cell->back()->lock(true);
+				cell->back().nucleus()->lock(true);
 		}
 
 		else if (t.cs() == "def" || t.cs() == "newcommand") {
@@ -871,18 +871,18 @@ void Parser::parse1(MathGridInset & grid, unsigned flags,
 			parse(ar, FLAG_OPTION, mode);
 			if (ar.size()) {
 				cell->push_back(MathAtom(new MathRootInset));
-				cell->back()->cell(0) = ar;
-				parse(cell->back()->cell(1), FLAG_ITEM, mode);
+				cell->back().nucleus()->cell(0) = ar;
+				parse(cell->back().nucleus()->cell(1), FLAG_ITEM, mode);
 			} else {
 				cell->push_back(MathAtom(new MathSqrtInset));
-				parse(cell->back()->cell(0), FLAG_ITEM, mode);
+				parse(cell->back().nucleus()->cell(0), FLAG_ITEM, mode);
 			}
 		}
 
 		else if (t.cs() == "ref") {
 			cell->push_back(MathAtom(new RefInset));
-			parse(cell->back()->cell(1), FLAG_OPTION, mode);
-			parse(cell->back()->cell(0), FLAG_ITEM, mode);
+			parse(cell->back().nucleus()->cell(1), FLAG_OPTION, mode);
+			parse(cell->back().nucleus()->cell(0), FLAG_ITEM, mode);
 		}
 
 		else if (t.cs() == "left") {
@@ -979,7 +979,7 @@ void Parser::parse1(MathGridInset & grid, unsigned flags,
 				// lyxerr << "unknow math inset begin '" << name << "'\n";
 				// create generic environment inset
 				cell->push_back(MathAtom(new MathEnvInset(name)));
-				parse(cell->back()->cell(0), FLAG_END, mode);
+				parse(cell->back().nucleus()->cell(0), FLAG_END, mode);
 			}
 		}
 
@@ -1013,11 +1013,11 @@ void Parser::parse1(MathGridInset & grid, unsigned flags,
 		}
 
 		else if (t.cs() == "choose" || t.cs() == "over" || t.cs() == "atop") {
-			MathAtom p = createMathInset(t.cs());
-			p->cell(0) = *cell;
+			MathAtom at = createMathInset(t.cs());
+			at.nucleus()->cell(0) = *cell;
 			cell->clear();
-			parse(p->cell(1), flags, mode);
-			cell->push_back(p);
+			parse(at.nucleus()->cell(1), flags, mode);
+			cell->push_back(at);
 			return;
 		}
 
@@ -1055,18 +1055,18 @@ void Parser::parse1(MathGridInset & grid, unsigned flags,
 			if (l) {
 				if (l->inset == "font") {
 					cell->push_back(createMathInset(t.cs()));
-					parse(cell->back()->cell(0), FLAG_ITEM, asMode(l->extra));
+					parse(cell->back().nucleus()->cell(0), FLAG_ITEM, asMode(l->extra));
 				}
 
 				else if (l->inset == "oldfont") {
 					cell->push_back(createMathInset(t.cs()));
-					parse(cell->back()->cell(0), flags, asMode(l->extra));
+					parse(cell->back().nucleus()->cell(0), flags, asMode(l->extra));
 					return;
 				}
 
 				else if (l->inset == "style") {
 					cell->push_back(createMathInset(t.cs()));
-					parse(cell->back()->cell(0), flags, mode);
+					parse(cell->back().nucleus()->cell(0), flags, mode);
 					return;
 				}
 
@@ -1076,27 +1076,27 @@ void Parser::parse1(MathGridInset & grid, unsigned flags,
 					parse(pos, FLAG_OPTION, MathInset::VERBATIM_MODE);
 					parse(width, FLAG_ITEM, MathInset::VERBATIM_MODE);
 					cell->push_back(createMathInset(t.cs()));
-					parse(cell->back()->cell(0), FLAG_ITEM, MathInset::TEXT_MODE);
-					cell->back()->asParboxInset()->setPosition(asString(pos));
-					cell->back()->asParboxInset()->setWidth(asString(width));
+					parse(cell->back().nucleus()->cell(0), FLAG_ITEM, MathInset::TEXT_MODE);
+					cell->back().nucleus()->asParboxInset()->setPosition(asString(pos));
+					cell->back().nucleus()->asParboxInset()->setWidth(asString(width));
 				}
 
 				else {
-					MathAtom p = createMathInset(t.cs());
-					for (MathInset::idx_type i = 0; i < p->nargs(); ++i)
-						parse(p->cell(i), FLAG_ITEM, asMode(l->extra));
-					cell->push_back(p);
+					MathAtom at = createMathInset(t.cs());
+					for (MathInset::idx_type i = 0; i < at->nargs(); ++i)
+						parse(at.nucleus()->cell(i), FLAG_ITEM, asMode(l->extra));
+					cell->push_back(at);
 				}
 			}
 
 			else {
-				MathAtom p = createMathInset(t.cs());
+				MathAtom at = createMathInset(t.cs());
 				MathInset::mode_type m = mode;
 				if (m == MathInset::UNDECIDED_MODE)
-					m = p->currentMode();
-				for (MathInset::idx_type i = 0; i < p->nargs(); ++i)
-					parse(p->cell(i), FLAG_ITEM, m);
-				cell->push_back(p);
+					m = at->currentMode();
+				for (MathInset::idx_type i = 0; i < at->nargs(); ++i)
+					parse(at.nucleus()->cell(i), FLAG_ITEM, m);
+				cell->push_back(at);
 			}
 		}
 
