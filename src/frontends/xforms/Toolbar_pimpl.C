@@ -106,13 +106,15 @@ void BubbleTimerCB(FL_OBJECT *, long data)
 }
 
 
-extern "C"
+extern "C" {
+	
 static
 void C_Toolbar_BubbleTimerCB(FL_OBJECT * ob, long data)
 {
 	BubbleTimerCB(ob, data);
 }
 
+}
 
 // post_handler for bubble-help (Matthias)
 int BubblePost(FL_OBJECT *ob, int event,
@@ -136,13 +138,16 @@ int BubblePost(FL_OBJECT *ob, int event,
 }
 
 
-extern "C"
+extern "C" {
+	
 static
 int C_Toolbar_BubblePost(FL_OBJECT * ob, int event,
 			 FL_Coord /*mx*/, FL_Coord /*my*/, 
 			 int key, void * xev)
 {
 	return BubblePost(ob, event, 0, 0, key, xev);
+}
+
 }
 #endif
 

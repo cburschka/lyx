@@ -1,3 +1,12 @@
+2001-09-10  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* Toolbar_pimpl.C (C_Toolbar_BubblePost): fix linking
+	(C_Toolbar_BubbleTimerCB): fix linking
+
+	* FormMathsBitmap.C (form): use get() to get the raw pointer.
+
+	* FormMathsBitmap.h: use shared_c_ptr for form_ as well.
+
 2001-09-09  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* combox.C (C_Combox_input_cb): make it static
