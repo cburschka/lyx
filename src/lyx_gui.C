@@ -27,7 +27,7 @@
 #include "lyxrc.h"
 #include "gettext.h"
 #if FL_REVISION < 89 || (FL_REVISION == 89 && FL_FIXLEVEL < 5)
-#include "lyxlookup.h"
+#include "frontends/xforms/lyxlookup.h"
 #endif
 #include "bufferlist.h"
 #include "ColorHandler.h"

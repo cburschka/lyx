@@ -11,16 +11,16 @@
 #include <config.h>
 
 #ifdef __GNUG__
-#pragma implementation "lyxscreen.h"
+#pragma implementation
 #endif
 
 #include <algorithm>
 
-#include "lyxscreen.h"
+#include "screen.h"
 #include "lyxtext.h"
 #include "lyxrow.h"
 #include "frontends/Painter.h"
-#include "WorkArea.h"
+#include "frontends/WorkArea.h"
 #include "buffer.h"
 #include "BufferView.h"
 #include "font.h"

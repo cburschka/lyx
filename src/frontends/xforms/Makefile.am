@@ -196,6 +196,8 @@ libxforms_la_SOURCES = \
 	GUIRunTime.C \
 	input_validators.C \
 	input_validators.h \
+	lyxlookup.C \
+	lyxlookup.h \
 	MathsSymbols.C \
 	MathsSymbols.h \
 	Menubar_pimpl.C \

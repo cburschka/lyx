@@ -6,7 +6,8 @@
 #include "BufferView.h"
 #include "commandtags.h"
 #include "frontends/Timeout.h"
-#include "WorkArea.h"
+// FIXME remove me 
+#include "frontends/WorkArea.h"
 #include "box.h"
 #include "insets/insetspecialchar.h"
 #include "support/types.h"

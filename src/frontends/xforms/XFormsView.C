@@ -16,7 +16,7 @@
 
 #include "XFormsView.h"
 #if FL_REVISION < 89 || (FL_REVISION == 89 && FL_FIXLEVEL < 5)
-#include "lyxlookup.h"
+#include "frontends/xforms/lyxlookup.h"
 #endif
 #include "minibuffer.h"
 #include "debug.h"

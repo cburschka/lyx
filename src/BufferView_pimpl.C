@@ -5,8 +5,8 @@
 #endif
 
 #include "BufferView_pimpl.h"
-#include "WorkArea.h"
-#include "lyxscreen.h"
+#include "frontends/WorkArea.h"
+#include "frontends/screen.h"
 #include "lyxtext.h"
 #include "lyxrow.h"
 #include "paragraph.h"

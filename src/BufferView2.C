@@ -16,7 +16,7 @@
 #include "lyxtext.h"
 #include "frontends/LyXView.h"
 #include "bufferlist.h"
-#include "lyxscreen.h"
+#include "frontends/screen.h"
 #include "LaTeX.h"
 #include "BufferView_pimpl.h"
 #include "language.h"

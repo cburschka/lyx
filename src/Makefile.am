@@ -91,8 +91,6 @@ lyx_SOURCES = \
 	Thesaurus.h \
 	ToolbarDefaults.C \
 	ToolbarDefaults.h \
-	WorkArea.C \
-	WorkArea.h \
 	box.h \
 	box.C \
 	broken_headers.h \
@@ -163,13 +161,10 @@ lyx_SOURCES = \
 	lyxlex.h \
 	lyxlex_pimpl.C \
 	lyxlex_pimpl.h \
-	lyxlookup.C \
-	lyxlookup.h \
 	lyxrc.C \
 	lyxrc.h \
 	lyxrow.C \
 	lyxrow.h \
-	lyxscreen.h \
 	lyxserver.C \
 	lyxserver.h \
 	lyxtext.h \
@@ -186,7 +181,6 @@ lyx_SOURCES = \
 	paragraph.h \
 	paragraph_pimpl.C \
 	paragraph_pimpl.h \
-	screen.C \
 	sp_base.h \
 	sp_spell.C \
 	sp_ispell.h \

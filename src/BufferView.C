@@ -17,7 +17,7 @@
 #include "BufferView.h"
 #include "BufferView_pimpl.h"
 #include "lyxtext.h"
-#include "lyxscreen.h"
+#include "frontends/screen.h"
 
 
 BufferView::BufferView(LyXView * o, int xpos, int ypos,

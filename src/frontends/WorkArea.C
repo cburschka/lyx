@@ -21,7 +21,7 @@
 #include "version.h" // lyx_version
 
 #if FL_REVISION < 89 || (FL_REVISION == 89 && FL_FIXLEVEL < 5)
-#include "lyxlookup.h"
+#include "frontends/xforms/lyxlookup.h"
 #endif
 
 #include "support/filetools.h" // LibFileSearch
