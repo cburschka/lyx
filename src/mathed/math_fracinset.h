@@ -22,7 +22,7 @@ public:
 	///
 	virtual void WriteNormal(std::ostream &) const;
 	///
-	virtual void Metrics(MathStyles st, int asc = 0, int des = 0);
+	virtual void Metrics(MathStyles st);
 	///
 	virtual void draw(Painter &, int x, int baseline);
 	///

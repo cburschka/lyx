@@ -51,7 +51,7 @@ void MathSpaceInset::WriteNormal(std::ostream & os) const
 }
 
 
-void MathSpaceInset::Metrics(MathStyles st, int, int)
+void MathSpaceInset::Metrics(MathStyles st)
 {
 	size_  = st;
 	width_ = space_ ? space_ * 2 : 2;

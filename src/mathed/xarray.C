@@ -19,7 +19,7 @@ MathXArray::MathXArray()
 {}
 
 
-void MathXArray::Metrics(MathStyles st, int, int)
+void MathXArray::Metrics(MathStyles st)
 {
 	if (data_.empty()) {
 		mathed_char_dim(LM_TC_VAR, st, 'I', ascent_, descent_, width_); 
@@ -31,17 +31,13 @@ void MathXArray::Metrics(MathStyles st, int, int)
 	width_   = 0;
 	style_    = st;
 
-	// keep last values for scriptInset's need to look back
-	int asc = 0;
-	int des = 0;
-	int wid = 0;
-	mathed_char_height(LM_TC_VAR, st, 'I', asc, des);
-
 	for (int pos = 0; pos < data_.size(); data_.next(pos)) {
+		int asc;
+		int des;
+		int wid;
 		MathInset * p = data_.nextInset(pos);
 		if (p) {
-			// only MathUpDownInsets will use the asc/des information...
-			p->Metrics(st, asc, des);
+			p->Metrics(st);
 			asc = p->ascent();
 			des = p->descent();
 			wid = p->width();

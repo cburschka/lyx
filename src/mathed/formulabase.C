@@ -507,7 +507,6 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 	}
 	break;
 
-		// cursor selection ---------------------------- 
 
 	case LFUN_PASTE:
 		if (was_macro)

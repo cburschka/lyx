@@ -30,7 +30,7 @@ MathInset * MathRootInset::clone() const
 }
 
 
-void MathRootInset::Metrics(MathStyles st, int, int)
+void MathRootInset::Metrics(MathStyles st)
 {
 	MathInset::Metrics(st);
 	size_    = st;

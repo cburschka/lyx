@@ -369,3 +369,11 @@ void MathArray::Validate(LaTeXFeatures & features) const
 			nextInset(pos)->Validate(features);
 }
 
+
+void MathArray::pop_back()
+{	
+	int pos = size();
+	prev(pos);
+	erase(pos);
+}
+

@@ -74,7 +74,7 @@ char MathGridInset::valign() const
 	return v_align_;
 }
 
-void MathGridInset::Metrics(MathStyles st, int, int)
+void MathGridInset::Metrics(MathStyles st)
 {
 	// let the cells adjust themselves
 	MathInset::Metrics(st);

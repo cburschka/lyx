@@ -92,6 +92,8 @@ public:
 	///
 	void push_back(MathArray const &);
 	///
+	void pop_back();
+	///
 	MathInset * back_inset() const;
 
 	///

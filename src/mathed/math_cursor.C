@@ -115,27 +115,11 @@ struct Selection
 		data_.clear();
 	}
 
-	
-
 	std::vector<MathArray> data_;
 };
 
 
 Selection theSelection;
-
-
-bool IsMacro(short tok, int id)
-{
-	return tok != LM_TK_STACK &&
-	       tok != LM_TK_FRAC &&
-	       tok != LM_TK_SQRT &&
-	       tok != LM_TK_DECORATION &&
-	       tok != LM_TK_SPACE &&
-	       tok != LM_TK_DOTS &&
-	       tok != LM_TK_FUNCLIM &&
-	       tok != LM_TK_BIGSYM &&
-	       !(tok == LM_TK_SYM && id < 255);
-}
 
 
 std::ostream & operator<<(std::ostream & os, MathCursorPos const & p)
@@ -229,7 +213,7 @@ bool MathCursor::openable(MathInset * p, bool sel, bool useupdown) const
 {
 	if (!p)
 		return false;
-	if (!(p->isActive() || (useupdown && p->isUpDownInset())))
+	if (!(p->isActive() || (useupdown && p->isScriptInset())))
 		return false;
 
 	if (sel) {
@@ -376,8 +360,7 @@ void MathCursor::SetPos(int x, int y)
 void MathCursor::Home()
 {
 	dump("Home 1");
-	if (macro_mode)
-		MacroModeClose();
+	MacroModeClose();
 	clearLastCode();
 	if (!cursor().par_->idxHome(cursor().idx_, cursor().pos_)) 
 		pop();
@@ -388,14 +371,19 @@ void MathCursor::Home()
 void MathCursor::End()
 {
 	dump("End 1");
-	if (macro_mode)
-		MacroModeClose();
+	MacroModeClose();
 	clearLastCode();
 	if (!cursor().par_->idxEnd(cursor().idx_, cursor().pos_)) {
 		pop();
 		array().next(cursor().pos_);
 	}
 	dump("End 2");
+}
+
+
+void MathCursor::erase()
+{
+	array().erase(cursor().pos_);
 }
 
 
@@ -623,15 +611,22 @@ void MathCursor::SetSize(MathStyles size)
 
 void MathCursor::Interpret(string const & s)
 {
-	lyxerr << "Interpret: '" << s << "'  ('" << s.substr(0, 7)  << "' " <<
-in_word_set(s) << " \n";
+	//lyxerr << "Interpret: '" << s << "'\n";
+	//lyxerr << "in: " << in_word_set(s) << " \n";
 
-	if (s[0] == '^' || s[0] == '_') {
+	if (s.size() && (s[0] == '^' || s[0] == '_')) {
 		bool const up = (s[0] == '^');
 		SelCut();	
-		MathUpDownInset * p = prevUpDownInset();
+		MathScriptInset * p = prevScriptInset();
 		if (!p) {
-			p = new MathScriptInset(up, !up);
+			MathInset * b = prevInset();
+			if (b && b->isScriptable()) {
+				p = new MathScriptInset(up, !up, b->clone());
+				plainLeft();
+				erase();
+			} else {
+				p = new MathScriptInset(up, !up);
+			}
 			insert(p);
 			plainLeft();
 		}
@@ -680,8 +675,8 @@ in_word_set(s) << " \n";
 	} else {
 		switch (l->token) {
 			case LM_TK_BIGSYM: 
-					p = new MathBigopInset(l->name, l->id);
-					break;
+				p = new MathBigopInset(s, l->id);
+				break;
 				
 			case LM_TK_SYM: {
 				MathTextCodes code = static_cast<MathTextCodes>(l->id);
@@ -760,27 +755,14 @@ void MathCursor::MacroModeOpen()
 
 void MathCursor::MacroModeClose()
 {
-	if (macro_mode)  {
+	if (macro_mode) {
+		string name = imacro->name();
+		plainLeft();
+		erase();
+		delete imacro;
 		macro_mode = false;
-		latexkeys const * l = in_word_set(imacro->name());
-		if (!imacro->name().empty()
-				&& (!l || (l && IsMacro(l->token, l->id)))
-				&& !MathMacroTable::hasTemplate(imacro->name()))
-		{
-			if (!l) {
-				//imacro->SetName(macrobf);
-				// This guarantees that the string will be removed by destructor
-				imacro->SetType(LM_OT_UNDEF);
-			} else
-				imacro->SetName(l->name);
-		} else {
-			Left();
-			array().erase(cursor().pos_);
-			if (l || MathMacroTable::hasTemplate(imacro->name())) 
-				Interpret(imacro->name());
-			imacro->SetName(string());
-		}
 		imacro = 0;
+		Interpret(name);
 	}
 }
 
@@ -1095,11 +1077,11 @@ MathInset * MathCursor::nextInset() const
 }
 
 
-MathUpDownInset * MathCursor::prevUpDownInset() const
+MathScriptInset * MathCursor::prevScriptInset() const
 {
 	normalize();
 	MathInset * p = array().prevInset(cursor().pos_);
-	return (p && p->isUpDownInset()) ? static_cast<MathUpDownInset *>(p) : 0;
+	return (p && p->isScriptInset()) ? static_cast<MathScriptInset *>(p) : 0;
 }
 
 

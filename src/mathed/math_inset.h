@@ -64,7 +64,7 @@ public:
 	/// Appends itself with macro arguments substituted
 	virtual void substitute(MathArray & array, MathMacro const & macro) const;
 	/// Compute the size of the object
-	virtual void Metrics(MathStyles st, int = 0, int = 0) = 0;
+	virtual void Metrics(MathStyles st) = 0;
 	/// 
 	virtual int ascent() const;
 	///
@@ -178,10 +178,10 @@ public:
 	void GetXY(int & x, int & y) const;
 	///
 	bool covers(int x, int y) const;
+	/// Identifies things that can get scripts
+	virtual bool isScriptable() const { return false; }
 	/// Identifies ScriptInsets
-	virtual bool isUpDownInset() const { return false; }
-	/// Identifies BigopInsets
-	virtual bool isBigopInset() const { return false; }
+	virtual bool isScriptInset() const { return false; }
 	/// Identifies SpaceInsets
 	virtual bool isSpaceInset() const { return false; }
 	///

@@ -82,7 +82,7 @@ latexkeys const wordlist[] =
 	{"widehat",  LM_TK_DECORATION, LM_widehat},
 	{"sin",  LM_TK_FUNC, 0},
 	{"asymp",  LM_TK_SYM, LM_asymp},
-	{"nolimits",  LM_TK_LIMIT, 0 },
+	{"nolimits",  LM_TK_LIMIT, -1},
 	{"perp",  LM_TK_MACRO, LM_perp},
 	{"wedge",  LM_TK_SYM, LM_wedge},
 	{"ln",  LM_TK_FUNC, 0},

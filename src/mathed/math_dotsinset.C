@@ -31,7 +31,7 @@ void MathDotsInset::draw(Painter & pain, int x, int y)
 }
 
 
-void MathDotsInset::Metrics(MathStyles st, int, int)
+void MathDotsInset::Metrics(MathStyles st)
 {
 	size(st);
 	mathed_char_dim(LM_TC_VAR, size(), 'M', ascent_, descent_, width_);

@@ -339,26 +339,34 @@ int yylex()
 }
 
 
-MathInset * lastUpDownInset(MathArray & array, bool up, bool down)
+
+MathScriptInset * prevScriptInset(MathArray const & array)
 {
 	MathInset * p = array.back_inset();
-	if (!p || !p->isUpDownInset()) {
-		p = new MathScriptInset(up, down);
-		array.push_back(p);
-	}
-	MathUpDownInset * q = static_cast<MathScriptInset *>(p);
-	if (up)
-		q->up(true);
-	if (down)
-		q->down(down);
-	return p;
+	return (p && p->isScriptInset()) ? static_cast<MathScriptInset *>(p) : 0;
 }
 
 
-MathBigopInset * lastBigopInset(MathArray & array)
+MathInset * lastScriptInset(MathArray & array, bool up, bool down, int limits)
 {
-	MathInset * p = array.back_inset();
-	return (p && p->isBigopInset()) ? static_cast<MathBigopInset *>(p) : 0;
+	MathScriptInset * p = prevScriptInset(array);
+	if (!p) {
+		MathInset * b = array.back_inset();
+		if (b && b->isScriptable()) {
+			p = new MathScriptInset(up, down, b->clone());
+			array.pop_back();	
+		} else {
+			p = new MathScriptInset(up, down);
+		}
+		array.push_back(p);
+	}
+	if (up)
+		p->up(true);
+	if (down)
+		p->down(down);
+	if (limits)
+		p->limits(limits);
+	return p;
 }
 
 
@@ -499,11 +507,14 @@ void mathed_parse(MathArray & array, unsigned flags)
 	static int plevel = -1;
 	yyvarcode = LM_TC_VAR;
 	
-	int brace = 0;
+	int brace  = 0;
+	int limits = 0;
 
 	++plevel;
 	while (t) {
-		//lyxerr << "t: " << t << " flags: " << flags << " i: " << yylval.i << " "
+		//lyxerr << "t: " << t << " flags: " << flags << " i: " << yylval.i
+		//	<< " TK_LIMIT " << LM_TK_LIMIT << "\n";
+				
 		//	<< " plevel: " << plevel << " ";
 		//array.dump(lyxerr);
 		//lyxerr << "\n";
@@ -585,48 +596,46 @@ void mathed_parse(MathArray & array, unsigned flags)
 			break;
 		
 		case '^':
-			mathed_parse(lastUpDownInset(array, true, false)->cell(0), FLAG_ITEM);
+			mathed_parse(
+				lastScriptInset(array, true, false, limits)->cell(0), FLAG_ITEM);
 			break;
 		
 		case '_':
-			mathed_parse(lastUpDownInset(array, false, true)->cell(1), FLAG_ITEM);
+			mathed_parse(
+				lastScriptInset(array, false, true, limits)->cell(1), FLAG_ITEM);
 			break;
 		
 		case LM_TK_LIMIT:
-		{
-			MathBigopInset * p = lastBigopInset(array);
-			if (p) 
-				p->limits(yylval.l->id ? 1 : -1);
+			limits = yylval.l->id;
+			//lyxerr << "setting limit to " << limits << "\n";
 			break;
-		}
 		
 		case '&':
-		{
 			if (flags & FLAG_AMPERSAND) {
 				flags &= ~FLAG_AMPERSAND;
 				--plevel;
 				return;
 			}
-			lyxerr[Debug::MATHED] << "found tab unexpectedly, array: '" << array << "'\n";
+			lyxerr[Debug::MATHED]
+				<< "found tab unexpectedly, array: '" << array << "'\n";
 			break;
-		}
 		
 		case LM_TK_NEWLINE:
-		{
 			if (flags & FLAG_NEWLINE) {
 				flags &= ~FLAG_NEWLINE;
 				--plevel;
 				return;
 			}
-			lyxerr[Debug::MATHED] << "found newline unexpectedly, array: '" << array << "'\n";
+			lyxerr[Debug::MATHED]
+				<< "found newline unexpectedly, array: '" << array << "'\n";
 			break;
-		}
 		
 		case LM_TK_BIGSYM:  
-		{
+			//lyxerr << "clearing limits " << limits << "\n";
+			limits = 0;
+			//lyxerr << "found bigop '" << yylval.l->name << "'\n";
 			array.push_back(new MathBigopInset(yylval.l->name, yylval.l->id));
 			break;
-		}
 		
 		case LM_TK_SYM:
 			if (yylval.l->id < 256) {

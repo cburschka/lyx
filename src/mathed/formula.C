@@ -271,6 +271,14 @@ InsetFormula::localDispatch(BufferView * bv, kb_action action,
 			updateLocal(bv, true);
 			break;
 		}
+		
+		case LFUN_PASTESELECTION:
+		{
+			string const clip = bv->getClipboard();
+  		if (!clip.empty())
+				par(mathed_parse(clip));
+			break;
+		}
 
 		default:
 			result = InsetFormulaBase::localDispatch(bv, action, arg);

@@ -18,7 +18,7 @@ public:
 	///
 	MathInset * clone() const;
 	///
-	void Metrics(MathStyles st, int asc = 0, int des = 0);
+	void Metrics(MathStyles st);
 	///
 	void draw(Painter &, int x, int baseline);
 	///

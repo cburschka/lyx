@@ -49,7 +49,7 @@ void MathMacroTemplate::Write(std::ostream & os, bool fragile) const
 }
 
 
-void MathMacroTemplate::Metrics(MathStyles st, int, int)
+void MathMacroTemplate::Metrics(MathStyles st)
 {
 	xcell(0).Metrics(st);
 	size_    = st;

@@ -39,7 +39,7 @@ void MathFuncInset::WriteNormal(std::ostream & os) const
 }
 
 
-void MathFuncInset::Metrics(MathStyles st, int, int) 
+void MathFuncInset::Metrics(MathStyles st) 
 {
 	size_ = st;
 	if (name_.empty()) 

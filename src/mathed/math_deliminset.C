@@ -86,7 +86,7 @@ int MathDelimInset::dw() const
 }
 
 
-void MathDelimInset::Metrics(MathStyles st, int, int)
+void MathDelimInset::Metrics(MathStyles st)
 {
 	xcell(0).Metrics(st);
 	size_    = st;

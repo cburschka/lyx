@@ -49,7 +49,7 @@ MathInset * MathMacro::clone() const
 }
 
 
-void MathMacro::Metrics(MathStyles st, int, int)
+void MathMacro::Metrics(MathStyles st)
 {
 	if (mathcursor && mathcursor->isInside(this)) {
 		expanded_ = tmplate_->xcell(0);

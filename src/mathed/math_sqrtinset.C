@@ -19,7 +19,7 @@ MathInset * MathSqrtInset::clone() const
 }
 
 
-void MathSqrtInset::Metrics(MathStyles st, int, int)
+void MathSqrtInset::Metrics(MathStyles st)
 {
 	xcell(0).Metrics(st);
 	size_    = st;

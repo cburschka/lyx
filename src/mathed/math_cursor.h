@@ -25,7 +25,7 @@
 
 class MathInset;
 class MathFuncInset;
-class MathUpDownInset;
+class MathScriptInset;
 class MathSpaceInset;
 class InsetFormulaBase;
 class MathArray;
@@ -75,6 +75,8 @@ public:
 	void insert(MathInset *);
 	///
 	void insert(MathArray const &);
+	///
+	void erase();
 	///
 	void Home();
 	///
@@ -259,7 +261,7 @@ public:
 	///
 	MathInset * prevInset() const;
 	///
-	MathUpDownInset * prevUpDownInset() const;
+	MathScriptInset * prevScriptInset() const;
 	///
 	MathSpaceInset * prevSpaceInset() const;
 

@@ -170,7 +170,7 @@ void MathInset::substitute(MathArray & array, MathMacro const & m) const
 	array.push_back(p);
 }
 
-void MathInset::Metrics(MathStyles st, int, int)
+void MathInset::Metrics(MathStyles st)
 {
 	size_ = st;
 	for (int i = 0; i < nargs(); ++i)

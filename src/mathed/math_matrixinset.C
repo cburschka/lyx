@@ -92,7 +92,7 @@ MathInset * MathMatrixInset::clone() const
 }
 
 
-void MathMatrixInset::Metrics(MathStyles /* st */, int, int)
+void MathMatrixInset::Metrics(MathStyles /* st */)
 {
 	size_ = (GetType() == LM_OT_SIMPLE) ? LM_ST_TEXT : LM_ST_DISPLAY;
 

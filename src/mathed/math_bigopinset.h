@@ -2,10 +2,10 @@
 #ifndef MATH_BIGOPINSET_H
 #define MATH_BIGOPINSET_H
 
-#include "math_updowninset.h"
+#include "math_inset.h"
 
 /// big operators
-class MathBigopInset : public MathUpDownInset {
+class MathBigopInset : public MathInset {
 public:
 	///
 	MathBigopInset(string const &, int);
@@ -16,31 +16,17 @@ public:
 	///
 	void WriteNormal(std::ostream &) const;
 	///
-	void Metrics(MathStyles st, int asc = 0, int des = 0);
+	void Metrics(MathStyles st);
 	///
 	void draw(Painter &, int, int);
 	///
-	void limits(int);
-	///
-	int limits() const;
-	/// Identifies BigopInsets
-	bool isBigopInset() const { return true; }
+	bool isScriptable() const { return true; }
 private:
-	///
-	bool hasLimits() const;
 	///
 	int sym_;
 	///
 	string ssym_;
 	///
 	MathTextCodes code_;
-	/// 1: \limits, -1: \nolimits, 0: use default
-	int limits_;
-	/// x offset for drawing the superscript
-	int dx0_;
-	/// x offset for drawing the subscript
-	int dx1_;
-	/// x offset for drawing the inner symbol
-	int dxx_;
 };
 #endif
