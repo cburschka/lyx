@@ -1,3 +1,9 @@
+2003-12-11  Angus Leeming  <leeming@lyx.org>
+
+	* QCitationDialog.C (availableChanged, selectedChanged): ensure that
+	the bibkeysInfo map is populated before calling biblio::getInfo.
+	Prevents and assert when the bibtex database is not found.
+
 2003-12-10  Angus Leeming  <leeming@lyx.org>
 
 	* QExternal.C, ui/QExternalDialogBase.ui: add a 'draft' check box

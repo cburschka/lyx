@@ -83,7 +83,9 @@ void QCitationDialog::selectedChanged()
 		return;
 	}
 
-	infoML->setText(toqstr(biblio::getInfo(theMap, form_->citekeys[sel])));
+	if (!theMap.empty())
+		infoML->setText(
+			toqstr(biblio::getInfo(theMap, form_->citekeys[sel])));
 	setButtons();
 }
 
@@ -111,7 +113,9 @@ void QCitationDialog::availableChanged()
 		return;
 	}
 
-	add_->infoML->setText(toqstr(biblio::getInfo(theMap, form_->bibkeys[sel])));
+	if (!theMap.empty())
+		add_->infoML->setText(
+			toqstr(biblio::getInfo(theMap, form_->bibkeys[sel])));
 	setButtons();
 }
 
