@@ -580,7 +580,7 @@ rm -f xfonts/fonts.dir xfonts/fonts.scale xfonts/tmpfonts
 num=0
 touch xfonts/tmpfonts
 for font in $fontlist ; do
-  MSG_CHECKING([for $font])
+  MSG_CHECKING(for $font,+)
   result=no
   for ext in pfb pfa ttf ; do
     if filepath=`kpsewhich $font.$ext` ; then
@@ -600,7 +600,7 @@ if test ! $num = 0 ; then
   cat xfonts/tmpfonts >>xfonts/fonts.scale
   cp xfonts/fonts.scale xfonts/fonts.dir
   # create a resource list file for Display Postscript
-  (cd xfonts ; rm -f PSres.upr ; makepsres -q) || true
+  (cd xfonts ; rm -f PSres.upr ; makepsres) 2>/dev/null || true
 fi
 rm -f xfonts/tmpfonts
 
