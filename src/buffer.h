@@ -367,6 +367,12 @@ public:
 	///
 	InsetOld * getInsetFromID(int id_arg) const;
 
+	/** \returns true only when the file is fully loaded.
+	 *  Used to prevent the premature generation of previews
+	 *  and by the citation inset.
+	 */
+	bool fully_loaded() const;
+
 private:
 	/** Inserts a file into a document
 	    \param par if != 0 insert the file.

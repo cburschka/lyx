@@ -1,3 +1,8 @@
+2003-10-22  Angus Leeming  <leeming@lyx.org>
+
+	* PreviewLoader.C (startLoading): do nothing if the buffer is not yet
+	loaded.
+
 2003-10-13  Angus Leeming  <leeming@lyx.org>
 
 	* GraphicsTypes.[Ch] (setDisplayTranslator): removed.

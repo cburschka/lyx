@@ -186,13 +186,19 @@ struct Buffer::Impl
 	string filepath;
 
 	boost::scoped_ptr<Messages> messages;
+
+	/** set to true only when the file is fully loaded.
+	 *  Used to prevent the premature generation of previews
+	 *  and by the citation inset.
+	 */
+	bool file_fully_loaded;
 };
 
 
 Buffer::Impl::Impl(Buffer & parent, string const & file, bool readonly_)
 	: nicefile(true),
 	  lyx_clean(true), bak_clean(true), unnamed(false), read_only(readonly_),
-	  filename(file), filepath(OnlyPath(file))
+	  filename(file), filepath(OnlyPath(file)), file_fully_loaded(false)
 {
 	lyxvc.buffer(&parent);
 	if (readonly_ || lyxrc.use_tempdir)
@@ -606,6 +612,12 @@ bool Buffer::readFile(string const & filename, ParagraphList::iterator pit)
 }
 
 
+bool Buffer::fully_loaded() const
+{
+	return pimpl_->file_fully_loaded;
+}
+
+
 bool Buffer::readFile(LyXLex & lex, string const & filename,
 		      ParagraphList::iterator pit)
 {
@@ -697,6 +709,7 @@ bool Buffer::readFile(LyXLex & lex, string const & filename,
 				       " that it is probably corrupted."),
 				       filename));
 	}
+	pimpl_->file_fully_loaded = true;
 	return true;
 }
 

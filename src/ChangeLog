@@ -1,3 +1,12 @@
+2003-10-22  Angus Leeming  <leeming@lyx.org>
+
+	* buffer.[Ch] (fully_loaded): new member function, returning true
+	only when the file has been loaded fully.
+	Used to prevent the premature generation of previews and by the
+	citation inset to prevent computation of the natbib-style label.
+
+	* factory.C (createInset): remove call to InsetCitation::setLoadingBuffer.
+
 2003-10-22  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* text.C: fixed an "oops" in the "is a bit silly" 

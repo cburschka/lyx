@@ -450,12 +450,15 @@ void PreviewLoader::Impl::startLoading()
 	if (pending_.empty() || !pconverter_)
 		return;
 
+	// Only start the process off after the buffer is loaded from file.
+	if (!buffer_.fully_loaded())
+		return;
+
 	lyxerr[Debug::GRAPHICS] << "PreviewLoader::startLoading()" << endl;
 
 	// As used by the LaTeX file and by the resulting image files
-	string directory = buffer_.temppath();
-	if (directory.empty())
-		directory = buffer_.filePath();
+	string const directory = buffer_.temppath().empty() ?
+		buffer_.filePath() : buffer_.temppath();
 
 	string const filename_base(unique_filename(directory));
 

@@ -212,9 +212,7 @@ InsetOld * createInset(FuncRequest const & cmd)
 		} else if (name == "citation") {
 			InsetCommandParams icp;
 			InsetCommandMailer::string2params(cmd.argument, icp);
-			InsetCitation * inset = new InsetCitation(icp);
-			inset->setLoadingBuffer(*bv->buffer(), false);
-			return inset;
+			return new InsetCitation(icp);
 
 		} else if (name == "ert") {
 			InsetERT * inset = new InsetERT(params);

@@ -38,51 +38,34 @@ using std::map;
 
 namespace {
 
-// An optimisation. We assume that until the first InsetCitation::edit is
-// called, we're loading the buffer and that, therefore, we don't need to
-// reload the bibkey list
-std::map<Buffer const *, bool> loading_buffer;
-
 string const getNatbibLabel(Buffer const & buffer,
 			    string const & citeType, string const & keyList,
 			    string const & before, string const & after,
 			    bool numerical)
 {
+	// Only start the process off after the buffer is loaded from file.
+	if (!buffer.fully_loaded())
+		return string();
+
 	typedef std::map<Buffer const *, biblio::InfoMap> CachedMap;
 	static CachedMap cached_keys;
 
-	// Only load the bibkeys once if we're loading up the buffer,
-	// else load them afresh each time.
-	map<Buffer const *, bool>::iterator lit = loading_buffer.find(&buffer);
-	if (lit == loading_buffer.end())
-		loading_buffer[&buffer] = true;
+	// build the keylist
+	typedef vector<std::pair<string, string> > InfoType;
+	InfoType bibkeys;
+	buffer.fillWithBibKeys(bibkeys);
 
-	bool loadkeys = !loading_buffer[&buffer];
-	if (!loadkeys) {
-		CachedMap::iterator kit = cached_keys.find(&buffer);
-		loadkeys = kit == cached_keys.end();
+	InfoType::const_iterator bit  = bibkeys.begin();
+	InfoType::const_iterator bend = bibkeys.end();
+
+	biblio::InfoMap infomap;
+	for (; bit != bend; ++bit) {
+		infomap[bit->first] = bit->second;
 	}
+	if (infomap.empty())
+		return string();
 
-	if (loadkeys) {
-		// build the keylist
-		typedef vector<std::pair<string, string> > InfoType;
-		InfoType bibkeys;
-		buffer.fillWithBibKeys(bibkeys);
-
-		InfoType::const_iterator bit  = bibkeys.begin();
-		InfoType::const_iterator bend = bibkeys.end();
-
-		biblio::InfoMap infomap;
-		for (; bit != bend; ++bit) {
-			infomap[bit->first] = bit->second;
-		}
-		if (infomap.empty())
-			return string();
-
-		cached_keys[&buffer] = infomap;
-	}
-
-	biblio::InfoMap infomap = cached_keys[&buffer];
+	cached_keys[&buffer] = infomap;
 
 	// the natbib citation-styles
 	// CITET:	author (year)
@@ -325,22 +308,12 @@ string const InsetCitation::getScreenLabel(Buffer const & buffer) const
 }
 
 
-void InsetCitation::setLoadingBuffer(Buffer const & buffer, bool state) const
-{
-	// Doesn't matter if there is no bv->buffer() entry in the map.
-	loading_buffer[&buffer] = state;
-}
-
-
 dispatch_result
 InsetCitation::priv_dispatch(FuncRequest const & cmd,
 			     idx_type & idx, pos_type & pos)
 {
 	switch (cmd.action) {
 	case LFUN_INSET_EDIT:
-		// A call to edit indicates that we're no longer loading the
-		// buffer but doing some real work.
-		setLoadingBuffer(*cmd.view()->buffer(), false);
 		InsetCommandMailer("citation", *this).showDialog(cmd.view());
 		return DISPATCHED;
 

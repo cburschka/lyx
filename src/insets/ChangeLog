@@ -1,5 +1,13 @@
 2003-10-22  Angus Leeming  <leeming@lyx.org>
 
+	* insetcite.[Ch] (setLoadingBuffer): removed.
+	(getNatbibLabel): use the new Buffer::fully_loaded member function to
+	ascertain whether to proceed with the (expensive) task of computing
+	the natbib-style label. Remove the home-grown hack providing
+	similar functionality.
+
+2003-10-22  Angus Leeming  <leeming@lyx.org>
+
 	* render_graphic.[Ch] (statusMessage, readyToDisplay): move out of the
 	class and into an anonymous namespace.
 
