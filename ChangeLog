@@ -1,3 +1,8 @@
+2001-02-23  Juergen Vigna  <jug@sad.it>
+
+	* src/tabular.C (AppendColumn): fixed initialitation of column_struct.
+	(AppendRow): fixed initialitation of row_struct.
+
 2001-02-10  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* src/insets/insettext.C (LocalDispatch): Restore the language

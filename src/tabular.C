@@ -195,6 +195,8 @@ void LyXTabular::AppendRow(int cell)
 
     row_vector::iterator rit = row_info.begin() + row;
     row_info.insert(rit, rowstruct());
+    // now set the values of the row before
+    row_info[row] = row_info[row+1];
 
 #if 0
     cell_vvector::iterator cit = cell_info.begin() + row;
@@ -246,6 +248,8 @@ void LyXTabular::AppendColumn(int cell)
     int const column = column_of_cell(cell);
     column_vector::iterator cit = column_info.begin() + column + 1;
     column_info.insert(cit, columnstruct());
+    // set the column values of the column before
+    column_info[column+1] = column_info[column];
 
     for (int i = 0; i < rows_; ++i) {
         for (int j = 0; j <= column; ++j) {
