@@ -392,7 +392,8 @@ int BufferView::Pimpl::resizeCurrentBuffer()
 		mark_set = bv_->text->selection.mark();
 		the_locking_inset = bv_->theLockingInset();
 		resizeInsets(bv_);
-		bv_->text->init(bv_);
+		bv_->text->fullRebreak();
+		update();
 	} else {
 		lyxerr << "text not available!\n";
 		// See if we have a text in TextCache that fits

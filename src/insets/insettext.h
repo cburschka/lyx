@@ -310,13 +310,13 @@ private:
 	///
 	int ciy(BufferView *) const;
 	///
-	lyx::pos_type cpos(BufferView *) const;
+	lyx::pos_type cpos() const;
 	///
-	ParagraphList::iterator cpar(BufferView *) const;
+	ParagraphList::iterator cpar() const;
 	///
-	bool cboundary(BufferView *) const;
+	bool cboundary() const;
 	///
-	RowList::iterator crow(BufferView *) const;
+	RowList::iterator crow() const;
 	///
 	void drawFrame(Painter &, int x) const;
 	///
