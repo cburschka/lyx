@@ -36,16 +36,12 @@ Dekel:
 
 Macros:
 
-?? - When changing the macro definition, all instances are not updated.
+ - When changing the macro definition, all instances are not updated.
 
-:: I cannot reproduce this.
-
-?? - If I have macros \newcommand{\foo}[1]{[#1]} and
-??   \newcommand{\foox}{\foo{x}} then when an instance of \foox is drawn on
-??   screen, there are two black frames.  While this is "correct", it is
-??   annoying.
-
-:: This is partially fixed?
+// - If I have macros \newcommand{\foo}[1]{[#1]} and
+//   \newcommand{\foox}{\foo{x}} then when an instance of \foox is drawn on
+//   screen, there are two black frames.  While this is "correct", it is
+//   annoying.
 
 - LyX crashes when you define a recursive macro
 
@@ -54,17 +50,12 @@ Misc:
 - If I have x_{1}^{2}, I put the cursor before the 2, and press backspace,
   the result is 'x2'. The correct result should be 'x_{1}2'
 
-- If I mark some text and then press ^, then the marked text is deleted.
-  The correct behavior is to put the marked text in the superscript.
+// - If I mark some text and then press ^, then the marked text is deleted.
+//   The correct behavior is to put the marked text in the superscript.
 
-- Pressing <down> when cursor is in subscript will move the cursor up
-  (to the base of the subscript) instead of exiting the inset.
-  The same problem happen in fractions
-
-!! If you type something there you will see that the corsor has left the
-!! inset. That's mor or less a "feature". If you don't like it, propose a
-!! method how a subscript inset can figure out what is "optically" lower
-!! on screen.
+// - Pressing <down> when cursor is in subscript will move the cursor up
+//   (to the base of the subscript) instead of exiting the inset.
+//   The same problem happen in fractions
 
 // - When you press the mouse just to the left of the middle point of
 //   some char, the cursor will be positioned to the right of the char.
@@ -73,21 +64,20 @@ Misc:
 
 // - Text in superscript is not smaller than normal text.
 
-?? - After insertion of \sum, the cursor is in invalid location
-??    There is still a problem when doing c-m \sum S-C-M
+// - After insertion of \sum, the cursor is in invalid location
 
-?? - The height of the frame is often wrong (e.g. x^2)
-??    For example $\sum x$ in an inline formula
+// - The height of the frame is often wrong (e.g. x^2)
+//    For example $\sum x$ in an inline formula
 
 - InsetFormula::validate is broken
 
 // - Changing math space length by pressing the space-bar key doesn't work
 !!  it's M-m space now. 
 
-- The drawing of decorations on screen is very different than latex.
-   (a low priority bug).
+// - The drawing of decorations on screen is very different than latex.
+//    (a low priority bug).
 
-- If I change '\alpha' to bold, the result is \mathbf{a}
+// - If I change '\alpha' to bold, the result is \mathbf{a}
 
 - Just moving the cursor in a math inset causes changing the buffer status
   to (changed).
@@ -102,17 +92,17 @@ Eran Tromer:
 
 // - Scripts are too large. $\log_2$ exceeds inset frame (non-displayed).
 
-- You need two <right> to get past \vec{v}, and all sort of other
-  insetish behavior.
+// - You need two <right> to get past \vec{v}, and all sort of other
+//  insetish behavior.
 
-- \vec{several-characters} doesn't work. \overrightarrow does.
+:: Not a bug.
 
-- When the cursor is in a subscript (and either isn't at the end of 
-  the subscript or there's no subsubscript), pressing <down> should
-  try to *really* go down (to the next line, or denumerator, or 
-  whatever). Currently it goes *up*. Ditto for superscripts.
+// - \vec{several-characters} doesn't work. \overrightarrow does.
 
-:: Please see comment to Dekel's report on the same problem.
+// - When the cursor is in a subscript (and either isn't at the end of 
+//   the subscript or there's no subsubscript), pressing <down> should
+//   try to *really* go down (to the next line, or denumerator, or 
+//   whatever). Currently it goes *up*. Ditto for superscripts.
 
 // - When choosing to insert "\left\Vert \right\Vert" parenthesis using
 //   the maths [sic] panel, a "\left( \right." is inserted instead.
@@ -130,14 +120,11 @@ Eran Tromer:
 - When selecting, maybe give a visual indication of the "original" 
   anchor, when it differs from the "actual" one.
 
-// - C-v always pastes into the end of the current math inset, instead of
-//   the cursor location.
-
-- Placement of cursor using mouse is seriously broken.
-  Example 1: large fractions.
-  Example 2: type into a new document: 
-  "M-d xxxxxxxxx <right> M-x footnote-insert"
-  Can't reach most places in the formula using mouse.
+// - Placement of cursor using mouse is seriously broken.
+//   Example 1: large fractions.
+//   Example 2: type into a new document: 
+//   "M-d xxxxxxxxx <right> M-x footnote-insert"
+//   Can't reach most places in the formula using mouse.
 
 
 
@@ -155,8 +142,8 @@ Rainer Dorsch:
 
 Marcus (Suran@gmx.net) 
 
-// - In math-mode I can switch back to text-mode in a formula but then I am
-//   not able to type Umlauts.
+- In math-mode I can switch back to text-mode in a formula but then I am
+  not able to type Umlauts.
 
 ?? - Having selected some part of a formula and creating a fraction with that
 ??   part in the top my selection-buffer is replaced with the part.
@@ -172,12 +159,13 @@ From: Álvaro Tejero Cantero <alvaro@antalia.com>
  
 - the most annoying bug by far: bold is "inherited" to super and subscripts.
  
-- when you get into equation array mode, the previous equation(s) remain(s) 
- unaligned. I would be soo much faster to have LyX pick the last equal sign 
- from the previous line as a reference for the alignment (and a good heuristic 
- for the 80% of cases, with the advantage that we don't lose anything 
- enforcing it). This is another case that slows down a lot when typing 
- because, as the previous one, requires going back and correcting.
+// - when you get into equation array mode, the previous equation(s)
+// remain(s) unaligned. I would be soo much faster to have LyX pick the
+// last equal sign from the previous line as a reference for the alignment
+// (and a good heuristic for the 80% of cases, with the advantage that we
+// don't lose anything enforcing it). This is another case that slows down
+// a lot when typing because, as the previous one, requires going back
+// and correcting.
  
 - the movement is sometimes clumsy inside this arrayed equations: ie. C-a (or 
  "home" are understood as "beginning of the formula" instead of "beginning of 
@@ -342,14 +330,13 @@ Yves Bastide:
 
 Jean-Marc:
 
-> \def\neq{\not=} \let\ne=\neq
->    \let\le=\leq
->    \let\ge=\geq
->     \let\owns=\ni
->    \let\gets=\leftarrow
->    \let\to=\rightarrow
-> % \let\@@sqrt\sqrtsign
-> \let\|=\Vert
+// \def\neq{\not=} \let\ne=\neq
+// \let\le=\leq
+// \let\ge=\geq
+// \let\owns=\ni
+// \let\gets=\leftarrow
+// \let\to=\rightarrow
+// \let\|=\Vert
 
 Angus:
 
@@ -357,9 +344,12 @@ Angus:
 
 Tuukka:
 
-- An inline equation does not get a number, so putting a label there is not
-  overly sensible...
-	Ok. In that case show a message in the bottom similarly as the message
-	"you cannot type two spaces this way". Eg. "You can insert math labels
-	only in display mode"
+// - An inline equation does not get a number, so putting a label there is not
+//   overly sensible...
+// 	Ok. In that case show a message in the bottom similarly as the message
+// 	"you cannot type two spaces this way". Eg. "You can insert math labels
+// 	only in display mode"
+
+:: Not a bug. It's allowed by LaTeX and there might be other reasons for
+:: putting labels there. I won't add extra code to disable this.
 
