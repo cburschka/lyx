@@ -28,6 +28,8 @@
 extern boost::scoped_ptr<kb_keymap> toplevel_keymap;
 #endif
 
+#include <qapplication.h>
+
 using std::distance;
 using std::make_pair;
 using std::string;
@@ -62,7 +64,6 @@ pair<int, QLPopupMenu *>
 createMenu(QMenuData * parent, MenuItem const * item, QLMenubar * owner,
 	   bool is_toplevel)
 {
-	// FIXME: leaks ??
 	QLPopupMenu * pm = new QLPopupMenu(owner, item->submenuname(), is_toplevel);
 	int const id = parent->insertItem(toqstr(getLabel(*item)), pm);
 	return make_pair(id, pm);
@@ -82,6 +83,7 @@ QLPopupMenu::QLPopupMenu(QLMenubar * owner,
 
 void QLPopupMenu::fire(int index)
 {
+	qApp->processEvents();
 	owner_->view()->activated(funcs_[index]);
 }
 

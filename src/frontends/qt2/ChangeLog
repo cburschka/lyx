@@ -1,3 +1,9 @@
+2004-08-13  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* QLPopupMenu.C (fire): make Qt process events before we
+	dispatch our function (toolbars still do not get repainted
+	correctly, though)
+
 2004-08-12  Kornel Benko  <kornel.benko@berlin.de>
 
 	* QPrefs.C (setComboxFont): Use fromqstr() instead of latin1() for
