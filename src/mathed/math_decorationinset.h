@@ -16,19 +16,21 @@ public:
 	///
 	MathDecorationInset(int);
 	///
-	MathInset *  clone() const;
+	MathInset * clone() const;
 	///
 	void draw(Painter &, int, int);
 	///
 	void Write(std::ostream &, bool fragile) const;
 	///
 	void Metrics(MathStyles st);
-	///
-	bool GetLimits() const;
 private:
 	///
 	int deco_;
 	///
 	bool upper_;
+	/// height of deco
+	int dh_;
+	/// vertical offset of deco
+	int dy_;
 };
 #endif

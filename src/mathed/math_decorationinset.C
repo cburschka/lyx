@@ -21,23 +21,11 @@ MathDecorationInset::MathDecorationInset(int d)
 }
 
 
-bool MathDecorationInset::GetLimits() const
-{ 
-	return deco_ == LM_underbrace || deco_ == LM_overbrace;
-}    
-
-
 MathInset * MathDecorationInset::clone() const
 {   
 	return new MathDecorationInset(*this);
 }
 
-
-void MathDecorationInset::draw(Painter & pain, int x, int y)
-{ 
-	xcell(0).draw(pain, x, y);
-	mathed_draw_deco(pain, x, y + 10, width_, 10, deco_);
-}
 
 
 void MathDecorationInset::Metrics(MathStyles st)
@@ -50,14 +38,11 @@ void MathDecorationInset::Metrics(MathStyles st)
 	descent_ = xcell(0).descent();
 
 	int w = width() + 4;
-	if (w < 16)
-		w = 16;
 
-	int dh_ = w / 5;
+	dh_ = w / 5;
 	if (dh_ > h)
 		dh_ = h;
 
-	int dy_;	
 	if (upper_) {
 		ascent_ += dh_ + 2;
 		dy_ = -ascent_;
@@ -66,6 +51,14 @@ void MathDecorationInset::Metrics(MathStyles st)
 		descent_ += dh_ + 4;
 	}
 	width_ = w;
+}
+
+void MathDecorationInset::draw(Painter & pain, int x, int y)
+{ 
+	xo(x);
+	yo(x);
+	xcell(0).draw(pain, x, y);
+	mathed_draw_deco(pain, x, y + dy_, width_, dh_, deco_);
 }
 
 
