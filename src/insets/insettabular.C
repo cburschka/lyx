@@ -2720,6 +2720,7 @@ bool InsetTabular::nextChange(BufferView * bv, lyx::pos_type & length)
 bool InsetTabular::searchForward(BufferView * bv, string const & str,
 				 bool cs, bool mw)
 {
+	int cell = 0;
 	if (the_locking_inset) {
 		if (the_locking_inset->searchForward(bv, str, cs, mw)) {
 			updateLocal(bv, CELL);
@@ -2727,16 +2728,16 @@ bool InsetTabular::searchForward(BufferView * bv, string const & str,
 		}
 		if (tabular->IsLastCell(actcell))
 			return false;
-		++actcell;
+		cell = actcell + 1;
 	}
-	InsetText * inset = tabular->GetCellInset(actcell);
+	InsetText * inset = tabular->GetCellInset(cell);
 	if (inset->searchForward(bv, str, cs, mw)) {
 		updateLocal(bv, FULL);
 		return true;
 	}
-	while (!tabular->IsLastCell(actcell)) {
-		++actcell;
-		inset = tabular->GetCellInset(actcell);
+	while (!tabular->IsLastCell(cell)) {
+		++cell;
+		inset = tabular->GetCellInset(cell);
 		if (inset->searchForward(bv, str, cs, mw)) {
 			updateLocal(bv, FULL);
 			return true;
@@ -2749,18 +2750,18 @@ bool InsetTabular::searchForward(BufferView * bv, string const & str,
 bool InsetTabular::searchBackward(BufferView * bv, string const & str,
 			       bool cs, bool mw)
 {
+	int cell = tabular->GetNumberOfCells();
 	if (the_locking_inset) {
 		if (the_locking_inset->searchBackward(bv, str, cs, mw)) {
 			updateLocal(bv, CELL);
 			return true;
 		}
+		cell = actcell;
 	}
-	if (!locked)
-		actcell = tabular->GetNumberOfCells();
 
-	while (actcell) {
-		--actcell;
-		InsetText * inset = tabular->GetCellInset(actcell);
+	while (cell) {
+		--cell;
+		InsetText * inset = tabular->GetCellInset(cell);
 		if (inset->searchBackward(bv, str, cs, mw)) {
 			updateLocal(bv, CELL);
 			return true;

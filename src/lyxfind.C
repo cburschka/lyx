@@ -143,6 +143,7 @@ bool LyXFind(BufferView * bv,
 	// we are!
 	LyXText * text = bv->text;
 
+
 	if (text->selection.set())
 		text->cursor = forward ?
 			text->selection.end : text->selection.start;
@@ -233,27 +234,17 @@ SearchResult SearchForward(BufferView * bv, LyXText * text, string const & str,
 {
 	Paragraph * par = text->cursor.par();
 	pos_type pos = text->cursor.pos();
-	Paragraph * prev_par = par;
 	UpdatableInset * inset;
 
 	while (par && !IsStringInText(par, pos, str, cs, mw)) {
-		if (par->isInset(pos) &&
-			(inset = (UpdatableInset *)par->getInset(pos)) &&
-			(inset->isTextInset()))
-		{
-#if 0
-			// lock the inset!
-			text->setCursor(bv, par, pos);
-			inset->edit(bv);
-#endif
-			if (inset->searchForward(bv, str, cs, mw))
-				return SR_FOUND_NOUPDATE;
-		}
+		if (pos < par->size() 
+		    && par->isInset(pos) 
+		    && (inset = (UpdatableInset *)par->getInset(pos)) 
+		    && inset->isTextInset()
+		    && inset->searchForward(bv, str, cs, mw))
+			return SR_FOUND_NOUPDATE;
 
-		++pos;
-
-		if (pos >= par->size()) {
-			prev_par = par;
+		if (++pos >= par->size()) {
 			par = par->next();
 			pos = 0;
 		}
@@ -262,12 +253,8 @@ SearchResult SearchForward(BufferView * bv, LyXText * text, string const & str,
 	if (par) {
 		text->setCursor(par, pos);
 		return SR_FOUND;
-	} else {
-		// make sure we end up at the end of the text,
-		// not the start point of the last search
-		text->setCursor(prev_par, prev_par->size());
+	} else
 		return SR_NOT_FOUND;
-	}
 }
 
 
@@ -280,13 +267,11 @@ SearchResult SearchBackward(BufferView * bv, LyXText * text,
 {
 	Paragraph * par = text->cursor.par();
 	pos_type pos = text->cursor.pos();
-	Paragraph * prev_par = par;
 
 	do {
 		if (pos > 0)
 			--pos;
 		else {
-			prev_par = par;
 			// We skip empty paragraphs (Asger)
 			do {
 				par = par->previous();
@@ -295,28 +280,18 @@ SearchResult SearchBackward(BufferView * bv, LyXText * text,
 			} while (par && pos < 0);
 		}
 		UpdatableInset * inset;
-		if (par && par->isInset(pos) &&
-			(inset = (UpdatableInset *)par->getInset(pos)) &&
-			(inset->isTextInset()))
-		{
-#if 0
-			// lock the inset!
-			text->setCursor(bv, par, pos);
-			inset->edit(bv, false);
-#endif
-			if (inset->searchBackward(bv, str, cs, mw))
-				return SR_FOUND_NOUPDATE;
-		}
+		if (par && par->isInset(pos) 
+		    && (inset = (UpdatableInset *)par->getInset(pos)) 
+		    && inset->isTextInset()
+		    && inset->searchBackward(bv, str, cs, mw))
+			return SR_FOUND_NOUPDATE;
 	} while (par && !IsStringInText(par, pos, str, cs, mw));
 
 	if (par) {
 		text->setCursor(par, pos);
 		return SR_FOUND;
-	} else {
-		// go to the last part of the unsuccessful search
-		text->setCursor(prev_par, 0);
+	} else
 		return SR_NOT_FOUND;
-	}
 }
 
 
