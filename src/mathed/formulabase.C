@@ -110,44 +110,6 @@ InsetFormulaBase::InsetFormulaBase()
 }
 
 
-void InsetFormulaBase::read(Buffer const *, LyXLex & lex)
-{
-	read(lex);
-}
-
-
-void InsetFormulaBase::write(Buffer const *, ostream & os) const
-{
-	write(os);
-}
-
-
-int InsetFormulaBase::latex(Buffer const *, ostream & os,
-	bool fragile, bool spacing) const
-{
-	return latex(os, fragile, spacing);
-}
-
-
-int InsetFormulaBase::ascii(Buffer const *, ostream & os, int spacing) const
-{
-	return ascii(os, spacing);
-}
-
-
-int InsetFormulaBase::linuxdoc(Buffer const *, ostream & os) const
-{
-	return linuxdoc(os);
-}
-
-
-int InsetFormulaBase::docbook(Buffer const *, ostream & os) const
-{
-	return docbook(os);
-}
-
-
-
 // Check if uses AMS macros
 void InsetFormulaBase::validate(LaTeXFeatures &) const
 {}
@@ -726,15 +688,15 @@ void mathDispatchCreation(BufferView * bv, string const & arg, bool display)
 
 		InsetFormulaBase * f;
 		if (sel.empty()) {
-				f = new InsetFormula;
-				if (openNewInset(bv, f)) {
-					// don't do that also for LFUN_MATH_MODE unless you want end up with
-					// always changing to mathrm when opening an inlined inset
-					// -- I really hate "LyXfunc overloading"...
-					if (display)
-						f->localDispatch(bv, LFUN_MATH_DISPLAY, string());
-					f->localDispatch(bv, LFUN_INSERT_MATH, arg);
-				}
+			f = new InsetFormula;
+			if (openNewInset(bv, f)) {
+				// don't do that also for LFUN_MATH_MODE unless you want end up with
+				// always changing to mathrm when opening an inlined inset
+				// -- I really hate "LyXfunc overloading"...
+				if (display)
+					f->localDispatch(bv, LFUN_MATH_DISPLAY, string());
+				f->localDispatch(bv, LFUN_INSERT_MATH, arg);
+			}
 		} else {
 			// create a macro if we see "\\newcommand" somewhere, and an ordinary
 			// formula otherwise

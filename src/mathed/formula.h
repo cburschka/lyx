@@ -53,17 +53,17 @@ public:
 	void metrics() const;
 
 	///
-	void write(std::ostream &) const;
+	void write(Buffer const *, std::ostream &) const;
 	///
-	void read(LyXLex & lex);
+	void read(Buffer const *, LyXLex & lex);
 	///
-	int latex(std::ostream &, bool fragile, bool free_spc) const;
+	int latex(Buffer const *, std::ostream &, bool fragile, bool free_spc) const;
 	///
-	int ascii(std::ostream &, int linelen) const;
+	int ascii(Buffer const *, std::ostream &, int linelen) const;
 	///
-	int linuxdoc(std::ostream &) const;
+	int linuxdoc(Buffer const *, std::ostream &) const;
 	///
-	int docbook(std::ostream &) const;
+	int docbook(Buffer const *, std::ostream &) const;
 
 	///
 	Inset * clone(Buffer const &, bool same_id = false) const;

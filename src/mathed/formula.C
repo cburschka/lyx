@@ -88,40 +88,40 @@ Inset * InsetFormula::clone(Buffer const &, bool) const
 }
 
 
-void InsetFormula::write(ostream & os) const
+void InsetFormula::write(Buffer const * buf, ostream & os) const
 {
 	os << "Formula ";
-	latex(os, false, false);
+	latex(buf, os, false, false);
 }
 
 
-int InsetFormula::latex(ostream & os, bool fragile, bool) const
+int InsetFormula::latex(Buffer const *, ostream & os, bool fragile, bool) const
 {
 	par_->write(os, fragile);
 	return 1;
 }
 
 
-int InsetFormula::ascii(ostream & os, int) const
+int InsetFormula::ascii(Buffer const *, ostream & os, int) const
 {
 	par_->write(os, false);
 	return 1;
 }
 
 
-int InsetFormula::linuxdoc(ostream & os) const
+int InsetFormula::linuxdoc(Buffer const * buf, ostream & os) const
 {
-	return ascii(os, 0);
+	return ascii(buf, os, 0);
 }
 
 
-int InsetFormula::docbook(ostream & os) const
+int InsetFormula::docbook(Buffer const * buf, ostream & os) const
 {
-	return ascii(os, 0);
+	return ascii(buf, os, 0);
 }
 
 
-void InsetFormula::read(LyXLex & lex)
+void InsetFormula::read(Buffer const *, LyXLex & lex)
 {
 	par(mathed_parse_normal(lex));
 	metrics();

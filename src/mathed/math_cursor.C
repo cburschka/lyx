@@ -169,7 +169,7 @@ MathInset * MathCursor::parInset(int i) const
 }
 
 
-void MathCursor::dump(char const * what) const
+void MathCursor::dump(char const *) const
 {
 #if 0
 	lyxerr << "MC: " << what << "\n";

@@ -72,40 +72,40 @@ Inset * InsetFormulaMacro::clone(Buffer const &, bool) const
 }
 
 
-void InsetFormulaMacro::write(ostream & os) const
+void InsetFormulaMacro::write(Buffer const *, ostream & os) const
 {
 	os << "FormulaMacro ";
 	tmacro().write(os, false);
 }
 
 
-int InsetFormulaMacro::latex(ostream & os, bool fragile, 
+int InsetFormulaMacro::latex(Buffer const *, ostream & os, bool fragile, 
 			     bool /*free_spacing*/) const
 {
 	tmacro().write(os, fragile);
 	return 2;
 }
 
-int InsetFormulaMacro::ascii(ostream & os, int) const
+int InsetFormulaMacro::ascii(Buffer const *, ostream & os, int) const
 {
 	tmacro().write(os, false);
 	return 0;
 }
 
 
-int InsetFormulaMacro::linuxdoc(ostream & os) const
+int InsetFormulaMacro::linuxdoc(Buffer const * buf, ostream & os) const
 {
-	return ascii(os, 0);
+	return ascii(buf, os, 0);
 }
 
 
-int InsetFormulaMacro::docbook(ostream & os) const
+int InsetFormulaMacro::docbook(Buffer const * buf, ostream & os) const
 {
-	return ascii(os, 0);
+	return ascii(buf, os, 0);
 }
 
 
-void InsetFormulaMacro::read(LyXLex & lex)
+void InsetFormulaMacro::read(Buffer const *, LyXLex & lex)
 {
 	MathMacroTemplate * t = mathed_parse_macro(lex);
 	if (!t) 

@@ -44,18 +44,20 @@ public:
 	///
 	int width(BufferView *, LyXFont const &) const;
 	///
-	void draw(BufferView *,LyXFont const &, int, float &, bool) const;
+	void draw(BufferView *, LyXFont const &, int, float &, bool) const;
 
 	///
-	void read(LyXLex & lex);
+	void read(Buffer const *, LyXLex & lex);
 	///
-	int ascii(std::ostream &, int linelen) const;
+	void write(Buffer const *, std::ostream & os) const;
 	///
-	int latex(std::ostream & os, bool fragile, bool free_spc) const;
+	int ascii(Buffer const *, std::ostream &, int linelen) const;
 	///
-	int linuxdoc(std::ostream & os) const;
+	int latex(Buffer const *, std::ostream & os, bool fragile, bool free_spc) const;
 	///
-	int docbook(std::ostream &) const;
+	int linuxdoc(Buffer const *, std::ostream & os) const;
+	///
+	int docbook(Buffer const *, std::ostream &) const;
 
 	///
 	Inset * clone(Buffer const &, bool same_id = false) const;
@@ -74,8 +76,6 @@ private:
 	MathMacroTemplate const & tmacro() const;
 	/// prefix in inset
 	string prefix() const;
-	///
-	void write(std::ostream & os) const;
 };
 
 #endif
