@@ -50,12 +50,6 @@ LyXScreen * BufferView::screen() const
 }
 
 
-WorkArea * BufferView::workarea() const
-{
-	return &pimpl_->workarea_;
-}
-
-
 LyXView * BufferView::owner() const
 {
 	return pimpl_->owner_;
@@ -276,6 +270,12 @@ void BufferView::center()
 void BufferView::pasteClipboard(bool asPara)
 {
 	pimpl_->pasteClipboard(asPara);
+}
+
+
+string const BufferView::getClipboard() const
+{
+	return pimpl_->workarea_.getClipboard();
 }
 
 

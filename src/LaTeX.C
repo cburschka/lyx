@@ -174,7 +174,7 @@ int LaTeX::run(TeXErrors & terr, LyXFunc * lfun)
 
 	++count;
 	lyxerr[Debug::LATEX] << "Run #" << count << endl;
-	lfun->Dispatch(LFUN_MESSAGE, _("LaTeX run number") + ' ' + tostr(count));
+	if (lfun) lfun->Dispatch(LFUN_MESSAGE, _("LaTeX run number") + ' ' + tostr(count));
 	
 	//WriteStatus(lfun, string(_("LaTeX run number ")) + tostr(count));
 	this->operator()();
@@ -209,7 +209,7 @@ int LaTeX::run(TeXErrors & terr, LyXFunc * lfun)
 	if (head.haschanged(OnlyFilename(ChangeExtension(file, ".idx")))) {
 		// no checks for now
 		lyxerr[Debug::LATEX] << "Running MakeIndex." << endl;
-		lfun->Dispatch(LFUN_MESSAGE, _("Running MakeIndex."));
+		if (lfun) lfun->Dispatch(LFUN_MESSAGE, _("Running MakeIndex."));
 //		WriteStatus(minib, _("Running MakeIndex."));
 		rerun = runMakeIndex(OnlyFilename(ChangeExtension(file, ".idx")));
 	}
@@ -222,7 +222,7 @@ int LaTeX::run(TeXErrors & terr, LyXFunc * lfun)
 		// tags is found -> run bibtex and set rerun = true;
 		// no checks for now
 		lyxerr[Debug::LATEX] << "Running BibTeX." << endl;
-		lfun->Dispatch(LFUN_MESSAGE, _("Running BibTeX."));
+		if (lfun) lfun->Dispatch(LFUN_MESSAGE, _("Running BibTeX."));
 		//WriteStatus(minib, _("Running BibTeX."));
 		updateBibtexDependencies(head, bibtex_info);
 		rerun |= runBibTeX(bibtex_info);
@@ -251,7 +251,7 @@ int LaTeX::run(TeXErrors & terr, LyXFunc * lfun)
 			<< "Dep. file has changed or rerun requested" << endl;
 		lyxerr[Debug::LATEX]
 			<< "Run #" << count << endl;
-		lfun->Dispatch(LFUN_MESSAGE, _("LaTeX run number") + ' ' + tostr(count));
+		if (lfun) lfun->Dispatch(LFUN_MESSAGE, _("LaTeX run number") + ' ' + tostr(count));
 //		WriteStatus(minib,
 //			    string(_("LaTeX run number ")) + tostr(count));
 		this->operator()();
@@ -280,7 +280,7 @@ int LaTeX::run(TeXErrors & terr, LyXFunc * lfun)
 	if (head.haschanged(OnlyFilename(ChangeExtension(file, ".idx")))) {
 		// no checks for now
 		lyxerr[Debug::LATEX] << "Running MakeIndex." << endl;
-		lfun->Dispatch(LFUN_MESSAGE, _("Running MakeIndex."));
+		if (lfun) lfun->Dispatch(LFUN_MESSAGE, _("Running MakeIndex."));
 		//WriteStatus(minib, _("Running MakeIndex."));
 		rerun = runMakeIndex(OnlyFilename(ChangeExtension(file, ".idx")));
 	}
@@ -302,7 +302,7 @@ int LaTeX::run(TeXErrors & terr, LyXFunc * lfun)
 		rerun = false;
 		++count;
 		lyxerr[Debug::LATEX] << "Run #" << count << endl;
-		lfun->Dispatch(LFUN_MESSAGE, _("LaTeX run numger") + ' ' + tostr(count));
+		if (lfun) lfun->Dispatch(LFUN_MESSAGE, _("LaTeX run numger") + ' ' + tostr(count));
 //		WriteStatus(minib, string(_("LaTeX run number ")) + tostr(count));
 		this->operator()();
 		scanres = scanLogFile(terr);

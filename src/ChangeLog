@@ -1,3 +1,22 @@
+2001-04-28  Kayvan A. Sylvan  <kayvan@sylvan.com>
+ 
+ 	* LaTeX.C (run): Fix problem with --export code.
+ 
+2001-04-26  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* BufferView.[Ch] (workarea): removed.
+	(getClipboard) new method; wrapper for workarea()->getClipboard()
+
+	* ToolbarDefaults.C (read): removed final lex.next() command; it's a
+	bug.
+
+	* WorkArea.h (width, height, xpos, ypos): These methods all
+	returned the dimensions of the work_area sub-area of WorkArea,
+	resulting in a position error if the WorkArea were resized. Now
+	return the dimensions of the entire WorkArea.
+
+	* lyx_main.C (ReadUIFile): don't print out spurious warnings.
+
 2001-05-03  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* LaTeX.C (deplog): correct the syntax of regex reg1

@@ -55,8 +55,6 @@ public:
 	///
 	LyXScreen * screen() const;
 	///
-	WorkArea * workarea() const;
-	///
 	void buffer(Buffer * b);
 	///
 	void resize(int, int, int, int);
@@ -236,6 +234,8 @@ public:
 	bool ChangeRefsIfUnique(string const & from, string const & to);
 	///
 	bool ChangeCitationsIfUnique(string const & from, string const & to);
+	///
+	string const getClipboard() const;
 	///
 	void pasteClipboard(bool asPara);
 	///

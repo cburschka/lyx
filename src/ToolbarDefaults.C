@@ -111,14 +111,13 @@ void ToolbarDefaults::read(LyXLex & lex)
 
 	if (lyxerr.debugging(Debug::PARSER))
 		lex.printTable(lyxerr);
-	
-	while (lex.IsOK() && !quit) {
 
+	while (lex.IsOK() && !quit) {
 		switch (lex.lex()) {
 		case TO_ADD:
 			if (lex.next()) {
 				func = lex.GetString();
-				lyxerr[Debug::GUI]
+				lyxerr[Debug::PARSER]
 					<< "Toolbar::read TO_ADD func: `"
 					<< func << "'" << endl;
 				add(func);
@@ -149,7 +148,6 @@ void ToolbarDefaults::read(LyXLex & lex)
 		}
 	}
 	lex.popTable();
-	lex.next();
 }
 
 

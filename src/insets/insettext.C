@@ -959,7 +959,7 @@ InsetText::LocalDispatch(BufferView * bv,
 		break;
 	case LFUN_PASTESELECTION:
 	{
-		string clip(bv->workarea()->getClipboard());
+		string clip(bv->getClipboard());
 	
 		if (clip.empty())
 			break;
