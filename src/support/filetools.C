@@ -1045,7 +1045,7 @@ string const getExtFromContents(string const & filename)
 
 		getline(ifs, str);
 		lyxerr[Debug::GRAPHICS] << "Scanstring: " << str << endl;
-		
+
 		string const stamp = str.substr(0,2);
 		if (firstLine && str.size() >= 2) {
 			// at first we check for a zipped file, because this
