@@ -86,8 +86,8 @@ struct FD_form_outputs_misc {
 	FL_OBJECT *input_ascii_roff;
 	FL_OBJECT *input_checktex;
 };
-struct FD_form_spellchecker {
-	~FD_form_spellchecker();
+struct FD_form_spelloptions {
+	~FD_form_spelloptions();
 
 	FL_FORM *form;
 	FL_OBJECT *choice_spell_command;

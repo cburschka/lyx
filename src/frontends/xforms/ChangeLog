@@ -1,3 +1,15 @@
+2001-07-13  Edwin Leuven  <leuven@fee.uva.nl>
+
+	* add spellchecker
+
+	* FormPreferences.[Ch]: rename spellchecker to spelloptions
+	* form_preferences.[Ch]: idem
+	* forms/form_preferences.fd: idem
+	* FormSpellchecker.[Ch]: added
+	* form_spellchecker.[Ch]: added
+	* forms/form_spellchecker.fd: added
+	* Dialogs.C: add spellchecker
+
 2001-07-12  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* FormFiledialog.C: (*it). -> it->

@@ -23,7 +23,6 @@
 #include "lyx_cb.h"
 #include "lyx_main.h"
 #include "print_form.h"
-#include "sp_form.h"
 #include "LyXView.h"
 #include "bufferview_funcs.h"
 #include "support/filetools.h"
@@ -37,7 +36,6 @@ extern BufferView * current_view;
 
 extern FD_form_figure * fd_form_figure;
 extern FD_form_sendto * fd_form_sendto;
-extern FD_form_spell_check * fd_form_spell_check;
 
 extern void HideFiguresPopups();
 
@@ -56,10 +54,6 @@ void RedrawAllBufferRelatedDialogs()
 	if (fd_form_sendto->form_sendto->visible) {
 		fl_redraw_form(fd_form_sendto->form_sendto);
 	}
-	if (fd_form_spell_check &&
-	    fd_form_spell_check->form_spell_check->visible) {
-		fl_redraw_form(fd_form_spell_check->form_spell_check);
-	}
 }
 
 // Prevents LyX from crashing when no buffers available
@@ -77,11 +71,6 @@ void CloseAllBufferRelatedDialogs()
 	}
 	if (fd_form_sendto->form_sendto->visible) {
 		fl_hide_form(fd_form_sendto->form_sendto);
-	}
-	if (fd_form_spell_check) {
-		if (fd_form_spell_check->form_spell_check->visible) {
-			fl_trigger_object(fd_form_spell_check->done);
-		}
 	}
 	HideFiguresPopups();
 }

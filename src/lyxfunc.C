@@ -60,7 +60,6 @@
 #include "mathed/formulamacro.h"
 #include "mathed/math_cursor.h"
 #include "mathed/math_inset.h"
-#include "spellchecker.h" 
 #include "minibuffer.h"
 #include "vspace.h"
 #include "LyXView.h"
@@ -1268,8 +1267,8 @@ string const LyXFunc::Dispatch(int ac,
 		
 	case LFUN_SPELLCHECK:
 		if (lyxrc.isp_command != "none")
-			ShowSpellChecker(owner->view());
-		break; // RVDK_PATCH_5
+			owner->getDialogs()->showSpellchecker();
+		break;
 		
 	// --- lyxserver commands ----------------------------
 

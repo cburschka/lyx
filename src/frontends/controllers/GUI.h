@@ -294,6 +294,18 @@ public:
 		: GUI<ControlSearch, GUIview, NoRepeatedApplyReadOnlyPolicy, GUIbc>(lv, d) {}
 };
 
+/** Specialization for Spellchecker dialog
+ */
+class ControlSpellchecker;
+
+template <class GUIview, class GUIbc>
+class GUISpellchecker :
+	public GUI<ControlSpellchecker, GUIview, NoRepeatedApplyReadOnlyPolicy, GUIbc> {
+public:
+	///
+	GUISpellchecker(LyXView & lv, Dialogs & d)
+		: GUI<ControlSpellchecker, GUIview, NoRepeatedApplyReadOnlyPolicy, GUIbc>(lv, d) {}
+};
 
 /** Specialization for Toc dialog
  */

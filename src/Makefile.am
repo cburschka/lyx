@@ -179,10 +179,10 @@ lyx_SOURCES = \
 	print_form.C \
 	print_form.h \
 	screen.C \
-	sp_form.C \
-	sp_form.h \
-	spellchecker.C \
-	spellchecker.h \
+	sp_base.h \
+	sp_spell.C \
+	sp_ispell.h \
+	sp_pspell.h \
 	stl_string_fwd.h \
 	tabular.C \
 	tabular.h \

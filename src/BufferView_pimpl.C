@@ -82,7 +82,7 @@ extern BufferList bufferlist;
 extern char ascii_type;
 
 extern bool math_insert_greek(BufferView *, char);
-extern void sigchldhandler(pid_t pid, int * status);
+extern void sigchldchecker(pid_t pid, int * status);
 extern int bibitemMaxWidth(BufferView *, LyXFont const &);
 
 
@@ -1034,7 +1034,7 @@ void BufferView::Pimpl::cursorToggle()
 	if (pid == -1) // error find out what is wrong
 		; // ignore it for now.
 	else if (pid > 0)
-		sigchldhandler(pid, &status);
+		sigchldchecker(pid, &status);
 
 	updatelist.update(bv_);
 	

@@ -1,3 +1,16 @@
+2001-07-13  Edwin Leuven  <leuven@fee.uva.nl>
+
+	* BufferView_pimpl.C: sigchldchecker instead of sigchldhandeler in
+	cursorToggle()
+	* lyx_gui_misc.C: remove spellchecker
+	* lyxfunc.C: showSpellchecker
+	* sp_base.h: added
+	* sp_ispell.h: added
+	* sp_pspell.h: added
+	* sp_spell.C: added
+	* sp_form.[Ch]: removed
+	* spellchecker.[Ch]: removed
+
 2001-07-12  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* trans_decl.h: remove allowed from KmodInfo

@@ -136,6 +136,10 @@ libxforms_la_SOURCES = \
 	FormSearch.h \
 	form_search.C \
 	form_search.h \
+	FormSpellchecker.C \
+	FormSpellchecker.h \
+	form_spellchecker.C \
+	form_spellchecker.h \
 	FormSplash.C \
 	FormSplash.h \
 	form_splash.C \

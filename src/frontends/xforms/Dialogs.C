@@ -37,6 +37,7 @@
 #include "ControlPrint.h"
 #include "ControlRef.h"
 #include "ControlSearch.h"
+#include "ControlSpellchecker.h"
 #include "ControlSplash.h"
 #include "ControlTabularCreate.h"
 #include "ControlToc.h"
@@ -63,6 +64,7 @@
 #include "form_print.h"
 #include "form_ref.h"
 #include "form_search.h"
+#include "form_spellchecker.h"
 #include "form_splash.h"
 #include "form_tabular_create.h"
 #include "form_toc.h"
@@ -85,6 +87,7 @@
 #include "FormPrint.h"
 #include "FormRef.h"
 #include "FormSearch.h"
+#include "FormSpellchecker.h"
 #include "FormSplash.h"
 #include "FormTabularCreate.h"
 #include "FormToc.h"
@@ -122,6 +125,7 @@ Dialogs::Dialogs(LyXView * lv)
 	add(new GUIPrint<FormPrint, xformsBC>(*lv, *this));
 	add(new GUIRef<FormRef, xformsBC>(*lv, *this));
 	add(new GUISearch<FormSearch, xformsBC>(*lv, *this));
+	add(new GUISpellchecker<FormSpellchecker, xformsBC>(*lv, *this));
 	add(new GUITabularCreate<FormTabularCreate, xformsBC>(*lv, *this));
 	add(new GUIToc<FormToc, xformsBC>(*lv, *this));
 	add(new GUIUrl<FormUrl, xformsBC>(*lv, *this));

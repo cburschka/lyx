@@ -45,7 +45,7 @@ struct FD_form_paths;
 struct FD_form_preferences;
 struct FD_form_printer;
 struct FD_form_screen_fonts;
-struct FD_form_spellchecker;
+struct FD_form_spelloptions;
 
 
 /** This class provides an XForms implementation of the FormPreferences Dialog.
@@ -129,7 +129,7 @@ private:
 	///
 	FD_form_screen_fonts * build_screen_fonts();
 	///
-	FD_form_spellchecker * build_spellchecker();
+	FD_form_spelloptions * build_spelloptions();
 
 	/// Real GUI implementation.
 	boost::scoped_ptr<FD_form_preferences> dialog_;
@@ -503,12 +503,12 @@ private:
 	friend class ScreenFonts;
 
 	///
-	class SpellChecker {
+	class SpellOptions {
 	public:
 		///
-		SpellChecker( FormPreferences &  p );
+		SpellOptions( FormPreferences &  p );
 		///
-		FD_form_spellchecker const * dialog();
+		FD_form_spelloptions const * dialog();
 		///
 		void apply(); // not const because calls update()!
 		///
@@ -524,10 +524,10 @@ private:
 		///
 		FormPreferences & parent_;
 		///
-		boost::scoped_ptr<FD_form_spellchecker> dialog_;
+		boost::scoped_ptr<FD_form_spelloptions> dialog_;
 	};
 	///
-	friend class SpellChecker;
+	friend class SpellOptions;
 
 	/** The tab folders.
 	 */
@@ -555,7 +555,7 @@ private:
 	///
 	ScreenFonts screen_fonts_;
 	///
-	SpellChecker spellchecker_;
+	SpellOptions spelloptions_;
 
 	/** A couple of helper structs to enable colors to be sorted by name
 	    and by color */

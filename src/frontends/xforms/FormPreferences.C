@@ -73,7 +73,7 @@ FormPreferences::FormPreferences(LyXView * lv, Dialogs * d)
 	  colors_(*this), converters_(*this), inputs_misc_(*this),
 	  formats_(*this), interface_(*this), language_(*this), 
 	  lnf_misc_(*this), outputs_misc_(*this), paths_(*this),
-	  printer_(*this), screen_fonts_(*this), spellchecker_(*this)
+	  printer_(*this), screen_fonts_(*this), spelloptions_(*this)
 {
 	// let the dialog be shown
 	// This is a permanent connection so we won't bother
@@ -144,7 +144,7 @@ void FormPreferences::showSpellPref()
 {
 	show();
 	fl_set_folder(dialog_->tabfolder_prefs, lang_opts_tab_->form);
-	fl_set_folder(lang_opts_tab_->tabfolder_outer, spellchecker_.dialog()->form);
+	fl_set_folder(lang_opts_tab_->tabfolder_outer, spelloptions_.dialog()->form);
 }
 
 
@@ -205,7 +205,7 @@ void FormPreferences::build()
 	paths_.build();
 	printer_.build();
 	screen_fonts_.build();
-	spellchecker_.build();
+	spelloptions_.build();
 
 	// Now add them to the tabfolder
 	fl_addto_tabfolder(dialog_->tabfolder_prefs,
@@ -267,7 +267,7 @@ void FormPreferences::build()
 	// then building usage
 	fl_addto_tabfolder(lang_opts_tab_->tabfolder_outer,
 			   _("Spell checker"),
-			   spellchecker_.dialog()->form);
+			   spelloptions_.dialog()->form);
 	fl_addto_tabfolder(lang_opts_tab_->tabfolder_outer,
 			   _("Language"),
 			   language_.dialog()->form);
@@ -298,7 +298,7 @@ void FormPreferences::apply()
 	paths_.apply();
 	printer_.apply();
 	screen_fonts_.apply();
-	spellchecker_.apply();
+	spelloptions_.apply();
 }
 
 
@@ -330,8 +330,8 @@ void FormPreferences::feedback(FL_OBJECT * ob)
 		str = printer_.feedback(ob);
 	} else if (ob->form->fdui == screen_fonts_.dialog()) {
 		str = screen_fonts_.feedback(ob);
-	} else if (ob->form->fdui == spellchecker_.dialog()) {
-		str = spellchecker_.feedback(ob);
+	} else if (ob->form->fdui == spelloptions_.dialog()) {
+		str = spelloptions_.feedback(ob);
 	}
 
 	str = formatted(_(str), dialog_->text_warning->w-10, FL_SMALL_SIZE);
@@ -364,8 +364,8 @@ bool FormPreferences::input(FL_OBJECT * ob, long)
 		return paths_.input(ob);
 	else if (ob->form->fdui == screen_fonts_.dialog())
 		return screen_fonts_.input();
-	else if (ob->form->fdui == spellchecker_.dialog())
-		return spellchecker_.input(ob);
+	else if (ob->form->fdui == spelloptions_.dialog())
+		return spelloptions_.input(ob);
 
 	return true;
 }
@@ -387,7 +387,7 @@ void FormPreferences::update()
 	paths_.update();
 	printer_.update();
 	screen_fonts_.update();
-	spellchecker_.update();
+	spelloptions_.update();
 }
 
 
@@ -2739,18 +2739,18 @@ void FormPreferences::ScreenFonts::update()
 
 
 
-FormPreferences::SpellChecker::SpellChecker( FormPreferences &  p )
+FormPreferences::SpellOptions::SpellOptions( FormPreferences &  p )
 	: parent_(p)
 {}
 
 
-FD_form_spellchecker const * FormPreferences::SpellChecker::dialog()
+FD_form_spelloptions const * FormPreferences::SpellOptions::dialog()
 {
 	return dialog_.get();
 }
 
 
-void FormPreferences::SpellChecker::apply()
+void FormPreferences::SpellOptions::apply()
 {
 
 	string choice = fl_get_choice_text(dialog_->choice_spell_command);
@@ -2808,9 +2808,9 @@ void FormPreferences::SpellChecker::apply()
 }
 
 
-void FormPreferences::SpellChecker::build()
+void FormPreferences::SpellOptions::build()
 {
-	dialog_.reset(parent_.build_spellchecker());
+	dialog_.reset(parent_.build_spelloptions());
 
 	fl_addto_choice(dialog_->choice_spell_command,
 			_(" none | ispell | aspell "));
@@ -2833,7 +2833,7 @@ void FormPreferences::SpellChecker::build()
 
 
 string const
-FormPreferences::SpellChecker::feedback(FL_OBJECT const * const ob) const
+FormPreferences::SpellOptions::feedback(FL_OBJECT const * const ob) const
 {
 	string str;
 
@@ -2860,9 +2860,9 @@ FormPreferences::SpellChecker::feedback(FL_OBJECT const * const ob) const
 }
 
 
-bool FormPreferences::SpellChecker::input(FL_OBJECT const * const ob)
+bool FormPreferences::SpellOptions::input(FL_OBJECT const * const ob)
 {
-	// !ob if function is called from updateSpellChecker() to de/activate
+	// !ob if function is called from updateSpellOptions() to de/activate
 	// objects,
 	// otherwise the function is called by an xforms CB via input().
 
@@ -2913,7 +2913,7 @@ bool FormPreferences::SpellChecker::input(FL_OBJECT const * const ob)
 }
 
 
-void FormPreferences::SpellChecker::update()
+void FormPreferences::SpellOptions::update()
 {
 	int choice = 1;
 	if (lyxrc.isp_command == "none")

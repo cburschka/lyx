@@ -252,17 +252,17 @@ FD_form_outputs_misc * FormPreferences::build_outputs_misc()
 }
 /*---------------------------------------*/
 
-FD_form_spellchecker::~FD_form_spellchecker()
+FD_form_spelloptions::~FD_form_spelloptions()
 {
   if ( form->visible ) fl_hide_form( form );
   fl_free_form( form );
 }
 
 
-FD_form_spellchecker * FormPreferences::build_spellchecker()
+FD_form_spelloptions * FormPreferences::build_spelloptions()
 {
   FL_OBJECT *obj;
-  FD_form_spellchecker *fdui = new FD_form_spellchecker;
+  FD_form_spelloptions *fdui = new FD_form_spelloptions;
 
   fdui->form = fl_bgn_form(FL_NO_BOX, 450, 360);
   fdui->form->u_vdata = this;

@@ -133,8 +133,6 @@ public:
 	SigC::Signal0<void> showPreamble;
 	///
 	SigC::Signal0<void> showPreferences;
-	/// bring up the spellchecker tab in preferences
-	SigC::Signal0<void> showSpellcheckerPreferences;
 	///
 	SigC::Signal0<void> showPrint;
 	///
@@ -143,6 +141,10 @@ public:
 	SigC::Signal1<void, string const &> createRef;
 	///
 	SigC::Signal0<void> showSearch;
+	/// bring up the spellchecker
+	SigC::Signal0<void> showSpellchecker;
+	/// bring up the spellchecker tab in preferences
+	SigC::Signal0<void> showSpellcheckerPreferences;
 	/// pop up the splash
 	SigC::Signal0<void> showSplash;
 	/// destroy the splash dialog

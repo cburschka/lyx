@@ -47,7 +47,12 @@ public:
         void CancelButton() { controller_.CancelButton(); }
         ///
         void RestoreButton() { controller_.RestoreButton(); }
-
+	
+	/** Defaults to nothing. Can be used by the Controller, however, to
+	    indicate to the View that something has changed and that the
+	    dialog therefore needs updating. */
+	virtual void partialUpdate(int id) {}
+   
 protected:
 	/// The view is, after all, controlled!
 	ControlButtons & controller_;
