@@ -111,9 +111,9 @@ string const ControlGraphics::readBB(string const & file)
 	// end of the file. Than we have in the header:
 	// %%BoundingBox: (atend)
 	// In this case we must check the end.
-	string file_ = file;
+	string file_ = MakeAbsPath(file, lv_.buffer()->filePath());
 	if (zippedFile(file_))
-	    file_ = unzipFile(file_);
+		file_ = unzipFile(file_);
 
 	string const format = getExtFromContents(file_);
 	if (format != "eps" && format != "ps")

@@ -1,3 +1,8 @@
+2002-04-05  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* ControlGraphics.C (readBB): sigh. Make sure that the correct path is
+	used when reading the BB.
+
 2002-04-04  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* ControlGraphics.C (readBB): Don't open the ifstrem and then

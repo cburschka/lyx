@@ -433,9 +433,7 @@ void FormGraphics::updateBB(string const & filename, string const & bb_inset)
 	controller().bbChanged = false;
 	if (bb_inset.empty()) {
 		lyxerr[Debug::GRAPHICS] << "update:: no BoundingBox" << endl;
-		string const fileWithAbsPath =
-			MakeAbsPath(filename, OnlyPath(filename));
-		string const bb = controller().readBB(fileWithAbsPath);
+		string const bb = controller().readBB(filename);
 		if (!bb.empty()) {
 			// get the values from the file
 			// in this case we always have the point-unit
@@ -586,8 +584,7 @@ ButtonPolicy::SMInput FormGraphics::input(FL_OBJECT * ob, long)
 	} else if (ob == bbox_->button_getBB) {
 		string const filename = getStringFromInput(file_->input_filename);
 		if (!filename.empty()) {
-			string const fileWithAbsPath = MakeAbsPath(filename, OnlyPath(filename));
-			string bb = controller().readBB(fileWithAbsPath);
+			string bb = controller().readBB(filename);
 			if (!bb.empty()) {
 				fl_set_input(bbox_->input_bb_x0, token(bb,' ',0).c_str());
 				fl_set_input(bbox_->input_bb_y0, token(bb,' ',1).c_str());
