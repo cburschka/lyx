@@ -54,9 +54,51 @@ def merge_formula_inset(lines):
             del lines[i+1]
         i = i + 1
 
+# Update from tabular format 4 to 5 if necessary
+def update_tabular(lines):
+    lyxtable_re = re.compile(r".*\\LyXTable$")
+    i=0
+    while 1:
+        i = find_re(lines, lyxtable_re, i)
+        if i == -1:
+            break
+        i = i + 1
+        format = lines[i][8]
+        if format != '4':
+            continue
+        
+        lines[i]='multicol5'
+        i = i + 1
+        rows = int(string.split(lines[i])[0])
+        columns = int(string.split(lines[i])[1])
+
+        i = i + rows + 1
+        for j in range(columns):
+            col_info = string.split(lines[i])
+            if len(col_info) == 3:
+                lines[i] = lines[i] + '"" ""'
+            else:
+                lines[i] = string.join(col_info[:3]) + ' "%s" ""' % col_info[3]
+            i = i + 1
+
+        while lines[i]:
+            lines[i] = lines[i] + ' "" ""'
+            i = i + 1
+
+def update_toc(lines):
+    i = 0
+    while 1:
+        i = find_token(lines, '\\begin_inset LatexCommand \\tableofcontents', i)
+        if i == -1:
+            break
+        lines[i] = lines[i] + '{}'
+        i = i + 1
+
 def convert(header,body):
+    update_toc(body)
     replace_protected_separator(body)
     merge_formula_inset(body)
+    update_tabular(body)
 
 if __name__ == "__main__":
     pass
