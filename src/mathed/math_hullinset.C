@@ -358,7 +358,8 @@ void MathHullInset::header_write(WriteStream & os) const
 			os << "\\[\n";
 	}
 
-	else if (type_ == "eqnarray" || type_ == "align" || type_ == "flalign")
+	else if (type_ == "eqnarray" || type_ == "align" || type_ == "flalign"
+		 || type_ == "gather" || type_ == "multline")
 			os << "\\begin{" << type_ << star(n) << "}\n";
 
 	else if (type_ == "alignat" || type_ == "xalignat")
@@ -368,9 +369,6 @@ void MathHullInset::header_write(WriteStream & os) const
 	else if (type_ == "xxalignat")
 		os << "\\begin{" << type_ << '}'
 		  << '{' << static_cast<unsigned int>((ncols() + 1)/2) << "}\n";
-
-	else if (type_ == "multline" || type_ == "gather")
-		os << "\\begin{" << type_ << "}\n";
 
 	else
 		os << "\\begin{unknown" << star(n) << '}';
@@ -394,10 +392,11 @@ void MathHullInset::footer_write(WriteStream & os) const
 			os << "\\]\n";
 
 	else if (type_ == "eqnarray" || type_ == "align" || type_ == "flalign"
-	     || type_ == "alignat" || type_ == "xalignat")
-		os << "\\end{" << type_ << star(n) << "}\n";
+		 || type_ == "alignat" || type_ == "xalignat"
+		 || type_ == "gather" || type_ == "multline")
+	        os << "\\end{" << type_ << star(n) << "}\n";
 
-	else if (type_ == "xxalignat" || type_ == "multline" || type_ == "gather")
+	else if (type_ == "xxalignat")
 		os << "\\end{" << type_ << "}\n";
 
 	else
@@ -627,7 +626,7 @@ string MathHullInset::eolString(row_type row, bool fragile) const
 	if (numberedType()) {
 		if (!label_[row].empty() && !nonum_[row])
 			res += "\\label{" + label_[row] + '}';
-		if (nonum_[row])
+		if (nonum_[row] && (type_ != "multline"))
 			res += "\\nonumber ";
 	}
 	return res + MathGridInset::eolString(row, fragile);
@@ -766,8 +765,11 @@ MathInset::result_type MathHullInset::dispatch
 			if (display()) {
 				//bv->lockedInsetStoreUndo(Undo::INSERT);
 				bool old = numberedType();
-				for (row_type row = 0; row < nrows(); ++row)
-					numbered(row, !old);
+				if (type_ == "multline")
+					numbered(nrows() - 1, !old);
+				else
+					for (row_type row = 0; row < nrows(); ++row)
+						numbered(row, !old);
 				//bv->owner()->message(old ? _("No number") : _("Number"));
 				//updateLocal(bv, true);
 			}
@@ -775,16 +777,17 @@ MathInset::result_type MathHullInset::dispatch
 
 		case LFUN_MATH_NONUMBER:
 			if (display()) {
+				row_type r = (type_ == "multline") ? nrows() - 1 : row(idx);
 				//bv->lockedInsetStoreUndo(Undo::INSERT);
-				bool old = numbered(row(idx));
+				bool old = numbered(r);
 				//bv->owner()->message(old ? _("No number") : _("Number"));
-				numbered(row(idx), !old);
+				numbered(r, !old);
 				//updateLocal(bv, true);
 			}
 			return DISPATCHED;
 
 		case LFUN_INSERT_LABEL: {
-			row_type r = row(idx);
+			row_type r = (type_ == "multline") ? nrows() - 1 : row(idx);
 			string old_label = label(r);
 			string new_label = cmd.argument;
 

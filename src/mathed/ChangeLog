@@ -1,3 +1,8 @@
+2003-01-07  João Luis Meloni Assirati <assirati@fma.if.usp.br>
+	* math_hullinset.C: fix numbering problem of AMS gather and
+	multline environments (bugs 518 and 594). Treat gather the same
+	way as eqnarray and multline as a special case.
+
 2002-12-18  John Levon  <levon@movementarian.org>
 
 	* math_factory.C: do not assume symbol font is present
