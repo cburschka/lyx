@@ -1,3 +1,7 @@
+2001-04-12  Dekel Tsur  <dekelts@tau.ac.il>
+
+        * src/LaTeX.C (deplog): Always check that foundfile exists.
+
 2001-04-03 Kayvan Sylvan <kayvan@sylvan.com>
 
 	* development/lyx.spec.in: fix handling of reLyX with RPM
