@@ -1,3 +1,9 @@
+2002-05-27  John Levon  <moz@compsoc.man.ac.uk>
+
+	* trans.C:
+	* lyxfont.C:
+	* lyxvc.C: remove unused headers
+ 
 2002-05-26  John Levon  <moz@compsoc.man.ac.uk>
 
 	* Makefile.am:
@@ -7,8 +13,7 @@
 	* undo_funcs.h:
 	* undo_funcs.C: some cleanups. Use shared_ptr
 	  and a template for the undo stacks.
-  	
- 
+
 2002-05-26  John Levon  <moz@compsoc.man.ac.uk>
 
 	* BufferView_pimpl.h:

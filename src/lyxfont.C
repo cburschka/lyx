@@ -23,7 +23,6 @@
 #include "lyxrc.h"
 #include "lyxlex.h"
 #include "language.h"
-#include "frontends/font_loader.h"
 #include "support/lstrings.h"
 #include "bufferparams.h" // stateText
 

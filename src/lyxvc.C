@@ -9,11 +9,11 @@
 #include "debug.h"
 #include "buffer.h"
 #include "BufferView.h"
-#include "gettext.h"
-#include "frontends/LyXView.h"
 #include "lyxfunc.h"
+#include "gettext.h"
 
 #include "frontends/Alert.h"
+#include "frontends/LyXView.h"
 
 #include "support/filetools.h"
 #include "support/lyxlib.h"
