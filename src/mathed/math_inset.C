@@ -276,7 +276,7 @@ int MathInset::docbook(std::ostream &, bool) const
 
 string const & MathInset::getType() const
 {
-	static string t("none");
+	static string const t("none");
 	return t;
 }
 
@@ -311,3 +311,8 @@ ostream & operator<<(ostream & os, MathAtom const & at)
 	return os;
 }
 
+
+string MathInset::fileInsetLabel() const
+{
+	return "Formula";
+}

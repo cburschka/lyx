@@ -211,13 +211,13 @@ char MathGridInset::valign() const
 
 MathGridInset::col_type MathGridInset::ncols() const
 {
-	return colinfo_.size() - 1;
+	return colinfo_.size();
 }
 
 
 MathGridInset::row_type MathGridInset::nrows() const
 {
-	return rowinfo_.size() - 1;
+	return rowinfo_.size();
 }
 
 
@@ -263,12 +263,10 @@ void MathGridInset::metrics(MetricsInfo & mi) const
 		rowinfo_[row].descent_ = desc;
 	}
 	rowinfo_[0].ascent_       += hlinesep() * rowinfo_[0].lines_;
-	rowinfo_[nrows()].ascent_  = 0;
-	rowinfo_[nrows()].descent_ = 0;
 
 	// compute vertical offsets
 	rowinfo_[0].offset_ = 0;
-	for (row_type row = 1; row <= nrows(); ++row) {
+	for (row_type row = 1; row < nrows(); ++row) {
 		rowinfo_[row].offset_  =
 			rowinfo_[row - 1].offset_  +
 			rowinfo_[row - 1].descent_ +
@@ -290,7 +288,7 @@ void MathGridInset::metrics(MetricsInfo & mi) const
 		default:
 			h = rowinfo_[nrows() - 1].offset_ / 2;
 	}
-	for (row_type row = 0; row <= nrows(); ++row)
+	for (row_type row = 0; row < nrows(); ++row)
 		rowinfo_[row].offset_ -= h;
 
 
@@ -301,11 +299,10 @@ void MathGridInset::metrics(MetricsInfo & mi) const
 			wid = max(wid, cell(index(row, col)).width());
 		colinfo_[col].width_ = wid;
 	}
-	colinfo_[ncols()].width_  = 0;
 
 	// compute horizontal offsets
 	colinfo_[0].offset_ = border();
-	for (col_type col = 1; col <= ncols(); ++col) {
+	for (col_type col = 1; col < ncols(); ++col) {
 		colinfo_[col].offset_ =
 			colinfo_[col - 1].offset_ +
 			colinfo_[col - 1].width_ +
@@ -315,19 +312,19 @@ void MathGridInset::metrics(MetricsInfo & mi) const
 	}
 
 
-	dim_.w   =   colinfo_[ncols() - 1].offset_
+	dim_.w =   colinfo_[ncols() - 1].offset_
 		       + colinfo_[ncols() - 1].width_
-		 + vlinesep() * colinfo_[ncols()].lines_
+	         //+ vlinesep() * colinfo_[ncols()].lines_
 		       + border();
 
-	dim_.a  = - rowinfo_[0].offset_
+	dim_.a = - rowinfo_[0].offset_
 		       + rowinfo_[0].ascent_
-		 + hlinesep() * rowinfo_[0].lines_
+	         + hlinesep() * rowinfo_[0].lines_
 		       + border();
 
 	dim_.d =   rowinfo_[nrows() - 1].offset_
 		       + rowinfo_[nrows() - 1].descent_
-		 + hlinesep() * rowinfo_[nrows()].lines_
+	         //+ hlinesep() * rowinfo_[nrows()].lines_
 		       + border();
 
 
@@ -389,14 +386,14 @@ void MathGridInset::draw(PainterInfo & pi, int x, int y) const
 	for (idx_type idx = 0; idx < nargs(); ++idx)
 		cell(idx).draw(pi, x + cellXOffset(idx), y + cellYOffset(idx));
 
-	for (row_type row = 0; row <= nrows(); ++row)
+	for (row_type row = 0; row < nrows(); ++row)
 		for (int i = 0; i < rowinfo_[row].lines_; ++i) {
 			int yy = y + rowinfo_[row].offset_ - rowinfo_[row].ascent_
 				- i * hlinesep() - hlinesep()/2 - rowsep()/2;
 			pi.pain.line(x + 1, yy, x + width() - 1, yy);
 		}
 
-	for (col_type col = 0; col <= ncols(); ++col)
+	for (col_type col = 0; col < ncols(); ++col)
 		for (int i = 0; i < colinfo_[col].lines_; ++i) {
 			int xx = x + colinfo_[col].offset_
 				- i * vlinesep() - vlinesep()/2 - colsep()/2;
@@ -430,7 +427,7 @@ void MathGridInset::metricsT(TextMetricsInfo const & mi) const
 
 	// compute vertical offsets
 	rowinfo_[0].offset_ = 0;
-	for (row_type row = 1; row <= nrows(); ++row) {
+	for (row_type row = 1; row < nrows(); ++row) {
 		rowinfo_[row].offset_  =
 			rowinfo_[row - 1].offset_  +
 			rowinfo_[row - 1].descent_ +
@@ -452,7 +449,7 @@ void MathGridInset::metricsT(TextMetricsInfo const & mi) const
 		default:
 			h = rowinfo_[nrows() - 1].offset_ / 2;
 	}
-	for (row_type row = 0; row <= nrows(); ++row)
+	for (row_type row = 0; row < nrows(); ++row)
 		rowinfo_[row].offset_ -= h;
 
 
@@ -467,7 +464,7 @@ void MathGridInset::metricsT(TextMetricsInfo const & mi) const
 
 	// compute horizontal offsets
 	colinfo_[0].offset_ = border();
-	for (col_type col = 1; col <= ncols(); ++col) {
+	for (col_type col = 1; col < ncols(); ++col) {
 		colinfo_[col].offset_ =
 			colinfo_[col - 1].offset_ +
 			colinfo_[col - 1].width_ +
@@ -908,12 +905,12 @@ void MathGridInset::write(WriteStream & os) const
 		if (!emptyline && row + 1 < nrows())
 			os << "\n";
 	}
-	string const s = verboseHLine(rowinfo_[nrows()].lines_);
-	if (!s.empty() && s != " ") {
-		if (os.fragile())
-			os << "\\protect";
-		os << "\\\\" << s;
-	}
+	//string const s = verboseHLine(rowinfo_[nrows()].lines_);
+	//if (!s.empty() && s != " ") {
+	//	if (os.fragile())
+	//		os << "\\protect";
+	//	os << "\\\\" << s;
+	//}
 }
 
 

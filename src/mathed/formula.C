@@ -47,16 +47,9 @@
 #include "graphics/PreviewedInset.h"
 #include "graphics/PreviewImage.h"
 
-#include <fstream>
-
 
 using std::ostream;
-using std::ifstream;
-using std::istream;
-using std::pair;
-using std::endl;
 using std::vector;
-using std::getline;
 
 
 class InsetFormula::PreviewImpl : public grfx::PreviewedInset {
@@ -78,10 +71,13 @@ private:
 
 
 
-InsetFormula::InsetFormula()
+InsetFormula::InsetFormula(bool chemistry)
 	: par_(MathAtom(new MathHullInset)),
 	  preview_(new PreviewImpl(*this))
-{}
+{
+	if (chemistry)
+		mutate("chemistry");
+}
 
 
 InsetFormula::InsetFormula(InsetFormula const & other)
@@ -182,6 +178,19 @@ int InsetFormula::docbook(Buffer const * buf, ostream & os, bool) const
 void InsetFormula::read(Buffer const *, LyXLex & lex)
 {
 	mathed_parse_normal(par_, lex);
+	// remove extra 'mathrm' for chemistry stuff.
+	// will be re-added on write
+	if (par_->asHullInset()->getType() =="chemistry")  {
+		lyxerr << "this is chemistry\n";
+		if (par_->cell(0).size() == 1) {
+			lyxerr << "this is size 1\n";
+	    if (par_->cell(0)[0]->asFontInset()) {
+				lyxerr << "this is a font inset \n";
+				lyxerr << "replacing " << par_.nucleus()->cell(0) << 
+					" with " << par_->cell(0)[0]->cell(0) << "\n";
+			}
+		}
+	}
 	metrics();
 }
 
@@ -293,12 +302,10 @@ int InsetFormula::width(BufferView * bv, LyXFont const & font) const
 }
 
 
-/*
 void InsetFormula::mutate(string const & type)
 {
 	par_.nucleus()->mutate(type);
 }
-*/
 
 
 //

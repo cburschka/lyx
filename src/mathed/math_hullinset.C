@@ -69,15 +69,16 @@ namespace {
 	{
 		if (s == "none")      return 0;
 		if (s == "simple")    return 1;
-		if (s == "equation")  return 2;
-		if (s == "eqnarray")  return 3;
-		if (s == "align")     return 4;
-		if (s == "alignat")   return 5;
-		if (s == "xalignat")  return 6;
-		if (s == "xxalignat") return 7;
-		if (s == "multline")  return 8;
-		if (s == "gather")    return 9;
-		if (s == "flalign")   return 10;
+		if (s == "chemistry") return 2;
+		if (s == "equation")  return 3;
+		if (s == "eqnarray")  return 4;
+		if (s == "align")     return 5;
+		if (s == "alignat")   return 6;
+		if (s == "xalignat")  return 7;
+		if (s == "xxalignat") return 8;
+		if (s == "multline")  return 9;
+		if (s == "gather")    return 10;
+		if (s == "flalign")   return 11;
 		lyxerr << "unknown hull type '" << s << "'\n";
 		return 0;
 	}
@@ -162,6 +163,8 @@ char const * MathHullInset::standardFont() const
 {
 	if (type_ == "none")
 		return "lyxnochange";
+	if (type_ == "chemistry")
+		return "mathrm";
 	return "mathnormal";
 }
 
@@ -290,7 +293,7 @@ bool MathHullInset::ams() const
 
 bool MathHullInset::display() const
 {
-	return type_ != "simple" && type_ != "none";
+	return type_ != "simple" && type_ != "none" && type_ != "chemistry";
 }
 
 
@@ -305,6 +308,8 @@ void MathHullInset::getLabelList(std::vector<string> & labels) const
 bool MathHullInset::numberedType() const
 {
 	if (type_ == "none")
+		return false;
+	if (type_ == "chemistry")
 		return false;
 	if (type_ == "simple")
 		return false;
@@ -348,6 +353,9 @@ void MathHullInset::header_write(WriteStream & os) const
 			os << ' ';
 	}
 
+	else if (type_ == "chemistry")
+		os << "$\\mathrm{";
+
 	else if (type_ == "equation") {
 		if (n)
 			os << "\\begin{equation" << star(n) << "}\n";
@@ -381,6 +389,9 @@ void MathHullInset::footer_write(WriteStream & os) const
 
 	else if (type_ == "simple")
 		os << '$';
+
+	else if (type_ == "chemistry")
+		os << "}$";
 
 	else if (type_ == "equation")
 		if (n)
@@ -495,20 +506,20 @@ void MathHullInset::mutate(string const & newtype)
 		// done
 	}
 
-	else if (type_ == "none") {
-		setType("simple");
+	else if (newtype == "none" || newtype == "chemistry") {
+		mutate("simple");
 		numbered(0, false);
-		mutate(newtype);
 	}
 
-	else if (type_ == "simple") {
-		if (newtype == "none") {
-			setType("none");
-		} else {
-			setType("equation");
+	else if (newtype == "simple") {
+		if (type_ != "none" && type_ != "chemistry") {
+			mutate("equation");
 			numbered(0, false);
-			mutate(newtype);
 		}
+	}
+
+	else if (newtype == "equation" && smaller(type_, newtype)) {
+		numbered(0, false);
 	}
 
 	else if (type_ == "equation") {
@@ -614,6 +625,8 @@ void MathHullInset::mutate(string const & newtype)
 		lyxerr << "mutation from '" << type_
 					 << "' to '" << newtype << "' not implemented" << endl;
 	}
+
+	setType(newtype);
 }
 
 
@@ -841,4 +854,12 @@ dispatch_result MathHullInset::dispatch
 
 	}
 	return UNDISPATCHED;
+}
+
+
+string MathHullInset::fileInsetLabel() const
+{
+	if (type_ == "chemistry")
+		return "Chemistry";
+	return "Formula";
 }

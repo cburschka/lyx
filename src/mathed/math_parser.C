@@ -1213,10 +1213,10 @@ void Parser::parse1(MathGridInset & grid, unsigned flags,
 				MathAtom at = createMathInset(t.cs());
 				MathInset::mode_type m = mode;
 				//if (m == MathInset::UNDECIDED_MODE)
-				lyxerr << "default creation: m1: " << m << "\n";
+				//lyxerr << "default creation: m1: " << m << "\n";
 				if (at->currentMode() != MathInset::UNDECIDED_MODE)
 					m = at->currentMode();
-				lyxerr << "default creation: m2: " << m << "\n";
+				//lyxerr << "default creation: m2: " << m << "\n";
 				MathInset::idx_type start = 0;
 				// this fails on \bigg[...\bigg]
 				//MathArray opt;

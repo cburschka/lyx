@@ -299,7 +299,7 @@ public:
 	/// change type
 	virtual void mutate(string const &) {}
 	/// how is the inset called in the .lyx file?
-	virtual string fileInsetLabel() const { return "Formula"; }
+	virtual string fileInsetLabel() const;
 	/// usually the latex name
 	virtual string name() const;
 

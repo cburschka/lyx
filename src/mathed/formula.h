@@ -25,7 +25,7 @@
 class InsetFormula : public InsetFormulaBase {
 public:
 	///
-	InsetFormula();
+	InsetFormula(bool chemistry = false);
 	///
 	explicit InsetFormula(BufferView *);
 	///
@@ -75,7 +75,7 @@ public:
 	///
 	void addPreview(grfx::PreviewLoader &) const;
 	///
-	//void mutate(string const & type);
+	void mutate(string const & type);
 
 private:
 	/// available in AMS only?

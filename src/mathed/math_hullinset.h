@@ -80,6 +80,8 @@ public:
 	bool idxLast(idx_type &, pos_type &) const;
 
 	///
+	string fileInsetLabel() const;
+	///
 	void write(WriteStream & os) const;
 	///
 	void mathmlize(MathMLStream &) const;
