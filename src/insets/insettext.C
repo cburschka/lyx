@@ -595,9 +595,8 @@ void InsetText::InsetButtonPress(BufferView * bv, int x, int y, int button)
     no_selection = false;
 
     int tmp_x = x - drawTextXOffset;
-    int tmp_y = y + insetAscent;
-    Inset * inset = bv->checkInsetHit(TEXT(bv), tmp_x, tmp_y-TEXT(bv)->first,
-				      button);
+    int tmp_y = y + insetAscent - TEXT(bv)->first;
+    Inset * inset = bv->checkInsetHit(TEXT(bv), tmp_x, tmp_y, button);
 
     HideInsetCursor(bv);
     if (the_locking_inset) {

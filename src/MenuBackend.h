@@ -70,8 +70,10 @@ public:
  
 	/// The label of a given menuitem
 	string const label() const { return token(label_, '|', 0); }
-	///
+	/// The keyboard shortcut (usually underlined in the entry)
 	string const shortcut() const { return token(label_, '|', 1); }
+	/// The complete label, with label and shortcut separated by a '|'
+	string const fulllabel() const { return label_;}
 	/// The kind of entry
 	Kind kind() const { return kind_; } 
 	/// the action (if relevant)
@@ -109,7 +111,7 @@ public:
 	///
 	Menu & read(LyXLex &);
 	/// Expands some special entries of the menu
-	/** The entries with the following kind are exanded to a
+	/** The entries with the following kind are expanded to a
 	    sequence of Command MenuItems: Lastfiles, Documents,
 	    ViewFormats, ExportFormats, UpdateFormats
 	*/
@@ -130,6 +132,10 @@ public:
         const_iterator end() const {
                 return items_.end();
         }
+
+	// Check whether the menu shortcuts are unique
+	void checkShortcuts() const;
+	
 private:
 	///
 	ItemList items_;

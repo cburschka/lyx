@@ -198,6 +198,31 @@ struct compare_formatpair {
 	}
 };
 
+void Menu::checkShortcuts() const
+{
+	// This is a quadratic algorithm, but we do not care because
+	// it is used for debugging only.
+	for (const_iterator it1 = begin(); it1 != end(); ++it1) {
+		string shortcut = it1->shortcut();
+		if (shortcut.empty())
+			continue;
+		if (!contains(it1->label(), shortcut))
+			lyxerr << "Menu warning: menu entry \""
+			       << it1->label()
+			       << "\" does not contain shortcut `"
+			       << shortcut << '\'' << endl;
+		for (const_iterator it2 = begin(); it2 != it1 ; ++it2) {
+			if (!compare_no_case(it2->shortcut(), shortcut)) {
+				lyxerr << "Menu warning: menu entries "
+				       << '"' << it1->fulllabel()
+				       << "\" and \"" << it2->fulllabel()
+				       << "\" share the same shortcut."
+				       << endl;
+			}
+		}
+	}
+}
+
 void Menu::expand(Menu & tomenu, Buffer * buf) const
 {
 	for (const_iterator cit = begin();
@@ -291,6 +316,10 @@ void Menu::expand(Menu & tomenu, Buffer * buf) const
 			tomenu.add(*cit);
 		}
 	}
+
+	// Check whether the shortcuts are unique
+	if (lyxerr.debugging(Debug::GUI))
+		checkShortcuts();
 }
 
 

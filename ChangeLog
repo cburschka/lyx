@@ -1,3 +1,16 @@
+2000-11-03  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/MenuBackend.h (fulllabel): new method.
+
+	* src/MenuBackend.C (checkShortcuts): new method. Checks whether
+	the menu shortcuts of a menu are unique and whether they
+	correspond to a letter of the label.
+	(expand): call checkShortcuts when debugging.
+
+2000-11-03  Andre Poenitz  <poenitz@HTWM.De>
+
+	* src/insets/insettext.C (InsetButtonPress): shut off warning. 
+
 2000-11-02  Lior Silberman  <lior@Princeton.EDU>
 
 	* lib/examples/*.lyx : '\language default' => '\language english'
