@@ -1,3 +1,12 @@
+2002-02-12  Herbert Voss  <voss@lyx.org>
+
+	* forms/form_graphics.fd:
+	* form_graphics.[Ch]: small changes to the layout, mentioned
+	by Rob
+
+	* FormGraphics.C: fix bug with use of updateWidget... when
+	no unit is given.
+
 2002-02-11  John Levon  <moz@compsoc.man.ac.uk>
 
 	* FormMinipage.C: return SMI_VALID on other form changes

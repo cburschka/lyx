@@ -9,6 +9,7 @@ extern  "C" void C_FormBaseRestoreCB(FL_OBJECT *, long);
 extern  "C" void C_FormBaseOKCB(FL_OBJECT *, long);
 extern  "C" void C_FormBaseCancelCB(FL_OBJECT *, long);
 extern  "C" void C_FormBaseApplyCB(FL_OBJECT *, long);
+extern  "C" void C_FormBaseInputCB(FL_OBJECT *, long);
 
 extern  "C" void C_FormBaseInputCB(FL_OBJECT *, long);
 
@@ -43,7 +44,6 @@ struct FD_form_file {
 	FL_OBJECT *input_subcaption;
 	FL_OBJECT *input_rotate_angle;
 	FL_OBJECT *choice_origin;
-	FL_OBJECT *button_clip;
 	FL_OBJECT *button_draft;
 	FL_OBJECT *check_rotate;
 	FL_OBJECT *button_nounzip;
@@ -74,6 +74,7 @@ struct FD_form_bbox {
 	FL_OBJECT *input_bb_y0;
 	FL_OBJECT *choice_bb_units;
 	FL_OBJECT *button_getBB;
+	FL_OBJECT *button_clip;
 };
 struct FD_form_special {
 	~FD_form_special();
