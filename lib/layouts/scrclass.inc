@@ -1,6 +1,8 @@
 # KOMA script textclass definition file.
 # Base definitions for the KOMA script layouts.
 # Bernd Rellermeyer <100.41728@germanynet.de>, 1998/7/23.
+# Update for Koma Script Release >=2.8q
+# Juergen Spitzmueller <j.spitzmueller@gmx.de>, 2003/2/08.
 
 # General textclass parameters
 SecNumDepth             2
@@ -101,6 +103,12 @@ Style Subparagraph
 End
 
 Input stdstarsections.inc
+
+# Addpart Style Definition
+Style Addpart
+  CopyStyle             Part*
+  LatexName             addpart
+End
 
 # Addchap Style Definition
 Style Addchap
@@ -233,5 +241,35 @@ Style Bibliography
 End
 
 Input stdlayouts.inc
+
+# Captionabove style definition
+Style Captionabove
+  CopyStyle            Caption
+  LatexName            captionabove
+End
+
+# Captionbelow style definition
+Style Captionbelow
+  CopyStyle            Caption
+  LatexName            captionbelow
+End
+
+# Dictum style definition
+Style Dictum
+  Margin               Right_Address_Box
+  LatexType            Command
+  LatexName            dictum
+  ParSkip              0.4
+  BottomSep            1.5
+  ParSep               1.5
+  Align                Left
+  AlignPossible        Left
+  OptionalArgs         1
+  
+  Font
+    Size                Normal
+  EndFont
+End
+
 Input lyxmacros.inc
 Input scrmacros.inc
