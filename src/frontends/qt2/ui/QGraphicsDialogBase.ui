@@ -1348,6 +1348,12 @@
         <slot>change_adaptor()</slot>
     </connection>
     <connection>
+        <sender>heightUnit</sender>
+        <signal>selectionChanged(LyXLength::UNIT)</signal>
+        <receiver>QGraphicsDialogBase</receiver>
+        <slot>change_adaptor()</slot>
+    </connection>
+    <connection>
         <sender>angle</sender>
         <signal>textChanged(const QString&amp;)</signal>
         <receiver>QGraphicsDialogBase</receiver>
