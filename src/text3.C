@@ -91,11 +91,11 @@ namespace {
 	// check if the given co-ordinates are inside an inset at the
 	// given cursor, if one exists. If so, the inset is returned,
 	// and the co-ordinates are made relative. Otherwise, 0 is returned.
-	Inset * checkInset(BufferView * bv, LyXText const & text, int & x, int & y)
+	Inset * checkInset(BufferView * bv, LyXText const & text,
+		LyXCursor const & cur, int & x, int & y)
 	{
-		LyXCursor const & cursor = text.cursor;
-		lyx::pos_type const pos = cursor.pos();
-		Paragraph /*const*/ & par = *cursor.par();
+		lyx::pos_type const pos = cur.pos();
+		Paragraph /*const*/ & par = *cur.par();
 
 		if (pos >= par.size() || !par.isInset(pos))
 			return 0;
@@ -112,13 +112,14 @@ namespace {
 
 		int const width = inset->width(bv, font);
 		int const inset_x = font.isVisibleRightToLeft()
-			? (cursor.ix() - width) : cursor.ix();
+			? (cur.ix() - width) : cur.ix();
 
 		Box b(
 			inset_x + inset->scroll(),
 			inset_x + width,
-			cursor.iy() - inset->ascent(bv, font),
-			cursor.iy() + inset->descent(bv, font));
+			cur.iy() - inset->ascent(bv, font),
+			cur.iy() + inset->descent(bv, font)
+		);
 
 		if (!b.contained(x, y)) {
 			lyxerr[Debug::GUI] << "Missed inset at x,y " << x << "," << y
@@ -142,23 +143,23 @@ Inset * LyXText::checkInsetHit(BufferView * bv, int & x, int & y) const
 {
 	int y_tmp = y + first_y;
 
-	LyXCursor cursor;
-	setCursorFromCoordinates(bv, cursor, x, y_tmp);
+	LyXCursor cur;
+	setCursorFromCoordinates(bv, cur, x, y_tmp);
 
-	Inset * inset = checkInset(bv, *this, x, y_tmp);
+	Inset * inset = checkInset(bv, *this, cur, x, y_tmp);
 	if (inset) {
 		y = y_tmp;
 		return inset;
 	}
 
 	// look at previous position
-	if (cursor.pos() == 0)
+	if (cur.pos() == 0)
 		return 0;
 
 	// move back one
-	setCursor(bv, cursor, cursor.par(), cursor.pos() - 1, true);
+	setCursor(bv, cur, cur.par(), cur.pos() - 1, true);
 
-	inset = checkInset(bv, *this, x, y_tmp);
+	inset = checkInset(bv, *this, cur, x, y_tmp);
 	if (inset)
 		y = y_tmp;
 	return inset;
@@ -1277,8 +1278,8 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 				? cursor.ix() - width : cursor.ix();
 			int start_x = inset_x + tli->scroll();
 			FuncRequest cmd1 = cmd;
-			cmd1.x -= start_x;
-			cmd1.y -= cursor.iy() + bv->text->first_y;
+			cmd1.x = cmd.x - start_x;
+			cmd1.y = cmd.y - cursor.iy() + bv->text->first_y;
 			tli->localDispatch(cmd1);
 			break;
 		}
@@ -1363,8 +1364,8 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 			// Check whether the inset was hit. If not reset mode,
 			// otherwise give the event to the inset
 			if (inset_hit == bv->theLockingInset()) {
-				FuncRequest cmd(bv, LFUN_MOUSE_PRESS, x, y, cmd.button());
-				bv->theLockingInset()->localDispatch(cmd);
+				FuncRequest cmd1(bv, LFUN_MOUSE_PRESS, x, y, cmd.button());
+				bv->theLockingInset()->localDispatch(cmd1);
 				break;
 			}
 			bv->unlockInset(bv->theLockingInset());
@@ -1393,8 +1394,8 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 			// we don't need the edit() call here! (Jug20020329)
 			if (!bv->lockInset(inset))
 				lyxerr[Debug::INSETS] << "Cannot lock inset" << endl;
-			FuncRequest cmd(bv, LFUN_MOUSE_PRESS, x, y, cmd.button());
-			inset->localDispatch(cmd);
+			FuncRequest cmd1(bv, LFUN_MOUSE_PRESS, x, y, cmd.button());
+			inset->localDispatch(cmd1);
 			break;
 		}
 		// I'm not sure we should continue here if we hit an inset (Jug20020403)
@@ -1451,8 +1452,8 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 			// LyX does a kind of work-area grabbing for insets.
 			// Only a ButtonPress FuncRequest outside the inset will
 			// force a insetUnlock.
-			FuncRequest cmd(bv, LFUN_MOUSE_RELEASE, x, y, cmd.button());
-			bv->theLockingInset()->localDispatch(cmd);
+			FuncRequest cmd1(bv, LFUN_MOUSE_RELEASE, x, y, cmd.button());
+			bv->theLockingInset()->localDispatch(cmd1);
 			break;
 		}
 
@@ -1511,11 +1512,11 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 			if (isHighlyEditableInset(inset_hit)) {
 				// Highly editable inset, like math
 				UpdatableInset * inset = (UpdatableInset *) inset_hit;
-				FuncRequest cmd(bv, LFUN_MOUSE_RELEASE, x, y, cmd.button());
-				inset->localDispatch(cmd);
+				FuncRequest cmd1(bv, LFUN_MOUSE_RELEASE, x, y, cmd.button());
+				inset->localDispatch(cmd1);
 			} else {
-				FuncRequest cmd(bv, LFUN_MOUSE_RELEASE, x, y, cmd.button());
-				inset_hit->localDispatch(cmd);
+				FuncRequest cmd1(bv, LFUN_MOUSE_RELEASE, x, y, cmd.button());
+				inset_hit->localDispatch(cmd1);
 				// IMO this is a grosshack! Inset's should be changed so that
 				// they call the actions they have to do with the insetButtonRel.
 				// function and not in the edit(). This should be changed

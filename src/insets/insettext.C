@@ -1177,6 +1177,19 @@ void InsetText::lfunMouseMotion(FuncRequest const & cmd)
 Inset::RESULT InsetText::localDispatch(FuncRequest const & ev)
 {
 	BufferView * bv = ev.view();
+	switch (ev.action) {
+		case LFUN_MOUSE_PRESS:
+			lfunMousePress(ev);
+			return DISPATCHED;
+		case LFUN_MOUSE_MOTION:
+			lfunMouseMotion(ev);
+			return DISPATCHED;
+		case LFUN_MOUSE_RELEASE:
+			return lfunMouseRelease(ev) ? DISPATCHED : UNDISPATCHED;
+		default:
+			break;
+	}
+
 	bool was_empty = (paragraphs.begin()->empty() && !paragraphs.begin()->next());
 	no_selection = false;
 	RESULT result = UpdatableInset::localDispatch(ev);
@@ -1241,17 +1254,6 @@ Inset::RESULT InsetText::localDispatch(FuncRequest const & ev)
 	int updflag = false;
 	switch (ev.action) {
 
-	case LFUN_MOUSE_PRESS:
-		lfunMousePress(ev);
-		return DISPATCHED;
- 
-	case LFUN_MOUSE_MOTION:
-		lfunMouseMotion(ev);
-		return DISPATCHED;
- 
-	case LFUN_MOUSE_RELEASE:
-		return lfunMouseRelease(ev) ? DISPATCHED : UNDISPATCHED;
- 
 	// Normal chars
 	case LFUN_SELFINSERT:
 		if (bv->buffer()->isReadonly()) {

@@ -11,8 +11,8 @@
 // The pristine updatable inset: Text
 
 
-#ifndef InsetFootlike_H
-#define InsetFootlike_H
+#ifndef INSETFOOTLIKE_H
+#define INSETFOOTLIKE_H
 
 #ifdef __GNUG__
 #pragma interface
