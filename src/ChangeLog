@@ -1,3 +1,13 @@
+2001-10-01  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* BufferView_pimpl.C (buffer): remove call to WorkArea::show() and
+	revert to previous code.
+
+	WorkArea.[Ch]: (show, destroySplash): methods removed.
+
+	WorkArea.C: rework code so that it's an amalgam of the codes before and
+	after the splash screen was moved to WorkArea.
+
 2001-10-01  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* lyxrc.C (read): 

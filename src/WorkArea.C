@@ -64,31 +64,6 @@ extern "C" {
 		return WorkArea::work_area_handler(ob, event,
 						   0, 0, key, xev);
         }
-
-
-	// Resizing the display causes the version string to move relative to
-	// the splash pixmap because the parameters xforms uses to control
-	// resizing are not very sophisticated.
-	// I found it easier, therefore, to just remove the splash screen.
-	// (Angus, 25 September 2001)
-        static
-        int C_WorkAreaSplashPH(FL_OBJECT * ob, int event,
-			       FL_Coord, FL_Coord, int, void *)
-        {
-		static int counter = 0;
-                if (event != FL_DRAW || ++counter > 3) {
-                        return 0;
-		}
-
-		lyx::Assert(ob && ob->u_vdata);
-                WorkArea * pre = static_cast<WorkArea *>(ob->u_vdata);
-
-		if (counter == 3) {
-			pre->destroySplash();
-		}
-
-		return 0;
-        }
 }
 
 
@@ -140,9 +115,6 @@ WorkArea::WorkArea(int xpos, int ypos, int width, int height)
 			fl_add_pixmapbutton(FL_NORMAL_BUTTON,
 					    splash_x, splash_y, 
 					    splash_w, splash_h, "");
-		obj->u_vdata = this;
-		fl_set_object_prehandler(obj, C_WorkAreaSplashPH);
-
 		fl_set_pixmapbutton_file(obj, splash_file.c_str());
 		fl_set_pixmapbutton_focus_outline(obj, 3);
 		fl_set_object_boxtype(obj, FL_NO_BOX);
@@ -159,9 +131,6 @@ WorkArea::WorkArea(int xpos, int ypos, int width, int height)
 		fl_set_object_lcol(obj, FL_FREE_COL3);
 		fl_set_object_lalign(obj, FL_ALIGN_CENTER|FL_ALIGN_INSIDE);
 		fl_set_object_lstyle(obj, FL_BOLD_STYLE);
-
-		fl_hide_object(splash_);
-		fl_hide_object(splash_text_);
 	}
 
 	//
@@ -258,14 +227,37 @@ void WorkArea::resize(int xpos, int ypos, int width, int height)
 			       width - 15 - 2 * bw,
 			       height - 2 * bw);
 
-	destroySplash();
-
 	fl_unfreeze_all_forms();
 }
 
 
+namespace {
+void destroy_object(FL_OBJECT * obj)
+{
+	if (!obj)
+		return;
+
+	if (obj->visible) {
+		fl_hide_object(obj);
+	}
+	fl_delete_object(obj);
+	fl_free_object(obj);
+}
+} // namespace anon
+	
+
 void WorkArea::createPixmap(int width, int height)
 {
+	// Three calls to createPixmap are needed to draw the initial view
+	// of LyX. Any more and the splash is destroyed.
+	static int counter = 0;
+	if (++counter == 4) {
+		destroy_object(splash_);
+		splash_ = 0;
+		destroy_object(splash_text_);
+		splash_text_ = 0;
+	}
+
 	static int cur_width = -1;
 	static int cur_height = -1;
 
@@ -292,52 +284,15 @@ void WorkArea::createPixmap(int width, int height)
 }
 
 
-void WorkArea::show() const
-{
-	if (!work_area->visible) {
-		fl_show_object(work_area);
-	}
-	
-	destroySplash();
-}
-
-
 void WorkArea::greyOut() const
 {
-	if (work_area->visible) {
-		fl_hide_object(work_area);
-	}
-
-	if (splash_ && !splash_->visible) {
-		fl_show_object(splash_);
-		fl_show_object(splash_text_);
+	if (!splash_) {
+		fl_winset(FL_ObjWin(work_area));
+		fl_rectangle(1, work_area->x, work_area->y,
+			     work_area->w, work_area->h, FL_GRAY63);
 	}
 }
 
-
-void WorkArea::destroySplash() const
-{
-	if (splash_) {
-		if (splash_->visible) {
-			fl_hide_object(splash_);
-		}
-		fl_set_object_prehandler(splash_, 0);
-		// Causes a segmentation fault!
-		// fl_delete_object(splash_);
-		// fl_free_object(splash_);
-		splash_ = 0;
-	}
-
-	if (splash_text_) {
-		if (splash_text_->visible) {
-			fl_hide_object(splash_text_);
-		}
-		fl_delete_object(splash_text_);
-		fl_free_object(splash_text_);
-		splash_text_ = 0;
-	}
-}
-	
 
 void WorkArea::setFocus() const
 {

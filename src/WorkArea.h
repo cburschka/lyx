@@ -68,10 +68,6 @@ public:
 	///
 	void greyOut() const;
 	///
-	void show() const;
-	///
-	void destroySplash() const;
-	///
 	void setScrollbar(double pos, double length_fraction) const;
 	///
 	void setScrollbarValue(double y) const {
