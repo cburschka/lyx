@@ -1,5 +1,10 @@
 2004-03-31  Angus Leeming  <leeming@lyx.org>
 
+	* forms/form_search.fd: s/C_FormBase/C_FormDialogView_/ and thereby
+	fix a crash when invoking the dialog's callback functions.
+
+2004-03-31  Angus Leeming  <leeming@lyx.org>
+
 	* Dialogs.C (build): added preamble dialog.
 	* Dialogs2.C (showPreamble): removed.
 

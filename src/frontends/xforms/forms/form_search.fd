@@ -46,7 +46,7 @@ shortcut:
 resize: FL_RESIZE_X
 gravity: FL_West FL_East
 name: input_search
-callback: C_FormBaseInputCB
+callback: C_FormDialogView_InputCB
 argument: 0
 
 --------------------
@@ -64,7 +64,7 @@ shortcut:
 resize: FL_RESIZE_X
 gravity: FL_West FL_East
 name: input_replace
-callback: C_FormBaseInputCB
+callback: C_FormDialogView_InputCB
 argument: 0
 
 --------------------
@@ -82,7 +82,7 @@ shortcut: ^M
 resize: FL_RESIZE_NONE
 gravity: FL_NorthEast FL_NorthEast
 name: button_findnext
-callback: C_FormBaseInputCB
+callback: C_FormDialogView_InputCB
 argument: 0
 
 --------------------
@@ -100,7 +100,7 @@ shortcut:
 resize: FL_RESIZE_NONE
 gravity: FL_East FL_East
 name: button_replace
-callback: C_FormBaseInputCB
+callback: C_FormDialogView_InputCB
 argument: 0
 
 --------------------
@@ -118,7 +118,7 @@ shortcut:
 resize: FL_RESIZE_NONE
 gravity: FL_SouthEast FL_SouthEast
 name: button_close
-callback: C_FormBaseCancelCB
+callback: C_FormDialogView_CancelCB
 argument: 0
 
 --------------------
@@ -136,7 +136,7 @@ shortcut:
 resize: FL_RESIZE_NONE
 gravity: FL_West FL_NoGravity
 name: check_casesensitive
-callback: C_FormBaseInputCB
+callback: C_FormDialogView_InputCB
 argument: 0
 
 --------------------
@@ -154,7 +154,7 @@ shortcut:
 resize: FL_RESIZE_NONE
 gravity: FL_NoGravity FL_NoGravity
 name: check_matchword
-callback: C_FormBaseInputCB
+callback: C_FormDialogView_InputCB
 argument: 0
 
 --------------------
@@ -172,7 +172,7 @@ shortcut:
 resize: FL_RESIZE_NONE
 gravity: FL_East FL_East
 name: button_replaceall
-callback: C_FormBaseInputCB
+callback: C_FormDialogView_InputCB
 argument: 0
 
 --------------------
@@ -190,7 +190,7 @@ shortcut:
 resize: FL_RESIZE_NONE
 gravity: FL_West FL_NoGravity
 name: check_searchbackwards
-callback: C_FormBaseInputCB
+callback: C_FormDialogView_InputCB
 argument: 0
 
 ==============================
