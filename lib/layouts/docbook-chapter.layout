@@ -1,0 +1,20 @@
+#% Do not delete the line below; configure depends on this
+#  \DeclareDocBookClass[chapter]{DocBook chapter (SGML)}
+# DocBook textclass definition file. 
+# Author : Jose' Matos <jamatos@lyx.org>
+
+# Input general definitions
+Input db_stdclass.inc
+
+MaxCounter		Counter_Section
+
+# Title style definition
+Style Title
+  LatexType		Command
+  LatexName		"!-- --"
+  LatexParam		"2|"
+End
+
+# Exclude higher, or equal, sections:
+NoStyle Part
+NoStyle Chapter
