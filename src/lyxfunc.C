@@ -100,11 +100,9 @@ extern void ShowLatexLog();
 LyXFunc::LyXFunc(LyXView * o)
 	: owner(o),
 	keyseq(toplevel_keymap.get(), toplevel_keymap.get()),
-	cancel_meta_seq(toplevel_keymap.get(), toplevel_keymap.get())
+	cancel_meta_seq(toplevel_keymap.get(), toplevel_keymap.get()),
+	meta_fake_bit(key_modifier::none)
 {
-	meta_fake_bit = key_modifier::none;
-	lyx_dead_action = LFUN_NOACTION;
-	lyx_calling_dead_action = LFUN_NOACTION;
 }
 
 
@@ -742,10 +740,10 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 			}
 			// Undo/Redo is a bit tricky for insets.
 			if (action == LFUN_UNDO) {
-				view()->menuUndo();
+				view()->undo();
 				goto exit_with_message;
 			} else if (action == LFUN_REDO) {
-				view()->menuRedo();
+				view()->redo();
 				goto exit_with_message;
 			} else if (((result=inset->
 				     // Hand-over to inset's own dispatch:
@@ -1031,11 +1029,11 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 		break;
 
 	case LFUN_UNDO:
-		view()->menuUndo();
+		view()->undo();
 		break;
 
 	case LFUN_REDO:
-		view()->menuRedo();
+		view()->redo();
 		break;
 
 	case LFUN_MENUSEARCH:

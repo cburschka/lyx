@@ -125,13 +125,8 @@ void breakParagraphConservative(BufferParams const & bparams,
 }
 
 
-// Be carefull, this does not make any check at all.
-// This method has wrong name, it combined this par with the next par.
-// In that sense it is the reverse of break paragraph. (Lgb)
-void pasteParagraph(BufferParams const & bparams,
-		    Paragraph * par)
+void mergeParagraph(BufferParams const & bparams, Paragraph * par)
 {
-	// copy the next paragraph to this one
 	Paragraph * the_next = par->next();
 
 	// first the DTP-stuff

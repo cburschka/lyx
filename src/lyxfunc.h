@@ -78,8 +78,6 @@ private:
 	///
 	LyXView * owner;
 	///
-	static int psd_idx;
-	///
 	kb_sequence keyseq;
 	///
 	kb_sequence cancel_meta_seq;
@@ -89,10 +87,6 @@ private:
 	void moveCursorUpdate(bool flag = true, bool selecting = false);
 	///
 	void setupLocalKeymap();
-	///
-	kb_action lyx_dead_action;
-	///
-	kb_action lyx_calling_dead_action;
 	/// Error status, only Dispatch can change this flag
 	mutable bool errorstat;
 

@@ -10,21 +10,27 @@
 #ifndef SGML_H
 #define SGML_H
  
-#include <config.h>
-
 #include "LString.h"
  
 #include <algorithm>
+#include <iosfwd>
  
 namespace sgml {
 
 /**
  * Escape the given character if necessary
- * to an SGML entity. The bool return is true
+ * to an SGML entity. Returns true
  * if it was a whitespace character.
  */
 std::pair<bool, string> escapeChar(char c);
 
+/// FIXME
+int openTag(std::ostream & os, Paragraph::depth_type depth,
+	    bool mixcont, string const & latexname);
+
+/// FIXME
+int closeTag(std::ostream & os, Paragraph::depth_type depth,
+	    bool mixcont, string const & latexname);
 }
 
 #endif // SGML_H

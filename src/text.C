@@ -2026,11 +2026,10 @@ void LyXText::insertChar(BufferView * bview, char c)
 		// we would not get a rebreak!
 		row->fill(fill(bview, row, workWidth(bview)));
 	}
+ 
 	if (c == Paragraph::META_INSET || row->fill() < 0) {
 		refresh_y = y;
 		refresh_row = row;
-		refresh_x = cursor.x();
-		refresh_pos = cursor.pos();
 		status(bview, LyXText::NEED_MORE_REFRESH);
 		breakAgainOneRow(bview, row);
 		// will the cursor be in another row now?
@@ -2055,9 +2054,7 @@ void LyXText::insertChar(BufferView * bview, char c)
 			need_break_row = 0;
 	} else {
 		refresh_y = y;
-		refresh_x = cursor.x();
 		refresh_row = row;
-		refresh_pos = cursor.pos();
 
 		int const tmpheight = row->height();
 		setHeightOfRow(bview, row);
@@ -2789,7 +2786,7 @@ void LyXText::backspace(BufferView * bview)
 		    && cursor.par()->getAlign() == tmppar->getAlign()) {
 			removeParagraph(tmprow);
 			removeRow(tmprow);
-			pasteParagraph(bview->buffer()->params, cursor.par());
+			mergeParagraph(bview->buffer()->params, cursor.par());
 
 			if (!cursor.pos() || !cursor.par()->isSeparator(cursor.pos() - 1))
 				; //cursor.par()->insertChar(cursor.pos(), ' ');

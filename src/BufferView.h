@@ -31,34 +31,48 @@ class Painter;
 class UpdatableInset;
 class WordLangTuple;
 
-///
+/**
+ * A buffer view encapsulates a view onto a particular
+ * buffer, and allows access to operate upon it. A view
+ * is a sliding window of the entire document rendering.
+ *
+ * Eventually we will allow several views onto a single
+ * buffer, but not yet.
+ */
 class BufferView : boost::noncopyable {
 public:
-	///
+	/**
+	 * Codes to store necessary pending updates
+	 * of the document rendering.
+	 */
 	enum UpdateCodes {
-		///
-		UPDATE = 0,
-		///
-		SELECT = 1,
-		///
-		FITCUR = 2,
-		///
-		CHANGE = 4
+		UPDATE = 0, //< FIXME
+		SELECT = 1, //< selection change
+		FITCUR = 2, //< the cursor needs fitting into the view
+		CHANGE = 4  //< document data has changed
 	};
 
-	///
-	BufferView(LyXView * owner, int , int , int, int);
-	///
+	/**
+	 * Create a view with the given owner main window,
+	 * of the given dimensions.
+	 */
+	BufferView(LyXView * owner, int x, int y, int w, int h);
+
 	~BufferView();
-	///
-	Buffer * buffer() const;
-	///
-	Painter & painter() const;
-	///
-	LyXScreen & screen() const;
-	///
+ 
+	/// set the buffer we are viewing
 	void buffer(Buffer * b);
-	///
+	/// return the buffer being viewed
+	Buffer * buffer() const;
+ 
+	/// return the painter object for drawing onto the view
+	Painter & painter() const;
+	/// return the screen object for handling re-drawing
+	LyXScreen & screen() const;
+	/// return the owning main view
+	LyXView * owner() const;
+ 
+	/// resize event has happened
 	void resize();
 	/**
 	 * Repaint the pixmap. Used for when we don't want
@@ -66,146 +80,164 @@ public:
 	 * repaint of the whole screen.
 	 */
 	void repaint();
-	///
+ 
+	/// fit the user cursor within the visible view
 	bool fitCursor();
-	///
+	/// perform pending painting updates
 	void update();
-	//
+	// update for a particular lyxtext
 	void update(LyXText *, UpdateCodes uc);
-	///
-	void updateScrollbar();
-	///
-	void redoCurrentBuffer();
-	///
-	bool available() const;
-	///
-	LyXView * owner() const;
-	///
-	void beforeChange(LyXText *);
-	///
-	void savePosition(unsigned int i);
-	///
-	void restorePosition(unsigned int i);
-	///
-	bool isSavedPosition(unsigned int i);
-	/** This holds the mapping between buffer paragraphs and screen rows.
-	    This should be private...but not yet. (Lgb)
-	*/
-	LyXText * text;
-	///
-	LyXText * getLyXText() const;
-	///
-	LyXText * getParentText(Inset * inset) const;
-	///
-	Language const * getParentLanguage(Inset * inset) const;
-	///
-	int workWidth() const;
-	///
-	UpdatableInset * theLockingInset() const;
-	///
-	void theLockingInset(UpdatableInset * inset);
-	///
+	/// update for a particular inset
 	void updateInset(Inset * inset, bool mark_dirty);
-	///
-	int slx;
-	///
-	int sly;
-	///
+	/// reset the scrollbar to reflect current view position
+	void updateScrollbar();
+	/// FIXME
+	void redoCurrentBuffer();
+ 
+	/// FIXME
+	bool available() const;
+ 
+	/// FIXME
+	void beforeChange(LyXText *);
+ 
+	/// Save the current position as bookmark i
+	void savePosition(unsigned int i);
+	/// Restore the position from bookmark i
+	void restorePosition(unsigned int i);
+	/// does the given bookmark have a saved position ?
+	bool isSavedPosition(unsigned int i);
+ 
+	/**
+	 * This holds the mapping between buffer paragraphs and screen rows.
+	 * This should be private...but not yet. (Lgb)
+	 */
+	LyXText * text;
+	/// return the lyxtext we are using
+	LyXText * getLyXText() const;
+ 
+	/// Return the current inset we are "locked" in
+	UpdatableInset * theLockingInset() const;
+	/// lock the given inset FIXME: return value ?
+	bool lockInset(UpdatableInset * inset);
+	/// unlock the given inset
+	int unlockInset(UpdatableInset * inset);
+	/// unlock the currently locked inset
 	void insetUnlock();
-	///
-	void replaceWord(string const & replacestring);
-	///
-	void endOfSpellCheck();
-	///
+ 
+	/// return the parent language of the given inset
+	Language const * getParentLanguage(Inset * inset) const;
+ 
+	/// Select the "current" word
 	void selectLastWord();
+	/// replace the currently selected word
+	void replaceWord(string const & replacestring);
+	/// Update after spellcheck finishes
+	void endOfSpellCheck();
 	/// return the next word
 	WordLangTuple const nextWord(float & value);
-	///
+ 
+	/// move cursor to the named label
 	bool gotoLabel(string const & label);
-	///
-	void pasteEnvironment();
-	///
+ 
+	/// copy the environment type from current paragraph
 	void copyEnvironment();
-	///
-	void menuUndo();
-	///
-	void menuRedo();
+	/// set the current paragraph's environment type
+	void pasteEnvironment();
+ 
+	/// undo last action
+	void undo();
+	/// redo last action
+	void redo();
+ 
 	/// removes all autodeletable insets
 	bool removeAutoInsets();
-	///
+	/// insert all errors found when running latex
 	void insertErrors(TeXErrors & terr);
-	///
+	/// set the cursor based on the given TeX source row
 	void setCursorFromRow(int row);
-	/** Insert an inset into the buffer.
-	    Place it in a layout of lout,
-	    if no_table make sure that it doesn't end up in a table.
-	*/
+ 
+	/**
+	 * Insert an inset into the buffer.
+	 * Place it in a layout of lout,
+	 */
 	bool insertInset(Inset * inset, string const & lout = string());
-	/// Inserts a lyx file at cursor position. return #false# if it fails
+ 
+	/// Inserts a lyx file at cursor position. return false if it fails
 	bool insertLyXFile(string const & file);
-	///
-	bool lockInset(UpdatableInset * inset);
-	///
-	void showLockedInsetCursor(int x, int y, int asc, int desc);
-	///
-	void hideLockedInsetCursor();
-	///
-	bool fitLockedInsetCursor(int x, int y, int asc, int desc);
-	///
-	int unlockInset(UpdatableInset * inset);
-	///
-	void lockedInsetStoreUndo(Undo::undo_kind kind);
-	///
+ 
+	/// show the user cursor
 	void showCursor();
-	///
+	/// hide the user cursor
 	void hideCursor();
-	///
+	/// FIXME
+	void showLockedInsetCursor(int x, int y, int asc, int desc);
+	/// FIXME
+	void hideLockedInsetCursor();
+	/// FIXME
+	bool fitLockedInsetCursor(int x, int y, int asc, int desc);
+	/// FIXME
+	void lockedInsetStoreUndo(Undo::undo_kind kind);
+	/// FIXME
 	void toggleSelection(bool = true);
-	///
+	/// FIXME: my word !
 	void toggleToggle();
-	///
+ 
+	/// center the document view around the cursor
 	void center();
 	/// scroll document by the given number of lines of default height
 	void scroll(int lines);
-
 	/// Scroll the view by a number of pixels
 	void scrollDocView(int);
 
-	///
-	void switchKeyMap();
-
-	///
-	bool ChangeInsets(Inset::Code code, string const & from,
-			  string const & to);
-	///
-	bool ChangeRefsIfUnique(string const & from, string const & to);
-	///
-	bool ChangeCitationsIfUnique(string const & from, string const & to);
-	///
-	string const getClipboard() const;
-	///
-	void stuffClipboard(string const &) const;
-	///
-	bool dispatch(FuncRequest const & argument);
 	/// height of a normal line in pixels (zoom factor considered)
 	int defaultHeight() const;
-	/// 
-	void haveSelection(bool sel);
-	///
+	/// return the pixel width of the document view
+	int workWidth() const;
+	/// return the pixel height of the document view
 	int workHeight() const;
 
+	/// switch between primary and secondary keymaps for RTL entry
+	void switchKeyMap();
+
+	/// FIXME
+	bool ChangeRefsIfUnique(string const & from, string const & to);
+	/// FIXME
+	bool ChangeCitationsIfUnique(string const & from, string const & to);
+ 
+	/// get the contents of the window system clipboard
+	string const getClipboard() const;
+	/// fill the window system clipboard
+	void stuffClipboard(string const &) const;
+	/// tell the window system we have a selection
+	void haveSelection(bool sel);
+ 
+	/// execute the given function
+	bool dispatch(FuncRequest const & argument);
+ 
 private:
-	///
+	/// Set the current locking inset
+	void theLockingInset(UpdatableInset * inset);
+ 
+	/// return the lyxtext containing this inset
+	LyXText * getParentText(Inset * inset) const;
+ 
+	/**
+	 * Change all insets with the given code's contents to a new
+	 * string. May only be used with InsetCommand-derived insets
+	 * Returns true if a screen update is needed.
+	 */
+	bool ChangeInsets(Inset::Code code, string const & from,
+			  string const & to);
+ 
+
 	struct Pimpl;
-	///
 	friend struct BufferView::Pimpl;
-	///
+
 	Pimpl * pimpl_;
 };
 
 
-///
 BufferView::UpdateCodes operator|(BufferView::UpdateCodes uc1,
 				  BufferView::UpdateCodes uc2);
 
-#endif
+#endif // BUFFERVIEW_H

@@ -28,11 +28,11 @@ void breakParagraphConservative(BufferParams const & bparams,
 				Paragraph *,
 				lyx::pos_type pos);
 
-/** Paste this paragraph with the next one.
-    Be carefull, this doesent make any check at all.
-*/
-void pasteParagraph(BufferParams const & bparams,
-		    Paragraph *);
+/**
+ * Append the next paragraph onto the tail of this one.
+ * Be careful, this doesent make any check at all.
+ */
+void mergeParagraph(BufferParams const & bparams, Paragraph *);
 
 
 #if 0

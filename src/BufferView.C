@@ -556,7 +556,7 @@ bool BufferView::gotoLabel(string const & label)
 }
 
 
-void BufferView::menuUndo()
+void BufferView::undo()
 {
 	if (!available())
 		return;
@@ -573,7 +573,7 @@ void BufferView::menuUndo()
 }
 
 
-void BufferView::menuRedo()
+void BufferView::redo()
 {
 	if (!available())
 		return;

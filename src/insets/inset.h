@@ -171,11 +171,6 @@ public:
 		FINISHED_DOWN
 	};
 
-	/// To convert old binary dispatch results
-	RESULT DISPATCH_RESULT(bool b) {
-		return b ? DISPATCHED : FINISHED;
-	}
-
 	///
 	Inset();
 	///

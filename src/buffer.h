@@ -177,12 +177,6 @@ public:
 	///
 	void makeDocBookFile(string const & filename,
 			     bool nice, bool only_body = false);
-	/// Open SGML/XML tag.
-	int sgmlOpenTag(std::ostream & os, Paragraph::depth_type depth, bool mixcont,
-		string const & latexname) const;
-	/// Closes SGML/XML tag.
-	int sgmlCloseTag(std::ostream & os, Paragraph::depth_type depth, bool mixcont,
-		string const & latexname) const;
 	///
 	void sgmlError(Paragraph * par, int pos, string const & message) const;
 

@@ -29,8 +29,6 @@ extern void bold(BufferView *);
 ///
 extern void noun(BufferView *);
 ///
-extern void table();
-///
 extern void lang(BufferView *, string const &);
 ///
 extern void number(BufferView *);

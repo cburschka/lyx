@@ -7,11 +7,17 @@
  * \author John Levon <levon@movementarian.org>
  */
 
-#include "sgml.h"
+#include <config.h>
+ 
+#include "support/LOstream.h"
+ 
 #include "paragraph.h"
+#include "sgml.h"
  
 using std::pair;
 using std::make_pair;
+using std::ostream;
+using std::endl;
  
 namespace sgml {
 
@@ -75,6 +81,38 @@ pair<bool, string> escapeChar(char c)
 		break;
 	}
 	return make_pair(false, str);
+}
+
+ 
+int openTag(ostream & os, Paragraph::depth_type depth,
+	    bool mixcont, string const & latexname)
+{
+	if (!latexname.empty() && latexname != "!-- --") {
+		if (!mixcont)
+			os << string(" ", depth);
+		os << "<" << latexname << ">";
+	}
+
+	if (!mixcont)
+		os << endl;
+
+	return !mixcont;
+}
+
+
+int closeTag(ostream & os, Paragraph::depth_type depth,
+	     bool mixcont, string const & latexname)
+{
+	if (!latexname.empty() && latexname != "!-- --") {
+		if (!mixcont)
+			os << endl << string(" ", depth);
+		os << "</" << latexname << ">";
+	}
+
+	if (!mixcont)
+		os << endl;
+
+	return !mixcont;
 }
 
 } // namespace sgml

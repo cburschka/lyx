@@ -38,6 +38,7 @@
 #include "undo_funcs.h"
 #include "WordLangTuple.h"
 #include "paragraph_funcs.h"
+#include "sgml.h"
 
 #include "frontends/Alert.h"
 #include "frontends/Dialogs.h"
@@ -1631,11 +1632,11 @@ int InsetText::docbook(Buffer const * buf, ostream & os, bool mixcont) const
 		for (; depth > p->params().depth(); --depth) {
 			if (environment_inner[depth] != "!-- --") {
 				item_name = "listitem";
-				lines += buf->sgmlCloseTag(os, command_depth + depth, mixcont, item_name);
+				lines += sgml::closeTag(os, command_depth + depth, mixcont, item_name);
 				if (environment_inner[depth] == "varlistentry")
-					lines += buf->sgmlCloseTag(os, depth+command_depth, mixcont, environment_inner[depth]);
+					lines += sgml::closeTag(os, depth+command_depth, mixcont, environment_inner[depth]);
 			}
-			lines += buf->sgmlCloseTag(os, depth + command_depth, mixcont, environment_stack[depth]);
+			lines += sgml::closeTag(os, depth + command_depth, mixcont, environment_stack[depth]);
 			environment_stack[depth].erase();
 			environment_inner[depth].erase();
 		}
@@ -1645,12 +1646,12 @@ int InsetText::docbook(Buffer const * buf, ostream & os, bool mixcont) const
 		   && !environment_stack[depth].empty()) {
 			if (environment_inner[depth] != "!-- --") {
 				item_name= "listitem";
-				lines += buf->sgmlCloseTag(os, command_depth+depth, mixcont, item_name);
+				lines += sgml::closeTag(os, command_depth+depth, mixcont, item_name);
 				if (environment_inner[depth] == "varlistentry")
-					lines += buf->sgmlCloseTag(os, depth + command_depth, mixcont, environment_inner[depth]);
+					lines += sgml::closeTag(os, depth + command_depth, mixcont, environment_inner[depth]);
 			}
 
-			lines += buf->sgmlCloseTag(os, depth + command_depth, mixcont, environment_stack[depth]);
+			lines += sgml::closeTag(os, depth + command_depth, mixcont, environment_stack[depth]);
 
 			environment_stack[depth].erase();
 			environment_inner[depth].erase();
@@ -1659,7 +1660,7 @@ int InsetText::docbook(Buffer const * buf, ostream & os, bool mixcont) const
 		// Write opening SGML tags.
 		switch (style->latextype) {
 		case LATEX_PARAGRAPH:
-			lines += buf->sgmlOpenTag(os, depth + command_depth, mixcont, style->latexname());
+			lines += sgml::openTag(os, depth + command_depth, mixcont, style->latexname());
 			break;
 
 		case LATEX_COMMAND:
@@ -1681,13 +1682,13 @@ int InsetText::docbook(Buffer const * buf, ostream & os, bool mixcont) const
 				}
 				environment_stack[depth] = style->latexname();
 				environment_inner[depth] = "!-- --";
-				lines += buf->sgmlOpenTag(os, depth + command_depth, mixcont, environment_stack[depth]);
+				lines += sgml::openTag(os, depth + command_depth, mixcont, environment_stack[depth]);
 			} else {
 				if (environment_inner[depth] != "!-- --") {
 					item_name= "listitem";
-					lines += buf->sgmlCloseTag(os, command_depth + depth, mixcont, item_name);
+					lines += sgml::closeTag(os, command_depth + depth, mixcont, item_name);
 					if (environment_inner[depth] == "varlistentry")
-						lines += buf->sgmlCloseTag(os, depth + command_depth, mixcont, environment_inner[depth]);
+						lines += sgml::closeTag(os, depth + command_depth, mixcont, environment_inner[depth]);
 				}
 			}
 
@@ -1696,7 +1697,7 @@ int InsetText::docbook(Buffer const * buf, ostream & os, bool mixcont) const
 					if (style->latexparam() == "CDATA")
 						os << "<![CDATA[";
 					else
-					  lines += buf->sgmlOpenTag(os, depth + command_depth, mixcont, style->latexparam());
+					  lines += sgml::openTag(os, depth + command_depth, mixcont, style->latexparam());
 				}
 				break;
 			}
@@ -1704,14 +1705,14 @@ int InsetText::docbook(Buffer const * buf, ostream & os, bool mixcont) const
 			desc_on = (style->labeltype == LABEL_MANUAL);
 
 			environment_inner[depth] = desc_on?"varlistentry":"listitem";
-			lines += buf->sgmlOpenTag(os, depth + 1 + command_depth, mixcont, environment_inner[depth]);
+			lines += sgml::openTag(os, depth + 1 + command_depth, mixcont, environment_inner[depth]);
 
 			item_name = desc_on?"term":"para";
-			lines += buf->sgmlOpenTag(os, depth + 1 + command_depth, mixcont, item_name);
+			lines += sgml::openTag(os, depth + 1 + command_depth, mixcont, item_name);
 
 			break;
 		default:
-			lines += buf->sgmlOpenTag(os, depth + command_depth, mixcont, style->latexname());
+			lines += sgml::openTag(os, depth + command_depth, mixcont, style->latexname());
 			break;
 		}
 
@@ -1726,19 +1727,19 @@ int InsetText::docbook(Buffer const * buf, ostream & os, bool mixcont) const
 				if (style->latexparam() == "CDATA")
 					os << "]]>";
 				else
-					lines += buf->sgmlCloseTag(os, depth + command_depth, mixcont, style->latexparam());
+					lines += sgml::closeTag(os, depth + command_depth, mixcont, style->latexparam());
 			}
 			break;
 		case LATEX_ITEM_ENVIRONMENT:
 			if (desc_on == 1) break;
 			end_tag= "para";
-			lines += buf->sgmlCloseTag(os, depth + 1 + command_depth, mixcont, end_tag);
+			lines += sgml::closeTag(os, depth + 1 + command_depth, mixcont, end_tag);
 			break;
 		case LATEX_PARAGRAPH:
-			lines += buf->sgmlCloseTag(os, depth + command_depth, mixcont, style->latexname());
+			lines += sgml::closeTag(os, depth + command_depth, mixcont, style->latexname());
 			break;
 		default:
-			lines += buf->sgmlCloseTag(os, depth + command_depth, mixcont, style->latexname());
+			lines += sgml::closeTag(os, depth + command_depth, mixcont, style->latexname());
 			break;
 		}
 	}
@@ -1748,12 +1749,12 @@ int InsetText::docbook(Buffer const * buf, ostream & os, bool mixcont) const
 		if (!environment_stack[depth].empty()) {
 			if (environment_inner[depth] != "!-- --") {
 				item_name = "listitem";
-				lines += buf->sgmlCloseTag(os, command_depth + depth, mixcont, item_name);
+				lines += sgml::closeTag(os, command_depth + depth, mixcont, item_name);
 			       if (environment_inner[depth] == "varlistentry")
-				       lines += buf->sgmlCloseTag(os, depth + command_depth, mixcont, environment_inner[depth]);
+				       lines += sgml::closeTag(os, depth + command_depth, mixcont, environment_inner[depth]);
 			}
 
-			lines += buf->sgmlCloseTag(os, depth + command_depth, mixcont, environment_stack[depth]);
+			lines += sgml::closeTag(os, depth + command_depth, mixcont, environment_stack[depth]);
 		}
 	}
 
@@ -2763,7 +2764,7 @@ void InsetText::collapseParagraphs(BufferView * bv) const
 					llt->selection.end.pos() + paragraphs.begin()->size());
 			}
 		}
-		pasteParagraph(bparams, &*paragraphs.begin());
+		mergeParagraph(bparams, &*paragraphs.begin());
 	}
 	reinitLyXText();
 }
@@ -2805,7 +2806,7 @@ void InsetText::appendParagraphs(BufferParams const & bparams,
 	// paste it!
 	lastbuffer->next(buf);
 	buf->previous(lastbuffer);
-	pasteParagraph(bparams, lastbuffer);
+	mergeParagraph(bparams, lastbuffer);
 
 	reinitLyXText();
 }

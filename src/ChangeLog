@@ -1,5 +1,28 @@
 2002-10-21  John Levon  <levon@movementarian.org>
 
+	* BufferView.C: menuUndo ->undo, redo
+ 
+	* BufferView.h: document, remove dead, make some methods private
+ 
+	* paragraph_funcs.h:
+	* paragraph_funcs.C: 
+	* CutAndPaste.C: s/pasteParagraph/mergeParagraph
+ 
+	* buffer.h:
+	* buffer.C:
+	* sgml.h:
+	* sgml.C: move sgml open/close tag into sgml.C
+ 
+	* bufferview_funcs.h: unused prototype
+ 
+	* lyxfunc.h:
+	* lyxfunc.C: remove unused
+ 
+	* lyxtext.h:
+	* text.C: remove unused
+ 
+2002-10-21  John Levon  <levon@movementarian.org>
+
 	* BufferView.h:
 	* BufferView.C:
 	* BufferView_pimpl.h:

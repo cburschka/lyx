@@ -175,13 +175,7 @@ public:
 	///
 	mutable int refresh_y;
 	///
-	int refresh_width;
-	///
-	int refresh_x;
-	///
 	mutable Row * refresh_row;
-	///
-	lyx::pos_type refresh_pos;
 
 	/// give and set the LyXText status
 	text_status status() const;
