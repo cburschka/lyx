@@ -322,8 +322,7 @@ void ParagraphParameters::read(LyXLex & lex)
 			int tmpret = lex.findToken(string_align);
 			if (tmpret == -1)
 				++tmpret;
-			int const tmpret2 = int(pow(2.0, tmpret));
-			align(LyXAlignment(tmpret2));
+			align(LyXAlignment(1 << tmpret));
 		} else if (token == "\\added_space_top") {
 			lex.nextToken();
 			VSpace value = VSpace(lex.getString());
