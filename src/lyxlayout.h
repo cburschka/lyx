@@ -92,74 +92,54 @@ public:
 
 	/// Text that dictates how wide the left margin is on the screen
 	string leftmargin;
-
 	/// Text that dictates how wide the right margin is on the screen
 	string rightmargin;
-
 	/// Text that dictates how much space to leave after a potential label
 	string labelsep;
-
 	/// Text that dictates how much space to leave before a potential label
 	string labelindent;
-
-	/** Text that dictates the width of the indentation of
-	    indented paragraphs.
-	*/
+	/// Text that dictates the width of the indentation of indented pars
 	string parindent;
-
 	///
 	float parskip;
-
 	///
 	float itemsep;
-
 	///
 	float topsep;
-
 	///
 	float bottomsep;
-
 	///
 	float labelbottomsep;
-
 	///
 	float parsep;
-
 	///
 	Spacing spacing;
-
 	///
 	LyXAlignment align;
-
 	///
 	LyXAlignment alignpossible;
-
 	///
 	char labeltype; // add approp. type
-
 	///
 	LYX_END_LABEL_TYPES endlabeltype;
-
 	///
 	LYX_MARGIN_TYPE margintype;
-
 	///
 	bool fill_top;
-
 	///
 	bool fill_bottom;
-
 	///
 	bool newline_allowed;
-
 	///
 	bool nextnoindent;
-
 	///
 	bool free_spacing;
-
 	///
 	bool pass_thru;
+	/// for new environment insets
+	string latexheader;
+	/// for new environment insets
+	string latexfooter;
 
 	/** true when the fragile commands in the paragraph need to be
 	    \protect'ed. */
@@ -206,19 +186,14 @@ private:
 
 	/// LaTeX name for environment
 	string latexname_;
-
 	/// Label string. "Abstract", "Reference", "Caption"...
 	string labelstring_;
-
 	///
 	string endlabelstring_;
-
 	/// Label string inside appendix. "Appendix", ...
 	string labelstring_appendix_;
-
 	/// LaTeX parameter for environment
 	string latexparam_;
-
 	/// Macro definitions needed for this layout
 	string preamble_;
 };
