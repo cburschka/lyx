@@ -432,7 +432,6 @@ Inset::RESULT InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 		updateLocal(bv, true);
 		break;
 
-	case LFUN_WORDRIGHTSEL:
 	case LFUN_RIGHTSEL:
 		sel = true; // fall through...
 	case LFUN_RIGHT:
@@ -444,7 +443,6 @@ Inset::RESULT InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 		//bv->owner()->message(mathcursor->info());
 		break;
 
-	case LFUN_WORDLEFTSEL:
 	case LFUN_LEFTSEL:
 		sel = true; // fall through
 	case LFUN_LEFT:
@@ -473,6 +471,7 @@ Inset::RESULT InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 		break;
 
 	case LFUN_HOMESEL:
+	case LFUN_WORDLEFTSEL:
 		sel = true; // fall through
 	case LFUN_HOME:
 	case LFUN_WORDLEFT:
@@ -481,6 +480,7 @@ Inset::RESULT InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 		break;
 
 	case LFUN_ENDSEL:
+	case LFUN_WORDRIGHTSEL:
 		sel = true; // fall through
 	case LFUN_END:
 	case LFUN_WORDRIGHT:
