@@ -24,6 +24,8 @@
 #include "support/lyxfunctional.h"
 #include "support/filetools.h"
 
+#include <algorithm>
+
 using std::endl;
 
 
