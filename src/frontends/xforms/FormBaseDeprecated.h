@@ -34,7 +34,7 @@ class Dialogs;
 class LyXView;
 class Tooltips;
 
-class FormBaseDeprecated : boost::noncopyable, public FeedbackController
+class FormBaseDeprecated : public boost::noncopyable, public FeedbackController
 {
 public:
 	///
