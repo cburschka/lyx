@@ -72,18 +72,19 @@ string const ControlChanges::getChangeAuthor()
 }
 
 
-void ControlChanges::accept()
+bool ControlChanges::accept()
 {
 	kernel().dispatch(FuncRequest(LFUN_ACCEPT_CHANGE));
-	find::findNextChange(kernel().bufferview());
+	return find::findNextChange(kernel().bufferview());
 }
 
 
-void ControlChanges::reject()
+bool ControlChanges::reject()
 {
 	kernel().dispatch(FuncRequest(LFUN_REJECT_CHANGE));
-	find::findNextChange(kernel().bufferview());
+	return find::findNextChange(kernel().bufferview());
 }
+
 
 } // namespace frontend
 } // namespace lyx

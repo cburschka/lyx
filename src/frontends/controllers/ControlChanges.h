@@ -43,10 +43,10 @@ public:
 	std::string const getChangeAuthor();
 
 	/// accept the current merge
-	void accept();
+	bool accept();
 
 	/// reject the current merge
-	void reject();
+	bool reject();
 };
 
 } // namespace frontend

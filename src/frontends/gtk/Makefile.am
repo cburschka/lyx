@@ -24,6 +24,8 @@ libgtk_la_SOURCES = \
 	GAboutlyx.h \
 	GBC.C \
 	GBC.h \
+	GChanges.C \
+	GChanges.h \
 	GCharacter.C \
 	GCharacter.h \
 	GErrorList.C \
@@ -107,7 +109,6 @@ xforms_objects = \
 	../xforms/FormBox.lo \
 	../xforms/FormBranch.lo \
 	../xforms/FormBrowser.lo \
-	../xforms/FormChanges.lo \
 	../xforms/FormCitation.lo \
 	../xforms/FormColorpicker.lo \
 	../xforms/FormDialogView.lo \

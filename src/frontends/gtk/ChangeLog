@@ -1,3 +1,10 @@
+2004-10-11  John Spray  <spray_john@users.sourceforge.net>
+
+	* The Changes dialog
+	* Dialogs.C, Makefile.am, GChanges.C, GChanges.h
+	* ControlChanges.[Ch]: make accept() and reject() return bool
+	from findNextChange
+
 2004-10-09  John Spray  <spray_john@users.sourceforge.net>
 
 	* The Log dialog
