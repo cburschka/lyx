@@ -1068,6 +1068,14 @@ void paintRow(BufferView const & bv, LyXText const & text,
 	ParagraphList::iterator pit,
 	RowList::iterator rit, int y_offset, int x_offset, int y)
 {
+	RowPainter painter(bv, text, pit, rit, y_offset, x_offset, y);
+	painter.paint();
+}
+
+
+int paintRows(BufferView const & bv, LyXText const & text,
+	RowList::iterator rit, int xo, int y, int yf, int y2, int yo)
+{
 	// fix up missing metrics() call for main LyXText
 	// calling metrics() directly is (a) slow and (b) crashs
 	if (&text == bv.text) {
@@ -1096,21 +1104,13 @@ void paintRow(BufferView const & bv, LyXText const & text,
 #endif
 	}
 
-	RowPainter painter(bv, text, pit, rit, y_offset, x_offset, y);
-	painter.paint();
-}
-
-
-int paintRows(BufferView const & bv, LyXText const & text,
-	RowList::iterator rit, int xo, int y, int yf, int y2, int yo)
-{
+	int yy = yf - y;
 	RowList::iterator end = text.rows().end();
-	while (rit != end && yf < y2) {
+	while (rit != end && yy + y < y2) {
 		//const_cast<LyXText &>(text).setHeightOfRow(rit);
 		ParagraphList::iterator pit = text.getPar(rit);
 		paintRow(bv, text, pit, rit, y + yo, xo, y + text.top_y());
 		y += rit->height();
-		yf += rit->height();
 		++rit;
 	}
 	return y;
