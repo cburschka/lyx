@@ -20,7 +20,6 @@
 
 #include "lyxfont.h"
 #include "LColor.h"
-#include "character.h"
 
 /** Functions of use to the character GUI controller and view */
 namespace character {

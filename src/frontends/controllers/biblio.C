@@ -54,8 +54,6 @@ vector<string> const getKeys(InfoMap const & map)
 {
 	vector<string> bibkeys;
 
-	typedef std::map<string, string>::value_type InfoMapValue;
-
 	for (InfoMap::const_iterator it = map.begin(); it != map.end(); ++it) {
 		bibkeys.push_back(it->first);
 	}
