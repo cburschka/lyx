@@ -330,12 +330,12 @@ void FormBase::postMessage(string const & message)
 {
 	lyx::Assert(message_widget_);
 
+	int const width = message_widget_->w - 10;
 #if USE_BOOST_FORMAT
 	boost::format fmter = warning_posted_ ?
 		boost::format(_("WARNING! %1$s")) :
 		boost::format("%1$s");
 
-	int const width = message_widget_->w - 10;
 	string const str = formatted(boost::io::str(fmter % message),
 				     width, FL_NORMAL_SIZE);
 #else
