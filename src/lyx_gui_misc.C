@@ -396,12 +396,15 @@ int AskConfirmation(string const & s1, string const & s2, string const & s3)
 // Asks for a text
 string askForText(string const & msg, string const & dflt)
 {
-	string tmp;
+	const char * tmp;
 	fl_set_resource("flInput.cancel.label", idex(_("Cancel|^[")));
 	fl_set_resource("flInput.ok.label", idex(_("OK|#O")));
 	fl_set_resource("flInput.clear.label", idex(_("Clear|#e")));
 	tmp = fl_show_input(msg.c_str(), dflt.c_str());
-	return tmp;
+	if (tmp != 0)
+	  return tmp;
+	else
+	  return string();
 }
 
 // Inform the user that the buffer is read-only, and that changes in the

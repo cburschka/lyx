@@ -1,3 +1,9 @@
+1999-11-15  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/lyx_gui_misc.C (askForText): when fl_show_input() returns
+	NULL, make sure to return an empty string (it is not possible to
+	set a string to NULL).
+
 1999-11-10  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/support/LRegex.C: use regex_t instead of re_pattern_buffer.
