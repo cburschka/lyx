@@ -46,6 +46,7 @@ public:
 	void showPreamble();
 
 public slots:
+	void updateNumbering();
 	void change_adaptor();
 	void saveDefaultClicked();
 	void useDefaultsClicked();

@@ -13,8 +13,8 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>441</width>
-            <height>440</height>
+            <width>344</width>
+            <height>404</height>
         </rect>
     </property>
     <property stdset="1">
@@ -179,7 +179,7 @@
                     <class>QLayoutWidget</class>
                     <property stdset="1">
                         <name>name</name>
-                        <cstring>Layout2</cstring>
+                        <cstring>Layout9</cstring>
                     </property>
                     <hbox>
                         <property stdset="1">
@@ -215,9 +215,9 @@
                             <class>QLayoutWidget</class>
                             <property stdset="1">
                                 <name>name</name>
-                                <cstring>Layout1</cstring>
+                                <cstring>Layout8</cstring>
                             </property>
-                            <hbox>
+                            <vbox>
                                 <property stdset="1">
                                     <name>margin</name>
                                     <number>0</number>
@@ -227,46 +227,101 @@
                                     <number>6</number>
                                 </property>
                                 <widget>
-                                    <class>QComboBox</class>
+                                    <class>QLayoutWidget</class>
                                     <property stdset="1">
                                         <name>name</name>
-                                        <cstring>skipCO</cstring>
+                                        <cstring>Layout6</cstring>
                                     </property>
-                                    <property stdset="1">
-                                        <name>enabled</name>
-                                        <bool>false</bool>
-                                    </property>
+                                    <hbox>
+                                        <property stdset="1">
+                                            <name>margin</name>
+                                            <number>0</number>
+                                        </property>
+                                        <property stdset="1">
+                                            <name>spacing</name>
+                                            <number>6</number>
+                                        </property>
+                                        <widget>
+                                            <class>QComboBox</class>
+                                            <property stdset="1">
+                                                <name>name</name>
+                                                <cstring>skipCO</cstring>
+                                            </property>
+                                            <property stdset="1">
+                                                <name>enabled</name>
+                                                <bool>false</bool>
+                                            </property>
+                                        </widget>
+                                        <spacer>
+                                            <property>
+                                                <name>name</name>
+                                                <cstring>Spacer3_2</cstring>
+                                            </property>
+                                            <property stdset="1">
+                                                <name>orientation</name>
+                                                <enum>Horizontal</enum>
+                                            </property>
+                                            <property stdset="1">
+                                                <name>sizeType</name>
+                                                <enum>Expanding</enum>
+                                            </property>
+                                            <property>
+                                                <name>sizeHint</name>
+                                                <size>
+                                                    <width>20</width>
+                                                    <height>20</height>
+                                                </size>
+                                            </property>
+                                        </spacer>
+                                    </hbox>
                                 </widget>
                                 <widget>
-                                    <class>QLineEdit</class>
+                                    <class>QLayoutWidget</class>
                                     <property stdset="1">
                                         <name>name</name>
-                                        <cstring>skipLE</cstring>
+                                        <cstring>Layout7</cstring>
                                     </property>
-                                    <property stdset="1">
-                                        <name>enabled</name>
-                                        <bool>false</bool>
-                                    </property>
-                                    <property stdset="1">
-                                        <name>sizePolicy</name>
-                                        <sizepolicy>
-                                            <hsizetype>1</hsizetype>
-                                            <vsizetype>0</vsizetype>
-                                        </sizepolicy>
-                                    </property>
+                                    <hbox>
+                                        <property stdset="1">
+                                            <name>margin</name>
+                                            <number>0</number>
+                                        </property>
+                                        <property stdset="1">
+                                            <name>spacing</name>
+                                            <number>6</number>
+                                        </property>
+                                        <widget>
+                                            <class>QLineEdit</class>
+                                            <property stdset="1">
+                                                <name>name</name>
+                                                <cstring>skipLE</cstring>
+                                            </property>
+                                            <property stdset="1">
+                                                <name>enabled</name>
+                                                <bool>false</bool>
+                                            </property>
+                                            <property stdset="1">
+                                                <name>sizePolicy</name>
+                                                <sizepolicy>
+                                                    <hsizetype>1</hsizetype>
+                                                    <vsizetype>0</vsizetype>
+                                                </sizepolicy>
+                                            </property>
+                                        </widget>
+                                        <widget>
+                                            <class>LengthCombo</class>
+                                            <property stdset="1">
+                                                <name>name</name>
+                                                <cstring>skipLengthCO</cstring>
+                                            </property>
+                                            <property stdset="1">
+                                                <name>enabled</name>
+                                                <bool>false</bool>
+                                            </property>
+                                        </widget>
+                                    </hbox>
                                 </widget>
-                                <widget>
-                                    <class>LengthCombo</class>
-                                    <property stdset="1">
-                                        <name>name</name>
-                                        <cstring>skipLengthCO</cstring>
-                                    </property>
-                                    <property stdset="1">
-                                        <name>enabled</name>
-                                        <bool>false</bool>
-                                    </property>
-                                </widget>
-                            </hbox>
+                            </vbox>
                         </widget>
                     </hbox>
                 </widget>
@@ -419,14 +474,14 @@
     </image>
 </images>
 <tabstops>
-    <tabstop>lspacingCO</tabstop>
-    <tabstop>lspacingLE</tabstop>
     <tabstop>fontsCO</tabstop>
     <tabstop>fontsizeCO</tabstop>
     <tabstop>indentRB</tabstop>
     <tabstop>skipRB</tabstop>
     <tabstop>skipCO</tabstop>
     <tabstop>skipLE</tabstop>
+    <tabstop>lspacingCO</tabstop>
+    <tabstop>lspacingLE</tabstop>
     <tabstop>twoColumnCB</tabstop>
 </tabstops>
 </UI>

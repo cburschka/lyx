@@ -253,7 +253,6 @@ Bullet const BulletsModule::getBullet(int level)
 
 void BulletsModule::setCurrentBullet(int font, int character)
 {
-	lyxerr << "set current bullet " << std::endl;
 	tmpbulletset = true;
 	tmpbullet.setFont(font);
 	tmpbullet.setCharacter(character);

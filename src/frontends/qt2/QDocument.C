@@ -37,7 +37,7 @@
 #include <qradiobutton.h>
 #include <qcombobox.h>
 #include <qcheckbox.h>
-#include <qspinbox.h>
+#include <qslider.h>
 #include <qlineedit.h>
 #include <qstringlist.h>
 #include "lengthcombo.h"
@@ -230,10 +230,8 @@ void QDocument::apply()
 	params.language = languages.getLanguage(lang_[pos]);
 
 	// numbering
-	params.tocdepth =
-		dialog_->numberingModule->tocDepthSB->value();
-	params.secnumdepth =
-		dialog_->numberingModule->sectionnrDepthSB->value();
+	params.tocdepth = dialog_->numberingModule->tocSL->value();
+	params.secnumdepth = dialog_->numberingModule->depthSL->value();
 
 	// bullets
 	params.user_defined_bullets[0] = dialog_->bulletsModule->getBullet(0);
@@ -466,10 +464,9 @@ void QDocument::update_contents()
 	}
 
 	// numbering
-	dialog_->numberingModule->tocDepthSB->setValue(
-		params.tocdepth);
-	dialog_->numberingModule->sectionnrDepthSB->setValue(
-		params.secnumdepth);
+	dialog_->numberingModule->tocSL->setValue(params.tocdepth);
+	dialog_->numberingModule->depthSL->setValue(params.secnumdepth);
+	dialog_->updateNumbering();
 
 	// bullets
 	dialog_->bulletsModule->setBullet(0,params.user_defined_bullets[0]);

@@ -46,7 +46,7 @@
 #include <qcombobox.h>
 #include <qradiobutton.h>
 #include <qcheckbox.h>
-#include <qspinbox.h>
+#include <qslider.h>
 #include "lengthcombo.h"
 
 
@@ -79,7 +79,7 @@ QDocumentDialog::QDocumentDialog(QDocument * form)
 	docPS->addPanel(pageLayoutModule, _("Page Layout"));
 	docPS->addPanel(marginsModule, _("Page Margins"));
 	docPS->addPanel(langModule, _("Language"));
-	docPS->addPanel(numberingModule, _("Table of Contents"));
+	docPS->addPanel(numberingModule, _("Numbering & TOC"));
 	docPS->addPanel(biblioModule, _("Bibliography"));
 	docPS->addPanel(mathsModule, _("Math options"));
 	docPS->addPanel(floatModule, _("Float Placement"));
@@ -100,8 +100,11 @@ QDocumentDialog::QDocumentDialog(QDocument * form)
 	connect(langModule->encodingCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
 	connect(langModule->quoteStyleCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
 	// numbering
-	connect(numberingModule->sectionnrDepthSB, SIGNAL(valueChanged(int)), this, SLOT(change_adaptor()));
-	connect(numberingModule->tocDepthSB, SIGNAL(valueChanged(int)), this, SLOT(change_adaptor()));
+	connect(numberingModule->depthSL, SIGNAL(valueChanged(int)), this, SLOT(change_adaptor()));
+	connect(numberingModule->tocSL, SIGNAL(valueChanged(int)), this, SLOT(change_adaptor()));
+	connect(numberingModule->depthSL, SIGNAL(valueChanged(int)), this, SLOT(updateNumbering()));
+	connect(numberingModule->tocSL, SIGNAL(valueChanged(int)), this, SLOT(updateNumbering()));
+	numberingModule->tocLV->setSorting(-1);
 	// maths
 	connect(mathsModule->amsCB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
 	connect(mathsModule->amsautoCB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
@@ -363,4 +366,58 @@ void QDocumentDialog::classChanged()
 			}
 		}
 	}
+}
+
+
+void QDocumentDialog::updateNumbering()
+{
+	int const depth = numberingModule->depthSL->value();
+	int const toc = numberingModule->tocSL->value();
+	QListViewItem * partitem = numberingModule->tocLV->firstChild();
+	QListViewItem * chapteritem = partitem->nextSibling();
+	QListViewItem * sectionitem = chapteritem->nextSibling();
+	QListViewItem * subsectionitem = sectionitem->nextSibling();
+	QListViewItem * subsubsectionitem = subsectionitem->nextSibling();
+	QListViewItem * paragraphitem = subsubsectionitem->nextSibling();
+	QListViewItem * subparagraphitem = paragraphitem->nextSibling();
+
+	QString const no = qt_("No");
+	QString const yes = qt_("Yes");
+
+	//numberingModule->tocLV->setUpdatesEnabled(false);
+
+	partitem->setText(1, yes);
+	chapteritem->setText(1, yes);
+	sectionitem->setText(1, yes);
+	subsectionitem->setText(1, yes);
+	subsubsectionitem->setText(1, yes);
+	paragraphitem->setText(1, yes);
+	subparagraphitem->setText(1, yes);
+	partitem->setText(2, yes);
+	chapteritem->setText(2, yes);
+	sectionitem->setText(2, yes);
+	subsectionitem->setText(2, yes);
+	subsubsectionitem->setText(2, yes);
+	paragraphitem->setText(2, yes);
+	subparagraphitem->setText(2, yes);
+
+	// numbering
+	if (depth < -1) partitem->setText(1, no);
+	if (depth < 0) chapteritem->setText(1, no);
+	if (depth < 1) sectionitem->setText(1, no);
+	if (depth < 2) subsectionitem->setText(1, no);
+	if (depth < 3) subsubsectionitem->setText(1, no);
+	if (depth < 4) paragraphitem->setText(1, no);
+	if (depth < 5) subparagraphitem->setText(1, no);
+
+	// in toc
+	if (toc < 0) chapteritem->setText(2, no);
+	if (toc < 1) sectionitem->setText(2, no);
+	if (toc < 2) subsectionitem->setText(2, no);
+	if (toc < 3) subsubsectionitem->setText(2, no);
+	if (toc < 4) paragraphitem->setText(2, no);
+	if (toc < 5) subparagraphitem->setText(2, no);
+
+	//numberingModule->tocLV->setUpdatesEnabled(true);
+	//numberingModule->tocLV->update();
 }

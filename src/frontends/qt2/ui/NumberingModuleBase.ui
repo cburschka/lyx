@@ -13,8 +13,8 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>450</width>
-            <height>313</height>
+            <width>319</width>
+            <height>323</height>
         </rect>
     </property>
     <property stdset="1">
@@ -31,10 +31,25 @@
             <number>6</number>
         </property>
         <widget>
+            <class>QLabel</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>TextLabel1_2</cstring>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string>&amp;Numbering</string>
+            </property>
+            <property>
+                <name>buddy</name>
+                <cstring>depthSL</cstring>
+            </property>
+        </widget>
+        <widget>
             <class>QLayoutWidget</class>
             <property stdset="1">
                 <name>name</name>
-                <cstring>Layout1</cstring>
+                <cstring>Layout5</cstring>
             </property>
             <hbox>
                 <property stdset="1">
@@ -46,159 +61,328 @@
                     <number>6</number>
                 </property>
                 <widget>
-                    <class>QGroupBox</class>
+                    <class>QSlider</class>
                     <property stdset="1">
                         <name>name</name>
-                        <cstring>GroupBox1</cstring>
+                        <cstring>depthSL</cstring>
                     </property>
                     <property stdset="1">
-                        <name>frameShape</name>
-                        <enum>Box</enum>
+                        <name>minValue</name>
+                        <number>-2</number>
                     </property>
                     <property stdset="1">
-                        <name>title</name>
-                        <string>Numbering Depth</string>
+                        <name>maxValue</name>
+                        <number>5</number>
                     </property>
-                    <grid>
-                        <property stdset="1">
-                            <name>margin</name>
-                            <number>11</number>
-                        </property>
-                        <property stdset="1">
-                            <name>spacing</name>
-                            <number>6</number>
-                        </property>
-                        <widget row="0"  column="0" >
-                            <class>QLabel</class>
-                            <property stdset="1">
-                                <name>name</name>
-                                <cstring>sectionnrDepthL</cstring>
-                            </property>
-                            <property stdset="1">
-                                <name>text</name>
-                                <string>&amp;Section:</string>
-                            </property>
-                            <property>
-                                <name>buddy</name>
-                                <cstring>sectionnrDepthSB</cstring>
-                            </property>
-                        </widget>
-                        <widget row="1"  column="0" >
-                            <class>QLabel</class>
-                            <property stdset="1">
-                                <name>name</name>
-                                <cstring>tocDepthL</cstring>
-                            </property>
-                            <property stdset="1">
-                                <name>text</name>
-                                <string>&amp;Table of contents:</string>
-                            </property>
-                            <property>
-                                <name>buddy</name>
-                                <cstring>tocDepthSB</cstring>
-                            </property>
-                        </widget>
-                        <widget row="1"  column="1" >
-                            <class>QSpinBox</class>
-                            <property stdset="1">
-                                <name>name</name>
-                                <cstring>tocDepthSB</cstring>
-                            </property>
-                            <property stdset="1">
-                                <name>maxValue</name>
-                                <number>5</number>
-                            </property>
-                            <property stdset="1">
-                                <name>minValue</name>
-                                <number>-1</number>
-                            </property>
-                        </widget>
-                        <widget row="0"  column="1" >
-                            <class>QSpinBox</class>
-                            <property stdset="1">
-                                <name>name</name>
-                                <cstring>sectionnrDepthSB</cstring>
-                            </property>
-                            <property stdset="1">
-                                <name>maxValue</name>
-                                <number>5</number>
-                            </property>
-                            <property stdset="1">
-                                <name>minValue</name>
-                                <number>-2</number>
-                            </property>
-                        </widget>
-                        <spacer row="1"  column="2" >
-                            <property>
-                                <name>name</name>
-                                <cstring>Spacer3</cstring>
-                            </property>
-                            <property stdset="1">
-                                <name>orientation</name>
-                                <enum>Horizontal</enum>
-                            </property>
-                            <property stdset="1">
-                                <name>sizeType</name>
-                                <enum>Expanding</enum>
-                            </property>
-                            <property>
-                                <name>sizeHint</name>
-                                <size>
-                                    <width>20</width>
-                                    <height>20</height>
-                                </size>
-                            </property>
-                        </spacer>
-                    </grid>
-                </widget>
-                <spacer>
-                    <property>
-                        <name>name</name>
-                        <cstring>Spacer2</cstring>
+                    <property stdset="1">
+                        <name>value</name>
+                        <number>3</number>
                     </property>
                     <property stdset="1">
                         <name>orientation</name>
                         <enum>Horizontal</enum>
                     </property>
-                    <property stdset="1">
-                        <name>sizeType</name>
-                        <enum>Expanding</enum>
-                    </property>
-                    <property>
-                        <name>sizeHint</name>
-                        <size>
-                            <width>20</width>
-                            <height>20</height>
-                        </size>
-                    </property>
-                </spacer>
+                </widget>
             </hbox>
         </widget>
-        <spacer>
-            <property>
+        <widget>
+            <class>QLabel</class>
+            <property stdset="1">
                 <name>name</name>
-                <cstring>Spacer3_2</cstring>
+                <cstring>TextLabel1</cstring>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string>&amp;List in Table of Contents</string>
+            </property>
+            <property>
+                <name>buddy</name>
+                <cstring>tocSL</cstring>
+            </property>
+        </widget>
+        <widget>
+            <class>QSlider</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>tocSL</cstring>
+            </property>
+            <property stdset="1">
+                <name>minValue</name>
+                <number>-1</number>
+            </property>
+            <property stdset="1">
+                <name>maxValue</name>
+                <number>5</number>
+            </property>
+            <property stdset="1">
+                <name>value</name>
+                <number>3</number>
             </property>
             <property stdset="1">
                 <name>orientation</name>
-                <enum>Vertical</enum>
+                <enum>Horizontal</enum>
             </property>
-            <property stdset="1">
-                <name>sizeType</name>
-                <enum>Expanding</enum>
+        </widget>
+        <widget>
+            <class>QListView</class>
+            <column>
+                <property>
+                    <name>text</name>
+                    <string>Example</string>
+                </property>
+                <property>
+                    <name>clickable</name>
+                    <bool>true</bool>
+                </property>
+                <property>
+                    <name>resizeable</name>
+                    <bool>true</bool>
+                </property>
+            </column>
+            <column>
+                <property>
+                    <name>text</name>
+                    <string>Numbered</string>
+                </property>
+                <property>
+                    <name>clickable</name>
+                    <bool>true</bool>
+                </property>
+                <property>
+                    <name>resizeable</name>
+                    <bool>true</bool>
+                </property>
+            </column>
+            <column>
+                <property>
+                    <name>text</name>
+                    <string>Appears in TOC</string>
+                </property>
+                <property>
+                    <name>clickable</name>
+                    <bool>true</bool>
+                </property>
+                <property>
+                    <name>resizeable</name>
+                    <bool>true</bool>
+                </property>
+            </column>
+        <item>
+            <property>
+                <name>text</name>
+                <string>Part</string>
             </property>
             <property>
-                <name>sizeHint</name>
-                <size>
-                    <width>20</width>
-                    <height>20</height>
-                </size>
+                <name>text</name>
+                <string></string>
             </property>
-        </spacer>
+            <property>
+                <name>text</name>
+                <string></string>
+            </property>
+            <property>
+                <name>pixmap</name>
+                <pixmap></pixmap>
+            </property>
+            <property>
+                <name>pixmap</name>
+                <pixmap></pixmap>
+            </property>
+            <property>
+                <name>pixmap</name>
+                <pixmap></pixmap>
+            </property>
+        </item>
+        <item>
+            <property>
+                <name>text</name>
+                <string>Chapter</string>
+            </property>
+            <property>
+                <name>text</name>
+                <string></string>
+            </property>
+            <property>
+                <name>text</name>
+                <string></string>
+            </property>
+            <property>
+                <name>pixmap</name>
+                <pixmap></pixmap>
+            </property>
+            <property>
+                <name>pixmap</name>
+                <pixmap></pixmap>
+            </property>
+            <property>
+                <name>pixmap</name>
+                <pixmap></pixmap>
+            </property>
+        </item>
+        <item>
+            <property>
+                <name>text</name>
+                <string>Section</string>
+            </property>
+            <property>
+                <name>text</name>
+                <string></string>
+            </property>
+            <property>
+                <name>text</name>
+                <string></string>
+            </property>
+            <property>
+                <name>pixmap</name>
+                <pixmap></pixmap>
+            </property>
+            <property>
+                <name>pixmap</name>
+                <pixmap></pixmap>
+            </property>
+            <property>
+                <name>pixmap</name>
+                <pixmap></pixmap>
+            </property>
+        </item>
+        <item>
+            <property>
+                <name>text</name>
+                <string>Subsection</string>
+            </property>
+            <property>
+                <name>text</name>
+                <string></string>
+            </property>
+            <property>
+                <name>text</name>
+                <string></string>
+            </property>
+            <property>
+                <name>pixmap</name>
+                <pixmap></pixmap>
+            </property>
+            <property>
+                <name>pixmap</name>
+                <pixmap></pixmap>
+            </property>
+            <property>
+                <name>pixmap</name>
+                <pixmap></pixmap>
+            </property>
+        </item>
+        <item>
+            <property>
+                <name>text</name>
+                <string>Subsubsection</string>
+            </property>
+            <property>
+                <name>text</name>
+                <string></string>
+            </property>
+            <property>
+                <name>text</name>
+                <string></string>
+            </property>
+            <property>
+                <name>pixmap</name>
+                <pixmap></pixmap>
+            </property>
+            <property>
+                <name>pixmap</name>
+                <pixmap></pixmap>
+            </property>
+            <property>
+                <name>pixmap</name>
+                <pixmap></pixmap>
+            </property>
+        </item>
+        <item>
+            <property>
+                <name>text</name>
+                <string>Paragraph</string>
+            </property>
+            <property>
+                <name>text</name>
+                <string></string>
+            </property>
+            <property>
+                <name>text</name>
+                <string></string>
+            </property>
+            <property>
+                <name>pixmap</name>
+                <pixmap></pixmap>
+            </property>
+            <property>
+                <name>pixmap</name>
+                <pixmap></pixmap>
+            </property>
+            <property>
+                <name>pixmap</name>
+                <pixmap></pixmap>
+            </property>
+        </item>
+        <item>
+            <property>
+                <name>text</name>
+                <string>Subparagraph</string>
+            </property>
+            <property>
+                <name>text</name>
+                <string></string>
+            </property>
+            <property>
+                <name>text</name>
+                <string></string>
+            </property>
+            <property>
+                <name>pixmap</name>
+                <pixmap></pixmap>
+            </property>
+            <property>
+                <name>pixmap</name>
+                <pixmap></pixmap>
+            </property>
+            <property>
+                <name>pixmap</name>
+                <pixmap></pixmap>
+            </property>
+        </item>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>tocLV</cstring>
+            </property>
+            <property stdset="1">
+                <name>enabled</name>
+                <bool>false</bool>
+            </property>
+            <property stdset="1">
+                <name>resizePolicy</name>
+                <enum>AutoOneFit</enum>
+            </property>
+            <property stdset="1">
+                <name>vScrollBarMode</name>
+                <enum>AlwaysOff</enum>
+            </property>
+            <property stdset="1">
+                <name>hScrollBarMode</name>
+                <enum>AlwaysOff</enum>
+            </property>
+            <property stdset="1">
+                <name>rootIsDecorated</name>
+                <bool>false</bool>
+            </property>
+            <property>
+                <name>toolTip</name>
+                <string>Example numbering and table of contents</string>
+            </property>
+        </widget>
     </vbox>
 </widget>
 <tabstops>
-    <tabstop>sectionnrDepthSB</tabstop>
-    <tabstop>tocDepthSB</tabstop>
+    <tabstop>tocSL</tabstop>
+    <tabstop>depthSL</tabstop>
+    <tabstop>tocLV</tabstop>
 </tabstops>
 </UI>
