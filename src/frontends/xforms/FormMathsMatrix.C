@@ -119,8 +119,13 @@ bool FormMathsMatrix::input(FL_OBJECT * ob, long)
 int FormMathsMatrix::AlignFilter(char const * cur, int c)
 {
 	size_t len = strlen(cur);
+	// Use the HP version of std::count because the other one is broken on
+	// some systems
+	int counted;
+	std::count(cur, cur+len, '|', counted);
+	
 	int const n = int(fl_get_slider_value(dialog_->slider_columns) + 0.5) -
-		int(len) + std::count(cur, cur+len, '|');
+		int(len) + counted;
 	if (n < 0)
 		return FL_INVALID;
 
