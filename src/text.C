@@ -3308,9 +3308,7 @@ int LyXText::drawLengthMarker(DrawRowParams & p, string const & prefix,
 
 	p.pain->rectText(leftx + 2 * arrow_size + 5,
 			 start + ((end - start) / 2) + d,
-			 str, font,
-			 backgroundColor(),
-			 backgroundColor());
+			 str, font);
 
 	// top arrow
 	p.pain->line(leftx, ty1, midx, ty2, LColor::added_space);
@@ -3326,6 +3324,30 @@ int LyXText::drawLengthMarker(DrawRowParams & p, string const & prefix,
 	return size;
 }
 
+
+int LyXText::paintPageBreak(string const & label, int y, DrawRowParams & p)
+{
+	LyXFont pb_font;
+	pb_font.setColor(LColor::pagebreak).decSize();
+
+	int w = 0;
+	int a = 0;
+	int d = 0;
+	font_metrics::rectText(label, pb_font, w, a, d);
+
+	int const text_start = p.xo + ((p.width - w) / 2);
+	int const text_end = text_start + w;
+ 
+	p.pain->rectText(text_start, y + d, label, pb_font);
+ 
+	p.pain->line(p.xo, y, text_start, y,
+		LColor::pagebreak, Painter::line_onoffdash);
+	p.pain->line(text_end, y, p.xo + p.width, y,
+		LColor::pagebreak, Painter::line_onoffdash);
+
+	return 3 * defaultHeight();
+}
+ 
 
 void LyXText::paintFirstRow(DrawRowParams & p)
 {
@@ -3345,22 +3367,8 @@ void LyXText::paintFirstRow(DrawRowParams & p)
 
 	// draw a top pagebreak
 	if (parparams.pagebreakTop()) {
-		int const y = p.yo + y_top + 2*defaultHeight();
-		p.pain->line(p.xo, y, p.xo + p.width, y,
-			LColor::pagebreak, Painter::line_onoffdash);
-
-		int w = 0;
-		int a = 0;
-		int d = 0;
-
-		LyXFont pb_font;
-		pb_font.setColor(LColor::pagebreak).decSize();
-		font_metrics::rectText(_("Page Break (top)"), pb_font, w, a, d);
-		p.pain->rectText((p.width - w)/2, y + d,
-			      _("Page Break (top)"), pb_font,
-			      backgroundColor(),
-			      backgroundColor());
-		y_top += 3 * defaultHeight();
+		y_top += paintPageBreak(_("Page Break (top)"),
+			p.yo + y_top + 2 * defaultHeight(), p);
 	}
 
 	// draw the additional space if needed:
@@ -3523,22 +3531,8 @@ void LyXText::paintLastRow(DrawRowParams & p)
 
 	// draw a bottom pagebreak
 	if (parparams.pagebreakBottom()) {
-		LyXFont pb_font;
-		pb_font.setColor(LColor::pagebreak).decSize();
-		int const y = p.yo + y_bottom - 2 * defaultHeight();
-
-		p.pain->line(p.xo, y, p.xo + p.width, y, LColor::pagebreak,
-			     Painter::line_onoffdash);
-
-		int w = 0;
-		int a = 0;
-		int d = 0;
-		font_metrics::rectText(_("Page Break (bottom)"), pb_font, w, a, d);
-		p.pain->rectText((ww - w) / 2, y + d,
-			_("Page Break (bottom)"),
-			pb_font, backgroundColor(), backgroundColor());
-
-		y_bottom -= 3 * defaultHeight();
+		y_bottom -= paintPageBreak(_("Page Break (bottom)"),
+			p.yo + y_bottom - 2 * defaultHeight(), p);
 	}
 
 	// draw the additional space if needed:
@@ -3611,6 +3605,7 @@ void LyXText::paintLastRow(DrawRowParams & p)
 		break;
 	}
 }
+ 
 
 void LyXText::paintRowText(DrawRowParams & p)
 {

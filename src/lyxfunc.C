@@ -1393,11 +1393,11 @@ string const LyXFunc::dispatch(kb_action action, string argument)
 			owner->view()->buffer(bufferlist.loadLyXFile(s));
 		}
 
-		// Set the cursor
 		owner->view()->setCursorFromRow(row);
 
-		// Recenter screen
 		owner->view()->center();
+		// see BufferView_pimpl::center() 
+		owner->view()->updateScrollbar();
 	}
 	break;
 
@@ -1427,8 +1427,9 @@ string const LyXFunc::dispatch(kb_action action, string argument)
 		owner->view()->setState();
 		owner->showState();
 
-		// Recenter screen
 		owner->view()->center();
+		// see BufferView_pimpl::center() 
+		owner->view()->updateScrollbar();
 	}
 	break;
 

@@ -151,12 +151,17 @@ public:
 	virtual Painter & text(int x, int y,
 		char c, LyXFont const & f) = 0;
 
-	/// draw a string and enclose it inside a rectangle
+	/**
+	 * Draw a string and enclose it inside a rectangle. If
+	 * back color is specified, the background is cleared with
+	 * the given color. If frame is specified, a thin frame is drawn
+	 * around the text with the given color.
+	 */
 	Painter & rectText(int x, int baseline,
 		string const & string,
 		LyXFont const & font,
-		LColor::color back,
-		LColor::color frame);
+		LColor::color back = LColor::none,
+		LColor::color frame = LColor::none);
 
 	/// draw a string and enclose it inside a button frame
 	Painter & buttonText(int x,

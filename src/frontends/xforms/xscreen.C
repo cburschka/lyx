@@ -206,7 +206,7 @@ void XScreen::draw(LyXText * text, BufferView * bv, unsigned int y)
 	if (cursor_visible_) hideCursor();
 
 	int const old_first = text->first_y;
-	bool internal = (text == bv->text);
+	bool const internal = (text == bv->text);
 	text->first_y = y;
 
 	// is any optimization possible?

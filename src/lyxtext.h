@@ -589,6 +589,9 @@ private:
 	/// paint appendix marker
 	void paintRowAppendix(DrawRowParams & p);
 
+	/// paint page break marker. Returns its height.
+	int paintPageBreak(string const & label, int y, DrawRowParams & p);
+ 
 	/// paint env depth bar
 	void paintRowDepthBar(DrawRowParams & p);
 

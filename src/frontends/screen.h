@@ -110,7 +110,7 @@ public:
 	 * @param bv the bufferview
 	 * @return true if a change was necessary
 	 *
-	 * Scrolls the screen so that the cursor is visible,
+	 * Scrolls the screen so that the cursor is visible
 	 */
 	virtual bool fitCursor(LyXText *, BufferView *);
 

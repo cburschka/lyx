@@ -67,9 +67,15 @@ Painter & Painter::rectText(int x, int baseline,
 
 	font_metrics::rectText(str, font, width, ascent, descent);
  
-	rectangle(x, baseline - ascent, width, ascent + descent, frame);
-	fillRectangle(x + 1, baseline - ascent + 1, width - 1, 
-		      ascent + descent - 1, back);
+	if (frame != LColor::none) {
+		rectangle(x, baseline - ascent, width, ascent + descent, frame);
+	}
+ 
+	if (back != LColor::none) {
+		fillRectangle(x + 1, baseline - ascent + 1, width - 1, 
+			      ascent + descent - 1, back);
+	}
+ 
 	text(x + 3, baseline, str, font);
 	return *this;
 }

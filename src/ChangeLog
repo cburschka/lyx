@@ -1,5 +1,14 @@
 2002-07-09  John Levon  <moz@compsoc.man.ac.uk>
 
+	* lengthcommon.h: whitespace
+ 
+	* lyxfunc.C: update scrollbar after goto paragraph 
+
+	* lyxtext.h: factor out page break drawing, and fix it so
+	  page break/added space paints as selected nicely
+ 
+2002-07-09  John Levon  <moz@compsoc.man.ac.uk>
+
 	* BufferView_pimpl.C: add FIXMEs, clean up a little
 
 2002-07-09  André Pönitz <poenitz@gmx.net>
