@@ -117,22 +117,24 @@ bool BufferView::removeAutoInsets()
 	bool found = false;
 
 	// Trap the deletion of the paragraph the cursor is in.
-	// It should be almost impossible for the new cursor par to be
-	// deleted later on in this function.
-	// This is the way to segfault this now. Although you may have to do this
-	// multiple times: Have an InsetERT with an unknown command in it.
-	// View->DVI, move cursor between Error box and InsetERT and hit <Enter>,
-	// <down-arrow>, <Enter> again, View->DVI, BANG!
-	//
+	// Iterate until we find a paragraph that won't be immediately deleted.
+	// In reality this should mean we only execute the body of the while
+	// loop once at most.  However for safety we iterate rather than just
+	// make this an if() conditional.
 	while ((cur_par_prev || cur_par_next)
 	       && text->setCursor(this,
 				  cur_par_prev ? cur_par_prev : cur_par_next,
 				  0)) {
-		// we just removed cur_par so have to fix the "cursor"
+		// We just removed cur_par so have to fix the "cursor"
 		if (cur_par_prev) {
+			// '.' = cur_par
+			//  a -> a.
+			// .
 			cur_par = cur_par_prev;
 			cur_pos = cur_par->size();
 		} else {
+			// .  -> .a
+			//  a
 			cur_par = cur_par_next;
 			cur_pos = 0;
 		}
@@ -155,7 +157,7 @@ bool BufferView::removeAutoInsets()
 			if (cur_par_prev) {
 				// '|' = par, '.' = cur_par, 'E' = error box
 				// First step below may occur before while{}
-				//  a    |a      a     a    .a
+				//  a    |a      a     a     a.
 				//  E -> .E -> |.E -> .  -> |b
 				// .      b      b    |b
 				//  b
