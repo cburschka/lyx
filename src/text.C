@@ -1892,8 +1892,8 @@ void LyXText::insertChar(BufferView * bview, char c)
 			return;
 		}
 	} else if (IsNewlineChar(c)) {
-		if (cursor.par() == cursor.par()
-		    && cursor.pos() <= beginningOfMainBody(bview->buffer(), cursor.par())) {
+		if (cursor.pos() <= beginningOfMainBody(bview->buffer(),
+							cursor.par())) {
 			charInserted();
 			return;
 		}

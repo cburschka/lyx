@@ -1,3 +1,11 @@
+2002-01-15  Allan Rae  <rae@lyx.org>
+
+	* text.C (insertChar): removed conditional truism.
+
+	* BufferView2.C (removeAutoInsets): More tweaks.
+	cur_par_prev could be a stray pointer.  Check for trailing empty line
+	in case last line was cur_par and only had an error inset on it.
+
 2002-01-14  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* lyx_cb.C (MenuWrite): buffer->fileName is guaranteed to be

@@ -107,11 +107,10 @@ bool BufferView::insertLyXFile(string const & filen)
 
 bool BufferView::removeAutoInsets()
 {
-	LyXCursor tmpcursor = text->cursor;
-	Paragraph * cur_par = tmpcursor.par();
+	Paragraph * cur_par = text->cursor.par();
 	Paragraph * cur_par_prev = cur_par ? cur_par->previous() : 0;
 	Paragraph * cur_par_next = cur_par ? cur_par->next() : 0;
-	pos_type cur_pos = tmpcursor.pos();
+	pos_type cur_pos = text->cursor.pos();
 
 	bool found = false;
 
@@ -153,6 +152,11 @@ bool BufferView::removeAutoInsets()
 			// The previous setCursor line was deleted and that
 			// was the cur_par line.  This can only happen if an
 			// error box was the sole item on cur_par.
+			// It is possible for cur_par_prev to be stray if
+			// the line it pointed to only had a error box on it
+			// so we have to set it to a known correct value.
+			// This is often the same value it already had.
+			cur_par_prev = par->previous();
 			if (cur_par_prev) {
 				// '|' = par, '.' = cur_par, 'E' = error box
 				// First step below may occur before while{}
@@ -201,6 +205,20 @@ bool BufferView::removeAutoInsets()
 			found = true;
 			text->redoParagraph(this);
 		}
+	}
+
+	// It is possible that the last line is empty if it was cur_par and/or
+	// only had an error inset on it.
+	if (text->setCursor(this, text->ownerParagraph(), 0)
+	    && 0 == cur_par_next) {
+		cur_par = cur_par_prev;
+		cur_pos = cur_par->size();
+	} else if (cur_pos > cur_par->size()) {
+		// Some C-Enter lines were removed by the setCursor call which
+		// then invalidated cur_pos. It could still be "wrong" because
+		// the cursor may appear to have jumped but since we collapsed
+		// some C-Enter lines this should be a reasonable compromise.
+		cur_pos = cur_par->size();
 	}
 
 	text->setCursorIntern(this, cur_par, cur_pos);
