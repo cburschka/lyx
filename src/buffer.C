@@ -1200,8 +1200,10 @@ bool Buffer::readFile(LyXLex & lex, string const & filename, Paragraph * par)
 							     _("Can't find conversion script."));
 						return false;
 					}
+					string const tmpfile = lyx::tempName();
 					command += " -t"
-						+tostr(LYX_FORMAT) + ' '
+						+ tostr(LYX_FORMAT)
+						+ " -o " + tmpfile + ' '
 						+ QuoteName(filename);
 					lyxerr[Debug::INFO] << "Running '"
 							    << command << '\''
@@ -1213,9 +1215,8 @@ bool Buffer::readFile(LyXLex & lex, string const & filename, Paragraph * par)
 							       "running the conversion script."));
 						return false;
 					}
-					istringstream is(STRCONV(ret.second));
 					LyXLex tmplex(0, 0);
-					tmplex.setStream(is);
+					tmplex.setFile(tmpfile);
 					return readFile(tmplex, string(), par);
 				} else {
 					// This code is reached if lyx2lyx failed (for

@@ -1,3 +1,8 @@
+2003-09-23  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* buffer.C (readFile): use a temp file when running lyx2lyx, since
+	sending result to stdout is awfully slow on some platforms
+
 2003-07-22  John Levon  <levon@movementarian.org>
 
 	* Thesaurus.h: use the right aiksaurus header

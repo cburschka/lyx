@@ -44,6 +44,8 @@ What's new
 - fix math bug where formulas containing for example a \prettyref
   would not be parsed correctly [bug #1126]
 
+- speed up conversion of large old files on some systems
+
 - fix bad conversion of tables from LyX 1.0 [bug #1045]
 
 - convert old files (0.11 series) correctly, suppressing space
