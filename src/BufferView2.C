@@ -264,10 +264,6 @@ void BufferView::copyEnvironment()
 {
 	if (available()) {
 		text->copyEnvironmentType();
-		// clear the selection, even if mark_set
-		toggleSelection();
-		text->clearSelection();
-		update(text, BufferView::SELECT|BufferView::FITCUR);
 		owner()->message(_("Paragraph environment type copied"));
 	}
 }
@@ -287,12 +283,6 @@ void BufferView::copy()
 {
 	if (available()) {
 		text->copySelection(this);
-#if 0
-		// clear the selection, even if mark_set
-		toggleSelection();
-		text->clearSelection();
-		update(text, BufferView::SELECT|BufferView::FITCUR);
-#endif
 		owner()->message(_("Copy"));
 	}
 }

@@ -1,5 +1,8 @@
 2001-11-27  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
+	* BufferView2.C (copy): 
+	(copyEnvironment): do not clear the selection when doing a copy.
+
 	* text.C (paintFirstRow): compilation fix
 
 2001-11-27  Ben Stanley  <bds02@uow.edu.au>
