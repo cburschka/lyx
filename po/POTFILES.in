@@ -8,7 +8,6 @@ src/converter.C
 src/CutAndPaste.C
 src/debug.C
 src/exporter.C
-src/ext_l10n.h
 src/FloatList.C
 src/frontends/controllers/biblio.C
 src/frontends/controllers/ButtonController.h
@@ -28,6 +27,7 @@ src/frontends/controllers/ControlThesaurus.C
 src/frontends/controllers/ControlVCLog.C
 src/frontends/controllers/frnt_lang.C
 src/frontends/controllers/helper_funcs.C
+src/frontends/gnome/GLog.C
 src/frontends/LyXView.C
 src/frontends/qt2/Alert_pimpl.C
 src/frontends/qt2/FileDialog.C

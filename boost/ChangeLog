@@ -1,3 +1,8 @@
+2002-06-03  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* libs/regex/src/Makefile.am: only compile the source files that
+	we actually have to.
+
 2002-05-28  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* libs/regex/src/.cvsignore: ignore .lo, .deps and .libs

@@ -6,16 +6,17 @@ INCLUDES = $(BOOST_INCLUDES)
 
 libboostregex_la_SOURCES = \
 	cpp_regex_traits.cpp \
-	cregex.cpp \
 	c_regex_traits_common.cpp \
 	c_regex_traits.cpp \
-	fileiter.cpp \
 	instances.cpp \
-	posix_api.cpp \
 	primary_transform.hpp \
 	regex.cpp \
-	regex_debug.cpp \
-	regex_synch.cpp \
 	w32_regex_traits.cpp \
-	wide_posix_api.cpp \
-	winstances.cpp
+	winstances.cpp \
+	regex_synch.cpp
+
+#	cregex.cpp \
+#	fileiter.cpp \
+#	posix_api.cpp \
+#	wide_posix_api.cpp \
+#	regex_debug.cpp

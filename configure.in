@@ -98,9 +98,6 @@ if test "x$enable_assertions" = xyes ; then
     [Define if you want assertions to be enabled in the code])
 fi
 
-### We need a regex implementation, so we provide our own if none is found.
-LYX_REGEX
-
 ### Library Files
 dnl by testing these we check if it is ok to have
 dnl -lc and -lm as args to the compiler
@@ -143,7 +140,7 @@ AC_CHECK_LIB(Aiksaurus, main,
 	],,"-lbz2")
 fi
 AC_SUBST(AIKSAURUS_LIBS)
- 
+
 ### Setup libtool
 AC_DISABLE_SHARED
 AC_LIBTOOL_WIN32_DLL
