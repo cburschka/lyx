@@ -32,7 +32,7 @@ Style Section
 	InnerTag              head
 	LabelTag              label
 	CommandDepth          2
-	LatexParam            "id = &quot;s#&quot;"
+	LatexParam            "id=<s#>"
 End
 
 
@@ -42,7 +42,7 @@ Style Subsection
 	InnerTag              head
 	LabelTag              label
 	CommandDepth          3
-	LatexParam            "id = &quot;s#&quot;"
+	LatexParam            "id=<s#>"
 End
 
 
@@ -52,7 +52,7 @@ Style Subsubsection
 	InnerTag              head
 	LabelTag              label
 	CommandDepth          4
-	LatexParam            "id = &quot;s#&quot;"
+	LatexParam            "id=<s#>"
 End
 
 
@@ -62,7 +62,7 @@ Style Paragraph
 	InnerTag              head
 	LabelTag              label
 	CommandDepth          5
-	LatexParam            "id = &quot;s#&quot;"
+	LatexParam            "id=<s#>"
 End
 
 
@@ -72,7 +72,7 @@ Style Subparagraph
 	InnerTag              head
 	LabelTag              label
 	CommandDepth          6
-	LatexParam            "id = &quot;s#&quot;"
+	LatexParam            "id=<s#>"
 End
 
 Style Subsubparagraph
@@ -81,6 +81,6 @@ Style Subsubparagraph
 	InnerTag              head
 	LabelTag              label
 	CommandDepth          7
-	LatexParam            "id = &quot;s#&quot;"
+	LatexParam            "id=<s#>"
 End
 

@@ -30,5 +30,5 @@ Counter
 End
 
 Counter
-	Name                 para
+	Name                 p
 End

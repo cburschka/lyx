@@ -1,3 +1,12 @@
+200410-28  José Matos  <jamatos@lyx.org>
+
+	* layouts/agu_stdclass.inc:
+	* agu_stdsections.inc: since we are using substituion change the
+	the dread &quot; to <> syntax, since that can never happen in a
+	parameter.
+
+	* layouts/agu_stdcounters.inc: replace para by as a counter.
+
 2004-10-27  José Matos  <jamatos@lyx.org>
 
 	* layouts/db_stdclass.inc: include counter files.
