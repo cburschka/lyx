@@ -15,6 +15,7 @@
 #include "math_lefteqninset.h"
 #include "math_macro.h"
 #include "math_macrotable.h"
+#include "math_macrotemplate.h"
 #include "math_macroarg.h"
 #include "math_parboxinset.h"
 #include "math_rootinset.h"
@@ -82,14 +83,22 @@ void initSymbols()
 	}
 
 	std::ifstream fs(filename.c_str());
-	while (fs) {
+	string line;
+	while (getline(fs, line)) {
 		int charid     = 0;
 		int fallbackid = 0;
 		latexkeys tmp;
-		string line;
-		getline(fs, line);
-		if (line.size() > 1 && line[0] == '#')
+		if (line.size() > 0 && line[0] == '#')
 			continue;
+
+		// special case of pre-defined macros
+		if (line.size() > 8 && line.substr(0, 5) == "\\def\\") {
+			lyxerr << "defining: '" << line << "'\n";
+			istringstream is(line);
+			MathMacroTable::create(MathAtom(new MathMacroTemplate(is)));
+			continue;
+		}
+
 		istringstream is(line);
 		is >> tmp.name >> tmp.inset;
 		if (isFontName(tmp.inset)) 
@@ -147,15 +156,18 @@ void initSymbols()
 } // namespace anon
 
 
-latexkeys const * in_word_set(string const & str)
+void initMath()
 {
 	static bool initialized = false;
-
 	if (!initialized) {
 		initSymbols();
 		initialized = true;
 	}
+}
 
+
+latexkeys const * in_word_set(string const & str)
+{
 	WordList::iterator it = theWordList.find(str);
 	//lyxerr << "looking up '" << str << "' found: "
 	// << (it != theWordList.end()) << "\n";

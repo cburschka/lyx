@@ -10,30 +10,23 @@
 #pragma interface
 #endif
 
-class MathArray;
 
 ///
-struct MathMacroTable {
+class MathMacroTable {
 public:
 	///
-	static void create(string const &, int);
+	static void create(MathAtom const &);
 	///
-	static void create(string const &, int, MathArray const &, MathArray const &);
+	static MathAtom & provide(string const & name);
 	///
-	static MathAtom & provide(string const &);
-	///
-	static bool has(string const &);
-	///
-	static void builtinMacros();
+	static bool has(string const & name);
 	///
 	static void dump();
 private:
-	/// create internal macros (like \longrightarrow...)
-	static void define(string const & display);
-
 	///
 	typedef std::map<string, MathAtom> table_type;
 	//
 	static table_type macro_table;
 };
+
 #endif

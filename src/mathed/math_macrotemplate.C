@@ -4,6 +4,7 @@
 
 #include "math_macrotemplate.h"
 #include "math_mathmlstream.h"
+#include "math_parser.h"
 #include "frontends/Painter.h"
 #include "debug.h"
 
@@ -13,12 +14,29 @@ MathMacroTemplate::MathMacroTemplate()
 {}
 
 
-MathMacroTemplate::MathMacroTemplate(string const & nm, int numargs)
+MathMacroTemplate::MathMacroTemplate(string const & nm, int numargs,
+		MathArray const & ar1, MathArray const & ar2)
 	: MathNestInset(2), numargs_(numargs), name_(nm)
 {
 	if (numargs_ > 9)
 		lyxerr << "MathMacroTemplate::MathMacroTemplate: wrong # of arguments: "
 			<< numargs_ << std::endl;
+	cell(0) = ar1;
+	cell(1) = ar2;
+}
+
+
+
+MathMacroTemplate::MathMacroTemplate(std::istream & is)
+	: MathNestInset(2), numargs_(0), name_()
+{
+	MathArray ar;
+	mathed_parse_cell(ar, is);
+	if (ar.size() != 1 || !ar[0]->asMacroTemplate()) {
+		lyxerr << "cannot read macro from '" << ar << "'\n";
+		return;
+	}
+	operator=( *(ar[0]->asMacroTemplate()) );
 }
 
 
@@ -68,6 +86,7 @@ void MathMacroTemplate::draw(MathPainterInfo & pi, int x, int y) const
 	pi.pain.rectangle(x + w0 + 6 , y - ascent() + 1, w1 + 4,
 			height(), LColor::blue);
 }
+
 
 
 void MathMacroTemplate::write(WriteStream & os) const

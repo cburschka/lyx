@@ -41,7 +41,6 @@
 #include "math_arrayinset.h"
 #include "math_charinset.h"
 #include "math_cursor.h"
-#include "math_factory.h"
 #include "math_fontinset.h"
 #include "math_hullinset.h"
 #include "math_iterator.h"
@@ -91,11 +90,11 @@ InsetFormulaBase::InsetFormulaBase()
 	: view_(0), font_(), xo_(0), yo_(0)
 {
 	// This is needed as long the math parser is not re-entrant
-	MathMacroTable::builtinMacros();
+	initMath();
 	//lyxerr << "sizeof MathInset: " << sizeof(MathInset) << "\n";
-	//lyxerr << "sizeof(MathMetricsInfo): " << sizeof(MathMetricsInfo) << "\n";
-	//lyxerr << "sizeof(MathCharInset): " << sizeof(MathCharInset) << "\n";
-	//lyxerr << "sizeof(LyXFont): " << sizeof(LyXFont) << "\n";
+	//lyxerr << "sizeof MathMetricsInfo: " << sizeof(MathMetricsInfo) << "\n";
+	//lyxerr << "sizeof MathCharInset: " << sizeof(MathCharInset) << "\n";
+	//lyxerr << "sizeof LyXFont: " << sizeof(LyXFont) << "\n";
 }
 
 
@@ -958,20 +957,14 @@ void mathDispatchCreation(BufferView * bv, string const & arg, bool display)
 	} else {
 		// create a macro if we see "\\newcommand" somewhere, and an ordinary
 		// formula otherwise
+		InsetFormulaBase * f;
 		if (sel.find("\\newcommand") == string::npos &&
 				sel.find("\\def") == string::npos)
-		{
-			InsetFormula * f = new InsetFormula(sel);
-			bv->getLyXText()->cutSelection(bv);
-			openNewInset(bv, f);
-		} else {
-			string name;
-			if (!mathed_parse_macro(name, sel))
-				return;
-			InsetFormulaMacro * f = new InsetFormulaMacro(sel);
-			bv->getLyXText()->cutSelection(bv);
-			openNewInset(bv, f);
-		}
+			f = new InsetFormula(sel);
+		else
+			f = new InsetFormulaMacro(sel);
+		bv->getLyXText()->cutSelection(bv);
+		openNewInset(bv, f);
 	}
 	bv->owner()->getLyXFunc()->setMessage(N_("Math editor mode"));
 }

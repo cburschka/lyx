@@ -25,11 +25,11 @@
 
 class MathMacroTemplate;
 
-// InsetFormulaMacro's only knows its name and asks the global
+// An InsetFormulaMacro only knows its name and asks the global
 // MathMacroTable if it needs to know more.
 
 ///
-class InsetFormulaMacro: public InsetFormulaBase {
+class InsetFormulaMacro : public InsetFormulaBase {
 public:
 	///
 	InsetFormulaMacro();
@@ -68,6 +68,8 @@ public:
 	///
 	MathAtom & par();
 private:
+	///
+	void read(std::istream & is);
 	/// prefix in inset
 	string prefix() const;
 };

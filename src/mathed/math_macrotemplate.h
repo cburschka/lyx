@@ -21,7 +21,10 @@ public:
 	///
 	MathMacroTemplate();
 	///
-	MathMacroTemplate(string const & name, int nargs);
+	MathMacroTemplate(string const & name, int nargs,
+		MathArray const & = MathArray(), MathArray const & = MathArray());
+	///
+	explicit MathMacroTemplate(std::istream & is);
 	///
 	MathInset * clone() const;
 	///

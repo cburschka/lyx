@@ -55,13 +55,6 @@ bool mathed_parse_normal(MathAtom &, std::istream &);
 /// ... the LyX lexxer
 bool mathed_parse_normal(MathAtom &, LyXLex &);
 
-/// parse a macro definition from a string, enter it into the macro table
-bool mathed_parse_macro(string &, string const &);
-/// ... a stream
-bool mathed_parse_macro(string &, std::istream &);
-/// ... the LyX lexxer
-bool mathed_parse_macro(string &, LyXLex &);
-
 /// parse a single cell from a string
 void mathed_parse_cell(MathArray & ar, string const &);
 /// ... a stream

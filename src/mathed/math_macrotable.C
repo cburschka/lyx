@@ -34,112 +34,22 @@ void MathMacroTable::dump()
 
 MathAtom & MathMacroTable::provide(string const & name)
 {
-	builtinMacros();
-
 	table_type::iterator pos = macro_table.find(name);
-
 	if (pos == macro_table.end()) {
 		lyxerr << "MathMacroTable::provideTemplate: no template with name '"
 		       << name << "' available.\n";
 	}
-
 	return pos->second;
 }
 
 
-void MathMacroTable::create(string const & name, int na)
+void MathMacroTable::create(MathAtom const & at)
 {
-	macro_table[name] = MathAtom(new MathMacroTemplate(name, na));
-}
-
-
-void MathMacroTable::create
-	(string const & name, int na, MathArray const & ar1, MathArray const & ar2)
-{
-	MathAtom t(new MathMacroTemplate(name, na));
-	t->cell(0) = ar1;
-	t->cell(1) = ar2;
-	macro_table[name] = t;
-}
-
-
-void MathMacroTable::define(string const & display)
-{
-	string name;
-	mathed_parse_macro(name, display);
+	macro_table[at->asMacroTemplate()->name()] = at;
 }
 
 
 bool MathMacroTable::has(string const & name)
 {
-	builtinMacros();
 	return macro_table.find(name) != macro_table.end();
-}
-
-
-void MathMacroTable::builtinMacros()
-{
-	static bool built = false;
-
-	if (built)
-		return;
-
-	built = true;
-	//lyxerr[Debug::MATHED] << "Building macros\n";
-	//define("\\def\\emptyset{\\not0}");
-	define("\\def\\notin{\\not\\in}");
-	define("\\def\\slash{/}");
-	//define("\\def\\mathcircumflex{\\^}");
-
-	// fontmath.ltx
-
-	define("\\def\\longleftrightarrow{\\leftarrow\\kern-8mu\\rightarrow}");
-	define("\\def\\Longleftrightarrow{\\Leftarrow\\kern-8mu\\Rightarrow}");
-	define("\\def\\doteq{\\stackrel{\\cdot}{\\=}}");
-
-	//if (math_font_available(LM_TC_CMSY)) {
-		define("\\def\\longrightarrow{\\lyxbar\\kern-6mu\\rightarrow}");
-		define("\\def\\longleftarrow{\\leftarrow\\kern-6mu\\lyxbar}");
-		define("\\def\\mapsto{\\mapstochar\\kern-4mu\\rightarrow}");
-		define("\\def\\longmapsto{\\mapstochar\\kern-3mu\\lyxbar\\kern-6mu\\rightarrow}");
-	//}
-
-	//if (math_font_available(LM_TC_CMR) && math_font_available(LM_TC_CMSY)) {
-		define("\\def\\Longrightarrow{\\lyxeq\\kern-5mu\\Rightarrow}");
-		define("\\def\\Longleftarrow{\\Leftarrow\\kern-5mu\\lyxeq}");
-		define("\\def\\models{\\vert\\kern-3mu\\lyxeq}");
-	//}
-
-	//if (math_font_available(LM_TC_CMM)) {
-		define("\\def\\hookrightarrow{\\lhook\\kern-8mu\\rightarrow}");
-		define("\\def\\hookleftarrow{\\leftarrow\\kern-8mu\\rhook}");
-		define("\\def\\bowtie{\\triangleright\\kern-2mu\\triangleleft}");
-	//}
-
-	//if (math_font_available(LM_TC_MSA)) {
-		//amsfonts.sty
-
-		define("\\def\\dashrightarrow{\\lyxdabar\\lyxdabar\\lyxright}");
-		define("\\def\\dashleftarrow{\\lyxleft\\lyxdabar\\lyxdabar}");
-		define("\\def\\dasharrow{\\dashrightarrow}");
-		define("\\def\\leadsto{\\rightsquigarrow}");
-
-		// amssymb.sty
-
-		define("\\def\\restriction{\\upharpoonright}");
-		define("\\def\\Doteq{\\doteqdot}");
-		define("\\def\\doublecup{\\Cup}");
-		define("\\def\\doublecap{\\Cap}");
-	//}
-
-	//if (math_font_available(LM_TC_MSB)) {
-		define("\\def\\Join{\\ltimes\\kern-12mu\\rtimes}");
-	//}
-
-	//
-	define("\\def\\mathcircumflex{\\mbox{\\^{}}}\n"   "{\\hat{}}");
-
-	//define("\def\lint",       4, "\\int_#1^#2#3 d#4}");
-	//define("\\def\\silentmult{\\cdot}");
-	//define("\def\binom",        2, "\\left(\\frac#1#2\\right)}");
 }

@@ -23,6 +23,7 @@
 #include "math_parser.h"
 #include "math_macro.h"
 #include "math_macrotable.h"
+#include "math_macrotemplate.h"
 #include "math_support.h"
 #include "math_mathmlstream.h"
 #include "BufferView.h"
@@ -36,9 +37,12 @@
 #include "lyxtext.h"
 #include "lyxfont.h"
 
+#include <sstream>
+
 using std::ostream;
 
 extern MathCursor * mathcursor;
+
 
 InsetFormulaMacro::InsetFormulaMacro()
 {
@@ -50,15 +54,14 @@ InsetFormulaMacro::InsetFormulaMacro()
 InsetFormulaMacro::InsetFormulaMacro(string const & name, int nargs)
 {
 	setInsetName(name);
-	MathMacroTable::create(name, nargs);
+	MathMacroTable::create(MathAtom(new MathMacroTemplate(name, nargs)));
 }
 
 
 InsetFormulaMacro::InsetFormulaMacro(string const & s)
 {
-	string name;
-	mathed_parse_macro(name, s);
-	setInsetName(name);
+	std::istringstream is(s);
+	read(is);
 }
 
 
@@ -107,10 +110,15 @@ int InsetFormulaMacro::docbook(Buffer const * buf, ostream & os, bool) const
 
 void InsetFormulaMacro::read(Buffer const *, LyXLex & lex)
 {
-	string name;
-	mathed_parse_macro(name, lex);
-	setInsetName(name);
-	//lyxerr << "metrics disabled";
+	read(lex.getStream());
+}
+
+
+void InsetFormulaMacro::read(std::istream & is)
+{
+	MathMacroTemplate * p = new MathMacroTemplate(is);
+	MathMacroTable::create(MathAtom(p));
+	setInsetName(p->name());
 	metrics();
 }
 

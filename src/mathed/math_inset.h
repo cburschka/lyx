@@ -298,6 +298,7 @@ std::ostream & operator<<(std::ostream &, MathAtom const &);
 
 string asString(MathArray const & ar);
 MathArray asArray(string const & str);
+void initMath();
 
 /// here to ssave a few includes in the insets
 class Dialogs;
