@@ -38,6 +38,10 @@ public:
 	///
 	unsigned short height() const;
 	///
+	void width(unsigned int w);
+	///
+	unsigned int width() const;
+	///
 	void ascent_of_text(unsigned short a);
 	///
 	unsigned short ascent_of_text() const;
@@ -63,6 +67,8 @@ private:
 	mutable int fill_;
 	///
 	unsigned short height_;
+	///
+	unsigned int width_;
 	///
 	unsigned short ascent_of_text_;
 	///

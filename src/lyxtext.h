@@ -63,7 +63,7 @@ public:
 	mutable int number_of_rows;
 	///
 	mutable long height;
-	mutable int  width;
+	mutable unsigned int width;
 	/// the current font settings
 	mutable LyXFont current_font;
 	/// the current font

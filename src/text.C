@@ -1675,7 +1675,18 @@ void LyXText::SetHeightOfRow(BufferView * bview, Row * row_ptr) const
    row_ptr->baseline(maxasc + labeladdon);
    
    height += row_ptr->height();
-   width = maxwidth;
+   float x, dummy;
+   PrepareToPrint(bview, row_ptr, x, dummy, dummy, dummy);
+   row_ptr->width(maxwidth+x);
+   if (inset_owner) {
+	   Row * r = firstrow;
+	   width = 0;
+	   while(r) {
+		   if (r->width() > width)
+			   width = r->width();
+		   r = r->next();
+	   }
+   }
 }
 
 

@@ -157,7 +157,7 @@ void InsetTabular::draw(BufferView * bv, LyXFont const & font, int baseline,
     int nx;
     float cx;
 
-    UpdatableInset::draw(bv,font,baseline,x);
+    UpdatableInset::draw(bv,font,baseline,x,cleared);
     if ((need_update == INIT)|| (top_x != int(x)) || (top_baseline != baseline)) {
 	need_update = FULL;
 	top_x = int(x);

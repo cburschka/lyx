@@ -53,6 +53,8 @@ public:
     ///
     void draw(BufferView *, const LyXFont &, int , float &, bool) const;
     ///
+    void update(BufferView *, LyXFont const &, bool =false); 
+    ///
     void Edit(BufferView *, int, int, unsigned int);
     ///
     EDITABLE Editable() const;

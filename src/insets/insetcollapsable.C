@@ -29,7 +29,7 @@ InsetCollapsable::InsetCollapsable() : InsetText()
     autocollapse = true;
     autoBreakRows = true;
     framecolor = LColor::footnoteframe;
-    widthOffset = 6; // 2+2 (behind+back), 1+1 (frame)
+    widthOffset = 2 * TEXT_TO_INSET_OFFSET + 2; // 1+1 (frame)
     button_length = button_top_y = button_bottom_y = 0;
     setInsetName("Collapsable");
 }
@@ -153,11 +153,10 @@ void InsetCollapsable::draw(BufferView * bv, LyXFont const & f,
     draw_collapsed(pain, f, baseline, x);
     x -= TEXT_TO_INSET_OFFSET;
 
-    int w =  InsetText::width(pain, f) + 2 * TEXT_TO_INSET_OFFSET;
+    int w =  InsetText::width(pain, f) + (2 * TEXT_TO_INSET_OFFSET);
     int h = ascent(pain,f) + descent(pain, f);
     int save_x = static_cast<int>(x);
     x += TEXT_TO_INSET_OFFSET;
-    drawTextXOffset = int(x) - top_x;
     InsetText::draw(bv, f, baseline, x, cleared);
     pain.rectangle(save_x, baseline - ascent(pain, f), w, h, framecolor);
 }
@@ -250,4 +249,10 @@ int InsetCollapsable::getMaxTextWidth(Painter & pain,
 {
     return getMaxWidth(pain, inset) -
 	width_collapsed(pain, labelfont) - widthOffset;
+}
+
+void InsetCollapsable::update(BufferView * bv, LyXFont const & font, bool dodraw)
+{
+    drawTextXOffset = width_collapsed(bv->painter(), font);
+    InsetText::update(bv, font, dodraw);
 }

@@ -14,7 +14,7 @@
 
 
 Row::Row()
-	: par_(0), pos_(0), fill_(0), height_(0),
+	: par_(0), pos_(0), fill_(0), height_(0), width_(0),
 	  ascent_of_text_(0), baseline_(0), next_(0), previous_(0)
 {}
 
@@ -70,6 +70,18 @@ void Row::height(unsigned short h)
 unsigned short Row::height() const
 {
 	return height_;
+}
+
+
+void Row::width(unsigned int w)
+{
+	width_ = w;
+}
+
+
+unsigned int Row::width() const
+{
+	return width_;
 }
 
 

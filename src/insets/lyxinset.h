@@ -291,7 +291,7 @@ public:
 	virtual void Edit(BufferView *, int x, int y, unsigned int button);
 	///
 	virtual void draw(BufferView *, LyXFont const &,
-			  int baseline, float & x) const;
+			  int baseline, float & x, bool cleared) const;
 	///
 	virtual void SetFont(BufferView *, LyXFont const &,
 			     bool toggleall = false);

@@ -203,6 +203,9 @@ private:
     int insetAscent;
     int insetDescent;
     int insetWidth;
+    mutable int last_width;
+    mutable int last_height;
+    mutable int top_y;
     ///
     int inset_pos;
     ///

@@ -1,3 +1,12 @@
+2000-06-26  Juergen Vigna  <jug@sad.it>
+
+	* src/lyxrow.C (width): added this functions and variable.
+
+	* src/insets/insetcite.C (create_form_citation_form): some Gravity
+	changes.
+
+	* src/text.C (SetHeightOfRow): fixed calcualting of width.
+
 2000-06-26  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/BufferView.h: add a magic "friend" declaration to please

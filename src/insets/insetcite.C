@@ -66,21 +66,25 @@ FD_citation_form *create_form_citation_form(void)
 
   fdui->addBtn = obj =
     fl_add_button(FL_NORMAL_BUTTON,200,40,40,40,"@4->");
+    fl_set_object_gravity(obj, FL_South, FL_South);
     fl_set_object_resize(obj, FL_RESIZE_NONE);
     fl_set_object_callback(obj,citation_cb,InsetCitation::ADD);
 
   fdui->delBtn = obj =
     fl_add_button(FL_NORMAL_BUTTON,200,90,40,40,"@9+");
+    fl_set_object_gravity(obj, FL_South, FL_South);
     fl_set_object_resize(obj, FL_RESIZE_NONE);
     fl_set_object_callback(obj,citation_cb,InsetCitation::DELETE);
 
   fdui->upBtn = obj =
     fl_add_button(FL_NORMAL_BUTTON,200,140,40,40,"@8->");
+    fl_set_object_gravity(obj, FL_South, FL_South);
     fl_set_object_resize(obj, FL_RESIZE_NONE);
     fl_set_object_callback(obj,citation_cb,InsetCitation::UP);
 
   fdui->downBtn = obj =
     fl_add_button(FL_NORMAL_BUTTON,200,190,40,40,"@2->");
+    fl_set_object_gravity(obj, FL_South, FL_South);
     fl_set_object_resize(obj, FL_RESIZE_NONE);
     fl_set_object_callback(obj,citation_cb,InsetCitation::DOWN);
 
@@ -102,6 +106,7 @@ FD_citation_form *create_form_citation_form(void)
 
   fdui->textAftr = obj =
     fl_add_input(FL_NORMAL_INPUT,100,660,250,30,_("Text after"));
+    fl_set_object_gravity(obj, FL_SouthWest, FL_SouthEast);
     fl_set_object_resize(obj, FL_RESIZE_X);
 
   fdui->ok = obj =
@@ -384,7 +389,7 @@ void InsetCitation::setSize( FD_citation_form * form,
 	fl_set_form_size( form->form, 430, formHeight );
 
 	// No resizing is alowed in the y-direction
-	fl_set_form_minsize( form->form, 300, formHeight );
+	fl_set_form_minsize( form->form, 430, formHeight );
 	fl_set_form_maxsize( form->form, 1000, formHeight );
 
 	int ypos = 0;
