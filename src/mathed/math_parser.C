@@ -959,6 +959,12 @@ void Parser::parse1(MathGridInset & grid, unsigned flags,
 			}
 		}
 
+		else if (t.cs() == "xrightarrow" || t.cs() == "xleftarrow") {
+			cell->push_back(createMathInset(t.cs()));
+			parse(cell->back().nucleus()->cell(1), FLAG_OPTION, mode);
+			parse(cell->back().nucleus()->cell(0), FLAG_ITEM, mode);
+		}
+
 		else if (t.cs() == "ref") {
 			cell->push_back(MathAtom(new RefInset));
 			parse(cell->back().nucleus()->cell(1), FLAG_OPTION, mode);

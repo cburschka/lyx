@@ -2,7 +2,7 @@
 #ifndef MATH_XARROWINSET_H
 #define MATH_XARROWINSET_H
 
-#include "math_nestinset.h"
+#include "math_fracbase.h"
 #include "LString.h"
 
 #ifdef __GNUG__
@@ -15,18 +15,18 @@
  * Full author contact details are available in file CREDITS
  */
 
-class MathXArrowInset : public MathNestInset {
+class MathXArrowInset : public MathFracbaseInset {
 public:
 	///
 	explicit MathXArrowInset(string const & name);
 	///
 	MathInset * clone() const;
 	///
-	void draw(MathPainterInfo &, int x, int y) const;
+	void draw(MathPainterInfo & pi, int x, int y) const;
 	///
 	void write(WriteStream & os) const;
 	///
-	void metrics(MathMetricsInfo & st) const;
+	void metrics(MathMetricsInfo & mi) const;
 	///
 	void normalize(NormalStream & os) const;
 

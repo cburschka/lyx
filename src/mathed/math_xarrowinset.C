@@ -12,7 +12,7 @@
 
 
 MathXArrowInset::MathXArrowInset(string const & name)
-	: MathNestInset(1), name_(name)
+	: MathFracbaseInset(), name_(name)
 {}
 
 
@@ -24,29 +24,34 @@ MathInset * MathXArrowInset::clone() const
 
 void MathXArrowInset::metrics(MathMetricsInfo & mi) const
 {
-	//MathMetricsInfo mi = st;
-	//smallerStyleScript(mi);
+	MathScriptChanger dummy(mi.base);
 	cell(0).metrics(mi);
-	dim_.w = cell(0).width() + 10;
+	cell(1).metrics(mi);
+	dim_.w = std::max(cell(0).width(), cell(1).width()) + 10;
 	dim_.a = cell(0).height() + 10;
-	dim_.d = 0;
+	dim_.d = cell(1).height();
 }
 
 
-void MathXArrowInset::draw(MathPainterInfo & pain, int x, int y) const
+void MathXArrowInset::draw(MathPainterInfo & pi, int x, int y) const
 {
-	cell(0).draw(pain, x + 5, y - 10);
-	mathed_draw_deco(pain, x + 1, y - 7, width() - 2, 5, name_);
+	MathScriptChanger dummy(pi.base);
+	cell(0).draw(pi, x + 5, y - 10);
+	cell(1).draw(pi, x + 5, y + cell(1).height());
+	mathed_draw_deco(pi, x + 1, y - 7, width() - 2, 5, name_);
 }
 
 
 void MathXArrowInset::write(WriteStream & os) const
 {
-	os << '\\' << name_ << '{' << cell(0) << '}';
+	os << '\\' << name_;
+	if (cell(1).size())
+		os << '[' << cell(1) << ']';
+	os << '{' << cell(0) << '}';
 }
 
 
 void MathXArrowInset::normalize(NormalStream & os) const
 {
-	os << "[xarrow " << name_ << ' ' <<  cell(0) << ']';
+	os << "[xarrow " << name_ << ' ' <<  cell(0) << ' ' << cell(1) << ']';
 }
