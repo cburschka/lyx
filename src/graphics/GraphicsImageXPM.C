@@ -34,7 +34,7 @@ ImagePtr GImageXPM::newImage()
 	ptr.reset(new GImageXPM());
 	return ptr;
 }
-	
+
 
 /// Return the list of loadable formats.
 GImage::FormatList GImageXPM::loadableFormats()
@@ -43,13 +43,13 @@ GImage::FormatList GImageXPM::loadableFormats()
 	formats[0] = "xpm";
 	return formats;
 }
- 
+
 
 GImageXPM::GImageXPM()
 	: pixmap_(0),
 	  pixmap_status_(PIXMAP_UNINITIALISED)
 {}
-	
+
 
 GImageXPM::GImageXPM(GImageXPM const & other)
 	: GImage(other),
@@ -57,14 +57,14 @@ GImageXPM::GImageXPM(GImageXPM const & other)
 	  pixmap_(other.pixmap_),
 	  pixmap_status_(other.pixmap_status_)
 {}
-	
+
 
 GImageXPM::~GImageXPM()
 {
 	if (pixmap_ && pixmap_status_ == PIXMAP_SUCCESS)
 		XFreePixmap(GUIRunTime::x11Display(), pixmap_);
 }
-	
+
 
 GImage * GImageXPM::clone() const
 {
@@ -237,7 +237,7 @@ void GImageXPM::clip(GParams const & params)
 		// Bounds are invalid.
 		return;
 
-	if (new_width  == image_.width() && new_height == image_.height())
+	if (new_width == image_.width() && new_height == image_.height())
 		// Bounds are unchanged.
 		return;
 
@@ -340,7 +340,7 @@ void GImageXPM::scale(GParams const & params)
 
 	unsigned int * new_data = image_.initialisedData(new_width, new_height);
 	unsigned int const * old_data = image_.data();
-	
+
 	double const x_scale = double(image_.width())  / double(new_width);
 	double const y_scale = double(image_.height()) / double(new_height);
 
@@ -358,7 +358,7 @@ void GImageXPM::scale(GParams const & params)
 			new_data[new_id] = old_data[old_id];
 		}
 	}
-	
+
 	image_.resetData(new_width, new_height, new_data);
 }
 
@@ -370,14 +370,14 @@ namespace {
 void free_color_table(XpmColor * colorTable, size_t size);
 
 void copy_color_table(XpmColor const * in, size_t size, XpmColor * out);
-	
+
 bool contains_color_none(XpmImage const & image);
 
 string const unique_color_string(XpmImage const & image);
- 
+
 // create a copy (using malloc and strcpy). If (!in) return 0; 
 char * clone_c_string(char const * in);
- 
+
 // Given a string of the form #ff0571 create appropriate grayscale and
 // monochrome colors.
 void mapcolor(char const * c_color, char ** g_color_ptr, char ** m_color_ptr);
@@ -386,7 +386,6 @@ void mapcolor(char const * c_color, char ** g_color_ptr, char ** m_color_ptr);
 
 
 namespace grfx {
-
 
 GImageXPM::Data::Data()
 	: width_(0), height_(0), cpp_(0), ncolors_(0)
@@ -421,7 +420,7 @@ void GImageXPM::Data::reset(XpmImage & image)
 	// 1. Create a copy of the color table.
 	// Add a c_color "none" entry to the table if it isn't already there.
 	bool const add_color = !contains_color_none(image);
-	
+
 	if (add_color) {
 
 		ncolors_ = 1 + image.ncolors;
@@ -558,7 +557,7 @@ void mapcolor(char const * c_color, char ** g_color_ptr, char ** m_color_ptr)
 	if (g_color && m_color)
 		// Already filled.
 		return;
-	
+
 	Display * display = GUIRunTime::x11Display();
 	Colormap cmap     = GUIRunTime::x11Colormap();
 	XColor xcol;
@@ -674,7 +673,6 @@ string const unique_color_string(XpmImage const & image)
 		while(continue_loop) {
 			continue_loop = false;
 
-			
 			if (id[current_index] == 126) {
 				continue_loop = true;
 				if (current_index == 0)
