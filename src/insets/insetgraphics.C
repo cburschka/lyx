@@ -446,8 +446,10 @@ void InsetGraphics::readInsetGraphics(LyXLex & lex)
 // FormatVersion < 1.0  (LyX < 1.2)
 void InsetGraphics::readFigInset(LyXLex & lex)
 {
-	std::vector<string> const oldUnits =
-		getVectorFromString("pt,cm,in,p%,c%");
+	std::vector<string> const oldUnitsWidth =
+		getVectorFromString("pt, cm, in, text%, col%");
+	std::vector<string> const oldUnitsHeight =
+		getVectorFromString("pt, cm, in, theight%");
 	bool finished = false;
 	// set the display default
 	if (lyxrc.display_graphics == "mono")
@@ -491,7 +493,7 @@ void InsetGraphics::readFigInset(LyXLex & lex)
 				params_.lyxwidth = LyXLength(lex.getString()+"pt");
 			if (lex.next())
 				params_.lyxheight = LyXLength(lex.getString()+"pt");
-			params_.lyxsize_type = InsetGraphicsParams::WH;
+			params_.lyxsize_kind = InsetGraphicsParams::WH;
 		} else if (token == "flags") {
 			if (lex.next())
 				switch (lex.getInteger()) {
@@ -500,6 +502,8 @@ void InsetGraphics::readFigInset(LyXLex & lex)
 				case 2: params_.display = InsetGraphicsParams::GRAYSCALE;
 				    break;
 				case 3: params_.display = InsetGraphicsParams::COLOR;
+				    break;
+				case 8: params_.display = InsetGraphicsParams::NONE;
 				    break;
 				}
 		} else if (token == "subfigure") {
@@ -510,10 +514,15 @@ void InsetGraphics::readFigInset(LyXLex & lex)
 			if (lex.next()) {
 			    if (i == 5) {
 				params_.scale = lex.getInteger();
-				params_.size_type = InsetGraphicsParams::SCALE;
+				params_.size_kind = InsetGraphicsParams::SCALE;
 			    } else {
-				params_.width = LyXLength(lex.getString()+oldUnits[i]);
-				params_.size_type = InsetGraphicsParams::WH;
+				string const value = lex.getString();
+				lyxerr[Debug::GRAPHICS] << "readFiginset::oldWidth: "
+					<< value << oldUnitsWidth[i] << endl;
+				params_.width = LyXLength(value + oldUnitsWidth[i]);
+				lyxerr[Debug::GRAPHICS] << "readFiginset::newWidth: "
+					<< params_.width.asString() << endl;
+				params_.size_kind = InsetGraphicsParams::WH;
 			    }
 			}
 		    }
@@ -521,8 +530,13 @@ void InsetGraphics::readFigInset(LyXLex & lex)
 		    if (lex.next()) {
 			int i = lex.getInteger();
 			if (lex.next()) {
-			    params_.height = LyXLength(lex.getString()+oldUnits[i]);
-			    params_.size_type = InsetGraphicsParams::WH;
+				string const value = lex.getString();
+				lyxerr[Debug::GRAPHICS] << "readFiginset::oldHeight: "
+					<< value << oldUnitsHeight[i] << endl;
+				params_.height = LyXLength(value + oldUnitsHeight[i]);
+				lyxerr[Debug::GRAPHICS] << "readFiginset::newHeight: "
+					<< params_.height.asString() << endl;
+			    params_.size_kind = InsetGraphicsParams::WH;
 			}
 		    }
 		}
@@ -541,12 +555,12 @@ string const InsetGraphics::createLatexOptions() const
 	    options << "  draft,\n";
 	if (params().clip)
 	    options << "  clip,\n";
-	if (params().size_type == InsetGraphicsParams::WH) {
+	if (params().size_kind == InsetGraphicsParams::WH) {
 	    if (!params().width.zero())
 		options << "  width=" << params().width.asLatexString() << ",\n";
 	    if (!params().height.zero())
 		options << "  height=" << params().height.asLatexString() << ",\n";
-	} else if (params().size_type == InsetGraphicsParams::SCALE) {
+	} else if (params().size_kind == InsetGraphicsParams::SCALE) {
 	    if (params().scale > 0)
 		options << "  scale=" << double(params().scale)/100.0 << ",\n";
 	}
@@ -581,7 +595,7 @@ string findTargetFormat(string const & suffix)
 	// (Should actually mean, are we using latex or pdflatex).
 	if (lyxrc.pdf_mode) {
 		lyxerr[Debug::GRAPHICS] << "findTargetFormat: PDF mode\n";
-		if (contains(suffix,"ps") || suffix == "pdf")
+		if (contains(suffix, "ps") || suffix == "pdf")
 			return "pdf";
 		else if (suffix == "jpg")	// pdflatex can use jpeg
 			return suffix;
@@ -729,11 +743,11 @@ string const InsetGraphics::prepareFile(Buffer const *buf) const
 	// from ImageMagic: convert from:inname.from to:outname.to
 	if (!converters.convert(buf, temp_file, outfile_base, from, to)) {
 		string const command =
-			"convert " +
-			from + ':' + temp_file + ' ' +
-			to + ':' + outfile_base + '.' + to;
+			LibFileSearch("scripts", "convertDefault.sh") +
+				' ' + from + ':' + temp_file + ' ' +
+				to + ':' + outfile_base + '.' + to;
 		lyxerr[Debug::GRAPHICS]
-			<< "No converter defined! I use convert from ImageMagic:\n\t"
+			<< "No converter defined! I use convertDefault.sh:\n\t"
 			<< command << endl;
 		Systemcall one;
 		one.startscript(Systemcall::Wait, command);

@@ -137,38 +137,53 @@ Converter::Impl::Impl(string const & from_file,   string const & to_file_base,
 	bool const success = build_script(from_file, to_file_base,
 					  from_format, to_format, script);
 
-	if (!success)
-		return;
+	// The converted image is to be stored in this file
+	to_file_ = ChangeExtension(to_file_base, formats.extension(to_format));
 
-	lyxerr[Debug::GRAPHICS] << "\tConversion script:"
+	if (!success) {	
+		script_file_ = string();
+		if (from_format == "lyxpreview") {
+			script_command_ = 
+				LibFileSearch("scripts", "lyxpreview2xpm.sh") 
+					+ " " +from_file + " " + to_file_;
+			lyxerr[Debug::GRAPHICS] 
+				<< "\tI use lyxpreview2xpm for the conversion\n\t"
+				<< script_command_ << endl;
+		} else {			
+			script_command_ = 
+				LibFileSearch("scripts", "convertDefault.sh") +
+					' ' + from_format + ':' + from_file + ' ' +
+					to_format + ':' + to_file_;
+			lyxerr[Debug::GRAPHICS] 
+				<< "\tNo converter defined! I use convertDefault.sh\n\t"
+				<< script_command_ << endl;
+		}
+	} else {
+
+		lyxerr[Debug::GRAPHICS] << "\tConversion script:"
 				<< "\n--------------------------------------\n"
 				<< script.str().c_str()
 				<< "\n--------------------------------------\n";
 
-	// Output the script to file.
-	static int counter = 0;
-	script_file_ = OnlyPath(to_file_base) + "lyxconvert" +
-		       tostr(counter++) + ".sh";
+		// Output the script to file.
+		static int counter = 0;
+		script_file_ = OnlyPath(to_file_base) + "lyxconvert" +
+			tostr(counter++) + ".sh";
 
-	std::ofstream fs(script_file_.c_str());
-	if (!fs.good())
-		return;
+		std::ofstream fs(script_file_.c_str());
+		if (!fs.good())
+			return;
 
-	fs << script.str().c_str();
-	fs.close();
+		fs << script.str().c_str();
+		fs.close();
 
-	// The converted image is to be stored in this file
-	// We do not use ChangeExtension here because this is a
-	// basename, which may nevertheless contain a dot
-	to_file_ = to_file_base + '.' + formats.extension(to_format);
-
-	// The command needed to run the conversion process
-	// We create a dummy command for ease of understanding of the
-	// list of forked processes.
-	// Note that 'sh ' is absolutely essential, or execvp will fail.
-	script_command_ = "sh " + script_file_ + " " +
-			  OnlyFilename(from_file) + " " + to_format;
-
+		// The command needed to run the conversion process
+		// We create a dummy command for ease of understanding of the
+		// list of forked processes.
+		// Note that 'sh ' is absolutely essential, or execvp will fail.
+		script_command_ = "sh " + script_file_ + " " +
+			OnlyFilename(from_file) + " " + to_format;
+	}
 	// All is ready to go
 	valid_process_ = true;
 }

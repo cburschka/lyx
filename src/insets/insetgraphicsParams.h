@@ -38,10 +38,10 @@ struct InsetGraphicsParams
 	    NONE		// only keep a frame in place.
 	};
 	///
-	enum sizeType {		// for latex and/or lyx
+	enum sizeKind {		// for latex and/or lyx
 	    DEFAULT_SIZE,	// like none
-	    WH,			// width/height values
-	    SCALE		// percentage value
+	    SCALE,		// percentage value
+	    WH			// width/height values
 	};
 	/// Image filename.
 	string filename;
@@ -64,7 +64,7 @@ struct InsetGraphicsParams
 	/// The bounding box with "xLB yLB yRT yRT ", divided by a space!
 	string bb;
 	/// Type of rescaling
-	sizeType size_type;
+	sizeKind size_kind;
 	/// three possible values for rescaling (latex)
 	LyXLength width;
 	///
@@ -77,10 +77,10 @@ struct InsetGraphicsParams
 	string special;
 	/// How to display the image inside lyx
 	DisplayType display;
-	/// Typ of the LyXView, same as for latex
-	sizeType lyxsize_type;
 	/// the size for the view inside lyx
 	LyXLength lyxwidth;
+	/// Typ of the LyXView, same as for latex
+	sizeKind lyxsize_kind;
 	///
 	LyXLength lyxheight;
 	/// Keep the ratio between lyxheight and lyxwidth when resizing.

@@ -18,6 +18,7 @@
 #include "FormGraphics.h"
 #include "forms/form_graphics.h"
 #include "Alert.h"
+#include "Tooltips.h"
 
 #include "xforms_helpers.h"
 #include "helper_funcs.h"
@@ -113,6 +114,33 @@ void FormGraphics::build()
 	bc().addReadOnly(file_->check_draft);
 	bc().addReadOnly(file_->check_nounzip);
 
+	// set up the tooltips for the filesection
+	string str = _("The file you want to insert.");
+	tooltips().init(file_->input_filename, str);
+	str = _("Browse the directories.");
+	tooltips().init(file_->button_browse, str);
+
+	str = _("Enables use of subfigure with an own caption.");
+	tooltips().init(file_->check_subcaption, str);
+	str = _("Insert the an optional subfigure caption");
+	tooltips().init(file_->input_subcaption, str);
+
+	str = _("Enables use of rotating for the image.");
+	tooltips().init(file_->check_rotate, str);
+	str = _("Insert the rotating angle in degrees (max 5 characters like 270.1)");
+	tooltips().init(file_->input_rotate_angle, str);
+
+	str = _("Insert the rotating origin point.");
+	tooltips().init(file_->choice_origin, str);
+
+	str = _("Pass a filename like \"file.eps.gz\" to the LaTeX output. "
+	    "This is useful when LaTeX should unzip the file. Needs an additional file "
+	    "like \"file.eps.bb\" which holds the values for the bounding box");
+	tooltips().init(file_->check_nounzip, str);
+
+	str = _("Show image only as a rectangle of the original size.");
+	tooltips().init(file_->check_draft, str);
+
 	// the lyxview section
 	lyxview_.reset(build_graphics_lyxview(this));
 
@@ -133,6 +161,45 @@ void FormGraphics::build()
 	bc().addReadOnly(lyxview_->radio_color);
 	bc().addReadOnly(lyxview_->radio_nodisplay);
 	bc().addReadOnly(lyxview_->check_lyxaspectratio);
+
+	// set up the tooltips for the lyxview section
+	str = _("Take the definition from the Preferences->Look&Feel->Misc as default.");
+	tooltips().init(lyxview_->radio_pref, str);
+	str = _("Show this image in black and white (monochrome).");
+	tooltips().init(lyxview_->radio_mono, str);
+	str = _("Show this image in grayscale.");
+	tooltips().init(lyxview_->radio_gray, str);
+	str = _("Show this image in color.");
+	tooltips().init(lyxview_->radio_color, str);
+	str = _("Do not display this image.");
+	tooltips().init(lyxview_->radio_nodisplay, str);
+
+	str = _("Copies all values from the LaTeX tab");
+	tooltips().init(lyxview_->button_latex_values, str);
+
+	str = _("Show this image in it's original size.");
+	tooltips().init(lyxview_->radio_lyxasis, str);
+	str = _("Scale the image down to the inserted values.");
+	tooltips().init(lyxview_->radio_lyxwh, str);
+	str = _("Scale the image down to the inserted value and keep aspectratio.");
+	tooltips().init(lyxview_->radio_lyxscale, str);
+
+	str = _("Insert a width in any valid unit to which the image in the LyX-view "
+		"should be scaled up/down");
+	tooltips().init(lyxview_->input_lyxwidth, str);
+	str = _("Insert a height in any valid unit to which the image in the LyX-view "
+		"should be scaled up/down");
+	tooltips().init(lyxview_->input_lyxheight, str);
+	str = _("Insert a value > 0 in persent to which the image should be scaled up/down");
+	tooltips().init(lyxview_->input_lyxscale, str);
+	str = _("Shows all possible units for the length");
+	tooltips().init(lyxview_->choice_lyxwidth, str);
+	tooltips().init(lyxview_->choice_lyxheight, str);
+	str = _("Modifies the meaning of the \"width\" and \"height\" (and "
+		"\"totalheight\") keys such that if both are specified then rather than "
+		"distort the figure the figure is scaled such that neither dimension "
+		"exceeds the stated dimensions.");
+	tooltips().init(lyxview_->check_lyxaspectratio, str);
 
 	// the size section
 	size_.reset(build_graphics_size(this));
@@ -159,6 +226,35 @@ void FormGraphics::build()
 	bc().addReadOnly(size_->radio_scale);
 	bc().addReadOnly(size_->check_aspectratio);
 
+	// set up the tooltips for the size section
+	str = _("Copies all values from the LyX tab");
+	tooltips().init(size_->button_lyx_values, str);
+
+	str = _("Show this image in it's original size.");
+	tooltips().init(size_->radio_asis, str);
+	str = _("Scale the image down to the inserted values.");
+	tooltips().init(size_->radio_wh, str);
+	str = _("Scale the image down to the inserted value and keep aspectratio.");
+	tooltips().init(size_->radio_scale, str);
+
+	str = _("Modifies the meaning of the \"width\" and \"height\" (and "
+		"\"totalheight\") keys such that if both are specified then rather than "
+		"distort the figure the figure is scaled such that neither dimension "
+		"exceeds the stated dimensions.");
+	tooltips().init(size_->check_aspectratio, str);
+
+	str = _("Insert a width in any valid unit to which the image in the LyX-view "
+		"should be scaled up/down");
+	tooltips().init(lyxview_->input_lyxwidth, str);
+	str = _("Insert a height in any valid unit to which the image in the LyX-view "
+		"should be scaled up/down");
+	tooltips().init(lyxview_->input_lyxheight, str);
+	str = _("Insert a value > 0 in persent to which the image should be scaled up/down");
+	tooltips().init(lyxview_->input_lyxscale, str);
+	str = _("Shows all possible units for the length");
+	tooltips().init(lyxview_->choice_lyxwidth, str);
+	tooltips().init(lyxview_->choice_lyxheight, str);
+
 	// the bounding box selection
 	bbox_.reset(build_graphics_bbox(this));
 	fl_set_input_return (bbox_->input_bb_x0, FL_RETURN_CHANGED);
@@ -181,11 +277,37 @@ void FormGraphics::build()
 	bc().addReadOnly(bbox_->button_getBB);
 	bc().addReadOnly(bbox_->check_clip);
 
+	// set up the tooltips for the bounding-box-section
+	str = _("The lower left x-value of the bounding box");
+	tooltips().init(bbox_->input_bb_x0, str);
+	str = _("The lower left y-value of the bounding box");
+	tooltips().init(bbox_->input_bb_y0, str);
+	str = _("The upper right x-value of the bounding box");
+	tooltips().init(bbox_->input_bb_x1, str);
+	str = _("The upper right y-value of the bounding box");
+	tooltips().init(bbox_->input_bb_y1, str);
+	str = _("Shows all possible units for the bounding box values");
+	tooltips().init(bbox_->choice_bb_units, str);
+
+	str = _("Read the image coordinates new from file. If it's an (e)ps-file "
+		"than the bounding box is read otherwise the imagesize in pixels. "
+		"The default unit is \"bp\" the PostScript b)ig p)oint.");
+	tooltips().init(bbox_->button_getBB, str);
+
+	str = _("Enable this checkbox when the image should be clipped to the "
+		"bounding box values.");
+	tooltips().init(bbox_->check_clip, str);
+
 	// the rotate section
 	special_.reset(build_graphics_special(this));
 
 	fl_set_input_return (special_->input_special, FL_RETURN_CHANGED);
 	setPrehandler(special_->input_special);
+
+	// set up the tooltips for the special section
+	str = _("Any additional option, which is defined in the graphicx-package "
+		"and not mentioned in the gui's tabfolders can be defined.");
+	tooltips().init(special_->input_special, str);
 
 	// add the different tabfolders
 	fl_addto_tabfolder(dialog_->tabfolder, _("File"), file_->form);
@@ -193,6 +315,7 @@ void FormGraphics::build()
 	fl_addto_tabfolder(dialog_->tabfolder, _("LaTeX Size"), size_->form);
 	fl_addto_tabfolder(dialog_->tabfolder, _("Bounding Box"), bbox_->form);
 	fl_addto_tabfolder(dialog_->tabfolder, _("Extras"), special_->form);
+
 	// set the right default unit
 	if (lyxrc.default_papersize < 3)
 		defaultUnit = "in";
@@ -240,11 +363,11 @@ void FormGraphics::apply()
 		igp.display = InsetGraphicsParams::NONE;
 
 	if (fl_get_button(lyxview_->radio_lyxasis))
-		igp.lyxsize_type = InsetGraphicsParams::DEFAULT_SIZE;
+		igp.lyxsize_kind = InsetGraphicsParams::DEFAULT_SIZE;
 	else if (fl_get_button(lyxview_->radio_lyxwh))
-		igp.lyxsize_type = InsetGraphicsParams::WH;
+		igp.lyxsize_kind = InsetGraphicsParams::WH;
 	else
-		igp.lyxsize_type = InsetGraphicsParams::SCALE;
+		igp.lyxsize_kind = InsetGraphicsParams::SCALE;
 
 	igp.lyxwidth = getLyXLengthFromWidgets(lyxview_->input_lyxwidth,
 					       lyxview_->choice_lyxwidth);
@@ -257,11 +380,11 @@ void FormGraphics::apply()
 
 	// the size section
 	if (fl_get_button(size_->radio_asis))
-		igp.size_type = InsetGraphicsParams::DEFAULT_SIZE;
+		igp.size_kind = InsetGraphicsParams::DEFAULT_SIZE;
 	else if (fl_get_button(size_->radio_wh))
-		igp.size_type = InsetGraphicsParams::WH;
+		igp.size_kind = InsetGraphicsParams::WH;
 	else
-		igp.size_type = InsetGraphicsParams::SCALE;
+		igp.size_kind = InsetGraphicsParams::SCALE;
 
 	igp.width = getLyXLengthFromWidgets(size_->input_width,
 					    size_->choice_width);
@@ -356,7 +479,7 @@ void FormGraphics::update() {
 	updateWidgetsFromLength(lyxview_->input_lyxheight,
 				lyxview_->choice_lyxheight, igp.lyxheight, defaultUnit);
 	fl_set_input(lyxview_->input_lyxscale, tostr(igp.lyxscale).c_str());
-	switch (igp.lyxsize_type) {
+	switch (igp.lyxsize_kind) {
 	case InsetGraphicsParams::DEFAULT_SIZE: {
 		fl_set_button(lyxview_->radio_lyxasis,1);
 		setEnabled(lyxview_->input_lyxwidth, 0);
@@ -365,6 +488,15 @@ void FormGraphics::update() {
 		setEnabled(lyxview_->choice_lyxheight, 0);
 		setEnabled(lyxview_->check_lyxaspectratio, 0);
 		setEnabled(lyxview_->input_lyxscale, 0);
+		break;
+	}
+	case InsetGraphicsParams::SCALE: {
+		fl_set_button(lyxview_->radio_lyxscale, 1);
+		setEnabled(lyxview_->input_lyxwidth, 0);
+		setEnabled(lyxview_->choice_lyxwidth, 0);
+		setEnabled(lyxview_->input_lyxheight, 0);
+		setEnabled(lyxview_->choice_lyxheight, 0);
+		setEnabled(lyxview_->input_lyxscale, 1);
 		break;
 	}
 	case InsetGraphicsParams::WH: {
@@ -377,17 +509,8 @@ void FormGraphics::update() {
 		setEnabled(lyxview_->input_lyxscale, 0);
 		break;
 	}
-	case InsetGraphicsParams::SCALE: {
-		fl_set_button(lyxview_->radio_lyxscale, 1);
-		setEnabled(lyxview_->input_lyxwidth, 0);
-		setEnabled(lyxview_->choice_lyxwidth, 0);
-		setEnabled(lyxview_->input_lyxheight, 0);
-		setEnabled(lyxview_->choice_lyxheight, 0);
-		setEnabled(lyxview_->check_lyxaspectratio, 0);
-		setEnabled(lyxview_->input_lyxscale, 1);
-		break;
 	}
-	}
+	fl_set_button(lyxview_->check_lyxaspectratio, igp.keepLyXAspectRatio);
 
 	fl_set_button(lyxview_->check_lyxaspectratio, igp.keepLyXAspectRatio);
 
@@ -398,7 +521,9 @@ void FormGraphics::update() {
 	updateWidgetsFromLength(size_->input_height,
 				size_->choice_height, igp.height, defaultUnit);
 	fl_set_input(size_->input_scale, tostr(igp.scale).c_str());
-	switch (igp.size_type) {
+	lyxerr[Debug::GRAPHICS] << "FormGraphics::update: igp.size_kind = "
+				<<  igp.size_kind << endl;
+	switch (igp.size_kind) {
 	case InsetGraphicsParams::DEFAULT_SIZE: {
 		fl_set_button(size_->radio_asis,1);
 		setEnabled(size_->input_width, 0);
@@ -406,16 +531,6 @@ void FormGraphics::update() {
 		setEnabled(size_->input_height, 0);
 		setEnabled(size_->choice_height, 0);
 		setEnabled(size_->check_aspectratio, 0);
-		setEnabled(size_->input_scale, 0);
-		break;
-	}
-	case InsetGraphicsParams::WH: {
-		fl_set_button(size_->radio_wh, 1);
-		setEnabled(size_->input_width, 1);
-		setEnabled(size_->choice_width, 1);
-		setEnabled(size_->input_height, 1);
-		setEnabled(size_->choice_height, 1);
-		setEnabled(size_->check_aspectratio, 1);
 		setEnabled(size_->input_scale, 0);
 		break;
 	}
@@ -427,6 +542,16 @@ void FormGraphics::update() {
 		setEnabled(size_->choice_height, 0);
 		setEnabled(size_->check_aspectratio, 0);
 		setEnabled(size_->input_scale, 1);
+		break;
+	}
+	case InsetGraphicsParams::WH: {
+		fl_set_button(size_->radio_wh, 1);
+		setEnabled(size_->input_width, 1);
+		setEnabled(size_->choice_width, 1);
+		setEnabled(size_->input_height, 1);
+		setEnabled(size_->choice_height, 1);
+		setEnabled(size_->check_aspectratio, 1);
+		setEnabled(size_->input_scale, 0);
 		break;
 	}
 	}
@@ -539,13 +664,6 @@ ButtonPolicy::SMInput FormGraphics::input(FL_OBJECT * ob, long)
 		setEnabled(lyxview_->choice_lyxheight, 0);
 		setEnabled(lyxview_->check_lyxaspectratio, 0);
 		setEnabled(lyxview_->input_lyxscale, 0);
-	} else if (ob == lyxview_->radio_lyxwh) {
-		setEnabled(lyxview_->input_lyxwidth, 1);
-		setEnabled(lyxview_->choice_lyxwidth, 1);
-		setEnabled(lyxview_->input_lyxheight, 1);
-		setEnabled(lyxview_->choice_lyxheight, 1);
-		setEnabled(lyxview_->check_lyxaspectratio, 1);
-		setEnabled(lyxview_->input_lyxscale, 0);
 	} else if (ob == lyxview_->radio_lyxscale) {
 		setEnabled(lyxview_->input_lyxwidth, 0);
 		setEnabled(lyxview_->choice_lyxwidth, 0);
@@ -553,6 +671,13 @@ ButtonPolicy::SMInput FormGraphics::input(FL_OBJECT * ob, long)
 		setEnabled(lyxview_->choice_lyxheight, 0);
 		setEnabled(lyxview_->check_lyxaspectratio, 0);
 		setEnabled(lyxview_->input_lyxscale, 1);
+	} else if (ob == lyxview_->radio_lyxwh) {
+		setEnabled(lyxview_->input_lyxwidth, 1);
+		setEnabled(lyxview_->choice_lyxwidth, 1);
+		setEnabled(lyxview_->input_lyxheight, 1);
+		setEnabled(lyxview_->choice_lyxheight, 1);
+		setEnabled(lyxview_->check_lyxaspectratio, 1);
+		setEnabled(lyxview_->input_lyxscale, 0);
 	} else if (ob == lyxview_->button_latex_values) {
 		if (contains(fl_get_choice_text(size_->choice_width),'%') || 
 			contains(fl_get_choice_text(size_->choice_height),'%'))
@@ -582,14 +707,6 @@ ButtonPolicy::SMInput FormGraphics::input(FL_OBJECT * ob, long)
 				setEnabled(lyxview_->choice_lyxheight, 0);
 				setEnabled(lyxview_->check_lyxaspectratio, 0);
 				setEnabled(lyxview_->input_lyxscale, 0);
-			} else if (fl_get_button (size_->radio_wh) == 1) {
-				fl_set_button (lyxview_->radio_lyxwh, 1);
-				setEnabled(lyxview_->input_lyxwidth, 1);
-				setEnabled(lyxview_->choice_lyxwidth, 1);
-				setEnabled(lyxview_->input_lyxheight, 1);
-				setEnabled(lyxview_->choice_lyxheight, 1);
-				setEnabled(lyxview_->check_lyxaspectratio, 1);
-				setEnabled(lyxview_->input_lyxscale, 0);
 			} else if (fl_get_button (size_->radio_scale) ==1) {
 				fl_set_button (lyxview_->radio_lyxscale, 1);
 				setEnabled(lyxview_->input_lyxwidth, 0);
@@ -598,6 +715,15 @@ ButtonPolicy::SMInput FormGraphics::input(FL_OBJECT * ob, long)
 				setEnabled(lyxview_->choice_lyxheight, 0);
 				setEnabled(lyxview_->check_lyxaspectratio, 0);
 				setEnabled(lyxview_->input_lyxscale, 1);
+			} else if (fl_get_button (size_->radio_wh) == 1) {
+				fl_set_button (lyxview_->radio_lyxwh, 1);
+				setEnabled(lyxview_->input_lyxwidth, 1);
+				setEnabled(lyxview_->choice_lyxwidth, 1);
+				setEnabled(lyxview_->input_lyxheight, 1);
+				setEnabled(lyxview_->choice_lyxheight, 1);
+				setEnabled(lyxview_->check_lyxaspectratio, 1);
+				setEnabled(lyxview_->input_lyxscale, 0);
+				setEnabled(lyxview_->check_lyxaspectratio, 1);
 			}
 		}
 		fl_set_button(lyxview_->check_lyxaspectratio,
@@ -638,13 +764,6 @@ ButtonPolicy::SMInput FormGraphics::input(FL_OBJECT * ob, long)
 		setEnabled(size_->choice_height, 0);
 		setEnabled(size_->check_aspectratio, 0);
 		setEnabled(size_->input_scale, 0);
-	} else if (ob == size_->radio_wh) {
-		setEnabled(size_->input_width, 1);
-		setEnabled(size_->choice_width, 1);
-		setEnabled(size_->input_height, 1);
-		setEnabled(size_->choice_height, 1);
-		setEnabled(size_->check_aspectratio, 1);
-		setEnabled(size_->input_scale, 0);
 	} else if (ob == size_->radio_scale) {
 		setEnabled(size_->input_width, 0);
 		setEnabled(size_->choice_width, 0);
@@ -652,6 +771,13 @@ ButtonPolicy::SMInput FormGraphics::input(FL_OBJECT * ob, long)
 		setEnabled(size_->choice_height, 0);
 		setEnabled(size_->check_aspectratio, 0);
 		setEnabled(size_->input_scale, 1);
+	} else if (ob == size_->radio_wh) {
+		setEnabled(size_->input_width, 1);
+		setEnabled(size_->choice_width, 1);
+		setEnabled(size_->input_height, 1);
+		setEnabled(size_->choice_height, 1);
+		setEnabled(size_->check_aspectratio, 1);
+		setEnabled(size_->input_scale, 0);
 	} else if (ob == size_->button_lyx_values) {
 		LyXLength dummy = getLyXLengthFromWidgets(lyxview_->input_lyxwidth,
 							  lyxview_->choice_lyxwidth);
@@ -673,14 +799,6 @@ ButtonPolicy::SMInput FormGraphics::input(FL_OBJECT * ob, long)
 			setEnabled(size_->choice_height, 0);
 			setEnabled(size_->check_aspectratio, 0);
 			setEnabled(size_->input_scale, 0);
-		} else if (fl_get_button (lyxview_->radio_lyxwh) == 1) {
-			fl_set_button (size_->radio_wh, 1);
-			setEnabled(size_->input_width, 1);
-			setEnabled(size_->choice_width, 1);
-			setEnabled(size_->input_height, 1);
-			setEnabled(size_->choice_height, 1);
-			setEnabled(size_->check_aspectratio, 1);
-			setEnabled(size_->input_scale, 0);
 		} else if (fl_get_button (lyxview_->radio_lyxscale) ==1) {
 			fl_set_button (size_->radio_scale, 1);
 			setEnabled(size_->input_width, 0);
@@ -689,6 +807,14 @@ ButtonPolicy::SMInput FormGraphics::input(FL_OBJECT * ob, long)
 			setEnabled(size_->choice_height, 0);
 			setEnabled(size_->check_aspectratio, 0);
 			setEnabled(size_->input_scale, 1);
+		} else if (fl_get_button (lyxview_->radio_lyxwh) == 1) {
+			fl_set_button (size_->radio_wh, 1);
+			setEnabled(size_->input_width, 1);
+			setEnabled(size_->choice_width, 1);
+			setEnabled(size_->input_height, 1);
+			setEnabled(size_->choice_height, 1);
+			setEnabled(size_->check_aspectratio, 1);
+			setEnabled(size_->input_scale, 0);
 		}
 		fl_set_button(size_->check_aspectratio,
 			      fl_get_button(lyxview_->check_lyxaspectratio));

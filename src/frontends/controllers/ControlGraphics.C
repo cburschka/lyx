@@ -68,6 +68,7 @@ void ControlGraphics::applyParamsToInset()
 	// Set the parameters in the inset, it also returns true if the new
 	// parameters are different from what was in the inset already.
 	bool changed = inset()->setParams(params(), lv_.buffer()->filePath());
+
 	// Tell LyX we've got a change, and mark the document dirty,
 	// if it changed.
 	lv_.view()->updateInset(inset(), changed);
@@ -105,10 +106,11 @@ string const ControlGraphics::readBB(string const & file)
 {
 	string const abs_file = MakeAbsPath(file, lv_.buffer()->filePath());
 
-	string const from = getExtFromContents(abs_file);
-	// Check if we have a Postscript file, then it's easy
-	if (contains(from, "ps"))
-		return readBB_from_PSFile(abs_file);
+	// try to get it from the file, if possible. Zipped files are
+	// unzipped in the readBB_from_PSFile-Function
+	string const bb = readBB_from_PSFile(abs_file);
+	if (!bb.empty())
+		return bb;
 
 	// we don't, so ask the Graphics Cache if it has loaded the file
 	int width = 0;
@@ -144,6 +146,7 @@ namespace {
 // correspond to the LaTeX identifiers shown in the comments at the
 // end of each line.
 char const * const rorigin_lyx_strs[] = {
+	// the LaTeX default is leftBaseline
 	"center",                                        // c
 	"leftTop",   "leftBottom",   "leftBaseline",     // lt lb lB
 	"centerTop", "centerBottom", "centerBaseline",   // ct cb cB

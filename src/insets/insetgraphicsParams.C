@@ -19,7 +19,6 @@
 #include "insetgraphicsParams.h"
 
 #include "graphics/GraphicsParams.h"
-#include "graphics/GraphicsCache.h"
 
 #include "support/translator.h"
 #include "support/filetools.h"
@@ -97,12 +96,12 @@ void InsetGraphicsParams::init()
 	lyxheight = LyXLength();	// also set to 0pt
 	scale = 0;			// unit is %
 	lyxscale = 0;			// same for lyxview
-	size_type = DEFAULT_SIZE;	// do nothing
-	lyxsize_type = DEFAULT_SIZE;	// do nothing
-	keepLyXAspectRatio = false;	// only for LyXview
-	keepAspectRatio = false;	// only for latex
+	size_kind = DEFAULT_SIZE;	// do nothing
+	lyxsize_kind = DEFAULT_SIZE;	// do nothing
+	keepAspectRatio = false;	// for latex
+	keepLyXAspectRatio = false;	// for lyx
 	rotate = false;			// Rotating
-	rotateOrigin = "center";	// Origin
+	rotateOrigin = "leftBaseline";	// Origin
 	rotateAngle = 0.0;		// in degrees
 	special = string();		// userdefined stuff
 }
@@ -121,12 +120,13 @@ void InsetGraphicsParams::copy(InsetGraphicsParams const & igp)
 	width = igp.width;
 	height = igp.height;
 	scale = igp.scale;
-	size_type = igp.size_type;
-	lyxsize_type = igp.lyxsize_type;
+	size_kind = igp.size_kind;
+	lyxsize_kind = igp.lyxsize_kind;
 	lyxwidth = igp.lyxwidth;
 	lyxheight = igp.lyxheight;
 	keepLyXAspectRatio = igp.keepLyXAspectRatio;
 	lyxscale = igp.lyxscale;
+	keepLyXAspectRatio = igp.keepLyXAspectRatio;
 	rotate = igp.rotate;
 	rotateOrigin = igp.rotateOrigin;
 	rotateAngle = igp.rotateAngle;
@@ -148,12 +148,13 @@ bool operator==(InsetGraphicsParams const & left,
 	    left.width == right.width &&
 	    left.height == right.height &&
 	    left.scale == right.scale &&
-	    left.size_type == right.size_type &&
-	    left.lyxsize_type == right.lyxsize_type &&
+	    left.size_kind == right.size_kind &&
+	    left.lyxsize_kind == right.lyxsize_kind &&
 	    left.lyxwidth == right.lyxwidth &&
 	    left.lyxheight == right.lyxheight &&
 	    left.keepLyXAspectRatio == right.keepLyXAspectRatio &&
 	    left.lyxscale == right.lyxscale &&
+	    left.keepLyXAspectRatio == right.keepLyXAspectRatio &&
 	    left.rotate == right.rotate &&
 	    left.rotateOrigin == right.rotateOrigin &&
 	    lyx::float_equal(left.rotateAngle, right.rotateAngle, 0.001 &&
@@ -169,6 +170,34 @@ bool operator!=(InsetGraphicsParams const & left,
 {
 	return	!(left == right);
 }
+
+
+namespace {
+
+InsetGraphicsParams::sizeKind getSizeKind(string const & str_in)
+{
+	if (str_in == "width_height")
+		return InsetGraphicsParams::WH;
+	if (str_in == "scale")
+		return InsetGraphicsParams::SCALE;
+
+	// all other like "original"
+	return InsetGraphicsParams::DEFAULT_SIZE;
+}
+
+
+string const getSizeKindStr(InsetGraphicsParams::sizeKind sK_in)
+{
+	if (sK_in == InsetGraphicsParams::SCALE)
+		return "scale";
+	if (sK_in == InsetGraphicsParams::WH)
+		return "width_height";
+
+	// all other like DEFAULT_SIZE"
+	return "original";
+}	
+
+} //anon
 
 
 void InsetGraphicsParams::Write(ostream & os) const
@@ -192,11 +221,7 @@ void InsetGraphicsParams::Write(ostream & os) const
 		os << "\tsubcaptionText \"" << subcaptionText << '\"' << '\n';
 	if (noUnzip)
 		os << "\tnoUnzip\n";
-	// we always need the size type
-	// 0: no special
-	// 1: width/height combination
-	// 2: scale
-	os << "\tsize_type " <<  size_type << '\n';
+	os << "\tsize_kind " << getSizeKindStr(size_kind) << '\n';
 	if (!width.zero())
 		os << "\twidth " << width.asString() << '\n';
 	if (!height.zero())
@@ -214,7 +239,7 @@ void InsetGraphicsParams::Write(ostream & os) const
 	if (!special.empty())
 		os << "\tspecial " << special << '\n';
 	// the values for the view in lyx
-	os << "\tlyxsize_type " <<  lyxsize_type << '\n';
+	os << "\tlyxsize_kind " << getSizeKindStr(lyxsize_kind) << '\n';
 	if (!lyxwidth.zero())		// the lyx-viewsize
 		os << "\tlyxwidth " << lyxwidth.asString() << '\n';
 	if (!lyxheight.zero())
@@ -251,19 +276,9 @@ bool InsetGraphicsParams::Read(LyXLex & lex, string const & token)
 		subcaptionText = lex.getString();
 	} else if (token == "noUnzip") {
 		noUnzip = true;
-	} else if (token == "size_type") {
+	} else if (token == "size_kind") {
 		lex.next();
-		switch (lex.getInteger()) {
-		case 0:
-			size_type = DEFAULT_SIZE;
-			break;
-		case 1:
-			size_type = WH;
-			break;
-		case 2:
-			size_type = SCALE;
-			break;
-		}
+		size_kind = getSizeKind(lex.getString());
 	} else if (token == "width") {
 		lex.next();
 		width = LyXLength(lex.getString());
@@ -283,19 +298,9 @@ bool InsetGraphicsParams::Read(LyXLex & lex, string const & token)
 	} else if (token == "rotateOrigin") {
 		lex.next();
 		rotateOrigin=lex.getString();
-	} else if (token == "lyxsize_type") {
+	} else if (token == "lyxsize_kind") {
 		lex.next();
-		switch (lex.getInteger()) {
-		case 0:
-			lyxsize_type = DEFAULT_SIZE;
-			break;
-		case 1:
-			lyxsize_type = WH;
-			break;
-		case 2:
-			lyxsize_type = SCALE;
-			break;
-		}
+		lyxsize_kind = getSizeKind(lex.getString());
 	} else if (token == "lyxwidth") {
 		lex.next();
 		lyxwidth = LyXLength(lex.getString());
@@ -399,15 +404,15 @@ grfx::Params InsetGraphicsParams::as_grfxParams(string const & filepath) const
 	if (!lyxrc.use_gui) {
 		pars.display = grfx::NoDisplay;
 	}
-	
-	if (lyxsize_type == InsetGraphicsParams::SCALE) {
+
+	if (lyxsize_kind == InsetGraphicsParams::SCALE) {
 		pars.scale = lyxscale;
-		
-	} else if (lyxsize_type == InsetGraphicsParams::WH) {
+
+	} else if (lyxsize_kind == InsetGraphicsParams::WH) {
 		pars.width = lyxwidth.inBP();
 		pars.height = lyxheight.inBP();
 		pars.keepLyXAspectRatio = keepLyXAspectRatio;
-  	}
+	}
 	
 	return pars;
 }
