@@ -189,11 +189,7 @@ int get_new_submenu(vector<int> & smn, Window win)
 
 string const fixlabel(string const & str)
 {
-#if FL_VERSION < 1 && FL_REVISION < 89
-	return subst(str, '%', '?');
-#else
 	return subst(str, "%", "%%");
-#endif
 }
 
 

@@ -11,11 +11,6 @@ SUBDIRS = forms
 
 EXTRA_DIST = xformsImage.C xformsImage.h
 
-if USE_BASIC_IMAGE_LOADER
-else
-XFORMSIMAGE = xformsImage.C xformsImage.h
-endif
-
 # Alphabetical order please.  It makes it easier to figure out what's missing.
 libxforms_la_SOURCES = \
 	forms_fwd.h \
@@ -32,8 +27,6 @@ libxforms_la_SOURCES = \
 	input_validators.C \
 	input_validators.h \
 	lyx_gui.C \
-	lyxlookup.C \
-	lyxlookup.h \
 	xfont_loader.C \
 	xfont_loader.h \
 	xfont_metrics.C \
@@ -42,7 +35,9 @@ libxforms_la_SOURCES = \
 	xforms_helpers.h \
 	xforms_resize.C \
 	xforms_resize.h \
-	$(XFORMSIMAGE) xformsBC.C \
+	xformsImage.C \
+	xformsImage.h \
+	xformsBC.C \
 	xformsBC.h \
 	xscreen.C \
 	xscreen.h \
@@ -168,10 +163,6 @@ libxforms_la_SOURCES = \
 	XWorkArea.C
 
 libxforms.la: $(libxforms_la_OBJECTS) $(libxforms_la_DEPENDENCIES)
-
-# for convenience only
-updatesrc:
-	$(MAKE) -C forms updatesrc
 
 # just copied from old lyx repository
 #dist-hook:

@@ -282,6 +282,7 @@ void Combox::show()
 		fl_redraw_object(button);
 	}
 
+#if FL_VERSION < 1
 	// This fix ensures that, even if label lies on a tabfolder,
 	// the x,y coords of the underlying form are up to date.
 	// It should be rendered redundant by a similar fix in the
@@ -292,6 +293,7 @@ void Combox::show()
 		FL_FORM * lf = label->form;
 		fl_get_winorigin(lf->window, &(lf->x), &(lf->y));
 	}
+#endif
 
 	int const x = label->form->x + label->x;
 	int const y = label->form->y + label->y + label->h;

@@ -35,11 +35,7 @@
 #include "ColorHandler.h"
 #include "xforms_helpers.h"
 #include "xfont_loader.h"
-#ifdef USE_XFORMS_IMAGE_LOADER
 #include "xformsImage.h"
-#else
-#include "graphics/GraphicsImageXPM.h"
-#endif
 
 #include "Lsstream.h"
 #include <iomanip>
@@ -169,15 +165,9 @@ void lyx_gui::parse_init(int & argc, char * argv[])
 
 	using namespace grfx;
 
-#ifdef USE_XFORMS_IMAGE_LOADER
 	// connect the image loader based on the xforms library
 	Image::newImage = boost::bind(&xformsImage::newImage);
 	Image::loadableFormats = boost::bind(&xformsImage::loadableFormats);
-#else
-	// connect the image loader based on the XPM library
-	Image::newImage = boost::bind(&ImageXPM::newImage);
-	Image::loadableFormats = boost::bind(&ImageXPM::loadableFormats);
-#endif
 
 	// must do this /before/ lyxrc gets read
 	lyxrc.dpi = getDPI();
@@ -231,11 +221,7 @@ void lyx_gui::parse_lyxrc()
 	fl_setpup_fontsize(FL_NORMAL_SIZE);
 	fl_setpup_color(FL_MCOL, FL_BLACK);
 	fl_set_goodies_font(FL_NORMAL_STYLE, FL_NORMAL_SIZE);
-#if FL_REVISION < 89
-	fl_set_oneliner_font(FL_NORMAL_STYLE, FL_NORMAL_SIZE);
-#else
 	fl_set_tooltip_font(FL_NORMAL_STYLE, FL_NORMAL_SIZE);
-#endif
 }
 
 

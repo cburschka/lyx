@@ -1,3 +1,19 @@
+2002-12-13  Angus Leeming  <leeming@lyx.org>
+
+	* FormBase.C:
+	* Menubar_pimpl.C:
+	* Tooltips.[Ch]:
+	* XFormsView.C:
+	* XWorkArea.C:
+	* lyx_gui.C:
+	* xforms_resize.C: remove work-arounds for xforms < 0.89.5.
+
+	* lyxlookup.[Ch]: removed.
+
+	* Makefile.am: associated change.
+
+	* combox.C: add block #ifdef FL_VERSION < 1
+
 2002-12-16  Michael Schmitt  <Michael.Schmitt@teststep.org>
 
 	* FormGraphics.C (build): correct string for boost::format.

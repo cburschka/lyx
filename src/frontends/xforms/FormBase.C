@@ -32,14 +32,10 @@
 
 extern "C" {
 
-#if FL_VERSION > 0 || FL_REVISION >= 89
-
 // These should be in forms.h but aren't
 void fl_show_tooltip(const char *, int, int);
 
 void fl_hide_tooltip();
-
-#endif
 
 // Callback function invoked by xforms when the dialog is closed by the
 // window manager.
@@ -170,7 +166,7 @@ void FormBase::show()
 
 void FormBase::hide()
 {
-#if FL_VERSION > 0 || FL_REVISION >= 89
+#if FL_VERSION < 1
 	// Does no harm if none is visible and ensures that the tooltip form
 	// is hidden should the dialog be closed from the keyboard.
 	fl_hide_tooltip();
@@ -259,46 +255,55 @@ void FormBase::PrehandlerCB(FL_OBJECT * ob, int event, int key)
 		return;
 	}
 
-
-	if (event != FL_ENTER && event != FL_LEAVE)
-		return;
-
-	if (ob->objclass == FL_TABFOLDER) {
-		// This prehandler is used to work-around an xforms bug and
-		// ensures that the form->x, form->y coords of the active
-		// tabfolder are up to date.
-
-		// The tabfolder itself can be very narrow, being just
-		// the visible border to the tabs.
-		// We thus use both FL_ENTER and FL_LEAVE as flags,
-		// in case the FL_ENTER event is not caught.
-
-		FL_FORM * const folder = fl_get_active_folder(ob);
-		if (folder && folder->window) {
-			fl_get_winorigin(folder->window,
-					 &(folder->x), &(folder->y));
+	switch (event) {
+	case FL_ENTER:
+	case FL_LEAVE:
+		if (message_widget_) {
+			// Post feedback as the mouse enters the object,
+			// remove it as the mouse leaves.
+			MessageCB(ob, event);
 		}
 
-	}
+#if FL_VERSION < 1
+		if (ob->objclass == FL_TABFOLDER) {
+			// This prehandler is used to work-around an xforms
+			// bug and ensures that the form->x, form->y coords of
+			// the active tabfolder are up to date.
 
-	if (message_widget_) {
-		// Post feedback as the mouse enters the object,
-		// remove it as the mouse leaves.
-		MessageCB(ob, event);
-	}
+			// The tabfolder itself can be very narrow, being just
+			// the visible border to the tabs.
+			// We thus use both FL_ENTER and FL_LEAVE as flags,
+			// in case the FL_ENTER event is not caught.
 
-#if FL_VERSION > 0 || FL_REVISION >= 89
-	// Tooltips are not displayed on browser widgets due to an xforms' bug.
-	// This is a work-around:
-	if (ob->objclass == FL_BROWSER) {
-		if (event == FL_ENTER && ob->tooltip && *(ob->tooltip)) {
-			fl_show_tooltip(ob->tooltip, ob->form->x + ob->x,
-					ob->form->y + ob->y + ob->h + 1);
-		} else if (event == FL_LEAVE) {
-			fl_hide_tooltip();
+			FL_FORM * const folder = fl_get_active_folder(ob);
+			if (folder && folder->window) {
+				fl_get_winorigin(folder->window,
+						 &(folder->x), &(folder->y));
+			}
 		}
-	}
 #endif
+		break;
+	}
+
+	// Tooltips are not displayed on browser widgets due to an xforms' bug.
+	// I have a fix, but it's not yet in the xforms sources.
+	// This is a work-around:
+	switch (event) {
+	case FL_ENTER:
+		if (ob->objclass == FL_BROWSER &&
+		    ob->tooltip && *(ob->tooltip)) {
+			int const x = ob->form->x + ob->x;
+			int const y = ob->form->y + ob->y + ob->h + 1;
+			fl_show_tooltip(ob->tooltip, x, y);
+		}
+		break;
+	case FL_LEAVE:
+	case FL_PUSH:
+	case FL_KEYPRESS:
+		if (ob->objclass == FL_BROWSER)
+			fl_hide_tooltip();
+		break;
+	}
 }
 
 

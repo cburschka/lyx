@@ -21,10 +21,6 @@
 #include "funcrequest.h"
 #include "Timeout.h"
 
-#if FL_VERSION < 1 && (FL_REVISION < 89 || (FL_REVISION == 89 && FL_FIXLEVEL < 5))
-#include "lyxlookup.h"
-#endif
-
 using std::endl;
 using std::abs;
 using std::hex;
@@ -306,11 +302,7 @@ int XWorkArea::work_area_handler(FL_OBJECT * ob, int event,
 				    ev->xbutton.y - ob->y,
 				    x_button_state(key)));
 		break;
-#if FL_VERSION < 1 && FL_REVISION < 89
-	case FL_MOUSE:
-#else
 	case FL_DRAG:
-#endif
 	{
 		if (!ev || !area->scrollbar)
 			break;
@@ -376,24 +368,14 @@ int XWorkArea::work_area_handler(FL_OBJECT * ob, int event,
 		break;
 	}
 
-#if FL_VERSION < 1 && FL_REVISION < 89
-	case FL_KEYBOARD:
-#else
 	case FL_KEYPRESS:
-#endif
 	{
 		lyxerr[Debug::WORKAREA] << "Workarea event: KEYPRESS" << endl;
 
 		KeySym keysym = 0;
 		char dummy[1];
 		XKeyEvent * xke = reinterpret_cast<XKeyEvent *>(ev);
-#if FL_VERSION < 1 && (FL_REVISION < 89 || (FL_REVISION == 89 && FL_FIXLEVEL < 5))
-		// XForms < 0.89.5 does not have compose support
-		// so we are using our own compose support
-		LyXLookupString(ev, dummy, 1, &keysym);
-#else
 		XLookupString(xke, dummy, 1, &keysym, 0);
-#endif
 
 		if (lyxerr.debugging(Debug::KEY)) {
 			char const * const tmp  = XKeysymToString(key);
@@ -407,15 +389,6 @@ int XWorkArea::work_area_handler(FL_OBJECT * ob, int event,
 			       << "' [" << keysym << ']' << endl;
 		}
 
-#if FL_VERSION < 1 && (FL_REVISION < 89 || (FL_REVISION == 89 && FL_FIXLEVEL < 5))
-		if (keysym == NoSymbol) {
-			lyxerr[Debug::KEY]
-				<< "Empty kdb action (probably composing)"
-				<< endl;
-			break;
-		}
-		KeySym ret_key = keysym;
-#else
 		// Note that we need this handling because of a bug
 		// in XForms 0.89, if this bug is resolved in the way I hope
 		// we can just use the keysym directly without looking
@@ -447,7 +420,6 @@ int XWorkArea::work_area_handler(FL_OBJECT * ob, int event,
 				//}
 		}
 
-#endif
 		unsigned int const ret_state = xke->state;
 
 		// If you have a better way to handle "wild-output" of
@@ -488,11 +460,9 @@ int XWorkArea::work_area_handler(FL_OBJECT * ob, int event,
 	}
 	break;
 
-#if FL_VERSION > 0 || FL_REVISION >= 89
 	case FL_KEYRELEASE:
 		lyxerr[Debug::WORKAREA] << "Workarea event: KEYRELEASE" << endl;
 		break;
-#endif
 
 	case FL_ENTER:
 		lyxerr[Debug::WORKAREA] << "Workarea event: ENTER" << endl;

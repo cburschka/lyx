@@ -18,6 +18,10 @@
 #ifndef TOOLTIPS_H
 #define TOOLTIPS_H
 
+#ifdef __GNUG__
+#pragma interface
+#endif
+
 #include "LString.h"
 
 #include <boost/utility.hpp>
@@ -27,10 +31,6 @@
 #include "forms_fwd.h" // Can't forward-declare FL_OBJECT
 
 #include <map>
-
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 class Tooltips : boost::noncopyable, public boost::signals::trackable {
 public:
@@ -42,15 +42,6 @@ public:
 
 	/// Are the tooltips on or off?
 	static bool enabled() { return enabled_; }
-
-#if FL_VERSION < 1 && FL_REVISION < 89
-
-	/** Return the tooltip associated with this object.
-	 *  Required by an xforms callback routine.
-	 */
-	string const get(FL_OBJECT *) const;
-
-#endif
 
 	/** This method is connected to Dialogs::toggleTooltips and toggles
 	 *  the state of enabled_.
@@ -74,15 +65,6 @@ private:
 	typedef std::map<FL_OBJECT *, string> TooltipsMap;
 
 	TooltipsMap tooltipsMap;
-
-#if FL_VERSION < 1 && FL_REVISION < 89
-
-	/** A timer is started once the mouse enters an object, so that the
-	 *  tip appears a short delay afterwards.
-	 */
-	FL_OBJECT * tooltip_timer_;
-
-#endif
 };
 
 #endif // TOOLTIPS_H

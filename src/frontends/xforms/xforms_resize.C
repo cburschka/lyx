@@ -94,40 +94,6 @@ double get_scaling_factor(FL_FORM * form)
 }
 
 
-// A nasty hack for older xforms versions
-int get_tabfolder_numfolders(FL_OBJECT * folder)
-{
-#if FL_VERSION > 0 || FL_REVISION > 88
-	return fl_get_tabfolder_numfolders(folder);
-#else
-	if (folder->objclass != FL_TABFOLDER)
-		return 0;
-
-	fl_freeze_form(folder->form);
-	int const saved_folder_id = fl_get_folder_number(folder);
-
-	int num_folders = 0;
-	FL_FORM const * old_leaf = 0;
-	for (;;) {
-		int const id = num_folders + 1;
-		fl_set_folder_bynumber(folder, id);
-		FL_FORM const * const leaf = fl_get_folder(folder);
-		if (!leaf || leaf == old_leaf) {
-			// unable to increment succesfully.
-			break;
-		}
-		old_leaf = leaf;
-		++num_folders;
-	}
-
-	fl_set_folder_bynumber(folder, saved_folder_id);
-	fl_unfreeze_form(folder->form);
-
-	return num_folders;
-#endif
-}
-
-
 double get_tabfolder_scale_to_fit(FL_OBJECT * folder)
 {
 	lyx::Assert(folder && folder->objclass == FL_TABFOLDER);
@@ -136,7 +102,7 @@ double get_tabfolder_scale_to_fit(FL_OBJECT * folder)
 	int const saved_folder_id = fl_get_folder_number(folder);
 
 	double factor = 1.0;
-	int const size = get_tabfolder_numfolders(folder);
+	int const size = fl_get_tabfolder_numfolders(folder);
 	for (int i = 0; i < size; ++i) {
 		fl_set_folder_bynumber(folder, i+1);
 		FL_FORM * leaf = fl_get_folder(folder);
@@ -157,7 +123,7 @@ void scale_tabfolder_horizontally(FL_OBJECT * folder, double factor)
 	fl_freeze_form(folder->form);
 	int const saved_folder_id = fl_get_folder_number(folder);
 
-	int const size = get_tabfolder_numfolders(folder);
+	int const size = fl_get_tabfolder_numfolders(folder);
 	for (int i = 0; i < size; ++i) {
 		fl_set_folder_bynumber(folder, i+1);
 		FL_FORM * leaf = fl_get_folder(folder);
