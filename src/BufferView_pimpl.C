@@ -727,43 +727,20 @@ void BufferView::Pimpl::stuffClipboard(string const & stuff) const
 }
 
 
-InsetBase * BufferView::Pimpl::getInsetByCode(InsetBase::Code /*code*/)
+InsetBase * BufferView::Pimpl::getInsetByCode(InsetBase::Code code)
 {
 #ifdef WITH_WARNINGS
-#warning Does not work for mathed
+#warning Does not work for mathed. (Still true?)
 #endif
 	// Ok, this is a little bit too brute force but it
 	// should work for now. Better infrastructure is coming. (Lgb)
-
-#warning FIXME
-#if 0
-	Buffer * buf = bv_->buffer();
-	InsetIterator beg = inset_iterator_begin(buf->inset());
-
-	bool cursor_par_seen = false;
-
 	LCursor & cur = bv_->cursor();
-	LyXText * = bv_->getLyXText();
-	ParagraphList::iterator pit = text->getPar(cur.par());
-
-	for (; beg; ++beg) {
-		if (beg.par() == pit)
-			cursor_par_seen = true;
-		if (cursor_par_seen) {
-			if (beg.par() == pit && beg.pos() >= cur.pos())
-				break;
-			if (beg.getPar() != pit)
-				break;
-		}
+	DocIterator it = cur;
+	for (it.forwardInset(); it; it.forwardInset()) {
+		BOOST_ASSERT(it.nextInset());
+		if (it.nextInset()->lyxCode() == code)
+				return it.nextInset();
 	}
-	if (beg) {
-		// Now find the first inset that matches code.
-		for (; beg; ++beg) {
-			if (beg->lyxCode() == code)
-				return &(*beg);
-		}
-	}
-#endif
 	return 0;
 }
 
