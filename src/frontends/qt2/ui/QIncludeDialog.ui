@@ -13,13 +13,17 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>348</width>
-            <height>209</height>
+            <width>416</width>
+            <height>225</height>
         </rect>
     </property>
     <property stdset="1">
         <name>caption</name>
         <string>Include File</string>
+    </property>
+    <property stdset="1">
+        <name>sizeGripEnabled</name>
+        <bool>true</bool>
     </property>
     <grid>
         <property stdset="1">
@@ -30,186 +34,35 @@
             <name>spacing</name>
             <number>6</number>
         </property>
-        <widget row="2"  column="0"  rowspan="2"  colspan="1" >
-            <class>QButtonGroup</class>
-            <property stdset="1">
-                <name>name</name>
-                <cstring>includeBG</cstring>
-            </property>
-            <property stdset="1">
-                <name>sizePolicy</name>
-                <sizepolicy>
-                    <hsizetype>5</hsizetype>
-                    <vsizetype>7</vsizetype>
-                </sizepolicy>
-            </property>
-            <property stdset="1">
-                <name>title</name>
-                <string>Include type</string>
-            </property>
-            <vbox>
-                <property stdset="1">
-                    <name>margin</name>
-                    <number>11</number>
+        <widget row="1"  column="1" >
+            <class>QComboBox</class>
+            <item>
+                <property>
+                    <name>text</name>
+                    <string>Include</string>
                 </property>
-                <property stdset="1">
-                    <name>spacing</name>
-                    <number>6</number>
+            </item>
+            <item>
+                <property>
+                    <name>text</name>
+                    <string>Input</string>
                 </property>
-                <widget>
-                    <class>QRadioButton</class>
-                    <property stdset="1">
-                        <name>name</name>
-                        <cstring>includeRB</cstring>
-                    </property>
-                    <property stdset="1">
-                        <name>text</name>
-                        <string>&amp;Include</string>
-                    </property>
-                    <property>
-                        <name>toolTip</name>
-                        <string>FIXME</string>
-                    </property>
-                </widget>
-                <widget>
-                    <class>QRadioButton</class>
-                    <property stdset="1">
-                        <name>name</name>
-                        <cstring>inputRB</cstring>
-                    </property>
-                    <property stdset="1">
-                        <name>text</name>
-                        <string>I&amp;nput</string>
-                    </property>
-                    <property>
-                        <name>toolTip</name>
-                        <string>FIXME</string>
-                    </property>
-                </widget>
-                <widget>
-                    <class>QRadioButton</class>
-                    <property stdset="1">
-                        <name>name</name>
-                        <cstring>verbatimRB</cstring>
-                    </property>
-                    <property stdset="1">
-                        <name>text</name>
-                        <string>&amp;Verbatim</string>
-                    </property>
-                    <property>
-                        <name>toolTip</name>
-                        <string>FIXME</string>
-                    </property>
-                </widget>
-            </vbox>
-        </widget>
-        <widget row="2"  column="1"  rowspan="2"  colspan="2" >
-            <class>QButtonGroup</class>
-            <property stdset="1">
-                <name>name</name>
-                <cstring>optionsBG</cstring>
-            </property>
-            <property stdset="1">
-                <name>sizePolicy</name>
-                <sizepolicy>
-                    <hsizetype>5</hsizetype>
-                    <vsizetype>7</vsizetype>
-                </sizepolicy>
-            </property>
-            <property stdset="1">
-                <name>title</name>
-                <string>Options</string>
-            </property>
-            <vbox>
-                <property stdset="1">
-                    <name>margin</name>
-                    <number>11</number>
+            </item>
+            <item>
+                <property>
+                    <name>text</name>
+                    <string>Verbatim</string>
                 </property>
-                <property stdset="1">
-                    <name>spacing</name>
-                    <number>6</number>
-                </property>
-                <widget>
-                    <class>QCheckBox</class>
-                    <property stdset="1">
-                        <name>name</name>
-                        <cstring>typesetCB</cstring>
-                    </property>
-                    <property stdset="1">
-                        <name>text</name>
-                        <string>&amp;Don't typeset</string>
-                    </property>
-                    <property>
-                        <name>toolTip</name>
-                        <string>FIXME</string>
-                    </property>
-                </widget>
-                <widget>
-                    <class>QCheckBox</class>
-                    <property stdset="1">
-                        <name>name</name>
-                        <cstring>visiblespaceCB</cstring>
-                    </property>
-                    <property stdset="1">
-                        <name>text</name>
-                        <string>Visible &amp;Space</string>
-                    </property>
-                    <property>
-                        <name>toolTip</name>
-                        <string>FIXME</string>
-                    </property>
-                </widget>
-            </vbox>
-        </widget>
-        <widget row="0"  column="0"  rowspan="1"  colspan="4" >
-            <class>QLabel</class>
+            </item>
             <property stdset="1">
                 <name>name</name>
-                <cstring>filenameLA</cstring>
-            </property>
-            <property stdset="1">
-                <name>text</name>
-                <string>&amp;Filename:</string>
-            </property>
-            <property>
-                <name>buddy</name>
-                <cstring>filenameED</cstring>
-            </property>
-            <property>
-                <name>toolTip</name>
-                <string></string>
+                <cstring>typeCO</cstring>
             </property>
         </widget>
-        <widget row="1"  column="0"  rowspan="1"  colspan="3" >
-            <class>QLineEdit</class>
-            <property stdset="1">
-                <name>name</name>
-                <cstring>filenameED</cstring>
-            </property>
-            <property>
-                <name>toolTip</name>
-                <string>File name to include</string>
-            </property>
-        </widget>
-        <widget row="1"  column="3" >
-            <class>QPushButton</class>
-            <property stdset="1">
-                <name>name</name>
-                <cstring>browsePB</cstring>
-            </property>
-            <property stdset="1">
-                <name>text</name>
-                <string>&amp;Browse ...</string>
-            </property>
-            <property>
-                <name>toolTip</name>
-                <string>Select a file</string>
-            </property>
-        </widget>
-        <spacer row="4"  column="0"  rowspan="1"  colspan="2" >
+        <spacer row="1"  column="3" >
             <property>
                 <name>name</name>
-                <cstring>Spacer3</cstring>
+                <cstring>Spacer27</cstring>
             </property>
             <property stdset="1">
                 <name>orientation</name>
@@ -227,48 +80,26 @@
                 </size>
             </property>
         </spacer>
-        <widget row="4"  column="2" >
-            <class>QPushButton</class>
+        <widget row="0"  column="0" >
+            <class>QLabel</class>
             <property stdset="1">
                 <name>name</name>
-                <cstring>okPB</cstring>
+                <cstring>filenameLA</cstring>
             </property>
             <property stdset="1">
                 <name>text</name>
-                <string>&amp;OK</string>
+                <string>&amp;File:</string>
             </property>
-            <property stdset="1">
-                <name>default</name>
-                <bool>true</bool>
-            </property>
-        </widget>
-        <widget row="4"  column="3" >
-            <class>QPushButton</class>
-            <property stdset="1">
-                <name>name</name>
-                <cstring>closePB</cstring>
-            </property>
-            <property stdset="1">
-                <name>text</name>
-                <string>&amp;Close</string>
-            </property>
-        </widget>
-        <widget row="2"  column="3" >
-            <class>QPushButton</class>
-            <property stdset="1">
-                <name>name</name>
-                <cstring>loadPB</cstring>
-            </property>
-            <property stdset="1">
-                <name>text</name>
-                <string>&amp;Load</string>
+            <property>
+                <name>buddy</name>
+                <cstring>filenameED</cstring>
             </property>
             <property>
                 <name>toolTip</name>
-                <string>Load the file</string>
+                <string></string>
             </property>
         </widget>
-        <spacer row="3"  column="3" >
+        <spacer row="2"  column="4"  rowspan="2"  colspan="1" >
             <property>
                 <name>name</name>
                 <cstring>Spacer13</cstring>
@@ -289,27 +120,194 @@
                 </size>
             </property>
         </spacer>
+        <widget row="3"  column="1"  rowspan="1"  colspan="3" >
+            <class>QCheckBox</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>visiblespaceCB</cstring>
+            </property>
+            <property stdset="1">
+                <name>sizePolicy</name>
+                <sizepolicy>
+                    <hsizetype>3</hsizetype>
+                    <vsizetype>0</vsizetype>
+                </sizepolicy>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string>Visible &amp;Space</string>
+            </property>
+            <property>
+                <name>toolTip</name>
+                <string>FIXME</string>
+            </property>
+        </widget>
+        <widget row="2"  column="1"  rowspan="1"  colspan="3" >
+            <class>QCheckBox</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>typesetCB</cstring>
+            </property>
+            <property stdset="1">
+                <name>sizePolicy</name>
+                <sizepolicy>
+                    <hsizetype>3</hsizetype>
+                    <vsizetype>0</vsizetype>
+                </sizepolicy>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string>&amp;Don't typeset</string>
+            </property>
+            <property>
+                <name>toolTip</name>
+                <string>FIXME</string>
+            </property>
+        </widget>
+        <widget row="1"  column="4" >
+            <class>QPushButton</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>loadPB</cstring>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string>&amp;Load</string>
+            </property>
+            <property>
+                <name>toolTip</name>
+                <string>Load the file</string>
+            </property>
+        </widget>
+        <widget row="6"  column="0"  rowspan="1"  colspan="5" >
+            <class>QLayoutWidget</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>Layout3</cstring>
+            </property>
+            <hbox>
+                <property stdset="1">
+                    <name>margin</name>
+                    <number>0</number>
+                </property>
+                <property stdset="1">
+                    <name>spacing</name>
+                    <number>6</number>
+                </property>
+                <spacer>
+                    <property>
+                        <name>name</name>
+                        <cstring>Spacer3</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>orientation</name>
+                        <enum>Horizontal</enum>
+                    </property>
+                    <property stdset="1">
+                        <name>sizeType</name>
+                        <enum>Expanding</enum>
+                    </property>
+                    <property>
+                        <name>sizeHint</name>
+                        <size>
+                            <width>20</width>
+                            <height>20</height>
+                        </size>
+                    </property>
+                </spacer>
+                <widget>
+                    <class>QPushButton</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>okPB</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>text</name>
+                        <string>&amp;OK</string>
+                    </property>
+                    <property stdset="1">
+                        <name>default</name>
+                        <bool>true</bool>
+                    </property>
+                </widget>
+                <widget>
+                    <class>QPushButton</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>closePB</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>text</name>
+                        <string>&amp;Close</string>
+                    </property>
+                </widget>
+            </hbox>
+        </widget>
+        <spacer row="4"  column="2" >
+            <property>
+                <name>name</name>
+                <cstring>Spacer13_2</cstring>
+            </property>
+            <property stdset="1">
+                <name>orientation</name>
+                <enum>Vertical</enum>
+            </property>
+            <property stdset="1">
+                <name>sizeType</name>
+                <enum>Expanding</enum>
+            </property>
+            <property>
+                <name>sizeHint</name>
+                <size>
+                    <width>20</width>
+                    <height>20</height>
+                </size>
+            </property>
+        </spacer>
+        <widget row="0"  column="4" >
+            <class>QPushButton</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>browsePB</cstring>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string>&amp;Browse...</string>
+            </property>
+            <property>
+                <name>toolTip</name>
+                <string>Select a file</string>
+            </property>
+        </widget>
+        <widget row="1"  column="0" >
+            <class>QLabel</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>TextLabel1</cstring>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string>&amp;Include Type:</string>
+            </property>
+            <property>
+                <name>buddy</name>
+                <cstring>typeCO</cstring>
+            </property>
+        </widget>
+        <widget row="0"  column="1"  rowspan="1"  colspan="3" >
+            <class>QLineEdit</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>filenameED</cstring>
+            </property>
+            <property>
+                <name>toolTip</name>
+                <string>File name to include</string>
+            </property>
+        </widget>
     </grid>
 </widget>
 <connections>
-    <connection>
-        <sender>includeRB</sender>
-        <signal>toggled(bool)</signal>
-        <receiver>QIncludeDialogBase</receiver>
-        <slot>change_adaptor()</slot>
-    </connection>
-    <connection>
-        <sender>inputRB</sender>
-        <signal>toggled(bool)</signal>
-        <receiver>QIncludeDialogBase</receiver>
-        <slot>change_adaptor()</slot>
-    </connection>
-    <connection>
-        <sender>verbatimRB</sender>
-        <signal>toggled(bool)</signal>
-        <receiver>QIncludeDialogBase</receiver>
-        <slot>change_adaptor()</slot>
-    </connection>
     <connection>
         <sender>typesetCB</sender>
         <signal>toggled(bool)</signal>
@@ -340,15 +338,19 @@
         <receiver>QIncludeDialogBase</receiver>
         <slot>browseClicked()</slot>
     </connection>
-    <connection>
-        <sender>includeBG</sender>
-        <signal>clicked(int)</signal>
-        <receiver>QIncludeDialogBase</receiver>
-        <slot>typeChanged(int)</slot>
-    </connection>
     <slot access="public">browseClicked()</slot>
     <slot access="public">change_adaptor()</slot>
     <slot access="public">loadClicked()</slot>
     <slot access="public">typeChanged(int)</slot>
 </connections>
+<tabstops>
+    <tabstop>filenameED</tabstop>
+    <tabstop>browsePB</tabstop>
+    <tabstop>typeCO</tabstop>
+    <tabstop>typesetCB</tabstop>
+    <tabstop>visiblespaceCB</tabstop>
+    <tabstop>loadPB</tabstop>
+    <tabstop>okPB</tabstop>
+    <tabstop>closePB</tabstop>
+</tabstops>
 </UI>

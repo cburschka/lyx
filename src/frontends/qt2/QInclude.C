@@ -23,7 +23,7 @@
 #include <qlineedit.h>
 #include <qpushbutton.h>
 #include <qcheckbox.h>
-#include <qradiobutton.h>
+#include <qcombobox.h>
 
 typedef Qt2CB<ControlInclude, Qt2DB<QIncludeDialog> > base_class;
 
@@ -43,9 +43,7 @@ void QInclude::build_dialog()
 	bc().addReadOnly(dialog_->browsePB);
 	bc().addReadOnly(dialog_->typesetCB);
 	bc().addReadOnly(dialog_->visiblespaceCB);
-	bc().addReadOnly(dialog_->includeRB);
-	bc().addReadOnly(dialog_->inputRB);
-	bc().addReadOnly(dialog_->verbatimRB);
+	bc().addReadOnly(dialog_->typeCO);
 }
 
 
@@ -56,7 +54,7 @@ void QInclude::update_contents()
 		dialog_->typesetCB->setChecked(false);
 		dialog_->visiblespaceCB->setChecked(false);
 		dialog_->visiblespaceCB->setEnabled(false);
-		dialog_->includeRB->setChecked(true);
+		//dialog_->typeCO->setEnabled(true);
 		return;
 	}
 
@@ -71,17 +69,14 @@ void QInclude::update_contents()
 	dialog_->visiblespaceCB->setEnabled(false);
 
 	if (cmdname == "input")
-		dialog_->inputRB->setChecked(true);
-	else if (cmdname == "include")
-		dialog_->includeRB->setChecked(true);
+		dialog_->typeCO->setCurrentItem(1);
 	else if (!cmdname.empty()) {
-		dialog_->verbatimRB->setChecked(true);
+		dialog_->typeCO->setCurrentItem(2);
 		dialog_->visiblespaceCB->setChecked(cmdname == "verbatiminput*");
 		dialog_->visiblespaceCB->setEnabled(true);
 	}
+	else dialog_->typeCO->setCurrentItem(0);
 
-	if (cmdname.empty())
-		dialog_->includeRB->setChecked(true);
 }
 
 
@@ -92,9 +87,10 @@ void QInclude::apply()
 	controller().params().cparams.
 		setContents(dialog_->filenameED->text().latin1());
 
-	if (dialog_->inputRB->isChecked())
+	int const item = dialog_->typeCO->currentItem();
+	if (item==1)
 		controller().params().flag = InsetInclude::INPUT;
-	else if (dialog_->includeRB->isChecked())
+	else if (item==0)
 		controller().params().flag = InsetInclude::INCLUDE;
 	else {
 		if (dialog_->visiblespaceCB->isChecked())
@@ -109,9 +105,10 @@ void QInclude::browse()
 {
 	ControlInclude::Type type;
 
-	if (dialog_->includeRB->isChecked())
+	int const item = dialog_->typeCO->currentItem();
+	if (item==0)
 		type = ControlInclude::INCLUDE;
-	else if (dialog_->inputRB->isChecked())
+	else if (item==1)
 		type = ControlInclude::INPUT;
 	else
 		type = ControlInclude::VERBATIM;

@@ -7,12 +7,13 @@
  */
 
 #include <config.h>
- 
+#include <vector.h> 
 #include "ControlBibtex.h"
 #include "gettext.h"
 #include "debug.h"
 
 #include "support/filetools.h"
+#include "support/lyxalgo.h" // eliminate_duplicates
 
 #include <qwidget.h>
 #include <qpushbutton.h>
@@ -52,15 +53,22 @@ void QBibtexDialog::browsePressed()
 	}
 }
 
-
 void QBibtexDialog::addPressed()
 {
 	QString file = QFileDialog::getOpenFileName(QString::null,
 		_("BibTeX database files (*.bib)"), this, 0, _("Select a BibTeX database to add"));
 	if (!file.isNull()) {
-		// FIXME: check duplicates
-		databaseLB->insertItem(ChangeExtension(file.latin1(), "").c_str());
-		form_->changed();
+		string const f = ChangeExtension(file.latin1(), "");
+		bool present = false;
+		for(unsigned int i = 0; i!=databaseLB->count(); i++) {
+			if (databaseLB->text(i).latin1()==f)
+				present = true;
+			
+		}
+		if (!present) {
+			databaseLB->insertItem(f.c_str());
+			form_->changed();
+		}
 	}
 }
 
@@ -73,17 +81,7 @@ void QBibtexDialog::deletePressed()
 
 void QBibtexDialog::styleChanged(const QString & sel)
 {
-	if (form_->readOnly())
-		return;
-
-	if (string(_("Other ...")) == sel.latin1()) {
-		styleED->setEnabled(true);
-		stylePB->setEnabled(true);
-	} else {
-		styleED->setEnabled(false);
-		stylePB->setEnabled(false);
-		styleED->setText("");
-	}
+	styleED->setText(sel);
 }
 
 

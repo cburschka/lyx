@@ -13,7 +13,8 @@
 #include "ControlBibtex.h"
 #include "gettext.h"
 #include "debug.h"
-
+#include "support/filetools.h" // ChangeExtension
+#include "support/lstrings.h" // getVectorFromString
 #include <qlineedit.h>
 #include <qcombobox.h>
 #include <qpushbutton.h>
@@ -40,9 +41,10 @@ void QBibtex::build_dialog()
 	bc().setCancel(dialog_->closePB);
 	bc().addReadOnly(dialog_->databaseLB);
 	bc().addReadOnly(dialog_->databasePB);
-	bc().addReadOnly(dialog_->styleCO);
 	bc().addReadOnly(dialog_->styleED);
 	bc().addReadOnly(dialog_->stylePB);
+	bc().addReadOnly(dialog_->styleListLB);
+	bc().addReadOnly(dialog_->styleListPB);
 	bc().addReadOnly(dialog_->bibtocCB);
 	bc().addReadOnly(dialog_->databasePB);
 	bc().addReadOnly(dialog_->deletePB);
@@ -77,24 +79,14 @@ void QBibtex::update_contents()
 			bibstyle = "";
 	} else
 		dialog_->bibtocCB->setChecked(false);
+	
+	dialog_->styleED->setText(bibstyle.c_str());
 
-	dialog_->deletePB->setEnabled(false);
-	dialog_->styleED->setEnabled(false);
-	dialog_->stylePB->setEnabled(false);
-
-	if (bibstyle == "plain" || bibstyle.empty())
-		dialog_->styleCO->setCurrentItem(0);
-	else if (bibstyle == "unsrt")
-		dialog_->styleCO->setCurrentItem(1);
-	else if (bibstyle == "alpha")
-		dialog_->styleCO->setCurrentItem(2);
-	else if (bibstyle == "abbrv")
-		dialog_->styleCO->setCurrentItem(3);
-	else {
-		dialog_->styleED->setEnabled(true);
-		dialog_->stylePB->setEnabled(true);
-		dialog_->styleED->setText(bibstyle.c_str());
-		dialog_->styleCO->setCurrentItem(4);
+	vector<string> const str = getVectorFromString(
+		controller().getBibStyles(),"\n");
+	for (vector<string>::const_iterator it = str.begin();
+		it != str.end(); ++it) {
+		dialog_->styleListLB->insertItem(ChangeExtension(*it,"").c_str());
 	}
 
 }
@@ -111,9 +103,7 @@ void QBibtex::apply()
 	}
 	controller().params().setContents(dbs);
 
-	string bibstyle(dialog_->styleCO->currentText().latin1());
-	if (bibstyle == _("Other ..."))
-		bibstyle = dialog_->styleED->text().latin1();
+	string bibstyle(dialog_->styleED->text().latin1());
 
 	bool const bibtotoc(dialog_->bibtocCB->isChecked());
 
@@ -133,5 +123,5 @@ void QBibtex::apply()
 bool QBibtex::isValid()
 {
 	return dialog_->databaseLB->count() != 0 &&
-		!(dialog_->styleCO->currentItem() == 4 && string(dialog_->styleED->text()).empty());
+		!string(dialog_->styleED->text()).empty();
 }

@@ -8,11 +8,7 @@
 
 #include <config.h>
 
-#include "support/lstrings.h"
 #include "ControlRef.h"
-#include "gettext.h"
-#include "insets/insetref.h"
- 
 #include "QRef.h"
 #include "QRefDialog.h"
 #include "Qt2BC.h"
@@ -24,6 +20,15 @@
 #include <qpushbutton.h>
 #include <qtooltip.h>
 
+#include "helper_funcs.h" // getStringFromVector
+#include "support/lstrings.h" // frontStrip, strip
+#include "gettext.h"
+#include "insets/insetref.h"
+ 
+using std::find;
+using std::max;
+using std::sort;
+using std::vector;
 using std::endl;
 
 typedef Qt2CB<ControlRef, Qt2DB<QRefDialog> > base_class;
@@ -46,24 +51,33 @@ void QRef::build_dialog()
 	bc().addReadOnly(dialog_->nameED);
 	bc().addReadOnly(dialog_->referenceED);
 	bc().addReadOnly(dialog_->typeCO);
+	bc().addReadOnly(dialog_->bufferCO);
 }
 
 
 void QRef::update_contents()
 {
 	dialog_->referenceED->setText(controller().params().getContents().c_str());
+
 	dialog_->nameED->setText(controller().params().getOptions().c_str());
-
-	dialog_->typeCO->setCurrentItem(InsetRef::getType(controller().params().getCmdName()));
-
 	dialog_->nameED->setReadOnly(!nameAllowed() && !readOnly());
 
+	dialog_->typeCO->setCurrentItem(InsetRef::getType(controller().params().getCmdName()));
 	dialog_->typeCO->setEnabled(!typeAllowed() && !readOnly());
 	if (!typeAllowed())
 		dialog_->typeCO->setCurrentItem(0);
 
 	dialog_->sortCB->setChecked(sort_);
 
+	/* insert buffer list */
+	dialog_->bufferCO->clear();
+	vector<string> const buffers = controller().getBufferList();
+	for (vector<string>::const_iterator it = buffers.begin();
+		it != buffers.end(); ++it) {
+		dialog_->bufferCO->insertItem(it->c_str());
+	}
+	dialog_->bufferCO->setCurrentItem(controller().getBufferNum());
+	
 	updateRefs();
 }
 
@@ -157,7 +171,8 @@ void QRef::updateRefs()
 	if (at_ref_)
 		gotoRef();
 	dialog_->refsLB->clear();
-	refs_ = controller().getLabelList(string());
+	string const name = controller().getBufferName(dialog_->bufferCO->currentItem());
+	refs_ = controller().getLabelList(name);
 	dialog_->sortCB->setEnabled(!refs_.empty());
 	dialog_->refsLB->setEnabled(!refs_.empty());
 	redoRefs();

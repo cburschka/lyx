@@ -133,7 +133,7 @@ void QGraphics::update_contents()
 	dialog_->widthUnit->setCurrentItem(igp.width.unit());
 	dialog_->heightUnit->setCurrentItem(igp.height.unit());
 
-	switch (igp.size_type) {
+	switch (igp.lyxsize_kind) {
 	    case InsetGraphicsParams::DEFAULT_SIZE: {
 		    dialog_->defaultRB->setChecked(TRUE);
 		    break;
@@ -224,11 +224,11 @@ void QGraphics::apply()
 	}
 
 	if (dialog_->defaultRB->isChecked())
-	    igp.size_type = InsetGraphicsParams::DEFAULT_SIZE;
+	    igp.lyxsize_kind = InsetGraphicsParams::DEFAULT_SIZE;
 	else if (dialog_->customRB->isChecked())
-	    igp.size_type = InsetGraphicsParams::WH;
+	    igp.lyxsize_kind = InsetGraphicsParams::WH;
 	else
-	    igp.size_type = InsetGraphicsParams::SCALE;
+	    igp.lyxsize_kind = InsetGraphicsParams::SCALE;
 
 	string value(dialog_->width->text());
 	igp.width = LyXLength(strToDbl(value), dialog_->widthUnit->currentLengthItem());
