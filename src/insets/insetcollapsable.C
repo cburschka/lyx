@@ -199,25 +199,15 @@ void InsetCollapsable::draw(BufferView * bv, LyXFont const & f,
 	cleared = true;
     }
 
-    // not needed if collapsed
     top_x = int(x);
     top_baseline = baseline;
 
-#if 0
-    draw_collapsed(pain, f, baseline, x);
-    inset->draw(bv, f, baseline, x, cleared);
-#else
-#warning Jürgen, can you have a look at this? (Lgb)
-    // the intention is quite clear if you set the positon in a minipage you
-    // want the minipage drawn according to that. but as you can see the
-    // cursor is wrongly placed.
     draw_collapsed(pain, f,
 		   baseline - ascent(bv, f) + ascent_collapsed(pain, f),
 		   x);
-    inset->draw(bv, f,
+    inset->draw(bv, f, 
 		baseline - ascent(bv, f) + ascent_collapsed(pain, f),
 		x, cleared);
-#endif
     need_update = NONE;
 }
 
@@ -402,7 +392,7 @@ bool InsetCollapsable::UpdateInsetInInset(BufferView * bv, Inset *in)
 
 unsigned int InsetCollapsable::InsetInInsetY()
 {
-    return inset->InsetInInsetY();
+    return inset->InsetInInsetY() - (top_baseline - inset->y());
 }
 
 

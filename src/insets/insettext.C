@@ -352,6 +352,8 @@ void InsetText::draw(BufferView * bv, LyXFont const & f,
 	bv->text->status = LyXText::CHANGED_IN_DRAW;
 	return;
     }
+    if (cleared)
+	need_update = FULL;
 
     top_baseline = baseline;
     top_y = baseline - ascent(bv, f);

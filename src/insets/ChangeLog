@@ -1,3 +1,12 @@
+2001-03-23  Juergen Vigna  <jug@sad.it>
+
+	* insettext.C (draw): force a FULL update if cleared == true.
+
+	* insetcollapsable.C (draw): Lars forgotten entry for changing this
+	routine to draw the minipages on its position-flag.
+	(InsetInInsetY): give back the right y position, because of minipage
+	position-flag.
+
 2001-03-23  José Abílio Matos  <jamatos@fep.up.pt>
 
 	* insetfloat.h
