@@ -101,6 +101,8 @@ public:
 	bool idxLast(int &, int &) const;
 	///
 	void idxDelete(int &, bool &, bool &);
+	///
+	void idxDeleteRange(int, int);
 			
 	///
 	void addRow(int);
@@ -114,6 +116,8 @@ public:
 	virtual void appendRow();
 	///
 	int index(int row, int col) const;
+	///
+	std::vector<int> idxBetween(int from, int to) const;
 
 protected:
 	/// row info

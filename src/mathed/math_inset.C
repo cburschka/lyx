@@ -284,6 +284,9 @@ void MathInset::idxDelete(int &, bool & popit, bool & deleteit)
 	deleteit = false;
 }
 
+void MathInset::idxDeleteRange(int, int)
+{}
+
 
 bool MathInset::idxLastUp(int &, int &) const
 {
@@ -362,4 +365,12 @@ void MathInset::Validate(LaTeXFeatures & features) const
 {
 	for (int i = 0; i < nargs(); ++i)
 		cell(i).Validate(features);
+}
+
+std::vector<int> MathInset::idxBetween(int from, int to) const
+{
+	std::vector<int> res;
+	for (int i = from; i <= to; ++i)
+		res.push_back(i);
+	return res;
 }

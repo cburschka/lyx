@@ -47,6 +47,8 @@ public:
 	///
 	MathArray(MathArray const &);
 	///
+	MathArray(MathArray const &, int from, int to);
+	///
 	MathArray & operator=(MathArray const &);
 	///
 	~MathArray();
@@ -71,6 +73,8 @@ public:
 	void erase(int pos1, int pos2);
 	///
 	void erase(int pos);
+	///
+	void erase();
 	///
 	void replace(int pos, MathInset * inset);
 	///

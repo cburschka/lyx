@@ -33,6 +33,14 @@ MathArray::MathArray(MathArray const & array)
 			replace(pos, nextInset(pos)->clone());
 }
 
+MathArray::MathArray(MathArray const & array, int from, int to)
+	: bf_(array.bf_.begin() + from, array.bf_.begin() + to)
+{
+	for (int pos = 0; pos < size(); next(pos)) 
+		if (isInset(pos)) 
+			replace(pos, nextInset(pos)->clone());
+}
+
 
 bool MathArray::next(int & pos) const
 {
@@ -206,6 +214,12 @@ bool MathArray::empty() const
 int MathArray::size() const
 {
 	return bf_.size();
+}
+
+
+void MathArray::erase()
+{
+	erase(0, size());
 }
 
 

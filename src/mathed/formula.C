@@ -134,13 +134,7 @@ void InsetFormula::draw(BufferView * bv, LyXFont const &,
 	pain.fillRectangle(x, y - a, w, h, LColor::mathbg);
 
 	if (mathcursor && mathcursor->formula() == this) {
-		if (mathcursor->Selection()) {
-			int xp[10];
-			int yp[10];
-			int n;
-			mathcursor->SelGetArea(xp, yp, n);
-			pain.fillPolygon(xp, yp, n, LColor::selection);
-		}
+		mathcursor->drawSelection(pain);
 		pain.rectangle(x, y - a, w, h, LColor::mathframe);
 	}
 
@@ -172,7 +166,11 @@ InsetFormula::localDispatch(BufferView * bv, kb_action action,
 
 		case LFUN_BREAKLINE: 
 			bv->lockedInsetStoreUndo(Undo::INSERT);
+			int x;
+			int y;
+			mathcursor->GetPos(x, y);
 			mathcursor->breakLine();
+			mathcursor->normalize();
 			updateLocal(bv);
 			break;
 
@@ -332,17 +330,18 @@ void InsetFormula::validate(LaTeXFeatures & features) const
 
 int InsetFormula::ascent(BufferView *, LyXFont const &) const
 {
-	return par()->ascent();
+	return par()->ascent() + 1;
 }
 
 
 int InsetFormula::descent(BufferView *, LyXFont const &) const
 {
-	return par()->descent();
+	return par()->descent() + 1;
 }
 
 
 int InsetFormula::width(BufferView *, LyXFont const &) const
 {
-	return par()->width();
+	Metrics();
+	return par()->width() + 2;
 }

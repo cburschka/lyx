@@ -126,6 +126,11 @@ public:
 	// the return value indicates whether the cursor should leave the inset
 	// and/or the whole inset should be deleted
 	virtual void idxDelete(int & idx, bool & popit, bool & deleteit);
+	// deletes a cell range and moves the cursor 
+	virtual void idxDeleteRange(int from, int to);
+	// returns list of cell indices that are "between" from and to for
+	// selction purposes
+	virtual std::vector<int> idxBetween(int from, int to) const;
 
 	///
 	int nargs() const;

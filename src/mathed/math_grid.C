@@ -245,9 +245,6 @@ void MathGridInset::delRow(int row)
 	if (nrows() == 1)
 		return;
 
-	lyxerr << "delRow: nr: " << nrows() << "  nc: " << ncols()
-		<< "  row: " << row << "\n";
-
 	cells_type::iterator it = cells_.begin() + row * ncols(); 
 	cells_.erase(it, it + ncols());
 
@@ -389,6 +386,22 @@ void MathGridInset::idxDelete(int & idx, bool & popit, bool & deleteit)
 }
 
 
+void MathGridInset::idxDeleteRange(int from, int to)
+{
+// leave this unimplemented unless someone wants to have it.
+/*
+	int n = (to - from) / ncols();
+	int r = from / ncols();
+
+	if (n >= 1) {
+		cells_type::iterator it = cells_.begin() + from;
+		cells_.erase(it, it + n * ncols());
+		rowinfo_.erase(rowinfo_.begin() + r, rowinfo_.begin() + r + n);
+	}
+*/
+}
+
+
 MathGridInset::RowInfo const & MathGridInset::rowinfo(int i) const
 {
 	return rowinfo_[i];
@@ -398,4 +411,18 @@ MathGridInset::RowInfo const & MathGridInset::rowinfo(int i) const
 MathGridInset::RowInfo & MathGridInset::rowinfo(int i)
 {
 	return rowinfo_[i];
+}
+
+
+std::vector<int> MathGridInset::idxBetween(int from, int to) const
+{
+	int r1 = std::min(row(from), row(to));
+	int r2 = std::max(row(from), row(to));
+	int c1 = std::min(col(from), col(to));
+	int c2 = std::max(col(from), col(to));
+	std::vector<int> res;
+	for (int i = r1; i <= r2; ++i)
+		for (int j = c1; j <= c2; ++j)
+			res.push_back(index(i, j));
+	return res;
 }

@@ -306,7 +306,7 @@ void InsetFormulaBase::edit(BufferView * bv, int x, int /*y*/, unsigned int)
 	if (!bv->lockInset(this))
 		lyxerr[Debug::MATHED] << "Cannot lock inset!!!" << endl;
 
-	par_->Metrics(LM_ST_TEXT);
+	Metrics();
 	//bv->updateInset(this, false);
 	if (x == 0)
 		mathcursor->first();
@@ -408,8 +408,14 @@ vector<string> const InsetFormulaBase::getLabelList() const
 
 void InsetFormulaBase::updateLocal(BufferView * bv)
 {
-	par_->Metrics(LM_ST_TEXT);
+	Metrics();
 	bv->updateInset(this, true);
+}
+
+
+void InsetFormulaBase::Metrics() const
+{
+	const_cast<MathInset *>(par_)->Metrics(LM_ST_TEXT);
 }
 
 

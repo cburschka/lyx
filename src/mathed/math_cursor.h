@@ -29,6 +29,38 @@ class MathUpDownInset;
 class InsetFormulaBase;
 class MathArray;
 class MathXArray;
+class Painter;
+
+/// Description of a position 
+struct MathCursorPos {
+	/// inset
+	MathInset * par_;
+	/// cell index
+	int idx_;
+	/// cell position
+	int pos_;
+	/// 
+	bool operator==(const MathCursorPos &) const;
+	/// 
+	bool operator<(const MathCursorPos &) const;
+	/// returns cell corresponding to this position
+	MathArray & cell() const;
+	/// returns cell corresponding to this position
+	MathArray & cell(int idx) const;
+	/// returns xcell corresponding to this position
+	MathXArray & xcell() const;
+	/// returns xcell corresponding to this position
+	MathXArray & xcell(int idx) const;
+	/// moves position on cell to the left
+	bool idxLeft();
+	/// moves position on cell to the right
+	bool idxRight();
+	/// moves position on cell up
+	bool idxUp();
+	/// moves position on cell up
+	bool idxDown();
+};
+
 
 /// This is the external interface of Math's subkernel
 class MathCursor {
@@ -39,6 +71,8 @@ public:
 	void insert(char, MathTextCodes t = LM_TC_MIN);
 	///
 	void insert(MathInset *);
+	///
+	void insert(MathArray const &);
 	///
 	void Home();
 	///
@@ -108,7 +142,7 @@ public:
 	///
 	void SelClear();
 	///
-	void SelGetArea(int * xp, int * yp, int & n);
+	void drawSelection(Painter & pain) const;
 	///
 	void clearLastCode();
 	///
@@ -126,7 +160,7 @@ public:
 	///
 	MathTextCodes getLastCode() const;
 	///
-	int idx() const { return cursor_.idx_; }
+	int idx() const { return cursor().idx_; }
 	///
 	void idxNext();
 	///
@@ -148,7 +182,17 @@ public:
 	///
 	int row() const;
 
-//protected:
+	///
+	MathStyles style() const;
+	/// Make sure cursor position is valid
+	void normalize() const;
+	
+	/// Enter a new MathInset from the front or the back
+	void push(MathInset * par, bool first);
+	/// Leave current MathInset
+	bool pop();
+
+//private:
 	///
 	bool macro_mode;
 	
@@ -166,36 +210,26 @@ public:
 	///
 	MathXArray & xarray() const;
 
-	///
-	MathStyles style() const;
-	/// Make sure cursor position is valid
-	void normalize() const;
-	
-	/// Enter a new MathInset from the front or the back
-	void push(MathInset * par, bool first);
-	/// Leave current MathInset
-	bool pop();
-
-private:
-	/// Description of a position 
-	struct MathIter {
-		/// inset
-		MathInset * par_;
-		/// cell inset
-		int idx_;
-		///
-		int pos_;
-	};
+	/// returns the first position of the (normalized) selection
+	MathCursorPos firstSelectionPos() const;
+	/// returns the last position of the (normalized) selection
+	MathCursorPos lastSelectionPos() const;
+	/// returns the selection
+	void getSelection(MathCursorPos &, MathCursorPos &) const;
+	/// returns the normalized anchor of the selection
+	MathCursorPos normalAnchor() const;
+	/// returns the normalized anchor of the selection
+	bool openable(MathInset *, bool selection, bool useupdown) const;
 
 	/// path of positions the cursor had to go if it were leving each inset
-	std::vector<MathIter> path_;
+	std::vector<MathCursorPos> Cursor_;
+	/// path of positions the anchor had to go if it were leving each inset
+	std::vector<MathCursorPos> Anchor_;
 
 	/// reference to the last item of the path
-	MathIter anchor_;
+	MathCursorPos & cursor();
 	///
-	MathIter cursor_;
-	///
-	int path_idx_;
+	MathCursorPos const & cursor() const;
 
 
 	///  

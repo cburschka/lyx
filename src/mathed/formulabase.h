@@ -115,6 +115,8 @@ public:
 	virtual std::vector<string> const getLabelList() const;
 	///
 	MathInset * par() const;
+	///
+	virtual void Metrics() const;
 protected:
 	///
 	virtual void updateLocal(BufferView * bv);
