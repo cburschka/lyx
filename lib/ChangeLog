@@ -1,3 +1,10 @@
+2003-03-12  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* lyx2lyx/lyx2lyx (main): Print error messages to stderr.
+
+	* lyx2lyx/lyxconvert_218.py (change_infoinset): Convert correctly 
+	notes with several lines and backslashes.
+
 2003-03-12  John Levon  <levon@movementarian.org>
 
 	* lyx2lyx/lyxconvert_221.py: add \\end_header
