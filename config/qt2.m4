@@ -222,7 +222,7 @@ if test "$ac_qt2_includes" = NO || test "$ac_qt2_libraries" = NO; then
 AC_CACHE_VAL(ac_cv_have_qt2,
 [#try to guess Qt2 locations
 
-qt_incdirs="$ac_qt2_includes usr/lib/qt2/include /usr/local/qt2/include /usr/include/qt2 /usr/X11R6/include/X11/qt2 /usr/lib/qt/include /usr/local/qt/include /usr/include/qt /usr/include /usr/X11R6/include/X11/qt $x_includes $QTINC"
+qt2_incdirs="$ac_qt2_includes usr/lib/qt2/include /usr/local/qt2/include /usr/include/qt2 /usr/X11R6/include/X11/qt2 /usr/lib/qt/include /usr/local/qt/include /usr/include/qt /usr/include /usr/X11R6/include/X11/qt $x_includes $QTINC"
 test -n "$QTDIR" && qt2_incdirs="$QTDIR/include/qt2 $QTDIR/include/qt $QTDIR/include $QTDIR $qt2_incdirs"
 AC_FIND_FILE(qmovie.h, $qt2_incdirs, qt2_incdir)
 ac_qt2_includes="$qt2_incdir"
