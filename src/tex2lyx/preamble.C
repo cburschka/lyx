@@ -41,9 +41,9 @@ extern std::map<char, int> special_columns;
 
 namespace {
 
-const char * known_languages[] = { "austrian", "babel", "bahasa", "basque",
-"breton", "british", "bulgarian", "catalan", "croatian", "czech", "danish",
-"dutch", "english", "esperanto", "estonian", "finnish", "francais",
+const char * const known_languages[] = { "austrian", "babel", "bahasa",
+"basque", "breton", "british", "bulgarian", "catalan", "croatian", "czech",
+"danish", "dutch", "english", "esperanto", "estonian", "finnish", "francais",
 "frenchb", "galician", "german", "germanb", "greek", "hebcal", "hebfont",
 "hebrew", "hebrew_newcode", "hebrew_oldcode", "hebrew_p", "hyphen",
 "icelandic", "irish", "italian", "latin", "lgrcmr", "lgrcmro", "lgrcmss",
@@ -54,7 +54,7 @@ const char * known_languages[] = { "austrian", "babel", "bahasa", "basque",
 "russianb", "samin", "scottish", "serbian", "slovak", "slovene", "spanish",
 "swedish", "turkish", "ukraineb", "usorbian", "welsh", 0};
 
-char const * known_fontsizes[] = { "10pt", "11pt", "12pt", 0 };
+char const * const known_fontsizes[] = { "10pt", "11pt", "12pt", 0 };
 
 // some ugly stuff
 ostringstream h_preamble;
@@ -86,7 +86,7 @@ string h_paperpagestyle          = "default";
 string h_tracking_changes        = "0";
 
 
-void handle_opt(vector<string> & opts, char const ** what, string & target)
+void handle_opt(vector<string> & opts, char const * const * what, string & target)
 {
 	if (opts.empty())
 		return;

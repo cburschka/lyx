@@ -25,14 +25,15 @@ using std::string;
 
 bool is_math_env(string const & name)
 {
-	static char const * known_math_envs[] = { "equation", "equation*",
-	"eqnarray", "eqnarray*", "align", "align*", "gather", "gather*",
-	"multline", "multline*", "math", "displaymath", "flalign", "flalign*",
+	static char const * const known_math_envs[] = { "equation",
+	"equation*", "eqnarray", "eqnarray*", "align", "align*", "gather",
+	"gather*", "multline", "multline*", "math", "displaymath", "flalign",
+	"flalign*",
 	// These require extra args
 	"alignat", "alignat*", "xalignat", "xalignat*", "xxalignat",
 	0};
 
-	for (char const ** what = known_math_envs; *what; ++what)
+	for (char const * const * what = known_math_envs; *what; ++what)
 		if (*what == name)
 			return true;
 	return false;

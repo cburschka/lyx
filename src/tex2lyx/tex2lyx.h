@@ -56,7 +56,7 @@ std::string join(std::vector<std::string> const & input,
 	char const * delim);
 
 bool is_math_env(std::string const & name);
-char const ** is_known(std::string const & str, char const ** what);
+char const * const * is_known(std::string const &, char const * const *);
 
 // Access to environment stack
 extern std::vector<std::string> active_environments;

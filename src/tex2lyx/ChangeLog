@@ -1,3 +1,13 @@
+2004-06-28  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* math.C, preamble.C, tex2lyx.[Ch], text.C: const fixes
+	* context.[Ch]: new Font struct, and add it to Context
+	* text.C (parse_text): reset size after size change
+	* text.C: handle declaration form of font attribute changes (new
+	and old style)
+	* text.C (parse_text): handle \textmd, \textup and \textnormal
+	* text.C (parse_text_attributes): new
+
 2004-06-23  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* text.C (output_command_layout, parse_environment): fix bug 1446

@@ -49,12 +49,14 @@ void end_deeper(ostream & os)
 
 Context::Context(bool need_layout_,
 		 LyXTextClass const & textclass_,
-		 LyXLayout_ptr layout_, LyXLayout_ptr parent_layout_)
+		 LyXLayout_ptr layout_, LyXLayout_ptr parent_layout_,
+                 Font font_)
 	: need_layout(need_layout_),
 	  need_end_layout(false), need_end_deeper(false),
 	  has_item(false), deeper_paragraph(false),
 	  textclass(textclass_),
-	  layout(layout_), parent_layout(parent_layout_)
+	  layout(layout_), parent_layout(parent_layout_),
+	  font(font_)
 {
 	if (!layout.get())
 		layout = textclass.defaultLayout();

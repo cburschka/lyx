@@ -14,12 +14,41 @@
 
 #include "lyxtextclass.h"
 
+
+/*!
+ * Small helper struct that holds font properties.
+ * The names are in LyX language, not LaTeX.
+ * We don't use LyXFont, because it pulls in a lot of dependencies and has
+ * more strings than needed (e.g. font family error1 etc.).
+ * If more font related stuff is needed, it might be good to change to
+ * LyXFont.
+ */
+struct Font {
+	Font()
+	{
+		init();
+	}
+	void init()
+	{
+		size = "normal";
+		family = "default";
+		series = "default";
+		shape = "default";
+	}
+	std::string size;
+	std::string family;
+	std::string series;
+	std::string shape;
+};
+
+
 // A helper struct
 struct Context {
 	Context(bool need_layout_,
 		LyXTextClass const & textclass_,
 		LyXLayout_ptr layout_ = LyXLayout_ptr(),
-		LyXLayout_ptr parent_layout_= LyXLayout_ptr());
+		LyXLayout_ptr parent_layout_= LyXLayout_ptr(),
+	        Font font_ = Font());
 
 	// Output a \begin_layout is requested
 	void check_layout(std::ostream & os);
@@ -73,6 +102,8 @@ struct Context {
 	LyXLayout_ptr layout;
 	// The layout of the outer paragraph (for environment layouts)
 	LyXLayout_ptr parent_layout;
+	/// font attributes of this context
+	Font font;
 };
 
 

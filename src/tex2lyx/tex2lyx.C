@@ -95,7 +95,7 @@ string join(vector<string> const & input, char const * delim)
 }
 
 
-char const ** is_known(string const & str, char const ** what)
+char const * const * is_known(string const & str, char const * const * what)
 {
 	for ( ; *what; ++what)
 		if (str == *what)

@@ -42,7 +42,7 @@ using std::string;
 using std::vector;
 
 
-// thin wrapper around parse_text using a string
+/// thin wrapper around parse_text using a string
 string parse_text(Parser & p, unsigned flags, const bool outer,
 		  Context & context)
 {
@@ -51,21 +51,23 @@ string parse_text(Parser & p, unsigned flags, const bool outer,
 	return os.str();
 }
 
-// parses a subdocument, usually useful in insets (whence the name)
+
 void parse_text_in_inset(Parser & p, ostream & os, unsigned flags, bool outer,
 		Context & context)
 {
 	Context newcontext(true, context.textclass);
+	newcontext.font = context.font;
 	parse_text(p, os, flags, outer, newcontext);
 	newcontext.check_end_layout(os);
 }
 
 
-// parses a paragraph snippet, useful for example for \emph{...}
+/// parses a paragraph snippet, useful for example for \emph{...}
 void parse_text_snippet(Parser & p, ostream & os, unsigned flags, bool outer,
 		Context & context)
 {
 	Context newcontext(false, context.textclass);
+	newcontext.font = context.font;
 	parse_text(p, os, flags, outer, newcontext);
 	// should not be needed
 	newcontext.check_end_layout(os);
@@ -74,24 +76,58 @@ void parse_text_snippet(Parser & p, ostream & os, unsigned flags, bool outer,
 
 namespace {
 
-char const * known_latex_commands[] = { "ref", "cite", "label", "index",
+char const * const known_latex_commands[] = { "ref", "cite", "label", "index",
 "printindex", "pageref", "url", "vref", "vpageref", "prettyref", "eqref", 0 };
 
-// LaTeX names for quotes
-char const * known_quotes[] = { "glqq", "grqq", "quotedblbase",
+/// LaTeX names for quotes
+char const * const known_quotes[] = { "glqq", "grqq", "quotedblbase",
 "textquotedblleft", "quotesinglbase", "guilsinglleft", "guilsinglright", 0};
 
-// the same as known_quotes with .lyx names
-char const * known_coded_quotes[] = { "gld", "grd", "gld",
+/// the same as known_quotes with .lyx names
+char const * const known_coded_quotes[] = { "gld", "grd", "gld",
 "grd", "gls", "fls", "frd", 0};
 
-char const * known_sizes[] = { "tiny", "scriptsize", "footnotesize",
+/// LaTeX names for font sizes
+char const * const known_sizes[] = { "tiny", "scriptsize", "footnotesize",
 "small", "normalsize", "large", "Large", "LARGE", "huge", "Huge", 0};
 
-char const * known_coded_sizes[] = { "tiny", "scriptsize", "footnotesize",
+/// the same as known_sizes with .lyx names
+char const * const known_coded_sizes[] = { "tiny", "scriptsize", "footnotesize",
 "small", "normal", "large", "larger", "largest",  "huge", "giant", 0};
 
-// splits "x=z, y=b" into a map
+/// LaTeX 2.09 names for font families
+char const * const known_old_font_families[] = { "rm", "sf", "tt", 0};
+
+/// LaTeX names for font families
+char const * const known_font_families[] = { "rmfamily", "sffamily",
+"ttfamily", 0};
+
+/// the same as known_old_font_families and known_font_families with .lyx names
+char const * const known_coded_font_families[] = { "roman", "sans",
+"typewriter", 0};
+
+/// LaTeX 2.09 names for font series
+char const * const known_old_font_series[] = { "bf", 0};
+
+/// LaTeX names for font series
+char const * const known_font_series[] = { "bfseries", "mdseries", 0};
+
+/// the same as known_old_font_series and known_font_series with .lyx names
+char const * const known_coded_font_series[] = { "bold", "medium", 0};
+
+/// LaTeX 2.09 names for font shapes
+char const * const known_old_font_shapes[] = { "it", "sl", "sc", 0};
+
+/// LaTeX names for font shapes
+char const * const known_font_shapes[] = { "itshape", "slshape", "scshape",
+"upshape", 0};
+
+/// the same as known_old_font_shapes and known_font_shapes with .lyx names
+char const * const known_coded_font_shapes[] = { "italic", "slanted",
+"smallcaps", "up", 0};
+
+
+/// splits "x=z, y=b" into a map
 map<string, string> split_map(string const & s)
 {
 	map<string, string> res;
@@ -322,7 +358,7 @@ void output_command_layout(ostream & os, Parser & p, bool outer,
 {
 	parent_context.check_end_layout(os);
 	Context context(true, parent_context.textclass, newlayout,
-			parent_context.layout);
+			parent_context.layout, parent_context.font);
 	if (parent_context.deeper_paragraph) {
 		// We are beginning a nested environment after a
 		// deeper paragraph inside the outer list environment.
@@ -599,7 +635,7 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 	else if ((newlayout = findLayout(parent_context.textclass, name)).get() &&
 		   newlayout->isEnvironment()) {
 		Context context(true, parent_context.textclass, newlayout,
-				parent_context.layout);
+				parent_context.layout, parent_context.font);
 		if (parent_context.deeper_paragraph) {
 			// We are beginning a nested environment after a
 			// deeper paragraph inside the outer list environment.
@@ -636,7 +672,7 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 		// This is no good latex style, but it works and is used in some documents...
 		parent_context.check_end_layout(os);
 		Context context(true, parent_context.textclass, parent_context.layout,
-				parent_context.layout);
+				parent_context.layout, parent_context.font);
 		context.check_layout(os);
 		os << "\\start_of_appendix\n";
 		parse_text(p, os, FLAG_END, outer, context);
@@ -720,6 +756,27 @@ void eat_whitespace(Parser & p, ostream & os, Context & context,
 			return;
 		}
 	}
+}
+
+
+/*!
+ * Set a font attribute, parse text and reset the font attribute.
+ * \param attribute Attribute name (e.g. \\family, \\shape etc.)
+ * \param currentvalue Current value of the attribute. Is set to the new
+ * value during parsing.
+ * \param newvalue New value of the attribute
+ */
+void parse_text_attributes(Parser & p, ostream & os, unsigned flags, bool outer,
+                           Context & context, string const & attribute,
+                           string & currentvalue, string const & newvalue)
+{
+	context.check_layout(os);
+	string oldvalue = currentvalue;
+	currentvalue = newvalue;
+	os << '\n' << attribute << ' ' << newvalue << " \n";
+	parse_text_snippet(p, os, flags, outer, context);
+	currentvalue = oldvalue;
+	os << '\n' << attribute << ' ' << oldvalue << " \n";
 }
 
 } // anonymous namespace
@@ -835,19 +892,54 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		}
 
 		else if (t.cat() == catBegin) {
-			// special handling of size changes
 			context.check_layout(os);
-			bool const is_size = is_known(p.next_token().cs(), known_sizes);
+			// special handling of font attribute changes
 			Token const prev = p.prev_token();
-			string const s = parse_text(p, FLAG_BRACE_LAST, outer, context);
+			Token const next = p.next_token();
+			Font const oldFont = context.font;
+			string const s = parse_text(p, FLAG_BRACE_LAST, outer,
+			                            context);
+			context.font = oldFont;
 			if (s.empty() && (p.next_token().character() == '`' ||
-			                  (prev.character() == '-' && p.next_token().character())))
+			                  (prev.character() == '-' &&
+			                   p.next_token().character() == '-')))
 				; // ignore it in {}`` or -{}-
-			else if (is_size || s == "[" || s == "]" || s == "*")
+			else if (s == "[" || s == "]" || s == "*")
 				os << s;
+			else if (is_known(next.cs(), known_sizes))
+				// s will change the size, so we must reset
+				// it here
+				os << s << "\n\\size " << context.font.size
+				   << " \n";
+			else if (is_known(next.cs(), known_font_families))
+				// s will change the font family, so we must
+				// reset it here
+				os << s << "\n\\family "
+				   << context.font.family << " \n";
+			else if (is_known(next.cs(), known_font_series))
+				// s will change the font series, so we must
+				// reset it here
+				os << s << "\n\\series "
+				   << context.font.series << " \n";
+			else if (is_known(next.cs(), known_font_shapes))
+				// s will change the font shape, so we must
+				// reset it here
+				os << s << "\n\\shape "
+				   << context.font.shape << " \n";
+			else if (is_known(next.cs(), known_old_font_families) ||
+			         is_known(next.cs(), known_old_font_series) ||
+			         is_known(next.cs(), known_old_font_shapes))
+				// s will change the font family, series
+				// and shape, so we must reset it here
+				os << s
+				   <<  "\n\\family " << context.font.family
+				   << " \n\\series " << context.font.series
+				   << " \n\\shape "  << context.font.shape
+				   << " \n";
 			else {
 				handle_ert(os, "{", context, false);
-				// s will end the current layout and begin a new one if necessary
+				// s will end the current layout and begin a
+				// new one if necessary
 				os << s;
 				handle_ert(os, "}", context);
 			}
@@ -908,6 +1000,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			if (p.next_token().character() == '[') {
 				p.get_token(); // eat '['
 				Context newcontext(false, context.textclass);
+				newcontext.font = context.font;
 				s = parse_text(p, FLAG_BRACK_LAST, outer, newcontext);
 				optarg = true;
 			}
@@ -915,12 +1008,14 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			context.check_layout(os);
 			if (optarg) {
 				if (context.layout->labeltype != LABEL_MANUAL) {
-					// lyx does not support \item[\mybullet] in itemize environments
+					// lyx does not support \item[\mybullet]
+					// in itemize environments
 					handle_ert(os, "[", context);
 					os << s;
 					handle_ert(os, "]", context);
 				} else if (!s.empty()) {
-					// The space is needed to separate the item from the rest of the sentence.
+					// The space is needed to separate the
+					// item from the rest of the sentence.
 					os << s << ' ';
 					eat_whitespace(p, os, context, false);
 				}
@@ -1093,6 +1188,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			p.skip_spaces();
 			context.check_layout(os);
 			Context newcontext(false, context.textclass);
+			newcontext.font = context.font;
 			string s = parse_text(p, FLAG_ITEM, false, newcontext);
 			if (s == "±" || s == "³" || s == "²" || s == "µ")
 				os << s;
@@ -1150,53 +1246,67 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				handle_ert(os, "\\listof{" + name + "}", context);
 		}
 
-		else if (t.cs() == "textrm") {
-			context.check_layout(os);
-			os << "\n\\family roman \n";
-			parse_text_snippet(p, os, FLAG_ITEM, outer, context);
-			os << "\n\\family default \n";
-		}
+		else if (t.cs() == "textrm")
+			parse_text_attributes(p, os, FLAG_ITEM, outer,
+			                      context, "\\family",
+			                      context.font.family, "roman");
 
-		else if (t.cs() == "textsf") {
-			context.check_layout(os);
-			os << "\n\\family sans \n";
-			parse_text_snippet(p, os, FLAG_ITEM, outer, context);
-			os << "\n\\family default \n";
-		}
+		else if (t.cs() == "textsf")
+			parse_text_attributes(p, os, FLAG_ITEM, outer,
+			                      context, "\\family",
+			                      context.font.family, "sans");
 
-		else if (t.cs() == "textsl") {
-			context.check_layout(os);
-			os << "\n\\shape slanted \n";
-			parse_text_snippet(p, os, FLAG_ITEM, outer, context);
-			os << "\n\\shape default \n";
-		}
+		else if (t.cs() == "texttt")
+			parse_text_attributes(p, os, FLAG_ITEM, outer,
+			                      context, "\\family",
+			                      context.font.family, "typewriter");
 
-		else if (t.cs() == "texttt") {
-			context.check_layout(os);
-			os << "\n\\family typewriter \n";
-			parse_text_snippet(p, os, FLAG_ITEM, outer, context);
-			os << "\n\\family default \n";
-		}
+		else if (t.cs() == "textmd")
+			parse_text_attributes(p, os, FLAG_ITEM, outer,
+			                      context, "\\series",
+			                      context.font.series, "medium");
 
-		else if (t.cs() == "textit") {
-			context.check_layout(os);
-			os << "\n\\shape italic \n";
-			parse_text_snippet(p, os, FLAG_ITEM, outer, context);
-			os << "\n\\shape default \n";
-		}
+		else if (t.cs() == "textbf")
+			parse_text_attributes(p, os, FLAG_ITEM, outer,
+			                      context, "\\series",
+			                      context.font.series, "bold");
 
-		else if (t.cs() == "textsc") {
-			context.check_layout(os);
-			os << "\n\\noun on \n";
-			parse_text_snippet(p, os, FLAG_ITEM, outer, context);
-			os << "\n\\noun default \n";
-		}
+		else if (t.cs() == "textup")
+			parse_text_attributes(p, os, FLAG_ITEM, outer,
+			                      context, "\\shape",
+			                      context.font.shape, "up");
 
-		else if (t.cs() == "textbf") {
+		else if (t.cs() == "textit")
+			parse_text_attributes(p, os, FLAG_ITEM, outer,
+			                      context, "\\shape",
+			                      context.font.shape, "italic");
+
+		else if (t.cs() == "textsl")
+			parse_text_attributes(p, os, FLAG_ITEM, outer,
+			                      context, "\\shape",
+			                      context.font.shape, "slanted");
+
+		else if (t.cs() == "textsc")
+			parse_text_attributes(p, os, FLAG_ITEM, outer,
+			                      context, "\\shape",
+			                      context.font.shape, "smallcaps");
+
+		else if (t.cs() == "textnormal" || t.cs() == "normalfont") {
 			context.check_layout(os);
-			os << "\n\\series bold \n";
-			parse_text_snippet(p, os, FLAG_ITEM, outer, context);
-			os << "\n\\series default \n";
+			Font oldFont = context.font;
+			context.font.init();
+			context.font.size = oldFont.size;
+			os << "\n\\family " << context.font.family << " \n";
+			os << "\n\\series " << context.font.series << " \n";
+			os << "\n\\shape " << context.font.shape << " \n";
+			if (t.cs() == "textnormal") {
+				parse_text_snippet(p, os, FLAG_ITEM, outer, context);
+				context.font = oldFont;
+				os << "\n\\shape " << oldFont.shape << " \n";
+				os << "\n\\series " << oldFont.series << " \n";
+				os << "\n\\family " << oldFont.family << " \n";
+			} else
+				eat_whitespace(p, os, context, false);
 		}
 
 		else if (t.cs() == "underbar") {
@@ -1224,7 +1334,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		}
 
 		else if (is_known(t.cs(), known_quotes)) {
-			char const ** where = is_known(t.cs(), known_quotes);
+			char const * const * where = is_known(t.cs(), known_quotes);
 			context.check_layout(os);
 			begin_inset(os, "Quotes ");
 			os << known_coded_quotes[where - known_quotes];
@@ -1237,9 +1347,84 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		}
 
 		else if (is_known(t.cs(), known_sizes)) {
-			char const ** where = is_known(t.cs(), known_sizes);
+			char const * const * where = is_known(t.cs(), known_sizes);
 			context.check_layout(os);
-			os << "\n\\size " << known_coded_sizes[where - known_sizes] << "\n";
+			context.font.size = known_coded_sizes[where - known_sizes];
+			os << "\n\\size " << context.font.size << '\n';
+			eat_whitespace(p, os, context, false);
+		}
+
+		else if (is_known(t.cs(), known_font_families)) {
+			char const * const * where =
+				is_known(t.cs(), known_font_families);
+			context.check_layout(os);
+			context.font.family =
+				known_coded_font_families[where - known_font_families];
+			os << "\n\\family " << context.font.family << '\n';
+			eat_whitespace(p, os, context, false);
+		}
+
+		else if (is_known(t.cs(), known_font_series)) {
+			char const * const * where =
+				is_known(t.cs(), known_font_series);
+			context.check_layout(os);
+			context.font.series =
+				known_coded_font_series[where - known_font_series];
+			os << "\n\\series " << context.font.series << '\n';
+			eat_whitespace(p, os, context, false);
+		}
+
+		else if (is_known(t.cs(), known_font_shapes)) {
+			char const * const * where =
+				is_known(t.cs(), known_font_shapes);
+			context.check_layout(os);
+			context.font.shape =
+				known_coded_font_shapes[where - known_font_shapes];
+			os << "\n\\shape " << context.font.shape << '\n';
+			eat_whitespace(p, os, context, false);
+		}
+		else if (is_known(t.cs(), known_old_font_families)) {
+			char const * const * where =
+				is_known(t.cs(), known_old_font_families);
+			context.check_layout(os);
+			string oldsize = context.font.size;
+			context.font.init();
+			context.font.size = oldsize;
+			context.font.family =
+				known_coded_font_families[where - known_old_font_families];
+			os << "\n\\family " << context.font.family << " \n"
+			   <<   "\\series " << context.font.series << " \n"
+			   <<   "\\shape "  << context.font.shape  << " \n";
+			eat_whitespace(p, os, context, false);
+		}
+
+		else if (is_known(t.cs(), known_old_font_series)) {
+			char const * const * where =
+				is_known(t.cs(), known_old_font_series);
+			context.check_layout(os);
+			string oldsize = context.font.size;
+			context.font.init();
+			context.font.size = oldsize;
+			context.font.series =
+				known_coded_font_series[where - known_old_font_series];
+			os << "\n\\family " << context.font.family << " \n"
+			   <<   "\\series " << context.font.series << " \n"
+			   <<   "\\shape "  << context.font.shape  << " \n";
+			eat_whitespace(p, os, context, false);
+		}
+
+		else if (is_known(t.cs(), known_old_font_shapes)) {
+			char const * const * where =
+				is_known(t.cs(), known_old_font_shapes);
+			context.check_layout(os);
+			string oldsize = context.font.size;
+			context.font.init();
+			context.font.size = oldsize;
+			context.font.shape =
+				known_coded_font_shapes[where - known_old_font_shapes];
+			os << "\n\\family " << context.font.family << " \n"
+			   <<   "\\series " << context.font.series << " \n"
+			   <<   "\\shape "  << context.font.shape  << " \n";
 			eat_whitespace(p, os, context, false);
 		}
 
