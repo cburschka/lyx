@@ -176,6 +176,9 @@ bool MathNestInset::covers(int x, int y) const
 		x1 = std::max(x1, xcell(i).xo() + xcell(i).width());
 		y1 = std::max(y1, xcell(i).yo() + xcell(i).descent());
 	}
+	//lyxerr << "xO: " << x0 << " x1: " << x1 << " "
+	//       << "yO: " << y0 << " y1: " << y1 <<  "         "
+	//       << "x: " << x << " y: " << y << '\n';
 	return x >= x0 && x <= x1 && y >= y0 && y <= y1;
 }
 

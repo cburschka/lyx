@@ -218,12 +218,12 @@ void MathCursor::seldump(char const * str) const
 
 	lyxerr << "\n\n\n=================vvvvvvvvvvvvv=======================   "
 		<<  str << "\ntheSelection: " << selection_
-		<< " '" << theSelection.glue() << "'\n";
+		<< " '" /*<< theSelection.glue()*/ << "'\nCursor:";
 	for (unsigned int i = 0; i < Cursor_.size(); ++i) 
-		lyxerr << Cursor_[i].par_ << "\n'" << Cursor_[i].cell() << "'\n";
-	lyxerr << "\n";
+		lyxerr << Cursor_[i].par_ << "\n'" /*<< Cursor_[i].cell()*/ << "'\n";
+	lyxerr << "\nAnchor: ";
 	for (unsigned int i = 0; i < Anchor_.size(); ++i) 
-		lyxerr << Anchor_[i].par_ << "\n'" << Anchor_[i].cell() << "'\n";
+		lyxerr << Anchor_[i].par_ << "\n'" /*<< Anchor_[i].cell()*/ << "'\n";
 	//lyxerr << "\ncursor.pos_: " << pos();
 	//lyxerr << "\nanchor.pos_: " << anchor().pos_;
 	lyxerr << "\n===================^^^^^^^^^^^^=====================\n\n\n";
@@ -278,12 +278,14 @@ bool MathCursor::positionable(MathAtom const & t, int x, int y) const
 {
 	if (selection_) {
 		// we can't move into anything new during selection
-		if (Cursor_.size() == Anchor_.size())
-			return 0;
-		//if (t != Anchor_[Cursor_.size()].par_)
-		//	return 0;
+		if (Cursor_.size() >= Anchor_.size())
+			return false;
+		if (&t != Anchor_[Cursor_.size()].par_)
+			return false;
 	}
 
+	//lyxerr << " positionable: 1 " << t->nargs() << "\n";
+	//lyxerr << " positionable: 2 " << t->covers(x, y) << "\n";
 	return t->nargs() && t->covers(x, y);
 }
 
@@ -369,7 +371,7 @@ void MathCursor::last()
 }
 
 
-void MathCursor::setPos(int x, int y, bool respect_anchor)
+void MathCursor::setPos(int x, int y)
 {
 	//dump("setPos 1");
 	//lyxerr << "MathCursor::setPos x: " << x << " y: " << y << "\n";
@@ -400,25 +402,13 @@ void MathCursor::setPos(int x, int y, bool respect_anchor)
 				pos()   = c;
 			}
 		}
-		//lyxerr << "found idx: " << idx() << " cursor: "
-		//	<< pos()  << "\n";
+		//lyxerr << "found idx: " << idx() << " cursor: " << pos()  << "\n";
 		if (hasNextAtom() && positionable(nextAtom(), x, y))
 			pushLeft(nextAtom());
 		else if (hasPrevAtom() && positionable(prevAtom(), x, y))
 			pushRight(prevAtom());
 		else 
 			break;
-
-		if (respect_anchor) {
-			if (Cursor_.size() > Anchor_.size()) {
-				popLeft();
-				break;
-			}
-			if (Anchor_[Cursor_.size() - 1].par_ != Cursor_.back().par_) {
-				popLeft();
-				break;
-			}
-		}
 	}
 	//dump("setPos 2");
 }
@@ -750,7 +740,6 @@ void MathCursor::selHandle(bool sel)
 {
 	if (sel == selection_)
 		return;
-
 	theSelection.clear();
 	Anchor_    = Cursor_;
 	selection_ = sel;

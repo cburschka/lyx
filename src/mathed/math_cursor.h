@@ -110,8 +110,7 @@ public:
 	///
 	void delLine();
 	/// This is in pixels from (maybe?) the top of inset
-	// don't move further in than the Anchor's inset if respect_anchor == true
-	void setPos(int x, int y, bool respect_anchor = false);
+	void setPos(int x, int y);
 	/// This is in pixels from (maybe?) the top of inset, don't move further
 	///
 	void getPos(int & x, int & y);

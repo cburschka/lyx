@@ -56,8 +56,8 @@ namespace {
 // local global
 int sel_x;
 int sel_y;
-int last_x;
-int last_y;
+int first_x;
+int first_y;
 
 
 void handleFont(BufferView * bv, MathTextCodes t) 
@@ -242,10 +242,11 @@ void InsetFormulaBase::updateLocal(BufferView * bv, bool dirty)
 
 
 void InsetFormulaBase::insetButtonRelease(BufferView * bv,
-					  int /*x*/, int /*y*/, int /*button*/)
+					  int x, int y, int /*button*/)
 {
 	if (!mathcursor)
 		return;
+	//lyxerr << "insetButtonRelease: " << x << " " << y << "\n";
 	hideInsetCursor(bv);
 	showInsetCursor(bv);
 	bv->updateInset(this, false);
@@ -255,15 +256,13 @@ void InsetFormulaBase::insetButtonRelease(BufferView * bv,
 void InsetFormulaBase::insetButtonPress(BufferView * bv,
 					int x, int y, int /*button*/)
 {
-	if (!mathcursor)
-		return;
 	//lyxerr << "insetButtonPress: " << x + xo_ << " " << y + yo_ << "\n";
-	sel_x = x + xo_;
-	sel_y = y + yo_;
-	last_x = x;
-	last_y = y;
-	mathcursor->setPos(x + xo_, y + yo_);
-	mathcursor->selStart();
+	first_x = x;
+	first_y = y;
+	if (mathcursor) {
+		mathcursor->selClear();
+		mathcursor->setPos(x + xo_, y + yo_);
+	}
 	bv->updateInset(this, false);
 }
 
@@ -274,23 +273,22 @@ void InsetFormulaBase::insetMotionNotify(BufferView * bv,
 	if (!mathcursor)
 		return;
 
-	if (abs(x - last_x) < 2 && abs(y - last_y) < 2) {
+	if (abs(x - first_x) < 2 && abs(y - first_y) < 2) {
 		//lyxerr << "insetMotionNotify: ignored\n";
 		return;
 	}
-	last_x = x;
-	last_y = y;
+	first_x = x;
+	first_y = y;
+
+	if (!mathcursor->selection()) 
+		mathcursor->selStart();
 	
-	//lyxerr << "insetMotionNotify: " << x + xo_ << " " << y + yo_
+	//lyxerr << "insetMotionNotify: " << x + xo_ << ' ' << y + yo_
 	//	<< ' ' << button << "\n";
-	if (button == 256) {
-		hideInsetCursor(bv);
-		mathcursor->setPos(x + xo_, y + xo_);
-		showInsetCursor(bv);
-		bv->updateInset(this, false);
-	} else {
-		insetButtonPress(bv, x, y, button);
-	}
+	hideInsetCursor(bv);
+	mathcursor->setPos(x + xo_, y + yo_);
+	showInsetCursor(bv);
+	bv->updateInset(this, false);
 }
 
 
