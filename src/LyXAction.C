@@ -525,7 +525,8 @@ kb_action LyXAction::retrieveActionArg(int pseudo, string & arg) const
 		arg = pit->second.arg;
 		return pit->second.action;
 	} else {
-		lyxerr << "Lyx Error: Unrecognized pseudo-action\n";
+		lyxerr << "Lyx Error: Unrecognized pseudo-action "
+			<< pseudo << endl;
 		return LFUN_UNKNOWN_ACTION;
 	}
 }
