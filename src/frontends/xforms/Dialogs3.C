@@ -130,11 +130,13 @@ Dialog * Dialogs::build(string const & name)
 		dialog->setButtonController(new NoRepeatedApplyReadOnlyBC);
 	} else if (name == "index") {
 		dialog->setController(new ControlIndex(*dialog));
-		dialog->setView(new FormText(*dialog, _("Index")));
+		dialog->setView(new FormText(*dialog,
+					     _("Index"), _("Keyword:|#K")));
 		dialog->setButtonController(new NoRepeatedApplyReadOnlyBC);
 	} else if (name == "label") {
 		dialog->setController(new ControlLabel(*dialog));
-		dialog->setView(new FormText(*dialog, _("Label")));
+		dialog->setView(new FormText(*dialog,
+					     _("Label"), _("Label:|#L")));
 		dialog->setButtonController(new NoRepeatedApplyReadOnlyBC);
 	} else if (name == "ref") {
 		dialog->setController(new ControlRef(*dialog));

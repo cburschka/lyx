@@ -1,3 +1,10 @@
+2003-03-04  Angus Leeming  <leeming@lyx.org>
+
+	* FormText.[Ch]: the label of the input widget is passed to the
+	FormText c-tor and used in the build method. 
+
+	* Dialogs3.C: pass an extra arg to the FormText c-tor.
+
 2003-02-28  Alfredo Braunstein <abraunst@libero.it>
 
 	* FormPreferences.C
