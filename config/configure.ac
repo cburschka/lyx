@@ -367,6 +367,7 @@ AC_CONFIG_FILES([Makefile \
        intl/Makefile \
        po/Makefile.in \
        sourcedoc/Doxyfile \
+       sourcedoc/Makefile \
        src/Makefile \
        src/version.C \
        src/mathed/Makefile \

@@ -1,17 +1,15 @@
 include $(top_srcdir)/config/common.am
 
-DISTCLEANFILES += lyx.1 config.status config.cache config.log \
-	$(srcdir)/sourcedoc/*~ $(srcdir)/sourcedoc/Doxyfile
+DISTCLEANFILES += lyx.1 config.status config.cache config.log 
 
 MAINTAINERCLEANFILES += $(srcdir)/aclocal.m4 \
 	$(srcdir)/configure \
 	$(srcdir)/acinclude.m4
 
-SUBDIRS = config development intl po boost src lib
+SUBDIRS = config development intl po boost src sourcedoc lib
 
 EXTRA_DIST = ANNOUNCE INSTALL.OS2 INSTALL.autoconf README.OS2 \
-	UPGRADING lyx.man autogen.sh \
-	images sourcedoc
+	UPGRADING lyx.man autogen.sh images
 
 # Hack so that the targets that use tar will also work with automake 1.4
 AMTAR ?= $(TAR)
