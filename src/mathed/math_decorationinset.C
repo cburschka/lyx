@@ -73,7 +73,7 @@ void MathDecorationInset::metrics(MathMetricsInfo const & st) const
 	ascent_  = xcell(0).ascent();
 	descent_ = xcell(0).descent();
 
-	dh_ = 5; //mathed_char_height(LM_TC_VAR, size(), 'I', ascent_, descent_);  
+	dh_ = 6; //mathed_char_height(LM_TC_VAR, size(), 'I', ascent_, descent_);  
 
 	if (upper()) {
 		dy_ = -ascent_ - dh_;
@@ -91,7 +91,7 @@ void MathDecorationInset::draw(Painter & pain, int x, int y) const
 	if (wide()) 
 		mathed_draw_deco(pain, x, y + dy_, width_, dh_, name_);
 	else {
-		int w = 2 + mathed_char_width(LM_TC_VAR, size_, 'x'); 
+		int w = mathed_char_width(LM_TC_VAR, size_, 'x'); 
 		mathed_draw_deco(pain, x + (width_ - w) / 2, y + dy_, w, dh_, name_);
 	}
 }

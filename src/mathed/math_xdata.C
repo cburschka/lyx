@@ -21,16 +21,16 @@ MathXArray::MathXArray()
 void MathXArray::metrics(MathMetricsInfo const & mi) const
 {
 	size_ = mi;
-	mathed_char_dim(LM_TC_VAR, mi, 'I', ascent_, descent_, width_);
 
-	if (data_.empty()) 
+	if (data_.empty()) {
+		mathed_char_dim(LM_TC_VAR, mi, 'I', ascent_, descent_, width_);
 		return;
+	}
 
-	math_font_max_dim(LM_TC_TEXTRM, mi, ascent_, descent_);	
-	width_ = 0;
+	ascent_  = 0;
+	descent_ = 0;
+	width_   = 0;
 
-	//lyxerr << "MathXArray::metrics(): '" << data_ << "'\n";
-	
 	for (const_iterator it = begin(); it != end(); ++it) {
 		MathInset const * p = it->nucleus();
 		MathScriptInset const * q = (it + 1 == end()) ? 0 : asScript(it);
