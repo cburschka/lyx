@@ -12,7 +12,7 @@
 #include "debug.h"
 #include "Painter.h"
 
-using namespace std;
+//using namespace std;
 
 MathMacroTemplate::MathMacroTemplate() :
 	MathParInset(LM_ST_TEXT, "undefined", LM_OT_MACRO),

@@ -10,8 +10,7 @@
 #include "Lsstream.h"
 #include "debug.h"
 
-
-using namespace std;
+using std::endl;
 
 MathMacroArgument::MathMacroArgument(int n)
 	: MathedInset(string(), LM_OT_MACRO_ARG, LM_ST_TEXT),

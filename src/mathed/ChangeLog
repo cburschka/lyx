@@ -1,3 +1,14 @@
+2001-05-02  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* math_macrotemplate.h: do not use explicitely std::string, but
+	string. 
+
+	* math_macroarg.C: avoid bringing the whole std:: namespace in
+	global-land. When you do that, there is an ambiguity between
+	lyxstring and std::string (which may be defined at the same time).
+
+	* formula.C (HandleExtern): add .c_str() to .str() (useful when
+	using lyxtring)
 
 2001-04-27 André Pönitz  <poenitz@htwm.de>
 

@@ -1419,7 +1419,7 @@ void InsetFormula::HandleExtern(const string & arg, BufferView * bv)
 	string outfile = "/tmp/lyx2" + arg + ".out";
 	ostringstream os;
 	par->WriteNormal(os); 
-	string code = os.str();
+	string code = os.str().c_str();
 	string script = "lyx2" + arg + " '" + code + "' " + outfile;
 	lyxerr << "calling: " << script << endl;
 	Systemcalls cmd(Systemcalls::System, script, 0);

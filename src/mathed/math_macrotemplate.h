@@ -22,7 +22,7 @@ public:
 	///
 	MathMacroTemplate();
 	///
-	MathMacroTemplate(std::string const & name, int nargs);
+	MathMacroTemplate(string const & name, int nargs);
 	///
 	void WriteDef(std::ostream &, bool fragile) const;
 	/// Number of arguments
