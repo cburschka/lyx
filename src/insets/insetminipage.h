@@ -4,9 +4,9 @@
  * 
  *           LyX, The Document Processor
  *
- *           Copyright 1998 The LyX Team.
+ *           Copyright 2001 The LyX Team.
  *
- *======================================================
+ * ======================================================
  */
 
 #ifndef InsetMinipage_H
@@ -49,6 +49,10 @@ public:
 	///
 	Inset * Clone(Buffer const &) const;
 	///
+	int ascent(BufferView *, LyXFont const &) const;
+	///
+	int descent(BufferView *, LyXFont const &) const;
+	///
 	Inset::Code LyxCode() const { return Inset::MINIPAGE_CODE; }
 	///
 	int Latex(Buffer const *, std::ostream &, bool fragile, bool fp) const;
@@ -86,8 +90,6 @@ public:
 	int getMaxWidth(Painter &, UpdatableInset const *) const;
 	///
 	bool needFullRow() const { return false; }
-	
-
 private:
 	///
 	Position pos_;

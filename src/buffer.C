@@ -2809,7 +2809,8 @@ void linux_doc_line_break(ostream & os, string::size_type & colcount,
 
 
 // Handle internal paragraph parsing -- layout already processed.
-void Buffer::SimpleLinuxDocOnePar(ostream & os, LyXParagraph * par, int /*depth*/)
+void Buffer::SimpleLinuxDocOnePar(ostream & os,
+				  LyXParagraph * par, int /*depth*/)
 {
 	LyXLayout const & style = textclasslist.Style(params.textclass,
 						      par->GetLayout());
@@ -2821,8 +2822,7 @@ void Buffer::SimpleLinuxDocOnePar(ostream & os, LyXParagraph * par, int /*depth*
 	if (style.labeltype == LABEL_MANUAL) {
 		font_old = style.labelfont;
 		desc_on = true;
-	}
-	else {
+	} else {
 		font_old = style.font;
 		desc_on = false;
 	}
@@ -2843,12 +2843,12 @@ void Buffer::SimpleLinuxDocOnePar(ostream & os, LyXParagraph * par, int /*depth*
 	};
 	char const * tag_name[] = {"tt","sf","bf","it","sl","em"};
 
-	stack <int> tag_state;
+	stack<int> tag_state;
 	// parsing main loop
 	for (LyXParagraph::size_type i = 0; i < par->size(); ++i) {
 
-		bitset < LAST > tag_close;
-		list <int> tag_open;
+		bitset<LAST> tag_close;
+		list<int> tag_open;
 
 		LyXFont const font = par->getFont(params, i);
 
@@ -2929,16 +2929,15 @@ void Buffer::SimpleLinuxDocOnePar(ostream & os, LyXParagraph * par, int /*depth*
 			if (font.emph() == LyXFont::ON) {
 				tag_open.push_back(EM);
 				is_em = true;
-			}
-			else if (is_em) {
+			} else if (is_em) {
 				tag_close.set(EM);
 				is_em = false;
 			}
 		}
 
-		list <int> temp;
-		while(!tag_state.empty() && tag_close.any()) {
-			int k=tag_state.top();
+		list<int> temp;
+		while (!tag_state.empty() && tag_close.any()) {
+			int k = tag_state.top();
 			tag_state.pop();
 			os << "</" << tag_name[k] << ">";
 			if (tag_close[k])
@@ -2947,13 +2946,13 @@ void Buffer::SimpleLinuxDocOnePar(ostream & os, LyXParagraph * par, int /*depth*
 				temp.push_back(k);
 		}
 
-		for(list<int>::const_iterator j = temp.begin();
+		for (list<int>::const_iterator j = temp.begin();
 		    j != temp.end(); ++j) {
 			tag_state.push(*j);
 			os << "<" << tag_name[*j] << ">";
 		}
 
-		for(list<int>::const_iterator j = tag_open.begin();
+		for (list<int>::const_iterator j = tag_open.begin();
 		    j != tag_open.end(); ++j) {
 			tag_state.push(*j);
 			os << "<" << tag_name[*j] << ">";
@@ -3027,17 +3026,22 @@ void Buffer::makeDocBookFile(string const & fname, bool nice, bool only_body)
 
 	niceFile = nice; // this will be used by Insetincludes.
 
-	string top_element= textclasslist.LatexnameOfClass(params.textclass);
+	string top_element = textclasslist.LatexnameOfClass(params.textclass);
 
 	vector <string> environment_stack;
 	vector <string> environment_inner;
 	vector <string> command_stack;
 
-	bool command_flag= false;
-	int command_depth= 0, command_base= 0, cmd_depth= 0;
+	bool command_flag = false;
+	int command_depth = 0;
+	int command_base = 0;
+	int cmd_depth = 0;
 
-        string item_name, command_name;
-	string c_depth, c_params, tmps;
+        string item_name;
+	string command_name;
+	string c_depth;
+	string c_params;
+	string tmps;
 
 	int depth = 0; // paragraph depth
         LyXTextClass const & tclass =

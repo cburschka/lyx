@@ -177,6 +177,56 @@ Inset * InsetMinipage::Clone(Buffer const &) const
 }
 
 
+int InsetMinipage::ascent(BufferView * bv, LyXFont const & font) const
+{
+	lyxerr << "InsetMinipage::ascent" << endl;
+	
+	if (collapsed)
+		return ascent_collapsed(bv->painter(), font);
+	else {
+		// Take placement into account.
+		int i = 0;
+		switch (pos_) {
+		case top:
+			i = InsetCollapsable::ascent(bv, font);
+			break;
+		case center:
+			i = (InsetCollapsable::ascent(bv, font)
+			     + InsetCollapsable::descent(bv, font)) / 2;
+			break;
+		case bottom:
+			i = InsetCollapsable::descent(bv, font);
+			break;
+		}
+		return i;
+	}
+}
+
+
+int InsetMinipage::descent(BufferView * bv, LyXFont const & font) const
+{
+	if (collapsed)
+		return descent_collapsed(bv->painter(), font);
+	else {
+		// Take placement into account.
+		int i = 0;
+		switch (pos_) {
+		case top:
+			i = InsetCollapsable::descent(bv, font);
+			break;
+		case center:
+			i = (InsetCollapsable::ascent(bv, font)
+			     + InsetCollapsable::descent(bv, font)) / 2;
+			break;
+		case bottom:
+			i = InsetCollapsable::ascent(bv, font);
+			break;
+		}
+		return i;
+	}
+}
+
+
 string const InsetMinipage::EditMessage() const
 {
 	return _("Opened Minipage Inset");
