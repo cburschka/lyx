@@ -27,9 +27,14 @@ using std::vector;
 using std::pair;
 
 
-InsetLabel::InsetLabel(InsetCommandParams const & p, bool)
+InsetLabel::InsetLabel(InsetCommandParams const & p)
 	: InsetCommand(p)
 {}
+
+
+// InsetLabel::InsetLabel(InsetCommandParams const & p, bool)
+//	: InsetCommand(p, false)
+// {}
 
 
 InsetLabel::~InsetLabel()

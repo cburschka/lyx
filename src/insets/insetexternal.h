@@ -37,7 +37,7 @@ public:
 	///
 	virtual ~InsetExternal();
 	///
-	virtual dispatch_result localDispatch(FuncRequest const & cmd);	
+	virtual dispatch_result localDispatch(FuncRequest const & cmd);
 	/// what appears in the minibuffer when opening
 	virtual string const editMessage() const;
 	///
@@ -69,7 +69,9 @@ public:
 	virtual Inset::Code lyxCode() const { return EXTERNAL_CODE; }
 
 	///
-	virtual Inset * clone(Buffer const &, bool same_id = false) const;
+	virtual Inset * clone(Buffer const &) const;
+	///
+	//virtual Inset * clone(Buffer const &, bool same_id) const;
 
 	/// returns the text of the button
 	virtual string const getScreenLabel(Buffer const *) const;

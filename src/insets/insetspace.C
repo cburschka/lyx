@@ -250,10 +250,16 @@ int InsetSpace::docbook(Buffer const *, ostream & os, bool) const
 }
 
 
-Inset * InsetSpace::clone(Buffer const &, bool) const
+Inset * InsetSpace::clone(Buffer const &) const
 {
 	return new InsetSpace(kind_);
 }
+
+
+// Inset * InsetSpace::clone(Buffer const &, bool) const
+// {
+//	return new InsetSpace(kind_);
+// }
 
 
 bool InsetSpace::isChar() const

@@ -22,7 +22,7 @@ struct InsetWrapParams {
 	void write(std::ostream &) const;
 	///
 	void read(LyXLex &);
-    
+
 	///
 	string type;
 	///
@@ -39,11 +39,13 @@ public:
 	///
 	InsetWrap(BufferParams const &, string const &);
 	///
-	InsetWrap(InsetWrap const &, bool same_id = false);
+	InsetWrap(InsetWrap const &);
+	///
+	//InsetWrap(InsetWrap const &, bool same_id);
 	///
 	~InsetWrap();
 	///
-	virtual dispatch_result localDispatch(FuncRequest const & cmd);	
+	virtual dispatch_result localDispatch(FuncRequest const & cmd);
 	///
 	void write(Buffer const * buf, std::ostream & os) const;
 	///
@@ -51,7 +53,9 @@ public:
 	///
 	void validate(LaTeXFeatures & features) const;
 	///
-	Inset * clone(Buffer const &, bool same_id = false) const;
+	Inset * clone(Buffer const &) const;
+	///
+	//Inset * clone(Buffer const &, bool same_id) const;
 	///
 	Inset::Code lyxCode() const { return Inset::WRAP_CODE; }
 	///

@@ -37,9 +37,11 @@ public:
 	///
 	static int const TEXT_TO_BOTTOM_OFFSET = 2;
 	/// inset is initially collapsed if bool = true
-	InsetCollapsable(BufferParams const &, bool = false);
+	InsetCollapsable(BufferParams const &, bool collapsed = false);
 	///
-	InsetCollapsable(InsetCollapsable const & in, bool same_id = false);
+	InsetCollapsable(InsetCollapsable const & in);
+	///
+	//InsetCollapsable(InsetCollapsable const & in, bool same_id);
 	///
 	void read(Buffer const *, LyXLex &);
 	///
@@ -156,9 +158,9 @@ public:
 	void toggleSelection(BufferView * bv, bool kill_selection) {
 		inset.toggleSelection(bv, kill_selection);
 	}
- 
+
 	void markErased();
- 
+
 	bool nextChange(BufferView * bv, lyx::pos_type & length);
 
 	///

@@ -656,10 +656,16 @@ bool InsetLatexAccent::directWrite() const
 }
 
 
-Inset * InsetLatexAccent::clone(Buffer const &, bool) const
+Inset * InsetLatexAccent::clone(Buffer const &) const
 {
 	return new InsetLatexAccent(contents);
 }
+
+
+// Inset * InsetLatexAccent::clone(Buffer const &, bool) const
+// {
+//	return new InsetLatexAccent(contents);
+// }
 
 
 Inset::Code InsetLatexAccent::lyxCode() const

@@ -27,12 +27,20 @@
 using std::ostream;
 
 
-InsetParent::InsetParent(InsetCommandParams const & p, Buffer const & bf, bool)
+InsetParent::InsetParent(InsetCommandParams const & p, Buffer const & bf)
 	: InsetCommand(p)
 {
 	string const fn = p.getContents();
 	setContents(MakeAbsPath(fn, bf.filePath()));
 }
+
+
+// InsetParent::InsetParent(InsetCommandParams const & p, Buffer const & bf, bool)
+//	: InsetCommand(p, false)
+// {
+//	string const fn = p.getContents();
+//	setContents(MakeAbsPath(fn, bf.filePath()));
+// }
 
 
 string const InsetParent::getScreenLabel(Buffer const *) const

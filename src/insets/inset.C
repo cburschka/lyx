@@ -40,16 +40,25 @@ Inset::Inset()
 {}
 
 
-Inset::Inset(Inset const & in, bool same_id)
+Inset::Inset(Inset const & in)
 	: InsetBase(),
 	top_x(0), top_baseline(0), scx(0), owner_(0),
 	name_(in.name_), background_color_(in.background_color_)
 {
-	if (same_id)
-		id_ = in.id();
-	else
-		id_ = inset_id++;
+	id_ = inset_id++;
 }
+
+
+// Inset::Inset(Inset const & in, bool same_id)
+//	: InsetBase(),
+//	top_x(0), top_baseline(0), scx(0), owner_(0),
+//	name_(in.name_), background_color_(in.background_color_)
+// {
+//	if (same_id)
+//		id_ = in.id();
+//	else
+//		id_ = inset_id++;
+// }
 
 
 bool Inset::directWrite() const
@@ -170,4 +179,3 @@ int Inset::width(BufferView * bv, LyXFont const & font) const
 	dimension(bv, font, dim);
 	return dim.width();
 }
-

@@ -143,16 +143,24 @@ InsetText::InsetText(BufferParams const & bp)
 	paragraphs.begin()->layout(bp.getLyXTextClass().defaultLayout());
 	if (bp.tracking_changes)
 		paragraphs.begin()->trackChanges();
-	init();
+	init(0);
 }
 
 
-InsetText::InsetText(InsetText const & in, bool same_id)
-	: UpdatableInset(in, same_id), lt(0), in_update(false), do_resize(0),
+InsetText::InsetText(InsetText const & in)
+	: UpdatableInset(in), lt(0), in_update(false), do_resize(0),
 	  do_reinit(false)
 {
-	init(&in, same_id);
+	init(&in);
 }
+
+
+// InsetText::InsetText(InsetText const & in, bool same_id)
+//	: UpdatableInset(in, same_id), lt(0), in_update(false), do_resize(0),
+//	  do_reinit(false)
+// {
+//	init(&in, same_id);
+// }
 
 
 InsetText & InsetText::operator=(InsetText const & it)
@@ -162,15 +170,13 @@ InsetText & InsetText::operator=(InsetText const & it)
 }
 
 
-void InsetText::init(InsetText const * ins, bool same_id)
+void InsetText::init(InsetText const * ins)
 {
 	if (ins) {
-		setParagraphData(ins->paragraphs, same_id);
+		setParagraphData(ins->paragraphs);
 		autoBreakRows = ins->autoBreakRows;
 		drawFrame_ = ins->drawFrame_;
 		frame_color = ins->frame_color;
-		if (same_id)
-			id_ = ins->id_;
 	} else {
 		for_each(paragraphs.begin(), paragraphs.end(),
 			 boost::bind(&Paragraph::setInsetOwner, _1, this));
@@ -193,6 +199,39 @@ void InsetText::init(InsetText const * ins, bool same_id)
 	sstate.lpar = 0;
 	in_insetAllowed = false;
 }
+
+
+// void InsetText::init(InsetText const * ins, bool same_id)
+// {
+//	if (ins) {
+//		setParagraphData(ins->paragraphs, same_id);
+//		autoBreakRows = ins->autoBreakRows;
+//		drawFrame_ = ins->drawFrame_;
+//		frame_color = ins->frame_color;
+//		if (same_id)
+//			id_ = ins->id_;
+//	} else {
+//		for_each(paragraphs.begin(), paragraphs.end(),
+//			 boost::bind(&Paragraph::setInsetOwner, _1, this));
+
+//		the_locking_inset = 0;
+//		drawFrame_ = NEVER;
+//		frame_color = LColor::insetframe;
+//		autoBreakRows = false;
+//	}
+//	top_y = 0;
+//	old_max_width = 0;
+//	no_selection = true;
+//	need_update = FULL;
+//	drawTextXOffset = 0;
+//	drawTextYOffset = 0;
+//	locked = false;
+//	old_par = 0;
+//	last_drawn_width = -1;
+//	cached_bview = 0;
+//	sstate.lpar = 0;
+//	in_insetAllowed = false;
+// }
 
 
 InsetText::~InsetText()
@@ -226,10 +265,16 @@ void InsetText::clear(bool just_mark_erased)
 }
 
 
-Inset * InsetText::clone(Buffer const &, bool same_id) const
+Inset * InsetText::clone(Buffer const &) const
 {
-	return new InsetText(*this, same_id);
+	return new InsetText(*this);
 }
+
+
+// Inset * InsetText::clone(Buffer const &, bool same_id) const
+// {
+//	return new InsetText(*this, same_id);
+// }
 
 
 void InsetText::write(Buffer const * buf, ostream & os) const
@@ -1940,44 +1985,67 @@ int InsetText::getMaxWidth(BufferView * bv, UpdatableInset const * inset) const
 }
 
 
-void InsetText::setParagraphData(ParagraphList const & plist, bool same_id)
+void InsetText::setParagraphData(ParagraphList const & plist)
 {
 	// we have to unlock any locked inset otherwise we're in troubles
 	the_locking_inset = 0;
 
-	#warning CHECK not adhering to same_id here might wreck havoc (Lgb)
 	// But it it makes no difference that is a lot better.
-	if (same_id) {
-		lyxerr << "Same_id called with 'true'" << endl;
-		lyxerr << "Please report this to the list." << endl;
-
-		paragraphs.clear();
-		ParagraphList::iterator it = plist.begin();
-		ParagraphList::iterator end = plist.end();
-		for (; it != end; ++it) {
-			int const id = it->id();
-			paragraphs.push_back(*it);
-			Paragraph & tmp = paragraphs.back();
-			tmp.setInsetOwner(this);
-			tmp.id(id);
-		}
-	} else {
 #warning FIXME.
-		// See if this can be simplified when std::list is in effect.
-		paragraphs.clear();
+	// See if this can be simplified when std::list is in effect.
+	paragraphs.clear();
 
-		ParagraphList::iterator it = plist.begin();
-		ParagraphList::iterator end = plist.end();
-		for (; it != end; ++it) {
-			paragraphs.push_back(*it);
-			Paragraph & tmp = paragraphs.back();
-			tmp.setInsetOwner(this);
-		}
+	ParagraphList::iterator it = plist.begin();
+	ParagraphList::iterator end = plist.end();
+	for (; it != end; ++it) {
+		paragraphs.push_back(*it);
+		Paragraph & tmp = paragraphs.back();
+		tmp.setInsetOwner(this);
 	}
 
 	reinitLyXText();
 	need_update = INIT;
 }
+
+
+// void InsetText::setParagraphData(ParagraphList const & plist, bool same_id)
+// {
+//	// we have to unlock any locked inset otherwise we're in troubles
+//	the_locking_inset = 0;
+
+//	#warning CHECK not adhering to same_id here might wreck havoc (Lgb)
+//	// But it it makes no difference that is a lot better.
+//	if (same_id) {
+//		lyxerr << "Same_id called with 'true'" << endl;
+//		lyxerr << "Please report this to the list." << endl;
+
+//		paragraphs.clear();
+//		ParagraphList::iterator it = plist.begin();
+//		ParagraphList::iterator end = plist.end();
+//		for (; it != end; ++it) {
+//			int const id = it->id();
+//			paragraphs.push_back(*it);
+//			Paragraph & tmp = paragraphs.back();
+//			tmp.setInsetOwner(this);
+//			tmp.id(id);
+//		}
+//	} else {
+// #warning FIXME.
+//		// See if this can be simplified when std::list is in effect.
+//		paragraphs.clear();
+
+//		ParagraphList::iterator it = plist.begin();
+//		ParagraphList::iterator end = plist.end();
+//		for (; it != end; ++it) {
+//			paragraphs.push_back(*it);
+//			Paragraph & tmp = paragraphs.back();
+//			tmp.setInsetOwner(this);
+//		}
+//	}
+
+//	reinitLyXText();
+//	need_update = INIT;
+// }
 
 
 void InsetText::markNew(bool track_changes)

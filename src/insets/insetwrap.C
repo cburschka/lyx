@@ -75,9 +75,14 @@ InsetWrap::InsetWrap(BufferParams const & bp, string const & type)
 }
 
 
-InsetWrap::InsetWrap(InsetWrap const & in, bool same_id)
-	: InsetCollapsable(in, same_id), params_(in.params_)
+InsetWrap::InsetWrap(InsetWrap const & in)
+	: InsetCollapsable(in), params_(in.params_)
 {}
+
+
+// InsetWrap::InsetWrap(InsetWrap const & in, bool same_id)
+//	: InsetCollapsable(in, same_id), params_(in.params_)
+// {}
 
 
 InsetWrap::~InsetWrap()
@@ -180,10 +185,16 @@ void InsetWrap::validate(LaTeXFeatures & features) const
 }
 
 
-Inset * InsetWrap::clone(Buffer const &, bool same_id) const
+Inset * InsetWrap::clone(Buffer const &) const
 {
-	return new InsetWrap(*const_cast<InsetWrap *>(this), same_id);
+	return new InsetWrap(*const_cast<InsetWrap *>(this));
 }
+
+
+// Inset * InsetWrap::clone(Buffer const &, bool same_id) const
+// {
+//	return new InsetWrap(*const_cast<InsetWrap *>(this), same_id);
+// }
 
 
 string const InsetWrap::editMessage() const
@@ -307,7 +318,7 @@ void InsetWrapMailer::string2params(string const & in,
 
 	if (in.empty())
 		return;
-	
+
 	istringstream data(STRCONV(in));
 	LyXLex lex(0,0);
 	lex.setStream(data);

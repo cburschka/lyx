@@ -31,7 +31,10 @@ class InsetCommand : public InsetButton, boost::noncopyable {
 public:
 	///
 	explicit
-	InsetCommand(InsetCommandParams const &, bool same_id = false);
+	InsetCommand(InsetCommandParams const &);
+	///
+	//explicit
+	//InsetCommand(InsetCommandParams const &, bool same_id);
 	///
 	void write(Buffer const *, std::ostream & os) const
 		{ p_.write(os); }

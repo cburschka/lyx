@@ -99,7 +99,7 @@ Paragraph::Paragraph(Paragraph const & lp)
 	InsetList::iterator it = insetlist.begin();
 	InsetList::iterator end = insetlist.end();
 	for (; it != end; ++it) {
-		it.setInset(it.getInset()->clone(**buffer_, false));
+		it.setInset(it.getInset()->clone(**buffer_));
 		// tell the new inset who is the boss now
 		it.getInset()->parOwner(this);
 	}

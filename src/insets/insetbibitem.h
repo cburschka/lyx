@@ -29,7 +29,9 @@ public:
 	///
 	~InsetBibitem();
 	///
-	Inset * clone(Buffer const &, bool same_id = false) const;
+	Inset * clone(Buffer const &) const;
+	///
+	//Inset * clone(Buffer const &, bool same_id) const;
 	///
 	virtual dispatch_result localDispatch(FuncRequest const & cmd);
 	/** Currently \bibitem is used as a LyX2.x command,

@@ -24,7 +24,10 @@ class InsetError : public Inset {
 public:
 	///
 	explicit
-	InsetError(string const &, bool same_id = false);
+	InsetError(string const &);
+	///
+	//explicit
+	//InsetError(string const &, bool same_id);
 	///
 	~InsetError();
 	///
@@ -53,9 +56,13 @@ public:
 	///
 	EDITABLE editable() const { return IS_EDITABLE; }
 	///
-	Inset * clone(Buffer const &, bool same_id = false) const {
-		return new InsetError(contents, same_id);
+	Inset * clone(Buffer const &) const {
+		return new InsetError(contents);
 	}
+	///
+	//Inset * clone(Buffer const &, bool same_id) const {
+	//	return new InsetError(contents, same_id);
+	//}
 	///
 	Inset::Code lyxCode() const { return Inset::ERROR_CODE; }
 	/// We don't want "begin" and "end inset" in lyx-file

@@ -24,9 +24,14 @@
 using std::ostream;
 
 
-InsetUrl::InsetUrl(InsetCommandParams const & p, bool)
+InsetUrl::InsetUrl(InsetCommandParams const & p)
 		: InsetCommand(p)
 {}
+
+
+// InsetUrl::InsetUrl(InsetCommandParams const & p, bool)
+//		: InsetCommand(p, false)
+// {}
 
 
 InsetUrl::~InsetUrl()

@@ -145,9 +145,14 @@ InsetFloat::InsetFloat(BufferParams const & bp, string const & type)
 }
 
 
-InsetFloat::InsetFloat(InsetFloat const & in, bool same_id)
-	: InsetCollapsable(in, same_id), params_(in.params_)
+InsetFloat::InsetFloat(InsetFloat const & in)
+	: InsetCollapsable(in), params_(in.params_)
 {}
+
+
+// InsetFloat::InsetFloat(InsetFloat const & in, bool same_id)
+//	: InsetCollapsable(in, same_id), params_(in.params_)
+// {}
 
 
 InsetFloat::~InsetFloat()
@@ -259,10 +264,16 @@ void InsetFloat::validate(LaTeXFeatures & features) const
 }
 
 
-Inset * InsetFloat::clone(Buffer const &, bool same_id) const
+Inset * InsetFloat::clone(Buffer const &) const
 {
-	return new InsetFloat(*const_cast<InsetFloat *>(this), same_id);
+	return new InsetFloat(*const_cast<InsetFloat *>(this));
 }
+
+
+// Inset * InsetFloat::clone(Buffer const &, bool same_id) const
+// {
+//	return new InsetFloat(*const_cast<InsetFloat *>(this), same_id);
+// }
 
 
 string const InsetFloat::editMessage() const

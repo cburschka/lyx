@@ -26,9 +26,13 @@ public:
 	///
 	~InsetFloatList();
 	///
-	Inset * clone(Buffer const &, bool = false) const {
+	Inset * clone(Buffer const &) const {
 		return new InsetFloatList(getCmdName());
 	}
+	///
+	//Inset * clone(Buffer const &, bool = false) const {
+	//	return new InsetFloatList(getCmdName());
+	//}
 	///
 	dispatch_result localDispatch(FuncRequest const & cmd);
 	///

@@ -32,8 +32,8 @@ InsetFootlike::InsetFootlike(BufferParams const & bp)
 }
 
 
-InsetFootlike::InsetFootlike(InsetFootlike const & in, bool same_id)
-	: InsetCollapsable(in, same_id)
+InsetFootlike::InsetFootlike(InsetFootlike const & in)
+	: InsetCollapsable(in)
 {
 	LyXFont font(LyXFont::ALL_SANE);
 	font.decSize();
@@ -41,6 +41,17 @@ InsetFootlike::InsetFootlike(InsetFootlike const & in, bool same_id)
 	font.setColor(LColor::collapsable);
 	setLabelFont(font);
 }
+
+
+// InsetFootlike::InsetFootlike(InsetFootlike const & in, bool same_id)
+//	: InsetCollapsable(in, same_id)
+// {
+//	LyXFont font(LyXFont::ALL_SANE);
+//	font.decSize();
+//	font.decSize();
+//	font.setColor(LColor::collapsable);
+//	setLabelFont(font);
+// }
 
 
 void InsetFootlike::write(Buffer const * buf, ostream & os) const

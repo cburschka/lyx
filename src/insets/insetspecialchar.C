@@ -244,10 +244,16 @@ int InsetSpecialChar::docbook(Buffer const *, ostream & os, bool) const
 }
 
 
-Inset * InsetSpecialChar::clone(Buffer const &, bool) const
+Inset * InsetSpecialChar::clone(Buffer const &) const
 {
 	return new InsetSpecialChar(kind_);
 }
+
+
+// Inset * InsetSpecialChar::clone(Buffer const &, bool) const
+// {
+//	return new InsetSpecialChar(kind_);
+// }
 
 
 void InsetSpecialChar::validate(LaTeXFeatures & features) const

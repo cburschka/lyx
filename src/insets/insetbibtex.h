@@ -23,13 +23,19 @@ class Buffer;
 class InsetBibtex : public InsetCommand {
 public:
 	///
-	InsetBibtex(InsetCommandParams const &, bool same_id = false);
+	InsetBibtex(InsetCommandParams const &);
+	///
+	//InsetBibtex(InsetCommandParams const &, bool same_id);
 	///
 	~InsetBibtex();
 	///
-	Inset * clone(Buffer const &, bool same_id = false) const {
-		return new InsetBibtex(params(), same_id);
+	Inset * clone(Buffer const &) const {
+		return new InsetBibtex(params());
 	}
+	///
+	//Inset * clone(Buffer const &, bool same_id) const {
+	//	return new InsetBibtex(params(), same_id);
+	//}
 	/// small wrapper for the time being
 	virtual dispatch_result localDispatch(FuncRequest const & cmd);
 	///

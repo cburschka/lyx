@@ -66,10 +66,16 @@ InsetFormulaMacro::InsetFormulaMacro(string const & s)
 }
 
 
-Inset * InsetFormulaMacro::clone(Buffer const &, bool) const
+Inset * InsetFormulaMacro::clone(Buffer const &) const
 {
 	return new InsetFormulaMacro(*this);
 }
+
+
+// Inset * InsetFormulaMacro::clone(Buffer const &, bool) const
+// {
+//	return new InsetFormulaMacro(*this);
+// }
 
 
 void InsetFormulaMacro::write(Buffer const *, ostream & os) const

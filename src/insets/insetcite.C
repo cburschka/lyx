@@ -221,9 +221,14 @@ string const getBasicLabel(string const & keyList, string const & after)
 } // anon namespace
 
 
-InsetCitation::InsetCitation(InsetCommandParams const & p, bool)
+InsetCitation::InsetCitation(InsetCommandParams const & p)
 	: InsetCommand(p)
 {}
+
+
+// InsetCitation::InsetCitation(InsetCommandParams const & p, bool)
+//	: InsetCommand(p, false)
+// {}
 
 
 InsetCitation::~InsetCitation()

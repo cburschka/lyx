@@ -57,7 +57,7 @@ public:
 	~InsetInclude();
 
 	///
-	virtual dispatch_result localDispatch(FuncRequest const & cmd);	
+	virtual dispatch_result localDispatch(FuncRequest const & cmd);
 
 	/// Override these InsetButton methods if Previewing
 	int ascent(BufferView *, LyXFont const &) const;
@@ -74,7 +74,9 @@ public:
 	void set(Params const & params);
 
 	///
-	virtual Inset * clone(Buffer const &, bool same_id = false) const;
+	virtual Inset * clone(Buffer const &) const;
+	///
+	//virtual Inset * clone(Buffer const &, bool same_id) const;
 	///
 	Inset::Code lyxCode() const { return Inset::INCLUDE_CODE; }
 	/// This returns the list of labels on the child buffer

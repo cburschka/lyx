@@ -56,17 +56,21 @@ public:
 	///
 	InsetMinipage(BufferParams const &);
 	///
-	InsetMinipage(InsetMinipage const &, bool same_id = false);
+	InsetMinipage(InsetMinipage const &);
+	///
+	//InsetMinipage(InsetMinipage const &, bool same_id);
 	///
 	~InsetMinipage();
 	///
-	virtual dispatch_result localDispatch(FuncRequest const & cmd);	
+	virtual dispatch_result localDispatch(FuncRequest const & cmd);
 	///
 	void write(Buffer const * buf, std::ostream & os) const;
 	///
 	void read(Buffer const * buf, LyXLex & lex);
 	///
-	Inset * clone(Buffer const &, bool same_id = false) const;
+	Inset * clone(Buffer const &) const;
+	///
+	//Inset * clone(Buffer const &, bool same_id) const;
 	///
 	void dimension(BufferView *, LyXFont const &, Dimension &) const;
 	///

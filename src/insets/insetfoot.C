@@ -38,18 +38,32 @@ InsetFoot::InsetFoot(BufferParams const & bp)
 }
 
 
-InsetFoot::InsetFoot(InsetFoot const & in, bool same_id)
-	: InsetFootlike(in, same_id)
+InsetFoot::InsetFoot(InsetFoot const & in)
+	: InsetFootlike(in)
 {
 	setLabel(_("foot"));
 	setInsetName("Foot");
 }
 
 
-Inset * InsetFoot::clone(Buffer const &, bool same_id) const
+// InsetFoot::InsetFoot(InsetFoot const & in, bool same_id)
+//	: InsetFootlike(in, same_id)
+// {
+//	setLabel(_("foot"));
+//	setInsetName("Foot");
+// }
+
+
+Inset * InsetFoot::clone(Buffer const &) const
 {
-	return new InsetFoot(*const_cast<InsetFoot *>(this), same_id);
+	return new InsetFoot(*const_cast<InsetFoot *>(this));
 }
+
+
+// Inset * InsetFoot::clone(Buffer const &, bool same_id) const
+// {
+//	return new InsetFoot(*const_cast<InsetFoot *>(this), same_id);
+// }
 
 
 string const InsetFoot::editMessage() const

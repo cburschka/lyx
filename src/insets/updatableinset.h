@@ -49,7 +49,9 @@ public:
 	///
 	UpdatableInset();
 	///
-	UpdatableInset(UpdatableInset const & in, bool same_id = false);
+	UpdatableInset(UpdatableInset const & in);
+	///
+	//UpdatableInset(UpdatableInset const & in, bool same_id);
 
 	/// check if the font of the char we want inserting is correct
 	/// and modify it if it is not.
@@ -122,7 +124,7 @@ public:
 
 	/// find the next change in the inset
 	virtual bool nextChange(BufferView * bv, lyx::pos_type & length);
- 
+
 	///
 	// needed for search/replace functionality
 	///

@@ -193,9 +193,8 @@ InsetGraphics::InsetGraphics()
 
 
 InsetGraphics::InsetGraphics(InsetGraphics const & ig,
-			     string const & filepath,
-			     bool same_id)
-	: Inset(ig, same_id),
+			     string const & filepath)
+	: Inset(ig),
 	  graphic_label(uniqueID()),
 	  cache_(new Cache(*this))
 {
@@ -203,10 +202,27 @@ InsetGraphics::InsetGraphics(InsetGraphics const & ig,
 }
 
 
-Inset * InsetGraphics::clone(Buffer const & buffer, bool same_id) const
+// InsetGraphics::InsetGraphics(InsetGraphics const & ig,
+//			     string const & filepath,
+//			     bool same_id)
+//	: Inset(ig, same_id),
+//	  graphic_label(uniqueID()),
+//	  cache_(new Cache(*this))
+// {
+//	setParams(ig.params(), filepath);
+// }
+
+
+Inset * InsetGraphics::clone(Buffer const & buffer) const
 {
-	return new InsetGraphics(*this, buffer.filePath(), same_id);
+	return new InsetGraphics(*this, buffer.filePath());
 }
+
+
+// Inset * InsetGraphics::clone(Buffer const & buffer, bool same_id) const
+// {
+//	return new InsetGraphics(*this, buffer.filePath(), same_id);
+// }
 
 
 InsetGraphics::~InsetGraphics()
@@ -230,7 +246,7 @@ dispatch_result InsetGraphics::localDispatch(FuncRequest const & cmd)
 		return DISPATCHED;
 	}
 
-	case LFUN_INSET_DIALOG_UPDATE: 
+	case LFUN_INSET_DIALOG_UPDATE:
 		InsetGraphicsMailer(*this).updateDialog(cmd.view());
 		return DISPATCHED;
 

@@ -88,15 +88,26 @@ InsetMinipage::InsetMinipage(BufferParams const & bp)
 }
 
 
-InsetMinipage::InsetMinipage(InsetMinipage const & in, bool same_id)
-	: InsetCollapsable(in, same_id), params_(in.params_)
+InsetMinipage::InsetMinipage(InsetMinipage const & in)
+	: InsetCollapsable(in), params_(in.params_)
 {}
 
 
-Inset * InsetMinipage::clone(Buffer const &, bool same_id) const
+// InsetMinipage::InsetMinipage(InsetMinipage const & in, bool same_id)
+//	: InsetCollapsable(in, same_id), params_(in.params_)
+// {}
+
+
+Inset * InsetMinipage::clone(Buffer const &) const
 {
-	return new InsetMinipage(*const_cast<InsetMinipage *>(this), same_id);
+	return new InsetMinipage(*const_cast<InsetMinipage *>(this));
 }
+
+
+// Inset * InsetMinipage::clone(Buffer const &, bool same_id) const
+// {
+//	return new InsetMinipage(*const_cast<InsetMinipage *>(this), same_id);
+// }
 
 
 InsetMinipage::~InsetMinipage()
@@ -127,7 +138,7 @@ dispatch_result InsetMinipage::localDispatch(FuncRequest const & cmd)
 		return DISPATCHED;
 	}
 
-	case LFUN_INSET_DIALOG_UPDATE: 
+	case LFUN_INSET_DIALOG_UPDATE:
 		InsetMinipageMailer(*this).updateDialog(cmd.view());
 		return DISPATCHED;
 
@@ -349,7 +360,7 @@ void InsetMinipageMailer::string2params(string const & in,
 
 	if (in.empty())
 		return;
-	
+
 	istringstream data(STRCONV(in));
 	LyXLex lex(0,0);
 	lex.setStream(data);

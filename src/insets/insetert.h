@@ -38,9 +38,13 @@ public:
 	///
 	InsetERT(BufferParams const &, bool collapsed = false);
 	///
-	InsetERT(InsetERT const &, bool same_id = false);
+	InsetERT(InsetERT const &);
 	///
-	Inset * clone(Buffer const &, bool same_id = false) const;
+	//InsetERT(InsetERT const &, bool same_id);
+	///
+	Inset * clone(Buffer const &) const;
+	///
+	//Inset * clone(Buffer const &, bool same_id) const;
 	///
 	InsetERT(BufferParams const &,
 		 Language const *, string const & contents, bool collapsed);

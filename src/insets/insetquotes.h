@@ -68,7 +68,9 @@ public:
 	/// Create the right quote inset after character c
 	InsetQuotes(char c, BufferParams const & params);
 	///
-	Inset * clone(Buffer const &, bool same_id = false) const;
+	Inset * clone(Buffer const &) const;
+	///
+	//Inset * clone(Buffer const &, bool same_id) const;
 
 	///
 	void dimension(BufferView *, LyXFont const &, Dimension &) const;

@@ -335,7 +335,7 @@ void InsetQuotes::validate(LaTeXFeatures & features) const
 	    && lyxrc.fontenc != "T1") {
 		if (times_ == SingleQ)
 			switch (type) {
-			case ',': features.require("quotesinglbase");  break;
+				case ',': features.require("quotesinglbase");  break;
 			case '<': features.require("guilsinglleft");  break;
 			case '>': features.require("guilsinglright"); break;
 			default: break;
@@ -351,10 +351,16 @@ void InsetQuotes::validate(LaTeXFeatures & features) const
 }
 
 
-Inset * InsetQuotes::clone(Buffer const &, bool) const
+Inset * InsetQuotes::clone(Buffer const &) const
 {
-  return new InsetQuotes(language_, side_, times_);
+	return new InsetQuotes(language_, side_, times_);
 }
+
+
+// Inset * InsetQuotes::clone(Buffer const &, bool) const
+// {
+//   return new InsetQuotes(language_, side_, times_);
+// }
 
 
 Inset::Code InsetQuotes::lyxCode() const

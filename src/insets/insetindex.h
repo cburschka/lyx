@@ -22,13 +22,19 @@ struct LaTeXFeatures;
 class InsetIndex : public InsetCommand {
 public:
 	///
-	InsetIndex(InsetCommandParams const &, bool same_id = false);
+	InsetIndex(InsetCommandParams const &);
+	///
+	//InsetIndex(InsetCommandParams const &, bool same_id);
 	///
 	~InsetIndex();
 	///
-	virtual Inset * clone(Buffer const &, bool same_id = false) const {
-		return new InsetIndex(params(), same_id);
+	virtual Inset * clone(Buffer const &) const {
+		return new InsetIndex(params());
 	}
+	///
+	//virtual Inset * clone(Buffer const &, bool same_id) const {
+	//	return new InsetIndex(params(), same_id);
+	//}
 	///
 	dispatch_result localDispatch(FuncRequest const & cmd);
 	///
@@ -45,13 +51,19 @@ public:
 class InsetPrintIndex : public InsetCommand {
 public:
 	///
-	InsetPrintIndex(InsetCommandParams const &, bool same_id = false);
+	InsetPrintIndex(InsetCommandParams const &);
+	///
+	//InsetPrintIndex(InsetCommandParams const &, bool same_id);
 	///
 	~InsetPrintIndex();
 	///
-	Inset * clone(Buffer const &, bool same_id = false) const {
-		return new InsetPrintIndex(params(), same_id);
+	Inset * clone(Buffer const &) const {
+		return new InsetPrintIndex(params());
 	}
+	///
+	//Inset * clone(Buffer const &, bool same_id) const {
+	//	return new InsetPrintIndex(params(), same_id);
+	//}
 	///
 	//dispatch_result localDispatch(FuncRequest const & cmd);
 	/// Updates needed features for this inset.

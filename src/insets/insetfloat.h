@@ -41,11 +41,13 @@ public:
 	///
 	InsetFloat(BufferParams const &, string const &);
 	///
-	InsetFloat(InsetFloat const &, bool same_id = false);
+	InsetFloat(InsetFloat const &);
+	///
+	//InsetFloat(InsetFloat const &, bool same_id);
 	///
 	~InsetFloat();
 	///
-	virtual dispatch_result localDispatch(FuncRequest const & cmd);	
+	virtual dispatch_result localDispatch(FuncRequest const & cmd);
 	///
 	void write(Buffer const * buf, std::ostream & os) const;
 	///
@@ -53,7 +55,9 @@ public:
 	///
 	void validate(LaTeXFeatures & features) const;
 	///
-	Inset * clone(Buffer const &, bool same_id = false) const;
+	Inset * clone(Buffer const &) const;
+	///
+	//Inset * clone(Buffer const &, bool same_id) const;
 	///
 	Inset::Code lyxCode() const { return Inset::FLOAT_CODE; }
 	///
@@ -77,7 +81,7 @@ public:
 	bool  showInsetDialog(BufferView *) const;
 	///
 	InsetFloatParams const & params() const { return params_; }
-	
+
 private:
 	///
 	InsetFloatParams params_;

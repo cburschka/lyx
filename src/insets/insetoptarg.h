@@ -25,10 +25,13 @@ class InsetOptArg : public InsetCollapsable {
 public:
 	InsetOptArg(BufferParams const &);
 
-	InsetOptArg(InsetOptArg const &, bool same_id = false);
+	InsetOptArg(InsetOptArg const &);
+	//InsetOptArg(InsetOptArg const &, bool same_id);
 
 	/// make a duplicate of this inset
-	Inset * clone(Buffer const &, bool same_id = false) const;
+	Inset * clone(Buffer const &) const;
+	/// make a duplicate of this inset
+	//Inset * clone(Buffer const &, bool same_id) const;
 
 	/// this inset is editable
 	EDITABLE editable() const { return IS_EDITABLE; }

@@ -35,9 +35,14 @@ using std::vector;
 using std::pair;
 
 
-InsetBibtex::InsetBibtex(InsetCommandParams const & p, bool)
+InsetBibtex::InsetBibtex(InsetCommandParams const & p)
 	: InsetCommand(p)
 {}
+
+
+// InsetBibtex::InsetBibtex(InsetCommandParams const & p, bool)
+//	: InsetCommand(p, false)
+// {}
 
 
 InsetBibtex::~InsetBibtex()

@@ -114,10 +114,16 @@ InsetFormula::~InsetFormula()
 {}
 
 
-Inset * InsetFormula::clone(Buffer const &, bool) const
+Inset * InsetFormula::clone(Buffer const &) const
 {
 	return new InsetFormula(*this);
 }
+
+
+// Inset * InsetFormula::clone(Buffer const &, bool) const
+// {
+//	return new InsetFormula(*this);
+// }
 
 
 void InsetFormula::write(Buffer const *, ostream & os) const
@@ -190,7 +196,7 @@ void InsetFormula::read(Buffer const *, LyXLex & lex)
 			lyxerr << "this is size 1\n";
 	    if (par_->cell(0)[0]->asFontInset()) {
 				lyxerr << "this is a font inset \n";
-				lyxerr << "replacing " << par_.nucleus()->cell(0) << 
+				lyxerr << "replacing " << par_.nucleus()->cell(0) <<
 					" with " << par_->cell(0)[0]->cell(0) << "\n";
 			}
 		}
@@ -331,4 +337,3 @@ string const InsetFormula::PreviewImpl::latexString() const
 	parent().par_->write(wi);
 	return STRCONV(ls.str());
 }
-

@@ -28,8 +28,10 @@ public:
 	///
 	InsetGraphics();
 	///
-	InsetGraphics(InsetGraphics const &, string const & filepath,
-		      bool same_id = false);
+	InsetGraphics(InsetGraphics const &, string const & filepath);
+	///
+	//InsetGraphics(InsetGraphics const &, string const & filepath,
+	//	      bool same_id);
 	///
 	~InsetGraphics();
 	///
@@ -67,7 +69,9 @@ public:
 	Inset::Code lyxCode() const { return Inset::GRAPHICS_CODE; }
 
 	///
-	virtual Inset * clone(Buffer const &, bool same_id = false) const;
+	virtual Inset * clone(Buffer const &) const;
+	///
+	//virtual Inset * clone(Buffer const &, bool same_id) const;
 
 	/** Set the inset parameters, used by the GUIndependent dialog.
 	    Return true of new params are different from what was so far.

@@ -21,9 +21,14 @@
 
 using std::ostream;
 
-InsetIndex::InsetIndex(InsetCommandParams const & p, bool)
+InsetIndex::InsetIndex(InsetCommandParams const & p)
 	: InsetCommand(p)
 {}
+
+
+// InsetIndex::InsetIndex(InsetCommandParams const & p, bool)
+//	: InsetCommand(p, false)
+// {}
 
 
 InsetIndex::~InsetIndex()
@@ -45,7 +50,7 @@ dispatch_result InsetIndex::localDispatch(FuncRequest const & cmd)
 		case LFUN_INSET_EDIT:
 			InsetCommandMailer("index", *this).showDialog(cmd.view());
 			return DISPATCHED;
-		
+
 		default:
 			return UNDISPATCHED;
 	}
@@ -67,9 +72,14 @@ Inset::Code InsetIndex::lyxCode() const
 
 
 
-InsetPrintIndex::InsetPrintIndex(InsetCommandParams const & p, bool)
+InsetPrintIndex::InsetPrintIndex(InsetCommandParams const & p)
 	: InsetCommand(p)
 {}
+
+
+// InsetPrintIndex::InsetPrintIndex(InsetCommandParams const & p, bool)
+//	: InsetCommand(p, false)
+// {}
 
 
 InsetPrintIndex::~InsetPrintIndex()

@@ -30,9 +30,14 @@ UpdatableInset::UpdatableInset()
 {}
 
 
-UpdatableInset::UpdatableInset(UpdatableInset const & in, bool same_id)
-	: Inset(in, same_id), block_drawing_(false)
+UpdatableInset::UpdatableInset(UpdatableInset const & in)
+	: Inset(in), block_drawing_(false)
 {}
+
+
+// UpdatableInset::UpdatableInset(UpdatableInset const & in, bool same_id)
+//	: Inset(in, same_id), block_drawing_(false)
+// {}
 
 
 void UpdatableInset::insetUnlock(BufferView *)

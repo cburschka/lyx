@@ -54,7 +54,9 @@ public:
 	int docbook(Buffer const *, std::ostream &, bool mixcont) const;
 
 	///
-	Inset * clone(Buffer const &, bool same_id = false) const;
+	Inset * clone(Buffer const &) const;
+	///
+	//Inset * clone(Buffer const &, bool same_id) const;
 	///
 	void validate(LaTeXFeatures & features) const;
 	///

@@ -126,7 +126,7 @@ dispatch_result InsetInclude::localDispatch(FuncRequest const & cmd)
 		return DISPATCHED;
 	}
 
-	case LFUN_INSET_DIALOG_UPDATE: 
+	case LFUN_INSET_DIALOG_UPDATE:
 		InsetIncludeMailer(*this).updateDialog(cmd.view());
 		return DISPATCHED;
 
@@ -191,13 +191,22 @@ void InsetInclude::set(Params const & p)
 }
 
 
-Inset * InsetInclude::clone(Buffer const & buffer, bool) const
+Inset * InsetInclude::clone(Buffer const & buffer) const
 {
 	Params p(params_);
 	p.masterFilename_ = buffer.fileName();
 
 	return new InsetInclude(p);
 }
+
+
+// Inset * InsetInclude::clone(Buffer const & buffer, bool) const
+// {
+//	Params p(params_);
+//	p.masterFilename_ = buffer.fileName();
+
+//	return new InsetInclude(p);
+// }
 
 
 void InsetInclude::write(Buffer const *, ostream & os) const
@@ -618,7 +627,7 @@ void InsetIncludeMailer::string2params(string const & in,
 
 	if (in.empty())
 		return;
-	
+
 	istringstream data(STRCONV(in));
 	LyXLex lex(0,0);
 	lex.setStream(data);

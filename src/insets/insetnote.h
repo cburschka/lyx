@@ -23,9 +23,13 @@ public:
 	///
 	InsetNote(BufferParams const &);
 	///
-	InsetNote(InsetNote const &, bool same_id = false);
+	InsetNote(InsetNote const &);
 	///
-	Inset * clone(Buffer const &, bool same_id = false) const;
+	//InsetNote(InsetNote const &, bool same_id);
+	///
+	Inset * clone(Buffer const &) const;
+	///
+	//Inset * clone(Buffer const &, bool same_id) const;
 	///
 	string const editMessage() const;
 	///

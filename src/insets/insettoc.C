@@ -23,9 +23,14 @@ using std::vector;
 using std::ostream;
 
 
-InsetTOC::InsetTOC(InsetCommandParams const & p, bool same_id)
-	: InsetCommand(p, same_id)
+InsetTOC::InsetTOC(InsetCommandParams const & p)
+	: InsetCommand(p)
 {}
+
+
+// InsetTOC::InsetTOC(InsetCommandParams const & p, bool same_id)
+//	: InsetCommand(p, same_id)
+// {}
 
 
 InsetTOC::~InsetTOC()

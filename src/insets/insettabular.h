@@ -76,11 +76,15 @@ public:
 	///
 	InsetTabular(Buffer const &, int rows = 1, int columns = 1);
 	///
-	InsetTabular(InsetTabular const &, Buffer const &, bool same_id = false);
+	InsetTabular(InsetTabular const &, Buffer const &);
+	///
+	//InsetTabular(InsetTabular const &, Buffer const &, bool same_id);
 	///
 	~InsetTabular();
 	///
-	Inset * clone(Buffer const &, bool same_id = false) const;
+	Inset * clone(Buffer const &) const;
+	///
+	//Inset * clone(Buffer const &, bool same_id) const;
 	///
 	void read(Buffer const *, LyXLex &);
 	///

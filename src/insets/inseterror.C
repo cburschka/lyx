@@ -28,9 +28,14 @@
 using std::ostream;
 
 
-InsetError::InsetError(string const & str, bool)
+InsetError::InsetError(string const & str)
 	: contents(str)
 {}
+
+
+// InsetError::InsetError(string const & str, bool)
+//	: contents(str)
+// {}
 
 
 InsetError::~InsetError()

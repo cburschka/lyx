@@ -174,12 +174,11 @@ InsetTabular::InsetTabular(Buffer const & buf, int rows, int columns)
 }
 
 
-InsetTabular::InsetTabular(InsetTabular const & tab, Buffer const & buf,
-						   bool same_id)
-	: UpdatableInset(tab, same_id), buffer(&buf)
+InsetTabular::InsetTabular(InsetTabular const & tab, Buffer const & buf)
+	: UpdatableInset(tab), buffer(&buf)
 {
 	tabular.reset(new LyXTabular(buf.params,
-				     this, *(tab.tabular), same_id));
+				     this, *(tab.tabular)));
 	the_locking_inset = 0;
 	old_locking_inset = 0;
 	locked = false;
@@ -194,6 +193,26 @@ InsetTabular::InsetTabular(InsetTabular const & tab, Buffer const & buf,
 }
 
 
+// InsetTabular::InsetTabular(InsetTabular const & tab, Buffer const & buf,
+//						   bool same_id)
+//	: UpdatableInset(tab, same_id), buffer(&buf)
+// {
+//	tabular.reset(new LyXTabular(buf.params,
+//				     this, *(tab.tabular), same_id));
+//	the_locking_inset = 0;
+//	old_locking_inset = 0;
+//	locked = false;
+//	oldcell = -1;
+//	actrow = actcell = 0;
+//	clearSelection();
+//	need_update = INIT;
+//	in_update = false;
+//	in_reset_pos = 0;
+//	inset_x = 0;
+//	inset_y = 0;
+// }
+
+
 InsetTabular::~InsetTabular()
 {
 	InsetTabularMailer mailer(*this);
@@ -201,10 +220,16 @@ InsetTabular::~InsetTabular()
 }
 
 
-Inset * InsetTabular::clone(Buffer const & buf, bool same_id) const
+Inset * InsetTabular::clone(Buffer const & buf) const
 {
-	return new InsetTabular(*this, buf, same_id);
+	return new InsetTabular(*this, buf);
 }
+
+
+// Inset * InsetTabular::clone(Buffer const & buf, bool same_id) const
+// {
+//	return new InsetTabular(*this, buf, same_id);
+// }
 
 
 BufferView * InsetTabular::view() const

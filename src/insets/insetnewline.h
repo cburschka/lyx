@@ -20,9 +20,14 @@ public:
 
 	InsetNewline() {}
 
-	virtual Inset * clone(Buffer const &, bool = false) const {
+	virtual Inset * clone(Buffer const &) const {
 		return new InsetNewline;
 	}
+
+
+	//virtual Inset * clone(Buffer const &, bool same_id) const {
+	//	return new InsetNewline;
+	//}
 
 	Inset::Code lyxCode() const { return Inset::NEWLINE_CODE; }
 

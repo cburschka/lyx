@@ -30,7 +30,9 @@ public:
 	///
 	InsetFormulaBase();
 	///
-	Inset * clone(Buffer const &, bool same_id = false) const = 0;
+	Inset * clone(Buffer const &) const = 0;
+	///
+	//Inset * clone(Buffer const &, bool same_id) const = 0;
 	///
 	virtual void draw(BufferView *,LyXFont const &, int, float &) const = 0;
 	/// lowest x coordinate

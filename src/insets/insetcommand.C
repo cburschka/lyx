@@ -26,9 +26,14 @@
 using std::ostream;
 
 
-InsetCommand::InsetCommand(InsetCommandParams const & p, bool)
+InsetCommand::InsetCommand(InsetCommandParams const & p)
 	: p_(p.getCmdName(), p.getContents(), p.getOptions())
 {}
+
+
+// InsetCommand::InsetCommand(InsetCommandParams const & p, bool)
+//	: p_(p.getCmdName(), p.getContents(), p.getOptions())
+// {}
 
 
 void InsetCommand::setParams(InsetCommandParams const & p)
@@ -115,7 +120,7 @@ void InsetCommandMailer::string2params(string const & in,
 
 	if (in.empty())
 		return;
-	
+
 	istringstream data(STRCONV(in));
 	LyXLex lex(0,0);
 	lex.setStream(data);

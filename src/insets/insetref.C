@@ -23,9 +23,14 @@
 
 using std::ostream;
 
-InsetRef::InsetRef(InsetCommandParams const & p, Buffer const & buf, bool)
+InsetRef::InsetRef(InsetCommandParams const & p, Buffer const & buf)
 	: InsetCommand(p), isLatex(buf.isLatex())
 {}
+
+
+// InsetRef::InsetRef(InsetCommandParams const & p, Buffer const & buf, bool)
+//	: InsetCommand(p, false), isLatex(buf.isLatex())
+// {}
 
 
 InsetRef::~InsetRef()
@@ -37,7 +42,7 @@ InsetRef::~InsetRef()
 dispatch_result InsetRef::localDispatch(FuncRequest const & cmd)
 {
 	switch (cmd.action) {
-	case LFUN_INSET_EDIT:	
+	case LFUN_INSET_EDIT:
 		// Eventually trigger dialog with button 3 not 1
 		if (cmd.button() == mouse_button::button3)
 			cmd.view()->owner()->
@@ -45,7 +50,7 @@ dispatch_result InsetRef::localDispatch(FuncRequest const & cmd)
 		if (cmd.button() == mouse_button::button1)
 			InsetCommandMailer("ref", *this).showDialog(cmd.view());
 		return DISPATCHED;
-	
+
 	default:
 		return UNDISPATCHED;
 	}

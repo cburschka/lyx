@@ -70,7 +70,9 @@ public:
 	///
 	int docbook(Buffer const *, std::ostream &, bool mixcont) const;
 	///
-	virtual Inset * clone(Buffer const &, bool same_id = false) const;
+	virtual Inset * clone(Buffer const &) const;
+	///
+	//virtual Inset * clone(Buffer const &, bool same_id) const;
 	///
 	Inset::Code lyxCode() const { return Inset::SPACE_CODE; }
 	/// We don't need \begin_inset and \end_inset
