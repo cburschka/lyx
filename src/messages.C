@@ -37,7 +37,7 @@ string const & getLocaleDir()
 #include <locale>
 
 // This version of the Pimpl utilizes the message capability of
-// libstdc++ that is distributed with GNU G++
+// libstdc++ that is distributed with GNU G++.
 class Messages::Pimpl {
 public:
 	typedef std::messages<char>::catalog catalog;
