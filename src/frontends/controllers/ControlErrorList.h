@@ -31,7 +31,7 @@ public:
 		int par_id;
 		int pos_start;
 		int pos_end;
-		ErrorItem(string const &, string const &, int, int, int); 
+		ErrorItem(string const &, string const &, int, int, int);
 	};
 	///
 	ControlErrorList(Dialog & parent);

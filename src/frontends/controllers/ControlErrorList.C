@@ -16,29 +16,33 @@
 #include "buffer.h"
 #include "BufferView.h"
 #include "lyxtext.h"
+#include "debug.h"
 
 
+using std::endl;
 
-ControlErrorList::ErrorItem::ErrorItem(string const & error, 
-				       string const & description, 
-				       int par_id, int pos_start, int pos_end) 
-	: error(error), description(description), par_id(par_id), 
+
+ControlErrorList::ErrorItem::ErrorItem(string const & error,
+				       string const & description,
+				       int par_id, int pos_start, int pos_end)
+	: error(error), description(description), par_id(par_id),
 	  pos_start(pos_start),  pos_end(pos_end)
 {}
 
-ControlErrorList::ControlErrorList(Dialog & d) 
+
+ControlErrorList::ControlErrorList(Dialog & d)
 	: Dialog::Controller(d), current_(0)
 {}
 
 
-void ControlErrorList::clearParams() 
+void ControlErrorList::clearParams()
 {
 	logfilename_.clear();
 	clearErrors();
 }
 
 
-std::vector<ControlErrorList::ErrorItem> const & 
+std::vector<ControlErrorList::ErrorItem> const &
 ControlErrorList::ErrorList() const
 {
 	return ErrorList_;
@@ -51,7 +55,7 @@ int ControlErrorList::currentItem() const
 }
 
 
-bool ControlErrorList::initialiseParams(string const &) 
+bool ControlErrorList::initialiseParams(string const &)
 {
 	logfilename_ = kernel().buffer()->getLogName().second;
 	clearErrors();
@@ -115,7 +119,7 @@ void ControlErrorList::goTo(int item)
 	ParagraphList::iterator pit = buf->getParFromID(err.par_id);
 
 	if (pit == bv->text->ownerParagraphs().end()) {
-		cout << "par id not found" << endl;
+		lyxerr << "par id not found" << endl;
 		return;
 	}
 
@@ -124,7 +128,7 @@ void ControlErrorList::goTo(int item)
 	if (err.pos_end > pit->size() || range <= 0)
 		range = pit->size() - err.pos_start;
 
-	//now make the selection
+	// Now make the selection.
 	bv->insetUnlock();
 	bv->toggleSelection();
 	bv->text->clearSelection();
