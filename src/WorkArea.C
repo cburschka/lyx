@@ -22,7 +22,7 @@
 #include "LyXView.h"
 #include "lyxfunc.h"
 
-#if FL_REVISION < 89
+#if FL_REVISION < 89 || (FL_REVISION == 89 && FL_FIXLEVEL < 5)
 #include "lyxlookup.h"
 #endif
 
@@ -336,8 +336,8 @@ int WorkArea::work_area_handler(FL_OBJECT * ob, int event,
 		KeySym keysym = 0;
 		char dummy[1];
 		XKeyEvent * xke = reinterpret_cast<XKeyEvent *>(ev);
-#if FL_REVISION < 89
-		// XForms < 0.89 does not have compose support
+#if FL_REVISION < 89 || (FL_REVISION == 89 && FL_FIXLEVEL < 5)
+		// XForms < 0.89.5 does not have compose support
 		// so we are using our own compose support
 		LyXLookupString(ev, dummy, 1, &keysym);
 #else

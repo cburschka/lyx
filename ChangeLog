@@ -1,3 +1,13 @@
+2000-12-05  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* config/lyxinclude.m4 (LYX_PATH_XFORMS): display also the
+	fixlevel along with xforms version.
+
+	* src/WorkArea.C (work_area_handler): use stuff in lyxlookup.h when
+	xforms version is strictly less than 0.89.5.
+	* src/lyx_gui.C (LyXGUI): ditto.
+	* src/LyXView.C (show): ditto.
+
 2000-12-02  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* src/BufferView_pimpl.C (workAreaMotionNotify): Fixed mouse

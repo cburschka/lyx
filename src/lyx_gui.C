@@ -35,7 +35,7 @@
 #include "lyxrc.h"
 #include "gettext.h"
 #include "lyx_gui_misc.h"
-#if FL_REVISION < 89
+#if FL_REVISION < 89 || (FL_REVISION == 89 && FL_FIXLEVEL < 5)
 #include "lyxlookup.h"
 #endif
 #include "bufferlist.h"
@@ -167,7 +167,7 @@ LyXGUI::~LyXGUI()
 	delete lyxserver;
 	lyxserver = 0;
 	delete lyxViews;
-#if FL_REVISION < 89
+#if FL_REVISION < 89 || (FL_REVISION == 89 && FL_FIXLEVEL < 5)
 	CloseLyXLookup();
 #endif
 }

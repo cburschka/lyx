@@ -609,7 +609,7 @@ if test $ac_cv_header_forms_h = yes; then
 #if ! defined(FL_INCLUDE_VERSION)
 "%%%"(unknown)"%%%"
 #else
-"%%%"FL_VERSION.FL_REVISION"%%%"
+"%%%"FL_VERSION.FL_REVISION.FL_FIXLEVEL"%%%"
 #endif
 EOF
 lyx_cv_xfversion=`(eval "$ac_cpp conftest.$ac_ext") 2>&5 | \
@@ -617,12 +617,12 @@ lyx_cv_xfversion=`(eval "$ac_cpp conftest.$ac_ext") 2>&5 | \
   sed -e 's/^"%%%"\(.*\)"%%%"/\1/' -e 's/ //g'`
 rm -f conftest*])
 case "$lyx_cv_xfversion" in 
-  "(unknown)"|0.8[1-7]) 
+  "(unknown)"|0.8[1-7]*) 
          LYX_ERROR(dnl
 Version $lyx_cv_xfversion of xforms is not compatible with LyX. 
    This version of LyX works best with versions 0.88 (recommended) and later.) ;;
-    0.88) ;;
-    0.89) LYX_WARNING(dnl
+    0.88*) ;;
+    0.89*) LYX_WARNING(dnl
 LyX should work ok with version $lyx_cv_xfversion of xforms[,] but
 it is an unproven version and might still have some bugs. If you
 have problems[,] please use version 0.88 instead.) ;;
