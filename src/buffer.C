@@ -1693,8 +1693,6 @@ void Buffer::writeFileAscii(ostream & os, int linelen)
 }
 
 
-bool use_babel;
-
 
 void Buffer::makeLaTeXFile(string const & fname,
 			   string const & original_path,
