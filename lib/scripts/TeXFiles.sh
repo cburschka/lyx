@@ -12,15 +12,19 @@
 #
 # Herbert Voss <voss@perce.org>
 #
+# Updates from Jean-Marc Lasgouttes.
+#
 CLS_STYLEFILE=clsFiles.lst
 STY_STYLEFILE=styFiles.lst
 BST_STYLEFILE=bstFiles.lst
-version='$Id: TeXFiles.sh,v 0.1 2001-10-01'
+version='$Id: TeXFiles.sh,v 0.2 2001-10-15'
 progname=`echo $0 | sed 's%.*/%%'`
-echo "$version"
 usage="Usage: TeXFiles.sh [-version | cls | sty | bst] 
        Default is without any Parameters,
        so that all files will be created"
+
+types=$1
+test -z "$types" && types="cls sty bst"
 
 #
 # MS-DOS and MS-Windows define $COMSPEC or $ComSpec and use ';' to separate
@@ -32,21 +36,7 @@ usage="Usage: TeXFiles.sh [-version | cls | sty | bst]
 #???????????????
 #
 if test -z "$COMSPEC" && test -z "$ComSpec"; then SEP=':'; else SEP=';'; fi
-#
-# Add the location of the script to the PATH if necessary.  This must
-# be done before kpsewhich can be called, and thus cannot be put into
-# mktex.opt
-#
-dirname=`echo $0 | sed 's%/*[^/][^/]*$%%'`
-echo "Actual Dir: $dirname"
-case $dirname in			# $dirname correct?
-  "") 					# Do nothing
-      ;;
-  /* | [A-z]:/*) 			# / -> Absolute name 
-      PATH="$dirname$SEP$PATH" ;;
-   *)  					# other -> Relative name
-      PATH="`pwd`/$dirname$SEP$PATH" ;;
-esac					# end of case
+
 #
 # A copy of some stuff from mktex.opt, so we can run in the presence of
 # terminally damaged ls-R files.
@@ -59,58 +49,29 @@ elif test "x$1" = x--version || test "x$1" = x-version; then
   kpsewhich --version
   exit 0
 fi
-#
-# find the directories with kpsewhich. TeX has files ls-R to hold
-# the tex-tree
-#
-test $# = 0 && {
-  OIFS=$IFS; IFS=$SEP; set x `kpsewhich --show-path=ls-R 2>/dev/null`; shift; IFS=$OIFS
-}
-echo 'Delete old *files.lst, if present'
-case "$1" in
-    "cls")
-	rm -f $CLS_STYLEFILE
-	touch $CLS_STYLEFILE		# create new file
-    ;;
-    "sty")
-	rm -f $STY_STYLEFILE
-	touch $STY_STYLEFILE		# create new file
-    ;;
-    "bst")
-	rm -f $BST_STYLEFILE
-	touch $BST_STYLEFILE		# create new file
-    ;;
-    *) 					# all other
-	rm -f $CLS_STYLEFILE $STY_STYLEFILE $BST_STYLEFILE
-	touch $CLS_STYLEFILE $STY_STYLEFILE $BST_STYLEFILE 
-    ;;
-esac
-echo "looking for all bst-style files in the latex tree";
-for TEXMFLSR in "$@"; do		# go through the dirs
-  case "$TEXMFLSR" in			# Prepend cwd if the directory was relative.
-  "") continue ;;  			# it is an error if this case is taken.
-  /* | [A-z]:/*) ;;			# leading /
-  *)  TEXMFLSR="`pwd`/$TEXMFLS_R"	# all other
-  esac
-  echo "Dir: <$TEXMFLSR>"
-case "$1" in				# list all files with suffix bst
-    "cls")
-	find $TEXMFLSR -follow -name *.cls >> $CLS_STYLEFILE
-    ;;
-    "sty")
-	find $TEXMFLSR -follow -name *.sty >> $STY_STYLEFILE
-    ;;
-    "bst")
-	find $TEXMFLSR -follow -name *.bst >> $BST_STYLEFILE
-    ;;
-    *) 
-	find $TEXMFLSR -follow -name *.cls >> $CLS_STYLEFILE
-	find $TEXMFLSR -follow -name *.sty >> $STY_STYLEFILE
-	find $TEXMFLSR -follow -name *.bst >> $BST_STYLEFILE
-    ;;
-esac
 
-  echo "done!"
+for type in $types ; do
+  echo "Indexing files of type $type"
+  case $type in 
+   cls) outfile=$CLS_STYLEFILE
+        kpsetype=.tex;;
+   sty) outfile=$STY_STYLEFILE
+        kpsetype=.tex;;
+   bst) outfile=$BST_STYLEFILE
+        kpsetype=.bst;;
+   *)   echo "ERROR: unknown type $type"
+        exit 1;;
+  esac
+
+  rm -f $outfile
+  touch $outfile
+
+  dirs=`kpsewhich --show-path=$kpsetype 2>/dev/null | tr "$SEP" " " | sed -e 's%///%/%' -e 's%//%/%g' -e 's%!!%%g'`
+
+  for dir in $dirs ; do
+    find $dir -follow -name "*.$type" >>$outfile 2>/dev/null
+  done
+
 done
 #echo "list saved in $STYLEFILE"
 #echo `wc -l $CLS_STYLEFILE`		# only for information

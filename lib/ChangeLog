@@ -1,3 +1,8 @@
+2001-10-15  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* scripts/TeXFiles.sh: rewrite to use kpsewhich --show-path.
+	Hopefully more precise and much faster.
+
 2001-10-15  José Matos  <jamatos@fep.up.pt>
 
 	* layouts/db_stdtitle.inc: add AuthorGroup, RevisionHistory,
