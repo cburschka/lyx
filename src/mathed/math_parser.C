@@ -278,6 +278,8 @@ private:
 	///
 	void tokenize(string const & s);
 	///
+	void skipSpaceTokens(istream & is, char c);
+	///
 	void push_back(Token const & t);
 	///
 	void pop_back();
@@ -458,6 +460,17 @@ void Parser::tokenize(istream & is)
 }
 
 
+void Parser::skipSpaceTokens(istream & is, char c)
+{
+	// skip trailing spaces
+	while (catcode(c) == catSpace || catcode(c) == catNewline)
+		if (!is.get(c))
+			break;
+	//lyxerr << "putting back: " << c << "\n";
+	is.putback(c);
+}
+
+
 void Parser::tokenize(string const & buffer)
 {
 	static bool init_done = false;
@@ -471,6 +484,7 @@ void Parser::tokenize(string const & buffer)
 
 	char c;
 	while (is.get(c)) {
+		lyxerr << "reading c: " << c << "\n";
 
 		switch (catcode(c)) {
 			case catNewline: {
@@ -499,15 +513,21 @@ void Parser::tokenize(string const & buffer)
 				} else {
 					string s(1, c);
 					if (catcode(c) == catLetter) {
+						// collect letters
 						while (is.get(c) && catcode(c) == catLetter)
 							s += c;
-						if (catcode(c) == catSpace)
-							while (is.get(c) && catcode(c) == catSpace)
-								;
-						is.putback(c);
+						skipSpaceTokens(is, c);
 					}	
 					push_back(Token(s));
 				}
+				break;
+			}
+
+			case catSuper:
+			case catSub: {
+				push_back(Token(c, catcode(c)));
+				is.get(c);
+				skipSpaceTokens(is, c);
 				break;
 			}
 
@@ -578,8 +598,8 @@ bool Parser::parse_lines(MathAtom & t, bool numbered, bool outmost)
 
 			// break if cell is not followed by an ampersand
 			if (nextToken().cat() != catAlign) {
-				lyxerr << "less cells read than normal in row/col: "
-					<< row << " " << col << "\n";
+				//lyxerr << "less cells read than normal in row/col: "
+				//	<< row << " " << col << "\n";
 				break;
 			}
 			
