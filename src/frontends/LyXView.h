@@ -87,7 +87,7 @@ public:
 	/// return the toolbar for this view
 	Toolbars & getToolbars() { return *toolbars_.get(); }
 	///
-	Toolbars const & getToolbasr() const { return *toolbars_.get(); }
+	Toolbars const & getToolbars() const { return *toolbars_.get(); }
 
 	/// return the menubar for this view
 	Menubar & getMenubar() { return *menubar_.get(); }
