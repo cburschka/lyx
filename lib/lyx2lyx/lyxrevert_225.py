@@ -265,7 +265,10 @@ def convert_frameless_box(lines):
 	    i = convert_ertlen(lines, i, params['height'], params['height_special'])
 	    lines[i] = lines[i] + '][' + inner_pos[params['inner_pos']] + ']{'
 	    i = convert_ertlen(lines, i, params['width'], params['special'])
-	    lines[i] = lines[i] + '}{'
+            if params['use_parbox'] == '1':
+                lines[i] = lines[i] + '}{'
+            else:
+                lines[i] = lines[i] + '}'
 	    i = i + 1
 	    lines[i:i] = ['', '\\end_inset ']
 	    i = i + 2
