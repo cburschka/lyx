@@ -139,6 +139,25 @@ void InsetInclude::set(Params const & p)
 {
 	params_ = p;
 
+	string command;
+ 
+	switch (params_.flag) {
+		case INCLUDE:
+			command="include";
+			break;
+		case VERB:
+			command="verbatiminput";
+			break;
+		case INPUT:
+			command="input";
+			break;
+		case VERBAST:
+			command="verbatiminput*";
+			break;
+	}
+ 
+	params_.cparams.setCmdName(command); 
+ 
 	if (preview_->monitoring())
 		preview_->stopMonitoring();
 
