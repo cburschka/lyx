@@ -993,8 +993,6 @@ string const GetExtension(string const & name)
 // AGR	Grace...
 // BMP	BM...
 // EPS	%!PS-Adobe-3.0 EPSF...
-// EPSI like EPS and with
-//      %%BeginPreview...
 // FIG	#FIG...
 // FITS ...BITPIX...
 // GIF	GIF...
@@ -1160,22 +1158,6 @@ string const getExtFromContents(string const & filename)
 	}
 
 	if (!format.empty()) {
-		// if we have eps than epsi is also possible
-		// we have to check for a preview
-		if (format == "eps") {
-			lyxerr[Debug::GRAPHICS]
-				<< "\teps detected -> test for an epsi ..."
-				<< endl;
-			while (count++ < max_count) {
-				if (ifs.eof())
-					break;
-				getline(ifs, str);
-				if (contains(str, "BeginPreview")) {
-					format = "epsi";
-					count = max_count;
-				}
-			}
-		}
 		lyxerr[Debug::GRAPHICS]
 			<< "Recognised Fileformat: " << format << endl;
 		return format;

@@ -33,6 +33,7 @@ void InsetNote::init()
 {
 	LyXFont font(LyXFont::ALL_SANE);
 	font.decSize();
+	font.decSize();
 	font.setColor(LColor::note);
 	setLabelFont(font);
 	setBackgroundColor(LColor::notebg);
