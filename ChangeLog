@@ -1,3 +1,14 @@
+1999-12-30  Allan Rae  <rae@lyx.org>
+
+	* lib/templates/IEEEtran.lyx: minor change
+
+	* src/lyxvc.C (registrer, checkIn), src/lyx_cb.C (MenuInsertLabel),
+	src/mathed/formula.C (LocalDispatch): askForText changes
+
+	* src/lyx_gui_misc.[Ch] (askForText): now returns a bool also so we 
+	know when a user has cancelled input. Fixes annoying problems with
+	inserting labels and version control.
+
 1999-12-28  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/buffer.C (Dispatch): remove an extraneous break statement.

@@ -1043,11 +1043,16 @@ bool InsetFormula::LocalDispatch(int action, char const * arg)
       
     case LFUN_INSERT_LABEL:
     {
-      LockedInsetStoreUndo(Undo::INSERT);
+       LockedInsetStoreUndo(Undo::INSERT);
        if (par->GetType() < LM_OT_PAR) break;
        string lb = arg;
-       if (lb.empty())
-	      lb = string(askForText(_("Enter new label to insert:")));
+       if (lb.empty()) {
+	  pair<bool, string>
+		result = askForText(_("Enter new label to insert:"));
+	  if (result.first) {
+	     lb = result.second;
+	  }
+       }
        if (!lb.empty() && lb[0] > ' ') {
 	  SetNumber(true);
 	  if (par->GetType() == LM_OT_MPARN) {

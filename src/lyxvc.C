@@ -98,15 +98,17 @@ void LyXVC::registrer()
 	}
 
 	lyxerr[Debug::LYXVC] << "LyXVC: registrer" << endl;
-	string tmp = askForText(_("LyX VC: Initial description"),
-				 _("(no initial description)"));
-	if (tmp.empty()) {
+	pair<bool, string> tmp = askForText(_("LyX VC: Initial description"),
+					    _("(no initial description)"));
+	if (!tmp.first || tmp.second.empty()) {
+		// should we insist on checking tmp.second.empty()?
 		lyxerr[Debug::LYXVC] << "LyXVC: user cancelled" << endl;
-		WriteAlert(_("Info"), _("This document has NOT been registered."));
+		WriteAlert(_("Info"),
+			   _("This document has NOT been registered."));
 		return;
 	}
 	
-	vcs->registrer(tmp);
+	vcs->registrer(tmp.second);
 }
 
 
@@ -128,11 +130,15 @@ void LyXVC::checkIn()
 	}
 
 	lyxerr[Debug::LYXVC] << "LyXVC: checkIn" << endl;
-	string tmp = askForText(_("LyX VC: Log Message"));
-	if (tmp.empty()) tmp = "(no log msg)";
-
-	vcs->checkIn(tmp);
-	
+	pair<bool, string> tmp = askForText(_("LyX VC: Log Message"));
+	if (tmp.first) {
+		if (tmp.second.empty()) {
+			tmp.second = _("(no log message)");
+		}
+		vcs->checkIn(tmp.second);
+	} else {
+		lyxerr[Debug::LYXVC] << "LyXVC: user cancelled" << endl;
+	}
 }
 
 

@@ -1244,9 +1244,13 @@ void MenuInsertLabel(char const * arg)
 {
 	string label = arg;
 	ProhibitInput();
-	//string label = fl_show_input(_("Enter new label to insert:"), "");
-	if (label.empty())
-		label = frontStrip(strip(askForText(_("Enter new label to insert:"))));
+	if (label.empty()) {
+		pair<bool, string>
+			result = askForText(_("Enter new label to insert:"));
+		if (result.first) {
+			label = frontStrip(strip(result.second));
+		}
+	}
 	if (!label.empty()) {
 		InsetLabel * new_inset = new InsetLabel;
 		new_inset->setContents(label);
