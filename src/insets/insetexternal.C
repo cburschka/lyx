@@ -15,7 +15,6 @@
 #include "BufferView.h"
 #include "buffer.h"
 #include "frontends/LyXView.h"
-#include "lyx_main.h"
 #include "LaTeXFeatures.h"
 #include "gettext.h"
 #include "debug.h"
@@ -23,11 +22,12 @@
 
 #include "frontends/Dialogs.h"
 
-#include "support/filetools.h"
-#include "support/lstrings.h"
-#include "support/path.h"
-#include "support/forkedcall.h"
 #include "support/FileInfo.h"
+#include "support/filetools.h"
+#include "support/forkedcall.h"
+#include "support/lstrings.h"
+#include "support/package.h"
+#include "support/path.h"
 
 #include <cstdio>
 #include <utility>
@@ -242,7 +242,7 @@ string const InsetExternal::doSubstitution(Buffer const * buffer,
 	result = subst(result, "$$Parameters", params_.parameters);
 	result = subst(result, "$$FPath", filepath);
 	result = subst(result, "$$Tempname", tempname_);
-	result = subst(result, "$$Sysdir", system_lyxdir);
+	result = subst(result, "$$Sysdir", lyx::package().system_support());
 
 	// Handle the $$Contents(filename) syntax
 	if (contains(result, "$$Contents(\"")) {

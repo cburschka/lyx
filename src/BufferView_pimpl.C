@@ -31,7 +31,6 @@
 #include "intl.h"
 // added for Dispatch functions
 #include "lyx_cb.h"
-#include "lyx_main.h"
 #include "FloatList.h"
 #include "gettext.h"
 #include "ParagraphParameters.h"
@@ -54,9 +53,10 @@
 
 #include "graphics/Previews.h"
 
+#include "support/filetools.h"
 #include "support/LAssert.h"
 #include "support/lstrings.h"
-#include "support/filetools.h"
+#include "support/package.h"
 
 #include <boost/bind.hpp>
 #include <boost/signals/connection.hpp>
@@ -855,13 +855,14 @@ void BufferView::Pimpl::MenuInsertLyXFile(string const & filen)
 				initpath = trypath;
 		}
 
+		string const & system_support = lyx::package().system_support();
 		FileDialog fileDlg(bv_->owner(),
 				   _("Select LyX document to insert"),
 			LFUN_FILE_INSERT,
 			make_pair(string(_("Documents|#o#O")),
 				  string(lyxrc.document_path)),
 			make_pair(string(_("Examples|#E#e")),
-				  string(AddPath(system_lyxdir, "examples"))));
+				  string(AddPath(system_support, "examples"))));
 
 		FileDialog::Result result =
 			fileDlg.open(initpath,

@@ -12,12 +12,7 @@
 #define INCL_DOSERRORS
 #include <os2.h>
 
-string os::binpath_ = string();
-string os::binname_ = string();
-string os::tmpdir_;
-string os::homepath_;
-string os::nulldev_;
-os::shell_type os::_shell = os::UNIX;
+os::shell_type os::shell_ = os::UNIX;
 unsigned long os::cp_ = 0;
 
 void os::init(int argc, char * argv[])
@@ -28,31 +23,21 @@ void os::init(int argc, char * argv[])
 	APIRET rc = DosGetInfoBlocks(&ptib, &ppib);
 	if (rc != NO_ERROR)
 		exit(rc);
-	char* tmp = new char[256];
-	// This is the only reliable way to retrieve the executable name.
-	rc = DosQueryModuleName(ppib->pib_hmte, 256L, tmp);
-	if (rc != NO_ERROR)
-		exit(rc);
-	string p(tmp);
-	p = internal_path(p);
-	binname_ = OnlyFilename(p);
-	binname_.erase(binname_.length()-4, string::npos);
-	binpath_ = OnlyPath(p);
 
 	// OS/2 cmd.exe has another use for '&'
-	string sh = OnlyFilename(GetEnvPath("EMXSHELL"));
+	string sh = OnlyFilename(os::internal_path(GetEnv("EMXSHELL")));
 	if (sh.empty()) {
 		// COMSPEC is set, unless user unsets
-		sh = OnlyFilename(GetEnvPath("COMSPEC"));
+		sh = OnlyFilename(os::internal_path(GetEnv("COMSPEC")));
 		if (sh.empty())
 			sh = "cmd.exe";
 	}
 	sh = lowercase(sh);	// DosMapCase() is an overkill here
 	if (contains(sh, "cmd.exe")
 	    || contains(sh, "4os2.exe"))
-		_shell = os::CMD_EXE;
+		shell_ = os::CMD_EXE;
 	else
-		_shell = os::UNIX;
+		shell_ = os::UNIX;
 
 	static bool initialized = false;
 	if (initialized) return;
@@ -65,17 +50,11 @@ void os::init(int argc, char * argv[])
 	// CPList[1] == system default codepage, the rest are auxilary.
 	// Once cp_ is correctly set, you can call other routines.
 	cp_ = CPList[1];
-
-	tmpdir_ = "/tmp";
-	homepath_ = GetEnvPath("HOME");
-	nulldev_ = "null";
 }
 
-void os::warn(string /*mesg*/) {
-	return;
-}
 
-string os::current_root() {
+string os::current_root()
+{
 	APIRET rc;
 	ULONG drv_num, drv_map;
 	rc = DosQueryCurrentDisk(&drv_num, &drv_map);
@@ -86,6 +65,7 @@ string os::current_root() {
 	tmp  += ":/";
 	return tmp;
 }
+
 
 string::size_type os::common_path(string const &p1, string const &p2) {
 	static bool initialized = false;
@@ -120,7 +100,8 @@ string::size_type os::common_path(string const &p1, string const &p2) {
 	return i;
 }
 
-string os::internal_path(string const & p) {
+string os::internal_path(string const & p)
+{
 	static bool initialized = false;
 	static bool leadbyte[256] = {false};
 	if (!initialized) {
@@ -158,7 +139,8 @@ string os::internal_path(string const & p) {
 }
 
 
-string os::external_path(string const & p) {
+string os::external_path(string const & p)
+{
 	return p;
 }
 

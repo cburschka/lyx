@@ -16,15 +16,14 @@
 
 #include "lyxlex.h"
 #include "debug.h"
-#include "support/path.h"
-#include "support/LAssert.h"
 #include "support/filetools.h"
+#include "support/LAssert.h"
+#include "support/package.h"
+#include "support/path.h"
 
 using std::endl;
 using std::ostream;
 using std::for_each;
-
-extern string user_lyxdir;
 
 
 // We have to have dummy default commands for security reasons!
@@ -40,7 +39,7 @@ ExternalTemplate::FormatTemplate::FormatTemplate()
 ExternalTemplateManager::ExternalTemplateManager()
 {
 	// gimp gnuchess gnuplot ical netscape tetris xpaint
-	readTemplates(user_lyxdir);
+	readTemplates(lyx::package().user_support());
 	if (lyxerr.debugging())
 		dumpTemplates();
 }

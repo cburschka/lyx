@@ -1,3 +1,25 @@
+2005-01-10  Angus Leeming  <leeming@lyx.org>
+
+	* os.h:
+	* os_os2.C:
+	* os_unix.C:
+	* os_win32.C (binpath, binname, homepath, setTmpDir, getTmpDir):
+	removed. Remove also all code to set the associated member variables.
+
+	* package.[Ch]: new files to ascertain the paths to the
+	various directories used by LyX. Does nothing with these paths,
+	just determines the strings themselves.
+
+	* Makefile.am: add package.[Ch]. Add special casing to compile
+	package.lo.
+
+	* filetools.C[Ch] (GetEnvPath): remove.
+	(getEnvPath): replacement. Returns a vector<string> of paths.
+
+	* filetools.C:
+	* tempname.C: use support/package.h to provide the paths to the
+	various directories used by LyX.
+
 2005-01-05  Angus Leeming  <leeming@lyx.org>
 
 	* os_win32.C (external_path, internal_path): s/MAX_PATH/PATH_MAX/.

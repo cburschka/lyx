@@ -11,6 +11,8 @@ if USE_LYXSTRING
 LYXSTRING = lyxstring.C lyxstring.h
 endif
 
+localedir = $(datadir)/locale
+
 libsupport_la_SOURCES = \
 	DebugStream.C \
 	DebugStream.h \
@@ -48,6 +50,8 @@ libsupport_la_SOURCES = \
 	nt_defines.h \
 	os2_defines.h \
 	os2_errortable.h \
+	package.C \
+	package.h \
 	path.C \
 	path.h \
 	putenv.C \
@@ -63,3 +67,18 @@ libsupport_la_SOURCES = \
 	translator.h \
 	types.h \
 	unlink.C
+
+package.lo: ../config.h \
+	package.C package.h DebugStream.h FileInfo.h \
+	filetools.h LAssert.h LOstream.h lstrings.h lyxlib.h os.h \
+	$(top_srcdir)/src/BoostFormat.h $(top_srcdir)/src/debug.h \
+	$(top_srcdir)/src/gettext.h $(top_srcdir)/src/Lsstream.h \
+	$(top_srcdir)/src/LString.h
+	$(CXXCOMPILE) \
+		-DLYX_DIR=\"$(pkgdatadir)\" \
+		-DTOP_SRCDIR=\"$(top_srcdir)\" \
+		-DLOCALEDIR=\"$(localedir)\" \
+		-c $(top_srcdir)/src/support/package.C && \
+	echo "timestamp" > $@
+
+

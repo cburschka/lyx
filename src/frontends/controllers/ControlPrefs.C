@@ -14,20 +14,21 @@
 
 #include "ControlPrefs.h"
 #include "ViewBase.h"
-
-#include "frontends/LyXView.h"
 #include "helper_funcs.h"
-#include "gettext.h"
-#include "support/filetools.h"
-#include "frontends/Dialogs.h"
+
 #include "converter.h"
 #include "debug.h"
+#include "gettext.h"
 
-extern string system_lyxdir;
-extern string user_lyxdir;
+#include "frontends/Dialogs.h"
+#include "frontends/LyXView.h"
+
+#include "support/filetools.h"
+#include "support/package.h"
 
 using std::endl;
 using std::pair;
+
 
 ControlPrefs::ControlPrefs(LyXView & lv, Dialogs & d)
 	: ControlDialogBI(lv, d)
@@ -54,12 +55,13 @@ void ControlPrefs::apply()
 
 string const ControlPrefs::browsebind(string const & file)
 {
-	string dir  = AddName(system_lyxdir, "bind");
+	lyx::Package const & package = lyx::package();
+	string dir  = AddName(package.system_support(), "bind");
 	// FIXME: stupid name
 	string name = _("System Bind|#S#s");
 	pair<string,string> dir1(name, dir);
 
-	dir = AddName(user_lyxdir, "bind");
+	dir = AddName(package.user_support(), "bind");
 	// FIXME: stupid name
 	name = _("User Bind|#U#u");
 	pair<string,string> dir2(name, dir);
@@ -70,12 +72,13 @@ string const ControlPrefs::browsebind(string const & file)
 
 string const ControlPrefs::browseUI(string const & file)
 {
-	string dir  = AddName(system_lyxdir, "ui");
+	lyx::Package const & package = lyx::package();
+	string dir  = AddName(package.system_support(), "ui");
 	// FIXME: stupid name
 	string name = _("Sys UI|#S#s");
 	pair<string,string> dir1(name, dir);
 
-	dir = AddName(user_lyxdir, "ui");
+	dir = AddName(package.user_support(), "ui");
 	// FIXME: stupid name
 	name = _("User UI|#U#u");
 	pair<string,string> dir2(name, dir);
@@ -86,7 +89,7 @@ string const ControlPrefs::browseUI(string const & file)
 
 string const ControlPrefs::browsekbmap(string const & file)
 {
-	string const dir = AddName(system_lyxdir, "kbd");
+	string const dir = AddName(lyx::package().system_support(), "kbd");
 	string const name = _("Key maps|#K#k");
 	pair<string, string> dir1(name, dir);
 

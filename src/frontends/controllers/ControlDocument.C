@@ -20,7 +20,6 @@
 
 #include "buffer.h"
 #include "language.h"
-#include "lyx_main.h"
 #include "lyxtextclass.h"
 #include "lyxtextclasslist.h"
 #include "CutAndPaste.h"
@@ -28,8 +27,9 @@
 #include "frontends/LyXView.h"
 #include "frontends/Alert.h"
 
-#include "support/lstrings.h"
 #include "support/filetools.h"
+#include "support/lstrings.h"
+#include "support/package.h"
 
 #include "BoostFormat.h"
 
@@ -164,7 +164,8 @@ void ControlDocument::saveAsDefault()
 
 	lv_.buffer()->params.preamble = bp_->preamble;
 
-	string const fname = AddName(AddPath(user_lyxdir, "templates/"),
+	string const & user_support = lyx::package().user_support();
+	string const fname = AddName(AddPath(user_support, "templates/"),
 				     "defaults.lyx");
 	Buffer defaults(fname);
 	defaults.params = params();

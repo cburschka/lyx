@@ -1,3 +1,25 @@
+2005-01-10  Angus Leeming  <leeming@lyx.org>
+
+	* Makefile.am: remove the lyx_main.C special casing.
+
+	* BufferView_pimpl.C:
+	* bufferlist.C:
+	* lyx_cb.C:
+	* lyxfunc.C: use support/package.h to provide the paths to the
+	various directories used by LyX.
+
+	* lyx_main.C: remove all code to determine the paths
+	to the various directories used by LyX. Use support/package.h
+	instead.
+
+	* lyx_main.h: remove the declarations of the user_lyxdir,
+	system_lyxdir and system_tempdir global variables.
+
+	* lyxserver.C: no need to #include lyx_main.h.
+
+	* main.C: don't use GetEnvPath to extract the LYX_LOCALEDIR
+	environment variable.
+
 2005-01-05  Angus Leeming  <leeming@lyx.org>
 
 	* BufferView.C:
@@ -61,8 +83,8 @@
 	* *.[Ch]: remove all traces of #pragma interface/implementation
 
 2004-11-15  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
-  
-	* text.C (cursorLeftOneWord): 
+
+	* text.C (cursorLeftOneWord):
 	(getWord): simplify by using Paragraph::isWord
 
 	* paragraph.C (isWord): invoke Inset::isLetter on insets
@@ -92,7 +114,7 @@
 
 	* bufferlist.C (previous, next): new methods
 
-	* commandtags.h: 
+	* commandtags.h:
 	* LyXAction.C (init): add LFUN_NEXTBUFFER and LFUN_PREVIOUSBUFFER
 
 2004-10-22  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
@@ -108,7 +130,7 @@
 
 	* paragraph.C (TeXOnePar): Make sure font setting is the first
 	thing that gets output (and the last at the end). Should fix bug
-	1404. 
+	1404.
 
 2004-07-15  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
@@ -128,10 +150,10 @@
 
 2004-04-29  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
-	* text2.C (setCounter): 
-	* lyxfunc.C (dispatch): 
-	* exporter.C (Export): 
-	* converter.C (runLaTeX): 
+	* text2.C (setCounter):
+	* lyxfunc.C (dispatch):
+	* exporter.C (Export):
+	* converter.C (runLaTeX):
 	* buffer.C (redraw, runChktex): fix #warning directives
 
 	* BoostFormat.h: fix compilation with gcc 3.4
@@ -166,7 +188,7 @@
 	* BufferView_pimpl.C (dispatch): use parentFilename_ instead of
 	masterFilename_
 
-	* buffer.C (getLabelList): 
+	* buffer.C (getLabelList):
 	(getBibkeyList): use getMasterBuffer()
 	(getMasterBuffer): new method. Returns the main document in the
 	case where one is using included documents.
@@ -302,7 +324,7 @@
 
 	* LaTeX.C (run): Fix a bug where the DVI file was not updated due
 	to an old format .dep file.
-	
+
 2003-02-17  John Levon  <levon@movementarian.org>
 
 	* SpellBase.h:
@@ -329,15 +351,15 @@
 
 	* paragraph.C (asString): remove two unused variables
 
-	* lyxtextclass.C (readTitleType): 
-	(Read): 
+	* lyxtextclass.C (readTitleType):
+	(Read):
 	(LyXTextClass): handle new members titletype_ and titlename_
 
 	* buffer.C (latexParagraphs): honor LyXTextClass::titletype
 
 2003-02-07  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
-	* text.C (getLengthMarkerHeight): 
+	* text.C (getLengthMarkerHeight):
 	(drawLengthMarker): make the `symbolic' lengths (small/med/big)
 	visible on screen too.
 

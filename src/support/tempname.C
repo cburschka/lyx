@@ -8,7 +8,7 @@
 #include "support/filetools.h"
 #include "support/lstrings.h"
 #include "debug.h"
-#include "os.h"
+#include "package.h"
 
 #if !defined(HAVE_MKSTEMP) && defined(HAVE_MKTEMP)
 # include <fcntl.h>
@@ -39,7 +39,7 @@ int make_tempfile(char * templ)
 
 string const lyx::tempName(string const & dir, string const & mask)
 {
-	string const tmpdir(dir.empty() ? os::getTmpDir() : dir);
+	string const tmpdir(dir.empty() ? lyx::package().temp_dir() : dir);
 	string tmpfl(AddName(tmpdir, mask));
 	tmpfl += tostr(getpid());
 	tmpfl += "XXXXXX";

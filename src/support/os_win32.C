@@ -21,66 +21,17 @@
 #endif
  
 
-string os::binpath_ = string();
-string os::binname_ = string();
-string os::tmpdir_;
-string os::homepath_;
-string os::nulldev_;
-
 #if defined(__CYGWIN__) || defined(__CYGWIN32__)
-os::shell_type os::_shell = os::UNIX;
+string const os::nulldev_ = "/dev/null";
+os::shell_type os::shell_ = os::UNIX;
 #else
-os::shell_type os::_shell = os::CMD_EXE;
+string const os::nulldev_ = "nul";
+os::shell_type os::shell_ = os::CMD_EXE;
 #endif
 
-unsigned long os::cp_ = 0;
 
-using std::endl;
-
-void os::init(int /* argc */, char * argv[])
-{
-	static bool initialized = false;
-	if (initialized) return;
-	initialized = true;
-	string tmp = internal_path(argv[0]);
-	binname_ = OnlyFilename(tmp);
-	tmp = ExpandPath(tmp); // This expands ./ and ~/
-
-	if (!is_absolute_path(tmp)) {
-		string binsearchpath = GetEnvPath("PATH");
-		// This will make "src/lyx" work always :-)
-		binsearchpath += ";.";
-		tmp = internal_path(argv[0]);
-		tmp = FileOpenSearch(binsearchpath, tmp);
-	}
-
-	tmp = MakeAbsPath(OnlyPath(tmp));
-
-	// In case we are running in place and compiled with shared libraries
-	if (suffixIs(tmp, "/.libs/"))
-		tmp.erase(tmp.length()-6, string::npos);
-	binpath_ = tmp;
-
-#if defined(__CYGWIN__) || defined(__CYGWIN32__)
-	tmpdir_ = "/tmp";
-	homepath_ = GetEnvPath("HOME");
-	nulldev_ = "/dev/null";
-#else
-	// Use own tempdir
-	tmp.erase(tmp.length()-4,4);
-	tmpdir_ = tmp + "tmp";
-
-	homepath_ = GetEnvPath("HOMEDRIVE") + GetEnvPath("HOMEPATH");
-	nulldev_ = "nul";
-#endif
-}
-
-
-void os::warn(string mesg)
-{
-	MessageBox(0, mesg.c_str(), "LyX error",
-	MB_OK|MB_ICONSTOP|MB_SYSTEMMODAL);
-}
+void os::init(int, char *[])
+{}
 
 
 string os::current_root()
@@ -135,7 +86,7 @@ string os::external_path(string const & p)
 	lyxerr[Debug::LATEX]
 		<< "<Win32 path correction> ["
 		<< p << "]->>["
-		<< dos_path << ']' << endl;
+		<< dos_path << ']' << std::endl;
 	return dos_path;
 }
 

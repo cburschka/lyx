@@ -13,16 +13,16 @@
 
 #include "lyx_gui.h"
 
-#include "support/lyxlib.h"
-#include "support/os.h"
 #include "support/filetools.h"
+#include "support/lyxlib.h"
+#include "support/package.h"
 
 #include "debug.h"
 #include "gettext.h"
 
 #include "lyx_main.h"
-#include "lyxrc.h"
 #include "lyxfont.h"
+#include "lyxrc.h"
 
 // FIXME: move this stuff out again
 #include "bufferlist.h"
@@ -153,7 +153,6 @@ void lyx_gui::parse_init(int & argc, char * argv[])
 
 	if (!display) {
 		lyxerr << "LyX: unable to access X display, exiting" << endl;
-		os::warn("Unable to access X display, exiting");
 		::exit(1);
 	}
 
@@ -176,7 +175,8 @@ void lyx_gui::parse_init(int & argc, char * argv[])
 
 void lyx_gui::parse_lyxrc()
 {
-	XformsColor::read(AddName(user_lyxdir, "preferences.xform"));
+	string const & user_support = lyx::package().user_support();
+	XformsColor::read(AddName(user_support, "preferences.xform"));
 
 	if (lyxrc.popup_font_encoding.empty())
 		lyxrc.popup_font_encoding = lyxrc.font_norm;

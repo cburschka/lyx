@@ -32,6 +32,7 @@
 #include "support/FileInfo.h"
 #include "support/filetools.h"
 #include "support/forkedcall.h"
+#include "support/package.h"
 #include "support/path.h"
 #include "support/systemcall.h"
 #include "support/lstrings.h"
@@ -239,9 +240,10 @@ void QuitLyX()
 	bufferlist.closeAll();
 
 	// do any other cleanup procedures now
-	lyxerr[Debug::INFO] << "Deleting tmp dir " << system_tempdir << endl;
+	lyxerr[Debug::INFO] << "Deleting tmp dir "
+			    << lyx::package().temp_dir() << endl;
 
-	DestroyLyXTmpDir(system_tempdir);
+	DestroyLyXTmpDir(lyx::package().temp_dir());
 
 	lyx_gui::exit();
 }
@@ -531,9 +533,13 @@ void Reconfigure(BufferView * bv)
 	bv->owner()->message(_("Running configure..."));
 
 	// Run configure in user lyx directory
-	Path p(user_lyxdir);
-	string const configure_script = AddName(system_lyxdir, "configure");
+	lyx::Package const & package = lyx::package();
+	Path p(package.user_support());
+
+	string const configure_script =
+		AddName(package.system_support(), "configure");
 	string const configure_command = "sh " + QuoteName(configure_script);
+
 	Systemcall one;
 	one.startscript(Systemcall::Wait, configure_command);
 	p.pop();

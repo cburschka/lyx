@@ -18,14 +18,11 @@
 
 #include "support/LOstream.h"
 #include "support/filetools.h" // FileSearch
+#include "support/package.h"
 
 #include <fstream>
 
 using std::ostream;
-
-// needed for the browser
-extern string system_lyxdir;
-extern string user_lyxdir;
 
 
 ControlAboutlyx::ControlAboutlyx(LyXView & lv, Dialogs & d)
@@ -35,7 +32,8 @@ ControlAboutlyx::ControlAboutlyx(LyXView & lv, Dialogs & d)
 
 void ControlAboutlyx::getCredits(ostream & ss) const
 {
-	string const name = FileSearch(system_lyxdir, "CREDITS");
+	string const & system_support = lyx::package().system_support();
+	string const name = FileSearch(system_support, "CREDITS");
 
 	bool found(!name.empty());
 
@@ -75,6 +73,7 @@ string const ControlAboutlyx::getDisclaimer() const
 string const ControlAboutlyx::getVersion() const
 {
 	ostringstream ss;
+	lyx::Package const & package = lyx::package();
 
 	ss << _("LyX Version ")
 	   << lyx_version
@@ -82,10 +81,10 @@ string const ControlAboutlyx::getVersion() const
 	   << lyx_release_date
 	   << "\n"
 	   << _("Library directory: ")
-	   << MakeDisplayPath(system_lyxdir)
+	   << MakeDisplayPath(package.system_support())
 	   << "\n"
 	   << _("User directory: ")
-	   << MakeDisplayPath(user_lyxdir);
+	   << MakeDisplayPath(package.user_support());
 
 	return STRCONV(ss.str());
 }

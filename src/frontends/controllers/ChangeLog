@@ -1,3 +1,14 @@
+2005-01-10  Angus Leeming  <leeming@lyx.org>
+
+	* ControlAboutlyx.C:
+	* ControlDocument.C:
+	* ControlGraphics.C:
+	* ControlPrefs.C:
+	* tex_helpers.C: use support/package.h to provide the paths to the
+	various directories used by LyX.
+
+	* ControlTexinfo.C: remove reference to user_lyxdir.
+
 2005-01-05  Angus Leeming  <leeming@lyx.org>
 
 	* ControlGraphics.C: add "using lyx::FileInfo;" directive.

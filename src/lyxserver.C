@@ -43,7 +43,6 @@
 #include <cerrno>
 
 #include "lyxserver.h"
-#include "lyx_main.h"
 #include "debug.h"
 #include "lyxfunc.h"
 #include "support/lstrings.h"

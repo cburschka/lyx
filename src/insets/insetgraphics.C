@@ -92,8 +92,6 @@ TODO
 
 #include <algorithm> // For the std::max
 
-extern string system_tempdir;
-
 using std::ostream;
 using std::endl;
 

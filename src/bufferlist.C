@@ -36,7 +36,7 @@
 #include "support/lyxmanip.h"
 #include "support/lyxfunctional.h"
 #include "support/LAssert.h"
-#include "support/os.h"
+#include "support/package.h"
 
 #include <boost/bind.hpp>
 #include "BoostFormat.h"
@@ -361,7 +361,7 @@ void BufferList::emergencyWrite(Buffer * buf)
 	}
 
 	// 2) In HOME directory.
-	string s = AddName(os::homepath(), buf->fileName());
+	string s = AddName(lyx::package().home_dir(), buf->fileName());
 	s += ".emergency";
 	lyxerr << ' ' << s << endl;
 	if (buf->writeFile(s)) {

@@ -22,10 +22,6 @@ AM_INIT_AUTOMAKE($lyxname, $VERSION)
 # that are complete enough to be useful). This is needed by GNU gettext
 ALL_LINGUAS="da de es eu fi fr it nl nn no pl ro ru sk sl"
 
-# fix the value of the prefixes.
-test "x$prefix" = xNONE && prefix=$ac_default_prefix
-test "x$exec_prefix" = xNONE && exec_prefix='${prefix}'
-
 ### Set the execute permissions of the various scripts correctly
 for file in config/install-sh config/mkinstalldirs lib/configure ; do
   chmod 755 ${srcdir}/${file}
@@ -208,6 +204,12 @@ dnl	;;
     LYX_ERROR(Unknown frontend $lyx_use_frontend);;
 esac
 
+### Check how the files should be packaged
+LYX_USE_PACKAGING
+# fix the value of the prefixes.
+test "x$prefix" = xNONE && prefix=$default_prefix
+test "x$exec_prefix" = xNONE && exec_prefix='${prefix}'
+
 ### Setup GNU gettext
 dnl GNU gettext is written in C
 AC_LANG_PUSH(C)
@@ -281,8 +283,9 @@ VERSION_INFO="Configuration\n\
   Linker flags:                   ${LDFLAGS}\n\
   Frontend:                       ${lyx_use_frontend}\n\
 ${FRONTEND_INFO}\
-  LyX binary dir:                 ${real_bindir}\n\
-  LyX files dir:                  ${real_datadir}\n"
+  Packaging:                      ${lyx_use_packaging}\n\
+    LyX binary dir:               ${real_bindir}\n\
+    LyX files dir:                ${real_datadir}\n"
 
 
 AC_SUBST(VERSION_INFO)

@@ -20,7 +20,7 @@ int main(int argc, char * argv[])
 
 	// lyx_localedir is used by gettext_init() is we have
 	//   i18n support built-in
-	string lyx_localedir = GetEnvPath("LYX_LOCALEDIR");
+	string lyx_localedir = os::internal_path(GetEnv("LYX_LOCALEDIR"));
 	if (lyx_localedir.empty())
 		lyx_localedir = LOCALEDIR;
 

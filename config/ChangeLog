@@ -1,3 +1,10 @@
+2005-01-06  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* configure.ac: 
+	* configure.in: use LYX_USE_PACKAGING
+
+	* lyxinclude.m4 (LYX_USE_PACKAGING): new macro.
+
 2005-01-04  Angus Leeming  <leeming@lyx.org>
 
 	* configure.ac, configure.in (AC_CHECK_FUNCS): test for the

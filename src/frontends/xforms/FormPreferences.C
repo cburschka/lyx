@@ -33,10 +33,11 @@
 #include "Lsstream.h"
 #include "funcrequest.h"
 
-#include "support/lyxfunctional.h"
-#include "support/lyxmanip.h"
 #include "support/filetools.h"
 #include "support/LAssert.h"
+#include "support/lyxfunctional.h"
+#include "support/lyxmanip.h"
+#include "support/package.h"
 
 #include "graphics/GraphicsCache.h"
 #include "graphics/GraphicsTypes.h"
@@ -57,8 +58,6 @@ using std::vector;
 using std::setw;
 using std::setfill;
 
-extern string system_lyxdir;
-extern string user_lyxdir;
 
 namespace {
 
@@ -308,8 +307,9 @@ void FormPreferences::apply()
 
 	// The "Save" button has been pressed.
 	if (controller().isClosing() && colors_.modifiedXformsPrefs) {
+		string const & user_support = lyx::package().user_support();
 		string const filename =
-			AddName(user_lyxdir, "preferences.xform");
+			AddName(user_support, "preferences.xform");
 		colors_.modifiedXformsPrefs = !XformsColor::write(filename);
 	}
 }

@@ -22,7 +22,6 @@
 #include "support/path.h"
 #include "support/lstrings.h"
 
-extern string user_lyxdir; // home of *Files.lst
 
 namespace {
 

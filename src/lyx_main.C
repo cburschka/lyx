@@ -11,38 +11,36 @@
 
 #include "lyx_main.h"
 
-#include "support/filetools.h"
-#include "support/lyxlib.h"
-#include "support/os.h"
-#include "support/FileInfo.h"
-#include "support/path.h"
-#include "debug.h"
-#include "gettext.h"
-#include "lyxlex.h"
-
-#include "graphics/GraphicsTypes.h"
-
-#include "bufferlist.h"
 #include "buffer.h"
-#include "lyxserver.h"
+#include "bufferlist.h"
+#include "commandtags.h"
+#include "converter.h"
+#include "debug.h"
+#include "encoding.h"
+#include "gettext.h"
 #include "kbmap.h"
-#include "lyxfunc.h"
-#include "ToolbarDefaults.h"
-#include "MenuBackend.h"
 #include "language.h"
 #include "lastfiles.h"
-#include "encoding.h"
-#include "converter.h"
+#include "lyxlex.h"
+#include "lyxrc.h"
+#include "lyxserver.h"
 #include "lyxtextclasslist.h"
+#include "MenuBackend.h"
+#include "ToolbarDefaults.h"
 
 #include "frontends/Alert.h"
 #include "frontends/lyx_gui.h"
 
+#include "support/FileInfo.h"
+#include "support/filetools.h"
+#include "support/package.h"
+#include "support/path.h"
+
 #include "BoostFormat.h"
 #include <boost/function.hpp>
 
-#include <cstdlib>
 #include <csignal>
+#include <cstdlib>
 
 using lyx::FileInfo;
 
@@ -60,11 +58,6 @@ extern void QuitLyX();
 
 extern LyXServer * lyxserver;
 
-string system_lyxdir;
-string build_lyxdir;
-string system_tempdir;
-string user_lyxdir;
-
 DebugStream lyxerr;
 
 boost::scoped_ptr<LastFiles> lastfiles;
@@ -76,11 +69,23 @@ BufferList bufferlist;
 boost::scoped_ptr<kb_keymap> toplevel_keymap;
 
 
+namespace {
+
+// Filled with the command line arguments "foo" of "-sysdir foo" or
+// "-userdir foo".
+string cl_system_support;
+string cl_user_support;
+
+} // namespace anon
+
+
 LyX::LyX(int & argc, char * argv[])
 {
 	// Here we need to parse the command line. At least
 	// we need to parse for "-dbg" and "-help"
 	bool const want_gui = easyParse(argc, argv);
+
+	lyx::init_package(argv[0], cl_system_support, cl_user_support);
 
 	// Global bindings (this must be done as early as possible.) (Lgb)
 	toplevel_keymap.reset(new kb_keymap);
@@ -223,257 +228,60 @@ void LyX::init(bool gui)
 	// Determine path of binary
 	//
 
-	string binpath = os::binpath();
-	string binname = os::binname();
-	string fullbinname = MakeAbsPath(binname, binpath);
+	lyx::Package const & package = lyx::package();
 
-	if (binpath.empty()) {
-		lyxerr << _("Warning: could not determine path of binary.")
-		       << "\n"
-		       << _("If you have problems, try starting LyX with an absolute path.")
-		       << endl;
-	}
-	lyxerr[Debug::INIT] << "Name of binary: " << binname << endl;
-	lyxerr[Debug::INIT] << "Path of binary: " << binpath << endl;
-
-	//
-	// Determine system directory.
-	//
-
-	// Directories are searched in this order:
-	// 1) -sysdir command line parameter
-	// 2) LYX_DIR_13x environment variable
-	// 3) Maybe <path of binary>/TOP_SRCDIR/lib
-	// 4) <path of binary>/../Resources/<name of binary>/  [for LyX/Mac]
-	// 5) <path of binary>/../share/<name of binary>/
-	// 5a) repeat 4 after following the Symlink if <path of
-	//     binary> is a symbolic link.
-	// 6) hardcoded lyx_dir
-	// The directory is checked for the presence of the file
-	// "chkconfig.ltx", and if that is present, the directory
-	// is accepted as the system directory.
-	// If no chkconfig.ltx file is found, a warning is given,
-	// and the hardcoded lyx_dir is used.
-
-	// If we had a command line switch, system_lyxdir is already set
-	string searchpath;
-	if (!system_lyxdir.empty())
-		searchpath = MakeAbsPath(system_lyxdir) + ';';
-
-	string const lyxdir = GetEnvPath("LYX_DIR_13x");
-
-	if (!lyxdir.empty()) {
-		lyxerr[Debug::INIT] << "LYX_DIR_13x: " << lyxdir << endl;
-		searchpath += lyxdir + ';';
-	}
-
-	// Path of binary/../Resources/
-	searchpath += NormalizePath(AddPath(binpath, "../Resources/") + 
-				    OnlyFilename(binname)) + ';';
-
-	string fullbinpath = binpath;
-	FileInfo file(fullbinname, true);
-	if (file.isLink()) {
-		lyxerr[Debug::INIT] << "binary is a link" << endl;
-		string link;
-		if (LyXReadLink(fullbinname, link, true)) {
-			// Path of binary/../share/name of binary/
-			searchpath += NormalizePath(AddPath(binpath,
-							    "../share/")
-						    + OnlyFilename(binname));
-			searchpath += ';';
-			fullbinpath = link;
-			binpath = MakeAbsPath(OnlyPath(fullbinpath));
-		}
-	}
-
-	bool followlink;
-	do {
-		// Path of binary/../share/name of binary/
-		string const exe_name = OnlyFilename(binname);
-#ifdef _WIN32
-		string const lyx_system_dir_name =
-			suffixIs(exe_name, ".exe") ?
-				ChangeExtension(exe_name, "") :
-				exe_name;
-#else
-		string const lyx_system_dir_name = exe_name;
-#endif
-		string const shared_dir_name =
-			NormalizePath(AddPath(binpath, "../share/"));
-		searchpath += shared_dir_name + lyx_system_dir_name + ';';
-
-		// Follow Symlinks
-		FileInfo file(fullbinpath, true);
-		followlink = file.isLink();
-		if (followlink) {
-			lyxerr[Debug::INIT] << " directory " << fullbinpath
-					    << " is a link" << endl;
-			string link;
-			if (LyXReadLink(fullbinpath, link, true)) {
-				fullbinpath = link;
-				binpath = MakeAbsPath(OnlyPath(fullbinpath));
-			}
-			else {
-				followlink = false;
-			}
-		}
-	} while (followlink);
-
-	// <path of binary>/TOP_SRCDIR/lib
-	build_lyxdir = MakeAbsPath("../lib", binpath);
-	if (!FileSearch(build_lyxdir, "lyxrc.defaults").empty()) {
-		searchpath += MakeAbsPath(AddPath(TOP_SRCDIR, "lib"),
-					  binpath) + ';';
-		lyxerr[Debug::INIT] << "Checking whether LyX is run in "
-			"place... yes" << endl;
-	} else {
-		lyxerr[Debug::INIT]
-			<< "Checking whether LyX is run in place... no"
-			<< endl;
-		build_lyxdir.erase();
-	}
-
-	// Hardcoded dir
-	searchpath += LYX_DIR;
-
-	lyxerr[Debug::INIT] << "System directory search path: "
-			    << searchpath << endl;
-
-	string const filename = "chkconfig.ltx";
-	string const temp = FileOpenSearch(searchpath, filename, string());
-	system_lyxdir = OnlyPath(temp);
-
-	// Reduce "path/../path" stuff out of system directory
-	system_lyxdir = NormalizePath(system_lyxdir);
-
-	bool path_shown = false;
-
-	// Warn if environment variable is set, but unusable
-	if (!lyxdir.empty()) {
-		if (system_lyxdir != NormalizePath(lyxdir)) {
-			lyxerr <<_("LYX_DIR_13x environment variable no good.")
-			       << '\n'
-			       << _("System directory set to: ")
-			       << system_lyxdir << endl;
-			path_shown = true;
-		}
-	}
-
-	// Warn the user if we couldn't find "chkconfig.ltx"
-	if (system_lyxdir == "./") {
-		lyxerr <<_("LyX Warning! Couldn't determine system directory. ")
-		       <<_("Try the '-sysdir' command line parameter or ")
-		       <<_("set the environment variable LYX_DIR_13x to the "
-			   "LyX system directory ")
-		       << _("containing the file `chkconfig.ltx'.") << endl;
-		if (!path_shown) {
-			FileInfo fi(LYX_DIR);
-			if (!fi.exist()) {
-				lyxerr << "Couldn't even find the default LYX_DIR." << endl
-					<< "Giving up." << endl;
-				exit(1);
-			}
-#if USE_BOOST_FORMAT
-			char const * const lyx_dir = LYX_DIR;
-			lyxerr << boost::format(_("Using built-in default %1$s"
-						  " but expect problems."))
-				% lyx_dir
-			       << endl;
-#else
-			lyxerr << _("Using built-in default ") << LYX_DIR
-			       << _(" but expect problems.")
-			       << endl;
-#endif
-		} else {
-			lyxerr << _("Expect problems.") << endl;
-		}
-		system_lyxdir = LYX_DIR;
-		path_shown = true;
-	}
-
-	if (!path_shown)
-		lyxerr[Debug::INIT] << "System directory: '"
-				    << system_lyxdir << '\'' << endl;
-
-	//
-	// Set PATH and localedir for LyX/Mac 
+#if defined (USE_MACOSX_PACKAGING)
+	// Set PATH for LyX/Mac 
 	//
 	// LyX/Mac is a relocatable application bundle; here we add to
 	// the PATH so it can find binaries like reLyX inside its own
 	// application bundle, and also append PATH elements that it
-	// needs to run latex, previewers, etc. We also set the 
-	// localedir inside the application bundle.
-	//
+	// needs to run latex, previewers, etc.
 
-	if (system_lyxdir == NormalizePath(AddPath(binpath, "../Resources/") +
-                                   OnlyFilename(binname))) {
-		string oldpath = GetEnv("PATH");
-		string newpath = "PATH=" + oldpath + ":" + binpath + ":";
-		newpath += "/sw/bin:/usr/local/bin:/usr/local/teTeX/bin/powerpc-apple-darwin-current";
-		PutEnv(newpath);
-		lyxerr[Debug::INIT] << "Running from LyX/Mac bundle. " 
-			"Setting PATH to: " << GetEnv("PATH") << endl;
-		if (GetEnvPath("LYX_LOCALEDIR").empty()) {
-			string const maybe_localedir = 
-				NormalizePath(AddPath(system_lyxdir, 
-						      "../locale")); 
-			FileInfo fi(maybe_localedir);
-			if (fi.isOK() && fi.isDir()) {
-				lyxerr[Debug::INIT] 
-					<< "Setting locale directory to "
-					<< maybe_localedir << endl;
-				gettext_init(maybe_localedir);
-			}
-		}
+	string oldpath = GetEnv("PATH");
+	string newpath = "PATH=" + oldpath + ":" +
+		lyx::package().binary_dir() + ":";
+	newpath += "/sw/bin:/usr/local/bin:"
+		"/usr/local/teTeX/bin/powerpc-apple-darwin-current";
+	PutEnv(newpath);
+	lyxerr[Debug::INIT] << "Running from LyX/Mac bundle. " 
+		"Setting PATH to: " << GetEnv("PATH") << endl;
+#endif
+
+	// Set the locale_dir.
+	string locale_dir = package.locale_dir();
+	FileInfo fi(locale_dir);
+	if (fi.isOK() && fi.isDir()) {
+		lyxerr[Debug::INIT] 
+			<< "Setting locale directory to "
+			<< locale_dir << endl;
+		gettext_init(locale_dir);
 	}
-
-	//
-	// Determine user lyx-dir
-	//
-
-	// Directories are searched in this order:
-	// 1) -userdir command line parameter
-	// 2) LYX_USERDIR_13x environment variable
-	// 3) $HOME/.<name of binary>
-
-	// If we had a command line switch, user_lyxdir is already set
-	bool explicit_userdir = true;
-	if (user_lyxdir.empty()) {
-
-		// LYX_USERDIR_13x environment variable
-		user_lyxdir = GetEnvPath("LYX_USERDIR_13x");
-
-		// default behaviour
-		if (user_lyxdir.empty())
-			user_lyxdir = AddPath(os::homepath(),
-					      string(".") + PACKAGE);
-			explicit_userdir = false;
-	}
-
-	lyxerr[Debug::INIT] << "User LyX directory: '"
-			    <<  user_lyxdir << '\'' << endl;
 
 	// Check that user LyX directory is ok. We don't do that if
 	// running in batch mode.
 	if (gui) {
-		queryUserLyXDir(explicit_userdir);
+		queryUserLyXDir(package.explicit_user_support());
 	} else {
 		first_start = false;
 	}
 
 	//
 	// Shine up lyxrc defaults
-	//
+
+	lyxrc.tempdir_path = package.temp_dir();
+	lyxrc.document_path = package.document_dir();
 
 	// Default template path: system_dir/templates
 	if (lyxrc.template_path.empty()) {
-		lyxrc.template_path = AddPath(system_lyxdir, "templates");
+		lyxrc.template_path =
+			AddPath(package.system_support(), "templates");
 	}
 
 	// Default lastfiles file: $HOME/.lyx/lastfiles
 	if (lyxrc.lastfiles.empty()) {
-		lyxrc.lastfiles = AddName(user_lyxdir, "lastfiles");
+		lyxrc.lastfiles = AddName(package.user_support(),
+					  "lastfiles");
 	}
 
 	// Disable gui when either lyxrc or easyparse says so
@@ -513,10 +321,12 @@ void LyX::init(bool gui)
 		lyxrc.print();
 	}
 
-	os::setTmpDir(CreateLyXTmpDir(lyxrc.tempdir_path));
-	system_tempdir = os::getTmpDir();
+	package.document_dir() = lyxrc.document_path;
+
+	package.temp_dir() = CreateLyXTmpDir(lyxrc.tempdir_path);
 	if (lyxerr.debugging(Debug::INIT)) {
-		lyxerr << "LyX tmp dir: `" << system_tempdir << '\'' << endl;
+		lyxerr << "LyX tmp dir: `" << package.temp_dir() << '\''
+		       << endl;
 	}
 
 	lyxerr[Debug::INIT] << "Reading lastfiles `"
@@ -626,20 +436,23 @@ void LyX::deadKeyBindings(kb_keymap * kbmap)
 
 void LyX::queryUserLyXDir(bool explicit_userdir)
 {
-	string const configure_script = AddName(system_lyxdir, "configure");
+	lyx::Package const & package = lyx::package();
+	string const configure_script =
+		AddName(package.system_support(), "configure");
 	string const configure_command = "sh " + QuoteName(configure_script);
 
 	// Does user directory exist?
-	FileInfo fileInfo(user_lyxdir);
+	string const & user_support = package.user_support();
+	FileInfo fileInfo(user_support);
 	if (fileInfo.isOK() && fileInfo.isDir()) {
 		first_start = false;
 		FileInfo script(configure_script);
-		FileInfo defaults(AddName(user_lyxdir, "lyxrc.defaults"));
+		FileInfo defaults(AddName(user_support, "lyxrc.defaults"));
 		if (defaults.isOK() && script.isOK()
 		    && defaults.getModificationTime() < script.getModificationTime()) {
 			lyxerr << _("LyX: reconfiguring user directory")
 			       << endl;
-			Path p(user_lyxdir);
+			Path p(user_support);
 			::system(configure_command.c_str());
 			lyxerr << "LyX: " << _("Done!") << endl;
 		}
@@ -649,45 +462,36 @@ void LyX::queryUserLyXDir(bool explicit_userdir)
 	first_start = !explicit_userdir;
 
 	// If the user specified explicitly a directory, ask whether
-	// to create it (otherwise, always create it)
+	// to create it. If the user says "no", then exit.
 	if (explicit_userdir &&
-	    !Alert::askQuestion(_("You have specified an invalid LyX directory."),
-			 _("It is needed to keep your own configuration."),
-			 _("Should I try to set it up for you (recommended)?"))) {
-		lyxerr << _("Running without personal LyX directory.") << endl;
-		// No, let's use $HOME instead.
-		user_lyxdir = os::homepath();
-		return;
+	    !Alert::askQuestion(
+		    _("You have specified a non-existent user LyX directory."),
+		    _("It is needed to keep your own configuration."),
+		    _("Should I try to set it up for you? I'll exit if \"No\"."))) {
+		lyxerr << _("No user LyX directory. Exiting.") << endl;
+		exit(1);
 	}
 
 #if USE_BOOST_FORMAT
 	lyxerr << boost::format(_("LyX: Creating directory %1$s"
 				  " and running configure..."))
-		% user_lyxdir
+		% package.user_support()
 	       << endl;
 #else
-	lyxerr << _("LyX: Creating directory ") << user_lyxdir
+	lyxerr << _("LyX: Creating directory ") << package.user_support()
 	       << _(" and running configure...")
 	       << endl;
 #endif
 
-	if (!createDirectory(user_lyxdir, 0755)) {
-		// Failed, let's use $HOME instead.
-		user_lyxdir = os::homepath();
-#if USE_BOOST_FORMAT
-		lyxerr << boost::format(_("Failed. Will use %1$s instead."))
-			% user_lyxdir
+	if (!createDirectory(package.user_support(), 0755)) {
+		// Failed, so let's exit.
+		lyxerr << _("Failed to create directory. Exiting.")
 		       << endl;
-#else
-		lyxerr << _("Failed. Will use ") << user_lyxdir <<
-			_(" instead.")
-		       << endl;
-#endif
-		return;
+		exit(1);
 	}
 
 	// Run configure in user lyx directory
-	Path p(user_lyxdir);
+	Path p(package.user_support());
 	::system(configure_command.c_str());
 	lyxerr << "LyX: " << _("Done!") << endl;
 }
@@ -877,7 +681,7 @@ int parse_sysdir(string const & arg, string const &)
 		lyxerr << _("Missing directory for -sysdir switch") << endl;
 		exit(1);
 	}
-	system_lyxdir = arg;
+	cl_system_support = arg;
 	return 1;
 }
 
@@ -887,7 +691,7 @@ int parse_userdir(string const & arg, string const &)
 		lyxerr << _("Missing directory for -userdir switch") << endl;
 		exit(1);
 	}
-	user_lyxdir = arg;
+	cl_user_support = arg;
 	return 1;
 }
 

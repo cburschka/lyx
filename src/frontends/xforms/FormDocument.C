@@ -22,12 +22,9 @@
 #include "input_validators.h" // fl_unsigned_float_filter
 #include "xforms_helpers.h"
 
-//#include "buffer.h"
-//#include "BufferView.h"
 #include "CutAndPaste.h"
 #include "debug.h"
 #include "language.h"
-//#include "lyx_main.h" // for user_lyxdir
 #include "lyxrc.h"
 #include "lyxtextclasslist.h"
 #include "tex-strings.h"

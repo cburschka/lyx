@@ -4,56 +4,23 @@
 #include <config.h>
 
 #include "os.h"
-#include "support/filetools.h"
-#include "support/lstrings.h"
 
-string os::binpath_ = string();
-string os::binname_ = string();
-string os::tmpdir_;
-string os::homepath_;
-string os::nulldev_;
-os::shell_type os::_shell = os::UNIX;
-unsigned long os::cp_ = 0;
+string const os::nulldev_ = "/dev/null";
+os::shell_type os::shell_ = os::UNIX;
 
-void os::init(int /*argc*/, char * argv[]) /* :cp_(0), _shell(os::UNIX) */
+
+void os::init(int, char *[])
+{}
+
+
+string os::current_root()
 {
-	static bool initialized = false;
-
-	if (initialized)
-		return;
-
-	initialized = true;
-	string tmp = argv[0];
-	binname_ = OnlyFilename(tmp);
-	tmp = ExpandPath(tmp); // This expands ./ and ~/
-	if (!os::is_absolute_path(tmp)) {
-		string binsearchpath = GetEnvPath("PATH");
-		// This will make "src/lyx" work always :-)
-		binsearchpath += ";.";
-		tmp = FileOpenSearch(binsearchpath, tmp);
-	}
-
-	tmp = MakeAbsPath(OnlyPath(tmp));
-
-	// In case we are running in place and compiled with shared libraries
-	if (suffixIs(tmp, "/.libs/"))
-		tmp.erase(tmp.length() - 6, string::npos);
-	binpath_ = tmp;
-
-	tmpdir_ = "/tmp";
-	homepath_ = GetEnvPath("HOME");
-	nulldev_ = "/dev/null";
-}
-
-void os::warn(string /*mesg*/) {
-	return;
-}
-
-string os::current_root() {
 	return string("/");
 }
 
-string::size_type os::common_path(string const &p1, string const &p2) {
+
+string::size_type os::common_path(string const &p1, string const &p2)
+{
 	string::size_type i = 0,
 			p1_len = p1.length(),
 			p2_len = p2.length();
@@ -67,18 +34,23 @@ string::size_type os::common_path(string const &p1, string const &p2) {
 	return i;
 }
 
-string os::internal_path(string const & p) {
+
+string os::internal_path(string const & p)
+{
 	return p;
 }
 
-string os::external_path(string const & p) {
+string os::external_path(string const & p)
+{
 	return p;
 }
+
 
 bool os::is_absolute_path(string const & p)
 {
 	return (!p.empty() && p[0] == '/');
 }
+
 
 // returns a string suitable to be passed to fopen when
 // reading a file
@@ -86,6 +58,7 @@ char const * os::read_mode()
 {
 	return "r";
 }
+
 
 // returns a string suitable to be passed to popen when
 // reading a pipe

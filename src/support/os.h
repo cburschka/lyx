@@ -18,26 +18,13 @@ public:
 	static void init(int argc, char * argv[]);
 
 	//
-	static string const & binpath() {return binpath_;}
-	//
-	static string const & binname() {return binname_;}
-	//
-	static string const & homepath() {return homepath_;}
-	//
 	static string const & nulldev() {return nulldev_;}
-
-	// system_tempdir actually doesn't belong here.
-	// I put it here only to avoid a global variable.
-	static void setTmpDir(string p) {tmpdir_ = p;}
-
-	//
-	static string const & getTmpDir() {return tmpdir_;}
 
 	//
 	static string current_root();
 
 	//
-	static os::shell_type shell() {return _shell;}
+	static os::shell_type shell() {return shell_;}
 
 	// DBCS aware!
 	static string::size_type common_path(string const &p1,
@@ -54,17 +41,13 @@ public:
 	static char const * read_mode();
 	// same for popen().
 	static char const * popen_read_mode();
-	//
-	static void warn(string mesg);
 private:
-	static string binpath_;
-	static string binname_;
-	static string tmpdir_;
-	static string homepath_;
-	static string nulldev_;
-	static os::shell_type _shell;
+	static string const nulldev_;
+	static os::shell_type shell_;
+#ifdef __EMX__
 	// Used only on OS/2 to determine file system encoding.
 	static unsigned long cp_;
+#endif
 
 	// Never initialize static variables in the header!
 	// Anyway I bet this class will never be constructed.

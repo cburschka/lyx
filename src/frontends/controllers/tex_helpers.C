@@ -17,9 +17,10 @@
 
 #include "support/filetools.h"
 #include "support/lstrings.h"
-#include "support/systemcall.h"
-#include "support/path.h"
 #include "support/lyxalgo.h"
+#include "support/package.h"
+#include "support/path.h"
+#include "support/systemcall.h"
 
 #include <vector>
 #include <fstream>
@@ -30,7 +31,6 @@ using std::endl;
 using std::sort;
 using std::unique;
 
-extern string user_lyxdir; // home of *Files.lst
 
 namespace {
 
@@ -50,7 +50,7 @@ vector<string> listWithoutPath(vector<string> & dbase)
 void rescanTexStyles()
 {
 	// Run rescan in user lyx directory
-	Path p(user_lyxdir);
+	Path p(lyx::package().user_support());
 	Systemcall one;
 	one.startscript(Systemcall::Wait,
 			LibFileSearch("scripts", "TeXFiles.sh"));
@@ -60,7 +60,7 @@ void rescanTexStyles()
 void texhash()
 {
 	// Run texhash in user lyx directory
-	Path p(user_lyxdir);
+	Path p(lyx::package().user_support());
 
 	//path to texhash through system
 	Systemcall one;

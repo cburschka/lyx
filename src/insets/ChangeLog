@@ -1,3 +1,11 @@
+2005-01-10  Angus Leeming  <leeming@lyx.org>
+
+	* ExternalTemplate.C:
+	* insetexternal.C: use support/package.h to provide the paths to the
+	various directories used by LyX.
+
+	* insetgraphics.C: remove reference to system_lyxdir.
+
 2005-01-05  Angus Leeming  <leeming@lyx.org>
 
 	* insetexternal.C:

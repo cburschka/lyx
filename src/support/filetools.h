@@ -31,8 +31,8 @@ int DestroyLyXTmpDir(string const & tmpdir);
 /** Find file by searching several directories.
   Uses a string of paths separated by ";"s to find a file to open.
     Can't cope with pathnames with a ';' in them. Returns full path to file.
-    If path entry begins with $$LyX/, use system_lyxdir.
-    If path entry begins with $$User/, use user_lyxdir.
+    If path entry begins with $$LyX/, use system_support.
+    If path entry begins with $$User/, use user_support.
     Example: "$$User/doc;$$LyX/doc".
 */
 string const FileOpenSearch(string const & path, string const & name,
@@ -79,9 +79,9 @@ bool IsSGMLFilename(string const & filename);
 /** Returns the path of a library data file.
   Search the file name.ext in the subdirectory dir of
   \begin{enumerate}
-    \item user_lyxdir
-    \item build_lyxdir (if not empty)
-    \item system_lyxdir
+    \item user_support
+    \item build_support (if not empty)
+    \item system_support
   \end{enumerate}
     The third parameter `ext' is optional.
 */
@@ -105,8 +105,13 @@ string const LibScriptSearch(string const & command);
 ///
 string const GetEnv(string const & envname);
 
-/// A helper function.
-string const GetEnvPath(string const & name);
+/** Return the contents of the environment variable \c name,
+ *  split using the OS-dependent token separating elements.
+ *  Each element is then passed through os::internal_path to
+ *  guarantee that it is in the form of a unix-stype path.
+ *  If the environment variable is not set, then returns an empty vector.
+ */
+std::vector<string> const getEnvPath(string const & name);
 
 ///
 bool PutEnv(string const & envstr);

@@ -18,20 +18,22 @@
 
 #include <config.h>
 
-#include "debug.h"
+#include "support/filetools.h"
+#include "support/FileInfo.h"
 #include "support/lstrings.h"
+#include "support/lyxlib.h"
+#include "support/os.h"
+#include "support/package.h"
+#include "support/path.h"        // I know it's OS/2 specific (SMiyata)
 #include "support/systemcall.h"
 
-#include "filetools.h"
-#include "lstrings.h"
-#include "frontends/Alert.h"
-#include "FileInfo.h"
-#include "support/path.h"        // I know it's OS/2 specific (SMiyata)
+#include "debug.h"
 #include "gettext.h"
-#include "lyxlib.h"
-#include "os.h"
-
 #include "Lsstream.h"
+
+#include "frontends/Alert.h"
+
+#include <boost/tokenizer.hpp>
 
 #include <cctype>
 #include <cstdlib>
@@ -75,10 +77,6 @@ using std::endl;
 using std::ifstream;
 using std::vector;
 using std::getline;
-
-extern string system_lyxdir;
-extern string build_lyxdir;
-extern string user_lyxdir;
 
 
 bool IsLyXFilename(string const & filename)
@@ -167,8 +165,8 @@ bool IsDirWriteable(string const & path)
 
 // Uses a string of paths separated by ";"s to find a file to open.
 // Can't cope with pathnames with a ';' in them. Returns full path to file.
-// If path entry begins with $$LyX/, use system_lyxdir
-// If path entry begins with $$User/, use user_lyxdir
+// If path entry begins with $$LyX/, use system_support
+// If path entry begins with $$User/, use user_support
 // Example: "$$User/doc;$$LyX/doc"
 string const FileOpenSearch(string const & path, string const & name,
 			     string const & ext)
@@ -178,12 +176,16 @@ string const FileOpenSearch(string const & path, string const & name,
 	bool notfound = true;
 	string tmppath = split(path, path_element, ';');
 
+	lyx::Package const & package = lyx::package();
+	string const & system_support = package.system_support();
+	string const & user_support = package.user_support();
+
 	while (notfound && !path_element.empty()) {
 		path_element = os::internal_path(path_element);
 		if (!suffixIs(path_element, '/'))
 			path_element+= '/';
-		path_element = subst(path_element, "$$LyX", system_lyxdir);
-		path_element = subst(path_element, "$$User", user_lyxdir);
+		path_element = subst(path_element, "$$LyX", system_support);
+		path_element = subst(path_element, "$$User", user_support);
 
 		real_file = FileSearch(path_element, name, ext);
 
@@ -282,22 +284,27 @@ string const FileSearch(string const & path, string const & name,
 
 
 // Search the file name.ext in the subdirectory dir of
-//   1) user_lyxdir
-//   2) build_lyxdir (if not empty)
-//   3) system_lyxdir
+//   1) user_support
+//   2) build_support (if not empty)
+//   3) system_support
 string const LibFileSearch(string const & dir, string const & name,
 			   string const & ext)
 {
-	string fullname = FileSearch(AddPath(user_lyxdir, dir), name, ext);
+	lyx::Package const & package = lyx::package();
+
+	string const & user_support = package.user_support();
+	string fullname = FileSearch(AddPath(user_support, dir),
+				     name, ext);
 	if (!fullname.empty())
 		return fullname;
 
-	if (!build_lyxdir.empty())
-		fullname = FileSearch(AddPath(build_lyxdir, dir), name, ext);
+	string const & build_support = package.build_support();
+	if (!build_support.empty())
+		fullname = FileSearch(AddPath(build_support, dir), name, ext);
 	if (!fullname.empty())
 		return fullname;
 
-	return FileSearch(AddPath(system_lyxdir, dir), name, ext);
+	return FileSearch(AddPath(package.system_support(), dir), name, ext);
 }
 
 
@@ -366,14 +373,27 @@ string const GetEnv(string const & envname)
 }
 
 
-string const GetEnvPath(string const & name)
+vector<string> const getEnvPath(string const & name)
 {
-#ifndef __EMX__
-	string const pathlist = subst(GetEnv(name), ':', ';');
+	typedef boost::char_separator<char> Separator;
+	typedef boost::tokenizer<Separator> Tokenizer;
+
+#if defined (__EMX__) || defined (_WIN32)
+	Separator const separator(";");
 #else
-	string const pathlist = os::internal_path(GetEnv(name));
+	Separator const separator(":");
 #endif
-	return rtrim(pathlist, ";");
+
+	string const env_var = GetEnv(name);
+	Tokenizer const tokens(env_var, separator);
+	Tokenizer::const_iterator it = tokens.begin();
+	Tokenizer::const_iterator const end = tokens.end();
+
+	std::vector<string> vars;
+	for (; it != end; ++it)
+		vars.push_back(os::internal_path(*it));
+
+	return vars;
 }
 
 
@@ -507,7 +527,7 @@ string const CreateTmpDir(string const & tempdir, string const & mask)
 int DestroyTmpDir(string const & tmpdir, bool Allfiles)
 {
 #ifdef __EMX__
-	Path p(user_lyxdir);
+	Path p(lyx::package().user_support());
 #endif
 	if (Allfiles && DeleteAllFilesInDir(tmpdir)) {
 		return -1;
@@ -526,7 +546,9 @@ int DestroyTmpDir(string const & tmpdir, bool Allfiles)
 string const CreateBufferTmpDir(string const & pathfor)
 {
 	static int count;
-	static string const tmpdir(pathfor.empty() ? os::getTmpDir() : pathfor);
+	static string const tmpdir = pathfor.empty() ?
+		lyx::package().temp_dir() : pathfor;
+
 	// We are in our own directory.  Why bother to mangle name?
 	// In fact I wrote this code to circumvent a problematic behaviour (bug?)
 	// of EMX mkstemp().
@@ -551,14 +573,14 @@ string const CreateLyXTmpDir(string const & deflt)
 	if ((!deflt.empty()) && (deflt  != "/tmp")) {
 		if (lyx::mkdir(deflt, 0777)) {
 #ifdef __EMX__
-		Path p(user_lyxdir);
+		Path p(lyx::package().user_support());
 #endif
 			return CreateTmpDir(deflt, "lyx_tmpdir");
 		} else
 			return deflt;
 	} else {
 #ifdef __EMX__
-		Path p(user_lyxdir);
+		Path p(lyx::package().user_support());
 #endif
 		return CreateTmpDir("/tmp", "lyx_tmpdir");
 	}
@@ -732,7 +754,7 @@ string const ExpandPath(string const & path)
 		return lyx::getcwd() /*GetCWD()*/ + '/' + RTemp;
 	}
 	if (Temp == "~") {
-		return os::homepath() + '/' + RTemp;
+		return lyx::package().home_dir() + '/' + RTemp;
 	}
 	if (Temp == "..") {
 		return MakeAbsPath(copy);
@@ -1215,7 +1237,7 @@ string const MakeDisplayPath(string const & path, unsigned int threshold)
 {
 	string str = path;
 
-	string const home(os::homepath());
+	string const home(lyx::package().home_dir());
 
 	// replace /home/blah with ~/
 	if (prefixIs(str, home))

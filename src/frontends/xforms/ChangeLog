@@ -1,3 +1,12 @@
+2005-01-10  Angus Leeming  <leeming@lyx.org>
+
+	* FormFiledialog.C:
+	* FormPreferences.C:
+	* lyx_gui.C: use support/package.h to provide the paths to the
+	various directories used by LyX.
+
+	* FormDocument.C: remove some unused #includes.
+
 2005-01-05  Angus Leeming  <leeming@lyx.org>
 
 	* FormFiledialog.C:

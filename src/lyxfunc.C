@@ -18,7 +18,6 @@
 #include "BufferView.h"
 #include "lyxserver.h"
 #include "intl.h"
-#include "lyx_main.h"
 #include "lyx_cb.h"
 #include "LyXAction.h"
 #include "debug.h"
@@ -63,6 +62,7 @@
 #include "support/FileInfo.h"
 #include "support/forkedcontr.h"
 #include "support/lstrings.h"
+#include "support/package.h"
 #include "support/path.h"
 #include "support/lyxfunctional.h"
 
@@ -1450,7 +1450,7 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 
 	case LFUN_SAVEPREFERENCES:
 	{
-		Path p(user_lyxdir);
+		Path p(lyx::package().user_support());
 		lyxrc.write("preferences");
 	}
 	break;
@@ -1686,12 +1686,13 @@ void LyXFunc::open(string const & fname)
 	string filename;
 
 	if (fname.empty()) {
+		string const & system_support = lyx::package().system_support();
 		FileDialog fileDlg(owner, _("Select document to open"),
 			LFUN_FILE_OPEN,
 			make_pair(string(_("Documents|#o#O")),
 				  string(lyxrc.document_path)),
 			make_pair(string(_("Examples|#E#e")),
-				  string(AddPath(system_lyxdir, "examples"))));
+				  string(AddPath(system_support, "examples"))));
 
 		FileDialog::Result result =
 			fileDlg.open(initpath,
@@ -1791,12 +1792,13 @@ void LyXFunc::doImport(string const & argument)
 			+ _(" file to import");;
 #endif
 
+		string const & system_support = lyx::package().system_support();
 		FileDialog fileDlg(owner, text,
 			LFUN_IMPORT,
 			make_pair(string(_("Documents|#o#O")),
 				  string(lyxrc.document_path)),
 			make_pair(string(_("Examples|#E#e")),
-				  string(AddPath(system_lyxdir, "examples"))));
+				  string(AddPath(system_support, "examples"))));
 
 		string const extension = "*." + formats.extension(format)
 			+ "| " + formats.prettyName(format)

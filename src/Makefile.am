@@ -219,13 +219,6 @@ lyx_SOURCES = \
 	vspace.C \
 	vspace.h
 
-lyx_main.$(OBJEXT): lyx_main.C lyx_main.h config.h version.h \
-	lyxrc.h support/path.h support/filetools.h \
-	bufferlist.h debug.h support/FileInfo.h lastfiles.h intl.h \
-	lyxserver.h layout.h gettext.h kbmap.h commandtags.h language.h
-	$(CXXCOMPILE) -DLYX_DIR=\"$(pkgdatadir)\" \
-	  -DTOP_SRCDIR=\"$(top_srcdir)\" -c $(top_srcdir)/src/lyx_main.C
-
 main.$(OBJEXT): main.C config.h lyx_main.h gettext.h LString.h \
 	support/filetools.h support/os.h
 	$(CXXCOMPILE) -DLOCALEDIR=\"$(localedir)\" -c $(top_srcdir)/src/main.C
