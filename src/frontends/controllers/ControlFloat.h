@@ -33,14 +33,14 @@ struct FloatParams {
 	///
 	string placement;
 	///
-	bool allow_here_definitely;
+	bool wide;
 };
 
 
 inline
 bool operator==(FloatParams const & p1, FloatParams const & p2)
 {
-	return p1.placement == p2.placement && p1.allow_here_definitely == p2.allow_here_definitely;
+	return p1.placement == p2.placement && p1.wide == p2.wide;
 }
 
 

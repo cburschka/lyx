@@ -46,6 +46,7 @@ void FormFloat::build()
 	bc().addReadOnly(dialog_->check_page);
 	bc().addReadOnly(dialog_->check_here);
 	bc().addReadOnly(dialog_->check_here_definitely);
+	bc().addReadOnly(dialog_->check_wide);
 }
 
 
@@ -69,6 +70,7 @@ void FormFloat::apply()
 		}
 	}
 	controller().params().placement = placement;
+	controller().params().wide = fl_get_button(dialog_->check_wide);
 }
 
 
@@ -103,7 +105,8 @@ void FormFloat::update()
 	fl_set_button(dialog_->check_page, page);
 	fl_set_button(dialog_->check_here, here);
 	fl_set_button(dialog_->check_here_definitely, here_definitely);
-	setEnabled(dialog_->check_here_definitely, controller().params().allow_here_definitely);
+	setEnabled(dialog_->check_here_definitely, !controller().params().wide);
+	fl_set_button(dialog_->check_wide, controller().params().wide);
 }
 
 
@@ -120,6 +123,14 @@ ButtonPolicy::SMInput FormFloat::input(FL_OBJECT * ob, long)
 		if (fl_get_button(dialog_->check_here_definitely)) {
 			fl_set_button(dialog_->check_here_definitely, false);
 		}
+	}
+	if (ob == dialog_->check_wide) {
+		if (fl_get_button(dialog_->check_wide)) {
+			fl_set_button(dialog_->check_here_definitely, false);
+			setEnabled(dialog_->check_here_definitely, false);
+		}
+		else
+			setEnabled(dialog_->check_here_definitely, true);
 	}
 
 	return ButtonPolicy::SMI_VALID;

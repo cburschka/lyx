@@ -385,13 +385,6 @@ void expandFloatInsert(Menu & tomenu)
 						  cit->second.type());
 		string const label = _(cit->second.name());
 		tomenu.add(MenuItem(MenuItem::Command, label, action));
-		
-		// and the wide version
-		int const action2 =
-			lyxaction.getPseudoAction(LFUN_INSET_WIDE_FLOAT,
-						  cit->second.type());
-		string const label2 = label + _(" (wide)");
-		tomenu.add(MenuItem(MenuItem::Command, label2, action2));
 	}
 }
 

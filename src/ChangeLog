@@ -3,6 +3,7 @@
 	* MenuBackend.C (expand): move from Menu to MenuBackend; pass a
 	Menu as first parameter. Now, this calls itself recursively to
 	expand a whole tree (this will be useful for TOC handling)
+	(expandFloatInsert): remove 'wide' version of floats
 
 	* MenuBackend.h (submenuname): returns the name of the submenu.
 	(submenu): returns the submenu itself, provided it has been

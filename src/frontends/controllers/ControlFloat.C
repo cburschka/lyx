@@ -16,6 +16,7 @@
 #endif
 
 #include "ControlFloat.h"
+#include "BufferView.h"
 
 
 ControlFloat::ControlFloat(LyXView & lv, Dialogs & d)
@@ -26,6 +27,9 @@ ControlFloat::ControlFloat(LyXView & lv, Dialogs & d)
 void ControlFloat::applyParamsToInset()
 {
 	inset()->placement(params().placement);
+	inset()->wide(params().wide);
+	lv_.view()->updateInset(inset(), true);
+
 }
 
 
@@ -41,11 +45,11 @@ FloatParams const ControlFloat::getParams(InsetFloat const & inset)
 
 FloatParams::FloatParams()
 	: placement("htbp"),
-	  allow_here_definitely(true)
+	  wide(false)
 {}
 
 
 FloatParams::FloatParams(InsetFloat const & inset)
 	: placement(inset.placement()),
-	  allow_here_definitely(!inset.wide())
+	  wide(inset.wide())
 {}
