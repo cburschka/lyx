@@ -55,11 +55,10 @@ void writeFileAscii(Buffer const & buf,
 void writeFileAscii(Buffer const & buf, ostream & os,
 	OutputParams const & runparams)
 {
-	Buffer & tmp = const_cast<Buffer &>(buf);
-	ParagraphList par = const_cast<ParagraphList&>(tmp.paragraphs());
-	ParagraphList::iterator beg = par.begin();
-	ParagraphList::iterator end = par.end();
-	ParagraphList::iterator it = beg;
+	ParagraphList const par = buf.paragraphs();
+	ParagraphList::const_iterator beg = par.begin();
+	ParagraphList::const_iterator end = par.end();
+	ParagraphList::const_iterator it = beg;
 	for (; it != end; ++it) {
 		asciiParagraph(buf, *it, os, runparams, it == beg);
 	}

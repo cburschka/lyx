@@ -64,8 +64,8 @@ void docbookParagraphs(Buffer const & buf,
 
 	string item_tag;
 
-	ParagraphList::iterator par = const_cast<ParagraphList&>(paragraphs).begin();
-	ParagraphList::iterator pend = const_cast<ParagraphList&>(paragraphs).end();
+	ParagraphList::const_iterator par = paragraphs.begin();
+	ParagraphList::const_iterator pend = paragraphs.end();
 
 	Counters & counters = buf.params().getLyXTextClass().counters();
 
@@ -219,7 +219,7 @@ void docbookParagraphs(Buffer const & buf,
 		}
 
 		par->simpleDocBookOnePar(buf, os,
-			outerFont(par - const_cast<ParagraphList&>(paragraphs).begin(), paragraphs),
+			outerFont(par - paragraphs.begin(), paragraphs),
 			runparams, depth + 1 + command_depth);
 
 		// write closing SGML tags

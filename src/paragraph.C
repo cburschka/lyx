@@ -784,7 +784,7 @@ int Paragraph::startTeXParParams(BufferParams const & bparams,
 	case LYX_ALIGN_CENTER:
 		if (moving_arg) {
 			os << "\\protect";
-			column = 8;
+			column += 8;
 		}
 		break;
 	}
@@ -890,7 +890,7 @@ bool Paragraph::simpleTeXOnePar(Buffer const & buf,
 				BufferParams const & bparams,
 				LyXFont const & outerfont,
 				ostream & os, TexRow & texrow,
-				OutputParams const & runparams)
+				OutputParams const & runparams) const
 {
 	lyxerr[Debug::LATEX] << "SimpleTeXOnePar...     " << this << endl;
 

@@ -917,8 +917,8 @@ void LyXText::setHeightOfRow(par_type pit, Row & row)
 	int maxdesc = int(font_metrics::maxDescent(font) * spacing_val);
 
 	// insets may be taller
-	InsetList::iterator ii = pars_[pit].insetlist.begin();
-	InsetList::iterator iend = pars_[pit].insetlist.end();
+	InsetList::const_iterator ii = pars_[pit].insetlist.begin();
+	InsetList::const_iterator iend = pars_[pit].insetlist.end();
 	for ( ; ii != iend; ++ii) {
 		if (ii->pos >= row.pos() && ii->pos < row.endpos()) {
 			maxasc  = max(maxasc,  ii->inset->ascent());

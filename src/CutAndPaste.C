@@ -170,7 +170,7 @@ pasteSelectionHelper(Buffer const & buffer, ParagraphList & pars,
 			switch (lit->inset->lyxCode()) {
 			case InsetOld::TABULAR_CODE: {
 				InsetTabular * it = static_cast<InsetTabular*>(lit->inset);
-				it->buffer(const_cast<Buffer*>(&buffer));
+				it->buffer(&buffer);
 				break;
 			}
 

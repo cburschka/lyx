@@ -42,33 +42,33 @@ extern string bibitemWidest(Buffer const &);
 
 namespace {
 
-ParagraphList::iterator
+ParagraphList::const_iterator
 TeXEnvironment(Buffer const & buf,
 	       ParagraphList const & paragraphs,
-	       ParagraphList::iterator pit,
+	       ParagraphList::const_iterator pit,
 	       ostream & os, TexRow & texrow,
 	       OutputParams const & runparams);
 
-ParagraphList::iterator
+ParagraphList::const_iterator
 TeXOnePar(Buffer const & buf,
 	  ParagraphList const & paragraphs,
-	  ParagraphList::iterator pit,
+	  ParagraphList::const_iterator pit,
 	  ostream & os, TexRow & texrow,
 	  OutputParams const & runparams,
 	  string const & everypar = string());
 
 
-ParagraphList::iterator
+ParagraphList::const_iterator
 TeXDeeper(Buffer const & buf,
 	  ParagraphList const & paragraphs,
-	  ParagraphList::iterator pit,
+	  ParagraphList::const_iterator pit,
 	  ostream & os, TexRow & texrow,
 	  OutputParams const & runparams)
 {
 	lyxerr[Debug::LATEX] << "TeXDeeper...     " << &*pit << endl;
-	ParagraphList::iterator par = pit;
+	ParagraphList::const_iterator par = pit;
 
-	while (par != const_cast<ParagraphList&>(paragraphs).end() &&
+	while (par != paragraphs.end() &&
 		     par->params().depth() == pit->params().depth()) {
 		if (par->layout()->isEnvironment()) {
 			par = TeXEnvironment(buf, paragraphs, par,
@@ -84,10 +84,10 @@ TeXDeeper(Buffer const & buf,
 }
 
 
-ParagraphList::iterator
+ParagraphList::const_iterator
 TeXEnvironment(Buffer const & buf,
 	       ParagraphList const & paragraphs,
-	       ParagraphList::iterator pit,
+	       ParagraphList::const_iterator pit,
 	       ostream & os, TexRow & texrow,
 	       OutputParams const & runparams)
 {
@@ -100,7 +100,7 @@ TeXEnvironment(Buffer const & buf,
 	Language const * language = pit->getParLanguage(bparams);
 	Language const * doc_language = bparams.language;
 	Language const * previous_language =
-		(pit != const_cast<ParagraphList&>(paragraphs).begin())
+		(pit != paragraphs.begin())
 		? boost::prior(pit)->getParLanguage(bparams)
 		: doc_language;
 	if (language->babel() != previous_language->babel()) {
@@ -141,11 +141,11 @@ TeXEnvironment(Buffer const & buf,
 			os << style->latexparam() << '\n';
 		texrow.newline();
 	}
-	ParagraphList::iterator par = pit;
+	ParagraphList::const_iterator par = pit;
 	do {
 		par = TeXOnePar(buf, paragraphs, par, os, texrow, runparams);
 
-		if (par == const_cast<ParagraphList&>(paragraphs).end()) {
+		if (par == paragraphs.end()) {
 			// Make sure that the last paragraph is
 			// correctly terminated (because TeXOnePar does
 			// not add a \n in this case)
@@ -174,7 +174,7 @@ TeXEnvironment(Buffer const & buf,
 			par = TeXDeeper(buf, paragraphs, par, os, texrow,
 					runparams);
 		}
-	} while (par != const_cast<ParagraphList&>(paragraphs).end()
+	} while (par != paragraphs.end()
 		 && par->layout() == pit->layout()
 		 && par->params().depth() == pit->params().depth()
 		 && par->params().leftIndent() == pit->params().leftIndent());
@@ -209,10 +209,10 @@ InsetOptArg * optArgInset(Paragraph const & par)
 }
 
 
-ParagraphList::iterator
+ParagraphList::const_iterator
 TeXOnePar(Buffer const & buf,
 	  ParagraphList const & paragraphs,
-	  ParagraphList::iterator pit,
+	  ParagraphList::const_iterator pit,
 	  ostream & os, TexRow & texrow,
 	  OutputParams const & runparams,
 	  string const & everypar)
@@ -236,7 +236,7 @@ TeXOnePar(Buffer const & buf,
 		}
 
 		if (!pit->params().spacing().isDefault()
-			&& (pit == const_cast<ParagraphList&>(paragraphs).begin()
+			&& (pit == paragraphs.begin()
 			    || !boost::prior(pit)->hasSameLayout(*pit)))
 		{
 			os << pit->params().spacing().writeEnvirBegin() << '\n';
@@ -259,14 +259,14 @@ TeXOnePar(Buffer const & buf,
 	Language const * language = pit->getParLanguage(bparams);
 	Language const * doc_language = bparams.language;
 	Language const * previous_language =
-		(pit != const_cast<ParagraphList&>(paragraphs).begin())
+		(pit != paragraphs.begin())
 		? boost::prior(pit)->getParLanguage(bparams)
 		: doc_language;
 
 	if (language->babel() != previous_language->babel()
 	    // check if we already put language command in TeXEnvironment()
 	    && !(style->isEnvironment()
-		 && (pit == const_cast<ParagraphList&>(paragraphs).begin() ||
+		 && (pit == paragraphs.begin() ||
 		     (boost::prior(pit)->layout() != pit->layout() &&
 		      boost::prior(pit)->getDepth() <= pit->getDepth())
 		     || boost::prior(pit)->getDepth() < pit->getDepth())))
@@ -324,7 +324,7 @@ TeXOnePar(Buffer const & buf,
 
 	os << everypar;
 	bool need_par = pit->simpleTeXOnePar(buf, bparams,
-			outerFont(pit - const_cast<ParagraphList&>(paragraphs).begin(), paragraphs),
+			outerFont(pit - paragraphs.begin(), paragraphs),
 					     os, texrow, runparams);
 
 	// Make sure that \\par is done with the font of the last
@@ -337,7 +337,7 @@ TeXOnePar(Buffer const & buf,
 	// We do not need to use to change the font for the last paragraph
 	// or for a command.
 	LyXFont const outerfont =
-			outerFont(pit - const_cast<ParagraphList&>(paragraphs).begin(),
+			outerFont(pit - paragraphs.begin(),
 paragraphs);
 
 	LyXFont const font =
@@ -348,7 +348,7 @@ paragraphs);
 	bool is_command = style->isCommand();
 
 	if (style->resfont.size() != font.size()
-	    && boost::next(pit) != const_cast<ParagraphList&>(paragraphs).end()
+	    && boost::next(pit) != paragraphs.end()
 	    && !is_command) {
 		if (!need_par)
 			os << '{';
@@ -361,7 +361,7 @@ paragraphs);
 	switch (style->latextype) {
 	case LATEX_ITEM_ENVIRONMENT:
 	case LATEX_LIST_ENVIRONMENT:
-		if (boost::next(pit) != const_cast<ParagraphList&>(paragraphs).end()
+		if (boost::next(pit) != paragraphs.end()
 		    && (pit->params().depth() < boost::next(pit)->params().depth())) {
 			os << '\n';
 			texrow.newline();
@@ -370,9 +370,9 @@ paragraphs);
 	case LATEX_ENVIRONMENT: {
 		// if its the last paragraph of the current environment
 		// skip it otherwise fall through
-		ParagraphList::iterator next = boost::next(pit);
+		ParagraphList::const_iterator next = boost::next(pit);
 
-		if (next != const_cast<ParagraphList&>(paragraphs).end()
+		if (next != paragraphs.end()
 		    && (next->layout() != pit->layout()
 			|| next->params().depth() != pit->params().depth()))
 			break;
@@ -381,7 +381,7 @@ paragraphs);
 		// fall through possible
 	default:
 		// we don't need it for the last paragraph!!!
-		if (boost::next(pit) != const_cast<ParagraphList&>(paragraphs).end()) {
+		if (boost::next(pit) != paragraphs.end()) {
 			os << '\n';
 			texrow.newline();
 		}
@@ -415,7 +415,7 @@ paragraphs);
 		}
 
 		if (!pit->params().spacing().isDefault()
-			&& (boost::next(pit) == const_cast<ParagraphList&>(paragraphs).end()
+			&& (boost::next(pit) == paragraphs.end()
 			    || !boost::next(pit)->hasSameLayout(*pit)))
 		{
 			os << pit->params().spacing().writeEnvirEnd() << '\n';
@@ -426,7 +426,7 @@ paragraphs);
 	// we don't need it for the last paragraph!!!
 	// Note from JMarc: we will re-add a \n explicitely in
 	// TeXEnvironment, because it is needed in this case
-	if (boost::next(pit) != const_cast<ParagraphList&>(paragraphs).end()) {
+	if (boost::next(pit) != paragraphs.end()) {
 		os << '\n';
 		texrow.newline();
 	}
@@ -449,8 +449,8 @@ void latexParagraphs(Buffer const & buf,
 	bool was_title = false;
 	bool already_title = false;
 	LyXTextClass const & tclass = buf.params().getLyXTextClass();
-	ParagraphList::iterator par = const_cast<ParagraphList&>(paragraphs).begin();
-	ParagraphList::iterator endpar = const_cast<ParagraphList&>(paragraphs).end();
+	ParagraphList::const_iterator par = paragraphs.begin();
+	ParagraphList::const_iterator endpar = paragraphs.end();
 
 	// if only_body
 	while (par != endpar) {

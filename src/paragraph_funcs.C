@@ -306,8 +306,8 @@ par_type outerPar(Buffer const & buf, InsetBase const * inset)
 			if (&text->paragraphs() == &pit.plist())
 				return pit.outerPar();
 
-		InsetList::iterator ii = pit->insetlist.begin();
-		InsetList::iterator iend = pit->insetlist.end();
+		InsetList::const_iterator ii = pit->insetlist.begin();
+		InsetList::const_iterator iend = pit->insetlist.end();
 		for ( ; ii != iend; ++ii)
 			if (ii->inset == inset)
 				return pit.outerPar();

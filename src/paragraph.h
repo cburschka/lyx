@@ -118,7 +118,7 @@ public:
 	///
 	bool simpleTeXOnePar(Buffer const &, BufferParams const &,
 			     LyXFont const & outerfont, std::ostream &,
-			     TexRow & texrow, OutputParams const &);
+			     TexRow & texrow, OutputParams const &) const;
 
 	///
 	void simpleLinuxDocOnePar(Buffer const & buf,

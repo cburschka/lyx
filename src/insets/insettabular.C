@@ -183,7 +183,7 @@ Buffer const & InsetTabular::buffer() const
 }
 
 
-void InsetTabular::buffer(Buffer * b)
+void InsetTabular::buffer(Buffer const * b)
 {
 	buffer_ = b;
 }

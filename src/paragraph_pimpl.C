@@ -780,8 +780,8 @@ void Paragraph::Pimpl::validate(LaTeXFeatures & features,
 		features.require("ParagraphLeftIndent");
 
 	// then the insets
-	InsetList::iterator icit = owner_->insetlist.begin();
-	InsetList::iterator iend = owner_->insetlist.end();
+	InsetList::const_iterator icit = owner_->insetlist.begin();
+	InsetList::const_iterator iend = owner_->insetlist.end();
 	for (; icit != iend; ++icit) {
 		if (icit->inset) {
 			icit->inset->validate(features);

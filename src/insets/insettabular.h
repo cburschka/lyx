@@ -133,7 +133,7 @@ public:
 	Buffer const & buffer() const;
 
 	/// set the owning buffer
-	void buffer(Buffer * buf);
+	void buffer(Buffer const * buf);
 	/// lock cell with given index
 	void edit(LCursor & cur, bool left);
 	///

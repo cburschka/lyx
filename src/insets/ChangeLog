@@ -1,3 +1,7 @@
+2004-05-15  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* insettabular.[Ch] (buffer): make Buffer * argument const
+
 2004-05-17  Angus Leeming  <leeming@lyx.org>
 
 	* insetcommand.C (priv_dispatch): act on receipt of LFUN_INSET_REFRESH

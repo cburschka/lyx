@@ -1,3 +1,17 @@
+2004-05-17  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* paragraph.C (startTeXParParams): correct column count
+	* CutAndPaste.C (pasteSelection): remove const_cast
+	* output_docbook.C (docbookParagraphs): remove const_cast
+	* output_latex.C (TeXEnvironment, TeXOnePar, TeXDeeper): remove
+	const_cast and return ParagraphList::const_iterator
+	* output_linuxdoc.C (linuxdocParagraphs): remove const_cast
+	* output_plaintext.C (writeFileAscii): remove const_cast
+	* paragraph.[Ch] (simpleTeXOnePar): make const
+	* paragraph_funcs.C (outerPar): use const iterators
+	* paragraph_pimpl.C (validate): use const iterators
+	* text.C (setHeightOfRow): use const iterators
+
 2004-05-17  Angus Leeming  <leeming@lyx.org>
 
 	* lfuns.h:
