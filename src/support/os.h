@@ -1,4 +1,4 @@
-// os.h copyright "Ruurd A. Reitsma" <R.A.Reitsma@wbmt.tudelft.nl>
+// os.h copyright "Ruurd A. Reitsma" <rareitsma@yahoo.com>
 
 #ifndef OS_H
 #define OS_H
@@ -42,9 +42,9 @@ public:
 
 	// no-op on UNIX, '\\'->'/' on OS/2 and Win32, ':'->'/' on MacOS, etc.
 	static string slashify_path(string p);
-	// converts a host OS path to unix style
+	// Converts a unix style path to host OS style.
 	static string external_path(string const &p);
-	// converts a unix path to host OS style
+	// Converts a host OS style path to unix style.
 	static string internal_path(string const &p);
 	// is path absolute?
 	static bool is_absolute_path(string const & p);
