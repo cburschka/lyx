@@ -70,6 +70,9 @@ MathInset * createMathInset(string const & s)
 	if (s.size() == 2 && s[0] == '#' && s[1] >= '1' && s[1] <= '9')
 		return new MathMacroArgument(s[1] - '0');
 
+	if (s.size() == 3 && s[0] == '\\' && s[1] == '#' && s[2] >= '1' && s[2] <= '9')
+		return new MathMacroArgument(s[2] - '0');
+
 	latexkeys const * l = in_word_set(s);
 	if (l)
 		return createMathInset(l);

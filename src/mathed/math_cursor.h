@@ -141,6 +141,8 @@ public:
 	///
 	void interpret(string const &);
 	///
+	void interpret(char);
+	///
 	void setSize(MathStyles);
 	///
 	bool toggleLimits();
@@ -277,6 +279,8 @@ private:
 
 	///
 	string macroName() const;
+	///
+	int macroNamePos() const;
 	///
 	void insert(char, MathTextCodes t);
 	/// can we enter the inset? 

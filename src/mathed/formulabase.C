@@ -309,7 +309,7 @@ UpdatableInset::RESULT
 InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 			    string const & arg)
 {
-	//lyxerr << "InsetFormulaBase::LocalDispatch: act: " << action
+	//lyxerr << "InsetFormulaBase::localDispatch: act: " << action
 	//	<< " arg: '" << arg << "' cursor: " << mathcursor << "\n";
 
 	if (!mathcursor) 

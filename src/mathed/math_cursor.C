@@ -472,7 +472,8 @@ void MathCursor::plainInsert(MathInset * p)
 	if (inner()) {
 		array().insert(pos(), p);
 		++pos();
-		swap(prevAtom()->nucleus(), nextAtom()->nucleus());
+		if (prevAtom() && nextAtom()) // should be unnecessary
+			swap(prevAtom()->nucleus(), nextAtom()->nucleus());
 		return;
 	}
 
@@ -514,7 +515,7 @@ void MathCursor::insert(MathInset * p)
 void MathCursor::niceInsert(MathInset * p) 
 {
 	if (!p) {
-		lyxerr << "should not happen\n";
+		lyxerr << "MathCursor::niceInsert: should not happen\n";
 		return;
 	}
 	selCut();
@@ -581,8 +582,7 @@ void MathCursor::backspace()
 	}
 
 	if (pos() == 0) {
-		if (size())
-			pullArg(false);
+		pullArg(false);
 		return;
 	}	
 
@@ -728,24 +728,30 @@ void MathCursor::macroModeClose()
 {
 	string s = macroName();
 	if (s.size()) {
-		pos() = pos() - s.size() - 1;
-		for (unsigned i = 0; i <= s.size(); ++i)
-			plainErase();
-		lastcode_ = LM_TC_VAR;
-		interpret("\\" + s);
+		size_type old = pos();
+		pos() -= s.size();
+		array().erase(pos(), old);
+		interpret(s);
 	}
+}
+
+
+int MathCursor::macroNamePos() const
+{
+	for (int i = pos() - 1; i >= 0; --i) { 
+		MathInset * p = array().at(i)->nucleus();
+		if (p && p->code() == LM_TC_TEX && p->getChar() == '\\')
+			return i;
+	}
+	return -1;
 }
 
 
 string MathCursor::macroName() const
 {
 	string s;
-	for (int i = pos() - 1; i >= 0; --i) {
-		MathInset * p = array().at(i)->nucleus();
-		if (!p || p->code() != LM_TC_TEX || p->getChar() == '\\')
-			break;
-		s = p->getChar() + s;
-	}
+	for (int i = macroNamePos(); i >= 0 && i < int(pos()); ++i) 
+		s += array().at(i)->nucleus()->getChar();
 	return s;
 }
 
@@ -959,7 +965,7 @@ bool & MathCursor::inner()
 
 bool MathCursor::inMacroMode() const
 {
-	return lastcode_ == LM_TC_TEX;
+	return macroNamePos() != -1;
 }
 
 
@@ -983,9 +989,25 @@ MathArrayInset * MathCursor::enclosingArray(MathCursor::idx_type & idx) const
 
 void MathCursor::pullArg(bool goright)
 {
-	// pullArg
 	dump("pullarg");
 	MathArray a = array();
+
+	MathScriptInset const * p = par()->asScriptInset();
+	if (p) {
+		// special handling for scripts
+		const bool up = p->up();
+		popLeft();
+		if (nextAtom()) {
+			if (up)
+				nextAtom()->removeUp();
+			else
+				nextAtom()->removeDown();
+		}
+		++pos();
+		array().insert(pos(), a);
+		return;
+	}
+
 	if (popLeft()) {
 		plainErase();
 		array().insert(pos(), a);
@@ -1337,17 +1359,20 @@ MathMatrixInset * MathCursor::outerPar() const
 
 void MathCursor::interpret(string const & s)
 {
-	//lyxerr << "interpret: '" << s << "'\n";
+	//lyxerr << "interpret 1: '" << s << "'\n";
 	//lyxerr << "in: " << in_word_set(s) << " \n";
 
 	if (s.empty())
 		return;
 
-	char c = s[0];
+	if (s.size() == 1) {
+		interpret(s[0]);
+		return;
+	}
 
-	//lyxerr << "char: '" << c << "'  int: " << int(c) << endl;
-	//owner_->getIntl()->getTrans().TranslateAndInsert(c, lt);	
-	//lyxerr << "trans: '" << c << "'  int: " << int(c) << endl;
+	//lyxerr << "char: '" << s[0] << "'  int: " << int(s[0]) << endl;
+	//owner_->getIntl()->getTrans().TranslateAndInsert(s[0], lt);	
+	//lyxerr << "trans: '" << s[0] << "'  int: " << int(s[0]) << endl;
 
 	if (s.size() > 7 && s.substr(0, 7) == "matrix ") {
 		unsigned int m = 1;
@@ -1377,23 +1402,63 @@ void MathCursor::interpret(string const & s)
 		return;
 	}
 
-	if (s.size() > 1) {
-		niceInsert(createMathInset(s.substr(1)));
+	niceInsert(createMathInset(s.substr(1)));
+}
+
+
+void MathCursor::interpret(char c)
+{
+	//lyxerr << "interpret 2: '" << c << "'\n";
+
+	if (inMacroMode()) {
+		string name = macroName();
+
+		if (name == "\\" && c == '#') {
+			insert(c, LM_TC_TEX);
+			return;
+		}
+
+		if (name == "\\" && c == '\\') {
+			backspac/();
+			interpret("\\backslash");
+			return;
+		}
+
+		if (name == "\\#" && '1' <= c && c <= '9') {
+			insert(c, LM_TC_TEX);
+			macroModeClose();
+			return;
+		}
+
+		if (isalpha(c)) {
+			insert(c, LM_TC_TEX);
+			return;
+		}
+
+		if (name == "\\") {
+			insert(c, LM_TC_TEX);
+			macroModeClose();
+			return;
+		}
+
+		macroModeClose();
 		return;
 	}
 
-
-	// we got just a single char now
-
+	// no macro mode
 	if (c == '^' || c == '_') {
-		const bool up = (s[0] == '^');
+		const bool up = (c == '^');
+		const bool in = inner();
 		selCut();
-		if (inner())
+		if (in)
 			++pos();
 		if (!prevAtom())
 			insert(0);
 		MathInset * par = prevAtom()->ensure(up);
-		pushRight(par);
+		if (in)
+			pushLeft(par);
+		else
+			pushRight(par);
 		selPaste();
 		return;
 	}
@@ -1407,12 +1472,6 @@ void MathCursor::interpret(string const & s)
 	}
 
 	if (c == ' ') {
-		if (inMacroMode()) {
-			macroModeClose();
-			lastcode_ = LM_TC_VAR;
-			return;
-		}
-
 		MathSpaceInset * p = prevSpaceInset();
 		if (p) {
 			p->incSpace();
@@ -1429,38 +1488,14 @@ void MathCursor::interpret(string const & s)
 		return;
 	}
 
-	if (lastcode_ != LM_TC_TEX && strchr("{}", c)) {
+	if (strchr("{}", c)) {
 		insert(c, LM_TC_TEX);
 		return;
 	}
 
-	if (lastcode_ != LM_TC_TEX && strchr("#$%", c)) {
+	if (strchr("#$%", c)) {
 		insert(new MathSpecialCharInset(c));	
 		lastcode_ = LM_TC_VAR;
-		return;
-	}
-
-	if (lastcode_ == LM_TC_TEX) {
-		if (macroName().empty()) {
-			insert(c, LM_TC_TEX);
-			if (!isalpha(c) && c != '#') {
-				macroModeClose();
-				lastcode_ = LM_TC_VAR;
-			}
-		} else {
-			if ('1' <= c && c <= '9' && macroName() == "#") {
-				insert(c, LM_TC_TEX);
-				macroModeClose();
-				lastcode_ = LM_TC_VAR;
-			}
-			else if (isalpha(c)) {
-				insert(c, LM_TC_TEX);
-			}
-			else {
-				macroModeClose();
-				lastcode_ = LM_TC_VAR;
-			}
-		}
 		return;
 	}
 
@@ -1494,7 +1529,6 @@ void MathCursor::interpret(string const & s)
 	}
 
 	if (c == '\\') {
-		lastcode_ = LM_TC_TEX;
 		insert(c, LM_TC_TEX);
 		//bv->owner()->message(_("TeX mode"));
 		return;	
