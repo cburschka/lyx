@@ -276,9 +276,9 @@ dnl	AC_DEFINE(HAS_CURSES, 1, [dummy])
 dnl	has_curses=true
 dnl	AC_DEFINE(USE_BSD_CURSES, 1, [dummy])
 dnl	AC_MSG_RESULT(Please note that some screen refreshs may fail)
-dnl	AC_WARN(Use of the bsdcurses extension has some)
-dnl	AC_WARN(display/input problems.)
-dnl	AC_WARN(Reconsider using xcurses)
+dnl	AC_MSG_WARN(Use of the bsdcurses extension has some)
+dnl	AC_MSG_WARN(display/input problems.)
+dnl	AC_MSG_WARN(Reconsider using xcurses)
 dnl)
 
 
@@ -303,7 +303,7 @@ AC_DEFUN(AC_NCURSES, [
 ])
 
 AC_DEFUN(AC_SEARCH_NCURSES, [
-    AC_CHECKING("location of ncurses.h file")
+    AC_MSG_NOTICE("checking location of ncurses.h file")
 
     AC_NCURSES(/usr/include, ncurses.h, -lncurses,, "ncurses on /usr/include")
     AC_NCURSES(/usr/include/ncurses, ncurses.h, -lncurses, -I/usr/include/ncurses, "ncurses on /usr/include/ncurses")
@@ -776,7 +776,7 @@ AC_MSG_ERROR([could not determine how to read list of mounted filesystems])
 # Can't build mountlist.c or anything that needs its functions
 fi
 
-AC_CHECKING(how to get filesystem space usage)
+AC_MSG_NOTICE(checking how to get filesystem space usage)
 space=no
 
 # Perform only the link test since it seems there are no variants of the
