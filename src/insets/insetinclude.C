@@ -271,7 +271,7 @@ bool InsetInclude::loadIfNeeded() const
 	if (!finfo.isOK())
 		return false;
 
-	return bufferlist.readFile(getFileName(), !finfo.writable()) != 0;
+ 	return bufferlist.loadLyXFile(getFileName(), false) != 0;
 }
 
 

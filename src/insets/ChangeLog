@@ -1,3 +1,7 @@
+2003-02-21  Allan Rae  <rae@lyx.org>
+
+	* insetinclude.C (loadIfNeeded): ensure loading also works when
+	child document is under version control.
 
 2003-02-17 André Pönitz <poenitz@gmx.net>
 	
