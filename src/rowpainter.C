@@ -967,33 +967,25 @@ void RowPainter::paint()
 }
 
 
-int paintRows(BufferView const & bv, LyXText const & text,
-	ParagraphList::iterator pit, RowList::iterator rit,
-	int xo, int yo, int y)
+int paintPars(BufferView const & bv, LyXText const & text,
+	ParagraphList::iterator pit, int xo, int yo, int y)
 {
-	//lyxerr << "  paintRows: rit: " << &*rit << endl;
+	//lyxerr << "  paintRows: pit: " << &*pit << endl;
 	int const y2 = bv.painter().paperHeight();
 
 	ParagraphList::iterator end = text.ownerParagraphs().end();
-	bool active = false;
 
 	for ( ; pit != end; ++pit) {
 		RowList::iterator row = pit->rows.begin();
 		RowList::iterator rend = pit->rows.end();
 
 		for ( ; row != rend; ++row) {
-			if (row == rit)
-				active = true;
-			if (active) {
-				RowPainter painter(bv, text, pit, row, y + yo, xo, y + bv.top_y());
-				painter.paint();
-				y += row->height();
-			} else {
-				//lyxerr << "   paintRows: row: " << &*row << " ignored" << endl;
-			}
+			RowPainter painter(bv, text, pit, row, y + yo, xo, y + bv.top_y());
+			painter.paint();
+			y += row->height();
 		}
 		if (yo + y >= y2)
-			return y;
+			break;
 	}
 
 	return y;
@@ -1006,16 +998,14 @@ int paintText(BufferView & bv)
 {
 	int const topy = bv.top_y();
 	ParagraphList::iterator pit;
-	RowList::iterator rit = bv.text->getRowNearY(topy, pit);
-	int const y = pit->y + rit->y_offset() - topy;
-	return paintRows(bv, *bv.text, pit, rit, 0, 0, y);
+	bv.text->getRowNearY(topy, pit);
+	return paintPars(bv, *bv.text, pit, 0, 0, pit->y - topy);
 }
 
 
 void paintTextInset(BufferView & bv, LyXText & text, int xo, int yo)
 {
-	ParagraphList::iterator pit = text.ownerParagraphs().begin();
-	paintRows(bv, text, pit, pit->rows.begin(), xo, yo, 0);
+	paintPars(bv, text, text.ownerParagraphs().begin(), xo, yo, 0);
 }
 
 
