@@ -481,7 +481,7 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 		sel = true;
 
 	case LFUN_HOME:
-		mathcursor->home(sel);
+		result = mathcursor->home(sel) ? DISPATCHED : FINISHED;
 		updateLocal(bv, false);
 		break;
 
@@ -489,7 +489,7 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 		sel = true;
 
 	case LFUN_END:
-		mathcursor->end(sel);
+		result = mathcursor->end(sel) ? DISPATCHED : FINISHED_RIGHT; 
 		updateLocal(bv, false);
 		break;
 

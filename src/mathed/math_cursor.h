@@ -74,9 +74,9 @@ public:
 	///
 	void backspace();
 	/// called for LFUN_HOME etc
-	void home(bool sel = false);
+	bool home(bool sel = false);
 	/// called for LFUN_END etc
-	void end(bool sel = false);
+	bool end(bool sel = false);
 	/// called for LFUN_RIGHT and LFUN_RIGHTSEL
 	bool right(bool sel = false);
 	/// called for LFUN_LEFT etc

@@ -292,27 +292,29 @@ void MathCursor::setPos(int x, int y)
 
 
 
-void MathCursor::home(bool sel)
+bool MathCursor::home(bool sel)
 {
 	dump("home 1");
 	autocorrect_ = false;
 	selHandle(sel);
 	macroModeClose();
 	if (!par()->idxHome(idx(), pos()))
-		popLeft();
+		return popLeft();
 	dump("home 2");
+	return true;
 }
 
 
-void MathCursor::end(bool sel)
+bool MathCursor::end(bool sel)
 {
 	dump("end 1");
 	autocorrect_ = false;
 	selHandle(sel);
 	macroModeClose();
 	if (!par()->idxEnd(idx(), pos()))
-		popRight();
+		return popRight();
 	dump("end 2");
+	return true;
 }
 
 
