@@ -3,6 +3,9 @@
 	* configure.ac: only configure the frontends that have been
 	specified; build in FRONTENDS_PROGS the list of programs that
 	should be built
+	(AC_CONFIG_FILES): output lyx_forms.h-tmp instead of lyx_forms.h
+	in order to do dependency trick in xforms frontend (same for
+	lyx_xpm.h) 
 
 2003-07-31  John Levon  <levon@movementarian.org>
 

@@ -387,7 +387,7 @@ AC_CONFIG_FILES([Makefile \
        sourcedoc/Doxyfile \
        sourcedoc/Makefile \
        src/Makefile \
-       src/version.C \
+       src/version.C-tmp:src/version.C.in \
        src/tex2lyx/Makefile \
        src/mathed/Makefile \
        src/graphics/Makefile \
@@ -396,8 +396,8 @@ AC_CONFIG_FILES([Makefile \
        src/frontends/Makefile \
        src/frontends/controllers/Makefile \
        src/frontends/xforms/Makefile \
-       src/frontends/xforms/lyx_forms.h \
-       src/frontends/xforms/lyx_xpm.h \
+       src/frontends/xforms/lyx_forms.h-tmp:src/frontends/xforms/lyx_forms.h.in \
+       src/frontends/xforms/lyx_xpm.h-tmp:src/frontends/xforms/lyx_xpm.h.in \
        src/frontends/xforms/forms/Makefile \
        src/frontends/qt2/Makefile \
        src/frontends/qt2/moc/Makefile \

@@ -1,6 +1,8 @@
 2003-08-02  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* Makefile.am (libxforms_la_LIBADD): use XFORMS_LIBS
+	(lyx_xpm.h, lyx_forms.h): use nifty stamp- trick that prevents the
+	recompilation of the xforms frontend everytme configure runs.
 
 	* XFormsToolbar.C (clearLayoutList): call Toolbar::clearLayoutList
 

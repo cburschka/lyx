@@ -1,6 +1,5 @@
 include $(top_srcdir)/config/common.am
 
-nodist_include_HEADERS = path_defines.C
 noinst_LTLIBRARIES = libsupport.la
 
 CLEANFILES = path_defines.C
@@ -15,7 +14,7 @@ LYXSTRING = lyxstring.C lyxstring.h
 endif
 
 if USE_COMPRESSION
-COMPRESSION = gzstream.C gzstream.C
+COMPRESSION = gzstream.C gzstream.h
 endif
 
 BUILT_SOURCES = path_defines.C

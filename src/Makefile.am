@@ -36,6 +36,7 @@ EXTRA_PROGRAMS = lyx-xforms lyx-qt
 
 lyx_xforms_LDADD = $(lyx_OBJECTS) $(LYX_PRE_LIBS) \
 	frontends/xforms/libxforms.la $(LYX_POST_LIBS) $(OTHERLIBS) 
+
 lyx_xforms_SOURCES = main.C
 
 lyx_qt_LDADD = $(lyx_OBJECTS) $(LYX_PRE_LIBS) \
@@ -213,6 +214,7 @@ lyx_SOURCES = \
 	messages.h \
 	metricsinfo.C \
 	metricsinfo.h \
+	paper.h \
 	paragraph.C \
 	paragraph.h \
 	paragraph_pimpl.C \
@@ -261,3 +263,15 @@ lyx_SOURCES = \
 
 dist-hook:
 	cd $(distdir) ; rm -rf `find cheaders -name \*CVS\*`
+
+version.C: stamp-version
+	@:
+
+stamp-version: version.C-tmp
+	if cmp -s $< version.C ; then \
+		: ;\
+	else \
+		rm -f version.C ;\
+		cp $< version.C ;\
+	fi
+	echo timestamp > $@

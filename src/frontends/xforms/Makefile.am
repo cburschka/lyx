@@ -1,6 +1,8 @@
 include $(top_srcdir)/config/common.am
 
 SUBDIRS = forms
+CLEANFILES = stamp-xpm stamp-xforms
+DISTCLEANFILES += lyx_forms.h-tmp lyx_xpm.h-tmp
 
 EXTRA_DIST = lyx_forms.h.in lyx_xpm.h.in
 
@@ -170,3 +172,27 @@ libxforms_la_SOURCES = \
 	XPainter.h \
 	XWorkArea.h \
 	XWorkArea.C
+
+lyx_forms.h: stamp-forms
+	@:
+
+stamp-forms: lyx_forms.h-tmp
+	if cmp -s $< lyx_forms.h ; then \
+		: ;\
+	else \
+		rm -f lyx_forms.h ;\
+		cp $< lyx_forms.h ;\
+	fi
+	echo timestamp > $@
+
+lyx_xpm.h: stamp-xpm
+	@:
+
+stamp-xpm: lyx_xpm.h-tmp
+	if cmp -s $< lyx_xpm.h ; then \
+		: ;\
+	else \
+		rm -f lyx_xpm.h ;\
+		cp $< lyx_xpm.h ;\
+	fi
+	echo timestamp > $@
