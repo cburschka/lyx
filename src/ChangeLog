@@ -1,3 +1,15 @@
+2001-11-14  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* lyxrc.C (read): 
+	* kbmap.C (bind): modify because return conventions of
+	kb_sequence::parse have changed.
+
+	* kbsequence.C (parse): only ignore spaces and not any stupid
+	control character. This avoids tests like s[i] <= ' ', which are
+	guaranteed to fail with 8bit characters and signed chars.
+	Change return code to string::npos when there have been no error
+	(0 was a bad idea when error is at first character)
+
 2001-11-13  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* text.C (selectNextWordToSpellcheck): do not test explicitely for

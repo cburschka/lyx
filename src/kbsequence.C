@@ -87,7 +87,7 @@ int kb_sequence::addkey(unsigned int key,
     Called by : [user]
     Purpose   : parse a string that holds a key sequence and add the keys
     Parameters: s - string holding the key sequence
-    Returns   : 0 - if ok, error pos if error
+    Returns   : string::npos if ok, error pos if error
     Note      : Keys must be separated with whitespace;
                 Use the keysym names used by XStringToKeysym
                 Prefixes are S-, C-, M- for shift, control, meta
@@ -100,8 +100,10 @@ string::size_type kb_sequence::parse(string const & s)
 	string::size_type i = 0;
 	unsigned int mod = 0, nmod = 0;
 	while (i < s.length()) {
-		if (s[i] && (s[i]) <= ' ') ++i;
-		if (i >= s.length()) break;
+		if (s[i] == ' ')
+			++i;
+		if (i >= s.length())
+			break;
 		
 		if (i + 1 < s.length() && s[i + 1] == '-')	{
 			switch (s[i]) {
@@ -141,7 +143,7 @@ string::size_type kb_sequence::parse(string const & s)
 		} else {
 			string tbuf;
 			string::size_type j = i;
-			for (; j < s.length() && s[j] > ' '; ++j)
+			for (; j < s.length() && s[j] != ' '; ++j)
 				tbuf += s[j];    // (!!!check bounds :-)
 			
 			KeySym key = XStringToKeysym(tbuf.c_str());
@@ -158,7 +160,13 @@ string::size_type kb_sequence::parse(string const & s)
 			nmod = 0;
 		}
 	}
-	return 0;
+	
+	// empty sequence?
+	if (!length)
+		return 0;
+
+	// everything is fine
+	return string::npos;
 }
 
 

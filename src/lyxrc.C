@@ -739,7 +739,7 @@ int LyXRC::read(string const & filename)
 					       << action << '\'' << endl;
 				}
 				res = toplevel_keymap->bind(seq, action);
-				if (res != 0
+				if (res != string::npos
 				    && lyxerr.debugging(Debug::LYXRC)) {
 					lexrc.printError(
 						"RC_BIND: "

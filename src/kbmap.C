@@ -82,7 +82,7 @@ string::size_type kb_keymap::bind(string const & seq, int action)
 	kb_sequence k;
 
 	string::size_type const res = k.parse(seq);
-	if (!res) {
+	if (res == string::npos) {
 		defkey(&k, action);
 	} else
 		lyxerr[Debug::KBMAP] << "Parse error at position " << res
