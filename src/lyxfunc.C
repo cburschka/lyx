@@ -494,7 +494,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 		code = Inset::FLOAT_CODE;
 		break;
 	case LFUN_INSET_WRAP:
-		code == Inset::WRAP_CODE;
+		code = Inset::WRAP_CODE;
 		break;
 	case LFUN_FLOAT_LIST:
 		code = Inset::FLOAT_LIST_CODE;
