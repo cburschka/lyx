@@ -198,12 +198,12 @@ Inset * createInset(FuncRequest const & cmd)
 			return inset;
 
 		} else if (name == "external") {
-			Buffer const & buffer = *cmd.view()->buffer();
+			Buffer const * buffer = cmd.view()->buffer();
 			InsetExternal::Params iep;
 			InsetExternalMailer::string2params(cmd.argument,
-							   buffer, iep);
+							   *buffer, iep);
 			InsetExternal * inset = new InsetExternal;
-			inset->setParams(iep);
+			inset->setParams(iep, buffer);
 			return inset;
 
 		} else if (name == "graphics") {

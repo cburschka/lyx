@@ -1,5 +1,10 @@
 2003-07-23  Angus Leeming  <leeming@lyx.org>
 
+	* factory.C (createInset): InsetExternal::setParams now takes a
+	Buffer const * arg.
+
+2003-07-23  Angus Leeming  <leeming@lyx.org>
+
 	* factory.C (createInset): changed interface to the external and
 	graphics mailers' string2params functions.
 

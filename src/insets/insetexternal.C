@@ -138,10 +138,10 @@ dispatch_result InsetExternal::localDispatch(FuncRequest const & cmd)
 	case LFUN_INSET_MODIFY: {
 		Assert(cmd.view());
 
-		Buffer const & buffer = *cmd.view()->buffer();
+		Buffer const * buffer = cmd.view()->buffer();
 		InsetExternal::Params p;
-		InsetExternalMailer::string2params(cmd.argument, buffer, p);
-		setParams(p);
+		InsetExternalMailer::string2params(cmd.argument, *buffer, p);
+		setParams(p, buffer);
 		cmd.view()->updateInset(this);
 		return DISPATCHED;
 	}
@@ -205,13 +205,14 @@ ExternalTemplate const * getTemplatePtr(InsetExternal::Params const & params)
 }
 
 
-string const getScreenLabel(InsetExternal::Params const & params)
+string const getScreenLabel(InsetExternal::Params const & params,
+			    Buffer const * buffer)
 {
 	ExternalTemplate const * const ptr = getTemplatePtr(params);
 	if (!ptr)
 		return bformat(_("External template %1$s is not installed"),
 			       params.templatename);
-	return doSubstitution(params, 0, ptr->guiName);
+	return doSubstitution(params, buffer, ptr->guiName);
 }
 
 } // namespace anon
@@ -223,7 +224,7 @@ InsetExternal::Params const & InsetExternal::params() const
 }
 
 
-void InsetExternal::setParams(Params const & p)
+void InsetExternal::setParams(Params const & p, Buffer const * buffer)
 {
 	// The stored params; what we would like to happen in an ideal world.
 	params_.filename = p.filename;
@@ -244,7 +245,7 @@ void InsetExternal::setParams(Params const & p)
 			renderer_.reset(button_ptr);
 		}
 
-		button_ptr->update(getScreenLabel(params_), true);
+		button_ptr->update(getScreenLabel(params_, buffer), true);
 
 	} else {
 		GraphicRenderer * graphic_ptr =
@@ -258,12 +259,6 @@ void InsetExternal::setParams(Params const & p)
 
 		graphic_ptr->update(get_grfx_params(params_));
 	}
-}
-
-
-string const InsetExternal::editMessage() const
-{
-	return getScreenLabel(params_);
 }
 
 
@@ -361,7 +356,7 @@ void InsetExternal::read(Buffer const * buffer, LyXLex & lex)
 	lex.popTable();
 
 	// Replace the inset's store
-	setParams(params);
+	setParams(params, buffer);
 
 	lyxerr[Debug::INFO] << "InsetExternal::Read: "
 			    << "template: '" << params_.templatename
@@ -546,11 +541,12 @@ string const doSubstitution(InsetExternal::Params const & params,
 			    Buffer const * buffer, string const & s)
 {
 	string result;
-	string const absfilename = params.filename.absFilename();
-	string const basename = ChangeExtension(absfilename, string());
-	string filepath;
+	string const buffer_path = buffer ? buffer->filePath() : string();
+	string const filename = params.filename.outputFilename(buffer_path);
+	string const basename = ChangeExtension(filename, string());
+	string const filepath = OnlyPath(filename);
 
-	result = subst(s, "$$FName", absfilename);
+	result = subst(s, "$$FName", filename);
 	result = subst(result, "$$Basename", basename);
 	result = subst(result, "$$FPath", filepath);
 	result = subst(result, "$$Tempname", params.tempname);
@@ -662,7 +658,7 @@ InsetExternalMailer::params2string(InsetExternal::Params const & params,
 				   Buffer const & buffer)
 {
 	InsetExternal inset;
-	inset.setParams(params);
+	inset.setParams(params, &buffer);
 	ostringstream data;
 	data << name_ << ' ';
 	inset.write(&buffer, data);

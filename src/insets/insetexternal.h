@@ -53,8 +53,6 @@ public:
 	void metrics(MetricsInfo &, Dimension &) const;
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
-	/// what appears in the minibuffer when opening
-	virtual string const editMessage() const;
 	///
 	virtual EDITABLE editable() const { return IS_EDITABLE; }
 	///
@@ -90,7 +88,7 @@ public:
 	Params const & params() const;
 
 	/// Set the inset parameters.
-	virtual void setParams(Params const &);
+	virtual void setParams(Params const &, Buffer const *);
 
 	/** update the file represented by the template.
 	    If \param external_in_tmpdir == true, then the generated file is

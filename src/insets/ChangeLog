@@ -1,5 +1,9 @@
 2003-07-23  Angus Leeming  <leeming@lyx.org>
 
+	* insetexternal.[Ch] (setParams): pass it a Buffer const *.
+
+2003-07-23  Angus Leeming  <leeming@lyx.org>
+
 	* mailinset.[Ch] (inset2string):
 	* insetcommand.[Ch] (inset2string):
 	* insetert.[Ch] (inset2string):
