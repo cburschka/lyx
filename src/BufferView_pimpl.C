@@ -599,7 +599,6 @@ void BufferView::Pimpl::update()
 			       top_y(), top_y() + workarea().workHeight(),
 			       beg, end);
 		bv_->text()->redoParagraphs(beg, end);
-		bv_->getLyXText()->redoCursor();
 		updateScrollbar();
 	}
 	screen().redraw(*bv_);

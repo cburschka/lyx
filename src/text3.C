@@ -485,7 +485,6 @@ DispatchResult LyXText::dispatch(FuncRequest const & cmd)
 		// we can set the refreshing parameters now
 		updateCounters();
 		redoParagraph(cursorPar());
-		setCursor(cursorPar(), cursor.pos());
 		bv->update();
 		break;
 	}
@@ -716,7 +715,6 @@ DispatchResult LyXText::dispatch(FuncRequest const & cmd)
 
 		replaceSelection(bv->getLyXText());
 		insertInset(new InsetNewline);
-		setCursor(cursorPar(), cursor.pos());
 		moveCursor(bv, false);
 		break;
 	}

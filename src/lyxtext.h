@@ -182,8 +182,6 @@ public:
 	/// reject selected change
 	void rejectChange();
 
-	/// re-computes the cached coordinates in the cursor
-	void redoCursor();
 	///
 	void setCursor(ParagraphList::iterator pit, lyx::pos_type pos);
 	/// returns true if par was empty and was removed

@@ -1602,7 +1602,6 @@ void LyXText::redoParagraph(ParagraphList::iterator pit)
 void LyXText::fullRebreak()
 {
 	redoParagraphs(paragraphs().begin(), paragraphs().end());
-	redoCursor();
 	selection.cursor = cursor;
 }
 

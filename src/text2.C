@@ -325,7 +325,6 @@ void LyXText::setLayout(string const & layout)
 
 	redoParagraphs(start, endpit);
 	updateCounters();
-	redoCursor();
 }
 
 
@@ -405,7 +404,6 @@ void LyXText::changeDepth(bv_funcs::DEPTH_CHANGE type)
 	// this handles the counter labels, and also fixes up
 	// depth values for follow-on (child) paragraphs
 	updateCounters();
-	redoCursor();
 }
 
 
@@ -456,7 +454,6 @@ void LyXText::setFont(LyXFont const & font, bool toggleall)
 	unFreezeUndo();
 
 	redoParagraphs(beg, ++end);
-	redoCursor();
 }
 
 
@@ -541,7 +538,6 @@ void LyXText::toggleFree(LyXFont const & font, bool toggleall)
 	if (implicitSelection) {
 		clearSelection();
 		cursor = resetCursor;
-		setCursor(cursorPar(), cursor.pos());
 		selection.cursor = cursor;
 	}
 }
@@ -566,7 +562,6 @@ string LyXText::getStringToIndex()
 
 	// Reset cursors to their original position.
 	cursor = reset_cursor;
-	setCursor(cursorPar(), cursor.pos());
 	selection.cursor = cursor;
 
 	// Clear the implicit selection.
@@ -621,7 +616,6 @@ void LyXText::setParagraph(Spacing const & spacing, LyXAlignment align,
 	}
 
 	redoParagraphs(getPar(selStart()), endpit);
-	redoCursor();
 }
 
 
@@ -996,7 +990,6 @@ void LyXText::cutSelection(bool doclear, bool realcut)
 
 	// need a valid cursor. (Lgb)
 	clearSelection();
-	redoCursor();
 	updateCounters();
 }
 
@@ -1052,7 +1045,6 @@ void LyXText::pasteSelection(size_t sel_index)
 
 	redoParagraphs(cursorPar(), endpit);
 
-	setCursor(cursor.par(), cursor.pos());
 	clearSelection();
 
 	selection.cursor = cursor;
@@ -1116,7 +1108,6 @@ void LyXText::insertStringAsLines(string const & str)
 	bv()->buffer()->insertStringAsLines(pit, pos, current_font, str);
 
 	redoParagraphs(cursorPar(), endpit);
-	setCursor(cursorPar(), cursor.pos());
 	selection.cursor = cursor;
 	setCursor(pit, pos);
 	setSelection();
@@ -1163,21 +1154,6 @@ bool LyXText::setCursor(paroffset_type par, pos_type pos, bool setfont,
 	LyXCursor old_cursor = cursor;
 	setCursorIntern(par, pos, setfont, boundary);
 	return deleteEmptyParagraphMechanism(old_cursor);
-}
-
-
-void LyXText::redoCursor()
-{
-	setCursor(cursor, cursor.par(), cursor.pos(), cursor.boundary());
-
-	if (!selection.set())
-		return;
-
-	LyXCursor tmpcursor = cursor;
-	setCursor(selection.cursor.par(), selection.cursor.pos());
-	selection.cursor = cursor;
-	setCursor(tmpcursor.par(), tmpcursor.pos());
-	setSelection();
 }
 
 
@@ -1603,9 +1579,6 @@ void LyXText::fixCursorAfterDelete(LyXCursor & cur, LyXCursor const & where)
 	// pagragraph because we erased the last character.
 	if (cur.pos() > getPar(cur)->size())
 		cur.pos(getPar(cur)->size());
-
-	// recompute row et al. for this cursor
-	setCursor(cur, cur.par(), cur.pos(), cur.boundary());
 }
 
 
@@ -1719,9 +1692,6 @@ bool LyXText::deleteEmptyParagraphMechanism(LyXCursor const & old_cursor)
 		cursor.par(parOffset(tmppit));
 		redoParagraph();
 
-		// correct cursor y
-		setCursorIntern(cursor.par(), cursor.pos());
-
 		if (selection_position_was_oldcursor_position) {
 			// correct selection
 			selection.cursor = cursor;
@@ -1733,8 +1703,6 @@ bool LyXText::deleteEmptyParagraphMechanism(LyXCursor const & old_cursor)
 
 	if (old_pit->stripLeadingSpaces()) {
 		redoParagraph(old_pit);
-		// correct cursor y
-		setCursorIntern(cursor.par(), cursor.pos());
 		selection.cursor = cursor;
 	}
 	return false;

@@ -1,3 +1,11 @@
+2003-12-17  Alfredo Braunstein  <abraunst@lyx.org>
+
+	* text2.C (redoCursor): remove
+	* text.C:
+	* text3.C:
+	* BufferView_pimpl.C: remove calls to redoCursor and
+	setCursor(cursor.par(), cursor.pos()) all around
+
 2003-12-15  Angus Leeming  <leeming@lyx.org>
 
 	* buffer.C: up the format to 228.
