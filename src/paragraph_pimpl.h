@@ -151,6 +151,9 @@ struct Paragraph::Pimpl {
 	///
 	ParagraphParameters params;
 private:
+	/// match a string against a particular point in the paragraph
+	bool isTextAt(string const & str, Paragraph::size_type pos);
+ 
 	/// Who owns us?
 	Paragraph * owner_;
 	///

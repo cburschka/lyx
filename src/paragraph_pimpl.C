@@ -244,6 +244,18 @@ void Paragraph::Pimpl::simpleTeXBlanks(std::ostream & os, TexRow & texrow,
 }
 
 
+bool Paragraph::Pimpl::isTextAt(string const & str, Paragraph::size_type pos)
+{
+	for (int i=0; i < str.length(); ++i) {
+		if (pos + i >= size())
+			return false;
+		if (str[i] != getChar(pos + i))
+			return false;
+	}
+	return true;
+}
+
+ 
 void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const * buf,
 					     BufferParams const & bparams,
 					     std::ostream & os,
@@ -441,53 +453,32 @@ void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const * buf,
 			break;
 
 		default:
-			/* idea for labels --- begin*/
-			// Check for "LyX"
-			if (c ==  'L'
-			    && i <= size() - 3
-			    && font.family() != LyXFont::TYPEWRITER_FAMILY
-			    && getChar(i + 1) == 'y'
-			    && getChar(i + 2) == 'X') {
+ 
+			// I assume this is hack treating typewriter as verbatim
+			if (font.family() == LyXFont::TYPEWRITER_FAMILY) {
+				if (c != '\0') {
+					os << c;
+				}
+				break;
+			}
+				
+			if (isTextAt("LyX", i)) {
 				os << "\\LyX{}";
 				i += 2;
 				column += 5;
-			}
-			// Check for "TeX"
-			else if (c == 'T'
-				 && i <= size() - 3
-				 && font.family() != LyXFont::TYPEWRITER_FAMILY
-				 && getChar(i + 1) == 'e'
-				 && getChar(i + 2) == 'X') {
+			} else if (isTextAt("TeX", i)) {
 				os << "\\TeX{}";
 				i += 2;
 				column += 5;
-			}
-			// Check for "LaTeX2e"
-			else if (c == 'L'
-				 && i <= size() - 7
-				 && font.family() != LyXFont::TYPEWRITER_FAMILY
-				 && getChar(i + 1) == 'a'
-				 && getChar(i + 2) == 'T'
-				 && getChar(i + 3) == 'e'
-				 && getChar(i + 4) == 'X'
-				 && getChar(i + 5) == '2'
-				 && getChar(i + 6) == 'e') {
+			} else if (isTextAt("LaTeX2e", i)) {
 				os << "\\LaTeXe{}";
 				i += 6;
 				column += 8;
-			}
-			// Check for "LaTeX"
-			else if (c == 'L'
-				 && i <= size() - 5
-				 && font.family() != LyXFont::TYPEWRITER_FAMILY
-				 && getChar(i + 1) == 'a'
-				 && getChar(i + 2) == 'T'
-				 && getChar(i + 3) == 'e'
-				 && getChar(i + 4) == 'X') {
+			} else if (isTextAt("LaTeX", i)) {
 				os << "\\LaTeX{}";
 				i += 4;
 				column += 7;
-				/* idea for labels --- end*/ 
+			// do we really try to print out '\0' ?
 			} else if (c != '\0') {
 				os << c;
 			}
@@ -545,25 +536,22 @@ LyXFont const Paragraph::Pimpl::realizeFont(LyXFont const & font,
 	while (par && par->getDepth() && !tmpfont.resolved()) {
 		par = par->outerHook();
 		if (par) {
-#ifndef INHERIT_LANGUAGE
 			tmpfont.realize(textclasslist.
 					Style(bparams.textclass,
-					      par->getLayout()).font);
-#else
-			tmpfont.realize(textclasslist.
-					Style(bparams.textclass,
-					      par->getLayout()).font, bparams.language);
+					      par->getLayout()).font
+#ifdef INHERIT_LANGUAGE
+					, bparams.language
 #endif
+					);
 			par_depth = par->getDepth();
 		}
 	}
 
-#ifndef INHERIT_LANGUAGE
 	tmpfont.realize(textclasslist.TextClass(bparams.textclass)
-			.defaultfont());
-#else
-	tmpfont.realize(textclasslist.TextClass(bparams.textclass)
-			.defaultfont(), bparams.language);
+			.defaultfont()
+#ifdef INHERIT_LANGUAGE
+		, bparams.language
 #endif
+		);
 	return tmpfont;	
 }
