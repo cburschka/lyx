@@ -1,3 +1,8 @@
+2000-07-17  Juergen Vigna  <jug@sad.it>
+
+	* src/table.C (Read): small fix for reading tabular-code with MS-DOS
+	encoded .lyx-files.
+
 2000-07-01  Dekel Tsur  <dekel@math.tau.ac.il>
 
 	* src/text.C (TransformChar): Changed to work correctly with
