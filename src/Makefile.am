@@ -152,6 +152,7 @@ lyx_SOURCES = \
 	lyxgluelength.h \
 	lyxlayout.C \
 	lyxlayout.h \
+	lyxlayout_ptr_fwd.h \
 	lyxlength.C \
 	lyxlength.h \
 	lyxlex.C \
