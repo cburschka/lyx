@@ -1,3 +1,8 @@
+2003-06-01  Angus Leeming  <leeming@lyx.org>
+
+	* filetools.h (LibScriptSearch): give the function a meaningful
+	description of what it now does.
+
 2003-05-30  Angus Leeming  <leeming@lyx.org>
 
 	* filetools.C (LibScriptSearch): make it search for "$$s/" and replace

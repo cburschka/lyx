@@ -93,10 +93,12 @@ string const
 i18nLibFileSearch(string const & dir, string const & name,
 		  string const & ext = string());
 
-/** Takes a command with arguments as input and tries to see whether
-  the command itself can be found in one of the scripts/ directories.
-  If it is found, return the command with fully qualified script name,
-  either return it unchanged */
+/** Takes a command such as "sh $$s/convertDefault.sh file.in file.out"
+ *  and replaces "$$s/" with the path to the "most important" of LyX's
+ *  script directories containing this script. If the script is not found,
+ *  "$$s/" is removed. Executing the command will still fail, but the
+ *  error message will make some sort of sense ;-)
+ */
 string const LibScriptSearch(string const & command);
 
 ///
