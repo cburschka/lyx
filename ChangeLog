@@ -1,5 +1,8 @@
 1999-11-03  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
+	* src/support/lyxstring.C: some changes from length() to rep->sz.
+	avoids a function call.
+
 	* src/support/filetools.C (SpaceLess): yet another version of the
 	algorithm...now per Jean-Marc's suggestions.
 

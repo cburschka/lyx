@@ -899,7 +899,7 @@ lyxstring::size_type lyxstring::find(value_type const * ptr, size_type i,
 	// for ptr in? For now I will assume that "n" tells the length
 	// of ptr. (Lgb)
 	n = min(n, strlen(ptr));
-	for (size_type t = i; length() - t >= n; ++t) {
+	for (size_type t = i; rep->sz - t >= n; ++t) {
 		// search until (*this)[i] == a[0]
 		if (rep->s[t] == ptr[0]) {
 			// check if the rest of the value_types match
@@ -935,7 +935,7 @@ lyxstring::size_type lyxstring::find(value_type c, size_type i) const
 
 	TestlyxstringInvariant(this);
 
-        for (size_type t = 0; t + i < length(); ++t) {
+        for (size_type t = 0; t + i < rep->sz; ++t) {
 	        if (rep->s[t + i] == c) return t + i;
 	}
         return npos;
@@ -946,10 +946,10 @@ lyxstring::size_type lyxstring::rfind(lyxstring const & a, size_type i) const
 {
 	TestlyxstringInvariant(this);
 
-	size_type ii = min(length() - 1, i);
+	size_type ii = min(rep->sz - 1, i);
 	do {
 		if (a[a.length() - 1] == rep->s[ii]) {
-			int t = length() - 2;
+			int t = rep->sz - 2;
 			size_type l = ii - 1;
 			for (; t >= 0; --t, --l) {
 				if (a[t] != rep->s[l]) break;
@@ -968,7 +968,7 @@ lyxstring::size_type lyxstring::rfind(value_type const * ptr, size_type i,
 	TestlyxstringInvariant(this);
 	if (!*ptr) return npos;
 
-	size_type ii = min(length() - 1, i);
+	size_type ii = min(rep->sz - 1, i);
 	do {
 		if (ptr[n - 1] == rep->s[ii]) {
 			int t = n - 2;
@@ -989,7 +989,7 @@ lyxstring::size_type lyxstring::rfind(value_type const * ptr, size_type i) const
 	TestlyxstringInvariant(this);
 	if (!*ptr) return npos;
 
-	size_type ii = min(length() - 1, i);
+	size_type ii = min(rep->sz - 1, i);
 	do {
 		if (ptr[strlen(ptr) - 1] == rep->s[ii]) {
 			int t = strlen(ptr) - 2;
@@ -1008,7 +1008,7 @@ lyxstring::size_type lyxstring::rfind(value_type c, size_type i) const
 {
 	TestlyxstringInvariant(this);
 
-	size_type ii = min(length() - 1, i);
+	size_type ii = min(rep->sz - 1, i);
         for (size_type t = ii; t != 0; --t) {
 	        if (rep->s[t] == c) return t;
 	}
@@ -1022,7 +1022,7 @@ lyxstring::size_type lyxstring::find_first_of(lyxstring const & a,
 	Assert(i < rep->sz);
 	TestlyxstringInvariant(this);
 
-	for (size_type t = i; t < length(); ++t) {
+	for (size_type t = i; t < rep->sz; ++t) {
 		if (a.find(rep->s[t]) != npos) return t;
 	}
 	return npos;
@@ -1036,7 +1036,7 @@ lyxstring::size_type lyxstring::find_first_of(value_type const * ptr, size_type 
 	TestlyxstringInvariant(this);
 	if (!n) return npos;
 
-	for (size_type t = i; t < length(); ++t) {
+	for (size_type t = i; t < rep->sz; ++t) {
 		if(memchr(ptr, rep->s[t], n) != 0) return t;
 	}
 	return npos;
@@ -1049,7 +1049,7 @@ lyxstring::size_type lyxstring::find_first_of(value_type const * ptr,
 	Assert(ptr && i < rep->sz);
 	TestlyxstringInvariant(this);
 
-	for (size_type t = i; t < length(); ++t) {
+	for (size_type t = i; t < rep->sz; ++t) {
 		if (strchr(ptr, rep->s[t]) != 0) return t;
 	}
 	return npos;
@@ -1061,7 +1061,7 @@ lyxstring::size_type lyxstring::find_first_of(value_type c, size_type i) const
 	Assert(i < rep->sz);
 	TestlyxstringInvariant(this);
 
-	for (size_type t = i; t < length(); ++t) {
+	for (size_type t = i; t < rep->sz; ++t) {
 		if (rep->s[t] == c) return t;
 	}
 	return npos;
@@ -1073,7 +1073,7 @@ lyxstring::size_type lyxstring::find_last_of(lyxstring const & a,
 {
 	TestlyxstringInvariant(this);
 
-	size_type ii = min(length() - 1, i);
+	size_type ii = min(rep->sz - 1, i);
 	for (int t = ii; t >= 0; --t) {
 		if (a.find(rep->s[t]) != npos) return t;
 	}
@@ -1087,7 +1087,7 @@ lyxstring::size_type lyxstring::find_last_of(value_type const * ptr, size_type i
 	TestlyxstringInvariant(this);
 	if (!n) return npos;
 
-	size_type ii = min(length() - 1, i);
+	size_type ii = min(rep->sz - 1, i);
 	for (int t = ii; t >= 0; --t) {
 		if(memchr(ptr, rep->s[t], n) != 0) return t;
 	}
@@ -1101,7 +1101,7 @@ lyxstring::size_type lyxstring::find_last_of(value_type const * ptr,
 	Assert(ptr);
 	TestlyxstringInvariant(this);
 
-	size_type ii = min(length() - 1, i);
+	size_type ii = min(rep->sz - 1, i);
 	for (int t = ii; t >= 0; --t) {
 		if (strchr(ptr, rep->s[t]) != 0) return t;
 	}
@@ -1114,7 +1114,7 @@ lyxstring::size_type lyxstring::find_last_of(value_type c, size_type i) const
 	TestlyxstringInvariant(this);
 
 	if (!rep->sz) return npos;
-	size_type ii = min(length() - 1, i);
+	size_type ii = min(rep->sz - 1, i);
 	for (int t = ii; t >= 0; --t) {
 		if (rep->s[t] == c) return t;
 	}
@@ -1129,21 +1129,22 @@ lyxstring::size_type lyxstring::find_first_not_of(lyxstring const & a,
 
 	if (!rep->sz) return npos;
 	Assert(i < rep->sz);
-	for (size_type t = i; t < length(); ++t) {
+	for (size_type t = i; t < rep->sz; ++t) {
 		if (a.find(rep->s[t]) == npos) return t;
 	}
 	return npos;
 }
 
 
-lyxstring::size_type lyxstring::find_first_not_of(value_type const * ptr, size_type i,
-					      size_type n) const
+lyxstring::size_type lyxstring::find_first_not_of(value_type const * ptr,
+						  size_type i,
+						  size_type n) const
 {
 	Assert(ptr && i < rep->sz);
 	TestlyxstringInvariant(this);
 
-	if (!n) return (i < length()) ? i : npos;
-	for (size_type t = i; t < length(); ++t) {
+	if (!n) return (i < rep->sz) ? i : npos;
+	for (size_type t = i; t < rep->sz; ++t) {
 		if(memchr(ptr, rep->s[t], n) == 0) return t;
 	}
 	return npos;
@@ -1151,12 +1152,12 @@ lyxstring::size_type lyxstring::find_first_not_of(value_type const * ptr, size_t
 
 
 lyxstring::size_type lyxstring::find_first_not_of(value_type const * ptr,
-					      size_type i) const
+						  size_type i) const
 {
 	Assert(ptr && i < rep->sz);
 	TestlyxstringInvariant(this);
 
-	for (size_type t = i; t < length(); ++t) {
+	for (size_type t = i; t < rep->sz; ++t) {
 		if (strchr(ptr, rep->s[t]) == 0) return t;
 	}
 	return npos;
@@ -1170,7 +1171,7 @@ lyxstring::size_type lyxstring::find_first_not_of(value_type c,
 	Assert(i < rep->sz);
 	TestlyxstringInvariant(this);
 
-	for (size_type t = i; t < length(); ++t) {
+	for (size_type t = i; t < rep->sz; ++t) {
 		if (rep->s[t] != c) return t;
 	}
 	return npos;
@@ -1182,7 +1183,7 @@ lyxstring::size_type lyxstring::find_last_not_of(lyxstring const & a,
 {
 	TestlyxstringInvariant(this);
 
-	size_type ii = min(length() - 1, i);
+	size_type ii = min(rep->sz - 1, i);
 	for (int t = ii; t >= 0; --t) {
 		if (a.find(rep->s[t]) == npos) return t;
 	}
@@ -1198,8 +1199,7 @@ lyxstring::size_type lyxstring::find_last_not_of(value_type const * ptr,
 	TestlyxstringInvariant(this);
 
 	if (!n) return npos;
-	size_type ii = min(length() - 1, i);
-	//if (!n) return (ii >= 0) ? ii : npos;
+	size_type ii = min(rep->sz - 1, i);
 	for (int t = ii; t >= 0; --t) {
 		if(memchr(ptr, rep->s[t], n) == 0) return t;
 	}
@@ -1213,7 +1213,7 @@ lyxstring::size_type lyxstring::find_last_not_of(value_type const * ptr,
 	Assert(ptr);
 	TestlyxstringInvariant(this);
 
-	size_type ii = min(length() - 1, i);
+	size_type ii = min(rep->sz - 1, i);
 	for (int t = ii; t >= 0; --t) {
 		if (strchr(ptr, rep->s[t]) == 0) return t;
 	}
@@ -1226,7 +1226,7 @@ lyxstring::size_type lyxstring::find_last_not_of(value_type c,
 {
 	TestlyxstringInvariant(this);
 
-	size_type ii = min(length() - 1, i);
+	size_type ii = min(rep->sz - 1, i);
 	for (int t = ii; t >= 0; --t) {
 		if (rep->s[t] != c) return t;
 	}
