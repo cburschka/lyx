@@ -1,13 +1,11 @@
 // -*- C++ -*-
-/* This file is part of
- * ======================================================
+/**
+ * \file lyxtextclass.h
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
  *
- *           LyX, The Document Processor
- *
- *           Copyright 1995 Matthias Ettrich
- *           Copyright 1995-2001 The LyX Team.
- *
- * ====================================================== */
+ * Full author contact details are available in file CREDITS
+ */
 
 #ifndef LYXTEXTCLASS_H
 #define LYXTEXTCLASS_H
@@ -30,25 +28,25 @@ class LyXLex;
 class Counters;
 class FloatList;
 
-///
+/// Stores the layout specification of a LyX document class.
 class LyXTextClass {
 public:
-	///
+	/// The individual styles comprising the document class
 	typedef std::vector<LyXLayout_ptr> LayoutList;
-	///
+	/// Enumerate the paragraph styles.
 	typedef LayoutList::const_iterator const_iterator;
-	///
+	/// Construct a layout with default values. Actual values loaded later.
 	explicit
 	LyXTextClass(string const & = string(),
 		     string const & = string(),
 		     string const & = string());
 
-	///
+	/// paragraph styles begin iterator.
 	const_iterator begin() const { return layoutlist_.begin(); }
-	///
+	/// paragraph styles end iterator
 	const_iterator end() const { return layoutlist_.end(); }
 
-	///
+	/// Performs the read of the layout file.
 	bool Read(string const & filename, bool merge = false);
 	///
 	void readOutputType(LyXLex &);
@@ -69,11 +67,11 @@ public:
 	/// Sees to that the textclass structure has been loaded
 	bool load() const;
 
-	/// the list of floats defined in the class
+	/// the list of floats defined in the document class
 	FloatList & floats();
-	/// the list of floats defined in the class
+	/// the list of floats defined in the document class
 	FloatList const & floats() const;
-	/// The Counters present in this textclass.
+	/// The Counters present in this document class.
 	Counters & counters() const;
 	///
 	string const & defaultLayoutName() const;
@@ -128,7 +126,7 @@ public:
 	///
 	int tocdepth() const;
 
-	///
+	/// Can be LaTeX, LinuxDoc, etc.
 	OutputType outputType() const;
 
 	///
@@ -148,11 +146,11 @@ private:
 	bool delete_layout(string const &);
 	///
 	bool do_readStyle(LyXLex &, LyXLayout &);
-	///
+	/// Layout file name
 	string name_;
-	///
+	/// document class name
 	string latexname_;
-	///
+	/// document class description
 	string description_;
 	/// Specific class options
 	string opt_fontsize_;
@@ -164,19 +162,19 @@ private:
 	string pagestyle_;
 	///
 	string defaultlayout_;
-	///
+	/// preamble text to support layout styles
 	string preamble_;
-	///
+	/// latex packages loaded by document class.
 	Provides provides_;
 	///
 	unsigned int columns_;
 	///
 	PageSides sides_;
-	///
+	/// header depth to have numbering
 	int secnumdepth_;
-	///
+	/// header depth to appear in table of contents
 	int tocdepth_;
-	///
+	/// Can be LaTeX, LinuxDoc, etc.
 	OutputType outputType_;
 	/** Base font. The paragraph and layout fonts are resolved against
 	    this font. This has to be fully instantiated. Attributes
@@ -189,16 +187,16 @@ private:
 
 	/// Text that dictates how wide the right margin is on the screen
 	string rightmargin_;
-	///
+	/// highest header level used in this layout.
 	int maxcounter_; // add approp. signedness
 
-	///
+	/// Paragraph styles used in this layout
 	LayoutList layoutlist_;
 
-	///
+	/// available types of float, eg. figure, algorithm.
 	boost::shared_ptr<FloatList> floatlist_;
 
-	///
+	/// Types of counters, eg. sections, eqns, figures, avail. in document class.
 	boost::shared_ptr<Counters> ctrs_;
 
 	/// Has this layout file been loaded yet?
@@ -206,7 +204,7 @@ private:
 };
 
 
-///
+/// Merge two different provides flags into one bit field record
 inline
 void operator|=(LyXTextClass::Provides & p1, LyXTextClass::Provides p2)
 {
@@ -214,7 +212,7 @@ void operator|=(LyXTextClass::Provides & p1, LyXTextClass::Provides p2)
 }
 
 
-///
+/// convert page sides option to text 1 or 2
 std::ostream & operator<<(std::ostream & os, LyXTextClass::PageSides p);
 
 #endif
