@@ -11,7 +11,8 @@
 #include "lyx_gui_misc.h"
 #include "support/syscall.h"
 #include "gettext.h"
-#include "lyx_cb.h"
+//#include "lyx_cb.h"
+#include "bufferview_funcs.h"
 
 extern FD_form_sendto * fd_form_sendto;
 extern BufferView * current_view;

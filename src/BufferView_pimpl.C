@@ -17,7 +17,7 @@
 #include "lyxfunc.h"
 #include "minibuffer.h"
 #include "font.h"
-#include "lyx_cb.h"
+#include "bufferview_funcs.h"
 #include "TextCache.h"
 #include "bufferlist.h"
 #include "insets/insetbib.h"
@@ -29,8 +29,11 @@
 using std::pair;
 using std::endl;
 
+/* the selection possible is needed, that only motion events are 
+ * used, where the bottom press event was on the drawing area too */
+bool selection_possible = false;
+
 extern BufferList bufferlist;
-extern bool selection_possible;
 extern char ascii_type;
 
 extern void sigchldhandler(pid_t pid, int * status);

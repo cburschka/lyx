@@ -31,6 +31,7 @@
 #include "lyxrc.h"
 #include "lyxtext.h"
 #include "lyx_cb.h"
+#include "bufferview_funcs.h"
 #include "gettext.h"
 #include "LyXView.h"
 #include "vc-backend.h"

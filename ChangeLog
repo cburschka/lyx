@@ -1,3 +1,14 @@
+2000-04-12  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/lyxfunc.C (Dispatch): make PARAGRAPH_SPACING compile with
+	strstream too.
+
+	* src/bufferview_funcs.[Ch]: two new files, moved several of the
+	methods from lyx_cb.here.
+
+	* src/lyx_cb.C: in addition to the above; removed input_prohibited
+	it was not used.
+
 2000-04-11  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/lyx_cb.[Ch]: made several functions take a BufferView* arg

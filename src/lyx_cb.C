@@ -15,45 +15,35 @@
 #include <iostream>
 
 #include "LString.h"
-#include "support/lstrings.h"
-#include "lyx_main.h"
 #include FORMS_H_LOCATION
 #include "lyx.h"
 #include "layout_forms.h"
 #include "bullet_forms.h"
 #include "print_form.h"
 #include "form1.h"
-#include "spellchecker.h"
-#include "version.h"
+#include "lyx_main.h"
 #include "lyx_cb.h"
-#include "credits.h"
 #include "insets/insetref.h"
-#include "insets/insetquotes.h"
 #include "insets/insetlabel.h"
 #include "insets/figinset.h"
 #include "lyxfunc.h"
-#include "latexoptions.h"
-#include "lyxfont.h"
 #include "minibuffer.h"
 #include "combox.h"
 #include "bufferlist.h"
-#include "support/filetools.h"
-#include "support/path.h"
 #include "filedlg.h"
 #include "lyx_gui_misc.h"
 #include "LyXView.h"
+#include "BufferView.h"
 #include "lastfiles.h"
+#include "bufferview_funcs.h"
 #include "support/FileInfo.h"
-#include "debug.h"
 #include "support/syscall.h"
-#include "support/lyxlib.h"
+#include "support/filetools.h"
+#include "support/path.h"
 #include "lyxserver.h"
 #include "FontLoader.h"
 #include "lyxrc.h"
 #include "lyxtext.h"
-#include "gettext.h"
-#include "layout.h"
-#include "language.h"
 #include "CutAndPaste.h"
 
 using std::ifstream;
@@ -99,15 +89,6 @@ extern bool finished; // all cleanup done just let it run through now.
 char ascii_type; /* for selection notify callbacks */
 
 bool scrolling = false;
-
-char updatetimer = 0;
-
-/* whether the work area should get callbacks */ 
-bool input_prohibited = false;
-
-/* the selection possible is needed, that only motion events are 
-* used, where the bottom press event was on the drawing area too */
-bool selection_possible = false;
 
 // This is used to make the dreaded font toggle problem hopefully go
 // away. Definitely not the best solution, but I think it sorta works.
@@ -196,82 +177,12 @@ void ShowMessage(Buffer * buf,
 	}
 }
 
-// How should this actually work? Should it prohibit input in all BufferViews,
-// or just in the current one? If "just the current one", then it should be
-// placed in BufferView. If "all BufferViews" then LyXGUI (I think) should
-// run "ProhibitInput" on all LyXViews which will run prohibitInput on all
-// BufferViews. Or is it perhaps just the (input in) BufferViews in the
-// current LyxView that should be prohibited (Lgb) (This applies to
-// "AllowInput" as well.)
-void ProhibitInput(BufferView * bv)
-{
-	input_prohibited = true;
-	bv->hideCursor();
 
-	static Cursor cursor;
-	static bool cursor_undefined = true;
-   
-	if (cursor_undefined){
-		cursor = XCreateFontCursor(fl_display, XC_watch);
-		XFlush(fl_display);
-		cursor_undefined = false;
-	}
-   
-	/* set the cursor to the watch for all forms and the canvas */ 
-	XDefineCursor(fl_display, bv->owner()->getForm()->window, 
-		      cursor);
-	if (fd_form_paragraph->form_paragraph->visible)
-		XDefineCursor(fl_display,
-			      fd_form_paragraph->form_paragraph->window,
-			      cursor);
-	if (fd_form_character->form_character->visible)
-		XDefineCursor(fl_display,
-			      fd_form_character->form_character->window,
-			      cursor);
-
-	XFlush(fl_display);
-	fl_deactivate_all_forms();
-}
+// only called from this file, LyXView and LyXFunc
+char updatetimer = 0;
 
 
-// Should find a way to move this into BufferView.C
-void SetXtermCursor(Window win)
-{
-	static Cursor cursor;
-	static bool cursor_undefined = true;
-	if (cursor_undefined){
-		cursor = XCreateFontCursor(fl_display, XC_xterm);
-		XFlush(fl_display);
-		cursor_undefined = false;
-	}
-	XDefineCursor(fl_display, win, cursor);
-	XFlush(fl_display);
-}
-
-
-void AllowInput(BufferView * bv)
-{
-	input_prohibited = false;
-
-	/* reset the cursor from the watch for all forms and the canvas */
-   
-	XUndefineCursor(fl_display, bv->owner()->getForm()->window);
-	if (fd_form_paragraph->form_paragraph->visible)
-		XUndefineCursor(fl_display,
-				fd_form_paragraph->form_paragraph->window);
-	if (fd_form_character->form_character->visible)
-		XUndefineCursor(fl_display,
-				fd_form_character->form_character->window);
-
-	// What to do about this? (Lgb)
-	if (bv->belowMouse())
-		SetXtermCursor(bv->owner()->getForm()->window);
-
-	XFlush(fl_display);
-	fl_activate_all_forms();
-}
-
-
+// only called from BufferView_pimpl and LyXFunc
 void FreeUpdateTimer()
 {
 	/* a real free timer would be better but I don't know 
@@ -280,6 +191,7 @@ void FreeUpdateTimer()
 }
 
 
+// Only called from LyXFunc
 void SetUpdateTimer(float time)
 {
 	fl_set_timer(current_view->owner()->getMainForm()->timer_update, time);
@@ -806,6 +718,7 @@ bool AskOverwrite(Buffer * buffer, string const & s)
 	return true;
 }
 
+
 void MenuMakeLaTeX(Buffer * buffer)
 {
 	// Why care about this?
@@ -927,6 +840,7 @@ void MenuPrint(Buffer * buffer)
 	}
 }
 
+
 void MenuMakeHTML(Buffer * buffer)
 {
 	// First, create LaTeX file
@@ -955,6 +869,7 @@ void MenuMakeHTML(Buffer * buffer)
 	}
 
 }
+
 
 void MenuMakeHTML_LinuxDoc(Buffer * buffer)
 {
@@ -1006,6 +921,7 @@ void MenuMakeHTML_DocBook(Buffer * buffer)
 	}
 
 }
+
 
 void MenuExport(Buffer * buffer, string const & extyp) 
 {
@@ -1327,19 +1243,6 @@ void MenuPasteSelection(char at)
 }
 
 
-// candidate for move to BufferView
-void Foot(BufferView * bv)
-{
-	if (!bv->available()) 
-		return;
-	
-	bv->owner()->getMiniBuffer()
-		->Set(_("Inserting Footnote..."));
-	bv->hideCursor();
-	bv->update(-2);
-	bv->text->InsertFootnoteEnvironment(LyXParagraph::FOOTNOTE);
-	bv->update(1);
-}
 
 
 // candidate for move to LyXView
@@ -2072,246 +1975,6 @@ void MenuLayoutSave()
 }
 
 
-/* -------> These CB's use ToggleFree() as the (one and only?) font-changer. 
-			They also show the current font state. */
-
-static
-void ToggleAndShow(BufferView *, LyXFont const &);
-
-
-void FontSize(BufferView * bv, string const & size)
-{
-	LyXFont font(LyXFont::ALL_IGNORE);
-	font.setGUISize(size);
-	ToggleAndShow(bv, font);
-}
-
-
-void Emph(BufferView * bv)
-{
-	LyXFont font(LyXFont::ALL_IGNORE);
-	font.setEmph(LyXFont::TOGGLE);
-	ToggleAndShow(bv, font);
-}
-
-
-void Noun(BufferView * bv)
-{
-	LyXFont font(LyXFont::ALL_IGNORE);
-	font.setNoun(LyXFont::TOGGLE);
-	ToggleAndShow(bv, font);
-}
-
-
-void Bold(BufferView * bv)
-{
-	LyXFont font(LyXFont::ALL_IGNORE);
-	font.setSeries(LyXFont::BOLD_SERIES);
-	ToggleAndShow(bv, font);
-}
-
-
-void Underline(BufferView * bv)
-{
-	LyXFont font(LyXFont::ALL_IGNORE);
-	font.setUnderbar(LyXFont::TOGGLE);
-	ToggleAndShow(bv, font);
-}
-
-
-void Code(BufferView * bv)
-{
-	LyXFont font(LyXFont::ALL_IGNORE);
-	font.setFamily(LyXFont::TYPEWRITER_FAMILY); // no good
-	ToggleAndShow(bv, font);
-}
-
-
-void Sans(BufferView * bv)
-{
-	LyXFont font(LyXFont::ALL_IGNORE);
-	font.setFamily(LyXFont::SANS_FAMILY);
-	ToggleAndShow(bv, font);
-}
-
-
-void Roman(BufferView * bv)
-{
-	LyXFont font(LyXFont::ALL_IGNORE);
-	font.setFamily(LyXFont::ROMAN_FAMILY);
-	ToggleAndShow(bv, font);
-}
-
-
-void Tex(BufferView * bv)
-{
-	LyXFont font(LyXFont::ALL_IGNORE);
-	font.setLatex (LyXFont::TOGGLE);
-	ToggleAndShow(bv, font);
-}
-
-void Lang(BufferView * bv, string const & l)
-{
-	LyXFont font(LyXFont::ALL_IGNORE);
-	Languages::iterator lit = languages.find(l);
-	if (lit != languages.end()) {
-		font.setLanguage(&(*lit).second);
-		ToggleAndShow(bv, font);
-	} else
-		WriteAlert(_("Error! unknown language"),l);
-}
-
-
-void StyleReset(BufferView * bv)
-{
-	LyXFont font(LyXFont::ALL_INHERIT, ignore_language);
-	ToggleAndShow(bv, font);
-}
-
-
-/* -------> Returns the current font and depth by printing a message. In the
- * future perhaps we could try to implement a callback to the button-bar.
- * That is, `light' the bold button when the font is currently bold, etc.
- */
-string CurrentState(BufferView * bv)
-{
-	string state;
-	if (bv->available()) { 
-		// I think we should only show changes from the default
-		// font. (Asger)
-		Buffer * buffer = bv->buffer();
-		LyXFont font = bv->text->real_current_font;
-		LyXFont defaultfont = textclasslist.TextClass(buffer->
-							      params.textclass).defaultfont();
-		font.reduce(defaultfont);
-		state = _("Font: ") + font.stateText();
-		// The paragraph depth
-		int depth = bv->text->GetDepth();
-		if (depth > 0) 
-			state += string(_(", Depth: ")) + tostr(depth);
-		// The paragraph spacing, but only if different from
-		// buffer spacing.
-		if (!bv->text->cursor.par->spacing.isDefault()) {
-			Spacing::Space cur_space =
-				bv->text->cursor.par->spacing.getSpace();
-			state += _(", Spacing: ");
-			switch (cur_space) {
-			case Spacing::Single:
-				state += _("Single");
-				break;
-			case Spacing::Onehalf:
-				state += _("Onehalf");
-				break;
-			case Spacing::Double:
-				state += _("Double");
-				break;
-			case Spacing::Other:
-				state += _("Other (");
-				state += tostr(bv->text->cursor.par->spacing.getValue());
-				state += ")";
-				break;
-			case Spacing::Default:
-				// should never happen, do nothing
-				break;
-			}
-		}
-	}
-	return state;
-}
-
-
-
-// candidate for move to BufferView
-/* -------> Does the actual toggle job of the XxxCB() calls above.
- * Also shows the current font state.
- */
-static
-void ToggleAndShow(BufferView * bv, LyXFont const & font)
-{
-	if (bv->available()) { 
-		bv->hideCursor();
-		bv->update(-2);
-		if (bv->the_locking_inset)
-			bv->the_locking_inset->SetFont(bv, font, toggleall);
-		else
-			bv->text->ToggleFree(font, toggleall);
-		bv->update(1);
-	}
-}
-
-
-// candidate for move to BufferView
-void Margin(BufferView * bv)
-{
-	if (bv->available()) {
-		bv->owner()->getMiniBuffer()->Set(_("Inserting margin note..."));
-		bv->hideCursor();
-		bv->update(-2);
-		bv->text->InsertFootnoteEnvironment(LyXParagraph::MARGIN);
-		bv->update(1);
-	}
-}
-
-
-void Figure()
-{
-	if (fd_form_figure->form_figure->visible) {
-		fl_raise_form(fd_form_figure->form_figure);
-	} else {
-		fl_show_form(fd_form_figure->form_figure,
-			     FL_PLACE_MOUSE, FL_FULLBORDER,
-			     _("Insert Figure"));
-	}
-}
-
-
-void Table()
-{
-	if (fd_form_table->form_table->visible) {
-		fl_raise_form(fd_form_table->form_table);
-	} else {
-		fl_show_form(fd_form_table->form_table,
-			     FL_PLACE_MOUSE, FL_FULLBORDER,
-			     _("Insert Table"));
-	}
-}
-
-
-// candidate for move to BufferView
-void Melt(BufferView * bv)
-{
-	if (!bv->available()) return;
-	
-	bv->owner()->getMiniBuffer()->Set(_("Melt"));
-	bv->hideCursor();
-	bv->beforeChange();
-	bv->update(-2);
-	bv->text->MeltFootnoteEnvironment();
-	bv->update(1);
-}
-
-
-// candidate for move to BufferView
-// Change environment depth.
-// if decInc >= 0, increment depth
-// if decInc <  0, decrement depth
-void changeDepth(BufferView * bv, int decInc)
-{
-	if (!bv->available()) return;
-	
-	bv->hideCursor();
-	bv->update(-2);
-	if (decInc >= 0)
-		bv->text->IncDepth();
-	else
-		bv->text->DecDepth();
-	bv->update(1);
-	bv->owner()->getMiniBuffer()
-		->Set(_("Changed environment depth"
-			" (in possible range, maybe not)"));
-}
-
-
 // This is both GUI and LyXFont dependent. Don't know where to put it. (Asger)
 // Well, it's mostly GUI dependent, so I guess it will stay here. (Asger)
 LyXFont UserFreeFont()
@@ -2400,10 +2063,6 @@ LyXFont UserFreeFont()
 }
 
 
-void Free(BufferView * bv)
-{
-	ToggleAndShow(bv, UserFreeFont());
-}
 
 
 /* callbacks for form form_title */
@@ -3250,6 +2909,30 @@ extern "C" void PrintOKCB(FL_OBJECT * ob, long data)
 {
 	PrintCancelCB(ob, data);  
 	PrintApplyCB(ob, data);
+}
+
+
+void Figure()
+{
+	if (fd_form_figure->form_figure->visible) {
+		fl_raise_form(fd_form_figure->form_figure);
+	} else {
+		fl_show_form(fd_form_figure->form_figure,
+			     FL_PLACE_MOUSE, FL_FULLBORDER,
+			     _("Insert Figure"));
+	}
+}
+
+
+void Table()
+{
+	if (fd_form_table->form_table->visible) {
+		fl_raise_form(fd_form_table->form_table);
+	} else {
+		fl_show_form(fd_form_table->form_table,
+			     FL_PLACE_MOUSE, FL_FULLBORDER,
+			     _("Insert Table"));
+	}
 }
 
 

@@ -520,8 +520,8 @@ LyXParagraph::~LyXParagraph()
         // ale970302
 	delete bibkey;
 	//
-	lyxerr << "LyXParagraph::paragraph_id = "
-	       << LyXParagraph::paragraph_id << endl;
+	//lyxerr << "LyXParagraph::paragraph_id = "
+	//       << LyXParagraph::paragraph_id << endl;
 }
 
 

@@ -45,6 +45,7 @@
 #include "gettext.h"
 #include "layout.h"
 #include "lyx_cb.h"
+#include "bufferview_funcs.h"
 
 using std::vector;
 using std::endl;

@@ -78,6 +78,7 @@ using std::istringstream;
 #include "WorkArea.h"
 #include "lyxfr1.h"
 #include "menus.h"
+#include "bufferview_funcs.h"
 
 using std::pair;
 using std::endl;
@@ -1956,14 +1957,19 @@ string LyXFunc::Dispatch(int ac,
 			cur_value = par->spacing.getValue();
 		}
 		
-		lyxerr << "all spacing arguments: " << argument << endl;
+#ifdef HAVE_SSTREAM
 		istringstream istr(argument);
+#else
+		istrstream istr(argument.c_str());
+#endif
 		string tmp;
 		istr >> tmp;
-		lyxerr << "spacing = " << tmp << endl;
 		Spacing::Space new_spacing = cur_spacing;
 		float new_value = cur_value;
-		if (tmp == "single") {
+		if (tmp.empty()) {
+			lyxerr << "Missing argument to `paragraph-spacing'"
+			       << endl;
+		} else if (tmp == "single") {
 			new_spacing = Spacing::Single;
 		} else if (tmp == "onehalf") {
 			new_spacing = Spacing::Onehalf;

@@ -58,7 +58,8 @@
 #include "support/lyxlib.h"
 #include "Painter.h"
 #include "font.h"
-#include "lyx_cb.h"
+//#include "lyx_cb.h"
+#include "bufferview_funcs.h"
 
 using std::ostream;
 using std::istream;

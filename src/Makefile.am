@@ -75,6 +75,8 @@ lyx_SOURCES = \
 	bufferlist.h \
 	bufferparams.C \
 	bufferparams.h \
+	bufferview_funcs.C \
+	bufferview_funcs.h \
 	bullet_forms.C \
 	bullet_forms.h \
 	bullet_forms_cb.C \

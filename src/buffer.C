@@ -44,7 +44,8 @@
 #include "lyxlex.h"
 #include "tex-strings.h"
 #include "layout.h"
-#include "lyx_cb.h"
+//#include "lyx_cb.h"
+#include "bufferview_funcs.h"
 #include "minibuffer.h"
 #include "lyxfont.h"
 #include "version.h"
@@ -117,8 +118,6 @@ extern LyXAction lyxaction;
 static const float LYX_FORMAT = 2.16;
 
 extern int tex_code_break_column;
-
-extern void FreeUpdateTimer();
 
 
 Buffer::Buffer(string const & file, bool ronly)

@@ -1273,7 +1273,7 @@ void LyXText::SetHeightOfRow(Row * row_ptr) const
    } else {
 	   spacing_val = bparams->spacing.getValue();
    }
-   lyxerr << "spacing_val = " << spacing_val << endl;
+   //lyxerr << "spacing_val = " << spacing_val << endl;
    
    int maxasc = int(lyxfont::maxAscent(font) *
 		   layout.spacing.getValue() *

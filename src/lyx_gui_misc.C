@@ -31,6 +31,7 @@
 #include "sp_form.h"
 #include "insets/insetindex.h"
 #include "LyXView.h"
+#include "bufferview_funcs.h"
 
 using std::pair;
 using std::make_pair;
