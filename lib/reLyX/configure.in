@@ -1,6 +1,7 @@
-dnl Process this file with autoconf to produce a configure script.
+dnl Process with autoconf to generate configure script   -*- sh -*-
 AC_INIT(reLyX.in)
 AC_PREREQ(2.13) dnl We want to use autoconf 2.13
+AC_PREFIX_PROGRAM(reLyX)
 
 PACKAGE=reLyX
 VERSION=2.0
@@ -11,17 +12,10 @@ dnl Checks for programs.
 AC_PROG_INSTALL
 RELYX_CHECK_PERL
 
-dnl Checks for libraries.
-dnl Replace `main' with a function in -lXpm:
-dnl AC_CHECK_LIB(Xpm, main)
-dnl Replace `main' with a function in -lforms:
-dnl AC_CHECK_LIB(forms, main)
-
-dnl Checks for header files.
-
-dnl Checks for typedefs, structures, and compiler characteristics.
-
-dnl Checks for library functions.
+dnl Finish the work
+test $program_suffix = NONE && program_suffix=
+LYX_DIR=`eval "echo \`eval \"echo ${datadir}/lyx${program_suffix}\"\`"`
+AC_SUBST(LYX_DIR)
 
 AC_OUTPUT(Makefile reLyX, chmod 755 reLyX)
 

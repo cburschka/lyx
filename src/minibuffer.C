@@ -184,7 +184,7 @@ void MiniBuffer::Init()
 			if (!owner->currentBuffer()->isLyxClean())
 				text += _(" (Changed)");
 	} else {
-		if (text != "Welcome to LyX!") // this is a hack
+		if (text != _("Welcome to LyX!")) // this is a hack
 			text = _("* No document open *");
 	}
 	

@@ -42,7 +42,7 @@ BufferParams::BufferParams()
 	tocdepth = 3;
 	language = "default";
 	fonts = "default";
-	inputenc = "default";
+	inputenc = "latin1";
 	graphicsDriver = "default";
 	sides = 1;
 	columns = 1;

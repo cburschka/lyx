@@ -1,3 +1,15 @@
+1999-10-05  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/minibuffer.C (Init): make sure that the "Welcome to LyX!"
+	is not overwritten when translated (David Sua'rez de Lis).
+
+	* lib/CREDITS: Added David Sua'rez de Lis
+
+	* lib/reLyX/configure.in: setup LYX_DIR correctly in reLyX.
+
+	* src/bufferparams.C (BufferParams): default input encoding is now
+	"latin1" 
+
 1999-10-04  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/table.C (getDocBookAlign): remove bad default value for
