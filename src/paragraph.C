@@ -457,25 +457,29 @@ LyXFont const Paragraph::getFont(BufferParams const & bparams, pos_type pos,
 }
 
 
-LyXFont const Paragraph::getLabelFont(BufferParams const & bparams) const
+LyXFont const Paragraph::getLabelFont(BufferParams const & bparams,
+				      LyXFont const & outerfont) const
 {
 	LyXLayout_ptr const & lout = layout();
 
 	LyXFont tmpfont = lout->labelfont;
 	tmpfont.setLanguage(getParLanguage(bparams));
+	tmpfont.realize(outerfont);
 
-	return pimpl_->realizeFont(tmpfont, bparams);
+	return realizeFont(tmpfont, bparams, 0, false);
 }
 
 
-LyXFont const Paragraph::getLayoutFont(BufferParams const & bparams) const
+LyXFont const Paragraph::getLayoutFont(BufferParams const & bparams,
+				       LyXFont const & outerfont) const
 {
 	LyXLayout_ptr const & lout = layout();
 
 	LyXFont tmpfont = lout->font;
 	tmpfont.setLanguage(getParLanguage(bparams));
+	tmpfont.realize(outerfont);
 
-	return pimpl_->realizeFont(tmpfont, bparams);
+	return realizeFont(tmpfont, bparams, 0, false);
 }
 
 
@@ -961,9 +965,9 @@ bool Paragraph::simpleTeXOnePar(Buffer const * buf,
 	if (body_pos > 0) {
 		os << '[';
 		++column;
-		basefont = getLabelFont(bparams);
+		basefont = getLabelFont(bparams, outerfont);
 	} else {
-		basefont = getLayoutFont(bparams);
+		basefont = getLayoutFont(bparams, outerfont);
 	}
 
 	moving_arg |= style->needprotect;
@@ -997,7 +1001,7 @@ bool Paragraph::simpleTeXOnePar(Buffer const * buf,
 					column += running_font.latexWriteEndChanges(os, basefont, basefont);
 					open_font = false;
 				}
-				basefont = getLayoutFont(bparams);
+				basefont = getLayoutFont(bparams, outerfont);
 				running_font = basefont;
 				os << ']';
 				++column;
@@ -1070,7 +1074,7 @@ bool Paragraph::simpleTeXOnePar(Buffer const * buf,
 		pimpl_->simpleTeXSpecialChars(buf, bparams,
 					      os, texrow, moving_arg,
 					      font, running_font,
-					      basefont, open_font,
+					      basefont, outerfont, open_font,
 					      running_change,
 					      *style, i, column, c);
 	}

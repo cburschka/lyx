@@ -498,6 +498,7 @@ void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const * buf,
 					     LyXFont & font,
 					     LyXFont & running_font,
 					     LyXFont & basefont,
+					     LyXFont const & outerfont,
 					     bool & open_font,
 					     Change::Type & running_change,
 					     LyXLayout const & style,
@@ -538,7 +539,7 @@ void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const * buf,
 					column += running_font.latexWriteEndChanges(os, basefont, basefont);
 					open_font = false;
 				}
-				basefont = owner_->getLayoutFont(bparams);
+				basefont = owner_->getLayoutFont(bparams, outerfont);
 				running_font = basefont;
 
 				if (font.family() == LyXFont::TYPEWRITER_FAMILY)
@@ -585,7 +586,7 @@ void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const * buf,
 						     basefont,
 						     basefont);
 			open_font = false;
-			basefont = owner_->getLayoutFont(bparams);
+			basefont = owner_->getLayoutFont(bparams, outerfont);
 			running_font = basefont;
 		}
 
@@ -851,27 +852,4 @@ void Paragraph::Pimpl::validate(LaTeXFeatures & features,
 			}
 		}
 	}
-}
-
-
-LyXFont const Paragraph::Pimpl::realizeFont(LyXFont const & font,
-					    BufferParams const & bparams) const
-{
-	LyXFont tmpfont(font);
-
-	// check for environment font information
-	depth_type par_depth = owner_->getDepth();
-	Paragraph * par = owner_;
-	LyXTextClass const & tclass = bparams.getLyXTextClass();
-
-	while (par && par->getDepth() && !tmpfont.resolved()) {
-		par = outerHook(par);
-		if (par) {
-			tmpfont.realize(par->layout()->font);
-			par_depth = par->getDepth();
-		}
-	}
-
-	tmpfont.realize(tclass.defaultfont());
-	return tmpfont;
 }

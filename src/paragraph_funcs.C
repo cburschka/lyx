@@ -562,9 +562,12 @@ TeXOnePar(Buffer const * buf,
 	// Is this really needed ? (Dekel)
 	// We do not need to use to change the font for the last paragraph
 	// or for a command.
+	LyXFont const outerfont(outerFont(pit));
+
 	LyXFont const font =
 		(pit->empty()
-		 ? pit->getLayoutFont(bparams) : pit->getFont(bparams, pit->size() - 1, outerFont(pit)));
+		 ? pit->getLayoutFont(bparams, outerfont)
+		 : pit->getFont(bparams, pit->size() - 1, outerfont));
 
 	bool is_command = style->isCommand();
 

@@ -84,9 +84,6 @@ struct Paragraph::Pimpl {
 	/// erase the given range
 	bool erase(lyx::pos_type start, lyx::pos_type end);
 	///
-	LyXFont const realizeFont(LyXFont const & font,
-				  BufferParams const & bparams) const;
-	///
 	Inset * inset_owner;
 
 	/** A font entry covers a range of positions. Notice that the
@@ -158,7 +155,9 @@ struct Paragraph::Pimpl {
 				   std::ostream &, TexRow & texrow,
 				   bool moving_arg,
 				   LyXFont & font, LyXFont & running_font,
-				   LyXFont & basefont, bool & open_font,
+				   LyXFont & basefont,
+				   LyXFont const & outerfont,
+				   bool & open_font,
 				   Change::Type & running_change,
 				   LyXLayout const & style,
 				   lyx::pos_type & i,
