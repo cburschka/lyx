@@ -411,7 +411,8 @@ MathedArray * MathedIter::Copy(int pos1, int pos2)
 			--pos2;
 
 		int dx = pos2 - pos1;
-		a = new MathedArray(dx + MathedArray::ARRAY_MIN_SIZE);
+		a = new MathedArray;
+		a->resize(dx + 1);
 		//       lyxerr << "VA " << pos2 << " " << pos2 << " " << dx << endl;
 		array->strange_copy(a, (fc) ? 1 : 0, pos1, dx);
 		if (fc) {

@@ -1,3 +1,9 @@
+2001-02-14  André Pönitz  <poenitz@htwm.de>
+
+	* array.[Ch]: remove constructor and  enums ARRAY_MIN_SIZE and ARRAY_STEP
+
+	* math_iter.C: default-construct and resize array
+
 2001-02-17  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* math_xiter.h: move ipush and ipop to public, add _ on private
@@ -7,7 +13,7 @@
 	remove default arg val. Call the public methods of xiter instead
 	of private variables.
 
-	* changes to several files beacuse of the above.
+	* changes to several files because of the above.
 	
 2001-02-14  André Pönitz  <poenitz@htwm.de>
 

@@ -18,12 +18,9 @@ void * my_memcpy(void * ps_in, void const * pt_in, size_t n)
 }
 
 
-MathedArray::MathedArray(int size)
-	: last_(0)
-{
-	int const newsize = (size < ARRAY_MIN_SIZE) ? ARRAY_MIN_SIZE : size;
-	bf_.resize(newsize);
-}
+MathedArray::MathedArray()
+	: bf_(1, 0), last_(0)
+{}
 
 
 MathedArray::iterator MathedArray::begin() 
@@ -77,10 +74,9 @@ void MathedArray::need_size(int needed)
 
 void MathedArray::resize(int newsize)
 {
-	if (newsize < ARRAY_MIN_SIZE)
-		newsize = ARRAY_MIN_SIZE;
-	newsize += ARRAY_STEP - (newsize % ARRAY_STEP);
-	bf_.resize(newsize);
+	// still a bit smelly...
+	++newsize;
+	bf_.resize(newsize + 1);
 	if (last_ >= newsize)
 		last_ = newsize - 1;
 	bf_[last_] = 0;

@@ -46,16 +46,7 @@ public:
 	typedef buffer_type::const_iterator const_iterator;
 	
 	///
-	enum {
-		///
-		ARRAY_STEP = 16,
-		///
-		ARRAY_MIN_SIZE = 4
-	};
-
-	///
-	explicit
-	MathedArray(int size = ARRAY_STEP);
+	MathedArray();
 
 	///
 	iterator begin();
