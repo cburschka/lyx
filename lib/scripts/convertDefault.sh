@@ -24,8 +24,9 @@ convert -depth 8 $1 $2 || {
 # It appears that convert succeeded, but we know better than to trust it ;-)
 # convert is passed strings in the form "FMT:FILENAME", so use the ':' to
 # delimit the two parts.
-# Do not use 'cut' because Win32 filenames have the form 'C:\my\file'.
-FILE=`echo $arg2 | sed 's,^[^:]*:,,'`
+# Note that Win32 filenames have the form 'C:\my\file',
+# so use everything from the first ':' to the end of the line.
+FILE=`echo $2 | cut -d ':' -f 2-`
 
 test -f $FILE || {
 	echo "$0 ERROR"

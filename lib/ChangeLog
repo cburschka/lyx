@@ -1,3 +1,8 @@
+2003-11-28  Angus Leeming  <leeming@lyx.org>
+
+	* scripts/convertDefault.sh: use cut in preference to sed, but use it
+	safely.
+
 2003-11-27  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* layouts/db_stdclass.inc:
