@@ -878,18 +878,14 @@ string const LyXFunc::dispatch(kb_action action, string argument)
 				goto exit_with_message;
 					// If UNDISPATCHED, just soldier on
 			else if (result == UpdatableInset::FINISHED) {
-					if (TEXT()->cursor.par()->isRightToLeftPar(owner->buffer()->params)) {
-						TEXT()->cursorRight(owner->view());
-						moveCursorUpdate(true, false);
-						owner->showState();
-					}
-					goto exit_with_message;
+				goto exit_with_message;
+				// We do not need special RTL handling here:
+				// FINISHED means that the cursor should be
+				// one position after the inset.
 			} else if (result == UpdatableInset::FINISHED_RIGHT) {
-				if (!TEXT()->cursor.par()->isRightToLeftPar(owner->buffer()->params)) {
-					TEXT()->cursorRight(owner->view());
-					moveCursorUpdate(true, false);
-					owner->showState();
-				}
+				TEXT()->cursorRight(owner->view());
+				moveCursorUpdate(true, false);
+				owner->showState();
 				goto exit_with_message;
 			} else if (result == UpdatableInset::FINISHED_UP) {
 				if (TEXT()->cursor.irow()->previous()) {

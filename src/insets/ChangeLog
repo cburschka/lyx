@@ -1,3 +1,8 @@
+2002-07-13  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* insettext.C (unlockInsetInInset): Correct cursor behaviour for
+	RTL paragraphs.
+
 2002-07-05  Angus Leeming  <leeming@lyx.org>
 
 	* inset.h (generatePreview): new virtual method.
