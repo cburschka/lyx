@@ -2842,6 +2842,37 @@ void LyXText::ChangeWordCase(BufferView * bview, LyXText::TextCase action)
 }
 
 
+void LyXText::TransposeChars(BufferView const & bview)
+{
+	LyXParagraph * tmppar = cursor.par();
+
+	SetUndo(bview.buffer(), Undo::FINISH,
+		tmppar->previous(), tmppar->next()); 
+
+	LyXParagraph::size_type tmppos = cursor.pos();
+
+	// First decide if it is possible to transpose at all
+
+	// We are at the beginning of a paragraph.
+	if (tmppos == 0) return;
+
+	// We are at the end of a paragraph.
+	if (tmppos == tmppar->size() - 1) return;
+
+	unsigned char c1 = tmppar->GetChar(tmppos);
+	unsigned char c2 = tmppar->GetChar(tmppos - 1);
+
+	if (c1 != LyXParagraph::META_INSET
+	    && c2 != LyXParagraph::META_INSET) {
+		tmppar->SetChar(tmppos, c2);
+		tmppar->SetChar(tmppos - 1, c1);
+	}
+	// We should have an implementation that handles insets
+	// as well, but that will have to come later. (Lgb)
+	CheckParagraph(const_cast<BufferView*>(&bview), tmppar, tmppos);
+}
+
+
 void LyXText::Delete(BufferView * bview)
 {
 	// this is a very easy implementation

@@ -1769,7 +1769,16 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 			bv_->updateInset(TEXT(bv_)->inset_owner, true);
 		update(TEXT(bv_), BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 		break;
+
+	case LFUN_TRANSPOSE_CHARS:
+		update(TEXT(bv_), BufferView::SELECT|BufferView::FITCUR);
+		TEXT(bv_)->TransposeChars(*bv_);
+		if (TEXT(bv_)->inset_owner)
+			bv_->updateInset(TEXT(bv_)->inset_owner, true);
+		update(TEXT(bv_), BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
+		break;
 		
+					  
 	case LFUN_INSERT_LABEL:
 		MenuInsertLabel(bv_, argument);
 		break;

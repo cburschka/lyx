@@ -26,6 +26,7 @@
 
 using std::count;
 using std::transform;
+
 #ifndef CXX_GLOBAL_CSTD
 using std::tolower;
 using std::toupper;
@@ -193,38 +194,36 @@ char uppercase(char c)
 }
 
 
+namespace {
+
+// since we cannot use std::tolower and std::toupper directly in the
+// calls to std::transform yet, we use these helper clases. (Lgb)
+
+struct local_lowercase {
+	char operator()(char c) const {
+		return tolower(c);
+	}
+};
+	
+struct local_uppercase {
+	char operator()(char c) const {
+		return toupper(c);
+	}
+};
+
+} // end of anon namespace
+
 string const lowercase(string const & a)
 {
 	string tmp(a);
-#if 1
-	string::iterator result = tmp.begin();
-	string::iterator end = tmp.end();
-	for (string::iterator first = tmp.begin();
-	     first != end; ++first, ++result) {
-		*result = lowercase(*first);
-	}
-#else
-	// We want to use this one. (Lgb)
-	transform(tmp.begin(), tmp.end(), tmp.begin(), lowercase);
-#endif
+	transform(tmp.begin(), tmp.end(), tmp.begin(), local_lowercase());
 	return tmp;
 }
-
 
 string const uppercase(string const & a)
 {
 	string tmp(a);
-#if 1
-	string::iterator result = tmp.begin();
-	string::iterator end = tmp.end();
-	for (string::iterator first = tmp.begin();
-	     first != end; ++first, ++result) {
-		*result = uppercase(*first);
-	}
-#else
-	// We want to use this one. (Lgb)
-	transform(tmp.begin(), tmp.end(), tmp.begin(), uppercase);
-#endif
+	transform(tmp.begin(), tmp.end(), tmp.begin(), local_uppercase());
 	return tmp;
 }
 
@@ -473,7 +472,7 @@ string const subst(string const & a, char oldchar, char newchar)
 
 
 string const subst(string const & a,
-	     char const * oldstr, string const & newstr)
+		   char const * oldstr, string const & newstr)
 {
 	lyx::Assert(oldstr);
 	

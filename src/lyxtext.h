@@ -329,7 +329,8 @@ public:
 	};
 	/// Change the case of the word at cursor position.
 	void ChangeWordCase(BufferView *, TextCase action);
-
+	void TransposeChars(BufferView const &);
+	
 	/** returns a printed row in a pixmap. The y value is needed to
 	  decide, wether it is selected text or not. This is a strange
 	  solution but faster.

@@ -439,6 +439,7 @@ void LyXAction::init()
 		{ LFUN_MESSAGE_POP, "message-pop",
 		  N_("Pop old message and show it in the minibuffer"),
 		  NoBuffer },
+		{ LFUN_TRANSPOSE_CHARS, "chars-transpose", "", Noop },
 		{ LFUN_NOACTION, "", "", Noop }
 	};
 

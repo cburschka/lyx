@@ -1,3 +1,10 @@
+2001-04-25  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* lstrings.C : add two helper structs, local_lowercase and
+	local_uppercase. 
+	(lowercase): change to use std::transform
+	(uppercase): change to use std::transform
+
 2001-04-25  Allan Rae  <rae@lyx.org>
 
 	* lyxstring.C : Assert got moved and Lars missed a few.

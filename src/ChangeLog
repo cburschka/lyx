@@ -1,3 +1,15 @@
+2001-04-25  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* minibuffer.C: include <iostream>
+
+	* BufferView_pimpl.C: implement LFUN_TRANSPOSE_CHARS
+
+	* LyXAction.C (init): add LFUN_TRANSPOSE_CHARS
+
+	* commandtags.h: add LFUN_TRANSPOSE_CHARS
+
+	* text.[Ch] (TransposeChars): new method
+
 2001-04-24  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* call message directly through LyXView instead of through LyXFunc

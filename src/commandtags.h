@@ -283,6 +283,7 @@ enum kb_action {
 	LFUN_MESSAGE,                   // Lgb 20010408
 	LFUN_MESSAGE_PUSH,              // Lgb 20010410
 	LFUN_MESSAGE_POP,               // Lgb 20010410
+	LFUN_TRANSPOSE_CHARS,           // Lgb 20010425
 	LFUN_LASTACTION  /* this marks the end of the table */
 };
 

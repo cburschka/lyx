@@ -12,6 +12,8 @@
 
 #include <config.h>
 
+#include <iostream>
+
 #ifdef __GNUG__
 #pragma implementation
 #endif
