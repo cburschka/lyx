@@ -23,6 +23,7 @@
 #include "lyxfunc.h"
 #include "refdlg.h"
 #include "debug.h"
+#include "insets/insetref.h"
 
 #include <qtooltip.h>
 
@@ -30,7 +31,7 @@ using std::endl;
 
 FormRef::FormRef(LyXView *v, Dialogs *d)
 	: dialog_(0), lv_(v), d_(d), inset_(0), h_(0), u_(0), ih_(0),
-	sort(0), gotowhere(GOTOREF), type(REF), refs(0)
+	sort(0), gotowhere(GOTOREF), refs(0)
 {
 	// let the dialog be shown
 	// This is a permanent connection so we won't bother
@@ -172,22 +173,8 @@ void FormRef::update(bool switched)
 	dialog_->reference->setText(params.getContents().c_str());
 	dialog_->refname->setText(params.getOptions().c_str());
 
-	if (params.getCmdName()=="pageref") {
-		type = PAGEREF;
-		dialog_->type->setCurrentItem(1);
-	} else if (params.getCmdName()=="vref") {
-		type = VREF;
-		dialog_->type->setCurrentItem(2);
-	} else if (params.getCmdName()=="vpageref") {
-		type = VPAGEREF;
-		dialog_->type->setCurrentItem(3);
-	} else if (params.getCmdName()=="prettyref") {
-		type = PRETTYREF;
-		dialog_->type->setCurrentItem(4);
-	} else {
-		type = REF;
-		dialog_->type->setCurrentItem(0);
-	}
+	if (inset_)
+		dialog_->type->setCurrentItem(InsetRef::getType(params.getCmdName()));
 
 	dialog_->buttonGoto->setText(_("&Goto reference"));
 	QToolTip::remove(dialog_->buttonGoto); 
@@ -221,26 +208,7 @@ void FormRef::apply()
 	if (!lv_->view()->available())
 		return;
 
-	switch (dialog_->type->currentItem()) {
-		case 0:
-			params.setCmdName("ref");
-			break;
-		case 1:
-			params.setCmdName("pageref");
-			break;
-		case 2:
-			params.setCmdName("vref");
-			break;
-		case 3:
-			params.setCmdName("vpageref");
-			break;
-		case 4:
-			params.setCmdName("prettyref");
-			break;
-		default:
-			lyxerr[Debug::GUI] << "Unknown Ref Type" << endl;
-	}
-
+	params.setCmdName(InsetRef::getName(dialog_->type->currentItem()));
 	params.setContents(dialog_->reference->text());
 	params.setOptions(dialog_->refname->text());
 

@@ -15,8 +15,9 @@
 
 #include <config.h>
 #include "refdlg.h"
-
 #include "dlg/helpers.h"
+#include "insets/insetref.h"
+
 
 #ifdef CXX_WORKING_NAMESPACES
 using kde_helpers::setSizeHint;
@@ -65,11 +66,8 @@ RefDialog::RefDialog(FormRef *form, QWidget *parent, const char *name, bool, WFl
 	sort->setMaximumSize(sort->sizeHint());
  
 	type = new QComboBox(this);
-	type->insertItem(_("Reference"));
-	type->insertItem(_("Page number"));
-	type->insertItem(_("Ref on page xxx"));
-	type->insertItem(_("on page xxx"));
-	type->insertItem(_("Pretty reference"));
+	for (int i = 0; !InsetRef::types[i].latex_name.empty(); ++i)
+		type->insertItem(_(InsetRef::types[i].gui_name.c_str()));
 	setSizeHint(type);
 	 
 	labeltype = new QLabel(this); 

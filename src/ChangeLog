@@ -1,3 +1,7 @@
+2001-01-26  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* vspace.C (isValidLength): Fix for empty input string.
+
 2001-01-26  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* LyXAction.C (init): change description of LFUN_FIGURE to

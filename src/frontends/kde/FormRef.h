@@ -52,10 +52,6 @@ public:
 	void close();
  
 private: 
-	enum Type {
-		REF, PAGEREF, VREF, VPAGEREF, PRETTYREF
-	}; 
-
 	enum GotoType {
 		GOTOREF, GOTOBACK
 	};
@@ -102,9 +98,6 @@ private:
  
 	/// where to go
 	GotoType gotowhere;
- 
-	/// current type
-	Type type;
  
 	/// available references
 	std::vector< string > refs;

@@ -1,3 +1,15 @@
+2001-01-26  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* dlg/lengthentry.C: Move the '#include <config.h>' to the top
+	(fix compilation with lyxstring).
+
+	* FormPrint.h: Fix for namespace-less compilers. 
+
+	* refdlg.C (RefDialog): Use InsetRef::types.
+
+	* FormRef.C (update, apply): Use InsetRef::getName and
+	InsetRef::getType.
+	
 2000-01-24  John Levon  <moz@compsoc.man.ac.uk>
 
 	* FormParagraph.C: update readonly in correct

@@ -1046,7 +1046,7 @@ lyxstring::size_type lyxstring::rfind(value_type c, size_type i) const
 lyxstring::size_type lyxstring::find_first_of(lyxstring const & a,
 					      size_type i) const
 {
-	Assert(i < rep->sz); // OURS!
+	Assert(i <= rep->sz); // OURS!
 	TestlyxstringInvariant(this);
 
 	for (size_type t = i; t < rep->sz; ++t) {
@@ -1060,7 +1060,7 @@ lyxstring::size_type lyxstring::find_first_of(value_type const * ptr,
 					      size_type i,
 					      size_type n) const
 {
-	Assert(ptr && i < rep->sz); // OURS!
+	Assert(ptr && i <= rep->sz); // OURS!
 	TestlyxstringInvariant(this);
 	if (!n) return npos;
 
@@ -1074,7 +1074,7 @@ lyxstring::size_type lyxstring::find_first_of(value_type const * ptr,
 lyxstring::size_type lyxstring::find_first_of(value_type const * ptr,
 					      size_type i) const
 {
-	Assert(ptr && i < rep->sz); // OURS!
+	Assert(ptr && i <= rep->sz); // OURS!
 	TestlyxstringInvariant(this);
 
 	for (size_type t = i; t < rep->sz; ++t) {
@@ -1086,7 +1086,7 @@ lyxstring::size_type lyxstring::find_first_of(value_type const * ptr,
 
 lyxstring::size_type lyxstring::find_first_of(value_type c, size_type i) const
 {
-	Assert(i < rep->sz); // OURS!
+	Assert(i <= rep->sz); // OURS!
 	TestlyxstringInvariant(this);
 
 	for (size_type t = i; t < rep->sz; ++t) {
@@ -1158,7 +1158,7 @@ lyxstring::size_type lyxstring::find_first_not_of(lyxstring const & a,
 	TestlyxstringInvariant(this);
 
 	if (!rep->sz) return npos;
-	Assert(i < rep->sz);
+	Assert(i <= rep->sz);
 	for (size_type t = i; t < rep->sz; ++t) {
 		if (a.find(rep->s[t]) == npos) return t;
 	}
@@ -1170,7 +1170,7 @@ lyxstring::size_type lyxstring::find_first_not_of(value_type const * ptr,
 						  size_type i,
 						  size_type n) const
 {
-	Assert(ptr && i < rep->sz); // OURS!
+	Assert(ptr && i <= rep->sz); // OURS!
 	TestlyxstringInvariant(this);
 
 	if (!n) return (i < rep->sz) ? i : npos;
@@ -1184,7 +1184,7 @@ lyxstring::size_type lyxstring::find_first_not_of(value_type const * ptr,
 lyxstring::size_type lyxstring::find_first_not_of(value_type const * ptr,
 						  size_type i) const
 {
-	Assert(ptr && i < rep->sz); // OURS!
+	Assert(ptr && i <= rep->sz); // OURS!
 	TestlyxstringInvariant(this);
 
 	for (size_type t = i; t < rep->sz; ++t) {
@@ -1198,7 +1198,7 @@ lyxstring::size_type lyxstring::find_first_not_of(value_type c,
 						  size_type i) const
 {
 	if (!rep->sz) return npos;
-	Assert(i < rep->sz); // OURS!
+	Assert(i <= rep->sz); // OURS!
 	TestlyxstringInvariant(this);
 
 	for (size_type t = i; t < rep->sz; ++t) {
@@ -1293,7 +1293,7 @@ lyxstring & lyxstring::replace(size_type i, size_type n, lyxstring const & x,
 lyxstring & lyxstring::replace(size_type i, size_type n,
 			       value_type const * p, size_type n2)
 {
-	Assert(p && i < rep->sz); // OURS!
+	Assert(p && i <= rep->sz); // OURS!
 	TestlyxstringInvariant(this);
 
 	rep = rep->get_own_copy();
@@ -1304,7 +1304,7 @@ lyxstring & lyxstring::replace(size_type i, size_type n,
 
 lyxstring & lyxstring::replace(size_type i, size_type n, value_type const * p)
 {
-	Assert(p && i < rep->sz); // OURS!
+	Assert(p && i <= rep->sz); // OURS!
 	TestlyxstringInvariant(this);
 
 	return replace(i, min(n, rep->sz), p, (!p) ? 0 : strlen(p));

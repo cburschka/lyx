@@ -4,6 +4,8 @@
  * John Levon, moz@compsoc.man.ac.uk
  */
 
+#include <config.h>
+
 #include "lengthentry.h"
 
 #include <qlayout.h>
@@ -11,8 +13,6 @@
 #include <qcombobox.h>
 
 #include "support/lstrings.h"
-
-#include <config.h>
 #include <gettext.h>
 
 #include "debug.h"
@@ -125,7 +125,7 @@ bool LengthEntry::setFromLengthStr(const string & str)
 	string val;
 
 	lyxerr[Debug::GUI] << "setFromLengthStr: " << str << endl;
-	
+
 	string::size_type i = str.find_first_not_of("0123456789.,");
 
 	setValue(strToDbl(str.substr(0, i)));

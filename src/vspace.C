@@ -249,6 +249,8 @@ bool isValidLength(string const & data, LyXLength * result)
 	/// The parser may seem overkill for lengths without 
 	/// glue, but since we already have it, using it is
 	/// easier than writing something from scratch.
+	if (data.empty())
+		return true;
 
         string   buffer(data);
 	int       pattern_index = 0;
