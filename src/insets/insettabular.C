@@ -2753,14 +2753,19 @@ bool InsetTabular::searchForward(BufferView * bv, string const & str,
 			return true;
 		}
 	}
-	do {
-		InsetText * inset = tabular->GetCellInset(actcell);
+	InsetText * inset = tabular->GetCellInset(actcell);
+	if (inset->searchForward(bv, str, cs, mw)) {
+		updateLocal(bv, FULL, false);
+		return true;
+	}
+	while (!tabular->IsLastCell(actcell)) {
+		++actcell;
+		inset = tabular->GetCellInset(actcell);
 		if (inset->searchForward(bv, str, cs, mw)) {
 			updateLocal(bv, FULL, false);
 			return true;
 		}
-		++actcell;
-	} while (!tabular->IsLastCell(actcell));
+	} 
 	return false;
 }
 

@@ -2,6 +2,7 @@
 
 	* insettabular.C (insetMotionNotify): Don't update the screen
 	if we didn't do nothing.
+	(searchForward): last cell was not checked.
 
 2002-07-25  Dekel Tsur  <dekelts@tau.ac.il>
 

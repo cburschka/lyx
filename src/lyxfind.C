@@ -85,13 +85,15 @@ int LyXReplace(BufferView * bv,
 	int replace_count = 0;
 	do {
 		text = bv->getLyXText();
-		bv->hideCursor();
-		bv->update(text, BufferView::SELECT|BufferView::FITCUR);
-		bv->toggleSelection(false);
-		text->replaceSelectionWithString(bv, replacestr);
-		text->setSelectionOverString(bv, replacestr);
-		bv->update(text, BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
-		++replace_count;
+		if (!bv->theLockingInset() || text != bv->text) {
+			bv->hideCursor();
+			bv->update(text, BufferView::SELECT|BufferView::FITCUR);
+			bv->toggleSelection(false);
+			text->replaceSelectionWithString(bv, replacestr);
+			text->setSelectionOverString(bv, replacestr);
+			bv->update(text, BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
+			++replace_count;
+		}
 		if (!once)
 			found = LyXFind(bv, searchstr, fw, casesens, matchwrd);
 	} while (!once && replaceall && found);

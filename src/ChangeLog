@@ -1,5 +1,8 @@
 2002-07-25  Juergen Vigna  <jug@sad.it>
 
+	* lyxfind.C (LyXReplace): don't replace if we don't get the
+	right LyXText.
+
 	* undo_funcs.C (createUndo): remove debugging code.
 
 2002-07-25  Dekel Tsur  <dekelts@tau.ac.il>
