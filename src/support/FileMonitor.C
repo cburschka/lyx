@@ -10,12 +10,12 @@
 
 #include <config.h>
 
-#include "FileMonitor.h"
-
-#include "frontends/Timeout.h"
-
+#include "support/FileMonitor.h"
 #include "support/FileInfo.h"
 #include "support/lyxlib.h"
+
+// FIXME Interface violation
+#include "frontends/Timeout.h"
 
 #include <boost/bind.hpp>
 #include <boost/signals/trackable.hpp>

@@ -10,11 +10,10 @@
 
 #include <config.h>
 
-#include "filename.h"
-
-#include "filetools.h"
-#include "lstrings.h"
-#include "os.h"
+#include "support/filename.h"
+#include "support/filetools.h"
+#include "support/lstrings.h"
+#include "support/os.h"
 
 #include <boost/assert.hpp>
 

@@ -10,9 +10,10 @@
 
 #include <config.h>
 
+#include "support/lyxlib.h"
+
 #include <stdlib.h>
 
-#include "support/lyxlib.h"
 
 void lyx::support::abort()
 {

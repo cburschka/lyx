@@ -17,6 +17,7 @@
 #define FORKEDCONTR_H
 
 #include <boost/shared_ptr.hpp>
+
 #include <csignal>
 //#include <sys/types.h> // needed for pid_t
 #include <list>

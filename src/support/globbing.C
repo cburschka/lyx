@@ -10,12 +10,12 @@
 
 #include <config.h>
 
-#include "globbing.h"
+#include "support/globbing.h"
+#include "support/lstrings.h"
+#include "support/path.h"
 
+// FIXME Interface violation
 #include "gettext.h"
-
-#include "lstrings.h"
-#include "path.h"
 
 #include <boost/regex.hpp>
 #include <boost/tokenizer.hpp>

@@ -21,20 +21,21 @@
 
 #include <config.h>
 
-#include "debug.h"
 #include "support/tostr.h"
 #include "support/systemcall.h"
+#include "support/filetools.h"
+#include "support/lstrings.h"
+#include "support/FileInfo.h"
+#include "support/forkedcontr.h"
+#include "support/path.h"
+#include "support/path_defines.h"
+#include "support/lyxlib.h"
+#include "support/os.h"
 
-#include "filetools.h"
-//#include "format.h"
-#include "lstrings.h"
-#include "FileInfo.h"
-#include "forkedcontr.h"
-#include "path.h"
-#include "path_defines.h"
+// FIXME Interface violation
 #include "gettext.h"
-#include "lyxlib.h"
-#include "os.h"
+#include "debug.h"
+//#include "format.h"
 
 #include <boost/assert.hpp>
 #include <boost/regex.hpp>

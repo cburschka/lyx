@@ -10,12 +10,12 @@
 
 #include <config.h>
 
+#include "support/lyxlib.h"
+
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <fcntl.h>
 #include <unistd.h>
-
-#include "lyxlib.h"
 
 int lyx::support::mkdir(std::string const & pathname, unsigned long int mode)
 {

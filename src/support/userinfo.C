@@ -10,8 +10,8 @@
 
 #include <config.h>
 
-#include "userinfo.h"
-#include "filetools.h"
+#include "support/userinfo.h"
+#include "support/filetools.h"
 
 #include <boost/assert.hpp>
 

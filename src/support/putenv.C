@@ -11,7 +11,7 @@
 
 #include <config.h>
 
-#include "lyxlib.h"
+#include "support/lyxlib.h"
 
 #include <cstdlib>
 #include <string>

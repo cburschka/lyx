@@ -12,9 +12,10 @@
 
 #include <config.h>
 
-#include "os.h"
+#include "support/os.h"
 #include "support/filetools.h"
 #include "support/lstrings.h"
+
 #include "debug.h"
 
 #include <windows.h>

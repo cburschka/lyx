@@ -10,7 +10,7 @@
 
 #include <config.h>
 
-#include "FileInfo.h"
+#include "support/FileInfo.h"
 
 #include <boost/assert.hpp>
 

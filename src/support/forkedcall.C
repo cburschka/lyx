@@ -24,13 +24,15 @@
 
 #include <config.h>
 
-#include "forkedcall.h"
-#include "forkedcontr.h"
-#include "lstrings.h"
-#include "lyxlib.h"
-#include "filetools.h"
-#include "os.h"
+#include "support/forkedcall.h"
+#include "support/forkedcontr.h"
+#include "support/lstrings.h"
+#include "support/lyxlib.h"
+#include "support/filetools.h"
+#include "support/os.h"
+
 #include "debug.h"
+
 #include "frontends/Timeout.h"
 
 #include <boost/bind.hpp>

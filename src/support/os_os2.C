@@ -12,7 +12,7 @@
 
 #include <config.h>
 
-#include "os.h"
+#include "support/os.h"
 #include "support/filetools.h"
 #define INCL_DOSFILEMGR
 #define INCL_DOSMODULEMGR

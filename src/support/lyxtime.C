@@ -10,7 +10,7 @@
 
 #include <config.h>
 
-#include "lyxtime.h"
+#include "support/lyxtime.h"
 
 namespace lyx {
 

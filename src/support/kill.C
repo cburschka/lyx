@@ -10,7 +10,7 @@
 
 #include <config.h>
 
-#include "lyxlib.h"
+#include "support/lyxlib.h"
 
 #include <sys/types.h>
 #include <csignal>

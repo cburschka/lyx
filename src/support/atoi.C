@@ -11,9 +11,9 @@
 
 #include <config.h>
 
-#include <cstdlib>
+#include "support/lyxlib.h"
 
-#include "lyxlib.h"
+#include <cstdlib>
 
 #ifndef CXX_GLOBAL_CSTD
 using std::atoi;

@@ -10,16 +10,17 @@
 
 #include <config.h>
 
-#include <cstdlib>
-#include <unistd.h>
-
 #include "support/lyxlib.h"
 #include "support/filetools.h"
 #include "support/tostr.h"
+#include "support/os.h"
+
 #include "debug.h"
-#include "os.h"
 
 #include <boost/scoped_array.hpp>
+
+#include <cstdlib>
+#include <unistd.h>
 
 using boost::scoped_array;
 

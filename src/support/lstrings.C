@@ -11,20 +11,20 @@
 
 #include <config.h>
 
-#include "lstrings.h"
+#include "support/lstrings.h"
+#include "support/lyxlib.h"
+#include "support/tostr.h"
+
 #include "debug.h"
-#include "lyxlib.h"
-#include "tostr.h"
 
 #include <boost/tokenizer.hpp>
 #include <boost/assert.hpp>
 #include <boost/format.hpp>
 
-#include <algorithm>
-
 #include <cctype>
 #include <cstdlib>
 
+#include <algorithm>
 #include <sstream>
 
 using std::transform;

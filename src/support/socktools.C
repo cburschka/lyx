@@ -10,9 +10,10 @@
 
 #include <config.h>
 
-#include "socktools.h"
+#include "support/socktools.h"
+#include "support/lyxlib.h"
+
 #include "debug.h"
-#include "lyxlib.h"
 
 #include <sys/socket.h>
 #include <sys/un.h>

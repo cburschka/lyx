@@ -14,8 +14,8 @@
 
 #include <config.h>
 
-#include "forkedcontr.h"
-#include "forkedcall.h"
+#include "support/forkedcontr.h"
+#include "support/forkedcall.h"
 
 #include "debug.h"
 

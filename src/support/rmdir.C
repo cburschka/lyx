@@ -10,9 +10,9 @@
 
 #include <config.h>
 
-#include <unistd.h>
+#include "support/lyxlib.h"
 
-#include "lyxlib.h"
+#include <unistd.h>
 
 int lyx::support::rmdir(std::string const & dir)
 {

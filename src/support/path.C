@@ -13,8 +13,8 @@
 // Needed to prevent the definition of the unnamed_Path macro in the header file.
 #define PATH_C
 
-#include "path.h"
-#include "lyxlib.h"
+#include "support/path.h"
+#include "support/lyxlib.h"
 
 
 using std::string;

@@ -13,8 +13,8 @@
 
 #include <config.h>
 
-#include "systemcall.h"
-#include "os.h"
+#include "support/systemcall.h"
+#include "support/os.h"
 
 #include <cstdlib>
 

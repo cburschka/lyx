@@ -10,12 +10,12 @@
 
 #include <config.h>
 
-#include <cerrno>
-#include <unistd.h>
-
 #include "support/lyxlib.h"
 
 #include <boost/scoped_array.hpp>
+
+#include <cerrno>
+#include <unistd.h>
 
 using boost::scoped_array;
 

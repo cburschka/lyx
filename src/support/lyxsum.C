@@ -11,13 +11,14 @@
 #include <config.h>
 
 #include "support/lyxlib.h"
+
 #include "debug.h"
 
-#include <algorithm>
 #include <boost/crc.hpp>
 
-using std::endl;
+#include <algorithm>
 
+using std::endl;
 using std::string;
 
 

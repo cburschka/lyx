@@ -10,9 +10,9 @@
 
 #include <config.h>
 
-#include <cstdio>
-
 #include "support/lyxlib.h"
+
+#include <cstdio>
 
 
 using std::string;
