@@ -19,7 +19,8 @@
 #if FL_VERSION < 1 && (FL_REVISION < 89 || (FL_REVISION == 89 && FL_FIXLEVEL < 5))
 #include "frontends/xforms/lyxlookup.h"
 #endif
-#include "minibuffer.h"
+#include "frontends/MiniBuffer.h"
+#include "frontends/xforms/XMiniBuffer.h"
 #include "debug.h"
 #include "intl.h"
 #include "lyxrc.h"
@@ -62,7 +63,7 @@ XFormsView::XFormsView(int width, int height)
 	fl_set_form_atclose(getForm(), C_XFormsView_atCloseMainFormCB, 0);
 
 	// Connect the minibuffer signals
-	minibuffer_->stringReady.connect(boost::bind(&LyXFunc::miniDispatch, getLyXFunc(), _1));
+	minibuffer_->inputReady.connect(boost::bind(&LyXFunc::miniDispatch, getLyXFunc(), _1));
 	minibuffer_->timeout.connect(boost::bind(&LyXFunc::initMiniBuffer, getLyXFunc()));
 
 	// Make sure the buttons are disabled if needed.
@@ -75,10 +76,13 @@ XFormsView::~XFormsView() {}
 
 
 /// Redraw the main form.
-void XFormsView::redraw() {
+void XFormsView::redraw()
+{
 	lyxerr[Debug::INFO] << "XFormsView::redraw()" << endl;
 	fl_redraw_form(getForm());
-	getMiniBuffer()->redraw();
+	// This is dangerous, but we know it is safe
+	XMiniBuffer * m = static_cast<XMiniBuffer *>(getMiniBuffer());
+	m->redraw();
 }
 
 
@@ -99,23 +103,23 @@ int XFormsView::atCloseMainFormCB(FL_FORM *, void *)
 void XFormsView::show(int x, int y, string const & title)
 {
 	FL_FORM * form = getForm();
- 
+
 	fl_set_form_minsize(form, form->w, form->h);
- 
+
 	int placement = FL_PLACE_CENTER | FL_FREE_SIZE;
- 
+
 	// Did we get a valid geometry position ?
 	if (x >= 0 && y >= 0) {
 		fl_set_form_position(form, x, y);
 		placement = FL_PLACE_POSITION;
 	}
- 
+
 	fl_show_form(form, placement, FL_FULLBORDER, title.c_str());
- 
+
 	getLyXFunc()->initMiniBuffer();
 #if FL_VERSION < 1 && (FL_REVISION < 89 || (FL_REVISION == 89 && FL_FIXLEVEL < 5))
 	InitLyXLookup(fl_get_display(), form_->window);
-#endif 
+#endif
 }
 
 
@@ -150,7 +154,7 @@ void XFormsView::create_form_form_main(int width, int height)
 		width - 3 * air, workheight));
 	::current_view = bufferview_.get();
 
-	minibuffer_.reset(new MiniBuffer(this, air, height - (25 + air),
+	minibuffer_.reset(new XMiniBuffer(this, air, height - (25 + air),
 		width - (2 * air), 25));
 
 	// FIXME: why do this in xforms/ ?
@@ -177,7 +181,8 @@ void XFormsView::create_form_form_main(int width, int height)
 
 	fl_end_form();
 
-	minibuffer_->dd_init();
+	// This is dangerous, but we know it is safe in this situation
+	static_cast<XMiniBuffer *>(minibuffer_.get())->dd_init();
 }
 
 

@@ -172,8 +172,6 @@ lyx_SOURCES = \
 	lyxvc.C \
 	lyxvc.h \
 	main.C \
-	minibuffer.C \
-	minibuffer.h \
 	paragraph.C \
 	paragraph.h \
 	paragraph_pimpl.C \

@@ -14,7 +14,7 @@
 #endif
 
 #include "LyXView.h"
-#include "minibuffer.h"
+#include "MiniBuffer.h"
 #include "debug.h"
 #include "intl.h"
 #include "lyxrc.h"

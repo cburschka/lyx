@@ -30,12 +30,15 @@ libfrontends_la_SOURCES = \
 	LyXView.h \
 	Menubar.C \
 	Menubar.h \
+	MiniBuffer.C \
+	MiniBuffer.h \
 	Painter.C \
 	Painter.h \
 	Timeout.C \
 	Timeout.h \
 	Toolbar.C \
 	Toolbar.h \
+	WorkArea.C \
 	WorkArea.h \
 	WorkAreaFactory.h \
 	font_loader.h \

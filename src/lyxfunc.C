@@ -34,7 +34,7 @@
 #include "trans_mgr.h"
 #include "layout.h"
 #include "bufferview_funcs.h"
-#include "minibuffer.h"
+#include "frontends/MiniBuffer.h"
 #include "vspace.h"
 #include "frontends/LyXView.h"
 #include "FloatList.h"
@@ -1053,8 +1053,7 @@ string const LyXFunc::dispatch(kb_action action, string argument)
 		transform(lyxaction.func_begin(), lyxaction.func_end(),
 			  back_inserter(allCmds), lyx::firster());
 		static vector<string> hist;
-		owner->getMiniBuffer()->getString(MiniBuffer::spaces,
-						  allCmds, hist);
+		owner->getMiniBuffer()->prepareForInput(allCmds, hist);
 	}
 	break;
 

@@ -163,6 +163,8 @@ libxforms_la_SOURCES = \
 	XFormsView.h \
 	XLyXKeySym.C \
 	XLyXKeySym.h \
+	XMiniBuffer.C \
+	XMiniBuffer.h \
 	XPainter.C \
 	XPainter.h \
 	XWorkArea.h \
