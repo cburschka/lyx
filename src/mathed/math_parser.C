@@ -652,7 +652,9 @@ void Parser::parse1(MathGridInset & grid, unsigned flags,
 			bool up = (t.cat() == catSuper);
 			// we need no new script inset if the last thing was a scriptinset,
 			// which has that script already not the same script already
-			if (cell->size() && cell->back()->asScriptInset() &&
+			if (!cell->size())
+				cell->push_back(MathAtom(new MathScriptInset(up)));
+			else if (cell->back()->asScriptInset() &&
 			    !cell->back()->asScriptInset()->has(up))
 				cell->back()->asScriptInset()->ensure(up);
 			else if (cell->back()->asScriptInset())
