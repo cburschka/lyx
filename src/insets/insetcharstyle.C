@@ -102,8 +102,13 @@ void InsetCharStyle::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	LyXFont tmpfont = mi.base.font;
 	getDrawFont(mi.base.font);
+	mi.base.textwidth -= 2 * TEXT_TO_INSET_OFFSET;
 	InsetText::metrics(mi, dim);
 	mi.base.font = tmpfont;
+	dim.asc += TEXT_TO_INSET_OFFSET;
+	dim.des += TEXT_TO_INSET_OFFSET;
+	dim.wid += 2 * TEXT_TO_INSET_OFFSET;
+	mi.base.textwidth += 2 * TEXT_TO_INSET_OFFSET;
 	dim_ = dim;
 	if (has_label_)
 		dim_.des += ascent();
@@ -124,9 +129,9 @@ void InsetCharStyle::draw(PainterInfo & pi, int x, int y) const
 		desc -= ascent();
 
 	pi.pain.line(x, y + desc - 4, x, y + desc, params_.labelfont.color());
-	pi.pain.line(x, y + desc, x + dim_.wid - 2, y + desc,
+	pi.pain.line(x, y + desc, x + dim_.wid - 3, y + desc,
 		params_.labelfont.color());
-	pi.pain.line(x + dim_.wid - 2, y + desc, x + dim_.wid - 2, y + desc - 4,
+	pi.pain.line(x + dim_.wid - 3, y + desc, x + dim_.wid - 3, y + desc - 4,
 		params_.labelfont.color());
 
 	// the name of the charstyle. Can be toggled.
@@ -149,9 +154,9 @@ void InsetCharStyle::draw(PainterInfo & pi, int x, int y) const
 		y -= ascent();
 		pi.pain.line(x, y + 4, x, y, params_.labelfont.color());
 		pi.pain.line(x + 4, y, x, y, params_.labelfont.color());
-		pi.pain.line(x + dim_.wid - 2, y + 4, x + dim_.wid - 2, y,
+		pi.pain.line(x + dim_.wid - 3, y + 4, x + dim_.wid - 3, y,
 			params_.labelfont.color());
-		pi.pain.line(x + dim_.wid - 6, y, x + dim_.wid - 2, y,
+		pi.pain.line(x + dim_.wid - 7, y, x + dim_.wid - 3, y,
 			params_.labelfont.color());
 	}
 }

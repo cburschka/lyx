@@ -213,7 +213,7 @@ void InsetText::drawSelection(PainterInfo & pi, int x, int y) const
 
 void InsetText::drawFrame(Painter & pain, int x, int y) const
 {
-	int const w = text_.width() + border_;
+	int const w = text_.width() + 2 * border_;
 	int const a = text_.ascent() + border_;
 	int const h = a + text_.descent() + border_;
 	pain.rectangle(x, y - a, w, h, frameColor());

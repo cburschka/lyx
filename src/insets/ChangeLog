@@ -1,3 +1,8 @@
+2005-02-22  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* insetcharstyle.C: add TEXT_TO_INSET_OFFSET and adjust metrics.
+	* insettext.C: adjust metrics
+
 2005-02-20  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* insettext.C: include boost/current_function.hpp (needed when
