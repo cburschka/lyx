@@ -31,6 +31,7 @@ src/insets/form_graphics.C
 src/insets/form_url.C
 src/insets/insetbib.C
 src/insets/inset.C
+src/insets/inseteditor.C
 src/insets/inseterror.C
 src/insets/insetert.C
 src/insets/insetfoot.C
@@ -90,5 +91,6 @@ src/support/path.C
 src/support/path.h
 src/table.C
 src/TableLayout.C
+src/tabular.C
 src/text2.C
 src/text.C

@@ -11,7 +11,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.0.0pre2\n"
-"POT-Creation-Date: 2000-01-20 02:44+0100\n"
+"POT-Creation-Date: 2000-04-26 17:59+0200\n"
 "PO-Revision-Date: 2000-01-20 02:57+01:00\n"
 "Last-Translator:  Francesc Burrull i Mestres <fburrull@mat.upc.es>\n"
 "Language-Team: Catalan <ca@li.org>\n"
@@ -19,170 +19,150 @@ msgstr ""
 "Content-Type: text/plain; charset=ISO-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#. sgml2lyx failed
-#: src/buffer.C:221 src/buffer.C:231 src/buffer.C:3561 src/bufferlist.C:516
-#: src/bufferlist.C:546 src/lyx_cb.C:467 src/lyx_cb.C:812 src/lyx_cb.C:845
-#: src/lyx_sendfax_main.C:262 src/menus.C:1665
-msgid "Error!"
-msgstr "Error!"
-
-#: src/buffer.C:222
-msgid "Specified file is unreadable: "
-msgstr "El fitxer especificat és ilegible"
-
-#: src/buffer.C:232
-msgid "Cannot open specified file: "
-msgstr "Impossible obrir el fitxer especificat: "
-
 #. if the textclass wasn't loaded properly
 #. we need to either substitute another
 #. or stop loading the file.
 #. I can substitute but I don't see how I can
 #. stop loading... ideas??  ARRae980418
-#: src/buffer.C:409
+#: src/buffer.C:401
 msgid "Textclass Loading Error!"
 msgstr "Error en la càrrega de la classe de document"
 
-#: src/buffer.C:410
+#: src/buffer.C:402
 msgid "Can't load textclass "
 msgstr "Impossible de carregar la classe de document"
 
-#: src/buffer.C:412
+#: src/buffer.C:404
 msgid "-- substituting default"
 msgstr "-- valor per defecte substituit "
 
-#: src/buffer.C:1040
-msgid "Warning: Ignoring Old Inset"
-msgstr "Avís: Ignorant Inset vell"
-
-#: src/buffer.C:1121
+#: src/buffer.C:1074
 #, c-format
 msgid "Warning: need lyxformat %.2f but found %.2f\n"
 msgstr "Avís: Cal el format de lyx %.2f i s'ha trobat el %.2f\n"
 
-#: src/buffer.C:1125
+#: src/buffer.C:1078
 #, c-format
 msgid "ERROR: need lyxformat %.2f but found %.2f\n"
 msgstr "ERROR: Cal el format de lyx %.2f i s'ha trobat el %.2f\n"
 
-#: src/buffer.C:1143
+#: src/buffer.C:1089
 msgid "Warning!"
 msgstr "Avís!"
 
-#: src/buffer.C:1144
+#: src/buffer.C:1090
 msgid "Reading of document is not complete"
 msgstr "Lectura incompleta del document"
 
-#: src/buffer.C:1145
+#: src/buffer.C:1091
 msgid "Maybe the document is truncated"
 msgstr "Potser el document està truncat"
 
 #. "\\lyxformat" not found
-#: src/buffer.C:1151 src/buffer.C:1158 src/buffer.C:1161
+#: src/buffer.C:1097 src/buffer.C:1104 src/buffer.C:1107
 msgid "ERROR!"
 msgstr "ERROR!"
 
-#: src/buffer.C:1152
+#: src/buffer.C:1098
 msgid "Old LyX file format found. Use LyX 0.10.x to read this!"
 msgstr ""
 "S'ha trobat un format de fitxers LyX antic. Cal que utilitzeu LyX 0.10.7"
 
-#: src/buffer.C:1158
+#: src/buffer.C:1104
 msgid "Not a LyX file!"
 msgstr "No és un fitxer LyX"
 
-#: src/buffer.C:1161
+#: src/buffer.C:1107
 msgid "Unable to read file!"
 msgstr "Impossible llegir el fitxer"
 
-#: src/buffer.C:1177 src/buffer.C:1180
+#: src/buffer.C:1187
+msgid "Could not delete auto-save file!"
+msgstr "Impossible esborrar el fitxer de auto-salvat!"
+
+#: src/buffer.C:1213 src/buffer.C:1216
 msgid "Error! Document is read-only: "
 msgstr "Error! Document de només lectura"
 
-#: src/buffer.C:1190 src/buffer.C:1193
+#: src/buffer.C:1226 src/buffer.C:1229
 msgid "Error! Cannot write file: "
 msgstr "Error! Impossible escriure el fitxer: "
 
-#: src/buffer.C:1201 src/buffer.C:1204
+#: src/buffer.C:1237 src/buffer.C:1240
 msgid "Error! Cannot open file: "
 msgstr "Error! Impossible obrir el fitxer: "
 
-#: src/buffer.C:1250
+#: src/buffer.C:1286
 msgid "Error: Cannot write file:"
 msgstr "Error! Impossible escriure el fitxer"
 
-#: src/buffer.C:1356
-msgid "Error: Cannot open temporary file:"
-msgstr "Error! Impossible obrir el fitxer temporal"
-
-#: src/buffer.C:1576
+#: src/buffer.C:1617
 msgid "Error: Cannot open file: "
 msgstr "Error! Impossible obrir el fitxer: "
 
-#: src/buffer.C:2133 src/buffer.C:2719 src/buffer.C:3480 src/buffer.C:3502
-#: src/paragraph.C:3588
+#: src/buffer.C:2211 src/buffer.C:2813 src/buffer.C:3475
 msgid "LYX_ERROR:"
 msgstr "ERROR LYX:"
 
-#: src/buffer.C:2133 src/buffer.C:2719
+#: src/buffer.C:2211 src/buffer.C:2813
 msgid "Cannot write file"
 msgstr "Impossible escriure el fitxer"
 
-#: src/buffer.C:2205 src/buffer.C:2798
+#: src/buffer.C:2284 src/buffer.C:2893
 msgid "Error : Wrong depth for LatexType Command.\n"
 msgstr "Error : Profunditat errònia per la comanda LatexType\n"
 
 #. path to LaTeX file
-#: src/buffer.C:3158
+#: src/buffer.C:3215
 msgid "Running LaTeX..."
 msgstr "Executant LaTeX..."
 
-#: src/buffer.C:3177
+#: src/buffer.C:3234
 msgid "LaTeX did not work!"
 msgstr "LaTeX no ha funcionat!"
 
-#: src/buffer.C:3178 src/buffer.C:3249 src/buffer.C:3320
+#: src/buffer.C:3235 src/buffer.C:3306 src/buffer.C:3377
 msgid "Missing log file:"
 msgstr "No s'ha trobat el fitxer de registre:"
 
 #. no errors or any other things to think about so:
-#: src/buffer.C:3180 src/buffer.C:3189 src/buffer.C:3251 src/buffer.C:3260
-#: src/buffer.C:3322 src/buffer.C:3330 src/combox.C:465
+#: src/buffer.C:3237 src/buffer.C:3246 src/buffer.C:3308 src/buffer.C:3317
+#: src/buffer.C:3379 src/buffer.C:3387 src/combox.C:461
 msgid "Done"
 msgstr "Fet"
 
 #. path to Literate file
-#: src/buffer.C:3226
+#: src/buffer.C:3283
 msgid "Running Literate..."
 msgstr "Executant LaTeX..."
 
-#: src/buffer.C:3248
+#: src/buffer.C:3305
 msgid "Literate command did not work!"
 msgstr "LaTeX no ha funcionat!"
 
 #. path to Literate file
-#: src/buffer.C:3297
+#: src/buffer.C:3354
 msgid "Building Program..."
 msgstr "Construint programa..."
 
-#: src/buffer.C:3319
+#: src/buffer.C:3376
 msgid "Build did not work!"
 msgstr "LaTeX no ha funcionat!"
 
 #. path to LaTeX file
-#: src/buffer.C:3366
+#: src/buffer.C:3424
 msgid "Running chktex..."
 msgstr "Executant chktex..."
 
-#: src/buffer.C:3382
+#: src/buffer.C:3440
 msgid "chktex did not work!"
 msgstr "chktex no ha funcionat!"
 
-#: src/buffer.C:3383
+#: src/buffer.C:3441
 msgid "Could not run with file:"
 msgstr "Impossible executar amb el fitxer:"
 
-#: src/buffer.C:3481 src/buffer.C:3503 src/paragraph.C:3589
+#: src/buffer.C:3476
 msgid "Cannot open temporary file:"
 msgstr "Impossible obrir el fitxer temporal"
 
@@ -190,240 +170,336 @@ msgstr "Impossible obrir el fitxer temporal"
 msgid "Error! Can't open temporary file:"
 msgstr "Error! Impossible obrir el fitxer temporal"
 
+#: src/BufferView2.C:57 src/BufferView2.C:67 src/buffer.C:3561
+#: src/bufferlist.C:409 src/lyx_cb.C:390 src/lyx_cb.C:753 src/lyx_cb.C:780
+#: src/lyx_sendfax_main.C:264 src/menus.C:1697
+msgid "Error!"
+msgstr "Error!"
+
 #: src/buffer.C:3562
 msgid "Error executing *roff command on table"
 msgstr "Error executant *roff en la taula"
 
-#: src/buffer.C:3730 src/lyx_cb.C:3196 src/text.C:1890
-msgid "Impossible Operation!"
-msgstr "Operació Impossible"
-
-#: src/buffer.C:3731
-msgid "Cannot insert table/list in table."
-msgstr "Impossible inserir una taula o una llista dins d'una taula"
-
-#: src/buffer.C:3732 src/lyx_cb.C:3198 src/text.C:1892 src/text.C:3948
-#: src/text.C:3956 src/text.C:3971 src/text.C:3988 src/text2.C:2165
-#: src/text2.C:2175
-msgid "Sorry."
-msgstr "Ho sento."
-
-#: src/bufferlist.C:103 src/bufferlist.C:259 src/lyxvc.C:91 src/lyxvc.C:123
-#: src/lyxvc.C:153
+#: src/bufferlist.C:100 src/bufferlist.C:158 src/lyxvc.C:91 src/lyxvc.C:124
+#: src/lyxvc.C:154
 msgid "Changes in document:"
 msgstr "Canvis al document:"
 
-#: src/bufferlist.C:106 src/bufferlist.C:261
+#: src/bufferlist.C:103 src/bufferlist.C:160
 msgid "Save document?"
 msgstr "Vols salvar el document?"
 
-#: src/bufferlist.C:123
+#: src/bufferlist.C:120
 msgid "Some documents were not saved:"
 msgstr "Alguns documents no s'han salvat"
 
-#: src/bufferlist.C:124
+#: src/bufferlist.C:121
 msgid "Exit anyway?"
 msgstr "Realment vols sortir?"
 
-#: src/bufferlist.C:139
-msgid "Saving document"
-msgstr "Salvant el document"
-
-#: src/bufferlist.C:205
-msgid "Document saved as"
-msgstr "Document salvat com a"
-
-#: src/bufferlist.C:216
-msgid "Could not delete auto-save file!"
-msgstr "Impossible esborrar el fitxer de auto-salvat!"
-
-#: src/bufferlist.C:226
-msgid "Save failed!"
-msgstr "No s'ha salvat!"
-
-#: src/bufferlist.C:360
+#: src/bufferlist.C:245
 msgid "lyx: Attempting to save document "
 msgstr "lyx: Intentant salvar el document"
 
-#: src/bufferlist.C:363
+#: src/bufferlist.C:248
 msgid " as..."
 msgstr " com a..."
 
-#: src/bufferlist.C:389
+#: src/bufferlist.C:274
 msgid "  Save seems successful. Phew."
 msgstr "Sembla que s'ha salvat exitosament, Bufa!"
 
-#: src/bufferlist.C:393
+#: src/bufferlist.C:278
 msgid "  Save failed! Trying..."
 msgstr "  No s'ha salvat! Intentant..."
 
-#: src/bufferlist.C:396
+#: src/bufferlist.C:281
 msgid "  Save failed! Bummer. Document is lost."
 msgstr " No s'ha salvat! El document s'ha perdut."
 
-#: src/bufferlist.C:425
+#: src/bufferlist.C:310
 msgid "An emergency save of this document exists!"
 msgstr "Existeix una còpia de seguretat del document !"
 
-#: src/bufferlist.C:427
+#: src/bufferlist.C:312
 msgid "Try to load that instead?"
 msgstr "Intentar-lo carregar ?"
 
-#: src/bufferlist.C:449
+#: src/bufferlist.C:334
 msgid "Autosave file is newer."
 msgstr "El fitxer de auto-salvat és més nou."
 
-#: src/bufferlist.C:451
+#: src/bufferlist.C:336
 msgid "Load that one instead?"
 msgstr "Carregar-lo ?"
 
-#: src/bufferlist.C:516
+#: src/bufferlist.C:409
 msgid "Unable to open template"
 msgstr "Impossible obrir el model"
 
-#: src/bufferlist.C:547
-msgid "Could not convert file"
-msgstr "Impossible convertir el fitxer"
-
-#: src/bufferlist.C:560 src/lyxfunc.C:2477 src/lyxfunc.C:2616
-#: src/lyxfunc.C:2695
+#: src/bufferlist.C:433 src/lyxfunc.C:2779 src/lyxfunc.C:2918
+#: src/lyxfunc.C:2997 src/lyxfunc.C:3089
 msgid "Document is already open:"
 msgstr "El document ja és obert :"
 
-#: src/bufferlist.C:562
+#: src/bufferlist.C:435
 msgid "Do you want to reload that document?"
 msgstr "Voleu recarregar aquest document?"
 
-#: src/bufferlist.C:579
+#: src/bufferlist.C:453
 msgid "File `"
 msgstr "El fitxer `"
 
-#: src/bufferlist.C:580
+#: src/bufferlist.C:454
 msgid "' is read-only."
 msgstr "' és de només lectura."
 
 #. Ask if the file should be checked out for
 #. viewing/editing, if so: load it.
-#: src/bufferlist.C:594
-msgid "Do you want to retrive file under version control?"
+#: src/bufferlist.C:469
+#, fuzzy
+msgid "Do you want to retrieve file under version control?"
 msgstr "Voleu obrir el fitxer amb control de versió?"
 
-#: src/bufferlist.C:602
+#: src/bufferlist.C:477
 msgid "Cannot open specified file:"
 msgstr "Impossible obrir el fitxer especificat: "
 
-#: src/bufferlist.C:604
+#: src/bufferlist.C:479
 msgid "Create new document with this name?"
 msgstr "Crear un document nou amb aquest nom?"
 
-#: src/BufferView.C:409
+#: src/BufferView2.C:58
+msgid "Specified file is unreadable: "
+msgstr "El fitxer especificat és ilegible"
+
+#: src/BufferView2.C:68
+msgid "Cannot open specified file: "
+msgstr "Impossible obrir el fitxer especificat: "
+
+#: src/BufferView2.C:192 src/insets/insetert.C:67
+#: src/insets/insettabular.C:924 src/lyx_cb.C:2646 src/text.C:2198
+msgid "Impossible Operation!"
+msgstr "Operació Impossible"
+
+#: src/BufferView2.C:193
+msgid "Cannot insert table/list in table."
+msgstr "Impossible inserir una taula o una llista dins d'una taula"
+
+#: src/BufferView2.C:194 src/CutAndPaste.C:423 src/CutAndPaste.C:432
+#: src/insets/insetert.C:69 src/insets/insettabular.C:926
+#: src/insets/insettext.C:1480 src/lyx_cb.C:2648 src/text.C:2200
+#: src/text.C:4478 src/text.C:4486 src/text.C:4501 src/text.C:4518
+#: src/text2.C:2354 src/text2.C:2364
+msgid "Sorry."
+msgstr "Ho sento."
+
+#: src/BufferView2.C:397 src/BufferView2.C:411
+msgid "Open/Close..."
+msgstr "Obrir/Tancar"
+
+#: src/BufferView2.C:424 src/LyXAction.C:357
+msgid "Undo"
+msgstr "Desfer"
+
+#: src/BufferView2.C:429
+msgid "No further undo information"
+msgstr "No hi ha més informació per desfer"
+
+#: src/BufferView2.C:440
+msgid "Redo not yet supported in math mode"
+msgstr "'Refer' no disponible en mode matemàtic"
+
+#: src/BufferView2.C:445 src/LyXAction.C:316
+msgid "Redo"
+msgstr "Refer"
+
+#: src/BufferView2.C:450
+msgid "No further redo information"
+msgstr "No hi ha més informació per Refer"
+
+#: src/BufferView2.C:547
+msgid "Paragraph environment type copied"
+msgstr "S'ha copiat el tipus d'entorn de paràgraf"
+
+#: src/BufferView2.C:556
+msgid "Paragraph environment type set"
+msgstr "Tipus d'entorn de paràgraf modificat"
+
+#: src/BufferView2.C:570 src/LyXAction.C:160
+msgid "Copy"
+msgstr "Copiar"
+
+#: src/BufferView2.C:581 src/LyXAction.C:161
+msgid "Cut"
+msgstr "Tallar"
+
+#: src/BufferView2.C:590 src/LyXAction.C:307
+msgid "Paste"
+msgstr "Enganxar"
+
+#: src/BufferView2.C:625 src/BufferView2.C:629
+msgid "No more notes"
+msgstr "No hi ha més notes"
+
+#: src/bufferview_funcs.C:26
+msgid "Inserting Footnote..."
+msgstr "Inserir Nota a peu de pàgina..."
+
+#: src/bufferview_funcs.C:61
+msgid "Inserting margin note..."
+msgstr "Inserció d'una nota al marge..."
+
+#: src/bufferview_funcs.C:78
+msgid "Error! unknown language"
+msgstr ""
+
+#: src/LyXAction.C:289 src/bufferview_funcs.C:86
+msgid "Melt"
+msgstr "Incloure"
+
+#: src/bufferview_funcs.C:118
+msgid "Changed environment depth (in possible range, maybe not)"
+msgstr "Profunditat d'entorn modificada (dins del possible, potser no)"
+
+#: src/bufferview_funcs.C:247
+msgid "Font: "
+msgstr ""
+
+#: src/bufferview_funcs.C:251
+msgid ", Depth: "
+msgstr ", Profunditat: "
+
+#: src/bufferview_funcs.C:257
+#, fuzzy
+msgid ", Spacing: "
+msgstr "Espaiat"
+
+#: src/bufferview_funcs.C:260
+#, fuzzy
+msgid "Single"
+msgstr "Simple|#S"
+
+#: src/bufferview_funcs.C:263
+msgid "Onehalf"
+msgstr ""
+
+#: src/bufferview_funcs.C:266
+#, fuzzy
+msgid "Double"
+msgstr "Doble|#D"
+
+#: src/bufferview_funcs.C:269
+msgid "Other ("
+msgstr ""
+
+#: src/BufferView_pimpl.C:219
 msgid "Formatting document..."
 msgstr "Donant format al document..."
 
-#: src/BufferView.C:493 src/BufferView.C:497
+#: src/BufferView_pimpl.C:304 src/BufferView_pimpl.C:308
 msgid "No more errors"
 msgstr "No hi ha més errors"
 
-#: src/bullet_forms.C:45
+#: src/bullet_forms.C:37
 msgid "Size|#z"
 msgstr "Tamany|#z"
 
-#: src/bullet_forms.C:50 src/credits_form.C:19 src/credits_form.C:59
+#: src/bullet_forms.C:42 src/credits_form.C:19 src/credits_form.C:59
 #: src/form1.C:43 src/form1.C:117 src/form1.C:261 src/form1.C:284
-#: src/insets/insetbib.C:89 src/insets/insetbib.C:117
-#: src/insets/insetinclude.C:47 src/insets/insetindex.C:56
-#: src/latexoptions.C:21 src/layout_forms.C:72 src/layout_forms.C:277
-#: src/layout_forms.C:413 src/layout_forms.C:477 src/layout_forms.C:697
-#: src/lyx.C:47 src/lyx.C:95 src/mathed/math_forms.C:111 src/print_form.C:41
-#: src/print_form.C:114 src/sp_form.C:38
+#: src/insets/form_graphics.C:62 src/insets/insetbib.C:99
+#: src/insets/insetbib.C:127 src/insets/insetinclude.C:49
+#: src/insets/insetindex.C:55 src/latexoptions.C:21 src/layout_forms.C:72
+#: src/layout_forms.C:282 src/layout_forms.C:418 src/layout_forms.C:482
+#: src/layout_forms.C:702 src/lyx.C:47 src/lyx.C:95
+#: src/mathed/math_forms.C:109 src/print_form.C:41 src/print_form.C:114
+#: src/sp_form.C:38
 msgid "OK"
 msgstr "D'acord"
 
-#: src/bullet_forms.C:53 src/form1.C:114 src/form1.C:287 src/latexoptions.C:24
-#: src/layout_forms.C:68 src/layout_forms.C:236 src/layout_forms.C:281
-#: src/layout_forms.C:387 src/layout_forms.C:416 src/layout_forms.C:474
-#: src/layout_forms.C:701 src/lyx.C:50 src/lyx.C:99 src/lyx_sendfax.C:39
-#: src/mathed/math_forms.C:108 src/mathed/math_forms.C:158
-#: src/mathed/math_forms.C:203 src/print_form.C:44 src/print_form.C:117
-#: src/sp_form.C:62
+#: src/bullet_forms.C:45 src/form1.C:114 src/form1.C:287
+#: src/insets/form_graphics.C:56 src/insets/form_graphics.C:57
+#: src/latexoptions.C:24 src/layout_forms.C:68 src/layout_forms.C:236
+#: src/layout_forms.C:286 src/layout_forms.C:392 src/layout_forms.C:421
+#: src/layout_forms.C:479 src/layout_forms.C:706 src/lyx.C:50 src/lyx.C:99
+#: src/lyx_sendfax.C:39 src/mathed/math_forms.C:106
+#: src/mathed/math_forms.C:156 src/mathed/math_forms.C:201 src/print_form.C:44
+#: src/print_form.C:117 src/sp_form.C:62
 msgid "Apply|#A"
 msgstr "Aplica|#A"
 
-#: src/bullet_forms.C:56 src/form1.C:120 src/form1.C:264 src/form1.C:290
-#: src/insets/insetbib.C:92 src/insets/insetbib.C:93 src/insets/insetbib.C:120
-#: src/insets/insetbib.C:121 src/insets/insetinclude.C:50
-#: src/insets/insetinclude.C:51 src/insets/insetindex.C:60
-#: src/insets/insetindex.C:61 src/latexoptions.C:27 src/layout_forms.C:64
-#: src/layout_forms.C:285 src/layout_forms.C:391 src/layout_forms.C:419
-#: src/layout_forms.C:471 src/layout_forms.C:705 src/lyx.C:53 src/lyx.C:103
-#: src/lyx_gui_misc.C:388 src/lyx_gui_misc.C:393 src/lyx_gui_misc.C:399
-#: src/lyx_gui_misc.C:408 src/lyx_sendfax.C:35 src/mathed/math_forms.C:102
-#: src/mathed/math_forms.C:132 src/mathed/math_forms.C:200 src/print_form.C:47
+#: src/bullet_forms.C:48 src/form1.C:120 src/form1.C:264 src/form1.C:290
+#: src/insets/form_graphics.C:68 src/insets/form_graphics.C:69
+#: src/insets/insetbib.C:102 src/insets/insetbib.C:103
+#: src/insets/insetbib.C:130 src/insets/insetbib.C:131
+#: src/insets/insetinclude.C:52 src/insets/insetinclude.C:53
+#: src/insets/insetindex.C:59 src/insets/insetindex.C:60 src/latexoptions.C:27
+#: src/layout_forms.C:64 src/layout_forms.C:290 src/layout_forms.C:396
+#: src/layout_forms.C:424 src/layout_forms.C:476 src/layout_forms.C:710
+#: src/lyx.C:53 src/lyx.C:103 src/lyx_gui_misc.C:382 src/lyx_gui_misc.C:386
+#: src/lyx_gui_misc.C:394 src/lyx_sendfax.C:35 src/mathed/math_forms.C:100
+#: src/mathed/math_forms.C:130 src/mathed/math_forms.C:198 src/print_form.C:47
 #: src/print_form.C:120 src/sp_form.C:42
 msgid "Cancel|^["
 msgstr "Anul.la|^["
 
-#: src/bullet_forms.C:59
+#: src/bullet_forms.C:51
 msgid "LaTeX|#L"
 msgstr "LaTeX|#L"
 
-#: src/bullet_forms.C:67
+#: src/bullet_forms.C:59
 msgid "1|#1"
 msgstr "1|#1"
 
-#: src/bullet_forms.C:71
+#: src/bullet_forms.C:63
 msgid "2|#2"
 msgstr "2|#2"
 
-#: src/bullet_forms.C:74
+#: src/bullet_forms.C:66
 msgid "3|#3"
 msgstr "3|#3"
 
-#: src/bullet_forms.C:77
+#: src/bullet_forms.C:69
 msgid "4|#4"
 msgstr "4|#4"
 
-#: src/bullet_forms.C:82
+#: src/bullet_forms.C:74
 msgid "Bullet Depth"
 msgstr "Profunditat de les vinyetes"
 
-#: src/bullet_forms.C:87
+#: src/bullet_forms.C:79
 msgid "Standard|#S"
 msgstr "Estàndard"
 
-#: src/bullet_forms.C:92
+#: src/bullet_forms.C:84
 msgid "Maths|#M"
 msgstr "Matemàtics"
 
-#: src/bullet_forms.C:96
+#: src/bullet_forms.C:88
 msgid "Ding 2|#i"
 msgstr "Ding 2|#i"
 
-#: src/bullet_forms.C:100
+#: src/bullet_forms.C:92
 msgid "Ding 3|#n"
 msgstr "Ding 3|#n"
 
-#: src/bullet_forms.C:104
+#: src/bullet_forms.C:96
 msgid "Ding 4|#g"
 msgstr "Ding 4|#g"
 
-#: src/bullet_forms.C:108
+#: src/bullet_forms.C:100
 msgid "Ding 1|#D"
 msgstr "Ding 1|#D"
 
-#: src/bullet_forms_cb.C:30
+#: src/bullet_forms_cb.C:27
 msgid "Sorry, your libXpm is too old."
 msgstr "Ho sento, la vostra llibreria XPM (libXpm) és massa vella."
 
-#: src/bullet_forms_cb.C:31
+#: src/bullet_forms_cb.C:28
 msgid "This feature requires xpm-4.7 (a.k.a 3.4g) or newer."
 msgstr "Cal la llibreria XPM versió xpm-4.7 (coneguda per 3.4g) o posterior."
 
-#: src/bullet_forms_cb.C:32
-msgid "Try running LyX in mono mode (lyx  -Mono)."
-msgstr "Intenteu executar lyx en mode monocrom (lyx  -Mono)."
-
-#: src/bullet_forms_cb.C:37
+#: src/bullet_forms_cb.C:34
 msgid ""
 " default | tiny | script | footnote | small | normal | large | Large | LARGE "
 "| huge | Huge"
@@ -431,13 +507,55 @@ msgstr ""
 " default | tiny | script | footnote | small | normal | large | Large | LARGE "
 "| huge | Huge"
 
-#: src/bullet_forms_cb.C:52
+#: src/bullet_forms_cb.C:49
 msgid "Itemize Bullet Selection"
 msgstr "Seleccionar les marques d'enumeració"
 
 #: src/Chktex.C:79
 msgid "ChkTeX warning id #"
 msgstr "Avís de ChkTeX número "
+
+#: src/ColorHandler.C:82
+msgid "LyX: Unknown X11 color "
+msgstr ""
+
+#: src/ColorHandler.C:83
+#, fuzzy
+msgid " for "
+msgstr " de "
+
+#: src/ColorHandler.C:84
+msgid "     Using black instead, sorry!."
+msgstr ""
+
+#: src/ColorHandler.C:91
+msgid "LyX: X11 color "
+msgstr ""
+
+#: src/ColorHandler.C:92 src/ColorHandler.C:98
+msgid " allocated for "
+msgstr ""
+
+#: src/ColorHandler.C:97
+msgid "LyX: Using approximated X11 color "
+msgstr ""
+
+#: src/ColorHandler.C:138
+msgid "LyX: Couldn't allocate '"
+msgstr ""
+
+#: src/ColorHandler.C:139
+#, fuzzy
+msgid "' for "
+msgstr "' després de la opció "
+
+#: src/ColorHandler.C:140
+msgid " with (r,g,b)=("
+msgstr ""
+
+#: src/ColorHandler.C:143
+msgid "     Using closest allocated color with (r,g,b)=("
+msgstr ""
 
 #: src/credits.C:55
 msgid "ERROR: LyX wasn't able to read CREDITS file"
@@ -468,9 +586,10 @@ msgid "All these people have contributed to the LyX project. Thanks,"
 msgstr "Aquestes persones han contribuit al projecte LyX. Gràcies,"
 
 #: src/credits_form.C:50
+#, fuzzy
 msgid ""
-"LyX is Copyright (C) 1995 by Matthias Ettrich,\n"
-"1995-1999 LyX Team"
+"LyX is Copyright 1995 by Matthias Ettrich,\n"
+"1995-2000 LyX Team"
 msgstr ""
 "LyX és Copyright (C) 1995 de Matthias Ettrich,\n"
 "1995-1998 Equip LyX"
@@ -514,11 +633,27 @@ msgstr ""
 "the Free Software Foundation, Inc.,\n"
 "675 Mass Ave, Cambridge, MA 02139, USA."
 
-#: src/filedlg.C:181
+#: src/CutAndPaste.C:421 src/CutAndPaste.C:430 src/insets/insettext.C:1478
+#: src/text.C:4476 src/text.C:4484 src/text.C:4501 src/text.C:4516
+#: src/text2.C:1903 src/text2.C:1915 src/text2.C:2097 src/text2.C:2109
+#: src/text2.C:2188 src/text2.C:2201 src/text2.C:2294 src/text2.C:2307
+#: src/text2.C:2352 src/text2.C:2362
+msgid "Impossible operation"
+msgstr "Operació Impossible"
+
+#: src/CutAndPaste.C:422 src/text2.C:2353
+msgid "Can't paste float into float!"
+msgstr "Impossible enganxar un flotant en un flotant!"
+
+#: src/CutAndPaste.C:431 src/text2.C:2363
+msgid "Table cell cannot include more than one paragraph!"
+msgstr "Les cel.les d'una taula no poden incloure més d'un paràgraf!"
+
+#: src/filedlg.C:187
 msgid "Warning! Couldn't open directory."
 msgstr "Avís! Impossible obrir el directori."
 
-#: src/FontLoader.C:219
+#: src/FontLoader.C:247
 msgid "Loading font into X-Server..."
 msgstr "Carregant font al servidor X..."
 
@@ -590,7 +725,7 @@ msgstr "Fitxer EPS|#E"
 msgid "Full Screen Preview|#v"
 msgstr "Visualització en Pantalla Completa|#v"
 
-#: src/form1.C:105
+#: src/form1.C:105 src/insets/form_graphics.C:40 src/insets/form_graphics.C:41
 msgid "Browse...|#B"
 msgstr "Examinar..."
 
@@ -602,13 +737,13 @@ msgstr "Mostrar marc|#F"
 msgid "Do Translations|#r"
 msgstr "Traduir"
 
-#: src/form1.C:129 src/menus.C:171 src/menus.C:182 src/menus.C:291
-#: src/menus.C:292 src/menus.C:293 src/menus.C:366 src/menus.C:367
-#: src/menus.C:368 src/sp_form.C:58
+#: src/form1.C:129 src/insets/form_graphics.C:73 src/menus.C:173
+#: src/menus.C:184 src/menus.C:293 src/menus.C:294 src/menus.C:295
+#: src/menus.C:368 src/menus.C:369 src/menus.C:370 src/sp_form.C:58
 msgid "Options"
 msgstr "Opcions"
 
-#: src/form1.C:133
+#: src/form1.C:133 src/insets/form_graphics.C:79 src/insets/form_graphics.C:80
 msgid "Angle:|#L"
 msgstr "Angle:|#L"
 
@@ -629,19 +764,20 @@ msgstr "cm|#m"
 msgid "inches|#h"
 msgstr "polzades|#h"
 
-#: src/form1.C:153
+#: src/form1.C:153 src/insets/form_graphics.C:84
 msgid "Display"
 msgstr "Mostra"
 
-#: src/form1.C:157
+#: src/form1.C:157 src/insets/form_graphics.C:90
 msgid "Height"
 msgstr "Alçada"
 
-#: src/form1.C:161 src/layout_forms.C:629 src/layout_forms.C:712
+#: src/form1.C:161 src/insets/form_graphics.C:96 src/layout_forms.C:634
+#: src/layout_forms.C:717
 msgid "Width"
 msgstr "Amplada"
 
-#: src/form1.C:165
+#: src/form1.C:165 src/insets/form_graphics.C:101
 msgid "Rotation"
 msgstr "Rotació"
 
@@ -723,7 +859,7 @@ msgstr "Usuari2|#2"
 msgid "Columns"
 msgstr "Columnes"
 
-#: src/form1.C:297 src/mathed/math_forms.C:135
+#: src/form1.C:297 src/mathed/math_forms.C:133
 msgid "Rows"
 msgstr "Files"
 
@@ -763,64 +899,67 @@ msgstr "Idèntic|#M#m"
 msgid "Replace All|#A#a"
 msgstr "Substituir-ho tot|#R#r"
 
-#: src/insets/figinset.C:1110
+#: src/insets/figinset.C:1063
 msgid "[render error]"
 msgstr "[error d'interpretació]"
 
-#: src/insets/figinset.C:1111
+#: src/insets/figinset.C:1064
 msgid "[rendering ... ]"
 msgstr "[interpretant....]"
 
-#: src/insets/figinset.C:1113
+#: src/insets/figinset.C:1066
 msgid "[no file]"
 msgstr "[no hi ha fitxer]"
 
-#: src/insets/figinset.C:1114
+#: src/insets/figinset.C:1067
 msgid "[not displayed]"
 msgstr "[no mostrat]"
 
-#: src/insets/figinset.C:1115
+#: src/insets/figinset.C:1068
 msgid "[no ghostscript]"
 msgstr "[no hi ha ghostscript]"
 
-#: src/insets/figinset.C:1117
+#: src/insets/figinset.C:1070
 msgid "[unknown error]"
 msgstr "[error desconegut]"
 
-#: src/insets/figinset.C:1314
+#: src/insets/figinset.C:1242
+msgid "Opened figure"
+msgstr "Figura oberta"
+
+#: src/insets/figinset.C:1269
 msgid "Figure"
 msgstr "Figura"
 
-#: src/insets/figinset.C:1376 src/insets/figinset.C:1509
+#: src/insets/figinset.C:1357 src/insets/figinset.C:1420
 msgid "empty figure path"
 msgstr "Trajectòria de la figura buida"
 
-#: src/insets/figinset.C:2157
+#: src/insets/figinset.C:1996 src/insets/insetgraphics.C:82
 msgid "Clipart"
 msgstr "Clipart"
 
-#: src/insets/figinset.C:2158 src/lyxfunc.C:2509 src/lyxfunc.C:2572
-#: src/lyxfunc.C:2795
+#: src/insets/figinset.C:1997 src/lyxfunc.C:2811 src/lyxfunc.C:2874
+#: src/lyxfunc.C:3186
 msgid "Document"
 msgstr "Document"
 
-#: src/insets/figinset.C:2164 src/insets/figinset.C:2168
+#: src/insets/figinset.C:2003 src/insets/figinset.C:2007
 msgid "EPS Figure"
 msgstr "Figura EPS"
 
-#: src/insets/figinset.C:2182
+#: src/insets/figinset.C:2020 src/insets/insetgraphics.C:96
 msgid "Filename can't contain any of these characters:"
 msgstr "El nom del fitxer no pot incloure cap d'aquests caràcters:"
 
-#: src/insets/figinset.C:2185
+#: src/insets/figinset.C:2023 src/insets/insetgraphics.C:99
 #, no-c-format
 msgid "space, '#', '~', '$' or '%'."
 msgstr "espai, '#', '~', '$' o '%'."
 
-#. / what appears in the minibuffer when opening
-#: src/insets/figinset.h:51
-msgid "Opened figure"
-msgstr "Figura oberta"
+#: src/insets/form_graphics.C:34 src/insets/form_graphics.C:35
+msgid "Graphics file|#G"
+msgstr ""
 
 #: src/insets/form_url.C:19
 msgid "Url"
@@ -846,230 +985,436 @@ msgstr "tipus d' HTML"
 msgid "HTML type|#H"
 msgstr "tipus d' HTML"
 
-#: src/LyXAction.C:115 src/insets/form_url.C:31 src/insets/inseterror.C:167
-#: src/latexoptions.C:47 src/layout_forms.C:240 src/layout_forms.C:562
-#: src/layout_forms.C:790 src/lyx.C:125 src/lyx_sendfax.C:109 src/lyxvc.C:261
-#: src/mathed/math_forms.C:179
+#: src/LyXAction.C:118 src/insets/form_url.C:31 src/insets/inseterror.C:179
+#: src/latexoptions.C:47 src/layout_forms.C:240 src/layout_forms.C:567
+#: src/layout_forms.C:795 src/lyx.C:125 src/lyx_sendfax.C:109 src/lyxvc.C:262
+#: src/mathed/math_forms.C:177
 msgid "Close"
 msgstr "Tancar"
 
-#: src/insets/insetbib.C:82
+#: src/insets/insetbib.C:92
 msgid "Key:"
 msgstr "Tecla:"
 
-#: src/insets/insetbib.C:96 src/insets/insetbib.C:97
+#: src/insets/insetbib.C:106 src/insets/insetbib.C:107
 msgid "Remark:|#R"
 msgstr "Remarca:|#R"
 
 #. InsetBibtex uses the same form, with different labels
-#: src/insets/insetbib.C:114 src/insets/insetbib.C:115
-#: src/insets/insetbib.C:269 src/insets/insetbib.C:270
+#: src/insets/insetbib.C:124 src/insets/insetbib.C:125
+#: src/insets/insetbib.C:287 src/insets/insetbib.C:288
 msgid "Key:|#K"
 msgstr "Codi:|#K"
 
-#: src/insets/insetbib.C:124 src/insets/insetbib.C:125
-#: src/insets/insetbib.C:271 src/insets/insetbib.C:272
+#: src/insets/insetbib.C:134 src/insets/insetbib.C:135
+#: src/insets/insetbib.C:289 src/insets/insetbib.C:290
 msgid "Label:|#L"
 msgstr "Etiqueta:|#L"
 
-#: src/insets/insetbib.C:174
+#: src/insets/insetbib.C:188
 msgid "Citation"
 msgstr "Cita"
 
-#: src/insets/insetbib.C:280
+#: src/insets/insetbib.C:298
 msgid "Bibliography item"
 msgstr "Entrada bibliogràfica"
 
-#: src/insets/insetbib.C:295
+#: src/insets/insetbib.C:321
 msgid "BibTeX Generated References"
 msgstr "Referències generades per BibTeX"
 
-#: src/insets/insetbib.C:412
+#: src/insets/insetbib.C:432
 msgid "Database:"
 msgstr "Base de dades:"
 
-#: src/insets/insetbib.C:413
+#: src/insets/insetbib.C:433
 msgid "Style:  "
 msgstr "Estil:  "
 
-#: src/insets/insetbib.C:421
+#: src/insets/insetbib.C:441
 msgid "BibTeX"
 msgstr "BibTeX"
 
-#: src/insets/inseterror.C:67 src/insets/inseterror.C:86 src/lyx_cb.C:3724
+#: src/insets/inset.C:76
+msgid "Opened inset"
+msgstr "inset obert"
+
+#: src/insets/inseterror.C:70 src/insets/inseterror.C:91 src/lyx_cb.C:3142
 msgid "Error"
 msgstr "Error"
 
-#: src/insets/inseterror.C:180
-msgid "LaTeX Error"
-msgstr "Error LaTeX"
-
-#. / what appears in the minibuffer when opening
-#: src/insets/inseterror.h:59
+#: src/insets/inseterror.C:164
 msgid "Opened error"
 msgstr "Error obert (no solucionat)"
 
-#: src/insets/insetinclude.C:40 src/insets/insetinclude.C:41
+#: src/insets/inseterror.C:192
+msgid "LaTeX Error"
+msgstr "Error LaTeX"
+
+#: src/insets/insetert.C:29
+msgid "ERT"
+msgstr ""
+
+#: src/insets/insetert.C:55
+#, fuzzy
+msgid "Opened ERT Inset"
+msgstr "inset obert"
+
+#: src/insets/insetert.C:68
+msgid "Not permitted to change font-types inside ERT-insets!"
+msgstr ""
+
+#: src/insets/insetfoot.C:28
+#, fuzzy
+msgid "foot"
+msgstr "Peu de pàg."
+
+#: src/insets/insetfoot.C:51
+#, fuzzy
+msgid "Opened Footnote Inset"
+msgstr "Nota oberta"
+
+#: src/insets/insetgraphics.C:87 src/insets/insetgraphics.C:163
+msgid "Graphics"
+msgstr ""
+
+#: src/insets/insetinclude.C:42 src/insets/insetinclude.C:43
 msgid "Browse|#B"
 msgstr "Examinar|#B"
 
-#: src/insets/insetinclude.C:44 src/insets/insetinclude.C:45
+#: src/insets/insetinclude.C:46 src/insets/insetinclude.C:47
 msgid "Don't typeset|#D"
 msgstr "No tipografieu|#D"
 
-#: src/insets/insetinclude.C:54 src/insets/insetinclude.C:55
+#: src/insets/insetinclude.C:56 src/insets/insetinclude.C:57
 msgid "Load|#L"
 msgstr "Carregar|#L"
 
-#: src/insets/insetinclude.C:58 src/insets/insetinclude.C:59
+#: src/insets/insetinclude.C:60 src/insets/insetinclude.C:61
 msgid "File name:|#F"
 msgstr "Nom del fitxer:|#F"
 
-#: src/insets/insetinclude.C:62 src/insets/insetinclude.C:63
+#: src/insets/insetinclude.C:64 src/insets/insetinclude.C:65
 msgid "Visible space|#s"
 msgstr "Espai visible|#s"
 
-#: src/insets/insetinclude.C:67 src/insets/insetinclude.C:68
+#: src/insets/insetinclude.C:69 src/insets/insetinclude.C:70
 msgid "Verbatim|#V"
 msgstr "Textual|#T"
 
-#: src/insets/insetinclude.C:71 src/insets/insetinclude.C:72
+#: src/insets/insetinclude.C:73 src/insets/insetinclude.C:74
 msgid "Use input|#i"
 msgstr "Utilitzar entrada|#i"
 
-#: src/insets/insetinclude.C:75 src/insets/insetinclude.C:76
+#: src/insets/insetinclude.C:77 src/insets/insetinclude.C:78
 msgid "Use include|#U"
 msgstr "Utilitzar inclou|#i"
 
 #. launches dialog
-#: src/insets/insetinclude.C:111 src/lyx_cb.C:314 src/lyxfunc.C:2457
-#: src/lyxfunc.C:2547 src/lyxfunc.C:2596 src/lyxfunc.C:2669 src/lyxfunc.C:2770
-#: src/menus.C:173 src/menus.C:305 src/menus.C:306 src/menus.C:307
+#: src/insets/insetinclude.C:113 src/lyx_cb.C:242 src/lyxfunc.C:2759
+#: src/lyxfunc.C:2849 src/lyxfunc.C:2898 src/lyxfunc.C:2971 src/lyxfunc.C:3068
+#: src/lyxfunc.C:3161 src/menus.C:175 src/menus.C:307 src/menus.C:308
+#: src/menus.C:309
 msgid "Documents"
 msgstr "Documents"
 
 #. Use by default the master's path
-#: src/insets/insetinclude.C:114
+#: src/insets/insetinclude.C:116
 msgid "Select Child Document"
 msgstr "Seleccionar document fill"
 
-#: src/insets/insetinclude.C:258 src/insets/insetinclude.C:293
+#: src/insets/insetinclude.C:260 src/insets/insetinclude.C:301
 msgid "Include"
 msgstr "Inclou"
 
-#: src/insets/insetinclude.C:289
+#: src/insets/insetinclude.C:297
 msgid "Input"
 msgstr "Entrada"
 
-#: src/insets/insetinclude.C:291
+#: src/insets/insetinclude.C:299
 msgid "Verbatim Input"
 msgstr "Entrada textual"
 
-#: src/insets/insetindex.C:53 src/insets/insetindex.C:54
+#: src/insets/insetindex.C:52 src/insets/insetindex.C:53
 msgid "Keyword:|#K"
 msgstr "Paraula clau:|#K"
 
-#: src/insets/insetindex.C:104
+#: src/insets/insetindex.C:103
 msgid "Index"
 msgstr "Índex"
 
-#: src/insets/insetindex.C:111
+#: src/insets/insetindex.C:110
 msgid "Idx"
 msgstr "Idx"
 
-#: src/insets/insetindex.C:139
+#: src/insets/insetindex.C:138
 msgid "PrintIndex"
 msgstr "Imprimir Index"
 
-#: src/insets/insetinfo.C:70 src/insets/insetinfo.C:89
-#: src/insets/insetinfo.C:209
+#: src/insets/insetinfo.C:74 src/insets/insetinfo.C:97
+#: src/insets/insetinfo.C:224
 msgid "Note"
 msgstr "Nota"
 
-#: src/insets/insetinfo.C:195 src/insets/insetinfo.C:200 src/lyx.C:155
-msgid "Close|#C^["
-msgstr "Tancar|#C^["
-
-#. / what appears in the minibuffer when opening
-#: src/insets/insetinfo.h:60
+#: src/insets/insetinfo.C:192
 msgid "Opened note"
 msgstr "Nota oberta"
 
-#. /
-#: src/insets/insetloa.h:37
+#: src/insets/insetinfo.C:210 src/insets/insetinfo.C:215 src/lyx.C:155
+msgid "Close|#C^["
+msgstr "Tancar|#C^["
+
+#: src/insets/insetloa.C:31
 msgid "List of Algorithms"
 msgstr "Llista d'algorismes"
 
-#. /
-#: src/insets/insetlof.h:35
+#: src/insets/insetlof.C:12
 msgid "List of Figures"
 msgstr "Llista de figures"
 
-#. /
-#: src/insets/insetlot.h:35
+#: src/insets/insetlot.C:12
 msgid "List of Tables"
 msgstr "Llista de taules"
 
-#: src/insets/insetparent.h:41
+#: src/insets/insetparent.C:42
 msgid "Parent:"
 msgstr "Pare:"
 
-#: src/insets/insetref.C:57
+#: src/insets/insetref.C:59
 msgid "Page: "
 msgstr "Pàgina: "
 
-#: src/insets/insetref.C:59
+#: src/insets/insetref.C:61
 msgid "Ref: "
 msgstr "Ref: "
 
-#. /
-#: src/insets/insettoc.h:35 src/lyxfunc.C:770
+#: src/insets/insettabular.C:163
+#, fuzzy
+msgid "Opened Tabular Inset"
+msgstr "inset obert"
+
+#: src/insets/insettabular.C:925 src/text.C:2199
+msgid "Multicolumns can only be horizontally."
+msgstr "Les multicolumnes han de ser horitzontals"
+
+#: src/insets/insettext.C:340
+#, fuzzy
+msgid "Opened Text Inset"
+msgstr "inset obert"
+
+#: src/insets/insettext.C:1479
+#, fuzzy
+msgid "Cannot include more than one paragraph!"
+msgstr "Les cel.les d'una taula no poden incloure més d'un paràgraf!"
+
+#: src/insets/insettoc.C:20 src/lyxfunc.C:838
 msgid "Table of Contents"
 msgstr "Taula de continguts"
 
-#: src/insets/inseturl.C:139
-msgid "Insert Url"
-msgstr "Inserir URL"
-
-#: src/insets/inseturl.C:153
-msgid "HtmlUrl: "
-msgstr "HtmlUrl: "
-
-#: src/insets/inseturl.C:155
-msgid "Url: "
-msgstr "Url: "
-
-#. /
-#: src/insets/inseturl.h:61
+#: src/insets/inseturl.C:115
 msgid "Opened Url"
 msgstr "URL oberta"
 
-#. / what appears in the minibuffer when opening
-#: src/insets/lyxinset.h:95
-msgid "Opened inset"
-msgstr "inset obert"
+#: src/insets/inseturl.C:150
+msgid "Insert Url"
+msgstr "Inserir URL"
 
-#: src/intl.C:294 src/intl.C:295
+#: src/insets/inseturl.C:164
+msgid "HtmlUrl: "
+msgstr "HtmlUrl: "
+
+#: src/insets/inseturl.C:166
+msgid "Url: "
+msgstr "Url: "
+
+#: src/intl.C:289 src/intl.C:290
 msgid "other..."
 msgstr "Altre..."
 
-#: src/intl.C:365
+#: src/intl.C:360
 msgid "Key Mappings"
 msgstr "Mapeig de tecles"
 
-#: src/kbmap.C:245
+#: src/kbsequence.C:213
 msgid "   options: "
 msgstr "   opcions: "
 
-#: src/LaTeX.C:148 src/LaTeX.C:165 src/LaTeX.C:225 src/LaTeX.C:271
+#: src/language.C:38
+msgid "Afrikaans"
+msgstr ""
+
+#: src/language.C:39
+msgid "American"
+msgstr ""
+
+#: src/language.C:40
+msgid "Arabic"
+msgstr ""
+
+#: src/language.C:41
+msgid "Austrian"
+msgstr ""
+
+#: src/language.C:42
+msgid "Bahasa"
+msgstr ""
+
+#: src/language.C:43
+msgid "Brazil"
+msgstr ""
+
+#: src/language.C:44
+msgid "Breton"
+msgstr ""
+
+#: src/language.C:45
+msgid "Catalan"
+msgstr ""
+
+#: src/language.C:46
+#, fuzzy
+msgid "Croatian"
+msgstr "Rotació"
+
+#: src/language.C:47
+msgid "Czech"
+msgstr ""
+
+#: src/language.C:48
+msgid "Danish"
+msgstr ""
+
+#: src/language.C:49
+msgid "Dutch"
+msgstr ""
+
+#: src/language.C:50
+msgid "English"
+msgstr ""
+
+#: src/language.C:51
+msgid "Esperanto"
+msgstr ""
+
+#: src/language.C:52
+msgid "Estonian"
+msgstr ""
+
+#: src/language.C:53
+msgid "Finnish"
+msgstr ""
+
+#: src/language.C:54
+msgid "Francais"
+msgstr ""
+
+#: src/language.C:55
+msgid "French"
+msgstr ""
+
+#: src/language.C:56
+msgid "Frenchb"
+msgstr ""
+
+#: src/language.C:57
+msgid "Galician"
+msgstr ""
+
+#: src/language.C:58
+msgid "German"
+msgstr ""
+
+#: src/language.C:59 src/mathed/math_forms.C:26
+msgid "Greek"
+msgstr "Grec"
+
+#: src/language.C:60
+msgid "Hebrew"
+msgstr ""
+
+#: src/language.C:61
+msgid "Hungarian"
+msgstr ""
+
+#: src/language.C:62
+msgid "Irish"
+msgstr ""
+
+#: src/language.C:63
+#, fuzzy
+msgid "Italian"
+msgstr "Itàlica"
+
+#: src/language.C:64
+msgid "Lsorbian"
+msgstr ""
+
+#: src/language.C:65
+msgid "Magyar"
+msgstr ""
+
+#: src/language.C:66
+msgid "Norsk"
+msgstr ""
+
+#: src/language.C:67
+msgid "Polish"
+msgstr ""
+
+#: src/language.C:68
+msgid "Portuges"
+msgstr ""
+
+#: src/language.C:69
+#, fuzzy
+msgid "Romanian"
+msgstr "Romana"
+
+#: src/language.C:70
+msgid "Russian"
+msgstr ""
+
+#: src/language.C:71
+msgid "Scottish"
+msgstr ""
+
+#: src/language.C:72
+msgid "Spanish"
+msgstr ""
+
+#: src/language.C:73
+msgid "Slovak"
+msgstr ""
+
+#: src/language.C:74
+msgid "Slovene"
+msgstr ""
+
+#: src/language.C:75
+msgid "Swedish"
+msgstr ""
+
+#: src/language.C:76
+msgid "Turkish"
+msgstr ""
+
+#: src/language.C:77
+msgid "Usorbian"
+msgstr ""
+
+#: src/language.C:78
+msgid "Welsh"
+msgstr ""
+
+#: src/LaTeX.C:150 src/LaTeX.C:170 src/LaTeX.C:231 src/LaTeX.C:277
 msgid "LaTeX run number "
 msgstr "Execució LaTeX número "
 
-#: src/LaTeX.C:188 src/LaTeX.C:249
+#: src/LaTeX.C:193 src/LaTeX.C:255
 msgid "Running MakeIndex."
 msgstr "Executant MakeIndex."
 
-#: src/LaTeX.C:202
+#: src/LaTeX.C:207
 msgid "Running BibTeX."
 msgstr "Executant BibTeX."
 
@@ -1093,31 +1438,31 @@ msgstr "Fitxer log de LaTeX"
 msgid "Allow accents on ALL characters|#w"
 msgstr "Permetre accentuar TOTS els caràcters|#w"
 
-#: src/latexoptions.C:51 src/lyxvc.C:265 src/lyxvc.C:266
+#: src/latexoptions.C:51 src/lyxvc.C:266 src/lyxvc.C:267
 msgid "Update|#Uu"
 msgstr "Actualitzar|#Uu"
 
-#: src/layout.C:1400
+#: src/layout.C:1448
 msgid "LyX wasn't able to find its layout descriptions!"
 msgstr "LyX no ha trobat les descriptions de formats de documents!"
 
-#: src/layout.C:1401
+#: src/layout.C:1449
 msgid "Check that the file \"textclass.lst\""
 msgstr "Verifiqueu que el fitxer \"textclass.lst\""
 
-#: src/layout.C:1402
+#: src/layout.C:1450
 msgid "is installed correctly. Sorry, has to exit :-("
 msgstr "estigui instal.lat correctament. Ho sento :-("
 
-#: src/layout.C:1464
+#: src/layout.C:1512
 msgid "LyX wasn't able to find any layout description!"
 msgstr "LyX no ha pogut trobar cap descripció de formats de documents!"
 
-#: src/layout.C:1465
+#: src/layout.C:1513
 msgid "Check the contents of  the file \"textclass.lst\""
 msgstr "Verifiqueu que el fitxer \"textclass.lst\""
 
-#: src/layout.C:1466
+#: src/layout.C:1514
 msgid "Sorry, has to exit :-("
 msgstr "Ho sento. Finalitzo :-("
 
@@ -1185,7 +1530,7 @@ msgstr "Dues|#w"
 msgid "Extra Options:|#X"
 msgstr "Opcions extra"
 
-#: src/layout_forms.C:141
+#: src/layout_forms.C:141 src/layout_forms.C:249
 msgid "Language:"
 msgstr "Idioma:"
 
@@ -1237,768 +1582,1009 @@ msgstr "Miscel.lania:|#M"
 msgid "Color:|#C"
 msgstr "Color:|#C"
 
-#: src/layout_forms.C:249
+#: src/layout_forms.C:254
 msgid "Toggle on all these|#T"
 msgstr "Alternar en tots|#A"
 
-#: src/layout_forms.C:252
+#: src/layout_forms.C:257
 msgid "These are never toggled"
 msgstr "Aquests mai s'alteren"
 
-#: src/layout_forms.C:257
+#: src/layout_forms.C:262
 msgid "These are always toggled"
 msgstr "Aquests sempre s'alteren"
 
-#: src/layout_forms.C:300
+#: src/layout_forms.C:305
 msgid "Label Width:|#d"
 msgstr "Mida d'Etiqueta:|#d"
 
-#: src/layout_forms.C:304
+#: src/layout_forms.C:309
 msgid "Indent"
 msgstr "Sagnat"
 
-#: src/layout_forms.C:308
+#: src/layout_forms.C:313
 msgid "Above|#b"
 msgstr "Abans|#b"
 
-#: src/layout_forms.C:310
+#: src/layout_forms.C:315
 msgid "Below|#E"
 msgstr "Després|#E"
 
-#: src/layout_forms.C:312
+#: src/layout_forms.C:317
 msgid "Above|#o"
 msgstr "Abans|#o"
 
-#: src/layout_forms.C:314
+#: src/layout_forms.C:319
 msgid "Below|#l"
 msgstr "Després|#l"
 
-#: src/layout_forms.C:316
+#: src/layout_forms.C:321
 msgid "No Indent|#I"
 msgstr "Sense sagnat|#I"
 
-#: src/layout_forms.C:320 src/layout_forms.C:584 src/mathed/math_forms.C:94
+#: src/layout_forms.C:325 src/layout_forms.C:589 src/mathed/math_forms.C:92
 msgid "Right|#R"
 msgstr "Dreta|#R"
 
-#: src/layout_forms.C:322
+#: src/layout_forms.C:327
 msgid "Left|#f"
 msgstr "Esquerra|#f"
 
-#: src/layout_forms.C:324
+#: src/layout_forms.C:329
 msgid "Block|#c"
 msgstr "Bloc|#c"
 
-#: src/layout_forms.C:326
+#: src/layout_forms.C:331
 msgid "Center|#n"
 msgstr "Centrar|#n"
 
-#: src/layout_forms.C:336
+#: src/layout_forms.C:341
 msgid "Above:|#v"
 msgstr "Abans:|#v"
 
-#: src/layout_forms.C:340
+#: src/layout_forms.C:345
 msgid "Below:|#w"
 msgstr "Després:|#w"
 
-#: src/layout_forms.C:344
+#: src/layout_forms.C:349
 msgid "Pagebreaks"
 msgstr "Salt de Pàgina"
 
-#: src/layout_forms.C:348
+#: src/layout_forms.C:353
 msgid "Lines"
 msgstr "Línies"
 
-#: src/layout_forms.C:352 src/layout_forms.C:590 src/layout_forms.C:716
+#: src/layout_forms.C:357 src/layout_forms.C:595 src/layout_forms.C:721
 msgid "Alignment"
 msgstr "Aliniació"
 
-#: src/layout_forms.C:356
+#: src/layout_forms.C:361
 msgid "Vertical Spaces"
 msgstr "Espais verticals"
 
-#: src/layout_forms.C:360
+#: src/layout_forms.C:365
 msgid "ExtraOpt|#X"
 msgstr "Opcions extra|#X"
 
-#: src/layout_forms.C:364
+#: src/layout_forms.C:369
 msgid "Keep|#K"
 msgstr "Manté|#K"
 
-#: src/layout_forms.C:366
+#: src/layout_forms.C:371
 msgid "Keep|#p"
 msgstr "Manté|#p"
 
-#: src/layout_forms.C:383 src/lyx_gui_misc.C:409 src/lyx_sendfax.C:31
+#: src/layout_forms.C:388 src/lyx_gui_misc.C:395 src/lyx_sendfax.C:31
 msgid "OK|#O"
 msgstr "D'acord|#O"
 
-#: src/layout_forms.C:422
+#: src/layout_forms.C:427
 msgid "Type:|#T"
 msgstr "Tipus:|#T"
 
-#: src/layout_forms.C:427
+#: src/layout_forms.C:432
 msgid "Single|#S"
 msgstr "Simple|#S"
 
-#: src/layout_forms.C:429
+#: src/layout_forms.C:434
 msgid "Double|#D"
 msgstr "Doble|#D"
 
-#: src/layout_forms.C:433
+#: src/layout_forms.C:438
 msgid "Text"
 msgstr ""
 
-#: src/layout_forms.C:453
+#: src/layout_forms.C:458
 msgid "Special:|#S"
 msgstr "Especial:|#S"
 
-#: src/layout_forms.C:463
+#: src/layout_forms.C:468
 msgid "Margins"
 msgstr "Marges"
 
-#: src/layout_forms.C:467
+#: src/layout_forms.C:472
 msgid "Foot/Head Margins"
 msgstr "Marges de capçalera i peu de pàgina"
 
-#: src/layout_forms.C:487
+#: src/layout_forms.C:492
 msgid "Orientation"
 msgstr "Orientació"
 
-#: src/layout_forms.C:493
+#: src/layout_forms.C:498
 msgid "Portrait|#o"
 msgstr "Retrat"
 
-#: src/layout_forms.C:495
+#: src/layout_forms.C:500
 msgid "Landscape|#L"
 msgstr "Apaisat"
 
-#: src/layout_forms.C:499
+#: src/layout_forms.C:504
 msgid "Papersize:|#P"
 msgstr "Mides:|#P"
 
-#: src/layout_forms.C:503
+#: src/layout_forms.C:508
 msgid "Custom Papersize"
 msgstr "Tamany Personalitzat"
 
-#: src/layout_forms.C:507
+#: src/layout_forms.C:512
 msgid "Use Geometry Package|#U"
 msgstr "Utilitzar el paquet de geometria|#U"
 
-#: src/layout_forms.C:509
+#: src/layout_forms.C:514
 msgid "Width:|#W"
 msgstr "Amplada:|#W"
 
-#: src/layout_forms.C:512
+#: src/layout_forms.C:517
 msgid "Height:|#H"
 msgstr "Alçada:|#H"
 
-#: src/layout_forms.C:515
+#: src/layout_forms.C:520
 msgid "Top:|#T"
 msgstr "Dalt:|#T"
 
-#: src/layout_forms.C:518
+#: src/layout_forms.C:523
 msgid "Bottom:|#B"
 msgstr "Baix:|#B"
 
-#: src/layout_forms.C:521
+#: src/layout_forms.C:526
 msgid "Left:|#e"
 msgstr "Esquerre:|#e"
 
-#: src/layout_forms.C:524
+#: src/layout_forms.C:529
 msgid "Right:|#R"
 msgstr "Dret:|#R"
 
-#: src/layout_forms.C:527
+#: src/layout_forms.C:532
 msgid "Headheight:|#i"
 msgstr "Alçada capç.:|#i"
 
-#: src/layout_forms.C:530
+#: src/layout_forms.C:535
 msgid "Headsep:|#d"
 msgstr "Sep. capçalera:|#d"
 
-#: src/layout_forms.C:533
+#: src/layout_forms.C:538
 msgid "Footskip:|#F"
 msgstr "Separació peu:|#F"
 
-#: src/layout_forms.C:568
+#: src/layout_forms.C:573
 msgid "Borders"
 msgstr "Vores, contorns"
 
-#: src/layout_forms.C:572 src/layout_forms.C:722
+#: src/layout_forms.C:577 src/layout_forms.C:727
 msgid "Top|#T"
 msgstr "Dalt|#T"
 
-#: src/layout_forms.C:576 src/layout_forms.C:728
+#: src/layout_forms.C:581 src/layout_forms.C:733
 msgid "Bottom|#B"
 msgstr "Baix|#B"
 
-#: src/layout_forms.C:580 src/mathed/math_forms.C:97
+#: src/layout_forms.C:585 src/mathed/math_forms.C:95
 msgid "Left|#L"
 msgstr "Esquerra|#L"
 
-#: src/layout_forms.C:594
+#: src/layout_forms.C:599
 msgid "Special Cell"
 msgstr "Cel.la especial"
 
-#: src/layout_forms.C:598
+#: src/layout_forms.C:603
 msgid "Multicolumn|#M"
 msgstr "Multicolumnes|#M"
 
-#: src/layout_forms.C:600
+#: src/layout_forms.C:605
 msgid "Append Column|#A"
 msgstr "Afegir Columna|#A"
 
-#: src/layout_forms.C:603
+#: src/layout_forms.C:608
 msgid "Delete Column|#O"
 msgstr "Suprimir Columna|#O"
 
-#: src/layout_forms.C:606
+#: src/layout_forms.C:611
 msgid "Append Row|#p"
 msgstr "Afegir Fila|#p"
 
-#: src/layout_forms.C:609
+#: src/layout_forms.C:614
 msgid "Delete Row|#w"
 msgstr "Suprimir Fila|#w"
 
-#: src/layout_forms.C:612
+#: src/layout_forms.C:617
 msgid "Delete Table|#D"
 msgstr "Suprimir Taula|#D"
 
-#: src/layout_forms.C:615
+#: src/layout_forms.C:620
 msgid "Column"
 msgstr "Columna"
 
-#: src/layout_forms.C:618
+#: src/layout_forms.C:623
 msgid "Row"
 msgstr "Fila"
 
-#: src/layout_forms.C:621
+#: src/layout_forms.C:626
 msgid "Set Borders|#S"
 msgstr "Activar Contorns|#S"
 
-#: src/layout_forms.C:624
+#: src/layout_forms.C:629
 msgid "Unset Borders|#U"
 msgstr "Desactivar Contorns|#U"
 
-#: src/layout_forms.C:627 src/layout_forms.C:641
+#: src/layout_forms.C:632 src/layout_forms.C:646
 msgid "Longtable"
 msgstr "Taula llarga"
 
-#: src/layout_forms.C:632
+#: src/layout_forms.C:637
 msgid "Rotate 90°|#9"
 msgstr "Rotar 90%|#9"
 
-#: src/layout_forms.C:634
+#: src/layout_forms.C:639
 msgid "Linebreaks|#N"
 msgstr "Salt de línia|#N"
 
-#: src/layout_forms.C:636
+#: src/layout_forms.C:641
 msgid "Spec. Table"
 msgstr "Spec. Taula"
 
-#: src/layout_forms.C:645
+#: src/layout_forms.C:650
 msgid "First Head"
 msgstr "Primera cel.la"
 
-#: src/layout_forms.C:647
+#: src/layout_forms.C:652
 msgid "Head"
 msgstr "Capçalera"
 
-#: src/layout_forms.C:649
+#: src/layout_forms.C:654
 msgid "Foot"
 msgstr "Peu de pàg."
 
-#: src/layout_forms.C:651
+#: src/layout_forms.C:656
 msgid "Last Foot"
 msgstr "Últim peu de pàg."
 
-#: src/layout_forms.C:653
+#: src/layout_forms.C:658
 msgid "New Page"
 msgstr "Pagina nova"
 
-#: src/layout_forms.C:655
+#: src/layout_forms.C:660
 msgid "Rotate 90°"
 msgstr "Rotar 90°"
 
-#: src/layout_forms.C:657
+#: src/layout_forms.C:662
 msgid "Extra|#X"
 msgstr ""
 
-#: src/layout_forms.C:660
+#: src/layout_forms.C:665
 msgid "Left|#e"
 msgstr "Esquerra|#e"
 
-#: src/layout_forms.C:663
+#: src/layout_forms.C:668
 msgid "Right|#i"
 msgstr "Dreta|#i"
 
-#: src/layout_forms.C:666
+#: src/layout_forms.C:671
 msgid "Center|#C"
 msgstr "Centrar|||#C"
 
-#: src/layout_forms.C:690
+#: src/layout_forms.C:695
 msgid "Extra Options"
 msgstr "Opcions Extra"
 
-#: src/layout_forms.C:694
+#: src/layout_forms.C:699
 msgid "Length|#L"
 msgstr "Llarg|#L"
 
-#: src/layout_forms.C:709
+#: src/layout_forms.C:714
 msgid "or %|#o"
 msgstr "o %|#o"
 
-#: src/layout_forms.C:725
+#: src/layout_forms.C:730
 msgid "Middle|#d"
 msgstr "Mig|#d"
 
-#: src/layout_forms.C:737
+#: src/layout_forms.C:742
 msgid "HFill between Minipage paragraphs|#H"
 msgstr "HFill entre els paràgrafs de minipàgina|#H"
 
-#: src/layout_forms.C:739
+#: src/layout_forms.C:744
 msgid "Start new Minipage|#S"
 msgstr "Començar una nova minipàgina|#S"
 
-#: src/layout_forms.C:743
+#: src/layout_forms.C:748
 msgid "Indented Paragraph|#I"
 msgstr "Paràgrafs Indentats|#I"
 
-#: src/layout_forms.C:746
+#: src/layout_forms.C:751
 msgid "Minipage|#M"
 msgstr "Minipàgina|#M"
 
-#: src/layout_forms.C:749
+#: src/layout_forms.C:754
 msgid "Floatflt|#F"
 msgstr ""
 
-#: src/layout_forms.C:774
+#: src/layout_forms.C:779
 msgid "Special Multicolumn Alignment"
 msgstr "Aliniació Especial de Multi-Columnes"
 
-#: src/layout_forms.C:794
+#: src/layout_forms.C:799
 msgid "Special Column Alignment"
 msgstr "Aliniació Especial de Columnes"
 
-#: src/Literate.C:57
+#.  LColor::color, gui, latex, x11, lyx
+#: src/LColor.C:42
+#, fuzzy
+msgid "none"
+msgstr "Fet"
+
+#: src/LColor.C:43
+#, fuzzy
+msgid "black"
+msgstr "Negre"
+
+#: src/LColor.C:44
+#, fuzzy
+msgid "white"
+msgstr "Blanc"
+
+#: src/LColor.C:45
+#, fuzzy
+msgid "red"
+msgstr "Vermell"
+
+#: src/LColor.C:46
+#, fuzzy
+msgid "green"
+msgstr "Verd"
+
+#: src/LColor.C:47
+#, fuzzy
+msgid "blue"
+msgstr "Blau"
+
+#: src/LColor.C:48
+msgid "cyan"
+msgstr ""
+
+#: src/LColor.C:49
+msgid "magenta"
+msgstr ""
+
+#: src/LColor.C:50
+#, fuzzy
+msgid "yellow"
+msgstr "Groc"
+
+#: src/LColor.C:51
+msgid "background"
+msgstr ""
+
+#: src/LColor.C:52
+msgid "foreground"
+msgstr ""
+
+#: src/LColor.C:53
+#, fuzzy
+msgid "selection"
+msgstr "Decoració"
+
+#: src/LColor.C:54
+#, fuzzy
+msgid "latex"
+msgstr "Inclinada"
+
+#: src/LColor.C:55
+msgid "floats"
+msgstr ""
+
+#: src/LColor.C:56
+#, fuzzy
+msgid "note"
+msgstr "Nota"
+
+#: src/LColor.C:57
+msgid "note background"
+msgstr ""
+
+#: src/LColor.C:58
+msgid "note frame"
+msgstr ""
+
+#: src/LColor.C:59
+msgid "depth bar"
+msgstr ""
+
+#: src/LColor.C:60
+msgid "command-inset"
+msgstr ""
+
+#: src/LColor.C:61
+msgid "command-inset background"
+msgstr ""
+
+#: src/LColor.C:62 src/LColor.C:79
+#, fuzzy
+msgid "inset frame"
+msgstr "Inserir etiqueta"
+
+#: src/LColor.C:63
+#, fuzzy
+msgid "accent"
+msgstr "Pare:"
+
+#: src/LColor.C:64
+msgid "accent background"
+msgstr ""
+
+#: src/LColor.C:65
+msgid "accent frame"
+msgstr ""
+
+#: src/LColor.C:66
+msgid "minipage line"
+msgstr ""
+
+#: src/LColor.C:67
+msgid "special char"
+msgstr ""
+
+#: src/LColor.C:68
+#, fuzzy
+msgid "math"
+msgstr "Matemàtic"
+
+#: src/LColor.C:69
+msgid "math background"
+msgstr ""
+
+#: src/LColor.C:70
+#, fuzzy
+msgid "math frame"
+msgstr "Mode Matemàtic"
+
+#: src/LColor.C:71
+msgid "math cursor"
+msgstr ""
+
+#: src/LColor.C:72
+#, fuzzy
+msgid "math line"
+msgstr "Panell Matemàtic"
+
+#: src/LColor.C:73
+#, fuzzy
+msgid "footnote"
+msgstr "Inserir nota a peu de pàgina"
+
+#: src/LColor.C:74
+msgid "footnote background"
+msgstr ""
+
+#: src/LColor.C:75
+msgid "footnote frame"
+msgstr ""
+
+#: src/LColor.C:76
+#, fuzzy
+msgid "ert"
+msgstr "Inserir"
+
+#: src/LColor.C:77
+#, fuzzy
+msgid "inset"
+msgstr "Inserir"
+
+#: src/LColor.C:78
+msgid "inset background"
+msgstr ""
+
+#: src/LColor.C:80
+#, fuzzy
+msgid "error"
+msgstr "Error"
+
+#: src/LColor.C:81
+msgid "end-of-line marker"
+msgstr ""
+
+#: src/LColor.C:82
+#, fuzzy
+msgid "appendix line"
+msgstr "inset obert"
+
+#: src/LColor.C:83
+msgid "vfill line"
+msgstr ""
+
+#: src/LColor.C:84
+msgid "top/bottom line"
+msgstr ""
+
+#: src/LColor.C:85
+#, fuzzy
+msgid "table line"
+msgstr "Taula inserida"
+
+#: src/LColor.C:86
+msgid "tabular line"
+msgstr ""
+
+#: src/LColor.C:88
+msgid "tabularonoff line"
+msgstr ""
+
+#: src/LColor.C:90
+msgid "bottom area"
+msgstr ""
+
+#: src/LColor.C:91
+#, fuzzy
+msgid "page break"
+msgstr "Salt de Pàgina"
+
+#: src/LColor.C:92
+msgid "top of button"
+msgstr ""
+
+#: src/LColor.C:93
+msgid "bottom of button"
+msgstr ""
+
+#: src/LColor.C:94
+msgid "left of button"
+msgstr ""
+
+#: src/LColor.C:95
+msgid "right of button"
+msgstr ""
+
+#: src/LColor.C:96
+msgid "button background"
+msgstr ""
+
+#: src/LColor.C:97
+msgid "inherit"
+msgstr "Heredar"
+
+#: src/LColor.C:98
+msgid "ignore"
+msgstr "Ignorar"
+
+#: src/Literate.C:58
 msgid "Weaving document"
 msgstr ""
 
-#: src/Literate.C:87
+#: src/Literate.C:88
 msgid "Building program"
 msgstr "Construint programa..."
 
-#: src/LyXAction.C:91
+#: src/LyXAction.C:94
 msgid "Insert appendix"
 msgstr "Inserir apèndix"
 
-#: src/LyXAction.C:92
+#: src/LyXAction.C:95
 msgid "Describe command"
 msgstr "Descriure comana"
 
-#: src/LyXAction.C:95
+#: src/LyXAction.C:98
 msgid "Select previous char"
 msgstr "Seleccionar caràcter anterior"
 
-#: src/LyXAction.C:98
+#: src/LyXAction.C:101
 msgid "Insert bibtex"
 msgstr "Insertar BibTeX"
 
-#: src/LyXAction.C:106
+#: src/LyXAction.C:109
 msgid "Build program"
 msgstr ""
 
-#: src/LyXAction.C:107
+#: src/LyXAction.C:110
 msgid "Autosave"
 msgstr "Arxivat automàtic"
 
-#: src/LyXAction.C:109
+#: src/LyXAction.C:112
 msgid "Go to beginning of document"
 msgstr "Anar al principi del document"
 
-#: src/LyXAction.C:111
+#: src/LyXAction.C:114
 msgid "Select to beginning of document"
 msgstr "Seleccionar des del principi del document"
 
-#: src/LyXAction.C:114
+#: src/LyXAction.C:117
 msgid "Check TeX"
 msgstr "Verificar TeX"
 
-#: src/LyXAction.C:117
+#: src/LyXAction.C:120
 msgid "Go to end of document"
 msgstr "Anar al final del document"
 
-#: src/LyXAction.C:119
+#: src/LyXAction.C:122
 msgid "Select to end of document"
 msgstr "Seleccionar fins al final del document"
 
-#: src/LyXAction.C:120
+#: src/LyXAction.C:123
 msgid "Export to"
 msgstr "Exportar a"
 
-#: src/LyXAction.C:121
+#: src/LyXAction.C:124
 msgid "Fax"
 msgstr "Faxsímil"
 
-#: src/LyXAction.C:124
+#: src/LyXAction.C:127
 msgid "Import document"
 msgstr "Importar document"
 
-#: src/LyXAction.C:127
+#: src/LyXAction.C:130
 msgid "New document"
 msgstr "Document nou"
 
-#: src/LyXAction.C:129
+#: src/LyXAction.C:132
 msgid "New document from template"
 msgstr "Document nou basat en model"
 
-#: src/LyXAction.C:130
+#: src/LyXAction.C:133
 msgid "Open"
 msgstr "Obrir"
 
-#: src/LyXAction.C:132
-msgid "Switch to previous document"
-msgstr "Canviar a document previ"
-
-#: src/LyXAction.C:133 src/lyx_cb.C:914 src/print_form.C:72
+#: src/LyXAction.C:134 src/lyx_cb.C:838 src/print_form.C:72
 msgid "Print"
 msgstr "Imprimir"
 
-#: src/LyXAction.C:135
+#: src/LyXAction.C:136
 msgid "Revert to saved"
 msgstr "Revertir a document salvat"
 
-#: src/LyXAction.C:137
+#: src/LyXAction.C:138
 msgid "Toggle read-only"
 msgstr "Només lectura si/no"
 
-#: src/LyXAction.C:138
+#: src/LyXAction.C:139
 msgid "Update DVI"
 msgstr "Actualitzar DVI"
 
-#: src/LyXAction.C:141
+#: src/LyXAction.C:142
 msgid "Update PostScript"
 msgstr "Actualitzar PostScript"
 
-#: src/LyXAction.C:142
+#: src/LyXAction.C:143
 msgid "View DVI"
 msgstr "Visualitzar DVI"
 
-#: src/LyXAction.C:144
+#: src/LyXAction.C:145
 msgid "View PostScript"
 msgstr "Visualitzar PostScript"
 
-#: src/LyXAction.C:145 src/lyx_sendfax_main.C:278
+#: src/LyXAction.C:146 src/lyx_sendfax_main.C:280
 msgid "Save"
 msgstr "Salvar"
 
-#: src/LyXAction.C:146
+#: src/LyXAction.C:147
 msgid "Save As"
 msgstr "Salvar com"
 
-#: src/LyXAction.C:148 src/lyxfunc.C:624
+#: src/LyXAction.C:149 src/lyxfunc.C:692
 msgid "Cancel"
 msgstr "Cancel.lar"
 
-#: src/LyXAction.C:149
+#: src/LyXAction.C:150
 msgid "Go one char back"
 msgstr "Retrocedir un caràcter"
 
-#: src/LyXAction.C:151
+#: src/LyXAction.C:152
 msgid "Go one char forward"
 msgstr "Avançar un caràcter"
 
-#: src/LyXAction.C:154
+#: src/LyXAction.C:155
 msgid "Insert citation"
 msgstr "Inserir cita"
 
-#: src/LyXAction.C:157
+#: src/LyXAction.C:158
 msgid "Execute command"
 msgstr "Executar comana"
 
-#: src/LyXAction.C:159 src/lyx_cb.C:2431
-msgid "Copy"
-msgstr "Copiar"
-
-#: src/LyXAction.C:160 src/lyx_cb.C:2443
-msgid "Cut"
-msgstr "Tallar"
-
-#: src/LyXAction.C:166
+#: src/LyXAction.C:167
 msgid "Decrement environment depth"
 msgstr "Reduir la profunditat de l'entorn"
 
-#: src/LyXAction.C:168
+#: src/LyXAction.C:169
 msgid "Increment environment depth"
 msgstr "Incrementar la profunditat de l'entorn"
 
-#: src/LyXAction.C:170
+#: src/LyXAction.C:171
 msgid "Change environment depth"
 msgstr "Canviar la profunditat de l'entorn"
 
-#: src/LyXAction.C:171
+#: src/LyXAction.C:172
 msgid "Insert ... dots"
 msgstr "Inserir punts suspensius"
 
-#: src/LyXAction.C:172
+#: src/LyXAction.C:173
 msgid "Go down"
 msgstr "Anar avall"
 
-#: src/LyXAction.C:174
+#: src/LyXAction.C:175
 msgid "Select next line"
 msgstr "Seleccionar la línia següent"
 
-#: src/LyXAction.C:176
+#: src/LyXAction.C:177
 msgid "Choose Paragraph Environment"
 msgstr "Triar l'entorn de paràgraf"
 
-#: src/LyXAction.C:178
+#: src/LyXAction.C:179
 msgid "Insert end of sentence period"
 msgstr "Inserir un punt i apart"
 
-#: src/LyXAction.C:179
+#: src/LyXAction.C:180
 msgid "Go to next error"
 msgstr "Anar al següent error"
 
-#: src/LyXAction.C:181
+#: src/LyXAction.C:182
 msgid "Remove all error boxes"
 msgstr "Eliminar tots els missatges d'error"
 
-#: src/LyXAction.C:182 src/lyx_cb.C:2383
+#: src/LyXAction.C:184
+#, fuzzy
+msgid "Insert a new ERT Inset"
+msgstr "Inserir llista d'index"
+
+#: src/LyXAction.C:185 src/lyx_cb.C:2925
 msgid "Insert Figure"
 msgstr "Inserir figura"
 
-#: src/LyXAction.C:187 src/lyxfr0.C:97
+#: src/LyXAction.C:187
+#, fuzzy
+msgid "Insert Graphics"
+msgstr "Inserir apèndix"
+
+#: src/LyXAction.C:192 src/lyxfr0.C:94
 msgid "Find & Replace"
 msgstr "Buscar i Substituir"
 
-#: src/LyXAction.C:189
+#: src/LyXAction.C:194
 msgid "Toggle bold"
 msgstr "Negreta si/no"
 
-#: src/LyXAction.C:190
+#: src/LyXAction.C:195
 msgid "Toggle code style"
 msgstr "Codi si/no"
 
-#: src/LyXAction.C:191
+#: src/LyXAction.C:196
 msgid "Default font style"
 msgstr "Estil de font per defecte"
 
-#: src/LyXAction.C:193
+#: src/LyXAction.C:198
 msgid "Toggle emphasize"
 msgstr "Cursiva Sí/No"
 
 # Je  suis pas sur d'italique
-#: src/LyXAction.C:194
+#: src/LyXAction.C:199
 msgid "Toggle user defined style"
 msgstr "Estil de l'usuari Sí/No"
 
-#: src/LyXAction.C:196
+#: src/LyXAction.C:201
 msgid "Toggle noun style"
 msgstr "Majúscules petites Sí/No"
 
-#: src/LyXAction.C:197
+#: src/LyXAction.C:202
 msgid "Toggle roman font style"
 msgstr "(Des)Activar font d'estil romà"
 
-#: src/LyXAction.C:199
+#: src/LyXAction.C:204
 msgid "Toggle sans font style"
 msgstr "(Des)Activar font d'estil sans sérif"
 
-#: src/LyXAction.C:200
+#: src/LyXAction.C:205
 msgid "Set font size"
 msgstr "Fixar tamany de font"
 
-#: src/LyXAction.C:201
+#: src/LyXAction.C:206
 msgid "Show font state"
 msgstr "Mostrar estat de la font"
 
-#: src/LyXAction.C:204
+#: src/LyXAction.C:209
 msgid "Toggle font underline"
 msgstr "(Des)Activar el subratllat"
 
-#: src/LyXAction.C:205
+#: src/LyXAction.C:210 src/LyXAction.C:213
 msgid "Insert Footnote"
 msgstr "Inserir nota a peu de pàgina"
 
-#: src/LyXAction.C:207
+#: src/LyXAction.C:214
 msgid "Select next char"
 msgstr "Seleccionar caràcter següent"
 
-#: src/LyXAction.C:210
+#: src/LyXAction.C:217
 msgid "Insert horizontal fill"
 msgstr "Inserir espai? horitzontal"
 
-#: src/LyXAction.C:213
+#: src/LyXAction.C:220
 msgid "Insert hyphenation point"
 msgstr "Inserir punt de separació"
 
-#: src/LyXAction.C:215
+#: src/LyXAction.C:222
 msgid "Insert index item"
 msgstr "Inserir element d'índex"
 
-#: src/LyXAction.C:217
+#: src/LyXAction.C:224
 msgid "Insert last index item"
 msgstr "Inserir últim element d'índex"
 
-#: src/LyXAction.C:218
+#: src/LyXAction.C:225
 msgid "Insert index list"
 msgstr "Inserir llista d'index"
 
-#: src/LyXAction.C:220
+#: src/LyXAction.C:227
 msgid "Turn off keymap"
 msgstr "Desactivar el mapa de teclat"
 
-#: src/LyXAction.C:223
+#: src/LyXAction.C:230
 msgid "Use primary keymap"
 msgstr "Utilitzar el mapa de teclat primari"
 
-#: src/LyXAction.C:225
+#: src/LyXAction.C:232
 msgid "Use secondary keymap"
 msgstr "Utilitzar el mapa de teclat secondari"
 
-#: src/LyXAction.C:226
+#: src/LyXAction.C:233
 msgid "Toggle keymap"
 msgstr "(Des)Activar el mapa de teclat"
 
-#: src/LyXAction.C:228
+#: src/LyXAction.C:235
 msgid "Insert Label"
 msgstr "Inserir etiqueta"
 
-#: src/LyXAction.C:230
+#: src/LyXAction.C:237
+#, fuzzy
+msgid "Change language"
+msgstr "Idioma"
+
+#: src/LyXAction.C:238
 msgid "View LaTeX log"
 msgstr "Visualitzar registre (log) de LaTeX"
 
-#: src/LyXAction.C:235
+#: src/LyXAction.C:243
 msgid "Copy paragraph environment type"
 msgstr "Copiar el tipus d'entorn de paràgraf"
 
-#: src/LyXAction.C:241
+#: src/LyXAction.C:249
 msgid "Paste paragraph environment type"
 msgstr "Enganxar el tipus d'entorn de paràgraf"
 
-#: src/LyXAction.C:248
+#: src/LyXAction.C:256
 msgid "Go to beginning of line"
 msgstr "Anar al principi de la línia"
 
-#: src/LyXAction.C:250
+#: src/LyXAction.C:258
 msgid "Select to beginning of line"
 msgstr "Seleccionar des del principi de línia"
 
-#: src/LyXAction.C:252
+#: src/LyXAction.C:260
 msgid "Go to end of line"
 msgstr "Anar al final de la línia"
 
-#: src/LyXAction.C:254
+#: src/LyXAction.C:262
 msgid "Select to end of line"
 msgstr "Seleccionar fins al final de la línia"
 
-#: src/LyXAction.C:256
+#: src/LyXAction.C:264
 msgid "Insert list of algorithms"
 msgstr "Inserir llista d'algorismes"
 
-#: src/LyXAction.C:258
+#: src/LyXAction.C:266
 msgid "Insert list of figures"
 msgstr "Inserir llista de figures"
 
-#: src/LyXAction.C:260
+#: src/LyXAction.C:268
 msgid "Insert list of tables"
 msgstr "Inserir llista de taules"
 
-#: src/LyXAction.C:261
+#: src/LyXAction.C:269
 msgid "Exit"
 msgstr "Sortir"
 
-#: src/LyXAction.C:263
+#: src/LyXAction.C:271
 msgid "Insert Margin note"
 msgstr "Inserir nota al marge"
 
-#: src/LyXAction.C:269
+#: src/LyXAction.C:277
 msgid "Math Greek"
 msgstr "Lletres -matemàtiques- Gregues"
 
-#: src/LyXAction.C:272
+#: src/LyXAction.C:280
 msgid "Insert math symbol"
 msgstr "Inserir símbol matemàtic"
 
-#: src/LyXAction.C:277
+#: src/LyXAction.C:285
 msgid "Math mode"
 msgstr "Mode Matemàtic"
 
-#: src/LyXAction.C:281 src/lyx_cb.C:2475
-msgid "Melt"
-msgstr "Incloure"
+#: src/LyXAction.C:296
+#, fuzzy
+msgid "Insert a new Number Inset"
+msgstr "Inserir Numéro de Pàgina|#P"
 
-#: src/LyXAction.C:289
+#: src/LyXAction.C:299
 msgid "Go one paragraph down"
 msgstr "Anar al següent paràgraf"
 
-#: src/LyXAction.C:291
+#: src/LyXAction.C:301
 msgid "Select next paragraph"
 msgstr "Seleccionar següent paràgraf"
 
-#: src/LyXAction.C:293
+#: src/LyXAction.C:303
 msgid "Go one paragraph up"
 msgstr "Anar al paràgraf anterior"
 
-#: src/LyXAction.C:295
+#: src/LyXAction.C:305
 msgid "Select previous paragraph"
 msgstr "Seleccionar paràgraf anterior"
 
-#: src/LyXAction.C:297 src/lyx_cb.C:2452
-msgid "Paste"
-msgstr "Enganxar"
-
-#: src/LyXAction.C:302
+#: src/LyXAction.C:312
 msgid "Insert protected space"
 msgstr "Inserir espai protegit"
 
-#: src/LyXAction.C:303
+#: src/LyXAction.C:313
 msgid "Insert quote"
 msgstr "Inserir cita"
 
-#: src/LyXAction.C:305
+#: src/LyXAction.C:315
 msgid "Reconfigure"
 msgstr "Reconfigurar"
 
-#: src/LyXAction.C:306 src/lyx_cb.C:2143
-msgid "Redo"
-msgstr "Refer"
-
-#: src/LyXAction.C:310
+#: src/LyXAction.C:320
 msgid "Insert cross reference"
 msgstr "Inserir referència creuada"
 
-#: src/LyXAction.C:332 src/lyx_cb.C:2395
+#: src/LyXAction.C:342 src/lyx_cb.C:2937
 msgid "Insert Table"
 msgstr "Inserir Taula"
 
-#: src/LyXAction.C:333
+#: src/LyXAction.C:344
+#, fuzzy
+msgid "Insert a new Tabular Inset"
+msgstr "Inserir Taula"
+
+#: src/LyXAction.C:345
 msgid "Toggle TeX style"
 msgstr "Passar a mode TeX"
 
-#: src/LyXAction.C:335
+#: src/LyXAction.C:347
+#, fuzzy
+msgid "Insert a new Text Inset"
+msgstr "Inserir llista d'index"
+
+#: src/LyXAction.C:349
 msgid "Insert table of contents"
 msgstr "Inserir taula de continguts"
 
-#: src/LyXAction.C:337
+#: src/LyXAction.C:351
 msgid "View table of contents"
 msgstr "Visualitzar taula de continguts"
 
-#: src/LyXAction.C:339
+#: src/LyXAction.C:353
 msgid "Toggle cursor does/doesn't follow the scrollbar"
 msgstr "(Des)Activar que el cursor segueixi la barra de scroll"
 
-#: src/LyXAction.C:343 src/lyx_cb.C:2123
-msgid "Undo"
-msgstr "Desfer"
-
-#: src/LyXAction.C:351
+#: src/LyXAction.C:365
 msgid "Register document under version control"
 msgstr ""
 
-#: src/LyXAction.C:575
+#: src/LyXAction.C:592
 msgid "No description available!"
 msgstr "Descripció no disponible !"
 
@@ -2054,493 +2640,437 @@ msgstr "Inserir Numéro de Pàgina|#P"
 msgid "Go to Reference|#G"
 msgstr "Anar a la Referència||#G"
 
-#: src/lyx_cb.C:290
+#: src/lyx_cb.C:218
 msgid "Save failed. Rename and try again?"
 msgstr "No s'ha pogut salvar. Renombrar i intentar-ho de nou ?"
 
-#: src/lyx_cb.C:292
+#: src/lyx_cb.C:220
 msgid "(If not, document is not saved.)"
 msgstr "(Sinó el document no es salvarà)"
 
-#: src/lyx_cb.C:315 src/lyxfunc.C:2458
+#: src/lyx_cb.C:243 src/lyxfunc.C:2760
 msgid "Templates"
 msgstr "Plantilles"
 
-#: src/lyx_cb.C:320
+#: src/lyx_cb.C:248
 msgid "Enter Filename to Save Document as"
 msgstr "Introduiu el nom amb què es guardarà el fitxer"
 
-#. Cancel: Do nothing
-#: src/lyx_cb.C:329 src/lyxfunc.C:2464 src/lyxfunc.C:2491 src/lyxfunc.C:2556
-#: src/lyxfunc.C:2605 src/lyxfunc.C:2630 src/lyxfunc.C:2640 src/lyxfunc.C:2685
-#: src/lyxfunc.C:2710 src/lyxfunc.C:2720 src/lyxfunc.C:2779
-msgid "Canceled."
-msgstr "Cancel.lat"
-
-#: src/lyx_cb.C:340
+#: src/lyx_cb.C:264
 msgid "Same name as document already has:"
 msgstr "El document ja tenia aquest nom:"
 
-#: src/lyx_cb.C:342
+#: src/lyx_cb.C:266
 msgid "Save anyway?"
 msgstr "Salvar-lo, tot i això ?"
 
-#: src/lyx_cb.C:348
+#: src/lyx_cb.C:272
 msgid "Another document with same name open!"
 msgstr "Hi ha un altre document obert amb aquest nom !"
 
-#: src/lyx_cb.C:350
+#: src/lyx_cb.C:274
 msgid "Replace with current document?"
 msgstr "Substituir amb el document actual ?"
 
-#: src/lyx_cb.C:358
+#: src/lyx_cb.C:282
 msgid "Document renamed to '"
 msgstr "Document renombrat com '"
 
-#: src/lyx_cb.C:360
+#: src/lyx_cb.C:283
 msgid "', but not saved..."
 msgstr "', però sense salvar..."
 
-#: src/lyx_cb.C:366
+#: src/lyx_cb.C:289
 msgid "Document already exists:"
 msgstr "El Document ja existeix"
 
-#: src/lyx_cb.C:368
+#: src/lyx_cb.C:291
 msgid "Replace file?"
 msgstr "Substituir el fitxer ?"
 
-#: src/lyx_cb.C:399 src/lyx_cb.C:429
+#: src/lyx_cb.C:322 src/lyx_cb.C:352
 msgid "One error detected"
 msgstr "Detectat un error"
 
-#: src/lyx_cb.C:400 src/lyx_cb.C:430
+#: src/lyx_cb.C:323 src/lyx_cb.C:353
 msgid "You should try to fix it."
 msgstr "L'haurieu de corregir"
 
-#: src/lyx_cb.C:403 src/lyx_cb.C:433
+#: src/lyx_cb.C:326 src/lyx_cb.C:356
 msgid " errors detected."
 msgstr " errors detectats"
 
-#: src/lyx_cb.C:404 src/lyx_cb.C:434
+#: src/lyx_cb.C:327 src/lyx_cb.C:357
 msgid "You should try to fix them."
 msgstr "Els haurieu de corregir"
 
-#: src/lyx_cb.C:406
+#: src/lyx_cb.C:329
 msgid "There were errors during the LaTeX run."
 msgstr "LaTeX ha generat errors"
 
-#: src/lyx_cb.C:419
+#: src/lyx_cb.C:342
 msgid "Wrong type of document"
 msgstr "Anar al final del document"
 
-#: src/lyx_cb.C:420
+#: src/lyx_cb.C:343
 msgid "The Build operation is not allowed in this document"
 msgstr ""
 
-#: src/lyx_cb.C:421 src/lyx_cb.C:436
+#: src/lyx_cb.C:344 src/lyx_cb.C:359
 msgid "There were errors during the Build process."
 msgstr "LaTeX ha generat errors"
 
-#: src/lyx_cb.C:447
+#: src/lyx_cb.C:370
 msgid "Chktex does not work with SGML derived documents."
 msgstr "Chktex no funciona amb documents derivats de SGML"
 
-#: src/lyx_cb.C:456
+#: src/lyx_cb.C:379
 msgid "No warnings found."
 msgstr "No hi ha hagut avisos"
 
-#: src/lyx_cb.C:458
+#: src/lyx_cb.C:381
 msgid "One warning found."
 msgstr "Hi ha hagut un avís"
 
-#: src/lyx_cb.C:459
+#: src/lyx_cb.C:382
 msgid "Use 'Edit->Go to Error' to find it."
 msgstr "Utilitzeu 'Edició->Anar a l'error' per trobar-lo."
 
-#: src/lyx_cb.C:462
+#: src/lyx_cb.C:385
 msgid " warnings found."
 msgstr " avisos."
 
-#: src/lyx_cb.C:463
+#: src/lyx_cb.C:386
 msgid "Use 'Edit->Go to Error' to find them."
 msgstr "Utilitzeu 'Edició->Anar a l'error' per trobar-los"
 
-#: src/lyx_cb.C:465
+#: src/lyx_cb.C:388
 msgid "Chktex run successfully"
 msgstr "Chktex no ha trobat cap error"
 
-#: src/lyx_cb.C:467
+#: src/lyx_cb.C:390
 msgid "It seems chktex does not work."
 msgstr "Chktex no ha funcionat."
 
-#: src/lyx_cb.C:553 src/lyx_cb.C:557
+#. It seems that, if wait is false, we never get back
+#. the return code of the command. This means that all
+#. the code I added in PrintApplyCB is currently
+#. useless...
+#. CHECK What should we do here?
+#: src/lyx_cb.C:483 src/lyx_cb.C:486
 msgid "Executing command:"
 msgstr "Executant la comanda:"
 
-#: src/lyx_cb.C:784 src/lyx_cb.C:822 src/lyx_cb.C:856 src/lyx_cb.C:884
-#: src/lyxfunc.C:2500
+#: src/lyx_cb.C:710 src/lyxfunc.C:2802
 msgid "File already exists:"
 msgstr "El fitxer ja existeix:"
 
-#: src/lyx_cb.C:786 src/lyx_cb.C:824 src/lyx_cb.C:858 src/lyx_cb.C:886
+#: src/lyx_cb.C:712
 msgid "Do you want to overwrite the file?"
 msgstr "Voleu sobreescriure el document?"
 
-#: src/lyx_cb.C:787 src/lyx_cb.C:825 src/lyx_cb.C:859 src/lyx_cb.C:887
+#: src/lyx_cb.C:713
 msgid "Canceled"
 msgstr "Cancel.lat"
 
-#: src/lyx_cb.C:793
+#: src/lyx_cb.C:734
 msgid "DocBook does not have a latex backend"
 msgstr ""
 
-#: src/lyx_cb.C:800
+#: src/lyx_cb.C:740
 msgid "Nice LaTeX file saved as"
 msgstr "Fitxer LaTeX perfecte salvat com"
 
-#: src/lyx_cb.C:812
+#: src/lyx_cb.C:753
 msgid "Document class must be linuxdoc."
 msgstr "La classe del document ha de ser linuxdoc"
 
-#: src/lyx_cb.C:829
+#: src/lyx_cb.C:764
 msgid "Building LinuxDoc SGML file `"
 msgstr "Creant el fitxer SGML LinuxDoc `"
 
-#: src/lyx_cb.C:834
+#: src/lyx_cb.C:769
 msgid "LinuxDoc SGML file save as"
 msgstr "Fitxer LinuxDoc SGML salvat com"
 
-#: src/lyx_cb.C:846
+#: src/lyx_cb.C:781
 msgid "Document class must be docbook."
 msgstr "La classe del document ha de ser docbook."
 
-#: src/lyx_cb.C:863
+#: src/lyx_cb.C:792
 msgid "Building DocBook SGML file `"
 msgstr "Construint el fitxer DocBook SGML `"
 
-#: src/lyx_cb.C:868
+#: src/lyx_cb.C:797
 msgid "DocBook SGML file save as"
 msgstr "Fitxer DocBook SGML salvat com"
 
-#: src/lyx_cb.C:893
+#: src/lyx_cb.C:817
 msgid "Ascii file saved as"
 msgstr "Fitxer Ascii salvat com"
 
-#: src/lyx_cb.C:937
+#: src/lyx_cb.C:862 src/lyx_cb.C:889 src/lyx_cb.C:914
 msgid "Document exported as HTML to file `"
 msgstr ""
 
-#: src/lyx_cb.C:940
+#: src/lyx_cb.C:865 src/lyx_cb.C:892 src/lyx_cb.C:917
 msgid "Unable to convert to HTML the file `"
 msgstr "Impossible la conversió a HTML del fitxer `"
 
-#: src/lyx_cb.C:997
+#: src/lyx_cb.C:983
 msgid "Unknown export type: "
 msgstr "No sé exportar a aquest tipus: "
 
-#: src/lyx_cb.C:1042
+#: src/lyx_cb.C:1028
 msgid "Autosaving current document..."
 msgstr "Autosalvat del document actual..."
 
-#: src/lyx_cb.C:1082
+#: src/lyx_cb.C:1068
 msgid "Autosave Failed!"
 msgstr "Ha fallat l'Autosalvat!"
 
-#: src/lyx_cb.C:1138
+#: src/lyx_cb.C:1124
 msgid "File to Insert"
 msgstr "Fitxer a inserir"
 
-#: src/lyx_cb.C:1148
+#: src/lyx_cb.C:1134
 msgid "Error! Specified file is unreadable: "
 msgstr ""
 
-#: src/lyx_cb.C:1155
+#: src/lyx_cb.C:1141
 msgid "Error! Cannot open specified file: "
 msgstr "Error! Impossible obrir el fitxer especificat: "
 
-#: src/lyx_cb.C:1193
+#: src/lyx_cb.C:1176
 msgid "Table Of Contents"
 msgstr "Taula de continguts"
 
-#: src/lyx_cb.C:1209 src/mathed/formula.C:1041
+#: src/lyx_cb.C:1192 src/mathed/formula.C:1044
 msgid "Enter new label to insert:"
 msgstr "Introduiu la nova etiqueta a inserir:"
 
-#: src/lyx_cb.C:1233
+#: src/lyx_cb.C:1216
 msgid "Insert Reference"
 msgstr "Inserir Referència"
 
-#: src/lyx_cb.C:1268
-msgid "Inserting Footnote..."
-msgstr "Inserir Nota a peu de pàgina..."
-
-#. Import file
-#: src/lyx_cb.C:1332
-msgid "Importing LinuxDoc SGML file `"
-msgstr "Important Fitxer LinuxDoc SGML `"
-
 #. TeX output asked
-#: src/lyx_cb.C:1340
+#: src/lyx_cb.C:1300
 msgid "Converting LinuxDoc SGML to TeX file..."
 msgstr "Convertint el fitxer LinuxDoc SGML a fitxer TeX...."
 
 #. dvi output asked
-#: src/lyx_cb.C:1347
+#: src/lyx_cb.C:1306
 msgid "Converting LinuxDoc SGML to dvi file..."
 msgstr "Convertint el fitxer LinuxDoc SGML a fitxer DVI..."
 
-#: src/lyx_cb.C:1400
+#: src/lyx_cb.C:1359
 msgid "Converting DocBook SGML to dvi file..."
 msgstr "Convertint el fitxer DocBook SGML a fitxer DVI..."
 
-#: src/lyx_cb.C:1515
+#: src/lyx_cb.C:1387
 msgid "Character Style"
 msgstr "Estil de caràcter"
 
-#: src/lyx_cb.C:1721
+#: src/lyx_cb.C:1597
 msgid "Paragraph Environment"
 msgstr "Entorn de paràgraf"
 
-#: src/lyx_cb.C:1976
+#: src/lyx_cb.C:1867
 msgid "Document Layout"
 msgstr "Format del document"
 
-#: src/lyx_cb.C:2015
+#: src/lyx_cb.C:1905
 msgid "Quotes"
 msgstr "Cometes"
 
-#: src/lyx_cb.C:2062
+#: src/lyx_cb.C:1953
 msgid "LaTeX Preamble"
 msgstr "Preamble LaTeX"
 
-#: src/lyx_cb.C:2079
+#: src/lyx_cb.C:1970
 msgid "Do you want to save the current settings"
 msgstr "Voleu salvar els paramètres actuals"
 
-#: src/lyx_cb.C:2080
+#: src/lyx_cb.C:1971
 msgid "for Character, Document, Paper and Quotes"
 msgstr "Per a Caràcter, Document, Paper i Cometes"
 
-#: src/lyx_cb.C:2081
+#: src/lyx_cb.C:1972
 msgid "as default for new documents?"
 msgstr "com a paràmetres per defecte pels nous documents?"
 
-#: src/lyx_cb.C:2097 src/lyx_cb.C:2110
-msgid "Open/Close..."
-msgstr "Obrir/Tancar"
-
-#: src/lyx_cb.C:2128
-msgid "No further undo information"
-msgstr "No hi ha més informació per desfer"
-
-#: src/lyx_cb.C:2138
-msgid "Redo not yet supported in math mode"
-msgstr "'Refer' no disponible en mode matemàtic"
-
-#: src/lyx_cb.C:2148
-msgid "No further redo information"
-msgstr "No hi ha més informació per Refer"
-
-#: src/lyx_cb.C:2337
-msgid "Font: "
-msgstr ""
-
-#: src/lyx_cb.C:2341
-msgid ", Depth: "
-msgstr ", Profunditat: "
-
-#: src/lyx_cb.C:2367
-msgid "Inserting margin note..."
-msgstr "Inserció d'una nota al marge..."
-
-#: src/lyx_cb.C:2408
-msgid "Paragraph environment type copied"
-msgstr "S'ha copiat el tipus d'entorn de paràgraf"
-
-#: src/lyx_cb.C:2417
-msgid "Paragraph environment type set"
-msgstr "Tipus d'entorn de paràgraf modificat"
-
-#: src/lyx_cb.C:2510
-msgid "Changed environment depth (in possible range, maybe not)"
-msgstr "Profunditat d'entorn modificada (dins del possible, potser no)"
-
-#: src/lyx_cb.C:2747
+#: src/lyx_cb.C:2212
 msgid "Paragraph layout set"
 msgstr "Format de paràgraf modificat"
 
-#: src/lyx_cb.C:2817
+#: src/lyx_cb.C:2287
 msgid "Should I set some parameters to"
 msgstr "Cal que modifiqui "
 
-#: src/lyx_cb.C:2819
+#: src/lyx_cb.C:2289
 msgid "the defaults of this document class?"
 msgstr "per fer-los paràmetres per defecte d'aquesta classe de documents?"
 
 #. unable to load new style
-#: src/lyx_cb.C:2828 src/lyx_cb.C:2946 src/lyx_cb.C:2953
+#: src/lyx_cb.C:2298 src/lyx_cb.C:2441 src/lyx_cb.C:2448
 msgid "Conversion Errors!"
 msgstr "Errors de Conversió!"
 
-#: src/lyx_cb.C:2829 src/lyx_cb.C:2954
+#: src/lyx_cb.C:2299 src/lyx_cb.C:2449
 msgid "Unable to switch to new document class."
 msgstr "Impossible canviar a la nova classe de documents."
 
-#: src/lyx_cb.C:2830 src/lyx_cb.C:2955
+#: src/lyx_cb.C:2300 src/lyx_cb.C:2450
 msgid "Reverting to original document class."
 msgstr "Tornant a la classe de document original."
 
-#: src/lyx_cb.C:2930
+#: src/lyx_cb.C:2426
 msgid "Converting document to new document class..."
 msgstr "Convertint el document a la nova classe..."
 
-#: src/lyx_cb.C:2941
+#: src/lyx_cb.C:2436
 msgid "One paragraph couldn't be converted"
 msgstr "Un paràgraf no s'ha pogut convertir"
 
-#: src/lyx_cb.C:2944
+#: src/lyx_cb.C:2439
 msgid " paragraphs couldn't be converted"
 msgstr " paràgrafs no s'han pogut convertir"
 
-#: src/lyx_cb.C:2947
+#: src/lyx_cb.C:2442
 msgid "into chosen document class"
 msgstr "a la classe escollida"
 
-#: src/lyx_cb.C:3033
+#: src/lyx_cb.C:2528
 msgid "Document layout set"
 msgstr "Possibles Formats de Document"
 
-#: src/lyx_cb.C:3079 src/lyx_cb.C:3083
-msgid "No more notes"
-msgstr "No hi ha més notes"
-
-#: src/lyx_cb.C:3112
+#: src/lyx_cb.C:2564
 msgid "Quotes type set"
 msgstr "Possibles Cometes"
 
-#: src/lyx_cb.C:3176
+#: src/lyx_cb.C:2626
 msgid "LaTeX preamble set"
 msgstr "Possibles Preambles LaTeX"
 
-#: src/lyx_cb.C:3197
+#: src/lyx_cb.C:2647
 msgid "Cannot insert table in table."
 msgstr "Impossible inserir un taula en una taula"
 
-#: src/lyx_cb.C:3202
+#: src/lyx_cb.C:2652
 msgid "Inserting table..."
 msgstr "Inserint taula..."
 
-#: src/lyx_cb.C:3264
+#: src/lyx_cb.C:2719
 msgid "Table inserted"
 msgstr "Taula inserida"
 
-#: src/lyx_cb.C:3320 src/lyx_cb.C:3338
+#: src/lyx_cb.C:2777 src/lyx_cb.C:2795
 msgid "ERROR!  Unable to print!"
 msgstr "Impossible imprimir"
 
-#: src/lyx_cb.C:3321
+#: src/lyx_cb.C:2778
 msgid "Check 'range of pages'!"
 msgstr ""
 
-#: src/lyx_cb.C:3339
+#: src/lyx_cb.C:2796
 msgid "Check 'number of copies'!"
 msgstr ""
 
-#: src/lyx_cb.C:3448
+#: src/lyx_cb.C:2905
 msgid "Error:"
 msgstr ""
 
-#: src/lyx_cb.C:3449
+#: src/lyx_cb.C:2906
 msgid "Unable to print"
 msgstr "Impossible imprimir"
 
-#: src/lyx_cb.C:3450
+#: src/lyx_cb.C:2907
 msgid "Check that your parameters are correct"
 msgstr "Verifiqueu que els paràmetres són correctes"
 
-#: src/lyx_cb.C:3471
+#: src/lyx_cb.C:2952
 msgid "Inserting figure..."
 msgstr "Inserint figura..."
 
-#: src/lyx_cb.C:3476 src/lyx_cb.C:3527
+#: src/lyx_cb.C:2957 src/lyx_cb.C:3009
 msgid "Figure inserted"
 msgstr "Figura inserida"
 
-#: src/lyx_cb.C:3557
+#: src/lyx_cb.C:3040
 msgid "Screen options set"
 msgstr "Opcions de pantalla"
 
-#: src/lyx_cb.C:3587
+#: src/lyx_cb.C:3070
 msgid "LaTeX Options"
 msgstr "Opcions de LaTeX"
 
-#: src/lyx_cb.C:3596
+#: src/lyx_cb.C:3079
 msgid "Running configure..."
 msgstr "Reconfigurant..."
 
-#: src/lyx_cb.C:3603
+#: src/lyx_cb.C:3086
 msgid "Reloading configuration..."
 msgstr "Carregant la configuració..."
 
-#: src/lyx_cb.C:3605
+#: src/lyx_cb.C:3088
 msgid "The system has been reconfigured."
 msgstr "El sistema s'ha reconfigurat"
 
-#: src/lyx_cb.C:3606
+#: src/lyx_cb.C:3089
 msgid "You need to restart LyX to make use of any"
 msgstr "Cal reinicialitzar LyX per utilitzar qualsevol"
 
-#: src/lyx_cb.C:3607
+#: src/lyx_cb.C:3090
 msgid "updated document class specifications."
 msgstr "especificació de classe de document actualitzada"
 
-#: src/lyx_cb.C:3725
+#: src/lyx_cb.C:3143
 msgid "Couldn't find this label"
 msgstr "Impossible trobar aquesta etiqueta"
 
-#: src/lyx_cb.C:3726
+#: src/lyx_cb.C:3144
 msgid "in current document."
 msgstr "en el document actual"
 
-#: src/lyx_cb.C:3758
+#: src/lyx_cb.C:3176
 msgid "*** No Document ***"
 msgstr "*** No hi ha Document ***"
 
-#: src/lyx_cb.C:3923
+#: src/lyx_cb.C:3327
 msgid "*** No labels found in document ***"
 msgstr "*** No s'han trobat etiquetes en el document ***"
 
-#: src/lyxfont.C:39
+#: src/lyxfont.C:37
 msgid "Roman"
 msgstr "Romana"
 
-#: src/lyxfont.C:39
+#: src/lyxfont.C:37
 msgid "Sans serif"
 msgstr "Sans Serif"
 
-#: src/lyxfont.C:39
+#: src/lyxfont.C:37
 msgid "Typewriter"
 msgstr "Màquina d'Escriure"
 
-#: src/lyxfont.C:39
+#: src/lyxfont.C:37
 msgid "Symbol"
 msgstr "Symbol"
 
-#: src/lyxfont.C:39 src/lyxfont.C:43 src/lyxfont.C:46 src/lyxfont.C:52
-#: src/lyxfont.C:60 src/lyxfont.C:65
+#: src/lyxfont.C:37 src/lyxfont.C:42 src/lyxfont.C:46 src/lyxfont.C:53
+#: src/lyxfont.C:57
 msgid "Inherit"
 msgstr "Heredar"
 
-#: src/lyxfont.C:40 src/lyxfont.C:43 src/lyxfont.C:47 src/lyxfont.C:52
-#: src/lyxfont.C:60 src/lyxfont.C:65
+#: src/lyxfont.C:38 src/lyxfont.C:42 src/lyxfont.C:47 src/lyxfont.C:53
+#: src/lyxfont.C:57
 msgid "Ignore"
 msgstr "Ignorar"
 
-#: src/lyxfont.C:43
+#: src/lyxfont.C:42
 msgid "Medium"
 msgstr "Mig"
 
-#: src/lyxfont.C:43
+#: src/lyxfont.C:42
 msgid "Bold"
 msgstr "Negreta"
 
@@ -2560,323 +3090,243 @@ msgstr "Inclinada"
 msgid "Smallcaps"
 msgstr "Majúscules Petites"
 
-#: src/lyxfont.C:50
+#: src/lyxfont.C:51
 msgid "Tiny"
 msgstr " Petita (4)"
 
-#: src/lyxfont.C:50
+#: src/lyxfont.C:51
 msgid "Smallest"
 msgstr "  Petita (3)"
 
-#: src/lyxfont.C:50
+#: src/lyxfont.C:51
 msgid "Smaller"
 msgstr "   Petita (2)"
 
-#: src/lyxfont.C:50
+#: src/lyxfont.C:51
 msgid "Small"
 msgstr "    Petita (1)"
 
-#: src/lyxfont.C:50
+#: src/lyxfont.C:51
 msgid "Normal"
 msgstr "     Normal"
 
-#: src/lyxfont.C:50
+#: src/lyxfont.C:51
 msgid "Large"
 msgstr "    Gran (1)"
 
-#: src/lyxfont.C:51
+#: src/lyxfont.C:52
 msgid "Larger"
 msgstr "   Gran (2)"
 
-#: src/lyxfont.C:51
+#: src/lyxfont.C:52
 msgid "Largest"
 msgstr "  Gran (3)"
 
-#: src/lyxfont.C:51
+#: src/lyxfont.C:52
 msgid "Huge"
 msgstr " Gran (4)"
 
-#: src/lyxfont.C:51
+#: src/lyxfont.C:52
 msgid "Huger"
 msgstr "Gran (5)"
 
-#: src/lyxfont.C:51
+#: src/lyxfont.C:52
 msgid "Increase"
 msgstr "<- Augmentar ->"
 
-#: src/lyxfont.C:51
+#: src/lyxfont.C:52
 msgid "Decrease"
 msgstr "-> Disminuir <-"
 
-#: src/lyxfont.C:55
-msgid "tiny"
-msgstr " petita (4)"
-
-#: src/lyxfont.C:55
-msgid "smallest"
-msgstr "  petita (3)"
-
-#: src/lyxfont.C:55
-msgid "smaller"
-msgstr "   petita (2)"
-
-#: src/lyxfont.C:55
-msgid "small"
-msgstr "    petita (1)"
-
-#: src/lyxfont.C:55
-msgid "normal"
-msgstr "     normal"
-
-#: src/lyxfont.C:55
-msgid "large"
-msgstr "    gran (1)"
-
-#: src/lyxfont.C:56
-msgid "larger"
-msgstr "   gran (2)"
-
-#: src/lyxfont.C:56
-msgid "largest"
-msgstr "  gran (3)"
-
-#: src/lyxfont.C:56
-msgid "huge"
-msgstr " gran (4)"
-
-#: src/lyxfont.C:56
-msgid "huger"
-msgstr "gran (5)"
-
-#: src/lyxfont.C:56
-msgid "increase"
-msgstr "<- augmentar ->"
-
-#: src/lyxfont.C:56
-msgid "decrease"
-msgstr "-> disminuir <-"
-
 #: src/lyxfont.C:57
-msgid "inherit"
-msgstr "Heredar"
-
-#: src/lyxfont.C:57
-msgid "ignore"
-msgstr "Ignorar"
-
-#: src/lyxfont.C:60
 msgid "Off"
 msgstr "Aturat"
 
-#: src/lyxfont.C:60
+#: src/lyxfont.C:57
 msgid "On"
 msgstr "en Marxa"
 
-#: src/lyxfont.C:60
+#: src/lyxfont.C:57
 msgid "Toggle"
 msgstr "(Des)Activar"
 
-#: src/lyxfont.C:63
-msgid "None"
-msgstr "Cap"
-
-#: src/lyxfont.C:63
-msgid "Black"
-msgstr "Negre"
-
-#: src/lyxfont.C:63
-msgid "White"
-msgstr "Blanc"
-
-#: src/lyxfont.C:63
-msgid "Red"
-msgstr "Vermell"
-
-#: src/lyxfont.C:63
-msgid "Green"
-msgstr "Verd"
-
-#: src/lyxfont.C:63
-msgid "Blue"
-msgstr "Blau"
-
-#: src/lyxfont.C:64
-msgid "Cyan"
-msgstr ""
-
-#: src/lyxfont.C:64
-msgid "Magenta"
-msgstr ""
-
-#: src/lyxfont.C:65
-msgid "Yellow"
-msgstr "Groc"
-
-#: src/lyxfont.C:65 src/menus.C:169 src/menus.C:277 src/menus.C:278
-#: src/menus.C:279
-msgid "Math"
-msgstr "Matemàtic"
-
-#: src/lyxfont.C:65
-msgid "Inset"
-msgstr ""
-
-#: src/lyxfont.C:359
+#: src/lyxfont.C:402
 msgid "Emphasis "
 msgstr "Èmfasi"
 
-#: src/lyxfont.C:361
+#: src/lyxfont.C:405
 msgid "Underline "
 msgstr "Subratllat"
 
-#: src/lyxfont.C:363
+#: src/lyxfont.C:408
 msgid "Noun "
 msgstr "Petites Majúscules"
 
-#: src/lyxfont.C:365
+#: src/lyxfont.C:410
 msgid "Latex "
 msgstr ""
 
-#: src/lyxfont.C:367
+#: src/lyxfont.C:416
 msgid "Default"
 msgstr "Per defecte"
 
-#: src/lyxfr1.C:149 src/lyxfr1.C:186
+#: src/lyxfont.C:417
+#, fuzzy
+msgid "Language: "
+msgstr "Idioma:"
+
+#: src/lyxfr1.C:124 src/lyxfr1.C:161
 msgid "Sorry!"
 msgstr "Ho sento!"
 
-#: src/lyxfr1.C:149 src/lyxfr1.C:186
+#: src/lyxfr1.C:124 src/lyxfr1.C:161
 msgid "You cannot replace a single space, nor an empty character."
 msgstr ""
 
-#: src/lyxfr1.C:217 src/lyxfr1.C:265
+#: src/lyxfr1.C:192 src/lyxfr1.C:239
 msgid "String not found!"
 msgstr "No s'ha trobat la cadena de caràcters!"
 
-#: src/lyxfr1.C:221
+#: src/lyxfr1.C:196
 msgid "1 string has been replaced."
 msgstr "1 cadena de caràcters ha estat substituida."
 
-#: src/lyxfr1.C:224
+#: src/lyxfr1.C:199
 msgid " strings have been replaced."
 msgstr ""
 
-#: src/lyxfr1.C:261
+#: src/lyxfr1.C:235
 msgid "Found."
 msgstr "Trobat."
 
-#: src/lyxfunc.C:260
+#: src/lyxfunc.C:282
 msgid "Unknown sequence:"
 msgstr "Seqüència Desconeguda:"
 
-#: src/lyxfunc.C:303 src/lyxfunc.C:2407
+#: src/lyxfunc.C:325 src/lyxfunc.C:2709
 msgid "Unknown action"
 msgstr "Acció Desconeguda"
 
 #. no
-#: src/lyxfunc.C:317
+#: src/lyxfunc.C:339
 msgid "Document is read-only"
 msgstr "Document de només lectura"
 
 #. no
-#: src/lyxfunc.C:322
+#: src/lyxfunc.C:344
 msgid "Command not allowed without any document open"
 msgstr "Commanda no autoritzada sense documents oberts"
 
-#: src/lyxfunc.C:545
+#: src/lyxfunc.C:585
 msgid "Text mode"
 msgstr "Mode Text"
 
-#: src/lyxfunc.C:751
+#: src/lyxfunc.C:743
+msgid "Saving document"
+msgstr "Salvant el document"
+
+#: src/lyxfunc.C:819
 msgid "Unknown import type: "
 msgstr "No sé importar des d'aquest tipus: "
 
-#: src/lyxfunc.C:1079
+#: src/lyxfunc.C:1159
 msgid "Layout "
 msgstr "Format"
 
-#: src/lyxfunc.C:1080
+#: src/lyxfunc.C:1160
 msgid " not known"
 msgstr " desconegut"
 
-#: src/lyxfunc.C:1222
+#: src/lyxfunc.C:1320
 msgid "No cross-reference to toggle"
 msgstr " Pas de referència croisée a (dés)activer"
 
-#: src/lyxfunc.C:1573
+#: src/lyxfunc.C:1712
 msgid "Mark removed"
 msgstr "Marque enlevée"
 
-#: src/lyxfunc.C:1578
+#: src/lyxfunc.C:1717
 msgid "Mark set"
 msgstr "Marque posée"
 
-#: src/lyxfunc.C:1681
+#: src/lyxfunc.C:1837
 msgid "Mark off"
 msgstr "Marque Désactivée"
 
-#: src/lyxfunc.C:1691
+#: src/lyxfunc.C:1847
 msgid "Mark on"
 msgstr "Marque Activée"
 
-#: src/lyxfunc.C:1992
+#: src/lyxfunc.C:2020
+#, fuzzy
+msgid "Unknown spacing argument: "
+msgstr "Argument manquant"
+
+#: src/lyxfunc.C:2258
 msgid "Push-toolbar needs argument > 0"
 msgstr "La barre d'outils nécessite un nombre d'arguments > 0"
 
-#: src/lyxfunc.C:2010
+#: src/lyxfunc.C:2276
 msgid "Usage: toolbar-add-to <LyX command>"
 msgstr "Usage:  toolbar-add-to <commande LyX>"
 
-#: src/lyxfunc.C:2034 src/mathed/formula.C:864
+#: src/lyxfunc.C:2293 src/mathed/formula.C:866
 msgid "Math greek mode on"
 msgstr "Mode matemàtic grec actiu"
 
-#: src/lyxfunc.C:2045 src/mathed/formula.C:875
+#: src/lyxfunc.C:2304 src/mathed/formula.C:877
 msgid "Math greek keyboard on"
 msgstr "Teclat matemàtic grec actiu"
 
-#: src/lyxfunc.C:2047 src/mathed/formula.C:877
+#: src/lyxfunc.C:2306 src/mathed/formula.C:879
 msgid "Math greek keyboard off"
 msgstr "Mode matemàtic grec inactiu"
 
-#: src/lyxfunc.C:2082
+#: src/lyxfunc.C:2344
 msgid "Missing argument"
 msgstr "Argument manquant"
 
-#. / what appears in the minibuffer when opening
-#: src/lyxfunc.C:2098 src/mathed/formula.h:73
+#: src/lyxfunc.C:2360 src/mathed/formula.C:461
 msgid "Math editor mode"
 msgstr "Mode editor matemàtic"
 
-#: src/lyxfunc.C:2105
+#: src/lyxfunc.C:2367
 msgid "This is only allowed in math mode!"
 msgstr "Ceci n'est autorisé qu'en mode matemàtic!"
 
-#: src/lyxfunc.C:2259
+#: src/lyxfunc.C:2521
 msgid "Opening child document "
 msgstr "Ouverture del document fils"
 
-#: src/lyxfunc.C:2291
+#: src/lyxfunc.C:2553
 msgid "Unknown kind of footnote"
 msgstr "Type de note de bas de page desconegut"
 
-#: src/lyxfunc.C:2360
+#: src/lyxfunc.C:2657
 msgid "No document open"
 msgstr "Cap document obert"
 
-#: src/lyxfunc.C:2366
+#: src/lyxfunc.C:2663
 msgid "Document is read only"
 msgstr "El Document és de només lectura"
 
-#: src/lyxfunc.C:2459
+#: src/lyxfunc.C:2761
 msgid "Enter Filename for new document"
 msgstr "Introduiu el nom de fitxer del document nou"
 
-#: src/lyxfunc.C:2460
+#: src/lyxfunc.C:2762
 msgid "newfile"
 msgstr "fitxerNou"
 
-#: src/lyxfunc.C:2479 src/lyxfunc.C:2618 src/lyxfunc.C:2697
+#. Cancel: Do nothing
+#: src/lyxfunc.C:2766 src/lyxfunc.C:2793 src/lyxfunc.C:2858 src/lyxfunc.C:2907
+#: src/lyxfunc.C:2932 src/lyxfunc.C:2942 src/lyxfunc.C:2987 src/lyxfunc.C:3012
+#: src/lyxfunc.C:3022 src/lyxfunc.C:3079 src/lyxfunc.C:3104 src/lyxfunc.C:3114
+#: src/lyxfunc.C:3170
+msgid "Canceled."
+msgstr "Cancel.lat"
+
+#: src/lyxfunc.C:2781 src/lyxfunc.C:2920 src/lyxfunc.C:2999 src/lyxfunc.C:3091
 msgid ""
 "Do you want to close that document now?\n"
 "('No' will just switch to the open version)"
@@ -2884,125 +3334,147 @@ msgstr ""
 "Voleu tancar el document ara?\n"
 "(si responeu 'No' continuarà l'edició)"
 
-#: src/lyxfunc.C:2502
+#: src/lyxfunc.C:2804
 msgid "Do you want to open the document?"
 msgstr "Voleu obrir el document?"
 
 #. loads document
-#: src/lyxfunc.C:2504 src/lyxfunc.C:2567
+#: src/lyxfunc.C:2806 src/lyxfunc.C:2869
 msgid "Opening document"
 msgstr "Ouverture del document en cours"
 
-#: src/lyxfunc.C:2511 src/lyxfunc.C:2574
+#: src/lyxfunc.C:2813 src/lyxfunc.C:2876
 msgid "opened."
 msgstr "ouvert."
 
-#: src/lyxfunc.C:2520
+#: src/lyxfunc.C:2822
 msgid "Choose template"
 msgstr "Choisissez el patron"
 
-#: src/lyxfunc.C:2548 src/lyxfunc.C:2597 src/lyxfunc.C:2670 src/lyxfunc.C:2771
+#: src/lyxfunc.C:2850 src/lyxfunc.C:2899 src/lyxfunc.C:2972 src/lyxfunc.C:3069
+#: src/lyxfunc.C:3162
 msgid "Examples"
 msgstr "Exemples"
 
-#: src/lyxfunc.C:2550
+#: src/lyxfunc.C:2852
 msgid "Select Document to Open"
 msgstr "Seleccioneu el document a obrir"
 
-#: src/lyxfunc.C:2576
+#: src/lyxfunc.C:2878
 msgid "Could not open document"
 msgstr "Impossible obrir el document"
 
-#: src/lyxfunc.C:2599
+#: src/lyxfunc.C:2901
 msgid "Select ASCII file to Import"
 msgstr "Sélectionne el fitxer ASCII a importer"
 
-#: src/lyxfunc.C:2637 src/lyxfunc.C:2717
+#: src/lyxfunc.C:2939 src/lyxfunc.C:3019 src/lyxfunc.C:3111
 msgid "A document by the name"
 msgstr "Un document possède el même nom"
 
-#: src/lyxfunc.C:2639 src/lyxfunc.C:2719
+#: src/lyxfunc.C:2941 src/lyxfunc.C:3021 src/lyxfunc.C:3113
 msgid "already exists. Overwrite?"
 msgstr "Écraser?"
 
-#: src/lyxfunc.C:2645
+#: src/lyxfunc.C:2947
 msgid "Importing ASCII file"
 msgstr "Importation del fitxer ASCII en cours..."
 
-#: src/lyxfunc.C:2649
+#: src/lyxfunc.C:2951
 msgid "ASCII file "
 msgstr "fitxer ASCII"
 
-#: src/lyxfunc.C:2651 src/lyxfunc.C:2742
+#: src/lyxfunc.C:2953 src/lyxfunc.C:3044 src/lyxfunc.C:3135
 msgid "imported."
 msgstr "importé"
 
-#: src/lyxfunc.C:2674
+#: src/lyxfunc.C:2976
 msgid "Select Noweb file to Import"
 msgstr "Seleccionar el fitxer LaTeX a importer"
 
-#: src/lyxfunc.C:2677
+#: src/lyxfunc.C:2979
 msgid "Select LaTeX file to Import"
 msgstr "Seleccionar el fitxer LaTeX a importer"
 
-#: src/lyxfunc.C:2727
+#: src/lyxfunc.C:3029
 msgid "Importing LaTeX file"
 msgstr "Importation del fitxer LaTeX en cours..."
 
-#: src/lyxfunc.C:2732
+#: src/lyxfunc.C:3034
 msgid "Importing Noweb file"
 msgstr "Importation del fitxer LaTeX en cours..."
 
-#: src/lyxfunc.C:2740
+#: src/lyxfunc.C:3042
 msgid "Noweb file "
 msgstr "fitxer LaTeX "
 
-#: src/lyxfunc.C:2740
+#: src/lyxfunc.C:3042
 msgid "LateX file "
 msgstr "fitxer LaTeX "
 
-#: src/lyxfunc.C:2745
+#: src/lyxfunc.C:3047
 msgid "Could not import Noweb file"
 msgstr "Impossible obrir el fitxer LaTeX"
 
-#: src/lyxfunc.C:2746
+#: src/lyxfunc.C:3048
 msgid "Could not import LaTeX file"
 msgstr "Impossible obrir el fitxer LaTeX"
 
-#: src/lyxfunc.C:2773
+#: src/lyxfunc.C:3072
+#, fuzzy
+msgid "Select LinuxDoc file to Import"
+msgstr "Seleccionar el fitxer LaTeX a importer"
+
+#. loads document
+#: src/lyxfunc.C:3119
+#, fuzzy
+msgid "Importing LinuxDoc file"
+msgstr "Important Fitxer LinuxDoc SGML `"
+
+#: src/lyxfunc.C:3133
+#, fuzzy
+msgid "LinuxDoc file "
+msgstr "Fitxer LinuxDoc SGML salvat com"
+
+#: src/lyxfunc.C:3137
+#, fuzzy
+msgid "Could not import LinuxDoc file"
+msgstr "Impossible obrir el fitxer LaTeX"
+
+#: src/lyxfunc.C:3164
 msgid "Select Document to Insert"
 msgstr "Seleccionar el document a inserir"
 
 #. Inserts document
-#: src/lyxfunc.C:2791
+#: src/lyxfunc.C:3182
 msgid "Inserting document"
 msgstr "Insertion del document en cours"
 
-#: src/lyxfunc.C:2797
+#: src/lyxfunc.C:3188
 msgid "inserted."
 msgstr "inséré"
 
-#: src/lyxfunc.C:2799
+#: src/lyxfunc.C:3190
 msgid "Could not insert document"
 msgstr "Impossible inserir el document"
 
-#: src/lyx_gui.C:381 src/lyx_gui.C:384
+#: src/lyx_gui.C:357 src/lyx_gui.C:360
 msgid " None | Defskip | Smallskip | Medskip | Bigskip | VFill | Length "
 msgstr "Cap | Defecte | Petit  | Mitjà | Gran | VFill | Llargada "
 
-#: src/lyx_gui.C:410
+#: src/lyx_gui.C:381
 msgid " No change %l| Roman | Sans Serif | Typewriter %l| Reset "
 msgstr "Igual %l| Romana | Sans Serif | Màquina d'Escriure %l| Reiniciar "
 
-#: src/lyx_gui.C:412
+#: src/lyx_gui.C:383
 msgid " No change %l| Medium | Bold %l| Reset "
 msgstr "Igual %l| Mig | Negreta %l| Reiniciar"
 
-#: src/lyx_gui.C:414
+#: src/lyx_gui.C:385
 msgid " No change %l| Upright | Italic | Slanted | Small Caps %l| Reset "
 msgstr "Igual %l| Recta | Itàlica | Inclinada | Maj. petites %l| Reiniciar "
 
-#: src/lyx_gui.C:417
+#: src/lyx_gui.C:388
 msgid ""
 " No change %l| Tiny | Smallest | Smaller | Small | Normal | Large | Larger | "
 "Largest | Huge | Huger %l| Increase | Decrease | Reset "
@@ -3011,11 +3483,11 @@ msgstr ""
 "Gran (2) | Gran (3) | Gran (4) | Gran (5) | <- Augmentar -> | -> Disminuir "
 "<- | Reiniciar"
 
-#: src/lyx_gui.C:421
+#: src/lyx_gui.C:392
 msgid " No change %l| Emph | Underbar | Noun | LaTeX mode %l| Reset "
 msgstr "Igual %l| Itàlica | Subratllat | Noms | mode LaTeX %l | Reiniciar "
 
-#: src/lyx_gui.C:423
+#: src/lyx_gui.C:394
 msgid ""
 " No change %l| No color | Black | White | Red | Green | Blue | Cyan | "
 "Magenta | Yellow %l| Reset "
@@ -3023,15 +3495,15 @@ msgstr ""
 "Igual %l| Sense color | Negre | Blanc | Vermell | Verd | Blau | Cyan | "
 "Magenta | Groc %l | Reiniciar"
 
-#: src/lyx_gui.C:434
+#: src/lyx_gui.C:411
 msgid " Single | OneHalf | Double | Other "
 msgstr "Simple | Un i mig | Doble | Altre "
 
-#: src/lyx_gui.C:473
+#: src/lyx_gui.C:455
 msgid " Smallskip | Medskip | Bigskip | Length "
 msgstr "Espai Petit | Espai Mitjà | Espai Gran | Llargada "
 
-#: src/lyx_gui.C:485
+#: src/lyx_gui.C:467
 msgid ""
 " Default | Custom | USletter | USlegal | USexecutive | A3 | A4 | A5 | B3 | "
 "B4 | B5 "
@@ -3039,7 +3511,7 @@ msgstr ""
 "Per defecte | Personalitzada | Carta US | Legal US | Executiu US | A3 | A4 | "
 "A5 | B3 | B4 | B5 "
 
-#: src/lyx_gui.C:488
+#: src/lyx_gui.C:470
 msgid ""
 " None | A4 small Margins (only portrait) | A4 very small Margins (only "
 "portrait) | A4 very wide margins (only portrait) "
@@ -3047,139 +3519,137 @@ msgstr ""
 "Cap | A4 marges petits (només retrat) | A4 marges molt petits (només retrat) "
 "| A4 marges molt grans (només retrat) "
 
-#: src/lyx_gui.C:534
+#: src/lyx_gui.C:516
 msgid " ``text'' | ''text'' | ,,text`` | ,,text'' | «text» | »text« "
 msgstr " ``text'' | ''text'' | ,,text`` | ,,text'' | «text» | »text« "
 
-#: src/lyx_gui.C:614
+#: src/lyx_gui.C:600
 msgid "LyX Banner"
 msgstr "Bandera de LyX"
 
-#: src/lyx_gui_misc.C:356
+#: src/lyx_gui_misc.C:354
 msgid "Dismiss"
 msgstr "Entesos"
 
-#: src/lyx_gui_misc.C:373 src/lyx_gui_misc.C:386 src/lyx_gui_misc.C:391
-#: src/lyx_gui_misc.C:397
+#: src/lyx_gui_misc.C:371 src/lyx_gui_misc.C:380 src/lyx_gui_misc.C:384
 msgid "Yes|Yy#y"
 msgstr "Sí|Ss#s"
 
-#: src/lyx_gui_misc.C:374 src/lyx_gui_misc.C:387 src/lyx_gui_misc.C:392
-#: src/lyx_gui_misc.C:398
+#: src/lyx_gui_misc.C:372 src/lyx_gui_misc.C:381 src/lyx_gui_misc.C:385
 msgid "No|Nn#n"
 msgstr "No|Nn#n"
 
-#: src/lyx_gui_misc.C:410
+#: src/lyx_gui_misc.C:396
 msgid "Clear|#e"
 msgstr "Buida"
 
-#: src/lyx_gui_misc.C:423
+#: src/lyx_gui_misc.C:409
 msgid "Any changes will be ignored"
 msgstr "Tots els canvis s'ignoraran"
 
-#: src/lyx_gui_misc.C:424
+#: src/lyx_gui_misc.C:410
 msgid "The document is read-only:"
 msgstr "El document és de només lectura"
 
-#: src/lyx_main.C:183
+#: src/lyx_main.C:185
 msgid "Warning: could not determine path of binary."
 msgstr "Avís: Impossible trobar el camí del binari."
 
-#: src/lyx_main.C:185
+#: src/lyx_main.C:187
 msgid "If you have problems, try starting LyX with an absolute path."
 msgstr "En cas de problemes, executeu LyX amb el camí complet."
 
-#: src/lyx_main.C:275
+#: src/lyx_main.C:277
 msgid "LYX_DIR_11x environment variable no good."
 msgstr "La variable d'entorn LYX_DIR_11x no és vàlida"
 
-#: src/lyx_main.C:277
+#: src/lyx_main.C:279
 msgid "System directory set to: "
 msgstr "El directori de sistema és: "
 
-#: src/lyx_main.C:285
+#: src/lyx_main.C:287
 msgid "LyX Warning! Couldn't determine system directory."
 msgstr "Avís LyX: Impossible determinar el directori de sistema."
 
-#: src/lyx_main.C:286
+#: src/lyx_main.C:288
 msgid "Try the '-sysdir' command line parameter or"
 msgstr "A la línia  de comandes, proveu d'utilitzar el paràmetre '-sysdir' o"
 
-#: src/lyx_main.C:287
+#: src/lyx_main.C:289
 msgid "set the environment variable LYX_DIR_11x to the LyX system directory"
 msgstr "fixeu la variable d'entorn LYX_DIR_11x al directori del sistema LyX"
 
-#: src/lyx_main.C:289
+#: src/lyx_main.C:291
 msgid "containing the file `chkconfig.ltx'."
 msgstr "que contingui el fitxer  `chkconfig.ltx'."
 
-#: src/lyx_main.C:291
+#: src/lyx_main.C:293
 msgid "Using built-in default "
 msgstr "Utilitzant els paràmetres per defecte."
 
-#: src/lyx_main.C:292
+#: src/lyx_main.C:294
 msgid " but expect problems."
 msgstr " ara bé, prepareu-vos per problemes"
 
-#: src/lyx_main.C:295
+#: src/lyx_main.C:297
 msgid "Expect problems."
 msgstr "Prepareu-vos per problemes"
 
 #. Nope
-#: src/lyx_main.C:394
+#: src/lyx_main.C:402
 msgid "You don't have a personal LyX directory."
 msgstr "No teniu un directori personal LyX."
 
-#: src/lyx_main.C:395
+#: src/lyx_main.C:403
 msgid "It is needed to keep your own configuration."
 msgstr "És necessari per la vostra pròpia configuració."
 
-#: src/lyx_main.C:396
+#: src/lyx_main.C:404
 msgid "Should I try to set it up for you (recommended)?"
 msgstr "Ho faig per vós (es recomana)?"
 
-#: src/lyx_main.C:397
+#: src/lyx_main.C:405
 msgid "Running without personal LyX directory."
 msgstr "Funcionant sense directori personal"
 
 #. Tell the user what is going on
-#: src/lyx_main.C:404
+#: src/lyx_main.C:412
 msgid "LyX: Creating directory "
 msgstr "LyX: Creant el directori "
 
-#: src/lyx_main.C:405
+#: src/lyx_main.C:413
 msgid " and running configure..."
 msgstr " i reconfigurant..."
 
-#: src/lyx_main.C:411
+#: src/lyx_main.C:419
 msgid "Failed. Will use "
 msgstr "Ha fallat. S'utilitzarà "
 
-#: src/lyx_main.C:412
+#: src/lyx_main.C:420
 msgid " instead."
 msgstr " enlloc."
 
-#: src/lyx_main.C:419
+#: src/lyx_main.C:427
 msgid "Done!"
 msgstr "Fet!"
 
-#: src/lyx_main.C:433
+#: src/lyx_main.C:441
 msgid "LyX Warning!"
 msgstr "Avís LyX!"
 
-#: src/lyx_main.C:434
+#: src/lyx_main.C:442
 msgid "Error while reading "
 msgstr "Error llegint "
 
-#: src/lyx_main.C:435
+#: src/lyx_main.C:443
 msgid "Using built-in defaults."
 msgstr "Utilitzant valors per defecte."
 
-#: src/lyx_main.C:445
+#: src/lyx_main.C:453
 msgid "Setting debug level to "
 msgstr "Nivell de depuració:"
 
-#: src/lyx_main.C:456
+#: src/lyx_main.C:464
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
 "Command line switches (case sensitive):\n"
@@ -3192,38 +3662,34 @@ msgid ""
 "\t-dbg feature[,feature]...\n"
 "                  select the features to debug.\n"
 "                  Type `lyx -dbg' to see the list of features\n"
-"\t-Reverse        swaps foreground & background colors\n"
-"\t-Mono           runs LyX in black and white mode\n"
-"\t-FastSelection  use a fast routine for drawing selections\n"
-"\n"
 "Check the LyX man page for more options."
 msgstr ""
 
-#: src/lyx_main.C:492
+#: src/lyx_main.C:497
 msgid "List of supported debug flags:"
 msgstr ""
 
-#: src/lyx_main.C:511
+#: src/lyx_main.C:515
 msgid "Missing directory for -sysdir switch!"
 msgstr "Falta el paràmetre de la opció -sysdir!"
 
-#: src/lyx_main.C:537
+#: src/lyx_main.C:542
 msgid "Missing command string after  -x switch!"
 msgstr "Falta el paràmetre de la opció -x!"
 
-#: src/lyx_main.C:563
+#: src/lyx_main.C:568
 msgid "Unknown file type '"
 msgstr "Desconec el tipus de fitxer '"
 
-#: src/lyx_main.C:564
+#: src/lyx_main.C:569
 msgid "' after "
 msgstr "' després de la opció "
 
-#: src/lyx_main.C:565 src/lyx_main.C:570
+#: src/lyx_main.C:570 src/lyx_main.C:574
 msgid " switch!"
 msgstr " !"
 
-#: src/lyx_main.C:568
+#: src/lyx_main.C:572
 msgid "Missing file type [eg latex, ps...] after "
 msgstr ""
 
@@ -3267,132 +3733,131 @@ msgstr "Destí:"
 msgid "Comment:"
 msgstr "Comentari:"
 
-#: src/lyx_sendfax_main.C:38
+#: src/lyx_sendfax_main.C:40
 msgid "Fax File: "
 msgstr "Fitxer Fax: "
 
-#: src/lyx_sendfax_main.C:148 src/lyx_sendfax_main.C:195
-#: src/lyx_sendfax_main.C:234 src/lyx_sendfax_main.C:268
+#: src/lyx_sendfax_main.C:150 src/lyx_sendfax_main.C:197
+#: src/lyx_sendfax_main.C:236 src/lyx_sendfax_main.C:270
 msgid "Empty Phonebook"
 msgstr "Llistí telefònic buit"
 
-#: src/lyx_sendfax_main.C:207 src/lyx_sendfax_main.C:246
+#: src/lyx_sendfax_main.C:209 src/lyx_sendfax_main.C:248
 msgid "Save (needed)"
 msgstr "Salvar (necessari)"
 
-#: src/lyx_sendfax_main.C:262
+#: src/lyx_sendfax_main.C:264
 msgid "Cannot open phone book: "
 msgstr "Impossible obrir el llistí telefònic"
 
-#: src/lyx_sendfax_main.C:290
+#: src/lyx_sendfax_main.C:292
 msgid "NO OR EMPTY LOGFILE!"
 msgstr "FITXER DE REGISTRE BUIT O INEXISTENT"
 
-#: src/lyx_sendfax_main.C:297
+#: src/lyx_sendfax_main.C:299
 msgid "Message-Window"
 msgstr "Finestra de Missatges"
 
-#: src/lyx_sendfax_main.C:328
+#: src/lyx_sendfax_main.C:330
 msgid "@L@b@cEmpty Phonebook"
 msgstr "@L@b@cLlistí Telefònic Buit"
 
-#: src/lyx_sendfax_main.C:330
+#: src/lyx_sendfax_main.C:332
 msgid "Phonebook"
 msgstr "Llistí Telefònic"
 
-#: src/LyXSendto.C:38
+#: src/LyXSendto.C:39
 msgid "Send Document to Command"
 msgstr "Enviar document a comanda"
 
-#: src/lyxvc.C:93 src/lyxvc.C:125
+#: src/lyxvc.C:93 src/lyxvc.C:126
 msgid "Save document and proceed?"
 msgstr "Salvar Document ?"
 
-#: src/lyxvc.C:105
+#: src/lyxvc.C:106
 msgid "LyX VC: Initial description"
 msgstr "LyX VC: Descripció Inicial"
 
-#: src/lyxvc.C:106
+#: src/lyxvc.C:107
 msgid "(no initial description)"
 msgstr "LyX VC: Descripció Inicial"
 
-#: src/lyxvc.C:110
+#: src/lyxvc.C:111
 msgid "Info"
 msgstr "Ignorar"
 
-#: src/lyxvc.C:111
+#: src/lyxvc.C:112
 msgid "This document has NOT been registered."
 msgstr ""
 
-#: src/lyxvc.C:137
+#: src/lyxvc.C:138
 msgid "LyX VC: Log Message"
 msgstr "LyX VC: Missatge del Registre (Log)"
 
-#: src/lyxvc.C:140
+#: src/lyxvc.C:141
 msgid "(no log message)"
 msgstr ""
 
-#: src/lyxvc.C:155
+#: src/lyxvc.C:156
 msgid "Ignore changes and proceed with check out?"
 msgstr "Ignorar les modificacions i passar a comprovar (check out) ?"
 
 #. Here we should check if the buffer is dirty. And if it is
 #. we should warn the user that reverting will discard all
 #. changes made since the last check in.
-#: src/lyxvc.C:170
+#: src/lyxvc.C:171
 msgid "When you revert, you will loose all changes made"
 msgstr "Si volqueu la versió precedent, perdreu totes les modificacions fetes"
 
-#: src/lyxvc.C:171
+#: src/lyxvc.C:172
 msgid "to the document since the last check in."
 msgstr "al document després de l'última comprovació (check-in)"
 
-#: src/lyxvc.C:172
+#: src/lyxvc.C:173
 msgid "Do you still want to do it?"
 msgstr "Encara ho voleu fer ?"
 
-#: src/lyxvc.C:275
+#: src/lyxvc.C:276
 msgid "No VC History!"
 msgstr "No hi ha historial VC"
 
-#: src/lyxvc.C:282
+#: src/lyxvc.C:283
 msgid "VC History"
 msgstr "Historial VC"
 
-#: src/LyXView.C:410 src/minibuffer.C:218
+#: src/LyXView.C:467 src/minibuffer.C:231
 msgid " (Changed)"
 msgstr "(Modificat)"
 
-#: src/LyXView.C:412
+#: src/LyXView.C:469
 msgid " (read only)"
 msgstr "(Només lectura)"
 
-#: src/mathed/formula.C:892 src/mathed/formula.C:1188
+#: src/mathed/formula.C:894 src/mathed/formula.C:1191
 msgid "TeX mode"
 msgstr "mode TeX"
 
-#: src/mathed/formula.C:907
+#: src/mathed/formula.C:909
 msgid "No number"
 msgstr "No número"
 
-#: src/mathed/formula.C:910
+#: src/mathed/formula.C:912
 msgid "Number"
 msgstr "Número"
 
-#: src/mathed/formula.C:1073
+#: src/mathed/formula.C:1076
 msgid "math text mode"
 msgstr "Mode text matemàtic"
 
-#: src/mathed/formula.C:1082
+#: src/mathed/formula.C:1085
 msgid "Invalid action in math mode!"
 msgstr "Acció invàlida en mode matemàtic!"
 
-#: src/mathed/formulamacro.C:144 src/mathed/formulamacro.C:168
+#: src/mathed/formulamacro.C:137 src/mathed/formulamacro.C:163
 msgid "Macro: "
 msgstr ""
 
-#. / what appears in the minibuffer when opening
-#: src/mathed/formulamacro.h:62
+#: src/mathed/formulamacro.C:173
 msgid "Math macro editor mode"
 msgstr "Mode editor matemàtic de macros"
 
@@ -3404,181 +3869,186 @@ msgstr "Tancar "
 msgid "Functions"
 msgstr "Funcions"
 
-#: src/mathed/math_forms.C:28
-msgid "Greek"
-msgstr "Grec"
-
-#: src/mathed/math_forms.C:32
+#: src/mathed/math_forms.C:30
 msgid "­ Û"
 msgstr ""
 
-#: src/mathed/math_forms.C:36
+#: src/mathed/math_forms.C:34
 msgid "± ´"
 msgstr ""
 
-#: src/mathed/math_forms.C:40
+#: src/mathed/math_forms.C:38
 msgid "£ @"
 msgstr ""
 
-#: src/mathed/math_forms.C:44
+#: src/mathed/math_forms.C:42
 msgid "S  ò"
 msgstr ""
 
-#: src/mathed/math_forms.C:48
+#: src/mathed/math_forms.C:46
 msgid "Misc"
 msgstr "Misc."
 
-#: src/mathed/math_forms.C:129
+#: src/mathed/math_forms.C:127
 msgid "OK  "
 msgstr "D'acord  "
 
-#: src/mathed/math_forms.C:142
+#: src/mathed/math_forms.C:140
 msgid "Columns "
 msgstr "Columnes"
 
-#: src/mathed/math_forms.C:149
+#: src/mathed/math_forms.C:147
 msgid "Vertical align|#V"
 msgstr "Aliniació Vertical|#V"
 
-#: src/mathed/math_forms.C:154
+#: src/mathed/math_forms.C:152
 msgid "Horizontal align|#H"
 msgstr "Aliniació Horizontal|#H"
 
-#: src/mathed/math_forms.C:197
+#: src/mathed/math_forms.C:195
 msgid "OK "
 msgstr "D'Acord"
 
-#: src/mathed/math_forms.C:208
+#: src/mathed/math_forms.C:206
 msgid "Thin|#T"
 msgstr "Prim|#T"
 
-#: src/mathed/math_forms.C:212
+#: src/mathed/math_forms.C:210
 msgid "Medium|#M"
 msgstr "Mig|#M"
 
-#: src/mathed/math_forms.C:216
+#: src/mathed/math_forms.C:214
 msgid "Thick|#H"
 msgstr "Gruixut|#H"
 
-#: src/mathed/math_forms.C:220
+#: src/mathed/math_forms.C:218
 msgid "Negative|#N"
 msgstr "Negatiu"
 
-#: src/mathed/math_forms.C:224
+#: src/mathed/math_forms.C:222
 msgid "Quadratin|#Q"
 msgstr "Quadratin||#Q"
 
-#: src/mathed/math_forms.C:228
+#: src/mathed/math_forms.C:226
 msgid "2Quadratin|#2"
 msgstr "2Quadratin||#2"
 
-#: src/mathed/math_panel.C:109
+#: src/mathed/math_panel.C:108
 msgid "Delimiter"
 msgstr "Delimitador"
 
-#: src/mathed/math_panel.C:113
+#: src/mathed/math_panel.C:112
 msgid "Decoration"
 msgstr "Decoració"
 
-#: src/mathed/math_panel.C:117
+#: src/mathed/math_panel.C:116
 msgid "Spacing"
 msgstr "Espaiat"
 
-#: src/mathed/math_panel.C:121
+#: src/mathed/math_panel.C:120
 msgid "Matrix"
 msgstr "Matriu"
 
-#: src/mathed/math_panel.C:311
+#: src/mathed/math_panel.C:324
 msgid "Top | Center | Bottom"
 msgstr "Dalt | Centre | Baix"
 
-#: src/mathed/math_panel.C:363
+#: src/mathed/math_panel.C:376
 msgid "Math Panel"
 msgstr "Panell Matemàtic"
 
-#: src/menus.C:161 src/menus.C:180 src/menus.C:221 src/menus.C:222
-#: src/menus.C:223 src/menus.C:352 src/menus.C:353 src/menus.C:354
+#: src/menus.C:163 src/menus.C:182 src/menus.C:223 src/menus.C:224
+#: src/menus.C:225 src/menus.C:354 src/menus.C:355 src/menus.C:356
 msgid "File"
 msgstr "Fitxer"
 
-#: src/menus.C:163 src/menus.C:235 src/menus.C:236 src/menus.C:237
+#: src/menus.C:165 src/menus.C:237 src/menus.C:238 src/menus.C:239
 msgid "Edit"
 msgstr "Edició"
 
-#: src/menus.C:165 src/menus.C:249 src/menus.C:250 src/menus.C:251
+#: src/menus.C:167 src/menus.C:251 src/menus.C:252 src/menus.C:253
 msgid "Layout"
 msgstr "Format"
 
-#: src/menus.C:167 src/menus.C:263 src/menus.C:264 src/menus.C:265
+#: src/menus.C:169 src/menus.C:265 src/menus.C:266 src/menus.C:267
 msgid "Insert"
 msgstr "Inserir"
 
-#: src/menus.C:175 src/menus.C:184 src/menus.C:319 src/menus.C:320
-#: src/menus.C:321 src/menus.C:380 src/menus.C:381 src/menus.C:382
+#: src/menus.C:171 src/menus.C:279 src/menus.C:280 src/menus.C:281
+msgid "Math"
+msgstr "Matemàtic"
+
+#: src/menus.C:177 src/menus.C:186 src/menus.C:321 src/menus.C:322
+#: src/menus.C:323 src/menus.C:382 src/menus.C:383 src/menus.C:384
 msgid "Help"
 msgstr "Ajuda"
 
-#: src/menus.C:225 src/menus.C:356
+#: src/menus.C:227 src/menus.C:358
 msgid "MB|#F"
 msgstr ""
 
-#: src/menus.C:239
+#: src/menus.C:241
 msgid "MB|#E"
 msgstr ""
 
-#: src/menus.C:253
+#: src/menus.C:255
 msgid "MB|#L"
 msgstr ""
 
-#: src/menus.C:267
+#: src/menus.C:269
 msgid "MB|#I"
 msgstr ""
 
-#: src/menus.C:281
+#: src/menus.C:283
 msgid "MB|#M"
 msgstr ""
 
-#: src/menus.C:295 src/menus.C:370
+#: src/menus.C:297 src/menus.C:372
 msgid "MB|#O"
 msgstr ""
 
-#: src/menus.C:309
+#: src/menus.C:311
 msgid "MB|#D"
 msgstr ""
 
-#: src/menus.C:323 src/menus.C:384
+#: src/menus.C:325 src/menus.C:386
 msgid "MB|#H"
 msgstr ""
 
-#: src/menus.C:426
+#: src/menus.C:428
 msgid "Screen Options"
 msgstr "Opcions de pantalla"
 
-#: src/menus.C:467
+#: src/menus.C:469
+#, fuzzy
 msgid ""
 "Import%t|LaTeX...%x30|Ascii Text as Lines...%x31|Ascii Text as "
-"Paragraphs%x32|Noweb%x33"
+"Paragraphs%x32|Noweb%x33|LinuxDoc%x34"
 msgstr ""
 "Importar%t|LaTeX...%x30|Text Ascii com a línies...%x31|Text Ascii com a "
 "Paràgrafs%x32"
 
-#: src/menus.C:473 src/menus.C:712
+#: src/menus.C:476 src/menus.C:733
 msgid "FIM|Ll#l#L"
 msgstr ""
 
-#: src/menus.C:474 src/menus.C:713
+#: src/menus.C:477 src/menus.C:734
 msgid "FIM|Aa#a#A"
 msgstr ""
 
-#: src/menus.C:475 src/menus.C:714
+#: src/menus.C:478 src/menus.C:735
 msgid "FIM|Pp#p#P"
 msgstr ""
 
-#: src/menus.C:476 src/menus.C:715
+#: src/menus.C:479 src/menus.C:736
 msgid "FIM|Nn#n#N"
 msgstr ""
 
-#: src/menus.C:485
+#: src/menus.C:480 src/menus.C:737
+msgid "FIM|Dd#d#D"
+msgstr ""
+
+#: src/menus.C:489
 msgid ""
 "Export%t|as LaTeX...%x40|as DVI...%x41|as PostScript...%x42|as Ascii "
 "Text...%x43|as HTML...%x44|Custom...%x45"
@@ -3586,47 +4056,49 @@ msgstr ""
 "Exportar%t|a LaTeX...%x40|a DVI...%x41|a PostScript...%x42|a Text Ascii "
 "...%x43|a HTML...%x44|Personalitzar...%x44"
 
-#: src/menus.C:494
+#: src/menus.C:498
+#, fuzzy
 msgid ""
 "Export%t|as LinuxDoc...%x40|as DVI...%x41|as PostScript...%x42|as Ascii "
-"Text...%x43"
+"Text...%x43|as HTML...%x44"
 msgstr ""
 "Exportar%t|en LinuxDoc...%x40|en DVI...%x41|en PostScript...%x42|en Text "
 "Ascii...%x43"
 
-#: src/menus.C:501
+#: src/menus.C:506
+#, fuzzy
 msgid ""
 "Export%t|as DocBook...%x40|as DVI...%x41|as PostScript...%x42|as Ascii "
-"Text...%x43"
+"Text...%x43|as HTML...%x44"
 msgstr ""
 "Exportar%t|a DocBook...%x40|a DVI...%x41|a PostScript...%x42|a Text "
 "Ascii...%x43"
 
-#: src/menus.C:507
+#: src/menus.C:513
 msgid "FEX|Ll#l#L"
 msgstr ""
 
-#: src/menus.C:508
+#: src/menus.C:514
 msgid "FEX|Dd#d#D"
 msgstr ""
 
-#: src/menus.C:509
+#: src/menus.C:515
 msgid "FEX|Pp#p#P"
 msgstr ""
 
-#: src/menus.C:510
+#: src/menus.C:516
 msgid "FEX|Tt#t#T"
 msgstr ""
 
-#: src/menus.C:512
+#: src/menus.C:517
 msgid "FEX|Hh#h#H"
 msgstr ""
 
-#: src/menus.C:513
+#: src/menus.C:520
 msgid "FEX|mM#m#M"
 msgstr ""
 
-#: src/menus.C:517
+#: src/menus.C:524
 msgid ""
 "New...|New from template...|Open...%l|Close|Save|Save As...|Revert to "
 "saved%l|View dvi|View PostScript|Update dvi|Update PostScript|Build "
@@ -3636,102 +4108,103 @@ msgstr ""
 "com...|Recarregar %l|Visualitzar DVI|Visualitzar PostScript|Actualitzar "
 "DVI|Actualitzar PostScript|Construir programa%l|Imprimir...|Enviar per Fax..."
 
-#: src/menus.C:532 src/menus.C:732
+#: src/menus.C:539 src/menus.C:757
 msgid "FM|Nn#n#N"
 msgstr ""
 
-#: src/menus.C:533 src/menus.C:733
+#: src/menus.C:540 src/menus.C:758
 msgid "FM|tT#t#T"
 msgstr ""
 
-#: src/menus.C:534 src/menus.C:734
+#: src/menus.C:541 src/menus.C:759
 msgid "FM|Oo#o#O"
 msgstr ""
 
-#: src/menus.C:535
+#: src/menus.C:542
 msgid "FM|Cc#c#C"
 msgstr ""
 
-#: src/menus.C:536
+#: src/menus.C:543
 msgid "FM|Ss#s#S"
 msgstr ""
 
-#: src/menus.C:537
+#: src/menus.C:544
 msgid "FM|Aa#a#A"
 msgstr ""
 
-#: src/menus.C:538
+#: src/menus.C:545
 msgid "FM|Rr#r#R"
 msgstr ""
 
-#: src/menus.C:539
+#: src/menus.C:546
 msgid "FM|dD#d#D"
 msgstr ""
 
-#: src/menus.C:540
+#: src/menus.C:547
 msgid "FM|wW#w#W"
 msgstr ""
 
-#: src/menus.C:541
+#: src/menus.C:548
 msgid "FM|vV#v#V"
 msgstr ""
 
-#: src/menus.C:542
+#: src/menus.C:549
 msgid "FM|Uu#u#U"
 msgstr ""
 
-#: src/menus.C:543
+#: src/menus.C:550
 msgid "FM|Bb#b#B"
 msgstr ""
 
-#: src/menus.C:544
+#: src/menus.C:551
 msgid "FM|Pp#p#P"
 msgstr ""
 
-#: src/menus.C:545
+#: src/menus.C:552
 msgid "FM|Ff#f#F"
 msgstr ""
 
-#: src/menus.C:591
+#: src/menus.C:603
 #, no-c-format
 msgid "|Import%m"
 msgstr "|Importar%m"
 
-#: src/menus.C:593
+#: src/menus.C:605
 #, no-c-format
 msgid "|Export%m%l"
 msgstr "|Exportar%m%l"
 
-#: src/menus.C:595
+#: src/menus.C:607
 #, no-c-format
 msgid "|Exit%l"
 msgstr "|Sortir%l"
 
-#: src/menus.C:596 src/menus.C:735
+#: src/menus.C:608 src/menus.C:760
 msgid "FM|Ii#i#I"
 msgstr ""
 
-#: src/menus.C:597
+#: src/menus.C:609
 msgid "FM|Ee#e#E"
 msgstr ""
 
-#: src/menus.C:598 src/menus.C:736
+#: src/menus.C:610 src/menus.C:761
 msgid "FM|xX#x#X"
 msgstr ""
 
-#: src/menus.C:706
+#: src/menus.C:726
+#, fuzzy
 msgid ""
 "Import%t|LaTeX...%x15|Ascii Text as Lines...%x16|Ascii Text as "
-"Paragraphs...%x17|Noweb...%x18"
+"Paragraphs...%x17|Noweb...%x18|LinuxDoc...%x19"
 msgstr ""
 "Importar%t|LaTeX...%x15|Text Ascii com a línies...%x16|Text Ascii com a "
 "Paràgrafs..%x17"
 
-#: src/menus.C:726
+#: src/menus.C:751
 msgid "New...|New from template...|Open...%l|Import%m%l|Exit%l"
 msgstr "Nou...|Nou a partir d'un model...|Obrir...%l|Importar%m%l|Sortir%l"
 
-#: src/menus.C:814
+#: src/menus.C:841
 msgid ""
 "Floats & Insets%t|Open/Close%x21|Melt%x22|Open All Footnotes/Margin "
 "Notes%x23|Close All Footnotes/Margin Notes%x24|Open All "
@@ -3742,265 +4215,265 @@ msgstr ""
 "Figures/Taules%x25|Tancar totes les  Figures/Taules%x26%l|Eliminar tots els "
 "missatges d'error%x27"
 
-#: src/menus.C:823
+#: src/menus.C:850
 msgid "EMF|Oo#o#O"
 msgstr ""
 
-#: src/menus.C:824
+#: src/menus.C:851
 msgid "EMF|Mm#m#M"
 msgstr ""
 
-#: src/menus.C:825
+#: src/menus.C:852
 msgid "EMF|Aa#a#A"
 msgstr ""
 
-#: src/menus.C:826
+#: src/menus.C:853
 msgid "EMF|Cc#c#C"
 msgstr ""
 
-#: src/menus.C:827
+#: src/menus.C:854
 msgid "EMF|Ff#f#F"
 msgstr ""
 
-#: src/menus.C:828
+#: src/menus.C:855
 msgid "EMF|Tt#t#T"
 msgstr ""
 
-#: src/menus.C:829
+#: src/menus.C:856
 msgid "EMF|Rr#r#R"
 msgstr ""
 
-#: src/menus.C:837 src/menus.C:935
+#: src/menus.C:864 src/menus.C:962
 msgid "Table%t"
 msgstr "Taula%t"
 
-#: src/menus.C:845
+#: src/menus.C:872
 msgid "|Multicolumn%B%x44%l"
 msgstr "|Multicolumna%B%x44%l"
 
-#: src/menus.C:847
+#: src/menus.C:874
 msgid "|Multicolumn%b%x44%l"
 msgstr "|Multicolumna%b%x44%l"
 
-#: src/menus.C:848
+#: src/menus.C:875
 msgid "EMT|Mm#m#M"
 msgstr ""
 
-#: src/menus.C:856
+#: src/menus.C:883
 msgid "|Line Top%B%x36"
 msgstr "|Primera Filae%B%x36"
 
-#: src/menus.C:858
+#: src/menus.C:885
 msgid "|Line Top%b%x36"
 msgstr "|Primera Fila%b%x36"
 
-#: src/menus.C:859
+#: src/menus.C:886
 msgid "EMT|Tt#t#T"
 msgstr ""
 
-#: src/menus.C:867
+#: src/menus.C:894
 msgid "|Line Bottom%B%x37"
 msgstr "|Última Fila%B%x37"
 
-#: src/menus.C:869
+#: src/menus.C:896
 msgid "|Line Bottom%b%x37"
 msgstr "|Última Fila%b%x37"
 
-#: src/menus.C:870
+#: src/menus.C:897
 msgid "EMT|Bb#b#B"
 msgstr ""
 
-#: src/menus.C:878
+#: src/menus.C:905
 msgid "|Line Left%B%x38"
 msgstr "|Fila Esquerra%B%x38"
 
-#: src/menus.C:880
+#: src/menus.C:907
 msgid "|Line Left%b%x38"
 msgstr "|Fila Esquerra%b%x38"
 
-#: src/menus.C:881
+#: src/menus.C:908
 msgid "EMT|Ll#l#L"
 msgstr ""
 
-#: src/menus.C:889
+#: src/menus.C:916
 msgid "|Line Right%B%x39%l"
 msgstr "|Fila Dreta%B%x39%l"
 
-#: src/menus.C:891
+#: src/menus.C:918
 msgid "|Line Right%b%x39%l"
 msgstr "|Fila Dreta%b%x39%l"
 
-#: src/menus.C:892
+#: src/menus.C:919
 msgid "EMT|Rr#r#R"
 msgstr ""
 
-#: src/menus.C:901
+#: src/menus.C:928
 msgid "|Align Left%R%x40"
 msgstr "|Aliniar a l'Esquerra%R%x40"
 
-#: src/menus.C:903
+#: src/menus.C:930
 msgid "|Align Left%r%x40"
 msgstr "|Aliniar a l'Esquerra%r%x40"
 
-#: src/menus.C:904
+#: src/menus.C:931
 msgid "EMT|eE#e#E"
 msgstr ""
 
-#: src/menus.C:907
+#: src/menus.C:934
 msgid "|Align Right%R%x41"
 msgstr "|Aliniar a la Dreta%R%x41"
 
-#: src/menus.C:909
+#: src/menus.C:936
 msgid "|Align Right%r%x41"
 msgstr "|Aliniar a la Dreta%r%x41"
 
-#: src/menus.C:910
+#: src/menus.C:937
 msgid "EMT|iI#i#I"
 msgstr ""
 
-#: src/menus.C:913
+#: src/menus.C:940
 msgid "|Align Center%R%x42%l"
 msgstr "|Centrar%R%x42%l"
 
-#: src/menus.C:915
+#: src/menus.C:942
 msgid "|Align Center%r%x42%l"
 msgstr "|Centrar%r%x42%l"
 
-#: src/menus.C:916
+#: src/menus.C:943
 msgid "EMT|Cc#c#C"
 msgstr ""
 
-#: src/menus.C:919
+#: src/menus.C:946
 #, no-c-format
 msgid "|Append Row%x32"
 msgstr "|Afegir Columna%x32"
 
-#: src/menus.C:920
+#: src/menus.C:947
 msgid "EMT|oO#o#O"
 msgstr ""
 
-#: src/menus.C:922
+#: src/menus.C:949
 #, no-c-format
 msgid "|Append Column%x33%l"
 msgstr "|Afegir Columna%x33%l"
 
-#: src/menus.C:923
+#: src/menus.C:950
 msgid "EMT|uU#u#U"
 msgstr ""
 
-#: src/menus.C:925
+#: src/menus.C:952
 #, no-c-format
 msgid "|Delete Row%x34"
 msgstr "|Suprimir Columna%x34"
 
-#: src/menus.C:926
+#: src/menus.C:953
 msgid "EMT|wW#w#W"
 msgstr ""
 
-#: src/menus.C:928
+#: src/menus.C:955
 #, no-c-format
 msgid "|Delete Column%x35%l"
 msgstr "|Suprimir Columna%x35%l"
 
-#: src/menus.C:929
+#: src/menus.C:956
 msgid "EMT|nN#n#N"
 msgstr ""
 
-#: src/menus.C:931
+#: src/menus.C:958
 #, no-c-format
 msgid "|Delete Table%x43"
 msgstr "|Suprimir Taula%x43"
 
-#: src/menus.C:932
+#: src/menus.C:959
 msgid "EMT|Dd#d#D"
 msgstr ""
 
-#: src/menus.C:937
+#: src/menus.C:964
 #, no-c-format
 msgid "|Insert table%x31"
 msgstr "|Inserir Taula%x31"
 
-#: src/menus.C:938
+#: src/menus.C:965
 msgid "EMT|Ii#i#I"
 msgstr ""
 
-#: src/menus.C:942
+#: src/menus.C:969
 msgid "Version Control%t"
 msgstr "Control de Versions%t"
 
-#: src/menus.C:945
+#: src/menus.C:972
 #, no-c-format
 msgid "|Register%d%x51"
 msgstr "|Registrar%d%x51"
 
 #. signifies that the file is not checked out
-#: src/menus.C:949
+#: src/menus.C:976
 #, no-c-format
 msgid "|Check In Changes%d%x52"
 msgstr "|Verifiqueu Modificacions%d%x52"
 
-#: src/menus.C:951
+#: src/menus.C:978
 #, no-c-format
 msgid "|Check Out for Edit%x53"
 msgstr "|Verificat per edició%x53"
 
 #. signifies that the file is checked out
-#: src/menus.C:955
+#: src/menus.C:982
 #, no-c-format
 msgid "|Check In Changes%x52"
 msgstr "|Verifiqueu Modificacions%x52"
 
-#: src/menus.C:957
+#: src/menus.C:984
 #, no-c-format
 msgid "|Check Out for Edit%d%x53"
 msgstr "|Verificat per edició%d%x53"
 
-#: src/menus.C:960
+#: src/menus.C:987
 #, no-c-format
 msgid "|Revert to last version%x54"
 msgstr "|Recarregar la versió precedent%x54"
 
-#: src/menus.C:962
+#: src/menus.C:989
 #, no-c-format
 msgid "|Undo last check in%x55"
 msgstr "|Desfer última verificació%x55"
 
-#: src/menus.C:964
+#: src/menus.C:991
 #, no-c-format
 msgid "|Show History%x56"
 msgstr "|Mostrar Historial%x56"
 
-#: src/menus.C:967
+#: src/menus.C:994
 #, no-c-format
 msgid "|Register%x51"
 msgstr "|Salvar%x51"
 
 #. the shortcuts are not good.
-#: src/menus.C:970
+#: src/menus.C:997
 msgid "EMV|Rr#r#R"
 msgstr ""
 
-#: src/menus.C:971
+#: src/menus.C:998
 msgid "EMV|Ii#i#I"
 msgstr ""
 
-#: src/menus.C:972
+#: src/menus.C:999
 msgid "EMV|Oo#o#O"
 msgstr ""
 
-#: src/menus.C:973
+#: src/menus.C:1000
 msgid "EMV|lL#l#l"
 msgstr ""
 
-#: src/menus.C:974
+#: src/menus.C:1001
 msgid "EMV|Uu#u#U"
 msgstr ""
 
-#: src/menus.C:975
+#: src/menus.C:1002
 msgid "EMV|Hh#h#H"
 msgstr ""
 
-#: src/menus.C:978
+#: src/menus.C:1005
 msgid ""
 "Undo|Redo %l|Cut|Copy|Paste%l|Find & Replace...|Go to Error|Go to "
 "Note|Floats & Insets%m|Table%m|Spellchecker....|Check TeX|Table of "
@@ -4013,75 +4486,75 @@ msgstr ""
 "Versions%m%l|Examinar el Registre (log) de LaTeX log%l|Copiar Selecció com a "
 "Línies|Copiar Selecció com a Paràgrafs"
 
-#: src/menus.C:997
+#: src/menus.C:1024
 msgid "EM|Uu#u#U"
 msgstr ""
 
-#: src/menus.C:998
+#: src/menus.C:1025
 msgid "EM|Rr#r#R"
 msgstr ""
 
-#: src/menus.C:999
+#: src/menus.C:1026
 msgid "EM|Cc#c#C"
 msgstr ""
 
-#: src/menus.C:1000
+#: src/menus.C:1027
 msgid "EM|oO#o#O"
 msgstr ""
 
-#: src/menus.C:1001
+#: src/menus.C:1028
 msgid "EM|Pp#p#P"
 msgstr ""
 
-#: src/menus.C:1002
+#: src/menus.C:1029
 msgid "EM|Ff#f#F"
 msgstr ""
 
-#: src/menus.C:1003
+#: src/menus.C:1030
 msgid "EM|Ee#e#E"
 msgstr ""
 
-#: src/menus.C:1004
+#: src/menus.C:1031
 msgid "EM|Nn#n#N"
 msgstr ""
 
-#: src/menus.C:1005
+#: src/menus.C:1032
 msgid "EM|Ii#i#I"
 msgstr ""
 
-#: src/menus.C:1006
+#: src/menus.C:1033
 msgid "EM|Tt#t#T"
 msgstr ""
 
-#: src/menus.C:1007
+#: src/menus.C:1034
 msgid "EM|Ss#s#S"
 msgstr ""
 
-#: src/menus.C:1008
+#: src/menus.C:1035
 msgid "EM|hH#h#H"
 msgstr ""
 
-#: src/menus.C:1009
+#: src/menus.C:1036
 msgid "EM|aA#a#A"
 msgstr ""
 
-#: src/menus.C:1010
+#: src/menus.C:1037
 msgid "EM|Vv#v#V"
 msgstr ""
 
-#: src/menus.C:1011
+#: src/menus.C:1038
 msgid "EM|wW#w#W"
 msgstr ""
 
-#: src/menus.C:1012
+#: src/menus.C:1039
 msgid "EM|Ll#l#L"
 msgstr ""
 
-#: src/menus.C:1013
+#: src/menus.C:1040
 msgid "EM|gG#g#G"
 msgstr ""
 
-#: src/menus.C:1138
+#: src/menus.C:1165
 msgid ""
 "Character...|Paragraph...|Document...|Paper...|Table...|Quotes...%l|Emphasize"
 " Style%b|Noun Style%b|Bold Style%b|TeX Style%b|Change Environment "
@@ -4091,71 +4564,71 @@ msgstr ""
 "Majuscules%b|Negreta%b|Estil TeX%b|Canviar Profunditat d'entorn|Preamble "
 "LaTeX...%l|Salvar com a Format Per Defecte"
 
-#: src/menus.C:1151
+#: src/menus.C:1178
 msgid "LM|Cc#c#C"
 msgstr ""
 
-#: src/menus.C:1152
+#: src/menus.C:1179
 msgid "LM|Pp#p#P"
 msgstr ""
 
-#: src/menus.C:1153
+#: src/menus.C:1180
 msgid "LM|Dd#d#D"
 msgstr ""
 
-#: src/menus.C:1154
+#: src/menus.C:1181
 msgid "LM|aA#a#A"
 msgstr ""
 
-#: src/menus.C:1155
+#: src/menus.C:1182
 msgid "LM|eE#e#E"
 msgstr ""
 
-#: src/menus.C:1156
+#: src/menus.C:1183
 msgid "LM|Qq#q#Q"
 msgstr ""
 
-#: src/menus.C:1157
+#: src/menus.C:1184
 msgid "LM|mM#m#M"
 msgstr ""
 
-#: src/menus.C:1158
+#: src/menus.C:1185
 msgid "LM|Nn#n#N"
 msgstr ""
 
-#: src/menus.C:1159
+#: src/menus.C:1186
 msgid "LM|Bb#b#B"
 msgstr ""
 
-#: src/menus.C:1160
+#: src/menus.C:1187
 msgid "LM|Tt#t#T"
 msgstr ""
 
-#: src/menus.C:1161
+#: src/menus.C:1188
 msgid "LM|vV#v#V"
 msgstr ""
 
-#: src/menus.C:1162
+#: src/menus.C:1189
 msgid "LM|Ll#l#L"
 msgstr ""
 
-#: src/menus.C:1163
+#: src/menus.C:1190
 msgid "LM|Ss#s#S"
 msgstr ""
 
-#: src/menus.C:1228
+#: src/menus.C:1255
 msgid "Import ASCII file%t|As Lines%x41|As Paragraphs%x42"
 msgstr "Importar fitxer ASCII%t|Com a Línies%x41|Com a  Paràgrafs%x42"
 
-#: src/menus.C:1232
+#: src/menus.C:1259
 msgid "IMA|Ll#l#L"
 msgstr ""
 
-#: src/menus.C:1233
+#: src/menus.C:1260
 msgid "IMA|Pp#p#P"
 msgstr ""
 
-#: src/menus.C:1236
+#: src/menus.C:1263
 msgid ""
 "Lists & TOC%t|Table of Contents%x21|List of Figures%x22|List of "
 "Tables%x23|List of Algorithms%x24|Index List%x25|BibTeX Reference%x26"
@@ -4163,31 +4636,31 @@ msgstr ""
 "Llistes & TDC%t|Taula de Continguts%x21|Taula de Figures%x22|Llista de "
 "Taules%x23|Llista d'Algorismes%x24|Index%x25|Referència BibTeX%x26"
 
-#: src/menus.C:1244
+#: src/menus.C:1271
 msgid "IMT|Cc#c#C"
 msgstr ""
 
-#: src/menus.C:1245
+#: src/menus.C:1272
 msgid "IMT|Ff#f#F"
 msgstr ""
 
-#: src/menus.C:1246
+#: src/menus.C:1273
 msgid "IMT|Tt#t#T"
 msgstr ""
 
-#: src/menus.C:1247
+#: src/menus.C:1274
 msgid "IMT|Aa#a#A"
 msgstr ""
 
-#: src/menus.C:1248
+#: src/menus.C:1275
 msgid "IMT|Ii#i#I"
 msgstr ""
 
-#: src/menus.C:1249
+#: src/menus.C:1276
 msgid "IMT|Bb#b#B"
 msgstr ""
 
-#: src/menus.C:1252
+#: src/menus.C:1279
 msgid ""
 "Floats%t|Figure Float%x71|Table Float%x72|Wide Figure Float%x73|Wide Table "
 "Float%l%x74|Algorithm Float%x75"
@@ -4195,27 +4668,27 @@ msgstr ""
 "Flotants%t|Figura Flotant%x71|Taula Flotant%x72|Figura gran "
 "Flotant%x73|Taula Gran Flotant%l%x74|Algorisme Flotant%x75"
 
-#: src/menus.C:1259
+#: src/menus.C:1286
 msgid "IMF|gG#g#G"
 msgstr ""
 
-#: src/menus.C:1260
+#: src/menus.C:1287
 msgid "IMF|Tt#t#T"
 msgstr ""
 
-#: src/menus.C:1261
+#: src/menus.C:1288
 msgid "IMF|Ww#w#W"
 msgstr ""
 
-#: src/menus.C:1262
+#: src/menus.C:1289
 msgid "IMF|iI#i#I"
 msgstr ""
 
-#: src/menus.C:1263
+#: src/menus.C:1290
 msgid "IMF|Aa#a#A"
 msgstr ""
 
-#: src/menus.C:1266
+#: src/menus.C:1293
 msgid ""
 "Special Character%t|HFill%x31|Hyphenation Point%x32|Protected "
 "Blank%x33|Linebreak%x34|Ellipsis (...)%x35|End of sentence "
@@ -4224,39 +4697,39 @@ msgstr ""
 "Caràcter Especial%t|HFill%x31|Guionet%x32|Blanc protegit%x33|Salt de "
 "línia%x34|Punts suspensius (...)%x35|Punt i apart%x36|Cita ordinària (\")%x37"
 
-#: src/menus.C:1276
+#: src/menus.C:1303
 msgid "IMS|Hh#h#H"
 msgstr ""
 
-#: src/menus.C:1277
+#: src/menus.C:1304
 msgid "IMS|Pp#p#P"
 msgstr ""
 
-#: src/menus.C:1278
+#: src/menus.C:1305
 msgid "IMS|Bb#b#B"
 msgstr ""
 
-#: src/menus.C:1279
+#: src/menus.C:1306
 msgid "IMS|Ll#l#L"
 msgstr ""
 
-#: src/menus.C:1280
+#: src/menus.C:1307
 msgid "IMS|iI#i#I"
 msgstr ""
 
-#: src/menus.C:1281
+#: src/menus.C:1308
 msgid "IMS|Ee#e#E"
 msgstr ""
 
-#: src/menus.C:1282
+#: src/menus.C:1309
 msgid "IMS|Qq#q#Q"
 msgstr ""
 
-#: src/menus.C:1283
+#: src/menus.C:1310
 msgid "IMS|Mm#m#M"
 msgstr ""
 
-#: src/menus.C:1286
+#: src/menus.C:1313
 msgid ""
 "Figure...|Table...%l|Include File...|Import ASCII File%m|Insert LyX "
 "File...%l|Footnote|Margin Note|Floats%m%l|Lists & TOC%m%l|Special "
@@ -4268,79 +4741,79 @@ msgstr ""
 "Taules%m%l|Caràcter Especial%m%l|Nota|Etiqueta...|Referència "
 "Creuada...|Referència a una Cita|Entrada d'Index"
 
-#: src/menus.C:1307
+#: src/menus.C:1334
 msgid "IM|gG#g#G"
 msgstr ""
 
-#: src/menus.C:1308
+#: src/menus.C:1335
 msgid "IM|bB#b#B"
 msgstr ""
 
-#: src/menus.C:1309
+#: src/menus.C:1336
 msgid "IM|cC#c#C"
 msgstr ""
 
-#: src/menus.C:1310
+#: src/menus.C:1337
 msgid "IM|Aa#a#A"
 msgstr ""
 
-#: src/menus.C:1311
+#: src/menus.C:1338
 msgid "IM|Xx#x#X"
 msgstr ""
 
-#: src/menus.C:1312
+#: src/menus.C:1339
 msgid "IM|Ff#f#F"
 msgstr ""
 
-#: src/menus.C:1313
+#: src/menus.C:1340
 msgid "IM|Mm#m#M"
 msgstr ""
 
-#: src/menus.C:1314
+#: src/menus.C:1341
 msgid "IM|oO#o#O"
 msgstr ""
 
-#: src/menus.C:1315
+#: src/menus.C:1342
 msgid "IM|Tt#t#T"
 msgstr ""
 
-#: src/menus.C:1316
+#: src/menus.C:1343
 msgid "IM|Ss#s#S"
 msgstr ""
 
-#: src/menus.C:1317
+#: src/menus.C:1344
 msgid "IM|Nn#n#N"
 msgstr ""
 
-#: src/menus.C:1318
+#: src/menus.C:1345
 msgid "IM|Ll#l#L"
 msgstr ""
 
-#: src/menus.C:1319
+#: src/menus.C:1346
 msgid "IM|rR#r#R"
 msgstr ""
 
-#: src/menus.C:1320
+#: src/menus.C:1347
 msgid "IM|iI#i#I"
 msgstr ""
 
-#: src/menus.C:1321
+#: src/menus.C:1348
 msgid "IM|dD#d#D"
 msgstr ""
 
-#: src/menus.C:1322
+#: src/menus.C:1349
 msgid "IM|wW#w#W"
 msgstr ""
 
-#: src/menus.C:1324
+#: src/menus.C:1351
 msgid "|URL..."
 msgstr ""
 
-#: src/menus.C:1325
+#: src/menus.C:1352
 msgid "IM|Uu#u#U"
 msgstr ""
 
-#: src/menus.C:1431
+#: src/menus.C:1458
 msgid ""
 "Fraction|Square root|Exponent|Index|Sum|Integral%l|Math mode|Display%l|Math "
 "Panel..."
@@ -4348,198 +4821,207 @@ msgstr ""
 "Fracció|Arrel Quadrada|Exponent|Index|Suma|Integral%l|Mode "
 "Matemàtic|Mostrar%l|Panel matemàtic..."
 
-#: src/menus.C:1441
+#: src/menus.C:1468
 msgid "MM|Ff#f#F"
 msgstr ""
 
-#: src/menus.C:1442
+#: src/menus.C:1469
 msgid "MM|Ss#s#S"
 msgstr ""
 
-#: src/menus.C:1443
+#: src/menus.C:1470
 msgid "MM|Ee#e#E"
 msgstr ""
 
-#: src/menus.C:1444
+#: src/menus.C:1471
 msgid "MM|xX#x#X"
 msgstr ""
 
-#: src/menus.C:1445
+#: src/menus.C:1472
 msgid "MM|uU#u#U"
 msgstr ""
 
-#: src/menus.C:1446
+#: src/menus.C:1473
 msgid "MM|Ii#i#I"
 msgstr ""
 
-#: src/menus.C:1447
+#: src/menus.C:1474
 msgid "MM|Mm#m#M"
 msgstr ""
 
-#: src/menus.C:1448
+#: src/menus.C:1475
 msgid "MM|Dd#d#D"
 msgstr ""
 
-#: src/menus.C:1449
+#: src/menus.C:1476
 msgid "MM|Pp#p#P"
 msgstr ""
 
-#: src/menus.C:1515
+#: src/menus.C:1542
 msgid ""
 "Screen Fonts...|Spellchecker Options...|Keyboard...|LaTeX...%l|Reconfigure"
 msgstr ""
 "Fonts de pantalla...|Opcions  "
 "d'ortografia...|Teclat...|LaTeX...%l|Reconfigurar"
 
-#: src/menus.C:1521
+#: src/menus.C:1548
 msgid "OM|Ff#f#F"
 msgstr ""
 
-#: src/menus.C:1522
+#: src/menus.C:1549
 msgid "OM|Ss#s#S"
 msgstr ""
 
-#: src/menus.C:1523
+#: src/menus.C:1550
 msgid "OM|Kk#k#K"
 msgstr ""
 
-#: src/menus.C:1524
+#: src/menus.C:1551
 msgid "OM|Ll#l#L"
 msgstr ""
 
-#: src/menus.C:1525
+#: src/menus.C:1552
 msgid "OM|Rr#r#R"
 msgstr ""
 
-#: src/menus.C:1569
+#: src/menus.C:1596
 msgid "No Documents Open!%t"
 msgstr "No hi ha documents oberts!%t"
 
-#: src/menus.C:1603
+#: src/menus.C:1631
+#, fuzzy
 msgid ""
 "Introduction|Tutorial|User's Guide|Extended Features|Customization|Reference "
-"Manual|Known Bugs|LaTeX Configuration%l|Copyright and "
+"Manual|FAQ|Table of Contents|Known Bugs|LaTeX Configuration%l|Copyright and "
 "Warranty...|Credits...|Version..."
 msgstr ""
 "Introducció|Tutorial|Manual d'Usuari|Opcions "
 "Avançades|Personalització|Manual de referència|Errors Coneguts |Configuració "
 "LaTeX%l|Copyright i Garantia...|Crèdits...|Versió..."
 
-#: src/menus.C:1615
+#: src/menus.C:1645
 msgid "HM|Ii#I#i"
 msgstr ""
 
-#: src/menus.C:1616
+#: src/menus.C:1646
 msgid "HM|Tt#T#t"
 msgstr ""
 
-#: src/menus.C:1617
+#: src/menus.C:1647
 msgid "HM|Uu#U#u"
 msgstr ""
 
-#: src/menus.C:1618
+#: src/menus.C:1648
 msgid "HM|xX#x#X"
 msgstr ""
 
-#: src/menus.C:1619
+#: src/menus.C:1649
 msgid "HM|Cc#C#c"
 msgstr ""
 
-#: src/menus.C:1620
+#: src/menus.C:1650
 msgid "HM|Rr#R#r"
 msgstr ""
 
-#: src/menus.C:1621
+#: src/menus.C:1651
+msgid "HM|Ff#F#f"
+msgstr ""
+
+#: src/menus.C:1652
+msgid "HM|aA#a#A"
+msgstr ""
+
+#: src/menus.C:1653
 msgid "HM|Kk#K#k"
 msgstr ""
 
-#: src/menus.C:1622
+#: src/menus.C:1654
 msgid "HM|Ll#L#l"
 msgstr ""
 
-#: src/menus.C:1623
+#: src/menus.C:1655
 msgid "HM|oO#o#O"
 msgstr ""
 
-#: src/menus.C:1624
+#: src/menus.C:1656
 msgid "HM|eE#e#E"
 msgstr ""
 
-#: src/menus.C:1625
+#: src/menus.C:1657
 msgid "HM|Vv#v#V"
 msgstr ""
 
-#: src/menus.C:1648
+#: src/menus.C:1680
 msgid "LyX Version "
 msgstr "Versió LyX"
 
-#: src/menus.C:1649
+#: src/menus.C:1681
 msgid " of "
 msgstr " de "
 
-#: src/menus.C:1650
+#: src/menus.C:1682
 msgid "Library directory: "
 msgstr "Directori de Llibreries :"
 
-#: src/menus.C:1652
+#: src/menus.C:1684
 msgid "User directory: "
 msgstr "Directori d'Usuari :"
 
-#: src/menus.C:1666
+#: src/menus.C:1698
 msgid "Could not find requested Documentation file"
 msgstr "No he pogut trobar el fitxer de Documentació sol.licitat"
 
-#: src/menus.C:1670
+#: src/menus.C:1702
 msgid "Opening help file"
 msgstr "Obrint el fitxer d'ajuda"
 
-#: src/minibuffer.C:55
-msgid "Executing:"
-msgstr "Executant:"
-
-#: src/minibuffer.C:220 src/minibuffer.h:22
+#: src/minibuffer.C:42 src/minibuffer.C:233
 msgid "Welcome to LyX!"
 msgstr "Benvingut a LyX !"
 
+#: src/minibuffer.C:69
+msgid "Executing:"
+msgstr "Executant:"
+
 #. this is a hack
-#: src/minibuffer.C:221
+#: src/minibuffer.C:234
 msgid "* No document open *"
 msgstr "* Cap document obert *"
 
-#: src/PaperLayout.C:153
+#: src/PaperLayout.C:158
 msgid "Document is read-only.  No changes to layout permitted."
 msgstr "Document de només lectura. Els canvis de format no són permesos"
 
-#: src/PaperLayout.C:175
+#: src/PaperLayout.C:180
 msgid "Paper Layout"
 msgstr "Format del paper"
 
-#: src/PaperLayout.C:207
+#: src/PaperLayout.C:212
 msgid "Paper layout set"
 msgstr "Fixar el format del paper"
 
-#: src/PaperLayout.C:269 src/ParagraphExtra.C:297 src/TableLayout.C:297
-#: src/TableLayout.C:469
+#: src/PaperLayout.C:274 src/ParagraphExtra.C:303 src/TableLayout.C:296
+#: src/TableLayout.C:468
 msgid "Warning: Invalid Length (valid example: 10mm)"
 msgstr "Avís: Longitut invàlida (exemple correcte: 10mm)"
 
-#: src/paragraph.C:1968
+#: src/paragraph.C:1708
 msgid "Senseless with this layout!"
 msgstr "No té sentit amb aquest format !"
 
-#: src/ParagraphExtra.C:142
+#: src/ParagraphExtra.C:147
 msgid "Document is read-only. No changes to layout permitted."
 msgstr "Document de només lectura. Els canvis de format no són permesos."
 
-#: src/ParagraphExtra.C:161
+#: src/ParagraphExtra.C:166
 msgid "ParagraphExtra Layout"
 msgstr "Format de paràgrafExtra"
 
-#: src/ParagraphExtra.C:201
+#: src/ParagraphExtra.C:206
 msgid "ParagraphExtra layout set"
 msgstr "Fixar el format de paràgrafExtra"
 
-#: src/ParagraphExtra.C:307
+#: src/ParagraphExtra.C:313
 msgid "Warning: Invalid percent value (0-100)"
 msgstr "Avís: Percentatge incorrecte (0-100)"
 
@@ -4631,7 +5113,7 @@ msgstr "Opcions del Corrector Ortogràfic"
 msgid "Spellchecker"
 msgstr "Corrector Ortogràfic"
 
-#: src/spellchecker.C:658
+#: src/spellchecker.C:655
 msgid ""
 "\n"
 "\n"
@@ -4749,39 +5231,39 @@ msgstr ""
 msgid "Replace word|#R"
 msgstr "Substituir el mot|#R"
 
-#: src/support/filetools.C:174
+#: src/support/filetools.C:168
 msgid "LyX Internal Error!"
 msgstr "Error intern del Lyx!"
 
-#: src/support/filetools.C:175
+#: src/support/filetools.C:169
 msgid "Could not test if directory is writeable"
 msgstr "Impossible verificar si es permet l'escriptura al directori."
 
-#: src/support/filetools.C:378
+#: src/support/filetools.C:370
 msgid "Error! Cannot open directory:"
 msgstr "Error! Impossible obrir el directori:"
 
-#: src/support/filetools.C:391
+#: src/support/filetools.C:383
 msgid "Error! Could not remove file:"
 msgstr "Error! Impossible esborrar el fitxer:"
 
-#: src/support/filetools.C:405
+#: src/support/filetools.C:397
 msgid "Error! Couldn't create temporary directory:"
 msgstr "Error! Impossible crear el directori temporal:"
 
-#: src/support/filetools.C:421
+#: src/support/filetools.C:413
 msgid "Error! Couldn't delete temporary directory:"
 msgstr "Error! Impossible esborrar el directori temporal:"
 
-#: src/support/filetools.C:474
+#: src/support/filetools.C:466
 msgid "Internal error!"
 msgstr "Error intern!"
 
-#: src/support/filetools.C:475
+#: src/support/filetools.C:467
 msgid "Call to createDirectory with invalid name"
 msgstr "crida a  createDirectory amb un nom invàlid"
 
-#: src/support/filetools.C:480
+#: src/support/filetools.C:472
 msgid "Error! Couldn't create directory:"
 msgstr "Error! Impossible crear el directori:"
 
@@ -4789,100 +5271,163 @@ msgstr "Error! Impossible crear el directori:"
 msgid "unknown"
 msgstr "desconegut"
 
-#: src/support/path.h:21 src/support/path.h:43
-msgid "Error: Could not change to directory: "
-msgstr "Error: Impossible canviar de directori"
+#: src/table.C:995
+#, fuzzy
+msgid "Warning:"
+msgstr "Avís!"
 
-#: src/support/path.h:37
-msgid "Error: Dir already popped: "
-msgstr "Error: Ja s'havia extret Dir: "
+#: src/table.C:996
+msgid "Tabular format < 5 is not supported anymore\n"
+msgstr ""
 
-#: src/TableLayout.C:233
+#: src/table.C:997
+msgid "Get an older version of LyX (< 1.1.x) for conversion!"
+msgstr ""
+
+#: src/TableLayout.C:232
 msgid "Table Extra Form"
 msgstr "Paràmetres opcionals de la taula"
 
-#: src/TableLayout.C:253
+#: src/TableLayout.C:252
 msgid "Table Layout"
 msgstr "Format Taula"
 
-#: src/TableLayout.C:276
+#: src/TableLayout.C:275
 msgid "Warning: Wrong Cursor position, updated window"
 msgstr "Avís: Posició del cursor errònia, finestra actualitzada"
 
-#: src/TableLayout.C:332
+#: src/TableLayout.C:331
 msgid "Confirm: press Delete-Button again"
 msgstr "Confirmació: Prem Suprimir de nou"
 
-#: src/text2.C:336
+#: src/text2.C:356
 msgid "Opened float"
 msgstr "flotant obert"
 
-#: src/text2.C:338
+#: src/text2.C:358
 msgid "Closed float"
 msgstr "flotant tancat"
 
-#: src/text2.C:375
+#: src/text2.C:395
 msgid "Nothing to do"
 msgstr "Res a fer"
 
-#: src/text2.C:1058
+#: src/text2.C:1074
 msgid ""
 "No font change defined. Use Character under the Layout menu to define font "
 "change."
 msgstr "Canvi de font no definit. Utilitzeu Format->Caràcter per definir-lo"
 
-#: src/text.C:3946 src/text.C:3954 src/text.C:3971 src/text.C:3986
-#: src/text2.C:1796 src/text2.C:1808 src/text2.C:2053 src/text2.C:2066
-#: src/text2.C:2163 src/text2.C:2173
-msgid "Impossible operation"
-msgstr "Operació Impossible"
-
-#: src/text2.C:1797 src/text2.C:2054
+#: src/text2.C:1904 src/text2.C:2098 src/text2.C:2189 src/text2.C:2295
 msgid "Don't know what to do with half floats."
 msgstr "No sé com tractar un mig flotant."
 
-#: src/text2.C:1798 src/text2.C:1810 src/text2.C:2056 src/text2.C:2068
+#: src/text2.C:1905 src/text2.C:1917 src/text2.C:2099 src/text2.C:2111
+#: src/text2.C:2191 src/text2.C:2203 src/text2.C:2297 src/text2.C:2309
 msgid "sorry."
 msgstr "Ho sento"
 
-#: src/text2.C:1809 src/text2.C:2067
+#: src/text2.C:1916 src/text2.C:2110 src/text2.C:2202 src/text2.C:2308
 msgid "Don't know what to do with half tables."
 msgstr "No sé com tractar mitjes taules."
 
-#: src/text2.C:2164
-msgid "Can't paste float into float!"
-msgstr "Impossible enganxar un flotant en un flotant!"
-
-#: src/text2.C:2174
-msgid "Table cell cannot include more than one paragraph!"
-msgstr "Les cel.les d'una taula no poden incloure més d'un paràgraf!"
-
-#: src/text.C:1891
-msgid "Multicolumns can only be horizontally."
-msgstr "Les multicolumnes han de ser horitzontals"
-
-#: src/text.C:2292 src/text.C:2320
-msgid "You cannot type two spaces this way.  Please read the Tutorial."
-msgstr ""
-
-#: src/text.C:2318
+#: src/text.C:2553
 msgid ""
 "You cannot insert a space at the beginning of a paragraph.  Please read the "
 "Tutorial."
 msgstr ""
 
-#: src/text.C:3947
+#: src/text.C:2555
+msgid "You cannot type two spaces this way.  Please read the Tutorial."
+msgstr ""
+
+#: src/text.C:3894 src/text.C:3900
+#, fuzzy
+msgid "Page Break (top)"
+msgstr "Salt de Pàgina"
+
+#: src/text.C:4076 src/text.C:4082
+msgid "Page Break (bottom)"
+msgstr ""
+
+#: src/text.C:4477
 msgid "You can't insert a float in a float!"
 msgstr "Impossible inserir un flotant en un flotant!"
 
-#: src/text.C:3955
+#: src/text.C:4485
 msgid "You can't insert a marginpar in a minipage!"
 msgstr "Impossible inserir un flotant en un flotant!"
 
-#: src/text.C:3971
+#: src/text.C:4501
 msgid "Cannot cut table."
 msgstr "No es pot tallar la taula."
 
-#: src/text.C:3987
+#: src/text.C:4517
 msgid "Float would include float!"
 msgstr "Un flotant inclouria un flotant!"
+
+#~ msgid "Warning: Ignoring Old Inset"
+#~ msgstr "Avís: Ignorant Inset vell"
+
+#~ msgid "Error: Cannot open temporary file:"
+#~ msgstr "Error! Impossible obrir el fitxer temporal"
+
+#~ msgid "Document saved as"
+#~ msgstr "Document salvat com a"
+
+#~ msgid "Save failed!"
+#~ msgstr "No s'ha salvat!"
+
+#~ msgid "Could not convert file"
+#~ msgstr "Impossible convertir el fitxer"
+
+#~ msgid "Try running LyX in mono mode (lyx  -Mono)."
+#~ msgstr "Intenteu executar lyx en mode monocrom (lyx  -Mono)."
+
+#~ msgid "Switch to previous document"
+#~ msgstr "Canviar a document previ"
+
+#~ msgid "tiny"
+#~ msgstr " petita (4)"
+
+#~ msgid "smallest"
+#~ msgstr "  petita (3)"
+
+#~ msgid "smaller"
+#~ msgstr "   petita (2)"
+
+#~ msgid "small"
+#~ msgstr "    petita (1)"
+
+#~ msgid "normal"
+#~ msgstr "     normal"
+
+#~ msgid "large"
+#~ msgstr "    gran (1)"
+
+#~ msgid "larger"
+#~ msgstr "   gran (2)"
+
+#~ msgid "largest"
+#~ msgstr "  gran (3)"
+
+#~ msgid "huge"
+#~ msgstr " gran (4)"
+
+#~ msgid "huger"
+#~ msgstr "gran (5)"
+
+#~ msgid "increase"
+#~ msgstr "<- augmentar ->"
+
+#~ msgid "decrease"
+#~ msgstr "-> disminuir <-"
+
+#~ msgid "None"
+#~ msgstr "Cap"
+
+#~ msgid "Error: Could not change to directory: "
+#~ msgstr "Error: Impossible canviar de directori"
+
+#~ msgid "Error: Dir already popped: "
+#~ msgstr "Error: Ja s'havia extret Dir: "
