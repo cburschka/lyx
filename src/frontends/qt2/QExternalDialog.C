@@ -4,15 +4,27 @@
  * Licence details can be found in the file COPYING.
  *
  * \author John Levon
+ * \author Angus Leeming
  *
  * Full author contact details are available in file CREDITS.
  */
 
 #include <config.h>
 
-#include "qt_helpers.h"
-#include "ControlExternal.h"
+#include "controllers/ButtonController.h"
+#include "controllers/ControlExternal.h"
 
+#include "support/lstrings.h"
+#include "support/lyxlib.h"
+
+#include "QExternalDialog.h"
+
+#include "lengthcombo.h"
+#include "lengthvalidator.h"
+#include "qt_helpers.h"
+#include "QExternal.h"
+
+#include <qcheckbox.h>
 #include <qcombobox.h>
 #include <qpushbutton.h>
 #include <qfiledialog.h>
@@ -20,13 +32,27 @@
 #include <qlineedit.h>
 #include <qvalidator.h>
 
-#include "QExternalDialog.h"
-#include "QExternal.h"
+using lyx::support::float_equal;
+using lyx::support::isStrDbl;
+using lyx::support::strToDbl;
+using std::string;
+
+
+namespace {
+
+LengthValidator * unsignedLengthValidator(QLineEdit * ed)
+{
+	LengthValidator * v = new LengthValidator(ed);
+	v->setBottom(LyXLength());
+	return v;
+}
+
+} // namespace anon
 
 
 QExternalDialog::QExternalDialog(QExternal * form)
 	: QExternalDialogBase(0, 0, false, 0),
-	form_(form)
+	  form_(form)
 {
 	connect(okPB, SIGNAL(clicked()),
 		form, SLOT(slotOK()));
@@ -35,9 +61,21 @@ QExternalDialog::QExternalDialog(QExternal * form)
 	connect(closePB, SIGNAL(clicked()),
 		form, SLOT(slotClose()));
 
-	QIntValidator * validator = new QIntValidator(displayscale);
+	QIntValidator * validator = new QIntValidator(displayscaleED);
 	validator->setBottom(1);
-	displayscale->setValidator(validator);
+	displayscaleED->setValidator(validator);
+
+	angleED->setValidator(new QDoubleValidator(-360, 360, 2, angleED));
+
+	xlED->setValidator(new QIntValidator(xlED));
+	ybED->setValidator(new QIntValidator(ybED));
+	xrED->setValidator(new QIntValidator(xrED));
+	ytED->setValidator(new QIntValidator(ytED));
+
+	// The width is initially set to 'scale' and so should accept
+	// a pure number only.
+	widthED->setValidator(new QDoubleValidator(0, 1000, 2, widthED));
+	heightED->setValidator(unsignedLengthValidator(heightED));
 }
 
 
@@ -45,6 +83,51 @@ void QExternalDialog::show()
 {
 	QExternalDialogBase::show();
 	fileED->setFocus();
+}
+
+
+
+bool QExternalDialog::activateAspectratio() const
+{
+	if (widthUnitCO->currentItem() == 0)
+		return false;
+
+	string const wstr = fromqstr(widthED->text());
+	if (wstr.empty())
+		return false;
+	bool const wIsDbl = isStrDbl(wstr);
+	if (wIsDbl && float_equal(strToDbl(wstr), 0.0, 0.05))
+		return false;
+	LyXLength l;
+	if (!wIsDbl && (!isValidLength(wstr, &l) || l.zero()))
+		return false;
+
+	string const hstr = fromqstr(heightED->text());
+	if (hstr.empty())
+		return false;
+	bool const hIsDbl = isStrDbl(hstr);
+	if (hIsDbl && float_equal(strToDbl(hstr), 0.0, 0.05))
+		return false;
+	if (!hIsDbl && (!isValidLength(hstr, &l) || l.zero()))
+		return false;
+
+	return true;
+}
+
+
+void QExternalDialog::bbChanged()
+{
+	form_->controller().bbChanged(true);
+	form_->changed();
+}
+
+
+void QExternalDialog::browseClicked()
+{
+	string const str =
+		form_->controller().Browse(fromqstr(fileED->text()));
+	fileED->setText(toqstr(str));
+	form_->changed();
 }
 
 
@@ -67,23 +150,11 @@ void QExternalDialog::editClicked()
 }
 
 
-void QExternalDialog::browseClicked()
-{
-	QString file =
-		QFileDialog::getOpenFileName(QString::null,
-					     qt_("External material (*)"),
-					     this, 0,
-					     qt_("Select external material"));
-	if (!file.isNull()) {
-		fileED->setText(file);
-		form_->changed();
-	}
-}
 
-
-void QExternalDialog::templateChanged()
+void QExternalDialog::extraChanged(const QString& text)
 {
-	form_->updateTemplate();
+	std::string const format = fromqstr(extraFormatCO->currentText());
+	form_->extra_[format] = text;
 	form_->changed();
 }
 
@@ -94,10 +165,36 @@ void QExternalDialog::formatChanged(const QString& format)
 }
 
 
-void QExternalDialog::extraChanged(const QString& text)
+void QExternalDialog::getbbClicked()
 {
-	std::string const format = fromqstr(extraFormatCB->currentText());
-	form_->extra_[format] = text;
+	form_->getBB();
+}
+
+
+void QExternalDialog::sizeChanged()
+{
+	aspectratioCB->setEnabled(activateAspectratio());
 	form_->changed();
 }
 
+
+void QExternalDialog::templateChanged()
+{
+	form_->updateTemplate();
+	form_->changed();
+}
+
+
+void QExternalDialog::widthUnitChanged()
+{
+	bool useHeight = (widthUnitCO->currentItem() > 0);
+
+	if (useHeight)
+		widthED->setValidator(unsignedLengthValidator(widthED));
+	else
+		widthED->setValidator(new QDoubleValidator(0, 1000, 2, widthED));
+
+	heightED->setEnabled(useHeight);
+	heightUnitCO->setEnabled(useHeight);
+	form_->changed();
+}

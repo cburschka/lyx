@@ -70,6 +70,7 @@ libqt2_la_SOURCES = \
 	Qt2BC.C	Qt2BC.h	\
 	QtLyXView.h \
 	WorkAreaFactory.C \
+	checkedwidgets.C checkedwidgets.h \
 	lyx_gui.C \
 	lcolorcache.h lcolorcache.C \
 	panelstack.h panelstack.C \

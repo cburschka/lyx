@@ -1,3 +1,24 @@
+2003-12-04  Angus Leeming  <leeming@lyx.org>
+
+	* lengthvalidator.[Ch]: a new class LengthValidator, derived from
+	QValidator enables us to validate that the input text is a LyXLength.
+
+	* checkedwidgets.[Ch]: a new class CheckedLineEdit derived from
+	CheckedWidget enables us to add widgets to a list at build time.
+	Thereafter, their validity is checked automatically on each
+	input event, thus allowing us to 'remember' invalid widgets and
+	so control the state of the 'Apply', 'Ok' buttons.
+	As a bit of fun and to provide the user with some visual feedback,
+	the invalid widgets are displayed in red.
+
+	* Makefile.am, Makefile.dialogs: add the new files.
+
+	* QExternal.[Ch]:
+	* QExternalDialog.C:
+	* ui/QExternalDialogBase.ui: a total overhaul. In addition, the
+	dialog can now manipulate the transform data (rotate, scale, crop).
+	Makes full use of CheckedLineEdit.
+
 2003-12-01  Angus Leeming  <leeming@lyx.org>
 
 	* QContentPane.[Ch] (SyntheticMouseEvent): a new, helper struct.

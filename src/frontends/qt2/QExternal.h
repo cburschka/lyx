@@ -29,6 +29,8 @@ public:
 
 	QExternal(Dialog &);
 
+	typedef std::map<std::string, QString> MapType;
+
 private:
 	/// Apply changes
 	virtual void apply();
@@ -37,13 +39,12 @@ private:
 	/// build the dialog
 	virtual void build_dialog();
 
-	/// get the right helptext
-	std::string const helpText() const;
-
 	/// Helper function called when the template is changed.
 	void updateTemplate();
+	/// get bounding box from file
+	void getBB();
 
-	std::map<std::string, QString> extra_;
+	MapType extra_;
 };
 
 #endif // QEXTERNAL_H
