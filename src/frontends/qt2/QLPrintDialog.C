@@ -11,11 +11,11 @@
 
 #include <config.h>
 
+#include "controllers/ControlPrint.h"
 #include "QLPrintDialog.h"
 #include "QPrint.h"
 #include "qt_helpers.h"
 
-#include <qfiledialog.h>
 #include <qcheckbox.h>
 #include <qlineedit.h>
 #include <qpushbutton.h>
@@ -43,11 +43,7 @@ void QLPrintDialog::change_adaptor()
 
 void QLPrintDialog::browseClicked()
 {
-	QString file =
-		QFileDialog::getOpenFileName(QString::null,
-					     qt_("PostScript files (*.ps)"),
-					     this, 0,
-					     qt_("Select a file to print to"));
+	QString file = toqstr(form_->controller().browse(""));
 	if (!file.isNull()) {
 		fileED->setText(file);
 		form_->changed();

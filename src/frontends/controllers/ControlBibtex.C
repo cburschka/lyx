@@ -43,14 +43,24 @@ ControlBibtex::ControlBibtex(Dialog & d)
 {}
 
 
-string const ControlBibtex::browse(string const & in_name,
-				   string const & title,
-				   FileFilterList const & filters) const
+string const ControlBibtex::browseBib(string const & in_name) const
 {
 	pair<string, string> dir1(_("Documents|#o#O"),
 				  string(lyxrc.document_path));
+	FileFilterList const filter(_("BibTeX Databases (*.bib)"));
 	return browseRelFile(in_name, kernel().bufferFilepath(),
-			     title, filters, false, dir1);
+			     _("Select a BibTeX database to add"),
+			     filter, false, dir1);
+}
+
+
+string const ControlBibtex::browseBst(string const & in_name) const
+{
+	pair<string, string> dir1(_("Documents|#o#O"),
+				  string(lyxrc.document_path));
+	FileFilterList const filter(_("BibTeX Styles (*.bst)"));
+	return browseRelFile(in_name, kernel().bufferFilepath(),
+			     _("Select a BibTeX style"), filter, false, dir1);
 }
 
 

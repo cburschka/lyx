@@ -1,3 +1,10 @@
+2004-08-07  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* ControlBibtex.C (browseBst): new method, specialized to lookup
+	bibtex style files
+	(browseBib): new method, specialized to lookup bibtex database files
+	(browse): removed
+
 2004-07-25  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
 	* ControlErrorList.C (goTo): shuffle code to avoid compiler warning.

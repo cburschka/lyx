@@ -15,14 +15,13 @@
 #include "QBibtex.h"
 #include "qt_helpers.h"
 
+#include "controllers/ControlBibtex.h"
 #include "support/filetools.h"
 
 #include <qpushbutton.h>
 #include <qcombobox.h>
 #include <qlineedit.h>
 #include <qlistbox.h>
-#include <qfiledialog.h>
-
 
 using lyx::support::ChangeExtension;
 
@@ -58,14 +57,10 @@ void QBibtexDialog::change_adaptor()
 
 void QBibtexDialog::browsePressed()
 {
-	QString const file =
-		QFileDialog::getOpenFileName(QString::null,
-					     qt_("BibTeX style files (*.bst)"),
-					     this,
-					     0,
-					     qt_("Select a BibTeX style"));
-	if (!file.isNull()) {
-		string const filen = ChangeExtension(fromqstr(file), "");
+	string const file = form_->controller().browseBst("");
+
+	if (!file.empty()) {
+		string const filen = ChangeExtension(file, "");
 		bool present = false;
 		unsigned int pres = 0;
 
@@ -87,11 +82,10 @@ void QBibtexDialog::browsePressed()
 
 void QBibtexDialog::browseBibPressed()
 {
-	QString const file = QFileDialog::getOpenFileName(QString::null,
-		qt_("BibTeX database files (*.bib)"), add_, 0, qt_("Select a BibTeX database to add"));
+	string const file = form_->controller().browseBib("");
 
-	if (!file.isNull()) {
-		string const f = ChangeExtension(fromqstr(file), "");
+	if (!file.empty()) {
+		string const f = ChangeExtension(file, "");
 		bool present = false;
 
 		for (unsigned int i = 0; i != add_->bibLB->count(); i++) {

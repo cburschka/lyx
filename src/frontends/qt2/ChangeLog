@@ -1,3 +1,10 @@
+2004-08-07  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* QBibtexDialog.C (browsePressed): use ControlBibtex::browseBst
+	(browseBibPressed): use ControlBibtex::browseBib
+
+	* QLPrintDialog.C (browseClicked): use ControlPrint::browse
+
 2004-08-01  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
 	* QContentPane.C (keyPressEvent): make sure to use the smart

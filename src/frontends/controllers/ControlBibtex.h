@@ -33,10 +33,12 @@ public:
 	///
 	ControlBibtex(Dialog &);
 
-	/// Browse for a file
-	std::string const browse(std::string const & in_name,
-				 std::string const & title,
-				 support::FileFilterList const & filters) const;
+	/// Browse for a .bib file
+	std::string const browseBib(std::string const & in_name) const;
+
+	/// Browse for a .bst file
+	std::string const browseBst(std::string const & in_name) const;
+
 	/// get the list of bst files
 	void getBibStyles(std::vector<std::string> & data) const;
 	/// get the list of bib files
