@@ -754,7 +754,7 @@ void LyXFunc::miniDispatch(string const & s)
 }
 
 
-void const LyXFunc::verboseDispatch(string const & s, bool show_sc) 
+void LyXFunc::verboseDispatch(string const & s, bool show_sc) 
 {
 	int action = lyxaction.LookupFunc(frontStrip(s));
  
@@ -768,7 +768,7 @@ void const LyXFunc::verboseDispatch(string const & s, bool show_sc)
 }
 
 
-void const LyXFunc::verboseDispatch(int ac, bool show_sc) 
+void LyXFunc::verboseDispatch(int ac, bool show_sc) 
 {
 	string argument;
 	kb_action action;
@@ -781,8 +781,8 @@ void const LyXFunc::verboseDispatch(int ac, bool show_sc)
 
 
 
-void const LyXFunc::verboseDispatch(kb_action action,
-				    string const & argument, bool show_sc)
+void LyXFunc::verboseDispatch(kb_action action,
+			      string const & argument, bool show_sc)
 {
 	string res = dispatch(action, argument);
 

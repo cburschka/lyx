@@ -1,3 +1,14 @@
+2002-01-14  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* ToolbarDefaults.C: remove trailing comma closing namespace.
+
+	* WorkArea.h: remove WorkArea:: from declaration of event_cb.
+
+	* lyxfunc.[Ch]: clean-up declaration of verboseDispatch functions
+	as in WorkArea.
+
+	* trans.C (Load): comment out unused variable, allowed.
+
 2002-01-11  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* minibuffer.[Ch] (append_char): new method to recieve input from the

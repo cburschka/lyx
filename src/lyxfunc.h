@@ -35,18 +35,18 @@ public:
 
 	/// The same as dispatch, but also shows shortcuts and command
 	/// name in minibuffer if show_sc is true (more to come?) 
-	void const LyXFunc::verboseDispatch(kb_action action,
-					    string const & argument,
-					    bool show_sc);
+	void verboseDispatch(kb_action action,
+			     string const & argument,
+			     bool show_sc);
 	
 	/// Same as above, using a pseudoaction as argument
-	void const LyXFunc::verboseDispatch(int ac, bool show_sc);
+	void verboseDispatch(int ac, bool show_sc);
 
 	/// Same as above, when the command is provided as a string
-	void const LyXFunc::verboseDispatch(string const & s, bool show_sc);
+	void verboseDispatch(string const & s, bool show_sc);
 
 	/// 
-	void LyXFunc::miniDispatch(string const & s);
+	void miniDispatch(string const & s);
 
 	///
 	void initMiniBuffer();

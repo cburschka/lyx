@@ -47,7 +47,7 @@ struct keyword_item toolTags[TO_LAST - 1] = {
 	{ "separator", TO_SEPARATOR }
 };
 
-}; // end of anon namespace
+} // end of anon namespace
 
 
 ToolbarDefaults::ToolbarDefaults()

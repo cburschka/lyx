@@ -152,7 +152,7 @@ int Trans::Load(LyXLex & lex)
 			} else
 				return -1;
 
-			string const allowed = lex.getString();
+			/* string const allowed = lex.getString(); */
 			AddDeadkey(accent, keys /*, allowed*/);
 #else
 			AddDeadkey(accent, keys);
