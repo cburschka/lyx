@@ -790,11 +790,11 @@ void LyXText::setFont(BufferView * bview, LyXFont const & font, bool toggleall)
 	redoParagraphs(bview, selection.start, selection.end.par()->next());
    
 	// we have to reset the selection, because the
-	// geometry could have changed
+	// geometry could have changed, but we keep
+	// it for user convenience
 	setCursor(bview, selection.start.par(), selection.start.pos());
 	selection.cursor = cursor;
 	setCursor(bview, selection.end.par(), selection.end.pos());
-	clearSelection();
 	setSelection(bview);
 	setCursor(bview, tmpcursor.par(), tmpcursor.pos(), true,
 	          tmpcursor.boundary());
@@ -874,7 +874,7 @@ void LyXText::redoParagraphs(BufferView * bview, LyXCursor const & cur,
 			y -= tmprow->height();
 		}
 	}
-	
+
 	// we can set the refreshing parameters now
 	status(bview, LyXText::NEED_MORE_REFRESH);
 	refresh_y = y;
@@ -888,11 +888,12 @@ void LyXText::redoParagraphs(BufferView * bview, LyXCursor const & cur,
 		tmppar = 0;
 	while (tmppar != endpar) {
 		removeRow(tmprow->next());
-		if (tmprow->next())
+		if (tmprow->next()) {
 			tmppar = tmprow->next()->par();
-		else
+		} else {
 			tmppar = 0;
-	}  
+		}
+	}
    
 	// remove the first one
 	tmprow2 = tmprow;     /* this is because tmprow->previous()
@@ -2369,17 +2370,13 @@ void LyXText::fixCursorAfterDelete(BufferView * bview,
 void LyXText::deleteEmptyParagraphMechanism(BufferView * bview,
 					    LyXCursor const & old_cursor) const
 {
-	// don't delete anything if this is the ONLY paragraph!
-	if (!old_cursor.par()->next() && !old_cursor.par()->previous())
-		return;
-	
 	// Would be wrong to delete anything if we have a selection.
 	if (selection.set()) return;
 
 	// We allow all kinds of "mumbo-jumbo" when freespacing.
 	if (textclasslist.Style(bview->buffer()->params.textclass,
-							old_cursor.par()->getLayout()).free_spacing ||
-		old_cursor.par()->isFreeSpacing())
+				old_cursor.par()->getLayout()).free_spacing
+	    || old_cursor.par()->isFreeSpacing())
 	{
 		return;
 	}
@@ -2410,7 +2407,8 @@ void LyXText::deleteEmptyParagraphMechanism(BufferView * bview,
 	// MISSING
 
 	// If the pos around the old_cursor were spaces, delete one of them.
-	if (old_cursor.par() != cursor.par() || old_cursor.pos() != cursor.pos()) { 
+	if (old_cursor.par() != cursor.par()
+	    || old_cursor.pos() != cursor.pos()) { 
 		// Only if the cursor has really moved
 		
 		if (old_cursor.pos() > 0
@@ -2442,6 +2440,10 @@ void LyXText::deleteEmptyParagraphMechanism(BufferView * bview,
 		}
 	}
 
+	// don't delete anything if this is the ONLY paragraph!
+	if (!old_cursor.par()->next() && !old_cursor.par()->previous())
+		return;
+	
 	// Do not delete empty paragraphs with keepempty set.
 	if ((textclasslist.Style(bview->buffer()->params.textclass,
 				 old_cursor.par()->getLayout())).keepempty)

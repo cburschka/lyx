@@ -2449,6 +2449,7 @@ void Buffer::makeLaTeXFile(string const & fname,
 	}
 	
 	lyxerr[Debug::INFO] << "Finished making latex file." << endl;
+	lyxerr[Debug::INFO] << "Row count was " << texrow.rows()-1 << "." << endl;
 }
 
 

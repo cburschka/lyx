@@ -1830,6 +1830,7 @@ Paragraph * Paragraph::TeXEnvironment(Buffer const * buf,
  
 	if (style.isEnvironment()) {
 		os << "\\end{" << style.latexname() << "}\n";
+		texrow.newline();
 	}
 
 	lyxerr[Debug::LATEX] << "TeXEnvironment...done " << par << endl;

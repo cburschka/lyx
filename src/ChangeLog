@@ -1,3 +1,19 @@
+2001-12-11  Ben Stanley <bds02@uow.edu.au>
+
+	* paragraph.C: fixed missing line number count when exporting
+	Environments to LaTeX file
+
+	* buffer.C: added informational message for checking line numbers.
+
+2001-12-11  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* text2.C (deleteEmptyParagraphMechanism): if there is only one
+	paragraph, do the 'double space' part, but not the 'empty
+	paragraph' one.
+
+	* text.C (workWidth): small optimization
+	(getLengthMarkerHeight): use minimal size for negative lengths. 
+
 2001-12-11  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* lyxfont.C (GUIFamilyNames): Fix GUIFamilyNames array
@@ -9,6 +25,10 @@
 	* FontLoader.C:
 	* lyxfont.[Ch]: support for fraktur font used by \mathfrak
 
+2001-12-06  John Levon  <moz@compsoc.man.ac.uk>
+
+	* text2.C: keep selection on a setFont()
+ 
 2001-12-06  John Levon  <moz@compsoc.man.ac.uk>
 
 	* lyx_cb.C: another bv->text misuse, from insert label

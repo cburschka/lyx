@@ -72,8 +72,8 @@ int LyXText::workWidth(BufferView * bview, Inset * inset) const
 	pos_type pos = 0;
 
 	Buffer::inset_iterator it = bview->buffer()->inset_iterator_begin();
-
-	for (; it != bview->buffer()->inset_iterator_end(); ++it) {
+	Buffer::inset_iterator end = bview->buffer()->inset_iterator_end();
+	for ( ; it != end; ++it) {
 		if (*it == inset) {
 			par = it.getPar();
 			pos = it.getPos();
@@ -3160,12 +3160,12 @@ void LyXText::paintRowDepthBar(DrawRowParams & p)
 
 int LyXText::getLengthMarkerHeight(BufferView * bv, VSpace const & vsp) const
 {
-	if (vsp.kind() != VSpace::LENGTH) {
-		return int(vsp.inPixels(bv));
-	}
-
-	int const space_size = int(vsp.inPixels(bv));
 	int const arrow_size = 4;
+	int const space_size = int(vsp.inPixels(bv));
+
+	if (vsp.kind() != VSpace::LENGTH) {
+		return space_size;
+	}
  
 	LyXFont font;
 	font.decSize();
@@ -3173,7 +3173,10 @@ int LyXText::getLengthMarkerHeight(BufferView * bv, VSpace const & vsp) const
 				      lyxfont::maxAscent(font)
 				      + lyxfont::maxDescent(font));
 
-	return std::max(min_size, space_size);
+	if (vsp.length().len().value() < 0.0)
+		return min_size;
+	else 
+		return std::max(min_size, space_size);
 }
 
  
