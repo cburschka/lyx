@@ -41,14 +41,14 @@ char const CLOSE = '>';
 char const TAB = '\001';
 char const LINE = '\002';
 
-const char * known_languages[] = { "austrian", "babel", "bahasa",
-"basque", "breton", "bulgarian", "catalan", "croatian", "czech", "danish",
-"dutch", "english", "esperanto", "estonian", "finnish", "francais",
-"frenchb", "galician", "germanb", "greek", "hebcal", "hebfont", "hebrew",
-"hebrew_newcode", "hebrew_oldcode", "hebrew_p", "hyphen", "icelandic",
-"irish", "italian", "latin", "lgrcmr", "lgrcmro", "lgrcmss", "lgrcmtt",
-"lgrenc", "lgrlcmss", "lgrlcmtt", "lheclas", "lhecmr", "lhecmss",
-"lhecmtt", "lhecrml", "lheenc", "lhefr", "lheredis", "lheshold",
+const char * known_languages[] = { "austrian", "babel", "bahasa", "basque",
+"breton", "british", "bulgarian", "catalan", "croatian", "czech",
+"danish", "dutch", "english", "esperanto", "estonian", "finnish",
+"francais", "frenchb", "galician", "germanb", "greek", "hebcal", "hebfont",
+"hebrew", "hebrew_newcode", "hebrew_oldcode", "hebrew_p", "hyphen",
+"icelandic", "irish", "italian", "latin", "lgrcmr", "lgrcmro", "lgrcmss",
+"lgrcmtt", "lgrenc", "lgrlcmss", "lgrlcmtt", "lheclas", "lhecmr",
+"lhecmss", "lhecmtt", "lhecrml", "lheenc", "lhefr", "lheredis", "lheshold",
 "lheshscr", "lheshstk", "lsorbian", "magyar", "naustrian", "ngermanb",
 "ngerman", "norsk", "polish", "portuges", "rlbabel", "romanian",
 "russianb", "samin", "scottish", "serbian", "slovak", "slovene", "spanish",
@@ -148,7 +148,7 @@ void handle_opt(vector<string> & opts, char const ** what, string & target)
 	if (opts.empty())
 		return;
 
-	for ( ; what; ++what) {
+	for ( ; *what; ++what) {
 		vector<string>::iterator it = find(opts.begin(), opts.end(), *what);
 		if (it != opts.end()) {
 			//cerr << "### found option '" << *what << "'\n";
