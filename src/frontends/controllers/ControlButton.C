@@ -8,27 +8,26 @@
  *
  * ======================================================
  *
- * \file ControlBase.C
+ * \file ControlButton.C
  * \author Angus Leeming <a.leeming@ic.ac.uk>
  */
+
+#include <config.h>
 
 #ifdef __GNUG__
 #pragma implementation
 #endif
 
-#include <config.h>
+#include "ControlButton.h"
 
-#include "ButtonController.h"
-#include "ControlBase.h"
-
-void ControlBase::ApplyButton()
+void ControlButton::ApplyButton()
 {
 	apply();
 	bc().apply();
 }
 
 
-void ControlBase::OKButton()
+void ControlButton::OKButton()
 {
 	apply();
 	hide();
@@ -36,14 +35,14 @@ void ControlBase::OKButton()
 }
 
 
-void ControlBase::CancelButton()
+void ControlButton::CancelButton()
 {
 	hide();
 	bc().cancel();
 }
 
 
-void ControlBase::RestoreButton()
+void ControlButton::RestoreButton()
 {
 	update();
 	bc().undoAll();

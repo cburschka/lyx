@@ -15,13 +15,13 @@
 #define VIEWBASE_H
 
 #include <boost/utility.hpp>
-#include "ControlBase.h"
+#include "ControlButton.h"
 #include "ControlSplash.h"
 
 class ViewBase {
 public:
 	/// 
-	ViewBase(ControlBase & c) : controller_(c) {}
+	ViewBase(ControlButton & c) : controller_(c) {}
 	/// 
 	virtual ~ViewBase() {}
 
@@ -50,7 +50,7 @@ public:
 
 protected:
 	/// The view is, after all, controlled!
-	ControlBase & controller_;
+	ControlButton & controller_;
 };
 
 
@@ -84,7 +84,7 @@ template <class GUIbc>
 class ViewBC : public ViewBase {
 public:
 	///
-	ViewBC(ControlBase & c) : ViewBase(c) {}
+	ViewBC(ControlButton & c) : ViewBase(c) {}
 
 protected:
 	///

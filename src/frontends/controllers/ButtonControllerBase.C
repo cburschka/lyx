@@ -8,7 +8,7 @@
  *
  * ======================================================
  *
- * \file ButtonController.C
+ * \file ButtonControllerBase.C
  * \author Allan Rae
  */
 
@@ -17,13 +17,13 @@
 #endif
 
 #include <config.h>
-#include "ButtonController.h"
+#include "ButtonControllerBase.h"
 #include "support/LAssert.h"
 
 
 ButtonControllerBase::ButtonControllerBase(string const & cancel,
 					   string const & close)
-	: cancel_label(cancel), close_label(close)
+	: cancel_label_(cancel), close_label_(close)
 {}
 
 

@@ -33,7 +33,7 @@ FD_form_external * FormExternal::build_external()
     fl_set_object_boxtype(obj, FL_FRAME_BOX);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_gravity(obj, FL_NorthWest, FL_NorthEast);
-    fl_set_object_callback(obj, ExternalTemplateCB, 0);
+    fl_set_object_callback(obj, C_FormBaseInputCB, 0);
   {
     char const * const dummy = N_("File|#F");
     fdui->input_filename = obj = fl_add_input(FL_NORMAL_INPUT, 130, 190, 190, 30, idex(_(dummy)));
@@ -49,7 +49,7 @@ FD_form_external * FormExternal::build_external()
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_gravity(obj, FL_SouthEast, FL_SouthEast);
-    fl_set_object_callback(obj, ExternalBrowseCB, 0);
+    fl_set_object_callback(obj, C_FormBaseInputCB, 0);
   {
     char const * const dummy = N_("Parameters|#P");
     fdui->input_parameters = obj = fl_add_input(FL_NORMAL_INPUT, 130, 230, 300, 30, idex(_(dummy)));
@@ -65,7 +65,7 @@ FD_form_external * FormExternal::build_external()
     fl_set_object_color(obj, FL_COL1, FL_BLACK);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_gravity(obj, FL_NorthEast, FL_NorthEast);
-    fl_set_object_callback(obj, ExternalEditCB, 0);
+    fl_set_object_callback(obj, C_FormBaseInputCB, 0);
   {
     char const * const dummy = N_("View result|#V");
     fdui->button_view = obj = fl_add_button(FL_NORMAL_BUTTON, 435, 90, 110, 30, idex(_(dummy)));
@@ -74,7 +74,7 @@ FD_form_external * FormExternal::build_external()
     fl_set_object_color(obj, FL_COL1, FL_BLACK);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_gravity(obj, FL_NorthEast, FL_NorthEast);
-    fl_set_object_callback(obj, ExternalViewCB, 0);
+    fl_set_object_callback(obj, C_FormBaseInputCB, 0);
   {
     char const * const dummy = N_("Update result|#U");
     fdui->button_update = obj = fl_add_button(FL_NORMAL_BUTTON, 435, 130, 110, 30, idex(_(dummy)));
@@ -83,7 +83,7 @@ FD_form_external * FormExternal::build_external()
     fl_set_object_color(obj, FL_COL1, FL_BLACK);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_gravity(obj, FL_NorthEast, FL_NorthEast);
-    fl_set_object_callback(obj, ExternalUpdateCB, 0);
+    fl_set_object_callback(obj, C_FormBaseInputCB, 0);
   fdui->button_ok = obj = fl_add_button(FL_RETURN_BUTTON, 315, 270, 110, 30, _("OK"));
     fl_set_object_color(obj, FL_COL1, FL_BLACK);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);

@@ -5,12 +5,7 @@
 #define FD_form_external_h_
 
 /** Callbacks, globals and object handlers **/
-extern  "C" void ExternalTemplateCB(FL_OBJECT *, long);
 extern  "C" void C_FormBaseInputCB(FL_OBJECT *, long);
-extern  "C" void ExternalBrowseCB(FL_OBJECT *, long);
-extern  "C" void ExternalEditCB(FL_OBJECT *, long);
-extern  "C" void ExternalViewCB(FL_OBJECT *, long);
-extern  "C" void ExternalUpdateCB(FL_OBJECT *, long);
 extern  "C" void C_FormBaseOKCB(FL_OBJECT *, long);
 extern  "C" void C_FormBaseCancelCB(FL_OBJECT *, long);
 

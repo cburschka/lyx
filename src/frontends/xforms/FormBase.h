@@ -33,7 +33,7 @@ class FormBase : public ViewBC<xformsBC>
 {
 public:
 	///
-	FormBase(ControlBase &, string const &);
+	FormBase(ControlButton &, string const &);
 	///
 	virtual ~FormBase() {}
 
@@ -76,7 +76,7 @@ class FormDB: public FormBase
 {
 protected:
 	///
-	FormDB(ControlBase &, string const &);
+	FormDB(ControlButton &, string const &);
 	/// Pointer to the actual instantiation of xform's form
 	virtual FL_FORM * form() const;
 	/// Real GUI implementation.
@@ -85,7 +85,7 @@ protected:
 
 
 template <class Dialog>
-FormDB<Dialog>::FormDB(ControlBase & c, string const & t)
+FormDB<Dialog>::FormDB(ControlButton & c, string const & t)
 	: FormBase(c, t)
 {}
 
@@ -103,14 +103,14 @@ class FormCB: public Base
 {
 protected:
 	///
-	FormCB(ControlBase &, string const &);
+	FormCB(ControlButton &, string const &);
 	/// The parent controller
 	Controller & controller() const;
 };
 
 
 template <class Controller, class Base>
-FormCB<Controller, Base>::FormCB(ControlBase & c, string const & t)
+FormCB<Controller, Base>::FormCB(ControlButton & c, string const & t)
 	: Base(c, t)
 {}
 

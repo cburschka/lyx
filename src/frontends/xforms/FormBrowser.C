@@ -12,7 +12,7 @@
 #include "form_browser.h"
 #include "xformsBC.h"
 
-FormBrowser::FormBrowser(ControlBase & c, string const & t)
+FormBrowser::FormBrowser(ControlButton & c, string const & t)
 	: FormDB<FD_form_browser>(c, t)
 {}
 	

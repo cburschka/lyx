@@ -12,6 +12,7 @@
  */
 
 #include <config.h>
+#include <utility>
 
 #ifdef __GNUG__
 #pragma implementation
@@ -24,11 +25,12 @@
 #include "lyxrc.h"
 #include "PrinterParams.h"
 #include "Liason.h"
-
+#include "helper_funcs.h" // browseFile
 #include "lyx_gui_misc.h" // WriteAlert
 
 using Liason::printBuffer;
 using Liason::getPrinterParams;
+using std::make_pair;
 
 ControlPrint::ControlPrint(LyXView & lv, Dialogs & d)
 	: ControlDialog<ControlConnectBD>(lv, d)
@@ -49,12 +51,6 @@ void ControlPrint::apply()
 			   _("Unable to print"),
 			   _("Check that your parameters are correct"));
 	}
-}
-
-
-LyXView * ControlPrint::lv() const
-{
-	return &lv_;
 }
 
 
@@ -83,3 +79,13 @@ void ControlPrint::clearParams()
 }
 
 
+string const ControlPrint::Browse(string const & in_name)
+{
+	string const title = N_("Print to file");
+	string const pattern = "*.ps";
+
+	// Show the file browser dialog
+	return browseFile(&lv_, in_name, title, pattern,
+			   make_pair(string(), string()),
+			   make_pair(string(), string()));
+}

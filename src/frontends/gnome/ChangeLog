@@ -1,3 +1,17 @@
+2001-03-30  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* GnomeBase.[Ch]: changed ControlBase to ControlButton.
+
+2001-03-29  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* gnomeBC.[Ch]: Patched in a slight reworking of Baruch Even's patch.
+	Code moved into the generic template base class. Replaced
+	setCancelCloseButton() with setButtonLabel().
+
+2001-03-29  Baruch Even  <baruch@lyx.org>
+
+	* gnomeBC.[Ch]: Changed to use the new GuiBC template.
+
 2001-03-29  Baruch Even  <baruch@lyx.org>
 
 	* FormUrl.C (d-tor):

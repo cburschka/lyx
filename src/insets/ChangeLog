@@ -1,3 +1,9 @@
+2001-03-29  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* insetexternal.[Ch]: renamed InsetExternal::InsetExternalParams as
+	InsetExternal::Params.
+	Added operator==() and operator!=() for the Params struct.
+
 2001-03-29  Juergen Vigna  <jug@sad.it>
 
 	* lyxinset.h: changed parameter of getMaxWidth from Painter & to
@@ -8,7 +14,7 @@
 
 2001-03-28  Angus Leeming  <a.leeming@ic.ac.uk>
 
-	* insets/figinset.[Ch]: changed headers lyx.h, form1.h -> figure_form.h.
+	* figinset.[Ch]: changed headers lyx.h, form1.h -> figure_form.h.
 
 2001-03-27  Angus Leeming  <a.leeming@ic.ac.uk>
 

@@ -28,6 +28,7 @@ struct FD_form_citation {
 	FL_OBJECT *frame_search;
 	FL_OBJECT *input_search;
 	FL_OBJECT *button_search_type;
+	FL_OBJECT *button_search_case;
 	FL_OBJECT *button_previous;
 	FL_OBJECT *button_next;
 	FL_OBJECT *choice_style;

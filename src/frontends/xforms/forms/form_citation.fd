@@ -10,7 +10,7 @@ Unit of measure: FL_COORD_PIXEL
 Name: form_citation
 Width: 430
 Height: 830
-Number of Objects: 20
+Number of Objects: 21
 
 --------------------
 class: FL_BOX
@@ -193,11 +193,11 @@ callback:
 argument: 
 
 --------------------
-class: FL_BUTTON
+class: FL_CHECKBUTTON
 type: PUSH_BUTTON
-box: 25 525 90 30
-boxtype: FL_UP_BOX
-colors: FL_COL1 FL_COL1
+box: 25 525 30 30
+boxtype: FL_NO_BOX
+colors: FL_COL1 FL_YELLOW
 alignment: FL_ALIGN_CENTER
 style: FL_NORMAL_STYLE
 size: FL_DEFAULT_SIZE
@@ -211,6 +211,24 @@ callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
+class: FL_CHECKBUTTON
+type: PUSH_BUTTON
+box: 25 560 30 30
+boxtype: FL_NO_BOX
+colors: FL_COL1 FL_YELLOW
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_DEFAULT_SIZE
+lcol: FL_BLACK
+label: Case sensitive
+shortcut: 
+resize: FL_RESIZE_NONE
+gravity: FL_SouthWest FL_SouthWest
+name: button_search_case
+callback: 
+argument: 
+
+--------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
 box: 315 525 90 30
@@ -222,7 +240,7 @@ size: FL_DEFAULT_SIZE
 lcol: FL_BLACK
 label: Previous|#P
 shortcut: 
-resize: FL_RESIZE_ALL
+resize: FL_RESIZE_NONE
 gravity: FL_SouthEast FL_SouthEast
 name: button_previous
 callback: C_FormBaseInputCB
@@ -240,7 +258,7 @@ size: FL_DEFAULT_SIZE
 lcol: FL_BLACK
 label: Next|#N
 shortcut: 
-resize: FL_RESIZE_ALL
+resize: FL_RESIZE_NONE
 gravity: FL_SouthEast FL_SouthEast
 name: button_next
 callback: C_FormBaseInputCB

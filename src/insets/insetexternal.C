@@ -48,13 +48,13 @@ InsetExternal::~InsetExternal()
 }
 
 
-InsetExternal::InsetExternalParams InsetExternal::params() const
+InsetExternal::Params InsetExternal::params() const
 {
 	return params_;
 }
  
  
-void InsetExternal::setFromParams(InsetExternalParams const & p)
+void InsetExternal::setFromParams(Params const & p)
 {
 	params_.filename = p.filename;
 	params_.parameters = p.parameters;
@@ -290,3 +290,20 @@ void InsetExternal::editExternal() const
 			et.editCommand),
 			view->buffer());
 }
+
+
+bool operator==(InsetExternal::Params const & left,
+		InsetExternal::Params const & right)
+{
+	return ((left.filename   == right.filename) &&
+		(left.parameters == right.parameters) &&
+		(left.templ.lyxName == right.templ.lyxName));
+}
+
+
+bool operator!=(InsetExternal::Params const & left,
+		InsetExternal::Params const & right)
+{
+	return 	!(left == right);
+}
+

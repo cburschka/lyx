@@ -65,7 +65,7 @@ private:
 
 
 	
-	/// Instantiation of ControlBase virtual methods.
+	/// Instantiation of ControlButton virtual methods.
 
 	/// Get changed parameters and Dispatch them to the kernel.
 	virtual void apply();

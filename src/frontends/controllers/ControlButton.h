@@ -7,10 +7,10 @@
  *
  * ======================================================
  *
- * \file ControlBase.h
+ * \file ControlButton.h
  * \author Angus Leeming <a.leeming@ic.ac.uk>
  *
- * ControlBase serves only to control the activation of the Ok, Apply, Cancel
+ * ControlButton serves only to control the activation of the Ok, Apply, Cancel
  * and Restore buttons on the View popup.
  *
  * More generally, the class is part of a hierarchy of controller classes
@@ -25,27 +25,27 @@
  * management and, ultimately, destruction.
  */
 
-#ifndef CONTROLBASE_H
-#define CONTROLBASE_H
+#ifndef CONTROLBUTTON_H
+#define CONTROLBUTTON_H
 
 #ifdef __GNUG__
 #pragma interface
 #endif
 
 #include "DialogBase.h" // This can go eventually
-#include "ButtonController.h"
+#include "ButtonControllerBase.h"
 
 class ViewBase;
 
 /** Abstract base class for Controllers with a ButtonController.
  */
-class ControlBase : public DialogBase
+class ControlButton : public DialogBase
 {
 public: // methods
 	///
-	ControlBase() {}
+	ControlButton() {}
 	///
-	virtual ~ControlBase() {};
+	virtual ~ControlButton() {};
 
 	/// These functions are called when the controlling buttons are pressed.
 	///
@@ -78,4 +78,4 @@ protected:
 
 #include "ViewBase.h"
 
-#endif // CONTROLBASE_H
+#endif // CONTROLBUTTON_H

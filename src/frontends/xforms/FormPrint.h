@@ -48,9 +48,6 @@ private:
 	/// Filter the inputs on callback from xforms
 	virtual ButtonPolicy::SMInput input(FL_OBJECT *, long);
 
-	/// Open the file browse dialog.
-	void browse();
-
 	/// Fdesign generated method
 	FD_form_print * build_print();
 

@@ -1,113 +1,55 @@
-/**
- * \file FormExternal.h
- * Copyright 2001 the LyX Team
- * Read the file COPYING
+/* This file is part of
+ * ====================================================== 
  *
- * \author unknown
+ *           LyX, The Document Processor
+ *
+ *           Copyright 2000-2001 The LyX Team.
+ *
+ * ======================================================
+ *
+ * \file FormExternal.h
+ * \author Asger Alstrup
  * \author John Levon
+ * \author Angus Leeming, a.leeming@ic.ac.uk
  */
 
 #ifndef FORMEXTERNAL_H
 #define FORMEXTERNAL_H
 
-#include <boost/smart_ptr.hpp>
-
 #ifdef __GNUG__
 #pragma interface
 #endif
 
-#include "FormBaseDeprecated.h"
+#include "FormBase.h"
 #include "insets/insetexternal.h"
 
+class ControlExternal;
 struct FD_form_external;
 
 /// The class for editing External insets via a dialog
-class FormExternal : public FormBaseBD {
+class FormExternal : public FormCB<ControlExternal, FormDB<FD_form_external> > {
 public:
 	///
-	FormExternal(LyXView *, Dialogs *);
-
-	/// Connect signals. Also perform any necessary initialisation.
-	virtual void connect();
-
-	/// Disconnect signals. Also perform any necessary housekeeping.
-	virtual void disconnect();
-
-	/// Slot launching dialog to an existing inset
-	void showInset(InsetExternal *);
-
-	/// bool indicates if a buffer switch took place
-	virtual void updateSlot(bool);
-
-	/// Callback function for the template drop-down
-	static void templateCB(FL_OBJECT *, long);
-
-	/// Callback function for the browse button
-	static void browseCB(FL_OBJECT *, long);
-
-	/// Callback function for the edit button
-	static void editCB(FL_OBJECT *, long);
-
-	/// Callback function for the view button
-	static void viewCB(FL_OBJECT *, long);
-
-	/// Callback function for the update production button
-	static void updateCB(FL_OBJECT *, long);
-
-	/// Pointer to the actual instantiation of the xform's form
-	virtual FL_FORM * form() const;
+	FormExternal(ControlExternal &);
 
 private:
-	/// calculate the string to set the combo box
-	string const getTemplatesComboString() const;
+	/// apply changes
+	void apply();
 
-	/// get the position in the combo for a given name
-	int getTemplateComboNumber(string const & name) const;
-
-	/// get a template given its combo position
-	ExternalTemplate getTemplate(int i) const;
-
-	/// change widgets on change of chosen template
-	void updateComboChange();
- 
 	/// build the dialog
 	void build();
-
-	/// the inset we're modifying
-	InsetExternal * inset_;
-
-	/// the parameters
-	InsetExternal::InsetExternalParams params_;
 
 	/// update the dialog
 	void update();
 
-	/// apply changes
-	void apply();
+	/// Filter the inputs on callback from xforms
+	ButtonPolicy::SMInput input(FL_OBJECT *, long);
 
-	bool input(FL_OBJECT * obj, long data);
+	///
+	void updateComboChange();
 
-	/// inset::hide connection.
-	SigC::Connection ih_;
-
-	/// build the dialog
+	/// Fdesign generated method
 	FD_form_external * build_external();
-
-	/// Pointer to the actual instantiation of the ButtonController.
-	virtual xformsBC & bc();
-
-	/// the dialog implementation
-	boost::scoped_ptr<FD_form_external> dialog_;
-
-	/// The ButtonController
-	ButtonController<OkCancelReadOnlyPolicy, xformsBC> bc_;
 };
-
-
-inline
-xformsBC & FormExternal::bc()
-{
-	return bc_;
-}
 
 #endif // FORMEXTERNAL_H

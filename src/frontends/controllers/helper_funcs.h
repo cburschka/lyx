@@ -15,6 +15,8 @@
 #ifndef HELPERFUNCS_H
 #define HELPERFUNCS_H
 
+#include <utility> // pair
+
 #ifdef __GNUG__
 #pragma interface
 #endif
@@ -28,6 +30,20 @@ getStringFromVector(std::vector<string> const & vec, string const & delim=",");
 ///
 std::vector<string> const
 getVectorFromString(string const & str, string const & delim=",");
+
+class LyXView;
+ 
+/** Launch a file dialog and return the chosen file.
+    filename: a suggested filename.
+    title: the title of the dialog.
+    pattern: *.ps etc.
+    dir1 = (name, dir), dir2 = (name, dir): extra buttons on the dialog.
+*/
+string const browseFile(LyXView *lv, string const & filename,
+			string const & title,
+			string const & pattern, 
+			std::pair<string,string> const & dir1,
+			std::pair<string,string> const & dir2);
 
 /** Functions to extract vectors of the first and second elems from a
     vector<pair<A,B> >

@@ -1,7 +1,4 @@
-/*
- * \file ButtonController.h
- *
- * This file is part of
+/* This file is part of
  * ====================================================== 
  *
  *           LyX, The Document Processor
@@ -10,75 +7,100 @@
  *
  * ======================================================
  *
+ * \file ButtonController.h
  * \author Allan Rae, rae@lyx.org
+ * \author Angus Leeming, a.leeming@ic.ac.uk
+ * \author Baruch Even, baruch.even@writeme.com
  */
 
 #ifndef BUTTONCONTROLLER_H
 #define BUTTONCONTROLLER_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
+#include <list>
 
-#include "ButtonPolicies.h"
-#include "LString.h"
-#include "gettext.h"
-
-/** Abstract base class for a ButtonController
-
- * Controls the activation of the OK, Apply and Cancel buttons.
- * Actually supports 4 buttons in all and it's up to the user to decide on
- * the activation policy and which buttons correspond to which output of the
- * state machine.
- * Author: Allan Rae <rae@lyx.org>.
- * This abstract base class stripped of xforms-specific code by
- * Angus Leeming <a.leeming@ic.ac.uk>
- */
-class ButtonControllerBase : public boost::noncopyable
+template <class Button, class Widget>
+class GuiBC : public ButtonControllerBase
 {
 public:
-	/** Constructor.
-	    The cancel/close label entries are _not_ managed within the class
-	    thereby allowing you to reassign at will and to use static labels.
-	    It also means if you really don't want to have the Cancel button
-	    label be different when there is nothing changed in the dialog then
-	    you can just assign "Cancel" to both labels.  Or even reuse this
-	    class for something completely different.
-	 */
-	ButtonControllerBase(string const & cancel, string const & close);
 	///
-	virtual ~ButtonControllerBase() {}
-	///
-	virtual void refresh() = 0;
-	///
-	virtual ButtonPolicy & bp() = 0;
-	///
-	virtual void input(ButtonPolicy::SMInput);
-	///
-	void ok();
-	///
-	void apply();
-	///
-	void cancel();
-	///
-	void undoAll();
-	///
-	void hide();
-	/// Passthrough function -- returns its input value
-	bool readOnly(bool = true);
-	///
-	void readWrite();
-	///
-	void valid(bool = true);
-	///
-	void invalid();
+	GuiBC(string const & cancel, string const & close);
 
-protected:
+	/// 
+	void setOK(Button * obj) { okay_ = obj; }
+	/// 
+	void setApply(Button * obj) { apply_ = obj; }
+	/// 
+	void setCancel(Button * obj) { cancel_ = obj; }
 	///
-	string cancel_label;
+	void setUndoAll(Button * obj) { undo_all_ = obj; }
 	///
-	string close_label;	
+	void addReadOnly(Widget * obj) { read_only_.push_back(obj); }
+	///
+	void eraseReadOnly() { read_only_.clear(); }
+
+	/// Refresh the widgets status.
+	void refresh();
+
+private:
+	/// Enable/Disable a widget
+	virtual void setWidgetEnabled(Widget * obj, bool enable) = 0;
+	/// Enable/Disable a button
+	virtual void setButtonEnabled(Button * obj, bool enable) = 0;
+	/// Set the Label on the button
+	virtual void setButtonLabel(Button * obj, string const & label) = 0;
+
+	Button * okay_;
+	Button * apply_;
+	Button * undo_all_;
+	Button * cancel_;
+	
+	typedef std::list<Widget *> Widgets;
+	Widgets read_only_;
 };
+
+
+template <class Button, class Widget>
+GuiBC<Button, Widget>::GuiBC(string const & cancel, string const & close)
+	: ButtonControllerBase(cancel, close)
+	, okay_(0), apply_(0), cancel_(0), undo_all_(0)
+{}
+
+
+template <class Button, class Widget>
+void GuiBC<Button, Widget>::refresh()
+{
+	if (okay_) {
+		bool const enabled = bp().buttonStatus(ButtonPolicy::OKAY);
+		setButtonEnabled(okay_, enabled);
+	}
+	if (apply_) {
+		bool const enabled = bp().buttonStatus(ButtonPolicy::APPLY);
+		setButtonEnabled(apply_, enabled);
+	}
+	if (undo_all_) {
+		bool const enabled = bp().buttonStatus(ButtonPolicy::UNDO_ALL);
+		setButtonEnabled(undo_all_, enabled);
+	}
+	if (cancel_) {
+		bool const enabled = bp().buttonStatus(ButtonPolicy::CANCEL);
+		if (enabled)
+			setButtonLabel(cancel_, cancel_label_);
+		else
+			setButtonLabel(cancel_, close_label_);
+	}
+
+	// Enable/Disable read-only handled widgets.
+	if (!read_only_.empty()) {
+		bool const enable = !bp().isReadOnly();
+
+		Widgets::const_iterator end = read_only_.end();
+		Widgets::const_iterator iter = read_only_.begin();
+		for (; iter != end; ++iter) {
+			setWidgetEnabled(*iter, enable);
+		}
+	}
+
+}
 
 
 template <class BP, class GUIBC>

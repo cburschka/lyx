@@ -1,3 +1,31 @@
+2001-03-30  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* FormBase.[Ch]:
+	* FormBrowser.[Ch]: changes associated with renaming ControlBase as
+	ControlButton.
+
+	* FormExternal.[Ch]:
+	* forms/form_external.fd: implemented controller-view split.
+
+	* Dialogs.C: associated changes.
+
+	* FormGraphics.[Ch]:
+	* FormInclude.[Ch]:
+	* FormPrint.[Ch]:
+	moved the browsing functionality into the controller.
+
+	* xforms_helpers.[Ch]: moved browseFile to
+	../controllers/helper_funcs.[Ch]
+
+	* FormCitation.C
+	* forms/form_citation.fd: added case sensitive search button.
+
+2001-03-29  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* xformsBC.[Ch]: Patched in a slight reworking of Baruch Even's patch.
+	Code moved into the generic template base class. Replaced
+	setCancelCloseButton() with setButtonLabel().
+
 2001-03-29  Juergen Vigna  <jug@sad.it>
 
 	* FormMinipage.C: removed widthp_ and all it's functions and changed
@@ -5,9 +33,9 @@
 
 2001-03-28  Angus Leeming  <a.leeming@ic.ac.uk>
 
-	* FormGraphics.C:
+	* FormGraphics.[Ch]:
 	* forms/form_graphics.fd:
-	* FormIndex.C:
+	* FormIndex.[Ch]:
 	* forms/form_index.fd: implemented controller-view split.
 
 	* Dialogs.C: associated changes.

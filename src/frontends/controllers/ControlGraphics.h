@@ -32,8 +32,8 @@ public:
 	///
 	ControlGraphics(LyXView &, Dialogs &);
 
-	/// The file dialog popup requires a LyXView * ???
-	LyXView * lv() const;
+	/// Browse for a file
+	string const Browse(string const &);
 
 private:
 	/// Dispatch the changed parameters to the kernel.

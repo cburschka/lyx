@@ -25,7 +25,7 @@
 extern "C" int C_FormBaseWMHideCB(FL_FORM * form, void *);
 
 
-FormBase::FormBase(ControlBase & c, string const & t)
+FormBase::FormBase(ControlButton & c, string const & t)
 	: ViewBC<xformsBC>(c), minw_(0), minh_(0), title_(t)
 {}
 

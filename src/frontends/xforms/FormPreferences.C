@@ -42,6 +42,7 @@
 #include "lyxlex.h"
 #include "input_validators.h"
 #include "xforms_helpers.h"
+#include "helper_funcs.h"
 #include "converter.h"
 #include "support/lyxfunctional.h"
 #include "support/lyxmanip.h"

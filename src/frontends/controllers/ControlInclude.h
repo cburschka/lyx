@@ -25,10 +25,19 @@ class ControlInclude
 {
 public:
 	///
+	enum Type {
+		///
+		INPUT,
+		///
+		VERBATIM,
+		///
+		INCLUDE
+	};
+	///
 	ControlInclude(LyXView &, Dialogs &);
 
-	/// The file dialog popup requires a LyXView * ???
-	LyXView * lv() const;
+	/// Browse for a file
+	string const Browse(string const &, Type);
 
 private:
 	/// Dispatch the changed parameters to the kernel.

@@ -8,31 +8,20 @@
  * \author Angus Leeming, a.leeming@.ac.uk
  */
 
+#include <config.h>
 #include <algorithm>
-#include <utility>
 
 #ifdef __GNUG__
 #pragma implementation
 #endif
 
-#include <config.h>
 #include "xformsBC.h"
 #include "ControlInclude.h"
 #include "FormInclude.h"
 #include "form_include.h"
 #include "insets/insetinclude.h"
-
-#include "frontends/FileDialog.h"
-#include "LyXView.h"
-#include "buffer.h"
-
 #include "xforms_helpers.h" // setEnabled
-#include "support/filetools.h"
-#include "support/lstrings.h"
-#include "lyxrc.h"
-
-using std::make_pair;
-using std::pair;
+#include "support/lstrings.h" // compare
 
 typedef FormCB<ControlInclude, FormDB<FD_form_include> > base_class;
 
@@ -118,8 +107,23 @@ void FormInclude::apply()
 
 ButtonPolicy::SMInput FormInclude::input(FL_OBJECT * ob, long)
 {
-	if (ob == dialog_->button_browse)
-		return inputBrowse();
+	if (ob == dialog_->button_browse) {
+		ControlInclude::Type type;
+		if (fl_get_button(dialog_->check_useinput))
+			type = ControlInclude::INPUT;
+		else if (fl_get_button(dialog_->check_verbatim))
+			type = ControlInclude::VERBATIM;
+		else
+			type = ControlInclude::INCLUDE;
+
+		string const in_name  = fl_get_input(dialog_->input_filename);
+		fl_freeze_form(form()); 
+		string const out_name = controller().Browse(in_name, type);
+		fl_set_input(dialog_->input_filename, out_name.c_str());
+		fl_unfreeze_form(form()); 
+
+		return ButtonPolicy::SMI_VALID;
+	}
 
 	if (ob == dialog_->button_load) {
 		if (compare(fl_get_input(dialog_->input_filename),"")) {
@@ -137,46 +141,5 @@ ButtonPolicy::SMInput FormInclude::input(FL_OBJECT * ob, long)
 		setEnabled(dialog_->check_visiblespace, false);
 	}
 	
-	return ButtonPolicy::SMI_VALID;
-}
-	
-
-ButtonPolicy::SMInput FormInclude::inputBrowse()
-{
-	// Should browsing too be disabled in RO-mode?
-	FileDialog fileDlg(controller().lv(),
-			   _("Select document to include"),
-			   LFUN_SELECT_FILE_SYNC,
-			   make_pair(string(_("Documents")),
-				     string(lyxrc.document_path)));
-
-	string ext;
-		   
-	// input TeX, verbatim, or LyX file ?
-	if (fl_get_button(dialog_->check_useinput))
-		ext = _("*.tex| LaTeX Documents (*.tex)");
-	else if (fl_get_button(dialog_->check_verbatim))
-		ext = _("*| All files ");
-	else
-		ext = _("*.lyx| LyX Documents (*.lyx)");
-	
-	string const mpath =
-		OnlyPath(controller().params().masterFilename_);
-
-	FileDialog::Result const result =
-		fileDlg.Select(mpath, ext,
-			       fl_get_input(dialog_->input_filename));
-	
-	// check selected filename
-	if (result.second.empty())
-		return ButtonPolicy::SMI_NOOP;
-	
-	string const filename2 = MakeRelPath(result.second, mpath);
-
-	if (prefixIs(filename2, ".."))
-		fl_set_input(dialog_->input_filename, result.second.c_str());
-	else
-		fl_set_input(dialog_->input_filename, filename2.c_str());
-
 	return ButtonPolicy::SMI_VALID;
 }

@@ -38,7 +38,7 @@ class Dialog;
 class GnomeBase : public ViewBC<gnomeBC>, public SigC::Object {
 public:
 	/// 
-	GnomeBase(ControlBase & c, string const & glade_file, string const & name);
+	GnomeBase(ControlButton & c, string const & glade_file, string const & name);
 	///
 	virtual ~GnomeBase();
 

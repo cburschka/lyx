@@ -34,7 +34,7 @@
 #pragma interface
 #endif
 
-#include "ControlBase.h"
+#include "ControlButton.h"
 
 class Dialogs;
 class LyXView;
@@ -43,7 +43,7 @@ class LyXView;
     kernel. It is meant to be used solely as the parent class to
     ControlConnectBI and ControlConnectBD.
 */
-class ControlConnectBase : public ControlBase
+class ControlConnectBase : public ControlButton
 {
 public:
 	///

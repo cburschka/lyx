@@ -129,7 +129,7 @@ searchKeys(InfoMap const & theMap,
 	
 	string search_expr = frontStrip(strip(expr));
 	if (search_expr.empty())
-		return start;
+		return keys.end();
 
 	if (type == SIMPLE)
 		return simpleSearch(theMap, keys, search_expr, start, dir,
@@ -147,7 +147,11 @@ simpleSearch(InfoMap const & theMap,
 	     Direction dir,
 	     bool caseSensitive)
 {
-	vector<string> searchwords = getVectorFromString(expr, " ");
+	string tmp = expr;
+	if (!caseSensitive)
+		tmp = lowercase(tmp);
+
+	vector<string> searchwords = getVectorFromString(tmp, " ");
 
 	// Loop over all keys from start...
 	for (vector<string>::const_iterator it = start;
@@ -166,24 +170,11 @@ simpleSearch(InfoMap const & theMap,
 		bool found = true;
 
 		// Loop over all search words...
-		if (caseSensitive) {
-			for (vector<string>::const_iterator sit=
-				     searchwords.begin();
-			     sit<searchwords.end(); ++sit) {
-				if (data.find(*sit) == string::npos) {
-					found = false;
-					break;
-				}
-			}
-		} else {
-			for (vector<string>::const_iterator sit=
-				     searchwords.begin();
-			     sit<searchwords.end(); ++sit) {
-				if (data.find(lowercase(*sit)) ==
-				    string::npos) {
-					found = false;
-					break;
-				}
+		for (vector<string>::const_iterator sit = searchwords.begin();
+		     sit != searchwords.end(); ++sit) {
+			if (data.find(*sit) == string::npos) {
+				found = false;
+				break;
 			}
 		}
 		

@@ -37,9 +37,6 @@ private:
 	/// Filter the inputs on callback from xforms
 	virtual ButtonPolicy::SMInput input(FL_OBJECT *, long);
 
-	///
-	ButtonPolicy::SMInput inputBrowse();
-
 	/// Fdesign generated method
 	FD_form_include * build_include();
 };

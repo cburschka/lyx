@@ -14,16 +14,17 @@ libcontrollers_la_SOURCES=\
 	biblio.h \
 	character.C \
 	character.h \
-	ButtonController.C \
 	ButtonController.h \
+	ButtonControllerBase.C \
+	ButtonControllerBase.h \
 	ButtonPolicies.C \
 	ButtonPolicies.h \
-	ControlBase.C \
-	ControlBase.h \
 	ControlBibitem.C \
 	ControlBibitem.h \
 	ControlBibtex.C \
 	ControlBibtex.h \
+	ControlButton.C \
+	ControlButton.h \
 	ControlCharacter.C \
 	ControlCharacter.h \
 	ControlCitation.C \
@@ -39,6 +40,8 @@ libcontrollers_la_SOURCES=\
 	ControlDialogs.h \
 	ControlError.h \
 	ControlError.C \
+	ControlExternal.h \
+	ControlExternal.C \
 	ControlGraphics.h \
 	ControlGraphics.C \
 	ControlInclude.C \

@@ -15,63 +15,33 @@
 #ifndef KDEBC_H
 #define KDEBC_H
 
-#include "ButtonController.h"
 #include <list>
 
 #ifdef __GNUG__
 #pragma interface
 #endif
 
+#include "ButtonControllerBase.h"
+#include "ButtonController.h"
+
 class QWidget;
 class QPushButton;
 
-class kdeBC : public ButtonControllerBase
+class kdeBC : public GuiBC<QPushButton, Qwidget>
 {
 public:
 	///
 	kdeBC(string const & cancel, string const & close);
 
-	/* Initialise Button Functions */
-	/// Call refresh() when finished setting the buttons.
-	void setOK(QPushButton * obj) {
-		okay_ = obj;
-	}
-	///
-	void setApply(QPushButton * obj) {
-		apply_ = obj;
-	}
-	///
-	void setCancel(QPushButton * obj) {
-		cancel_ = obj;
-	}
-	///
-	void setUndoAll(QPushButton * obj) {
-		undo_all_ = obj;
-	}
-	///
-	void addReadOnly(QWidget * obj) {
-		read_only_.push_front(obj);
-	}
-	///
-	void eraseReadOnly() {
-		read_only_.erase(read_only_.begin(), read_only_.end());
-	}
-
-	/* Action Functions */
-	/// force a refresh of the buttons
-	virtual void refresh();
-
 private:
-	///
-	QPushButton * okay_;
-	///
-	QPushButton * apply_;
-	///
-	QPushButton * cancel_;
-	///
-	QPushButton * undo_all_;
-	/// List of items to be deactivated when in one of the read-only states
-	std::list<QWidget *> read_only_;
+	/// Updates the button sensitivity (enabled/disabled)
+	void setButtonEnabled(QPushButton * btn, bool enabled);
+
+	/// Updates the widget sensitivity (enabled/disabled)
+	void setWidgetEnabled(QWidget * obj, bool enabled);
+
+	/// Set the label on the button
+	void setButtonLabel(QPushButton * btn, string const & label);
 };
 
 #endif // KDEBC_H

@@ -75,8 +75,6 @@ private:
 
 	/// Verify that the input is correct. If not disable ok/apply buttons.
 	ButtonPolicy::SMInput checkInput();
-	/// Open the file browse dialog to select an image file.
-	void browse();
 
 	/// Fdesign generated method
 	FD_form_graphics * build_graphics();

@@ -5,9 +5,6 @@
 #pragma interface
 #endif
 
-#include <utility> // pair
-//#include <config.h>
-#include "LString.h"
 #include "Color.h"
 
 // Set an FL_OBJECT to activated or deactivated
@@ -16,20 +13,6 @@ void setEnabled(FL_OBJECT *, bool enable);
 // Take a string and add breaks so that it fits into a desired label width, w
 string formatted(string const &label, int w,
 		 int=FL_NORMAL_SIZE, int=FL_NORMAL_STYLE);
-
-class LyXView;
- 
-/** Launch a file dialog and return the chosen file.
-    filename: a suggested filename.
-    title: the title of the dialog.
-    pattern: *.ps etc.
-    dir1 = (name, dir), dir2 = (name, dir): extra buttons on the dialog.
-*/
-string const browseFile(LyXView *lv, string const & filename,
-			string const & title,
-			string const & pattern, 
-			std::pair<string,string> const & dir1,
-			std::pair<string,string> const & dir2);
 
 /// struct holding xform-specific colors
 struct XformsColor : public NamedColor {

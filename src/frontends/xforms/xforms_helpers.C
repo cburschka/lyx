@@ -14,10 +14,8 @@
  
 #include "xforms_helpers.h"
 #include "lyxlex.h"
-#include "frontends/FileDialog.h"
 #include "support/FileInfo.h"
 #include "support/filetools.h"
-#include "lyx_gui_misc.h" // WriteAlert
 #include "gettext.h"
 
 using std::ofstream;
@@ -96,39 +94,6 @@ string formatted(string const & sin, int w, int size, int style)
 		sout.erase(sout.length()-1);
 
 	return sout;
-}
-
-
-string const browseFile(LyXView * lv, string const & filename,
-			string const & title,
-			string const & pattern, 
-			pair<string,string> const & dir1,
-			pair<string,string> const & dir2)
-{
-	string lastPath = ".";
-	if (!filename.empty()) lastPath = OnlyPath(filename);
-
-	FileDialog fileDlg(lv, title, LFUN_SELECT_FILE_SYNC, dir1, dir2);
-
-	FileDialog::Result result;
- 
-	while (1) {
-		result = fileDlg.Select(lastPath, pattern, OnlyFilename(filename));
-
-		if (result.second.empty()) 
-			return result.second;
-
-		lastPath = OnlyPath(result.second);
-
-		if (result.second.find_first_of("#~$% ") == string::npos)
-			break; 
- 
-		WriteAlert(_("Filename can't contain any "
-			"of these characters:"),
-			_("space, '#', '~', '$' or '%'."));
-	}
-
-	return result.second;
 }
 
 

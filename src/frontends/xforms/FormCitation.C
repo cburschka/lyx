@@ -1,4 +1,3 @@
-// -*- C++ -*-
 /* This file is part of
  * ====================================================== 
  *
@@ -8,7 +7,8 @@
  *
  * ======================================================
  *
- * \author Angus Leeming <a.leeming@ic.ac.uk>
+ * \file FormCitation.C
+ * \author Angus Leeming, a.leeming@ic.ac.uk
  */
 
 #include <config.h>
@@ -68,6 +68,7 @@ void FormCitation::build()
 	fl_set_input_return(dialog_->input_after,  FL_RETURN_CHANGED);
 	fl_set_input_return(dialog_->input_before, FL_RETURN_CHANGED);
 
+	fl_set_button(dialog_->button_search_case, 0);
 	fl_set_button(dialog_->button_search_type, 0);
 	fl_set_object_label(dialog_->button_search_type, _("Simple"));
 
@@ -228,12 +229,20 @@ ButtonPolicy::SMInput FormCitation::input(FL_OBJECT * ob, long)
 		activate = ButtonPolicy::SMI_VALID;
 
 	} else if (ob == dialog_->button_search_type) {
+		fl_freeze_form(form());
+		// Fudge to overcome xforms drawing bug
+		fl_hide_object(dialog_->button_search_type);
+		
 		if (fl_get_button(dialog_->button_search_type))
 			fl_set_object_label(dialog_->button_search_type,
 					    _("Regex"));
 		else
 			fl_set_object_label(dialog_->button_search_type,
 					    _("Simple"));
+
+		fl_show_object(dialog_->button_search_type);
+		fl_unfreeze_form(form());
+
 		return ButtonPolicy::SMI_NOOP;
 		
 	} else if (ob == dialog_->button_previous ||
@@ -260,9 +269,12 @@ ButtonPolicy::SMInput FormCitation::input(FL_OBJECT * ob, long)
 		else
 			start -= 1;
 
+		bool const caseSensitive =
+			fl_get_button(dialog_->button_search_case);
+
 		vector<string>::const_iterator const cit =
 			biblio::searchKeys(theMap, bibkeys, str,
-					   start, type, dir);
+					   start, type, dir, caseSensitive);
 
 		if (cit == bibkeys.end())
 			return ButtonPolicy::SMI_NOOP;
@@ -436,6 +448,10 @@ void FormCitation::setSize(int hbrsr, bool bibPresent) const
 	x = dialog_->button_search_type->x;
 	y = dialog_->button_previous->y;
 	fl_set_object_position(dialog_->button_search_type, x, y);
+
+	x = dialog_->button_search_case->x;
+	y = dialog_->button_next->y;
+	fl_set_object_position(dialog_->button_search_case, x, y);
 
 	y = dialog_->frame_search->y + hframe + dh1;
 	

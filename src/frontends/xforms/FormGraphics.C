@@ -22,17 +22,13 @@
 #include "FormGraphics.h"
 #include "form_graphics.h"
 
-//#include "lyx_gui_misc.h"
 #include "input_validators.h"
 #include "debug.h" // for lyxerr
 #include "support/lstrings.h"  // for strToDbl & tostr
 #include "support/FileInfo.h"  // for FileInfo
-#include "xforms_helpers.h"     // for browseFile
-#include "support/filetools.h" // for AddName
 #include "insets/insetgraphicsParams.h"
 
 using std::endl;
-using std::make_pair;
 
 typedef FormCB<ControlGraphics, FormDB<FD_form_graphics> > base_class;
 
@@ -229,8 +225,18 @@ ButtonPolicy::SMInput FormGraphics::input(FL_OBJECT *, long data)
 		activate = checkInput();
 		break;
 	case BROWSE:
-		browse();
+	{
+		// Get the filename from the dialog
+		string const in_name = fl_get_input(dialog_->input_filename);
+		string const out_name = controller().Browse(in_name);
+
+		if (out_name != in_name && !out_name.empty()) {
+			fl_set_input(dialog_->input_filename, out_name.c_str());
+			input(0, 0);
+		}
 		break;
+	}
+
 	case ADVANCEDINPUT:
 		lyxerr << "Advanced Options button depressed, "
 		       << "show advanced options dialog"
@@ -288,38 +294,4 @@ ButtonPolicy::SMInput FormGraphics::checkInput()
 	}
 
 	return activate;
-}
-
-
-// We need these in the file browser.
-extern string system_lyxdir;
-extern string user_lyxdir;
-
-void FormGraphics::browse()
-{
-	// Get the filename from the dialog
-	string const filename = fl_get_input(dialog_->input_filename);
-
-	string const title = N_("Graphics");
-	// FIXME: currently we need the second '|' to prevent mis-interpretation 
-	string const pattern = "*.(ps|png)|";
-
-  	// Does user clipart directory exist?
-  	string clipdir = AddName (user_lyxdir, "clipart");
- 	FileInfo fileInfo(clipdir);
-  	if (!(fileInfo.isOK() && fileInfo.isDir()))
-  		// No - bail out to system clipart directory
-  		clipdir = AddName (system_lyxdir, "clipart");
-	pair<string, string> dir1(N_("Clipart"), clipdir);
-	
-	// Show the file browser dialog
-	string const new_filename =
-		browseFile(controller().lv(), filename, title, pattern, dir1,
-			   make_pair(string(), string()));
-
-	// Save the filename to the dialog
-	if (new_filename != filename && !new_filename.empty()) {
-		fl_set_input(dialog_->input_filename, new_filename.c_str());
-		input(0, 0);
-	}
 }

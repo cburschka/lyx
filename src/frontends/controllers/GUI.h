@@ -154,6 +154,20 @@ public:
 };
 
 
+/** Specialization for External dialog
+ */
+class ControlExternal;
+
+template <class GUIview, class GUIbc>
+class GUIExternal :
+	public GUI<ControlExternal, GUIview, OkCancelReadOnlyPolicy, GUIbc> {
+public:
+	///
+	GUIExternal(LyXView & lv, Dialogs & d)
+		: GUI<ControlExternal, GUIview, OkCancelReadOnlyPolicy, GUIbc>(lv, d) {}
+};
+
+
 /** Specialization for Graphics dialog
  */
 class ControlGraphics;

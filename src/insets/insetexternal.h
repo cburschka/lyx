@@ -25,8 +25,8 @@
 class InsetExternal : public InsetButton {
 public:
 	/// hold parameters settable from the GUI
-	struct InsetExternalParams {
-		InsetExternalParams(string const & f = string(), 
+	struct Params {
+		Params(string const & f = string(), 
 					string const & p = string(), 
 					ExternalTemplate const & t = ExternalTemplate())
 			: filename(f), parameters(p), templ(t) {}
@@ -82,7 +82,7 @@ public:
 	// The following public members are used from the frontends code
 
 	/// set the parameters from a Params structure
-	virtual void setFromParams(InsetExternalParams const &);
+	virtual void setFromParams(Params const &);
 
 	/// update the file represented by the template
 	void updateExternal() const;
@@ -94,7 +94,7 @@ public:
 	void viewExternal() const;
 
 	/// return a copy of our current params
-	InsetExternalParams params() const;
+	Params params() const;
 
 	/// hide connection
 	SigC::Signal0<void> hideDialog;
@@ -114,10 +114,15 @@ private:
 	BufferView * view;
 
 	/// the current params
-	InsetExternalParams params_;
+	Params params_;
 
 	/// A temp filename
 	string tempname;
 };
+
+///
+bool operator==(InsetExternal::Params const &, InsetExternal::Params const &);
+///
+bool operator!=(InsetExternal::Params const &, InsetExternal::Params const &);
 
 #endif

@@ -25,16 +25,17 @@
 
 #include "insets/insetgraphics.h"
 
+#include "support/FileInfo.h"  // for FileInfo
+#include "helper_funcs.h"      // for browseFile
+#include "support/filetools.h" // for AddName
+
+using std::pair;
+using std::make_pair;
+
 ControlGraphics::ControlGraphics(LyXView & lv, Dialogs & d)
 	: ControlInset<InsetGraphics, InsetGraphicsParams>(lv, d)
 {
 	d_.showGraphics.connect(SigC::slot(this, &ControlGraphics::showInset));
-}
-
-
-LyXView * ControlGraphics::lv() const
-{
-        return &lv_;
 }
 
 
@@ -64,3 +65,27 @@ void ControlGraphics::applyParamsToInset()
 
 void ControlGraphics::applyParamsNoInset()
 {}
+
+
+// We need these in the file browser.
+extern string system_lyxdir;
+extern string user_lyxdir;
+
+string const ControlGraphics::Browse(string const & in_name)
+{
+	string const title = N_("Graphics");
+	// FIXME: currently we need the second '|' to prevent mis-interpretation 
+	string const pattern = "*.(ps|png)|";
+
+  	// Does user clipart directory exist?
+  	string clipdir = AddName (user_lyxdir, "clipart");
+ 	FileInfo fileInfo(clipdir);
+  	if (!(fileInfo.isOK() && fileInfo.isDir()))
+  		// No - bail out to system clipart directory
+  		clipdir = AddName (system_lyxdir, "clipart");
+	pair<string, string> dir1(N_("Clipart"), clipdir);
+	
+	// Show the file browser dialog
+	return browseFile(&lv_, in_name, title, pattern, dir1,
+			  make_pair(string(), string()));
+}

@@ -38,7 +38,7 @@ class Qt2Base : public QObject, public ViewBC<qt2BC>
     Q_OBJECT
 public:
 	///
-	Qt2Base(ControlBase &, string const &);
+	Qt2Base(ControlButton &, string const &);
 	///
 	virtual ~Qt2Base() {}
 
@@ -84,7 +84,7 @@ class Qt2DB: public Qt2Base
 {
 protected:
 	///
-	Qt2DB(ControlBase &, string const &);
+	Qt2DB(ControlButton &, string const &);
 	/// Pointer to the actual instantiation of the Qt dialog
 	virtual QDialog* form() const;
 	/// Real GUI implementation.
@@ -93,7 +93,7 @@ protected:
 
 
 template <class Dialog>
-Qt2DB<Dialog>::Qt2DB(ControlBase & c, string const & t)
+Qt2DB<Dialog>::Qt2DB(ControlButton & c, string const & t)
 	: Qt2Base(c, t)
 {}
 
@@ -110,14 +110,14 @@ class Qt2CB: public Base
 {
 protected:
 	///
-	Qt2CB(ControlBase &, string const &);
+	Qt2CB(ControlButton &, string const &);
 	/// The parent controller
 	Controller & controller() const;
 };
 
 
 template <class Controller, class Base>
-Qt2CB<Controller, Base>::Qt2CB(ControlBase & c, string const & t)
+Qt2CB<Controller, Base>::Qt2CB(ControlButton & c, string const & t)
 	: Base(c, t)
 {}
 

@@ -210,7 +210,15 @@ ButtonPolicy::SMInput FormPrint::input(FL_OBJECT * ob, long)
 	}
 
 	if (ob == dialog_->button_browse) {
-		browse();
+		// Get the filename from the dialog
+		string const in_name = fl_get_input(dialog_->input_file);
+		string const out_name = controller().Browse(in_name);
+
+		// Save the filename to the dialog
+		if (out_name != in_name && !out_name.empty()) {
+			fl_set_input(dialog_->input_file, out_name.c_str());
+			input(0, 0);
+		}
 	}
 		
 	// it is probably legal to have no printer name since the system will
@@ -220,26 +228,4 @@ ButtonPolicy::SMInput FormPrint::input(FL_OBJECT * ob, long)
 //  		activate = ButtonPolicy::SMI_INVALID;
 //  	}
 	return activate;
-}
-
-
-void FormPrint::browse()
-{
-	// Get the filename from the dialog
-	string const filename = fl_get_input(dialog_->input_file);
-
-	string const title = N_("Print to file");
-	string const pattern = "*.ps";
-
-	// Show the file browser dialog
-	string const new_filename =
-		browseFile(controller().lv(), filename, title, pattern,
-			   make_pair(string(), string()),
-			   make_pair(string(), string()));
-
-	// Save the filename to the dialog
-	if (new_filename != filename && !new_filename.empty()) {
-		fl_set_input(dialog_->input_file, new_filename.c_str());
-		input(0, 0);
-	}
 }

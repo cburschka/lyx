@@ -1,3 +1,44 @@
+2001-03-30  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* ButtonController.[Ch]: renamed as ButtonControllerBase.[Ch]
+
+	* BCTemplates.h: renamed as ButtonController.h
+
+	* ControlBase.[Ch]: renamed as ControlButton.[Ch]. Class named to match.
+
+	* ViewBase.h:
+	* ControlConnections.h: associated change in #include and class names.
+	
+	* ControlExternal.[Ch]: new files; a controller for the External
+	Material popup.
+
+	* GUI.h:
+	* Makefile.am: associated changes with all of the above.
+
+	* ControlGraphics.[Ch]:
+	* ControlInclude.[Ch]:
+	* ControlPrint.[Ch]:
+	(lv): removed.
+	(Browse): new method. Returns the results of a FileDialog browse.
+
+	* helper_funcs.[Ch] (browseFile): moved from xforms_helpers.[Ch].
+	(getVectorFromString): fixed bug.
+
+	* biblio.C (simpleSearch): cleaned up.
+
+2001-03-29  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* A slight reworking of Baruch Even's ButtonController patch.
+
+	* BCTemplates.h: new file; all the templates for the ButtonController.
+	Including Baruch's new GuiBC class, with setCancelCloseButton() changed
+	to the more generic setButtonLabel().
+
+	* ButtonController.[Ch]: renamed cancel_label and close_label as
+	cancel_label_ and close_label_.
+
+	* Makefile.am: added BCTemplates.h
+
 2001-03-29  Juergen Vigna  <jug@sad.it>
 
 	* ControlMinipage.C: removed widthp_ and all it's functions and changed
