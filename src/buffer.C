@@ -618,6 +618,12 @@ bool Buffer::fully_loaded() const
 }
 
 
+void Buffer::fully_loaded(bool value)
+{
+	pimpl_->file_fully_loaded = value;
+}
+
+
 bool Buffer::readFile(LyXLex & lex, string const & filename,
 		      ParagraphList::iterator pit)
 {

@@ -5,6 +5,9 @@
 	Used to prevent the premature generation of previews and by the
 	citation inset to prevent computation of the natbib-style label.
 
+	* buffer_funcs.C (newFile): set Buffer::fully_loaded once the
+	templates are all set up.
+
 	* factory.C (createInset): remove call to InsetCitation::setLoadingBuffer.
 
 2003-10-22  Martin Vermeer  <martin.vermeer@hut.fi>

@@ -372,6 +372,8 @@ public:
 	 *  and by the citation inset.
 	 */
 	bool fully_loaded() const;
+	/// Set by buffer_funcs' newFile.
+	void fully_loaded(bool);
 
 private:
 	/** Inserts a file into a document
