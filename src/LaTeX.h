@@ -140,7 +140,7 @@ protected:
 	///
 	bool scanAux(DepTable &);
 	///
-	vector<string> const
+	std::vector<string> const
 	scanAuxFiles(string const &, DepTable &, bool);
 	///
 	bool scanAuxFile(string const &, DepTable &, bool);

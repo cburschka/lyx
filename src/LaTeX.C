@@ -36,6 +36,7 @@
 using std::ifstream;
 using std::getline;
 using std::endl;
+using std::vector;
 
 // TODO: in no particular order
 // - get rid of the extern BufferList and the call to
