@@ -16,11 +16,14 @@
 #pragma interface
 #endif
 
+#include <map>
+ 
+#include "encoding.h"
 #include "lyxfont.h"
 
 #include <qfont.h>
 #include <qfontmetrics.h>
-
+ 
 /**
  * Qt font loader for LyX. Matches LyXFonts against
  * actual QFont instances, and also caches metrics.
@@ -44,6 +47,10 @@ public:
 	QFontMetrics const & metrics(LyXFont const & f) {
 		return getfontinfo(f)->metrics;
 	}
+
+	/// return pixel width for the given unicode char
+	int charwidth(LyXFont const & f, Uchar val);
+
 private:
 	/// hold info about a particular font
 	struct font_info {
@@ -53,13 +60,17 @@ private:
 		QFont font;
 		/// metrics on the font
 		QFontMetrics metrics;
+
+		typedef std::map<Uchar, int> WidthCache;
+		/// cache of char widths 
+		WidthCache widthcache;
 	};
 
 	/// get font info (font + metrics) for the given LyX font. Does not fail.
-	font_info const * getfontinfo(LyXFont const & f);
+	font_info * getfontinfo(LyXFont const & f);
 
 	/// BUTT ugly !
-	font_info const * fontinfo_[LyXFont::NUM_FAMILIES][2][4][10];
+	font_info * fontinfo_[LyXFont::NUM_FAMILIES][2][4][10];
 };
 
 extern qfont_loader fontloader;

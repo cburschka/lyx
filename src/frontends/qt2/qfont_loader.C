@@ -23,6 +23,7 @@
 #include "qt_helpers.h"
 
 #include <qglobal.h>
+#include <qfontmetrics.h>
 #if QT_VERSION < 300
 #include "support/lstrings.h"
 #endif
@@ -225,22 +226,36 @@ qfont_loader::font_info::font_info(LyXFont const & f)
 }
 
 
-qfont_loader::font_info const * qfont_loader::getfontinfo(LyXFont const & f)
+qfont_loader::font_info * qfont_loader::getfontinfo(LyXFont const & f)
 {
 	if (!lyxrc.use_gui) {
 		// FIXME
 	}
 
-	font_info const * fi = fontinfo_[f.family()][f.series()][f.realShape()][f.size()];
-	if (!fi) {
-		fi = new font_info(f);
-		fontinfo_[f.family()][f.series()][f.realShape()][f.size()] = fi;
-	}
-
-	return fi;
+	font_info * fi = fontinfo_[f.family()][f.series()][f.realShape()][f.size()];
+	if (fi)
+		return fi;
+ 
+	font_info * fi2 = new font_info(f);
+	fontinfo_[f.family()][f.series()][f.realShape()][f.size()] = fi2;
+	return fi2;
 }
 
 
+int qfont_loader::charwidth(LyXFont const & f, Uchar val)
+{
+	font_info * fi = getfontinfo(f);
+
+	font_info::WidthCache::const_iterator cit = fi->widthcache.find(val);
+	if (cit != fi->widthcache.end())
+		return cit->second;
+
+	int const w = fi->metrics.width(QChar(val));
+	fi->widthcache[val] = w;
+	return w;
+}
+
+ 
 bool qfont_loader::available(LyXFont const & f)
 {
 	if (!lyxrc.use_gui)

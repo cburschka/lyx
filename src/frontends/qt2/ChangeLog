@@ -1,3 +1,10 @@
+2002-12-11  John Levon  <levon@movementarian.org>
+
+	* qfont_loader.h:
+	* qfont_loader.C:
+	* qfont_metrics.C: cache per-char widths to avoid slowness
+	  of QFontMetrics::width
+ 
 2002-12-10  John Levon  <levon@movementarian.org>
 
 	* ui/QURLDialog.ui: fix tab order

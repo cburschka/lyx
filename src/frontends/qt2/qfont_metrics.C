@@ -24,13 +24,18 @@
 
 #include <qfontmetrics.h>
 #include <qfont.h>
-
-
+ 
 namespace {
 
 QFontMetrics const & metrics(LyXFont const & f)
 {
 	return fontloader.metrics(f);
+}
+
+ 
+int charwidth(Uchar val, LyXFont const & f)
+{
+	return fontloader.charwidth(f, val); 
 }
 
 } // namespace anon
@@ -46,22 +51,22 @@ int maxAscent(LyXFont const & f)
 
 int maxDescent(LyXFont const & f)
 {
-	return metrics(f).descent()+1;
 	// We add 1 as the value returned by QT is different than X
 	// See http://doc.trolltech.com/2.3/qfontmetrics.html#200b74
+	return metrics(f).descent() + 1;
 }
 
 
 int ascent(char c, LyXFont const & f)
 {
-	QRect r = metrics(f).boundingRect(c);
+	QRect const & r = metrics(f).boundingRect(c);
 	return -r.top();
 }
 
 
 int descent(char c, LyXFont const & f)
 {
-	QRect r = metrics(f).boundingRect(c);
+	QRect const & r = metrics(f).boundingRect(c);
 	return r.bottom()+1;
 }
 
@@ -81,43 +86,59 @@ int rbearing(char c, LyXFont const & f)
 }
 
 
-int width(char const * s, size_t ls, LyXFont const & f)
+Encoding const * fontencoding(LyXFont const & f)
 {
 	Encoding const * encoding = f.language()->encoding();
 	if (f.isSymbolFont())
 		encoding = encodings.symbol_encoding();
+	return encoding;
+}
+ 
 
-	QString str;
-#if QT_VERSION >= 300
-	str.setLength(ls);
-	for (size_t i = 0; i < ls; ++i)
-		str[i] = QChar(encoding->ucs(s[i]));
-#else
-	for (size_t i = 0; i < ls; ++i)
-		str += QChar(encoding->ucs(s[i]));
-#endif
-
-	if (f.realShape() != LyXFont::SMALLCAPS_SHAPE) {
-		return metrics(f).width(str);
-	}
-
+int smallcapswidth(char const * s, size_t ls, LyXFont const & f)
+{
 	// handle small caps ourselves ...
 
 	LyXFont smallfont(f);
 	smallfont.decSize().decSize().setShape(LyXFont::UP_SHAPE);
 
-	QFontMetrics qm = fontloader.metrics(f);
-	QFontMetrics qsmallm = fontloader.metrics(smallfont);
+	QFontMetrics const & qm = fontloader.metrics(f);
+	QFontMetrics const & qsmallm = fontloader.metrics(smallfont);
 
+	Encoding const * encoding(fontencoding(f));
+ 
 	int w = 0;
 
 	for (size_t i = 0; i < ls; ++i) {
-		QChar const c = str[i].upper();
-		if (c != str[i])
-			w += qsmallm.width(c);
+		QChar const c = QChar(encoding->ucs(s[i]));
+		QChar const uc = c.upper();
+		if (c != uc)
+			w += qsmallm.width(uc);
 		else
 			w += qm.width(c);
 	}
+	return w;
+}
+ 
+
+int width(char const * s, size_t ls, LyXFont const & f)
+{
+	if (f.realShape() == LyXFont::SMALLCAPS_SHAPE) {
+		return smallcapswidth(s, ls, f);
+	}
+ 
+	Encoding const * encoding(fontencoding(f));
+
+	if (ls == 1) {
+		return charwidth(encoding->ucs(s[0]), f);
+	}
+
+	int w = 0;
+ 
+	for (size_t i = 0; i < ls; ++i) {
+		w += charwidth(encoding->ucs(s[i]), f);
+	}
+ 
 	return w;
 }
 
