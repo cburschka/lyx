@@ -1,3 +1,9 @@
+2001-04-18  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/insets/insetquotes.C (Latex): improve the guard against
+	unwanted !` and ?` ligatures. This should really be done in
+	another place (to catch all this ligatures at low-level).
+
 2001-04-13  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* lib/layouts/revtex4.layout: make sure the PACS, keywords and
