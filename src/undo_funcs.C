@@ -344,26 +344,22 @@ bool createUndo(BufferView * bv, Undo::undo_kind kind,
 		Paragraph * tmppar = start;
 		undo_pars.push_back(new Paragraph(*tmppar, true));
 
-		// A memory optimization: Just store the layout
-		// information when only edit.
-		if (kind == Undo::EDIT) {
-			undo_pars.back()->clearContents();
-		}
-
 		while (tmppar != end && tmppar->next()) {
 			tmppar = tmppar->next();
 			undo_pars.push_back(new Paragraph(*tmppar, true));
 			size_t const n = undo_pars.size();
 			undo_pars[n - 2]->next(undo_pars[n - 1]);
 			undo_pars[n - 1]->previous(undo_pars[n - 2]);
-			// a memory optimization: Just store the layout
-			// information when only edit
-			if (kind == Undo::EDIT) {
-				undo_pars.back()->clearContents();
-			}
 		}
 		undo_pars.back()->next(0);
 	}
+
+	// A memory optimization: Just store the layout
+	// information when only edit.
+	if (kind == Undo::EDIT) {
+		for (size_t i = 0, n = undo_pars.size(); i < n; ++i)
+			undo_pars[i]->clearContents();
+	}		
 
 	int cursor_par = undoCursor(bv).par()->id();
 	int cursor_pos = undoCursor(bv).pos();
