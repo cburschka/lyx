@@ -102,8 +102,6 @@ void MathMacroTable::builtinMacros()
 	create("Longleftrightarrow", 0, "\\Leftarrow\\kern-8mu\\Rightarrow");
 	create("doteq", 0, "\\stackrel{\\cdot}{=}");
 
-	//create("models",         0, "|\\kern-9mu=");
-
 	if (math_font_available(LM_TC_CMSY)) {
 		create("longrightarrow", 0, "\\lyxbar\\kern-6mu\\rightarrow");
 		create("longleftarrow",  0, "\\leftarrow\\kern-6mu\\lyxbar");
@@ -111,9 +109,10 @@ void MathMacroTable::builtinMacros()
 		create("longmapsto",  0, "\\mapstochar\\kern-3mu\\lyxbar\\kern-6mu\\rightarrow");
 	}
 
-	if (math_font_available(LM_TC_CMR)) {
+	if (math_font_available(LM_TC_CMR) && math_font_available(LM_TC_CMSY)) {
 		create("Longrightarrow", 0, "\\lyxeq\\kern-5mu\\Rightarrow");
 		create("Longleftarrow",  0, "\\Leftarrow\\kern-5mu\\lyxeq");
+		create("models",         0, "\\vert\\kern-3mu\\lyxeq");
 	}
 
 	if (math_font_available(LM_TC_CMM)) {
@@ -140,6 +139,10 @@ void MathMacroTable::builtinMacros()
 		create("doublecap",    0, "\\Cap");
 		create("llless",       0, "\\lll");
 		create("gggtr",        0, "\\ggg");
+	}
+
+	if (math_font_available(LM_TC_MSB)) {
+		create("Join",         0, "\\ltimes\\kern-12mu\\rtimes");
 	}
 
 	//create("lint",       4, "\\int_#1^#2#3 d#4");
