@@ -297,25 +297,6 @@ bool LyXScreen::fitCursor(LyXText * text, BufferView * bv)
 }
 
 
-void LyXScreen::update(BufferView & bv, int yo, int xo)
-{
-	LyXText * text = bv.text;
-
-	workarea().getPainter().start();
-
-	if (text->needRefresh()) {
-		int const vwidth = workarea().workWidth();
-		int const vheight = workarea().workHeight();
-		text->updateRowPositions();
-		int const y = 0;
-		drawFromTo(text, &bv, y, vheight, yo, xo);
-		expose(0, y, vwidth, vheight - y);
-	}
-
-	workarea().getPainter().end();
-}
-
-
 void LyXScreen::toggleSelection(LyXText * text, BufferView * bv,
 				bool kill_selection,
 				int yo, int xo)
@@ -348,9 +329,9 @@ void LyXScreen::toggleSelection(LyXText * text, BufferView * bv,
 }
 
 
-void LyXScreen::redraw(BufferView * bv, LyXText * text)
+void LyXScreen::redraw(BufferView & bv)
 {
-	greyed_out_ = !text;
+	greyed_out_ = !bv.text;
 
 	if (greyed_out_) {
 		greyOut();
@@ -359,8 +340,8 @@ void LyXScreen::redraw(BufferView * bv, LyXText * text)
 
 	workarea().getPainter().start();
 
-	text->updateRowPositions();
-	drawFromTo(text, bv, 0, workarea().workHeight(), 0, 0);
+	bv.text->updateRowPositions();
+	drawFromTo(bv.text, &bv, 0, workarea().workHeight(), 0, 0);
 	expose(0, 0, workarea().workWidth(), workarea().workHeight());
 
 	workarea().getPainter().end();

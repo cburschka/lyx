@@ -61,7 +61,7 @@ public:
 		int x, int y, int a, int d);
 
 	/// redraw the screen, without using existing pixmap
-	virtual void redraw(BufferView * bv, LyXText * text);
+	virtual void redraw(BufferView & bv);
 
 	/**
 	 * topCursorVisible - get a new "top" to make the cursor visible
@@ -82,18 +82,6 @@ public:
 	 * Scrolls the screen so that the cursor is visible
 	 */
 	virtual bool fitCursor(LyXText *, BufferView *);
-
-	/**
-	 * update - update part of the screen rendering
-	 * @param bv the bufferview
-	 * @param xo the x offset into the text
-	 * @param yo the x offset into the text
-	 *
-	 * Updates part of the screen. If bv->text->needRefresh is
-	 * true, we update from the
-	 * point of change to the end of the screen.
-	 */
-	virtual void update(BufferView & bv, int yo = 0, int xo = 0);
 
 	/// hide the visible cursor, if it is visible
 	void hideCursor();

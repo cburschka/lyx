@@ -469,7 +469,8 @@ int BufferView::Pimpl::resizeCurrentBuffer()
 void BufferView::Pimpl::repaint()
 {
 	// Regenerate the screen.
-	screen().redraw(bv_, bv_->text);
+	lyxerr << "BufferView::repaint()\n";
+	screen().redraw(*bv_);
 }
 
 
@@ -648,7 +649,7 @@ void BufferView::Pimpl::workAreaResize()
 void BufferView::Pimpl::update()
 {
 	lyxerr << "BufferView::update()\n";
-	screen().update(*bv_);
+	screen().redraw(*bv_);
 	bv_->text->clearPaint();
 }
 
