@@ -33,7 +33,7 @@ private:
 	///
 	string ssym_;
 	///
-	short code_;
+	MathTextCodes code_;
 	/// 1: \limits, -1: \nolimits, 0: use default
 	int limits_;
 	/// x offset for drawing the superscript

@@ -117,7 +117,7 @@ void MathBigopInset::draw(Painter & pain, int x, int y)
 	xo(x);
 	yo(y);
 
-	pain.text(x + dxx_, y, ssym_, mathed_get_font(code_, size()));
+	drawStr(pain, code_, size_, x + dxx_, y, ssym_);
 
 	if (up())
 		xcell(0).draw(pain, x + dx0_, y + dy0_);

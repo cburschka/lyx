@@ -11,8 +11,6 @@
 #include "LaTeXFeatures.h"
 
 
-LyXFont WhichFont(short type, int size);
-
 namespace {
 
 string const getAlign(short int type, int cols)
@@ -98,9 +96,6 @@ void MathMatrixInset::Metrics(MathStyles /* st */, int, int)
 {
 	size_ = (GetType() == LM_OT_SIMPLE) ? LM_ST_TEXT : LM_ST_DISPLAY;
 
-	//LyXFont wfont = WhichFont(LM_TC_BF, size());
-	//wfont.setLatex(LyXFont::OFF);
-
 	// let the cells adjust themselves
 	MathGridInset::Metrics(size_);
 
@@ -112,7 +107,7 @@ void MathMatrixInset::Metrics(MathStyles /* st */, int, int)
 	if (numberedType()) {
 		int l = 0;
 		for (int row = 0; row < nrows(); ++row)
-			l = std::max(l, mathed_string_width(LM_TC_TEXTRM, size(), nicelabel(row)));
+			l = std::max(l, mathed_string_width(LM_TC_BF, size(), nicelabel(row)));
 
 		if (l)
 			width_ += 30 + l;
@@ -128,13 +123,11 @@ void MathMatrixInset::draw(Painter & pain, int x, int y)
 	MathGridInset::draw(pain, x, y);
 
 	if (numberedType()) {
-		LyXFont wfont = WhichFont(LM_TC_BF, size());
-#ifndef NO_LATEX
-		wfont.setLatex(LyXFont::OFF);
-#endif
 		int xx = x + colinfo_.back().offset_ + colinfo_.back().width_ + 20;
-		for (int row = 0; row < nrows(); ++row) 
-			pain.text(xx, y + rowinfo_[row].offset_, nicelabel(row), wfont);
+		for (int row = 0; row < nrows(); ++row) {
+			int yy = y + rowinfo_[row].offset_;
+			drawStr(pain, LM_TC_BF, size(), xx, yy, nicelabel(row));
+		}
 	}
 }
 

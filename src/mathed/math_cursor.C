@@ -719,12 +719,14 @@ in_word_set(s) << " \n";
 					p = new MathBigopInset(l->name, l->id);
 					break;
 				
-			case LM_TK_SYM: 
-				if (l->id < 255)
-					insert(l->id, MathIsBOPS(l->id) ? LM_TC_BOPS : LM_TC_SYMB);
+			case LM_TK_SYM: {
+				MathTextCodes code = static_cast<MathTextCodes>(l->id);
+				if (code < 255)
+					insert(l->id, MathIsBOPS(code) ? LM_TC_BOPS : LM_TC_SYMB);
 				else
 					p = new MathFuncInset(l->name);
 				break;
+			}
 
 			case LM_TK_STACK:
 				p = new MathFracInset("stackrel");

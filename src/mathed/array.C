@@ -20,7 +20,7 @@ MathArray::MathArray()
 MathArray::~MathArray()
 {
 	for (int pos = 0; pos < size(); next(pos)) 
-		if (MathIsInset(pos)) 
+		if (isInset(pos)) 
 			delete nextInset(pos);
 }
 
@@ -240,7 +240,7 @@ bool MathArray::isInset(int pos) const
 {
 	if (pos >= size())
 		return false;
-	return MathIsInset(bf_[pos]);
+	return MathIsInset(static_cast<MathTextCodes>(bf_[pos]));
 }
 
 

@@ -51,7 +51,6 @@ extern char const * latex_special_chars;
 
 int greek_kb_flag = 0;
 extern char const * latex_mathenv[];
-LyXFont           * Math_Fonts = 0;
 MathCursor        * mathcursor = 0;
 
 
@@ -108,119 +107,7 @@ bool openNewInset(BufferView * bv, UpdatableInset * new_inset)
 
 
 
-LyXFont WhichFont(short type, int size)
-{
-	LyXFont f;
-	
-	if (!Math_Fonts)
-		mathed_init_fonts();
-
-	switch (type) {
-	case LM_TC_SYMB:	
-		f = Math_Fonts[2];
-		break;
-
-	case LM_TC_BSYM:	
-		f = Math_Fonts[2];
-		break;
-
-	case LM_TC_VAR:
-	case LM_TC_IT:
-		f = Math_Fonts[0];
-		break;
-
-	case LM_TC_BF:
-		f = Math_Fonts[3];
-		break;
-
-	case LM_TC_SF:
-		f = Math_Fonts[7];
-		break;
-
-	case LM_TC_CAL:
-		f = Math_Fonts[4];
-		break;
-
-	case LM_TC_TT:
-		f = Math_Fonts[5];
-		break;
-
-	case LM_TC_SPECIAL: //f = Math_Fonts[0]; break;
-	case LM_TC_TEXTRM:
-	case LM_TC_TEX:
-	case LM_TC_RM:
-		f = Math_Fonts[6];
-		break;
-
-	default:
-		f = Math_Fonts[1];
-		break;
-	}
-
-	switch (size) {
-	case LM_ST_DISPLAY:
-		if (type == LM_TC_BSYM) {
-			f.incSize();
-			f.incSize();
-		}
-		break;
-
-	case LM_ST_TEXT:
-		break;
-
-	case LM_ST_SCRIPT:
-		f.decSize();
-		break;
-
-	case LM_ST_SCRIPTSCRIPT:
-		f.decSize();
-		f.decSize();
-		break;
-
-	default:
-		lyxerr << "Math Error: wrong font size: " << size << endl;
-		break;
-	}
-
-	if (type != LM_TC_TEXTRM)
-		f.setColor(LColor::math);
-
-	if (type == LM_TC_TEX)
-		f.setColor(LColor::latex);
-
-	return f;
-}
-
-
 namespace {
-
-void mathed_init_fonts()
-{
-	Math_Fonts = new LyXFont[8]; //DEC cxx cannot initialize all fonts
-	//at once (JMarc) rc
-
-	for (int i = 0 ; i < 8 ; ++i) {
-		Math_Fonts[i] = LyXFont(LyXFont::ALL_SANE);
-	}
-
-	Math_Fonts[0].setShape(LyXFont::ITALIC_SHAPE);
-
-	Math_Fonts[1].setFamily(LyXFont::SYMBOL_FAMILY);
-
-	Math_Fonts[2].setFamily(LyXFont::SYMBOL_FAMILY);
-	Math_Fonts[2].setShape(LyXFont::ITALIC_SHAPE);
-
-	Math_Fonts[3].setSeries(LyXFont::BOLD_SERIES);
-
-	Math_Fonts[4].setFamily(LyXFont::SANS_FAMILY);
-	Math_Fonts[4].setShape(LyXFont::ITALIC_SHAPE);
-
-	Math_Fonts[5].setFamily(LyXFont::TYPEWRITER_FAMILY);
-
-	Math_Fonts[6].setFamily(LyXFont::ROMAN_FAMILY);
-
-	Math_Fonts[7].setFamily(LyXFont::SANS_FAMILY);
-}
 
 
 // returns the nearest enclosing matrix
@@ -360,11 +247,9 @@ void InsetFormulaBase::toggleInsetCursor(BufferView * bv)
 		mathcursor->GetPos(x, y);
 		//x -= par_->xo();
 		y -= par_->yo();
-
-		LyXFont   font = WhichFont(LM_TC_TEXTRM, LM_ST_TEXT);
-		int const asc  = lyxfont::maxAscent(font);
-		int const desc = lyxfont::maxDescent(font);
-
+		int asc;
+		int desc;
+		math_font_max_dim(LM_TC_TEXTRM, LM_ST_TEXT, asc, desc);
 		bv->showLockedInsetCursor(x, y, asc, desc);
 	}
 
@@ -381,9 +266,9 @@ void InsetFormulaBase::showInsetCursor(BufferView * bv, bool)
 			mathcursor->GetPos(x, y);
 			x -= par_->xo();
 			y -= par_->yo();
-			LyXFont font   = WhichFont(LM_TC_TEXTRM, LM_ST_TEXT);
-			int const asc  = lyxfont::maxAscent(font);
-			int const desc = lyxfont::maxDescent(font);
+			int asc;
+			int desc;
+			math_font_max_dim(LM_TC_TEXTRM, LM_ST_TEXT, asc, desc);
 			bv->fitLockedInsetCursor(x, y, asc, desc);
 		}
 		toggleInsetCursor(bv);
@@ -882,7 +767,7 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 					mathcursor->clearLastCode();
 					varcode = LM_TC_MIN;
 				} else if (!varcode) {		
-					short f = mathcursor->getLastCode() ?
+					MathTextCodes f = mathcursor->getLastCode() ?
 						mathcursor->getLastCode() :
 						mathcursor->nextCode();
 					varcode = MathIsAlphaFont(f) ?

@@ -8,7 +8,6 @@
 #include "math_defs.h"
 #include "math_parser.h"
 #include "Painter.h"
-#include "symbol_def.h"
 #include "debug.h"
 #include "math_utils.h"
 
@@ -18,31 +17,31 @@ using std::endl;
 using std::max;
 
 
-bool MathIsInset(short x)
+bool MathIsInset(MathTextCodes x)
 {
 	return LM_TC_INSET == x;
 }
 
 
-bool MathIsAlphaFont(short x)
+bool MathIsAlphaFont(MathTextCodes x)
 {
 	return LM_TC_VAR <= x && x <= LM_TC_TEXTRM;
 }
 
 
-bool MathIsBOPS(short x)
+bool MathIsBOPS(MathTextCodes x)
 {
-	return MathLookupBOP(x) > LMB_NONE;
+	return MathLookupBOP(x) != LMB_NONE;
 }
 
 
-bool MathIsBinary(short x)
+bool MathIsBinary(MathTextCodes x)
 {
 	return x == LM_TC_BOP || x == LM_TC_BOPS;
 }
 
 
-bool MathIsSymbol(short x)
+bool MathIsSymbol(MathTextCodes x)
 {
 	return x == LM_TC_SYMB || x == LM_TC_BOPS || x == LM_TC_BSYM;
 }
@@ -123,8 +122,123 @@ void Matrix::transform(float xp, float yp, float & x, float & y)
 }
 
 
+namespace {
 
-extern LyXFont WhichFont(short type, int size);
+LyXFont           * Math_Fonts = 0;
+
+void mathed_init_fonts()
+{
+	Math_Fonts = new LyXFont[8]; //DEC cxx cannot initialize all fonts
+	//at once (JMarc) rc
+
+	for (int i = 0 ; i < 8 ; ++i) {
+		Math_Fonts[i] = LyXFont(LyXFont::ALL_SANE);
+	}
+
+	Math_Fonts[0].setShape(LyXFont::ITALIC_SHAPE);
+
+	Math_Fonts[1].setFamily(LyXFont::SYMBOL_FAMILY);
+
+	Math_Fonts[2].setFamily(LyXFont::SYMBOL_FAMILY);
+	Math_Fonts[2].setShape(LyXFont::ITALIC_SHAPE);
+
+	Math_Fonts[3].setSeries(LyXFont::BOLD_SERIES);
+
+	Math_Fonts[4].setFamily(LyXFont::SANS_FAMILY);
+	Math_Fonts[4].setShape(LyXFont::ITALIC_SHAPE);
+
+	Math_Fonts[5].setFamily(LyXFont::TYPEWRITER_FAMILY);
+
+	Math_Fonts[6].setFamily(LyXFont::ROMAN_FAMILY);
+
+	Math_Fonts[7].setFamily(LyXFont::SANS_FAMILY);
+}
+
+} // namespace
+
+
+LyXFont WhichFont(MathTextCodes type, MathStyles size)
+{
+	LyXFont f;
+	
+	if (!Math_Fonts)
+		mathed_init_fonts();
+
+	switch (type) {
+	case LM_TC_SYMB:	
+		f = Math_Fonts[2];
+		break;
+
+	case LM_TC_BSYM:	
+		f = Math_Fonts[2];
+		break;
+
+	case LM_TC_VAR:
+	case LM_TC_IT:
+		f = Math_Fonts[0];
+		break;
+
+	case LM_TC_BF:
+		f = Math_Fonts[3];
+		break;
+
+	case LM_TC_SF:
+		f = Math_Fonts[7];
+		break;
+
+	case LM_TC_CAL:
+		f = Math_Fonts[4];
+		break;
+
+	case LM_TC_TT:
+		f = Math_Fonts[5];
+		break;
+
+	case LM_TC_SPECIAL: //f = Math_Fonts[0]; break;
+	case LM_TC_TEXTRM:
+	case LM_TC_TEX:
+	case LM_TC_RM:
+		f = Math_Fonts[6];
+		break;
+
+	default:
+		f = Math_Fonts[1];
+		break;
+	}
+
+	switch (size) {
+	case LM_ST_DISPLAY:
+		if (type == LM_TC_BSYM) {
+			f.incSize();
+			f.incSize();
+		}
+		break;
+
+	case LM_ST_TEXT:
+		break;
+
+	case LM_ST_SCRIPT:
+		f.decSize();
+		break;
+
+	case LM_ST_SCRIPTSCRIPT:
+		f.decSize();
+		f.decSize();
+		break;
+
+	default:
+		lyxerr << "Math Error: wrong font size: " << size << endl;
+		break;
+	}
+
+	if (type != LM_TC_TEXTRM)
+		f.setColor(LColor::math);
+
+	if (type == LM_TC_TEX)
+		f.setColor(LColor::latex);
+
+	return f;
+}
 
 char const * math_font_name[] = {
 	"mathrm",
@@ -407,7 +521,7 @@ static init_deco_table idt;
 
 } // namespace anon
 
-void mathed_char_dim (short type, int size, unsigned char c,
+void mathed_char_dim (MathTextCodes type, MathStyles size, unsigned char c,
 	int & asc, int & des, int & wid)
 {
 	LyXFont const font = WhichFont(type, size);
@@ -416,7 +530,7 @@ void mathed_char_dim (short type, int size, unsigned char c,
 	wid = mathed_char_width(type, size, c);
 }
 
-int mathed_char_height(short type, int size, unsigned char c,
+int mathed_char_height(MathTextCodes type, MathStyles size, unsigned char c,
 	int & asc, int & des)
 {
 	LyXFont const font = WhichFont(type, size);
@@ -426,7 +540,7 @@ int mathed_char_height(short type, int size, unsigned char c,
 }
 
 
-int mathed_char_width(short type, int size, unsigned char c)
+int mathed_char_width(MathTextCodes type, MathStyles size, unsigned char c)
 {
 	if (MathIsBinary(type)) {
 		string s;
@@ -437,14 +551,14 @@ int mathed_char_width(short type, int size, unsigned char c)
 }
 
 
-void mathed_string_dim(short type, int size, string const & s,
+void mathed_string_dim(MathTextCodes type, MathStyles size, string const & s,
 			 int & asc, int & des, int & wid)
 {
 	mathed_string_height(type, size, s, asc, des);
 	wid = mathed_string_width(type, size, s);
 }
 
-int mathed_string_height(short type, int size, string const & s,
+int mathed_string_height(MathTextCodes type, MathStyles size, string const & s,
 			 int & asc, int & des)
 {
 	LyXFont const font = WhichFont(type, size);
@@ -457,7 +571,7 @@ int mathed_string_height(short type, int size, string const & s,
 }
 
 
-int mathed_string_width(short type, int size, string const & s)
+int mathed_string_width(MathTextCodes type, MathStyles size, string const & s)
 {
 	string st;
 	if (MathIsBinary(type))
@@ -470,20 +584,7 @@ int mathed_string_width(short type, int size, string const & s)
 	else
 		st = s;
 	
-	LyXFont const f = WhichFont(type, size);
-	return lyxfont::width(st, f);
-}
-
-
-LyXFont mathed_get_font(short type, int size)
-{
-	LyXFont f = WhichFont(type, size);
-#ifndef NO_LATEX
-	if (type == LM_TC_TEX) {
-		f.setLatex(LyXFont::ON);
-	}
-#endif
-	return f;
+	return lyxfont::width(st, WhichFont(type, size));
 }
 
 
@@ -581,7 +682,7 @@ void mathed_draw_deco(Painter & pain, int x, int y, int w, int h, int code)
 
 
 // In a near future maybe we use a better fonts renderer
-void drawStr(Painter & pain, short type, int siz,
+void drawStr(Painter & pain, MathTextCodes type, MathStyles siz,
 	int x, int y, string const & s)
 {
 	string st;
@@ -595,11 +696,10 @@ void drawStr(Painter & pain, short type, int siz,
 	else
 		st = s;
 	
-	LyXFont const mf = mathed_get_font(type, siz);
-	pain.text(x, y, st, mf);
+	pain.text(x, y, st, WhichFont(type, siz));
 }
 
-void drawChar(Painter & pain, short type, int siz, int x, int y, char c)
+void drawChar(Painter & pain, MathTextCodes type, MathStyles siz, int x, int y, char c)
 {
 	string s;
 	s += c;
@@ -639,3 +739,12 @@ bool MathIsRelOp(unsigned char c, MathTextCodes f)
 		return true;
 	return false;
 }
+
+
+void math_font_max_dim(MathTextCodes code, MathStyles siz, int & asc, int & des)
+{
+	LyXFont font = WhichFont(code, siz);
+	asc = lyxfont::maxAscent(font);
+	des = lyxfont::maxDescent(font);
+}
+

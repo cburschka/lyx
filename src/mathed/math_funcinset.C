@@ -27,19 +27,6 @@ MathInset * MathFuncInset::clone() const
 }
 
 
-void MathFuncInset::draw(Painter & pain, int x, int y)
-{ 
-	if (!name_.empty() && name_[0] > ' ') {
-		LyXFont font = WhichFont(LM_TC_TEXTRM, size());
-#ifndef NO_LATEX
-		font.setLatex(LyXFont::ON);
-#endif
-	        x += (lyxfont::width('I', font) + 3) / 4;
-		pain.text(x, y, name_, font);
-	}
-}
-
-
 void MathFuncInset::Write(std::ostream & os, bool /* fragile */) const
 {
 	os << "\\" << name_ << ' ';
@@ -54,17 +41,20 @@ void MathFuncInset::WriteNormal(std::ostream & os) const
 
 void MathFuncInset::Metrics(MathStyles st, int, int) 
 {
-	LyXFont font = WhichFont(LM_TC_TEXTRM, size());
-#ifndef NO_LATEX
-	font.setLatex(LyXFont::ON);
-#endif
 	size_ = st;
-	if (name_.empty()) {
-		width_   = lyxfont::width('M', font);
-		ascent_  = lyxfont::ascent('M', font);
-		descent_ = 0;
-	} else {
-		width_ = lyxfont::width(name_, font) + lyxfont::width('I', font) / 2;
-		mathed_string_height(LM_TC_TEXTRM, size_, name_, ascent_, descent_);
-	}
+	if (name_.empty()) 
+		mathed_char_dim(LM_TC_TEXTRM, size_, 'I', ascent_, descent_, width_);
+	else 
+		mathed_string_dim(LM_TC_TEXTRM, size_, name_, ascent_, descent_, width_);
+}
+
+
+void MathFuncInset::draw(Painter & pain, int x, int y)
+{ 
+	xo(x);
+	yo(y);
+	if (name_.empty()) 
+		drawChar(pain, LM_TC_TEXTRM, size_, x, y, ' ');
+	else
+		drawStr(pain, LM_TC_TEXTRM, size_, x, y, name_);
 }
