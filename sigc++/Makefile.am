@@ -11,7 +11,7 @@ BUILT_SOURCES = slot.h object_slot.h func_slot.h class_slot.h \
                 basic_signal.h \
                 convert.h bind.h rettype.h retbind.h
 
-libsigc_la_SOURCES= \
+libsigc_la_SOURCES= $(BUILT_SOURCES) \
    object.cc   scope.cc   marshal.cc   slot.cc\
    basic_signal.cc adaptor.cc thread.cc
 
@@ -25,6 +25,8 @@ noinst_HEADERS = \
      $(BUILT_SOURCES) type.h\
     handle.h object.h scope.h adaptor.h thread.h
 
+
+Makefile: $(BUILT_SOURCES)
 
 %.h: $(M4_DIR)/%.h.m4 $(M4_DIR)/template.macros.m4        
 	$(M4) $(M4_INCLUDES) $(DEFINES) $<  > $@
