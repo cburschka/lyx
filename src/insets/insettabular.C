@@ -597,8 +597,8 @@ void InsetTabular::insetUnlock(BufferView * bv)
 {
 	if (the_locking_inset) {
 		the_locking_inset->insetUnlock(bv);
-		the_locking_inset = 0;
 		updateLocal(bv, CELL, false);
+		the_locking_inset = 0;
 	}
 	hideInsetCursor(bv);
 	oldcell = -1;
@@ -792,6 +792,7 @@ void InsetTabular::insetButtonPress(BufferView * bv, int x, int y, int button)
 	if (button == 3) {
 		if ((ocell != actcell) && the_locking_inset) {
 			the_locking_inset->insetUnlock(bv);
+			updateLocal(bv, CELL, false);
 			the_locking_inset = 0;
 		}
 		showInsetCursor(bv);
@@ -809,8 +810,8 @@ void InsetTabular::insetButtonPress(BufferView * bv, int x, int y, int button)
 		return;
 	} else if (the_locking_inset) {
 		the_locking_inset->insetUnlock(bv);
-		the_locking_inset = 0;
 		updateLocal(bv, CELL, false);
+		the_locking_inset = 0;
 	}
 	if (button == 2) {
 		localDispatch(bv, LFUN_PASTESELECTION, "paragraph");
