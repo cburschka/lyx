@@ -27,6 +27,7 @@
 #include "Dialogs.h"
 #include "LyXView.h"
 #include "gettext.h"
+#include "lyxrc.h"
 
 #include "insets/insetgraphics.h"
 #include "insets/insetgraphicsParams.h" // need operator!=()
@@ -94,9 +95,9 @@ string const ControlGraphics::Browse(string const & in_name)
   		// No - bail out to system clipart directory
   		clipdir = AddName (system_lyxdir, "clipart");
 	pair<string, string> dir1(N_("Clipart|#C#c"), clipdir);
-	
+	pair<string, string> dir2(N_("Documents|#o#O"), string(lyxrc.document_path));
 	// Show the file browser dialog
-	return browseFile(&lv_, in_name, title, pattern, dir1);
+	return browseFile(&lv_, in_name, title, pattern, dir1, dir2);
 }
 
 string const ControlGraphics::readBB(string const & file)
