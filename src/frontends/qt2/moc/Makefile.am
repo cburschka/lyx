@@ -9,6 +9,7 @@ INCLUDES = -I${top_srcdir}/src/ \
 	${SIGC_CFLAGS} \
 	${FRONTEND_INCLUDES} \
 	$(BOOST_INCLUDES)
+AM_CXXFLAGS = -DQT_CLEAN_NAMESPACE -DQT_GENUINE_STR
 
 include ../Makefile.dialogs
 

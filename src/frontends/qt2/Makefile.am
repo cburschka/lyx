@@ -7,7 +7,7 @@ SUBDIRS=ui moc
 INCLUDES = -I${top_srcdir}/src/ -I${top_srcdir}/src/frontends/ \
 	${SIGC_CFLAGS} ${FRONTEND_INCLUDES} $(BOOST_INCLUDES) \
 	-I$(top_srcdir)/src/frontends/controllers
-CXXFLAGS += -DQT_CLEAN_NAMESPACE -DQT_GENUINE_STR
+AM_CXXFLAGS = -DQT_CLEAN_NAMESPACE -DQT_GENUINE_STR
 
 DISTCLEANFILES = $(BUILTSOURCES) *.orig *.rej *~ *.bak core
 

@@ -1,3 +1,10 @@
+2001-08-29  John Levon  <moz@compsoc.man.ac.uk>
+
+	* Makefile.am:
+	* moc/Makefile.am:
+	* ui/Makefile.am:
+	* ui/moc/Makefile.am: use AM_CXXFLAGS to add defines
+
 2001-08-29  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* QAbout.C: added a using std::getline directive.
