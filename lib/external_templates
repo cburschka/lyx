@@ -101,8 +101,8 @@ Template XFig
 		UpdateFormat pstex
 		UpdateResult "$$AbsPath$$Basename.pstex_t"
 		Requirement "graphicx"
-		Preamble WarnNotFound
-		Preamble InputOrWarn
+		# Preamble WarnNotFound
+		# Preamble InputOrWarn
 	FormatEnd
 	Format PDFLaTeX
 		TransformCommand Rotate RotationLatexCommand
@@ -111,8 +111,8 @@ Template XFig
 		UpdateFormat pdftex
 		UpdateResult "$$AbsPath$$Basename.pdftex_t"
 		Requirement "graphicx"
-		Preamble WarnNotFound
-		Preamble InputOrWarn
+		# Preamble WarnNotFound
+		# Preamble InputOrWarn
 	FormatEnd
 	Format Ascii
 		Product "$$Contents(\"$$AbsPath$$Basename.asc\")"
