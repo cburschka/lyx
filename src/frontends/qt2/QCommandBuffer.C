@@ -16,7 +16,7 @@
 
 #include "support/filetools.h"
 #include "controllers/ControlCommandBuffer.h"
-#include "gettext.h"
+#include "qt_helpers.h"
 #include "debug.h"
 
 #include "QtView.h"
@@ -68,11 +68,11 @@ QCommandBuffer::QCommandBuffer(QtView * view, ControlCommandBuffer & control)
 {
 	setHorizontalStretchable(true);
 
-	QPixmap qpup(LibFileSearch("images", "up", "xpm").c_str());
-	QPixmap qpdown(LibFileSearch("images", "down", "xpm").c_str());
+	QPixmap qpup(toqstr(LibFileSearch("images", "up", "xpm")));
+	QPixmap qpdown(toqstr(LibFileSearch("images", "down", "xpm")));
 
-	(new QToolButton(qpup, _("Previous command"), "", this, SLOT(up()), this))->show();
-	(new QToolButton(qpdown, _("Next command"), "", this, SLOT(down()), this))->show();
+	(new QToolButton(qpup, qt_("Previous command"), "", this, SLOT(up()), this))->show();
+	(new QToolButton(qpdown, qt_("Next command"), "", this, SLOT(down()), this))->show();
 
 	edit_ = new QCommandEdit(this);
 	edit_->setMinimumSize(edit_->sizeHint());
@@ -105,7 +105,7 @@ void QCommandBuffer::cancel()
 
 void QCommandBuffer::dispatch()
 {
-	controller_.dispatch(edit_->text().latin1());
+	controller_.dispatch(fromqstr(edit_->text()));
 	view_->centralWidget()->setFocus();
 	edit_->setText("");
 }
@@ -113,22 +113,22 @@ void QCommandBuffer::dispatch()
 
 void QCommandBuffer::complete()
 {
-	string const input = edit_->text().latin1();
+	string const input = fromqstr(edit_->text());
 	string new_input;
 	vector<string> comp = controller_.completions(input, new_input);
 
 	if (comp.empty() && new_input == input) {
-	//	show_info_suffix(_("[no match]"), input);
+	//	show_info_suffix(qt_("[no match]"), input);
 		return;
 	}
 
 	if (comp.empty()) {
-		edit_->setText(new_input.c_str());
+		edit_->setText(toqstr(new_input));
 	//	show_info_suffix(("[only completion]"), new_input + ' ');
 		return;
 	}
 
-	edit_->setText(new_input.c_str());
+	edit_->setText(toqstr(new_input));
 
 	QTempListBox * list = new QTempListBox;
 
@@ -137,7 +137,7 @@ void QCommandBuffer::complete()
 	vector<string>::const_iterator cit = comp.begin();
 	vector<string>::const_iterator end = comp.end();
 	for (; cit != end; ++cit) {
-		list->insertItem(cit->c_str());
+		list->insertItem(toqstr(*cit));
 	}
 
 	// width() is not big enough by a few pixels. Qt Sucks.
@@ -168,26 +168,26 @@ void QCommandBuffer::complete_selected(QString const & str)
 
 void QCommandBuffer::up()
 {
-	string const input(edit_->text().latin1());
+	string const input(fromqstr(edit_->text()));
 	string const h(controller_.historyUp());
 
 	if (h.empty()) {
-	//	show_info_suffix(_("[Beginning of history]"), input);
+	//	show_info_suffix(qt_("[Beginning of history]"), input);
 	} else {
-		edit_->setText(h.c_str());
+		edit_->setText(toqstr(h));
 	}
 }
 
 
 void QCommandBuffer::down()
 {
-	string const input(edit_->text().latin1());
+	string const input(fromqstr(edit_->text()));
 	string const h(controller_.historyDown());
 
 	if (h.empty()) {
-	//	show_info_suffix(_("[End of history]"), input);
+	//	show_info_suffix(qt_("[End of history]"), input);
 	} else {
-		edit_->setText(h.c_str());
+		edit_->setText(toqstr(h));
 	}
 }
 

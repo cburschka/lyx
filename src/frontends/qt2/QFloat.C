@@ -18,7 +18,7 @@
 #include "QFloatDialog.h"
 #include "QFloat.h"
 #include "Qt2BC.h"
-#include "gettext.h"
+#include "qt_helpers.h"
 
 #include "support/lstrings.h"
 
@@ -29,7 +29,7 @@ typedef Qt2CB<ControlFloat, Qt2DB<QFloatDialog> > base_class;
 
 
 QFloat::QFloat()
-	: base_class(_("Float Settings"))
+	: base_class(qt_("Float Settings"))
 {
 }
 

@@ -1,7 +1,7 @@
 <!DOCTYPE UI><UI>
 <class>QTabularCreateDialogBase</class>
 <include location="global">config.h</include>
-<include location="local">gettext.h</include>
+<include location="local">qt_helpers.h</include>
 <widget>
     <class>QDialog</class>
     <property stdset="1">

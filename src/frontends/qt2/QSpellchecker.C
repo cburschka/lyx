@@ -18,7 +18,7 @@
 #include "QSpellcheckerDialog.h"
 #include "QSpellchecker.h"
 #include "Qt2BC.h"
-#include "gettext.h"
+#include "qt_helpers.h"
 #include "debug.h"
 
 #include <qprogressbar.h>
@@ -32,7 +32,7 @@ typedef Qt2CB<ControlSpellchecker, Qt2DB<QSpellcheckerDialog> > base_class;
 
 
 QSpellchecker::QSpellchecker()
-	: base_class(_("Spellchecker"))
+	: base_class(qt_("Spellchecker"))
 {
 }
 
@@ -75,7 +75,7 @@ void QSpellchecker::ignore()
 
 void QSpellchecker::replace()
 {
-	controller().replace(dialog_->replaceCO->currentText().latin1());
+	controller().replace(fromqstr(dialog_->replaceCO->currentText()));
 }
 
 
@@ -102,12 +102,12 @@ void QSpellchecker::partialUpdate(int id)
 		break;
 
 	case 1: {
-		dialog_->wordED->setText(controller().getWord().c_str());
+		dialog_->wordED->setText(toqstr(controller().getWord()));
 		dialog_->suggestionsLB->clear();
 
 		string w;
 		while (!(w = controller().getSuggestion()).empty()) {
-			dialog_->suggestionsLB->insertItem(w.c_str());
+			dialog_->suggestionsLB->insertItem(toqstr(w));
 		}
 
 		dialog_->suggestionChanged(dialog_->wordED->text());
@@ -118,9 +118,9 @@ void QSpellchecker::partialUpdate(int id)
 		dialog_->spellcheckPB->setEnabled(true);
 		hide();
 		lyxerr << controller().getMessage() << endl;
-		QMessageBox::information(0, _("Spellcheck complete"),
-					 controller().getMessage().c_str(),
-					 _("OK"));
+		QMessageBox::information(0, qt_("Spellcheck complete"),
+					 toqstr(controller().getMessage()),
+					 qt_("OK"));
 		break;
 	}
 }

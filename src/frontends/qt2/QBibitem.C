@@ -17,7 +17,7 @@
 #include "support/lstrings.h"
 
 #include "ControlBibitem.h"
-#include "gettext.h"
+#include "qt_helpers.h"
 #include "debug.h"
 
 #include <qlineedit.h>
@@ -31,7 +31,7 @@ typedef Qt2CB<ControlBibitem, Qt2DB<QBibitemDialog> > base_class;
 
 
 QBibitem::QBibitem()
-	: base_class(_("Bibliography Item"))
+	: base_class(qt_("Bibliography Item"))
 {
 }
 
@@ -49,19 +49,19 @@ void QBibitem::build_dialog()
 
 void QBibitem::update_contents()
 {
-	dialog_->keyED->setText(controller().params().getContents().c_str());
-	dialog_->labelED->setText(controller().params().getOptions().c_str());
+	dialog_->keyED->setText(toqstr(controller().params().getContents()));
+	dialog_->labelED->setText(toqstr(controller().params().getOptions()));
 }
 
 
 void QBibitem::apply()
 {
-	controller().params().setContents(dialog_->keyED->text().latin1());
-	controller().params().setOptions(dialog_->labelED->text().latin1());
+	controller().params().setContents(fromqstr(dialog_->keyED->text()));
+	controller().params().setOptions(fromqstr(dialog_->labelED->text()));
 }
 
 
 bool QBibitem::isValid()
 {
-	return !string(dialog_->keyED->text().latin1()).empty();
+	return !dialog_->keyED->text().isEmpty();
 }

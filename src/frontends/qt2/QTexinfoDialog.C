@@ -19,6 +19,7 @@
 #include "ControlTexinfo.h"
 #include "QTexinfoDialog.h"
 #include "QTexinfo.h"
+#include "qt_helpers.h"
 
 #include <qlistbox.h>
 #include <qpushbutton.h>
@@ -79,7 +80,7 @@ void QTexinfoDialog::viewClicked()
 
 	// a valid entry?
 	if (!sel.empty()) {
-		form_->controller().viewFile(sel.c_str());
+		form_->controller().viewFile(sel);
 	}
 }
 

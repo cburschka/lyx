@@ -9,7 +9,7 @@
  */
 
 #include <config.h>
-#include "gettext.h"
+#include "qt_helpers.h"
 
 #include "ControlPrefs.h"
 #include "QPrefs.h"
@@ -38,6 +38,7 @@
 #include "support/lstrings.h"
 #include "lyxrc.h"
 #include "debug.h"
+#include "gettext.h"
 
 #include <qwidgetstack.h>
 #include <qpushbutton.h>
@@ -74,12 +75,12 @@ QPrefsDialog::QPrefsDialog(QPrefs * form)
 	// OK, Qt is REALLY broken. We have to hard
 	// code the menu structure here.
 
-	QListViewItem * lnf(new QListViewItem(prefsLV, _("Look and feel")));
+	QListViewItem * lnf(new QListViewItem(prefsLV, qt_("Look and feel")));
 	lnf->setSelectable(false);
 	lnf->setOpen(true);
-	QListViewItem * lan(new QListViewItem(prefsLV, lnf, _("Language settings")));
+	QListViewItem * lan(new QListViewItem(prefsLV, lnf, qt_("Language settings")));
 	lan->setSelectable(false);
-	QListViewItem * out(new QListViewItem(prefsLV, lan, _("Outputs")));
+	QListViewItem * out(new QListViewItem(prefsLV, lan, qt_("Outputs")));
 	out->setSelectable(false);
 
 	asciiModule = new QPrefAsciiModule(prefsWS);
@@ -116,42 +117,42 @@ QPrefsDialog::QPrefsDialog(QPrefs * form)
 
 	// language settings
 
-	i = new QListViewItem(lan, _("Language"));
+	i = new QListViewItem(lan, qt_("Language"));
 	pane_map_[i] = languageModule;
-	i = new QListViewItem(lan, i, _("Spellchecker"));
+	i = new QListViewItem(lan, i, qt_("Spellchecker"));
 	pane_map_[i] = spellcheckerModule;
 
 	// UI
 
-	i = new QListViewItem(lnf, _("User interface"));
+	i = new QListViewItem(lnf, qt_("User interface"));
 	pane_map_[i] = uiModule;
 	prefsLV->setCurrentItem(i);
 
-	i = new QListViewItem(lnf, i, _("Screen fonts"));
+	i = new QListViewItem(lnf, i, qt_("Screen fonts"));
 	pane_map_[i] = screenfontsModule;
-	i = new QListViewItem(lnf, i, _("Colors"));
+	i = new QListViewItem(lnf, i, qt_("Colors"));
 	pane_map_[i] = colorsModule;
-	i = new QListViewItem(lnf, i, _("Graphics"));
+	i = new QListViewItem(lnf, i, qt_("Graphics"));
 	pane_map_[i] = displayModule;
-	i = new QListViewItem(lnf, i, _("Keyboard"));
+	i = new QListViewItem(lnf, i, qt_("Keyboard"));
 	pane_map_[i] = keyboardModule;
 
 	// output
 
-	i = new QListViewItem(out, _("Ascii"));
+	i = new QListViewItem(out, qt_("Ascii"));
 	pane_map_[i] = asciiModule;
-	i = new QListViewItem(out, i, _("Date format"));
+	i = new QListViewItem(out, i, qt_("Date format"));
 	pane_map_[i] = dateModule;
-	i = new QListViewItem(out, i, _("LaTeX"));
+	i = new QListViewItem(out, i, qt_("LaTeX"));
 	pane_map_[i] = latexModule;
-	i = new QListViewItem(out, i, _("Printer"));
+	i = new QListViewItem(out, i, qt_("Printer"));
 	pane_map_[i] = printerModule;
 
-	i = new QListViewItem(prefsLV, out, _("Paths"));
+	i = new QListViewItem(prefsLV, out, qt_("Paths"));
 	pane_map_[i] = pathsModule;
-	i = new QListViewItem(prefsLV, i,  _("Converters"));
+	i = new QListViewItem(prefsLV, i,  qt_("Converters"));
 	pane_map_[i] = convertersModule;
-	i = new QListViewItem(prefsLV, i, _("File formats"));
+	i = new QListViewItem(prefsLV, i, qt_("File formats"));
 	pane_map_[i] = fileformatsModule;
 
 	prefsLV->setMinimumSize(prefsLV->sizeHint());
@@ -177,7 +178,8 @@ QPrefsDialog::QPrefsDialog(QPrefs * form)
 		colors_.push_back(lc);
 		string const x11name(lcolor.getX11Name(lc));
 		string const guiname(lcolor.getGUIName(lc));
-		QColorItem * ci(new QColorItem(QColor(x11name.c_str()), guiname.c_str()));
+		QColorItem * ci(new QColorItem(QColor(toqstr(x11name)),
+				toqstr(guiname)));
 		colorsModule->lyxObjectsLB->insertItem(ci);
 	}
 
@@ -342,8 +344,8 @@ void QPrefsDialog::updateConverters()
 	Formats::const_iterator cit = form_->formats_.begin();
 	Formats::const_iterator end = form_->formats_.end();
 	for (; cit != end; ++cit) {
-		convertmod->converterFromCO->insertItem(cit->prettyname().c_str());
-		convertmod->converterToCO->insertItem(cit->prettyname().c_str());
+		convertmod->converterFromCO->insertItem(toqstr(cit->prettyname()));
+		convertmod->converterToCO->insertItem(toqstr(cit->prettyname()));
 	}
 
 	convertmod->convertersLB->clear();
@@ -353,7 +355,7 @@ void QPrefsDialog::updateConverters()
 	for (; ccit != cend; ++ccit) {
 		string const name(ccit->From->prettyname() + " -> " +
 			ccit->To->prettyname());
-		convertmod->convertersLB->insertItem(name.c_str());
+		convertmod->convertersLB->insertItem(toqstr(name));
 	}
 }
 
@@ -363,8 +365,8 @@ void QPrefsDialog::switch_converter(int nr)
 	Converter const & c(form_->converters_.get(nr));
 	convertersModule->converterFromCO->setCurrentItem(form_->formats_.getNumber(c.from));
 	convertersModule->converterToCO->setCurrentItem(form_->formats_.getNumber(c.to));
-	convertersModule->converterED->setText(c.command.c_str());
-	convertersModule->converterFlagED->setText(c.flags.c_str());
+	convertersModule->converterED->setText(toqstr(c.command));
+	convertersModule->converterFlagED->setText(toqstr(c.flags));
 }
 
 
@@ -389,8 +391,8 @@ void QPrefsDialog::modify_converter()
 {
 	Format const & from(form_->formats_.get(convertersModule->converterFromCO->currentItem()));
 	Format const & to(form_->formats_.get(convertersModule->converterToCO->currentItem()));
-	string flags(convertersModule->converterFlagED->text().latin1());
-	string name(convertersModule->converterED->text().latin1());
+	string flags(fromqstr(convertersModule->converterFlagED->text()));
+	string name(fromqstr(convertersModule->converterED->text()));
 
 	Converter const * old = form_->converters_.getConverter(from.name(), to.name());
 	form_->converters_.add(from.name(), to.name(), name, flags);
@@ -419,7 +421,7 @@ void QPrefsDialog::updateFormats()
 	Formats::const_iterator cit = form_->formats_.begin();
 	Formats::const_iterator end = form_->formats_.end();
 	for (; cit != end; ++cit) {
-		formatmod->formatsLB->insertItem(cit->prettyname().c_str());
+		formatmod->formatsLB->insertItem(toqstr(cit->prettyname()));
 	}
 }
 
@@ -427,11 +429,11 @@ void QPrefsDialog::updateFormats()
 void QPrefsDialog::switch_format(int nr)
 {
 	Format const & f(form_->formats_.get(nr));
-	fileformatsModule->formatED->setText(f.name().c_str());
-	fileformatsModule->guiNameED->setText(f.prettyname().c_str());
-	fileformatsModule->extensionED->setText(f.extension().c_str());
-	fileformatsModule->shortcutED->setText(f.shortcut().c_str());
-	fileformatsModule->viewerED->setText(f.viewer().c_str());
+	fileformatsModule->formatED->setText(toqstr(f.name()));
+	fileformatsModule->guiNameED->setText(toqstr(f.prettyname()));
+	fileformatsModule->extensionED->setText(toqstr(f.extension()));
+	fileformatsModule->shortcutED->setText(toqstr(f.shortcut()));
+	fileformatsModule->viewerED->setText(toqstr(f.viewer()));
 	fileformatsModule->formatRemovePB->setEnabled(
 		!form_->converters_.formatIsUsed(f.name()));
 }
@@ -451,13 +453,13 @@ void QPrefsDialog::modify_format()
 {
 	Format const & oldformat(form_->formats_.get(fileformatsModule->formatsLB->currentItem()));
 	string const oldpretty(oldformat.prettyname());
-	string const name(fileformatsModule->formatED->text().latin1());
+	string const name(fromqstr(fileformatsModule->formatED->text()));
 	form_->formats_.erase(oldformat.name());
 
-	string const prettyname = fileformatsModule->guiNameED->text().latin1();
-	string const extension = fileformatsModule->extensionED->text().latin1();
-	string const shortcut = fileformatsModule->shortcutED->text().latin1();
-	string const viewer = fileformatsModule->viewerED->text().latin1();
+	string const prettyname = fromqstr(fileformatsModule->guiNameED->text());
+	string const extension = fromqstr(fileformatsModule->extensionED->text());
+	string const shortcut = fromqstr(fileformatsModule->shortcutED->text());
+	string const viewer = fromqstr(fileformatsModule->viewerED->text());
 
 	form_->formats_.add(name, extension, prettyname, shortcut);
 	form_->formats_.sort();
@@ -501,81 +503,83 @@ void QPrefsDialog::change_color()
 
 void QPrefsDialog::select_ui()
 {
-	string file(form_->controller().browseUI(uiModule->uiFileED->text().latin1()));
+	string file(form_->controller().browseUI(fromqstr(uiModule->uiFileED->text())));
 	if (!file.empty())
-		uiModule->uiFileED->setText(file.c_str());
+		uiModule->uiFileED->setText(toqstr(file));
 }
 
 
 void QPrefsDialog::select_bind()
 {
-	string file(form_->controller().browsebind(uiModule->bindFileED->text().latin1()));
+	string file(form_->controller().browsebind(fromqstr(uiModule->bindFileED->text())));
 	if (!file.empty())
-		uiModule->bindFileED->setText(file.c_str());
+		uiModule->bindFileED->setText(toqstr(file));
 }
 
 
 void QPrefsDialog::select_keymap1()
 {
-	string file(form_->controller().browsekbmap(keyboardModule->firstKeymapED->text().latin1()));
+	string file(form_->controller().browsekbmap(fromqstr(keyboardModule->firstKeymapED->text())));
 	if (!file.empty())
-		keyboardModule->firstKeymapED->setText(file.c_str());
+		keyboardModule->firstKeymapED->setText(toqstr(file));
 }
 
 
 void QPrefsDialog::select_keymap2()
 {
-	string file(form_->controller().browsekbmap(keyboardModule->secondKeymapED->text().latin1()));
+	string file(form_->controller().browsekbmap(fromqstr(keyboardModule->secondKeymapED->text())));
 	if (!file.empty())
-		keyboardModule->secondKeymapED->setText(file.c_str());
+		keyboardModule->secondKeymapED->setText(toqstr(file));
 }
 
 
 void QPrefsDialog::select_dict()
 {
-	string file(form_->controller().browsedict(spellcheckerModule->persDictionaryED->text().latin1()));
+	string file(form_->controller().browsedict(fromqstr(spellcheckerModule->persDictionaryED->text())));
 	if (!file.empty())
-		spellcheckerModule->persDictionaryED->setText(file.c_str());
+		spellcheckerModule->persDictionaryED->setText(toqstr(file));
 }
 
 
+// NB: the _() is OK here because it gets passed back and we toqstr() them
+
 void QPrefsDialog::select_templatedir()
 {
-	string file(form_->controller().browse(pathsModule->templateDirED->text().latin1(), _("Select a document templates directory")));
+	string file(form_->controller().browse(fromqstr(pathsModule->templateDirED->text()), _("Select a document templates directory")));
 	if (!file.empty())
-		pathsModule->templateDirED->setText(file.c_str());
+		pathsModule->templateDirED->setText(toqstr(file));
 }
 
 
 void QPrefsDialog::select_tempdir()
 {
-	string file(form_->controller().browse(pathsModule->tempDirED->text().latin1(), _("Select a temporary directory")));
+	string file(form_->controller().browse(fromqstr(pathsModule->tempDirED->text()), _("Select a temporary directory")));
 	if (!file.empty())
-		pathsModule->tempDirED->setText(file.c_str());
+		pathsModule->tempDirED->setText(toqstr(file));
 }
 
 
 void QPrefsDialog::select_backupdir()
 {
-	string file(form_->controller().browse(pathsModule->backupDirED->text().latin1(), _("Select a backups directory")));
+	string file(form_->controller().browse(fromqstr(pathsModule->backupDirED->text()), _("Select a backups directory")));
 	if (!file.empty())
-		pathsModule->backupDirED->setText(file.c_str());
+		pathsModule->backupDirED->setText(toqstr(file));
 }
 
 
 void QPrefsDialog::select_workingdir()
 {
-	string file(form_->controller().browse(pathsModule->workingDirED->text().latin1(), _("Selection a documents directory")));
+	string file(form_->controller().browse(fromqstr(pathsModule->workingDirED->text()), _("Selection a documents directory")));
 	if (!file.empty())
-		pathsModule->workingDirED->setText(file.c_str());
+		pathsModule->workingDirED->setText(toqstr(file));
 }
 
 
 void QPrefsDialog::select_lyxpipe()
 {
-	string file(form_->controller().browse(pathsModule->lyxserverDirED->text().latin1(), _("Give a filename for the LyX server pipe")));
+	string file(form_->controller().browse(fromqstr(pathsModule->lyxserverDirED->text()), _("Give a filename for the LyX server pipe")));
 	if (!file.empty())
-		pathsModule->lyxserverDirED->setText(file.c_str());
+		pathsModule->lyxserverDirED->setText(toqstr(file));
 }
 
 

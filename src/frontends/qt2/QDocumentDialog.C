@@ -9,7 +9,7 @@
  */
 
 #include <config.h>
-#include "gettext.h"
+#include "qt_helpers.h"
 
 #include "ControlDocument.h"
 #include "QDocument.h"
@@ -63,15 +63,15 @@ QDocumentDialog::QDocumentDialog(QDocument * form)
 		form, SLOT(slotRestore()));
 
 	moduleLB->clear();
-	moduleLB->insertItem(_("Layout"), LAYOUT);
-	moduleLB->insertItem(_("Packages"), PACKAGES);
-	moduleLB->insertItem(_("Paper"), PAPER);
-	moduleLB->insertItem(_("Margins"), MARGINS);
-	moduleLB->insertItem(_("Language"), LANGUAGE);
-	moduleLB->insertItem(_("Bullets"), BULLETS);
-	moduleLB->insertItem(_("Numbering"), NUMBERING);
-	moduleLB->insertItem(_("Bibliography"), BIBLIOGRAPHY);
-	moduleLB->insertItem(_("Preamble"), PREAMBLE);
+	moduleLB->insertItem(qt_("Layout"), LAYOUT);
+	moduleLB->insertItem(qt_("Packages"), PACKAGES);
+	moduleLB->insertItem(qt_("Paper"), PAPER);
+	moduleLB->insertItem(qt_("Margins"), MARGINS);
+	moduleLB->insertItem(qt_("Language"), LANGUAGE);
+	moduleLB->insertItem(qt_("Bullets"), BULLETS);
+	moduleLB->insertItem(qt_("Numbering"), NUMBERING);
+	moduleLB->insertItem(qt_("Bibliography"), BIBLIOGRAPHY);
+	moduleLB->insertItem(qt_("Preamble"), PREAMBLE);
 	moduleLB->setCurrentItem(LAYOUT);
 	moduleLB->setMinimumSize(moduleLB->sizeHint());
 
@@ -255,31 +255,31 @@ void QDocumentDialog::setTitle(int item)
 {
 	switch(item) {
 	case LAYOUT:
-		titleL->setText(_("Document Style"));
+		titleL->setText(qt_("Document Style"));
 		break;
 	case PACKAGES:
-		titleL->setText(_("LaTeX Packages"));
+		titleL->setText(qt_("LaTeX Packages"));
 		break;
 	case PAPER:
-		titleL->setText(_("Papersize and Orientation"));
+		titleL->setText(qt_("Papersize and Orientation"));
 		break;
 	case MARGINS:
-		titleL->setText(_("Margins"));
+		titleL->setText(qt_("Margins"));
 		break;
 	case LANGUAGE:
-		titleL->setText(_("Language Settings and Quote Style"));
+		titleL->setText(qt_("Language Settings and Quote Style"));
 		break;
 	case BULLETS:
-		titleL->setText(_("Bullet Types"));
+		titleL->setText(qt_("Bullet Types"));
 		break;
 	case NUMBERING:
-		titleL->setText(_("Numbering"));
+		titleL->setText(qt_("Numbering"));
 		break;
 	case BIBLIOGRAPHY:
-		titleL->setText(_("Bibliography Settings"));
+		titleL->setText(qt_("Bibliography Settings"));
 		break;
 	case PREAMBLE:
-		titleL->setText(_("LaTeX Preamble"));
+		titleL->setText(qt_("LaTeX Preamble"));
 		break;
 	}
 }
@@ -336,17 +336,16 @@ void QDocumentDialog::enableSkip(bool skip)
 
 void QDocumentDialog::setMargins(int papersize)
 {
-	char const * a4only[] = {
-		_("Small Margins"), _("Very small Margins"),
-		_("Very wide Margins "), 0 };
-	char const * normal[] = {
-		_("Default"), _("Custom"), 0 };
-
 	int olditem = marginsModule->marginCO->currentItem();
 	marginsModule->marginCO->clear();
-	marginsModule->marginCO->insertStrList(normal);
-	if (papersize==6) {
-		marginsModule->marginCO->insertStrList(a4only);
+	marginsModule->marginCO->insertItem(qt_("Default"));
+	marginsModule->marginCO->insertItem(qt_("Custom"));
+	if (papersize == 6) {
+		marginsModule->marginCO->insertItem(qt_("Small margins"));
+		marginsModule->marginCO->insertItem(qt_("Very small margins"));
+		marginsModule->marginCO->insertItem(qt_("Very wide margins"));
+	} else if (olditem > 1) {
+		olditem = 0;
 	}
 	marginsModule->marginCO->setCurrentItem(olditem);
 	setCustomMargins(olditem);
@@ -409,10 +408,10 @@ void QDocumentDialog::updateFontsize(string const & items, string const & sel)
 
 	for (int n=0; !token(items,'|',n).empty(); ++n)
 		layoutModule->fontsizeCO->
-			insertItem(token(items,'|',n).c_str());
+			insertItem(toqstr(token(items,'|',n)));
 
 	for (int n = 0; n<layoutModule->fontsizeCO->count(); ++n) {
-		if (layoutModule->fontsizeCO->text(n).latin1()==sel) {
+		if (fromqstr(layoutModule->fontsizeCO->text(n)) == sel) {
 			layoutModule->fontsizeCO->setCurrentItem(n);
 			break;
 		}
@@ -427,10 +426,10 @@ void QDocumentDialog::updatePagestyle(string const & items, string const & sel)
 
 	for (int n=0; !token(items,'|',n).empty(); ++n)
 		layoutModule->pagestyleCO->
-			insertItem(token(items,'|',n).c_str());
+			insertItem(toqstr(token(items,'|',n)));
 
 	for (int n = 0; n<layoutModule->pagestyleCO->count(); ++n) {
-		if (layoutModule->pagestyleCO->text(n).latin1()==sel) {
+		if (fromqstr(layoutModule->pagestyleCO->text(n))==sel) {
 			layoutModule->pagestyleCO->setCurrentItem(n);
 			break;
 		}
@@ -461,7 +460,7 @@ void QDocumentDialog::classChanged()
 	} else {
 		for (int n = 0; n<layoutModule->classCO->count(); ++n) {
 			if (layoutModule->classCO->text(n) ==
-			    cntrl.textClass().description().c_str()) {
+			    toqstr(cntrl.textClass().description())) {
 				layoutModule->classCO->setCurrentItem(n);
 				break;
 			}

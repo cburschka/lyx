@@ -24,6 +24,7 @@
  
 class LengthCombo;
 class QLineEdit;
+class QString;
  
 string makeFontName(string const & family, string const & foundry);
  
@@ -36,4 +37,45 @@ string widgetsToLength(QLineEdit const * input, LengthCombo const * combo);
 void lengthToWidgets(QLineEdit * input, LengthCombo * combo,
 	string const & len, LyXLength::UNIT default_unit);
  
+/**
+ * toqstr - convert char * into unicode
+ *
+ * Use this whenever there's a user-visible string that is encoded
+ * for the locale (menus, dialogs etc.)
+ */
+QString const toqstr(char const * str);
+
+
+/**
+ * toqstr - convert string into unicode
+ *
+ * Use this whenever there's a user-visible string that is encoded
+ * for the locale (menus, dialogs etc.)
+ */
+QString const toqstr(string const & str);
+
+
+/**
+ * qt_ - i18nize string and convert to unicode
+ *
+ * Use this in qt2/ instead of qt_()
+ */
+QString const qt_(char const * str);
+
+
+/**
+ * qt_ - i18nize string and convert to unicode
+ *
+ * Use this in qt2/ instead of qt_()
+ */
+QString const qt_(string const & str);
+
+
+/**
+ * fromqstr - convert QString into std::string in locale
+ *
+ * Return the QString encoded in the locale
+ */
+string const fromqstr(QString const & str);
+
 #endif // QTHELPERS_H

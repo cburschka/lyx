@@ -22,7 +22,7 @@
 #include "BufferView.h"
 #include "buffer.h"
 #include "LyXAction.h"
-#include "gettext.h"
+#include "qt_helpers.h"
 
 #include "support/LAssert.h"
 #include "support/filetools.h"
@@ -66,7 +66,7 @@ QPixmap getIconPixmap(int action)
 	if (!fullname.empty()) {
 		lyxerr[Debug::GUI] << "Full icon name is `"
 				   << fullname << '\'' << endl;
-		return QPixmap(fullname.c_str());
+		return QPixmap(toqstr(fullname));
 	}
 
 	lyxerr << "Unable to find icon `" << fullname << '\'' << endl;
@@ -75,7 +75,7 @@ QPixmap getIconPixmap(int action)
 		lyxerr[Debug::GUI] << "Using default `unknown' icon"
 				   << endl;
 	}
-	return QPixmap(fullname.c_str());
+	return QPixmap(toqstr(fullname));
 }
 
 } // namespace anon
@@ -146,6 +146,7 @@ void Toolbar::Pimpl::changed_layout(string const & sel)
 	LyXTextClass::const_iterator end = tc.end();
 	for (LyXTextClass::const_iterator cit = tc.begin();
 	     cit != end; ++cit) {
+		// Yes, the _() is correct
 		if (_((*cit)->name()) == sel) {
 			owner_->getLyXFunc().dispatch(FuncRequest(LFUN_LAYOUT, (*cit)->name()), true);
 			return;
@@ -161,17 +162,17 @@ void Toolbar::Pimpl::setLayout(string const & layout)
 	LyXTextClass const & tc =
 		owner_->buffer()->params.getLyXTextClass();
 
-	string const & name = _(tc[layout]->name());
+	QString const & name = qt_(tc[layout]->name());
 
 	int i = 0;
 	for (; i < combo_->count(); ++i) {
-		if (name == combo_->text(i).latin1())
+		if (name == combo_->text(i))
 			break;
 	}
 
 	if (i == combo_->count()) {
 		lyxerr << "Trying to select non existent layout type "
-			<< name << endl;
+			<< fromqstr(name) << endl;
 		return;
 	}
 
@@ -197,7 +198,7 @@ void Toolbar::Pimpl::updateLayoutList(bool force)
 	for (; cit != end; ++cit) {
 		// ignore obsolete entries
 		if ((*cit)->obsoleted_by().empty())
-			combo_->insertItem(_((*cit)->name()).c_str());
+			combo_->insertItem(qt_((*cit)->name()));
 	}
 
 	// needed to recalculate size hint
@@ -249,7 +250,7 @@ void Toolbar::Pimpl::add(int action)
 	default: {
 		QToolButton * tb =
 			new QToolButton(getIconPixmap(action),
-			_(lyxaction.helpText(action)).c_str(), "",
+			qt_(lyxaction.helpText(action)), "",
 			proxy_.get(), SLOT(button_selected()), toolbars_.back());
 
 		map_[tb] = action;

@@ -15,7 +15,7 @@
 #endif
 
 #include "support/filetools.h"
-#include "gettext.h"
+#include "qt_helpers.h"
 #include "debug.h"
 
 #include "QMath.h"
@@ -78,18 +78,18 @@ QDelimiterDialog::QDelimiterDialog(QMath * form)
 	: QDelimiterDialogBase(0, 0, false, 0),
 	form_(form)
 {
-	setCaption(_("LyX: Delimiters"));
+	setCaption(qt_("LyX: Delimiters"));
 
 	for (int i = 0; *delim[i]; ++i) {
 		string xpm(find_xpm(delim[i]));
-		leftIP->add(QPixmap(xpm.c_str()), delim[i], delim[i]);
-		rightIP->add(QPixmap(xpm.c_str()), delim[i], delim[i]);
+		leftIP->add(QPixmap(toqstr(xpm)), delim[i], delim[i]);
+		rightIP->add(QPixmap(toqstr(xpm)), delim[i], delim[i]);
 	}
 
 	string empty_xpm(find_xpm("empty"));
 
-	leftIP->add(QPixmap(empty_xpm.c_str()), "empty", "empty");
-	rightIP->add(QPixmap(empty_xpm.c_str()), "empty", "empty");
+	leftIP->add(QPixmap(toqstr(empty_xpm)), "empty", "empty");
+	rightIP->add(QPixmap(toqstr(empty_xpm)), "empty", "empty");
 	connect(leftIP, SIGNAL(button_clicked(const string &)), this, SLOT(ldelim_clicked(const string &)));
 	connect(rightIP, SIGNAL(button_clicked(const string &)), this, SLOT(rdelim_clicked(const string &)));
 	ldelim_clicked("(");
@@ -106,7 +106,7 @@ void QDelimiterDialog::insertClicked()
 void QDelimiterDialog::set_label(QLabel * label, string const & str)
 {
 	label->setUpdatesEnabled(false);
-	label->setPixmap(QPixmap(find_xpm(str).c_str()));
+	label->setPixmap(QPixmap(toqstr(find_xpm(str))));
 	label->setUpdatesEnabled(true);
 	label->update();
 }

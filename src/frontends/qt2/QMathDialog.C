@@ -15,7 +15,7 @@
 #endif
 
 #include "support/filetools.h"
-#include "gettext.h"
+#include "qt_helpers.h"
 #include "debug.h"
 
 #include "ControlMath.h"
@@ -116,48 +116,48 @@ QMathDialog::QMathDialog(QMath * form)
 	connect(symbolsWS, SIGNAL(aboutToShow(int)), this, SLOT(showingPanel(int)));
 
 	QPopupMenu * m = new QPopupMenu(spacePB);
-	m->setCaption(_("LyX: Insert space"));
+	m->setCaption(qt_("LyX: Insert space"));
 	m->insertTearOffHandle();
-	m->insertItem(_("Thin space	\\,"), 1);
-	m->insertItem(_("Medium space	\\:"), 2);
-	m->insertItem(_("Thick space	\\;"), 3);
-	m->insertItem(_("Quadratin space	\\quad"), 4);
-	m->insertItem(_("Double quadratin space	\\qquad"), 5);
-	m->insertItem(_("Negative space	\\!"), 6);
+	m->insertItem(qt_("Thin space	\\,"), 1);
+	m->insertItem(qt_("Medium space	\\:"), 2);
+	m->insertItem(qt_("Thick space	\\;"), 3);
+	m->insertItem(qt_("Quadratin space	\\quad"), 4);
+	m->insertItem(qt_("Double quadratin space	\\qquad"), 5);
+	m->insertItem(qt_("Negative space	\\!"), 6);
 	connect(m, SIGNAL(activated(int)), this, SLOT(insertSpace(int)));
 	spacePB->setPopup(m);
 
 	m = new QPopupMenu(sqrtPB);
-	m->setCaption(_("LyX: Insert root"));
+	m->setCaption(qt_("LyX: Insert root"));
 	m->insertTearOffHandle();
-	m->insertItem(_("Square root	\\sqrt"), 1);
-	m->insertItem(_("Cube root	\\root"), 2);
-	m->insertItem(_("Other root	\\root"), 3);
+	m->insertItem(qt_("Square root	\\sqrt"), 1);
+	m->insertItem(qt_("Cube root	\\root"), 2);
+	m->insertItem(qt_("Other root	\\root"), 3);
 	connect(m, SIGNAL(activated(int)), this, SLOT(insertRoot(int)));
 	sqrtPB->setPopup(m);
 
 	m = new QPopupMenu(stylePB);
-	m->setCaption(_("LyX: Set math style"));
+	m->setCaption(qt_("LyX: Set math style"));
 	m->insertTearOffHandle();
-	m->insertItem(_("Display style	\\displaystyle"), 1);
-	m->insertItem(_("Normal text style	\\textstyle"), 2);
-	m->insertItem(_("Script (small) style	\\scriptstyle"), 3);
-	m->insertItem(_("Scriptscript (smaller) style	\\scriptscriptstyle"), 4);
+	m->insertItem(qt_("Display style	\\displaystyle"), 1);
+	m->insertItem(qt_("Normal text style	\\textstyle"), 2);
+	m->insertItem(qt_("Script (small) style	\\scriptstyle"), 3);
+	m->insertItem(qt_("Scriptscript (smaller) style	\\scriptscriptstyle"), 4);
 	connect(m, SIGNAL(activated(int)), this, SLOT(insertStyle(int)));
 	stylePB->setPopup(m);
 
 	m = new QPopupMenu(fontPB);
-	m->setCaption(_("LyX: Set math font"));
+	m->setCaption(qt_("LyX: Set math font"));
 	m->insertTearOffHandle();
-	m->insertItem(_("Roman	\\mathrm"), 1);
-	m->insertItem(_("Bold	\\mathbf"), 2);
-	m->insertItem(_("San serif	\\mathsf"), 3);
-	m->insertItem(_("Italic	\\mathit"), 4);
-	m->insertItem(_("Typewriter	\\mathtt"), 5);
-	m->insertItem(_("Blackboard	\\mathbb"), 6);
-	m->insertItem(_("Fraktur	\\mathfrak"), 7);
-	m->insertItem(_("Calligraphic	\\mathcal"), 8);
-	m->insertItem(_("Normal text mode	\\textrm"), 9);
+	m->insertItem(qt_("Roman	\\mathrm"), 1);
+	m->insertItem(qt_("Bold	\\mathbf"), 2);
+	m->insertItem(qt_("San serif	\\mathsf"), 3);
+	m->insertItem(qt_("Italic	\\mathit"), 4);
+	m->insertItem(qt_("Typewriter	\\mathtt"), 5);
+	m->insertItem(qt_("Blackboard	\\mathbb"), 6);
+	m->insertItem(qt_("Fraktur	\\mathfrak"), 7);
+	m->insertItem(qt_("Calligraphic	\\mathcal"), 8);
+	m->insertItem(qt_("Normal text mode	\\textrm"), 9);
 	connect(m, SIGNAL(activated(int)), this, SLOT(insertFont(int)));
 	fontPB->setPopup(m);
 }
@@ -181,7 +181,7 @@ IconPalette * QMathDialog::makePanel(QWidget * parent, char const ** entries)
 {
 	IconPalette * p = new IconPalette(parent);
 	for (int i = 0; *entries[i]; ++i) {
-		p->add(QPixmap(find_xpm(entries[i]).c_str()), entries[i], string("\\") + entries[i]);
+		p->add(QPixmap(toqstr(find_xpm(entries[i]))), entries[i], string("\\") + entries[i]);
 	}
 	connect(p, SIGNAL(button_clicked(const string &)), this, SLOT(symbol_clicked(const string &)));
 
@@ -222,8 +222,8 @@ void QMathDialog::expandClicked()
 	int const id = symbolsWS->id(symbolsWS->visibleWidget());
 	IconPalette * p = makePanel(0, panels[id]);
 	string s = "LyX: ";
-	s += symbolsCO->text(id).latin1();
-	p->setCaption(s.c_str());
+	s += fromqstr(symbolsCO->text(id));
+	p->setCaption(toqstr(s));
 	p->resize(40 * 5, p->height());
 	p->show();
 	p->setMaximumSize(p->width(), p->height());
@@ -232,7 +232,7 @@ void QMathDialog::expandClicked()
 
 void QMathDialog::functionSelected(const QString & str)
 {
-	form_->insert(str.latin1());
+	form_->insert(fromqstr(str));
 }
 
 

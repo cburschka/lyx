@@ -15,7 +15,7 @@
 #endif
 
 #include "ControlIndex.h"
-#include "gettext.h"
+#include "qt_helpers.h"
 
 #include "QIndexDialog.h"
 #include "QIndex.h"
@@ -27,7 +27,7 @@ typedef Qt2CB<ControlIndex, Qt2DB<QIndexDialog> > base_class;
 
 
 QIndex::QIndex()
-	: base_class(_("Index"))
+	: base_class(qt_("Index"))
 {
 }
 
@@ -44,13 +44,13 @@ void QIndex::build_dialog()
 
 void QIndex::update_contents()
 {
-	dialog_->keywordED->setText(controller().params().getContents().c_str());
+	dialog_->keywordED->setText(toqstr(controller().params().getContents()));
 }
 
 
 void QIndex::apply()
 {
-	controller().params().setContents(dialog_->keywordED->text().latin1());
+	controller().params().setContents(fromqstr(dialog_->keywordED->text()));
 }
 
 

@@ -17,6 +17,7 @@
 #include "debug.h"
 
 #include "iconpalette.h"
+#include "qt_helpers.h"
 
 #include <qlayout.h>
 #include <qpushbutton.h>
@@ -47,7 +48,7 @@ void IconPalette::add(QPixmap const & pixmap, string name, string tooltip)
 	QPushButton * p = new QPushButton(this);
 	p->setFixedSize(button_size, button_size);
 	p->setPixmap(pixmap);
-	QToolTip::add(p, tooltip.c_str());
+	QToolTip::add(p, toqstr(tooltip));
 	connect(p, SIGNAL(clicked()), this, SLOT(clicked()));
 	buttons_.push_back(make_pair(p, name));
 }

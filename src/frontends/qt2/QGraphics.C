@@ -25,7 +25,7 @@
 #include "insets/insetgraphicsParams.h"
 #include "lyxrc.h"
 #include "lengthcombo.h"
-#include "gettext.h"
+#include "qt_helpers.h"
 #include "lengthcommon.h"
 #include "lyxlength.h"
 #include "debug.h"
@@ -50,7 +50,7 @@ typedef Qt2CB<ControlGraphics, Qt2DB<QGraphicsDialog> > base_class;
 
 
 QGraphics::QGraphics()
-	: base_class(_("Graphics"))
+	: base_class(qt_("Graphics"))
 {
 }
 
@@ -132,10 +132,10 @@ void QGraphics::update_contents()
 	dialog_->rtYunit->clear();
 	for (vector<string>::const_iterator it = bb_units.begin();
 	    it != bb_units.end(); ++it) {
-		dialog_->lbXunit->insertItem((*it).c_str(), -1);
-		dialog_->lbYunit->insertItem((*it).c_str(), -1);
-		dialog_->rtXunit->insertItem((*it).c_str(), -1);
-		dialog_->rtYunit->insertItem((*it).c_str(), -1);
+		dialog_->lbXunit->insertItem(toqstr(*it), -1);
+		dialog_->lbYunit->insertItem(toqstr(*it), -1);
+		dialog_->rtXunit->insertItem(toqstr(*it), -1);
+		dialog_->rtYunit->insertItem(toqstr(*it), -1);
 	}
 
 	InsetGraphicsParams & igp = controller().params();
@@ -159,16 +159,16 @@ void QGraphics::update_contents()
 			break;
 	}
 
-	dialog_->filename->setText(igp.filename.c_str());
+	dialog_->filename->setText(toqstr(igp.filename));
 
 	// set the bounding box values
 	if (igp.bb.empty()) {
 		string const bb = controller().readBB(igp.filename);
 		// the values from the file always have the bigpoint-unit bp
-		dialog_->lbX->setText(token(bb, ' ', 0).c_str());
-		dialog_->lbY->setText(token(bb, ' ', 1).c_str());
-		dialog_->rtX->setText(token(bb, ' ', 2).c_str());
-		dialog_->rtY->setText(token(bb, ' ', 3).c_str());
+		dialog_->lbX->setText(toqstr(token(bb, ' ', 0)));
+		dialog_->lbY->setText(toqstr(token(bb, ' ', 1)));
+		dialog_->rtX->setText(toqstr(token(bb, ' ', 2)));
+		dialog_->rtY->setText(toqstr(token(bb, ' ', 3)));
 		dialog_->lbXunit->setCurrentItem(0);
 		dialog_->lbYunit->setCurrentItem(0);
 		dialog_->rtXunit->setCurrentItem(0);
@@ -182,32 +182,32 @@ void QGraphics::update_contents()
 		string const xr(token(igp.bb, ' ', 2));
 		string const yr(token(igp.bb, ' ', 3));
 		if (isValidLength(xl, &anyLength)) {
-			dialog_->lbX->setText(tostr(anyLength.value()).c_str());
+			dialog_->lbX->setText(toqstr(tostr(anyLength.value())));
 			string const unit(unit_name[anyLength.unit()]);
 			dialog_->lbXunit->setCurrentItem(getItemNo(bb_units, unit));
 		} else {
-			dialog_->lbX->setText(xl.c_str());
+			dialog_->lbX->setText(toqstr(xl));
 		}
 		if (isValidLength(yl, &anyLength)) {
-			dialog_->lbY->setText(tostr(anyLength.value()).c_str());
+			dialog_->lbY->setText(toqstr(tostr(anyLength.value())));
 			string const unit(unit_name[anyLength.unit()]);
 			dialog_->lbYunit->setCurrentItem(getItemNo(bb_units, unit));
 		} else {
-			dialog_->lbY->setText(xl.c_str());
+			dialog_->lbY->setText(toqstr(xl));
 		}
 		if (isValidLength(xr, &anyLength)) {
-			dialog_->rtX->setText(tostr(anyLength.value()).c_str());
+			dialog_->rtX->setText(toqstr(tostr(anyLength.value())));
 			string const unit(unit_name[anyLength.unit()]);
 			dialog_->rtXunit->setCurrentItem(getItemNo(bb_units, unit));
 		} else {
-			dialog_->rtX->setText(xl.c_str());
+			dialog_->rtX->setText(toqstr(xl));
 		}
 		if (isValidLength(yr, &anyLength)) {
-			dialog_->rtY->setText(tostr(anyLength.value()).c_str());
+			dialog_->rtY->setText(toqstr(tostr(anyLength.value())));
 			string const unit(unit_name[anyLength.unit()]);
 			dialog_->rtYunit->setCurrentItem(getItemNo(bb_units, unit));
 		} else {
-			dialog_->rtY->setText(xl.c_str());
+			dialog_->rtY->setText(toqstr(xl));
 		}
 		controller().bbChanged = true;
 	}
@@ -219,7 +219,7 @@ void QGraphics::update_contents()
 
 	// Update the subcaption check button and input field
 	dialog_->subfigure->setChecked(igp.subcaption);
-	dialog_->subcaption->setText(igp.subcaptionText.c_str());
+	dialog_->subcaption->setText(toqstr(igp.subcaptionText));
 
 	int item = 0;
 	switch (igp.display) {
@@ -233,7 +233,7 @@ void QGraphics::update_contents()
 	dialog_->showCB->setEnabled(igp.display != grfx::NoDisplay && !readOnly());
 	dialog_->displayCB->setChecked(igp.display != grfx::NoDisplay);
 	dialog_->displayscale->setEnabled(igp.display != grfx::NoDisplay && !readOnly());
-	dialog_->displayscale->setText(tostr(igp.lyxscale).c_str());
+	dialog_->displayscale->setText(toqstr(tostr(igp.lyxscale)));
 
 	//// the output section (width/height)
 	// set the length combo boxes
@@ -241,17 +241,17 @@ void QGraphics::update_contents()
 	// units are defined in lengthcommon.C
 	// 1. the width (a listttype)
 	dialog_->widthUnit->clear();
-	dialog_->widthUnit->insertItem(_("Scale%"));
+	dialog_->widthUnit->insertItem(qt_("Scale%"));
 	for (int i = 0; i < num_units; i++)
 		dialog_->widthUnit->insertItem(unit_name_gui[i], -1);
 
 	if (!lyx::float_equal(igp.scale, 0.0, 0.05)) {
 		// there is a scale value > 0.05
-		dialog_->width->setText(tostr(igp.scale).c_str());
+		dialog_->width->setText(toqstr(tostr(igp.scale)));
 		dialog_->widthUnit->setCurrentItem(0);
 	} else {
 		// no scale means default width/height
-		dialog_->width->setText(tostr(igp.width.value()).c_str());
+		dialog_->width->setText(toqstr(tostr(igp.width.value())));
 		// the width cannot have a unitDefault, because
 		// it is a "Scale%" or another user defined unit!
 		// +1 instead of the "Scale%" option
@@ -259,7 +259,7 @@ void QGraphics::update_contents()
 		dialog_->widthUnit->setCurrentItem(unit_ + 1);
 	}
 	// 2. the height (a lengthgcombo type)
-	dialog_->height->setText(tostr(igp.height.value()).c_str());
+	dialog_->height->setText(toqstr(tostr(igp.height.value())));
 	LyXLength::UNIT unit_ = (igp.height.value() > 0.0) ?
 		igp.height.unit() : unitDefault;
 	dialog_->heightUnit->setCurrentItem(unit_);
@@ -271,7 +271,7 @@ void QGraphics::update_contents()
 
 	dialog_->aspectratio->setChecked(igp.keepAspectRatio);
 
-	dialog_->angle->setText(tostr(igp.rotateAngle).c_str());
+	dialog_->angle->setText(toqstr(tostr(igp.rotateAngle)));
 
 	dialog_->origin->clear();
 
@@ -282,7 +282,7 @@ void QGraphics::update_contents()
 
 	for (vector<string>::const_iterator it = origin_lang.begin();
 	    it != origin_lang.end(); ++it)
-		dialog_->origin->insertItem((*it).c_str(), -1);
+		dialog_->origin->insertItem(toqstr(*it), -1);
 
 	if (!igp.rotateOrigin.empty())
 		dialog_->origin->setCurrentItem(
@@ -291,7 +291,7 @@ void QGraphics::update_contents()
 		dialog_->origin->setCurrentItem(0);
 
 	//// latex section
-	dialog_->latexoptions->setText(igp.special.c_str());
+	dialog_->latexoptions->setText(toqstr(igp.special));
 }
 
 
@@ -299,16 +299,16 @@ void QGraphics::apply()
 {
 	InsetGraphicsParams & igp = controller().params();
 
-	igp.filename = dialog_->filename->text().latin1();
+	igp.filename = fromqstr(dialog_->filename->text());
 
 	// the bb section
 	igp.bb.erase();
 	if (controller().bbChanged) {
 		string bb;
-		string lbX(dialog_->lbX->text().latin1());
-		string lbY(dialog_->lbY->text().latin1());
-		string rtX(dialog_->rtX->text().latin1());
-		string rtY(dialog_->rtY->text().latin1());
+		string lbX(fromqstr(dialog_->lbX->text()));
+		string lbY(fromqstr(dialog_->lbY->text()));
+		string rtX(fromqstr(dialog_->rtX->text()));
+		string rtY(fromqstr(dialog_->rtY->text()));
 		int bb_sum =
 			strToInt(lbX) + strToInt(lbY) +
 			strToInt(rtX) + strToInt(rtX);
@@ -316,19 +316,19 @@ void QGraphics::apply()
 			if (lbX.empty())
 				bb = "0 ";
 			else
-				bb = lbX + dialog_->lbXunit->currentText().latin1() + ' ';
+				bb = lbX + fromqstr(dialog_->lbXunit->currentText()) + ' ';
 			if (lbY.empty())
 				bb += "0 ";
 			else
-				bb += (lbY + dialog_->lbYunit->currentText().latin1() + ' ');
+				bb += (lbY + fromqstr(dialog_->lbYunit->currentText()) + ' ');
 			if (rtX.empty())
 				bb += "0 ";
 			else
-				bb += (rtX + dialog_->rtXunit->currentText().latin1() + ' ');
+				bb += (rtX + fromqstr(dialog_->rtXunit->currentText()) + ' ');
 			if (rtY.empty())
 				bb += '0';
 			else
-				bb += (rtY + dialog_->rtYunit->currentText().latin1());
+				bb += (rtY + fromqstr(dialog_->rtYunit->currentText()));
 			igp.bb = bb;
 		}
 	}
@@ -336,7 +336,7 @@ void QGraphics::apply()
 	igp.draft = dialog_->draftCB->isChecked();
 	igp.clip = dialog_->clip->isChecked();
 	igp.subcaption = dialog_->subfigure->isChecked();
-	igp.subcaptionText = dialog_->subcaption->text().latin1();
+	igp.subcaptionText = fromqstr(dialog_->subcaption->text());
 
 	switch (dialog_->showCB->currentItem()) {
 		case 0: igp.display = grfx::DefaultDisplay; break;
@@ -349,11 +349,11 @@ void QGraphics::apply()
 	if (!dialog_->displayCB->isChecked())
 		igp.display = grfx::NoDisplay;
 
-	string value(dialog_->width->text().latin1());
+	string value(fromqstr(dialog_->width->text()));
 	if (dialog_->widthUnit->currentItem() > 0) {
 		// width/height combination
 		int const unitNo = getUnitNo(unit_name_gui,
-			dialog_->widthUnit->currentText().latin1());
+			fromqstr(dialog_->widthUnit->currentText()));
 		igp.width = LyXLength(value + unit_name_ltx[unitNo]);
 		igp.scale = 0.0;
 	} else {
@@ -361,18 +361,18 @@ void QGraphics::apply()
 		igp.scale = strToDbl(value);
 		igp.width = LyXLength();
 	}
-	value = dialog_->height->text().latin1();
+	value = fromqstr(dialog_->height->text());
 	int const unitNo = getUnitNo(unit_name_gui,
-		dialog_->heightUnit->currentText().latin1());
+		fromqstr(dialog_->heightUnit->currentText()));
 	igp.height = LyXLength(value + unit_name_ltx[unitNo]);
 
 	igp.keepAspectRatio = dialog_->aspectratio->isChecked();
 
 	igp.noUnzip = dialog_->unzipCB->isChecked();
 
-	igp.lyxscale = strToInt(dialog_->displayscale->text().latin1());
+	igp.lyxscale = strToInt(fromqstr(dialog_->displayscale->text()));
 
-	igp.rotateAngle = strToDbl(dialog_->angle->text().latin1());
+	igp.rotateAngle = strToDbl(fromqstr(dialog_->angle->text()));
 	while (igp.rotateAngle < -360.0)
 		igp.rotateAngle += 360.0;
 	while (igp.rotateAngle >  360.0)
@@ -384,20 +384,20 @@ void QGraphics::apply()
 		QGraphics::origin_ltx[dialog_->origin->currentItem()];
 
 	// more latex options
-	igp.special = dialog_->latexoptions->text().latin1();
+	igp.special = fromqstr(dialog_->latexoptions->text());
 }
 
 
 void QGraphics::getBB()
 {
-	string const filename(dialog_->filename->text().latin1());
+	string const filename(fromqstr(dialog_->filename->text()));
 	if (!filename.empty()) {
 		string const bb(controller().readBB(filename));
 		if (!bb.empty()) {
-			dialog_->lbX->setText(token(bb, ' ', 0).c_str());
-			dialog_->lbY->setText(token(bb, ' ', 1).c_str());
-			dialog_->rtX->setText(token(bb, ' ', 2).c_str());
-			dialog_->rtY->setText(token(bb, ' ', 3).c_str());
+			dialog_->lbX->setText(toqstr(token(bb, ' ', 0)));
+			dialog_->lbY->setText(toqstr(token(bb, ' ', 1)));
+			dialog_->rtX->setText(toqstr(token(bb, ' ', 2)));
+			dialog_->rtY->setText(toqstr(token(bb, ' ', 3)));
 			// the default units for the bb values when reading
 			// it from the file
 			dialog_->lbXunit->setCurrentItem(0);
@@ -412,5 +412,5 @@ void QGraphics::getBB()
 
 bool QGraphics::isValid()
 {
-	return !string(dialog_->filename->text().latin1()).empty();
+	return !dialog_->filename->text().isEmpty();
 }

@@ -18,6 +18,8 @@
 
 #include "frontends/Toolbar.h"
 
+#include "qt_helpers.h"
+
 #include <boost/scoped_ptr.hpp>
 #include <map>
 #include <vector>
@@ -80,7 +82,7 @@ public:
 public slots:
 
 	void layout_selected(const QString & str) {
-		owner_.changed_layout(str.latin1());
+		owner_.changed_layout(fromqstr(str));
 	}
 
 	void button_selected() {

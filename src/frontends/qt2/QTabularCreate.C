@@ -18,7 +18,7 @@
 #include "QTabularCreateDialog.h"
 #include "QTabularCreate.h"
 #include "Qt2BC.h"
-#include "gettext.h"
+#include "qt_helpers.h"
 #include "debug.h"
 
 #include <qspinbox.h>
@@ -28,7 +28,7 @@ typedef Qt2CB<ControlTabularCreate, Qt2DB<QTabularCreateDialog> > base_class;
 
 
 QTabularCreate::QTabularCreate()
-	: base_class(_("Insert table"))
+	: base_class(qt_("Insert table"))
 {
 }
 

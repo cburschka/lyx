@@ -14,7 +14,7 @@
 #pragma implementation
 #endif
 
-#include "gettext.h"
+#include "qt_helpers.h"
 #include "ControlExternal.h"
 
 #include <qwidget.h>
@@ -84,11 +84,11 @@ void QExternalDialog::browseClicked()
 {
 	QString file =
 		QFileDialog::getOpenFileName(QString::null,
-					     _("External material (*)"),
+					     qt_("External material (*)"),
 					     this, 0,
-					     _("Select external material"));
+					     qt_("Select external material"));
 	if (!file.isNull()) {
-		fileED->setText(file.latin1());
+		fileED->setText(file);
 		form_->changed();
 	}
 }
@@ -96,7 +96,7 @@ void QExternalDialog::browseClicked()
 
 void QExternalDialog::templateChanged()
 {
-	externalTV->setText(form_->helpText().c_str());
+	externalTV->setText(toqstr(form_->helpText()));
 
 	updatePB->setEnabled(!form_->controller().params().templ.automaticProduction);
 	form_->changed();

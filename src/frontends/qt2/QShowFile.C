@@ -15,7 +15,7 @@
 #endif
 
 #include "ControlShowFile.h"
-#include "gettext.h"
+#include "qt_helpers.h"
 
 #include "QShowFile.h"
 #include "QShowFileDialog.h"
@@ -28,7 +28,7 @@ typedef Qt2CB<ControlShowFile, Qt2DB<QShowFileDialog> > base_class;
 
 
 QShowFile::QShowFile()
-	: base_class(_("ShowFile"))
+	: base_class(qt_("ShowFile"))
 {
 }
 
@@ -43,12 +43,12 @@ void QShowFile::build_dialog()
 
 void QShowFile::update_contents()
 {
-	dialog_->setName(controller().getFileName().c_str());
+	dialog_->setName(toqstr(controller().getFileName()));
 
 	string contents = controller().getFileContents();
 	if (contents.empty()) {
 		contents = "Error -> Cannot load file!";
 	}
 
-	dialog_->text->setText(contents.c_str());
+	dialog_->text->setText(toqstr(contents));
 }

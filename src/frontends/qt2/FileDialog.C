@@ -19,7 +19,7 @@
 #include "frontends/FileDialog.h"
 #include "FileDialog_private.h"
 #include "debug.h"
-#include "gettext.h"
+#include "qt_helpers.h"
 
 #include <qapplication.h>
 
@@ -57,7 +57,7 @@ FileDialog::Result const FileDialog::save(string const & path,
 {
 	string filter(mask);
 	if (mask.empty())
-		filter = _("All files (*)");
+		filter = qt_("All files (*)");
 
 	LyXFileDialog dlg(path, filter, title_, private_->b1, private_->b2);
 	lyxerr[Debug::GUI] << "Select with path \"" << path
@@ -67,7 +67,7 @@ FileDialog::Result const FileDialog::save(string const & path,
 	dlg.setMode(QFileDialog::AnyFile);
 
 	if (!suggested.empty())
-		dlg.setSelection(suggested.c_str());
+		dlg.setSelection(toqstr(suggested));
 
 	FileDialog::Result result;
 	lyxerr[Debug::GUI] << "Synchronous FileDialog : " << endl;
@@ -87,7 +87,7 @@ FileDialog::Result const FileDialog::open(string const & path,
 {
 	string filter(mask);
 	if (mask.empty())
-		filter = _("*|All files");
+		filter = qt_("*|All files");
 
 	LyXFileDialog dlg(path, filter, title_, private_->b1, private_->b2);
 	lyxerr[Debug::GUI] << "Select with path \"" << path
@@ -95,7 +95,7 @@ FileDialog::Result const FileDialog::open(string const & path,
 			   << "\", suggested \"" << suggested << endl;
 
 	if (!suggested.empty())
-		dlg.setSelection(suggested.c_str());
+		dlg.setSelection(toqstr(suggested));
 
 	FileDialog::Result result;
 	lyxerr[Debug::GUI] << "Synchronous FileDialog : " << endl;

@@ -16,7 +16,7 @@
 
 #include <vector>
 #include "ControlSendto.h"
-#include "gettext.h"
+#include "qt_helpers.h"
 #include "debug.h"
 
 #include "converter.h"

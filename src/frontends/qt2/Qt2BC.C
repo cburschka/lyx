@@ -17,6 +17,7 @@
 
 #include "Qt2BC.h"
 #include "debug.h"
+#include "qt_helpers.h"
 
 #include <qbutton.h>
 #include <qlineedit.h>
@@ -51,5 +52,5 @@ void Qt2BC::setWidgetEnabled(QWidget * obj, bool enabled)
 
 void Qt2BC::setButtonLabel(QButton * obj, string const & label)
 {
-	obj->setText(label.c_str());
+	obj->setText(toqstr(label));
 }

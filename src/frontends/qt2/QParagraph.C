@@ -20,7 +20,7 @@
 #include "Qt2BC.h"
 #include "ParagraphParameters.h"
 #include "lyxrc.h" // to set the deafult length values
-#include "gettext.h"
+#include "qt_helpers.h"
 #include "layout.h" // LyXAlignment
 #include "helper_funcs.h"
 #include "lyxgluelength.h"
@@ -46,7 +46,7 @@ typedef Qt2CB<ControlParagraph, Qt2DB<QParagraphDialog> > base_class;
 
 
 QParagraph::QParagraph()
-	: base_class(_("Paragraph Layout"))
+	: base_class(qt_("Paragraph Layout"))
 {}
 
 
@@ -65,8 +65,8 @@ void QParagraph::build_dialog()
 
 	for (vector<string>::const_iterator it = units_.begin();
 		it != units_.end(); ++it) {
-		dialog_->unitAbove->insertItem(it->c_str());
-		dialog_->unitBelow->insertItem(it->c_str());
+		dialog_->unitAbove->insertItem(toqstr(*it));
+		dialog_->unitBelow->insertItem(toqstr(*it));
 	}
 
 	// Manage the ok, apply, restore and cancel/close buttons
@@ -141,8 +141,8 @@ void QParagraph::apply()
 
 	VSpace const space_top =
 		setVSpaceFromWidgets(dialog_->spacingAbove->currentItem(),
-				     dialog_->valueAbove->text().latin1(),
-				     dialog_->unitAbove->currentText().latin1(),
+				     fromqstr(dialog_->valueAbove->text()),
+				     fromqstr(dialog_->unitAbove->currentText()),
 				     dialog_->keepAbove->isChecked());
 
 	params.spaceTop(space_top);
@@ -154,8 +154,8 @@ void QParagraph::apply()
 
 	VSpace const space_bottom =
 	setVSpaceFromWidgets(dialog_->spacingBelow->currentItem(),
-			     dialog_->valueBelow->text().latin1(),
-			     dialog_->unitBelow->currentText().latin1(),
+			     fromqstr(dialog_->valueBelow->text()),
+			     fromqstr(dialog_->unitBelow->currentText()),
 			     dialog_->keepBelow->isChecked());
 
 	params.spaceBottom(space_bottom);
@@ -198,7 +198,7 @@ void QParagraph::apply()
 		break;
 	case 4:
 		linespacing = Spacing::Other;
-		other = dialog_->linespacingValue->text().latin1();
+		other = fromqstr(dialog_->linespacingValue->text());
 		break;
 	}
 
@@ -211,7 +211,7 @@ void QParagraph::apply()
 	params.pagebreakTop(dialog_->pagebreakAbove->isChecked());
 	params.pagebreakBottom(dialog_->pagebreakBelow->isChecked());
 	// label width
-	params.labelWidthString(dialog_->labelWidth->text().latin1());
+	params.labelWidthString(fromqstr(dialog_->labelWidth->text()));
 	// indendation
 	params.noindent(dialog_->noindent->isChecked());
 
@@ -281,7 +281,7 @@ void setWidgetsFromVSpace(VSpace const & space,
 			}
 			i += 1;
 		}
-		value->setText(length.c_str());
+		value->setText(toqstr(length));
 		unit->setCurrentItem(unit_item);
 		break;
 	}
@@ -298,7 +298,8 @@ void QParagraph::update_contents()
 
 	// label width
 	string const & labelwidth = params.labelWidthString();
-	dialog_->labelWidth->setText(labelwidth.c_str());
+	dialog_->labelWidth->setText(toqstr(labelwidth));
+	// _() is correct here (this is stupid though !)
 	dialog_->labelwidthGB->setEnabled(
 		labelwidth != _("Senseless with this layout!"));
 
@@ -358,7 +359,7 @@ void QParagraph::update_contents()
 	dialog_->linespacing->setCurrentItem(linespacing);
 	if (space.getSpace() == Spacing::Other) {
 		string const sp = tostr(space.getValue());
-		dialog_->linespacingValue->setText(sp.c_str());
+		dialog_->linespacingValue->setText(toqstr(sp));
 		dialog_->linespacingValue->setEnabled(true);
 	} else {
 		dialog_->linespacingValue->setText("");

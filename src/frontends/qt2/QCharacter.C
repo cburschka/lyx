@@ -20,7 +20,7 @@
 #include "QCharacter.h"
 #include "Qt2BC.h"
 
-#include "gettext.h"
+#include "qt_helpers.h"
 #include "support/lstrings.h"
 
 #include <qcombobox.h>
@@ -36,7 +36,7 @@ typedef Qt2CB<ControlCharacter, Qt2DB<QCharacterDialog> > base_class;
 
 
 QCharacter::QCharacter()
-	: base_class(_("Character"))
+	: base_class(qt_("Character"))
 {
 }
 
@@ -55,32 +55,32 @@ void QCharacter::build_dialog()
 
 	for (vector<FamilyPair>::const_iterator cit = family.begin();
 		cit != family.end(); ++cit) {
-		dialog_->familyCO->insertItem(cit->first.c_str(), -1);
+		dialog_->familyCO->insertItem(toqstr(cit->first), -1);
 	}
 
 	for (vector<SeriesPair>::const_iterator cit = series.begin();
 		cit != series.end(); ++cit) {
-		dialog_->seriesCO->insertItem(cit->first.c_str(), -1);
+		dialog_->seriesCO->insertItem(toqstr(cit->first), -1);
 	}
 	for (vector<ShapePair>::const_iterator cit = shape.begin();
 		cit != shape.end(); ++cit) {
-		dialog_->shapeCO->insertItem(cit->first.c_str(), -1);
+		dialog_->shapeCO->insertItem(toqstr(cit->first), -1);
 	}
 	for (vector<SizePair>::const_iterator cit = size.begin();
 		cit != size.end(); ++cit) {
-		dialog_->sizeCO->insertItem(cit->first.c_str(), -1);
+		dialog_->sizeCO->insertItem(toqstr(cit->first), -1);
 	}
 	for (vector<BarPair>::const_iterator cit = bar.begin();
 		cit != bar.end(); ++cit) {
-		dialog_->miscCO->insertItem(cit->first.c_str(), -1);
+		dialog_->miscCO->insertItem(toqstr(cit->first), -1);
 	}
 	for (vector<ColorPair>::const_iterator cit = color.begin();
 		cit != color.end(); ++cit) {
-		dialog_->colorCO->insertItem(cit->first.c_str(), -1);
+		dialog_->colorCO->insertItem(toqstr(cit->first), -1);
 	}
 	for (vector<LanguagePair>::const_iterator cit = language.begin();
 		cit != language.end(); ++cit) {
-		dialog_->langCO->insertItem(cit->first.c_str(), -1);
+		dialog_->langCO->insertItem(toqstr(cit->first), -1);
 	}
 
 	bc().setOK(dialog_->okPB);

@@ -9,7 +9,7 @@
  */
 
 #include <config.h>
-#include "gettext.h"
+#include "qt_helpers.h"
 
 #ifdef __GNUG__
 #pragma implementation
@@ -73,22 +73,22 @@ BulletsModule::BulletsModule(QWidget * parent,  char const * name, WFlags fl)
 	// insert pixmaps
 	string bmfile;
 	bmfile = LibFileSearch("images", "standard", "xpm");
-	standard_->insertItem(QPixmap(bmfile.c_str()));
+	standard_->insertItem(QPixmap(toqstr(bmfile)));
 
 	bmfile = LibFileSearch("images", "amssymb", "xpm");
-	maths_->insertItem(QPixmap(bmfile.c_str()));
+	maths_->insertItem(QPixmap(toqstr(bmfile)));
 
 	bmfile = LibFileSearch("images", "psnfss1", "xpm");
-	ding1_->insertItem(QPixmap(bmfile.c_str()));
+	ding1_->insertItem(QPixmap(toqstr(bmfile)));
 
 	bmfile = LibFileSearch("images", "psnfss2", "xpm");
-	ding2_->insertItem(QPixmap(bmfile.c_str()));
+	ding2_->insertItem(QPixmap(toqstr(bmfile)));
 
 	bmfile = LibFileSearch("images", "psnfss3", "xpm");
-	ding3_->insertItem(QPixmap(bmfile.c_str()));
+	ding3_->insertItem(QPixmap(toqstr(bmfile)));
 
 	bmfile = LibFileSearch("images", "psnfss4", "xpm");
-	ding4_->insertItem(QPixmap(bmfile.c_str()));
+	ding4_->insertItem(QPixmap(toqstr(bmfile)));
 
 	connect(standard_, SIGNAL(selected(int, int)),
 		this, SLOT(standard(int, int)));
@@ -181,8 +181,8 @@ void BulletsModule::setBullet(int font, int character)
 
 void BulletsModule::setBullet(string text)
 {
-	activeitem_->setPixmap(0,QPixmap());
-	activeitem_->setText(0,text.c_str());
+	activeitem_->setPixmap(0, QPixmap());
+	activeitem_->setText(0, toqstr(text));
 	
 	activebullet_->setText(text);
 }
@@ -256,13 +256,13 @@ void BulletsModule::setCustom()
 {
 	bool ok = FALSE;
 	QString text = QInputDialog::getText(
-		_( "Bullets" ),
-		_( "Enter a custom bullet" ),
+		qt_( "Bullets" ),
+		qt_( "Enter a custom bullet" ),
 		QLineEdit::Normal,
 		QString::null, &ok, this );
 	
 	activeitem_->setPixmap(0,QPixmap());
 	activeitem_->setText(0,text);
-	activebullet_->setText(text.latin1());
+	activebullet_->setText(fromqstr(text));
 	activebullet_->setFont(-1);
 }

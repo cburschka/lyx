@@ -15,7 +15,7 @@
 #endif
 
 #include "ControlError.h"
-#include "gettext.h"
+#include "qt_helpers.h"
 
 #include <qtextview.h>
 #include <qpushbutton.h>
@@ -28,7 +28,7 @@ typedef Qt2CB<ControlError, Qt2DB<QErrorDialog> > base_class;
 
 
 QError::QError()
-	: base_class(_("LaTeX Error"))
+	: base_class(qt_("LaTeX Error"))
 {
 }
 
@@ -43,5 +43,5 @@ void QError::build_dialog()
 
 void QError::update_contents()
 {
-	dialog_->errorTV->setText(controller().params().c_str());
+	dialog_->errorTV->setText(toqstr(controller().params()));
 }

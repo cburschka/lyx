@@ -15,7 +15,7 @@
 #pragma implementation
 #endif
 
-#include "gettext.h"
+#include "qt_helpers.h"
 #include "support/filetools.h"
 #include "support/lstrings.h"
 
@@ -52,9 +52,9 @@ void QLPrintDialog::browseClicked()
 {
 	QString file =
 		QFileDialog::getOpenFileName(QString::null,
-					     _("PostScript files (*.ps)"),
+					     qt_("PostScript files (*.ps)"),
 					     this, 0,
-					     _("Select a file to print to"));
+					     qt_("Select a file to print to"));
 	if (!file.isNull()) {
 		fileED->setText(file);
 		form_->changed();
@@ -86,8 +86,8 @@ void QLPrintDialog::printerChanged()
 
 void QLPrintDialog::pagerangeChanged()
 {
-	int const from = strToUnsignedInt(fromED->text().latin1());
-	int const to = strToUnsignedInt(toED->text().latin1());
+	int const from = strToUnsignedInt(fromqstr(fromED->text()));
+	int const to = strToUnsignedInt(fromqstr(toED->text()));
 
 	if (!toED->text().isEmpty() && from > to)
 		fromED->setText(toED->text());

@@ -15,7 +15,7 @@
 #endif
 
 #include "debug.h"
-#include "gettext.h"
+#include "qt_helpers.h"
 #include "support/lstrings.h"
 #include "LyXView.h"
 #include "ControlMinipage.h"
@@ -33,7 +33,7 @@ typedef Qt2CB<ControlMinipage, Qt2DB<QMinipageDialog> > base_class;
 
 
 QMinipage::QMinipage()
-	: base_class(_("Minipage"))
+	: base_class(qt_("Minipage"))
 {
 }
 
@@ -55,9 +55,9 @@ void QMinipage::build_dialog()
 
 void QMinipage::apply()
 {
-	double const value = strToDbl(dialog_->widthED->text().latin1());
+	double const value = strToDbl(fromqstr(dialog_->widthED->text()));
 	LyXLength::UNIT unit = dialog_->unitsLC->currentLengthItem();
-	if (string(dialog_->widthED->text().latin1()).empty())
+	if (dialog_->widthED->text().isEmpty())
 		unit = LyXLength::UNIT_NONE;
 
 	MinipageParams & params = controller().params();
@@ -96,7 +96,7 @@ void QMinipage::update_contents()
 	MinipageParams const & params = controller().params();
 
 	LyXLength len(params.pageWidth);
-	dialog_->widthED->setText(numtostr(len.value()).c_str());
+	dialog_->widthED->setText(toqstr(numtostr(len.value())));
 	dialog_->unitsLC->setCurrentItem(len.unit());
 	lyxerr << "width " << numtostr(len.value())
 	       << " units " << len.unit() << std::endl;

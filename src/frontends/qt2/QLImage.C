@@ -21,6 +21,7 @@
 #include "debug.h"
 #include "support/LAssert.h"
 #include "support/lyxfunctional.h"  // compare_memfun
+#include "qt_helpers.h"
 
 #include <qimage.h>
 #include <qwmatrix.h>
@@ -137,7 +138,7 @@ void QLImage::load(string const & filename)
 		return;
 	}
 
-	if (!pixmap_.load(filename.c_str())) {
+	if (!pixmap_.load(toqstr(filename))) {
 		lyxerr[Debug::GRAPHICS]
 			<< "Unable to open image" << endl;
 		finishedLoading(false);

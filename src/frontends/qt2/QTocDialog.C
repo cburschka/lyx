@@ -16,6 +16,7 @@
 
 #include "QToc.h"
 #include "QTocDialog.h"
+#include "qt_helpers.h"
 
 #include <qlistview.h>
 #include <qpushbutton.h>
@@ -49,7 +50,7 @@ void QTocDialog::depth_adaptor(int depth)
 
 void QTocDialog::select_adaptor(QListViewItem * item)
 {
-	form_->select(item->text(0).latin1());
+	form_->select(fromqstr(item->text(0)));
 }
 
 

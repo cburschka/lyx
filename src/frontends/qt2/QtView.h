@@ -73,10 +73,7 @@ private:
 	 * @param t main window title
 	 * @param it iconified (short) title
 	 */
-	virtual void setWindowTitle(string const & t, string const & it) {
-		setCaption(t.c_str());
-		setIconText(it.c_str());
-	}
+	virtual void setWindowTitle(string const & t, string const & it);
 
 	/// idle timer
 	QTimer idle_timer_;

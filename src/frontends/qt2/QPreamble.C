@@ -14,7 +14,7 @@
 #pragma implementation
 #endif
 
-#include "gettext.h"
+#include "qt_helpers.h"
 #include "LyXView.h"
 #include "ControlPreamble.h"
 
@@ -29,7 +29,7 @@ typedef Qt2CB<ControlPreamble, Qt2DB<QPreambleDialog> > base_class;
 
 
 QPreamble::QPreamble()
-	: base_class(_("LaTeX Preamble"))
+	: base_class(qt_("LaTeX Preamble"))
 {
 }
 
@@ -46,11 +46,11 @@ void QPreamble::build_dialog()
 
 void QPreamble::update_contents()
 {
-	dialog_->preambleLE->setText(controller().params().c_str());
+	dialog_->preambleLE->setText(toqstr(controller().params()));
 }
 
 
 void QPreamble::apply()
 {
-	controller().params(dialog_->preambleLE->text().latin1());
+	controller().params(fromqstr(dialog_->preambleLE->text()));
 }

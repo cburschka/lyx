@@ -35,6 +35,7 @@
 #include "QtView.h"
 #include "qfont_loader.h"
 #include "QCommandBuffer.h"
+#include "qt_helpers.h"
 
 #include <qapplication.h>
 #include <qpixmap.h>
@@ -84,7 +85,7 @@ QtView::QtView(unsigned int width, unsigned int height)
 	//  assign an icon to main form
 	string const iconname = LibFileSearch("images", "lyx", "xpm");
 	if (!iconname.empty())
-		setIcon(QPixmap(iconname.c_str()));
+		setIcon(QPixmap(toqstr(iconname)));
 
 	// make sure the buttons are disabled if needed
 	updateToolbar();
@@ -96,9 +97,16 @@ QtView::~QtView()
 }
 
 
+void QtView::setWindowTitle(string const & t, string const & it)
+{
+	setCaption(toqstr(t));
+	setIconText(toqstr(it));
+}
+
+
 void QtView::message(string const & str)
 {
-	statusBar()->message(str.c_str());
+	statusBar()->message(toqstr(str));
 	idle_timer_.stop();
 	idle_timer_.start(idle_timer_value);
 }
@@ -112,13 +120,13 @@ void QtView::focus_command_widget()
 
 void QtView::update_view_state_qt()
 {
-	statusBar()->message(currentState(view().get()).c_str());
+	statusBar()->message(toqstr(currentState(view().get())));
 }
 
 
 void QtView::update_view_state()
 {
-	statusBar()->message(currentState(view().get()).c_str());
+	statusBar()->message(toqstr(currentState(view().get())));
 }
 
 
@@ -137,7 +145,7 @@ void QtView::closeEvent(QCloseEvent *)
 void QtView::show(int x, int y, string const & title)
 {
 	move(x, y);
-	setCaption(title.c_str());
+	setCaption(toqstr(title));
 	QMainWindow::show();
 }
 

@@ -15,13 +15,14 @@
 #endif
 
 #include "support/lstrings.h"
- 
+#include "gettext.h"
 #include "qt_helpers.h"
-
+ 
 #include "lengthcombo.h"
  
 #include <qglobal.h>
 #include <qlineedit.h>
+#include <qtextcodec.h>
 
 using std::pair;
 using std::make_pair;
@@ -63,8 +64,8 @@ string widgetsToLength(QLineEdit const * input, LengthCombo const * combo)
 		return string();
 
 	// don't return unit-from-choice if the input(field) contains a unit
-	if (isValidGlueLength(length.latin1()))
-		return length.latin1();
+	if (isValidGlueLength(fromqstr(length)))
+		return fromqstr(length);
 
 	LyXLength::UNIT unit = combo->currentLengthItem();
 
@@ -81,6 +82,41 @@ void lengthToWidgets(QLineEdit * input, LengthCombo * combo,
 		input->setText("");
 	} else {
 		combo->setCurrentItem(LyXLength(len).unit());
-		input->setText(tostr(LyXLength(len).value()).c_str());
+		input->setText(toqstr(tostr(LyXLength(len).value())));
 	}
+}
+
+
+QString const toqstr(char const * str)
+{
+	QTextCodec * codec = QTextCodec::codecForLocale();
+
+	return codec->toUnicode(str);
+}
+
+
+QString const toqstr(string const & str)
+{
+	return toqstr(str.c_str());
+}
+
+
+QString const qt_(char const * str)
+{
+	return toqstr(_(str));
+}
+
+
+QString const qt_(string const & str)
+{
+	return toqstr(_(str));
+}
+
+
+string const fromqstr(QString const & str)
+{
+	QTextCodec * codec = QTextCodec::codecForLocale();
+	QCString tmpstr = codec->fromUnicode(str);
+	char const * tmpcstr = tmpstr;
+	return tmpcstr;
 }

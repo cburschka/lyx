@@ -19,6 +19,7 @@
 #include "ControlThesaurus.h"
 #include "QThesaurusDialog.h"
 #include "QThesaurus.h"
+#include "qt_helpers.h"
 
 #include <qpushbutton.h>
 #include <qlistview.h>
@@ -66,8 +67,8 @@ void QThesaurusDialog::selectionChanged(QListViewItem * item)
 	if (form_->readOnly())
 		return;
 
-	string const entry(item->text(0).latin1());
-	replaceED->setText(entry.c_str());
+	string const entry(fromqstr(item->text(0)));
+	replaceED->setText(toqstr(entry));
 	replacePB->setEnabled(true);
 	form_->changed();
 }
@@ -89,17 +90,17 @@ void QThesaurusDialog::updateLists()
 
 	meaningsLV->setUpdatesEnabled(false);
 
-	Thesaurus::Meanings meanings = form_->controller().getMeanings(entryED->text().latin1());
+	Thesaurus::Meanings meanings = form_->controller().getMeanings(fromqstr(entryED->text()));
 
 	for (Thesaurus::Meanings::const_iterator cit = meanings.begin();
 		cit != meanings.end(); ++cit) {
 		QListViewItem * i = new QListViewItem(meaningsLV);
-		i->setText(0, cit->first.c_str());
+		i->setText(0, toqstr(cit->first));
 		i->setOpen(true);
 		for (std::vector<string>::const_iterator cit2 = cit->second.begin();
 			cit2 != cit->second.end(); ++cit2) {
 				QListViewItem * i2 = new QListViewItem(i);
-				i2->setText(0, cit2->c_str());
+				i2->setText(0, toqstr(*cit2));
 				i2->setOpen(true);
 			}
 	}

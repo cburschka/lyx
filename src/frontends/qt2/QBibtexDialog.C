@@ -15,7 +15,7 @@
 #endif
 
 #include "ControlBibtex.h"
-#include "gettext.h"
+#include "qt_helpers.h"
 #include "debug.h"
 
 #include "support/filetools.h"
@@ -56,13 +56,13 @@ void QBibtexDialog::browsePressed()
 {
 	QString const file =
 		QFileDialog::getOpenFileName(QString::null,
-					     _("BibTeX style files (*.bst)"),
+					     qt_("BibTeX style files (*.bst)"),
 					     this,
 					     0,
-					     _("Select a BibTeX style"));
+					     qt_("Select a BibTeX style"));
 	if (!file.isNull()) {
-		string const filen = ChangeExtension(OnlyFilename(file.latin1()), "");
-		styleCB->insertItem(filen.c_str(),0);
+		string const filen = ChangeExtension(OnlyFilename(fromqstr(file)), "");
+		styleCB->insertItem(toqstr(filen),0);
 		form_->changed();
 	}
 }
@@ -70,17 +70,19 @@ void QBibtexDialog::browsePressed()
 void QBibtexDialog::browseBibPressed()
 {
 	QString const file = QFileDialog::getOpenFileName(QString::null,
-		_("BibTeX database files (*.bib)"), this, 0, _("Select a BibTeX database to add"));
-	if (!file.isNull()) {
-		string const f = ChangeExtension(file.latin1(), "");
-		bool present = false;
-		for(unsigned int i = 0; i != databaseLB->count(); ++i) {
-			if (databaseLB->text(i).latin1() == f)
-				present = true;
+		qt_("BibTeX database files (*.bib)"), this, 0, qt_("Select a BibTeX database to add"));
 
+	if (!file.isNull()) {
+		string const f = ChangeExtension(fromqstr(file), "");
+		bool present = false;
+
+		for (unsigned int i = 0; i != databaseLB->count(); i++) {
+			if (fromqstr(databaseLB->text(i)) == f)
+				present = true;
 		}
+
 		if (!present) {
-			databaseLB->insertItem(f.c_str());
+			databaseLB->insertItem(toqstr(f));
 			form_->changed();
 		}
 	}

@@ -29,7 +29,7 @@
 #include "Qt2BC.h"
 #include "ControlCitation.h"
 #include "debug.h"
-#include "gettext.h"
+#include "qt_helpers.h"
 #include "support/lstrings.h"
 #include "helper_funcs.h"
 
@@ -45,7 +45,7 @@ typedef Qt2CB<ControlCitation, Qt2DB<QCitationDialog> > base_class;
 
 
 QCitation::QCitation()
-	: base_class(_("Citation"))
+	: base_class(qt_("Citation"))
 {}
 
 
@@ -64,7 +64,7 @@ void QCitation::apply()
 	controller().params().setCmdName(command);
 	controller().params().setContents(getStringFromVector(citekeys));
 
-	string const after = dialog_->textAfterED->text().latin1();
+	string const after = fromqstr(dialog_->textAfterED->text());
 	controller().params().setOptions(after);
 }
 
@@ -117,7 +117,7 @@ void QCitation::fillStyles()
 
 	for (vector<string>::const_iterator it = sty.begin();
 		it != sty.end(); ++it) {
-		dialog_->citationStyleCO->insertItem(it->c_str());
+		dialog_->citationStyleCO->insertItem(toqstr(*it));
 	}
 }
 
@@ -167,7 +167,7 @@ void QCitation::update_contents()
 	setBibButtons(OFF);
 	setCiteButtons(OFF);
 
-	dialog_->textAfterED->setText(controller().params().getOptions().c_str());
+	dialog_->textAfterED->setText(toqstr(controller().params().getOptions()));
 
 	fillStyles();
 
@@ -185,7 +185,7 @@ void QCitation::updateBrowser(QListBox * browser,
 		string const key = trim(*it);
 		// FIXME: why the .empty() test ?
 		if (!key.empty())
-			browser->insertItem(key.c_str());
+			browser->insertItem(toqstr(key));
 	}
 }
 

@@ -64,7 +64,7 @@ typedef Qt2CB<ControlPrefs, Qt2DB<QPrefsDialog> > base_class;
 
 
 QPrefs::QPrefs()
-	: base_class(_("LyX: Preferences"))
+	: base_class(qt_("LyX: Preferences"))
 {
 }
 
@@ -88,7 +88,7 @@ void QPrefs::build_dialog()
 	vector<frnt::LanguagePair>::const_iterator lit  = langs.begin();
 	vector<frnt::LanguagePair>::const_iterator lend = langs.end();
 	for (; lit != lend; ++lit) {
-		langmod->defaultLanguageCO->insertItem(lit->first.c_str());
+		langmod->defaultLanguageCO->insertItem(toqstr(lit->first));
 	}
 }
 
@@ -106,15 +106,15 @@ void QPrefs::apply()
 	rc.language_auto_end = langmod->autoEndCB->isChecked();
 	rc.language_use_babel = langmod->useBabelCB->isChecked();
 	rc.language_global_options = langmod->globalCB->isChecked();
-	rc.language_package = langmod->languagePackageED->text().latin1();
-	rc.language_command_begin = langmod->startCommandED->text().latin1();
-	rc.language_command_end = langmod->endCommandED->text().latin1();
+	rc.language_package = fromqstr(langmod->languagePackageED->text());
+	rc.language_command_begin = fromqstr(langmod->startCommandED->text());
+	rc.language_command_end = fromqstr(langmod->endCommandED->text());
 	rc.default_language = lang_[langmod->defaultLanguageCO->currentItem()];
 
 	QPrefUIModule * uimod(dialog_->uiModule);
 
-	rc.ui_file = uimod->uiFileED->text().latin1();
-	rc.bind_file = uimod->bindFileED->text().latin1();
+	rc.ui_file = fromqstr(uimod->uiFileED->text());
+	rc.bind_file = fromqstr(uimod->bindFileED->text());
 	rc.cursor_follows_scrollbar = uimod->cursorFollowsCB->isChecked();
 	rc.wheel_jump = uimod->wheelMouseSB->value();
 	rc.autosave = uimod->autoSaveSB->value() * 60;
@@ -126,27 +126,27 @@ void QPrefs::apply()
 
 	// FIXME: can derive CB from the two EDs
 	rc.use_kbmap = keymod->keymapCB->isChecked();
-	rc.primary_kbmap = keymod->firstKeymapED->text().latin1();
-	rc.secondary_kbmap = keymod->secondKeymapED->text().latin1();
+	rc.primary_kbmap = fromqstr(keymod->firstKeymapED->text());
+	rc.secondary_kbmap = fromqstr(keymod->secondKeymapED->text());
 
 
 	QPrefAsciiModule * ascmod(dialog_->asciiModule);
 
 	rc.ascii_linelen = ascmod->asciiLinelengthSB->value();
-	rc.ascii_roff_command = ascmod->asciiRoffED->text().latin1();
+	rc.ascii_roff_command = fromqstr(ascmod->asciiRoffED->text());
 
 
 	QPrefDateModule * datemod(dialog_->dateModule);
 
-	rc.date_insert_format = datemod->DateED->text().latin1();
+	rc.date_insert_format = fromqstr(datemod->DateED->text());
 
 
 	QPrefLatexModule * latexmod(dialog_->latexModule);
 
-	rc.fontenc = latexmod->latexEncodingED->text().latin1();
-	rc.chktex_command = latexmod->latexChecktexED->text().latin1();
+	rc.fontenc = fromqstr(latexmod->latexEncodingED->text());
+	rc.chktex_command = fromqstr(latexmod->latexChecktexED->text());
 	rc.auto_reset_options = latexmod->latexAutoresetCB->isChecked();
-	rc.view_dvi_paper_option = latexmod->latexDviPaperED->text().latin1();
+	rc.view_dvi_paper_option = fromqstr(latexmod->latexDviPaperED->text());
 	rc.default_papersize =
 		static_cast<BufferParams::PAPER_SIZE>(latexmod->latexPaperSizeCO->currentItem());
 
@@ -177,13 +177,13 @@ void QPrefs::apply()
 
 	QPrefPathsModule * pathsmod(dialog_->pathsModule);
 
-	rc.document_path = pathsmod->workingDirED->text().latin1();
-	rc.template_path = pathsmod->templateDirED->text().latin1();
-	rc.backupdir_path = pathsmod->backupDirED->text().latin1();
+	rc.document_path = fromqstr(pathsmod->workingDirED->text());
+	rc.template_path = fromqstr(pathsmod->templateDirED->text());
+	rc.backupdir_path = fromqstr(pathsmod->backupDirED->text());
 	rc.use_tempdir = pathsmod->tempDirCB->isChecked();
-	rc.tempdir_path = pathsmod->tempDirED->text().latin1();
+	rc.tempdir_path = fromqstr(pathsmod->tempDirED->text());
 	// FIXME: should be a checkbox only
-	rc.lyxpipes = pathsmod->lyxserverDirED->text().latin1();
+	rc.lyxpipes = fromqstr(pathsmod->lyxserverDirED->text());
 
 
 	QPrefSpellcheckerModule * spellmod(dialog_->spellcheckerModule);
@@ -194,13 +194,13 @@ void QPrefs::apply()
 		rc.isp_command = "aspell";
 
 	// FIXME: remove isp_use_alt_lang
-	rc.isp_alt_lang = spellmod->altLanguageED->text().latin1();
+	rc.isp_alt_lang = fromqstr(spellmod->altLanguageED->text());
 	rc.isp_use_alt_lang = !rc.isp_alt_lang.empty();
 	// FIXME: remove isp_use_esc_chars
-	rc.isp_esc_chars = spellmod->escapeCharactersED->text().latin1();
+	rc.isp_esc_chars = fromqstr(spellmod->escapeCharactersED->text());
 	rc.isp_use_esc_chars = !rc.isp_esc_chars.empty();
 	// FIXME: remove isp_use_pers_dict
-	rc.isp_pers_dict = spellmod->persDictionaryED->text().latin1();
+	rc.isp_pers_dict = fromqstr(spellmod->persDictionaryED->text());
 	rc.isp_use_pers_dict = !rc.isp_pers_dict.empty();
 	rc.isp_accept_compound = spellmod->compoundWordCB->isChecked();
 	rc.isp_use_input_encoding = spellmod->inputEncodingCB->isChecked();
@@ -209,24 +209,24 @@ void QPrefs::apply()
 	QPrefPrinterModule * printmod(dialog_->printerModule);
 
 	rc.print_adapt_output = printmod->printerAdaptCB->isChecked();
-	rc.print_command = printmod->printerCommandED->text().latin1();
-	rc.printer = printmod->printerNameED->text().latin1();
+	rc.print_command = fromqstr(printmod->printerCommandED->text());
+	rc.printer = fromqstr(printmod->printerNameED->text());
 
-	rc.print_pagerange_flag = printmod->printerPageRangeED->text().latin1();
-	rc.print_copies_flag = printmod->printerCopiesED->text().latin1();
-	rc.print_reverse_flag = printmod->printerReverseED->text().latin1();
-	rc.print_to_printer = printmod->printerToPrinterED->text().latin1();
-	rc.print_file_extension = printmod->printerExtensionED->text().latin1();
-	rc.print_file_extension = printmod->printerSpoolCommandED->text().latin1();
-	rc.print_paper_flag = printmod->printerPaperTypeED->text().latin1();
-	rc.print_evenpage_flag = printmod->printerEvenED->text().latin1();
-	rc.print_oddpage_flag = printmod->printerOddED->text().latin1();
-	rc.print_collcopies_flag = printmod->printerCollatedED->text().latin1();
-	rc.print_landscape_flag = printmod->printerLandscapeED->text().latin1();
-	rc.print_to_file = printmod->printerToFileED->text().latin1();
-	rc.print_extra_options = printmod->printerExtraED->text().latin1();
-	rc.print_spool_printerprefix = printmod->printerSpoolPrefixED->text().latin1();
-	rc.print_paper_dimension_flag = printmod->printerPaperSizeED->text().latin1();
+	rc.print_pagerange_flag = fromqstr(printmod->printerPageRangeED->text());
+	rc.print_copies_flag = fromqstr(printmod->printerCopiesED->text());
+	rc.print_reverse_flag = fromqstr(printmod->printerReverseED->text());
+	rc.print_to_printer = fromqstr(printmod->printerToPrinterED->text());
+	rc.print_file_extension = fromqstr(printmod->printerExtensionED->text());
+	rc.print_file_extension = fromqstr(printmod->printerSpoolCommandED->text());
+	rc.print_paper_flag = fromqstr(printmod->printerPaperTypeED->text());
+	rc.print_evenpage_flag = fromqstr(printmod->printerEvenED->text());
+	rc.print_oddpage_flag = fromqstr(printmod->printerOddED->text());
+	rc.print_collcopies_flag = fromqstr(printmod->printerCollatedED->text());
+	rc.print_landscape_flag = fromqstr(printmod->printerLandscapeED->text());
+	rc.print_to_file = fromqstr(printmod->printerToFileED->text());
+	rc.print_extra_options = fromqstr(printmod->printerExtraED->text());
+	rc.print_spool_printerprefix = fromqstr(printmod->printerSpoolPrefixED->text());
+	rc.print_paper_dimension_flag = fromqstr(printmod->printerPaperSizeED->text());
 
 
 	QPrefScreenFontsModule * fontmod(dialog_->screenfontsModule);
@@ -234,24 +234,24 @@ void QPrefs::apply()
 	LyXRC const oldrc(rc);
 
 	boost::tie(rc.roman_font_name, rc.roman_font_foundry)
-		= parseFontName(fontmod->screenRomanCO->currentText().latin1());
+		= parseFontName(fromqstr(fontmod->screenRomanCO->currentText()));
 	boost::tie(rc.sans_font_name, rc.sans_font_foundry) =
-		parseFontName(fontmod->screenSansCO->currentText().latin1());
+		parseFontName(fromqstr(fontmod->screenSansCO->currentText()));
 	boost::tie(rc.typewriter_font_name, rc.typewriter_font_foundry) =
-		parseFontName(fontmod->screenTypewriterCO->currentText().latin1());
+		parseFontName(fromqstr(fontmod->screenTypewriterCO->currentText()));
 
 	rc.zoom = fontmod->screenZoomSB->value();
 	rc.dpi = fontmod->screenDpiSB->value();
-	rc.font_sizes[LyXFont::SIZE_TINY] = strToDbl(fontmod->screenTinyED->text().latin1());
-	rc.font_sizes[LyXFont::SIZE_SCRIPT] = strToDbl(fontmod->screenSmallestED->text().latin1());
-	rc.font_sizes[LyXFont::SIZE_FOOTNOTE] = strToDbl(fontmod->screenSmallerED->text().latin1());
-	rc.font_sizes[LyXFont::SIZE_SMALL] = strToDbl(fontmod->screenSmallED->text().latin1());
-	rc.font_sizes[LyXFont::SIZE_NORMAL] = strToDbl(fontmod->screenNormalED->text().latin1());
-	rc.font_sizes[LyXFont::SIZE_LARGE] = strToDbl(fontmod->screenLargeED->text().latin1());
-	rc.font_sizes[LyXFont::SIZE_LARGER] = strToDbl(fontmod->screenLargerED->text().latin1());
-	rc.font_sizes[LyXFont::SIZE_LARGEST] = strToDbl(fontmod->screenLargestED->text().latin1());
-	rc.font_sizes[LyXFont::SIZE_HUGE] = strToDbl(fontmod->screenHugeED->text().latin1());
-	rc.font_sizes[LyXFont::SIZE_HUGER] = strToDbl(fontmod->screenHugerED->text().latin1());
+	rc.font_sizes[LyXFont::SIZE_TINY] = strToDbl(fromqstr(fontmod->screenTinyED->text()));
+	rc.font_sizes[LyXFont::SIZE_SCRIPT] = strToDbl(fromqstr(fontmod->screenSmallestED->text()));
+	rc.font_sizes[LyXFont::SIZE_FOOTNOTE] = strToDbl(fromqstr(fontmod->screenSmallerED->text()));
+	rc.font_sizes[LyXFont::SIZE_SMALL] = strToDbl(fromqstr(fontmod->screenSmallED->text()));
+	rc.font_sizes[LyXFont::SIZE_NORMAL] = strToDbl(fromqstr(fontmod->screenNormalED->text()));
+	rc.font_sizes[LyXFont::SIZE_LARGE] = strToDbl(fromqstr(fontmod->screenLargeED->text()));
+	rc.font_sizes[LyXFont::SIZE_LARGER] = strToDbl(fromqstr(fontmod->screenLargerED->text()));
+	rc.font_sizes[LyXFont::SIZE_LARGEST] = strToDbl(fromqstr(fontmod->screenLargestED->text()));
+	rc.font_sizes[LyXFont::SIZE_HUGE] = strToDbl(fromqstr(fontmod->screenHugeED->text()));
+	rc.font_sizes[LyXFont::SIZE_HUGER] = strToDbl(fromqstr(fontmod->screenHugerED->text()));
 
 	if (rc.font_sizes != oldrc.font_sizes
 		|| rc.roman_font_name != oldrc.roman_font_name
@@ -311,7 +311,7 @@ void setComboxFont(QComboBox * cb,
 
 	string const name = makeFontName(family, foundry);
 	for (int i = 0; i < cb->count(); ++i) {
-		if (compare_no_case(cb->text(i).latin1(), name) == 0) {
+		if (fromqstr(cb->text(i)) == name) {
 			cb->setCurrentItem(i);
 			return;
 		}
@@ -320,7 +320,7 @@ void setComboxFont(QComboBox * cb,
 	// Try matching without foundary name
 	for (int i = cb->count() - 1; i >= 0; --i) {
 		// We count in reverse in order to prefer the Xft foundry
-		pair<string, string> tmp = parseFontName(cb->text(i).latin1());
+		pair<string, string> tmp = parseFontName(fromqstr(cb->text(i)));
 		if (compare_no_case(tmp.first, family) == 0) {
 			cb->setCurrentItem(i);
 			return;
@@ -343,17 +343,17 @@ void QPrefs::update_contents()
 	langmod->autoEndCB->setChecked(rc.language_auto_end);
 	langmod->useBabelCB->setChecked(rc.language_use_babel);
 	langmod->globalCB->setChecked(rc.language_global_options);
-	langmod->languagePackageED->setText(rc.language_package.c_str());
-	langmod->startCommandED->setText(rc.language_command_begin.c_str());
-	langmod->endCommandED->setText(rc.language_command_end.c_str());
+	langmod->languagePackageED->setText(toqstr(rc.language_package));
+	langmod->startCommandED->setText(toqstr(rc.language_command_begin));
+	langmod->endCommandED->setText(toqstr(rc.language_command_end));
 
 	int const pos = int(findPos(lang_, rc.default_language));
 	langmod->defaultLanguageCO->setCurrentItem(pos);
 
 	QPrefUIModule * uimod(dialog_->uiModule);
 
-	uimod->uiFileED->setText(rc.ui_file.c_str());
-	uimod->bindFileED->setText(rc.bind_file.c_str());
+	uimod->uiFileED->setText(toqstr(rc.ui_file));
+	uimod->bindFileED->setText(toqstr(rc.bind_file));
 	uimod->cursorFollowsCB->setChecked(rc.cursor_follows_scrollbar);
 	uimod->wheelMouseSB->setValue(rc.wheel_jump);
 	// convert to minutes
@@ -376,27 +376,27 @@ void QPrefs::update_contents()
 	keymod->secondKeymapED->setEnabled(rc.use_kbmap);
 	keymod->secondKeymapPB->setEnabled(rc.use_kbmap);
 	keymod->secondKeymapLA->setEnabled(rc.use_kbmap);
-	keymod->firstKeymapED->setText(rc.primary_kbmap.c_str());
-	keymod->secondKeymapED->setText(rc.secondary_kbmap.c_str());
+	keymod->firstKeymapED->setText(toqstr(rc.primary_kbmap));
+	keymod->secondKeymapED->setText(toqstr(rc.secondary_kbmap));
 
 
 	QPrefAsciiModule * ascmod(dialog_->asciiModule);
 
 	ascmod->asciiLinelengthSB->setValue(rc.ascii_linelen);
-	ascmod->asciiRoffED->setText(rc.ascii_roff_command.c_str());
+	ascmod->asciiRoffED->setText(toqstr(rc.ascii_roff_command));
 
 
 	QPrefDateModule * datemod(dialog_->dateModule);
 
-	datemod->DateED->setText(rc.date_insert_format.c_str());
+	datemod->DateED->setText(toqstr(rc.date_insert_format));
 
 
 	QPrefLatexModule * latexmod(dialog_->latexModule);
 
-	latexmod->latexEncodingED->setText(rc.fontenc.c_str());
-	latexmod->latexChecktexED->setText(rc.chktex_command.c_str());
+	latexmod->latexEncodingED->setText(toqstr(rc.fontenc));
+	latexmod->latexChecktexED->setText(toqstr(rc.chktex_command));
 	latexmod->latexAutoresetCB->setChecked(rc.auto_reset_options);
-	latexmod->latexDviPaperED->setText(rc.view_dvi_paper_option.c_str());
+	latexmod->latexDviPaperED->setText(toqstr(rc.view_dvi_paper_option));
 	latexmod->latexPaperSizeCO->setCurrentItem(rc.default_papersize);
 
 
@@ -417,13 +417,13 @@ void QPrefs::update_contents()
 
 	QPrefPathsModule * pathsmod(dialog_->pathsModule);
 
-	pathsmod->workingDirED->setText(rc.document_path.c_str());
-	pathsmod->templateDirED->setText(rc.template_path.c_str());
-	pathsmod->backupDirED->setText(rc.backupdir_path.c_str());
+	pathsmod->workingDirED->setText(toqstr(rc.document_path));
+	pathsmod->templateDirED->setText(toqstr(rc.template_path));
+	pathsmod->backupDirED->setText(toqstr(rc.backupdir_path));
 	pathsmod->tempDirCB->setChecked(rc.use_tempdir);
-	pathsmod->tempDirED->setText(rc.tempdir_path.c_str());
+	pathsmod->tempDirED->setText(toqstr(rc.tempdir_path));
 	// FIXME: should be a checkbox only
-	pathsmod->lyxserverDirED->setText(rc.lyxpipes.c_str());
+	pathsmod->lyxserverDirED->setText(toqstr(rc.lyxpipes));
 
 
 	QPrefSpellcheckerModule * spellmod(dialog_->spellcheckerModule);
@@ -431,11 +431,11 @@ void QPrefs::update_contents()
 	item = (rc.isp_command == "ispell") ? 0 : 1;
 	spellmod->spellCommandCO->setCurrentItem(item);
 	// FIXME: remove isp_use_alt_lang
-	spellmod->altLanguageED->setText(rc.isp_alt_lang.c_str());
+	spellmod->altLanguageED->setText(toqstr(rc.isp_alt_lang));
 	// FIXME: remove isp_use_esc_chars
-	spellmod->escapeCharactersED->setText(rc.isp_esc_chars.c_str());
+	spellmod->escapeCharactersED->setText(toqstr(rc.isp_esc_chars));
 	// FIXME: remove isp_use_pers_dict
-	spellmod->persDictionaryED->setText(rc.isp_pers_dict.c_str());
+	spellmod->persDictionaryED->setText(toqstr(rc.isp_pers_dict));
 	spellmod->compoundWordCB->setChecked(rc.isp_accept_compound);
 	spellmod->inputEncodingCB->setChecked(rc.isp_use_input_encoding);
 
@@ -443,24 +443,24 @@ void QPrefs::update_contents()
 	QPrefPrinterModule * printmod(dialog_->printerModule);
 
 	printmod->printerAdaptCB->setChecked(rc.print_adapt_output);
-	printmod->printerCommandED->setText(rc.print_command.c_str());
-	printmod->printerNameED->setText(rc.printer.c_str());
+	printmod->printerCommandED->setText(toqstr(rc.print_command));
+	printmod->printerNameED->setText(toqstr(rc.printer));
 
-	printmod->printerPageRangeED->setText(rc.print_pagerange_flag.c_str());
-	printmod->printerCopiesED->setText(rc.print_copies_flag.c_str());
-	printmod->printerReverseED->setText(rc.print_reverse_flag.c_str());
-	printmod->printerToPrinterED->setText(rc.print_to_printer.c_str());
-	printmod->printerExtensionED->setText(rc.print_file_extension.c_str());
-	printmod->printerSpoolCommandED->setText(rc.print_file_extension.c_str());
-	printmod->printerPaperTypeED->setText(rc.print_paper_flag.c_str());
-	printmod->printerEvenED->setText(rc.print_evenpage_flag.c_str());
-	printmod->printerOddED->setText(rc.print_oddpage_flag.c_str());
-	printmod->printerCollatedED->setText(rc.print_collcopies_flag.c_str());
-	printmod->printerLandscapeED->setText(rc.print_landscape_flag.c_str());
-	printmod->printerToFileED->setText(rc.print_to_file.c_str());
-	printmod->printerExtraED->setText(rc.print_extra_options.c_str());
-	printmod->printerSpoolPrefixED->setText(rc.print_spool_printerprefix.c_str());
-	printmod->printerPaperSizeED->setText(rc.print_paper_dimension_flag.c_str());
+	printmod->printerPageRangeED->setText(toqstr(rc.print_pagerange_flag));
+	printmod->printerCopiesED->setText(toqstr(rc.print_copies_flag));
+	printmod->printerReverseED->setText(toqstr(rc.print_reverse_flag));
+	printmod->printerToPrinterED->setText(toqstr(rc.print_to_printer));
+	printmod->printerExtensionED->setText(toqstr(rc.print_file_extension));
+	printmod->printerSpoolCommandED->setText(toqstr(rc.print_file_extension));
+	printmod->printerPaperTypeED->setText(toqstr(rc.print_paper_flag));
+	printmod->printerEvenED->setText(toqstr(rc.print_evenpage_flag));
+	printmod->printerOddED->setText(toqstr(rc.print_oddpage_flag));
+	printmod->printerCollatedED->setText(toqstr(rc.print_collcopies_flag));
+	printmod->printerLandscapeED->setText(toqstr(rc.print_landscape_flag));
+	printmod->printerToFileED->setText(toqstr(rc.print_to_file));
+	printmod->printerExtraED->setText(toqstr(rc.print_extra_options));
+	printmod->printerSpoolPrefixED->setText(toqstr(rc.print_spool_printerprefix));
+	printmod->printerPaperSizeED->setText(toqstr(rc.print_paper_dimension_flag));
 
 
 	QPrefScreenFontsModule * fontmod(dialog_->screenfontsModule);
@@ -478,16 +478,16 @@ void QPrefs::update_contents()
 
 	fontmod->screenZoomSB->setValue(rc.zoom);
 	fontmod->screenDpiSB->setValue(int(rc.dpi));
-	fontmod->screenTinyED->setText(tostr(rc.font_sizes[LyXFont::SIZE_TINY]).c_str());
-	fontmod->screenSmallestED->setText(tostr(rc.font_sizes[LyXFont::SIZE_SCRIPT]).c_str());
-	fontmod->screenSmallerED->setText(tostr(rc.font_sizes[LyXFont::SIZE_FOOTNOTE]).c_str());
-	fontmod->screenSmallED->setText(tostr(rc.font_sizes[LyXFont::SIZE_SMALL]).c_str());
-	fontmod->screenNormalED->setText(tostr(rc.font_sizes[LyXFont::SIZE_NORMAL]).c_str());
-	fontmod->screenLargeED->setText(tostr(rc.font_sizes[LyXFont::SIZE_LARGE]).c_str());
-	fontmod->screenLargerED->setText(tostr(rc.font_sizes[LyXFont::SIZE_LARGER]).c_str());
-	fontmod->screenLargestED->setText(tostr(rc.font_sizes[LyXFont::SIZE_LARGEST]).c_str());
-	fontmod->screenHugeED->setText(tostr(rc.font_sizes[LyXFont::SIZE_HUGE]).c_str());
-	fontmod->screenHugerED->setText(tostr(rc.font_sizes[LyXFont::SIZE_HUGER]).c_str());
+	fontmod->screenTinyED->setText(toqstr(tostr(rc.font_sizes[LyXFont::SIZE_TINY])));
+	fontmod->screenSmallestED->setText(toqstr(tostr(rc.font_sizes[LyXFont::SIZE_SCRIPT])));
+	fontmod->screenSmallerED->setText(toqstr(tostr(rc.font_sizes[LyXFont::SIZE_FOOTNOTE])));
+	fontmod->screenSmallED->setText(toqstr(tostr(rc.font_sizes[LyXFont::SIZE_SMALL])));
+	fontmod->screenNormalED->setText(toqstr(tostr(rc.font_sizes[LyXFont::SIZE_NORMAL])));
+	fontmod->screenLargeED->setText(toqstr(tostr(rc.font_sizes[LyXFont::SIZE_LARGE])));
+	fontmod->screenLargerED->setText(toqstr(tostr(rc.font_sizes[LyXFont::SIZE_LARGER])));
+	fontmod->screenLargestED->setText(toqstr(tostr(rc.font_sizes[LyXFont::SIZE_LARGEST])));
+	fontmod->screenHugeED->setText(toqstr(tostr(rc.font_sizes[LyXFont::SIZE_HUGE])));
+	fontmod->screenHugerED->setText(toqstr(tostr(rc.font_sizes[LyXFont::SIZE_HUGER])));
 
 	formats_ = formats;
 

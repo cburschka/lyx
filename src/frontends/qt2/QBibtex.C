@@ -18,7 +18,7 @@
 #include "support/lstrings.h"
 
 #include "ControlBibtex.h"
-#include "gettext.h"
+#include "qt_helpers.h"
 #include "debug.h"
 
 #include "support/filetools.h" // ChangeExtension
@@ -40,7 +40,7 @@ typedef Qt2CB<ControlBibtex, Qt2DB<QBibtexDialog> > base_class;
 
 
 QBibtex::QBibtex()
-	: base_class(_("BibTeX"))
+	: base_class(qt_("BibTeX"))
 {
 }
 
@@ -72,11 +72,11 @@ void QBibtex::update_contents()
 		bibs = split(bibs, bib, ',');
 		bib = trim(bib);
 		if (!bib.empty())
-			dialog_->databaseLB->insertItem(bib.c_str());
+			dialog_->databaseLB->insertItem(toqstr(bib));
 	}
 
 	string bibtotoc = "bibtotoc";
-	string bibstyle(controller().params().getOptions().c_str());
+	string bibstyle(toqstr(controller().params().getOptions()));
 
 	// bibtotoc exists?
 	if (prefixIs(bibstyle, bibtotoc)) {
@@ -102,11 +102,11 @@ void QBibtex::update_contents()
 		string item(ChangeExtension(*it, ""));
 		if (item == bibstyle)
 			item_nr = int(it - str.begin());
-		dialog_->styleCB->insertItem(item.c_str());
+		dialog_->styleCB->insertItem(toqstr(item));
 	}
 
 	if (item_nr == -1) {
-		dialog_->styleCB->insertItem(bibstyle.c_str());
+		dialog_->styleCB->insertItem(toqstr(bibstyle));
 		item_nr = dialog_->styleCB->count() - 1;
 	}
 
@@ -116,17 +116,17 @@ void QBibtex::update_contents()
 
 void QBibtex::apply()
 {
-	string dbs(dialog_->databaseLB->text(0).latin1());
+	string dbs(fromqstr(dialog_->databaseLB->text(0)));
 
 	unsigned int maxCount = dialog_->databaseLB->count();
 	for (unsigned int i = 1; i < maxCount; i++) {
 		dbs += ',';
-		dbs += dialog_->databaseLB->text(i).latin1();
+		dbs += fromqstr(dialog_->databaseLB->text(i));
 	}
 
 	controller().params().setContents(dbs);
 
-	string const bibstyle(dialog_->styleCB->currentText().latin1());
+	string const bibstyle(fromqstr(dialog_->styleCB->currentText()));
 	bool const bibtotoc(dialog_->bibtocCB->isChecked());
 
 	if (bibtotoc && (!bibstyle.empty())) {

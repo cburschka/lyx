@@ -18,8 +18,10 @@
 #include "QLyXKeySym.h"
 #include "qlkey.h"
 #include "debug.h"
+#include "qt_helpers.h"
 
 #include <qevent.h>
+#include <qtextcodec.h>
 
 using std::endl;
 
@@ -39,15 +41,15 @@ void QLyXKeySym::set(QKeyEvent * ev)
 		return;
 	}
 	text_ = ev->text();
-	lyxerr[Debug::KEY] << "Setting key to " << key_ << ", " <<  text_.latin1() << endl;
+	lyxerr[Debug::KEY] << "Setting key to " << key_ << ", " <<  fromqstr(text_) << endl;
 }
 
 
 void QLyXKeySym::init(string const & symbolname)
 {
 	key_ = string_to_qkey(symbolname);
-	text_ = symbolname.c_str();
-	lyxerr[Debug::KEY] << "Init key to " << key_ << ", " << text_.latin1() << endl;
+	text_ = toqstr(symbolname);
+	lyxerr[Debug::KEY] << "Init key to " << key_ << ", " << fromqstr(text_) << endl;
 }
 
 
@@ -74,7 +76,7 @@ string QLyXKeySym::getSymbolName() const
 	if (sym.empty()) {
 		lyxerr[Debug::KEY] << "sym empty in getSymbolName()" << endl;
 		if (!text_.isEmpty())
-			sym = text_.latin1();
+			sym = fromqstr(text_);
 	}
 	lyxerr[Debug::KEY] << "getSymbolName() -> " << sym << endl;
 	return sym;
@@ -83,8 +85,9 @@ string QLyXKeySym::getSymbolName() const
 
 char QLyXKeySym::getISOEncoded() const
 {
-	lyxerr[Debug::KEY] << "getISO returning " << text_.latin1()[0] << endl;
-	return text_.latin1()[0];
+	char const c = fromqstr(text_)[0];
+	lyxerr[Debug::KEY] << "ISOEncoded returning value " << int(c) << endl;
+	return c;
 }
 
 

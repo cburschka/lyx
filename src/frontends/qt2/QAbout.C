@@ -17,7 +17,7 @@
 #include "support/lstrings.h"
 #include "Lsstream.h"
 #include "debug.h"
-#include "gettext.h"
+#include "qt_helpers.h"
 #include "LyXView.h"
 #include "ButtonControllerBase.h"
 #include "ControlAboutlyx.h"
@@ -36,7 +36,7 @@ typedef Qt2CB<ControlAboutlyx, Qt2DB<QAboutDialog> > base_class;
 
 
 QAbout::QAbout()
-	: base_class(_("About LyX"))
+	: base_class(qt_("About LyX"))
 {
 }
 
@@ -47,13 +47,13 @@ void QAbout::build_dialog()
 	connect(dialog_.get()->closePB, SIGNAL(clicked()),
 		this, SLOT(slotClose()));
 
-	dialog_->copyright->setText(controller().getCopyright().c_str());
+	dialog_->copyright->setText(toqstr(controller().getCopyright()));
 	dialog_->copyright->append("\n");
-	dialog_->copyright->append(controller().getLicense().c_str());
+	dialog_->copyright->append(toqstr(controller().getLicense()));
 	dialog_->copyright->append("\n");
-	dialog_->copyright->append(controller().getDisclaimer().c_str());
+	dialog_->copyright->append(toqstr(controller().getDisclaimer()));
 
-	dialog_->versionLA->setText(controller().getVersion().c_str());
+	dialog_->versionLA->setText(toqstr(controller().getVersion()));
 
 	// The code below should depend on a autoconf test. (Lgb)
 #if 1
@@ -100,7 +100,7 @@ void QAbout::build_dialog()
 	}
 #endif
 
-	dialog_->creditsTV->setText(out.str().c_str());
+	dialog_->creditsTV->setText(toqstr(out.str()));
 
 	// try to resize to a good size
 	dialog_->copyright->hide();

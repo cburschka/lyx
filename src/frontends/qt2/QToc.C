@@ -17,7 +17,7 @@
 #include <stack>
 
 #include "LyXView.h"
-#include "gettext.h"
+#include "qt_helpers.h"
 #include "support/lstrings.h"
 #include "debug.h"
 
@@ -39,7 +39,7 @@ using std::vector;
 typedef Qt2CB<ControlToc, Qt2DB<QTocDialog> > base_class;
 
 QToc::QToc()
-	: base_class(_("Table of contents")), depth_(1)
+	: base_class(qt_("Table of contents")), depth_(1)
 {}
 
 
@@ -61,10 +61,10 @@ void QToc::updateType()
 
 	for (vector<string>::const_iterator it = choice.begin();
 		it != choice.end(); ++it) {
-		dialog_->typeCO->insertItem(it->c_str());
+		dialog_->typeCO->insertItem(toqstr(*it));
 		if (*it == type) {
 			dialog_->typeCO->setCurrentItem(it - choice.begin());
-			dialog_->setCaption(type.c_str());
+			dialog_->setCaption(toqstr(type));
 		}
 	}
 }
@@ -79,8 +79,7 @@ void QToc::update_contents()
 
 void QToc::updateToc(int newdepth)
 {
-	char const * str = dialog_->typeCO->currentText().latin1();
-	string type (str ? str : "");
+	string type = fromqstr(dialog_->typeCO->currentText());
 
 	toc::Toc const & contents = controller().getContents(type);
 
@@ -144,14 +143,14 @@ void QToc::updateToc(int newdepth)
 
 		lyxerr[Debug::GUI]
 			<< "Table of contents\n"
-			<< "Added item " << iter->str.c_str()
+			<< "Added item " << iter->str
 			<< " at depth " << iter->depth
 			<< ", previous sibling \""
-			<< (last ? last->text(0).latin1() : "0")
+			<< (last ? fromqstr(last->text(0)) : "0")
 			<< "\", parent \""
-			<< (parent ? parent->text(0).latin1() : "0") << '"'
+			<< (parent ? fromqstr(parent->text(0)) : "0") << '"'
 			<< endl;
-		item->setText(0,iter->str.c_str());
+		item->setText(0, toqstr(iter->str));
 		item->setOpen(iter->depth < depth_);
 		curdepth = iter->depth;
 		last = item;

@@ -14,7 +14,7 @@
 #pragma implementation
 #endif
 
-#include "gettext.h"
+#include "qt_helpers.h"
 
 #include "QIndex.h"
 #include "QIndexDialog.h"
@@ -33,7 +33,7 @@ QIndexDialog::QIndexDialog(QIndex * form)
 	connect(closePB, SIGNAL(clicked()),
 		form, SLOT(slotClose()));
 
-	QWhatsThis::add(keywordED, _(
+	QWhatsThis::add(keywordED, qt_(
 "The format of the entry in the index.\n"
 "\n"
 "An entry can be specified as a sub-entry of\n"

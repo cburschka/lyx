@@ -18,10 +18,9 @@
 #include <qlabel.h>
 #include <qlineedit.h>
 #include "ui/QAskForTextDialog.h"
+#include "qt_helpers.h"
 
 #include <algorithm>
-
-#include <gettext.h>
 
 #include "Alert.h"
 #include "Alert_pimpl.h"
@@ -36,21 +35,21 @@ using std::make_pair;
 void alert_pimpl(string const & s1, string const & s2, string const & s3)
 {
 	QMessageBox::warning(0, "LyX",
-			     (s1 + '\n' + '\n' + s2 + '\n' + s3).c_str());
+			     toqstr(s1 + '\n' + '\n' + s2 + '\n' + s3));
 }
 
 
 bool askQuestion_pimpl(string const & s1, string const & s2, string const & s3)
 {
-	return !(QMessageBox::information(0, "LyX", (s1 + '\n' + s2 + '\n' + s3).c_str(),
-		_("&Yes"), _("&No"), 0, 1));
+	return !(QMessageBox::information(0, "LyX", toqstr(s1 + '\n' + s2 + '\n' + s3),
+		qt_("&Yes"), qt_("&No"), 0, 1));
 }
 
 
 int askConfirmation_pimpl(string const & s1, string const & s2, string const & s3)
 {
-	return (QMessageBox::information(0, "LyX", (s1 + '\n' + s2 + '\n' + s3).c_str(),
-		_("&Yes"), _("&No"), _("&Cancel"), 0, 2)) + 1;
+	return (QMessageBox::information(0, "LyX", toqstr(s1 + '\n' + s2 + '\n' + s3),
+		qt_("&Yes"), qt_("&No"), qt_("&Cancel"), 0, 2)) + 1;
 }
 
 
@@ -58,23 +57,23 @@ pair<bool, string> const
 askForText_pimpl(string const & msg, string const & dflt)
 {
 #if USE_BOOST_FORMAT
-	boost::format fmt(_("LyX: %1$s"));
+	boost::format fmt(qt_("LyX: %1$s"));
 	fmt % msg;
 	string const title = fmt.str();
 #else
-	string const title = _("LyX: ") + msg;
+	string const title = qt_("LyX: ") + msg;
 #endif
-	QAskForTextDialog d(0, title.c_str(), true);
+	QAskForTextDialog d(0, toqstr(title), true);
 	// less than ideal !
-	d.askLA->setText(('&' + msg).c_str());
-	d.askLE->setText(dflt.c_str());
+	d.askLA->setText(toqstr('&' + msg));
+	d.askLE->setText(toqstr(dflt));
 	d.askLE->setFocus();
 	int ret = d.exec();
 
 	d.hide();
 
 	if (ret)
-		return make_pair<bool, string>(true, d.askLE->text().latin1());
+		return make_pair<bool, string>(true, fromqstr(d.askLE->text()));
 	else
 		return make_pair<bool, string>(false, string());
 }

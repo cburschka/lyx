@@ -16,7 +16,7 @@
 #endif
 
 #include "qfont_loader.h"
-#include "gettext.h"
+#include "qt_helpers.h"
 #include "debug.h"
 #include "lyxrc.h"
 #include "BufferView.h"
@@ -24,9 +24,7 @@
 
 #include <qglobal.h>
 #include <qfontmetrics.h>
-#if QT_VERSION < 300
 #include "support/lstrings.h"
-#endif
 
 #ifdef Q_WS_X11
 #include <qwidget.h>
@@ -145,20 +143,24 @@ bool addFontPath()
 	return false;
 }
 
-bool isAvailable(QFont const & font, LyXFont const & f) {
-#if QT_VERSION >= 300
-	return font.exactMatch();
-#else
+
+bool isAvailable(QFont const & font, LyXFont const & f)
+{
 	string tmp = symbolPattern(f.family());
 	if (tmp.empty())
 		return false;
-	else
-		return token(tmp, '-', 2) ==
-			token(font.rawName().latin1(), '-', 2);
-#endif
+	else {
+		bool const found(token(tmp, '-', 2) ==
+			token(fromqstr(font.rawName()), '-', 2));
+		lyxerr[Debug::FONT] << "Looking for symbol font \n\""
+			<< tmp << "\" and got \n\"" << fromqstr(font.rawName())
+			<< "\"\n match: " << found << endl;
+		return found;
+	}
 }
 
 } // namespace anon
+
 
 qfont_loader::font_info::font_info(LyXFont const & f)
 	: metrics(font)
@@ -167,30 +169,31 @@ qfont_loader::font_info::font_info(LyXFont const & f)
 	string pat = symbolPattern(f.family());
 	if (!pat.empty()) {
 		static bool first_time = true;
-		font.setRawName(pat.c_str());
+		font.setRawName(toqstr(pat));
 		if (f.family() != LyXFont::SYMBOL_FAMILY &&
 		    !isAvailable(font, f) && first_time) {
 			first_time = false;
 			if (addFontPath()) {
-				font.setRawName(pat.c_str());
+				font.setRawName(toqstr(pat));
 			}
 		}
-	} else
+	} else {
 		switch (f.family()) {
 		case LyXFont::ROMAN_FAMILY:
-			font.setFamily(makeFontName(lyxrc.roman_font_name,
-						    lyxrc.roman_font_foundry).c_str());
+			font.setFamily(toqstr(makeFontName(lyxrc.roman_font_name,
+						    lyxrc.roman_font_foundry)));
 			break;
 		case LyXFont::SANS_FAMILY:
-			font.setFamily(makeFontName(lyxrc.sans_font_name,
-						    lyxrc.sans_font_foundry).c_str());
+			font.setFamily(toqstr(makeFontName(lyxrc.sans_font_name,
+						    lyxrc.sans_font_foundry)));
 			break;
 		case LyXFont::TYPEWRITER_FAMILY:
-			font.setFamily(makeFontName(lyxrc.typewriter_font_name,
-						    lyxrc.typewriter_font_foundry).c_str());
+			font.setFamily(toqstr(makeFontName(lyxrc.typewriter_font_name,
+						    lyxrc.typewriter_font_foundry)));
 			break;
 		default:
 			break;
+		}
 	}
 
 	font.setPointSizeFloat(lyxrc.font_sizes[f.size()]
@@ -261,5 +264,8 @@ bool qfont_loader::available(LyXFont const & f)
 	if (!lyxrc.use_gui)
 		return false;
 
-	return isAvailable(getfontinfo(f)->font, f);
+	bool const is_available(isAvailable(getfontinfo(f)->font, f));
+	lyxerr[Debug::FONT] << "font_loader::available returning "
+		<< is_available << endl;
+	return is_available;
 }

@@ -19,7 +19,7 @@
 #include "PrinterParams.h"
 #include "ControlPrint.h"
 #include "support/lstrings.h"
-#include "gettext.h"
+#include "qt_helpers.h"
 
 #include "QPrint.h"
 #include "QLPrintDialog.h"
@@ -36,7 +36,7 @@ typedef Qt2CB<ControlPrint, Qt2DB<QLPrintDialog> > base_class;
 
 
 QPrint::QPrint()
-	: base_class(_("Print"))
+	: base_class(qt_("Print"))
 {
 }
 
@@ -55,11 +55,11 @@ void QPrint::update_contents()
 	PrinterParams & pp = controller().params();
 
 	// only reset params if a different buffer
-	if (!pp.file_name.empty() && pp.file_name == dialog_->fileED->text().latin1())
+	if (!pp.file_name.empty() && pp.file_name == fromqstr(dialog_->fileED->text()))
 		return;
 
-	dialog_->printerED->setText(pp.printer_name.c_str());
-	dialog_->fileED->setText(pp.file_name.c_str());
+	dialog_->printerED->setText(toqstr(pp.printer_name));
+	dialog_->fileED->setText(toqstr(pp.file_name));
 
 	dialog_->printerRB->setChecked(true);
 	if (pp.target == PrinterParams::FILE)
@@ -96,8 +96,8 @@ void QPrint::apply()
 		t = PrinterParams::FILE;
 
 	PrinterParams const pp(t,
-		dialog_->printerED->text().latin1(),
-		dialog_->fileED->text().latin1(),
+		fromqstr(dialog_->printerED->text()),
+		fromqstr(dialog_->fileED->text()),
 		dialog_->allRB->isChecked(),
 		dialog_->fromED->text().toUInt(),
 		dialog_->toED->text().toUInt(),

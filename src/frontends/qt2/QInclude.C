@@ -15,7 +15,7 @@
 #endif
 
 #include "ControlInclude.h"
-#include "gettext.h"
+#include "qt_helpers.h"
 #include "debug.h"
 
 #include "QIncludeDialog.h"
@@ -32,7 +32,7 @@ typedef Qt2CB<ControlInclude, Qt2DB<QIncludeDialog> > base_class;
 
 
 QInclude::QInclude()
-	: base_class(_("Include"))
+	: base_class(qt_("Include"))
 {
 }
 
@@ -54,7 +54,7 @@ void QInclude::update_contents()
 {
 	InsetInclude::Params const & params = controller().params();
 
-	dialog_->filenameED->setText(params.cparams.getContents().c_str());
+	dialog_->filenameED->setText(toqstr(params.cparams.getContents()));
 
 	dialog_->visiblespaceCB->setChecked(false);
 	dialog_->visiblespaceCB->setEnabled(false);
@@ -87,7 +87,7 @@ void QInclude::apply()
 {
 	InsetInclude::Params & params = controller().params();
 
-	params.cparams.setContents(dialog_->filenameED->text().latin1());
+	params.cparams.setContents(fromqstr(dialog_->filenameED->text()));
 	params.cparams.preview(dialog_->previewCB->isChecked());
 
 	int const item = dialog_->typeCO->currentItem();
@@ -116,16 +116,16 @@ void QInclude::browse()
 	else
 		type = ControlInclude::VERBATIM;
 
-	string const & name = controller().Browse(dialog_->filenameED->text().latin1(), type);
+	string const & name = controller().Browse(fromqstr(dialog_->filenameED->text()), type);
 	if (!name.empty())
-		dialog_->filenameED->setText(name.c_str());
+		dialog_->filenameED->setText(toqstr(name));
 }
 
 
 void QInclude::load()
 {
 	if (isValid()) {
-		string const file(dialog_->filenameED->text().latin1());
+		string const file(fromqstr(dialog_->filenameED->text()));
 		slotOK();
 		controller().load(file);
 	}
@@ -134,5 +134,5 @@ void QInclude::load()
 
 bool QInclude::isValid()
 {
-	return !string(dialog_->filenameED->text().latin1()).empty();
+	return !dialog_->filenameED->text().isEmpty();
 }

@@ -18,7 +18,7 @@
 #include "QThesaurusDialog.h"
 #include "QThesaurus.h"
 #include "Qt2BC.h"
-#include "gettext.h"
+#include "qt_helpers.h"
 
 #include <qlineedit.h>
 #include <qpushbutton.h>
@@ -28,7 +28,7 @@ typedef Qt2CB<ControlThesaurus, Qt2DB<QThesaurusDialog> > base_class;
 
 
 QThesaurus::QThesaurus()
-	: base_class(_("Thesaurus"))
+	: base_class(qt_("Thesaurus"))
 {
 }
 
@@ -46,7 +46,7 @@ void QThesaurus::build_dialog()
 
 void QThesaurus::update_contents()
 {
-	dialog_->entryED->setText(controller().text().c_str());
+	dialog_->entryED->setText(toqstr(controller().text()));
 	dialog_->replaceED->setText("");
 	dialog_->updateLists();
 }
@@ -54,5 +54,5 @@ void QThesaurus::update_contents()
 
 void QThesaurus::replace()
 {
-	controller().replace(dialog_->replaceED->text().latin1());
+	controller().replace(fromqstr(dialog_->replaceED->text()));
 }

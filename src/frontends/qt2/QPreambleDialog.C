@@ -18,7 +18,7 @@
 #include "support/lyxlib.h"
 #include "support/forkedcall.h"
 #include "support/filetools.h"
-#include "gettext.h"
+#include "qt_helpers.h"
 #include "LyXView.h"
 #include "ControlPreamble.h"
 
@@ -65,15 +65,15 @@ void QPreambleDialog::editClicked()
 	string editor = GetEnv("EDITOR");
 	if (editor.empty()) {
 		static string lastentry;
-		editor = QInputDialog::getText(
-			_("Enter editor program"), _("Editor"), QLineEdit::Normal,
-			lastentry.c_str()).latin1();
+		editor = fromqstr(QInputDialog::getText(
+			qt_("Enter editor program"), qt_("Editor"), QLineEdit::Normal,
+			toqstr(lastentry)));
 		if (editor.empty())
 			return;
 		lastentry = editor;
 	}
 
-	string const text(preambleLE->text().latin1());
+	string const text(fromqstr(preambleLE->text()));
 	string const filename(lyx::tempName("", "preamble"));
 	std::ofstream file(filename.c_str());
 
@@ -109,5 +109,5 @@ void QPreambleDialog::editClicked()
 	in.close();
 
 	lyx::unlink(filename);
-	preambleLE->setText(newtext.str().c_str());
+	preambleLE->setText(toqstr(newtext.str()));
 }

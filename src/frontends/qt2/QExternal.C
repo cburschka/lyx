@@ -15,7 +15,7 @@
 #endif
 
 #include "ControlExternal.h"
-#include "gettext.h"
+#include "qt_helpers.h"
 
 #include <qlineedit.h>
 #include <qpushbutton.h>
@@ -32,7 +32,7 @@ typedef Qt2CB<ControlExternal, Qt2DB<QExternalDialog> > base_class;
 
 
 QExternal::QExternal()
-	: base_class(_("External"))
+	: base_class(qt_("External"))
 {
 }
 
@@ -52,7 +52,7 @@ void QExternal::build_dialog()
 
 	for (std::vector<string>::const_iterator cit = templates.begin();
 		cit != templates.end(); ++cit) {
-		dialog_->externalCO->insertItem(cit->c_str(), -1);
+		dialog_->externalCO->insertItem(toqstr(*cit), -1);
 	}
 }
 
@@ -61,11 +61,11 @@ void QExternal::update_contents()
 {
 	InsetExternal::Params const & params = controller().params();
 
-	dialog_->fileED->setText(params.filename.c_str());
-	dialog_->paramsED->setText(params.parameters.c_str());
+	dialog_->fileED->setText(toqstr(params.filename));
+	dialog_->paramsED->setText(toqstr(params.parameters));
 
 	dialog_->externalCO->setCurrentItem(controller().getTemplateNumber(params.templ.lyxName));
-	dialog_->externalTV->setText(params.templ.helpText.c_str());
+	dialog_->externalTV->setText(toqstr(params.templ.helpText));
 	isValid();
 }
 
@@ -83,8 +83,8 @@ void QExternal::apply()
 {
 	InsetExternal::Params & params = controller().params();
 
-	params.filename = dialog_->fileED->text().latin1();
-	params.parameters = dialog_->paramsED->text().latin1();
+	params.filename = fromqstr(dialog_->fileED->text());
+	params.parameters = fromqstr(dialog_->paramsED->text());
 
 	params.templ = controller().getTemplate(dialog_->externalCO->currentItem());
 }

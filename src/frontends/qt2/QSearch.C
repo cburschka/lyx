@@ -16,7 +16,7 @@
 
 #include "LyXView.h"
 #include "ControlSearch.h"
-#include "gettext.h"
+#include "qt_helpers.h"
 
 #include "QSearch.h"
 #include "QSearchDialog.h"
@@ -31,7 +31,7 @@ typedef Qt2CB<ControlSearch, Qt2DB<QSearchDialog> > base_class;
 
 
 QSearch::QSearch()
-	: base_class(_("Search"))
+	: base_class(qt_("Search"))
 {
 }
 

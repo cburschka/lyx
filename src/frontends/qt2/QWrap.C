@@ -15,7 +15,7 @@
 #endif
 
 #include "debug.h"
-#include "gettext.h"
+#include "qt_helpers.h"
 #include "support/lstrings.h"
 #include "LyXView.h"
 #include "ControlWrap.h"
@@ -33,7 +33,7 @@ typedef Qt2CB<ControlWrap, Qt2DB<QWrapDialog> > base_class;
 
 
 QWrap::QWrap()
-	: base_class(_("Wrap Options"))
+	: base_class(qt_("Wrap Options"))
 {
 }
 
@@ -55,9 +55,9 @@ void QWrap::build_dialog()
 
 void QWrap::apply()
 {
-	double const value = strToDbl(dialog_->widthED->text().latin1());
+	double const value = strToDbl(fromqstr(dialog_->widthED->text()));
 	LyXLength::UNIT unit = dialog_->unitsLC->currentLengthItem();
-	if (string(dialog_->widthED->text().latin1()).empty())
+	if (dialog_->widthED->text().isEmpty())
 		unit = LyXLength::UNIT_NONE;
 
 	WrapParams & params = controller().params();
@@ -98,7 +98,7 @@ void QWrap::update_contents()
 	WrapParams & params = controller().params();
 
 	LyXLength len(params.pageWidth);
-	dialog_->widthED->setText(numtostr(len.value()).c_str());
+	dialog_->widthED->setText(toqstr(numtostr(len.value())));
 	dialog_->unitsLC->setCurrentItem(len.unit());
 
 	int item = 0;

@@ -16,7 +16,7 @@
 
 #include <algorithm>
 
-#include "gettext.h"
+#include "qt_helpers.h"
 #include "controllers/ControlCitation.h"
 #include "LyXView.h"
 #include "buffer.h"
@@ -52,7 +52,7 @@ QCitationDialog::QCitationDialog(QCitation * form)
 	connect(searchED, SIGNAL(returnPressed()),
 		this, SLOT(slotNextClicked()));
 
-	textBeforeED->setText(_("Not yet supported"));
+	textBeforeED->setText(qt_("Not yet supported"));
 	textBeforeED->setReadOnly(true);
 	textBeforeED->setFocusPolicy(QWidget::NoFocus);
 	citationStyleCO->setEnabled(false);
@@ -91,7 +91,7 @@ void QCitationDialog::slotBibHighlighted(int sel)
 	// the selected browser_bib key
 	infoML->clear();
 
-	infoML->setText(biblio::getInfo(theMap, form_->bibkeys[sel]).c_str());
+	infoML->setText(toqstr(biblio::getInfo(theMap, form_->bibkeys[sel])));
 
 	// Highlight the selected browser_bib key in browser_cite if
 	// present
@@ -144,7 +144,7 @@ void QCitationDialog::slotCiteHighlighted(int sel)
 		// Put into browser_info the additional info associated
 		// with the selected browser_cite key
 		infoML->clear();
-		infoML->setText(biblio::getInfo(theMap, form_->citekeys[sel]).c_str());
+		infoML->setText(toqstr(biblio::getInfo(theMap, form_->citekeys[sel])));
 	}
 }
 
@@ -159,7 +159,7 @@ void QCitationDialog::slotAddClicked()
 	}
 
 	// Add the selected browser_bib key to browser_cite
-	citeLB->insertItem(form_->bibkeys[sel].c_str());
+	citeLB->insertItem(toqstr(form_->bibkeys[sel]));
 	form_->citekeys.push_back(form_->bibkeys[sel]);
 
 	int const n = int(form_->citekeys.size());
@@ -207,7 +207,7 @@ void QCitationDialog::slotUpClicked()
 	citeLB->removeItem(sel);
 	form_->citekeys.erase(it);
 
-	citeLB->insertItem(tmp.c_str(), sel - 1);
+	citeLB->insertItem(toqstr(tmp), sel - 1);
 	citeLB->setSelected(sel - 1, true);
 	form_->citekeys.insert(it - 1, tmp);
 	form_->setCiteButtons(QCitation::ON);
@@ -231,7 +231,7 @@ void QCitationDialog::slotDownClicked()
 	citeLB->removeItem(sel);
 	form_->citekeys.erase(it);
 
-	citeLB->insertItem(tmp.c_str(), sel + 1);
+	citeLB->insertItem(toqstr(tmp), sel + 1);
 	citeLB->setSelected(sel + 1, true);
 	form_->citekeys.insert(it + 1, tmp);
 	form_->setCiteButtons(QCitation::ON);
@@ -260,7 +260,7 @@ void QCitationDialog::changed_adaptor()
 void QCitationDialog::doFind(biblio::Direction dir)
 {
 	biblio::InfoMap const & theMap = form_->controller().bibkeysInfo();
-	string const str = searchED->text().latin1();
+	string const str = fromqstr(searchED->text());
 
 	biblio::Search const type =
 		searchTypeCB->isChecked() ?

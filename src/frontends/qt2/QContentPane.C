@@ -19,6 +19,7 @@
 #include "QWorkArea.h"
 #include "QLyXKeySym.h"
 #include "funcrequest.h"
+#include "qt_helpers.h"
 
 #include <qevent.h>
 #include <qpainter.h>
@@ -147,7 +148,7 @@ void QContentPane::keyPressEvent(QKeyEvent * e)
 			   << " text \""
 			   << (e->text().isEmpty() ?
 			       "none" :
-			       e->text().latin1())
+			       fromqstr(e->text()))
 			   << "\", ascii \"" << e->ascii() << '"' << endl;
 	QLyXKeySym * sym = new QLyXKeySym();
 	sym->set(e);

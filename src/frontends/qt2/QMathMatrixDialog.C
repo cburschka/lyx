@@ -14,7 +14,7 @@
 #pragma implementation
 #endif
 
-#include "gettext.h"
+#include "qt_helpers.h"
 
 #include "support/lstrings.h"
 
@@ -37,7 +37,7 @@ QMathMatrixDialog::QMathMatrixDialog(QMath * form)
 	: QMathMatrixDialogBase(0, 0, false, 0),
 	form_(form)
 {
-	setCaption(_("LyX: Insert matrix"));
+	setCaption(qt_("LyX: Insert matrix"));
 
 	table->setMinimumSize(100,100);
 	rowsSB->setValue(2);
@@ -78,7 +78,7 @@ void QMathMatrixDialog::change_adaptor()
 void QMathMatrixDialog::slotOK()
 {
 	char const c = v_align_c[valignCO->currentItem()];
-	char const * sh = halignED->text().latin1();
+	string const sh = fromqstr(halignED->text());
 	int const nx = int(columnsSB->value());
 	int const ny = int(rowsSB->value());
 

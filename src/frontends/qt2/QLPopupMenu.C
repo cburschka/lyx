@@ -23,6 +23,7 @@
 #include "QtView.h"
 
 #include "QLPopupMenu.h"
+#include "qt_helpers.h"
 
 #include <boost/scoped_ptr.hpp>
 
@@ -73,7 +74,7 @@ createMenu(QMenuData * parent, MenuItem const * item, Menubar::Pimpl * owner, bo
 {
 	// FIXME: leaks ??
 	QLPopupMenu * pm = new QLPopupMenu(owner, item->submenuname(), is_toplevel);
-	int id = parent->insertItem(getLabel(*item).c_str(), pm);
+	int id = parent->insertItem(toqstr(getLabel(*item)), pm);
 	return make_pair(id, pm);
 }
 
@@ -128,7 +129,7 @@ void QLPopupMenu::populate(Menu * menu)
 				owner_->view()->getLyXFunc().getStatus(m->action());
 			if (status.disabled() && m->optional())
 				continue;
-			insertItem(getLabel(*m).c_str(), m->action());
+			insertItem(toqstr(getLabel(*m)), m->action());
 			setItemEnabled(m->action(), !status.disabled());
 			setItemChecked(m->action(), status.onoff(true));
 		}

@@ -23,6 +23,7 @@
 #include "support/LAssert.h"
 
 #include "QWorkArea.h"
+#include "qt_helpers.h"
 
 #include <qapplication.h>
 #include <qevent.h>
@@ -55,7 +56,7 @@ QWorkArea::QWorkArea(int, int, int, int)
 
 	content_->show();
 
-	content_->setBackgroundColor(lcolor.getX11Name(LColor::background).c_str());
+	content_->setBackgroundColor(toqstr(lcolor.getX11Name(LColor::background)));
 
 	QHBoxLayout * vl = new QHBoxLayout(this);
 	vl->addWidget(content_, 5);
@@ -132,7 +133,7 @@ string const QWorkArea::getClipboard() const
 	QString str = QApplication::clipboard()->text();
 	if (str.isNull())
 		return string();
-	return str.latin1();
+	return fromqstr(str);
 }
 
 
@@ -141,5 +142,5 @@ void QWorkArea::putClipboard(string const & str) const
 #if QT_VERSION >= 300
 	QApplication::clipboard()->setSelectionMode(true);
 #endif
-	QApplication::clipboard()->setText(str.c_str());
+	QApplication::clipboard()->setText(toqstr(str));
 }

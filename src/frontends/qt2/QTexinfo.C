@@ -18,7 +18,7 @@
 #include "QTexinfoDialog.h"
 #include "QTexinfo.h"
 #include "Qt2BC.h"
-#include "gettext.h"
+#include "qt_helpers.h"
 #include "helper_funcs.h"
 
 #include "support/lstrings.h"
@@ -33,7 +33,7 @@ typedef Qt2CB<ControlTexinfo, Qt2DB<QTexinfoDialog> > base_class;
 
 
 QTexinfo::QTexinfo()
-	: base_class(_("LaTeX Information")), warningPosted(false), activeStyle(ControlTexinfo::cls)
+	: base_class(qt_("LaTeX Information")), warningPosted(false), activeStyle(ControlTexinfo::cls)
 {
 }
 
@@ -71,7 +71,7 @@ void QTexinfo::updateStyles(ControlTexinfo::texFileSuffix whichStyle)
 	vector<string> flist = getVectorFromString(str, "\n");
 	for (vector<string>::const_iterator fitem = flist.begin();
 		fitem != flist.end(); ++fitem) {
-		dialog_->fileList->insertItem((*fitem).c_str());
+		dialog_->fileList->insertItem(toqstr((*fitem)));
 	}
 
 	activeStyle = whichStyle;

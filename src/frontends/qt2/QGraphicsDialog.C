@@ -17,7 +17,7 @@
 
 #include "ControlGraphics.h"
 #include "debug.h"
-#include "gettext.h"
+#include "qt_helpers.h"
 #include "LString.h"
 
 #include <qwidget.h>
@@ -91,11 +91,10 @@ void QGraphicsDialog::closeEvent(QCloseEvent * e)
 void QGraphicsDialog::browse_clicked()
 {
 	QString file = QFileDialog::getOpenFileName(
-		QString::null, _("Files (*)"),
-		this, 0, _("Select a graphic file"));
+		QString::null, qt_("Files (*)"),
+		this, 0, qt_("Select a graphic file"));
 	if (!file.isNull()) {
-		string const name = file.latin1();
-		filename->setText(name.c_str());
+		filename->setText(file);
 		form_->changed();
 	}
 }

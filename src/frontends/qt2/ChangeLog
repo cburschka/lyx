@@ -1,3 +1,13 @@
+2002-12-17  John Levon  <levon@movementarian.org>
+
+	* qt_helpers.h:
+	* qt_helpers.C: add fromqstr/toqstr/qt_ for converting
+	  using locale from/to QString
+
+	* all files: use the above
+
+	* QDocumentDialog.C: fix margins properly
+
 2002-12-17  Alfredo Braunstein <abraunst@libero.it>
 
 	* QCommandBuffer.C: added up.xpm and down.xpm to the command buffer

@@ -14,7 +14,7 @@
 #pragma implementation
 #endif
 
-#include "gettext.h"
+#include "qt_helpers.h"
 
 #include "ControlDocument.h"
 #include "QDocument.h"
@@ -54,7 +54,7 @@ typedef Qt2CB<ControlDocument, Qt2DB<QDocumentDialog> > base_class;
 
 
 QDocument::QDocument()
-	: base_class(_("Document Settings"))
+	: base_class(qt_("Document Settings"))
 {
 	vector<frnt::LanguagePair> const langs = frnt::getLanguageData(false);
 	lang_ = getSecond(langs);
@@ -66,8 +66,8 @@ void QDocument::build_dialog()
 	dialog_.reset(new QDocumentDialog(this));
 
 	// biblio
-	dialog_->biblioModule->citeStyleCO->insertItem(_("Author-year"));
-	dialog_->biblioModule->citeStyleCO->insertItem(_("Numerical"));
+	dialog_->biblioModule->citeStyleCO->insertItem(qt_("Author-year"));
+	dialog_->biblioModule->citeStyleCO->insertItem(qt_("Numerical"));
 	dialog_->biblioModule->citeStyleCO->setCurrentItem(0);
 
 	// language & quotes
@@ -76,15 +76,15 @@ void QDocument::build_dialog()
 	vector<frnt::LanguagePair>::const_iterator lend = langs.end();
 	for (; lit != lend; ++lit) {
 		dialog_->langModule->languageCO->insertItem(
-			lit->first.c_str());
+			toqstr(lit->first));
 	}
 
-	dialog_->langModule->quoteStyleCO->insertItem(_("``text''"));
-	dialog_->langModule->quoteStyleCO->insertItem(_("''text''"));
-	dialog_->langModule->quoteStyleCO->insertItem(_(",,text``"));
-	dialog_->langModule->quoteStyleCO->insertItem(_(",,text''"));
-	dialog_->langModule->quoteStyleCO->insertItem(_("쳓ext�"));
-	dialog_->langModule->quoteStyleCO->insertItem(_("퍁ext�"));
+	dialog_->langModule->quoteStyleCO->insertItem(qt_("``text''"));
+	dialog_->langModule->quoteStyleCO->insertItem(qt_("''text''"));
+	dialog_->langModule->quoteStyleCO->insertItem(qt_(",,text``"));
+	dialog_->langModule->quoteStyleCO->insertItem(qt_(",,text''"));
+	dialog_->langModule->quoteStyleCO->insertItem(qt_("쳓ext�"));
+	dialog_->langModule->quoteStyleCO->insertItem(qt_("퍁ext�"));
 
 	// packages
 	char const * items[] = {"default", "auto", "latin1", "latin2",
@@ -94,13 +94,13 @@ void QDocument::build_dialog()
 	dialog_->packagesModule->encodingCO->insertStrList(items);
 
 	dialog_->packagesModule->lspacingCO->insertItem(
-		_("Single"), Spacing::Single);
+		qt_("Single"), Spacing::Single);
 	dialog_->packagesModule->lspacingCO->insertItem(
-		_("OneHalf"), Spacing::Onehalf);
+		qt_("OneHalf"), Spacing::Onehalf);
 	dialog_->packagesModule->lspacingCO->insertItem(
-		_("Double"), Spacing::Double);
+		qt_("Double"), Spacing::Double);
 	dialog_->packagesModule->lspacingCO->insertItem(
-		_("Custom"), Spacing::Other);
+		qt_("Custom"), Spacing::Other);
 
 	for (int n = 0; tex_graphics[n][0]; ++n) {
 		QString enc = tex_graphics[n];
@@ -108,16 +108,23 @@ void QDocument::build_dialog()
 	}
 
 	// paper
-	char const * sizes[] = {
-		_("Default") , _("Custom") , _("US letter") , _("US legal")
-		   , _("US executive") , _("A3") , _("A4") , _("A5")
-		   , _("B3") , _("B4") , _("B5"), 0 };
-	dialog_->paperModule->papersizeCO->insertStrList(sizes);
+	QComboBox * cb = dialog_->paperModule->papersizeCO;
+	cb->insertItem(qt_("Default"));
+       	cb->insertItem(qt_("Custom"));
+       	cb->insertItem(qt_("US letter"));
+       	cb->insertItem(qt_("US legal"));
+	cb->insertItem(qt_("US executive"));
+	cb->insertItem(qt_("A3"));
+	cb->insertItem(qt_("A4"));
+	cb->insertItem(qt_("A5"));
+	cb->insertItem(qt_("B3"));
+	cb->insertItem(qt_("B4"));
+	cb->insertItem(qt_("B5"));
 
 	// layout
 	for (LyXTextClassList::const_iterator cit = textclasslist.begin();
 	     cit != textclasslist.end(); ++cit) {
-		dialog_->layoutModule->classCO->insertItem(cit->description().c_str());
+		dialog_->layoutModule->classCO->insertItem(toqstr(cit->description()));
 	}
 
 	for (int n = 0; tex_fonts[n][0]; ++n) {
@@ -125,21 +132,21 @@ void QDocument::build_dialog()
 		dialog_->layoutModule->fontsCO->insertItem(font);
 	}
 
-	dialog_->layoutModule->fontsizeCO->insertItem(_("default"));
-	dialog_->layoutModule->fontsizeCO->insertItem(_("10"));
-	dialog_->layoutModule->fontsizeCO->insertItem(_("11"));
-	dialog_->layoutModule->fontsizeCO->insertItem(_("12"));
+	dialog_->layoutModule->fontsizeCO->insertItem(qt_("default"));
+	dialog_->layoutModule->fontsizeCO->insertItem(qt_("10"));
+	dialog_->layoutModule->fontsizeCO->insertItem(qt_("11"));
+	dialog_->layoutModule->fontsizeCO->insertItem(qt_("12"));
 
-	dialog_->layoutModule->skipCO->insertItem(_("Smallskip"));
-	dialog_->layoutModule->skipCO->insertItem(_("Medskip"));
-	dialog_->layoutModule->skipCO->insertItem(_("Bigskip"));
-	dialog_->layoutModule->skipCO->insertItem(_("Length"));
+	dialog_->layoutModule->skipCO->insertItem(qt_("Smallskip"));
+	dialog_->layoutModule->skipCO->insertItem(qt_("Medskip"));
+	dialog_->layoutModule->skipCO->insertItem(qt_("Bigskip"));
+	dialog_->layoutModule->skipCO->insertItem(qt_("Length"));
 
-	dialog_->layoutModule->pagestyleCO->insertItem(_("default"));
-	dialog_->layoutModule->pagestyleCO->insertItem(_("empty"));
-	dialog_->layoutModule->pagestyleCO->insertItem(_("plain"));
-	dialog_->layoutModule->pagestyleCO->insertItem(_("headings"));
-	dialog_->layoutModule->pagestyleCO->insertItem(_("fancy"));
+	dialog_->layoutModule->pagestyleCO->insertItem(qt_("default"));
+	dialog_->layoutModule->pagestyleCO->insertItem(qt_("empty"));
+	dialog_->layoutModule->pagestyleCO->insertItem(qt_("plain"));
+	dialog_->layoutModule->pagestyleCO->insertItem(qt_("headings"));
+	dialog_->layoutModule->pagestyleCO->insertItem(qt_("fancy"));
 
 	// margins
 	dialog_->setMargins(0);
@@ -158,7 +165,7 @@ void QDocument::apply()
 
 	// preamble
 	params.preamble =
-		dialog_->preambleModule->preambleMLE->text().latin1();
+		fromqstr(dialog_->preambleModule->preambleMLE->text());
 
 	// biblio
 	params.use_natbib =
@@ -231,13 +238,13 @@ void QDocument::apply()
 	}
 
 	params.graphicsDriver =
-		dialog_->packagesModule->psdriverCO->currentText().latin1();
+		fromqstr(dialog_->packagesModule->psdriverCO->currentText());
 
 	params.use_amsmath =
 		dialog_->packagesModule->amsCB->isChecked();
 
 	params.inputenc =
-		dialog_->packagesModule->encodingCO->currentText().latin1();
+		fromqstr(dialog_->packagesModule->encodingCO->currentText());
 
 	// layout
 	params.textclass =
@@ -246,13 +253,13 @@ void QDocument::apply()
 	//bool succes = controller().classApply();
 
 	params.fonts =
-		dialog_->layoutModule->fontsCO->currentText().latin1();
+		fromqstr(dialog_->layoutModule->fontsCO->currentText());
 
 	params.fontsize =
-		dialog_->layoutModule->fontsizeCO->currentText().latin1();
+		fromqstr(dialog_->layoutModule->fontsizeCO->currentText());
 
 	params.pagestyle =
-		dialog_->layoutModule->pagestyleCO->currentText().latin1();
+		fromqstr(dialog_->layoutModule->pagestyleCO->currentText());
 
 	if (dialog_->layoutModule->indentRB->isChecked())
 		params.paragraph_separation = BufferParams::PARSEP_INDENT;
@@ -288,10 +295,10 @@ void QDocument::apply()
 	}
 
 	params.options =
-		dialog_->layoutModule->optionsLE->text().latin1();
+		fromqstr(dialog_->layoutModule->optionsLE->text());
 
 	params.float_placement =
-		dialog_->layoutModule->floatPlacementLE->text().latin1();
+		fromqstr(dialog_->layoutModule->floatPlacementLE->text());
 
 	// paper
 	params.papersize2 =
@@ -393,7 +400,7 @@ void QDocument::update_contents()
 	}
 
 	// preamble
-	QString preamble = params.preamble.c_str();
+	QString preamble = toqstr(params.preamble);
 	dialog_->preambleModule->preambleMLE->setText(preamble);
 
 	// biblio
@@ -437,7 +444,7 @@ void QDocument::update_contents()
 			dialog_->packagesModule->encodingCO->setCurrentItem(i);
 	}
 
-	QString text = params.graphicsDriver.c_str();
+	QString text = toqstr(params.graphicsDriver);
 	int nitem = dialog_->packagesModule->psdriverCO->count();
 	for (int n = 0; n < nitem ; ++n) {
 		QString enc = tex_graphics[n];
@@ -460,14 +467,14 @@ void QDocument::update_contents()
 	dialog_->packagesModule->lspacingCO->setCurrentItem(nitem);
 	if (params.spacing.getSpace() == Spacing::Other) {
 		dialog_->packagesModule->lspacingLE->setText(
-			tostr(params.spacing.getValue()).c_str());
+			toqstr(tostr(params.spacing.getValue())));
 		dialog_->setLSpacing(3);
 	}
 
 	// layout
 	for (int n = 0; n<dialog_->layoutModule->classCO->count(); ++n) {
 		if (dialog_->layoutModule->classCO->text(n) ==
-		    controller().textClass().description().c_str()) {
+		    toqstr(controller().textClass().description())) {
 			dialog_->layoutModule->classCO->setCurrentItem(n);
 			break;
 		}
@@ -509,7 +516,7 @@ void QDocument::update_contents()
 		skip = 3;
 		string const length = params.getDefSkip().asLyXCommand();
 		dialog_->layoutModule->skipLengthCO->setCurrentItem(LyXLength(length).unit());
-		dialog_->layoutModule->skipLE->setText(tostr(LyXLength(length).value()).c_str());
+		dialog_->layoutModule->skipLE->setText(toqstr(tostr(LyXLength(length).value())));
 		break;
 	}
 	default:
@@ -521,7 +528,7 @@ void QDocument::update_contents()
 
 	if (!params.options.empty()) {
 		dialog_->layoutModule->optionsLE->setText(
-			params.options.c_str());
+			toqstr(params.options));
 	} else {
 		dialog_->layoutModule->optionsLE->setText("");
 	}

@@ -20,7 +20,7 @@
 #include "support/filetools.h"
 #include "support/lstrings.h"
 #include "debug.h"
-#include "gettext.h"
+#include "qt_helpers.h"
 
 #include "lyx_gui.h"
 #include "lyx_main.h"
@@ -170,8 +170,8 @@ void lyx_gui::exit()
 
 string const lyx_gui::hexname(LColor::color col)
 {
-	QColor color(lcolor.getX11Name(col).c_str());
-	return ltrim(color.name().latin1(), "#");
+	QColor color(toqstr(lcolor.getX11Name(col)));
+	return ltrim(fromqstr(color.name()), "#");
 }
 
 

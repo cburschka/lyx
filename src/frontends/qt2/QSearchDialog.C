@@ -18,6 +18,7 @@
 #include "QSearchDialog.h"
 #include "QSearch.h"
 #include "debug.h"
+#include "qt_helpers.h"
 
 #include <qpushbutton.h>
 #include <qcombobox.h>
@@ -25,6 +26,20 @@
 #include <qlineedit.h>
 #include <qlabel.h>
 
+namespace {
+
+void uniqueInsert(QComboBox * box, QString const & text)
+{
+	for (int i = 0; i < box->count(); ++i) {
+		if (box->text(i) == text)
+			return;
+	}
+
+	box->insertItem(text);
+}
+ 
+};
+ 
 
 QSearchDialog::QSearchDialog(QSearch * form)
 	: QSearchDialogBase(0, 0, false, 0),
@@ -66,30 +81,35 @@ void QSearchDialog::findChanged()
 
 void QSearchDialog::findClicked()
 {
-	string const find(findCO->currentText().latin1());
+	string const find(fromqstr(findCO->currentText()));
 	form_->find(find,
 		caseCB->isChecked(),
 		wordsCB->isChecked(),
 		backwardsCB->isChecked());
+	uniqueInsert(findCO, findCO->currentText());
 }
 
 
 void QSearchDialog::replaceClicked()
 {
-	string const find(findCO->currentText().latin1());
-	string const replace(replaceCO->currentText().latin1());
+	string const find(fromqstr(findCO->currentText()));
+	string const replace(fromqstr(replaceCO->currentText()));
 	form_->replace(find, replace,
 		caseCB->isChecked(),
 		wordsCB->isChecked(),
 		false);
+	uniqueInsert(findCO, findCO->currentText());
+	uniqueInsert(replaceCO, replaceCO->currentText());
 }
 
 
 void QSearchDialog::replaceallClicked()
 {
-	form_->replace(findCO->currentText().latin1(),
-		replaceCO->currentText().latin1(),
+	form_->replace(fromqstr(findCO->currentText()),
+		fromqstr(replaceCO->currentText()),
 		caseCB->isChecked(),
 		wordsCB->isChecked(),
 		true);
+	uniqueInsert(findCO, findCO->currentText());
+	uniqueInsert(replaceCO, replaceCO->currentText());
 }

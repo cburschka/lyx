@@ -16,7 +16,7 @@
 
 #include "QSpellcheckerDialog.h"
 #include "QSpellchecker.h"
-#include "gettext.h"
+#include "qt_helpers.h"
 
 #include <qpushbutton.h>
 #include <qlineedit.h>

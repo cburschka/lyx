@@ -15,7 +15,7 @@
 #pragma implementation
 #endif
 
-#include "gettext.h"
+#include "qt_helpers.h"
 
 #include "support/lstrings.h"
 

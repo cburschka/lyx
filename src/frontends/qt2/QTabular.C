@@ -18,7 +18,7 @@
 
 #include "ControlTabular.h"
 #include "insets/insettabular.h"
-#include "gettext.h"
+#include "qt_helpers.h"
 #include "support/lstrings.h"
 #include "lyxrc.h"
 
@@ -35,7 +35,7 @@
 typedef Qt2CB<ControlTabular, Qt2DB<QTabularDialog> > base_class;
 
 QTabular::QTabular()
-	: base_class(_("LyX: Edit Table"))
+	: base_class(qt_("LyX: Edit Table"))
 {
 }
 
@@ -135,8 +135,8 @@ void QTabular::update_contents()
 	int const row(tabular->row_of_cell(cell));
 	int const col(tabular->column_of_cell(cell));
 
-	dialog_->tabularRowED->setText(tostr(row + 1).c_str());
-	dialog_->tabularColumnED->setText(tostr(col + 1).c_str());
+	dialog_->tabularRowED->setText(toqstr(tostr(row + 1)));
+	dialog_->tabularColumnED->setText(toqstr(tostr(col + 1)));
 
 	bool const multicol(controller().isMulticolumnCell());
 
@@ -160,14 +160,14 @@ void QTabular::update_contents()
 		pwidth = tabular->GetColumnPWidth(cell);
 	}
 
-	dialog_->specialAlignmentED->setText(special.c_str());
+	dialog_->specialAlignmentED->setText(toqstr(special));
 
 	bool const isReadonly = bc().bp().isReadOnly();
 	dialog_->specialAlignmentED->setEnabled(!isReadonly);
 
 	LyXLength::UNIT default_unit = controller().metric() ? LyXLength::CM : LyXLength::IN;
 	if (!pwidth.zero()) {
-		dialog_->widthED->setText(tostr(pwidth.value()).c_str());
+		dialog_->widthED->setText(toqstr(tostr(pwidth.value())));
 		dialog_->widthUnit->setCurrentItem(pwidth.unit());
 	} else {
 		dialog_->widthED->setText("");
@@ -177,11 +177,11 @@ void QTabular::update_contents()
 	dialog_->widthUnit->setEnabled(!isReadonly);
 
 	dialog_->hAlignCB->clear();
-	dialog_->hAlignCB->insertItem(_("Left"));
-	dialog_->hAlignCB->insertItem(_("Center"));
-	dialog_->hAlignCB->insertItem(_("Right"));
+	dialog_->hAlignCB->insertItem(qt_("Left"));
+	dialog_->hAlignCB->insertItem(qt_("Center"));
+	dialog_->hAlignCB->insertItem(qt_("Right"));
 	if (!multicol && !pwidth.zero())
-		dialog_->hAlignCB->insertItem(_("Block"));
+		dialog_->hAlignCB->insertItem(qt_("Block"));
 
 	int align = 0;
 	switch (tabular->GetAlignment(cell)) {
@@ -345,7 +345,7 @@ void QTabular::closeGUI()
 	}
 
 	// apply the special alignment
-	str1 = dialog_->specialAlignmentED->text().latin1();
+	str1 = fromqstr(dialog_->specialAlignmentED->text());
 	if (controller().isMulticolumnCell())
 		str2 = tabular->GetAlignSpecial(cell, LyXTabular::SET_SPECIAL_MULTI);
 	else

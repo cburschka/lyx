@@ -23,7 +23,7 @@
 #include "FloatList.h"
 #include "support/lstrings.h"
 #include "support/LAssert.h"
-#include "gettext.h"
+#include "qt_helpers.h"
 #include "debug.h"
 
 #include "QtView.h"

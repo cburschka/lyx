@@ -28,7 +28,7 @@
 
 #include "helper_funcs.h" // getStringFromVector
 #include "support/lstrings.h" // frontStrip, strip
-#include "gettext.h"
+#include "qt_helpers.h"
 #include "insets/insetref.h"
 
 using std::find;
@@ -42,7 +42,7 @@ typedef Qt2CB<ControlRef, Qt2DB<QRefDialog> > base_class;
 
 
 QRef::QRef()
-	: base_class(_("Cross Reference")),
+	: base_class(qt_("Cross Reference")),
 	sort_(false), at_ref_(false)
 {
 }
@@ -67,9 +67,9 @@ void QRef::update_contents()
 {
 	InsetCommandParams const & params = controller().params();
 
-	dialog_->referenceED->setText(params.getContents().c_str());
+	dialog_->referenceED->setText(toqstr(params.getContents()));
 
-	dialog_->nameED->setText(params.getOptions().c_str());
+	dialog_->nameED->setText(toqstr(params.getOptions()));
 	dialog_->nameED->setReadOnly(!nameAllowed() && !readOnly());
 
 	dialog_->typeCO->setCurrentItem(InsetRef::getType(params.getCmdName()));
@@ -84,7 +84,7 @@ void QRef::update_contents()
 	vector<string> const buffers = controller().getBufferList();
 	for (vector<string>::const_iterator it = buffers.begin();
 		it != buffers.end(); ++it) {
-		dialog_->bufferCO->insertItem(it->c_str());
+		dialog_->bufferCO->insertItem(toqstr(*it));
 	}
 	dialog_->bufferCO->setCurrentItem(controller().getBufferNum());
 
@@ -97,8 +97,8 @@ void QRef::apply()
 	InsetCommandParams & params = controller().params();
 
 	params.setCmdName(InsetRef::getName(dialog_->typeCO->currentItem()));
-	params.setContents(dialog_->referenceED->text().latin1());
-	params.setOptions(dialog_->nameED->text().latin1());
+	params.setContents(fromqstr(dialog_->referenceED->text()));
+	params.setOptions(fromqstr(dialog_->nameED->text()));
 }
 
 
@@ -118,23 +118,23 @@ bool QRef::typeAllowed()
 
 void QRef::setGoBack()
 {
-	dialog_->gotoPB->setText(_("&Go back"));
+	dialog_->gotoPB->setText(qt_("&Go back"));
 	QToolTip::remove(dialog_->gotoPB);
-	QToolTip::add(dialog_->gotoPB, _("Go back"));
+	QToolTip::add(dialog_->gotoPB, qt_("Go back"));
 }
 
 
 void QRef::setGotoRef()
 {
-	dialog_->gotoPB->setText(_("&Goto"));
+	dialog_->gotoPB->setText(qt_("&Goto"));
 	QToolTip::remove(dialog_->gotoPB);
-	QToolTip::add(dialog_->gotoPB, _("Go to reference"));
+	QToolTip::add(dialog_->gotoPB, qt_("Go to reference"));
 }
 
 
 void QRef::gotoRef()
 {
-	string ref(dialog_->referenceED->text().latin1());
+	string ref(fromqstr(dialog_->referenceED->text()));
 
 	if (at_ref_) {
 		// go back
@@ -155,20 +155,20 @@ void QRef::redoRefs()
 
 	// need this because Qt will send a highlight() here for
 	// the first item inserted
-	string const tmp(dialog_->referenceED->text().latin1());
+	QString const tmp(dialog_->referenceED->text());
 
 	for (std::vector<string>::const_iterator iter = refs_.begin();
 		iter != refs_.end(); ++iter) {
 		if (sort_)
-			dialog_->refsLB->inSort(iter->c_str());
+			dialog_->refsLB->inSort(toqstr(*iter));
 		else
-			dialog_->refsLB->insertItem(iter->c_str());
+			dialog_->refsLB->insertItem(toqstr(*iter));
 	}
 
-	dialog_->referenceED->setText(tmp.c_str());
+	dialog_->referenceED->setText(tmp);
 
 	for (unsigned int i = 0; i < dialog_->refsLB->count(); ++i) {
-		if (!compare(tmp.c_str(), dialog_->refsLB->text(i).latin1()))
+		if (tmp != dialog_->refsLB->text(i))
 			dialog_->refsLB->setCurrentItem(i);
 	}
 

@@ -23,6 +23,7 @@
 #include "tabular.h"
 #include "lengthcombo.h"
 #include "qsetborder.h"
+#include "qt_helpers.h"
 
 #include <qcheckbox.h>
 #include <qpushbutton.h>
@@ -136,7 +137,7 @@ void QTabularDialog::bottomBorder_changed()
 
 void QTabularDialog::specialAlignment_changed()
 {
-	string special = specialAlignmentED->text().latin1();
+	string special = fromqstr(specialAlignmentED->text());
 	if (form_->controller().isMulticolumnCell())
 		form_->controller().set(LyXTabular::SET_SPECIAL_MULTI, special);
 	else

@@ -25,7 +25,7 @@
 #include <qpushbutton.h>
 
 #include "debug.h"
-#include "gettext.h"
+#include "qt_helpers.h"
 #include "converter.h"
 
 using std::vector;
@@ -34,7 +34,7 @@ typedef Qt2CB<ControlSendto, Qt2DB<QSendtoDialog> > base_class;
 
 
 QSendto::QSendto()
-	: base_class(_("Send document to command"))
+	: base_class(qt_("Send document to command"))
 {
 }
 
@@ -71,10 +71,10 @@ void QSendto::update_contents()
 
 	for (vector<string>::const_iterator it = keys.begin();
 	     it < keys.end(); ++it) {
-		dialog_->formatLB->insertItem(it->c_str());
+		dialog_->formatLB->insertItem(toqstr(*it));
 	}
 
-	dialog_->commandCO->insertItem(controller().getCommand().c_str());
+	dialog_->commandCO->insertItem(toqstr(controller().getCommand()));
 }
 
 
@@ -85,7 +85,7 @@ void QSendto::apply()
 	if (line < 0 || line > dialog_->formatLB->count())
 		return;
 
-	string const cmd(dialog_->commandCO->currentText().latin1());
+	string const cmd(fromqstr(dialog_->commandCO->currentText()));
 
 	controller().setFormat(all_formats_[line]);
 	controller().setCommand(cmd);

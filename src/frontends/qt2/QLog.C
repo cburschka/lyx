@@ -15,7 +15,7 @@
 #endif
 
 #include "LyXView.h"
-#include "gettext.h"
+#include "qt_helpers.h"
 #include "ControlLog.h"
 #include "Lsstream.h"
 
@@ -34,7 +34,7 @@ using std::getline;
 typedef Qt2CB<ControlLog, Qt2DB<QLogDialog> > base_class;
 
 QLog::QLog()
-	: base_class(_("Log"))
+	: base_class(qt_("Log"))
 {
 }
 
@@ -53,23 +53,23 @@ void QLog::update_contents()
 		controller().logfile();
 
 	if (logfile.first == Buffer::buildlog)
-		dialog_->setCaption(_("Build log"));
+		dialog_->setCaption(qt_("Build log"));
 	else
-		dialog_->setCaption(_("LaTeX log"));
+		dialog_->setCaption(qt_("LaTeX log"));
 
 	dialog_->logTV->setText("");
 
 	ifstream ifstr(logfile.second.c_str());
 	if (!ifstr) {
 		if (logfile.first == Buffer::buildlog)
-			dialog_->logTV->setText(_("No build log file found"));
+			dialog_->logTV->setText(qt_("No build log file found"));
 		else
-			dialog_->logTV->setText(_("No LaTeX log file found"));
+			dialog_->logTV->setText(qt_("No LaTeX log file found"));
 		return;
 	}
 
 	ostringstream ost;
 	ost << ifstr.rdbuf();
 
-	dialog_->logTV->setText(ost.str().c_str());
+	dialog_->logTV->setText(toqstr(ost.str()));
 }

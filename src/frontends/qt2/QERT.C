@@ -15,7 +15,7 @@
 #endif
 
 #include "ControlERT.h"
-#include "gettext.h"
+#include "qt_helpers.h"
 
 #include <qradiobutton.h>
 #include <qpushbutton.h>
@@ -28,7 +28,7 @@ typedef Qt2CB<ControlERT, Qt2DB<QERTDialog> > base_class;
 
 
 QERT::QERT()
-	: base_class(_("LaTeX ERT"))
+	: base_class(qt_("LaTeX ERT"))
 {
 }
 

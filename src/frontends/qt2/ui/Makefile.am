@@ -21,7 +21,7 @@ nodist_libqt2ui_la_SOURCES = $(UIDIALOGS)
 libqt2ui.la: $(libqt2ui_la_OBJECTS) $(libqt2ui_la_DEPENDENCIES)
 
 # Use _() for localization instead of tr() or trUtf8()
-UICFLAGS=-tr _
+UICFLAGS=-tr qt_
 
 QAskForTextDialog.h: QAskForTextDialog.ui
 	$(UIC) $(UICFLAGS) $< -o $@

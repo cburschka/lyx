@@ -54,37 +54,6 @@ PB - push button
 (FIXME: complete this)
 
  
-Dialog		Maintainer	MVC conversion
-----------------------------------------------
-About		John		Done
-Bibitem		John		Done
-Bibtex		John		Done
-Character	Edwin		Done
-Citation	Kalle		Done
-Document	Kalle		Waiting for MVC
-ERT		John		Done
-Error		John		Done 
-External	John		Done 
-Graphics	John		Done
-Include		John		Done 
-Index		Kalle		Done
-Log		John		Done
-Minipage	John		Done 
-Paragraph	Edwin		Waiting to be updated
-Preamble	John		Done
-Print		Edwin		Done
-Ref		Kalle		Done
-Search		Edwin		Done
-Spellchecker	John		Done
-Splash		Edwin
-Tabular				Waiting for MVC
-TabularCreate	Edwin		Done
-Thesaurus	John		Done
-Toc		Kalle		Waiting to be updated
-Url		Kalle		Done
-VCLog		John		Done
-
-
 Stuff to be aware of
 --------------------
 
@@ -103,3 +72,14 @@ ex.
 
 	connect(list, SIGNAL(selected(QString const &)),
 		this, SLOT(complete_selected(QString const &)));
+
+Qt, Unicode, and LyX
+--------------------
+
+LyX isn't unicoded yet. But you should follow these simple rules :
+
+o Use qt_() not _() in code
+o Use fromqstr and toqstr NOT .latin1() / .c_str()
+
+Using these functions (in qt_helpers.h) will make sure we use
+the right locale for converting to Qt's QString, which is unicode.
