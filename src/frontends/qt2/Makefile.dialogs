@@ -22,6 +22,7 @@ DIALOGS = \
 	QSearch \
 	QSpellchecker \
 	QTabularCreate \
+	QTexinfo \
 	QThesaurus \
 	QToc \
 	QURL \
@@ -70,6 +71,8 @@ DIALOGSOURCES = \
 	QSpellchecker.C QSpellcheckerDialog.C \
 	QTabularCreate.h QTabularCreateDialog.h \
 	QTabularCreate.C QTabularCreateDialog.C \
+	QTexinfo.h QTexinfoDialog.h \
+	QTexinfo.C QTexinfoDialog.C \
 	QThesaurus.h QThesaurusDialog.h \
 	QThesaurus.C QThesaurusDialog.C \
 	QToc.h QTocDialog.h \
@@ -101,6 +104,7 @@ MOCDIALOGS = \
 	QSearchDialog_moc.C \
 	QSpellcheckerDialog_moc.C \
 	QTabularCreateDialog_moc.C \
+	QTexinfoDialog_moc.C \
 	QThesaurusDialog_moc.C \
 	QTocDialog_moc.C \
 	QURLDialog_moc.C \
@@ -149,6 +153,8 @@ UIDIALOGS = \
 	QSpellcheckerDialogBase.C \
 	QTabularCreateDialogBase.h \
 	QTabularCreateDialogBase.C \
+	QTexinfoDialogBase.h \
+	QTexinfoDialogBase.C \
 	QThesaurusDialogBase.h \
 	QThesaurusDialogBase.C \
 	QTocDialogBase.h \
@@ -180,7 +186,12 @@ UIMOCDIALOGS = \
 	QSearchDialogBase_moc.C \
 	QSpellcheckerDialogBase_moc.C \
 	QTabularCreateDialogBase_moc.C \
+	QTexinfoDialogBase_moc.C \
 	QThesaurusDialogBase_moc.C \
 	QTocDialogBase_moc.C \
 	QURLDialogBase_moc.C \
 	QVCLogDialogBase_moc.C
+
+
+
+

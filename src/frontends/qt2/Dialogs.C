@@ -31,6 +31,7 @@
 #include "QSearchDialog.h"
 #include "QSpellcheckerDialog.h"
 #include "QTabularCreateDialog.h"
+#include "QTexinfoDialog.h"
 #include "QThesaurusDialog.h"
 #include "QURLDialog.h"
 #include "QVCLogDialog.h"
@@ -55,6 +56,7 @@
 #include "QSearch.h"
 #include "QSpellchecker.h"
 #include "QTabularCreate.h"
+#include "QTexinfo.h"
 #include "QThesaurus.h"
 #include "QURL.h"
 #include "QVCLog.h"
@@ -109,6 +111,7 @@ Dialogs::Dialogs(LyXView * lv)
 	add(new GUISearch<QSearch, Qt2BC>(*lv, *this)); 
 	add(new GUISpellchecker<QSpellchecker, Qt2BC>(*lv, *this));
 	add(new GUITabularCreate<QTabularCreate, Qt2BC>(*lv, *this));
+	add(new GUITexinfo<QTexinfo, Qt2BC>(*lv, *this));
 	add(new GUIThesaurus<QThesaurus, Qt2BC>(*lv, *this));
 	add(new GUIUrl<QURL, Qt2BC>(*lv, *this));
 	add(new GUIVCLog<QVCLog, Qt2BC>(*lv, *this));

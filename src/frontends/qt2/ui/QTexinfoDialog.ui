@@ -1,0 +1,314 @@
+<!DOCTYPE UI><UI>
+<class>QTexinfoDialogBase</class>
+<include location="global">config.h</include>
+<include location="local">gettext.h</include>
+<widget>
+    <class>QDialog</class>
+    <property stdset="1">
+        <name>name</name>
+        <cstring>QTexinfoDialogBase</cstring>
+    </property>
+    <property stdset="1">
+        <name>geometry</name>
+        <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>299</width>
+            <height>290</height>
+        </rect>
+    </property>
+    <property stdset="1">
+        <name>caption</name>
+        <string>Form1</string>
+    </property>
+    <vbox>
+        <property stdset="1">
+            <name>margin</name>
+            <number>11</number>
+        </property>
+        <property stdset="1">
+            <name>spacing</name>
+            <number>6</number>
+        </property>
+        <widget>
+            <class>QLayoutWidget</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>Layout1</cstring>
+            </property>
+            <hbox>
+                <property stdset="1">
+                    <name>margin</name>
+                    <number>0</number>
+                </property>
+                <property stdset="1">
+                    <name>spacing</name>
+                    <number>6</number>
+                </property>
+                <widget>
+                    <class>QComboBox</class>
+                    <item>
+                        <property>
+                            <name>text</name>
+                            <string>LaTeX classes</string>
+                        </property>
+                    </item>
+                    <item>
+                        <property>
+                            <name>text</name>
+                            <string>LaTeX styles</string>
+                        </property>
+                    </item>
+                    <item>
+                        <property>
+                            <name>text</name>
+                            <string>BibTeX styles</string>
+                        </property>
+                    </item>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>whatStyle</cstring>
+                    </property>
+                    <property>
+                        <name>toolTip</name>
+                        <string>Selected classes or styles</string>
+                    </property>
+                </widget>
+                <spacer>
+                    <property>
+                        <name>name</name>
+                        <cstring>Spacer1</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>orientation</name>
+                        <enum>Horizontal</enum>
+                    </property>
+                    <property stdset="1">
+                        <name>sizeType</name>
+                        <enum>Expanding</enum>
+                    </property>
+                    <property>
+                        <name>sizeHint</name>
+                        <size>
+                            <width>20</width>
+                            <height>20</height>
+                        </size>
+                    </property>
+                </spacer>
+                <widget>
+                    <class>QCheckBox</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>path</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>text</name>
+                        <string>Show &amp;path</string>
+                    </property>
+                    <property>
+                        <name>toolTip</name>
+                        <string>Toggles view of the file list</string>
+                    </property>
+                </widget>
+            </hbox>
+        </widget>
+        <widget>
+            <class>QListBox</class>
+            <item>
+                <property>
+                    <name>text</name>
+                    <string>New Item</string>
+                </property>
+            </item>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>fileList</cstring>
+            </property>
+            <property>
+                <name>toolTip</name>
+                <string>Installed files</string>
+            </property>
+        </widget>
+        <widget>
+            <class>QLayoutWidget</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>Layout3</cstring>
+            </property>
+            <hbox>
+                <property stdset="1">
+                    <name>margin</name>
+                    <number>0</number>
+                </property>
+                <property stdset="1">
+                    <name>spacing</name>
+                    <number>6</number>
+                </property>
+                <spacer>
+                    <property>
+                        <name>name</name>
+                        <cstring>Spacer5</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>orientation</name>
+                        <enum>Horizontal</enum>
+                    </property>
+                    <property stdset="1">
+                        <name>sizeType</name>
+                        <enum>Expanding</enum>
+                    </property>
+                    <property>
+                        <name>sizeHint</name>
+                        <size>
+                            <width>20</width>
+                            <height>20</height>
+                        </size>
+                    </property>
+                </spacer>
+                <widget>
+                    <class>QPushButton</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>rescanPB</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>text</name>
+                        <string>&amp;Rescan</string>
+                    </property>
+                    <property>
+                        <name>toolTip</name>
+                        <string>Built new file list</string>
+                    </property>
+                </widget>
+                <widget>
+                    <class>QPushButton</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>viewPB</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>text</name>
+                        <string>&amp;View</string>
+                    </property>
+                    <property>
+                        <name>toolTip</name>
+                        <string>Show contents of marked file. Only possible when files are shown with path</string>
+                    </property>
+                </widget>
+            </hbox>
+        </widget>
+        <widget>
+            <class>QLayoutWidget</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>Layout2</cstring>
+            </property>
+            <hbox>
+                <property stdset="1">
+                    <name>margin</name>
+                    <number>0</number>
+                </property>
+                <property stdset="1">
+                    <name>spacing</name>
+                    <number>6</number>
+                </property>
+                <widget>
+                    <class>QPushButton</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>helpPB</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>text</name>
+                        <string>&amp;Help</string>
+                    </property>
+                    <property>
+                        <name>toolTip</name>
+                        <string>Bring up help file</string>
+                    </property>
+                </widget>
+                <spacer>
+                    <property>
+                        <name>name</name>
+                        <cstring>Spacer4</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>orientation</name>
+                        <enum>Horizontal</enum>
+                    </property>
+                    <property stdset="1">
+                        <name>sizeType</name>
+                        <enum>Expanding</enum>
+                    </property>
+                    <property>
+                        <name>sizeHint</name>
+                        <size>
+                            <width>20</width>
+                            <height>20</height>
+                        </size>
+                    </property>
+                </spacer>
+                <widget>
+                    <class>QPushButton</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>closePB</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>text</name>
+                        <string>&amp;Close</string>
+                    </property>
+                    <property>
+                        <name>toolTip</name>
+                        <string>Close this dialog</string>
+                    </property>
+                </widget>
+            </hbox>
+        </widget>
+    </vbox>
+</widget>
+<connections>
+    <connection>
+        <sender>viewPB</sender>
+        <signal>clicked()</signal>
+        <receiver>QTexinfoDialogBase</receiver>
+        <slot>viewClicked()</slot>
+    </connection>
+    <connection>
+        <sender>helpPB</sender>
+        <signal>clicked()</signal>
+        <receiver>QTexinfoDialogBase</receiver>
+        <slot>helpClicked()</slot>
+    </connection>
+    <connection>
+        <sender>rescanPB</sender>
+        <signal>clicked()</signal>
+        <receiver>QTexinfoDialogBase</receiver>
+        <slot>rescanClicked()</slot>
+    </connection>
+    <connection>
+        <sender>path</sender>
+        <signal>stateChanged(int)</signal>
+        <receiver>QTexinfoDialogBase</receiver>
+        <slot>update()</slot>
+    </connection>
+    <connection>
+        <sender>whatStyle</sender>
+        <signal>activated(int)</signal>
+        <receiver>QTexinfoDialogBase</receiver>
+        <slot>update()</slot>
+    </connection>
+    <slot access="protected">helpClicked()</slot>
+    <slot access="protected">rescanClicked()</slot>
+    <slot access="protected">update()</slot>
+    <slot access="protected">viewClicked()</slot>
+</connections>
+<tabstops>
+    <tabstop>whatStyle</tabstop>
+    <tabstop>path</tabstop>
+    <tabstop>viewPB</tabstop>
+    <tabstop>rescanPB</tabstop>
+    <tabstop>helpPB</tabstop>
+    <tabstop>closePB</tabstop>
+</tabstops>
+</UI>
