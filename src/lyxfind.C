@@ -20,11 +20,11 @@
 #include "CutAndPaste.h"
 #include "BufferView.h"
 #include "debug.h"
-#include "iterators.h"
 #include "funcrequest.h"
 #include "gettext.h"
 #include "lyxtext.h"
 #include "paragraph.h"
+#include "pariterator.h"
 #include "undo.h"
 
 #include "frontends/Alert.h"

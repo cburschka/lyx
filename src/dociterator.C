@@ -294,11 +294,19 @@ void DocumentIterator::forwardPos()
 }
 
 
+void DocumentIterator::forwardPar()
+{
+	forwardPos();
+	while (!empty() && (!inTexted() || pos() != 0))
+		forwardPos();
+}
+
+
 void DocumentIterator::forwardChar()
 {
-	forwardPos(); 
+	forwardPos();
 	while (size() != 0 && pos() == lastpos())
-		forwardPos();
+		forwardPos(); 
 }
 
 
@@ -314,62 +322,6 @@ void DocumentIterator::backwardChar()
 {
 	lyxerr << "not implemented" << endl;
 	BOOST_ASSERT(false);
-}
-
-
-void DocumentIterator::forwardPar()
-{
-	CursorSlice & top = back();
-	lyxerr << "XXX " << *this << endl;
-
-	// move into an inset to the right if possible
-	InsetBase * n = 0;
-	if (top.pos() != lastpos()) {
-		// this is impossible for pos() == size()
-		if (inMathed()) {
-			n = (top.cell().begin() + top.pos())->nucleus();
-		} else {
-			if (paragraph().isInset(top.pos()))
-				n = paragraph().getInset(top.pos());
-		}
-	}
-
-	if (n && n->isActive()) {
-		lyxerr << "... descend" << endl;
-		push_back(CursorSlice(*n));
-		return;
-	}
-
-	// otherwise move on one cell back if possible
-	if (top.pos() < lastpos()) {
-		lyxerr << "... next pos" << endl;
-		++top.pos();
-		return;
-	}
-
-	// otherwise move on one cell back if possible
-	if (top.par() < lastpar()) {
-		lyxerr << "... next par" << endl;
-		++top.par();
-		top.pos() = 0;
-		return;
-	}
-
-	// otherwise try to move on one cell if possible
-	while (top.idx() < top.lastidx()) {
-		lyxerr << "... next idx" 
-			<< " was: " << top.idx() << " max: " << top.lastidx() << endl;
-		++top.idx();
-		top.par() = 0;
-		top.pos() = 0;
-		return;
-	}
-
-	// otherwise leave inset an jump over inset as a whole
-	pop_back();
-	// 'top' is invalid now...
-	if (size())
-		++back().pos();
 }
 
 

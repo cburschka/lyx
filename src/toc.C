@@ -16,9 +16,9 @@
 #include "buffer.h"
 #include "bufferparams.h"
 #include "funcrequest.h"
-#include "iterators.h"
 #include "LyXAction.h"
 #include "paragraph.h"
+#include "pariterator.h"
 
 #include "frontends/LyXView.h"
 

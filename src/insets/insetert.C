@@ -116,8 +116,8 @@ string const InsetERT::editMessage() const
 int InsetERT::latex(Buffer const &, ostream & os,
 		    OutputParams const &) const
 {
-	ParagraphList::iterator par = paragraphs().begin();
-	ParagraphList::iterator end = paragraphs().end();
+	ParagraphList::const_iterator par = paragraphs().begin();
+	ParagraphList::const_iterator end = paragraphs().end();
 
 	int lines = 0;
 	while (par != end) {
@@ -155,8 +155,8 @@ int InsetERT::plaintext(Buffer const &, ostream &,
 int InsetERT::linuxdoc(Buffer const &, ostream & os,
 		       OutputParams const &) const
 {
-	ParagraphList::iterator par = paragraphs().begin();
-	ParagraphList::iterator end = paragraphs().end();
+	ParagraphList::const_iterator par = paragraphs().begin();
+	ParagraphList::const_iterator end = paragraphs().end();
 
 	int lines = 0;
 	while (par != end) {
@@ -183,8 +183,8 @@ int InsetERT::linuxdoc(Buffer const &, ostream & os,
 int InsetERT::docbook(Buffer const &, ostream & os,
 		      OutputParams const &) const
 {
-	ParagraphList::iterator par = paragraphs().begin();
-	ParagraphList::iterator end = paragraphs().end();
+	ParagraphList::const_iterator par = paragraphs().begin();
+	ParagraphList::const_iterator end = paragraphs().end();
 
 	int lines = 0;
 	while (par != end) {

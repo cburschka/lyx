@@ -37,7 +37,6 @@
 #include "gettext.h"
 #include "importer.h"
 #include "intl.h"
-#include "iterators.h"
 #include "kbmap.h"
 #include "LColor.h"
 #include "lyx_cb.h"
@@ -48,6 +47,7 @@
 #include "lyxserver.h"
 #include "lyxvc.h"
 #include "paragraph.h"
+#include "pariterator.h"
 #include "ParagraphParameters.h"
 #include "undo.h"
 

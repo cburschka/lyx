@@ -1,6 +1,16 @@
 
 2004-03-28  Alfredo Braunstein  <abraunst@lyx.org>
 
+	* insettext.[Ch]: add a default ctor. implement const version of
+	paragraphs()
+	* insetcharstyle.C:
+	* insetert.C:
+	* insetfloat.C:
+	* insetlabel.C:
+	* insetwrap.C: adjust
+
+2004-03-28  Alfredo Braunstein  <abraunst@lyx.org>
+
 	* insettext.h: add insetAllowed returning true by default (fixing
 	vanishing insets problem)
 

@@ -1,6 +1,23 @@
 
 2004-03-28  Alfredo Braunstein  <abraunst@lyx.org>
 
+	* dociterator.C: implement forwardPar
+	* iterators.[Ch]: remove, replaced by
+	* pariterator.[Ch]: this. derive ParIterator from DocumentIterator
+	* BufferView.C:
+	* BufferView_pimpl.C:
+	* CutAndPaste.C:
+	* buffer.C:
+	* bufferview_funcs.C:
+	* cursor.C:
+	* lyxfind.C
+	* lyxfunc.C
+	* paragraph_funcs.C
+	* toc.C:  
+	* Makefile.am: adjust
+
+2004-03-28  Alfredo Braunstein  <abraunst@lyx.org>
+
 	* CutAndPaste.C (pasteSelection): fix 2 crashes
 	(eraseSelection): fix a crash
 	* paragraph_funcs.C: remove a warning

@@ -14,9 +14,9 @@
 #include "buffer.h"
 #include "BufferView.h"
 #include "debug.h"
-#include "iterators.h"
 #include "lyxtext.h"
 #include "paragraph.h"
+#include "pariterator.h"
 
 using std::endl;
 using std::string;

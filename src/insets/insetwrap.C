@@ -223,8 +223,8 @@ bool InsetWrap::showInsetDialog(BufferView * bv) const
 void InsetWrap::addToToc(lyx::toc::TocList & toclist, Buffer const & buf) const
 {
 	// Now find the caption in the float...
-	ParagraphList::iterator tmp = paragraphs().begin();
-	ParagraphList::iterator end = paragraphs().end();
+	ParagraphList::const_iterator tmp = paragraphs().begin();
+	ParagraphList::const_iterator end = paragraphs().end();
 
 	for (; tmp != end; ++tmp) {
 		if (tmp->layout()->name() == caplayout) {

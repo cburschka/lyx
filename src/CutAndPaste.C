@@ -21,13 +21,13 @@
 #include "cursor.h"
 #include "errorlist.h"
 #include "gettext.h"
-#include "iterators.h"
 #include "lyxtext.h"
 #include "lyxtextclasslist.h"
 #include "paragraph.h"
 #include "paragraph_funcs.h"
 #include "ParagraphParameters.h"
 #include "ParagraphList_fwd.h"
+#include "pariterator.h"
 #include "undo.h"
 
 #include "insets/insettabular.h"
@@ -81,8 +81,12 @@ int SwitchLayoutsBetweenClasses(textclass_type c1, textclass_type c2,
 
 	LyXTextClass const & tclass1 = textclasslist[c1];
 	LyXTextClass const & tclass2 = textclasslist[c2];
-	ParIterator end = ParIterator(pars.size(), pars);
-	for (ParIterator it = ParIterator(0, pars); it != end; ++it) {
+
+	InsetText in;
+	std::swap(in.paragraphs(), pars);
+	
+	ParIterator end = ParIterator(in, pars.size());
+	for (ParIterator it = ParIterator(in, 0); it != end; ++it) {
 		string const name = it->layout()->name();
 		bool hasLayout = tclass2.hasLayout(name);
 
@@ -103,6 +107,7 @@ int SwitchLayoutsBetweenClasses(textclass_type c1, textclass_type c2,
 						      it->size()));
 		}
 	}
+	std::swap(in.paragraphs(), pars);
 	return ret;
 }
 
@@ -301,8 +306,11 @@ pasteSelection(Buffer const & buffer, ParagraphList & pars,
 
 	// Prepare the paragraphs and insets for insertion.
 	// A couple of insets store buffer references so need updating.
-	ParIterator fpit(0, insertion);
-	ParIterator fend(insertion.size(), insertion);
+	InsetText in;
+	std::swap(in.paragraphs(), insertion);
+
+	ParIterator fpit(in, 0);
+	ParIterator fend(in, insertion.size());
 
 	for (; fpit != fend; ++fpit) {
 		InsetList::iterator lit = fpit->insetlist.begin();
@@ -321,7 +329,8 @@ pasteSelection(Buffer const & buffer, ParagraphList & pars,
 			}
 		}
 	}
-
+	std::swap(in.paragraphs(), insertion);
+	
 	// Split the paragraph for inserting the buf if necessary.
 	bool did_split = false;
 	if (pars[pit].size() || pit + 1 == par_type(pars.size())) {

@@ -165,8 +165,6 @@ lyx_SOURCES = \
 	importer.h \
 	intl.C \
 	intl.h \
-	iterators.C \
-	iterators.h \
 	insetiterator.C \
 	insetiterator.h \
 	kbmap.C \
@@ -243,6 +241,8 @@ lyx_SOURCES = \
 	paragraph_funcs.h \
 	paragraph_pimpl.C \
 	paragraph_pimpl.h \
+	pariterator.C \
+	pariterator.h \
 	SpellBase.h \
 	ispell.C \
 	ispell.h \

@@ -25,13 +25,13 @@
 #include "funcrequest.h"
 #include "gettext.h"
 #include "insetiterator.h"
-#include "iterators.h"
 #include "language.h"
 #include "lyxlayout.h"
 #include "lyxtext.h"
 #include "lyxtextclass.h"
 #include "paragraph.h"
 #include "paragraph_funcs.h"
+#include "pariterator.h"
 #include "texrow.h"
 #include "undo.h"
 #include "WordLangTuple.h"
@@ -368,13 +368,7 @@ LyXText * BufferView::text() const
 void BufferView::setCursor(ParIterator const & par, lyx::pos_type pos)
 {
 	LCursor & cur = cursor();
-	cur.reset(buffer()->inset());
-	ParIterator::PosHolder const & positions = par.positions();
-	int const last = par.size() - 1;
-	for (int i = 0; i < last; ++i)
-		(*positions[i].it)->inset->edit(cur, true);
-	cur.resetAnchor();
-	par.text(*buffer())->setCursor(cur, par.pit(), pos);
+	cur.setCursor(makeDocumentIterator(par, pos), false);
 }
 
 
@@ -393,20 +387,20 @@ Ab.
 */
 
 void BufferView::putSelectionAt(DocumentIterator const & cur,
-		      int length, bool backwards)
+				int length, bool backwards)
 {
 	ParIterator par(cur);
 
 	cursor().clearSelection();
 
-	LyXText * text = par.text(*buffer());
+	LyXText & text = *par.text();
 	setCursor(par, cur.pos());
 	
 	// hack for the chicken and egg problem
-	if (par.inset())
-		top_y(text->getPar(par.outerPar()).y);
+	top_y(text.getPar(par.outerPar()).y);
+
 	update();
-	text->setCursor(cursor(), cur.par(), cur.pos());
+	text.setCursor(cursor(), cur.par(), cur.pos());
 	cursor().updatePos();
 
 	if (length) {

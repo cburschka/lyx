@@ -20,7 +20,6 @@
 #include "dispatchresult.h"
 #include "encoding.h"
 #include "funcrequest.h"
-#include "iterators.h"
 #include "language.h"
 #include "lfuns.h"
 #include "lyxfont.h"
@@ -30,6 +29,7 @@
 #include "lyxtext.h"
 #include "paragraph.h"
 #include "paragraph_funcs.h"
+#include "pariterator.h"
 
 #include "insets/updatableinset.h"
 #include "insets/insettabular.h"

@@ -88,6 +88,10 @@ InsetText::InsetText(InsetText const & in)
 }
 
 
+InsetText::InsetText() : text_(0)
+{}
+
+
 void InsetText::operator=(InsetText const & in)
 {
 	UpdatableInset::operator=(in);
@@ -514,7 +518,13 @@ void InsetText::addPreview(PreviewLoader & loader) const
 }
 
 
-ParagraphList & InsetText::paragraphs() const
+ParagraphList const & InsetText::paragraphs() const
 {
-	return const_cast<ParagraphList &>(text_.paragraphs());
+	return text_.paragraphs();
+}
+
+
+ParagraphList & InsetText::paragraphs()
+{
+	return text_.paragraphs();
 }

@@ -31,7 +31,6 @@
 #include "funcrequest.h"
 #include "gettext.h"
 #include "intl.h"
-#include "iterators.h"
 #include "insetiterator.h"
 #include "lyx_cb.h" // added for Dispatch functions
 #include "lyx_main.h"
@@ -43,6 +42,7 @@
 #include "paragraph.h"
 #include "paragraph_funcs.h"
 #include "ParagraphParameters.h"
+#include "pariterator.h"
 #include "undo.h"
 #include "vspace.h"
 

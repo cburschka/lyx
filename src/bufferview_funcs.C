@@ -27,7 +27,7 @@
 #include "lyxrow.h"
 #include "paragraph.h"
 #include "ParagraphParameters.h"
-#include "iterators.h"
+#include "pariterator.h"
 
 #include "frontends/Alert.h"
 #include "frontends/LyXView.h"

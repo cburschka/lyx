@@ -23,12 +23,12 @@
 #include "FloatList.h"
 #include "funcrequest.h"
 #include "gettext.h"
-#include "iterators.h"
 #include "LaTeXFeatures.h"
 #include "LColor.h"
 #include "lyxlex.h"
 #include "outputparams.h"
 #include "paragraph.h"
+#include "pariterator.h"
 
 #include "support/lstrings.h"
 #include "support/tostr.h"
@@ -379,8 +379,8 @@ void InsetFloat::wide(bool w, BufferParams const & bp)
 
 void InsetFloat::addToToc(lyx::toc::TocList & toclist, Buffer const & buf) const
 {
-	ParIterator pit(0, paragraphs());
-	ParIterator end(paragraphs().size(), paragraphs());
+	ParConstIterator pit(*this, 0);
+	ParConstIterator end = ParConstIterator(DocumentIterator());
 
 	// Find a caption layout in one of the (child inset's) pars
 	for (; pit != end; ++pit) {

@@ -26,7 +26,6 @@
 #include "funcrequest.h"
 #include "gettext.h"
 #include "insetiterator.h"
-#include "iterators.h"
 #include "language.h"
 #include "LaTeX.h"
 #include "LaTeXFeatures.h"
@@ -44,6 +43,7 @@
 #include "paragraph.h"
 #include "paragraph_funcs.h"
 #include "ParagraphParameters.h"
+#include "pariterator.h"
 #include "sgml.h"
 #include "texrow.h"
 #include "undo.h"
@@ -1344,25 +1344,25 @@ bool Buffer::hasParWithID(int id) const
 
 ParIterator Buffer::par_iterator_begin()
 {
-	return ParIterator(0, paragraphs());
+	return ParIterator(inset(), 0);
 }
 
 
 ParIterator Buffer::par_iterator_end()
 {
-	return ParIterator(paragraphs().size(), paragraphs());
+	return ParIterator(DocumentIterator());
 }
 
 
 ParConstIterator Buffer::par_iterator_begin() const
 {
-	return ParConstIterator(0, paragraphs());
+	return ParConstIterator(inset(), 0);
 }
 
 
 ParConstIterator Buffer::par_iterator_end() const
 {
-	return ParConstIterator(paragraphs().size(), paragraphs());
+	return ParConstIterator(DocumentIterator());
 }
 
 

@@ -17,9 +17,9 @@
 #include "dispatchresult.h"
 #include "funcrequest.h"
 #include "InsetList.h"
-#include "iterators.h"
 #include "lyxtext.h"
 #include "paragraph.h"
+#include "pariterator.h"
 
 #include "frontends/LyXView.h"
 

@@ -50,6 +50,8 @@ public:
 	///
 	explicit InsetText(BufferParams const &);
 	///
+	explicit InsetText();
+	///
 	InsetText(InsetText const &);
 	///
 	virtual std::auto_ptr<InsetBase> clone() const;
@@ -141,7 +143,9 @@ public:
 	/// number of cells in this inset
 	size_t nargs() const { return 1; }
 	///
-	ParagraphList & paragraphs() const;
+	ParagraphList & paragraphs();
+	///
+	ParagraphList const & paragraphs() const;
 	///
 	bool insetAllowed(Code) const { return true; }
 	
