@@ -10,11 +10,13 @@ EXTRA_DIST = \
 
 CHMOD = chmod
 
-dist_pkgdata_DATA = lyxrc.example CREDITS chkconfig.ltx lyxrc.defaults \
-	       textclass.lst packages.lst external_templates \
+# We cannot use dist_pkgdata_SCRIPTS for configure, since a possible
+# version-suffix would get appended to the names. So we use dist_pkgdata_DATA
+# and chmod manually in install-data-hook.
+# configure.cmd (used on OS/2) is not installed because it is outdated.
+dist_pkgdata_DATA = lyxrc.example CREDITS chkconfig.ltx configure \
+	       lyxrc.defaults textclass.lst packages.lst external_templates \
 	       encodings languages symbols
-
-dist_pkgdata_SCRIPTS = configure configure.cmd
 
 binddir = $(pkgdatadir)/bind
 dist_bind_DATA = \
@@ -835,7 +837,9 @@ dist_layouts_DATA =\
 	layouts/svglobal.layout
 
 lyx2lyxdir = $(pkgdatadir)/lyx2lyx
-dist_lyx2lyx_SCRIPTS = lyx2lyx/lyx2lyx
+# We cannot use dist_lyx2lyx_SCRIPTS for lyx2lyx, since a possible
+# version-suffix would get appended to the names. So we use dist_scripts_DATA
+# and chmod manually in install-data-hook.
 dist_lyx2lyx_DATA = \
 	lyx2lyx/lyx2lyx \
 	lyx2lyx/parser_tools.py \
@@ -853,7 +857,10 @@ dist_lyx2lyx_DATA = \
 	lyx2lyx/profiling.py
 
 scriptsdir = $(pkgdatadir)/scripts
-dist_scripts_SCRIPTS = \
+# We cannot use dist_scripts_SCRIPTS, since a possible version-suffix would
+# get appended to the names. So we use dist_scripts_DATA and chmod manually
+# in install-data-hook.
+dist_scripts_DATA = \
 	scripts/TeXFiles.sh \
 	scripts/convertDefault.sh \
 	scripts/fen2ascii.py \
@@ -933,3 +940,10 @@ install-data-local: install-xfonts
 
 
 uninstall-local: uninstall-xfonts
+
+install-data-hook:
+	$(CHMOD) 755 $(DESTDIR)$(pkgdatadir)/lyx2lyx/lyx2lyx
+	$(CHMOD) 755 $(DESTDIR)$(pkgdatadir)/configure
+	for i in $(dist_scripts_DATA); do \
+		$(CHMOD) 755 $(DESTDIR)$(pkgdatadir)/$$i; \
+	done
