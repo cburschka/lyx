@@ -22,7 +22,7 @@ private:
 template<class C, class A>
 class void_class_fun_t {
 public:
-	class_fun_t(C & ct, void(C::*p)(A))
+	void_class_fun_t(C & ct, void(C::*p)(A))
 		: c(ct), cmf(p) {}
 	void operator()(A & a) const {
 		return (c.*cmf)(a);

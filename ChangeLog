@@ -1,3 +1,10 @@
+2000-10-13  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/support/lyxfunctional.h (void_class_fun_t): fix name of
+	constructor. 
+
+	* src/bufferlist.C: add using directive.
+
 2000-10-13  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/support/lyxfunctional.h: version of class_fun for void
