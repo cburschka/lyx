@@ -247,7 +247,7 @@ void InsetERT::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 
 void InsetERT::setButtonLabel()
 {
-	setLabel(status() == Collapsed ? getNewLabel(_("ERT")) : _("ERT"));
+	setLabel(status() == Collapsed ? getNewLabel(_("P-ERT")) : _("P-ERT"));
 }
 
 
