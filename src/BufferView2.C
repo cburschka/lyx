@@ -411,16 +411,19 @@ void BufferView::showLockedInsetCursor(int x, int y, int asc, int desc)
 {
 	if (available() && theLockingInset()) {
 		LyXCursor cursor = text->cursor;
+		Inset * locking_inset = theLockingInset()->getLockingInset();
+
 		if ((cursor.pos() - 1 >= 0) &&
 		    (cursor.par()->getChar(cursor.pos() - 1) ==
 		     Paragraph::META_INSET) &&
 		    (cursor.par()->getInset(cursor.pos() - 1) ==
-		     theLockingInset()->getLockingInset()))
+		     locking_inset))
 			text->setCursor(this, cursor,
 			                cursor.par(), cursor.pos() - 1);
 		LyXScreen::Cursor_Shape shape = LyXScreen::BAR_SHAPE;
 		LyXText * txt = getLyXText();
-		if (theLockingInset()->getLockingInset()->isTextInset() &&
+		if (locking_inset->isTextInset() &&
+		    locking_inset->lyxCode() != Inset::ERT_CODE &&
 		    (txt->real_current_font.language() !=
 		     buffer()->params.language
 		     || txt->real_current_font.isVisibleRightToLeft()

@@ -1,3 +1,8 @@
+2001-08-13  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* BufferView2.C (showLockedInsetCursor): Use normal cursor shape in
+	ERT insets.
+
 2001-08-13  Juergen Vigna  <jug@sad.it>
 
 	* text.C (fill): return 0 instead of 20 as this seems to be the more
