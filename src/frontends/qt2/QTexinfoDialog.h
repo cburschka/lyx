@@ -26,10 +26,10 @@ protected slots:
 	virtual void rescanClicked();
 	virtual void viewClicked();
 	virtual void update();
+	virtual void enableViewPB();
 
 protected:
 	virtual void closeEvent(QCloseEvent * e);
-
 private:
 	QTexinfo * form_;
 };

@@ -41,10 +41,8 @@ void QBibtex::build_dialog()
 	bc().setCancel(dialog_->closePB);
 	bc().addReadOnly(dialog_->databaseLB);
 	bc().addReadOnly(dialog_->databasePB);
-	bc().addReadOnly(dialog_->styleED);
 	bc().addReadOnly(dialog_->stylePB);
-	bc().addReadOnly(dialog_->styleListLB);
-	bc().addReadOnly(dialog_->styleListPB);
+	bc().addReadOnly(dialog_->styleCB);
 	bc().addReadOnly(dialog_->bibtocCB);
 	bc().addReadOnly(dialog_->databasePB);
 	bc().addReadOnly(dialog_->deletePB);
@@ -80,15 +78,14 @@ void QBibtex::update_contents()
 	} else
 		dialog_->bibtocCB->setChecked(false);
 	
-	dialog_->styleED->setText(bibstyle.c_str());
 
 	vector<string> const str = getVectorFromString(
 		controller().getBibStyles(),"\n");
 	for (vector<string>::const_iterator it = str.begin();
 		it != str.end(); ++it) {
-		dialog_->styleListLB->insertItem(ChangeExtension(*it,"").c_str());
+		dialog_->styleCB->insertItem(ChangeExtension(*it,"").c_str());
 	}
-
+	dialog_->styleCB->insertItem(bibstyle.c_str(),0);
 }
 
 
@@ -103,7 +100,7 @@ void QBibtex::apply()
 	}
 	controller().params().setContents(dbs);
 
-	string bibstyle(dialog_->styleED->text().latin1());
+	string bibstyle(dialog_->styleCB->text(0).latin1());
 
 	bool const bibtotoc(dialog_->bibtocCB->isChecked());
 
@@ -123,5 +120,5 @@ void QBibtex::apply()
 bool QBibtex::isValid()
 {
 	return dialog_->databaseLB->count() != 0 &&
-		!string(dialog_->styleED->text()).empty();
+		!string(dialog_->styleCB->text(0)).empty();
 }

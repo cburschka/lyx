@@ -50,13 +50,25 @@ void QTexinfo::build_dialog()
 
 void QTexinfo::updateStyles(ControlTexinfo::texFileSuffix whichStyle)
 {
-	bool const withFullPath = dialog_->path->isChecked();
-
-	string const str =  controller().getContents(whichStyle, withFullPath);
-	std::vector<string> flist = getVectorFromString(str, "\n");
+	string const fstr =  controller().getContents(whichStyle, true);
+	
+	switch (whichStyle) {
+	    case ControlTexinfo::bst: 
+		bst_ = getVectorFromString(fstr, "\n");
+		break;
+	    case ControlTexinfo::cls:
+		cls_ = getVectorFromString(fstr, "\n");
+		break;
+	    case ControlTexinfo::sty:
+		sty_ = getVectorFromString(fstr, "\n");
+		break;
+	}
 
 	dialog_->fileList->clear();
 
+	bool const withFullPath = dialog_->path->isChecked();
+	string const str =  controller().getContents(whichStyle, withFullPath);
+	vector<string> flist = getVectorFromString(str, "\n");
 	for (vector<string>::const_iterator fitem = flist.begin();
 		fitem != flist.end(); ++fitem) {
 		dialog_->fileList->insertItem((*fitem).c_str());
@@ -70,3 +82,9 @@ void QTexinfo::updateStyles()
 {
 	updateStyles(activeStyle);
 }
+
+
+
+
+
+

@@ -13,7 +13,7 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>295</width>
+            <width>279</width>
             <height>290</height>
         </rect>
     </property>
@@ -187,6 +187,10 @@
                         <cstring>viewPB</cstring>
                     </property>
                     <property stdset="1">
+                        <name>enabled</name>
+                        <bool>false</bool>
+                    </property>
+                    <property stdset="1">
                         <name>text</name>
                         <string>&amp;View</string>
                     </property>
@@ -260,10 +264,22 @@
         <slot>viewClicked()</slot>
     </connection>
     <connection>
-        <sender>rescanPB</sender>
-        <signal>clicked()</signal>
+        <sender>whatStyle</sender>
+        <signal>activated(const QString&amp;)</signal>
         <receiver>QTexinfoDialogBase</receiver>
-        <slot>rescanClicked()</slot>
+        <slot>enableViewPB()</slot>
+    </connection>
+    <connection>
+        <sender>whatStyle</sender>
+        <signal>activated(int)</signal>
+        <receiver>QTexinfoDialogBase</receiver>
+        <slot>update()</slot>
+    </connection>
+    <connection>
+        <sender>fileList</sender>
+        <signal>clicked(QListBoxItem*)</signal>
+        <receiver>QTexinfoDialogBase</receiver>
+        <slot>enableViewPB()</slot>
     </connection>
     <connection>
         <sender>path</sender>
@@ -272,12 +288,18 @@
         <slot>update()</slot>
     </connection>
     <connection>
-        <sender>whatStyle</sender>
-        <signal>activated(int)</signal>
+        <sender>rescanPB</sender>
+        <signal>clicked()</signal>
         <receiver>QTexinfoDialogBase</receiver>
-        <slot>update()</slot>
+        <slot>enableViewPB()</slot>
     </connection>
-    <slot access="protected">helpClicked()</slot>
+    <connection>
+        <sender>rescanPB</sender>
+        <signal>clicked()</signal>
+        <receiver>QTexinfoDialogBase</receiver>
+        <slot>rescanClicked()</slot>
+    </connection>
+    <slot access="protected">enableViewPB()</slot>
     <slot access="protected">rescanClicked()</slot>
     <slot access="protected">update()</slot>
     <slot access="protected">viewClicked()</slot>

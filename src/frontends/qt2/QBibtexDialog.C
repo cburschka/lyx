@@ -19,7 +19,6 @@
 #include <qpushbutton.h>
 #include <qcombobox.h>
 #include <qlistbox.h>
-#include <qlineedit.h>
 #include <qcheckbox.h>
 #include <qfiledialog.h>
 
@@ -45,10 +44,15 @@ void QBibtexDialog::change_adaptor()
 
 void QBibtexDialog::browsePressed()
 {
-	QString file = QFileDialog::getOpenFileName(QString::null,
-		_("BibTeX style files (*.bst)"), this, 0, _("Select a BibTeX style"));
+	QString file =
+		QFileDialog::getOpenFileName(QString::null,
+					     _("BibTeX style files (*.bst)"),
+					     this,
+					     0,
+					     _("Select a BibTeX style"));
 	if (!file.isNull()) {
-		styleED->setText(ChangeExtension(OnlyFilename(file.latin1()), "").c_str());
+		string const filen = ChangeExtension(OnlyFilename(file.latin1()), "");
+		styleCB->insertItem(filen.c_str(),0);
 		form_->changed();
 	}
 }
@@ -81,7 +85,7 @@ void QBibtexDialog::deletePressed()
 
 void QBibtexDialog::styleChanged(const QString & sel)
 {
-	styleED->setText(sel);
+	styleCB->insertItem(sel,0);
 }
 
 

@@ -44,7 +44,12 @@ private:
 	bool warningPosted;
 	///
 	ControlTexinfo::texFileSuffix activeStyle;
-
+	///
+	vector<string> cls_;
+	///
+	vector<string> sty_;
+	///
+	vector<string> bst_;
 };
 
 #endif // QTEXINFO_H

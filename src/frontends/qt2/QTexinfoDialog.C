@@ -45,11 +45,28 @@ void QTexinfoDialog::rescanClicked()
 	// build new *Files.lst
 	form_->controller().rescanStyles();
 	form_->updateStyles();
+	enableViewPB();
 }
 
 void QTexinfoDialog::viewClicked()
 {
-	string const sel(fileList->currentText());
+	int const fitem = fileList->currentItem();
+
+	string sel;
+	switch (whatStyle->currentItem()) {
+	case 0:
+		sel = form_->cls_[fitem];
+		break;
+	case 1:
+		sel = form_->sty_[fitem];
+		break;
+	case 2:
+		sel = form_->bst_[fitem];
+		break;
+	default:
+		break;
+	}
+	
 	// a valid entry?
 	if (!sel.empty()) {
 		form_->controller().viewFile(sel.c_str());
@@ -58,9 +75,7 @@ void QTexinfoDialog::viewClicked()
 
 void QTexinfoDialog::update()
 {
-	int item = whatStyle->currentItem();
-
-	switch (item) {
+	switch (whatStyle->currentItem()) {
 	case 0:
 		form_->updateStyles(ControlTexinfo::cls);
 		break;
@@ -73,5 +88,14 @@ void QTexinfoDialog::update()
 	default:
 		break;
 	}
-
+	
+	enableViewPB();
 }
+
+void QTexinfoDialog::enableViewPB()
+{
+	viewPB->setEnabled(fileList->currentItem()>-1);
+}
+
+
+
