@@ -79,15 +79,18 @@ Loader::Loader(string const & file, DisplayType type)
 
 
 Loader::Loader(string const & file, Params const & params)
-	: pimpl_(new Impl(params))
+	: pimpl_(new Impl(Params()))
 {
 	reset(file, params);
 }
 
 
 Loader::Loader(Loader const & other)
-	: pimpl_(new Impl(other.pimpl_->params()))
-{}
+	: pimpl_(new Impl(Params()))
+{
+	Params const & params = other.pimpl_->params();
+	reset(params.filename, params);
+}
 
 
 Loader::~Loader()
@@ -273,7 +276,6 @@ void Loader::Impl::createPixmap()
 		status_ = ErrorGeneratingPixmap;
 	}
 }
-
 
 void Loader::Impl::startLoading()
 {

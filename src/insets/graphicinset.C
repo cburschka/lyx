@@ -43,9 +43,9 @@ void GraphicInset::update(grfx::Params const & params)
 {
 	params_ = params;
 
-	if (!params.filename.empty()) {
-		lyx::Assert(AbsolutePath(params.filename));
-		loader_.reset(params.filename, params);
+	if (!params_.filename.empty()) {
+		lyx::Assert(AbsolutePath(params_.filename));
+		loader_.reset(params_.filename, params_);
 	}
 }
 
@@ -194,6 +194,9 @@ void GraphicInset::draw(PainterInfo & pi, int x, int y) const
 	view(pi.base.bv);
 
 #if 0
+	// Comment this out and see if anything goes wrong.
+	// The explanation for why it _was_ needed once upon a time is below.
+
 	// MakeAbsPath returns filename_ unchanged if it is absolute
 	// already.
 	string const file_with_path =
@@ -219,7 +222,7 @@ void GraphicInset::draw(PainterInfo & pi, int x, int y) const
 	    loader_.status() == grfx::WaitingToLoad)
 		loader_.startLoading();
 
-	if (!loader_.monitoring())
+	if (params_.display != grfx::NoDisplay && !loader_.monitoring())
 		loader_.startMonitoring();
 
 	// This will draw the graphics. If the graphics has not been loaded yet,
