@@ -39,14 +39,20 @@ class MathedInset;
 class MathedArray  {
 public:
 	///
-	typedef std::vector<byte>         buffer_type;
-	typedef byte                      value_type;
-	typedef buffer_type::size_type    size_type;
-	typedef buffer_type::iterator iterator;
+	typedef std::vector<byte>           buffer_type;
+	typedef byte                        value_type;
+	typedef buffer_type::size_type      size_type;
+	typedef buffer_type::iterator       iterator;
 	typedef buffer_type::const_iterator const_iterator;
 	
 	///
 	MathedArray();
+	///
+	MathedArray(MathedArray const &);
+	///
+	MathedArray & operator=(MathedArray const &);
+	///
+	~MathedArray();
 
 	///
 	iterator begin();
@@ -64,6 +70,9 @@ public:
 	int last() const;
 	///
 	void last(int l);
+
+	///
+	void swap(MathedArray &);
 
 #if 0
 	///

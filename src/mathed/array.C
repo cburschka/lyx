@@ -6,6 +6,8 @@
 #endif
 
 #include "array.h"
+#include "math_iter.h"
+#include "math_inset.h"
 
 // Is this still needed? (Lgb)
 static inline
@@ -21,6 +23,65 @@ void * my_memcpy(void * ps_in, void const * pt_in, size_t n)
 MathedArray::MathedArray()
 	: bf_(1, 0), last_(0)
 {}
+
+MathedArray::~MathedArray()
+{
+	// deep destruction
+	// let's leak for a while... 
+/*
+	MathedIter it;
+	it.SetData(this);
+	while (it.OK()) {
+		if (it.IsInset()) {
+			MathedInset * inset = it.GetInset();
+			delete inset;
+		}
+		it.Next();
+	}
+*/
+}
+
+
+MathedArray::MathedArray(MathedArray const & array)
+{
+	// this "implementation" is obviously wrong: MathedIter should be
+	// implemented by MathedArray (not the other way round) but I think
+	// getting the _interface_ of MathedArray right is more important right
+	// now (Andre')
+
+	// shallow copy
+	bf_   = array.bf_;
+	last_ = array.last_;
+
+	// deep copy
+	// we'll not yet get exeption safety
+	MathedIter it;
+	it.SetData(this);
+	while (it.OK()) {
+		if (it.IsInset()) {
+			MathedInset * inset = it.GetInset();
+			inset = inset->Clone();
+			raw_pointer_insert(inset, it.getPos() + 1, sizeof(inset));
+		}
+		it.Next();
+	}
+}
+
+
+MathedArray & MathedArray::operator=(MathedArray const & array)
+{
+	MathedArray tmp(array);
+	swap(tmp);
+	return *this;
+}
+
+void MathedArray::swap(MathedArray & array)
+{
+	if (this != &array) {
+		bf_.swap(array.bf_);
+		std::swap(last_, array.last_);
+	}
+}
 
 
 MathedArray::iterator MathedArray::begin() 

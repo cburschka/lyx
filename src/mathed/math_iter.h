@@ -112,8 +112,10 @@ public:
 	void SetData(MathedArray * a);
 	///
 	MathedArray * GetData() const;
+	/// Copy every object 
+	MathedArray * Copy();
 	/// Copy every object from position p1 to p2
-	MathedArray * Copy(int p1 = 0, int p2 = 10000);
+	MathedArray * Copy(int p1, int p2);
 	/// Delete every object from position p1 to p2
 	void Clear();
 protected:

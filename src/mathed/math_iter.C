@@ -381,6 +381,21 @@ bool MathedIter::Delete()
 }
 
 
+MathedArray * MathedIter::Copy()
+{
+#if 0
+	return Copy(0, 10000);
+#else
+	if (!array) {
+	//      lyxerr << "Math error: Attempting to copy a void array." << endl;
+		return 0;
+	}
+
+	return new MathedArray(*array);
+#endif
+}
+
+
 MathedArray * MathedIter::Copy(int pos1, int pos2)
 {
 	if (!array) {
@@ -423,6 +438,10 @@ MathedArray * MathedIter::Copy(int pos1, int pos2)
 		(*a)[dx] = '\0';
 	} else
 		a = new MathedArray(*array);
+
+	// this should be unnecessary and leak in some (most?) cases since
+	// a = new MathedArray(*array);  makes already a deep copy...
+	// I guess it'll go soon... (Andre')
 
 	SetData(a);
 	while (OK()) {
