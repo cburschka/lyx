@@ -96,7 +96,6 @@ Menuset
 	Submenu "Tabular|T" "edit_tabular"
 	Submenu "Floats & Insets|I" "edit_floats"
 	Item "Math Panel|l" "math-panel"
-	Submenu "Bookamrks|B" "edit_bookmarks"
 	Separator
 	Item "Spellchecker...|S" "spellchecker"
 	Item "Check TeX|h" "buffer-chktex"
@@ -143,15 +142,6 @@ Menuset
 	Item "Delete Column|D" "tabular-feature delete-column"
     End
 
-    Menu "edit_bookmarks"
-	Item "Save Bookmark 1|S" "bookmark-save 1"
-	Item "Save Bookmark 2" "bookmark-save 2"
-	Item "Save Bookmark 3" "bookmark-save 3"
-	Separator
-	Item "Goto Bookmark 1|1" "bookmark-goto 1"
-	Item "Goto Bookmark 2|2" "bookmark-goto 2"
-	Item "Goto Bookmark 3|2" "bookmark-goto 3"
-    End
 #
 # INSERT MENU
 #
@@ -264,7 +254,22 @@ Menuset
 	Item "Error|E" "error-next"
 	Item "Note|N" "note-next"
 	Item "Refs|R" "reference-next"
+	Submenu "Bookamrks|B" "navigate_bookmarks"
     End
+
+    Menu "navigate_bookmarks"
+	Item "Save Bookmark 1|S" "bookmark-save 1"
+	Item "Save Bookmark 2" "bookmark-save 2"
+	Item "Save Bookmark 3" "bookmark-save 3"
+	Separator
+	Item "Goto Bookmark 1|1" "bookmark-goto 1"
+	Item "Goto Bookmark 2|2" "bookmark-goto 2"
+	Item "Goto Bookmark 3|2" "bookmark-goto 3"
+    End
+
+#
+# DOCUMENTS MENU
+#
 
     Menu "documents"
 	Documents
