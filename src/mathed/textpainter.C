@@ -50,10 +50,12 @@ void TextPainter::draw(int x, int y, char c)
 }
 
 
-void TextPainter::show(std::ostream & os) const
+void TextPainter::show(std::ostream & os, int offset) const
 {
 	os << '\n';
 	for (int j = 0; j <= ymax_; ++j) {
+		for (int i = 0; i < offset; ++i)
+			os << ' ';	
 		for (int i = 0; i < xmax_; ++i)
 			os << at(i, j);
 		os << '\n';

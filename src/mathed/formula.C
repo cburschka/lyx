@@ -154,23 +154,22 @@ int InsetFormula::latex(Buffer const *, ostream & os, bool fragile, bool) const
 }
 
 
-
 int InsetFormula::ascii(Buffer const *, ostream & os, int) const
 {
-#if 0
-	TextMetricsInfo mi;
-	par()->metricsT(mi);
-	TextPainter tpain(par()->width(), par()->height());
-	par()->drawT(tpain, 0, par()->ascent());
-	tpain.show(os);
-	// reset metrics cache to "real" values
-	metrics();
-	return tpain.textheight();
-#else
-	WriteStream wi(os, false, true);
-	par_->write(wi);
-	return wi.line();
-#endif
+	if (display()) {
+		TextMetricsInfo mi;
+		par()->metricsT(mi);
+		TextPainter tpain(par()->width(), par()->height());
+		par()->drawT(tpain, 0, par()->ascent());
+		tpain.show(os, 3);
+		// reset metrics cache to "real" values
+		metrics();
+		return tpain.textheight();
+	} else {
+		WriteStream wi(os, false, true);
+		wi << ' ' << (par_->asNestInset()->cell(0)) << ' ';
+		return wi.line();
+	}
 }
 
 

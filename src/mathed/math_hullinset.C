@@ -213,14 +213,11 @@ void MathHullInset::draw(MathPainterInfo & pi, int x, int y) const
 }
 
 
-void MathHullInset::metricsT(TextMetricsInfo const &) const
+void MathHullInset::metricsT(TextMetricsInfo const & mi) const
 {
-#if 0
 	if (display()) {
 		MathGridInset::metricsT(mi);
-	} else
-#endif
-	{
+	} else {
 		ostringstream os;
 		WriteStream wi(os, false, true);
 		write(wi);
@@ -233,12 +230,9 @@ void MathHullInset::metricsT(TextMetricsInfo const &) const
 
 void MathHullInset::drawT(TextPainter & pain, int x, int y) const
 {
-#if 0
 	if (display()) {
 		MathGridInset::drawT(pain, x, y);
-	} else
-#endif
-	{
+	} else {
 		ostringstream os;
 		WriteStream wi(os, false, true);
 		write(wi);

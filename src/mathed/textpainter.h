@@ -13,7 +13,7 @@ class TextPainter {
 		///
 		void draw(int x, int y, char c);
 		///
-		void show(std::ostream & os) const;
+		void show(std::ostream & os, int offset = 0) const;
 		///
 		int textheight() const { return ymax_; }
 		///
