@@ -777,9 +777,12 @@ char const * latex_mathspace[] = {
 
 
 char const * latex_mathstyle[] = {
-	"textstyle", "displaystyle", "scriptstyle", "scriptscriptstyle", 
-	"mathbf", "mathcal","mathrm","mathtt", "mathsf", "mathit",
-	"mathbb","mathfrak", "textrm", "mathnormal"
+	"textstyle", "displaystyle", "scriptstyle", "scriptscriptstyle" 
+};
+
+char const * latex_mathfontcmds[] = {
+	"font-bold", "font-emph", "font-roman", "font-code", "font-sans",
+	"font-ital", "font-noun", "font-frak", "font-free", "font-default"
 };
 
 

@@ -20,6 +20,7 @@
 #include "form_maths_style.h"
 
 extern char * latex_mathstyle[];
+extern char * latex_mathfontcmds[];
 
 FormMathsStyle::FormMathsStyle(LyXView * lv, Dialogs * d,
 			       FormMathsPanel const & p)
@@ -66,8 +67,10 @@ void FormMathsStyle::build()
 
 void FormMathsStyle::apply()
 {
-	if (style_ >= 0)
+	if ( (style_ >= 0) && (style_ < 4) )
 		parent_.insertSymbol(latex_mathstyle[style_]);
+	else
+		parent_.dispatchFunc(latex_mathfontcmds[style_ - 4]);
 }
 
 bool FormMathsStyle::input(FL_OBJECT *, long data)

@@ -63,7 +63,8 @@ public:
 	void setActive(FormMathsSub *) const;
 	/// dispatch a symbol insert 
 	void insertSymbol(string const & sym) const;
-
+	/// dispatch an LFUN:
+	void dispatchFunc(string const & funcode) const;
 private:
 	/// Pointer to the actual instantiation of the ButtonController.
 	virtual xformsBC & bc();

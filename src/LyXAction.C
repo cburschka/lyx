@@ -210,6 +210,8 @@ void LyXAction::init()
 		{ LFUN_ROMAN, "font-roman", N_("Toggle roman font style"),
 		  Noop },
 		{ LFUN_SANS, "font-sans", N_("Toggle sans font style"), Noop },
+		{ LFUN_FRAK, "font-frak", N_("Toggle fraktur font style"), Noop },
+		{ LFUN_ITAL, "font-ital", N_("Toggle italic font style"), Noop },
 		{ LFUN_FONT_SIZE, "font-size", N_("Set font size"), Noop },
 		{ LFUN_FONT_STATE, "font-state", N_("Show font state"),
 		  ReadOnly },

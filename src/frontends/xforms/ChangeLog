@@ -1,3 +1,10 @@
+2002-01-10  Martin Vermeer  <martin.vermeer@hut.fi>
+
+	* FormMathsPanel.[Ch] (dispatchFunc): new method. Invokes
+	LyXFunc::dispatch.
+
+	* FormMathsStyle.C (apply): use LFUNs to apply, not insertSymbol.
+
 2002-01-10  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* FormPreferences.C:

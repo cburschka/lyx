@@ -59,6 +59,8 @@ enum kb_action {
 	LFUN_BOLD,
 	LFUN_ROMAN,
 	LFUN_NOUN,
+	LFUN_ITAL,
+	LFUN_FRAK,
 	LFUN_RIGHT,
 	LFUN_LEFT,  // 40
 	LFUN_UP,

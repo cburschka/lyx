@@ -368,7 +368,6 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 	hideInsetCursor(bv);
 
 	mathcursor->normalize();
-
 	switch (action) {
 
 		// --- Cursor Movements ---------------------------------------------
@@ -517,6 +516,8 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 	case LFUN_EMPH:         handleFont(bv, LM_TC_CAL); break;
 	case LFUN_ROMAN:        handleFont(bv, LM_TC_RM); break;
 	case LFUN_CODE:         handleFont(bv, LM_TC_TT); break;
+	case LFUN_FRAK:         handleFont(bv, LM_TC_EUFRAK); break;
+	case LFUN_ITAL:         handleFont(bv, LM_TC_IT); break;
 	case LFUN_NOUN:         handleFont(bv, LM_TC_BB); break;
 	case LFUN_DEFAULT:      handleFont(bv, LM_TC_VAR); break;
 	case LFUN_FREE:         handleFont(bv, LM_TC_TEXTRM); break;

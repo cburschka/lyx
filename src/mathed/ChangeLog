@@ -1,3 +1,10 @@
+2002-01-10  Martin Vermeer  <martin.vermeer@hut.fi>
+
+	* formulabase.C (localDispatch): handle LFUN_FRAK and LFUN_ITAL.
+
+	* math_support.C: separate  string arrays for math style and for
+	font commands.
+
 2002-01-10  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* math_parser.C (parse_normal): Support for \begin{math}
