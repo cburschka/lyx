@@ -1,3 +1,7 @@
+2000-06-05  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/bufferlist.C (close): test of buf->getuser() == NULL
+
 2000-06-02  Dekel Tsur  <dekel@math.tau.ac.il>
 
 	* src/BufferView2.C (removeAutoInsets): Fix a bug: 

@@ -151,10 +151,13 @@ void BufferList::resize()
 
 bool BufferList::close(Buffer * buf)
 {
-        if (buf->getUser()) buf->getUser()->insetUnlock();
+	// CHECK
+	// Trace back why we need to use buf->getUser here.
+	// Perhaps slight rewrite is in order? (Lgb)
 	
+        if (buf->getUser()) buf->getUser()->insetUnlock();
 	if (buf->paragraph && !buf->isLyxClean() && !quitting) {
-		ProhibitInput(buf->getUser());
+		if (buf->getUser()) ProhibitInput(buf->getUser());
                 switch(AskConfirmation(_("Changes in document:"),
 				       MakeDisplayPath(buf->fileName(), 50),
 				       _("Save document?"))){
@@ -162,15 +165,15 @@ bool BufferList::close(Buffer * buf)
 			if (buf->save()) {
 				lastfiles->newFile(buf->fileName());
 			} else {
-				AllowInput(buf->getUser());
+				if (buf->getUser()) AllowInput(buf->getUser());
 				return false;
 			}
                         break;
 		case 3: // Cancel
-                        AllowInput(buf->getUser());
+                        if (buf->getUser()) AllowInput(buf->getUser());
                         return false;
                 }
-		AllowInput(buf->getUser());
+		if (buf->getUser()) AllowInput(buf->getUser());
 	}
 
 	bstore.release(buf);
