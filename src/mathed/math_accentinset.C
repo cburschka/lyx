@@ -8,15 +8,15 @@
 using std::ostream;
 
 MathAccentInset::MathAccentInset(byte cx, MathedTextCodes f, int cd, short st)
-	: MathedInset("", LM_OT_ACCENT, st), c(cx), fn(f), code(cd)
-{
-	inset = 0;
-}
-
-
-MathAccentInset::MathAccentInset(MathedInset *ins, int cd, short st)
 	: MathedInset("", LM_OT_ACCENT, st),
-	  c(0), fn(LM_TC_MIN), code(cd), inset(ins) {}
+	  c(cx), fn(f), code(cd), inset(0)
+{}
+
+
+MathAccentInset::MathAccentInset(MathedInset * ins, int cd, short st)
+	: MathedInset("", LM_OT_ACCENT, st),
+	  c(0), fn(LM_TC_MIN), code(cd), inset(ins)
+{}
 
 
 MathAccentInset::~MathAccentInset()
@@ -41,7 +41,7 @@ MathedInset * MathAccentInset::Clone()
 void
 MathAccentInset::draw(Painter & pain, int x, int y)
 {
-	int dw = width - 2;
+	int const dw = width - 2;
 	
 	if (inset) 
 		inset->draw(pain, x, y);
@@ -50,7 +50,7 @@ MathAccentInset::draw(Painter & pain, int x, int y)
 		s += c;
 		drawStr(pain, fn, size(), x, y, s);
 	}
-	x += (code == LM_not) ? (width-dw) / 2 : 2;
+	x += (code == LM_not) ? (width - dw) / 2 : 2;
 	mathed_draw_deco(pain, x, y - dy, dw, dh, code);
 }
 

@@ -442,7 +442,7 @@ string const CreateTmpDir(string const & tempdir, string const & mask)
 	// safe because of the gap between unlink and mkdir. (Lgb)
 	lyx::unlink(tmpfl.c_str());
 	
-	if (tmpfl.empty() || lyx::mkdir(tmpfl, 0777)) {
+	if (tmpfl.empty() || lyx::mkdir(tmpfl, 0700)) {
 		WriteFSAlert(_("Error! Couldn't create temporary directory:"),
 			     tempdir);
 		return string();

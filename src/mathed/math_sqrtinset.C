@@ -24,15 +24,6 @@ MathedInset * MathSqrtInset::Clone()
 }
 
 
-bool MathSqrtInset::Inside(int x, int y) 
-{
-	return x >= xo() - hmax_
-		&& x <= xo() + width - hmax_
-		&& y <= yo() + descent
-		&& y >= yo() - ascent;
-}
-
-
 void
 MathSqrtInset::draw(Painter & pain, int x, int y)
 { 
@@ -51,6 +42,14 @@ MathSqrtInset::draw(Painter & pain, int x, int y)
 }
 
 
+void MathSqrtInset::Write(ostream & os, bool fragile)
+{
+	os << '\\' << name << '{';
+	MathParInset::Write(os, fragile); 
+	os << '}';
+}
+
+
 void
 MathSqrtInset::Metrics()
 {
@@ -66,9 +65,10 @@ MathSqrtInset::Metrics()
 }
 
 
-void MathSqrtInset::Write(ostream & os, bool fragile)
+bool MathSqrtInset::Inside(int x, int y) 
 {
-	os << '\\' << name << '{';
-	MathParInset::Write(os, fragile); 
-	os << '}';
+	return x >= xo() - hmax_
+		&& x <= xo() + width - hmax_
+		&& y <= yo() + descent
+		&& y >= yo() - ascent;
 }

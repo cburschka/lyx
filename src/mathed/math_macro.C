@@ -58,27 +58,31 @@ MathMacro::MathMacro(MathMacroTemplate * t)
 }
 
 
-MathMacro::MathMacro(MathMacro * m)
-	: MathParInset(LM_ST_TEXT, m->GetName(), LM_OT_MACRO)
+MathMacro::MathMacro(MathMacro const & m)
+	: MathParInset(LM_ST_TEXT, m.GetName(), LM_OT_MACRO),
+	  tmplate_(m.tmplate_), idx_(0)
 {
-	tmplate_ = m->tmplate_;
 	nargs_ = tmplate_->getNoArgs();
 	tcode_ = tmplate_->getTCode();
-	args_.resize(nargs_);
-	idx_ = 0;
 	SetName(tmplate_->GetName());
-	for (int i = 0; i < tmplate_->getNoArgs(); ++i) {
-		//m->setArgumentIdx(i);
-		args_[i].row   = m->args_[i].row;
-		//args_[i].array = m->GetData();
-		args_[i].array = m->args_[i].array;
+
+	std::vector<MacroArgumentBase>::const_iterator cit = m.args_.begin();
+	std::vector<MacroArgumentBase>::const_iterator end = m.args_.end();
+	
+	//args_.resize(nargs_);
+	//for (int i = 0; i < tmplate_->getNoArgs(); ++i) {
+	//	args_[i].row   = m->args_[i].row;
+	//	args_[i].array = m->args_[i].array;
+	//}
+	for (; cit != end; ++cit) {
+		args_.push_back(*cit);
 	}
 }
 
 
 MathedInset * MathMacro::Clone()
 {
-	return new MathMacro(this);
+	return new MathMacro(*this);
 }
 
 

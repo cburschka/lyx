@@ -314,7 +314,9 @@ latexkeys const wordlist[] =
 	{"vdash",  LM_TK_SYM, LM_vdash},
 };
 
-static short lookup[] = 
+
+static
+short lookup[] = 
 {
         -1,  -1,  -1,  -1,  -1,  -1,  -1,  -1,   8,  -1,  -1,  -1,  -1,  -1,
         -1,   9,  10,  -1,  11,  -1,  -1,  -1,  12,  -1,  -1, 491, -13,  -2,

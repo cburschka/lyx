@@ -8,34 +8,14 @@
 
 using std::ostream;
 
-bool MathBigopInset::GetLimits() const 
-{  
-	// Default case
-	if (lims < 0) {
-		return sym != LM_int && sym != LM_oint && GetStyle() == LM_ST_DISPLAY;
-	} 
-	
-	// Custom 
-	return lims > 0;
-} 
-
-
-void MathBigopInset::SetLimits(bool ls) 
-{  
-	lims = ls ? 1 : 0; 
-}
-
-
 MathBigopInset::MathBigopInset(string const & nam, int id, short st)
-	: MathedInset(nam, LM_OT_BIGOP, st), sym(id)
-{
-	lims = -1;
-}
+	: MathedInset(nam, LM_OT_BIGOP, st), lims_(-1), sym_(id)
+{}
 
 
 MathedInset * MathBigopInset::Clone()
 {
-	return new MathBigopInset(name, sym, GetStyle());
+	return new MathBigopInset(name, sym_, GetStyle());
 }
 
 
@@ -45,19 +25,37 @@ MathBigopInset::draw(Painter & pain, int x, int y)
 	string s;
 	short t;
 	
-	if (sym < 256 || sym == LM_oint) {
-		s += (sym == LM_oint) ? LM_int : sym;
+	if (sym_ < 256 || sym_ == LM_oint) {
+		s += (sym_ == LM_oint) ? LM_int : sym_;
 		t = LM_TC_BSYM;
 	} else {
 		s = name;
 		t = LM_TC_TEXTRM;
 	}
-	if (sym == LM_oint) {
-		pain.arc(x, y - 5 * width / 4, width, width, 0, 360*64,
+	if (sym_ == LM_oint) {
+		pain.arc(x, y - 5 * width / 4, width, width, 0, 360 * 64,
 			 LColor::mathline);
 		++x;
 	}
 	pain.text(x, y, s, mathed_get_font(t, size()));
+}
+
+
+void MathBigopInset::Write(ostream & os, bool /* fragile */)
+{
+	bool const limp = GetLimits();
+	
+	os << '\\' << name;
+	
+	if (limp && !(sym_ != LM_int && sym_ != LM_oint
+		      && (GetStyle() == LM_ST_DISPLAY)))
+		os << "\\limits ";
+	else 
+		if (!limp && (sym_ != LM_int && sym_ != LM_oint
+			      && (GetStyle() == LM_ST_DISPLAY)))
+			os << "\\nolimits ";
+		else 
+			os << ' ';
 }
 
 
@@ -68,8 +66,8 @@ MathBigopInset::Metrics()
 	string s;
 	short t;
 	
-	if (sym < 256 || sym == LM_oint) {
-		char c = (sym == LM_oint) ? LM_int: sym;
+	if (sym_ < 256 || sym_ == LM_oint) {
+		char const c = (sym_ == LM_oint) ? LM_int: sym_;
 		s += c;
 		t = LM_TC_BSYM;
 	} else {
@@ -78,23 +76,25 @@ MathBigopInset::Metrics()
 	}
 	mathed_string_height(t, size(), s, ascent, descent);
 	width = mathed_string_width(t, size(), s);
-	if (sym == LM_oint) width += 2;
+	if (sym_ == LM_oint) width += 2;
 }
 
 
-void MathBigopInset::Write(ostream & os, bool /* fragile */)
-{
-	bool limp = GetLimits();
+bool MathBigopInset::GetLimits() const 
+{  
+	// Default case
+	if (lims_ < 0) {
+		return sym_ != LM_int &&
+			sym_ != LM_oint &&
+			GetStyle() == LM_ST_DISPLAY;
+	} 
 	
-	os << '\\' << name;
-	
-	if (limp && !(sym != LM_int && sym != LM_oint
-		      && (GetStyle() == LM_ST_DISPLAY)))
-		os << "\\limits ";
-	else 
-		if (!limp && (sym != LM_int && sym != LM_oint
-			      && (GetStyle() == LM_ST_DISPLAY)))
-			os << "\\nolimits ";
-		else 
-			os << ' ';
+	// Custom 
+	return lims_ > 0;
+} 
+
+
+void MathBigopInset::SetLimits(bool ls) 
+{  
+	lims_ = ls ? 1 : 0; 
 }

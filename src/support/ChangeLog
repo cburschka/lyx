@@ -1,3 +1,7 @@
+2001-02-27  Lars Gullik Bjønnes  <larsbj@trylle.birdstep.com>
+
+	* filetools.C (CreateTmpDir): change umask to 0700.
+
 2001-02-27  José Matos  <jamatos@fep.up.pt>
 
 	* filetools.h (BasePath):

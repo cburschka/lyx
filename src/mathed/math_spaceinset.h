@@ -1,11 +1,16 @@
+// -*- C++ -*-
 #ifndef MATH_SPACEINSET_H
 #define MATH_SPACEINSET_H
 
 #include "math_inset.h"
 #include "math_defs.h"
 
+#ifdef __GNUG__
+#pragma interface
+#endif
+
 /// Smart spaces
-class MathSpaceInset: public MathedInset  {
+class MathSpaceInset : public MathedInset {
 public:
 	///
 	MathSpaceInset(int sp, short ot = LM_OT_SPACE, short st = LM_ST_TEXT);
@@ -21,8 +26,8 @@ public:
 	void SetSpace(int sp);
 	///
 	int GetSpace();
-protected:
+private:
 	///
-	int space;
+	int space_;
 };
 #endif

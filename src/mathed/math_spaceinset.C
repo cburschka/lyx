@@ -1,5 +1,9 @@
 #include <config.h>
 
+#ifdef __GNUG__
+#pragma implementation
+#endif
+
 #include "math_spaceinset.h"
 #include "LColor.h"
 #include "Painter.h"
@@ -9,31 +13,14 @@
 using std::ostream;
 
 
-void MathSpaceInset::Metrics()
-{
-	width = space ? space * 2 : 2;
-	if (space > 3) width *= 2;
-	if (space == 5) width *= 2;
-	width += 4;
-	ascent = 4; descent = 0;
-}
-
-
-void MathSpaceInset::SetSpace(int sp)
-{ 
-	space = sp;
-	Metrics();
-}
-
-
 MathSpaceInset::MathSpaceInset(int sp, short ot, short st)
-	: MathedInset("", ot, st), space(sp)
+	: MathedInset("", ot, st), space_(sp)
 {}
 
 
 MathedInset * MathSpaceInset::Clone()
 {
-	return new MathSpaceInset(space, GetType(), GetStyle());
+	return new MathSpaceInset(space_, GetType(), GetStyle());
 }
 
 
@@ -53,20 +40,38 @@ MathSpaceInset::draw(Painter & pain, int x, int y)
 	xp[2] = x + width - 2;  yp[2] = y;
 	xp[3] = x + width - 2;  yp[3] = y - 3;
 	
-	pain.lines(xp, yp, 4, (space) ? LColor::latex : LColor::math);
+	pain.lines(xp, yp, 4, (space_) ? LColor::latex : LColor::math);
 }
 
 
 void
 MathSpaceInset::Write(ostream & os, bool /* fragile */)
 {
-   if (space >= 0 && space < 6) {
-	   os << '\\' << latex_mathspace[space] << ' ';
-   }
+	if (space_ >= 0 && space_ < 6) {
+		os << '\\' << latex_mathspace[space_] << ' ';
+	}
+}
+
+
+void MathSpaceInset::Metrics()
+{
+	width = space_ ? space_ * 2 : 2;
+	if (space_ > 3) width *= 2;
+	if (space_ == 5) width *= 2;
+	width += 4;
+	ascent = 4;
+	descent = 0;
+}
+
+
+void MathSpaceInset::SetSpace(int sp)
+{ 
+	space_ = sp;
+	Metrics();
 }
 
 
 int MathSpaceInset::GetSpace()
 {
-	return space;
+	return space_;
 }

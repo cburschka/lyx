@@ -26,23 +26,13 @@
 using std::ostream;
 
 MathRootInset::MathRootInset(short st)
-	: MathSqrtInset(st)
-{
-	idx_ = 1;
-	uroot_ = new MathParInset(LM_ST_TEXT); 
-}
-
-
-MathRootInset::~MathRootInset() 
-{
-	delete uroot_;
-}
+	: MathSqrtInset(st), idx_(1), uroot_(LM_ST_TEXT)
+{}
 
 
 MathedInset * MathRootInset::Clone()
 {
 	MathRootInset * p = new MathRootInset(*this);
-	p->uroot_ = static_cast<MathParInset *>(p->uroot_->Clone());
 	p->setArgumentIdx(0);
 	return p;
 }
@@ -52,9 +42,8 @@ void MathRootInset::setData(MathedArray const & d)
 {
 	if (idx_ == 1)
 		MathParInset::setData(d);
-	else {
-		uroot_->setData(d);
-	}
+	else
+		uroot_.setData(d);
 }
 
 
@@ -73,7 +62,7 @@ void MathRootInset::GetXY(int & x, int & y) const
 	if (idx_ == 1)
 		MathParInset::GetXY(x, y);
 	else
-		uroot_->GetXY(x, y);
+		uroot_.GetXY(x, y);
 }
 
 
@@ -82,40 +71,40 @@ MathedArray & MathRootInset::GetData()
 	if (idx_ == 1)
 		return array;
 	else
-		return uroot_->GetData();
+		return uroot_.GetData();
 }
 
 
 bool MathRootInset::Inside(int x, int y)
 {
-	return (uroot_->Inside(x, y) || MathSqrtInset::Inside(x, y));
+	return (uroot_.Inside(x, y) || MathSqrtInset::Inside(x, y));
 }
 
 
 void MathRootInset::Metrics()
 {
-	int idxp = idx_;
+	int const idxp = idx_;
 	
 	idx_ = 1;
 	MathSqrtInset::Metrics();
-	uroot_->Metrics();
-	wroot_ = uroot_->Width();
-	dh_ = Height()/2;
+	uroot_.Metrics();
+	wroot_ = uroot_.Width();
+	dh_ = Height() / 2;
 	width += wroot_;
-	//    if (uroot->Ascent() > dh) 
-	if (uroot_->Height() > dh_) 
-		ascent += uroot_->Height() - dh_;
-	dh_ -= descent - uroot_->Descent();
+	//    if (uroot_.Ascent() > dh) 
+	if (uroot_.Height() > dh_) 
+		ascent += uroot_.Height() - dh_;
+	dh_ -= descent - uroot_.Descent();
 	idx_ = idxp;
 }
 
 
 void MathRootInset::draw(Painter & pain, int x, int y)
 {
-	int idxp = idx_;
+	int const idxp = idx_;
 	
 	idx_ = 1;
-	uroot_->draw(pain, x, y - dh_);
+	uroot_.draw(pain, x, y - dh_);
 	MathSqrtInset::draw(pain, x + wroot_, y);
 	idx_ = idxp;
 }
@@ -125,7 +114,7 @@ void MathRootInset::SetStyle(short st)
 {
 	MathSqrtInset::SetStyle(st);
 	
-	uroot_->SetStyle((size() < LM_ST_SCRIPTSCRIPT) ? size() + 1 : size());
+	uroot_.SetStyle((size() < LM_ST_SCRIPTSCRIPT) ? size() + 1 : size());
 }
 
 
@@ -138,7 +127,7 @@ void MathRootInset::SetFocus(int x, int)
 void MathRootInset::Write(ostream & os, bool fragile)
 {
 	os << '\\' << name << '[';
-	uroot_->Write(os, fragile);  
+	uroot_.Write(os, fragile);  
 	os << "]{";
 	MathParInset::Write(os, fragile);
 	os << '}';

@@ -7,7 +7,7 @@
 #include "math_defs.h"
 
 /// Accents
-class MathAccentInset: public MathedInset {
+class MathAccentInset : public MathedInset {
 public:
 	///
 	MathAccentInset(byte, MathedTextCodes, int, short st = LM_ST_TEXT);
@@ -24,8 +24,7 @@ public:
 	///
 	void Metrics();
 	///
-	int getAccentCode() const { return code; }
-	
+	int getAccentCode() const;
 protected:
 	///
 	byte c;
@@ -38,4 +37,11 @@ protected:
 	///
 	int dh, dy;
 };
+
+
+inline
+int MathAccentInset::getAccentCode() const
+{
+	return code;
+}
 #endif

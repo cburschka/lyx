@@ -11,12 +11,10 @@
 /** Fraction like objects (frac, stackrel, binom)
     \author Alejandro Aguilar Sierra
  */
-class MathFracInset: public MathParInset {
+class MathFracInset : public MathParInset {
 public:
 	///
 	MathFracInset(short ot = LM_OT_FRAC);
-	///
-	~MathFracInset();
 	///
 	MathedInset * Clone();
 	///
@@ -52,7 +50,7 @@ private:
 	///
 	int idx_;
 	///
-	MathParInset * den_;
+	MathParInset den_;
 	///
 	int w0_;
 	///

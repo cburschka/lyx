@@ -21,7 +21,7 @@ libmathed_la_SOURCES = \
 	math_accentinset.C \
 	math_accentinset.h \
 	math_bigopinset.C \
-	math_bibopinset.h \
+	math_bigopinset.h \
 	math_cursor.C \
 	math_cursor.h \
 	math_decorationinset.C \

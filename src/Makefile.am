@@ -123,7 +123,6 @@ lyx_SOURCES = \
 	gettext.h \
 	importer.C \
 	importer.h \
-	include_form.h \
 	intl.C \
 	intl.h \
 	kbmap.C \

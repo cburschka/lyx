@@ -28,35 +28,17 @@
 #include "mathed/support.h"
 #include "Painter.h"
 
+
+// Initialize some static class variables.
 int MathedInset::df_asc;
 int MathedInset::df_des;
 int MathedInset::df_width;
 int MathedInset::workWidth;
 
 
-MathedInset::MathedInset(MathedInset * inset) 
-{
-	if (inset) {
-		name = inset->GetName();
-		objtype = inset->GetType();
-		size_ = inset->GetStyle();
-		width = inset->Width();
-		ascent = inset->Ascent();
-		descent = inset->Descent();
-	} else {
-		objtype = LM_OT_UNDEF;
-		size_ = LM_ST_TEXT;
-		width = ascent = descent = 0;
-		//name = 0;
-	}
-}
-
-
 MathedInset::MathedInset(string const & nm, short ot, short st)
-	: name(nm), objtype(ot), size_(st) 
-{
-	width = ascent = descent = 0;
-}
+	: name(nm), objtype(ot), width(0), ascent(0), descent(0), size_(st) 
+{}
 
 
 // In a near future maybe we use a better fonts renderer

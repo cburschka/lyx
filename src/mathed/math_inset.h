@@ -36,16 +36,13 @@ class Painter;
     general LyX inset. It's used to represent all the math objects.
     The formulaInset (a LyX inset) encapsulates a math inset.
 */
-class MathedInset  {
+class MathedInset {
 public: 
 	/** A math inset has a name (usually its LaTeX name),
 	    type and font-size
 	*/
 	MathedInset(string const & nm, short ot, short st);
-	///
-	explicit
-	MathedInset(MathedInset *);
-	///
+	/// The virtual base destructor
 	virtual ~MathedInset() {}
 	/// Draw the object
 	virtual void draw(Painter &, int x, int baseline) = 0;	
@@ -89,9 +86,7 @@ public:
 	///
 	static void defaultWidth(int dw);
 	///
-	short size() const {
-		return size_;
-	}
+	short size() const;
 protected:
 	///
 	string name;
@@ -112,14 +107,32 @@ protected:
 	/// In a near future maybe we use a better fonts renderer than X
 	void drawStr(Painter &, short, int, int, int, string const &);
 	///
-	void size(short s) {
-		size_ = s;
-	}
-	void incSize() {
-		++size_;
-	}
+	void size(short s);
+	///
+	void incSize();
 private:
 	///
 	short size_;
 };
+
+
+inline
+short MathedInset::size() const
+{
+	return size_;
+}
+
+
+inline
+void MathedInset::size(short s)
+{
+	size_ = s;
+}
+
+
+inline
+void MathedInset::incSize()
+{
+	++size_;
+}
 #endif

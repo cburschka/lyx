@@ -1,5 +1,9 @@
 #include <config.h>
 
+#ifdef __GNUG__
+#pragma implementation
+#endif
+
 #include "math_dotsinset.h"
 #include "mathed/support.h"
 #include "support/LOstream.h"

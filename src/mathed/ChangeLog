@@ -1,4 +1,48 @@
+2001-02-28  Lars Gullik Bjønnes  <larsbj@trylle.birdstep.com>
+
+	* math_spaceinset.[Ch]: add pragma, make variables private add
+	'_', change order of method definitions.
+
+	* math_root.h (~MathRootInset): delete
+	Change uroot_ to be a real object instead of a pointer
+	* math_root.C: changes because of the above
+
+	* math_macro.C (MathMacro(MathMacro*)): delete constructor
+	(MathMacro(MathMacro const &)): new copy constructor
+
+	* math_inset.h: delete constructor taking a pointer to MathedInset
+	(size, incSize): move inline method
+
+	* math_funcinset.h: add pragma, remove class vars ln and fname,
+	change protected to private, add '_' to priv vars.
+	(~MathFuncInset): remove
+
+	* math_fracinset.h: make MathParInset den_ a real object and not a
+	pointer. 
+
+	* math_fracinset.C (MathFracInset): clean up, move initalization
+	to initialization list
+	(~MathFracInset): remove
+	(Clone): remove leak
+
+	* math_draw.C: delete file
+	
+	* math_dotsinset.[Ch]: add pragma
+
+	* math_bigopinset.h: make protected variables private add '_' to vars.
+
+	* math_bigopinset.C: move methods to follow class definition order
+
+	* math_accentinset.h (getAccentCode): move inline here
+
+	* math_accentinset.C (MathAccentInset): cleanup
+	(draw): constify dw
+
 2001-02-27  Lars Gullik Bjønnes  <larsbj@trylle.birdstep.com>
+
+	* math_inset.[Ch] (MathedInset): remove method
+
+	* Makefile.am (libmathed_la_SOURCES): correct typo
 
 	* math_parinset.C (draw): move MathedXiter data(this) up. and
 	remove it two other places.

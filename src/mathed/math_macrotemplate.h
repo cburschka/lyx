@@ -22,8 +22,6 @@ public:
 	explicit
 	MathMacroTemplate(string const &, int na = 0, int f = 0);
 	///
-	//~MathMacroTemplate();
-	///
 	void draw(Painter &, int, int);
 	///
 	void Metrics();

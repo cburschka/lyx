@@ -31,15 +31,14 @@ class MathMacroTemplate;
     \author Alejandro Aguilar Sierra <asierra@servidor.unam.mx>
     \version November 1996
  */
-class MathMacro : public MathParInset
-{
+class MathMacro : public MathParInset {
 public:
 	/// A macro can only be builded from an existing template
 	explicit
 	MathMacro(MathMacroTemplate *);
 	/// or from another macro.
 	explicit
-	MathMacro(MathMacro *);
+	MathMacro(MathMacro const &);
 	///
 	void draw(Painter &, int, int);
 	///

@@ -30,10 +30,6 @@ MathMacroTemplate::MathMacroTemplate(string const & nm, int na, int flg):
 }
 
 
-//MathMacroTemplate::~MathMacroTemplate()
-//{}
-
-
 void  MathMacroTemplate::setTCode(MathedTextCodes t)
 {
 	tcode_ = t;

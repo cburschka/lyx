@@ -1,5 +1,6 @@
 #include <config.h>
 
+#include <ctime>
 #include <unistd.h>
 #include <sys/wait.h>
 

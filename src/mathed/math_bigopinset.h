@@ -6,7 +6,7 @@
 #include "math_defs.h"
 
 /// big operators
-class MathBigopInset: public MathedInset {
+class MathBigopInset : public MathedInset {
 public:
 	///
 	MathBigopInset(string const &, int, short st = LM_ST_TEXT);
@@ -22,10 +22,10 @@ public:
 	bool GetLimits() const;
 	///
 	void SetLimits(bool);
-protected:
+private:
 	///
-	int lims;
+	int lims_;
 	///
-	int sym;   
+	int sym_;
 };
 #endif

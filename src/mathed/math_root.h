@@ -32,8 +32,6 @@ public:
 	explicit
 	MathRootInset(short st = LM_ST_TEXT);
 	///
-	~MathRootInset();
-	///
 	MathedInset * Clone();
 	///
 	void draw(Painter &, int x, int baseline);
@@ -63,7 +61,7 @@ private:
 	///
 	int idx_;
 	///
-	MathParInset * uroot_;
+	MathParInset uroot_;
 	///
 	int wroot_;
 	///
