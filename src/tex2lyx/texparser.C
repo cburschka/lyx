@@ -1,7 +1,10 @@
 
+#include <config.h>
+
 #include "texparser.h"
+#include "Lsstream.h"
+
 #include <iostream>
-#include <sstream>
 
 using std::cerr;
 using std::endl;

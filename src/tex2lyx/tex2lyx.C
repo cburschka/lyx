@@ -491,7 +491,7 @@ void handle_tabular(Parser & p, ostream & os, mode_type mode)
 					<< " content: " << lines[row] << "\n";
 			dummy.resize(3);
 		}
-		lines.at(row) = dummy.at(1);
+		lines[row] = dummy[1];
 
 		//cerr << "line: " << row << " above 0: " << dummy[0] << "\n";
 		//cerr << "line: " << row << " below 2: " << dummy[2] <<  "\n";
@@ -499,19 +499,19 @@ void handle_tabular(Parser & p, ostream & os, mode_type mode)
 
 		for (int i = 0; i <= 2; i += 2) {	
 			//cerr << "   reading from line string '" << dummy[i] << "'\n";
-			Parser p1(dummy.at(i));
+			Parser p1(dummy[i]);
 			while (p1.good()) {
 				Token t = p1.getToken();
 				//cerr << "read token: " << t << "\n";
 				if (t.cs() == "hline") {
 					if (i == 0) {
 						rowinfo[row].topline = true;
-						for (size_t c = 0; c < colinfo.size(); ++c)
-							cellinfos.at(c).topline = true;
+						for (size_t col = 0; col < colinfo.size(); ++col)
+							cellinfos[col].topline = true;
 					} else {
 						rowinfo[row].bottomline = true;
-						for (size_t c = 0; c < colinfo.size(); ++c)
-							cellinfos.at(c).bottomline = true;
+						for (size_t col = 0; col < colinfo.size(); ++col)
+							cellinfos[col].bottomline = true;
 					}
 				} else if (t.cs() == "cline") {
 					string arg = p1.verbatimItem();
@@ -519,13 +519,13 @@ void handle_tabular(Parser & p, ostream & os, mode_type mode)
 					vector<string> t;
 					split(arg, t, '-');
 					t.resize(2);
-					size_t from = string2int(t.at(0));
-					size_t to = string2int(t.at(1));
+					size_t from = string2int(t[0]);
+					size_t to = string2int(t[1]);
 					for (size_t col = from; col < to; ++col) {
 						if (i == 0) 
-							cellinfos.at(col).topline = true;
+							cellinfos[col].topline = true;
 						else	
-							cellinfos.at(col).bottomline = true;
+							cellinfos[col].bottomline = true;
 					}
 				} else {
 					cerr << "unexpected line token: " << t << endl;
@@ -537,11 +537,11 @@ void handle_tabular(Parser & p, ostream & os, mode_type mode)
 		vector<string> cells;
 		split(lines[row], cells, TAB);
 		for (size_t col = 0, cell = 0; cell < cells.size() && col < colinfo.size(); ++col, ++cell) {
-			//cerr << "cell content: " << cells.at(cell) << "\n";
-			Parser p(cells.at(cell));
+			//cerr << "cell content: " << cells[cell] << "\n";
+			Parser p(cells[cell]);
 			p.skipSpaces();	
 			//cerr << "handling cell: " << p.nextToken().cs() << " '" <<
-			//cells.at(cell) << "'\n";
+			//cells[cell] << "'\n";
 			if (p.nextToken().cs() == "multicolumn") {
 				// how many cells?
 				p.getToken();
@@ -550,7 +550,7 @@ void handle_tabular(Parser & p, ostream & os, mode_type mode)
 				// special cell properties alignment	
 				vector<ColInfo> t;
 				bool leftline = handle_colalign(p, t);
-				CellInfo & ci = cellinfos.at(col);
+				CellInfo & ci = cellinfos[col];
 				ci.multi     = 1;
 				ci.align     = t.front().align;
 				ci.content   = parse(p, FLAG_ITEM, mode, false);
@@ -560,11 +560,11 @@ void handle_tabular(Parser & p, ostream & os, mode_type mode)
 				// add dummy cells for multicol
 				for (size_t i = 0; i < ncells - 1 && col < colinfo.size(); ++i) {
 					++col;
-					cellinfos.at(col).multi = 2;
-					cellinfos.at(col).align = "center";
+					cellinfos[col].multi = 2;
+					cellinfos[col].align = "center";
 				}
 			} else {
-				cellinfos.at(col).content = parse(p, FLAG_ITEM, mode, false);
+				cellinfos[col].content = parse(p, FLAG_ITEM, mode, false);
 			}
 		}
 
@@ -572,13 +572,13 @@ void handle_tabular(Parser & p, ostream & os, mode_type mode)
 
 		//cerr << "//  handle almost empty last row what we have\n";
 		// handle almost empty last row
-		if (row && lines.at(row).empty() && row + 1 == rowinfo.size()) {
+		if (row && lines[row].empty() && row + 1 == rowinfo.size()) {
 			//cerr << "remove empty last line\n";
-			if (rowinfo.at(row).topline);
-				rowinfo.at(row - 1).bottomline = true;
-			for (size_t c = 0; c < colinfo.size(); ++c)
-				if (cellinfo.at(row).at(c).topline)
-					cellinfo.at(row - 1).at(c).bottomline = true;
+			if (rowinfo[row].topline);
+				rowinfo[row - 1].bottomline = true;
+			for (size_t col = 0; col < colinfo.size(); ++col)
+				if (cellinfo[row][col].topline)
+					cellinfo[row - 1][col].bottomline = true;
 			rowinfo.pop_back();
 		}
 
@@ -592,13 +592,13 @@ void handle_tabular(Parser & p, ostream & os, mode_type mode)
 
 	//cerr << "// after header\n";
 	for (size_t col = 0; col < colinfo.size(); ++col) {
-		os << "<column alignment=\"" << colinfo.at(col).align << "\"";
-		if (colinfo.at(col).rightline)
+		os << "<column alignment=\"" << colinfo[col].align << "\"";
+		if (colinfo[col].rightline)
 			os << " rightline=\"true\"";
 		if (col == 0 && leftline)
 			os << " leftline=\"true\"";
 		os << " valignment=\"top\"";
-		os << " width=\"" << colinfo.at(col).width << "\"";
+		os << " width=\"" << colinfo[col].width << "\"";
 		os << ">\n";
 	}
 	//cerr << "// after cols\n";
@@ -877,31 +877,6 @@ bool outer)
 		}
 
 
-		if (flags & FLAG_BRACED) {
-			if (t.cat() == catSpace)
-				continue;
-
-			if (t.cat() != catBegin) {
-				p.error("opening brace expected");
-				return;
-			}
-
-			// skip the brace and collect everything to the next matching
-			// closing brace
-			flags = FLAG_BRACE_LAST;
-		}
-
-
-		if (flags & FLAG_OPTION) {
-			if (t.cat() == catOther && t.character() == '[') {
-				parse(p, os, FLAG_BRACK_LAST, mode, outer);
-			} else {
-				// no option found, put back token and we are done
-				p.putback();
-			}
-			return;
-		}
-
 		//
 		// cat codes
 		//
@@ -1015,11 +990,6 @@ bool outer)
 
 		else if (t.cs() == "\\" && mode == TEXT_MODE && curr_env() == "tabular")
 			os << LINE;
-
-		else if (t.character() == ']' && (flags & FLAG_BRACK_LAST)) {
-			//cerr << "finished reading option\n";
-			return;
-		}
 
 		else if (t.cat() == catOther)
 			os << string(1, t.character());
