@@ -35,10 +35,9 @@ and let the computer take care of the rest.
 
 %build
 unset LINGUAS || true
-CXXFLAGS="$RPM_OPT_FLAGS" CFLAGS="$RPM_OPT_FLAGS" \
 ./configure --prefix=%{_prefix} --mandir=%{_mandir} \
 	--bindir=%{_bindir} --datadir=%{_datadir} \
-	--without-warnings
+	--without-warnings --disable-debug --enable-optimizations=-O2
 make
 
 %install

@@ -1,3 +1,8 @@
+2002-10-25  Kayvan A. Sylvan  <kayvan@sylvan.com>
+
+	* lyx.spec.in (CFLAGS, CXXFLAGS): Fixed to use configure
+	defaults instead of overriding them.
+
 2002-10-24  Angus Leeming  <leeming@lyx.org>
 
 	* FORMAT: document further change to InsetGraphicsParams.
@@ -34,7 +39,7 @@
 2002-05-25  John Levon  <moz@compsoc.man.ac.uk>
 
 	* Code_rules/Rules: mention enums should be lower-case
- 
+
 2002-05-23  Kayvan A. Sylvan  <kayvan@satyr.sylvan.com>
 
 	* lyx.spec.in: Remove --with-included-string for 1.3.0cvs and
@@ -87,7 +92,7 @@
 
 2001-04-03 Kayvan Sylvan <kayvan@sylvan.com>
 
-	* lyx.spec.in: fix handling of reLyX with RPM relocation. 
+	* lyx.spec.in: fix handling of reLyX with RPM relocation.
 
 2001-03-30  John Levon  <moz@compsoc.man.ac.uk>
 
@@ -98,4 +103,3 @@
 	* Code_rules/Recommendations:
 	* Code_rules/Rules: update, add some comments,
 	  spelling and grammar
-
