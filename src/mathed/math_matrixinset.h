@@ -46,8 +46,6 @@ public:
 	
 	/// Use this to manage the extra information independently of paragraph
 	MathedRowContainer & getRowSt();
-	///
-	void setRowSt(MathedRowContainer & r);
 private:
 	///  Number of columns & rows
 	int nc_;
@@ -90,12 +88,5 @@ inline
 MathedRowContainer & MathMatrixInset::getRowSt()
 {
 	return row_;
-}
-
-
-inline
-void MathMatrixInset::setRowSt(MathedRowContainer & r)
-{
-	row_ = r;
 }
 #endif

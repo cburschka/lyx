@@ -164,14 +164,8 @@ void MathedXIter::Merge(MathedArray const & a)
 	while (pos < pos2 && OK()) {
 		if (IsCR()) {
 			if (p_ && p_->Permit(LMPF_ALLOW_CR)) {
-				MathedRowContainer::iterator r( new MathedRowSt(ncols + 1) );
-				if (crow_) {
-					r.st_->next_ = crow_.st_->next_;
-					crow_.st_->next_ = r.st_;
-				} else {
-					r.st_->next_ = 0;
-				}
-				crow_ = r;
+				container().insert_after(crow_, MathedRowSt(ncols + 1));
+				++crow_;
 			} else {
 				Delete();
 				--pos2;
@@ -378,15 +372,9 @@ void MathedXIter::addRow()
 		
 		return;
 	}
+
 	// Create new item for the structure    
-	MathedRowContainer::iterator r( new MathedRowSt(ncols + 1) );
-	if (crow_) {
-		r.st_->next_ = crow_.st_->next_;
-		crow_.st_->next_ = r.st_;
-	} else {
-		crow_ = r;
-		r.st_->next_ = 0;
-	}    
+	container().insert_after(crow_, MathedRowSt(ncols + 1));
 	// Fill missed tabs in current row
 	while (col < ncols - 1) 
 		insert('T', LM_TC_TAB); 
@@ -595,19 +583,16 @@ MathedRowSt * MathedXIter::adjustVerticalSt()
 {
 	GoBegin();
 	if (!crow_) {
-//	lyxerr << " CRW" << ncols << " ";
 		crow_.st_ = new MathedRowSt(ncols + 1); // this leaks
 	}
-//    lyxerr<< " CRW[" << crow_ << "] ";
 	MathedRowSt * mrow = crow_.st_;
 	while (OK()) {
 		if (IsCR()) {
-			if (col >= ncols) ncols = col + 1; 
+			if (col >= ncols)
+				ncols = col + 1; 
 			MathedRowSt * r = new MathedRowSt(ncols + 1); // this leaks
-//	    r->next = crow_->next;
 			crow_.st_->next_ = r;
 			crow_.st_ = r;
-//	    lyxerr << " CX[" << crow_ << "]";
 		}   
 		Next();	
 	}

@@ -63,14 +63,20 @@ protected:
 	bool numbered_;
 };
 
+
+class MathedRowContainer;
+
 class MathedRowSt : public MathedRowStruct {
 public:
 	///
 	explicit MathedRowSt(int n)
 			: MathedRowStruct(n), next_(0)
 		{}
+//private:
 	///
 	MathedRowSt * next_;
+	///
+	friend class MathedRowContainer;
 };
 
 
@@ -109,8 +115,6 @@ struct MathedRowContainer {
 
 	///
 	MathedRowContainer() : data_(0) {}
-	///
-	MathedRowContainer(MathedRowSt * data) : data_(data) {}
 
 	///
 	iterator begin() { return iterator(this); }
@@ -118,12 +122,8 @@ struct MathedRowContainer {
 	bool empty() const { return data_ == 0; }
 
 	/// insert 'item' before 'iterator'
-	void insert(iterator const & pos, MathedRowSt const & item) {
-		MathedRowSt * st = new MathedRowSt(item);
-		link_before(pos, st);
-	}
-
-	void link_before(iterator const & it, MathedRowSt * r) {
+	void insert(iterator const & it, MathedRowSt const & item) {
+		MathedRowSt * r = new MathedRowSt(item);
 		if (data_ == it.st_)
 			data_ = r;
 		else {
@@ -134,9 +134,25 @@ struct MathedRowContainer {
 		r->next_  = it.st_;
 	}
 			
+	/// insert 'item' after 'iterator'
+	void insert_after(iterator & it, MathedRowSt const & item) {
+		MathedRowSt * r = new MathedRowSt(item);
+		if (it) {
+			r->next_ = it.st_->next_;
+			it.st_->next_ = r;
+		} else {
+			it.st_ = r;
+			r->next_ = 0;
+		}
+	}
 
 	///
 	MathedRowSt * data_;
+
+private:
+	// currently unimplemented just to make sure it's not used
+	MathedRowContainer(MathedRowContainer const &); // unimplemented
+	void operator=(MathedRowContainer const &); // unimplemented
 };
 
 

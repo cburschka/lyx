@@ -15,20 +15,21 @@ extern int number_of_newlines;
 
 MathMatrixInset::MathMatrixInset(int m, int n, short st)
 	: MathParInset(st, "array", LM_OT_MATRIX), nc_(m), nr_(0), ws_(m),
-	  v_align_(0), h_align_(nc_, 'c'), row_(0)
+	  v_align_(0), h_align_(nc_, 'c')
 {
 	flag = 15;
 	if (n > 0) {
-		row_ = new MathedRowSt(nc_ + 1);
+		row_.data_ = new MathedRowSt(nc_ + 1);
 		MathedXIter it(this);
-		for (int j = 1; j < n; ++j) it.addRow();
+		for (int j = 1; j < n; ++j)
+			it.addRow();
 		nr_ = n;
 		if (nr_ == 1 && nc_ > 1) {
 			for (int j = 0; j < nc_ - 1; ++j) 
 				it.insert('T', LM_TC_TAB);
 		}
 	} else if (n < 0) {
-		row_ = new MathedRowSt(nc_ + 1);
+		row_.data_ = new MathedRowSt(nc_ + 1);
 		nr_ = 1;
 	}
 }
@@ -50,7 +51,7 @@ MathMatrixInset::MathMatrixInset(MathMatrixInset const & mt)
 			//if (mrow->label) 
 			r->setLabel(mrow->getLabel());
 			if (!ro) 
-				row_ = r;
+				row_.data_ = r;
 			else
 				ro->next_ = r;
 			mrow = mrow->next_;
@@ -58,7 +59,7 @@ MathMatrixInset::MathMatrixInset(MathMatrixInset const & mt)
 			++nr_;
 		}
 	} else   
-		row_ = 0;
+		row_.data_ = 0;
 	flag = mt.flag;
 }
 
@@ -136,7 +137,7 @@ void MathMatrixInset::Metrics()
 	if (row_.empty()) {
 		// lyxerr << " MIDA ";
 		MathedXIter it(this);
-		row_ = it.adjustVerticalSt();
+		row_.data_ = it.adjustVerticalSt();
 	} 
 	
 	// Clean the arrays      
