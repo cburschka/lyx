@@ -31,17 +31,20 @@ public:
 	Tooltips();
 
 	/// Initialise a tooltip for this ob.
-	void initTooltip(FL_OBJECT * ob, string const & tip);
+	void init(FL_OBJECT * ob, string const & tip);
 
 	/// Are the tooltips on or off?
 	static bool enabled() { return enabled_; }
+
+	/// This method is connected to the tooltipsToggled signal.
+	void set();
 
 #if FL_REVISION < 89
 
 	/** Return the tooltip associated with this object.
 	 *  Required by an xforms callback routine.
 	 */
-	string const getTooltip(FL_OBJECT *) const;
+	string const get(FL_OBJECT *) const;
 
 #endif
 
@@ -58,10 +61,7 @@ private:
 	/** Once enabled_ is changed, then this signal is emitted to update
 	 *  all the tooltips.
 	 */
-	static SigC::Signal0<void> tooltipsToggled;
-
-	/// This method is connected to the tooltipsToggled signal.
-	void toggleTooltips();
+	static SigC::Signal0<void> toggled;
 
 	/// The tooltips are stored so that they can be turned on and off.
 	typedef std::map<FL_OBJECT *, string> TooltipsMap;

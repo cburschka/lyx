@@ -355,7 +355,7 @@ void Toolbar::Pimpl::set(bool doingmain)
 
 			// initialise the tooltip
 			string const tip = _(lyxaction.helpText(obj->argument));
-			tooltip_->initTooltip(obj, tip);
+			tooltip_->init(obj, tip);
 			
 			// The view that this object belongs to.
 			obj->u_vdata = owner;

@@ -122,12 +122,7 @@ void FormBaseDeprecated::show()
 			title_.c_str());
 	}
 
-	// Set the initial state of the cursor
-	if (form()->visible) {
-		int const cursor = Tooltips::enabled() ?
-			XC_question_arrow : FL_DEFAULT_CURSOR;
-		fl_set_cursor(form()->window, cursor);
-	}
+	tooltips().set();
 }
 
 

@@ -6,9 +6,7 @@
  * \author Angus Leeming, a.leeming@ic.ac.uk
  */
 
-/*
- *
- * Tooltips for xforms. xforms 0.89 supports them directly, but 0.88 needs
+/* Tooltips for xforms. xforms 0.89 supports them directly, but 0.88 needs
  * a bit of jiggery pokery. This class wraps it all up in a neat interface.
  * Based on code originally in Toolbar_pimpl.C that appears to have been
  * written by Matthias Ettrich and Jean-Marc Lasgouttes.
@@ -32,7 +30,7 @@ using SigC::slot;
 
 bool Tooltips::enabled_ = false;
 
-SigC::Signal0<void> Tooltips::tooltipsToggled;
+SigC::Signal0<void> Tooltips::toggled;
 
 
 #if FL_REVISION >= 89
@@ -44,18 +42,18 @@ Tooltips::Tooltips()
 		first = false;
 		Dialogs::toggleTooltips.connect(slot(&Tooltips::toggleEnabled));
 	}
-	tooltipsToggled.connect(slot(this, &Tooltips::toggleTooltips));
+	toggled.connect(slot(this, &Tooltips::set));
 }
 
 
 void Tooltips::toggleEnabled()
 {
 	enabled_ = !enabled_;
-	tooltipsToggled();
+	toggled();
 }
 
 
-void Tooltips::toggleTooltips()
+void Tooltips::set()
 {
 	if (tooltipsMap.empty())
 		// There are no objects with tooltips in this dialog, so
@@ -82,7 +80,7 @@ void Tooltips::toggleTooltips()
 }
 
 
-void Tooltips::initTooltip(FL_OBJECT * ob, string const & tip)
+void Tooltips::init(FL_OBJECT * ob, string const & tip)
 {
 	lyx::Assert(ob && ob->form);
 
@@ -97,10 +95,6 @@ void Tooltips::initTooltip(FL_OBJECT * ob, string const & tip)
 
 	// Store the tooltip string
 	tooltipsMap[ob] = formatted(_(str), 400);
-
-	// Set the initial state of the tooltips
-	char const * const c_str = enabled_ ? str.c_str() : 0;
-	fl_set_object_helper(ob, c_str);
 }
 
 
@@ -139,18 +133,18 @@ Tooltips::Tooltips()
 		first = false;
 		Dialogs::toggleTooltips.connect(slot(&Tooltips::toggleEnabled));
 	}
-	tooltipsToggled.connect(slot(this, &Tooltips::toggleTooltips));
+	toggled.connect(slot(this, &Tooltips::set));
 }
 
 
 void Tooltips::toggleEnabled()
 {
 	enabled_ = !enabled_;
-	tooltipsToggled();
+	toggled();
 }
 
 
-void Tooltips::toggleTooltips()
+void Tooltips::set()
 {
 	if (tooltipsMap.empty())
 		// There are no objects with tooltips in this dialog, so
@@ -169,7 +163,7 @@ void Tooltips::toggleTooltips()
 }
 
 
-void Tooltips::initTooltip(FL_OBJECT * ob, string const & tip)
+void Tooltips::init(FL_OBJECT * ob, string const & tip)
 {
 	lyx::Assert(ob && ob->form);
 
@@ -205,7 +199,7 @@ void Tooltips::initTooltip(FL_OBJECT * ob, string const & tip)
 }
 
 
-string const Tooltips::getTooltip(FL_OBJECT * ob) const 
+string const Tooltips::get(FL_OBJECT * ob) const 
 {
 	TooltipsMap::const_iterator it = tooltipsMap.find(ob);
 	if (it == tooltipsMap.end())
@@ -223,7 +217,7 @@ void TooltipTimerCB(FL_OBJECT * timer, long data)
 	FL_FORM * form = ob->form;
 	Tooltips * tooltip = static_cast<Tooltips *>(timer->u_vdata);
 
-	string const help = tooltip->getTooltip(ob);
+	string const help = tooltip->get(ob);
 	if (help.empty())
 		return;
 

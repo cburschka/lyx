@@ -1,3 +1,23 @@
+2002-03-18  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* Tooltips.[Ch] (initTooltip): renamed init. In the 0.89 version, no
+	longer call fl_set_object_helper as this routine respects line breaks
+	only if the dialog is visible.
+	(getTooltip): renamed  get.
+	(toggleTooltips): renamed set and made public,
+	
+	* FormBase.C (show):
+	* FormBaseDeprecated.C (show): move tooltip-inards into Tooltip.
+
+	* FormBibtex.C (build):
+	* FormCitation.C (build):
+	* FormForks.C (build):
+	* FormSendto.C (build):
+	* FormTexinfo.C (build):
+	* Toolbar_pimpl.C (set): Tooltip::initTooltip -> Tooltip::init.
+
+	* xforms_helper.C (formatted): rewritten as a one-pass algorithm.
+
 2002-03-18  Juergen Vigna  <jug@sad.it>
 
 	* FormTabular.C (update): deactivate left/right border settings for

@@ -52,19 +52,19 @@ void FormForks::build() {
 
 	// Set up the tooltip mechanism
 	string str = N_("All currently running child processes forked by LyX.");
-	tooltips().initTooltip(dialog_->browser_children, str);
+	tooltips().init(dialog_->browser_children, str);
 
 	str = N_("A list of all child processes to kill.");
-	tooltips().initTooltip(dialog_->browser_kill, str);
+	tooltips().init(dialog_->browser_kill, str);
 
 	str = N_("Add all processes to the list of processes to kill.");
-	tooltips().initTooltip(dialog_->button_all, str);
+	tooltips().init(dialog_->button_all, str);
 
 	str = N_("Add the currently selected child process to the list of processes to kill.");
-	tooltips().initTooltip(dialog_->button_add, str);
+	tooltips().init(dialog_->button_add, str);
 
 	str = N_("Remove the currently selected item from the list of processes to kill.");
-	tooltips().initTooltip(dialog_->button_remove, str);
+	tooltips().init(dialog_->button_remove, str);
 }
 
 

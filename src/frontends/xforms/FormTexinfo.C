@@ -41,25 +41,25 @@ void FormTexinfo::build() {
 
 	// set up the tooltips
 	string str = N_("Runs the script \"TexFiles.sh\" to build new file lists.");
-	tooltips().initTooltip(dialog_->button_rescan, str);
+	tooltips().init(dialog_->button_rescan, str);
 
 	str = N_("Shows the contents of the marked file. Only possible in full path mode.");
-	tooltips().initTooltip(dialog_->button_view, str);
+	tooltips().init(dialog_->button_view, str);
 
 	str = N_("Runs the script \"texhash\" which builds the a new LaTeX tree. Needed if you install a new TeX class or style. To execute it, you need the write permissions for the tex-dirs, often /var/lib/texmf and other.");
-	tooltips().initTooltip(dialog_->button_texhash, str);
+	tooltips().init(dialog_->button_texhash, str);
 
 	str = N_("View full path or only file name. Full path is needed to view the contents of a file.");
-	tooltips().initTooltip(dialog_->check_fullpath, str);
+	tooltips().init(dialog_->check_fullpath, str);
 
 	str = N_("Shows the installed LaTeX Document classes. Remember, that these classes are only available in LyX if a corresponding LyX layout file exists!");
-	tooltips().initTooltip(dialog_->radio_cls, str);
+	tooltips().init(dialog_->radio_cls, str);
 
 	str = N_("Shows the installed LaTeX style files, which are available in LyX by default, like \"babel\" or through \\usepackage{<the stylefile>} in LaTeX preamble.");
-	tooltips().initTooltip(dialog_->radio_sty, str);
+	tooltips().init(dialog_->radio_sty, str);
 
 	str = N_("Shows the installed style files for BibTeX. They can be loaded through insert->Lists&Toc->BibTeX Reference->Style.");
-	tooltips().initTooltip(dialog_->radio_bst, str);
+	tooltips().init(dialog_->radio_bst, str);
 }
 
 

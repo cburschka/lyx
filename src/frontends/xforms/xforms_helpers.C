@@ -40,7 +40,6 @@ char const * flyx_shortcut_extract(char const * sc)
 
 	if (sd[0] == '|') {
 		++sd;
-		//lyxerr << sd << endl;
 		return sd;
 	}
 	return "";
@@ -300,10 +299,11 @@ void updateWidgetsFromLength(FL_OBJECT * input, FL_OBJECT * choice,
 // Take a string and add breaks so that it fits into a desired label width, w
 string formatted(string const & sin, int w, int size, int style)
 {
-	// FIX: Q: Why cant this be done by a one pass algo? (Lgb)
-
 	string sout;
 	if (sin.empty()) return sout;
+
+#if 0
+	// FIX: Q: Why cant this be done by a one pass algo? (Lgb)
 
 	// breaks in up into a vector of individual words
 	vector<string> sentence;
@@ -360,6 +360,57 @@ string formatted(string const & sin, int w, int size, int style)
 	if (sout[sout.length() - 1] == '\n')
 		sout.erase(sout.length() - 1);
 
+#else
+	string::size_type curpos = 0;
+	string line;
+	for(;;) {
+		string::size_type const nxtpos1 = sin.find(' ',  curpos);
+		string::size_type const nxtpos2 = sin.find('\n', curpos);
+		string::size_type const nxtpos = std::min(nxtpos1, nxtpos1);
+
+		string const word = nxtpos == string::npos ?
+			sin.substr(curpos) : sin.substr(curpos, nxtpos-curpos);
+
+		bool const newline = (nxtpos2 != string::npos &&
+				      nxtpos2 < nxtpos1);
+
+		string const line_plus_word =
+			line.empty() ? word : line + ' ' + word;
+
+		int const length =
+			fl_get_string_width(style, size,
+					    line_plus_word.c_str(),
+					    int(line_plus_word.length()));
+
+		if (length >= w) {
+			sout += line + '\n';
+			if (newline) {
+				sout += word + '\n';
+				line.erase();
+			} else {
+				line = word;
+			}
+
+		} else if (newline) {
+			sout += line_plus_word + '\n';
+			line.erase();
+
+		} else {
+			if (!line.empty())
+				line += ' ';
+			line += word;
+		}
+		
+		if (nxtpos == string::npos) {
+			if (!line.empty())
+				sout += line;
+			break;
+		}
+
+		curpos = nxtpos+1;
+	}
+#endif
+	
 	return sout;
 }
 
