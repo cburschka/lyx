@@ -25,6 +25,7 @@
 #include "lyxlex.h"
 
 #include "bufferlist.h"
+#include "buffer.h"
 #include "lyxserver.h"
 #include "kbmap.h"
 #include "lyxfunc.h"
@@ -116,11 +117,20 @@ LyX::LyX(int & argc, char * argv[])
 		files.push_back(i18nLibFileSearch("examples", "splash.lyx"));
 	}
 
-#if 0 // FIXME: GUII
 	// Execute batch commands if available
 	if (!batch_command.empty()) {
 		lyxerr[Debug::INIT] << "About to handle -x '"
 		       << batch_command << "'" << endl;
+
+		Buffer * last_loaded = 0;
+ 
+		vector<string>::iterator it = files.begin();
+		vector<string>::iterator end = files.end();
+		for (; it != end; ++it) {
+			last_loaded = bufferlist.loadLyXFile(*it);
+		}
+
+		files.clear();
 
 		// no buffer loaded, create one
 		if (!last_loaded)
@@ -131,13 +141,11 @@ LyX::LyX(int & argc, char * argv[])
 		// try to dispatch to last loaded buffer first
 		bool const dispatched = last_loaded->dispatch(batch_command, &success);
 
-		// if this was successful, finish
-		if (dispatched) {
+		if (success) { 
 			QuitLyX();
 			exit(!success);
 		}
 	}
-#endif
 
 	lyx_gui::start(batch_command, files);
 }
