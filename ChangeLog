@@ -1,5 +1,9 @@
 2000-10-18  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
+	* src/version.h (LYX_VERSION): reset version to 1.1.5fixcvs
+
+2000-10-18  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
 	* src/version.h (LYX_RELEASE): version 1.1.5fix2 released.
 
 	* src/minibuffer.C (peek_event): return 1 if there has been a
