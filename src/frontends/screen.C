@@ -174,13 +174,14 @@ void LyXScreen::showCursor(BufferView & bv)
 	if (realfont.language() == latex_language)
 		shape = BAR_SHAPE;
 
-	int ascent, descent;
-	bv.cursor().getDim(ascent, descent);
-	int h = ascent + descent;
+	LyXFont const font = bv.cursor().getFont();
+	int const asc = font_metrics::maxAscent(font);
+	int const des = font_metrics::maxDescent(font);
+	int h = asc + des;
 	int x = 0;
 	int y = 0;
 	bv.cursor().getPos(x, y);
-	y -= ascent;
+	y -= asc;
 	//lyxerr << "LyXScreen::showCursor x: " << x << " y: " << y << endl;
 
 	// if it doesn't touch the screen, don't try to show it

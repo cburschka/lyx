@@ -1,4 +1,8 @@
 
+2005-01-10  André Pönitz  <poenitz@gmx.net>
+
+	* screen.C (showCursor): use new function LCursor::getFont
+
 2004-12-06  Alfredo Braunstein  <abraunst@lyx.org>
 
 	* screen.C (showCursor): draw half cursors

@@ -56,6 +56,7 @@
 #include "frontends/Alert.h"
 #include "frontends/Dialogs.h"
 #include "frontends/FileDialog.h"
+#include "frontends/font_metrics.h"
 #include "frontends/LyXView.h"
 #include "frontends/LyXScreenFactory.h"
 #include "frontends/screen.h"
@@ -586,8 +587,9 @@ void BufferView::Pimpl::workAreaResize()
 bool BufferView::Pimpl::fitCursor()
 {
 	if (bv_funcs::status(bv_, bv_->cursor()) == bv_funcs::CUR_INSIDE) {
-		int asc, des;
-		bv_->cursor().getDim(asc, des);
+		LyXFont const font = bv_->cursor().getFont();
+		int const asc = font_metrics::maxAscent(font);
+		int const des = font_metrics::maxDescent(font);
 		Point p = bv_funcs::getPos(bv_->cursor());
 		if (p.y_ - asc >= 0 && p.y_ + des < bv_->workHeight())
 			return false;

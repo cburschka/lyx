@@ -160,7 +160,6 @@ namespace {
 		return false;
 	}
 
-
 } // namespace anon
 
 
@@ -192,7 +191,8 @@ void LCursor::setCursor(DocIterator const & cur)
 
 void LCursor::dispatch(FuncRequest const & cmd0)
 {
-	lyxerr[Debug::DEBUG] << "LCursor::dispatch: cmd: " << cmd0 << endl << *this << endl;
+	lyxerr[Debug::DEBUG] << "LCursor::dispatch: cmd: "
+		<< cmd0 << endl << *this << endl;
 	if (empty())
 		return;
 
@@ -200,7 +200,8 @@ void LCursor::dispatch(FuncRequest const & cmd0)
 	LCursor safe = *this;
 
 	for (; size(); pop()) {
-		lyxerr[Debug::DEBUG] << "LCursor::dispatch: cmd: " << cmd0 << endl << *this << endl;
+		lyxerr[Debug::DEBUG] << "LCursor::dispatch: cmd: "
+			<< cmd0 << endl << *this << endl;
 		BOOST_ASSERT(pos() <= lastpos());
 		BOOST_ASSERT(idx() <= lastidx());
 		BOOST_ASSERT(pit() <= lastpit());
@@ -301,25 +302,6 @@ int LCursor::currentMode()
 			return res;
 	}
 	return InsetBase::TEXT_MODE;
-}
-
-
-void LCursor::getDim(int & asc, int & des) const
-{
-	if (inMathed()) {
-		BOOST_ASSERT(inset().asMathInset());
-		//inset().asMathInset()->getCursorDim(asc, des);
-		asc = 10;
-		des = 2;
-	} else if (inTexted()) {
-		LyXFont const & realfont = text()->real_current_font;
-		asc = font_metrics::maxAscent(realfont);
-		des = font_metrics::maxDescent(realfont);
-	} else {
-		lyxerr << "should this happen?" << endl;
-		asc = 10;
-		des = 10;
-	}
 }
 
 
@@ -1131,4 +1113,25 @@ void LCursor::needsUpdate()
 void LCursor::noUpdate()
 {
 	disp_.update(false);
+}
+
+
+LyXFont LCursor::getFont() const
+{
+	// HACK. far from being perfect...
+	int s = 0;
+	// go up until first non-0 text is hit
+	// (innermost text is 0 in mathed)
+	for (s = size() - 1; s >= 0; --s)
+		if (operator[](s).text())
+			break;
+	CursorSlice const & sl = operator[](s);
+	LyXText & text = *sl.text();
+	LyXFont font = text.getPar(sl.pit()).getFont(
+		bv().buffer()->params(),
+		sl.pos(),
+		outerFont(sl.pit(), text.paragraphs()));
+	for (; s < size(); ++s)
+		;
+	return font;
 }

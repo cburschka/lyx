@@ -23,6 +23,7 @@ class BufferView;
 class FuncStatus;
 class FuncRequest;
 class Point;
+class LyXFont;
 
 // these should go
 class MathUnknownInset;
@@ -99,8 +100,6 @@ public:
 	bool & macromode() { return macromode_; }
 	/// returns x,y position
 	void getPos(int & x, int & y) const;
-	/// returns cursor dimension
-	void getDim(int & asc, int & desc) const;
 
 	//
 	// common part
@@ -275,8 +274,9 @@ public:
 	bool openable(MathAtom const &) const;
 	///
 	Encoding const * getEncoding() const;
+	/// font at cursor position
+	LyXFont getFont() const;
 };
-
 
 
 #endif // LYXCURSOR_H
