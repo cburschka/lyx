@@ -19,6 +19,7 @@
 #include "debug.h"
 #include "dispatchresult.h"
 #include "funcrequest.h"
+#include "FuncStatus.h"
 #include "gettext.h"
 #include "language.h"
 #include "LColor.h"
@@ -220,28 +221,39 @@ void InsetERT::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 		break;
 	}
 
-	// suppress these
-	case LFUN_LAYOUT:
-	case LFUN_BOLD:
-	case LFUN_CODE:
-	case LFUN_DEFAULT:
-	case LFUN_EMPH:
-	case LFUN_FREEFONT_APPLY:
-	case LFUN_FREEFONT_UPDATE:
-	case LFUN_NOUN:
-	case LFUN_ROMAN:
-	case LFUN_SANS:
-	case LFUN_FRAK:
-	case LFUN_ITAL:
-	case LFUN_FONT_SIZE:
-	case LFUN_FONT_STATE:
-	case LFUN_UNDERLINE:
-		break;
-
 	default:
 		InsetCollapsable::priv_dispatch(cur, cmd);
 		break;
 	}
+}
+
+
+bool InsetERT::getStatus(LCursor & cur, FuncRequest const & cmd,
+	FuncStatus & status) const
+{
+	switch (cmd.action) {
+		// suppress these
+		case LFUN_LAYOUT:
+		case LFUN_BOLD:
+		case LFUN_CODE:
+		case LFUN_DEFAULT:
+		case LFUN_EMPH:
+		case LFUN_FREEFONT_APPLY:
+		case LFUN_FREEFONT_UPDATE:
+		case LFUN_NOUN:
+		case LFUN_ROMAN:
+		case LFUN_SANS:
+		case LFUN_FRAK:
+		case LFUN_ITAL:
+		case LFUN_FONT_SIZE:
+		case LFUN_FONT_STATE:
+		case LFUN_UNDERLINE:
+			status.enabled(false);
+			return true;
+			
+		default:
+			return InsetCollapsable::getStatus(cur, cmd, status);
+		}
 }
 
 

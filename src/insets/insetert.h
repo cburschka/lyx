@@ -75,6 +75,8 @@ public:
 protected:
 	///
 	virtual void priv_dispatch(LCursor & cur, FuncRequest & cmd);
+	///
+	bool getStatus(LCursor & cur, FuncRequest const & cmd, FuncStatus &) const;
 private:
 	///
 	void init();

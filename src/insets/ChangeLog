@@ -1,3 +1,11 @@
+2004-11-04  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* insetcharstyle.[Ch]:
+	* insetert.[Ch]: implement getStatus
+	
+	* insetcharstyle.C (draw): visual clue when the cursor is inside
+	the inset
+
 2004-11-02  José Matos  <jamatos@lyx.org>
 
 	* insetcharstyle.C (docbook):

@@ -17,6 +17,8 @@
 #include "BufferView.h"
 #include "dispatchresult.h"
 #include "funcrequest.h"
+#include "FuncStatus.h"
+#include "cursor.h"
 #include "gettext.h"
 #include "LaTeXFeatures.h"
 #include "LColor.h"
@@ -127,6 +129,7 @@ void InsetCharStyle::draw(PainterInfo & pi, int x, int y) const
 	pi.pain.line(x + dim_.wid - 2, y + desc, x + dim_.wid - 2, y + desc - 4, 
 		params_.labelfont.color());
 		
+	// the name of the charstyle. Can be toggled.
 	if (has_label_) {
 		LyXFont font(params_.labelfont);
 		font.realize(LyXFont(LyXFont::ALL_SANE));
@@ -138,6 +141,18 @@ void InsetCharStyle::draw(PainterInfo & pi, int x, int y) const
 		font_metrics::rectText(params_.type, font, w, a, d);
 		pi.pain.rectText(x + (dim_.wid - w) / 2, y + desc + a,
 			params_.type, font, LColor::none, LColor::none);
+	}
+	
+	// a visual clue when the cursor is inside the inset
+	LCursor & cur = pi.base.bv->cursor();
+	if (cur.isInside(this)) {
+		y -= ascent();
+		pi.pain.line(x, y + 4, x, y, params_.labelfont.color());
+		pi.pain.line(x + 4, y, x, y, params_.labelfont.color());
+		pi.pain.line(x + dim_.wid - 2, y + 4, x + dim_.wid - 2, y, 
+			params_.labelfont.color());
+		pi.pain.line(x + dim_.wid - 6, y, x + dim_.wid - 2, y, 
+			params_.labelfont.color());
 	}
 }
 
@@ -158,17 +173,28 @@ void InsetCharStyle::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 			else
 				InsetText::priv_dispatch(cur, cmd);
 			break;
-		// supress these
-		// paragraph breaks not allowed in charstyle insets!
-		case LFUN_BREAKPARAGRAPH:
-		case LFUN_BREAKPARAGRAPHKEEPLAYOUT:
-		case LFUN_BREAKPARAGRAPH_SKIP:
-			break;
 
 		default:
 			InsetCollapsable::priv_dispatch(cur, cmd);
 			break;
 	}
+}
+
+
+bool InsetCharStyle::getStatus(LCursor & cur, FuncRequest const & cmd,
+	FuncStatus & status) const
+{
+	switch (cmd.action) {
+		// paragraph breaks not allowed in charstyle insets
+		case LFUN_BREAKPARAGRAPH:
+		case LFUN_BREAKPARAGRAPHKEEPLAYOUT:
+		case LFUN_BREAKPARAGRAPH_SKIP:
+			status.enabled(false);
+			return true;
+			
+		default:
+			return InsetCollapsable::getStatus(cur, cmd, status);
+		}
 }
 
 
