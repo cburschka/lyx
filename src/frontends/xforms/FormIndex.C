@@ -18,6 +18,9 @@
 #include "ControlIndex.h"
 #include "FormIndex.h"
 #include "forms/form_index.h"
+
+#include "support/lstrings.h"
+
 #include FORMS_H_LOCATION
 
 typedef FormCB<ControlIndex, FormDB<FD_index> > base_class;
@@ -41,14 +44,15 @@ void FormIndex::build()
 	bc().setRestore(dialog_->button_restore);
 
 	bc().addReadOnly(dialog_->input_key);
-
 }
 
 
 void FormIndex::update()
 {
-	fl_set_input(dialog_->input_key,
-		     controller().params().getContents().c_str());
+	string const contents = trim(controller().params().getContents());
+	fl_set_input(dialog_->input_key, contents.c_str());
+
+	bc().valid(!contents.empty());
 }
 
 
