@@ -20,6 +20,8 @@ libmathed_la_SOURCES = \
 	formulamacro.h \
 	math_arrayinset.C \
 	math_arrayinset.h \
+	math_atom.C \
+	math_atom.h \
 	math_binominset.C \
 	math_binominset.h \
 	math_charinset.C \

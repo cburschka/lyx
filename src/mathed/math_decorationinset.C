@@ -28,6 +28,12 @@ bool MathDecorationInset::upper() const
 }
 
 
+bool MathDecorationInset::isScriptable() const
+{
+	return true;
+}
+
+
 bool MathDecorationInset::protect() const
 {
 	return

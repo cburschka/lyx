@@ -27,6 +27,8 @@ public:
 	bool isRelOp() const;
 	///
 	bool isScriptable() const;
+	/// identifies things that can get \limits or \nolimits
+	bool takesLimits() const;
 
 private:
 	///

@@ -268,7 +268,7 @@ string MathGridInset::eolString(int row) const
 
 	// make sure an upcoming '[' does not break anything
 	MathArray const & c = cell(index(row + 1, 0));
-	if (c.size() && (*c.begin())->getChar() == '[')
+	if (c.begin() && c.begin()->nucleus()->getChar() == '[')
 		return "\\\\[0pt]\n";
 
 	return "\\\\\n";

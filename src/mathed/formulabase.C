@@ -698,7 +698,7 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 		result = FINISHED_RIGHT;
 	}
 
-	mathcursor->normalize();
+	//mathcursor->normalize();
 
 	if (was_macro != mathcursor->inMacroMode()
 				&& action >= 0 && action != LFUN_BACKSPACE) 

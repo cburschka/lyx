@@ -11,9 +11,6 @@
 #include "Painter.h"
 #include "debug.h"
 
-using std::max;
-using std::min;
-
 
 MathXArray::MathXArray()
 	: width_(0), ascent_(0), descent_(0), xo_(0), yo_(0), style_(LM_ST_TEXT)
@@ -33,14 +30,11 @@ void MathXArray::metrics(MathStyles st) const
 
 	//lyxerr << "MathXArray::metrics(): '" << data_ << "'\n";
 	for (int pos = 0; pos < data_.size(); ++pos) {
-		MathInset const * p = data_.nextInset(pos);
+		MathAtom const * p = data_.at(pos);
 		p->metrics(st);
-		int asc  = p->ascent();
-		int des  = p->descent();
-		int wid  = p->width();
-		ascent_  = max(ascent_, asc);
-		descent_ = max(descent_, des);
-		width_   += wid;
+		ascent_  = std::max(ascent_,  p->ascent());
+		descent_ = std::max(descent_, p->descent());
+		width_  += p->width();
 	}
 }
 
@@ -56,7 +50,7 @@ void MathXArray::draw(Painter & pain, int x, int y) const
 	}
 
 	for (int pos = 0; pos < data_.size(); ++pos) {
-		MathInset const * p = data_.nextInset(pos);
+		MathAtom const * p = data_.at(pos);
 		p->draw(pain, x, y);
 		x += p->width();
 	}
@@ -66,7 +60,7 @@ void MathXArray::draw(Painter & pain, int x, int y) const
 int MathXArray::pos2x(int targetpos) const
 {
 	int x = 0;
-	targetpos = min(targetpos, data_.size());
+	targetpos = std::min(targetpos, data_.size());
 	for (int pos = 0; pos < targetpos; ++pos) 
 		x += width(pos);
 	return x;
@@ -90,9 +84,8 @@ int MathXArray::x2pos(int targetx) const
 
 int MathXArray::width(int pos) const
 {
-	if (pos >= data_.size())
-		return 0;
-	return data_.nextInset(pos)->width();
+	MathAtom const * t = data_.at(pos);
+	return t ? t->width() : 0;
 }
 
 
@@ -101,4 +94,3 @@ std::ostream & operator<<(std::ostream & os, MathXArray const & ar)
 	os << ar.data_;
 	return os;
 }
-

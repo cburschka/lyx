@@ -1,3 +1,13 @@
+2001-09-11  André Pönitz  <poenitz@gmx.net>
+
+	* math_atom.[Ch]: new basic item in the MathArray
+
+	* array.[Ch]: move code over to math_atom
+
+	* math_scriptinset.[Ch]:
+	  math_parser.C:
+	  math_cursor.C: try to do with super- and subscripts what TeX does
+
 2001-09-04  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* math_parser.C (tokenize): add a .c_str() (needed with lyxstring)

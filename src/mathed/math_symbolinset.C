@@ -103,5 +103,11 @@ bool MathSymbolInset::isRelOp() const
 
 bool MathSymbolInset::isScriptable() const
 {
+	return size_ == LM_ST_DISPLAY && sym_->token == LM_TK_CMEX;
+}
+
+
+bool MathSymbolInset::takesLimits() const
+{
 	return sym_->token == LM_TK_CMEX;
 }

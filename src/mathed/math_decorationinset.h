@@ -27,6 +27,8 @@ public:
 	void metrics(MathStyles st) const;
 	///
 	void writeNormal(std::ostream & os) const;
+	///
+	bool isScriptable() const;
 
 private:
 	///

@@ -36,7 +36,7 @@ int getCols(MathInsetTypes type)
 int firstRelOp(MathArray const & array)
 {
 	for (MathArray::const_iterator it = array.begin(); it != array.end(); ++it)
-		if ((*it)->isRelOp())
+		if (it->nucleus()->isRelOp())
 			return it - array.begin();
 	return array.size();
 }
@@ -91,6 +91,7 @@ char MathMatrixInset::defaultColAlign(int col)
 	}
 	return 'c';
 }
+
 
 int MathMatrixInset::defaultColSpace(int col)
 {

@@ -18,6 +18,7 @@
 
 #include <vector>
 #include <iosfwd>
+#include "math_atom.h"
 
 class MathInset;
 class MathMacro;
@@ -35,10 +36,11 @@ class LaTeXFeatures;
     \author Lars Gullik Bjønnes
     \version February 2001
   */
+
 class MathArray  {
 public:
 	///
-	typedef std::vector<MathInset *>     buffer_type;
+	typedef std::vector<MathAtom>        buffer_type;
 	///
 	typedef buffer_type::const_iterator  const_iterator;
 	///
@@ -48,13 +50,7 @@ public:
 	///
 	MathArray();
 	///
-	MathArray(MathArray const &);
-	///
 	MathArray(MathArray const &, int from, int to);
-	///
-	MathArray & operator=(MathArray const &);
-	///
-	~MathArray();
 
 	///
 	int size() const;
@@ -87,7 +83,7 @@ public:
 	///
 	void pop_back();
 	///
-	MathInset * back() const;
+	MathAtom & back();
 
 	///
 	void dump(std::ostream &) const;
@@ -95,12 +91,11 @@ public:
 	void dump2(std::ostream &) const;
 	///
 	void substitute(MathMacro const &);
-	///
 
 	///
-	MathInset * nextInset(int pos);
+	MathAtom * at(int pos);
 	///
-	MathInset const * nextInset(int pos) const;
+	MathAtom const * at(int pos) const;
 	///
 	void write(std::ostream &, bool) const;
 	///
@@ -116,8 +111,6 @@ public:
 	///
 	iterator end();
 private:
-	///
-	void deep_copy(iterator from, iterator to);
 	/// Buffer
 	buffer_type bf_;
 };

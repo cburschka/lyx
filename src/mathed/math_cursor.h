@@ -24,6 +24,7 @@
 #include "math_defs.h"
 
 class MathInset;
+class MathAtom;
 class MathArrayInset;
 class MathFuncInset;
 class MathMatrixInset;
@@ -204,6 +205,14 @@ public:
 	MathArray & array() const;
 	///
 	MathXArray & xarray() const;
+	///
+	MathAtom const * prevAtom() const;
+	///
+	MathAtom * prevAtom();
+	///
+	MathAtom const * nextAtom() const;
+	///
+	MathAtom * nextAtom();
 
 	/// returns the selection
 	void getSelection(MathCursorPos &, MathCursorPos &) const;

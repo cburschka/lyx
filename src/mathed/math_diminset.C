@@ -2,7 +2,7 @@
 
 
 MathDimInset::MathDimInset()
-	: width_(0), ascent_(0), descent_(0)
+	: MathInset(), width_(0), ascent_(0), descent_(0)
 {}
 
 

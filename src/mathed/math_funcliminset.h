@@ -24,7 +24,7 @@ public:
 	///
 	void draw(Painter &, int x, int y) const;
 	///
-	bool isScriptable() const { return true; }
+	bool isScriptable() const;
 
 private:
 	///

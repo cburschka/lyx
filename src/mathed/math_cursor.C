@@ -147,14 +147,17 @@ bool MathCursor::popLeft()
 	if (Cursor_.size() <= 1)
 		return false;
 	Cursor_.pop_back();
+	//array().at(pos())->removeEmptyScripts();
 	return true;
 }
+
 
 bool MathCursor::popRight()
 {
 	if (Cursor_.size() <= 1)
 		return false;
 	Cursor_.pop_back();
+	//array().at(pos())->removeEmptyScripts();
 	posRight();
 	return true;
 }
@@ -417,7 +420,8 @@ void MathCursor::insert(MathInset * p)
 			selDel();
 	}
 
-	array().insert(pos(), p);
+	array().insert(pos(), p); // this invalidates the pointer!
+	p = array().at(pos())->nucleus();
 	posRight();
 }
 
@@ -429,7 +433,10 @@ void MathCursor::niceInsert(MathInset * p)
 		return;
 	}
 	selCut();
-	insert(p);
+	//cerr << "\n2: "; p->write(cerr, true); cerr << "\n";
+	insert(p); // inserting invalidates the pointer!
+	p = prevAtom()->nucleus();
+	//cerr << "\n3: "; p->write(cerr, true); cerr << "\n";
 	if (p->nargs()) {
 		posLeft();
 		right();  // do not push for e.g. MathSymbolInset
@@ -522,29 +529,15 @@ bool MathCursor::up(bool sel)
 	if (selection_)
 		return goUp();
 
-	// check whether we could move into an inset on the right or on the left
-	MathInset * p = nextInset();
-	if (p) {
-		int idxx, poss;
-		if (p->idxFirstUp(idxx, poss)) {
-			pushLeft(p);
-			idx() = idxx;
-			pos() = poss;
-			dump("up 3");
-			return true;
-		}
+	// check whether we could move into a superscript on the right or on the left
+	if (prevAtom() && prevAtom()->up()) {
+		pushRight(prevAtom()->up());		
+		return true;
 	}
 
-	p = prevInset();
-	if (p) {
-		int idxx, poss;
-		if (p->idxLastUp(idxx, poss)) {
-			pushRight(p);
-			idx() = idxx;
-			pos() = poss;
-			dump("up 4");
-			return true;
-		}
+	if (nextAtom() && nextAtom()->up()) {
+		pushLeft(nextAtom()->up());		
+		return true;
 	}
 
 	return goUp();
@@ -560,31 +553,15 @@ bool MathCursor::down(bool sel)
 	if (selection_) 
 		return goDown();
 
-	// check whether we could move into an inset on the right or on the left
-	MathInset * p = nextInset();
-	if (p) {
-		int idxx = 0;
-		int poss = 0;
-		if (p->idxFirstDown(idxx, poss)) {
-			pushLeft(p);
-			idx() = idxx;
-			pos() = poss;
-			dump("Down 3");
-			return true;
-		}
+	// check whether we could move into an subscript on the right or on the left
+	if (prevAtom() && prevAtom()->down()) {
+		pushRight(prevAtom()->down());		
+		return true;
 	}
 
-	p = prevInset();
-	if (p) {
-		int idxx = 0;
-		int poss = 0;
-		if (p->idxLastDown(idxx, poss)) {
-			pushRight(p);
-			idx() = idxx;
-			pos() = poss;
-			dump("Down 4");
-			return true;
-		}
+	if (nextAtom() && nextAtom()->down()) {
+		pushLeft(nextAtom()->down());	
+		return true;
 	}
 
 	return goDown();
@@ -593,12 +570,12 @@ bool MathCursor::down(bool sel)
 
 bool MathCursor::toggleLimits()
 {
-	MathScriptInset * p = prevScriptInset();
-	if (!p)
+	MathAtom * t = prevAtom();
+	if (!t)
 		return false;
-	int old = p->limits();
-	p->limits(old < 0 ? 1 : -1);
-	return old != p->limits();
+	int old = t->limits();
+	t->limits(old < 0 ? 1 : -1);
+	return old != t->limits();
 }
 
 
@@ -624,10 +601,12 @@ void MathCursor::macroModeClose()
 string MathCursor::macroName() const
 {
 	string s;
-	int p = pos() - 1;
-	while (p >= 0 && array().nextInset(p)->code() == LM_TC_TEX) {
-		s = array().nextInset(p)->getChar() + s;
-		--p;
+	for (int i = pos() - 1; i >= 0; --i) {
+		MathInset * p = array().at(i)->nucleus();
+		if (p && p->code() == LM_TC_TEX)
+			s = p->getChar() + s;
+		else
+			break;
 	}
 	return s;
 }
@@ -752,8 +731,11 @@ void MathCursor::handleFont(MathTextCodes t)
 		getSelection(i1, i2); 
 		if (i1.idx_ == i2.idx_) {
 			MathArray & ar = i1.cell();
-			for (int pos = i1.pos_; pos != i2.pos_; ++pos) 
-				ar.nextInset(pos)->handleFont(t);
+			for (int pos = i1.pos_; pos != i2.pos_; ++pos) {
+				MathInset * p = ar.at(pos)->nucleus();
+				if (p)
+					p->handleFont(t);
+			}
 		}
 	} else 
 		lastcode_ = (lastcode_ == t) ? LM_TC_VAR : t;
@@ -772,7 +754,8 @@ void MathCursor::handleNest(MathInset * p)
 		selCut();
 		p->cell(0) = theSelection.glue();
 	}
-	insert(p);
+	insert(p); // this invalidates p!
+	p = prevAtom()->nucleus();	
 	pushRight(p);
 }
 
@@ -935,33 +918,44 @@ string MathCursorPos::readString()
 
 MathInset * MathCursor::prevInset() const
 {
-	normalize();
-	if (!pos())
-		return 0;
-	return array().nextInset(pos() - 1);
+	return prevAtom() ? prevAtom()->nucleus() : 0;
 }
 
 
 MathInset * MathCursor::nextInset() const
 {
-	normalize();
-	return array().nextInset(pos());
-}
-
-
-MathScriptInset * MathCursor::prevScriptInset() const
-{
-	normalize();
-	MathInset * p = prevInset();
-	return (p && p->isScriptInset()) ? static_cast<MathScriptInset *>(p) : 0;
+	return nextAtom() ? nextAtom()->nucleus() : 0;
 }
 
 
 MathSpaceInset * MathCursor::prevSpaceInset() const
 {
-	normalize();
 	MathInset * p = prevInset();
 	return (p && p->isSpaceInset()) ? static_cast<MathSpaceInset *>(p) : 0;
+}
+
+
+MathAtom const * MathCursor::prevAtom() const
+{
+	return array().at(pos() - 1);
+}
+
+
+MathAtom * MathCursor::prevAtom()
+{
+	return array().at(pos() - 1);
+}
+
+
+MathAtom const * MathCursor::nextAtom() const
+{
+	return array().at(pos());
+}
+
+
+MathAtom * MathCursor::nextAtom()
+{
+	return array().at(pos());
 }
 
 
@@ -1231,24 +1225,12 @@ void MathCursor::interpret(string const & s)
 	if (c == '^' || c == '_') {
 		bool const up = (s[0] == '^');
 		selCut();	
-		MathScriptInset * p = prevScriptInset();
-		if (!p) {
-			MathInset * b = prevInset();
-			if (b && b->isScriptable()) {
-				p = new MathScriptInset(up, !up, b->clone());
-				posLeft();
-				plainErase();
-			} else 
-				p = new MathScriptInset(up, !up);
-			insert(p);
+		if (!prevInset()) {
+			insert('{', LM_TC_TEX);
+			insert('}', LM_TC_TEX);
 		}
-		pushRight(p);
-		if (up)
-			p->up(true);
-		else
-			p->down(true);
-		idx() = up ? 0 : 1;
-		pos() = 0;
+		MathInset * par = prevAtom()->ensure(up);
+		pushRight(par);
 		selPaste();
 		return;
 	}

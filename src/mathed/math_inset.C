@@ -20,6 +20,7 @@
 #endif
 
 #include "math_inset.h"
+#include "math_scriptinset.h"
 #include "debug.h"
 
 
@@ -28,6 +29,10 @@ int MathInset::workwidth;
 
 MathInset::MathInset()
 	: size_(LM_ST_DISPLAY), xo_(0), yo_(0)
+{}
+
+
+MathInset::~MathInset()
 {}
 
 

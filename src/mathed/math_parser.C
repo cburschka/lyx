@@ -61,34 +61,6 @@ bool stared(string const & s)
 	return n && s[n - 1] == '*';
 }
 
-MathScriptInset * prevScriptInset(MathArray const & array)
-{
-	MathInset * p = array.back();
-	return (p && p->isScriptInset()) ? static_cast<MathScriptInset *>(p) : 0;
-}
-
-
-MathInset * lastScriptInset(MathArray & array, bool up, int limits)
-{
-	MathScriptInset * p = prevScriptInset(array);
-	if (!p) {
-		MathInset * b = array.back();
-		if (b && b->isScriptable()) {
-			p = new MathScriptInset(up, !up, b->clone());
-			array.pop_back();	
-		} else {
-			p = new MathScriptInset(up, !up);
-		}
-		array.push_back(p);
-	}
-	if (up)
-		p->up(true);
-	else
-		p->down(true);
-	if (limits)
-		p->limits(limits);
-	return p;
-}
 
 
 // These are TeX's catcodes
@@ -647,7 +619,6 @@ void Parser::parse_into(MathArray & array, unsigned flags, MathTextCodes code)
 	MathTextCodes yyvarcode = LM_TC_MIN;
 
 	bool panic  = false;
-	int  limits = 0;
 
 	while (good()) {
 		Token const & t = getToken();
@@ -723,12 +694,13 @@ void Parser::parse_into(MathArray & array, unsigned flags, MathTextCodes code)
 			array.push_back(new MathCharInset('&', LM_TC_TEX));
 		}
 		
-		else if (t.cat() == catSuper)
-			parse_into(lastScriptInset(array, true, limits)->cell(0), FLAG_ITEM);
-		
-		else if (t.cat() == catSub)
-			parse_into(lastScriptInset(array, false, limits)->cell(1), FLAG_ITEM);
-		
+		else if (t.cat() == catSuper || t.cat() == catSub) {
+			bool up = (t.cat() == catSuper);
+			if (array.empty())
+				array.push_back(new MathCharInset(' '));
+			parse_into(array.back().ensure(up)->cell(0), FLAG_ITEM);
+		}
+
 		else if (t.character() == ']' && (flags & FLAG_BRACK_END))
 			return;
 
@@ -759,11 +731,11 @@ void Parser::parse_into(MathArray & array, unsigned flags, MathTextCodes code)
 			array.push_back(createMathInset("\\"));
 		}
 	
-		else if (t.cs() == "limits") 
-			limits = 1;
+		else if (t.cs() == "limits" && array.size())
+			array.back().limits(1);
 		
-		else if (t.cs() == "nolimits") 
-			limits = -1;
+		else if (t.cs() == "nolimits" && array.size())
+			array.back().limits(-1);
 		
 		else if (t.cs() == "nonumber")
 			curr_num_ = false;
@@ -775,12 +747,12 @@ void Parser::parse_into(MathArray & array, unsigned flags, MathTextCodes code)
 			char c = getChar();
 			if (c == '[') {
 				array.push_back(new MathRootInset);
-				parse_into(array.back()->cell(0), FLAG_BRACK_END);
-				parse_into(array.back()->cell(1), FLAG_ITEM);
+				parse_into(array.back().nucleus()->cell(0), FLAG_BRACK_END);
+				parse_into(array.back().nucleus()->cell(1), FLAG_ITEM);
 			} else {
 				putback();
 				array.push_back(new MathSqrtInset);
-				parse_into(array.back()->cell(0), FLAG_ITEM);
+				parse_into(array.back().nucleus()->cell(0), FLAG_ITEM);
 			}
 		}
 		
@@ -863,15 +835,12 @@ void Parser::parse_into(MathArray & array, unsigned flags, MathTextCodes code)
 		}
 
 		else if (t.cs() == "choose" || t.cs() == "over" || t.cs() == "atop") {
-			limits = 0;
 			MathInset * p = createMathInset(t.cs());
 			// search backward for position of last '{' if any
 			int pos;
-			for (pos = array.size() - 1; pos >= 0; --pos) {
-				MathInset * q = array.nextInset(pos);
-				if (q->getChar() == '{')
+			for (pos = array.size() - 1; pos >= 0; --pos)
+				if (array.at(pos)->nucleus()->getChar() == '{')
 					break;
-			}
 			if (pos >= 0) {
 				// found it -> use the part after '{' as "numerator", erase the '{'
 				p->cell(0) = MathArray(array, pos + 1, array.size());
@@ -885,7 +854,6 @@ void Parser::parse_into(MathArray & array, unsigned flags, MathTextCodes code)
 		}
 	
 		else if (t.cs().size()) {
-			limits = 0;
 			latexkeys const * l = in_word_set(t.cs());
 			if (l) {
 				if (l->token == LM_TK_FONT) {
@@ -900,7 +868,7 @@ void Parser::parse_into(MathArray & array, unsigned flags, MathTextCodes code)
 					MathArray ar;
 					parse_into(ar, FLAG_ITEM, t);
 					for (MathArray::iterator it = ar.begin(); it != ar.end(); ++it)
-						(*it)->handleFont(t);
+						it->nucleus()->handleFont(t);
 					array.push_back(ar);
 
 					// undo catcode changes

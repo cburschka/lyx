@@ -17,6 +17,12 @@ MathInset * MathFuncLimInset::clone() const
 }
 
 
+bool MathFuncLimInset::isScriptable() const
+{
+	return size_ == LM_ST_DISPLAY;
+}
+
+
 void MathFuncLimInset::write(ostream & os, bool /* fragile */) const
 {
 	os << '\\' << sym_->name << ' ';

@@ -39,14 +39,14 @@
 
 class LaTeXFeatures;
 class MathCharInset;
+class MathScriptInset;
 
 class MathInset {
 public: 
 	///
 	MathInset();
-
 	/// the virtual base destructor
-	virtual ~MathInset() {}
+	virtual ~MathInset(); 
 
 	/// draw the object, sets xo_ and yo_ cached values 
 	virtual void draw(Painter &, int x, int y) const;
@@ -186,6 +186,8 @@ public:
 	virtual char getChar() const { return 0; }
 	///
 	virtual MathTextCodes code() const { return LM_TC_MIN; }
+	/// identifies things that can get \limits or \nolimits
+	virtual bool takesLimits() const { return false; }
 
 	///
 	virtual void push_back(MathInset *);

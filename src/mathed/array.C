@@ -4,6 +4,7 @@
 
 #include "math_inset.h"
 #include "math_charinset.h"
+#include "math_scriptinset.h"
 #include "debug.h"
 #include "array.h"
 #include "mathed/support.h"
@@ -11,35 +12,14 @@
 using std::ostream;
 using std::endl;
 
+
 MathArray::MathArray()
 {}
 
 
-MathArray::~MathArray()
-{
-	erase();
-}
-
-
-MathArray::MathArray(MathArray const & array)
-	: bf_(array.bf_)
-{
-	deep_copy(begin(), end());
-}
-
-
 MathArray::MathArray(MathArray const & array, int from, int to)
 	: bf_(array.begin() + from, array.begin() + to)
-{
-	deep_copy(begin(), end());
-}
-
-
-void MathArray::deep_copy(iterator from, iterator to)
-{
-	for (iterator it = from; it != to; ++it)
-		*it = (*it)->clone();
-}
+{}
 
 
 int MathArray::last() const
@@ -52,41 +32,35 @@ void MathArray::substitute(MathMacro const & m)
 {
 	MathArray tmp;
 	for (iterator it = begin(); it != end(); ++it)
-		(*it)->substitute(tmp, m);
+		it->substitute(tmp, m);
 	swap(tmp);
 }
 
 
-MathArray & MathArray::operator=(MathArray const & array)
+MathAtom * MathArray::at(int pos)
 {
-	MathArray tmp(array);
-	swap(tmp);
-	return *this;
+	return (0 <= pos && pos < size()) ? &bf_[pos] : 0;
 }
 
 
-MathInset * MathArray::nextInset(int pos)
+MathAtom const * MathArray::at(int pos) const
 {
-	return (pos == size()) ? 0 : bf_[pos];
-}
-
-
-MathInset const * MathArray::nextInset(int pos) const
-{
-	return (pos == size()) ? 0 : bf_[pos];
+	return (0 <= pos && pos < size()) ? &bf_[pos] : 0;
 }
 
 
 void MathArray::insert(int pos, MathInset * p)
 {
-	bf_.insert(begin() + pos, p);
+	//cerr << "\n  1: "; p->write(cerr, true); cerr << p << "\n";
+	// inserting th
+	bf_.insert(begin() + pos, MathAtom(p));
+	//cerr << "\n  2: "; p->write(cerr, true); cerr << p << "\n";
 }
 
 
 void MathArray::insert(int pos, MathArray const & array)
 {
 	bf_.insert(begin() + pos, array.begin(), array.end());
-	deep_copy(begin() + pos, begin() + pos + array.size());
 }
 
 
@@ -142,15 +116,13 @@ void MathArray::erase(int pos)
 
 void MathArray::erase(int pos1, int pos2)
 {
-	for (iterator it = begin() + pos1; it != begin() + pos2; ++it)
-		delete *it;
 	bf_.erase(begin() + pos1, begin() + pos2);
 }
 
 
-MathInset * MathArray::back() const
+MathAtom & MathArray::back()
 {
-	return size() ? bf_.back() : 0;
+	return bf_.back();
 }
 
 
@@ -174,19 +146,21 @@ std::ostream & operator<<(std::ostream & os, MathArray const & ar)
 	return os;
 }
 
+
 // returns sequence of char with same code starting at it up to end
 // it might be less, though...
 string charSequence(MathArray::const_iterator it, MathArray::const_iterator end)
 {
 	string s;
-	MathCharInset const * p = (*it)->asCharInset();
+	MathCharInset const * p = it->nucleus()->asCharInset();
 	if (!p)
 		return s;
 
-	MathTextCodes c = p->code();
-	while (it != end && (p = (*it)->asCharInset()) && p->code() == c) { 
+	for (MathTextCodes c = p->code(); it != end; ++it) {
+		p = it->nucleus()->asCharInset();
+		if (!p || it->up() || it->down() || p->code() != c)
+			break;
 		s += p->getChar();
-		++it;
 	}
 	return s;
 }
@@ -194,18 +168,17 @@ string charSequence(MathArray::const_iterator it, MathArray::const_iterator end)
 
 void MathArray::write(ostream & os, bool fragile) const
 {
-	for (const_iterator it = begin(); it != end(); ) {
-		MathCharInset const * p = (*it)->asCharInset();
-		if (p) {
+	for (const_iterator it = begin(); it != end(); ++it) {
+		MathCharInset const * p = it->nucleus()->asCharInset();
+		if (p && !it->up() && !it->down()) {
 			// special handling for character sequences with the same code
 			string s = charSequence(it, end());
 			p->writeHeader(os);
 			os << s;
 			p->writeTrailer(os);
-			it += s.size();
+			it += s.size() - 1;
 		} else {
-			(*it)->write(os, fragile);
-			++it;
+			it->write(os, fragile);
 		}
 	}
 }
@@ -225,7 +198,7 @@ void MathArray::writeNormal(ostream & os) const
 void MathArray::validate(LaTeXFeatures & features) const
 {
 	for (const_iterator it = begin(); it != end(); ++it)
-		(*it)->validate(features);
+		it->validate(features);
 }
 
 
@@ -235,7 +208,6 @@ void MathArray::pop_back()
 		lyxerr << "pop_back from empty array!\n";
 		return;
 	}
-	delete back();
 	bf_.pop_back();
 }
 
