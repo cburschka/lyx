@@ -1,7 +1,9 @@
+#include <config.h>
 
 #include "math_parinset.h"
 #include "math_mathmlstream.h"
 
+#include "support/LOstream.h"
 
 MathParInset::MathParInset(MathArray const & ar)
 {
@@ -34,4 +36,3 @@ void MathParInset::infoize(std::ostream & os) const
 {
 	os << "Type: Paragraph ";
 }
-
