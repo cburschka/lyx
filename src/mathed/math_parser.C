@@ -535,9 +535,27 @@ bool Parser::parse_normal(MathAtom & matrix)
 
 	Token const & t = getToken();
 
-	if (t.cat() == catMath || t.cs() == "(") {
+	if (t.cs() == "(") {
 		matrix = MathAtom(new MathMatrixInset(LM_OT_SIMPLE));
 		parse_into(matrix->cell(0), 0);
+		return true;
+	}
+
+	if (t.cat() == catMath) {
+		Token const & n = getToken();
+		if (n.cat() == catMath) {
+			// TeX's $$...$$ syntax for displayed math
+			matrix = MathAtom(new MathMatrixInset(LM_OT_EQUATION));
+			MathMatrixInset * p = matrix->asMatrixInset();
+			parse_into(p->cell(0), 0);
+			p->numbered(0, curr_num_);
+			p->label(0, curr_label_);
+		} else {
+			// simple $...$  stuff
+			putback();
+			matrix = MathAtom(new MathMatrixInset(LM_OT_SIMPLE));
+			parse_into(matrix->cell(0), 0);
+		}
 		return true;
 	}
 
@@ -556,7 +574,7 @@ bool Parser::parse_normal(MathAtom & matrix)
 		parse_into(p->cell(0), 0);
 		p->numbered(0, curr_num_);
 		p->label(0, curr_label_);
-		return p;
+		return true;
 	}
 
 	if (cs != "begin") {

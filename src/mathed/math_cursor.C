@@ -308,7 +308,7 @@ bool MathCursor::left(bool sel)
 		pushRight(prevAtom());
 		return true;
 	} 
-	
+
 	return posLeft() || idxLeft() || popLeft() || selection_;
 }
 
@@ -1068,13 +1068,17 @@ void MathCursor::breakLine()
 		for (col_type c = col() + 1; c < p->ncols(); ++c) {
 			const MathMatrixInset::idx_type i1 = p->index(r, c);
 			const MathMatrixInset::idx_type i2 = p->index(r + 1, c);	
-			lyxerr << "swapping cells " << i1 << " and " << i2 << "\n";
+			//lyxerr << "swapping cells " << i1 << " and " << i2 << "\n";
 			p->cell(i1).swap(p->cell(i2));
 		}
 
 		// split cell
 		splitCell();
 		p->cell(idx()).swap(p->cell(idx() + p->ncols() - 1));
+
+		// correct cursor position
+		--idx();
+		pos() = size();
 	}
 }
 

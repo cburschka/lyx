@@ -464,20 +464,26 @@ void MathGridInset::idxDelete(idx_type & idx, bool & popit, bool & deleteit)
 	popit    = false;
 	deleteit = false;
 
-	// delete entire row if in first cell of empty row
-	if (col(idx) == 0 && nrows() > 1) {
+	// delete entire sequence of ncols() empty cells if possible
+	if (idx <= index(nrows() - 1, 0))	{
 		bool deleterow = true;
 		for (idx_type i = idx; i < idx + ncols(); ++i)
 			if (cell(i).size()) {
 				deleterow = false;
 				break;
 			}
-		if (deleterow) 
+
+		if (deleterow) {
+			// move cells if necessary
+			for (idx_type i = index(row(idx), 0); i < idx; ++i)
+				cell(i).swap(cell(i + ncols()));
+			
 			delRow(row(idx));
 
-		if (idx >= nargs())
-			idx = nargs() - 1;
-		return;
+			if (idx >= nargs())
+				idx = nargs() - 1;
+			return;
+		}
 	}
 
 	// undo effect of Ctrl-Tab (i.e. pull next cell)

@@ -30,7 +30,6 @@
 #include "Painter.h"
 #include "LaTeXFeatures.h"
 
-using std::endl;
 
 MathMacro::MathMacro(string const & name)
 	: MathNestInset(MathMacroTable::provide(name)->asMacroTemplate()->numargs()),
@@ -160,7 +159,6 @@ void MathMacro::dump() const
 	lyxerr << "\n macro: '" << this << "'\n";
 	lyxerr << " name: '" << name() << "'\n";
 	lyxerr << " template: '"; tmplate_->write(lyxerr, false); lyxerr << "'\n";
-	lyxerr << endl;
 }
 
 
