@@ -173,9 +173,7 @@ void InsetFormulaBase::edit(BufferView * bv, int x, int y, mouse_button::state)
 	releaseMathCursor(bv);
 	mathcursor = new MathCursor(this, true);
 	metrics(bv);
-	mathcursor->setPos(x, y);
-	//lyxerr << "setting pos to " << x << "," << y << "\n";
-
+	mathcursor->setPos(x + xo_, y + yo_);
 	// if that is removed, we won't get the magenta box when entering an
 	// inset for the first time
 	bv->updateInset(this, false);
