@@ -25,6 +25,7 @@
 #include "lyxrc.h" // defaultUnit
 #include "tex-strings.h" // tex_graphics
 #include "support/tostr.h"
+#include "support/lstrings.h"
 #include "support/filetools.h" // LibFileSearch()
 #include "support/BoostFormat.h"
 #include "lyxtextclasslist.h"
@@ -47,18 +48,11 @@
 
 #include <vector>
 
-
 using std::vector;
+using lyx::support::bformat;
 
 typedef Qt2CB<ControlDocument, Qt2DB<QDocumentDialog> > base_class;
 
-
-QDocument::QDocument()
-	: base_class(_("LyX: Document Settings"))
-{
-	vector<frnt::LanguagePair> const langs = frnt::getLanguageData(false);
-	lang_ = getSecond(langs);
-}
 
 namespace {
 
@@ -69,6 +63,12 @@ char const * encodings[] = { "LaTeX default", "latin1", "latin2",
 };
 
 }
+
+
+QDocument::QDocument()
+	: base_class(_("LyX: Document Settings")),
+		lang_(getSecond(frnt::getLanguageData(false)))
+{}
 
 
 void QDocument::build_dialog()
@@ -128,11 +128,7 @@ void QDocument::build_dialog()
 			dialog_->latexModule->classCO->insertItem(toqstr(cit->description()));
                 } else {
 			string item =
-#if USE_BOOST_FORMAT
-				boost::io::str(boost::format(_("Unavailable: %1$s")) % cit->description());
-#else
-				_("Unavailable: ") + cit->description();
-#endif
+				bformat(_("Unavailable: %1$s"), cit->description());
 			dialog_->latexModule->classCO->insertItem(toqstr(item));
 		}
 	}
@@ -602,7 +598,7 @@ void QDocument::update_contents()
 
 	// margins
 
-	MarginsModuleBase * m(dialog_->marginsModule);
+	MarginsModuleBase * m = dialog_->marginsModule;
 
 	int item = params.paperpackage;
 	if (params.use_geometry) {

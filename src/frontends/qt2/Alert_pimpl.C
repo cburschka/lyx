@@ -27,18 +27,13 @@
 
 using std::pair;
 using std::make_pair;
+using lyx::support::bformat;
 
 int prompt_pimpl(string const & tit, string const & question,
            int default_button, int cancel_button,
 	   string const & b1, string const & b2, string const & b3)
 {
-#if USE_BOOST_FORMAT
-	boost::format fmt(_("LyX: %1$s"));
-	fmt % tit;
-	string const title = fmt.str();
-#else
-	string const title = _("LyX: ") + tit;
-#endif
+	string const title = bformat(_("LyX: %1$s"), tit);
 
 	int res = QMessageBox::information(0, toqstr(title), toqstr(formatted(question)),
 		toqstr(b1), toqstr(b2), b3.empty() ? QString::null : toqstr(b3),
@@ -53,39 +48,21 @@ int prompt_pimpl(string const & tit, string const & question,
 
 void warning_pimpl(string const & tit, string const & message)
 {
-#if USE_BOOST_FORMAT
-	boost::format fmt(_("LyX: %1$s"));
-	fmt % tit;
-	string const title = fmt.str();
-#else
-	string const title = _("LyX: ") + tit;
-#endif
+	string const title = bformat(_("LyX: %1$s"), tit);
 	QMessageBox::warning(0, toqstr(title), toqstr(formatted(message)));
 }
 
 
 void error_pimpl(string const & tit, string const & message)
 {
-#if USE_BOOST_FORMAT
-	boost::format fmt(_("LyX: %1$s"));
-	fmt % tit;
-	string const title = fmt.str();
-#else
-	string const title = _("LyX: ") + tit;
-#endif
+	string const title = bformat(_("LyX: %1$s"), tit);
 	QMessageBox::critical(0, toqstr(title), toqstr(formatted(message)));
 }
 
 
 void information_pimpl(string const & tit, string const & message)
 {
-#if USE_BOOST_FORMAT
-	boost::format fmt(_("LyX: %1$s"));
-	fmt % tit;
-	string const title = fmt.str();
-#else
-	string const title = _("LyX: ") + tit;
-#endif
+	string const title = bformat(_("LyX: %1$s"), tit);
 	QMessageBox::information(0, toqstr(title), toqstr(formatted(message)));
 }
 
@@ -93,13 +70,7 @@ void information_pimpl(string const & tit, string const & message)
 pair<bool, string> const
 askForText_pimpl(string const & msg, string const & dflt)
 {
-#if USE_BOOST_FORMAT
-	boost::format fmt(_("LyX: %1$s"));
-	fmt % msg;
-	string const title = fmt.str();
-#else
-	string const title = _("LyX: ") + msg;
-#endif
+	string const title = bformat(_("LyX: %1$s"), msg);
 	QAskForTextDialog d(0, toqstr(title), true);
 	// less than ideal !
 	d.askLA->setText(toqstr('&' + msg));
