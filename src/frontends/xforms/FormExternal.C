@@ -109,7 +109,7 @@ void setDisplay(FL_OBJECT * displayCB, FL_OBJECT * showCO, FL_OBJECT * scaleED,
 
 	fl_set_button(displayCB, !no_display);
 
-	fl_set_input(scaleED, tostr(scale).c_str());
+	fl_set_input(scaleED, convert<string>(scale).c_str());
 	setEnabled(scaleED, !no_display && !read_only);
 }
 
@@ -197,7 +197,7 @@ void setSize(FL_OBJECT * widthED, FL_OBJECT * widthUnitCO,
 		fl_set_input(widthED, scale.c_str());
 		fl_set_choice(widthUnitCO, 1);
 	} else {
-		fl_set_input(widthED, tostr(data.width.value()).c_str());
+		fl_set_input(widthED, convert<string>(data.width.value()).c_str());
 		// Because 'Scale' is position 1...
 		// Note also that width cannot be zero here, so
 		// we don't need to worry about the default unit.
@@ -275,10 +275,10 @@ void setCrop(FL_OBJECT * clipCB,
 
 	fl_set_button(clipCB, data.clip);
 	graphics::BoundingBox const & bbox = data.bbox;
-	fl_set_input(xlED, tostr(bbox.xl).c_str());
-	fl_set_input(ybED, tostr(bbox.yb).c_str());
-	fl_set_input(xrED, tostr(bbox.xr).c_str());
-	fl_set_input(ytED, tostr(bbox.yt).c_str());
+	fl_set_input(xlED, convert<string>(bbox.xl).c_str());
+	fl_set_input(ybED, convert<string>(bbox.yb).c_str());
+	fl_set_input(xrED, convert<string>(bbox.xr).c_str());
+	fl_set_input(ytED, convert<string>(bbox.yt).c_str());
 }
 
 

@@ -435,12 +435,13 @@ void expandLastfiles(Menu & tomenu, LyXView const * view)
 	LastFiles::const_iterator end = lastfiles.end();
 
 	for (; lfit != end && ii < 10; ++lfit, ++ii) {
-		string const label = tostr(ii) + ". "
+		string const label = convert<string>(ii) + ". "
 			+ MakeDisplayPath((*lfit), 30)
-			+ '|' + tostr(ii);
+			+ '|' + convert<string>(ii);
 		tomenu.add(MenuItem(MenuItem::Command, label, FuncRequest(LFUN_FILE_OPEN, (*lfit))), view);
 	}
 }
+
 
 void expandDocuments(Menu & tomenu, LyXView const * view)
 {
@@ -459,7 +460,7 @@ void expandDocuments(Menu & tomenu, LyXView const * view)
 	for (; docit != end; ++docit, ++ii) {
 		string label = MakeDisplayPath(*docit, 20);
 		if (ii < 10)
-			label = tostr(ii) + ". " + label + '|' + tostr(ii);
+			label = convert<string>(ii) + ". " + label + '|' + convert<string>(ii);
 		tomenu.add(MenuItem(MenuItem::Command, label, FuncRequest(LFUN_SWITCHBUFFER, *docit)), view);
 	}
 }
@@ -612,8 +613,8 @@ void expandToc2(Menu & tomenu,
 			label += limit_string_length(toc_list[i].str);
 			if (toc_list[i].depth == depth
 			    && shortcut_count < 9) {
-				if (label.find(tostr(shortcut_count + 1)) != string::npos)
-					label += '|' + tostr(++shortcut_count);
+				if (label.find(convert<string>(shortcut_count + 1)) != string::npos)
+					label += '|' + convert<string>(++shortcut_count);
 			}
 			tomenu.add(MenuItem(MenuItem::Command, label,
 					    FuncRequest(toc_list[i].action())));
@@ -630,8 +631,8 @@ void expandToc2(Menu & tomenu,
 			label += limit_string_length(toc_list[pos].str);
 			if (toc_list[pos].depth == depth &&
 			    shortcut_count < 9) {
-				if (label.find(tostr(shortcut_count + 1)) != string::npos)
-					label += '|' + tostr(++shortcut_count);
+				if (label.find(convert<string>(shortcut_count + 1)) != string::npos)
+					label += '|' + convert<string>(++shortcut_count);
 				}
 			if (new_pos == pos + 1) {
 				tomenu.add(MenuItem(MenuItem::Command,
@@ -715,7 +716,7 @@ void expandPasteRecent(Menu & tomenu, LyXView const * view)
 
 	for (unsigned int index = 0; cit != end; ++cit, ++index) {
 		tomenu.add(MenuItem(MenuItem::Command, *cit,
-				    FuncRequest(LFUN_PASTE, tostr(index))));
+				    FuncRequest(LFUN_PASTE, convert<string>(index))));
 	}
 }
 
@@ -733,7 +734,7 @@ void expandBranches(Menu & tomenu, LyXView const * view)
 	for (int ii = 1; cit != end; ++cit, ++ii) {
 		string label = cit->getBranch();
 		if (ii < 10)
-			label = tostr(ii) + ". " + label + "|" + tostr(ii);
+			label = convert<string>(ii) + ". " + label + "|" + convert<string>(ii);
 		tomenu.add(MenuItem(MenuItem::Command, label,
 				    FuncRequest(LFUN_INSERT_BRANCH,
 						cit->getBranch())), view);

@@ -39,7 +39,7 @@ enum GuiColors {
 
 string const fillLabel(RGBColor const & rgb)
 {
-	return tostr(rgb.r) + ", " + tostr(rgb.g) + ", " + tostr(rgb.b);
+	return convert<string>(rgb.r) + ", " + convert<string>(rgb.g) + ", " + convert<string>(rgb.b);
 }
 
 
@@ -49,7 +49,7 @@ string const fillLabel(HSVColor const & hsv)
 	int const s = int(100.0 * hsv.s);
 	int const v = int(100.0 * hsv.v);
 
-	return tostr(h) + ", " + tostr(s) + ", " + tostr(v);
+	return convert<string>(h) + ", " + convert<string>(s) + ", " + convert<string>(v);
 }
 
 } // namespace anon

@@ -201,7 +201,7 @@ void InsetExternalParams::write(Buffer const & buffer, ostream & os) const
 		   << '\n';
 
 	if (lyxscale != defaultLyxScale)
-		os << "\tlyxscale " << tostr(lyxscale) << '\n';
+		os << "\tlyxscale " << convert<string>(lyxscale) << '\n';
 
 	if (draft)
 		os << "\tdraft\n";

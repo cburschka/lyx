@@ -40,9 +40,9 @@ namespace {
 	string tostr(XColor const & col)
 	{
 		return bformat("(%1$s,%2$s,%3$s)",
-			       ::tostr(col.red),
-			       ::tostr(col.green),
-			       ::tostr(col.blue));
+			       ::convert<string>(col.red),
+			       ::convert<string>(col.green),
+			       ::convert<string>(col.blue));
 	}
 
 } // namespace
@@ -161,7 +161,7 @@ GC LyXColorHandler::getGCForeground(string const & s)
 		lyxerr << bformat(
 				_("     Using closest allocated color with (r,g,b)=%1$s instead.\n"
 			  "Pixel [%2$s] is used."),
-			tostr(cmap[closest_pixel]), ::tostr(closest_pixel)) << endl;
+			tostr(cmap[closest_pixel]), convert<string>(closest_pixel)) << endl;
 
 		val.foreground = cmap[closest_pixel].pixel;
 	}

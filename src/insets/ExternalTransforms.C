@@ -70,7 +70,7 @@ string const RotationData::adjAngle() const
 	double rotAngle = strToDbl(angle);
 	if (std::abs(rotAngle) > 360.0) {
 		rotAngle -= 360.0 * floor(rotAngle / 360.0);
-		return tostr(rotAngle);
+		return convert<string>(rotAngle);
 	}
 	return angle;
 }

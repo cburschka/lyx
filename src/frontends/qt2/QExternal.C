@@ -103,7 +103,7 @@ void setDisplay(QCheckBox & displayCB, QComboBox & showCO, QLineEdit & scaleED,
 	showCO.setEnabled(!no_display && !read_only);
 	displayCB.setChecked(!no_display);
 	scaleED.setEnabled(!no_display && !read_only);
-	scaleED.setText(toqstr(tostr(scale)));
+	scaleED.setText(toqstr(convert<string>(scale)));
 }
 
 
@@ -173,7 +173,7 @@ void setSize(QLineEdit & widthED, QComboBox & widthUnitCO,
 		widthED.setText(toqstr(scale));
 		widthUnitCO.setCurrentItem(0);
 	} else {
-		widthED.setText(toqstr(tostr(data.width.value())));
+		widthED.setText(toqstr(convert<string>(data.width.value())));
 		// Because 'Scale' is position 0...
 		// Note also that width cannot be zero here, so
 		// we don't need to worry about the default unit.
@@ -237,10 +237,10 @@ void setCrop(QCheckBox & clipCB,
 {
 	clipCB.setChecked(data.clip);
 	graphics::BoundingBox const & bbox = data.bbox;
-	xlED.setText(toqstr(tostr(bbox.xl)));
-	ybED.setText(toqstr(tostr(bbox.yb)));
-	xrED.setText(toqstr(tostr(bbox.xr)));
-	ytED.setText(toqstr(tostr(bbox.yt)));
+	xlED.setText(toqstr(convert<string>(bbox.xl)));
+	ybED.setText(toqstr(convert<string>(bbox.yb)));
+	xrED.setText(toqstr(convert<string>(bbox.xr)));
+	ytED.setText(toqstr(convert<string>(bbox.yt)));
 }
 
 

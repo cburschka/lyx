@@ -76,9 +76,9 @@ void QTabular::build_dialog()
 	bcview().addReadOnly(dialog_->lastfooterBorderBelowCB);
 	bcview().addReadOnly(dialog_->lastfooterNoContentsCB);
 	bcview().addReadOnly(dialog_->newpageCB);
-	
+
 	// initialize the length validator
-	addCheckedLineEdit(bcview(), dialog_->widthED, 
+	addCheckedLineEdit(bcview(), dialog_->widthED,
 		dialog_->fixedWidthColLA);
 }
 
@@ -139,8 +139,8 @@ void QTabular::update_contents()
 	LyXTabular::row_type const row(tabular.row_of_cell(cell));
 	LyXTabular::col_type const col(tabular.column_of_cell(cell));
 
-	dialog_->tabularRowED->setText(toqstr(tostr(row + 1)));
-	dialog_->tabularColumnED->setText(toqstr(tostr(col + 1)));
+	dialog_->tabularRowED->setText(toqstr(convert<string>(row + 1)));
+	dialog_->tabularColumnED->setText(toqstr(convert<string>(col + 1)));
 
 	bool const multicol(tabular.isMultiColumn(cell));
 

@@ -151,7 +151,7 @@ void FormBox::update()
 	setEnabled(dialog_->radio_minipage, controller().params().inner_box);
 
 	LyXLength len(controller().params().width);
-	fl_set_input(dialog_->input_width, tostr(len.value()).c_str());
+	fl_set_input(dialog_->input_width, convert<string>(len.value()).c_str());
 	fl_set_choice(dialog_->choice_width_unit, len.unit() + 1);
 	string special(controller().params().special);
 	for (unsigned int i = 0; i < gui_names_spec_.size(); ++i) {
@@ -165,7 +165,7 @@ void FormBox::update()
 	setEnabled(dialog_->choice_special, !controller().params().inner_box);
 
 	LyXLength ht(controller().params().height);
-	fl_set_input(dialog_->input_height, tostr(ht.value()).c_str());
+	fl_set_input(dialog_->input_height, convert<string>(ht.value()).c_str());
 	fl_set_choice(dialog_->choice_height_unit, ht.unit() + 1);
 	string const height_special(controller().params().height_special);
 	for (unsigned int i = 0; i < gui_names_spec_.size(); ++i) {

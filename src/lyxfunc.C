@@ -1605,12 +1605,12 @@ void LyXFunc::menuNew(string const & name, bool fromTemplate)
 
 	if (filename.empty()) {
 		filename = AddName(lyxrc.document_path,
-			    "newfile" + tostr(++newfile_number) + ".lyx");
+			    "newfile" + convert<string>(++newfile_number) + ".lyx");
 		FileInfo fi(filename);
 		while (bufferlist.exists(filename) || fi.readable()) {
 			++newfile_number;
 			filename = AddName(lyxrc.document_path,
-				    "newfile" +	tostr(newfile_number) +
+					   "newfile" +	convert<string>(newfile_number) +
 				    ".lyx");
 			fi.newFile(filename);
 		}

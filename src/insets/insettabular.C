@@ -325,7 +325,7 @@ void InsetTabular::drawSelection(PainterInfo & pi, int x, int y) const
 
 	x += scroll();
 	x += ADD_TO_TABULAR_WIDTH;
-	
+
 	if (tablemode(cur)) {
 		row_type rs, re;
 		col_type cs, ce;
@@ -345,11 +345,11 @@ void InsetTabular::drawSelection(PainterInfo & pi, int x, int y) const
 					pi.pain.fillRectangle(xx, y - a, w, h,
 							      LColor::selection);
 				xx += w;
-				
+
 			}
 			y += h;
 		}
-		
+
 	} else {
 		cur.text()->drawSelection(pi, x + getCellXPos(cur.idx()) + tabular.getBeginningOfTextInCell(cur.idx()), 0 /*this value is ignored */);
 	}
@@ -1016,7 +1016,7 @@ void InsetTabular::getCursorPos(CursorSlice const & sl, int & x, int & y) const
 
 
 namespace  {
-	
+
 
 // Manhattan distance to nearest corner
 int dist(InsetOld const & inset, int x, int y)

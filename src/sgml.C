@@ -117,7 +117,7 @@ string escapeString(string const & raw)
 string const uniqueID(string const label)
 {
 	static unsigned int seed = 1000;
-	return label + tostr(++seed);
+	return label + convert<string>(++seed);
 }
 
 
@@ -172,9 +172,9 @@ string cleanID(Buffer const & buf, OutputParams const & runparams, std::string c
 		}
 	}
 	if (mangle) {
-		content += "-" + tostr(mangleID++);
+		content += "-" + convert<string>(mangleID++);
 	}
-	else if (isdigit(content[content.size()-1])) {
+	else if (isdigit(content[content.size() - 1])) {
 		content += ".";
 	}
 
@@ -231,7 +231,7 @@ void openTag(Buffer const & buf, ostream & os, OutputParams const & runparams, P
 			else
 				counters.step(style->latexname());
 			int i = counters.value(name);
-			attribute = subst(param, "#", tostr(i));
+			attribute = subst(param, "#", convert<string>(i));
 		} else {
 			attribute = param;
 		}

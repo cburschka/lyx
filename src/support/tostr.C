@@ -11,51 +11,59 @@
 
 #include <config.h>
 
-#include <boost/lexical_cast.hpp>
+#include "tostr.h"
 
+#include <boost/lexical_cast.hpp>
 
 using boost::lexical_cast;
 
 using std::string;
 
 
-string const tostr(bool b)
+template<>
+string convert<string>(bool b)
 {
 	return (b ? "true" : "false");
 }
 
 
-string const tostr(unsigned int i)
+template<>
+string convert<string>(char c)
+{
+	return string(1, c);
+}
+
+
+template<>
+string convert<string>(short unsigned int sui)
+{
+	return lexical_cast<string>(sui);
+}
+
+
+template<>
+string convert<string>(int i)
 {
 	return lexical_cast<string>(i);
 }
 
 
-string const tostr(long int i)
+template<>
+string convert<string>(unsigned int ui)
 {
-	return lexical_cast<string>(i);
+	return lexical_cast<string>(ui);
 }
 
 
-string const tostr(double d)
+template<>
+string convert<string>(float f)
+{
+	return lexical_cast<string>(f);
+}
+
+
+template<>
+string convert<string>(double d)
 {
 	return lexical_cast<string>(d);
-}
-
-
-string const tostr(int i)
-{
-	return lexical_cast<string>(i);
-}
-
-
-string const tostr(string const & s)
-{
-	return s;
-}
-
-
-string const tostr(long unsigned int i)
-{
-	return lexical_cast<string>(i);
 }

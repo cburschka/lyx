@@ -648,7 +648,7 @@ namespace {
 string const unique_filename(string const bufferpath)
 {
 	static int theCounter = 0;
-	string const filename = tostr(theCounter++) + "lyxpreview";
+	string const filename = convert<string>(theCounter++) + "lyxpreview";
 	return support::AddName(bufferpath, filename);
 }
 

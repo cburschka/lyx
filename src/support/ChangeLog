@@ -1,3 +1,12 @@
+2005-01-06  Lars Gullik Bjonnes  <larsbj@gullik.net>
+
+	* lstrings.[Ch]: change bformat to be a template
+	
+	* tostr.[Ch]: tostr -> convert, convert is a template
+	
+	* tempname.C:
+	* filetools.C (createBufferTmpDir): tostr -> convert
+
 2005-01-05  Angus Leeming  <leeming@lyx.org>
 
 	* os_win32.C (external_path, internal_path): s/MAX_PATH/PATH_MAX/.

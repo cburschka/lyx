@@ -51,7 +51,7 @@ double Spacing::getValue() const
 
 void Spacing::set(Spacing::Space sp, float val)
 {
-	set(sp, tostr(val));
+	set(sp, convert<string>(val));
 }
 
 
@@ -60,17 +60,17 @@ void Spacing::set(Spacing::Space sp, string const & val)
 	space = sp;
 	if (sp == Other) {
 		switch (int(strToDbl(val) * 1000 + 0.5)) {
-		case 1000: 
-			space = Single; 
+		case 1000:
+			space = Single;
 			break;
-		case 1250: 
-			space = Onehalf; 
+		case 1250:
+			space = Onehalf;
 			break;
-		case 1667: 
-			space = Double; 
+		case 1667:
+			space = Double;
 			break;
-		default: 
-			value = val; 
+		default:
+			value = val;
 			break;
 		}
 	}

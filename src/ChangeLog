@@ -1,16 +1,49 @@
+2005-01-06  Lars Gullik Bjonnes  <larsbj@gullik.net>
+
+	* tabular.C: make all write_attributes templates, tostr -> convert
+	
+	* paragraph.C (simpleLinuxDocOnePar): fix type for ret from getChar
+	(emptyTag): and -> &&, and fix type for ret from getChar
+	(getFirstWord): fix type for ret from getChar
+	(onlyText): and -> &&
+	(simpleDocBookOnePar): and not -> && !, fix type for ret from
+	getChar
+
+	* toc.C (goTo, action):
+	* text3.C (dispatch):
+	* text.C (currentState):
+	* tex-accent.C (DoAccent):
+	* sgml.C:
+	* lyxrc.C:
+	* lyxfunc.C (menuNew):
+	* lyxfinc.C (replace):
+	* counters.C (laberItem):
+	* bufferview_funcs.C (font2string):
+	* bufferparams.C (writeFile):
+	* buffer.C (readFile):
+	* Spacing.C (set):
+	* MenuBackend.C: tostr -> convert
+
+	* LaTeX.C (runMessage): fix format
+	(scanAuxFiles): tostr -> convert
+
+	* BufferView_pimpl.C (savePosition): fix format
+	(restorePosition): ditto
+	(dispatch): ditto
+
 2005-01-06  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* Spacing.[Ch]: New method getValueAsString().
 
 	* Spacing.[Ch]:
 	* bufferparams.C:
-	* ParagraphParameters.C: 
-	* lyxlayout.C: 
+	* ParagraphParameters.C:
+	* lyxlayout.C:
 	* text.C:
 	* text3.C: store/read spacing value as string.
-	
+
 	* rowpainter.C: change float value (spacing_val) to double.
-	
+
 	* bufferparams.C: add Spacing::Other to spacetranslator (fixes
 	broken custom document spacing).
 
@@ -18,7 +51,7 @@
 
 	* lyxfunc.C (getStatus): moved from lyxfunc.C put into anon
 	namespace, also more use of temp references and const
-	
+
 	* cursor.[Ch] (getStatus): move to lyxfunc.C
 
 	* bufferparams.C: reformat slightly

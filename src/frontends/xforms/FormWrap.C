@@ -108,7 +108,7 @@ void FormWrap::update()
 {
 	InsetWrapParams const & params = controller().params();
 	LyXLength len(params.width);
-	fl_set_input(dialog_->input_width, tostr(len.value()).c_str());
+	fl_set_input(dialog_->input_width, convert<string>(len.value()).c_str());
 	fl_set_choice(dialog_->choice_width_units, len.unit() + 1);
 
 	if (params.placement.empty())

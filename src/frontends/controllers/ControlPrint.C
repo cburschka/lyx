@@ -92,11 +92,11 @@ void ControlPrint::dispatchParams()
 
 	if (!pp.all_pages && pp.from_page) {
 		command += lyxrc.print_pagerange_flag + ' ';
-		command += tostr(pp.from_page);
+		command += convert<string>(pp.from_page);
 		if (pp.to_page) {
 			// we have a range "from-to"
 			command += '-'
-				+ tostr(pp.to_page);
+				+ convert<string>(pp.to_page);
 		}
 		command += ' ';
 	}
@@ -117,7 +117,7 @@ void ControlPrint::dispatchParams()
 			command += lyxrc.print_copies_flag;
 		}
 		command += ' '
-			+ tostr(pp.count_copies)
+			+ convert<string>(pp.count_copies)
 			+ ' ';
 	}
 

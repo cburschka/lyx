@@ -268,7 +268,7 @@ void GGraphics::apply()
 
 	if (setscalingradio_->get_active()) {
 		float scaleValue = outputscalespin_->get_adjustment()->get_value();
-		igp.scale = tostr(scaleValue);
+		igp.scale = convert<string>(scaleValue);
 		if (float_equal(scaleValue, 0.0, 0.05))
 			igp.scale = string();
 		igp.width = LyXLength();
@@ -329,7 +329,7 @@ void GGraphics::apply()
 	igp.clip = clipcheck_->get_active();
 
 	// the extra section
-	igp.rotateAngle = tostr(anglespin_->get_adjustment()->get_value());
+	igp.rotateAngle = convert<string>(anglespin_->get_adjustment()->get_value());
 
 	int const origin_pos = origincombo_->get_active_row_number();
 	igp.rotateOrigin = origins_[origin_pos];
@@ -380,7 +380,7 @@ void GGraphics::update() {
 	unitsComboFromLength(heightunitscombo_, stringcol_,
 	                     igp.height, defaultUnit);
 
-	if (!igp.scale.empty() 
+	if (!igp.scale.empty()
 		&& !float_equal(strToDbl(igp.scale), 0.0, 0.05)) {
 		// scaling sizing mode
 		setscalingradio_->set_active(true);

@@ -87,7 +87,7 @@ namespace {
 string const uniqueID()
 {
 	static unsigned int seed = 1000;
-	return "file" + tostr(++seed);
+	return "file" + convert<string>(++seed);
 }
 
 } // namespace anon
@@ -241,7 +241,7 @@ void InsetInclude::write(Buffer const &, ostream & os) const
 void InsetInclude::write(ostream & os) const
 {
 	os << "Include " << params_.getCommand() << '\n'
-	   << "preview " << tostr(params_.preview()) << '\n';
+	   << "preview " << convert<string>(params_.preview()) << '\n';
 }
 
 

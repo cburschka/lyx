@@ -515,7 +515,7 @@ void RowPainter::paintFirst()
 					} else {
 						spacing_val = buffer.params().spacing().getValue();
 					}
-#warning Look is this correct?					
+#warning Look is this correct?
 					int const labeladdon = int(font_metrics::maxHeight(font) * layout->spacing.getValue() * spacing_val);
 
 					int const maxdesc = int(font_metrics::maxDescent(font) * layout->spacing.getValue() * spacing_val)
@@ -662,7 +662,7 @@ void RowPainter::paintText()
 		// if we reach the end of a struck out range, paint it
 		// we also don't paint across things like tables
 		if (running_strikeout && (highly_editable_inset || !is_struckout)) {
-			// FIXME this should take real text height into account, not 
+			// FIXME this should take real text height into account, not
 			// the whole row including padding whitespace
 			//int const middle = yo_ + (- row_.ascent() + row_.top_of_text()) / 2;
 			int const middle = yo_ - row_.ascent() / 2;
@@ -733,7 +733,7 @@ void paintPar
 	static NullPainter nop;
 	static PainterInfo nullpi(pi.base.bv, nop);
 	int const ww = pi.base.bv->workHeight();
-	
+
 	Paragraph & par = text.paragraphs()[pit];
 
 	RowList::iterator const rb = par.rows().begin();
@@ -746,7 +746,7 @@ void paintPar
 		bool const inside = (y + rit->descent() >= 0
 				       && y - rit->ascent() < ww);
 		RowPainter rp(inside ? pi : nullpi, text, pit, *rit, x, y);
-			
+
 		y += rit->descent();
 		rp.paintAppendix();
 		rp.paintDepthBar();
@@ -783,7 +783,7 @@ void paintText(BufferView const & bv, ViewMetricsInfo const & vi)
 		paintPar(pi, *bv.text(), pit, 0, yy);
 		yy += text->getPar(pit).descent();
 	}
-	
+
 
 	// paint one paragraph above and one below
 	if (vi.p1 > 0) {

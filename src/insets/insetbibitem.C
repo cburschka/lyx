@@ -43,7 +43,7 @@ InsetBibitem::InsetBibitem(InsetCommandParams const & p)
 	: InsetCommand(p, "bibitem"), counter(1)
 {
 	if (getContents().empty())
-		setContents(key_prefix + tostr(++key_counter));
+		setContents(key_prefix + convert<string>(++key_counter));
 }
 
 
@@ -111,7 +111,7 @@ void InsetBibitem::read(Buffer const &, LyXLex & lex)
 
 string const InsetBibitem::getBibLabel() const
 {
-	return getOptions().empty() ? tostr(counter) : getOptions();
+	return getOptions().empty() ? convert<string>(counter) : getOptions();
 }
 
 

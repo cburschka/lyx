@@ -21,8 +21,6 @@
 #include "controllers/ControlParagraph.h"
 #include "controllers/helper_funcs.h"
 
-#include "support/tostr.h"
-
 #include <qbuttongroup.h>
 #include <qcheckbox.h>
 #include <qcombobox.h>

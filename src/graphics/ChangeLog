@@ -1,3 +1,7 @@
+2005-01-06  Lars Gullik Bjonnes  <larsbj@gullik.net>
+
+	* PreviewLoader.C (unique_filename): tostr -> convert
+
 2005-01-04  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* PreviewLoader.C: lyxrc.preview_scale_factor is a string now.

@@ -91,7 +91,7 @@ LyXLength widgetsToLength(QLineEdit const * input, QComboBox const * combo)
 		return LyXLength(fromqstr(length));
 
 	LyXLength::UNIT unit = unitFromString(fromqstr(combo->currentText()));
-	
+
 	return LyXLength(length.toDouble(), unit);
 }
 
@@ -109,7 +109,7 @@ void lengthToWidgets(QLineEdit * input, LengthCombo * combo,
 		input->setText(toqstr(len));
 	} else {
 		combo->setCurrentItem(LyXLength(len).unit());
-		input->setText(toqstr(tostr(LyXLength(len).value())));
+		input->setText(toqstr(convert<string>(LyXLength(len).value())));
 	}
 }
 

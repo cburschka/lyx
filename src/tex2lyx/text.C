@@ -664,7 +664,7 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 		if (p.next_token().asInput() == "[") {
 			os << "placement " << p.getArg('[', ']') << '\n';
 		}
-		os << "wide " << tostr(is_starred)
+		os << "wide " << convert<string>(is_starred)
 		   << "\nsideways false"
 		   << "\nstatus open\n\n";
 		parse_text_in_inset(p, os, FLAG_END, outer, parent_context);

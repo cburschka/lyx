@@ -1215,7 +1215,7 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc) const
 		    auto_region_delete != system_lyxrc.auto_region_delete) {
 			os << "# Set to false to inhibit automatic replacement of\n"
 			   << "# the current selection.\n"
-			   << "\\auto_region_delete " << tostr(auto_region_delete)
+			   << "\\auto_region_delete " << convert<string>(auto_region_delete)
 			   << '\n';
 		}
 	case RC_AUTORESET_OPTIONS:
@@ -1223,7 +1223,8 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc) const
 		    auto_reset_options != system_lyxrc.auto_reset_options) {
 			os << "# Set to false to inhibit automatic reset of\n"
 			   << "# the class options to defaults on class change.\n"
-			   << "\\auto_reset_options " << tostr(auto_reset_options)
+			   << "\\auto_reset_options "
+			   << convert<string>(auto_reset_options)
 			   << '\n';
 		}
 	case RC_AUTOSAVE:
@@ -1293,7 +1294,7 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc) const
 	case RC_KBMAP:
 		if (ignore_system_lyxrc ||
 		    use_kbmap != system_lyxrc.use_kbmap) {
-			os << "\\kbmap " << tostr(use_kbmap) << '\n';
+			os << "\\kbmap " << convert<string>(use_kbmap) << '\n';
 		}
 	case RC_KBMAP_PRIMARY:
 		if (ignore_system_lyxrc ||
@@ -1333,7 +1334,7 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc) const
 	case RC_SHOW_BANNER:
 		if (ignore_system_lyxrc ||
 		    show_banner != system_lyxrc.show_banner) {
-			os << "\\show_banner " << tostr(show_banner) << '\n';
+			os << "\\show_banner " << convert<string>(show_banner) << '\n';
 		}
 
 	case RC_PREVIEW:
@@ -1359,7 +1360,7 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc) const
 		    preview_hashed_labels !=
 		    system_lyxrc.preview_hashed_labels) {
 			os << "\\preview_hashed_labels "
-			   << tostr(preview_hashed_labels) << '\n';
+			   << convert<string>(preview_hashed_labels) << '\n';
 		}
 
 	case RC_PREVIEW_SCALE_FACTOR:
@@ -1411,14 +1412,14 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc) const
 		    cursor_follows_scrollbar
 		    != system_lyxrc.cursor_follows_scrollbar) {
 			os << "\\cursor_follows_scrollbar "
-			   << tostr(cursor_follows_scrollbar) << '\n';
+			   << convert<string>(cursor_follows_scrollbar) << '\n';
 		}
 	case RC_DIALOGS_ICONIFY_WITH_MAIN:
 		if (ignore_system_lyxrc ||
 		    dialogs_iconify_with_main
 		   != system_lyxrc.dialogs_iconify_with_main) {
 			os << "\\dialogs_iconify_with_main "
-			  <<  tostr(dialogs_iconify_with_main) << '\n';
+			  <<  convert<string>(dialogs_iconify_with_main) << '\n';
 		}
 	case RC_SCREEN_FONT_ROMAN:
 		if (ignore_system_lyxrc ||
@@ -1461,7 +1462,7 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc) const
 		if (ignore_system_lyxrc ||
 		    use_scalable_fonts != system_lyxrc.use_scalable_fonts) {
 			os << "\\screen_font_scalable "
-			   << tostr(use_scalable_fonts)
+			   << convert<string>(use_scalable_fonts)
 			   << '\n';
 		}
 	case RC_SCREEN_FONT_ENCODING:
@@ -1538,7 +1539,7 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc) const
 		if (ignore_system_lyxrc ||
 		    print_adapt_output != system_lyxrc.print_adapt_output) {
 			os << "\\print_adapt_output "
-			   << tostr(print_adapt_output)
+			   << convert<string>(print_adapt_output)
 			   << '\n';
 		}
 	case RC_PRINT_COMMAND:
@@ -1693,7 +1694,7 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc) const
 	case RC_CHECKLASTFILES:
 		if (ignore_system_lyxrc ||
 		    check_lastfiles != system_lyxrc.check_lastfiles) {
-			os << "\\check_lastfiles " << tostr(check_lastfiles)
+			os << "\\check_lastfiles " << convert<string>(check_lastfiles)
 			   << '\n';
 		}
 	case RC_TEMPLATEPATH:
@@ -1716,7 +1717,7 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc) const
 	case RC_MAKE_BACKUP:
 		if (ignore_system_lyxrc ||
 		    make_backup != system_lyxrc.make_backup) {
-			os << "\\make_backup " << tostr(make_backup) << '\n';
+			os << "\\make_backup " << convert<string>(make_backup) << '\n';
 		}
 	case RC_BACKUPDIR_PATH:
 		if (ignore_system_lyxrc ||
@@ -1741,7 +1742,7 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc) const
 	case RC_USE_SPELL_LIB:
 		if (ignore_system_lyxrc ||
 		    use_spell_lib != system_lyxrc.use_spell_lib) {
-			os << "\\use_spell_lib " << tostr(use_spell_lib) << '\n';
+			os << "\\use_spell_lib " << convert<string>(use_spell_lib) << '\n';
 		}
 	case RC_SPELL_COMMAND:
 		if (ignore_system_lyxrc ||
@@ -1751,13 +1752,13 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc) const
 	case RC_ACCEPT_COMPOUND:
 		if (ignore_system_lyxrc ||
 		    isp_accept_compound != system_lyxrc.isp_accept_compound) {
-			os << "\\accept_compound " << tostr(isp_accept_compound)
+			os << "\\accept_compound " << convert<string>(isp_accept_compound)
 			   << '\n';
 		}
 	case RC_USE_ALT_LANG:
 		if (ignore_system_lyxrc ||
 		    isp_use_alt_lang != system_lyxrc.isp_use_alt_lang) {
-			os << "\\use_alt_language " << tostr(isp_use_alt_lang)
+			os << "\\use_alt_language " << convert<string>(isp_use_alt_lang)
 			   << '\n';
 		}
 	case RC_ALT_LANG:
@@ -1769,7 +1770,7 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc) const
 	case RC_USE_ESC_CHARS:
 		if (ignore_system_lyxrc ||
 		    isp_use_esc_chars != system_lyxrc.isp_use_esc_chars) {
-			os << "\\use_escape_chars " << tostr(isp_use_esc_chars)
+			os << "\\use_escape_chars " << convert<string>(isp_use_esc_chars)
 			   << '\n';
 		}
 	case RC_ESC_CHARS:
@@ -1781,7 +1782,7 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc) const
 		if (ignore_system_lyxrc ||
 		    isp_use_pers_dict != system_lyxrc.isp_use_pers_dict) {
 			os << "\\use_personal_dictionary "
-			   << tostr(isp_use_pers_dict)
+			   << convert<string>(isp_use_pers_dict)
 			   << '\n';
 		}
 	case RC_PERS_DICT:
@@ -1794,7 +1795,7 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc) const
 		    isp_use_input_encoding
 		    != system_lyxrc.isp_use_input_encoding) {
 			os << "\\use_input_encoding "
-			   << tostr(isp_use_input_encoding)
+			   << convert<string>(isp_use_input_encoding)
 			   << '\n';
 		}
 
@@ -1805,7 +1806,7 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc) const
 	case RC_RTL_SUPPORT:
 		if (ignore_system_lyxrc ||
 		    rtl_support != system_lyxrc.rtl_support) {
-			os << "\\rtl " << tostr(rtl_support) << '\n';
+			os << "\\rtl " << convert<string>(rtl_support) << '\n';
 		}
 	case RC_LANGUAGE_PACKAGE:
 		if (ignore_system_lyxrc ||
@@ -1818,14 +1819,14 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc) const
 		    language_global_options
 		    != system_lyxrc.language_global_options) {
 			os << "\\language_global_options \""
-			   << tostr(language_global_options)
+			   << convert<string>(language_global_options)
 			   << "\"\n";
 		}
 	case RC_LANGUAGE_USE_BABEL:
 		if (ignore_system_lyxrc ||
 		    language_use_babel != system_lyxrc.language_use_babel) {
 			os << "\\language_use_babel \""
-			   << tostr(language_use_babel)
+			   << convert<string>(language_use_babel)
 			   << "\"\n";
 		}
 	case RC_LANGUAGE_COMMAND_BEGIN:
@@ -1855,20 +1856,20 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc) const
 		if (ignore_system_lyxrc ||
 		    language_auto_begin != system_lyxrc.language_auto_begin) {
 			os << "\\language_auto_begin "
-			   << tostr(language_auto_begin) << '\n';
+			   << convert<string>(language_auto_begin) << '\n';
 		}
 	case RC_LANGUAGE_AUTO_END:
 		if (ignore_system_lyxrc ||
 		    language_auto_end != system_lyxrc.language_auto_end) {
 			os << "\\language_auto_end "
-			   << tostr(language_auto_end) << '\n';
+			   << convert<string>(language_auto_end) << '\n';
 		}
 	case RC_MARK_FOREIGN_LANGUAGE:
 		if (ignore_system_lyxrc ||
 		    mark_foreign_language
 		    != system_lyxrc.mark_foreign_language) {
 			os << "\\mark_foreign_language " <<
-				tostr(mark_foreign_language) << '\n';
+				convert<string>(mark_foreign_language) << '\n';
 		}
 
 		os << "\n#\n"
@@ -1878,7 +1879,7 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc) const
 	case RC_AUTO_NUMBER:
 		if (ignore_system_lyxrc ||
 		    auto_number != system_lyxrc.auto_number) {
-			os << "\\auto_number " << tostr(auto_number) << '\n';
+			os << "\\auto_number " << convert<string>(auto_number) << '\n';
 		}
 	case RC_DEFAULT_LANGUAGE:
 		if (ignore_system_lyxrc ||
@@ -2172,7 +2173,7 @@ string const LyXRC::getDescription(LyXRCTags tag)
 		break;
 
 	case RC_NUMLASTFILES:
-		str = bformat(_("Maximal number of lastfiles. Up to %1$s can appear in the file menu."), tostr(maxlastfiles));
+		str = bformat(_("Maximal number of lastfiles. Up to %1$d can appear in the file menu."), maxlastfiles);
 		break;
 
 	case RC_CHECKLASTFILES:

@@ -68,8 +68,8 @@ void GPrint::update()
 	fileEntry_->set_text(pp.file_name);
 	all_->set_active(pp.all_pages);
 
-	string const from = ( pp.from_page ? tostr(pp.from_page) : string() );
-	string const to   = ( pp.to_page   ? tostr(pp.to_page)   : string() );
+	string const from = ( pp.from_page ? convert<string>(pp.from_page) : string() );
+	string const to   = ( pp.to_page   ? convert<string>(pp.to_page)   : string() );
 	fromEntry_->set_text(from);
 	toEntry_->set_text(to);
 	odd_->set_active(pp.odd_pages);

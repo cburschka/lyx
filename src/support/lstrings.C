@@ -19,7 +19,12 @@
 
 #include <boost/tokenizer.hpp>
 #include <boost/assert.hpp>
+
+#ifndef I_AM_NOT_AFRAID_OF_HEADER_LIBRARIES
+#if USE_BOOST_FORMAT
 #include <boost/format.hpp>
+#endif
+#endif
 
 #include <cctype>
 #include <cstdlib>
@@ -544,20 +549,7 @@ vector<string> const getVectorFromString(string const & str,
 #else
 	boost::char_separator<char> sep(delim.c_str());
 	boost::tokenizer<boost::char_separator<char> > tokens(str, sep);
-#ifndef USE_INCLUDED_STRING
 	return vector<string>(tokens.begin(), tokens.end());
-#else
-	vector<string> vec;
-	using boost::tokenizer;
-	using boost::char_separator;
-
-	tokenizer<char_separator<char> >::iterator it = tokens.begin();
-	tokenizer<char_separator<char> >::iterator end = tokens.end();
-	for (; it != end; ++it) {
-		vec.push_back(STRCONV((*it)));
-	}
-	return vec;
-#endif
 #endif
 }
 
@@ -581,49 +573,110 @@ string const getStringFromVector(vector<string> const & vec,
 }
 
 
+#ifndef I_AM_NOT_AFRAID_OF_HEADER_LIBRARIES
 #if USE_BOOST_FORMAT
 
-string bformat(string const & fmt, string const & arg1)
+template<>
+string bformat(string const & fmt, int arg1)
 {
 	return (boost::format(fmt) % arg1).str();
 }
 
 
-string bformat(string const & fmt, string const & arg1, string const & arg2)
+template<>
+string bformat(string const & fmt, long arg1)
 {
-	return (boost::format(fmt) % arg1 % arg2).str();
+	return (boost::format(fmt) % arg1).str();
 }
 
 
+template<>
+string bformat(string const & fmt, unsigned int arg1)
+{
+	return (boost::format(fmt) % arg1).str();
+}
+
+
+template<>
+string bformat<string>(string const & fmt, string arg1)
+{
+	return (boost::format(fmt) % arg1).str();
+}
+
+
+template<>
+string bformat(string const & fmt, char * arg1)
+{
+	return (boost::format(fmt) % arg1).str();
+}
+
+
+template<>
 string bformat(string const & fmt, int arg1, int arg2)
 {
 	return (boost::format(fmt) % arg1 % arg2).str();
 }
 
 
-string bformat(string const & fmt, string const & arg1, string const & arg2,
-	string const & arg3)
+template<>
+string bformat(string const & fmt, string arg1, string arg2)
+{
+	return (boost::format(fmt) % arg1 % arg2).str();
+}
+
+
+template<>
+string bformat(string const & fmt, char const * arg1, string arg2)
+{
+	return (boost::format(fmt) % arg1 % arg2).str();
+}
+
+
+template<>
+string bformat(string const & fmt, string arg1, string arg2, string arg3)
 {
 	return (boost::format(fmt) % arg1 % arg2 % arg3).str();
 }
 
 
-string bformat(string const & fmt, string const & arg1, string const & arg2,
-	string const & arg3, string const & arg4)
+template<>
+string bformat(string const & fmt,
+	       string arg1, string arg2, string arg3, string arg4)
 {
 	return (boost::format(fmt) % arg1 % arg2 % arg3 % arg4).str();
 }
 
-
-string bformat(string const & fmt, string const & arg1, string const & arg2,
-	string const & arg3, string const & arg4, string const & arg5)
-{
-	return (boost::format(fmt) % arg1 % arg2 % arg3 % arg4 % arg5).str();
-}
-
 #else
 
-string bformat(string const & fmt, string const & arg1)
+template<>
+string bformat(string const & fmt, int arg1)
+{
+	BOOST_ASSERT(contains(fmt, "%1$d"));
+	string const str = subst(fmt, "%1$d", convert<string>(arg1));
+	return subst(str, "%%", "%");
+}
+
+
+template<>
+string bformat(string const & fmt, long arg1)
+{
+	BOOST_ASSERT(contains(fmt, "%1$d"));
+	string const str = subst(fmt, "%1$d", convert<string>(arg1));
+	return subst(str, "%%", "%");
+}
+
+
+template<>
+string bformat(string const & fmt, unsigned int arg1)
+{
+	BOOST_ASSERT(contains(fmt, "%1$d"));
+	string const str = subst(fmt, "%1$d", convert<string>(arg1));
+	return subst(str, "%%", "%");
+}
+
+
+template<>
+string bformat(string const & fmt, string arg1)
 {
 	BOOST_ASSERT(contains(fmt, "%1$s"));
 	string const str = subst(fmt, "%1$s", arg1);
@@ -631,7 +684,15 @@ string bformat(string const & fmt, string const & arg1)
 }
 
 
-string bformat(string const & fmt, string const & arg1, string const & arg2)
+template<>
+string bformat(string const & fmt, char * arg1)
+{
+	BOOST_ASSERT(contains(fmt, "%1$s"));
+	string const str = subst(fmt, "%1$s", arg1);
+	return subst(str, "%%", "%");
+}
+template<>
+string bformat(string const & fmt, string arg1, string arg2)
 {
 	BOOST_ASSERT(contains(fmt, "%1$s"));
 	BOOST_ASSERT(contains(fmt, "%2$s"));
@@ -641,18 +702,30 @@ string bformat(string const & fmt, string const & arg1, string const & arg2)
 }
 
 
+template<>
+string bformat(string const & fmt, char const * arg1, string arg2)
+{
+	BOOST_ASSERT(contains(fmt, "%1$s"));
+	BOOST_ASSERT(contains(fmt, "%2$s"));
+	string str = subst(fmt, "%1$s", arg1);
+	str = subst(fmt, "%2$s", arg2);
+	return subst(str, "%%", "%");
+}
+
+
+template<>
 string bformat(string const & fmt, int arg1, int arg2)
 {
 	BOOST_ASSERT(contains(fmt, "%1$d"));
 	BOOST_ASSERT(contains(fmt, "%2$d"));
-	string str = subst(fmt, "%1$d", tostr(arg1));
-	str = subst(str, "%2$d", tostr(arg2));
+	string str = subst(fmt, "%1$d", convert<string>(arg1));
+	str = subst(str, "%2$d", convert<string>(arg2));
 	return subst(str, "%%", "%");
 }
 
 
-string bformat(string const & fmt, string const & arg1, string const & arg2,
-	string const & arg3)
+template<>
+string bformat(string const & fmt, string arg1, string arg2, string arg3)
 {
 	BOOST_ASSERT(contains(fmt, "%1$s"));
 	BOOST_ASSERT(contains(fmt, "%2$s"));
@@ -664,8 +737,9 @@ string bformat(string const & fmt, string const & arg1, string const & arg2,
 }
 
 
-string bformat(string const & fmt, string const & arg1, string const & arg2,
-	string const & arg3, string const & arg4)
+template<>
+string bformat(string const & fmt,
+	       string arg1, string arg2, string arg3, string arg4)
 {
 	BOOST_ASSERT(contains(fmt, "%1$s"));
 	BOOST_ASSERT(contains(fmt, "%2$s"));
@@ -678,23 +752,7 @@ string bformat(string const & fmt, string const & arg1, string const & arg2,
 	return subst(str, "%%", "%");
 }
 
-
-string bformat(string const & fmt, string const & arg1, string const & arg2,
-	string const & arg3, string const & arg4, string const & arg5)
-{
-	BOOST_ASSERT(contains(fmt, "%1$s"));
-	BOOST_ASSERT(contains(fmt, "%2$s"));
-	BOOST_ASSERT(contains(fmt, "%3$s"));
-	BOOST_ASSERT(contains(fmt, "%4$s"));
-	BOOST_ASSERT(contains(fmt, "%5$s"));
-	string str = subst(fmt, "%1$s", arg1);
-	str = subst(str, "%2$s", arg2);
-	str = subst(str, "%3$s", arg3);
-	str = subst(str, "%4$s", arg4);
-	str = subst(str, "%5$s", arg5);
-	return subst(str, "%%", "%");
-}
-
+#endif
 #endif
 
 } // namespace support

@@ -88,7 +88,8 @@ void QWrap::apply()
 namespace {
 
 string const numtostr(double val) {
-	string a(tostr(val));
+	string a(convert<string>(val));
+#warning Will this test ever trigger? (Lgb)
 	if (a == "0")
 		a.erase();
 	return a;

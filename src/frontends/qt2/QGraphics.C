@@ -106,7 +106,7 @@ void QGraphics::build_dialog()
 	bcview().addReadOnly(dialog_->origin);
 	bcview().addReadOnly(dialog_->latexoptions);
 	bcview().addReadOnly(dialog_->getPB);
-	
+
 	// initialize the length validator
 	addCheckedLineEdit(bcview(), dialog_->width, dialog_->sizewidthL_2);
 	addCheckedLineEdit(bcview(), dialog_->height, dialog_->sizeheightL_2);
@@ -193,28 +193,28 @@ void QGraphics::update_contents()
 		string const xr(token(igp.bb, ' ', 2));
 		string const yr(token(igp.bb, ' ', 3));
 		if (isValidLength(xl, &anyLength)) {
-			dialog_->lbX->setText(toqstr(tostr(anyLength.value())));
+			dialog_->lbX->setText(toqstr(convert<string>(anyLength.value())));
 			string const unit(unit_name[anyLength.unit()]);
 			dialog_->lbXunit->setCurrentItem(getItemNo(bb_units, unit));
 		} else {
 			dialog_->lbX->setText(toqstr(xl));
 		}
 		if (isValidLength(yl, &anyLength)) {
-			dialog_->lbY->setText(toqstr(tostr(anyLength.value())));
+			dialog_->lbY->setText(toqstr(convert<string>(anyLength.value())));
 			string const unit(unit_name[anyLength.unit()]);
 			dialog_->lbYunit->setCurrentItem(getItemNo(bb_units, unit));
 		} else {
 			dialog_->lbY->setText(toqstr(xl));
 		}
 		if (isValidLength(xr, &anyLength)) {
-			dialog_->rtX->setText(toqstr(tostr(anyLength.value())));
+			dialog_->rtX->setText(toqstr(convert<string>(anyLength.value())));
 			string const unit(unit_name[anyLength.unit()]);
 			dialog_->rtXunit->setCurrentItem(getItemNo(bb_units, unit));
 		} else {
 			dialog_->rtX->setText(toqstr(xl));
 		}
 		if (isValidLength(yr, &anyLength)) {
-			dialog_->rtY->setText(toqstr(tostr(anyLength.value())));
+			dialog_->rtY->setText(toqstr(convert<string>(anyLength.value())));
 			string const unit(unit_name[anyLength.unit()]);
 			dialog_->rtYunit->setCurrentItem(getItemNo(bb_units, unit));
 		} else {
@@ -244,7 +244,7 @@ void QGraphics::update_contents()
 	dialog_->showCB->setEnabled(igp.display != lyx::graphics::NoDisplay && !readOnly());
 	dialog_->displayCB->setChecked(igp.display != lyx::graphics::NoDisplay);
 	dialog_->displayscale->setEnabled(igp.display != lyx::graphics::NoDisplay && !readOnly());
-	dialog_->displayscale->setText(toqstr(tostr(igp.lyxscale)));
+	dialog_->displayscale->setText(toqstr(convert<string>(igp.lyxscale)));
 
 	//// the output section (width/height)
 	// set the length combo boxes
@@ -256,13 +256,13 @@ void QGraphics::update_contents()
 	for (int i = 0; i < num_units; i++)
 		dialog_->widthUnit->insertItem(unit_name_gui[i], -1);
 
-	if (!igp.scale.empty() 
+	if (!igp.scale.empty()
 		&& !float_equal(strToDbl(igp.scale), 0.0, 0.05)) {
 		dialog_->width->setText(toqstr(igp.scale));
 		dialog_->widthUnit->setCurrentItem(0);
 	} else {
 		// no scale means default width/height
-		dialog_->width->setText(toqstr(tostr(igp.width.value())));
+		dialog_->width->setText(toqstr(convert<string>(igp.width.value())));
 		// the width cannot have a unitDefault, because
 		// it is a "Scale%" or another user defined unit!
 		// +1 instead of the "Scale%" option
@@ -270,7 +270,7 @@ void QGraphics::update_contents()
 		dialog_->widthUnit->setCurrentItem(unit_ + 1);
 	}
 	// 2. the height (a lengthgcombo type)
-	lengthToWidgets(dialog_->height, dialog_->heightUnit, 
+	lengthToWidgets(dialog_->height, dialog_->heightUnit,
 		igp.height.asString(), unitDefault);
 
 	// enable height input in case of non "Scale%" as width-unit
@@ -362,7 +362,7 @@ void QGraphics::apply()
 	string value = fromqstr(dialog_->width->text());
 	if (dialog_->widthUnit->currentItem() > 0 || isValidLength(value)) {
 		// width/height combination
-		igp.width = 
+		igp.width =
 			widgetsToLength(dialog_->width, dialog_->widthUnit);
 		igp.scale = string();
 	} else {
@@ -371,7 +371,7 @@ void QGraphics::apply()
 		igp.width = LyXLength();
 	}
 	value = fromqstr(dialog_->height->text());
-	igp.height = 
+	igp.height =
 		LyXLength(widgetsToLength(dialog_->height, dialog_->heightUnit));
 
 	igp.keepAspectRatio = dialog_->aspectratio->isChecked();
@@ -385,7 +385,7 @@ void QGraphics::apply()
 	float rotAngle = strToDbl(igp.rotateAngle);
 	if (std::abs(rotAngle) > 360.0) {
 		rotAngle -= 360.0 * floor(rotAngle / 360.0);
-		igp.rotateAngle = tostr(rotAngle);
+		igp.rotateAngle = convert<string>(rotAngle);
 	}
 
 	// save the latex name for the origin. If it is the default

@@ -1184,7 +1184,7 @@ InsetBase * LyXText::editXY(LCursor & cur, int x, int y) const
 		const_cast<LyXText *>(this)->setCurrentFont(cur);
 		return 0;
 	}
-	
+
 	// This should be just before or just behind the
 	// cursor position set above.
 	BOOST_ASSERT((pos != 0 && inset == pars_[pit].getInset(pos - 1))
@@ -1273,7 +1273,7 @@ void LyXText::cursorUp(LCursor & cur)
 	} else if (cur.pit() > 0) {
 		--cur.pit();
 		setCursor(cur, cur.pit(), x2pos(cur.pit(), cur.paragraph().rows().size() - 1, x));
-		
+
 	}
 
 	cur.x_target() = x;
@@ -1282,7 +1282,7 @@ void LyXText::cursorUp(LCursor & cur)
 
 void LyXText::cursorDown(LCursor & cur)
 {
- 
+
 
 	Paragraph const & par = cur.paragraph();
 	int const row = par.pos2row(cur.pos());
@@ -1293,14 +1293,14 @@ void LyXText::cursorDown(LCursor & cur)
 		editXY(cur, x, y + par.rows()[row].descent() + 1);
 		return;
 	}
-	
+
 	if (row + 1 < int(par.rows().size())) {
 		setCursor(cur, cur.pit(), x2pos(cur.pit(), row + 1, x));
 	} else if (cur.pit() + 1 < int(paragraphs().size())) {
 		++cur.pit();
 		setCursor(cur, cur.pit(), x2pos(cur.pit(), 0, x));
 	}
-	
+
 	cur.x_target() = x;
 }
 

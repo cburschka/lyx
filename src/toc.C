@@ -43,14 +43,14 @@ string const TocItem::asString() const
 
 void TocItem::goTo(LyXView & lv_) const
 {
-	string const tmp = tostr(id_);
+	string const tmp = convert<string>(id_);
 	lv_.dispatch(FuncRequest(LFUN_GOTO_PARAGRAPH, tmp));
 }
 
 
 FuncRequest TocItem::action() const
 {
-	return FuncRequest(LFUN_GOTO_PARAGRAPH, tostr(id_));
+	return FuncRequest(LFUN_GOTO_PARAGRAPH, convert<string>(id_));
 }
 
 

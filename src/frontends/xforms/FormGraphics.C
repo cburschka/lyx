@@ -331,8 +331,8 @@ void FormGraphics::apply()
 	// first item in choice_width means scaling
 	if (fl_get_choice(file_->choice_width) == 1) {
 		igp.scale = getString(file_->input_width);
-		if (igp.scale.empty() 
-			|| float_equal(strToDbl(igp.scale), 0.0, 0.05) 
+		if (igp.scale.empty()
+			|| float_equal(strToDbl(igp.scale), 0.0, 0.05)
 			|| float_equal(strToDbl(igp.scale), 100.0, 0.05)) {
 			igp.scale = string();
 		}
@@ -414,7 +414,7 @@ void FormGraphics::apply()
 	float rotAngle = strToDbl(igp.rotateAngle);
 	if (std::abs(rotAngle) > 360.0) {
 		 rotAngle -= 360.0 * floor(rotAngle / 360.0);
-		 igp.rotateAngle = tostr(rotAngle);
+		 igp.rotateAngle = convert<string>(rotAngle);
 	}
 
 	fl_set_input(extra_->input_rotate_angle, igp.rotateAngle.c_str());
@@ -441,7 +441,7 @@ void FormGraphics::update() {
 	string const name =
 		igp.filename.outputFilename(kernel().bufferFilepath());
 	fl_set_input(file_->input_filename, name.c_str());
-	fl_set_input(file_->input_lyxscale, tostr(igp.lyxscale).c_str());
+	fl_set_input(file_->input_lyxscale, convert<string>(igp.lyxscale).c_str());
 
 	switch (igp.display) {
 	case graphics::NoDisplay:
@@ -477,7 +477,7 @@ void FormGraphics::update() {
 				igp.height, defaultUnit);
 
 	// disable height input in case of scaling
-	bool const disable_height = (!igp.scale.empty() 
+	bool const disable_height = (!igp.scale.empty()
 		&& !float_equal(strToDbl(igp.scale), 0.0, 0.05));
 	setEnabled(file_->input_height, !disable_height);
 	setEnabled(file_->choice_height, !disable_height);

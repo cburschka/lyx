@@ -70,36 +70,41 @@ string const write_attribute(string const & name, T const & t)
 	return s.empty() ? s : " " + name + "=\"" + s + "\"";
 }
 
+template <>
 string const write_attribute(string const & name, string const & t)
 {
 	return t.empty() ? t : " " + name + "=\"" + t + "\"";
 }
 
 
+template <>
 string const write_attribute(string const & name, bool const & b)
 {
 	// we write only true attribute values so we remove a bit of the
 	// file format bloat for tabulars.
-	return b ? write_attribute(name, tostr(b)) : string();
+	return b ? write_attribute(name, convert<string>(b)) : string();
 }
 
 
+template <>
 string const write_attribute(string const & name, int const & i)
 {
 	// we write only true attribute values so we remove a bit of the
 	// file format bloat for tabulars.
-	return i ? write_attribute(name, tostr(i)) : string();
+	return i ? write_attribute(name, convert<string>(i)) : string();
 }
 
 
+template <>
 string const write_attribute(string const & name, LyXTabular::idx_type const & i)
 {
 	// we write only true attribute values so we remove a bit of the
 	// file format bloat for tabulars.
-	return i ? write_attribute(name, tostr(i)) : string();
+	return i ? write_attribute(name, convert<string>(i)) : string();
 }
 
 
+template <>
 string const write_attribute(string const & name, LyXLength const & value)
 {
 	// we write only the value if we really have one same reson as above.

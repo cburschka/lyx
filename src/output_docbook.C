@@ -235,7 +235,7 @@ ParagraphList::const_iterator makeCommand(Buffer const & buf,
 		sgml::closeTag(os, bstyle->labeltag());
 	}
 
-	// Opend inner tag and 	close inner tags
+	// Opend inner tag and	close inner tags
 	sgml::openTag(os, bstyle->innertag());
 	par->simpleDocBookOnePar(buf, os, runparams,  outerFont(par - paragraphs.begin(), paragraphs));
 	sgml::closeTag(os, bstyle->innertag());

@@ -270,7 +270,7 @@ void ControlSpellchecker::showSummary()
 
 	string message;
 	if (count_ != 1)
-		message = bformat(_("%1$s words checked."), tostr(count_));
+		message = bformat(_("%1$d words checked."), count_);
 	else
 		message = _("One word checked.");
 

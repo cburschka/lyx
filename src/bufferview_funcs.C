@@ -67,7 +67,7 @@ bool font2string(LyXFont const & font, bool const toggle, string & data)
 	   << "number " << font.number() << '\n'
 	   << "color " << font.color() << '\n'
 	   << "language " << lang << '\n'
-	   << "toggleall " << tostr(toggle);
+	   << "toggleall " << convert<string>(toggle);
 	data = os.str();
 	return true;
 }
@@ -150,11 +150,11 @@ bool string2font(string const & data, LyXFont & font, bool & toggle)
 // the next two should probably go elsewhere
 // this give the position relative to (0, baseline) of outermost
 // paragraph
-Point coordOffset(DocIterator const & dit) 
+Point coordOffset(DocIterator const & dit)
 {
 	int x = 0;
 	int y = 0;
-	
+
 	// Contribution of nested insets
 	for (size_t i = 1; i != dit.size(); ++i) {
 		CursorSlice const & sl = dit[i];
@@ -196,7 +196,7 @@ Point getPos(DocIterator const & dit)
 CurStatus status(BufferView const * bv, DocIterator const & dit)
 {
 	CoordCache::InnerParPosCache & cache = theCoords.pars_[dit.bottom().text()];
-	
+
 	if (cache.find(dit.bottom().pit()) != cache.end())
 		return CUR_INSIDE;
 	else if (dit.bottom().pit() < bv->anchor_ref())

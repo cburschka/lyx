@@ -25,7 +25,6 @@
 #include "lyxtextclasslist.h"
 #include "tex-strings.h" // tex_graphics
 
-#include "support/tostr.h"
 #include "support/lstrings.h"
 
 #include "controllers/ControlDocument.h"
@@ -175,26 +174,26 @@ void QDocument::build_dialog()
 	bcview().setApply(dialog_->applyPB);
 	bcview().setCancel(dialog_->closePB);
 	bcview().setRestore(dialog_->restorePB);
-	
+
 	// initialize the length validator
 	addCheckedLineEdit(bcview(), dialog_->textLayoutModule->skipLE);
-	addCheckedLineEdit(bcview(), dialog_->pageLayoutModule->paperheightLE, 
+	addCheckedLineEdit(bcview(), dialog_->pageLayoutModule->paperheightLE,
 		dialog_->pageLayoutModule->paperheightL);
-	addCheckedLineEdit(bcview(), dialog_->pageLayoutModule->paperwidthLE, 
+	addCheckedLineEdit(bcview(), dialog_->pageLayoutModule->paperwidthLE,
 		dialog_->pageLayoutModule->paperwidthL);
-	addCheckedLineEdit(bcview(), dialog_->marginsModule->topLE, 
+	addCheckedLineEdit(bcview(), dialog_->marginsModule->topLE,
 		dialog_->marginsModule->topL);
-	addCheckedLineEdit(bcview(), dialog_->marginsModule->bottomLE, 
+	addCheckedLineEdit(bcview(), dialog_->marginsModule->bottomLE,
 		dialog_->marginsModule->bottomL);
-	addCheckedLineEdit(bcview(), dialog_->marginsModule->innerLE, 
+	addCheckedLineEdit(bcview(), dialog_->marginsModule->innerLE,
 		dialog_->marginsModule->innerL);
-	addCheckedLineEdit(bcview(), dialog_->marginsModule->outerLE, 
+	addCheckedLineEdit(bcview(), dialog_->marginsModule->outerLE,
 		dialog_->marginsModule->outerL);
-	addCheckedLineEdit(bcview(), dialog_->marginsModule->headsepLE, 
+	addCheckedLineEdit(bcview(), dialog_->marginsModule->headsepLE,
 		dialog_->marginsModule->headsepL);
-	addCheckedLineEdit(bcview(), dialog_->marginsModule->headheightLE, 
+	addCheckedLineEdit(bcview(), dialog_->marginsModule->headheightLE,
 		dialog_->marginsModule->headheightL);
-	addCheckedLineEdit(bcview(), dialog_->marginsModule->footskipLE, 
+	addCheckedLineEdit(bcview(), dialog_->marginsModule->footskipLE,
 		dialog_->marginsModule->footskipL);
 }
 
@@ -343,7 +342,7 @@ void QDocument::apply()
 	case 3:
 	{
 		VSpace vs = VSpace(
-			widgetsToLength(dialog_->textLayoutModule->skipLE, 
+			widgetsToLength(dialog_->textLayoutModule->skipLE,
 				dialog_->textLayoutModule->skipLengthCO)
 			);
 		params.setDefSkip(vs);
@@ -565,7 +564,7 @@ void QDocument::update_contents()
 	dialog_->textLayoutModule->lspacingCO->setCurrentItem(nitem);
 	if (params.spacing().getSpace() == Spacing::Other) {
 		dialog_->textLayoutModule->lspacingLE->setText(
-			toqstr(params.spacing().getValueAsString()));	
+			toqstr(params.spacing().getValueAsString()));
 	}
 	dialog_->setLSpacing(nitem);
 
@@ -591,8 +590,8 @@ void QDocument::update_contents()
 	{
 		skip = 3;
 		string const length = params.getDefSkip().asLyXCommand();
-		lengthToWidgets(dialog_->textLayoutModule->skipLE, 
-			dialog_->textLayoutModule->skipLengthCO, 
+		lengthToWidgets(dialog_->textLayoutModule->skipLE,
+			dialog_->textLayoutModule->skipLengthCO,
 			length, defaultUnit);
 		break;
 	}

@@ -1,7 +1,15 @@
+2005-01-06  Lars Gullik Bjonnes  <larsbj@gullik.net>
+
+	* GParagraph.C: drop unused include tostr.h
+
+	* GSpellchecker.C:
+	* GPrint.C:
+	* GGraphics.C (apply): tostr -> convert
+
 2005-01-04  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* xftFontLoader.C: lyxrc.font_sizes is a string now.
-	
+
 	* lyx_gui.C: change getDVI() to int.
 
 2005-01-04  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
@@ -30,15 +38,15 @@
 
 2004-12-08  John Spray  <spray_john@users.sourceforge.net>
 
-	* FileDialogPrivate.C: use Gtk::FileChooser.set_current_name 
+	* FileDialogPrivate.C: use Gtk::FileChooser.set_current_name
 		to make suggested filenames work when saving
 
 2004-12-07  John Spray  <spray_john@users.sourceforge.net>
 
-	* glade/: improve layouts, set spinbuttons to display 2 
+	* glade/: improve layouts, set spinbuttons to display 2
 		decimal places where apropriate
 	* GSearch.C: focus 'find' entry on update()
-	* GParagraph.C: don't require that 'ControlBox' widget 
+	* GParagraph.C: don't require that 'ControlBox' widget
 		be an HBox.
 	* The Include Dialog:
 	  Dialogs.C, Makefile.am, GInclude.[Ch], glade/include.glade

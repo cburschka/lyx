@@ -185,18 +185,53 @@ std::vector<std::string> const getVectorFromString(std::string const & str,
 std::string const getStringFromVector(std::vector<std::string> const & vec,
 				 std::string const & delim = std::string(","));
 
-// wrapper around boost::format using one argument %1$s
-std::string bformat(std::string const & fmt, std::string const & arg1);
-// arguments %1$s and %2$s
-std::string bformat(std::string const & fmt, std::string const & arg1, std::string const & arg2);
-// arguments %1$d and %2$d
-std::string bformat(std::string const & fmt, int arg1, int arg2);
-// arguments %1$s and %2$s and %3$s
-std::string bformat(std::string const & fmt, std::string const & arg1, std::string const & arg2,
-               std::string const & arg3);
-// arguments %1$s and %2$s and %3$s and %4$s
-std::string bformat(std::string const & fmt, std::string const & arg1, std::string const & arg2,
-               std::string const & arg3, std::string const & arg4);
+
+#ifdef I_AM_NOT_AFRAID_OF_HEADER_LIBRARIES
+
+#include <boost/format.hpp>
+
+template<class Arg1>
+string bformat(string const & fmt, Arg1 arg1)
+{
+	return (boost::format(fmt) % arg1).str();
+}
+
+
+template<class Arg1, class Arg2>
+string bformat(string const & fmt, Arg1 arg1, Arg2 arg2)
+{
+	return (boost::format(fmt) % arg1 % arg2).str();
+}
+
+
+template<class Arg1, class Arg2, class Arg3>
+string bformat(string const & fmt, Arg1 arg1, Arg2 arg2, Arg3 arg3)
+{
+	return (boost::format(fmt) % arg1 % arg2 % arg3).str();
+}
+
+
+template<class Arg1, class Arg2, class Arg3, class Arg4>
+string bformat(string const & fmt, Arg1 arg1, Arg2 arg2, Arg3 arg3, Arg4 arg4)
+{
+	return (boost::format(fmt) % arg1 % arg2 % arg3 % arg4).str();
+}
+
+#else
+
+template <class Arg1>
+std::string bformat(std::string const & fmt, Arg1);
+
+template <class Arg1, class Arg2>
+std::string bformat(std::string const & fmt, Arg1, Arg2);
+
+template <class Arg1, class Arg2, class Arg3>
+std::string bformat(std::string const & fmt, Arg1, Arg2, Arg3);
+
+template <class Arg1, class Arg2, class Arg3, class Arg4>
+std::string bformat(std::string const & fmt, Arg1, Arg2, Arg3, Arg4);
+
+#endif
 
 } // namespace support
 } // namespace lyx

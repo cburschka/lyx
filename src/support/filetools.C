@@ -497,7 +497,7 @@ string const createBufferTmpDir()
 	// We are in our own directory.  Why bother to mangle name?
 	// In fact I wrote this code to circumvent a problematic behaviour (bug?)
 	// of EMX mkstemp().
-	string const tmpfl = os::getTmpDir() + "/lyx_tmpbuf" + tostr(count++);
+	string const tmpfl = os::getTmpDir() + "/lyx_tmpbuf" + convert<string>(count++);
 	if (mkdir(tmpfl, 0777)) {
 		lyxerr << "LyX could not create the temporary directory '"
 		       << tmpfl << "'" << endl;

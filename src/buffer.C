@@ -630,7 +630,7 @@ bool Buffer::readFile(LyXLex & lex, string const & filename, pit_type const pit)
 			return false;
 		}
 		command += " -t"
-			+ tostr(LYX_FORMAT)
+			+ convert<string>(LYX_FORMAT)
 			+ " -o " + tmpfile + ' '
 			+ QuoteName(filename);
 		lyxerr[Debug::INFO] << "Running '"

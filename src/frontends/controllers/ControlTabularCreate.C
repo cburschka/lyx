@@ -43,7 +43,7 @@ void ControlTabularCreate::clearParams()
 
 void ControlTabularCreate::dispatchParams()
 {
-	string data = tostr(params().first) + ' ' + tostr(params().second);
+	string data = convert<string>(params().first) + ' ' + convert<string>(params().second);
 	kernel().dispatch(FuncRequest(LFUN_TABULAR_INSERT, data));
 }
 

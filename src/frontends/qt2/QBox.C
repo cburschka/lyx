@@ -29,7 +29,6 @@
 #include "insets/insetbox.h"
 
 #include "support/lstrings.h"
-#include "support/tostr.h"
 
 #include <qpushbutton.h>
 #include <qlineedit.h>
@@ -83,7 +82,7 @@ void QBox::build_dialog()
 	bcview().setOK(dialog_->okPB);
 	bcview().setApply(dialog_->applyPB);
 	bcview().setCancel(dialog_->closePB);
-	
+
 	// initialize the length validator
 	addCheckedLineEdit(bcview(), dialog_->widthED, dialog_->widthLA);
 	addCheckedLineEdit(bcview(), dialog_->heightED, dialog_->heightLA);
@@ -197,7 +196,7 @@ void QBox::apply()
 	} else if (special == qt_("Width")) {
 		i = 4;
 		spec = true;
-	} 
+	}
 	// the user might insert a non-special value in the line edit
 	if (isValidLength(fromqstr(value))) {
 		i = 0;

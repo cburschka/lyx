@@ -125,7 +125,7 @@ string const ControlGraphics::readBB(string const & file)
 		}
 	}
 
-	return ("0 0 " + tostr(width) + ' ' + tostr(height));
+	return ("0 0 " + convert<string>(width) + ' ' + convert<string>(height));
 }
 
 

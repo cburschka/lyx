@@ -111,7 +111,7 @@ void FormSpellchecker::partialUpdate(int s)
 
 		double const wordcount = controller().getCount();
 		double const total = 100.0 * wordcount / progress;
-		string const label = tostr(progress) + " %";
+		string const label = convert<string>(progress) + " %";
 
 		fl_set_slider_bounds(dialog_->slider_progress, 0.0, total);
 		fl_set_slider_value(dialog_->slider_progress, wordcount);

@@ -458,7 +458,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 			cur.undispatched();
 		}
 		break;
-		
+
 	case LFUN_ENDBUFSEL:
 		if (cur.size() == 1) {
 			if (!cur.selection())
@@ -784,7 +784,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 			lyxerr << _("Unknown spacing argument: ")
 			       << cmd.argument << endl;
 		}
-		if (cur_spacing != new_spacing || cur_value != new_value) 
+		if (cur_spacing != new_spacing || cur_value != new_value)
 			par.params().spacing(Spacing(new_spacing, new_value));
 		break;
 	}
@@ -905,8 +905,8 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		break;
 
 	case LFUN_GETXY:
-		cur.message(tostr(cursorX(cur.top())) + ' '
-		          + tostr(cursorY(cur.top())));
+		cur.message(convert<string>(cursorX(cur.top())) + ' '
+		          + convert<string>(cursorY(cur.top())));
 		break;
 
 	case LFUN_SETXY: {
@@ -1153,7 +1153,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 
 			int const wh = bv->workHeight();
 			int const y = std::max(0, std::min(wh - 1, cmd.y));
-					  
+
 			setCursorFromCoordinates(cur, cmd.x, y);
 			cur.x_target() = cmd.x;
 			if (cmd.y >= wh)
@@ -1176,7 +1176,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 				bvcur.selection() = true;
 				lyxerr << "MOTION: " << bv->cursor() << endl;
 			}
-			
+
 		} else
 			cur.undispatched();
 		break;
@@ -1338,7 +1338,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 			//cur.nextInset()->edit(cur, true);
 		}
 		break;
-		
+
 	// passthrough hat and underscore outside mathed:
 	case LFUN_SUBSCRIPT:
 		mathDispatch(cur, FuncRequest(LFUN_SELFINSERT, "_"), false);
@@ -1486,7 +1486,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		InsetBase & inset = cur.inset();
 		bool const accept = !inset.forceDefaultParagraphs(&inset);
 
-		data = "update " + tostr(accept) + '\n' + data;
+		data = "update " + convert<string>(accept) + '\n' + data;
 		bv->owner()->getDialogs().update("paragraph", data);
 		break;
 	}

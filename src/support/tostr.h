@@ -5,6 +5,7 @@
  * Licence details can be found in the file COPYING.
  *
  * \author André Pönitz
+ * \author Lars Gullik Bjønnes
  *
  * Full author contact details are available in file CREDITS.
  *
@@ -15,21 +16,41 @@
 #ifndef TOSTR_H
 #define TOSTR_H
 
+#include <boost/static_assert.hpp>
+
 #include <string>
 
-/// convert things to strings
-std::string const tostr(bool b);
-///
-std::string const tostr(int);
-///
-std::string const tostr(unsigned int);
-///
-std::string const tostr(long int);
-///
-std::string const tostr(double);
-///
-std::string const tostr(std::string const & s);
-///
-std::string const tostr(long unsigned int);
+template <class Target, class Source>
+Target convert(Source arg)
+{
+	// We use a static assert here since we want all instances of
+	// this template to be specializations.
+	BOOST_STATIC_ASSERT(sizeof(bool) == 0);
+	return Target();
+}
+
+template<>
+std::string convert<std::string>(bool);
+
+template<>
+std::string convert<std::string>(char);
+
+template<>
+std::string convert<std::string>(unsigned short);
+
+template<>
+std::string convert<std::string>(int);
+
+template<>
+std::string convert<std::string>(unsigned int);
+
+template<>
+std::string convert<std::string>(float);
+
+template<>
+std::string convert<std::string>(double);
+
+template<>
+std::string convert<std::string>(std::string);
 
 #endif

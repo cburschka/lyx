@@ -337,7 +337,7 @@ void BufferView::Pimpl::setBuffer(Buffer * b)
 	cursor_ = LCursor(*bv_);
 	anchor_ref_ = 0;
 	offset_ref_ = 0;
-	
+
 
 	// if we're quitting lyx, don't bother updating stuff
 	if (quitting)
@@ -410,7 +410,7 @@ void BufferView::Pimpl::updateScrollbar()
 		anchor_ref_ = int(t.paragraphs().size()) - 1;
 		offset_ref_ = 0;
 	}
-	    
+
 	lyxerr[Debug::GUI]
 		<< "Updating scrollbar: height: " << t.paragraphs().size()
 		<< " curr par: " << bv_->cursor().bottom().pit()
@@ -454,7 +454,7 @@ void BufferView::Pimpl::scrollDocView(int value)
 	int const first = height;
 	int const last = workarea().workHeight() - height;
 	LCursor & cur = bv_->cursor();
-	
+
 	bv_funcs::CurStatus st = bv_funcs::status(bv_, cur);
 
 	switch (st) {
@@ -601,7 +601,7 @@ void BufferView::Pimpl::update(bool fitcursor, bool forceupdate)
 {
 	lyxerr << "BufferView::Pimpl::update(fc=" << fitcursor << ", fu="
 	       << forceupdate << ")  buffer: " << buffer_ << endl;
-	
+
 	// check needed to survive LyX startup
 	if (buffer_) {
 		// update macro store
@@ -680,7 +680,7 @@ void BufferView::Pimpl::savePosition(unsigned int i)
 				      bv_->cursor().paragraph().id(),
 				      bv_->cursor().pos());
 	if (i > 0)
-		owner_->message(bformat(_("Saved bookmark %1$s"), tostr(i)));
+		owner_->message(bformat(_("Saved bookmark %1$d"), i));
 }
 
 
@@ -713,7 +713,7 @@ void BufferView::Pimpl::restorePosition(unsigned int i)
 		min(par->size(), saved_positions[i].par_pos));
 
 	if (i > 0)
-		owner_->message(bformat(_("Moved to bookmark %1$s"), tostr(i)));
+		owner_->message(bformat(_("Moved to bookmark %1$d"), i));
 }
 
 
@@ -961,7 +961,7 @@ FuncStatus BufferView::Pimpl::getStatus(FuncRequest const & cmd)
 	case LFUN_WORDS_COUNT:
 		flag.enabled(true);
 		break;
-		
+
 	case LFUN_BOOKMARK_GOTO:
 		flag.enabled(bv_->isSavedPosition(strToUnsignedInt(cmd.argument)));
 		break;
@@ -1144,16 +1144,16 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & cmd)
 		string message;
 		if (count != 1) {
 			if (cur.selection())
-				message = bformat(_("%1$s words in selection."),
-					  tostr(count));
+				message = bformat(_("%1$d words in selection."),
+					  count);
 				else
-					message = bformat(_("%1$s words in document."), 
-							  tostr(count));
+					message = bformat(_("%1$d words in document."),
+							  count);
 		}
 		else {
 			if (cur.selection())
 				message = _("One word in selection.");
-			else			
+			else
 				message = _("One word in document.");
 		}
 
@@ -1183,13 +1183,13 @@ ViewMetricsInfo BufferView::Pimpl::metrics()
 	int pit1 = pit;
 	int pit2 = pit;
 	size_t npit = text->paragraphs().size();
-	lyxerr << "npit: " << npit << " pit1: " << pit1 
+	lyxerr << "npit: " << npit << " pit1: " << pit1
 		<< " pit2: " << pit2 << endl;
 
-	// rebreak anchor par	
+	// rebreak anchor par
 	text->redoParagraph(pit);
 	int y0 = text->getPar(pit1).ascent() - offset_ref_;
-	
+
 	// redo paragraphs above cursor if necessary
 	int y1 = y0;
 	while (y1 > 0 && pit1 > 0) {
@@ -1199,7 +1199,7 @@ ViewMetricsInfo BufferView::Pimpl::metrics()
 		y1 -= text->getPar(pit1).descent();
 	}
 
-	
+
 	// take care of ascent of first line
 	y1 -= text->getPar(pit1).ascent();
 
@@ -1213,7 +1213,7 @@ ViewMetricsInfo BufferView::Pimpl::metrics()
 		y1 = 0;
 		anchor_ref_ = 0;
 	}
-	
+
 	// redo paragraphs below cursor if necessary
 	int y2 = y0;
 	while (y2 < bv.workHeight() && pit2 < int(npit) - 1) {
@@ -1223,7 +1223,7 @@ ViewMetricsInfo BufferView::Pimpl::metrics()
 		y2 += text->getPar(pit2).ascent();
 	}
 
-	// take care of descent of last line 
+	// take care of descent of last line
 	y2 += text->getPar(pit2).descent();
 
 	// the coordinates of all these paragraphs are correct, cache them
@@ -1233,7 +1233,7 @@ ViewMetricsInfo BufferView::Pimpl::metrics()
 		theCoords.pars_[text][pit] = Point(0, y);
 		y += text->getPar(pit).descent();
 	}
-	
+
 	lyxerr << "bv:metrics:  y1: " << y1 << " y2: " << y2 << endl;
 	return ViewMetricsInfo(pit1, pit2, y1, y2);
 }

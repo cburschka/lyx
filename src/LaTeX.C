@@ -84,7 +84,7 @@ namespace {
 
 string runMessage(unsigned int count)
 {
-	return bformat(_("Waiting for LaTeX run number %1$s"), tostr(count));
+	return bformat(_("Waiting for LaTeX run number %1$d"), count);
 }
 
 } // anon namespace
@@ -412,7 +412,7 @@ LaTeX::scanAuxFiles(string const & file)
 	result.push_back(scanAuxFile(file));
 
 	for (int i = 1; i < 1000; ++i) {
-		string file2 = ChangeExtension(file, "") + '.' + tostr(i)
+		string file2 = ChangeExtension(file, "") + '.' + convert<string>(i)
 			+ ".aux";
 		FileInfo fi(file2);
 		if (!fi.exist())

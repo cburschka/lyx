@@ -184,7 +184,7 @@ Converter::Impl::Impl(string const & from_file,   string const & to_file_base,
 		// Output the script to file.
 		static int counter = 0;
 		script_file_ = OnlyPath(to_file_base) + "lyxconvert" +
-			tostr(counter++) + ".sh";
+			convert<string>(counter++) + ".sh";
 
 		std::ofstream fs(script_file_.c_str());
 		if (!fs.good()) {
@@ -299,7 +299,7 @@ bool build_script(string const & from_file,
 	// Create a temporary base file-name for all intermediate steps.
 	// Remember to remove the temp file because we only want the name...
 	static int counter = 0;
-	string const tmp = "gconvert" + tostr(counter++);
+	string const tmp = "gconvert" + convert<string>(counter++);
 	string const to_base = tempName(string(), tmp);
 	unlink(to_base);
 

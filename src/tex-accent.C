@@ -99,5 +99,5 @@ string const DoAccent(string const & s, tex_accent accent)
 
 string const DoAccent(char c, tex_accent accent)
 {
-	return DoAccent(tostr(c), accent);
+	return DoAccent(convert<string>(c), accent);
 }

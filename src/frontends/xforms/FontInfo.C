@@ -99,7 +99,7 @@ string const FontInfo::resize(string const & font, int size) const
 				break;
 			}
 		}
-	ret.replace(before, after, tostr(size));
+	ret.replace(before, after, convert<string>(size));
 	return ret;
 }
 

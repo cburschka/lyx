@@ -31,7 +31,6 @@
 #include "controllers/helper_funcs.h"
 
 #include "support/lstrings.h"
-#include "support/tostr.h"
 
 #include <qcombobox.h>
 #include <qlineedit.h>

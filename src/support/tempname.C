@@ -55,7 +55,7 @@ string const lyx::support::tempName(string const & dir, string const & mask)
 {
 	string const tmpdir(dir.empty() ? os::getTmpDir() : dir);
 	string tmpfl(AddName(tmpdir, mask));
-	tmpfl += tostr(getpid());
+	tmpfl += convert<string>(getpid());
 	tmpfl += "XXXXXX";
 
 	// The supposedly safe mkstemp version

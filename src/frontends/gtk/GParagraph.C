@@ -24,9 +24,9 @@
 #include "ParagraphParameters.h"
 #include "Spacing.h"
 #include "support/lstrings.h"
-#include "support/tostr.h"
 
 using std::string;
+
 
 namespace lyx {
 

@@ -1265,7 +1265,7 @@ void Paragraph::simpleLinuxDocOnePar(Buffer const & buf,
 			os << '<' << tag_name(*j) << '>';
 		}
 
-		char c = getChar(i);
+		value_type c = getChar(i);
 
 
 		if (c == Paragraph::META_INSET) {
@@ -1323,20 +1323,19 @@ bool Paragraph::emptyTag() const
 		if (isInset(i)) {
 			InsetBase const * inset = getInset(i);
 			InsetBase::Code lyx_code = inset->lyxCode();
-			if (lyx_code != InsetBase::TOC_CODE and
-			    lyx_code != InsetBase::INCLUDE_CODE and
-			    lyx_code != InsetBase::GRAPHICS_CODE and
-			    lyx_code != InsetBase::ERT_CODE and
-			    lyx_code != InsetBase::FLOAT_CODE and
+			if (lyx_code != InsetBase::TOC_CODE &&
+			    lyx_code != InsetBase::INCLUDE_CODE &&
+			    lyx_code != InsetBase::GRAPHICS_CODE &&
+			    lyx_code != InsetBase::ERT_CODE &&
+			    lyx_code != InsetBase::FLOAT_CODE &&
 			    lyx_code != InsetBase::TABULAR_CODE) {
 				return false;
 			}
 		} else {
-			char c = getChar(i);
-			if(c!= ' ' and c!= '\t')
+			value_type c = getChar(i);
+			if (c != ' ' && c != '\t')
 				return false;
 		}
-
 	}
 	return true;
 }
@@ -1367,7 +1366,7 @@ pos_type Paragraph::getFirstWord(Buffer const & buf, ostream & os, OutputParams 
 			InsetBase const * inset = getInset(i);
 			inset->docbook(buf, os, runparams);
 		} else {
-			char c = getChar(i);
+			value_type c = getChar(i);
 			if (c == ' ')
 				break;
 			bool ws;
@@ -1389,7 +1388,7 @@ bool Paragraph::onlyText(Buffer const & buf, LyXFont const & outerfont, pos_type
 		LyXFont font = getFont(buf.params(), i, outerfont);
 		if (isInset(i))
 			return false;
-		if ( i != initial and font != font_old)
+		if (i != initial && font != font_old)
 			return false;
 		font_old = font;
 	}
@@ -1410,8 +1409,9 @@ void Paragraph::simpleDocBookOnePar(Buffer const & buf,
 	LyXFont font_old =
 		style->labeltype == LABEL_MANUAL ? style->labelfont : style->font;
 
-	if (style->pass_thru and not onlyText(buf, outerfont, initial))
+	if (style->pass_thru && !onlyText(buf, outerfont, initial))
 		os << "]]>";
+
 	// parsing main loop
 	for (pos_type i = initial; i < size(); ++i) {
 		LyXFont font = getFont(buf.params(), i, outerfont);
@@ -1431,7 +1431,7 @@ void Paragraph::simpleDocBookOnePar(Buffer const & buf,
 			InsetBase const * inset = getInset(i);
 			inset->docbook(buf, os, runparams);
 		} else {
-			char c = getChar(i);
+			value_type c = getChar(i);
 			bool ws;
 			string str;
 			boost::tie(ws, str) = sgml::escapeChar(c);
@@ -1450,7 +1450,7 @@ void Paragraph::simpleDocBookOnePar(Buffer const & buf,
 
 	if (style->free_spacing)
 		os << '\n';
-	if (style->pass_thru and not onlyText(buf, outerfont, initial))
+	if (style->pass_thru && !onlyText(buf, outerfont, initial))
 		os << "<![CDATA[";
 }
 
@@ -1868,4 +1868,3 @@ void Paragraph::dump() const
 //void draw(PainterInfo & pi, int x, int y, LyXText & text) const
 //{
 //}
-

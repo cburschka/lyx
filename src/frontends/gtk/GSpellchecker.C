@@ -130,7 +130,7 @@ void GSpellchecker::partialUpdate(int s)
 	int const progress = controller().getProgress();
 	if (progress != 0) {
 		progress_->set_fraction(float(progress)/100.0f);
-		progress_->set_text(tostr(progress) + "% " + _("checked"));
+		progress_->set_text(convert<string>(progress) + "% " + _("checked"));
 	}
 }
 

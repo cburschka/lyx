@@ -225,7 +225,7 @@ void updateWidgetsFromLength(FL_OBJECT * input, FL_OBJECT * choice,
 		fl_set_input(input, "");
 		fl_set_choice_text(choice, default_unit.c_str());
 	} else {
-		fl_set_input(input, tostr(len.value()).c_str());
+		fl_set_input(input, convert<string>(len.value()).c_str());
 
 		// Set the choice to the desired unit, if present in the choice.
 		// Else set the choice to the default unit.

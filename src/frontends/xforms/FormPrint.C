@@ -159,8 +159,8 @@ void FormPrint::update()
 	// we might just be remembering the last time this was printed.
 	all_pages_.set(pp.all_pages);
 
-	string const from = ( pp.from_page ? tostr(pp.from_page) : string() );
-	string const to   = ( pp.to_page   ? tostr(pp.to_page)   : string() );
+	string const from = ( pp.from_page ? convert<string>(pp.from_page) : string() );
+	string const to   = ( pp.to_page   ? convert<string>(pp.to_page)   : string() );
 	fl_set_input(dialog_->input_from_page, from.c_str());
 	fl_set_input(dialog_->input_to_page, to.c_str());
 

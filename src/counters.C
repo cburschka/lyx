@@ -282,7 +282,7 @@ string Counters::labelItem(string const & ctr, string const & numbertype)
 	if (numbertype == "Roman")
 		return romanCounter(value(ctr));
 
-	return tostr(value(ctr));
+	return convert<string>(value(ctr));
 }
 
 

@@ -999,7 +999,7 @@ void LyXText::setHeightOfRow(pit_type const pit, Row & row)
 	// incalculate the layout spaces
 	maxasc  += int(layoutasc  * 2 / (2 + pars_[pit].getDepth()));
 	maxdesc += int(layoutdesc * 2 / (2 + pars_[pit].getDepth()));
-	
+
 	row.ascent(maxasc + labeladdon);
 	row.descent(maxdesc);
 }
@@ -1676,8 +1676,8 @@ void LyXText::redoParagraph(pit_type const pit)
 		z = row.endpos();
 	} while (z < par.size());
 
-	dim.asc += par.rows()[0].ascent(); 
-	dim.des -= par.rows()[0].ascent(); 
+	dim.asc += par.rows()[0].ascent();
+	dim.des -= par.rows()[0].ascent();
 	par.dim_ = dim;
 	//lyxerr << "redoParagraph: " << par.rows().size() << " rows\n";
 }
@@ -1734,7 +1734,7 @@ void LyXText::drawSelection(PainterInfo & pi, int x , int) const
 
 	beg.top() = cur.selBegin();
 	end.top() = cur.selEnd();
-	
+
 	// the selection doesn't touch the visible screen
 	if (bv_funcs::status(pi.base.bv, beg) == bv_funcs::CUR_BELOW
 	    || bv_funcs::status(pi.base.bv, end) == bv_funcs::CUR_ABOVE)
@@ -1742,10 +1742,10 @@ void LyXText::drawSelection(PainterInfo & pi, int x , int) const
 
 	Paragraph const & par1 = pars_[beg.pit()];
 	Paragraph const & par2 = pars_[end.pit()];
-	
+
 	Row const & row1 = par1.getRow(beg.pos());
 	Row const & row2 = par2.getRow(end.pos());
- 
+
 	int y1,x1,x2;
 	if (bv_funcs::status(pi.base.bv, beg) == bv_funcs::CUR_ABOVE) {
 		y1 = 0;
@@ -1769,9 +1769,9 @@ void LyXText::drawSelection(PainterInfo & pi, int x , int) const
 		X1 = isRTL(par2) ? 0 : endx;
 		X2 = isRTL(par2) ? endx : 0 + dim_.wid;
 	}
-		
+
 	lyxerr << " y1: " << y1 << " y2: " << y2
-		<< " xo: " << xo_ << " wid: " << dim_.wid 
+		<< " xo: " << xo_ << " wid: " << dim_.wid
 		<< endl;
 
 	// paint big rectangle in one go
@@ -1804,7 +1804,7 @@ void LyXText::drawSelection(PainterInfo & pi, int x, int) const
 
 	beg.top() = cur.selBegin();
 	end.top() = cur.selEnd();
-	
+
 	// the selection doesn't touch the visible screen
 	if (bv_funcs::status(pi.base.bv, beg) == bv_funcs::CUR_BELOW
 	    || bv_funcs::status(pi.base.bv, end) == bv_funcs::CUR_ABOVE)
@@ -1812,7 +1812,7 @@ void LyXText::drawSelection(PainterInfo & pi, int x, int) const
 
 	Paragraph const & par1 = pars_[beg.pit()];
 	Paragraph const & par2 = pars_[end.pit()];
-	
+
 	bool const above = (bv_funcs::status(pi.base.bv, beg)
 			    == bv_funcs::CUR_ABOVE);
 	bool const below = (bv_funcs::status(pi.base.bv, end)
@@ -2116,7 +2116,7 @@ string LyXText::currentState(LCursor & cur)
 	// The paragraph depth
 	int depth = cur.paragraph().getDepth();
 	if (depth > 0)
-		os << bformat(_(", Depth: %1$s"), tostr(depth));
+		os << bformat(_(", Depth: %1$d"), depth);
 
 	// The paragraph spacing, but only if different from
 	// buffer spacing.
@@ -2222,7 +2222,7 @@ pos_type LyXText::x2pos(pit_type pit, int row, int x) const
 //	Paragraph const & par = pars_[pit];
 //	Row const & r = par.rows()[row];
 //	int x = 0;
-//	pos -= r.pos();	
+//	pos -= r.pos();
 //}
 
 
@@ -2232,7 +2232,7 @@ void LyXText::setCursorFromCoordinates(LCursor & cur, int const x, int const y)
 {
 	pit_type pit = getPitNearY(y);
 	int yy = theCoords.get(this, pit).y_ - pars_[pit].ascent();
-	lyxerr << "setCursorFromCoordinates: x: " << x << " y: " << y 
+	lyxerr << "setCursorFromCoordinates: x: " << x << " y: " << y
 		<< " pit: " << pit << " yy: " << yy << endl;
 
 	Paragraph const & par = pars_[pit];
@@ -2246,10 +2246,10 @@ void LyXText::setCursorFromCoordinates(LCursor & cur, int const x, int const y)
 	}
 
 	Row const & row = par.rows()[r];
- 
+
 	lyxerr << "setCursorFromCoordinates:  row " << r
 	       << " from pos: " << row.pos() << endl;
-	
+
 	bool bound = false;
 	int xx = x;
 	pos_type const pos = row.pos() + getColumnNearX(pit, row, xx, bound);

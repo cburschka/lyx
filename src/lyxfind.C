@@ -326,7 +326,7 @@ void replace(BufferView * bv, FuncRequest const & ev)
 		if (replace_count == 1) {
 			lv->message(_("String has been replaced."));
 		} else {
-			string str = tostr(replace_count);
+			string str = convert<string>(replace_count);
 			str += _(" strings have been replaced.");
 			lv->message(str);
 		}

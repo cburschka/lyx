@@ -308,7 +308,7 @@ int XFormsMenubar::create_submenu(Window win, XFormsView * view,
 						       *item.submenu(), smn, funcs);
 				if (submenuid == -1)
 					return -1;
-				label += "%x" + tostr(smn.size());
+				label += "%x" + convert<string>(smn.size());
 				lyxerr[Debug::GUI]
 					<< "Menu: " << submenuid
 					<< " (at index " << smn.size()
@@ -320,7 +320,7 @@ int XFormsMenubar::create_submenu(Window win, XFormsView * view,
 				int const action_count =
 					distance(funcs.begin(), fit);
 
-				label += "%x" + tostr(action_count + action_offset);
+				label += "%x" + convert<string>(action_count + action_offset);
 				lyxerr[Debug::GUI] << "Action: \""
 						   << item.func().action
 						   << "(" << item.func().argument
