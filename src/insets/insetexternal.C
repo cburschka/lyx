@@ -71,23 +71,62 @@ string const doSubstitution(InsetExternal::Params const & params,
 /// Invoke the external editor.
 void editExternal(InsetExternal::Params const & params, Buffer const & buffer);
 
+
+ExternalTemplate const * getTemplatePtr(string const & name)
+{
+	ExternalTemplateManager const & etm = ExternalTemplateManager::get();
+	return etm.getTemplateByName(name);
+}
+
+
+ExternalTemplate const * getTemplatePtr(InsetExternal::Params const & params)
+{
+	ExternalTemplateManager const & etm = ExternalTemplateManager::get();
+	return etm.getTemplateByName(params.templatename());
+}
+
 } // namespace anon
+
+
+InsetExternal::TempName::TempName()
+{
+	tempname_ = support::tempName(string(), "lyxext");
+	support::unlink(tempname_);
+	// must have an extension for the converter code to work correctly.
+	tempname_ += ".tmp";
+}
+
+
+InsetExternal::TempName::TempName(InsetExternal::TempName const &)
+{
+	tempname_ = TempName()();
+}
+
+
+InsetExternal::TempName::~TempName()
+{
+	support::unlink(tempname_);
+}
+
+
+InsetExternal::TempName &
+InsetExternal::TempName::operator=(InsetExternal::TempName const & other)
+{
+	if (this != &other)
+		tempname_ = TempName()();
+	return *this;
+}
 
 
 InsetExternal::Params::Params()
 	: display(defaultDisplayType),
 	  lyxscale(defaultLyxScale)
-{
-	tempname = support::tempName(string(), "lyxext");
-	support::unlink(tempname);
-	// must have an extension for the converter code to work correctly.
-	tempname += ".tmp";
-}
+{}
 
 
-InsetExternal::Params::~Params()
+void InsetExternal::Params::settemplate(string const & name)
 {
-	support::unlink(tempname);
+	templatename_ = name;
 }
 
 
@@ -203,23 +242,13 @@ lyx::graphics::Params get_grfx_params(InsetExternal::Params const & eparams)
 }
 
 
-ExternalTemplate const * getTemplatePtr(InsetExternal::Params const & params)
-{
-	ExternalTemplateManager & etm = ExternalTemplateManager::get();
-	ExternalTemplate const & templ = etm.getTemplateByName(params.templatename);
-	if (templ.lyxName.empty())
-		return 0;
-	return &templ;
-}
-
-
 string const getScreenLabel(InsetExternal::Params const & params,
 			    Buffer const & buffer)
 {
 	ExternalTemplate const * const ptr = getTemplatePtr(params);
 	if (!ptr)
 		return support::bformat(_("External template %1$s is not installed"),
-					params.templatename);
+					params.templatename());
 	return doSubstitution(params, buffer, ptr->guiName);
 }
 
@@ -235,10 +264,7 @@ InsetExternal::Params const & InsetExternal::params() const
 void InsetExternal::setParams(Params const & p, Buffer const & buffer)
 {
 	// The stored params; what we would like to happen in an ideal world.
-	params_.filename = p.filename;
-	params_.templatename = p.templatename;
-	params_.display = p.display;
-	params_.lyxscale = p.lyxscale;
+	params_ = p;
 
 	// We display the inset as a button by default.
 	bool display_button = (!getTemplatePtr(params_) ||
@@ -273,7 +299,7 @@ void InsetExternal::setParams(Params const & p, Buffer const & buffer)
 void InsetExternal::write(Buffer const & buffer, ostream & os) const
 {
 	os << "External\n"
-	   << "\ttemplate " << params_.templatename << '\n';
+	   << "\ttemplate " << params_.templatename() << '\n';
 
 	if (!params_.filename.empty())
 		os << "\tfilename "
@@ -317,7 +343,7 @@ void InsetExternal::read(Buffer const & buffer, LyXLex & lex)
 		switch (lex.lex()) {
 		case EX_TEMPLATE: {
 			lex.next();
-			params.templatename = lex.getString();
+			params.settemplate(lex.getString());
 			break;
 		}
 
@@ -366,7 +392,7 @@ void InsetExternal::read(Buffer const & buffer, LyXLex & lex)
 
 	lyxerr[Debug::EXTERNAL]
 		<< "InsetExternal::Read: "
-		<< "template: '" << params_.templatename
+		<< "template: '" << params_.templatename()
 		<< "' filename: '" << params_.filename.absFilename()
 		<< "' display: '" << params_.display
 		<< "' scale: '" << params_.lyxscale
@@ -389,7 +415,7 @@ int InsetExternal::write(string const & format,
 		lyxerr[Debug::EXTERNAL]
 			<< "External template format '" << format
 			<< "' not specified in template "
-			<< params_.templatename << endl;
+			<< params_.templatename() << endl;
 		return 0;
 	}
 
@@ -568,7 +594,7 @@ string const doSubstitution(InsetExternal::Params const & params,
 	result = support::subst(s, "$$FName", filename);
 	result = support::subst(result, "$$Basename", basename);
 	result = support::subst(result, "$$FPath", filepath);
-	result = support::subst(result, "$$Tempname", params.tempname);
+	result = support::subst(result, "$$Tempname", params.tempname());
 	result = support::subst(result, "$$Sysdir", support::system_lyxdir());
 
 	// Handle the $$Contents(filename) syntax

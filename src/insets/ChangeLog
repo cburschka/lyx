@@ -1,7 +1,19 @@
+2003-09-25  Angus Leeming  <leeming@lyx.org>
+
+	* insetexternal.[Ch] (TempName): new (private) nested struct with
+	fake copy semantics. Enables us to use the generated copy c-tor
+	in the Params struct.
+	(Params::templatename, Params::tempname): use accessor functions.
+
+2003-09-25  Angus Leeming  <leeming@lyx.org>
+
+	* ExternalTemplate.[Ch] (getTemplateByName): now it's a const member
+	function, returning a const pointer.
+
 2003-09-23  Angus Leeming  <leeming@lyx.org>
 
-	* ExternalTemplate.[Ch]: can have multiple preamble snippets if we store them
-	in a vector, preambleNames.
+	* ExternalTemplate.[Ch]: can have multiple preamble snippets if we
+	store them in a vector, preambleNames.
 
 	* insetexternal.C (validate): loop over all preambleNames and call
 	LaTeXFeatures::addExternalPreamble with each.

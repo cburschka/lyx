@@ -46,7 +46,6 @@ ExternalTemplate::FormatTemplate::FormatTemplate()
 
 ExternalTemplateManager::ExternalTemplateManager()
 {
-	// gimp gnuchess gnuplot ical netscape tetris xpaint
 	readTemplates(support::user_lyxdir());
 	if (lyxerr.debugging(Debug::EXTERNAL)) {
 		dumpPreambleDefs(lyxerr);
@@ -114,12 +113,10 @@ public:
 		    << "\t\tUpdateResult " << ft.updateResult << '\n'
 		    << "\t\tRequirement " << ft.requirement << '\n';
 
-		if (!ft.preambleNames.empty()) {
-			vector<string>::const_iterator it  = ft.preambleNames.begin();
-			vector<string>::const_iterator end = ft.preambleNames.end();
-			for (; it != end; ++it) {
-				ost << "\t\tPreamble " << *it << '\n';
-			}
+		vector<string>::const_iterator it  = ft.preambleNames.begin();
+		vector<string>::const_iterator end = ft.preambleNames.end();
+		for (; it != end; ++it) {
+			ost << "\t\tPreamble " << *it << '\n';
 		}
 
 		ost << "\tFormatEnd\n";
@@ -168,9 +165,11 @@ ExternalTemplateManager::getTemplates() const
 }
 
 
-ExternalTemplate const & ExternalTemplateManager::getTemplateByName(string const & name)
+ExternalTemplate const *
+ExternalTemplateManager::getTemplateByName(string const & name) const
 {
-	return templates[name];
+	Templates::const_iterator it = templates.find(name);
+	return (it == templates.end()) ? 0 : &it->second;
 }
 
 

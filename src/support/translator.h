@@ -48,6 +48,12 @@ public:
 	void addPair(T1 const & first, T2 const & second) {
 		map.push_back(MapPair(first, second));
 	}
+	// Add the contents of \c other
+	void add(Translator const & other) {
+		if (other.map.empty())
+			return;
+		map.insert(map.end(), other.map.begin(), other.map.end());
+	}
 
 	/// Find the mapping for the first argument
 	T2 const & find(T1 const & first) const {

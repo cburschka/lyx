@@ -121,11 +121,8 @@ namespace {
 
 ExternalTemplate const * getTemplatePtr(InsetExternal::Params const & params)
 {
-	ExternalTemplateManager & etm = ExternalTemplateManager::get();
-	ExternalTemplate const & templ = etm.getTemplateByName(params.templatename);
-	if (templ.lyxName.empty())
-		return 0;
-	return &templ;
+	ExternalTemplateManager const & etm = ExternalTemplateManager::get();
+	return etm.getTemplateByName(params.templatename());
 }
 
 } // namespace anon

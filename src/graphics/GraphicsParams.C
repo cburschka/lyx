@@ -22,6 +22,14 @@ using std::abs;
 namespace lyx {
 namespace graphics {
 
+string const BoundingBox::asString() const
+{
+	std::ostringstream os;
+	os << xl << ' ' << yb << ' ' << xr << ' ' << yt;
+	return os.str();
+}
+
+
 Params::Params()
 	: display(ColorDisplay),
 	  scale(100),

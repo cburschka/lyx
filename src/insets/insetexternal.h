@@ -24,22 +24,46 @@
 class RenderInset;
 
 ///
-class InsetExternal : public InsetOld, public boost::signals::trackable {
+class InsetExternal : public InsetOld, public boost::signals::trackable
+{
+	/** No two Params variables can have the same temporary file.
+	 *  This struct has copy-semantics but the copy constructor
+	 *  and assignment operator simply call the default constructor.
+	 *  Use of this struct enables us to use the compiler-generated
+	 *  copy constructor and assignment operator for the Params struct.
+	 */
+	struct TempName {
+		TempName();
+		TempName(TempName const &);
+		~TempName();
+		TempName & operator=(TempName const &);
+		string const & operator()() const { return tempname_; }
+	private:
+		string tempname_;
+	};
+
 public:
 	/// hold parameters settable from the GUI
 	struct Params {
 		Params();
-		~Params();
+
+		/// The name of the tempfile used for manipulations.
+		string const & tempname() const { return tempname_(); }
+
+		/// the current template used
+		void settemplate(string const &);
+		string const & templatename() const { return templatename_; }
+
 		/// the filename
 		lyx::support::FileName filename;
-		/// the current template used
-		string templatename;
-		/// The name of the tempfile used for manipulations.
-		string tempname;
 		/// how the inset is displayed by LyX
 		lyx::graphics::DisplayType display;
 		/// The scale of the displayed graphic (If shown).
 		unsigned int lyxscale;
+
+	private:
+		TempName tempname_;
+		string templatename_;
 	};
 
 	InsetExternal();

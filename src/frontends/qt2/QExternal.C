@@ -68,7 +68,8 @@ void QExternal::update_contents()
 		params.filename.outputFilename(kernel().bufferFilepath());
 	dialog_->fileED->setText(toqstr(name));
 
-	dialog_->externalCO->setCurrentItem(controller().getTemplateNumber(params.templatename));
+	dialog_->externalCO->setCurrentItem(controller()
+					    .getTemplateNumber(params.templatename()));
 	dialog_->externalTV->setText(toqstr(helpText()));
 
 	int item = 0;
@@ -106,8 +107,8 @@ void QExternal::apply()
 	params.filename.set(fromqstr(dialog_->fileED->text()),
 			    kernel().bufferFilepath());
 
-	params.templatename =
-		controller().getTemplate(dialog_->externalCO->currentItem()).lyxName;
+	params.settemplate(
+		controller().getTemplate(dialog_->externalCO->currentItem()).lyxName);
 
 	switch (dialog_->showCB->currentItem()) {
 		case 0: params.display = lyx::graphics::DefaultDisplay; break;

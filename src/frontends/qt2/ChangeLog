@@ -1,3 +1,8 @@
+2003-09-25  Angus Leeming  <leeming@lyx.org>
+
+	* QExternal.C (update_contents, apply): InsetExternal::Params::
+	templatename now has accessor functions.
+
 2003-09-22  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* QLPopupMenu.C (getLabel): fix so that bindings are added even if

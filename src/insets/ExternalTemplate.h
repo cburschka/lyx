@@ -12,14 +12,14 @@
 #ifndef EXTERNALTEMPLATE_H
 #define EXTERNALTEMPLATE_H
 
-
-#include <iosfwd>
-#include <map>
 #include "support/std_string.h"
 #include <boost/utility.hpp>
+#include <iosfwd>
+#include <map>
 #include <vector>
 
 class LyXLex;
+
 
 ///
 struct ExternalTemplate {
@@ -85,7 +85,13 @@ public:
 	static ExternalTemplateManager & get();
 	Templates & getTemplates();
 	Templates const & getTemplates() const;
-	/// return the template by LyX name
+	/** return the template by LyX name.
+	 *  If it isn't found, return 0.
+	 */
+	ExternalTemplate const * getTemplateByName(string const & name) const;
+	/** return the preamble definition by LyX name.
+	 *  If it isn't found, return an empty string.
+	 */
 	ExternalTemplate const & getTemplateByName(string const & name);
 	string const getPreambleDefByName(string const & name) const;
 private:

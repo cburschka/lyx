@@ -47,7 +47,7 @@ void FormExternal::apply()
 	params.filename.set(getString(dialog_->input_filename), buffer_path);
 
 	int const choice = fl_get_choice(dialog_->choice_template) - 1;
-	params.templatename = controller().getTemplate(choice).lyxName;
+	params.settemplate(controller().getTemplate(choice).lyxName);
 
 	params.lyxscale = strToInt(getString(dialog_->input_lyxscale));
 	if (params.lyxscale == 0)
@@ -127,7 +127,7 @@ void FormExternal::update()
 	string const name = params.filename.outputFilename(buffer_path);
 	fl_set_input(dialog_->input_filename, name.c_str());
 
-	int ID = controller().getTemplateNumber(params.templatename);
+	int ID = controller().getTemplateNumber(params.templatename());
 	if (ID < 0) ID = 0;
 	fl_set_choice(dialog_->choice_template, ID+1);
 

@@ -33,6 +33,9 @@ struct BoundingBox {
 	/// 0 0 0 0 is empty!
 	bool empty() const;
 
+	/// The bounding box as "xl yb xr yr"
+	string const asString() const;
+
 	unsigned int xl;
 	unsigned int yb;
 	unsigned int xr;
