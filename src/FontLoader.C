@@ -204,9 +204,13 @@ void FontLoader::getFontinfo(LyXFont::FONT_FAMILY family,
 }
 
 
-// A dummy fontstruct used when there is no gui. 
-static XFontStruct dummyXFontStruct;
-static bool dummyXFontStructisGood = false;
+// A dummy fontstruct used when there is no gui.
+namespace {
+
+XFontStruct dummyXFontStruct;
+bool dummyXFontStructisGood = false;
+
+} // namespace anon
 
 /// Do load font
 XFontStruct * FontLoader::doLoad(LyXFont::FONT_FAMILY family, 

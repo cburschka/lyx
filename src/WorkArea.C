@@ -35,7 +35,6 @@ FL_OBJECT * figinset_canvas;
 
 namespace {
 
-//static
 inline
 void waitForX()
 {
@@ -482,11 +481,12 @@ int WorkArea::work_area_handler(FL_OBJECT * ob, int event,
 }
 
 
-static string clipboard_selection;
-static bool clipboard_read = false;
+namespace {
 
-extern "C" {
-	static
+string clipboard_selection;
+bool clipboard_read = false;
+
+extern "C"
 int request_clipboard_cb(FL_OBJECT * /*ob*/, long /*type*/,
 			void const * data, long size) 
 {
@@ -499,8 +499,8 @@ int request_clipboard_cb(FL_OBJECT * /*ob*/, long /*type*/,
 	clipboard_read = true;
 	return 0;
 }
-} // extern "C"
 
+} // namespace anon
 
 string const WorkArea::getClipboard() const 
 {

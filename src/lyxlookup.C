@@ -31,9 +31,14 @@
 
 using std::endl;
 
-static XIM xim;
-static XIC xic;
+namespace {
+
+XIM xim;
+XIC xic;
 XComposeStatus compose_status= {0, 0};
+
+} // namespace anon
+
 
 // This is called after the main LyX window has been created
 void InitLyXLookup(Display * display, Window window) 
@@ -89,7 +94,8 @@ void InitLyXLookup(Display * display, Window window)
 }
 
 
-static
+namespace {
+
 bool isDeadEvent(KeySym keysym)
 {
 	// Can this be done safely in any other way?
@@ -151,6 +157,8 @@ bool isDeadEvent(KeySym keysym)
 		return false;
 	}
 }
+
+} // namespace anon
 
 
 // This is called instead of XLookupString()

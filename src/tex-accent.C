@@ -50,7 +50,6 @@
    */
 // I am not sure how some of the XWindows names coresponds to the TeX ones.
 
-//static
 tex_accent_struct lyx_accent_table[18] = {
 	{ static_cast<tex_accent>(0), "", "", "", static_cast<kb_action>(0)},
 	{TEX_ACUTE,      "\\'",  " AEIOUYaeiouySZszRLCNrlcn", "acute",   LFUN_ACUTE},
@@ -71,7 +70,7 @@ tex_accent_struct lyx_accent_table[18] = {
 	{TEX_DOT,        "\\.",  " ZzICGicgEe",           "dot",    LFUN_DOT},
 	{TEX_OGONEK,     "\\k",  " AaEe",                 "ogonek",    LFUN_OGONEK},
 	{ static_cast<tex_accent>(0), "", "", "", static_cast<kb_action>(0)}};
-        
+
 
 tex_accent_struct get_accent(kb_action action)
 {

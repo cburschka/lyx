@@ -25,9 +25,13 @@
 
 #include "FormMathsBitmap.h"
 #include "FormMathsDeco.h"
+#include "form_maths_deco.h"
 #include "FormMathsDelim.h"
+#include "form_maths_delim.h"
 #include "FormMathsMatrix.h"
+#include "form_maths_matrix.h"
 #include "FormMathsSpace.h"
+#include "form_maths_space.h"
 
 #include "deco.xpm"
 #include "delim.xpm"
@@ -57,38 +61,40 @@ FormMathsPanel::FormMathsPanel(LyXView * lv, Dialogs * d)
 	matrix_.reset(new FormMathsMatrix(lv, d, *this));
 	space_.reset( new FormMathsSpace( lv, d, *this));
 
-	vector<string> latex(nr_latex_arrow);
-	for (int i = 0; i<latex.size(); ++i) {
+	typedef vector<string> StringVec;
+	
+	StringVec latex(nr_latex_arrow);
+	for (StringVec::size_type i = 0; i < latex.size(); ++i) {
 		latex[i] = latex_arrow[i];
 	}
 	arrow_.reset(new FormMathsBitmap(lv, d, *this, latex));
 
 	latex.resize(nr_latex_bop);
-	for (int i = 0; i<latex.size(); ++i) {
+	for (StringVec::size_type i = 0; i < latex.size(); ++i) {
 		latex[i] = latex_bop[i];
 	}
 	boperator_.reset(new FormMathsBitmap(lv, d, *this, latex));
 
 	latex.resize(nr_latex_brel);
-	for (int i = 0; i<latex.size(); ++i) {
+	for (StringVec::size_type i = 0; i<latex.size(); ++i) {
 		latex[i] = latex_brel[i];
 	}
 	brelats_.reset(new FormMathsBitmap(lv, d, *this, latex));
 
 	latex.resize(nr_latex_greek);
-	for (int i = 0; i<latex.size(); ++i) {
+	for (StringVec::size_type i = 0; i < latex.size(); ++i) {
 		latex[i] = latex_greek[i];
 	}
 	greek_.reset(new FormMathsBitmap(lv, d, *this, latex));
 
 	latex.resize(nr_latex_misc);
-	for (int i = 0; i<latex.size(); ++i) {
+	for (StringVec::size_type i = 0; i<latex.size(); ++i) {
 		latex[i] = latex_misc[i];
 	}
 	misc_.reset(new FormMathsBitmap(lv, d, *this, latex));
 
 	latex.resize(nr_latex_varsz);
-	for (int i = 0; i<latex.size(); ++i) {
+	for (StringVec::size_type i = 0; i<latex.size(); ++i) {
 		latex[i] = latex_varsz[i];
 	}
 	varsize_.reset(new FormMathsBitmap(lv, d, *this, latex));
@@ -256,7 +262,7 @@ void FormMathsPanel::mathDisplay() const
 
 FormMathsSub::FormMathsSub(LyXView * lv, Dialogs * d, FormMathsPanel const & p,
 			   string const & t)
-	: parent_(p), FormBaseBD(lv, d, t)
+	: FormBaseBD(lv, d, t), parent_(p)
 {}
 
 

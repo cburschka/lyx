@@ -31,13 +31,15 @@ using std::endl;
 // Quotes. Used for the various quotes. German, English, French,
 // Danish, Polish, all either double or single.
 
+namespace {
+
 // codes used to read/write quotes to LyX files
-static char const * const language_char = "esgpfa";
-static char const * const side_char = "lr" ;
-static char const * const times_char = "sd";
+char const * const language_char = "esgpfa";
+char const * const side_char = "lr" ;
+char const * const times_char = "sd";
 
 // List of known quote chars
-static char const * const quote_char = ",'`<>";
+char const * const quote_char = ",'`<>";
 
 // Index of chars used for the quote. Index is [side, language]
 int quote_index[2][6] = {
@@ -45,20 +47,22 @@ int quote_index[2][6] = {
 	{ 1, 1, 2, 1, 4, 3 } };  // "`'`'><"
 
 // Corresponding LaTeX code, for double and single quotes.
-static char const * const latex_quote_t1[2][5] = 
+char const * const latex_quote_t1[2][5] = 
 { { "\\quotesinglbase{}",  "'", "`", 
     "\\guilsinglleft{}", "\\guilsinglright{}" }, 
   { ",,", "''", "``", "<<", ">>" } };
 
-static char const * const latex_quote_ot1[2][5] = 
+char const * const latex_quote_ot1[2][5] = 
 { { "\\quotesinglbase{}",  "'", "`", 
     "\\guilsinglleft{}", "\\guilsinglright{}" }, 
   { "\\quotedblbase{}", "''", "``",
     "\\guillemotleft{}", "\\guillemotright{}" } };
 
-static char const * const latex_quote_babel[2][5] = 
+char const * const latex_quote_babel[2][5] = 
 { { "\\glq{}",  "'", "`", "\\flq{}", "\\frq{}" },
   { "\\glqq{}", "''", "``", "\\flqq{}", "\\frqq{}" } };
+
+} // namespace anon
 
 
 InsetQuotes::InsetQuotes(string const & str)

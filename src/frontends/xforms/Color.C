@@ -25,7 +25,11 @@
 using std::max;
 using std::min;
 
-static int const nohue = -1;
+namespace {
+
+int const nohue = -1;
+
+} // namespace anon
 
 RGBColor::RGBColor(HSVColor const & hsv)
 {

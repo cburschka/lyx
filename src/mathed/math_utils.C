@@ -19,6 +19,8 @@
 using std::sort;
 using std::lower_bound;
 
+namespace {
+
 // This table includes all binary operators and relations
 struct binary_op_pair {
 	short id;
@@ -26,7 +28,6 @@ struct binary_op_pair {
 };
 
 
-static
 binary_op_pair binary_op_table[] = {
       { LM_leq, LMB_RELATION }, { LM_geq, LMB_RELATION }, 
       { LM_equiv, LMB_RELATION }, { LM_models, LMB_RELATION }, 
@@ -73,6 +74,8 @@ struct compara {
 		return a.id < b.id;
 	}
 };
+
+} // namespace anon
 
 
 int MathedLookupBOP(short id)

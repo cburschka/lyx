@@ -17,7 +17,9 @@
 #include <cerrno>
 //#endif
 
-static unsigned char const errno_tab[] =
+namespace {
+
+unsigned char const errno_tab[] =
 {
   EINVAL, EINVAL, ENOENT, ENOENT, EMFILE,  /* 0..4 */
   EACCES, EBADF,  EIO,    ENOMEM, EIO,     /* 5..9 */
@@ -87,6 +89,9 @@ static unsigned char const errno_tab[] =
   EINVAL, EINVAL, EINVAL, EIO,    ENOENT,  /* 325..329 */
   EACCES, EACCES, EACCES, ENOENT, ENOMEM   /* 330..334 */
 };
+
+} // namespace anon
+
 
 inline
 int TranslateOS2Error(unsigned long rc)

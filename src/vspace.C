@@ -24,50 +24,45 @@
 #include "support/lstrings.h"
 
 
+namespace {
+
 /*  length units
  */
 
-static const int num_units = LyXLength::UNIT_NONE;
+int const num_units = LyXLength::UNIT_NONE;
 
 // I am not sure if "mu" should be possible to select (Lgb)
-static char const * unit_name[num_units] = { "sp", "pt", "bp", "dd",
-					     "mm", "pc", "cc", "cm",
-					     "in", "ex", "em", "mu" }; 
+char const * unit_name[num_units] = { "sp", "pt", "bp", "dd",
+				      "mm", "pc", "cc", "cm",
+				      "in", "ex", "em", "mu" }; 
 
-
-LyXLength::UNIT unitFromString (string const & data)
-{
-	int i = 0;
-	while ((i < num_units) && (data != unit_name[i])) ++i;
-	return static_cast<LyXLength::UNIT>(i);
-}
 
 /*  The following static items form a simple scanner for
  *  length strings, used by isValid[Glue]Length.  See comments there.
  */
-static float           number[4] = { 0, 0, 0, 0 };
-static LyXLength::UNIT unit[4]   = { LyXLength::UNIT_NONE,
-				     LyXLength::UNIT_NONE,
-				     LyXLength::UNIT_NONE,
-				     LyXLength::UNIT_NONE };
-static int number_index, unit_index;
+float           number[4] = { 0, 0, 0, 0 };
+LyXLength::UNIT unit[4]   = { LyXLength::UNIT_NONE,
+			      LyXLength::UNIT_NONE,
+			      LyXLength::UNIT_NONE,
+			      LyXLength::UNIT_NONE };
+int number_index;
+int unit_index;
 
 
-static inline
+inline
 void lyx_advance(string & data, unsigned int n)
 {
 	data.erase(0, n);
 }
 
 
-static inline
+inline
 bool isEndOfData(string const & data)
 {
 	return frontStrip(data).empty();
 }
 
 
-static
 char nextToken(string & data)
 {
 	data = frontStrip(data);
@@ -148,7 +143,6 @@ struct LaTeXLength {
 };
 
 
-static
 LaTeXLength table[] = {
 	{ "nu",       0, 0, 0, 0 },
 	{ "nu+nu",    2, 0, 2, 0 },
@@ -165,6 +159,16 @@ LaTeXLength table[] = {
 	{ "n-+nu",    2, 2, 1, 1 },
 	{ "",         0, 0, 0, 0 }   // sentinel, must be empty
 };
+
+} // namespace anon
+
+
+LyXLength::UNIT unitFromString (string const & data)
+{
+	int i = 0;
+	while ((i < num_units) && (data != unit_name[i])) ++i;
+	return static_cast<LyXLength::UNIT>(i);
+}
 
 
 bool isValidGlueLength (string const & data, LyXGlueLength * result)

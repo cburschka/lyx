@@ -22,25 +22,28 @@
 
 #include "support/LAssert.h"
 
+namespace {
+
 /// This variable keeps a tab on whether the translator was set with the
 /// translations.
-static bool translatorsSet = false;
+bool translatorsSet = false;
 
 /// This is the translator between the Resize enum and corresponding lyx
 /// file strings.
-static Translator < InsetGraphicsParams::Resize, string >
+Translator< InsetGraphicsParams::Resize, string >
 resizeTranslator(InsetGraphicsParams::DEFAULT_SIZE, "default");
 
 /// This is the translator between the Origin enum and corresponding lyx
 /// file strings.
-static Translator < InsetGraphicsParams::Origin, string >
+Translator< InsetGraphicsParams::Origin, string >
 originTranslator(InsetGraphicsParams::DEFAULT, "default");
 
 /// This is the translator between the Display enum and corresponding lyx
 /// file strings.
-static Translator < InsetGraphicsParams::DisplayType, string >
+Translator< InsetGraphicsParams::DisplayType, string >
 displayTranslator(InsetGraphicsParams::MONOCHROME, "monochrome");
 
+} // namespace anon
 
 
 InsetGraphicsParams::InsetGraphicsParams()
@@ -196,7 +199,8 @@ bool operator==(InsetGraphicsParams const & left,
 }
 
 
-static
+namespace {
+
 void writeResize(ostream & os, string const & key,
                         InsetGraphicsParams::Resize resize, double size)
 {
@@ -206,12 +210,15 @@ void writeResize(ostream & os, string const & key,
 	os << ' ' << key << ' ' << size << '\n';
 }
 
-static void writeOrigin(ostream & os,
+void writeOrigin(ostream & os,
                         InsetGraphicsParams::Origin origin)
 {
 	os << " rotateOrigin " << originTranslator.find(origin);
 	os << '\n';
 }
+
+} // namespace anon
+
 
 void InsetGraphicsParams::Write(Buffer const * buf, ostream & os) const
 {
@@ -245,7 +252,8 @@ void InsetGraphicsParams::Write(Buffer const * buf, ostream & os) const
 }
 
 
-static
+namespace {
+
 void readResize(InsetGraphicsParams * igp, bool height,
                        string const & token)
 {
@@ -260,11 +268,14 @@ void readResize(InsetGraphicsParams * igp, bool height,
 }
 
 
-static
 void readOrigin(InsetGraphicsParams * igp, string const & token)
-{ // TODO: complete this function.
+{
+	// TODO: complete this function.
 	igp->rotateOrigin = originTranslator.find(token);
 }
+
+} // namespace anon
+
 
 bool InsetGraphicsParams::Read(Buffer const * buf, LyXLex & lex,
                                string const& token)

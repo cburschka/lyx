@@ -34,13 +34,15 @@ char const * latex_mathspace[] = {
 	"!", ",", ":", ";", "quad", "qquad"
 };
 
+
+namespace {
+
 /* 
  * Internal struct of a drawing: code n x1 y1 ... xn yn, where code is:
  * 0 = end, 1 = line, 2 = polyline, 3 = square line, 4= square polyline
  */
 
 
-static
 float const parenthHigh[] = {
 	2.0, 13.0,
 	0.9840, 0.0014, 0.7143, 0.0323, 0.4603, 0.0772,
@@ -52,7 +54,6 @@ float const parenthHigh[] = {
 };
 
 
-static
 float const parenth[] = {
 	2.0, 13.0,
 	0.9930, 0.0071, 0.7324, 0.0578, 0.5141, 0.1126,
@@ -64,7 +65,6 @@ float const parenth[] = {
 };
 
 
-static
 float const brace[] = {
 	2.0, 21.0,
 	0.9492, 0.0020, 0.9379, 0.0020, 0.7458, 0.0243,
@@ -79,7 +79,6 @@ float const brace[] = {
 
 
 // Is this correct? (Lgb)
-static
 float const arrow[] = {
 	4, 7,
 	0.0150, 0.7500, 0.2000, 0.6000, 0.3500, 0.3500,
@@ -91,7 +90,6 @@ float const arrow[] = {
 
 
 // Is this correct? (Lgb)
-static
 float const Arrow[] = {
 	4, 7,
 	0.0150, 0.7500, 0.2000, 0.6000, 0.3500, 0.3500,
@@ -103,7 +101,6 @@ float const Arrow[] = {
 };
 
 
-static
 float const udarrow[] = {
 	2, 3,
 	0.015, 0.25,  0.5, 0.05, 0.95, 0.25,
@@ -114,7 +111,6 @@ float const udarrow[] = {
 };
 
 
-static
 float const Udarrow[] = {
 	2, 3,
 	0.015, 0.25,  0.5, 0.05, 0.95, 0.25,
@@ -126,7 +122,6 @@ float const Udarrow[] = {
 };
 
 
-static
 float const brack[] = {
 	2.0, 4,
 	0.95, 0.05,  0.05, 0.05,  0.05, 0.95,  0.95, 0.95,
@@ -134,7 +129,6 @@ float const brack[] = {
 };
 
 
-static
 float const corner[] = {
 	2.0, 3,
 	0.95, 0.05,  0.05, 0.05,  0.05, 0.95,
@@ -142,7 +136,6 @@ float const corner[] = {
 };
 
 
-static
 float const angle[] = {
 	2.0, 3,
 	1, 0,  0.05, 0.5,  1, 1,
@@ -150,20 +143,18 @@ float const angle[] = {
 };
 
 
-static
 float const slash[] = {
 	1, 0.95, 0.05,  0.05, 0.95, 
 	0.0
 };
 
 
-static const float hline[] = {
+float const hline[] = {
 	1, 0.05, 0.5,  0.95, 0.5, 
 	0.0
 };
 
 
-static
 float const hline2[] = {
    1, 0.1, 0.5,  0.3, 0.5,
    1, 0.7, 0.5,  0.9, 0.5,
@@ -171,7 +162,6 @@ float const hline2[] = {
 }; 
 
 
-static
 float const hline3[] = {
 	1, 0.1, 0,  0.15, 0,
 	1, 0.475, 0,  0.525, 0,
@@ -180,7 +170,6 @@ float const hline3[] = {
 };
 
 
-static
 float const dline3[] = {
 	1, 0.1, 0.1,  0.15, 0.15,
 	1, 0.475, 0.475,  0.525, 0.525,
@@ -189,21 +178,18 @@ float const dline3[] = {
 };     
 
 
-static
 float const hlinesmall[] = {
 	1, 0.4, 0.5,  0.6, 0.5, 
 	0.0
 };
 
 
-static
 float const vert[] = {
 	1, 0.5, 0.05,  0.5, 0.95, 
 	0.0
 };
 
 
-static
 float const  Vert[] = {
 	1, 0.3, 0.05,  0.3, 0.95, 
 	1, 0.7, 0.05,  0.7, 0.95,
@@ -211,7 +197,6 @@ float const  Vert[] = {
 };
 
 
-static
 float const tilde[] = {
 	2.0, 4,
 	0.05, 0.8,  0.25, 0.2,  0.75, 0.8,  0.95, 0.2,
@@ -219,7 +204,6 @@ float const tilde[] = {
 };
 
 
-static
 math_deco_struct math_deco_table[] = {   
 	// Decorations
 	{ LM_widehat, &angle[0], 3 },
@@ -286,7 +270,6 @@ struct math_deco_compare {
 };
 
 
-static
 int const math_deco_table_size =
 sizeof(math_deco_table) /sizeof(math_deco_struct);
 
@@ -308,6 +291,8 @@ private:
 
 bool init_deco_table::init = false;
 static init_deco_table idt;
+
+} // namespace anon
 
 
 int mathed_char_height(short type, int size, byte c, int & asc, int & des)

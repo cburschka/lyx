@@ -29,7 +29,8 @@
 using std::max;
 using std::min;
 
-static
+namespace {
+
 GC createGC()
 {
 	XGCValues val;
@@ -44,6 +45,8 @@ GC createGC()
 			 GCForeground | GCFunction | GCGraphicsExposures
 			 | GCLineWidth | GCLineStyle , &val);
 }
+
+} // namespace anon
 
 
 // Constructor

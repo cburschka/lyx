@@ -44,14 +44,15 @@ extern BufferView * current_view;
 // then do a middle mouse button click in the application you want and have
 // the whole formula there in LaTeX-Code. (Jug)
 
-static LyXParagraph * buf = 0;
-static LyXTextClassList::size_type textclass = 0;
+namespace {
+
+LyXParagraph * buf = 0;
+LyXTextClassList::size_type textclass = 0;
 
 // for now here this should be in another Cut&Paste Class!
 // Jürgen, I moved this out of CutAndPaste since it does not operate on any
 // member of the CutAndPaste class and in addition it was private.
 // Perhaps it even should take a parameter? (Lgb)
-static
 void DeleteBuffer()
 {
     if (!buf)
@@ -71,6 +72,7 @@ void DeleteBuffer()
     buf = 0;
 }
 
+} // namespace anon
 
 bool CutAndPaste::cutSelection(LyXParagraph * startpar, LyXParagraph ** endpar,
 			       int start, int & end, char tc, bool doclear)

@@ -40,7 +40,11 @@ using std::max;
 using std::endl;
 using std::vector;
 
-static int const WIDTH_OF_LINE = 5;
+namespace {
+
+int const WIDTH_OF_LINE = 5;
+
+} // namespace
 
 /// Define a few methods for the inner structs
 
@@ -1082,9 +1086,11 @@ void LyXTabular::Write(Buffer const * buf, ostream & os) const
 }
 
 
+namespace {
+
 // I would have liked a fromstr template a lot better. (Lgb)
 
-static inline
+inline
 bool string2type(string const str, LyXAlignment & num)
 {
     if (str == "none")
@@ -1103,7 +1109,7 @@ bool string2type(string const str, LyXAlignment & num)
 }
 
 
-static inline
+inline
 bool string2type(string const str, LyXTabular::VAlignment & num)
 {
     if (str == "top")
@@ -1118,7 +1124,7 @@ bool string2type(string const str, LyXTabular::VAlignment & num)
 }
 
 
-static inline
+inline
 bool string2type(string const str, LyXTabular::BoxType & num)
 {
     if (str == "none")
@@ -1133,7 +1139,7 @@ bool string2type(string const str, LyXTabular::BoxType & num)
 }
 
 
-static inline
+inline
 bool string2type(string const str, bool & num)
 {
     if (str == "true")
@@ -1146,7 +1152,6 @@ bool string2type(string const str, bool & num)
 }
 
 
-static
 bool getTokenValue(string const & str, const char * token, string & ret)
 {
     size_t token_length = strlen(token);
@@ -1169,7 +1174,6 @@ bool getTokenValue(string const & str, const char * token, string & ret)
 }
 
 
-static
 bool getTokenValue(string const & str, const char * token, int & num)
 {
     string tmp;
@@ -1180,7 +1184,6 @@ bool getTokenValue(string const & str, const char * token, int & num)
 }
 
 
-static
 bool getTokenValue(string const & str, const char * token, LyXAlignment & num)
 {
     string tmp;
@@ -1190,7 +1193,6 @@ bool getTokenValue(string const & str, const char * token, LyXAlignment & num)
 }
 
 
-static
 bool getTokenValue(string const & str, const char * token,
 		   LyXTabular::VAlignment & num)
 {
@@ -1201,7 +1203,6 @@ bool getTokenValue(string const & str, const char * token,
 }
 
 
-static
 bool getTokenValue(string const & str, const char * token,
 		   LyXTabular::BoxType & num)
 {
@@ -1212,7 +1213,6 @@ bool getTokenValue(string const & str, const char * token,
 }
 
 
-static
 bool getTokenValue(string const & str, const char * token, bool & flag)
 {
     string tmp;
@@ -1222,7 +1222,7 @@ bool getTokenValue(string const & str, const char * token, bool & flag)
 }    
 
 
-static inline
+inline
 void l_getline(istream & is, string & str)
 {
     str.erase();
@@ -1232,6 +1232,8 @@ void l_getline(istream & is, string & str)
 	    str.erase(str.length() - 1);
     }
 }
+
+} // namespace anon
 
 
 void LyXTabular::Read(Buffer const * buf, LyXLex & lex)
@@ -2327,12 +2329,15 @@ int LyXTabular::DocBook(Buffer const * buf, ostream & os) const
 }
 
 
-static
+namespace {
+
 inline
 void print_n_chars(ostream & os, unsigned char ch, int n)
 {
 	os << string(n, ch);
 }
+
+} // namespace anon
 
 
 int LyXTabular::AsciiTopHLine(ostream & os, int row,

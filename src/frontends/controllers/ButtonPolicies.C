@@ -23,8 +23,10 @@
 
 using std::endl;
 
+namespace {
+
 /// Helper function
-static inline
+inline
 void nextState(ButtonPolicy::State & state,
 	       ButtonPolicy::SMInput in,
 	       ButtonPolicy::StateMachine const & s_m,
@@ -44,6 +46,8 @@ void nextState(ButtonPolicy::State & state,
 		       << endl;
 	}
 }
+
+} // namespace anon
 
 
 /*-----------------------------PreferencesPolicy-----------------------------*/

@@ -5,7 +5,9 @@
 
 #include "support/lyxlib.h"
 
-static inline
+namespace {
+
+inline
 char * l_getcwd(char * buffer, size_t size)
 {
 #ifndef __EMX__
@@ -14,6 +16,8 @@ char * l_getcwd(char * buffer, size_t size)
 	return ::_getcwd2(buffer, size);
 #endif
 }
+
+} // namespace anon
 
 
 // Returns current working directory

@@ -43,12 +43,14 @@
 #include "math_macrotemplate.h"
 #include "mathed/support.h"
 
-static MathedArray selarray;
-
 using std::endl;
 
+namespace {
+
+MathedArray selarray;
+
 // This was very smaller, I'll change it later
-static inline
+inline
 bool IsMacro(short tok, int id)
 {
 	return tok != LM_TK_STACK &&
@@ -63,7 +65,7 @@ bool IsMacro(short tok, int id)
 	       !(tok == LM_TK_SYM && id < 255);
 }
 
-static int const MAX_STACK_ITEMS = 32;
+int const MAX_STACK_ITEMS = 32;
 
 struct MathStackXIter {
 	std::vector<MathedXIter> item;
@@ -104,6 +106,7 @@ struct MathStackXIter {
 
 } mathstk, selstk;
 
+} // namespace anon
 
 
 /***----------------  Mathed Cursor  ---------------------------***/

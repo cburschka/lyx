@@ -690,8 +690,9 @@ void LyX::ReadEncodingsFile(string const & name)
 }
 
 
+namespace {
+
 // Set debugging level and report result to user
-static
 void setDebuggingLevel(string const & dbgLevel)
 {
 	lyxerr << _("Setting debug level to ") <<  dbgLevel << endl;
@@ -701,7 +702,6 @@ void setDebuggingLevel(string const & dbgLevel)
 
 
 // Give command line help
-static
 void commandLineHelp()
 {
 	lyxerr << "LyX " LYX_VERSION << " of " LYX_RELEASE << endl;
@@ -724,6 +724,8 @@ void commandLineHelp()
 		  "                  and file.xxx is the file to be imported.\n"
 		  "Check the LyX man page for more details.") << endl;
 }
+
+} // namespace anon
 
 
 bool LyX::easyParse(int * argc, char * argv[])

@@ -40,7 +40,11 @@ using std::min;
 using std::endl;
 using std::pair;
 
-static const int LYX_PAPER_MARGIN = 20;
+namespace {
+
+int const LYX_PAPER_MARGIN = 20;
+
+} // namespace anon
 
 extern int bibitemMaxWidth(BufferView *, LyXFont const &);
 

@@ -22,13 +22,16 @@ using std::ostream;
 using std::setw;
 using std::endl;
 
+namespace {
+
 struct error_item {
 	Debug::type level;
 	char const * name;
 	char const * desc;
 };
 
-static error_item errorTags[] = {
+
+error_item errorTags[] = {
 	{ Debug::NONE,      "none",      N_("No debugging message")},
 	{ Debug::INFO,      "info",      N_("General information")},
 	{ Debug::INIT,      "init",      N_("Program initialisation")},
@@ -53,7 +56,9 @@ static error_item errorTags[] = {
 };
 
 
-static const int numErrorTags = sizeof(errorTags)/sizeof(error_item);
+int const numErrorTags = sizeof(errorTags)/sizeof(error_item);
+
+} // namespace anon
 
 	
 Debug::type const Debug::ANY = Debug::type(

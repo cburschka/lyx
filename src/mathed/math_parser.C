@@ -52,6 +52,7 @@ using std::endl;
 
 extern MathMatrixInset * create_multiline(short int type, int cols);
 
+namespace {
 
 enum {
 	FLAG_BRACE      = 1,	//  A { needed
@@ -79,12 +80,13 @@ union YYSTYPE {
 };
 
 
-static
 YYSTYPE yylval;
 
 
-static
 MathedInsetTypes mathed_env = LM_OT_MIN;
+
+
+} // namespace anon
 
 
 string mathed_label;
@@ -110,6 +112,8 @@ char const * latex_mathenv[latex_mathenv_num] = {
 char const * latex_special_chars = "#$%&_{}";
 
 
+namespace {
+
 // These are lexical codes, not semantic
 enum lexcode_enum {
 	LexNone,
@@ -129,16 +133,16 @@ enum lexcode_enum {
 };
 
 
-static lexcode_enum lexcode[256];  
+lexcode_enum lexcode[256];  
 #warning Replace with string
-//static char yytext[256];
-static array<char, 256> yytext;
-static int yylineno;
-static istream * yyis;
-static bool yy_mtextmode= false;
+//char yytext[256];
+array<char, 256> yytext;
+int yylineno;
+istream * yyis;
+bool yy_mtextmode= false;
 
 
-static inline
+inline
 void mathPrintError(string const & msg) 
 {
 	lyxerr << "Line ~" << yylineno << ": Math parse error: "
@@ -146,7 +150,6 @@ void mathPrintError(string const & msg)
 }
 
 
-static
 void LexInitCodes()
 {
 	for (int i = 0;  i <= 255; ++i) {
@@ -184,7 +187,6 @@ void LexInitCodes()
 }
 
 
-static
 char LexGetArg(char lf, bool accept_spaces = false)
 {
 	// unsigned char c;
@@ -230,7 +232,6 @@ char LexGetArg(char lf, bool accept_spaces = false)
 }
 
 
-static
 int yylex(void)
 {
 	static int init_done = 0;
@@ -347,7 +348,7 @@ int yylex(void)
 }
 
 
-static inline
+inline
 int parse_align(char * hor, char *)
 {
 	int nc = 0;
@@ -357,12 +358,10 @@ int parse_align(char * hor, char *)
 
 
 // Accent hacks only for 0.12. Stolen from Cursor.
-static
 int accent = 0;
-static
 int nestaccent[8];
 
-static inline
+inline
 void setAccent(int ac)
 {
 	if (ac > 0 && accent < 8) {
@@ -372,7 +371,6 @@ void setAccent(int ac)
 }
 
 
-static
 MathedInset * doAccent(byte c, MathedTextCodes t)
 {
 	MathedInset * ac = 0;
@@ -389,7 +387,6 @@ MathedInset * doAccent(byte c, MathedTextCodes t)
 }
 
 
-static
 MathedInset * doAccent(MathedInset * p)
 {
 	MathedInset * ac = 0;
@@ -404,6 +401,8 @@ MathedInset * doAccent(MathedInset * p)
 	
 	return ac;
 }
+
+} // namespace anon
 
 
 /**

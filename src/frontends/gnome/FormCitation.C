@@ -49,20 +49,25 @@ using std::max;
 using std::min;
 using std::find;
 
+namespace {
+
 // configuration keys
-static string const  LOCAL_CONFIGURE_PREFIX("FormCitation");
+string const  LOCAL_CONFIGURE_PREFIX("FormCitation");
 
-static string const  CONF_PANE_INFO("paneinfo");
-static string const  CONF_PANE_INFO_DEFAULT("=300");
+string const  CONF_PANE_INFO("paneinfo");
+string const  CONF_PANE_INFO_DEFAULT("=300");
 
-static string const  CONF_COLUMN("column");
-static string const  CONF_COLUMN_DEFAULT("=50");
+string const  CONF_COLUMN("column");
+string const  CONF_COLUMN_DEFAULT("=50");
 
-static string const  CONF_REGEXP("regexp");
-static string const  CONF_REGEXP_DEFAULT("=0");
+string const  CONF_REGEXP("regexp");
+string const  CONF_REGEXP_DEFAULT("=0");
 
-static string const CONF_SEARCH("FormCitation_search");
-static string const CONF_TEXTAFTER("FormCitation_textafter");
+string const CONF_SEARCH("FormCitation_search");
+string const CONF_TEXTAFTER("FormCitation_textafter");
+
+} // namespace anon
+
 
 FormCitation::FormCitation(LyXView * lv, Dialogs * d)
   : lv_(lv), d_(d), inset_(0), u_(0), h_(0), ih_(0)
@@ -110,7 +115,8 @@ void FormCitation::createInset( string const & arg )
 }
 
 
-static
+namespace {
+
 void parseBibTeX(string const & dat,
 		 string const & findkey,
 		 string & keyvalue)
@@ -202,6 +208,8 @@ void parseBibTeX(string const & dat,
       else return;
     }
 }
+
+} // namespace anon
 
 
 void FormCitation::cleanupWidgets()

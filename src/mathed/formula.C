@@ -64,24 +64,23 @@ extern char const * latex_mathenv[];
 // this is only used by Whichfont and mathed_init_fonts (Lgb)
 LyXFont * Math_Fonts = 0;
 
-static LyXFont::FONT_SIZE lfont_size = LyXFont::SIZE_NORMAL;
+namespace {
+
+LyXFont::FONT_SIZE lfont_size = LyXFont::SIZE_NORMAL;
 
 // local global
-static int sel_x;
-static int sel_y;
-static bool sel_flag;
+int sel_x;
+int sel_y;
+bool sel_flag;
 
-// quite a hack i know. Should be done with return values...
-int number_of_newlines = 0;
-
-static
 int mathed_write(MathParInset *, std::ostream &, bool fragile,
 		 string const & label = string());
 
 void mathed_init_fonts();
 
-static
 void mathedValidate(LaTeXFeatures & features, MathParInset * par);
+
+} // namespaces
 
 
 MathedCursor * InsetFormula::mathcursor = 0;
@@ -169,6 +168,8 @@ LyXFont WhichFont(short type, int size)
 }
 
 
+namespace {
+
 void mathed_init_fonts() //removed 'static' because DEC cxx does not
 //like it (JMarc)
 // Probably because this func is declared as a friend in math_defs.h
@@ -205,6 +206,11 @@ void mathed_init_fonts() //removed 'static' because DEC cxx does not
 	MathedInset::defaultWidth(lyxfont::width('I', f));
 }
 
+} // namespace anon
+
+
+// quite a hack i know. Should be done with return values...
+int number_of_newlines = 0;
 
 
 InsetFormula::InsetFormula(bool display)
@@ -1225,8 +1231,8 @@ InsetFormula::LocalDispatch(BufferView * bv, kb_action action,
 }
 
 
+namespace {
 
-static
 void mathedValidate(LaTeXFeatures & features, MathParInset * par)
 {
 	MathedIter it(&par->GetData());
@@ -1256,7 +1262,6 @@ void mathedValidate(LaTeXFeatures & features, MathParInset * par)
 }
 
 
-static
 int mathed_write(MathParInset * p, ostream & os,
 		 bool fragile, string const & label)
 {
@@ -1309,7 +1314,9 @@ int mathed_write(MathParInset * p, ostream & os,
 	return number_of_newlines;
 }
 
- 
+} // namespace anon
+
+
 /* FIXME: math-greek-toggle seems to work OK, but math-greek doesn't turn
  * on greek mode */
 bool math_insert_greek(BufferView * bv, char c)

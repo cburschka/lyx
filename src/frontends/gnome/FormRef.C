@@ -39,12 +39,17 @@
 #include "mainapp.h"
 extern GLyxAppWin * mainAppWin;
 
+namespace anon {
+
 // configuration keys
-static string const CONF_ENTRY_NAME("FormRef_name");
+string const CONF_ENTRY_NAME("FormRef_name");
 
 // goto button labels
-static string const GOTO_REF_LABEL(N_("Goto reference"));
-static string const GOTO_BACK_LABEL(N_("Go back"));
+string const GOTO_REF_LABEL(N_("Goto reference"));
+string const GOTO_BACK_LABEL(N_("Go back"));
+
+} // namespace anon
+
 
 FormRef::FormRef(LyXView * lv, Dialogs * d)
 	: lv_(lv), d_(d), inset_(0), u_(0), h_(0), ih_(0), dialog_(0)

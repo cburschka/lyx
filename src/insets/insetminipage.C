@@ -81,8 +81,29 @@ InsetMinipage::~InsetMinipage()
 
 void InsetMinipage::Write(Buffer const * buf, ostream & os) const 
 {
-	os << getInsetName() << "\n";
+	os << getInsetName() << "\n"
+	   << "position " << pos_ << "\n"
+	   << "inner_position " << inner_pos_ << "\n"
+//	   << "height " << height_ << "\n"
+	   << "width " << widthp_ << "\n";
 	InsetCollapsable::Write(buf, os);
+}
+
+
+void InsetMinipage::Read(Buffer const * buf, LyXLex & lex)
+{
+	#warning Read and set args correctly. (Lgb)
+	lex.next();
+	string token = lex.GetString();
+	lyxerr << "minipage token: " << token << endl;
+	lex.next(); lex.next();
+	lex.next();
+	lex.next();
+	lex.next();
+	token = lex.GetString();
+	lyxerr << "minipage token: " << token << endl;
+	
+	InsetCollapsable::Read(buf, lex);
 }
 
 
@@ -105,7 +126,21 @@ string const InsetMinipage::EditMessage() const
 int InsetMinipage::Latex(Buffer const * buf,
 			 ostream & os, bool fragile, bool fp) const
 {
-	os << "\\begin{minipage}{\\columnwidth}%\n";
+	string s_pos;
+	switch (pos_) {
+	case top:
+		s_pos += "t";
+		break;
+	case center:
+		s_pos += "c";
+		break;
+	case bottom:
+		s_pos += "b";
+		break;
+	}
+	
+	os << "\\begin{minipage}[" << s_pos << "]{."
+	   << widthp_ << "\\columnwidth}%\n";
 	
 	int i = inset->Latex(buf, os, fragile, fp);
 	os << "\\end{minipage}%\n";

@@ -82,7 +82,6 @@ const unsigned int saved_positions_num = 20;
 
 namespace {
 
-//static
 inline
 void waitForX()
 {
@@ -90,7 +89,6 @@ void waitForX()
 }
 
 
-//static
 void SetXtermCursor(Window win)
 {
 	static Cursor cursor;

@@ -72,6 +72,8 @@
 using std::reverse;
 using std::endl;
 
+namespace {
+
 // Spellchecker status
 enum {
 	ISP_OK = 1,
@@ -82,25 +84,29 @@ enum {
 	ISP_IGNORE
 };
 
-static bool RunSpellChecker(BufferView * bv);
+bool RunSpellChecker(BufferView * bv);
 
 #ifndef USE_PSPELL
 
-static FILE * in, * out;  /* streams to communicate with ispell */
+FILE * in;
+FILE * out;  /* streams to communicate with ispell */
 pid_t isp_pid = -1; // pid for the `ispell' process. Also used (RO) in
                     // lyx_cb.C
 
 // the true spell checker program being used
 enum ActualSpellChecker {ASC_ISPELL, ASC_ASPELL};
-static ActualSpellChecker actual_spell_checker;
+ActualSpellChecker actual_spell_checker;
 
-static int isp_fd;
+int isp_fd;
 
 #else
 
 PspellManager * sc;
 
 #endif
+
+} // namespace anon
+
 
 // Non-static so that it can be redrawn if the xforms colors are re-mapped
 FD_form_spell_options *fd_form_spell_options = 0;
@@ -286,7 +292,8 @@ void SpellCheckerOptions()
 
 // Could also use a clean up. (Asger Alstrup)
 
-static
+namespace {
+
 void init_spell_checker(BufferParams const & params, string const & lang)
 {
 	static char o_buf[BUFSIZ];  // jc: it could be smaller
@@ -478,19 +485,19 @@ void init_spell_checker(BufferParams const & params, string const & lang)
 	}
 }
 
-static
+
 bool sc_still_alive() {
 	return isp_pid != -1;
 }
 
-static
+
 void sc_clean_up_after_error() 
 {
 	::fclose(out);
 }
 
+
 // Send word to ispell and get reply
-static
 isp_result * sc_check_word(string const & word)
 {
 	//Please rewrite to use string.
@@ -545,7 +552,7 @@ isp_result * sc_check_word(string const & word)
 }
 
 
-static inline 
+inline 
 void close_spell_checker()
 {
         // Note: If you decide to optimize this out when it is not 
@@ -560,7 +567,7 @@ void close_spell_checker()
 }
 
 
-static inline 
+inline 
 void sc_insert_word(string const & word)
 {
 	::fputc('*', out); // Insert word in personal dictionary
@@ -569,7 +576,7 @@ void sc_insert_word(string const & word)
 }
 
 
-static inline 
+inline 
 void sc_accept_word(string const & word) 
 {
 	::fputc('@', out); // Accept in this session
@@ -577,7 +584,8 @@ void sc_accept_word(string const & word)
 	::fputc('\n', out);
 }
 
-static inline
+
+inline
 void sc_store_replacement(string const & mis, string const & cor) {
         if (actual_spell_checker == ASC_ASPELL) {
                 ::fputs("$$ra ", out);
@@ -592,7 +600,6 @@ void sc_store_replacement(string const & mis, string const & cor) {
 
 PspellCanHaveError * spell_error_object;
 
-static
 void init_spell_checker(BufferParams const &, string const & lang)
 {
 	PspellConfig * config = new_pspell_config();
@@ -609,12 +616,12 @@ void init_spell_checker(BufferParams const &, string const & lang)
 	}
 }
 
-static 
+
 bool sc_still_alive() {
 	return true;
 }
 
-static
+
 void sc_clean_up_after_error() 
 {
 	delete_pspell_can_have_error(spell_error_object);
@@ -623,7 +630,6 @@ void sc_clean_up_after_error()
 
 
 // Send word to pspell and get reply
-static
 isp_result * sc_check_word(string const & word)
 {
 	isp_result * result = new isp_result;
@@ -647,34 +653,37 @@ isp_result * sc_check_word(string const & word)
 }
 
 
-static inline 
+inline 
 void close_spell_checker()
 {
 	pspell_manager_save_all_word_lists(sc);
 }
 
 
-static inline 
+inline 
 void sc_insert_word(string const & word)
 {
 	pspell_manager_add_to_personal(sc, word.c_str());
 }
 
 
-static inline 
+inline 
 void sc_accept_word(string const & word) 
 {
 	pspell_manager_add_to_session(sc, word.c_str());
 }
 
 
-static inline 
+inline 
 void sc_store_replacement(string const & mis, string const & cor)
 {
 	pspell_manager_store_replacement(sc, mis.c_str(), cor.c_str());
 }
 
 #endif
+
+} // namespace anon
+
 
 void ShowSpellChecker(BufferView * bv)
 {
@@ -792,7 +801,8 @@ void ShowSpellChecker(BufferView * bv)
 
 
 // Perform a spell session
-static
+namespace {
+
 bool RunSpellChecker(BufferView * bv)
 {
 	isp_result * result;
@@ -966,6 +976,8 @@ bool RunSpellChecker(BufferView * bv)
 	}
 }
 
+} // namespace anon
+
 #ifdef WITH_WARNINGS
 #warning should go somewhere more sensible
 #endif
@@ -982,3 +994,5 @@ void sigchldhandler(pid_t pid, int * status)
 #endif
 	sigchldchecker(pid, status);
 }
+
+

@@ -37,36 +37,40 @@ typedef vector<int>::size_type size_type;
 extern boost::scoped_ptr<kb_keymap> toplevel_keymap;
 extern LyXAction lyxaction;
 
+namespace {
+
 // Some constants
-static const int MENU_LABEL_SIZE = FL_NORMAL_SIZE;
-static const int mheight = 30;
-static const int mbheight= 22;
+const int MENU_LABEL_SIZE = FL_NORMAL_SIZE;
+const int mheight = 30;
+const int mbheight= 22;
 // where to place the menubar?
-static const int yloc = (mheight - mbheight)/2; //air + bw;
-static const int mbadd = 20; // menu button add (to width)
+const int yloc = (mheight - mbheight)/2; //air + bw;
+const int mbadd = 20; // menu button add (to width)
 // Some space between buttons on the menubar 
-static const int air = 2;
-static char const * menu_tabstop = "aa";
-static char const * default_tabstop = "aaaaaaaa";
+const int air = 2;
+char const * menu_tabstop = "aa";
+char const * default_tabstop = "aaaaaaaa";
 // We do not want to mix position values in a menu (like the index of
 // a submenu) with the action numbers which convey actual information.
 // Therefore we offset all the action values by an arbitrary large
 // constant. 
-static const int action_offset = 1000;
-
-
-//Defined later, used in makeMenubar().
-extern "C"
-void C_Menubar_Pimpl_MenuCallback(FL_OBJECT * ob, long button);
+const int action_offset = 1000;
 
 // This is used a few times below.
-static inline
+inline
 int string_width(string const & str) 
 {
 	return fl_get_string_widthTAB(FL_NORMAL_STYLE, MENU_LABEL_SIZE,
 				      str.c_str(),
 				      static_cast<int>(str.length()));
 }
+
+} // namespace anon
+
+
+//Defined later, used in makeMenubar().
+extern "C"
+void C_Menubar_Pimpl_MenuCallback(FL_OBJECT * ob, long button);
 
 
 Menubar::Pimpl::Pimpl(LyXView * view, MenuBackend const & mb) 
@@ -185,7 +189,9 @@ void Menubar::Pimpl::openByName(string const & name)
 }
 
 
-static inline
+namespace {
+
+inline
 string const limit_string_length(string const & str)
 {
 	string::size_type const max_item_length = 45;
@@ -197,7 +203,6 @@ string const limit_string_length(string const & str)
 }
 
 
-static
 int get_new_submenu(vector<int> & smn, Window win)
 {
 	static size_type max_number_of_menus = 32;
@@ -212,7 +217,7 @@ int get_new_submenu(vector<int> & smn, Window win)
 
 size_type const max_number_of_items = 25;
 
-static inline
+inline
 string const fixlabel(string const & str)
 {
 #if FL_REVISION < 89
@@ -221,6 +226,8 @@ string const fixlabel(string const & str)
 	return subst(str, "%", "%%");
 #endif
 }
+
+} // namespace anon
 
 
 void add_toc2(int menu, string const & extra_label,

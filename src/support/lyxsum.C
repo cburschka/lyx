@@ -24,8 +24,9 @@
 using std::ifstream;
 using std::ios;
 
+namespace {
+
 // DO _NOT_ CHANGE _ANYTHING_ IN THIS TABLE
-static
 unsigned long const crctab[256] =
 {
 	0x0,
@@ -86,7 +87,7 @@ unsigned long const crctab[256] =
    Return crc if successful, 0 if an error occurs. */
  
 template<typename InputIterator>
-static inline
+inline
 unsigned long do_crc(InputIterator first, InputIterator last)
 {
 	unsigned long crc = 0;
@@ -103,6 +104,8 @@ unsigned long do_crc(InputIterator first, InputIterator last)
 	}
 	return ~crc & 0xFFFFFFFF;
 }
+
+} // namespace
 
 
 // And this would be the file interface.

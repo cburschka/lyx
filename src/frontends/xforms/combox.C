@@ -237,7 +237,11 @@ void Combox::add(int x, int y, int w, int hmin, int hmax,
 }
 
 
-static Window save_window;
+namespace {
+
+Window save_window;
+
+} // namespace anon
 
 
 void Combox::Redraw()

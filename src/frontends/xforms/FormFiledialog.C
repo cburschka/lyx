@@ -71,9 +71,15 @@ extern "C" int gettimeofday(struct timeval *, struct timezone *);
 #include "support/filetools.h"
 #include "FormFiledialog.h"
 
+namespace {
+
 // six months, in seconds
-static const long SIX_MONTH_SEC = 6L * 30L * 24L * 60L * 60L;
-static const long ONE_HOUR_SEC = 60L * 60L;
+long const SIX_MONTH_SEC = 6L * 30L * 24L * 60L * 60L;
+//static
+long const ONE_HOUR_SEC = 60L * 60L;
+
+} // namespace anon
+
 
 // *** User cache class implementation
 /// User cache class definition
@@ -156,9 +162,13 @@ void GroupCache::add(gid_t ID) const
 }
 
 
-// static instances
-static UserCache lyxUserCache;
-static GroupCache lyxGroupCache;
+namespace {
+
+// local instances
+UserCache lyxUserCache;
+GroupCache lyxGroupCache;
+
+} // namespace anon
 
 
 // compares two LyXDirEntry objects content (used for sort)

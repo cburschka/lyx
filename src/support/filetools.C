@@ -374,7 +374,8 @@ bool PutEnvPath(string const & envstr)
 }
 
 
-static
+namespace {
+
 int DeleteAllFilesInDir (string const & path)
 {
 	// I have decided that we will be using parts from the boost
@@ -427,7 +428,6 @@ int DeleteAllFilesInDir (string const & path)
 }
 
 
-static
 string const CreateTmpDir(string const & tempdir, string const & mask)
 {
 	lyxerr[Debug::FILES]
@@ -450,7 +450,6 @@ string const CreateTmpDir(string const & tempdir, string const & mask)
 }
 
 
-static
 int DestroyTmpDir(string const & tmpdir, bool Allfiles)
 {
 #ifdef __EMX__
@@ -463,7 +462,9 @@ int DestroyTmpDir(string const & tmpdir, bool Allfiles)
 		return -1;
 	}
 	return 0; 
-} 
+}
+
+} // namespace anon
 
 
 string const CreateBufferTmpDir(string const & pathfor)
@@ -1029,8 +1030,10 @@ bool LyXReadLink(string const & File, string & Link)
 }
 
 
+namespace {
+
 typedef pair<int, string> cmdret;
-static
+
 cmdret const do_popen(string const & cmd)
 {
 	// One question is if we should use popen or
@@ -1048,6 +1051,8 @@ cmdret const do_popen(string const & cmd)
 	int const pret = pclose(inf);
 	return make_pair(pret, ret);
 }
+
+} // namespace anon
 
 
 string const

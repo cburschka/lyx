@@ -34,7 +34,12 @@ using std::endl;
 
 extern bool finished;
 
-static int const xforms_include_version = FL_INCLUDE_VERSION;
+namespace {
+
+int const xforms_include_version = FL_INCLUDE_VERSION;
+
+} // namespace anon
+
 
 int GUIRunTime::initApplication(int argc, char * argv[])
 {

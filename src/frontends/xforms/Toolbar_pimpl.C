@@ -89,9 +89,10 @@ Toolbar::Pimpl::Pimpl(LyXView * o, int x, int y)
 }
 
 
+namespace {
+
 #if FL_REVISION < 89
 // timer-cb for bubble-help (Matthias)
-static 
 void BubbleTimerCB(FL_OBJECT *, long data)
 {
 	FL_OBJECT * ob = reinterpret_cast<FL_OBJECT*>(data);
@@ -111,7 +112,6 @@ extern "C" void C_Toolbar_BubbleTimerCB(FL_OBJECT * ob, long data)
 
 
 // post_handler for bubble-help (Matthias)
-static
 int BubblePost(FL_OBJECT *ob, int event,
 			FL_Coord /*mx*/, FL_Coord /*my*/,
 			int /*key*/, void * /*xev*/)
@@ -140,6 +140,9 @@ extern "C" int C_Toolbar_BubblePost(FL_OBJECT * ob, int event,
 	return BubblePost(ob, event, 0, 0, key, xev);
 }
 #endif
+
+} // namespace anon
+
 
 // this one is not "C" because combox callbacks are really C++ %-|
 void Toolbar::Pimpl::layoutSelectedCB(int sel, void * arg, Combox *)
@@ -260,7 +263,8 @@ void Toolbar::Pimpl::openLayoutList()
 }
 
 
-static
+namespace {
+
 void ToolbarCB(FL_OBJECT * ob, long ac)
 {
 	LyXView * owner = static_cast<LyXView *>(ob->u_vdata);
@@ -270,6 +274,8 @@ void ToolbarCB(FL_OBJECT * ob, long ac)
 		lyxerr[Debug::GUI] << "ToolbarCB: Function returned: " 
 				   << res << endl;
 }
+
+} // namespace anon
 
 
 extern "C" void C_Toolbar_ToolbarCB(FL_OBJECT * ob, long data)
@@ -295,7 +301,8 @@ int Toolbar::get_toolbar_func(string const & func)
 #endif
 
 
-static
+namespace {
+
 void setPixmap(FL_OBJECT * obj, int action, int buttonwidth, int height) {
 	string name, arg, xpm_name;
 	kb_action act;
@@ -340,6 +347,9 @@ void setPixmap(FL_OBJECT * obj, int action, int buttonwidth, int height) {
 		fl_set_pixmapbutton_file(obj, fullname.c_str());
 	}
 }
+
+} // namespace anon
+
 
 void Toolbar::Pimpl::set(bool doingmain)
 {

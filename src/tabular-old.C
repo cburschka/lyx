@@ -21,7 +21,8 @@ using std::getline;
 using std::endl;
 
 
-static
+namespace {
+
 bool getTokenValue(string const & str, const char * token, string & ret)
 {
     size_t token_length = strlen(token);
@@ -44,7 +45,6 @@ bool getTokenValue(string const & str, const char * token, string & ret)
 }
 
 
-static
 bool getTokenValue(string const & str, const char * token, int & num)
 {
     string::size_type pos = str.find(token);
@@ -69,7 +69,6 @@ bool getTokenValue(string const & str, const char * token, int & num)
 }
 
 
-static
 bool getTokenValue(string const & str, const char * token, LyXAlignment & num)
 {
     int tmp;
@@ -79,7 +78,6 @@ bool getTokenValue(string const & str, const char * token, LyXAlignment & num)
 }
 
 
-static
 bool getTokenValue(string const & str, const char * token,
 		   LyXTabular::VAlignment & num)
 {
@@ -90,7 +88,6 @@ bool getTokenValue(string const & str, const char * token,
 }
 
 
-static
 bool getTokenValue(string const & str, const char * token,
 		   LyXTabular::BoxType & num)
 {
@@ -101,7 +98,6 @@ bool getTokenValue(string const & str, const char * token,
 }
 
 
-static
 bool getTokenValue(string const & str, const char * token, bool & flag)
 {
     string::size_type pos = str.find(token);
@@ -126,13 +122,16 @@ bool getTokenValue(string const & str, const char * token, bool & flag)
 }
 
 
-static inline
+inline
 void l_getline(istream & is, string & str)
 {
+#warning old l_getline
     getline(is, str);
     while(str.empty())
 	getline(is, str);
 }
+
+} // namespace anon
 
 
 void LyXTabular::ReadOld(Buffer const * buf, istream & is,

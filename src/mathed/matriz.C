@@ -5,11 +5,15 @@
 #include "matriz.h"
 
 
-static inline
+namespace {
+
+inline
 int odd(int x)
 {
 	return (x & 1);
 }
+
+} // namespace anon
 
 
 #define mateq(m1, m2)  memcpy(m1, m2, sizeof(matriz_data))

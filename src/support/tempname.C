@@ -12,7 +12,9 @@ using std::endl;
 
 extern string system_tempdir;
 
-static inline
+namespace {
+
+inline
 int make_tempfile(char * templ) 
 {
 #ifdef HAVE_MKSTEMP
@@ -27,7 +29,10 @@ int make_tempfile(char * templ)
 #endif
 #endif
 }
-	
+
+} // namespace anon
+
+
 string const lyx::tempName(string const & dir, string const & mask)
 {
 	string const tmpdir(dir.empty() ? system_tempdir : dir);

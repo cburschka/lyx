@@ -1,4 +1,21 @@
+2001-03-20  Lars Gullik Bjønnes  <larsbj@trylle.birdstep.com>
+
+	* buffer.C (parseSingleLyXformat2Token): Try to give a bit better
+	response on compability reading of minipages. One probliem is that
+	the old usage of minipages was «flertydig» 
+
+	* several files here and in subdirs: don't use static at file
+	scope use anon namespaces instead.
+
+2001-03-19  Kayvan A. Sylvan <kayvan@sylvan.com>
+
+	* paragraph.C (TeXEnvironment): Added \n to \end{environment}
+	LaTeX output. This is necessary for Literate document
+	processing.
+
 2001-03-17  Lars Gullik Bjønnes  <larsbj@trylle.birdstep.com>
+
+	* buffer.C: insert hfill when needed.
 
 	* tabular.C (l_getline): use string::erase, small whitespace change.
 

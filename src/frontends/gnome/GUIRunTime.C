@@ -33,7 +33,12 @@ using std::endl;
 
 extern bool finished;
 
-static int const xforms_include_version = FL_INCLUDE_VERSION;
+namespace {
+
+int const xforms_include_version = FL_INCLUDE_VERSION;
+
+} // namespace anon
+
 GLyxAppWin * mainAppWin;
 
 int GUIRunTime::initApplication(int, char * argv[])

@@ -116,8 +116,9 @@ string const browseFile(LyXView * lv, string const & filename,
 }
 
 
+namespace {
+
 // sorted by hand to prevent LyXLex from complaining on read().
-static
 keyword_item xformTags[] = {
 	{ "\\gui_background", FL_COL1 },
 	{ "\\gui_buttonbottom", FL_BOTTOM_BCOL },
@@ -131,7 +132,9 @@ keyword_item xformTags[] = {
 };
 
 
-static const int xformCount = sizeof(xformTags) / sizeof(keyword_item);
+const int xformCount = sizeof(xformTags) / sizeof(keyword_item);
+
+} // namespace anon
 
 
 bool XformsColor::read(string const & filename)

@@ -38,19 +38,23 @@ using std::find_if;
 using std::reverse;
 using std::sort;
 
-static string const token_from("$$i");
-static string const token_base("$$b");
-static string const token_to("$$o");
+namespace {
+
+string const token_from("$$i");
+string const token_base("$$b");
+string const token_to("$$o");
 
 //////////////////////////////////////////////////////////////////////////////
 
-static inline
+inline
 string const add_options(string const & command, string const & options)
 {
 	string head;
 	string const tail = split(command, head, ' ');
 	return head + ' ' + options + ' ' + tail;
 }
+
+} // namespace anon
 
 //////////////////////////////////////////////////////////////////////////////
 

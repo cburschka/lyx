@@ -33,27 +33,24 @@ using std::endl;
 // Names for the GUI
 //
 
-static
+namespace {
+
 char const * GUIFamilyNames[6] = 
 { N_("Roman"), N_("Sans serif"), N_("Typewriter"), N_("Symbol"), N_("Inherit"),
   N_("Ignore") };
 
-static
 char const * GUISeriesNames[4] = 
 { N_("Medium"), N_("Bold"), N_("Inherit"), N_("Ignore") };
 
-static
 char const * GUIShapeNames[6] = 
 { N_("Upright"), N_("Italic"), N_("Slanted"), N_("Smallcaps"), N_("Inherit"),
   N_("Ignore") };
 
-static
 char const * GUISizeNames[14] = 
 { N_("Tiny"), N_("Smallest"), N_("Smaller"), N_("Small"), N_("Normal"), N_("Large"),
   N_("Larger"), N_("Largest"), N_("Huge"), N_("Huger"), N_("Increase"), N_("Decrease"), 
   N_("Inherit"), N_("Ignore") };
  
-static
 char const * GUIMiscNames[5] = 
 { N_("Off"), N_("On"), N_("Toggle"), N_("Inherit"), N_("Ignore") };
 
@@ -61,48 +58,40 @@ char const * GUIMiscNames[5] =
 //
 // Strings used to read and write .lyx format files
 //
-static
 char const * LyXFamilyNames[6] = 
 { "roman", "sans", "typewriter", "symbol", "default", "error" };
 
-static
 char const * LyXSeriesNames[4] = 
 { "medium", "bold", "default", "error" };
 
-static
 char const * LyXShapeNames[6] = 
 { "up", "italic", "slanted", "smallcaps", "default", "error" };
 
-static
 char const * LyXSizeNames[14] = 
 { "tiny", "scriptsize", "footnotesize", "small", "normal", "large",
   "larger", "largest", "huge", "giant", 
   "increase-error", "decrease-error", "default", "error" };
 
-static
 char const * LyXMiscNames[5] = 
 { "off", "on", "toggle", "default", "error" };
 
 //
 // Strings used to write LaTeX files
 //
-static
 char const * LaTeXFamilyNames[6] = 
 { "textrm", "textsf", "texttt", "error1", "error2", "error3" };
 
-static
 char const * LaTeXSeriesNames[4] = 
 { "textmd", "textbf", "error4", "error5" };
 
-static
 char const * LaTeXShapeNames[6] = 
 { "textup", "textit", "textsl", "textsc", "error6", "error7" };
 
-static
 char const * LaTeXSizeNames[14] = 
 { "tiny", "scriptsize", "footnotesize", "small", "normalsize", "large",
   "Large", "LARGE", "huge", "Huge", "error8", "error9", "error10", "error11" };
 
+} // namespace anon
 
 
 // Initialize static member

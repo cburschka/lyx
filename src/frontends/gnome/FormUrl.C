@@ -34,9 +34,14 @@
 #include "mainapp.h"
 extern GLyxAppWin * mainAppWin;
 
+namespace {
+
 // configuration keys
-static string const CONF_ENTRY_URL("FormUrl_url");
-static string const CONF_ENTRY_NAME("FormUrl_name");
+string const CONF_ENTRY_URL("FormUrl_url");
+string const CONF_ENTRY_NAME("FormUrl_name");
+
+} // namespace anon
+
 
 FormUrl::FormUrl(LyXView * lv, Dialogs * d)
 	: lv_(lv), d_(d), inset_(0), u_(0), h_(0), ih_(0), dialog_(0)

@@ -20,14 +20,16 @@
 
 using std::endl;
 
-extern "C" {
-	static
-	void C_intern_timeout_cb(int, void * data)
-	{
-		Timeout * to = static_cast<Timeout *>(data);
-		to->emit();
-	}
+namespace {
+
+extern "C" 
+void C_intern_timeout_cb(int, void * data)
+{
+	Timeout * to = static_cast<Timeout *>(data);
+	to->emit();
 }
+
+} // namespace anon
 
 
 Timeout::Pimpl::Pimpl(Timeout * owner)

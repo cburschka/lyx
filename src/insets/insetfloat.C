@@ -132,7 +132,7 @@ void InsetFloat::Read(Buffer const * buf, LyXLex & lex)
 {
 	if (lex.IsOK()) {
 		lex.next();
-		string token = lex.GetString();
+		string const token = lex.GetString();
 		if (token == "placement") {
 			lex.next();
 			floatPlacement_ = lex.GetString();

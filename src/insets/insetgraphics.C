@@ -346,7 +346,9 @@ void InsetGraphics::Read(Buffer const * buf, LyXLex & lex)
 	updateInset();
 }
 
-static
+
+namespace {
+
 void formatResize(ostream & os, string const & key,
 		  InsetGraphicsParams::Resize resizeType, double size)
 {
@@ -372,6 +374,9 @@ void formatResize(ostream & os, string const & key,
 
 	}
 }
+
+} // namespace anon
+
 
 string const
 InsetGraphics::createLatexOptions() const

@@ -29,9 +29,10 @@ using std::pair;
 
 extern BufferList bufferlist;
 
+namespace {
 
-static inline
-string unique_id() {
+inline
+string const unique_id() {
 	static unsigned int seed = 1000;
 
 	std::ostringstream ost;
@@ -40,6 +41,8 @@ string unique_id() {
 	// Needed if we use lyxstring.
 	return ost.str().c_str();
 }
+
+} // namespace anon
 
 
 InsetInclude::InsetInclude(InsetIncludeParams const & p)

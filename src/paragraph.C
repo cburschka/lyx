@@ -55,9 +55,14 @@ int tex_code_break_column = 72;  // needs non-zero initialization. set later.
 extern string bibitemWidest(Buffer const *);
 
 // this is a minibuffer
-static char minibuffer_char;
-static LyXFont minibuffer_font;
-static Inset * minibuffer_inset;
+
+namespace {
+
+char minibuffer_char;
+LyXFont minibuffer_font;
+Inset * minibuffer_inset;
+
+} // namespace anon
 
 
 extern BufferView * current_view;
@@ -3424,7 +3429,8 @@ LyXParagraph * LyXParagraph::TeXEnvironment(Buffer const * buf,
 		);
  
 	if (style.isEnvironment()) {
-		os << "\\end{" << style.latexname() << '}';
+		os << "\\end{" << style.latexname() << "}\n";
+
 #ifndef NEW_INSETS
 		// maybe this should go after the minipage closes?
 		if (foot_this_level) {

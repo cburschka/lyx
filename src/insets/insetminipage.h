@@ -45,6 +45,8 @@ public:
 	///
 	void Write(Buffer const * buf, std::ostream & os) const;
 	///
+	void Read(Buffer const * buf, LyXLex & lex);
+	///
 	Inset * Clone(Buffer const &) const;
 	///
 	Inset::Code LyxCode() const { return Inset::MINIPAGE_CODE; }

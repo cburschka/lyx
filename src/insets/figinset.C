@@ -85,7 +85,9 @@ extern FL_OBJECT * figinset_canvas;
 
 extern char ** environ; // is this only redundtant on linux systems? Lgb.
 
-static float const DEG2PI = 57.295779513;
+namespace {
+
+float const DEG2PI = 57.295779513;
 
 struct queue_element {
 	float rx, ry;          // resolution x and y
@@ -93,28 +95,27 @@ struct queue_element {
 	figdata * data;	       // we are doing it for this data
 };
 
-static int const MAXGS = 3;			/* maximum 3 gs's at a time */
+int const MAXGS = 3;			/* maximum 3 gs's at a time */
 
 typedef vector<Figref *> figures_type;
 typedef vector<figdata *> bitmaps_type;
-static figures_type figures; // all figures
-static bitmaps_type bitmaps; // all bitmaps
+figures_type figures; // all figures
+bitmaps_type bitmaps; // all bitmaps
 
-static queue<queue_element> gsqueue; // queue for ghostscripting
+queue<queue_element> gsqueue; // queue for ghostscripting
 
-static int gsrunning = 0;	/* currently so many gs's are running */
-static bool bitmap_waiting = false; /* bitmaps are waiting finished */
+int gsrunning = 0;	/* currently so many gs's are running */
+bool bitmap_waiting = false; /* bitmaps are waiting finished */
 
-static bool gs_color;			// do we allocate colors for gs?
-static bool color_visual;     		// is the visual color?
-static bool gs_xcolor = false;		// allocated extended colors
-static unsigned long gs_pixels[128];	// allocated pixels
-static int gs_spc;			// shades per color
-static int gs_allcolors;		// number of all colors
+bool gs_color;			// do we allocate colors for gs?
+bool color_visual;     		// is the visual color?
+bool gs_xcolor = false;		// allocated extended colors
+unsigned long gs_pixels[128];	// allocated pixels
+int gs_spc;			// shades per color
+int gs_allcolors;		// number of all colors
 
-static list<int> pidwaitlist; // pid wait list
+list<int> pidwaitlist; // pid wait list
 
-static
 GC createGC()
 {
 	XGCValues val;
@@ -130,11 +131,9 @@ GC createGC()
 			 | GCLineWidth | GCLineStyle , &val);
 }
 
-static
 GC local_gc_copy;
 
 
-static
 void addpidwait(int pid)
 {
 	// adds pid to pid wait list
@@ -149,14 +148,12 @@ void addpidwait(int pid)
 }
 
 
-static
 string make_tmp(int pid)
 {
 	return system_tempdir + "/~lyxgs" + tostr(pid) + ".ps";
 }
 
 
-static
 void kill_gs(int pid, int sig)
 {
 	if (lyxerr.debugging()) 
@@ -166,8 +163,7 @@ void kill_gs(int pid, int sig)
 }
 
 
-extern "C" {
-static
+extern "C"
 int GhostscriptMsg(XEvent * ev, void *)
 {
 	// bin all events not of interest
@@ -302,10 +298,8 @@ int GhostscriptMsg(XEvent * ev, void *)
 		}
 	return FL_PREEMPT;
 }
-}
 
 
-static
 void AllocColors(int num)
 // allocate color cube numxnumxnum, if possible
 {
@@ -346,7 +340,6 @@ void AllocColors(int num)
 
 
 // allocate grayscale ramp
-static
 void AllocGrays(int num)
 {
 	if (lyxerr.debugging()) {
@@ -383,9 +376,10 @@ void AllocGrays(int num)
 
 
 // xforms doesn't define this
-extern "C" FL_APPEVENT_CB fl_set_preemptive_callback(Window, FL_APPEVENT_CB, void *);
+extern "C"
+FL_APPEVENT_CB fl_set_preemptive_callback(Window, FL_APPEVENT_CB, void *);
 
-static
+
 void InitFigures()
 {
 	// if bitmaps and figures are not empty we will leak mem
@@ -430,7 +424,6 @@ void InitFigures()
 }
 
 
-static
 void DoneFigures()
 {
 	// if bitmaps and figures are not empty we will leak mem
@@ -441,7 +434,6 @@ void DoneFigures()
 }
 
 
-static
 void freefigdata(figdata * tmpdata)
 {
 	tmpdata->ref--;
@@ -460,7 +452,6 @@ void freefigdata(figdata * tmpdata)
 }
 
 
-static
 void runqueue()
 {
 	// This _have_ to be set before the fork!
@@ -693,7 +684,6 @@ void runqueue()
 }
 
 
-static
 void addwait(int psx, int psy, int pswid, int pshgh, figdata * data)
 {
 	// recompute the stuff and put in the queue
@@ -712,7 +702,6 @@ void addwait(int psx, int psy, int pswid, int pshgh, figdata * data)
 }
 
 
-static
 figdata * getfigdata(int wid, int hgh, string const & fname, 
 		     int psx, int psy, int pswid, int pshgh, 
 		     int raw_wid, int raw_hgh, float angle, char flags)
@@ -772,14 +761,12 @@ figdata * getfigdata(int wid, int hgh, string const & fname,
 }
 
 
-static
 void getbitmap(figdata * p)
 {
 	p->gspid = -1;
 }
 
 
-static
 void makeupdatelist(figdata * p)
 {
 	for (figures_type::iterator it = figures.begin();
@@ -794,6 +781,8 @@ void makeupdatelist(figdata * p)
 			current_view->pushIntoUpdateList((*it)->inset);
 		}
 }
+
+} // namespace anon
 
 
 // this func is only "called" in spellchecker.C
@@ -876,7 +865,8 @@ void sigchldchecker(pid_t pid, int * status)
 }
 
 
-static
+namespace {
+
 void getbitmaps()
 {
 	bitmap_waiting = false;
@@ -887,7 +877,6 @@ void getbitmaps()
 }
 
 
-static
 void RegisterFigure(InsetFig * fi)
 {
 	if (figures.empty()) InitFigures();
@@ -905,7 +894,6 @@ void RegisterFigure(InsetFig * fi)
 }
 
 
-static
 void UnregisterFigure(InsetFig * fi)
 {
 	if (!lyxrc.use_gui)
@@ -933,6 +921,8 @@ void UnregisterFigure(InsetFig * fi)
 
 	if (figures.empty()) DoneFigures();
 }
+
+} // namespace anon
 
 
 InsetFig::InsetFig(int tmpx, int tmpy, Buffer const & o)
@@ -1290,8 +1280,9 @@ Inset::Code InsetFig::LyxCode() const
 }
 
 
-static
-string stringify(InsetFig::HWTYPE hw, float f, string suffix)
+namespace {
+
+string const stringify(InsetFig::HWTYPE hw, float f, string suffix)
 {
 	string res;
 	switch (hw) {
@@ -1313,6 +1304,8 @@ string stringify(InsetFig::HWTYPE hw, float f, string suffix)
 	}
 	return res;
 }
+
+} // namespace anon
 
 
 void InsetFig::Regenerate() const

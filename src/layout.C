@@ -598,12 +598,18 @@ void LyXLayout::readLabelType(LyXLex & lexrc)
 	}
 }
 
-static keyword_item endlabelTypeTags[] = {
+
+namespace {
+
+keyword_item endlabelTypeTags[] = {
 	{ "box",	END_LABEL_BOX },
 	{ "filled_box",	END_LABEL_FILLED_BOX },
 	{ "no_label",	END_LABEL_NO_LABEL },
 	{ "static",     END_LABEL_STATIC }
 };
+
+} // namespace anon
+
 
 void LyXLayout::readEndLabelType(LyXLex & lexrc)
 {

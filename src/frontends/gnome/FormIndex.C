@@ -42,8 +42,13 @@
 #include "mainapp.h"
 extern GLyxAppWin * mainAppWin;
 
+namespace {
+
 // configuration keys
-static string const CONF_ENTRY("FormIndex_entry");
+string const CONF_ENTRY("FormIndex_entry");
+
+} // namespace anon
+
 
 FormIndex::FormIndex(LyXView * lv, Dialogs * d)
 	: lv_(lv), d_(d), inset_(0), u_(0), h_(0), ih_(0), dialog_(0)

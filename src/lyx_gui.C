@@ -57,11 +57,15 @@ FL_CMD_OPT cmdopt[] =
 	{"-geometry", "*.geometry", XrmoptionSepArg, "690x510"}
 };
 
-static int width  = 690;
-static int height = 510;
-static int xpos   = -1;
-static int ypos   = -1;
-static char geometry[40];
+namespace {
+
+int width  = 690;
+int height = 510;
+int xpos   = -1;
+int ypos   = -1;
+char geometry[40];
+
+} // namespace anon
 
 
 FL_resource res[] =

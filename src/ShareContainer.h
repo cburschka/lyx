@@ -12,7 +12,7 @@
 /// Share objects between several users.
 /**
    This class can be used to reduce memory consuption when you have a lot
-   of equal objects used all over you code.
+   of equal objects used all over your code.
 
    \author Lars Gullik Bjønnes
 */
@@ -60,7 +60,7 @@ private:
 	private:
 		Share const & p_;
 	};
-	/// A functor returning true if the element is unque.
+	/// A functor returning true if the element is unique.
 	struct isUnique {
 		bool operator()(value_type const & p) const {
 			return p.unique();

@@ -58,9 +58,14 @@ extern string system_lyxdir;
 extern string user_lyxdir;
 extern Languages languages;
 
+namespace {
+
 // These should probably go inside the class definition...
-static Formats    local_formats;
-static Converters local_converters;
+Formats    local_formats;
+Converters local_converters;
+
+} // namespace anon
+
 
 FormPreferences::FormPreferences(LyXView * lv, Dialogs * d)
 	: FormBaseBI(lv, d, _("Preferences")),

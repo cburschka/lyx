@@ -42,8 +42,8 @@ using std::vector;
 extern LyXAction lyxaction;
 extern boost::scoped_ptr<kb_keymap> toplevel_keymap;
 
+namespace {
 
-static
 keyword_item lyxrcTags[] = {
 	{ "\\accept_compound", LyXRC::RC_ACCEPT_COMPOUND },
 	{ "\\alternate_language", LyXRC::RC_ALT_LANG },
@@ -139,7 +139,9 @@ keyword_item lyxrcTags[] = {
 };
 
 /* Let the range depend of the size of lyxrcTags.  Alejandro 240596 */
-static const int lyxrcCount = sizeof(lyxrcTags) / sizeof(keyword_item);
+const int lyxrcCount = sizeof(lyxrcTags) / sizeof(keyword_item);
+
+} // namespace anon
 
 
 LyXRC::LyXRC() 

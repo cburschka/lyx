@@ -1655,7 +1655,9 @@ char loweralphaCounter(int n)
 }
 
 
-static inline
+namespace {
+
+inline
 char alphaCounter(int n)
 {
 	if (n < 1 || n > 26)
@@ -1665,7 +1667,7 @@ char alphaCounter(int n)
 }
 
 
-static inline
+inline
 char hebrewCounter(int n)
 {
 	static const char hebrew[22] = {
@@ -1680,7 +1682,7 @@ char hebrewCounter(int n)
 }
 
 
-static inline
+inline
 string const romanCounter(int n)
 {
 	static char const * roman[20] = {
@@ -1694,6 +1696,8 @@ string const romanCounter(int n)
 	else
 		return roman[n-1];
 }
+
+} // namespace anon
 
 
 // set the counter of a paragraph. This includes the labels

@@ -87,12 +87,16 @@ void FormBase::InputCB(FL_OBJECT * ob, long data)
 }
 
 
-static FormBase * GetForm(FL_OBJECT * ob)
+namespace {
+
+FormBase * GetForm(FL_OBJECT * ob)
 {
 	Assert(ob && ob->form && ob->form->u_vdata);
 	FormBase * pre = static_cast<FormBase *>(ob->form->u_vdata);
 	return pre;
 }
+
+} // namespace anon
 
 
 extern "C" int C_FormBaseWMHideCB(FL_FORM * form, void *)

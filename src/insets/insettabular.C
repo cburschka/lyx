@@ -37,15 +37,6 @@
 #include "lyxfunc.h"
 #include "WorkArea.h"
 
-const int ADD_TO_HEIGHT = 2;
-const int ADD_TO_TABULAR_WIDTH = 2;
-///
-static LyXTabular * paste_tabular = 0;
-bool InsetTabular::hasPasteBuffer() const
-{
-    return (paste_tabular != 0);
-}
-
 using std::ostream;
 using std::ifstream;
 using std::max;
@@ -54,14 +45,22 @@ using std::swap;
 using std::max;
 
     
+namespace {
+
+const int ADD_TO_HEIGHT = 2;
+const int ADD_TO_TABULAR_WIDTH = 2;
+///
+LyXTabular * paste_tabular = 0;
+
+
 struct tabular_features {
     LyXTabular::Feature action;
     string feature;
 };
 
-//static tabular_features * tabularFeatures = 0;
+//tabular_features * tabularFeatures = 0;
 
-static tabular_features tabularFeatures[] =
+tabular_features tabularFeatures[] =
 {
     { LyXTabular::APPEND_ROW, "append-row" },
     { LyXTabular::APPEND_COLUMN, "append-column" },
@@ -108,6 +107,15 @@ static tabular_features tabularFeatures[] =
     { LyXTabular::SET_SPECIAL_MULTI, "set-special-multi" },
     { LyXTabular::LAST_ACTION, "" }
 };
+
+} // namespace anon
+
+
+bool InsetTabular::hasPasteBuffer() const
+{
+    return (paste_tabular != 0);
+}
+
 
 InsetTabular::InsetTabular(Buffer const & buf, int rows, int columns)
 	: buffer(&buf)

@@ -14,7 +14,8 @@ int const MAX_HASH_VALUE = 490;
 
 /* maximum key range = 483, duplicates = 40 */
 
-static
+namespace {
+
 unsigned int
 math_hash (register char const * str, register int len)
 {
@@ -38,7 +39,6 @@ math_hash (register char const * str, register int len)
 }
 
 
-static
 latexkeys const wordlist[] = 
 {
 	{"",0,0}, {"",0,0}, {"",0,0}, {"",0,0},
@@ -315,7 +315,6 @@ latexkeys const wordlist[] =
 };
 
 
-static
 short lookup[] = 
 {
         -1,  -1,  -1,  -1,  -1,  -1,  -1,  -1,   8,  -1,  -1,  -1,  -1,  -1,
@@ -355,6 +354,8 @@ short lookup[] =
 	272, 273,  -1, 274,  -1,  -1,  -1, 275,  -1,  -1,  -1,  -1,  -1,  -1,
 	276,
 };
+
+} // namespace anon
 
 
 latexkeys const *

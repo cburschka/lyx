@@ -117,8 +117,11 @@ extern BufferList bufferlist;
 
 extern LyXAction lyxaction;
 
+namespace {
 
-static const int LYX_FORMAT = 218;
+const int LYX_FORMAT = 218;
+
+} // namespace anon
 
 extern int tex_code_break_column;
 
@@ -352,7 +355,11 @@ bool Buffer::readLyXformat2(LyXLex & lex, LyXParagraph * par)
 
 
 // We'll remove this later. (Lgb)
-static string last_inset_read;
+namespace {
+
+string last_inset_read;
+
+} // anon
 
 
 bool
@@ -515,6 +522,10 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, LyXParagraph *& par,
 					string pextraWidth = minipar->params.pextraWidth();
 					string pextraWidthp = minipar->params.pextraWidthp();
 					bool pextraHfill = minipar->params.pextraHfill();
+#if 1
+					bool startNew = minipar->params.pextraStartMinipage();
+#endif
+					
 					LyXParagraph * tmp = minipar;
 					while (tmp) {
 						tmp->params.pextraType(0);
@@ -531,10 +542,34 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, LyXParagraph *& par,
 					mini->width(pextraWidth);
 					mini->widthp(pextraWidthp);
 					mini->inset->par = minipar;
+
+#if 1
+					if (!startNew || !pextraHfill) {
+						// To minimize problems for
+						// the users we will insert
+						// the first minipage in
+						// a sequence of minipages
+						// in its own paragraph.
+						LyXParagraph * p = new LyXParagraph;
+						p->layout = 0;
+						// Insert this after par->prev, but
+						// before par.
+						p->previous(par->previous());
+						p->next(par);
+						par->previous()->next(p);
+						par->previous(p);
+					}
+					
+#endif
 					// Insert the minipage last in the
 					// previous paragraph.
-					par->previous()->InsertInset(par->previous()->size(), mini);
-#warning insert a hfill-character here if pextraHfill == true
+					LyXParagraph * prev = par->previous();
+					if (pextraHfill) {
+						prev->InsertChar(prev->size(),
+								 LyXParagraph::META_HFILL);
+					}
+					prev->InsertInset(prev->size(), mini);
+					
 					minipar = par;
 				} else {
 					lyxerr << "new minipage par" << endl;
@@ -577,6 +612,9 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, LyXParagraph *& par,
 				string pextraWidth = minipar->params.pextraWidth();
 				string pextraWidthp = minipar->params.pextraWidthp();
 				bool pextraHfill = minipar->params.pextraHfill();
+#if 1
+				bool startNew = minipar->params.pextraStartMinipage();
+#endif
 				LyXParagraph * tmp = minipar;
 				while (tmp) {
 					tmp->params.pextraType(0);
@@ -593,8 +631,31 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, LyXParagraph *& par,
 				mini->width(pextraWidth);
 				mini->widthp(pextraWidthp);
 				mini->inset->par = minipar;
-				par->previous()->InsertInset(par->previous()->size(), mini);
-#warning insert a hfill-character here if pextraHfill == true
+				
+#if 1
+				if (!startNew || !pextraHfill) {
+					// To minimize problems for the users
+					// we will insert the first minipage
+					// in a sequence of minipages in its
+					// own paragraph.
+					LyXParagraph * p = new LyXParagraph;
+					p->layout = 0;
+					// Insert this after par->prev, but
+					// before par.
+					p->previous(par->previous());
+					p->next(par);
+					par->previous()->next(p);
+					par->previous(p);
+				}
+#endif
+				
+				LyXParagraph * prev = par->previous();
+				if (pextraHfill) {
+					prev->InsertChar(prev->size(),
+							 LyXParagraph::META_HFILL);
+					}
+				prev->InsertInset(prev->size(), mini);
+
 				minipar = 0;
 			} else if (par->params.pextraType() == LyXParagraph::PEXTRA_MINIPAGE) {
 				
@@ -2833,7 +2894,8 @@ void Buffer::pop_tag(ostream & os, string const & tag,
 
 // checks, if newcol chars should be put into this line
 // writes newline, if necessary.
-static
+namespace {
+
 void linux_doc_line_break(ostream & os, string::size_type & colcount,
 			  string::size_type newcol)
 {
@@ -2843,6 +2905,8 @@ void linux_doc_line_break(ostream & os, string::size_type & colcount,
 		colcount = newcol; // assume write after this call
 	}
 }
+
+} // namespace anon
 
 
 void Buffer::SimpleLinuxDocOnePar(ostream & os, LyXParagraph * par,

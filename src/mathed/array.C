@@ -14,7 +14,9 @@
 using std::ostream;
 using std::endl;
 
-static inline
+namespace {
+
+inline
 void * my_memcpy(void * ps_in, void const * pt_in, size_t n)
 {
 	char * ps = static_cast<char *>(ps_in);
@@ -22,6 +24,8 @@ void * my_memcpy(void * ps_in, void const * pt_in, size_t n)
 	while (n--) *ps++ = *pt++;
 	return ps_in;
 }
+
+} // namespace anon
 
 
 MathedArray::MathedArray()

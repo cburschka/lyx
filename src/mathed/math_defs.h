@@ -39,10 +39,15 @@ enum math_align {
 	///
 	MATH_ALIGN_TOP = 8
 };
+
+namespace {
+
 ///
-static int const MATH_COLSEP = 8;
+int const MATH_COLSEP = 8;
 ///
-static int const MATH_ROWSEP = 8;
+int const MATH_ROWSEP = 8;
+
+} // namespace anon
 
 
 /// Standard Math Sizes (Math mode styles)

@@ -21,8 +21,9 @@
 #include "lyxrc.h"
 #include "encoding.h"
 
-// namespace {
-static inline
+namespace {
+
+inline
 XFontStruct * getXFontstruct(LyXFont const & f)
 {
 	return fontloader.load(f.family(), f.series(),
@@ -30,12 +31,13 @@ XFontStruct * getXFontstruct(LyXFont const & f)
 }
 
 
-static inline
+inline
 XID getFontID(LyXFont const & f)
 {
 	return getXFontstruct(f)->fid;
 }
-// } // end of anon namespace
+
+} // namespace anon
 
 int lyxfont::maxAscent(LyXFont const & f)
 {
