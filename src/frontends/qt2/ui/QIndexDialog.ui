@@ -74,22 +74,6 @@
                         <name>toolTip</name>
                         <string>Index entry</string>
                     </property>
-                    <property>
-                        <name>whatsThis</name>
-                        <string>The format of the entry in the index.
-
-An entry can be specified as a sub-entry of
-another with "!" :
-
-cars!mileage
-
-You can cross-refer to another entry like so :
-
-cars!mileage|see{economy}
-
-For further details refer to the local LaTeX
-documentation.</string>
-                    </property>
                 </widget>
             </hbox>
         </widget>

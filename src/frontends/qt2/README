@@ -17,7 +17,8 @@ then remember to call form_->changed() at the end (if it has changed !)
  
 Every non-trivial widget should have a tooltip. If you don't know
 what to write, write "FIXME", and it can fixed later. Don't be afraid
-to use QWhatsThis too (e.g. the index dialog)
+to use QWhatsThis too, but this must be done in the derived class's
+constructor, and use _("...").
  
 If necessary, you should override Qt2Base::isValid() for determining the validity
 of the current dialog's contents.
