@@ -169,11 +169,11 @@ string const bibitemWidest(Buffer const * buffer)
 	int w = 0;
 	// Does look like a hack? It is! (but will change at 0.13)
 
-	InsetBibitem * bitem = 0;
+	InsetBibitem const * bitem = 0;
 	LyXFont font;
 
-	ParagraphList::iterator it = buffer->paragraphs.begin();
-	ParagraphList::iterator end = buffer->paragraphs.end();
+	ParagraphList::const_iterator it = buffer->paragraphs.begin();
+	ParagraphList::const_iterator end = buffer->paragraphs.end();
 	for (; it != end; ++it) {
 		if (it->bibitem()) {
 			int const wx =

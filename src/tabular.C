@@ -2590,8 +2590,8 @@ vector<string> const LyXTabular::getLabelList() const
 LyXTabular::BoxType LyXTabular::UseParbox(int cell) const
 {
 	ParagraphList const & parlist = GetCellInset(cell)->paragraphs;
-	ParagraphList::iterator cit = parlist.begin();
-	ParagraphList::iterator end = parlist.end();
+	ParagraphList::const_iterator cit = parlist.begin();
+	ParagraphList::const_iterator end = parlist.end();
 
 	for (; cit != end; ++cit) {
 		for (int i = 0; i < cit->size(); ++i) {

@@ -80,6 +80,80 @@ bool operator!=(ParagraphList::iterator const & i1,
 	return !(i1 == i2);
 }
 
+////////// The ParagraphList::const_iterator
+
+ParagraphList::const_iterator::const_iterator()
+	: ptr(0)
+{}
+
+
+ParagraphList::const_iterator::const_iterator(Paragraph * p)
+	: ptr(p)
+{}
+
+
+ParagraphList::const_iterator::const_reference
+ParagraphList::const_iterator::operator*()
+{
+	return *ptr;
+}
+
+
+ParagraphList::const_iterator::const_pointer
+ParagraphList::const_iterator::operator->()
+{
+	return ptr;
+}
+
+
+ParagraphList::const_iterator &
+ParagraphList::const_iterator::operator++()
+{
+	ptr = ptr->next_par_;
+	return *this;
+}
+
+
+ParagraphList::const_iterator
+ParagraphList::const_iterator::operator++(int)
+{
+	const_iterator tmp = *this;
+	++*this;
+	return tmp;
+}
+
+
+ParagraphList::const_iterator &
+ParagraphList::const_iterator::operator--()
+{
+	ptr = ptr->prev_par_;
+	return *this;
+}
+
+
+ParagraphList::const_iterator
+ParagraphList::const_iterator::operator--(int)
+{
+	const_iterator tmp = *this;
+	--*this;
+	return tmp;
+}
+
+
+bool operator==(ParagraphList::const_iterator const & i1,
+		ParagraphList::const_iterator const & i2)
+{
+	return &(*const_cast<ParagraphList::const_iterator&>(i1))
+	    == &(*const_cast<ParagraphList::const_iterator&>(i2));
+}
+
+
+bool operator!=(ParagraphList::const_iterator const & i1,
+		ParagraphList::const_iterator const & i2)
+{
+	return !(i1 == i2);
+}
+
 //////////
 ////////// The ParagraphList proper
 //////////
@@ -93,8 +167,8 @@ ParagraphList::ParagraphList(ParagraphList const & pl)
 	: parlist(0)
 {
 	// Deep copy.
-	ParagraphList::iterator it = pl.begin();
-	ParagraphList::iterator end = pl.end();
+	ParagraphList::const_iterator it = pl.begin();
+	ParagraphList::const_iterator end = pl.end();
 	for (; it != end; ++it) {
 		push_back(*it);
 	}
@@ -231,9 +305,9 @@ ParagraphList::iterator ParagraphList::begin()
 }
 
 
-ParagraphList::iterator ParagraphList::begin() const
+ParagraphList::const_iterator ParagraphList::begin() const
 {
-	return iterator(parlist);
+	return const_iterator(parlist);
 }
 
 
@@ -243,9 +317,9 @@ ParagraphList::iterator ParagraphList::end()
 }
 
 
-ParagraphList::iterator ParagraphList::end() const
+ParagraphList::const_iterator ParagraphList::end() const
 {
-	return iterator();
+	return const_iterator();
 }
 
 

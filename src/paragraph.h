@@ -45,6 +45,7 @@ public:
 	// Remove this whan ParagraphList transition is over. (Lgb)
 	friend class ParagraphList;
 	friend class ParagraphList::iterator;
+	friend class ParagraphList::const_iterator;
 #endif
 	///
 	enum META_KIND {
@@ -145,7 +146,7 @@ public:
 	char itemdepth;
 
 	///
-	InsetBibitem * bibitem();  // ale970302
+	InsetBibitem * bibitem() const;  // ale970302
 
 	/// initialise tracking for this par
 	void trackChanges(Change::Type = Change::UNCHANGED);

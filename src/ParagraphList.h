@@ -58,6 +58,40 @@ public:
 		Paragraph * ptr;
 	};
 	///
+	class const_iterator {
+	public:
+		friend class ParagraphList;
+		///
+		typedef std::bidirectional_iterator_tag iterator_category;
+		///
+		typedef Paragraph * value_type;
+		///
+		typedef ptrdiff_t difference_type;
+		///
+		typedef Paragraph const * const_pointer;
+		///
+		typedef Paragraph const & const_reference;
+		///
+		const_iterator();
+		///
+		const_reference operator*();
+		///
+		const_pointer operator->();
+		///
+		const_iterator & operator++();
+		///
+		const_iterator operator++(int);
+		///
+		const_iterator & operator--();
+		///
+		const_iterator operator--(int);
+	private:
+		///
+		const_iterator(value_type);
+		///
+		Paragraph * ptr;
+	};
+	///
 	ParagraphList();
 	///
 	ParagraphList(ParagraphList const &);
@@ -80,11 +114,11 @@ public:
 	///
 	iterator begin();
 	///
-	iterator begin() const;
+	const_iterator begin() const;
 	///
 	iterator end();
 	///
-	iterator end() const;
+	const_iterator end() const;
 	///
 	void push_back(Paragraph const &);
 	///
@@ -116,6 +150,13 @@ bool operator==(ParagraphList::iterator const & i1,
 ///
 bool operator!=(ParagraphList::iterator const & i1,
 		ParagraphList::iterator const & i2);
+
+///
+bool operator==(ParagraphList::const_iterator const & i1,
+		ParagraphList::const_iterator const & i2);
+///
+bool operator!=(ParagraphList::const_iterator const & i1,
+		ParagraphList::const_iterator const & i2);
 
 #endif
 

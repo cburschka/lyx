@@ -681,8 +681,8 @@ bool Buffer::writeFile(string const & fname) const
 
 	// this will write out all the paragraphs
 	// using recursive descent.
-	ParagraphList::iterator pit = paragraphs.begin();
-	ParagraphList::iterator pend = paragraphs.end();
+	ParagraphList::const_iterator pit = paragraphs.begin();
+	ParagraphList::const_iterator pend = paragraphs.end();
 	for (; pit != pend; ++pit)
 		pit->write(this, ofs, params, depth);
 
@@ -2254,13 +2254,13 @@ ParIterator Buffer::par_iterator_end()
 
 ParConstIterator Buffer::par_iterator_begin() const
 {
-	return ParConstIterator(paragraphs.begin(), paragraphs);
+	return ParConstIterator(const_cast<ParagraphList&>(paragraphs).begin(), paragraphs);
 }
 
 
 ParConstIterator Buffer::par_iterator_end() const
 {
-	return ParConstIterator(paragraphs.end(), paragraphs);
+	return ParConstIterator(const_cast<ParagraphList&>(paragraphs).end(), paragraphs);
 }
 
 

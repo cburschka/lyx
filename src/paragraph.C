@@ -727,7 +727,7 @@ int Paragraph::getPositionOfInset(Inset const * inset) const
 }
 
 
-InsetBibitem * Paragraph::bibitem()
+InsetBibitem * Paragraph::bibitem() const
 {
 	InsetList::iterator it = insetlist.begin();
 	if (it != insetlist.end() && it.getInset()->lyxCode() == Inset::BIBTEX_CODE)

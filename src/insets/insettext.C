@@ -79,8 +79,8 @@ using lyx::textclass_type;
 void InsetText::saveLyXTextState(LyXText * t) const
 {
 	// check if my paragraphs are still valid
-	ParagraphList::iterator it = paragraphs.begin();
-	ParagraphList::iterator end = paragraphs.end();
+	ParagraphList::iterator it = const_cast<ParagraphList&>(paragraphs).begin();
+	ParagraphList::iterator end = const_cast<ParagraphList&>(paragraphs).end();
 	for (; it != end; ++it) {
 		if (it == t->cursor.par())
 			break;
@@ -99,14 +99,14 @@ void InsetText::saveLyXTextState(LyXText * t) const
 		sstate.selection = t->selection.set();
 		sstate.mark_set = t->selection.mark();
 	} else {
-		sstate.lpar = paragraphs.end();
+		sstate.lpar = const_cast<ParagraphList&>(paragraphs).end();
 	}
 }
 
 
 void InsetText::restoreLyXTextState(LyXText * t) const
 {
-	if (sstate.lpar == paragraphs.end())
+	if (sstate.lpar == const_cast<ParagraphList&>(paragraphs).end())
 		return;
 
 	t->selection.set(true);
@@ -286,8 +286,8 @@ void InsetText::write(Buffer const * buf, ostream & os) const
 
 void InsetText::writeParagraphData(Buffer const * buf, ostream & os) const
 {
-	ParagraphList::iterator it = paragraphs.begin();
-	ParagraphList::iterator end = paragraphs.end();
+	ParagraphList::const_iterator it = paragraphs.begin();
+	ParagraphList::const_iterator end = paragraphs.end();
 	Paragraph::depth_type dth = 0;
 	for (; it != end; ++it) {
 		it->write(buf, os, buf->params, dth);
@@ -1504,9 +1504,9 @@ int InsetText::ascii(Buffer const * buf, ostream & os, int linelen) const
 {
 	unsigned int lines = 0;
 
-	ParagraphList::iterator beg = paragraphs.begin();
-	ParagraphList::iterator end = paragraphs.end();
-	ParagraphList::iterator it = beg;
+	ParagraphList::const_iterator beg = paragraphs.begin();
+	ParagraphList::const_iterator end = paragraphs.end();
+	ParagraphList::const_iterator it = beg;
 	for (; it != end; ++it) {
 		string const tmp = buf->asciiParagraph(*it, linelen, it == beg);
 		lines += lyx::count(tmp.begin(), tmp.end(), '\n');
@@ -1528,8 +1528,8 @@ int InsetText::docbook(Buffer const * buf, ostream & os, bool mixcont) const
 
 	Paragraph::depth_type depth = 0; // paragraph depth
 
-	ParagraphList::iterator pit = paragraphs.begin();
-	ParagraphList::iterator pend = paragraphs.end();
+	ParagraphList::iterator pit = const_cast<ParagraphList&>(paragraphs).begin();
+	ParagraphList::iterator pend = const_cast<ParagraphList&>(paragraphs).end();
 
 	for (; pit != pend; ++pit) {
 		string sgmlparam;
@@ -1865,8 +1865,8 @@ vector<string> const InsetText::getLabelList() const
 {
 	vector<string> label_list;
 
-	ParagraphList::iterator pit = paragraphs.begin();
-	ParagraphList::iterator pend = paragraphs.end();
+	ParagraphList::const_iterator pit = paragraphs.begin();
+	ParagraphList::const_iterator pend = paragraphs.end();
 	for (; pit != pend; ++pit) {
 		InsetList::iterator beg = pit->insetlist.begin();
 		InsetList::iterator end = pit->insetlist.end();
@@ -1995,8 +1995,8 @@ void InsetText::setParagraphData(ParagraphList const & plist)
 	// See if this can be simplified when std::list is in effect.
 	paragraphs.clear();
 
-	ParagraphList::iterator it = plist.begin();
-	ParagraphList::iterator end = plist.end();
+	ParagraphList::const_iterator it = plist.begin();
+	ParagraphList::const_iterator end = plist.end();
 	for (; it != end; ++it) {
 		paragraphs.push_back(*it);
 		Paragraph & tmp = paragraphs.back();
@@ -2178,7 +2178,7 @@ LyXText * InsetText::getLyXText(BufferView const * lbv,
 		if (recursive && the_locking_inset)
 			return the_locking_inset->getLyXText(lbv, true);
 		LyXText * lt = cached_text.get();
-		lyx::Assert(lt && lt->rows().begin()->par() == paragraphs.begin());
+		lyx::Assert(lt && lt->rows().begin()->par() == const_cast<ParagraphList&>(paragraphs).begin());
 		return lt;
 	}
 	// Super UGLY! (Lgb)
@@ -2204,7 +2204,7 @@ LyXText * InsetText::getLyXText(BufferView const * lbv,
 				if (locked) {
 					saveLyXTextState(it->second.text.get());
 				} else {
-					sstate.lpar = paragraphs.end();
+					sstate.lpar = const_cast<ParagraphList&>(paragraphs).end();
 				}
 			}
 			//
@@ -2251,7 +2251,8 @@ void InsetText::deleteLyXText(BufferView * bv, bool recursive) const
 	it->second.remove = true;
 	if (recursive) {
 		/// then remove all LyXText in text-insets
-		for_each(paragraphs.begin(), paragraphs.end(),
+		for_each(const_cast<ParagraphList&>(paragraphs).begin(),
+			 const_cast<ParagraphList&>(paragraphs).end(),
 			 boost::bind(&Paragraph::deleteInsetsLyXText, _1, bv));
 	}
 }
@@ -2288,7 +2289,8 @@ void InsetText::resizeLyXText(BufferView * bv, bool force) const
 	LyXText * t = it->second.text.get();
 	saveLyXTextState(t);
 
-	for_each(paragraphs.begin(), paragraphs.end(),
+	for_each(const_cast<ParagraphList&>(paragraphs).begin(),
+		 const_cast<ParagraphList&>(paragraphs).end(),
 		 boost::bind(&Paragraph::resizeInsetsLyXText, _1, bv));
 
 	t->init(bv, true);
@@ -2327,7 +2329,8 @@ void InsetText::reinitLyXText() const
 
 		saveLyXTextState(t);
 
-		for_each(paragraphs.begin(), paragraphs.end(),
+		for_each(const_cast<ParagraphList&>(paragraphs).begin(),
+			 const_cast<ParagraphList&>(paragraphs).end(),
 			 boost::bind(&Paragraph::resizeInsetsLyXText, _1, bv));
 
 		t->init(bv, true);
@@ -2440,8 +2443,8 @@ Inset * InsetText::getInsetFromID(int id_arg) const
 	if (id_arg == id())
 		return const_cast<InsetText *>(this);
 
-	ParagraphList::iterator pit = paragraphs.begin();
-	ParagraphList::iterator pend = paragraphs.end();
+	ParagraphList::const_iterator pit = paragraphs.begin();
+	ParagraphList::const_iterator pend = paragraphs.end();
 	for (; pit != pend; ++pit) {
 		InsetList::iterator it = pit->insetlist.begin();
 		InsetList::iterator end = pit->insetlist.end();
@@ -2734,8 +2737,8 @@ void InsetText::appendParagraphs(Buffer * buffer, ParagraphList & plist)
 
 void InsetText::addPreview(grfx::PreviewLoader & loader) const
 {
-	ParagraphList::iterator pit = paragraphs.begin();
-	ParagraphList::iterator pend = paragraphs.end();
+	ParagraphList::const_iterator pit = paragraphs.begin();
+	ParagraphList::const_iterator pend = paragraphs.end();
 
 	for (; pit != pend; ++pit) {
 		InsetList::iterator it  = pit->insetlist.begin();

@@ -45,7 +45,7 @@ public:
 ParPosition::ParPosition(ParagraphList::iterator p, ParagraphList const & pl)
 	: pit(p), plist(&pl)
 {
-	if (p != pl.end()) {
+	if (p != const_cast<ParagraphList&>(pl).end()) {
 		it.reset(p->insetlist.begin());
 	}
 }
@@ -127,7 +127,7 @@ ParIterator & ParIterator::operator++()
 		}
 
 		// Try to go to the next paragarph
-		if (next(p.pit) != p.plist->end()
+		if (next(p.pit) != const_cast<ParagraphList*>(p.plist)->end()
 		    || pimpl_->positions.size() == 1) {
 			++p.pit;
 			p.index.reset();
@@ -239,7 +239,7 @@ ParConstIterator & ParConstIterator::operator++()
 		}
 
 		// Try to go to the next paragarph
-		if (next(p.pit) != p.plist->end()
+		if (next(p.pit) != const_cast<ParagraphList*>(p.plist)->end()
 		    || pimpl_->positions.size() == 1) {
 			++p.pit;
 			p.index.reset();

@@ -399,7 +399,7 @@ public:
 
 	///
 	inset_iterator inset_const_iterator_begin() const {
-		return inset_iterator(paragraphs.begin(), paragraphs.end());
+		return inset_iterator(const_cast<ParagraphList&>(paragraphs).begin(), const_cast<ParagraphList&>(paragraphs).end());
 	}
 
 	///
