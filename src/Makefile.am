@@ -11,8 +11,7 @@ EXTRA_DIST = config.h.in stamp-h.in cheaders version.C.in \
 	Sectioning.C \
 	Variables.C \
 	Variables.h \
-	tracer.C \
-	tracer.h
+	paper.h
 
 LYX_PRE_LIBS = mathed/libmathed.la insets/libinsets.la \
 	frontends/libfrontends.la 
