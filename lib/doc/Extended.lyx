@@ -13271,30 +13271,9 @@ Title
  of contents from the header.
  You can define three variants of a title with this: one for the main text,
  one for the table of contents, and one for the headers.
- Unfortunately, LyX does not support two optional arguments yet.
- But you can fool it.
- Just insert a pair of brackets in ERT-Mode (
-\family sans 
-C-l
-\family default 
-) between the first and the second argument.
- That is, type 
-\emph on 
-<short title for the toc>
-\emph default 
- 
-\family typewriter 
-][
-\family default 
- 
-\emph on 
-<short title for the headers> 
-\emph default 
-in the Short Title inset (where 
-\family typewriter 
-][
-\family default 
- is in TeX-Mode).
+ Simply insert two optional arguments if you need this feature, the first
+ one containing the short title for the Table of Contents, the second one
+ containing an alternative short title for the headers.
 \layout Description
 
 TOC/LOT/LOF: In the standard classes (and in many other classes), the table
