@@ -27,6 +27,8 @@ public:
 	///
 	InsetBibitem(InsetCommandParams const &);
 	///
+	~InsetBibitem();
+	///
 	Inset * clone(Buffer const &, bool same_id = false) const;
 	/** Currently \bibitem is used as a LyX2.x command,
 	    so we need this method.

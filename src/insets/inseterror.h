@@ -16,8 +16,6 @@
 #include "inset.h"
 #include "LString.h"
 
-#include <boost/signals/signal0.hpp>
-
 /** Used for error messages from LaTeX runs.
 
   The edit-operation opens a
@@ -29,7 +27,7 @@ public:
 	explicit
 	InsetError(string const &, bool same_id = false);
 	///
-	~InsetError() { hideDialog(); }
+	~InsetError();
 	///
 	int ascent(BufferView *, LyXFont const &) const;
 	///
@@ -70,8 +68,6 @@ public:
 	bool directWrite() const { return true; };
 	///
 	string const & getContents() const { return contents; }
-	///
-	boost::signal0<void> hideDialog;
 private:
 	///
 	string contents;

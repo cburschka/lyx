@@ -19,6 +19,7 @@
 #include "frontends/LyXView.h"
 #include "frontends/Painter.h"
 #include "frontends/Dialogs.h"
+#include "support/LAssert.h"
 
 using std::ostream;
 
@@ -27,6 +28,13 @@ using std::ostream;
 InsetError::InsetError(string const & str, bool)
 	: contents(str)
 {}
+
+
+InsetError::~InsetError()
+{
+	if (view())
+		view()->owner()->getDialogs().hide("error");
+}
 
 
 int InsetError::ascent(BufferView *, LyXFont const & font) const
@@ -56,6 +64,9 @@ int InsetError::width(BufferView *, LyXFont const & font) const
 void InsetError::draw(BufferView * bv, LyXFont const & font,
 		      int baseline, float & x, bool) const
 {
+	lyx::Assert(bv);
+	cache(bv);
+
 	Painter & pain = bv->painter();
 	LyXFont efont;
 	efont.setSize(font.size()).decSize();
@@ -85,7 +96,7 @@ string const InsetError::editMessage() const
 
 void InsetError::edit(BufferView * bv, int, int, mouse_button::state)
 {
-	bv->owner()->getDialogs().showError(this);
+	bv->owner()->getDialogs().show("error", getContents(), this);
 }
 
 

@@ -17,6 +17,7 @@
 
 #include "inset.h"
 #include "LString.h"
+#include <boost/weak_ptr.hpp>
 
 /** Used to provide an inset that looks like a button.
  */
@@ -32,8 +33,14 @@ public:
 	void draw(BufferView *, LyXFont const &, int, float &, bool) const;
 
 protected:
+	///
+	virtual void cache(BufferView *) const;
+	///
+	virtual BufferView * view() const;
 	/// This should provide the text for the button
 	virtual string const getScreenLabel(Buffer const *) const = 0;
+private:
+	mutable boost::weak_ptr<BufferView> view_;
 };
 
 #endif

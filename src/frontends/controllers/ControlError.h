@@ -13,26 +13,28 @@
 #define CONTROLERROR_H
 
 
-#include "ControlInset.h"
-#include "insets/inseterror.h" // needed for proper instantiation of GUI<>.
+#include "Dialog.h"
 
-class InsetError;
 
-/** A controller for LaTeX Error dialogs.
- */
-class ControlError : public ControlInset<InsetError, string> {
+class ControlError : public Dialog::Controller {
 public:
 	///
-	ControlError(LyXView &, Dialogs &);
-private:
-	/// not needed.
-	virtual void applyParamsToInset() {}
+	ControlError(Dialog &);
 	///
-	virtual void applyParamsNoInset() {}
-	/// get the parameters from the string passed to createInset.
-	virtual string const getParams(string const &) { return string(); }
-	/// get the parameters from the inset passed to showInset.
-	virtual string const getParams(InsetError const &);
+	virtual void initialiseParams(string const &);
+	///
+	virtual void clearParams();
+	///
+	virtual void dispatchParams() {}
+	///
+	virtual bool isBufferDependent() const { return true; }
+	///
+	string & params() { return params_; }
+	///
+	string const & params() const { return params_; }
+	///
+private:
+	string params_;
 };
 
 #endif // CONTROLERROR_H

@@ -18,10 +18,10 @@
 #include "xforms_helpers.h" // formatted
 #include FORMS_H_LOCATION
 
-typedef FormCB<ControlError, FormDB<FD_error> > base_class;
+typedef FormController<ControlError, FormView<FD_error> > base_class;
 
-FormError::FormError()
-	: base_class(_("LaTeX Error"))
+FormError::FormError(Dialog & parent)
+	: base_class(parent, _("LaTeX Error"))
 {}
 
 

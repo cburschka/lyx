@@ -20,11 +20,11 @@
 #include <qlineedit.h>
 #include <qpushbutton.h>
 
-typedef Qt2CB<ControlIndex, Qt2DB<QIndexDialog> > base_class;
+typedef QController<ControlIndex, QView<QIndexDialog> > base_class;
 
 
-QIndex::QIndex()
-	: base_class(qt_("LyX: Insert Index Entry"))
+QIndex::QIndex(Dialog & parent)
+	: base_class(parent, qt_("LyX: Insert Index Entry"))
 {
 }
 

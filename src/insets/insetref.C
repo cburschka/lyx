@@ -28,13 +28,22 @@ InsetRef::InsetRef(InsetCommandParams const & p, Buffer const & buf, bool)
 {}
 
 
+InsetRef::~InsetRef()
+{
+	InsetCommandMailer mailer("ref", *this);
+	mailer.hideDialog();
+}
+
+
 void InsetRef::edit(BufferView * bv, int, int, mouse_button::state button)
 {
 	// FuncRequestually trigger dialog with button 3 not 1
 	if (button == mouse_button::button3)
 		bv->owner()->dispatch(FuncRequest(LFUN_REF_GOTO, getContents()));
-	else if (button == mouse_button::button1)
-		bv->owner()->getDialogs().showRef(this);
+	else if (button == mouse_button::button1) {
+		InsetCommandMailer mailer("ref", *this);
+		mailer.showDialog();
+	}
 }
 
 

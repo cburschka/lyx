@@ -25,6 +25,8 @@ public:
 	///
 	InsetBibtex(InsetCommandParams const &, bool same_id = false);
 	///
+	~InsetBibtex();
+	///
 	Inset * clone(Buffer const &, bool same_id = false) const {
 		return new InsetBibtex(params(), same_id);
 	}

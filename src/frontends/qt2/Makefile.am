@@ -14,11 +14,15 @@ INCLUDES = -I$(top_srcdir)/src/ -I$(top_srcdir)/src/frontends/ \
 
 AM_CXXFLAGS = -DQT_CLEAN_NAMESPACE -DQT_GENUINE_STR -DQT_NO_TRANSLATION
 
+
 libqt2_la_SOURCES = \
+	QDialogView.C \
+	QDialogView.h \
 	Alert_pimpl.C \
 	bulletstrings.C bulletstrings.h \
 	Dialogs.C \
 	Dialogs2.C \
+	Dialogs3.C \
 	Dialogs_impl.h \
 	FileDialog.C \
 	LyXKeySymFactory.C \

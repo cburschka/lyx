@@ -22,6 +22,18 @@ using std::vector;
 using std::ostream;
 
 
+InsetTOC::InsetTOC(InsetCommandParams const & p, bool same_id)
+	: InsetCommand(p, same_id)
+{}
+
+
+InsetTOC::~InsetTOC()
+{
+	InsetCommandMailer mailer("toc", *this);
+	mailer.hideDialog();
+}
+
+
 string const InsetTOC::getScreenLabel(Buffer const *) const
 {
 	string const cmdname(getCmdName());
@@ -41,9 +53,10 @@ Inset::Code InsetTOC::lyxCode() const
 }
 
 
-void InsetTOC::edit(BufferView * bv, int, int, mouse_button::state)
+void InsetTOC::edit(BufferView *, int, int, mouse_button::state)
 {
-	bv->owner()->getDialogs().showTOC(this);
+	InsetCommandMailer mailer("toc", *this);
+	mailer.showDialog();
 }
 
 

@@ -13,18 +13,18 @@
 #define QURL_H
 
 
-#include "Qt2Base.h"
+#include "QDialogView.h"
 
 class ControlUrl;
 class QURLDialog;
 
 
 class QURL :
-	public Qt2CB<ControlUrl, Qt2DB<QURLDialog> >
+	public QController<ControlUrl, QView<QURLDialog> >
 {
 public:
 	friend class QURLDialog;
-	QURL();
+	QURL(Dialog &);
 protected:
 	virtual bool isValid();
 private:

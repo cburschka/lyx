@@ -10,44 +10,38 @@
 
 #include <config.h>
 
-
 #include "ControlCommand.h"
+#include "Kernel.h"
 
-#include "BufferView.h"
 #include "funcrequest.h"
-#include "lyxfunc.h"
+#include "insets/insetcommand.h"
 
 
-ControlCommand::ControlCommand(LyXView & lv, Dialogs & d, kb_action ac)
-	: ControlInset<InsetCommand, InsetCommandParams>(lv, d),
+ControlCommand::ControlCommand(Dialog & dialog, kb_action ac)
+	: Dialog::Controller(dialog),
 	  action_(ac)
 {}
 
 
-InsetCommandParams const ControlCommand::getParams(string const & arg)
+void ControlCommand::initialiseParams(string const & data)
 {
-	InsetCommandParams params;
-	params.setFromString(arg);
-	return params;
+	InsetCommandMailer::string2params(data, params_);
 }
 
 
-InsetCommandParams const ControlCommand::getParams(InsetCommand const & inset)
+void ControlCommand::clearParams()
 {
-	return inset.params();
+	params_.setCmdName(string());
+	params_.setOptions(string());
+	params_.setContents(string());
 }
 
 
-void ControlCommand::applyParamsToInset()
-{
-	inset()->setParams(params());
-	bufferview()->updateInset(inset(), true);
-}
-
-
-void ControlCommand::applyParamsNoInset()
+void ControlCommand::dispatchParams()
 {
 	if (action_ == LFUN_NOACTION)
 		return;
-	lyxfunc().dispatch(FuncRequest(action_, params().getAsString()));
+
+	FuncRequest fr(action_, InsetCommandMailer::params2string(params_));
+	kernel().dispatch(fr);
 }

@@ -17,6 +17,7 @@
 #include "ControlCitation.h"
 #include "FormCitation.h"
 #include "forms/form_citation.h"
+#include "Kernel.h"
 #include "Tooltips.h"
 #include "helper_funcs.h"
 #include "xforms_helpers.h"
@@ -86,11 +87,11 @@ void updateStyle(FD_citation * dialog, string command)
 } // namespace anon
 
 
-typedef FormCB<ControlCitation, FormDB<FD_citation> > base_class;
+typedef FormController<ControlCitation, FormView<FD_citation> > base_class;
 
 
-FormCitation::FormCitation()
-	: base_class(_("Citation"))
+FormCitation::FormCitation(Dialog & parent)
+	: base_class(parent, _("Citation"))
 {}
 
 
@@ -124,7 +125,7 @@ void FormCitation::hide()
 	citekeys.clear();
 	bibkeys.clear();
 
-	FormBase::hide();
+	FormDialogView::hide();
 }
 
 
@@ -286,7 +287,7 @@ ButtonPolicy::SMInput FormCitation::input(FL_OBJECT * ob, long)
 			fl_set_browser_topline(dialog_->browser_cite, n + 1);
 		}
 
-		if (!controller().bufferIsReadonly()) {
+		if (!kernel().isBufferReadonly()) {
 			if (cit != citekeys.end()) {
 				setBibButtons(OFF);
 				setCiteButtons(ON);
@@ -301,7 +302,7 @@ ButtonPolicy::SMInput FormCitation::input(FL_OBJECT * ob, long)
 		if (sel < 1 || sel > citekeys.size())
 			return ButtonPolicy::SMI_NOOP;
 
-		if (!controller().bufferIsReadonly()) {
+		if (!kernel().isBufferReadonly()) {
 			setBibButtons(OFF);
 			setCiteButtons(ON);
 		}

@@ -20,10 +20,10 @@
 
 #include FORMS_H_LOCATION
 
-typedef FormCB<ControlIndex, FormDB<FD_index> > base_class;
+typedef FormController<ControlIndex, FormView<FD_index> > base_class;
 
-FormIndex::FormIndex()
-	: base_class(_("Index"))
+FormIndex::FormIndex(Dialog & parent)
+	: base_class(parent, _("Index"))
 {}
 
 

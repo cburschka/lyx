@@ -24,11 +24,11 @@
 #include "QBibitem.h"
 #include "Qt2BC.h"
 
-typedef Qt2CB<ControlBibitem, Qt2DB<QBibitemDialog> > base_class;
+typedef QController<ControlBibitem, QView<QBibitemDialog> > base_class;
 
 
-QBibitem::QBibitem()
-	: base_class(qt_("LyX: Insert Bibliography Item"))
+QBibitem::QBibitem(Dialog & parent)
+	: base_class(parent, qt_("LyX: Insert Bibliography Item"))
 {
 }
 

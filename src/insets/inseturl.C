@@ -27,9 +27,17 @@ InsetUrl::InsetUrl(InsetCommandParams const & p, bool)
 {}
 
 
-void InsetUrl::edit(BufferView * bv, int, int, mouse_button::state)
+InsetUrl::~InsetUrl()
 {
-	bv->owner()->getDialogs().showUrl(this);
+	InsetCommandMailer mailer("url", *this);
+	mailer.hideDialog();
+}
+
+
+void InsetUrl::edit(BufferView *, int, int, mouse_button::state)
+{
+	InsetCommandMailer mailer("url", *this);
+	mailer.showDialog();
 }
 
 

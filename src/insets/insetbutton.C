@@ -16,6 +16,7 @@
 #include "insetbutton.h"
 #include "debug.h"
 #include "BufferView.h"
+#include "frontends/LyXView.h"
 #include "frontends/Painter.h"
 #include "support/LAssert.h"
 #include "lyxfont.h"
@@ -95,6 +96,7 @@ void InsetButton::draw(BufferView * bv, LyXFont const &,
 			int baseline, float & x, bool) const
 {
 	lyx::Assert(bv);
+	cache(bv);
 
 	Painter & pain = bv->painter();
 	// Draw it as a box with the LaTeX text
@@ -111,4 +113,16 @@ void InsetButton::draw(BufferView * bv, LyXFont const &,
 	}
 
 	x += width(bv, font);
+}
+
+
+void InsetButton::cache(BufferView * bv) const
+{
+	view_ = bv->owner()->view();
+}
+
+
+BufferView * InsetButton::view() const
+{
+	return view_.get();
 }

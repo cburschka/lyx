@@ -14,13 +14,15 @@
 
 
 #include "ControlCommand.h"
+#include <vector>
+
 
 /** A controller for the Ref Dialog.
  */
 class ControlRef : public ControlCommand {
 public:
 	///
-	ControlRef(LyXView &, Dialogs &);
+	ControlRef(Dialog &);
 	///
 	std::vector<string> const getLabelList(string const &) const;
 	///
@@ -36,7 +38,7 @@ public:
 private:
 	/** disconnect from the inset when the Apply button is pressed.
 	 Allows easy insertion of multiple references. */
-	virtual bool disconnectOnApply() { return true; }
+	virtual bool disconnectOnApply() const { return true; }
 };
 
 #endif // CONTROLREF_H

@@ -16,27 +16,20 @@
 #include "controllers/GUI.h"
 
 #include "ControlAboutlyx.h"
-#include "ControlBibitem.h"
-#include "ControlBibtex.h"
 #include "ControlChanges.h"
 #include "ControlCharacter.h"
-#include "ControlCitation.h"
 #include "ControlDocument.h"
-#include "ControlError.h"
-#include "ControlERT.h"
 #include "ControlExternal.h"
 #include "ControlFloat.h"
 #include "ControlForks.h"
 #include "ControlGraphics.h"
 #include "insets/insetgraphicsParams.h"
 #include "ControlInclude.h"
-#include "ControlIndex.h"
 #include "ControlLog.h"
 #include "ControlMinipage.h"
 #include "ControlParagraph.h"
 #include "ControlPrefs.h"
 #include "ControlPrint.h"
-#include "ControlRef.h"
 #include "ControlSearch.h"
 #include "ControlSendto.h"
 #include "ControlShowFile.h"
@@ -44,29 +37,17 @@
 #include "ControlTabularCreate.h"
 #include "ControlTabular.h"
 #include "ControlTexinfo.h"
-#include "ControlToc.h"
-#include "ControlUrl.h"
 #include "ControlVCLog.h"
 #include "ControlWrap.h"
 
 #include "QAbout.h"
 #include "QAboutDialog.h"
-#include "QBibitem.h"
-#include "QBibitemDialog.h"
-#include "QBibtex.h"
-#include "QBibtexDialog.h"
 #include "QChanges.h"
 #include "QChangesDialog.h"
 #include "QCharacter.h"
 #include "QCharacterDialog.h"
-#include "QCitation.h"
-#include "QCitationDialog.h"
 #include "QDocument.h"
 #include "QDocumentDialog.h"
-#include "QError.h"
-#include "QErrorDialog.h"
-#include "QERT.h"
-#include "QERTDialog.h"
 #include "QExternal.h"
 #include "QExternalDialog.h"
 #include "QFloat.h"
@@ -80,8 +61,6 @@
 #include "QGraphicsDialog.h"
 #include "QInclude.h"
 #include "QIncludeDialog.h"
-#include "QIndex.h"
-#include "QIndexDialog.h"
 #include "QLog.h"
 #include "QLogDialog.h"
 #include "QMinipage.h"
@@ -92,8 +71,6 @@
 #include "QPrefsDialog.h"
 #include "QPrint.h"
 #include "QLPrintDialog.h"
-#include "QRef.h"
-#include "QRefDialog.h"
 #include "QSearch.h"
 #include "QSearchDialog.h"
 #include "QSendto.h"
@@ -115,10 +92,6 @@
 #include "QThesaurusDialog.h"
 #endif
 
-#include "QToc.h"
-#include "QTocDialog.h"
-#include "QURL.h"
-#include "QURLDialog.h"
 #include "QVCLog.h"
 #include "QVCLogDialog.h"
 #include "QWrap.h"
@@ -131,29 +104,14 @@
 typedef GUI<ControlAboutlyx, QAbout, OkCancelPolicy, Qt2BC>
 AboutlyxDialog;
 
-typedef GUI<ControlBibitem, QBibitem, OkCancelReadOnlyPolicy, Qt2BC>
-BibitemDialog;
-
-typedef GUI<ControlBibtex, QBibtex, OkCancelReadOnlyPolicy, Qt2BC>
-BibtexDialog;
-
 typedef GUI<ControlChanges, QChanges, NoRepeatedApplyReadOnlyPolicy, Qt2BC>
 ChangesDialog;
 
 typedef GUI<ControlCharacter, QCharacter, OkApplyCancelReadOnlyPolicy, Qt2BC>
 CharacterDialog;
 
-typedef GUI<ControlCitation, QCitation, NoRepeatedApplyReadOnlyPolicy, Qt2BC>
-CitationDialog;
-
 typedef GUI<ControlDocument, QDocument, NoRepeatedApplyReadOnlyPolicy, Qt2BC>
 DocumentDialog;
-
-typedef GUI<ControlError, QError, OkCancelPolicy, Qt2BC>
-ErrorDialog;
-
-typedef GUI<ControlERT, QERT, NoRepeatedApplyReadOnlyPolicy, Qt2BC>
-ERTDialog;
 
 typedef GUI<ControlExternal, QExternal, OkApplyCancelReadOnlyPolicy, Qt2BC>
 ExternalDialog;
@@ -170,9 +128,6 @@ GraphicsDialog;
 typedef GUI<ControlInclude, QInclude, OkCancelReadOnlyPolicy, Qt2BC>
 IncludeDialog;
 
-typedef GUI<ControlIndex, QIndex, NoRepeatedApplyReadOnlyPolicy, Qt2BC>
-IndexDialog;
-
 typedef GUI<ControlLog, QLog, OkCancelPolicy, Qt2BC>
 LogFileDialog;
 
@@ -187,9 +142,6 @@ PrefsDialog;
 
 typedef GUI<ControlPrint, QPrint, OkApplyCancelPolicy, Qt2BC>
 PrintDialog;
-
-typedef GUI<ControlRef, QRef, NoRepeatedApplyReadOnlyPolicy, Qt2BC>
-RefDialog;
 
 typedef GUI<ControlSearch, QSearch, NoRepeatedApplyReadOnlyPolicy, Qt2BC>
 SearchDialog;
@@ -214,12 +166,6 @@ typedef GUI<ControlThesaurus, QThesaurus, OkApplyCancelReadOnlyPolicy, Qt2BC>
 ThesaurusDialog;
 #endif
 
-typedef GUI<ControlToc, QToc, OkCancelPolicy, Qt2BC>
-TocDialog;
-
-typedef GUI<ControlUrl, QURL, NoRepeatedApplyReadOnlyPolicy, Qt2BC>
-UrlDialog;
-
 typedef GUI<ControlVCLog, QVCLog, OkCancelPolicy, Qt2BC>
 VCLogFileDialog;
 
@@ -231,26 +177,19 @@ struct Dialogs::Impl {
 	Impl(LyXView & lv, Dialogs & d);
 
 	AboutlyxDialog      aboutlyx;
-	BibitemDialog       bibitem;
-	BibtexDialog        bibtex;
 	ChangesDialog       changes;
 	CharacterDialog     character;
-	CitationDialog      citation;
 	DocumentDialog      document;
-	ErrorDialog         error;
-	ERTDialog           ert;
 	ExternalDialog      external;
 	FileDialog          file;
 	FloatDialog         floats;
 	GraphicsDialog      graphics;
 	IncludeDialog       include;
-	IndexDialog         index;
 	LogFileDialog       logfile;
 	MinipageDialog      minipage;
 	ParagraphDialog     paragraph;
 	PrefsDialog         prefs;
 	PrintDialog         print;
-	RefDialog           ref;
 	SearchDialog        search;
 	SendtoDialog        sendto;
 	SpellcheckerDialog  spellchecker;
@@ -262,8 +201,6 @@ struct Dialogs::Impl {
 	ThesaurusDialog     thesaurus;
 #endif
 
-	TocDialog           toc;
-	UrlDialog           url;
 	VCLogFileDialog     vclogfile;
 	WrapDialog          wrap;
 };

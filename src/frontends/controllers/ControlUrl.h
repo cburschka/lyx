@@ -21,7 +21,7 @@ class ControlUrl : public ControlCommand
 {
 public:
 	///
-	ControlUrl(LyXView &, Dialogs &);
+	ControlUrl(Dialog &);
 };
 
 #endif // CONTROLURL_H

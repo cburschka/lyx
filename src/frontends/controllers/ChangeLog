@@ -1,5 +1,26 @@
 2003-02-21  Angus Leeming  <leeming@lyx.org>
 
+	* Dialog.[Ch]:
+	* Kernel.[Ch]: a new, transparent MCV split of the dialogs code.
+
+	* ControlBibitem.[Ch]:
+	* ControlBibtex.[Ch]:
+	* ControlCitation.[Ch]:
+	* ControlCommand.[Ch]:
+	* ControlError.[Ch]:
+	* ControlIndex.[Ch]:
+	* ControlRef.[Ch]:
+	* ControlToc.[Ch]:
+	* ControlUrl.[Ch]: New MCV design leads to cleaner code for the
+	individual controllers too.
+	Move 'apply' code into the LyX kernel.
+
+	* ControlConnections.C: temporary renaming of Dialogs::signals.
+
+	* Makefile.am: add new files.
+	
+2003-02-21  Angus Leeming  <leeming@lyx.org>
+
 	* ControlBibtex.C (Browse):
 	* ControlExternal.C (Browse):
 	* ControlGraphics.C (Browse):

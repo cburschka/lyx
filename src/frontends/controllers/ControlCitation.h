@@ -21,7 +21,17 @@
 class ControlCitation : public ControlCommand {
 public:
 	///
-	ControlCitation(LyXView &, Dialogs &);
+	ControlCitation(Dialog &);
+
+	///
+	virtual void initialiseParams(string const & data);
+	/// clean-up on hide.
+	virtual void clearParams();
+
+	/** Disconnect from the inset when the Apply button is pressed.
+	 *  Allows easy insertion of multiple citations.
+	 */
+	virtual bool disconnectOnApply() const { return true; }
 
 	/// Returns a reference to the map of stored keys
 	biblio::InfoMap const & bibkeysInfo() const;
@@ -36,15 +46,6 @@ public:
 		return citeStyles_;
 	}
 private:
-	/// create the InfoMap of keys and data
-	virtual void setDaughterParams();
-	///
-	virtual void clearDaughterParams();
-
-	/** disconnect from the inset when the Apply button is pressed.
-	 Allows easy insertion of multiple citations. */
-	virtual bool disconnectOnApply() { return true; }
-
 	/// The info associated with each key
 	biblio::InfoMap bibkeysInfo_;
 

@@ -38,6 +38,8 @@ public:
 	///
 	InsetRef(InsetCommandParams const &, Buffer const &, bool same_id = false);
 	///
+	~InsetRef();
+	///
 	virtual Inset * clone(Buffer const & buffer, bool same_id = false) const {
 		return new InsetRef(params(), buffer, same_id);
 	}

@@ -27,10 +27,10 @@ using std::vector;
 using std::endl;
 
 
-typedef FormCB<ControlToc, FormDB<FD_toc> > base_class;
+typedef FormController<ControlToc, FormView<FD_toc> > base_class;
 
-FormToc::FormToc()
-	: base_class(_("Table of Contents"))
+FormToc::FormToc(Dialog & parent)
+	: base_class(parent, _("Table of Contents"))
 {}
 
 

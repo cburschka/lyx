@@ -11,27 +11,19 @@
 
 #include <config.h>
 
-
 #include "guiapi.h"
 #include "Dialogs.h"
 
 extern "C" {
 
+void gui_show_dialog(Dialogs * d, char const * name, char const * data)
+{
+	d->show(name, data, 0);
+}
+		
 void gui_ShowAboutlyx(Dialogs & d)
 {
 	d.showAboutlyx();
-}
-
-
-void gui_ShowBibitem(InsetCommand * ic, Dialogs & d)
-{
-	d.showBibitem(ic);
-}
-
-
-void gui_ShowBibtex(InsetCommand * ic, Dialogs & d)
-{
-	d.showBibtex(ic);
 }
 
 
@@ -47,39 +39,9 @@ void gui_SetUserFreeFont(Dialogs & d)
 }
 
 
-void gui_ShowCitation(InsetCommand * ic, Dialogs & d)
-{
-	d.showCitation(ic);
-}
-
-
-void gui_CreateCitation(string const & s, Dialogs & d)
-{
-	d.createCitation(s);
-}
-
-
 void gui_ShowDocument(Dialogs & d)
 {
 	d.showDocument();
-}
-
-
-void gui_ShowError(InsetError * ie, Dialogs & d)
-{
-	d.showError(ie);
-}
-
-
-void gui_ShowERT(InsetERT * ie, Dialogs & d)
-{
-	d.showERT(ie);
-}
-
-
-void gui_UpdateERT(InsetERT * ie, Dialogs & d)
-{
-	d.updateERT(ie);
 }
 
 
@@ -99,6 +61,7 @@ void gui_ShowFloat(InsetFloat * ifl, Dialogs & d)
 {
 	d.showFloat(ifl);
 }
+
 
 void gui_ShowWrap(InsetWrap * iw, Dialogs & d)
 {
@@ -120,18 +83,6 @@ void gui_ShowGraphics(InsetGraphics * ig, Dialogs & d)
 void gui_ShowInclude(InsetInclude * ii, Dialogs & d)
 {
 	d.showInclude(ii);
-}
-
-
-void gui_ShowIndex(InsetCommand * ic, Dialogs & d)
-{
-	d.showIndex(ic);
-}
-
-
-void gui_CreateIndex(Dialogs & d)
-{
-	d.createIndex();
 }
 
 
@@ -189,18 +140,6 @@ void gui_ShowPrint(Dialogs & d)
 }
 
 
-void gui_ShowRef(InsetCommand * ic, Dialogs & d)
-{
-	d.showRef(ic);
-}
-
-
-void gui_CreateRef(string const & s, Dialogs & d)
-{
-	d.createRef(s);
-}
-
-
 void gui_ShowSearch(Dialogs & d)
 {
 	d.showSearch();
@@ -246,30 +185,6 @@ void gui_ShowTexinfo(Dialogs & d)
 void gui_ShowThesaurus(string const & s, Dialogs & d)
 {
 	d.showThesaurus(s);
-}
-
-
-void gui_ShowTOC(InsetCommand * ic, Dialogs & d)
-{
-	d.showTOC(ic);
-}
-
-
-void gui_CreateTOC(string const & s, Dialogs & d)
-{
-	d.createTOC(s);
-}
-
-
-void gui_ShowUrl(InsetCommand * ic, Dialogs & d)
-{
-	d.showUrl(ic);
-}
-
-
-void gui_CreateUrl(string const & s, Dialogs & d)
-{
-	d.createUrl(s);
 }
 
 

@@ -15,7 +15,7 @@
 
 
 #include "ControlUrl.h"
-#include "GnomeBase.h"
+#include "GView.h"
 
 namespace Gtk {
 class Button;
@@ -26,7 +26,7 @@ class Entry;
 /**
  * This class implements the dialog to insert/modify urls.
  */
-class GUrl : public GnomeCB<ControlUrl> {
+class GUrl : public GControlledView<ControlUrl> {
 public:
 	///
 	GUrl();

@@ -11,52 +11,29 @@
 
 #include <config.h>
 
-
 #include "ControlERT.h"
-
-// sorry this is just a temporary hack we should include vspace.h! (Jug)
-extern const char * stringFromUnit(int);
+#include "funcrequest.h"
 
 
-ControlERT::ControlERT(LyXView & lv, Dialogs & d)
-	: ControlInset<InsetERT, ERTParams>(lv, d)
+ControlERT::ControlERT(Dialog & parent)
+	: Dialog::Controller(parent), status_(InsetERT::Collapsed)
 {}
 
 
-void ControlERT::applyParamsToInset()
+void ControlERT::initialiseParams(string const & data)
 {
-	inset()->status(bufferview(), params().status);
+	InsetERTMailer::string2params(data, status_);
 }
 
 
-void ControlERT::applyParamsNoInset()
+void ControlERT::clearParams()
 {
+	status_ = InsetERT::Collapsed;
 }
 
 
-ERTParams const ControlERT::getParams(InsetERT const & inset)
+void ControlERT::dispatchParams()
 {
-	return ERTParams(inset);
-}
-
-
-ERTParams::ERTParams()
-	: status(InsetERT::Collapsed)
-{}
-
-
-ERTParams::ERTParams(InsetERT const & inset)
-	: status(inset.status())
-{}
-
-
-bool operator==(ERTParams const & p1, ERTParams const & p2)
-{
-	return (p1.status == p2.status);
-}
-
-
-bool operator!=(ERTParams const & p1, ERTParams const & p2)
-{
-	return !(p1 == p2);
+	FuncRequest fr(LFUN_ERT_APPLY, InsetERTMailer::params2string(status_));
+	kernel().dispatch(fr);
 }

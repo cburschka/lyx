@@ -1,5 +1,16 @@
 2003-02-21  Angus Leeming  <leeming@lyx.org>
 
+	* Dialogs.[Ch]: simplify the dialog interface by using a few
+	methods to do generic things like 'show' a dialog. Individual
+	dialogs are invoked through a string 'name'.
+	Use methods 'hideAll' etc to replace signals of the same name: more
+	transparent code.
+
+	* guiapi.[Ch]: provide a C-interface to the new Dialogs::show
+	method. Retire the old functions that called dead Dialogs methods.
+	
+2003-02-21  Angus Leeming  <leeming@lyx.org>
+
 	* Timeout.[Ch]: define a Timeout::Impl abstract base class from
 	which the GUIs will derive their implementations. Means that
 	we no longer have to look into the GUIs to write the class.

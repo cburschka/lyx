@@ -13,7 +13,7 @@
 #define FORMTOC_H
 
 
-#include "FormBase.h"
+#include "FormDialogView.h"
 #include "toc.h"
 
 class ControlToc;
@@ -21,10 +21,10 @@ struct FD_toc;
 
 /** This class provides an XForms implementation of the FormToc Dialog.
  */
-class FormToc : public FormCB<ControlToc, FormDB<FD_toc> > {
+class FormToc : public FormController<ControlToc, FormView<FD_toc> > {
 public:
 	///
-	FormToc();
+	FormToc(Dialog &);
 private:
 	/// not needed
 	virtual void apply() {}

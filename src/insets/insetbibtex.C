@@ -12,12 +12,8 @@
 
 #include "insetbibtex.h"
 #include "buffer.h"
-#include "BufferView.h"
 #include "debug.h"
 #include "gettext.h"
-
-#include "frontends/LyXView.h"
-#include "frontends/Dialogs.h"
 
 #include "support/filetools.h"
 #include "support/path.h"
@@ -39,6 +35,13 @@ using std::pair;
 InsetBibtex::InsetBibtex(InsetCommandParams const & p, bool)
 	: InsetCommand(p)
 {}
+
+
+InsetBibtex::~InsetBibtex()
+{
+	InsetCommandMailer mailer("bibtex", *this);
+	mailer.hideDialog();
+}
 
 
 string const InsetBibtex::getScreenLabel(Buffer const *) const
@@ -185,9 +188,10 @@ void InsetBibtex::fillWithBibKeys
 }
 
 
-void InsetBibtex::edit(BufferView * bv, int, int, mouse_button::state)
+void InsetBibtex::edit(BufferView *, int, int, mouse_button::state)
 {
-	bv->owner()->getDialogs().showBibtex(this);
+	InsetCommandMailer mailer("bibtex", *this);
+	mailer.showDialog();
 }
 
 

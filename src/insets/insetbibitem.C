@@ -15,8 +15,6 @@
 #include "lyxlex.h"
 
 #include "frontends/font_metrics.h"
-#include "frontends/LyXView.h"
-#include "frontends/Dialogs.h"
 
 #include "support/lstrings.h"
 
@@ -32,6 +30,13 @@ InsetBibitem::InsetBibitem(InsetCommandParams const & p)
 {
 	if (getContents().empty())
 		setContents(key_prefix + tostr(++key_counter));
+}
+
+
+InsetBibitem::~InsetBibitem()
+{
+	InsetCommandMailer mailer("bibitem", *this);
+	mailer.hideDialog();
 }
 
 
@@ -91,9 +96,10 @@ string const InsetBibitem::getScreenLabel(Buffer const *) const
 }
 
 
-void InsetBibitem::edit(BufferView * bv, int, int, mouse_button::state)
+void InsetBibitem::edit(BufferView *, int, int, mouse_button::state)
 {
-	bv->owner()->getDialogs().showBibitem(this);
+	InsetCommandMailer mailer("bibitem", *this);
+	mailer.showDialog();
 }
 
 

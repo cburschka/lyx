@@ -20,8 +20,9 @@
 class InsetTOC : public InsetCommand {
 public:
 	///
-	InsetTOC(InsetCommandParams const & p, bool same_id = false)
-			: InsetCommand(p, same_id) {}
+	InsetTOC(InsetCommandParams const &, bool same_id = false);
+	///
+	~InsetTOC();
 	///
 	virtual Inset * clone(Buffer const &, bool same_id = false) const {
 		return new InsetTOC(params(), same_id);

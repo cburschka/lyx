@@ -20,10 +20,10 @@
 #include "gettext.h"
 #include "support/lstrings.h" // compare
 
-typedef FormCB<ControlBibitem, FormDB<FD_bibitem> > base_class;
+typedef FormController<ControlBibitem, FormView<FD_bibitem> > base_class;
 
-FormBibitem::FormBibitem()
-	: base_class(_("Bibliography Entry"))
+FormBibitem::FormBibitem(Dialog & parent)
+	: base_class(parent, _("Bibliography Entry"))
 {}
 
 

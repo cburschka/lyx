@@ -1,3 +1,12 @@
+2003-02-21  Angus Leeming  <leeming@lyx.org>
+
+	* formulabase.C (localDispatch): retire LFUN_REF_INSERT. Add
+	LFUN_DIALOG_SHOW_NEW_INSET "ref" and LFUN_REF_APPLY. The latter
+	is not yet safe. Posted some ideas to the list for further discussion.
+
+	* ref_inset.C (dispatch): a first stab at activating the code
+	to display the reference dialog from within mathed. Not yet working.
+
 2003-02-14  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* math_parser.C (parse1): Do not remove braces for {<expr>}^

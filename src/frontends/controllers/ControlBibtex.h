@@ -16,12 +16,14 @@
 
 #include "ControlCommand.h"
 
+
 /** A controller for Bibtex dialogs.
  */
 class ControlBibtex : public ControlCommand {
 public:
 	///
-	ControlBibtex(LyXView &, Dialogs &);
+	ControlBibtex(Dialog &);
+
 	/// Browse for a file
 	string const Browse(string const &, string const &, string const &);
 	/// get the list of bst files
@@ -31,11 +33,7 @@ public:
 	/// build filelists of all availabe bib/bst/cls/sty-files. done through
 	/// kpsewhich and an external script, saved in *Files.lst
 	void rescanBibStyles() const;
-private:
-	/// Dispatch the changed parameters to the kernel.
-	virtual void applyParamsToInset();
-	///
-	virtual void applyParamsNoInset();
 };
+
 
 #endif // CONTROLBIBTEX_H

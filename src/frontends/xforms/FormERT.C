@@ -20,10 +20,10 @@
 #include "debug.h"
 #include FORMS_H_LOCATION
 
-typedef FormCB<ControlERT, FormDB<FD_ert> > base_class;
+typedef  FormController<ControlERT, FormView<FD_ert> > base_class;
 
-FormERT::FormERT()
-	: base_class(_("ERT Options"))
+FormERT::FormERT(Dialog & parent)
+	: base_class(parent, _("ERT Options"))
 {}
 
 
@@ -45,17 +45,17 @@ void FormERT::build()
 void FormERT::apply()
 {
 	if (fl_get_button(dialog_->radio_open))
-		controller().params().status = InsetERT::Open;
+		controller().setStatus(InsetERT::Open);
 	else if (fl_get_button(dialog_->radio_collapsed))
-		controller().params().status = InsetERT::Collapsed;
+		controller().setStatus(InsetERT::Collapsed);
 	else
-		controller().params().status = InsetERT::Inlined;
+		controller().setStatus(InsetERT::Inlined);
 }
 
 
 void FormERT::update()
 {
-	switch (controller().params().status) {
+	switch (controller().status()) {
 	case InsetERT::Open:
 		fl_set_button(dialog_->radio_open, 1);
 		break;

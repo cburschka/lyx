@@ -97,17 +97,22 @@ Inset * createInset(FuncRequest const & cmd)
 			return 0;
 
 		case LFUN_INDEX_INSERT: {
-			string const entry = cmd.argument.empty() ?
-				"index" : cmd.argument;
-			InsetCommandParams icp;
-			icp.setFromString(entry);
+			// Try and generate a valid index entry.
+			InsetCommandParams icp("index");
+			string const contents = cmd.argument.empty() ?
+				bv->getLyXText()->getStringToIndex(bv) :
+				cmd.argument;
+			icp.setContents(contents);
 
-			if (icp.getContents().empty())
-				icp.setContents(bv->getLyXText()->getStringToIndex(bv));
-			if (!icp.getContents().empty())
-				return new InsetIndex(icp);
-			
-			bv->owner()->getDialogs().createIndex();
+			string data = InsetCommandMailer::params2string(icp);
+			LyXView * lv = bv->owner();
+
+			if (icp.getContents().empty()) {
+				lv->getDialogs().show("index", data, 0);
+			} else {
+				FuncRequest fr(bv, LFUN_INDEX_APPLY, data);
+				lv->dispatch(fr);
+			}
 			return 0;
 		}
 

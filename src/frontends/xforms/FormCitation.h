@@ -13,7 +13,7 @@
 #define FORMCITATION_H
 
 
-#include "FormBase.h"
+#include "FormDialogView.h"
 #include "biblio.h"
 
 /** This class provides an XForms implementation of the Citation Dialog.
@@ -21,10 +21,10 @@
 class ControlCitation;
 struct FD_citation;
 
-class FormCitation : public FormCB<ControlCitation, FormDB<FD_citation> > {
+class FormCitation : public FormController<ControlCitation, FormView<FD_citation> > {
 public:
 	///
-	FormCitation();
+	FormCitation(Dialog &);
 private:
 	///
 	enum State {

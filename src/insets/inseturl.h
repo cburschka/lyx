@@ -25,6 +25,8 @@ public:
 	explicit
 	InsetUrl(InsetCommandParams const &, bool same_id = false);
 	///
+	~InsetUrl();
+	///
 	virtual Inset * clone(Buffer const &, bool same_id = false) const {
 		return new InsetUrl(params(), same_id);
 	}

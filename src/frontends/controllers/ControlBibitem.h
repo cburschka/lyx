@@ -21,12 +21,7 @@
 class ControlBibitem : public ControlCommand {
 public:
 	///
-	ControlBibitem(LyXView &, Dialogs &);
-private:
-	/// Dispatch the changed parameters to the kernel.
-	virtual void applyParamsToInset();
-	/// not needed.
-	virtual void applyParamsNoInset() {}
+	ControlBibitem(Dialog &);
 };
 
 #endif // CONTROLBIBITEM_H

@@ -28,10 +28,10 @@ using std::max;
 using std::sort;
 using std::vector;
 
-typedef FormCB<ControlRef, FormDB<FD_ref> > base_class;
+typedef FormController<ControlRef, FormView<FD_ref> > base_class;
 
-FormRef::FormRef()
-	: base_class(_("Reference")),
+FormRef::FormRef(Dialog & parent)
+	: base_class(parent, _("Reference")),
 	  at_ref_(false)
 {}
 
@@ -90,16 +90,15 @@ void FormRef::update()
 	switch_go_button();
 
 	// Name is irrelevant to LaTeX/Literate documents
-	if (controller().docType() == ControlRef::LATEX ||
-	    controller().docType() == ControlRef::LITERATE) {
+	Kernel::DocTypes doctype = kernel().docType();
+	if (doctype == Kernel::LATEX || doctype == Kernel::LITERATE) {
 		setEnabled(dialog_->input_name, false);
 	} else {
 		setEnabled(dialog_->input_name, true);
 	}
 
 	// type is irrelevant to LinuxDoc/DocBook.
-	if (controller().docType() == ControlRef::LINUXDOC ||
-	    controller().docType() == ControlRef::DOCBOOK) {
+	if (doctype == Kernel::LINUXDOC || doctype == Kernel::DOCBOOK) {
 		fl_set_choice(dialog_->choice_format, 1);
 		setEnabled(dialog_->choice_format, false);
 	} else {
@@ -226,7 +225,7 @@ ButtonPolicy::SMInput FormRef::input(FL_OBJECT * ob, long)
 		if (sel < 1 || sel > refs_.size())
 			return ButtonPolicy::SMI_NOOP;
 
-		if (!controller().bufferIsReadonly()) {
+		if (!kernel().isBufferReadonly()) {
 			string s = fl_get_browser_line(dialog_->browser_refs, sel);
 			fl_set_input(dialog_->input_ref, s.c_str());
 		}

@@ -13,17 +13,17 @@
 #define FORMREF_H
 
 
-#include "FormBase.h"
+#include "FormDialogView.h"
 
 class ControlRef;
 struct FD_ref;
 
 /** This class provides an XForms implementation of the FormRef Dialog.
  */
-class FormRef : public FormCB<ControlRef, FormDB<FD_ref> > {
+class FormRef : public FormController<ControlRef, FormView<FD_ref> > {
 public:
 	///
-	FormRef();
+	FormRef(Dialog &);
 private:
 	/// Set the Params variable for the Controller.
 	virtual void apply();

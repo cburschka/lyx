@@ -1,0 +1,84 @@
+#include "Kernel.h"
+
+#include "buffer.h"
+#include "BufferView.h"
+#include "funcrequest.h"
+#include "lyxfunc.h"
+#include "frontends/Dialogs.h"
+#include "frontends/LyXView.h"
+
+Kernel::Kernel(LyXView & lyxview)
+	: lyxview_(lyxview)
+{}
+
+
+void Kernel::dispatch(FuncRequest const & fr, bool verbose) const
+{
+	lyxview_.getLyXFunc().dispatch(fr, verbose);
+}
+
+
+void Kernel::updateDialog(string const & name) const
+{
+	dispatch(FuncRequest(LFUN_DIALOG_UPDATE, name));
+}
+
+
+void Kernel::disconnect(string const & name) const
+{
+	lyxview_.getDialogs().disconnect(name);
+}
+
+bool Kernel::isBufferAvailable() const
+{
+	if (!lyxview_.view().get())
+                return false;
+        return lyxview_.view()->available();
+}
+
+
+bool Kernel::isBufferReadonly() const
+{
+	if (!lyxview_.buffer())
+                return true;
+        return lyxview_.buffer()->isReadonly();
+}
+
+
+Kernel::DocTypes Kernel::docType() const
+{
+	if (!buffer())
+		return LATEX;
+
+	if (buffer()->isLatex())
+		return LATEX;
+	if (buffer()->isLiterate())
+		return LITERATE;
+	if (buffer()->isLinuxDoc())
+		return LINUXDOC;
+
+	return DOCBOOK;
+}
+
+BufferView * Kernel::bufferview()
+{
+	return lyxview_.view().get();
+}
+
+
+BufferView const * Kernel::bufferview() const
+{
+	return lyxview_.view().get();
+}
+
+
+Buffer * Kernel::buffer()
+{
+	return lyxview_.buffer();
+}
+
+
+Buffer const * Kernel::buffer() const
+{
+	return lyxview_.buffer();
+}

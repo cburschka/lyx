@@ -38,11 +38,11 @@ using std::pair;
 using std::sort;
 using std::vector;
 
-typedef Qt2CB<ControlCitation, Qt2DB<QCitationDialog> > base_class;
+typedef QController<ControlCitation, QView<QCitationDialog> > base_class;
 
 
-QCitation::QCitation()
-	: base_class(qt_("LyX: Insert Citation"))
+QCitation::QCitation(Dialog & parent)
+	: base_class(parent, qt_("LyX: Insert Citation"))
 {}
 
 
@@ -71,7 +71,7 @@ void QCitation::hide()
 	citekeys.clear();
 	bibkeys.clear();
 
-	Qt2Base::hide();
+	QDialogView::hide();
 }
 
 

@@ -10,8 +10,9 @@
 
 #include <config.h>
 
-
 #include "ControlCitation.h"
+#include "Kernel.h"
+
 #include "buffer.h"
 
 using std::vector;
@@ -21,21 +22,17 @@ using std::pair;
 vector<biblio::CiteStyle> ControlCitation::citeStyles_;
 
 
-ControlCitation::ControlCitation(LyXView & lv, Dialogs & d)
-	: ControlCommand(lv, d, LFUN_CITATION_INSERT)
+ControlCitation::ControlCitation(Dialog & d)
+	: ControlCommand(d, LFUN_CITATION_APPLY)
 {}
 
 
-void ControlCitation::clearDaughterParams()
+void ControlCitation::initialiseParams(string const & data)
 {
-	bibkeysInfo_.clear();
-}
+	ControlCommand::initialiseParams(data);
 
-
-void ControlCitation::setDaughterParams()
-{
 	vector<pair<string,string> > blist;
-	buffer()->fillWithBibKeys(blist);
+	kernel().buffer()->fillWithBibKeys(blist);
 
 	typedef std::map<string, string>::value_type InfoMapValue;
 
@@ -55,6 +52,14 @@ void ControlCitation::setDaughterParams()
 }
 
 
+
+void ControlCitation::clearParams()
+{
+	ControlCommand::clearParams();
+	bibkeysInfo_.clear();
+}
+
+
 biblio::InfoMap const & ControlCitation::bibkeysInfo() const
 {
 	return bibkeysInfo_;
@@ -63,7 +68,7 @@ biblio::InfoMap const & ControlCitation::bibkeysInfo() const
 
 bool ControlCitation::usingNatbib() const
 {
-    return buffer()->params.use_natbib;
+    return kernel().buffer()->params.use_natbib;
 }
 
 
@@ -74,7 +79,7 @@ vector<string> const ControlCitation::getCiteStrings(string const & key) const
 	vector<biblio::CiteStyle> const cs =
 		biblio::getCiteStyles(usingNatbib());
 
-	if (buffer()->params.use_numerical_citations)
+	if (kernel().buffer()->params.use_numerical_citations)
 		styles = biblio::getNumericalStrings(key, bibkeysInfo_, cs);
 	else
 		styles = biblio::getAuthorYearStrings(key, bibkeysInfo_, cs);

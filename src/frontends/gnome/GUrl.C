@@ -20,7 +20,7 @@
 #include <gtkmm/button.h>
 
 GUrl::GUrl()
-	: GnomeCB<ControlUrl>("GUrl")
+	: GControlledView<ControlUrl>("GUrl")
 {}
 
 

@@ -40,8 +40,10 @@
 #include "iterators.h"
 #include "lyxfind.h"
 
+#include "insets/insetbibitem.h"
 #include "insets/insetbibtex.h"
 #include "insets/insetcite.h"
+#include "insets/insetert.h"
 #include "insets/insetfloatlist.h"
 #include "insets/insetgraphics.h"
 #include "insets/insetinclude.h"
@@ -51,6 +53,7 @@
 #include "insets/insetref.h"
 #include "insets/insettext.h"
 #include "insets/insettoc.h"
+#include "insets/inseturl.h"
 
 #include "mathed/formulabase.h"
 
@@ -1095,22 +1098,6 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev)
 		MenuInsertLabel(bv_, ev.argument);
 		break;
 
-	case LFUN_REF_INSERT:
-		if (ev.argument.empty()) {
-			InsetCommandParams p("ref");
-			owner_->getDialogs().createRef(p.getAsString());
-		} else {
-			InsetCommandParams p;
-			p.setFromString(ev.argument);
-
-			InsetRef * inset = new InsetRef(p, *buffer_);
-			if (!insertInset(inset))
-				delete inset;
-			else
-				updateInset(inset, true);
-		}
-		break;
-
 	case LFUN_BOOKMARK_SAVE:
 		savePosition(strToUnsignedInt(ev.argument));
 		break;
@@ -1185,69 +1172,211 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev)
 		mathDispatch(FuncRequest(bv_, ev.action, ev.argument));
 		break;
 
-	case LFUN_CITATION_INSERT:
-	{
-		InsetCommandParams p;
-		p.setFromString(ev.argument);
+	case LFUN_BIBITEM_APPLY: {
+		InsetCommandParams params;
+		InsetCommandMailer::string2params(ev.argument, params);
 
-		InsetCitation * inset = new InsetCitation(p);
-		if (!insertInset(inset))
-			delete inset;
-		else {
-			inset->setLoadingBuffer(bv_->buffer(), false);
-			updateInset(inset, true);
+		InsetBase * base =
+			owner_->getDialogs().getOpenInset("bibitem");
+		InsetBibitem * inset = 0;
+		if (base) {
+			inset = dynamic_cast<InsetBibitem *>(base);
+			if (!inset)
+				break;
+			
+			if (params.getContents() !=
+			    inset->params().getContents()) {
+				bv_->ChangeCitationsIfUnique(
+					inset->params().getContents(),
+					params.getContents());
+			}
+			inset->setParams(params);
+		} else {
+			inset = new InsetBibitem(params);
+			if (!insertInset(inset)) {
+				delete inset;
+				break;
+			}
+		}
+		updateInset(inset, true);
+
+		// We need to do a redraw because the maximum
+		// InsetBibitem width could have changed
+#warning please check you mean repaint() not update(),
+#warning and whether the repaint() is needed at all
+		bv_->repaint();
+		bv_->fitCursor();
+	}
+	break;
+
+	case LFUN_BIBTEX_APPLY: {
+		InsetCommandParams params;
+		InsetCommandMailer::string2params(ev.argument, params);
+
+		InsetBase * base =
+			owner_->getDialogs().getOpenInset("bibtex");
+		InsetBibtex * inset = 0;
+		if (base) {
+			inset = dynamic_cast<InsetBibtex *>(base);
+			if (!inset)
+				break;
+
+			if (params.getContents() !=
+			    inset->params().getContents()) {
+				bv_->ChangeCitationsIfUnique(
+					inset->params().getContents(),
+					params.getContents());
+			}
+			inset->setParams(params);
+		} else {
+			inset = new InsetBibtex(params);
+			if (!insertInset(inset)) {
+				delete inset;
+				break;
+			}
+		}
+		updateInset(inset, true);
+	}
+	break;
+
+	case LFUN_CITATION_APPLY: {
+		InsetCommandParams params;
+		InsetCommandMailer::string2params(ev.argument, params);
+
+		InsetBase * base =
+			owner_->getDialogs().getOpenInset("citation");
+		InsetCitation * inset = 0;
+		if (base) {
+			inset = dynamic_cast<InsetCitation *>(base);
+			if (!inset)
+				break;
+
+			inset->setParams(params);
+		} else {
+			inset = new InsetCitation(params);
+			if (!insertInset(inset)) {
+				delete inset;
+				break;
+			} else {
+				inset->setLoadingBuffer(bv_->buffer(), false);
+			}
+ 		}
+		updateInset(inset, true);
+	}
+	break;
+
+	case LFUN_ERT_APPLY: {
+		InsetBase * base = owner_->getDialogs().getOpenInset("ert");
+		InsetERT * inset = 0;
+		if (base) {
+			inset = dynamic_cast<InsetERT *>(base);
+			if (!inset)
+				break;
+		} else {
+			inset = new InsetERT(bv_->buffer()->params);
+			if (!insertInset(inset)) {
+				delete inset;
+				break;
+			}
 		}
 
+		InsetERT::ERTStatus status;
+		InsetERTMailer::string2params(ev.argument, status);
+
+		inset->status(bv_, status);
+		updateInset(inset, true);
 	}
 	break;
 
-	case LFUN_INSERT_BIBTEX:
-	{
-		// ale970405+lasgoutt970425
-		// The argument can be up to two tokens separated
-		// by a space. The first one is the bibstyle.
-		string const db = token(ev.argument, ' ', 0);
-		string bibstyle = token(ev.argument, ' ', 1);
-		if (bibstyle.empty())
-			bibstyle = "plain";
+	case LFUN_INDEX_APPLY: {
+		InsetCommandParams params;
+		InsetCommandMailer::string2params(ev.argument, params);
 
-		InsetCommandParams p("BibTeX", db, bibstyle);
-		InsetBibtex * inset = new InsetBibtex(p);
+		InsetBase * base = owner_->getDialogs().getOpenInset("index");
+		InsetIndex * inset = 0;
+		if (base) {
+			inset = dynamic_cast<InsetIndex *>(base);
+			if (!inset)
+				break;
 
-		if (insertInset(inset)) {
-			if (ev.argument.empty())
-				inset->edit(bv_);
-		} else
-			delete inset;
-	}
-	break;
-
-	// BibTeX data bases
-	case LFUN_BIBDB_ADD:
-	{
-		InsetBibtex * inset =
-			static_cast<InsetBibtex*>(getInsetByCode(Inset::BIBTEX_CODE));
-		if (inset) {
-			inset->addDatabase(ev.argument);
+			inset->setParams(params);
+		} else {
+			InsetIndex * inset = new InsetIndex(params);
+			if (!insertInset(inset)) {
+				delete inset;
+				break;
+			}
 		}
+		updateInset(inset, true);
 	}
 	break;
 
-	case LFUN_BIBDB_DEL:
-	{
-		InsetBibtex * inset =
-			static_cast<InsetBibtex*>(getInsetByCode(Inset::BIBTEX_CODE));
-		if (inset)
-			inset->delDatabase(ev.argument);
+	case LFUN_REF_APPLY: {
+		InsetCommandParams params;
+		InsetCommandMailer::string2params(ev.argument, params);
+
+		InsetBase * base = owner_->getDialogs().getOpenInset("ref");
+		InsetRef * inset = 0;
+		if (base) {
+			inset = dynamic_cast<InsetRef *>(base);
+			if (!inset)
+				break;
+
+			inset->setParams(params);
+		} else {
+			InsetRef * inset = new InsetRef(params, *buffer_);
+			if (!insertInset(inset)) {
+				delete inset;
+				break;
+			}
+		}
+		updateInset(inset, true);
 	}
 	break;
 
-	case LFUN_BIBTEX_STYLE:
-	{
-		InsetBibtex * inset =
-			static_cast<InsetBibtex*>(getInsetByCode(Inset::BIBTEX_CODE));
-		if (inset)
-			inset->setOptions(ev.argument);
+	case LFUN_TOC_APPLY: {
+		InsetCommandParams params;
+		InsetCommandMailer::string2params(ev.argument, params);
+
+		InsetBase * base = owner_->getDialogs().getOpenInset("toc");
+		InsetTOC * inset = 0;
+		if (base) {
+			InsetTOC * inset = dynamic_cast<InsetTOC *>(base);
+			if (!inset)
+				break;
+
+			inset->setParams(params);
+		} else {
+			InsetTOC * inset = new InsetTOC(params);
+			if (!insertInset(inset)) {
+				delete inset;
+				break;
+			}
+		}
+		updateInset(inset, true);
+	}
+	break;
+
+	case LFUN_URL_APPLY: {
+		InsetCommandParams params;
+		InsetCommandMailer::string2params(ev.argument, params);
+
+		InsetBase * base = owner_->getDialogs().getOpenInset("url");
+		InsetUrl * inset = 0;
+		if (base) {
+			inset = dynamic_cast<InsetUrl *>(base);
+			if (!inset)
+				break;
+
+			inset->setParams(params);
+		} else {
+			InsetUrl * inset = new InsetUrl(params);
+			if (!insertInset(inset)) {
+				delete inset;
+				break;
+			}
+		}
+		updateInset(inset, true);
 	}
 	break;
 

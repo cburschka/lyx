@@ -13,17 +13,18 @@
 #define FORMERROR_H
 
 
-#include "FormBase.h"
+#include "FormDialogView.h"
+
 
 class ControlError;
 struct FD_error;
 
 /** This class provides an XForms implementation of the Error Dialog.
  */
-class FormError : public FormCB<ControlError, FormDB<FD_error> > {
+class FormError : public FormController<ControlError, FormView<FD_error> > {
 public:
 	/// Constructor
-	FormError();
+	FormError(Dialog &);
 private:
 	/// not needed.
 	virtual void apply() {}

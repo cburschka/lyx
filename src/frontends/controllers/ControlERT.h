@@ -13,47 +13,30 @@
 #ifndef CONTROLERT_H
 #define CONTROLERT_H
 
-#include <vector>
+
+#include "Dialog.h"
+#include "insets/insetert.h" // InsetERT::ERTStatus
 
 
-#include "ControlInset.h"
-#include "insets/insetert.h" // InsetERT::Status
-
-/** This should be moved back into insetert.h and InsetERT should
-    contain an instance of it. */
-
-struct ERTParams {
-	///
-	ERTParams();
-	///
-	ERTParams(InsetERT const &);
-	///
-	InsetERT::ERTStatus status;
-};
-
-
-///
-bool operator==(ERTParams const &, ERTParams const &);
-///
-bool operator!=(ERTParams const &, ERTParams const &);
-
-
-/** A controller for ERT dialogs.
- */
-class ControlERT : public ControlInset<InsetERT, ERTParams>  {
+class ControlERT : public Dialog::Controller {
 public:
 	///
-	ControlERT(LyXView &, Dialogs &);
-private:
-	/// Dispatch the changed parameters to the kernel.
-	virtual void applyParamsToInset();
+	ControlERT(Dialog &);
 	///
-	virtual void applyParamsNoInset();
-	/// get the parameters from the string passed to createInset.
-	virtual ERTParams const getParams(string const &)
-		{ return ERTParams(); }
-	/// get the parameters from the inset passed to showInset.
-	virtual ERTParams const getParams(InsetERT const &);
+	InsetERT::ERTStatus status() const { return status_; }
+	///
+	void setStatus(InsetERT::ERTStatus status) { status_ = status; }
+	///
+	virtual void initialiseParams(string const & data);
+	/// clean-up on hide.
+	virtual void clearParams();
+	/// clean-up on hide.
+	virtual void dispatchParams();
+	///
+	virtual bool isBufferDependent() const { return true; }
+private:
+	///
+	InsetERT::ERTStatus status_;
 };
 
 #endif

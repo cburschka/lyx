@@ -1,3 +1,8 @@
+2003-02-21  Angus Leeming  <leeming@lyx.org>
+
+	* ui/default.ui: use the new 'dialog-show-new-inset "name"' instead
+	of 'citation-insert', 'reference-insert' and 'bibtex-insert'.
+
 2003-02-25  Angus Leeming  <leeming@lyx.org>
 
 	* reLyX/BasicLyX.pm (regularizeLatexLength, getAsLyXLength):

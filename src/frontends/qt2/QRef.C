@@ -35,11 +35,11 @@ using std::vector;
 using std::endl;
 
 
-typedef Qt2CB<ControlRef, Qt2DB<QRefDialog> > base_class;
+typedef QController<ControlRef, QView<QRefDialog> > base_class;
 
 
-QRef::QRef()
-	: base_class(qt_("LyX: Insert Cross-reference")),
+QRef::QRef(Dialog & parent)
+	: base_class(parent, qt_("LyX: Insert Cross-reference")),
 	sort_(false), at_ref_(false)
 {
 }
@@ -102,15 +102,17 @@ void QRef::apply()
 
 bool QRef::nameAllowed()
 {
-	return controller().docType() != ControlRef::LATEX &&
-		controller().docType() != ControlRef::LITERATE;
+	Kernel::DocTypes doc_type = kernel().docType();
+	return doc_type != Kernel::LATEX &&
+		doc_type != Kernel::LITERATE;
 }
 
 
 bool QRef::typeAllowed()
 {
-	return controller().docType() != ControlRef::LINUXDOC &&
-	    controller().docType() != ControlRef::DOCBOOK;
+	Kernel::DocTypes doc_type = kernel().docType();
+	return doc_type != Kernel::LINUXDOC &&
+		doc_type != Kernel::DOCBOOK;
 }
 
 

@@ -10,10 +10,7 @@
 
 #include <config.h>
 
-
 #include "ControlToc.h"
-#include "toc.h"
-
 #include "support/lstrings.h" // tostr
 
 using std::vector;
@@ -21,20 +18,20 @@ using std::vector;
 class Buffer;
 
 
-ControlToc::ControlToc(LyXView & lv, Dialogs & d)
-	: ControlCommand(lv, d, LFUN_TOC_INSERT)
+ControlToc::ControlToc(Dialog & d)
+	: ControlCommand(d, LFUN_TOC_APPLY)
 {}
 
 
-void ControlToc::goTo(toc::TocItem const & item) const
+void ControlToc::goTo(toc::TocItem const & item)
 {
-	item.goTo(lv_);
+	item.goTo(kernel().lyxview());
 }
 
 
 vector<string> const ControlToc::getTypes() const
 {
-	return toc::getTypes(buffer());
+	return toc::getTypes(kernel().buffer());
 }
 
 
@@ -43,11 +40,11 @@ toc::Toc const ControlToc::getContents(string const & type) const
 	toc::Toc empty_list;
 
 	// This shouldn't be possible...
-	if (!bufferIsAvailable()) {
+	if (!kernel().isBufferAvailable()) {
 		return empty_list;
 	}
 
-	toc::TocList tmp = toc::getTocList(buffer());
+	toc::TocList tmp = toc::getTocList(kernel().buffer());
 	toc::TocList::iterator it = tmp.find(type);
 	if (it == tmp.end()) {
 		return empty_list;

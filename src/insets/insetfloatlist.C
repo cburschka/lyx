@@ -41,6 +41,13 @@ InsetFloatList::InsetFloatList(string const & type)
 }
 
 
+InsetFloatList::~InsetFloatList()
+{
+	InsetCommandMailer mailer("toc", *this);
+	mailer.hideDialog();
+}
+
+
 string const InsetFloatList::getScreenLabel(Buffer const * buf) const
 {
 	FloatList const & floats = buf->params.getLyXTextClass().floats();
@@ -89,9 +96,10 @@ void InsetFloatList::read(Buffer const * buf, LyXLex & lex)
 }
 
 
-void InsetFloatList::edit(BufferView * bv, int, int, mouse_button::state)
+void InsetFloatList::edit(BufferView *, int, int, mouse_button::state)
 {
-	bv->owner()->getDialogs().showTOC(this);
+	InsetCommandMailer mailer("toc", *this);
+	mailer.showDialog();
 }
 
 

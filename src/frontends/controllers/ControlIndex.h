@@ -20,7 +20,7 @@
 class ControlIndex : public ControlCommand {
 public:
 	///
-	ControlIndex(LyXView &, Dialogs &);
+	ControlIndex(Dialog &);
 };
 
 #endif // CONTROLINDEX_H

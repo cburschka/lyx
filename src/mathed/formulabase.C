@@ -51,7 +51,7 @@
 #include "textpainter.h"
 #include "frontends/Dialogs.h"
 #include "intl.h"
-#include "insets/insetcommandparams.h"
+#include "insets/insetcommand.h"
 #include "ref_inset.h"
 
 using std::endl;
@@ -795,31 +795,42 @@ dispatch_result InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 		updateLocal(bv, true);
 		break;
 
-	case LFUN_REF_INSERT:
-		//if (argument.empty()) {
-		//	InsetCommandParams p("ref");
-		//	owner_->getDialogs().createRef(p.getAsString());
-		//} else {
-		//	InsetCommandParams p;
-		//	p.setFromString(argument);
+	case LFUN_DIALOG_SHOW_NEW_INSET: {
+		string const & name = argument;
+		if (name == "ref") {
+			InsetCommandParams p(name);
+			string data = InsetCommandMailer::params2string(p);
+			bv->owner()->getDialogs().show(name, data, 0);
+		} else
+			result = UNDISPATCHED;
+	}
+	break;
 
-		//	InsetRef * inset = new InsetRef(p, *buffer_);
-		//	if (!insertInset(inset))
-		//		delete inset;
-		//	else
-		//		updateInset(inset, true);
-		//}
-		//
-		if (cmd.argument.empty()) {
-			InsetCommandParams p("ref");
-			bv->owner()->getDialogs().createRef(p.getAsString());
+	case LFUN_REF_APPLY: {
+		InsetCommandParams params;
+		InsetCommandMailer::string2params(argument, params);
+
+		// It would be nice if RefInset could handle an
+		// InsetCommandParams arg, but for now we convert it to
+		// 'foo|++|bar|++|nonsense'.
+		string const tmp = params.getAsString();
+
+		InsetBase * base =
+			bv->owner()->getDialogs().getOpenInset("ref");
+		if (base) {
+			RefInset * inset = dynamic_cast<RefInset *>(base);
+			if (!inset) {
+				result = UNDISPATCHED;
+				break;
+			}
+
+			*inset = RefInset(tmp);
 		} else {
-			//mathcursor->handleNest(new InsetRef2);
-			//mathcursor->insert(arg);
-			mathcursor->insert(MathAtom(new RefInset(cmd.argument)));
+			mathcursor->insert(MathAtom(new RefInset(tmp)));
 		}
 		updateLocal(bv, true);
-		break;
+	}
+	break;
 
 	default:
 		result = UNDISPATCHED;

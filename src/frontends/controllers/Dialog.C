@@ -1,0 +1,165 @@
+// -*- C++ -*-
+/**
+ * \file Dialog.C
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
+ *
+ * \author Angus Leeming
+ *
+ * Full author contact details are available in file CREDITS
+ */
+
+#include <config.h>
+
+#include "Dialog.h"
+
+#include "ButtonControllerBase.h"
+#include "support/LAssert.h"
+
+
+Dialog::Dialog(LyXView & lv, string const & name)
+	: is_closing_(false), kernel_(lv), name_(name)
+{}
+
+
+void Dialog::ApplyButton()
+{
+	apply();
+	bc().apply();
+}
+
+
+void Dialog::OKButton()
+{
+	is_closing_ = true;
+	apply();
+	is_closing_ = false;
+	hide();
+	bc().ok();
+}
+
+
+void Dialog::CancelButton()
+{
+	hide();
+	bc().cancel();
+}
+
+
+void Dialog::RestoreButton()
+{
+	// Tell the kernel that a request to refresh the dialog's contents
+	// has been received. It's up to the kernel to supply the necessary
+	// info by calling Dialog::update().
+	kernel().updateDialog(name_);
+	bc().restore();
+}
+
+
+void Dialog::show(string const & data)
+{
+	if (controller().isBufferDependent() && !kernel().isBufferAvailable())
+		return;
+
+	controller().initialiseParams(data);
+	bc().readOnly(kernel().isBufferReadonly());
+	view().show();
+
+	// The widgets may not be valid, so refresh the button controller
+	bc().refresh();
+}
+
+
+void Dialog::update(string const & data)
+{
+	if (controller().isBufferDependent() && !kernel().isBufferAvailable())
+		return;
+
+	controller().initialiseParams(data);
+
+	bc().readOnly(kernel().isBufferReadonly());
+	view().update();
+
+	// The widgets may not be valid, so refresh the button controller
+	bc().refresh();
+}
+
+
+void Dialog::hide()
+{
+	if (!view().isVisible())
+		return;
+
+	controller().clearParams();
+	view().hide();
+}
+
+
+void Dialog::apply()
+{
+	if (kernel().isBufferReadonly())
+		return;
+
+	view().apply();
+	controller().dispatchParams();
+
+	if (controller().disconnectOnApply() && !is_closing_) {
+		kernel().disconnect(name());
+ 		controller().initialiseParams(string());
+		view().update();
+	}
+}
+
+
+bool Dialog::isVisible() const
+{
+	return view().isVisible();
+}
+
+
+void Dialog::redraw()
+{
+	view().redraw();
+}
+
+
+ButtonControllerBase & Dialog::bc() const
+{
+	lyx::Assert(bc_ptr_.get());
+	return *bc_ptr_.get();
+}
+
+
+Dialog::Controller & Dialog::controller() const
+{
+	lyx::Assert(controller_ptr_.get());
+	return *controller_ptr_.get();
+}
+
+
+Dialog::View & Dialog::view() const
+{
+	lyx::Assert(view_ptr_.get());
+	return *view_ptr_.get();
+}
+
+
+void Dialog::setButtonController(ButtonControllerBase * bc)
+{
+	lyx::Assert(bc && !bc_ptr_.get());
+	bc_ptr_.reset(bc);
+}
+
+
+void Dialog::setController(Controller * i)
+{
+	lyx::Assert(i && !controller_ptr_.get());
+	controller_ptr_.reset(i);
+}
+
+
+void Dialog::setView(View * v)
+{
+	lyx::Assert(v && !view_ptr_.get());
+	view_ptr_.reset(v);
+}

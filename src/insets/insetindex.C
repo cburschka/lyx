@@ -25,15 +25,23 @@ InsetIndex::InsetIndex(InsetCommandParams const & p, bool)
 {}
 
 
+InsetIndex::~InsetIndex()
+{
+	InsetCommandMailer mailer("index", *this);
+	mailer.hideDialog();
+}
+
+
 string const InsetIndex::getScreenLabel(Buffer const *) const
 {
 	return _("Idx");
 }
 
 
-void InsetIndex::edit(BufferView * bv, int, int, mouse_button::state)
+void InsetIndex::edit(BufferView *, int, int, mouse_button::state)
 {
-	bv->owner()->getDialogs().showIndex(this);
+	InsetCommandMailer mailer("index", *this);
+	mailer.showDialog();
 }
 
 

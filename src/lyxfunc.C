@@ -43,6 +43,8 @@
 #include "ParagraphParameters.h"
 
 #include "insets/insetcommand.h"
+#include "insets/inseterror.h"
+#include "insets/insetert.h"
 #include "insets/insettabular.h"
 
 #include "mathed/formulamacro.h"
@@ -559,12 +561,11 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 	case LFUN_REF_INSERT:
 		code = Inset::REF_CODE;
 		break;
-	case LFUN_CITATION_CREATE:
-	case LFUN_CITATION_INSERT:
-		code = Inset::CITE_CODE;
-		break;
-	case LFUN_INSERT_BIBTEX:
+	case LFUN_BIBTEX_APPLY:
 		code = Inset::BIBTEX_CODE;
+		break;
+	case LFUN_CITATION_APPLY:
+		code = Inset::CITE_CODE;
 		break;
 	case LFUN_INDEX_INSERT:
 		code = Inset::INDEX_CODE;
@@ -1047,27 +1048,10 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 		break;
 
 	case LFUN_TOCVIEW:
-#if 0
-	case LFUN_LOFVIEW:
-	case LFUN_LOTVIEW:
-	case LFUN_LOAVIEW:
-#endif
 	{
-		InsetCommandParams p;
-
-#if 0
-		if (action == LFUN_TOCVIEW)
-#endif
-			p.setCmdName("tableofcontents");
-#if 0
-		else if (action == LFUN_LOAVIEW)
-			p.setCmdName("listof{algorithm}{List of Algorithms}");
-		else if (action == LFUN_LOFVIEW)
-			p.setCmdName("listoffigures");
-		else
-			p.setCmdName("listoftables");
-#endif
-		owner->getDialogs().createTOC(p.getAsString());
+		InsetCommandParams p("tableofcontents");
+		string const data = InsetCommandMailer::params2string(p);
+		owner->getDialogs().show("toc", data, 0);
 		break;
 	}
 
@@ -1374,26 +1358,78 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 		owner->getDialogs().showMathPanel();
 		break;
 
-	case LFUN_CITATION_CREATE:
-	{
-		InsetCommandParams p("cite");
-
-		if (!argument.empty()) {
-			// This should be set at source, ie when typing
-			// "citation-insert foo" in the minibuffer.
-			// Question: would pybibliographer also need to be
-			// changed. Suspect so. Leave as-is therefore.
-			if (contains(argument, "|")) {
-				p.setContents(token(argument, '|', 0));
-				p.setOptions(token(argument, '|', 1));
-			} else {
-				p.setContents(argument);
-			}
-			dispatch(FuncRequest(view(), LFUN_CITATION_INSERT, p.getAsString()));
-		} else
-			owner->getDialogs().createCitation(p.getAsString());
+	case LFUN_DIALOG_SHOW_NEW_INSET: {
+		string const & name = argument;
+		string data;
+		if (name == "bibitem" ||
+		    name == "bibtex" ||
+		    name == "index" ||
+		    name == "ref" ||
+		    name == "toc" ||
+		    name == "url") {
+			InsetCommandParams p(name);
+			data = InsetCommandMailer::params2string(p);
+		} else if (name == "citation") {
+			InsetCommandParams p("cite");
+			data = InsetCommandMailer::params2string(p);
+// 		} else if (name == "error" || name == "ert") {
+// 			// need do nothing special
+		}
+                owner->getDialogs().show(name, data, 0);
 	}
 	break;
+
+	case LFUN_DIALOG_SHOW_NEXT_INSET: {
+	}
+	break;
+
+	case LFUN_DIALOG_UPDATE: {
+		string const & name = argument;
+		// Can only update a dialog connected to an existing inset
+		InsetBase * i = owner->getDialogs().getOpenInset(name);
+		if (!i)
+			break;
+
+		if (name == "bibitem" ||
+		    name == "bibtex" ||
+		    name == "citation" ||
+		    name == "index" ||
+		    name == "ref" ||
+		    name == "toc" ||
+		    name == "url") {
+			InsetCommand * inset = dynamic_cast<InsetCommand *>(i);
+			if (!inset)
+				break;
+
+			InsetCommandMailer mailer(name, *inset);
+			mailer.updateDialog();
+
+		} else if (name == "error") {
+			InsetError * inset = dynamic_cast<InsetError *>(i);
+			if (!inset)
+				break;
+
+			owner->getDialogs().update("error",
+						   inset->getContents());
+
+		} else if (name == "ert") {
+			InsetERT * inset = dynamic_cast<InsetERT *>(i);
+			if (!inset)
+				break;
+
+			InsetERTMailer mailer(*inset);
+			mailer.updateDialog();
+		}
+	}
+	break;
+
+	case LFUN_DIALOG_HIDE:
+		owner ->getDialogs().hide(argument);
+		break;
+
+	case LFUN_DIALOG_DISCONNECT_INSET:
+                owner->getDialogs().disconnect(argument);
+		break;
 
 	case LFUN_CHILDOPEN:
 	{

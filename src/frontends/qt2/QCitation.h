@@ -14,20 +14,20 @@
 #define QCITATION_H
 
 
-#include "Qt2Base.h"
+#include "QDialogView.h"
+
 
 class QListBox;
 class ControlCitation;
 class QCitationDialog;
 
 
-class QCitation
-	: public Qt2CB<ControlCitation, Qt2DB<QCitationDialog> >
+class QCitation : public QController<ControlCitation, QView<QCitationDialog> >
 {
 public:
 	friend class QCitationDialog;
 	///
-	QCitation();
+	QCitation(Dialog &);
 private:
 	///
 	enum State {

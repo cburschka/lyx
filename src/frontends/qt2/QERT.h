@@ -13,18 +13,19 @@
 #define QERT_H
 
 
-#include "Qt2Base.h"
+#include "QDialogView.h"
+
 
 class ControlERT;
 class QERTDialog;
 
-class QERT
-	: public Qt2CB<ControlERT, Qt2DB<QERTDialog> >
+
+class QERT : public QController<ControlERT, QView<QERTDialog> >
 {
 public:
 	friend class QERTDialog;
 
-	QERT();
+	QERT(Dialog &);
 private:
 	/// Apply changes
 	virtual void apply();

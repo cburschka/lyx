@@ -16,8 +16,6 @@
 
 #include "insetcollapsable.h"
 
-#include <boost/signals/signal0.hpp>
-
 /** A collapsable text inset for LaTeX insertions.
 
   To write full ert (including styles and other insets) in a given
@@ -69,8 +67,6 @@ public:
 	void edit(BufferView * bv, bool front = true);
 	///
 	EDITABLE editable() const;
-	///
-	boost::signal0<void> hideDialog;
 	///
 	int latex(Buffer const *, std::ostream &, bool fragile,
 		  bool free_spc) const;
@@ -154,5 +150,30 @@ private:
 	///
 	mutable ERTStatus status_;
 };
+
+
+#include "mailinset.h"
+
+class InsetERTMailer : public MailInset {
+public:
+	///
+	InsetERTMailer(InsetERT & inset);
+	///
+	virtual Inset & inset() const { return inset_; }
+	///
+	virtual string const & name() const { return name_; }
+	///
+	virtual string const inset2string() const;
+	///
+	static void string2params(string const &, InsetERT::ERTStatus &);
+	///
+	static string const params2string(InsetERT::ERTStatus);
+private:
+	///
+	string const name_;
+	///
+	InsetERT & inset_;
+};
+
 
 #endif

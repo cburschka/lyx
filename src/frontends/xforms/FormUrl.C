@@ -18,10 +18,10 @@
 #include "forms/form_url.h"
 #include FORMS_H_LOCATION
 
-typedef FormCB<ControlUrl, FormDB<FD_url> > base_class;
+typedef FormController<ControlUrl, FormView<FD_url> > base_class;
 
-FormUrl::FormUrl()
-	: base_class(_("Url"))
+FormUrl::FormUrl(Dialog & parent)
+	: base_class(parent, _("Url"))
 {}
 
 

@@ -33,10 +33,10 @@ using std::pair;
 using std::stack;
 using std::vector;
 
-typedef Qt2CB<ControlToc, Qt2DB<QTocDialog> > base_class;
+typedef QController<ControlToc, QView<QTocDialog> > base_class;
 
-QToc::QToc()
-	: base_class(qt_("LyX: Table of Contents")), depth_(1)
+QToc::QToc(Dialog & parent)
+	: base_class(parent, qt_("LyX: Table of Contents")), depth_(1)
 {}
 
 

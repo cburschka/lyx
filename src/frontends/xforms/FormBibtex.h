@@ -14,7 +14,7 @@
 #define FORMBIBTEX_H
 
 
-#include "FormBase.h"
+#include "FormDialogView.h"
 
 class ControlBibtex;
 struct FD_bibtex;
@@ -22,10 +22,10 @@ struct FD_bibtex;
 /**
  * For bibtex database setting
  */
-class FormBibtex : public FormCB<ControlBibtex, FormDB<FD_bibtex> > {
+class FormBibtex : public FormController<ControlBibtex, FormView<FD_bibtex> > {
 public:
 	///
-	FormBibtex();
+	FormBibtex(Dialog &);
 private:
 	/// Set the Params variable for the Controller.
 	virtual void apply();

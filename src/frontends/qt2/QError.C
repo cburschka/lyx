@@ -21,11 +21,11 @@
 #include "QError.h"
 #include "Qt2BC.h"
 
-typedef Qt2CB<ControlError, Qt2DB<QErrorDialog> > base_class;
+typedef QController<ControlError, QView<QErrorDialog> > base_class;
 
 
-QError::QError()
-	: base_class(qt_("LyX: LaTeX Error"))
+QError::QError(Dialog & parent)
+	: base_class(parent, qt_("LyX: LaTeX Error"))
 {
 }
 

@@ -22,24 +22,12 @@
 #include "ControlAboutlyx.h"
 #include "GAbout.h"
 
-#include "ControlBibitem.h"
-#include "FormBibitem.h"
-#include "forms/form_bibitem.h"
-
-#include "ControlBibtex.h"
-#include "FormBibtex.h"
-#include "forms/form_bibtex.h"
-
 #include "FormBrowser.h"
 #include "forms/form_browser.h"
 
 #include "ControlCharacter.h"
 #include "FormCharacter.h"
 #include "forms/form_character.h"
-
-#include "ControlCitation.h"
-#include "FormCitation.h"
-#include "forms/form_citation.h"
 
 #include "ControlChanges.h"
 #include "GChanges.h"
@@ -157,31 +145,16 @@
 typedef GUI<ControlAboutlyx, GAbout, OkCancelPolicy, gnomeBC>
 AboutlyxDialog;
 
-typedef GUI<ControlBibitem, FormBibitem, OkCancelReadOnlyPolicy, xformsBC>
-BibitemDialog;
-
-typedef GUI<ControlBibtex, FormBibtex, NoRepeatedApplyReadOnlyPolicy, xformsBC>
-BibtexDialog;
-
 typedef GUI<ControlCharacter, FormCharacter, OkApplyCancelReadOnlyPolicy, xformsBC>
 CharacterDialog;
 
 typedef GUI<ControlChanges, GChanges, NoRepeatedApplyReadOnlyPolicy, gnomeBC>
 ChangesDialog;
 
-typedef GUI<ControlCitation, FormCitation, NoRepeatedApplyReadOnlyPolicy, xformsBC>
-CitationDialog;
-
 typedef GUI<ControlDocument, FormDocument, NoRepeatedApplyReadOnlyPolicy, xformsBC>
 DocumentDialog;
 
-typedef GUI<ControlError, GErrorDialog, OkCancelPolicy, gnomeBC>
-ErrorDialog;
-
-typedef GUI<ControlERT, GERT, NoRepeatedApplyReadOnlyPolicy, gnomeBC>
-ERTDialog;
-
-typedef GUI<ControlExternal, FormExternal, OkApplyCancelReadOnlyPolicy, xformsBC>
+ypedef GUI<ControlExternal, FormExternal, OkApplyCancelReadOnlyPolicy, xformsBC>
 ExternalDialog;
 
 typedef GUI<ControlShowFile, FormShowFile, OkCancelPolicy, xformsBC>
@@ -198,9 +171,6 @@ GraphicsDialog;
 
 typedef GUI<ControlInclude, FormInclude, OkCancelReadOnlyPolicy, xformsBC>
 IncludeDialog;
-
-typedef GUI<ControlIndex, FormIndex, NoRepeatedApplyReadOnlyPolicy, xformsBC>
-IndexDialog;
 
 typedef GUI<ControlLog, GLog, OkCancelPolicy, gnomeBC>
 LogFileDialog;
@@ -222,9 +192,6 @@ PreferencesDialog;
 
 typedef GUI<ControlPrint, FormPrint, OkApplyCancelPolicy, xformsBC>
 PrintDialog;
-
-typedef GUI<ControlRef, FormRef, NoRepeatedApplyReadOnlyPolicy, xformsBC>
-RefDialog;
 
 typedef GUI<ControlSearch, FormSearch, NoRepeatedApplyReadOnlyPolicy, xformsBC>
 SearchDialog;
@@ -249,12 +216,6 @@ typedef GUI<ControlThesaurus, FormThesaurus, OkApplyCancelReadOnlyPolicy, xforms
 ThesaurusDialog;
 #endif
 
-typedef GUI<ControlToc, FormToc, OkCancelPolicy, xformsBC>
-TocDialog;
-
-typedef GUI<ControlUrl, GUrl, NoRepeatedApplyReadOnlyPolicy, gnomeBC>
-UrlDialog;
-
 typedef GUI<ControlVCLog, FormVCLog, OkCancelPolicy, xformsBC>
 VCLogFileDialog;
 
@@ -265,21 +226,15 @@ struct Dialogs::Impl {
 	Impl(LyXView & lv, Dialogs & d);
 
 	AboutlyxDialog      aboutlyx;
-	BibitemDialog       bibitem;
-	BibtexDialog        bibtex;
 	CharacterDialog     character;
 	ChangesDialog       changes;
-	CitationDialog      citation;
 	DocumentDialog      document;
-	ErrorDialog         error;
-	ERTDialog           ert;
 	ExternalDialog      external;
 	FileDialog          file;
 	FloatDialog         floats;
 	ForksDialog         forks;
 	GraphicsDialog      graphics;
 	IncludeDialog       include;
-	IndexDialog         index;
 	LogFileDialog       logfile;
 	MathPanelDialog     mathpanel;
 	MinipageDialog      minipage;
@@ -287,7 +242,6 @@ struct Dialogs::Impl {
 	PreambleDialog      preamble;
 	PreferencesDialog   preferences;
 	PrintDialog         print;
-	RefDialog           ref;
 	SearchDialog        search;
 	SendtoDialog        sendto;
 	SpellcheckerDialog  spellchecker;
@@ -299,8 +253,6 @@ struct Dialogs::Impl {
 	ThesaurusDialog     thesaurus;
 #endif
 
-	TocDialog           toc;
-	UrlDialog           url;
 	VCLogFileDialog     vclogfile;
 	WrapDialog          wrap;
 };

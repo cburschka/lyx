@@ -6,6 +6,21 @@
 
 2003-02-21  Angus Leeming  <leeming@lyx.org>
 
+	* commandtags.h: Retire LFUN_CITATION_INSERT, LFUN_CITATION_CREATE,
+	LFUN_INSERT_BIBTEX, LFUN_BIBTEX_STYLE, LFUN_BIBDB_ADD, LFUN_BIBDB_DEL.
+	Bring to life LFUN_DIALOG_SHOW_NEW_INSET, LFUN_DIALOG_SHOW_NEXT_INSET,
+	LFUN_DIALOG_UPDATE, LFUN_DIALOG_HIDE, LFUN_DIALOG_DISCONNECT_INSET,
+	LFUN_BIBITEM_APPLY, LFUN_BIBTEX_APPLY, LFUN_CITATION_APPLY,
+	LFUN_INDEX_APPLY, LFUN_REF_APPLY, LFUN_TOC_APPLY, LFUN_URL_APPLY,
+
+	* BufferView_pimpl.C (dispatch):
+	* LyXAction.C (init):
+	* factory.C (createInset):
+	* lyxfunc.C (getStatus, dispatch):
+	* text3.C (dispatch): retire old LFUNs and bring new ones to life.
+	
+2003-02-21  Angus Leeming  <leeming@lyx.org>
+
 	* BufferView_pimpl.C (MenuInsertLyXFile):
 	* lyx_cb.C (WriteAs, getContentsOfAsciiFile):
 	* lyxfunc.C (menuNew, open, doImport):

@@ -24,6 +24,8 @@ public:
 	///
 	InsetIndex(InsetCommandParams const &, bool same_id = false);
 	///
+	~InsetIndex();
+	///
 	virtual Inset * clone(Buffer const &, bool same_id = false) const {
 		return new InsetIndex(params(), same_id);
 	}

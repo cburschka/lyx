@@ -27,6 +27,7 @@
 
 #include "frontends/font_metrics.h"
 #include "frontends/Painter.h"
+#include "frontends/LyXView.h"
 
 #include "support/LOstream.h"
 #include "support/lstrings.h"
@@ -716,3 +717,17 @@ void InsetCollapsable::addPreview(grfx::PreviewLoader & loader) const
 {
 	inset.addPreview(loader);
 }
+
+
+void InsetCollapsable::cache(BufferView * bv) const
+{
+	view_ = bv->owner()->view();
+}
+
+
+BufferView * InsetCollapsable::view() const
+{
+	return view_.get();
+}
+
+

@@ -32,10 +32,10 @@ using std::vector;
 using std::sort;
 
 
-typedef FormCB<ControlBibtex, FormDB<FD_bibtex> > base_class;
+typedef FormController<ControlBibtex, FormView<FD_bibtex> > base_class;
 
-FormBibtex::FormBibtex()
-	: base_class(_("BibTeX Database"))
+FormBibtex::FormBibtex(Dialog & parent)
+	: base_class(parent, _("BibTeX Database"))
 {}
 
 
@@ -66,7 +66,7 @@ void FormBibtex::build()
 
 	// callback for double click in browser
 	fl_set_browser_dblclick_callback(dialog_->browser_styles,
-					 C_FormBaseInputCB, 2);
+					 C_FormDialogView_InputCB, 2);
 
 	// set up the tooltips
 	string str = _("The database you want to cite from. Insert it "

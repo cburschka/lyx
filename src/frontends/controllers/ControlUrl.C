@@ -14,6 +14,6 @@
 #include "ControlUrl.h"
 
 
-ControlUrl::ControlUrl(LyXView & lv, Dialogs & d)
-	: ControlCommand(lv, d, LFUN_INSERT_URL)
+ControlUrl::ControlUrl(Dialog & d)
+	: ControlCommand(d, LFUN_URL_APPLY)
 {}

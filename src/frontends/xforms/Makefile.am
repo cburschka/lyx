@@ -48,6 +48,7 @@ libxforms_la_SOURCES = \
 	ColorHandler.h \
 	Dialogs.C \
 	Dialogs2.C \
+	Dialogs3.C \
 	Dialogs_impl.h \
 	DropDown.h \
 	DropDown.C \
@@ -60,6 +61,8 @@ libxforms_la_SOURCES = \
 	FormAboutlyx.h \
 	FormBase.C \
 	FormBase.h \
+	FormDialogView.C \
+	FormDialogView.h \
 	FormBibitem.C \
 	FormBibitem.h \
 	FormBibtex.C \
@@ -163,17 +166,3 @@ libxforms_la_SOURCES = \
 	XWorkArea.C
 
 libxforms.la: $(libxforms_la_OBJECTS) $(libxforms_la_DEPENDENCIES)
-
-# just copied from old lyx repository
-#dist-hook:
-#	for subdir in $(LYXDATADIRS) ; do \
-#	test -d $(distdir)/$$subdir \
-#	|| mkdir $(distdir)/$$subdir \
-#	|| exit 1; \
-#	chmod 777 $(distdir)/$$subdir; \
-#	list=`(cd $(srcdir)/$$subdir && ls -1 | grep -v CVS)`; \
-#	echo $$list ; \
-#	for fil in $$list ; do \
-#	cp -p $(srcdir)/$$subdir/$$fil $(distdir)/$$subdir ; \
-#	done ; \
-#	done

@@ -15,7 +15,7 @@
 
 
 #include "ControlError.h"
-#include "GnomeBase.h"
+#include "GView.h"
 
 namespace Gtk {
 
@@ -27,7 +27,7 @@ class TextView;
 /**
  * This class implements the dialog to show error messages.
  */
-class GErrorDialog : public GnomeCB<ControlError> {
+class GErrorDialog : public GControlledView<ControlError> {
 public:
 	///
 	GErrorDialog();

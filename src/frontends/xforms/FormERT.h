@@ -13,7 +13,8 @@
 #define FORMERT_H
 
 
-#include "FormBase.h"
+#include "FormDialogView.h"
+
 
 class ControlERT;
 struct FD_ert;
@@ -21,11 +22,10 @@ struct FD_ert;
 /** This class provides an XForms implementation of the ERT
     Dialog.
  */
-class FormERT
-	: public FormCB<ControlERT, FormDB<FD_ert> > {
+class FormERT : public FormController<ControlERT, FormView<FD_ert> > {
 public:
 	///
-	FormERT();
+	FormERT(Dialog &);
 private:
 	/// Set the Params variable for the Controller.
 	virtual void apply();

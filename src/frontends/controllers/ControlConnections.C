@@ -125,7 +125,7 @@ ControlConnectBI::ControlConnectBI(LyXView & lv, Dialogs & d)
 
 void ControlConnectBI::connect()
 {
-	h_ = d_.hideAll.connect(boost::bind(&ControlConnectBI::hide, this));
+	h_ = d_.hideAllSignal.connect(boost::bind(&ControlConnectBI::hide, this));
 	ControlConnectBase::connect();
 }
 
@@ -136,9 +136,9 @@ ControlConnectBD::ControlConnectBD(LyXView & lv, Dialogs & d)
 
 void ControlConnectBD::connect()
 {
-	u_ = d_.updateBufferDependent.
+	u_ = d_.updateBufferDependentSignal.
 		connect(boost::bind(&ControlConnectBD::updateSlot, this, _1));
-	h_ = d_.hideBufferDependent.
+	h_ = d_.hideBufferDependentSignal.
 		connect(boost::bind(&ControlConnectBD::hide, this));
 	ControlConnectBase::connect();
 }

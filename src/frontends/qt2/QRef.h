@@ -13,7 +13,7 @@
 #define QREF_H
 
 
-#include "Qt2Base.h"
+#include "QDialogView.h"
 #include <vector>
 #include "LString.h"
 
@@ -22,12 +22,12 @@ class QRefDialog;
 
 
 class QRef
-	: public Qt2CB<ControlRef, Qt2DB<QRefDialog> >
+	: public QController<ControlRef, QView<QRefDialog> >
 {
 public:
 	friend class QRefDialog;
 
-	QRef();
+	QRef(Dialog &);
 private:
 	/// apply changes
 	virtual void apply();

@@ -23,6 +23,8 @@ public:
 	///
 	InsetCitation(InsetCommandParams const &, bool same_id = false);
 	///
+	~InsetCitation();
+	///
 	Inset * clone(Buffer const &, bool same_id = false) const {
 		return new InsetCitation(params(), same_id);
 	}

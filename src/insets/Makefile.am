@@ -13,6 +13,8 @@ EXTRA_DIST = \
 	insettheorem.h
 
 libinsets_la_SOURCES = \
+	mailinset.C \
+	mailinset.h \
 	ExternalTemplate.C \
 	ExternalTemplate.h \
 	inset.C \

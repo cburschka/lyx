@@ -1,4 +1,4 @@
-// -*- C++ -*-
+// -*- C++ --*
 /* ======================================================================= *\
    Docu   : To add a new function:
    - add a new enum constant immediately before LFUN_LASTACTION
@@ -190,8 +190,6 @@ enum kb_action {
 	LFUN_MENUNEWTMPLT,              // Asger 1997-02-02
 	LFUN_MENURELOAD,                // Asger 1997-02-02
 	LFUN_RECONFIGURE, // 170        // Asger 1997-02-14
-	LFUN_CITATION_INSERT,           // AAS 97-02-23
-	LFUN_INSERT_BIBTEX,             // AAS 97-02-23
 	LFUN_INDEX_PRINT,               // Lgb 97-02-27
 	LFUN_APROPOS,                   // Asger 1997-02-27
 	LFUN_LATEX_LOG,                 // Lgb 97-04-05
@@ -203,9 +201,6 @@ enum kb_action {
 	LFUN_TOC_INSERT,                // Lgb 97-05-27
 	LFUN_FLOAT_LIST,                // Lgb 20010503
 	LFUN_READ_ONLY_TOGGLE,          // Lgb 97-05-27
-	LFUN_BIBDB_ADD,                 // Ale 970530
-	LFUN_BIBDB_DEL,                 // Ale 970530
-	LFUN_BIBTEX_STYLE, // 190       // Ale 970530
 	LFUN_GETTIP,                    // Ale 970603
 	LFUN_VC_REGISTER,               // Lgb 97-07-01
 	LFUN_VC_CHECKIN,                // Lgb 97-07-01
@@ -258,7 +253,6 @@ enum kb_action {
 	LFUN_INSET_LIST,                // Lgb 20000627
 	LFUN_INSET_THEOREM,             // Lgb 20000630
 #endif
-	LFUN_CITATION_CREATE, // 240    // Angus 20000705
 	LFUN_INSET_CAPTION,             // Lgb 20000718
 	LFUN_SWITCHBUFFER,  // and where is this coming from?
 	LFUN_INSERT_URL,                // Angus 20000726
@@ -296,7 +290,20 @@ enum kb_action {
 	LFUN_REJECT_CHANGE,             // Levon 20021016
 	LFUN_ACCEPT_ALL_CHANGES,        // Levon 20021016
 	LFUN_REJECT_ALL_CHANGES,        // Levon 20021016
-	LFUN_INSERT_BIBITEM,             // André 14 Feb 2003
+	LFUN_INSERT_BIBITEM,            // André 14 Feb 2003
+	LFUN_DIALOG_SHOW_NEW_INSET,
+	LFUN_DIALOG_SHOW_NEXT_INSET,
+	LFUN_DIALOG_UPDATE,
+	LFUN_DIALOG_HIDE,
+	LFUN_DIALOG_DISCONNECT_INSET,
+	LFUN_BIBITEM_APPLY,
+	LFUN_BIBTEX_APPLY,
+	LFUN_CITATION_APPLY,
+	LFUN_ERT_APPLY,
+	LFUN_INDEX_APPLY,
+	LFUN_REF_APPLY,
+	LFUN_TOC_APPLY,
+	LFUN_URL_APPLY,
 	LFUN_LASTACTION  /* this marks the end of the table */
 };
 

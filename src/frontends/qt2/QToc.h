@@ -14,19 +14,19 @@
 #define QTOC_H
 
 
-#include "Qt2Base.h"
+#include "QDialogView.h"
 #include "toc.h"
 
 class ControlToc;
 class QTocDialog;
 
 class QToc :
-	public Qt2CB<ControlToc, Qt2DB<QTocDialog> >
+	public QController<ControlToc, QView<QTocDialog> >
 {
 public:
 	friend class QTocDialog;
 
-	QToc();
+	QToc(Dialog &);
 private:
 	/// update the listview
 	void updateToc(int newdepth);

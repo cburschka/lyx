@@ -10,17 +10,22 @@
 
 #include <config.h>
 
-
 #include "ControlError.h"
-#include "insets/inseterror.h"
 
 
-ControlError::ControlError(LyXView & lv, Dialogs & d)
-	: ControlInset<InsetError, string>(lv, d)
+ControlError::ControlError(Dialog & parent)
+	: Dialog::Controller(parent)
 {}
 
 
-string const ControlError::getParams(InsetError const & inset)
+void ControlError::initialiseParams(string const & data)
 {
-	return inset.getContents();
+	params_ = data;
 }
+
+
+void ControlError::clearParams()
+{
+	params_.clear();
+}
+

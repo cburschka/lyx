@@ -19,7 +19,7 @@
 #include <gtkmm/textview.h>
 
 GErrorDialog::GErrorDialog()
-	: GnomeCB<ControlError>("GError")
+	: GControlledView<ControlError>("GError")
 {}
 
 

@@ -1,3 +1,38 @@
+2003-02-21  Angus Leeming  <leeming@lyx.org>
+
+	* FormDialogView.[Ch]: new base class for the xforms dialogs,
+	deriving from Dialog::View. Otherwise identical to the existing
+	FormBase that derives from ViewBase.
+
+	* Dialogs_impl.h:
+	* Dialogs.C:
+	* Dilaogs2.C: strip out those dialogs that now use the new
+	Dialog class as the platform for an MCV split.
+
+	* Dialogs3.C: new file. Lazy instantiation of those dialogs that
+	now use the new Dialog class.
+
+	* FormBibitem.[Ch]:
+	* FormBibtex.[Ch]:
+	* FormCitation.[Ch]:
+	* FormError.[Ch]:
+	* FormERT.[Ch]:
+	* FormIndex.[Ch]:
+	* FormRef.[Ch]:
+	* FormToc.[Ch]:
+	* FormUrl.[Ch]:
+	* forms/form_bibitem.fd:
+	* forms/form_bibtex.fd:
+	* forms/form_citation.fd:
+	* forms/form_error.fd:
+	* forms/form_ert.fd:
+	* forms/form_index.fd:
+	* forms/form_ref.fd:
+	* forms/form_toc.fd:
+	* forms/form_url.fd: minor changes to reflect the new heirarchy.
+
+	* Makefile.am: add new files.
+
 2003-02-22  Alfredo Braunstein <abraunst@libero.it>
 
 	* lyx_gui.C (parse_init): added a call to LoaderQueue::setPriority

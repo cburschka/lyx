@@ -13,19 +13,19 @@
 #define QERROR_H
 
 
-#include "Qt2Base.h"
+#include "QDialogView.h"
 
 class ControlError;
 class QErrorDialog;
 
 
 class QError
-	: public Qt2CB<ControlError, Qt2DB<QErrorDialog> >
+	: public QController<ControlError, QView<QErrorDialog> >
 {
 public:
 	friend class QErrorDialog;
 
-	QError();
+	QError(Dialog &);
 private:
 	/// Apply changes
 	virtual void apply() {}

@@ -23,6 +23,7 @@ xforms_objects = \
 	../xforms/FontInfo.lo \
 	../xforms/FormAboutlyx.lo \
 	../xforms/FormBase.lo \
+	../xforms/FormDialogView.lo \
 	../xforms/FormBibitem.lo \
 	../xforms/FormBibtex.lo \
 	../xforms/FormBrowser.lo \
@@ -149,6 +150,8 @@ libgnome_la_SOURCES = \
 	gnome_helpers.h \
 	GnomeBase.C \
 	GnomeBase.h \
+	GView.C \
+	GView.h \
 	gnomeBC.C \
 	gnomeBC.h \
 	lyx_gui.C \

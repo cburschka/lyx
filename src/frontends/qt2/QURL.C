@@ -23,11 +23,11 @@
 #include <qpushbutton.h>
 #include <qlineedit.h>
 
-typedef Qt2CB<ControlUrl, Qt2DB<QURLDialog> > base_class;
+typedef QController<ControlUrl, QView<QURLDialog> > base_class;
 
 
-QURL::QURL()
-	: base_class(qt_("LyX: Insert URL"))
+QURL::QURL(Dialog & parent)
+	: base_class(parent, qt_("LyX: Insert URL"))
 {
 }
 

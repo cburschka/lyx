@@ -14,6 +14,6 @@
 #include "ControlIndex.h"
 
 
-ControlIndex::ControlIndex(LyXView & lv, Dialogs & d)
-	: ControlCommand(lv, d, LFUN_INDEX_INSERT)
+ControlIndex::ControlIndex(Dialog & d)
+	: ControlCommand(d, LFUN_INDEX_APPLY)
 {}

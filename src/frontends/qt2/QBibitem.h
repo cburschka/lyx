@@ -13,18 +13,18 @@
 #define QBIBITEM_H
 
 
-#include "Qt2Base.h"
+#include "QDialogView.h"
 
 class ControlBibitem;
 class QBibitemDialog;
 
 class QBibitem
-	: public Qt2CB<ControlBibitem, Qt2DB<QBibitemDialog> >
+	: public QController<ControlBibitem, QView<QBibitemDialog> >
 {
 public:
 	friend class QBibitemDialog;
 
-	QBibitem();
+	QBibitem(Dialog &);
 protected:
 	virtual bool isValid();
 private:

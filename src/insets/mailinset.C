@@ -1,0 +1,49 @@
+// -*- C++ -*-
+/**
+ * \file mailinset.C
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
+ *
+ * \author Angus Leeming
+ *
+ * Full author contact details are available in file CREDITS
+ */
+
+#include <config.h>
+
+#include "mailinset.h"
+#include "inset.h"
+#include "BufferView.h"
+#include "frontends/LyXView.h"
+#include "frontends/Dialogs.h"
+#include "Lsstream.h"
+
+
+void MailInset::showDialog() const
+{
+	BufferView * bv = inset().view();
+	if (!bv)
+		return;
+
+	bv->owner()->getDialogs().show(name(), inset2string(), &inset());
+}
+
+
+void MailInset::updateDialog() const
+{
+	BufferView * bv = inset().view();
+	if (!bv)
+		return;
+
+	bv->owner()->getDialogs().update(name(), inset2string());
+}
+
+
+void MailInset::hideDialog() const
+{
+	BufferView * bv = inset().view();
+	if (!bv)
+		return;
+
+	bv->owner()->getDialogs().hide(name());
+}

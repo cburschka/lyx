@@ -14,19 +14,19 @@
 #define QINDEX_H
 
 
-#include "Qt2Base.h"
+#include "QDialogView.h"
 
 class ControlIndex;
 class QIndexDialog;
 
 
 class QIndex :
-	public Qt2CB<ControlIndex, Qt2DB<QIndexDialog> >
+	public QController<ControlIndex, QView<QIndexDialog> >
 {
 public:
 	friend class QIndexDialog;
 
-	QIndex();
+	QIndex(Dialog &);
 protected:
 	virtual bool isValid();
 private:

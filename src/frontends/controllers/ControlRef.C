@@ -24,8 +24,8 @@ using std::vector;
 extern BufferList bufferlist;
 
 
-ControlRef::ControlRef(LyXView & lv, Dialogs & d)
-	: ControlCommand(lv, d, LFUN_REF_INSERT)
+ControlRef::ControlRef(Dialog & d)
+	: ControlCommand(d, LFUN_REF_APPLY)
 {}
 
 
@@ -33,21 +33,21 @@ vector<string> const ControlRef::getLabelList(string const & name) const
 {
 	Buffer const * buf = bufferlist.getBuffer(MakeAbsPath(name));
 	if (!buf)
-		buf = buffer();
+		buf = kernel().buffer();
 	return buf->getLabelList();
 }
 
 
 void ControlRef::gotoRef(string const & ref)
 {
-	lyxfunc().dispatch(FuncRequest(LFUN_BOOKMARK_SAVE, "0"), false);
-	lyxfunc().dispatch(FuncRequest(LFUN_REF_GOTO, ref));
+	kernel().dispatch(FuncRequest(LFUN_BOOKMARK_SAVE, "0"), false);
+	kernel().dispatch(FuncRequest(LFUN_REF_GOTO, ref));
 }
 
 
 void ControlRef::gotoBookmark()
 {
-	lyxfunc().dispatch(FuncRequest(LFUN_BOOKMARK_GOTO, "0"), false);
+	kernel().dispatch(FuncRequest(LFUN_BOOKMARK_GOTO, "0"), false);
 }
 
 
@@ -66,7 +66,7 @@ vector<string> const ControlRef::getBufferList() const
 int ControlRef::getBufferNum() const
 {
 	vector<string> buffers = bufferlist.getFileNames();
-	string const name = buffer()->fileName();
+	string const name = kernel().buffer()->fileName();
 	vector<string>::const_iterator cit =
 		find(buffers.begin(), buffers.end(), name);
 	if (cit == buffers.end())

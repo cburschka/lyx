@@ -10,7 +10,6 @@
  */
 #include <config.h>
 
-
 #include "insetert.h"
 #include "insettext.h"
 
@@ -31,6 +30,8 @@
 #include "frontends/LyXView.h"
 
 #include "support/LOstream.h"
+#include "support/LAssert.h"
+#include "support/lstrings.h"
 
 
 using std::ostream;
@@ -104,7 +105,8 @@ InsetERT::InsetERT(BufferParams const & bp,
 
 InsetERT::~InsetERT()
 {
-	hideDialog();
+	InsetERTMailer mailer(*this);
+	mailer.hideDialog();
 }
 
 
@@ -493,8 +495,8 @@ string const InsetERT::get_new_label() const
 	pos_type const max_length = 15;
 	pos_type const p_siz = inset.paragraph()->size();
 	pos_type const n = min(max_length, p_siz);
-	int i = 0;
-	int j = 0;
+	pos_type i = 0;
+	pos_type j = 0;
 	for(; i < n && j < p_siz; ++j) {
 		if (inset.paragraph()->isInset(j))
 			continue;
@@ -563,6 +565,9 @@ int InsetERT::width(BufferView * bv, LyXFont const & font) const
 void InsetERT::draw(BufferView * bv, LyXFont const & f,
 		    int baseline, float & x, bool cleared) const
 {
+	lyx::Assert(bv);
+	cache(bv);
+
 	Painter & pain = bv->painter();
 
 	button_length = width_collapsed();
@@ -651,9 +656,10 @@ void InsetERT::status(BufferView * bv, ERTStatus const st) const
 }
 
 
-bool InsetERT::showInsetDialog(BufferView * bv) const
+bool InsetERT::showInsetDialog(BufferView *) const
 {
-	bv->owner()->getDialogs().showERT(const_cast<InsetERT *>(this));
+	InsetERTMailer mailer(const_cast<InsetERT &>(*this));
+	mailer.showDialog();
 	return true;
 }
 
@@ -717,4 +723,33 @@ void InsetERT::update(BufferView * bv, LyXFont const & font,
 		setButtonLabel();
 	}
 	InsetCollapsable::update(bv, font, reinit);
+}
+
+
+InsetERTMailer::InsetERTMailer(InsetERT & inset)
+	: name_("ert"), inset_(inset)
+{}
+
+
+string const InsetERTMailer::inset2string() const
+{
+	return params2string(inset_.status());
+}
+
+
+void InsetERTMailer::string2params(string const & in,
+				   InsetERT::ERTStatus & status)
+{
+	status = InsetERT::Collapsed;
+	if (in.empty())
+		return;
+
+	status = static_cast<InsetERT::ERTStatus>(strToInt(in));
+}
+
+
+string const
+InsetERTMailer::params2string(InsetERT::ERTStatus status)
+{
+	return tostr(status);
 }

@@ -14,7 +14,7 @@
 #define FORMBIBITEM_H
 
 
-#include "FormBase.h"
+#include "FormDialogView.h"
 
 class ControlBibitem;
 struct FD_bibitem;
@@ -22,10 +22,10 @@ struct FD_bibitem;
 /**
  * For bibliography entry editing
  */
-class FormBibitem : public FormCB<ControlBibitem, FormDB<FD_bibitem> > {
+class FormBibitem : public FormController<ControlBibitem, FormView<FD_bibitem> > {
 public:
 	///
-	FormBibitem();
+	FormBibitem(Dialog &);
 private:
 	/// Set the Params variable for the Controller.
 	virtual void apply();

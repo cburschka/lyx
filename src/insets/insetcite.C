@@ -11,24 +11,14 @@
 
 #include <config.h>
 
-
 #include "insetcite.h"
 #include "buffer.h"
 #include "BufferView.h"
 #include "LaTeXFeatures.h"
-#include "frontends/LyXView.h"
-#include "debug.h"
-#include "gettext.h"
 
 #include "frontends/controllers/biblio.h"
-#include "frontends/Dialogs.h"
 
-#include "support/filetools.h"
 #include "support/lstrings.h"
-#include "support/path.h"
-#include "support/os.h"
-#include "support/lstrings.h"
-#include "support/LAssert.h"
 
 #include <map>
 
@@ -235,6 +225,13 @@ InsetCitation::InsetCitation(InsetCommandParams const & p, bool)
 {}
 
 
+InsetCitation::~InsetCitation()
+{
+	InsetCommandMailer mailer("citation", *this);
+	mailer.hideDialog();
+}
+
+
 string const InsetCitation::generateLabel(Buffer const * buffer) const
 {
 	string const before = string();
@@ -326,7 +323,8 @@ void InsetCitation::edit(BufferView * bv, int, int, mouse_button::state)
 	// buffer but doing some real work.
 	setLoadingBuffer(bv->buffer(), false);
 
-	bv->owner()->getDialogs().showCitation(this);
+	InsetCommandMailer mailer("citation", *this);
+	mailer.showDialog();
 }
 
 

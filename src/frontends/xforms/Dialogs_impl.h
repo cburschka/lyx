@@ -23,14 +23,6 @@
 #include "FormAboutlyx.h"
 #include "forms/form_aboutlyx.h"
 
-#include "ControlBibitem.h"
-#include "FormBibitem.h"
-#include "forms/form_bibitem.h"
-
-#include "ControlBibtex.h"
-#include "FormBibtex.h"
-#include "forms/form_bibtex.h"
-
 #include "FormBrowser.h"
 #include "forms/form_browser.h"
 
@@ -42,21 +34,9 @@
 #include "FormCharacter.h"
 #include "forms/form_character.h"
 
-#include "ControlCitation.h"
-#include "FormCitation.h"
-#include "forms/form_citation.h"
-
 #include "ControlDocument.h"
 #include "FormDocument.h"
 #include "forms/form_document.h"
-
-#include "ControlError.h"
-#include "FormError.h"
-#include "forms/form_error.h"
-
-#include "ControlERT.h"
-#include "FormERT.h"
-#include "forms/form_ert.h"
 
 #include "ControlExternal.h"
 #include "FormExternal.h"
@@ -77,10 +57,6 @@
 #include "ControlInclude.h"
 #include "FormInclude.h"
 #include "forms/form_include.h"
-
-#include "ControlIndex.h"
-#include "FormIndex.h"
-#include "forms/form_index.h"
 
 #include "ControlLog.h"
 #include "FormLog.h"
@@ -112,10 +88,6 @@
 #include "FormPrint.h"
 #include "forms/form_print.h"
 
-#include "ControlRef.h"
-#include "FormRef.h"
-#include "forms/form_ref.h"
-
 #include "ControlSearch.h"
 #include "FormSearch.h"
 #include "forms/form_search.h"
@@ -146,14 +118,6 @@
 #include "forms/form_thesaurus.h"
 #endif
 
-#include "ControlToc.h"
-#include "FormToc.h"
-#include "forms/form_toc.h"
-
-#include "ControlUrl.h"
-#include "FormUrl.h"
-#include "forms/form_url.h"
-
 #include "ControlVCLog.h"
 #include "FormVCLog.h"
 
@@ -165,29 +129,14 @@
 typedef GUI<ControlAboutlyx, FormAboutlyx, OkCancelPolicy, xformsBC>
 AboutlyxDialog;
 
-typedef GUI<ControlBibitem, FormBibitem, OkCancelReadOnlyPolicy, xformsBC>
-BibitemDialog;
-
-typedef GUI<ControlBibtex, FormBibtex, NoRepeatedApplyReadOnlyPolicy, xformsBC>
-BibtexDialog;
-
 typedef GUI<ControlChanges, FormChanges, NoRepeatedApplyReadOnlyPolicy, xformsBC>
 ChangesDialog;
 
 typedef GUI<ControlCharacter, FormCharacter, OkApplyCancelReadOnlyPolicy, xformsBC>
 CharacterDialog;
 
-typedef GUI<ControlCitation, FormCitation, NoRepeatedApplyReadOnlyPolicy, xformsBC>
-CitationDialog;
-
 typedef GUI<ControlDocument, FormDocument, NoRepeatedApplyReadOnlyPolicy, xformsBC>
 DocumentDialog;
-
-typedef GUI<ControlError, FormError, OkCancelPolicy, xformsBC>
-ErrorDialog;
-
-typedef GUI<ControlERT, FormERT, NoRepeatedApplyReadOnlyPolicy, xformsBC>
-ERTDialog;
 
 typedef GUI<ControlExternal, FormExternal, OkApplyCancelReadOnlyPolicy, xformsBC>
 ExternalDialog;
@@ -206,9 +155,6 @@ GraphicsDialog;
 
 typedef GUI<ControlInclude, FormInclude, OkCancelReadOnlyPolicy, xformsBC>
 IncludeDialog;
-
-typedef GUI<ControlIndex, FormIndex, NoRepeatedApplyReadOnlyPolicy, xformsBC>
-IndexDialog;
 
 typedef GUI<ControlLog, FormLog, OkCancelPolicy, xformsBC>
 LogFileDialog;
@@ -230,9 +176,6 @@ PreferencesDialog;
 
 typedef GUI<ControlPrint, FormPrint, OkApplyCancelPolicy, xformsBC>
 PrintDialog;
-
-typedef GUI<ControlRef, FormRef, NoRepeatedApplyReadOnlyPolicy, xformsBC>
-RefDialog;
 
 typedef GUI<ControlSearch, FormSearch, NoRepeatedApplyReadOnlyPolicy, xformsBC>
 SearchDialog;
@@ -257,12 +200,6 @@ typedef GUI<ControlThesaurus, FormThesaurus, OkApplyCancelReadOnlyPolicy, xforms
 ThesaurusDialog;
 #endif
 
-typedef GUI<ControlToc, FormToc, OkCancelPolicy, xformsBC>
-TocDialog;
-
-typedef GUI<ControlUrl, FormUrl, NoRepeatedApplyReadOnlyPolicy, xformsBC>
-UrlDialog;
-
 typedef GUI<ControlVCLog, FormVCLog, OkCancelPolicy, xformsBC>
 VCLogFileDialog;
 
@@ -273,21 +210,15 @@ struct Dialogs::Impl {
 	Impl(LyXView & lv, Dialogs & d);
 
 	AboutlyxDialog      aboutlyx;
-	BibitemDialog       bibitem;
-        BibtexDialog        bibtex;
 	ChangesDialog       changes;
         CharacterDialog     character;
-	CitationDialog      citation;
 	DocumentDialog      document;
-	ErrorDialog         error;
-	ERTDialog           ert;
 	ExternalDialog      external;
 	FileDialog          file;
 	FloatDialog         floats;
 	ForksDialog         forks;
 	GraphicsDialog      graphics;
 	IncludeDialog       include;
-	IndexDialog         index;
 	LogFileDialog       logfile;
 	MathPanelDialog     mathpanel;
 	MinipageDialog      minipage;
@@ -295,7 +226,6 @@ struct Dialogs::Impl {
 	PreambleDialog      preamble;
 	PreferencesDialog   preferences;
 	PrintDialog         print;
-	RefDialog           ref;
 	SearchDialog        search;
 	SendtoDialog        sendto;
 	SpellcheckerDialog  spellchecker;
@@ -307,8 +237,6 @@ struct Dialogs::Impl {
 	ThesaurusDialog     thesaurus;
 #endif
 
-	TocDialog           toc;
-	UrlDialog           url;
 	VCLogFileDialog     vclogfile;
 	WrapDialog          wrap;
 };

@@ -10,6 +10,32 @@
 	* insetwrap.C: TocItem changed API (bug 913)
 
 2003-02-21  Angus Leeming  <leeming@lyx.org>
+
+	* insetcollapsable.[Ch] (cache, edit):
+	* insetbutton.[Ch] (cache, edit): new methods to cache the
+	BufferView in the draw method.
+
+	* insetcommand.[Ch]: implement a new class, InsetCommandMailer, to
+	simplify comunication between InsetCommand-derived classes and
+	the Dialogs.
+
+	* insetbibitem.[Ch]:
+	* insetbibtex.[Ch]:
+	* insetcite.[Ch]:
+	* inseterror.[Ch]:
+	* insetfloatlist.[Ch]:
+	* insetindex.[Ch]:
+	* insetref.[Ch]:
+	* insettoc.[Ch]:
+	* inseturl.[Ch]: small changes to reflect the new interface to the
+	Dialogs code.
+
+	* mailinset.[Ch]: new files. Base class to InsetCommandMailer and
+	other, similar classes.
+
+	* Makefile.am: add new files.
+
+2003-02-21  Angus Leeming  <leeming@lyx.org>
 	
 	* updatableinset.h (setView, view): remove.
 	* inset.h (view, cache): to be replaced by these.

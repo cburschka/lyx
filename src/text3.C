@@ -1592,13 +1592,15 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 
 	case LFUN_HTMLURL: {
 		InsetCommandParams p("htmlurl");
-		bv->owner()->getDialogs().createUrl(p.getAsString());
+		string const data = InsetCommandMailer::params2string(p);
+		bv->owner()->getDialogs().show("url", data, 0);
 		break;
 	}
 
 	case LFUN_URL: {
 		InsetCommandParams p("url");
-		bv->owner()->getDialogs().createUrl(p.getAsString());
+		string const data = InsetCommandMailer::params2string(p);
+		bv->owner()->getDialogs().show("url", data, 0);
 		break;
 	}
 

@@ -21,11 +21,11 @@
 #include "QERT.h"
 #include "Qt2BC.h"
 
-typedef Qt2CB<ControlERT, Qt2DB<QERTDialog> > base_class;
+typedef QController<ControlERT, QView<QERTDialog> > base_class;
 
 
-QERT::QERT()
-	: base_class(qt_("LyX: LaTeX Code Settings"))
+QERT::QERT(Dialog & parent)
+	: base_class(parent, qt_("LyX: LaTeX Code Settings"))
 {
 }
 
@@ -41,14 +41,12 @@ void QERT::build_dialog()
 
 void QERT::apply()
 {
-	ERTParams & params = controller().params();
-
 	if (dialog_->openRB->isChecked())
-		params.status = InsetERT::Open;
+		controller().setStatus(InsetERT::Open);
 	else if (dialog_->inlineRB->isChecked())
-		params.status = InsetERT::Inlined;
+		controller().setStatus(InsetERT::Inlined);
 	else
-		params.status = InsetERT::Collapsed;
+		controller().setStatus(InsetERT::Collapsed);
 }
 
 
@@ -56,7 +54,7 @@ void QERT::update_contents()
 {
 	QRadioButton * rb = 0;
 
-	switch (controller().params().status) {
+	switch (controller().status()) {
 		case InsetERT::Open: rb = dialog_->openRB; break;
 		case InsetERT::Inlined: rb = dialog_->inlineRB; break;
 		case InsetERT::Collapsed: rb = dialog_->collapsedRB; break;

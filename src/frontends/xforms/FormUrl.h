@@ -13,17 +13,17 @@
 #define FORMURL_H
 
 
-#include "FormBase.h"
+#include "FormDialogView.h"
 
 class ControlUrl;
 struct FD_url;
 
 /** This class provides an XForms implementation of the Url Dialog.
  */
-class FormUrl : public FormCB<ControlUrl, FormDB<FD_url> > {
+class FormUrl : public FormController<ControlUrl, FormView<FD_url> > {
 public:
 	///
-	FormUrl();
+	FormUrl(Dialog &);
 private:
 	/// Apply from dialog (modify or create inset)
 	virtual void apply();

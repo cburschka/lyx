@@ -33,11 +33,11 @@
 
 using std::vector;
 
-typedef Qt2CB<ControlBibtex, Qt2DB<QBibtexDialog> > base_class;
+typedef QController<ControlBibtex, QView<QBibtexDialog> > base_class;
 
 
-QBibtex::QBibtex()
-	: base_class(qt_("BibTeX"))
+QBibtex::QBibtex(Dialog & parent)
+	: base_class(parent, qt_("BibTeX"))
 {
 }
 

@@ -13,17 +13,17 @@
 #define FORMINDEX_H
 
 
-#include "FormBase.h"
+#include "FormDialogView.h"
 
 class ControlIndex;
 struct FD_index;
 
 /** This class provides an XForms implementation of the Index Dialog.
  */
-class FormIndex : public FormCB<ControlIndex, FormDB<FD_index> > {
+class FormIndex : public FormController<ControlIndex, FormView<FD_index> > {
 public:
 	///
-	FormIndex();
+	FormIndex(Dialog &);
 private:
 	/// Set the Params variable for the Controller.
 	virtual void apply();

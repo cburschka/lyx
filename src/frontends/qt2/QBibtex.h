@@ -13,18 +13,18 @@
 #define QBIBTEX_H
 
 
-#include "Qt2Base.h"
+#include "QDialogView.h"
 
 class ControlBibtex;
 class QBibtexDialog;
 
 class QBibtex
-	: public Qt2CB<ControlBibtex, Qt2DB<QBibtexDialog> >
+	: public QController<ControlBibtex, QView<QBibtexDialog> >
 {
 public:
 	friend class QBibtexDialog;
 
-	QBibtex();
+	QBibtex(Dialog &);
 protected:
 	virtual bool isValid();
 private:

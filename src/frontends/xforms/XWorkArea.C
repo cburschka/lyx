@@ -368,55 +368,20 @@ int XWorkArea::work_area_handler(FL_OBJECT * ob, int event,
 	case FL_KEYPRESS:
 	{
 		lyxerr[Debug::WORKAREA] << "Workarea event: KEYPRESS" << endl;
-
-		KeySym keysym = 0;
-		char dummy[1];
 		XKeyEvent * xke = reinterpret_cast<XKeyEvent *>(ev);
-		XLookupString(xke, dummy, 1, &keysym, 0);
 
 		if (lyxerr.debugging(Debug::KEY)) {
 			char const * const tmp  = XKeysymToString(key);
-			char const * const tmp2 = XKeysymToString(keysym);
-			string const stm  = (tmp ? tmp : string());
-			string const stm2 = (tmp2 ? tmp2 : string());
-
-			lyxerr << "XWorkArea: Key is `" << stm
-			       << "' [" << key << "]\n"
-			       << "XWorkArea: Keysym is `" << stm2
-			       << "' [" << keysym << ']' << endl;
+			lyxerr << "XWorkArea: Key is `" << tmp
+			       << "' [" << key << "]" << endl;
 		}
 
-		// Note that we need this handling because of a bug
-		// in XForms 0.89, if this bug is resolved in the way I hope
-		// we can just use the keysym directly without looking
-		// at key at all. (Lgb)
-		KeySym ret_key = 0;
 		if (!key) {
-			// We might have to add more keysyms here also,
-			// we will do that as the issues arise. (Lgb)
-			if (keysym == XK_space) {
-				ret_key = keysym;
-				lyxerr[Debug::KEY] << "Using keysym [A]"
-						   << endl;
-			} else
-				break;
-		} else {
-			// It seems that this was a bit optimistic...
-			// With this hacking things seems to be better (Lgb)
-			//if (!iscntrl(key)) {
-			//	ret_key = key;
-			//	lyxerr[Debug::KEY]
-			//		<< "Using key [B]\n"
-			//		<< "Uchar["
-			//		<< static_cast<unsigned char>(key)
-			//		<< endl;
-			//} else {
-			ret_key = (keysym ? keysym : key);
-			lyxerr[Debug::KEY] << "Using keysym [B]"
-					   << endl;
-				//}
+			lyxerr << "Probably composing" << endl;
+			break;
 		}
 
+		KeySym ret_key = key;
 		unsigned int const ret_state = xke->state;
 
 		// If you have a better way to handle "wild-output" of

@@ -8,6 +8,10 @@ INCLUDES = -I$(top_srcdir)/src \
 EXTRA_DIST = ButtonController.tmpl ControlDialog.tmpl ControlInset.tmpl
 
 libcontrollers_la_SOURCES= \
+	Dialog.C \
+	Dialog.h \
+	Kernel.C \
+	Kernel.h \
 	biblio.C \
 	biblio.h \
 	character.C \

@@ -24,6 +24,8 @@ public:
 	///
 	InsetFloatList(string const & type);
 	///
+	~InsetFloatList();
+	///
 	Inset * clone(Buffer const &, bool = false) const {
 		return new InsetFloatList(getCmdName());
 	}

@@ -10,41 +10,38 @@
  *
  * ControlCommand is a controller class for dialogs that create or modify
  * an inset derived from InsetCommand.
- *
- * The class is likely to be changed as other Inset controllers are created
- * and it becomes clear just what functionality can be moved back into
- * ControlInset.
- *
  */
 
 #ifndef CONTROLCOMMAND_H
 #define CONTROLCOMMAND_H
 
 
-#include "ControlInset.h"
-#include "insets/insetcommand.h"
+#include "Dialog.h"
+#include "insets/insetcommandparams.h"
 #include "commandtags.h" // kb_action
 
-/** The Inset dialog controller. Connects/disconnects signals, launches
-    GUI-dependent View and returns the output from this View to the kernel.
- */
-class ControlCommand
-	: public ControlInset<InsetCommand, InsetCommandParams>
-{
+
+class ControlCommand : public Dialog::Controller {
 public:
 	///
-	ControlCommand(LyXView &, Dialogs &, kb_action=LFUN_NOACTION);
-private:
-	/// Dispatch the changed parameters to the kernel.
-	virtual void applyParamsToInset();
+	ControlCommand(Dialog &, kb_action=LFUN_NOACTION);
 	///
-	virtual void applyParamsNoInset();
-	/// get the parameters from the string passed to createInset.
-	virtual InsetCommandParams const getParams(string const &);
-	/// get the parameters from the inset passed to showInset.
-	virtual InsetCommandParams const getParams(InsetCommand const &);
+	InsetCommandParams & params() { return params_; }
+	///
+	InsetCommandParams const & params() const { return params_; }
+	///
+	virtual void initialiseParams(string const & data);
+	/// clean-up on hide.
+	virtual void clearParams();
+	/// clean-up on hide.
+	virtual void dispatchParams();
+	///
+	virtual bool isBufferDependent() const { return true; }
 
-	/// Controls what is done in LyXFunc::Dispatch()
+private:
+	///
+	InsetCommandParams params_;
+	/// Flags what action is taken by Kernel::dispatch()
 	kb_action const action_;
 };
 

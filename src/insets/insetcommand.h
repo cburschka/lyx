@@ -16,7 +16,7 @@
 
 #include "insetbutton.h"
 #include "insetcommandparams.h"
-#include <boost/signals/signal0.hpp>
+#include "mailinset.h"
 #include <boost/utility.hpp>
 
 // Created by Alejandro 970222
@@ -32,8 +32,6 @@ public:
 	///
 	explicit
 	InsetCommand(InsetCommandParams const &, bool same_id = false);
-	///
-	virtual ~InsetCommand() { hideDialog(); }
 	///
 	void write(Buffer const *, std::ostream & os) const
 		{ p_.write(os); }
@@ -72,12 +70,33 @@ public:
 	InsetCommandParams const & params() const { return p_; }
 	///
 	void setParams(InsetCommandParams const &);
-	///
-	boost::signal0<void> hideDialog;
 
 private:
 	///
 	InsetCommandParams p_;
 };
+
+
+class InsetCommandMailer : public MailInset {
+public:
+	///
+	InsetCommandMailer(string const & name, InsetCommand & inset);
+	///
+	virtual Inset & inset() const { return inset_; }
+	///
+	virtual string const & name() const { return name_; }
+	///
+	virtual string const inset2string() const;
+	///
+	static void string2params(string const &, InsetCommandParams &);
+	///
+	static string const params2string(InsetCommandParams const &);
+private:
+	///
+	string const name_;
+	///
+	InsetCommand & inset_;
+};
+
 
 #endif

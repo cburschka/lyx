@@ -21,18 +21,6 @@ void Dialogs::showAboutlyx()
 }
 
 
-void Dialogs::showBibitem(InsetCommand * ic)
-{
-	pimpl_->bibitem.controller().showInset(ic);
-}
-
-
-void Dialogs::showBibtex(InsetCommand * ic)
-{
-	pimpl_->bibtex.controller().showInset(ic);
-}
-
-
 void Dialogs::showCharacter()
 {
 	pimpl_->character.controller().show();
@@ -45,39 +33,9 @@ void Dialogs::setUserFreeFont()
 }
 
 
-void Dialogs::showCitation(InsetCommand * ic)
-{
-	pimpl_->citation.controller().showInset(ic);
-}
-
-
-void Dialogs::createCitation(string const & s)
-{
-	pimpl_->citation.controller().createInset(s);
-}
-
-
 void Dialogs::showDocument()
 {
 	pimpl_->document.controller().show();
-}
-
-
-void Dialogs::showError(InsetError * ie)
-{
-	pimpl_->error.controller().showInset(ie);
-}
-
-
-void Dialogs::showERT(InsetERT * ie)
-{
-	pimpl_->ert.controller().showInset(ie);
-}
-
-
-void Dialogs::updateERT(InsetERT * ie)
-{
-	pimpl_->ert.controller().showInset(ie);
 }
 
 
@@ -114,18 +72,6 @@ void Dialogs::showGraphics(InsetGraphics * ig)
 void Dialogs::showInclude(InsetInclude * ii)
 {
 	pimpl_->include.controller().showInset(ii);
-}
-
-
-void Dialogs::showIndex(InsetCommand * ic)
-{
-	pimpl_->index.controller().showInset(ic);
-}
-
-
-void Dialogs::createIndex()
-{
-	pimpl_->index.controller().createInset(string());
 }
 
 
@@ -187,18 +133,6 @@ void Dialogs::showPrint()
 }
 
 
-void Dialogs::showRef(InsetCommand * ic)
-{
-	pimpl_->ref.controller().showInset(ic);
-}
-
-
-void Dialogs::createRef(string const & s)
-{
-	pimpl_->ref.controller().createInset(s);
-}
-
-
 void Dialogs::showSearch()
 {
 	pimpl_->search.controller().show();
@@ -254,30 +188,6 @@ void Dialogs::showThesaurus(string const &)
 {}
 
 #endif
-
-
-void Dialogs::showTOC(InsetCommand * ic)
-{
-	pimpl_->toc.controller().showInset(ic);
-}
-
-
-void Dialogs::createTOC(string const & s)
-{
-	pimpl_->toc.controller().createInset(s);
-}
-
-
-void Dialogs::showUrl(InsetCommand * ic)
-{
-	pimpl_->url.controller().showInset(ic);
-}
-
-
-void Dialogs::createUrl(string const & s)
-{
-	pimpl_->url.controller().createInset(s);
-}
 
 
 void Dialogs::showVCLogFile()

@@ -13,19 +13,19 @@
 #define CONTROLTOC_H
 
 
-#include <vector>
 #include "ControlCommand.h"
 #include "toc.h"
+#include <vector>
 
 /** A controller for TOC dialogs.
  */
 class ControlToc : public ControlCommand {
 public:
 	///
-	ControlToc(LyXView &, Dialogs &);
+	ControlToc(Dialog &);
 
 	/// Goto this paragraph id
-	void goTo(toc::TocItem const &) const;
+	void goTo(toc::TocItem const &);
 
 	/// Return the list of types available
 	std::vector<string> const getTypes() const;
