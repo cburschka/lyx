@@ -664,6 +664,7 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 	}
 
 	case LFUN_PROTECTEDSPACE:
+		//lyxerr << " called LFUN_PROTECTEDSPACE\n";
 		bv->lockedInsetStoreUndo(Undo::INSERT);
 		mathcursor->insert(new MathSpaceInset(1));
 		updateLocal(bv, true);

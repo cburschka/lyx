@@ -233,7 +233,7 @@ bool MathCursor::openable(MathInset * p, bool sel, bool useupdown) const
 		return false;
 
 	if (sel) {
-		// we can't move into everything during selection
+		// we can't move into anything new during selection
 		if (Cursor_.size() == Anchor_.size())
 			return false;
 		if (p != Anchor_[Cursor_.size()].par_)
@@ -503,7 +503,7 @@ bool MathCursor::Up(bool sel)
 
 	if (selection) {
 		int x = xarray().pos2x(cursor().pos_);
-		if (cursor().par_->idxUp(cursor().idx_, cursor().pos_)) {
+		if (cursor().idxDown()) {
 			cursor().pos_ = xarray().x2pos(x);
 			return true;
 		}
@@ -518,7 +518,6 @@ bool MathCursor::Up(bool sel)
 		int idx, pos;
 		if (p->idxFirstUp(idx, pos)) {
 			push(p, true);
-			cursor().par_ = p;
 			cursor().idx_ = idx;
 			cursor().pos_ = pos;
 			dump("Up 3");
@@ -532,7 +531,6 @@ bool MathCursor::Up(bool sel)
 		if (p->idxLastUp(idx, pos)) {
 			plainLeft();
 			push(p, false);
-			cursor().par_ = p;
 			cursor().idx_ = idx;
 			cursor().pos_ = pos;
 			dump("Up 4");
@@ -595,7 +593,7 @@ bool MathCursor::Down(bool sel)
 	}
 
 	int x = xarray().pos2x(cursor().pos_);
-	if (cursor().par_->idxDown(cursor().idx_, cursor().pos_)) {
+	if (cursor().idxDown()) {
 		cursor().pos_ = xarray().x2pos(x);
 		return true;
 	}
