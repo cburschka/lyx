@@ -1042,8 +1042,8 @@ void MathCursor::breakLine()
 	if (!p)
 		return;
 
-	if (p->getType() == LM_OT_SIMPLE || p->getType() == LM_OT_EQUATION) {
-		p->mutate(LM_OT_EQNARRAY);
+	if (p->getType() == "simple" || p->getType() == "equation") {
+		p->mutate("eqnarray");
 		idx() = 1;
 		pos() = 0;
 	} else {
@@ -1712,7 +1712,7 @@ void MathCursor::handleExtern(const string & arg)
 	lyx::Assert(hull);
 	idxLineFirst();
 
-	if (hull->getType() == LM_OT_SIMPLE) {
+	if (hull->getType() == "simple") {
 		MathArray::size_type pos = cursor().cell().find_last(eq);
 		MathArray ar;
 		if (pos == size()) {
@@ -1728,9 +1728,9 @@ void MathCursor::handleExtern(const string & arg)
 		return;
 	}
 
-	if (hull->getType() == LM_OT_EQUATION) {
+	if (hull->getType() == "equation") {
 		lyxerr << "use equation inset\n";
-		hull->mutate(LM_OT_EQNARRAY);
+		hull->mutate("eqnarray");
 		MathArray & ar = cursor().cell();
 		lyxerr << "use cell: " << ar << "\n";
 		idxRight();

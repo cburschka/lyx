@@ -23,18 +23,18 @@ using std::endl;
 
 namespace {
 
-	int getCols(MathInsetTypes type)
+	int getCols(string const & type)
 	{
-		switch (type) {
-			case LM_OT_EQNARRAY:
-				return 3;
-			case LM_OT_ALIGN:
-			case LM_OT_ALIGNAT:
-			case LM_OT_XALIGNAT:
-			case LM_OT_XXALIGNAT:
-				return 2;
-			default:;
-		}
+		if (type == "eqnarray")
+			return 3;
+		if (type == "align")
+			return 2;
+		if (type == "alignat")
+			return 2;
+		if (type == "xalignat")
+			return 2;
+		if (type == "xxalignat")
+			return 2;
 		return 1;
 	}
 
@@ -55,66 +55,55 @@ namespace {
 		return numbered ? "" : "*";
 	}
 
-	MathInsetTypes typecode(string const & s)
+
+	int typecode(string const & s)
 	{
-		if (s == "inline")    return LM_OT_SIMPLE;
-		if (s == "simple")    return LM_OT_SIMPLE;
-		if (s == "equation")  return LM_OT_EQUATION;
-		if (s == "display")   return LM_OT_EQUATION;
-		if (s == "eqnarray")  return LM_OT_EQNARRAY;
-		if (s == "align")     return LM_OT_ALIGN;
-		if (s == "alignat")   return LM_OT_ALIGNAT;
-		if (s == "xalignat")  return LM_OT_XALIGNAT;
-		if (s == "xxalignat") return LM_OT_XXALIGNAT;
-		if (s == "multline")  return LM_OT_MULTLINE;
-		if (s == "gather")    return LM_OT_GATHER;
-		return LM_OT_NONE;
+		if (s == "none")      return 0;
+		if (s == "simple")    return 1;
+		if (s == "equation")  return 2;
+		if (s == "eqnarray")  return 3;
+		if (s == "align")     return 4;
+		if (s == "alignat")   return 5;
+		if (s == "xalignat")  return 6;
+		if (s == "xxalignat") return 7;
+		if (s == "multline")  return 8;
+		if (s == "gather")    return 9;
+		lyxerr << "unknown hull type '" << s << "'\n";
+		return 0;
 	}
 
-
-	string normalName(MathInsetTypes t)
+	bool smaller(string const & s, string const & t)
 	{
-		switch (t) {
-			case LM_OT_EQUATION:  return "equation";
-			case LM_OT_EQNARRAY:  return "eqnarray";
-			case LM_OT_ALIGN:     return "align";
-			case LM_OT_ALIGNAT:   return "alignat";
-			case LM_OT_XALIGNAT:  return "xalignat";
-			case LM_OT_XXALIGNAT: return "xxalignat";
-			case LM_OT_MULTLINE:  return "multline";
-			case LM_OT_GATHER:    return "gather";
-			case LM_OT_SIMPLE:    return "simple";
-			default: break;
-		}
-		return "unknown";
+		return typecode(s) < typecode(t);
 	}
+
 
 } // end anon namespace
 
 
 MathHullInset::MathHullInset()
-	: MathGridInset(1, 1), objtype_(LM_OT_NONE), nonum_(1), label_(1)
+	: MathGridInset(1, 1), type_("none"), nonum_(1), label_(1)
 {
 	setDefaults();
 }
 
 
-MathHullInset::MathHullInset(MathInsetTypes t)
-	: MathGridInset(getCols(t), 1), objtype_(t), nonum_(1), label_(1)
+MathHullInset::MathHullInset(string const & type)
+	: MathGridInset(getCols(type), 1), type_(type), nonum_(1), label_(1)
 {
 	setDefaults();
 }
 
 
-MathHullInset::MathHullInset(MathInsetTypes t, MathGridInset const & grid)
-	: MathGridInset(grid), objtype_(t), nonum_(1), label_(1)
+MathHullInset::MathHullInset(string const & type, MathGridInset const & grid)
+	: MathGridInset(grid), type_(type), nonum_(1), label_(1)
 {
 	setDefaults();
 }
 
 
-MathHullInset::MathHullInset(MathInsetTypes t, col_type cols)
-	: MathGridInset(cols, 1), objtype_(t), nonum_(1), label_(1)
+MathHullInset::MathHullInset(string const & type, col_type cols)
+	: MathGridInset(cols, 1), type_(type), nonum_(1), label_(1)
 {
 	setDefaults();
 }
@@ -144,39 +133,29 @@ bool MathHullInset::idxLast(idx_type & idx, pos_type & pos) const
 
 char MathHullInset::defaultColAlign(col_type col)
 {
-	switch (getType()) {
-		case LM_OT_ALIGN:
-		case LM_OT_ALIGNAT:
-		case LM_OT_XALIGNAT:
-		case LM_OT_XXALIGNAT:
-			return "rl"[col & 1];
-		case LM_OT_EQNARRAY:
-			return "rcl"[col];
-		default:;
-	}
+	if (type_ == "eqnarray")
+		return "rcl"[col];
+	if (typecode(type_) >= typecode("align"))
+		return "rl"[col & 1];
 	return 'c';
 }
 
 
 int MathHullInset::defaultColSpace(col_type col)
 {
-	switch (getType()) {
-		case LM_OT_ALIGN:
-		case LM_OT_ALIGNAT:
-			return 0;
-		case LM_OT_XALIGNAT:
-			return (col & 1) ? 20 : 0;
-		case LM_OT_XXALIGNAT:
-			return (col & 1) ? 40 : 0;
-		default:;
-	}
+	if (type_ == "align" || type_ == "alignat")
+		return 0;
+	if (type_ == "xalignat")
+		return (col & 1) ? 20 : 0;
+	if (type_ == "xxalignat")
+		return (col & 1) ? 40 : 0;
 	return 0;
 }
 
 
 char const * MathHullInset::standardFont() const
 {
-	if (getType() == LM_OT_NONE)
+	if (type_ == "none")
 		return "lyxnochange";
 	return "mathnormal";
 }
@@ -292,18 +271,18 @@ bool MathHullInset::numbered(row_type row) const
 bool MathHullInset::ams() const
 {
 	return
-		objtype_ == LM_OT_ALIGN ||
-		objtype_ == LM_OT_MULTLINE ||
-		objtype_ == LM_OT_GATHER ||
-		objtype_ == LM_OT_ALIGNAT ||
-		objtype_ == LM_OT_XALIGNAT ||
-		objtype_ == LM_OT_XXALIGNAT;
+		type_ == "align" ||
+		type_ == "multline" ||
+		type_ == "gather" ||
+		type_ == "alignat" ||
+		type_ == "xalignat" ||
+		type_ == "xxalignat";
 }
 
 
 bool MathHullInset::display() const
 {
-	return getType() != LM_OT_SIMPLE && getType() != LM_OT_NONE;
+	return type_ != "simple" && type_ != "none";
 }
 
 
@@ -319,11 +298,11 @@ vector<string> const MathHullInset::getLabelList() const
 
 bool MathHullInset::numberedType() const
 {
-	if (getType() == LM_OT_NONE)
+	if (type_ == "none")
 		return false;
-	if (getType() == LM_OT_SIMPLE)
+	if (type_ == "simple")
 		return false;
-	if (getType() == LM_OT_XXALIGNAT)
+	if (type_ == "xxalignat")
 		return false;
 	for (row_type row = 0; row < nrows(); ++row)
 		if (!nonum_[row])
@@ -354,57 +333,34 @@ void MathHullInset::header_write(WriteStream & os) const
 {
 	bool n = numberedType();
 
-	switch (getType()) {
-		case LM_OT_NONE:
-			break;
+	if (type_ == "none")
+		;
 
-		case LM_OT_SIMPLE:
-			os << '$';
-			if (cell(0).empty())
-				os << ' ';
-			break;
-
-		case LM_OT_EQUATION:
-			if (n)
-				os << "\\begin{equation" << star(n) << "}\n";
-			else
-				os << "\\[\n";
-			break;
-
-		case LM_OT_EQNARRAY:
-			os << "\\begin{eqnarray" << star(n) << "}\n";
-			break;
-
-		case LM_OT_ALIGN:
-			os << "\\begin{align" << star(n) << "}\n";
-			break;
-
-		case LM_OT_ALIGNAT:
-			os << "\\begin{alignat" << star(n) << "}"
-			  << "{" << static_cast<unsigned int>(ncols()/2) << "}\n";
-			break;
-
-		case LM_OT_XALIGNAT:
-			os << "\\begin{xalignat" << star(n) << "}"
-			   << "{" << static_cast<unsigned int>(ncols()/2) << "}\n";
-			break;
-
-		case LM_OT_XXALIGNAT:
-			os << "\\begin{xxalignat}"
-			   << "{" << static_cast<unsigned int>(ncols()/2) << "}\n";
-			break;
-
-		case LM_OT_MULTLINE:
-			os << "\\begin{multline}\n";
-			break;
-
-		case LM_OT_GATHER:
-			os << "\\begin{gather}\n";
-			break;
-
-		default:
-			os << "\\begin{unknown" << star(n) << "}";
+	else if (type_ == "simple") {
+		os << '$';
+		if (cell(0).empty())
+			os << ' ';
 	}
+
+	else if (type_ == "equation") {
+		if (n)
+			os << "\\begin{equation" << star(n) << "}\n";
+		else
+			os << "\\[\n";
+	}
+
+	else if (type_ == "eqnarray" || type_ == "align")
+			os << "\\begin{" << type_ << star(n) << "}\n";
+
+	else if (type_ == "alignat" || type_ == "xalignat" || type_ == "xxalignat") 
+		os << "\\begin{" << type_ << star(n) << "}"
+		  << "{" << static_cast<unsigned int>(ncols()/2) << "}\n";
+
+	else if (type_ == "multline" || type_ == "gather") 
+		os << "\\begin{" << type_ << "}\n";
+
+	else 
+		os << "\\begin{unknown" << star(n) << "}";
 }
 
 
@@ -412,53 +368,27 @@ void MathHullInset::footer_write(WriteStream & os) const
 {
 	bool n = numberedType();
 
-	switch (getType()) {
-		case LM_OT_NONE:
-			os << "\n";
-			break;
+	if (type_ == "none")
+		os << "\n";
 
-		case LM_OT_SIMPLE:
-			os << '$';
-			break;
+	else if (type_ == "simple")
+		os << '$';
 
-		case LM_OT_EQUATION:
-			if (n)
-				os << "\\end{equation" << star(n) << "}\n";
-			else
-				os << "\\]\n";
-			break;
+	else if (type_ == "equation")
+		if (n)
+			os << "\\end{equation" << star(n) << "}\n";
+		else
+			os << "\\]\n";
 
-		case LM_OT_EQNARRAY:
-			os << "\n\\end{eqnarray" << star(n) << "}\n";
-			break;
+	else if (type_ == "eqnarray" || type_ == "align" || type_ == "alignat"
+	      || type_ == "xalignat")
+		os << "\n\\end{" << type_ << star(n) << "}\n";
 
-		case LM_OT_ALIGN:
-			os << "\n\\end{align" << star(n) << "}\n";
-			break;
+	else if (type_ == "xxalignat" || type_ == "multline" || type_ == "gather")
+		os << "\n\\end{" << type_ << "}\n";
 
-		case LM_OT_ALIGNAT:
-			os << "\n\\end{alignat" << star(n) << "}\n";
-			break;
-
-		case LM_OT_XALIGNAT:
-			os << "\n\\end{xalignat" << star(n) << "}\n";
-			break;
-
-		case LM_OT_XXALIGNAT:
-			os << "\n\\end{xxalignat}\n";
-			break;
-
-		case LM_OT_MULTLINE:
-			os << "\n\\end{multline}\n";
-			break;
-
-		case LM_OT_GATHER:
-			os << "\n\\end{gather}\n";
-			break;
-
-		default:
-			os << "\\end{unknown" << star(n) << "}";
-	}
+	else
+		os << "\\end{unknown" << star(n) << "}";
 }
 
 
@@ -480,45 +410,31 @@ void MathHullInset::delRow(row_type row)
 
 void MathHullInset::addFancyCol(col_type col)
 {
-	switch (getType()) {
-		case LM_OT_EQUATION:
-			mutate(LM_OT_EQNARRAY);
-			break;
+	if (type_ == "equation")
+		mutate("eqnarray");
+	
+	else if (type_ == "eqnarray") {
+		mutate("align");
+		addFancyCol(col);
+	}
 
-		case LM_OT_EQNARRAY:
-			mutate(LM_OT_ALIGN);
-			addFancyCol(col);
-			break;
+	else if (type_ == "align") {
+		mutate("alignat");
+		addFancyCol(col);
+	}
 
-		case LM_OT_ALIGN:
-			mutate(LM_OT_ALIGNAT);
-			addFancyCol(col);
-			break;
-
-		case LM_OT_ALIGNAT:
-		case LM_OT_XALIGNAT:
-		case LM_OT_XXALIGNAT:
-			MathGridInset::addCol(col);
-			MathGridInset::addCol(col + 1);
-			break;
-
-		default:
-			break;
+	else if (type_ == "alignat" || type_ == "xalignat" || type_ == "xxalignat") {
+		MathGridInset::addCol(col);
+		MathGridInset::addCol(col + 1);
 	}
 }
 
 
 void MathHullInset::delFancyCol(col_type col)
 {
-	switch (getType()) {
-		case LM_OT_ALIGNAT:
-		case LM_OT_XALIGNAT:
-		case LM_OT_XXALIGNAT:
-			MathGridInset::delCol(col + 1);
-			MathGridInset::delCol(col);
-			break;
-		default:
-			break;
+	if (type_ == "alignat" || type_ == "xalignat" || type_ == "xxalignat") {
+		MathGridInset::delCol(col + 1);
+		MathGridInset::delCol(col);
 	}
 }
 
@@ -533,211 +449,157 @@ string MathHullInset::nicelabel(row_type row) const
 }
 
 
-void MathHullInset::mutate(string const & newtype)
-{
-	if (newtype == "dump") {
-		dump();
-		return;
-	}
-	//lyxerr << "mutating from '" << getType() << "' to '" << newtype << "'\n";
-	mutate(typecode(newtype));
-}
-
-
 void MathHullInset::glueall()
 {
 	MathArray ar;
 	for (idx_type i = 0; i < nargs(); ++i)
 		ar.push_back(cell(i));
-	*this = MathHullInset(LM_OT_SIMPLE);
+	*this = MathHullInset("simple");
 	cell(0) = ar;
+	setDefaults();
 }
 
 
-MathInsetTypes MathHullInset::getType() const
+string const & MathHullInset::getType() const
 {
-	return objtype_;
+	return type_;
 }
 
 
-void MathHullInset::setType(MathInsetTypes t)
+void MathHullInset::setType(string const & type)
 {
-	objtype_ = t;
+	type_ = type;
 	setDefaults();
 }
 
 
 
-void MathHullInset::mutate(MathInsetTypes newtype)
+void MathHullInset::mutate(string const & newtype)
 {
-	//lyxerr << "mutating from '" << getType() << "' to '" << newtype << "'\n";
+	//lyxerr << "mutating from '" << type_ << "' to '" << newtype << "'\n";
 
-	if (newtype == getType())
-		return;
+	// we try to move along the chain
+	// none <-> simple <-> equation <-> eqnarray 
 
-	switch (getType()) {
-		case LM_OT_NONE:
-			setType(LM_OT_SIMPLE);
+	if (newtype == "dump") {
+		dump();
+	}
+
+	else if (newtype == type_) {
+		// done
+	}
+
+	else if (type_ == "none") {
+		setType("simple");
+		numbered(0, false);
+		mutate(newtype);
+	}
+
+	else if (type_ == "simple") {
+		if (newtype == "none") {
+			setType("none");
+		} else {
+			setType("equation");
 			numbered(0, false);
 			mutate(newtype);
-			break;
+		}
+	}
 
-		case LM_OT_SIMPLE:
-			switch (newtype) {
-				case LM_OT_NONE:
-					setType(LM_OT_NONE);
-					break;
-				default:
-					setType(LM_OT_EQUATION);
-					numbered(0, false);
-					mutate(newtype);
+	else if (type_ == "equation") {
+		if (smaller(newtype, type_)) {
+			setType("simple");
+			mutate(newtype);
+		} else if (newtype == "eqnarray") {
+			MathGridInset::addCol(1);
+			MathGridInset::addCol(1);
+
+			// split it "nicely" on the firest relop
+			pos_type pos = firstRelOp(cell(0));
+			cell(1) = MathArray(cell(0), pos, cell(0).size());
+			cell(0).erase(pos, cell(0).size());
+
+			if (cell(1).size()) {
+				cell(2) = MathArray(cell(1), 1, cell(1).size());
+				cell(1).erase(1, cell(1).size());
 			}
-			break;
+			setType("eqnarray");
+			mutate(newtype);
+		} else {
+			MathGridInset::addCol(1);
+			// split it "nicely"
+			pos_type pos = firstRelOp(cell(0));
+			cell(1) = cell(0);
+			cell(0).erase(pos, cell(0).size());
+			cell(1).erase(0, pos);
+			setType("align");
+			mutate(newtype);
+		}
+	}
 
-		case LM_OT_EQUATION:
-			switch (newtype) {
-				case LM_OT_NONE:
-				case LM_OT_SIMPLE:
-					setType(LM_OT_SIMPLE);
-					mutate(newtype);
-					break;
+	else if (type_ == "eqnarray") {
+		if (smaller(newtype, type_)) {
+			// set correct (no)numbering
+			bool allnonum = true;
+			for (row_type row = 0; row < nrows(); ++row)
+				if (!nonum_[row])
+					allnonum = false;
 
-				case LM_OT_ALIGN:
-				case LM_OT_ALIGNAT:
-				case LM_OT_XALIGNAT:
-				case LM_OT_XXALIGNAT: {
-
-					MathGridInset::addCol(1);
-
-					// split it "nicely"
-					pos_type pos = firstRelOp(cell(0));
-					cell(1) = cell(0);
-					cell(0).erase(pos, cell(0).size());
-					cell(1).erase(0, pos);
-					setType(LM_OT_ALIGN);
-					mutate(newtype);
-					break;
-				}
-
-				case LM_OT_EQNARRAY:
-				default:
-					MathGridInset::addCol(1);
-					MathGridInset::addCol(1);
-
-					// split it "nicely" on the firest relop
-					pos_type pos = firstRelOp(cell(0));
-					cell(1) = MathArray(cell(0), pos, cell(0).size());
-					cell(0).erase(pos, cell(0).size());
-
-					if (cell(1).size()) {
-						cell(2) = MathArray(cell(1), 1, cell(1).size());
-						cell(1).erase(1, cell(1).size());
-					}
-
-					setType(LM_OT_EQNARRAY);
-					mutate(newtype);
-					break;
-				}
-			break;
-
-		case LM_OT_EQNARRAY:
-			switch (newtype) {
-				case LM_OT_SIMPLE:
-				case LM_OT_EQUATION: {
-					// set correct (no)numbering
-					bool allnonum = true;
-					for (row_type row = 0; row < nrows(); ++row) {
-						if (!nonum_[row])
-							allnonum = false;
-					}
-
-					// set first non-empty label
-					string label;
-					for (row_type row = 0; row < nrows(); ++row) {
-						if (!label_[row].empty()) {
-							label = label_[row];
-							break;
-						}
-					}
-
-					glueall();
-
-					nonum_[0] = allnonum;
-					label_[0] = label;
-					mutate(newtype);
-					break;
-				}
-
-				case LM_OT_ALIGN:
-				case LM_OT_ALIGNAT:
-				case LM_OT_XALIGNAT:
-				case LM_OT_XXALIGNAT:
-				default: {
-					for (row_type row = 0; row < nrows(); ++row) {
-						idx_type c = 3 * row + 1;
-						cell(c).push_back(cell(c + 1));
-					}
-					MathGridInset::delCol(2);
-					setType(LM_OT_ALIGN);
-					mutate(newtype);
+			// set first non-empty label
+			string label;
+			for (row_type row = 0; row < nrows(); ++row) {
+				if (!label_[row].empty()) {
+					label = label_[row];
 					break;
 				}
 			}
-			break;
 
-		case LM_OT_ALIGN:
-			switch (newtype) {
-				case LM_OT_SIMPLE:
-				case LM_OT_EQUATION:
-				case LM_OT_EQNARRAY:
-					MathGridInset::addCol(1);
-					setType(LM_OT_EQNARRAY);
-					mutate(newtype);
-					break;
-
-				case LM_OT_ALIGNAT:
-				case LM_OT_XALIGNAT:
-				case LM_OT_XXALIGNAT:
-					setType(newtype);
-					break;
-
-				default:
-					lyxerr << "mutation from '" << getType()
-						<< "' to '" << newtype << "' not implemented"
-					       << endl;
-					break;
+			glueall();
+			nonum_[0] = allnonum;
+			label_[0] = label;
+			mutate(newtype);
+		} else { // align & Co.
+			for (row_type row = 0; row < nrows(); ++row) {
+				idx_type c = 3 * row + 1;
+				cell(c).push_back(cell(c + 1));
 			}
-			break;
+			MathGridInset::delCol(2);
+			setType("align");
+			mutate(newtype);
+		}
+	}
 
-		case LM_OT_MULTLINE:
-			switch (newtype) {
-				case LM_OT_GATHER:
-					setType(LM_OT_GATHER);
-					break;
-				default:
-					lyxerr << "mutation from '" << getType()
-						<< "' to '" << newtype << "' not implemented"
-					       << endl;
-					break;
-			}
+	else if (type_ == "align") {
+		if (smaller(newtype, type_)) {
+			MathGridInset::addCol(1);
+			setType("eqnarray");
+			mutate(newtype);
+		} else {
+			setType(newtype);
+		}
+	}
 
-		case LM_OT_GATHER:
-			switch (newtype) {
-				case LM_OT_MULTLINE:
-					setType(LM_OT_MULTLINE);
-					break;
-				default:
-					lyxerr << "mutation from '" << getType()
-						<< "' to '" << newtype << "' not implemented"
-					       << endl;
-					break;
-			}
+	else if (type_ == "multline") {
+		if (newtype == "gather") {
+			setType("gather");
+		} else {
+			lyxerr << "mutation from '" << type_
+				<< "' to '" << newtype << "' not implemented"
+						 << endl;
+		}
+	}
 
-		default:
-			lyxerr << "mutation from '" << getType()
-			       << "' to '" << newtype << "' not implemented"
-			       << endl;
-			break;
+	else if (type_ == "gather") {
+		if (newtype == "multline") {
+			setType("multline");
+		} else {
+			lyxerr << "mutation from '" << type_
+				<< "' to '" << newtype << "' not implemented" << endl;
+		}
+	}
+
+	else {
+		lyxerr << "mutation from '" << type_
+					 << "' to '" << newtype << "' not implemented" << endl;
 	}
 }
 
@@ -766,7 +628,7 @@ void MathHullInset::write(WriteStream & os) const
 
 void MathHullInset::normalize(NormalStream & os) const
 {
-	os << "[formula " << normalName(getType()) << " ";
+	os << "[formula " << type_ << " ";
 	MathGridInset::normalize(os);
 	os << "] ";
 }
@@ -780,7 +642,7 @@ void MathHullInset::mathmlize(MathMLStream & os) const
 
 void MathHullInset::infoize(std::ostream & os) const
 {
-	os << "Type: " << normalName(getType());
+	os << "Type: " << type_;
 }
 
 

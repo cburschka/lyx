@@ -19,11 +19,11 @@ public:
 	///
 	MathHullInset();
 	///
-	explicit MathHullInset(MathInsetTypes t);
+	explicit MathHullInset(string const & type);
 	///
-	MathHullInset(MathInsetTypes t, MathGridInset const & grid);
+	MathHullInset(string const & type, MathGridInset const & grid);
 	///
-	MathHullInset(MathInsetTypes t, col_type cols);
+	MathHullInset(string const & type, col_type cols);
 	///
 	MathInset * clone() const;
 	///
@@ -66,10 +66,10 @@ public:
 	///
 	void delFancyCol(col_type);
 
+	/// get type
+	string const & getType() const;
 	/// change type
 	void mutate(string const &);
-	///
-	void mutate(MathInsetTypes);
 
 	///
 	int defaultColSpace(col_type col);
@@ -81,8 +81,6 @@ public:
 	bool idxLast(idx_type &, pos_type &) const;
 
 	///
-	MathInsetTypes getType() const;
-	///
 	void write(WriteStream & os) const;
 	///
 	void mathmlize(MathMLStream &) const;
@@ -93,7 +91,7 @@ public:
 
 private:
 	///
-	void setType(MathInsetTypes t);
+	void setType(string const & type);
 	///
 	void validate1(LaTeXFeatures & features);
 	///
@@ -109,8 +107,8 @@ private:
 	/// consistency check
 	void check() const;
 
-	///
-	MathInsetTypes objtype_;
+	/// "simple", "display", "eqnarray",...
+	string type_;
 	///
 	std::vector<int> nonum_;
 	///

@@ -5,7 +5,6 @@
 #include "math_support.h"
 #include "lyxfont.h"
 #include "math_cursor.h"
-#include "math_defs.h"
 #include "math_inset.h"
 #include "math_parser.h"
 #include "frontends/Painter.h"

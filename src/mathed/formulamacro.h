@@ -64,7 +64,7 @@ public:
 	///
 	Inset::Code lyxCode() const;
 	///
-	MathInsetTypes getType() const;
+	string const & hullType() const;
 	///
 	MathAtom const & par() const;
 	///

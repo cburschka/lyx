@@ -24,7 +24,6 @@
 #endif
 
 #include "LString.h"
-#include "math_defs.h"
 
 class MathAtom;
 class MathArray;

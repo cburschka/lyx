@@ -158,9 +158,10 @@ Inset::Code InsetFormulaMacro::lyxCode() const
 }
 
 
-MathInsetTypes InsetFormulaMacro::getType() const
+string const & InsetFormulaMacro::hullType() const
 {
-	return LM_OT_MACRO;
+	static string macro("macro");
+	return macro;
 }
 
 

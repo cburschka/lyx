@@ -39,7 +39,6 @@ libmathed_la_SOURCES = \
 	math_data.h \
 	math_decorationinset.C \
 	math_decorationinset.h \
-	math_defs.h \
 	math_deliminset.C \
 	math_deliminset.h \
 	math_diffinset.C \

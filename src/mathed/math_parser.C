@@ -595,11 +595,6 @@ void Parser::parse_into(MathArray & array, unsigned flags, bool mathmode)
 	MathGridInset grid(1, 1);
 	parse_into1(grid, flags, mathmode, false);
 	array = grid.cell(0);
-	// remove 'unnecessary' braces:
-	//if (array.size() == 1 && array.back()->asBraceInset()) {
-	//	lyxerr << "extra braces removed\n";
-	//	array = array.back()->asBraceInset()->cell(0);
-	//}
 }
 
 
@@ -658,13 +653,13 @@ void Parser::parse_into1(MathGridInset & grid, unsigned flags,
 				Token const & n = getToken();
 				if (n.cat() == catMath) {
 					// TeX's $$...$$ syntax for displayed math
-					cell->push_back(MathAtom(new MathHullInset(LM_OT_EQUATION)));
+					cell->push_back(MathAtom(new MathHullInset("equation")));
 					parse_into2(cell->back(), FLAG_SIMPLE, true, false);
 					getToken(); // skip the second '$' token
 				} else {
 					// simple $...$  stuff
 					putback();
-					cell->push_back(MathAtom(new MathHullInset(LM_OT_SIMPLE)));
+					cell->push_back(MathAtom(new MathHullInset("simple")));
 					parse_into2(cell->back(), FLAG_SIMPLE, true, false);
 				}
 			}
@@ -694,6 +689,10 @@ void Parser::parse_into1(MathGridInset & grid, unsigned flags,
 		else if (t.cat() == catBegin) {
 			MathArray ar;
 			parse_into(ar, FLAG_BRACE_LAST, mathmode);
+			// reduce multiple nesting levels to a single one
+			// this helps to keep the annoyance of  a choose b to a minimum
+			if (ar.size() && ar.front()->asBraceInset())
+				ar = ar.front()->asBraceInset()->cell(0);
 			cell->push_back(MathAtom(new MathBraceInset));
 			cell->back()->cell(0).swap(ar);
 		}
@@ -741,12 +740,12 @@ void Parser::parse_into1(MathGridInset & grid, unsigned flags,
 		// control sequences
 		//
 		else if (t.cs() == "(") {
-			cell->push_back(MathAtom(new MathHullInset(LM_OT_SIMPLE)));
+			cell->push_back(MathAtom(new MathHullInset("simple")));
 			parse_into2(cell->back(), FLAG_SIMPLE2, true, false);
 		}
 
 		else if (t.cs() == "[") {
-			cell->push_back(MathAtom(new MathHullInset(LM_OT_EQUATION)));
+			cell->push_back(MathAtom(new MathHullInset("equation")));
 			parse_into2(cell->back(), FLAG_EQUATION, true, false);
 		}
 
@@ -897,54 +896,54 @@ void Parser::parse_into1(MathGridInset & grid, unsigned flags,
 			}
 
 			else if (name == "math") {
-				cell->push_back(MathAtom(new MathHullInset(LM_OT_SIMPLE)));
+				cell->push_back(MathAtom(new MathHullInset("simple")));
 				parse_into2(cell->back(), FLAG_SIMPLE, true, true);
 			}
 
 			else if (name == "equation" || name == "equation*"
 					|| name == "displaymath") {
-				cell->push_back(MathAtom(new MathHullInset(LM_OT_EQUATION)));
+				cell->push_back(MathAtom(new MathHullInset("equation")));
 				parse_into2(cell->back(), FLAG_END, true, (name == "equation"));
 			}
 
 			else if (name == "eqnarray" || name == "eqnarray*") {
-				cell->push_back(MathAtom(new MathHullInset(LM_OT_EQNARRAY)));
+				cell->push_back(MathAtom(new MathHullInset("eqnarray")));
 				parse_into2(cell->back(), FLAG_END, true, !stared(name));
 			}
 
 			else if (name == "align" || name == "align*") {
-				cell->push_back(MathAtom(new MathHullInset(LM_OT_ALIGN)));
+				cell->push_back(MathAtom(new MathHullInset("align")));
 				parse_into2(cell->back(), FLAG_END, true, !stared(name));
 			}
 
 			else if (name == "alignat" || name == "alignat*") {
 				// ignore this for a while
 				getArg('{', '}');
-				cell->push_back(MathAtom(new MathHullInset(LM_OT_ALIGNAT)));
+				cell->push_back(MathAtom(new MathHullInset("alignat")));
 				parse_into2(cell->back(), FLAG_END, true, !stared(name));
 			}
 
 			else if (name == "xalignat" || name == "xalignat*") {
 				// ignore this for a while
 				getArg('{', '}');
-				cell->push_back(MathAtom(new MathHullInset(LM_OT_XALIGNAT)));
+				cell->push_back(MathAtom(new MathHullInset("xalignat")));
 				parse_into2(cell->back(), FLAG_END, true, !stared(name));
 			}
 
 			else if (name == "xxalignat") {
 				// ignore this for a while
 				getArg('{', '}');
-				cell->push_back(MathAtom(new MathHullInset(LM_OT_XXALIGNAT)));
+				cell->push_back(MathAtom(new MathHullInset("xxalignat")));
 				parse_into2(cell->back(), FLAG_END, true, !stared(name));
 			}
 
 			else if (name == "multline" || name == "multline*") {
-				cell->push_back(MathAtom(new MathHullInset(LM_OT_MULTLINE)));
+				cell->push_back(MathAtom(new MathHullInset("multline")));
 				parse_into2(cell->back(), FLAG_END, true, !stared(name));
 			}
 
 			else if (name == "gather" || name == "gather*") {
-				cell->push_back(MathAtom(new MathHullInset(LM_OT_GATHER)));
+				cell->push_back(MathAtom(new MathHullInset("gather")));
 				parse_into2(cell->back(), FLAG_END, true, !stared(name));
 			}
 

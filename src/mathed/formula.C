@@ -63,28 +63,14 @@ InsetFormula::InsetFormula()
 	: par_(MathAtom(new MathHullInset)), loader_(0)
 {}
 
+/*
 
-InsetFormula::InsetFormula(MathInsetTypes t)
-	: par_(MathAtom(new MathHullInset(t))), loader_(0)
+InsetFormula::InsetFormula(string const & type)
+	: par_(MathAtom(new MathHullInset(type))), loader_(0)
 {}
 
 
-InsetFormula::InsetFormula(string const & s)
-{
-	if (s.size()) {
-		bool res = mathed_parse_normal(par_, s);
-
-		if (!res)
-			res = mathed_parse_normal(par_, "$" + s + "$");
-
-		if (!res) {
-			lyxerr << "cannot interpret '" << s << "' as math\n";
-			par_ = MathAtom(new MathHullInset(LM_OT_SIMPLE));
-		}
-	}
-	metrics();
-	updatePreview();
-}
+*/
 
 
 Inset * InsetFormula::clone(Buffer const &, bool) const
@@ -106,6 +92,24 @@ int InsetFormula::latex(Buffer const *, ostream & os, bool fragile, bool) const
 	WriteStream wi(os, fragile, true);
 	par_->write(wi);
 	return wi.line();
+}
+
+
+void InsetFormula::read(string const & s)
+{
+	if (s.size()) {
+		bool res = mathed_parse_normal(par_, s);
+
+		if (!res)
+			res = mathed_parse_normal(par_, "$" + s + "$");
+
+		if (!res) {
+			lyxerr << "cannot interpret '" << s << "' as math\n";
+			par_ = MathAtom(new MathHullInset("simple"));
+		}
+	}
+	metrics();
+	updatePreview();
 }
 
 
@@ -321,10 +325,10 @@ InsetFormula::localDispatch(BufferView * bv, kb_action action,
 			int x = 0;
 			int y = 0;
 			mathcursor->getPos(x, y);
-			if (getType() == LM_OT_SIMPLE)
-				hull()->mutate(LM_OT_EQUATION);
+			if (hullType() == "simple")
+				hull()->mutate("equation");
 			else
-				hull()->mutate(LM_OT_SIMPLE);
+				hull()->mutate("simple");
 			mathcursor->setPos(x, y);
 			mathcursor->normalize();
 			updateLocal(bv, true);
@@ -351,7 +355,7 @@ InsetFormula::localDispatch(BufferView * bv, kb_action action,
 
 bool InsetFormula::display() const
 {
-	return getType() != LM_OT_SIMPLE;
+	return hullType() != "simple" && hullType() != "none";
 }
 
 
@@ -415,9 +419,15 @@ int InsetFormula::width(BufferView * bv, LyXFont const & font) const
 }
 
 
-MathInsetTypes InsetFormula::getType() const
+string const & InsetFormula::hullType() const
 {
 	return hull()->getType();
+}
+
+
+void InsetFormula::mutate(string const & type )
+{
+	hull()->mutate(type);
 }
 
 

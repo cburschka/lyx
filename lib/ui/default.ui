@@ -149,10 +149,13 @@ Menuset
 	Item "Toggle numbering of line|u" "math-nonumber"
 	Item "Toggle limits|l" "math-limits"
 	Separator
-	Item "Inline formula|I" "math-mutate inline"
-	Item "Displayed formula|D" "math-mutate display"
+	Item "Inline formula|I" "math-mutate simple"
+	Item "Displayed formula|D" "math-mutate equation"
 	Item "Eqnarray environment|q" "math-mutate eqnarray"
 	Item "Align environment|A" "math-mutate align"
+	Item "AlignAt environment" "math-mutate alignat"
+	Item "XAlignAt environment" "math-mutate xalignat"
+	Item "XXAlignAt environment" "math-mutate xxalignat"
 	Separator
 	Item "Align Left|f" "math-halign left"
 	Item "Align Center|C" "math-halign center"

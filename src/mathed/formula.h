@@ -22,7 +22,6 @@
 #endif
 
 #include "formulabase.h"
-#include "math_defs.h"
 #include "math_atom.h"
 #include "graphics/GraphicsTypes.h"
 #include "graphics/GraphicsLoader.h"
@@ -35,9 +34,7 @@ public:
 	///
 	InsetFormula();
 	///
-	explicit InsetFormula(MathInsetTypes);
-	///
-	explicit InsetFormula(string const &);
+	//explicit InsetFormula(string const & type);
 	///
 	int ascent(BufferView *, LyXFont const &) const;
 	///
@@ -51,6 +48,8 @@ public:
 	void write(Buffer const *, std::ostream &) const;
 	///
 	void read(Buffer const *, LyXLex & lex);
+	///
+	void read(const string & data);
 	///
 	int latex(Buffer const *, std::ostream &, bool fragile, bool free_spc) const;
 	///
@@ -73,11 +72,13 @@ public:
 	///
 	std::vector<string> const getLabelList() const;
 	///
-	MathInsetTypes getType() const;
+	string const & hullType() const;
 	///
 	MathAtom const & par() const { return par_; }
 	///
 	MathAtom & par() { return par_; }
+	///
+	void mutate(string const & type);
 
 private:
 	/// Is this a displayed environment?

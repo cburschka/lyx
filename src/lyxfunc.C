@@ -471,7 +471,7 @@ FuncStatus LyXFunc::getStatus(kb_action action,
 		break;
 	}
 	case LFUN_MATH_VALIGN:
-		if (mathcursor && mathcursor->formula()->getType() != LM_OT_SIMPLE) {
+		if (mathcursor && mathcursor->formula()->hullType() != "simple") {
 			char align = mathcursor->valign();
 			if (align == '\0') {
 				disable = true;
@@ -491,7 +491,7 @@ FuncStatus LyXFunc::getStatus(kb_action action,
 		break;
 
 	case LFUN_MATH_HALIGN:
-		if (mathcursor && mathcursor->formula()->getType() != LM_OT_SIMPLE) {
+		if (mathcursor && mathcursor->formula()->hullType() != "simple") {
 			char align = mathcursor->halign();
 			if (align == '\0') {
 				disable = true;
@@ -511,28 +511,9 @@ FuncStatus LyXFunc::getStatus(kb_action action,
 		break;
 
 	case LFUN_MATH_MUTATE:
-		if (tli && (tli->lyxCode() == Inset::MATH_CODE)) {
-			MathInsetTypes type = mathcursor->formula()->getType();
-			if (argument == "inline") {
-				flag.setOnOff(type == LM_OT_SIMPLE);
-			} else if (argument == "display") {
-				flag.setOnOff(type == LM_OT_EQUATION);
-			} else if (argument == "eqnarray") {
-				flag.setOnOff(type == LM_OT_EQNARRAY);
-			} else if (argument == "align") {
-				flag.setOnOff(type == LM_OT_ALIGN);
-			} else if (argument == "alignat") {
-				flag.setOnOff(type == LM_OT_ALIGNAT);
-			} else if (argument == "xalignat") {
-				flag.setOnOff(type == LM_OT_XALIGNAT);
-			} else if (argument == "xxalignat") {
-				flag.setOnOff(type == LM_OT_XXALIGNAT);
-			} else if (argument == "none") {
-				flag.setOnOff(type == LM_OT_NONE);
-			} else {
-				disable = true;
-			}
-		} else
+		if (tli && (tli->lyxCode() == Inset::MATH_CODE))
+			flag.setOnOff(mathcursor->formula()->hullType() == argument);
+		else
 			disable = true;
 		break;
 
@@ -552,7 +533,7 @@ FuncStatus LyXFunc::getStatus(kb_action action,
 	case LFUN_MATH_COLUMN_INSERT:
 	case LFUN_MATH_COLUMN_DELETE:
 		disable = !mathcursor || !mathcursor->halign() ||
-			mathcursor->formula()->getType() == LM_OT_SIMPLE;
+			mathcursor->formula()->hullType() == "simple";
 		break;
 
 	default:

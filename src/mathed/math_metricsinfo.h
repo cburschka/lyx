@@ -2,7 +2,6 @@
 #define MATH_METRICSINFO_H
 
 #include "lyxfont.h"
-#include "math_defs.h"
 #include "LString.h"
 
 class BufferView;

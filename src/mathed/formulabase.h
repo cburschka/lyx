@@ -23,9 +23,6 @@
 #include "frontends/mouse_state.h"
 #include "lyxfont.h"
 
-// only for getType():
-#include "math_defs.h"
-
 #include <iosfwd>
 
 class Buffer;
@@ -46,7 +43,7 @@ public:
 	///
 	virtual void draw(BufferView *,LyXFont const &, int, float &, bool) const = 0;
 	///
-	virtual MathInsetTypes getType() const = 0;
+	virtual string const & hullType() const = 0;
 	/// lowest x coordinate
 	virtual int xlow() const;
 	/// highest x coordinate
