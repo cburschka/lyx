@@ -51,7 +51,7 @@ Menuset
 	Menu "lastfiles"
 		Lastfiles
 	End
- 
+
 	Menu "file_vc"
 		OptItem "Register...|R" "vc-register"
 		OptItem "Check In Changes...|I" "vc-check-in"
@@ -210,7 +210,7 @@ Menuset
 		Separator
 	    Documents
 	End
- 
+
 	Menu "document_update"
 		UpdateFormats
 	End
@@ -355,7 +355,7 @@ Menuset
 #
 # DOCUMENT MENU
 #
- 
+
 	Menu "document"
 		Submenu "Change Tracking|C" "edit_change"
 		OptItem "Build Program|B" "build-program"
@@ -366,7 +366,7 @@ Menuset
 		Separator
 		Item "Settings...|S" "dialog-show document"
 	End
- 
+
 	Menu "edit_change"
 		Item "Track Changes|T" "track-changes"
 		Item "Merge Changes...|M" "merge-changes"
@@ -398,7 +398,7 @@ Menuset
 #
 # TOOLS MENU
 #
- 
+
 	Menu "tools"
 		Item "Spellchecker...|S" "dialog-show spellchecker"
 		OptItem "Thesaurus...|T" "thesaurus-entry"
@@ -412,7 +412,7 @@ Menuset
 		Item "Reconfigure|R" "reconfigure"
 		Item "Preferences...|P" "dialog-show preferences"
 	End
- 
+
 #
 # HELP MENU
 #

@@ -67,7 +67,7 @@ Style Email
 	AlignPossible         Center
 	LabelType             Static
 	LabelString           "E-mail:"
-	Font 
+	Font
 	  Size                Large
 	  Family              Typewriter
 	EndFont
@@ -90,20 +90,20 @@ Style Affiliation
 	Align                 Center
 	AlignPossible         Center
 	LabelType             No_Label
-	Font 
+	Font
 	  Size                Large
 	EndFont
 End
 
 
-Style Abstract 
+Style Abstract
 	LeftMargin            ""
 	RightMargin           ""
 	Font
 	  Size                Normal
 	  Shape               Italic
 	EndFont
-	
+
 	LabelFont
 	  Size                Large
 	  Shape               Up

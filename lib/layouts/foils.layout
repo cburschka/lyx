@@ -1,6 +1,6 @@
 #% Do not delete the line below; configure depends on this
 #  \DeclareLaTeXClass{slides (FoilTeX)}
-# Foils textclass definition file. 
+# Foils textclass definition file.
 # Created (1.Oct.96):   Alejandro Aguilar Sierra
 # Enhanced (fonts & centering):  Jean-Marc Lasgouttes
 # To do: Define class specific options.
@@ -50,7 +50,7 @@ Style Foilhead
 	Align                 Center
 	AlignPossible         Center
 	LabelType             No_Label
-	Font 
+	Font
 	  Series              Bold
 	  Size                Large
 	EndFont
@@ -126,7 +126,7 @@ Input stdstruct.inc
 
 
 Style Title
-	Font 
+	Font
 	  Series              Bold
 	  Size                Largest
 	EndFont
@@ -134,25 +134,25 @@ End
 
 
 Style Author
-	Font 
+	Font
 	  Size                Large
 	EndFont
 End
 
 
 Style Date
-	Font 
+	Font
 	  Size                Large
 	EndFont
 End
 
 
 Style Abstract
-	Font 
+	Font
 	  Size                Normal
 	  Series              Medium
 	EndFont
-	LabelFont 
+	LabelFont
 	  Size                Large
 	  Series              Bold
 	EndFont
@@ -170,7 +170,7 @@ Style My_Logo
 	AlignPossible         Left
 	LabelType             Static
 	LabelString           "My Logo:"
-	LabelFont             
+	LabelFont
 	  Series              Bold
 	  Shape               Italic
 	  Color               red
@@ -212,9 +212,9 @@ End
 
 
 Style Bibliography
-	LabelFont 
+	LabelFont
 	  Size                Larger
-	  Series              Bold    
+	  Series              Bold
 	EndFont
 End
 
@@ -248,21 +248,21 @@ Style Lemma
 	CopyStyle             Theorem
 	LatexName             Lemma
 	LabelString           "Lemma #."
-End  
+End
 
 
 Style Corollary
 	CopyStyle             Theorem
 	LatexName             Corollary
 	LabelString           "Corollary #."
-End  
+End
 
 
 Style Proposition
 	CopyStyle             Theorem
 	LatexName             Proposition
 	LabelString           "Proposition #."
-End  
+End
 
 
 Style Definition
@@ -290,7 +290,7 @@ Style Proof
 	  Shape               Up
 	  Series              Bold
 	EndFont
-End  
+End
 
 
 Style Theorem*
@@ -304,21 +304,21 @@ Style Lemma*
 	CopyStyle             Lemma
 	LatexName             Lemma*
 	LabelString           "Lemma."
-End  
+End
 
 
 Style Corollary*
 	CopyStyle             Corollary
 	LatexName             Corollary*
 	LabelString           "Corollary."
-End  
+End
 
 
 Style Proposition*
 	CopyStyle             Proposition
 	LatexName             Proposition*
 	LabelString           "Proposition."
-End  
+End
 
 
 Style Definition*

@@ -73,7 +73,7 @@ Style Caption
 	LabelType             Sensitive
 	LabelString   Caption
 	OptionalArgs          1
-	LabelFont 
+	LabelFont
 	  Series              Bold
 	EndFont
 End

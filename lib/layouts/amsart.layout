@@ -14,7 +14,7 @@ PageStyle               Headers
 
 ClassOptions
 	FontSize   8|9|10|11|12
-End  
+End
 
 
 Style Standard
@@ -30,7 +30,7 @@ End
 
 
 Preamble
-	\theoremstyle{plain}    
+	\theoremstyle{plain}
 	\newtheorem{thm}{Theorem}[section]
 	\numberwithin{equation}{section} %% Comment out for sequentially-numbered
 	\numberwithin{figure}{section} %% Comment out for sequentially-numbered
@@ -55,7 +55,7 @@ NoStyle                 Address
 #NoStyle                Paragraph*
 #NoStyle                Subparagraph*
 
-NoStyle Verse    # Although mathematicians tend to be poets at times, 
+NoStyle Verse    # Although mathematicians tend to be poets at times,
 	               # we don't need this.
 
 

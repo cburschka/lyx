@@ -15,7 +15,7 @@ Float
 	LaTeXBuiltin          true
 End
 
-	
+
 Float
 	Type                  figure
 	GuiName               Figure

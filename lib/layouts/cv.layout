@@ -1,6 +1,6 @@
 #% Do not delete the line below; configure depends on this
 #  \DeclareLaTeXClass{Curriculum Vitae}
-# CV textclass definition file. 
+# CV textclass definition file.
 # Author : Jean-Marc Lasgouttes (Jean-Marc.Lasgouttes@inria.fr)
 
 
@@ -40,7 +40,7 @@ Style Section
 	AlignPossible         Block, Left
 	LabelType             No_Label
 	Font
-	  Family              Sans 
+	  Family              Sans
 	  Series              Bold
 	EndFont
 End
@@ -69,7 +69,7 @@ Style Topic
 	AlignPossible         Block, Left
 	LabelType             Manual
 	LabelString           MMMMM
-	LabelFont 
+	LabelFont
 	  Family              Sans
 	  Shape               Slanted
 	EndFont
@@ -131,7 +131,7 @@ Style Title
 	Align                 Center
 	AlignPossible         Center
 	LabelType             No_Label
-	Font 
+	Font
 	  Family              Sans
 	  Series              Bold
 	  Size                Largest

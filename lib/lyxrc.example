@@ -14,7 +14,7 @@
 
 # Full author contact details are available in file CREDITS.
 
-# The file lyxrc.example is a template to write your own lyxrc file. 
+# The file lyxrc.example is a template to write your own lyxrc file.
 # If you copy/rename it to lyxrc in the current directory, it will
 # give global options for all LyX users. It is also possible to copy
 # this file to $HOME/.lyx/lyxrc so that the configuration applies to a
@@ -38,7 +38,7 @@
 # cua.bind            for Windows-, Mac- and Motif-like bindings
 # emacs.bind          for Emacs-like bindings.
 #
-# The \bind_file command looks in the LyX bind directory for a file 
+# The \bind_file command looks in the LyX bind directory for a file
 # of the given name, but a full path can also be given. If you have
 # a bind file in your ~/.lyx/bind/ directory, it will be preferred
 # over a system wide bind file. Default is `cua'.
@@ -54,7 +54,7 @@
 # However, if you're not at all happy with the default bindings,
 # the most logical thing to do would be to use one of the system
 # wide bind files as a template and place your own version in
-# ~/.lyx/bind/mine_is_best.bind and change the above \bind_file 
+# ~/.lyx/bind/mine_is_best.bind and change the above \bind_file
 # to this instead:
 #\bind_file mine_is_best
 
@@ -84,8 +84,8 @@
 # 0 means no auto-save, default is 300 for five minutes.
 #\autosave 600
 
-# LyX asks for a second confirmation to exit if you exit with changed 
-# documents that you don't want to save.  You can turn this confirmation off 
+# LyX asks for a second confirmation to exit if you exit with changed
+# documents that you don't want to save.  You can turn this confirmation off
 # (LyX will still ask to save changed documents) with the following line.
 # We recommend to keep the confirmation, though.
 #\exit_confirmation false
@@ -95,7 +95,7 @@
 # The default for now is ask on save.
 # \new_ask_filename false
 
-# LyX continously displays names of last command executed, along with a list 
+# LyX continously displays names of last command executed, along with a list
 # of defined short-cuts for it in the minibuffer.
 # It requires some horsepower to function, so you can turn it off, if LyX
 # seems slow to you, by uncommenting this line:
@@ -111,7 +111,7 @@
 # not append the -paper option to the dvi command at all. This case is
 # especially useful when viewing your documents on Windows with yap,
 # because yap does not allow a command line option for the paper size.
-#\view_dvi_paper_option "" 
+#\view_dvi_paper_option ""
 
 # LyX assumes that the default papersize should be usletter.  If this is not
 # true for your site, use the next line to specify usletter, legal,
@@ -121,7 +121,7 @@
 # Define which program to use to use as postscript interpreter for included
 # images.
 # You can not include any options. The default is "gs" if it can be found.
-# If you have a slow computer, you should consider turning off the WYSIWYG 
+# If you have a slow computer, you should consider turning off the WYSIWYG
 # display of includes images, by using this command:
 #\ps_command ""
 
@@ -145,7 +145,7 @@
 # the lib/kbd directory if you want to write support for your language.
 # If you do, please submit it to lyx-devel@lists.lyx.org.
 
-# The Pause button is defined to be a three-way switch between primary 
+# The Pause button is defined to be a three-way switch between primary
 # keyboard, secondary keyboard, and no keyboard mapping with the
 # following command. It is useful if you want to write in a language
 # not directly supported by your keyboard and you have defined a
@@ -166,7 +166,7 @@
 
 # Maximum number of words in the initialization string for a new label.
 # If it is set to 0, then the init. string will only contain the prefix
-# (e.g. "sec:"). If it is set to -1, the init. string will be empty. 
+# (e.g. "sec:"). If it is set to -1, the init. string will be empty.
 # This feature is disabled in 1.1.6.
 #
 #\label_init_length 0
@@ -175,12 +175,12 @@
 # SCREEN & FONTS SECTION #################################################
 #
 
-# DPI (dots per inch) of your monitor is auto-detected by LyX. If that goes 
+# DPI (dots per inch) of your monitor is auto-detected by LyX. If that goes
 # wrong, you can override the setting here:
 #\screen_dpi 100
 
 # The zoom percentage for screen fonts.
-# A setting of 100% will make the fonts roughly the same size as on paper. 
+# A setting of 100% will make the fonts roughly the same size as on paper.
 # However, since a screen is wider than a piece of paper, the default setting
 # is 150%.
 #\screen_zoom 100
@@ -192,8 +192,8 @@
 
 # LyX normally doesn't update the cursor position if you move the scrollbar.
 # If you scroll the cursor off the screen and then start typing LyX will
-# move you back to where the cursor was. If you'd prefer to always have the 
-# cursor on screen, bounded by the topmost and bottommost visible lines 
+# move you back to where the cursor was. If you'd prefer to always have the
+# cursor on screen, bounded by the topmost and bottommost visible lines
 # -- much like XEmacs for example -- then uncomment the next line.
 #\cursor_follows_scrollbar true
 
@@ -222,12 +222,12 @@
 #\popup_font_encoding iso8859-2
 
 
-# The normal font for popups. It is set to 
+# The normal font for popups. It is set to
 #    <font_popup>-*-*-*-?-*-*-*-*-<font_encoding>.
 # The default  is:
 #\popup_font_name "-*-helvetica-medium-r"
 
-# The bold font for popups. It is set to 
+# The bold font for popups. It is set to
 #    <font_menu>-*-*-*-?-*-*-*-*-<font_encoding>.
 # The default  is:
 #\popup_bold_font "-*-helvetica-bold-r"
@@ -236,7 +236,7 @@
 # You should only have to change these if the fonts on your screen look bad,
 # in which case you can fine tune the font selection size by size. LyX selects
 # font size according to this table, the monitor DPI setting and the current
-# zoom setting. 
+# zoom setting.
 # The format is:
 #\screen_font_sizes tiny smallest smaller small normal large larger largest huge huger
 #
@@ -253,7 +253,7 @@
 # UI SECTION ########################################################
 #
 
-# Choose your UI (user interface) definition here. The .ui files are in the 
+# Choose your UI (user interface) definition here. The .ui files are in the
 # directory "lib/ui" and contains the definition of the menu and the toolbar.
 #\ui_file "default"
 
@@ -280,15 +280,15 @@
 # your print program.
 #\print_command dvips
 
-# Extra options to pass to printing program after everything 
+# Extra options to pass to printing program after everything
 # else, but before the filename of the DVI file to be printed.
 #\print_extra_options ""
 
-# When set, this printer option automatically prints to a file 
+# When set, this printer option automatically prints to a file
 # and then calls a separate print spooling program on that file
 # with the given name and arguments.
 # This is set by default to 'lp' or 'lpr', depending on what your
-# system uses. 
+# system uses.
 # Set this to "" if you have set up dvips so that it sends
 # output to the right printer (remember to also use \print_adapt_output).
 #\print_spool_command ""
@@ -296,7 +296,7 @@
 # If you specify a printer name in the print dialog,
 # the following argument is prepended along with the printer name
 # after the spool command. The default is autodetected, along with
-# \print_spool_command determination. 
+# \print_spool_command determination.
 #\print_spool_printerprefix ""
 
 # Other print related options
@@ -310,10 +310,10 @@
 # program. Look at the man page for your favorite print program to learn
 # which options to use.
 # Normally you don't need to change this unless you use something other
-# than dvips. 
+# than dvips.
 #\print_evenpage_flag -B
 #\print_oddpage_flag -A
-#\print_reverse_flag -r 
+#\print_reverse_flag -r
 #\print_landscape_flag "-t landscape"
 #\print_pagerange_flag -pp
 #\print_copies_flag -c
@@ -325,7 +325,7 @@
 #\print_to_printer -P
 
 # Option to pass to the print program to print to a file.
-#\print_to_file -o 
+#\print_to_file -o
 
 # Extension of printer program output file. Usually .ps
 #\print_file_extension .ps
@@ -336,7 +336,7 @@
 #\print_extra_options -q
 #\print_evenpage_flag "-D2 -r"
 #\print_oddpage_flag -D1
-#\print_reverse_flag -r 
+#\print_reverse_flag -r
 #\print_landscape_flag -l
 #\print_pagerange_flag -p
 #\print_to_file -e
@@ -349,7 +349,7 @@
 # EXPORT SECTION ########################################################
 #
 
-# The \converter command defines a converter between two formats. 
+# The \converter command defines a converter between two formats.
 # LyX uses the defined converters for generating output in various formats,
 # or for importing.
 # The converter command has 4 arguments: The source format, the target format,
@@ -430,7 +430,7 @@
 # Flag telling whether the lastfiles should be checked for existence.
 # Files that does not exist are left out of the lastfiles entries.
 # Default is true. If you use slow or removable media, such as networks
-# or floppy disks, you can speed up the starting time of LyX by disabling 
+# or floppy disks, you can speed up the starting time of LyX by disabling
 # this feature.
 #\check_lastfiles false
 
@@ -459,7 +459,7 @@
 #\use_tempdir false
 
 # This is the maximum line length of an exported ASCII file (LaTeX,
-# SGML or plain text). Default is 75. 
+# SGML or plain text). Default is 75.
 #\ascii_linelen 80
 
 # Set to false if you don't want LyX to create backup files.
@@ -476,7 +476,7 @@
 #
 
 # The following entry can be used to define an external program to
-# render tables in the ASCII output. If you specify "none", a simple 
+# render tables in the ASCII output. If you specify "none", a simple
 # internal routine is used. The default is auto-detected.
 # The following line will use groff and output using latin-1 encoding
 # (here $$FName is the input file and the output goes to stdout):
@@ -492,11 +492,11 @@
 # installed and configured, you might want to uncomment the line below.
 #\spell_command aspell
 
-# Consider run-together words, such as "notthe" for "not the", as legal 
-# words? Default is false. 
+# Consider run-together words, such as "notthe" for "not the", as legal
+# words? Default is false.
 #\accept_compound true
 
-# Specify an alternate language. The default is to use the language of 
+# Specify an alternate language. The default is to use the language of
 # document. Uncomment both to enable.
 #\use_alt_language true
 #\alternate_language dansk
@@ -506,15 +506,15 @@
 #\escape_chars "Ê¯Â∆ÿ≈"
 
 # Specify an alternate personal dictionary file. If the file name does not
-# begin with "/", $HOME is prefixed. The default is to search for a personal 
-# dictionary in both the current directory and $HOME, creating one in $HOME 
-# if none is found. The preferred name is constructed by appending ".ispell_" 
-# to the base name of the hash file. For example, if you use the English 
-# dictionary, your personal dictionary would be named ".ispell_english". 
+# begin with "/", $HOME is prefixed. The default is to search for a personal
+# dictionary in both the current directory and $HOME, creating one in $HOME
+# if none is found. The preferred name is constructed by appending ".ispell_"
+# to the base name of the hash file. For example, if you use the English
+# dictionary, your personal dictionary would be named ".ispell_english".
 #\use_personal_dictionary true
 #\personal_dictionary .ispell_dansk
 
-# Specify whether to pass the -T input encoding option to ispell (only if the 
+# Specify whether to pass the -T input encoding option to ispell (only if the
 # language is different than "default".) Enable this if you can't spellcheck
 # words with international letters in them. There have been reports that this
 # does not work with all dictionaries, so this is disabled by default.
@@ -555,7 +555,7 @@
 # Default is "true"
 #\mark_foreign_language false
 
-# It is possible to bind keys for changing the language inside a document. 
+# It is possible to bind keys for changing the language inside a document.
 # For example, the following command will cause F12 to switch between French
 # and English in a French document, and in a document of other language it will
 # switch between that language and French.

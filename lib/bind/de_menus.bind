@@ -66,10 +66,10 @@
 #
 \bind "M-a 0"			"layout Part"
 \bind "M-a 1"			"layout Chapter"
-\bind "M-a 2"			"layout Section" 
-\bind "M-a 3"			"layout Subsection"  
-\bind "M-a 4"			"layout Subsubsection"    
-\bind "M-a 5"			"layout Paragraph"        
+\bind "M-a 2"			"layout Section"
+\bind "M-a 3"			"layout Subsection"
+\bind "M-a 4"			"layout Subsubsection"
+\bind "M-a 5"			"layout Paragraph"
 \bind "M-a 6"			"layout Subparagraph"
 \bind "M-a ~S-asterisk ~S-0"	"layout Part*"
 \bind "M-a ~S-asterisk ~S-1"	"layout Chapter*"
@@ -117,7 +117,7 @@
 
 #
 # Menue Zeichensatz
-# 
+#
 \bind "M-z f"			"font-bold"
 \bind "M-z k"			"font-noun"
 \bind "M-z h"			"font-emph"
@@ -133,7 +133,7 @@
 \bind "M-z Up"			"word-upcase"
 \bind "M-z Right"		"word-capitalize"
 
-\bind "M-z space"		"font-default"                  
+\bind "M-z space"		"font-default"
 
 #
 # Menue Tastatur

@@ -44,7 +44,7 @@
 # - Case
 # - Conclusion
 # - Conclusion*
-# - Fact 
+# - Fact
 # - Fact*
 
 Preamble
@@ -65,7 +65,7 @@ Style Theorem
 	#DependsOn             TheoremStyle
 	NextNoIndent          1
 	LabelSep              xx
-	ParIndent             MMM  
+	ParIndent             MMM
 	ParSkip               0.4
 	ItemSep               0.2
 	TopSep                0.7
@@ -84,7 +84,7 @@ Style Theorem
 	  Shape               Up
 	  Series              Bold
 	EndFont
-End  
+End
 
 
 Style Theorem*
@@ -93,10 +93,10 @@ Style Theorem*
 	LabelType             Static
 	LabelString           "Theorem."
 	Preamble
-	  \theoremstyle{plain}    
-	  \newtheorem*{thm*}{Theorem} 
+	  \theoremstyle{plain}
+	  \newtheorem*{thm*}{Theorem}
 	EndPreamble
-End  
+End
 
 
 Style Corollary
@@ -104,10 +104,10 @@ Style Corollary
 	LatexName             cor
 	LabelString           "Corollary @Section@.\arabic{theorem}."
 	Preamble
-	  \theoremstyle{plain}    
+	  \theoremstyle{plain}
 	  \newtheorem{cor}[thm]{Corollary}
 	EndPreamble
-End  
+End
 
 
 Style Corollary*
@@ -115,10 +115,10 @@ Style Corollary*
 	LatexName             cor*
 	LabelString           "Corollary."
 	Preamble
-	  \theoremstyle{plain}    
+	  \theoremstyle{plain}
 	  \newtheorem*{cor*}{Corollary}
 	EndPreamble
-End  
+End
 
 
 Style Lemma
@@ -126,10 +126,10 @@ Style Lemma
 	LatexName             lem
 	LabelString           "Lemma @Section@.\arabic{theorem}."
 	Preamble
-	  \theoremstyle{plain}    
+	  \theoremstyle{plain}
 	  \newtheorem{lem}[thm]{Lemma}
 	EndPreamble
-End  
+End
 
 
 Style Lemma*
@@ -137,10 +137,10 @@ Style Lemma*
 	LatexName             lem*
 	LabelString           "Lemma."
 	Preamble
-	  \theoremstyle{plain}    
+	  \theoremstyle{plain}
 	  \newtheorem*{lem*}{Lemma}
 	EndPreamble
-End  
+End
 
 
 Style Proposition
@@ -148,10 +148,10 @@ Style Proposition
 	LatexName             prop
 	LabelString           "Proposition @Section@.\arabic{theorem}."
 	Preamble
-	  \theoremstyle{plain}    
+	  \theoremstyle{plain}
 	  \newtheorem{prop}[thm]{Proposition}
 	EndPreamble
-End  
+End
 
 
 Style Proposition*
@@ -159,10 +159,10 @@ Style Proposition*
 	LatexName             prop*
 	LabelString           "Proposition."
 	Preamble
-	  \theoremstyle{plain}    
-	  \newtheorem*{prop*}{Proposition} 
+	  \theoremstyle{plain}
+	  \newtheorem*{prop*}{Proposition}
 	EndPreamble
-End  
+End
 
 
 Style Conjecture
@@ -170,10 +170,10 @@ Style Conjecture
 	LatexName             conjecture
 	LabelString           "Conjecture @Section@.\arabic{theorem}."
 	Preamble
-	  \theoremstyle{plain}    
+	  \theoremstyle{plain}
 	  \newtheorem{conjecture}[thm]{Conjecture}
 	EndPreamble
-End  
+End
 
 
 Style Conjecture*
@@ -181,10 +181,10 @@ Style Conjecture*
 	LatexName             conjecture*
 	LabelString           "Conjecture."
 	Preamble
-	  \theoremstyle{plain}    
-	  \newtheorem*{conjecture*}{Conjecture} 
+	  \theoremstyle{plain}
+	  \newtheorem*{conjecture*}{Conjecture}
 	EndPreamble
-End 
+End
 
 
 Style Criterion
@@ -192,10 +192,10 @@ Style Criterion
 	LatexName             criterion
 	LabelString           "Criterion @Section@.\arabic{theorem}."
 	Preamble
-	  \theoremstyle{plain}    
+	  \theoremstyle{plain}
 	  \newtheorem{criterion}[thm]{Criterion}
 	EndPreamble
-End  
+End
 
 
 Style Algorithm
@@ -203,10 +203,10 @@ Style Algorithm
 	LatexName             algorithm
 	LabelString           "Algorithm @Section@.\arabic{theorem}."
 	Preamble
-	  \theoremstyle{plain}    
+	  \theoremstyle{plain}
 	  \newtheorem{algorithm}[thm]{Algorithm}
 	EndPreamble
-End  
+End
 
 
 Style Fact
@@ -214,10 +214,10 @@ Style Fact
 	LatexName             fact
 	LabelString           "Fact @Section@.\arabic{theorem}."
 	Preamble
-	  \theoremstyle{plain}    
-	  \newtheorem{fact}[thm]{Fact} 
+	  \theoremstyle{plain}
+	  \newtheorem{fact}[thm]{Fact}
 	EndPreamble
-End  
+End
 
 
 Style Fact*
@@ -225,10 +225,10 @@ Style Fact*
 	LatexName             fact*
 	LabelString           "Fact."
 	Preamble
-	  \theoremstyle{plain}    
-	  \newtheorem*{fact*}{Fact} 
+	  \theoremstyle{plain}
+	  \newtheorem*{fact*}{Fact}
 	EndPreamble
-End  
+End
 
 
 Style Axiom
@@ -236,10 +236,10 @@ Style Axiom
 	LatexName             ax
 	LabelString           "Axiom @Section@.\arabic{theorem}."
 	Preamble
-	  \theoremstyle{plain}    
-	  \newtheorem{ax}[thm]{Axiom} 
+	  \theoremstyle{plain}
+	  \newtheorem{ax}[thm]{Axiom}
 	EndPreamble
-End  
+End
 
 
 Style Definition
@@ -257,7 +257,7 @@ Style Definition
 	  \theoremstyle{definition}
 	  \newtheorem{defn}[thm]{Definition}
 	EndPreamble
-End  
+End
 
 
 Style Definition*
@@ -269,7 +269,7 @@ Style Definition*
 	 \theoremstyle{definition}
 	 \newtheorem*{defn*}{Definition}
 	EndPreamble
-End  
+End
 
 
 Style Example
@@ -280,7 +280,7 @@ Style Example
 	 \theoremstyle{definition}
 	  \newtheorem{example}[thm]{Example}
 	EndPreamble
-End  
+End
 
 
 Style Example*
@@ -291,7 +291,7 @@ Style Example*
 	  \theoremstyle{definition}
 	  \newtheorem*{example*}{Example}
 	EndPreamble
-End  
+End
 
 
 Style Condition
@@ -302,7 +302,7 @@ Style Condition
 	  \theoremstyle{definition}
 	  \newtheorem{condition}[thm]{Condition}
 	EndPreamble
-End  
+End
 
 
 Style Condition*
@@ -313,7 +313,7 @@ Style Condition*
 	  \theoremstyle{definition}
 	  \newtheorem*{condition*}{Condition}
 	EndPreamble
-End  
+End
 
 
 Style Problem
@@ -324,7 +324,7 @@ Style Problem
 	  \theoremstyle{definition}
 	  \newtheorem{problem}[thm]{Problem}
 	EndPreamble
-End  
+End
 
 
 Style Problem*
@@ -335,7 +335,7 @@ Style Problem*
 	  \theoremstyle{definition}
 	  \newtheorem*{problem*}{Problem}
 	EndPreamble
-End  
+End
 
 
 Style Exercise
@@ -347,7 +347,7 @@ Style Exercise
 	  %%Delete [section] for sequential numbering
 	  \newtheorem{xca}[section]{Exercise}
 	EndPreamble
-End  
+End
 
 
 Style Exercise*
@@ -358,7 +358,7 @@ Style Exercise*
 	  \theoremstyle{definition}
 	  \newtheorem*{xca*}{Exercise}
 	EndPreamble
-End  
+End
 
 
 Style Remark
@@ -377,7 +377,7 @@ Style Remark
 	  \theoremstyle{remark}
 	  \newtheorem{rem}[thm]{Remark}
 	EndPreamble
-End  
+End
 
 
 Style Remark*
@@ -389,7 +389,7 @@ Style Remark*
 	  \theoremstyle{remark}
 	  \newtheorem*{rem*}{Remark}
 	EndPreamble
-End  
+End
 
 
 Style Claim
@@ -397,10 +397,10 @@ Style Claim
 	LatexName             claim
 	LabelString           "Claim @Section@.\arabic{theorem}."
 	Preamble
-	  \theoremstyle{remark}    
+	  \theoremstyle{remark}
 	  \newtheorem{claim}[thm]{Claim}
 	EndPreamble
-End  
+End
 
 
 Style Claim*
@@ -408,10 +408,10 @@ Style Claim*
 	LatexName             claim*
 	LabelString           "Claim."
 	Preamble
-	  \theoremstyle{remark}    
+	  \theoremstyle{remark}
 	  \newtheorem*{claim*}{Claim}
 	EndPreamble
-End  
+End
 
 
 Style Note
@@ -419,10 +419,10 @@ Style Note
 	LatexName             note
 	LabelString           "Note @Section@.\arabic{theorem}."
 	Preamble
-	  \theoremstyle{remark}    
-	  \newtheorem{note}[thm]{Note} 
+	  \theoremstyle{remark}
+	  \newtheorem{note}[thm]{Note}
 	EndPreamble
-End  
+End
 
 
 Style Note*
@@ -430,10 +430,10 @@ Style Note*
 	LatexName             note*
 	LabelString           "Note."
 	Preamble
-	  \theoremstyle{remark}    
-	  \newtheorem*{note*}{Note} 
+	  \theoremstyle{remark}
+	  \newtheorem*{note*}{Note}
 	EndPreamble
-End  
+End
 
 
 Style Notation
@@ -441,10 +441,10 @@ Style Notation
 	LatexName             notation
 	LabelString           "Notation @Section@.\arabic{theorem}."
 	Preamble
-	  \theoremstyle{remark}    
-	  \newtheorem{notation}[thm]{Notation} 
+	  \theoremstyle{remark}
+	  \newtheorem{notation}[thm]{Notation}
 	EndPreamble
-End  
+End
 
 
 Style Notation*
@@ -453,9 +453,9 @@ Style Notation*
 	LabelString           "Notation."
 	Preamble
 	  \theoremstyle{remark}
-	  \newtheorem*{notation*}[thm]{Notation} 
+	  \newtheorem*{notation*}[thm]{Notation}
 	EndPreamble
-End  
+End
 
 
 Style Summary
@@ -463,10 +463,10 @@ Style Summary
 	LatexName             summary
 	LabelString           "Summary @Section@.\arabic{theorem}."
 	Preamble
-	  \theoremstyle{remark}    
-	  \newtheorem{summary}[thm]{Summary} 
+	  \theoremstyle{remark}
+	  \newtheorem{summary}[thm]{Summary}
 	EndPreamble
-End  
+End
 
 
 Style Acknowledgement
@@ -474,10 +474,10 @@ Style Acknowledgement
 	LatexName             acknowledgement
 	LabelString           "Acknowledgement @Section@.\arabic{theorem}."
 	Preamble
-	  \theoremstyle{remark}    
-	  \newtheorem{acknowledgement}[thm]{Acknowledgement} 
+	  \theoremstyle{remark}
+	  \newtheorem{acknowledgement}[thm]{Acknowledgement}
 	EndPreamble
-End  
+End
 
 
 Style Acknowledgement*
@@ -485,10 +485,10 @@ Style Acknowledgement*
 	LatexName             acknowledgement*
 	LabelString           "Acknowledgement."
 	Preamble
-	  \theoremstyle{remark}    
-	  \newtheorem*{acknowledgement*}{Acknowledgement} 
+	  \theoremstyle{remark}
+	  \newtheorem*{acknowledgement*}{Acknowledgement}
 	EndPreamble
-End  
+End
 
 
 Style Case
@@ -496,10 +496,10 @@ Style Case
 	LatexName             case
 	LabelString           "Case @Section@.\arabic{theorem}."
 	Preamble
-	  \theoremstyle{remark}    
-	  \newtheorem{case}{Case} %%Numbering of Cases not keyed to sections 
+	  \theoremstyle{remark}
+	  \newtheorem{case}{Case} %%Numbering of Cases not keyed to sections
 	EndPreamble
-End  
+End
 
 
 Style Conclusion
@@ -507,10 +507,10 @@ Style Conclusion
 	LatexName             conclusion
 	LabelString           "Conclusion @Section@.\arabic{theorem}."
 	Preamble
-	  \theoremstyle{remark}    
-	  \newtheorem{conclusion}[thm]{Conclusion} 
+	  \theoremstyle{remark}
+	  \newtheorem{conclusion}[thm]{Conclusion}
 	EndPreamble
-End  
+End
 
 
 Style Conclusion*
@@ -518,7 +518,7 @@ Style Conclusion*
 	LatexName             conclusion*
 	LabelString           "Conclusion."
 	Preamble
-	  \theoremstyle{remark}    
-	  \newtheorem*{conclusion*}{Conclusion} 
+	  \theoremstyle{remark}
+	  \newtheorem*{conclusion*}{Conclusion}
 	EndPreamble
-End  
+End

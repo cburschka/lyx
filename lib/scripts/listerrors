@@ -14,8 +14,8 @@ Expects to read from stdin and output to stdout.
 """
 
 __author__ = "Kayvan A. Sylvan <kayvan@sylvan.com>"
-__date__ = "$Date: 2003/08/22 10:50:02 $"
-__version__ = "$Revision: 1.3 $"
+__date__ = "$Date: 2003/10/13 09:50:10 $"
+__version__ = "$Revision: 1.4 $"
 __credits__ = """Edmar Wienskoski Jr. <edmar-w-jr@technologist.com>
     original Literate support for LyX.
 Bernard Michael Hurley <berhardh@westherts.ac.uk>
@@ -155,7 +155,7 @@ def xlc_try(line):
           write_error(line, "xlc", int(line[num_start : num_end]))
           retval = 1
   return retval
-  
+
 
 if __name__ == "__main__":
   main()

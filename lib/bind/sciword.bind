@@ -222,7 +222,7 @@
 \bind "S-C-KP_Up"				"paragraph-up-select"
 \bind "S-C-KP_Down" 			"paragraph-down-select"
 \bind "S-KP_Home"				"line-begin-select"
-\bind "S-KP_End"				"line-end-select"				
+\bind "S-KP_End"				"line-end-select"
 \bind "S-KP_Prior"  			"screen-up-select"
 \bind "S-KP_Next"				"screen-down-select"
 \bind "S-C-KP_Home" 			"buffer-begin-select"
@@ -232,6 +232,6 @@
 \bind "C-KP_Insert" 			"copy"
 \bind "S-KP_Insert" 			"paste"
 \bind "S-KP_Delete" 			"cut"
- 
+
 
 \bind "M-x" "command-execute"

@@ -106,7 +106,7 @@ def remove_oldfloat(lines, language):
 	# whose value is not default before the float.
 	# The check here is not accurate, but it doesn't matter
 	# as extra '\foo default' commands are ignored.
-	# In fact, it might be safer to output '\foo default' for all 
+	# In fact, it might be safer to output '\foo default' for all
 	# font attributes.
 	k = get_paragraph(lines, i)
 	flag = 0
@@ -361,7 +361,7 @@ def combine_ert(lines):
 	    lines[j:k] = text
 
 	i = i+1
-	
+
 oldunits = ["pt", "cm", "in", "text%", "col%"]
 
 def get_length(lines, name, start, end):

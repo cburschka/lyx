@@ -1,6 +1,6 @@
 #% Do not delete the line below; configure depends on this
 #  \DeclareLaTeXClass[svjour,svprobth.clo]{article (Springer - svjour/PTRF)}
-# svjour/probth (article) textclass definition file. 
+# svjour/probth (article) textclass definition file.
 # for Springer Verlag Journal of Geodesy.
 # --------
 #
@@ -32,7 +32,7 @@ End
 
 
 Style Title
-	Font 
+	Font
 	  Family              Roman
 	  Series              Bold
 	  Size                Larger
@@ -41,7 +41,7 @@ End
 
 
 Style Subtitle
-	Font 
+	Font
 	  Family              Roman
 	  Series              Bold
 	  Size                Large
@@ -49,7 +49,7 @@ Style Subtitle
 End
 
 Style Author
-	Font 
+	Font
 	  Series              Medium
 	  Shape               Up
 	EndFont

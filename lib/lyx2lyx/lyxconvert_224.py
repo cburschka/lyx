@@ -64,7 +64,7 @@ def add_end_layout(lines):
             lines.insert(i,"\\end_layout")
             i = i + 2
             continue
-        
+
         #case \end_document
         lines.insert(i, "\\end_layout")
         return
@@ -104,7 +104,7 @@ def end_document(lines):
         lines.append("\\end_document")
         return
     lines[i] = "\\end_document"
-    
+
 def convert(header, body):
     add_end_layout(body)
     layout2begin_layout(body)

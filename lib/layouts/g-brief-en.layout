@@ -1,6 +1,6 @@
 #% Do not delete he line below; configure depends on this
 #  \DeclareLaTeXClass[g-brief]{letter (g-brief)}
-# Letter textclass definition file. 
+# Letter textclass definition file.
 # Author : Thomas Hartkens <thomas@hartkens.de>
 
 Input stdfloats.inc
@@ -17,12 +17,12 @@ Style Letter
 	LatexType             Environment
 	LatexName             g-brief
 	ParSkip               0.4
-	KeepEmpty             1  
+	KeepEmpty             1
 	Align                 Block
 	AlignPossible         Block, Left, Right, Center
 	LabelType             Top_Environment
 	LabelString           Letter:
-	LabelFont 
+	LabelFont
 	  Series              Bold
 	  Shape               Italic
 	  Color               Blue
@@ -36,12 +36,12 @@ Style Name
 	LatexName             Name
 	LeftMargin            xxxxxxxxxx::xx
 	LabelSep              xx
-	KeepEmpty             1  
+	KeepEmpty             1
 	Align                 Block
 	AlignPossible         Block, Left
 	LabelType             Static
 	LabelString           Name:
-	LabelFont 
+	LabelFont
 	  Series              Bold
 	  Shape               Italic
 	  Color               Blue
@@ -179,7 +179,7 @@ Style Address
 	CopyStyle             Name
 	LatexName             Adresse
 	TopSep                1.5
-	KeepEmpty             1  
+	KeepEmpty             1
 	LabelString           Address:
 End
 
@@ -220,7 +220,7 @@ End
 Style cc
 	CopyStyle             Name
 	LatexName             Verteiler
-	KeepEmpty             1  
+	KeepEmpty             1
 	ParSep                0.4
 	LabelString           cc:
 End

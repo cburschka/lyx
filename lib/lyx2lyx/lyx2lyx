@@ -188,6 +188,6 @@ def main(argv):
     set_comment(header, version)
     set_format(header, opt.end)
     write_file(opt.output, header, body)
-    
+
 if __name__ == "__main__":
     main(sys.argv)

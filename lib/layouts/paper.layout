@@ -1,6 +1,6 @@
 #% Do not delete the line below; configure depends on this
 #  \DeclareLaTeXClass{article (paper)}
-# Paper textclass definition file. 
+# Paper textclass definition file.
 # Created by Jean-Marc Lasgouttes (Jean-Marc.Lasgouttes@inria.fr)
 
 
@@ -42,7 +42,7 @@ End
 
 
 Style Section
-	Font 
+	Font
 	  Family              Sans
 	  Series              Bold
 	  Size                Large
@@ -51,7 +51,7 @@ End
 
 
 Style Subsection
-	Font 
+	Font
 	  Family              Sans
 	  Series              Bold
 	  Size                Large
@@ -60,7 +60,7 @@ End
 
 
 Style Subsubsection
-	Font 
+	Font
 	  Family              Sans
 	  Series              Bold
 	  Size                Normal
@@ -69,7 +69,7 @@ End
 
 
 Style Paragraph
-	Font 
+	Font
 	  Family              Sans
 	  Series              Bold
 	  Size                Normal
@@ -78,7 +78,7 @@ End
 
 
 Style Subparagraph
-	Font 
+	Font
 	  Family              Sans
 	  Size                Normal
 	EndFont
@@ -101,7 +101,7 @@ Input stdcounters.inc
 
 
 Style Description
-	LabelFont 
+	LabelFont
 	  Family              Sans
 	  Series              Bold
 	EndFont
@@ -112,7 +112,7 @@ End
 Style Title
 	Align                 Left
 	AlignPossible         Left
-	Font 
+	Font
 	  Family              Sans
 	  Series              Bold
 	  Size                Largest
@@ -124,7 +124,7 @@ Style Author
 	Align                 Left
 	AlignPossible         Left
 
-	Font 
+	Font
 	  Size                Larger
 	  Family              Sans
 	  Shape               Italic
@@ -135,7 +135,7 @@ End
 Style Abstract
 	Align                 Left
 	AlignPossible         Left
-	Font 
+	Font
 	  Size                Small
 	  Family              Sans
 	EndFont
@@ -146,7 +146,7 @@ End
 Style SubTitle
 	CopyStyle             Title
 	LatexName             subtitle
-	Font 
+	Font
 	  Family              Sans
 	  Series              Medium
 	  Size                Large
@@ -157,7 +157,7 @@ End
 Style Institution
 	CopyStyle             Title
 	LatexName             institution
-	Font 
+	Font
 	  Family              Sans
 	  Series              Medium
 	  Size                Normal

@@ -15,14 +15,14 @@
 
 # Full author contact details are available in file CREDITS.
 
-# This is the XEMACS flavour bind file, based on the bindings found 
+# This is the XEMACS flavour bind file, based on the bindings found
 # in the XEmacs editor. It has many bindings identical to the
 # Emacs binding file although there are a few significant changes.
 #
 #
 # DO NOT CHANGE THIS DEFAULT BINDING FILE! It will be replaced
-# with every new install of LyX and your changes will be lost. 
-# Instead, customize a copy of this file placed in 
+# with every new install of LyX and your changes will be lost.
+# Instead, customize a copy of this file placed in
 # ~/.lyx/bind/xemacs.bind
 #
 # Happy tuning!
@@ -37,7 +37,7 @@
 \bind "C-g"			"cancel"
 
 # help in emacs
-\bind "C-h"                    "hyphenation-point-insert" 
+\bind "C-h"                    "hyphenation-point-insert"
 \bind "C-i"                    "hfill-insert"
 #bind "C-j"                    "------"
 \bind "C-k"                    "line-delete-forward"
@@ -221,7 +221,7 @@
 \bind "S-C-KP_Up"               "paragraph-up-select"
 \bind "S-C-KP_Down"             "paragraph-down-select"
 \bind "S-KP_Home"               "line-begin-select"
-\bind "S-KP_End"                "line-end-select"               
+\bind "S-KP_End"                "line-end-select"
 \bind "S-KP_Prior"              "screen-up-select"
 \bind "S-KP_Next"               "screen-down-select"
 \bind "S-C-KP_Home"             "buffer-begin-select"
@@ -244,11 +244,11 @@
 \bind "C-c C-v"                 "buffer-chktex"         # validate
 
 \bind "C-z space"		"drop-layouts-choice"
-\bind "C-z 1"			"layout Title" 
-\bind "C-z 2"			"layout Section" 
-\bind "C-z 3"			"layout Subsection"  
-\bind "C-z 4"			"layout Subsubsection"    
-\bind "C-z 5"			"layout Paragraph"        
+\bind "C-z 1"			"layout Title"
+\bind "C-z 2"			"layout Section"
+\bind "C-z 3"			"layout Subsection"
+\bind "C-z 4"			"layout Subsubsection"
+\bind "C-z 5"			"layout Paragraph"
 \bind "C-z 6"			"layout Subparagraph"
 \bind "C-z a"			"layout Author"		# address!!
 \bind "C-z S-A"			"layout Abstract"

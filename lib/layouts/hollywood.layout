@@ -1,7 +1,7 @@
 #% Do not delete the line below; configure depends on this
 #  \DeclareLaTeXClass[hollywood]{hollywood}
 # This layout follows the current Hollywood standard for movie scripts
-# 
+#
 # Font Courier 12 pts
 # abbreviations used in scripts are as follows:
 # INT. - interior       EXT. - exterior
@@ -283,7 +283,7 @@ Style FADE_OUT
 End
 
 
-# Same as Standard, Standard deprecated 
+# Same as Standard, Standard deprecated
 Style General
 	Margin                Static
 	LatexType             Paragraph
@@ -359,7 +359,7 @@ End
 # nextpage lhead and clears that rfoot. It is used when a scene continues
 # onto the next page. This command is provided in case a production unit
 # wants to convert the spec script into a shooting script.
- 
+
 #Style CONTINUED
 #  LatexType            Command
 #  LatexName            continued
@@ -369,7 +369,7 @@ End
 #  LatexType            Command
 #  LatexName            endcontinued
 #End
- 
+
 Input stdtitle.inc
 Input stdstruct.inc
 Input stdfloats.inc

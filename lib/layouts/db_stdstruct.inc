@@ -11,6 +11,6 @@ Style Abstract
 	LatexType             Environment
 	LatexName             abstract
 	LatexParam            para
-End 
+End
 
 NoStyle Bibliography

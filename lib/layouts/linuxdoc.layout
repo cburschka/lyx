@@ -1,6 +1,6 @@
 #% Do not delete the line below; configure depends on this
 #  \DeclareLinuxDocClass[article]{SGML (LinuxDoc article)}
-# LinuxDoc textclass definition file. 
+# LinuxDoc textclass definition file.
 # Author : Pascal André <andre@via.ecp.fr>
 
 
@@ -49,12 +49,12 @@ Style Title
 	LabelType             No_Label
 	Fill_Top              1
 	Fill_Bottom           1
-	Font 
+	Font
 	  Family              Sans
 	  Series              Bold
 	  Size                Largest
 	EndFont
-	LabelFont 
+	LabelFont
 	  Family              Sans
 	  Series              Bold
 	  Size                Largest
@@ -73,11 +73,11 @@ Style Section
 	ParSep                0.7
 	Align                 Block
 	AlignPossible         Block, Left
-	Font 
+	Font
 	  Series              Bold
 	  Size                Larger
 	EndFont
-	LabelFont 
+	LabelFont
 	  Series              Bold
 	  Size                Larger
 	EndFont
@@ -95,11 +95,11 @@ Style Subsection
 	ParSep                0.5
 	Align                 Block
 	AlignPossible         Block, Left
-	Font 
+	Font
 	  Series              Bold
 	  Size                Large
 	EndFont
-	LabelFont 
+	LabelFont
 	  Series              Bold
 	  Size                Large
 	EndFont
@@ -117,10 +117,10 @@ Style Subsubsection
 	ParSep                0.4
 	Align                 Block
 	AlignPossible         Block, Left
-	Font 
+	Font
 	  Series              Bold
 	EndFont
-	LabelFont 
+	LabelFont
 	  Series              Bold
 	EndFont
 End
@@ -136,10 +136,10 @@ Style Paragraph
 	BottomSep             0.4
 	Align                 Block
 	AlignPossible         Block, Left
-	Font 
+	Font
 	  Series              Bold
 	EndFont
-	LabelFont 
+	LabelFont
 	  Series              Bold
 	EndFont
 End
@@ -200,7 +200,7 @@ Style Description
 	AlignPossible         Block, Left
 	LabelType             Manual
 	LabelString           MM
-	LabelFont 
+	LabelFont
 	  Series              Bold
 	EndFont
 End
@@ -220,10 +220,10 @@ Style Verbatim
 	AlignPossible         Block
 	FreeSpacing           1
 	LabelType             No_Label
-	Font 
+	Font
 	  Family              Typewriter
 	EndFont
-	LabelFont 
+	LabelFont
 	  Family              Typewriter
 	EndFont
 End
@@ -259,10 +259,10 @@ Style Author
 	Align                 Center
 	AlignPossible         Center
 	LabelType             No_Label
-	Font 
+	Font
 	  Size                Larger
 	EndFont
-	LabelFont 
+	LabelFont
 	  Size                Larger
 	EndFont
 End
@@ -280,10 +280,10 @@ Style Date
 	Align                 Center
 	AlignPossible         Center
 	LabelType             No_Label
-	Font 
+	Font
 	  Size                Large
 	EndFont
-	LabelFont 
+	LabelFont
 	  Size                Large
 	EndFont
 End
@@ -302,13 +302,13 @@ Style Abstract
 	Align                 Block
 	AlignPossible         Block
 	LabelType             No_Label
-	Font 
+	Font
 	  Shape               Italic
 	EndFont
-	LabelFont 
+	LabelFont
 	  Shape               Italic
 	EndFont
-End 
+End
 
 
 Style SGML
@@ -340,7 +340,7 @@ Style Caption
 	LabelType             Sensitive
 	LabelString		Caption
 	OptionalArgs          1
-	LabelFont 
+	LabelFont
 	  Series              Bold
 	EndFont
 End

@@ -33,7 +33,7 @@ Style LyX-Code
 			 \item[]}
 			{\end{list}}
 	EndPreamble
-	Font 
+	Font
 	  Family              Typewriter
 	EndFont
 End
@@ -51,7 +51,7 @@ Style Address
 	LabelType             No_Label
 	Preamble
 		\newcommand{\lyxaddress}[1]{
-			\par {\raggedright #1 
+			\par {\raggedright #1
 			\vspace{1.4em}
 			\noindent\par}
 		}

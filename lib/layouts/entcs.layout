@@ -8,7 +8,7 @@ Input article.layout
 # only font size 11pt is really available
 ClassOptions
 	FontSize   11
-End  
+End
 
 Preamble
 	\usepackage{entcsmacro,ifthen}
@@ -62,7 +62,7 @@ Style Address
 	Preamble
 		\newcommand{\setaddress}[1]{\def\theAddress{#1}}
 	EndPreamble
-	Font 
+	Font
 	  Shape               Italic
 	EndFont
 End
@@ -79,7 +79,7 @@ Style FrontMatter
 End
 
 
-Style Abstract 
+Style Abstract
 	LatexType             Command
 	LatexName             setabstract
 	LabelType             Top_Environment
@@ -107,10 +107,10 @@ Style Keyword
 	LabelType             Static
 	LabelString           "Key words:"
 	LabelSep              xx
-	Font 
+	Font
 	  Size                Small
 	EndFont
-	LabelFont 
+	LabelFont
 	  Shape               Italic
 	  Size                Small
 	EndFont

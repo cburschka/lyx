@@ -1,4 +1,4 @@
-# svjour (article) textclass definition file for inclusion. 
+# svjour (article) textclass definition file for inclusion.
 # for Springer Verlag journals
 # --------
 #
@@ -10,7 +10,7 @@
 # --------
 # ejour2 made originally by Martin Vermeer based on article.layout.
 # Modified for LyX 12 by Jean-Marc Lasgouttes and MV.
-# 
+#
 # Adapted for new svjour LaTeX2e classes published by Springer in 1999;
 # work done by MV in 2000.
 #
@@ -65,7 +65,7 @@ End
 
 
 Style Subsubsection
-	Font 
+	Font
 	  Series              Medium
 	  Shape               Up
 	  Size                Normal
@@ -74,7 +74,7 @@ End
 
 
 Style Paragraph
-	Font 
+	Font
 	  Series              Medium
 	  Shape               Italic
 	  Size                Normal
@@ -107,7 +107,7 @@ Style Headnote
 	AlignPossible         Left
 	LabelType             Static
 	LabelString           "Headnote (optional): "
-	LabelFont 
+	LabelFont
 	  Series              Bold
 	  Shape               Italic
 	  Color               Red
@@ -133,12 +133,12 @@ Style Title
 	TopSep                1.3
 	BottomSep             0.7
 	ParSep                0.7
-	Align                 Left            
+	Align                 Left
 	AlignPossible         Block, Center, Left, Right, Center
 	LabelType             No_Label
 	Fill_Top              1
 	Fill_Bottom           1
-	Font 
+	Font
 	  Family              Sans
 	  Series              Bold
 	  Size                Largest
@@ -160,7 +160,7 @@ Style Subtitle
 	Align                 Left
 	AlignPossible         Left
 	LabelType             No_Label
-	Font 
+	Font
 	  Family              Sans
 	  Series              Bold
 	  Size                Large
@@ -190,7 +190,7 @@ Style Author
 	Align                 Left
 	AlignPossible         Left
 	LabelType             No_Label
-	Font 
+	Font
 	  Series              Bold
 	  Shape               Italic
 	EndFont
@@ -218,7 +218,7 @@ Style Institute
 	Align                 Left
 	AlignPossible         Left
 	LabelType             No_Label
-	Font 
+	Font
 	  Size                Small
 	EndFont
 End
@@ -232,7 +232,7 @@ End
 
 Style Mail
 	CopyStyle             Headnote
-	LatexName             mail    
+	LatexName             mail
 	LeftMargin            "Corr Author:xx."
 	LabelString           "Corr Author: "
 End
@@ -240,13 +240,13 @@ End
 
 Style Offprints
 	CopyStyle             Headnote
-	LatexName             offprints       
+	LatexName             offprints
 	LeftMargin            "Offprints:xx."
 	LabelString           "Offprints: "
 End
 
 
-Style Abstract 
+Style Abstract
 	Margin                First_Dynamic
 	LatexType             Environment
 	LatexName             abstract
@@ -260,11 +260,11 @@ Style Abstract
 	Align                 Block
 	AlignPossible         Block, Left
 	LabelType             Top_Environment
-	LabelString           Abstract. 
-	LabelFont 
+	LabelString           Abstract.
+	LabelFont
 	  Series              Bold
 	EndFont
-End 
+End
 
 
 Style  Keywords
@@ -281,11 +281,11 @@ Style  Keywords
 	Align                 Block
 	AlignPossible         Block, Left
 	LabelType             Static
-	LabelString           "Key words: " 
-	LabelFont 
+	LabelString           "Key words: "
+	LabelFont
 	  Series              Bold
 	EndFont
-End 
+End
 
 
 Style Acknowledgements
@@ -302,22 +302,22 @@ Style Acknowledgements
 	Align                 Block
 	AlignPossible         Block, Left
 	LabelType             Static
-	LabelString           Acknowledgements. 
-	Font 
+	LabelString           Acknowledgements.
+	Font
 	  Size                Small
 	EndFont
-	LabelFont 
+	LabelFont
 	  Shape               Italic
 	  Size                Small
 	EndFont
-End 
+End
 
 
 Style Acknowledgement
 	CopyStyle             Acknowledgements
 	LatexName             acknowledgement
-	LabelString           Acknowledgement. 
-End 
+	LabelString           Acknowledgement.
+End
 
 
 Style Bibliography
@@ -334,9 +334,9 @@ Style Bibliography
 	Align                 Block
 	AlignPossible         Block, Left
 	LabelType             Bibliography
-	LabelString           References 
+	LabelString           References
 	LabelBottomSep        0.7
-	LabelFont 
+	LabelFont
 	  Series              Bold
 	EndFont
 End
@@ -356,8 +356,8 @@ Style Claim
 	Align                 Block
 	AlignPossible         Block, Left
 	LabelType             Static
-	LabelString           Claim. 
-	LabelFont 
+	LabelString           Claim.
+	LabelFont
 	  Shape               Italic
 	EndFont
 End
@@ -366,18 +366,18 @@ End
 Style Conjecture
 	CopyStyle             Claim
 	LatexName             conjecture
-	LabelString           "Conjecture #. " 
+	LabelString           "Conjecture #. "
 End
 
 
 Style Corollary
 	CopyStyle             Claim
 	LatexName             corollary
-	LabelString           "Corollary #. " 
-	Font 
+	LabelString           "Corollary #. "
+	Font
 	  Shape               Italic
 	EndFont
-	LabelFont 
+	LabelFont
 	  Shape               Up
 	  Series              Bold
 	EndFont
@@ -402,7 +402,7 @@ Style Exercise
 	CopyStyle             Claim
 	LatexName             exercise
 	LabelString           "Exercise #. "
-	LabelFont 
+	LabelFont
 	  Shape               Up
 	  Series              Bold
 	EndFont
@@ -453,7 +453,7 @@ End
 
 Style Question
 	CopyStyle             Claim
-	LatexName             question        
+	LatexName             question
 	LabelString           "Question #. "
 End
 

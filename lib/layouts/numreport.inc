@@ -6,7 +6,7 @@ Style Part
 	LabelCounter          part
 	LabelString           "Part \Roman{part}"
 End
-	
+
 
 Style Chapter
 	LabelType             Counter

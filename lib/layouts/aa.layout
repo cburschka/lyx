@@ -78,7 +78,7 @@ End
 Style Date
 End
 
-Style Abstract 
+Style Abstract
 End
 
 Style Acknowledgement
@@ -118,7 +118,7 @@ Style Subtitle
 	ParSep                1
 	Align                 Center
 	LabelType             No_Label
-	Font 
+	Font
 	  Family              Sans
 	  Size                Larger
 	  Series              Bold
@@ -136,7 +136,7 @@ Style Address
 #  BottomSep            0.4
 	Align                 Left
 	LabelType             No_Label
-	Font 
+	Font
 	  Family              Roman
 	  Size                Small
 	EndFont
@@ -154,11 +154,11 @@ Style Offprint
 	LabelType             Static
 	LabelString           "Offprint Requests to:"
 	LabelSep              M
-	Font 
+	Font
 	  Family              Roman
 	  Size                Small
 	EndFont
-	LabelFont 
+	LabelFont
 	  Family              Roman
 	  Size                Small
 	  Shape               Slanted
@@ -177,11 +177,11 @@ Style Mail
 	LabelType             Static
 	LabelString           "Correspondence to:"
 	LabelSep              M
-	Font 
+	Font
 	  Family              Roman
 	  Size                Small
 	EndFont
-	LabelFont 
+	LabelFont
 	  Family              Roman
 	  Size                Small
 	  Shape               Slanted
@@ -203,15 +203,15 @@ Style Acknowledgement
 	LabelType             Static
 	LabelString           "Acknowledgements."
 	LabelSep              M
-	Font 
+	Font
 	  Size                Small
 	EndFont
-	LabelFont 
+	LabelFont
 	  Size                Small
 	  Shape               Italic
 	EndFont
-End 
-	
+End
+
 
 Style Caption
 	Margin                First_Dynamic
@@ -225,7 +225,7 @@ Style Caption
 	AlignPossible         Center
 	LabelType             Sensitive
 	LabelString           Caption
-	LabelFont 
+	LabelFont
 	  Series              Bold
 	EndFont
 End
@@ -234,7 +234,7 @@ End
 Style Section
 	TopSep                2.0
 	BottomSep             1.3
-	Font 
+	Font
 	  Family              Sans
 	  Size                Large
 	EndFont
@@ -244,7 +244,7 @@ End
 Style Subsection
 	TopSep                1.7
 	BottomSep             1.1
-	Font 
+	Font
 	  Family              Sans
 	  Series              Medium
 	  Size                Large
@@ -256,7 +256,7 @@ End
 Style Subsubsection
 	TopSep                1.7
 	BottomSep             1.1
-	Font 
+	Font
 	  Series              Medium
 	  Size                Normal
 	EndFont
@@ -268,7 +268,7 @@ Style Title
 	BottomSep             1.3
 	Align                 Center
 	AlignPossible         Left
-	Font 
+	Font
 	  Family              Sans
 	  Series              Bold
 	EndFont
@@ -280,7 +280,7 @@ Style Author
 	AlignPossible         Center
 	LabelType             No_Label
 	BottomSep             1.5
-	Font 
+	Font
 	  Size                Large
 	  Series              Medium
 	EndFont
@@ -293,13 +293,13 @@ Style Date
 	TopSep                1.2
 	Align                 Left
 	AlignPossible         Left
-	Font 
+	Font
 	  Size                Small
 	EndFont
 End
 
 
-Style Abstract 
+Style Abstract
 	Margin                First_Dynamic
 	LatexType             Command
 	LatexName             abstract
@@ -318,21 +318,21 @@ Style Abstract
 	LabelString           "         Abstract "
 	LabelSep              M
 	LabelBottomSep        0
-	Font 
+	Font
 	  Size                Small
 	EndFont
-	LabelFont 
+	LabelFont
 	  Family              Sans
 	  Series              Bold
 	  Size                Small
 	EndFont
-End 
+End
 
 
 Style Bibliography
 	Align                 Left
 	AlignPossible         Left
-	LabelFont 
+	LabelFont
 	  Series              Bold
 	EndFont
 End

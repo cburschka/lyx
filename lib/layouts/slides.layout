@@ -100,13 +100,13 @@ Style Slide
 	LabelBottomSep    0.5
 	LeftMargin        MMMMxMMMMxxxNewSlide
 	LabelString       "_____________________________NewSlide: "
-	Font 
+	Font
 	  Family          Typewriter
 	  Series          Bold
 	  Size            Large
 	  Color           Blue
 	EndFont
-	LabelFont 
+	LabelFont
 	  Family          Typewriter
 	  Size            Large
 	  Color           Blue
@@ -137,14 +137,14 @@ Style Overlay
 	LabelBottomSep    0.5
 	LeftMargin        MMMMxNewOverlay
 	LabelString       "- - - - - - - - - - NewOverlay: "
-	Font 
+	Font
 	  Family          Typewriter
 	  Series          Bold
 	  Size            Large
 	  Shape                       SmallCaps
 	  Color           Magenta
 	EndFont
-	LabelFont 
+	LabelFont
 	  Family          Typewriter
 	  Series          Bold
 	  Size            Large
@@ -177,14 +177,14 @@ Style Note
 	LabelBottomSep    0.5
 	LeftMargin        MMMMxMMxxNewNote
 	LabelString       "........................NewNote: "
-	Font 
+	Font
 	  Family          Typewriter
 	  Series          Bold
 	  Size            Large
 	  Shape                       Italic
 	  Color           Magenta
 	EndFont
-	LabelFont 
+	LabelFont
 	  Family          Typewriter
 	  Series          Bold
 	  Size            Large
@@ -210,12 +210,12 @@ Style InvisibleText
 	AlignPossible     Center
 	LabelType         Static
 	LabelString       "<Invisible Text Follows>"
-	Font 
+	Font
 	  Family          Roman
 	  Size            Normal
 	  Color           Cyan
 	EndFont
-	LabelFont 
+	LabelFont
 	  Family          Roman
 	  Size            Normal
 	  Color           Cyan
@@ -235,12 +235,12 @@ Style VisibleText
 	AlignPossible     Center
 	LabelType         Static
 	LabelString       "<Visible Text Follows>"
-	Font 
+	Font
 	  Family          Roman
 	  Size            Normal
 	  Color           Green
 	EndFont
-	LabelFont 
+	LabelFont
 	  Family          Roman
 	  Size            Normal
 	  Color           Green

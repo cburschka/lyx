@@ -4,7 +4,7 @@
 # Textclass definition file for ws-ijmpd.cls
 # For publications in the International Journal of Modern Physics D
 # (usually abbreviated as IJMPD).
-# 
+#
 # Author: Panayotis "PAP" Papasotiriou <papasot@physics.upatras.gr>
 #
 # Version 1  2002-09-24  -  First version from scratch.
@@ -35,7 +35,7 @@ End
 Style Title
 	Align                 Center
 	AlignPossible         Center
-	Font 
+	Font
 	  Size                Large
 	EndFont
 End
@@ -44,7 +44,7 @@ End
 Style Author
 	Align                 Center
 	AlignPossible         Center
-	Font 
+	Font
 	  Series              Medium
 	  Size                Normal
 	EndFont
@@ -60,7 +60,7 @@ Style Address
 	Align                 Center
 	AlignPossible         Center
 	LabelType             No_Label
-	Font 
+	Font
 	  Series              Medium
 	  Shape               Italic
 	  Size                Normal
@@ -73,7 +73,7 @@ Style Abstract
 	Align                 Block
 	AlignPossible         Block
 	LabelType             No_Label
-	Font 
+	Font
 	  Size                Small
 	EndFont
 End
@@ -82,7 +82,7 @@ End
 Style Section
 	Align                 Block
 	AlignPossible         Block
-	Font 
+	Font
 	  Size                Normal
 	EndFont
 End
@@ -91,7 +91,7 @@ End
 Style Section*
 	Align                 Block
 	AlignPossible         Block
-	Font 
+	Font
 	  Size                Normal
 	EndFont
 End
@@ -100,7 +100,7 @@ End
 Style Subsection
 	Align                 Block
 	AlignPossible         Block
-	Font 
+	Font
 	  Shape               Italic
 	  Size                Normal
 	EndFont
@@ -110,7 +110,7 @@ End
 Style Subsubsection
 	Align                 Block
 	AlignPossible         Block
-	Font 
+	Font
 	  Series              Medium
 	  Shape               Italic
 	  Size                Normal
@@ -127,7 +127,7 @@ Style Theorem
 	LabelType             Static
 	LabelString           Theorem:
 	LabelSep              M
-	LabelFont 
+	LabelFont
 	  Series              Bold
 	  Size                Normal
 	EndFont
@@ -143,7 +143,7 @@ Style Proof
 	LabelType             Static
 	LabelString           Proof:
 	LabelSep              M
-	LabelFont 
+	LabelFont
 	  Series              Bold
 	  Size                Normal
 	EndFont
@@ -153,7 +153,7 @@ End
 Style Bibliography
 	Align                 Block
 	AlignPossible         Block
-	LabelFont 
+	LabelFont
 	  Size                Normal
 	EndFont
 End
@@ -168,7 +168,7 @@ Style Appendix
 	AlignPossible         Block
 	LabelType             Centered_Top_Environment
 	LabelString           Appendix
-	Font 
+	Font
 	  Series              Bold
 	  Size                Normal
 	EndFont

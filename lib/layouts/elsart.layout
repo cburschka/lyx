@@ -17,8 +17,8 @@
 #       for use of BeginTitle/EndTitle
 # modified 2003-03-11 JMarc for use of TitleLatexType/TitleLatexName
 # modified 2003-04-10 Rod Pinna - added proof env. sent to me by Stacy Prowell
-# modified 2003-07-23 Rod Pinna - changes MaxCounter to Section, 
-#       rather than subsection. The Elsevier doc file allows for 
+# modified 2003-07-23 Rod Pinna - changes MaxCounter to Section,
+#       rather than subsection. The Elsevier doc file allows for
 #       numbered sections, as does the class file.
 
 
@@ -57,10 +57,10 @@ Style Standard
 	Align                 Block
 	AlignPossible         Block, Left, Right, Center
 	LabelType             No_Label
-End                     
-                        
-                        
-Style Keywords          
+End
+
+
+Style Keywords
 	LatexName             keyword
 	LatexType             Environment
 	Margin                Static
@@ -73,7 +73,7 @@ Style Keywords
 	Align                 Block
 	AlignPossible         Block, Left, Right, Center
 	LabelType             No_Label
-	Font                  
+	Font
 	  Color               blue
 	EndFont
 End
@@ -101,7 +101,7 @@ Style Title
 	ParSep                0.7
 	Align                 Center
 	LabelType             No_Label
-	Font 
+	Font
 	  Family              Sans
 	  Series              Bold
 	  Size                Largest
@@ -122,7 +122,7 @@ Style Author
 	ParSep                0
 	Align                 Center
 	AlignPossible         Center
-	Font 
+	Font
 	  Series              Bold
 	EndFont
 End
@@ -188,17 +188,17 @@ End
 Style Thanks
 	Margin                Static
 	LatexType             Command
-	LatexName             thanks          
+	LatexName             thanks
 	InTitle               1
-	Font  
+	Font
 	  Size                Small
 	  Family              Typewriter
 	  Shape               Italic
-	EndFont       
+	EndFont
 End
 
 
-Style Abstract 
+Style Abstract
 	Margin                Static
 	LatexType             Environment
 	LatexName             abstract
@@ -216,14 +216,14 @@ Style Abstract
 	LabelType             Centered_Top_Environment
 	LabelString           Abstract
 	LabelBottomSep        0.5
-	Font 
+	Font
 	  Size                Small
 	EndFont
-	LabelFont 
+	LabelFont
 	  Series              Bold
 	  Size                Large
 	EndFont
-End 
+End
 
 
 # Theorem environments have been copied over from the amsmaths.inc file. It
@@ -260,7 +260,7 @@ Style Theorem
 	LatexName             thm
 	NextNoIndent          1
 	LabelSep              xx
-	ParIndent             MMM  
+	ParIndent             MMM
 	ParSkip               0.4
 	ItemSep               0.2
 	TopSep                0.7
@@ -269,7 +269,7 @@ Style Theorem
 	Align                 Block
 	AlignPossible         Block, Left
 	LabelType             Counter
-	LabelCounter          theorem  
+	LabelCounter          theorem
 	LabelString           "Theorem \arabic{theorem}"
 	Font
 	  Shape               Italic
@@ -279,7 +279,7 @@ Style Theorem
 	  Shape               Up
 	  Series              Bold
 	EndFont
-End  
+End
 
 
 # Proof style declaration - from email by Stacy Prowell (sprowell@cs.utk.edu)
@@ -321,28 +321,28 @@ Style Corollary
 	CopyStyle             Theorem
 	LatexName             cor
 	LabelString           "Corollary \arabic{theorem}"
-End  
+End
 
 
 Style Proposition
 	CopyStyle             Theorem
 	LatexName             prop
 	LabelString           "Proposition \arabic{theorem}"
-End  
+End
 
 
 Style Criterion
 	CopyStyle             Theorem
 	LatexName             crit
 	LabelString           "Criterion \arabic{theorem}"
-End  
+End
 
 
 Style Algorithm
 	CopyStyle             Theorem
 	LatexName             alg
 	LabelString           "Algorithm \arabic{theorem}"
-End  
+End
 
 
 Style Definition
@@ -356,7 +356,7 @@ Style Definition
 	  Shape               Up
 	  Series              Bold
 	EndFont
-End  
+End
 
 
 Style Conjecture
@@ -370,35 +370,35 @@ Style Example
 	CopyStyle             Theorem
 	LatexName             exmp
 	LabelString           "Example \arabic{theorem}"
-End  
+End
 
 
 Style Problem
 	CopyStyle             Theorem
 	LatexName             prob
 	LabelString           "Problem \arabic{theorem}"
-End  
+End
 
 
 Style Remark
 	CopyStyle             Theorem
 	LatexName             rem
 	LabelString           "Remark \arabic{theorem}"
-End  
+End
 
 
 Style Note
 	CopyStyle             Theorem
 	LatexName             note
 	LabelString           "Note \arabic{theorem}"
-End  
+End
 
 
 Style Claim
 	CopyStyle             Theorem
 	LatexName             claim
 	LabelString           "Claim \arabic{theorem}"
-End  
+End
 
 
 Style Summary
@@ -406,7 +406,7 @@ Style Summary
 	LatexName             summ
 	LabelCounter          summ
 	LabelString           "Summary \arabic{summ}"
-End  
+End
 
 
 Style Case
@@ -414,7 +414,7 @@ Style Case
 	LatexName             case
 	LabelCounter          case
 	LabelString           "Case \arabic{case}"
-End  
+End
 
 
 # This is not taken from the AMS defs, so as to match the output of the

@@ -1,4 +1,4 @@
-# Letter textclass definition file. 
+# Letter textclass definition file.
 # Author : Matthias Ettrich <ettrich@informatik.uni-tuebingen.de>
 # Heavily modifed and enhanced by several developers.
 
@@ -36,7 +36,7 @@ Style Send_To_Address
 	Margin                Static
 	LatexType             Command
 	LatexName             letter
-	KeepEmpty             1  
+	KeepEmpty             1
 	ParSkip               0.4
 	BottomSep             1.5
 	ParSep                1.5
@@ -50,7 +50,7 @@ Style Opening
 	Margin                Static
 	LatexType             Command
 	LatexName             opening
-	KeepEmpty             1  
+	KeepEmpty             1
 	LeftMargin            Signature::xx
 	LabelSep              xx
 	TopSep                0.4
@@ -60,7 +60,7 @@ Style Opening
 	AlignPossible         Block, Left
 	LabelType             Static
 	LabelString           Opening:
-	LabelFont 
+	LabelFont
 	  Series              Bold
 	  Shape               Italic
 	  Color               red
@@ -81,7 +81,7 @@ Style Signature
 	AlignPossible         Block, Left
 	LabelType             Static
 	LabelString           Signature:
-	LabelFont 
+	LabelFont
 	  Series              Bold
 	  Shape               Italic
 	  Color               red
@@ -123,7 +123,7 @@ End
 
 
 Style Location
-	CopyStyle             encl  
+	CopyStyle             encl
 	LatexName             location
 	LeftMargin            Location:xx
 	LabelString           Location:

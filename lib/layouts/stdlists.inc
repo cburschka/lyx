@@ -59,7 +59,7 @@ Style Description
 	AlignPossible         Block, Left
 	LabelType             Manual
 	LabelString           MM
-	LabelFont 
+	LabelFont
 	  Series              Bold
 	EndFont
 End

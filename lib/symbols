@@ -3,7 +3,7 @@
 #
 
 # decorations
-acute               decoration none 
+acute               decoration none
 bar                 decoration none
 breve               decoration none
 check               decoration none
@@ -75,7 +75,7 @@ cal               oldfont     none
 it                oldfont     none
 rm                oldfont     none
 tt                oldfont     none
-                              
+
 # matrix environments
 Bmatrix           matrix      none
 Vmatrix           matrix      none
@@ -87,14 +87,14 @@ smallmatrix       matrix      none
 vmatrix           matrix      none
 CD                matrix      none
 
-# references                  
+# references
 pageref           ref         none
 prettyref         ref         none
 ref               ref         none
 vpageref          ref         none
 vref              ref         none
-                              
-# spaces                      
+
+# spaces
 lyxnegspace       space       none
 lyxposspace       space       none
 !                 space       none
@@ -105,14 +105,14 @@ negthickspace     space       none
 ;                 space       none
 quad              space       none
 qquad             space       none
-                              
-# styles                      
+
+# styles
 displaystyle      style       0
 textstyle         style       1
 scriptstyle       style       2
 scriptscriptstyle style       3
-                              
-# misc                        
+
+# misc
 begin             begin       none
 right             right       none
 underset          underset    none
@@ -129,7 +129,7 @@ boxed             fbox        none
 
 
 #
-# symbols generated from fontmath.ltx 
+# symbols generated from fontmath.ltx
 #
 
 #symbol            font   charid   charid-in-fallback-Xsymbol-font
@@ -333,9 +333,9 @@ lfloor             cmsy         98 235 mathopen  x
 mathparagraph      cmsy        123   0 mathord  x
 mathsection        cmsy        120   0 mathord  x
 mathdollar         cmr          36   0 mathord  x
-                               
-# Generated from amsfonts.sty 
-                               
+
+# Generated from amsfonts.sty
+
 yen                msa          85   0 mathord  x
 checkmark          msa          88   0 mathord  x
 circledR           msa         114   0 mathord  x
@@ -364,9 +364,9 @@ lhd                msa          67   0 mathbin  x
 unlhd              msa          69   0 mathbin  x
 rhd                msa          66   0 mathbin  x
 unrhd              msa          68   0 mathbin  x
-                               
-# Generated from amssymb.sty 
-                               
+
+# Generated from amssymb.sty
+
 boxdot             msa         161   0 mathbin  x
 boxplus            msa         162   0 mathbin  x
 boxtimes           msa         163   0 mathbin  x
@@ -571,7 +571,7 @@ Bbbk               msb         124   0 mathord  x
 hslash             msb         125   0 mathord  x
 hbar               msb         126   0 mathord  x
 backepsilon        msb         127   0 mathrel  x
-                               
+
 lyxbar             cmsy        161   0 mathord  x
 lyxeq              cmr          61   0 mathord  x
 lyxdabar           msa          57   0 mathord  x
@@ -781,7 +781,7 @@ $                  mathnormal    0   0 special  x
 \def\notin{\not\in}
 \def\slash{/}
 
-\def\longleftrightarrow{\leftarrow\kern-12.5mu\rightarrow} 
+\def\longleftrightarrow{\leftarrow\kern-12.5mu\rightarrow}
 \def\Longleftrightarrow{\Leftarrow\kern-12.5mu\Rightarrow}
 \def\iff{\Leftarrow\kern-12.5mu\Rightarrow}
 \def\doteq{\stackrel{\cdot}{=}}
@@ -822,6 +822,6 @@ else
 cong               lyxsymbol             64  0 mathrel  x
 surd               lyxsymbol             214 0 mathord  x
 endif
-                         
+
 #"{\hat{}}
 

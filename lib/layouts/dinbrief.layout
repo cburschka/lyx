@@ -1,6 +1,6 @@
 #% Do not delete the line below; configure depends on this
 #  \DeclareLaTeXClass{letter (german)}
-# German DIN-Brief textclass definition file. 
+# German DIN-Brief textclass definition file.
 # Author : Juergen Vigna <jug@sad.it>
 # Modified by: Carsten Kaemmerer <kammerer@ips.cs.tu-bs.de>
 # Modifies only some things from letter.layout
@@ -15,7 +15,7 @@ Style My_Address
 	LabelType             Static
 	LabelString           Briefkopf:
 	LabelSep              x
-	LabelFont 
+	LabelFont
 	  Shape               Italic
 	  Size                Small
 	  Color               blue
@@ -32,7 +32,7 @@ Style Send_To_Address
 	LabelType             Static
 	LabelString           Adresse:
 	LabelSep              x
-	LabelFont 
+	LabelFont
 	  Series              Medium
 	  Shape               Italic
 	  Size                Small
@@ -46,7 +46,7 @@ Style Opening
 	LeftMargin            Unterschr
 	LabelString           Anrede:
 	LabelSep              x
-	LabelFont 
+	LabelFont
 	  Series              Medium
 	  Shape               Italic
 	  Size                Small
@@ -59,7 +59,7 @@ Style Signature
 	LeftMargin            Unterschr
 	LabelString           Unterschrift:
 	LabelSep              x
-	LabelFont 
+	LabelFont
 	  Series              Medium
 	  Shape               Italic
 	  Size                Small
@@ -72,7 +72,7 @@ Style Closing
 	LeftMargin            Unterschr
 	LabelString           Gruﬂ:
 	LabelSep              x
-	LabelFont 
+	LabelFont
 	  Series              Medium
 	  Shape               Italic
 	  Size                Small
@@ -85,7 +85,7 @@ Style encl
 	LabelString           Anlagen:
 	LeftMargin            Unterschr
 	LabelSep              x
-	LabelFont 
+	LabelFont
 	  Series              Medium
 	  Shape               Italic
 	  Size                Small
@@ -107,7 +107,7 @@ Style ps
 	AlignPossible         Block, Left
 	LabelType             Static
 	LabelString           PS:
-	LabelFont 
+	LabelFont
 	  Series              Medium
 	  Shape               Italic
 	  Size                Small
@@ -120,7 +120,7 @@ Style cc
 	LabelString           Verteiler:
 	LeftMargin            Unterschr
 	LabelSep              x
-	LabelFont 
+	LabelFont
 	  Series              Medium
 	  Shape               Italic
 	  Size                Small
@@ -135,7 +135,7 @@ Style Betreff
 	LatexName             subject
 	LeftMargin            Unterschr
 	LabelSep              x
-	KeepEmpty             1  
+	KeepEmpty             1
 	TopSep                0.4
 	BottomSep             0.4
 	ParSep                0.4
@@ -143,7 +143,7 @@ Style Betreff
 	AlignPossible         Block, Left
 	LabelType             Static
 	LabelString           Betreff:
-	LabelFont 
+	LabelFont
 	  Shape               Italic
 	  Size                Small
 	  Color               blue
@@ -166,7 +166,7 @@ Style Stadt
 	AlignPossible         Block, Left
 	LabelType             Static
 	LabelString           Stadt:
-	LabelFont 
+	LabelFont
 	  Shape               Italic
 	  Size                Small
 	  Color               blue
@@ -186,7 +186,7 @@ Style Datum
 	AlignPossible         Block, Left
 	LabelType             Static
 	LabelString           Datum:
-	LabelFont 
+	LabelFont
 	  Shape               Italic
 	  Size                Small
 	  Color               blue

@@ -1,5 +1,5 @@
 # This file contains additional style definitions for the
-# A&A paper style not found in the standard include files.  
+# A&A paper style not found in the standard include files.
 # It is Input by aapaper.layout
 #
 # Author: Peter Sütterlin <pit@uni-sw.gwdg.de>
@@ -19,7 +19,7 @@ Style Subtitle
 	Align                 Left
 	AlignPossible         Left
 	LabelType             No_Label
-	Font 
+	Font
 	  Size                Normal
 	  Series              Bold
 	EndFont
@@ -36,7 +36,7 @@ Style Address
 	Align                 Left
 	AlignPossible         Block, Left, Right, Center
 	LabelType             No_Label
-	Font 
+	Font
 	  Family              Sans
 	  Size                Small
 	EndFont
@@ -54,7 +54,7 @@ Style Email
 	LabelType             Static
 	LabelString           email:
 	LabelSep              M
-	Font 
+	Font
 	  Family              Sans
 	  Size                Small
 	EndFont
@@ -72,7 +72,7 @@ Style Offprint
 	LabelType             Static
 	LabelString           "Offprint Requests to:"
 	LabelSep              M
-	Font 
+	Font
 	  Family              Sans
 	  Size                Small
 	EndFont
@@ -93,16 +93,16 @@ Style Acknowledgement
 	LabelType             Top_Environment
 	LabelString           Acknowledgements
 	LabelSep              M
-	Font 
+	Font
 	  Size                Small
 	EndFont
-	LabelFont 
+	LabelFont
 	  Size                Small
 	  Shape               Italic
 	EndFont
-End 
+End
 
-	
+
 Style Thesaurus
 	LabelType             Static
 	LatexType             Command

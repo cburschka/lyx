@@ -142,7 +142,7 @@ Style Minisec
 	TopSep                0.4
 	ParSep                0.4
 	AlignPossible         Block, Left
-	Font 
+	Font
 	  Family              Sans
 	  Series              Bold
 	EndFont
@@ -195,7 +195,7 @@ Style Titlehead
 	LatexName             titlehead
 	Align                 Left
 	AlignPossible         Left
-	Font 
+	Font
 	  Size                Normal
 	EndFont
 End

@@ -11,13 +11,13 @@
 # Full author contact details are available in file CREDITS.
 
 # all files		-> without option
-# TeX class files	-> option cls 
+# TeX class files	-> option cls
 # TeX style files 	-> option sty
 # bibtex style files 	-> option bst
 # bibtex database files -> option bib
 #
 # with the help
-# of kpsewhich and creates a 
+# of kpsewhich and creates a
 # bstFiles.lst, clsFiles.lst, styFiles.lst, bibFiles.lst
 # without any parameter all files are created.
 #
@@ -33,7 +33,7 @@ BST_STYLEFILE=bstFiles.lst
 BIB_FILES=bibFiles.lst
 version='$Id: TeXFiles.sh,v 0.3 2003-02-14'
 progname=`echo $0 | sed 's%.*/%%'`
-usage="Usage: TeXFiles.sh [-version | cls | sty | bst | bib ] 
+usage="Usage: TeXFiles.sh [-version | cls | sty | bst | bib ]
        Default is without any Parameters,
        so that all files will be created"
 
@@ -66,7 +66,7 @@ fi
 
 for type in $types ; do
   echo "Indexing files of type $type"
-  case $type in 
+  case $type in
    cls) outfile=$CLS_STYLEFILE
         kpsetype=.tex;;
    sty) outfile=$STY_STYLEFILE

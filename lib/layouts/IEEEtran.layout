@@ -1,6 +1,6 @@
 #% Do not delete he line below; configure depends on this
 #  \DeclareLaTeXClass{article (IEEEtran)}
-# Based on Article textclass definition file. 
+# Based on Article textclass definition file.
 #
 # Author : Allan Rae <rae@lyx.org>
 #
@@ -74,7 +74,7 @@ Style Theorem
 	Preamble
 	  \newtheorem{thm}{Theorem}
 	EndPreamble
-End  
+End
 
 
 Style Lemma
@@ -84,7 +84,7 @@ Style Lemma
 	Preamble
 	  \newtheorem{lemma}{Lemma}
 	EndPreamble
-End  
+End
 
 
 Style Corollary
@@ -104,7 +104,7 @@ Style Proposition
 	Preamble
 	  \newtheorem{prop}{Proposition}
 	EndPreamble
-End  
+End
 
 
 Style Conjecture
@@ -114,7 +114,7 @@ Style Conjecture
 	Preamble
 	  \newtheorem{conject}{Conjecture}
 	EndPreamble
-End  
+End
 
 
 Style Criterion
@@ -124,7 +124,7 @@ Style Criterion
 	Preamble
 	  \newtheorem{criter}{Criterion}
 	EndPreamble
-End  
+End
 
 
 Style Fact
@@ -134,7 +134,7 @@ Style Fact
 	Preamble
 	  \newtheorem{fact}{Fact}
 	EndPreamble
-End  
+End
 
 
 Style Axiom
@@ -144,7 +144,7 @@ Style Axiom
 	Preamble
 	  \newtheorem{axi}{Axiom}
 	EndPreamble
-End  
+End
 
 
 Style Definition
@@ -333,7 +333,7 @@ Style Abstract
 	LabelType             Static
 	LabelString           "Abstract---"
 #  LabelBottomSep        0.0
-	Font 
+	Font
 	  Series              Bold
 	  Size                Small
 	EndFont
@@ -342,7 +342,7 @@ Style Abstract
 	  Series              Medium
 	  Size                Small
 	EndFont
-End 
+End
 
 
 Style Keywords
@@ -370,7 +370,7 @@ End
 
 Style Bibliography
 	LabelFont
-	  Shape               Smallcaps             
+	  Shape               Smallcaps
 	  Series              Medium
 	  Size                Normal
 	EndFont
@@ -481,6 +481,6 @@ TocDepth                3
 
 ClassOptions
 	FontSize              9|10|11|12
-End  
+End
 
 

@@ -17,15 +17,15 @@
 # Visible Menu access menu
 #################################
 # Menu key bindings for Swedish locale.
-# 
+#
 # Denna är avsedd för användning tillsammans med svensk lokalisering av LyX.
 # Placeras i LYXDIR/bind, eller ~/.lyx/bind under namnet sv_menus.bind och
 # laddas automatiskt av LyX i stället för menus.bind då LANG=sv
 # Dessa bindningar kan krocka med andra bindningar; betrakta detta som ett
 # prov. Observera att namnen på menyerna måste stämma med de översatta
-# (File/Fil, Edit/Redigera osv.), för "menu-open" 
+# (File/Fil, Edit/Redigera osv.), för "menu-open"
 # Wed Dec  9 17:15:45 GMT+0100 1998, Joacim Persson <sp2joap1@ida.his.se>
-# 
+#
 #
 
 #
@@ -72,11 +72,11 @@
 # Paragraph style menu
 #
 
-\bind "M-p 1"			"layout Chapter" 
-\bind "M-p 2"			"layout Section" 
-\bind "M-p 3"			"layout Subsection"  
-\bind "M-p 4"			"layout Subsubsection"    
-\bind "M-p 5"			"layout Paragraph"        
+\bind "M-p 1"			"layout Chapter"
+\bind "M-p 2"			"layout Section"
+\bind "M-p 3"			"layout Subsection"
+\bind "M-p 4"			"layout Subsubsection"
+\bind "M-p 5"			"layout Paragraph"
 \bind "M-p 6"			"layout Subparagraph"
 \bind "M-p a"			"layout Abstract"
 \bind "M-p S-A"			"layout Author"
@@ -115,7 +115,7 @@
 
 #
 # Character style menu
-# 
+#
 
 \bind "M-c b"			"font-bold"
 \bind "M-c c"			"font-noun"
@@ -131,7 +131,7 @@
 \bind "M-c Up"			"word-upcase"
 \bind "M-c Right"		"word-capitalize"
 
-\bind "M-c space"		"font-default"                  
+\bind "M-c space"		"font-default"
 
 
 #

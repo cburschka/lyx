@@ -3,7 +3,7 @@
 # Textclass definition file for kluwer.cls
 # For Kluwer Academic publications:
 # Astrophysics & Space Science, Solar Physics, etc.
-# 
+#
 # Panayotis "PAP" Papasotiriou <papasot@physics.upatras.gr>
 # (based on the first version kindly offered by
 # Peter "Pit" Sütterlin <P.Suetterlin@astro.uu.nl>)
@@ -57,14 +57,14 @@ NoStyle Verse
 Style Section
 	Align                 Center
 	AlignPossible         Center
-	Font 
+	Font
 	  Size                Large
 	EndFont
 End
 
 
 Style Subsection
-	Font 
+	Font
 	  Series              Medium
 	  Size                Normal
 	  Shape               SmallCaps
@@ -73,7 +73,7 @@ End
 
 
 Style Subsubsection
-	Font 
+	Font
 	  Series              Medium
 	  Size                Normal
 	  Shape               Italic
@@ -82,7 +82,7 @@ End
 
 
 Style Paragraph
-	Font 
+	Font
 	  Series              Medium
 	  Size                Normal
 	  Shape               Italic
@@ -93,7 +93,7 @@ End
 Style Subparagraph
 	LeftMargin            ""
 	NextNoIndent          1
-	Font 
+	Font
 	  Series              Medium
 	  Size                Normal
 	  Shape               Italic
@@ -113,7 +113,7 @@ Style Title
 	Align                 Left
 	AlignPossible         Left
 	LabelType             No_Label
-	Font 
+	Font
 	  Size                Largest
 	EndFont
 End
@@ -132,7 +132,7 @@ Style Subtitle
 	Align                 Left
 	AlignPossible         Left
 	LabelType             No_Label
-	Font 
+	Font
 	  Family              Roman
 	  Size                Larger
 	  Shape               Italic
@@ -151,7 +151,7 @@ Style Date
 	Align                 Left
 	AlignPossible         Left
 	LabelType             No_Label
-	Font 
+	Font
 	  Size                Large
 	EndFont
 End
@@ -168,7 +168,7 @@ Style Author
 	Align                 Left
 	AlignPossible         Left
 	LabelType             No_Label
-	Font 
+	Font
 	  Size                Normal
 	  Series              Bold
 	EndFont
@@ -184,7 +184,7 @@ Style Address
 	BottomSep             0
 	Align                 Left
 	LabelType             No_Label
-	Font 
+	Font
 	  Size                normal
 	  Shape               Italic
 	EndFont
@@ -202,7 +202,7 @@ Style AddressForOffprints
 	LabelType             Static
 	LabelString           "Address for Offprints:"
 	LabelSep              M
-	LabelFont 
+	LabelFont
 	  Size                Small
 	  Shape               Italic
 	  Color               Red
@@ -221,16 +221,16 @@ Style RunningTitle
 	LabelType             Static
 	LabelString           "Running title:"
 	LabelSep              M
-	Font 
+	Font
 	  Size                Small
 	  Series              Bold
 	EndFont
-	LabelFont 
+	LabelFont
 	  Series              Medium
 	  Shape               Italic
 	  Color               Red
 	EndFont
-End 
+End
 
 
 Style RunningAuthor
@@ -243,19 +243,19 @@ Style RunningAuthor
 	LabelType             Static
 	LabelString           "Running author:"
 	LabelSep              M
-	Font 
+	Font
 	  Size                Small
 	  Series              Bold
 	EndFont
-	LabelFont 
+	LabelFont
 	  Series              Medium
 	  Shape               Italic
 	  Color               Red
 	EndFont
-End 
+End
 
 
-Style Abstract 
+Style Abstract
 	Margin                First_Dynamic
 	LatexType             Environment
 	LatexName             abstract
@@ -270,13 +270,13 @@ Style Abstract
 	LabelType             Static
 	LabelString           Abstract.
 	LabelSep              M
-	Font 
+	Font
 	  Size                Small
 	EndFont
-	LabelFont 
+	LabelFont
 	  Series              Bold
 	EndFont
-End 
+End
 
 
 Style Keywords
@@ -289,14 +289,14 @@ Style Keywords
 	LabelType             Static
 	LabelString           "Keywords:"
 	LabelSep              M
-	Font 
+	Font
 	  Size                Small
 	EndFont
-	LabelFont 
+	LabelFont
 	  Series              Bold
 	  Size                Small
 	EndFont
-End 
+End
 
 
 Style Acknowledgements
@@ -313,7 +313,7 @@ Style Acknowledgements
 	LabelType             Centered_Top_Environment
 	LabelString           Acknowledgements
 	LabelBottomSep        0.5
-	LabelFont 
+	LabelFont
 	  Series              Bold
 	  Size                Large
 	EndFont
@@ -334,7 +334,7 @@ Style Appendix
 #  AlignPossible         Block, Left, Right, Center
 	LabelType             Centered_Top_Environment
 	LabelString           Appendix
-	Font 
+	Font
 	  Series              Bold
 	  Size                Large
 	EndFont
@@ -342,8 +342,8 @@ End
 
 
 Style References
-	Margin                First_Dynamic   
-	LatexType             Item_Environment        
+	Margin                First_Dynamic
+	LatexType             Item_Environment
 	LatexName             thebibliography
 	NextNoIndent          1
 	LeftMargin            MM
@@ -357,7 +357,7 @@ Style References
 	LabelBottomSep        0.7
 	Align                 Block
 	AlignPossible         Block, Left, Right, Center
-	LabelFont 
+	LabelFont
 	  Family              Roman
 	  Size                Normal
 	  Series              Bold

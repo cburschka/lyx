@@ -59,7 +59,7 @@ Style Address
 	LabelType             Static
 	LabelString           "Address:"
 
-	LabelFont 
+	LabelFont
 	  Series              Bold
 	  Shape               Italic
 	  Size                Small
@@ -83,7 +83,7 @@ Style NextAddress
 	LabelType             Static
 	LabelString           "Next Address:"
 
-	LabelFont 
+	LabelFont
 	  Series              Bold
 	  Shape               Italic
 	  Size                Small
@@ -105,8 +105,8 @@ Style Opening
 	AlignPossible         Left
 	LabelType             Static
 	LabelString           "Opening:"
-	
-	LabelFont 
+
+	LabelFont
 	  Series              Bold
 	  Shape               Italic
 	  Color               Magenta
@@ -160,7 +160,7 @@ Style Name
 	LabelType             Static
 	LabelString           "Sender Name:"
 
-	LabelFont 
+	LabelFont
 	  Series              Bold
 	  Shape               Italic
 	  Color               Blue
@@ -294,7 +294,7 @@ Style Yourref
 	LatexParam            {yourref}
 	LabelString           "Your ref.:"
 
-	LabelFont 
+	LabelFont
 	  Family              Sans
 	  Series              Medium
 	  Shape               Up

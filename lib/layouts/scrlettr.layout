@@ -1,6 +1,6 @@
 #% Do not delete the line below; configure depends on this
 #  \DeclareLaTeXClass[scrlettr]{letter (koma-script)}
-# KOMA scrlettr textclass definition file. 
+# KOMA scrlettr textclass definition file.
 # Bernd Rellermeyer <100.41728@germanynet.de>, 1999/2/17.
 
 Style Standard
@@ -55,7 +55,7 @@ Style Letter
 	AlignPossible         Left
 	LabelType             Static
 	LabelString           "L"
-	LabelFont 
+	LabelFont
 	  Series              Bold
 	  Shape               Italic
 	  Size                Small
@@ -132,7 +132,7 @@ Style Name
 	AlignPossible         Left
 	LabelType             Static
 	LabelString           "Name:"
-	LabelFont 
+	LabelFont
 	  Series              Bold
 	  Shape               Italic
 	  Color               Blue
@@ -214,7 +214,7 @@ Style Yourref
 	CopyStyle             Name
 	LatexName             yourref
 	LabelString           "Your ref.:"
-	LabelFont 
+	LabelFont
 	  Family              Sans
 	  Series              Medium
 	  Shape               Up

@@ -30,7 +30,7 @@ Style Proof
 	LatexName             proof
 	NextNoIndent          1
 	LabelSep              xx
-	ParIndent             MMM  
+	ParIndent             MMM
 	ParSkip               0.4
 	ItemSep               0.2
 	TopSep                0.7
@@ -50,8 +50,8 @@ Style Proof
 	EndFont
 	# We don't want the preamble from Theorem
 	Preamble
-	EndPreamble 
-End  
+	EndPreamble
+End
 
 
 ### Now the title stuff. We copy do not use stdstruct.inc to keep
@@ -111,7 +111,7 @@ Style Date
 	AlignPossible         Center
 	LabelType             Static
 	LabelString           "Date: "
-	Font 
+	Font
 	  Size                Large
 	EndFont
 	LabelFont
@@ -121,7 +121,7 @@ Style Date
 End
 
 
-Style Abstract 
+Style Abstract
 	Margin                First_Dynamic
 	LatexType             Environment
 	InTitle               1
@@ -137,13 +137,13 @@ Style Abstract
 	LabelType             Static
 	LabelString           Abstract.
 	LabelSep              M
-	Font 
+	Font
 	  Size                Small
 	EndFont
 	LabelFont
 	  Shape               Smallcaps
 	EndFont
-End 
+End
 
 
 Style Address
@@ -161,14 +161,14 @@ Style Address
 	LabelFont
 	  Shape               Italic
 	EndFont
-End  
+End
 
 
 Style Current_Address
 	CopyStyle             Address
 	LatexName             curraddr
 	LabelString           "Current address: "
-End  
+End
 
 
 Style Email
@@ -191,35 +191,35 @@ Style Keywords
 	CopyStyle             Address
 	LatexName             keywords
 	LabelString           "Key words and phrases: "
-End  
+End
 
 
 Style Thanks
 	CopyStyle             Address
 	LatexName             thanks
 	LabelString           "Thanks: "
-End  
+End
 
 
 Style Dedicatory
 	CopyStyle             Address
 	LatexName             dedicatory
 	LabelString           "Dedication: "
-End  
+End
 
 
 Style Translator
 	CopyStyle             Address
 	LatexName             translator
 	LabelString           "Translator: "
-End  
+End
 
 
 Style Subjectclass
 	CopyStyle             Address
 	LatexName             subjclass
 	LabelString           "1991 Mathematics Subject Classification: "
-End 
+End
 
 
 Style Bibliography

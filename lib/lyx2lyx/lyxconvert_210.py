@@ -50,7 +50,7 @@ def update_tabular(lines):
             break
         i = i + 1
         format = lines[i][8]
-        
+
         lines[i]='multicol4'
         i = i + 1
         rows = int(string.split(lines[i])[0])

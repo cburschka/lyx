@@ -29,237 +29,237 @@ EndPreamble
 
 Counter
 	Name                  corollary
-End  
+End
 
 
 Counter
 	Name                  lemma
-End  
+End
 
 
 Counter
 	Name                  proposition
-End  
+End
 
 
 Counter
 	Name                  conjecture
-End  
+End
 
 
 Counter
 	Name                  criterion
-End  
+End
 
 
 Counter
 	Name                  algorithm
-End  
+End
 
 
 Counter
 	Name                  fact
-End  
+End
 
 
 Counter
 	Name                  axiom
-End  
+End
 
 
 Counter
 	Name                  definition
-End  
+End
 
 
 Counter
 	Name                  example
-End  
+End
 
 
 Counter
 	Name                  condition
-End  
+End
 
 
 Counter
 	Name                  problem
-End  
+End
 
 
 Counter
 	Name                  exercise
-End  
+End
 
 
 Counter
 	Name                  remark
-End  
+End
 
 
 Counter
 	Name                  claim
-End  
+End
 
 
 Counter
 	Name                  note
-End  
+End
 
 
 Counter
 	Name                  notation
-End  
+End
 
 
 Counter
 	Name                  summary
-End  
+End
 
 
 Counter
 	Name                  acknowledgement
-End  
+End
 
 
 Counter
 	Name                  case
-End  
+End
 
 
 Counter
 	Name                  conclusion
-End  
+End
 
 
 
 Style Theorem
 	LabelCounter          theorem
 	LabelString           "Theorem \arabic{theorem}."
-End  
+End
 
 
 Style Corollary
 	LabelCounter          corollary
 	LabelString           "Corollary \arabic{corollary}."
-End  
+End
 
 
 Style Lemma
 	LabelCounter          lemma
 	LabelString           "Lemma \arabic{lemma}."
-End  
+End
 
 
 Style Proposition
 	LabelCounter          proposition
 	LabelString           "Proposition \arabic{proposition}."
-End  
+End
 
 
 Style Conjecture
 	LabelCounter          conjecture
 	LabelString           "Conjecture \arabic{conjecture}."
-End  
+End
 
 
 Style Criterion
 	LabelCounter          criterion
 	LabelString           "Criterion \arabic{criterion}."
-End  
+End
 
 
 Style Algorithm
 	LabelCounter          algorithm
 	LabelString           "Algorithm \arabic{algorithm}."
-End  
+End
 
 
 Style Fact
 	LabelCounter          fact
 	LabelString           "Fact \arabic{fact}."
-End  
+End
 
 
 Style Axiom
 	LabelCounter          axiom
 	LabelString           "Axiom \arabic{axiom}."
-End  
+End
 
 
 Style Definition
 	LabelCounter          definition
 	LabelString           "Definition \arabic{definition}."
-End  
+End
 
 
 Style Example
 	LabelCounter          example
 	LabelString           "Example \arabic{example}."
-End  
+End
 
 
 Style Condition
 	LabelCounter          condition
 	LabelString           "Condition \arabic{condition}."
-End  
+End
 
 
 Style Problem
 	LabelCounter          problem
 	LabelString           "Problem \arabic{problem}."
-End  
+End
 
 
 Style Exercise
 	LabelCounter          execise
 	LabelString           "Exercise \arabic{execise}."
-End  
+End
 
 
 Style Remark
 	LabelCounter          remark
 	LabelString           "Remark \arabic{remark}."
-End  
+End
 
 
 Style Claim
 	LabelCounter          claim
 	LabelString           "Claim \arabic{claim}."
-End  
+End
 
 
 Style Note
 	LabelCounter          note
 	LabelString           "Note \arabic{note}."
-End  
+End
 
 
 Style Notation
 	LabelCounter          notation
 	LabelString           "Notation \arabic{notation}."
-End  
+End
 
 
 Style Summary
 	LabelCounter          summary
 	LabelString           "Summary \arabic{summary}."
-End  
+End
 
 
 Style Acknowledgement
 	LabelCounter          acknowledgement
 	LabelString           "Acknowledgement \arabic{acknowledgement}."
-End  
+End
 
 
 Style Case
 	LabelCounter          case
 	LabelString           "Case \arabic{case}."
-End  
+End
 
 
 Style Conclusion
 	LabelCounter          conclusion
 	LabelString           "Conclusion \arabic{conclusion}."
-End  
+End

@@ -12,7 +12,7 @@
 # - Conjecture
 # - Criterion
 # - Algorithm
-# - Fact 
+# - Fact
 # - Axiom
 # - Definition
 # - Example
@@ -33,17 +33,17 @@ Style Theorem
 	LatexName             thm*
 	LabelString           "Theorem."
 	Preamble
-	  \theoremstyle{plain}    
+	  \theoremstyle{plain}
 	  \newtheorem*{thm*}{Theorem}
 	EndPreamble
-End  
+End
 
 
 Style Corollary
 	LatexName             cor*
 	LabelString           "Corollary."
 	Preamble
-	  \theoremstyle{plain}    
+	  \theoremstyle{plain}
 	  \newtheorem*{cor*}{Corollary}
 	EndPreamble
 End
@@ -53,7 +53,7 @@ Style Lemma
 	LatexName             lem*
 	LabelString           "Lemma."
 	Preamble
-	  \theoremstyle{plain}    
+	  \theoremstyle{plain}
 	  \newtheorem*{lem*}{Lemma}
 	EndPreamble
 End
@@ -63,57 +63,57 @@ Style Proposition
 	LatexName             prop*
 	LabelString           "Proposition."
 	Preamble
-	  \theoremstyle{plain}    
+	  \theoremstyle{plain}
 	  \newtheorem*{prop*}{Proposition}
 	EndPreamble
-End  
+End
 
 
 Style Conjecture
 	LatexName             conjecture*
 	LabelString           "Conjecture."
 	Preamble
-	  \theoremstyle{plain}    
+	  \theoremstyle{plain}
 	  \newtheorem*{conjecture*}{Conjecture}
 	EndPreamble
-End  
+End
 
 
 Style Criterion
 	LatexName             criterion*
 	LabelString           "Criterion."
 	Preamble
-	  \theoremstyle{plain}    
+	  \theoremstyle{plain}
 	  \newtheorem*{criterion*}{Criterion}
 	EndPreamble
-End  
+End
 
 
 Style Algorithm
 	LatexName             algorithm*
 	LabelString           "Algorithm #."
 	Preamble
-	  \theoremstyle{plain}    
-	  \newtheorem*{algorithm*}{Algorithm} 
+	  \theoremstyle{plain}
+	  \newtheorem*{algorithm*}{Algorithm}
 	EndPreamble
-End  
+End
 
 
 Style Fact
 	LatexName             fact*
 	LabelString           "Fact."
 	Preamble
-	  \theoremstyle{plain}    
-	  \newtheorem*{fact*}{Fact} 
+	  \theoremstyle{plain}
+	  \newtheorem*{fact*}{Fact}
 	EndPreamble
-End  
+End
 
 
 Style Axiom
 	LatexName             ax*
 	LabelString           "Axiom."
 	Preamble
-	  \theoremstyle{plain}    
+	  \theoremstyle{plain}
 	  \newtheorem*{ax*}{Axiom}
 	EndPreamble
 End
@@ -126,7 +126,7 @@ Style Definition
 	  \theoremstyle{definition}
 	  \newtheorem*{defn*}{Definition}
 	EndPreamble
-End  
+End
 
 
 Style Example
@@ -136,7 +136,7 @@ Style Example
 	  \theoremstyle{definition}
 	  \newtheorem*{example*}{Example}
 	EndPreamble
-End  
+End
 
 
 Style Condition
@@ -146,7 +146,7 @@ Style Condition
 	  \theoremstyle{definition}
 	  \newtheorem*{condition*}{Condition}
 	EndPreamble
-End  
+End
 
 
 Style Problem
@@ -156,7 +156,7 @@ Style Problem
 	  \theoremstyle{definition}
 	  \newtheorem*{problem*}{Problem}
 	EndPreamble
-End  
+End
 
 
 Style Exercise
@@ -166,7 +166,7 @@ Style Exercise
 	  \theoremstyle{definition}
 	  \newtheorem*{xca*}{Exercise}
 	EndPreamble
-End  
+End
 
 
 Style Remark
@@ -176,27 +176,27 @@ Style Remark
 	  \theoremstyle{remark}
 	  \newtheorem*{rem*}{Remark}
 	EndPreamble
-End  
+End
 
 
 Style Claim
 	LatexName             claim*
 	LabelString           "Claim."
 	Preamble
-	  \theoremstyle{remark}    
-	  \newtheorem*{claim*}{Claim} 
+	  \theoremstyle{remark}
+	  \newtheorem*{claim*}{Claim}
 	EndPreamble
-End  
+End
 
 
 Style Note
 	LatexName             note*
 	LabelString           "Note."
 	Preamble
-	  \theoremstyle{remark}    
-	  \newtheorem*{note*}{Note} 
+	  \theoremstyle{remark}
+	  \newtheorem*{note*}{Note}
 	EndPreamble
-End  
+End
 
 
 Style Notation
@@ -206,8 +206,8 @@ Style Notation
 	  \theoremstyle{remark}
 	  \newtheorem*{notation*}{Notation}
 	EndPreamble
-End  
- 
+End
+
 
 Style Summary
 	LatexName             summary*
@@ -216,8 +216,8 @@ Style Summary
 	  \theoremstyle{remark}
 	  \newtheorem*{summary*}{Summary}
 	EndPreamble
-End  
- 
+End
+
 
 Style Acknowledgement
 	LatexName             acknowledgement*
@@ -226,8 +226,8 @@ Style Acknowledgement
 	  \theoremstyle{remark}
 	  \newtheorem*{acknowledgement*}{Acknowledgement}
 	EndPreamble
-End  
- 
+End
+
 
 Style Case
 	LatexName             case*
@@ -236,8 +236,8 @@ Style Case
 	  \theoremstyle{remark}
 	  \newtheorem*{case*}{Case}
 	EndPreamble
-End  
- 
+End
+
 
 Style Conclusion
 	LatexName             conclusion*
@@ -246,4 +246,4 @@ Style Conclusion
 	  \theoremstyle{remark}
 	  \newtheorem*{conclusion*}{Conclusion}
 	EndPreamble
-End  
+End

@@ -66,7 +66,7 @@ def update_tabular(lines):
         format = lines[i][8]
         if format != '4':
             continue
-        
+
         lines[i]='multicol5'
         i = i + 1
         rows = int(string.split(lines[i])[0])
@@ -145,7 +145,7 @@ def convert(header,body):
     replace_protected_separator(body)
     merge_formula_inset(body)
     update_tabular(body)
-    remove_space_in_units(header)    
+    remove_space_in_units(header)
 
 if __name__ == "__main__":
     pass

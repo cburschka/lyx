@@ -15,8 +15,8 @@
 
 # Full author contact details are available in file CREDITS.
 
-# This file provides math mode keys.  Most were suggested by John Weiss 
-# and modified by Alejandro Aguilar Sierra to be used with different 
+# This file provides math mode keys.  Most were suggested by John Weiss
+# and modified by Alejandro Aguilar Sierra to be used with different
 # keyboard layouts.
 #
 # This file is automatically included from the main bind file.
@@ -115,15 +115,15 @@
 \bind "M-m ~S-parenleft"	"math-delim ( )"
 \bind "M-m ~S-bracketleft"	"math-delim [ ]"
 \bind "M-m ~S-braceleft"	"math-delim { }"
-\bind "M-m ~S-less"		"math-delim langle rangle"  
+\bind "M-m ~S-less"		"math-delim langle rangle"
 \bind "M-m ~S-greater"		"math-delim rangle langle"
 \bind "M-m ~S-bar"		"math-delim | |"
 
 
-# Note: it's easy to insert binary relations like \pm, \mp, \neq, \geq, 
+# Note: it's easy to insert binary relations like \pm, \mp, \neq, \geq,
 # and \leq just by typing them. However it's easier to remember these:
 
-\bind "M-m ~S-plus"    "math-insert \pm" 
+\bind "M-m ~S-plus"    "math-insert \pm"
 \bind "M-m ~S-equal"   "math-insert \neq"
 
 \bind "Escape"         "escape"

@@ -4,7 +4,7 @@
 # Heavily modifed and enhanced by several developers.
 
 # This include files contains all obsolete layouts, kept for
-# historical reasons 
+# historical reasons
 
 # Title style definition
 Style LaTeX_Title

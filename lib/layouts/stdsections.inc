@@ -18,14 +18,14 @@ Style Part
 	TopSep                4
 	BottomSep             4
 	ParSep                0.8
-	Align                 Center         
+	Align                 Center
 	Alignpossible         Center
-	Font 
+	Font
 	  Series              Bold
 	  Size                Huge
 	EndFont
 End
-	
+
 
 Style Chapter
 	Margin                Static
@@ -40,7 +40,7 @@ Style Chapter
 	Align                 Block
 	AlignPossible         Block, Left
 	OptionalArgs          1
-	Font 
+	Font
 	  Series              Bold
 	  Size                Huge
 	EndFont
@@ -61,7 +61,7 @@ Style Section
 	Align                 Block
 	AlignPossible         Block, Left
 	OptionalArgs          1
-	Font 
+	Font
 	  Series              Bold
 	  Size                Larger
 	EndFont
@@ -74,7 +74,7 @@ Style Subsection
 	TopSep                0.9
 	BottomSep             0.5
 	ParSep                0.5
-	Font 
+	Font
 	  Series              Bold
 	  Size                Large
 	EndFont
@@ -86,7 +86,7 @@ Style Subsubsection
 	LatexName             subsubsection
 	TopSep                0.7
 	BottomSep             0.4
-	Font 
+	Font
 	  Series              Bold
 	  Size                Normal
 	EndFont

@@ -8,7 +8,7 @@
 #
 # If you want to keep the layout for old papers I'd suggest to rename
 # the old style file to aa-old and change the second line in this file to
-# 
+#
 #  \DeclareLaTeXClass[aa-old]{article (A&A V4)}
 #
 # and reconfigure LyX (after running texhash, of course).
@@ -95,7 +95,7 @@ End
 Style Date
 End
 
-Style Abstract 
+Style Abstract
 End
 
 Style Acknowledgement
@@ -131,7 +131,7 @@ Input aapaper.inc
 Style Section
 	TopSep                2.0
 	BottomSep             1.3
-	Font 
+	Font
 	  Size                Normal
 	EndFont
 End
@@ -140,7 +140,7 @@ End
 Style Subsection
 	TopSep                1.7
 	BottomSep             1.1
-	Font 
+	Font
 	  Series              Medium
 	  Size                Normal
 	  Shape               Italic
@@ -151,7 +151,7 @@ End
 Style Subsubsection
 	TopSep                1.7
 	BottomSep             1.1
-	Font 
+	Font
 	  Series              Medium
 	  Size                Normal
 	EndFont
@@ -163,7 +163,7 @@ Style Title
 	BottomSep             1.3
 	Align                 Left
 	AlignPossible         Left
-	Font 
+	Font
 	  Series              Bold
 	EndFont
 End
@@ -173,7 +173,7 @@ Style Author
 	Align                 Left
 	AlignPossible         Left
 	LabelType             No_Label
-	Font 
+	Font
 	  Size                Normal
 	  Series              Bold
 	EndFont
@@ -185,33 +185,33 @@ Style Date
 	TopSep                1.2
 	Align                 Left
 	AlignPossible         Left
-	Font 
+	Font
 	  Size                Small
 	EndFont
 End
 
 
-Style Abstract 
+Style Abstract
 	LeftMargin            ""
 	RightMargin           ""
 	ParIndent             ""
 	TopSep                1.4
 	BottomSep             0.7
 	LabelType             Top_Environment
-	Font 
+	Font
 	  Size                Normal
 	EndFont
-	LabelFont 
+	LabelFont
 	  Series              Bold
 	  Size                Normal
 	EndFont
-End 
+End
 
 
 Style Bibliography
 	Align                 Left
 	AlignPossible         Left
-	LabelFont 
+	LabelFont
 	  Series              Bold
 	EndFont
 End

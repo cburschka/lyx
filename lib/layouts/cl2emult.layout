@@ -1,6 +1,6 @@
 #% Do not delete the line below; configure depends on this
 #  \DeclareLaTeXClass{article (cl2emult)}
-# Springer's cl2emult textclass definition file. 
+# Springer's cl2emult textclass definition file.
 # Author : André Poenitz
 
 Columns                   1
@@ -46,11 +46,11 @@ Style Title
 	BottomSep             2
 	ParSep                1
 	Align                 Left
-	Font                  
+	Font
 	  Size                Largest
-	  Series              Bold        
-	EndFont               
-End                     
+	  Series              Bold
+	EndFont
+End
 
 
 Style Author
@@ -62,9 +62,9 @@ Style Author
 	BottomSep             0.7
 	ParSep                0.7
 	Align                 Left
-End                     
-	                      
-	                      
+End
+
+
 Style Institute
 	LatexType             Command
 	InTitle               1
@@ -73,9 +73,9 @@ Style Institute
 	BottomSep             3.0
 	ParSep                1.7
 	Align                 Left
-End                     
-	                      
-	                      
+End
+
+
 Style Abstract
 	Margin                First_Dynamic
 	LeftMargin            ""
@@ -89,13 +89,13 @@ Style Abstract
 	LabelType             Static
 	LabelString           "Abstract  "
 	#LabelBottomSep       0.5
-	Font 
+	Font
 	  Size                Small
 	EndFont
-	LabelFont 
+	LabelFont
 	  Series              Bold
 	EndFont
-End 
+End
 
 
 Style Bibliography
@@ -114,7 +114,7 @@ Style Bibliography
 	LabelType             Bibliography
 	LabelString           References
 	LabelBottomSep        0.7
-	LabelFont 
+	LabelFont
 	  Series              Bold
 	  Size                Larger
 	EndFont

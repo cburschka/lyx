@@ -8,7 +8,7 @@
 # a document, like abstract, bibliography and such.
 
 
-Style Abstract 
+Style Abstract
 	Margin                Static
 	LatexType             Environment
 	LatexName             abstract
@@ -25,14 +25,14 @@ Style Abstract
 	LabelType             Centered_Top_Environment
 	LabelString           Abstract
 	LabelBottomSep    0.5
-	Font 
+	Font
 	  Size                Small
 	EndFont
-	LabelFont 
+	LabelFont
 	  Series              Bold
 	  Size                Large
 	EndFont
-End 
+End
 
 
 Style Bibliography
@@ -51,7 +51,7 @@ Style Bibliography
 	LabelType             Bibliography
 	LabelString           References
 	LabelBottomSep    0.7
-	LabelFont 
+	LabelFont
 	  Series              Bold
 	  Size                Larger
 	EndFont

@@ -11,7 +11,7 @@
 # - Conjecture
 # - Criterion
 # - Algorithm
-# - Fact 
+# - Fact
 # - Axiom
 # - Definition
 # - Example
@@ -30,74 +30,74 @@
 
 Style Theorem
 	Preamble
-	  \theoremstyle{plain}    
-	  \newtheorem{thm}{Theorem} 
+	  \theoremstyle{plain}
+	  \newtheorem{thm}{Theorem}
 	EndPreamble
-End  
+End
 
 
 Style Corollary
 	Preamble
-	  \theoremstyle{plain}    
-	  \newtheorem{cor}{Corollary} 
+	  \theoremstyle{plain}
+	  \newtheorem{cor}{Corollary}
 	EndPreamble
-End  
+End
 
 
 Style Lemma
 	Preamble
-	  \theoremstyle{plain}    
-	  \newtheorem{lem}{Lemma} 
+	  \theoremstyle{plain}
+	  \newtheorem{lem}{Lemma}
 	EndPreamble
-End  
+End
 
 
 Style Proposition
 	Preamble
-	  \theoremstyle{plain}    
-	  \newtheorem{prop}{Proposition} 
+	  \theoremstyle{plain}
+	  \newtheorem{prop}{Proposition}
 	EndPreamble
-End  
+End
 
 
 Style Conjecture
 	Preamble
-	  \theoremstyle{plain}    
-	  \newtheorem{conjecture}{Conjecture} 
+	  \theoremstyle{plain}
+	  \newtheorem{conjecture}{Conjecture}
 	EndPreamble
-End  
+End
 
 
 Style Criterion
 	Preamble
-	  \theoremstyle{plain}    
-	  \newtheorem{criterion}{Criterion} 
+	  \theoremstyle{plain}
+	  \newtheorem{criterion}{Criterion}
 	EndPreamble
-End  
+End
 
 
 Style Algorithm
 	Preamble
-	  \theoremstyle{plain}    
-	  \newtheorem{algorithm}{Algorithm} 
+	  \theoremstyle{plain}
+	  \newtheorem{algorithm}{Algorithm}
 	EndPreamble
-End  
+End
 
 
 Style Fact
 	Preamble
-	  \theoremstyle{plain}    
+	  \theoremstyle{plain}
 	  \newtheorem{fact}{Fact}
 	EndPreamble
-End  
+End
 
 
 Style Axiom
 	Preamble
-	  \theoremstyle{plain}    
+	  \theoremstyle{plain}
 	  \newtheorem{ax}{Axiom}
 	EndPreamble
-End  
+End
 
 
 Style Definition
@@ -105,7 +105,7 @@ Style Definition
 	 \theoremstyle{definition}
 	 \newtheorem{defn}{Definition}
 	EndPreamble
-End  
+End
 
 
 Style Example
@@ -113,7 +113,7 @@ Style Example
 	 \theoremstyle{definition}
 	  \newtheorem{example}{Example}
 	EndPreamble
-End  
+End
 
 
 Style Condition
@@ -121,7 +121,7 @@ Style Condition
 	 \theoremstyle{definition}
 	  \newtheorem{condition}{Condition}
 	EndPreamble
-End  
+End
 
 
 Style Problem
@@ -129,7 +129,7 @@ Style Problem
 	 \theoremstyle{definition}
 	  \newtheorem{problem}{Problem}
 	EndPreamble
-End  
+End
 
 
 Style Exercise
@@ -137,7 +137,7 @@ Style Exercise
 	 \theoremstyle{definition}
 	  \newtheorem{xca}{Exercise}
 	EndPreamble
-End  
+End
 
 
 Style Remark
@@ -145,64 +145,64 @@ Style Remark
 	  \theoremstyle{remark}
 	  \newtheorem{rem}{Remark}
 	EndPreamble
-End  
+End
 
 
 Style Claim
 	Preamble
-	  \theoremstyle{remark}    
+	  \theoremstyle{remark}
 	  \newtheorem{claim}{Claim}
 	EndPreamble
-End  
+End
 
 
 Style Note
 	Preamble
-	  \theoremstyle{remark}    
+	  \theoremstyle{remark}
 	  \newtheorem{note}{Note}
 	EndPreamble
-End  
+End
 
 
 Style Notation
 	Preamble
-	  \theoremstyle{remark}    
+	  \theoremstyle{remark}
 	  \newtheorem{notation}{Notation}
 	EndPreamble
-End  
+End
 
 
 Style Summary
 	Preamble
-	  \theoremstyle{remark}    
+	  \theoremstyle{remark}
 	  \newtheorem{summary}{Summary}
 	EndPreamble
-End  
+End
 
 
 Style Acknowledgement
 	Preamble
-	  \theoremstyle{remark}    
+	  \theoremstyle{remark}
 	  \newtheorem{acknowledgement}{Acknowledgement}
 	EndPreamble
-End  
+End
 
 
 Style Case
 	Preamble
-	  \theoremstyle{remark}    
+	  \theoremstyle{remark}
 	  \newtheorem{case}{Case}
 	EndPreamble
-End  
+End
 
 
 Style Conclusion
 	Preamble
-	  \theoremstyle{remark}    
+	  \theoremstyle{remark}
 	  \newtheorem{conclusion}{Conclusion}
 	EndPreamble
-End  
+End
 
 
- 
+
 

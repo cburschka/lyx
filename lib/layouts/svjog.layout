@@ -1,6 +1,6 @@
 #% Do not delete the line below; configure depends on this
 #  \DeclareLaTeXClass[svjour,svjog.clo]{article (Springer - svjour/jog)}
-# svjour/jog (article) textclass definition file. 
+# svjour/jog (article) textclass definition file.
 # for Springer Verlag Journal of Geodesy.
 # --------
 #
@@ -30,7 +30,7 @@ ClassOptions
 End
 
 
-Style Abstract 
+Style Abstract
 	Margin                First_Dynamic
 	LatexType             Command
 	LatexName             abstract
@@ -45,8 +45,8 @@ Style Abstract
 	Align                 Block
 	AlignPossible         Block, Left
 	LabelType             Top_Environment
-	LabelString           Abstract. 
-	LabelFont 
+	LabelString           Abstract.
+	LabelFont
 	  Series              Bold
 	EndFont
-End 
+End

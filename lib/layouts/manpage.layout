@@ -1,6 +1,6 @@
 #% Do not delete he line below; configure depends on this
 #  \DeclareLinuxDocClass[manpage]{SGML (LinuxDoc manpage)}
-# LinuxDoc manpage textclass definition file. 
+# LinuxDoc manpage textclass definition file.
 # Author : José Matos <jamatos@novalis.fc.up.pt>
 
 
@@ -50,11 +50,11 @@ Style Section
 	Align                 Block
 	AlignPossible         Block, Left
 	LabelType             Counter_Subsection
-	Font 
+	Font
 	  Series              Bold
 	  Size                Large
 	EndFont
-	LabelFont 
+	LabelFont
 	  Series              Bold
 	  Size                Large
 	EndFont
@@ -112,7 +112,7 @@ Style Description
 	AlignPossible         Block, Left
 	LabelType             Manual
 	LabelString           MM
-	LabelFont 
+	LabelFont
 	  Series              Bold
 	EndFont
 End
@@ -132,10 +132,10 @@ Style Verbatim
 	Align                 Block
 	AlignPossible         Block
 	LabelType             No_Label
-	Font 
+	Font
 	  Family              Typewriter
 	EndFont
-	LabelFont 
+	LabelFont
 	  Family              Typewriter
 	EndFont
 End

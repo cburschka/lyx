@@ -14,13 +14,13 @@
 
 # Full author contact details are available in file CREDITS.
 
-# This is the EMACS flavour bind file, based on the bindings found 
+# This is the EMACS flavour bind file, based on the bindings found
 # in the Emacs editor.
 #
 #
 # DO NOT CHANGE THIS DEFAULT BINDING FILE! It will be replaced
-# with every new install of LyX and your changes will be lost. 
-# Instead, customize a copy of this file placed in 
+# with every new install of LyX and your changes will be lost.
+# Instead, customize a copy of this file placed in
 # ~/.lyx/bind/emacs.bind
 #
 # Happy tuning!
@@ -35,7 +35,7 @@
 \bind "C-g"			"cancel"
 
 # help in emacs
-\bind "C-h"                    "hyphenation-point-insert" 
+\bind "C-h"                    "hyphenation-point-insert"
 \bind "C-i"                    "hfill-insert"
 \bind "C-j"                    "break-paragraph"
 \bind "C-k"                    "line-delete-forward"
@@ -178,7 +178,7 @@
 \bind "S-C-Up"                 "paragraph-up-select"
 \bind "S-C-Down"               "paragraph-down-select"
 \bind "S-Home"                 "buffer-begin-select"
-\bind "S-End"                  "buffer-end-select"               
+\bind "S-End"                  "buffer-end-select"
 \bind "S-Prior"                "screen-up-select"
 \bind "S-Next"                 "screen-down-select"
 \bind "S-C-Home"               "buffer-begin-select"
@@ -212,7 +212,7 @@
 \bind "S-C-KP_Up"               "paragraph-up-select"
 \bind "S-C-KP_Down"             "paragraph-down-select"
 \bind "S-KP_Home"               "line-begin-select"
-\bind "S-KP_End"                "line-end-select"               
+\bind "S-KP_End"                "line-end-select"
 \bind "S-KP_Prior"              "screen-up-select"
 \bind "S-KP_Next"               "screen-down-select"
 \bind "S-C-KP_Home"             "buffer-begin-select"

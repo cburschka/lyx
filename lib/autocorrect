@@ -5,9 +5,9 @@
 #
 # We do it a bit differently and allow corrections only to combine a symbol
 # and a char to a new symbol.
-# 
 #
-                  
+#
+
 |                 ,    \lfloor
 \lfloor           *    |,
 |                 '    \lceil
@@ -18,13 +18,13 @@
 \rceil            *    '|
 \llbracket        *    [[*
 \rrbracket        *    ]]*
-                  
+
 \cap              *    \sqcap
 \cup              *    \sqcup
 \vee              *    \curlyvee
 \curlyvee         *    \curlyveeuparrow
 \curlyveeuparrow  *    \curlyveedownarrow
-                  
+
 <                 /    \nless
 >                 /    \ngtr
 <                 =    \leqslant
@@ -55,7 +55,7 @@
 .                 >    \gtrdot
 \leqslant         .    \lesseqdot
 \gtrdot           =    \gtreqdot
-                  
+
 <                 *    \prec
 >                 *    \succ
 \prec             /    \nprec
@@ -153,7 +153,7 @@
 \box              |    \boxbar
 \box              *    \bullet
 \bullet           *    \blacksquare
-                  
+
 =                 *    \asymp
 \asymp            *    \equiv
 \equiv            *    \asympasymp
@@ -172,8 +172,8 @@
 \approx           /    \napprox
 \simeq            /    \nsimeq
 \cong             /    \ncong
-                  
-#|   \|           
+
+#|   \|
 |                 *    \shortmid
 \shortmid         *    \varshortmid
 |                 |    \||
@@ -224,18 +224,18 @@
 *                 *    \ast
 \ast              *    \times
 \times            *    \cdot
-                       
+
 <                 *    \subset
 \subset           *    \in
 \                 /    \nsubset
-\in               *    \sqsubset 
+\in               *    \sqsubset
 \subset           =    \subseteq
 \subseteq         /    \nsubseteq
 \subseteq         *    \subseteqq
 \sqsubset         *    \langle
 \langle           *    \leftslice
 \leftslice        *    \subset
-                  
+
 \subseteq         /    \nsubseteq
 \subseteqq        /    \nsubseteqq
 \nsubseteqq       *    \subsetneq
@@ -252,8 +252,8 @@
 \supseteq         /    \nsupseteq
 \supseteq         *    \supseteqq
 \supseteq         /    \nsupseteq
-                  
-                  
+
+
 \supseteqq        /    \nsupseteqq
 \supseteq         /    \supsetneq
 \supset           +    \supsetplus

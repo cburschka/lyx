@@ -1,5 +1,5 @@
 % This is chkconfig.ltx, a script which tries to autodetect and
-%    document your LaTeX configuration. 
+%    document your LaTeX configuration.
 % Author: Jean-Marc Lasgouttes (Jean-Marc.Lasgouttes@inria.fr)
 % with minimal changes by Asger Alstrup (alstrup@diku.dk).
 %
@@ -15,10 +15,10 @@
 %%% LaTeX code below to help improving chkconfig.ltx :-)
 %%%
 %%% If you want to add the new package <name>, all you need most of
-%%% the times is a two-steps work: 
+%%% the times is a two-steps work:
 %%% 1- Add the command \TestPackage{<name>}. The syntax is:
 %%%    \TestPackage[<file>]{<name>}, which  tests whether <name>.sty
-%%%    (or <file>, if this optional parameter is provided) exists. 
+%%%    (or <file>, if this optional parameter is provided) exists.
 %%% 2- Add a description for <name> in doc/LyXConfig.lyx.in,
 %%%    containing in particular a line like
 %%%         Found   @chk_<name>@
@@ -54,9 +54,9 @@
 %      need to use this directly, since the configure script generates
 %      the needed macro calls automatically.
 %    \TestPackage[<file>]{<name>} tests whether <name>.sty (or <file>,
-%      if it is provided) exists. 
+%      if it is provided) exists.
 %   Both commands call \AddVariable to give value 'yes' or 'no' to
-%   the variable chk_<name>.  
+%   the variable chk_<name>.
 %%%
 \newcommand{\prefix}{+} % the character used by grep to filter 'good' output
 \newcommand{\AddLayout}[4][\default]{
@@ -102,7 +102,7 @@
         \catcode`\#=9  % consider # as a space
         \input{layouts/#1.layout}  % read the layout file
       \egroup
-      \global\@namedef{layout@#1}{}} 
+      \global\@namedef{layout@#1}{}}
      {} % we have already tried this one.
 }
 \newcommand{\DeclareLaTeXClass}[2][\default]{
@@ -114,7 +114,7 @@
 \newcommand{\DeclareLinuxDocClass}[2][\default]{
   \message{^^J\prefix checking for linuxdoc class \layoutname... }
   \@ifundefined{haslinuxdoc}
-    {\message{no^^J}  
+    {\message{no^^J}
      \AddLayout[#1]{\layoutname}{#2}{false}}
     {\message{yes^^J}
      \AddLayout[#1]{\layoutname}{#2}{true}}
@@ -246,7 +246,7 @@
 
 % psnfss is in fact the name of a set of style files, among which
 % times.sty. If times.sty is here, we will assume that everything is
-% fine. 
+% fine.
 \TestPackage[times.sty]{psnfss}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

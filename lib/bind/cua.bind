@@ -16,12 +16,12 @@
 
 # Full author contact details are available in file CREDITS.
 
-# This is the CUA (Common User Access) flavour bind file, based on 
+# This is the CUA (Common User Access) flavour bind file, based on
 # bindings found in the Windows, Mac and Motif world.
 
 # DO NOT CHANGE THIS DEFAULT BINDING FILE! It will be replaced
-# with every new install of LyX and your changes will be lost. 
-# Instead, customize a copy of this file placed in 
+# with every new install of LyX and your changes will be lost.
+# Instead, customize a copy of this file placed in
 # ~/.lyx/bind/cua.bind
 #
 # Happy tuning!
@@ -43,7 +43,7 @@
 \bind "C-w"			"buffer-close"
 \bind "C-s"			"buffer-write"
 \bind "C-S-S"			"buffer-write-as"
-\bind "C-p"			"dialog-show print" 
+\bind "C-p"			"dialog-show print"
 \bind "C-d"			"buffer-view dvi"	# 'd' for dvi
 \bind "C-t"			"buffer-view ps"
 \bind "C-S-D"			"buffer-update dvi"	# 'd' for dvi
@@ -119,7 +119,7 @@
 \bind "S-C-Up"			"paragraph-up-select"
 \bind "S-C-Down"		"paragraph-down-select"
 \bind "S-Home"			"line-begin-select"
-\bind "S-End"			"line-end-select"               
+\bind "S-End"			"line-end-select"
 \bind "S-Prior"			"screen-up-select"
 \bind "S-Next"			"screen-down-select"
 \bind "S-C-Home"		"buffer-begin-select"
@@ -138,7 +138,7 @@
 \bind "S-C-KP_Up"               "paragraph-up-select"
 \bind "S-C-KP_Down"             "paragraph-down-select"
 \bind "S-KP_Home"               "line-begin-select"
-\bind "S-KP_End"                "line-end-select"               
+\bind "S-KP_End"                "line-end-select"
 \bind "S-KP_Prior"              "screen-up-select"
 \bind "S-KP_Next"               "screen-down-select"
 \bind "S-C-KP_Home"             "buffer-begin-select"

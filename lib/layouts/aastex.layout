@@ -1,7 +1,7 @@
 #% Do not delete the line below; configure depends on this
 #  \DeclareLaTeXClass[aastex]{article (AASTeX)}
 #
-# Author: Mike Ressler <mike.ressler@alum.mit.edu>      
+# Author: Mike Ressler <mike.ressler@alum.mit.edu>
 #
 # Disclaimer: Though I am an astronomer at the Jet Propulsion Laboratory, this
 # package was prepared on my own time on my own machine. Neither the United
@@ -16,7 +16,7 @@
 # Version 0.1   6/04/99 - Most everything in sections 2.1-2.11 of AASTeX guide
 #                         works. References work with some ERT. Regular tables
 #                         (2.14) okay, deluxetable will never be supported.
-#                         Figures (2.13) not even attempted yet. Misc (2.15) 
+#                         Figures (2.13) not even attempted yet. Misc (2.15)
 #                         partially supported, but much will remain ERT.
 #                         Style options (section 3) can be typed into Extra
 #                         Document options.
@@ -40,7 +40,7 @@ ProvidesUrl             1
 
 
 ClassOptions
-	PageStyle             ""      
+	PageStyle             ""
 End
 
 
@@ -101,7 +101,7 @@ End
 Style Date
 End
 
-Style Abstract 
+Style Abstract
 End
 
 Style Keywords
@@ -162,7 +162,7 @@ Style Section
 	NextNoIndent          0
 	TopSep                2.0
 	BottomSep             1.3
-	Font 
+	Font
 	  Series              Bold
 	  Size                Normal
 	EndFont
@@ -175,7 +175,7 @@ Style Subsection
 	NextNoIndent          0
 	TopSep                1.7
 	BottomSep             1.1
-	Font 
+	Font
 	  Series              Bold
 	  Size                Normal
 	EndFont
@@ -188,7 +188,7 @@ Style Subsubsection
 	NextNoIndent          0
 	TopSep                1.7
 	BottomSep             1.1
-	Font 
+	Font
 	  Series              Medium
 	  Shape               Italic
 	  Size                Normal
@@ -202,7 +202,7 @@ Style Title
 	Align                 Center
 	AlignPossible         Center
 	InTitle               0
-	Font 
+	Font
 	  Series              Bold
 	  Size                Large
 	EndFont
@@ -214,7 +214,7 @@ Style Author
 	AlignPossible         Center
 	LabelType             No_Label
 	InTitle               0
-	Font 
+	Font
 	  Size                Normal
 	  Series              Medium
 	  Shape               SmallCaps
@@ -228,13 +228,13 @@ Style Date
 	Align                 Center
 	AlignPossible         Center
 	InTitle               0
-	Font 
+	Font
 	  Size                Small
 	EndFont
 End
 
 
-Style Abstract 
+Style Abstract
 	LeftMargin            "MMM"
 	RightMargin           "MMM"
 	ParIndent             "MM"
@@ -243,14 +243,14 @@ Style Abstract
 	LabelType             Centered_Top_Environment
 	Align                 Block
 	AlignPossible         Block, Left, Right, Center
-	Font 
+	Font
 	  Size                Normal
 	EndFont
-	LabelFont 
+	LabelFont
 	  Series              Bold
 	  Size                Normal
 	EndFont
-End 
+End
 
 
 Style Affiliation
@@ -264,7 +264,7 @@ Style Affiliation
 	AlignPossible         Block, Left, Right, Center
 	LabelType             No_Label
 
-	Font 
+	Font
 	  Family              Roman
 	  Size                Normal
 	EndFont
@@ -272,7 +272,7 @@ End
 
 
 Style Keywords
-	LeftMargin            MMM     
+	LeftMargin            MMM
 	Margin                Dynamic
 	LatexType             Command
 	InTitle               0
@@ -284,12 +284,12 @@ Style Keywords
 	LabelType             Static
 	LabelSep              M
 	LabelString           "Subject headings:"
-	Font 
+	Font
 	  Family              Roman
 	  Shape               Up
 	  Size                Normal
 	EndFont
-	LabelFont 
+	LabelFont
 	  Family              Roman
 	  Shape               Italic
 	  Size                Normal
@@ -307,7 +307,7 @@ Style Email
 	Align                 Center
 	AlignPossible         Block, Left, Right, Center
 	LabelType             No_Label
-	Font 
+	Font
 	  Family              Roman
 	  Size                Normal
 	  Shape               Italic
@@ -320,55 +320,55 @@ Style Acknowledgements
 	LatexType             Command
 	InTitle               0
 	LatexName             acknowledgements
-	TopSep                1.2     
+	TopSep                1.2
 	ParSkip               0.4
 	BottomSep             0.8
 	Align                 Left
 	AlignPossible         Left
 	LabelType             Static
 	LabelString           [Acknowledgements]
-	KeepEmpty             1       
-	Font 
+	KeepEmpty             1
+	Font
 	  Family              Roman
 	  Size                Normal
 	  Shape               Italic
 	EndFont
 End
 
-	
+
 Style And
 	Margin                Dynamic
 	LatexType             Command
 	InTitle               0
 	LatexName             and
-	TopSep                1.2     
+	TopSep                1.2
 	ParSkip               0.4
 	BottomSep             1.2
 	Align                 Center
 	AlignPossible         Center
 	LabelType             Static
 	LabelString           and
-	KeepEmpty             1       
-	Font 
+	KeepEmpty             1
+	Font
 	  Family              Roman
 	  Size                Normal
 	EndFont
 End
- 
+
 
 Style PlaceFigure
 	Margin                Dynamic
 	LatexType             Command
 	InTitle               0
 	LatexName             placefigure
-	TopSep                1.2     
+	TopSep                1.2
 	ParSkip               0.4
 	BottomSep             0.8
 	Align                 Left
 	AlignPossible         Left
 	LabelType             Static
 	LabelString           "Place Figure here: "
-	Font 
+	Font
 	  Family              Roman
 	  Size                Normal
 	  Shape               Italic
@@ -381,14 +381,14 @@ Style PlaceTable
 	LatexType             Command
 	InTitle               0
 	LatexName             placetable
-	TopSep                1.2     
+	TopSep                1.2
 	ParSkip               0.4
 	BottomSep             0.8
 	Align                 Left
 	AlignPossible         Left
 	LabelType             Static
 	LabelString           "Place Table here: "
-	Font 
+	Font
 	  Family              Roman
 	  Size                Normal
 	  Shape               Italic
@@ -401,15 +401,15 @@ Style Appendix
 	LatexType             Command
 	InTitle               0
 	LatexName             appendix
-	TopSep                1.2     
+	TopSep                1.2
 	ParSkip               0.4
 	BottomSep             0.8
 	Align                 Left
 	AlignPossible         Left
 	LabelType             Static
 	LabelString           [Appendix]
-	KeepEmpty             1       
-	Font 
+	KeepEmpty             1
+	Font
 	  Family              Roman
 	  Size                Normal
 	  Shape               Italic
@@ -418,20 +418,20 @@ End
 
 
 Style MathLetters
-	LatexType             Environment     
+	LatexType             Environment
 	LatexName             mathletters
 	LabelType             No_Label
 	Align                 Block
 	AlignPossible         Block, Left, Right, Center
-	Font 
+	Font
 	  Size                Normal
 	EndFont
-End 
+End
 
 
 Style References
-	Margin                First_Dynamic   
-	LatexType             Item_Environment        
+	Margin                First_Dynamic
+	LatexType             Item_Environment
 	LatexName             thebibliography
 	NextNoIndent          1
 	LeftMargin            MM
@@ -445,12 +445,12 @@ Style References
 	LabelBottomSep        0.7
 	Align                 Block
 	AlignPossible         Block, Left, Right, Center
-	LabelFont 
+	LabelFont
 	  Family              Roman
 	  Size                Normal
 	  Series              Bold
 	EndFont
-End 
+End
 
 
 # Need reordering below here
@@ -460,14 +460,14 @@ Style NoteToEditor
 	LatexType             Command
 	InTitle               0
 	LatexName             notetoeditor
-	TopSep                1.2     
+	TopSep                1.2
 	ParSkip               0.4
 	BottomSep             0.8
 	Align                 Left
 	AlignPossible         Block, Left, Right, Center
 	LabelType             Static
 	LabelString           "Note to Editor: "
-	Font 
+	Font
 	  Family              Roman
 	  Size                Normal
 	  Shape               Italic
@@ -480,14 +480,14 @@ Style TableRefs
 	LatexType             Command
 	InTitle               0
 	LatexName             tablerefs
-	TopSep                1.2     
+	TopSep                1.2
 	ParSkip               0.4
 	BottomSep             0.8
 	Align                 Block
 	AlignPossible         Block, Left, Right, Center
 	LabelType             Static
 	LabelString           "References. --- "
-	Font 
+	Font
 	  Family              Roman
 	  Size                Normal
 	EndFont
@@ -499,14 +499,14 @@ Style TableComments
 	LatexType             Command
 	InTitle               0
 	LatexName             tablecomments
-	TopSep                1.2     
+	TopSep                1.2
 	ParSkip               0.4
 	BottomSep             0.8
 	Align                 Block
 	AlignPossible         Block, Left, Right, Center
 	LabelType             Static
 	LabelString           "Note. --- "
-	Font 
+	Font
 	  Family              Roman
 	  Size                Normal
 	EndFont
@@ -525,7 +525,7 @@ Style Caption
 	AlignPossible         Block, Left
 	LabelType             Sensitive
 	LabelString           Caption
-	LabelFont 
+	LabelFont
 	  Series              Bold
 	EndFont
 End

@@ -46,7 +46,7 @@ def update_tabular(lines):
         lines.insert(i, '<Features rotate="%s" islongtable="%s" endhead="%s" endfirsthead="%s" endfoot="%s" endlastfoot="%s">' % (head[2],head[3],head[4],head[5],head[6],head[7]))
 
         i = i +1
-        
+
         row_info = []
         cont_row = []
         for j in range(rows):
@@ -78,7 +78,7 @@ def update_tabular(lines):
         del lines[i]
         if not lines[i]:
             del lines[i]
-        
+
         # Read cells
         l = 0
         cell_content = []
@@ -158,7 +158,7 @@ def update_tabular(lines):
                     else:
                         paragraph = cell_content[j][k]
                     tmp = tmp + set_paragraph_properties(paragraph, prop_dict)
-                
+
                 tmp.append('\\end_inset ')
                 tmp.append('</Cell>')
                 tmp.append('</Column>')
@@ -249,7 +249,7 @@ def set_paragraph_properties(lines, prop_dict):
 
     if not lines[start:] and not lines[end:]:
         return []
-    
+
     result = lines[:start] + aux[:] + lines[end:]
     if insert and result[0] != '':
         return [''] + result[:]

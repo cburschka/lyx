@@ -4,7 +4,7 @@
 # and from the Article textclass definition file, following the AMS sample
 # paper "testmath.tex" of January, 1995
 # Author : David L. Johnson <dlj0@lehigh.edu>
-# The "unnumbered" version has all results, unnumbered 
+# The "unnumbered" version has all results, unnumbered
 # Probably broken by Jean-Marc Lasgouttes <Jean-Marc.Lasgouttes@inria.fr>
 # modified and modularized by Emmanuel GUREGHIAN <gureghia@boston.bertin.fr>
 
@@ -24,130 +24,130 @@ EndPreamble
 
 Style Theorem
 	LabelString           "Theorem."
-End  
+End
 
 
 Style Corollary
 	LabelType             Static
 	LabelString           "Corollary."
-End  
+End
 
 
 Style Lemma
 	LabelType             Static
 	LabelString           "Lemma."
-End  
+End
 
 
 Style Proposition
 	LabelType             Static
 	LabelString           "Proposition."
-End  
+End
 
 
 Style Conjecture
 	LabelType             Static
 	LabelString           "Conjecture."
-End  
+End
 
 
 Style Criterion
 	LabelType             Static
 	LabelString           "Criterion."
-End  
+End
 
 
 Style Algorithm
 	LabelType             Static
 	LabelString           "Algorithm."
-End  
+End
 
 
 Style Fact
 	LabelType             Static
 	LabelString           "Fact."
-End  
+End
 
 
 Style Axiom
 	LabelType             Static
 	LabelString           "Axiom."
-End  
+End
 
 
 Style Definition
 	LabelType             Static
 	LabelString           "Definition."
-End  
+End
 
 
 Style Example
 	LabelType             Static
 	LabelString           "Example."
-End  
+End
 
 
 Style Condition
 	LabelType             Static
 	LabelString           "Condition."
-End  
+End
 
 
 Style Problem
 	LabelType             Static
 	LabelString           "Problem."
-End  
+End
 
 
 Style Exercise
 	LabelType             Static
 	LabelString           "Exercise."
-End  
+End
 
 
 Style Remark
 	LabelType             Static
 	LabelString           "Remark."
-End  
+End
 
 
 Style Claim
 	LabelType             Static
 	LabelString           "Claim."
-End  
+End
 
 
 Style Note
 	LabelType             Static
 	LabelString           "Note."
-End  
+End
 
 
 Style Notation
 	LabelType             Static
 	LabelString           "Notation."
-End  
+End
 
 
 Style Summary
 	LabelType             Static
 	LabelString           "Summary."
-End  
+End
 
 
 Style Acknowledgement
 	LabelType             Static
 	LabelString           "Acknowledgement."
-End  
+End
 
 
 Style Case
 	LabelType             Static
 	LabelString           "Case."
-End  
+End
 
 
 Style Conclusion
 	LabelType             Static
 	LabelString           "Conclusion."
-End  
+End

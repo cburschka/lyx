@@ -7,7 +7,7 @@ Style Part
 	LabelString           "Part \Roman{part}"
 End
 
-	
+
 Style Section
 	LabelType             Counter
 	LabelCounter          section

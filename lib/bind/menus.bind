@@ -71,19 +71,19 @@
 # Paragraph style menu
 #
 
-\bind "M-p ~S-0"		"layout Part" 
-\bind "M-p ~S-1"		"layout Chapter" 
-\bind "M-p ~S-2"		"layout Section" 
-\bind "M-p ~S-3"		"layout Subsection"  
-\bind "M-p ~S-4"		"layout Subsubsection"    
-\bind "M-p ~S-5"		"layout Paragraph"        
+\bind "M-p ~S-0"		"layout Part"
+\bind "M-p ~S-1"		"layout Chapter"
+\bind "M-p ~S-2"		"layout Section"
+\bind "M-p ~S-3"		"layout Subsection"
+\bind "M-p ~S-4"		"layout Subsubsection"
+\bind "M-p ~S-5"		"layout Paragraph"
 \bind "M-p ~S-6"		"layout Subparagraph"
-\bind "M-p ~S-asterisk ~S-0"	"layout Part*" 
-\bind "M-p ~S-asterisk ~S-1"	"layout Chapter*" 
-\bind "M-p ~S-asterisk ~S-2"	"layout Section*" 
-\bind "M-p ~S-asterisk ~S-3"	"layout Subsection*"  
-\bind "M-p ~S-asterisk ~S-4"	"layout Subsubsection*"    
-\bind "M-p ~S-asterisk ~S-5"	"layout Paragraph*"        
+\bind "M-p ~S-asterisk ~S-0"	"layout Part*"
+\bind "M-p ~S-asterisk ~S-1"	"layout Chapter*"
+\bind "M-p ~S-asterisk ~S-2"	"layout Section*"
+\bind "M-p ~S-asterisk ~S-3"	"layout Subsection*"
+\bind "M-p ~S-asterisk ~S-4"	"layout Subsubsection*"
+\bind "M-p ~S-asterisk ~S-5"	"layout Paragraph*"
 \bind "M-p ~S-asterisk ~S-6"	"layout Subparagraph*"
 \bind "M-p a"			"layout Abstract"
 \bind "M-p S-A"			"layout Author"
@@ -123,7 +123,7 @@
 
 #
 # Character style menu
-# 
+#
 
 \bind "M-c b"			"font-bold"
 \bind "M-c c"			"font-noun"
@@ -139,7 +139,7 @@
 \bind "M-c Up"			"word-upcase"
 \bind "M-c Right"		"word-capitalize"
 
-\bind "M-c space"		"font-default"                  
+\bind "M-c space"		"font-default"
 
 
 #

@@ -54,7 +54,7 @@ Style Section
 	ParSep                0.7
 	Align                 Block
 	AlignPossible         Block, Left
-	Font 
+	Font
 	  Series              Bold
 	  Size                Normal
 	EndFont
@@ -74,7 +74,7 @@ Style Subsection
 	ParSep                0.5
 	Align                 Block
 	AlignPossible         Block, Left
-	Font 
+	Font
 	  Series              Bold
 	  Size                Normal
 	EndFont
@@ -94,7 +94,7 @@ Style Subsubsection
 	ParSep                0.4
 	Align                 Block
 	AlignPossible         Block, Left
-	Font 
+	Font
 	  Series              Bold
 	  Size                Normal
 	EndFont
@@ -114,7 +114,7 @@ Style Paragraph
 	ParSep                0.4
 	Align                 Block
 	AlignPossible         Block, Left
-	Font 
+	Font
 	  Series              Bold
 	  Size                Normal
 	EndFont
@@ -143,7 +143,7 @@ Style Title
 	Align                 Left
 	AlignPossible         Left
 	LabelType             No_Label
-	TextFont 
+	TextFont
 	  Series              Bold
 	  Size                Normal
 	EndFont
@@ -167,7 +167,7 @@ Style Author
 End
 
 
-Style Abstract 
+Style Abstract
 	Margin                Static
 	LatexType             Environment
 	LatexName             abstract
@@ -184,11 +184,11 @@ Style Abstract
 	LabelType             Top_Environment
 	LabelString           Abstract
 	LabelBottomSep    0.5
-	TextFont 
+	TextFont
 	  Size                Normal
 	EndFont
-	LabelFont 
+	LabelFont
 	  Size                Normal
 	  Series              Bold
 	EndFont
-End 
+End
