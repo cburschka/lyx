@@ -82,7 +82,7 @@ resize: FL_RESIZE_NONE
 gravity: FL_SouthWest FL_SouthWest
 name: sort
 callback: C_FormBaseInputCB
-argument: 3
+argument: 4
 
 --------------------
 class: FL_INPUT
@@ -136,7 +136,7 @@ resize: FL_RESIZE_NONE
 gravity: FL_SouthEast FL_SouthEast
 name: type
 callback: C_FormBaseInputCB
-argument: 4
+argument: 5
 
 --------------------
 class: FL_BUTTON

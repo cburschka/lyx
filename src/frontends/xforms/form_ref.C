@@ -37,7 +37,7 @@ FD_form_ref * FormRef::build_ref()
     fl_set_button_shortcut(obj, scex(_("Sort|#S")), 1);
     fl_set_object_lalign(obj, FL_ALIGN_RIGHT);
     fl_set_object_gravity(obj, FL_SouthWest, FL_SouthWest);
-    fl_set_object_callback(obj, C_FormBaseInputCB, 3);
+    fl_set_object_callback(obj, C_FormBaseInputCB, 4);
   fdui->name = obj = fl_add_input(FL_NORMAL_INPUT, 370, 10, 150, 40, idex(_("Name:|#N")));
     fl_set_button_shortcut(obj, scex(_("Name:|#N")), 1);
     fl_set_object_gravity(obj, FL_NorthEast, FL_NorthEast);
@@ -48,7 +48,7 @@ FD_form_ref * FormRef::build_ref()
     fl_set_object_boxtype(obj, FL_FRAME_BOX);
     fl_set_object_lalign(obj, FL_ALIGN_TOP);
     fl_set_object_gravity(obj, FL_SouthEast, FL_SouthEast);
-    fl_set_object_callback(obj, C_FormBaseInputCB, 4);
+    fl_set_object_callback(obj, C_FormBaseInputCB, 5);
   fdui->button_go = obj = fl_add_button(FL_NORMAL_BUTTON, 340, 200, 140, 40, idex(_("Goto reference|#G")));
     fl_set_button_shortcut(obj, scex(_("Goto reference|#G")), 1);
     fl_set_object_gravity(obj, FL_SouthEast, FL_SouthEast);

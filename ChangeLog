@@ -1,3 +1,9 @@
+2000-11-29  Angus Leeming <a.leeming@ic.ac.uk>
+
+	* src/frontends/xforms/FormRef.C (updateBrowser):
+	* src/frontends/xforms/forms/form_ref.fd: try clicking on
+	different insets with the sort key active. Now apply this patch!
+
 2000-11-29  John Levon  <moz@compsoc.man.ac.uk>
 
 	* src/frontends/xforms/FormPrint.C: set to valid()

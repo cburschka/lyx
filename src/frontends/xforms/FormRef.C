@@ -106,13 +106,9 @@ void FormRef::update()
 		fl_deactivate_object(dialog_->name);
 		fl_set_object_lcol(dialog_->name, FL_INACTIVE);
 	}
-	  
+
 	refs = lv_->buffer()->getLabelList();
 	updateBrowser(refs);
-
-	if (inset_ == 0) {
-	} else {
-	}
 
 	bc_.readOnly(lv_->buffer()->isReadonly());
 }
@@ -121,7 +117,7 @@ void FormRef::update()
 void FormRef::updateBrowser(vector<string> const & akeys) const
 {
 	vector<string> keys(akeys);
-	if (fl_get_button( dialog_->sort))
+	if (fl_get_button(dialog_->sort))
 		sort(keys.begin(), keys.end());
 
 	fl_clear_browser(dialog_->browser);
@@ -150,10 +146,10 @@ void FormRef::updateBrowser(vector<string> const & akeys) const
 
 		string ref = fl_get_input(dialog_->ref);
 		vector<string>::const_iterator cit =
-			find(refs.begin(), refs.end(), ref);
+			find(keys.begin(), keys.end(), ref);
 
-		if (cit != refs.end()) {
-			int const i = static_cast<int>(cit - refs.begin());
+		if (cit != keys.end()) {
+			int const i = static_cast<int>(cit - keys.begin());
 			fl_set_browser_topline(dialog_->browser, max(i-5, 1));
 			fl_select_browser_line(dialog_->browser, i+1);
 		}
@@ -247,15 +243,17 @@ bool FormRef::input(FL_OBJECT *, long data)
 
 	// update or sort
 	case 3:
-	{
+		refs = lv_->buffer()->getLabelList();
+
+		// fall through to...
+	case 4:
 		fl_freeze_form(form());
 		updateBrowser(refs);
 		fl_unfreeze_form(form());
-	}
-	break;
+		break;
 
 	// changed reference type
-	case 4:
+	case 5:
 	{
 		Type type = static_cast<Type>( 
 			fl_get_choice(dialog_->type) - 1);
