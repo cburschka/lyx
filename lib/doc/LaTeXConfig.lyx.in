@@ -450,7 +450,7 @@ aa
 \emph on 
 Astronomy and Astrophysics
 \emph default 
-published by EDP Sciences.
+ published by EDP Sciences.
 \layout Subsection
 
 aastex
@@ -488,7 +488,15 @@ Publications of the Astronomical Society of the Pacific
 AGU Journal of Geophysical Research
 \layout Description
 
-Found: @chk_jgrga@
+Found: 
+\family sans 
+jgrga
+\family default 
+: @chk_jgrga@, 
+\family sans 
+agums
+\family default 
+: @chk_agums@
 \layout Description
 
 CTAN:
@@ -515,8 +523,15 @@ jgrga.layout
 \family default 
 .
  It is not very thoroughly tested yet.
- It would be straightforward to extend this to support other publications
- of the AGU.
+ 
+\layout Standard
+
+The document class 
+\family sans 
+agums
+\family default 
+ can be used for first-time submissions to AGU editors (ie., for peer review
+ and copy editing).
 \end_deeper 
 \layout Subsection
 
