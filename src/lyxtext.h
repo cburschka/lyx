@@ -131,15 +131,15 @@ public:
 	  */
 	void setFont(LyXFont const &, bool toggleall = false);
 
-	/** deletes and inserts again all paragaphs between the cursor
-	  and the specified par. The Cursor is needed to set the refreshing
-	  parameters.
-	  This function is needed after SetLayout and SetFont etc.
-	  */
-	void redoParagraphs(LyXCursor const & cursor,
-			    ParagraphList::iterator endpit);
-	///
+	/// rebreaks all paragaphs between the given pars.
+	void redoParagraphs(ParagraphList::iterator begin,
+			    ParagraphList::iterator end);
+	/// rebreaks the given par
+	void redoParagraph(ParagraphList::iterator pit);
+	/// rebreaks the cursor par
 	void redoParagraph();
+	/// returns first row belongin to some par
+	RowList::iterator firstRow(ParagraphList::iterator pit);
 
 	///
 	void toggleFree(LyXFont const &, bool toggleall = false);

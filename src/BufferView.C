@@ -625,8 +625,7 @@ bool BufferView::ChangeInsets(InsetOld::Code code,
 			// How to set the cursor corretly when it.size()>1 ??
 			if (it.size() == 1) {
 				text->setCursorIntern(it.pit(), 0);
-				text->redoParagraphs(text->cursor,
-						     boost::next(text->cursor.par()));
+				text->redoParagraph(text->cursor.par());
 				text->partialRebreak();
 			}
 		}

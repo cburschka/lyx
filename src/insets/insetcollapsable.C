@@ -289,8 +289,8 @@ bool InsetCollapsable::hitButton(FuncRequest const & cmd) const
 
 InsetOld::RESULT InsetCollapsable::localDispatch(FuncRequest const & cmd)
 {
-	lyxerr << "InsetCollapsable::localDispatch: "
-		<< cmd.action << " '" << cmd.argument << "'\n";
+	//lyxerr << "InsetCollapsable::localDispatch: "
+	//	<< cmd.action << " '" << cmd.argument << "'\n";
 	BufferView * bv = cmd.view();
 	switch (cmd.action) {
 		case LFUN_INSET_EDIT: {

@@ -443,7 +443,7 @@ void LyXText::setLayout(string const & layout)
 
 	ParagraphList::iterator endpit = setLayout(cursor, selection.start,
 						   selection.end, layout);
-	redoParagraphs(selection.start, endpit);
+	redoParagraphs(selection.start.par(), endpit);
 
 	// we have to reset the selection, because the
 	// geometry could have changed
@@ -511,15 +511,12 @@ bool LyXText::changeDepth(bv_funcs::DEPTH_CHANGE type, bool test_only)
 	if (test_only)
 		return changed;
 
-	// Wow, redoParagraphs is stupid.
-	LyXCursor tmpcursor;
-	setCursor(tmpcursor, start, 0);
 
-	redoParagraphs(tmpcursor, pastend);
+	redoParagraphs(start, pastend);
 
 	// We need to actually move the text->cursor. I don't
 	// understand why ...
-	tmpcursor = cursor;
+	LyXCursor tmpcursor = cursor;
 
 	// we have to reset the visual selection because the
 	// geometry could have changed
@@ -589,7 +586,7 @@ void LyXText::setFont(LyXFont const & font, bool toggleall)
 	}
 	unFreezeUndo();
 
-	redoParagraphs(selection.start, boost::next(selection.end.par()));
+	redoParagraph(selection.start.par());
 
 	// we have to reset the selection, because the
 	// geometry could have changed, but we keep
@@ -621,17 +618,31 @@ void LyXText::redoHeightOfParagraph()
 }
 
 
-// deletes and inserts again all paragraphs between the cursor
-// and the specified par
-// This function is needed after SetLayout and SetFont etc.
-void LyXText::redoParagraphs(LyXCursor const & cur,
-			     ParagraphList::iterator endpit)
+RowList::iterator LyXText::firstRow(ParagraphList::iterator pit)
 {
-	RowList::iterator tmprit = getRow(cur);
+	RowList::iterator rit;
+	for (rit = rows().begin(); rit != rows().end(); ++rit)
+		if (rit->par() == pit)
+			break;
+	return rit;
+}
+
+
+// rebreaks all paragraphs between the specified pars
+// This function is needed after SetLayout and SetFont etc.
+void LyXText::redoParagraphs(ParagraphList::iterator start,
+  ParagraphList::iterator endpit)
+{
+	RowList::iterator rit = firstRow(start);
+
+	if (rit == rows().end()) {
+		lyxerr << "LyXText::redoParagraphs: should not happen\n";
+		Assert(0);
+	}
 
 	ParagraphList::iterator first_phys_pit;
 	RowList::iterator prevrit;
-	if (tmprit == rows().begin()) {
+	if (rit == rows().begin()) {
 		// A trick/hack for UNDO.
 		// This is needed because in an UNDO/REDO we could have
 		// changed the ownerParagraph() so the paragraph inside
@@ -640,30 +651,28 @@ void LyXText::redoParagraphs(LyXCursor const & cur,
 		first_phys_pit = ownerParagraphs().begin();
 		prevrit = rows().end();
 	} else {
-		first_phys_pit = tmprit->par();
-		while (tmprit != rows().begin()
-		       && boost::prior(tmprit)->par() == first_phys_pit)
+		first_phys_pit = rit->par();
+		while (rit != rows().begin()
+		       && boost::prior(rit)->par() == first_phys_pit)
 		{
-			--tmprit;
+			--rit;
 		}
-		prevrit = boost::prior(tmprit);
+		prevrit = boost::prior(rit);
 	}
 
 	// remove it
-	while (tmprit != rows().end() && tmprit->par() != endpit) {
-		RowList::iterator tmprit2 = tmprit++;
-		removeRow(tmprit2);
+	while (rit != rows().end() && rit->par() != endpit) {
+		RowList::iterator rit2 = rit++;
+		removeRow(rit2);
 	}
 
 	// Reinsert the paragraphs.
 	ParagraphList::iterator tmppit = first_phys_pit;
 
 	while (tmppit != ownerParagraphs().end()) {
-		insertParagraph(tmppit, tmprit);
-		while (tmprit != rows().end()
-		       && tmprit->par() == tmppit) {
-			++tmprit;
-		}
+		insertParagraph(tmppit, rit);
+		while (rit != rows().end() && rit->par() == tmppit)
+			++rit;
 		++tmppit;
 		if (tmppit == endpit)
 			break;
@@ -673,10 +682,16 @@ void LyXText::redoParagraphs(LyXCursor const & cur,
 	else
 		setHeightOfRow(rows().begin());
 	postPaint();
-	if (tmprit != rows().end())
-		setHeightOfRow(tmprit);
+	if (rit != rows().end())
+		setHeightOfRow(rit);
 
 	updateCounters();
+}
+
+
+void LyXText::redoParagraph(ParagraphList::iterator pit)
+{
+	redoParagraphs(pit, boost::next(pit));
 }
 
 
@@ -948,7 +963,7 @@ void LyXText::setParagraph(bool line_top, bool line_bottom,
 	}
 	postPaint();
 
-	redoParagraphs(selection.start, endpit);
+	redoParagraphs(selection.start.par(), endpit);
 
 	clearSelection();
 	setCursor(selection.start.par(), selection.start.pos());
@@ -1279,7 +1294,7 @@ void LyXText::cutSelection(bool doclear, bool realcut)
 	if (doclear)
 		selection.start.par()->stripLeadingSpaces();
 
-	redoParagraphs(selection.start, boost::next(endpit));
+	redoParagraphs(selection.start.par(), boost::next(endpit));
 #warning FIXME latent bug
 	// endpit will be invalidated on redoParagraphs once ParagraphList
 	// becomes a std::list? There are maybe other places on which this
@@ -1347,7 +1362,7 @@ void LyXText::pasteSelection(size_t sel_index)
 	bufferErrors(*bv()->buffer(), el);
 	bv()->showErrorList(_("Paste"));
 
-	redoParagraphs(cursor, endpit);
+	redoParagraphs(cursor.par(), endpit);
 
 	setCursor(cursor.par(), cursor.pos());
 	clearSelection();
@@ -1417,7 +1432,7 @@ void LyXText::insertStringAsLines(string const & str)
 
 	bv()->buffer()->insertStringAsLines(pit, pos, current_font, str);
 
-	redoParagraphs(cursor, endpit);
+	redoParagraphs(cursor.par(), endpit);
 	setCursor(cursor.par(), cursor.pos());
 	selection.cursor = cursor;
 	setCursor(pit, pos);
@@ -2067,7 +2082,7 @@ bool LyXText::deleteEmptyParagraphMechanism(LyXCursor const & old_cursor)
 		    && old_cursor.par()->isLineSeparator(old_cursor.pos())
 		    && old_cursor.par()->isLineSeparator(old_cursor.pos() - 1)) {
 			old_cursor.par()->erase(old_cursor.pos() - 1);
-			redoParagraphs(old_cursor, boost::next(old_cursor.par()));
+			redoParagraph(old_cursor.par());
 
 #ifdef WITH_WARNINGS
 #warning This will not work anymore when we have multiple views of the same buffer
@@ -2185,7 +2200,7 @@ bool LyXText::deleteEmptyParagraphMechanism(LyXCursor const & old_cursor)
 	}
 	if (!deleted) {
 		if (old_cursor.par()->stripLeadingSpaces()) {
-			redoParagraphs(old_cursor, boost::next(old_cursor.par()));
+			redoParagraph(old_cursor.par());
 			// correct cursor y
 			setCursorIntern(cursor.par(), cursor.pos());
 			selection.cursor = cursor;

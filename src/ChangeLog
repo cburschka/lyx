@@ -2,6 +2,13 @@
 
 	* buffer.[Ch]: file_format is no longer a buffer data element.
 
+2003-08-01  André Pönitz  <poenitz@gmx.net>
+
+	* BufferView.C:
+	* lyxtext.h:
+	* text.C:
+	* text2.C: make redoParagraph more independent of current cursor
+
 2003-07-30  André Pönitz  <poenitz@gmx.net>
 
 	* paragraph.[Ch] (copyIntoMinibuffer): removed unused function

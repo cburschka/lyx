@@ -1579,7 +1579,7 @@ void LyXText::breakParagraph(ParagraphList & paragraphs, char keep_layout)
 void LyXText::redoParagraph()
 {
 	clearSelection();
-	redoParagraphs(cursor, boost::next(cursor.par()));
+	redoParagraph(cursor.par());
 	setCursorIntern(cursor.par(), cursor.pos());
 }
 
@@ -2007,7 +2007,7 @@ void LyXText::acceptChange()
 		startc.par()->acceptChange(startc.pos(), endc.pos());
 		finishUndo();
 		clearSelection();
-		redoParagraphs(startc, boost::next(startc.par()));
+		redoParagraph(startc.par());
 		setCursorIntern(startc.par(), 0);
 	}
 #warning handle multi par selection
@@ -2026,7 +2026,7 @@ void LyXText::rejectChange()
 		startc.par()->rejectChange(startc.pos(), endc.pos());
 		finishUndo();
 		clearSelection();
-		redoParagraphs(startc, boost::next(startc.par()));
+		redoParagraph(startc.par());
 		setCursorIntern(startc.par(), 0);
 	}
 #warning handle multi par selection
