@@ -1,5 +1,10 @@
 2003-02-17  John Levon  <levon@movementarian.org>
 
+	* text.C (Delete): fix case where delete at the end of
+	   the very first paragraph would not merge the pars
+
+2003-02-17  John Levon  <levon@movementarian.org>
+
 	* lyxrow.C: fix lastPrintablePos()
 
 2003-02-16  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>

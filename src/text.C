@@ -2612,7 +2612,7 @@ void LyXText::Delete(BufferView * bview)
 	LyXCursor old_cursor = cursor;
 	int const old_cur_par_id = old_cursor.par()->id();
 	int const old_cur_par_prev_id = old_cursor.par()->previous() ?
-		old_cursor.par()->previous()->id() : 0;
+		old_cursor.par()->previous()->id() : -1;
 
 	// just move to the right
 	cursorRight(bview);
@@ -2623,7 +2623,7 @@ void LyXText::Delete(BufferView * bview)
 	// and that can very well delete the par or par->previous in
 	// old_cursor. Will a solution where we compare paragraph id's
 	//work better?
-	if ((cursor.par()->previous() ? cursor.par()->previous()->id() : 0)
+	if ((cursor.par()->previous() ? cursor.par()->previous()->id() : -1)
 	    == old_cur_par_prev_id
 	    && cursor.par()->id() != old_cur_par_id) {
 		// delete-empty-paragraph-mechanism has done it
