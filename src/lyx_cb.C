@@ -172,11 +172,11 @@ void QuitLyX()
 	bufferlist.closeAll();
 
 	// do any other cleanup procedures now
-	lyxerr[Debug::INFO] << "Deleting tmp dir " << system_tempdir << endl;
+	lyxerr[Debug::INFO] << "Deleting tmp dir " << os::getTmpDir() << endl;
 
-	if (destroyDir(system_tempdir) != 0) {
+	if (destroyDir(os::getTmpDir()) != 0) {
 		string msg = bformat(_("Could not remove the temporary directory %1$s"),
-			system_tempdir);
+			os::getTmpDir());
 		Alert::warning(_("Could not remove temporary directory"), msg);
 	}
 

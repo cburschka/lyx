@@ -31,8 +31,7 @@ void init(int * argc, char ** argv[]);
 string binpath();
 // returns name of LyX binary
 string binname();
-// system_tempdir actually doesn't belong here
-// I put it here only to avoid a global variable.
+//
 void setTmpDir(string const & p);
 //
 string getTmpDir();

@@ -1,3 +1,9 @@
+2003-07-26  Angus Leeming  <leeming@lyx.org>
+
+	* lyx_cb.C:
+	* lyx_main.[Ch]: replace occurances of system_tempdir with
+	os::getTmpDir().
+
 2003-07-25  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* rename Inset to InsetOld

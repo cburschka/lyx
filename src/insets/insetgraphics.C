@@ -82,7 +82,6 @@ TODO
 
 #include <algorithm> // For the std::max
 
-extern string system_tempdir;
 // set by Exporters
 
 using namespace lyx::support;

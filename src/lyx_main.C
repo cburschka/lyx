@@ -66,7 +66,6 @@ extern LyXServer * lyxserver;
 
 string system_lyxdir;
 string build_lyxdir;
-string system_tempdir;
 string user_lyxdir;
 
 DebugStream lyxerr;
@@ -482,9 +481,8 @@ void LyX::init(bool gui)
 		lyxrc.print();
 
 	os::setTmpDir(CreateLyXTmpDir(lyxrc.tempdir_path));
-	system_tempdir = os::getTmpDir();
 	if (lyxerr.debugging(Debug::INIT)) {
-		lyxerr << "LyX tmp dir: `" << system_tempdir << '\'' << endl;
+		lyxerr << "LyX tmp dir: `" << os::getTmpDir() << '\'' << endl;
 	}
 
 	lyxerr[Debug::INIT] << "Reading lastfiles `"
