@@ -716,8 +716,7 @@ Paragraph::highestFontInRange(pos_type startpos, pos_type endpos,
 
 
 Paragraph::value_type
-Paragraph::getUChar(BufferParams const & bparams,
-		       pos_type pos) const
+Paragraph::getUChar(BufferParams const & bparams, pos_type pos) const
 {
 	value_type c = getChar(pos);
 	if (!lyxrc.rtl_support)
@@ -757,8 +756,7 @@ Paragraph::getUChar(BufferParams const & bparams,
 }
 
 
-void Paragraph::setFont(pos_type pos,
-			   LyXFont const & font)
+void Paragraph::setFont(pos_type pos, LyXFont const & font)
 {
 	lyx::Assert(pos <= size());
 
@@ -1477,8 +1475,7 @@ bool Paragraph::simpleTeXOnePar(Buffer const * buf,
 		basefont = getLayoutFont(bparams);
 	}
 
-	if (main_body >= 0
-	    && !pimpl_->size()) {
+	if (main_body >= 0 && !pimpl_->size()) {
 		if (style.isCommand()) {
 			os << '{';
 			++column;
@@ -1803,8 +1800,7 @@ Paragraph * Paragraph::TeXEnvironment(Buffer const * buf,
 	}
 	Paragraph * par = this;
 	do {
-		par = par->TeXOnePar(buf, bparams,
-				     os, texrow, false);
+		par = par->TeXOnePar(buf, bparams, os, texrow, false);
 
 		if (par && par->params().depth() > params().depth()) {
 			if (textclasslist.Style(bparams.textclass,
