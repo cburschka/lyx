@@ -1170,9 +1170,49 @@ void Parser::parse_into1(MathArray & array, unsigned flags, MathTextCodes code)
 */
 
 		else if (t.cs() == "label") {
-			MathArray ar;
-			parse_into(ar, FLAG_ITEM, code);
-			curr_label_ = asString(ar);
+			int counter = -1;
+
+			curr_label_.erase();
+			while (good()) {
+				Token const & t = getToken();
+
+				switch (t.cat()) {
+				case catBegin:
+					if (counter != -1)
+						curr_label_ += t.asString();
+					counter++;
+					break;
+				case catEnd:
+					if (counter != 0)
+						curr_label_ += t.asString();
+					counter--;
+					break;
+				case catNewline:
+					// this is not allowed inside
+					// a label and the most
+					// reasonable assumption is
+					// that a } was forgotten.
+					counter = -1;
+					break;
+				case catIgnore:
+					// do we have a macro name?
+					if (t.cs().empty())
+						continue;
+					curr_label_ += '\\' + t.asString();
+					break;
+				case catEscape:
+				case catParameter:
+					continue;
+				default:
+					// all the rest are perfectly
+					// OK characters.
+					curr_label_ += t.asString();
+					break;
+				}
+
+				if (counter < 0)
+					break;
+			}
 		}
 
 		else if (t.cs() == "choose" || t.cs() == "over" || t.cs() == "atop") {

@@ -36,6 +36,9 @@ What's new
 
 ** Bug fixes
 
+- fix bug where special characters in equations label confuse LyX
+  (this was a new bug in 1.2.1)
+
 - fix bug with citation keys that contain spaces
 
 - fix bug with graphics files which name contain a '.'

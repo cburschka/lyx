@@ -445,7 +445,9 @@ InsetFormula::localDispatch(BufferView * bv, kb_action action,
 			//	break;  // Nothing to do
 
 			if (!new_label.empty()) {
-				lyxerr << "setting label to '" << new_label << "'\n";
+				lyxerr[Debug::MATHED]
+					<< "setting label to '" << new_label
+					<< "'" << endl;
 				hull()->numbered(row, true);
 			}
 
