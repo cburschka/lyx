@@ -157,15 +157,17 @@ int InsetBranch::latex(Buffer const & buf, ostream & os,
 }
 
 
-int InsetBranch::linuxdoc(Buffer const &, std::ostream &) const
+int InsetBranch::linuxdoc(Buffer const & buf, std::ostream & os) const
 {
-	return 0;
+	string const branch_sel = buf.params().branchlist().allSelected();
+	if (branch_sel.find(params_.branch, 0) != string::npos)
+		return inset.linuxdoc(buf, os);
+ 	return 0;
 }
 
 
 int InsetBranch::docbook(Buffer const & buf, std::ostream & os, bool mixcont) const
 {
-	// untested - MV
 	string const branch_sel = buf.params().branchlist().allSelected();
 	if (branch_sel.find(params_.branch, 0) != string::npos)
 		return inset.docbook(buf, os, mixcont);
