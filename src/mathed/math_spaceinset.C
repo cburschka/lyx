@@ -12,11 +12,12 @@
 
 #include "math_spaceinset.h"
 #include "math_data.h"
-#include "frontends/Painter.h"
 #include "math_mathmlstream.h"
+
 #include "LaTeXFeatures.h"
 #include "LColor.h"
 
+#include "frontends/Painter.h"
 
 using std::string;
 using std::auto_ptr;

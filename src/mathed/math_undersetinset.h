@@ -34,6 +34,8 @@ public:
 	void write(WriteStream & ws) const;
 	///
 	void normalize(NormalStream & ns) const;
+	///
+	void validate(LaTeXFeatures & features) const;
 };
 
 #endif

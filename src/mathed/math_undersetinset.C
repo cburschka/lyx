@@ -13,7 +13,9 @@
 #include "math_undersetinset.h"
 #include "math_data.h"
 #include "math_mathmlstream.h"
+
 #include "cursor.h"
+#include "LaTeXFeatures.h"
 
 using std::max;
 using std::auto_ptr;
@@ -87,3 +89,10 @@ void MathUndersetInset::normalize(NormalStream & os) const
 {
 	os << "[underset " << cell(0) << ' ' << cell(1) << ']';
 }
+
+
+void MathUndersetInset::validate(LaTeXFeatures & features) const
+{
+	features.require("amsmath");
+}
+

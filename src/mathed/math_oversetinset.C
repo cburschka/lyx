@@ -13,7 +13,9 @@
 #include "math_oversetinset.h"
 #include "math_data.h"
 #include "math_mathmlstream.h"
+
 #include "cursor.h"
+#include "LaTeXFeatures.h"
 
 using std::max;
 using std::auto_ptr;
@@ -75,3 +77,10 @@ void MathOversetInset::normalize(NormalStream & os) const
 {
 	os << "[overset " << cell(0) << ' ' << cell(1) << ']';
 }
+
+
+void MathOversetInset::validate(LaTeXFeatures & features) const
+{
+	features.require("amsmath");
+}
+
