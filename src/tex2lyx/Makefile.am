@@ -50,7 +50,7 @@ tex2lyx_SOURCES = \
 
 tex2lyx_LDADD = \
 	$(top_builddir)/src/support/libsupport.la \
-	$(BOOST_LIBS) -lz
+	$(BOOST_LIBS)
 
 $(BUILT_SOURCES) :
 	@rm -f $@ ; \

@@ -1,3 +1,7 @@
+2005-02-02  Angus Leeming  <leeming@lyx.org>
+
+	* Makefile.am: remove -lz library from the linker call.
+
 2005-02-02  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* text.C (parse_text): Use '\n' and not '\\n' for a newline ;-)
