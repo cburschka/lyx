@@ -32,7 +32,7 @@ namespace Gtk {
 class GFloat : public GnomeCB<ControlFloat> {
 public:
 	///
-	GFloat(ControlFloat & c);
+	GFloat();
 	///
 	~GFloat();
 

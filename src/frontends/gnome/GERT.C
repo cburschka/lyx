@@ -20,8 +20,8 @@
 #include <gtkmm/radiobutton.h>
 #include <gtkmm/button.h>
 
-GERT::GERT(ControlERT & c)
-	: GnomeCB<ControlERT>(c, "GERT")
+GERT::GERT()
+	: GnomeCB<ControlERT>("GERT")
 {}
 
 

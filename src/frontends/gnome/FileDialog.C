@@ -16,11 +16,8 @@
 #include "FileDialog.h"
 #include "debug.h"
 #include "support/lstrings.h"
-#include <gtk--/fileselection.h>
-#include <gnome--/main.h>
+#include <gtkmm/fileselection.h>
 #include <gtk/gtkbutton.h>
-
-#include <sigc++/signal_system.h>
 
 #include "frontends/LyXView.h" // This is only needed while we have the xforms part!
 #include "bufferview_funcs.h"
@@ -49,9 +46,9 @@ private:
 FileDialog::Private::Private(string const & title)
 	: sel_(title), modal_(false)
 {
-	sel_.get_ok_button()->clicked.connect(slot(this,
+	sel_.get_ok_button()->signal_clicked().connect(slot(*this,
 			&FileDialog::Private::ok_clicked));
-	sel_.get_cancel_button()->clicked.connect(slot(this,
+	sel_.get_cancel_button()->signal_clicked().connect(slot(*this,
 			&FileDialog::Private::cancel_clicked));
 }
 
@@ -60,7 +57,8 @@ string const FileDialog::Private::exec()
 	canceled_ = false;
 	sel_.set_modal(modal_);
 	sel_.show();
-	Gnome::Main::run();
+	
+	sel_.run();
 	// Find if its canceled or oked and return as needed.
 
 	if (canceled_)
@@ -73,7 +71,6 @@ void FileDialog::Private::button_clicked(bool canceled)
 {
 	canceled_ = canceled;
 	sel_.hide();
-	Gnome::Main::quit();
 }
 
 // FileDialog
@@ -94,7 +91,7 @@ FileDialog::~FileDialog()
 
 
 FileDialog::Result const
-FileDialog::Select(string const & path, string const & mask,
+FileDialog::open(string const & path, string const & mask,
 		string const & suggested)
 {
 	// For some reason we need to ignore the asynchronous method...
@@ -121,4 +118,16 @@ FileDialog::Select(string const & path, string const & mask,
 
 	// Collect the info and return it for synchronous dialog.
 	return FileDialog::Result(Chosen, filename);
+}
+
+FileDialog::Result const
+FileDialog::opendir(string const & path,
+		string const & suggested)
+{
+        return open(path, "*/", suggested);
+}
+
+FileDialog::Result const FileDialog::save(string const & path, string const & mask, string const & suggested)
+{
+	return open(path, mask, suggested);
 }

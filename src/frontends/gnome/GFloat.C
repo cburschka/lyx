@@ -23,8 +23,8 @@
 #include <gtkmm/radiobutton.h>
 #include <gtkmm/box.h>
 
-GFloat::GFloat(ControlFloat & c)
-	: GnomeCB<ControlFloat>(c, "GFloat")
+GFloat::GFloat()
+	: GnomeCB<ControlFloat>("GFloat")
 {}
 
 

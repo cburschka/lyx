@@ -1,3 +1,33 @@
+2003-02-01  Michael A. Koziarski  <michael@koziarski.org>
+
+	Major changes to make the gnome frontend compile and work again.
+
+	Credit to Martin Craig <martin@menudo.freeserve.co.uk> who
+	actually did the work, I just cleaned his patch up.
+
+	Removed Files:
+	* GUIRuntime.C
+
+	Added Files:
+	* Dialogs2.C
+	* Dialogs_impl.h
+	* lyx_gui.C
+
+	Changed Files:
+	* Dialogs.C
+	* FileDialog.C
+	* GAbout.[Ch]
+	* GERT.[Ch]
+	* GError.[Ch]
+	* GFloat.[Ch]
+	* GLog.[Ch]
+	* GPreamble.[Ch]
+	* GTabularCreate.[Ch]
+	* GUrl.[Ch]
+	* GnomeBase.[Ch]
+	* Makefile.am
+	* Timeout_pimpl.C
+
 2002-12-16  Angus Leeming  <leeming@lyx.org>
 
 	* Makefile.am: remove the if USE_BASIC_IMAGE_LOADER test.

@@ -31,7 +31,7 @@ namespace Gtk {
 class GAbout : public GnomeCB<ControlAboutlyx> {
 public:
 	///
-	GAbout(ControlAboutlyx & c);
+	GAbout();
 	///
 	~GAbout();
 

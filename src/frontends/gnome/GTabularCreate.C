@@ -21,8 +21,8 @@
 #include <gtkmm/spinbutton.h>
 #include <gtkmm/button.h>
 
-GTabularCreate::GTabularCreate(ControlTabularCreate & c)
-	: GnomeCB<ControlTabularCreate>(c, "GTabularCreate")
+GTabularCreate::GTabularCreate()
+	: GnomeCB<ControlTabularCreate>("GTabularCreate")
 {}
 
 
@@ -38,7 +38,7 @@ void GTabularCreate::build()
 	cancel_btn()->signal_clicked().connect(SigC::slot(*this,
 					 &GTabularCreate::CancelClicked));
 	apply_btn()->signal_clicked().connect(SigC::slot(*this,
-				     &GTabularCreate::ApplyClicked));
+				         &GTabularCreate::ApplyClicked));
 
 	// Manage the buttons state
 	bc().setOK(ok_btn());
@@ -52,8 +52,8 @@ void GTabularCreate::build()
 
 void GTabularCreate::apply()
 {
-	unsigned int ysize = (unsigned int)(rows()->get_value_as_int());
-	unsigned int xsize = (unsigned int)(cols()->get_value_as_int());
+	unsigned int xsize = (unsigned int)(rows()->get_value_as_int());
+	unsigned int ysize = (unsigned int)(cols()->get_value_as_int());
 
 	controller().params() = std::make_pair(xsize, ysize);
 }

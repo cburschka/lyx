@@ -17,15 +17,15 @@
 #include "support/lstrings.h"
 #include "Lsstream.h"
 
-
+#include "gnome_helpers.h"
 #include "gnomeBC.h"
 #include "GAbout.h"
 
 #include <gtkmm/button.h>
 #include <gtkmm/textview.h>
 
-GAbout::GAbout(ControlAboutlyx & c)
-	: GnomeCB<ControlAboutlyx>(c, "GAbout")
+GAbout::GAbout()
+	: GnomeCB<ControlAboutlyx>("GAbout")
 {}
 
 
@@ -69,21 +69,26 @@ void GAbout::update()
 	istringstream ss(in.str());
 
 	string s;
-	string out;
-	Gtk::TextIter  e;
+	Glib::RefPtr<Gtk::TextBuffer> buf = credits()->get_buffer();
 
+	addDefaultTags(buf);
 	while (getline(ss, s)) {
 
-		if (prefixIs(s, "@b"))
-			out += s.substr(2);
+		if (prefixIs(s, "@b")) 
+			buf->insert_with_tag(buf->end(), 
+					     Glib::locale_to_utf8(s.substr(2)), 
+					     "bold");
 		else if (prefixIs(s, "@i"))
-			out += s.substr(2);
+			buf->insert_with_tag(buf->end(), 
+					     Glib::locale_to_utf8(s.substr(2)), 
+					     "italic");
 		else
-			out += s.substr(2);
+			buf->insert(buf->end(), 
+				    Glib::locale_to_utf8(s.substr(2)));
+		buf->insert(buf->end(),"\n");
 
-		out += "\n";
 	}
-	credits()->get_buffer()->set_text(out);
+
 }
 
 

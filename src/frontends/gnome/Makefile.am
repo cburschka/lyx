@@ -8,49 +8,112 @@ INCLUDES = $(FRONTEND_INCLUDES) -I$(top_srcdir)/src/ \
 	-I$(top_srcdir)/src/frontends/controllers \
 	$(BOOST_INCLUDES)
 
+# These are the XForms GUI classes we still need because they
+# haven't been implemented in Gnome.
 # alphabetised
 xforms_objects = \
 	../xforms/Alert_pimpl.lo \
 	../xforms/bmtable.lo \
+	../xforms/checkedwidgets.lo \
 	../xforms/combox.lo \
 	../xforms/Color.lo \
 	../xforms/ColorHandler.lo \
 	../xforms/DropDown.lo \
-	../xforms/FeedbackController.lo \
-	../xforms/FileDialog.lo \
+	../xforms/fdesign_base.lo \
 	../xforms/FontInfo.lo \
-	../xforms/FormBaseDeprecated.lo \
-	../xforms/FormFiledialog.lo \
-	../xforms/form_filedialog.lo \
+	../xforms/FormAboutlyx.lo \
+	../xforms/FormBase.lo \
+	../xforms/FormBibitem.lo \
+	../xforms/FormBibtex.lo \
+	../xforms/FormBrowser.lo \
+	../xforms/FormCharacter.lo \
+	../xforms/FormCitation.lo \
+	../xforms/FormDocument.lo \
+	../xforms/FormExternal.lo \
+	../xforms/FormForks.lo \
+	../xforms/FormGraphics.lo \
+	../xforms/FormInclude.lo \
+	../xforms/FormIndex.lo \
 	../xforms/FormMathsBitmap.lo \
-	../xforms/FormMathsDeco.lo \
-	../xforms/form_maths_deco.lo \
 	../xforms/FormMathsDelim.lo \
-	../xforms/form_maths_delim.lo \
 	../xforms/FormMathsMatrix.lo \
-	../xforms/form_maths_matrix.lo \
 	../xforms/FormMathsPanel.lo \
-	../xforms/form_maths_panel.lo \
 	../xforms/FormMathsSpace.lo \
-	../xforms/form_maths_space.lo \
 	../xforms/FormMathsStyle.lo \
-	../xforms/form_maths_style.lo \
-	../xforms/lyxlookup.lo \
-	../xforms/MathsSymbols.lo \
+	../xforms/FormMinipage.lo \
+	../xforms/FormParagraph.lo \
+	../xforms/FormPreferences.lo \
+	../xforms/FormPrint.lo \
+	../xforms/FormRef.lo \
+	../xforms/forms_gettext.lo \
+	../xforms/FormSearch.lo \
+	../xforms/FormSendto.lo \
+	../xforms/FormShowFile.lo \
+	../xforms/FormSpellchecker.lo \
+	../xforms/FormTabular.lo \
+	../xforms/FormTexinfo.lo \
+	../xforms/FormThesaurus.lo \
+	../xforms/FormToc.lo \
+	../xforms/FormVCLog.lo \
+	../xforms/FormWrap.lo \
+	../xforms/input_validators.lo \
+	../xforms/LyXKeySymFactory.lo \
+	../xforms/LyXScreenFactory.lo \
 	../xforms/Menubar_pimpl.lo \
+	../xforms/RadioButtonGroup.lo \
 	../xforms/Toolbar_pimpl.lo \
 	../xforms/Tooltips.lo \
+	../xforms/WorkAreaFactory.lo \
 	../xforms/xfont_loader.lo \
 	../xforms/xfont_metrics.lo \
 	../xforms/xforms_helpers.lo \
 	../xforms/xforms_resize.lo \
 	../xforms/xformsBC.lo \
+	../xforms/xformsImage.lo \
 	../xforms/XFormsView.lo \
+	../xforms/XLyXKeySym.lo \
+	../xforms/XMiniBuffer.lo \
 	../xforms/XPainter.lo \
+	../xforms/xscreen.lo \
 	../xforms/XWorkArea.lo \
-	../xforms/xformsImage.lo
+	../xforms/forms/form_aboutlyx.lo \
+	../xforms/forms/form_bibitem.lo \
+	../xforms/forms/form_bibtex.lo \
+	../xforms/forms/form_browser.lo \
+	../xforms/forms/form_character.lo \
+	../xforms/forms/form_citation.lo \
+	../xforms/forms/form_document.lo \
+	../xforms/forms/form_error.lo \
+	../xforms/forms/form_ert.lo \
+	../xforms/forms/form_external.lo \
+	../xforms/forms/form_filedialog.lo \
+	../xforms/forms/form_float.lo \
+	../xforms/forms/form_forks.lo \
+	../xforms/forms/form_graphics.lo \
+	../xforms/forms/form_include.lo \
+	../xforms/forms/form_index.lo \
+	../xforms/forms/form_maths_delim.lo \
+	../xforms/forms/form_maths_matrix.lo \
+	../xforms/forms/form_maths_panel.lo \
+	../xforms/forms/form_maths_space.lo \
+	../xforms/forms/form_maths_style.lo \
+	../xforms/forms/form_minipage.lo \
+	../xforms/forms/form_paragraph.lo \
+	../xforms/forms/form_preamble.lo \
+	../xforms/forms/form_preferences.lo \
+	../xforms/forms/form_print.lo \
+	../xforms/forms/form_ref.lo \
+	../xforms/forms/form_search.lo \
+	../xforms/forms/form_sendto.lo \
+	../xforms/forms/form_spellchecker.lo \
+	../xforms/forms/form_tabular_create.lo \
+	../xforms/forms/form_tabular.lo \
+	../xforms/forms/form_texinfo.lo \
+	../xforms/forms/form_thesaurus.lo \
+	../xforms/forms/form_toc.lo \
+	../xforms/forms/form_url.lo \
+	../xforms/forms/form_wrap.lo
 
-libgnome.la: xforms.lo $(libgnome_la_OBJECTS) $(libgnome_la_DEPENDENCIES)
 
 xforms.lo: $(xforms_objects)
 	$(CXXLINK) $(xforms_objects)
@@ -61,6 +124,9 @@ xforms.lo: $(xforms_objects)
 
 libgnome_la_SOURCES = \
 	Dialogs.C \
+	Dialogs2.C \
+	Dialogs_impl.h \
+	FileDialog.C \
 	GAbout.C \
 	GAbout.h \
 	GError.C \
@@ -83,7 +149,9 @@ libgnome_la_SOURCES = \
 	GnomeBase.h \
 	gnomeBC.C \
 	gnomeBC.h \
-	GUIRunTime.C \
-	pixbutton.h \
+	lyx_gui.C \
 	Timeout_pimpl.C \
-	Timeout_pimpl.h
+	Timeout_pimpl.h \
+	pixbutton.h 
+
+libgnome.la: xforms.lo $(libgnome_la_OBJECTS) $(libgnome_la_DEPENDENCIES)

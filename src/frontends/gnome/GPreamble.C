@@ -20,8 +20,8 @@
 #include <gtkmm/textview.h>
 #include <gtkmm/button.h>
 
-GPreamble::GPreamble(ControlPreamble & c)
-	: GnomeCB<ControlPreamble>(c, "GPreamble")
+GPreamble::GPreamble()
+	: GnomeCB<ControlPreamble>("GPreamble")
 {}
 
 
@@ -44,9 +44,9 @@ void GPreamble::build()
 
 void GPreamble::apply()
 {
-	controller().params() = preamble()->get_buffer()->get_text(preamble()->get_buffer()->get_start_iter(),
-								   preamble()->get_buffer()->get_end_iter(),
-								   false);
+// 	controller().params() = preamble()->get_buffer()->get_text(preamble()->get_buffer()->get_start_iter(),
+// 								   preamble()->get_buffer()->get_end_iter(),
+// 								   false);
 }
 
 

@@ -22,8 +22,8 @@
 #include <gtkmm/checkbutton.h>
 #include <gtkmm/button.h>
 
-GUrl::GUrl(ControlUrl & c)
-	: GnomeCB<ControlUrl>(c, "GUrl")
+GUrl::GUrl()
+	: GnomeCB<ControlUrl>("GUrl")
 {}
 
 

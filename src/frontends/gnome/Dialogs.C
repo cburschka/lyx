@@ -1,8 +1,10 @@
 /**
  * \file gnome/Dialogs.C
+ * Copyright 1995 Matthias Ettrich
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
+ * \author Allan Rae
  * \author Angus Leeming
  *
  * Full author contact details are available in file CREDITS
@@ -14,49 +16,70 @@
 #pragma implementation
 #endif
 
+#include "Dialogs_impl.h"
 
-#include "Dialogs.h"
-
-#include "GUI.h"
-#include "gnomeBC.h"
-
-#include "frontends/LyXView.h"
-
-#include "GAbout.h"
-#include "GError.h"
-#include "GERT.h"
-#include "GFloat.h"
-#include "GLog.h"
-#include "GPreamble.h"
-#include "GTabularCreate.h"
-#include "GUrl.h"
-
-#include "Tooltips.h"
-
-bool Dialogs::tooltipsEnabled()
+Dialogs::Dialogs(LyXView & lv)
+	: pimpl_(new Impl(lv, *this))
 {
-	return Tooltips::enabled();
-}
-Dialogs::Dialogs(LyXView * lv)
-{
-
-	add(new GUI<ControlError,GErrorDialog,
-	    OkCancelPolicy, gnomeBC>(*lv, *this));
-	add(new GUI<ControlERT, GERT,
-	    NoRepeatedApplyReadOnlyPolicy, gnomeBC>(*lv, *this));
-	add(new GUI<ControlUrl, GUrl,
-	    NoRepeatedApplyReadOnlyPolicy, gnomeBC>(*lv,*this));
-	add(new GUI<ControlPreamble, GPreamble,
-	    NoRepeatedApplyReadOnlyPolicy, gnomeBC>(*lv, *this));
-	add(new GUI<ControlTabularCreate, GTabularCreate,
-	    OkApplyCancelReadOnlyPolicy, gnomeBC>(*lv, *this));
-	add(new GUI<ControlLog, GLog,
-	    OkCancelPolicy, gnomeBC>(*lv, *this));
-	add(new GUI<ControlAboutlyx, GAbout,
-	    OkCancelPolicy, gnomeBC>(*lv, *this));
-	add(new GUI<ControlFloat, GFloat,
-	    NoRepeatedApplyReadOnlyPolicy, gnomeBC>(*lv, *this));
 	// reduce the number of connections needed in
 	// dialogs by a simple connection here.
 	hideAll.connect(hideBufferDependent);
 }
+
+
+Dialogs::~Dialogs()
+{}
+
+
+void Dialogs::toggleTooltips()
+{
+	Tooltips::toggleEnabled();
+}
+
+
+/// Are the tooltips on or off?
+bool Dialogs::tooltipsEnabled()
+{
+	return Tooltips::enabled();
+}
+
+
+Dialogs::Impl::Impl(LyXView & lv, Dialogs & d)
+	: aboutlyx(lv, d),
+	  bibitem(lv, d),
+	  bibtex(lv, d),
+	  character(lv, d),
+	  citation(lv, d),
+	  document(lv, d),
+	  error(lv, d),
+	  ert(lv, d),
+	  external(lv, d),
+	  file(lv, d),
+	  floats(lv, d),
+	  forks(lv, d),
+	  graphics(lv, d),
+	  include(lv, d),
+	  index(lv, d),
+	  logfile(lv, d),
+	  mathpanel(lv, d),
+	  minipage(lv, d),
+	  paragraph(lv, d),
+	  preamble(lv, d),
+	  preferences(lv, d),
+	  print(lv, d),
+	  ref(lv, d),
+	  search(lv, d),
+	  sendto(lv, d),
+	  spellchecker(lv, d),
+	  tabular(lv, d),
+	  tabularcreate(lv, d),
+	  texinfo(lv, d),
+#ifdef HAVE_LIBAIKSAURUS
+	  thesaurus(lv, d),
+#endif
+
+	  toc(lv, d),
+	  url(lv, d),
+	  vclogfile(lv, d),
+	  wrap(lv, d)
+{}

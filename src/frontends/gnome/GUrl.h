@@ -32,7 +32,7 @@ class Entry;
 class GUrl : public GnomeCB<ControlUrl> {
 public:
 	///
-	GUrl(ControlUrl & c);
+	GUrl();
 	///
 	~GUrl();
 

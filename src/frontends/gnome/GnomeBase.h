@@ -24,7 +24,6 @@
 #include "ViewBase.h"
 #include "gnomeBC.h"
 
-
 namespace Gtk {
 	class Dialog;
 };
@@ -33,10 +32,10 @@ namespace Gtk {
  * This is a base class for Gnome dialogs. It handles all the common
  * work that is needed for all dialogs.
  */
-class GnomeBase : public ViewBC<gnomeBC>, public SigC::Object {
+class GnomeBase : public ViewBase, public SigC::Object {
 public:
 	///
-	GnomeBase(ControlButtons & c,  string const & name);
+        GnomeBase(string const & name);
 	///
 	virtual ~GnomeBase();
 
@@ -55,7 +54,9 @@ protected:
 	/// Build the dialog. Also connects signals and prepares it for work.
 	virtual void build() = 0;
 	/// Dialog is valid
-	virtual bool validate();
+	virtual bool isValid();
+	/// dialog is visible
+	virtual bool isVisible() const;
 	/// Default OK behaviour
 	virtual void OKClicked();
 	/// Default Cancel behaviour
@@ -67,6 +68,11 @@ protected:
 	/// Default changed input behaviour
 	virtual void InputChanged();
 
+	///
+	gnomeBC & bc();
+
+	/// are we updating ?
+	bool updating_;
 private:
 	/// Loads the glade file to memory.
 	void loadXML();
@@ -83,6 +89,9 @@ private:
 	 *  of the libglade GladeXML structure.
 	 */
 	Gtk::Dialog * dialog_;
+
+	/// dialog title, displayed by WM.
+	string title_;
 };
 
 
@@ -105,21 +114,21 @@ T* GnomeBase::getWidget(const string & name) const
 template <class Controller>
 class GnomeCB : public GnomeBase {
 public:
-	GnomeCB(Controller & c, string const & name);
+  	GnomeCB(string const & name);
 protected:
 	Controller & controller();
 };
 
 template <class Controller>
-GnomeCB<Controller>::GnomeCB(Controller & c,  string const & name)
-	: GnomeBase(c, name)
+GnomeCB<Controller>::GnomeCB(string const & name)
+	: GnomeBase(name)
 {}
 
 template <class Controller>
 Controller &
 GnomeCB<Controller>::controller()
 {
-	return static_cast<Controller &>(controller_);
+	return static_cast<Controller &>(getController());
 }
 
 #endif

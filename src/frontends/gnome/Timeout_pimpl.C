@@ -15,16 +15,14 @@
 #pragma implementation
 #endif
 
-#include <gtkmm/main.h>
+#include <glibmm/main.h>
 #include "Timeout_pimpl.h"
 #include "debug.h"
 
-
 Timeout::Pimpl::Pimpl(Timeout * owner)
-	: owner_(owner)
+  : owner_(owner)
 {
 }
-
 
 void Timeout::Pimpl::reset()
 {
@@ -43,7 +41,7 @@ void Timeout::Pimpl::start()
 		stop();
 	}
 
-	conn_ = Gtk::Main::signal_timeout().connect(
+	conn_ = Glib::signal_timeout().connect(
 			 SigC::slot(*this, &Timeout::Pimpl::timeoutEvent),
 			 owner_->timeout_ms
 			);

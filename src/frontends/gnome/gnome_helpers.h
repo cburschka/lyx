@@ -22,4 +22,14 @@
 #undef Value
 #undef DestroyNotify
 
+#include <gtkmm/textbuffer.h>
+
+
+/**
+ * This helper function adds default tags to a TextBuffer
+ *
+ * Hopefully gtk will come with its own one day, but until then...
+ */
+void addDefaultTags(Glib::RefPtr<Gtk::TextBuffer> &);
+
 #endif

@@ -21,8 +21,8 @@
 #include <gtkmm/button.h>
 #include <gtkmm/textview.h>
 
-GErrorDialog::GErrorDialog(ControlError & c)
-	: GnomeCB<ControlError>(c, "GError")
+GErrorDialog::GErrorDialog()
+	: GnomeCB<ControlError>("GError")
 {}
 
 

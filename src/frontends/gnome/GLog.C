@@ -22,8 +22,8 @@
 #include <gtkmm/textview.h>
 #include <gtkmm/dialog.h>
 
-GLog::GLog(ControlLog & c)
-	: GnomeCB<ControlLog>(c, "GLog")
+GLog::GLog()
+	: GnomeCB<ControlLog>("GLog")
 {}
 
 
