@@ -988,23 +988,25 @@ void LyXText::setHeightOfRow(BufferView * bview, Row * row) const
 	int labeladdon = 0;
 	int maxwidth = 0;
 
-	// Check if any insets are larger
-	for (pos_type pos = row->pos(); pos < pos_end; ++pos) {
-		if (row->par()->isInset(pos)) {
-			tmpfont = getFont(bview->buffer(), row->par(), pos);
-			tmpinset = row->par()->getInset(pos);
-			if (tmpinset) {
+	if (!row->par()->empty()) {
+		// Check if any insets are larger
+		for (pos_type pos = row->pos(); pos <= pos_end; ++pos) {
+			if (row->par()->isInset(pos)) {
+				tmpfont = getFont(bview->buffer(), row->par(), pos);
+				tmpinset = row->par()->getInset(pos);
+				if (tmpinset) {
 #if 1 // this is needed for deep update on initialitation
-				tmpinset->update(bview, tmpfont);
+					tmpinset->update(bview, tmpfont);
 #endif
-				asc = tmpinset->ascent(bview, tmpfont);
-				desc = tmpinset->descent(bview, tmpfont);
-				maxwidth += tmpinset->width(bview, tmpfont);
-				maxasc = max(maxasc, asc);
-				maxdesc = max(maxdesc, desc);
+					asc = tmpinset->ascent(bview, tmpfont);
+					desc = tmpinset->descent(bview, tmpfont);
+					maxwidth += tmpinset->width(bview, tmpfont);
+					maxasc = max(maxasc, asc);
+					maxdesc = max(maxdesc, desc);
+				}
+			} else {
+				maxwidth += singleWidth(bview, row->par(), pos);
 			}
-		} else {
-			maxwidth += singleWidth(bview, row->par(), pos);
 		}
 	}
 

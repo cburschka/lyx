@@ -252,19 +252,20 @@ void Paragraph::Pimpl::rejectChange(pos_type start, pos_type end)
 
 Paragraph::value_type Paragraph::Pimpl::getChar(pos_type pos) const
 {
-	// This is stronger, and I belive that this is the assertion
-	// that we should really use. (Lgb)
-	//lyx::Assert(pos < size());
-
-#warning I believe pos() == size() is valid if the cursor is at the last position of the par. (Andre)
 	lyx::Assert(pos <= size());
 
-#if 0
+	// This is stronger, and I belive that this is the assertion
+	// that we should really use. (Lgb)
+	// Rationale - getChar() is really text[]. getInset(getChar(size()))
+	// makes no sense (crashes). The fact we return '\0' should be
+	// evidence enough - jbl
+	//lyx::Assert(pos < size());
+
+#if 1
 	// This is in the critical path for loading!
 	pos_type const siz = size();
 
-	// Then this has no meaning. (Lgb)
-	if (!siz || pos == siz) {
+	if (pos == siz) {
 		lyxerr << "getChar() on pos " << pos << " in par id "
 			<< owner_->id() << " of size " << siz
 			<< "  is a bit silly !" << endl;

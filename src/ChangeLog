@@ -1,3 +1,9 @@
+2003-03-13  John Levon  <levon@movementarian.org>
+
+	* paragraph_pimpl.C: fix Andre's backing out of the strong assertion
+
+	* text.C: fix a getChar(pos) bug properly
+
 2003-03-13  Angus Leeming  <leeming@lyx.org>
 
 	* commandtags.h:
