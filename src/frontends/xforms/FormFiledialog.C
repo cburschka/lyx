@@ -180,6 +180,8 @@ public:
 // static members
 FD_filedialog * FileDialog::Private::file_dlg_form_ = 0;
 FileDialog::Private * FileDialog::Private::current_dlg_ = 0;
+int FileDialog::Private::minw_ = 0;
+int FileDialog::Private::minh_ = 0;
 
 
 // Reread: updates dialog list to match class directory
@@ -389,6 +391,8 @@ FileDialog::Private::Private(Dialogs & dia)
 	// Creates form if necessary.
 	if (!file_dlg_form_) {
 		file_dlg_form_ = build_filedialog(this);
+		minw_ = file_dlg_form_->form->w;
+		minh_ = file_dlg_form_->form->h;
 		// Set callbacks. This means that we don't need a patch file
 		fl_set_object_callback(file_dlg_form_->DirBox,
 				       C_LyXFileDlg_FileDlgCB, 0);
@@ -737,6 +741,12 @@ string const FileDialog::Private::Select(string const & title,
 	fl_set_button(file_dlg_form_->Ready, 0);
 	fl_set_focus_object(file_dlg_form_->form, file_dlg_form_->Filename);
 	fl_deactivate_all_forms();
+	// Prevent xforms crashing if the dialog gets too small by preventing
+	// it from being shrunk beyond a minimum size.
+	// calls to fl_set_form_minsize/maxsize apply only to the next
+	// fl_show_form(), so this comes first.
+	fl_set_form_minsize(file_dlg_form_->form, minw_, minh_);
+
 	fl_show_form(file_dlg_form_->form,
 		     FL_PLACE_MOUSE | FL_FREE_SIZE, 0,
 		     title.c_str());

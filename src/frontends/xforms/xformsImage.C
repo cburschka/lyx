@@ -442,7 +442,10 @@ void init_graphics()
 	flimage_enable_tiff();
 	flimage_enable_xbm();
 	flimage_enable_xwd();
-	flimage_enable_xpm();
+	// xforms can load most XPM files, but will occasionally crash
+	// with some files created by ImakeMagick's convert program.
+	// Turn off xpm support for the time being.
+	// flimage_enable_xpm();
 
 	// xforms stores this permanently (does not make a copy) so
 	// this should never be destroyed.

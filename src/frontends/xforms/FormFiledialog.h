@@ -82,6 +82,10 @@ private:
 	///
 	static FileDialog::Private * current_dlg_;
 	///
+	static int minw_;
+	///
+	static int minh_;
+	///
 	string user_path1_;
 	///
 	string user_path2_;

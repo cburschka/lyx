@@ -441,6 +441,8 @@ cat >$outfile <<EOF
 \\Format fig	  fig	XFig		""
 \\Format agr      agr	GRACE		""
 \\Format html	  html	HTML		H
+\\Format gif	  gif	GIF		""
+\\Format jpg	  jpg	JPG		""
 \\Format latex	  tex	LaTeX		L
 \\Format linuxdoc sgml	LinuxDoc	x
 \\Format lyx      lyx	LyX		""
@@ -450,11 +452,14 @@ cat >$outfile <<EOF
 \\Format pdf3	  pdf  "PDF (dvipdfm)"	m
 \\Format png	  png	PNG		""
 \\Format ppm	  ppm	PPM		""
+\\Format pgm	  pgm	PGM		""
+\\Format pbm	  pbm	PBM		""
 \\Format ps	  ps	Postscript	t
 \\Format program  ""	Program		""
 \\Format tgif     obj	TGIF		""
 \\Format tiff     tif	TIFF		""
 \\Format word	  doc	Word		W
+\\Format xbm	  xbm	XBM		""
 \\Format xpm	  xpm	XPM		""
 \\Format lyxpreview	lyxpreview	"LyX Preview"		""
 

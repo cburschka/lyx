@@ -1,3 +1,13 @@
+2003-01-12  Angus Leeming  <leeming@lyx.org>
+
+	* FormFiledialog.[Ch]: initialise and use new static member variables
+	minw_ and minh_ to prevent the dialog from being shrunk in size.
+	Shrink too much and xforms crashes :-(
+
+2003-01-11  Angus Leeming  <leeming@lyx.org>
+
+	* xformsImage.C (init_graphics): turn off support for XPM files.
+
 2002-01-07  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* FormTabular.C: typo.

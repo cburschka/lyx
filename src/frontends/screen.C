@@ -86,7 +86,7 @@ SplashScreen::SplashScreen()
 	if (!lyxrc.show_banner)
 		return;
 
-	string const file = LibFileSearch("images", "banner", "xpm");
+	string const file = LibFileSearch("images", "banner", "ppm");
 	if (file.empty())
 		return;
 
