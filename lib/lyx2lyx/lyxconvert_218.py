@@ -477,6 +477,16 @@ def change_listof(lines):
         lines[i] = "\\begin_inset FloatList "+type
         i = i+1
 
+def change_infoinset(lines):
+    i = 0
+    while 1:
+        i = find_token(lines, "\\begin_inset Info", i)
+        if i == -1:
+            break
+        lines[i:i+1] = ["\\begin_inset Note", "collapsed true", "",
+                        "\layout Standard", ""]
+        i = i+5
+
 def change_preamble(lines):
     i = find_token(lines, "\\use_amsmath", 0)
     if i == -1:
@@ -499,6 +509,7 @@ def convert(header, body):
     remove_oldertinset(body)
     remove_oldert(body)
     combine_ert(body)
+    change_infoinset(body)
 
 if __name__ == "__main__":
     pass
