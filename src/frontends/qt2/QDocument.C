@@ -353,7 +353,8 @@ bool QDocument::class_apply()
 			setMinibuffer(lv_, _("Converting document to new document class..."));
 			CutAndPaste cap;
 			int ret = cap.SwitchLayoutsBetweenClasses(params.textclass, new_class,
-								  lv_->buffer()->paragraph);		
+								  lv_->buffer()->paragraph,
+								  lv_->buffer()->params);
 			if (ret) {
 				string s;
 				if (ret==1) {

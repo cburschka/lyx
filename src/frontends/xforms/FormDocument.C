@@ -745,7 +745,8 @@ bool FormDocument::class_apply()
 			setMinibuffer(lv_, _("Converting document to new document class..."));
 			int ret = CutAndPaste::SwitchLayoutsBetweenClasses(
 				old_class, params.textclass,
-				lv_->buffer()->paragraph);
+				lv_->buffer()->paragraph,
+				lv_->buffer()->params);
 			if (ret) {
 				string s;
 				if (ret==1) {

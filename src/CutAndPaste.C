@@ -288,7 +288,8 @@ bool CutAndPaste::pasteSelection(Paragraph ** par, Paragraph ** endpar,
 		}
 		
 		// make sure there is no class difference
-		SwitchLayoutsBetweenClasses(textclass, tc, buf);
+		SwitchLayoutsBetweenClasses(textclass, tc, buf,
+					    current_view->buffer()->params);
 		
 		// make the buf exactly the same layout than
 		// the cursor paragraph
@@ -362,7 +363,9 @@ int CutAndPaste::nrOfParagraphs()
 
 
 int CutAndPaste::SwitchLayoutsBetweenClasses(textclass_type c1,
-					     textclass_type c2, Paragraph * par)
+					     textclass_type c2,
+					     Paragraph * par,
+					     BufferParams const & bparams)
 {
 	int ret = 0;
 	if (!par || c1 == c2)
@@ -392,7 +395,9 @@ int CutAndPaste::SwitchLayoutsBetweenClasses(textclass_type c1,
 				+ textclasslist.NameOfClass(c1) + _(" to ")
 				+ textclasslist.NameOfClass(c2);
 			InsetError * new_inset = new InsetError(s);
-			par->insertInset(0, new_inset);
+			par->insertInset(0, new_inset,
+					 LyXFont(LyXFont::ALL_INHERIT,
+						 bparams.language));
 		}
 	}
 	return ret;

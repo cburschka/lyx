@@ -45,7 +45,8 @@ public:
 	static
 	int SwitchLayoutsBetweenClasses(lyx::textclass_type class1,
 	                                lyx::textclass_type class2,
-	                                Paragraph * par);
+	                                Paragraph * par,
+					BufferParams const & bparams);
 	///
 	static
 	bool checkPastePossible(Paragraph *);
