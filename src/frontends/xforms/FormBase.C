@@ -25,7 +25,6 @@ extern "C" {
 	// Callback function invoked by xforms when the dialog is closed by the
 	// window manager
 	static int C_FormBaseWMHideCB(FL_FORM * form, void *);
-
 }
 
 
@@ -47,34 +46,34 @@ void FormBase::show()
 	if (!form()) {
 		build();
 	}
-	
+
 	// use minw_ to flag whether the dialog has ever been shown
 	// (Needed now that build() is/should be called from the controller)
 	if (minw_ == 0) {
 		bc().refresh();
- 
+
 		// work around dumb xforms sizing bug
 		minw_ = form()->w;
 		minh_ = form()->h;
 
 		fl_set_form_atclose(form(), C_FormBaseWMHideCB, 0);
 	}
-	
+
 	fl_freeze_form(form());
 	update();  // make sure its up-to-date
 	fl_unfreeze_form(form());
 
 	if (form()->visible) {
 		fl_raise_form(form());
- 		/* This XMapWindow() will hopefully ensure that
- 		 * iconified dialogs are de-iconified. Mad props
- 		 * out to those crazy Xlib guys for forgetting a
- 		 * XDeiconifyWindow(). At least WindowMaker, when
- 		 * being notified of the redirected MapRequest will
- 		 * specifically de-iconify. From source, fvwm2 seems
- 		 * to do the same.
- 		 */
- 		XMapWindow(fl_get_display(), form()->window);
+		/* This XMapWindow() will hopefully ensure that
+		 * iconified dialogs are de-iconified. Mad props
+		 * out to those crazy Xlib guys for forgetting a
+		 * XDeiconifyWindow(). At least WindowMaker, when
+		 * being notified of the redirected MapRequest will
+		 * specifically de-iconify. From source, fvwm2 seems
+		 * to do the same.
+		 */
+		XMapWindow(fl_get_display(), form()->window);
 	} else {
 		// calls to fl_set_form_minsize/maxsize apply only to the next
 		// fl_show_form(), so this comes first.
@@ -128,7 +127,7 @@ FormBase * GetForm(FL_OBJECT * ob)
 
 
 extern "C" {
-	
+
 	static
 	int C_FormBaseWMHideCB(FL_FORM * form, void *)
 	{
