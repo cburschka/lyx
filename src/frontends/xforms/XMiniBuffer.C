@@ -103,6 +103,9 @@ int XMiniBuffer::peek_event(FL_OBJECT * ob, int event,
 
 		switch (key) {
 		case XK_Down:
+#ifdef XK_KP_Down
+		case XK_KP_Down:
+#endif
 			if (hist_iter != history_->end()) {
 				++hist_iter;
 			}
@@ -114,6 +117,9 @@ int XMiniBuffer::peek_event(FL_OBJECT * ob, int event,
 			}
 			return 1;
 		case XK_Up:
+#ifdef XK_KP_Up
+		case XK_KP_Up:
+#endif
 			if (hist_iter == history_->begin()) {
 				// no further history
 				show_information(_("[Beginning of history]"),
@@ -188,6 +194,9 @@ int XMiniBuffer::peek_event(FL_OBJECT * ob, int event,
 			return 1;
 		case 13:
 		case XK_Return:
+#ifdef XK_KP_Enter
+		case XK_KP_Enter:
+#endif
 		{
 #if 0
 			// This will go in again in a little while
