@@ -1,3 +1,12 @@
+2002-01-13  Allan Rae  <rae@lyx.org>
+
+	* BufferView2.C (removeAutoInsets): finished off earlier fix.
+	Now seems indestructible.  Remaining task is to audit all other
+	code affected by deleteEmptyParagraphMechanism.  One small quirk
+	left is that an empty document with an error in the preamble can
+	be made to report an error but no error box appears.  I don't know
+	where it goes.
+
 2002-01-13  John Levon  <moz@compsoc.man.ac.uk>
 
 	* Thesaurus.h:
