@@ -83,7 +83,7 @@ string SpaceLess(string const & file)
 	
 	string::size_type pos = 0;
 	while ((pos = name.find_first_not_of(keep, pos)) != string::npos) {
-		name[pos] = '_';
+		name[pos++] = '_';
 	}
 	return AddName(path, name);
 }
