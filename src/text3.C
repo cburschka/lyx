@@ -736,7 +736,7 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 			// just comment out the line below...
 		} else {
 			update();
-			cutSelection(bv, true);
+			cutSelection(true, false);
 			update();
 		}
 		moveCursorUpdate(bv, false);
@@ -777,7 +777,7 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 			}
 		} else {
 			update();
-			cutSelection(bv, true);
+			cutSelection(true, false);
 		}
 		update();
 		break;
@@ -794,7 +794,7 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 			}
 		} else {
 			update();
-			cutSelection(bv, true);
+			cutSelection(true, false);
 			update();
 		}
 		bv->owner()->view_state_changed();
@@ -823,7 +823,7 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 			}
 		} else {
 			update();
-			cutSelection(bv, true);
+			cutSelection(true, false);
 		}
 		update();
 		break;
@@ -1034,7 +1034,7 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 
 	case LFUN_CUT:
 		update();
-		cutSelection(bv, true);
+		cutSelection(true, true);
 		update();
 		cmd.message(_("Cut"));
 		break;

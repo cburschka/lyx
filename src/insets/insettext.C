@@ -1208,7 +1208,7 @@ Inset::RESULT InsetText::localDispatch(FuncRequest const & cmd)
 	}
 
 	case LFUN_CUT: {
-		lt->cutSelection(bv);
+		lt->cutSelection(true, true);
 		updwhat = CURSOR_PAR;
 		updflag = true;
 		break;

@@ -1,3 +1,14 @@
+2003-06-16  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* iterators.C (operator++, ParPosition): reintroduce some
+	const_cast for the benefit of older compilers.
+
+2003-06-13  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* text3.C (dispatch): do not modify clipboard when doing
+	LFUN_BACKSPACE, LFUN_BACKSPACE_SKIP, LFUN_DELETE or
+	LFUN_DELETE_SKIP on a selection selection
+
 2003-06-16  André Pönitz  <poenitz@gmx.net>
 
 	* BufferView.C:
@@ -2997,24 +3008,26 @@
 	* lyxtext.h:
 	* text.C: implement accept/rejectChange()
 
-	* lyxtext.h:
-	* text.C: paint changebars. Paint new/deleted text in the chosen colours.
-	  Strike through deleted text.
+	* lyxtext.h: 
+	* text.C: paint changebars. Paint new/deleted text in the chosen
+	colours. Strike through deleted text.
 
 	* paragraph.h:
 	* paragraph.C:
 	* paragraph_pimpl.h:
-	* paragraph_pimpl.C: output change markers in .lyx and .tex. Pass in the current change
-	  to the insert functions. Rework erase to mark text as deleted, adding
-	  an eraseIntern() and a range-based erase(). Implement
-	  per-paragraph change lookup and accept/reject.
+	* paragraph_pimpl.C: output change markers in .lyx and .tex. Pass
+	  in the current change to the insert functions. Rework erase to
+	  mark text as deleted, adding an eraseIntern() and a range-based
+	  erase(). Implement per-paragraph change lookup and
+	  accept/reject.
 
 	* paragraph_funcs.C: Fixup paste for change tracking.
 
 	* tabular.C: mark added row/columns as new.
 
-	* text.C: fix rowLast() to never return -1. Don't allow spellchecking of deleted
-	  text. Track transpose changes. Don't allow paragraph break or merge where appropriate.
+	* text.C: fix rowLast() to never return -1. Don't allow
+	  spellchecking of deleted text. Track transpose changes. Don't
+	  allow paragraph break or merge where appropriate.
 
 	* text2.C: leave cursor at end of selection after a cut.
 

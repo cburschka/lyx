@@ -1,3 +1,6 @@
+2003-06-13  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* insettext.C (localDispatch): fix call to cutSelection for LFUN_CUT
 
 2003-06-16  André Pönitz  <poenitz@gmx.net>
 
