@@ -96,11 +96,9 @@ int LyXReplace(BufferView * bv,
 			found = LyXFind(bv, searchstr, fw, casesens, matchwrd);
 	} while (!once && replaceall && found);
 
-	if (bv->focus())
-		bv->showCursor();
-
 	return replace_count;
 }
+ 
 
 bool LyXFind(BufferView * bv,
 	     string const & searchstr, bool forward,
@@ -157,11 +155,10 @@ bool LyXFind(BufferView * bv,
 		bv->update(text, BufferView::SELECT|BufferView::FITCUR);
 		found = false;
 	}
-	if (result != SR_FOUND_NOUPDATE && bv->focus())
-		bv->showCursor();
 
 	return found;
 }
+ 
 
 SearchResult LyXFind(BufferView * bv, LyXText * text,
 		     string const & searchstr, bool forward,

@@ -336,22 +336,6 @@ void XWorkArea::createPixmap(int width, int height)
 }
 
 
-void XWorkArea::greyOut() const
-{
-	if (!splash_) {
-		fl_winset(FL_ObjWin(work_area));
-		fl_rectangle(1, work_area->x, work_area->y,
-			     work_area->w, work_area->h, FL_GRAY63);
-	}
-}
-
-
-void XWorkArea::setFocus() const
-{
-	fl_set_focus_object(work_area->form, work_area);
-}
-
-
 void XWorkArea::setScrollbarParams(int height, int pos, int line_height)
 {
 	// we need to cache this for scroll_cb

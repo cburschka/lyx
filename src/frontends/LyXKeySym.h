@@ -10,10 +10,6 @@
 #ifndef LYXKEYSYM_H
 #define LYXKEYSYM_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "LString.h"
 #include <boost/shared_ptr.hpp>
 

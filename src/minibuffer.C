@@ -209,7 +209,8 @@ int MiniBuffer::peek_event(FL_OBJECT * ob, int event, int key)
 		case 27:
 		case XK_Escape:
 			// Abort
-			owner_->view()->focus(true);
+			// FIXME: really needed ? when ? 
+			//owner_->view()->focus(true);
 			init();
 			deactivate();
 			//escape.emit();
@@ -235,7 +236,8 @@ int MiniBuffer::peek_event(FL_OBJECT * ob, int event, int key)
 #endif
 				// Return the inputted string
 				deactivate();
-				owner_->view()->focus(true);
+				// FIXME: really needed ? when ? 
+				//owner_->view()->focus(true);
 				if (!input.empty()) {
 					history_->push_back(input);
 				}

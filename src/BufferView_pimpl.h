@@ -114,10 +114,6 @@ struct BufferView::Pimpl : public boost::signals::trackable {
 	///
 	void insetUnlock();
 	///
-	bool focus() const;
-	///
-	void focus(bool);
-	///
 	void showCursor();
 	///
 	void hideCursor();

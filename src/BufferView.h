@@ -181,10 +181,6 @@ public:
 	///
 	void center();
 
-	///
-	bool focus() const;
-	///
-	void focus(bool);
 	/// Scroll the view by a number of pixels
 	void scrollDocView(int);
 

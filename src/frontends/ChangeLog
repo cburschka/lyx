@@ -1,3 +1,12 @@
+2002-06-20  John Levon  <moz@compsoc.man.ac.uk>
+
+	* LyXKeySym.h:
+	* LyXKeySym.C: remove un-needed file
+ 
+	* WorkArea.h:
+	* WorkArea.C: remove un-needed file. Add back
+	  comments. Remove focus management, greyOut()
+ 
 2002-06-19  John Levon  <moz@compsoc.man.ac.uk>
 
 	* WorkArea.h: remove focus/unfocus events

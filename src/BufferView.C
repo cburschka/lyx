@@ -185,18 +185,6 @@ void BufferView::insetUnlock()
 }
 
 
-bool BufferView::focus() const
-{
-	return pimpl_->focus();
-}
-
-
-void BufferView::focus(bool f)
-{
-	pimpl_->focus(f);
-}
-
-
 int BufferView::workWidth() const
 {
 	return pimpl_->workarea().workWidth();

@@ -1,3 +1,14 @@
+2002-06-20  John Levon  <moz@compsoc.man.ac.uk>
+
+	* BufferView.h:
+	* BufferView.C:
+	* BufferView_pimpl.h:
+	* BufferView_pimpl.C:
+	* lyxfind.h:
+	* lyxfind.C: 
+	* minibuffer.C: remove focus management of workarea,
+	  not needed. Use screen's greyOut()
+ 
 2002-06-17  Herbert Voss  <voss@lyx.org>
  
  	* converter.C: (convert) do not post a message, when converting

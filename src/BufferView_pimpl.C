@@ -154,7 +154,6 @@ BufferView::Pimpl::Pimpl(BufferView * b, LyXView * o,
 
 	cursor_timeout.timeout.connect(boost::bind(&BufferView::Pimpl::cursorToggle, this));
 	cursor_timeout.start();
-	workarea().setFocus();
 	saved_positions.resize(saved_positions_num);
 }
 
@@ -957,8 +956,7 @@ void BufferView::Pimpl::workAreaExpose()
 			screen().redraw(bv_->text, bv_);
 		}
 	} else {
-		// Grey box when we don't have a buffer
-		workarea().greyOut();
+		screen().redraw(bv_->text, bv_);
 	}
 
 	// always make sure that the scrollbar is sane.
@@ -1290,18 +1288,6 @@ void BufferView::Pimpl::insetUnlock()
 		bv_->theLockingInset(0);
 		finishUndo();
 	}
-}
-
-
-bool BufferView::Pimpl::focus() const
-{
-	return workarea().hasFocus();
-}
-
-
-void BufferView::Pimpl::focus(bool f)
-{
-	if (f) workarea().setFocus();
 }
 
 

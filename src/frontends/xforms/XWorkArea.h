@@ -41,13 +41,7 @@ public:
 		fl_redraw_object(scrollbar);
 	}
 	///
-	virtual void setFocus() const;
-	///
 	Window getWin() const { return work_area->form->window; }
-	///
-	virtual bool hasFocus() const { return work_area->focus; }
-	///
-	virtual void greyOut() const;
         ///
 	virtual void setScrollbarParams(int height, int pos, int line_height);
 	///
