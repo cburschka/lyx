@@ -12,7 +12,7 @@
 #ifndef LIMITED_STACK_H
 #define LIMITED_STACK_H
 
-#include <list>
+#include <deque>
 
 /**
  * limited_stack - a stack of limited size
@@ -23,7 +23,7 @@
 template <typename T>
 class limited_stack {
 public:
-	typedef std::list<T> container_type;
+	typedef std::deque<T> container_type;
 	typedef typename container_type::value_type value_type;
 	typedef typename container_type::size_type size_type;
 
@@ -63,6 +63,15 @@ public:
 		}
 	}
 
+	/// direct read access to intermediate elements
+	T const & operator[](size_type pos) const {
+		return c_[pos];
+	}
+
+	/// read access to used size
+	size_type size() const {
+		return c_.size();
+	}
 private:
 	/// internal contents
 	container_type c_;

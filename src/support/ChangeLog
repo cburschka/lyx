@@ -1,3 +1,9 @@
+
+2003-02-21  André Pönitz <poenitz@gmx.net>
+
+	* limited_stack.h: change underlying container to deque to
+	  make this re-usable in mathed
+
 2003-04-08  John Levon  <levon@movementarian.org>
 
 	* filetools.C: fix MakeDisplayPath() to not
