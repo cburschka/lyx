@@ -17,6 +17,7 @@
 #include "math_scriptinset.h"
 #include "math_stringinset.h"
 #include "math_symbolinset.h"
+#include "Lsstream.h"
 #include "debug.h"
 
 
@@ -34,6 +35,26 @@ typedef bool TestItemFunc(MathInset *);
 // define a function for replacing subexpressions
 typedef MathInset * ReplaceArgumentFunc(const MathArray & ar);
 
+
+
+// try to extract a super/subscript 
+// modify iterator position to point behind the thing
+bool extractScript(MathArray & ar,
+	MathArray::iterator & pos, MathArray::iterator last)
+{
+	// nothing to get here
+	if (pos == last)
+		return false;
+
+	// is this a scriptinset?
+	if (!(*pos)->asScriptInset())
+		return false;
+
+	// it is a scriptinset, use it.
+	ar.push_back(*pos);
+	++pos;
+	return true;
+}
 
 
 // try to extract an "argument" to some function.
@@ -61,13 +82,9 @@ MathArray::iterator extractArgument(MathArray & ar,
 
 	// if the next item is a subscript, it most certainly belongs to the
 	// thing we have
-	if ((*pos)->asScriptInset()) {
-		ar.push_back(*pos);
-		// go ahead if possible
-		++pos;
-		if (pos == last)
-			return pos;
-	}
+	extractScript(ar, pos, last);
+	if (pos == last)
+		return pos;
 
 	// but it might be more than that.
 	// FIXME: not implemented
@@ -96,39 +113,38 @@ MathScriptInset const * asScript(MathArray::const_iterator it)
 
 // returns sequence of char with same code starting at it up to end
 // it might be less, though...
-string charSequence(MathArray::const_iterator it, MathArray::const_iterator end)
+MathArray::const_iterator charSequence(MathArray::const_iterator it,
+	MathArray::const_iterator end, string & s, MathTextCodes & c)
 {
-	string s;
-	MathCharInset const * p = it->nucleus()->asCharInset();
-	if (p) {
-		for (MathTextCodes c = p->code(); it != end; ++it) {
-			p = it->nucleus()->asCharInset();
-			if (!p || p->code() != c)
-				break;
-			s += p->getChar();
-		}
+	MathCharInset const * p = (*it)->asCharInset();
+	c = p->code();
+	for (; it != end; ++it) {
+		p = (*it)->asCharInset();
+		if (!p || p->code() != c)
+			break;
+		s += p->getChar();
 	}
-	return s;
+	return it;
 }
 
 
-void extractStrings(MathArray & dat)
+void extractStrings(MathArray & ar)
 {
 	//lyxerr << "\nStrings from: " << ar << "\n";
-	MathArray ar;
-	MathArray::const_iterator it = dat.begin();
-	while (it != dat.end()) {
-		if (it->nucleus() && it->nucleus()->asCharInset()) {
-			string s = charSequence(it, dat.end());
-			MathTextCodes c = it->nucleus()->asCharInset()->code();
-			ar.push_back(MathAtom(new MathStringInset(s, c)));
-			it += s.size();
-		} else {
-			ar.push_back(*it);
-			++it;
-		}
+	for (MathArray::size_type i = 0; i < ar.size(); ++i) {
+		MathArray::iterator it = ar.begin() + i;
+		if (!(*it)->asCharInset())
+			continue;
+
+		// create proper string inset
+		MathStringInset * p = new MathStringInset;
+		MathArray::const_iterator
+			jt = charSequence(it, ar.end(), p->str_, p->code_);
+
+		// clean up
+		(*it).reset(p);
+		ar.erase(i + 1, jt - ar.begin());
 	}
-	ar.swap(dat);
 	//lyxerr << "\nStrings to: " << ar << "\n";
 }
 
@@ -156,19 +172,38 @@ void extractMatrices(MathArray & ar)
 
 
 // convert this inset somehow to a string
-string extractString(MathInset * p)
+bool extractString(MathInset * p, string & str)
 {
-	if (p && p->getChar())
-		return string(1, p->getChar());
-	if (p && p->asStringInset())
-		return p->asStringInset()->str();
-	return string();
+	if (!p)
+		return false;
+	if (p->getChar()) {
+		str = string(1, p->getChar());
+		return true;
+	}
+	if (p->asStringInset()) {
+		str = p->asStringInset()->str();
+		return true;
+	}
+	return false;
 }
 
 
-bool stringTest(MathInset * p, const string & str)
+// convert this inset somehow to a number
+bool extractNumber(MathArray const & ar, int & i)
 {
-	return extractString(p) == str;
+	string s;
+	MathTextCodes c;
+	charSequence(ar.begin(), ar.end(), s, c);
+	std::istringstream is(s);
+	is >> i;
+	return is;
+}
+
+
+bool testString(MathInset * p, const string & str)
+{
+	string s;
+	return extractString(p, s) && str == s;
 }
 
 
@@ -223,23 +258,59 @@ void replaceNested(
 } 
 
 
+
+//
+// split scripts into seperate super- and subscript insets. sub goes in
+// front of super... 
+//
+
+void splitScripts(MathArray & ar)
+{
+	lyxerr << "\nScripts from: " << ar << "\n";
+	for (MathArray::size_type i = 0; i < ar.size(); ++i) {
+		MathArray::iterator it = ar.begin() + i;
+
+		// is this script inset?
+		MathScriptInset * p = (*it)->asScriptInset();
+		if (!p)
+			continue;
+
+		// no problem if we don't have both...
+		if (!p->hasUp() || !p->hasDown())
+			continue;
+
+		// create extra script inset and move superscript over
+		MathScriptInset * q = new MathScriptInset;
+		q->ensure(true); 
+		q->up().data_.swap(p->up().data_);
+		p->removeScript(true);
+
+		// insert new inset behind
+		++i;
+		ar.insert(i, MathAtom(q)); 
+	}
+	lyxerr << "\nScripts to: " << ar << "\n";
+}
+
+
+
 //
 // search deliminiters
 //
 
-bool openParanTest(MathInset * p)
+bool testOpenParan(MathInset * p)
 {
-	return stringTest(p, "(");
+	return testString(p, "(");
 }
 
 
-bool closeParanTest(MathInset * p)
+bool testCloseParan(MathInset * p)
 {
-	return stringTest(p, ")");
+	return testString(p, ")");
 }
 
 
-MathInset * delimReplacement(const MathArray & ar)
+MathInset * replaceDelims(const MathArray & ar)
 {
 	MathDelimInset * del = new MathDelimInset("(", ")");
 	del->cell(0) = ar;
@@ -251,7 +322,7 @@ MathInset * delimReplacement(const MathArray & ar)
 void extractDelims(MathArray & ar)
 {
 	lyxerr << "\nDelims from: " << ar << "\n";
-	replaceNested(ar, openParanTest, closeParanTest, delimReplacement);
+	replaceNested(ar, testOpenParan, testCloseParan, replaceDelims);
 	lyxerr << "\nDelims to: " << ar << "\n";
 }
 
@@ -273,35 +344,33 @@ void extractFunctions(MathArray & ar)
 	lyxerr << "\nFunctions from: " << ar << "\n";
 	for (MathArray::size_type i = 0; i + 1 < ar.size(); ++i) {
 		MathArray::iterator it = ar.begin() + i;
-
-		// is this a well known function name?
-		MathFuncInset * func = (*it)->asFuncInset();
-		string name;
-		if (func) 
-			name = func->name();
-		else {
-			// is this a user defined function?
-			// guess so, if this is a "string" and it is followed by
-			// a DelimInset
-			//name = extractString((*it)->nucleus());
-			//if (name.size() && it + 1
-			//if ((*it
-			// FIXME
-			continue;
-		}	
-
-		// do we have an exponent?
-		// simply skippping the postion does the right thing:
-		// 'sin' '^2' 'x' -> 'sin(x)' '^2'
 		MathArray::iterator jt = it + 1;
-		if (MathScriptInset * script = (*jt)->asScriptInset()) {
-			// allow superscripts only
-			if (script->hasDown())
+
+		string name;
+		// is it a function?
+		if ((*it)->asFuncInset()) { 
+			// it certainly is if it is well known...
+			name = (*it)->asFuncInset()->name();
+	 	} else {
+			// is this a user defined function?
+			// it it probably not, if it doesn't have a name.
+			if (!extractString((*it).nucleus(), name))
 				continue;
-			++jt;
+			// it is not if it has no argument
 			if (jt == ar.end())
 				continue;
+			// guess so, if this is followed by
+			// a DelimInset with a single item in the cell
+			MathDelimInset * del = (*jt)->asDelimInset();
+			if (!del || del->cell(0).size() != 1)
+				continue;
+			// fall trough into main branch
 		}
+
+		// do we have an exponent like in
+		// 'sin' '^2' 'x' -> 'sin(x)' '^2'
+		MathArray exp;
+		extractScript(exp, jt, ar.end());
 	
 		// create a proper inset as replacement
 		MathExFuncInset * p = new MathExFuncInset(name);
@@ -313,7 +382,10 @@ void extractFunctions(MathArray & ar)
 		(*it).reset(p);
 		
 		// remove the source of the argument from the array
-		ar.erase(jt, st);
+		ar.erase(it + 1, st);
+
+		// re-insert exponent
+		ar.insert(i + 1, exp);
 		lyxerr << "\nFunctions to: " << ar << "\n";
 	}
 } 
@@ -323,21 +395,21 @@ void extractFunctions(MathArray & ar)
 // search integrals
 //
 
-bool symbolTest(MathInset * p, string const & name)
+bool testSymbol(MathInset * p, string const & name)
 {
 	return p->asSymbolInset() && p->asSymbolInset()->name() == name;
 }
 
 
-bool intSymbolTest(MathInset * p)
+bool testIntSymbol(MathInset * p)
 {
-	return symbolTest(p, "int");
+	return testSymbol(p, "int");
 }
 
 
-bool intDiffTest(MathInset * p)
+bool testIntDiff(MathInset * p)
 {
-	return stringTest(p, "d");
+	return testString(p, "d");
 }
 
 
@@ -350,16 +422,16 @@ void extractIntegrals(MathArray & ar)
 		return;
 
 	lyxerr << "\nIntegrals from: " << ar << "\n";
-	for (MathArray::size_type i = 0; i + 1< ar.size(); ++i) {
+	for (MathArray::size_type i = 0; i + 1 < ar.size(); ++i) {
 		MathArray::iterator it = ar.begin() + i;
 
 		// is this a integral name?
-		if (!intSymbolTest(it->nucleus()))
+		if (!testIntSymbol(it->nucleus()))
 			continue;
 
 		// search 'd'
 		MathArray::iterator jt =
-			endNestSearch(it, ar.end(), intSymbolTest, intDiffTest);
+			endNestSearch(it, ar.end(), testIntSymbol, testIntDiff);
 
 		// something sensible found?
 		if (jt == ar.end())
@@ -368,16 +440,27 @@ void extractIntegrals(MathArray & ar)
 		// create a proper inset as replacement
 		MathExIntInset * p = new MathExIntInset("int");
 
-		// collect scripts
+		// collect subscript if any
 		MathArray::iterator st = it + 1;
-		if ((*st)->asScriptInset()) {
-			p->scripts(*st);
-			p->cell(0) = MathArray(st + 1, jt);
-		} else {
-			p->cell(0) = MathArray(st, jt);
-		}
+		if (st != ar.end())
+			if (MathScriptInset * sub = (*st)->asScriptInset()) 
+				if (sub->hasDown()) {
+					p->cell(2) = sub->down().data_;
+					++st;
+				}
 
-		// use the atom behind the 'd' as differential
+		// collect superscript if any
+		if (st != ar.end())
+			if (MathScriptInset * sup = (*st)->asScriptInset()) 
+				if (sup->hasUp()) {
+					p->cell(3) = sup->up().data_;
+					++st;
+				}
+
+		// core ist part from behind the scripts to the 'd'
+		p->cell(0) = MathArray(st, jt);
+
+		// use the "thing" behind the 'd' as differential
 		MathArray::iterator tt = extractArgument(p->cell(1), jt + 1, ar.end());
 		
 		// remove used parts
@@ -392,21 +475,15 @@ void extractIntegrals(MathArray & ar)
 // search sums
 //
 
-bool sumSymbolTest(MathInset * p)
+bool testSumSymbol(MathInset * p)
 {
-	return p->asSymbolInset() && p->asSymbolInset()->name() == "sum";
+	return testSymbol(p, "sum");
 }
 
 
-bool equalSign(MathInset * p)
+bool testEqualSign(MathAtom const & at)
 {
-	return stringTest(p, "=");
-}
-
-
-bool equalSign1(MathAtom const & at)
-{
-	return equalSign(at.nucleus());
+	return testString(at.nucleus(), "=");
 }
 
 
@@ -424,35 +501,40 @@ void extractSums(MathArray & ar)
 		MathArray::iterator it = ar.begin() + i;
 
 		// is this a sum name?
-		if (!sumSymbolTest(it->nucleus()))
+		if (!testSumSymbol(it->nucleus()))
 			continue;
 
 		// create a proper inset as replacement
 		MathExIntInset * p = new MathExIntInset("sum");
 
-		// collect scripts
+		// collect lower bound and summation index
 		MathArray::iterator st = it + 1;
-		if (st != ar.end() && (*st)->asScriptInset()) {
-			p->scripts(*st);
-			++st;
-
-			// try to figure out the summation index from the subscript
-			MathScriptInset * script = p->scripts()->asScriptInset();
-			if (script->hasDown()) {
-				MathArray & ar = script->down().data_;
-				MathArray::iterator it =
-					std::find_if(ar.begin(), ar.end(), &equalSign1);
-				if (it != ar.end()) {
-					// we found a '=', use everything in front of that as index,
-					// and everything behind as start value
-					p->cell(1) = MathArray(ar.begin(), it);
-					ar.erase(ar.begin(), it + 1);
-				} else {
-					// use everything as summation index, don't use scripts.
-					p->cell(1) = ar;
+		if (st != ar.end())
+			if (MathScriptInset * sub = (*st)->asScriptInset())
+				if (sub->hasDown()) {
+					// try to figure out the summation index from the subscript
+					MathArray & ar = sub->down().data_;
+					MathArray::iterator it =
+						std::find_if(ar.begin(), ar.end(), &testEqualSign);
+					if (it != ar.end()) {
+						// we found a '=', use everything in front of that as index,
+						// and everything behind as lower index
+						p->cell(1) = MathArray(ar.begin(), it);
+						p->cell(2) = MathArray(it + 1, ar.end());
+					} else {
+						// use everything as summation index, don't use scripts.
+						p->cell(1) = ar;
+					}
+					++st;
 				}
-			}
-		}
+
+		// collect upper bound
+		if (st != ar.end())
+			if (MathScriptInset * sup = (*st)->asScriptInset())
+				if (sup->hasUp()) {
+					p->cell(3) = sup->up().data_;
+					++st;
+				}
 
 		// use some  behind the script as core
 		MathArray::iterator tt = extractArgument(p->cell(0), st, ar.end());
@@ -470,25 +552,39 @@ void extractSums(MathArray & ar)
 //
 
 // tests for 'd' or '\partial'
-bool diffItemTest(MathInset * p)
+bool testDiffItem(MathAtom const & at)
 {
-	return stringTest(p, "d");
+	return testString(at.nucleus(), "d");
 }
 
 
-bool diffItemTest(MathArray const & ar)
+bool testDiffArray(MathArray const & ar)
 {
-	return ar.size() && diffItemTest(ar.front().nucleus());
+	return ar.size() && testDiffItem(ar.front());
 }
 
 
-bool diffFracTest(MathInset * p)
+bool testDiffFrac(MathInset * p)
 {
-	return
-		p->asFracInset() &&
-		diffItemTest(p->asFracInset()->cell(0)) &&
-		diffItemTest(p->asFracInset()->cell(1));
+	MathFracInset * f = p->asFracInset();
+	return f && testDiffArray(f->cell(0)) && testDiffArray(f->cell(1));
 }
+
+
+// is this something like ^number?
+bool extractDiffExponent(MathArray::iterator it, int & i)
+{
+	if (!(*it)->asScriptInset())
+		return false;
+
+	string s;
+	if (!extractString((*it).nucleus(), s))
+		return false;
+	std::istringstream is(s);
+	is >> i;
+	return is;
+}
+
 
 void extractDiff(MathArray & ar)
 {
@@ -497,7 +593,7 @@ void extractDiff(MathArray & ar)
 		MathArray::iterator it = ar.begin() + i;
 
 		// is this a "differential fraction"?
-		if (!diffFracTest(it->nucleus()))
+		if (!testDiffFrac(it->nucleus()))
 			continue;
 		
 		MathFracInset * f = (*it)->asFracInset();
@@ -507,7 +603,7 @@ void extractDiff(MathArray & ar)
 		}
 
 		// create a proper diff inset
-		MathDiffInset * p = new MathDiffInset;
+		MathDiffInset * diff = new MathDiffInset;
 
 		// collect function, let jt point behind last used item
 		MathArray::iterator jt = it + 1; 
@@ -515,37 +611,47 @@ void extractDiff(MathArray & ar)
 		MathArray & numer = f->cell(0);
 		if (numer.size() > 1 && numer.at(1)->asScriptInset()) {
 			// this is something like  d^n f(x) / d... or  d^n / d...
-			n = 1; // FIXME
+			// FIXME
+			n = 1;	
 			if (numer.size() > 2) 
-				p->cell(0) = MathArray(numer.begin() + 2, numer.end());
+				diff->cell(0) = MathArray(numer.begin() + 2, numer.end());
 			else
-				jt = extractArgument(p->cell(0), jt, ar.end());
+				jt = extractArgument(diff->cell(0), jt, ar.end());
 		} else {
 			// simply d f(x) / d... or  d/d...
 			if (numer.size() > 1) 
-				p->cell(0) = MathArray(numer.begin() + 1, numer.end());
+				diff->cell(0) = MathArray(numer.begin() + 1, numer.end());
 			else
-				jt = extractArgument(p->cell(0), jt, ar.end());
+				jt = extractArgument(diff->cell(0), jt, ar.end());
 		}
 
-		// collect denominator
+		// collect denominator parts
 		MathArray & denom = f->cell(1);
-		for (MathArray::iterator dt = denom.begin(); dt + 1 != denom.end(); ) {
-			if (!diffItemTest((*dt).nucleus())) {
-				lyxerr << "extractDiff: should not happen 2\n";
-				return;
+		for (MathArray::iterator dt = denom.begin(); dt != denom.end(); ) {
+			// find the next 'd'
+			MathArray::iterator et = std::find_if(dt + 1, denom.end(), &testDiffItem);
+
+			// point before this
+			MathArray::iterator st = et - 1;
+			MathScriptInset * script = (*st)->asScriptInset();
+			if (script && script->hasUp()) {
+				// things like   d.../dx^n
+				int mult = 1;
+				if (extractNumber(script->up().data_, mult)) {
+					lyxerr << "mult: " << mult << endl;
+					for (int i = 0; i < mult; ++i)
+						diff->addDer(MathArray(dt + 1, st));
+				}
+			} else {
+				// just  d.../dx
+				diff->addDer(MathArray(dt + 1, et));
 			}
-			MathArray diff;
-			dt = extractArgument(diff, dt + 1, denom.end());
-			p->addDer(diff);
-			// safeguard
-			if (dt == denom.end()) 
-				break;
+			dt = et;
 		}
 
 		// cleanup
 		ar.erase(it + 1, jt);
-		(*it).reset(p);
+		(*it).reset(diff);
 	}
 	lyxerr << "\nDiffs to: " << ar << "\n";
 }
@@ -556,6 +662,7 @@ void extractDiff(MathArray & ar)
 
 void extractStructure(MathArray & ar)
 {
+	splitScripts(ar);
 	extractMatrices(ar);
 	extractDelims(ar);
 	extractFunctions(ar);

@@ -17,19 +17,24 @@ public:
 	///
 	MathInset * clone() const;
 	///
-	void draw(Painter &, int x, int y) const;
-	///
-	void write(WriteStream & os) const;
-	///
-	void normalize(NormalStream &) const;
-	///
-	void metrics(MathMetricsInfo const & st) const;
-	///
 	MathSpaceInset const * asSpaceInset() const { return this; }
 	///
 	MathSpaceInset * asSpaceInset() { return this; }
 	///
 	void incSpace();
+	///
+	void metrics(MathMetricsInfo const & st) const;
+	///
+	void draw(Painter &, int x, int y) const;
+
+	///
+	void normalize(NormalStream &) const;
+	///
+	void maplize(MapleStream &) const;
+	///
+	void octavize(OctaveStream &) const;
+	///
+	void write(WriteStream & os) const;
 private:
 	///
 	int space_;

@@ -15,6 +15,8 @@
 class MathStringInset : public MathInset {
 public:
 	///
+	MathStringInset();
+	///
 	MathStringInset(string const & s, MathTextCodes t = LM_TC_TEXTRM);
 	///
 	MathInset * clone() const;
@@ -44,7 +46,7 @@ public:
 	///
 	void write(WriteStream & os) const;
 
-private:
+public:
 	/// the string
 	string str_;
 	/// the font to be used on screen

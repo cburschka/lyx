@@ -13,6 +13,10 @@
 #include "debug.h"
 
 
+MathStringInset::MathStringInset()
+	: str_(), code_(LM_TC_MIN)
+{}
+
 MathStringInset::MathStringInset(string const & s, MathTextCodes t)
 	: str_(s), code_(t)
 {}

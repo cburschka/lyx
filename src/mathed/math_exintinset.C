@@ -6,25 +6,18 @@
 
 
 MathExIntInset::MathExIntInset(string const & name)
-	: MathNestInset(2), symbol_(name), scripts_(new MathScriptInset)
+	: MathNestInset(4), symbol_(name)
 {}
+
+// 0 - core
+// 1 - diff
+// 2 - lower
+// 3 - upper
 
 
 MathInset * MathExIntInset::clone() const
 {
 	return new MathExIntInset(*this);
-}
-
-
-void MathExIntInset::scripts(MathAtom const & at)
-{
-	scripts_ = at;
-}
-
-
-MathAtom & MathExIntInset::scripts()
-{
-	return scripts_;
 }
 
 
@@ -37,17 +30,15 @@ void MathExIntInset::symbol(string const & symbol)
 bool MathExIntInset::hasScripts() const
 {
 	// take empty upper bound as "no scripts"
-	return !scripts_->asScriptInset()->up().data_.empty();
+	return !cell(3).empty();
 }
 
 
 
 void MathExIntInset::normalize(NormalStream & os) const
 {
-	os << '[' << symbol_.c_str() << ' ' << cell(0) << ' ' << cell(1);
-	if (hasScripts())
-		os << ' ' << scripts_.nucleus();
-	os << ']';
+	os << '[' << symbol_.c_str() << ' ' << cell(0) << ' ' << cell(1) << ' ' 
+	   << cell(2) << ' ' << cell(3) << ']';
 }
 
 
@@ -71,10 +62,8 @@ void MathExIntInset::maplize(MapleStream & os) const
 	else 
 		os << '1';
 	os << ',' << cell(1);
-	if (hasScripts()) {
-		MathScriptInset * p = scripts_->asScriptInset();
-		os << '=' << p->down().data_ << ".." << p->up().data_;
-	}
+	if (hasScripts())
+		os << '=' << cell(2) << ".." << cell(3);
 	os << ')';
 }
 
@@ -82,9 +71,9 @@ void MathExIntInset::maplize(MapleStream & os) const
 void MathExIntInset::mathmlize(MathMLStream & os) const
 {
 	MathSymbolInset * sym = new MathSymbolInset(symbol_.c_str());
-	if (hasScripts())
-		scripts_->asScriptInset()->mathmlize(sym, os);
-	else 
+	//if (hasScripts())
+	//	mathmlize(sym, os);
+	//else 
 		sym->mathmlize(os);
 	delete sym;
 	os << cell(0) << "<mo> &InvisibleTimes; </mo>"

@@ -5,7 +5,7 @@
 // \int_l^u f(x) dx in one block (as opposed to 'f','(','x',')' or 'f','x')
 // or \sum, \prod...  for interfacing external programs
 
-#include "math_scriptinset.h"
+#include "math_nestinset.h"
 
 // cell(0) is stuff before the 'd', cell(1) the stuff after
 class MathExIntInset : public MathNestInset {
@@ -14,10 +14,6 @@ public:
 	explicit MathExIntInset(string const & name_);
 	///
 	MathInset * clone() const;
-	///
-	void scripts(MathAtom const &);
-	///
-	MathAtom & scripts();
 	///
 	void symbol(string const &);
 	///
@@ -39,8 +35,6 @@ private:
 
 	///
 	string symbol_;
-	///
-	MathAtom scripts_;
 };
 
 #endif

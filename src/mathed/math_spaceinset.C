@@ -21,19 +21,6 @@ MathInset * MathSpaceInset::clone() const
 }
 
 
-void MathSpaceInset::write(WriteStream & os) const
-{
-	if (space_ >= 0 && space_ < 6)
-		os << '\\' << latex_mathspace[space_] << ' ';
-}
-
-
-void MathSpaceInset::normalize(NormalStream & os) const
-{
-	os << "[space " << space_ << "] ";
-}
-
-
 void MathSpaceInset::metrics(MathMetricsInfo const & mi) const
 {
 	width_ = space_ ? space_ * 2 : 2;
@@ -70,3 +57,30 @@ void MathSpaceInset::incSpace()
 {
 	space_ = (space_ + 1) % 6;
 }
+
+
+void MathSpaceInset::maplize(MapleStream & os) const
+{
+	os << ' ';
+}
+
+
+void MathSpaceInset::octavize(OctaveStream & os) const
+{
+	os << ' ';
+}
+
+
+void MathSpaceInset::normalize(NormalStream & os) const
+{
+	os << "[space " << space_ << "] ";
+}
+
+
+void MathSpaceInset::write(WriteStream & os) const
+{
+	if (space_ >= 0 && space_ < 6)
+		os << '\\' << latex_mathspace[space_] << ' ';
+}
+
+
