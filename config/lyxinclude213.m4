@@ -72,12 +72,6 @@ if eval "test \"\${lyx_cv_declare_${tr_hdr}_$1}\" = \"yes\""; then
 fi
 done])
 
-# Copied from autoconf 2.53's general.m4
-m4_define([AC_HELP_STRING],
-[m4_pushdef([AC_Prefix], m4_default([$3], [                          ]))dnl
-m4_pushdef([AC_Prefix_Format],
-	   [  %-]m4_eval(m4_len(AC_Prefix) - 3)[s ])dnl [  %-23s ]
-m4_text_wrap([$2], AC_Prefix, m4_format(AC_Prefix_Format, [$1]))dnl
-m4_popdef([AC_Prefix_Format])dnl
-m4_popdef([AC_Prefix])dnl
-])
+dnl A terrible hack because the code from autoconf 2.5x does not work
+dnl here. It works for the uses in pspell.m4, so that's enough
+AC_DEFUN([AC_HELP_STRING],[  $1           $2])
