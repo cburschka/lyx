@@ -999,3 +999,5 @@ MathedRowSt * MathedXIter::adjustVerticalSt()
     }
     return mrow;
 }
+
+string MathedXIter::error_label = "$mathed-error$";

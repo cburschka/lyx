@@ -938,9 +938,14 @@ InsetFormula::LocalDispatch(BufferView * bv,
 //	   MathMatrixInset *mt = (MathMatrixInset*)par;
 	   //BUG 
 //	   mt->SetNumbered(!mt->IsNumbered());
-	    
+
+#warning This is a terrible hack! We should find a better solution.
+       while (mathcursor->getLabel() == MathedXIter::error_label) {
+	   if (LocalDispatch(bv, LFUN_LEFT, string()) == FINISHED)
+	       return DISPATCHED;
+       }
 	    mathcursor->setNumbered();
-	   UpdateLocal(bv);
+	    UpdateLocal(bv);
 	}
 	break;
     }
@@ -1055,8 +1060,20 @@ InsetFormula::LocalDispatch(BufferView * bv,
        if (par->GetType() < LM_OT_PAR)
 	      break;
 
-       string old_label = (par->GetType() == LM_OT_MPARN)
+       string old_label = (par->GetType() == LM_OT_MPARN ||
+			   par->GetType() == LM_OT_MPAR)
 	       ?  mathcursor->getLabel() : label;
+
+#warning This is a terrible hack! We should find a better solution.
+       /// This is needed becuase in some positions mathcursor->cursor->crow
+       /// is equal to 0, and therefore the label cannot be inserted.
+       /// So we move the cursor left until mathcursor->cursor->crow != 0.
+       while (old_label == MathedXIter::error_label) {
+	   if (LocalDispatch(bv, LFUN_LEFT, string()) == FINISHED)
+	       return DISPATCHED;
+	   old_label = mathcursor->getLabel();
+       }
+
        string new_label = arg;
        if (new_label.empty()) {
 #ifdef LABEL_INIT

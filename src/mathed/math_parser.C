@@ -99,6 +99,7 @@ enum lexcode_enum {
 };
 
 static lexcode_enum lexcode[256];  
+#warning Replace with string
 static char yytext[256];
 static int yylineno;
 static istream * yyis;
@@ -154,10 +155,13 @@ char LexGetArg(char lf, bool accept_spaces= false)
       yyis->get(cc);
       c = cc;
       if (c > ' ') {
-	 if (!lf) lf = c; else
-	 if (c != lf)
+	 if (!lf) 
+	     lf = c;
+	 else if (c != lf) {
 		 lyxerr << "Math parse error: unexpected '"
 			<< c << "'" << endl;
+		 return '\0';
+	 }
 	 break;
       }
    }
@@ -176,7 +180,7 @@ char LexGetArg(char lf, bool accept_spaces= false)
       if (c == lf) ++bcnt;
       if (c == rg) --bcnt;
       if ((c > ' ' || (c == ' ' && accept_spaces)) && bcnt > 0) *(p++) = c;
-   } while (bcnt > 0 && yyis->good());
+   } while (bcnt > 0 && yyis->good() && p-yytext < 255);
    *p = '\0';
    return rg;
 }
@@ -275,7 +279,8 @@ int yylex(void)
 	 }
 	 if (lexcode[c] == LexAlpha || lexcode[c] == LexDigit) {
 	    char * p = &yytext[0];
-	    while (lexcode[c] == LexAlpha || lexcode[c] == LexDigit) {
+	    while ((lexcode[c] == LexAlpha || lexcode[c] == LexDigit)
+		   && p-yytext < 255) {
 	       *p = c;
 	       yyis->get(cc);
 	       c = cc;

@@ -1,3 +1,13 @@
+2001-01-26  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* src/mathed/math_parser.C (LexGetArg): Fix crash when loading
+	corrupt files.
+
+	* src/mathed/formula.C (LocalDispatch): Before inserting a label
+	in an eqnarray, move the cursor to the top level.
+
+	* src/mathed/math_iter.C (getLabel): Test if crow == 0.
+
 2001-01-26  Volodymyr M . Lisivka  <lvm_ukr@yahoo.com>
 
 	* lib/kbd/koi8-u.kmap: new file.
