@@ -2,7 +2,7 @@
  * \file QBrowseBox.C
  *
  * Original file taken from klyx 0.10 sources:
- * $Id: QBrowseBox.C,v 1.1 2002/10/09 08:59:02 leuven Exp $
+ * $Id: QBrowseBox.C,v 1.2 2002/10/15 17:45:12 leeming Exp $
  *
  * \author Kalle Dalheimer ?
  *
@@ -25,7 +25,8 @@
 #include "QBrowseBox.h"
 
 
-QBrowseBox::QBrowseBox(int rows, int cols, QWidget* parent=0 , const char* name=0 , WFlags fl=0 )
+QBrowseBox::QBrowseBox(int rows, int cols, QWidget * parent,
+		       const char * name, WFlags fl)
     : QGridView()
 {
     setNumRows( rows );

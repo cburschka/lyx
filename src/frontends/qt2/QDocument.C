@@ -45,6 +45,8 @@
 
 #include <vector>
 
+using std::vector;
+
 typedef Qt2CB<ControlDocument, Qt2DB<QDocumentDialog> > base_class;
 
 QDocument::QDocument()

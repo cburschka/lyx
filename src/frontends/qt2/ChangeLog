@@ -1,3 +1,9 @@
+2002-10-15  Angus Leeming  <leeming@lyx.org>
+
+	* QBrowseBox.C (c-tor): default values should go only in the .h file.
+
+	* QDocument.C: add a using std::vector declaration.
+
 2002-10-15  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* QLPainter.C (text): Unicode support.
