@@ -28,6 +28,7 @@ class QDialog;
 #include "ViewBase.h"
 #include "LString.h"
 #include "ButtonPolicies.h"
+#include "ControlButton.h"
 
 class qt2BC;
 
@@ -38,7 +39,7 @@ class Qt2Base : public QObject, public ViewBC<qt2BC>
     Q_OBJECT
 public:
 	///
-	Qt2Base(ControlButton &, string const &);
+	Qt2Base(::ControlButton &, const QString &);
 	///
 	virtual ~Qt2Base() {}
 
@@ -75,7 +76,7 @@ private:
 
 private:
 	/// dialog title, displayed by WM.
-  	string title_;
+  	QString title_;
 };
 
 
@@ -84,7 +85,7 @@ class Qt2DB: public Qt2Base
 {
 protected:
 	///
-	Qt2DB(ControlButton &, string const &);
+	Qt2DB(::ControlButton &, const QString&);
 	/// Pointer to the actual instantiation of the Qt dialog
 	virtual QDialog* form() const;
 	/// Real GUI implementation.
@@ -93,7 +94,7 @@ protected:
 
 
 template <class Dialog>
-Qt2DB<Dialog>::Qt2DB(ControlButton & c, string const & t)
+Qt2DB<Dialog>::Qt2DB(::ControlButton & c, const QString& t)
 	: Qt2Base(c, t)
 {}
 
@@ -110,14 +111,14 @@ class Qt2CB: public Base
 {
 protected:
 	///
-	Qt2CB(ControlButton &, string const &);
+	Qt2CB(::ControlButton &, const QString&);
 	/// The parent controller
 	Controller & controller() const;
 };
 
 
 template <class Controller, class Base>
-Qt2CB<Controller, Base>::Qt2CB(ControlButton & c, string const & t)
+Qt2CB<Controller, Base>::Qt2CB(::ControlButton & c, const QString& t)
 	: Base(c, t)
 {}
 

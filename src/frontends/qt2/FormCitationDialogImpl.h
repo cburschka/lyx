@@ -1,5 +1,5 @@
 /**
- * $Id: FormCitationDialogImpl.h,v 1.2 2001/03/29 21:17:17 kalle Exp $
+ * $Id: FormCitationDialogImpl.h,v 1.3 2001/03/31 08:39:24 kalle Exp $
  */
 
 #ifndef FORMCITATIONDIALOGIMPL_H
@@ -25,7 +25,6 @@ protected slots:
     virtual void slotDownClicked();
     virtual void slotPreviousClicked();
     virtual void slotNextClicked();
-    virtual void slotSearchTypeToggled( bool );
     virtual void slotCitationStyleSelected( int );
     virtual void slotTextBeforeReturn();
     virtual void slotTextAfterReturn();

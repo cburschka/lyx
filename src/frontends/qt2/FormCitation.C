@@ -20,6 +20,7 @@
 #include "FormCitationDialogImpl.h"
 #include "FormCitation.h"
 
+#include <qcheckbox.h>
 #include <qcombobox.h>
 #include <qlineedit.h>
 #include <qlistbox.h>
@@ -72,8 +73,8 @@ void FormCitation::build()
     // PENDING(kalle) Parent?
     dialog_.reset( new FormCitationDialogImpl( this ));
 
-    dialog_->searchTypePB->setOn( false );
-    dialog_->searchTypePB->setText( _( "Simple" ) );
+    dialog_->searchTypeCB->setChecked( false );
+    dialog_->searchCaseCB->setChecked( false );
     
     // Manage the ok, apply, restore and cancel/close buttons
     bc().setOK(dialog_->okPB);
@@ -125,7 +126,8 @@ void FormCitation::updateBrowser( QListBox* browser,
     for (vector<string>::const_iterator it = keys.begin();
 	 it < keys.end(); ++it) {
 	string key = frontStrip(strip(*it));
-	browser->insertItem( key.c_str() );
+	if( !key.empty() )
+	    browser->insertItem( key.c_str() );
     }
 }
 

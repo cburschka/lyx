@@ -28,6 +28,8 @@
 class QWidget;
 class QButton;
 
+#include <boost/utility.hpp>
+#include "ButtonControllerBase.h"
 #include "ButtonController.h"
 
 /** General purpose button controller for up to four buttons.

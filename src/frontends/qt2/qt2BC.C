@@ -48,9 +48,9 @@ void qt2BC::refresh()
 	}
 	if (cancel_) {
 		if (bp().buttonStatus(ButtonPolicy::CANCEL)) {
-		    cancel_->setText( cancel_label.c_str() );
+		    cancel_->setText( cancel_label_.c_str() );
 		} else {
-		    cancel_->setText( close_label.c_str() );
+		    cancel_->setText( close_label_.c_str() );
 		}
 	}
 	if (!read_only_.empty()) {

@@ -28,7 +28,7 @@
 #include <stdio.h>
 
 
-Qt2Base::Qt2Base(ControlButton & c, string const & t)
+Qt2Base::Qt2Base(::ControlButton & c, QString const & t)
 	: ViewBC<qt2BC>(c), title_(t)
 {}
 
@@ -39,13 +39,13 @@ void Qt2Base::show()
     if (!form()) {
 	build();
     }
-    
+
     update();  // make sure its up-to-date
-    
+
     if (form()->isVisible()) {
 	form()->raise();
     } else {
-	form()->setCaption( title_.c_str() );
+	form()->setCaption( title_ );
 	form()->show();
     }
 }

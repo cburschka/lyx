@@ -1,5 +1,5 @@
 /**
- * $Id: FormCitationDialogImpl.C,v 1.4 2001/03/29 21:17:17 kalle Exp $
+ * $Id: FormCitationDialogImpl.C,v 1.5 2001/03/31 08:39:24 kalle Exp $
  */
 
 #include "FormCitationDialogImpl.h"
@@ -9,6 +9,7 @@
 #include "controllers/biblio.h"
 #include "controllers/ControlCitation.h"
 
+#include <qcheckbox.h>
 #include <qlineedit.h>
 #include <qlistbox.h>
 #include <qmultilineedit.h>
@@ -56,33 +57,33 @@ FormCitationDialogImpl::~FormCitationDialogImpl()
 void FormCitationDialogImpl::slotBibSelected( int sel )
 {
     biblio::InfoMap const & theMap = form_->controller().bibkeysInfo();
-    
+
     citeLB->clearSelection();
-    
+
     if (sel < 0 || sel >= (int)form_->bibkeys.size()) {
 	form_->bc().input( ButtonPolicy::SMI_NOOP );
 	return;
     }
-    
+
     // Put into browser_info the additional info associated with
     // the selected browser_bib key
     infoML->clear();
-    
+
     infoML->setText( biblio::getInfo( theMap,
 				      form_->bibkeys[sel-1] ).c_str() );
 
     // Highlight the selected browser_bib key in browser_cite if
     // present
     vector<string>::const_iterator cit =
-	std::find(form_->citekeys.begin(), form_->citekeys.end(), 
+	std::find(form_->citekeys.begin(), form_->citekeys.end(),
 		  form_->bibkeys[sel]);
-	
+
     if (cit != form_->citekeys.end()) {
 	int const n = int(cit - form_->citekeys.begin());
 	citeLB->setSelected( n, true );
 	citeLB->setTopItem( n );
     }
-    
+
     if (!form_->controller().isReadonly()) {
 	if (cit != form_->citekeys.end()) {
 	    form_->setBibButtons(FormCitation::OFF);
@@ -105,21 +106,21 @@ void FormCitationDialogImpl::slotCiteSelected( int sel )
 	form_->bc().input( ButtonPolicy::SMI_NOOP );
 	return;
     }
-	
+
     if (!form_->controller().isReadonly()) {
 	form_->setBibButtons(FormCitation::OFF);
 	form_->setCiteButtons(FormCitation::ON);
     }
-	
+
     // Highlight the selected browser_cite key in browser_bib
     vector<string>::const_iterator cit =
 	std::find(form_->bibkeys.begin(), form_->bibkeys.end(), form_->citekeys[sel]);
-	
+
     if (cit != form_->bibkeys.end()) {
 	int const n = int(cit - form_->bibkeys.begin());
 	bibLB->setSelected( n, true );
 	bibLB->setTopItem( n );
-	    
+
 	// Put into browser_info the additional info associated
 	// with the selected browser_cite key
 	infoML->clear();
@@ -137,14 +138,14 @@ void FormCitationDialogImpl::slotAddClicked()
 	form_->bc().input( ButtonPolicy::SMI_NOOP );
 	return;
     }
-	
+
     // Add the selected browser_bib key to browser_cite
     citeLB->insertItem( form_->bibkeys[sel].c_str() );
     form_->citekeys.push_back( form_->bibkeys[sel] );
 
     int const n = int(form_->citekeys.size());
     citeLB->setSelected( n-1, true );
-	
+
     form_->setBibButtons(FormCitation::OFF);
     form_->setCiteButtons(FormCitation::ON);
 
@@ -159,11 +160,11 @@ void FormCitationDialogImpl::slotDelClicked()
 	form_->bc().input( ButtonPolicy::SMI_NOOP );
 	return;
     }
-    
+
     // Remove the selected key from browser_cite
     citeLB->removeItem( sel );
     form_->citekeys.erase(form_->citekeys.begin() + sel );
-    
+
     form_->setBibButtons(FormCitation::ON);
     form_->setCiteButtons(FormCitation::OFF);
 
@@ -178,14 +179,14 @@ void FormCitationDialogImpl::slotUpClicked()
 	form_->bc().input( ButtonPolicy::SMI_NOOP );
 	return;
     }
-    
+
     // Move the selected key up one line
     vector<string>::iterator it = form_->citekeys.begin() + sel;
     string const tmp = *it;
-    
+
     citeLB->removeItem( sel );
     form_->citekeys.erase(it);
-    
+
     citeLB->insertItem( tmp.c_str(), sel-1 );
     citeLB->setSelected( sel-1, true );
     form_->citekeys.insert(it-1, tmp);
@@ -202,91 +203,82 @@ void FormCitationDialogImpl::slotDownClicked()
 	form_->bc().input( ButtonPolicy::SMI_NOOP );
 	return;
     }
-    
+
     // Move the selected key down one line
     vector<string>::iterator it = form_->citekeys.begin() + sel;
     string const tmp = *it;
-    
+
     citeLB->removeItem( sel );
     form_->citekeys.erase(it);
-    
+
     citeLB->insertItem( tmp.c_str(), sel+1 );
     citeLB->setSelected( sel+1, true );
     form_->citekeys.insert(it+1, tmp);
     form_->setCiteButtons(FormCitation::ON);
-    
+
     form_->bc().input( ButtonPolicy::SMI_VALID );
-}
-
-
-void FormCitationDialogImpl::slotSearchTypeToggled( bool toggle )
-{
-    if( toggle )
-	searchTypePB->setText( _( "Regex" ) );
-    else
-	searchTypePB->setText( _( "Simple" ) );
-    
-    form_->bc().input( ButtonPolicy::SMI_NOOP );
 }
 
 
 void FormCitationDialogImpl::slotPreviousClicked()
 {
     doPreviousNext( false );
-}	
+}
 
 
 void FormCitationDialogImpl::slotNextClicked()
 {
     doPreviousNext( true );
-}	
+}
 
 
 void FormCitationDialogImpl::doPreviousNext( bool next )
 {
     biblio::InfoMap const & theMap = form_->controller().bibkeysInfo();
     string const str = searchED->text().latin1();
-	
+
     biblio::Direction const dir =
 	next ?
 	biblio::FORWARD : biblio::BACKWARD;
-	
+
     biblio::Search const type =
-	searchTypePB->isOn() ?
+	searchTypeCB->isChecked() ?
 	biblio::REGEX : biblio::SIMPLE;
-	
+
     vector<string>::const_iterator start = form_->bibkeys.begin();
     int const sel = bibLB->currentItem();
     if (sel >= 0 && sel <= int(form_->bibkeys.size()-1))
 	start += sel;
-	
+
     // Find the NEXT instance...
     if (dir == biblio::FORWARD)
 	start += 1;
     else
 	start -= 1;
-	
+
+    bool const caseSensitive = searchCaseCB->isChecked();
+    
     vector<string>::const_iterator const cit =
 	biblio::searchKeys(theMap, form_->bibkeys, str,
-			   start, type, dir);
-	
+			   start, type, dir, caseSensitive );
+
     if (cit == form_->bibkeys.end()) {
 	form_->bc().input( ButtonPolicy::SMI_NOOP );
 	return;
     }
-	
+
     int const found = int(cit - form_->bibkeys.begin());
     if (found == sel) {
 	form_->bc().input( ButtonPolicy::SMI_NOOP );
 	return;
     }
-	
+
     // Update the display
     int const top = max(found-5, 1);
     bibLB->setTopItem( top );
     bibLB->setSelected( found, true );
     slotBibSelected( 0 );
-    
+
     form_->bc().input( ButtonPolicy::SMI_VALID );
 }
 

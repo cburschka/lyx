@@ -12,7 +12,7 @@
             <x>0</x>
             <y>0</y>
             <width>369</width>
-            <height>497</height>
+            <height>525</height>
         </rect>
     </property>
     <property stdset="1">
@@ -298,10 +298,17 @@
                     <number>6</number>
                 </property>
                 <widget>
+                    <class>QLineEdit</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>searchED</cstring>
+                    </property>
+                </widget>
+                <widget>
                     <class>QLayoutWidget</class>
                     <property stdset="1">
                         <name>name</name>
-                        <cstring>Layout35</cstring>
+                        <cstring>Layout37</cstring>
                     </property>
                     <hbox>
                         <property stdset="1">
@@ -313,12 +320,37 @@
                             <number>6</number>
                         </property>
                         <widget>
-                            <class>QLineEdit</class>
+                            <class>QCheckBox</class>
                             <property stdset="1">
                                 <name>name</name>
-                                <cstring>searchED</cstring>
+                                <cstring>searchTypeCB</cstring>
+                            </property>
+                            <property stdset="1">
+                                <name>text</name>
+                                <string>Regular E&amp;xpression</string>
                             </property>
                         </widget>
+                        <spacer>
+                            <property>
+                                <name>name</name>
+                                <cstring>Spacer2_2</cstring>
+                            </property>
+                            <property stdset="1">
+                                <name>orientation</name>
+                                <enum>Horizontal</enum>
+                            </property>
+                            <property stdset="1">
+                                <name>sizeType</name>
+                                <enum>Expanding</enum>
+                            </property>
+                            <property>
+                                <name>sizeHint</name>
+                                <size>
+                                    <width>20</width>
+                                    <height>20</height>
+                                </size>
+                            </property>
+                        </spacer>
                         <widget>
                             <class>QPushButton</class>
                             <property stdset="1">
@@ -336,7 +368,7 @@
                     <class>QLayoutWidget</class>
                     <property stdset="1">
                         <name>name</name>
-                        <cstring>Layout36</cstring>
+                        <cstring>Layout38</cstring>
                     </property>
                     <hbox>
                         <property stdset="1">
@@ -348,28 +380,20 @@
                             <number>6</number>
                         </property>
                         <widget>
-                            <class>QPushButton</class>
+                            <class>QCheckBox</class>
                             <property stdset="1">
                                 <name>name</name>
-                                <cstring>searchTypePB</cstring>
+                                <cstring>searchCaseCB</cstring>
                             </property>
                             <property stdset="1">
                                 <name>text</name>
-                                <string>Simple</string>
-                            </property>
-                            <property stdset="1">
-                                <name>toggleButton</name>
-                                <bool>true</bool>
-                            </property>
-                            <property stdset="1">
-                                <name>toggleButton</name>
-                                <bool>true</bool>
+                                <string>&amp;Case sensitive</string>
                             </property>
                         </widget>
                         <spacer>
                             <property>
                                 <name>name</name>
-                                <cstring>Spacer2_2</cstring>
+                                <cstring>Spacer3_2</cstring>
                             </property>
                             <property stdset="1">
                                 <name>orientation</name>
@@ -676,12 +700,6 @@
         <signal>clicked()</signal>
         <receiver>FormCitationDialog</receiver>
         <slot>slotRestoreClicked()</slot>
-    </connection>
-    <connection>
-        <sender>searchTypePB</sender>
-        <signal>toggled(bool)</signal>
-        <receiver>FormCitationDialog</receiver>
-        <slot>slotSearchTypeSelected(bool)</slot>
     </connection>
     <connection>
         <sender>previousPB</sender>
