@@ -236,7 +236,9 @@ void MathMatrixInset::header_write(std::ostream & os) const
 
 	switch (getType()) {
 		case LM_OT_SIMPLE:
-			os << "$ "; 
+			os << '$';
+			if (cell(0).empty())
+				os << ' ';
 			break;
 
 		case LM_OT_EQUATION:
@@ -270,7 +272,7 @@ void MathMatrixInset::footer_write(std::ostream & os) const
 
 	switch (getType()) {
 		case LM_OT_SIMPLE:
-			os << "$";
+			os << '$';
 			break;
 
 		case LM_OT_EQUATION:
