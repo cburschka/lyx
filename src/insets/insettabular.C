@@ -275,14 +275,12 @@ void InsetTabular::draw(PainterInfo & pi, int x, int y) const
 {
 	//lyxerr << "InsetTabular::draw: " << x << " " << y << "\n";
 	if (nodraw()) {
+		lyxerr << "InsetTabular::nodraw: " << x << " " << y << "\n";
 		need_update = FULL;
 		return;
 	}
 
 	BufferView * bv = pi.base.bv;
-	int i;
-	int j;
-	int nx;
 
 #if 0
 	UpdatableInset::draw(pi, x, y);
@@ -296,25 +294,24 @@ void InsetTabular::draw(PainterInfo & pi, int x, int y) const
 	x += ADD_TO_TABULAR_WIDTH;
 
 	int cell = 0;
-	int cx;
 	first_visible_cell = -1;
-	for (i = 0; i < tabular.rows(); ++i) {
-		nx = x;
+	for (int i = 0; i < tabular.rows(); ++i) {
+		int nx = x;
 		cell = tabular.getCellNumber(i, 0);
-		if (!((y + tabular.getDescentOfRow(i)) > 0) &&
-			(y - tabular.getAscentOfRow(i)) < pi.pain.paperHeight())
+		if (y + tabular.getDescentOfRow(i) <= 0 &&
+			  y - tabular.getAscentOfRow(i) < pi.pain.paperHeight())
 		{
-		y += tabular.getDescentOfRow(i) +
-				tabular.getAscentOfRow(i + 1) +
-				tabular.getAdditionalHeight(i + 1);
+			y += tabular.getDescentOfRow(i) +
+					tabular.getAscentOfRow(i + 1) +
+					tabular.getAdditionalHeight(i + 1);
 			continue;
 		}
-		for (j = 0; j < tabular.columns(); ++j) {
+		for (int j = 0; j < tabular.columns(); ++j) {
 			if (nx > bv->workWidth())
 				break;
 			if (tabular.isPartOfMultiColumn(i, j))
 				continue;
-			cx = nx + tabular.getBeginningOfTextInCell(cell);
+			int cx = nx + tabular.getBeginningOfTextInCell(cell);
 			if (first_visible_cell < 0)
 				first_visible_cell = cell;
 			if (hasSelection()) {
@@ -2619,7 +2616,9 @@ bool InsetTabular::forceDefaultParagraphs(InsetOld const * in) const
 	// well we didn't obviously find it so maybe our owner knows more
 	if (owner())
 		return owner()->forceDefaultParagraphs(in);
+
 	// if we're here there is really something strange going on!!!
+	lyxerr << "if we're here there is really something strange going on!\n";
 	return false;
 }
 
