@@ -20,6 +20,7 @@
 
 #include "lyxlex.h"
 #include "support/path.h"
+#include "support/LAssert.h"
 
 using std::endl;
 using std::ostream;

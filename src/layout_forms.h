@@ -125,8 +125,6 @@ typedef struct {
 	FL_OBJECT *choice_bar;
 	FL_OBJECT *button_apply;
 	FL_OBJECT *button_close;
-	FL_OBJECT *choice_color;
-	FL_OBJECT *check_toggle_all;
 } FD_form_character;
 
 extern FD_form_character * create_form_form_character(void);

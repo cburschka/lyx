@@ -1,6 +1,7 @@
 dnl Some useful functions for LyXs configure.in                 -*- sh -*-
 dnl Author: Jean-Marc Lasgouttes (Jean-Marc.Lasgouttes@inria.fr)
 dnl         Lars Gullik Bjønnes (larsbj@lyx.org)
+dnl         Allan Rae (rae@lyx.org)
 
 
 dnl Usage LYX_GET_VERSION   Sets "lyx_version" to the version of LyX being 
@@ -735,21 +736,29 @@ AC_SUBST(INCLUDED_SIGC)
 ## actual header _is_ found though and the cache variable is set however
 ## the reported setting (on screen) is equal to $ac_safe for some unknown
 ## reason.
+## Additionally, autoheader can't figure out what to use as the name in
+## the config.h.in file so we need to write our own entries there -- one for
+## each header in the form PATH_HEADER_NAME_H
+##
 AC_DEFUN(LYX_PATH_HEADER,
 [ AC_CHECK_HEADER($1,[
   ac_tr_safe=PATH_`echo $ac_safe | sed 'y%abcdefghijklmnopqrstuvwxyz./-%ABCDEFGHIJKLMNOPQRSTUVWXYZ___%'`
-  AC_CACHE_CHECK([path to $1],lyx_cv_path_$ac_safe,
+### the only remaining problem is getting the second parameter to this
+### AC_CACHE_CACHE to print correctly. Currently it just results in value
+### of $ac_safe being printed.
+  AC_CACHE_CHECK([path to $1],[lyx_cv_path2_$ac_safe],
   [ cat > conftest.$ac_ext <<EOF
 #line __oline__ "configure"
 #include "confdefs.h"
 
 #include <$1>
 EOF
-lyx_cv_path_$ac_safe=`(eval "$ac_cpp conftest.$ac_ext") 2>&5 | \
+lyx_path_header_path=`(eval "$ac_cpp conftest.$ac_ext") 2>&5 | \
   grep $1  2>/dev/null | \
   sed -e 's/.*\(".*$1"\).*/\1/' -e "1q"`
+eval "lyx_cv_path2_${ac_safe}=\$lyx_path_header_path"
 rm -f conftest*])
-  AC_DEFINE_UNQUOTED(${ac_tr_safe},${lyx_cv_path_$ac_safe})])
+  AC_DEFINE_UNQUOTED($ac_tr_safe, $lyx_path_header_path)])
 ])
 ### end of LYX_PATH_HEADER
 
