@@ -1,5 +1,17 @@
 2003-06-12  Angus Leeming  <leeming@lyx.org>
 
+	* Dialogs.C: add the math dialog.
+	* Dialogs2.C: a temporary hack; keep showMathPanel() but invoke (and store)
+	the new dialog.
+
+	* QMath.[Ch]: derive from QDialogView.
+
+	* QMathDialog.C:
+	* QDelimiterDialog.C:
+	* QMathMatrixDialog.C: the dispatch functions are now in the controller.
+
+2003-06-12  Angus Leeming  <leeming@lyx.org>
+
 	* QExternalDialog.C (editClicked): do not call form_->changed().
 
 2003-06-11  Angus Leeming  <leeming@lyx.org>

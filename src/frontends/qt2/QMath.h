@@ -13,50 +13,22 @@
 #define QMATH_H
 
 
-#include "LString.h"
+#include "QDialogView.h"
 
+class ControlMath2;
 class QMathDialog;
 
-class QMath {
+class QMath : public QController<ControlMath2, QView<QMathDialog> > {
 public:
 	friend class QMathDialog;
 
-	QMath();
+	QMath(Dialog &);
 
-	/// temporary
-	void do_show();
-
-	/// build the dialog (should be private)
-	virtual void build_dialog();
-
-	/// insert a math symbol into the doc
-	void insert(string const & name);
-
-	/// insert a cube root
-	void insertCubeRoot();
-
-	/// insert a matrix
-	void insertMatrix(string const & str);
-
-	/// insert delim
-	void insertDelim(string const & str);
-
-	/// add a subscript
-	void subscript();
-
-	/// add a superscript
-	void superscript();
-
-	/// switch between display and inline
-	void toggleDisplay();
 private:
-	/// Apply changes
 	virtual void apply() {}
-	/// update
 	virtual void update_contents() {}
-
-	// FIXME: temp
-	QMathDialog * dialog_;
+	/// Build the dialog.
+	virtual void build_dialog();
 };
 
 #endif // QMATH_H

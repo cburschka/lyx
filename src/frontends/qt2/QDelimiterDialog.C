@@ -15,8 +15,8 @@
 #include "qt_helpers.h"
 #include "debug.h"
 
+#include "ControlMath2.h"
 #include "QMath.h"
-#include "ControlMath.h"
 #include "QDelimiterDialog.h"
 
 #include "iconpalette.h"
@@ -96,7 +96,7 @@ QDelimiterDialog::QDelimiterDialog(QMath * form)
 
 void QDelimiterDialog::insertClicked()
 {
-	form_->insertDelim(fix_name(left_) + ' ' + fix_name(right_));
+	form_->controller().dispatchDelim(fix_name(left_) + ' ' + fix_name(right_));
 }
 
 

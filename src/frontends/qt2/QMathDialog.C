@@ -15,7 +15,7 @@
 #include "qt_helpers.h"
 #include "debug.h"
 
-#include "ControlMath.h"
+#include "ControlMath2.h"
 
 #include "QMathDialog.h"
 #include "QMath.h"
@@ -196,13 +196,13 @@ void QMathDialog::addPanel(int num)
 
 void QMathDialog::symbol_clicked(string const & str)
 {
-	form_->insert(str);
+	form_->controller().dispatchInsert(str);
 }
 
 
 void QMathDialog::fracClicked()
 {
-	form_->insert("frac");
+	form_->controller().dispatchInsert("frac");
 }
 
 
@@ -229,7 +229,7 @@ void QMathDialog::expandClicked()
 
 void QMathDialog::functionSelected(const QString & str)
 {
-	form_->insert(fromqstr(str));
+	form_->controller().dispatchInsert(fromqstr(str));
 }
 
 
@@ -243,19 +243,19 @@ void QMathDialog::matrixClicked()
 
 void QMathDialog::equationClicked()
 {
-	form_->toggleDisplay();
+	form_->controller().dispatchToggleDisplay();
 }
 
 
 void QMathDialog::subscriptClicked()
 {
-	form_->subscript();
+	form_->controller().dispatchSubscript();
 }
 
 
 void QMathDialog::superscriptClicked()
 {
-	form_->superscript();
+	form_->controller().dispatchSuperscript();
 }
 
 
@@ -271,7 +271,7 @@ void QMathDialog::insertSpace(int id)
 		case 6: str = "!"; break;
 		default: return;
 	}
-	form_->insert(str);
+	form_->controller().dispatchInsert(str);
 }
 
 
@@ -279,13 +279,13 @@ void QMathDialog::insertRoot(int id)
 {
 	switch (id) {
 		case 1:
-			form_->insert("sqrt");
+			form_->controller().dispatchInsert("sqrt");
 			break;
 		case 2:
-			form_->insertCubeRoot();
+			form_->controller().dispatchCubeRoot();
 			break;
 		case 3:
-			form_->insert("root");
+			form_->controller().dispatchInsert("root");
 			break;
 	}
 }
@@ -301,7 +301,7 @@ void QMathDialog::insertStyle(int id)
 		case 4: str = "scriptscriptstyle"; break;
 		default: return;
 	}
-	form_->insert(str);
+	form_->controller().dispatchInsert(str);
 }
 
 
@@ -320,5 +320,5 @@ void QMathDialog::insertFont(int id)
 		case 9: str = "textrm"; break;
 		default: return;
 	}
-	form_->insert(str);
+	form_->controller().dispatchInsert(str);
 }

@@ -11,98 +11,21 @@
 #include <config.h>
 
 
-#include "debug.h"
-
-#include "lfuns.h"
-#include "funcrequest.h"
-#include "LyXView.h"
-#include "BufferView.h"
-
+#include "gettext.h"
+#include "ControlMath2.h"
 #include "QMathDialog.h"
 #include "QMath.h"
 
-#include "iconpalette.h"
 
-// needless to say, this can't last for long
-#warning FIXME Current_view used here!
-extern BufferView * current_view;
+typedef QController<ControlMath2, QView<QMathDialog> > base_class;
 
 
-// FIXME temporary HACK !
-void createMathPanel()
-{
-	static QMath * dialog = 0;
-	if (!dialog) {
-		dialog = new QMath;
-		dialog->build_dialog();
-	}
-	dialog->do_show();
-}
-
-
-QMath::QMath()
-{
-}
-
-
-void QMath::do_show()
-{
-	dialog_->show();
-}
+QMath::QMath(Dialog & parent)
+	: base_class(parent, _("LyX: Math Panel"))
+{}
 
 
 void QMath::build_dialog()
 {
-	dialog_ = new QMathDialog(this);
-}
-
-
-void QMath::subscript()
-{
-#warning FIXME Current_view used here!
-	current_view->owner()->dispatch(FuncRequest(LFUN_SUBSCRIPT));
-}
-
-
-void QMath::superscript()
-{
-#warning FIXME Current_view used here!
-	current_view->owner()->dispatch(FuncRequest(LFUN_SUPERSCRIPT));
-}
-
-
-void QMath::insert(string const & name)
-{
-#warning FIXME Current_view used here!
-	current_view->owner()->dispatch(FuncRequest(LFUN_INSERT_MATH, '\\' + name));
-}
-
-
-void QMath::insertCubeRoot()
-{
-#warning FIXME Current_view used here!
-	current_view->owner()->dispatch(FuncRequest(LFUN_INSERT_MATH, "\\root"));
-	current_view->owner()->dispatch(FuncRequest(LFUN_SELFINSERT, "3"));
-	current_view->owner()->dispatch(FuncRequest(LFUN_RIGHT));
-}
-
-
-void QMath::insertMatrix(string const & str)
-{
-#warning FIXME Current_view used here!
-	current_view->owner()->dispatch(FuncRequest(LFUN_INSERT_MATRIX, str));
-}
-
-
-void QMath::insertDelim(string const & str)
-{
-#warning FIXME Current_view used here!
-	current_view->owner()->dispatch(FuncRequest(LFUN_MATH_DELIM, str));
-}
-
-
-void QMath::toggleDisplay()
-{
-#warning FIXME Current_view used here!
-	current_view->owner()->dispatch(FuncRequest(LFUN_MATH_DISPLAY));
+	dialog_.reset(new QMathDialog(this));
 }

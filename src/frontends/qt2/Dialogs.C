@@ -26,6 +26,7 @@
 #include "ControlGraphics.h"
 #include "ControlInclude.h"
 #include "ControlLog.h"
+#include "ControlMath2.h"
 #include "ControlMinipage.h"
 #include "ControlParagraph.h"
 #include "ControlRef.h"
@@ -55,6 +56,7 @@
 #include "QInclude.h"
 #include "QIndex.h"
 #include "QLog.h"
+#include "QMath.h"
 #include "QMinipage.h"
 #include "QParagraph.h"
 #include "QRef.h"
@@ -80,7 +82,7 @@ namespace {
 
 char const * const dialognames[] = { "about", "bibitem", "bibtex", "changes",
 "character", "citation", "error", "errorlist", "ert", "external", "file",
-"float", "graphics", "include", "index", "label", "log", "minipage",
+"float", "graphics", "include", "index", "label", "log", "math", "minipage",
 "paragraph", "ref", "tabular", "tabularcreate",
 
 #ifdef HAVE_LIBAIKSAURUS
@@ -192,6 +194,10 @@ Dialog * Dialogs::build(string const & name)
 		dialog->setController(new ControlLog(*dialog));
 		dialog->setView(new QLog(*dialog));
 		dialog->bc().bp(new OkCancelPolicy);
+	} else if (name == "math") {
+		dialog->setController(new ControlMath2(*dialog));
+		dialog->setView(new QMath(*dialog));
+		dialog->bc().bp(new IgnorantPolicy);
 	} else if (name == "minipage") {
 		dialog->setController(new ControlMinipage(*dialog));
 		dialog->setView(new QMinipage(*dialog));

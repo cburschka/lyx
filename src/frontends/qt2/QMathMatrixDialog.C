@@ -14,6 +14,7 @@
 
 #include "support/lstrings.h"
 #include "Lsstream.h"
+#include "ControlMath2.h"
 
 #include "QMath.h"
 #include "QMathMatrixDialog.h"
@@ -81,7 +82,7 @@ void QMathMatrixDialog::slotOK()
 
 	ostringstream os;
 	os << nx << ' ' << ny << ' ' << c << ' ' << sh;
-	form_->insertMatrix(os.str().c_str());
+	form_->controller().dispatchMatrix(os.str().c_str());
 
 	// close the dialog
 	close();

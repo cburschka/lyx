@@ -120,10 +120,8 @@ void Dialogs::showForks()
 
 void Dialogs::showMathPanel()
 {
-	// FIXME FIXME FIXME
-	extern void createMathPanel();
-
-	createMathPanel();
+	static DialogPtr mathdialog(build("math"));
+	mathdialog->show(string());
 }
 
 
