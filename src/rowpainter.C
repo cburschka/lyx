@@ -489,9 +489,9 @@ void RowPainter::paintChangeBar()
 	if (!pit_->isChanged(start, end))
 		return;
 
-	int const height = (boost::next(row_) != text_.rows().end()
-		? row_->height() + boost::next(row_)->top_of_text()
-		: row_->baseline());
+	int const height = (row_ == text_.lastRow())
+		? row_->baseline()
+		: row_->height() + boost::next(row_)->top_of_text();
 
 	pain_.fillRectangle(4, yo_, 5, height, LColor::changebar);
 }
@@ -677,7 +677,7 @@ void RowPainter::paintFirst()
 		y_top += paintAppendixStart(yo_ + y_top + 2 * defaultRowHeight());
 
 	// the top margin
-	if (row_ == text_.rows().begin() && !text_.isInInset())
+	if (row_ == text_.firstRow() && !text_.isInInset())
 		y_top += PAPER_MARGIN;
 
 	// draw a top pagebreak
@@ -822,7 +822,7 @@ void RowPainter::paintLast()
 	int y_bottom = row_->height() - 1;
 
 	// the bottom margin
-	if (boost::next(row_) == text_.rows().end() && !text_.isInInset())
+	if (row_ == text_.lastRow() && !text_.isInInset())
 		y_bottom -= PAPER_MARGIN;
 
 	int const ww = bv_.workWidth();
