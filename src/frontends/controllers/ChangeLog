@@ -1,5 +1,10 @@
 2001-09-27  Angus Leeming  <a.leeming@ic.ac.uk>
 
+	* ControlSpellchecker.C (check): Behaves well now when the spell library
+	doesn't know a replacement to an incorrect word.
+
+2001-09-27  Angus Leeming  <a.leeming@ic.ac.uk>
+
 	* ControlSpellchecker.C (clearParams): place emergency_exit_ in
 	the correct place. Can now check spelling more than once!
 

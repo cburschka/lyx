@@ -56,7 +56,7 @@ using SigC::slot;
 ControlSpellchecker::ControlSpellchecker(LyXView & lv, Dialogs & d)
 	: ControlDialog<ControlConnectBD>(lv, d),
 	  rtl_(false), newval_(0.0), oldval_(0), newvalue_(0), count_(0),
-	  stop_(false), result_(SpellBase::ISP_UNKNOWN), speller_(0)
+	  stop_(false), result_(SpellBase::ISP_OK), speller_(0)
 {
 	d_.showSpellchecker.connect(SigC::slot(this, &ControlSpellchecker::show));
 }
@@ -104,10 +104,11 @@ void ControlSpellchecker::setParams()
 
 void ControlSpellchecker::check()
 {
-	result_ = SpellBase::ISP_UNKNOWN;
+	result_ = SpellBase::ISP_OK;
 	stop_ = false;
 	
-	while (result_!=SpellBase::ISP_MISSED && !stop_) {
+	while ((result_==SpellBase::ISP_OK || result_==SpellBase::ISP_IGNORE) &&
+	       !stop_) {
 		word_ = lv_.view()->nextWord(newval_);
 		
 		if (word_.empty()) {
@@ -134,7 +135,7 @@ void ControlSpellchecker::check()
 		lv_.view()->selectLastWord();
 
 	// set suggestions
-	if (result_==SpellBase::ISP_MISSED) {
+	if (result_!=SpellBase::ISP_OK && result_!=SpellBase::ISP_IGNORE) {
 		view().partialUpdate(1);
 	}
 }
@@ -240,7 +241,7 @@ void ControlSpellchecker::clearParams()
 	count_ = 0;
 	message_ = "";
 	stop_ = false;
-	result_ = SpellBase::ISP_UNKNOWN;
+	result_ = SpellBase::ISP_OK;
 	speller_ = 0;
 }
 
