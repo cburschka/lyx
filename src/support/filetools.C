@@ -32,7 +32,6 @@
 #include "lyx_gui_misc.h"
 #include "FileInfo.h"
 #include "support/path.h"        // I know it's OS/2 specific (SMiyata)
-#include "support/syscall.h"
 #include "gettext.h"
 #include "lyxlib.h"
 

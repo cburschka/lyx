@@ -86,6 +86,7 @@ public:
 	    When the child is dead, the callback is called.
 	*/
 	void kill(int tolerance = 5);
+
 private:
 	/// Type of execution: system, wait for child or background
 	Starttype start;

@@ -1,3 +1,10 @@
+2001-02-28  Baruch Even  <baruch@ev-en.org>
+
+	* filetools.C: Removed dependency on syscall.h
+
+	* syscall.h:
+	* syscall.C: Minor cleanings before I start to touch this code.
+
 2001-02-27  Lars Gullik Bjønnes  <larsbj@trylle.birdstep.com>
 
 	* filetools.C (CreateTmpDir): change umask to 0700.

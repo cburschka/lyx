@@ -25,12 +25,7 @@ Systemcalls::Systemcalls() {
 
 Systemcalls::Systemcalls(Starttype how, string const & what, Callbackfct cback)
 {
-	start   = how;
-	command = what;
-	cbk     = cback;
-	pid     = static_cast<pid_t>(0);
-	retval  = 0;
-	startscript();
+	startscript(how, what, cback);
 }
 
 Systemcalls::~Systemcalls() {
@@ -95,7 +90,7 @@ void Systemcalls::kill(int /*tolerance*/) {
 	if (wait_for_death) {
 		// Here, we should add the PID to a list of
 		// waiting processes to kill if they are not
-		// dead without tolerance seconds
+		// dead within tolerance seconds
 
 		// CHECK Implement this using the timer of
 		// the singleton systemcontroller (Asger)
@@ -144,14 +139,16 @@ pid_t Systemcalls::fork()
 {
 	pid_t cpid= ::fork();
 	if (cpid == 0) { // child
+		// TODO: Consider doing all of this before the fork, otherwise me
+		// might have troubles with multi-threaded access. (Baruch 20010228)
 		string childcommand(command); // copy
 		string rest = split(command, childcommand, ' ');
 		const int MAX_ARGV = 255;
 		char *syscmd = 0; 
 		char *argv[MAX_ARGV];
 		int  index = 0;
-		bool more;
-		do {
+		bool more = true;
+		while (more) {
 			childcommand = frontStrip(childcommand);
 			if (syscmd == 0) {
 				syscmd = new char[childcommand.length() + 1];
@@ -169,7 +166,7 @@ pid_t Systemcalls::fork()
 			more = !rest.empty();
 			if (more) 
 				rest = split(rest, childcommand, ' ');
-		} while (more);
+		}
 		argv[index] = 0;
 		// replace by command. Expand using PATH-environment-var.
 		execvp(syscmd, argv);
@@ -187,7 +184,7 @@ pid_t Systemcalls::fork()
 // Reuse of instance
 
 int Systemcalls::startscript(Starttype how, string const & what, 
-			     Callbackfct cback)
+                             Callbackfct cback)
 {
 	start   = how;
 	command = what;
