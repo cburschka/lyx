@@ -155,10 +155,9 @@ string const InsetFormulaBase::editMessage() const
 }
 
 
-void InsetFormulaBase::edit(BufferView * bv, int x, int y, unsigned int
-button)
+void InsetFormulaBase::edit(BufferView * bv, int x, int /*y*/, unsigned int)
 {
-	lyxerr << "edit: " << x  << " " << y << " button: " << button << "\n";
+	//lyxerr << "edit: " << x  << " " << y << " button: " << button << "\n";
 	if (!bv->lockInset(this))
 		lyxerr[Debug::MATHED] << "Cannot lock inset!!!" << endl;
 
@@ -685,7 +684,7 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 	case LFUN_INSET_ERT:
 		// interpret this as if a backslash was typed
 		bv->lockedInsetStoreUndo(Undo::EDIT);
-		mathcursor->interpret("\\");
+		mathcursor->interpret('\\');
 		updateLocal(bv, true);
 		break;
 
@@ -694,7 +693,10 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 	case LFUN_SELFINSERT:
 		if (!arg.empty()) {
 			bv->lockedInsetStoreUndo(Undo::EDIT);
-			result = mathcursor->interpret(arg) ? DISPATCHED : FINISHED_RIGHT;
+			if (arg.size() == 1)
+				result = mathcursor->interpret(arg[0]) ? DISPATCHED : FINISHED_RIGHT;
+			else
+				result = mathcursor->interpret(arg) ? DISPATCHED : FINISHED_RIGHT;
 			updateLocal(bv, true);
 		}
 		break;

@@ -1333,9 +1333,6 @@ bool MathCursor::interpret(string const & s)
 	if (s.empty())
 		return true;
 
-	if (s.size() == 1)
-		return interpret(s[0]);
-
 	//lyxerr << "char: '" << s[0] << "'  int: " << int(s[0]) << endl;
 	//owner_->getIntl()->getTrans().TranslateAndInsert(s[0], lt);
 	//lyxerr << "trans: '" << s[0] << "'  int: " << int(s[0]) << endl;
@@ -1375,9 +1372,11 @@ bool MathCursor::interpret(string const & s)
 		return true;
 	}
 
-	if (s == "\\over" || s == "\\choose" || s == "\\atop") {
+	string name = s.substr(1);
+
+	if (name == "over" || name == "choose" || name == "atop") {
 		MathArray ar = array();
-		MathAtom t(createMathInset(s.substr(1)));
+		MathAtom t(createMathInset(name));
 		t->asNestInset()->cell(0).swap(array());
 		pos() = 0;
 		niceInsert(t);
@@ -1386,7 +1385,7 @@ bool MathCursor::interpret(string const & s)
 		return true;
 	}
 
-	latexkeys const * l = in_word_set(s.substr(1));
+	latexkeys const * l = in_word_set(name);
 	if (l && (l->token == LM_TK_FONT || l->token == LM_TK_OLDFONT)) {
 		lastcode_ = static_cast<MathTextCodes>(l->id);
 		return true;
@@ -1394,13 +1393,13 @@ bool MathCursor::interpret(string const & s)
 
 	// prevent entering of recursive macros
 	if (formula()->lyxCode() == Inset::MATHMACRO_CODE
-		&& formula()->getInsetName() == s.substr(1))
+		&& formula()->getInsetName() == name)
 	{
 		lyxerr << "can't enter recursive macro\n";
 		return true;
 	}
 
-	niceInsert(createMathInset(s.substr(1)));
+	niceInsert(createMathInset(name));
 	return true;
 }
 
@@ -1434,6 +1433,7 @@ bool MathCursor::script(bool up)
 
 bool MathCursor::interpret(char c)
 {
+	//lyxerr << "interpret 2: '" << c << "'\n";
 	if (inMacroArgMode()) {
 		--pos();
 		plainErase();
@@ -1451,28 +1451,34 @@ bool MathCursor::interpret(char c)
 	// handle macroMode
 	if (inMacroMode()) {
 		string name = macroName();
+		//lyxerr << "interpret name: '" << name << "'\n";
 
-		if (name == "\\" && c == '\\') {
-			backspace();
-			interpret("\\backslash");
-			return true;
-		}
-
+		// extend macro name if possible
 		if (isalpha(c)) {
 			insert(c, LM_TC_TEX);
 			return true;
 		}
 
-		macroModeClose();
-
-		if (c == '{' || c == '}') {
-			insert(MathAtom(new MathSpecialCharInset(c)));
+		// leave macro mode if explicitly requested
+		if (c == ' ') {
+			macroModeClose();
 			return true;
 		}
 
-		if (c != ' ')
-			interpret(c);
+		// handle 'special char' macros
+		if (name == "\\") {
+			// remove the '\\'
+			backspace();
+			if (c == '\\') 
+				interpret("\\backslash");
+			else
+				interpret(string("\\") + c);
+			return true;
+		}
 
+		// leave macro mode and try again
+		macroModeClose();
+		interpret(c);
 		return true;
 	}
 
