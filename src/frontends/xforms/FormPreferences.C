@@ -117,8 +117,7 @@ void FormPreferences::redraw()
 
 FL_FORM * FormPreferences::form() const
 {
-	if (dialog_.get()) return dialog_->form;
-	return 0;
+	return dialog_.get() ? dialog_->form : 0;
 }
 
 
@@ -149,10 +148,8 @@ void FormPreferences::hide()
 	// We need to hide the active tabfolder otherwise we get a
 	// BadDrawable error from X window and LyX crashes without saving.
 	FL_FORM * inner_form = fl_get_active_folder(dialog_->tabfolder_prefs);
-	if (inner_form
-	    && inner_form->visible) {
+	if (inner_form && inner_form->visible)
 		fl_hide_form(inner_form);
-	}
 	FormBaseDeprecated::hide();
 }
 
@@ -291,35 +288,32 @@ string const FormPreferences::getFeedback(FL_OBJECT * ob)
 {
 	lyx::Assert(ob);
 
-	string str;
+	if (ob->form->fdui == colors_.dialog())
+		return colors_.feedback(ob);
+	if (ob->form->fdui == converters_.dialog())
+		return converters_.feedback(ob);
+	if (ob->form->fdui == formats_.dialog())
+		return formats_.feedback(ob);
+	if (ob->form->fdui == inputs_misc_.dialog())
+		return inputs_misc_.feedback(ob);
+	if (ob->form->fdui == interface_.dialog())
+		return interface_.feedback(ob);
+	if (ob->form->fdui == language_.dialog())
+		return language_.feedback(ob);
+	if (ob->form->fdui == lnf_misc_.dialog())
+		return lnf_misc_.feedback(ob);
+	if (ob->form->fdui == outputs_misc_.dialog())
+		return outputs_misc_.feedback(ob);
+	if (ob->form->fdui == paths_.dialog())
+		return paths_.feedback(ob);
+	if (ob->form->fdui == printer_.dialog())
+		return printer_.feedback(ob);
+	if (ob->form->fdui == screen_fonts_.dialog())
+		return screen_fonts_.feedback(ob);
+	if (ob->form->fdui == spelloptions_.dialog())
+		return spelloptions_.feedback(ob);
 
-	if (ob->form->fdui == colors_.dialog()) {
-		str = colors_.feedback(ob);
-	} else if (ob->form->fdui == converters_.dialog()) {
-		str = converters_.feedback(ob);
-	} else if (ob->form->fdui == formats_.dialog()) {
-		str = formats_.feedback(ob);
-	} else if (ob->form->fdui == inputs_misc_.dialog()) {
-		str = inputs_misc_.feedback(ob);
-	} else if (ob->form->fdui == interface_.dialog()) {
-		str = interface_.feedback(ob);
-	} else if (ob->form->fdui == language_.dialog()) {
-		str = language_.feedback(ob);
-	} else if (ob->form->fdui == lnf_misc_.dialog()) {
-		str = lnf_misc_.feedback(ob);
-	} else if (ob->form->fdui == outputs_misc_.dialog()) {
-		str = outputs_misc_.feedback(ob);
-	} else if (ob->form->fdui == paths_.dialog()) {
-		str = paths_.feedback(ob);
-	} else if (ob->form->fdui == printer_.dialog()) {
-		str = printer_.feedback(ob);
-	} else if (ob->form->fdui == screen_fonts_.dialog()) {
-		str = screen_fonts_.feedback(ob);
-	} else if (ob->form->fdui == spelloptions_.dialog()) {
-		str = spelloptions_.feedback(ob);
-	}
-
-	return str;
+	return string();
 }
 
 
@@ -334,19 +328,20 @@ bool FormPreferences::input(FL_OBJECT * ob, long)
 	if (ob->form->fdui == colors_.dialog()) {
 		colors_.input(ob);
 		return true;
-	} else if (ob->form->fdui == converters_.dialog())
+	}
+	if (ob->form->fdui == converters_.dialog())
 		return converters_.input(ob);
-	else if (ob->form->fdui == formats_.dialog())
+	if (ob->form->fdui == formats_.dialog())
 		return formats_.input(ob);
-	else if (ob->form->fdui == interface_.dialog())
+	if (ob->form->fdui == interface_.dialog())
 		return interface_.input(ob);
-	else if (ob->form->fdui == language_.dialog())
+	if (ob->form->fdui == language_.dialog())
 		return language_.input(ob);
-	else if (ob->form->fdui == paths_.dialog())
+	if (ob->form->fdui == paths_.dialog())
 		return paths_.input(ob);
-	else if (ob->form->fdui == screen_fonts_.dialog())
+	if (ob->form->fdui == screen_fonts_.dialog())
 		return screen_fonts_.input();
-	else if (ob->form->fdui == spelloptions_.dialog())
+	if (ob->form->fdui == spelloptions_.dialog())
 		return spelloptions_.input(ob);
 
 	return true;
@@ -504,28 +499,24 @@ void FormPreferences::Colors::build()
 string const
 FormPreferences::Colors::feedback(FL_OBJECT const * const ob) const
 {
-	string str;
+	if (ob == dialog_->browser_lyx_objs) 
+		return _("LyX objects that can be assigned a color.");
 
-	if (ob == dialog_->browser_lyx_objs) {
-		str = _("LyX objects that can be assigned a color.");
+	if (ob == dialog_->button_modify) 
+		return _("Modify the LyX object's color. Note: you must then \"Apply\" the change.");
 
-	} else if (ob == dialog_->button_modify) {
-		str = _("Modify the LyX object's color. Note: you must then \"Apply\" the change.");
+	if (ob == dialog_->dial_hue ||
+		  ob == dialog_->slider_saturation ||
+		  ob == dialog_->slider_value ||
+		  ob == dialog_->slider_red ||
+		  ob == dialog_->slider_green ||
+		  ob == dialog_->slider_blue)
+		return  _("Find a new color.");
 
-	} else if (ob == dialog_->dial_hue ||
-		   ob == dialog_->slider_saturation ||
-		   ob == dialog_->slider_value ||
-		   ob == dialog_->slider_red ||
-		   ob == dialog_->slider_green ||
-		   ob == dialog_->slider_blue) {
-		str = _("Find a new color.");
+	if (ob == dialog_->radio_rgb || ob == dialog_->radio_hsv) 
+		return _("Toggle between RGB and HSV color spaces.");
 
-	} else if (ob == dialog_->radio_rgb ||
-		   ob == dialog_->radio_hsv) {
-		str = _("Toggle between RGB and HSV color spaces.");
-	}
-
-	return str;
+	return string();
 }
 
 
@@ -816,7 +807,8 @@ void FormPreferences::Colors::Modify()
 {
 	vector<NamedColor>::size_type const selLyX =
 		fl_get_browser(dialog_->browser_lyx_objs);
-	if (selLyX < 1) return;
+	if (selLyX < 1)
+		return;
 
 	RGBColor col;
 	fl_getmcolor(GUI_COLOR_CHOICE, &col.r, &col.g, &col.b);
@@ -868,7 +860,7 @@ void FormPreferences::Colors::SwitchColorSpace() const
 		fl_set_slider_value(dialog_->slider_value, hsv.v);
 
 		col = HSVColor(hsv.h, 1.0, 1.0);
-		col.r = max(col.r,0);
+		col.r = max(col.r, 0);
 		fl_mapcolor(GUI_COLOR_HUE_DIAL, col.r, col.g, col.b);
 		fl_redraw_object(dialog_->dial_hue);
 
@@ -876,10 +868,10 @@ void FormPreferences::Colors::SwitchColorSpace() const
 		// Means that toggling from one space to the other has no
 		// effect on the final color.
 		int const h = int(hsv.h);
-		int const s = int(100*hsv.s);
-		int const v = int(100*hsv.v);
-		string const label = tostr(h) + string(", ") + tostr(s) +
-			string(", ") + tostr(v);
+		int const s = int(100 * hsv.s);
+		int const v = int(100 * hsv.v);
+		string const label = tostr(h) + ", " + tostr(s) +
+			", " + tostr(v);
 		fl_set_object_label(dialog_->text_color_values, label.c_str());
 
 	} else {
@@ -898,8 +890,8 @@ void FormPreferences::Colors::SwitchColorSpace() const
 		int const r = int(col.r);
 		int const g = int(col.g);
 		int const b = int(col.b);
-		string const label = tostr(r) + string(", ") + tostr(g) +
-			string(", ") + tostr(b);
+		string const label = tostr(r) + ", " + tostr(g) +
+			", " + tostr(b);
 		fl_set_object_label(dialog_->text_color_values, label.c_str());
 	}
 
@@ -959,48 +951,58 @@ void FormPreferences::Converters::build()
 string const
 FormPreferences::Converters::feedback(FL_OBJECT const * const ob) const
 {
-	string str;
+	if (ob == dialog_->browser_all) 
+		return _("All the currently defined converters known to LyX.");
 
-	if (ob == dialog_->browser_all) {
-		str = _("All the currently defined converters known to LyX.");
-	} else if (ob == dialog_->choice_from) {
-		str = _("Convert \"from\" this format");
-	} else if (ob == dialog_->choice_to) {
-		str = _("Convert \"to\" this format");
-	} else if (ob == dialog_->input_converter) {
-		str = _("The conversion command. $$i is the input file name, $$b is the file name without its extension and $$o is the name of the output file.");
-	} else if (ob == dialog_->input_flags) {
-		str = _("Extra information for the Converter class, whether and how to parse the result, and various other things.");
-	} else if (ob == dialog_->button_delete) {
-		str = _("Remove the current converter from the list of available converters. Note: you must then \"Apply\" the change.");
-	} else if (ob == dialog_->button_add) {
+	if (ob == dialog_->choice_from)
+		return _("Convert \"from\" this format");
+
+	if (ob == dialog_->choice_to)
+		return _("Convert \"to\" this format");
+
+	if (ob == dialog_->input_converter)
+		return _("The conversion command. $$i is the input file name, "
+		         "$$b is the file name without its extension and $$o is "
+		         "the name of the output file. $$s can be used as path to "
+		         "LyX's own collection of conversion scripts.");
+
+	if (ob == dialog_->input_flags)
+		return _("Extra information for the Converter class, whether and "
+		         "how to parse the result, and various other things.");
+
+	if (ob == dialog_->button_delete)
+		return _("Remove the current converter from the list of available "
+		         "converters. Note: you must then \"Apply\" the change.");
+
+	if (ob == dialog_->button_add) {
 		if (string(ob->label) == _("Add"))
-			str = _("Add the current converter to the list of available converters. Note: you must then \"Apply\" the change.");
+			return _("Add the current converter to the list of available "
+			         "converters. Note: you must then \"Apply\" the change.");
 		else
-			str = _("Modify the contents of the current converter. Note: you must then \"Apply\" the change.");
+			return _("Modify the contents of the current converter. "
+			         "Note: you must then \"Apply\" the change.");
 	}
 
-	return str;
+	return string();
 }
 
 
 bool FormPreferences::Converters::input(FL_OBJECT const * const ob)
 {
-	if (ob == dialog_->browser_all) {
+	if (ob == dialog_->browser_all)
 		return Browser();
 
-	} else if (ob == dialog_->choice_from
+	if (ob == dialog_->choice_from
 		   || ob == dialog_->choice_to
 		   || ob == dialog_->input_converter
-		   || ob == dialog_->input_flags) {
+		   || ob == dialog_->input_flags)
 		return Input();
 
-	} else if (ob == dialog_->button_add) {
+	if (ob == dialog_->button_add) 
 		return Add();
 
-	} else if (ob == dialog_->button_delete) {
+	if (ob == dialog_->button_delete) 
 		return erase();
-	}
 
 	return true;
 }
@@ -1134,11 +1136,9 @@ string const FormPreferences::Converters::GetFrom() const
 
 	if (i > 0 && i <= local_formats.size())
 		return local_formats.get(i - 1).name();
-	else {
-		lyxerr << "FormPreferences::Converters::GetFrom: No choice!"
-		       << endl;
-		return "???";
-	}
+
+	lyxerr << "FormPreferences::Converters::GetFrom: No choice!" << endl;
+	return "???";
 }
 
 
@@ -1149,11 +1149,9 @@ string const FormPreferences::Converters::GetTo() const
 
 	if (i > 0 && i <= local_formats.size())
 		return local_formats.get(i - 1).name();
-	else {
-		lyxerr << "FormPreferences::Converters::GetTo: No choice!"
-		       << endl;
-		return "???";
-	}
+
+	lyxerr << "FormPreferences::Converters::GetTo: No choice!" << endl;
+	return "???";
 }
 
 
@@ -1222,51 +1220,59 @@ void FormPreferences::Formats::build()
 string const
 FormPreferences::Formats::feedback(FL_OBJECT const * const ob) const
 {
-	string str;
+	if (ob == dialog_->browser_all) 
+		return  _("All the currently defined formats known to LyX.");
 
-	if (ob == dialog_->browser_all) {
-		str = _("All the currently defined formats known to LyX.");
-	} else if (ob == dialog_->input_format) {
-		str = _("The format identifier.");
-	} else if (ob == dialog_->input_gui_name) {
-		str = _("The format name as it will appear in the menus.");
-	} else if (ob == dialog_->input_shrtcut) {
-		str = _("The keyboard accelerator. Use a letter in the GUI name. Case sensitive.");
-	} else if (ob == dialog_->input_extension) {
-		str = _("Used to recognize the file. E.g., ps, pdf, tex.");
-	} else if (ob == dialog_->input_viewer) {
-		str = _("The command used to launch the viewer application.");
-	} else if (ob == dialog_->button_delete) {
-		str = _("Remove the current format from the list of available formats. Note: you must then \"Apply\" the change.");
-	} else if (ob == dialog_->button_add) {
+	if (ob == dialog_->input_format)
+		return  _("The format identifier.");
+
+	if (ob == dialog_->input_gui_name)
+		return  _("The format name as it will appear in the menus.");
+
+	if (ob == dialog_->input_shrtcut)
+		return  _("The keyboard accelerator. Use a letter in the GUI name. "
+		          "Case sensitive.");
+
+	if (ob == dialog_->input_extension)
+		return  _("Used to recognize the file. E.g., ps, pdf, tex.");
+
+	if (ob == dialog_->input_viewer)
+		return  _("The command used to launch the viewer application.");
+
+	if (ob == dialog_->button_delete)
+		return  _("Remove the current format from the list of available "
+		          "formats. Note: you must then \"Apply\" the change.");
+
+	if (ob == dialog_->button_add) { 
 		if (string(ob->label) == _("Add"))
-			str = _("Add the current format to the list of available formats. Note: you must then \"Apply\" the change.");
+			return  _("Add the current format to the list of available "
+			          "formats. Note: you must then \"Apply\" the change.");
 		else
-			str = _("Modify the contents of the current format. Note: you must then \"Apply\" the change.");
+			return  _("Modify the contents of the current format. Note: "
+			          "you must then \"Apply\" the change.");
 	}
 
-	return str;
+	return string();
 }
 
 
 bool FormPreferences::Formats::input(FL_OBJECT const * const ob)
 {
-	if (ob == dialog_->browser_all) {
+	if (ob == dialog_->browser_all) 
 		return Browser();
 
-	} else if (ob == dialog_->input_format
-		   || ob == dialog_->input_gui_name
-		   || ob == dialog_->input_shrtcut
-		   || ob == dialog_->input_extension
-		   || ob == dialog_->input_viewer) {
+	if (ob == dialog_->input_format
+	 || ob == dialog_->input_gui_name
+	 || ob == dialog_->input_shrtcut
+	 || ob == dialog_->input_extension
+	 || ob == dialog_->input_viewer)
 		return Input();
 
-	} else if (ob == dialog_->button_add) {
+	if (ob == dialog_->button_add) 
 		return Add();
 
-	} else if (ob == dialog_->button_delete) {
+	if (ob == dialog_->button_delete) 
 		return erase();
-	}
 
 	return false;
 }
@@ -1326,7 +1332,8 @@ bool FormPreferences::Formats::Add()
 bool FormPreferences::Formats::Browser()
 {
 	int const i = fl_get_browser(dialog_->browser_all);
-	if (i <= 0) return false;
+	if (i <= 0)
+		return false;
 
 	fl_freeze_form(dialog_->form);
 
@@ -1354,7 +1361,8 @@ bool FormPreferences::Formats::erase()
 	string const name = fl_get_input(dialog_->input_format);
 
 	if (local_converters.formatIsUsed(name)) {
-		parent_.postWarning(_("Cannot remove a Format used by a Converter. Remove the converter first."));
+		parent_.postWarning(_("Cannot remove a Format used by a Converter. "
+		                      "Remove the converter first."));
 		setEnabled(dialog_->button_delete, false);
 		return false;
 	}
@@ -1435,12 +1443,9 @@ void FormPreferences::InputsMisc::build()
 string const
 FormPreferences::InputsMisc::feedback(FL_OBJECT const * const ob) const
 {
-	string str;
-
 	if (ob == dialog_->input_date_format)
-		str = lyxrc.getDescription(LyXRC::RC_DATE_INSERT_FORMAT);
-
-	return str;
+		return lyxrc.getDescription(LyXRC::RC_DATE_INSERT_FORMAT);
+	return string();
 }
 
 
@@ -1501,22 +1506,19 @@ void FormPreferences::Interface::build()
 string const
 FormPreferences::Interface::feedback(FL_OBJECT const * const ob) const
 {
-	string str;
-
 	if (ob == dialog_->input_popup_normal_font)
-		str = lyxrc.getDescription(LyXRC::RC_POPUP_NORMAL_FONT);
-	else if (ob == dialog_->input_popup_bold_font)
-		str = lyxrc.getDescription(LyXRC::RC_POPUP_BOLD_FONT);
-	else if (ob == dialog_->input_popup_font_encoding)
-		str = lyxrc.getDescription(LyXRC::RC_POPUP_FONT_ENCODING);
-	else if (ob == dialog_->input_bind_file)
-		str = lyxrc.getDescription(LyXRC::RC_BINDFILE);
-	else if (ob == dialog_->input_ui_file)
-		str = lyxrc.getDescription(LyXRC::RC_UIFILE);
-	else if (ob == dialog_->check_override_x_dead_keys)
-		str = lyxrc.getDescription(LyXRC::RC_OVERRIDE_X_DEADKEYS);
-
-	return str;
+		return lyxrc.getDescription(LyXRC::RC_POPUP_NORMAL_FONT);
+	if (ob == dialog_->input_popup_bold_font)
+		return lyxrc.getDescription(LyXRC::RC_POPUP_BOLD_FONT);
+	if (ob == dialog_->input_popup_font_encoding)
+		return lyxrc.getDescription(LyXRC::RC_POPUP_FONT_ENCODING);
+	if (ob == dialog_->input_bind_file)
+		return lyxrc.getDescription(LyXRC::RC_BINDFILE);
+	if (ob == dialog_->input_ui_file)
+		return lyxrc.getDescription(LyXRC::RC_UIFILE);
+	if (ob == dialog_->check_override_x_dead_keys)
+		return lyxrc.getDescription(LyXRC::RC_OVERRIDE_X_DEADKEYS);
+	return string();
 }
 
 
@@ -1689,36 +1691,33 @@ void FormPreferences::Language::build()
 string const
 FormPreferences::Language::feedback(FL_OBJECT const * const ob) const
 {
-	string str;
-
 	if (reinterpret_cast<Combox const *>(ob) == combo_default_lang.get())
-		str = lyxrc.getDescription(LyXRC::RC_DEFAULT_LANGUAGE);
-	else if (ob == dialog_->check_use_kbmap)
-		str = lyxrc.getDescription(LyXRC::RC_KBMAP);
-	else if (ob == dialog_->input_kbmap1)
-		str = lyxrc.getDescription(LyXRC::RC_KBMAP_PRIMARY);
-	else if (ob == dialog_->input_kbmap2)
-		str = lyxrc.getDescription(LyXRC::RC_KBMAP_SECONDARY);
-	else if (ob == dialog_->check_rtl_support)
-		str = lyxrc.getDescription(LyXRC::RC_RTL_SUPPORT);
-	else if (ob == dialog_->check_mark_foreign)
-		str = lyxrc.getDescription(LyXRC::RC_MARK_FOREIGN_LANGUAGE);
-	else if (ob == dialog_->check_auto_begin)
-		str = lyxrc.getDescription(LyXRC::RC_LANGUAGE_AUTO_BEGIN);
-	else if (ob == dialog_->check_auto_end)
-		str = lyxrc.getDescription(LyXRC::RC_LANGUAGE_AUTO_END);
-	else if (ob == dialog_->check_use_babel)
-		str = lyxrc.getDescription(LyXRC::RC_LANGUAGE_USE_BABEL);
-	else if (ob == dialog_->check_global_options)
-		str = lyxrc.getDescription(LyXRC::RC_LANGUAGE_GLOBAL_OPTIONS);
-	else if (ob == dialog_->input_package)
-		str = lyxrc.getDescription(LyXRC::RC_LANGUAGE_PACKAGE);
-	else if (ob == dialog_->input_command_begin)
-		str = lyxrc.getDescription(LyXRC::RC_LANGUAGE_COMMAND_BEGIN);
-	else if (ob == dialog_->input_command_end)
-		str = lyxrc.getDescription(LyXRC::RC_LANGUAGE_COMMAND_END);
-
-	return str;
+		return lyxrc.getDescription(LyXRC::RC_DEFAULT_LANGUAGE);
+	if (ob == dialog_->check_use_kbmap)
+		return lyxrc.getDescription(LyXRC::RC_KBMAP);
+	if (ob == dialog_->input_kbmap1)
+		return lyxrc.getDescription(LyXRC::RC_KBMAP_PRIMARY);
+	if (ob == dialog_->input_kbmap2)
+		return lyxrc.getDescription(LyXRC::RC_KBMAP_SECONDARY);
+	if (ob == dialog_->check_rtl_support)
+		return lyxrc.getDescription(LyXRC::RC_RTL_SUPPORT);
+	if (ob == dialog_->check_mark_foreign)
+		return lyxrc.getDescription(LyXRC::RC_MARK_FOREIGN_LANGUAGE);
+	if (ob == dialog_->check_auto_begin)
+		return lyxrc.getDescription(LyXRC::RC_LANGUAGE_AUTO_BEGIN);
+	if (ob == dialog_->check_auto_end)
+		return lyxrc.getDescription(LyXRC::RC_LANGUAGE_AUTO_END);
+	if (ob == dialog_->check_use_babel)
+		return lyxrc.getDescription(LyXRC::RC_LANGUAGE_USE_BABEL);
+	if (ob == dialog_->check_global_options)
+		return lyxrc.getDescription(LyXRC::RC_LANGUAGE_GLOBAL_OPTIONS);
+	if (ob == dialog_->input_package)
+		return lyxrc.getDescription(LyXRC::RC_LANGUAGE_PACKAGE);
+	if (ob == dialog_->input_command_begin)
+		return lyxrc.getDescription(LyXRC::RC_LANGUAGE_COMMAND_BEGIN);
+	if (ob == dialog_->input_command_end)
+		return lyxrc.getDescription(LyXRC::RC_LANGUAGE_COMMAND_END);
+	return string();
 }
 
 
@@ -1763,7 +1762,7 @@ void FormPreferences::Language::update()
 		      lyxrc.use_kbmap);
 
 	int const pos = int(findPos(lang_, lyxrc.default_language));
-	combo_default_lang->select(pos+1);
+	combo_default_lang->select(pos + 1);
 
 	if (lyxrc.use_kbmap) {
 		fl_set_input(dialog_->input_kbmap1,
@@ -1881,27 +1880,24 @@ void FormPreferences::LnFmisc::build()
 string const
 FormPreferences::LnFmisc::feedback(FL_OBJECT const * const ob) const
 {
-	string str;
-
 	if (ob == dialog_->check_auto_region_delete)
-		str = lyxrc.getDescription(LyXRC::RC_AUTOREGIONDELETE);
-	else if (ob == dialog_->check_cursor_follows_scrollbar)
-		str = lyxrc.getDescription(LyXRC::RC_CURSOR_FOLLOWS_SCROLLBAR);
-	else if (ob == dialog_->check_dialogs_iconify_with_main)
-		str = lyxrc.getDescription(LyXRC::RC_DIALOGS_ICONIFY_WITH_MAIN);
-	else if (ob == dialog_->check_preview_latex)
-		str = lyxrc.getDescription(LyXRC::RC_PREVIEW);
-	else if (ob == dialog_->counter_autosave)
-		str = lyxrc.getDescription(LyXRC::RC_AUTOSAVE);
-	else if (ob == dialog_->counter_wm_jump)
-		str = lyxrc.getDescription(LyXRC::RC_WHEEL_JUMP);
-	else if (ob == dialog_->radio_display_monochrome ||
+		return lyxrc.getDescription(LyXRC::RC_AUTOREGIONDELETE);
+	if (ob == dialog_->check_cursor_follows_scrollbar)
+		return lyxrc.getDescription(LyXRC::RC_CURSOR_FOLLOWS_SCROLLBAR);
+	if (ob == dialog_->check_dialogs_iconify_with_main)
+		return lyxrc.getDescription(LyXRC::RC_DIALOGS_ICONIFY_WITH_MAIN);
+	if (ob == dialog_->check_preview_latex)
+		return lyxrc.getDescription(LyXRC::RC_PREVIEW);
+	if (ob == dialog_->counter_autosave)
+		return lyxrc.getDescription(LyXRC::RC_AUTOSAVE);
+	if (ob == dialog_->counter_wm_jump)
+		return lyxrc.getDescription(LyXRC::RC_WHEEL_JUMP);
+	if (ob == dialog_->radio_display_monochrome ||
 		 ob == dialog_->radio_display_grayscale ||
 		 ob == dialog_->radio_display_color ||
 		 ob == dialog_->radio_no_display)
-		str = lyxrc.getDescription(LyXRC::RC_DISPLAY_GRAPHICS);
-
-	return str;
+		return lyxrc.getDescription(LyXRC::RC_DISPLAY_GRAPHICS);
+	return string();
 }
 
 
@@ -1987,24 +1983,21 @@ void FormPreferences::OutputsMisc::build()
 string const
 FormPreferences::OutputsMisc::feedback(FL_OBJECT const * const ob) const
 {
-	string str;
-
 	if (ob == dialog_->counter_line_len)
-		str = lyxrc.getDescription(LyXRC::RC_ASCII_LINELEN);
-	else if (ob == dialog_->input_tex_encoding)
-		str = lyxrc.getDescription(LyXRC::RC_FONT_ENCODING);
-	else if (ob == dialog_->input_ascii_roff)
-		str = lyxrc.getDescription(LyXRC::RC_ASCIIROFF_COMMAND);
-	else if (ob == dialog_->input_checktex)
-		str = lyxrc.getDescription(LyXRC::RC_CHKTEX_COMMAND);
-	else if (ob == dialog_->choice_default_papersize)
-		str = lyxrc.getDescription(LyXRC::RC_DEFAULT_PAPERSIZE);
-	else if (ob == dialog_->input_paperoption)
-		str = lyxrc.getDescription(LyXRC::RC_VIEWDVI_PAPEROPTION);
-	else if (ob == dialog_->check_autoreset_classopt)
-		str = lyxrc.getDescription(LyXRC::RC_AUTORESET_OPTIONS);
-
-	return str;
+		return lyxrc.getDescription(LyXRC::RC_ASCII_LINELEN);
+	if (ob == dialog_->input_tex_encoding)
+		return lyxrc.getDescription(LyXRC::RC_FONT_ENCODING);
+	if (ob == dialog_->input_ascii_roff)
+		return lyxrc.getDescription(LyXRC::RC_ASCIIROFF_COMMAND);
+	if (ob == dialog_->input_checktex)
+		return lyxrc.getDescription(LyXRC::RC_CHKTEX_COMMAND);
+	if (ob == dialog_->choice_default_papersize)
+		return lyxrc.getDescription(LyXRC::RC_DEFAULT_PAPERSIZE);
+	if (ob == dialog_->input_paperoption)
+		return lyxrc.getDescription(LyXRC::RC_VIEWDVI_PAPEROPTION);
+	if (ob == dialog_->check_autoreset_classopt)
+		return lyxrc.getDescription(LyXRC::RC_AUTORESET_OPTIONS);
+	return string();
 }
 
 
@@ -2046,7 +2039,8 @@ void FormPreferences::Paths::apply()
 
 	int button = fl_get_button(dialog_->check_use_temp_dir);
 	string str  = fl_get_input(dialog_->input_temp_dir);
-	if (!button) str.erase();
+	if (!button)
+		str.erase();
 
 	lyxrc.use_tempdir = button;
 	lyxrc.tempdir_path = str;
@@ -2062,7 +2056,8 @@ void FormPreferences::Paths::apply()
 
 	button = fl_get_button(dialog_->check_make_backups);
 	str = fl_get_input(dialog_->input_backup_path);
-	if (!button) str.erase();
+	if (!button)
+		str.erase();
 
 	lyxrc.make_backup = button;
 	lyxrc.backupdir_path = str;
@@ -2103,31 +2098,27 @@ void FormPreferences::Paths::build()
 string const
 FormPreferences::Paths::feedback(FL_OBJECT const * const ob) const
 {
-	string str;
-
 	if (ob == dialog_->input_default_path)
-		str = lyxrc.getDescription(LyXRC::RC_DOCUMENTPATH);
-	else if (ob == dialog_->input_template_path)
-		str = lyxrc.getDescription(LyXRC::RC_TEMPLATEPATH);
-	else if (ob == dialog_->check_use_temp_dir)
-		str = lyxrc.getDescription(LyXRC::RC_USETEMPDIR);
-	else if (ob == dialog_->input_temp_dir)
-		str = lyxrc.getDescription(LyXRC::RC_TEMPDIRPATH);
-	else if (ob == dialog_->check_last_files)
-		str = lyxrc.getDescription(LyXRC::RC_CHECKLASTFILES);
-	else if (ob == dialog_->input_lastfiles)
-		str = lyxrc.getDescription(LyXRC::RC_LASTFILES);
-	else if (ob == dialog_->counter_lastfiles)
-		str = lyxrc.getDescription(LyXRC::RC_NUMLASTFILES);
-	else if (ob == dialog_->check_make_backups)
-		str = lyxrc.getDescription(LyXRC::RC_MAKE_BACKUP);
-	else if (ob == dialog_->input_backup_path)
-		str = lyxrc.getDescription(LyXRC::RC_BACKUPDIR_PATH);
-	else if (ob == dialog_->input_serverpipe) {
-		str = lyxrc.getDescription(LyXRC::RC_SERVERPIPE);
-	}
-
-	return str;
+		return lyxrc.getDescription(LyXRC::RC_DOCUMENTPATH);
+	if (ob == dialog_->input_template_path)
+		return lyxrc.getDescription(LyXRC::RC_TEMPLATEPATH);
+	if (ob == dialog_->check_use_temp_dir)
+		return lyxrc.getDescription(LyXRC::RC_USETEMPDIR);
+	if (ob == dialog_->input_temp_dir)
+		return lyxrc.getDescription(LyXRC::RC_TEMPDIRPATH);
+	if (ob == dialog_->check_last_files)
+		return lyxrc.getDescription(LyXRC::RC_CHECKLASTFILES);
+	if (ob == dialog_->input_lastfiles)
+		return lyxrc.getDescription(LyXRC::RC_LASTFILES);
+	if (ob == dialog_->counter_lastfiles)
+		return lyxrc.getDescription(LyXRC::RC_NUMLASTFILES);
+	if (ob == dialog_->check_make_backups)
+		return lyxrc.getDescription(LyXRC::RC_MAKE_BACKUP);
+	if (ob == dialog_->input_backup_path)
+		return lyxrc.getDescription(LyXRC::RC_BACKUPDIR_PATH);
+	if (ob == dialog_->input_serverpipe)
+		return lyxrc.getDescription(LyXRC::RC_SERVERPIPE);
+	return string();
 }
 
 
@@ -2249,21 +2240,24 @@ void FormPreferences::Paths::update()
 		     lyxrc.template_path.c_str());
 
 	string str;
-	if (lyxrc.make_backup) str = lyxrc.backupdir_path;
+	if (lyxrc.make_backup)
+		str = lyxrc.backupdir_path;
 
 	fl_set_button(dialog_->check_make_backups,
 		      lyxrc.make_backup);
 	fl_set_input(dialog_->input_backup_path, str.c_str());
 
 	str.erase();
-	if (lyxrc.use_tempdir) str = lyxrc.tempdir_path;
+	if (lyxrc.use_tempdir)
+		str = lyxrc.tempdir_path;
 
 	fl_set_button(dialog_->check_use_temp_dir,
 		      lyxrc.use_tempdir);
 	fl_set_input(dialog_->input_temp_dir, str.c_str());
 
 	str.erase();
-	if (lyxrc.check_lastfiles) str = lyxrc.lastfiles;
+	if (lyxrc.check_lastfiles)
+		str = lyxrc.lastfiles;
 
 	fl_set_button(dialog_->check_last_files,
 		      lyxrc.check_lastfiles);
@@ -2321,46 +2315,43 @@ void FormPreferences::Printer::apply() const
 string const
 FormPreferences::Printer::feedback(FL_OBJECT const * const ob) const
 {
-	string str;
-
 	if (ob == dialog_->input_command)
-		str = lyxrc.getDescription(LyXRC::RC_PRINT_COMMAND);
-	else if (ob == dialog_->check_adapt_output)
-		str = lyxrc.getDescription(LyXRC::RC_PRINT_ADAPTOUTPUT);
-	else if (ob == dialog_->input_to_printer)
-		str = lyxrc.getDescription(LyXRC::RC_PRINTTOPRINTER);
-	else if (ob == dialog_->input_to_file)
-		str = lyxrc.getDescription(LyXRC::RC_PRINTTOFILE);
-	else if (ob == dialog_->input_file_extension)
-		str = lyxrc.getDescription(LyXRC::RC_PRINTFILEEXTENSION);
-	else if (ob == dialog_->input_extra_options)
-		str = lyxrc.getDescription(LyXRC::RC_PRINTEXSTRAOPTIONS);
-	else if (ob == dialog_->input_spool_command)
-		str = lyxrc.getDescription(LyXRC::RC_PRINTSPOOL_COMMAND);
-	else if (ob == dialog_->input_spool_prefix)
-		str = lyxrc.getDescription(LyXRC::RC_PRINTSPOOL_PRINTERPREFIX);
-	else if (ob == dialog_->input_name)
-		str = lyxrc.getDescription(LyXRC::RC_PRINTER);
-	else if (ob == dialog_->input_even_pages)
-		str = lyxrc.getDescription(LyXRC::RC_PRINTEVENPAGEFLAG);
-	else if (ob == dialog_->input_odd_pages)
-		str = lyxrc.getDescription(LyXRC::RC_PRINTODDPAGEFLAG);
-	else if (ob == dialog_->input_page_range)
-		str = lyxrc.getDescription(LyXRC::RC_PRINTPAGERANGEFLAG);
-	else if (ob == dialog_->input_reverse)
-		str = lyxrc.getDescription(LyXRC::RC_PRINTREVERSEFLAG);
-	else if (ob == dialog_->input_landscape)
-		str = lyxrc.getDescription(LyXRC::RC_PRINTLANDSCAPEFLAG);
-	else if (ob == dialog_->input_copies)
-		str = lyxrc.getDescription(LyXRC::RC_PRINTCOPIESFLAG);
-	else if (ob == dialog_->input_collated)
-		str = lyxrc.getDescription(LyXRC::RC_PRINTCOLLCOPIESFLAG);
-	else if (ob == dialog_->input_paper_type)
-		str = lyxrc.getDescription(LyXRC::RC_PRINTPAPERFLAG);
-	else if (ob == dialog_->input_paper_size)
-		str = lyxrc.getDescription(LyXRC::RC_PRINTPAPERDIMENSIONFLAG);
-
-	return str;
+		return lyxrc.getDescription(LyXRC::RC_PRINT_COMMAND);
+	if (ob == dialog_->check_adapt_output)
+		return lyxrc.getDescription(LyXRC::RC_PRINT_ADAPTOUTPUT);
+	if (ob == dialog_->input_to_printer)
+		return lyxrc.getDescription(LyXRC::RC_PRINTTOPRINTER);
+	if (ob == dialog_->input_to_file)
+		return lyxrc.getDescription(LyXRC::RC_PRINTTOFILE);
+	if (ob == dialog_->input_file_extension)
+		return lyxrc.getDescription(LyXRC::RC_PRINTFILEEXTENSION);
+	if (ob == dialog_->input_extra_options)
+		return lyxrc.getDescription(LyXRC::RC_PRINTEXSTRAOPTIONS);
+	if (ob == dialog_->input_spool_command)
+		return lyxrc.getDescription(LyXRC::RC_PRINTSPOOL_COMMAND);
+	if (ob == dialog_->input_spool_prefix)
+		return lyxrc.getDescription(LyXRC::RC_PRINTSPOOL_PRINTERPREFIX);
+	if (ob == dialog_->input_name)
+		return lyxrc.getDescription(LyXRC::RC_PRINTER);
+	if (ob == dialog_->input_even_pages)
+		return lyxrc.getDescription(LyXRC::RC_PRINTEVENPAGEFLAG);
+	if (ob == dialog_->input_odd_pages)
+		return lyxrc.getDescription(LyXRC::RC_PRINTODDPAGEFLAG);
+	if (ob == dialog_->input_page_range)
+		return lyxrc.getDescription(LyXRC::RC_PRINTPAGERANGEFLAG);
+	if (ob == dialog_->input_reverse)
+		return lyxrc.getDescription(LyXRC::RC_PRINTREVERSEFLAG);
+	if (ob == dialog_->input_landscape)
+		return lyxrc.getDescription(LyXRC::RC_PRINTLANDSCAPEFLAG);
+	if (ob == dialog_->input_copies)
+		return lyxrc.getDescription(LyXRC::RC_PRINTCOPIESFLAG);
+	if (ob == dialog_->input_collated)
+		return lyxrc.getDescription(LyXRC::RC_PRINTCOLLCOPIESFLAG);
+	if (ob == dialog_->input_paper_type)
+		return lyxrc.getDescription(LyXRC::RC_PRINTPAPERFLAG);
+	if (ob == dialog_->input_paper_size)
+		return lyxrc.getDescription(LyXRC::RC_PRINTPAPERDIMENSIONFLAG);
+	return string();
 }
 
 
@@ -2635,23 +2626,21 @@ void FormPreferences::ScreenFonts::build()
 string const
 FormPreferences::ScreenFonts::feedback(FL_OBJECT const * const ob) const
 {
-	string str;
-
 	if (ob == dialog_->input_roman)
-		str = lyxrc.getDescription(LyXRC::RC_SCREEN_FONT_ROMAN);
-	else if (ob == dialog_->input_sans)
-		str = lyxrc.getDescription(LyXRC::RC_SCREEN_FONT_SANS);
-	else if (ob == dialog_->input_typewriter)
-		str = lyxrc.getDescription(LyXRC::RC_SCREEN_FONT_TYPEWRITER);
-	else if (ob == dialog_->check_scalable)
-		str = lyxrc.getDescription(LyXRC::RC_SCREEN_FONT_SCALABLE);
-	else if (ob == dialog_->input_screen_encoding)
-		str = lyxrc.getDescription(LyXRC::RC_SCREEN_FONT_ENCODING);
-	else if (ob == dialog_->counter_zoom)
-		str = lyxrc.getDescription(LyXRC::RC_SCREEN_ZOOM);
-	else if (ob == dialog_->counter_dpi)
-		str = lyxrc.getDescription(LyXRC::RC_SCREEN_DPI);
-	else if (ob == dialog_->input_tiny
+		return lyxrc.getDescription(LyXRC::RC_SCREEN_FONT_ROMAN);
+	if (ob == dialog_->input_sans)
+		return lyxrc.getDescription(LyXRC::RC_SCREEN_FONT_SANS);
+	if (ob == dialog_->input_typewriter)
+		return lyxrc.getDescription(LyXRC::RC_SCREEN_FONT_TYPEWRITER);
+	if (ob == dialog_->check_scalable)
+		return lyxrc.getDescription(LyXRC::RC_SCREEN_FONT_SCALABLE);
+	if (ob == dialog_->input_screen_encoding)
+		return lyxrc.getDescription(LyXRC::RC_SCREEN_FONT_ENCODING);
+	if (ob == dialog_->counter_zoom)
+		return lyxrc.getDescription(LyXRC::RC_SCREEN_ZOOM);
+	if (ob == dialog_->counter_dpi)
+		return lyxrc.getDescription(LyXRC::RC_SCREEN_DPI);
+	if (ob == dialog_->input_tiny
 		 || ob == dialog_->input_script
 		 || ob == dialog_->input_footnote
 		 || ob == dialog_->input_small
@@ -2662,9 +2651,8 @@ FormPreferences::ScreenFonts::feedback(FL_OBJECT const * const ob) const
 		 || ob == dialog_->input_normal
 		 || ob == dialog_->input_huge
 		 || ob == dialog_->input_huger)
-		str = lyxrc.getDescription(LyXRC::RC_SCREEN_FONT_SIZES);
-
-	return str;
+		return lyxrc.getDescription(LyXRC::RC_SCREEN_FONT_SIZES);
+	return string();
 }
 
 
@@ -2858,28 +2846,25 @@ void FormPreferences::SpellOptions::build()
 string const
 FormPreferences::SpellOptions::feedback(FL_OBJECT const * const ob) const
 {
-	string str;
-
 	if (ob == dialog_->choice_spell_command)
-		str = lyxrc.getDescription(LyXRC::RC_SPELL_COMMAND);
-	else if (ob == dialog_->check_alt_lang)
-		str = lyxrc.getDescription(LyXRC::RC_USE_ALT_LANG);
-	else if (ob == dialog_->input_alt_lang)
-		str = lyxrc.getDescription(LyXRC::RC_ALT_LANG);
-	else if (ob == dialog_->check_escape_chars)
-		str = lyxrc.getDescription(LyXRC::RC_USE_ESC_CHARS);
-	else if (ob == dialog_->input_escape_chars)
-		str = lyxrc.getDescription(LyXRC::RC_ESC_CHARS);
-	else if (ob == dialog_->check_personal_dict)
-		str = lyxrc.getDescription(LyXRC::RC_USE_PERS_DICT);
-	else if (ob == dialog_->input_personal_dict)
-		str = lyxrc.getDescription(LyXRC::RC_PERS_DICT);
-	else if (ob == dialog_->check_compound_words)
-		str = lyxrc.getDescription(LyXRC::RC_ACCEPT_COMPOUND);
-	else if (ob == dialog_->check_input_enc)
-		str = lyxrc.getDescription(LyXRC::RC_USE_INP_ENC);
-
-	return str;
+		return lyxrc.getDescription(LyXRC::RC_SPELL_COMMAND);
+	if (ob == dialog_->check_alt_lang)
+		return lyxrc.getDescription(LyXRC::RC_USE_ALT_LANG);
+	if (ob == dialog_->input_alt_lang)
+		return lyxrc.getDescription(LyXRC::RC_ALT_LANG);
+	if (ob == dialog_->check_escape_chars)
+		return lyxrc.getDescription(LyXRC::RC_USE_ESC_CHARS);
+	if (ob == dialog_->input_escape_chars)
+		return lyxrc.getDescription(LyXRC::RC_ESC_CHARS);
+	if (ob == dialog_->check_personal_dict)
+		return lyxrc.getDescription(LyXRC::RC_USE_PERS_DICT);
+	if (ob == dialog_->input_personal_dict)
+		return lyxrc.getDescription(LyXRC::RC_PERS_DICT);
+	if (ob == dialog_->check_compound_words)
+		return lyxrc.getDescription(LyXRC::RC_ACCEPT_COMPOUND);
+	if (ob == dialog_->check_input_enc)
+		return lyxrc.getDescription(LyXRC::RC_USE_INP_ENC);
+	return string();
 }
 
 
@@ -2955,21 +2940,24 @@ void FormPreferences::SpellOptions::update()
 	fl_set_choice(dialog_->choice_spell_command, choice);
 
 	string str;
-	if (lyxrc.isp_use_alt_lang) str = lyxrc.isp_alt_lang;
+	if (lyxrc.isp_use_alt_lang)
+		str = lyxrc.isp_alt_lang;
 
 	fl_set_button(dialog_->check_alt_lang,
 		      lyxrc.isp_use_alt_lang);
 	fl_set_input(dialog_->input_alt_lang, str.c_str());
 
 	str.erase();
-	if (lyxrc.isp_use_esc_chars) str = lyxrc.isp_esc_chars;
+	if (lyxrc.isp_use_esc_chars)
+		str = lyxrc.isp_esc_chars;
 
 	fl_set_button(dialog_->check_escape_chars,
 		      lyxrc.isp_use_esc_chars);
 	fl_set_input(dialog_->input_escape_chars, str.c_str());
 
 	str.erase();
-	if (lyxrc.isp_use_pers_dict) str = lyxrc.isp_pers_dict;
+	if (lyxrc.isp_use_pers_dict)
+		str = lyxrc.isp_pers_dict;
 
 	fl_set_button(dialog_->check_personal_dict,
 		      lyxrc.isp_use_pers_dict);
