@@ -1,10 +1,10 @@
 -*- text -*-
 
-This file describes what has been done in the preparation of LyX 1.3.3
+This file describes what has been done in the preparation of LyX 1.3.4
 All comments are welcome.
 
-You can find a list of bugs pending for 1.3.3 at URL
-http://bugzilla.lyx.org/buglist.cgi?bug_status=NEW&bug_status=ASSIGNED&bug_status=REOPENED&&target_milestone=1.3.3
+You can find a list of bugs pending for 1.3.4 at URL
+http://bugzilla.lyx.org/buglist.cgi?bug_status=NEW&bug_status=ASSIGNED&bug_status=REOPENED&&target_milestone=1.3.4
 
 I'd be glad if some of you could take the time to check it out (or fix
 a bug or two if you are feeling adventurous). Let me recall that all
@@ -22,91 +22,8 @@ What's new
 
 ** Updates
 
-- add basic support for the memoir class
-
-- add Proof layout to elsart class and get sections to be numbered
-
-- make LyX compile almost out-of-the-box with Qt/Mac (see README.MacOSX)
-
-- add a bit of documentation of the AGU journals support in the
-  Extended manual; small tweaks to the english documentation; german
-  documentation overhaul; french documentation and examples update
-
-- completely new italian localization; french, german, russian and
-  slovenian localization updates
 
 ** Bug fixes
 
-- fix possible crash when changing text class [bug #1050]
-
-- fix language setting when switching textclass
-
-- fix math bug where formulas containing for example a \prettyref
-  would not be parsed correctly [bug #1126]
-
-- speed up conversion of large old files on some systems
-
-- fix bad conversion of tables from LyX 1.0 [bug #1045]
-
-- convert old files (0.11 series) correctly, suppressing space
-  between number and units [bug #763]
-
-- fix docbook export with nested environments [bug #821]
-
-- output newline and hfill correctly in docbook [bug #1148]
-
-- when pressing delete or backspace over a selection, do not modify
-  the clipboard [bug #1049]
-
-- when inserting a float or a note over a selection, make sure that
-  the insets and font changes in the selection are correctly kept
-  (note however that doing this now modifies the clipboard)
-
-- clean-up properly after completed graphics conversion processes.
-
-- enable graphics conversion using the default convertDefault.sh converter
-  when exporting, even if convertDefault.sh is not executable.
-
-- work around a Qt 3.1.2 bug with the environment combo box [bug #1136]
-
-- fix bug where browsing for files in graphics inset would always
-  return an absolute path [bug #1028, Qt only]
-
-- do not write in preference file the colors which are still at their
-  default value [bug #1069, Qt only]
-
-- fix loading of symbol fonts [Qt 3.2.0 only]
-
-- fix loading of symbol fonts on solaris
-
-- fix the math panel symbols [Qt 3.2.0 only]
-
-- do not reset natbib style when adding a new entry to a citation [Qt
-  only]
-
-- allow insertion of width strings like "2.5in" into tabular dialog
-  [Qt only]
-
-- fix some cases where the View>TeX information dialog would get
-  confused because the same file gets listed several times
-
-- remove annoying message on console when LyX tries to make TeX fonts
-  available to the X server
-
-- it was not possible to view the french versions of the Extended and
-  Customization manual.
-
-- the lib/configure script now works correctly with zsh [bug #977]
-
-- add missing c_str.sed file in the distribution
-
-- hopefully really fix problems with patch requiring aclocal-1.6
-
-- fix compilation on HP-UX 11.x
-
-- do not report failed inlining when compiling with gcc
-
-- fix compilation with new development versions of xforms
-
-- fix compilation with AikSaurus 1.0
+- add a couple forgotten MacOSX-related files
 

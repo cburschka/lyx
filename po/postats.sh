@@ -16,7 +16,7 @@
 #    postats.sh po_files > "pathToWebPages"/i18n.php3
 
 # modifiy this when you change version
-lyx_version=1.3.2cvs
+lyx_version=1.3.3
 lyx_branch=BRANCH_1_3_X
 
 
