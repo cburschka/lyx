@@ -19,10 +19,13 @@
 
 #include "support/filetools.h"
 #include "support/FileInfo.h"
+#include "support/FileMonitor.h"
 #include "support/lstrings.h"
 
 #include "graphics/PreviewedInset.h"
 #include "graphics/PreviewImage.h"
+
+#include <boost/bind.hpp>
 
 #include <cstdlib>
 
@@ -48,6 +51,19 @@ public:
 	InsetInclude & parent() const {
 		return *static_cast<InsetInclude*>(inset());
 	}
+
+	///
+	bool monitoring() const { return monitor_.get(); }
+	///
+	void startMonitoring();
+	///
+	void stopMonitoring() { monitor_.reset(); }
+
+private:
+	/// Invoked by monitor_ should the parent file change.
+	void restartLoading();
+	///
+	boost::scoped_ptr<FileMonitor> monitor_;
 };
 
 
@@ -133,6 +149,9 @@ void InsetInclude::set(Params const & p)
 	}
 
 	params_.cparams.setCmdName(command);
+
+	if (preview_->monitoring())
+		preview_->stopMonitoring();
 
 	if (grfx::PreviewedInset::activated() && params_.flag == INPUT)
 		preview_->generatePreview();
@@ -504,6 +523,9 @@ void InsetInclude::draw(BufferView * bv, LyXFont const & font, int y,
 		return;
 	}
 
+	if (!preview_->monitoring())
+		preview_->startMonitoring();
+
 	int const x = int(xx);
 	int const w = width(bv, font);
 	int const d = descent(bv, font);
@@ -530,7 +552,8 @@ void InsetInclude::addPreview(grfx::PreviewLoader & ploader) const
 bool InsetInclude::PreviewImpl::previewWanted() const
 {
 	return parent().params_.flag == InsetInclude::INPUT &&
-		parent().params_.cparams.preview();
+		parent().params_.cparams.preview() &&
+		IsFileReadable(parent().getFileName());
 }
 
 
@@ -545,7 +568,8 @@ string const InsetInclude::PreviewImpl::latexString() const
 	// This fails if the file has a relative path.
 	// return os.str().c_str();
 
-	// I would /really/ like not to do this...
+	// I would /really/ like not to do this, but don't know how to tell
+	// LaTeX where to find a \input-ed file...
 	// HELP!
 	string command;
 	string file = rtrim(split(os.str().c_str(), command, '{'), "}");
@@ -557,4 +581,22 @@ string const InsetInclude::PreviewImpl::latexString() const
 	out << command << '{' << file << '}' << endl;
 	
 	return out.str().c_str();
+}
+
+
+void InsetInclude::PreviewImpl::startMonitoring()
+{
+	monitor_.reset(new FileMonitor(parent().getFileName(), 2000));
+	monitor_->connect(boost::bind(&PreviewImpl::restartLoading, this));
+	monitor_->start();
+}
+
+
+void InsetInclude::PreviewImpl::restartLoading()
+{
+	lyxerr << "restartLoading()" << std::endl;
+	removePreview();
+	if (view())
+		view()->updateInset(&parent(), false);
+	generatePreview();
 }

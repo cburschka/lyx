@@ -28,6 +28,7 @@
 
 #include <boost/bind.hpp>
 
+#include "debug.h"    // temporary
 
 namespace grfx {
 
@@ -75,6 +76,19 @@ void PreviewedInset::addPreview(grfx::PreviewLoader & ploader)
 	}
 
 	ploader.add(snippet_);
+}
+
+
+void PreviewedInset::removePreview()
+{
+	if (!view() || !view()->buffer() || snippet_.empty())
+		return;
+
+	grfx::Previews & previews = grfx::Previews::get();
+	grfx::PreviewLoader & loader = previews.loader(view()->buffer());
+	loader.remove(snippet_);
+	snippet_.erase();
+	pimage_ = 0;
 }
 
 

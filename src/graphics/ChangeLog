@@ -3,6 +3,9 @@
 	* PreviewLoader.C: add support for preview.sty 0.73 (currently
 	#ifdef-ed out, awaiting the formal release).
 
+	* PreviewedInset.[Ch] (removePreview): new method. Useful if previewing
+	the contents of a file that has changed.
+
 2002-08-05  Angus Leeming  <leeming@lyx.org>
 
 	* PreviewLoader.C (dumpPreamble): add lyx to the list of options output

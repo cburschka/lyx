@@ -51,6 +51,11 @@ public:
 	 */
 	void addPreview(PreviewLoader & ploader);
 
+	/** Remove a snippet from the cache of previews.
+	 *  Useful if previewing the contents of a file that has changed.
+	 */
+	void removePreview();
+
 	/// The preview has been generated and is ready to use.
 	bool previewReady() const;
 
