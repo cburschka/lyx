@@ -22,13 +22,10 @@ libsupport_la_SOURCES = \
 	LOstream.h \
 	os.C \
 	os.h \
-	StrPool.C \
-	StrPool.h \
 	abort.C \
 	atoi.C \
 	chdir.C \
 	copy.C \
-	date.C \
 	filetools.C \
 	filetools.h \
 	fmt.C \
@@ -36,9 +33,9 @@ libsupport_la_SOURCES = \
 	forkedcall.h \
 	forkedcontr.C \
 	forkedcontr.h \
-	getUserName.C \
 	getcwd.C \
 	kill.C \
+	limited_stack.h \
 	lstrings.C \
 	lstrings.h \
 	lxtl.h \
