@@ -566,8 +566,7 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 				string next_token = lex.getString();
 				if (next_token == "\\-") {
 					par->insertChar(pos, '-', font);
-				} else if (next_token == "\\protected_separator"
-					|| next_token == "~") {
+				} else if (next_token == "~") {
 					par->insertChar(pos, ' ', font);
 				} else {
 					lex.printError("Token `$$Token' "
@@ -914,19 +913,6 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 		++pos;
 	} else if (token == "\\hfill") {
 		par->insertChar(pos, Paragraph::META_HFILL, font);
-		++pos;
-	} else if (token == "\\protected_separator") { // obsolete
-		// This is a backward compability thingie. (Lgb)
-		// Remove it later some time...introduced with fileformat
-		// 2.16. (Lgb)
-		LyXLayout_ptr const & layout = par->layout();
-
-		if (layout->free_spacing || par->isFreeSpacing()) {
-			par->insertChar(pos, ' ', font);
-		} else {
-			Inset * inset = new InsetSpecialChar(InsetSpecialChar::PROTECTED_SEPARATOR);
-			par->insertInset(pos, inset, font);
-		}
 		++pos;
 	} else if (token == "\\bibitem") {  // ale970302
 		if (!par->bibkey) {
