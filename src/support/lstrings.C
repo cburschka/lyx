@@ -18,6 +18,7 @@
 #include "debug.h"
 #include "BoostFormat.h"
 #include "lyxlib.h"
+#include "tostr.h"
 
 #include <boost/regex.hpp>
 #include <boost/tokenizer.hpp>
@@ -681,8 +682,8 @@ string bformat(string const & fmt, int arg1, int arg2)
 {
 	Assert(contains(fmt, "%1$d"));
 	Assert(contains(fmt, "%2$d"));
-	string str = subst(fmt, "%1$d", arg1);
-	str = subst(str, "%2$d", arg2);
+	string str = subst(fmt, "%1$d", tostr(arg1));
+	str = subst(str, "%2$d", tostr(arg2));
 	return subst(str, "%%", "%");
 }
 
