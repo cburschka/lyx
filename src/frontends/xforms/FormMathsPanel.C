@@ -94,6 +94,13 @@ FormMathsPanel::FormMathsPanel(LyXView * lv, Dialogs * d)
 	}
 	misc_.reset(new FormMathsBitmap(lv, d, *this, latex));
 
+	latex.resize(nr_latex_dots);
+	for (StringVec::size_type i = 0; i<latex.size(); ++i) {
+		latex[i] = latex_dots[i];
+	}
+
+	dots_.reset(new FormMathsBitmap(lv, d, *this, latex));
+
 	latex.resize(nr_latex_varsz);
 	for (StringVec::size_type i = 0; i<latex.size(); ++i) {
 		latex[i] = latex_varsz[i];
@@ -154,6 +161,8 @@ void FormMathsPanel::build()
 	greek_->addBitmap(28, 7, 4, greek_width, greek_height, greek_bits);
 
 	misc_->addBitmap(29, 5, 6, misc_width, misc_height, misc_bits);
+ 
+	dots_->addBitmap(4, 4, 1, dots_width, dots_height, dots_bits);
 
 	varsize_->addBitmap(14, 3, 5, varsz_width, varsz_height, varsz_bits);
 
@@ -195,6 +204,12 @@ bool FormMathsPanel::input(FL_OBJECT *, long data)
 		misc_->show();
 		break;
 
+	case MM_DOTS:
+		if (active_ && active_ != dots_.get())
+			active_->hide();
+		dots_->show();
+		break;
+ 
 	case MM_VARSIZE:
 		if (active_ && active_ != varsize_.get())
 			active_->hide();

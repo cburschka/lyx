@@ -54,11 +54,10 @@ std::vector<string> const DirList(string const & dir,
 
 /** Is directory read only?
   returns 
-    1: dir writeable
-    0: not writeable
-   -1: error- couldn't find out, or unsure
+    true: dir writeable
+    false: not writeable
 */
-int IsDirWriteable (string const & path);
+bool IsDirWriteable (string const & path);
 
 /** Is a file readable ?
   Returns true if the file `path' is readable.

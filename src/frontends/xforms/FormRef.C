@@ -67,7 +67,7 @@ void FormRef::update()
 		      InsetRef::getType(controller().params().getCmdName()) + 1);
 
 	at_ref_ = false;
-	fl_set_object_label(dialog_->button_go, _("Goto reference"));
+	fl_set_object_label(dialog_->button_go, _("Go to reference"));
 
 	// Name is irrelevant to LaTeX/Literate documents
 	if (controller().docType() == ControlRef::LATEX ||
@@ -157,7 +157,7 @@ ButtonPolicy::SMInput FormRef::input(FL_OBJECT * ob, long)
 		} else {
 			controller().gotoBookmark();
 			fl_set_object_label(dialog_->button_go,
-					    _("Goto reference"));
+					    _("Go to reference"));
 		}
 
 	} else if (ob == dialog_->browser) {
@@ -174,7 +174,7 @@ ButtonPolicy::SMInput FormRef::input(FL_OBJECT * ob, long)
 		if (at_ref_)
 			controller().gotoBookmark();
 		at_ref_ = false;
-		fl_set_object_label(dialog_->button_go, _("Goto reference"));
+		fl_set_object_label(dialog_->button_go, _("Go to reference"));
 
 		setEnabled(dialog_->type,      true);
 		setEnabled(dialog_->button_go, true);

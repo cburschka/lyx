@@ -805,7 +805,7 @@ string const LyXFunc::dispatch(int ac,
 	if (getStatus(ac, do_not_use_this_arg) & func_status::Disabled) {
 		lyxerr << "LyXFunc::Dispatch: "
 		       << lyxaction.getActionName(ac)
-		       << " [" << ac << "] is disabled ad this location"
+		       << " [" << ac << "] is disabled at this location"
 		       << endl;
 		goto exit_with_message;
 	}
@@ -1710,7 +1710,7 @@ void LyXFunc::menuNew(bool fromTemplate)
 	if (owner->view()->available()) {
 		string const trypath = owner->buffer()->filepath;
 		// If directory is writeable, use this as default.
-		if (IsDirWriteable(trypath) == 1)
+		if (IsDirWriteable(trypath))
 			initpath = trypath;
 	}
 
@@ -1836,7 +1836,7 @@ void LyXFunc::open(string const & fname)
 	if (owner->view()->available()) {
 		string const trypath = owner->buffer()->filepath;
 		// If directory is writeable, use this as default.
-		if (IsDirWriteable(trypath) == 1)
+		if (IsDirWriteable(trypath))
 			initpath = trypath;
 	}
 
@@ -1869,8 +1869,14 @@ void LyXFunc::open(string const & fname)
 
 	// get absolute path of file and add ".lyx" to the filename if
 	// necessary
-	filename = FileSearch(string(), filename, "lyx");
+	string const fullpath = FileSearch(string(), filename, "lyx");
+	if (fullpath.empty()) {
+		WriteAlert(_("Error"), _("Could not find file"), filename);
+		return;
+	}
 
+	filename = fullpath;
+ 
 	// loads document
 	string const disp_fn(MakeDisplayPath(filename));
 
@@ -1907,7 +1913,7 @@ void LyXFunc::doImport(string const & argument)
 		if (owner->view()->available()) {
 			string const trypath = owner->buffer()->filepath;
 			// If directory is writeable, use this as default.
-			if (IsDirWriteable(trypath) == 1)
+			if (IsDirWriteable(trypath))
 				initpath = trypath;
 		}
 

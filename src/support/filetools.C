@@ -134,6 +134,8 @@ bool IsFileReadable (string const & path)
 int IsFileWriteable (string const & path)
 {
 	FileInfo fi(path);
+	//lyxerr << "fi : " << fi << endl; 
+	//lyxerr << "fi.exists" << fi.exist() << endl;
 	if (fi.access(FileInfo::wperm|FileInfo::rperm)) // read-write
 		return 1;
 	if (fi.readable()) // read-only
@@ -142,24 +144,19 @@ int IsFileWriteable (string const & path)
 }
 
 
-//returns 1: dir writeable
-//	  0: not writeable
-//	 -1: error- couldn't find out
-int IsDirWriteable (string const & path)
+//returns true: dir writeable
+//	  false: not writeable
+bool IsDirWriteable (string const & path)
 {
+	lyxerr[Debug::FILES] << "IsDirWriteable: " << path << endl;
+ 
         string const tmpfl(lyx::tempName(path, "lyxwritetest"));
-	// We must unlink the tmpfl.
+
+	if (tmpfl.empty())
+		return false;
+ 
 	lyx::unlink(tmpfl);
-	
-	if (tmpfl.empty()) {
-		WriteFSAlert(_("LyX Internal Error!"), 
-			     _("Could not test if directory is writeable"));
-		return -1;
-	} else {
-		FileInfo fi(path);
-		if (fi.writable()) return 1;
-		return 0;
-	}
+	return true;
 }
 
 

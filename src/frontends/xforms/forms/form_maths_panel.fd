@@ -5,18 +5,17 @@ Internal Form Definition File
 
 Number of forms: 1
 Unit of measure: FL_COORD_PIXEL
-SnapGrid: 2
 
 =============== FORM ===============
 Name: form_maths_panel
-Width: 290
-Height: 172
-Number of Objects: 16
+Width: 274
+Height: 226
+Number of Objects: 17
 
 --------------------
 class: FL_BOX
 type: UP_BOX
-box: 0 0 290 172
+box: 0 0 274 226
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -34,7 +33,7 @@ argument:
 --------------------
 class: FL_BUTTON
 type: RETURN_BUTTON
-box: 80 14 80 30
+box: 100 180 80 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -47,12 +46,12 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: button_close
 callback: C_FormBaseDeprecatedCancelCB
-argument:
+argument: 0
 
 --------------------
 class: FL_BROWSER
 type: SELECT_BROWSER
-box: 180 40 94 110
+box: 170 30 90 140
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_YELLOW
 alignment: FL_ALIGN_TOP
@@ -71,7 +70,7 @@ argument: MM_FUNC
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 10 90 50 30
+box: 60 80 50 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -89,7 +88,7 @@ argument: MM_GREEK
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 10 120 50 30
+box: 110 110 50 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -107,7 +106,7 @@ argument: MM_ARROW
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 60 90 50 30
+box: 10 110 50 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -125,7 +124,7 @@ argument: MM_BOP
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 110 90 50 30
+box: 60 110 50 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -143,25 +142,7 @@ argument: MM_BRELATS
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 60 120 50 30
-boxtype: FL_UP_BOX
-colors: FL_COL1 FL_COL1
-alignment: FL_ALIGN_CENTER
-style: 15
-size: 0
-lcol: FL_BLACK
-label: S  ò
-shortcut: 
-resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
-name: button_varsize
-callback: C_FormBaseDeprecatedInputCB
-argument: MM_VARSIZE
-
---------------------
-class: FL_BUTTON
-type: NORMAL_BUTTON
-box: 110 120 50 30
+box: 110 140 50 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -197,7 +178,7 @@ argument: MM_EQU
 --------------------
 class: FL_PIXMAPBUTTON
 type: NORMAL_BUTTON
-box: 10 15 30 30
+box: 10 20 30 30
 boxtype: FL_UP_BOX
 colors: FL_MCOL FL_BLUE
 alignment: FL_ALIGN_BOTTOM
@@ -215,7 +196,7 @@ argument: MM_SQRT
 --------------------
 class: FL_PIXMAPBUTTON
 type: NORMAL_BUTTON
-box: 40 15 30 30
+box: 40 20 30 30
 boxtype: FL_UP_BOX
 colors: FL_MCOL FL_BLUE
 alignment: FL_ALIGN_BOTTOM
@@ -233,7 +214,7 @@ argument: MM_FRAC
 --------------------
 class: FL_PIXMAPBUTTON
 type: NORMAL_BUTTON
-box: 10 50 30 30
+box: 70 20 30 30
 boxtype: FL_UP_BOX
 colors: FL_MCOL FL_BLUE
 alignment: FL_ALIGN_BOTTOM
@@ -251,7 +232,7 @@ argument: MM_DELIM
 --------------------
 class: FL_PIXMAPBUTTON
 type: NORMAL_BUTTON
-box: 100 50 30 30
+box: 10 50 30 30
 boxtype: FL_UP_BOX
 colors: FL_MCOL FL_BLUE
 alignment: FL_ALIGN_BOTTOM
@@ -269,7 +250,7 @@ argument: MM_MATRIX
 --------------------
 class: FL_PIXMAPBUTTON
 type: NORMAL_BUTTON
-box: 40 50 30 30
+box: 100 20 30 30
 boxtype: FL_UP_BOX
 colors: FL_MCOL FL_BLUE
 alignment: FL_ALIGN_BOTTOM
@@ -287,7 +268,7 @@ argument: MM_DECO
 --------------------
 class: FL_PIXMAPBUTTON
 type: NORMAL_BUTTON
-box: 70 50 30 30
+box: 130 20 30 30
 boxtype: FL_UP_BOX
 colors: FL_MCOL FL_BLUE
 alignment: FL_ALIGN_BOTTOM
@@ -301,6 +282,42 @@ gravity: FL_NoGravity FL_NoGravity
 name: button_space
 callback: C_FormBaseDeprecatedInputCB
 argument: MM_SPACE
+
+--------------------
+class: FL_BUTTON
+type: NORMAL_BUTTON
+box: 60 140 50 30
+boxtype: FL_UP_BOX
+colors: FL_COL1 FL_COL1
+alignment: FL_ALIGN_CENTER
+style: FL_TIMESITALIC_STYLE
+size: 0
+lcol: FL_BLACK
+label: Dots
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: button_dots
+callback: C_FormBaseDeprecatedInputCB
+argument: MM_DOTS
+
+--------------------
+class: FL_BUTTON
+type: NORMAL_BUTTON
+box: 10 140 50 30
+boxtype: FL_UP_BOX
+colors: FL_COL1 FL_COL1
+alignment: FL_ALIGN_CENTER
+style: 15
+size: 0
+lcol: FL_BLACK
+label: S  ò
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: button_varsize
+callback: C_FormBaseDeprecatedInputCB
+argument: MM_VARSIZE
 
 ==============================
 create_the_forms

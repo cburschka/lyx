@@ -1389,7 +1389,7 @@ void BufferView::Pimpl::MenuInsertLyXFile(string const & filen)
 		if (available()) {
 			string const trypath = owner_->buffer()->filepath;
 			// If directory is writeable, use this as default.
-			if (IsDirWriteable(trypath) == 1)
+			if (IsDirWriteable(trypath))
 				initpath = trypath;
 		}
 

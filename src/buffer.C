@@ -200,7 +200,7 @@ pair<Buffer::LogType, string> const Buffer::getLogName(void) const
 
 	string path = OnlyPath(filename);
 
-	if (lyxrc.use_tempdir || (IsDirWriteable(path) < 1))
+	if (lyxrc.use_tempdir || !IsDirWriteable(path))
 		path = tmppath;
 
 	string const fname = AddName(path,
@@ -3425,7 +3425,7 @@ int Buffer::runChktex()
 	string path = OnlyPath(filename);
 
 	string const org_path = path;
-	if (lyxrc.use_tempdir || (IsDirWriteable(path) < 1)) {
+	if (lyxrc.use_tempdir || !IsDirWriteable(path)) {
 		path = tmppath;	 
 	}
 

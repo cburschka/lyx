@@ -1,3 +1,8 @@
+2001-08-01  John Levon  <moz@compsoc.man.ac.uk>
+
+	* filetools.h:
+	* filetools.C (IsDirWriteable): fix this
+ 
 2001-07-26  Baruch Even  <baruch@lyx.org>
 
 	* lyxlib.h (float_equal): Added function to compare floats almost equal

@@ -81,7 +81,7 @@ void SendtoApplyCB(FL_OBJECT *, long)
     command += " &"; // execute in background
     // push directorypath, if necessary 
     string path = OnlyPath(buffer->fileName());
-    if (lyxrc.use_tempdir || (IsDirWriteable(path) < 1)){
+    if (lyxrc.use_tempdir || !IsDirWriteable(path)){
         path = buffer->tmppath;
     }
     Path p(path);

@@ -20,7 +20,6 @@ struct FD_form_maths_panel {
 	FL_OBJECT *button_arrow;
 	FL_OBJECT *button_boperator;
 	FL_OBJECT *button_brelats;
-	FL_OBJECT *button_varsize;
 	FL_OBJECT *button_misc;
 	FL_OBJECT *button_equation;
 	FL_OBJECT *button_sqrt;
@@ -29,6 +28,8 @@ struct FD_form_maths_panel {
 	FL_OBJECT *button_matrix;
 	FL_OBJECT *button_deco;
 	FL_OBJECT *button_space;
+	FL_OBJECT *button_dots;
+	FL_OBJECT *button_varsize;
 };
 
 #endif /* FD_form_maths_panel_h_ */

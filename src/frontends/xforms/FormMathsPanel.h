@@ -90,6 +90,7 @@ private:
 	boost::scoped_ptr<FormMathsBitmap> brelats_;
 	boost::scoped_ptr<FormMathsBitmap> greek_;
 	boost::scoped_ptr<FormMathsBitmap> misc_;
+	boost::scoped_ptr<FormMathsBitmap> dots_;
 	boost::scoped_ptr<FormMathsBitmap> varsize_;
 
 	/// A pointer to the currently active subdialog
