@@ -1,5 +1,11 @@
 2003-12-05  Angus Leeming  <leeming@lyx.org>
 
+	* FormExternal.[Ch]:
+	* forms/form_external.fd: a total overhaul. In addition, the
+	dialog can now manipulate the transform data (rotate, scale, crop).
+
+2003-12-05  Angus Leeming  <leeming@lyx.org>
+
 	* FormVSpace.C (apply): remove unnecessary test on form().
 	(input): correct spelling.
 
