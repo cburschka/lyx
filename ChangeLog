@@ -1,3 +1,8 @@
+2000-12-18  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* src/mathed/math_cursor.C (Interpret) Suppress a debug message
+	in normal run.
+
 2000-12-17  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/support/copy.C: don't include filetools.h

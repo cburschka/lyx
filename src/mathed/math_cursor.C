@@ -639,7 +639,7 @@ void MathedCursor::Interpret(string const & s)
 	      p = new MathFuncInset(s, LM_OT_UNDEF);
 	} else {
 	    tcode = static_cast<MathMacro*>(p)->getTCode();
-	    lyxerr << "Macro2 " << s << ' ' << tcode << "  " ;
+	    lyxerr[Debug::MATHED] << "Macro2 " << s << ' ' << tcode << endl;
 	}
     } else {
 	MathedInsetTypes fractype = LM_OT_FRAC;
