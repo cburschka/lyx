@@ -65,8 +65,6 @@ public:
 
 	///
 	LyXLayout_ptr const & operator[](string const & vname) const;
-	///
-	LyXLayout_ptr const & getEnv(string const & vname) const;
 
 	/// Sees to that the textclass structure has been loaded
 	bool load() const;
@@ -155,8 +153,6 @@ private:
 	///
 	bool delete_layout(string const &);
 	///
-	bool delete_env(string const &);
-	///
 	bool do_readStyle(LyXLex &, LyXLayout &);
 	/// Layout file name
 	string name_;
@@ -209,9 +205,6 @@ private:
 
 	/// Paragraph styles used in this layout
 	LayoutList layoutlist_;
-
-	/// Environment styles used in this layout
-	LayoutList envlist_;
 
 	/// available types of float, eg. figure, algorithm.
 	boost::shared_ptr<FloatList> floatlist_;

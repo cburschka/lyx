@@ -1,6 +1,23 @@
+
+2003-05-19  André Pönitz  <poenitz@gmx.net>
+
+	* buffer.C:
+	* lyxlayout.[Ch]:
+	* lyxtextclass.[Ch]:
+	* paragraph.C:
+	* paragraph_funcs.[Ch]:
+	* text2.C:
+	* text3.C: more insetenv work
+
 2003-05-16  Alfredo Braunstein  <abraunst@libero.it>
 
 	* ParagraphParameters.C (params2string): small bug fixed
+
+2003-05-16  André Pönitz  <poenitz@gmx.net>
+	
+	* debug.C:
+	* bufferview_funcs.C: patch from Kornel Benko to prevent 
+	  crash when _(...) is called twice in a statement
 
 2003-05-16  André Pönitz  <poenitz@gmx.net>
 	

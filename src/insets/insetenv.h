@@ -13,6 +13,7 @@
 #define INSETENVIRONMENT_H
 
 #include "insettext.h"
+#include "lyxlayout_ptr_fwd.h"
 
 class InsetEnvironment : public InsetText {
 public:
@@ -37,6 +38,8 @@ public:
 	///
 	bool isTextInset() const { return true; }
 	///
+	LyXLayout_ptr const & layout() const;
+	///
 	bool needFullRow() const { return true; }
 	/** returns true if, when outputing LaTeX, font changes should
             be closed before generating this inset. This is needed for
@@ -44,10 +47,8 @@ public:
 	bool noFontChange() const { return true; }
 
 private:
-	/// LaTeX footer
-	string header_;
-	/// LaTeX footer
-	string footer_;
+	/// the layout
+	LyXLayout_ptr layout_;
 };
 
 #endif

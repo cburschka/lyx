@@ -215,6 +215,7 @@ bool LyXTextClass::Read(string const & filename, bool merge)
 			}
 			break;
 
+		case TC_ENVIRONMENT:
 		case TC_STYLE:
 			if (lexrc.next()) {
 				string const name = subst(lexrc.getString(),
@@ -225,6 +226,8 @@ bool LyXTextClass::Read(string const & filename, bool merge)
 				} else {
 					LyXLayout lay;
 					lay.setName(name);
+					if (le == TC_ENVIRONMENT)
+						lay.is_environment = true;
 					if (!(error = do_readStyle(lexrc, lay)))
 						layoutlist_.push_back
 							(boost::shared_ptr<LyXLayout>(new LyXLayout(lay)));
@@ -235,29 +238,6 @@ bool LyXTextClass::Read(string const & filename, bool merge)
 						// encounter.
 						defaultlayout_ = name;
 					}
-				}
-			}
-			else {
-				lexrc.printError("No name given for style: `$$Token'.");
-				error = true;
-			}
-			break;
-
-		case TC_ENVIRONMENT:
-			if (lexrc.next()) {
-				string const name = subst(lexrc.getString(),
-						    '_', ' ');
-				if (hasLayout(name)) {
-					LyXLayout * lay = operator[](name).get();
-					error = do_readStyle(lexrc, *lay);
-				} else {
-					LyXLayout lay;
-					lay.setName(name);
-					if (!(error = do_readStyle(lexrc, lay)))
-						envlist_.push_back
-							(boost::shared_ptr<LyXLayout>(new LyXLayout(lay)));
-					else
-						lexrc.printError("Problems reading environment: `$$Token'.");
 				}
 			}
 			else {
@@ -772,6 +752,7 @@ bool LyXTextClass::hasLayout(string const & n) const
 }
 
 
+
 LyXLayout_ptr const & LyXTextClass::operator[](string const & n) const
 {
 	lyx::Assert(!n.empty());
@@ -796,6 +777,9 @@ LyXLayout_ptr const & LyXTextClass::operator[](string const & n) const
 		lyxerr << "We failed to find the layout '" << name
 		       << "' in the layout list. You MUST investigate!"
 		       << endl;
+		for (LayoutList::const_iterator it = layoutlist_.begin();
+		         it != layoutlist_.end(); ++it)
+			lyxerr  << " " << it->get()->name() << endl;
 
 		// we require the name to exist
 		lyx::Assert(false);
@@ -807,27 +791,6 @@ LyXLayout_ptr const & LyXTextClass::operator[](string const & n) const
 	return (*cit);
 }
 
-
-LyXLayout_ptr const & LyXTextClass::getEnv(string const & name) const
-{
-	lyx::Assert(!name.empty());
-
-	if (name.empty())
-		lyxerr << "LyXTextClass::getEnv() called with empty n" << endl;
-
-	LayoutList::const_iterator cit =
-		find_if(envlist_.begin(), envlist_.end(), compare_name(name));
-
-	if (cit == envlist_.end()) {
-		lyxerr << "We failed to find the environment '" << name
-		       << "' in the layout list. You MUST investigate!"
-		       << endl;
-		// we require the name to exist
-		lyx::Assert(false);
-	}
-
-	return *cit;
-}
 
 
 bool LyXTextClass::delete_layout(string const & name)

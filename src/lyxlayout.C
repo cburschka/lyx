@@ -59,6 +59,7 @@ enum LayoutTags {
 	LT_LATEXTYPE,
 	LT_LATEXHEADER,
 	LT_LATEXFOOTER,
+	LT_LATEXPARAGRAPH,
 	LT_LEFTMARGIN,
 	LT_NEED_PROTECT,
 	LT_NEWLINE,
@@ -107,6 +108,7 @@ LyXLayout::LyXLayout ()
 	newline_allowed = true;
 	free_spacing = false;
 	pass_thru = false;
+	is_environment = false;
 }
 
 
@@ -140,6 +142,7 @@ bool LyXLayout::Read (LyXLex & lexrc, LyXTextClass const & tclass)
 		{ "latexfooter",		LT_LATEXFOOTER },
 		{ "latexheader",		LT_LATEXHEADER },
 		{ "latexname",		LT_LATEXNAME },
+		{ "latexparagraph",		LT_LATEXPARAGRAPH },
 		{ "latexparam",		LT_LATEXPARAM },
 		{ "latextype",		LT_LATEXTYPE },
 		{ "leftmargin",		LT_LEFTMARGIN },
@@ -236,22 +239,27 @@ bool LyXLayout::Read (LyXLex & lexrc, LyXTextClass const & tclass)
 			}
 			break;
 
-		case LT_MARGIN:		// Margin style definition.
+		case LT_MARGIN:		// margin style definition.
 			readMargin(lexrc);
 			break;
 
-		case LT_LATEXTYPE:	// Latex style definition.
+		case LT_LATEXTYPE:	// LaTeX style definition.
 			readLatexType(lexrc);
 			break;
 
-		case LT_LATEXHEADER:	// Latex style definition.
+		case LT_LATEXHEADER:	// header for environments
 			lexrc.next();
 			latexheader = lexrc.getString();
 			break;
 
-		case LT_LATEXFOOTER:	// Latex style definition.
+		case LT_LATEXFOOTER:	// footer for environments
 			lexrc.next();
 			latexfooter = lexrc.getString();
+			break;
+
+		case LT_LATEXPARAGRAPH:
+			lexrc.next();
+			latexparagraph = lexrc.getString();
 			break;
 
 		case LT_INTITLE:

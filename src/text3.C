@@ -1124,6 +1124,7 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 		}
 
 		bool change_layout = (current_layout != layout);
+
 		if (!change_layout && selection.set() &&
 			selection.start.par() != selection.end.par())
 		{
@@ -1137,6 +1138,7 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 				++spit;
 			}
 		}
+
 		if (change_layout) {
 			current_layout = layout;
 			update();

@@ -29,6 +29,7 @@
 
 #include "insets/insetbibitem.h"
 #include "insets/insetoptarg.h"
+#include "insets/insetenv.h"
 
 #include "support/filetools.h"
 #include "support/lstrings.h"
@@ -1405,6 +1406,9 @@ int Paragraph::id() const
 
 LyXLayout_ptr const & Paragraph::layout() const
 {
+	Inset * inset = inInset();
+	if (inset && inset->lyxCode() == Inset::ENVIRONMENT_CODE) 
+		return static_cast<InsetEnvironment*>(inset)->layout();
 	return layout_;
 }
 

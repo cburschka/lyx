@@ -63,11 +63,10 @@ int getEndLabel(ParagraphList::iterator pit,
 
 void latexParagraphs(Buffer const * buf,
 		     ParagraphList const & paragraphs,
-		     ParagraphList::iterator par,
-		     ParagraphList::iterator endpar,
 		     std::ostream & ofs,
 		     TexRow & texrow,
-		     bool moving_arg = false);
+		     bool moving_arg,
+         string const & everypar = string());
 
 /// read a paragraph from a .lyx file. Returns number of unrecognised tokens
 int readParagraph(Buffer & buf, Paragraph & par, LyXLex & lex);

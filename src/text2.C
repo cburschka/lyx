@@ -35,6 +35,7 @@
 #include "paragraph_funcs.h"
 
 #include "insets/insetbibitem.h"
+#include "insets/insetenv.h"
 #include "insets/insetfloat.h"
 #include "insets/insetwrap.h"
 
@@ -425,22 +426,41 @@ LyXText::setLayout(LyXCursor & cur, LyXCursor & sstart_cur,
 // set layout over selection and make a total rebreak of those paragraphs
 void LyXText::setLayout(string const & layout)
 {
-	LyXCursor tmpcursor = cursor;  /* store the current cursor  */
+	LyXCursor tmpcursor = cursor;  // store the current cursor 
 
 	// if there is no selection just set the layout
-	// of the current paragraph  */
+	// of the current paragraph 
 	if (!selection.set()) {
 		selection.start = cursor;  // dummy selection
 		selection.end = cursor;
 	}
+
+	// special handling of new environment insets
+	BufferParams const & params = bv()->buffer()->params;
+	LyXLayout_ptr const & lyxlayout = params.getLyXTextClass()[layout];
+	if (lyxlayout->is_environment) {
+		// move everything in a new environment inset
+		lyxerr << "setting layout " << layout << endl;
+		bv()->owner()->dispatch(FuncRequest(LFUN_HOME));
+		bv()->owner()->dispatch(FuncRequest(LFUN_ENDSEL));
+		bv()->owner()->dispatch(FuncRequest(LFUN_CUT));
+		Inset * inset = new InsetEnvironment(params, layout);
+		if (bv()->insertInset(inset)) {
+			//inset->edit(bv());
+			//bv()->owner()->dispatch(FuncRequest(LFUN_PASTE));
+		}
+		else
+			delete inset;
+		return;
+	}
+
 	ParagraphList::iterator endpit = setLayout(cursor, selection.start,
 						   selection.end, layout);
 	redoParagraphs(selection.start, endpit);
 
 	// we have to reset the selection, because the
 	// geometry could have changed
-	setCursor(selection.start.par(),
-		  selection.start.pos(), false);
+	setCursor(selection.start.par(), selection.start.pos(), false);
 	selection.cursor = cursor;
 	setCursor(selection.end.par(), selection.end.pos(), false);
 	updateCounters();

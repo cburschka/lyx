@@ -136,10 +136,14 @@ public:
 	bool free_spacing;
 	///
 	bool pass_thru;
+	///
+	bool is_environment;
 	/// for new environment insets
 	string latexheader;
 	/// for new environment insets
 	string latexfooter;
+	/// for new environment insets
+	string latexparagraph;
 
 	/** true when the fragile commands in the paragraph need to be
 	    \protect'ed. */

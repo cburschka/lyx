@@ -1,11 +1,16 @@
 
-2003-05-16 André Pönitz  <poenitz@gmx.net>
+2003-05-19  André Pönitz  <poenitz@gmx.net>
+
+	* insetenv.[Ch]:
+	* insettext.C: more insetenv 
+
+2003-05-16  André Pönitz  <poenitz@gmx.net>
 
 	* insetcommand.C:
 	* insetminimpage.[Ch]:
 	* insetcollapsable.[Ch]: fix #832 
 
-2003-05-16 André Pönitz  <poenitz@gmx.net>
+2003-05-16  André Pönitz  <poenitz@gmx.net>
 
 	* inset.[Ch]:
 	* insetbibitem.[Ch]:
@@ -31,7 +36,7 @@
 	* inseturl.[Ch]:
 	* updatableinset.[Ch]: edit() -> LFUN_INSET_EDIT
 	
-2003-05-13 André Pönitz <poenitz@gmx.net>
+2003-05-13  André Pönitz <poenitz@gmx.net>
 
 	* insetbibitem.C:
 	* insetcollapsable.C:
@@ -53,7 +58,7 @@
 	* insetwrap.C: STRCONV
 
 
-2003-05-12 André Pönitz <poenitz@gmx.net>
+2003-05-12  André Pönitz <poenitz@gmx.net>
 
 	* insetcaption.C:
 	* insetexternal.C:
@@ -67,7 +72,7 @@
 	* insettext.C:
 	* insetwwrap.C:  boost::format -> bformat  all over the place
 
-2003-05-05 André Pönitz <poenitz@gmx.net>
+2003-05-05  André Pönitz <poenitz@gmx.net>
 
 	* insettext.h: add missing #include <map>
 
@@ -92,7 +97,7 @@
 	* insetfloat.h:
 	* insetfloat.C: remove unneeded type() function
 
-2003-05-05 André Pönitz <poenitz@gmx.net>
+2003-05-05  André Pönitz <poenitz@gmx.net>
 
 	* inset.h:
 	* insettext.[Ch]:
@@ -113,7 +118,7 @@
 	hideInsetCursor(), toggleInsetCursor(), isCursorVisible(). Add
 	getCursor(). Remove explicit cursor hides.
 
-2003-05-02 André Pönitz <poenitz@gmx.net>
+2003-05-02  André Pönitz <poenitz@gmx.net>
 
 	* insettext.C: remove unneeded &*
 
@@ -129,11 +134,11 @@
 	(setFont): ditto
 	(tabularFeatures): ditto
 
-2003-04-29 André Pönitz <poenitz@gmx.net>
+2003-04-29  André Pönitz <poenitz@gmx.net>
 
 	* inset.h: introduce "haveParagraph" from Lars' parlist-14-b.
 
-2003-04-28 André Pönitz <poenitz@gmx.net>
+2003-04-28  André Pönitz <poenitz@gmx.net>
 
 	* insettext.[Ch]: part of Lars' Paragraph * -> ParagraphList::iterator
 	  Changes
@@ -155,7 +160,7 @@
 	* insettabular.C (string2params): ditto
 	* insetwrap.C (string2params): ditto
 
-2003-04-24 André Pönitz <poenitz@gmx.net>
+2003-04-24  André Pönitz <poenitz@gmx.net>
 
 	* insetref.C: support for eqref
 
@@ -409,7 +414,7 @@
 	* insettext.C (edit): replace Dialogs::updateParagraph with
 	BufferView::dispatch(LFUN_PARAGRAPH_UPDATE).
 
-2003-03-13 André Pönitz <poenitz@gmx.net>
+2003-03-13  André Pönitz <poenitz@gmx.net>
 
 	* Makefile.am: insert insetenv
 
@@ -439,7 +444,7 @@
 
 	* insettext.C: name change to readToken()
 
-2003-03-11 André Pönitz <poenitz@gmx.net>
+2003-03-11  André Pönitz <poenitz@gmx.net>
 
 	* Makefile.am: insert insethfill
 
@@ -754,7 +759,7 @@
 	* insetinclude.C (loadIfNeeded): ensure loading also works when
 	child document is under version control.
 
-2003-02-17 André Pönitz <poenitz@gmx.net>
+2003-02-17  André Pönitz <poenitz@gmx.net>
 
 	* insetbib.[Ch]: Adjust access to bibkeys
 
@@ -955,7 +960,7 @@
 	* insetcite.C (getNatbibLabel): correct logic of when and when not to
 	reload the BibTeX keys.
 
-2002-10-11 André Pönitz <poenitz@gmx.net>
+2002-10-11  André Pönitz <poenitz@gmx.net>
 
 	* insettext.h: handle LFUN_PRIOR/NEXT
 

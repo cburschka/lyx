@@ -14,6 +14,7 @@
 #include "insetenv.h"
 #include "gettext.h"
 #include "lyxtextclass.h"
+#include "paragraph_funcs.h"
 #include "lyxlayout.h"
 #include "bufferparams.h"
 #include "support/LOstream.h"
@@ -26,24 +27,16 @@ using std::endl;
 
 InsetEnvironment::InsetEnvironment
 		(BufferParams const & bp, string const & name)
-	: InsetText(bp)
+	: InsetText(bp), layout_(bp.getLyXTextClass()[name])
 {
-	//setLabel(name);
 	setInsetName(name);
 	autoBreakRows = true;
 	drawFrame_ = ALWAYS;
-	// needs more stuff in lyxlayout. coming in later patches.
-	//LyXTextClass const & tc = bp.getLyXTextClass();
-	//LyXLayout_ptr const & layout = tc.getEnv(name);
-	//header_ = layout->latexheader;
-	//footer_ = layout->latexfooter;
-	header_ = "\\begin{" + name + "}";
-	footer_ = "\\end{" + name + "}";
 }
 
 
 InsetEnvironment::InsetEnvironment(InsetEnvironment const & in, bool same_id)
-	: InsetText(in, same_id), header_(in.header_), footer_(in.footer_)
+	: InsetText(in, same_id), layout_(in.layout_)
 {}
 
 
@@ -73,10 +66,18 @@ string const InsetEnvironment::editMessage() const
 
 
 int InsetEnvironment::latex(Buffer const * buf,
-			 ostream & os, bool fragile, bool fp) const
+			 ostream & os, bool fragile, bool) const
 {
-	os << header_;
-	int i = InsetText::latex(buf, os, fragile, fp);
-	os << footer_;
-	return i;
+	os << layout_->latexheader;
+	TexRow texrow;
+	latexParagraphs(buf, paragraphs, os, texrow, fragile,
+		layout_->latexparagraph);
+	os << layout_->latexfooter;
+	return texrow.rows();
+}
+
+
+LyXLayout_ptr const & InsetEnvironment::layout() const
+{
+	return layout_;
 }

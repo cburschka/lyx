@@ -237,8 +237,7 @@ bool isFirstInSequence(ParagraphList::iterator pit,
 }
 
 
-int getEndLabel(ParagraphList::iterator p,
-		ParagraphList const & plist)
+int getEndLabel(ParagraphList::iterator p, ParagraphList const & plist)
 {
 	ParagraphList::iterator pit = p;
 	Paragraph::depth_type par_depth = p->getDepth();
@@ -280,7 +279,8 @@ TeXOnePar(Buffer const * buf,
 	  ParagraphList const & paragraphs,
 	  ParagraphList::iterator pit,
 	  ostream & os, TexRow & texrow,
-	  bool moving_arg);
+	  bool moving_arg,
+	  string const & everypar = string());
 
 
 ParagraphList::iterator
@@ -436,9 +436,11 @@ TeXOnePar(Buffer const * buf,
 	  ParagraphList const & paragraphs,
 	  ParagraphList::iterator pit,
 	  ostream & os, TexRow & texrow,
-	  bool moving_arg)
+	  bool moving_arg,
+	  string const & everypar)
 {
-	lyxerr[Debug::LATEX] << "TeXOnePar...     " << &*pit << endl;
+	lyxerr[Debug::LATEX] << "TeXOnePar...     " << &*pit << " '" << everypar
+<< "'" << endl;
 	BufferParams const & bparams = buf->params;
 
 	Inset const * in = pit->inInset();
@@ -559,6 +561,7 @@ TeXOnePar(Buffer const * buf,
 		break;
 	}
 
+	os << everypar;
 	bool need_par = pit->simpleTeXOnePar(buf, bparams,
 					     outerFont(pit, paragraphs),
 					     os, texrow, moving_arg);
@@ -682,15 +685,16 @@ TeXOnePar(Buffer const * buf,
 //
 void latexParagraphs(Buffer const * buf,
 		     ParagraphList const & paragraphs,
-		     ParagraphList::iterator par,
-		     ParagraphList::iterator endpar,
-		     ostream & ofs,
+		     ostream & os,
 		     TexRow & texrow,
-		     bool moving_arg)
+		     bool moving_arg,
+         string const & everypar)
 {
 	bool was_title = false;
 	bool already_title = false;
 	LyXTextClass const & tclass = buf->params.getLyXTextClass();
+	ParagraphList::iterator par = paragraphs.begin();
+	ParagraphList::iterator endpar = paragraphs.end();
 
 	// if only_body
 	while (par != endpar) {
@@ -710,7 +714,7 @@ void latexParagraphs(Buffer const * buf,
 				} else if (!was_title) {
 					was_title = true;
 					if (tclass.titletype() == TITLE_ENVIRONMENT) {
-						ofs << "\\begin{"
+						os << "\\begin{"
 						    << tclass.titlename()
 						    << "}\n";
 						texrow.newline();
@@ -718,11 +722,11 @@ void latexParagraphs(Buffer const * buf,
 				}
 			} else if (was_title && !already_title) {
 				if (tclass.titletype() == TITLE_ENVIRONMENT) {
-					ofs << "\\end{" << tclass.titlename()
+					os << "\\end{" << tclass.titlename()
 					    << "}\n";
 				}
 				else {
-					ofs << "\\" << tclass.titlename()
+					os << "\\" << tclass.titlename()
 					    << "\n";
 				}
 				texrow.newline();
@@ -730,25 +734,30 @@ void latexParagraphs(Buffer const * buf,
 				was_title = false;
 			}
 
-			if (layout->isEnvironment() ||
+			if (layout->is_environment) {
+				par = TeXOnePar(buf, paragraphs, par, os, texrow,
+				                moving_arg, everypar);
+			} else if (layout->isEnvironment() ||
 				!par->params().leftIndent().zero())
 			{
-				par = TeXEnvironment(buf, paragraphs, par, ofs, texrow);
+				par = TeXEnvironment(buf, paragraphs, par, os, texrow);
 			} else {
-				par = TeXOnePar(buf, paragraphs, par, ofs, texrow, moving_arg);
+				par = TeXOnePar(buf, paragraphs, par, os, texrow,
+				                moving_arg, everypar);
 			}
 		} else {
-			par = TeXOnePar(buf, paragraphs, par, ofs, texrow, moving_arg);
+			par = TeXOnePar(buf, paragraphs, par, os, texrow,
+			                moving_arg, everypar);
 		}
 	}
 	// It might be that we only have a title in this document
 	if (was_title && !already_title) {
 		if (tclass.titletype() == TITLE_ENVIRONMENT) {
-			ofs << "\\end{" << tclass.titlename()
+			os << "\\end{" << tclass.titlename()
 			    << "}\n";
 		}
 		else {
-			ofs << "\\" << tclass.titlename()
+			os << "\\" << tclass.titlename()
 			    << "\n";
 				}
 		texrow.newline();
