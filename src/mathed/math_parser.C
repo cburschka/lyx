@@ -569,7 +569,7 @@ MathMatrixInset * Parser::parse_normal()
 	string const name = getArg('{', '}');
 
 	if (name == "equation" || name == "equation*") {
-		curr_num_ = stared(name);
+		curr_num_ = !stared(name);
 		curr_label_.erase();
 		MathMatrixInset * p = new MathMatrixInset(LM_OT_EQUATION);
 		parse_into(p->cell(0), FLAG_END);
@@ -580,21 +580,21 @@ MathMatrixInset * Parser::parse_normal()
 
 	if (name == "eqnarray" || name == "eqnarray*") {
 		MathMatrixInset * p = new MathMatrixInset(LM_OT_EQNARRAY);
-		parse_lines(p, stared(name), true);
+		parse_lines(p, !stared(name), true);
 		return p;
 	}
 
 	if (name == "align" || name == "align*") {
 		MathMatrixInset * p = new MathMatrixInset(LM_OT_ALIGN);
 		p->halign(getArg('{', '}'));
-		parse_lines(p, stared(name), true);
+		parse_lines(p, !stared(name), true);
 		return p;
 	}
 
 	if (name == "alignat" || name == "alignat*") {
 		MathMatrixInset * p = new MathMatrixInset(LM_OT_ALIGNAT);
 		p->halign(getArg('{', '}'));
-		parse_lines(p, stared(name), true);
+		parse_lines(p, !stared(name), true);
 		return p;
 	}
 
@@ -620,10 +620,10 @@ void Parser::parse_into(MathArray & array, unsigned flags)
 
 	while (good()) {
 		Token const & t = getToken();
-		
-		lyxerr << "t: " << t << " flags: " << flags << "'\n";
+	
+		//lyxerr << "t: " << t << " flags: " << flags << "'\n";
 		//array.dump(lyxerr);
-		lyxerr << "\n";
+		//lyxerr << "\n";
 
 		if (flags & FLAG_ITEM) {
 			flags &= ~FLAG_ITEM;
