@@ -59,6 +59,7 @@ void MathXArray::metrics(MathMetricsInfo & mi) const
 			++it;
 		} else {
 			p->metrics(mi);
+			p->dimensions(ww, aa, dd);
 		}
 		ascent_  = max(ascent_, aa);
 		descent_ = max(descent_, dd);
@@ -142,10 +143,11 @@ void MathXArray::metricsT(TextMetricsInfo const & mi) const
 		int ww, aa, dd;
 		if (q) {
 			q->metricsT(p, mi);
-			q->dimensions(ww, aa, dd);
+			q->dimensions2(p, ww, aa, dd);
 			++it;
 		} else {
 			p->metricsT(mi);
+			p->dimensions(ww, aa, dd);
 		}
 		ascent_  = max(ascent_,  aa);
 		descent_ = max(descent_, dd);
