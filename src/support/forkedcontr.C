@@ -163,6 +163,11 @@ extern "C"
 void child_handler(int)
 {
 	ForkedcallsController & fcc = ForkedcallsController::get();
+
+	// Be safe
+	if (fcc.current_child+1 >= fcc.reaped_children.size())
+		return;
+
 	ForkedcallsController::Data & store =
 		fcc.reaped_children[++fcc.current_child];
 	// Clean up the child process.
@@ -261,7 +266,9 @@ void ForkedcallsController::handleCompletedProcesses()
 		}
 
 		ListType::iterator it = find_pid(store.pid);
-		BOOST_ASSERT(it != forkedCalls.end());
+		if (it == forkedCalls.end())
+			// Eg, child was run in blocking mode
+			continue;
 
 		ForkedProcess & child = *it->get();
 		bool remove_it = false;

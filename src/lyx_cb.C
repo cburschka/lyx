@@ -242,7 +242,7 @@ private:
 int AutoSaveBuffer::start()
 {
 	command_ = bformat(_("Auto-saving %1$s"), fname_);
-	return runNonBlocking();
+	return run(DontWait);
 }
 
 

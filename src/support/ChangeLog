@@ -1,3 +1,14 @@
+2004-03-26  Angus Leeming  <leeming@lyx.org>
+
+	* forkedcall.[Ch] (run): new function, replacing runBlocking,
+	runNonBlocking.
+
+	* forkedcall.C (generateChild): ensure that the code that splits
+	the command up into an array of words won't leak in the event of an
+	exception.
+
+	* forkedcontr.C: make it a little more robust.
+	
 2004-03-24  Angus Leeming  <leeming@lyx.org>
 
 	* forkedcontr.[Ch]: get rid of the timer that we use to poll the list

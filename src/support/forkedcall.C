@@ -36,15 +36,17 @@
 #include <boost/bind.hpp>
 
 #include <cerrno>
-#include <sys/types.h>
-#include <sys/wait.h>
 #include <csignal>
 #include <cstdlib>
+#include <sys/types.h>
+#include <sys/wait.h>
 #include <unistd.h>
 
+#include <vector>
 
-using std::string;
 using std::endl;
+using std::string;
+using std::vector;
 
 #ifndef CXX_GLOBAL_CSTD
 using std::strerror;
@@ -115,8 +117,8 @@ void ForkedProcess::emitSignal()
 }
 
 
-// Wait for child process to finish.
-int ForkedProcess::runBlocking()
+// Spawn the child process
+int ForkedProcess::run(Starttype type)
 {
 	retval_  = 0;
 	pid_ = generateChild();
@@ -125,25 +127,17 @@ int ForkedProcess::runBlocking()
 		return retval_;
 	}
 
-	retval_ = waitForChild();
-	return retval_;
-}
-
-
-// Do not wait for child process to finish.
-int ForkedProcess::runNonBlocking()
-{
-	retval_ = 0;
-	pid_ = generateChild();
-	if (pid_ <= 0) { // child or fork failed.
-		retval_ = 1;
-		return retval_;
+	switch (type) {
+	case Wait:
+		retval_ = waitForChild();
+		break;
+	case DontWait: {
+		// Integrate into the Controller
+		ForkedcallsController & contr = ForkedcallsController::get();
+		contr.addCall(*this);
+		break;
 	}
-
-	// Non-blocking execution.
-	// Integrate into the Controller
-	ForkedcallsController & contr = ForkedcallsController::get();
-	contr.addCall(*this);
+	}
 
 	return retval_;
 }
@@ -238,7 +232,7 @@ int Forkedcall::startscript(Starttype wait, string const & what)
 
 	command_ = what;
 	signal_.reset();
-	return runBlocking();
+	return run(Wait);
 }
 
 
@@ -247,38 +241,42 @@ int Forkedcall::startscript(string const & what, SignalTypePtr signal)
 	command_ = what;
 	signal_  = signal;
 
-	return runNonBlocking();
+	return run(DontWait);
 }
 
 
 // generate child in background
 int Forkedcall::generateChild()
 {
-	// Split command_ up into a char * array
-	int const MAX_ARGV = 255;
-	char *argv[MAX_ARGV];
+	string line = trim(command_);
+	if (line.empty())
+		return 1;
 
-	string line = command_;
-	int index = 0;
-	for (; index < MAX_ARGV-1; ++index) {
-		string word;
-		line = split(line, word, ' ');
-		if (word.empty())
-			break;
+	// Split the input command up into an array of words stored
+	// in a contiguous block of memory.
+	char const * const c_str = line.c_str();
+	// Don't forget the terminating `\0' character.
+	vector<char> vec(c_str, c_str + line.size() + 1);
+	// Turn the string into an array of words, each terminated with '\0'.
+	std::replace(vec.begin(), vec.end(), ' ', '\0');
 
-		char * tmp = new char[word.length() + 1];
-		word.copy(tmp, word.length());
-		tmp[word.length()] = '\0';
-
-		argv[index] = tmp;
+	// Build an array of pointers to each word.
+	vector<char>::iterator vit = vec.begin();
+	vector<char>::iterator vend = vec.end();
+	vector<char *> argv;
+	char prev = '\0';
+	for (; vit != vend; ++vit) {
+		if (*vit != '\0' && prev == '\0')
+			argv.push_back(&*vit);
+		prev = *vit;
 	}
-	argv[index] = 0;
+	argv.push_back(0);
 
 #ifndef __EMX__
 	pid_t const cpid = ::fork();
 	if (cpid == 0) {
 		// Child
-		execvp(argv[0], argv);
+		execvp(argv[0], &*argv.begin());
 
 		// If something goes wrong, we end up here
 		lyxerr << "execvp of \"" << command_ << "\" failed: "
@@ -287,19 +285,12 @@ int Forkedcall::generateChild()
 	}
 #else
 	pid_t const cpid = spawnvp(P_SESSION|P_DEFAULT|P_MINIMIZE|P_BACKGROUND,
-				   argv[0], argv);
+				   argv[0], &*argv.begin());
 #endif
 
 	if (cpid < 0) {
 		// Error.
 		lyxerr << "Could not fork: " << strerror(errno) << endl;
-	}
-
-	// Clean-up.
-	for (int i = 0; i < MAX_ARGV; ++i) {
-		if (argv[i] == 0)
-			break;
-		delete [] argv[i];
 	}
 
 	return cpid;

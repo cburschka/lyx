@@ -107,14 +107,10 @@ public:
 	void kill(int tolerance = 5);
 
 protected:
-	/** Wait for child process to finish.
+	/** Spawn the child process.
 	 *  Returns returncode from child.
 	 */
-	int runBlocking();
-	/** Do not wait for child process to finish.
-	 *  Returns returncode from child.
-	 */
-	int runNonBlocking();
+	int run(Starttype type);
 
 	/// Callback function
 	SignalTypePtr signal_;
