@@ -1,5 +1,14 @@
 2003-05-01  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
+	* CutAndPaste.C (pasteSelection): more clean up, user proper
+	ParagraphList functions for pasteing.
+
+	* ParagraphList.C (insert): new function, three arg insert
+
+2003-05-01  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* ParagraphList.C (insert): new function, three arg insert
+
 	* CutAndPaste.C (pasteSelection): work on the simple_cut_clone,
 	not on paragraphs.
 

@@ -225,7 +225,7 @@ CutAndPaste::pasteSelection(ParagraphList & pars,
 		// at level 0.
 		if ((int(tmpbuf->params().depth()) + depth_delta) < 0)
 			depth_delta = 0;
-		// set the right depth so that we are not too deep or shallow.
+		// Set the right depth so that we are not too deep or shallow.
 		tmpbuf->params().depth(tmpbuf->params().depth() + depth_delta);
 		if (tmpbuf->params().depth() > max_depth)
 			tmpbuf->params().depth(max_depth);
@@ -258,12 +258,6 @@ CutAndPaste::pasteSelection(ParagraphList & pars,
 	// the cursor paragraph.
 	simple_cut_clone.begin()->makeSameLayout(*pit);
 
-	// Find the end of the buffer.
-	// FIXME: change this to end() - 1
-	ParagraphList::iterator lastbuffer = simple_cut_clone.begin();
-	while (boost::next(lastbuffer) != simple_cut_clone.end())
-		++lastbuffer;
-
 	bool paste_the_end = false;
 
 	// Open the paragraph for inserting the buf
@@ -278,42 +272,40 @@ CutAndPaste::pasteSelection(ParagraphList & pars,
 	ParagraphList::iterator endpit = boost::next(boost::next(pit));
 
 	// Paste it!
-	lastbuffer->next(pit->next());
-	pit->next()->previous(&*lastbuffer);
 
-	pit->next(&*simple_cut_clone.begin());
-	simple_cut_clone.begin()->previous(&*pit);
+	ParagraphList::iterator past_pit = boost::next(pit);
+	// It is possible that std::list::splice also could be used here.
+	pars.insert(past_pit,
+		    simple_cut_clone.begin(), simple_cut_clone.end());
+	ParagraphList::iterator last_paste = boost::prior(past_pit);
 
-	if (boost::next(pit) == lastbuffer)
-		lastbuffer = pit;
+	// If we only inserted one paragraph.
+	if (boost::next(pit) == last_paste)
+		last_paste = pit;
 
 	mergeParagraph(current_view->buffer()->params, pars, pit);
 	// Store the new cursor position.
-	pit = lastbuffer;
-	pos = lastbuffer->size();
+	pit = last_paste;
+	pos = last_paste->size();
+
 	// Maybe some pasting.
-	if (boost::next(lastbuffer) != simple_cut_clone.end() && paste_the_end) {
-		if (boost::next(lastbuffer)->hasSameLayout(*lastbuffer)) {
+	if (boost::next(last_paste) != simple_cut_clone.end() &&
+	    paste_the_end) {
+		if (boost::next(last_paste)->hasSameLayout(*last_paste)) {
 			mergeParagraph(current_view->buffer()->params, pars,
-				       lastbuffer);
-		} else if (!boost::next(lastbuffer)->size()) {
-			boost::next(lastbuffer)->makeSameLayout(*lastbuffer);
+				       last_paste);
+		} else if (boost::next(last_paste)->empty()) {
+			boost::next(last_paste)->makeSameLayout(*last_paste);
 			mergeParagraph(current_view->buffer()->params, pars,
-				       lastbuffer);
-		} else if (!lastbuffer->size()) {
-			lastbuffer->makeSameLayout(*boost::next(lastbuffer));
+				       last_paste);
+		} else if (last_paste->empty()) {
+			last_paste->makeSameLayout(*boost::next(last_paste));
 			mergeParagraph(current_view->buffer()->params, pars,
-				       lastbuffer);
+				       last_paste);
 		} else
-			boost::next(lastbuffer)->stripLeadingSpaces();
+			boost::next(last_paste)->stripLeadingSpaces();
 	}
 
-#if 1
-	// For the time beeing we must do this to avoid deleting the
-	// newly pasted paragraphs.
-	simple_cut_clone.set(0);
-#endif
-	
 	return make_pair(PitPosPair(pit, pos), endpit);
 }
 

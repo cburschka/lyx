@@ -53,6 +53,8 @@ public:
 	///
 	iterator insert(iterator it, Paragraph * par);
 	///
+	void insert(iterator pos, iterator beg, iterator end);
+	///
 	void assign(iterator beg, iterator end);
 	///
 	void clear();

@@ -158,6 +158,15 @@ ParagraphList::insert(ParagraphList::iterator it, Paragraph * par)
 }
 
 
+
+void ParagraphList::insert(iterator pos, iterator beg, iterator end)
+{
+	for (; beg != end; ++beg) {
+		insert(pos, new Paragraph(*beg, false));
+	}
+}
+
+
 void ParagraphList::assign(iterator beg, iterator end)
 {
 	clear();
