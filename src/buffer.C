@@ -463,8 +463,14 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 		insertErtContents(par, pos);
 #endif
 		lex.eatLine();
-		string const layoutname = lex.getString();
+		string layoutname = lex.getString();
+		
 		LyXTextClass const & tclass = textclasslist[params.textclass];
+
+		if (layoutname.empty()) {
+			layoutname = tclass.defaultLayoutName();
+		}
+		
 		bool hasLayout = tclass.hasLayout(layoutname);
 		if (!hasLayout) {
 			lyxerr << "Layout '" << layoutname << "' does not"

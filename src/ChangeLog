@@ -1,3 +1,11 @@
+2002-03-06  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* paragraph.C (writeFile): if layout is empty write out
+	defaultLayoutName().
+
+	* buffer.C (parseSingleLyXformat2Token): if we have a buggy .lyx
+	file without named layout we set layout to defaultLayoutName().
+
 2002-03-06  Juergen Vigna  <jug@sad.it>
 
 	* CutAndPaste.C (copySelection): set layout for new paragraph.

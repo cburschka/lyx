@@ -187,6 +187,11 @@ void Paragraph::writeFile(Buffer const * buf, ostream & os,
 	}
 	
 	// First write the layout
+	string lay = layout();
+	if (lay.empty()) {
+		lay = textclasslist[bparams.textclass].defaultLayoutName();
+	}
+	
 	os << "\n\\layout " << layout() << "\n";
 	
 	// Maybe some vertical spaces.
