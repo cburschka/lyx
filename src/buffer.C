@@ -448,10 +448,7 @@ bool Buffer::readFile(string const & filename)
 		params.compressed = true;
 	}
 
-	LyXLex lex(0, 0);
-	lex.setFile(filename);
-
-	bool ret = readFile(lex, filename, paragraphs.begin());
+	bool ret = readFile(filename, paragraphs.begin());
 
 	// After we have read a file, we must ensure that the buffer
 	// language is set and used in the gui.
@@ -462,13 +459,23 @@ bool Buffer::readFile(string const & filename)
 }
 
 
-// FIXME: all the below Alerts should give the filename..
+bool Buffer::readFile(string const & filename, ParagraphList::iterator pit)
+{
+	LyXLex lex(0, 0);
+	lex.setFile(filename);
+
+	return readFile(lex, filename, pit);
+}
+
+
 bool Buffer::readFile(LyXLex & lex, string const & filename,
 		      ParagraphList::iterator pit)
 {
+	Assert(!filename.empty());
+
 	if (!lex.isOK()) {
 		Alert::error(_("Document could not be read"),
-			_("The specified document could not be read."));
+			     bformat(_("%1$s could not be read."), filename));
 		return false;
 	}
 
@@ -477,7 +484,7 @@ bool Buffer::readFile(LyXLex & lex, string const & filename,
 
 	if (!lex.isOK()) {
 		Alert::error(_("Document could not be read"),
-			_("The specified document could not be read."));
+			     bformat(_("%1$s could not be read."), filename));
 		return false;
 	}
 
@@ -486,7 +493,8 @@ bool Buffer::readFile(LyXLex & lex, string const & filename,
 		lyxerr << "Token: " << token << endl;
 
 		Alert::error(_("Document format failure"),
-			_("The specified document is not a LyX document."));
+			     bformat(_("%1$s is not a LyX document."),
+				       filename));
 		return false;
 	}
 
@@ -500,62 +508,56 @@ bool Buffer::readFile(LyXLex & lex, string const & filename,
 			tmp_format.erase(dot, 1);
 	int file_format = strToInt(tmp_format);
 	//lyxerr << "format: " << file_format << endl;
-	if (file_format == LYX_FORMAT) {
-		// current format
-	} else if (file_format > LYX_FORMAT) {
+
+	if (file_format > LYX_FORMAT) {
 		Alert::warning(_("Document format failure"),
-			_("This document was created with a newer version of "
-			"LyX. This is likely to cause problems."));
+			       bformat(_("%1$swas created with a newer version"
+					 " of LyX. This is likely to cause"
+					 " problems."),
+					 filename));
 	} else if (file_format < LYX_FORMAT) {
-		// old formats
-		if (file_format < 200) {
-			Alert::error(_("Document format failure"),
-				_("This LyX document is too old to be read "
-				"by this version of LyX. Try LyX 0.10."));
-			return false;
-		} else if (!filename.empty()) {
-			string command =
-				LibFileSearch("lyx2lyx", "lyx2lyx");
-			if (command.empty()) {
-				Alert::error(_("Conversion script not found"),
-					_("The document is from an earlier version "
-					  "of LyX, but the conversion script lyx2lyx "
-					  "could not be found."));
-				return false;
-			}
-			command += " -t"
-				+ tostr(LYX_FORMAT) + ' '
-				+ QuoteName(filename);
-			lyxerr[Debug::INFO] << "Running '"
-					    << command << '\''
-					    << endl;
-			cmd_ret const ret = RunCommand(command);
-			if (ret.first) {
-				Alert::error(_("Conversion script failed"),
-					_("The document is from an earlier version "
-					  "of LyX, but the lyx2lyx script failed "
-					  "to convert it."));
-				return false;
-			}
-			istringstream is(STRCONV(ret.second));
-			LyXLex tmplex(0, 0);
-			tmplex.setStream(is);
-			return readFile(tmplex, string(), pit);
-		} else {
-			// This code is reached if lyx2lyx failed (for
-			// some reason) to change the file format of
-			// the file.
-			Assert(false);
+		string const tmpfile = tempName();
+		string command = LibFileSearch("lyx2lyx", "lyx2lyx");
+		if (command.empty()) {
+			Alert::error(_("Conversion script not found"),
+				     bformat(_("%1$s is from an earlier"
+					       " version of LyX, but the"
+					       " conversion script lyx2lyx"
+					       " could not be found."),
+					       filename));
 			return false;
 		}
+		command += " -t"
+			+ tostr(LYX_FORMAT)
+			+ " -o " + tmpfile + ' '
+			+ QuoteName(filename);
+		lyxerr[Debug::INFO] << "Running '"
+				    << command << '\''
+				    << endl;
+		cmd_ret const ret = RunCommand(command);
+		if (ret.first != 0) {
+			Alert::error(_("Conversion script failed"),
+				     bformat(_("%1$s is from an earlier version"
+					      " of LyX, but the lyx2lyx script"
+					      " failed to convert it."),
+					      filename));
+			return false;
+		} else {
+			bool ret = readFile(tmpfile, pit);
+			// Do stuff with tmpfile name and buffer name here.
+			return ret;
+		}
+
 	}
+
 	bool the_end = readBody(lex, pit);
 	params.setPaperStuff();
 
 	if (!the_end) {
 		Alert::error(_("Document format failure"),
-			_("The document ended unexpectedly, which means "
-			  "that it is probably corrupted."));
+			     bformat(_("%1$s ended unexpectedly, which means"
+				       " that it is probably corrupted."),
+				       filename));
 	}
 	return true;
 }

@@ -47,6 +47,7 @@
 #include "support/filetools.h"
 #include "support/types.h"
 #include "support/lyxalgo.h" // lyx_count
+#include "support/LAssert.h"
 
 #include <fstream>
 
@@ -271,51 +272,15 @@ bool BufferView::insertLyXFile(string const & filen)
 	//
 	// Moved from lyx_cb.C (Lgb)
 {
-	if (filen.empty())
-		return false;
+	Assert(!filen.empty());
 
 	string const fname = MakeAbsPath(filen);
 
-	// check if file exist
-	FileInfo const fi(fname);
-
-	if (!fi.readable()) {
-		string const file = MakeDisplayPath(fname, 50);
-		string const text =
-			bformat(_("The specified document\n%1$s\ncould not be read."), file);
-		Alert::error(_("Could not read document"), text);
-		return false;
-	}
-
 	beforeChange(text);
-
-	ifstream ifs(fname.c_str());
-	if (!ifs) {
-		string const file = MakeDisplayPath(fname, 50);
-		string const text =
-			bformat(_("Could not open the specified document %1$s\n"), file);
-		Alert::error(_("Could not open file"), text);
-		return false;
-	}
-
-	int const c = ifs.peek();
-
-	LyXLex lex(0, 0);
-	lex.setStream(ifs);
-
-	bool res = true;
 
 	text->breakParagraph(buffer()->paragraphs);
 
-	if (c == '#') {
-		// FIXME: huh ? No we won't !
-		lyxerr[Debug::INFO] << "Will insert file with header" << endl;
-		res = buffer()->readFile(lex, fname, ParagraphList::iterator(text->cursor.par()));
-	} else {
-		lyxerr[Debug::INFO] << "Will insert file without header"
-				    << endl;
-		res = buffer()->readBody(lex, ParagraphList::iterator(text->cursor.par()));
-	}
+	bool res = buffer()->readFile(fname, text->cursor.par());
 
 	resize();
 	return res;

@@ -118,7 +118,7 @@ private:
 	int iy_;
 };
 
-/// 
+///
 bool operator==(LyXCursor const & a, LyXCursor const & b);
 ///
 bool operator!=(LyXCursor const & a, LyXCursor const & b);

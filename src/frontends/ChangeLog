@@ -1,3 +1,8 @@
+2003-09-02  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* Alert.C (prompt, warning, error, information, askForText): Make
+	them output the alert to stderr if debugging is turned on.
+
 2003-08-27  John Levon  <levon@movementarian.org>
 
 	* screen.C: fix cursor in ERT (bug 1341)
@@ -38,7 +43,7 @@
 	* Menubar.h: do not use a pimpl, but rather an abstract class
 
 	* Menubar.C: removed
-	
+
 2003-07-25  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* Toolbar.h: do not use a pimpl, but rather an abstract class

@@ -72,15 +72,19 @@ public:
 	/// Load the autosaved file.
 	void loadAutoSaveFile();
 
+private:
 	/** Inserts a file into a document
 	    \param par if != 0 insert the file.
 	    \return \c false if method fails.
 	*/
-	bool readFile(LyXLex &, string const &, ParagraphList::iterator pit);
+	bool readFile(LyXLex &, string const & filename,
+		      ParagraphList::iterator pit);
 
-	// FIXME: it's very silly to pass a lex in here
+public:
 	/// load a new file
-	bool readFile(string const &);
+	bool readFile(string const & filename);
+
+	bool readFile(string const & filename, ParagraphList::iterator pit);
 
 	/// read the header, returns number of unknown tokens
 	int readHeader(LyXLex & lex);
