@@ -87,13 +87,10 @@ void QGraphicsDialog::closeEvent(QCloseEvent * e)
 
 void QGraphicsDialog::browse_clicked()
 {
-	QString file = QFileDialog::getOpenFileName(
-		QString::null, qt_("Files (*)"),
-		this, 0, qt_("Select graphics file"));
-	if (!file.isNull()) {
-		filename->setText(file);
-		form_->changed();
-	}
+	string const str = 
+		form_->controller().Browse(fromqstr(filename->text()));
+	filename->setText(toqstr(str));
+	form_->changed();
 }
 
 
