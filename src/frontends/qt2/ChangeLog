@@ -2,6 +2,8 @@
 
 	* QExternal.C: changes due to InsetExternal::Params no longer
 	storing the ExternalTemplate but its name.
+	* QRef.C: move #include "insets/insetref.h" above the Qt headers.
+	Something nasty going on with Qt polluting the global namespace.
 
 2003-06-10  Angus Leeming  <leeming@lyx.org>
 

@@ -12,6 +12,8 @@
 
 
 #include "ControlRef.h"
+#include "insets/insetref.h"
+
 #include "QRef.h"
 #include "QRefDialog.h"
 #include "Qt2BC.h"
@@ -26,7 +28,6 @@
 #include "helper_funcs.h" // getStringFromVector
 #include "support/lstrings.h" // frontStrip, strip
 #include "qt_helpers.h"
-#include "insets/insetref.h"
 
 using std::find;
 using std::max;
