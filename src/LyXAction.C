@@ -445,7 +445,7 @@ LyXAction::LyXAction()
 
 // Search for an existent pseudoaction, return LFUN_UNKNOWN_ACTION
 // if it doesn't exist.
-int LyXAction::searchActionArg(kb_action action, string const & arg) const
+kb_action LyXAction::searchActionArg(kb_action action, string const & arg) const
 {
 	arg_map::const_iterator pit = lyx_arg_map.find(action);
 
@@ -473,7 +473,7 @@ int LyXAction::searchActionArg(kb_action action, string const & arg) const
 			      << action << '|' 
 			      << arg << "] = " << aci->second << endl;
 
-	return aci->second;
+	return kb_action(aci->second);
 }
 
 

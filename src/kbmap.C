@@ -1,8 +1,8 @@
 /* This file is part of
- * ====================================================== 
- * 
+ * ======================================================
+ *
  *           LyX, The Document Processor
- * 	 
+ * 	
  *           Copyright 1995 Matthias Ettrich
  *           Copyright 1995-2001 The LyX Team.
  *
@@ -10,7 +10,6 @@
 
 #include <config.h>
 
-//#include <cstring>
 #include <X11/Xlib.h>
 
 #ifdef __GNUG__
@@ -24,25 +23,13 @@
 using std::endl;
 
 // The only modifiers that we handle. We want to throw away things
-// like NumLock. 
+// like NumLock.
 enum { ModsMask = ShiftMask | ControlMask | Mod1Mask };
 
 
-// === static functions =================================================== 
-
-
-/* ---F+------------------------------------------------------------------ *\
-   Function  : printKeysym
-   Called by : kb_sequence::print and printKeyMap. RVDK_PATCH_5
-   Purpose   : prints a keysym, including modifiers.
-   Parameters: key    - keysym
-               mod    - modifiers
-               buf    - string where the result goes
-	       maxlen - length of string (including '\0')
-   Returns   : length of printed string if ok, 0 otherwise.
-\* ---F------------------------------------------------------------------- */
-void printKeysym(unsigned int key, unsigned int mod, string & buf)
+string const kb_keymap::printKeysym(unsigned int key, unsigned int mod)
 {
+	string buf;
 	mod &= ModsMask;
 
 	char const * const s = XKeysymToString(key);
@@ -51,27 +38,40 @@ void printKeysym(unsigned int key, unsigned int mod, string & buf)
 	if (mod & ControlMask) buf += "C-";
 	if (mod & Mod1Mask) buf += "M-";
 	if (s) buf += s;
+	return buf;
 }
 
 
-/* ---F+------------------------------------------------------------------ *\
-   Function  : printKeyTab
-   Called by : kb_keymap::print
-   Purpose   : print the keysyms found in the given key table. RVDK_PATCH_5
-   Parameters: tabPt  - keytable pointer
-               buf    - string where the result goes
-               maxLen - length of string (including '\0')
-   Returns   : length of printed string.
-\* ---F------------------------------------------------------------------- */
-
-void kb_keymap::printKey(kb_key const & key, string & buf)
+char kb_keymap::getiso(unsigned int c)
 {
-	printKeysym(key.code, key.mod & 0xffff, buf);
+	switch (c & 0x0000FF00) {
+		// latin 1 byte 3 = 0
+	case 0x00000000: break;
+		// latin 2 byte 3 = 1
+	case 0x00000100:
+		// latin 3 byte 3 = 2
+	case 0x00000200:
+		// latin 4 byte 3 = 3
+	case 0x00000300:
+		// latin 8 byte 3 = 18 (0x12)
+	case 0x00001200:
+		// latin 9 byte 3 = 19 (0x13)
+	case 0x00001300:
+		c &= 0x000000FF;
+		break;
+	default:
+		c = 0;
+	}
+	return c;
+}
+
+string const kb_keymap::printKey(kb_key const & key) const
+{
+	return printKeysym(key.code, key.mod & 0xffff);
 }
 
 
-// This binds a key to an action
-string::size_type kb_keymap::bind(string const & seq, int action)
+string::size_type kb_keymap::bind(string const & seq, kb_action action)
 {
 	if (lyxerr.debugging(Debug::KBMAP)) {
 		lyxerr << "BIND: Sequence `"
@@ -79,39 +79,30 @@ string::size_type kb_keymap::bind(string const & seq, int action)
 		       << action << "'" << endl;
 	}
 	
-	kb_sequence k;
+	kb_sequence k(0, 0);
 
 	string::size_type const res = k.parse(seq);
 	if (res == string::npos) {
 		defkey(&k, action);
-	} else
+	} else {
 		lyxerr[Debug::KBMAP] << "Parse error at position " << res
 				     << " in key sequence '" << seq << "'."
 				     << endl;
+	}
+
 	return res;
 }
 
 
-/* ---F+------------------------------------------------------------------ *\
-    Function  : kb_keymap::lookup
-    Called by : [user], kb_sequence::add()
-    Purpose   : look up a key press in a given keymap
-    Parameters: key - the keysym of the key press
-                mod - the modifier mask of the keypress
-                seq - the key-sequence retrieved so far
-    Returns   : user defined action; 0 for prefix key, -1 if key not found
-\* ---F------------------------------------------------------------------- */
-
-int kb_keymap::lookup(unsigned int key,
+kb_action kb_keymap::lookup(unsigned int key,
 		      unsigned int mod, kb_sequence * seq) const
 {
 	if (table.empty()) {
 		seq->curmap = seq->stdmap;
-		seq->delseq();
-		return -1;
+		seq->mark_deleted();
+		return LFUN_UNKNOWN_ACTION;
 	}
 
-	//unsigned int msk1, msk0;
 	//suppress modifier bits we do not handle
 	mod &= ModsMask;
 
@@ -120,15 +111,15 @@ int kb_keymap::lookup(unsigned int key,
 		unsigned int const msk1 = cit->mod & 0xffff;
 		unsigned int const msk0 = (cit->mod >> 16) & 0xffff;
 		if (cit->code == key && (mod & ~msk0) == msk1) {
-			// math found:
+			// match found
 			if (cit->table.get()) {
 				// this is a prefix key - set new map
 				seq->curmap = cit->table.get();
-				return 0;
+				return LFUN_PREFIX;
 			} else {
 				// final key - reset map
 				seq->curmap = seq->stdmap;
-				seq->delseq();
+				seq->mark_deleted();
 				return cit->action;
 			}
 		}
@@ -136,105 +127,73 @@ int kb_keymap::lookup(unsigned int key,
 
 	// error - key not found:
 	seq->curmap = seq->stdmap;
-	seq->delseq();
-	return -1;
+	seq->mark_deleted();
+	return LFUN_UNKNOWN_ACTION;
 }
 
 
-/* ---F+------------------------------------------------------------------ *\
-    Function  : kb_keymap::print
-    Called by : [user]
-    Purpose   : Prints all the available keysyms. RVDK_PATCH_5
-    Parameters: buf    - string where output goes.
-               maxLen - available length in string, including `\0'.
-    Returns   : updated maxLen.
-\* ---F------------------------------------------------------------------- */
-
-void kb_keymap::print(string & buf) const
+string const kb_keymap::print() const
 {
+	string buf;
 	for (Table::const_iterator cit = table.begin();
 	     cit != table.end(); ++cit) {
-		printKey((*cit), buf);
+		buf += printKey((*cit));
 		buf += ' ';
 	}
+	return buf;
 }
 
 
-/* ---F+------------------------------------------------------------------ *\
-    Function  : kb_keymap::defkey
-    Called by : [user]
-    Purpose   : define an action for a key sequence
-    Parameters: seq    - the key sequence
-                action - the action to be defined
-                idx    - recursion depth
-    Returns   : 0 if ok.
-\* ---F------------------------------------------------------------------- */
-
-int kb_keymap::defkey(kb_sequence * seq, int action, int idx /*= 0*/)
+void kb_keymap::defkey(kb_sequence * seq, kb_action action, unsigned int r)
 {
-	unsigned int const code = seq->sequence[idx];
-	if (code == NoSymbol) return -1;
+	unsigned int const code = seq->sequence[r];
+	if (code == NoSymbol) return;
 
-	unsigned int const modmsk = seq->modifiers[idx];
+	unsigned int const modmsk = seq->modifiers[r];
 
-	// --- check if key is already there --------------------------------
-	if (table.size() != 0) { // without this I get strange crashes
-		Table::iterator end = table.end();
-	for (Table::iterator it = table.begin(); it != end; ++it) {
+	// check if key is already there
+	for (Table::iterator it = table.begin(); it != table.end(); ++it) {
 		if (code == it->code && modmsk == it->mod) {
 			// overwrite binding
-			if (idx + 1 == seq->length) {
-				string buf;
-				seq->print(buf, true);
+			if (r + 1 == seq->length()) {
 				lyxerr[Debug::KBMAP]
 					<< "Warning: New binding for '"
-					<< buf
+					<< seq->print()
 					<< "' is overriding old binding..."
 					<< endl;
-				if (it->table.get()) {
+					if (it->table.get()) {
 					it->table.reset(0);
 				}
 				it->action = action;
-				return 0;
+				return;
 			} else if (!it->table.get()) {
-				string buf;
-				seq->print(buf, true);
-				lyxerr << "Error: New binding for '" << buf
+				lyxerr << "Error: New binding for '" << seq->print()
 				       << "' is overriding old binding..."
-				       << endl;
-				return -1;
+					       << endl;
+				return;
 			} else {
-				return it->table->defkey(seq, action,
-							 idx + 1);
+				it->table->defkey(seq, action, r + 1);
+				return;
 			}
 		}
-	}
 	}
 	
 	Table::iterator newone = table.insert(table.end(), kb_key());
 	newone->code = code;
 	newone->mod = modmsk;
-	if (idx + 1 == seq->length) {
+	if (r + 1 == seq->length()) {
 		newone->action = action;
 		newone->table.reset(0);
-		return 0;
+		return;
 	} else {
 		newone->table.reset(new kb_keymap);
-		return newone->table->defkey(seq, action, idx + 1);
+		newone->table->defkey(seq, action, r + 1);
+		return;
 	}
 }
 
 
-string const kb_keymap::keyname(kb_key const & k)
-{
-	string buf;
-	printKeysym(k.code, k.mod, buf);
-	return buf;
-}
-
-
-// Finds a key for a keyaction, if possible
-string const kb_keymap::findbinding(int act, string const & prefix) const
+string const kb_keymap::findbinding(kb_action act, string const & prefix) const
 {
 	string res;
 	if (table.empty()) return res;
@@ -245,15 +204,13 @@ string const kb_keymap::findbinding(int act, string const & prefix) const
 		if (cit->table.get()) {
 			res += cit->table->findbinding(act,
 						       prefix
-						       + keyname((*cit))
+						       + printKey((*cit))
 						       + " ");
 		} else if (cit->action == act) {
 			res += "[";
-			res += prefix + keyname((*cit));
+			res += prefix + printKey((*cit));
 			res += "] ";
 		}
 	}
 	return res;
 }
-
-/* === End of File: kbmap.C ============================================== */

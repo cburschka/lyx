@@ -47,18 +47,8 @@ Painter::Painter(WorkArea & wa)
 
 /* Basic drawing routines */
 
-extern bool Lgb_bug_find_hack;
-
 PainterBase & Painter::point(int x, int y, LColor::color c)
 {
-	if (lyxerr.debugging(Debug::GUI)) {
-		if (!Lgb_bug_find_hack)
-			lyxerr << "point not called from "
-				"workarea::workhandler\n";
-		lyxerr[Debug::INFO] << "Painter drawable: "
-			       << owner.getPixmap() << endl;
-	}
-	
 	XDrawPoint(display, owner.getPixmap(),
 		   lyxColorHandler->getGCForeground(c), x, y);
 	return *this;
@@ -70,14 +60,6 @@ PainterBase & Painter::line(int x1, int y1, int x2, int y2,
 			enum line_style ls,
 			enum line_width lw)
 {
-	if (lyxerr.debugging(Debug::GUI)) {
-		if (!Lgb_bug_find_hack)
-			lyxerr << "line not called from "
-				"workarea::workhandler\n";
-		lyxerr[Debug::INFO] << "Painter drawable: "
-			       << owner.getPixmap() << endl;
-	}
-	
 	XDrawLine(display, owner.getPixmap(), 
 		  lyxColorHandler->getGCLinepars(ls, lw, col),
 		  x1, y1, x2, y2);
@@ -90,14 +72,6 @@ PainterBase & Painter::lines(int const * xp, int const * yp, int np,
 			     enum line_style ls,
 			     enum line_width lw)
 {
-	if (lyxerr.debugging(Debug::GUI)) {
-		if (!Lgb_bug_find_hack)
-			lyxerr << "lines not called from "
-				"workarea::workhandler\n";
-		lyxerr[Debug::INFO] << "Painter drawable: "
-			       << owner.getPixmap() << endl;
-	}
-	
 #ifndef HAVE_AUTO_PTR
 	XPoint * points = new XPoint[np];
 #else
@@ -124,14 +98,6 @@ PainterBase & Painter::rectangle(int x, int y, int w, int h,
 				 enum line_style ls,
 				 enum line_width lw)
 {
-	if (lyxerr.debugging(Debug::GUI)) {
-		if (!Lgb_bug_find_hack)
-			lyxerr << "rectangle not called from "
-				"workarea::workhandler\n";
-		lyxerr << "Painter drawable: "
-		       << owner.getPixmap() << endl;
-	}
-	
 	XDrawRectangle(display, owner.getPixmap(),
 		       lyxColorHandler->getGCLinepars(ls, lw, col), 
 		       x, y, w, h);
@@ -142,14 +108,6 @@ PainterBase & Painter::rectangle(int x, int y, int w, int h,
 PainterBase & Painter::fillRectangle(int x, int y, int w, int h,
 				 LColor::color col)
 {
-	if (lyxerr.debugging(Debug::GUI)) {
-		if (!Lgb_bug_find_hack)
-			lyxerr << "fillrectangle not called from "
-				"workarea::workhandler\n";
-		lyxerr << "Painter drawable: "
-		       << owner.getPixmap() << endl;
-	}
-	
 	XFillRectangle(display, owner.getPixmap(),
 		       lyxColorHandler->getGCForeground(col), x, y, w, h);
 	return *this;
@@ -159,13 +117,6 @@ PainterBase & Painter::fillRectangle(int x, int y, int w, int h,
 PainterBase & Painter::fillPolygon(int const * xp, int const * yp, int np,
 			       LColor::color col)
 {
-	if (lyxerr.debugging(Debug::GUI)) {
-		if (!Lgb_bug_find_hack)
-			lyxerr <<"fillpolygon not called from "
-				"workarea::workhandler\n";
-		lyxerr << "Painter drawable: " << owner.getPixmap() << endl;
-	}
-	
 #ifndef HAVE_AUTO_PTR
 	XPoint * points = new XPoint[np];
 #else
@@ -190,13 +141,6 @@ PainterBase & Painter::arc(int x, int y,
 		  unsigned int w, unsigned int h,
 		  int a1, int a2, LColor::color col)
 {
-	if (lyxerr.debugging(Debug::GUI)) {
-		if (!Lgb_bug_find_hack)
-			lyxerr << "arc not called from "
-				"workarea::workhandler\n";
-		lyxerr << "Painter drawable: " << owner.getPixmap() << endl;
-	}
-	
         XDrawArc(display, owner.getPixmap(),
 		 lyxColorHandler->getGCForeground(col),
                  x, y, w, h, a1, a2);
@@ -210,13 +154,6 @@ PainterBase & Painter::segments(int const * x1, int const * y1,
 			    LColor::color col,
 			    enum line_style ls, enum line_width lw)
 {
-	if (lyxerr.debugging(Debug::GUI)) {
-		if (!Lgb_bug_find_hack)
-			lyxerr << "segments not called from "
-				"workarea::workhandler\n";
-		lyxerr << "Painter drawable: " << owner.getPixmap() << endl;
-	}
-	
 #ifndef HAVE_AUTO_PTR
 	XSegment * s= new XSegment[ns];
 #else
@@ -239,13 +176,6 @@ PainterBase & Painter::segments(int const * x1, int const * y1,
 
 PainterBase & Painter::pixmap(int x, int y, int w, int h, Pixmap bitmap)
 {
-	if (lyxerr.debugging(Debug::GUI)) {
-		if (!Lgb_bug_find_hack)
-			lyxerr << "workAreaExpose not called from "
-				"workarea::workhandler\n";
-		lyxerr << "Painter drawable: " << owner.getPixmap() << endl;
-	}
-
 	XGCValues val;
 	val.function = GXcopy;
 	GC gc = XCreateGC(display, owner.getPixmap(),
@@ -301,12 +231,6 @@ PainterBase & Painter::text(int x, int y, char const * s, size_t ls,
 		return *this;
 	}
 
-	if (lyxerr.debugging(Debug::GUI)) {
-		if (!Lgb_bug_find_hack)
-			lyxerr << "text not called from "
-				"workarea::workhandler\n";
-		lyxerr << "Painter drawable: " << owner.getPixmap() << endl;
-	}
 	GC gc = lyxColorHandler->getGCForeground(f.realColor());
 	if (f.realShape() != LyXFont::SMALLCAPS_SHAPE) {
 		lyxfont::XSetFont(display, gc, f);
@@ -344,12 +268,6 @@ PainterBase & Painter::text(int x, int y, char const * s, size_t ls,
 PainterBase & Painter::text(int x, int y, XChar2b const * s, int ls,
 			LyXFont const & f)
 {
-	if (lyxerr.debugging(Debug::GUI)) {
-		if (!Lgb_bug_find_hack)
-			lyxerr << "text not called from "
-				"workarea::workhandler\n";
-		lyxerr << "Painter drawable: " << owner.getPixmap() << endl;
-	}
 	GC gc = lyxColorHandler->getGCForeground(f.realColor());
 	if (f.realShape() != LyXFont::SMALLCAPS_SHAPE) {
 		lyxfont::XSetFont(display, gc, f);

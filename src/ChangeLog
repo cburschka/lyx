@@ -1,3 +1,18 @@
+2001-11-26  John Levon  <moz@compsoc.man.ac.uk>
+
+	* LyXAction.h:
+	* LyXAction.C:
+	* lyxfunc.h:
+	* lyxfunc.C:
+	* kbmap.h:
+	* kbmap.C:
+	* lyxrc.C:
+	* kbsequence.h:
+	* kbsequence.C: part re-write of old kb code
+
+	* Painter.C:
+	* WorkArea.C: remove Lgb_bug_find_hack
+
 2001-11-30  José Matos <jamatos@fep.up.pt>
 
 	* buffer.C (makeDocBookFile): add a comment to point a hack.

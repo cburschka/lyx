@@ -439,7 +439,7 @@ int Menubar::Pimpl::create_submenu(Window win, LyXView * view,
 
 			// Get the keys bound to this action, but keep only the
 			// first one later
-			string const accel = toplevel_keymap->findbinding(item.action());
+			string const accel = toplevel_keymap->findbinding(kb_action(item.action()));
 			// Build the menu label from all the info
 			string label = item.label();
 

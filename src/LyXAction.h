@@ -83,7 +83,7 @@ public:
 	kb_action retrieveActionArg(int i, string & arg) const;
     
 	/// Search for an existent pseudoaction, return -1 if it doesn't exist.
-	int searchActionArg(kb_action action, string const & arg) const;
+	kb_action searchActionArg(kb_action action, string const & arg) const;
 
 	/// Check if a value is a pseudo-action. 
 	bool isPseudoAction(int) const;

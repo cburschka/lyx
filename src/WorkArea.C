@@ -325,8 +325,6 @@ void WorkArea::scroll_cb(FL_OBJECT * ob, long)
 }
 
 
-bool Lgb_bug_find_hack = false;
-
 int WorkArea::work_area_handler(FL_OBJECT * ob, int event,
 				FL_Coord, FL_Coord ,
 				int key, void * xev)
@@ -347,9 +345,7 @@ int WorkArea::work_area_handler(FL_OBJECT * ob, int event,
 			return 1;
 		lyxerr[Debug::WORKAREA] << "Workarea event: DRAW" << endl;
 		area->createPixmap(area->workWidth(), area->height());
-		Lgb_bug_find_hack = true;
 		area->workAreaExpose();
-		Lgb_bug_find_hack = false;
 		break;
 	case FL_PUSH:
 		if (!ev || ev->xbutton.button == 0) break;

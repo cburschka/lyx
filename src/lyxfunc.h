@@ -55,17 +55,6 @@ public:
 	/// The last key was meta
 	bool wasMetaKey() const;
 
-	// These can't be global because are part of the
-	// internal state (ale970227)
-	/// Get the current keyseq string
-	string const keyseqStr() const;
-
-	/// Is the key sequence uncomplete?
-	bool keyseqUncomplete() const;
-
-	/// get options for the current keyseq
-	string const keyseqOptions() const;
-
         /// True if lyxfunc reports an error
         bool errorStat() const { return errorstat; }
         /// Buffer to store result messages
@@ -140,33 +129,6 @@ bool LyXFunc::wasMetaKey() const
 	return (meta_fake_bit != 0);
 }
      
-
-inline
-string const LyXFunc::keyseqStr() const
-{
-	// Why not just remove this function
-	string text;
-	keyseq.print(text, true);
-	return text;
-} 
-
-
-inline
-string const LyXFunc::keyseqOptions() const
-{
-	// Why not just remove this function
-	string text;
-	keyseq.printOptions(text);
-	return text;
-} 
-
-
-inline
-bool LyXFunc::keyseqUncomplete() const
-{ 
-	return (keyseq.length > 0);
-}
-
 
 inline
 void LyXFunc::setHintMessage(bool hm) 

@@ -160,12 +160,13 @@ bool LyXFunc::show_sc = true;
 
 
 LyXFunc::LyXFunc(LyXView * o)
-	: owner(o)
+	: owner(o),
+	keyseq(toplevel_keymap.get(), toplevel_keymap.get()),
+	cancel_meta_seq(toplevel_keymap.get(), toplevel_keymap.get())
 {
 	meta_fake_bit = 0;
 	lyx_dead_action = LFUN_NOACTION;
 	lyx_calling_dead_action = LFUN_NOACTION;
-	setupLocalKeymap();
 }
 
 
@@ -204,14 +205,15 @@ void LyXFunc::handleKeyFunc(kb_action action)
 {
 	char c = keyseq.getiso();
 
-	if (keyseq.length != -1) c = 0;
+	if (keyseq.length() > 1) {
+		c = 0;
+	}
 	
 	owner->getIntl()->getTrans()
 		.deadkey(c, get_accent(action).accent, TEXT(false));
-	// Need to reset, in case the minibuffer calls these
+	// Need to clear, in case the minibuffer calls these
 	// actions
-	keyseq.reset();
-	keyseq.length = 0;
+	keyseq.clear();
 	// copied verbatim from do_accent_char
 	owner->view()->update(TEXT(false),
 	       BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
@@ -281,14 +283,15 @@ void LyXFunc::processKeySym(KeySym keysym, unsigned int state)
 	// Dont remove this unless you know what you are doing.
 	meta_fake_bit = 0;
 		
-	if (action == 0) action = LFUN_PREFIX;
+	// can this happen now ? 
+	if (action == LFUN_NOACTION) {
+		action = LFUN_PREFIX;
+	}
 
 	if (lyxerr.debugging(Debug::KEY)) {
-		string buf;
-		keyseq.print(buf);
 		lyxerr << "Key [action="
 		       << action << "]["
-		       << buf << "]"
+		       << keyseq.print() << "]"
 		       << endl;
 	}
 
@@ -296,13 +299,11 @@ void LyXFunc::processKeySym(KeySym keysym, unsigned int state)
 	// why not return already here if action == -1 and
 	// num_bytes == 0? (Lgb)
 
-	if (keyseq.length > 1 || keyseq.length < -1) {
-		string buf;
-		keyseq.print(buf);
-		owner->message(buf);
+	if (keyseq.length() > 1 && !keyseq.deleted()) {
+		owner->message(keyseq.print());
 	}
 
-	if (action == -1) {
+	if (action == LFUN_UNKNOWN_ACTION) {
 		// It is unknown, but what if we remove all
 		// the modifiers? (Lgb)
 		action = keyseq.addkey(keysym, 0);
@@ -312,35 +313,18 @@ void LyXFunc::processKeySym(KeySym keysym, unsigned int state)
 			       << "Action now set to ["
 			       << action << "]" << endl;
 		}
-		if (action == -1) {
+		if (action == LFUN_UNKNOWN_ACTION) {
 			owner->message(_("Unknown function."));
 			return;
 		}
 	}
 
 	if (action == LFUN_SELFINSERT) {
-		// This is very X dependant.
+		// This is very X dependent.
 		unsigned int c = keysym;
 		
-		switch (c & 0x0000FF00) {
-			// latin 1 byte 3 = 0
-		case 0x00000000: break;
-			// latin 2 byte 3 = 1
-		case 0x00000100:
-			// latin 3 byte 3 = 2
-		case 0x00000200:
-			// latin 4 byte 3 = 3
-		case 0x00000300:
-			// latin 8 byte 3 = 18 (0x12)
-		case 0x00001200:
-			// latin 9 byte 3 = 19 (0x13)
-		case 0x00001300:
-			c &= 0x000000FF;
-			break;
-		default:
-			c = 0;
-			break;
-		}
+		c = kb_keymap::getiso(c);
+
 		if (c > 0)
 			argument = static_cast<char>(c);
 		lyxerr[Debug::KEY] << "SelfInsert arg[`"
@@ -817,7 +801,7 @@ string const LyXFunc::dispatch(int ac,
 	if (owner->view()->available() && owner->view()->theLockingInset()) {
 		UpdatableInset::RESULT result;
 		if ((action > 1) || ((action == LFUN_UNKNOWN_ACTION) &&
-				     (keyseq.length >= -1)))
+				     (!keyseq.deleted())))
 		{
 			if ((action==LFUN_UNKNOWN_ACTION) && argument.empty()){
 				argument = keyseq.getiso();
@@ -994,9 +978,7 @@ string const LyXFunc::dispatch(int ac,
 			owner->view()->update(TEXT(),
 					      BufferView::SELECT|BufferView::FITCUR);
 		}
-		string buf;
-		keyseq.print(buf, true);
-		owner->message(buf);
+		owner->message(keyseq.print());
 	}
 	break;
 
@@ -1024,9 +1006,7 @@ string const LyXFunc::dispatch(int ac,
 	case LFUN_META_FAKE:                                 // RVDK_PATCH_5
 	{
 		meta_fake_bit = Mod1Mask;
-		string buf;
-		keyseq.print(buf, true);
-		setMessage(buf); // RVDK_PATCH_5
+		setMessage(keyseq.print());
 	}
 	break;  
 
@@ -1375,9 +1355,7 @@ string const LyXFunc::dispatch(int ac,
 		
 	case LFUN_NOTIFY:
 	{
-		string buf;
-		keyseq.print(buf);
-		dispatch_buffer = buf;
+		dispatch_buffer = keyseq.print();
 		lyxserver->notifyClient(dispatch_buffer);
 	}
 	break;
@@ -1635,7 +1613,7 @@ exit_with_message:
 			// for it in minibuffer
 			string comname = lyxaction.getActionName(action);
 
-			int pseudoaction = action;
+			kb_action pseudoaction = action;
 			bool argsadded = false;
 
 			if (!argument.empty()) {
@@ -2031,14 +2009,15 @@ void LyXFunc::initMiniBuffer()
 	
 	// When meta-fake key is pressed, show the key sequence so far + "M-".
 	if (wasMetaKey()) {
-		keyseqStr();
+		text = keyseq.print();
 		text += "M-";
 	}
 
 	// Else, when a non-complete key sequence is pressed,
 	// show the available options.
-	else if (keyseqUncomplete()) 
-		text = keyseqOptions();
+	else if (keyseq.length() > 1) {
+		text = keyseq.printOptions();
+	}
    
 	// Else, show the buffer state.
 	else if (owner->view()->available()) {

@@ -736,7 +736,7 @@ int LyXRC::read(string const & filename)
 					       << cmd << "' Action `"
 					       << action << '\'' << endl;
 				}
-				res = toplevel_keymap->bind(seq, action);
+				res = toplevel_keymap->bind(seq, kb_action(action));
 				if (res != string::npos
 				    && lyxerr.debugging(Debug::LYXRC)) {
 					lexrc.printError(
