@@ -73,7 +73,7 @@ string const browseRelFile(LyXView * lv, string const & filename,
 			string const & refpath,
 			string const & title,
 			string const & pattern,
-		        bool save = false,
+		        bool save,
 			pair<string,string> const & dir1,
 			pair<string,string> const & dir2)
 {
