@@ -1,13 +1,13 @@
 # Dansk oversættelse af LyX
-# Copyright (C) 1997-1999 LyX Team
+# Copyright (C) 1997-2002 LyX Team
 # Asger Alstrup <alstrup@diku.dk>, 1997-1999.
-# Claus Hindsgaul <claus_h@image.dk>, 2000-2001.
+# Claus Hindsgaul <claus_h@image.dk>, 2000-2002.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: lyx 1.2.0\n"
-"POT-Creation-Date: 2002-03-30 01:53+0100\n"
-"PO-Revision-Date: 2002-03-31 18:10GMT\n"
+"POT-Creation-Date: 2002-03-31 14:40+0200\n"
+"PO-Revision-Date: 2002-03-31 21:44GMT\n"
 "Last-Translator: Claus Hindsgaul <claus_h@image.dk>\n"
 "Language-Team: Danish <dansk@klid.dk>\n"
 "MIME-Version: 1.0\n"
@@ -389,7 +389,7 @@ msgstr "Flyttet til bogmærke"
 
 #: src/BufferView_pimpl.C:1494
 msgid "Select LyX document to insert"
-msgstr "Vælg det LyX-dokumentm, som skal indsættes"
+msgstr "Vælg det LyX-dokument, som skal indsættes"
 
 #: src/BufferView_pimpl.C:1496 src/frontends/controllers/ControlBibtex.C:68
 #: src/frontends/controllers/ControlExternal.C:166
@@ -486,7 +486,7 @@ msgstr "Ukendt funktion!"
 
 #: src/BufferView_pimpl.C:3496 src/BufferView_pimpl.C:3499
 msgid "No more insets"
-msgstr "Ingen flere indstik"
+msgstr "Ikke flere indstik"
 
 #: src/Chktex.C:84
 msgid "ChkTeX warning id #"
@@ -842,7 +842,7 @@ msgstr "Gem som...|e"
 
 #: src/ext_l10n.h:23
 msgid "Revert to Saved|R"
-msgstr "Gendan sidst gemte|g"
+msgstr "Gendan sidst gemte|m"
 
 #: src/ext_l10n.h:24
 msgid "Version Control|V"
@@ -851,7 +851,7 @@ msgstr "Versionsstyring|V"
 # , c-format
 #: src/ext_l10n.h:26
 msgid "Export|E"
-msgstr "Eksportér|E"
+msgstr "Eksportér|k"
 
 #: src/ext_l10n.h:27
 msgid "Print...|P"
@@ -889,7 +889,7 @@ msgstr "Fortryd sidste check-ind|F"
 # , c-format
 #: src/ext_l10n.h:35
 msgid "Show History|H"
-msgstr "Vis historie|H"
+msgstr "Vis historie|h"
 
 #: src/ext_l10n.h:36
 msgid "Custom...|C"
@@ -897,7 +897,7 @@ msgstr "Brugerdefineret...|B"
 
 #: src/ext_l10n.h:37 src/ext_l10n.h:54
 msgid "Preferences...|P"
-msgstr "Indstillinger...|n"
+msgstr "Indstillinger...|r"
 
 #: src/ext_l10n.h:38 src/ext_l10n.h:55
 msgid "Reconfigure|R"
@@ -957,7 +957,7 @@ msgstr "Tjek TeX|X"
 
 #: src/ext_l10n.h:52
 msgid "Remove All Error Boxes|E"
-msgstr "Fjern alle fejlbeskeder|F"
+msgstr "Fjern alle fejlbeskeder|j"
 
 #: src/ext_l10n.h:53
 msgid "Open/Close float|l"
@@ -965,7 +965,7 @@ msgstr "Åben/Luk flyder|Å"
 
 #: src/ext_l10n.h:56
 msgid "as Lines|L"
-msgstr "som linier|l"
+msgstr "som linjer|l"
 
 #: src/ext_l10n.h:57
 msgid "as Paragraphs|P"
@@ -977,11 +977,11 @@ msgstr "Flerkolonne|F"
 
 #: src/ext_l10n.h:59
 msgid "Line Top|T"
-msgstr "Toplinie|T"
+msgstr "Toplinje|T"
 
 #: src/ext_l10n.h:60
 msgid "Line Bottom|B"
-msgstr "Bundlinie|B"
+msgstr "Bundlinje|B"
 
 #: src/ext_l10n.h:61
 msgid "Line Left|L"
@@ -1037,7 +1037,7 @@ msgstr "Opret formelgitter|o"
 
 #: src/ext_l10n.h:74
 msgid "Make multline|m"
-msgstr "Opret multilinie|u"
+msgstr "Opret multilinje|u"
 
 #: src/ext_l10n.h:75
 msgid "Make align 1 column|1"
@@ -1065,7 +1065,7 @@ msgstr "Nummerering til/fra|u"
 
 #: src/ext_l10n.h:81
 msgid "Toggle numbering of line|u"
-msgstr "Linienummerering til/fra|L"
+msgstr "Linjenummerering til/fra|L"
 
 #: src/ext_l10n.h:82
 msgid "Toggle limits|l"
@@ -1141,7 +1141,7 @@ msgstr "Krydshenvisning...|y"
 
 #: src/ext_l10n.h:101
 msgid "Label...|L"
-msgstr "Referencemærke...|m"
+msgstr "Referencemærke...|æ"
 
 #: src/ext_l10n.h:102
 msgid "Footnote|F"
@@ -1149,7 +1149,7 @@ msgstr "Fodnote|F"
 
 #: src/ext_l10n.h:103
 msgid "Marginal Note|M"
-msgstr "Marginnote|M"
+msgstr "Marginnote|t"
 
 #: src/ext_l10n.h:104
 msgid "Index Entry...|I"
@@ -1157,7 +1157,7 @@ msgstr "Indeksindgang...|I"
 
 #: src/ext_l10n.h:105
 msgid "Index Entry of Preceding Word|W"
-msgstr "Indeksindgang med foregående ord|f"
+msgstr "Indeksindgang med foregående ord|å"
 
 #: src/ext_l10n.h:106
 msgid "URL...|U"
@@ -1169,15 +1169,15 @@ msgstr "Notat|N"
 
 #: src/ext_l10n.h:108
 msgid "Lists & TOC|O"
-msgstr "Lister & Indholdsfortegnelse|L"
+msgstr "Lister & indholdsfortegnelse|r"
 
 #: src/ext_l10n.h:109
 msgid "TeX|T"
-msgstr "TeX|T"
+msgstr "TeX|X"
 
 #: src/ext_l10n.h:110
 msgid "Minipage|p"
-msgstr "Miniside|s"
+msgstr "Miniside|e"
 
 #: src/ext_l10n.h:111
 msgid "Graphics...|G"
@@ -1201,7 +1201,7 @@ msgstr "Indsæt fil|t"
 
 #: src/ext_l10n.h:116
 msgid "External Material...|x"
-msgstr "Eksternt materiale...|e"
+msgstr "Eksternt materiale...|k"
 
 #: src/ext_l10n.h:117
 msgid "Superscript|S"
@@ -1217,7 +1217,7 @@ msgstr "Lodret fyld|L"
 
 #: src/ext_l10n.h:120
 msgid "Hyphenation Point|P"
-msgstr "Orddelingspunkt|p"
+msgstr "Orddelingspunkt|u"
 
 #: src/ext_l10n.h:121
 msgid "Ligature break|k"
@@ -1229,7 +1229,7 @@ msgstr "Beskyttet mellemrum|B"
 
 #: src/ext_l10n.h:123
 msgid "Linebreak|L"
-msgstr "Linieskift|L"
+msgstr "Linjeskift|L"
 
 #: src/ext_l10n.h:124
 msgid "Ellipsis|i"
@@ -1253,7 +1253,7 @@ msgstr "Indlejret formel|I"
 
 #: src/ext_l10n.h:129
 msgid "Display Formula|D"
-msgstr "Vis formel|V"
+msgstr "Vist formel|V"
 
 #: src/ext_l10n.h:130
 msgid "Eqnarray environment|E"
@@ -1301,11 +1301,11 @@ msgstr "BibTeX litteraturliste...|B"
 
 #: src/ext_l10n.h:141
 msgid "LyX Document...|X"
-msgstr "LyX dokument...|X"
+msgstr "LyX-dokument...|X"
 
 #: src/ext_l10n.h:142
 msgid "Ascii as Lines...|L"
-msgstr "Ascii-tekst som linier...|l"
+msgstr "Ascii-tekst som linjer...|l"
 
 #: src/ext_l10n.h:143
 msgid "Ascii as Paragraphs...|P"
@@ -1349,7 +1349,7 @@ msgstr "Ændr omgivelsedybde|v"
 
 #: src/ext_l10n.h:153
 msgid "Preamble...|r"
-msgstr "Hoved...|d"
+msgstr "Hoved...|v"
 
 #: src/ext_l10n.h:154
 msgid "Start Appendix here|A"
@@ -1449,7 +1449,7 @@ msgstr "OSS|O"
 
 #: src/ext_l10n.h:179
 msgid "Table of Contents|a"
-msgstr "Indholdsfortegnelse|I"
+msgstr "Indholdsfortegnelse|f"
 
 #: src/ext_l10n.h:180
 msgid "LaTeX Configuration|L"
@@ -1605,7 +1605,7 @@ msgstr "Betreff"
 
 #: src/ext_l10n.h:219
 msgid "Bibliography"
-msgstr "Literaturliste"
+msgstr "Litteraturliste"
 
 #: src/ext_l10n.h:220
 msgid "Biography"
@@ -1631,13 +1631,13 @@ msgstr "Billedtekst"
 msgid "Case"
 msgstr ""
 
-#: src/ext_l10n.h:226 src/frontends/qt2/lengthcombo.C:29
-msgid "cc"
-msgstr "cc"
-
-#: src/ext_l10n.h:227
+#: src/ext_l10n.h:226
 msgid "CC"
 msgstr "CC"
+
+#: src/ext_l10n.h:227 src/frontends/qt2/lengthcombo.C:29
+msgid "cc"
+msgstr "cc"
 
 #: src/ext_l10n.h:228
 msgid "CenteredCaption"
@@ -1776,24 +1776,24 @@ msgid "Dialogue"
 msgstr "Dialog"
 
 #: src/ext_l10n.h:262
-msgid "Email"
-msgstr "Email"
-
-#: src/ext_l10n.h:263
 msgid "EMail"
 msgstr "EMail"
 
-#: src/ext_l10n.h:264
-msgid "encl"
-msgstr "encl"
+#: src/ext_l10n.h:263
+msgid "Email"
+msgstr "Email"
 
-#: src/ext_l10n.h:265
+#: src/ext_l10n.h:264
 msgid "Encl."
 msgstr "Encl."
 
-#: src/ext_l10n.h:266
+#: src/ext_l10n.h:265
 msgid "Encl"
 msgstr "Encl"
+
+#: src/ext_l10n.h:266
+msgid "encl"
+msgstr "encl"
 
 #: src/ext_l10n.h:267
 msgid "End_All_Slides"
@@ -2061,12 +2061,12 @@ msgid "My_Address"
 msgstr "Min_adresse"
 
 #: src/ext_l10n.h:333
-msgid "Myref"
-msgstr "Myref"
-
-#: src/ext_l10n.h:334
 msgid "MyRef"
 msgstr "MyRef"
+
+#: src/ext_l10n.h:334
+msgid "Myref"
+msgstr "Myref"
 
 #: src/ext_l10n.h:335
 msgid "Name"
@@ -2205,12 +2205,12 @@ msgid "Proposition*"
 msgstr "Proposition*"
 
 #: src/ext_l10n.h:369
-msgid "ps"
-msgstr "ps"
-
-#: src/ext_l10n.h:370
 msgid "PS"
 msgstr "PS"
+
+#: src/ext_l10n.h:370
+msgid "ps"
+msgstr "ps"
 
 #: src/ext_l10n.h:371
 msgid "Publishers"
@@ -2226,7 +2226,7 @@ msgstr "Citat"
 
 #: src/ext_l10n.h:374
 msgid "Quote"
-msgstr "Literaturhenvisning"
+msgstr "Litteraturhenvisning"
 
 #: src/ext_l10n.h:375
 msgid "Received"
@@ -2302,16 +2302,16 @@ msgid "RunningTitle"
 msgstr "LøbendeTitel"
 
 #: src/ext_l10n.h:394
-msgid "Scene"
-msgstr "Scene"
-
-#: src/ext_l10n.h:395
 msgid "SCENE"
 msgstr "SCENE"
 
-#: src/ext_l10n.h:396
+#: src/ext_l10n.h:395
 msgid "SCENE*"
 msgstr "SCENE*"
+
+#: src/ext_l10n.h:396
+msgid "Scene"
+msgstr "Scene"
 
 #: src/ext_l10n.h:397
 msgid "Scrap"
@@ -2422,16 +2422,16 @@ msgid "Subparagraph*"
 msgstr "Underafsnit*"
 
 #: src/ext_l10n.h:424
-msgid "Subsection"
+msgid "SubSection"
 msgstr "Undersektion"
 
 #: src/ext_l10n.h:425
-msgid "Subsection*"
-msgstr "Undersektion*"
+msgid "Subsection"
+msgstr "Undersektion"
 
 #: src/ext_l10n.h:426
-msgid "SubSection"
-msgstr "Undersektion"
+msgid "Subsection*"
+msgstr "Undersektion*"
 
 #: src/ext_l10n.h:427
 msgid "Subsubsection"
@@ -2442,12 +2442,12 @@ msgid "Subsubsection*"
 msgstr "Underundersektion*"
 
 #: src/ext_l10n.h:429
-msgid "Subtitle"
-msgstr "Subtitle"
-
-#: src/ext_l10n.h:430
 msgid "SubTitle"
 msgstr "SubTitle"
+
+#: src/ext_l10n.h:430
+msgid "Subtitle"
+msgstr "Subtitle"
 
 #: src/ext_l10n.h:431
 msgid "SubVariation"
@@ -2627,19 +2627,19 @@ msgid "VisibleText"
 msgstr "SynligTekst"
 
 #: src/ext_l10n.h:475
-msgid "Yourmail"
-msgstr "DinPost"
-
-#: src/ext_l10n.h:476
 msgid "YourMail"
 msgstr "DinPost"
 
+#: src/ext_l10n.h:476
+msgid "Yourmail"
+msgstr "DinPost"
+
 #: src/ext_l10n.h:477
-msgid "Yourref"
+msgid "YourRef"
 msgstr "DinRef"
 
 #: src/ext_l10n.h:478
-msgid "YourRef"
+msgid "Yourref"
 msgstr "DinRef"
 
 #: src/ext_l10n.h:479
@@ -2910,7 +2910,7 @@ msgstr "&Nøgle"
 
 #: src/ext_l10n.h:540
 msgid "The citation key"
-msgstr "Citatnøgle"
+msgstr "Litteraturhenvisningsnøgle"
 
 #: src/ext_l10n.h:541
 msgid "&Label"
@@ -3011,11 +3011,11 @@ msgstr "Vælg en stil-fil"
 
 #: src/ext_l10n.h:566
 msgid "Add bibliography to &TOC"
-msgstr "Tilføj literaturliste til &indhold"
+msgstr "Tilføj litteraturliste til &indhold"
 
 #: src/ext_l10n.h:567
 msgid "Add bibliography to the table of contents"
-msgstr "Tilføj literaturliste til indholdsfortegnelsen"
+msgstr "Tilføj litteraturliste til indholdsfortegnelsen"
 
 #. /
 #: src/LyXAction.C:157 src/ext_l10n.h:569 src/ext_l10n.h:603
@@ -3119,7 +3119,7 @@ msgstr "&Anvend"
 #: src/ext_l10n.h:599 src/frontends/qt2/QCitation.C:45
 #: src/frontends/xforms/FormCitation.C:111
 msgid "Citation"
-msgstr "Citat"
+msgstr "litteraturhenvisning"
 
 #: src/ext_l10n.h:600 src/ext_l10n.h:759 src/ext_l10n.h:794 src/ext_l10n.h:870
 #: src/ext_l10n.h:914 src/ext_l10n.h:1058
@@ -3132,11 +3132,11 @@ msgstr "Tekst efter"
 
 #: src/ext_l10n.h:605 src/frontends/xforms/form_citation.C:116
 msgid "Citation style"
-msgstr "Citatstil"
+msgstr "Litteraturhenvisningsstil"
 
 #: src/ext_l10n.h:606
 msgid "Natbib citation style to use"
-msgstr "Natbib-citatstil at bruge"
+msgstr "Natbib-litteraturhenvisningsstil at bruge"
 
 #: src/ext_l10n.h:607
 msgid "Text before"
@@ -3148,7 +3148,7 @@ msgstr "Info"
 
 #: src/ext_l10n.h:609
 msgid "Citation entry"
-msgstr "Citatindgang"
+msgstr "Litteraturindgang"
 
 #: src/ext_l10n.h:610 src/frontends/qt2/QSearch.C:31
 #: src/frontends/xforms/form_citation.C:78
@@ -3157,7 +3157,7 @@ msgstr "Søg"
 
 #: src/ext_l10n.h:611
 msgid "Search the available citations"
-msgstr "Søg de tilgængelige citater"
+msgstr "Søg de tilgængelige litteraturhenvisninger"
 
 #: src/ext_l10n.h:612
 msgid "Regular E&xpression"
@@ -3185,19 +3185,19 @@ msgstr "&Næste"
 
 #: src/ext_l10n.h:618
 msgid "Add the selected citation"
-msgstr "Tilføj markerede citat"
+msgstr "Tilføj markerede litteraturhenvisning"
 
 #: src/ext_l10n.h:619
 msgid "Remove the selected citation"
-msgstr "Fjern markerede citat"
+msgstr "Fjern markerede litteraturhenvisning"
 
 #: src/ext_l10n.h:620
 msgid "Move the selected citation up"
-msgstr "Flyt det markerede citat op"
+msgstr "Flyt den markerede litteraturhenvisning op"
 
 #: src/ext_l10n.h:621
 msgid "Move the selected citation down"
-msgstr "Flyt det markerede citat ned"
+msgstr "Flyt den markerede litteraturhenvisning ned"
 
 #: src/ext_l10n.h:622
 msgid "Available"
@@ -3209,15 +3209,15 @@ msgstr "Markeret"
 
 #: src/ext_l10n.h:625
 msgid "Available citation keys"
-msgstr "Tilgængelige citatnøgler"
+msgstr "Tilgængelige litteraturhenvisningsnøgler"
 
 #: src/ext_l10n.h:627
 msgid "Citations currently selected"
-msgstr "Aktuelt markerede citater"
+msgstr "Aktuelt markerede litteraturhenvisninger"
 
 #: src/ext_l10n.h:628
 msgid "Text to place after citation"
-msgstr "Tekst, der placeres efter citatet"
+msgstr "Tekst, der placeres efter litteraturhenvisningen"
 
 #: src/ext_l10n.h:629
 msgid "&Full author list"
@@ -3233,11 +3233,11 @@ msgstr "Gennemtving &versaler"
 
 #: src/ext_l10n.h:632
 msgid "Force upper case in citation"
-msgstr "Gennemtving versaler i citat"
+msgstr "Gennemtving versaler i litteraturhenvisning"
 
 #: src/ext_l10n.h:633
 msgid "Text to place before citation"
-msgstr "Tekst, der skrives inden citatet"
+msgstr "Tekst, der skrives inden litteraturhenvisningen"
 
 #: src/ext_l10n.h:634 src/frontends/xforms/FormDocument.C:57
 msgid "Document Layout"
@@ -3253,7 +3253,7 @@ msgstr "&Sidetype:"
 
 #: src/ext_l10n.h:638
 msgid "Defa&ult Skip:"
-msgstr "St&andard afstand:"
+msgstr "St&andardafstand:"
 
 #: src/ext_l10n.h:639
 msgid "F&ont Size:"
@@ -3370,7 +3370,7 @@ msgstr "Papir"
 
 #: src/ext_l10n.h:670
 msgid "&Papersize:"
-msgstr "&Papirstørrelse:"
+msgstr "&Størrelse:"
 
 #: src/ext_l10n.h:671 src/frontends/qt2/QDocument.C:72 src/lyxfont.C:573
 msgid "Default"
@@ -3990,7 +3990,7 @@ msgstr "&Vinkel:"
 
 #: src/ext_l10n.h:854
 msgid "&Origin:"
-msgstr "&Omdrejningsakse:"
+msgstr "&Centrum:"
 
 #: src/ext_l10n.h:856
 msgid "leftTop"
@@ -4175,7 +4175,7 @@ msgstr "Centreret"
 
 #: src/ext_l10n.h:925
 msgid "No indentation"
-msgstr "Ingen indrykning"
+msgstr "Indryk ej"
 
 #: src/ext_l10n.h:926
 msgid "Spacing"
@@ -4258,7 +4258,7 @@ msgstr "Stræk:"
 
 #: src/ext_l10n.h:1000 src/ext_l10n.h:1002
 msgid "Margin by with paragraph is allowed to increase"
-msgstr ""
+msgstr "Den margen, hvor afsnittet må udvide"
 
 #: src/ext_l10n.h:1001
 msgid "Shrink:"
@@ -4739,8 +4739,7 @@ msgid "&View"
 msgstr "V&is"
 
 #: src/ext_l10n.h:1170
-msgid ""
-"Show contents of marked file. Only possible when files are shown with path"
+msgid "Show contents of marked file. Only possible when files are shown with path"
 msgstr "Vis indhold af markeret fil. Kun mulig når filerne er vist i stien"
 
 #: src/ext_l10n.h:1172
@@ -4950,7 +4949,7 @@ msgstr "Fremhævet "
 
 #: src/frontends/controllers/character.C:136
 msgid "Underbar"
-msgstr "Underlinie"
+msgstr "Underlinje"
 
 #: src/frontends/controllers/character.C:138
 msgid "Noun"
@@ -5019,10 +5018,10 @@ msgid ""
 "Software Foundation; either version 2 of the License, or (at your option) "
 "any later version."
 msgstr ""
-"Dette program er fri software; du kan redistribuere det\n"
-"og/eller modificere det efter krav fastsat i \"GNU General\n"
-"Public License\" som den er udgivet af \"Free Software\n"
-"Foundation\"; enten version 2 af licensen, eller\n"
+"Dette program er fri software; du kan redistribuere det "
+"og/eller modificere det efter krav fastsat i \"GNU General "
+"Public License\" som den er udgivet af \"Free Software "
+"Foundation\"; enten version 2 af licensen, eller "
 "(hvis du ønsker det) en nyere version."
 
 #: src/frontends/controllers/ControlAboutlyx.C:78
@@ -5035,15 +5034,16 @@ msgid ""
 "this program; if not, write to the Free Software Foundation, Inc., 675 Mass "
 "Ave, Cambridge, MA 02139, USA."
 msgstr ""
-"LyX distribueres i håbet om at det er\n"
-"brugbart, men uden nogen form for garanti;\n"
-"End ikke underforstået garanti for brugbarhed\n"
+"LyX distribueres i håbet om at det er "
+"brugbart, men uden nogen form for garanti; "
+"End ikke underforstået garanti for brugbarhed "
 "til nogen formål.\n"
-"Du burde have modtaget en kopi af\n"
-"\"GNU General Public License\" sammen\n"
-"med dette program. Hvis ikke du har,\n"
-"kan den erhverves ved:\n"
-"the Free Software Foundation, Inc.,\n"
+"Detaljerne står i GNU General Public LIcense\n"
+"Du burde have modtaget en kopi af "
+"\"GNU General Public License\" sammen "
+"med dette program. Hvis ikke du har, "
+"kan den erhverves ved: "
+"the Free Software Foundation, Inc., "
 "675 Mass Ave, Cambridge, MA 02139, USA."
 
 #: src/frontends/controllers/ControlAboutlyx.C:85
@@ -5228,7 +5228,7 @@ msgstr "FIXME - describe the units."
 
 #: src/frontends/qt2/QBibitem.C:26
 msgid "Bibliography Item"
-msgstr "Literaturliste-indgang"
+msgstr "Litteraturliste-indgang"
 
 #: src/frontends/qt2/QBibtex.C:29
 msgid "BibTeX"
@@ -5548,7 +5548,7 @@ msgstr "Referencemærke:|#M"
 
 #: src/frontends/xforms/FormBibitem.C:25
 msgid "Bibliography Entry"
-msgstr "Literaturliste-indgang"
+msgstr "Litteraturliste-indgang"
 
 #: src/frontends/xforms/form_bibtex.C:29
 msgid "Database:|#D"
@@ -5588,9 +5588,9 @@ msgid ""
 "\".bib\". If you insert it with the browser, LyX strips the extension. "
 "Several databases must be separated by a comma: \"natbib, books\"."
 msgstr ""
-"Den database, du vil citere fra. Indsæt den uden dens standardendelse \".bib"
-"\". Hvis du indsætter den fra filvinduet, vil LyX fjerne endelsen. Flere "
-"databaser skal adskilles med kommaer: \"natbib, bøger\"."
+"Den database, du vil citere fra. Indsæt den uden dens standardendelse "
+"\".bib\". Hvis du indsætter den fra filvinduet, vil LyX fjerne endelsen. "
+"Flere databaser skal adskilles med kommaer: \"natbib, bøger\"."
 
 #: src/frontends/xforms/FormBibtex.C:65
 msgid "Browse your directory for BibTeX stylefiles."
@@ -5603,18 +5603,17 @@ msgid ""
 "$TEXMF/bibtex/bst. $TEXMF is the root dir of the local TeX tree. In \"Help-"
 ">TeX Info\" you can list all installed styles."
 msgstr ""
-"BibTeX-stil, der skal benyttes (kun én. Indsæt uden standardendelsen \".bst"
-"\" og uden stien. De fleste stile gemmes i $TEXMF/bibtex/bst. $TEXMF er "
-"roden af dit lokale TeX-træ. Under \"Help->TeX Info\" kan du se alle de "
-"installerede stile."
+"BibTeX-stil, der skal benyttes (kun én. Indsæt uden standardendelsen \".bst\" "
+"og uden stien. De fleste stile gemmes i $TEXMF/bibtex/bst. $TEXMF er roden af "
+"dit lokale TeX-træ. Under \"Help->TeX Info\" kan du se alle de installerede stile."
 
 #: src/frontends/xforms/FormBibtex.C:71
 msgid ""
 "Activate this option if you want the bibliography to appear in the Table of "
 "Contents (which doesn't happen by default)."
 msgstr ""
-"Aktivér dette, hvis du vil have at bibliografien skal optræde i "
-"indholdsfortegnelsen (hvilket den som udgangspunkt ikke gør)."
+"Aktivér dette, hvis du vil have at bibliografien skal optræde i indholdsfortegnelsen "
+"(hvilket den som udgangspunkt ikke gør)."
 
 #: src/frontends/xforms/form_browser.C:31 src/frontends/xforms/form_error.C:31
 #: src/frontends/xforms/form_texinfo.C:107 src/frontends/xforms/form_toc.C:48
@@ -5671,11 +5670,11 @@ msgstr "Annullér|#A"
 
 #: src/frontends/xforms/form_character.C:99
 msgid "Color:|#C"
-msgstr "Farve:|#v"
+msgstr "Farve:|#V"
 
 #: src/frontends/xforms/form_character.C:109
 msgid "Toggle on all these|#T"
-msgstr "Skal disse omskifte?|#t"
+msgstr "Skal disse alternere?|#t"
 
 #: src/frontends/xforms/form_character.C:116
 #: src/frontends/xforms/form_character.C:128
@@ -5786,11 +5785,11 @@ msgstr "Nulstil|#N"
 #. set up the tooltip mechanism
 #: src/frontends/xforms/FormCitation.C:176
 msgid "Add the selected entry to the current citation reference."
-msgstr "Tilføj den valgte indgang til den aktuelle literaturhenvisning."
+msgstr "Tilføj den valgte indgang til den aktuelle litteraturhenvisning."
 
 #: src/frontends/xforms/FormCitation.C:179
 msgid "Delete the selected entry from the current citation reference."
-msgstr "Slet den valgte indgang fra den aktuelle literaturhenvisning."
+msgstr "Slet den valgte indgang fra den aktuelle litteraturhenvisning."
 
 #: src/frontends/xforms/FormCitation.C:182
 msgid "Move the selected entry upwards (in the current list)."
@@ -5814,9 +5813,9 @@ msgid ""
 "Reference\"). Move the ones you want to cite with the arrow buttons into the "
 "left browser window."
 msgstr ""
-"Alle indgangene i den database, du har indlæst (via \"Indsæt-"
-">Lister&Indholdsfortegnelse->BibTex-reference\"). Flyt dem, du ønsker at "
-"citere med piletasterne til det venstre vindue."
+"Alle indgangene i den database, du har indlæst (via "
+"\"Indsæt->Lister&Indholdsfortegnelse->BibTex-reference\"). Flyt dem, du ønsker at citere "
+"med piletasterne til det venstre vindue."
 
 #: src/frontends/xforms/FormCitation.C:194
 msgid "Information about the selected entry"
@@ -5826,17 +5825,15 @@ msgstr "Oplysninger om den valgte indgang"
 msgid ""
 "Here you may select how the citation label should look inside the text "
 "(Natbib)."
-msgstr ""
-"Her kan du vælge, hvordan literaturhenvisningsmærket skal se ud i teksten "
-"(Natbib)."
+msgstr "Her kan du vælge, hvordan litteraturhenvisningsmærket skal se ud i teksten (Natbib)."
 
 #: src/frontends/xforms/FormCitation.C:200
 msgid ""
 "Activate if you want to print all authors in a reference with more than "
 "three authors, and not \"<First Author> et.al.\" (Natbib)."
 msgstr ""
-"Aktivér hvis du vil vise alle forfatterne i en reference med med mere end "
-"tre forfattere fremfor \"<første forfatter> et.al.\" (Natbib)."
+"Aktivér hvis du vil vise alle forfatterne i en reference med med mere end tre "
+"forfattere fremfor \"<første forfatter> et.al.\" (Natbib)."
 
 #: src/frontends/xforms/FormCitation.C:203
 msgid ""
@@ -5844,20 +5841,17 @@ msgid ""
 "uppercase (\"Van Gogh\", not \"van Gogh\"). Useful at the beginning of "
 "sentences (Natbib)."
 msgstr ""
-"Aktivér hvis du vil vise forfatterens forbogstav med stort (\"Van Gogh\", "
-"ikke \"van Gogh\"). Nyttigt i begyndelsen af sætninger (Natbib)."
+"Aktivér hvis du vil vise forfatterens forbogstav med stort "
+"(\"Van Gogh\", ikke \"van Gogh\"). Nyttigt i begyndelsen af sætninger "
+"(Natbib)."
 
 #: src/frontends/xforms/FormCitation.C:206
-msgid ""
-"Optional text which appears before the citation reference, e.g. \"see <Ref>\""
-msgstr ""
-"Valgfri tekst, der indsættes før literaturhenvisningen, f.eks. \"see <Ref>\""
+msgid "Optional text which appears before the citation reference, e.g. \"see <Ref>\""
+msgstr "Valgfri tekst, der indsættes før litteraturhenvisningen, f.eks. \"see <Ref>\""
 
 #: src/frontends/xforms/FormCitation.C:209
-msgid ""
-"Optional text which appears after the citation reference, e.g. \"pp. 12\""
-msgstr ""
-"Valgfri tekst, der indsættes efter literaturhenvisningen, f.eks. \"pp. 12\""
+msgid "Optional text which appears after the citation reference, e.g. \"pp. 12\""
+msgstr "Valgfri tekst, der indsættes efter litteraturhenvisningen, f.eks. \"pp. 12\""
 
 #: src/frontends/xforms/FormCitation.C:212
 msgid "Search your database (all fields will be searched)."
@@ -5883,7 +5877,7 @@ msgstr "Tabbed folder"
 
 #: src/frontends/xforms/form_document.C:60
 msgid "Save as Document Defaults|#v"
-msgstr "Gem layout som standard|#s"
+msgstr "Gem layout som standard|#G"
 
 #: src/frontends/xforms/form_document.C:66
 msgid "Use Class Defaults|#C"
@@ -5895,7 +5889,7 @@ msgstr "Papirformat"
 
 #: src/frontends/xforms/form_document.C:96
 msgid "Papersize:|#P"
-msgstr "Papirstørrelse|#P"
+msgstr "Størrelse|#ø"
 
 #: src/frontends/xforms/form_document.C:104
 msgid "Width:|#W"
@@ -5971,15 +5965,15 @@ msgstr "Papirstil:|#P"
 
 #: src/frontends/xforms/form_document.C:296
 msgid "Spacing|#g"
-msgstr "Linieafstand|#M"
+msgstr "Linieafstand|#n"
 
 #: src/frontends/xforms/form_document.C:304
 msgid "Extra Options:|#X"
-msgstr "Ekstra indstillinger:|#x"
+msgstr "Ekstra indstill.:|#n"
 
 #: src/frontends/xforms/form_document.C:314
 msgid "Default Skip:|#u"
-msgstr "Standard afstand:|#u"
+msgstr "Standardafstand:|#a"
 
 # n
 #: src/frontends/xforms/form_document.C:323
@@ -6056,7 +6050,7 @@ msgstr "Benyt Natbib|#N"
 
 #: src/frontends/xforms/form_document.C:515
 msgid "Citation style|#i"
-msgstr "Literaturhenvisningsstil|#L"
+msgstr "Litteraturhenvisningsstil|#L"
 
 #: src/frontends/xforms/form_document.C:558
 msgid "Size|#z"
@@ -6117,7 +6111,8 @@ msgstr ""
 #: src/frontends/xforms/FormDocument.C:112
 msgid " None | Small Margins | Very small Margins | Very wide Margins "
 msgstr ""
-" Ingen | smalle marginer | ekstra smalle marginer | ekstra brede marginer "
+" Ingen | smalle marginer | ekstra smalle marginer "
+"| ekstra brede marginer "
 
 #: src/frontends/xforms/FormDocument.C:200
 msgid " Single | OneHalf | Double | Other "
@@ -6315,10 +6310,8 @@ msgid "Add all processes to the list of processes to kill."
 msgstr "Tilføj alle processer til listen over processer, der skal dræbes."
 
 #: src/frontends/xforms/FormForks.C:63
-msgid ""
-"Add the currently selected child process to the list of processes to kill."
-msgstr ""
-"Tilføj den valgte underproces til listen over processer, der skal dræbes."
+msgid "Add the currently selected child process to the list of processes to kill."
+msgstr "Tilføj den valgte underproces til listen over processer, der skal dræbes."
 
 #: src/frontends/xforms/FormForks.C:66
 msgid "Remove the currently selected item from the list of processes to kill."
@@ -6346,7 +6339,7 @@ msgstr "deg"
 
 #: src/frontends/xforms/form_graphics.C:131
 msgid "Origin|#O"
-msgstr "Omdrejningsakse|#O"
+msgstr "Centrum|#C"
 
 #: src/frontends/xforms/form_graphics.C:139
 msgid "Draft mode|#D"
@@ -6358,7 +6351,7 @@ msgstr "Rotér|#R"
 
 #: src/frontends/xforms/form_graphics.C:155
 msgid "Don't unzip, when exporting to LaTeX|#u"
-msgstr "Udpak ikke zip-filer, når der eksporteres til LaTeX|#z"
+msgstr "Udpak ej zip ved LaTeX-eksport|#z"
 
 #: src/frontends/xforms/form_graphics.C:187
 msgid "Output size"
@@ -6367,16 +6360,16 @@ msgstr "Uddata-størrelse"
 #: src/frontends/xforms/form_graphics.C:191
 #: src/frontends/xforms/form_graphics.C:415
 msgid "Original size|#O"
-msgstr "Oprindelig størrelse|#O"
+msgstr "Oprindelig|#O"
 
 #: src/frontends/xforms/form_graphics.C:200
 #: src/frontends/xforms/form_graphics.C:424
 msgid "Scale|#S"
-msgstr "Skalering|#S"
+msgstr "Skalér|#S"
 
 #: src/frontends/xforms/form_graphics.C:209
 msgid "Custom|#C"
-msgstr "Brugerdefineret|#B"
+msgstr "Angiv|#B"
 
 #: src/frontends/xforms/form_graphics.C:220
 #: src/frontends/xforms/form_graphics.C:407
@@ -6399,7 +6392,7 @@ msgstr "bevar størrelsesforhold|#b"
 
 #: src/frontends/xforms/form_graphics.C:261
 msgid "Get LyX size|#L"
-msgstr "Hent størrelse fra LyX|#L"
+msgstr "Hent fra LyX|#L"
 
 #: src/frontends/xforms/form_graphics.C:291
 msgid "Corner coordinates (X, Y)"
@@ -6412,7 +6405,7 @@ msgstr ", "
 
 #: src/frontends/xforms/form_graphics.C:303
 msgid "Top right  ( |#T"
-msgstr "Øverst til højre  ( |#Ø"
+msgstr "Øverste højre  ( |#Ø"
 
 #: src/frontends/xforms/form_graphics.C:309
 #: src/frontends/xforms/form_graphics.C:320
@@ -6421,7 +6414,7 @@ msgstr " )"
 
 #: src/frontends/xforms/form_graphics.C:314
 msgid "Bottom left  ( |#B"
-msgstr "Nederst til venstre  ( |#N"
+msgstr "Nederste venstre  ( |#N"
 
 #: src/frontends/xforms/form_graphics.C:325
 msgid "Units|#U"
@@ -6429,7 +6422,7 @@ msgstr "Enheder|#E"
 
 #: src/frontends/xforms/form_graphics.C:333
 msgid "Get values from file|#G"
-msgstr "Hent værdier fra filen¦#H"
+msgstr "Hent værdier fra filen|#H"
 
 #: src/frontends/xforms/form_graphics.C:340
 msgid "Clip to bounding box|#C"
@@ -6465,7 +6458,7 @@ msgstr "Gråtoner|#g"
 
 #: src/frontends/xforms/form_graphics.C:473
 msgid "Color|#C"
-msgstr "Farver:|#f"
+msgstr "Farver|#f"
 
 #: src/frontends/xforms/form_graphics.C:481
 #: src/frontends/xforms/form_preferences.C:476
@@ -6474,7 +6467,7 @@ msgstr "Vis ikke|#i"
 
 #: src/frontends/xforms/form_graphics.C:513
 msgid "Get LaTeX size|#L"
-msgstr "Hent størrelse fra LaTeX|#L"
+msgstr "Hent fra LaTeX|#L"
 
 #: src/frontends/xforms/FormGraphics.C:185
 msgid "LyX View"
@@ -6832,7 +6825,7 @@ msgstr "Indryk"
 
 #: src/frontends/xforms/form_paragraph.C:168
 msgid "No Indent|#I"
-msgstr "Ingen indrykning|#I"
+msgstr "Indryk ej|#I"
 
 #: src/frontends/xforms/FormParagraph.C:46
 msgid "Paragraph Layout"
@@ -6865,7 +6858,7 @@ msgstr "Tegnsæt"
 
 #: src/frontends/xforms/form_preferences.C:119
 msgid "Rescale bitmap fonts"
-msgstr "Genskalér raster-fonte"
+msgstr "Omskalér rasterfonte"
 
 #: src/frontends/xforms/form_preferences.C:126
 #, no-c-format
@@ -7019,7 +7012,7 @@ msgstr "Markør følger rullebjælke|#M"
 
 #: src/frontends/xforms/form_preferences.C:429
 msgid "Dialogs iconify with main window|#D"
-msgstr "Dialogbokse formindskes med hovedvinduet|#D"
+msgstr "Formindsk dialogbokse|#D"
 
 #: src/frontends/xforms/form_preferences.C:436
 msgid "Wheel mouse jump"
@@ -7039,7 +7032,7 @@ msgstr "i gråtoner|#g"
 
 #: src/frontends/xforms/form_preferences.C:469
 msgid "in Color|#C"
-msgstr "i farver:|#f"
+msgstr "i farver|#f"
 
 #: src/frontends/xforms/form_preferences.C:484
 msgid "Display Graphics"
@@ -7076,7 +7069,7 @@ msgstr "Avancerede indstillinger"
 #: src/frontends/xforms/FormPreferences.C:219
 #: src/frontends/xforms/form_preferences.C:572
 msgid "Interface"
-msgstr "Grænseflade"
+msgstr "Brugerflade"
 
 #: src/frontends/xforms/form_preferences.C:573
 msgid "Language Options"
@@ -7112,7 +7105,7 @@ msgstr "Gennemse...|#G"
 
 #: src/frontends/xforms/form_preferences.C:646
 msgid "RtL support|#R"
-msgstr "RtL-understøttelse|#R"
+msgstr "RtL|#R"
 
 #: src/frontends/xforms/form_preferences.C:654
 msgid "Auto begin|#b"
@@ -7235,7 +7228,7 @@ msgstr "Sikkerhedskopisti|#k"
 
 #: src/frontends/xforms/form_preferences.C:965
 msgid "LyXServer pipe|#S"
-msgstr "LyXServer videreførsel|#S"
+msgstr "LyXServer-rør|#S"
 
 #: src/frontends/xforms/form_preferences.C:998
 msgid "date format|#f"
@@ -7319,7 +7312,7 @@ msgstr "Papirformat"
 
 #: src/frontends/xforms/form_preferences.C:1109
 msgid "Ascii line length|#A"
-msgstr "Ascii linielængde|#A"
+msgstr "Ascii-linjelængde|#A"
 
 #: src/frontends/xforms/form_preferences.C:1121
 msgid "TeX encoding|#T"
@@ -7406,10 +7399,8 @@ msgid "LyX objects that can be assigned a color."
 msgstr "LyX-objekter, de kan få tilknyttet en farve."
 
 #: src/frontends/xforms/FormPreferences.C:514
-msgid ""
-"Modify the LyX object's color. Note: you must then \"Apply\" the change."
-msgstr ""
-"Ændr farven på LyX-objekt. Bemærk: du skal trykke \"Anvend\" for at gemme."
+msgid "Modify the LyX object's color. Note: you must then \"Apply\" the change."
+msgstr "Ændr farven på LyX-objekt. Bemærk: du skal trykke \"Anvend\" for at gemme."
 
 #: src/frontends/xforms/FormPreferences.C:522
 msgid "Find a new color."
@@ -7678,7 +7669,7 @@ msgstr "Udskriv til"
 
 #: src/frontends/xforms/form_ref.C:29
 msgid "Buffer|#B"
-msgstr "Mellemlager|#M"
+msgstr "Dokument|#D"
 
 #: src/frontends/xforms/form_ref.C:41 src/frontends/xforms/form_toc.C:32
 msgid "Update|#U"
@@ -7758,19 +7749,16 @@ msgstr "Send dokumentet til kommando"
 
 #. Set up the tooltip mechanism
 #: src/frontends/xforms/FormSendto.C:46
-msgid ""
-"Export the buffer to this format before running the command below on it."
-msgstr ""
-"Eksportér mellemlagret i dette format, før nedenstående kommando udføres på "
-"den."
+msgid "Export the buffer to this format before running the command below on it."
+msgstr "Eksportér dokumentet i dette format, før nedenstående kommando udføres på den."
 
 #: src/frontends/xforms/FormSendto.C:49
 msgid ""
 "Run this command on the buffer exported to the chosen format. $$FName will "
 "be replaced by the name of this file."
 msgstr ""
-"Kør denne kommando på mellemlageret, når det er eksporteret til det valgte "
-"format. $$FName vil blive erstattet af navnet på denne fil."
+"Kør denne kommando på dokumentet, når det er eksporteret til det valgte format. $$FName "
+"vil blive erstattet af navnet på denne fil."
 
 #: src/frontends/xforms/form_spellchecker.C:34
 msgid "Replace"
@@ -8085,8 +8073,8 @@ msgid ""
 "View full path or only file name. Full path is needed to view the contents "
 "of a file."
 msgstr ""
-"Vis hele stien eller kun filnavnet. Du skal bruge hele stien for at se "
-"indholdet af en fil."
+"Vis hele stien eller kun filnavnet. Du skal bruge hele stien for at se indholdet "
+"af en fil."
 
 #: src/frontends/xforms/FormTexinfo.C:55
 msgid ""
@@ -8102,17 +8090,16 @@ msgid ""
 "default, like \"babel\" or through \\usepackage{<the stylefile>} in LaTeX "
 "preamble."
 msgstr ""
-"Viser de installerede LaTeX-stilfiler, som er tilgængelige i LyX som "
-"standard, såsom \"babel\" eller med \\usepackage{<stilfilen>} i LaTeX-"
-"hovedet."
+"Viser de installerede LaTeX-stilfiler, som er tilgængelige i LyX som standard, "
+"såsom \"babel\" eller med \\usepackage{<stilfilen>} i LaTeX-hovedet."
 
 #: src/frontends/xforms/FormTexinfo.C:61
 msgid ""
 "Shows the installed style files for BibTeX. They can be loaded through "
 "insert->Lists&Toc->BibTeX Reference->Style."
 msgstr ""
-"Viser de installerede stilfiler for BibTeX. De kan indlæses med Indsæt-"
-">Lister&Indhold->BibTeX-referencer->Stil."
+"Viser de installerede stilfiler for BibTeX. De kan indlæses med "
+"Indsæt->Lister&Indhold->BibTeX-referencer->Stil."
 
 #: src/frontends/xforms/form_thesaurus.C:30
 msgid "Replace|^R"
@@ -8188,7 +8175,7 @@ msgstr "Ingen indholdsfortegnelse%i"
 #: src/frontends/xforms/xforms_helpers.C:460
 #: src/frontends/xforms/xforms_helpers.C:506
 msgid "The absolute path is required."
-msgstr "Absolutte sti i kræves."
+msgstr "Absolut sti i kræves."
 
 #: src/frontends/xforms/xforms_helpers.C:407
 #: src/frontends/xforms/xforms_helpers.C:431
@@ -8234,11 +8221,11 @@ msgstr "Kan ikke læse fra denne fil."
 
 #: src/graphics/GraphicsCacheItem.C:470
 msgid "Unable to convert file "
-msgstr "Kunne ikke konvertere fil "
+msgstr "Kunne ikke konvertere filen "
 
 #: src/graphics/GraphicsCacheItem.C:472
 msgid " to a loadable format."
-msgstr " til et format, der kunne indlæses."
+msgstr " til et format, der kan indlæses."
 
 # , c-format
 #: src/importer.C:42
@@ -8310,7 +8297,7 @@ msgstr "Åbnede flyder-indstik"
 
 #: src/MenuBackend.C:380 src/insets/insetfloatlist.C:38
 msgid " List"
-msgstr " Liste"
+msgstr "liste"
 
 #: src/insets/insetfloatlist.C:41
 msgid "ERROR: Nonexistent float type!"
@@ -8647,7 +8634,7 @@ msgstr "formelmarkør"
 
 #: src/LColor.C:79
 msgid "math line"
-msgstr "formellinie"
+msgstr "formellinje"
 
 #: src/LColor.C:80
 msgid "caption frame"
@@ -8675,11 +8662,11 @@ msgstr "LaTeX-fejl"
 
 #: src/LColor.C:86
 msgid "end-of-line marker"
-msgstr "linieslut-markering"
+msgstr "linjeslut-markering"
 
 #: src/LColor.C:87
 msgid "appendix line"
-msgstr "appendiks-linie"
+msgstr "appendiks-linje"
 
 #: src/LColor.C:88
 msgid "added space markers"
@@ -8687,15 +8674,15 @@ msgstr "tilføjede afstandsmarkører"
 
 #: src/LColor.C:89
 msgid "top/bottom line"
-msgstr "top/bund-linie"
+msgstr "top/bund-linje"
 
 #: src/LColor.C:90
 msgid "tabular line"
-msgstr "tabellinie"
+msgstr "tabellinje"
 
 #: src/LColor.C:92
 msgid "tabular on/off line"
-msgstr "tabel-fra/til linie"
+msgstr "tabel-fra/til linje"
 
 #: src/LColor.C:94
 msgid "bottom area"
@@ -8832,7 +8819,7 @@ msgstr "Gå et bogstav fremad"
 
 #: src/LyXAction.C:164
 msgid "Insert citation"
-msgstr "Indsæt citat"
+msgstr "Indsæt litteraturhenvisning"
 
 #: src/LyXAction.C:168
 msgid "Execute command"
@@ -8856,7 +8843,7 @@ msgstr "Gå ned"
 
 #: src/LyXAction.C:184
 msgid "Select next line"
-msgstr "Markér næste linie"
+msgstr "Markér næste linje"
 
 #: src/LyXAction.C:186
 msgid "Choose Paragraph Environment"
@@ -8888,7 +8875,7 @@ msgstr "Indsæt grafik"
 
 #: src/LyXAction.C:200
 msgid "Insert ASCII files as lines"
-msgstr "Indsært ASCII-filer som linier"
+msgstr "Indsæt ASCII-filer som linjer"
 
 #: src/LyXAction.C:201
 msgid "Insert ASCII file as a paragraph"
@@ -9032,19 +9019,19 @@ msgstr "Åbn tabelstilen"
 
 #: src/LyXAction.C:271
 msgid "Go to beginning of line"
-msgstr "Gå til begyndelsen af linien"
+msgstr "Gå til begyndelsen af linjen"
 
 #: src/LyXAction.C:273
 msgid "Select to beginning of line"
-msgstr "Markér til begyndelsen af linien"
+msgstr "Markér til begyndelsen af linjen"
 
 #: src/LyXAction.C:275
 msgid "Go to end of line"
-msgstr "Gå til slutningen af linien"
+msgstr "Gå til slutningen af linjen"
 
 #: src/LyXAction.C:277
 msgid "Select to end of line"
-msgstr "Markér til slutningen af linien"
+msgstr "Markér til slutningen af linjen"
 
 #: src/LyXAction.C:281
 msgid "Exit"
@@ -9104,7 +9091,7 @@ msgstr "Indsæt hårdt mellemrum"
 
 #: src/LyXAction.C:341
 msgid "Insert quote"
-msgstr "Indsæt literaturhenvisning"
+msgstr "Indsæt litteraturhenvisning"
 
 #: src/LyXAction.C:343
 msgid "Reconfigure"
@@ -9152,15 +9139,15 @@ msgstr "Registrér dokument under versionsstyring"
 
 #: src/LyXAction.C:417
 msgid "Show message in minibuffer"
-msgstr "Vis besked i statuslinie"
+msgstr "Vis besked i statuslinje"
 
 #: src/LyXAction.C:419
 msgid "Push old message and show this one in minibuffer"
-msgstr "Skub gammel besked og vis den aktuelle i statuslinien"
+msgstr "Skub gammel besked og vis den aktuelle i statuslinjen"
 
 #: src/LyXAction.C:422
 msgid "Pop old message and show it in the minibuffer"
-msgstr "Pop gammel besked og hvis den i statuslinien"
+msgstr "Pop gammel besked og hvis den i statuslinjen"
 
 #: src/LyXAction.C:428
 msgid "Display information about LyX"
@@ -9505,7 +9492,7 @@ msgstr "Vælg "
 
 #: src/lyxfunc.C:1904
 msgid " file to import"
-msgstr " fil som skal importeres"
+msgstr "-fil som skal importeres"
 
 #: src/lyxfunc.C:1962
 msgid "A document by the name"
@@ -9562,7 +9549,7 @@ msgstr "LyX-advarsel! Kunne ikke bestemme systemkataloget. "
 
 #: src/lyx_main.C:373
 msgid "Try the '-sysdir' command line parameter or "
-msgstr "Prøv '-sysdir' kommandolinieparametren eller "
+msgstr "Prøv '-sysdir' kommandolinjeparametren eller "
 
 #: src/lyx_main.C:374
 msgid "set the environment variable LYX_DIR_11x to the LyX system directory "
@@ -9715,8 +9702,7 @@ msgstr ""
 msgid ""
 "The default printer to print on. If none is specified, LyX will use the "
 "environment variable PRINTER."
-msgstr ""
-"Standardprinteren. Hvis ingen angives, vil LyX bruge miljøvariablenPRINTER."
+msgstr "Standardprinteren. Hvis ingen angives, vil LyX bruge miljøvariablenPRINTER."
 
 #: src/lyxrc.C:1685
 msgid "Your favorite print program, e.g. \"dvips\", \"dvilj4\"."
@@ -9732,8 +9718,7 @@ msgstr "Her angives, om kun ulige sider skal udskrives."
 
 #: src/lyxrc.C:1697
 msgid "The option for specifying a comma-separated list of pages to print."
-msgstr ""
-"Her kan indsættes en kommasepareret liste af sider, der skal udskrives."
+msgstr "Her kan indsættes en kommasepareret liste af sider, der skal udskrives."
 
 #: src/lyxrc.C:1701
 msgid "The option for specifying the number of copies to print."
@@ -9741,8 +9726,7 @@ msgstr "Her angives antallet af kopier, der skal udskrives."
 
 #: src/lyxrc.C:1705
 msgid "The option for specifying whether the copies should be collated."
-msgstr ""
-"Denne indstilling angiver, om flere kopier af hver side skal udskrives samlet"
+msgstr "Denne indstilling angiver, om flere kopier af hver side skal udskrives samlet"
 
 #: src/lyxrc.C:1709
 msgid "The option to reverse the order of the pages printed."
@@ -9774,8 +9758,7 @@ msgstr "Få LyX til at give navnet på målprinteren til din udskriftkommando."
 
 #: src/lyxrc.C:1733
 msgid "Option to pass to the print program to print to a file."
-msgstr ""
-"Tilvalg, der skal gives til udskriftprogrammet for at skrive til en fil."
+msgstr "Tilvalg, der skal gives til udskriftprogrammet for at skrive til en fil."
 
 #: src/lyxrc.C:1737
 msgid "Extension of printer program output file. Usually \".ps\"."
@@ -9825,13 +9808,11 @@ msgstr ""
 
 #: src/lyxrc.C:1762
 msgid "The font sizes used for calculating the scaling of the screen fonts."
-msgstr ""
-"Skriftstørrelserne, der benyttes ved beregning af skærmskrifternes størrelse."
+msgstr "Skriftstørrelserne, der benyttes ved beregning af skærmskrifternes størrelse."
 
 #: src/lyxrc.C:1768
 msgid "The screen fonts used to display the text while editing."
-msgstr ""
-"Skrifttyper, der benyttes til at vise tekst på skærmen under redigering."
+msgstr "Skrifttyper, der benyttes til at vise tekst på skærmen under redigering."
 
 #: src/lyxrc.C:1772
 msgid "The bold font in the dialogs."
@@ -9850,26 +9831,24 @@ msgid "The encoding for the menu/popups fonts."
 msgstr "Tegnsættet for menu/dialog-tekst."
 
 #: src/lyxrc.C:1791
-msgid ""
-"The time interval between auto-saves (in seconds). 0 means no auto-save."
-msgstr ""
-"Tidsintervallet mellem automatisk gemning (i sekunder). 0 betyder aldrig."
+msgid "The time interval between auto-saves (in seconds). 0 means no auto-save."
+msgstr "Tidsintervallet mellem automatisk gemning (i sekunder). 0 betyder aldrig."
 
 #: src/lyxrc.C:1795
 msgid ""
 "The default path for your documents.  An empty value selects the directory "
 "LyX was started from."
 msgstr ""
-"Standardstien til dine dokumenter. En tom værdi vælger det katalog, LyX blev "
-"startet fra."
+"Standardstien til dine dokumenter. En tom værdi vælger det katalog, "
+"LyX blev startet fra."
 
 #: src/lyxrc.C:1799
 msgid ""
 "The path that LyX will set when offering to choose a template.  An empty "
 "value selects the directory LyX was started from."
 msgstr ""
-"Stien, som LyX vi bruge, når den tilbyder at vælge en skabelon. Den tom "
-"værdi vælger det katalog, LyX blev startet fra."
+"Stien, som LyX vi bruge, når den tilbyder at vælge en skabelon. Den tom værdi "
+"vælger det katalog, LyX blev startet fra."
 
 #: src/lyxrc.C:1803
 msgid ""
@@ -9904,8 +9883,8 @@ msgid ""
 "De-select if you don't want the class options to be reset to defaults after "
 "class change."
 msgstr ""
-"Fravælg, hvis du ikke ønsker at klasseindstillingerne bliver nulstillet "
-"efter skift af klasse."
+"Fravælg, hvis du ikke ønsker at klasseindstillingerne bliver nulstillet efter "
+"skift af klasse."
 
 #: src/lyxrc.C:1823
 msgid ""
@@ -9963,7 +9942,7 @@ msgid ""
 "This is the maximum line length of an exported ASCII file (LaTeX, SGML or "
 "plain text)."
 msgstr ""
-"Dette er den maksimale linielængde på en eksporteret ascii-fil.(LaTeX, SGML "
+"Dette er den maksimale linjelængde på en eksporteret ascii-fil.(LaTeX, SGML "
 "eller ren tekst)."
 
 #: src/lyxrc.C:1854
@@ -9976,9 +9955,7 @@ msgstr "Kontrollér om de nylige filer stadig eksisterer."
 
 #: src/lyxrc.C:1862
 msgid "Specify the paper command to DVI viewer (leave empty or use \"-paper\")"
-msgstr ""
-"Angiv papirkommandoen til DVI-fremviseren (efterlad tom eller brug \"-paper"
-"\")"
+msgstr "Angiv papirkommandoen til DVI-fremviseren (efterlad tom eller brug \"-paper\")"
 
 #: src/lyxrc.C:1866
 msgid "Specify the default paper size."
@@ -10011,8 +9988,7 @@ msgid ""
 msgstr "Angiv et alternativt sprog. Normalt anvendes dokumentets sprog."
 
 #: src/lyxrc.C:1891
-msgid ""
-"Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
+msgid "Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
 msgstr "Angiv en alternativ personlig ordliste. F.eks. \".ispell_danish\"."
 
 #: src/lyxrc.C:1896
@@ -10025,9 +10001,9 @@ msgid ""
 "this option may make some fonts look blocky in LyX. Deselecting this option "
 "makes LyX use the nearest bitmap font size available, instead of scaling."
 msgstr ""
-"Tillad skalering af bitmap-skrifttyper. Hvis du bruger en bitmap-skrifttype, "
-"kan dette få nogle af skrifterne til at se kantede ud i LyX. Ellers vil LyX "
-"bruge den nærmeste bitmap-fontstørrelse fremfor at skalere."
+"Tillad skalering af bitmap-skrifttyper. Hvis du bruger en bitmap-skrifttype, kan "
+"dette få nogle af skrifterne til at se kantede ud i LyX. Ellers vil LyX bruge "
+"den nærmeste bitmap-fontstørrelse fremfor at skalere."
 
 #: src/lyxrc.C:1904
 msgid ""
@@ -10050,8 +10026,8 @@ msgid ""
 "Iconify the dialogs when the main window is iconified. (Affects only dialogs "
 "shown after the change has been made.)"
 msgstr ""
-"Minimér dialogvinduerne med hovedvinduet. (Berører kun dialogbokse, der "
-"vises efter at ændringen er gennemført.)"
+"Minimér dialogvinduerne med hovedvinduet. (Berører kun dialogbokse, der vises efter "
+"at ændringen er gennemført.)"
 
 #: src/lyxrc.C:1916
 msgid ""
@@ -10072,7 +10048,7 @@ msgid ""
 "slow."
 msgstr ""
 "Lyx viser hele tiden navnet på den sidst udførte kommando sammen med en "
-"liste med genveje til denne i statuslinien. Deaktivér, hvis LyX virker "
+"liste med genveje til denne i statuslinjen. Deaktivér, hvis LyX virker "
 "langsom."
 
 #: src/lyxrc.C:1928
@@ -10088,8 +10064,7 @@ msgstr ""
 "samme katalog, som den originale fil."
 
 #: src/lyxrc.C:1936
-msgid ""
-"Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
+msgid "Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
 msgstr ""
 "Vælg for at aktivere understøttelse af højre-til-venstre-sprog (f.eks. "
 "hebraisk og arabisk)."
@@ -10112,8 +10087,7 @@ msgstr ""
 msgid ""
 "De-select if you don't want the language(s) used as an argument to "
 "\\documentclass."
-msgstr ""
-"Deaktivér, hvis du ikke ønsker sprog brugt som parameter i \\documentclass."
+msgstr "Deaktivér, hvis du ikke ønsker sprog brugt som parameter i \\documentclass."
 
 #: src/lyxrc.C:1952
 msgid ""
@@ -10130,8 +10104,7 @@ msgid ""
 msgstr "Vælg, hvis der kræves en sprogskiftekommando i starten af dokumentet."
 
 #: src/lyxrc.C:1960
-msgid ""
-"Select if a language switching command is needed at the end of the document."
+msgid "Select if a language switching command is needed at the end of the document."
 msgstr "Angiv, om der kræves en sprogskiftekommando ved dokumentets slutning."
 
 #: src/lyxrc.C:1964
@@ -10183,8 +10156,7 @@ msgstr "Nye dokumenter vil oprettes med dette standardsprog."
 
 #: src/lyxrc.C:2006
 msgid "Maximum number of words in the initialization string for a new label"
-msgstr ""
-"Maksimalt antal ord i initialisationsstrengen for et nyt referencemærke"
+msgstr "Maksimalt antal ord i initialisationsstrengen for et nyt referencemærke"
 
 #: src/lyxtextclasslist.C:93
 msgid "LyX wasn't able to find its layout descriptions!"
@@ -10283,7 +10255,7 @@ msgstr "Ingen åbne dokumenter!"
 
 #: src/MenuBackend.C:358
 msgid "Ascii text as lines"
-msgstr "Ascii-tekst som linier"
+msgstr "Ascii-tekst som linjer"
 
 #: src/MenuBackend.C:360
 msgid "Ascii text as paragraphs"
@@ -10401,8 +10373,7 @@ msgstr ""
 
 #: src/text.C:1878
 msgid "You cannot type two spaces this way.  Please read the Tutorial."
-msgstr ""
-"Du kan ikke indtaste to mellemrum på denne måde. Læs venligst Tutorial."
+msgstr "Du kan ikke indtaste to mellemrum på denne måde. Læs venligst Tutorial."
 
 #: src/text.C:3309 src/text.C:3311
 msgid "Page Break (top)"
@@ -10420,3 +10391,4 @@ msgstr "Sideskift (bund)"
 #: src/text.C:3499
 msgid "Space below"
 msgstr "Afstand under"
+
