@@ -1,3 +1,8 @@
+2002-05-28  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* libs/regex/src/.cvsignore: ignore .lo, .deps and .libs
+	* libs/signals/src/.cvsignore: ditto
+
 2002-05-26  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* libs/signals/Makefile.am: new file
