@@ -1129,6 +1129,10 @@ bool LyXText::deleteEmptyParagraphMechanism(LCursor & cur, LCursor const & old)
 		    && old.pos() < oldpar.size()
 		    && oldpar.isLineSeparator(old.pos())
 		    && oldpar.isLineSeparator(old.pos() - 1)) {
+			// We need to set the text to Change::INSERTED to
+			// get it erased properly
+			pars_[old.pit()].setChange(old.pos() -1,
+				Change::INSERTED);
 			pars_[old.pit()].erase(old.pos() - 1);
 #ifdef WITH_WARNINGS
 #warning This will not work anymore when we have multiple views of the same buffer

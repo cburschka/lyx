@@ -1,3 +1,8 @@
+2005-03-05  Johnathan Burchill  <jkerrb@users.sourceforge.net> 
+
+	* text2.C: fix for stuck cursor when traversing two 
+	consecutive spaces. [bug 1255] (pars_[old.pit()].setChange) 
+
 2005-02-25  Andreas Vox  <avox@arcor.de>
 
 	* output_docbook.C (makeParagraph): suppress trailing newline
