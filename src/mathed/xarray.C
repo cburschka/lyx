@@ -96,9 +96,16 @@ int MathXArray::pos2x(int targetpos) const
 
 int MathXArray::x2pos(int targetx) const
 {
-	int pos = 0;
-	for (int x = 0; x < targetx && pos < data_.size(); data_.next(pos))
-		x += width(pos);
+	int pos   = 0;
+	int lastx = 0;
+	int currx = 0;
+	while (currx < targetx && pos < data_.size()) {
+		lastx = currx;
+		currx += width(pos);
+ 		data_.next(pos);
+	}
+	if (abs(lastx - targetx) < abs(currx - targetx))
+		data_.prev(pos);
 	return pos;
 }
 
