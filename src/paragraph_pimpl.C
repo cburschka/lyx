@@ -22,7 +22,6 @@
 #include "encoding.h"
 #include "lyxrc.h"
 #include "debug.h"
-#include "lyxtextclasslist.h"
 
 #include "support/LAssert.h"
 
@@ -675,7 +674,7 @@ LyXFont const Paragraph::Pimpl::realizeFont(LyXFont const & font,
 	// check for environment font information
 	char par_depth = owner_->getDepth();
 	Paragraph const * par = owner_;
-	LyXTextClass const & tclass = textclasslist[bparams.textclass];
+	LyXTextClass const & tclass = bparams.getLyXTextClass();
 
 	while (par && par->getDepth() && !tmpfont.resolved()) {
 		par = par->outerHook();

@@ -28,7 +28,6 @@
 #include "encoding.h"
 #include "ParameterStruct.h"
 #include "gettext.h"
-#include "lyxtextclasslist.h"
 
 #include "insets/insetinclude.h"
 #include "insets/insetbib.h"
@@ -798,7 +797,7 @@ void Paragraph::breakParagraph(BufferParams const & bparams,
 {
 	// create a new paragraph
 	Paragraph * tmp = new Paragraph(this);
-	tmp->layout(textclasslist[bparams.textclass].defaultLayout());
+	tmp->layout(bparams.getLyXTextClass().defaultLayout());
 	// remember to set the inset_owner
 	tmp->setInsetOwner(inInset());
 
@@ -853,7 +852,7 @@ void Paragraph::breakParagraph(BufferParams const & bparams,
 		bibkey = 0;
 		params().clear();
 
-		layout(textclasslist[bparams.textclass].defaultLayout());
+		layout(bparams.getLyXTextClass().defaultLayout());
 
 		// layout stays the same with latex-environments
 		if (flag) {
@@ -1220,7 +1219,7 @@ Paragraph * Paragraph::TeXOnePar(Buffer const * buf,
 			texrow.newline();
 		}
 	} else {
-		style = textclasslist[bparams.textclass].defaultLayout();
+		style = bparams.getLyXTextClass().defaultLayout();
 	}
 
 	Language const * language = getParLanguage(bparams);
@@ -1522,7 +1521,7 @@ bool Paragraph::simpleTeXOnePar(Buffer const * buf,
 		(inInset() && inInset()->forceDefaultParagraphs(inInset()));
 
 	if (asdefault) {
-		style = textclasslist[bparams.textclass].defaultLayout();
+		style = bparams.getLyXTextClass().defaultLayout();
 	} else {
 		style = layout();
 	}

@@ -137,7 +137,7 @@ bool CutAndPaste::cutSelection(Paragraph * startpar, Paragraph ** endpar,
 		if (realcut) {
 			buf->params().clear();
 			buf->bibkey = 0;
-			buf->layout(textclasslist[current_view->buffer()->params.textclass].defaultLayout());
+			buf->layout(current_view->buffer()->params.getLyXTextClass().defaultLayout());
 		}
 
 		// paste the paragraphs again, if possible
@@ -425,8 +425,8 @@ int CutAndPaste::SwitchLayoutsBetweenClasses(textclass_type c1,
 				+ name + _(" to ")
 				+ par->layout()->name()
 				+ _("\nbecause of class conversion from\n")
-				+ textclasslist[c1].name() + _(" to ")
-				+ textclasslist[c2].name();
+				+ tclass1.name() + _(" to ")
+				+ tclass2.name();
 			InsetError * new_inset = new InsetError(s);
 			LyXText * txt = current_view->getLyXText();
 			LyXCursor cur = txt->cursor;

@@ -17,6 +17,7 @@
 #endif
 
 #include "insetcollapsable.h"
+#include "toc.h"
 
 #include <boost/signals/signal0.hpp>
 
@@ -61,6 +62,8 @@ public:
 	void wide(bool w);
 	///
 	bool wide() const;
+	///
+	void addToToc(toc::TocList &, Buffer const *) const;
 	///
 	bool  showInsetDialog(BufferView *) const;
 	///

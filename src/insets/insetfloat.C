@@ -28,6 +28,7 @@
 #include "buffer.h"
 #include "frontends/LyXView.h"
 #include "frontends/Dialogs.h"
+#include "lyxlex.h"
 
 using std::ostream;
 using std::endl;
@@ -101,6 +102,10 @@ using std::endl;
 
 namespace {
 
+// this should not be hardcoded, but be part of the definition
+// of the float (JMarc)
+string const caplayout("Caption");
+
 string floatname(string const & type)
 {
 	FloatList::const_iterator it = floatList[type];
@@ -126,6 +131,9 @@ InsetFloat::InsetFloat(BufferParams const & bp, string const & type)
 	setLabelFont(font);
 	floatType_ = type;
 	setInsetName(type);
+	LyXTextClass const & tclass = bp.getLyXTextClass();
+	if (tclass.hasLayout(caplayout))
+		inset.paragraph()->layout(tclass[caplayout]);
 }
 
 
@@ -327,4 +335,23 @@ void InsetFloat::wide(bool w)
 bool InsetFloat::wide() const
 {
 	return wide_;
+}
+
+
+void InsetFloat::addToToc(toc::TocList & toclist, Buffer const * buf) const
+{
+	// Now find the caption in the float...
+	// We now tranverse the paragraphs of
+	// the inset...
+	Paragraph * tmp = inset.paragraph();
+	while (tmp) {
+		if (tmp->layout()->name() == caplayout) {
+			string const str =
+				tostr(toclist[type()].size() + 1)
+				+ ". " + tmp->asString(buf, false);
+			toc::TocItem const item(tmp, 0 , str);
+			toclist[type()].push_back(item);
+		}
+		tmp = tmp->next();
+	}
 }

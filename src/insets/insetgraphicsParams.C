@@ -29,7 +29,7 @@
 #include "support/lstrings.h"
 #include "lyxrc.h"
 #include "debug.h"
-
+#include "lyxlex.h"
 
 using std::ostream;
 

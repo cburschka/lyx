@@ -26,7 +26,6 @@
 #include "lyxfunc.h"
 #include "LyXAction.h"
 #include "paragraph.h"
-#include "lyxtextclasslist.h"
 #include "insets/insetfloat.h"
 #include "debug.h"
 
@@ -75,9 +74,7 @@ TocList const getTocList(Buffer const * buf)
 	TocList toclist;
 	Paragraph * par = buf->paragraph;
 
-	LyXTextClass const & textclass = textclasslist[buf->params.textclass];
-	bool found = textclass.hasLayout("Caption");
-	string const layout("Caption");
+	LyXTextClass const & textclass = buf->params.getLyXTextClass();
 
 	while (par) {
 #ifdef WITH_WARNINGS
@@ -93,40 +90,18 @@ TocList const getTocList(Buffer const * buf)
 					   par->asString(buf, true));
 			toclist["TOC"].push_back(item);
 		}
+		
 		// For each paragraph, traverse its insets and look for
 		// FLOAT_CODE
-
-		if (found) {
-			Paragraph::inset_iterator it =
-				par->inset_iterator_begin();
-			Paragraph::inset_iterator end =
-				par->inset_iterator_end();
-
-			for (; it != end; ++it) {
-				if ((*it)->lyxCode() == Inset::FLOAT_CODE) {
-					InsetFloat * il =
-						static_cast<InsetFloat*>(*it);
-
-					string const type = il->type();
-
-					// Now find the caption in the float...
-					// We now tranverse the paragraphs of
-					// the inset...
-					Paragraph * tmp = il->inset.paragraph();
-					while (tmp) {
-						if (tmp->layout()->name() == layout) {
-							string const str =
-								tostr(toclist[type].size()+1) + ". " + tmp->asString(buf, false);
-							TocItem const item(tmp, 0 , str);
-							toclist[type].push_back(item);
-						}
-						tmp = tmp->next();
-					}
-				}
+		Paragraph::inset_iterator it = par->inset_iterator_begin();
+		Paragraph::inset_iterator end =	par->inset_iterator_end();
+		for (; it != end; ++it) {
+			if ((*it)->lyxCode() == Inset::FLOAT_CODE) {
+				InsetFloat * il =
+					static_cast<InsetFloat*>(*it);
+				il->addToToc(toclist, buf);		
 			}
-		} else {
-			lyxerr << "Caption not found" << endl;
-		}
+		} 
 
 		par = par->next();
 	}

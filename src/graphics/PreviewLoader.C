@@ -20,7 +20,6 @@
 #include "converter.h"
 #include "debug.h"
 #include "lyxrc.h"
-#include "lyxtextclasslist.h"
 #include "LColor.h"
 
 #include "insets/inset.h"
@@ -662,7 +661,7 @@ double setFontScalingFactor(Buffer & buffer)
 		return 10.0 * scale_factor / strToDbl(fontsize);
 
 	// No. We must extract it from the LaTeX class file.
-	LyXTextClass const & tclass = textclasslist[buffer.params.textclass];
+	LyXTextClass const & tclass = buffer.params.getLyXTextClass();
 	string const textclass(tclass.latexname() + ".cls");
 	string const classfile(findtexfile(textclass, "cls"));
 

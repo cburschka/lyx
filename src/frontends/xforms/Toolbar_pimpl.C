@@ -23,12 +23,13 @@
 #include "FuncStatus.h"
 #include "BufferView.h"
 #include "buffer.h"
-#include "lyxtextclasslist.h"
 #include "LyXAction.h"
 #include "MathsSymbols.h"
 #include "gettext.h"
 #include "Tooltips.h"
 #include FORMS_H_LOCATION
+#include "combox.h"
+#include "ToolbarDefaults.h"
 
 #include "support/LAssert.h"
 #include "support/filetools.h"
@@ -153,7 +154,7 @@ void Toolbar::Pimpl::layoutSelected()
 {
 	string const & layoutguiname = combox->getline();
 	LyXTextClass const & tc =
-		textclasslist[owner->buffer()->params.textclass];
+		owner->buffer()->params.getLyXTextClass();
 
 	LyXTextClass::const_iterator end = tc.end();
 	for (LyXTextClass::const_iterator cit = tc.begin();
@@ -172,7 +173,7 @@ void Toolbar::Pimpl::setLayout(string const & layout)
 {
 	if (combox) {
 		LyXTextClass const & tc =
-			textclasslist[owner->buffer()->params.textclass];
+			owner->buffer()->params.getLyXTextClass();
 		combox->select(_(tc[layout]->name()));
 	}
 }
@@ -187,7 +188,7 @@ void Toolbar::Pimpl::updateLayoutList(bool force)
 	if (combox->empty() || force) {
 		combox->clear();
 		LyXTextClass const & tc =
-			textclasslist[owner->buffer()->params.textclass];
+			owner->buffer()->params.getLyXTextClass();
 		LyXTextClass::const_iterator end = tc.end();
 		for (LyXTextClass::const_iterator cit = tc.begin();
 		     cit != end; ++cit) {

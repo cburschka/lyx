@@ -4,6 +4,13 @@
  
 2002-07-21  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
+	* Menubar_pimpl.h: do not include "MenuBackend.h" and "commandtags.h"
+
+	* Toolbar_pimpl.h: do not include "combox.h", "ToolbarDefaults.h"
+	and "commandtags.h"
+
+	* Toolbar_pimpl.C: use BufferParams::getLyXTextClass
+
 	* FormSendto.C: 
 	* FormParagraph.C: 
 	* FormMinipage.C: 

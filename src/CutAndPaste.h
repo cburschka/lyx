@@ -19,6 +19,7 @@
 
 class Paragraph;
 class BufferParams;
+class LyXTextClass;
 
 ///
 class CutAndPaste {
@@ -44,8 +45,8 @@ public:
 	    return value is the number of wrong conversions
 	*/
 	static
-	int SwitchLayoutsBetweenClasses(lyx::textclass_type class1,
-					lyx::textclass_type class2,
+	int SwitchLayoutsBetweenClasses(lyx::textclass_type c1,
+					lyx::textclass_type c2,
 					Paragraph * par,
 					BufferParams const & bparams);
 	///

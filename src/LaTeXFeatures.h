@@ -21,7 +21,6 @@
 
 #include "LString.h"
 
-#include <vector>
 #include <set>
 #include <list>
 #include <map>
@@ -89,7 +88,7 @@ public:
 private:
 	string externalPreambles;
 
-	std::vector<string> usedLayouts;
+	std::list<string> usedLayouts;
 
 	/// Static preamble bits from the external material insets
 

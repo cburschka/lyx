@@ -22,8 +22,8 @@
 #include "frontends/LyXView.h"
 #include "lyxtext.h"
 #include "debug.h"
-#include "lyxtextclasslist.h"
 #include "lyxrow.h"
+#include "lyxlex.h"
 
 #include "insets/insettext.h"
 
@@ -201,7 +201,7 @@ void InsetERT::write(Buffer const * buf, ostream & os) const
 	   << "status "<< st << "\n";
 
 	//inset.writeParagraphData(buf, os);
-	string const layout(textclasslist[buf->params.textclass].defaultLayoutName());
+	string const layout(buf->params.getLyXTextClass().defaultLayoutName());
 	Paragraph * par = inset.paragraph();
 	while (par) {
 		os << "\n\\layout " << layout << "\n";

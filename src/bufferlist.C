@@ -31,7 +31,7 @@
 #include "frontends/LyXView.h"
 #include "vc-backend.h"
 #include "TextCache.h"
-#include "lyxtextclasslist.h"
+#include "lyxlex.h"
 
 #include "frontends/Alert.h"
 
@@ -477,11 +477,11 @@ Buffer * BufferList::newFile(string const & name, string tname, bool isNamed)
 				   MakeDisplayPath(tname));
 			// no template, start with empty buffer
 			b->paragraph = new Paragraph;
-			b->paragraph->layout(textclasslist[b->params.textclass].defaultLayout());
+			b->paragraph->layout(b->params.getLyXTextClass().defaultLayout());
 		}
 	} else {  // start with empty buffer
 		b->paragraph = new Paragraph;
-			b->paragraph->layout(textclasslist[b->params.textclass].defaultLayout());
+			b->paragraph->layout(b->params.getLyXTextClass().defaultLayout());
 	}
 
 	if (!isNamed) {

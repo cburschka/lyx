@@ -12,10 +12,6 @@
 #include "kbsequence.h"
 #include "LString.h"
 
-#include "frontends/mouse_state.h"
-#include "frontends/key_state.h"
-#include "frontends/LyXKeySym.h"
-
 #include <boost/signals/trackable.hpp>
 
 class LyXView;

@@ -22,6 +22,7 @@
 #include "frontends/Painter.h"
 #include "frontends/font_metrics.h"
 #include "language.h"
+#include "lyxlex.h"
 
 using std::ostream;
 using std::endl;

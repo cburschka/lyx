@@ -25,7 +25,6 @@
 #include "lyxlex.h"
 
 #include "bufferlist.h"
-#include "lyxtextclasslist.h"
 #include "lyxserver.h"
 #include "kbmap.h"
 #include "lyxfunc.h"
@@ -35,6 +34,7 @@
 #include "lastfiles.h"
 #include "encoding.h"
 #include "converter.h"
+#include "lyxtextclasslist.h"
 
 #include "frontends/Alert.h"
 #include "frontends/lyx_gui.h"

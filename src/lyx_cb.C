@@ -22,7 +22,6 @@
 #include "lyxtext.h"
 #include "gettext.h"
 #include "BufferView.h"
-#include "lyxtextclasslist.h"
 
 #include "insets/insetlabel.h"
 

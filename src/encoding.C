@@ -15,6 +15,7 @@
 #endif
 
 #include "encoding.h"
+#include "lyxlex.h"
 #include "debug.h"
 
 #ifndef CXX_GLOBAL_CSTD

@@ -18,9 +18,9 @@
 #endif
 
 #include "LString.h"
+#include "lyxlength.h"
 
-#include "buffer.h"
-#include "lyxlex.h"
+class LyXLex;
 
 namespace grfx {
 	class Params;

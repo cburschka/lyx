@@ -17,19 +17,19 @@
 #include <fstream>
 #include <iomanip>
 #include <iostream>
+#include <boost/scoped_ptr.hpp>
 
 #include "debug.h"
 
 #include "lyxrc.h"
 #include "kbmap.h"
 #include "LyXAction.h"
-#include "lyx_main.h"
 #include "intl.h"
 #include "support/path.h"
 #include "support/filetools.h"
-#include "lyxtext.h"
 #include "converter.h"
 #include "gettext.h"
+#include "lyxlex.h"
 
 using std::ostream;
 using std::ofstream;
@@ -37,6 +37,8 @@ using std::cout;
 using std::ios;
 using std::endl;
 using std::vector;
+
+class kb_keymap;
 
 extern LyXAction lyxaction;
 extern boost::scoped_ptr<kb_keymap> toplevel_keymap;

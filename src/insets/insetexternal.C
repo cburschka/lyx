@@ -23,6 +23,7 @@
 #include "LaTeXFeatures.h"
 #include "gettext.h"
 #include "debug.h"
+#include "lyxlex.h"
 
 #include "frontends/Dialogs.h"
 

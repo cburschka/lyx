@@ -25,7 +25,6 @@
 #include "lyx_cb.h"
 #include "BufferView.h"
 #include "bufferview_funcs.h"
-#include "lyxtextclasslist.h"
 
 #include "Dialogs.h"
 #include "Toolbar.h"
@@ -162,7 +161,7 @@ void LyXView::updateLayoutChoice()
 
 	// update the layout display
 	if (toolbar_->updateLayoutList(buffer()->params.textclass)) {
-		current_layout = textclasslist[buffer()->params.textclass].defaultLayoutName();
+		current_layout = buffer()->params.getLyXTextClass().defaultLayoutName();
 	}
 
 	string const & layout =

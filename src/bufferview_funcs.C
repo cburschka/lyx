@@ -25,7 +25,6 @@
 #include "language.h"
 #include "gettext.h"
 #include "ParagraphParameters.h"
-#include "lyxtextclasslist.h"
 
 #include "frontends/Alert.h"
 
@@ -159,7 +158,7 @@ string const currentState(BufferView * bv)
 		Buffer * buffer = bv->buffer();
 		LyXFont font = text->real_current_font;
 		LyXFont const & defaultfont =
-			textclasslist[buffer->params.textclass].defaultfont();
+			buffer->params.getLyXTextClass().defaultfont();
 		font.reduce(defaultfont);
 
 		state << _("Font:") << ' '

@@ -19,7 +19,6 @@
 #include "lyx_sty.h"
 #include "lyxrc.h"
 #include "bufferparams.h"
-#include "lyxtextclasslist.h"
 #include "FloatList.h"
 #include "language.h"
 #include "encoding.h"
@@ -32,7 +31,6 @@ using lyx::textclass_type;
 
 using std::endl;
 using std::set;
-using std::vector;
 using std::find;
 using std::ostream;
 
@@ -63,11 +61,11 @@ void LaTeXFeatures::useLayout(string const & layoutname)
 		return;
 	}
 	
-	LyXTextClass tclass = textclasslist[params.textclass];
+	LyXTextClass tclass = params.getLyXTextClass();
 	if (tclass.hasLayout(layoutname)) {
 		// Is this layout already in usedLayouts?
-		vector<string>::const_iterator cit = usedLayouts.begin();
-		vector<string>::const_iterator end = usedLayouts.end();
+		list<string>::const_iterator cit = usedLayouts.begin();
+		list<string>::const_iterator end = usedLayouts.end();
 		for (; cit != end; ++cit) {
 			if (layoutname == *cit)
 				return;
@@ -185,7 +183,7 @@ const int nb_simplefeatures = sizeof(simplefeatures) / sizeof(char const *);
 string const LaTeXFeatures::getPackages() const
 {
 	ostringstream packages;
-	LyXTextClass const & tclass = textclasslist[params.textclass];
+	LyXTextClass const & tclass = params.getLyXTextClass();
 
 
 	//
@@ -365,13 +363,13 @@ string const LaTeXFeatures::getBabelOptions() const
 string const LaTeXFeatures::getTClassPreamble() const
 {
 	// the text class specific preamble
-	LyXTextClass const & tclass = textclasslist[params.textclass];
+	LyXTextClass const & tclass = params.getLyXTextClass();
 	ostringstream tcpreamble;
 
 	tcpreamble << tclass.preamble();
 
-	vector<string>::const_iterator cit = usedLayouts.begin();
-	vector<string>::const_iterator end = usedLayouts.end();
+	list<string>::const_iterator cit = usedLayouts.begin();
+	list<string>::const_iterator end = usedLayouts.end();
 	for (; cit != end; ++cit) {
 		tcpreamble << tclass[*cit]->preamble();
 	}

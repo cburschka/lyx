@@ -34,6 +34,7 @@
 #include "undo_funcs.h"
 #include "lyxlength.h"
 #include "ParagraphParameters.h"
+#include "lyxlex.h"
 
 #include "frontends/Dialogs.h"
 #include "frontends/Alert.h"

@@ -22,8 +22,7 @@
 #include "inset.h"
 #include "LString.h"
 #include "LColor.h"
-#include "paragraph.h"
-#include "lyxcursor.h"
+#include "support/types.h"
 
 #include <boost/shared_ptr.hpp>
 
@@ -34,6 +33,7 @@ class BufferParams;
 class LyXCursor;
 class LyXText;
 class Row;
+class Paragraph;
 
 /**
  A text inset is like a TeX box to write full text

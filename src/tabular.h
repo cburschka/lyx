@@ -16,7 +16,6 @@
 #pragma interface
 #endif
 
-#include "lyxlex.h"
 #include "layout.h"
 #include "LString.h"
 #include "lyxlength.h"
@@ -27,8 +26,10 @@
 #include <vector>
 
 class InsetTabular;
+class BufferParams;
 class LaTeXFeatures;
 class Buffer;
+class LyXLex;
 
 /* The features the text class offers for tables */
 

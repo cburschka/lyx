@@ -18,7 +18,6 @@
 #include "FuncStatus.h"
 #include "BufferView.h"
 #include "buffer.h"
-#include "lyxtextclasslist.h"
 #include "LyXAction.h"
 #include "gettext.h"
 
@@ -136,7 +135,7 @@ void Toolbar::Pimpl::button_selected(QToolButton * button)
 void Toolbar::Pimpl::changed_layout(string const & sel)
 {
 	LyXTextClass const & tc =
-		textclasslist[owner_->buffer()->params.textclass];
+		owner_->buffer()->params.getLyXTextClass();
 	
 	LyXTextClass::const_iterator end = tc.end();
 	for (LyXTextClass::const_iterator cit = tc.begin();
@@ -154,7 +153,7 @@ void Toolbar::Pimpl::changed_layout(string const & sel)
 void Toolbar::Pimpl::setLayout(string const & layout)
 {
 	LyXTextClass const & tc =
-		textclasslist[owner_->buffer()->params.textclass];
+		owner_->buffer()->params.getLyXTextClass();
  
 	string const & name = _(tc[layout]->name());
  
@@ -182,7 +181,7 @@ void Toolbar::Pimpl::updateLayoutList(bool force)
 		return;
  
 	LyXTextClass const & tc =
-		textclasslist[owner_->buffer()->params.textclass];
+		owner_->buffer()->params.getLyXTextClass();
  
 	combo_->setUpdatesEnabled(false); 
  

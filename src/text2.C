@@ -17,7 +17,6 @@
 #include "lyxtext.h"
 #include "LString.h"
 #include "paragraph.h"
-#include "lyxtextclasslist.h"
 #include "frontends/LyXView.h"
 #include "undo_funcs.h"
 #include "buffer.h"
@@ -120,6 +119,7 @@ LyXFont const realizeFont(LyXFont const & font,
 			  Buffer const * buf,
 			  Paragraph * par)
 {
+	LyXTextClass const & tclass = buf->params.getLyXTextClass();
 	LyXFont tmpfont(font);
 	Paragraph::depth_type par_depth = par->getDepth();
 
@@ -130,9 +130,7 @@ LyXFont const realizeFont(LyXFont const & font,
 #ifndef INHERIT_LANGUAGE
 			tmpfont.realize(par->layout()->font);
 #else
-			tmpfont.realize(textclasslist.
-					Style(buf->params.textclass,
-					      par->layout())->font,
+			tmpfont.realize(tclass[par->layout()]->font,
 					buf->params.language);
 #endif
 			par_depth = par->getDepth();
@@ -140,10 +138,9 @@ LyXFont const realizeFont(LyXFont const & font,
 	}
 
 #ifndef INHERIT_LANGUAGE
-	tmpfont.realize(textclasslist[buf->params.textclass].defaultfont());
+	tmpfont.realize(tclass.defaultfont());
 #else
-	tmpfont.realize(textclasslist[buf->params.textclass].defaultfont(),
-			buf->params.language);
+	tmpfont.realize(tclass.defaultfont(), buf->params.language);
 #endif
 
 	return tmpfont;
@@ -272,7 +269,7 @@ void LyXText::setCharFont(Buffer const * buf, Paragraph * par,
 {
 	LyXFont font(fnt);
 
-	LyXTextClass const & tclass = textclasslist[buf->params.textclass];
+	LyXTextClass const & tclass = buf->params.getLyXTextClass();
 	LyXLayout_ptr const & layout = par->layout();
 
 	// Get concrete layout font to reduce against
@@ -292,9 +289,7 @@ void LyXText::setCharFont(Buffer const * buf, Paragraph * par,
 #ifndef INHERIT_LANGUAGE
 				layoutfont.realize(tp->layout()->font);
 #else
-				layoutfont.realize(textclasslist.
-						   Style(buf->params.textclass,
-							 tp->layout()).font,
+				layoutfont.realize(tclass[tp->layout()].font,
 						   buf->params.language);
 #endif
 		}
@@ -499,7 +494,7 @@ Paragraph * LyXText::setLayout(BufferView * bview,
 	Paragraph * epar = send_cur.par()->next();
 
 	LyXLayout_ptr const & lyxlayout =
-		textclasslist[bview->buffer()->params.textclass][layout];
+		bview->buffer()->params.getLyXTextClass()[layout];
 
 	do {
 		par->applyLayout(lyxlayout);
@@ -1279,7 +1274,7 @@ string const romanCounter(int n)
 // set the counter of a paragraph. This includes the labels
 void LyXText::setCounter(Buffer const * buf, Paragraph * par) const
 {
-	LyXTextClass const & textclass = textclasslist[buf->params.textclass];
+	LyXTextClass const & textclass = buf->params.getLyXTextClass();
 	LyXLayout_ptr const & layout = par->layout();
 
 	// copy the prev-counters to this one,

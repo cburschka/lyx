@@ -16,10 +16,6 @@
 
 #include "frontends/Toolbar.h"
 
-#include "commandtags.h"
-#include "combox.h"
-#include "ToolbarDefaults.h"
-
 #ifdef __GNUG__
 #pragma interface
 #endif
@@ -27,6 +23,7 @@
 class XFormsView;
 class Tooltips;
 class Dialogs;
+class Combox;
 
 /** The LyX xforms toolbar class
   */

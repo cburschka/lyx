@@ -39,7 +39,6 @@
 #include "gettext.h"
 #include "ParagraphParameters.h"
 #include "undo_funcs.h"
-#include "lyxtextclasslist.h"
 
 #include "insets/insetbib.h"
 #include "insets/insettext.h"
@@ -796,7 +795,7 @@ void BufferView::Pimpl::workAreaButtonRelease(int x, int y,
 	// Maybe we want to edit a bibitem ale970302
 	if (bv_->text->cursor.par()->bibkey) {
 		bool const is_rtl = bv_->text->cursor.par()->isRightToLeftPar(buffer_->params);
-		int const width = bibitemMaxWidth(bv_, textclasslist[buffer_->params.textclass].defaultfont());
+		int const width = bibitemMaxWidth(bv_, buffer_->params.getLyXTextClass().defaultfont());
 		if ((is_rtl && x > bv_->text->workWidth(bv_)-20-width) ||
 		    (!is_rtl && x < 20+width)) {
 			bv_->text->cursor.par()->bibkey->edit(bv_, 0, 0, mouse_button::none);
@@ -1473,7 +1472,7 @@ bool BufferView::Pimpl::dispatch(kb_action action, string const & argument)
 	lyxerr[Debug::ACTION] << "BufferView::Pimpl::Dispatch: action["
 			      << action <<"] arg[" << argument << "]" << endl;
 
-	LyXTextClass const & tclass = textclasslist[buffer_->params.textclass];
+	LyXTextClass const & tclass = buffer_->params.getLyXTextClass();
 
 	switch (action) {
 		// --- Misc -------------------------------------------
@@ -3319,7 +3318,7 @@ bool BufferView::Pimpl::insertInset(Inset * inset, string const & lout)
 
 		string lres = lout;
 		LyXTextClass const & tclass =
-			textclasslist[buffer_->params.textclass];
+			buffer_->params.getLyXTextClass();
 		bool hasLayout = tclass.hasLayout(lres);
 		string lay = tclass.defaultLayoutName();
 

@@ -346,7 +346,7 @@ bool Buffer::readLyXformat2(LyXLex & lex, Paragraph * par)
 
 	if (!par) {
 		par = new Paragraph;
-		par->layout(textclasslist[params.textclass].defaultLayout());
+		par->layout(params.getLyXTextClass().defaultLayout());
 	} else {
 		// We are inserting into an existing document
 		users->text->breakParagraph(users);
@@ -447,7 +447,7 @@ void Buffer::insertErtContents(Paragraph * par, int & pos, bool set_inactive)
 				last = last->next();
 			// create the new paragraph after the last one
 			Paragraph * par = new Paragraph(last);
-			par->layout(textclasslist[params.textclass].defaultLayoutName());
+			par->layout(params.getLyXTextClass().defaultLayoutName());
 			par->setInsetOwner(last->inInset());
 			// set the contents
 			LyXFont font(LyXFont::ALL_INHERIT, params.language);
@@ -542,7 +542,7 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 		lex.eatLine();
 		string layoutname = lex.getString();
 
-		LyXTextClass const & tclass = textclasslist[params.textclass];
+		LyXTextClass const & tclass = params.getLyXTextClass();
 
 		if (layoutname.empty()) {
 			layoutname = tclass.defaultLayoutName();
@@ -626,14 +626,14 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 				first_par = par;
 			else {
 				par = new Paragraph(par);
-				par->layout(textclasslist[params.textclass].defaultLayout());
+				par->layout(params.getLyXTextClass().defaultLayout());
 			}
 			pos = 0;
-			par->layout(textclasslist[params.textclass][layoutname]);
+			par->layout(params.getLyXTextClass()[layoutname]);
 			// Test whether the layout is obsolete.
 			LyXLayout_ptr const & layout = par->layout();
 			if (!layout->obsoleted_by().empty())
-				par->layout(textclasslist[params.textclass][layout->obsoleted_by()]);
+				par->layout(params.getLyXTextClass()[layout->obsoleted_by()]);
 			par->params().depth(depth);
 #ifndef NO_COMPABILITY
 		} else {
@@ -642,7 +642,7 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 			par->layout(layoutname);
 			// Test whether the layout is obsolete.
 			LyXLayout_ptr const & layout =
-				textclasslist[params.textclass][par->layout()];
+				params.getLyXTextClass()[par->layout()];
 			if (!layout->obsoleted_by().empty())
 				par->layout(layout->obsoleted_by());
 			par->params().depth(depth);
@@ -902,7 +902,7 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 				string(_("LyX will not be able to produce output correctly.")));
 			params.textclass = 0;
 		}
-		if (!textclasslist[params.textclass].load()) {
+		if (!params.getLyXTextClass().load()) {
 			// if the textclass wasn't loaded properly
 			// we need to either substitute another
 			// or stop loading the file.
@@ -910,7 +910,7 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 			// stop loading... ideas??  ARRae980418
 			Alert::alert(_("Textclass Loading Error!"),
 				   string(_("Can't load textclass ")) +
-				   textclasslist[params.textclass].name(),
+				   params.getLyXTextClass().name(),
 				   _("-- substituting default"));
 			params.textclass = 0;
 		}
@@ -1367,7 +1367,7 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 				if (par->params().pextraStartMinipage() &&
 				    !par->params().pextraHfill()) {
 					Paragraph * p = new Paragraph;
-					p->layout(textclasslist[params.textclass].defaultLayoutName());
+					p->layout(params.getLyXTextClass().defaultLayoutName());
 
 					p->previous(parBeforeMinipage);
 					parBeforeMinipage->next(p);
@@ -1442,7 +1442,7 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 			// a sequence of minipages
 			// in its own paragraph.
 			Paragraph * p = new Paragraph;
-			p->layout(textclasslist[params.textclass].defaultLayoutName());
+			p->layout(params.getLyXTextClass().defaultLayoutName());
 			p->previous(par->previous());
 			p->next(0);
 			p->params().depth(depth);
@@ -2247,7 +2247,7 @@ void Buffer::makeLaTeXFile(ostream & os,
 
 		os << "\\documentclass";
 
-		LyXTextClass const & tclass = textclasslist[params.textclass];
+		LyXTextClass const & tclass = params.getLyXTextClass();
 
 		ostringstream options; // the document class options.
 
@@ -2730,31 +2730,31 @@ void Buffer::latexParagraphs(ostream & ofs, Paragraph * par,
 
 bool Buffer::isLatex() const
 {
-	return textclasslist[params.textclass].outputType() == LATEX;
+	return params.getLyXTextClass().outputType() == LATEX;
 }
 
 
 bool Buffer::isLinuxDoc() const
 {
-	return textclasslist[params.textclass].outputType() == LINUXDOC;
+	return params.getLyXTextClass().outputType() == LINUXDOC;
 }
 
 
 bool Buffer::isLiterate() const
 {
-	return textclasslist[params.textclass].outputType() == LITERATE;
+	return params.getLyXTextClass().outputType() == LITERATE;
 }
 
 
 bool Buffer::isDocBook() const
 {
-	return textclasslist[params.textclass].outputType() == DOCBOOK;
+	return params.getLyXTextClass().outputType() == DOCBOOK;
 }
 
 
 bool Buffer::isSGML() const
 {
-	LyXTextClass const & tclass = textclasslist[params.textclass];
+	LyXTextClass const & tclass = params.getLyXTextClass();
 
 	return tclass.outputType() == LINUXDOC ||
 	       tclass.outputType() == DOCBOOK;
@@ -2810,7 +2810,7 @@ void Buffer::makeLinuxDocFile(string const & fname, bool nice, bool body_only)
 
 	texrow.reset();
 
-	LyXTextClass const & tclass = textclasslist[params.textclass];
+	LyXTextClass const & tclass = params.getLyXTextClass();
 
 	string top_element = tclass.latexname();
 
@@ -3267,7 +3267,7 @@ void Buffer::makeDocBookFile(string const & fname, bool nice, bool only_body)
 
 	texrow.reset();
 
-	LyXTextClass const & tclass = textclasslist[params.textclass];
+	LyXTextClass const & tclass = params.getLyXTextClass();
 	string top_element = tclass.latexname();
 
 	if (!only_body) {
@@ -3671,7 +3671,7 @@ int Buffer::runChktex()
 void Buffer::validate(LaTeXFeatures & features) const
 {
 	Paragraph * par = paragraph;
-	LyXTextClass const & tclass = textclasslist[params.textclass];
+	LyXTextClass const & tclass = params.getLyXTextClass();
 
 	// AMS Style is at document level
 	if (params.use_amsmath || tclass.provides(LyXTextClass::amsmath))

@@ -12,7 +12,6 @@
 
 #include "lyxtext.h"
 #include "lyxrow.h"
-#include "lyxtextclasslist.h"
 #include "paragraph.h"
 #include "gettext.h"
 #include "bufferparams.h"
@@ -707,7 +706,7 @@ int LyXText::leftMargin(BufferView * bview, Row const * row) const
 		return LYX_PAPER_MARGIN;
 
 	LyXTextClass const & tclass =
-		textclasslist[bview->buffer()->params.textclass];
+		bview->buffer()->params.getLyXTextClass();
 	LyXLayout_ptr const & layout = row->par()->layout();
 
 	string parindent = layout->parindent;
@@ -899,7 +898,7 @@ int LyXText::rightMargin(Buffer const * buf, Row const * row) const
 		(ins->needFullRow() || ins->display()))
 		return LYX_PAPER_MARGIN;
 
-	LyXTextClass const & tclass = textclasslist[buf->params.textclass];
+	LyXTextClass const & tclass = buf->params.getLyXTextClass();
 	LyXLayout_ptr const & layout = row->par()->layout();
 
 	int x = LYX_PAPER_MARGIN
@@ -1726,7 +1725,7 @@ void LyXText::breakAgainOneRow(BufferView * bview, Row * row)
 void LyXText::breakParagraph(BufferView * bview, char keep_layout)
 {
 	LyXTextClass const & tclass =
-		textclasslist[bview->buffer()->params.textclass];
+		bview->buffer()->params.getLyXTextClass();
 	LyXLayout_ptr const & layout = cursor.par()->layout();
 
 	// this is only allowed, if the current paragraph is not empty or caption
@@ -2782,7 +2781,8 @@ void LyXText::backspace(BufferView * bview)
 		// different wether it is open or closed.
 
 		//	Correction: Pasting is always allowed with standard-layout
-		LyXTextClass const & tclass = textclasslist[bview->buffer()->params.textclass];
+		LyXTextClass const & tclass =
+			bview->buffer()->params.getLyXTextClass();
 
 		if (cursor.par() != tmppar
 		    && (cursor.par()->layout() == tmppar->layout()

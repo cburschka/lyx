@@ -28,6 +28,7 @@
 #include "lyxfont.h"
 #include "lyxrc.h"
 #include "paragraph.h"
+#include "lyxlex.h"
 
 using std::ostream;
 using std::endl;

@@ -35,7 +35,7 @@
 #include "frontends/Alert.h"
 #include "gettext.h"
 #include "tabular_funcs.h"
-#include "lyxtextclasslist.h"
+#include "lyxlex.h"
 
 #include <algorithm>
 #include <cstdlib>
@@ -1449,7 +1449,7 @@ void LyXTabular::OldFormatRead(BufferParams const & bp,
 	Paragraph * par = new Paragraph;
 	Paragraph * return_par = 0;
 
-	par->layout(textclasslist[bp.textclass].defaultLayout());
+	par->layout(bp.getLyXTextClass().defaultLayout());
 
 	string tmptok;
 	int pos = 0;

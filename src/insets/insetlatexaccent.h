@@ -17,7 +17,8 @@
 
 #include "inset.h"
 #include "LString.h"
-#include "lyxlex.h"
+
+class LyXLex;
 
 /** Insertion of accents
 

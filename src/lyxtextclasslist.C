@@ -46,10 +46,10 @@ pair<bool, textclass_type> const
 LyXTextClassList::NumberOfClass(string const & textclass) const
 {
 	ClassList::const_iterator cit =
-		find_if(classlist.begin(), classlist.end(),
+		find_if(classlist_.begin(), classlist_.end(),
 			lyx::compare_memfun(&LyXTextClass::name, textclass));
-	return cit != classlist.end() ?
-		make_pair(true, textclass_type(cit - classlist.begin())) :
+	return cit != classlist_.end() ?
+		make_pair(true, textclass_type(cit - classlist_.begin())) :
 		make_pair(false, textclass_type(0));
 }
 
@@ -58,17 +58,11 @@ LyXTextClassList::NumberOfClass(string const & textclass) const
 LyXTextClass const &
 LyXTextClassList::operator[](textclass_type textclass) const
 {
-	classlist[textclass].load();
-	if (textclass < classlist.size())
-		return classlist[textclass];
+	classlist_[textclass].load();
+	if (textclass < classlist_.size())
+		return classlist_[textclass];
 	else
-		return classlist[0];
-}
-
-
-void LyXTextClassList::Add(LyXTextClass const & t)
-{
-	classlist.push_back(t);
+		return classlist_[0];
 }
 
 
@@ -143,14 +137,14 @@ bool LyXTextClassList::Read ()
 					if (lyxerr.debugging(Debug::TCLASS)) {
 						tmpl.load();
 					}
-					Add(tmpl);
+					classlist_.push_back(tmpl);
 				}
 			}
 		}
 	}
 	lyxerr[Debug::TCLASS] << "End of parsing of textclass.lst" << endl;
 
-	if (classlist.empty()) {
+	if (classlist_.empty()) {
 		lyxerr << "LyXTextClassList::Read: no textclasses found!"
 		       << endl;
 		Alert::alert(_("LyX wasn't able to find any layout description!"),
@@ -159,7 +153,7 @@ bool LyXTextClassList::Read ()
 		return false;
 	}
 	// Ok everything loaded ok, now sort the list.
-	sort(classlist.begin(), classlist.end(), less_textclass_desc());
+	sort(classlist_.begin(), classlist_.end(), less_textclass_desc());
 	return true;
 }
 

@@ -22,6 +22,7 @@
 #include "lyxrc.h"
 #include "language.h"
 #include "lyxtextclasslist.h"
+#include "lyxlex.h"
 
 #include "support/lyxlib.h"
 #include "support/lstrings.h"
@@ -230,6 +231,12 @@ bool BufferParams::hasClassDefaults() const
 		&& options == tclass.options()
 		&& secnumdepth == tclass.secnumdepth()
 		&& tocdepth == tclass.tocdepth());
+}
+
+
+LyXTextClass const & BufferParams::getLyXTextClass() const
+{
+	return textclasslist[textclass];
 }
 
 

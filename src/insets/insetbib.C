@@ -11,9 +11,9 @@
 #include "gettext.h"
 #include "lyxtext.h"
 #include "lyxrc.h"
+#include "lyxlex.h"
 #include "frontends/font_metrics.h"
 #include "frontends/LyXView.h"
-#include "lyxtextclasslist.h"
 
 #include "frontends/Dialogs.h"
 
@@ -174,7 +174,7 @@ int InsetBibtex::latex(Buffer const * buffer, ostream & os,
 		// part of its name, because it's than book.
 		// For the "official" lyx-layouts it's no problem to support
 		// all well
-		if (!contains(textclasslist[buffer->params.textclass].name(),
+		if (!contains(buffer->params.getLyXTextClass().name(),
 			      "art")) {
 			if (buffer->params.sides == LyXTextClass::OneSide) {
 				// oneside

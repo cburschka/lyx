@@ -23,7 +23,6 @@
 #include "buffer.h"
 #include "frontends/LyXView.h"
 #include "BufferView.h"
-#include "lyxtextclasslist.h"
 #include "LaTeXFeatures.h"
 #include "frontends/Painter.h"
 #include "lyxtext.h"
@@ -140,7 +139,7 @@ InsetText::InsetText(BufferParams const & bp)
 	  do_reinit(false)
 {
 	par = new Paragraph;
-	par->layout(textclasslist[bp.textclass].defaultLayout());
+	par->layout(bp.getLyXTextClass().defaultLayout());
 	init();
 }
 
@@ -1448,15 +1447,15 @@ InsetText::localDispatch(BufferView * bv,
 
 			// Derive layout number from given argument (string)
 			// and current buffer's textclass (number). */
-			textclass_type tclass = bv->buffer()->params.textclass;
+			LyXTextClass const & tclass =
+				bv->buffer()->params.getLyXTextClass();
 			string layout = arg;
-			bool hasLayout = textclasslist[tclass].hasLayout(layout);
+			bool hasLayout = tclass.hasLayout(layout);
 
 			// If the entry is obsolete, use the new one instead.
 			if (hasLayout) {
 				string const & obs =
-					textclasslist[tclass][layout]->
-					obsoleted_by();
+					tclass[layout]->obsoleted_by();
 				if (!obs.empty())
 					layout = obs;
 			}

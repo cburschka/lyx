@@ -1,3 +1,29 @@
+2002-07-21  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* insettext.h: do not include "paragraph.h" and "lyxcursor.h"
+
+	* insetlatexaccent.h: do not include "lyxlex.h"
+
+	* insetgraphicsParams.h: do not include "lyxlex.h" and "buffer.h"
+
+	* insetquotes.C: 
+	* insetlatexaccent.C: 
+	* insetgraphics.C: 
+	* insetexternal.C: 
+	* insetert.C: 
+	* insetbib.C: #include "lyxlex.h"
+
+	* insetinclude.C: 
+	* insetfloat.C: 
+	* insetert.C: 
+	* insetbib.C: 
+	* insettext.C: use BufferParams::getLyXTextClass
+	
+
+	* insetfloat.C (addToToc): new method. Add to toclist the entries
+	corresponding to Caption layouts
+	(InsetFloat): when creating a new float, set the layout to "Caption"
+
 2002-07-21  Herbert Voss  <voss@lyx.org>
 
 	* insetgraphicsParams.C: fet the keepLyXAspectRatio run. Move the

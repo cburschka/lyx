@@ -18,8 +18,6 @@
 
 #include "LString.h"
 #include "frontends/Menubar.h"
-#include "commandtags.h"
-#include "MenuBackend.h"
 
 #include <boost/shared_ptr.hpp>
 
@@ -31,6 +29,8 @@
 
 class LyXView;
 class XFormsView;
+class Menu;
+class MenuItem;
 
 /** The LyX GUI independent menubar class
   The GUI interface is implemented in the corresponding Menubar_pimpl class.

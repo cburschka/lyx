@@ -38,9 +38,9 @@ public:
 	///
 	typedef ClassList::const_iterator const_iterator;
 	///
-	const_iterator begin() const { return classlist.begin(); }
+	const_iterator begin() const { return classlist_.begin(); }
 	///
-	const_iterator end() const { return classlist.end(); }
+	const_iterator end() const { return classlist_.end(); }
 
 	/// Gets textclass number from name, -1 if textclass name does not exist
 	std::pair<bool, lyx::textclass_type> const
@@ -53,9 +53,7 @@ public:
 	bool Read();
 private:
 	///
-	mutable ClassList classlist;
-	///
-	void Add(LyXTextClass const &);
+	mutable ClassList classlist_;
 };
 
 ///

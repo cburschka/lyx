@@ -13,7 +13,6 @@
 #include "frontends/LyXView.h"
 #include "LaTeXFeatures.h"
 #include "gettext.h"
-#include "lyxtextclasslist.h"
 
 #include "frontends/Dialogs.h"
 
@@ -242,9 +241,9 @@ int InsetInclude::latex(Buffer const * buffer, ostream & os,
 			lyxerr << "WARNING: Included file `"
 			       << MakeDisplayPath(getFileName())
 			       << "' has textclass `"
-			       << textclasslist[tmp->params.textclass].name()
+			       << tmp->params.getLyXTextClass().name()
 			       << "' while parent file has textclass `"
-			       << textclasslist[buffer->params.textclass].name()
+			       << buffer->params.getLyXTextClass().name()
 			       << "'." << endl;
 			//return 0;
 		}

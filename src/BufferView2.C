@@ -24,6 +24,7 @@
 #include "undo_funcs.h"
 #include "debug.h"
 #include "iterators.h"
+#include "lyxlex.h"
 
 #include "frontends/Alert.h"
 #include "frontends/Dialogs.h"

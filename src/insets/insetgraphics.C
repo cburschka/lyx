@@ -75,6 +75,7 @@ TODO
 #include "debug.h"
 #include "gettext.h"
 #include "LaTeXFeatures.h"
+#include "lyxlex.h"
 
 #include "frontends/Dialogs.h"
 #include "frontends/Alert.h"

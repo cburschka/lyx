@@ -17,7 +17,6 @@
 #endif
 
 #include "LString.h"
-#include "lyxlex.h"
 #include "vspace.h"
 #include "Spacing.h"
 #include "Bullet.h"
@@ -27,7 +26,7 @@
 
 #include <boost/array.hpp>
 
-
+class LyXLex;
 struct Language;
 
 /** Buffer parameters.
@@ -139,6 +138,8 @@ public:
 	string fontsize;
 	///
 	lyx::textclass_type textclass;
+	///
+	LyXTextClass const & getLyXTextClass() const;
 
 	/* this are for the PaperLayout */
 	/// the general papersize (papersize2 or paperpackage

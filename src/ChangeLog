@@ -4,6 +4,35 @@
  
 2002-07-21  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
+	* lyxrc.C: do not include lyx_main.h
+
+	* LaTeXFeatures.h: use a list<string> instead of a vector<string>
+	for layouts
+
+	* lyxrc.C: 
+	* encoding.C: 
+	* bufferlist.C: 
+	* BufferView2.C: include "lyxlex.h"
+
+	* tabular.h: 
+	* bufferparams.h: do not #include "lyxlex.h"
+
+	* lyxtextclasslist.C (Add): remove method
+	(classlist): renamed to classlist_
+
+	* paragraph_pimpl.C: 
+	* paragraph.C: 
+	* text2.C: 
+	* CutAndPaste.C: 
+	* bufferview_funcs.C: 
+	* bufferlist.C: 
+	* text.C: 
+	* LaTeXFeatures.C: 
+	* buffer.C: 
+	* toc.C (getTocList): use BufferParams::getLyXTextClass
+
+	* toc.C (getTocList): use InsetFloat::addToToc
+
 	* toc.[Ch]: new files, containing helper functions to handle table
 	of contents
 
