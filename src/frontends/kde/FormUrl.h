@@ -17,7 +17,7 @@
 
 #include "DialogBase.h"
 #include "LString.h"
-#include "support/utility.hpp"
+#include "boost/utility.hpp"
 #include "insets/inseturl.h"
 
 class Dialogs;

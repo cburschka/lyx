@@ -17,7 +17,7 @@
 
 #include "DialogBase.h"
 #include "support/lstrings.h"
-#include "support/utility.hpp"
+#include "boost/utility.hpp"
 #include "insets/insetcommand.h" 
 
 #include <vector> 

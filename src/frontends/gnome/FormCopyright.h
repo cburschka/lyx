@@ -16,7 +16,7 @@
 
 #include "DialogBase.h"
 #include <gnome--/about.h>
-#include "support/utility.hpp"
+#include "boost/utility.hpp"
 
 class Dialogs;
 // same arguement as in Dialogs.h s/LyX/UI/

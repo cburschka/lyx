@@ -2502,7 +2502,7 @@ void Buffer::makeLinuxDocFile(string const & fname, bool nice, bool body_only)
 
 #ifndef NEW_INSETS
 void Buffer::linuxDocHandleFootnote(ostream & os, LyXParagraph * & par,
-				    int const depth)
+				    int depth)
 {
 	string const tag = "footnote";
 
@@ -2517,7 +2517,7 @@ void Buffer::linuxDocHandleFootnote(ostream & os, LyXParagraph * & par,
 
 
 void Buffer::DocBookHandleCaption(ostream & os, string & inner_tag,
-				  int const depth, int desc_on,
+				  int depth, int desc_on,
 				  LyXParagraph * & par)
 {
 	LyXParagraph * tpar = par;
@@ -2544,7 +2544,7 @@ void Buffer::DocBookHandleCaption(ostream & os, string & inner_tag,
 
 #ifndef NEW_INSETS
 void Buffer::DocBookHandleFootnote(ostream & os, LyXParagraph * & par,
-				   int const depth)
+				   int depth)
 {
 	string tag, inner_tag;
 	string tmp_par, extra_par;
@@ -2703,7 +2703,7 @@ void linux_doc_line_break(ostream & os, string::size_type & colcount,
 
 
 void Buffer::SimpleLinuxDocOnePar(ostream & os, LyXParagraph * par,
-				  int desc_on, int const /*depth*/)
+				  int desc_on, int /*depth*/)
 {
 	LyXFont font1;
 	char c;
@@ -3215,7 +3215,7 @@ void Buffer::makeDocBookFile(string const & fname, bool nice, bool only_body)
 
 void Buffer::SimpleDocBookOnePar(ostream & os, string & extra,
 				 LyXParagraph * par, int & desc_on,
-				 int const depth) 
+				 int depth) 
 {
 	bool emph_flag = false;
 

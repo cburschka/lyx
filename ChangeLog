@@ -1,3 +1,39 @@
+2000-10-02  John Levon  <moz@compsoc.man.ac.uk>
+
+	* src/frontends/gnome/FormCitation.h:
+	* src/frontends/gnome/FormCopyright.h:
+	* src/frontends/gnome/FormIndex.h:
+	* src/frontends/gnome/FormPrint.h:
+	* src/frontends/gnome/FormToc.h:
+	* src/frontends/gnome/FormUrl.h:
+	* src/frontends/kde/FormCitation.h:
+	* src/frontends/kde/FormCopyright.h:
+	* src/frontends/kde/FormIndex.h:
+	* src/frontends/kde/FormRef.h:
+	* src/frontends/kde/FormToc.h:
+	* src/frontends/kde/FormUrl.h: fix remaining users of
+	support/utility.hpp 
+
+2000-10-02  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/buffer.C (linuxDocHandleFootnote): remove const modifier
+	from depth argument.
+	(DocBookHandleCaption): ditto.
+	(DocBookHandleFootnote): ditto.
+	(SimpleDocBookOnePar): ditto.
+
+	* src/frontends/xforms/FormDocument.h (form): remove extra
+	FormDocument:: qualifier.
+
+	* sigc++/macros/basic_signal.h.m4: remove erroneous virtual
+	destructor. 
+	* sigc++/handle.h: ditto.
+
+	* src/lyx_gui_misc.C: add "using" directive.
+
+	* src/cheaders/cstddef: new file, needed by the boost library (for
+	compaq cxx).
+
 2000-10-02  Juergen Vigna  <jug@sad.it>
 
 	* src/insets/insettext.C (SetFont): better support.
@@ -157,7 +193,7 @@
 	* lib/images/*: rename a bunch of icons to match Dekel converter
 	changes. 
 
-	* src/buffer.C (SimpleLinuxDocOnePar): add a const qualifier to
+	* src/buffer.h (SimpleLinuxDocOnePar): remove const qualifier to
 	last parameter.
 
 	* src/frontends/xforms/FormBase.C (disconnect): remove bogus test. 
@@ -9806,4 +9842,3 @@
 	* po/pt.po: Three errors:
 	       l.533 and l.538 format specification error
 	       l. 402 duplicate entry, I just deleted it.
-

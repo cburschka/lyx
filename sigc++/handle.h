@@ -85,9 +85,6 @@ template <class Obj,class Scope_>
         scope_.set(o,o,false);
        }
 
-     // virtual destructor
-     virtual ~Handle() {}
-     
   };
 
 #define HANDLE_CTORS(X,T,P)                  \

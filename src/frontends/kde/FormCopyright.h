@@ -19,7 +19,7 @@
 #define FORMCOPYRIGHT_H
 
 #include "DialogBase.h"
-#include "support/utility.hpp"
+#include "boost/utility.hpp"
 
 class Dialogs;
 class LyXView;

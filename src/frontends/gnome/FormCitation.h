@@ -18,7 +18,7 @@
 
 #include "DialogBase.h"
 #include "LString.h"
-#include "support/utility.hpp"
+#include "boost/utility.hpp"
 #include "insets/insetcommand.h"
 
 #include <gtk--/container.h>

@@ -1,0 +1,15 @@
+// -*- C++ -*- forwarding header.
+// This file is part of the GNU ANSI C++ Library.
+
+#ifndef __CSTDDEF__
+#define __CSTDDEF__
+#include <stddef.h>
+
+// Add some types in the std namespace, since the boost library seems
+// to look for them (JMarc)
+namespace std {
+	typedef ::size_t size_t;
+	typedef ::ptrdiff_t ptrdiff_t;
+}
+
+#endif

@@ -15,7 +15,7 @@
 #define FORMPRINT_H
 
 #include "DialogBase.h"
-#include "support/utility.hpp"
+#include "boost/utility.hpp"
 
 #include <gtk--/widget.h>
 #include <gtk--/radiobutton.h>
