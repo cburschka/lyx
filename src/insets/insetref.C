@@ -40,8 +40,7 @@ InsetRef::InsetRef(InsetRef const & ir)
 {}
 
 
-DispatchResult
-InsetRef::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
+DispatchResult InsetRef::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 {
 	switch (cmd.action) {
 	case LFUN_MOUSE_PRESS:
@@ -50,6 +49,9 @@ InsetRef::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 			cur.bv().owner()->dispatch(FuncRequest(LFUN_REF_GOTO, getContents()));
 		else
 			InsetCommandMailer("ref", *this).showDialog(&cur.bv());
+		return DispatchResult(true, true);
+
+	case LFUN_MOUSE_RELEASE:
 		return DispatchResult(true, true);
 
 	default:
@@ -61,15 +63,15 @@ InsetRef::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 string const InsetRef::getScreenLabel(Buffer const &) const
 {
 	string temp;
-	for (int i = 0; !types[i].latex_name.empty(); ++ i)
+	for (int i = 0; !types[i].latex_name.empty(); ++i) {
 		if (getCmdName() == types[i].latex_name) {
 			temp = _(types[i].short_gui_name);
 			break;
 		}
+	}
 	temp += getContents();
 
-	if (!isLatex
-	   && !getOptions().empty()) {
+	if (!isLatex && !getOptions().empty()) {
 		temp += "||";
 		temp += getOptions();
 	}

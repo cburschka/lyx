@@ -758,6 +758,7 @@ void LyXText::setHeightOfRow(ParagraphList::iterator pit, Row & row)
 
 void LyXText::breakParagraph(LCursor & cur, char keep_layout)
 {
+	BOOST_ASSERT(this == cur.text());
 	// allow only if at start or end, or all previous is new text
 	Paragraph & cpar = cur.paragraph();
 	ParagraphList::iterator cpit = getPar(cur.par());
@@ -831,18 +832,19 @@ void LyXText::breakParagraph(LCursor & cur, char keep_layout)
 	// This check is necessary. Otherwise the new empty paragraph will
 	// be deleted automatically. And it is more friendly for the user!
 	if (cur.pos() != 0 || isempty)
-		setCursor(cur.par() + 1, 0);
+		setCursor(cur, cur.par() + 1, 0);
 	else
-		setCursor(cur.par(), 0);
+		setCursor(cur, cur.par(), 0);
 }
 
 
 // convenience function
 void LyXText::redoParagraph(LCursor & cur)
 {
+	BOOST_ASSERT(this == cur.text());
 	cur.clearSelection();
 	redoParagraph(getPar(cur.par()));
-	setCursorIntern(cur.par(), cur.pos());
+	setCursorIntern(cur, cur.par(), cur.pos());
 }
 
 
@@ -850,6 +852,7 @@ void LyXText::redoParagraph(LCursor & cur)
 // same Paragraph one to the right and make a rebreak
 void LyXText::insertChar(LCursor & cur, char c)
 {
+	BOOST_ASSERT(this == cur.text());
 	recordUndo(cur, Undo::INSERT);
 
 	Paragraph & par = cur.paragraph();
@@ -872,10 +875,10 @@ void LyXText::insertChar(LCursor & cur, char c)
 			      getFont(pit, cur.pos()).number() == LyXFont::ON &&
 			      getFont(pit, cur.pos() - 1).number() == LyXFont::ON)
 			   )
-				number(); // Set current_font.number to OFF
+				number(cur); // Set current_font.number to OFF
 		} else if (IsDigit(c) &&
 			   real_current_font.isVisibleRightToLeft()) {
-			number(); // Set current_font.number to ON
+			number(cur); // Set current_font.number to ON
 
 			if (cur.pos() != 0) {
 				char const c = par.getChar(cur.pos() - 1);
@@ -944,7 +947,7 @@ void LyXText::insertChar(LCursor & cur, char c)
 	current_font = rawtmpfont;
 	real_current_font = realtmpfont;
 	redoParagraph(cur);
-	setCursor(cur.par(), cur.pos() + 1, false, cur.boundary());
+	setCursor(cur, cur.par(), cur.pos() + 1, false, cur.boundary());
 	charInserted();
 }
 
@@ -1085,6 +1088,7 @@ void LyXText::prepareToPrint(ParagraphList::iterator pit, Row & row) const
 
 void LyXText::cursorRightOneWord(LCursor & cur)
 {
+	BOOST_ASSERT(this == cur.text());
 	if (cur.pos() == cur.lastpos() && cur.par() != cur.lastpar()) {
 		++cur.par();
 		cur.pos() = 0;
@@ -1097,12 +1101,13 @@ void LyXText::cursorRightOneWord(LCursor & cur)
 		while (cur.pos() != cur.lastpos() && cur.paragraph().isWord(cur.pos()))
 			++cur.pos();
 	}
-	setCursor(cur.par(), cur.pos());
+	setCursor(cur, cur.par(), cur.pos());
 }
 
 
 void LyXText::cursorLeftOneWord(LCursor & cur)
 {
+	BOOST_ASSERT(this == cur.text());
 	if (cur.pos() == 0 && cur.par() != 0) {
 		--cur.par();
 		cur.pos() = cur.lastpos();
@@ -1115,21 +1120,22 @@ void LyXText::cursorLeftOneWord(LCursor & cur)
 		while (cur.pos() != 0 && cur.paragraph().isWord(cur.pos() - 1))
 			--cur.pos();
 	}
-	setCursor(cur.par(), cur.pos());
+	setCursor(cur, cur.par(), cur.pos());
 }
 
 
 void LyXText::selectWord(LCursor & cur, word_location loc)
 {
+	BOOST_ASSERT(this == cur.text());
 	CursorSlice from = cur.current();
 	CursorSlice to = cur.current();
 	getWord(from, to, loc);
 	if (cur.current() != from)
-		setCursor(from.par(), from.pos());
+		setCursor(cur, from.par(), from.pos());
 	if (to == from)
 		return;
 	cur.resetAnchor();
-	setCursor(to.par(), to.pos());
+	setCursor(cur, to.par(), to.pos());
 	cur.setSelection();
 }
 
@@ -1138,6 +1144,7 @@ void LyXText::selectWord(LCursor & cur, word_location loc)
 // selection is currently set
 bool LyXText::selectWordWhenUnderCursor(LCursor & cur, word_location loc)
 {
+	BOOST_ASSERT(this == cur.text());
 	if (cur.selection())
 		return false;
 	selectWord(cur, loc);
@@ -1147,6 +1154,7 @@ bool LyXText::selectWordWhenUnderCursor(LCursor & cur, word_location loc)
 
 void LyXText::acceptChange(LCursor & cur)
 {
+	BOOST_ASSERT(this == cur.text());
 	if (!cur.selection() && cur.lastpos() != 0)
 		return;
 
@@ -1158,7 +1166,7 @@ void LyXText::acceptChange(LCursor & cur)
 		finishUndo();
 		cur.clearSelection();
 		redoParagraph(getPar(startc));
-		setCursorIntern(startc.par(), 0);
+		setCursorIntern(cur, startc.par(), 0);
 	}
 #warning handle multi par selection
 }
@@ -1166,6 +1174,7 @@ void LyXText::acceptChange(LCursor & cur)
 
 void LyXText::rejectChange(LCursor & cur)
 {
+	BOOST_ASSERT(this == cur.text());
 	if (!cur.selection() && cur.lastpos() != 0)
 		return;
 
@@ -1177,7 +1186,7 @@ void LyXText::rejectChange(LCursor & cur)
 		finishUndo();
 		cur.clearSelection();
 		redoParagraph(getPar(startc));
-		setCursorIntern(startc.par(), 0);
+		setCursorIntern(cur, startc.par(), 0);
 	}
 #warning handle multi par selection
 }
@@ -1186,6 +1195,7 @@ void LyXText::rejectChange(LCursor & cur)
 // Delete from cursor up to the end of the current or next word.
 void LyXText::deleteWordForward(LCursor & cur)
 {
+	BOOST_ASSERT(this == cur.text());
 	if (cur.lastpos() == 0)
 		cursorRight(cur, true);
 	else {
@@ -1193,7 +1203,7 @@ void LyXText::deleteWordForward(LCursor & cur)
 		cur.selection() = true;
 		cursorRightOneWord(cur);
 		cur.setSelection();
-		cutSelection(true, false);
+		cutSelection(cur, true, false);
 	}
 }
 
@@ -1201,6 +1211,7 @@ void LyXText::deleteWordForward(LCursor & cur)
 // Delete from cursor to start of current or prior word.
 void LyXText::deleteWordBackward(LCursor & cur)
 {
+	BOOST_ASSERT(this == cur.text());
 	if (cur.lastpos() == 0)
 		cursorLeft(cur, true);
 	else {
@@ -1208,7 +1219,7 @@ void LyXText::deleteWordBackward(LCursor & cur)
 		cur.selection() = true;
 		cursorLeftOneWord(cur);
 		cur.setSelection();
-		cutSelection(true, false);
+		cutSelection(cur, true, false);
 	}
 }
 
@@ -1216,6 +1227,7 @@ void LyXText::deleteWordBackward(LCursor & cur)
 // Kill to end of line.
 void LyXText::deleteLineForward(LCursor & cur)
 {
+	BOOST_ASSERT(this == cur.text());
 	if (cur.lastpos() == 0) {
 		// Paragraph is empty, so we just go to the right
 		cursorRight(cur, true);
@@ -1228,13 +1240,14 @@ void LyXText::deleteLineForward(LCursor & cur)
 		if (!cur.selection())
 			deleteWordForward(cur);
 		else
-			cutSelection(true, false);
+			cutSelection(cur, true, false);
 	}
 }
 
 
 void LyXText::changeCase(LCursor & cur, LyXText::TextCase action)
 {
+	BOOST_ASSERT(this == cur.text());
 	CursorSlice from;
 	CursorSlice to;
 
@@ -1244,7 +1257,7 @@ void LyXText::changeCase(LCursor & cur, LyXText::TextCase action)
 	} else {
 		from = cursor();
 		getWord(from, to, lyx::PARTIAL_WORD);
-		setCursor(to.par(), to.pos() + 1);
+		setCursor(cur, to.par(), to.pos() + 1);
 	}
 
 	recordUndoSelection(cur);
@@ -1284,6 +1297,7 @@ void LyXText::changeCase(LCursor & cur, LyXText::TextCase action)
 
 void LyXText::Delete(LCursor & cur)
 {
+	BOOST_ASSERT(this == cur.text());
 	// this is a very simple implementation
 	// just move to the right
 	// if you had success make a backspace
@@ -1297,6 +1311,7 @@ void LyXText::Delete(LCursor & cur)
 
 void LyXText::backspace(LCursor & cur)
 {
+	BOOST_ASSERT(this == cur.text());
 	if (cur.pos() == 0) {
 		// The cursor is at the beginning of a paragraph, so
 		// the the backspace will collapse two paragraphs into
@@ -1335,7 +1350,7 @@ void LyXText::backspace(LCursor & cur)
 		// without the dreaded mechanism. (JMarc)
 		if (cur.par() != 0) {
 			// steps into the above paragraph.
-			setCursorIntern(cur.par() - 1,
+			setCursorIntern(cur, cur.par() - 1,
 					getPar(cur.par() - 1)->size(),
 					false);
 		}
@@ -1360,7 +1375,7 @@ void LyXText::backspace(LCursor & cur)
 
 			// the counters may have changed
 			updateCounters();
-			setCursor(cur.par(), cur.pos(), false);
+			setCursor(cur, cur.par(), cur.pos(), false);
 		}
 	} else {
 		// this is the code for a normal backspace, not pasting
@@ -1370,16 +1385,16 @@ void LyXText::backspace(LCursor & cur)
 		// not a good idea since it triggers the auto-delete
 		// mechanism. So we do a cursorLeftIntern()-lite,
 		// without the dreaded mechanism. (JMarc)
-		setCursorIntern(cur.par(), cur.pos() - 1,
+		setCursorIntern(cur, cur.par(), cur.pos() - 1,
 				false, cur.boundary());
 		cur.paragraph().erase(cur.pos());
 	}
 
 	if (cur.pos() == cur.lastpos())
-		setCurrentFont();
+		setCurrentFont(cur);
 
 	redoParagraph(cur);
-	setCursor(cur.par(), cur.pos(), false, cur.boundary());
+	setCursor(cur, cur.par(), cur.pos(), false, cur.boundary());
 }
 
 
@@ -1593,9 +1608,9 @@ void LyXText::draw(PainterInfo & pi, int x, int y) const
 
 
 // only used for inset right now. should also be used for main text
-void LyXText::drawSelection(PainterInfo &, int x, int y) const
+void LyXText::drawSelection(PainterInfo &, int, int) const
 {
-	lyxerr << "LyXText::drawSelection at " << x << " " << y << endl;
+	//lyxerr << "LyXText::drawSelection at " << x << " " << y << endl;
 }
 
 
@@ -1856,9 +1871,10 @@ CursorSlice const & LyXText::cursor() const
 
 void LyXText::replaceSelection(LCursor & cur)
 {
+	BOOST_ASSERT(this == cur.text());
 	if (cur.selection()) {
-		cutSelection(true, false);
-		bv()->update();
+		cutSelection(cur, true, false);
+		cur.update();
 	}
 }
 
@@ -1866,6 +1882,7 @@ void LyXText::replaceSelection(LCursor & cur)
 // Returns the current font and depth as a message.
 string LyXText::currentState(LCursor & cur)
 {
+	BOOST_ASSERT(this == cur.text());
 	Buffer * buffer = bv()->buffer();
 	Paragraph const & par = cur.paragraph();
 	std::ostringstream os;

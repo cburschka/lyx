@@ -297,9 +297,9 @@ void BufferView::setCursorFromRow(int row)
 	buffer()->texrow().getIdFromRow(row, tmpid, tmppos);
 
 	if (tmpid == -1)
-		text()->setCursor(0, 0);
+		text()->setCursor(cursor(), 0, 0);
 	else
-		text()->setCursor(
+		text()->setCursor(cursor(),
 			text()->parOffset(buffer()->getParFromID(tmpid).pit()),
 			tmppos);
 }
@@ -313,7 +313,7 @@ void BufferView::gotoLabel(string const & label)
 		it->getLabelList(*buffer(), labels);
 		if (find(labels.begin(),labels.end(),label) != labels.end()) {
 			cursor().clearSelection();
-			text()->setCursor(
+			text()->setCursor(cursor(), 
 				distance(text()->paragraphs().begin(), it.getPar()),
 				it.getPos());
 			cursor().resetAnchor();
@@ -327,19 +327,6 @@ void BufferView::gotoLabel(string const & label)
 void BufferView::hideCursor()
 {
 	screen().hideCursor();
-}
-
-
-bool BufferView::ChangeRefsIfUnique(string const & from, string const & to)
-{
-	// Check if the label 'from' appears more than once
-	vector<string> labels;
-	buffer()->getLabelList(labels);
-
-	if (lyx::count(labels.begin(), labels.end(), from) > 1)
-		return false;
-
-	return pimpl_->ChangeInsets(InsetOld::REF_CODE, from, to);
 }
 
 
@@ -399,7 +386,7 @@ void BufferView::setCursor(ParIterator const & par,
 		(*positions[i].it)->inset->edit(cur, true);
 	cur.resetAnchor();
 	LyXText * lt = par.text(*buffer());
-	lt->setCursor(lt->parOffset(par.pit()), pos);
+	lt->setCursor(cur, lt->parOffset(par.pit()), pos);
 }
 
 
@@ -431,7 +418,7 @@ void BufferView::putSelectionAt(PosIterator const & cur,
 	if (par.inset())
 		top_y(par.outerPar()->y);
 	update();
-	text->setCursor(text->parOffset(cur.pit()), cur.pos());
+	text->setCursor(cursor(), text->parOffset(cur.pit()), cur.pos());
 	cursor().updatePos();
 
 	if (length) {

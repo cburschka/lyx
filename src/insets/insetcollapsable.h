@@ -85,7 +85,7 @@ public:
 	///
 	void setLabel(std::string const & l);
 	///
-	virtual void setButtonLabel() {};
+	virtual void setButtonLabel() {}
  	///
 	void setLabelFont(LyXFont & f);
 	/// Appends \c list with all labels found within this inset.

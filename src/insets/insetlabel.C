@@ -12,20 +12,26 @@
 
 #include "insetlabel.h"
 
+#include "buffer.h"
 #include "BufferView.h"
 #include "dispatchresult.h"
 #include "funcrequest.h"
+#include "InsetList.h"
+#include "iterators.h"
+#include "lyxtext.h"
+#include "paragraph.h"
 
 #include "frontends/LyXView.h"
 
 #include "support/lstrings.h"
-
+#include "support/lyxalgo.h"
 #include "support/std_ostream.h"
 
 using lyx::support::escape;
 
 using std::string;
 using std::ostream;
+using std::vector;
 
 
 InsetLabel::InsetLabel(InsetCommandParams const & p)
@@ -51,6 +57,40 @@ string const InsetLabel::getScreenLabel(Buffer const &) const
 }
 
 
+namespace {
+
+void changeRefsIfUnique(BufferView & bv, string const & from, string const & to)
+{
+	// Check if the label 'from' appears more than once
+	vector<string> labels;
+	bv.buffer()->getLabelList(labels);
+
+	if (lyx::count(labels.begin(), labels.end(), from) > 1)
+		return;
+
+	InsetBase::Code code = InsetBase::REF_CODE;
+
+	ParIterator it = bv.buffer()->par_iterator_begin();
+	ParIterator end = bv.buffer()->par_iterator_end();
+	for ( ; it != end; ++it) {
+		bool changed_inset = false;
+		for (InsetList::iterator it2 = it->insetlist.begin();
+		     it2 != it->insetlist.end(); ++it2) {
+			if (it2->inset->lyxCode() == code) {
+				InsetCommand * inset = static_cast<InsetCommand *>(it2->inset);
+				if (inset->getContents() == from) {
+					inset->setContents(to);
+					//inset->setButtonLabel();
+					changed_inset = true;
+				}
+			}
+		}
+	}
+}
+
+} // namespace anon
+
+
 DispatchResult
 InsetLabel::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 {
@@ -61,12 +101,10 @@ InsetLabel::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 		InsetCommandMailer::string2params("label", cmd.argument, p);
 		if (p.getCmdName().empty())
 			return DispatchResult(false);
-		bool clean = true;
 		if (p.getContents() != params().getContents())
-			clean = cur.bv().ChangeRefsIfUnique(params().getContents(),
+			changeRefsIfUnique(cur.bv(), params().getContents(),
 						       p.getContents());
 		setParams(p);
-		cur.bv().update();
 		return DispatchResult(true, true);
 	}
 

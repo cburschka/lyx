@@ -30,6 +30,7 @@
 #include "intl.h"
 #include "language.h"
 #include "lyxfunc.h"
+#include "lyxlex.h"
 #include "lyxrc.h"
 #include "lyxrow.h"
 #include "paragraph.h"
@@ -101,10 +102,10 @@ namespace {
 					text->bidi.isBoundary(*cur.bv().buffer(), par,
 							cur.pos(),
 							text->real_current_font))
-				text->setCursor(cur.par(), cur.pos(),
+				text->setCursor(cur, cur.par(), cur.pos(),
 						false, !cur.boundary());
 		}
-		cur.bv().update();
+		cur.update();
 	}
 
 
@@ -126,7 +127,8 @@ namespace {
 	}
 
 
-	void mathDispatch(LCursor & cur, FuncRequest const & cmd, bool display)
+	void mathDispatch(LCursor & cur, LyXText * text,
+		FuncRequest const & cmd, bool display)
 	{
 		string sel = cur.selectionAsString(false);
 		lyxerr << "selection is: '" << sel << "'" << endl;
@@ -144,7 +146,7 @@ namespace {
 		} else {
 			// create a macro if we see "\\newcommand" somewhere, and an ordinary
 			// formula otherwise
-			cur.bv().getLyXText()->cutSelection(true, true);
+			text->cutSelection(cur, true, true);
 			if (sel.find("\\newcommand") == string::npos &&
 					sel.find("\\def") == string::npos)
 			{
@@ -212,12 +214,13 @@ InsetBase * LyXText::checkInsetHit(int x, int y)
 }
 
 
-bool LyXText::gotoNextInset(vector<InsetOld_code> const & codes,
-			    string const & contents)
+bool LyXText::gotoNextInset(LCursor & cur,
+	vector<InsetOld_code> const & codes, string const & contents)
 {
+	BOOST_ASSERT(this == cur.text());
 	ParagraphList::iterator end = paragraphs().end();
-	ParagraphList::iterator pit = cursorPar();
-	pos_type pos = cursor().pos();
+	ParagraphList::iterator pit = getPar(cur.par());
+	pos_type pos = cur.pos();
 
 	InsetBase * inset;
 	do {
@@ -239,14 +242,14 @@ bool LyXText::gotoNextInset(vector<InsetOld_code> const & codes,
 	if (pit == end)
 		return false;
 
-	setCursor(parOffset(pit), pos, false);
+	setCursor(cur, parOffset(pit), pos, false);
 	return true;
 }
 
 
-void LyXText::gotoInset(vector<InsetOld_code> const & codes, bool same_content)
+void LyXText::gotoInset(LCursor & cur,
+	vector<InsetOld_code> const & codes, bool same_content)
 {
-	LCursor & cur = bv()->cursor();
 	cur.clearSelection();
 
 	string contents;
@@ -259,12 +262,12 @@ void LyXText::gotoInset(vector<InsetOld_code> const & codes, bool same_content)
 			contents = static_cast<InsetCommand const *>(inset)->getContents();
 	}
 
-	if (!gotoNextInset(codes, contents)) {
+	if (!gotoNextInset(cur, codes, contents)) {
 		if (cur.pos() || cur.par() != 0) {
-			CursorSlice tmp = cursor();
+			CursorSlice tmp = cur.current();
 			cur.par() = 0;
 			cur.pos() = 0;
-			if (!gotoNextInset(codes, contents)) {
+			if (!gotoNextInset(cur, codes, contents)) {
 				cursor() = tmp;
 				cur.message(_("No more insets"));
 			}
@@ -272,14 +275,14 @@ void LyXText::gotoInset(vector<InsetOld_code> const & codes, bool same_content)
 			cur.message(_("No more insets"));
 		}
 	}
-	cur.bv().update();
+	cur.update();
 	cur.resetAnchor();
 }
 
 
-void LyXText::gotoInset(InsetOld_code code, bool same_content)
+void LyXText::gotoInset(LCursor & cur, InsetOld_code code, bool same_content)
 {
-	gotoInset(vector<InsetOld_code>(1, code), same_content);
+	gotoInset(cur, vector<InsetOld_code>(1, code), same_content);
 }
 
 
@@ -290,7 +293,7 @@ void LyXText::cursorPrevious(LCursor & cur)
 
 	int x = cur.x_target();
 	int y = bv()->top_y();
-	setCursorFromCoordinates(x, y);
+	setCursorFromCoordinates(cur.current(), x, y);
 
 	if (cpar == cur.par() && cpos == cur.pos()) {
 		// we have a row which is taller than the workarea. The
@@ -310,7 +313,7 @@ void LyXText::cursorNext(LCursor & cur)
 
 	int x = cur.x_target();
 	int y = bv()->top_y() + bv()->workHeight();
-	setCursorFromCoordinates(x, y);
+	setCursorFromCoordinates(cur.current(), x, y);
 
 	if (cpar == cur.par() && cpos == cur.pos()) {
 		// we have a row which is taller than the workarea. The
@@ -325,49 +328,47 @@ void LyXText::cursorNext(LCursor & cur)
 
 namespace {
 
-void specialChar(LCursor & cur, LyXText * text, BufferView * bv,
-	InsetSpecialChar::Kind kind)
+void specialChar(LCursor & cur, LyXText * text, InsetSpecialChar::Kind kind)
 {
-	bv->update();
 	text->replaceSelection(cur);
 	cur.insert(new InsetSpecialChar(kind));
-	bv->update();
+	cur.update();
 }
 
 
-void doInsertInset(LCursor & cur, LyXText * text, BufferView * bv,
+void doInsertInset(LCursor & cur, LyXText * text,
 	FuncRequest const & cmd, bool edit, bool pastesel)
 {
-	InsetBase * inset = createInset(bv, cmd);
+	InsetBase * inset = createInset(&cur.bv(), cmd);
 	if (!inset)
 		return;
 
 	bool gotsel = false;
 	if (cur.selection()) {
-		bv->owner()->dispatch(FuncRequest(LFUN_CUT));
+		cur.bv().owner()->dispatch(FuncRequest(LFUN_CUT));
 		gotsel = true;
 	}
 	text->insertInset(cur, inset);
 	if (edit)
 		inset->edit(cur, true);
 	if (gotsel && pastesel)
-		bv->owner()->dispatch(FuncRequest(LFUN_PASTE));
+		cur.bv().owner()->dispatch(FuncRequest(LFUN_PASTE));
 }
 
 } // anon namespace
 
 
-void LyXText::number()
+void LyXText::number(LCursor & cur)
 {
 	LyXFont font(LyXFont::ALL_IGNORE);
 	font.setNumber(LyXFont::TOGGLE);
-	toggleAndShow(bv()->cursor(), this, font);
+	toggleAndShow(cur, this, font);
 }
 
 
-bool LyXText::rtl() const
+bool LyXText::rtl(LCursor & cur) const
 {
-	return cursorPar()->isRightToLeftPar(bv()->buffer()->params());
+	return getPar(cur.par())->isRightToLeftPar(bv()->buffer()->params());
 }
 
 
@@ -403,7 +404,7 @@ DispatchResult LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 		// we can set the refreshing parameters now
 		updateCounters();
 		redoParagraph(cur);
-		bv->update();
+		cur.update();
 		break;
 	}
 
@@ -428,7 +429,7 @@ DispatchResult LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 	case LFUN_WORDRIGHT:
 		if (!cur.mark())
 			cur.clearSelection();
-		if (rtl())
+		if (rtl(cur))
 			cursorLeftOneWord(cur);
 		else
 			cursorRightOneWord(cur);
@@ -438,7 +439,7 @@ DispatchResult LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 	case LFUN_WORDLEFT:
 		if (!cur.mark())
 			cur.clearSelection();
-		if (rtl())
+		if (rtl(cur))
 			cursorRightOneWord(cur);
 		else
 			cursorLeftOneWord(cur);
@@ -462,7 +463,7 @@ DispatchResult LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 	case LFUN_RIGHTSEL:
 		if (!cur.selection())
 			cur.resetAnchor();
-		if (rtl())
+		if (rtl(cur))
 			cursorLeft(cur, true);
 		else
 			cursorRight(cur, true);
@@ -472,7 +473,7 @@ DispatchResult LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 	case LFUN_LEFTSEL:
 		if (!cur.selection())
 			cur.resetAnchor();
-		if (rtl())
+		if (rtl(cur))
 			cursorRight(cur, true);
 		else
 			cursorLeft(cur, true);
@@ -538,7 +539,7 @@ DispatchResult LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 	case LFUN_WORDRIGHTSEL:
 		if (!cur.selection())
 			cur.resetAnchor();
-		if (rtl())
+		if (rtl(cur))
 			cursorLeftOneWord(cur);
 		else
 			cursorRightOneWord(cur);
@@ -548,7 +549,7 @@ DispatchResult LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 	case LFUN_WORDLEFTSEL:
 		if (!cur.selection())
 			cur.resetAnchor();
-		if (rtl())
+		if (rtl(cur))
 			cursorRightOneWord(cur);
 		else
 			cursorLeftOneWord(cur);
@@ -641,7 +642,7 @@ DispatchResult LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 			// It is possible to make it a lot faster still
 			// just comment out the line below...
 		} else {
-			cutSelection(true, false);
+			cutSelection(cur, true, false);
 		}
 		moveCursor(cur, false);
 		bv->owner()->view_state_changed();
@@ -657,9 +658,9 @@ DispatchResult LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 			Delete(cur);
 			cur.resetAnchor();
 		} else {
-			cutSelection(true, false);
+			cutSelection(cur, true, false);
 		}
-		bv->update();
+		cur.update();
 		break;
 
 
@@ -672,11 +673,11 @@ DispatchResult LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 				// just comment out the line below...
 			}
 		} else {
-			cutSelection(true, false);
+			cutSelection(cur, true, false);
 		}
 		bv->owner()->view_state_changed();
 		bv->switchKeyMap();
-		bv->update();
+		cur.update();
 		break;
 
 	case LFUN_BACKSPACE_SKIP:
@@ -687,15 +688,15 @@ DispatchResult LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 			backspace(cur);
 			//anchor() = cur;
 		} else {
-			cutSelection(true, false);
+			cutSelection(cur, true, false);
 		}
-		bv->update();
+		cur.update();
 		break;
 
 	case LFUN_BREAKPARAGRAPH:
 		replaceSelection(cur);
 		breakParagraph(cur, 0);
-		bv->update();
+		cur.update();
 		cur.resetAnchor();
 		bv->switchKeyMap();
 		bv->owner()->view_state_changed();
@@ -704,7 +705,7 @@ DispatchResult LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 	case LFUN_BREAKPARAGRAPHKEEPLAYOUT:
 		replaceSelection(cur);
 		breakParagraph(cur, 1);
-		bv->update();
+		cur.update();
 		cur.resetAnchor();
 		bv->switchKeyMap();
 		bv->owner()->view_state_changed();
@@ -714,18 +715,17 @@ DispatchResult LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 		// When at the beginning of a paragraph, remove
 		// indentation and add a "defskip" at the top.
 		// Otherwise, do the same as LFUN_BREAKPARAGRAPH.
-#warning look here
 		replaceSelection(cur);
 		if (cur.pos() == 0) {
 			ParagraphParameters & params = cur.paragraph().params();
-			setParagraph(
+			setParagraph(cur,
 					params.spacing(),
 					params.align(),
 					params.labelWidthString(), 1);
 		} else {
 			breakParagraph(cur, 0);
 		}
-		bv->update();
+		cur.update();
 //	anchor() = cur;
 		bv->switchKeyMap();
 		bv->owner()->view_state_changed();
@@ -769,7 +769,7 @@ DispatchResult LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 		if (cur_spacing != new_spacing || cur_value != new_value) {
 			par.params().spacing(Spacing(new_spacing, new_value));
 			redoParagraph(cur);
-			bv->update();
+			cur.update();
 		}
 		break;
 	}
@@ -800,7 +800,7 @@ DispatchResult LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 		cur.clearSelection();
 		if (!toggleInset(cur))
 			return DispatchResult(false);
-		bv->update();
+		cur.update();
 		bv->switchKeyMap();
 		break;
 
@@ -808,49 +808,49 @@ DispatchResult LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 		if (cur.paragraph().layout()->free_spacing)
 			insertChar(cur, ' ');
 		else
-			doInsertInset(cur, this, bv, cmd, false, false);
+			doInsertInset(cur, this, cmd, false, false);
 		moveCursor(cur, false);
 		break;
 
 	case LFUN_HYPHENATION:
-		specialChar(cur, this, bv, InsetSpecialChar::HYPHENATION);
+		specialChar(cur, this, InsetSpecialChar::HYPHENATION);
 		break;
 
 	case LFUN_LIGATURE_BREAK:
-		specialChar(cur, this, bv, InsetSpecialChar::LIGATURE_BREAK);
+		specialChar(cur, this, InsetSpecialChar::LIGATURE_BREAK);
 		break;
 
 	case LFUN_LDOTS:
-		specialChar(cur, this, bv, InsetSpecialChar::LDOTS);
+		specialChar(cur, this, InsetSpecialChar::LDOTS);
 		break;
 
 	case LFUN_END_OF_SENTENCE:
-		specialChar(cur, this, bv, InsetSpecialChar::END_OF_SENTENCE);
+		specialChar(cur, this, InsetSpecialChar::END_OF_SENTENCE);
 		break;
 
 	case LFUN_MENU_SEPARATOR:
-		specialChar(cur, this, bv, InsetSpecialChar::MENU_SEPARATOR);
+		specialChar(cur, this, InsetSpecialChar::MENU_SEPARATOR);
 		break;
 
 	case LFUN_UPCASE_WORD:
 		changeCase(cur, LyXText::text_uppercase);
-		bv->update();
+		cur.update();
 		break;
 
 	case LFUN_LOWCASE_WORD:
 		changeCase(cur, LyXText::text_lowercase);
-		bv->update();
+		cur.update();
 		break;
 
 	case LFUN_CAPITALIZE_WORD:
 		changeCase(cur, LyXText::text_capitalization);
-		bv->update();
+		cur.update();
 		break;
 
 	case LFUN_TRANSPOSE_CHARS:
 		recordUndo(cur);
 		redoParagraph(cur);
-		bv->update();
+		cur.update();
 		break;
 
 	case LFUN_PASTE:
@@ -862,19 +862,19 @@ DispatchResult LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 		else
 			pasteSelection(cur, 0);
 		cur.clearSelection(); // bug 393
-		bv->update();
+		cur.update();
 		bv->switchKeyMap();
 		finishUndo();
 		break;
 
 	case LFUN_CUT:
-		cutSelection(true, true);
+		cutSelection(cur, true, true);
 		cur.message(_("Cut"));
-		bv->update();
+		cur.update();
 		break;
 
 	case LFUN_COPY:
-		copySelection();
+		copySelection(cur);
 		cur.message(_("Copy"));
 		break;
 
@@ -910,7 +910,7 @@ DispatchResult LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 			lyxerr << "SETXY: Could not parse coordinates in '"
 			       << cmd.argument << std::endl;
 		else
-			setCursorFromCoordinates(x, y);
+			setCursorFromCoordinates(cur.current(), x, y);
 		break;
 	}
 
@@ -980,7 +980,7 @@ DispatchResult LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 			current_layout = layout;
 			setLayout(cur, layout);
 			bv->owner()->setLayout(layout);
-			bv->update();
+			cur.update();
 			bv->switchKeyMap();
 		}
 		break;
@@ -994,24 +994,24 @@ DispatchResult LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 				insertStringAsParagraphs(cur, clip);
 			else
 				insertStringAsLines(cur, clip);
-			bv->update();
+			cur.update();
 		}
 		break;
 	}
 
 	case LFUN_GOTOERROR:
-		gotoInset(InsetBase::ERROR_CODE, false);
+		gotoInset(cur, InsetBase::ERROR_CODE, false);
 		break;
 
 	case LFUN_GOTONOTE:
-		gotoInset(InsetBase::NOTE_CODE, false);
+		gotoInset(cur, InsetBase::NOTE_CODE, false);
 		break;
 
 	case LFUN_REFERENCE_GOTO: {
 		vector<InsetOld_code> tmp;
 		tmp.push_back(InsetBase::LABEL_CODE);
 		tmp.push_back(InsetBase::REF_CODE);
-		gotoInset(tmp, true);
+		gotoInset(cur, tmp, true);
 		break;
 	}
 
@@ -1081,7 +1081,7 @@ DispatchResult LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 
 	case LFUN_MOUSE_MOTION: {
 		// Only use motion with button 1
-		//if (ev.button() != mouse_button::button1)
+		//if (cmd.button() != mouse_button::button1)
 		//	return false;
 		// The test for not selection possible is needed, that
 		// only motion events are used, where the bottom press
@@ -1092,9 +1092,7 @@ DispatchResult LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 			break;
 		}
 		CursorSlice old = cur.current();
-
-#warning
-		setCursorFromCoordinates(cmd.x, cmd.y);
+		setCursorFromCoordinates(cur.current(), cmd.x, cmd.y);
 
 		// This is to allow jumping over large insets
 		// FIXME: shouldn't be top-text-specific
@@ -1108,7 +1106,6 @@ DispatchResult LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 		// don't set anchor_
 		bv->cursor().cursor_ = cur.cursor_;
 		bv->cursor().setSelection();
-
 		break;
 	}
 
@@ -1209,7 +1206,7 @@ DispatchResult LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 
 		if (lyxrc.auto_region_delete) {
 			if (cur.selection())
-				cutSelection(false, false);
+				cutSelection(cur, false, false);
 			bv->haveSelection(false);
 		}
 
@@ -1276,12 +1273,12 @@ DispatchResult LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 	case LFUN_ENVIRONMENT_INSERT:
 		// Open the inset, and move the current selection
 		// inside it.
-		doInsertInset(cur, this, bv, cmd, true, true);
+		doInsertInset(cur, this, cmd, true, true);
 		break;
 
 	case LFUN_INDEX_INSERT:
 		// Just open the inset
-		doInsertInset(cur, this, bv, cmd, true, false);
+		doInsertInset(cur, this, cmd, true, false);
 		break;
 
 	case LFUN_INDEX_PRINT:
@@ -1290,26 +1287,26 @@ DispatchResult LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 	case LFUN_INSERT_LINE:
 	case LFUN_INSERT_PAGEBREAK:
 		// do nothing fancy
-		doInsertInset(cur, this, bv, cmd, false, false);
+		doInsertInset(cur, this, cmd, false, false);
 		break;
 
 	case LFUN_DEPTH_MIN:
 		changeDepth(cur, bv_funcs::DEC_DEPTH);
-		bv->update();
+		cur.update();
 		break;
 
 	case LFUN_DEPTH_PLUS:
 		changeDepth(cur, bv_funcs::INC_DEPTH);
-		bv->update();
+		cur.update();
 		break;
 
 	case LFUN_MATH_DISPLAY:
-		mathDispatch(cur, cmd, true);
+		mathDispatch(cur, this, cmd, true);
 		break;
 
 	case LFUN_MATH_IMPORT_SELECTION:
 	case LFUN_MATH_MODE:
-		mathDispatch(cur, cmd, false);
+		mathDispatch(cur, this, cmd, false);
 		break;
 
 	case LFUN_MATH_MACRO:
@@ -1443,7 +1440,7 @@ DispatchResult LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 	case LFUN_FINISHED_LEFT:
 		lyxerr << "handle LFUN_FINISHED_LEFT" << endl;
 		cur.pop(cur.currentDepth());
-		if (rtl())
+		if (rtl(cur))
 			cursorLeft(cur, true);
 		cur.bv().cursor() = cur;
 		break;
@@ -1451,7 +1448,7 @@ DispatchResult LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 	case LFUN_FINISHED_RIGHT:
 		lyxerr << "handle LFUN_FINISHED_RIGHT" << endl;
 		cur.pop(cur.currentDepth());
-		if (!rtl())
+		if (!rtl(cur))
 			cursorRight(cur, true);
 		cur.bv().cursor() = cur;
 		break;
@@ -1532,7 +1529,7 @@ DispatchResult LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 			}
 
 			setLayout(cur, tclass.defaultLayoutName());
-			setParagraph(Spacing(), LYX_ALIGN_LAYOUT, string(), 0);
+			setParagraph(cur, Spacing(), LYX_ALIGN_LAYOUT, string(), 0);
 			cur.insert(new InsetFloatList(cmd.argument));
 			unFreezeUndo();
 		} else {
@@ -1544,13 +1541,13 @@ DispatchResult LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 
 	case LFUN_ACCEPT_CHANGE: {
 		acceptChange(cur);
-		bv->update();
+		cur.update();
 		break;
 	}
 
 	case LFUN_REJECT_CHANGE: {
 		rejectChange(cur);
-		bv->update();
+		cur.update();
 		break;
 	}
 
@@ -1566,6 +1563,25 @@ DispatchResult LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 			}
 		}
 		bv->owner()->getDialogs().show("thesaurus", arg);
+		break;
+	}
+
+	case LFUN_PARAGRAPH_APPLY: {
+		// Given data, an encoding of the ParagraphParameters
+		// generated in the Paragraph dialog, this function sets
+		// the current paragraph appropriately.
+		istringstream is(cmd.argument);
+		LyXLex lex(0, 0);
+		lex.setStream(is);
+		ParagraphParameters params;
+		params.read(lex);
+		setParagraph(cur,
+					 params.spacing(),
+					 params.align(),
+					 params.labelWidthString(),
+					 params.noindent());
+		cur.update();
+		cur.message(_("Paragraph layout set"));
 		break;
 	}
 

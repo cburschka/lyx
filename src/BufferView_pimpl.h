@@ -139,13 +139,6 @@ private:
 	/// notify readonly status
 	void showReadonly(bool);
 
-	/**
-	 * Change all insets with the given code's contents to a new
-	 * string. May only be used with InsetCommand-derived insets
-	 * Returns true if a screen update is needed.
-	 */
-	bool ChangeInsets(InsetBase::Code code, std::string const & from,
-			  std::string const & to);
 
 	///
 	friend class BufferView;

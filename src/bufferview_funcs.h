@@ -16,24 +16,19 @@
 
 #include <string>
 
-
-class BufferView;
 class LCursor;
 class LyXFont;
 class LyXText;
-class PosIterator;
 
 
 namespace bv_funcs {
 
-/** Set \param data using \param font and \param toggle.
- *  If successful, returns true.
- */
+/// Set \param data using \param font and \param toggle. Return success.
 bool font2string(LyXFont const & font, bool toggle, std::string & data);
-/** Set \param font and \param toggle using \param data.
- *  If successful, returns true.
- */
+
+/// Set \param font and \param toggle using \param data. Return success.
 bool string2font(std::string const & data, LyXFont & font, bool & toggle);
+
 /** Returns the current freefont, encoded as a std::string to be passed to the
  *  frontends.
  */
@@ -49,6 +44,6 @@ enum DEPTH_CHANGE {
 /// Returns whether something would be changed by changeDepth
 bool changeDepthAllowed(LCursor & cur, LyXText * text, DEPTH_CHANGE);
 
-}; // namespace bv_funcs
+} // namespace bv_funcs
 
 #endif

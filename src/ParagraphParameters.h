@@ -29,6 +29,7 @@ class Paragraph;
 class ParameterStruct;
 class Spacing;
 
+
 ///
 class ParagraphParameters {
 public:
@@ -98,11 +99,5 @@ private:
     Paragraph dialog.
  */
 void params2string(Paragraph const & par, std::string & data);
-
-/** Given \param data, an encoding of the ParagraphParameters generated
-    in the Paragraph dialog, this function sets the current paragraph
-    appropriately.
- */
-void setParagraphParams(BufferView & bv, std::string const & data);
 
 #endif

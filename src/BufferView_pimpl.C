@@ -77,6 +77,7 @@ using lyx::support::strToUnsignedInt;
 using lyx::support::system_lyxdir;
 
 using std::endl;
+using std::istringstream;
 using std::make_pair;
 using std::min;
 using std::string;
@@ -413,13 +414,13 @@ void BufferView::Pimpl::resizeCurrentBuffer()
 		// Mechanism when setting the cursor.
 		cur.mark() = mark_set;
 		if (sel) {
-			text->setCursor(selstartpar, selstartpos);
+			text->setCursor(cur, selstartpar, selstartpos);
 			cur.resetAnchor();
-			text->setCursor(selendpar, selendpos);
+			text->setCursor(cur, selendpar, selendpos);
 			cur.setSelection();
-			text->setCursor(par, pos);
+			text->setCursor(cur, par, pos);
 		} else {
-			text->setCursor(par, pos);
+			text->setCursor(cur, par, pos);
 			cur.resetAnchor();
 			cur.selection() = false;
 		}
@@ -474,11 +475,12 @@ void BufferView::Pimpl::scrollDocView(int value)
 	int const last = top_y() + workarea().workHeight() - height;
 
 	LyXText * text = bv_->text();
-	int y = text->cursorY(bv_->cursor().cursor_.front());
+	CursorSlice & cur = bv_->cursor().cursor_.front();
+	int y = text->cursorY(cur);
 	if (y < first)
-		text->setCursorFromCoordinates(0, first);
+		text->setCursorFromCoordinates(cur, 0, first);
 	else if (y > last)
-		text->setCursorFromCoordinates(0, last);
+		text->setCursorFromCoordinates(cur, 0, last);
 
 	owner_->updateLayoutChoice();
 }
@@ -681,8 +683,10 @@ void BufferView::Pimpl::restorePosition(unsigned int i)
 	if (par == buffer_->par_iterator_end())
 		return;
 
-	bv_->text()->setCursor(bv_->text()->parOffset(par.pit()),
-			     min(par->size(), saved_positions[i].par_pos));
+	bv_->text()->setCursor(
+		bv_->cursor(),
+		bv_->text()->parOffset(par.pit()),
+		min(par->size(), saved_positions[i].par_pos));
 
 	if (i > 0)
 		owner_->message(bformat(_("Moved to bookmark %1$s"), tostr(i)));
@@ -742,31 +746,28 @@ void BufferView::Pimpl::stuffClipboard(string const & stuff) const
 
 InsetBase * BufferView::Pimpl::getInsetByCode(InsetBase::Code code)
 {
+#warning Does not work for mathed
 	// Ok, this is a little bit too brute force but it
 	// should work for now. Better infrastructure is coming. (Lgb)
 
-	Buffer * b = bv_->buffer();
-	LyXText * text = bv_->getLyXText();
-
-	Buffer::inset_iterator beg = b->inset_iterator_begin();
-	Buffer::inset_iterator end = b->inset_iterator_end();
+	Buffer * buf = bv_->buffer();
+	Buffer::inset_iterator beg = buf->inset_iterator_begin();
+	Buffer::inset_iterator end = buf->inset_iterator_end();
 
 	bool cursor_par_seen = false;
 
-	for (; beg != end; ++beg) {
-		if (beg.getPar() == text->cursorPar()) {
-			cursor_par_seen = true;
-		}
-		if (cursor_par_seen) {
-			if (beg.getPar() == text->cursorPar()
-			    && beg.getPos() >= text->cursor().pos()) {
-				break;
-			}
-			if (beg.getPar() != text->cursorPar()) {
-				break;
-			}
-		}
+	LCursor & cur = bv_->cursor();
+	ParagraphList::iterator pit =  bv_->getLyXText()->getPar(cur.par());
 
+	for (; beg != end; ++beg) {
+		if (beg.getPar() == pit)
+			cursor_par_seen = true;
+		if (cursor_par_seen) {
+			if (beg.getPar() == pit && beg.getPos() >= cur.pos())
+				break;
+			if (beg.getPar() != pit)
+				break;
+		}
 	}
 	if (beg != end) {
 		// Now find the first inset that matches code.
@@ -836,7 +837,7 @@ void BufferView::Pimpl::MenuInsertLyXFile(string const & filenm)
 void BufferView::Pimpl::trackChanges()
 {
 	Buffer * buf = bv_->buffer();
-	bool const tracking(buf->params().tracking_changes);
+	bool const tracking = buf->params().tracking_changes;
 
 	if (!tracking) {
 		ParIterator const end = buf->par_iterator_end();
@@ -848,7 +849,7 @@ void BufferView::Pimpl::trackChanges()
 		buf->undostack().clear();
 	} else {
 		update();
-		bv_->text()->setCursor(0, 0);
+		bv_->text()->setCursor(bv_->cursor(), 0, 0);
 #warning changes FIXME
 		bool found = lyx::find::findNextChange(bv_);
 		if (found) {
@@ -929,10 +930,18 @@ bool BufferView::Pimpl::workAreaDispatch(FuncRequest const & cmd0)
 			text->setCursorFromCoordinates(cur.current(), cmd.x, cmd.y);
 		lyxerr << "created temp cursor: " << cur << endl;
 
+		// Try to dispatch to an non-editable inset near this position
+		DispatchResult res;
+		InsetBase * inset = cur.nextInset();
+		lyxerr << "next inset: " << inset << endl;
+		if (inset)
+			res = inset->dispatch(cur, cmd);
+
 		// Dispatch to the temp cursor.
 		// An inset (or LyXText) can assign this to bv->cursor()
 		// if it wishes to do so.
-		DispatchResult res = cur.dispatch(cmd);
+		if (!res.dispatched())
+			res = cur.dispatch(cmd);
 
 		if (fitCursor() || res.update())
 			update();
@@ -1049,10 +1058,6 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & cmd)
 		break;
 	}
 
-	case LFUN_PARAGRAPH_APPLY:
-		setParagraphParams(*bv_, cmd.argument);
-		break;
-
 	case LFUN_TRACK_CHANGES:
 		trackChanges();
 		break;
@@ -1123,42 +1128,4 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & cmd)
 	}
 
 	return true;
-}
-
-
-bool BufferView::Pimpl::ChangeInsets(InsetBase::Code code,
-				     string const & from, string const & to)
-{
-	bool need_update = false;
-	CursorSlice cur = bv_->text()->cursor();
-
-	ParIterator end = bv_->buffer()->par_iterator_end();
-	for (ParIterator it = bv_->buffer()->par_iterator_begin();
-	     it != end; ++it) {
-		bool changed_inset = false;
-		for (InsetList::iterator it2 = it->insetlist.begin();
-		     it2 != it->insetlist.end(); ++it2) {
-			if (it2->inset->lyxCode() == code) {
-				InsetCommand * inset = static_cast<InsetCommand *>(it2->inset);
-				if (inset->getContents() == from) {
-					inset->setContents(to);
-					changed_inset = true;
-				}
-			}
-		}
-		if (changed_inset) {
-			need_update = true;
-
-			// FIXME
-
-			// The test it.size() == 1 was needed to prevent crashes.
-			// How to set the cursor correctly when it.size() > 1 ??
-			if (it.size() == 1) {
-				bv_->text()->setCursorIntern(bv_->text()->parOffset(it.pit()), 0);
-				bv_->text()->redoParagraph(bv_->text()->cursorPar());
-			}
-		}
-	}
-	bv_->text()->setCursorIntern(cur.par(), cur.pos());
-	return need_update;
 }

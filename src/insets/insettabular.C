@@ -398,7 +398,7 @@ void InsetTabular::lfunMousePress(LCursor & cur, FuncRequest const & cmd)
 		cur.idx() = cell;
 	} else {
 		tablemode = false;
-		setPos(cur.bv(), cmd.x, cmd.y);
+		setPos(cur, cmd.x, cmd.y);
 		//cur.cursor_ = theTempCursor;
 		cur.idx() = cell;
 	}
@@ -415,7 +415,7 @@ void InsetTabular::lfunMouseMotion(LCursor & cur, FuncRequest const & cmd)
 	int const actcell = getCell(cmd.x + xo_, cmd.y + yo_);
 	lyxerr << "# InsetTabular::lfunMouseMotion cell: " << actcell << endl;
 
-	setPos(cur.bv(), cmd.x, cmd.y);
+	setPos(cur, cmd.x, cmd.y);
 	if (!hasSelection()) {
 		setSelection(actcell, actcell);
 		cur.setSelection();
@@ -467,7 +467,7 @@ void InsetTabular::edit(LCursor & cur, int x, int y)
 		<< &tabular.cell_info[0][0].inset << endl;
 
 	finishUndo();
-	setPos(cur.bv(), x, y);
+	setPos(cur, x, y);
 	clearSelection();
 	finishUndo();
 	//int xx = cursorx_ - xo_ + tabular.getBeginningOfTextInCell(actcell);
@@ -972,14 +972,12 @@ void InsetTabular::getCursorPos(CursorSlice const & cur, int & x, int & y) const
 }
 
 
-void InsetTabular::setPos(BufferView & bv, int x, int y) const
+void InsetTabular::setPos(LCursor & cur, int x, int y) const
 {
-	lyxerr << "# InsetTabular::setPos()  cursor: " << bv.cursor() << endl;
+	//lyxerr << "# InsetTabular::setPos()  cursor: " << cur << endl;
 	int const cell = getCell(x + xo_, y + yo_);
-	lyxerr << "# InsetTabular::setPos()  cell: " << cell << endl;
 	InsetText const & inset = tabular.getCellInset(cell);
-	inset.text_.setCursorFromCoordinates(x, y);
-#if 0
+	inset.text_.setCursorFromCoordinates(cur.current(), x, y);
 	cursory_ = 0;
 	int actcell = 0;
 	int actrow = 0;
@@ -1005,8 +1003,7 @@ void InsetTabular::setPos(BufferView & bv, int x, int y) const
 			+ tabular.getAdditionalWidth(actcell);
 
 	cursorx_ = lx - tabular.getWidthOfColumn(actcell) + xo_ + 2;
-#endif
-	resetPos(bv.cursor());
+	resetPos(cur);
 }
 
 
@@ -1024,7 +1021,7 @@ int InsetTabular::getCellXPos(int cell) const
 }
 
 
-void InsetTabular::resetPos(LCursor &) const
+void InsetTabular::resetPos(LCursor & cur) const
 {
 #if 0
 #ifdef WITH_WARNINGS

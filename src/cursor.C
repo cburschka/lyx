@@ -1932,3 +1932,8 @@ void LCursor::replaceWord(string const & replacestring)
 		t->cursorLeft(*this, true);
 }
 
+
+void LCursor::update()
+{
+	bv().update();
+}

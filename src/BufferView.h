@@ -154,9 +154,6 @@ public:
 	/// switch between primary and secondary keymaps for RTL entry
 	void switchKeyMap();
 
-	/// FIXME
-	bool ChangeRefsIfUnique(std::string const & from, std::string const & to);
-
 	/// get the contents of the window system clipboard
 	std::string const getClipboard() const;
 	/// fill the window system clipboard

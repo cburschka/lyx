@@ -179,7 +179,7 @@ private:
 	void drawCellSelection(Painter &, int x, int baseline,
 			       int row, int column, int cell) const;
 	///
-	void setPos(BufferView &, int x, int y) const;
+	void setPos(LCursor & cur, int x, int y) const;
 	///
 	bool moveRight(LCursor & cur);
 	///

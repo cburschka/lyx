@@ -205,9 +205,7 @@ DispatchResult
 InsetCollapsable::lfunMouseRelease(LCursor & cur, FuncRequest const & cmd)
 {
 	if (cmd.button() == mouse_button::button3) {
-		lyxerr << "InsetCollapsable::lfunMouseRelease 0" << endl;
 		showInsetDialog(&cur.bv());
-		return DispatchResult(true, true);
 	}
 
 	switch (status_) {
@@ -331,16 +329,14 @@ InsetCollapsable::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 		case LFUN_MOUSE_PRESS:
 			if (status_ == Inlined)
 				inset.dispatch(cur, cmd);
-			else if (status_ == Open
-				 && cmd.y > button_dim.y2)
+			else if (status_ == Open && cmd.y > button_dim.y2)
 				inset.dispatch(cur, cmd);
 			return DispatchResult(true, true);
 
 		case LFUN_MOUSE_MOTION:
 			if (status_ == Inlined)
 				inset.dispatch(cur, cmd);
-			else if (status_ == Open
-				 && cmd.y > button_dim.y2)
+			else if (status_ == Open && cmd.y > button_dim.y2)
 				inset.dispatch(cur, cmd);
 			return DispatchResult(true, true);
 

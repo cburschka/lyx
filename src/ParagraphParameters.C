@@ -296,27 +296,6 @@ void ParagraphParameters::write(ostream & os) const
 }
 
 
-void setParagraphParams(BufferView & bv, string const & data)
-{
-	istringstream is(data);
-	LyXLex lex(0,0);
-	lex.setStream(is);
-
-	ParagraphParameters params;
-	params.read(lex);
-
-	LyXText * text = bv.getLyXText();
-	text->setParagraph(
-			   params.spacing(),
-			   params.align(),
-			   params.labelWidthString(),
-			   params.noindent());
-
-	bv.update();
-	bv.owner()->message(_("Paragraph layout set"));
-}
-
-
 void params2string(Paragraph const & par, string & data)
 {
 	// A local copy

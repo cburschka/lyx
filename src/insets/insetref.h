@@ -12,13 +12,10 @@
 #ifndef INSET_REF_H
 #define INSET_REF_H
 
-
 #include "insetcommand.h"
 
-struct LaTeXFeatures;
 
-/** The reference inset
- */
+/// The reference inset
 class InsetRef : public InsetCommand {
 public:
 	struct type_info {
@@ -68,9 +65,7 @@ public:
 	void validate(LaTeXFeatures & features) const;
 protected:
 	///
-	virtual
-	DispatchResult
-	priv_dispatch(LCursor & cur, FuncRequest const & cmd);
+	DispatchResult priv_dispatch(LCursor & cur, FuncRequest const & cmd);
 private:
 	///
 	bool isLatex;

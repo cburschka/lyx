@@ -287,6 +287,8 @@ public:
 	void reset();
 	/// for spellchecking
 	void replaceWord(std::string const & replacestring);
+	/// update our view
+	void update();
 
 	/// output
 	friend std::ostream & operator<<(std::ostream & os, LCursor const & cur);

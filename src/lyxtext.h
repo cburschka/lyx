@@ -48,6 +48,11 @@ class VSpace;
 /// This class encapsulates the main text data and operations in LyX
 class LyXText {
 public:
+	///
+	typedef lyx::pos_type pos_type;
+	///
+	typedef lyx::paroffset_type par_type;
+	
 	/// constructor
 	LyXText(BufferView *, bool ininset);
 	///
@@ -56,17 +61,16 @@ public:
 	/// update y coordinate cache of all paragraphs
 	void updateParPositions();
 	///
-	LyXFont getFont(ParagraphList::iterator pit, lyx::pos_type pos) const;
+	LyXFont getFont(ParagraphList::iterator pit, pos_type pos) const;
 	///
 	LyXFont getLayoutFont(ParagraphList::iterator pit) const;
 	///
 	LyXFont getLabelFont(ParagraphList::iterator pit) const;
 	///
 	void setCharFont(ParagraphList::iterator pit,
-			 lyx::pos_type pos, LyXFont const & font);
+			 pos_type pos, LyXFont const & font);
 	void setCharFont(ParagraphList::iterator pit,
-			 lyx::pos_type pos,
-			 LyXFont const & font, bool toggleall);
+			 pos_type pos, LyXFont const & font, bool toggleall);
 
 	/// what you expect when pressing <enter> at cursor position
 	void breakParagraph(LCursor & cur, char keep_layout = 0);
@@ -131,7 +135,7 @@ public:
 	/// returns an iterator pointing to a cursor paragraph
 	ParagraphList::iterator getPar(CursorSlice const & cursor) const;
 	///
-	ParagraphList::iterator getPar(lyx::paroffset_type par) const;
+	ParagraphList::iterator getPar(par_type par) const;
 	///
 	int parOffset(ParagraphList::iterator pit) const;
 	/// # FIXME: should not be used
@@ -149,7 +153,7 @@ public:
 	/** returns the column near the specified x-coordinate of the row
 	 x is set to the real beginning of this column
 	 */
-	lyx::pos_type getColumnNearX(ParagraphList::iterator pit,
+	pos_type getColumnNearX(ParagraphList::iterator pit,
 		Row const & row, int & x, bool & boundary) const;
 
 	/** Find the word under \c from in the relative location
@@ -167,23 +171,21 @@ public:
 	void rejectChange(LCursor & cur);
 
 	/// returns true if par was empty and was removed
-	bool setCursor(lyx::paroffset_type par, lyx::pos_type pos,
+	bool setCursor(LCursor & cur, par_type par, pos_type pos,
 		       bool setfont = true, bool boundary = false);
 	///
-	void setCursor(CursorSlice &, lyx::paroffset_type par,
-		       lyx::pos_type pos, bool boundary = false);
+	void setCursor(CursorSlice &, par_type par,
+		       pos_type pos, bool boundary = false);
 	///
-	void setCursorIntern(lyx::paroffset_type par, lyx::pos_type pos,
-			     bool setfont = true, bool boundary = false);
+	void setCursorIntern(LCursor & cur, par_type par,
+	         pos_type pos, bool setfont = true, bool boundary = false);
 	///
-	void setCurrentFont();
+	void setCurrentFont(LCursor & cur);
 
 	///
-	void recUndo(lyx::paroffset_type first, lyx::paroffset_type last) const;
+	void recUndo(par_type first, par_type last) const;
 	///
-	void recUndo(lyx::paroffset_type first) const;
-	///
-	void setCursorFromCoordinates(int x, int y);
+	void recUndo(par_type first) const;
 	///
 	void setCursorFromCoordinates(CursorSlice &, int x, int y);
 	///
@@ -237,9 +239,9 @@ public:
 	/// returns success
 	bool toggleInset(LCursor & cur);
 	///
-	void cutSelection(bool doclear = true, bool realcut = true);
+	void cutSelection(LCursor & cur, bool doclear = true, bool realcut = true);
 	///
-	void copySelection();
+	void copySelection(LCursor & cur);
 	///
 	void pasteSelection(LCursor & cur, size_t sel_index = 0);
 
@@ -248,7 +250,7 @@ public:
 	 last. When a paragraph is broken, the top settings rest, the bottom
 	 settings are given to the new one.
 	 */
-	void setParagraph(
+	void setParagraph(LCursor & cur,
 			  Spacing const & spacing,
 			  LyXAlignment align,
 			  std::string const & labelwidthstring,
@@ -260,7 +262,7 @@ public:
 	 * Sets the selection from the current cursor position to length
 	 * characters to the right. No safety checks.
 	 */
-	void setSelectionRange(LCursor & cur, lyx::pos_type length);
+	void setSelectionRange(LCursor & cur, pos_type length);
 	/// simply replace using the font of the first selected character
 	void replaceSelectionWithString(LCursor & cur, std::string const & str);
 	/// replace selection helper
@@ -272,13 +274,14 @@ public:
 	void insertStringAsParagraphs(LCursor & cur, std::string const & str);
 
 	/// Find next inset of some specified type.
-	bool gotoNextInset(std::vector<InsetOld_code> const & codes,
-			   std::string const & contents = std::string());
+	bool gotoNextInset(LCursor & cur,
+		std::vector<InsetOld_code> const & codes,
+		std::string const & contents = std::string());
 	///
-	void gotoInset(std::vector<InsetOld_code> const & codes,
-		       bool same_content);
+	void gotoInset(LCursor & cur,
+		std::vector<InsetOld_code> const & codes, bool same_content);
 	///
-	void gotoInset(InsetOld_code code, bool same_content);
+	void gotoInset(LCursor & cur, InsetOld_code code, bool same_content);
 
 	/// current max text width
 	int textWidth() const;
@@ -289,10 +292,10 @@ public:
 	InsetBase * checkInsetHit(int x, int y);
 
 	///
-	int singleWidth(ParagraphList::iterator pit, lyx::pos_type pos) const;
+	int singleWidth(ParagraphList::iterator pit, pos_type pos) const;
 	///
 	int singleWidth(ParagraphList::iterator pit,
-		lyx::pos_type pos, char c, LyXFont const & Font) const;
+		pos_type pos, char c, LyXFont const & Font) const;
 
 	/// return the color of the canvas
 	LColor_color backgroundColor() const;
@@ -303,7 +306,7 @@ public:
 	 * in LaTeX the beginning of the text fits in some cases
 	 * (for example sections) exactly the label-width.
 	 */
-	int leftMargin(ParagraphList::iterator pit, lyx::pos_type pos) const;
+	int leftMargin(ParagraphList::iterator pit, pos_type pos) const;
 	int leftMargin(ParagraphList::iterator pit) const;
 	///
 	int rightMargin(Paragraph const & par) const;
@@ -452,9 +455,9 @@ private:
 	///
 	void charInserted();
 	/// set 'number' font property
-	void number();
+	void number(LCursor & cur);
 	/// is the cursor paragraph right-to-left?
-	bool rtl() const;
+	bool rtl(LCursor & cur) const;
 };
 
 /// return the default height of a row in pixels, considering font zoom
