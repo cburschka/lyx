@@ -417,8 +417,6 @@ FuncStatus LyXFunc::getStatus(kb_action action,
 		disable =  !owner->view()->
 			isSavedPosition(strToUnsignedInt(argument));
 		break;
-
-
 	case LFUN_INSET_TOGGLE: {
 		LyXText * lt = owner->view()->getLyXText();
 		disable = !(isEditableInset(lt->getInset())
@@ -427,6 +425,9 @@ FuncStatus LyXFunc::getStatus(kb_action action,
 				&& lt->inset_owner->owner()->isOpen()));
 		break;
 	}
+	case LFUN_LATEX_LOG:
+		disable = !IsFileReadable(buf->getLogName().second);
+		break;
 	case LFUN_MATH_VALIGN:
 		if (mathcursor && mathcursor->formula()->hullType() != "simple") {
 			char align = mathcursor->valign();

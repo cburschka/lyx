@@ -1,3 +1,8 @@
+2002-07-30  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* lyxfunc.C (getStatus): disable LFUN_LATEX_LOG when there is no
+	log. 
+
 2002-07-29  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* many files: strip,frontStrip -> trim,ltrim,rtrim
