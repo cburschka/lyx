@@ -47,6 +47,8 @@ libgtk_la_SOURCES = \
 	GView.C \
 	IdSc.h \
 	IdSc.C \
+	io_callback.h \
+	io_callback.C \
 	Dialogs.C \
 	GAboutlyx.h \
 	GAboutlyx.C \

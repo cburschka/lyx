@@ -1,3 +1,8 @@
+2004-07-22  Lars Gullik Bjonnes  <larsbj@gullik.net>
+
+	* lyx_gui.h (set_read_callback,remove_read_callback): remove
+	declaration
+
 2004-06-18  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
 	* screen.C (fitCursor): Use Debug::DEBUG

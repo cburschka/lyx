@@ -31,6 +31,8 @@
 #include "lyxfont.h"
 #include "graphics/LoaderQueue.h"
 
+#include "io_callback.h"
+
 // FIXME: move this stuff out again
 #include "bufferlist.h"
 #include "buffer_funcs.h"
@@ -50,6 +52,7 @@
 #include <fcntl.h>
 #include <boost/bind.hpp>
 #include <boost/function.hpp>
+#include <boost/shared_ptr.hpp>
 
 //just for xforms
 #include "lyx_forms.h"
@@ -414,42 +417,22 @@ bool lyx_gui::font_available(LyXFont const & font)
 
 namespace {
 
+std::map<int, boost::shared_ptr<io_callback> > callbacks;
 
-bool readCallback(Glib::IOCondition /*condition*/, LyXComm * comm)
+} // NS anon
+
+
+void lyx_gui::register_socket_callback(int fd,
+				       boost::function<void()> func)
 {
-	comm->read_ready();
-	return true;
+	callbacks[fd] = boost::shared_ptr<io_callback>(new io_callback(fd, func));
 }
 
 
-std::map<int, SigC::Connection> gReadCallbackMap;
-
-}
-
-
-void lyx_gui::set_read_callback(int fd, LyXComm * comm)
+void lyx_gui::unregister_socket_callback(int fd)
 {
-	gReadCallbackMap[fd] = Glib::signal_io().connect(
-		SigC::bind(SigC::slot(readCallback), comm),
-		fd,
-		Glib::IO_IN);
+	callbacks.erase(fd);
 }
-
-
-void lyx_gui::remove_read_callback(int fd)
-{
-	gReadCallbackMap[fd].disconnect();
-	gReadCallbackMap.erase(fd);
-}
-
-
-void lyx_gui::register_socket_callback(int /*fd*/,
-				       boost::function<void()> /*func*/)
-{}
-
-
-void lyx_gui::unregister_socket_callback(int /*fd*/)
-{}
 
 
 string const lyx_gui::roman_font_name()

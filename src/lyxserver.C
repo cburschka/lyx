@@ -48,6 +48,8 @@
 #include "support/lyxlib.h"
 #include "frontends/lyx_gui.h"
 
+#include <boost/bind.hpp>
+
 #include <cerrno>
 #include <sys/stat.h>
 #include <fcntl.h>
@@ -205,7 +207,7 @@ int LyXComm::startPipe(string const & filename, bool write)
 	}
 
 	if (!write) {
-		lyx_gui::set_read_callback(fd, this);
+		lyx_gui::register_socket_callback(fd, boost::bind(&LyXComm::read_ready, *this));
 	}
 
 	return fd;
@@ -218,7 +220,7 @@ void LyXComm::endPipe(int & fd, string const & filename, bool write)
 		return;
 
 	if (!write) {
-		lyx_gui::remove_read_callback(fd);
+		lyx_gui::unregister_socket_callback(fd);
 	}
 
 #ifdef __EMX__

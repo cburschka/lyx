@@ -1,3 +1,10 @@
+2004-07-22  Lars Gullik Bjonnes  <larsbj@gullik.net>
+
+	* lyx_gui.C (set_read_callback,remove_read_callback): delete funcs 
+
+	* Makefile.dialogs (MOCFILES): remove io_callback.[Ch]
+	* io_callback.[Ch]: delete files
+
 2004-07-21  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
 	* socket_callback.C (data_received): simplify

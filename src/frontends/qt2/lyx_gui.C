@@ -38,7 +38,6 @@
 #include <boost/shared_ptr.hpp>
 
 #include "QtView.h"
-#include "io_callback.h"
 #include "lcolorcache.h"
 #include "qfont_loader.h"
 #include "QLImage.h"
@@ -80,7 +79,6 @@ float getDPI()
 	return 0.5 * (pdm.logicalDpiX() + pdm.logicalDpiY());
 }
 
-map<int, io_callback *> io_callbacks;
 map<int, shared_ptr<socket_callback> > socket_callbacks;
 
 } // namespace anon
@@ -285,22 +283,6 @@ void update_fonts()
 bool font_available(LyXFont const & font)
 {
 	return fontloader.available(font);
-}
-
-
-void set_read_callback(int fd, LyXComm * comm)
-{
-	io_callbacks[fd] = new io_callback(fd, comm);
-}
-
-
-void remove_read_callback(int fd)
-{
-	map<int, io_callback *>::iterator it = io_callbacks.find(fd);
-	if (it != io_callbacks.end()) {
-		delete it->second;
-		io_callbacks.erase(it);
-	}
 }
 
 

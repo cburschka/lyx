@@ -95,16 +95,15 @@ void update_fonts();
 bool font_available(LyXFont const & font);
 
 /**
- * add a callback for I/O read notification
+ * add a callback for socket read notification
+ * @param fd socket descriptor (file/socket/etc)
  */
-void set_read_callback(int fd, LyXComm * comm);
 void register_socket_callback(int fd, boost::function<void()> func);
 
 /**
  * remove a I/O read callback
- * @param fd file descriptor
+ * @param fd socket descriptor (file/socket/etc)
  */
-void remove_read_callback(int fd);
 void unregister_socket_callback(int fd);
 
 } // namespace lyx_gui

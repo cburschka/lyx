@@ -1,3 +1,8 @@
+2004-07-22  Lars Gullik Bjonnes  <larsbj@gullik.net>
+
+	* lyxserver.C (startPipe): call register_socket_callback
+	(endPipe): call unregister_socket_callback
+
 2004-07-21  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
 	* lyxsocket.C (LyXServerSocket): reduce max outstanding clients to 3

@@ -388,28 +388,6 @@ bool font_available(LyXFont const & font)
 	return fontloader.available(font);
 }
 
-namespace {
-
-extern "C"
-void C_read_callback(int, void * data)
-{
-	LyXComm * comm = static_cast<LyXComm *>(data);
-	comm->read_ready();
-}
-
-}
-
-
-void set_read_callback(int fd, LyXComm * comm)
-{
-	fl_add_io_callback(fd, FL_READ, C_read_callback, comm);
-}
-
-void remove_read_callback(int fd)
-{
-	fl_remove_io_callback(fd, FL_READ, C_read_callback);
-}
-
 
 namespace {
 

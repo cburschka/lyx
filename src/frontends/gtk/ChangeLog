@@ -1,3 +1,12 @@
+2004-07-22  Lars Gullik Bjonnes  <larsbj@gullik.net>
+
+	* lyx_gui.C (register_socket_callback,unregister_socket_callback):
+	implement
+	(set_read_callback,remove_read_callback): remove implementation
+
+	* io_callback.[Ch]: new files
+	* Makefile.am (libgtk_la_SOURCES): handle them
+
 2004-07-21  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
 	* lyx_gui.C (register_socket_callback): add stub
