@@ -1,5 +1,7 @@
 2003-03-06  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
+	* CutAndPaste.h: make CutAndPaste a namespace.
+
 	* text3.C (dispatch): adjust
 
 	* text.C (breakParagraph): add a ParagraphList as arg

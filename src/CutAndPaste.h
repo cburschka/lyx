@@ -18,36 +18,33 @@ class BufferParams;
 class LyXTextClass;
 
 ///
-class CutAndPaste {
-public:
-	/// realcut == false is we actually want a delete
-	static
-	bool cutSelection(Paragraph * startpar, Paragraph ** endpar,
-			  int start, int & end, char tc, bool doclear = false,
-			  bool realcut = true);
-	///
-	static
-	bool copySelection(Paragraph * startpar, Paragraph * endpar,
-			   int start, int end, char tc);
-	///
-	static
-	bool pasteSelection(Paragraph ** par, Paragraph ** endpar,
-			    int & pos, char tc);
-	///
-	static
-	int nrOfParagraphs();
-	/** needed to switch between different classes this works
-	    for a list of paragraphs beginning with the specified par
-	    return value is the number of wrong conversions
-	*/
-	static
-	int SwitchLayoutsBetweenClasses(lyx::textclass_type c1,
-					lyx::textclass_type c2,
-					Paragraph * par,
-					BufferParams const & bparams);
-	///
-	static
-	bool checkPastePossible(Paragraph *);
-};
+namespace CutAndPaste {
+
+/// realcut == false is we actually want a delete
+bool cutSelection(Paragraph * startpar, Paragraph ** endpar,
+		  int start, int & end, char tc, bool doclear = false,
+		  bool realcut = true);
+///
+bool copySelection(Paragraph * startpar, Paragraph * endpar,
+		   int start, int end, char tc);
+///
+bool pasteSelection(Paragraph ** par, Paragraph ** endpar,
+		    int & pos, char tc);
+
+///
+int nrOfParagraphs();
+
+/** needed to switch between different classes this works
+    for a list of paragraphs beginning with the specified par
+    return value is the number of wrong conversions
+*/
+int SwitchLayoutsBetweenClasses(lyx::textclass_type c1,
+				lyx::textclass_type c2,
+				Paragraph * par,
+				BufferParams const & bparams);
+///
+bool checkPastePossible(Paragraph *);
+
+} // end of CutAndPaste
 
 #endif
