@@ -1,5 +1,9 @@
 1999-11-02  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
+	* src/support/filetools.C (SpaceLess): new version of the
+	SpaceLess functions. What problems does this one give? Please
+	report.
+
 	* images/banner_bw.xbm: made the arrays unsigned char *
 
 1999-11-02  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>

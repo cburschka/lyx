@@ -74,14 +74,15 @@ string SpaceLess(string const & file)
 	
 	for (string::size_type i = 0; i < name.length(); ++i) {
 		name[i] &= 0x7f; // set 8th bit to 0
-		if (!isalnum(name[i]) && name[i] != '.')
-			name[i] = '_';
+		if (!isgraph(name[i])) name[i] = '_'; // get rid of cntrl chars
+	};
+	// ok so we scan through the string twice, but who cares.
+	string change("/");
+	string::size_type pos = 0;
+	while ((pos = name.find_first_of(change, pos)) != string::npos) {
+		name[pos] = '-';
 	}
 	string temp = AddName(path, name);
-	// Replace spaces with underscores, also in directory
-	// No!!! I checked it that it is not necessary.
-	// temp = subst(temp, ' ', '_');
-
 	return temp;
 }
 

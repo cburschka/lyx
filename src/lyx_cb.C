@@ -561,7 +561,7 @@ int MakeDVIOutput(Buffer *buffer)
 /* wait == true means wait for termination       */
 // The bool should be placed last on the argument line. (Lgb)
 // Returns false if we fail.
-bool RunScript(Buffer *buffer, bool wait,
+bool RunScript(Buffer * buffer, bool wait,
 	       string const & command, string const & orgname = string(),
 	       bool need_shell=true)
 {
@@ -828,7 +828,7 @@ bool MenuPreview(Buffer *buffer)
 }
 
 
-void MenuMakeLaTeX(Buffer *buffer)
+void MenuMakeLaTeX(Buffer * buffer)
 {
 	if (buffer->text) {
 		// Get LaTeX-Filename
