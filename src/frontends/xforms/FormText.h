@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file xforms/FormIndex.h
+ * \file FormText.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -9,21 +9,20 @@
  * Full author contact details are available in file CREDITS
  */
 
-#ifndef FORMINDEX_H
-#define FORMINDEX_H
+#ifndef FORMTEXT_H
+#define FORMTEXT_H
 
 
 #include "FormDialogView.h"
 
-class ControlIndex;
-struct FD_index;
+class ControlCommand;
+struct FD_text;
 
-/** This class provides an XForms implementation of the Index Dialog.
- */
-class FormIndex : public FormController<ControlIndex, FormView<FD_index> > {
+
+class FormText : public FormController<ControlCommand, FormView<FD_text> > {
 public:
 	///
-	FormIndex(Dialog &);
+	FormText(Dialog &, string const & title);
 private:
 	/// Set the Params variable for the Controller.
 	virtual void apply();
@@ -33,4 +32,4 @@ private:
 	virtual void update();
 };
 
-#endif // FORMINDEX_H
+#endif // FORMTEXT_H

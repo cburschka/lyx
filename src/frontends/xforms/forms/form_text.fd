@@ -7,7 +7,7 @@ Number of forms: 1
 Unit of measure: FL_COORD_PIXEL
 
 =============== FORM ===============
-Name: form_index
+Name: form_text
 Width: 520
 Height: 100
 Number of Objects: 6
@@ -44,7 +44,7 @@ label: Keyword:|#K
 shortcut:
 resize: FL_RESIZE_X
 gravity: FL_NoGravity FL_NoGravity
-name: input_key
+name: input_text
 callback: C_FormDialogView_InputCB
 argument: 0
 

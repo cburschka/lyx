@@ -91,8 +91,6 @@ libxforms_la_SOURCES = \
 	FormGraphics.h \
 	FormInclude.C \
 	FormInclude.h \
-	FormIndex.C \
-	FormIndex.h \
 	FormLog.C \
 	FormLog.h \
 	FormMathsBitmap.C \
@@ -133,6 +131,8 @@ libxforms_la_SOURCES = \
 	FormTabularCreate.h \
 	FormTexinfo.C \
 	FormTexinfo.h \
+	FormText.C \
+	FormText.h \
 	FormThesaurus.C \
 	FormThesaurus.h \
 	FormToc.C \

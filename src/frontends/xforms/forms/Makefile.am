@@ -23,7 +23,6 @@ SRCS =  form_aboutlyx.fd \
 	form_forks.fd \
 	form_graphics.fd \
 	form_include.fd \
-	form_index.fd \
 	form_maths_delim.fd \
 	form_maths_matrix.fd \
 	form_maths_panel.fd \
@@ -41,6 +40,7 @@ SRCS =  form_aboutlyx.fd \
 	form_tabular.fd \
 	form_tabular_create.fd \
 	form_texinfo.fd \
+	form_text.fd \
 	form_thesaurus.fd \
 	form_toc.fd \
 	form_url.fd \

@@ -1,5 +1,5 @@
 /**
- * \file xforms/FormIndex.C
+ * \file FormText.C
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -10,29 +10,28 @@
 
 #include <config.h>
 
-
 #include "xformsBC.h"
-#include "ControlIndex.h"
-#include "FormIndex.h"
-#include "forms/form_index.h"
+#include "ControlCommand.h"
+#include "FormText.h"
+#include "forms/form_text.h"
 
 #include "support/lstrings.h"
 
 #include FORMS_H_LOCATION
 
-typedef FormController<ControlIndex, FormView<FD_index> > base_class;
+typedef FormController<ControlCommand, FormView<FD_text> > base_class;
 
-FormIndex::FormIndex(Dialog & parent)
-	: base_class(parent, _("Index"))
+FormText::FormText(Dialog & parent, string const & title)
+	: base_class(parent, title)
 {}
 
 
-void FormIndex::build()
+void FormText::build()
 {
-	dialog_.reset(build_index(this));
+	dialog_.reset(build_text(this));
 
-	fl_set_input_return(dialog_->input_key, FL_RETURN_CHANGED);
-	setPrehandler(dialog_->input_key);
+	fl_set_input_return(dialog_->input_text, FL_RETURN_CHANGED);
+	setPrehandler(dialog_->input_text);
 
 	// Manage the ok, apply, restore and cancel/close buttons
 	bc().setOK(dialog_->button_ok);
@@ -40,20 +39,20 @@ void FormIndex::build()
 	bc().setCancel(dialog_->button_close);
 	bc().setRestore(dialog_->button_restore);
 
-	bc().addReadOnly(dialog_->input_key);
+	bc().addReadOnly(dialog_->input_text);
 }
 
 
-void FormIndex::update()
+void FormText::update()
 {
 	string const contents = trim(controller().params().getContents());
-	fl_set_input(dialog_->input_key, contents.c_str());
+	fl_set_input(dialog_->input_text, contents.c_str());
 
 	bc().valid(!contents.empty());
 }
 
 
-void FormIndex::apply()
+void FormText::apply()
 {
-	controller().params().setContents(fl_get_input(dialog_->input_key));
+	controller().params().setContents(fl_get_input(dialog_->input_text));
 }

@@ -36,8 +36,10 @@
 #include "forms/form_ert.h"
 
 #include "ControlIndex.h"
-#include "FormIndex.h"
-#include "forms/form_index.h"
+#include "ControlLabel.h"
+
+#include "FormText.h"
+#include "forms/form_text.h"
 
 #include "ControlRef.h"
 #include "FormRef.h"
@@ -73,7 +75,7 @@ namespace {
 // 				     "minipage", "ref", "tabular", "toc",
 // 				     "url", "wrap" };
 char const * const dialognames[] = { "bibitem", "bibtex", "citation",
-				     "error", "ert", "index", "ref",
+				     "error", "ert", "index", "label", "ref",
 				     "toc", "url" };
 
 char const * const * const end_dialognames =
@@ -128,7 +130,11 @@ Dialog * Dialogs::build(string const & name)
 		dialog->setButtonController(new NoRepeatedApplyReadOnlyBC);
 	} else if (name == "index") {
 		dialog->setController(new ControlIndex(*dialog));
-		dialog->setView(new FormIndex(*dialog));
+		dialog->setView(new FormText(*dialog, _("Index")));
+		dialog->setButtonController(new NoRepeatedApplyReadOnlyBC);
+	} else if (name == "label") {
+		dialog->setController(new ControlLabel(*dialog));
+		dialog->setView(new FormText(*dialog, _("Label")));
 		dialog->setButtonController(new NoRepeatedApplyReadOnlyBC);
 	} else if (name == "ref") {
 		dialog->setController(new ControlRef(*dialog));
