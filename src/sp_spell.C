@@ -74,13 +74,15 @@ extern void sigchldchecker(pid_t pid, int * status);
 
 
 PSpell::PSpell() 
-	: sc(0), els(0), spell_error_object(0), flag(ISP_UNKNOWN)
+	: sc(0), els(0), spell_error_object(0), flag(ISP_UNKNOWN),
+	  alive_(false)
 {
 }
 
 
 PSpell::PSpell(BufferParams const & params, string const & lang)
-	: sc(0), els(0), spell_error_object(0), flag(ISP_UNKNOWN)
+	: sc(0), els(0), spell_error_object(0), flag(ISP_UNKNOWN),
+	  alive_(false)
 {
 	initialize(params, lang);
 }
@@ -106,6 +108,7 @@ void PSpell::initialize(BufferParams const &, string const & lang)
 		error_ = 0;
 		sc = to_pspell_manager(spell_error_object);
 		spell_error_object = 0;
+		alive_ = true;
 	}
 }
 

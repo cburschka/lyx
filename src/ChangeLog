@@ -1,5 +1,10 @@
 2001-10-22  Juergen Vigna  <jug@sad.it>
 
+	* sp_pspell.h (class PSpell): add alive function needed in the
+	controller to see if the spellchecker could be started.
+
+2001-10-22  Juergen Vigna  <jug@sad.it>
+
 	* buffer.C (insertStringAsLines): modify the font for inserting
 	chars in certain conditions by calling checkInsertChar(font).
 

@@ -23,7 +23,7 @@ class PSpell : public SpellBase
     /// initialize spell checker
     void initialize(BufferParams const & params, string const & lang);
 
-    bool alive() { return true; }
+    bool alive() { return alive_; }
 
     /// clean up after error
     void cleanUp();
@@ -58,7 +58,8 @@ class PSpell : public SpellBase
     spellStatus flag;
 
     const char * error_;
-   
+
+    bool alive_;
 };
    
 #endif

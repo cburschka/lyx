@@ -90,9 +90,11 @@ void ControlSpellchecker::setParams()
 		}
 		
 		if (speller_->error() != 0) {
+#if 0
 			message_ = speller_->error();
 			// show error message
 			view().partialUpdate(2);
+#endif
 			clearParams();
 			return;
 		}
@@ -215,9 +217,11 @@ void ControlSpellchecker::clearParams()
 		message_ = _("Spellchecking completed! ") + message_;
 
 	} else {
+		message_ = speller_->error();
 		speller_->cleanUp();
-		message_ = _("The spell checker has died for some reason.\n"
-			     "Maybe it has been killed.");
+		if (message_.empty())
+		    message_ = _("The spell checker has died for some reason.\n"
+				 "Maybe it has been killed.");
 
 		// make sure that the dialog is not launched
 		emergency_exit_ = true;
