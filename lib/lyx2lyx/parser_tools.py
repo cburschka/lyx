@@ -106,29 +106,43 @@ def get_next_paragraph(lines, i):
 	    return i
 	i = find_end_of_inset(lines, i)
 
-# Finds the matching \end_inset
-def find_end_of_inset(lines, i):
+def find_end_of(lines, i, start_token, end_token):
     count = 1
-    while 1:
-	i = find_tokens(lines, ["\\end_inset", "\\begin_inset"], i+1)
-	if check_token(lines[i], "\\begin_inset"):
+    n = len(lines)
+    while i < n:
+	i = find_tokens(lines, [end_token, start_token], i+1)
+	if check_token(lines[i], start_token):
 	    count = count+1
 	else:
 	    count = count-1
 	if count == 0:
 	    return i
+    return -1
+
+# Finds the matching \end_inset
+def find_beginning_of(lines, i, start_token, end_token):
+    count = 1
+    n = len(lines)
+    while i < n:
+	i = find_tokens_backwards(lines, [start_token, end_token], i-1)
+	if check_token(lines[i], end_token):
+	    count = count+1
+	else:
+	    count = count-1
+	if count == 0:
+	    return i
+    return -1
+
+# Finds the matching \end_inset
+def find_end_of_inset(lines, i):
+    return find_end_of(lines, i, "\\begin_inset", "\\end_inset")
 
 # Finds the matching \end_inset
 def find_beginning_of_inset(lines, i):
-    count = 1
-    while 1:
-	i = find_tokens_backwards(lines, ["\\end_inset", "\\begin_inset"], i-1)
-	if check_token(lines[i], "\\end_inset"):
-	    count = count+1
-	else:
-	    count = count-1
-	if count == 0:
-	    return i
+    return find_beginning_of(lines, i, "\\begin_inset", "\\end_inset")
+
+def find_end_of_tabular(lines, i):
+    return find_end_of(lines, i, "<lyxtabular", "</lyxtabular")
 
 def is_nonempty_line(line):
     return line != " "*len(line)

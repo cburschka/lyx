@@ -404,20 +404,20 @@ def update_tabular(lines):
         if i == -1:
             break
 
-        # scan table header meta-info
-        lines[i+1] = string.replace(lines[i+1], 'version="2"', 'version="3"')
-
-        j = find_token(lines, '</lyxtabular>', i)
+	j = find_end_of_tabular(lines, i+1)
         if j == -1:
             break
 
-	for k in xrange(i+2,j):
-	    if check_token(lines[k], "<column"):
-		 lines[k] = string.replace(lines[k], 'width=""', 'width="0pt"')
+	for k in xrange(i+1,j):
+	    if check_token(lines[k], "<lyxtabular"):
+		lines[k] = string.replace(lines[k], 'version="2"', 'version="3"')
+	    elif check_token(lines[k], "<column"):
+		lines[k] = string.replace(lines[k], 'width=""', 'width="0pt"')
+
 	    if line_re.match(lines[k]):
 		lines[k] = re.sub(attr_re, "", lines[k])
 
-	i = i+1
+	i = j+1
 
 def change_preamble(lines):
     i = find_token(lines, "\\use_amsmath", 0)
