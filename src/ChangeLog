@@ -4,6 +4,14 @@
 	* bufferview_funcs.C:
 	* lyxfunc.C:
 	* lyxtext.h:
+	* text2.C: make getStatus work for the env depth lfuns
+
+2003-04-03  John Levon  <levon@movementarian.org>
+
+	* bufferview_funcs.h:
+	* bufferview_funcs.C:
+	* lyxfunc.C:
+	* lyxtext.h:
 	* text2.C: parlistize decDepth(), by merging it with incDepth()
 
 2003-04-03  Lars Gullik Bjønnes  <larsbj@gullik.net>

@@ -365,6 +365,14 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 			    && !tli->getFirstLockingInsetOfType(Inset::TABULAR_CODE));
 		break;
 
+	case LFUN_DEPTH_MIN:
+		disable = !changeDepth(view(), TEXT(false), DEC_DEPTH, true);
+		break;
+
+	case LFUN_DEPTH_PLUS:
+		disable = !changeDepth(view(), TEXT(false), INC_DEPTH, true);
+		break;
+
 	case LFUN_LAYOUT:
 	case LFUN_LAYOUT_PARAGRAPH: {
 		Inset * inset = TEXT(false)->cursor.par()->inInset();
@@ -1110,11 +1118,11 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 		break;
 
 	case LFUN_DEPTH_MIN:
-		changeDepth(view(), TEXT(false), bv_funcs::DEC_DEPTH);
+		changeDepth(view(), TEXT(false), DEC_DEPTH, false);
 		break;
 
 	case LFUN_DEPTH_PLUS:
-		changeDepth(view(), TEXT(false), bv_funcs::INC_DEPTH);
+		changeDepth(view(), TEXT(false), INC_DEPTH, false);
 		break;
 
 	case LFUN_FREEFONT_APPLY:

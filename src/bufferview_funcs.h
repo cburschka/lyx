@@ -48,8 +48,12 @@ enum DEPTH_CHANGE {
 	DEC_DEPTH
 };
 
-/// change the nesting depth of the selection
-extern void changeDepth(BufferView *, LyXText *, DEPTH_CHANGE);
+/**
+ * Increase or decrease the nesting depth of the selected paragraph(s)
+ * if test_only, don't change any depths. Returns whether something
+ * (would have) changed
+ */
+extern bool changeDepth(BufferView *, LyXText *, DEPTH_CHANGE, bool test_only);
 
 ///
 extern void emph(BufferView *);

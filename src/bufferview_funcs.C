@@ -217,17 +217,21 @@ void lang(BufferView * bv, string const & l)
 }
 
 
-void changeDepth(BufferView * bv, LyXText * text, DEPTH_CHANGE type)
+bool changeDepth(BufferView * bv, LyXText * text, DEPTH_CHANGE type, bool test_only)
 {
 	if (!bv->available() || !text)
-	    return;
+	    return false;
+
+	if (test_only)
+		return text->changeDepth(type, true);
 
 	bv->hideCursor();
 	bv->update(BufferView::SELECT);
-	text->changeDepth(type);
+	bool const changed = text->changeDepth(type, false);
 	if (text->inset_owner)
 		bv->updateInset((Inset *)text->inset_owner);
 	bv->update(BufferView::SELECT);
+	return changed;
 }
 
 

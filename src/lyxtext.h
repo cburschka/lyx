@@ -129,8 +129,12 @@ public:
 	///
 	void setLayout(string const & layout);
 
-	/// increase or decrease the nesting depth of the selected paragraph(s)
-	void changeDepth(bv_funcs::DEPTH_CHANGE type);
+	/**
+	 * Increase or decrease the nesting depth of the selected paragraph(s)
+	 * if test_only, don't change any depths. Returns whether something
+	 * (would have) changed
+	 */
+	bool changeDepth(bv_funcs::DEPTH_CHANGE type, bool test_only);
 
 	/// get the depth at current cursor position
 	int getDepth() const;

@@ -457,7 +457,7 @@ void LyXText::setLayout(string const & layout)
 }
 
 
-void LyXText::changeDepth(bv_funcs::DEPTH_CHANGE type)
+bool LyXText::changeDepth(bv_funcs::DEPTH_CHANGE type, bool test_only)
 {
 	ParagraphList::iterator pit(cursor.par());
 	ParagraphList::iterator end(cursor.par());
@@ -473,6 +473,8 @@ void LyXText::changeDepth(bv_funcs::DEPTH_CHANGE type)
 	++pastend;
 	setUndo(bv(), Undo::EDIT, &(*start), &(*pastend));
 
+	bool changed = false;
+
 	int prev_after_depth = 0;
 #warning parlist ... could be nicer ?
 	if (start != ownerParagraphs().begin())
@@ -483,10 +485,13 @@ void LyXText::changeDepth(bv_funcs::DEPTH_CHANGE type)
 		if (type == bv_funcs::INC_DEPTH) {
 			if (depth < prev_after_depth
 			    && pit->layout()->labeltype != LABEL_BIBLIO) {
-				pit->params().depth(depth + 1);
+				changed = true;
+				if (!test_only)
+					pit->params().depth(depth + 1);
 			}
-		} else {
-			if (depth)
+		} else if (depth) {
+			changed = true;
+			if (!test_only)
 				pit->params().depth(depth - 1);
 		}
 
@@ -497,6 +502,9 @@ void LyXText::changeDepth(bv_funcs::DEPTH_CHANGE type)
 
 		++pit;
 	}
+
+	if (test_only)
+		return changed;
 
 	// Wow, redoParagraphs is stupid.
 	LyXCursor tmpcursor;
@@ -518,6 +526,8 @@ void LyXText::changeDepth(bv_funcs::DEPTH_CHANGE type)
 	updateCounters();
 	setSelection();
 	setCursor(tmpcursor.par(), tmpcursor.pos());
+
+	return changed;
 }
 
 
