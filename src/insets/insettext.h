@@ -64,6 +64,8 @@ public:
     ///
     void draw(Painter & pain, LyXFont const &, int , float &) const;
     ///
+    void update(BufferView *, LyXFont const &) const;
+    ///
     char const * EditMessage() const;
     ///
     void Edit(BufferView *, int, int, unsigned int);
@@ -129,7 +131,7 @@ public:
 
 protected:
     ///
-    void UpdateLocal(BufferView *, bool);
+    void UpdateLocal(BufferView *, bool what, bool mark_dirty);
     ///
     void WriteParagraphData(Buffer const *, std::ostream &) const;
     ///
@@ -211,6 +213,11 @@ private:
     ///
     bool checkAndActivateInset(BufferView * bv, int x = 0, int y = 0,
 			       int button = 0);
+    int cx() const;
+    int cy() const;
+    int cpos() const;
+    LyXParagraph * cpar() const;
+    Row * crow() const;
 	
     /* Private structures and variables */
     ///
@@ -256,5 +263,7 @@ private:
     typedef std::vector<row_struct> RowList;
     ///
     mutable RowList rows;
+    ///
+    LyXParagraph * old_par;
 };
 #endif

@@ -166,7 +166,7 @@ void InsetCollapsable::Edit(BufferView * bv, int x, int y, unsigned int button)
 {
     if (collapsed && autocollapse) {
 	collapsed = false;
-	UpdateLocal(bv, true);
+	UpdateLocal(bv, true, false);
 	InsetText::Edit(bv, 0, 0, button);
     } else if (!collapsed) {
 	InsetText::Edit(bv, x, y, button);
@@ -188,13 +188,7 @@ void InsetCollapsable::InsetUnlock(BufferView * bv)
 	collapsed = true;
     }
     InsetText::InsetUnlock(bv);
-    UpdateLocal(bv, false);
-}
-
-
-void InsetCollapsable::UpdateLocal(BufferView * bv, bool flag)
-{
-    InsetText::UpdateLocal(bv, flag);
+    UpdateLocal(bv, false, false);
 }
 
 
@@ -214,10 +208,10 @@ void InsetCollapsable::InsetButtonRelease(BufferView * bv,
 	if (collapsed) {
 	    collapsed = false;
 	    InsetText::InsetButtonRelease(bv, 0, 0, button);
-	    UpdateLocal(bv, true);
+	    UpdateLocal(bv, true, false);
 	} else {
 	    collapsed = true;
-	    UpdateLocal(bv, false);
+	    UpdateLocal(bv, false, false);
 	    bv->unlockInset(this);
 	}
     } else if (!collapsed && (x >= button_length) && (y >= button_top_y)) {

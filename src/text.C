@@ -246,11 +246,11 @@ int LyXText::SingleWidth(BufferView * bview, LyXParagraph * par,
 		font.decSize();
 		return lyxfont::width(fs, font);
 	} else if (c == LyXParagraph::META_INSET) {
-		Inset * tmpinset= par->GetInset(pos);
-		if (tmpinset)
-			return par->GetInset(pos)->width(bview->painter(),
-							 font);
-		else
+		Inset * tmpinset = par->GetInset(pos);
+		if (tmpinset) {
+			tmpinset->update(bview, font);
+			return tmpinset->width(bview->painter(), font);
+		} else
 			return 0;
 
 	} else if (IsSeparatorChar(c))
@@ -1424,25 +1424,26 @@ void LyXText::SetHeightOfRow(BufferView * bview, Row * row_ptr) const
    int maxdesc = int(lyxfont::maxDescent(font) *
 		    layout.spacing.getValue() *
 		    spacing_val);
-
    int pos_end = RowLast(row_ptr);
-   
    int labeladdon = 0;
+   int maxwidth = 0;
 
    // Check if any insets are larger
    for (pos = row_ptr->pos(); pos <= pos_end; ++pos) {
-      if (row_ptr->par()->GetChar(pos) == LyXParagraph::META_INSET) {
-	 tmpfont = GetFont(bview->buffer(), row_ptr->par(), pos);
-         tmpinset = row_ptr->par()->GetInset(pos);
-         if (tmpinset) {
-            asc = tmpinset->ascent(bview->painter(), tmpfont);
-            desc = tmpinset->descent(bview->painter(), tmpfont);
-	    if (asc > maxasc) 
-	      maxasc = asc;
-	    if (desc > maxdesc)
-	      maxdesc = desc;
-	 }
-      }
+	   if (row_ptr->par()->GetChar(pos) == LyXParagraph::META_INSET) {
+		   tmpfont = GetFont(bview->buffer(), row_ptr->par(), pos);
+		   tmpinset = row_ptr->par()->GetInset(pos);
+		   if (tmpinset) {
+			   tmpinset->update(bview, tmpfont);
+			   asc = tmpinset->ascent(bview->painter(), tmpfont);
+			   desc = tmpinset->descent(bview->painter(), tmpfont);
+			   maxwidth += tmpinset->width(bview->painter(), tmpfont);
+			   maxasc = max(maxasc, asc);
+			   maxdesc = max(maxdesc, desc);
+		   }
+	   } else {
+		   maxwidth += SingleWidth(bview, row_ptr->par(), pos);
+	   }
    }
 
    // Check if any custom fonts are larger (Asger)
@@ -1678,6 +1679,7 @@ void LyXText::SetHeightOfRow(BufferView * bview, Row * row_ptr) const
    row_ptr->baseline(maxasc + labeladdon);
    
    height += row_ptr->height();
+   width = maxwidth;
 }
 
 
@@ -3147,7 +3149,7 @@ void LyXText::SelectWord(BufferView * bview)
 	SetCursor(bview, cursor.par(), cursor.pos() );
 	
 	// finally set the selection
-	SetSelection(bview);
+	SetSelection();
 }
 
 
@@ -3282,7 +3284,7 @@ void LyXText::SelectSelectedWord(BufferView * bview)
 	SetCursor(bview, cursor.par(), cursor.pos());
 	
 	// finally set the selection
-	SetSelection(bview);
+	SetSelection();
 }
 
 
@@ -3299,7 +3301,7 @@ void LyXText::DeleteWordForward(BufferView * bview)
 		SetCursor(bview, tmpcursor, tmpcursor.par(), tmpcursor.pos());
 		sel_cursor = cursor;
 		cursor = tmpcursor;
-		SetSelection(bview); 
+		SetSelection(); 
 		
 		/* -----> Great, CutSelection() gets rid of multiple spaces. */
 		CutSelection(bview);
@@ -3320,7 +3322,7 @@ void LyXText::DeleteWordBackward(BufferView * bview)
 	       SetCursor(bview, tmpcursor, tmpcursor.par(), tmpcursor.pos());
 	       sel_cursor = cursor;
 	       cursor = tmpcursor;
-	       SetSelection(bview);
+	       SetSelection();
 	       CutSelection(bview);
        }
 }
@@ -3342,7 +3344,7 @@ void LyXText::DeleteLineForward(BufferView * bview)
 		SetCursor(bview, tmpcursor, tmpcursor.par(), tmpcursor.pos());
 		sel_cursor = cursor;
 		cursor = tmpcursor;
-		SetSelection(bview);
+		SetSelection();
 		// What is this test for ??? (JMarc)
 		if (!selection) {
 			DeleteWordForward(bview);
@@ -3814,7 +3816,7 @@ void LyXText::GetVisibleRow(BufferView * bview, int y_offset, int x_offset,
 							   LColor::selection);
 			} else if (sel_start_cursor.row() == row_ptr) {
 				if (is_rtl)
-					pain.fillRectangle(0, y_offset,
+					pain.fillRectangle(x_offset, y_offset,
 							   sel_start_cursor.x(),
 							   row_ptr->height(),
 							   LColor::selection);
@@ -3830,13 +3832,13 @@ void LyXText::GetVisibleRow(BufferView * bview, int y_offset, int x_offset,
 							   row_ptr->height(),
 							   LColor::selection);
 				else
-					pain.fillRectangle(0, y_offset,
+					pain.fillRectangle(x_offset, y_offset,
 							   sel_end_cursor.x(),
 							   row_ptr->height(),
 							   LColor::selection);
 			} else if (y > long(sel_start_cursor.y())
 				   && y < long(sel_end_cursor.y())) {
-				pain.fillRectangle(0, y_offset,
+				pain.fillRectangle(x_offset, y_offset,
 						   ww, row_ptr->height(),
 						   LColor::selection);
 			}
@@ -3844,7 +3846,7 @@ void LyXText::GetVisibleRow(BufferView * bview, int y_offset, int x_offset,
 			    sel_end_cursor.row() != row_ptr &&
 			    y > long(sel_start_cursor.y())
 			    && y < long(sel_end_cursor.y())) {
-			pain.fillRectangle(0, y_offset, ww, row_ptr->height(),
+			pain.fillRectangle(x_offset, y_offset, ww, row_ptr->height(),
 					   LColor::selection);
 		} else if (sel_start_cursor.row() == row_ptr ||
 			   sel_end_cursor.row() == row_ptr) {
@@ -3858,7 +3860,7 @@ void LyXText::GetVisibleRow(BufferView * bview, int y_offset, int x_offset,
 #endif
 			if ( (sel_start_cursor.row() != row_ptr && !is_rtl) ||
 			     (sel_end_cursor.row() != row_ptr && is_rtl))
-				pain.fillRectangle(0, y_offset,
+				pain.fillRectangle(x_offset, y_offset,
 						   int(tmpx),
 						   row_ptr->height(),
 						   LColor::selection);
@@ -4625,8 +4627,6 @@ void LyXText::GetVisibleRow(BufferView * bview, int y_offset, int x_offset,
 #ifndef NEW_TABULAR
 	}
 #endif
-	// Jürgen!!! FIX This! (NOW!!!) (please)
-	width = max(x - x_offset, float(width));
 }
 
 

@@ -85,8 +85,6 @@ protected:
     ///
     void draw_collapsed(Painter & pain, const LyXFont &, int , float &) const;
     ///
-    void UpdateLocal(BufferView *, bool);
-    ///
     int getMaxTextWidth(Painter & pain, UpdatableInset const *) const;
     
     ///

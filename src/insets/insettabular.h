@@ -82,13 +82,15 @@ public:
     ///
     void draw(Painter & pain, const LyXFont &, int , float &) const;
     ///
+    void update(BufferView *, LyXFont const &) const;
+    ///
     const char * EditMessage() const;
     ///
     void Edit(BufferView *, int x, int y, unsigned int);
     ///
     void InsetUnlock(BufferView *);
     ///
-    void UpdateLocal(BufferView *, bool flag = true);
+    void UpdateLocal(BufferView *, bool what, bool mark_dirty);
     ///
     bool LockInsetInInset(BufferView *, UpdatableInset *);
     ///
@@ -187,7 +189,7 @@ private:
     ///
     int GetMaxWidthOfCell(Painter &, int cell) const;
     ///
-    void recomputeTextInsets(Painter &, const LyXFont &) const;
+    void recomputeTextInsets(BufferView *, const LyXFont &) const;
 
     ///
     /// Private structures and variables

@@ -117,6 +117,8 @@ public:
 	///
 	virtual void draw(Painter &, LyXFont const &,
 			  int baseline, float & x) const = 0;
+	/// update the inset representation
+	virtual void update(BufferView *, LyXFont const &) const {}
 	///
 	virtual LyXFont ConvertFont(LyXFont font);
 	/// what appears in the minibuffer when opening

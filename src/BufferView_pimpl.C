@@ -258,7 +258,7 @@ int BufferView::Pimpl::resizeCurrentBuffer()
 			bv_->text->SetCursor(bv_, selstartpar, selstartpos);
 			bv_->text->sel_cursor = bv_->text->cursor;
 			bv_->text->SetCursor(bv_, selendpar, selendpos);
-			bv_->text->SetSelection(bv_);
+			bv_->text->SetSelection();
 			bv_->text->SetCursor(bv_, par, pos);
 		} else {
 			bv_->text->SetCursor(bv_, par, pos);
@@ -507,7 +507,7 @@ void BufferView::Pimpl::workAreaMotionNotify(int x, int y, unsigned int state)
 		if (!bv_->text->selection)
 			update(BufferView::UPDATE); // Maybe an empty line was deleted
       
-		bv_->text->SetSelection(bv_);
+		bv_->text->SetSelection();
 		screen->ToggleToggle();
 		fitCursor();
 		screen->ShowCursor();
@@ -686,7 +686,7 @@ void BufferView::Pimpl::tripleClick(int /*x*/, int /*y*/, unsigned int button)
 		bv_->text->CursorHome(bv_);
 		bv_->text->sel_cursor = bv_->text->cursor;
 		bv_->text->CursorEnd(bv_);
-		bv_->text->SetSelection(bv_);
+		bv_->text->SetSelection();
 		screen->ToggleSelection(false);
 		/* This will fit the cursor on the screen
 		 * if necessary */

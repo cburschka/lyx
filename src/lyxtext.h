@@ -189,6 +189,7 @@ public:
 	 */
 	Row * GetRow(LyXParagraph * par,
 		     LyXParagraph::size_type pos, long & y) const;
+
 	/** returns the height of a default row, needed  for scrollbar
 	 */
 	int DefaultHeight() const;
@@ -224,7 +225,7 @@ public:
 	LyXCursor toggle_end_cursor;
    
 	/// need the selection cursor:
-	void SetSelection(BufferView *);
+	void SetSelection();
 	///
 	void ClearSelection() const;
 	///

@@ -163,7 +163,7 @@ inline
 void LyXFunc::moveCursorUpdate(bool selecting)
 {
 	if (selecting || owner->view()->text->mark_set) {
-		owner->view()->text->SetSelection(owner->view());
+		owner->view()->text->SetSelection();
 		owner->view()->toggleToggle();
 	}
 	owner->view()->update(BufferView::SELECT|BufferView::FITCUR);
@@ -531,11 +531,10 @@ string LyXFunc::Dispatch(int ac,
 	if (owner->view()->available() &&
 	    owner->view()->the_locking_inset) {
 		UpdatableInset::RESULT result;
-		if (action > 1
-		    || (action == LFUN_UNKNOWN_ACTION
-			&& keyseq.length >= -1)) {
-			if (action == LFUN_UNKNOWN_ACTION
-			    && argument.empty()) {
+		if ((action > 1) || ((action == LFUN_UNKNOWN_ACTION) &&
+				     (keyseq.length >= -1)))
+		{
+			if ((action==LFUN_UNKNOWN_ACTION) && argument.empty()){
 				argument = keyseq.getiso();
 			}
 			// Undo/Redo pre 0.13 is a bit tricky for insets.

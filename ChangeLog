@@ -1,3 +1,19 @@
+2000-06-16  Juergen Vigna  <jug@sad.it>
+
+	* src/insets/insettabular.C (UpdateLocal): 
+	* src/insets/insettext.C (UpdateLocal): fixed mark_dirty problem.
+	(LocalDispatch): Changed all functions to use LyXText.
+
+2000-06-15  Juergen Vigna  <jug@sad.it>
+
+	* src/text.C (SetHeightOfRow): call inset::update before requesting
+	any width/height.
+
+	* src/insets/insettext.C (update): 
+	* src/insets/insettabular.C (update): added implementation
+
+	* src/insets/lyxinset.h: added update function
+
 2000-06-15  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/text.C (SelectNextWord): protect against null pointers with
