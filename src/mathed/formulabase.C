@@ -391,6 +391,9 @@ Inset::RESULT InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 			return lfunMouseMotion(cmd);
 		case LFUN_MOUSE_RELEASE:
 			return lfunMouseRelease(cmd);
+		case LFUN_MOUSE_DOUBLE:
+			//lyxerr << "Mouse double\n";
+			return localDispatch(FuncRequest(LFUN_WORDSEL));
 		default:
 			break;
 	}
@@ -591,8 +594,8 @@ Inset::RESULT InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 	case LFUN_FRAK:         handleFont(bv, cmd.argument, "mathfrak"); break;
 	case LFUN_ITAL:         handleFont(bv, cmd.argument, "mathit"); break;
 	case LFUN_NOUN:         handleFont(bv, cmd.argument, "mathbb"); break;
-	case LFUN_DEFAULT:      handleFont(bv, cmd.argument, "textnormal"); break;
 	case LFUN_FREE:         handleFont(bv, cmd.argument, "textrm"); break;
+	case LFUN_DEFAULT:      handleFont(bv, cmd.argument, "textnormal"); break;
 
 	case LFUN_GREEK:
 		handleFont(bv, cmd.argument, "lyxgreek1");

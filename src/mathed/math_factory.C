@@ -94,7 +94,7 @@ void initSymbols()
 
 	std::ifstream fs(filename.c_str());
 	string line;
-	while (getline(fs, line)) {
+	while (std::getline(fs, line)) {
 		int charid     = 0;
 		int fallbackid = 0;
 		latexkeys tmp;

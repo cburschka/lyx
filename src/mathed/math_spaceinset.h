@@ -31,6 +31,8 @@ public:
 	///
 	void normalize(NormalStream &) const;
 	///
+	void validate(LaTeXFeatures & features) const;
+	///
 	void maplize(MapleStream &) const;
 	///
 	void mathematicize(MathematicaStream &) const;
