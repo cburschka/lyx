@@ -633,10 +633,6 @@ public:
 	// special owner functions
 	///
 	ParagraphList & ownerParagraphs() const;
-	//
-	void ownerParagraph(Paragraph *) const;
-	// set it searching first for the right owner using the paragraph id
-	void ownerParagraph(int id, Paragraph *) const;
 
 	/// return true if this is owned by an inset.
 	bool isInInset() const;

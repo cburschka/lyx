@@ -14,6 +14,7 @@
 #include "BufferView.h"
 #include "buffer.h"
 #include "insets/updatableinset.h"
+#include "insets/insettext.h"
 #include "debug.h"
 #include "support/LAssert.h"
 
@@ -166,17 +167,28 @@ bool textHandleUndo(BufferView * bv, Undo & undo)
 		undopar->previous(before);
 		if (before)
 			before->next(undopar);
-		else
-			bv->text->ownerParagraph(firstUndoParagraph(bv, undo.number_of_inset_id)->id(),
-						 undopar);
-
+		else {
+			int id = firstUndoParagraph(bv, undo.number_of_inset_id)->id();
+			Paragraph * op = bv->buffer()->getParFromID(id);
+			if (op && op->inInset()) {
+				static_cast<InsetText*>(op->inInset())->paragraph(undopar);
+			} else {
+				bv->buffer()->paragraphs.set(undopar);
+			}
+		}
 	} else {
 		// We enter here on DELETE undo operations where we have to
 		// substitue the second paragraph with the first if the removed
 		// one is the first!
 		if (!before && behind) {
-			bv->text->ownerParagraph(firstUndoParagraph(bv, undo.number_of_inset_id)->id(),
-						 behind);
+			int id = firstUndoParagraph(bv, undo.number_of_inset_id)->id();
+			Paragraph * op = bv->buffer()->getParFromID(id);
+			if (op && op->inInset()) {
+				static_cast<InsetText*>(op->inInset())->paragraph(behind);
+			} else {
+				bv->buffer()->paragraphs.set(behind);
+			}
+
 			undopar = behind;
 		}
 	}

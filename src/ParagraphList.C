@@ -168,6 +168,8 @@ void ParagraphList::erase(ParagraphList::iterator it)
 	if (next)
 		next->previous_ = prev;
 
+	it->previous_ = 0;
+	it->next_ = 0;
 	delete &*it;
 #else
 	Paragraph * prev = it->prev_par_;

@@ -2254,6 +2254,10 @@ bool LyXText::deleteEmptyParagraphMechanism(LyXCursor const & old_cursor)
 
 		deleted = true;
 
+		bool selection_position_was_oldcursor_position = (
+			selection.cursor.par()  == old_cursor.par()
+			&& selection.cursor.pos() == old_cursor.pos());
+
 		if (old_cursor.row() != rows().begin()) {
 			RowList::iterator
 				prevrow = boost::prior(old_cursor.row());
@@ -2272,12 +2276,8 @@ bool LyXText::deleteEmptyParagraphMechanism(LyXCursor const & old_cursor)
 
 			// delete old row
 			removeRow(old_cursor.row());
-			if (ownerParagraphs().begin() == old_cursor.par()) {
-				ownerParagraph(&*boost::next(ownerParagraphs().begin()));
-			}
-#warning FIXME Do the proper ParagraphList operation here (Lgb)
 			// delete old par
-			delete &*old_cursor.par();
+			ownerParagraphs().erase(old_cursor.par());
 
 			/* Breakagain the next par. Needed because of
 			 * the parindent that can occur or dissappear.
@@ -2308,11 +2308,7 @@ bool LyXText::deleteEmptyParagraphMechanism(LyXCursor const & old_cursor)
 			// delete old row
 			removeRow(old_cursor.row());
 			// delete old par
-			if (ownerParagraphs().begin() == old_cursor.par()) {
-				ownerParagraph(&*boost::next(ownerParagraphs().begin()));
-			}
-#warning FIXME Do the proper ParagraphList operations here. (Lgb)
-			delete &*old_cursor.par();
+			ownerParagraphs().erase(old_cursor.par());
 
 			/* Breakagain the next par. Needed because of
 			   the parindent that can occur or dissappear.
@@ -2327,8 +2323,7 @@ bool LyXText::deleteEmptyParagraphMechanism(LyXCursor const & old_cursor)
 		// correct cursor y
 		setCursorIntern(cursor.par(), cursor.pos());
 
-		if (selection.cursor.par()  == old_cursor.par()
-		    && selection.cursor.pos() == old_cursor.pos()) {
+		if (selection_position_was_oldcursor_position) {
 			// correct selection
 			selection.cursor = cursor;
 		}
@@ -2351,27 +2346,6 @@ ParagraphList & LyXText::ownerParagraphs() const
 		return inset_owner->paragraphs;
 	}
 	return bv_owner->buffer()->paragraphs;
-}
-
-
-void LyXText::ownerParagraph(Paragraph * p) const
-{
-	if (inset_owner) {
-		inset_owner->paragraph(p);
-	} else {
-		bv_owner->buffer()->paragraphs.set(p);
-	}
-}
-
-
-void LyXText::ownerParagraph(int id, Paragraph * p) const
-{
-	Paragraph * op = bv_owner->buffer()->getParFromID(id);
-	if (op && op->inInset()) {
-		static_cast<InsetText *>(op->inInset())->paragraph(p);
-	} else {
-		ownerParagraph(p);
-	}
 }
 
 

@@ -1,3 +1,11 @@
+2003-04-16  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* undo_funcs.C (textHandleUndo): ajust (rather big adsjust this one)
+
+	* text2.C (deleteEmptyParagraphMechanism): adjust
+
+	* text2.[Ch] (ownerParagraph): delete func (both of them 
+
 2003-04-15  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* text_funcs.C (transposeChars): use ParagraphList::iterator here.
