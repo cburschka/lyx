@@ -170,7 +170,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.2.0cvs\n"
 "POT-Creation-Date: 2005-02-02 14:46+0100\n"
-"PO-Revision-Date: 2004-09-15 14:55+0200\n"
+"PO-Revision-Date: 2005-02-02 17:21+0100\n"
 "Last-Translator:  Adrien Rebollo <adrien.rebollo@wanadoo.fr>\n"
 "Language-Team: lyxfr <http://perso.wanadoo.fr/adrien.rebollo/lyxfr/lyxfr."
 "html>\n"
@@ -1577,9 +1577,8 @@ msgid "LyXServer pipe:|#S"
 msgstr "Tube du Serveur LyX :|#S"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2496
-#, fuzzy
 msgid "PATH prefix:|#T"
-msgstr "Type :|#T"
+msgstr "préfixe de PATH :|#T"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2538
 msgid "Date format:|#f"
@@ -1695,7 +1694,7 @@ msgstr "Remise à zéro des options de classe|#z"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:3130
 msgid "Use Cygwin Paths|#s"
-msgstr ""
+msgstr "Chemins au format Cygwin|#C"
 
 #: ../src/frontends/xforms/forms/form_print.fd:44
 #: ../src/frontends/qt2/ui/QPrintDialogBase.ui:45
@@ -3725,11 +3724,11 @@ msgstr "&Modifier"
 
 #: ../src/frontends/qt2/ui/QPrefCygwinPathModule.ui:22
 msgid "Cygwin Paths"
-msgstr ""
+msgstr "Chemins Cygwin"
 
 #: ../src/frontends/qt2/ui/QPrefCygwinPathModule.ui:66
 msgid "&Use Cygwin-style paths"
-msgstr ""
+msgstr "&Chemins au format Cygwin"
 
 #: ../src/frontends/qt2/ui/QPrefCygwinPathModule.ui:74
 #: src/frontends/xforms/FormPreferences.C:2016
@@ -3739,6 +3738,10 @@ msgid ""
 "MikTeX. Note, however, that you'll need to write shell script wrappers for "
 "all your converters."
 msgstr ""
+"Détermine si LyX doit exporter des noms de fichiers au format Cygwin plutot "
+"que Windows. Ceci est utile quand on utilise le teTeX Cygwin plutôt qu'un "
+"TeX natif comme MikTeX. Dans ce cas, il est nécessaire d'écrire des scripts "
+"de traduction de noms de fichiers pour tous les convertisseurs."
 
 #: ../src/frontends/qt2/ui/QPrefDateModule.ui:22
 msgid "Date Format"
@@ -3959,7 +3962,7 @@ msgstr "T&ube du Serveur LyX :"
 
 #: ../src/frontends/qt2/ui/QPrefPathsModule.ui:250
 msgid "&PATH prefix:"
-msgstr ""
+msgstr "Préfixe de &PATH :"
 
 #: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:22
 msgid "Printer settings"
@@ -10742,7 +10745,6 @@ msgid "Convert \"to\" this format"
 msgstr "Convertir « vers » ce format"
 
 #: src/frontends/xforms/FormPreferences.C:995
-#, fuzzy
 msgid ""
 "The conversion command. $$i is the input file name, $$b is the file name "
 "without its extension and $$o is the name of the output file. $$s can be "
@@ -10750,8 +10752,7 @@ msgid ""
 msgstr ""
 "La commande de conversion. $$i est le nom du fichier d'entrée, $$b est le "
 "nom du fichier sans l'extension et $$o est le nom du fichier de sortie. $$s "
-"peut servir de chemin pour le jeu se scripts de conversion qui accompagne "
-"LyX."
+"peut servir de chemin pour le répertoire système de LyX."
 
 #: src/frontends/xforms/FormPreferences.C:1001
 msgid ""
@@ -11888,45 +11889,46 @@ msgid ""
 "%1$s. Make sure that this\n"
 "path exists and is writable and try again."
 msgstr ""
+"Impossible de créer un répertoire temporaire dans\n"
+"%1$s. Vérifiez que ce\n"
+"répertoire est accessible en écriture et réessayez."
 
 #: src/lyx_main.C:386
-#, fuzzy
 msgid "Could not create a temporary directory in\n"
-msgstr "Erreur ! Impossible de créer le répertoire temporaire :"
+msgstr "Impossible de créer un répertoire temporaire dans\n"
 
 #: src/lyx_main.C:388
 msgid ""
 ". Make sure that this\n"
 "path exists and is writable and try again."
 msgstr ""
+". Vérifiez que ce\n"
+"répertoire est accessible en écriture et réessayez."
 
 #: src/lyx_main.C:392
-#, fuzzy
 msgid "Could not create temporary directory"
-msgstr "Erreur ! Impossible de créer le répertoire temporaire :"
+msgstr "Impossible de créer un répertoire temporaire"
 
 #: src/lyx_main.C:538
-#, fuzzy
 msgid "You have specified a non-existent user LyX directory."
-msgstr "Vous avez spécifié un répertoire LyX invalide."
+msgstr "Vous avez spécifié un répertoire utilisateur LyX non-existant."
 
 #: src/lyx_main.C:539
 msgid "It is needed to keep your own configuration."
 msgstr "Il est indispensable pour personnaliser votre configuration."
 
 #: src/lyx_main.C:540
-#, fuzzy
 msgid "Should I try to set it up for you? I'll exit if \"No\"."
-msgstr "Dois-je le créer (recommandé) ?"
+msgstr "Dois-je le créer (recommandé) ? Sinon, je m'arrêterai."
 
 #: src/lyx_main.C:541
 msgid "No user LyX directory. Exiting."
-msgstr ""
+msgstr "Pas de répertoire utilisateur. Arrêt de LyX."
 
 #: src/lyx_main.C:546
-#, fuzzy, c-format
+#, c-format
 msgid "LyX: Creating directory %1$s"
-msgstr "LyX : Création du répertoire "
+msgstr "LyX : Création du répertoire %1$s"
 
 #: src/lyx_main.C:550
 msgid "LyX: Creating directory "
@@ -11934,9 +11936,8 @@ msgstr "LyX : Création du répertoire "
 
 #. Failed, so let's exit.
 #: src/lyx_main.C:557
-#, fuzzy
 msgid "Failed to create directory. Exiting."
-msgstr "Appel à createDirectory avec un nom invalide"
+msgstr "Impossible de créer le répertoire. Arrêt de LyX."
 
 #: src/lyx_main.C:576 src/lyx_main.C:580
 msgid "LyX Warning!"
@@ -12771,6 +12772,8 @@ msgid ""
 "Specify those directories which should be prepended to the PATH environment "
 "variable. Use the OS native format."
 msgstr ""
+"Une liste de répertoires à ajouter au début du PATH. Utiliser le format "
+"natif du système d'exploitation."
 
 #: src/lyxtextclasslist.C:88
 msgid "LyX wasn't able to find its layout descriptions!"
@@ -12905,10 +12908,13 @@ msgstr "Impossible d'effacer le fichier de sauvegarde !"
 msgid ""
 "Unable to determine the path to the LyX binary from the command line %1%"
 msgstr ""
+"Impossible de localiser l'exécutable de LyX à partir de la ligne de commande "
+"%1%"
 
 #: src/support/package.C:379
 msgid "Unable to determine the path to the LyX binary from the command line "
 msgstr ""
+"Impossible de localiser l'exécutable de LyX à partir de la ligne de commande "
 
 #: src/support/package.C:505
 #, c-format
@@ -12918,19 +12924,24 @@ msgid ""
 "Try the '-sysdir' command line parameter or set the environment variable "
 "LYX_DIR_13x to the LyX system directory containing the file `chkconfig.ltx'."
 msgstr ""
+"Impossible de trouver le répertoire de données dans\n"
+"\\t%1%\n"
+"Essayez l'option de commande '-sysdir' ou positionnez la variable "
+"d'environnement LYX_DIR_13x sur le répertoire système contenant le fichier "
+"`chkconfig.ltx'."
 
 #: src/support/package.C:515
 msgid "Unable to determine the system directory having searched\n"
-msgstr ""
+msgstr "Impossible de trouver le répertoire de données dans\n"
 
 #: src/support/package.C:518
-#, fuzzy
 msgid ""
 "Try the '-sysdir' command line parameter or set the environment variable "
 "LYX_DIR_13x to the LyX system directory containing the file `chkconfig.ltx'."
 msgstr ""
-"positionner la variable d'environnement LYX_DIR_13x sur le répertoire "
-"système "
+"Essayez l'option de commande '-sysdir' ou positionnez la variable "
+"d'environnement LYX_DIR_13x sur le répertoire système contenant le fichier "
+"`chkconfig.ltx'."
 
 #: src/support/package.C:601
 #, c-format
@@ -12938,25 +12949,25 @@ msgid ""
 "Invalid %1% switch.\n"
 "Directory %2% does not contain %3%."
 msgstr ""
+"L'option %1% est invalide.\n"
+"Le répertoire %2% ne contient pas %3%."
 
 #: src/support/package.C:606 src/support/package.C:641
 #: src/support/package.C:669
-#, fuzzy
 msgid "Invalid "
-msgstr "Longueur invalide !"
+msgstr "L'option "
 
 #: src/support/package.C:607
 msgid " switch.\n"
-msgstr ""
+msgstr " est invalide.\n"
 
 #: src/support/package.C:608 src/support/package.C:643
-#, fuzzy
 msgid "Directory "
-msgstr "Répertoire :|#R#r"
+msgstr "Le répertoire "
 
 #: src/support/package.C:609 src/support/package.C:644
 msgid " does not contain "
-msgstr ""
+msgstr "ne contient pas "
 
 #: src/support/package.C:636
 #, c-format
@@ -12964,6 +12975,8 @@ msgid ""
 "Invalid %1% environment variable.\n"
 "Directory %2% does not contain %3%."
 msgstr ""
+"La variable d'environnement %1% est invalide.\n"
+"Le répertoire %2% ne contient pas %3%."
 
 #: src/support/package.C:642 src/support/package.C:670
 #, fuzzy
@@ -12976,11 +12989,12 @@ msgid ""
 "Invalid %1% environment variable.\n"
 "%2% is not a directory."
 msgstr ""
+"La variable d'environnement %1% est invalide.\n"
+"%2% n'est pas un répertoire."
 
 #: src/support/package.C:671
-#, fuzzy
 msgid " is not a directory."
-msgstr "Il faut mettre un fichier, pas un répertoire."
+msgstr " n'est pas un répertoire."
 
 #: src/tabular.C:1346
 msgid "Warning:"
@@ -13076,57 +13090,6 @@ msgstr "Marque posée"
 #: src/text3.C:1112
 msgid "LyX function 'layout' needs an argument."
 msgstr "La fonction 'layout' nécessite un argument."
-
-#~ msgid "Warning: could not determine path of binary."
-#~ msgstr "Avertissment : impossible de trouver l'emplacement du binaire."
-
-#~ msgid "If you have problems, try starting LyX with an absolute path."
-#~ msgstr "En cas de problème, lancer LyX avec le chemin complet."
-
-#~ msgid "System directory set to: "
-#~ msgstr "Le répertoire système est positionné sur : "
-
-#~ msgid "LyX Warning! Couldn't determine system directory. "
-#~ msgstr ""
-#~ "Avertissement LyX ! Impossible de déterminer le répertoire système. "
-
-#~ msgid "Try the '-sysdir' command line parameter or "
-#~ msgstr "Essayer le paramètre de ligne de commande '-sysdir' ou "
-
-#~ msgid "containing the file `chkconfig.ltx'."
-#~ msgstr "contenant le fichier `chkconfig.ltx'."
-
-#~ msgid "Using built-in default %1$s but expect problems."
-#~ msgstr ""
-#~ "Utilisation de la valeur par défaut %1$s mais attendez-vous à des "
-#~ "problèmes."
-
-#~ msgid "Using built-in default "
-#~ msgstr "Utilisation de la valeur par défaut "
-
-#~ msgid " but expect problems."
-#~ msgstr " mais attendez-vous à des problèmes."
-
-#~ msgid "Expect problems."
-#~ msgstr "Attendez-vous à des problèmes."
-
-#~ msgid "Running without personal LyX directory."
-#~ msgstr "Fonctionnement sans répertoire LyX personnel."
-
-#~ msgid "LyX: Creating directory %1$s and running configure..."
-#~ msgstr "LyX : Création du répertoire %1$s et lancement de configure..."
-
-#~ msgid " and running configure..."
-#~ msgstr " et lancement de configure..."
-
-#~ msgid "Failed. Will use %1$s instead."
-#~ msgstr "Échec. Utilisation de %1$s à la place."
-
-#~ msgid "Failed. Will use "
-#~ msgstr "Échec. Utilisation de "
-
-#~ msgid " instead."
-#~ msgstr " à la place."
 
 #~ msgid "Accept|#A"
 #~ msgstr "Accepter|#A"
