@@ -1,3 +1,8 @@
+2002-10-24  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* paragraph.C (TeXOnePar): Fix bug with language changes in nested
+	environment.
+
 2002-10-14  Juergen Vigna  <jug@sad.it>
 
 	* undo_funcs.C (textHandleUndo): alter the order in which the

@@ -39,6 +39,10 @@ What's new
 
 ** Bug fixes
 
+- fix bug with language changes in nested environment
+
+- fix crash when using koi8-u keymap
+
 - fix bug where special characters in equations label confuse LyX
   (this was a new bug in 1.2.1)
 
