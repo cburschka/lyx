@@ -55,6 +55,7 @@ void FormExternal::build()
 	fl_addto_choice(dialog_->choice_template, choice.c_str());
 
 	bc().setOK(dialog_->button_ok);
+	bc().setApply(dialog_->button_apply);
 	bc().setCancel(dialog_->button_cancel);
 	bc().refresh();
 
@@ -99,18 +100,12 @@ ButtonPolicy::SMInput FormExternal::input(FL_OBJECT * ob, long)
 		fl_set_input(dialog_->input_filename, out_name.c_str());
 
 	} else if (ob == dialog_->button_edit) {
-
-		apply();
 		controller().editExternal();
 
 	} else if (ob == dialog_->button_view) {
-
-		apply();
 		controller().viewExternal();
 
 	} else if (ob == dialog_->button_update) {
-
-		apply();
 		controller().updateExternal();
 	}
 

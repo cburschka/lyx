@@ -202,13 +202,13 @@ alignment: FL_ALIGN_CENTER
 style: FL_NORMAL_STYLE
 size: FL_DEFAULT_SIZE
 lcol: FL_BLACK
-label: Simple
+label: Regular Expression
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_SouthWest FL_SouthWest
 name: button_search_type
-callback: C_FormBaseInputCB
-argument: 0
+callback:
+argument:
 
 --------------------
 class: FL_CHECKBUTTON

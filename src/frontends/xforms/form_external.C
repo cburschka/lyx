@@ -34,9 +34,12 @@ FD_form_external * FormExternal::build_external()
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_gravity(obj, FL_NorthWest, FL_NorthEast);
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
+  fdui->browser_helptext = obj = fl_add_browser(FL_NORMAL_BROWSER, 130, 50, 300, 130, "");
+    fl_set_object_lalign(obj, FL_ALIGN_TOP);
+    fl_set_object_gravity(obj, FL_NorthWest, FL_SouthEast);
   {
     char const * const dummy = N_("File|#F");
-    fdui->input_filename = obj = fl_add_input(FL_NORMAL_INPUT, 130, 190, 190, 30, idex(_(dummy)));
+    fdui->input_filename = obj = fl_add_input(FL_NORMAL_INPUT, 130, 190, 200, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
@@ -44,7 +47,7 @@ FD_form_external * FormExternal::build_external()
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
   {
     char const * const dummy = N_("Browse...|#B");
-    fdui->button_filenamebrowse = obj = fl_add_button(FL_NORMAL_BUTTON, 330, 190, 100, 30, idex(_(dummy)));
+    fdui->button_filenamebrowse = obj = fl_add_button(FL_NORMAL_BUTTON, 340, 190, 90, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
@@ -84,22 +87,24 @@ FD_form_external * FormExternal::build_external()
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_gravity(obj, FL_NorthEast, FL_NorthEast);
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
-  fdui->button_ok = obj = fl_add_button(FL_RETURN_BUTTON, 315, 270, 110, 30, _("OK"));
+  fdui->button_ok = obj = fl_add_button(FL_RETURN_BUTTON, 255, 270, 90, 30, _("OK"));
     fl_set_object_color(obj, FL_COL1, FL_BLACK);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_gravity(obj, FL_SouthEast, FL_SouthEast);
     fl_set_object_callback(obj, C_FormBaseOKCB, 0);
+  fdui->button_apply = obj = fl_add_button(FL_NORMAL_BUTTON, 355, 270, 90, 30, _("Apply"));
+    fl_set_object_color(obj, FL_COL1, FL_BLACK);
+    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+    fl_set_object_gravity(obj, FL_SouthEast, FL_SouthEast);
+    fl_set_object_callback(obj, C_FormBaseApplyCB, 0);
   {
     char const * const dummy = N_("Cancel|#C^[");
-    fdui->button_cancel = obj = fl_add_button(FL_NORMAL_BUTTON, 435, 270, 110, 30, idex(_(dummy)));
+    fdui->button_cancel = obj = fl_add_button(FL_NORMAL_BUTTON, 455, 270, 90, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_gravity(obj, FL_SouthEast, FL_SouthEast);
     fl_set_object_callback(obj, C_FormBaseCancelCB, 0);
-  fdui->browser_helptext = obj = fl_add_browser(FL_NORMAL_BROWSER, 130, 50, 300, 130, "");
-    fl_set_object_lalign(obj, FL_ALIGN_TOP);
-    fl_set_object_gravity(obj, FL_NorthWest, FL_SouthEast);
   fl_end_form();
 
   fdui->form->fdui = fdui;

@@ -1,5 +1,16 @@
 2001-03-30  Angus Leeming  <a.leeming@ic.ac.uk>
 
+	* FormCitation.C:
+	* forms/form_citation.fd: Don't change the name of the button when
+	toggling between regular expression and simple searches.
+	Squashed bug when creating a new inset, the keys field contained
+	one (empty) key. No more; thanks, Dekel.
+
+	* FormExternal.C: 
+	* forms/form_external.fd: added Apply button.
+
+2001-03-30  Angus Leeming  <a.leeming@ic.ac.uk>
+
 	* FormBase.[Ch]:
 	* FormBrowser.[Ch]: changes associated with renaming ControlBase as
 	ControlButton.

@@ -70,7 +70,6 @@ void FormCitation::build()
 
 	fl_set_button(dialog_->button_search_case, 0);
 	fl_set_button(dialog_->button_search_type, 0);
-	fl_set_object_label(dialog_->button_search_type, _("Simple"));
 
         // Manage the ok, apply, restore and cancel/close buttons
 	bc().setOK(dialog_->button_ok);
@@ -228,23 +227,6 @@ ButtonPolicy::SMInput FormCitation::input(FL_OBJECT * ob, long)
 		setCiteButtons(ON);
 		activate = ButtonPolicy::SMI_VALID;
 
-	} else if (ob == dialog_->button_search_type) {
-		fl_freeze_form(form());
-		// Fudge to overcome xforms drawing bug
-		fl_hide_object(dialog_->button_search_type);
-		
-		if (fl_get_button(dialog_->button_search_type))
-			fl_set_object_label(dialog_->button_search_type,
-					    _("Regex"));
-		else
-			fl_set_object_label(dialog_->button_search_type,
-					    _("Simple"));
-
-		fl_show_object(dialog_->button_search_type);
-		fl_unfreeze_form(form());
-
-		return ButtonPolicy::SMI_NOOP;
-		
 	} else if (ob == dialog_->button_previous ||
 		   ob == dialog_->button_next) {
 
@@ -337,7 +319,8 @@ void FormCitation::updateBrowser(FL_OBJECT * browser,
 	for (vector<string>::const_iterator it = keys.begin();
 	     it < keys.end(); ++it) {
 		string key = frontStrip(strip(*it));
-		fl_add_browser_line(browser, key.c_str());
+		if (!key.empty())
+			fl_add_browser_line(browser, key.c_str());
 	}
 }
 

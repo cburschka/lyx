@@ -7,6 +7,7 @@
 /** Callbacks, globals and object handlers **/
 extern  "C" void C_FormBaseInputCB(FL_OBJECT *, long);
 extern  "C" void C_FormBaseOKCB(FL_OBJECT *, long);
+extern  "C" void C_FormBaseApplyCB(FL_OBJECT *, long);
 extern  "C" void C_FormBaseCancelCB(FL_OBJECT *, long);
 
 
@@ -16,6 +17,7 @@ struct FD_form_external {
 
 	FL_FORM *form;
 	FL_OBJECT *choice_template;
+	FL_OBJECT *browser_helptext;
 	FL_OBJECT *input_filename;
 	FL_OBJECT *button_filenamebrowse;
 	FL_OBJECT *input_parameters;
@@ -23,8 +25,8 @@ struct FD_form_external {
 	FL_OBJECT *button_view;
 	FL_OBJECT *button_update;
 	FL_OBJECT *button_ok;
+	FL_OBJECT *button_apply;
 	FL_OBJECT *button_cancel;
-	FL_OBJECT *browser_helptext;
 };
 
 #endif /* FD_form_external_h_ */

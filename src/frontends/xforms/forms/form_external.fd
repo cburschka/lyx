@@ -10,7 +10,7 @@ Unit of measure: FL_COORD_PIXEL
 Name: form_external
 Width: 560
 Height: 310
-Number of Objects: 11
+Number of Objects: 12
 
 --------------------
 class: FL_BOX
@@ -49,9 +49,27 @@ callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
+class: FL_BROWSER
+type: NORMAL_BROWSER
+box: 130 50 300 130
+boxtype: FL_DOWN_BOX
+colors: FL_COL1 FL_YELLOW
+alignment: FL_ALIGN_TOP
+style: FL_NORMAL_STYLE
+size: FL_DEFAULT_SIZE
+lcol: FL_BLACK
+label: 
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NorthWest FL_SouthEast
+name: browser_helptext
+callback: 
+argument: 
+
+--------------------
 class: FL_INPUT
 type: NORMAL_INPUT
-box: 130 190 190 30
+box: 130 190 200 30
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_LEFT
@@ -69,7 +87,7 @@ argument: 0
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 330 190 100 30
+box: 340 190 90 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -99,7 +117,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_SouthWest FL_SouthEast
 name: input_parameters
-callback:
+callback: 
 argument: 
 
 --------------------
@@ -159,7 +177,7 @@ argument: 0
 --------------------
 class: FL_BUTTON
 type: RETURN_BUTTON
-box: 315 270 110 30
+box: 255 270 90 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_BLACK
 alignment: FL_ALIGN_CENTER
@@ -177,7 +195,25 @@ argument: 0
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 435 270 110 30
+box: 355 270 90 30
+boxtype: FL_UP_BOX
+colors: FL_COL1 FL_BLACK
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: Apply
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_SouthEast FL_SouthEast
+name: button_apply
+callback: C_FormBaseApplyCB
+argument: 0
+
+--------------------
+class: FL_BUTTON
+type: NORMAL_BUTTON
+box: 455 270 90 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -191,24 +227,6 @@ gravity: FL_SouthEast FL_SouthEast
 name: button_cancel
 callback: C_FormBaseCancelCB
 argument: 0
-
---------------------
-class: FL_BROWSER
-type: NORMAL_BROWSER
-box: 130 50 300 130
-boxtype: FL_DOWN_BOX
-colors: FL_COL1 FL_YELLOW
-alignment: FL_ALIGN_TOP
-style: FL_NORMAL_STYLE
-size: FL_DEFAULT_SIZE
-lcol: FL_BLACK
-label: 
-shortcut: 
-resize: FL_RESIZE_ALL
-gravity: FL_NorthWest FL_SouthEast
-name: browser_helptext
-callback: 
-argument: 
 
 ==============================
 create_the_forms

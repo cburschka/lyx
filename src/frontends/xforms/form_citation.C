@@ -73,9 +73,8 @@ FD_form_citation * FormCitation::build_citation()
     fl_set_object_lalign(obj, FL_ALIGN_TOP);
     fl_set_object_gravity(obj, FL_SouthWest, FL_SouthEast);
     fl_set_object_resize(obj, FL_RESIZE_NONE);
-  fdui->button_search_type = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 25, 525, 30, 30, _("Simple"));
+  fdui->button_search_type = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 25, 525, 30, 30, _("Regular Expression"));
     fl_set_object_gravity(obj, FL_SouthWest, FL_SouthWest);
-    fl_set_object_callback(obj, C_FormBaseInputCB, 0);
   fdui->button_search_case = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 25, 560, 30, 30, _("Case sensitive"));
     fl_set_object_gravity(obj, FL_SouthWest, FL_SouthWest);
   {

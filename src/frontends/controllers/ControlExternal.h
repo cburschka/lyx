@@ -48,9 +48,9 @@ public:
 	string const Browse(string const &) const;
 
 private:
-	/// not needed.
-	virtual void applyParamsToInset() {}
 	/// 
+	virtual void applyParamsToInset();
+	/// not needed.
 	virtual void applyParamsNoInset() {}
 	/// get the parameters from the string passed to createInset.
 	virtual InsetExternal::Params const getParams(string const &);

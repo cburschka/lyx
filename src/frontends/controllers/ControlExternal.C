@@ -53,22 +53,44 @@ ControlExternal::getParams(InsetExternal const & inset)
 }
 
 
-void ControlExternal::editExternal()
+void ControlExternal::applyParamsToInset()
 {
 	inset()->setFromParams(params());
-	inset()->editExternal();
+	lv_.view()->updateInset(inset(), true);
+}
+
+void ControlExternal::editExternal()
+{
+	// fill the local, controller's copy of the Params struct with
+	// the contents of the popup's fields.
+	view().apply();
+
+	// Create a local copy of the inset and initialise it with this
+	// params struct.
+	InsetExternal ie;
+	ie.setFromParams(params());
+
+	ie.editExternal();
 }
 
 void ControlExternal::viewExternal()
 {
-	inset()->setFromParams(params());
-	inset()->viewExternal();
+	view().apply();
+
+	InsetExternal ie;
+	ie.setFromParams(params());
+
+	ie.viewExternal();
 }
 
 void ControlExternal::updateExternal()
 {
-	inset()->setFromParams(params());
-	inset()->updateExternal();
+	view().apply();
+
+	InsetExternal ie;
+	ie.setFromParams(params());
+
+	ie.updateExternal();
 }
 
 vector<string> const ControlExternal::getTemplates() const
@@ -155,14 +177,14 @@ string const ControlExternal::Browse(string const & input) const
 
 		string p = result.second;
 
-		buf = MakeRelPath(input, buf2);
-		current_path = OnlyPath(input);
+		buf = MakeRelPath(p, buf2);
+		current_path = OnlyPath(p);
 		once = 1;
 		
-		if (contains(input, "#") ||
-		    contains(input, "~") ||
-		    contains(input, "$") ||
-		    contains(input, "%")) {
+		if (contains(p, "#") ||
+		    contains(p, "~") ||
+		    contains(p, "$") ||
+		    contains(p, "%")) {
 			WriteAlert(_("Filename can't contain any "
 				     "of these characters:"),
 				   // xgettext:no-c-format

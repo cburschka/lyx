@@ -263,8 +263,8 @@ void InsetExternal::updateExternal() const
 		return;
 	
 	executeCommand(doSubstitution(view->buffer(),
-			(*cit).second.updateCommand),
-			view->buffer());
+				      (*cit).second.updateCommand),
+		       view->buffer());
 }
 
 
@@ -275,8 +275,8 @@ void InsetExternal::viewExternal() const
 		updateExternal();
 
 	executeCommand(doSubstitution(view->buffer(),
-			et.viewCommand),
-			view->buffer());
+				      et.viewCommand),
+		       view->buffer());
 }
 
 
@@ -287,8 +287,8 @@ void InsetExternal::editExternal() const
 		updateExternal();
 
 	executeCommand(doSubstitution(view->buffer(),
-			et.editCommand),
-			view->buffer());
+				      et.editCommand),
+		       view->buffer());
 }
 
 
