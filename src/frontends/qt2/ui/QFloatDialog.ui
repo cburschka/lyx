@@ -14,7 +14,7 @@
             <x>0</x>
             <y>0</y>
             <width>369</width>
-            <height>169</height>
+            <height>259</height>
         </rect>
     </property>
     <property stdset="1">
@@ -25,7 +25,7 @@
         <name>sizeGripEnabled</name>
         <bool>true</bool>
     </property>
-    <grid>
+    <vbox>
         <property stdset="1">
             <name>margin</name>
             <number>11</number>
@@ -34,7 +34,203 @@
             <name>spacing</name>
             <number>6</number>
         </property>
-        <widget row="2"  column="0" >
+        <widget>
+            <class>QCheckBox</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>defaultsCB</cstring>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string>Use &amp;default placement</string>
+            </property>
+            <property>
+                <name>toolTip</name>
+                <string>Use LaTeX default settings</string>
+            </property>
+        </widget>
+        <widget>
+            <class>QGroupBox</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>placement</cstring>
+            </property>
+            <property stdset="1">
+                <name>title</name>
+                <string>Advanced placement options</string>
+            </property>
+            <hbox>
+                <property stdset="1">
+                    <name>margin</name>
+                    <number>11</number>
+                </property>
+                <property stdset="1">
+                    <name>spacing</name>
+                    <number>6</number>
+                </property>
+                <widget>
+                    <class>QLayoutWidget</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>Layout6</cstring>
+                    </property>
+                    <vbox>
+                        <property stdset="1">
+                            <name>margin</name>
+                            <number>0</number>
+                        </property>
+                        <property stdset="1">
+                            <name>spacing</name>
+                            <number>6</number>
+                        </property>
+                        <widget>
+                            <class>QCheckBox</class>
+                            <property stdset="1">
+                                <name>name</name>
+                                <cstring>topCB</cstring>
+                            </property>
+                            <property stdset="1">
+                                <name>text</name>
+                                <string>&amp;Top of page</string>
+                            </property>
+                            <property>
+                                <name>toolTip</name>
+                                <string>Prefer top of page</string>
+                            </property>
+                        </widget>
+                        <widget>
+                            <class>QCheckBox</class>
+                            <property stdset="1">
+                                <name>name</name>
+                                <cstring>bottomCB</cstring>
+                            </property>
+                            <property stdset="1">
+                                <name>text</name>
+                                <string>&amp;Bottom of page</string>
+                            </property>
+                            <property>
+                                <name>toolTip</name>
+                                <string>Prefer bottom of page</string>
+                            </property>
+                        </widget>
+                        <widget>
+                            <class>QCheckBox</class>
+                            <property stdset="1">
+                                <name>name</name>
+                                <cstring>pageCB</cstring>
+                            </property>
+                            <property stdset="1">
+                                <name>text</name>
+                                <string>&amp;Page of floats</string>
+                            </property>
+                            <property>
+                                <name>toolTip</name>
+                                <string>Separate page for multiple floats</string>
+                            </property>
+                        </widget>
+                        <widget>
+                            <class>QCheckBox</class>
+                            <property stdset="1">
+                                <name>name</name>
+                                <cstring>herepossiblyCB</cstring>
+                            </property>
+                            <property stdset="1">
+                                <name>text</name>
+                                <string>&amp;Here if possible</string>
+                            </property>
+                            <property>
+                                <name>toolTip</name>
+                                <string>Place float at current position if possible</string>
+                            </property>
+                        </widget>
+                        <widget>
+                            <class>QCheckBox</class>
+                            <property stdset="1">
+                                <name>name</name>
+                                <cstring>ignoreCB</cstring>
+                            </property>
+                            <property stdset="1">
+                                <name>text</name>
+                                <string>&amp;Ignore LaTeX rules</string>
+                            </property>
+                            <property>
+                                <name>toolTip</name>
+                                <string>Ignore the internal LaTeX placement rules</string>
+                            </property>
+                        </widget>
+                    </vbox>
+                </widget>
+                <widget>
+                    <class>QLayoutWidget</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>Layout7</cstring>
+                    </property>
+                    <vbox>
+                        <property stdset="1">
+                            <name>margin</name>
+                            <number>0</number>
+                        </property>
+                        <property stdset="1">
+                            <name>spacing</name>
+                            <number>6</number>
+                        </property>
+                        <widget>
+                            <class>QCheckBox</class>
+                            <property stdset="1">
+                                <name>name</name>
+                                <cstring>heredefinitelyCB</cstring>
+                            </property>
+                            <property stdset="1">
+                                <name>text</name>
+                                <string>Here definitely</string>
+                            </property>
+                            <property>
+                                <name>toolTip</name>
+                                <string>Place float at current position</string>
+                            </property>
+                        </widget>
+                        <spacer>
+                            <property>
+                                <name>name</name>
+                                <cstring>Spacer7</cstring>
+                            </property>
+                            <property stdset="1">
+                                <name>orientation</name>
+                                <enum>Vertical</enum>
+                            </property>
+                            <property stdset="1">
+                                <name>sizeType</name>
+                                <enum>Expanding</enum>
+                            </property>
+                            <property>
+                                <name>sizeHint</name>
+                                <size>
+                                    <width>20</width>
+                                    <height>20</height>
+                                </size>
+                            </property>
+                        </spacer>
+                    </vbox>
+                </widget>
+            </hbox>
+        </widget>
+        <widget>
+            <class>QCheckBox</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>spanCB</cstring>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string>&amp;Span columns</string>
+            </property>
+            <property>
+                <name>toolTip</name>
+                <string>Span columns in multi-column documents</string>
+            </property>
+        </widget>
+        <widget>
             <class>QLayoutWidget</class>
             <property stdset="1">
                 <name>name</name>
@@ -116,129 +312,111 @@
                 </widget>
             </hbox>
         </widget>
-        <widget row="0"  column="0" >
-            <class>QGroupBox</class>
-            <property stdset="1">
-                <name>name</name>
-                <cstring>placement</cstring>
-            </property>
-            <property stdset="1">
-                <name>title</name>
-                <string>Placement</string>
-            </property>
-            <grid>
-                <property stdset="1">
-                    <name>margin</name>
-                    <number>11</number>
-                </property>
-                <property stdset="1">
-                    <name>spacing</name>
-                    <number>6</number>
-                </property>
-                <widget row="1"  column="0" >
-                    <class>QRadioButton</class>
-                    <property stdset="1">
-                        <name>name</name>
-                        <cstring>bottom</cstring>
-                    </property>
-                    <property stdset="1">
-                        <name>text</name>
-                        <string>Bottom of the page</string>
-                    </property>
-                </widget>
-                <widget row="0"  column="0" >
-                    <class>QRadioButton</class>
-                    <property stdset="1">
-                        <name>name</name>
-                        <cstring>top</cstring>
-                    </property>
-                    <property stdset="1">
-                        <name>text</name>
-                        <string>Top of the page</string>
-                    </property>
-                </widget>
-                <widget row="0"  column="1" >
-                    <class>QRadioButton</class>
-                    <property stdset="1">
-                        <name>name</name>
-                        <cstring>page</cstring>
-                    </property>
-                    <property stdset="1">
-                        <name>text</name>
-                        <string>Page of floats</string>
-                    </property>
-                </widget>
-                <widget row="1"  column="1" >
-                    <class>QRadioButton</class>
-                    <property stdset="1">
-                        <name>name</name>
-                        <cstring>here</cstring>
-                    </property>
-                    <property stdset="1">
-                        <name>text</name>
-                        <string>Here, if possible</string>
-                    </property>
-                </widget>
-            </grid>
-        </widget>
-        <widget row="1"  column="0" >
-            <class>QCheckBox</class>
-            <property stdset="1">
-                <name>name</name>
-                <cstring>forcehere</cstring>
-            </property>
-            <property stdset="1">
-                <name>text</name>
-                <string>Here, definitely</string>
-            </property>
-        </widget>
-    </grid>
+    </vbox>
 </widget>
 <connections>
     <connection>
-        <sender>forcehere</sender>
+        <sender>defaultsCB</sender>
         <signal>toggled(bool)</signal>
         <receiver>placement</receiver>
         <slot>setDisabled(bool)</slot>
     </connection>
     <connection>
-        <sender>top</sender>
+        <sender>defaultsCB</sender>
         <signal>toggled(bool)</signal>
         <receiver>QFloatDialogBase</receiver>
         <slot>change_adaptor()</slot>
     </connection>
     <connection>
-        <sender>page</sender>
+        <sender>defaultsCB</sender>
+        <signal>toggled(bool)</signal>
+        <receiver>QFloatDialogBase</receiver>
+        <slot>tbhpClicked()</slot>
+    </connection>
+    <connection>
+        <sender>topCB</sender>
         <signal>toggled(bool)</signal>
         <receiver>QFloatDialogBase</receiver>
         <slot>change_adaptor()</slot>
     </connection>
     <connection>
-        <sender>bottom</sender>
+        <sender>topCB</sender>
+        <signal>clicked()</signal>
+        <receiver>QFloatDialogBase</receiver>
+        <slot>tbhpClicked()</slot>
+    </connection>
+    <connection>
+        <sender>bottomCB</sender>
         <signal>toggled(bool)</signal>
         <receiver>QFloatDialogBase</receiver>
         <slot>change_adaptor()</slot>
     </connection>
     <connection>
-        <sender>here</sender>
-        <signal>stateChanged(int)</signal>
+        <sender>bottomCB</sender>
+        <signal>clicked()</signal>
+        <receiver>QFloatDialogBase</receiver>
+        <slot>tbhpClicked()</slot>
+    </connection>
+    <connection>
+        <sender>pageCB</sender>
+        <signal>toggled(bool)</signal>
         <receiver>QFloatDialogBase</receiver>
         <slot>change_adaptor()</slot>
     </connection>
     <connection>
-        <sender>forcehere</sender>
+        <sender>pageCB</sender>
+        <signal>clicked()</signal>
+        <receiver>QFloatDialogBase</receiver>
+        <slot>tbhpClicked()</slot>
+    </connection>
+    <connection>
+        <sender>herepossiblyCB</sender>
         <signal>toggled(bool)</signal>
         <receiver>QFloatDialogBase</receiver>
         <slot>change_adaptor()</slot>
+    </connection>
+    <connection>
+        <sender>herepossiblyCB</sender>
+        <signal>clicked()</signal>
+        <receiver>QFloatDialogBase</receiver>
+        <slot>tbhpClicked()</slot>
+    </connection>
+    <connection>
+        <sender>ignoreCB</sender>
+        <signal>toggled(bool)</signal>
+        <receiver>QFloatDialogBase</receiver>
+        <slot>change_adaptor()</slot>
+    </connection>
+    <connection>
+        <sender>spanCB</sender>
+        <signal>toggled(bool)</signal>
+        <receiver>QFloatDialogBase</receiver>
+        <slot>change_adaptor()</slot>
+    </connection>
+    <connection>
+        <sender>spanCB</sender>
+        <signal>clicked()</signal>
+        <receiver>QFloatDialogBase</receiver>
+        <slot>spanClicked()</slot>
+    </connection>
+    <connection>
+        <sender>heredefinitelyCB</sender>
+        <signal>toggled(bool)</signal>
+        <receiver>QFloatDialogBase</receiver>
+        <slot>change_adaptor()</slot>
+    </connection>
+    <connection>
+        <sender>heredefinitelyCB</sender>
+        <signal>clicked()</signal>
+        <receiver>QFloatDialogBase</receiver>
+        <slot>heredefinitelyClicked()</slot>
     </connection>
     <slot access="protected">change_adaptor()</slot>
+    <slot access="public">heredefinitelyClicked()</slot>
+    <slot access="public">spanClicked()</slot>
+    <slot access="public">tbhpClicked()</slot>
 </connections>
 <tabstops>
-    <tabstop>top</tabstop>
-    <tabstop>bottom</tabstop>
-    <tabstop>page</tabstop>
-    <tabstop>here</tabstop>
-    <tabstop>forcehere</tabstop>
     <tabstop>restorePB</tabstop>
     <tabstop>okPB</tabstop>
     <tabstop>applyPB</tabstop>

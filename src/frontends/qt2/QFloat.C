@@ -17,18 +17,16 @@
 #include "QFloat.h"
 #include "Qt2BC.h"
 #include "gettext.h"
-#include "helper_funcs.h"
 
 #include "support/lstrings.h"
 
-#include <qradiobutton.h>
 #include <qpushbutton.h>
 #include <qcheckbox.h>
 
 typedef Qt2CB<ControlFloat, Qt2DB<QFloatDialog> > base_class;
 
 QFloat::QFloat()
-	: base_class(_("LaTeX Information"))
+	: base_class(_("Float Settings"))
 {
 }
 
@@ -41,22 +39,38 @@ void QFloat::build_dialog()
 	bc().setApply(dialog_->applyPB);
 	bc().setOK(dialog_->okPB);
 	bc().setRestore(dialog_->restorePB);
+
+	bc().addReadOnly(dialog_->topCB);
+	bc().addReadOnly(dialog_->bottomCB);
+	bc().addReadOnly(dialog_->herepossiblyCB);
+	bc().addReadOnly(dialog_->heredefinitelyCB);
+	bc().addReadOnly(dialog_->pageCB);
+	bc().addReadOnly(dialog_->ignoreCB);
+	bc().addReadOnly(dialog_->defaultsCB);
+	bc().addReadOnly(dialog_->spanCB);
 }
 
 
 void QFloat::update_contents()
 {
+	bool def_placement = false;
 	bool top = false;
 	bool bottom = false;
 	bool page = false;
 	bool here = false;
-	bool forcehere = false;
+	bool force = false;
+	bool here_definitely = false;
 
-	string placement(controller().params().placement);
+	string const placement(controller().params().placement);
 
-	if (contains(placement, "H")) {
-		forcehere = true;
+	if (placement.empty()) {
+		def_placement = true;
+	} else if (contains(placement, "H")) {
+		here_definitely = true;
 	} else {
+		if (contains(placement, "!")) {
+			force = true;
+		}
 		if (contains(placement, "t")) {
 			top = true;
 		}
@@ -70,33 +84,48 @@ void QFloat::update_contents()
 			here = true;
 		}
 	}
-
-	dialog_->top->setChecked(top);
-	dialog_->bottom->setChecked(bottom);
-	dialog_->page->setChecked(page);
-	dialog_->here->setChecked(here);
-	dialog_->forcehere->setChecked(forcehere);
+ 
+	dialog_->defaultsCB->setChecked(def_placement);
+	dialog_->topCB->setChecked(top);
+	dialog_->bottomCB->setChecked(bottom);
+	dialog_->pageCB->setChecked(page);
+	dialog_->herepossiblyCB->setChecked(here);
+	dialog_->ignoreCB->setChecked(force);
+	dialog_->ignoreCB->setEnabled(top || bottom || page || here);
+	dialog_->heredefinitelyCB->setChecked(here_definitely);
+ 
+	if (controller().params().wide) {
+		dialog_->herepossiblyCB->setChecked(false);
+		dialog_->bottomCB->setChecked(false);
+	}
+ 
+	dialog_->spanCB->setChecked(controller().params().wide);
 }
 
+ 
 void QFloat::apply()
 {
 	string placement;
 
-	if (dialog_->forcehere->isChecked()) {
+	if (dialog_->heredefinitelyCB->isChecked()) {
 		placement += "H";
 	} else {
-		if (dialog_->top->isChecked()) {
+		if (dialog_->ignoreCB->isChecked()) {
+			placement += "!";
+		}
+		if (dialog_->topCB->isChecked()) {
 			placement += "t";
 		}
-		if (dialog_->bottom->isChecked()) {
+		if (dialog_->bottomCB->isChecked()) {
 			placement += "b";
 		}
-		if (dialog_->page->isChecked()) {
+		if (dialog_->pageCB->isChecked()) {
 			placement += "p";
 		}
-		if (dialog_->here->isChecked()) {
+		if (dialog_->herepossiblyCB->isChecked()) {
 			placement += "h";
 		}
 	}
 	controller().params().placement = placement;
+	controller().params().wide = dialog_->spanCB->isChecked(); 
 }

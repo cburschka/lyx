@@ -13,6 +13,7 @@
 #include "ControlFloat.h"
 
 #include <qpushbutton.h>
+#include <qcheckbox.h>
 
 #include "QFloatDialog.h"
 #include "QFloat.h"
@@ -42,4 +43,40 @@ void QFloatDialog::closeEvent(QCloseEvent * e)
 {
 	form_->slotWMHide();
 	e->accept();
+}
+
+void QFloatDialog::tbhpClicked()
+{
+	heredefinitelyCB->setChecked(false);
+	bool allow(topCB->isChecked());
+	allow |= bottomCB->isChecked();
+	allow |= pageCB->isChecked();
+	allow |= herepossiblyCB->isChecked();
+	ignoreCB->setEnabled(allow);
+}
+ 
+
+void QFloatDialog::heredefinitelyClicked()
+{
+	topCB->setChecked(false);
+	bottomCB->setChecked(false);
+	pageCB->setChecked(false);
+	herepossiblyCB->setChecked(false);
+}
+
+
+void QFloatDialog::spanClicked()
+{
+	bool const span(spanCB->isChecked());
+ 
+	if (!defaultsCB->isChecked()) {
+	 	herepossiblyCB->setEnabled(!span);
+	 	heredefinitelyCB->setEnabled(!span);
+	}
+ 
+	if (!span)
+		return;
+ 
+	herepossiblyCB->setChecked(false);
+	heredefinitelyCB->setChecked(false);
 }
