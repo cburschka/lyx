@@ -25,7 +25,7 @@ void MathLimitOpInset::write(WriteStream & os) const
 }
 
 
-void MathLimitOpInset::normalize(NormalStream & os) const
+void MathLimitOpInset::normalize(NormalStream &) const
 {
 	//os << "[int " << scripts_ << ' ' << core_ << ' ' << diff_ << ']'
 }
@@ -43,12 +43,12 @@ void MathLimitOpInset::draw(Painter &, int, int) const
 }
 
 
-void MathLimitOpInset::maplize(MapleStream & os) const
+void MathLimitOpInset::maplize(MapleStream &) const
 {
 	//os << name_.c_str() << '(' << cell(0) << ')';
 }
 
-void MathLimitOpInset::mathmlize(MathMLStream & os) const
+void MathLimitOpInset::mathmlize(MathMLStream &) const
 {
 	//os << name_.c_str() << '(' << cell(0) << ')';
 }

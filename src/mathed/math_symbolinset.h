@@ -29,6 +29,10 @@ public:
 	bool takesLimits() const;
 	///
 	MathSymbolInset * asSymbolInset() { return this; }
+	///
+	string name() const;
+	///
+	bool match(MathInset *) const;
 
 	///
 	void normalize(NormalStream &) const;
@@ -40,8 +44,7 @@ public:
 	void octavize(OctaveStream &) const;
 	///
 	void write(WriteStream & os) const;
-	///
-	string name() const;
+
 private:
 	///
 	MathTextCodes code() const;

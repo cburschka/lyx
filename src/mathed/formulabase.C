@@ -759,3 +759,5 @@ void mathDispatchGreek(BufferView * bv, string const & arg)
 }	   
 
 
+void mathDispatch(BufferView *, kb_action, string const &)
+{}	   

@@ -49,6 +49,13 @@ void MathFuncInset::draw(Painter & pain, int x, int y) const
 }
 
 
+bool MathFuncInset::match(MathInset * p) const
+{
+	MathFuncInset const * q = p->asFuncInset();
+	return q && name_ == q->name_;
+}
+
+
 void MathFuncInset::maplize(MapleStream & os) const
 {
 	os << ' ' << name_.c_str();

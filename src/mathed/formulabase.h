@@ -143,5 +143,7 @@ void mathDispatchInsertMatrix(BufferView *, string const &);
 void mathDispatchGreek(BufferView *, string const &);
 //
 void mathDispatchMathImportSelection(BufferView *, string const &);
+//
+void mathDispatch(BufferView *, kb_action, string const &);
 
 #endif
