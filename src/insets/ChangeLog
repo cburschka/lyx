@@ -1,3 +1,12 @@
+2004-08-14  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* insetinclude.C (priv_dispatch): fix showing dialog on mouse
+	release
+	(metrics): the insets is not full width any more. 
+	(draw): adjust; fix bad test for PREVIEW_OFF
+	(add_preview): fix bad test for PREVIEW_OFF
+	(display): do not return true when using \input
+
 2004-08-14  José Matos  <jamatos@lyx.org>
 
 	* insetbibitem.[Ch] (plaintext): added.

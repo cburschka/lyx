@@ -138,10 +138,6 @@ void InsetInclude::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 		break;
 
 	case LFUN_MOUSE_RELEASE:
-		if (button_.box().contains(cmd.x, cmd.y))
-			InsetIncludeMailer(*this).showDialog(&cur.bv());
-		break;
-
 	case LFUN_INSET_DIALOG_SHOW:
 		InsetIncludeMailer(*this).showDialog(&cur.bv());
 		break;
@@ -604,16 +600,14 @@ void InsetInclude::metrics(MetricsInfo & mi, Dimension & dim) const
 		if (!set_label_) {
 			set_label_ = true;
 			button_.update(getScreenLabel(*mi.base.bv->buffer()),
-				       editable() != NOT_EDITABLE);
+				       true);
 		}
 		button_.metrics(mi, dim);
 	}
-	int center_indent = type(params_) == INPUT ?
-		0 : (mi.base.textwidth - dim.wid) / 2;
-	Box b(center_indent, center_indent + dim.wid, -dim.asc, dim.des);
+
+	Box b(0, dim.wid, -dim.asc, dim.des);
 	button_.setBox(b);
 
-	dim.wid = mi.base.textwidth;
 	dim_ = dim;
 }
 
@@ -625,17 +619,23 @@ void InsetInclude::draw(PainterInfo & pi, int x, int y) const
 	BOOST_ASSERT(pi.base.bv && pi.base.bv->buffer());
 
 	bool use_preview = false;
-	if (RenderPreview::status() == LyXRC::PREVIEW_OFF) {
+	if (RenderPreview::status() != LyXRC::PREVIEW_OFF) {
 		lyx::graphics::PreviewImage const * pimage =
 			preview_->getPreviewImage(*pi.base.bv->buffer());
 		use_preview = pimage && pimage->image();
 	}
 
 	if (use_preview)
-		preview_->draw(pi, x + button_.box().x1, y);
+		preview_->draw(pi, x, y);
 	else
-		button_.draw(pi, x + button_.box().x1, y);
+		button_.draw(pi, x, y);
 }
+
+bool InsetInclude::display() const
+{ 
+	return type(params_) != INPUT; 
+}
+
 
 
 //
@@ -681,7 +681,7 @@ void add_preview(RenderMonitoredPreview & renderer, InsetInclude const & inset,
 		 Buffer const & buffer)
 {
 	InsetCommandParams const & params = inset.params();
-	if (RenderPreview::status() == LyXRC::PREVIEW_OFF &&
+	if (RenderPreview::status() != LyXRC::PREVIEW_OFF &&
 	    preview_wanted(params, buffer)) {
 		renderer.setAbsFile(includedFilename(buffer, params));
 		string const snippet = latex_string(inset, buffer);
