@@ -1,3 +1,4 @@
+// -*- C++ -*-
 /**
  * \file ControlCharacter.h
  * Copyright 2001 The LyX Team.
@@ -8,6 +9,8 @@
 
 #ifndef CONTROLCHARACTER_H
 #define CONTROLCHARACTER_H
+
+#include <boost/smart_ptr.hpp>
 
 #ifdef __GNUG__
 #pragma interface
@@ -41,16 +44,31 @@ public:
 	///
 	void setToggleAll(bool);
 
+	///
+	LyXFont::FONT_FAMILY getFamily() const;
+	///
+	LyXFont::FONT_SERIES getSeries() const;
+	///
+	LyXFont::FONT_SHAPE getShape() const;
+	///
+	LyXFont::FONT_SIZE getSize() const;
+	///
+	character::FONT_STATE getBar() const;
+	///
+	LColor::color getColor() const;
+	///
+	string getLanguage() const;
+	///
+	bool getToggleAll() const;
+
 private:
 	/// Get changed parameters and Dispatch them to the kernel.
 	virtual void apply();
 	/// set the params before show or update.
 	virtual void setParams();
-	/// clean-up on hide.
-	virtual void clearParams();
 
 	///
-	LyXFont * font_;
+	boost::scoped_ptr<LyXFont> font_;
 	///
 	bool toggleall_;
 };

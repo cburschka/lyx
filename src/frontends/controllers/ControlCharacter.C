@@ -1,3 +1,4 @@
+// -*- C++ -*-
 /**
  * \file ControlCharacter.C
  * Copyright 2001 The LyX Team.
@@ -40,37 +41,57 @@ ControlCharacter::ControlCharacter(LyXView & lv, Dialogs & d)
 
 void ControlCharacter::setParams()
 {
-	if (font_) delete font_;
-	font_ = new LyXFont(LyXFont::ALL_IGNORE);
-}
+	// Do this the first time only. Used as a flag for whether or not the
+	// view has been built
+	if (!font_.get())
+		font_.reset(new LyXFont(LyXFont::ALL_IGNORE));
 
-
-void ControlCharacter::clearParams()
-{
-	if (font_) {
-		delete font_;
-		font_ = 0;
-	}
+	// so that the user can press Ok
+	if (getFamily()   != LyXFont::IGNORE_FAMILY ||
+	    getSeries()   != LyXFont::IGNORE_SERIES ||
+	    getShape()    != LyXFont::IGNORE_SHAPE  ||
+	    getSize()     != LyXFont::IGNORE_SIZE ||
+	    getBar()      != character::IGNORE ||
+	    getColor()    != LColor::ignore ||
+	    font_->language() != ignore_language)
+		bc().valid();
 }
 
 
 void ControlCharacter::apply()
 {
-	if (!(font_ && lv_.view()->available()))
+	// Nothing to apply. (Can be called from the Toolbar.)
+	if (!font_.get())
 		return;
-   
-	view().apply();
 
-	ToggleAndShow(lv_.view(), *font_, toggleall_);
+	// Apply from the view if it's visible. Otherwise, use the stored values
+	if (lv_.view()->available())
+		view().apply();
+
+	ToggleAndShow(lv_.view(), *(font_.get()), toggleall_);
 	lv_.view()->setState();
 	lv_.buffer()->markDirty();
 	setMinibuffer(&lv_, _("Character set"));
 }
 
 
+LyXFont::FONT_FAMILY ControlCharacter::getFamily() const
+{
+	if (font_.get())
+		return font_->family();
+	return LyXFont::IGNORE_FAMILY;
+}
+
 void ControlCharacter::setFamily(LyXFont::FONT_FAMILY val)
 {
 	font_->setFamily(val);
+}
+
+LyXFont::FONT_SERIES ControlCharacter::getSeries() const
+{
+	if (font_.get())
+		return font_->series();
+	return LyXFont::IGNORE_SERIES;
 }
 
 void ControlCharacter::setSeries(LyXFont::FONT_SERIES val)
@@ -78,14 +99,46 @@ void ControlCharacter::setSeries(LyXFont::FONT_SERIES val)
 	font_->setSeries(val);
 }
 
+LyXFont::FONT_SHAPE ControlCharacter::getShape() const
+{
+	if (font_.get())
+		return font_->shape();
+	return LyXFont::IGNORE_SHAPE;
+}
+
 void ControlCharacter::setShape(LyXFont::FONT_SHAPE val)
 {
 	font_->setShape(val);
 }
 
+LyXFont::FONT_SIZE ControlCharacter::getSize() const
+{
+	if (font_.get())
+		return font_->size();
+	return LyXFont::IGNORE_SIZE;
+}
+
 void ControlCharacter::setSize(LyXFont::FONT_SIZE val)
 {
 	font_->setSize(val);
+}
+
+character::FONT_STATE ControlCharacter::getBar() const
+{
+	if (font_.get()) {
+		if (font_->emph() != LyXFont::IGNORE)
+			return character::EMPH_TOGGLE;
+
+		else if (font_->underbar() != LyXFont::IGNORE)
+	    		return character::UNDERBAR_TOGGLE;
+
+		else if (font_->noun() != LyXFont::IGNORE)
+	    		return character::NOUN_TOGGLE;
+
+		else if (font_->latex() != LyXFont::IGNORE)
+	    		return character::LATEX_TOGGLE;
+	}
+	return character::IGNORE;
 }
 
 void ControlCharacter::setBar(character::FONT_STATE val)
@@ -123,6 +176,33 @@ void ControlCharacter::setBar(character::FONT_STATE val)
 	}
 }
 
+LColor::color ControlCharacter::getColor() const
+{
+	LColor::color col = LColor::ignore;
+    
+	if (font_.get()) {
+		switch (font_->color()) {
+		case LColor::ignore:
+		case LColor::none:
+		case LColor::black:
+		case LColor::white:
+		case LColor::red:
+		case LColor::green:
+		case LColor::blue:
+		case LColor::cyan:
+		case LColor::magenta:
+		case LColor::yellow:
+		case LColor::inherit:
+			break;
+		default:
+			col = font_->color();
+			break;
+		}
+	}
+
+	return col;
+}
+
 void ControlCharacter::setColor(LColor::color val)
 {
 	switch (val) {
@@ -139,13 +219,20 @@ void ControlCharacter::setColor(LColor::color val)
 	case LColor::inherit:
 		font_->setColor(val);
 		break;
-
 	default:
 		break;
 	}
 }
 
- 	
+
+string ControlCharacter::getLanguage() const
+{
+	if (font_.get() && font_->language())
+		return font_->language()->lang();
+	return _("No change");
+}
+
+
 void ControlCharacter::setLanguage(string const & val)
 {
 	if (val == _("No change"))
@@ -156,6 +243,12 @@ void ControlCharacter::setLanguage(string const & val)
 
 	else
 		font_->setLanguage(languages.getLanguage(val));
+}
+
+
+bool ControlCharacter::getToggleAll() const
+{
+	return toggleall_;
 }
 
 void ControlCharacter::setToggleAll(bool t)

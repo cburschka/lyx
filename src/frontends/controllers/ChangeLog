@@ -1,3 +1,16 @@
+2001-06-13  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* ControlDialogs.h added // -*- C++ -*-
+
+	* ControlCharacter.[Ch]: added // -*- C++ -*-
+	(setParams): Check contents of font_ to activate Apply button.
+	(clearParams): removed.
+	font_ is now stored as a boost::scoped_ptr.
+	font_ is no longer deleted on hide(), so it's contents can now be used
+	by the Font button on the toolbar.
+	Lots of new methods so that the GUI can easily get the contents of
+	font_ when it update()s.
+
 2001-06-12  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* ControlCharacter.C (apply): test that font_ exists, thereby preventing

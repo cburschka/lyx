@@ -1,3 +1,4 @@
+// -*- C++ -*-
 /**
  * \file FormCharacter.C
  * Copyright 2001 The LyX Team.
@@ -137,11 +138,43 @@ void FormCharacter::apply()
 	controller().setToggleAll(toggleall);
 }
 
+namespace {
+
+template<class A>
+typename vector<A>::size_type findPos(vector<A> const & vec, A const & val)
+{
+	vector<A>::const_iterator it =
+		std::find(vec.begin(), vec.end(), val);
+	if (it == vec.end())
+		return 0;
+	return it - vec.begin();
+}
+ 
+} // namespace anon
 
 void FormCharacter::update()
 {
-	if (input(0,0) == ButtonPolicy::SMI_VALID)
-		bc().valid(); // so that the user can press Ok
+	int pos = int(findPos(family_, controller().getFamily()));
+	fl_set_choice(dialog_->choice_family, pos+1);
+	
+	pos = int(findPos(series_, controller().getSeries()));
+	fl_set_choice(dialog_->choice_series, pos+1);
+
+	pos = int(findPos(shape_, controller().getShape()));
+	fl_set_choice(dialog_->choice_shape, pos+1);
+
+	pos = int(findPos(size_, controller().getSize()));
+	fl_set_choice(dialog_->choice_size, pos+1);
+
+	pos = int(findPos(bar_, controller().getBar()));
+	fl_set_choice(dialog_->choice_bar, pos+1);
+
+	pos = int(findPos(color_, controller().getColor()));
+	fl_set_choice(dialog_->choice_color, pos+1);
+
+	combo_language2_->select_text(controller().getLanguage());
+
+	fl_set_button(dialog_->check_toggle_all, controller().getToggleAll());
 }
 
 
