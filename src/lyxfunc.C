@@ -1117,10 +1117,12 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 
 	case LFUN_DEPTH_MIN:
 		changeDepth(view(), TEXT(false), DEC_DEPTH, false);
+		owner->view_state_changed();
 		break;
 
 	case LFUN_DEPTH_PLUS:
 		changeDepth(view(), TEXT(false), INC_DEPTH, false);
+		owner->view_state_changed();
 		break;
 
 	case LFUN_FREEFONT_APPLY:
