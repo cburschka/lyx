@@ -23,6 +23,14 @@
 
 	* BufferView_pimpl.C: add comment, destroySplash()
 
+2001-03-12  John Levon  <moz@compsoc.man.ac.uk>
+
+	* BufferView_pimpl.C:
+	* LyXAction.C:
+	* buffer.C:
+	* commandtags.h:
+	* lyxfunc.C: use re-worked insetinclude
+
 2001-03-12  Lars Gullik Bjønnes  <larsbj@trylle.birdstep.com>
 
 	* buffer.C: add using std::stringstream.

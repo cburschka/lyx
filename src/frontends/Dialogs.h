@@ -106,9 +106,7 @@ public:
 	///
 	Signal1<void, InsetGraphics *> showGraphics;
 	/// show the details of a LyX file include inset
-	Signal1<void, InsetCommand *> showInclude;
-	/// create a LyX file include inset
-	Signal1<void, string const &> createInclude;
+	Signal1<void, InsetInclude *> showInclude;
 	///
 	Signal1<void, InsetCommand *> showIndex;
 	///

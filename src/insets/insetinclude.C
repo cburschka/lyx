@@ -8,7 +8,7 @@
 #endif
 
 #include "frontends/Dialogs.h"
- 
+
 #include "insetinclude.h"
 #include "buffer.h"
 #include "bufferlist.h"
@@ -42,33 +42,70 @@ string unique_id() {
 }
 
 
-InsetInclude::InsetInclude(InsetCommandParams const & p, Buffer const & bf)
-	: InsetCommand(p), master(&bf)
+InsetInclude::InsetInclude(InsetIncludeParams const & p)
 {
-	flag = InsetInclude::INCLUDE;
-	noload = false;
 	include_label = unique_id();
+	setFromParams(p);
+	params_.buffer = p.buffer;
+}
+
+
+InsetInclude::InsetInclude(InsetCommandParams const & p, Buffer const & b)
+{
+	include_label = unique_id();
+	params_.buffer = &b;
+	setFromParams(p);
 }
 
 
 InsetInclude::~InsetInclude()
 {
+	hideDialog();
+}
+
+
+InsetInclude::InsetIncludeParams const & InsetInclude::params() const
+{
+	return params_;
+}
+
+
+void InsetInclude::setFromParams(InsetIncludeParams const & p)
+{
+	params_.cparams.setContents(p.cparams.getContents());
+	params_.noload = p.noload;
+	if (params_.flag == p.flag)
+		return;
+
+	params_.flag = p.flag;
+
+	string command;
+
+	switch (params_.flag) {
+		case INCLUDE:
+			command="include";
+			break;
+		case VERB:
+			command="verbatiminput";
+			break;
+		case INPUT:
+			command="input";
+			break;
+		case VERBAST:
+			command="verbatiminput*";
+			break;
+	}
+
+	params_.cparams.setCmdName(command);
 }
 
 
 Inset * InsetInclude::Clone(Buffer const & buffer) const
-{ 
-	InsetInclude * ii = new InsetInclude (params(), buffer); 
-	ii->setNoLoad(isNoLoad());
-	// By default, the newly created inset is of `include' type,
-	// so we do not test this case.
-	if (isInput())
-		ii->setInput();
-	else if (isVerb()) {
-		ii->setVerb();
-		ii->setVisibleSpace(isVerbVisibleSpace());
-	}
-	return ii;
+{
+	InsetIncludeParams p(params_);
+	p.buffer = &buffer;
+
+	return new InsetInclude (p);
 }
 
 
@@ -80,71 +117,84 @@ void InsetInclude::Edit(BufferView * bv, int, int, unsigned int)
 
 void InsetInclude::Write(Buffer const *, ostream & os) const
 {
-	os << "Include " << getCommand() << "\n";
+	os << "Include " << params_.cparams.getCommand() << "\n";
 }
 
 
-void InsetInclude::Read(Buffer const * buf, LyXLex & lex)
+void InsetInclude::Read(Buffer const *, LyXLex & lex)
 {
-	InsetCommand::Read(buf, lex);
-    
-	if (getCmdName() == "include")
-		setInclude();
-	else if (getCmdName() == "input")
-		setInput();
-	else if (contains(getCmdName(), "verbatim")) {
-		setVerb();
-		if (getCmdName() == "verbatiminput*")
-			setVisibleSpace(true);
+	params_.cparams.Read(lex);
+   
+	if (params_.cparams.getCmdName() == "include")
+		params_.flag = INCLUDE;
+	else if (params_.cparams.getCmdName() == "input")
+		params_.flag = INPUT;
+	/* FIXME: is this logic necessary now ? */
+	else if (contains(params_.cparams.getCmdName(), "verbatim")) {
+		params_.flag = VERB;
+		if (params_.cparams.getCmdName() == "verbatiminput*")
+			params_.flag = VERBAST;
 	}
 }
 
 
-bool InsetInclude::display() const 
+bool InsetInclude::display() const
 {
-	return !isInput();
+	return !(params_.flag == INPUT);
 }
 
 
 string const InsetInclude::getScreenLabel() const
 {
 	string temp;
-	if (isInput())
-		temp += _("Input");
-	else if (isVerb()) {
-		temp += _("Verbatim Input");
-		if (isVerbVisibleSpace()) temp += '*';
-	} else temp += _("Include");
+
+	switch (params_.flag) {
+		case INPUT: temp += _("Input"); break;
+		case VERB: temp += _("Verbatim Input"); break;
+		case VERBAST: temp += _("Verbatim Input*"); break;
+		case INCLUDE: temp += _("Include"); break;
+	}
+
 	temp += ": ";
 	
-	if (getContents().empty()) {
-		temp+= "???";
-	} else {
-		temp+= getContents();
-	}
+	if (params_.cparams.getContents().empty())
+		temp += "???";
+	else
+		temp += params_.cparams.getContents();
+
 	return temp;
 }
 
 
+string const InsetInclude::getRelFileBaseName() const
+{
+	return OnlyFilename(ChangeExtension(params_.cparams.getContents(), string()));
+}
+
+ 
 string const InsetInclude::getFileName() const
 {
-	return MakeAbsPath(getContents(), 
+	return MakeAbsPath(params_.cparams.getContents(),
 			   OnlyPath(getMasterFilename()));
 }
 
 
 string const InsetInclude::getMasterFilename() const
 {
-	return master->fileName();
+	return params_.buffer->fileName();
 }
 
 
 bool InsetInclude::loadIfNeeded() const
 {
-	if (isNoLoad() || isVerb()) return false;
-	if (!IsLyXFilename(getFileName())) return false;
+	if (params_.noload || isVerbatim())
+		return false;
+
+	if (!IsLyXFilename(getFileName()))
+		return false;
 	
-	if (bufferlist.exists(getFileName())) return true;
+	if (bufferlist.exists(getFileName()))
+		return true;
 	
 	// the readonly flag can/will be wrong, not anymore I think.
 	FileInfo finfo(getFileName());
@@ -156,15 +206,16 @@ bool InsetInclude::loadIfNeeded() const
 int InsetInclude::Latex(Buffer const * buffer, ostream & os,
 			bool /*fragile*/, bool /*fs*/) const
 {
-	string incfile(getContents());
+	string incfile(params_.cparams.getContents());
 	
 	// Do nothing if no file name has been specified
 	if (incfile.empty())
 		return 0;
-    
+   
 	if (loadIfNeeded()) {
 		Buffer * tmp = bufferlist.getBuffer(getFileName());
 
+		// FIXME: this should be a GUI warning
 		if (tmp->params.textclass != buffer->params.textclass) {
 			lyxerr << "WARNING: Included file `"
 			       << MakeDisplayPath(getFileName())
@@ -178,6 +229,7 @@ int InsetInclude::Latex(Buffer const * buffer, ostream & os,
 		
 		// write it to a file (so far the complete file)
 		string writefile = ChangeExtension(getFileName(), ".tex");
+
 		if (!buffer->tmppath.empty()
 		    && !buffer->niceFile) {
 			incfile = subst(incfile, '/','@');
@@ -194,25 +246,25 @@ int InsetInclude::Latex(Buffer const * buffer, ostream & os,
 		tmp->markDepClean(buffer->tmppath);
 		
 		tmp->makeLaTeXFile(writefile,
-				   OnlyPath(getMasterFilename()), 
+				   OnlyPath(getMasterFilename()),
 				   buffer->niceFile, true);
-	} 
+	}
 
-	if (isVerb()) {
-		os << '\\' << getCmdName() << '{' << incfile << '}';
-	} else if (isInput()) {
+	if (isVerbatim()) {
+		os << '\\' << params_.cparams.getCmdName() << '{' << incfile << '}';
+	} else if (params_.flag == INPUT) {
 		// \input wants file with extension (default is .tex)
 		if (!IsLyXFilename(getFileName())) {
-			os << '\\' << getCmdName() << '{' << incfile << '}';
+			os << '\\' << params_.cparams.getCmdName() << '{' << incfile << '}';
 		} else {
-			os << '\\' << getCmdName() << '{'
+			os << '\\' << params_.cparams.getCmdName() << '{'
 			   << ChangeExtension(incfile, ".tex")
 			   <<  '}';
 		}
 	} else {
 		// \include don't want extension and demands that the
 		// file really have .tex
-		os << '\\' << getCmdName() << '{'
+		os << '\\' << params_.cparams.getCmdName() << '{'
 		   << ChangeExtension(incfile, string())
 		   << '}';
 	}
@@ -223,7 +275,7 @@ int InsetInclude::Latex(Buffer const * buffer, ostream & os,
 
 int InsetInclude::Ascii(Buffer const *, std::ostream & os, int) const
 {
-	if (isVerb())
+	if (isVerbatim())
 		os << GetFileContents(getFileName());
 	return 0;
 }
@@ -231,12 +283,12 @@ int InsetInclude::Ascii(Buffer const *, std::ostream & os, int) const
 
 int InsetInclude::Linuxdoc(Buffer const * buffer, ostream & os) const
 {
-	string incfile(getContents());
+	string incfile(params_.cparams.getContents());
 	
 	// Do nothing if no file name has been specified
 	if (incfile.empty())
 		return 0;
-    
+   
 	if (loadIfNeeded()) {
 		Buffer * tmp = bufferlist.getBuffer(getFileName());
 
@@ -255,13 +307,13 @@ int InsetInclude::Linuxdoc(Buffer const * buffer, ostream & os) const
 		lyxerr[Debug::LATEX] << "writefile:" << writefile << endl;
 		
 		tmp->makeLinuxDocFile(writefile, buffer->niceFile, true);
-	} 
+	}
 
-	if (isVerb()) {
+	if (isVerbatim()) {
 		os << "<inlinegraphic fileref=\"" << '&' << include_label << ';'
 		   << "\" format=\"linespecific\">"
 		   << "</inlinegraphic>";
-	} else 
+	} else
 		os << '&' << include_label << ';';
 	
 	return 0;
@@ -270,12 +322,12 @@ int InsetInclude::Linuxdoc(Buffer const * buffer, ostream & os) const
 
 int InsetInclude::DocBook(Buffer const * buffer, ostream & os) const
 {
-	string incfile(getContents());
+	string incfile(params_.cparams.getContents());
 
 	// Do nothing if no file name has been specified
 	if (incfile.empty())
 		return 0;
-    
+   
 	if (loadIfNeeded()) {
 		Buffer * tmp = bufferlist.getBuffer(getFileName());
 
@@ -293,13 +345,13 @@ int InsetInclude::DocBook(Buffer const * buffer, ostream & os) const
 		lyxerr[Debug::LATEX] << "writefile:" << writefile << endl;
 		
 		tmp->makeDocBookFile(writefile, buffer->niceFile, true);
-	} 
+	}
 
-	if (isVerb()) {
+	if (isVerbatim()) {
 		os << "<inlinegraphic fileref=\"" << '&' << include_label << ';'
 		   << "\" format=\"linespecific\">"
 		   << "</inlinegraphic>";
-	} else 
+	} else
 		os << '&' << include_label << ';';
 	
 	return 0;
@@ -309,23 +361,23 @@ int InsetInclude::DocBook(Buffer const * buffer, ostream & os) const
 void InsetInclude::Validate(LaTeXFeatures & features) const
 {
 
-	string incfile(getContents());
-	string writefile; // = ChangeExtension(getFileName(), ".sgml");
+	string incfile(params_.cparams.getContents());
+	string writefile;
 
-	if (!master->tmppath.empty() && !master->niceFile) {
+	Buffer const & b = *params_.buffer;
+
+	if (!b.tmppath.empty() && b.niceFile) {
 		incfile = subst(incfile, '/','@');
-		writefile = AddName(master->tmppath, incfile);
+		writefile = AddName(b.tmppath, incfile);
 	} else
 		writefile = getFileName();
-		// Use the relative path.
-		//writefile = incfile;
 
 	if (IsLyXFilename(getFileName()))
 		writefile = ChangeExtension(writefile, ".sgml");
 
 	features.IncludedFiles[include_label] = writefile;
 
-	if (isVerb())
+	if (isVerbatim())
 		features.verbatim = true;
 
 	// Here we must do the fun stuff...
@@ -345,7 +397,7 @@ vector<string> const InsetInclude::getLabelList() const
 
 	if (loadIfNeeded()) {
 		Buffer * tmp = bufferlist.getBuffer(getFileName());
-		tmp->setParentName(""); 
+		tmp->setParentName("");
 		l = tmp->getLabelList();
 		tmp->setParentName(getMasterFilename());
 	}
@@ -360,7 +412,7 @@ vector<pair<string,string> > const InsetInclude::getKeys() const
 	
 	if (loadIfNeeded()) {
 		Buffer * tmp = bufferlist.getBuffer(getFileName());
-		tmp->setParentName(""); 
+		tmp->setParentName("");
 		keys = tmp->getBibkeyList();
 		tmp->setParentName(getMasterFilename());
 	}

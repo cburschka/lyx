@@ -3,9 +3,9 @@
  * ======================================================
  *
  *           LyX, The Document Processor
- * 	 
+ * 	
  *	    Copyright 1997 LyX Team (this file was created this year)
- * 
+ *
  * ====================================================== */
 
 #ifndef INSET_INCLUDE_H
@@ -24,12 +24,43 @@ struct LaTeXFeatures;
 
 /**  Used to include files
  */
-class InsetInclude: public InsetCommand {
+class InsetInclude: public InsetButton, public noncopyable {
 public:
+        /// the type of inclusion
+        enum IncludeFlags {
+		///
+		INCLUDE= 0,
+		///
+		VERB = 1,
+		///
+		INPUT = 2,
+		///
+		VERBAST = 3
+	};
+
+	struct InsetIncludeParams {
+		InsetIncludeParams(InsetCommandParams const & cp = InsetCommandParams(),
+			IncludeFlags f = INCLUDE, bool nl = false, Buffer const * b = 0)
+			: cparams(cp), flag(f), noload(nl), buffer(b) {}
+		InsetCommandParams cparams;
+		IncludeFlags flag;
+		bool noload;
+		Buffer const * buffer;
+	};
+
+	///
+	InsetInclude(InsetIncludeParams const &);
 	///
 	InsetInclude(InsetCommandParams const &, Buffer const &);
 	///
 	~InsetInclude();
+
+	/// get the parameters
+	InsetIncludeParams const & params(void) const;
+
+	/// set the parameters
+	void setFromParams(InsetIncludeParams const & params);
+
         ///
         Inset * Clone(Buffer const &) const;
 	///
@@ -49,7 +80,7 @@ public:
         void Write(Buffer const *, std::ostream &) const;
         ///
 	void Read(Buffer const *, LyXLex &);
-	/// 
+	///
 	int Latex(Buffer const *, std::ostream &, bool fragile, bool free_spc) const;
 	///
 	int Ascii(Buffer const *, std::ostream &, int linelen) const;
@@ -64,117 +95,44 @@ public:
 	    Display can give some visual feedback
 	*/
 	bool display() const;
-	///
-	string const getScreenLabel() const;
-        ///
-        string const getMasterFilename() const;
-        ///
-        string const getFileName() const;
 
-        ///  In "input" mode uses \input instead of \include.
-	bool isInput() const { return flag == InsetInclude::INPUT; }
-        ///  If this is true, the child file shouldn't be loaded by lyx
-	bool isNoLoad() const { return noload; }
+	/// return the filename stub of the included file 
+	string const getRelFileBaseName() const;
+ 
+	/// return true if the included file is not loaded
+	bool isIncludeOnly() const;
 
-        /**  A verbatim file shouldn't be loaded by LyX
-	 *  No need to generate LaTeX code of a verbatim file
-	 */ 
-	bool isVerb() const;
-	///
-	bool isVerbVisibleSpace() const {
-		return flag == InsetInclude::VERBAST;
-	}
-        ///  
-	bool isInclude() const { return flag == InsetInclude::INCLUDE;}
-        ///  
-	void setInput();
-        ///  
-	void setNoLoad(bool);
-        ///  
-	void setInclude();
-        ///  
-	void setVerb();
-	///
-	void setVisibleSpace(bool b);
 	/// return true if the file is or got loaded.
 	bool loadIfNeeded() const;
+ 
+	/// hide a dialog if about 
+	Signal0<void> hideDialog;
 private:
-        ///
-        enum Include_Flags {
-		///
-		INCLUDE= 0,
-		///
-		VERB = 1,
-		///
-		INPUT = 2,
-		///
-		VERBAST = 3
-	};
-	
-	///
-	bool noload;
-	///
-        int flag;
-        ///
-	Buffer const * master;
+	/// get the text displayed on the button
+	string const getScreenLabel() const;
+	/// is this a verbatim include ?
+	bool isVerbatim() const;
+        /// get the filename of the master buffer
+        string const getMasterFilename() const;
+        /// get the included file name
+        string const getFileName() const;
+
+	/// the parameters
+	InsetIncludeParams params_;
 	///
 	string include_label;
 };
 
 
-inline 
-bool InsetInclude::isVerb() const
+inline bool InsetInclude::isVerbatim() const
 {
-	return flag == InsetInclude::VERB || flag == InsetInclude::VERBAST; 
+	return params_.flag == VERB || params_.flag == VERBAST;
 }
 
 
-inline
-void InsetInclude::setInput()
+inline bool InsetInclude::isIncludeOnly() const
 {
-	if (!isInput()) {
-	    flag = InsetInclude::INPUT;
-	    setCmdName("input");
-	}
+	return params_.flag == INCLUDE && params_.noload;
 }
 
-
-inline
-void InsetInclude::setNoLoad(bool b)
-{ 
-		noload = b;
-}
-
-
-inline
-void InsetInclude::setInclude()
-{
-	if (!isInclude()) {
-	    flag = InsetInclude::INCLUDE;
-	    setCmdName("include");
-	}
-}
-
-
-inline
-void InsetInclude::setVerb()
-{ 
-	if (!isVerb()) {
-	    flag = InsetInclude::VERB;
-	    setCmdName("verbatiminput");
-	}
-}
-
-
-inline
-void InsetInclude::setVisibleSpace(bool b)
-{
-        if (b && flag == InsetInclude::VERB) {
-	    setCmdName("verbatiminput*");
-	    flag = InsetInclude::VERBAST;
-	} else if (!b && flag == InsetInclude::VERBAST) {
-	    setCmdName("verbatiminput");
-	    flag = InsetInclude::VERB;
-	}
-}
 #endif

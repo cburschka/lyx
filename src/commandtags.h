@@ -274,7 +274,6 @@ enum kb_action {
 	LFUN_REFERENCE_GOTO,             // Dekel 20010114
 	LFUN_BOOKMARK_SAVE,              // Dekel 20010127
 	LFUN_BOOKMARK_GOTO,              // Dekel 20010127
-	LFUN_CHILD_CREATE, 		// Levon 20010207
 	LFUN_SELECT_FILE_SYNC,		// Levon 20010214
 	LFUN_LASTACTION  /* this marks the end of the table */
 };

@@ -1,3 +1,7 @@
+2001-03-13  John Levon  <moz@compsoc.man.ac.uk>
+
+	* FormGraphics.C: remove unnecessary hack
+
 2001-03-13  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* FormCitation.C (apply): Do not put space between multiple keys.
@@ -28,6 +32,14 @@
 	* FormSplash.C: make independent of FormBase, tidy
 	
 	* Menubar_pimpl.C: destroy splash on interaction
+
+2001-03-12  John Levon  <moz@compsoc.man.ac.uk>
+
+	* FormInclude.h:
+	* FormInclude.C:
+	* form_include.h:
+	* form_include.C:
+	* forms/form_include.fd: rework, clean up
 
 2001-03-12  Lars Gullik Bjønnes  <larsbj@trylle.birdstep.com>
 

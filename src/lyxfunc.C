@@ -1343,22 +1343,6 @@ string const LyXFunc::Dispatch(int ac,
 	}
 	break;
 		    
-	case LFUN_CHILD_CREATE:
-	{
-		InsetCommandParams p("include");
- 
-		if (!argument.empty()) {
-			if (contains(argument, "|")) {
-				p.setContents(token(argument, '|', 0));
-				p.setOptions(token(argument, '|', 1));
-			} else
-				p.setContents(argument);
-			Dispatch(LFUN_CHILD_INSERT, p.getAsString());
-		} else
-			owner->getDialogs()->createInclude(p.getAsString());
-	}
-	break;
-
 	case LFUN_CHILDOPEN:
 	{
 		string const filename =

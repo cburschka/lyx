@@ -2927,14 +2927,17 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 
 	case LFUN_CHILD_INSERT:
 	{
-		InsetCommandParams p;
-		p.setFromString(argument);
+		InsetInclude::InsetIncludeParams p;
+		p.cparams.setFromString(argument);
+		p.buffer = buffer_;
 
-		InsetInclude * inset = new InsetInclude(p, *buffer_);
+		InsetInclude * inset = new InsetInclude(p);
 		if (!bv_->insertInset(inset))
 			delete inset;
-		else
+		else {
 			bv_->updateInset(inset, true);
+			bv_->owner()->getDialogs()->showInclude(inset);
+		}
 	}
 	break; 
 

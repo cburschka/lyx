@@ -15,6 +15,12 @@
 	* insetexternal.h:
 	* insetexternal.C: move form to GUII
 
+2001-03-12  John Levon  <moz@compsoc.man.ac.uk>
+
+	* insetinclude.h:
+	* insetinclude.C: add InsetIncludeParams, use
+	composition rather than derivation of InsetCommand
+
 2001-03-12  Lars Gullik Bjønnes  <larsbj@trylle.birdstep.com>
 
 	* insettoc.C (Ascii): use the Buffer typedefs

@@ -28,14 +28,14 @@ FD_form_include * FormInclude::build_include()
   obj = fl_add_frame(FL_ENGRAVED_FRAME, 10, 70, 160, 90, "");
   {
     char const * const dummy = N_("Browse|#B");
-    fdui->browsebt = obj = fl_add_button(FL_NORMAL_BUTTON, 230, 30, 100, 30, idex(_(dummy)));
+    fdui->button_browse = obj = fl_add_button(FL_NORMAL_BUTTON, 230, 30, 100, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
   {
     char const * const dummy = N_("Don't typeset|#D");
-    fdui->flag1 = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 180, 70, 150, 30, idex(_(dummy)));
+    fdui->check_typeset = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 180, 70, 150, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
@@ -51,21 +51,21 @@ FD_form_include * FormInclude::build_include()
     fl_set_object_callback(obj, C_FormBaseCancelCB, 2);
   {
     char const * const dummy = N_("Load|#L");
-    fdui->loadbt = obj = fl_add_button(FL_NORMAL_BUTTON, 230, 130, 100, 30, idex(_(dummy)));
+    fdui->button_load = obj = fl_add_button(FL_NORMAL_BUTTON, 230, 130, 100, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseInputCB, 5);
   {
     char const * const dummy = N_("File name:|#F");
-    fdui->filename = obj = fl_add_input(FL_NORMAL_INPUT, 10, 30, 210, 30, idex(_(dummy)));
+    fdui->input_filename = obj = fl_add_input(FL_NORMAL_INPUT, 10, 30, 210, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_lalign(obj, FL_ALIGN_TOP_LEFT);
   {
     char const * const dummy = N_("Visible space|#s");
-    fdui->flag41 = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 180, 100, 150, 30, idex(_(dummy)));
+    fdui->check_visiblespace = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 180, 100, 150, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
@@ -73,21 +73,21 @@ FD_form_include * FormInclude::build_include()
   fdui->include_grp = fl_bgn_group();
   {
     char const * const dummy = N_("Verbatim|#V");
-    fdui->flag4 = obj = fl_add_checkbutton(FL_RADIO_BUTTON, 10, 130, 160, 30, idex(_(dummy)));
+    fdui->check_verbatim = obj = fl_add_checkbutton(FL_RADIO_BUTTON, 10, 130, 160, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseInputCB, 10);
   {
     char const * const dummy = N_("Use input|#i");
-    fdui->flag2 = obj = fl_add_checkbutton(FL_RADIO_BUTTON, 10, 100, 160, 30, idex(_(dummy)));
+    fdui->check_useinput = obj = fl_add_checkbutton(FL_RADIO_BUTTON, 10, 100, 160, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseInputCB, 11);
   {
     char const * const dummy = N_("Use include|#U");
-    fdui->flag3 = obj = fl_add_checkbutton(FL_RADIO_BUTTON, 10, 70, 160, 30, idex(_(dummy)));
+    fdui->check_useinclude = obj = fl_add_checkbutton(FL_RADIO_BUTTON, 10, 70, 160, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);

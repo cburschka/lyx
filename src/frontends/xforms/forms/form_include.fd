@@ -62,7 +62,7 @@ label: Browse|#B
 shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: browsebt
+name: button_browse
 callback: C_FormBaseInputCB
 argument: 0
 
@@ -80,7 +80,7 @@ label: Don't typeset|#D
 shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: flag1
+name: check_typeset
 callback:
 argument: 
 
@@ -134,7 +134,7 @@ label: Load|#L
 shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: loadbt
+name: button_load
 callback: C_FormBaseInputCB
 argument: 5
 
@@ -152,7 +152,7 @@ label: File name:|#F
 shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: filename
+name: input_filename
 callback: 
 argument: 
 
@@ -170,7 +170,7 @@ label: Visible space|#s
 shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: flag41
+name: check_visiblespace
 callback: 
 argument: 
 
@@ -206,7 +206,7 @@ label: Verbatim|#V
 shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: flag4
+name: check_verbatim
 callback: C_FormBaseInputCB
 argument: 10
 
@@ -224,7 +224,7 @@ label: Use input|#i
 shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: flag2
+name: check_useinput
 callback: C_FormBaseInputCB
 argument: 11
 
@@ -242,7 +242,7 @@ label: Use include|#U
 shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: flag3
+name: check_useinclude
 callback: C_FormBaseInputCB
 argument: 11
 

@@ -3567,11 +3567,10 @@ string const Buffer::getIncludeonlyList(char delim)
 		if ((*it)->LyxCode() == Inset::INCLUDE_CODE) {
 			InsetInclude * insetinc = 
 				static_cast<InsetInclude *>(*it);
-			if (insetinc->isInclude() 
-			    && insetinc->isNoLoad()) {
+			if (insetinc->isIncludeOnly()) {
 				if (!lst.empty())
 					lst += delim;
-				lst += OnlyFilename(ChangeExtension(insetinc->getContents(), string()));
+				lst += insetinc->getRelFileBaseName();
 			}
 		}
 	}

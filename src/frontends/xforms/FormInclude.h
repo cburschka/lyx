@@ -13,7 +13,8 @@
 #pragma interface
 #endif
 
-#include "FormInset.h"
+#include "FormBase.h"
+#include "insets/insetinclude.h"
 
 class InsetInclude;
  
@@ -21,7 +22,7 @@ struct FD_form_include;
 
 /** This class provides an XForms implementation of the FormInclude Dialog.
  */
-class FormInclude : public FormCommand {
+class FormInclude : public FormBaseBD {
 public:
 	///
 	FormInclude(LyXView *, Dialogs *);
@@ -40,6 +41,14 @@ private:
 		INPUTINCLUDE=11
 	};
  
+	/// Slot launching dialog to an existing inset
+	void showInclude(InsetInclude *);
+
+	/// Connect signals. Also perform any necessary initialisation.
+	virtual void connect();
+	/// Disconnect signals. Also perform any necessary housekeeping.
+	virtual void disconnect();
+
 	/// Build the dialog
 	virtual void build();
 	/// Filter the inputs
@@ -50,12 +59,23 @@ private:
 	virtual void apply();
 	/// Pointer to the actual instantiation of the xforms form
 	virtual FL_FORM * form() const;
+	/// bool indicates if a buffer switch took place
+	virtual void updateSlot(bool);
+
 
 	/// Type definition from the fdesign produced header file.
 	FD_form_include * build_include();
 
 	/// Real GUI implementation.
 	FD_form_include * dialog_;
+ 
+	/// inset::hide connection.
+	Connection ih_;
+ 
+	/// pointer to the inset passed through showInset
+	InsetInclude * inset_;
+	/// the nitty-gritty. What is modified and passed back
+	InsetInclude::InsetIncludeParams params;
 };
 
 #endif

@@ -358,8 +358,7 @@ void FormGraphics::browse()
 
 	string const title = N_("Graphics");
 	// FIXME: currently we need the second '|' to prevent mis-interpretation 
-	// FIXME: rfind() in split() seems to be broken hence the second space 
-	string const pattern = "*.(ps|png)| ";
+	string const pattern = "*.(ps|png)|";
 
   	// Does user clipart directory exist?
   	string clipdir = AddName (user_lyxdir, "clipart");

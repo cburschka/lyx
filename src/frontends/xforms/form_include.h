@@ -15,17 +15,17 @@ struct FD_form_include {
 	~FD_form_include();
 
 	FL_FORM *form;
-	FL_OBJECT *browsebt;
-	FL_OBJECT *flag1;
+	FL_OBJECT *button_browse;
+	FL_OBJECT *check_typeset;
 	FL_OBJECT *button_ok;
 	FL_OBJECT *button_cancel;
-	FL_OBJECT *loadbt;
-	FL_OBJECT *filename;
-	FL_OBJECT *flag41;
+	FL_OBJECT *button_load;
+	FL_OBJECT *input_filename;
+	FL_OBJECT *check_visiblespace;
 	FL_OBJECT *include_grp;
-	FL_OBJECT *flag4;
-	FL_OBJECT *flag2;
-	FL_OBJECT *flag3;
+	FL_OBJECT *check_verbatim;
+	FL_OBJECT *check_useinput;
+	FL_OBJECT *check_useinclude;
 };
 
 #endif /* FD_form_include_h_ */
