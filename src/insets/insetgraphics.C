@@ -648,71 +648,20 @@ string const InsetGraphics::prepareFile(Buffer const *buf) const
 }
 
 
-namespace {
-
-string const latexify(string const & str)
-{
-	ostringstream out;
-
-	string::const_iterator it  = str.begin();
-	string::const_iterator end = str.end();
-
-	for (; it != end; ++it) {
-		switch (*it) {
-			
-		case ('$'):
-		case ('&'):
-		case ('%'):
-		case ('#'):
-		case ('_'):
-		case ('{'):
-		case ('}'):
-			out << '\\' << *it;
-			break;
-
-		case ('~'):
-		case ('^'):
-			out << '\\' << *it << "{}";
-			break;
-
-		case ('\\'):
-			out << "\textbackslash ";
-			break;
-
-		default:
-			out << *it;
-			break;
-		}
-	}
-	
-	return out.str().c_str();
-}
- 
-} // namespace anon
-
-
 int InsetGraphics::latex(Buffer const *buf, ostream & os,
 			 bool /*fragile*/, bool/*fs*/) const
 {
-	// If there is no file specified, just output a message about it in
-	// the latex output.
-	if (params().filename.empty()) {
-		os  << "\\fbox{\\rule[-0.5in]{0pt}{1in}"
-			<< _("empty figure path") << "}\n";
-		return 1; // One end-of-line marker added to the stream.
-	}
+	// If there is no file specified or not existing, 
+	// just output a message about it in the latex output.
+	lyxerr[Debug::GRAPHICS] << "[latex]filename = " 
+				<< params().filename << endl;		    
+	string const message = 
+	    (IsFileReadable(MakeAbsPath(params().filename, buf->filePath())) 
+		&& !params().filename.empty()) ?
+		    string() :
+		    string("bb = 0 0 200 100, draft, type=eps]");
+	lyxerr[Debug::GRAPHICS] << "[latex]Messagestring = " << message << endl;		    
 
-	// Enable these helper functions to find the file if it is stored as
-	// a relative path.
-	Path p(buf->filePath());
-
-	// Ditto if the file is not there.
-	if (!IsFileReadable(params().filename)) {
-		os  << "\\fbox{\\rule[-0.5in]{0pt}{1in}"
-		    << latexify(MakeRelPath(params().filename, buf->filePath()))
-		    << _(" not found") << "}\n";
-		return 1; // One end-of-line marker added to the stream.
-	}
 	// These variables collect all the latex code that should be before and
 	// after the actual includegraphics command.
 	string before;
@@ -724,15 +673,25 @@ int InsetGraphics::latex(Buffer const *buf, ostream & os,
 	}
 	// We never use the starred form, we use the "clip" option instead.
 	before += "\\includegraphics";
+
 	// Write the options if there are any.
 	string const opts = createLatexOptions();
-	if (!opts.empty()) {
-		before += ("[%\n" + opts +']');
-	}
+	lyxerr[Debug::GRAPHICS] << "[latex]opts = " << opts << endl;		    
+	if (!opts.empty() && !message.empty())
+		before += ("[" + opts + ',' + message);
+	else if (!message.empty())
+		before += ('[' + message);
+	else if (!opts.empty())
+		before += ("[%" + opts + ']');
+	lyxerr[Debug::GRAPHICS] << "[latex]before = " << before << endl;		    
+	lyxerr[Debug::GRAPHICS] << "[latex]after = " << after << endl;		    
+
 	// Make the filename relative to the lyx file
 	// and remove the extension so the LaTeX will use whatever is
 	// appropriate (when there are several versions in different formats)
-	string const latex_str = before + '{' + prepareFile(buf) + '}' + after;
+	string const latex_str = message.empty() ? 
+		(before + '{' + prepareFile(buf) + '}' + after) :
+		(before + '{' + params().filename + " not found!}" + after);
 	os << latex_str;
 
 	// Return how many newlines we issued.
