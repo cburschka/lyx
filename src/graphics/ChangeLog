@@ -1,3 +1,7 @@
+2001-03-10  Baruch Even  <baruch@lyx.org>
+
+	* GraphicsCache.C: Style change from (*it).field to it->field
+
 2001-03-15  Lars Gullik Bjønnes  <larsbj@trylle.birdstep.com>
 
 	* GraphicsCache.h: noncopyable is in namespace boost

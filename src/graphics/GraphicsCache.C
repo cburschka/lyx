@@ -40,7 +40,7 @@ GraphicsCache::addFile(string const & filename)
 	CacheType::iterator it = cache.find(filename);
 	
 	if (it != cache.end()) {
-		return (*it).second;
+		return it->second;
 	}
 	
 	shared_ptr_item cacheItem(new GraphicsCacheItem(filename));

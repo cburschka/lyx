@@ -14,19 +14,14 @@ How to use it for now:
 */
 
 /*
-Immediate tasks:
-	* Make the inline viewing work, there is a preliminary work going on,
-		need to finish it up.
-	* Support automatic image format conversion, create both a PNG and EPS output.
+Major tasks:
+	* Switch to convert the images in the background, this requires work on
+		the converter, the systemcontroller and the graphics cache.
 
-	* Polishing tasks:
-		* Add messages in the empty rectangle (in the buffer view) to say how are 
-		  we doing.
-			- Implemented, needs testing.
-		* Clean up GraphicsCacheItem(_pimpl)
-    	* Pop up a dialog if the widget version is higher than what we accept.
-		* Prepare code to read FigInset insets to upgrade upwards
-		* Provide sed/awk/C code to downgrade from InsetGraphics to FigInset.
+Minor tasks:
+    * Pop up a dialog if the widget version is higher than what we accept.
+	* Prepare code to read FigInset insets to upgrade upwards
+	* Provide sed/awk/C code to downgrade from InsetGraphics to FigInset(?)
         
 */
 
@@ -42,10 +37,12 @@ Known BUGS:
     * Bug in FileDlg class (src/filedlg.[hC]) when selecting a file and then
         pressing ok, it counts as if no real selection done. Apparently
         when choosing a file it doesn't update the select file input line.
+		
 	* If we are trying to create a file in a read-only directory and there
 		are graphics that need converting, the converting will fail because
 		it is done in-place, into the same directory as the original image.
 		This needs to be fixed in the src/converter.C file
+		[ This is presumed to be fixed, needs testing.]
  
 TODO Before initial production release:
     * Replace insetfig everywhere
@@ -55,12 +52,6 @@ TODO Before initial production release:
             // INSET_GRAPHICS: remove this when InsetFig is thrown.
           And act upon them.
  
-    * Finish the basic To-do list.
-    * Extract the general logic of the dialog in order to allow easier porting
-        to Gnome/KDE, and put the general logic in frontends and the inherited
-        platform dependent code in the appropriate dirs.
-		(Something of this kind is getting done by the GUII guys)
-   
 TODO Extended features:
  
     * Advanced Latex tab folder.
@@ -154,8 +145,6 @@ TODO Extended features:
 extern string system_tempdir;
 
 using std::ostream;
-using std::endl;
-using std::max;
 
 // This function is a utility function
 inline
@@ -238,7 +227,7 @@ int InsetGraphics::width(BufferView *, LyXFont const & font) const
 		if (msg)
 			font_width = lyxfont::width(msg, font);
 		
-		return max(50, font_width + 15);
+		return std::max(50, font_width + 15);
 	}
 }
 
@@ -316,7 +305,7 @@ Inset::EDITABLE InsetGraphics::Editable() const
 
 void InsetGraphics::Write(Buffer const * buf, ostream & os) const
 {
-	os << "GRAPHICS FormatVersion 1" << endl;
+	os << "GRAPHICS FormatVersion 1\n";
 
 	params.Write(buf, os);
 }
@@ -330,7 +319,7 @@ void InsetGraphics::Read(Buffer const * buf, LyXLex & lex)
 		lex.next();
 
 		string const token = lex.GetString();
-		lyxerr.debug() << "Token: '" << token << '\'' << endl;
+		lyxerr.debug() << "Token: '" << token << '\'' << std::endl;
 
 		if (token.empty()) {
 			continue;
@@ -344,12 +333,13 @@ void InsetGraphics::Read(Buffer const * buf, LyXLex & lex)
 				<< "This document was created with a newer Graphics widget"
 				", You should use a newer version of LyX to read this"
 				" file."
-				<< endl;
+				<< std::endl;
 			// TODO: Possibly open up a dialog?
 		}
 		else {
 			if (! params.Read(buf, lex, token))
-				lyxerr << "Unknown token, " << token << ", skipping." << endl;
+				lyxerr << "Unknown token, " << token << ", skipping." 
+					<< std::endl;
 		}
 	}
 
