@@ -56,9 +56,13 @@ void FormForks::build() {
 	// Set up the tooltip mechanism
 	string str = _("All currently running child processes forked by LyX.");
 	tooltips().init(dialog_->browser_children, str);
+	// Work-around xforms' bug; enable tooltips for browser widgets.
+	setPrehandler(dialog_->browser_children);
 
 	str = _("A list of all child processes to kill.");
 	tooltips().init(dialog_->browser_kill, str);
+	// Work-around xforms' bug; enable tooltips for browser widgets.
+	setPrehandler(dialog_->browser_kill);
 
 	str = _("Add all processes to the list of processes to kill.");
 	tooltips().init(dialog_->button_all, str);

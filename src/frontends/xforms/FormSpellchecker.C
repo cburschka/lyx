@@ -60,6 +60,8 @@ void FormSpellchecker::build()
 	tooltips().init(dialog_->input_replacement, str);
 	str = _("List of replacement suggestions from dictionary.");
 	tooltips().init(dialog_->browser_suggestions, str);
+	// Work-around xforms' bug; enable tooltips for browser widgets.
+	setPrehandler(dialog_->browser_suggestions);
 	str = _("Start the spellingchecker.");
 	tooltips().init(dialog_->button_start, str);
 	str = _("Replace unknown word.");

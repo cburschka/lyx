@@ -70,6 +70,15 @@ void FeedbackController::MessageCB(FL_OBJECT * ob, int event)
 	}
 }
 
+#if FL_VERSION > 0 || FL_REVISION >= 89
+extern "C" {
+
+void fl_show_tooltip(const char *, int, int);
+
+void fl_hide_tooltip();
+
+}
+#endif
 
 void FeedbackController::PrehandlerCB(FL_OBJECT * ob, int event, int key)
 {
@@ -79,9 +88,14 @@ void FeedbackController::PrehandlerCB(FL_OBJECT * ob, int event, int key)
 		// Trigger an input event when pasting in an xforms input object
 		// using the middle mouse button.
 		InputCB(ob, 0);
-		
-	} else if (ob->objclass == FL_TABFOLDER &&
-		   (event == FL_ENTER || event == FL_LEAVE)) {
+		return;
+	}
+
+
+	if (event != FL_ENTER && event != FL_LEAVE)
+		return;
+
+	if (ob->objclass == FL_TABFOLDER) {
 		// This prehandler is used to work-around an xforms bug and
 		// ensures that the form->x, form->y coords of the active
 		// tabfolder are up to date.
@@ -96,13 +110,27 @@ void FeedbackController::PrehandlerCB(FL_OBJECT * ob, int event, int key)
 			fl_get_winorigin(folder->window,
 					 &(folder->x), &(folder->y));
 		}
+		
+	}
 
-	} else if (message_widget_ &&
-		   (event == FL_ENTER || event == FL_LEAVE)) {
+	if (message_widget_) {
 		// Post feedback as the mouse enters the object,
 		// remove it as the mouse leaves.
 		MessageCB(ob, event);
 	}
+
+#if FL_VERSION > 0 || FL_REVISION >= 89
+	// Tooltips are not displayed on browser widgets due to an xforms' bug.
+	// This is a work-around:
+	if (ob->objclass == FL_BROWSER) {
+		if (event == FL_ENTER && ob->tooltip && *(ob->tooltip)) {
+			fl_show_tooltip(ob->tooltip, ob->form->x + ob->x,
+					ob->form->y + ob->y + ob->h + 1);
+		} else if (event == FL_LEAVE) {
+			fl_hide_tooltip();
+		}
+	}
+#endif
 }
 
 

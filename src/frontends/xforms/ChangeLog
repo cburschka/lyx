@@ -1,3 +1,15 @@
+2002-10-28  Angus Leeming  <leeming@lyx.org>
+
+	* FeedbackController.C (PrehandlerCB): show tooltips for browser
+	widgets, working-around an xforms bug.
+
+	* FormBibtex.C (build):
+	* FormCitation.C (build):
+	* FormForks.C (build):
+	* FormSpellchecker.C (build):
+	* FormTexinfo.C (build):
+	set the prehandler for the browser widgets so that we can have tooltips.
+
 2002-10-28  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* xfont_loader.C (getFontinfo): Cleanup.
