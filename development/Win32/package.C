@@ -182,7 +182,7 @@ string const hardcoded_localedir()
 
 string const hardcoded_system_support_dir()
 {
-	return string("%LYX_DIR%");
+	return string("../../lib/");
 }
 
 } // namespace anon
