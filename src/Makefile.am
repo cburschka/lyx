@@ -228,6 +228,8 @@ lyx_SOURCES = \
 	paragraph.h \
 	paragraph_pimpl.C \
 	paragraph_pimpl.h \
+	PosIterator.h \
+	PosIterator.C \
 	SpellBase.h \
 	ispell.C \
 	ispell.h \

@@ -36,6 +36,7 @@
 #include "paragraph.h"
 #include "paragraph_funcs.h"
 #include "ParagraphParameters.h"
+#include "PosIterator.h"
 #include "sgml.h"
 #include "texrow.h"
 #include "undo.h"
@@ -1469,6 +1470,18 @@ bool Buffer::hasParWithID(int id) const
 			return true;
 
 	return false;
+}
+
+
+PosIterator Buffer::pos_iterator_begin()
+{
+	return PosIterator(&paragraphs(), paragraphs().begin(), 0);	
+}
+
+
+PosIterator Buffer::pos_iterator_end()
+{
+	return PosIterator(&paragraphs(), paragraphs().end(), 0);	
 }
 
 

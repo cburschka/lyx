@@ -40,6 +40,7 @@ class LatexRunParams;
 class Language;
 class Messages;
 class ParIterator;
+class PosIterator;
 class ParConstIterator;
 class TeXErrors;
 class TexRow;
@@ -345,6 +346,10 @@ public:
 	/// return the const end of all *top-level* insets in the buffer
 	inset_iterator inset_const_iterator_end() const;
 
+	///
+	PosIterator pos_iterator_begin();
+	///
+	PosIterator pos_iterator_end();
 	///
 	ParIterator par_iterator_begin();
 	///

@@ -13,12 +13,15 @@
 #define ITERATORS_H
 
 #include "ParagraphList_fwd.h"
+#include "support/types.h"
 
 #include <boost/scoped_ptr.hpp>
 
 class LyXText;
 class InsetOld;
 class Cursor;
+class PosIterator;
+
 
 class ParIterator {
 public:
@@ -56,6 +59,9 @@ public:
 	///
 	friend
 	bool operator==(ParIterator const & iter1, ParIterator const & iter2);
+
+	///
+	PosIterator asPosIterator(lyx::pos_type) const;
 private:
 	struct Pimpl;
 	boost::scoped_ptr<Pimpl> pimpl_;
@@ -93,6 +99,7 @@ public:
 	friend
 	bool operator==(ParConstIterator const & iter1,
 			ParConstIterator const & iter2);
+
 private:
 	struct Pimpl;
 	boost::scoped_ptr<Pimpl> pimpl_;

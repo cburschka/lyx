@@ -13,7 +13,9 @@
 
 #include "iterators.h"
 #include "paragraph.h"
+#include "PosIterator.h"
 #include "cursor.h"
+
 
 #include "insets/inset.h"
 
@@ -355,4 +357,20 @@ bool operator==(ParConstIterator const & iter1, ParConstIterator const & iter2)
 bool operator!=(ParConstIterator const & iter1, ParConstIterator const & iter2)
 {
 	return !(iter1 == iter2);
+}
+
+
+PosIterator ParIterator::asPosIterator(lyx::pos_type pos) const
+{
+	PosIterator p;
+	
+	int const last = size() - 1;
+	for (int i = 0; i < last; ++i) {
+		ParPosition & pp = pimpl_->positions[i];
+		p.stack_.push(PosIteratorItem(const_cast<ParagraphList *>(pp.plist), pp.pit, (*pp.it)->pos, *pp.index + 1));
+	}
+	ParPosition const & pp = pimpl_->positions[last];
+	p.stack_.push(PosIteratorItem(const_cast<ParagraphList *>(pp.plist),
+				      pp.pit, pos, 0));
+	return p;
 }
