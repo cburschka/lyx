@@ -656,10 +656,11 @@ string const InsetGraphics::prepareFile(Buffer const *buf) const
 	// "nice" means that the buffer is exported to LaTeX format but not
 	//        run through the LaTeX compiler.
 	// if (nice)
-	//     No conversion of the graphics file is needed.
-	//     Return the original filename without any extension.
+	//	no conversion needed!
+	//	Return the original filename as is, because we do not know
+	// 	what the user decide.
 	if (buf->niceFile)
-		return RemoveExtension(orig_file);
+		return orig_file;
 
 	// We're going to be running the exported buffer through the LaTeX
 	// compiler, so must ensure that LaTeX can cope with the graphics
