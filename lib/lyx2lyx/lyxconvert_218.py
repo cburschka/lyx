@@ -189,7 +189,7 @@ def remove_oldminipage(lines):
 def is_empty(lines):
     return filter(is_nonempty_line, lines) == []
 
-font_rexp =  re.compile(r"\\(family|series|shape|size|emph|numeric|bar|noun)")
+move_rexp =  re.compile(r"\\(family|series|shape|size|emph|numeric|bar|noun|end_deeper)")
 ert_rexp = re.compile(r"\\begin_inset|.*\\SpecialChar")
 spchar_rexp = re.compile(r"(.*)(\\SpecialChar.*)")
 ert_begin = ["\\begin_inset ERT",
@@ -240,7 +240,8 @@ def remove_oldert(lines):
 
 	    tmp = []
 	    for line in lines[k:k2]:
-		if font_rexp.match(line):
+                # Move some lines outside the ERT inset:
+		if move_rexp.match(line):
 		    if new2 == []:
 			# This is not necessary, but we want the output to be
 			# as similar as posible to the lyx format
@@ -286,6 +287,7 @@ def remove_oldert(lines):
 	lines[i:j+1] = new
 	i = i+1
 
+    # Delete remaining "\latex xxx" tokens
     i = 0
     while 1:
 	i = find_token(lines, "\\latex ", i)
