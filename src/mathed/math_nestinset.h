@@ -24,8 +24,10 @@ public:
 	void metrics(MathMetricsInfo const & mi) const;
 	/// draw background if locked
 	void draw(MathPainterInfo & pi, int x, int y) const;
-	/// draw angular markers
+	/// draw two angular markers
 	void drawMarkers(MathPainterInfo & pi, int x, int y) const;
+	/// draw four angular markers
+	void drawMarkers2(MathPainterInfo & pi, int x, int y) const;
 	/// appends itself with macro arguments substituted
 	void substitute(MathMacro const & macro);
 	/// identifies NestInsets

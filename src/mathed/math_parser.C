@@ -43,6 +43,7 @@ following hack as starting point to write some macros:
 #include "math_boxinset.h"
 #include "math_charinset.h"
 #include "math_deliminset.h"
+#include "math_envinset.h"
 #include "math_extern.h"
 #include "math_factory.h"
 #include "math_kerninset.h"
@@ -529,6 +530,7 @@ bool Parser::parse_macro(string & name)
 
 	} else if (nextToken().cs() == "newcommand") {
 
+		// skip the 'newcommand'
 		getToken();
 
 		if (getToken().cat() != catBegin) {
@@ -539,7 +541,7 @@ bool Parser::parse_macro(string & name)
 		name = getToken().cs();
 
 		if (getToken().cat() != catEnd) {
-			error("'}' expected\n");
+			error("'}' in \\newcommand expected\n");
 			return false;
 		}
 
@@ -963,16 +965,18 @@ void Parser::parse_into1(MathGridInset & grid, unsigned flags,
 				parse_into2(cell->back(), FLAG_END, true, !stared(name));
 			}
 
-			else {
-				latexkeys const * l = in_word_set(name);
-				if (l) {
-					if (l->inset == "matrix") {
-						cell->push_back(createMathInset(name));
-						parse_into2(cell->back(), FLAG_END, mathmode, false);
-					}
-				} else {
-					lyxerr << "unknow math inset begin '" << name << "'\n";
+			else if (latexkeys const * l = in_word_set(name)) {
+				if (l->inset == "matrix") {
+					cell->push_back(createMathInset(name));
+					parse_into2(cell->back(), FLAG_END, mathmode, false);
 				}
+			}
+
+			else {
+				// lyxerr << "unknow math inset begin '" << name << "'\n";
+				// create generic environment inset
+				cell->push_back(MathAtom(new MathEnvInset(name)));
+				parse_into(cell->back()->cell(0), FLAG_END, mathmode);
 			}
 		}
 

@@ -61,7 +61,7 @@ void MathSpaceInset::draw(MathPainterInfo & pain, int x, int y) const
 
 // Sadly, HP-UX CC can't handle that kind of initialization.
 // XPoint p[4] = {{++x, y-3}, {x, y}, {x+width-2, y}, {x+width-2, y-3}};
-	if (space_ > 6)
+	if (space_ >= 6)
 		return;
 
 	int xp[4];
