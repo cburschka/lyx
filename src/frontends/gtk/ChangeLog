@@ -1,3 +1,8 @@
+2004-11-26  John Spray  <spray_john@users.sourceforge.net>
+	
+	* FileDialogPrivate.[Ch]: use Gtk::FileChooser, add 
+		filtering.
+
 2004-11-25  John Spray  <spray_john@users.sourceforge.net>
 
 	* GViewBase.h: Fix gcc 3.4 compilation
