@@ -17,7 +17,7 @@
 
 import getopt, sys, string, re
 from error import error, warning
-from parser_tools import set_comment, set_format
+from parser_tools import set_comment, set_format, check_token
 
 version = "0.0.2"
 
@@ -113,6 +113,8 @@ def lyxformat(fmt):
 def read_file(file, header, body):
     """Reads a file into the header and body parts"""
     fmt = None
+    preamble = 0
+
     while 1:
         line = file.readline()
         if not line:
@@ -120,7 +122,12 @@ def read_file(file, header, body):
             sys.exit(3)
 
         line = line[:-1]
-        if not line:
+        if check_token(line, '\\begin_preamble'):
+            preamble = 1
+        if check_token(line, '\\end_preamble'):
+            preamble = 0
+
+        if not line and not preamble:
             break
 
         header.append(line)
