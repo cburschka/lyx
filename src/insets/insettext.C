@@ -878,19 +878,19 @@ bool InsetText::lockInsetInInset(BufferView * bv, UpdatableInset * inset)
 		Paragraph * p = par;
 		int const id = inset->id();
 		while(p) {
-			Paragraph::inset_iterator it =
-				p->inset_iterator_begin();
-			Paragraph::inset_iterator const end =
-				p->inset_iterator_end();
+			InsetList::iterator it =
+				p->insetlist.begin();
+			InsetList::iterator const end =
+				p->insetlist.end();
 			for (; it != end; ++it) {
-				if ((*it) == inset) {
+				if (it.getInset() == inset) {
 					getLyXText(bv)->setCursorIntern(bv, p, it.getPos());
 					lockInset(bv, inset);
 					return true;
 				}
-				if ((*it)->getInsetFromID(id)) {
+				if (it.getInset()->getInsetFromID(id)) {
 					getLyXText(bv)->setCursorIntern(bv, p, it.getPos());
-					(*it)->edit(bv);
+					it.getInset()->edit(bv);
 					return the_locking_inset->lockInsetInInset(bv, inset);
 				}
 			}
@@ -1968,10 +1968,10 @@ vector<string> const InsetText::getLabelList() const
 
 	Paragraph * tpar = par;
 	while (tpar) {
-		Paragraph::inset_iterator beg = tpar->inset_iterator_begin();
-		Paragraph::inset_iterator end = tpar->inset_iterator_end();
+		InsetList::iterator beg = tpar->insetlist.begin();
+		InsetList::iterator end = tpar->insetlist.end();
 		for (; beg != end; ++beg) {
-			vector<string> const l = (*beg)->getLabelList();
+			vector<string> const l = beg.getInset()->getLabelList();
 			label_list.insert(label_list.end(), l.begin(), l.end());
 		}
 		tpar = tpar->next();
@@ -2560,13 +2560,13 @@ Inset * InsetText::getInsetFromID(int id_arg) const
 	Paragraph * lp = par;
 
 	while (lp) {
-		for (Paragraph::inset_iterator it = lp->inset_iterator_begin(),
-			 en = lp->inset_iterator_end();
+		for (InsetList::iterator it = lp->insetlist.begin(),
+			 en = lp->insetlist.end();
 			 it != en; ++it)
 		{
-			if ((*it)->id() == id_arg)
-				return *it;
-			Inset * in = (*it)->getInsetFromID(id_arg);
+			if (it.getInset()->id() == id_arg)
+				return it.getInset();
+			Inset * in = it.getInset()->getInsetFromID(id_arg);
 			if (in)
 				return in;
 		}
@@ -2798,10 +2798,10 @@ void InsetText::addPreview(grfx::PreviewLoader & loader) const
 {
 	Paragraph * par = getFirstParagraph(0);
 	while (par) {
-		Paragraph::inset_iterator it  = par->inset_iterator_begin();
-		Paragraph::inset_iterator end = par->inset_iterator_end();
+		InsetList::iterator it  = par->insetlist.begin();
+		InsetList::iterator end = par->insetlist.end();
 		for (; it != end; ++it) {
-			it->addPreview(loader);
+			it.getInset()->addPreview(loader);
 		}
 
 		par = par->next();

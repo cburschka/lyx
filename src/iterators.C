@@ -10,7 +10,7 @@ ParIterator & ParIterator::operator++()
 		// Does the current inset contain more "cells" ?
 		if (p.index >= 0) {
 			++p.index;
-			Paragraph * par = (*p.it)->getFirstParagraph(p.index);
+			Paragraph * par = p.it.getInset()->getFirstParagraph(p.index);
 			if (par) {
 				positions.push(ParPosition(par));
 				return *this;
@@ -20,12 +20,12 @@ ParIterator & ParIterator::operator++()
 			// The following line is needed because the value of
 			// p.it may be invalid if inset was added/removed to
 			// the paragraph pointed by the iterator
-			p.it = p.par->inset_iterator_begin();
+			p.it = p.par->insetlist.begin();
 
 		// Try to find the next inset that contains paragraphs
-		Paragraph::inset_iterator end = p.par->inset_iterator_end();
+		InsetList::iterator end = p.par->insetlist.end();
 		for (; p.it != end; ++p.it) {
-			Paragraph * par = (*p.it)->getFirstParagraph(0);
+			Paragraph * par = p.it.getInset()->getFirstParagraph(0);
 			if (par) {
 				p.index = 0;
 				positions.push(ParPosition(par));

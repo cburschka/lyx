@@ -139,15 +139,9 @@ void Paragraph::Pimpl::insertChar(pos_type pos, value_type c,
 		it->pos(it->pos() + 1);
 	}
 
-	// Update the inset table.
-	InsetTable search_inset(pos, 0);
-	for (InsetList::iterator it = lower_bound(owner_->insetlist.begin(),
-						       owner_->insetlist.end(),
-						       search_inset, matchIT());
-	     it != owner_->insetlist.end(); ++it)
-	{
-		++it->pos;
-	}
+	// Update the insets
+	owner_->insetlist.increasePosAfterPos(pos);
+	
 	owner_->setFont(pos, font);
 }
 
@@ -161,19 +155,10 @@ void Paragraph::Pimpl::insertInset(pos_type pos,
 	insertChar(pos, META_INSET, font);
 	lyx::Assert(text[pos] == META_INSET);
 
-	// Add a new entry in the inset table.
-	InsetTable search_inset(pos, 0);
-	InsetList::iterator it = lower_bound(owner_->insetlist.begin(),
-						  owner_->insetlist.end(),
-						  search_inset, matchIT());
-	if (it != owner_->insetlist.end() && it->pos == pos) {
-		lyxerr << "ERROR (Paragraph::InsertInset): "
-			"there is an inset in position: " << pos << endl;
-	} else {
-		owner_->insetlist.insert(it, InsetTable(pos, inset));
-		inset->parOwner(owner_);
-	}
-
+	// Add a new entry in the insetlist.
+	owner_->insetlist.insert(inset, pos);
+	inset->parOwner(owner_);
+	
 	if (inset_owner)
 		inset->setOwner(inset_owner);
 }
@@ -184,16 +169,7 @@ void Paragraph::Pimpl::erase(pos_type pos)
 	lyx::Assert(pos < size());
 	// if it is an inset, delete the inset entry
 	if (text[pos] == Paragraph::META_INSET) {
-		// find the entry
-		InsetTable search_inset(pos, 0);
-		InsetList::iterator it =
-			lower_bound(owner_->insetlist.begin(),
-					 owner_->insetlist.end(),
-					 search_inset, matchIT());
-		if (it != owner_->insetlist.end() && it->pos == pos) {
-			delete it->inset;
-			owner_->insetlist.erase(it);
-		}
+		owner_->insetlist.erase(pos);
 	}
 
 	text.erase(text.begin() + pos);
@@ -228,15 +204,8 @@ void Paragraph::Pimpl::erase(pos_type pos)
 	for (; it != fend; ++it)
 		it->pos(it->pos() - 1);
 
-	// Update the inset table.
-	InsetTable search_inset(pos, 0);
-	InsetList::iterator lend = owner_->insetlist.end();
-	for (InsetList::iterator it =
-		     upper_bound(owner_->insetlist.begin(),
-				      lend,
-				      search_inset, matchIT());
-	     it != lend; ++it)
-		--it->pos;
+	// Update the insetlist.
+	owner_->insetlist.decreasePosAfterPos(pos);
 }
 
 
@@ -637,13 +606,13 @@ void Paragraph::Pimpl::validate(LaTeXFeatures & features,
 		features.require("ParagraphLeftIndent");
 
 	// then the insets
-	InsetList::const_iterator icit = owner_->insetlist.begin();
-	InsetList::const_iterator iend = owner_->insetlist.end();
+	InsetList::iterator icit = owner_->insetlist.begin();
+	InsetList::iterator iend = owner_->insetlist.end();
 	for (; icit != iend; ++icit) {
-		if (icit->inset) {
-			icit->inset->validate(features);
+		if (icit.getInset()) {
+			icit.getInset()->validate(features);
 			if (layout.needprotect &&
-			    icit->inset->lyxCode() == Inset::FOOT_CODE)
+			    icit.getInset()->lyxCode() == Inset::FOOT_CODE)
 				features.require("NeedLyXFootnoteCode");
 		}
 	}
@@ -663,11 +632,11 @@ void Paragraph::Pimpl::validate(LaTeXFeatures & features,
 
 Paragraph * Paragraph::Pimpl::getParFromID(int id) const
 {
-	InsetList::const_iterator cit = owner_->insetlist.begin();
-	InsetList::const_iterator lend = owner_->insetlist.end();
+	InsetList::iterator cit = owner_->insetlist.begin();
+	InsetList::iterator lend = owner_->insetlist.end();
 	Paragraph * result;
 	for (; cit != lend; ++cit) {
-		if ((result = cit->inset->getParFromID(id)))
+		if ((result = cit.getInset()->getParFromID(id)))
 			return result;
 	}
 	return 0;

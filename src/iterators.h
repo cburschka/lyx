@@ -10,11 +10,11 @@
 class ParPosition {
 public:
 	ParPosition(Paragraph * p)
-		: par(p), it(p->inset_iterator_begin()), index(-1) {}
+		: par(p), it(p->insetlist.begin()), index(-1) {}
 	///
 	Paragraph * par;
 	///
-	Paragraph::inset_iterator it;
+	InsetList::iterator it;
 	///
 	int index;
 };

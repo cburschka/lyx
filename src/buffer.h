@@ -372,7 +372,7 @@ public:
 		inset_iterator & operator++() { // prefix ++
 			if (par) {
 				++it;
-				if (it == par->inset_iterator_end()) {
+				if (it == par->insetlist.end()) {
 					par = par->next();
 					setParagraph();
 				}
@@ -384,7 +384,7 @@ public:
 			inset_iterator tmp(par, it.getPos());
 			if (par) {
 				++it;
-				if (it == par->inset_iterator_end()) {
+				if (it == par->insetlist.end()) {
 					par = par->next();
 					setParagraph();
 				}
@@ -393,7 +393,7 @@ public:
 		}
 
 		///
-		Inset * operator*() { return *it; }
+		Inset * operator*() { return it.getInset(); }
 
 		///
 		Paragraph * getPar() { return par; }
@@ -409,7 +409,7 @@ public:
 		///
 		Paragraph * par;
 		///
-		Paragraph::inset_iterator it;
+		InsetList::iterator it;
 	};
 
 	///

@@ -191,19 +191,20 @@ bool BufferView::removeAutoInsets()
 			}
 		}
 
-		Paragraph::inset_iterator pit = par->inset_iterator_begin();
-		Paragraph::inset_iterator pend = par->inset_iterator_end();
+		InsetList::iterator pit = par->insetlist.begin();
+		InsetList::iterator pend = par->insetlist.end();
+
 		while (pit != pend) {
-			if (pit->autoDelete()) {
+			if (pit.getInset()->autoDelete()) {
 				removed = true;
 				pos_type const pos = pit.getPos();
 
 				par->erase(pos);
 				// We just invalidated par's inset iterators so
 				// we get the next valid iterator position
-				pit = par->InsetIterator(pos);
+				pit = par->insetlist.insetIterator(pos);
 				// and ensure we have a valid end iterator.
-				pend = par->inset_iterator_end();
+				pend = par->insetlist.end();
 
 				if (cursor_par == par) {
 					// update the saved cursor position
@@ -523,20 +524,20 @@ bool BufferView::lockInset(UpdatableInset * inset)
 		// Then do a deep look of the inset and lock the right one
 		Paragraph * par = buffer()->paragraph;
 		int const id = inset->id();
-		while(par) {
-			Paragraph::inset_iterator it =
-				par->inset_iterator_begin();
-			Paragraph::inset_iterator const end =
-				par->inset_iterator_end();
+		while (par) {
+			InsetList::iterator it =
+				par->insetlist.begin();
+			InsetList::iterator const end =
+				par->insetlist.end();
 			for (; it != end; ++it) {
-				if ((*it) == inset) {
+				if (it.getInset() == inset) {
 					text->setCursorIntern(this, par, it.getPos());
 					theLockingInset(inset);
 					return true;
 				}
-				if ((*it)->getInsetFromID(id)) {
+				if (it.getInset()->getInsetFromID(id)) {
 					text->setCursorIntern(this, par, it.getPos());
-					(*it)->edit(this);
+					it.getInset()->edit(this);
 					return theLockingInset()->lockInsetInInset(this, inset);
 				}
 			}
@@ -656,10 +657,10 @@ bool BufferView::ChangeInsets(Inset::Code code,
 	     it != end; ++it) {
 		Paragraph * par = *it;
 		bool changed_inset = false;
-		for (Paragraph::inset_iterator it2 = par->inset_iterator_begin();
-		     it2 != par->inset_iterator_end(); ++it2) {
-			if ((*it2)->lyxCode() == code) {
-				InsetCommand * inset = static_cast<InsetCommand *>(*it2);
+		for (InsetList::iterator it2 = par->insetlist.begin();
+		     it2 != par->insetlist.end(); ++it2) {
+			if (it2.getInset()->lyxCode() == code) {
+				InsetCommand * inset = static_cast<InsetCommand *>(it2.getInset());
 				if (inset->getContents() == from) {
 					inset->setContents(to);
 					changed_inset = true;

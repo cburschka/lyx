@@ -130,9 +130,9 @@ Paragraph::Paragraph(Paragraph const & lp, bool same_ids)
 	for (InsetList::iterator it = insetlist.begin();
 	     it != insetlist.end(); ++it)
 	{
-		it->inset = it->inset->clone(*current_view->buffer(), same_ids);
+		it.setInset(it.getInset()->clone(*current_view->buffer(), same_ids));
 		// tell the new inset who is the boss now
-		it->inset->parOwner(this);
+		it.getInset()->parOwner(this);
 	}
 }
 
@@ -144,11 +144,6 @@ Paragraph::~Paragraph()
 		previous_->next_ = next_;
 	if (next_)
 		next_->previous_ = previous_;
-
-	for (InsetList::iterator it = insetlist.begin();
-	     it != insetlist.end(); ++it) {
-		delete it->inset;
-	}
 
 	// ale970302
 	delete bibkey;
@@ -362,12 +357,12 @@ void Paragraph::cutIntoMinibuffer(BufferParams const & bparams, pos_type pos)
 			InsetList::iterator it = insetlist.begin();
 			InsetList::iterator end = insetlist.end();
 			for (; it != end; ++it) {
-				if (it->pos == pos)
+				if (it.getPos() == pos)
 					break;
 			}
 
-			if (it != end && it->pos == pos)
-				it->inset = 0;
+			if (it != end && it.getPos() == pos)
+				it.setInset(0);
 			// the inset is not in a paragraph anymore
 			minibuffer_inset->parOwner(0);
 		} else {
@@ -461,12 +456,12 @@ Inset * Paragraph::getInset(pos_type pos)
 	InsetList::iterator it = insetlist.begin();
 	InsetList::iterator end = insetlist.end();
 	for (; it != end; ++it) {
-		if (it->pos == pos)
+		if (it.getPos() == pos)
 			break;
 	}
 
-	if (it != end && it->pos == pos)
-		return it->inset;
+	if (it != end && it.getPos() == pos)
+		return it.getInset();
 
 	lyxerr << "ERROR (Paragraph::getInset): "
 	       << "Inset does not exist: " << pos << endl;
@@ -485,26 +480,7 @@ Inset const * Paragraph::getInset(pos_type pos) const
 {
 	lyx::Assert(pos < size());
 
-	// Find the inset.
-	InsetList::const_iterator cit = insetlist.begin();
-	InsetList::const_iterator end = insetlist.end();
-	for (; cit != end; ++cit) {
-		if (cit->pos == pos)
-			break;
-	}
-
-	if (cit != end && cit->pos == pos)
-		return cit->inset;
-
-	lyxerr << "ERROR (Paragraph::getInset): "
-	       << "Inset does not exist: " << pos << endl;
-	//::raise(SIGSTOP);
-	//text[pos] = ' '; // WHY!!! does this set the pos to ' '????
-	// Did this commenting out introduce a bug? So far I have not
-	// see any, please enlighten me. (Lgb)
-	// My guess is that since the inset does not exist, we might
-	// as well replace it with a space to prevent craches. (Asger)
-	return 0;
+	return insetlist.get(pos);
 }
 
 
@@ -1127,29 +1103,15 @@ Paragraph const * Paragraph::outerHook() const
 }
 
 
-Paragraph::inset_iterator
-Paragraph::InsetIterator(pos_type pos)
-{
-	InsetList::iterator it = insetlist.begin();
-	InsetList::iterator end = insetlist.end();
-	for (; it != end; ++it) {
-		if (it->pos >= pos)
-			break;
-	}
-
-	return inset_iterator(it);
-}
-
-
 // returns -1 if inset not found
 int Paragraph::getPositionOfInset(Inset const * inset) const
 {
 	// Find the entry.
-	InsetList::const_iterator cit = insetlist.begin();
-	InsetList::const_iterator end = insetlist.end();
-	for (; cit != end; ++cit) {
-		if (cit->inset == inset) {
-			return cit->pos;
+	InsetList::iterator it = insetlist.begin();
+	InsetList::iterator end = insetlist.end();
+	for (; it != end; ++it) {
+		if (it.getInset() == inset) {
+			return it.getPos();
 		}
 	}
 	if (inset == bibkey)
@@ -1982,11 +1944,11 @@ string const Paragraph::asString(Buffer const * buffer,
 void Paragraph::setInsetOwner(Inset * i)
 {
 	pimpl_->inset_owner = i;
-	InsetList::const_iterator cit = insetlist.begin();
-	InsetList::const_iterator end = insetlist.end();
-	for (; cit != end; ++cit) {
-		if (cit->inset)
-			cit->inset->setOwner(i);
+	InsetList::iterator it = insetlist.begin();
+	InsetList::iterator end = insetlist.end();
+	for (; it != end; ++it) {
+		if (it.getInset())
+			it.getInset()->setOwner(i);
 	}
 }
 
@@ -1994,30 +1956,14 @@ void Paragraph::setInsetOwner(Inset * i)
 void Paragraph::deleteInsetsLyXText(BufferView * bv)
 {
 	// then the insets
-	InsetList::const_iterator cit = insetlist.begin();
-	InsetList::const_iterator end = insetlist.end();
-	for (; cit != end; ++cit) {
-		if (cit->inset && cit->inset->isTextInset()) {
-			static_cast<UpdatableInset *>
-				(cit->inset)->deleteLyXText(bv, true);
-		}
-	}
+	insetlist.deleteInsetsLyXText(bv);
 }
 
 
 void Paragraph::resizeInsetsLyXText(BufferView * bv)
 {
 	// then the insets
-	InsetList::const_iterator cit = insetlist.begin();
-	InsetList::const_iterator end = insetlist.end();
-	for (; cit != end; ++cit) {
-		if (cit->inset) {
-			if (cit->inset->isTextInset()) {
-				static_cast<UpdatableInset *>
-					(cit->inset)->resizeLyXText(bv, true);
-			}
-		}
-	}
+	insetlist.resizeInsetsLyXText(bv);
 }
 
 
@@ -2086,23 +2032,6 @@ void Paragraph::clearContents()
 void Paragraph::setChar(pos_type pos, value_type c)
 {
 	pimpl_->setChar(pos, c);
-}
-
-
-Paragraph::inset_iterator::inset_iterator(Paragraph::InsetList::iterator const & iter)
- : it(iter)
-{}
-
-
-Paragraph::inset_iterator Paragraph::inset_iterator_begin()
-{
-	return inset_iterator(insetlist.begin());
-}
-
-
-Paragraph::inset_iterator Paragraph::inset_iterator_end()
-{
-	return inset_iterator(insetlist.end());
 }
 
 

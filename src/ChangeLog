@@ -1,3 +1,30 @@
+2002-08-11  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* insets/insettext.C: InsetList changes
+	
+	* graphics/GraphicsSupport.C (operator()): InsetList changes
+	
+	* toc.C (getTocList): InsetList changes
+	
+	* paragraph_pimpl.[Ch]: InsetList changes
+	
+	* paragraph.[Ch]: InsetList changes
+
+	* buffer.C (inset_iterator): InsetList changes
+	(setParagraph): ditto
+	* buffer.h (inset_iterator): ditto
+	* iterators.C (operator++): ditto
+	* iterators.h: ditto
+
+	* Makefile.am (lyx_SOURCES): add InsetList.C and InsetList.h
+
+	* InsetList.[Ch]: new files, most InsetList handling moved out of
+	paragraph.C.
+
+	* BufferView2.C (removeAutoInsets): InsetList changes
+	(lockInset): ditto
+	(ChangeInsets): ditto
+
 2002-08-10  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* paragraph_pimpl.h (empty): new function
@@ -5,7 +32,7 @@
 	* paragraph.[Ch] (empty): new function
 
 	* other files: use the new Paragraph::empty function
-	
+
 2002-08-09  John Levon  <levon@movementarian.org>
 
 	* lyxtext.h: remove unused refresh_height

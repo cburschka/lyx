@@ -93,12 +93,12 @@ TocList const getTocList(Buffer const * buf)
 
 		// For each paragraph, traverse its insets and look for
 		// FLOAT_CODE
-		Paragraph::inset_iterator it = par->inset_iterator_begin();
-		Paragraph::inset_iterator end =	par->inset_iterator_end();
+		InsetList::iterator it = par->insetlist.begin();
+		InsetList::iterator end = par->insetlist.end();
 		for (; it != end; ++it) {
-			if ((*it)->lyxCode() == Inset::FLOAT_CODE) {
+			if (it.getInset()->lyxCode() == Inset::FLOAT_CODE) {
 				InsetFloat * il =
-					static_cast<InsetFloat*>(*it);
+					static_cast<InsetFloat*>(it.getInset());
 				il->addToToc(toclist, buf);
 			}
 		}

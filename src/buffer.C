@@ -3871,8 +3871,8 @@ bool Buffer::isMultiLingual()
 Buffer::inset_iterator::inset_iterator(Paragraph * paragraph, pos_type pos)
 	: par(paragraph)
 {
-	it = par->InsetIterator(pos);
-	if (it == par->inset_iterator_end()) {
+	it = par->insetlist.insetIterator(pos);
+	if (it == par->insetlist.end()) {
 		par = par->next();
 		setParagraph();
 	}
@@ -3882,8 +3882,8 @@ Buffer::inset_iterator::inset_iterator(Paragraph * paragraph, pos_type pos)
 void Buffer::inset_iterator::setParagraph()
 {
 	while (par) {
-		it = par->inset_iterator_begin();
-		if (it != par->inset_iterator_end())
+		it = par->insetlist.begin();
+		if (it != par->insetlist.end())
 			return;
 		par = par->next();
 	}

@@ -65,6 +65,8 @@ lyx_SOURCES = \
 	Floating.h \
 	FuncStatus.C \
 	FuncStatus.h \
+	InsetList.C \
+	InsetList.h \
 	LColor.C \
 	LColor.h \
 	LString.h \

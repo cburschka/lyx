@@ -65,16 +65,16 @@ struct InsetVisibleInParagraph {
 	bool operator()(VisibleParagraph const & vp)
 	{
 		Paragraph * par = vp.par;
-		Paragraph::inset_iterator it  = par->inset_iterator_begin();
-		Paragraph::inset_iterator end = par->inset_iterator_end();
+		InsetList::iterator it  = par->insetlist.begin();
+		InsetList::iterator end = par->insetlist.end();
 
 		// Can't refactor this as a functor because we rely on the
 		// inset_iterator member function getPos().
 		for (; it != end; ++it) {
 			lyx::pos_type const pos = it.getPos();
 			if (pos >= vp.start && pos <= vp.end) {
-				if (*it == &inset_ ||
-				    it->getInsetFromID(inset_.id()) != 0)
+				if (it.getInset() == &inset_ ||
+				    it.getInset()->getInsetFromID(inset_.id()) != 0)
 					return true;
 			}
 		}

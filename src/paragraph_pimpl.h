@@ -62,16 +62,6 @@ struct Paragraph::Pimpl {
 	///
 	boost::array<int, 10> counter_;
 
-	///
-	friend struct matchIT;
-	///
-	struct matchIT {
-		/// used by lower_bound and upper_bound
-		inline
-		int operator()(InsetTable const & a, InsetTable const & b) const {
-			return a.pos < b.pos;
-		}
-	};
 	/** A font entry covers a range of positions. Notice that the
 	    entries in the list are inserted in random order.
 	    I don't think it's worth the effort to implement a more effective

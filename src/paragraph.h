@@ -15,6 +15,7 @@
 
 #include "lyxlayout_ptr_fwd.h"
 #include "lyxfont.h" // Just for LyXFont::FONT_SIZE
+#include "InsetList.h"
 
 #include "insets/inset.h" // Just for Inset::Code
 
@@ -37,8 +38,7 @@ class TexRow;
 #define NO_PEXTRA_REALLY 1
 
 // Define this if you want to try out the new storage container for
-// paragraphs. std::container instead of obfuscated homegrown
-// linked list. (Lgb)
+// paragraphs. (Lgb)
 // This is non working and far from finished.
 // #define NO_NEXT 1
 
@@ -258,9 +258,10 @@ public:
 	/// pos <= size() (there is a dummy font change at the end of each par)
 	void setFont(lyx::pos_type pos, LyXFont const & font);
 	/// Returns the height of the highest font in range
-	LyXFont::FONT_SIZE highestFontInRange(lyx::pos_type startpos,
-					      lyx::pos_type endpos,
-					      LyXFont::FONT_SIZE const def_size) const;
+	LyXFont::FONT_SIZE
+	highestFontInRange(lyx::pos_type startpos,
+			   lyx::pos_type endpos,
+			   LyXFont::FONT_SIZE const def_size) const;
 	///
 	void insertChar(lyx::pos_type pos, value_type c);
 	///
@@ -329,76 +330,18 @@ public:
 	///
 	bool isFreeSpacing() const;
 
+	///
 	ParagraphParameters & params();
+	///
 	ParagraphParameters const & params() const;
-private:
-	///
-	LyXLayout_ptr layout_;
-public:
-	/** Both these definitions must be made public to keep Compaq cxx 6.5
-	 *  happy.
-	 */
-	///
-	struct InsetTable {
-		///
-		lyx::pos_type pos;
-		///
-		Inset * inset;
-		///
-		InsetTable(lyx::pos_type p, Inset * i) : pos(p), inset(i) {}
-	};
-
-	///
-	typedef std::vector<InsetTable> InsetList;
-private:
 	///
 	InsetList insetlist;
-public:
-	///
-	class inset_iterator {
-	public:
-		///
-		inset_iterator() {}
-		//
-		inset_iterator(InsetList::iterator const & iter);
-		///
-		inset_iterator & operator++() {
-			++it;
-			return *this;
-		}
-		///
-		Inset * operator*() { return it->inset; }
-		///
-		Inset * operator->() { return it->inset; }
-
-		///
-		lyx::pos_type getPos() const { return it->pos; }
-		///
-		bool operator==(inset_iterator const & iter) const {
-			return it == iter.it;
-		}
-		///
-		bool operator!=(inset_iterator const & iter) const {
-			return it != iter.it;
-		}
-	private:
-		///
-		InsetList::iterator it;
-	};
-	///
-	friend class inset_iterator;
-
-	///
-	inset_iterator inset_iterator_begin();
-	///
-	inset_iterator inset_iterator_end();
-	/// returns inset iterator of the first inset at or after pos.
-	inset_iterator InsetIterator(lyx::pos_type pos);
-
 	///
 	Counters & counters();
 
 private:
+	///
+	LyXLayout_ptr layout_;
 	/// if anything uses this we don't want it to.
 	Paragraph(Paragraph const &);
 	///
