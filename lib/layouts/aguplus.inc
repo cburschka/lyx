@@ -57,6 +57,12 @@ Style Paragraph
 End
 
 
+Style Affiliation
+	CopyStyle             Author
+	LatexName             affil
+End
+
+
 Style Paragraph*
 	CopyStyle             Paragraph
 	Margin                Static
