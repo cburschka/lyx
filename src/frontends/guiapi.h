@@ -31,7 +31,6 @@ void gui_ShowSearch(Dialogs &);
 void gui_ShowSendto(Dialogs &);
 void gui_ShowSpellchecker(Dialogs &);
 void gui_ShowTexinfo(Dialogs &);
-void gui_ShowThesaurus(string const &, Dialogs &);
 
 } // extern "C"
 

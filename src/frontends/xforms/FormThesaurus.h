@@ -13,17 +13,19 @@
 #define FORMTHESAURUS_H
 
 
-#include "FormBase.h"
+#include "FormDialogView.h"
+
 
 class ControlThesaurus;
 struct FD_thesaurus;
 
 /** This class provides an XForms implementation of the Thesaurus dialog.
  */
-class FormThesaurus : public FormCB<ControlThesaurus, FormDB<FD_thesaurus> > {
+class FormThesaurus
+	: public FormController<ControlThesaurus, FormView<FD_thesaurus> > {
 public:
 	///
-	FormThesaurus();
+	FormThesaurus(Dialog &);
 private:
 	/// not needed.
 	virtual void apply() {}

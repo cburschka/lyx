@@ -1,3 +1,8 @@
+2003-03-26  Angus Leeming  <leeming@lyx.org>
+
+	* BufferView_pimpl.C (dispatch): changes to the Dialogs interface for
+	the thesaurus dialog.
+
 2003-03-26  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* ParagraphList.C (erase): handle the case where it == begin

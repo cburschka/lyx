@@ -13,33 +13,33 @@
 #ifndef CONTROLTHESAURUS_H
 #define CONTROLTHESAURUS_H
 
-
-#include <vector>
-
-#include "LString.h"
+#include "Dialog.h"
 #include "Thesaurus.h"
-#include "ControlDialog_impl.h"
+#include <vector>
 
 /** A controller for Thesaurus dialogs.
  */
-class ControlThesaurus : public ControlDialogBD {
+class ControlThesaurus : public Dialog::Controller {
 public:
 	///
-	ControlThesaurus(LyXView &, Dialogs &);
+	ControlThesaurus(Dialog &);
+	///
+	virtual bool initialiseParams(string const & data);
+	///
+	virtual void clearParams();
+	///
+	virtual void dispatchParams() {}
+	///
+	virtual bool isBufferDependent() const { return true; }
 
 	/// replace the particular string
 	void replace(string const & newstr);
-
-	/// show dialog
-	virtual void showEntry(string const & str);
 
 	/// get meanings
 	Thesaurus::Meanings const & getMeanings(string const & str);
 
 	/// the text
-	string const & text() {
-		return oldstr_;
-	}
+	string const & text() const { return oldstr_; }
 
 private:
 	/// last string looked up

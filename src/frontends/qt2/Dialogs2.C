@@ -74,18 +74,3 @@ void Dialogs::showTexinfo()
 {
 	pimpl_->texinfo.controller().show();
 }
-
-
-#ifdef HAVE_LIBAIKSAURUS
-
-void Dialogs::showThesaurus(string const & s)
-{
-	pimpl_->thesaurus.controller().showEntry(s);
-}
-
-#else
-
-void Dialogs::showThesaurus(string const &)
-{}
-
-#endif

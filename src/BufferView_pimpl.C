@@ -1212,7 +1212,7 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev_in)
 			}
 		}
 
-		bv_->owner()->getDialogs().showThesaurus(arg);
+		bv_->owner()->getDialogs().show("thesaurus", arg);
 	}
 		break;
 

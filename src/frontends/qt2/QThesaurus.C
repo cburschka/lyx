@@ -21,11 +21,11 @@
 #include <qpushbutton.h>
 #include <qlistbox.h>
 
-typedef Qt2CB<ControlThesaurus, Qt2DB<QThesaurusDialog> > base_class;
+typedef QController<ControlThesaurus, QView<QThesaurusDialog> > base_class;
 
 
-QThesaurus::QThesaurus()
-	: base_class(qt_("LyX: Thesaurus"))
+QThesaurus::QThesaurus(Dialog & parent)
+	: base_class(parent, qt_("LyX: Thesaurus"))
 {
 }
 

@@ -36,58 +36,38 @@
 #include "ControlWrap.h"
 
 #include "QAbout.h"
-#include "QAboutDialog.h"
 #include "QBibitem.h"
-#include "QBibitemDialog.h"
 #include "QBibtex.h"
-#include "QBibtexDialog.h"
 #include "QChanges.h"
-#include "QChangesDialog.h"
 #include "QCharacter.h"
-#include "QCharacterDialog.h"
 #include "QCitation.h"
-#include "QCitationDialog.h"
 #include "QError.h"
-#include "QErrorDialog.h"
 #include "QERT.h"
-#include "QERTDialog.h"
 #include "QExternal.h"
-#include "QExternalDialog.h"
 #include "QFloat.h"
-#include "QFloatDialog.h"
 // Here would be an appropriate point to lecture on the evils
 // of the Qt headers, those most fucked up of disgusting ratholes.
 // But I won't.
 #undef signals
 #include "QGraphics.h"
-#include "QGraphicsDialog.h"
 #include "QInclude.h"
-#include "QIncludeDialog.h"
 #include "QIndex.h"
-#include "QIndexDialog.h"
 #include "QLog.h"
-#include "QLogDialog.h"
 #include "QMinipage.h"
-#include "QMinipageDialog.h"
 #include "QParagraph.h"
-#include "QParagraphDialog.h"
 #include "QRef.h"
-#include "QRefDialog.h"
 #include "QShowFile.h"
-#include "QShowFileDialog.h"
 #include "QTabular.h"
-#include "QTabularDialog.h"
 #include "QTabularCreate.h"
-#include "QTabularCreateDialog.h"
 #include "QToc.h"
-#include "QTocDialog.h"
 #include "QURL.h"
-#include "QURLDialog.h"
 #include "QVCLog.h"
-#include "QVCLogDialog.h"
-
 #include "QWrap.h"
-#include "QWrapDialog.h"
+
+#ifdef HAVE_LIBAIKSAURUS
+#include "ControlThesaurus.h"
+#include "QThesaurus.h"
+#endif
 
 #include "Qt2BC.h"
 #include "ButtonController.h"
@@ -99,7 +79,13 @@ namespace {
 char const * const dialognames[] = { "about", "bibitem", "bibtex", "changes",
 "character", "citation", "error", "ert", "external", "file", "float",
 "graphics", "include", "index", "label", "log", "minipage", "paragraph",
-"ref", "tabular", "tabularcreate", "toc", "url", "vclog", "wrap" };
+"ref", "tabular", "tabularcreate",
+
+#ifdef HAVE_LIBAIKSAURUS
+"thesaurus",
+#endif
+
+"toc", "url", "vclog", "wrap" };
 
 char const * const * const end_dialognames =
 	dialognames + (sizeof(dialognames) / sizeof(char *));
@@ -220,6 +206,12 @@ Dialog * Dialogs::build(string const & name)
 		dialog->setController(new ControlTabularCreate(*dialog));
 		dialog->setView(new QTabularCreate(*dialog));
 		dialog->bc().bp(new IgnorantPolicy);
+#ifdef HAVE_LIBAIKSAURUS
+	} else if (name == "thesaurus") {
+		dialog->setController(new ControlThesaurus(*dialog));
+		dialog->setView(new QThesaurus(*dialog));
+		dialog->bc().bp(new OkApplyCancelReadOnlyPolicy);
+#endif
 	} else if (name == "toc") {
 		dialog->setController(new ControlToc(*dialog));
 		dialog->setView(new QToc(*dialog));

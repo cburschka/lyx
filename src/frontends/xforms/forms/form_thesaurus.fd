@@ -46,7 +46,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NorthWest FL_NorthWest
 name: button_replace
-callback: C_FormBaseInputCB
+callback: C_FormDialogView_InputCB
 argument: 0
 
 --------------------
@@ -64,7 +64,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NorthWest FL_NorthWest
 name: button_close
-callback: C_FormBaseOKCB
+callback: C_FormDialogView_OKCB
 argument: 0
 
 --------------------
@@ -82,7 +82,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NorthWest FL_NorthWest
 name: input_entry
-callback: C_FormBaseInputCB
+callback: C_FormDialogView_InputCB
 argument: 0
 
 --------------------
@@ -100,7 +100,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NorthWest FL_NorthWest
 name: input_replace
-callback: C_FormBaseInputCB
+callback: C_FormDialogView_InputCB
 argument: 0
 
 --------------------
@@ -118,7 +118,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: browser_meanings
-callback: C_FormBaseInputCB
+callback: C_FormDialogView_InputCB
 argument: 0
 
 ==============================

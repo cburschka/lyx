@@ -1,3 +1,14 @@
+2003-03-26  Angus Leeming  <leeming@lyx.org>
+
+	* Dialogs.C:
+	* Dialogs2.C:
+	* Dialogs_impl.h: remove the thesaurus dialog.
+
+	* Dialogs3.C: add it here.
+
+	* FormThesaurus.[Ch]:
+	* forms/form_thesaurus.fd: changes to use the new Dialog-based scheme.
+
 2003-03-25  Angus Leeming  <leeming@lyx.org>
 
 	* Dialogs.C:

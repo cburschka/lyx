@@ -81,10 +81,4 @@ void gui_ShowTexinfo(Dialogs & d)
 }
 
 
-void gui_ShowThesaurus(string const & s, Dialogs & d)
-{
-	d.showThesaurus(s);
-}
-
-
 } // extern "C"

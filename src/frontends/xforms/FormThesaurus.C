@@ -29,11 +29,11 @@ using std::islower;
 using std::vector;
 
 
-typedef FormCB<ControlThesaurus, FormDB<FD_thesaurus> > base_class;
+typedef FormController<ControlThesaurus, FormView<FD_thesaurus> > base_class;
 
 
-FormThesaurus::FormThesaurus()
-	: base_class(_("Thesaurus"), false),
+FormThesaurus::FormThesaurus(Dialog & parent)
+	: base_class(parent, _("Thesaurus"), false),
 	  clickline_(-1)
 {
 }

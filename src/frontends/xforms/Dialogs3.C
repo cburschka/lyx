@@ -63,6 +63,11 @@
 #include "FormVCLog.h"
 #include "FormWrap.h"
 
+#ifdef HAVE_LIBAIKSAURUS
+#include "ControlThesaurus.h"
+#include "FormThesaurus.h"
+#endif
+
 #include "xformsBC.h"
 #include "ButtonController.h"
 
@@ -72,7 +77,13 @@ namespace {
 char const * const dialognames[] = { "about", "bibitem", "bibtex", "changes",
 "character", "citation", "error", "ert", "external", "file", "float",
 "graphics", "include", "index", "label", "log", "minipage", "paragraph",
-"ref", "tabular", "tabularcreate", "toc", "url", "vclog", "wrap" };
+"ref", "tabular", "tabularcreate",
+
+#ifdef HAVE_LIBAIKSAURUS
+"thesaurus",
+#endif
+
+"toc", "url", "vclog", "wrap" };
 
 char const * const * const end_dialognames =
 	dialognames + (sizeof(dialognames) / sizeof(char *));
@@ -191,6 +202,12 @@ Dialog * Dialogs::build(string const & name)
 		dialog->setController(new ControlTabularCreate(*dialog));
 		dialog->setView(new FormTabularCreate(*dialog));
 		dialog->bc().bp(new IgnorantPolicy);
+#ifdef HAVE_LIBAIKSAURUS
+	} else if (name == "thesaurus") {
+		dialog->setController(new ControlThesaurus(*dialog));
+		dialog->setView(new FormThesaurus(*dialog));
+		dialog->bc().bp(new OkApplyCancelReadOnlyPolicy);
+#endif
 	} else if (name == "toc") {
 		dialog->setController(new ControlToc(*dialog));
 		dialog->setView(new FormToc(*dialog));

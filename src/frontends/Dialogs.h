@@ -90,8 +90,6 @@ public:
 	void showSpellchecker();
 	/// show the TexInfo
 	void showTexinfo();
-	/// show the thesaurus dialog
-	void showThesaurus(string const &);
 	//@}
 
 	/** \param name == "about" etc; an identifier used to

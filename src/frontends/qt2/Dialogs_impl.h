@@ -45,12 +45,6 @@
 #include "QTexinfo.h"
 #include "QTexinfoDialog.h"
 
-#ifdef HAVE_LIBAIKSAURUS
-#include "ControlThesaurus.h"
-#include "QThesaurus.h"
-#include "QThesaurusDialog.h"
-#endif
-
 #include "Qt2BC.h"
 
 
@@ -76,11 +70,6 @@ SpellcheckerDialog;
 typedef GUI<ControlTexinfo, QTexinfo, OkCancelPolicy, Qt2BC>
 TexinfoDialog;
 
-#ifdef HAVE_LIBAIKSAURUS
-typedef GUI<ControlThesaurus, QThesaurus, OkApplyCancelReadOnlyPolicy, Qt2BC>
-ThesaurusDialog;
-#endif
-
 struct Dialogs::Impl {
 	Impl(LyXView & lv, Dialogs & d);
 
@@ -91,10 +80,6 @@ struct Dialogs::Impl {
 	SendtoDialog        sendto;
 	SpellcheckerDialog  spellchecker;
 	TexinfoDialog       texinfo;
-
-#ifdef HAVE_LIBAIKSAURUS
-	ThesaurusDialog     thesaurus;
-#endif
 };
 
 #endif // DIALOGS_IMPL_H

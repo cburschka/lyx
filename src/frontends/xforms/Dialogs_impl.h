@@ -58,12 +58,6 @@
 #include "FormTexinfo.h"
 #include "forms/form_texinfo.h"
 
-#ifdef HAVE_LIBAIKSAURUS
-#include "ControlThesaurus.h"
-#include "FormThesaurus.h"
-#include "forms/form_thesaurus.h"
-#endif
-
 typedef GUI<ControlDocument, FormDocument, NoRepeatedApplyReadOnlyPolicy, xformsBC>
 DocumentDialog;
 
@@ -94,11 +88,6 @@ SpellcheckerDialog;
 typedef GUI<ControlTexinfo, FormTexinfo, OkCancelPolicy, xformsBC>
 TexinfoDialog;
 
-#ifdef HAVE_LIBAIKSAURUS
-typedef GUI<ControlThesaurus, FormThesaurus, OkApplyCancelReadOnlyPolicy, xformsBC>
-ThesaurusDialog;
-#endif
-
 struct Dialogs::Impl {
 	Impl(LyXView & lv, Dialogs & d);
 
@@ -112,10 +101,6 @@ struct Dialogs::Impl {
 	SendtoDialog        sendto;
 	SpellcheckerDialog  spellchecker;
 	TexinfoDialog       texinfo;
-
-#ifdef HAVE_LIBAIKSAURUS
-	ThesaurusDialog     thesaurus;
-#endif
 };
 
 #endif // DIALOGS_IMPL_H

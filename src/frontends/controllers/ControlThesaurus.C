@@ -18,16 +18,21 @@
 
 #include "frontends/LyXView.h"
 
-
-ControlThesaurus::ControlThesaurus(LyXView & lv, Dialogs & d)
-	: ControlDialogBD(lv, d)
+ControlThesaurus::ControlThesaurus(Dialog & parent)
+	: Dialog::Controller(parent)
 {}
 
 
-void ControlThesaurus::showEntry(string const & entry)
+bool ControlThesaurus::initialiseParams(string const & data)
 {
-	oldstr_ = entry;
-	show();
+	oldstr_ = data;
+	return true;
+}
+
+
+void ControlThesaurus::clearParams()
+{
+	oldstr_.erase();
 }
 
 
@@ -38,19 +43,20 @@ void ControlThesaurus::replace(string const & newstr)
 	 * deletion/change !
 	 */
 	int const replace_count =
-		lyxfind::LyXReplace(bufferview(), oldstr_, newstr,
+		lyxfind::LyXReplace(kernel().bufferview(), oldstr_, newstr,
 				    true, true, true, false, true);
 
 	oldstr_ = newstr;
 
 	if (replace_count == 0)
-		lv_.message(_("String not found!"));
+		kernel().lyxview().message(_("String not found!"));
 	else
-		lv_.message(_("String has been replaced."));
+		kernel().lyxview().message(_("String has been replaced."));
 }
 
 
-Thesaurus::Meanings const & ControlThesaurus::getMeanings(string const & str)
+Thesaurus::Meanings const &
+ControlThesaurus::getMeanings(string const & str)
 {
 	if (str != laststr_)
 		meanings_ = thesaurus.lookup(str);

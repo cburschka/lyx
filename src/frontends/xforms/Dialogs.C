@@ -27,11 +27,7 @@ Dialogs::~Dialogs()
 
 
 Dialogs::Impl::Impl(LyXView & lv, Dialogs & d)
-	: 
-#ifdef HAVE_LIBAIKSAURUS
-	  thesaurus(lv, d),
-#endif
-	  document(lv, d),
+	: document(lv, d),
 	  forks(lv, d),
 	  mathpanel(lv, d),
 	  preamble(lv, d),

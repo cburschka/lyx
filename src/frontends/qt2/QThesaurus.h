@@ -13,20 +13,21 @@
 #define QTHESAURUS_H
 
 
-#include "Qt2Base.h"
+#include "QDialogView.h"
+
 
 class ControlThesaurus;
 class QThesaurusDialog;
 
 ///
 class QThesaurus
-	: public Qt2CB<ControlThesaurus, Qt2DB<QThesaurusDialog> >
+	: public QController<ControlThesaurus, QView<QThesaurusDialog> >
 {
 public:
 	///
 	friend class QThesaurusDialog;
 	///
-	QThesaurus();
+	QThesaurus(Dialog &);
 private:
 	/// Apply changes
 	virtual void apply() {}
