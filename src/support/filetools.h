@@ -16,19 +16,19 @@
 
 
 ///
-string const CreateBufferTmpDir (string const & pathfor = string());
+string const CreateBufferTmpDir(string const & pathfor = string());
 
 /// Creates directory. Returns true on succes.
 bool createDirectory(string const & name, int permissions);
 
 ///
-string const CreateLyXTmpDir (string const & deflt);
+string const CreateLyXTmpDir(string const & deflt);
 
 ///
-int DestroyBufferTmpDir (string const & tmpdir);
+int DestroyBufferTmpDir(string const & tmpdir);
 
 ///
-int DestroyLyXTmpDir (string const & tmpdir);
+int DestroyLyXTmpDir(string const & tmpdir);
 
 /** Find file by searching several directories.
   Uses a string of paths separated by ";"s to find a file to open.
@@ -37,7 +37,7 @@ int DestroyLyXTmpDir (string const & tmpdir);
     If path entry begins with $$User/, use user_lyxdir.
     Example: "$$User/doc;$$LyX/doc".
 */
-string const FileOpenSearch (string const & path, string const & name,
+string const FileOpenSearch(string const & path, string const & name,
 		       string const & ext = string());
 
 /** Returns the real name of file name in directory path, with optional
@@ -164,8 +164,7 @@ string const MakeAbsPath(string const & RelPath = string(),
   threshold, if given, specifies the maximal length of the path.
   */
 string const
-MakeDisplayPath(string const & path,
-		unsigned int threshold = 1000);
+MakeDisplayPath(string const & path, unsigned int threshold = 1000);
 
 /** Makes relative path out of absolute path.
   If it is deeper than basepath,
