@@ -325,8 +325,9 @@ notify us.
 
   o It is possible to compile lyx with Tru64 Unix cxx compiler
     version 6.2, provided one uses
-	CXX=cxx
-	CXXFLAGS='-ptr /tmp/lyx_cxx_repository -std strict_ansi -g -O'
+	CXX='cxx -std strict_ansi'
+	CXXFLAGS='-ptr /tmp/lyx_cxx_repository -g'
+	CC=cc
 
     Note that this will not work when compiling directly from the cvs
     repository, due to the tricks used by automake for dependencies. Ask

@@ -261,8 +261,12 @@ if test "x$lyx_broken_headers" = "xyes"; then
   AC_DEFINE(BROKEN_HEADERS, 1,
     [Define on SunOS 4 and SCO, were some functions are missing from the headers])
 fi
-AC_CHECK_FUNCS(memmove memset strchr putenv setenv mkfifo snprintf vsnprintf)
-AC_CHECK_FUNCS(mkstemp mktemp)
+AC_CHECK_FUNCS(snprintf vsnprintf)
+LYX_CHECK_DECL(snprintf, stdio.h)
+LYX_CHECK_DECL(vsnprintf, stdio.h)
+
+AC_CHECK_FUNCS(memmove memset strchr putenv setenv mkfifo \
+  mkstemp mktemp)
 
 dnl Until this is fixed in autoconf we provide our own version
 LYX_FUNC_SELECT_ARGTYPES

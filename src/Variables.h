@@ -28,7 +28,7 @@ public:
   /// 
   string const get(string const &) const;
   ///
-  bool isset(string const & var) const;
+  bool set(string const & var) const;
   /// 
   string const expand(string const &) const;
 private:

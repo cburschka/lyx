@@ -1,3 +1,10 @@
+2001-02-06  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* LaTeX.h: yet another std:: that Allan forgot.
+
+	* Variables.C (set): renamed from isset(), because this clashes
+	with some HP-UX macros (grr).
+
 2001-02-06  Allan Rae  <rae@lyx.org>
 
 	* LaTeX.h: Another bug fix.  Missing std:: this time.

@@ -38,7 +38,7 @@ string const Variables::get(string const & var) const
 }
 
 
-bool Variables::isset(string const & var) const
+bool Variables::set(string const & var) const
 {
    Vars::const_iterator cit = vars_.find(var);
    return  (cit != vars_.end()); 

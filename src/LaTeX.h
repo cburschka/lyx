@@ -182,7 +182,7 @@ protected:
 				      std::vector<Aux_Info> const &);
 
 	///
-	bool runBibTeX(vector<Aux_Info> const &);
+	bool runBibTeX(std::vector<Aux_Info> const &);
 
 	///
 	void deleteFilesOnError() const;
