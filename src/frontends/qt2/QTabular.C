@@ -62,12 +62,12 @@ void QTabular::update_contents()
 
 	bool const multicol(tabular->IsMultiColumn(cell));
 
-	dialog_->MulticolumnCB->setChecked(multicol);
+	dialog_->multicolumnCB->setChecked(multicol);
 
 	dialog_->rotateCellCB->setChecked(tabular->GetRotateCell(cell));
 	dialog_->rotateTabularCB->setChecked(tabular->GetRotateTabular());
 
-	dialog_->LongtabularCB->setChecked(tabular->IsLongTabular());
+	dialog_->longTabularCB->setChecked(tabular->IsLongTabular());
 
 #if 0
 	if (tabular->IsMultiColumn(cell)) {
