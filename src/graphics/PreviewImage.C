@@ -32,6 +32,8 @@ struct PreviewImage::Impl : public boost::signals::trackable {
 	Impl(PreviewImage & p, PreviewLoader & l,
 	     string const & s, string const & f, double af);
 	///
+	~Impl();
+	///
 	void startLoading();	
 	///
 	Image const * image() const { return iloader_->image(); }
@@ -114,6 +116,12 @@ PreviewImage::Impl::Impl(PreviewImage & p, PreviewLoader & l,
 	: parent_(p), ploader_(l), iloader_(new Loader(bf)),
 	  snippet_(s), ascent_frac_(af)
 {}
+
+
+PreviewImage::Impl::~Impl()
+{
+	lyx::unlink(iloader_->filename());
+}
 
 
 void PreviewImage::Impl::startLoading()

@@ -3,6 +3,11 @@
 	* PreviewLoader.C: ensure that the metrics data is used by the
 	correct image!
 
+	* PreviewLoader.C:
+	* PreviewImage.C: (Impl d-tor): remove all generated files that still
+	exist (perhaps because the process was curtailed before the images
+	were loaded.)
+
 2002-07-05  Angus Leeming  <leeming@lyx.org>
 
 	* PreviewImage.h:

@@ -29,6 +29,7 @@
 
 #include "support/filetools.h"
 #include "support/forkedcall.h"
+#include "support/forkedcontr.h"
 #include "support/lstrings.h"
 #include "support/lyxlib.h"
 
@@ -99,6 +100,8 @@ struct PreviewLoader::Impl : public boost::signals::trackable {
 	///
 	Impl(PreviewLoader & p, Buffer const & b);
 	///
+	~Impl();
+	///
 	PreviewImage const * preview(string const & latex_snippet) const;
 	///
 	PreviewLoader::Status status(string const & latex_snippet) const;
@@ -148,11 +151,13 @@ private:
 		InProgress() {}
 		///
 		InProgress(string const & f, PendingMap const & m)
-			: metrics_file(f), snippets(m.begin(), m.end())
+			: pid(0), metrics_file(f), snippets(m.begin(), m.end())
 		{
 			sort(snippets.begin(), snippets.end(), CompSecond());
 		}
-		
+
+		///
+		pid_t pid;
 		///
 		string metrics_file;
 
@@ -264,6 +269,28 @@ PreviewLoader::Impl::preview(string const & latex_snippet) const
 {
 	Cache::const_iterator it = cache_.find(latex_snippet);
 	return (it == cache_.end()) ? 0 : it->second.get();
+}
+
+
+PreviewLoader::Impl::~Impl()
+{
+	InProgressMap::const_iterator ipit  = in_progress_.begin();
+	InProgressMap::const_iterator ipend = in_progress_.end();
+
+	for (; ipit != ipend; ++ipit) {
+		pid_t pid = ipit->second.pid;
+		if (pid)
+			ForkedcallsController::get().kill(pid, 0);
+
+		lyx::unlink(ipit->second.metrics_file);
+
+		vector<StrPair> const & snippets = ipit->second.snippets;
+		vector<StrPair>::const_iterator vit  = snippets.begin();
+		vector<StrPair>::const_iterator vend = snippets.end();
+		for (; vit != vend; ++vit) {
+			lyx::unlink(vit->second);
+		}
+	}
 }
 
 
@@ -412,6 +439,7 @@ void PreviewLoader::Impl::startLoading()
 	
 	// Store the generation process in a list of all generating processes
 	// (I anticipate that this will be small!)
+	inprogress.pid = call.pid();
 	in_progress_[command] = inprogress;
 }
 
@@ -433,6 +461,9 @@ void PreviewLoader::Impl::finishedGenerating(string const & command,
 		       << command << "!" << endl;
 		return;
 	}
+
+	// Reset the pid to 0 as the process has finished.
+	git->second.pid = 0;
 
 	// Read the metrics file, if it exists
 	PreviewMetrics metrics_file(git->second.metrics_file);
