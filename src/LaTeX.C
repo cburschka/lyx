@@ -614,7 +614,7 @@ void LaTeX::deplog(DepTable & head)
 
 	string const logfile = OnlyFilename(ChangeExtension(file, ".log"));
 
-	LRegex reg1(")* *\\(([^ \\)]+).*");
+	LRegex reg1("\\)* *\\(([^ )]+).*");
 	LRegex reg2("File: ([^ ]+).*");
 	LRegex reg3("No file ([^ ]+)\\..*");
 	LRegex reg4("\\\\openout[0-9]+.*=.*`([^ ]+)'\\..*");
