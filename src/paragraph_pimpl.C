@@ -210,8 +210,8 @@ void Paragraph::Pimpl::simpleTeXBlanks(std::ostream & os, TexRow & texrow,
 {
 	if (column > tex_code_break_column
 	    && i 
-	    && owner_->getChar(i - 1) != ' '
-	    && (i < owner_->size() - 1)
+	    && getChar(i - 1) != ' '
+	    && (i < size() - 1)
 #ifndef NO_LATEX
 	    // In LaTeX mode, we don't want to
 	    // break lines since some commands
@@ -223,10 +223,10 @@ void Paragraph::Pimpl::simpleTeXBlanks(std::ostream & os, TexRow & texrow,
 	    // In typewriter mode, we want to avoid 
 	    // ! . ? : at the end of a line
 	    && !(font.family() == LyXFont::TYPEWRITER_FAMILY
-		 && (owner_->getChar(i-1) == '.'
-		     || owner_->getChar(i-1) == '?' 
-		     || owner_->getChar(i-1) == ':'
-		     || owner_->getChar(i-1) == '!'))) {
+		 && (getChar(i - 1) == '.'
+		     || getChar(i - 1) == '?' 
+		     || getChar(i - 1) == ':'
+		     || getChar(i - 1) == '!'))) {
 		if (tex_code_break_column == 0) {
 			// in batchmode we need LaTeX to still
 			// see it as a space not as an extra '\n'
@@ -369,8 +369,8 @@ void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const * buf,
 					os << c;
 					//... but we should avoid ligatures
 					if ((c == '>' || c == '<')
-					    && i <= owner_->size() - 2
-					    && owner_->getChar(i + 1) == c) {
+					    && i <= size() - 2
+					    && getChar(i + 1) == c) {
 						//os << "\\textcompwordmark{}";
 						// Jean-Marc, have a look at
 						// this. I think this works
@@ -405,8 +405,8 @@ void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const * buf,
 				break;
 
 			case '-': // "--" in Typewriter mode -> "-{}-"
-				if (i <= owner_->size() - 2
-				    && owner_->getChar(i + 1) == '-'
+				if (i <= size() - 2
+				    && getChar(i + 1) == '-'
 				    && font.family() == LyXFont::TYPEWRITER_FAMILY) {
 					os << "-{}";
 					column += 2;
@@ -464,46 +464,46 @@ void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const * buf,
 				/* idea for labels --- begin*/
 				// Check for "LyX"
 				if (c ==  'L'
-				    && i <= owner_->size() - 3
+				    && i <= size() - 3
 				    && font.family() != LyXFont::TYPEWRITER_FAMILY
-				    && owner_->getChar(i + 1) == 'y'
-				    && owner_->getChar(i + 2) == 'X') {
+				    && getChar(i + 1) == 'y'
+				    && getChar(i + 2) == 'X') {
 					os << "\\LyX{}";
 					i += 2;
 					column += 5;
 				}
 				// Check for "TeX"
 				else if (c == 'T'
-					 && i <= owner_->size() - 3
+					 && i <= size() - 3
 					 && font.family() != LyXFont::TYPEWRITER_FAMILY
-					 && owner_->getChar(i + 1) == 'e'
-					 && owner_->getChar(i + 2) == 'X') {
+					 && getChar(i + 1) == 'e'
+					 && getChar(i + 2) == 'X') {
 					os << "\\TeX{}";
 					i += 2;
 					column += 5;
 				}
 				// Check for "LaTeX2e"
 				else if (c == 'L'
-					 && i <= owner_->size() - 7
+					 && i <= size() - 7
 					 && font.family() != LyXFont::TYPEWRITER_FAMILY
-					 && owner_->getChar(i + 1) == 'a'
-					 && owner_->getChar(i + 2) == 'T'
-					 && owner_->getChar(i + 3) == 'e'
-					 && owner_->getChar(i + 4) == 'X'
-					 && owner_->getChar(i + 5) == '2'
-					 && owner_->getChar(i + 6) == 'e') {
+					 && getChar(i + 1) == 'a'
+					 && getChar(i + 2) == 'T'
+					 && getChar(i + 3) == 'e'
+					 && getChar(i + 4) == 'X'
+					 && getChar(i + 5) == '2'
+					 && getChar(i + 6) == 'e') {
 					os << "\\LaTeXe{}";
 					i += 6;
 					column += 8;
 				}
 				// Check for "LaTeX"
 				else if (c == 'L'
-					 && i <= owner_->size() - 5
+					 && i <= size() - 5
 					 && font.family() != LyXFont::TYPEWRITER_FAMILY
-					 && owner_->getChar(i + 1) == 'a'
-					 && owner_->getChar(i + 2) == 'T'
-					 && owner_->getChar(i + 3) == 'e'
-					 && owner_->getChar(i + 4) == 'X') {
+					 && getChar(i + 1) == 'a'
+					 && getChar(i + 2) == 'T'
+					 && getChar(i + 3) == 'e'
+					 && getChar(i + 4) == 'X') {
 					os << "\\LaTeX{}";
 					i += 4;
 					column += 7;
