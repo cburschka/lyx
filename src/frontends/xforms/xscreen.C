@@ -95,8 +95,8 @@ void XScreen::showManualCursor(LyXText const * text, int x, int y,
 	// Update the cursor color.
 	setCursorColor();
 
-	int const y1 = max(y - text->first_y - asc, 0);
-	int const y_tmp = min(y - text->first_y + desc,
+	int const y1 = max(y - text->top_y() - asc, 0);
+	int const y_tmp = min(y - text->top_y() + desc,
 			      static_cast<int>(owner_.workHeight()));
 
 	// Secure against very strange situations
@@ -205,17 +205,17 @@ void XScreen::draw(LyXText * text, BufferView * bv, unsigned int y)
 	if (cursor_visible_)
 		hideCursor();
 
-	int const old_first = text->first_y;
+	int const old_first = text->top_y();
 	bool const internal = (text == bv->text);
-	text->first_y = y;
+	text->top_y(y);
 
 	// is any optimization possible?
 	if ((y - old_first) < owner_.workHeight()
 	    && (old_first - y) < owner_.workHeight())
 	{
-		if (text->first_y < old_first) {
+		if (text->top_y() < old_first) {
 			drawFromTo(text, bv, 0,
-				   old_first - text->first_y, 0, 0, internal);
+				   old_first - text->top_y(), 0, 0, internal);
 			XCopyArea (fl_get_display(),
 				   owner_.getWin(),
 				   owner_.getWin(),
@@ -223,31 +223,31 @@ void XScreen::draw(LyXText * text, BufferView * bv, unsigned int y)
 				   owner_.xpos(),
 				   owner_.ypos(),
 				   owner_.workWidth(),
-				   owner_.workHeight() - old_first + text->first_y,
+				   owner_.workHeight() - old_first + text->top_y(),
 				   owner_.xpos(),
-				   owner_.ypos() + old_first - text->first_y
+				   owner_.ypos() + old_first - text->top_y()
 				);
 			// expose the area drawn
 			expose(0, 0,
 			       owner_.workWidth(),
-			       old_first - text->first_y);
+			       old_first - text->top_y());
 		} else  {
 			drawFromTo(text, bv,
-				   owner_.workHeight() + old_first - text->first_y,
+				   owner_.workHeight() + old_first - text->top_y(),
 				   owner_.workHeight(), 0, 0, internal);
 			XCopyArea (fl_get_display(),
 				   owner_.getWin(),
 				   owner_.getWin(),
 				   gc_copy,
 				   owner_.xpos(),
-				   owner_.ypos() + text->first_y - old_first,
+				   owner_.ypos() + text->top_y() - old_first,
 				   owner_.workWidth(),
-				   owner_.workHeight() + old_first - text->first_y,
+				   owner_.workHeight() + old_first - text->top_y(),
 				   owner_.xpos(),
 				   owner_.ypos());
 			// expose the area drawn
-			expose(0, owner_.workHeight() + old_first - text->first_y,
-			       owner_.workWidth(), text->first_y - old_first);
+			expose(0, owner_.workHeight() + old_first - text->top_y(),
+			       owner_.workWidth(), text->top_y() - old_first);
 		}
 	} else {
 		// make a dumb new-draw

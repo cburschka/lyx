@@ -1,3 +1,7 @@
+2003-03-06  Alfredo Braunstein  <abraunst@libero.it>
+
+	* xscreen.C: use LyXText::top_y() instead of LyXText::first_y
+
 2003-02-28  Rob Lahaye  <lahaye@snu.ac.kr>
 
 	* FormTabularCreate.C: remove slider settings (now part of .fd file)

@@ -1,3 +1,7 @@
+2003-03-06  Alfredo Braunstein  <abraunst@libero.it>
+
+	* qscreen.C: use LyXText::top_y() instead of LyXText::first_y
+
 2003-03-06  John Levon  <levon@movementarian.org>
 
 	* ui/QPrefUIModule.ui: make max last files reflect reality,

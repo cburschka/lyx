@@ -58,8 +58,8 @@ void QScreen::showManualCursor(LyXText const * text, int x, int y,
 	if (!qApp->focusWidget())
 		return;
 
-	int const y1 = max(y - text->first_y - asc, 0);
-	int const y_tmp = min(y - text->first_y + desc, owner_.height());
+	int const y1 = max(y - text->top_y() - asc, 0);
+	int const y_tmp = min(y - text->top_y() + desc, owner_.height());
 
 	// secure against very strange situations
 	// which would be when .... ?
@@ -160,9 +160,9 @@ void QScreen::draw(LyXText * text, BufferView * bv, unsigned int y)
 
 	if (cursor_visible_) hideCursor();
 
-	int const old_first = text->first_y;
+	int const old_first = text->top_y();
 	bool const internal = (text == bv->text);
-	text->first_y = y;
+	text->top_y(y);
 
 	// If you want to fix the warning below, fix it so it
 	// actually scrolls properly. Hint: a cast won't do.
@@ -170,13 +170,13 @@ void QScreen::draw(LyXText * text, BufferView * bv, unsigned int y)
 	// is any optimization possible?
 	if (y - old_first < owner_.workHeight()
 	    && old_first - y < owner_.workHeight()) {
-		if (text->first_y < old_first) {
-			int const dest_y = old_first - text->first_y;
+		if (text->top_y() < old_first) {
+			int const dest_y = old_first - text->top_y();
 			drawFromTo(text, bv, 0, dest_y, 0, 0, internal);
 			copyInPixmap(p, dest_y, 0, owner_.workWidth(), owner_.height() - dest_y);
 			expose(0, 0, owner_.workWidth(), dest_y);
 		} else  {
-			int const src_y = text->first_y - old_first;
+			int const src_y = text->top_y() - old_first;
 			drawFromTo(text, bv, owner_.height() - src_y, owner_.height(), 0, 0, internal);
 			copyInPixmap(p, 0, 0, owner_.workWidth(), owner_.height() - src_y);
 			expose(0, owner_.height() - src_y, owner_.workWidth(), src_y);

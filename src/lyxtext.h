@@ -79,9 +79,20 @@ public:
 	mutable LyXFont current_font;
 	/// the current font
 	mutable LyXFont real_current_font;
-	/// first visible pixel-row is set from LyXScreen!!!
-	// unsigned is wrong here for text-insets!
-	int first_y;
+private:
+	/** the first visible row on screen
+	 *  declared mutable because removeRow is const
+	 */
+	mutable Row * top_row_;
+	/** the pixel offset with respect to this row of top_y 
+	 *  declared mutable because removeRow is const
+	 */
+	mutable int top_row_offset_;
+public:
+	/// get the y coord. of the top of the screen (relative to doc start)
+	int top_y() const;
+	/// set it
+	void top_y(int newy);
 	///
 	InsetText * inset_owner;
 	///

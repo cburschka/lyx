@@ -1080,10 +1080,10 @@ Inset::RESULT InsetTabular::localDispatch(FuncRequest const & cmd)
 		}
 		int column = actcol;
 		unlockInsetInInset(bv, the_locking_inset);
-		if (bv->text->first_y + bv->painter().paperHeight() <
+		if (bv->text->top_y() + bv->painter().paperHeight() <
 		    (top_baseline + tabular->GetHeightOfTabular()))
 			{
-				bv->scrollDocView(bv->text->first_y + bv->painter().paperHeight());
+				bv->scrollDocView(bv->text->top_y() + bv->painter().paperHeight());
 				code = FULL;
 				actcell = tabular->GetCellBelow(first_visible_cell) + column;
 			} else {
@@ -1102,7 +1102,7 @@ Inset::RESULT InsetTabular::localDispatch(FuncRequest const & cmd)
 		int column = actcol;
 		unlockInsetInInset(bv, the_locking_inset);
 		if (top_baseline < 0) {
-			bv->scrollDocView(bv->text->first_y - bv->painter().paperHeight());
+			bv->scrollDocView(bv->text->top_y() - bv->painter().paperHeight());
 			code = FULL;
 			if (top_baseline > 0)
 				actcell = column;
@@ -1495,9 +1495,9 @@ void InsetTabular::hideInsetCursor(BufferView * bv)
 void InsetTabular::fitInsetCursor(BufferView * bv) const
 {
 	if (the_locking_inset) {
-		int old_first_y = bv->text->first_y;
+		int old_top_y = bv->text->top_y();
 		the_locking_inset->fitInsetCursor(bv);
-		if (old_first_y != bv->text->first_y)
+		if (old_top_y != bv->text->top_y())
 			need_update = FULL;
 		return;
 	}

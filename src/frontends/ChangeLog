@@ -1,3 +1,7 @@
+2003-03-06  Alfredo Braunstein  <abraunst@libero.it>
+
+	* screen.C: use LyXText::top_y() instead of LyXText::first_y
+
 2003-03-05  Angus Leeming  <leeming@lyx.org>
 
 	* Dialogs.h: remove showWrap.

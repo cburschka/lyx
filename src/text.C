@@ -58,6 +58,33 @@ extern int const LEFT_MARGIN = PAPER_MARGIN + CHANGEBAR_MARGIN;
 extern int bibitemMaxWidth(BufferView *, LyXFont const &);
 
 
+int LyXText::top_y() const
+{
+	if (!top_row_)
+		return 0;
+	
+	int y = 0;
+	for (Row * row = firstrow; row && row != top_row_; row = row->next()) {
+		y += row->height();
+	}
+	return y + top_row_offset_;
+}
+
+
+void LyXText::top_y(int newy)
+{
+	if (!firstrow)
+		return;
+	lyxerr[Debug::GUI] << "setting top y = " << newy << endl;
+	
+	int y = newy;
+	top_row_ = getRowNearY(y);
+	top_row_offset_ = newy - y;
+	lyxerr[Debug::GUI] << "changing reference to row: " << top_row_
+	       << " offset: " << top_row_offset_ << endl;
+}
+
+
 int LyXText::workWidth(BufferView & bview) const
 {
 	if (inset_owner) {

@@ -52,7 +52,7 @@ using lyx::pos_type;
 
 
 LyXText::LyXText(BufferView * bv)
-	: height(0), width(0), first_y(0),
+	: height(0), width(0), top_row_(0), top_row_offset_(0), 
 	  inset_owner(0), the_locking_inset(0), need_break_row(0),
 	  refresh_y(0), refresh_row(0), bv_owner(bv),
 	  status_(LyXText::UNCHANGED), firstrow(0), lastrow(0)
@@ -60,7 +60,7 @@ LyXText::LyXText(BufferView * bv)
 
 
 LyXText::LyXText(InsetText * inset)
-	: height(0), width(0), first_y(0),
+	: height(0), width(0), top_row_(0), top_row_offset_(0), 
 	  inset_owner(inset), the_locking_inset(0), need_break_row(0),
 	  refresh_y(0), refresh_row(0), bv_owner(0),
 	  status_(LyXText::UNCHANGED), firstrow(0), lastrow(0)
@@ -83,7 +83,7 @@ void LyXText::init(BufferView * bview, bool reinit)
 		need_break_row = 0;
 		width = height = 0;
 		copylayouttype.erase();
-		first_y = refresh_y = 0;
+		top_y(refresh_y = 0);
 		status_ = LyXText::UNCHANGED;
 	} else if (firstrow)
 		return;
@@ -325,6 +325,15 @@ void LyXText::removeRow(Row * row) const
 	if (refresh_row == row) {
 		refresh_row = row_prev ? row_prev : row->next();
 		// what about refresh_y, refresh_height
+	}
+	if (top_row_ == row) {
+		if (row->next()) {
+			top_row_ = row->next();
+			top_row_offset_ -= row->height();
+		} else {
+			top_row_ = row_prev;
+			top_row_offset_ = 0;
+		}
 	}
 
 	height -= row->height(); // the text becomes smaller
@@ -2034,9 +2043,10 @@ void LyXText::cursorUp(BufferView * bview, bool selecting) const
 	int y = cursor.y() - cursor.row()->baseline() - 1;
 	setCursorFromCoordinates(bview, x, y);
 	if (!selecting) {
-		int y1 = cursor.iy() - first_y;
+		int topy = top_y();
+		int y1 = cursor.iy() - topy;
 		int y2 = y1;
-		y -= first_y;
+		y -= topy;
 		Inset * inset_hit = checkInsetHit(bview, x, y1);
 		if (inset_hit && isHighlyEditableInset(inset_hit)) {
 			inset_hit->edit(bview, x, y - (y2 - y1), mouse_button::none);
@@ -2057,9 +2067,10 @@ void LyXText::cursorDown(BufferView * bview, bool selecting) const
 		cursor.row()->height() + 1;
 	setCursorFromCoordinates(bview, x, y);
 	if (!selecting && cursor.row() == cursor.irow()) {
-		int y1 = cursor.iy() - first_y;
+		int topy = top_y();
+		int y1 = cursor.iy() - topy;
 		int y2 = y1;
-		y -= first_y;
+		y -= topy;
 		Inset * inset_hit = checkInsetHit(bview, x, y1);
 		if (inset_hit && isHighlyEditableInset(inset_hit)) {
 			inset_hit->edit(bview, x, y - (y2 - y1), mouse_button::none);

@@ -1,3 +1,13 @@
+2003-03-06  Alfredo Braunstein  <abraunst@libero.it>
+
+	* lyxtext.h (top_y): added these 2 methods, and private vars top_row_ 
+	and top_row_offset_. removed var first_y.
+	* text.C (top_y): 
+	* text2.C (LyXText, removeRow): 
+	* text3.C:
+	* BufferView_pimpl.C: 
+	use these methods instead of using first_y
+
 2003-03-06  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* CutAndPaste.h: make CutAndPaste a namespace.

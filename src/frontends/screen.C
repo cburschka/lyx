@@ -160,20 +160,20 @@ bool LyXScreen::fitManualCursor(BufferView * bv, LyXText * text,
 	int /*x*/, int y, int asc, int desc)
 {
 	int const vheight = workarea().workHeight();
-	int newtop = text->first_y;
+	int newtop = text->top_y();
 
-	if (y + desc - text->first_y >= vheight)
+	if (y + desc - text->top_y() >= vheight)
 		newtop = y - 3 * vheight / 4;  // the scroll region must be so big!!
-	else if (y - asc < text->first_y
-		&& text->first_y > 0) {
+	else if (y - asc < text->top_y()
+		&& text->top_y() > 0) {
 		newtop = y - vheight / 4;
 	}
 
 	newtop = max(newtop, 0); // can newtop ever be < 0? (Lgb)
 
-	if (newtop != text->first_y) {
+	if (newtop != text->top_y()) {
 		draw(text, bv, newtop);
-		text->first_y = newtop;
+		text->top_y(newtop);
 		return true;
 	}
 
@@ -234,8 +234,8 @@ unsigned int LyXScreen::topCursorVisible(LyXCursor const & cursor, int top_y)
 bool LyXScreen::fitCursor(LyXText * text, BufferView * bv)
 {
 	// Is a change necessary?
-	int const newtop = topCursorVisible(text->cursor, text->first_y);
-	bool const result = (newtop != text->first_y);
+	int const newtop = topCursorVisible(text->cursor, text->top_y());
+	bool const result = (newtop != text->top_y());
 	if (result) {
 		draw(text, bv, newtop);
 	}
@@ -255,7 +255,7 @@ void LyXScreen::update(LyXText * text, BufferView * bv,
 	switch (text->status()) {
 	case LyXText::NEED_MORE_REFRESH:
 	{
-		int const y = max(int(text->refresh_y - text->first_y), 0);
+		int const y = max(int(text->refresh_y - text->top_y()), 0);
 		drawFromTo(text, bv, y, vheight, yo, xo);
 		text->refresh_y = 0;
 		// otherwise this is called ONLY from BufferView_pimpl(update)
@@ -277,7 +277,7 @@ void LyXScreen::update(LyXText * text, BufferView * bv,
 			// or we should see to set this flag accordingly
 			if (text != bv->text)
 				text->status(bv, LyXText::UNCHANGED);
-			expose(0, text->refresh_y - text->first_y + yo,
+			expose(0, text->refresh_y - text->top_y() + yo,
 				   vwidth, text->refresh_row->height());
 		}
 	}
@@ -303,24 +303,24 @@ void LyXScreen::toggleSelection(LyXText * text, BufferView * bv,
 		max(static_cast<int>(text->selection.end.y()
 				     - text->selection.end.row()->baseline()
 				     + text->selection.end.row()->height()),
-		    text->first_y),
-		static_cast<int>(text->first_y + workarea().workHeight()));
+		    text->top_y()),
+		static_cast<int>(text->top_y() + workarea().workHeight()));
 	int const top = min(
 		max(static_cast<int>(text->selection.start.y() -
 				     text->selection.start.row()->baseline()),
-		    text->first_y),
-		static_cast<int>(text->first_y + workarea().workHeight()));
+		    text->top_y()),
+		static_cast<int>(text->top_y() + workarea().workHeight()));
 
 	if (kill_selection)
 		text->selection.set(false);
 
 	workarea().getPainter().start();
 
-	drawFromTo(text, bv, top - text->first_y, bottom - text->first_y,
+	drawFromTo(text, bv, top - text->top_y(), bottom - text->top_y(),
 		   yo, xo);
-	expose(0, top - text->first_y,
+	expose(0, top - text->top_y(),
 	       workarea().workWidth(),
-	       bottom - text->first_y - (top - text->first_y));
+	       bottom - text->top_y() - (top - text->top_y()));
 
 	workarea().getPainter().end();
 }
@@ -340,18 +340,18 @@ void LyXScreen::toggleToggle(LyXText * text, BufferView * bv,
 		+ text->toggle_end_cursor.row()->height();
 
 	int const offset = yo < 0 ? yo : 0;
-	int const bottom = min(max(bottom_tmp, text->first_y),
-		static_cast<int>(text->first_y + workarea().workHeight())) - offset;
-	int const top = min(max(top_tmp, text->first_y),
-		static_cast<int>(text->first_y + workarea().workHeight())) - offset;
+	int const bottom = min(max(bottom_tmp, text->top_y()),
+		static_cast<int>(text->top_y() + workarea().workHeight())) - offset;
+	int const top = min(max(top_tmp, text->top_y()),
+		static_cast<int>(text->top_y() + workarea().workHeight())) - offset;
 
 	workarea().getPainter().start();
 
-	drawFromTo(text, bv, top - text->first_y,
-		   bottom - text->first_y, yo,
+	drawFromTo(text, bv, top - text->top_y(),
+		   bottom - text->top_y(), yo,
 		   xo);
-	expose(0, top - text->first_y, workarea().workWidth(),
-	       bottom - text->first_y - (top - text->first_y));
+	expose(0, top - text->top_y(), workarea().workWidth(),
+	       bottom - text->top_y() - (top - text->top_y()));
 
 	workarea().getPainter().end();
 }
@@ -365,6 +365,8 @@ void LyXScreen::redraw(LyXText * text, BufferView * bv)
 		greyOut();
 		return;
 	}
+
+	
 
 	workarea().getPainter().start();
 
@@ -423,14 +425,15 @@ void LyXScreen::drawFromTo(LyXText * text, BufferView * bv,
 {
 	lyxerr[Debug::GUI] << "screen: drawFromTo " << y1 << '-' << y2 << endl;
 
-	int y_text = text->first_y + y1;
+	int y_text = text->top_y() + y1;
 
 	// get the first needed row
 	Row * row = text->getRowNearY(y_text);
 	// y_text is now the real beginning of the row
 
-	int y = y_text - text->first_y;
+	int y = y_text - text->top_y();
 	// y1 is now the real beginning of row on the screen
+
 
 	while (row != 0 && y < y2) {
 		LyXText::text_status st = text->status();
@@ -438,7 +441,8 @@ void LyXScreen::drawFromTo(LyXText * text, BufferView * bv,
 		// at a later time (Jug20020502)
 		Row * prev = row->previous();
 		RowPainter rp(*bv, *text, *row);
-		if (rp.paint(y + yo, xo, y + text->first_y))
+
+		if (rp.paint(y + yo, xo, y + text->top_y()))
 			text->markChangeInDraw(bv, row, prev);
 
 		internal = internal && (st != LyXText::CHANGED_IN_DRAW);
@@ -449,7 +453,7 @@ void LyXScreen::drawFromTo(LyXText * text, BufferView * bv,
 			text->status(bv, st);
 			Row * prev = row->previous();
 			RowPainter rp(*bv, *text, *row);
-			if (rp.paint(y + yo, xo, y + text->first_y))
+			if (rp.paint(y + yo, xo, y + text->top_y()))
 				text->markChangeInDraw(bv, row, prev);
 		}
 		y += row->height();
@@ -469,13 +473,13 @@ void LyXScreen::drawFromTo(LyXText * text, BufferView * bv,
 void LyXScreen::drawOneRow(LyXText * text, BufferView * bv, Row * row,
 	int y_text, int yo, int xo)
 {
-	int const y = y_text - text->first_y + yo;
+	int const y = y_text - text->top_y() + yo;
 
 	if (((y + row->height()) > 0) &&
 	    ((y - row->height()) <= static_cast<int>(workarea().workHeight()))) {
 		Row * prev = row->previous();
 		RowPainter rp(*bv, *text, *row);
-		if (rp.paint(y, xo, y + text->first_y))
+		if (rp.paint(y, xo, y + text->top_y()))
 			text->markChangeInDraw(bv, row, prev);
 	}
 	force_clear_ = false;

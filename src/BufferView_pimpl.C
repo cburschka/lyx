@@ -184,8 +184,7 @@ void BufferView::Pimpl::buffer(Buffer * b)
 		}
 
 		// FIXME: needed when ?
-		bv_->text->first_y =
-			screen().topCursorVisible(bv_->text->cursor, bv_->text->first_y);
+		bv_->text->top_y(screen().topCursorVisible(bv_->text->cursor, bv_->text->top_y()));
 
 		// Similarly, buffer-dependent dialogs should be updated or
 		// hidden. This should go here because some dialogs (eg ToC)
@@ -322,7 +321,7 @@ int BufferView::Pimpl::resizeCurrentBuffer()
 		bv_->theLockingInset(the_locking_inset);
 	}
 
-	bv_->text->first_y = screen().topCursorVisible(bv_->text->cursor, bv_->text->first_y);
+	bv_->text->top_y(screen().topCursorVisible(bv_->text->cursor, bv_->text->top_y()));
 
 	switchKeyMap();
 	owner_->busy(false);
@@ -350,10 +349,10 @@ void BufferView::Pimpl::updateScrollbar()
 
 	LyXText const & t = *bv_->text;
 
-	lyxerr[Debug::GUI] << "Updating scrollbar: h " << t.height << ", first_y "
-		<< t.first_y << ", default height " << defaultRowHeight() << endl;
+	lyxerr[Debug::GUI] << "Updating scrollbar: h " << t.height << ", top_y() "
+		<< t.top_y() << ", default height " << defaultRowHeight() << endl;
 
-	workarea().setScrollbarParams(t.height, t.first_y, defaultRowHeight());
+	workarea().setScrollbarParams(t.height, t.top_y(), defaultRowHeight());
 }
 
 
@@ -372,8 +371,8 @@ void BufferView::Pimpl::scrollDocView(int value)
 	LyXText * vbt = bv_->text;
 
 	int const height = defaultRowHeight();
-	int const first = static_cast<int>((bv_->text->first_y + height));
-	int const last = static_cast<int>((bv_->text->first_y + workarea().workHeight() - height));
+	int const first = static_cast<int>((bv_->text->top_y() + height));
+	int const last = static_cast<int>((bv_->text->top_y() + workarea().workHeight() - height));
 
 	if (vbt->cursor.y() < first)
 		vbt->setCursorFromCoordinates(bv_, 0, first);
@@ -392,16 +391,16 @@ void BufferView::Pimpl::scroll(int lines)
 	int const line_height = defaultRowHeight();
 
 	// The new absolute coordinate
-	int new_first_y = t->first_y + lines * line_height;
+	int new_top_y = t->top_y() + lines * line_height;
 
 	// Restrict to a valid value
-	new_first_y = std::min(t->height - 4 * line_height, new_first_y);
-	new_first_y = std::max(0, new_first_y);
+	new_top_y = std::min(t->height - 4 * line_height, new_top_y);
+	new_top_y = std::max(0, new_top_y);
 
-	scrollDocView(new_first_y);
+	scrollDocView(new_top_y);
 
 	// Update the scrollbar.
-	workarea().setScrollbarParams(t->height, t->first_y, defaultRowHeight());
+	workarea().setScrollbarParams(t->height, t->top_y(), defaultRowHeight());
 }
 
 
@@ -777,14 +776,14 @@ void BufferView::Pimpl::center()
 	}
 
 	// FIXME: can we do this w/o calling screen directly ?
-	// This updates first_y but means the fitCursor() call
+	// This updates top_y() but means the fitCursor() call
 	// from the update(FITCUR) doesn't realise that we might
 	// have moved (e.g. from GOTOPARAGRAPH), so doesn't cause
 	// the scrollbar to be updated as it should, so we have
 	// to do it manually. Any operation that does a center()
-	// and also might have moved first_y must make sure to call
+	// and also might have moved top_y() must make sure to call
 	// updateScrollbar() currently. Never mind that this is a
-	// pretty obfuscated way of updating t->first_y
+	// pretty obfuscated way of updating t->top_y()
 	screen().draw(t, bv_, new_y);
 
 	update(t, BufferView::SELECT | BufferView::FITCUR);

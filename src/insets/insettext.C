@@ -458,11 +458,11 @@ void InsetText::draw(BufferView * bv, LyXFont const & f,
 		row = row->next();
 	}
 	if (y_offset < 0) {
-		lt->first_y = -y_offset;
+		lt->top_y(-y_offset);
 		first = y;
 		y_offset = 0;
 	} else {
-		lt->first_y = first;
+		lt->top_y(first);
 		first = 0;
 	}
 	if (cleared || (need_update&(INIT|FULL))) {
@@ -471,7 +471,7 @@ void InsetText::draw(BufferView * bv, LyXFont const & f,
 		while ((row != 0) && (yf < ph)) {
 			Row * prev = row->previous();
 			RowPainter rp(*bv, *lt, *row);
-			if (rp.paint(y + y_offset + first, int(x), y + lt->first_y, cleared))
+			if (rp.paint(y + y_offset + first, int(x), y + lt->top_y(), cleared))
 				lt->markChangeInDraw(bv, row, prev);
 			if (bv->text->status() == LyXText::CHANGED_IN_DRAW) {
 				lt->need_break_row = row;
@@ -1020,7 +1020,7 @@ void InsetText::lfunMousePress(FuncRequest const & cmd)
 		lockInset(bv);
 
 	int tmp_x = cmd.x - drawTextXOffset;
-	int tmp_y = cmd.y + insetAscent - getLyXText(bv)->first_y;
+	int tmp_y = cmd.y + insetAscent - getLyXText(bv)->top_y();
 	Inset * inset = getLyXText(bv)->checkInsetHit(bv, tmp_x, tmp_y);
 
 	hideInsetCursor(bv);
@@ -1075,7 +1075,7 @@ void InsetText::lfunMousePress(FuncRequest const & cmd)
 			lt = getLyXText(bv);
 			clear = true;
 		}
-		int old_first_y = lt->first_y;
+		int old_top_y = lt->top_y();
 
 		lt->setCursorFromCoordinates(bv, cmd.x - drawTextXOffset,
 					     cmd.y + insetAscent);
@@ -1098,7 +1098,7 @@ void InsetText::lfunMousePress(FuncRequest const & cmd)
 		bv->owner()->setLayout(cpar(bv)->layout()->name());
 
 		// we moved the view we cannot do mouse selection in this case!
-		if (getLyXText(bv)->first_y != old_first_y)
+		if (getLyXText(bv)->top_y() != old_top_y)
 			no_selection = true;
 		old_par = cpar(bv);
 		// Insert primary selection with middle mouse
@@ -1129,7 +1129,7 @@ bool InsetText::lfunMouseRelease(FuncRequest const & cmd)
 		return the_locking_inset->localDispatch(cmd1);
 
 	int tmp_x = cmd.x - drawTextXOffset;
-	int tmp_y = cmd.y + insetAscent - getLyXText(bv)->first_y;
+	int tmp_y = cmd.y + insetAscent - getLyXText(bv)->top_y();
 	Inset * inset = getLyXText(bv)->checkInsetHit(bv, tmp_x, tmp_y);
 	bool ret = false;
 	if (inset) {
@@ -2386,7 +2386,7 @@ void InsetText::resizeLyXText(BufferView * bv, bool force) const
 		inset_y = ciy(bv) + drawTextYOffset;
 	}
 
-	t->first_y = bv->screen().topCursorVisible(t->cursor, t->first_y);
+	t->top_y(bv->screen().topCursorVisible(t->cursor, t->top_y()));
 	if (!owner()) {
 		const_cast<InsetText*>(this)->updateLocal(bv, FULL, false);
 		// this will scroll the screen such that the cursor becomes visible
@@ -2425,7 +2425,7 @@ void InsetText::reinitLyXText() const
 			inset_x = cix(bv) - top_x + drawTextXOffset;
 			inset_y = ciy(bv) + drawTextYOffset;
 		}
-		t->first_y = bv->screen().topCursorVisible(t->cursor, t->first_y);
+		t->top_y(bv->screen().topCursorVisible(t->cursor, t->top_y()));
 		if (!owner()) {
 			const_cast<InsetText*>(this)->updateLocal(bv, FULL, false);
 			// this will scroll the screen such that the cursor becomes visible

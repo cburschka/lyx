@@ -143,7 +143,7 @@ namespace {
 
 Inset * LyXText::checkInsetHit(BufferView * bv, int & x, int & y) const
 {
-	int y_tmp = y + first_y;
+	int y_tmp = y + top_y();
 
 	LyXCursor cur;
 	setCursorFromCoordinates(bv, cur, x, y_tmp);
@@ -241,15 +241,15 @@ void LyXText::gotoInset(BufferView * bv, Inset::Code code, bool same_content)
 void LyXText::cursorPrevious(BufferView * bv)
 {
 	if (!cursor.row()->previous()) {
-		if (first_y > 0) {
-			int new_y = bv->text->first_y - bv->workHeight();
+		if (top_y() > 0) {
+			int new_y = top_y() - bv->workHeight();
 			bv->screen().draw(bv->text, bv, new_y < 0 ? 0 : new_y);
 			bv->updateScrollbar();
 		}
 		return;
 	}
 
-	int y = first_y;
+	int y = top_y();
 	Row * cursorrow = cursor.row();
 
 	setCursorFromCoordinates(bv, cursor.x_fix(), y);
@@ -264,7 +264,7 @@ void LyXText::cursorPrevious(BufferView * bv)
 		// This is what we used to do, so we wouldn't skip right past
 		// tall rows, but it's not working right now.
 #if 0
-		new_y = bv->text->first_y - bv->workHeight();
+		new_y = bv->text->top_y() - bv->workHeight();
 #endif
 	} else {
 		if (inset_owner) {
@@ -284,7 +284,7 @@ void LyXText::cursorPrevious(BufferView * bv)
 		LyXCursor cur;
 		setCursor(bv, cur, cursor.row()->previous()->par(),
 						cursor.row()->previous()->pos(), false);
-		if (cur.y() > first_y) {
+		if (cur.y() > top_y()) {
 			cursorUp(bv, true);
 		}
 	}
@@ -297,18 +297,17 @@ void LyXText::cursorNext(BufferView * bv)
 	if (!cursor.row()->next()) {
 		int y = cursor.y() - cursor.row()->baseline() +
 			cursor.row()->height();
-		if (y > int(first_y + bv->workHeight())) {
-			bv->screen().draw(bv->text, bv,
-						  bv->text->first_y + bv->workHeight());
+		if (y > top_y() + bv->workHeight()) {
+			bv->screen().draw(bv->text, bv, top_y() + bv->workHeight());
 			bv->updateScrollbar();
 		}
 		return;
 	}
 
-	int y = first_y + bv->workHeight();
-	if (inset_owner && !first_y) {
+	int y = top_y() + bv->workHeight();
+	if (inset_owner && !top_y()) {
 		y -= (bv->text->cursor.iy()
-			  - bv->text->first_y
+			  - bv->text->top_y()
 			  + bv->theLockingInset()->insetInInsetY());
 	}
 
@@ -328,7 +327,7 @@ void LyXText::cursorNext(BufferView * bv)
 		// This is what we used to do, so we wouldn't skip right past
 		// tall rows, but it's not working right now.
 #if 0
-		new_y = bv->text->first_y + bv->workHeight();
+		new_y = bv->text->top_y() + bv->workHeight();
 #endif
 	} else {
 		if (inset_owner) {
@@ -344,7 +343,7 @@ void LyXText::cursorNext(BufferView * bv)
 		LyXCursor cur;
 		setCursor(bv, cur, cursor.row()->next()->par(),
 						cursor.row()->next()->pos(), false);
-		if (cur.y() < int(first_y + bv->workHeight())) {
+		if (cur.y() < top_y() + bv->workHeight()) {
 			cursorDown(bv, true);
 		}
 	}
@@ -1298,7 +1297,7 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 			int start_x = inset_x + tli->scroll();
 			FuncRequest cmd1 = cmd;
 			cmd1.x = cmd.x - start_x;
-			cmd1.y = cmd.y - cursor.iy() + bv->text->first_y;
+			cmd1.y = cmd.y - cursor.iy() + bv->text->top_y();
 			tli->localDispatch(cmd1);
 			break;
 		}
@@ -1315,7 +1314,7 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 		bv->screen().hideCursor();
 
 		Row * cursorrow = bv->text->cursor.row();
-		bv->text->setCursorFromCoordinates(bv, cmd.x, cmd.y + bv->text->first_y);
+		bv->text->setCursorFromCoordinates(bv, cmd.x, cmd.y + bv->text->top_y());
 	#if 0
 		// sorry for this but I have a strange error that the y value jumps at
 		// a certain point. This seems like an error in my xforms library or
@@ -1327,7 +1326,7 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 	#endif
 		// This is to allow jumping over large insets
 		if (cursorrow == bv->text->cursor.row()) {
-			if (cmd.y >= int(bv->workHeight()))
+			if (cmd.y >= bv->workHeight())
 				bv->text->cursorDown(bv, false);
 			else if (cmd.y < 0)
 				bv->text->cursorUp(bv, false);
@@ -1376,7 +1375,7 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 			paste_internally = true;
 		}
 
-		int const screen_first = bv->text->first_y;
+		int const screen_first = bv->text->top_y();
 
 		if (bv->theLockingInset()) {
 			// We are in inset locking mode
