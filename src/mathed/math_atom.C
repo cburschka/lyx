@@ -206,7 +206,8 @@ MathScriptInset * MathAtom::down() const
 
 int MathAtom::dy0() const
 {
-	lyx::Assert(down());
+	if (!down())
+		return ndes();
 	int des = down()->ascent();
 	if (hasLimits())
 		des += ndes() + 2;
@@ -218,7 +219,8 @@ int MathAtom::dy0() const
 
 int MathAtom::dy1() const
 {
-	lyx::Assert(up());
+	if (!up())
+		return nasc();
 	int asc = up()->descent();
 	if (hasLimits())
 		asc += nasc() + 2;
@@ -252,19 +254,13 @@ int MathAtom::dxx() const
 
 int MathAtom::ascent() const
 {
-	int asc = nasc();
-	if (up()) 
-		asc += hasLimits() ? up()->height() + 2 : up()->ascent();
-	return asc;
+	return dy1() + (up() ? up()->ascent() : 0);
 }
 
 
 int MathAtom::descent() const
 {
-	int des = ndes();
-	if (down()) 
-		des += hasLimits() ? down()->height() + 2 : down()->descent();
-	return des;
+	return dy0() + (down() ? down()->descent() : 0);
 }
 
 

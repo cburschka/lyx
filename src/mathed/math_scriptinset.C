@@ -33,6 +33,8 @@ void MathScriptInset::metrics(MathStyles st) const
 	width_   = xcell(0).width();
 	ascent_  = xcell(0).ascent();
 	descent_ = xcell(0).descent();
+	//lyxerr << "MathScriptInset::metrics: w: " << width_ << " a: " << ascent_
+	//	<< " d: " << descent_ << "\n";
 }
 
 

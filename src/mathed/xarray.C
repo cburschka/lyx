@@ -36,6 +36,8 @@ void MathXArray::metrics(MathStyles st) const
 		descent_ = std::max(descent_, p->descent());
 		width_  += p->width();
 	}
+	//lyxerr << "MathXArray::metrics(): '" << ascent_ << " " 
+	//	<< descent_ << " " << width_ << "'\n";
 }
 
 
