@@ -348,7 +348,7 @@ void InsetGraphics::draw(BufferView * bv, LyXFont const & font,
 
 	if (gparams.display != grfx::NoDisplay
 		&& cache_->loader.status() == grfx::WaitingToLoad)
-		cache_->loader.startLoading(*this, *bv);
+		cache_->loader.startLoading(*this);
 
 	if (!cache_->loader.monitoring())
 		cache_->loader.startMonitoring();

@@ -534,7 +534,7 @@ void InsetInclude::draw(BufferView * bv, LyXFont const & font, int y,
 	int const h = a + d;
 
 	bv->painter().image(x, y - a, w, h,
-			    *(preview_->pimage()->image(*this, *bv)));
+			    *(preview_->pimage()->image(*this)));
 
 	xx += w;
 }

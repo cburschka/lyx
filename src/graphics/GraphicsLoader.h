@@ -66,10 +66,10 @@ public:
 	/// We are explicit about when we begin the loading process.
 	void startLoading() const;
 
-	/** starting loading of the image is conditional upon the
-	 *  inset being visible or not.
+	/** starting loading of the image is done by a urgency-based
+	 *  decision. Here we only call LoaderQueue::touch to request it.
 	 */
-	void startLoading(Inset const &, BufferView const &) const;
+	void startLoading(Inset const &) const;
 
 	/** Monitor any changes to the file.
 	 *  There is no point monitoring the file before startLoading() is

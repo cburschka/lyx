@@ -1,5 +1,14 @@
 2003-02-25  Alfredo Braunstein  <abraunst@libero.it>
 
+	* GraphicsConverter (startConversion): add the call to
+	ForkedCallQueue::add 
+
+	* GraphicsLoader.[Ch],
+	* PreviewImage.[Ch],
+	* PreviewedInset.C: Removed unneeded BufferView 
+	
+2003-02-25  Alfredo Braunstein  <abraunst@libero.it>
+
 	* LoaderQueue.[Ch]: a simplification of the code, eliminated
 	the unneeded input bucket.
 

@@ -12,8 +12,6 @@
 
 #include "GraphicsLoader.h"
 
-#include "BufferView.h"
-
 #include "GraphicsCache.h"
 #include "GraphicsCacheItem.h"
 #include "GraphicsImage.h"
@@ -21,9 +19,7 @@
 #include "LoaderQueue.h"
 
 #include "frontends/LyXView.h"
-#include "frontends/Timeout.h"
 
-#include <boost/weak_ptr.hpp>
 #include <boost/bind.hpp>
 #include <boost/signals/trackable.hpp>
 
@@ -44,7 +40,7 @@ struct Loader::Impl : boost::signals::trackable {
 	void createPixmap();
 
 	///
-	void startLoading(Inset const &, BufferView const &);
+	void startLoading(Inset const &);
 
 	/// The loading status of the image.
 	ImageStatus status_;
@@ -70,8 +66,6 @@ private:
 	typedef std::list<Inset const *> InsetList;
 	///
 	InsetList insets;
-	///
-	boost::weak_ptr<BufferView const> view;
 };
 
 
@@ -132,11 +126,11 @@ void Loader::startLoading() const
 }
 
 
-void Loader::startLoading(Inset const & inset, BufferView const & bv) const
+void Loader::startLoading(Inset const & inset) const
 {
 	if (pimpl_->status_ != WaitingToLoad || !pimpl_->cached_item_.get())
 		return;
-	pimpl_->startLoading(inset, bv);
+	pimpl_->startLoading(inset);
 }
 
 
@@ -287,7 +281,7 @@ void Loader::Impl::createPixmap()
 }
 
 
-void Loader::Impl::startLoading(Inset const & inset, BufferView const & bv)
+void Loader::Impl::startLoading(Inset const & inset)
 {
 	if (status_ != WaitingToLoad)
 		return;
@@ -297,7 +291,6 @@ void Loader::Impl::startLoading(Inset const & inset, BufferView const & bv)
 	it = std::find(it, end, &inset);
 	if (it == end)
 		insets.push_back(&inset);
-	view = bv.owner()->view();
 
 	LoaderQueue::get().touch(cached_item_);
 }

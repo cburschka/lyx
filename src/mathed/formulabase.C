@@ -51,7 +51,6 @@
 #include "textpainter.h"
 #include "frontends/Dialogs.h"
 #include "intl.h"
-#include "insets/insetcommand.h"
 #include "ref_inset.h"
 
 using std::endl;
@@ -798,8 +797,7 @@ dispatch_result InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 	case LFUN_DIALOG_SHOW_NEW_INSET: {
 		string const & name = argument;
 		if (name == "ref") {
-			InsetCommandParams p(name);
-			string data = InsetCommandMailer::params2string(p);
+			string data = "LatexCommand \\ref{}\n\\end_inset\n\n";
 			bv->owner()->getDialogs().show(name, data, 0);
 		} else
 			result = UNDISPATCHED;
@@ -807,13 +805,24 @@ dispatch_result InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 	break;
 
 	case LFUN_REF_APPLY: {
-		InsetCommandParams params;
-		InsetCommandMailer::string2params(argument, params);
+		// argument comes with a head "LatexCommand " and a
+		// tail "\nend_inset\n\n". Strip them off.
+		string trimmed;
+		string body = split(argument, trimmed, ' ');
+		split(body, trimmed, '\n');
+		lyxerr << "passing '" << trimmed << "' to the math parser\n";
 
-		// It would be nice if RefInset could handle an
-		// InsetCommandParams arg, but for now we convert it to
-		// 'foo|++|bar|++|nonsense'.
-		string const tmp = params.getAsString();
+		MathAtom at;
+		if (!mathed_parse_normal(at, trimmed)) {
+			result = UNDISPATCHED;
+			break;
+		}
+
+		RefInset * tmp = at.nucleus()->asRefInset();
+		if (!tmp) {
+			result = UNDISPATCHED;
+			break;
+		}
 
 		InsetBase * base =
 			bv->owner()->getDialogs().getOpenInset("ref");
@@ -824,9 +833,9 @@ dispatch_result InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 				break;
 			}
 
-			*inset = RefInset(tmp);
+			*inset = *tmp;
 		} else {
-			mathcursor->insert(MathAtom(new RefInset(tmp)));
+			mathcursor->insert(at);
 		}
 		updateLocal(bv, true);
 	}
