@@ -439,7 +439,7 @@ void Parser::tokenize(string const & buffer)
 		}
 	}
 
-#if 0
+#if 1
 	lyxerr << "\nTokens: ";
 	for (unsigned i = 0; i < tokens_.size(); ++i)
 		lyxerr << tokens_[i];
@@ -538,6 +538,9 @@ MathMacroTemplate * Parser::parse_macro()
 
 MathMatrixInset * Parser::parse_normal()
 {
+	while (nextToken().cat() == catSpace)
+		getToken();
+
 	Token const & t = getToken();
 
 	if (t.cat() == catMath || t.cs() == "(") {
