@@ -942,11 +942,8 @@ void Parser::parse_into(MathArray & array, unsigned flags, MathTextCodes code)
 					//	theCatcode[' '] = catLetter;	
 					//}
 
-					MathTextCodes t = static_cast<MathTextCodes>(l->id);
 					MathArray ar;
-					parse_into(ar, FLAG_ITEM, t);
-					for (MathArray::iterator it = ar.begin(); it != ar.end(); ++it)
-						(*it)->handleFont(t);
+					parse_into(ar, FLAG_ITEM, static_cast<MathTextCodes>(l->id));
 					array.push_back(ar);
 
 					// undo catcode changes
