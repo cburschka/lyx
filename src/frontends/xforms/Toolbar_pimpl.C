@@ -263,41 +263,6 @@ void C_Toolbar_ToolbarCB(FL_OBJECT * ob, long data)
 
 }
 
-
-void setPixmap(FL_OBJECT * obj, int action)
-{
-	string xpm_name;
-	FuncRequest ev = lyxaction.retrieveActionArg(action);
-
-	string const name = lyxaction.getActionName(ev.action);
-	if (!ev.argument.empty())
-		xpm_name = subst(name + ' ' + ev.argument, ' ','_');
-	else
-		xpm_name = name;
-
-	string fullname = LibFileSearch("images", xpm_name, "xpm");
-
-	if (ev.action == LFUN_INSERT_MATH && !ev.argument.empty()) {
-		string arg = ev.argument.substr(1);
-		fullname = LibFileSearch("images/math/", arg, "xpm");
-	}
-
-	if (!fullname.empty()) {
-		lyxerr[Debug::GUI] << "Full icon name is `"
-				   << fullname << '\'' << endl;
-		fl_set_pixmapbutton_file(obj, fullname.c_str());
-		return;
-	}
-
-	lyxerr << "Unable to find icon `" << xpm_name << '\'' << endl;
-	fullname = LibFileSearch("images", "unknown", "xpm");
-	if (!fullname.empty()) {
-		lyxerr[Debug::GUI] << "Using default `unknown' icon"
-				   << endl;
-		fl_set_pixmapbutton_file(obj, fullname.c_str());
-	}
-}
-
 } // namespace anon
 
 
@@ -353,7 +318,9 @@ void Toolbar::Pimpl::add(int action, string const & tooltip)
 		// The view that this object belongs to.
 		obj->u_vdata = owner_;
 
-		setPixmap(obj, action);
+		string const xpm = toolbarbackend.getIcon(action);
+		fl_set_pixmapbutton_file(obj, xpm.c_str());
+
 		// we must remember to update the positions
 		xpos += buttonwidth;
 		// ypos is constant

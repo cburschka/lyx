@@ -1,5 +1,10 @@
 2003-04-08  John Levon  <levon@movementarian.org>
 
+	* Toolbar_pimpl.C: remove setPixmap, use the backend
+	instead.
+
+2003-04-08  John Levon  <levon@movementarian.org>
+
 	* Toolbar_pimpl.C: handle tooltip
 
 2003-04-03  Angus Leeming  <leeming@lyx.org>
