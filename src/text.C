@@ -543,7 +543,7 @@ int LyXText::leftMargin(Row const & row) const
 
 		Paragraph * newpar = row.par()->outerHook();
 
-		// make a corresponding row. Needed to call LeftMargin()
+		// make a corresponding row. Needed to call leftMargin()
 
 		// check wether it is a sufficent paragraph
 		if (newpar && newpar->layout()->isEnvironment()) {
@@ -551,12 +551,6 @@ int LyXText::leftMargin(Row const & row) const
 			dummyrow.par(newpar);
 			dummyrow.pos(newpar->size());
 			x = leftMargin(dummyrow);
-		} else {
-			// this is no longer an error, because this function
-			// is used to clear impossible depths after changing
-			// a layout. Since there is always a redo,
-			// LeftMargin() is always called
-			row.par()->params().depth(0);
 		}
 
 		if (newpar && row.par()->layout() == tclass.defaultLayout()) {
@@ -717,38 +711,6 @@ int LyXText::rightMargin(Buffer const & buf, Row const & row) const
 		+ font_metrics::signedWidth(tclass.rightmargin(),
 				       tclass.defaultfont());
 
-	// this is the way, LyX handles the LaTeX-Environments.
-	// I have had this idea very late, so it seems to be a
-	// later added hack and this is true
-	if (row.par()->getDepth()) {
-		// find the next level paragraph
-
-		ParagraphList::iterator newpit = row.par();
-
-		do {
-			--newpit;
-		} while (newpit != ownerParagraphs().begin()
-			 && newpit->getDepth() >= row.par()->getDepth());
-
-		// make a corresponding row. Needed to call LeftMargin()
-
-		// check wether it is a sufficent paragraph
-		if (newpit != ownerParagraphs().begin() &&
-		    newpit->layout()->isEnvironment()) {
-			Row dummyrow;
-			dummyrow.par(newpit);
-			dummyrow.pos(0);
-			x = rightMargin(buf, dummyrow);
-		} else {
-			// this is no longer an error, because this function
-			// is used to clear impossible depths after changing
-			// a layout. Since there is always a redo,
-			// LeftMargin() is always called
-			row.par()->params().depth(0);
-		}
-	}
-
-	//lyxerr << "rightmargin: " << layout->rightmargin << endl;
 	x += font_metrics::signedWidth(layout->rightmargin,
 				       tclass.defaultfont())
 		* 4 / (row.par()->getDepth() + 4);
@@ -841,9 +803,6 @@ LyXText::rowBreakPoint(Row const & row) const
 				    getLabelFont(bv()->buffer(), &*pit));
 			if (pit->isLineSeparator(i - 1))
 				thiswidth -= singleWidth(&*pit, i - 1);
-			int left_margin = labelEnd(row);
-			if (thiswidth < left_margin)
-				thiswidth = left_margin;
 		}
 
 		x += thiswidth;

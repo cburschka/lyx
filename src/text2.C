@@ -519,7 +519,10 @@ bool LyXText::changeDepth(bv_funcs::DEPTH_CHANGE type, bool test_only)
 		setCursor(selection.end.par(), selection.end.pos());
 	}
 
+	// this handles the counter labels, and also fixes up
+	// depth values for follow-on (child) paragraphs
 	updateCounters();
+
 	setSelection();
 	setCursor(tmpcursor.par(), tmpcursor.pos());
 
@@ -1236,6 +1239,13 @@ void LyXText::updateCounters()
 			++rowit;
 
 		string const oldLabel = pit->params().labelString();
+
+		int maxdepth = 0;
+		if (pit != ownerParagraphs().begin())
+			maxdepth = boost::prior(pit)->getMaxDepthAfter();
+
+		if (pit->params().depth() > maxdepth)
+			pit->params().depth(maxdepth);
 
 		// setCounter can potentially change the labelString.
 		setCounter(bv()->buffer(), &*pit);

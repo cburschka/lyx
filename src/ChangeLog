@@ -1,5 +1,15 @@
 2003-04-07  John Levon  <levon@movementarian.org>
 
+	* paragraph.C: remove dead comment
+
+	* text.C: remove troublesome depth-fiddling code
+	in leftMargin() and rightMargin() (bug 1017)
+
+	* text2.C (updateCounters): fix up depth values
+	(bug 1013)
+
+2003-04-07  John Levon  <levon@movementarian.org>
+
 	* BufferView_pimpl.C: clear message when doc finishes resizing,
 	and after a mouse event
 

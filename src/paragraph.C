@@ -433,8 +433,6 @@ LyXFont const Paragraph::getFirstFontSettings() const
 // The difference is that this one is used for generating the LaTeX file,
 // and thus cosmetic "improvements" are disallowed: This has to deliver
 // the true picture of the buffer. (Asger)
-// If position is -1, we get the layout font of the paragraph.
-// If position is -2, we get the font of the manual label of the paragraph.
 LyXFont const Paragraph::getFont(BufferParams const & bparams,
 				 pos_type pos) const
 {
