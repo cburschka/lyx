@@ -1,3 +1,13 @@
+2000-10-26  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/frontends/ButtonPolicies.h (operator<<): reinsert for State
+	and SMInput
+
+	* src/lyxfunc.C (MenuNew): lessen the scope of fname
+	moved misplaced AllowInput two lines up.
+
+	* src/buffer.C (readFile): compare float with float, not with int
+
 2000-10-26  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/minibuffer.C: add "using SigC::slot" statement.
