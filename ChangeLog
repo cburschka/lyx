@@ -1,3 +1,7 @@
+2001-02-26  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* src/text2.C (SetCurrentFont): Disable number property at boundary.
+
 2001-02-23  Juergen Vigna  <jug@sad.it>
 
 	* src/tabular.C (AppendColumn): fixed initialitation of column_struct.
