@@ -13,7 +13,6 @@
 #define FORM_MATHSBITMAP_H
 
 #include <vector>
-//#include <boost/smart_ptr.hpp>
 #include "support/smart_ptr.h"
 
 #ifdef __GNUG__
@@ -27,11 +26,15 @@
  * This class provides an XForms implementation of a maths bitmap form.
  */
 class FormMathsBitmap : public FormMathsSub {
+	///
 	friend class FormMathsPanel;
 
-  public:
+public:
 	///
 	typedef lyx::shared_c_ptr<FL_OBJECT> bm_ptr;
+	///
+	typedef lyx::shared_c_ptr<FL_FORM> fl_ptr;
+	
 	///
 	FormMathsBitmap(LyXView *, Dialogs * d, FormMathsPanel const &,
 			std::vector<string> const &);
@@ -58,7 +61,7 @@ private:
 	/// The latex name chosen
 	string latex_chosen_;
 	/// Real GUI implementation
-	FL_FORM * form_;
+	fl_ptr form_;
 	/// The bitmap tables
 	std::vector<bm_ptr> bitmaps_;
 

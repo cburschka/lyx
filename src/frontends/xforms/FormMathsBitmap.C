@@ -50,7 +50,7 @@ FormMathsBitmap::FormMathsBitmap(LyXView * lv, Dialogs * d,
 
 FL_FORM * FormMathsBitmap::form() const
 {
-	return form_;
+	return form_.get();
 }
 
 
@@ -60,7 +60,7 @@ void FormMathsBitmap::build()
 
 	h_+= 50; // Allow room for a Close button
 
-	form_ = fl_bgn_form(FL_UP_BOX, w_, h_);
+	form_.reset(fl_bgn_form(FL_UP_BOX, w_, h_));
 	form_->u_vdata = this;
 
 	FL_OBJECT * obj = fl_add_box(FL_UP_BOX, 0, 0, w_, h_, "");
@@ -70,7 +70,7 @@ void FormMathsBitmap::build()
 	     it < bitmaps_.end(); ++it) {
 		FL_OBJECT * obj = it->get();
 
-		fl_add_object(form_, obj);
+		fl_add_object(form_.get(), obj);
 		bc().addReadOnly(obj);
 
 		y_ = max(y_, obj->y + obj->h);
