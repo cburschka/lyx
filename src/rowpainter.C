@@ -1065,47 +1065,11 @@ int getLengthMarkerHeight(BufferView const & bv, VSpace const & vsp)
 }
 
 
-void paintRow(BufferView const & bv, LyXText const & text,
-	ParagraphList::iterator pit,
-	RowList::iterator rit, int y_offset, int x_offset, int y)
-{
-	RowPainter painter(bv, text, pit, rit, y_offset, x_offset, y);
-	painter.paint();
-}
-
-
 int paintRows(BufferView const & bv, LyXText const & text,
 	RowList::iterator rit, int xo, int y, int yf, int y2, int yo)
 {
-	// fix up missing metrics() call for main LyXText
-	// calling metrics() directly is (a) slow and (b) crashs
-	if (&text == bv.text) {
-#if 1
-		// make sure all insets are updated
-		ParagraphList::iterator pit = text.ownerParagraphs().begin();
-		ParagraphList::iterator end = text.ownerParagraphs().end();
-
-		// compute inset metrics
-		for (; pit != end; ++pit) {
-			InsetList & insetList = pit->insetlist;
-			InsetList::iterator ii = insetList.begin();
-			InsetList::iterator iend = insetList.end();
-			for (; ii != iend; ++ii) {
-				Dimension dim;
-				LyXFont font;
-				MetricsInfo mi(perv(bv), font, text.workWidth());
-				ii->inset->metrics(mi, dim);
-			}
-		}
-#else
-		LyXFont font;
-		Dimension dim;
-		MetricsInfo mi(perv(bv), font, text.workWidth());
-		const_cast<LyXText&>(text).metrics(mi, dim);
-#endif
-	}
+	//lyxerr << "paintRows: rit: " << &*rit << endl;
 	const_cast<LyXText&>(text).updateRowPositions();
-
 	int yy = yf - y;
 	
 	ParagraphList::iterator pit = text.ownerParagraphs().begin();
@@ -1120,7 +1084,8 @@ int paintRows(BufferView const & bv, LyXText const & text,
 			if (row == rit)
 				active = true;
 			if (active) {
-				paintRow(bv, text, pit, row, y + yo, xo, y + text.top_y());
+				RowPainter painter(bv, text, pit, row, y + yo, xo, y + text.top_y());
+				painter.paint();
 				y += row->height();
 				if (yy + y >= y2)
 					return y;

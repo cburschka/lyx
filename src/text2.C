@@ -59,16 +59,13 @@ using std::pair;
 using lyx::pos_type;
 
 
-LyXText::LyXText(BufferView * bv)
+LyXText::LyXText(BufferView * bv, InsetText * inset, bool ininset,
+	  ParagraphList & paragraphs)
 	: height(0), width(0), anchor_y_(0),
-	  inset_owner(0), the_locking_inset(0), bv_owner(bv)
-{}
-
-
-LyXText::LyXText(BufferView * bv, InsetText * inset)
-	: height(0), width(0), anchor_y_(0),
-	  inset_owner(inset), the_locking_inset(0), bv_owner(bv)
-{}
+	  inset_owner(inset), the_locking_inset(0), bv_owner(bv),
+	  in_inset_(ininset), paragraphs_(paragraphs)
+{
+}
 
 
 void LyXText::init(BufferView * bview)
@@ -595,7 +592,8 @@ void LyXText::fullRebreak()
 
 void LyXText::metrics(MetricsInfo & mi, Dimension & dim)
 {
-	//lyxerr << "LyXText::metrics: width: " << mi.base.textwidth << endl;
+	//lyxerr << "LyXText::metrics: width: " << mi.base.textwidth
+	//	<< " workWidth: " << workWidth() << endl;
 	//Assert(mi.base.textwidth);
 
 	// rebuild row cache
@@ -1944,17 +1942,14 @@ bool LyXText::deleteEmptyParagraphMechanism(LyXCursor const & old_cursor)
 
 ParagraphList & LyXText::ownerParagraphs() const
 {
-	if (inset_owner) {
-		return inset_owner->paragraphs;
-	}
-	return bv_owner->buffer()->paragraphs;
+	return paragraphs_;
 }
 
 
 bool LyXText::isInInset() const
 {
 	// Sub-level has non-null bv owner and non-null inset owner.
-	return inset_owner != 0 && bv_owner != 0;
+	return inset_owner != 0;
 }
 
 

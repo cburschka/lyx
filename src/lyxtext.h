@@ -50,9 +50,8 @@ class Dimension;
 class LyXText : public TextCursor {
 public:
 	/// Constructor
-	LyXText(BufferView *);
-	/// sets inset as owner
-	LyXText(BufferView *, InsetText *);
+	LyXText(BufferView *, InsetText *, bool ininset,
+		ParagraphList & paragraphs);
 
 	void init(BufferView *);
 	///
@@ -479,6 +478,11 @@ private:
 	mutable lyx::pos_type bidi_start;
 	///
 	mutable lyx::pos_type bidi_end;
+
+	///
+	const bool in_inset_;
+	///
+	ParagraphList & paragraphs_;
 
 	///
 	void charInserted();

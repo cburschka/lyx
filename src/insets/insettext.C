@@ -82,7 +82,7 @@ using lyx::textclass_type;
 
 
 InsetText::InsetText(BufferParams const & bp)
-	: UpdatableInset(), text_(0, this)
+	: UpdatableInset(), text_(0, this, true, paragraphs)
 {
 	paragraphs.push_back(Paragraph());
 	paragraphs.begin()->layout(bp.getLyXTextClass().defaultLayout());
@@ -93,7 +93,7 @@ InsetText::InsetText(BufferParams const & bp)
 
 
 InsetText::InsetText(InsetText const & in)
-	: UpdatableInset(in), text_(0, this)
+	: UpdatableInset(in), text_(0, this, true, paragraphs)
 {
 	init(&in);
 }
@@ -1586,8 +1586,8 @@ void InsetText::setViewCache(BufferView const * bv) const
 {
 	if (bv) {
 		if (bv != text_.bv_owner) {
-			lyxerr << "setting view cache from "
-				<< text_.bv_owner << " to " << bv << "\n";
+			//lyxerr << "setting view cache from "
+			//	<< text_.bv_owner << " to " << bv << "\n";
 			text_.init(const_cast<BufferView *>(bv));
 		}
 		text_.bv_owner = const_cast<BufferView *>(bv);

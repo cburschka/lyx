@@ -1,6 +1,17 @@
 
 2003-08-15  André Pönitz  <poenitz@gmx.net>
 
+	* rowpainter.C: remove extra metrics calls
+
+	* lyxtext.h: merge the two constructors into a single one,
+	  pass reference to owner's par list
+
+	* BufferView_pimpl.C:
+	* text.C:
+	* text2.C: adjust
+
+2003-08-15  André Pönitz  <poenitz@gmx.net>
+
 	* lyxrow_funcs.[Ch]:
 	* lyxtext.h:
 	* paragraph.h:

@@ -418,7 +418,7 @@ void BufferView::Pimpl::resizeCurrentBuffer()
 				textcache.show(lyxerr, "resizeCurrentBuffer");
 		} else {
 			lyxerr << "no text in cache!" << endl;
-			bv_->text = new LyXText(bv_);
+			bv_->text = new LyXText(bv_, 0, false, bv_->buffer()->paragraphs);
 			bv_->text->init(bv_);
 		}
 

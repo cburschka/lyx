@@ -103,9 +103,6 @@ int LyXText::top_y() const
 
 void LyXText::top_y(int newy)
 {
-	if (ownerParagraphs().begin()->rows.empty())
-		return;
-
 	anchor_y_ = newy;
 	lyxerr[Debug::GUI] << "changing reference to offset: " << anchor_y_ << endl;
 }
