@@ -61,9 +61,10 @@ int numberOfHfills(Paragraph const & par, Row const & row)
 	pos_type first = row.pos();
 
 	// hfill *DO* count at the beginning of paragraphs!
-	if (first)
+	if (first) {
 		while (first < last && par.isHfill(first))
 			++first;
+	}
 
 	first = max(first, par.beginningOfBody());
 
@@ -87,9 +88,10 @@ int numberOfLabelHfills(Paragraph const & par, Row const & row)
 	pos_type first = row.pos();
 
 	// hfill *DO* count at the beginning of paragraphs!
-	if (first)
+	if (first) {
 		while (first < last && par.isHfill(first))
 			++first;
+	}
 
 	last = min(last, par.beginningOfBody());
 	int n = 0;
