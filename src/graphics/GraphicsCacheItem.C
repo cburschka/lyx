@@ -19,11 +19,13 @@
 #include "graphics/GraphicsCacheItem.h"
 #include "frontends/support/LyXImage.h"
 #include "graphics/ImageLoaderXPM.h"
+#include "converter.h"
 #include "support/filetools.h"
 #include "support/lyxlib.h"
-#include "support/syscall.h"
-
+#include "lyx_gui_misc.h"
 #include "debug.h"
+#include "support/LAssert.h"
+#include "gettext.h"
 
 using std::endl;
 
@@ -32,9 +34,12 @@ GraphicsCacheItem::GraphicsCacheItem(string const & filename)
 {
 	filename_ = filename;
 	
-	renderXPM(filename);
+	bool success = convertImage(filename);
 	// For now we do it synchronously
-	imageConverted(0);
+	if (success) 
+		imageConverted(0);
+	else
+		imageStatus_ = ErrorConverting;
 }
 
 
@@ -62,37 +67,64 @@ GraphicsCacheItem::imageConverted(int retval)
 		return;
 	}
 
-	// Do the actual image loading from XPM to memory.
-	loadXPMImage();	
+	// Do the actual image loading from file to memory.
+	loadImage();	
 }
+
+
+namespace {
+string const findTargetFormat(string const & from)
+{
+	typedef ImageLoader::FormatList FormatList;
+	FormatList formats = ImageLoaderXPM().loadableFormats();
+	Assert(formats.size() > 0); // There must be a format to load from.
+	
+	FormatList::const_iterator iter = formats.begin();
+	FormatList::const_iterator end  = formats.end();
+
+	for (; iter != end; ++iter) {
+		if (converters.IsReachable(from, *iter))
+			break;
+	}
+	if (iter == end) {
+		// We do not know how to convert the image to something loadable.
+		lyxerr << "ERROR: Do not know how to convert image." << std::endl;
+
+		string const first(_("Cannot convert image to display format"));
+		string const second1(_("Need converter from "));
+		string const second2(_(" to "));
+		string const second(second1 + from + second2 + formats[0]);
+
+		WriteAlert(first, second);
+		
+		return string();
+	}
+
+	return (*iter);
+}
+
+} // anon namespace
 
 	
 bool
-GraphicsCacheItem::renderXPM(string const & filename)
+GraphicsCacheItem::convertImage(string const & filename)
 {
-	// Create the command to do the conversion, this depends on ImageMagicks
-	// convert program.
-	string command = "convert ";
-	command += filename;
-	command += " XPM:";
-
+	string const from = GetExtension(filename);
+	string const to = findTargetFormat(from);
+	if (to.empty()) 
+		return false;
+	
 	// Take only the filename part of the file, without path or extension.
 	string temp = OnlyFilename(filename);
 	temp = ChangeExtension(filename, string());
 	
 	// Add some stuff to have it a unique temp file.
-	// This tempfile is deleted in loadXPMImage after it is loaded to memory.
+	// This tempfile is deleted in loadImage after it is loaded to memory.
 	tempfile = lyx::tempName(string(), temp);
 	// Remove the temp file, we only want the name...
 	lyx::unlink(tempfile);
-	tempfile = ChangeExtension(tempfile, ".xpm");	
-	
-	command += tempfile;
 
-	// Run the convertor.
-	lyxerr << "Launching convert to xpm, command=" << command << endl;
-	Systemcalls syscall;
-	syscall.startscript(Systemcalls::Wait, command);
+	converters.Convert(0, filename, tempfile, from, to);
 
 	return true;
 }
@@ -101,7 +133,7 @@ GraphicsCacheItem::renderXPM(string const & filename)
 // This function gets called from the callback after the image has been
 // converted successfully.
 void
-GraphicsCacheItem::loadXPMImage()
+GraphicsCacheItem::loadImage()
 {
 	lyxerr << "Loading XPM Image... ";
 

@@ -61,8 +61,8 @@ public:
 	void imageConverted(int retval);
 
 private:
-	bool renderXPM(string const & filename);
-	void loadXPMImage();
+	bool convertImage(string const & filename);
+	void loadImage();
 
 	/** The filename we refer too.
 	    This is used when removing ourselves from the cache.
