@@ -1563,7 +1563,10 @@ void InsetFig::GetPSSizes()
 
 	if (fname.empty()) return;
 	string p;
-	ifstream ifs(fname.c_str());
+	string lfname = fname;
+	if (GetExtension(fname).empty())
+		lfname += ".eps";
+	ifstream ifs(lfname.c_str());
 
 	if (!ifs) return;	// file not found !!!!
 

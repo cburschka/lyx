@@ -1,3 +1,14 @@
+2001-03-27  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* lib/examples/fr_AlignementDecimal.lyx:
+	* lib/examples/fr_Macros_Math.lyx:
+	* lib/examples/fr_MultiColonnes.lyx: new files from Adrien Rebollo.
+
+2001-03-26  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* src/insets/figinset.C (GetPSSizes): fix figure previewing when
+	the suffix has been removed from the filename.
+
 2001-03-22  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/frontends/Liason.C (printBuffer): do not forget file name
