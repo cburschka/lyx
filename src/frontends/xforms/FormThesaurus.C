@@ -21,7 +21,7 @@
 #include "form_thesaurus.h"
 #include "debug.h"
 
-typedef FormCB<ControlThesaurus, FormDB<FD_form_tabbed_thesaurus> > base_class;
+typedef FormCB<ControlThesaurus, FormDB<FD_form_thesaurus> > base_class;
 
 FormThesaurus::FormThesaurus(ControlThesaurus & c)
 	: base_class(c, _("LyX: Thesaurus"), false),
@@ -32,37 +32,13 @@ FormThesaurus::FormThesaurus(ControlThesaurus & c)
 
 void FormThesaurus::build()
 {
-	dialog_.reset(build_tabbed_thesaurus());
-	noun_.reset(build_noun());
-	verb_.reset(build_verb());
-	adjective_.reset(build_adjective());
-	adverb_.reset(build_adverb());
-	other_.reset(build_other());
-
+	dialog_.reset(build_thesaurus());
+ 
 	// Manage the ok, apply and cancel/close buttons
 	bc().setCancel(dialog_->button_close);
 	bc().addReadOnly(dialog_->input_replace);
 
 	fl_set_input_return(dialog_->input_entry, FL_RETURN_END_CHANGED);
-
-	fl_addto_tabfolder(dialog_->tabbed_folder, _("Nouns"), noun_->form);
-	fl_addto_tabfolder(dialog_->tabbed_folder, _("Verbs"), verb_->form);
-	fl_addto_tabfolder(dialog_->tabbed_folder, _("Adjectives"), adjective_->form);
-	fl_addto_tabfolder(dialog_->tabbed_folder, _("Adverbs"), adverb_->form);
-	fl_addto_tabfolder(dialog_->tabbed_folder, _("Other"), other_->form);
-}
-
-
-void FormThesaurus::redraw()
-{
-	if (form() && form()->visible)
-		fl_redraw_form(form());
-	else
-		return;
-
-	FL_FORM * form = fl_get_active_folder(dialog_->tabbed_folder);
-	if (form && form->visible)
-		fl_redraw_form(form);
 }
 
 
@@ -74,62 +50,35 @@ void FormThesaurus::update()
 	string const & str_ = controller().text();
 	setEnabled(dialog_->button_replace, !str_.empty());
 	fl_set_input(dialog_->input_replace, "");
-	updateEntries(str_);
+	updateMeanings(str_);
 }
 
 
-void FormThesaurus::updateEntries(string const & str)
+void FormThesaurus::updateMeanings(string const & str)
 {
+	fl_clear_browser(dialog_->browser_meanings);
+ 
 	fl_set_input(dialog_->input_entry, str.c_str());
 
-	fl_clear_browser(noun_->browser_noun);
-	fl_clear_browser(verb_->browser_verb);
-	fl_clear_browser(adjective_->browser_adjective);
-	fl_clear_browser(adverb_->browser_adverb);
-	fl_clear_browser(other_->browser_other);
+	fl_set_browser_topline(dialog_->browser_meanings, 1);
 
-	fl_set_browser_topline(noun_->browser_noun, 1);
-	fl_set_browser_topline(verb_->browser_verb, 1);
-	fl_set_browser_topline(adjective_->browser_adjective, 1);
-	fl_set_browser_topline(adverb_->browser_adverb, 1);
-	fl_set_browser_topline(other_->browser_other, 1);
+	fl_freeze_form(form());
 
-	fl_freeze_form(noun_->form);
-	fl_freeze_form(verb_->form);
-	fl_freeze_form(adverb_->form);
-	fl_freeze_form(adjective_->form);
-	fl_freeze_form(other_->form);
-
-	std::vector<string> nouns = controller().getNouns(str);
-	for (std::vector<string>::const_iterator it = nouns.begin(); it != nouns.end(); ++it)
-		fl_add_browser_line(noun_->browser_noun, it->c_str());
-
-	std::vector<string> verbs = controller().getVerbs(str);
-	for (std::vector<string>::const_iterator it = verbs.begin(); it != verbs.end(); ++it)
-		fl_add_browser_line(verb_->browser_verb, it->c_str());
-
-	std::vector<string> adjectives = controller().getAdjectives(str);
-	for (std::vector<string>::const_iterator it = adjectives.begin(); it != adjectives.end(); ++it)
-		fl_add_browser_line(adjective_->browser_adjective, it->c_str());
-
-	std::vector<string> adverbs = controller().getAdverbs(str);
-	for (std::vector<string>::const_iterator it = adverbs.begin(); it != adverbs.end(); ++it)
-		fl_add_browser_line(adverb_->browser_adverb, it->c_str());
-
-	std::vector<string> others = controller().getOthers(str);
-	for (std::vector<string>::const_iterator it = others.begin(); it != others.end(); ++it)
-		fl_add_browser_line(other_->browser_other, it->c_str());
-
-	fl_unfreeze_form(noun_->form);
-	fl_unfreeze_form(verb_->form);
-	fl_unfreeze_form(adverb_->form);
-	fl_unfreeze_form(adjective_->form);
-	fl_unfreeze_form(other_->form);
-	fl_redraw_form(noun_->form);
-	fl_redraw_form(verb_->form);
-	fl_redraw_form(adverb_->form);
-	fl_redraw_form(adjective_->form);
-	fl_redraw_form(other_->form);
+	Thesaurus::Meanings meanings = controller().getMeanings(str);
+ 
+	for (Thesaurus::Meanings::const_iterator cit = meanings.begin();
+		cit != meanings.end(); ++cit) {
+			fl_add_browser_line(dialog_->browser_meanings, cit->first.c_str());
+			for (std::vector<string>::const_iterator cit2 = cit->second.begin();
+				cit2 != cit->second.end(); ++cit2) {
+					string ent = "   ";
+					ent += *cit2;
+					fl_add_browser_line(dialog_->browser_meanings, ent.c_str());
+				}
+		}
+ 
+	fl_unfreeze_form(form());
+	fl_redraw_form(form());
 }
 
 
@@ -174,11 +123,12 @@ void FormThesaurus::setReplace(string const & templ, string const & nstr)
 
 ButtonPolicy::SMInput FormThesaurus::input(FL_OBJECT * obj, long)
 {
-	FL_OBJECT * browser = 0;
-
 	if (obj == dialog_->input_entry) {
-		updateEntries(fl_get_input(dialog_->input_entry));
-		if (string(fl_get_input(dialog_->input_entry)).empty()) {
+		string s = strip(frontStrip(fl_get_input(dialog_->input_entry)));
+		 
+		updateMeanings(s);
+
+		if (s.empty()) {
 			fl_set_input(dialog_->input_replace, "");
 			return ButtonPolicy::SMI_APPLY;
 		}
@@ -187,26 +137,20 @@ ButtonPolicy::SMInput FormThesaurus::input(FL_OBJECT * obj, long)
 		if (!rep.empty())
 			controller().replace(fl_get_input(dialog_->input_replace));
 		clickline_ = -1;
-		updateEntries(rep);
+		updateMeanings(rep);
 		return ButtonPolicy::SMI_APPLY;
-	} else if (obj == noun_->browser_noun ||
-		   obj == verb_->browser_verb ||
-		   obj == adjective_->browser_adjective ||
-		   obj == adverb_->browser_adverb ||
-		   obj == other_->browser_other) {
-		browser = obj;
+	} else if (obj != dialog_->browser_meanings) {
+		return ButtonPolicy::SMI_NOOP;
 	}
 
-	if (browser) {
-		setReplace(fl_get_input(dialog_->input_entry),
-			fl_get_browser_line(browser, fl_get_browser(browser)));
+	setReplace(fl_get_input(dialog_->input_entry),
+		strip(frontStrip(fl_get_browser_line(obj, fl_get_browser(obj)))));
 
-		if (clickline_ == fl_get_browser(browser)) {
-			updateEntries(fl_get_input(dialog_->input_replace));
-			clickline_ = -1;
-		} else {
-			clickline_ = fl_get_browser(browser);
-		}
+	if (clickline_ == fl_get_browser(obj)) {
+		updateMeanings(fl_get_input(dialog_->input_replace));
+		clickline_ = -1;
+	} else {
+		clickline_ = fl_get_browser(obj);
 	}
 
 	return ButtonPolicy::SMI_VALID;

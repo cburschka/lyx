@@ -10,31 +10,15 @@
 
 #include "Thesaurus.h"
 
+#include <algorithm>
+ 
 Thesaurus thesaurus; 
 
 #ifdef HAVE_LIBAIKSAURUS
  
-Thesaurus::ThesaurusEntry::ThesaurusEntry(string const & ent, char part)
-	: entry(ent), pos(Thesaurus::NONE)
-{
-	if (part & AikSaurus::Unknown)
-		pos |= OTHER;
-	if (part & AikSaurus::Other)
-		pos |= OTHER;
-	if (part & AikSaurus::Noun)
-		pos |= NOUN;
-	if (part & AikSaurus::Verb)
-		pos |= VERB;
-	if (part & AikSaurus::Adjective)
-		pos |= ADJECTIVE;
-	if (part & AikSaurus::Adverb)
-		pos |= ADVERB;
-}
-
-
 Thesaurus::Thesaurus()
 {
-	aik_ = new AikSaurus;
+	aik_ = new Aiksaurus;
 }
 
 
@@ -44,31 +28,46 @@ Thesaurus::~Thesaurus()
 }
 
 
-std::vector<Thesaurus::ThesaurusEntry> Thesaurus::lookup(string const & text)
+Thesaurus::Meanings Thesaurus::lookup(string const & text)
 {
-	std::vector<ThesaurusEntry> entries;
+	Meanings meanings;
 
 	if (!aik_->find(text.c_str()))
-		return entries;
+		return meanings;
 
-	char pos;
+	// weird api, but ...
+ 
+	int prev_meaning = -1;
+	int cur_meaning;
+	string meaning;
 
-	string ret = aik_->next(pos);
+	// correct, returns "" at the end 
+	string ret = aik_->next(cur_meaning);
+ 
 	while (!ret.empty()) {
-		entries.push_back(ThesaurusEntry(ret, pos));
-		ret = aik_->next(pos);
+		if (cur_meaning != prev_meaning) {
+			meaning = ret;
+			ret = aik_->next(cur_meaning);
+			prev_meaning = cur_meaning;
+		} else {
+			if (ret != text) {
+				meanings[meaning].push_back(ret);
+			} 
+		}
+ 
+		ret = aik_->next(cur_meaning);
 	}
 
-	return entries;
+	for (Meanings::iterator it = meanings.begin();
+		it != meanings.end(); ++it) {
+			std::sort(it->second.begin(), it->second.end());
+	}
+ 
+	return meanings;
 }
 
 #else
 
-Thesaurus::ThesaurusEntry::ThesaurusEntry(string const &, char)
-{
-}
-
- 
 Thesaurus::Thesaurus()
 {
 }
@@ -79,10 +78,9 @@ Thesaurus::~Thesaurus()
 }
 
  
-std::vector<Thesaurus::ThesaurusEntry>
-Thesaurus::lookup(string const & /*text*/)
+Thesaurus::Meanings Thesaurus::lookup(string const &)
 {
-	return std::vector<ThesaurusEntry>();
+	return Meanings();
 }
 
 #endif // HAVE_LIBAIKSAURUS

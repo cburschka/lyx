@@ -34,41 +34,20 @@ public:
 	/// show dialog
 	virtual void showEntry(string const & str);
 
-	/// get noun entries
-	std::vector<string> getNouns(string const & str) {
-		return getEntries(str, Thesaurus::NOUN);
-	}
-	/// get verb entries
-	std::vector<string> getVerbs(string const & str) {
-		return getEntries(str, Thesaurus::VERB);
-	}
-	/// get adjective entries
-	std::vector<string> getAdjectives(string const & str) {
-		return getEntries(str, Thesaurus::ADJECTIVE);
-	}
-	/// get adverb entries
-	std::vector<string> getAdverbs(string const & str) {
-		return getEntries(str, Thesaurus::ADVERB);
-	}
-	/// get other entries
-	std::vector<string> getOthers(string const & str) {
-		return getEntries(str, Thesaurus::OTHER);
-	}
-
+	/// get meanings
+	Thesaurus::Meanings const & getMeanings(string const & str);
+ 
 	/// the text
 	string const & text() {
 		return oldstr_;
 	}
 
 private:
-	/// get entries for a str
-	std::vector<string> getEntries(string const & str, Thesaurus::POS pos);
-
 	/// last string looked up
 	string laststr_;
 
 	/// entries for last string
-	std::vector<Thesaurus::ThesaurusEntry> entries_;
+	Thesaurus::Meanings meanings_;
 
 	/// original string
 	string oldstr_;

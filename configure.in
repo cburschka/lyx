@@ -112,12 +112,12 @@ dnl -lc and -lm as args to the compiler
 AC_CHECK_LIB(m, sin)
 AC_CHECK_LIB(c, fopen)
 AC_ARG_WITH(aiksaurus,
-  [  --without-aiksaurus     do not use the AikSaurus library],
+  [  --without-aiksaurus     do not use the Aiksaurus library],
   [lyx_use_aiksaurus=$withval])
 if test x$lyx_use_aiksaurus != xno; then
-AC_CHECK_LIB(AikSaurus, main, 
+AC_CHECK_LIB(Aiksaurus, main,
 	[AC_DEFINE(HAVE_LIBAIKSAURUS,,[Define this if you have the AikSaurus library])
-	 AIKSAURUS_LIBS="-lAikSaurus -lbz2"
+	 AIKSAURUS_LIBS="-lAiksaurus -lbz2"
 	],,"-lbz2")
 fi 
 AC_SUBST(AIKSAURUS_LIBS)

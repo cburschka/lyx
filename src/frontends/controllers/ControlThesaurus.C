@@ -59,21 +59,10 @@ void ControlThesaurus::replace(string const & newstr)
 }
 
 
-std::vector<string>
-ControlThesaurus::getEntries(string const & str, Thesaurus::POS pos)
+Thesaurus::Meanings const & ControlThesaurus::getMeanings(string const & str)
 {
 	if (str != laststr_)
-		entries_ = thesaurus.lookup(str);
+		meanings_ = thesaurus.lookup(str);
 
-	laststr_ = str;
-
-	std::vector<string> strs;
-
-	for (std::vector<Thesaurus::ThesaurusEntry>::const_iterator it = entries_.begin();
-		it != entries_.end(); ++it) {
-		if (it->pos & pos)
-			strs.push_back(it->entry);
-	}
-
-	return strs;
+	return meanings_;
 }
