@@ -93,7 +93,10 @@ void InsetCharStyle::read(Buffer const & buf, LyXLex & lex)
 
 void InsetCharStyle::metrics(MetricsInfo & mi, Dimension & dim) const
 {
+	LyXFont tmpfont = mi.base.font;
+	getDrawFont(mi.base.font);
 	InsetCollapsable::metrics(mi, dim);
+	mi.base.font = tmpfont;
 	dim_ = dim;
 	if (has_label_)
 		dim_.des += ascent();
@@ -106,8 +109,11 @@ void InsetCharStyle::draw(PainterInfo & pi, int x, int y) const
 	yo_ = y;
 
 	// FIXME: setStatus(Inlined); this is not a const operation
+	LyXFont tmpfont = pi.base.font;
 	inset.setDrawFrame(InsetText::NEVER);
+	getDrawFont(pi.base.font);
 	inset.draw(pi, x, y);
+	pi.base.font = tmpfont;
 
 	pi.pain.line(x + 2, y + inset.descent() - 4, x + 2,
 		y + inset.descent(), params_.labelfont.color());
