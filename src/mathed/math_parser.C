@@ -37,7 +37,6 @@
 #include "math_macrotemplate.h"
 #include "math_matrixinset.h"
 #include "math_rootinset.h"
-#include "math_scopeinset.h"
 #include "math_sqrtinset.h"
 #include "math_scriptinset.h"
 #include "math_sqrtinset.h"
@@ -439,7 +438,7 @@ void Parser::tokenize(string const & buffer)
 		}
 	}
 
-#if 0
+#if 1
 	lyxerr << "\nTokens: ";
 	for (unsigned i = 0; i < tokens_.size(); ++i)
 		lyxerr << tokens_[i];
@@ -655,7 +654,7 @@ void Parser::parse_into(MathArray & array, unsigned flags, MathTextCodes code)
 		}
 
 		if (flags & FLAG_BLOCK) {
-			if (t.cat() == catEnd || t.cat() == catAlign || t.cs() == "\\")
+			if (t.cat() == catAlign || t.cs() == "\\")
 				return;
 			if (t.cs() == "end") {
 				getArg('{', '}');
@@ -683,15 +682,13 @@ void Parser::parse_into(MathArray & array, unsigned flags, MathTextCodes code)
 		}
 
 		else if (t.cat() == catBegin) {
-			//lyxerr << " creating ScopeInset\n";
-			array.push_back(new MathScopeInset);
-			parse_into(array.back()->cell(0), FLAG_BRACE_LAST);
+			array.push_back(new MathCharInset('{', LM_TC_SPECIAL));
 		}
 
 		else if (t.cat() == catEnd) {
-			if (!(flags & FLAG_BRACE_LAST))
-				lyxerr << " ##### unexpected end of block\n";
-			return;
+			if (flags & FLAG_BRACE_LAST)
+				return;
+			array.push_back(new MathCharInset('}', LM_TC_SPECIAL));
 		}
 		
 		else if (t.cat() == catAlign) {
@@ -848,7 +845,21 @@ void Parser::parse_into(MathArray & array, unsigned flags, MathTextCodes code)
 		else if (t.cs() == "choose" || t.cs() == "over" || t.cs() == "atop") {
 			limits = 0;
 			MathInset * p = createMathInset(t.cs());
-			p->cell(0).swap(array);
+			// search backward for position of last '{' if any
+			int pos;
+			for (pos = array.size() - 1; pos >= 0; --pos) {
+				MathInset * q = array.nextInset(pos);
+				if (q->getChar() == '{' && q->code() == LM_TC_SPECIAL)
+					break;
+			}
+			if (pos >= 0) {
+				// found it -> use the part after '{' as "numerator", erase the '{'
+				p->cell(0) = MathArray(array, pos + 1, array.size());
+				array.erase(pos, array.size());
+			} else {
+				// not found -> use everything as "numerator"
+				p->cell(0).swap(array);
+			}
 			array.push_back(p);
 			parse_into(p->cell(1), FLAG_BLOCK);
 		}

@@ -35,7 +35,6 @@
 #include "math_charinset.h"
 #include "math_deliminset.h"
 #include "math_matrixinset.h"
-#include "math_scopeinset.h"
 #include "math_scriptinset.h"
 #include "math_spaceinset.h"
 #include "math_parser.h"
@@ -1300,13 +1299,10 @@ void MathCursor::interpret(string const & s)
 		return;
 	}
 
-	if (c == '{') {
-		niceInsert(new MathScopeInset);
+	if (c == '{' || c == '}') {
+		niceInsert(new MathCharInset(c, LM_TC_SPECIAL));
 		return;
 	}
-
-	if (c == '}') // ignore it
-		return;
 
 	if (isalpha(c) && (lastcode_ == LM_TC_GREEK || lastcode_ == LM_TC_GREEK1)) {
 		static char const greek[26] =
