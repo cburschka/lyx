@@ -16,7 +16,7 @@ void MathErtInset::metrics(MetricsInfo & mi) const
 {
 	FontSetChanger dummy(mi.base, "lyxert");
 	MathTextInset::metrics(mi);
-	cache_.colinfo_[0].align = 'l';
+	cache_.colinfo_[0].align_ = 'l';
 	metricsMarkers2();
 }
 

@@ -5,7 +5,6 @@
 #include "math_nestinset.h"
 #include "vspace.h"
 #include "LString.h"
-#include "math_gridinfo.h"
 
 
 /** Gridded math inset base class.
@@ -21,8 +20,15 @@ class MathGridInset : public MathNestInset {
 public:
 
 	/// additional per-cell information
-	struct CellInfo : public ::CellInfo {
-		/// fixed glue
+	struct CellInfo {
+		///
+		CellInfo();
+		/// a dummy cell before a multicolumn cell
+		int dummy_;
+		/// special multi colums alignment
+		string align_;
+		/// these should be a per-cell property, but ok to have it here
+		/// for single-column grids like paragraphs
 		mutable int glue_;
 		///
 		mutable pos_type begin_;
@@ -31,45 +37,45 @@ public:
 	};
 
 	/// additional per-row information
-	struct RowInfo : public ::RowInfo {
+	struct RowInfo {
 		///
-		RowInfo()
-			: lines_(0), skip_(0)
-		{}
-
+		RowInfo();
 		///
 		int skipPixels() const;
-		/// how many hlines above this row?
-		int lines_;
-		/// parameter to the line break
-		LyXLength crskip_;
-		/// extra distance between lines on screen
-		int skip_;
-
 		/// cached descent
 		mutable int descent_;
 		/// cached ascent
 		mutable int ascent_;
 		/// cached offset
 		mutable int offset_;
+		/// how many hlines above this row?
+		int lines_;
+		/// parameter to the line break
+		LyXLength crskip_;
+		/// extra distance between lines
+		int skip_;
 	};
 
 	// additional per-row information
-	struct ColInfo : public ::ColInfo {
+	struct ColInfo {
 		///
-		ColInfo()
-			: lines_(0), skip_(0)
-		{}
-
+		ColInfo();
+		/// currently possible: 'l', 'c', 'r'
+		char align_;
 		/// cache for drawing
-		int lines_;
-		/// additional amount to be skipped on screen
-		int skip_;
-
+		int h_offset;
 		/// cached width
 		mutable int width_;
 		/// cached offset
 		mutable int offset_;
+		/// do we need a line to the left?
+		bool leftline_;
+		/// do we need a line to the right?
+		bool rightline_;
+		/// how many lines to the left of this column?
+		int lines_;
+		/// additional amount to be skipped when drawing
+		int skip_;
 	};
 
 public:
@@ -214,6 +220,8 @@ protected:
 	virtual string eolString(row_type row, bool fragile = false) const;
 	/// returns proper 'end of column' code for LaTeX
 	virtual string eocString(col_type col, col_type lastcol) const;
+	/// extract number of columns from alignment string
+	col_type guessColumns(string const & halign) const;
 	/// splits cells and shifts right part to the next cell
 	void splitCell(idx_type &, pos_type & pos);
 
