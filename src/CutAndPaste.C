@@ -125,8 +125,10 @@ bool CutAndPaste::cutSelection(LyXParagraph * startpar, LyXParagraph ** endpar,
 	if (doclear)
 	    startpar->Next()->ClearParagraph();
 	if (startpar->FirstPhysicalPar()->HasSameLayout(startpar->Next()) || 
-	    !startpar->Next()->Last())
+	    !startpar->Next()->Last()) {
 	    startpar->ParFromPos(start)->PasteParagraph();
+	    (*endpar) = startpar; // this because endpar gets deleted here!
+	}
     }
     return true;
 }
