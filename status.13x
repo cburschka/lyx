@@ -57,6 +57,9 @@ What's new
 - Make sure that the wasysym package is used in LaTeX output when
   using symbols from the wasy font.
 
+- Make sure that the natbib and url packages are not loaded with
+  REVTeX 4, since the functionality is already provided by the class.
+
 - Fix output of mathbb and mathcal symbols via the math panel
   (xforms only) [bug 1214].
 
