@@ -17,8 +17,6 @@
 #include "lyxlength.h"
 #include "lengthcommon.h"
 #include "lyxrc.h"
-#include "BufferView.h"
-#include "lyxtext.h"
 
 #include "Lsstream.h"
 
@@ -67,7 +65,7 @@ string const LyXLength::asLatexString() const
 	    break;
 	case PP:
 	    buffer << abs(static_cast<int>(val_/100)) << "."
-		   << abs(static_cast<int>(val_)%100) << "\\pagewidth";
+		   << abs(static_cast<int>(val_)%100) << "\\paperwidth";
 	    break;
 	case PL:
 	    buffer << abs(static_cast<int>(val_/100)) << "."
@@ -111,12 +109,8 @@ bool LyXLength::zero() const
 }
 
 
-int LyXLength::inPixels(BufferView const * bv) const
+int LyXLength::inPixels(int default_width, int default_height) const
 {
-	// Height of a normal line in pixels (zoom factor considered)
-	int height = bv->text->defaultHeight(); // [pixels]
-	int default_width  = bv->workWidth();
-
 	// Zoom factor specified by user in percent
 	double const zoom = lyxrc.zoom / 100.0; // [percent]
 
@@ -179,15 +173,15 @@ int LyXLength::inPixels(BufferView const * bv) const
 		break;
 	case LyXLength::EX:
 		// Ex: The height of an "x"
-		result = zoom * val_ * height / 2; // what to / width?
+		result = zoom * val_ * default_height / 2; // what to / width?
 		break;
 	case LyXLength::EM: // what to / width?
 		// Em: The width of an "m"
-		result = zoom * val_ * height / 2; // Why 2?
+		result = zoom * val_ * default_height / 2; // Why 2?
 		break;
 	case LyXLength::MU: // This is probably only allowed in
 		// math mode
-		result = zoom * val_ * height;
+		result = zoom * val_ * default_height;
 		break;
 	case LyXLength::PW: // Always % of workarea
 	case LyXLength::PE:

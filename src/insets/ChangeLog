@@ -1,3 +1,14 @@
+2002-01-19  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* insettabular.C (getMaxWidthOfCell): adapt to the new definition
+	of LyXLength::inPixels
+
+	* inset.C (latexTextWidth): 
+	* insetminipage.C (latexTextWidth): new method, which implements
+	the equivalent of the LaTeX macro \textwidth
+	
+	* insetminipage.C (getMaxWidth): use latexTextWidth
+
 2002-01-18  Juergen Vigna  <jug@sad.it>
 
 	* inset.C (getMaxWidth): try to fix fluctuation of collapsable insets.

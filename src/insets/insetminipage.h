@@ -86,6 +86,8 @@ public:
 	bool needFullRow() const { return false; }
 	///
 	bool showInsetDialog(BufferView *) const;
+	///
+	int latexTextWidth(BufferView *) const;
 
 private:
 	///

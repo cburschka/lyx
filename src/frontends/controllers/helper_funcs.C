@@ -118,7 +118,8 @@ string const browseRelFile(LyXView * lv, string const & filename,
 {
 	string const fname = MakeAbsPath(filename, refpath);
 	
-	string const outname = browseFile(lv, fname, title, pattern, dir1);
+	string const outname = browseFile(lv, fname, title, pattern,
+					  dir1, dir2);
 	string const reloutname = MakeRelPath(outname, refpath);
 	if(prefixIs(reloutname, "../"))
 		return outname;

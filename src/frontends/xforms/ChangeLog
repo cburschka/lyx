@@ -1,3 +1,8 @@
+2002-01-16  Herbert Voss  <voss@lyx.org>
+
+	* FormExternal.C (build): activate  apply/ok-button when something
+	is entered in the filename-field
+
 2002-01-16  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* FormMathsBitmap.C (apply): fix bug caused by using 'unsigned int'

@@ -14,14 +14,13 @@
 #include <boost/crc.hpp>
 
 #include "support/lyxlib.h"
+#include "debug.h"
 
+using std::endl;
 
 // Various implementations of lyx::sum(), depending on what methods
 // are available. Order is faster to slowest.
 #if defined(HAVE_MMAP) && defined(HAVE_MUNMAP)
-#ifdef WITH_WARNINGS
-#warning lyx::sum() using mmap (lightning fast)
-#endif
 
 // Make sure we get modern version of mmap and friends with void*,
 // not `compatibility' version with caddr_t.
@@ -35,6 +34,9 @@
 
 unsigned long lyx::sum(string const & file)
 {
+	lyxerr[Debug::FILES] << "lyx::sum() using mmap (lightning fast)"
+			     << endl;
+	
 	int fd = open(file.c_str(), O_RDONLY);
 	if(!fd)
 		return 0;
@@ -81,11 +83,11 @@ unsigned long do_crc(InputIterator first, InputIterator last)
 } // namespace
 
 #if HAVE_DECL_ISTREAMBUF_ITERATOR
-#ifdef WITH_WARNINGS
-#warning lyx::sum() using istreambuf_iterator (fast)
-#endif
 unsigned long lyx::sum(string const & file)
 {
+	lyxerr[Debug::FILES] << "lyx::sum() using istreambuf_iterator (fast)"
+			     << endl;
+
 	std::ifstream ifs(file.c_str());
 	if (!ifs) return 0;
 	
@@ -95,11 +97,12 @@ unsigned long lyx::sum(string const & file)
 	return do_crc(beg,end);
 }
 #else
-#ifdef WITH_WARNINGS
-#warning lyx::sum() using istream_iterator (slow as a snail)
-#endif
 unsigned long lyx::sum(string const & file)
 {
+	lyxerr[Debug::FILES]
+		<< "lyx::sum() using istream_iterator (slow as a snail)"
+		<< endl;
+	
 	std::ifstream ifs(file.c_str());
 	if (!ifs) return 0;
 	

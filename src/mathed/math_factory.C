@@ -71,8 +71,9 @@ MathAtom createMathInset(latexkeys const * l)
 		return MathAtom(new MathFuncInset(l->name));
 	case LM_TK_STY:
 		return MathAtom(new MathSizeInset(l));
+	default:
+		return MathAtom(new MathUnknownInset(l->name));
 	}
-	return MathAtom(new MathUnknownInset(l->name));
 }
 
 

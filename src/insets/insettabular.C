@@ -2115,7 +2115,7 @@ int InsetTabular::getMaxWidthOfCell(BufferView * bv, int cell) const
 	
 	if (len.zero())
 		return -1;
-	return len.inPixels(bv);
+	return len.inPixels(latexTextWidth(bv), bv->text->defaultHeight());
 }
 
 

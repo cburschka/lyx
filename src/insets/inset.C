@@ -153,6 +153,12 @@ bool Inset::forceDefaultParagraphs(Inset const * in) const
 	return false;
 }
 
+int Inset::latexTextWidth(BufferView * bv) const
+{
+	if (owner())
+		return (owner()->latexTextWidth(bv));
+	return bv->workWidth();
+}
 
 // some stuff for inset locking
 

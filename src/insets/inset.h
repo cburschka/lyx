@@ -311,9 +311,14 @@ public:
 	virtual bool isLetter() const { return false; }
 	// is this equivalent to a space?
 	virtual bool isSpace() const { return false; }
-	// if this inset has paragraphs should they be outputed all as default
-	// paragraps with "Standard" layout?
+	// if this inset has paragraphs should they be outpu all as default
+	// paragraphs with "Standard" layout?
 	virtual bool forceDefaultParagraphs(Inset const *) const;
+	// needed for widths which are % of something
+	/* returns the value of \textwidth in this inset. Most of the
+           time this is the width of the workarea, but if there is a
+           minipage somewhere, it will be the width of this minipage */
+	virtual int latexTextWidth(BufferView *) const;
 
 protected:
 	///

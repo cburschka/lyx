@@ -327,28 +327,24 @@ int InsetMinipage::getMaxWidth(BufferView * bv, UpdatableInset const * inset)
 	const
 {
 	if (owner() &&
-		(static_cast<UpdatableInset*>(owner())->getMaxWidth(bv, inset) < 0))
-	{
+	    static_cast<UpdatableInset*>(owner())->getMaxWidth(bv, inset) < 0) {
 		return -1;
 	}
 	if (!width_.zero()) {
-		switch(width_.unit()) {
-		case LyXLength::PW: // Always % of workarea
-		case LyXLength::PE:
-		case LyXLength::PP:
-		case LyXLength::PL:
-			return (InsetCollapsable::getMaxWidth(bv, inset) * (int)width_.value()) / 100;
-		default: 
-		{
-			int ww1 = width_.inPixels(bv);
-			int ww2 = InsetCollapsable::getMaxWidth(bv, inset);
-			if (ww2 > 0 && ww2 < ww1) {
-				return ww2;
-			}
-			return ww1;
+		int ww1 = latexTextWidth(bv);
+		int ww2 = InsetCollapsable::getMaxWidth(bv, inset);
+		if (ww2 > 0 && ww2 < ww1) {
+			return ww2;
 		}
-		}
+		return ww1;
 	}
 	// this should not happen!
 	return InsetCollapsable::getMaxWidth(bv, inset);
+}
+
+
+int InsetMinipage::latexTextWidth(BufferView * bv) const
+{
+	return width_.inPixels(InsetCollapsable::latexTextWidth(bv),
+			       bv->text->defaultHeight());
 }

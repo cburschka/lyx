@@ -1,4 +1,15 @@
+2002-01-19  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* vspace.C (inPixels): adapt to the change below
+	(inPixels): [later] more cleanups (remove unused variables)
+
+	* lyxlength.C (inPixels): change to use a width and a height as
+	parameter.
+
 2002-01-18  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* lyxlength.C (asLatexString): \pagewidth is not a LaTeX macro.
+	Replaced with \paperwidth
 
 	* DepTable.C (insert): add std:: qualifier
 

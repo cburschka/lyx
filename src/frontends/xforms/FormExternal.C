@@ -53,6 +53,7 @@ void FormExternal::build()
 	string const choice =
 	    " " + getStringFromVector(controller().getTemplates(), " | ") + " ";
 	fl_addto_choice(dialog_->choice_template, choice.c_str());
+	fl_set_input_return (dialog_->input_filename, FL_RETURN_CHANGED);
 
 	bc().setOK(dialog_->button_ok);
 	bc().setApply(dialog_->button_apply);
