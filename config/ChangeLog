@@ -1,3 +1,15 @@
+2005-01-28  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* relyx_configure.in: 
+	* relyx_configure.ac: use RELYX_USE_PACKAGING as in main configure.
+
+	* lyxinclude.m4 (LYX_USE_PACKAGING): remove single quotes around
+	prefix in the windows case.
+
+	* configure.in:
+	* configure.ac: if the prefix contains space, replace it with
+	${builddir}/installprefix and issue a warning.
+
 2005-01-24  Angus Leeming  <leeming@lyx.org>
 
 	* relyx_configure.{ac,in}: revert Jean-Marc's wrapping of the

@@ -1,3 +1,8 @@
+2005-01-28  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* reLyX/acinclude.m4 (RELYX_ERROR, RELYX_USE_PACKAGING): new
+	macros. 
+
 2005-01-20  Angus Leeming  <leeming@lyx.org>
 
 	* configure.m4: Invoke scripts as "python $$s/scripts/foo.py", etc.

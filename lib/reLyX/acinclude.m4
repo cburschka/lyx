@@ -7,6 +7,15 @@ relyx_warning_txt="$relyx_warning_txt
 relyx_warning=yes])
 
 
+dnl Usage: RELYX_ERROR(message)  Displays the error "message" and sets
+dnl the flag lyx_error to yes.
+AC_DEFUN([RELYX_ERROR],[
+relyx_error_txt="$relyx_error_txt
+== $1
+"
+relyx_error=yes])
+
+
 dnl RELYX_SEARCH_PROG(VARIABLE-NAME,PROGRAMS-LIST,ACTION-IF-FOUND)
 dnl             
 define(RELYX_SEARCH_PROG,[dnl
@@ -100,3 +109,30 @@ EOF
 fi
 fi])
 
+dnl Check what kind of packaging should be used at install time. 
+dnl The default is autodetected. 
+AC_DEFUN([RELYX_USE_PACKAGING],
+[AC_MSG_CHECKING([what packaging should be used])
+AC_ARG_WITH(packaging,
+  [  --with-packaging=THIS   Use THIS packaging for installation:
+			    Possible values: posix, windows, macosx],
+  [lyx_use_packaging="$withval"], [
+  case $host in
+    *-apple-darwin*) lyx_use_packaging=macosx ;;
+     *-pc-mingw32*) lyx_use_packaging=windows;;
+                  *) lyx_use_packaging=posix;;
+  esac])
+AC_MSG_RESULT($lyx_use_packaging)
+case $lyx_use_packaging in 
+   macosx) default_prefix="/Applications/LyX.app"
+	   bindir='${prefix}/Contents/MacOS'
+	   datadir='${prefix}/Contents/Resources'
+	   mandir='${prefix}/Contents/Resources/man' ;;
+  windows) default_prefix="C:/Program Files/LyX"
+	   bindir='${prefix}/bin'
+	   datadir='${prefix}/Resources'
+	   mandir='${prefix}/Resources/man' ;;
+    posix) default_prefix=$ac_default_prefix ;;
+    *) RELYX_ERROR([Unknown packaging type $lyx_use_packaging]) ;;
+esac
+])
