@@ -86,11 +86,5 @@ void QLPrintDialog::printerChanged()
 
 void QLPrintDialog::pagerangeChanged()
 {
-	int const from = strToUnsignedInt(fromqstr(fromED->text()));
-	int const to = strToUnsignedInt(fromqstr(toED->text()));
-
-	if (!toED->text().isEmpty() && from > to)
-		fromED->setText(toED->text());
-
 	form_->changed();
 }
