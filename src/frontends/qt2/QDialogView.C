@@ -12,10 +12,10 @@
 
 
 
-#include "qt_helpers.h"
-#include "QDialogView.h"
 #include "Qt2BC.h"
 #include "ButtonController.h"
+#include "qt_helpers.h"
+#include "QDialogView.h"
 
 
 QDialogView::QDialogView(Dialog & parent, string const & t)

@@ -10,7 +10,7 @@
 
 #include <config.h>
 
-
+#include "debug.h"
 #include "ControlExternal.h"
 #include "qt_helpers.h"
 

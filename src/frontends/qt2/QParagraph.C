@@ -10,6 +10,7 @@
 
 #include <config.h>
 
+#include "debug.h"
 #include "ControlParagraph.h"
 #include "QParagraph.h"
 #include "QParagraphDialog.h"

@@ -36,6 +36,8 @@
 #include "ControlVCLog.h"
 #include "ControlWrap.h"
 
+#include "Qt2BC.h"
+#include "ButtonController.h"
 #include "QAbout.h"
 #include "QBibitem.h"
 #include "QBibtex.h"
@@ -73,8 +75,6 @@
 #include "QThesaurus.h"
 #endif
 
-#include "Qt2BC.h"
-#include "ButtonController.h"
 #include "qt_helpers.h"
 
 
@@ -110,7 +110,7 @@ private:
 
 bool Dialogs::isValidName(string const & name) const
 {
- 	return std::find_if(dialognames, end_dialognames,
+	return std::find_if(dialognames, end_dialognames,
 			    cmpCStr(name.c_str())) != end_dialognames;
 }
 

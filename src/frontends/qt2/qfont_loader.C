@@ -11,10 +11,9 @@
 
 #include <config.h>
 
-
+#include "debug.h"
 #include "qfont_loader.h"
 #include "qt_helpers.h"
-#include "debug.h"
 #include "lyxrc.h"
 
 #include "support/lstrings.h"

@@ -10,7 +10,7 @@
 
 #include <config.h>
 
-
+#include "debug.h"
 #include "ControlThesaurus.h"
 #include "QThesaurusDialog.h"
 #include "QThesaurus.h"

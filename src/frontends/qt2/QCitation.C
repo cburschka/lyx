@@ -11,6 +11,7 @@
 
 #include <config.h>
 
+#include "debug.h"
 #include "ui/QCitationFindDialogBase.h"
 #include "QCitationDialog.h"
 #include "QCitation.h"

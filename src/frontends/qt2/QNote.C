@@ -10,6 +10,7 @@
 
 #include <config.h>
 
+#include "debug.h"
 #include "ControlNote.h"
 #include "insets/insetnote.h"
 
@@ -67,4 +68,3 @@ void QNote::apply()
 
 	controller().params().type = type;
 }
-

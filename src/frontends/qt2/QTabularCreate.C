@@ -10,7 +10,7 @@
 
 #include <config.h>
 
-
+#include "debug.h"
 #include "ControlTabularCreate.h"
 #include "QTabularCreateDialog.h"
 #include "QTabularCreate.h"

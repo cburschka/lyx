@@ -1,3 +1,8 @@
+2003-09-29  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* several .C files: add debug.h at top to avoid compilation
+	errors.
+
 2003-09-25  Angus Leeming  <leeming@lyx.org>
 
 	* QExternal.C (update_contents, apply): InsetExternal::Params::

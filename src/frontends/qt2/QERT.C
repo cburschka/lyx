@@ -10,7 +10,7 @@
 
 #include <config.h>
 
-
+#include "debug.h"
 #include "ControlERT.h"
 
 #include <qradiobutton.h>

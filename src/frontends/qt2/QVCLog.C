@@ -10,6 +10,7 @@
 
 #include <config.h>
 
+#include "debug.h"
 #include "support/std_sstream.h"
 #include "qt_helpers.h"
 #include "support/lstrings.h"

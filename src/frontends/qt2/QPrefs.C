@@ -10,6 +10,7 @@
 
 #include <config.h>
 
+#include "debug.h"
 #include "support/lstrings.h"
 #include "support/tostr.h"
 #include "support/std_sstream.h"

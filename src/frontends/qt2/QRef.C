@@ -10,7 +10,7 @@
 
 #include <config.h>
 
-
+#include "debug.h"
 #include "ControlRef.h"
 #include "insets/insetref.h"
 

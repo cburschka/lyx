@@ -12,6 +12,7 @@
 #include <config.h>
 
 
+#include "debug.h"
 #include "support/lstrings.h"
 
 #include "ControlBibtex.h"

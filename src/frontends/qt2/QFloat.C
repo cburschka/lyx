@@ -10,6 +10,7 @@
 
 #include <config.h>
 
+#include "debug.h"
 #include "ControlFloat.h"
 #include "QFloatDialog.h"
 #include "QFloat.h"

@@ -10,6 +10,7 @@
 
 #include <config.h>
 
+#include "debug.h"
 #include "qt_helpers.h"
 #include "ControlLog.h"
 #include "support/std_sstream.h"

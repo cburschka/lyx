@@ -12,6 +12,7 @@
 
 #include <config.h>
 
+#include "debug.h"
 #include "ControlGraphics.h"
 #include "controllers/helper_funcs.h"
 #include "support/lstrings.h"

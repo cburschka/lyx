@@ -10,7 +10,7 @@
 
 #include <config.h>
 
-
+#include "debug.h"
 #include "ControlInclude.h"
 #include "qt_helpers.h"
 
@@ -66,7 +66,7 @@ void QInclude::update_contents()
 		dialog_->typeCO->setCurrentItem(0);
 		dialog_->previewCB->setEnabled(true);
 		dialog_->previewCB->setChecked(params.preview());
-		
+
 	} else if (cmdname == "include") {
 		dialog_->typeCO->setCurrentItem(1);
 

@@ -12,6 +12,7 @@
 
 #include <config.h>
 
+#include "debug.h"
 #include "Dialogs.h"
 #include "controllers/GUI.h"
 #include "ButtonController.h"

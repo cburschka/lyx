@@ -10,6 +10,7 @@
 
 #include <config.h>
 
+#include "debug.h"
 #include "qt_helpers.h"
 
 #include "ControlErrorList.h"
@@ -56,4 +57,3 @@ void QErrorList::update_contents()
 
 	dialog_->errorsLB->setSelected(0, true);
 }
-

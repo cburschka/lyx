@@ -11,9 +11,9 @@
 
 #include <config.h>
 
+#include "debug.h"
 #include "QLyXKeySym.h"
 #include "qlkey.h"
-#include "debug.h"
 #include "qt_helpers.h"
 
 #include <qevent.h>

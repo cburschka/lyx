@@ -12,6 +12,7 @@
 
 
 
+#include "debug.h"
 #include "ControlCommand.h"
 #include "qt_helpers.h"
 

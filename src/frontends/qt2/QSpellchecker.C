@@ -10,7 +10,7 @@
 
 #include <config.h>
 
-
+#include "debug.h"
 #include "ControlSpellchecker.h"
 #include "QSpellcheckerDialog.h"
 #include "QSpellchecker.h"

@@ -12,6 +12,7 @@
 
 #include <config.h>
 
+#include "debug.h"
 #include "ControlTabular.h"
 #include "qt_helpers.h"
 #include "support/tostr.h"

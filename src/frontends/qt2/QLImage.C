@@ -11,11 +11,10 @@
 
 #include <config.h>
 
-
+#include "debug.h"
 #include "QLImage.h"
 #include "graphics/GraphicsParams.h"
 #include "format.h"
-#include "debug.h"
 #include "support/lstrings.h"       // lowercase
 #include "support/lyxfunctional.h"  // compare_memfun
 #include "qt_helpers.h"

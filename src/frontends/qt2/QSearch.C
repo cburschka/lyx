@@ -10,7 +10,7 @@
 
 #include <config.h>
 
-
+#include "debug.h"
 #include "ControlSearch.h"
 
 #include "QSearch.h"

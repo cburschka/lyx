@@ -10,7 +10,7 @@
 
 #include <config.h>
 
-
+#include "debug.h"
 #include "QTexinfoDialog.h"
 #include "QTexinfo.h"
 #include "Qt2BC.h"
