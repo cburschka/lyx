@@ -76,8 +76,6 @@ public:
 	///
 	void erase();
 	///
-	void replace(int pos, MathInset * inset);
-	///
 	bool prev(int & pos) const;
 	///
 	bool next(int & pos) const;
@@ -133,6 +131,8 @@ private:
 
 	///
 	int item_size(int pos) const;
+	///
+	void deep_copy(int pos1, int pos2);
 	/// Buffer
 	buffer_type bf_;
 };

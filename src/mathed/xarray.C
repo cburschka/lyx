@@ -29,7 +29,7 @@ void MathXArray::metrics(MathStyles st)
 	ascent_  = 0;
 	descent_ = 0;
 	width_   = 0;
-	style_    = st;
+	style_   = st;
 
 	for (int pos = 0; pos < data_.size(); data_.next(pos)) {
 		int asc;

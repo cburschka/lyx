@@ -135,7 +135,7 @@ InsetFormulaBase::InsetFormulaBase(MathInset * par)
 
 
 InsetFormulaBase::InsetFormulaBase(InsetFormulaBase const & f)
-	: UpdatableInset(f), par_(static_cast<MathInset *>(f.par_->clone()))
+	: UpdatableInset(f), par_(f.par_->clone())
 {}
 
 

@@ -121,9 +121,11 @@ public:
 protected:
 	///
 	virtual void updateLocal(BufferView * bv, bool mark_dirty);
-
 	///
 	MathInset * par_;
+private:
+	/// unimplemented
+	void operator=(const InsetFormulaBase &);
 };
 
 // We don't really mess want around with mathed stuff outside mathed.

@@ -19,26 +19,31 @@ MathArray::MathArray()
 
 MathArray::~MathArray()
 {
-	for (int pos = 0; pos < size(); next(pos)) 
-		if (isInset(pos)) 
-			delete nextInset(pos);
+	erase();
 }
 
 
 MathArray::MathArray(MathArray const & array)
 	: bf_(array.bf_)
 {
-	for (int pos = 0; pos < size(); next(pos)) 
-		if (isInset(pos)) 
-			replace(pos, nextInset(pos)->clone());
+	deep_copy(0, size());
 }
+
 
 MathArray::MathArray(MathArray const & array, int from, int to)
 	: bf_(array.bf_.begin() + from, array.bf_.begin() + to)
 {
-	for (int pos = 0; pos < size(); next(pos)) 
-		if (isInset(pos)) 
-			replace(pos, nextInset(pos)->clone());
+	deep_copy(0, size());
+}
+
+
+void MathArray::deep_copy(int pos1, int pos2)
+{
+	for (int pos = pos1; pos < pos2; next(pos)) 
+		if (isInset(pos)) {
+			MathInset * p = nextInset(pos)->clone();
+			memcpy(&bf_[pos + 1], &p, sizeof(p));
+		}
 }
 
 
@@ -105,11 +110,11 @@ MathInset * MathArray::nextInset(int pos) const
 	return p;
 }
 
+
 MathInset * MathArray::prevInset(int pos) const
 {
-	if (!pos)
+	if (!prev(pos))
 		return 0;
-	prev(pos);
 	return nextInset(pos);
 }
 
@@ -151,11 +156,6 @@ void MathArray::setCode(int pos, MathTextCodes t)
 }
 
 
-void MathArray::replace(int pos, MathInset * p)
-{
-	memcpy(&bf_[pos + 1], &p, sizeof(p));
-}
-
 
 void MathArray::insert(int pos, MathInset * p)
 {
@@ -174,9 +174,7 @@ void MathArray::insert(int pos, unsigned char b, MathTextCodes t)
 void MathArray::insert(int pos, MathArray const & array)
 {
 	bf_.insert(bf_.begin() + pos, array.bf_.begin(), array.bf_.end());
-	for (int p = pos; p < pos + array.size(); next(p)) 
-		if (isInset(p)) 
-			replace(p, nextInset(p)->clone());
+	deep_copy(pos, pos + array.size());
 }
 
 
@@ -200,10 +198,7 @@ void MathArray::push_back(MathArray const & array)
 
 void MathArray::clear()
 {
-	for (int pos = 0; pos < size(); next(pos)) 
-		if (isInset(pos)) 
-			delete nextInset(pos);
-	bf_.clear();
+	erase();
 }
 
 
@@ -241,6 +236,9 @@ void MathArray::erase(int pos)
 
 void MathArray::erase(int pos1, int pos2)
 {
+	for (int pos = pos1; pos < pos2; next(pos))
+		if (isInset(pos))
+			delete nextInset(pos);
 	bf_.erase(bf_.begin() + pos1, bf_.begin() + pos2);
 }
 
@@ -255,13 +253,7 @@ bool MathArray::isInset(int pos) const
 
 MathInset * MathArray::back_inset() const
 {
-	if (!empty()) {
-		int pos = size();
-		prev(pos);
-		if (isInset(pos))
-			return nextInset(pos);
-	}
-	return 0;
+	return prevInset(size());
 }
 
 
@@ -374,6 +366,6 @@ void MathArray::pop_back()
 {	
 	int pos = size();
 	prev(pos);
-	erase(pos);
+	erase(pos, size());
 }
 
