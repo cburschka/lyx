@@ -14,55 +14,59 @@
 #include "qsetborder.h"
 
 
-QSetBorder::QSetBorder( QWidget* parent,  const char* name, WFlags fl )
-	: QWidget( parent, name, fl ),
+QSetBorder::QSetBorder(QWidget * parent, char const * name, WFlags fl)
+	: QWidget(parent, name, fl),
 	  left_(false), right_(false), top_(false), bottom_(false), buffer(75,75)
 {
 	/* length of corner line */
-	l = buffer.width()/10;
+	l = buffer.width() / 10;
 	/* margin */
-	m = buffer.height()/10;
-	
+	m = buffer.height() / 10;
+
 	w = buffer.width();
 	h = buffer.height();
 
 	init();
-	
+
 	setMinimumSize(w,h);
 	setMaximumSize(w,h);
 }
+ 
 
-void QSetBorder::paintEvent( QPaintEvent *e )
+void QSetBorder::paintEvent(QPaintEvent * e)
 {
-	QWidget::paintEvent( e );
-	bitBlt( this, 0, 0, &buffer, 0, 0, width(), height() );
+	QWidget::paintEvent(e);
+	bitBlt(this, 0, 0, &buffer, 0, 0, width(), height());
 }
+
 
 void QSetBorder::init()
 {
 	buffer.fill();
 	QPainter paint;
-	paint.begin( &buffer );
-	paint.setPen( Qt::black );
+	paint.begin(&buffer);
+	paint.setPen(Qt::black);
 	
-	paint.drawLine(   m+l ,m,   m+l ,m+l);
-	paint.drawLine(w-(m+l),m,w-(m+l),m+l);
+	paint.drawLine(m + l , m, m + l, m + l);
+	paint.drawLine(w - (m + l), m, w - (m + l), m + l);
 
-	paint.drawLine(m,   m+l ,m+l,   m+l);
-	paint.drawLine(m,h-(m+l),m+l,h-(m+l));
+	paint.drawLine(m, m + l , m + l, m + l);
+	paint.drawLine(m, h - (m + l), m + l, h - (m + l));
 
-	paint.drawLine(   m+l , h-m,   m+l ,h-(m+l));
-	paint.drawLine(w-(m+l),h-m,w-(m+l),h-(m+l));
+	paint.drawLine(m + l ,h - m, m + l ,h - (m + l));
+	paint.drawLine(w - (m + l), h - m, w - (m + l), h - (m + l));
 
-	paint.drawLine(h-m,   m+l ,h-(m+l),   m+l);
-	paint.drawLine(h-m,h-(m+l),h-(m+l),h-(m+l));
+	paint.drawLine(h - m, m+l, h - (m + l), m + l);
+	paint.drawLine(h - m, h - (m + l), h - (m + l),h - (m + l));
 
 	paint.end();
 }
-void QSetBorder::mousePressEvent( QMouseEvent *e)
+
+ 
+void QSetBorder::mousePressEvent(QMouseEvent * e)
 {
-	if ( e->y() > e->x()) {
-		if (e->y() < height() - e->x() ) {
+	if (e->y() > e->x()) {
+		if (e->y() < height() - e->x()) {
 			drawLeft(!left_);
 			left_ = !left_;
 			emit leftSet(left_);
@@ -72,7 +76,7 @@ void QSetBorder::mousePressEvent( QMouseEvent *e)
 			emit bottomSet(bottom_);
 		}
 	} else {
-		if ( e->y() < height() - e->x() ) {
+		if (e->y() < height() - e->x()) {
 			drawTop(!top_);
 			top_ = !top_;
 			emit topSet(top_);
@@ -85,51 +89,53 @@ void QSetBorder::mousePressEvent( QMouseEvent *e)
 	update();
 }
 
+
 void QSetBorder::drawLeft(bool draw)
 {
 	QPainter paint;
-	paint.begin( &buffer );
+	paint.begin(&buffer);
 	QPen p = paint.pen();
 	p.setWidth(2);
-	p.setColor( draw ? Qt::black : Qt::white );
+	p.setColor(draw ? Qt::black : Qt::white);
 	paint.setPen(p);
-	paint.drawLine(m+l,m+l+2,m+l,h-m-l-1);
+	paint.drawLine(m + l, m + l + 2, m + l, h - m - l - 1);
 	paint.end();
 }
+ 
 
 void QSetBorder::drawRight(bool draw)
 {
 	QPainter paint;
-	paint.begin( &buffer );
+	paint.begin(&buffer);
 	QPen p = paint.pen();
 	p.setWidth(2);
-	p.setColor( draw ? Qt::black : Qt::white );
+	p.setColor(draw ? Qt::black : Qt::white);
 	paint.setPen(p);
-	paint.drawLine(h-m-l+1,m+l+2,h-m-l+1,h-m-l-1);
+	paint.drawLine(h - m - l + 1, m + l + 2, h - m - l + 1, h - m - l - 1);
 	paint.end();
 }
 
 void QSetBorder::drawTop(bool draw)
 {
 	QPainter paint;
-	paint.begin( &buffer );
+	paint.begin(&buffer);
 	QPen p = paint.pen();
 	p.setWidth(2);
-	p.setColor( draw ? Qt::black : Qt::white );
+	p.setColor(draw ? Qt::black : Qt::white);
 	paint.setPen(p);
-	paint.drawLine(m+l+2,m+l,w-m-l-1,m+l);
+	paint.drawLine(m + l + 2, m + l, w - m - l - 1, m + l);
 	paint.end();
 }
 
 void QSetBorder::drawBottom(bool draw)
 {
 	QPainter paint;
-	paint.begin( &buffer );
+	paint.begin(&buffer);
 	QPen p = paint.pen();
 	p.setWidth(2);
-	p.setColor( draw ? Qt::black : Qt::white );
+	p.setColor(draw ? Qt::black : Qt::white);
 	paint.setPen(p);
-	paint.drawLine(m+l+2,w-m-l+1,w-m-l-1,w-m-l+1);
+	paint.drawLine(m + l + 2, w - m - l + 1, w - m - l - 1, w - m - l + 1);
 	paint.end();
 }
 
@@ -172,5 +178,3 @@ bool QSetBorder::getBottom()
 {
 	return bottom_;
 }
-
-

@@ -22,7 +22,7 @@ class QSetBorder : public QWidget
 {
 	Q_OBJECT
 public:
-	QSetBorder(QWidget* parent = 0, const char* name = 0, WFlags fl = 0);
+	QSetBorder(QWidget * parent = 0, char const * name = 0, WFlags fl = 0);
 
 	bool getLeft();
 	bool getRight();
@@ -34,7 +34,7 @@ signals:
 	void leftSet(bool);
 	void topSet(bool);
 	void bottomSet(bool);
-	
+
 public slots:
 	void setLeft(bool);
 	void setRight(bool);
@@ -42,9 +42,8 @@ public slots:
 	void setBottom(bool);
 
 protected:
-
-	void mousePressEvent( QMouseEvent *e );
-	void paintEvent( QPaintEvent *e );
+	void mousePressEvent(QMouseEvent * e);
+	void paintEvent(QPaintEvent * e);
 	
 private:
 	void init();
@@ -66,4 +65,5 @@ private:
 	
 	QPixmap buffer;
 };
+ 
 #endif // QSETBORDER_H
