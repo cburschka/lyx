@@ -60,6 +60,7 @@ libmathed_la_SOURCES = \
 	math_parser.h \
 	math_root.C \
 	math_root.h \
+	math_rowst.C \
 	math_rowst.h \
 	math_spaceinset.C \
 	math_spaceinset.h \

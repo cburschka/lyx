@@ -1,24 +1,35 @@
+
+2001-03-15  André Pönitz  <poenitz@htwm.de>
+
+	* math_parser.C: read '\nonumber' again (was broken)
+
+	* math_rowst.C: new file
+
 2001-03-15  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* math_cursor.C: added using directive.
 
 2001-03-15  André Pönitz  <poenitz@htwm.de>
+
 	* math_rowst.h: Finally remove MathedRowSt
 
 	* math_parser.C:
 	  math_xiter.C: changed accordingly
 
 2001-03-12  André Pönitz  <poenitz@htwm.de>
+
 	*	math_rowst.h: replace MathedRowSt with MathedRowStruct,
 	    more robust MathedRowSt::[gs]etTab (to get rid of the constructor arg)
 
 2001-03-10  André Pönitz  <poenitz@htwm.de>
+
 	* math_xiter.[Ch]:
 	  math_matrixinset.C: move adjustVerticalSt to the only place where
       it is used. Fix a small bug where the cached row structure and the
 	    actual data get out of sync after the deletion of whole rows
 
 2001-03-09  André Pönitz  <poenitz@htwm.de>
+
 	* math_cursor.C: use std::vector<> in MathStackXIter
 		change selstk from a pointer to the "real thing"
 
@@ -29,6 +40,7 @@
 	* math_parser.C: use MathedRowContainer::insert_after
 
 2001-03-08  André Pönitz  <poenitz@htwm.de>
+
 	* math_rowst.h: give MathedRowContainer an 'insert' method. 
 
 	* math_xiter.C: new 'container()' method to encapsulated access to
@@ -41,6 +53,7 @@
 	  automatically created by the compiler are ok now.
 	
 2001-03-06  André Pönitz  <poenitz@htwm.de>
+
 	* array.[Ch]: factor out deep_copy,
 	  remove third argument from raw_pointer_insert 
 
@@ -53,6 +66,7 @@
 	  several files: corresponding changes
 
 2001-03-04  André Pönitz  <poenitz@htwm.de>
+
   * math_macrotemplate.[Ch]:
     math_macro.C: move update() functionality to the macro
 
