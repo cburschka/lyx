@@ -1,3 +1,7 @@
+2004-02-03  Martin Vermeer  <martin.vermeer@hut.fi>
+
+	* math_nestinset.C: use const_cast to get to compile for stlport
+
 2004-01-28  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
 	* math_hullinset.C: add using statements for std::ostream,
