@@ -126,14 +126,14 @@ Menuset
 #	Item "Make alignat 2 columns|2"  "break-line B"
 #	Item "Make alignat 3 columns|3"  "break-line C"
 #	Separator
-	Item "Toggle numbering|n" "math-number"
-	Item "Toggle numbering of line|u" "math-nonumber"
+	Item "Toggle Numbering|N" "math-number"
+	Item "Toggle Numbering of Line|u" "math-nonumber"
 #	Item "Toggle limits|l" "math-limits"
-	Submenu "Change limits type|l" "edit_math_limits"
+	Submenu "Change Limits Type|L" "edit_math_limits"
 	Separator
-	Submenu "Change formula type|f" "edit_math_mutate"
+	Submenu "Change Formula Type|F" "edit_math_mutate"
 	Separator
-	Submenu "Use computer algebra system|s" "edit_math_extern"
+	Submenu "Use Computer Algebra System|S" "edit_math_extern"
 	Separator
 	Submenu "Alignment|A" "edit_math_align"
 	Separator
@@ -288,8 +288,8 @@ Menuset
 
     Menu "insert_file"
 	Item "LyX Document...|X" "file-insert"
-	Item "Ascii as Lines...|L" "file-insert-ascii"
-	Item "Ascii as Paragraphs...|P" "file-insert-ascii-para"
+	Item "ASCII as Lines...|L" "file-insert-ascii"
+	Item "ASCII as Paragraphs...|P" "file-insert-ascii-para"
     End
 
 #
@@ -307,9 +307,9 @@ Menuset
 #	Item "TeX Style|X" "tex-mode"
 	Separator
 	Item "Decrease Environment Depth|v" "depth-decrement"
-	Item "Increase Environment Depth|v" "depth-increment"
+	Item "Increase Environment Depth|i" "depth-increment"
 	Item "Preamble|r" "layout-preamble"
-	Item "Start Appendix here|A" "appendix"
+	Item "Start Appendix Here|S" "appendix"
     End
 
 
@@ -323,7 +323,7 @@ Menuset
 	Separator
 	Item "LaTeX Logfile|L" "latex-view-log"
 	Item "Table of Contents|T" "toc-view"
-	Item "Child processes|C" "show-forks"
+	Item "Child Processes|C" "show-forks"
 	Item "TeX Information|X" "help-Texinfo"
     End
 
