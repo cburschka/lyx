@@ -1,8 +1,13 @@
+2002-04-26  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* Makefile.am (DISTCLEANFILES): don't use -r
+	(distclean-local): new target
+
 2002-04-25  Rob Lahaye  <lahaye@users.sourceforge.net>
 
 	* configure.m4: use gracebat instead of xmgrace in the Grace converters
 	to make the conversion independent of the availability of an Xserver
- 
+
 2002-04-25  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* doc/ExternalMaterial.lyx: remove, since it has been included in
@@ -19,7 +24,7 @@
 2002-04-23  Mike Ressler  <mike.ressler@alum.mit.edu>
 
 	* layouts/aastex.layout: add ProvidesNatbib
-	
+
 	* templates/aastex.lyx: convert to format 220
 
 2002-04-23  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
@@ -46,7 +51,7 @@
 2002-04-10 Herbert Voss  <voss@perce.de>
 
 	* CREDITS: correct email
-  
+
 2002-04-05  Adrien Rebollo  <adrien.rebollo@gmx.fr>
 
 	* kbd/european.kmap: "euro" and "oe" used kmod instead of kmap
@@ -54,7 +59,7 @@
 
 2002-04-05  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
-	* reLyX/acinclude.m4 (RELYX_CHECK_PERL): improve search for perl. 
+	* reLyX/acinclude.m4 (RELYX_CHECK_PERL): improve search for perl.
 
 2002-04-06  André Pönitz <poenitz@gmx.de>
 

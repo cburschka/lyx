@@ -1,9 +1,7 @@
 include $(top_srcdir)/config/common.am
 
-DISTCLEANFILES += -r lyx.1 config.status config.cache config.log \
-	$(srcdir)/sourcedoc/*~ \
-	$(srcdir)/sourcedoc/html $(srcdir)/sourcedoc/latex \
-	$(srcdir)/sourcedoc/man $(srcdir)/sourcedoc/Doxyfile
+DISTCLEANFILES += lyx.1 config.status config.cache config.log \
+	$(srcdir)/sourcedoc/*~ $(srcdir)/sourcedoc/Doxyfile
 
 MAINTAINERCLEANFILES += $(srcdir)/aclocal.m4 \
 	$(srcdir)/configure $(srcdir)/development/lyx.spec \
@@ -61,6 +59,10 @@ bindist:
 doxydoc: sourcedoc/Doxyfile
 	cd sourcedoc; \
 	doxygen ./Doxyfile
+
+distclean-local:
+	rm -rf $(srcdir)/sourcedoc/html $(srcdir)/sourcedoc/latex \
+	$(srcdir)/sourcedoc/main
 
 lgbtags:
 	etags --totals=yes --recurse=yes -o TAGS $(top_srcdir)/*

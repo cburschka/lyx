@@ -1,6 +1,6 @@
 AUTOMAKE_OPTIONS = foreign
 DISTCLEANFILES = *.orig *.rej *~ *.bak core textclass.lst packages.lst \
-		lyxrc.defaults doc/LyXConfig.lyx doc/LaTeXConfig.lyx -r xfonts
+		lyxrc.defaults doc/LyXConfig.lyx doc/LaTeXConfig.lyx
 MAINTAINERCLEANFILES = $(srcdir)/Makefile.in
 SUBDIRS = reLyX
 
@@ -61,6 +61,9 @@ install-xfonts:
 
 uninstall-xfonts:
 	rm -rf $(DESTDIR)$(pkgdatadir)/xfonts
+
+distclean-local:
+	rm -rf xfonts
 
 install-data-local: libinstalldirs install-xfonts
 	files=`cd $(srcdir) ; echo $(LIBINSTFILES)` ; \
