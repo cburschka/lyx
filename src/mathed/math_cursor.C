@@ -945,6 +945,7 @@ void MathCursor::touch()
 
 void MathCursor::normalize()
 {
+#if 0
 	// rebreak
 	{
 		MathIterator it = ibegin(formula()->par().nucleus());
@@ -953,6 +954,7 @@ void MathCursor::normalize()
 			if (it.par()->asBoxInset())
 				it.par()->asBoxInset()->rebreak();
 	}
+#endif
 
  	if (idx() >= par()->nargs()) {
 		lyxerr << "this should not really happen - 1: "

@@ -78,14 +78,16 @@ void MathXArray::draw(Painter & pain, int x, int y) const
 	yo_    = y;
 	drawn_ = true;
 
-	if (data_.empty()) {
+	const_iterator it = begin(), et = end();
+
+	if (it == et) {
 		pain.rectangle(x, y - ascent_, width_, height(), LColor::mathline);
 		return;
 	}
 
-	for (const_iterator it = begin(); it != end(); ++it) {
+	for (; it != et; ++it) {
 		MathInset const * p = it->nucleus();
-		MathScriptInset const * q = (it + 1 == end()) ? 0 : asScript(it);
+		MathScriptInset const * q = (it + 1 == et) ? 0 : asScript(it);
 		if (q) {
 			q->draw(p, pain, x, y);
 			x += q->width2(p);
