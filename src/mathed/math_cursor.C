@@ -464,17 +464,24 @@ bool MathCursor::erase()
 		if (inset()->idxDelete(idx()))
 			return true;
 
-	// old behaviour when in last position of cell
+	// special behaviour when in last position of cell
 	if (pos() == size()) {
-		if (inset()->ncols() == 1 && inset()->nrows() == 1 && depth() == 1 && size() == 0)
+		bool one_cell = inset()->ncols() == 1 && inset()->nrows() == 1;
+		if (one_cell && depth() == 1 && size() == 0)
 			return false;
-		else{
+		// remove markup
+		if (one_cell)
+			pullArg();
+		else
 			inset()->idxGlue(idx());
-			return true;
-		}
+		return true;
 	}
 
-	plainErase();
+	if (hasNextAtom() && nextAtom()->nargs() > 0)
+		right(true);
+	else
+		plainErase();
+
 	return true;
 }
 
