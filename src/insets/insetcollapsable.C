@@ -354,11 +354,13 @@ InsetCollapsable::priv_dispatch(FuncRequest const & cmd, idx_type &, pos_type &)
 		case LFUN_INSET_TOGGLE:
 			if (inset.text_.toggleInset())
 				return DispatchResult(true, true);
-			if (status_ == Open)
+			if (status_ == Open) {
 				setStatus(Inlined);
 				return DispatchResult(true, true);
-			setStatus(Collapsed);
-			return DispatchResult(false, FINISHED_RIGHT);
+			} else {
+				setStatus(Collapsed);
+				return DispatchResult(false, FINISHED_RIGHT);
+			}
 
 		default:
 			return inset.dispatch(adjustCommand(cmd));
