@@ -48,7 +48,6 @@ libqt2_la_SOURCES = \
 	QLPainter.C QLPainter.h \
 	QLyXKeySym.C QLyXKeySym.h \
 	QMath.C QMath.h \
-	QMinipage.C QMinipage.h \
 	QNote.C QNote.h \
 	QParagraph.C QParagraph.h \
 	QPrefs.C QPrefs.h \

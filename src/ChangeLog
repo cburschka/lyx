@@ -1,3 +1,9 @@
+2003-12-14  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* factory.C: 
+	* lyxfunc.C: remove insetminipage. "minipage-insert"
+	now produces a frameless minipage box inset.
+
 2003-12-12  Alfredo Braunstein  <abraunst@lyx.org>
 
 	* textcursor.[Ch] (selStart,selEnd): add new methods 

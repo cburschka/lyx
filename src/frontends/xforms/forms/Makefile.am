@@ -33,7 +33,6 @@ SRCS =  form_aboutlyx.fd \
 	form_maths_panel.fd \
 	form_maths_space.fd \
 	form_maths_style.fd \
-	form_minipage.fd \
 	form_note.fd \
 	form_paragraph.fd \
 	form_preamble.fd \

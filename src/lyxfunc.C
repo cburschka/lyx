@@ -58,7 +58,6 @@
 #include "insets/insetexternal.h"
 #include "insets/insetfloat.h"
 #include "insets/insetgraphics.h"
-#include "insets/insetminipage.h"
 #include "insets/insetnote.h"
 #include "insets/insettabular.h"
 #include "insets/insetvspace.h"
@@ -491,9 +490,6 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 			case InsetOld::FLOAT_CODE:
 				disable = ev.argument != "float";
 				break;
-			case InsetOld::MINIPAGE_CODE:
-				disable = ev.argument != "minipage";
-				break;
 			case InsetOld::WRAP_CODE:
 				disable = ev.argument != "wrap";
 				break;
@@ -587,8 +583,6 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 			code = InsetOld::INDEX_CODE;
 		else if (ev.argument == "label")
 			code = InsetOld::LABEL_CODE;
-		else if (ev.argument == "minipage")
-			code = InsetOld::MINIPAGE_CODE;
 		else if (ev.argument == "note")
 			code = InsetOld::NOTE_CODE;
 		else if (ev.argument == "ref")
@@ -616,7 +610,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 		code = InsetOld::MARGIN_CODE;
 		break;
 	case LFUN_INSET_MINIPAGE:
-		code = InsetOld::MINIPAGE_CODE;
+		code = InsetOld::BOX_CODE;
 		break;
 	case LFUN_INSET_FLOAT:
 	case LFUN_INSET_WIDE_FLOAT:
@@ -662,7 +656,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 		code = InsetOld::OPTARG_CODE;
 		break;
 	case LFUN_ENVIRONMENT_INSERT:
-		code = InsetOld::MINIPAGE_CODE;
+		code = InsetOld::BOX_CODE;
 		break;
 	case LFUN_INDEX_INSERT:
 		code = InsetOld::INDEX_CODE;
@@ -1277,9 +1271,6 @@ void LyXFunc::dispatch(FuncRequest const & func, bool verbose)
 				InsetGraphicsParams p;
 				Buffer const & buffer = *owner->buffer();
 				data = InsetGraphicsMailer::params2string(p, buffer);
-			} else if (name == "minipage") {
-				InsetMinipage::Params p;
-				data = InsetMinipageMailer::params2string(p);
 			} else if (name == "note") {
 				InsetNoteParams p;
 				data = InsetNoteMailer::params2string(p);

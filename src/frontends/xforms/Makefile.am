@@ -116,8 +116,6 @@ libxforms_la_SOURCES = \
 	FormMathsSpace.h \
 	FormMathsStyle.C \
 	FormMathsStyle.h \
-	FormMinipage.C \
-	FormMinipage.h \
 	FormNote.C \
 	FormNote.h \
 	FormParagraph.C \

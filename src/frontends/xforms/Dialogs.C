@@ -28,7 +28,6 @@
 #include "ControlInclude.h"
 #include "ControlLog.h"
 #include "ControlMath.h"
-#include "ControlMinipage.h"
 #include "ControlNote.h"
 #include "ControlParagraph.h"
 #include "ControlRef.h"
@@ -60,7 +59,6 @@
 #include "FormMathsMatrix.h"
 #include "FormMathsSpace.h"
 #include "FormMathsStyle.h"
-#include "FormMinipage.h"
 #include "FormNote.h"
 #include "FormParagraph.h"
 #include "FormRef.h"
@@ -119,7 +117,7 @@ char const * const dialognames[] = {
 "mathmisc", "mathdots", "mathbigoperators", "mathamsmisc",
 "mathamsarrows", "mathamsrelations", "mathamsnegatedrelations", "mathamsoperators",
 "mathdelimiter", "mathmatrix", "mathspace", "mathstyle",
-"minipage", "note", "paragraph", "ref", "tabular", "tabularcreate", "texinfo",
+"note", "paragraph", "ref", "tabular", "tabularcreate", "texinfo",
 
 #ifdef HAVE_LIBAIKSAURUS
 "thesaurus",
@@ -169,6 +167,14 @@ Dialog * Dialogs::build(string const & name)
 		dialog->setController(new ControlBibtex(*dialog));
 		dialog->setView(new FormBibtex(*dialog));
 		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
+	} else if (name == "box") {
+		dialog->setController(new ControlBox(*dialog));
+		dialog->setView(new FormBox(*dialog));
+		dialog->bc().bp(new OkApplyCancelReadOnlyPolicy);
+	} else if (name == "branch") {
+		dialog->setController(new ControlBranch(*dialog));
+		dialog->setView(new FormBranch(*dialog));
+		dialog->bc().bp(new OkApplyCancelReadOnlyPolicy);
 	} else if (name == "character") {
 		dialog->setController(new ControlCharacter(*dialog));
 		dialog->setView(new FormCharacter(*dialog));
@@ -405,21 +411,9 @@ Dialog * Dialogs::build(string const & name)
 		dialog->setController(new ControlMath(*dialog));
 		dialog->setView(new FormMathsStyle(*dialog));
 		dialog->bc().bp(new IgnorantPolicy);
-	} else if (name == "minipage") {
-		dialog->setController(new ControlMinipage(*dialog));
-		dialog->setView(new FormMinipage(*dialog));
-		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
 	} else if (name == "note") {
 		dialog->setController(new ControlNote(*dialog));
 		dialog->setView(new FormNote(*dialog));
-		dialog->bc().bp(new OkApplyCancelReadOnlyPolicy);
-	} else if (name == "box") {
-		dialog->setController(new ControlBox(*dialog));
-		dialog->setView(new FormBox(*dialog));
-		dialog->bc().bp(new OkApplyCancelReadOnlyPolicy);
-	} else if (name == "branch") {
-		dialog->setController(new ControlBranch(*dialog));
-		dialog->setView(new FormBranch(*dialog));
 		dialog->bc().bp(new OkApplyCancelReadOnlyPolicy);
 	} else if (name == "paragraph") {
 		dialog->setController(new ControlParagraph(*dialog));

@@ -40,7 +40,6 @@
 #include "insets/insetlabel.h"
 #include "insets/insetline.h"
 #include "insets/insetmarginal.h"
-#include "insets/insetminipage.h"
 #include "insets/insetnote.h"
 #include "insets/insetbox.h"
 #include "insets/insetbranch.h"
@@ -86,7 +85,7 @@ InsetOld * createInset(FuncRequest const & cmd)
 		return new InsetPagebreak;
 
 	case LFUN_INSET_MINIPAGE:
-		return new InsetMinipage(params);
+		return new InsetBox(params, "Frameless");
 
 	case LFUN_INSERT_CHARSTYLE: {
 		string s = cmd.getArg(0);
@@ -444,7 +443,7 @@ InsetOld * readInset(LyXLex & lex, Buffer const & buf)
 		} else if (tmptok == "OptArg") {
 			inset.reset(new InsetOptArg(buf.params()));
 		} else if (tmptok == "Minipage") {
-			inset.reset(new InsetMinipage(buf.params()));
+			inset.reset(new InsetBox(buf.params(), "Frameless"));
 		} else if (tmptok == "Float") {
 			lex.next();
 			string tmptok = lex.getString();
