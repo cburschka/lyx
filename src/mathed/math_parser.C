@@ -724,7 +724,7 @@ void Parser::parse1(MathGridInset & grid, unsigned flags,
 		}
 
 		else if (t.character() == ']' && (flags & FLAG_BRACK_LAST)) {
-			lyxerr << "finished reading option\n";
+			//lyxerr << "finished reading option\n";
 			return;
 		}
 
@@ -1078,6 +1078,12 @@ void Parser::parse1(MathGridInset & grid, unsigned flags,
 			parse2(cell->back(), FLAG_ITEM, mode, false);
 		}
 
+		else if (t.cs() == "framebox") {
+			cell->push_back(createMathInset(t.cs()));
+			parse(cell->back().nucleus()->cell(0), FLAG_OPTION, mode);
+			parse(cell->back().nucleus()->cell(1), FLAG_ITEM, mode);
+		}
+
 #if 0
 		else if (t.cs() == "infer") {
 			MathArray ar;
@@ -1149,13 +1155,14 @@ void Parser::parse1(MathGridInset & grid, unsigned flags,
 				MathInset::mode_type m = mode;
 				if (m == MathInset::UNDECIDED_MODE)
 					m = at->currentMode();
-				MathArray opt;
-				parse(opt, FLAG_OPTION, MathInset::VERBATIM_MODE);
 				MathInset::idx_type start = 0;
-				if (opt.size()) {
-					start = 1;
-					at.nucleus()->cell(0) = opt;
-				}
+				// this fails on \bigg[...\bigg]
+				//MathArray opt;
+				//parse(opt, FLAG_OPTION, MathInset::VERBATIM_MODE);
+				//if (opt.size()) {
+				//	start = 1;
+				//	at.nucleus()->cell(0) = opt;
+				//}
 				for (MathInset::idx_type i = start; i < at->nargs(); ++i)
 					parse(at.nucleus()->cell(i), FLAG_ITEM, m);
 				cell->push_back(at);
