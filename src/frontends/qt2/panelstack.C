@@ -18,7 +18,7 @@
 #include <qlayout.h>
 #include <qlistview.h>
 
-using namespace lyx::support;
+#include <boost/assert.hpp>
 
 
 PanelStack::PanelStack(QWidget * parent, const char * name)

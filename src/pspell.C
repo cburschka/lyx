@@ -24,9 +24,10 @@ extern "C" {
 #include "pspell.h"
 #include "WordLangTuple.h"
 
-using namespace lyx::support;
+#include <boost/assert.hpp>
 
 using std::endl;
+
 
 PSpell::PSpell(BufferParams const &, string const & lang)
 	: els(0), spell_error_object(0)

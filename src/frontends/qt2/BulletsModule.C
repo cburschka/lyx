@@ -23,7 +23,10 @@
 #include <qpushbutton.h>
 #include <qcombobox.h>
 
-using namespace lyx::support;
+#include <boost/assert.hpp>
+
+using lyx::support::LibFileSearch;
+
 
 BulletsModule::BulletsModule(QWidget * parent,  const char * name, WFlags fl)
 	: BulletsModuleBase(parent, name, fl), tmpbulletset(0)
