@@ -16,7 +16,7 @@
 #    postats.sh po_files > "pathToWebPages"/i18n.php3
 
 # modifiy this when you change version
-lyx_version=1.3.1cvs
+lyx_version=1.3.2cvs
 lyx_branch=BRANCH_1_3_X
 
 
@@ -241,7 +241,7 @@ while (list(\$foo,\$info) = each(\$podata)) {
 		\$style="style='background:#AA3333'";
 	}
 	print "<td \$style>" ;
-	print "<a href=\"http://www.lyx.org/cgi-bin/viewcvs.cgi/*checkout*/lyx-devel/po/" . \$info['langcode'] . ".po?only_with_tag=$lyx_branch\">" . \$lang[\$info['langcode']] . "</td>";
+	print "<a href=\"http://www.lyx.org/cgi-bin/viewcvs.cgi/lyx-devel/po/" . \$info['langcode'] . ".po?only_with_tag=$lyx_branch\">" . \$lang[\$info['langcode']] . "</a></td>";
 
 	print "<td \$style align=\"right\">" . \$info['msg_tr'] . "</td>";
 
