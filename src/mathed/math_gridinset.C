@@ -2,7 +2,7 @@
 #pragma implementation
 #endif
 
-#include "math_grid.h"
+#include "math_gridinset.h"
 #include "support/LOstream.h"
 #include "debug.h"
 
@@ -386,7 +386,7 @@ void MathGridInset::idxDelete(int & idx, bool & popit, bool & deleteit)
 }
 
 
-void MathGridInset::idxDeleteRange(int from, int to)
+void MathGridInset::idxDeleteRange(int /*from*/, int /*to*/)
 {
 // leave this unimplemented unless someone wants to have it.
 /*

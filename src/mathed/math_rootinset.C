@@ -15,7 +15,7 @@
 #pragma implementation
 #endif
 
-#include "math_root.h"
+#include "math_rootinset.h"
 #include "support/LOstream.h"
 #include "Painter.h"
 

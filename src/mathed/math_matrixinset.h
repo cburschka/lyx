@@ -2,9 +2,7 @@
 #ifndef MATH_MATRIXINSET_H
 #define MATH_MATRIXINSET_H
 
-#include <vector>
-
-#include "math_grid.h"
+#include "math_gridinset.h"
 
 #ifdef __GNUG__
 #pragma interface

@@ -35,8 +35,8 @@ libmathed_la_SOURCES = \
 	math_fracinset.h \
 	math_funcinset.C \
 	math_funcinset.h \
-	math_grid.C \
-	math_grid.h \
+	math_gridinset.C \
+	math_gridinset.h \
 	math_hash.C \
 	math_inset.C \
 	math_inset.h \
@@ -52,8 +52,8 @@ libmathed_la_SOURCES = \
 	math_matrixinset.h \
 	math_parser.C \
 	math_parser.h \
-	math_root.C \
-	math_root.h \
+	math_rootinset.C \
+	math_rootinset.h \
 	math_scriptinset.C \
 	math_scriptinset.h \
 	math_sizeinset.C \
