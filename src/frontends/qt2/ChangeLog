@@ -30,6 +30,17 @@
  
 2002-11-18  John Levon  <levon@movementarian.org>
 
+	* Makefile.am:
+	* qfontexample.h:
+	* qfontexample.C:
+	* QPrefs.C:
+	* QPrefsDialog.h:
+	* QPrefsDialog.C: 
+	* ui/QPrefScreenFontsModule.ui: show an example
+	  of the chosen font
+ 
+2002-11-18  John Levon  <levon@movementarian.org>
+
 	* ui/Makefile.am:
 	* moc/Makefile.am:
 	* ui/moc/Makefile.am:
