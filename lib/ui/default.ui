@@ -53,7 +53,7 @@ Menuset
 	Separator
 	Submenu "Export|E" "file_export"
 	Item "Print...|P" "buffer-print"
-	Item "Fax...|F" "buffer-export fax"
+	OptItem "Fax...|F" "buffer-export fax"
 	Separator
 	Item "Exit|x" "lyx-quit"
 	Separator
@@ -268,7 +268,7 @@ Menuset
 	Item "Introduction|I" "help-open Intro"
 	Item "Tutorial|T" "help-open Tutorial"
 	Item "User's Guide|U" "help-open UserGuide"
-	Item "Extended Features|x" "help-open Extended"
+	Item "Extended Features|E" "help-open Extended"
 	Item "Customization|C" "help-open Customization"
 	Item "Reference Manual|R" "help-open Reference"
 	Item "FAQ|F" "help-open FAQ"
@@ -277,7 +277,7 @@ Menuset
 	Item "LaTeX Configuration|L" "help-open LaTeXConfig"
 	Separator
 	Item "Copyright and Warranty...|o" "help-copyright"
-	Item "Credits...|e" "help-credits"
+	Item "Credits...|d" "help-credits"
 	Item "Version...|V" "help-version"
     End
 
