@@ -1,0 +1,95 @@
+
+1.0 Marshallers
+===============
+
+Marshallers offer the opportunity to control the emittion process, and 
+collate return values. By default signals have a marshaller which does 
+nothing, and throws away all but the last return value.
+
+A marshaller can be any class with:
+  struct  SomeMarshal
+    {
+       // both typedefs must be defined.
+       typedef Type1 InType;
+       typedef Type2 OutType;
+
+       // Return final return code.
+       OutType value();  
+       
+       // Return value if marshaller does not get built
+       static OutType default_value();
+
+       // Captures return codes and returns TRUE to stop emittion.
+       bool marshal(const InType&);
+
+       SomeMarshal();
+   };
+
+The function marshal() will be called with the return value of each slot 
+connected to the signal as they are called. The emittion process can be 
+stopped by marshal() returning true.
+
+Once all the slots have been called, value() is called to determine what 
+to return to the emitter.  If the signal gets called and there is
+nothing attached the default_value() is used.
+
+2.0 Possible uses
+=================
+A marshaller could stop emittion when the signal had been handled:
+  struct StopOnTrue
+    {
+      typedef bool InType;
+      typedef bool OutType;
+      OutType  return_value_;
+
+      OutType value() { return return_value_; }
+      static OutType default_value() { return false; }
+      bool marshal(const InType& val) { return_value_ = val; return val; }
+
+      StopOnTrue() : return_value_(false) {}
+    };
+
+marshal() here returns true as soon as one of the things connected to the 
+signal returns true. It also keeps track of whether anything stopped the 
+emittion in the return_value_ member. This way when something emits the 
+signal, it can tell whether the signal was dealt with (signal.emit() 
+returns true) or not (signal.emit() returns false).
+
+Now, if OutType was a list or a vector, marshal() could push_back() all 
+the values, returning to the emitter all the return values rather than just 
+one.
+
+3.0 Standard Marshallers
+========================
+
+The following marshallers are provided by default.
+ 
+  Marshal<void>
+  Marshal<T> 
+  Marshal<R>  (untested, may not be portable)
+  FixedMarshal<T,V>  
+  FastMarshal<T>  
+
+where
+ -  T can be a type, class, or pointer
+ -  R can be a reference  
+ -  V is the initial value of the marshaller
+    which is returned if nothing is connected.
+
+All of the standard defined marshallers, with the exception of
+FastMarshal,  check for a possiblity of a skipped return code via 
+RetCode::check_ignore().  You can cause a return code to be 
+ignored by the marshaller by setting RetCode::ignore() prior to returning 
+to a function.  Please note that you must be sure that you are returning to
+signal call to use ignore().  Calling at other times may result in other
+functions incorrectly skipping. 
+
+The check_ignore function is thread safe which may induce
+unnecessary delays in slot calling.  To avoid this overhead
+either define the signal to have a void return or
+use a FastMarshal.
+
+(This will all be replaced by an exeption mechanism at some point;
+however, current compiler technology is too slow for this to
+work.)
+

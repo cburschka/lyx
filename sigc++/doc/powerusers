@@ -1,0 +1,96 @@
+The following things are be available to powerusers.
+
+  - changing the return type of a slot
+  - changing the paramete types of slot
+  - signal overloading
+  - mixed type signals
+
+=======================================================================
+* Slot type changing
+
+Slots can be made to change their input types based on a static function.
+
+Example:
+
+  // write some conversion functions
+  int convert_mysignal_c(Callback1<int,const char*> *s,const string &str)
+    {return s->call(str.c_str());}
+  Slot1<int,const string&> myconvert(const Slot1<int,const char*> &s)
+    {return convert(s,convert_mysignal_c);}
+
+
+  Signal1<int,const string&> mysignal;
+  int foo(const char*);
+  mysignal.connect(myconvert(slot(foo));
+
+
+* Signal overloading
+
+One signal can have multiple behavior for a single signal name.  
+This is done with multiple inheritance.
+
+Example:
+
+  class MyClass
+    {
+      public:
+        class MySig 
+          :public Signal1<int,int>, 
+           public Signal1<void,double>
+         {} mysig;
+   } myclass;
+
+  int foo(int);
+  void foo2(double);
+  myclass.mysig.connect(slot(foo));
+  myclass.mysig.connect(slot(foo2));
+  myclass.mysig(1);   // calls foo
+  myclass.mysig(1.0); // calls foo2
+
+         
+
+* Mixed type signals
+
+A signal can be made to accept a wide group of slots with similar data
+types.
+
+Example:
+
+  class A
+    {
+
+     public:
+     class MySig: public Signal1<int,string&>
+       {
+          static int _mysig_convert(Callback1<int,const char*> *s,
+                                    const string &str)
+            {return s->call(str.c_str());}
+        public:
+          Connection connect(const Slot1<int,const char*> &s)
+            {return connect(convert(s,_mysig_convert));}
+       }  mysig;
+    };
+
+  int foo(const char* c);
+  int foo2(string& s);
+
+  mysig.connect(slot(foo));  // this is acceptable
+  mysig.connect(slot(foo2)); // this is also acceptable
+  string h="hello";
+  mysig(h);                  // calls both foo and foo2.
+
+
+Still in works
+----------------
+* Signal overloading over classes
+
+This should be extendable accross different levels of a class.
+
+Example: (details still in progress)
+
+  
+
+* Signals with translation
+
+Signals can be made to convert and proxy accross other systems.
+

@@ -1,0 +1,25 @@
+Okay here are the conventions for this project.
+
+macros   - all caps (MY_MACRO)
+enum     - same as macros
+
+classes  - cap each word lower others (Signal)
+private classes - same as class with underscore or trailing _ (BasicSignal_Impl)
+
+function - lowercase with underscore (foo_bar())
+methods  - lowercase with underscore (m.foo_bar())
+data     - lowercase (m.mydata)
+private data - lowercase with trailing underscore (m.mydata_)
+
+
+Namespaces are used where possible.  
+If namespaces are not available use a class to fake it unless
+that is not allowed.
+
+Format is GNU or modified GNU (indent first bracket)
+
+class MyClass
+  { 
+    MyClass();
+  } 
+

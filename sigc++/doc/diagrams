@@ -1,0 +1,80 @@
+
+Here are some UML diagrams of the relationships in Libsigc++:
+
+Scopes, Handles, Objects:   
+------------------------     
+                           
+                     _________    scope_    _____________
+                    |  Scope  |*<-------<> | Object_Impl |   
+                    |         |    obj_    |             |
+                    |_________|----------> |             |
+                         A        (obj)    |             |
+                         |          +----> |             |
+                         |          |      |_____________|
+                         |          |            A 
+                     __________     |            |
+ ________    scope_ |  Limit   |<>--+            *
+|Handle  |<*>------>|          |            _____________
+| <Limit>|          |__________|           | Object      |
+|        |                                 |             |
+|        |            (obj)                |             |  
+|        |   (<>----------------------->)  |             |
+|________|                                 |_____________|
+
+
+Okay here is what you are supposed to get out of this.
+Object comes from Object_Impl with multiplicity (VI).
+Handle<Limit> in this case forms a virtual aggregate relationship
+with the Object it points to.  
+
+For future diagrams I would reduce this to
+  
+   Handle<Limit> <>--------> Object
+
+Other handle relationships are formed with different types of
+scopes.  Reference Count for example would have the same
+diagram (but very different behavior.)
+
+There is also a relation when the pointed to
+object deletes itself when the object is removed.  This is
+a dependency that will be written as
+
+    A -----><> B
+
+  
+BasicSignal:
+-----------
+
+                ____________________     incoming_
+               | BasicSignal_::InOut| <>----------->* Slot
+               |                    | 
+               |                    |    outgoing_ 
+               |____________________| <>----------->* Slot
+                            A
+                            |
+                            |
+                ---------------------
+               | BasicSignal#        |
+               |                     |
+               |_____________________|
+
+It is clear from here that a BasicSignal is formed from a number of different
+objects.
+
+
+Connections between a BasicSignal and a Object method:
+
+                         ----------                  ________
+                        | SlotData |                | Object |
+                        |__________|                |________|
+                              A                         A
+                              |                         |
+                              |                         |
+  ___________              _____________                |
+ |BasicSignal| outgoing_  | ObjectSlot# |           ----------
+ |___________|<>-------->*|             |          | MyObject | 
+                          |             |-------><>|          |
+  ___________             |             |          |__________|
+ |Connection |----------> |_____________|
+ |___________|
+

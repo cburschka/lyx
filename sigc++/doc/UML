@@ -1,0 +1,119 @@
+Here is a reference to the UML class diagram symbols:
+(Taken from a number of sources.)
+
+Class
+-----
+A Class description containing a 
+   ____________
+  | Class Name |
+  |------------|
+  | Attributes | 
+  |------------|
+  | Operations |
+  |____________|
+
+Association
+-----------
+An association represents a physical or conceptual connection 
+betwen objects.  This is represented by a line between the two objects.
+If the association has a name it would often be written on top.
+
+          AssocName
+  Class1 ----------- Class2
+
+There is a possiblity of a multidirectional association that would be 
+represented by a diamond connecting the related sets.
+                
+
+  Class1 -----<O>---- Class3
+               |
+            Class2
+
+Arrows can be used to indicate the navigablity of a association.
+So an arrow from one class to another would indicate that Class1
+uses the services of Class2 but Class2 is not aware of Class1.
+It also indicates that nature of Class2 scope.  Since there
+is no aggregation relationship here, Class2 may outlive Class1
+instances.  This would be used to indicate a pointer or reference
+relationship.
+
+  Class1 -------> Class2
+
+In some places it is necessary to represent that a Class can
+be associated with a set instead of a single instance.  This
+will be represented by a star at the end of the association.
+
+  Class1 ------->* Class2
+
+Composition (Strong Aggregation) 
+---------
+This means that Class2 is a part of Class1.  It is a strong form
+of aggregation in that when Class1 is destroyed Class2 goes with it.
+
+The symbol for a composition relationship is a diamond filled to an arrow.
+
+ Class1 <*>----->  Class2  
+
+Aggregation
+-----------
+A weaker form of aggregation than composition is represented with
+an unfilled diamond.  It still demotes the life time of Class2 is 
+restricted to Class1, but Class2 is not part of Class1.  This may
+be implemented by a pointer in Class1 to Class2 with the dtor 
+destroying Class2.    
+
+ Class1 <>------> Class2
+ 
+
+Inheritance
+-----------
+
+Inheratance is indicated with an triangle pointing up to the 
+class form which the other derives.  (Having no triangles a
+A will do.)
+  
+Class1
+  A
+  |
+Class2
+
+
+So now a quick example:
+
+         +--> Shape
+         |      A
+ parent_ |      |
+         |      |         points_
+         +--- Polygon <>------------->* Point
+
+This would indicate that a Polygon is derived from a Shape.  It also
+indicates that Polygon can have a reference to a Shape.  Further,
+Polygon contains a set of Points that it is responsible for.
+
+This might be implemented like
+
+  class Shape 
+    {//...
+    };
+
+  class Polygon: public Shape
+    {
+     private:
+       Shape*         parent_;
+       list<auto_ptr<Point>> points_;
+     public:
+       //...
+    };
+          
+     
+References:
+  UML Class Diagrams
+    Robert C. Martin
+    Engineering Notebook Column
+    C++ Report, August, 1997 
+    http://www.oma.com/PDF/umlClassDiagrams.pdf
+
+  OML Object Model
+    http://wwwis.cs.utwente.nl:8080/dmrg/MEE/misop007/
+
+ 

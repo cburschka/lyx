@@ -1,0 +1,50 @@
+This directory contains files associated with building large numbers
+of templates needed to represent different numbers of parameters.
+The file signal.macros.m4 defines all necessary macros for construction
+of templates with variable arguments.
+
+These files will be placed in $(INCLUDE_DIR)/sigc++/macros for
+reuse.
+
+Requires: 
+  Gnu M4 (others m4 may work)
+
+Macros of particular interest:
+
+  IF(arg1,arg2[,arg3]) - if arg1 non-zero length print arg2, else arg3
+  LIST(arg0,cond0 [,arg1,cond1]) - generates comma seperated list with 
+    conditions for each argument
+  ARG_CLASS([P1,P2, ... ]) - generates string "class P1,class P2"
+  ARG_BOTH([P1,P2, ... ])  - generates string "P1 p1,P2 p2"
+  ARG_TYPE([P1,P2, ... ])  - generates string "P1,P2"
+  ARG_NAME([P1,P2, ... ])  - generates string "p1,p2"
+  [name]NUM(arg)           - prints name#, where # is items in arg
+  ARGS(P,n)                - generates string [P1,P2,...Pn]
+
+example:
+
+  To generalize this...
+
+    template<class P1,class P2>  // needs to be inline for zero arguments
+      void Foo::func2(int (*f)(P1,P2),P1 p1,P2 p2)
+        {func(p1,p2);
+        }
+
+  Use this... 
+
+    include(template.macros.m4)
+    define([FOO_FUNC],
+    [
+    IF([$1],template<ARG_CLASS($1)>,inline) 
+      void Foo::[func]NUM($1)(LIST(int (*f)(ARG_TYPE($1)),1,ARG_BOTH($1),[$1]))
+        {func(ARG_NAME($1));
+        }
+    ])
+
+    FOO_FUNC(ARGS(P,0))
+    FOO_FUNC(ARGS(P,1))
+    FOO_FUNC(ARGS(P,2))
+
+  (to prove it m4 this README file.  Honest!)
+
+

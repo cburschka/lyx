@@ -1,0 +1,145 @@
+
+The following things are required for Libsigc++.
+
+A good compiler with the following features
+ - capable of handling numerous templates (>200)
+ - proper template specialization
+ - proper partial specialization
+
+It works better with (but does not require)
+ - template friend specialization 
+ - namespaces
+ - void returns
+
+M4 to parse the header files if you wish to rebuild the headers from 
+macro source.
+
+==================================================
+
+Platform Issues:
+
+A number of platforms do not support global C++ objects
+in shared libraries.  Although not required by this 
+library, it may result in problems when building C++ 
+libraries on those platforms.  The work arround is
+to use statics in functions or pointers which must
+be initialized. 
+
+Platforms known to have this bug include
+NetBSD, HP-UX 9, HP-UX 10, Solaris without patch.
+
+==================================================
+
+Compiler Issues:
+
+ Cfront-based compilers: Fails
+   -----
+   Forget it, get a modern c++ compiler.
+
+
+ GNU G++ 2.7.2: Fails
+   -----
+   Upgrade, new versions of GNU G++ are easily and freely available:
+   GNU G++ 2.8.X or EGCS 1.1.2.  A port to this compiler is possible
+   with effort.
+
+
+ GNU G++ 2.8: Works (Marginal)
+   namespaces: no
+   partial specialization: yes 
+   void returns: yes 
+   -----
+   Is known to work correctly, but some performance may be subpar.
+   Recommend upgrading to egcs 1.1.
+
+
+ GNU egcs 1.0: Works (Marginal)
+   namespaces: no
+   partial specialization: yes
+   void returns: yes 
+   -----
+   Is known to work correctly, but some performance may be subpar.
+   Recommend upgrading to egcs 1.1.
+
+
+ GNU egcs 1.1: Works
+   namespaces: yes
+   partial specialization: yes
+   void returns: yes 
+   -----
+   This is the development platform, so all functionality correct.
+
+ HP C++: Fails
+   -----
+   This is a cfront compiler.  No where close.
+   Get a modern c++ compiler.
+
+
+ HP aC++ A.01.22: Works
+   namespaces: yes
+   partial specialization: yes
+   void returns: yes (only most recent version)
+   -----
+   HP improved template support thus allowing compilation.
+   Earlier compilers lacked support for void returns and proper
+   templates.
+
+   Missing <iostream> - use one below
+
+
+ MipsPro 7.3 Compler on Irix: Works (Marginal)
+   namespaces: yes
+   partial specialization: yes
+   void returns: no
+   -----
+   This compiler is barely within the range of usable compilers.
+   Requires compiling a specialization for all types in library
+   due to non-standard return behavior.  Should be usable.
+
+   Requires a switch to get templates right.  
+   Use 
+     CC=cc CXX=CC CPPFLAGS="-ptused" ./configure
+
+   Missing <iostream> - use one below
+
+   
+ SunPro C++ 4.1: Unknown
+   namespaces: no
+   partial specialization: no
+   -----
+   Unlikely considering lack of partial specialization.
+   Need more info.
+
+
+ SunPro C++ 5.0: Unknown
+   namespaces: yes 
+   partial specialization: yes
+   -----
+   Need more info.
+
+
+ Visual C++ 5.0: Works (needs special distribution)
+   namespaces: yes
+   partial specialization: no
+   void returns: no 
+   -----
+   Although not quite up to par, a port was completed and should
+   be the basis for porting back to other earlier compilers.  
+   VC++ lacks the ablity to use optional class arguments so
+   marshallers must be explicitly declared.  (see doc/win32)
+
+==================================================
+
+Some compilers have not yet fully adopted the standard header
+files.  (Usually because they lack some compiler feature
+required for the standard header.)  For those compilers a
+kludge is necessary to make the same code compile on both
+standard and non-standard headers.  Add the following file
+to the standard include path.
+
+#ifndef IOSTREAM_KLUDGE
+#define IOSTREAM_KLUDGE
+#include <iostream.h>
+namespace std { void iostream_kludge(); };
+#endif
+

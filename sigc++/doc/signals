@@ -1,0 +1,315 @@
+
+1.0 Signals
+==============
+
+Signals are used for communication between objects.  Rather
+that using messy pointers or pointers to member functions to implement 
+callbacks this library provides an elegant connection framework for
+connecting between static functions, member functions and function objects. 
+To add to this all types of connections can be made with compile time
+type checking through an extensable template set.  Unlike other solutions
+that break the C++ language and add incompatible extensions or code 
+generation, Libsigc++ uses only the standard C++ definitions.  Thus it
+will not decrease the ability of tools designed to parse the C++ language 
+to handle your code.  Libsigc++ provides signal framework which solves 
+your problems with communication between objects.  This signal framework 
+makes your objects reusable components which are independent of other 
+objects it communicates with. This means reducing coupling between 
+objects and resulting less dependencies and thus more reusable code. 
+ 
+1.1 How does the communication work?
+------------------------------------
+
+In the callback mechanism there's 3 separate entities involved. 
+
+     sender 
+     receiver 
+     someone making connection between sender and receiver 
+
+In actual code, the sender specifies an interface which it can call when 
+it wants to tell other objects something. This interface is specified as 
+a function object and is called "Signal". Calling that interface is 
+called "emitting a signal". 
+
+The receiver of the signal can be almost anything.  In Libsigc++ the 
+following objects can receive messages: 
+
+     member function of any object derived from SigC::Object
+     function object derived from SigC::Object 
+     static, global or friend function 
+     static function object 
+     member function to a static object 
+
+All connections share a common syntax through a factory that creates a
+abstract function object called a "Slot."
+
+
+     signal.connect(slot(object,Object::&method));
+     signal.connect(slot(&function));
+     signal.connect(functionobject.slot())
+
+Making a connection connects sender to the receiver.  After that, if the 
+sender emits a signal, all methods, functions and function objects that 
+have been connected to that signal are called with the arguments given at
+signal emission.  Signature of both sender interface and receiver method 
+must match exactly to be able to make connection between them.  If there's 
+type mismatches in the signatures, C++ compiler will give compile time 
+type error. 
+
+
+
+2.0 Implementation of signals
+=============================
+
+Signals are C++ function objects.  Because signals are normal C++-objects, 
+you can use them in file scope, in function local scope - but they're 
+most used inside class scope. A signal definition is of form: 
+
+  Signal2<void, int, float> buttonPressed;
+
+  where
+    2     = number of arguments
+    void  = type of the return
+    int   = type of the first parameter of the signal
+    float = type of the 2nd parameter of the signal
+
+This way application programmers can specify interface for a signal. 
+A connection from a signal to a (member) function matching signal's 
+interface can be made:
+
+  void my_function(int param1, float param2);
+  buttonPressed.connect(slot(&my_function));
+
+If the function is a member function, you'll need to specify the object 
+too. Note that this object's class needs to be derived from Signal: 
+
+  MyClass myobject; 
+  buttonPressed.connect(slot(myobject,&MyClass::my_function));
+
+If the signal is inside an object, you'll need to specify it too: 
+
+  obj.buttonPressed.connect(slot(myobject, &MyClass::my_function));
+
+
+When connection between a signal and a function has been made, calling 
+the signal will make the system call all the connected functions with 
+given parameters. Of course many connections can be made to same signal 
+and the system will call all of them when the signal is called.
+
+Calling a signal looks exactly like calling normal C++ function: 
+
+  buttonPressed(10, 20.0);
+
+or in case where you have the signal inside an object, call is in format: 
+
+  obj.buttonPressed(10, 20.0);
+
+An alternative method with a function name is also provided with
+a method emit.  This is to make it easier to distiguish and provides
+a method name for STL connection calls.
+
+  obj.buttonPressed.emit(10, 20.0);
+
+
+
+2.1 Signals with return types
+------------------------------
+
+All signals have a return type which may be void.  
+
+  Signal1<int,int> signal;
+
+That signal can be connected to the methods with the following signature:
+
+  int my_callback(int);
+
+There are a few restrictions on the types of returns.  Return
+types must have:
+
+   a default constructor  T t;
+   a copy constructor     T t1,t2;  t1=t2;
+   a reference form       T t1;  void func(T& t); func(t1);
+
+A default ctor is required so that a temporary object can be
+created to hold the return type.  A copy constructor is required
+so that the signal can be marshalled.  A reference form is required
+to pass the return types to the marshaller functions.
+
+This means that the return type must not be a reference itself.  
+
+
+
+2.2 Connecting to a signals 
+-----------------------------
+
+Because Libsigc++ signals use function objects heavily, there needs to be 
+way to connect a signal to another signal.  Lets connect a button's 
+clicked()-signal to another button's clicked signal: 
+
+struct My_Button 
+  {
+   Signal0<void> clicked;
+  } b1,b2;
+
+b1.clicked.connect(b2.clicked.slot());
+
+
+2.3 Summery
+------------
+
+Here is the summery of the properties of a signal
+
+class Signal<Rettype,Args>
+  {
+   public:
+      Connection connect(const Slot<Rettype Args>&);
+      Slot<Rettype,Args> slot();
+      Rettype emit(Args);
+      Rettype operator()(Args);
+  };
+
+Where:
+  Rettype is the return type of the signal.
+  Args are the arguments taken.
+
+connect() inserts a slot with the same profile into the signal.
+slot() returns a slot for connecting this signal to another.
+emit() calls all slots in the signal.
+ 
+
+3.0 Common errors in use of the signals
+=======================================
+
+Here are some common errors and an example of some of the errors that
+they generate.  (Do not take this as an example of proper use!
+Errors similified for clarity.  Your compiler messages will differ)
+
+ * Signature of function does not match signal 
+     Return type? 
+     arguments have correct type? 
+     the signal has correct types?
+
+   Example error session:
+     void foo(int i);
+     Signal1<int,int> sig;
+     sig.connect(slot(foo));
+   
+     >>foobar.cc: In function `int main()':
+     >>foobar.cc:17: no matching function for call to 
+         `Signal1<int,int>::connect (Slot1<void,int> *)'
+                                         ^^^^^^^^^^^^^^^^
+                                       Signiture of function
+     >>signal.h: candidates are: 
+          Signal1<int,int>::connect<int, int> (Slot1<int,int> *)
+                                              ^^^^^^^^^^^^^^
+                                           Signiture of Signal
+ 
+ * Using a reference as a return type
+
+   Example error session:
+     Signal1<int&,int> sig;
+
+     >>basic_signal.h: In method `int & Signal1_<int &,int>::Impl::
+       emit<int &, int>(int)':
+     >>signal.h:100:   instantiated from here
+     >>basic_signal.h:244: `rc' declared as reference but not initialized
+
+  
+
+ * Connecting object is not derived from SigC::Object
+     
+   Example error session:
+     struct A {int foo(int);} a;
+     Signal1<int,int> sig;
+
+     sig.connect(slot(a,&A::foo));
+
+     foobar.cc:58: conversion from `A' to non-scalar type `Object' requested
+    
+   
+ * Forgot to name the connected function as a method.
+  
+   Example error session: 
+     struct A:public SigC::Object {int foo(int);} a;
+     Signal1<int,int> sig;
+
+     sig.connect(slot(a,foo));  // should be sig.connect(slot(a,&A::foo));
+
+     >>foobar.cc:47: no matching function for call to `slot (A &, int ()(int))'
+
+
+ * Forgot to use address of method on connection 
+   
+   Example error session:
+     struct A:public SigC::Object {int foo(int);} a;
+     Signal1<int,int> sig;
+
+     sig.connect(slot(a,A::foo)); // should be sig.connect(slot(a,&A::foo));
+
+     >> foobar.cc:23: warning: assuming & on `A::foo1(int)'
+  
+ 
+ * Passed a pointer as object (**This is different from Gtk--**)
+    
+   Example error session:
+     struct A:public SigC::Object {int foo(int);} a;
+     Signal1<int,int> sig;
+
+     sig.connect(slot(&a,&A::foo)); // should be sig.connect(slot(a,&A::foo));
+
+     >>foobar.cc:93: conversion from `A *' to non-scalar type `Object' 
+       requested
+     >>object_slot.h:177: in passing argument 1 of 
+       `slot<A, int, int>(Object &, int (A::*)(int))'
+
+
+4.0 Connections
+===============
+
+4.1 Disconnecting signals
+-------------------------
+
+Every signal.connect()-function returns a Connection object, 
+which can be stored and it can be used to disconnect the connection 
+by calling function disconnect(). 
+
+Connection c;
+c=o.buttonPressed.connect(slot(&myfunction));
+...
+c.disconnect();
+
+Its perfectly legal to just ignore the return value of connect() functions - 
+all bookeeping information used by signal system is released properly.
+
+
+5.0 Adaptors
+============
+
+Often it is desirable to connect to a function and a signal
+in which the signal and function signatures are not
+exactly the same.
+
+For example, it would be good to ignore the return type
+of a function when placing it into a signal with a void return 
+type.  
+
+Fortunately, Libsigc++ provides a mechanism to accomplish this
+type of connection.  There is a broad class of slot "Adaptors".
+These functions take a slot of one type and produce a slot of
+another.  Here are some sample adaptors provided:
+
+  bind(Slot, v1) - Passes v1 as last argument to Slot
+    (The number of arguments is reduced for the resulting slot)
+  bind(Slot, v1, v2) - Passes v1 and v2 as last arguments to Slot
+
+  Examples:
+
+    int func(float);
+    Signal1<void,float> sig1;
+    Signal1<int> sig2;
+
+    // cover up float argument 
+    sig2.connect(bind(slot(&func),20.0f));    
+   
+
+

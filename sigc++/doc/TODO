@@ -1,0 +1,8 @@
+
+Add back functionality for slot(Obj&,func) and slot(Obj*,func).
+Get advanced signal code going. (with recursion checks and rest)
+Get mapped signal code going. (anonymous union mapping to a class)
+Add a cache to the Scope code so that it can be used for a
+weak reference.
+
+

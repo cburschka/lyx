@@ -1,0 +1,141 @@
+
+Object & Handles
+=================
+In order for a signal to be connected to object, the object must
+have Object somewhere in its inheritence tree.
+
+class virtual Object
+  {
+   public:
+     bool is_dynamic();
+     bool is_floating();
+     Object();
+     virtual ~Object();
+  };
+
+Objects are 
+ - Reference counted
+ - Capable of deleting self if told to be managed.
+
+
+Handles are used for internal memory management.  They are a signature not 
+a real class so they can incapsulate any class that has the necessary 
+functions.
+
+signature class Handle<ObjType,Policy>
+  {
+   public:
+     operator ObjType*();
+     ObjType operator *();
+     ObjType* operator ->();
+
+     bool connected();
+
+     Handle& operator =(ObjType*);
+     Handle& operator =(ObjType&);
+     Handle& operator =(const Handle<O,P> &);
+
+     Handle(ObjType*);
+     Handle(ObjType&);
+     Handle(const Handle<O,P>&);
+  };
+
+
+
+Slots
+======
+Slots are an encapsulation of a callable object.  A factory called slot() 
+builds Slots from object/methods, static functions and signals.
+
+class Slot#<rettype,ARGS>: public Object
+  {
+   public:
+     rettype call(ARGS);
+     Slot#()
+     virtual ~Slot#()
+  };
+
+Slots build up in a tree to contain a wide number of connection types.  
+
+There is a class of functions call Adaptors.  Adaptors take a slot
+and alter it to a different profile.  
+
+Planned adaptors
+  bind - bind callback data starting from the end.
+  extend - add dummy arguments to the end of a slot.
+  convert - convert the calling arguments with a function. 
+
+Internally slots are just handles to an internal abstract slot
+type called Slot#_, which is a pimple on SlotData.  
+
+Slots can not be duplicated as they may have a large list of internal
+data.  You should not reuse a slot in multiple lists.
+
+
+Signals
+=======
+A list of slots can be called with a signal.  A signal is considered a 
+slot container.
+
+class Signal#<RETURN,ARGS,Policy>
+  {
+   public:
+     typedef Slot#<RETURN,ARGS> InSlotType;
+     typedef Slot#<MARSH_RETURN,ARGS> OutSlotType;
+
+     OutSlotType slot();
+     Connection connect(InSlotType& s);
+     MARSH_RETURN emit(ARGS);
+     MARSH_RETURN operator()(ARGS); // alias for emit
+     Signal();
+     Signal(InSlotType& );
+     ~Signal();
+  };   
+
+Two typedefs are specified InSlotType and OutSlotType.  InSlotType
+is the type taken by this signal for connections.  OutSlotType
+is the type of slot this function returns and is determented by
+the Marshaller.  In most cases InSlotType and OutSlotType match,
+but this is not necessarily the case.  Signals do not need to
+have these typedefs, but it eases building new Signal classes from
+them.
+
+The basic methods shown there are
+  emit - call all slots contained within.
+  slot - give away a slot that receive incoming calls.
+  connect - insert a slot into the call list.
+
+Slots are removed by calling disconnect on their connections.
+
+There is also the ablity to have a marshaller that takes care of handling 
+signal callbacks.  This functionality is dependent on the implementation 
+of the signal.  For the basic signal type, the marshaller is a hidden 
+template parameter.
+
+Connect() may also take optional implementation dependent arguments
+for specifying behavior.  For example, timeout.connect(slot(&foo),10) 
+where the second argument it a time in seconds is a good use of
+optional connect flags.
+
+Additional functionality may optionally be defined such as
+ablity to check if there are any signals attached (empty()) or
+remove all connected signals (clear()).  However these are
+not a requirement and are implementation dependent.
+
+
+Connections
+=============
+Connections are given to the user on each connect to allow individual 
+connections to be broken or altered.  
+
+class Connection
+  {
+   public:
+     void disconnect();
+     Connection();
+  };
+
+They are a handle to the data, so when the last connection goes away and 
+the slot is not yet properly held in a Signal the slot will go away.
+
+ 

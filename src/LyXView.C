@@ -63,6 +63,7 @@ LyXView::LyXView(int width, int height)
 	lyxerr[Debug::INIT] << "Initializing LyXFunc" << endl;
 	lyxfunc = new LyXFunc(this);
 	intl = new Intl;
+
 	dialogs_ = new Dialogs(this);
 	// temporary until all dialogs moved into Dialogs.
 	dialogs_->updateBufferDependent

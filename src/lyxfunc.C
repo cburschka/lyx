@@ -3117,7 +3117,3 @@ void LyXFunc::setMessage(string const & m)
 {
 	dispatch_buffer = m;
 }
-
-
-
-

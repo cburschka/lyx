@@ -12,6 +12,7 @@
 #include "LString.h"
 
 class LyXView;
+class auto_mem_buffer;
 
 /** This class encapsulates all the LyX command operations. 
     This is the class of the LyX's "high level event handler".
@@ -38,6 +39,9 @@ public:
 			 
 	/// The same but uses the name of a lyx command.
 	string Dispatch(string const & cmd);
+
+	/// Same again but for xtl buffers.  Still looking for better idea.
+	bool Dispatch(int action, auto_mem_buffer &);
 
 	/// A keyboard event is processed to execute a lyx action. 
 	int  processKeyEvent(XEvent * ev);
@@ -72,7 +76,6 @@ public:
 	
 	/// Should a hint message be displayed?
 	void setHintMessage(bool);
-
 private:
 	///
 	LyXView * owner;

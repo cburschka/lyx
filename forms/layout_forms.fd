@@ -783,13 +783,13 @@ boxtype: FL_NO_BOX
 colors: FL_BLACK FL_COL1
 alignment: FL_ALIGN_CENTER
 style: FL_NORMAL_STYLE
-size: FL_DEFAULT_SIZE
+size: FL_NORMAL_SIZE
 lcol: FL_BLACK
-label: 
+label: Family:|#F
 shortcut: 
 resize: FL_RESIZE_X
 gravity: FL_NorthWest FL_NorthEast
-name: 
+name: choice_family
 callback: 
 argument: 
 
@@ -797,6 +797,78 @@ argument:
 class: FL_FRAME
 type: ENGRAVED_FRAME
 box: 10 10 280 210
+boxtype: FL_NO_BOX
+colors: FL_BLACK FL_COL1
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: Series:|#S
+shortcut: 
+resize: FL_RESIZE_X
+gravity: FL_NorthWest FL_NorthEast
+name: choice_series
+callback: 
+argument: 
+
+--------------------
+class: FL_CHOICE
+type: NORMAL_CHOICE
+box: 94 95 191 30
+boxtype: FL_FRAME_BOX
+colors: FL_COL1 FL_BLACK
+alignment: FL_ALIGN_LEFT
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: Shape:|#H
+shortcut: 
+resize: FL_RESIZE_X
+gravity: FL_NorthWest FL_NorthEast
+name: choice_shape
+callback: 
+argument: 
+
+--------------------
+class: FL_CHOICE
+type: NORMAL_CHOICE
+box: 94 50 191 30
+boxtype: FL_FRAME_BOX
+colors: FL_COL1 FL_BLACK
+alignment: FL_ALIGN_LEFT
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: Color:|#C
+shortcut: 
+resize: FL_RESIZE_X
+gravity: FL_NorthWest FL_NorthEast
+name: choice_color
+callback: 
+argument: 
+
+--------------------
+class: FL_CHOICE
+type: NORMAL_CHOICE
+box: 94 85 191 30
+boxtype: FL_FRAME_BOX
+colors: FL_COL1 FL_BLACK
+alignment: FL_ALIGN_LEFT
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: Toggle on all these|#T
+shortcut: 
+resize: FL_RESIZE_X
+gravity: FL_NorthWest FL_NorthEast
+name: check_toggle_all
+callback: 
+argument: 
+
+--------------------
+class: FL_FRAME
+type: ENGRAVED_FRAME
+box: 10 320 280 45
 boxtype: FL_NO_BOX
 colors: FL_BLACK FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -812,56 +884,20 @@ callback:
 argument: 
 
 --------------------
-class: FL_CHOICE
-type: NORMAL_CHOICE
-box: 94 15 191 30
-boxtype: FL_FRAME_BOX
-colors: FL_COL1 FL_BLACK
-alignment: FL_ALIGN_LEFT
+class: FL_FRAME
+type: ENGRAVED_FRAME
+box: 10 260 280 45
+boxtype: FL_NO_BOX
+colors: FL_BLACK FL_COL1
+alignment: FL_ALIGN_CENTER
 style: FL_NORMAL_STYLE
-size: FL_NORMAL_SIZE
+size: FL_DEFAULT_SIZE
 lcol: FL_BLACK
-label: Family:|#F
+label: 
 shortcut: 
 resize: FL_RESIZE_X
 gravity: FL_NorthWest FL_NorthEast
-name: choice_family
-callback: 
-argument: 
-
---------------------
-class: FL_CHOICE
-type: NORMAL_CHOICE
-box: 94 50 191 30
-boxtype: FL_FRAME_BOX
-colors: FL_COL1 FL_BLACK
-alignment: FL_ALIGN_LEFT
-style: FL_NORMAL_STYLE
-size: FL_NORMAL_SIZE
-lcol: FL_BLACK
-label: Series:|#S
-shortcut: 
-resize: FL_RESIZE_X
-gravity: FL_NorthWest FL_NorthEast
-name: choice_series
-callback: 
-argument: 
-
---------------------
-class: FL_CHOICE
-type: NORMAL_CHOICE
-box: 94 85 191 30
-boxtype: FL_FRAME_BOX
-colors: FL_COL1 FL_BLACK
-alignment: FL_ALIGN_LEFT
-style: FL_NORMAL_STYLE
-size: FL_NORMAL_SIZE
-lcol: FL_BLACK
-label: Shape:|#H
-shortcut: 
-resize: FL_RESIZE_X
-gravity: FL_NorthWest FL_NorthEast
-name: choice_shape
+name: 
 callback: 
 argument: 
 
@@ -981,7 +1017,7 @@ boxtype: FL_FLAT_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_LEFT|FL_ALIGN_INSIDE
 style: FL_BOLD_STYLE
-size: FL_DEFAULT_SIZE
+size: FL_NORMAL_SIZE
 lcol: FL_BLACK
 label: These are never toggled
 shortcut: 
@@ -999,13 +1035,31 @@ boxtype: FL_FLAT_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_LEFT|FL_ALIGN_INSIDE
 style: FL_BOLD_STYLE
-size: FL_DEFAULT_SIZE
+size: FL_NORMAL_SIZE
 lcol: FL_BLACK
 label: These are always toggled
 shortcut: 
 resize: FL_RESIZE_X
 gravity: FL_NorthWest FL_NorthEast
 name: 
+callback: 
+argument: 
+
+--------------------
+class: FL_BOX
+type: FRAME_BOX
+box: 95 175 190 30
+boxtype: FL_FRAME_BOX
+colors: FL_COL1 FL_COL1
+alignment: FL_ALIGN_LEFT
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: Language:
+shortcut: 
+resize: FL_RESIZE_NONE
+gravity: FL_NorthWest FL_NoGravity
+name: choice_language
 callback: 
 argument: 
 

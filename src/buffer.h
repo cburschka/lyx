@@ -37,6 +37,7 @@
 class LyXRC;
 class TeXErrors;
 class LaTeXFeatures;
+class auto_mem_buffer;
 
 ///
 struct DEPCLEAN {
@@ -82,6 +83,9 @@ public:
 
 	/// Maybe we know the function already by number...
 	bool Dispatch(int ac, string const & argument);
+
+	/// and have an xtl buffer to work with.
+	bool Dispatch(int, auto_mem_buffer &);
 
 	/// should be changed to work for a list.
 	void resize() {

@@ -1,0 +1,86 @@
+// KDevelop Dialog Editor File (.kdevdlg)
+// 
+// Created by KDlgEdit Version 0.1alpha (C) 1999 by Pascal Krahmer
+// Get KDevelop including KDlgEdit at "www.beast.de/kdevelop"
+// 
+data Information
+{
+   Filename="/nfs/sinco/source/lyx/rae/src/frontends/kde/dlg/formcopyrightdialog.kdevdlg"
+   KDevelopVersion="0.4"
+   DlgEditVersion="0.1alpha"
+   LastChanged="Mon Feb 7 12:39:07 2000"
+}
+
+data SessionManagement
+{
+   OpenedRoot_1="Appearance"
+   OpenedRoot_2="C++ Code"
+   OpenedRoot_3="General"
+   OpenedRoot_4="Geometry"
+   OpenedRootCount="4"
+}
+
+item QWidget
+{
+   Name="NoName"
+   VarName="this"
+   X="0"
+   Y="0"
+   Width="400"
+   Height="400"
+   MinWidth="0"
+   MinHeight="0"
+
+   item QLabel
+   {
+      Name="NoName"
+      VarName="labelWho"
+      X="10"
+      Y="10"
+      Width="380"
+      Height="50"
+      MinWidth="0"
+      MinHeight="0"
+      Text="LyX is Copyright ( C) 1995 by Matthias Ettrich, \n1995-2000 LyX Team"
+   }
+
+   item QLabel
+   {
+      Name="NoName"
+      VarName="labelGNU"
+      X="10"
+      Y="70"
+      Width="380"
+      Height="90"
+      MinWidth="0"
+      MinHeight="0"
+      Text="This program is free software; you can redistribute it\nand/or modify it under the terms of the GNU General\nPublic License as published by the Free Software\nFoundation; either version 2 of the License, or\n(at your option) any later version."
+   }
+
+   item QLabel
+   {
+      Name="NoName"
+      VarName="labelLyX"
+      X="10"
+      Y="170"
+      Width="380"
+      Height="180"
+      MinWidth="0"
+      MinHeight="0"
+      Text="LyX is distributed in the hope that it will\nbe useful, but WITHOUT ANY WARRANTY;\nwithout even the implied warranty of MERCHANTABILITY\nor FITNESS FOR A PARTICULAR PURPOSE.\nSee the GNU General Public License for more details.\nYou should have received a copy of\nthe GNU General Public License\nalong with this program; if not, write to\nthe Free Software Foundation, Inc., \n675 Mass Ave, Cambridge, MA 02139, USA."
+   }
+
+   item QPushButton
+   {
+      Name="NoName"
+      VarName="buttonOk"
+      X="130"
+      Y="360"
+      Width="140"
+      Height="30"
+      MinWidth="0"
+      MinHeight="0"
+      Text="OK"
+      isDefault="true"
+   }
+}

@@ -1,0 +1,46 @@
+Libsigc++ compiles and runs under win32 (windows 95 and NT)
+with the cygwin package available from Cygnus Solutions.
+(http://sourceware.cygnus.com), Borland Builder 6 or Visual C++ 5.
+
+Notes for egcs:
+- A simlink is required from /bin/sh to $(CGYWIN_HOME)/bin/sh
+  for configure to run.
+- A bug in libtool results in compiling the dll stubs with the 
+  wrong compiler which results in a minor error.  To fix
+  this, a repaired version of ltdll.c is distributed.
+- The dll fails to compile with libtool >1.2d  as a result of
+  a bug in libtool.  A bug report of this is outstanding. 
+  (use static libraries til fixed)
+
+
+Notes for Microsoft Visual C++:
+
+Microsoft Visual C++ does not provide partial specialization of
+classes at this time which is a requirement for the regular
+version of the library.  Also it requires the format of the
+package to be different then that of the standard GNU package.
+A special distribution is therefore required.
+
+Two project files for building the library and its tests
+are located under the win32 directory.  libsigc.dsp builds the
+shared dll for the library.  wintest.dsp builds a simple
+test that runs through all the libraries features.  
+
+Unlike other platforms, VC++ does not support default
+template arguments properly.  Thus the marshaller for
+signals (normally hidden) must be explicitly specified.
+The files distributed with .cc extension require modification.
+
+(To compile from CVS which uses native Unix .cc extensions
+you can use the instructions found on
+http://depc14.gsi.de/hades/msdev-cc-ending.htm)
+
+Exporting another library using libsigc++ can be 
+fun because VC++ requires every symbol to appear
+in the DLL that it uses.  This is a well known problem and
+is documented in the Microsoft Knowledge Base.  The
+instructions for exporting libsigc++ are basically the
+same as those of STL class in Article #Q168958. 
+
+(http://support.microsoft.com/support/kb/articles/Q168/9/58.ASP)
+

@@ -119,6 +119,8 @@ typedef struct {
 	FL_OBJECT *choice_family;
 	FL_OBJECT *choice_series;
 	FL_OBJECT *choice_shape;
+	FL_OBJECT *choice_color;
+	FL_OBJECT *check_toggle_all;
 	FL_OBJECT *choice_size;
 	FL_OBJECT *choice_bar;
 	FL_OBJECT *button_apply;

@@ -1,0 +1,44 @@
+This is a list of questions and answers that I have collected from
+messages to my mailbox
+
+--------------------------------------------------------------------- 
+
+Q: Why isn't sigc++config.h installed with the rest of the headers?
+
+A: Traditionally include files that are dependent on the compiler
+   or srchitecture belong under lib trees and not the include tree.
+   This allows machines to share include directories on large multiuser
+   systems.
+
+   Examples:
+     /usr/lib/gcc-lib/i386-redhat-linux/egcs-2.91.57/include 
+     /usr/lib/glib/include
+     /usr/lib/qt/include
+
+   To access that file you should include a -I PREFIX/lib/sigc++/include
+   in your compiler switchs.
+
+   This can be done for you automatically through the use of 
+   the sigc-config script.  
+
+     c++ myfile.cc `sigc-config --cflags --libs`
+
+   Last, if you really don't like this just symlink the file into
+   PREFIX/include.  (Don't copy or the next version of libsigc++ 
+   very likely won't work right!) 
+
+Q: Why on Visual C++ can do I get piles of errors when trying to
+   use classes which contain Signals?  
+
+A: Visual C++ requires all classes which are parameterized to be
+   explicitely exported.  This is the same problem encountered 
+   when using STL classes in VC++.  Microsoft Knowledge Base
+   article Q168958 contains the solution.
+
+   (http://support.microsoft.com/support/kb/articles/Q168/9/58.ASP)
+
+   You will need to create an export file with all the signals,
+   slots, and parameterized functions explicitely instantiated
+   and include it in your library source.  (Anyone have an example
+   of this?)
+

@@ -242,7 +242,7 @@ FD_form_character *create_form_form_character(void)
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_gravity(obj, FL_SouthEast, FL_SouthEast);
     fl_set_object_callback(obj, CharacterApplyCB, 0);
-  fdui->button_close = obj = fl_add_button(FL_RETURN_BUTTON, 175, 345, 80, 30, _("Close"));
+  fdui->button_close = obj = fl_add_button(FL_RETURN_BUTTON, 175, 375, 80, 30, _("Close"));
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_gravity(obj, FL_SouthEast, FL_SouthEast);
     fl_set_object_callback(obj, CharacterCloseCB, 0);
@@ -265,6 +265,11 @@ FD_form_character *create_form_form_character(void)
     fl_set_object_lstyle(obj, FL_BOLD_STYLE);
     fl_set_object_gravity(obj, FL_NorthWest, FL_NorthEast);
     fl_set_object_resize(obj, FL_RESIZE_X);
+  fdui->choice_language = obj = fl_add_box(FL_FRAME_BOX, 95, 175, 190, 30, _("Language:"));
+    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+    fl_set_object_lalign(obj, FL_ALIGN_LEFT);
+    fl_set_object_gravity(obj, FL_NorthWest, FL_NoGravity);
+    fl_set_object_resize(obj, FL_RESIZE_NONE);
   fl_end_form();
 
   //fdui->form_character->fdui = fdui;

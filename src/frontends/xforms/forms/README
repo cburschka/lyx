@@ -1,0 +1,52 @@
+All .fd files go in this directory.
+Each .fd file should have just one form in them
+
+NOTE: An exception to the above is any tabbed form which 
+      xforms requires multiple forms to create.  In that case
+      the group of forms constitutes one gui form.
+
+All forms should be named form_xxx and saved into a file by the same name.
+For example, the copyright notice is called form_copyright and is stored in
+form_copyright.fd.  Its used by class FormCopyright.  If you match this pattern
+the fdfix.sh script will do nearly all the conversions for you.  That'll make
+updating the source incredibly easy.
+
+Name all buttons and other form components that are likely to cause a callback.
+The names should be of the form:  button_ok, radio_group_item and so on.
+
+Enter the full name of the callback eg.:
+        C_FormCopyrightOkCB
+
+That is, they all have the same format: C_##FormName##CallbackName.
+Your code will then need to use the appropriate macro to setup this C callback
+function which will in turn call the corresponding static class member function
+of the form FormName::CallbackName.  You should be able to copy the macro
+entries from a similar dialog for reuse without having to change anything.
+
+The name of the wrapped dialog will be dialog_ eg.
+        typedef struct {
+        ...
+        } FD_form_copyright;
+
+        FD_form_copyright * dialog_;
+
+If you follow these simple rules then the generated code for create_form can
+be directly used as the FormXxxx::build method without any extra editting to
+make it work.  Every forms implementation will follow a very simple pattern
+and make it easier to maintain.
+
+The easiest way to fit into this pattern is to copy an existing dialogs
+implementation and adjust it to suit keeping the variable names the same.
+In addition a lot of work can be saved by using the code that has already been
+written in the "lyx" module of the LyX CVS repository. This is where the old
+development branch is kept.  The code there will need to be modified slightly
+to meet these new guidelines.  In addition, an earlier generation signalling
+system was used in that code. A conversion script called gtmmconvert2 is 
+available from the gtk-- distribution.  It updates all the signals to use
+libsigc++.
+
+Don't reinvent the wheel.  There's 18 months worth of code in the "lyx"
+module that you should at least use as a guide even if you don't actually make
+direct use of it.
+ 
+Allan. (ARRae)
