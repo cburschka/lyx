@@ -417,7 +417,7 @@ void LyX::init(int */*argc*/, char **argv, bool gui)
 	// Read encodings
 	ReadEncodingsFile("encodings");
 	// Read languages
-	ReadLangugesFile("languages");
+	ReadLanguagesFile("languages");
 
 	// Load the layouts
 	lyxerr[Debug::INIT] << "Reading layouts..." << endl;
@@ -663,7 +663,7 @@ void LyX::ReadUIFile(string const & name)
 
 
 // Read the languages file `name'
-void LyX::ReadLangugesFile(string const & name)
+void LyX::ReadLanguagesFile(string const & name)
 {
 	lyxerr[Debug::INIT] << "About to read " << name << "..." << endl;
 

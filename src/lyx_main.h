@@ -75,7 +75,7 @@ private:
 	/// Read the ui file `name'
 	void ReadUIFile(string const & name);
 	/// Read the languages file `name'
-	void ReadLangugesFile(string const & name);
+	void ReadLanguagesFile(string const & name);
 	/// Read the encodings file `name'
 	void ReadEncodingsFile(string const & name);
         ///
