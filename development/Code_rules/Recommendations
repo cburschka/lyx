@@ -50,6 +50,8 @@ follow these rules, but they should be the goal.
 
 - ensure that global objects are initialized before they are used.
 
+- avoid conditions to 'if' and 'while' that span more than a line
+
 --------
 
 S. Meyers. Effective C++, 50 Specific Ways to Improve Your Programs and 
