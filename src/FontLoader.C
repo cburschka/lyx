@@ -323,6 +323,8 @@ XFontStruct * FontLoader::doLoad(LyXFont::FONT_FAMILY family,
 
 bool FontLoader::available(LyXFont const & f)
 {
+	if (!lyxrc.use_gui)
+		return false;
 	load(f.family(), f.series(), f.realShape(), f.size());
 	return fontinfo[f.family()][f.series()][f.realShape()]
 		->getFontname(f.size()).size();

@@ -1,3 +1,7 @@
+2001-09-03  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* FontLoader.C (available): Return false if !lyxrc.use_gui
+
 2001-09-03  Michael Schmitt <schmitt@itm.mu-luebeck.de>
 
 	* FontInfo.C (query):
