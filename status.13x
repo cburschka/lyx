@@ -34,11 +34,16 @@ What's new
   o the personal dictionaries are always correctly written out
   o "Accept" button became "Ignore All" for clarity
 
+- add support for the hspell spell-checker for hebrew [Qt only]
+
 - updated russian interface localisation
 
 ** Bug fixes
 
 - fix loading of included files that are under revision control
+
+- fix support for \framebox macro: the argument is handled as text,
+  and a second optional argument is now supported
 
 - fix building of xforms dialogs' source on SMP machines [Bug #944,
   xforms only]

@@ -188,10 +188,7 @@ void QPrefs::apply()
 
 	QPrefSpellcheckerModule * spellmod(dialog_->spellcheckerModule);
 
-	if (spellmod->spellCommandCO->currentItem() == 0)
-		rc.isp_command = "ispell";
-	else
-		rc.isp_command = "aspell";
+	rc.isp_command = fromqstr(spellmod->spellCommandCO->currentText());
 
 	// FIXME: remove isp_use_alt_lang
 	rc.isp_alt_lang = fromqstr(spellmod->altLanguageED->text());
@@ -441,8 +438,13 @@ void QPrefs::update_contents()
 
 	QPrefSpellcheckerModule * spellmod(dialog_->spellcheckerModule);
 
-	item = (rc.isp_command == "ispell") ? 0 : 1;
-	spellmod->spellCommandCO->setCurrentItem(item);
+	QString const tmp = qt_(rc.isp_command);
+	for (int i = 0; i < spellmod->spellCommandCO->count(); ++i) {
+		if (spellmod->spellCommandCO->text(i) == tmp) {
+			spellmod->spellCommandCO->setCurrentItem(i);
+			break;
+		}
+	}
 	// FIXME: remove isp_use_alt_lang
 	spellmod->altLanguageED->setText(toqstr(rc.isp_alt_lang));
 	// FIXME: remove isp_use_esc_chars

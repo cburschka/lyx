@@ -1119,8 +1119,9 @@ void Parser::parse1(MathGridInset & grid, unsigned flags,
 
 		else if (t.cs() == "framebox") {
 			cell->push_back(createMathInset(t.cs()));
-			parse(cell->back().nucleus()->cell(0), FLAG_OPTION, mode);
-			parse(cell->back().nucleus()->cell(1), FLAG_ITEM, mode);
+			parse(cell->back().nucleus()->cell(0), FLAG_OPTION, MathInset::TEXT_MODE);
+			parse(cell->back().nucleus()->cell(1), FLAG_OPTION, MathInset::TEXT_MODE);
+			parse(cell->back().nucleus()->cell(2), FLAG_ITEM, MathInset::TEXT_MODE);
 		}
 
 #if 0
