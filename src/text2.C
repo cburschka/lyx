@@ -1258,7 +1258,7 @@ void LyXText::cutSelection(bool doclear, bool realcut)
 	}
 
 	recordUndo(bv(), Undo::DELETE, selection.start.par(),
-		boost::prior(undoendpit));
+		   boost::prior(undoendpit));
 
 
 	endpit = selection.end.par();
@@ -1281,10 +1281,6 @@ void LyXText::cutSelection(bool doclear, bool realcut)
 		selection.start.par()->stripLeadingSpaces();
 
 	redoParagraphs(selection.start.par(), boost::next(endpit));
-#warning FIXME latent bug
-	// endpit will be invalidated on redoParagraphs once ParagraphList
-	// becomes a std::list? There are maybe other places on which this
-	// can happend? (Ab)
 	// cutSelection can invalidate the cursor so we need to set
 	// it anew. (Lgb)
 	// we prefer the end for when tracking changes
@@ -2065,9 +2061,11 @@ bool LyXText::deleteEmptyParagraphMechanism(LyXCursor const & old_cursor)
 		    && old_cursor.pos() < old_cursor.par()->size()
 		    && old_cursor.par()->isLineSeparator(old_cursor.pos())
 		    && old_cursor.par()->isLineSeparator(old_cursor.pos() - 1)) {
-			old_cursor.par()->erase(old_cursor.pos() - 1);
+			bool erased = old_cursor.par()->erase(old_cursor.pos() - 1);
 			redoParagraph(old_cursor.par());
 
+			if (!erased)
+				return false;
 #ifdef WITH_WARNINGS
 #warning This will not work anymore when we have multiple views of the same buffer
 // In this case, we will have to correct also the cursors held by
