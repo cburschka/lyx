@@ -42,8 +42,8 @@ vector<LanguagePair> const getLanguageData(bool character_dlg)
 	vector<LanguagePair> langs(size);
 
 	if (character_dlg) {
-		langs[0].first = N_("No change"); langs[0].second = "No change";
-		langs[1].first = N_("Reset");     langs[1].second = "Reset";
+		langs[0].first = N_("No change"); langs[0].second = "ignore";
+		langs[1].first = N_("Reset");     langs[1].second = "reset";
 	}
 
 	vector<string>::size_type i = character_dlg ? 2 : 0;
@@ -54,7 +54,11 @@ vector<LanguagePair> const getLanguageData(bool character_dlg)
 		++i;
 	}
 
-	std::sort(langs.begin(), langs.end(), Sorter());
+	// Don't sort "ignore" and "reset"
+	vector<LanguagePair>::iterator begin = character_dlg ?
+		langs.begin() + 2 : langs.begin();
+
+	std::sort(begin, langs.end(), Sorter());
 
 	return langs;
 }

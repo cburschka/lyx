@@ -220,16 +220,16 @@ string ControlCharacter::getLanguage() const
 {
 	if (font_.get() && font_->language())
 		return font_->language()->lang();
-	return "No change";
+	return "ignore";
 }
 
 
 void ControlCharacter::setLanguage(string const & val)
 {
-	if (val == "No change")
+	if (val == "ignore")
 		font_->setLanguage(ignore_language);
 
-	else if (val == "Reset")
+	else if (val == "reset")
 		font_->setLanguage(lv_.buffer()->params.language);
 
 	else

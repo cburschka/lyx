@@ -1,5 +1,13 @@
 2002-05-01  Angus Leeming  <a.leeming@ic.ac.uk>
 
+	* ControlCharacter.C: use "ignore" and "reset" as the identifiers, not
+	"No change" and "Reset".
+
+	* frnt_lang.C: ditto. Further, do not sort thes two entries. Ie, leave
+	them at the front of the list.
+
+2002-05-01  Angus Leeming  <a.leeming@ic.ac.uk>
+
 	* ControlGraphics.C: add some comments to the char * arrays.
 	Make rorigin_size const.
 
