@@ -127,19 +127,20 @@ int InsetCaption::latex(Buffer const & buf, ostream & os,
 }
 
 
-int InsetCaption::ascii(Buffer const & /*buf*/,
-			ostream & /*os*/, int /*linelen*/) const
+int InsetCaption::ascii(Buffer const & /*buf*/,ostream & /*os*/,
+			LatexRunParams const & /*runparams*/) const
 {
 	// FIX: Implement me!
 	return 0;
 }
 
 
-int InsetCaption::docbook(Buffer const & buf, ostream & os, bool mixcont) const
+int InsetCaption::docbook(Buffer const & buf, ostream & os,
+			  LatexRunParams const & runparams) const
 {
 	int ret;
 	os << "<title>";
-	ret = InsetText::docbook(buf, os, mixcont);
+	ret = InsetText::docbook(buf, os, runparams);
 	os << "</title>\n";
 	return ret;
 }

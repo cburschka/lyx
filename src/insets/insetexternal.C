@@ -683,19 +683,22 @@ int InsetExternal::latex(Buffer const & buf, ostream & os,
 }
 
 
-int InsetExternal::ascii(Buffer const & buf, ostream & os, int) const
+int InsetExternal::ascii(Buffer const & buf, ostream & os,
+			 LatexRunParams const &) const
 {
 	return external::writeExternal(params_, "Ascii", buf, os);
 }
 
 
-int InsetExternal::linuxdoc(Buffer const & buf, ostream & os) const
+int InsetExternal::linuxdoc(Buffer const & buf, ostream & os,
+			    LatexRunParams const &) const
 {
 	return external::writeExternal(params_, "LinuxDoc", buf, os);
 }
 
 
-int InsetExternal::docbook(Buffer const & buf, ostream & os, bool) const
+int InsetExternal::docbook(Buffer const & buf, ostream & os,
+			   LatexRunParams const &) const
 {
 	return external::writeExternal(params_, "DocBook", buf, os);
 }

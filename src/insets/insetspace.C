@@ -194,7 +194,8 @@ int InsetSpace::latex(Buffer const &, ostream & os,
 }
 
 
-int InsetSpace::ascii(Buffer const &, ostream & os, int) const
+int InsetSpace::ascii(Buffer const &, ostream & os,
+		      LatexRunParams const &) const
 {
 	switch (kind_) {
 	case NORMAL:
@@ -212,7 +213,8 @@ int InsetSpace::ascii(Buffer const &, ostream & os, int) const
 }
 
 
-int InsetSpace::linuxdoc(Buffer const &, ostream & os) const
+int InsetSpace::linuxdoc(Buffer const &, ostream & os,
+			 LatexRunParams const &) const
 {
 	switch (kind_) {
 	case NORMAL:
@@ -232,7 +234,8 @@ int InsetSpace::linuxdoc(Buffer const &, ostream & os) const
 }
 
 
-int InsetSpace::docbook(Buffer const &, ostream & os, bool) const
+int InsetSpace::docbook(Buffer const &, ostream & os,
+			LatexRunParams const &) const
 {
 	switch (kind_) {
 	case NORMAL:

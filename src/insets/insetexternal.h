@@ -123,12 +123,14 @@ public:
 	virtual int latex(Buffer const &, std::ostream &,
 			  LatexRunParams const &) const;
 	///
-	virtual int ascii(Buffer const &, std::ostream &, int linelen) const;
+	virtual int ascii(Buffer const &, std::ostream &,
+			  LatexRunParams const &) const;
 	///
-	virtual int linuxdoc(Buffer const &, std::ostream &) const;
+	virtual int linuxdoc(Buffer const &, std::ostream &,
+			     LatexRunParams const &) const;
 	///
 	virtual int docbook(Buffer const &, std::ostream &,
-			    bool mixcont) const;
+			    LatexRunParams const &) const;
 
 	/// Update needed features for this inset.
 	virtual void validate(LaTeXFeatures & features) const;

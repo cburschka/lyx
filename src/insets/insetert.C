@@ -362,13 +362,15 @@ int InsetERT::latex(Buffer const &, ostream & os,
 }
 
 
-int InsetERT::ascii(Buffer const &, ostream &, int /*linelen*/) const
+int InsetERT::ascii(Buffer const &, ostream &,
+		    LatexRunParams const & /*runparams*/) const
 {
 	return 0;
 }
 
 
-int InsetERT::linuxdoc(Buffer const &, ostream & os) const
+int InsetERT::linuxdoc(Buffer const &, ostream & os,
+		       LatexRunParams const &)const
 {
 	ParagraphList::iterator par = inset.paragraphs.begin();
 	ParagraphList::iterator end = inset.paragraphs.end();
@@ -395,7 +397,8 @@ int InsetERT::linuxdoc(Buffer const &, ostream & os) const
 }
 
 
-int InsetERT::docbook(Buffer const &, ostream & os, bool) const
+int InsetERT::docbook(Buffer const &, ostream & os,
+		      LatexRunParams const &) const
 {
 	ParagraphList::iterator par = inset.paragraphs.begin();
 	ParagraphList::iterator end = inset.paragraphs.end();

@@ -169,7 +169,7 @@ int InsetFloatList::latex(Buffer const & buf, ostream & os,
 }
 
 
-int InsetFloatList::ascii(Buffer const & buffer, ostream & os, int) const
+int InsetFloatList::ascii(Buffer const & buffer, ostream & os, LatexRunParams const &) const
 {
 	os << getScreenLabel(buffer) << "\n\n";
 

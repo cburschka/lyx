@@ -55,7 +55,8 @@ public:
 	int latex(Buffer const &, std::ostream &,
 		  LatexRunParams const &) const;
 	///
-	int docbook(Buffer const &, std::ostream &, bool mixcont) const;
+	int docbook(Buffer const &, std::ostream &,
+		    LatexRunParams const &) const;
 	///
 	std::string const editMessage() const;
 	///

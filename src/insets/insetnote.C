@@ -168,7 +168,7 @@ InsetNote::priv_dispatch(FuncRequest const & cmd,
 
 
 int InsetNote::latex(Buffer const & buf, ostream & os,
-				                LatexRunParams const & runparams) const
+		     LatexRunParams const & runparams) const
 {
 	string const pt = params_.type;
 
@@ -194,7 +194,8 @@ int InsetNote::latex(Buffer const & buf, ostream & os,
 }
 
 
-int InsetNote::linuxdoc(Buffer const & buf, std::ostream & os) const
+int InsetNote::linuxdoc(Buffer const & buf, std::ostream & os,
+			LatexRunParams const & runparams) const
 {
 	string const pt = params_.type;
 
@@ -203,7 +204,7 @@ int InsetNote::linuxdoc(Buffer const & buf, std::ostream & os) const
 		os << "<comment>\n";
 
 	if (pt != "Note")
-		i = inset.linuxdoc(buf, os);
+		i = inset.linuxdoc(buf, os, runparams);
 
 	if (pt == "Comment") {
 		os << "\n</comment>\n";
@@ -213,7 +214,8 @@ int InsetNote::linuxdoc(Buffer const & buf, std::ostream & os) const
 }
 
 
-int InsetNote::docbook(Buffer const & buf, std::ostream & os, bool mixcont) const
+int InsetNote::docbook(Buffer const & buf, std::ostream & os,
+		       LatexRunParams const & runparams) const
 {
 	string const pt = params_.type;
 
@@ -222,7 +224,7 @@ int InsetNote::docbook(Buffer const & buf, std::ostream & os, bool mixcont) cons
 		os << "<remark>\n";
 
 	if (pt != "Note")
-		i = inset.docbook(buf, os, mixcont);
+		i = inset.docbook(buf, os, runparams);
 
 	if (pt == "Comment") {
 		os << "\n</remark>\n";
@@ -232,13 +234,14 @@ int InsetNote::docbook(Buffer const & buf, std::ostream & os, bool mixcont) cons
 }
 
 
-int InsetNote::ascii(Buffer const & buf, std::ostream & os, int ll) const
+int InsetNote::ascii(Buffer const & buf, std::ostream & os,
+		     LatexRunParams const & runparams) const
 {
 	int i = 0;
 	string const pt = params_.type;
 	if (pt != "Note") {
 		os << "[";
-		i = inset.ascii(buf, os, ll);
+		i = inset.ascii(buf, os, runparams);
 		os << "]";
 	}
 	return i;

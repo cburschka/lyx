@@ -108,7 +108,8 @@ int InsetFormula::latex(Buffer const &, ostream & os,
 }
 
 
-int InsetFormula::ascii(Buffer const &, ostream & os, int) const
+int InsetFormula::ascii(Buffer const &, ostream & os,
+			LatexRunParams const &) const
 {
 	if (0 && display()) {
 		Dimension dim;
@@ -128,19 +129,21 @@ int InsetFormula::ascii(Buffer const &, ostream & os, int) const
 }
 
 
-int InsetFormula::linuxdoc(Buffer const & buf, ostream & os) const
+int InsetFormula::linuxdoc(Buffer const & buf, ostream & os,
+			   LatexRunParams const & runparams) const
 {
-	return docbook(buf, os, false);
+	return docbook(buf, os, runparams);
 }
 
 
-int InsetFormula::docbook(Buffer const & buf, ostream & os, bool) const
+int InsetFormula::docbook(Buffer const & buf, ostream & os,
+			  LatexRunParams const & runparams) const
 {
 	MathMLStream ms(os);
 	ms << MTag("equation");
 	ms <<   MTag("alt");
 	ms <<    "<[CDATA[";
-	int res = ascii(buf, ms.os(), 0);
+	int res = ascii(buf, ms.os(), runparams);
 	ms <<    "]]>";
 	ms <<   ETag("alt");
 	ms <<   MTag("math");

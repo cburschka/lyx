@@ -57,13 +57,16 @@ public:
 	bool showInsetDialog(BufferView * bv) const;
 	///
 	int latex(Buffer const &, std::ostream &,
-			LatexRunParams const &) const;
+		  LatexRunParams const &) const;
 	///
-	int linuxdoc(Buffer const &, std::ostream &) const;
+	int linuxdoc(Buffer const &, std::ostream &,
+		     LatexRunParams const &) const;
 	///
-	int docbook(Buffer const &, std::ostream &, bool) const;
+	int docbook(Buffer const &, std::ostream &,
+		    LatexRunParams const &) const;
 	///
-	int ascii(Buffer const &, std::ostream &, int) const;
+	int ascii(Buffer const &, std::ostream &,
+		  LatexRunParams const &) const;
 	///
 	void validate(LaTeXFeatures &) const;
 	///

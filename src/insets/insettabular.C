@@ -21,6 +21,7 @@
 #include "FuncStatus.h"
 #include "gettext.h"
 #include "language.h"
+#include "latexrunparams.h"
 #include "LColor.h"
 #include "lyx_cb.h"
 #include "lyxlex.h"
@@ -1127,22 +1128,26 @@ int InsetTabular::latex(Buffer const & buf, ostream & os,
 }
 
 
-int InsetTabular::ascii(Buffer const & buf, ostream & os, int ll) const
+int InsetTabular::ascii(Buffer const & buf, ostream & os,
+			LatexRunParams const & runparams) const
 {
-	if (ll > 0)
-		return tabular.ascii(buf, os, ownerPar(buf, this).params().depth(),
-				      false, 0);
-	return tabular.ascii(buf, os, 0, false, 0);
+	if (runparams.linelen > 0)
+		return tabular.ascii(buf, os, runparams,
+				     ownerPar(buf, this).params().depth(),
+				     false, 0);
+	return tabular.ascii(buf, os, runparams, 0, false, 0);
 }
 
 
-int InsetTabular::linuxdoc(Buffer const & buf, ostream & os) const
+int InsetTabular::linuxdoc(Buffer const & buf, ostream & os,
+			   LatexRunParams const & runparams) const
 {
-	return tabular.linuxdoc(buf,os);
+	return tabular.linuxdoc(buf,os, runparams);
 }
 
 
-int InsetTabular::docbook(Buffer const & buf, ostream & os, bool mixcont) const
+int InsetTabular::docbook(Buffer const & buf, ostream & os,
+			  LatexRunParams const & runparams) const
 {
 	int ret = 0;
 	InsetOld * master;
@@ -1155,14 +1160,14 @@ int InsetTabular::docbook(Buffer const & buf, ostream & os, bool mixcont) const
 
 	if (!master) {
 		os << "<informaltable>";
-		if (mixcont)
+		if (runparams.mixed_content)
 			os << endl;
 		++ret;
 	}
-	ret += tabular.docbook(buf, os, mixcont);
+	ret += tabular.docbook(buf, os, runparams);
 	if (!master) {
 		os << "</informaltable>";
-		if (mixcont)
+		if (runparams.mixed_content)
 			os << endl;
 		++ret;
 	}
@@ -2269,7 +2274,8 @@ bool InsetTabular::copySelection(BufferView * bv)
 				    true, true);
 
 	ostringstream os;
-	paste_tabular->ascii(*bv->buffer(), os,
+	LatexRunParams const runparams;	
+	paste_tabular->ascii(*bv->buffer(), os, runparams,
 			     ownerPar(*bv->buffer(), this).params().depth(), true, '\t');
 	bv->stuffClipboard(os.str());
 	return true;

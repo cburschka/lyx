@@ -22,6 +22,7 @@
 #include "funcrequest.h"
 #include "gettext.h"
 #include "LaTeXFeatures.h"
+#include "latexrunparams.h"
 #include "LColor.h"
 #include "lyxlex.h"
 #include "paragraph.h"
@@ -199,10 +200,11 @@ int InsetWrap::latex(Buffer const & buf, ostream & os,
 }
 
 
-int InsetWrap::docbook(Buffer const & buf, ostream & os, bool mixcont) const
+int InsetWrap::docbook(Buffer const & buf, ostream & os,
+		       LatexRunParams const & runparams) const
 {
 	os << '<' << params_.type << '>';
-	int const i = inset.docbook(buf, os, mixcont);
+	int const i = inset.docbook(buf, os, runparams);
 	os << "</" << params_.type << '>';
 
 	return i;

@@ -305,21 +305,24 @@ int InsetQuotes::latex(Buffer const & buf, ostream & os,
 }
 
 
-int InsetQuotes::ascii(Buffer const &, ostream & os, int) const
+int InsetQuotes::ascii(Buffer const &, ostream & os,
+		       LatexRunParams const &) const
 {
 	os << '"';
 	return 0;
 }
 
 
-int InsetQuotes::linuxdoc(Buffer const &, ostream & os) const
+int InsetQuotes::linuxdoc(Buffer const &, ostream & os,
+			  LatexRunParams const &) const
 {
 	os << '"';
 	return 0;
 }
 
 
-int InsetQuotes::docbook(Buffer const &, ostream & os, bool) const
+int InsetQuotes::docbook(Buffer const &, ostream & os,
+			 LatexRunParams const &) const
 {
 	if (times_ == DoubleQ) {
 		if (side_ == LeftQ)

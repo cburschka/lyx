@@ -74,14 +74,10 @@
 using lyx::pos_type;
 
 using lyx::support::AddName;
-using lyx::support::ascii_lowercase;
 using lyx::support::atoi;
 using lyx::support::bformat;
 using lyx::support::ChangeExtension;
 using lyx::support::cmd_ret;
-using lyx::support::compare_ascii_no_case;
-using lyx::support::compare_no_case;
-using lyx::support::contains;
 using lyx::support::CreateBufferTmpDir;
 using lyx::support::destroyDir;
 using lyx::support::FileInfo;
@@ -887,213 +883,22 @@ bool Buffer::do_writeFile(ostream & ofs) const
 }
 
 
-namespace {
-
-pair<int, string> const addDepth(int depth, int ldepth)
-{
-	int d = depth * 2;
-	if (ldepth > depth)
-		d += (ldepth - depth) * 2;
-	return make_pair(d, string(d, ' '));
-}
-
-}
-
-
-string const Buffer::asciiParagraph(Paragraph const & par,
-				    unsigned int linelen,
-				    bool noparbreak) const
-{
-	ostringstream buffer;
-	int ltype = 0;
-	Paragraph::depth_type ltype_depth = 0;
-	bool ref_printed = false;
-	Paragraph::depth_type depth = par.params().depth();
-
-	// First write the layout
-	string const & tmp = par.layout()->name();
-	if (compare_no_case(tmp, "itemize") == 0) {
-		ltype = 1;
-		ltype_depth = depth + 1;
-	} else if (compare_ascii_no_case(tmp, "enumerate") == 0) {
-		ltype = 2;
-		ltype_depth = depth + 1;
-	} else if (contains(ascii_lowercase(tmp), "ection")) {
-		ltype = 3;
-		ltype_depth = depth + 1;
-	} else if (contains(ascii_lowercase(tmp), "aragraph")) {
-		ltype = 4;
-		ltype_depth = depth + 1;
-	} else if (compare_ascii_no_case(tmp, "description") == 0) {
-		ltype = 5;
-		ltype_depth = depth + 1;
-	} else if (compare_ascii_no_case(tmp, "abstract") == 0) {
-		ltype = 6;
-		ltype_depth = 0;
-	} else if (compare_ascii_no_case(tmp, "bibliography") == 0) {
-		ltype = 7;
-		ltype_depth = 0;
-	} else {
-		ltype = 0;
-		ltype_depth = 0;
-	}
-
-	/* maybe some vertical spaces */
-
-	/* the labelwidthstring used in lists */
-
-	/* some lines? */
-
-	/* some pagebreaks? */
-
-	/* noindent ? */
-
-	/* what about the alignment */
-
-	// linelen <= 0 is special and means we don't have paragraph breaks
-
-	string::size_type currlinelen = 0;
-
-	if (!noparbreak) {
-		if (linelen > 0)
-			buffer << "\n\n";
-
-		buffer << string(depth * 2, ' ');
-		currlinelen += depth * 2;
-
-		//--
-		// we should probably change to the paragraph language in the
-		// gettext here (if possible) so that strings are outputted in
-		// the correct language! (20012712 Jug)
-		//--
-		switch (ltype) {
-		case 0: // Standard
-		case 4: // (Sub)Paragraph
-		case 5: // Description
-			break;
-		case 6: // Abstract
-			if (linelen > 0) {
-				buffer << _("Abstract") << "\n\n";
-				currlinelen = 0;
-			} else {
-				string const abst = _("Abstract: ");
-				buffer << abst;
-				currlinelen += abst.length();
-			}
-			break;
-		case 7: // Bibliography
-			if (!ref_printed) {
-				if (linelen > 0) {
-					buffer << _("References") << "\n\n";
-					currlinelen = 0;
-				} else {
-					string const refs = _("References: ");
-					buffer << refs;
-					currlinelen += refs.length();
-				}
-
-				ref_printed = true;
-			}
-			break;
-		default:
-		{
-			string const parlab = par.params().labelString();
-			buffer << parlab << ' ';
-			currlinelen += parlab.length() + 1;
-		}
-		break;
-
-		}
-	}
-
-	if (!currlinelen) {
-		pair<int, string> p = addDepth(depth, ltype_depth);
-		buffer << p.second;
-		currlinelen += p.first;
-	}
-
-	// this is to change the linebreak to do it by word a bit more
-	// intelligent hopefully! (only in the case where we have a
-	// max linelength!) (Jug)
-
-	string word;
-
-	for (pos_type i = 0; i < par.size(); ++i) {
-		char c = par.getUChar(params(), i);
-		switch (c) {
-		case Paragraph::META_INSET:
-		{
-			InsetOld const * inset = par.getInset(i);
-			if (inset) {
-				if (linelen > 0) {
-					buffer << word;
-					currlinelen += word.length();
-					word.erase();
-				}
-				if (inset->ascii(*this, buffer, linelen)) {
-					// to be sure it breaks paragraph
-					currlinelen += linelen;
-				}
-			}
-		}
-		break;
-
-		default:
-			if (c == ' ') {
-				if (linelen > 0 &&
-				    currlinelen + word.length() > linelen - 10) {
-					buffer << "\n";
-					pair<int, string> p = addDepth(depth, ltype_depth);
-					buffer << p.second;
-					currlinelen = p.first;
-				}
-
-				buffer << word << ' ';
-				currlinelen += word.length() + 1;
-				word.erase();
-
-			} else {
-				if (c != '\0') {
-					word += c;
-				} else {
-					lyxerr[Debug::INFO] <<
-						"writeAsciiFile: NULL char in structure." << endl;
-				}
-				if ((linelen > 0) &&
-					(currlinelen + word.length()) > linelen)
-				{
-					buffer << "\n";
-
-					pair<int, string> p =
-						addDepth(depth, ltype_depth);
-					buffer << p.second;
-					currlinelen = p.first;
-				}
-			}
-			break;
-		}
-	}
-	buffer << word;
-	return buffer.str();
-}
-
-
-void Buffer::writeFileAscii(string const & fname, int linelen)
+void Buffer::writeFileAscii(string const & fname, LatexRunParams const & runparams)
 {
 	ofstream ofs;
 	if (!::openFileWrite(ofs, fname))
 		return;
-	writeFileAscii(ofs, linelen);
+	writeFileAscii(ofs, runparams);
 }
 
 
-void Buffer::writeFileAscii(ostream & os, int linelen)
+void Buffer::writeFileAscii(ostream & os, LatexRunParams const & runparams)
 {
 	ParagraphList::iterator beg = paragraphs().begin();
 	ParagraphList::iterator end = paragraphs().end();
 	ParagraphList::iterator it = beg;
 	for (; it != end; ++it) {
-		os << asciiParagraph(*it, linelen, it == beg);
+		asciiParagraph(*this, *it, os, runparams, it == beg);
 	}
 	os << "\n";
 }
@@ -1261,13 +1066,15 @@ bool Buffer::isSGML() const
 }
 
 
-void Buffer::makeLinuxDocFile(string const & fname, bool nice, bool body_only)
+void Buffer::makeLinuxDocFile(string const & fname,
+			      LatexRunParams const & runparams,
+			      bool body_only )
 {
 	ofstream ofs;
 	if (!::openFileWrite(ofs, fname))
 		return;
 
-	niceFile() = nice; // this will be used by included files.
+	niceFile() = runparams.nice; // this will be used by included files.
 
 	LaTeXFeatures features(*this, params());
 
@@ -1283,7 +1090,7 @@ void Buffer::makeLinuxDocFile(string const & fname, bool nice, bool body_only)
 		ofs << "<!doctype linuxdoc system";
 
 		string preamble = params().preamble;
-		string const name = nice ? ChangeExtension(pimpl_->filename, ".sgml")
+		string const name = runparams.nice ? ChangeExtension(pimpl_->filename, ".sgml")
 			 : fname;
 		preamble += features.getIncludedFiles(name);
 		preamble += features.getLyXSGMLEntities();
@@ -1307,7 +1114,7 @@ void Buffer::makeLinuxDocFile(string const & fname, bool nice, bool body_only)
 	    << " created this file. For more info see http://www.lyx.org/"
 	    << " -->\n";
 
-	linuxdocParagraphs(*this, paragraphs(), ofs);
+	linuxdocParagraphs(*this, paragraphs(), ofs, runparams);
 
 	if (!body_only) {
 		ofs << "\n\n";
@@ -1322,13 +1129,15 @@ void Buffer::makeLinuxDocFile(string const & fname, bool nice, bool body_only)
 }
 
 
-void Buffer::makeDocBookFile(string const & fname, bool nice, bool only_body)
+void Buffer::makeDocBookFile(string const & fname,
+			     LatexRunParams const & runparams,
+			     bool only_body)
 {
 	ofstream ofs;
 	if (!::openFileWrite(ofs, fname))
 		return;
 
-	niceFile() = nice; // this will be used by Insetincludes.
+	niceFile() = runparams.nice; // this will be used by Insetincludes.
 
 	LaTeXFeatures features(*this, params());
 	validate(features);
@@ -1343,7 +1152,7 @@ void Buffer::makeDocBookFile(string const & fname, bool nice, bool only_body)
 		    << "  PUBLIC \"-//OASIS//DTD DocBook V4.1//EN\"";
 
 		string preamble = params().preamble;
-		string const name = nice ? ChangeExtension(pimpl_->filename, ".sgml")
+		string const name = runparams.nice ? ChangeExtension(pimpl_->filename, ".sgml")
 			 : fname;
 		preamble += features.getIncludedFiles(name);
 		preamble += features.getLyXSGMLEntities();
@@ -1368,7 +1177,7 @@ void Buffer::makeDocBookFile(string const & fname, bool nice, bool only_body)
 	ofs << "<!-- DocBook file was created by LyX " << lyx_version
 	    << "\n  See http://www.lyx.org/ for more information -->\n";
 
-	docbookParagraphs(*this, paragraphs(), ofs);
+	docbookParagraphs(*this, paragraphs(), ofs, runparams);
 
 	ofs << "\n\n";
 	sgml::closeTag(ofs, 0, false, top_element);

@@ -49,11 +49,14 @@ public:
 	int latex(Buffer const &, std::ostream &,
 		  LatexRunParams const &) const;
 	///
-	int linuxdoc(Buffer const &, std::ostream &) const { return 0; }
+	int linuxdoc(Buffer const &, std::ostream &,
+		     LatexRunParams const &) const { return 0; }
 	///
-	int docbook(Buffer const &, std::ostream &, bool) const { return 0; }
+	int docbook(Buffer const &, std::ostream &,
+		    LatexRunParams const &) const { return 0; }
 	///
-	int ascii(Buffer const &, std::ostream &, int linelen) const;
+	int ascii(Buffer const &, std::ostream &,
+		  LatexRunParams const & runparams) const;
 	///
 	void validate(LaTeXFeatures & features) const;
 protected:

@@ -33,11 +33,14 @@ public:
 	virtual int latex(Buffer const &, std::ostream &,
 			  LatexRunParams const &) const;
 
-	virtual int ascii(Buffer const &, std::ostream &, int linelen) const;
+	virtual int ascii(Buffer const &, std::ostream &,
+			  LatexRunParams const &) const;
 
-	virtual int linuxdoc(Buffer const &, std::ostream &) const;
+	virtual int linuxdoc(Buffer const &, std::ostream &,
+			     LatexRunParams const &) const;
 
-	virtual int docbook(Buffer const &, std::ostream &, bool) const;
+	virtual int docbook(Buffer const &, std::ostream &,
+			    LatexRunParams const &) const;
 
 	virtual void read(Buffer const &, LyXLex & lex);
 

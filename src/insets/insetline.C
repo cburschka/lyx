@@ -67,21 +67,24 @@ int InsetLine::latex(Buffer const &, ostream & os,
 }
 
 
-int InsetLine::ascii(Buffer const &, ostream & os, int) const
+int InsetLine::ascii(Buffer const &, ostream & os,
+		     LatexRunParams const &) const
 {
 	os << "-------------------------------------------";
 	return 0;
 }
 
 
-int InsetLine::linuxdoc(Buffer const &, std::ostream & os) const
+int InsetLine::linuxdoc(Buffer const &, std::ostream & os,
+			LatexRunParams const &) const
 {
 	os << '\n';
 	return 0;
 }
 
 
-int InsetLine::docbook(Buffer const &, std::ostream & os, bool) const
+int InsetLine::docbook(Buffer const &, std::ostream & os,
+		       LatexRunParams const &) const
 {
 	os << '\n';
 	return 0;

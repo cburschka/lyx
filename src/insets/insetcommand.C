@@ -67,19 +67,22 @@ int InsetCommand::latex(Buffer const &, ostream & os,
 }
 
 
-int InsetCommand::ascii(Buffer const &, ostream &, int) const
+int InsetCommand::ascii(Buffer const &, ostream &,
+			LatexRunParams const &) const
 {
 	return 0;
 }
 
 
-int InsetCommand::linuxdoc(Buffer const &, ostream &) const
+int InsetCommand::linuxdoc(Buffer const &, ostream &,
+			   LatexRunParams const &) const
 {
 	return 0;
 }
 
 
-int InsetCommand::docbook(Buffer const &, ostream &, bool) const
+int InsetCommand::docbook(Buffer const &, ostream &,
+			  LatexRunParams const &) const
 {
 	return 0;
 }

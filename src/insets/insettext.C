@@ -934,32 +934,32 @@ int InsetText::latex(Buffer const & buf, ostream & os,
 }
 
 
-int InsetText::ascii(Buffer const & buf, ostream & os, int linelen) const
+int InsetText::ascii(Buffer const & buf, ostream & os,
+		     LatexRunParams const & runparams) const
 {
-	unsigned int lines = 0;
-
 	ParagraphList::const_iterator beg = paragraphs.begin();
 	ParagraphList::const_iterator end = paragraphs.end();
 	ParagraphList::const_iterator it = beg;
-	for (; it != end; ++it) {
-		string const tmp = buf.asciiParagraph(*it, linelen, it == beg);
-		lines += lyx::count(tmp.begin(), tmp.end(), '\n');
-		os << tmp;
-	}
-	return lines;
-}
+	for (; it != end; ++it)
+		asciiParagraph(buf, *it, os, runparams, it == beg);
 
-
-int InsetText::linuxdoc(Buffer const & buf, ostream & os) const
-{
-	linuxdocParagraphs(buf, paragraphs, os);
+	//FIXME: Give the total numbers of lines
 	return 0;
 }
 
 
-int InsetText::docbook(Buffer const & buf, ostream & os, bool mixcont) const
+int InsetText::linuxdoc(Buffer const & buf, ostream & os,
+			LatexRunParams const & runparams) const
 {
-	docbookParagraphs(buf, paragraphs, os);
+	linuxdocParagraphs(buf, paragraphs, os, runparams);
+	return 0;
+}
+
+
+int InsetText::docbook(Buffer const & buf, ostream & os,
+		       LatexRunParams const & runparams) const
+{
+	docbookParagraphs(buf, paragraphs, os, runparams);
 	return 0;
 }
 

@@ -1,3 +1,17 @@
+2003-10-31  José Matos  <jamatos@lyx.org>
+
+	* paragraph_funcs.C (addDepth, asciiParagraph): move from buffer.C
+	
+	* buffer.[Ch] (writeFileAscii, makeLinuxDocFile, makeDocBookFile):
+	* paragraph.[Ch] (simpleLinuxDocOnePar, simpleDocBookOnePar, asString):
+	* paragraph_funcs.[Ch] (linuxdocParagraphs, docbookParagraphs):
+	* paragraph_pimpl.C (simpleTeXSpecialC):
+	* tabular.[Ch] (linuxdoc, docbookRow, docbook, ascii):
+	add LatexRunParams argument.
+
+	* exporter.C (Export): change call accordingly.
+
+	* latexrunparams.h: add new member to take care of the other backends.
 2003-10-30  José Matos  <jamatos@lyx.org>
 
 	* buffer.C (makeLinuxDocFile, makeDocBookFile):

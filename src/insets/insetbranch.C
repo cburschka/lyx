@@ -162,29 +162,32 @@ int InsetBranch::latex(Buffer const & buf, ostream & os,
 }
 
 
-int InsetBranch::linuxdoc(Buffer const & buf, std::ostream & os) const
+int InsetBranch::linuxdoc(Buffer const & buf, std::ostream & os,
+			  LatexRunParams const & runparams) const
 {
 	string const branch_sel = buf.params().branchlist().allSelected();
 	if (branch_sel.find(params_.branch, 0) != string::npos)
-		return inset.linuxdoc(buf, os);
+		return inset.linuxdoc(buf, os, runparams);
 	return 0;
 }
 
 
-int InsetBranch::docbook(Buffer const & buf, std::ostream & os, bool mixcont) const
+int InsetBranch::docbook(Buffer const & buf, std::ostream & os,
+			 LatexRunParams const & runparams) const
 {
 	string const branch_sel = buf.params().branchlist().allSelected();
 	if (branch_sel.find(params_.branch, 0) != string::npos)
-		return inset.docbook(buf, os, mixcont);
+		return inset.docbook(buf, os, runparams);
 	return 0;
 }
 
 
-int InsetBranch::ascii(Buffer const & buf, std::ostream & os, int ll) const
+int InsetBranch::ascii(Buffer const & buf, std::ostream & os,
+		       LatexRunParams const & runparams) const
 {
 	string const branch_sel = buf.params().branchlist().allSelected();
 	if (branch_sel.find(params_.branch, 0) != string::npos) {
-		return inset.ascii(buf, os, ll);
+		return inset.ascii(buf, os, runparams);
 	}
 	return 0;
 }

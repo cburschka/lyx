@@ -83,7 +83,8 @@ int InsetFormulaMacro::latex(Buffer const &, ostream & os,
 }
 
 
-int InsetFormulaMacro::ascii(Buffer const &, ostream & os, int) const
+int InsetFormulaMacro::ascii(Buffer const &, ostream & os,
+			     LatexRunParams const &) const
 {
 	WriteStream wi(os, false, true);
 	par()->write(wi);
@@ -91,15 +92,17 @@ int InsetFormulaMacro::ascii(Buffer const &, ostream & os, int) const
 }
 
 
-int InsetFormulaMacro::linuxdoc(Buffer const & buf, ostream & os) const
+int InsetFormulaMacro::linuxdoc(Buffer const & buf, ostream & os,
+				LatexRunParams const & runparams) const
 {
-	return ascii(buf, os, 0);
+	return ascii(buf, os, runparams);
 }
 
 
-int InsetFormulaMacro::docbook(Buffer const & buf, ostream & os, bool) const
+int InsetFormulaMacro::docbook(Buffer const & buf, ostream & os,
+			       LatexRunParams const & runparams) const
 {
-	return ascii(buf, os, 0);
+	return ascii(buf, os, runparams);
 }
 
 

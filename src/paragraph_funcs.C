@@ -22,6 +22,7 @@
 #include "gettext.h"
 #include "iterators.h"
 #include "language.h"
+#include "latexrunparams.h"
 #include "lyxlex.h"
 #include "lyxrc.h"
 #include "paragraph_pimpl.h"
@@ -49,8 +50,12 @@
 
 using lyx::pos_type;
 
+using lyx::support::ascii_lowercase;
 using lyx::support::atoi;
 using lyx::support::bformat;
+using lyx::support::compare_ascii_no_case;
+using lyx::support::compare_no_case;
+using lyx::support::contains;
 using lyx::support::split;
 using lyx::support::subst;
 
@@ -59,6 +64,7 @@ using std::string;
 using std::vector;
 using std::istringstream;
 using std::ostream;
+using std::pair;
 
 extern string bibitemWidest(Buffer const &);
 
@@ -794,9 +800,201 @@ void latexParagraphs(Buffer const & buf,
 }
 
 
+namespace {
+
+pair<int, string> const addDepth(int depth, int ldepth)
+{
+	int d = depth * 2;
+	if (ldepth > depth)
+		d += (ldepth - depth) * 2;
+	return make_pair(d, string(d, ' '));
+}
+
+}
+
+
+void asciiParagraph(Buffer const & buf,
+		    Paragraph const & par,
+		    ostream & os,
+		    LatexRunParams const & runparams,
+		    bool noparbreak)
+{
+	int ltype = 0;
+	Paragraph::depth_type ltype_depth = 0;
+	bool ref_printed = false;
+	Paragraph::depth_type depth = par.params().depth();
+
+	// First write the layout
+	string const & tmp = par.layout()->name();
+	if (compare_no_case(tmp, "itemize") == 0) {
+		ltype = 1;
+		ltype_depth = depth + 1;
+	} else if (compare_ascii_no_case(tmp, "enumerate") == 0) {
+		ltype = 2;
+		ltype_depth = depth + 1;
+	} else if (contains(ascii_lowercase(tmp), "ection")) {
+		ltype = 3;
+		ltype_depth = depth + 1;
+	} else if (contains(ascii_lowercase(tmp), "aragraph")) {
+		ltype = 4;
+		ltype_depth = depth + 1;
+	} else if (compare_ascii_no_case(tmp, "description") == 0) {
+		ltype = 5;
+		ltype_depth = depth + 1;
+	} else if (compare_ascii_no_case(tmp, "abstract") == 0) {
+		ltype = 6;
+		ltype_depth = 0;
+	} else if (compare_ascii_no_case(tmp, "bibliography") == 0) {
+		ltype = 7;
+		ltype_depth = 0;
+	} else {
+		ltype = 0;
+		ltype_depth = 0;
+	}
+
+	/* maybe some vertical spaces */
+
+	/* the labelwidthstring used in lists */
+
+	/* some lines? */
+
+	/* some pagebreaks? */
+
+	/* noindent ? */
+
+	/* what about the alignment */
+
+	// runparams.linelen <= 0 is special and means we don't have paragraph breaks
+
+	string::size_type currlinelen = 0;
+
+	if (!noparbreak) {
+		if (runparams.linelen > 0)
+			os << "\n\n";
+
+		os << string(depth * 2, ' ');
+		currlinelen += depth * 2;
+
+		//--
+		// we should probably change to the paragraph language in the
+		// gettext here (if possible) so that strings are outputted in
+		// the correct language! (20012712 Jug)
+		//--
+		switch (ltype) {
+		case 0: // Standard
+		case 4: // (Sub)Paragraph
+		case 5: // Description
+			break;
+		case 6: // Abstract
+			if (runparams.linelen > 0) {
+				os << _("Abstract") << "\n\n";
+				currlinelen = 0;
+			} else {
+				string const abst = _("Abstract: ");
+				os << abst;
+				currlinelen += abst.length();
+			}
+			break;
+		case 7: // Bibliography
+			if (!ref_printed) {
+				if (runparams.linelen > 0) {
+					os << _("References") << "\n\n";
+					currlinelen = 0;
+				} else {
+					string const refs = _("References: ");
+					os << refs;
+					currlinelen += refs.length();
+				}
+
+				ref_printed = true;
+			}
+			break;
+		default:
+		{
+			string const parlab = par.params().labelString();
+			os << parlab << ' ';
+			currlinelen += parlab.length() + 1;
+		}
+		break;
+
+		}
+	}
+
+	if (!currlinelen) {
+		pair<int, string> p = addDepth(depth, ltype_depth);
+		os << p.second;
+		currlinelen += p.first;
+	}
+
+	// this is to change the linebreak to do it by word a bit more
+	// intelligent hopefully! (only in the case where we have a
+	// max runparams.linelength!) (Jug)
+
+	string word;
+
+	for (pos_type i = 0; i < par.size(); ++i) {
+		char c = par.getUChar(buf.params(), i);
+		switch (c) {
+		case Paragraph::META_INSET:
+		{
+			InsetOld const * inset = par.getInset(i);
+			if (inset) {
+				if (runparams.linelen > 0) {
+					os << word;
+					currlinelen += word.length();
+					word.erase();
+				}
+				if (inset->ascii(buf, os, runparams)) {
+					// to be sure it breaks paragraph
+					currlinelen += runparams.linelen;
+				}
+			}
+		}
+		break;
+
+		default:
+			if (c == ' ') {
+				if (runparams.linelen > 0 &&
+				    currlinelen + word.length() > runparams.linelen - 10) {
+					os << "\n";
+					pair<int, string> p = addDepth(depth, ltype_depth);
+					os << p.second;
+					currlinelen = p.first;
+				}
+
+				os << word << ' ';
+				currlinelen += word.length() + 1;
+				word.erase();
+
+			} else {
+				if (c != '\0') {
+					word += c;
+				} else {
+					lyxerr[Debug::INFO] <<
+						"writeAsciiFile: NULL char in structure." << endl;
+				}
+				if ((runparams.linelen > 0) &&
+					(currlinelen + word.length()) > runparams.linelen)
+				{
+					os << "\n";
+
+					pair<int, string> p =
+						addDepth(depth, ltype_depth);
+					os << p.second;
+					currlinelen = p.first;
+				}
+			}
+			break;
+		}
+	}
+	os << word;
+}
+
+
 void linuxdocParagraphs(Buffer const & buf,
 			ParagraphList const & paragraphs,
-			ostream & os)
+			ostream & os,
+			LatexRunParams const & runparams)
 {
 	
 	Paragraph::depth_type depth = 0; // paragraph depth
@@ -899,7 +1097,8 @@ void linuxdocParagraphs(Buffer const & buf,
 			break;
 		}
 
-		pit->simpleLinuxDocOnePar(buf, os, outerFont(pit, paragraphs), depth);
+		pit->simpleLinuxDocOnePar(buf, os, outerFont(pit, paragraphs),
+					  runparams, depth);
 
 		os << "\n";
 		// write closing SGML tags
@@ -926,7 +1125,8 @@ void linuxdocParagraphs(Buffer const & buf,
 
 void docbookParagraphs(Buffer const & buf,
 		       ParagraphList const & paragraphs,
-		       ostream & os)
+		       ostream & os,
+		       LatexRunParams const & runparams)
 {
 	vector<string> environment_stack(10);
 	vector<string> environment_inner(10);
@@ -1085,7 +1285,7 @@ void docbookParagraphs(Buffer const & buf,
 		}
 
 		par->simpleDocBookOnePar(buf, os, outerFont(par, paragraphs), desc_on,
-				    depth + 1 + command_depth);
+					 runparams, depth + 1 + command_depth);
 
 		string end_tag;
 		// write closing SGML tags

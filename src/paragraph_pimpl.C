@@ -472,7 +472,7 @@ void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const & buf,
 				os << c;
 		} else {
 			InsetOld const * inset = owner_->getInset(i);
-			inset->ascii(buf, os, 0);
+			inset->ascii(buf, os, runparams);
 		}
 		return;
 	}

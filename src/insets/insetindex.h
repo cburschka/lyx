@@ -36,7 +36,8 @@ public:
 	///
 	InsetOld::Code lyxCode() const;
 	///
-	int docbook(Buffer const &, std::ostream &, bool mixcont) const;
+	int docbook(Buffer const &, std::ostream &,
+		    LatexRunParams const &) const;
 protected:
 	///
 	virtual

@@ -611,7 +611,8 @@ int InsetGraphics::latex(Buffer const & buf, ostream & os,
 }
 
 
-int InsetGraphics::ascii(Buffer const &, ostream & os, int) const
+int InsetGraphics::ascii(Buffer const &, ostream & os,
+			 LatexRunParams const &) const
 {
 	// No graphics in ascii output. Possible to use gifscii to convert
 	// images to ascii approximation.
@@ -624,7 +625,8 @@ int InsetGraphics::ascii(Buffer const &, ostream & os, int) const
 }
 
 
-int InsetGraphics::linuxdoc(Buffer const & buf, ostream & os) const
+int InsetGraphics::linuxdoc(Buffer const & buf, ostream & os,
+			    LatexRunParams const &) const
 {
 	string const file_name = buf.niceFile() ?
 				params().filename.relFilename(buf.filePath()):
@@ -640,7 +642,7 @@ int InsetGraphics::linuxdoc(Buffer const & buf, ostream & os) const
 // http://en.tldp.org/LDP/LDP-Author-Guide/inserting-pictures.html
 // See also the docbook guide at http://www.docbook.org/
 int InsetGraphics::docbook(Buffer const &, ostream & os,
-			   bool /*mixcont*/) const
+			   LatexRunParams const &) const
 {
 	// In DocBook v5.0, the graphic tag will be eliminated from DocBook, will
 	// need to switch to MediaObject. However, for now this is sufficient and

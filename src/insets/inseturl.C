@@ -94,7 +94,8 @@ int InsetUrl::latex(Buffer const &, ostream & os,
 }
 
 
-int InsetUrl::ascii(Buffer const &, ostream & os, int) const
+int InsetUrl::ascii(Buffer const &, ostream & os,
+		    LatexRunParams const &) const
 {
 	if (getOptions().empty())
 		os << '[' << getContents() << ']';
@@ -104,7 +105,8 @@ int InsetUrl::ascii(Buffer const &, ostream & os, int) const
 }
 
 
-int InsetUrl::linuxdoc(Buffer const &, ostream & os) const
+int InsetUrl::linuxdoc(Buffer const &, ostream & os,
+		       LatexRunParams const &) const
 {
 	os << '<' << getCmdName()
 	   << " url=\""  << getContents() << "\""
@@ -114,7 +116,8 @@ int InsetUrl::linuxdoc(Buffer const &, ostream & os) const
 }
 
 
-int InsetUrl::docbook(Buffer const &, ostream & os, bool) const
+int InsetUrl::docbook(Buffer const &, ostream & os,
+		      LatexRunParams const &) const
 {
 	os << "<ulink url=\"" << subst(getContents(),"&","&amp;")
 	   << "\">" << getOptions() << "</ulink>";

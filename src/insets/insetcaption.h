@@ -37,9 +37,11 @@ public:
 	virtual int latex(Buffer const & buf, std::ostream & os,
 			  LatexRunParams const &) const;
 	///
-	int ascii(Buffer const & buf, std::ostream & os, int linelen) const;
+	int ascii(Buffer const & buf, std::ostream & os,
+		  LatexRunParams const & runparams) const;
 	///
-	int docbook(Buffer const & buf, std::ostream & os, bool mixcont) const;
+	int docbook(Buffer const & buf, std::ostream & os,
+		    LatexRunParams const & runparams) const;
 };
 
 

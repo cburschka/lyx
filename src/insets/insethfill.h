@@ -31,11 +31,14 @@ public:
 	int latex(Buffer const &, std::ostream &,
 		  LatexRunParams const &) const;
 	///
-	int ascii(Buffer const &, std::ostream &, int linelen) const;
+	int ascii(Buffer const &, std::ostream &,
+		  LatexRunParams const & runparams) const;
 	///
-	int linuxdoc(Buffer const &, std::ostream &) const;
+	int linuxdoc(Buffer const &, std::ostream &,
+		     LatexRunParams const &) const;
 	///
-	int docbook(Buffer const &, std::ostream &, bool) const;
+	int docbook(Buffer const &, std::ostream &,
+		    LatexRunParams const & runparams) const;
 	///
 	void write(Buffer const & buf, std::ostream & os) const;
 	/// We don't need \begin_inset and \end_inset

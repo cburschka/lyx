@@ -20,7 +20,8 @@ struct LatexRunParams {
 
         LatexRunParams() : flavor(LATEX), nice(false),
 			   moving_arg(false), free_spacing(false),
-			   use_babel(false) {}
+			   use_babel(false), mixed_content(false),
+			   linelen(0) {}
 
 	/** The latex that we export depends occasionally on what is to
 	    compile the file.
@@ -48,6 +49,16 @@ struct LatexRunParams {
 	/** This var is set by the return value from BufferParams::writeLaTeX
 	 */
 	bool use_babel;
+
+	/** Used for docbook to see if inside a region of mixed content.
+	    In that case all the white spaces are significant and can not appear
+	    at the begin or end.
+	 */
+	bool mixed_content;
+
+	/** Line lenght to use with ascii export.
+	 */
+	int linelen;
 };
 
 #endif // LATEXRUNPARAMS_H

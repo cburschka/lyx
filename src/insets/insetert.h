@@ -67,12 +67,14 @@ public:
 	int latex(Buffer const &, std::ostream &,
 		  LatexRunParams const &) const;
 	///
-	int ascii(Buffer const &,
-			  std::ostream &, int linelen = 0) const;
+	int ascii(Buffer const &, std::ostream &,
+		  LatexRunParams const & runparams) const;
 	///
-	int linuxdoc(Buffer const &, std::ostream &) const;
+	int linuxdoc(Buffer const &, std::ostream &,
+		     LatexRunParams const &) const;
 	///
-	int docbook(Buffer const &, std::ostream &, bool mixcont) const;
+	int docbook(Buffer const &, std::ostream &,
+		    LatexRunParams const & runparams) const;
 	///
 	void validate(LaTeXFeatures &) const {}
 	///

@@ -51,21 +51,24 @@ int InsetHFill::latex(Buffer const &, ostream & os,
 }
 
 
-int InsetHFill::ascii(Buffer const &, ostream & os, int) const
+int InsetHFill::ascii(Buffer const &, ostream & os,
+		      LatexRunParams const &) const
 {
 	os << '\t';
 	return 0;
 }
 
 
-int InsetHFill::linuxdoc(Buffer const &, std::ostream & os) const
+int InsetHFill::linuxdoc(Buffer const &, std::ostream & os,
+			 LatexRunParams const &) const
 {
 	os << '\n';
 	return 0;
 }
 
 
-int InsetHFill::docbook(Buffer const &, std::ostream & os, bool) const
+int InsetHFill::docbook(Buffer const &, std::ostream & os,
+			LatexRunParams const &) const
 {
 	os << '\n';
 	return 0;

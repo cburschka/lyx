@@ -608,21 +608,24 @@ int InsetLatexAccent::latex(Buffer const &, ostream & os,
 }
 
 
-int InsetLatexAccent::ascii(Buffer const &, ostream & os, int) const
+int InsetLatexAccent::ascii(Buffer const &, ostream & os,
+			    LatexRunParams const &) const
 {
 	os << contents;
 	return 0;
 }
 
 
-int InsetLatexAccent::linuxdoc(Buffer const &, ostream & os) const
+int InsetLatexAccent::linuxdoc(Buffer const &, ostream & os,
+			       LatexRunParams const &) const
 {
 	os << contents;
 	return 0;
 }
 
 
-int InsetLatexAccent::docbook(Buffer const &, ostream & os, bool) const
+int InsetLatexAccent::docbook(Buffer const &, ostream & os,
+			      LatexRunParams const &) const
 {
 	os << contents;
 	return 0;

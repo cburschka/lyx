@@ -134,12 +134,9 @@ public:
 	bool writeFile(std::string const &) const;
 
 	///
-	void writeFileAscii(std::string const &, int);
+	void writeFileAscii(std::string const &, LatexRunParams const &);
 	///
-	void writeFileAscii(std::ostream &, int);
-	///
-	std::string const asciiParagraph(Paragraph const &, unsigned int linelen,
-				    bool noparbreak = false) const;
+	void writeFileAscii(std::ostream &, LatexRunParams const &);
 	/// Just a wrapper for the method below, first creating the ofstream.
 	void makeLaTeXFile(std::string const & filename,
 			   std::string const & original_path,
@@ -154,10 +151,12 @@ public:
 			   bool output_body = true);
 	///
 	void makeLinuxDocFile(std::string const & filename,
-			      bool nice, bool only_body = false);
+			      LatexRunParams const & runparams_in,
+			      bool only_body = false);
 	///
 	void makeDocBookFile(std::string const & filename,
-			     bool nice, bool only_body = false);
+			     LatexRunParams const & runparams_in,
+			     bool only_body = false);
 	/// returns the main language for the buffer (document)
 	Language const * getLanguage() const;
 	/// get l10n translated to the buffers language

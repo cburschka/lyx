@@ -364,7 +364,8 @@ int InsetInclude::latex(Buffer const & buffer, ostream & os,
 }
 
 
-int InsetInclude::ascii(Buffer const & buffer, ostream & os, int) const
+int InsetInclude::ascii(Buffer const & buffer, ostream & os,
+			LatexRunParams const &) const
 {
 	if (isVerbatim(params_))
 		os << GetFileContents(includedFilename(buffer, params_));
@@ -372,7 +373,8 @@ int InsetInclude::ascii(Buffer const & buffer, ostream & os, int) const
 }
 
 
-int InsetInclude::linuxdoc(Buffer const & buffer, ostream & os) const
+int InsetInclude::linuxdoc(Buffer const & buffer, ostream & os,
+			   LatexRunParams const & runparams) const
 {
 	string incfile(params_.getContents());
 
@@ -399,7 +401,9 @@ int InsetInclude::linuxdoc(Buffer const & buffer, ostream & os) const
 		lyxerr[Debug::LATEX] << "incfile:" << incfile << endl;
 		lyxerr[Debug::LATEX] << "writefile:" << writefile << endl;
 
-		tmp->makeLinuxDocFile(writefile, buffer.niceFile(), true);
+		LatexRunParams runp = runparams;
+		runp.nice = buffer.niceFile();		
+		tmp->makeLinuxDocFile(writefile, runp, true);
 	}
 
 	if (isVerbatim(params_)) {
@@ -414,7 +418,7 @@ int InsetInclude::linuxdoc(Buffer const & buffer, ostream & os) const
 
 
 int InsetInclude::docbook(Buffer const & buffer, ostream & os,
-			  bool /*mixcont*/) const
+			  LatexRunParams const & runparams) const
 {
 	string incfile(params_.getContents());
 
@@ -440,7 +444,9 @@ int InsetInclude::docbook(Buffer const & buffer, ostream & os,
 		lyxerr[Debug::LATEX] << "incfile:" << incfile << endl;
 		lyxerr[Debug::LATEX] << "writefile:" << writefile << endl;
 
-		tmp->makeDocBookFile(writefile, buffer.niceFile(), true);
+		LatexRunParams runp = runparams;
+		runp.nice = buffer.niceFile();
+		tmp->makeDocBookFile(writefile, runp, true);
 	}
 
 	if (isVerbatim(params_)) {

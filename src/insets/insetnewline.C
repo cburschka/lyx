@@ -57,21 +57,24 @@ int InsetNewline::latex(Buffer const &, ostream &,
 }
 
 
-int InsetNewline::ascii(Buffer const &, ostream & os, int) const
+int InsetNewline::ascii(Buffer const &, ostream & os,
+			LatexRunParams const &) const
 {
 	os << '\n';
 	return 0;
 }
 
 
-int InsetNewline::linuxdoc(Buffer const &, std::ostream & os) const
+int InsetNewline::linuxdoc(Buffer const &, std::ostream & os,
+			   LatexRunParams const &) const
 {
 	os << '\n';
 	return 0;
 }
 
 
-int InsetNewline::docbook(Buffer const &, std::ostream & os, bool) const
+int InsetNewline::docbook(Buffer const &, std::ostream & os,
+			  LatexRunParams const &) const
 {
 	os << '\n';
 	return 0;

@@ -184,12 +184,14 @@ public:
 	virtual int latex(Buffer const &, std::ostream &,
 			  LatexRunParams const &) const = 0;
 	///
-	virtual int ascii(Buffer const &,
-			  std::ostream &, int linelen = 0) const = 0;
+	virtual int ascii(Buffer const &, std::ostream &,
+			  LatexRunParams const &) const = 0;
 	///
-	virtual int linuxdoc(Buffer const &, std::ostream &) const = 0;
+	virtual int linuxdoc(Buffer const &, std::ostream &,
+			     LatexRunParams const &) const = 0;
 	///
-	virtual int docbook(Buffer const &, std::ostream &, bool) const = 0;
+	virtual int docbook(Buffer const &, std::ostream &,
+			    LatexRunParams const &) const = 0;
 
 	/// returns LyX code associated with the inset. Used for TOC, ...)
 	virtual InsetOld::Code lyxCode() const { return NO_CODE; }

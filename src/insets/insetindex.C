@@ -76,7 +76,8 @@ InsetIndex::priv_dispatch(FuncRequest const & cmd,
 }
 
 
-int InsetIndex::docbook(Buffer const &, ostream & os, bool) const
+int InsetIndex::docbook(Buffer const &, ostream & os,
+			LatexRunParams const &) const
 {
 	os << "<indexterm><primary>" << getContents()
 	   << "</primary></indexterm>";

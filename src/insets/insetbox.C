@@ -325,19 +325,22 @@ int InsetBox::latex(Buffer const & buf, ostream & os,
 }
 
 
-int InsetBox::linuxdoc(Buffer const & buf, std::ostream & os) const
+int InsetBox::linuxdoc(Buffer const & buf, std::ostream & os,
+		       LatexRunParams const & runparams) const
 {
-	return inset.linuxdoc(buf, os);
+	return inset.linuxdoc(buf, os, runparams);
 }
 
 
-int InsetBox::docbook(Buffer const & buf, std::ostream & os, bool mixcont) const
+int InsetBox::docbook(Buffer const & buf, std::ostream & os,
+		      LatexRunParams const & runparams) const
 {
-	return inset.docbook(buf, os, mixcont);
+	return inset.docbook(buf, os, runparams);
 }
 
 
-int InsetBox::ascii(Buffer const & buf, std::ostream & os, int ll) const
+int InsetBox::ascii(Buffer const & buf, std::ostream & os,
+		    LatexRunParams const & runparams) const
 {
 	int i = 0;
 	string const pt = params_.type;
@@ -362,7 +365,7 @@ int InsetBox::ascii(Buffer const & buf, std::ostream & os, int ll) const
 		break;
 	}
 
-	i = inset.ascii(buf, os, ll);
+	i = inset.ascii(buf, os, runparams);
 
 	switch (btype) {
 		case Frameless:

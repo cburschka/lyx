@@ -1124,6 +1124,7 @@ void reset(PAR_TAG & p1, PAR_TAG const & p2)
 void Paragraph::simpleLinuxDocOnePar(Buffer const & buf,
 				     ostream & os,
 				     LyXFont const & outerfont,
+				     LatexRunParams const & runparams,
 				     lyx::depth_type /*depth*/) const
 {
 	LyXLayout_ptr const & style = layout();
@@ -1266,7 +1267,7 @@ void Paragraph::simpleLinuxDocOnePar(Buffer const & buf,
 
 		if (c == Paragraph::META_INSET) {
 			InsetOld const * inset = getInset(i);
-			inset->linuxdoc(buf, os);
+			inset->linuxdoc(buf, os, runparams);
 			font_old = font;
 			continue;
 		}
@@ -1319,6 +1320,7 @@ void Paragraph::simpleDocBookOnePar(Buffer const & buf,
 				    ostream & os,
 				    LyXFont const & outerfont,
 				    int & desc_on,
+				    LatexRunParams const & runparams,
 				    lyx::depth_type depth) const
 {
 	bool emph_flag = false;
@@ -1361,7 +1363,7 @@ void Paragraph::simpleDocBookOnePar(Buffer const & buf,
 			if (i || desc_on != 3) {
 				if (style->latexparam() == "CDATA")
 					os << "]]>";
-				inset->docbook(buf, os, false);
+				inset->docbook(buf, os, runparams);
 				if (style->latexparam() == "CDATA")
 					os << "<![CDATA[";
 			}
@@ -1530,7 +1532,17 @@ bool Paragraph::isMultiLingual(BufferParams const & bparams)
 
 // Convert the paragraph to a string.
 // Used for building the table of contents
-string const Paragraph::asString(Buffer const & buffer, bool label) const
+string const Paragraph::asString(Buffer const & buffer,
+				 bool label) const
+{
+	LatexRunParams runparams;	
+	return asString(buffer, runparams, label);
+}
+
+
+string const Paragraph::asString(Buffer const & buffer,
+				 LatexRunParams const & runparams,
+				 bool label) const
 {
 #if 0
 	string s;
@@ -1544,7 +1556,7 @@ string const Paragraph::asString(Buffer const & buffer, bool label) const
 		else if (c == META_INSET &&
 			 getInset(i)->lyxCode() == InsetOld::MATH_CODE) {
 			ostringstream os;
-			getInset(i)->ascii(buffer, os);
+			getInset(i)->ascii(buffer, os, runparams);
 			s += subst(STRCONV(os.str()),'\n',' ');
 		}
 	}
@@ -1552,13 +1564,23 @@ string const Paragraph::asString(Buffer const & buffer, bool label) const
 	return s;
 #else
 	// This should really be done by the caller and not here.
-	string ret = asString(buffer, 0, size(), label);
+	string ret = asString(buffer, runparams, 0, size(), label);
 	return subst(ret, '\n', ' ');
 #endif
 }
 
 
 string const Paragraph::asString(Buffer const & buffer,
+				 pos_type beg, pos_type end, bool label) const
+{
+
+	LatexRunParams const runparams;
+	return asString(buffer, runparams, beg, end, label);
+}
+
+
+string const Paragraph::asString(Buffer const & buffer,
+				 LatexRunParams const & runparams,
 				 pos_type beg, pos_type end, bool label) const
 {
 	ostringstream os;
@@ -1571,7 +1593,7 @@ string const Paragraph::asString(Buffer const & buffer,
 		if (IsPrintable(c))
 			os << c;
 		else if (c == META_INSET)
-			getInset(i)->ascii(buffer, os);
+			getInset(i)->ascii(buffer, os, runparams);
 	}
 
 	return os.str();

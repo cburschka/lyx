@@ -98,14 +98,16 @@ int InsetRef::latex(Buffer const &, ostream & os,
 }
 
 
-int InsetRef::ascii(Buffer const &, ostream & os, int) const
+int InsetRef::ascii(Buffer const &, ostream & os,
+		    LatexRunParams const &) const
 {
 	os << '[' << getContents() << ']';
 	return 0;
 }
 
 
-int InsetRef::linuxdoc(Buffer const &, ostream & os) const
+int InsetRef::linuxdoc(Buffer const &, ostream & os,
+		       LatexRunParams const &) const
 {
 	os << "<ref id=\"" << getContents()
 	   << "\" name=\"" << getOptions() << "\" >";
@@ -113,7 +115,8 @@ int InsetRef::linuxdoc(Buffer const &, ostream & os) const
 }
 
 
-int InsetRef::docbook(Buffer const &, ostream & os, bool) const
+int InsetRef::docbook(Buffer const &, ostream & os,
+		      LatexRunParams const &) const
 {
 	if (getOptions().empty()) {
 		os << "<xref linkend=\"" << getContents() << "\">";

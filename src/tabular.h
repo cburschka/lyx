@@ -279,11 +279,15 @@ public:
 	int latex(Buffer const &, std::ostream &,
 		  LatexRunParams const &) const;
 	//
-	int linuxdoc(Buffer const & buf, std::ostream & os) const;
+	int linuxdoc(Buffer const & buf, std::ostream & os,
+		     LatexRunParams const &) const;
 	///
-	int docbook(Buffer const & buf, std::ostream & os, bool mixcont) const;
+	int docbook(Buffer const & buf, std::ostream & os,
+		    LatexRunParams const &) const;
 	///
-	int ascii(Buffer const &, std::ostream &, int const depth,
+	int ascii(Buffer const &, std::ostream &,
+		  LatexRunParams const & runparams,
+		  int const depth,
 		  bool onlydata, unsigned char delim) const;
 	///
 	bool isMultiColumn(int cell) const;
@@ -549,11 +553,13 @@ public:
 			     std::vector<unsigned int> const &) const;
 	///
 	int asciiPrintCell(Buffer const &, std::ostream &,
+			   LatexRunParams const &,
 			   int cell, int row, int column,
 			   std::vector<unsigned int> const &,
 					   bool onlydata) const;
 	/// auxiliary function for docbook
-	int docbookRow(Buffer const & buf, std::ostream & os, int row) const;
+	int docbookRow(Buffer const & buf, std::ostream & os, int,
+		       LatexRunParams const &) const;
 
 private:
 	/// renumber cells after structural changes

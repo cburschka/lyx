@@ -210,19 +210,19 @@ void MathInset::mathmlize(MathMLStream & os) const
 }
 
 
-int MathInset::ascii(std::ostream &, int) const
+int MathInset::ascii(std::ostream &, LatexRunParams const &) const
 {
 	return 0;
 }
 
 
-int MathInset::linuxdoc(std::ostream &) const
+int MathInset::linuxdoc(std::ostream &, LatexRunParams const &) const
 {
 	return 0;
 }
 
 
-int MathInset::docbook(std::ostream &, bool) const
+int MathInset::docbook(std::ostream &, LatexRunParams const &) const
 {
 	return 0;
 }

@@ -83,10 +83,22 @@ public:
 	bool isMultiLingual(BufferParams const &);
 
 	///
+	std::string const asString(Buffer const &,
+				   LatexRunParams const & runparams,
+				   bool label) const;
+	///
 	std::string const asString(Buffer const &, bool label) const;
 	///
-	std::string const asString(Buffer const &, lyx::pos_type beg, lyx::pos_type end,
-			      bool label) const;
+	std::string const Paragraph::asString(Buffer const & buffer,
+					      lyx::pos_type beg,
+					      lyx::pos_type end,
+					      bool label) const;	
+	///
+	std::string const asString(Buffer const &,
+				   LatexRunParams const & runparams,
+				   lyx::pos_type beg,
+				   lyx::pos_type end,
+				   bool label) const;
 
 	///
 	void write(Buffer const &, std::ostream &, BufferParams const &,
@@ -110,6 +122,7 @@ public:
 	void simpleLinuxDocOnePar(Buffer const & buf,
 				  std::ostream & os,
 				  LyXFont const & outerfont,
+				  LatexRunParams const & runparams,
 				  lyx::depth_type depth) const;
 
 	///
@@ -117,6 +130,7 @@ public:
 				 std::ostream &,
 				 LyXFont const & outerfont,
 				 int & desc_on,
+				 LatexRunParams const & runparams,
 				 lyx::depth_type depth) const;
 
 	///

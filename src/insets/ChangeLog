@@ -1,3 +1,37 @@
+2003-10-31  José Matos  <jamatos@lyx.org>
+
+	* inset.h (ascii, linuxdoc, docbook):
+	* insetbox.[Ch] (ascii, linuxdoc, docbook):
+	* insetbranch.[Ch] (ascii, linuxdoc, docbook):
+	* insetcaption.[Ch] (ascii, docbook):
+	* insetcollapsable.[Ch] (ascii, linuxdoc, docbook):
+	* insetcommand.[Ch] (ascii, linuxdoc, docbook):
+	* insetert.[Ch] (ascii, linuxdoc, docbook):
+	* insetexternal.[Ch] (ascii, linuxdoc, docbook):
+	* insetfloat.[Ch] (linuxdoc, docbook):
+	* insetfloatlist.[Ch] (ascii):
+	* insetfoot.[Ch] (docbook):
+	* insetgraphics.[Ch] (ascii, linuxdoc, docbook):
+	* insethfill.[Ch] (ascii, linuxdoc, docbook):
+	* insetinclude.[Ch] (ascii, linuxdoc, docbook):
+	* insetindex.[Ch] (docbook):
+	* insetlabel.[Ch] (ascii, linuxdoc, docbook):
+	* insetlatexaccent.[Ch] (ascii, linuxdoc, docbook):
+	* insetline.[Ch] (ascii, linuxdoc, docbook):
+	* insetnewline.[Ch] (ascii, linuxdoc, docbook):
+	* insetnote.[Ch] (ascii, linuxdoc, docbook):
+	* insetpagebreak.[Ch] (ascii, linuxdoc, docbook):
+	* insetquotes.[Ch] (ascii, linuxdoc, docbook):
+	* insetref.[Ch] (ascii, linuxdoc, docbook):
+	* insetspace.[Ch] (ascii, linuxdoc, docbook):
+	* insetspecialchar.[Ch] (ascii, linuxdoc, docbook):
+	* insetspecialchar.[Ch] (ascii, linuxdoc, docbook):
+	* insettext.[Ch] (ascii, linuxdoc, docbook):
+	* insettoc.[Ch] (ascii, linuxdoc, docbook):
+	* inseturl.[Ch] (ascii, linuxdoc, docbook):
+	* insetwrap.[Ch] (docbook):
+	add LatexRunParams argument.
+
 2003-10-30  José Matos  <jamatos@lyx.org>
 
 	* insettext.C (linuxdoc, docbook): use new pagraph generation code.

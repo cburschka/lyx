@@ -62,6 +62,7 @@ bool Exporter::Export(Buffer * buffer, string const & format,
 	string backend_format;
 	LatexRunParams runparams;
 	runparams.flavor = LatexRunParams::LATEX;
+	runparams.linelen = lyxrc.ascii_linelen;
 	vector<string> backends = Backends(*buffer);
 	if (find(backends.begin(), backends.end(), format) == backends.end()) {
 		for (vector<string>::const_iterator it = backends.begin();
@@ -92,13 +93,17 @@ bool Exporter::Export(Buffer * buffer, string const & format,
 
 	// Ascii backend
 	if (backend_format == "text")
-		buffer->writeFileAscii(filename, lyxrc.ascii_linelen);
+		buffer->writeFileAscii(filename, runparams);
 	// Linuxdoc backend
-	else if (buffer->isLinuxDoc())
-		buffer->makeLinuxDocFile(filename, !put_in_tempdir);
+	else if (buffer->isLinuxDoc()) {
+		runparams.nice = !put_in_tempdir;
+		buffer->makeLinuxDocFile(filename, runparams);
+	}
 	// Docbook backend
-	else if (buffer->isDocBook())
-		buffer->makeDocBookFile(filename, !put_in_tempdir);
+	else if (buffer->isDocBook()) {
+		runparams.nice = !put_in_tempdir;
+		buffer->makeDocBookFile(filename, runparams);
+	}
 	// LaTeX backend
 	else if (backend_format == format) {
 		runparams.nice = true;

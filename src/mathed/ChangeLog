@@ -1,3 +1,12 @@
+2003-10-31  José Matos  <jamatos@lyx.org>
+
+	* formula.[Ch] (ascii, linuxdoc, docbook):
+	* formulamacro.[Ch] (ascii, linuxdoc, docbook):
+	* math_inset.[Ch] (ascii, linuxdoc, docbook):
+	* math_inset.[Ch] (ascii, linuxdoc, docbook):
+	* ref_inset.[Ch] (ascii, linuxdoc, docbook):
+	add LatexRunParams argument.
+
 2003-10-29  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* math_scriptinset.C (priv_dispatch): 

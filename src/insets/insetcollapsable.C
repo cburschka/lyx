@@ -248,21 +248,24 @@ int InsetCollapsable::latex(Buffer const & buf, ostream & os,
 }
 
 
-int InsetCollapsable::ascii(Buffer const & buf, ostream & os, int ll) const
+int InsetCollapsable::ascii(Buffer const & buf, ostream & os,
+			    LatexRunParams const & runparams) const
 {
-	return inset.ascii(buf, os, ll);
+	return inset.ascii(buf, os, runparams);
 }
 
 
-int InsetCollapsable::linuxdoc(Buffer const & buf, ostream & os) const
+int InsetCollapsable::linuxdoc(Buffer const & buf, ostream & os,
+			       LatexRunParams const & runparams) const
 {
-	return inset.linuxdoc(buf, os);
+	return inset.linuxdoc(buf, os, runparams);
 }
 
 
-int InsetCollapsable::docbook(Buffer const & buf, ostream & os, bool mixcont) const
+int InsetCollapsable::docbook(Buffer const & buf, ostream & os,
+			      LatexRunParams const & runparams) const
 {
-	return inset.docbook(buf, os, mixcont);
+	return inset.docbook(buf, os, runparams);
 }
 
 
