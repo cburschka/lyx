@@ -37,7 +37,7 @@ and let the computer take care of the rest.
 unset LINGUAS || true
 ./configure --prefix=%{_prefix} --mandir=%{_mandir} \
 	--bindir=%{_bindir} --datadir=%{_datadir} \
-	--without-warnings --disable-debug --enable-optimizations=-O2
+	--without-warnings --disable-debug --enable-optimization=-O2
 make
 
 %install
