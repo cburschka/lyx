@@ -182,7 +182,7 @@ End
 
 # TOC_Title style definition
 Style TOC_Title
-  CopyStyle		Journal
+  CopyStyle		"Running LaTeX Title"
   LatexName		toctitle
   LeftMargin		"TOC title:xxx"
   LabelString		"TOC title: "
@@ -214,7 +214,7 @@ End
 
 # AuthorRunning style definition
 Style Author_Running
-  CopyStyle		Journal
+  CopyStyle		"Running LaTeX Title"
   LatexName		authorrunning
   LeftMargin		"Author Running:xxx"
   LabelString		"Author Running: "
@@ -222,7 +222,7 @@ End
 
 # TOC_Author style definition
 Style TOC_Author
-  CopyStyle		Journal
+  CopyStyle		"Running LaTeX Title"
   LatexName		tocauthor
   LeftMargin		"TOC Author :xxx"
   LabelString		"TOC Author: "
@@ -254,7 +254,7 @@ End
 #
 # Correspondence address style definition
 Style Mail
-  CopyStyle		Journal
+  CopyStyle		"Running LaTeX Title"
   LatexName		mail	
   LeftMargin		"Corr Author:xx."
   LabelString		"Corr Author: "

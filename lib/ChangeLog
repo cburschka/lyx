@@ -1,3 +1,11 @@
+2003-01-22  Michael Schmitt  <Michael.Schmitt@teststep.org>
+
+	* layouts/cv.layout:
+	* layouts/egs.layout: do not use Include but Input
+
+	* layouts/llncs.layout: do not CopyStyle Journal, which does not
+	exist. 
+
 2003-01-20  Michael Schmitt  <Michael.Schmitt@teststep.org>
 
 	* reLyX/reLyXmain.pl: fixes the problem where a directory has

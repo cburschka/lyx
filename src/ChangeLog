@@ -1,3 +1,14 @@
+2003-01-22  Michael Schmitt  <Michael.Schmitt@teststep.org>
+
+	* MenuBackend.C (expandFormats): List only viewable export formats
+	in "View" menu
+
+	* buffer.C (parseSingleLyXformat2Token): Fix misleading error
+	message 
+
+	* lyxfunc.C (getStatus): Make sure that formats other than
+	"fax" can be can also be disabled 
+
 2003-01-16  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* text3.C (dispatch): put the lfuns that insert insets in 3

@@ -621,13 +621,13 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 #if USE_BOOST_FORMAT
 			Alert::alert(_("Textclass error"),
 				boost::io::str(boost::format(_("The document uses an unknown textclass \"%1$s\".")) % lex.getString()),
-				_("LyX will not be able to produce output correctly."));
+				_("-- substituting default."));
 #else
 			Alert::alert(
 				_("Textclass error"),
 				_("The document uses an unknown textclass ")
 				+ lex.getString(),
-				_("LyX will not be able to produce output correctly."));
+				_("-- substituting default."));
 #endif
 			params.textclass = 0;
 		}
