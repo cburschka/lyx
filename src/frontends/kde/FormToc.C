@@ -3,7 +3,7 @@
  * (C) 2000 LyX Team
  * John Levon, moz@compsoc.man.ac.uk
  */
- 
+
 /***************************************************************************
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -16,25 +16,25 @@
 #include <config.h>
 
 #include <stack>
- 
+
 #include "formtocdialog.h"
- 
+
 #include "Dialogs.h"
 #include "FormToc.h"
 #include "gettext.h"
 #include "buffer.h"
 #include "support/lstrings.h"
 #include "QtLyXView.h"
-#include "lyxfunc.h" 
-#include "debug.h" 
+#include "lyxfunc.h"
+#include "debug.h"
 
 using std::vector;
 using std::pair;
 using std::stack;
- 
+
 FormToc::FormToc(LyXView *v, Dialogs *d)
 	: dialog_(0), lv_(v), d_(d), inset_(0), h_(0), u_(0), ih_(0),
-	toclist(0), type(Buffer::TOC_TOC)
+	toclist(0), type(Buffer::TOC_TOC), depth(1)
 {
 	// let the dialog be shown
 	// This is a permanent connection so we won't bother
@@ -60,17 +60,17 @@ void FormToc::showTOC(InsetCommand * const inset)
 	
 	show();
 }
- 
+
 void FormToc::createTOC(string const & arg)
 {
 	if (inset_)
 		close();
- 
+
 	params.setFromString(arg);
 	show();
 }
- 
-void FormToc::updateToc()
+
+void FormToc::updateToc(int newdepth)
 {
 	if (!lv_->view()->available()) {
 		toclist.clear();
@@ -82,49 +82,53 @@ void FormToc::updateToc()
 		lv_->view()->buffer()->getTocList();
 
 	// Check if all elements are the same.
-	if (toclist.size() == tmp[type].size()) {
+	if (newdepth==depth && toclist.size() == tmp[type].size()) {
 		unsigned int i = 0;
 		for (; i < toclist.size(); ++i) {
 			if (toclist[i] !=  tmp[type][i])
 				break;
 		}
-		if (i >= toclist.size()) 
+		if (i >= toclist.size())
 			return;
 	}
- 
+
+	depth=newdepth;
+
 	toclist = tmp[type];
 
 	dialog_->tree->clear();
+	if (toclist.empty()) 
+		return;
 
 	dialog_->tree->setUpdatesEnabled(false);
 
-	int depth = 0; 
+	int curdepth = 0;
 	stack< pair< QListViewItem *, QListViewItem *> > istack;
 	QListViewItem *last = 0;
 	QListViewItem *parent = 0;
 	QListViewItem *item;
- 
+
 	// Yes, it is this ugly. Two reasons - root items must have a QListView parent,
 	// rather than QListViewItem; and the TOC can move in and out an arbitrary number
 	// of levels
- 
+
 	for (vector< Buffer::TocItem >::const_iterator iter = toclist.begin();
 		iter != toclist.end(); ++iter) {
-		if (iter->depth == depth) {
+		if (iter->depth == curdepth) {
 			// insert it after the last one we processed
 			if (!parent)
 				item = (last) ? (new QListViewItem(dialog_->tree,last)) : (new QListViewItem(dialog_->tree));
 			else
 				item = (last) ? (new QListViewItem(parent,last)) : (new QListViewItem(parent));
-		} else if (iter->depth > depth) {
-			int diff = iter->depth - depth;
+		} else if (iter->depth > curdepth) {
+			int diff = iter->depth - curdepth;
 			// first save old parent and last
 			while (diff--)
 				istack.push(pair< QListViewItem *, QListViewItem * >(parent,last));
 			item = (last) ? (new QListViewItem(last)) : (new QListViewItem(dialog_->tree));
 			parent = last;
 		} else {
-			int diff = depth - iter->depth;
+			int diff = curdepth - iter->depth;
 			pair< QListViewItem *, QListViewItem * > top;
 			// restore context
 			while (diff--) {
@@ -139,65 +143,76 @@ void FormToc::updateToc()
 			else
 				item = (last) ? (new QListViewItem(parent,last)) : (new QListViewItem(parent));
 		}
-		lyxerr[Debug::GUI] << "Table of contents" << endl << "Added item " << iter->str.c_str() 
-			<< " at depth " << iter->depth << ", previous sibling \"" << (last ? last->text(0) : "0") 
+		lyxerr[Debug::GUI] << "Table of contents" << endl << "Added item " << iter->str.c_str()
+			<< " at depth " << iter->depth << ", previous sibling \"" << (last ? last->text(0) : "0")
 			<< "\", parent \"" << (parent ? parent->text(0) : "0") << "\"" << endl;
 		item->setText(0,iter->str.c_str());
-		depth = iter->depth;
+		item->setOpen(iter->depth < depth);
+		curdepth = iter->depth;
 		last = item;
 	}
 
 	dialog_->tree->setUpdatesEnabled(true);
 	dialog_->tree->update();
 }
- 
+
 void FormToc::setType(Buffer::TocType toctype)
 {
 	type = toctype;
 	switch (type) {
 		case Buffer::TOC_TOC:
 			dialog_->setCaption(_("Table of Contents"));
-			dialog_->tree->setColumnText(0,_("Table of Contents")); 
-			break; 
+			dialog_->tree->setColumnText(0,_("Table of Contents"));
+			dialog_->depth->setEnabled(true);
+			break;
 		case Buffer::TOC_LOF:
 			dialog_->setCaption(_("List of Figures"));
-			dialog_->tree->setColumnText(0,_("List of Figures")); 
-			break; 
+			dialog_->tree->setColumnText(0,_("List of Figures"));
+			dialog_->depth->setEnabled(false);
+			break;
 		case Buffer::TOC_LOT:
 			dialog_->setCaption(_("List of Tables"));
-			dialog_->tree->setColumnText(0,_("List of Tables")); 
-			break; 
+			dialog_->tree->setColumnText(0,_("List of Tables"));
+			dialog_->depth->setEnabled(false);
+			break;
 		case Buffer::TOC_LOA:
 			dialog_->setCaption(_("List of Algorithms"));
-			dialog_->tree->setColumnText(0,_("List of Algorithms")); 
-			break; 
+			dialog_->tree->setColumnText(0,_("List of Algorithms"));
+			dialog_->depth->setEnabled(false);
+			break;
 	}
 }
- 
+
+void FormToc::set_depth(int newdepth)
+{
+	if (newdepth!=depth)
+		updateToc(newdepth);
+}
+
 void FormToc::update()
 {
 	if (params.getCmdName()=="tableofcontents") {
 		setType(Buffer::TOC_TOC);
 		dialog_->menu->setCurrentItem(0);
 	} else if (params.getCmdName()=="listoffigures") {
-		setType(Buffer::TOC_LOF); 
-		dialog_->menu->setCurrentItem(1); 
+		setType(Buffer::TOC_LOF);
+		dialog_->menu->setCurrentItem(1);
 	} else if (params.getCmdName()=="listoftables") {
-		setType(Buffer::TOC_LOT); 
-		dialog_->menu->setCurrentItem(2); 
+		setType(Buffer::TOC_LOT);
+		dialog_->menu->setCurrentItem(2);
 	} else {
-		setType(Buffer::TOC_LOA); 
-		dialog_->menu->setCurrentItem(3); 
-	} 
+		setType(Buffer::TOC_LOA);
+		dialog_->menu->setCurrentItem(3);
+	}
 
-	updateToc();
+	updateToc(depth);
 }
- 
+
 void FormToc::select(const char *text)
 {
 	if (!lv_->view()->available())
 		return;
- 
+
 	vector <Buffer::TocItem>::const_iterator iter = toclist.begin();
 	for (; iter != toclist.end(); ++iter) {
 		if (iter->str==text)
@@ -211,21 +226,21 @@ void FormToc::select(const char *text)
 
 	lv_->getLyXFunc()->Dispatch(LFUN_GOTO_PARAGRAPH, tostr(iter->par->id()).c_str());
 }
- 
+
 void FormToc::set_type(Buffer::TocType toctype)
 {
 	if (toctype==type)
 		return;
 
 	setType(toctype);
-	updateToc();
+	updateToc(depth);
 }
- 
+
 void FormToc::show()
 {
 	if (!dialog_)
 		dialog_ = new FormTocDialog(this, 0, _("LyX: Table of Contents"), false);
- 
+
 	if (!dialog_->isVisible()) {
 		h_ = d_->hideBufferDependent.connect(slot(this, &FormToc::hide));
 		u_ = d_->updateBufferDependent.connect(slot(this, &FormToc::update));
@@ -233,7 +248,7 @@ void FormToc::show()
 
 	dialog_->raise();
 	dialog_->setActiveWindow();
- 
+
 	update();
 	dialog_->show();
 }
@@ -245,7 +260,7 @@ void FormToc::close()
 	ih_.disconnect();
 	inset_ = 0;
 }
- 
+
 void FormToc::hide()
 {
 	dialog_->hide();

@@ -73,8 +73,13 @@ private:
 
 private slots:
 	/// adaptor to FormRef::select
+	void select_adaptor(const char *sel) {
+		form_->select(sel);
+	}
+
+	/// adaptor to FormRef::highlight
 	void highlight_adaptor(const char *sel) {
-		form_->select(sel); 
+		form_->highlight(sel); 
 	}
 
 	/// adaptor to FormRef::set_sort
@@ -89,7 +94,7 @@ private slots:
  
 	/// adaptor to FormRef::update
 	void update_adaptor(void) {
-		form_->update();
+		form_->do_ref_update();
 	}
  
 	/// adaptor to FormRef::apply

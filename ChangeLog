@@ -1,3 +1,24 @@
+2000-09-15  John Levon  <moz@compsoc.man.ac.uk>
+
+	* acconfig.h
+	* configure.in: remove unused KDE/GTKGUI define
+
+	* src/frontends/kde/FormRef.C
+	* src/frontends/kde/FormRef.h
+	* src/frontends/kde/formrefdialog.C
+	* src/frontends/kde/formrefdialog.h: double click will
+	go to reference, now it is possible to change a cross-ref
+	after the fact
+
+	* src/frontends/kde/FormToc.C
+	* src/frontends/kde/FormToc.h
+	* src/frontends/kde/formtocdialog.C
+	* src/frontends/kde/formtocdialog.h: add a depth
+	slider
+
+	* src/frontends/kde/Makefile.am: add QtLyXView.h
+	to the sources list
+
 2000-09-15  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* src/frontends/kde/FormCitation.h: added some using directives.

@@ -156,6 +156,7 @@ FormRefDialog::FormRefDialog(FormRef *form, QWidget *parent, const char *name, b
 	// connections
 
 	connect(refs, SIGNAL(highlighted(const char *)), this, SLOT(highlight_adaptor(const char *))); 
+	connect(refs, SIGNAL(selected(const char *)), this, SLOT(select_adaptor(const char *)));
 	connect(sort, SIGNAL(toggled(bool)), this, SLOT(sort_adaptor(bool))); 
 	connect(buttonOk, SIGNAL(clicked()), this, SLOT(apply_adaptor()));
 	connect(buttonUpdate, SIGNAL(clicked()), this, SLOT(update_adaptor()));

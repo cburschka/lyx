@@ -66,10 +66,15 @@ void FormRef::createRef(string const & arg)
 
 void FormRef::select(const char *text)
 {
-	params.setContents(text);
-	lv_->getLyXFunc()->Dispatch(LFUN_REF_BACK);
-	gotowhere = GOTOREF;
-	dialog_->buttonGoto->setText(_("&Goto reference"));
+	highlight(text);
+	goto_ref();
+}
+
+void FormRef::highlight(const char *text)
+{
+	if (gotowhere==GOTOBACK)
+		goto_ref();
+
 	dialog_->buttonGoto->setEnabled(true);
 	if (!readonly) {
 		dialog_->type->setEnabled(true);
@@ -91,12 +96,12 @@ void FormRef::goto_ref()
 {
 	switch (gotowhere) {
 		case GOTOREF:
-			lv_->getLyXFunc()->Dispatch(LFUN_REF_GOTO, params.getContents().c_str());
+			lv_->getLyXFunc()->Dispatch(LFUN_REF_GOTO, dialog_->reference->text());
 			gotowhere=GOTOBACK;
 			dialog_->buttonGoto->setText(_("&Go back"));
 			break;
 		case GOTOBACK:
-			lv_->getLyXFunc()->Dispatch(LFUN_REF_BACK, params.getContents().c_str());
+			lv_->getLyXFunc()->Dispatch(LFUN_REF_BACK);
 			gotowhere=GOTOREF;
 			dialog_->buttonGoto->setText(_("&Goto reference"));
 			break;
@@ -105,8 +110,19 @@ void FormRef::goto_ref()
 
 void FormRef::updateRefs()
 {
+	// list will be re-done, should go back if necessary
+	if (gotowhere==GOTOBACK) {
+		lv_->getLyXFunc()->Dispatch(LFUN_REF_BACK);
+		gotowhere = GOTOREF;
+		dialog_->buttonGoto->setText(_("&Goto reference"));
+	}
+
 	dialog_->refs->setAutoUpdate(false);
- 
+
+	// need this because Qt will send a highlight() here for
+	// the first item inserted
+	string tmp(dialog_->reference->text());
+
 	for (vector< string >::const_iterator iter = refs.begin();
 		iter != refs.end(); ++iter) {
 		if (sort)
@@ -114,8 +130,26 @@ void FormRef::updateRefs()
 		else
 			dialog_->refs->insertItem(iter->c_str());
 	}
+
+	dialog_->reference->setText(tmp.c_str());
+
+	for (unsigned int i = 0; i < dialog_->refs->count(); ++i) {
+		if (!strcmp(dialog_->reference->text(),dialog_->refs->text(i)))
+			dialog_->refs->setCurrentItem(i);
+	}
+
 	dialog_->refs->setAutoUpdate(true);
 	dialog_->refs->update();
+}
+
+void FormRef::do_ref_update()
+{
+	refs.clear();
+	dialog_->refs->clear();
+	refs = lv_->buffer()->getLabelList();
+	if (!refs.empty())
+		dialog_->sort->setEnabled(true);
+	updateRefs();
 }
 
 void FormRef::update()
@@ -123,10 +157,7 @@ void FormRef::update()
 	dialog_->reference->setText(params.getContents().c_str());
 	dialog_->refname->setText(params.getOptions().c_str());
 
-	if (params.getCmdName()=="prettyref") {
-		type = PRETTYREF;
-		dialog_->type->setCurrentItem(4);
-	} else if (params.getCmdName()=="pageref") {
+	if (params.getCmdName()=="pageref") {
 		type = PAGEREF;
 		dialog_->type->setCurrentItem(1);
 	} else if (params.getCmdName()=="vref") {
@@ -135,6 +166,9 @@ void FormRef::update()
 	} else if (params.getCmdName()=="vpageref") {
 		type = VPAGEREF;
 		dialog_->type->setCurrentItem(3);
+	} else if (params.getCmdName()=="prettyref") {
+		type = PRETTYREF;
+		dialog_->type->setCurrentItem(4);
 	} else {
 		type = REF;
 		dialog_->type->setCurrentItem(0);
@@ -146,46 +180,20 @@ void FormRef::update()
 
 	dialog_->sort->setChecked(sort);
 
-	dialog_->refs->clear();
-	dialog_->type->setEnabled(false);
- 
-	if (inset_) {
-		// FIXME: should totally remove and re-size dialog,
-		// but doesn't seem easily possible
-		dialog_->refs->hide();
-		dialog_->labelrefs->hide();
-		dialog_->sort->hide();
-		dialog_->buttonUpdate->hide();
-		dialog_->buttonGoto->setEnabled(true); 
-	} else {
-		dialog_->refs->show();
-		dialog_->labelrefs->show();
-		dialog_->sort->show();
-		dialog_->buttonUpdate->show();
-		refs = lv_->buffer()->getLabelList();
-		if (!refs.empty())
-			dialog_->sort->setEnabled(true);
-		updateRefs();
-	}
-	
-	if (params.getContents()=="") {
-		dialog_->buttonGoto->setEnabled(false);
-		dialog_->buttonOk->setEnabled(false);
-	} else {
-		dialog_->buttonGoto->setEnabled(true);
-		dialog_->buttonOk->setEnabled(true);
-	}
+	do_ref_update();
 
-	if (readonly) {
-		dialog_->type->setEnabled(false);
-		dialog_->buttonOk->setEnabled(false);
-		dialog_->buttonUpdate->setEnabled(false);
+	dialog_->buttonGoto->setEnabled(params.getContents()!="");
+	dialog_->buttonOk->setEnabled(params.getContents()!="");
+
+	dialog_->type->setEnabled(!readonly);
+	dialog_->sort->setEnabled(!readonly);
+	dialog_->refs->setEnabled(!readonly);
+	dialog_->buttonOk->setEnabled(!readonly);
+	dialog_->buttonUpdate->setEnabled(!readonly);
+	if (readonly)
 		dialog_->buttonCancel->setText(_("&Close"));
-	} else {
-		dialog_->type->setEnabled(true);
-		dialog_->buttonUpdate->setEnabled(true);
+	else
 		dialog_->buttonCancel->setText(_("&Cancel"));
-	}
 }
 
 void FormRef::apply()
@@ -216,6 +224,7 @@ void FormRef::apply()
 			lyxerr[Debug::GUI] << "Unknown Ref Type" << endl;
 	}
 
+	params.setContents(dialog_->reference->text());
 	params.setOptions(dialog_->refname->text());
 
 	if (inset_ != 0) {

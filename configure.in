@@ -168,8 +168,7 @@ case "$lyx_use_frontend" in
     FRONTEND_GUILIB="\${top_builddir}/src/frontends/kde/libkde.la"
     FRONTEND_LDFLAGS="\$(QT_LDFLAGS) \$(KDE_LDFLAGS)"
     FRONTEND_INCLUDES="-I\${srcdir}/kde \$(QT_INCLUDES) \$(KDE_INCLUDES)"
-    FRONTEND_LIBS="\$(KDE_LIBS)"
-    AC_DEFINE(KDEGUI);;
+    FRONTEND_LIBS="\$(KDE_LIBS)";;
   xforms) 
   # for now don't set it for xforms as this is always entered
     FRONTEND=""
@@ -183,8 +182,7 @@ case "$lyx_use_frontend" in
     FRONTEND_GUILIB="\${top_builddir}/src/frontends/gnome/libgnome.la"
     FRONTEND_LDFLAGS="\$(GNOMEMM_LIBDIR)"
     FRONTEND_INCLUDES="-I\${srcdir}/gnome \$(GNOMEMM_INCLUDEDIR) \$(GTKMM_CFLAGS)"
-    FRONTEND_LIBS="\$(GNOMEMM_LIBS) \$(GTKMM_LIBS)"
-    AC_DEFINE(GTKGUI);;
+    FRONTEND_LIBS="\$(GNOMEMM_LIBS) \$(GTKMM_LIBS)";;
   *)
     LYX_ERROR(Unknown frontend $lyx_use_frontend);;
 esac

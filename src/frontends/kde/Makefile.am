@@ -39,6 +39,7 @@ ETAGS_ARGS = --lang=c++
 libkde_la_SOURCES = \
 	Dialogs.C \
 	GUIRunTime.C \
+	QtLyXView.h \
 	FormCopyright.C \
 	FormCopyright.h \
 	formcopyrightdialog.C \

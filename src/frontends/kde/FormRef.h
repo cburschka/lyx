@@ -34,14 +34,18 @@ public:
 	~FormRef();
 	//@}
 
-	/// select a ref
+	/// double-click a ref
 	void select(const char *);
+	/// highlight a ref
+	void highlight(const char *);
 	/// set sort
 	void set_sort(bool);
 	/// goto a ref (or back)
 	void goto_ref(); 
 	/// update dialog
 	void update(); 
+	/// update just the refs
+	void do_ref_update();
 	/// Apply changes
 	void apply();
 	/// close the connections

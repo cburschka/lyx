@@ -18,19 +18,19 @@
 #include "DialogBase.h"
 #include "LString.h"
 #include "support/utility.hpp"
-#include "insets/insetcommand.h" 
-#include "buffer.h" 
+#include "insets/insetcommand.h"
+#include "buffer.h"
 
 class Dialogs;
 class FormTocDialog;
 
 class FormToc : public DialogBase, public noncopyable {
-public: 
+public:
 	/**@name Constructors and Destructors */
 	//@{
 	///
 	FormToc(LyXView *, Dialogs *);
-	/// 
+	///
 	~FormToc();
 	//@}
 
@@ -40,10 +40,12 @@ public:
 	void set_type(Buffer::TocType);
 	/// Update the dialog.
 	void update();
+	/// change the depth shown
+	void set_depth(int);
 	/// close the connections
 	void close();
- 
-private: 
+
+private:
 	/// Create the dialog if necessary, update it and display it.
 	void show();
 	/// Hide the dialog.
@@ -53,21 +55,19 @@ private:
 	void createTOC(string const &);
 	/// view a Toc inset
 	void showTOC(InsetCommand * const);
-	 
-	/// hierarchical tree
-	int doTree(vector < Buffer::TocItem>::const_iterator & , int, int, int);
+	
 	/// update the Toc
-	void updateToc(void);
+	void updateToc(int);
 
 	/// set the type
 	void setType(Buffer::TocType);
- 
+
 	/// Real GUI implementation.
 	FormTocDialog * dialog_;
 
 	/// the LyXView we belong to
 	LyXView * lv_;
- 
+
 	/** Which Dialogs do we belong to?
 	    Used so we can get at the signals we have to connect to.
 	*/
@@ -89,6 +89,9 @@ private:
 
 	/// type currently being shown
 	Buffer::TocType type;
+
+	/// depth of list shown
+	int depth;
 };
 
 #endif
