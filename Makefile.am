@@ -16,3 +16,8 @@ dist-hook:
 	rm -rf `find development -name \*CVS\*` ; \
 	rm -rf `find forms -name \*CVS\*` ; \
 	rm -rf `find images -name \*CVS\*`
+
+rpmdist: dist
+	ln -s images/lyx.xpm . ; \
+	rpm -ta lyx-1.1.1.tar.gz ; \
+	rm lyx.xpm
