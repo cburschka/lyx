@@ -1,5 +1,9 @@
 2001-03-20  Angus Leeming  <a.leeming@ic.ac.uk>
 
+	* ControlCitation.C (getBibkeyInfo): parse non-BibTeX entries correctly.
+
+2001-03-20  Angus Leeming  <a.leeming@ic.ac.uk>
+
 	* ControlLog.[Ch]:
 	* ControlVCLog.[Ch]: new files; controllers for LaTeX and Version
 	Control log files, respectively.

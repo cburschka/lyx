@@ -89,23 +89,23 @@ string const ControlCitation::getBibkeyInfo(string const & key)
        	InfoMap::const_iterator it = bibkeysInfo_.find(key);
 	if (it != bibkeysInfo_.end()) {
 		// Search for all possible "required" keys
-		string author = parseBibTeX((*it).second, "author");
+		string author = parseBibTeX(it->second, "author");
 		if (author.empty())
-			author = parseBibTeX((*it).second, "editor");
+			author = parseBibTeX(it->second, "editor");
 
-		string year       = parseBibTeX((*it).second, "year");
-		string title      = parseBibTeX((*it).second, "title");
-		string booktitle  = parseBibTeX((*it).second, "booktitle");
-		string chapter    = parseBibTeX((*it).second, "chapter");
-		string pages      = parseBibTeX((*it).second, "pages");
+		string year       = parseBibTeX(it->second, "year");
+		string title      = parseBibTeX(it->second, "title");
+		string booktitle  = parseBibTeX(it->second, "booktitle");
+		string chapter    = parseBibTeX(it->second, "chapter");
+		string pages      = parseBibTeX(it->second, "pages");
 
-		string media      = parseBibTeX((*it).second, "journal");
+		string media      = parseBibTeX(it->second, "journal");
 		if (media.empty())
-			media = parseBibTeX((*it).second, "publisher");
+			media = parseBibTeX(it->second, "publisher");
 		if (media.empty())
-			media = parseBibTeX((*it).second, "school");
+			media = parseBibTeX(it->second, "school");
 		if (media.empty())
-			media = parseBibTeX((*it).second, "institution");
+			media = parseBibTeX(it->second, "institution");
 
 		result = author;
 		if (!year.empty())
@@ -120,6 +120,9 @@ string const ControlCitation::getBibkeyInfo(string const & key)
 			result += ", " + media;
 		if (!pages.empty())
 			result += ", pp. " + pages;
+
+		if (result.empty()) // not a BibTeX record
+			result = it->second;
 	}
 
 	return result;
