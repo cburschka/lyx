@@ -1,9 +1,6 @@
 #!/usr/bin/python
 import sys,string,re,os
 
-def is_prefix(a, b):
-    return a[:len(b)] == b
-
 def get_code(code, font):
     if code < 10:
 	return code+161
@@ -55,7 +52,7 @@ def process(file):
 	    
 	if mo != None and symbol not in ignore_list:
 	    mo2 = re.match(r'\s*\\def\\(.*?)\{', next_line)
-	    if mo2 != None and is_prefix(symbol,mo2.group(1)):
+	    if mo2 != None and symbol == mo2.group(1)+"op":
 		sys.stderr.write("%s -> %s\n" % (symbol, mo2.group(1)))
 		symbol = mo2.group(1)
 
@@ -96,10 +93,10 @@ for file in sys.argv[1:]:
     print
 
 exceptions = [
-    ("neq", "none", 0, 185, "mathrel"),
-    ("textdegree", "none", 0, 176, "mathord"),
-    ("cong", "none", 0, 64, "mathrel"),
-    ("surd", "note", 0, 214, "mathord")
+    ("neq", "x", 0, 185, "mathrel"),
+    ("textdegree", "x", 0, 176, "mathord"),
+    ("cong", "x", 0, 64, "mathrel"),
+    ("surd", "x", 0, 214, "mathord")
 ]
 
 if xsymbols.has_key("leq"):
