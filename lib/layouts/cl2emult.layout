@@ -1,0 +1,135 @@
+#% Do not delete the line below; configure depends on this
+#  \DeclareLaTeXClass{article (cl2emult)}
+# Springer's cl2emult textclass definition file. 
+# Author : André Poenitz
+
+# General textclass parameters
+Columns                   1
+Sides                     1
+SecNumDepth               2
+TocDepth                  2
+
+MaxCounter                Counter_Chapter
+
+DefaultStyle              Standard
+
+NoStyle                   Chapter
+NoStyle                   Chapter*
+NoStyle                   Part
+NoStyle                   Part*
+
+Input stdlists.inc
+Input stdsections.inc
+Input stdstarsections.inc
+Input stdstruct.inc
+Input lyxmacros.inc
+Input stdlayouts.inc
+Input obsolete.inc
+
+DefaultFont
+  Family                Roman
+  Series                Medium
+  Shape                 Up
+  Size                  Normal
+  Color                 None
+EndFont
+
+
+Style Title
+  Margin                First_Dynamic
+  LatexType             Command
+  InTitle               1
+  LatexName             title
+  ParSkip               0.0
+  ItemSep               0
+  TopSep                0
+  BottomSep             1
+  ParSep                1
+  Align                 Left
+  #LabelType             Counter_Chapter
+  LabelString           "0  "
+  LabelType             Static
+  Font                  
+    Size                Largest
+  EndFont               
+End                     
+                        
+                        
+Style Author            
+  Margin                Static
+  LatexType             Command
+  InTitle               1
+  LatexName             author
+  TopSep                1.3
+  BottomSep             0.7
+  ParSep                0.7
+  Align                 Left
+End                     
+                        
+                        
+Style Institute         
+  LatexType             Command
+  InTitle               1
+  LatexName             institute
+  TopSep                1.3
+  BottomSep             3.0
+  ParSep                1.7
+  Align                 Left
+End                     
+                        
+                        
+Style Abstract          
+  Margin                First_Dynamic
+  LeftMargin            ""
+  LatexType             Environment
+  LatexName             abstract
+  TopSep                1.7
+  BottomSep             0.7
+  ParSep                0.7
+  Align                 Block
+  AlignPossible         Block
+  LabelType             Static
+  LabelString           "Abstract  "
+  #LabelBottomSep       0.5
+  Font 
+    Size                Small
+  EndFont
+  LabelFont 
+    Series              Bold
+  EndFont
+End 
+
+
+# Bibliography style definition
+Style Bibliography
+  Margin                First_Dynamic
+  LatexType             Item_Environment
+  LatexName             thebibliography
+  NextNoIndent          1
+  LeftMargin            MM
+  ParSkip               0.4
+  ItemSep               0
+  TopSep                0.7
+  BottomSep             0.7
+  ParSep                0.5
+  Align                 Block
+  AlignPossible         Block, Left
+  LabelType             Bibliography
+  LabelString           References
+  LabelBottomSep        0.7
+  LabelFont 
+    Series              Bold
+    Size                Larger
+  EndFont
+End
+
+Style Standard
+  Margin                Static
+  LatexType             Paragraph
+  LatexName             dummy
+  ParIndent             ""
+  ParSkip               0.4
+  Align                 Block
+  AlignPossible         Block, Left, Right, Center
+  LabelType             No_Label
+End
