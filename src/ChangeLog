@@ -1,3 +1,13 @@
+2002-05-05  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* paragraph.C (isRightToLeftPar): Return false for a paragraph
+ 	inside insetERT.
+
+	* text.C (computeBidiTables): No bidi in insetERT.
+
+	* BufferView_pimpl.C (setState): Fix keymap handling inside insetERT
+ 	in RTL documents.
+
 2002-05-03  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* version.C.in: pre 5

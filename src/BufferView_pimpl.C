@@ -1390,7 +1390,10 @@ void BufferView::Pimpl::setState()
 		return;
 
 	LyXText * text = bv_->getLyXText();
-	if (text->real_current_font.isRightToLeft()) {
+	if (text->real_current_font.isRightToLeft()
+	    && !(bv_->theLockingInset()
+		 && bv_->theLockingInset()->lyxCode()== Inset::ERT_CODE))
+	{
 		if (owner_->getIntl()->keymap == Intl::PRIMARY)
 			owner_->getIntl()->KeyMapSec();
 	} else {

@@ -283,6 +283,13 @@ void LyXText::computeBidiTables(Buffer const * buf, Row * row) const
 		return;
 	}
 
+	Inset * inset = row->par()->inInset();
+	if (inset && inset->owner() &&
+	    inset->owner()->lyxCode() == Inset::ERT_CODE) {
+		bidi_start = -1;
+		return;
+	}
+
 	bidi_start = row->pos();
 	bidi_end = rowLastPrintable(row);
 
@@ -306,7 +313,7 @@ void LyXText::computeBidiTables(Buffer const * buf, Row * row) const
 
 	pos_type stack[2];
 	bool const rtl_par =
-		row->par()->getParLanguage(buf->params)->RightToLeft();
+		row->par()->isRightToLeftPar(buf->params);
 	int level = 0;
 	bool rtl = false;
 	bool rtl0 = false;

@@ -1984,7 +1984,9 @@ Paragraph::getParLanguage(BufferParams const & bparams) const
 bool Paragraph::isRightToLeftPar(BufferParams const & bparams) const
 {
 	return lyxrc.rtl_support
-		&& getParLanguage(bparams)->RightToLeft();
+		&& getParLanguage(bparams)->RightToLeft()
+		&& !(inInset() && inInset()->owner() &&
+		     inInset()->owner()->lyxCode() == Inset::ERT_CODE);
 }
 
 
