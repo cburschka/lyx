@@ -725,12 +725,6 @@ func_status::value_type LyXFunc::getStatus(int ac,
 		if (font.series() == LyXFont::BOLD_SERIES)
 			box = func_status::ToggleOn;
 		break;
-#ifndef NO_LATEX
-	case LFUN_TEX:
-		if (font.latex() == LyXFont::ON)
-			box = func_status::ToggleOn;
-		break;
-#endif
 	case LFUN_READ_ONLY_TOGGLE:
 		if (buf->isReadonly())
 			box = func_status::ToggleOn;
@@ -1158,14 +1152,6 @@ string const LyXFunc::dispatch(int ac,
 		owner->getDialogs()->setUserFreeFont();
 		break;
 
-#ifndef NO_LATEX
-	case LFUN_TEX:
-		Tex(owner->view());
-		owner->view()->setState();
-		owner->showState();
-		break;
-#endif
-		
 	case LFUN_RECONFIGURE:
 		Reconfigure(owner->view());
 		break;

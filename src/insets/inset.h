@@ -148,8 +148,10 @@ public:
 	/// update the inset representation
 	virtual void update(BufferView *, LyXFont const &, bool = false)
 		{}
+#if 0
 	///
 	virtual LyXFont const convertFont(LyXFont const & font) const;
+#endif
 	/// what appears in the minibuffer when opening
 	virtual string const editMessage() const;
 	///

@@ -143,10 +143,6 @@ character::FONT_STATE ControlCharacter::getBar() const
 
 		else if (font_->noun() != LyXFont::IGNORE)
 	    		return character::NOUN_TOGGLE;
-#ifndef NO_LATEX
-		else if (font_->latex() != LyXFont::IGNORE)
-	    		return character::LATEX_TOGGLE;
-#endif
 	}
 	return character::IGNORE;
 }
@@ -159,9 +155,6 @@ void ControlCharacter::setBar(character::FONT_STATE val)
 		font_->setEmph(LyXFont::IGNORE);
 		font_->setUnderbar(LyXFont::IGNORE);
 		font_->setNoun(LyXFont::IGNORE);
-#ifndef NO_LATEX
-		font_->setLatex(LyXFont::IGNORE);
-#endif
 		break;
 
 	case character::EMPH_TOGGLE:
@@ -176,19 +169,10 @@ void ControlCharacter::setBar(character::FONT_STATE val)
 		font_->setNoun(LyXFont::TOGGLE);
 		break;
 
-#ifndef NO_LATEX
-	case character::LATEX_TOGGLE:
-		font_->setLatex(LyXFont::TOGGLE);
-		break;
-#endif
-		
 	case character::INHERIT:
 		font_->setEmph(LyXFont::INHERIT);
 		font_->setUnderbar(LyXFont::INHERIT);
 		font_->setNoun(LyXFont::INHERIT);
-#ifndef NO_LATEX
-		font_->setLatex(LyXFont::INHERIT);
-#endif
 		break;
 	}
 }

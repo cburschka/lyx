@@ -49,6 +49,9 @@ struct Paragraph::Pimpl {
 	///
 	void erase(Paragraph::size_type pos);
 	///
+	LyXFont const realizeFont(LyXFont const & font,
+				  BufferParams const & bparams) const;
+	///
 	Inset * inset_owner;
 	///
 	boost::array<int, 10> counter_;

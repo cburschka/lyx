@@ -611,9 +611,10 @@ LyXFont const Paragraph::getFirstFontSettings() const
 // If position is -1, we get the layout font of the paragraph.
 // If position is -2, we get the font of the manual label of the paragraph.
 LyXFont const Paragraph::getFont(BufferParams const & bparams,
-			      Paragraph::size_type pos) const
+				 Paragraph::size_type pos) const
 {
-	LyXFont tmpfont;
+	lyx::Assert(pos >= 0);
+	
 	LyXLayout const & layout =
 		textclasslist.Style(bparams.textclass, 
 				    getLayout());
@@ -621,40 +622,41 @@ LyXFont const Paragraph::getFont(BufferParams const & bparams,
 	if (layout.labeltype == LABEL_MANUAL)
 		main_body = beginningOfMainBody();
 
-	if (pos >= 0) {
-		LyXFont layoutfont;
-		if (pos < main_body)
-			layoutfont = layout.labelfont;
-		else
-			layoutfont = layout.font;
-		tmpfont = getFontSettings(bparams, pos);
-		tmpfont.realize(layoutfont, bparams.language);
-	} else {
-		// process layoutfont for pos == -1 and labelfont for pos < -1
-		if (pos == -1)
-			tmpfont = layout.font;
-		else
-			tmpfont = layout.labelfont;
-		tmpfont.setLanguage(getParLanguage(bparams));
-	}
+	LyXFont layoutfont;
+	if (pos < main_body)
+		layoutfont = layout.labelfont;
+	else
+		layoutfont = layout.font;
+	
+	LyXFont tmpfont = getFontSettings(bparams, pos);
+	tmpfont.realize(layoutfont, bparams.language);
 
-	// check for environment font information
-	char par_depth = getDepth();
-	Paragraph const * par = this;
-	while (par && par->getDepth() && !tmpfont.resolved()) {
-		par = par->outerHook();
-		if (par) {
-			tmpfont.realize(textclasslist.
-					Style(bparams.textclass,
-					      par->getLayout()).font, bparams.language);
-			par_depth = par->getDepth();
-		}
-	}
+	return pimpl_->realizeFont(tmpfont, bparams);
+}
 
-	tmpfont.realize(textclasslist
-			.TextClass(bparams.textclass)
-			.defaultfont(), bparams.language);
-	return tmpfont;
+
+LyXFont const Paragraph::getLabelFont(BufferParams const & bparams) const
+{
+	LyXLayout const & layout =
+		textclasslist.Style(bparams.textclass, getLayout());
+	
+	LyXFont tmpfont = layout.labelfont;
+	tmpfont.setLanguage(getParLanguage(bparams));
+
+	return pimpl_->realizeFont(tmpfont, bparams);
+}
+
+
+LyXFont const Paragraph::getLayoutFont(BufferParams const & bparams) const
+{
+	LyXLayout const & layout =
+		textclasslist.Style(bparams.textclass, 
+				    getLayout());
+
+	LyXFont tmpfont = layout.font;
+	tmpfont.setLanguage(getParLanguage(bparams));
+
+	return pimpl_->realizeFont(tmpfont, bparams);
 }
 
 
@@ -662,7 +664,7 @@ LyXFont const Paragraph::getFont(BufferParams const & bparams,
 LyXFont::FONT_SIZE
 Paragraph::highestFontInRange(Paragraph::size_type startpos,
                               Paragraph::size_type endpos,
-							  LyXFont::FONT_SIZE const def_size) const
+			      LyXFont::FONT_SIZE const def_size) const
 {
 	if (pimpl_->fontlist.empty())
 		return def_size;
@@ -677,12 +679,12 @@ Paragraph::highestFontInRange(Paragraph::size_type startpos,
 		++end_it;
 
 	Pimpl::FontTable start_search(startpos, LyXFont());
-	for (Pimpl::FontList::const_iterator cit =
-			lower_bound(pimpl_->fontlist.begin(),
-			            pimpl_->fontlist.end(),
-			            start_search, Pimpl::matchFT());
-	     cit != end_it; ++cit)
-	{
+	Pimpl::FontList::const_iterator cit =
+		lower_bound(pimpl_->fontlist.begin(),
+			    pimpl_->fontlist.end(),
+			    start_search, Pimpl::matchFT());
+	
+	for (; cit != end_it; ++cit) {
 		LyXFont::FONT_SIZE size = cit->font().size();
 		if (size == LyXFont::INHERIT_SIZE)
 			size = def_size;
@@ -1274,8 +1276,7 @@ Paragraph * Paragraph::TeXOnePar(Buffer const * buf,
 	}
 
 	if (bparams.inputenc == "auto" &&
-	    language->encoding() != previous_language->encoding())
-	{
+	    language->encoding() != previous_language->encoding()) {
 		os << "\\inputencoding{"
 		   << language->encoding()->LatexName()
 		   << "}" << endl;
@@ -1312,7 +1313,10 @@ Paragraph * Paragraph::TeXOnePar(Buffer const * buf,
 	// Is this really needed ? (Dekel)
 	// We do not need to use to change the font for the last paragraph
 	// or for a command.
-	LyXFont font = getFont(bparams, size() - 1);
+	LyXFont const font =
+		(size() == 0
+		 ? getLayoutFont(bparams)
+		 : getFont(bparams, size() - 1));
 
 	bool is_command = textclasslist.Style(bparams.textclass,
 					      getLayout()).isCommand();
@@ -1362,8 +1366,7 @@ Paragraph * Paragraph::TeXOnePar(Buffer const * buf,
 	
 	further_blank_line = false;
 	if (params().lineBottom()) {
-		os << "\\lyxline{\\" << getFont(bparams,
-						size() - 1).latexSize() << '}';
+		os << "\\lyxline{\\" << font.latexSize() << '}';
 		further_blank_line = true;
 	}
 
@@ -1426,9 +1429,9 @@ bool Paragraph::simpleTeXOnePar(Buffer const * buf,
 	if (main_body > 0) {
 		os << '[';
 		++column;
-		basefont = getFont(bparams, -2); // Get label font
+		basefont = getLabelFont(bparams);
 	} else {
-		basefont = getFont(bparams, -1); // Get layout font
+		basefont = getLayoutFont(bparams);
 	}
 
 	if (main_body >= 0
@@ -1457,7 +1460,7 @@ bool Paragraph::simpleTeXOnePar(Buffer const * buf,
 					column += running_font.latexWriteEndChanges(os, basefont, basefont);
 					open_font = false;
 				}
-				basefont = getFont(bparams, -1); // Now use the layout font
+				basefont = getLayoutFont(bparams);
 				running_font = basefont;
 				os << ']';
 				++column;
@@ -1480,24 +1483,24 @@ bool Paragraph::simpleTeXOnePar(Buffer const * buf,
 			case LYX_ALIGN_LEFT:
 				if (getParLanguage(bparams)->babel() != "hebrew") {
 					os << "\\begin{flushleft}";
-					column+= 17;
+					column += 17;
 				} else {
 					os << "\\begin{flushright}";
-					column+= 18;
+					column += 18;
 				}
 				break;
 			case LYX_ALIGN_RIGHT:
 				if (getParLanguage(bparams)->babel() != "hebrew") {
 					os << "\\begin{flushright}";
-					column+= 18;
+					column += 18;
 				} else {
 					os << "\\begin{flushleft}";
-					column+= 17;
+					column += 17;
 				}
 				break;
 			case LYX_ALIGN_CENTER:
 				os << "\\begin{center}";
-				column+= 14;
+				column += 14;
 				break;
 			}	 
 		}
@@ -1507,18 +1510,21 @@ bool Paragraph::simpleTeXOnePar(Buffer const * buf,
 		// Fully instantiated font
 		LyXFont font = getFont(bparams, i);
 
-		LyXFont last_font = running_font;
+		LyXFont const last_font = running_font;
 
 		// Spaces at end of font change are simulated to be
 		// outside font change, i.e. we write "\textXX{text} "
 		// rather than "\textXX{text }". (Asger)
-		if (open_font && c == ' ' && i <= size() - 2 
-		    && !getFont(bparams, i + 1).equalExceptLatex(running_font) 
-		    && !getFont(bparams, i + 1).equalExceptLatex(font)) {
-			font = getFont(bparams, i + 1);
+		if (open_font && c == ' ' && i <= size() - 2) {
+			LyXFont const next_font = getFont(bparams, i + 1);
+			if (next_font != running_font
+			    && next_font != font) {
+				font = next_font;
+			}
 		}
+		
 		// We end font definition before blanks
-		if (!font.equalExceptLatex(running_font) && open_font) {
+		if (font != running_font && open_font) {
 			column += running_font.latexWriteEndChanges(os,
 								    basefont,
 								    (i == main_body-1) ? basefont : font);
@@ -1536,8 +1542,7 @@ bool Paragraph::simpleTeXOnePar(Buffer const * buf,
 		}
 
 		// Do we need to change font?
-		if (!font.equalExceptLatex(running_font)
-		    && i != main_body-1) {
+		if (font != running_font && i != main_body - 1) {
 			column += font.latexWriteStartChanges(os, basefont,
 							      last_font);
 			running_font = font;
@@ -1547,18 +1552,14 @@ bool Paragraph::simpleTeXOnePar(Buffer const * buf,
 		if (c == Paragraph::META_NEWLINE) {
 			// newlines are handled differently here than
 			// the default in SimpleTeXSpecialChars().
-			if (!style.newline_allowed
-#ifndef NO_LATEX
-			    || font.latex() == LyXFont::ON
-#endif
-				) {
+			if (!style.newline_allowed) {
 				os << '\n';
 			} else {
 				if (open_font) {
 					column += running_font.latexWriteEndChanges(os, basefont, basefont);
 					open_font = false;
 				}
-				basefont = getFont(bparams, -1);
+				basefont = getLayoutFont(bparams);
 				running_font = basefont;
 				if (font.family() == 
 				    LyXFont::TYPEWRITER_FAMILY) {

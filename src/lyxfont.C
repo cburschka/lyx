@@ -107,9 +107,6 @@ LyXFont::FontBits LyXFont::sane = {
 	SIZE_NORMAL,
 	LColor::none,
 	OFF,
-#ifndef NO_LATEX
-	OFF,
-#endif
 	OFF,
 	OFF,
 	OFF };
@@ -122,9 +119,6 @@ LyXFont::FontBits LyXFont::inherit = {
 	INHERIT_SIZE,
 	LColor::inherit,
 	INHERIT,
-#ifndef NO_LATEX
-	INHERIT,
-#endif
 	INHERIT,
 	INHERIT,
 	OFF };
@@ -137,9 +131,6 @@ LyXFont::FontBits LyXFont::ignore = {
 	IGNORE_SIZE,
 	LColor::ignore,
 	IGNORE,
-#ifndef NO_LATEX
-	IGNORE,
-#endif
 	IGNORE,
 	IGNORE,
 	IGNORE };
@@ -155,9 +146,6 @@ bool LyXFont::FontBits::operator==(LyXFont::FontBits const & fb1) const
 		fb1.emph == emph &&
 		fb1.underbar == underbar &&
 		fb1.noun == noun &&
-#ifndef NO_LATEX
-		fb1.latex == latex &&
-#endif
 		fb1.number == number;
 }
 
@@ -204,14 +192,6 @@ LyXFont::FONT_MISC_STATE LyXFont::underbar() const
 }
 
 
-#ifndef NO_LATEX
-LyXFont::FONT_MISC_STATE LyXFont::latex() const 
-{
-	return bits.latex;
-}
-#endif
-
-
 LColor::color LyXFont::color() const 
 {
 	return bits.color;
@@ -239,9 +219,6 @@ bool LyXFont::isRightToLeft() const
 bool LyXFont::isVisibleRightToLeft() const 
 {
 	return (lang->RightToLeft() &&
-#ifndef NO_LATEX
-		latex() != ON &&
-#endif
 		number() != ON);
 }
 
@@ -293,15 +270,6 @@ LyXFont & LyXFont::setNoun(LyXFont::FONT_MISC_STATE n)
 	bits.noun = n;
 	return *this;
 }
-
-
-#ifndef NO_LATEX
-LyXFont & LyXFont::setLatex(LyXFont::FONT_MISC_STATE l)
-{
-	bits.latex = l;
-	return *this;
-}
-#endif
 
 
 LyXFont & LyXFont::setColor(LColor::color c)
@@ -452,9 +420,6 @@ void LyXFont::update(LyXFont const & newfont, bool toggleall)
 	setEmph(setMisc(newfont.emph(), emph()));
 	setUnderbar(setMisc(newfont.underbar(), underbar()));
 	setNoun(setMisc(newfont.noun(), noun()));
-#ifndef NO_LATEX
-	setLatex(setMisc(newfont.latex(), latex()));
-#endif
 	
 	setNumber(setMisc(newfont.number(), number()));
 	if (newfont.language() == language() && toggleall)
@@ -486,10 +451,6 @@ void LyXFont::reduce(LyXFont const & tmplt)
 		setUnderbar(INHERIT);
 	if (noun() == tmplt.noun())
 		setNoun(INHERIT);
-#ifndef NO_LATEX
-	if (latex() == tmplt.latex())
-		setLatex(INHERIT);
-#endif
 	if (color() == tmplt.color())
 		setColor(LColor::inherit);
 	if (language() == tmplt.language())
@@ -536,11 +497,6 @@ LyXFont & LyXFont::realize(LyXFont const & tmplt, Language const * deflang)
 	if (bits.noun == INHERIT) {
 		bits.noun = tmplt.bits.noun;
 	}
-#ifndef NO_LATEX
-	if (bits.latex == INHERIT) {
-		bits.latex = tmplt.bits.latex;
-	}
-#endif
 	if (bits.color == LColor::inherit) {
 		bits.color = tmplt.bits.color;
 	}
@@ -555,9 +511,6 @@ bool LyXFont::resolved() const
 		shape() != INHERIT_SHAPE && size() != INHERIT_SIZE &&
 		emph() != INHERIT && underbar() != INHERIT && 
 		noun() != INHERIT &&
-#ifndef NO_LATEX
-		latex() != INHERIT &&
-#endif
 		color() != LColor::inherit &&
 		language() != inherit_language);
 }
@@ -585,10 +538,6 @@ string const LyXFont::stateText(BufferParams * params) const
 		    << _(GUIMiscNames[underbar()]) << ", ";
 	if (noun() != INHERIT)
 		ost << _("Noun ") << _(GUIMiscNames[noun()]) << ", ";
-#ifndef NO_LATEX
-	if (latex() != INHERIT)
-		ost << _("Latex ") << _(GUIMiscNames[latex()]) << ", ";
-#endif
 	if (bits == inherit)
 		ost << _("Default") << ", ";
 	if (!params || (language() != params->language))
@@ -725,19 +674,6 @@ LyXFont & LyXFont::lyxRead(LyXLex & lex)
 			lex.next();
 			string const ttok = lex.GetString();
 			setLyXSize(ttok);
-#ifndef NO_LATEX
-		} else if (tok == "latex") {
-			lex.next();
-			string const ttok = lowercase(lex.GetString());
-
-			if (ttok == "no_latex") {
-				setLatex(OFF);
-			} else if (ttok == "latex") {
-				setLatex(ON);
-			} else {
-				lex.printError("Illegal LaTeX type`$$Token'");
-			}
-#endif
 		} else if (tok == "misc") {
 			lex.next();
 			string const ttok = lowercase(lex.GetString());
@@ -812,24 +748,6 @@ void LyXFont::lyxWriteChanges(LyXFont const & orgfont,
 	if (orgfont.noun() != noun()) {
 		os << "\\noun " << LyXMiscNames[noun()] << " \n";
 	}
-#ifndef NO_LATEX
-	if (orgfont.latex() != latex()) {
-		// This is only for backwards compatibility
-		switch (latex()) {
-		case OFF:	os << "\\latex no_latex \n"; break;
-		case ON:        os << "\\latex latex \n"; break;
-		case TOGGLE:	lyxerr << "LyXFont::lyxWriteFontChanges: "
-					"TOGGLE should not appear here!"
-				       << endl;
-		break;
-		case INHERIT:   os << "\\latex default \n"; break;
-		case IGNORE:    lyxerr << "LyXFont::lyxWriteFontChanges: "
-					"IGNORE should not appear here!"
-				       << endl;
-		break;
-		}
-	}
-#endif
 	if (orgfont.color() != color()) {
 		// To make us file compatible with older
 		// lyx versions we emit "default" instead
@@ -1020,10 +938,6 @@ int LyXFont::latexWriteEndChanges(ostream & os, LyXFont const & base,
 
 LColor::color LyXFont::realColor() const
 {
-#ifndef NO_LATEX
-	if (latex() == ON)
-		return LColor::latex;
-#endif
 	if (color() == LColor::none)
 		return LColor::foreground;
 	return color();
@@ -1044,16 +958,6 @@ LyXFont::FONT_SHAPE LyXFont::realShape() const
 	if (noun() == ON)
 		s = SMALLCAPS_SHAPE;
 	return s;
-}
-
-
-bool LyXFont::equalExceptLatex(LyXFont const & f) const 
-{
-	LyXFont f1 = *this;
-#ifndef NO_LATEX
-	f1.setLatex(f.latex());
-#endif
-	return f1 == f;
 }
 
 

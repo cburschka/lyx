@@ -12,9 +12,6 @@
 
 #include <iosfwd>
 
-// this will not be needed anymore when NO_LATEX is the default.
-#include "lyxfont.h"
-
 /** These are all the lyxfunctions (as enums).
     Please add new functions at the end of the enum, right
     before LFUN_LASTACTION.
@@ -53,9 +50,6 @@ enum kb_action {
 	LFUN_HFILL,
 	LFUN_DEPTH,
 	LFUN_FREE,     // 30
-#ifndef NO_LATEX
-	LFUN_TEX,
-#endif
 #if 0
 	LFUN_FOOTMELT, // schedule for deletion
 	LFUN_MARGINMELT, // schedule for deletion
@@ -125,7 +119,6 @@ enum kb_action {
 	LFUN_LINEATCURSOR,
 	LFUN_GETLAYOUT,
 	LFUN_GETFONT,
-	LFUN_GETLATEX,
 	LFUN_GETNAME, // 100
 	LFUN_NOTIFY,
         LFUN_GOTOFILEROW,   // Edmar 12/23/98

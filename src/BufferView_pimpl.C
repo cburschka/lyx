@@ -889,7 +889,7 @@ Inset * BufferView::Pimpl::checkInsetHit(LyXText * text, int & x, int & y,
 	    (cursor.par()->getInset(cursor.pos() - 1)->editable())) {
 		Inset * tmpinset = cursor.par()->getInset(cursor.pos()-1);
 		LyXFont font = text->getFont(buffer_, cursor.par(),
-						  cursor.pos()-1);
+						  cursor.pos() - 1);
 		int const width = tmpinset->width(bv_, font);
 		int const inset_x = font.isVisibleRightToLeft()
 			? cursor.x() : cursor.x() - width;
@@ -1215,12 +1215,7 @@ void BufferView::Pimpl::setState()
 		return;
 
 	LyXText * text = bv_->getLyXText();
-	if (text->real_current_font.isRightToLeft()
-#ifndef NO_LATEX
-	    &&
-	    text->real_current_font.latex() != LyXFont::ON
-#endif
-		) {
+	if (text->real_current_font.isRightToLeft()) {
 		if (owner_->getIntl()->keymap == Intl::PRIMARY)
 			owner_->getIntl()->KeyMapSec();
 	} else {
@@ -1602,14 +1597,6 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		owner_->getDialogs()->setUserFreeFont();
 		break;
 
-#ifndef NO_LATEX
-	case LFUN_TEX:
-		Tex(bv_);
-		setState();
-		owner_->showState();
-		break;
-#endif
-		
 	case LFUN_FILE_INSERT:
 	{
 		MenuInsertLyXFile(argument);
@@ -2863,18 +2850,6 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 	}
 	break;
 
-	case LFUN_GETLATEX:
-	{
-#ifndef NO_LATEX
-		LyXFont & font = bv_->getLyXText()->current_font;
-                if (font.latex() == LyXFont::ON)
-			owner_->getLyXFunc()->setMessage("L");
-                else
-#endif
-			owner_->getLyXFunc()->setMessage("0");
-	}
-	break;
-
 	// --- accented characters ---------------------------
 		
 	case LFUN_UMLAUT:
@@ -3366,9 +3341,6 @@ bool BufferView::Pimpl::insertInset(Inset * inset, string const & lout)
 				   string(),
 				   0);
 		update(bv_->text, BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
-#ifndef NO_LATEX
-		bv_->text->current_font.setLatex(LyXFont::OFF);
-#endif
 	}
 	
 	bv_->text->insertInset(bv_, inset);

@@ -201,11 +201,10 @@ void LyXView::updateLayoutChoice()
 		toolbar->updateLayoutList(true);
 		last_textclass = int(buffer()->params.textclass);
 		current_layout = 0;
-	} else
+	} else {
 		toolbar->updateLayoutList(false);
-
+	}
 	
-
 	LyXTextClass::size_type layout =
 		bufferview->text->cursor.par()->getLayout();
 

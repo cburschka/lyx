@@ -252,6 +252,8 @@ public:
 	    LyXFont::TOGGLE.
 	*/
 	LyXFont const getFont(BufferParams const &, size_type pos) const;
+	LyXFont const getLayoutFont(BufferParams const &) const;
+	LyXFont const getLabelFont(BufferParams const &) const;
 	///
 	value_type getChar(size_type pos) const;
 	///

@@ -357,7 +357,6 @@ void LyXAction::init()
 		{ LFUN_SELFINSERT, "self-insert", "", Noop },
 		{ LFUN_CHARATCURSOR, "server-char-after", "", ReadOnly },
 		{ LFUN_GETFONT, "server-get-font", "", ReadOnly },
-		{ LFUN_GETLATEX, "server-get-latex", "", ReadOnly },
 		{ LFUN_GETLAYOUT, "server-get-layout", "", ReadOnly },
 		{ LFUN_GETNAME, "server-get-name", "", ReadOnly },
 		{ LFUN_GETTIP, "server-get-tip", "", ReadOnly },
@@ -376,9 +375,6 @@ void LyXAction::init()
 		  N_("Tabular Features"), Noop },
 		{ LFUN_INSET_TABULAR, "tabular-insert",
 		  N_("Insert a new Tabular Inset"), Noop },
-#ifndef NO_LATEX
-		{ LFUN_TEX, "tex-mode", N_("Toggle TeX style"), Noop },
-#endif
 		{ LFUN_INSET_TEXT, "text-insert",
 		  N_("Insert a new Text Inset"), Noop },
 #if 0

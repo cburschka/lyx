@@ -80,8 +80,10 @@ public:
 	int width(BufferView *, LyXFont const &) const;
 	///
 	void draw(BufferView *, LyXFont const &, int, float &, bool) const;
+#if 0
 	///
 	LyXFont const convertFont(LyXFont const & font) const;
+#endif
 	///
 	void write(Buffer const *, std::ostream &) const;
 	///

@@ -72,16 +72,6 @@ void lang(BufferView * bv, string const & l)
 }
 
 
-#ifndef NO_LATEX
-void tex(BufferView * bv)
-{
-	LyXFont font(LyXFont::ALL_IGNORE);
-	font.setLatex (LyXFont::TOGGLE);
-	toggleAndShow(bv, font);
-}
-#endif
-
-
 // Change environment depth.
 // if decInc >= 0, increment depth
 // if decInc <  0, decrement depth
@@ -229,9 +219,6 @@ void toggleAndShow(BufferView * bv, LyXFont const & font, bool toggleall)
 		bv->update(text, BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 
 		if (font.language() != ignore_language ||
-#ifndef NO_LATEX
-		    font.latex() != LyXFont::IGNORE ||
-#endif
 		    font.number() != LyXFont::IGNORE)
 		{
 			LyXCursor & cursor = text->cursor;

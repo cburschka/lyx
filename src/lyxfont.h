@@ -26,8 +26,6 @@ class LyXLex;
 class BufferParams;
 
 
-#define NO_LATEX 1
-
 ///
 class LyXFont {
 public:
@@ -188,10 +186,6 @@ public:
 	///
 	FONT_MISC_STATE noun() const;
 
-#ifndef NO_LATEX
-	///
-	FONT_MISC_STATE latex() const;
-#endif
 	///
 	FONT_MISC_STATE number() const;
 
@@ -221,10 +215,6 @@ public:
 	LyXFont & setUnderbar(LyXFont::FONT_MISC_STATE u);
 	///
 	LyXFont & setNoun(LyXFont::FONT_MISC_STATE n);
-#ifndef NO_LATEX
-	///
-	LyXFont & setLatex(LyXFont::FONT_MISC_STATE l);
-#endif
 	///
 	LyXFont & setNumber(LyXFont::FONT_MISC_STATE n);
 	///
@@ -306,9 +296,6 @@ public:
 	friend
 	bool operator==(LyXFont const & font1, LyXFont const & font2);
 
-	/// compares two fonts, ignoring the setting of the Latex part.
-	bool equalExceptLatex(LyXFont const &) const;
-
 	/// Converts logical attributes to concrete shape attribute
 	LyXFont::FONT_SHAPE realShape() const;
 private:
@@ -334,10 +321,6 @@ private:
 		FONT_MISC_STATE underbar;
 		///
 		FONT_MISC_STATE noun;
-#ifndef NO_LATEX
-		///
-		FONT_MISC_STATE latex;
-#endif
 		///
 		FONT_MISC_STATE number;
 	};

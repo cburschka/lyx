@@ -96,6 +96,10 @@ public:
 	LyXFont const getFont(Buffer const *, Paragraph * par,
 			Paragraph::size_type pos) const;
 	///
+	LyXFont const getLayoutFont(Buffer const *, Paragraph * par) const;
+	///
+	LyXFont const getLabelFont(Buffer const *, Paragraph * par) const;
+	///
 	void setCharFont(Buffer const *, Paragraph * par,
 	                 Paragraph::size_type pos, LyXFont const & font);
 	void setCharFont(BufferView *, Paragraph * par,

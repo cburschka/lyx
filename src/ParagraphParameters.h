@@ -10,14 +10,15 @@
 #include "ShareContainer.h"
 #include "LString.h"
 #include "layout.h"
+
+// Not yet... lyx 1.3.x or so
+//#define NO_PEXTRA_REALLY 1
+
 #include "ParameterStruct.h"
 
 class VSpace;
 class Spacing;
 
-
-// Not yet... lyx 1.3.x or so
-//#define NO_PEXTRA_REALLY 1
 
 ///
 class ParagraphParameters {

@@ -285,6 +285,7 @@ namespace {
 
 string last_inset_read;
 
+#ifndef NO_COMPABILITY
 struct ErtComp 
 {
 	ErtComp() : active(false), in_tabular(false) {
@@ -296,11 +297,12 @@ struct ErtComp
 
 std::stack<ErtComp> ert_stack;
 ErtComp ert_comp;
-
+#endif
 
 } // anon
 
 
+#warning And _why_ is this here? (Lgb)
 int unknown_layouts;
 
 // candidate for move to BufferView
@@ -314,12 +316,11 @@ int unknown_layouts;
 bool Buffer::readLyXformat2(LyXLex & lex, Paragraph * par)
 {
 	unknown_layouts = 0;
-#ifdef NO_LATEX
+#ifndef NO_COMPABILITY
 	ert_comp.contents.erase();
 	ert_comp.active = false;
 	ert_comp.in_tabular = false;
 #endif
-	
 	int pos = 0;
 	Paragraph::depth_type depth = 0; 
 	bool the_end_read = false;
@@ -385,6 +386,7 @@ bool Buffer::readLyXformat2(LyXLex & lex, Paragraph * par)
 }
 
 
+#ifndef NO_COMPABILITY
 void Buffer::insertErtContents(Paragraph * par, int & pos,
 			       LyXFont const & font, bool set_inactive) 
 {
@@ -399,6 +401,7 @@ void Buffer::insertErtContents(Paragraph * par, int & pos,
 		ert_comp.active = false;
 	}
 }
+#endif
 
 
 bool
@@ -410,6 +413,7 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 	)
 {
 	bool the_end_read = false;
+#ifndef NO_COMPABILITY
 #ifndef NO_PEXTRA_REALLY
 	// This is super temporary but is needed to get the compability
 	// mode for minipages work correctly together with new tabulars.
@@ -419,9 +423,9 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 	static Paragraph * minipar;
 	static Paragraph * parBeforeMinipage;
 #endif
-	
+#endif
 	if (token[0] != '\\') {
-#ifdef NO_LATEX
+#ifndef NO_COMPABILITY
 		if (ert_comp.active) {
 			ert_comp.contents += token;
 		} else {
@@ -431,7 +435,7 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 			par->insertChar(pos, (*cit), font);
 			++pos;
 		}
-#ifdef NO_LATEX
+#ifndef NO_COMPABILITY
 		}
 #endif
 	} else if (token == "\\i") {
@@ -440,7 +444,7 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 		par->insertInset(pos, inset, font);
 		++pos;
 	} else if (token == "\\layout") {
-#ifdef NO_LATEX
+#ifndef NO_COMPABILITY
 		ert_comp.in_tabular = false;
 		// Do the insetert.
 		insertErtContents(par, pos, font);
@@ -451,7 +455,7 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
                         = textclasslist.NumberOfLayout(params.textclass,
                                                        layoutname);
 
-#ifdef NO_LATEX
+#ifndef NO_COMPABILITY
 		if (compare_no_case(layoutname, "latex") == 0) {
 			ert_comp.active = true;
 		}
@@ -546,6 +550,7 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
                 }
 #endif
 
+#ifndef NO_COMPABILITY
 	} else if (token == "\\begin_float") {
 		insertErtContents(par, pos, font);
 		//insertErtContents(par, pos, font, false);
@@ -634,6 +639,7 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 		par->insertInset(pos, inset, font);
 		++pos;
 		insertErtContents(par, pos, font);
+#endif
 	} else if (token == "\\begin_deeper") {
 		++depth;
 	} else if (token == "\\end_deeper") {
@@ -932,24 +938,7 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 	} else if (token == "\\size") {
 		lex.next();
 		font.setLyXSize(lex.GetString());
-#ifndef NO_LATEX
-#ifdef WITH_WARNINGS
-#warning compatability hack needed
-#endif
-	} else if (token == "\\latex") {
-		lex.next();
-		string const tok = lex.GetString();
-		// This is dirty, but gone with LyX3. (Asger)
-		if (tok == "no_latex")
-			font.setLatex(LyXFont::OFF);
-		else if (tok == "latex")
-			font.setLatex(LyXFont::ON);
-		else if (tok == "default")
-			font.setLatex(LyXFont::INHERIT);
-		else
-			lex.printError("Unknown LaTeX font flag "
-				       "`$$Token'");
-#else
+#ifndef NO_COMPABILITY
 	} else if (token == "\\latex") {
 		lex.next();
 		string const tok = lex.GetString();
@@ -1015,6 +1004,7 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 	} else if (token == "\\added_space_bottom") {
 		lex.nextToken();
 		par->params().spaceBottom(VSpace(lex.GetString()));
+#ifndef NO_COMPABILITY
 #ifndef NO_PEXTRA_REALLY
 	} else if (token == "\\pextra_type") {
 		lex.nextToken();
@@ -1035,6 +1025,7 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 		lex.nextToken();
 		par->params().pextraStartMinipage(lex.GetInteger());
 #endif
+#endif
 	} else if (token == "\\labelwidthstring") {
 		lex.EatLine();
 		par->params().labelWidthString(lex.GetString());
@@ -1048,13 +1039,13 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 		// But insets should read it, it is a part of
 		// the inset isn't it? Lgb.
 	} else if (token == "\\begin_inset") {
-#ifdef NO_LATEX
+#ifndef NO_COMPABILITY
 		insertErtContents(par, pos, font, false);
 		ert_stack.push(ert_comp);
 		ert_comp = ErtComp();
 #endif
 		readInset(lex, par, pos, font);
-#ifdef NO_LATEX
+#ifndef NO_COMPABILITY
 		ert_comp = ert_stack.top();
 		ert_stack.pop();
 		insertErtContents(par, pos, font);
@@ -1088,8 +1079,7 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 		}
 		++pos;
 	} else if (token == "\\newline") {
-#ifdef NO_LATEX
-
+#ifndef NO_COMPABILITY
 		if (!ert_comp.in_tabular && ert_comp.active) {
 			ert_comp.contents += char(Paragraph::META_NEWLINE);
 		} else {
@@ -1106,7 +1096,7 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 		++pos;
 #endif
 	} else if (token == "\\LyXTable") {
-#ifdef NO_LATEX
+#ifndef NO_COMPABILITY
 		ert_comp.in_tabular = true;
 #endif
 		Inset * inset = new InsetTabular(*this);
@@ -1138,28 +1128,30 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 		}
 		par->bibkey->read(this, lex);		        
 	} else if (token == "\\backslash") {
-#ifdef NO_LATEX
+#ifndef NO_COMPABILITY
 		if (ert_comp.active) {
 			ert_comp.contents += "\\";
 		} else {
 #endif
 		par->insertChar(pos, '\\', font);
 		++pos;
-#ifdef NO_LATEX
+#ifndef NO_COMPABILITY
 		}
 #endif
 	} else if (token == "\\the_end") {
-#ifdef NO_LATEX
+#ifndef NO_COMPABILITY
 		// If we still have some ert active here we have to insert
 		// it so we don't loose it. (Lgb)
 		insertErtContents(par, pos, font);
 #endif
 		the_end_read = true;
+#ifndef NO_COMPABILITY
 #ifndef NO_PEXTRA_REALLY
 		minipar = parBeforeMinipage = 0;
 #endif
+#endif
 	} else {
-#ifdef NO_LATEX
+#ifndef NO_COMPABILITY
 		if (ert_comp.active) {
 			ert_comp.contents += token;
 		} else {
@@ -1173,11 +1165,12 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 			par->insertChar(pos, (*cit), font);
 			++pos;
 		}
-#ifdef NO_LATEX
+#ifndef NO_COMPABILITY
 		}
 #endif
 	}
 
+#ifndef NO_COMPABILITY
 #ifndef NO_PEXTRA_REALLY
 	// I wonder if we could use this blanket fix for all the
 	// checkminipage cases...
@@ -1330,6 +1323,7 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 	}
 	// End of pextra_minipage compability
 	--call_depth;
+#endif
 #endif
 	return the_end_read;
 }
@@ -1805,9 +1799,6 @@ string const Buffer::asciiParagraph(Paragraph const * par,
 		lyxerr << "Should this ever happen?" << endl;
 	}
 
-#ifndef NO_LATEX
-	LyXFont const font1 = LyXFont(LyXFont::ALL_INHERIT, params.language);
-#endif
 	for (Paragraph::size_type i = 0; i < par->size(); ++i) {
 		if (!i && !noparbreak) {
 			if (linelen > 0)
@@ -1846,17 +1837,6 @@ string const Buffer::asciiParagraph(Paragraph const * par,
 				currlinelen += (ltype_depth-depth)*2;
 			}
 		}
-#ifndef NO_LATEX
-		LyXFont const font2 = par->getFontSettings(params, i);
-		if (font1.latex() != font2.latex()) {
-			if (font2.latex() == LyXFont::OFF)
-				islatex = 0;
-			else
-				islatex = 1;
-		} else {
-			islatex = 0;
-		}
-#endif
 		
 		char c = par->getUChar(params, i);
 		if (islatex)
@@ -2960,11 +2940,7 @@ void Buffer::simpleLinuxDocOnePar(ostream & os,
 			continue;
 		}
 
-		if (
-#ifndef NO_LATEX
-			font.latex() == LyXFont::ON ||
-#endif
-		    style.latexparam() == "CDATA") {
+		if (style.latexparam() == "CDATA") {
 			// "TeX"-Mode on == > SGML-Mode on.
 			if (c != '\0')
 				os << c;
@@ -3377,13 +3353,6 @@ void Buffer::simpleDocBookOnePar(ostream & os, string & extra,
 				else
 					os << tmp_out;
 			}
-#ifndef NO_LATEX
-		} else if (font.latex() == LyXFont::ON) {
-			// "TeX"-Mode on ==> SGML-Mode on.
-			if (c != '\0')
-				os << c;
-			++char_line_count;
-#endif
 		} else {
 			string sgml_string;
 			if (par->linuxDocConvertChar(c, sgml_string)

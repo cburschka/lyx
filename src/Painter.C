@@ -332,12 +332,11 @@ PainterBase & Painter::text(int x, int y, char const * s, size_t ls,
 			}
 		}
 	}
-	if (f.underbar() == LyXFont::ON
-#ifndef NO_LATEX
-	    && f.latex() != LyXFont::ON
-#endif
-		)
+
+	if (f.underbar() == LyXFont::ON) {
 		underline(f, x, y, lyxfont::width(s, ls, f));
+	}
+	
 	return *this;
 }
 
@@ -375,12 +374,11 @@ PainterBase & Painter::text(int x, int y, XChar2b const * s, int ls,
 			}
 		}
 	}
-	if (f.underbar() == LyXFont::ON
-#ifndef NO_LATEX
-	    && f.latex() != LyXFont::ON
-#endif
-		)
+	
+	if (f.underbar() == LyXFont::ON) {
 		underline(f, x, y, lyxfont::width(s, ls, f));
+	}
+	
 	return *this;
 }
 

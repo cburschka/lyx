@@ -86,10 +86,16 @@ void Inset::edit(BufferView *, bool)
 {}
 
 
+#if 0
 LyXFont const Inset::convertFont(LyXFont const & font) const
 {
+#if 1
+	return font;
+#else
 	return LyXFont(font);
+#endif
 }
+#endif
 
 
 string const Inset::editMessage() const 

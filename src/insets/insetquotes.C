@@ -207,15 +207,17 @@ int InsetQuotes::width(BufferView *, LyXFont const & font) const
 }
 
 
+#if 0
 LyXFont const InsetQuotes::convertFont(LyXFont const & f) const
 {
+#if 1
+	return f;
+#else
 	LyXFont font(f);
-#ifndef NO_LATEX
-	// quotes-insets cannot be latex of any kind
-	font.setLatex(LyXFont::OFF);
-#endif
 	return font;
+#endif
 }
+#endif
 
 
 void InsetQuotes::draw(BufferView * bv, LyXFont const & font,

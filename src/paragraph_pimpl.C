@@ -214,12 +214,6 @@ void Paragraph::Pimpl::simpleTeXBlanks(std::ostream & os, TexRow & texrow,
 	    && i 
 	    && getChar(i - 1) != ' '
 	    && (i < size() - 1)
-#ifndef NO_LATEX
-	    // In LaTeX mode, we don't want to
-	    // break lines since some commands
-	    // do not like this
-	    && ! (font.latex() == LyXFont::ON)
-#endif
 	    // same in FreeSpacing mode
 	    && !style.free_spacing
 	    // In typewriter mode, we want to avoid 
@@ -239,18 +233,11 @@ void Paragraph::Pimpl::simpleTeXBlanks(std::ostream & os, TexRow & texrow,
 		texrow.newline();
 		texrow.start(owner_, i + 1);
 		column = 0;
-	} else
-#ifndef NO_LATEX
-		if (font.latex() == LyXFont::OFF) {
-#endif
-		if (style.free_spacing) {
-			os << '~';
-		} else {
-			os << ' ';
-		}
-#ifndef NO_LATEX
+	} else if (style.free_spacing) {
+		os << '~';
+	} else {
+		os << ' ';
 	}
-#endif
 }
 
 
@@ -315,7 +302,7 @@ void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const * buf,
 								    basefont);
 			open_font = false;
 		}
-		basefont = owner_->getFont(bparams, -1);
+		basefont = owner_->getLayoutFont(bparams);
 		running_font = basefont;
 		break;
 
@@ -326,202 +313,179 @@ void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const * buf,
 
 	default:
 		// And now for the special cases within each mode
-#ifndef NO_LATEX
-		// Are we in LaTeX mode?
-		if (font.latex() == LyXFont::ON) {
-			// at present we only have one option
-			// but I'll leave it as a switch statement
-			// so its simpler to extend. (ARRae)
-			switch (c) {
-			default:
-				// make sure that we will not print
-				// error generating chars to the tex
-				// file. This test would not be needed
-				// if it were done in the buffer
-				// itself.
-				if (c != '\0') {
-					os << c;
+
+		switch (c) {
+		case '\\': 
+			os << "\\textbackslash{}";
+			column += 15;
+			break;
+			
+		case '°': case '±': case '²': case '³':  
+		case '×': case '÷': case '¹': case 'ª':
+		case 'º': case '¬': case 'µ':
+			if (bparams.inputenc == "latin1" ||
+			    (bparams.inputenc == "auto" &&
+			     font.language()->encoding()->LatexName()
+			     == "latin1")) {
+				os << "\\ensuremath{"
+				   << c
+				   << '}';
+				column += 13;
+			} else {
+				os << c;
+			}
+			break;
+			
+		case '|': case '<': case '>':
+			// In T1 encoding, these characters exist
+			if (lyxrc.fontenc == "T1") {
+				os << c;
+				//... but we should avoid ligatures
+				if ((c == '>' || c == '<')
+				    && i <= size() - 2
+				    && getChar(i + 1) == c) {
+					//os << "\\textcompwordmark{}";
+					// Jean-Marc, have a look at
+					// this. I think this works
+					// equally well:
+					os << "\\,{}";
+					// Lgb
+					column += 19;
 				}
 				break;
 			}
-		} else {
-#endif
-			// Plain mode (i.e. not LaTeX)
+			// Typewriter font also has them
+			if (font.family() == LyXFont::TYPEWRITER_FAMILY) {
+				os << c;
+				break;
+			} 
+			// Otherwise, we use what LaTeX
+			// provides us.
 			switch (c) {
-			case '\\': 
-				os << "\\textbackslash{}";
-				column += 15;
+			case '<':
+				os << "\\textless{}";
+				column += 10;
 				break;
-		
-			case '°': case '±': case '²': case '³':  
-			case '×': case '÷': case '¹': case 'ª':
-			case 'º': case '¬': case 'µ':
-				if (bparams.inputenc == "latin1" ||
-				    (bparams.inputenc == "auto" &&
-				     font.language()->encoding()->LatexName()
-				     == "latin1")) {
-					os << "\\ensuremath{"
-					   << c
-					   << '}';
-					column += 13;
-				} else {
-					os << c;
-				}
+			case '>':
+				os << "\\textgreater{}";
+				column += 13;
 				break;
-
-			case '|': case '<': case '>':
-				// In T1 encoding, these characters exist
-				if (lyxrc.fontenc == "T1") {
-					os << c;
-					//... but we should avoid ligatures
-					if ((c == '>' || c == '<')
-					    && i <= size() - 2
-					    && getChar(i + 1) == c) {
-						//os << "\\textcompwordmark{}";
-						// Jean-Marc, have a look at
-						// this. I think this works
-						// equally well:
-						os << "\\,{}";
-						// Lgb
-						column += 19;
-					}
-					break;
-				}
-				// Typewriter font also has them
-				if (font.family() == LyXFont::TYPEWRITER_FAMILY) {
-					os << c;
-					break;
-				} 
-				// Otherwise, we use what LaTeX
-				// provides us.
-				switch (c) {
-				case '<':
-					os << "\\textless{}";
-					column += 10;
-					break;
-				case '>':
-					os << "\\textgreater{}";
-					column += 13;
-					break;
-				case '|':
-					os << "\\textbar{}";
-					column += 9;
-					break;
-				}
-				break;
-
-			case '-': // "--" in Typewriter mode -> "-{}-"
-				if (i <= size() - 2
-				    && getChar(i + 1) == '-'
-				    && font.family() == LyXFont::TYPEWRITER_FAMILY) {
-					os << "-{}";
-					column += 2;
-				} else {
-					os << '-';
-				}
-				break;
-
-			case '\"': 
-				os << "\\char`\\\"{}";
+			case '|':
+				os << "\\textbar{}";
 				column += 9;
 				break;
-
-			case '£':
-				if (bparams.inputenc == "default") {
-					os << "\\pounds{}";
-					column += 8;
-				} else {
-					os << c;
-				}
-				break;
-
-			case '$': case '&':
-			case '%': case '#': case '{':
-			case '}': case '_':
-				os << '\\' << c;
-				column += 1;
-				break;
-
-			case '~':
-				os << "\\textasciitilde{}";
-				column += 16;
-				break;
-
-			case '^':
-				os << "\\textasciicircum{}";
-				column += 17;
-				break;
-
-			case '*': case '[': case ']':
-				// avoid being mistaken for optional arguments
-				os << '{' << c << '}';
-				column += 2;
-				break;
-
-			case ' ':
-				// Blanks are printed before font switching.
-				// Sure? I am not! (try nice-latex)
-				// I am sure it's correct. LyX might be smarter
-				// in the future, but for now, nothing wrong is
-				// written. (Asger)
-				break;
-
-			default:
-				/* idea for labels --- begin*/
-				// Check for "LyX"
-				if (c ==  'L'
-				    && i <= size() - 3
-				    && font.family() != LyXFont::TYPEWRITER_FAMILY
-				    && getChar(i + 1) == 'y'
-				    && getChar(i + 2) == 'X') {
-					os << "\\LyX{}";
-					i += 2;
-					column += 5;
-				}
-				// Check for "TeX"
-				else if (c == 'T'
-					 && i <= size() - 3
-					 && font.family() != LyXFont::TYPEWRITER_FAMILY
-					 && getChar(i + 1) == 'e'
-					 && getChar(i + 2) == 'X') {
-					os << "\\TeX{}";
-					i += 2;
-					column += 5;
-				}
-				// Check for "LaTeX2e"
-				else if (c == 'L'
-					 && i <= size() - 7
-					 && font.family() != LyXFont::TYPEWRITER_FAMILY
-					 && getChar(i + 1) == 'a'
-					 && getChar(i + 2) == 'T'
-					 && getChar(i + 3) == 'e'
-					 && getChar(i + 4) == 'X'
-					 && getChar(i + 5) == '2'
-					 && getChar(i + 6) == 'e') {
-					os << "\\LaTeXe{}";
-					i += 6;
-					column += 8;
-				}
-				// Check for "LaTeX"
-				else if (c == 'L'
-					 && i <= size() - 5
-					 && font.family() != LyXFont::TYPEWRITER_FAMILY
-					 && getChar(i + 1) == 'a'
-					 && getChar(i + 2) == 'T'
-					 && getChar(i + 3) == 'e'
-					 && getChar(i + 4) == 'X') {
-					os << "\\LaTeX{}";
-					i += 4;
-					column += 7;
-					/* idea for labels --- end*/ 
-				} else if (c != '\0') {
-					os << c;
-				}
-				break;
 			}
-#ifndef NO_LATEX
+			break;
+			
+		case '-': // "--" in Typewriter mode -> "-{}-"
+			if (i <= size() - 2
+			    && getChar(i + 1) == '-'
+			    && font.family() == LyXFont::TYPEWRITER_FAMILY) {
+				os << "-{}";
+				column += 2;
+			} else {
+				os << '-';
+			}
+			break;
+			
+		case '\"': 
+			os << "\\char`\\\"{}";
+			column += 9;
+			break;
+			
+		case '£':
+			if (bparams.inputenc == "default") {
+				os << "\\pounds{}";
+				column += 8;
+			} else {
+				os << c;
+			}
+			break;
+			
+		case '$': case '&':
+		case '%': case '#': case '{':
+		case '}': case '_':
+			os << '\\' << c;
+			column += 1;
+			break;
+			
+		case '~':
+			os << "\\textasciitilde{}";
+			column += 16;
+			break;
+			
+		case '^':
+			os << "\\textasciicircum{}";
+			column += 17;
+			break;
+			
+		case '*': case '[': case ']':
+			// avoid being mistaken for optional arguments
+			os << '{' << c << '}';
+			column += 2;
+			break;
+
+		case ' ':
+			// Blanks are printed before font switching.
+			// Sure? I am not! (try nice-latex)
+		       	// I am sure it's correct. LyX might be smarter
+		       	// in the future, but for now, nothing wrong is
+		       	// written. (Asger)
+			break;
+
+		default:
+			/* idea for labels --- begin*/
+			// Check for "LyX"
+			if (c ==  'L'
+			    && i <= size() - 3
+			    && font.family() != LyXFont::TYPEWRITER_FAMILY
+			    && getChar(i + 1) == 'y'
+			    && getChar(i + 2) == 'X') {
+				os << "\\LyX{}";
+				i += 2;
+				column += 5;
+			}
+			// Check for "TeX"
+			else if (c == 'T'
+				 && i <= size() - 3
+				 && font.family() != LyXFont::TYPEWRITER_FAMILY
+				 && getChar(i + 1) == 'e'
+				 && getChar(i + 2) == 'X') {
+				os << "\\TeX{}";
+				i += 2;
+				column += 5;
+			}
+			// Check for "LaTeX2e"
+			else if (c == 'L'
+				 && i <= size() - 7
+				 && font.family() != LyXFont::TYPEWRITER_FAMILY
+				 && getChar(i + 1) == 'a'
+				 && getChar(i + 2) == 'T'
+				 && getChar(i + 3) == 'e'
+				 && getChar(i + 4) == 'X'
+				 && getChar(i + 5) == '2'
+				 && getChar(i + 6) == 'e') {
+				os << "\\LaTeXe{}";
+				i += 6;
+				column += 8;
+			}
+			// Check for "LaTeX"
+			else if (c == 'L'
+				 && i <= size() - 5
+				 && font.family() != LyXFont::TYPEWRITER_FAMILY
+				 && getChar(i + 1) == 'a'
+				 && getChar(i + 2) == 'T'
+				 && getChar(i + 3) == 'e'
+				 && getChar(i + 4) == 'X') {
+				os << "\\LaTeX{}";
+				i += 4;
+				column += 7;
+				/* idea for labels --- end*/ 
+			} else if (c != '\0') {
+				os << c;
+			}
+			break;
 		}
-#endif
 	}
 }
 
@@ -562,3 +526,27 @@ Paragraph * Paragraph::Pimpl::getParFromID(int id) const
 	return 0;
 }
 
+
+LyXFont const Paragraph::Pimpl::realizeFont(LyXFont const & font,
+					    BufferParams const & bparams) const
+{
+	LyXFont tmpfont(font);
+	
+	// check for environment font information
+	char par_depth = owner_->getDepth();
+	Paragraph const * par = owner_;
+	while (par && par->getDepth() && !tmpfont.resolved()) {
+		par = par->outerHook();
+		if (par) {
+			tmpfont.realize(textclasslist.
+					Style(bparams.textclass,
+					      par->getLayout()).font, bparams.language);
+			par_depth = par->getDepth();
+		}
+	}
+
+	tmpfont.realize(textclasslist
+			.TextClass(bparams.textclass)
+			.defaultfont(), bparams.language);
+	return tmpfont;	
+}

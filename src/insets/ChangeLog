@@ -1,3 +1,7 @@
+2001-08-03  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* inset.C (convertFont): delete method. not used. 
+
 2001-08-03  Juergen Vigna  <jug@sad.it>
 
 	* insettext.C (setFont): don't call for a draw update if we're just

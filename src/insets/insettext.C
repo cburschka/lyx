@@ -240,7 +240,7 @@ void InsetText::read(Buffer const * buf, LyXLex & lex)
 		if (token.empty())
 			continue;
 		if (token == "\\end_inset") {
-#ifdef NO_LATEX
+#ifndef NO_COMPABILITY
 			const_cast<Buffer*>(buf)->insertErtContents(par, pos, font, false);
 #endif
 			break;

@@ -43,10 +43,6 @@
 #include "converter.h"
 #include "language.h"
 #include "support/os.h"
-// for NO_LATEX
-#if 1
-#include "lyxfont.h"
-#endif
 
 using std::endl;
 

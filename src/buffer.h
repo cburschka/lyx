@@ -31,6 +31,11 @@ class TeXErrors;
 class LaTeXFeatures;
 class Language;
 
+// When lyx 1.3.x starts we should enable this
+// btw. we should also test this with 1.2 so that we
+// do not get any surprises. (Lgb)
+//#define NO_COMPABILITY 1
+
 ///
 struct DEPCLEAN {
 	///
@@ -127,10 +132,12 @@ public:
 	///
 	void insertStringAsLines(Paragraph *&, Paragraph::size_type &,
 				 LyXFont const &, string const &) const;
+#ifndef NO_COMPABILITY
 	///
 	void insertErtContents(Paragraph * par, int & pos,
 			       LyXFont const & font,
 			       bool set_inactive = true);
+#endif
 	///
 	Paragraph * getParFromID(int id) const;
 private:

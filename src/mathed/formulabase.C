@@ -559,15 +559,6 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 		//bv->owner()->message(_("math text mode toggled"));
 		break;
 
-#ifndef NO_LATEX
-	case LFUN_TEX:
-		if (!mathcursor->selection()) {
-			mathcursor->handleFont(LM_TC_TEX);
-			//bv->owner()->message(_("TeX mode toggled"));
-		}
-		break;
-#endif
-
 	case LFUN_MATH_LIMITS:
 		bv->lockedInsetStoreUndo(Undo::INSERT);
 		if (mathcursor->toggleLimits())
@@ -901,15 +892,22 @@ Inset::Code InsetFormulaBase::lyxCode() const
 }
 
 
+#if 0
 LyXFont const InsetFormulaBase::convertFont(LyXFont const & f) const
 {
+#warning Andre, you should be able to remove this now?
+	// or change it to
+#if 1
+	return f;
+#else
+	// (Lgb)
+	
 	// We have already discussed what was here
 	LyXFont font(f);
-#ifndef NO_LATEX
-	font.setLatex(LyXFont::OFF);
-#endif
 	return font;
+#endif
 }
+#endif
 
 
 void mathDispatchCreation(BufferView * bv, string const & arg, bool display)
