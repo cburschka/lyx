@@ -37,6 +37,13 @@ InsetERT::InsetERT() : InsetCollapsable()
 }
 
 
+void InsetERT::Write(Buffer const * buf, ostream & os) const 
+{
+	os << getInsetName() << "\n";
+	InsetCollapsable::Write(buf, os);
+}
+
+
 Inset * InsetERT::Clone() const
 {
     InsetERT * result = new InsetERT();

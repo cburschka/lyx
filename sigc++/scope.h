@@ -246,7 +246,8 @@ struct LIBSIGC_API ScopeIterator_
       return *this;
      }
 
-   ScopeIterator_(const ScopeIterator_ &n):node_(n.node_) {}
+   ScopeIterator_(const ScopeIterator_ &n);
+	  //:node_(n.node_) {}
    ScopeIterator_(NodeType *n):node_(n) {}
    ScopeIterator_():node_(0) {}
   };

@@ -31,6 +31,8 @@ public:
 	///
 	~InsetMarginal() {}
 	///
+	void Write(Buffer const * buf, ostream & os) const;
+	///
 	Inset * Clone() const;
 	///
 	Inset::Code LyxCode() const { return Inset::MARGIN_CODE; }

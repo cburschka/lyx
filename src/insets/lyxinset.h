@@ -91,6 +91,10 @@ public:
 		///
 		MARGIN_CODE,
 		///
+		FLOAT_CODE,
+		///
+		MINIPAGE_CODE,
+		///
 		SPECIALCHAR_CODE,
 		///
 		TABULAR_CODE,

@@ -8,11 +8,9 @@
  *
  *======================================================
  */
-// The pristine updatable inset: Text
 
-
-#ifndef INSETFOOT_H
-#define INSETFOOT_H
+#ifndef InsetMinipage_H
+#define InsetMinipage_H
 
 #ifdef __GNUG__
 #pragma interface
@@ -25,19 +23,19 @@ class Painter;
 /** The footnote inset
   
 */
-class InsetFoot : public InsetCollapsable {
+class InsetMinipage : public InsetCollapsable {
 public:
 	///
 	explicit
-	InsetFoot();
+	InsetMinipage();
 	///
-	~InsetFoot() {}
+	~InsetMinipage() {}
 	///
 	void Write(Buffer const * buf, ostream & os) const;
 	///
 	Inset * Clone() const;
 	///
-	Inset::Code LyxCode() const { return Inset::FOOT_CODE; }
+	Inset::Code LyxCode() const { return Inset::MINIPAGE_CODE; }
 	///
 	int Latex(Buffer const *, std::ostream &, bool fragile, bool fp) const;
 	///

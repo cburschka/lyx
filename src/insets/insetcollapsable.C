@@ -19,6 +19,7 @@
 #include "BufferView.h"
 #include "Painter.h"
 #include "support/LOstream.h"
+#include "support/lstrings.h"
 
 using std::ostream;
 
@@ -44,14 +45,11 @@ Inset * InsetCollapsable::Clone() const
     return result;
 }
 
+
 void InsetCollapsable::Write(Buffer const * buf, ostream & os) const
 {
-    os << getInsetName() << "\n\ncollapsed ";
-    if (display())
-	os << "false\n";
-    else
-	os << "true\n";
-    WriteParagraphData(buf, os);
+	os << "collapsed " << tostr(!display()) << "\n";
+	WriteParagraphData(buf, os);
 }
 
 
@@ -251,7 +249,9 @@ int InsetCollapsable::getMaxTextWidth(Painter & pain,
 	width_collapsed(pain, labelfont) - widthOffset;
 }
 
-void InsetCollapsable::update(BufferView * bv, LyXFont const & font, bool dodraw)
+
+void InsetCollapsable::update(BufferView * bv,
+			      LyXFont const & font, bool dodraw)
 {
     drawTextXOffset = width_collapsed(bv->painter(), font);
     InsetText::update(bv, font, dodraw);

@@ -245,6 +245,13 @@ string LaTeXFeatures::getPackages()
 	if (prettyref)
 		packages += "\\usepackage{prettyref}\n";
 
+	// float.sty
+	// This is not correct and needs fixing.
+	// We don't need float.sty if we only use unchanged
+	// table and figure floats. (Lgb)
+	if (!usedFloats.empty())
+		packages += "\\usepackage{float}\n";
+	
 	packages += externalPreambles;
 
 	return packages;
@@ -298,6 +305,12 @@ string LaTeXFeatures::getMacros()
         if (NeedLyXFootnoteCode) 
 		macros += floatingfootnote_def;
 
+	// floats
+	// Here we will output the code to create the needed float styles.
+	// We will try to do this as minimal as possible.
+	// \floatstyle{ruled}
+	// \newfloat{algorithm}{htbp}{loa}
+	// \floatname{algorithm}{Algorithm}
 	return macros;
 }
 

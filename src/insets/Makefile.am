@@ -33,6 +33,8 @@ libinsets_la_SOURCES = \
 	insetert.h \
 	insetexternal.C \
 	insetexternal.h \
+	insetfloat.h \
+	insetfloat.C \
 	insetfoot.C \
 	insetfoot.h \
 	insetgraphics.C \
@@ -47,6 +49,8 @@ libinsets_la_SOURCES = \
 	insetlabel.h \
 	insetlatexaccent.C \
 	insetlatexaccent.h \
+	insetlist.C \
+	insetlist.h \
 	insetloa.C \
 	insetloa.h \
 	insetlof.C \
@@ -55,6 +59,8 @@ libinsets_la_SOURCES = \
 	insetlot.h \
 	insetmarginal.h \
 	insetmarginal.C \
+	insetminipage.C \
+	insetminipage.h \
 	insetparent.C \
 	insetparent.h \
 	insetquotes.C \

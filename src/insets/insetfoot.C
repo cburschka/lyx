@@ -37,6 +37,13 @@ InsetFoot::InsetFoot() : InsetCollapsable()
 }
 
 
+void InsetFoot::Write(Buffer const * buf, ostream & os) const 
+{
+	os << getInsetName() << "\n";
+	InsetCollapsable::Write(buf, os);
+}
+
+
 Inset * InsetFoot::Clone() const
 {
     InsetFoot * result = new InsetFoot;
@@ -55,10 +62,10 @@ char const * InsetFoot::EditMessage() const
 
 int InsetFoot::Latex(Buffer const * buf, ostream & os, bool fragile, bool fp) const
 {
-    os << "\\footnote{%" << endl;
+    os << "\\footnote{%\n";
     
     int i = InsetText::Latex(buf, os, fragile, fp);
-    os << "}%" << endl;
+    os << "}%\n";
     
     return i + 2;
 }

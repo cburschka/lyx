@@ -1,3 +1,78 @@
+2000-06-28  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/support/lyxsum.C (sum): '\0' teminate file read when using
+	strstream. 
+
+	* src/insets/lyxinset.h: add FLOAT_CODE and MINIPAGE_CODE
+
+	* src/insets/insettext.C (Read): remove tmptok unused variable
+	(LocalDispatch): add not working LFUN_PARAGRAPH_SPACING
+	(InsertInset): change for new InsetInset code
+
+	* src/insets/insettext.h: add TEXT inline method
+
+	* src/insets/insettext.C: remove TEXT macro
+
+	* src/insets/insetmarginal.C (Write): new method
+	(Latex): change output slightly
+
+	* src/insets/insetfoot.C (Write): new method
+	(Latex): change output slightly (don't use endl when no need)
+
+	* src/insets/insetert.C (Write): new method
+
+	* src/insets/insetcollapsable.h: make button_length, button_top_y
+	and button_bottm_y protected.
+
+	* src/insets/insetcollapsable.C (Write): simplify code by using
+	tostr. Also do not output the float name, the children class
+	should to that to get control over own arguments
+
+	* src/insets/insetfloat.[Ch] src/insets/insetlist.[Ch]
+	src/insets/insetminipage.[Ch]:
+	new files
+
+	* src/insets/Makefile.am (libinsets_la_SOURCES): add new files
+	
+	* src/lyxfunc.C (Dispatch): cases for new insets/commands
+
+	* src/Makefile.am (lyx_SOURCES): add the new files
+
+	* src/LyXAction.C (init): add LFUN_INSET_MARGINAL,
+	LFUN_INSET_MINIPAGE, LFUN_INSET_FLOAT, LFUN_INSET_LIST
+	* src/commandtags.h: ditto
+	
+	* src/LaTeXFeatures.h: add a std::set of used floattypes
+
+	* src/LaTeXFeatures.C (getPackages): add basic support for float.sty
+
+	* src/FloatList.[Ch] src/Floating.h: new files
+
+	* src/CutAndPaste.C (SwitchLayoutsBetweenClasses): change call to
+	InsertInset. 
+	* src/lyx_cb.C (TableApplyCB): ditto
+	* src/text.C: ditto
+	* src/text2.C: ditto
+	* src/buffer.C (SimpleLinuxDocOnePar): ditto
+	(parseSingleLyXformat2Token): ditto + add code for
+	backwards compability for old float styles + add code for new insets
+	
+	* src/lyxparagraph.[Ch] (InsertChar(size_type, char, LyXFont)): new
+	method
+	(InsertInset(size_type, Inset *, LyXFont)): new method
+	(InsetChar(size_type, char)): changed to use the other InsetChar
+	with a LyXFont(ALL_INHERIT).
+	(InsetInset(size_type, Inset*)): changed to use InsetChar to
+	insert the META_INSET.
+	
+	* sigc++/thread.cc (Privete<int>::operator int&): move definition
+	out of line. 
+	* sigc++/thread.h (Threads): from here
+
+	* sigc++/scope.cc (ScopeIterator_::ScopeIterator_): move
+	definition out of line
+	* sigc++/scope.h: from here
+
 2000-06-27  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/lyxrc.C (read): make sure the .kmap files exist when a keymap

@@ -56,7 +56,9 @@ using std::max;
 
 extern unsigned char getCurrentTextClass(Buffer *);
 
-#define TEXT(a) getLyXText(a)
+// Jürgen, we don't like macros, even small ones like this. (Lgb)
+//#define TEXT(a) getLyXText(a)
+// I created a inline function in insettext.h instead. (Lgb)
 
 InsetText::InsetText()
 {
@@ -140,7 +142,7 @@ void InsetText::WriteParagraphData(Buffer const * buf, ostream & os) const
 
 void InsetText::Read(Buffer const * buf, LyXLex & lex)
 {
-    string token, tmptok;
+	string token;
     int pos = 0;
     LyXParagraph * return_par = 0;
     char depth = 0; // signed or unsigned?
@@ -148,8 +150,7 @@ void InsetText::Read(Buffer const * buf, LyXLex & lex)
     LyXParagraph::footnote_kind footnotekind = LyXParagraph::FOOTNOTE;
     LyXFont font(LyXFont::ALL_INHERIT);
 
-    LyXParagraph * p;
-    p = par->next;
+    LyXParagraph * p = par->next;
     delete par;
     while(p) {
 	par = p;
@@ -205,6 +206,7 @@ int InsetText::width(Painter &, LyXFont const &) const
 {
     return insetWidth;
 }
+
 
 int InsetText::textWidth(Painter & pain) const
 {
@@ -742,6 +744,58 @@ InsetText::LocalDispatch(BufferView * bv,
 	}
     }
     break;
+    case LFUN_PARAGRAPH_SPACING:
+	    // This one is absolutely not working. When fiddling with this
+	    // it also seems to me that the paragraphs inside the insettext
+	    // inherit bufferparams/paragraphparams in a strange way. (Lgb)
+    {
+	    LyXParagraph * par = TEXT(bv)->cursor.par();
+	    Spacing::Space cur_spacing = par->spacing.getSpace();
+	    float cur_value = 1.0;
+	    if (cur_spacing == Spacing::Other) {
+		    cur_value = par->spacing.getValue();
+	    }
+	    		
+#ifdef HAVE_SSTREAM
+	    istringstream istr(arg);
+#else
+	    istrstream istr(arg.c_str());
+#endif
+	    string tmp;
+	    istr >> tmp;
+	    Spacing::Space new_spacing = cur_spacing;
+	    float new_value = cur_value;
+	    if (tmp.empty()) {
+		    lyxerr << "Missing argument to `paragraph-spacing'"
+			   << endl;
+	    } else if (tmp == "single") {
+		    new_spacing = Spacing::Single;
+	    } else if (tmp == "onehalf") {
+		    new_spacing = Spacing::Onehalf;
+	    } else if (tmp == "double") {
+		    new_spacing = Spacing::Double;
+	    } else if (tmp == "other") {
+		    new_spacing = Spacing::Other;
+		    float tmpval = 0.0;
+		    istr >> tmpval;
+		    lyxerr << "new_value = " << tmpval << endl;
+		    if (tmpval != 0.0)
+			    new_value = tmpval;
+	    } else if (tmp == "default") {
+		    new_spacing = Spacing::Default;
+	    } else {
+		    lyxerr << _("Unknown spacing argument: ")
+			   << arg << endl;
+	    }
+	    if (cur_spacing != new_spacing || cur_value != new_value) {
+		    par->spacing.set(new_spacing, new_value);
+		    //TEXT(bv)->RedoParagraph(owner->view());
+		    UpdateLocal(bv, CURSOR_PAR, true);
+		    //bv->update(BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
+	    }
+    }
+    break;
+	
     default:
 	result = UNDISPATCHED;
 	break;
@@ -910,8 +964,12 @@ bool InsetText::InsertInset(BufferView * bv, Inset * inset)
 	UpdatableInset * i = static_cast<UpdatableInset *>(inset);
 	i->setOwner(static_cast<UpdatableInset *>(this));
     }
+#ifdef NEW_WAY
+    cpar(bv)->InsertInset(cpos(bv), inset);
+#else
     cpar(bv)->InsertChar(cpos(bv), LyXParagraph::META_INSET);
     cpar(bv)->InsertInset(cpos(bv), inset);
+#endif
     TEXT(bv)->selection = 0;
     UpdateLocal(bv, CURSOR_PAR, true);
     static_cast<UpdatableInset*>(inset)->Edit(bv, 0, 0, 0);
@@ -979,10 +1037,12 @@ bool InsetText::checkAndActivateInset(BufferView * bv, int x, int y,
 }
 
 
-int InsetText::getMaxTextWidth(Painter & pain, UpdatableInset const * inset) const
+int InsetText::getMaxTextWidth(Painter & pain,
+			       UpdatableInset const * inset) const
 {
     return getMaxWidth(pain, inset) - (2 * TEXT_TO_INSET_OFFSET);
 }
+
 
 void InsetText::SetParagraphData(LyXParagraph *p)
 {
@@ -1010,6 +1070,7 @@ void InsetText::SetParagraphData(LyXParagraph *p)
     need_update = INIT;
 }
 
+
 void InsetText::SetAutoBreakRows(bool flag)
 {
     if (flag != autoBreakRows) {
@@ -1018,11 +1079,13 @@ void InsetText::SetAutoBreakRows(bool flag)
     }
 }
 
+
 void InsetText::SetDrawLockedFrame(bool flag)
 {
     if (flag != drawLockedFrame)
 	drawLockedFrame = flag;
 }
+
 
 void InsetText::SetFrameColor(LColor::color col)
 {
@@ -1030,15 +1093,18 @@ void InsetText::SetFrameColor(LColor::color col)
 	frame_color = col;
 }
 
+
 LyXFont InsetText::GetDrawFont(BufferView * bv, LyXParagraph * p, int pos) const
 {
     return TEXT(bv)->GetFont(bv->buffer(), p, pos);
 }
 
+
 int InsetText::cx(BufferView * bv) const
 {
     return TEXT(bv)->cursor.x() + top_x + 1;
 }
+
 
 int InsetText::cy(BufferView * bv) const
 {
@@ -1047,30 +1113,35 @@ int InsetText::cy(BufferView * bv) const
     return TEXT(bv)->cursor.y() - tmprow->baseline();
 }
 
+
 int InsetText::cpos(BufferView * bv) const
 {
     return TEXT(bv)->cursor.pos();
 }
+
 
 LyXParagraph * InsetText::cpar(BufferView * bv) const
 {
     return TEXT(bv)->cursor.par();
 }
 
+
 Row * InsetText::crow(BufferView * bv) const
 {
     return TEXT(bv)->cursor.row();
 }
 
+
 LyXText * InsetText::getLyXText(BufferView * bv) const
 {
     if (cache.find(bv) != cache.end())
 	return cache[bv];
-    LyXText *lt = new LyXText(const_cast<InsetText *>(this));
+    LyXText * lt = new LyXText(const_cast<InsetText *>(this));
     lt->init(bv);
     cache[bv] = lt;
     return lt;
 }
+
 
 void InsetText::deleteLyXText(BufferView * bv)
 {

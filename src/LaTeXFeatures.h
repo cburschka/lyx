@@ -148,6 +148,10 @@ struct LaTeXFeatures {
 	typedef std::set<Language const *> LanguageList;
 	///
 	LanguageList UsedLanguages;
+	///
+	typedef std::set<string> FloatList;
+	///
+	FloatList usedFloats;
 	//@}
 	BufferParams const & bufferParams() const;
 private:

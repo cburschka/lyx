@@ -162,14 +162,6 @@ LyXText::~LyXText()
 }
 
 
-#if 0
-void LyXText::owner(BufferView * bv)
-{
-	if (bv_owner && bv) lyxerr << "LyXText::bv_owner already set!" << endl;
-	bv_owner = bv;
-}
-#endif
-
 // Gets the fully instantiated font at a given position in a paragraph
 // Basically the same routine as LyXParagraph::getFont() in paragraph.C.
 // The difference is that this one is used for displaying, and thus we
@@ -243,13 +235,14 @@ LyXFont LyXText::GetFont(Buffer const * buf, LyXParagraph * par,
 
 	tmpfont.realize(textclasslist.TextClass(buf->params.textclass).defaultfont());
 
+#ifndef NEW_INSETS
 	// Cosmetic improvement: If this is an open footnote, make the font 
 	// smaller.
 	if (par->footnoteflag == LyXParagraph::OPEN_FOOTNOTE
 	    && par->footnotekind == LyXParagraph::FOOTNOTE) {
 		tmpfont.decSize();
 	}
-
+#endif
 	return tmpfont;
 }
 
@@ -291,11 +284,12 @@ void LyXText::SetCharFont(Buffer const * buf, LyXParagraph * par,
 
 	layoutfont.realize(textclasslist.TextClass(buf->params.textclass).defaultfont());
 
+#ifndef NEW_INSETS
 	if (par->footnoteflag == LyXParagraph::OPEN_FOOTNOTE
 	    && par->footnotekind == LyXParagraph::FOOTNOTE) {
 		layoutfont.decSize();
 	}
-
+#endif
 	// Now, reduce font against full layout font
 	font.reduce(layoutfont);
 
@@ -394,8 +388,9 @@ void LyXText::InsertParagraph(BufferView * bview, LyXParagraph * par,
 		AppendParagraph(bview, row->next());
 	}
 }
-    
 
+
+#ifndef NEW_INSETS
 void LyXText::ToggleFootnote(BufferView * bview)
 {
 	LyXParagraph * par = cursor.par()->ParFromPos(cursor.pos());
@@ -408,6 +403,7 @@ void LyXText::ToggleFootnote(BufferView * bview)
 		CloseFootnote(bview);
 	}
 }
+#endif
 
 
 void LyXText::OpenStuff(BufferView * bview)
@@ -429,6 +425,7 @@ void LyXText::OpenStuff(BufferView * bview)
 }
 
 
+#ifndef NEW_INSETS
 void LyXText::CloseFootnote(BufferView * bview)
 {
 	LyXParagraph * tmppar;
@@ -498,11 +495,13 @@ void LyXText::CloseFootnote(BufferView * bview)
 	if (cursor.row()->next())
 		SetHeightOfRow(bview, cursor.row()->next());
 }
+#endif
 
 
 /* used in setlayout */
 // Asger is not sure we want to do this...
-void LyXText::MakeFontEntriesLayoutSpecific(Buffer const * buf, LyXParagraph * par)
+void LyXText::MakeFontEntriesLayoutSpecific(Buffer const * buf,
+					    LyXParagraph * par)
 {
    
 	LyXLayout const & layout =
@@ -521,6 +520,7 @@ void LyXText::MakeFontEntriesLayoutSpecific(Buffer const * buf, LyXParagraph * p
 		par->SetFont(pos, tmpfont);
 	}
 }
+
 
 LyXParagraph * LyXText::SetLayout(BufferView * bview,
 				  LyXCursor & cur, LyXCursor & sstart_cur,
@@ -701,7 +701,8 @@ void  LyXText::IncDepth(BufferView * bview)
 	}
 
 	// We end at the next paragraph with depth 0
-	LyXParagraph * endpar = sel_end_cursor.par()->LastPhysicalPar()->Next();
+	LyXParagraph * endpar =
+		sel_end_cursor.par()->LastPhysicalPar()->Next();
 	LyXParagraph * undoendpar = endpar;
 
 	if (endpar && endpar->GetDepth()) {
@@ -1238,7 +1239,8 @@ Row * LyXText::GetRowNearY(long & y) const
 }
 
 
-void LyXText::ToggleFree(BufferView * bview, LyXFont const & font, bool toggleall)
+void LyXText::ToggleFree(BufferView * bview,
+			 LyXFont const & font, bool toggleall)
 {
 	// If the mask is completely neutral, tell user
 	if (font == LyXFont(LyXFont::ALL_IGNORE)) {
@@ -1271,7 +1273,8 @@ void LyXText::ToggleFree(BufferView * bview, LyXFont const & font, bool toggleal
 
 
 LyXParagraph::size_type
-LyXText::BeginningOfMainBody(Buffer const * buf, LyXParagraph const * par) const
+LyXText::BeginningOfMainBody(Buffer const * buf,
+			     LyXParagraph const * par) const
 {
 	if (textclasslist.Style(buf->params.textclass,
 				par->GetLayout()).labeltype != LABEL_MANUAL)
@@ -1281,6 +1284,7 @@ LyXText::BeginningOfMainBody(Buffer const * buf, LyXParagraph const * par) const
 }
 
 
+#ifndef NEW_INSETS
 /* if there is a selection, reset every environment you can find
 * in the selection, otherwise just the environment you are in */ 
 void LyXText::MeltFootnoteEnvironment(BufferView * bview)
@@ -1375,6 +1379,7 @@ void LyXText::MeltFootnoteEnvironment(BufferView * bview)
    
 	ClearSelection();
 }
+#endif
 
 
 /* the DTP switches for paragraphs. LyX will store them in the 
@@ -1618,6 +1623,7 @@ void LyXText::SetCounter(Buffer const * buf, LyXParagraph * par) const
 		par->itemdepth = 0;
 	}
 
+#ifndef NEW_INSETS
         // if this is an open marginnote and this is the first
         // entry in the marginnote and the enclosing
         // environment is an enum/item then correct for the
@@ -1639,7 +1645,7 @@ void LyXText::SetCounter(Buffer const * buf, LyXParagraph * par) const
                 par->enumdepth++;
                 par->itemdepth++;
         }
-
+#endif
 	/* Maybe we have to increment the enumeration depth.
 	 * BUT, enumeration in a footnote is considered in isolation from its
 	 *	surrounding paragraph so don't increment if this is the
@@ -1991,7 +1997,8 @@ void LyXText::UpdateCounters(BufferView * bview, Row * row) const
 			/* Rebreak the paragraph */ 
 			RemoveParagraph(row);
 			AppendParagraph(bview, row);
-       
+
+#ifndef NEW_INSETS
 			/* think about the damned open footnotes! */ 
 			while (par->Next() &&
 			       (par->Next()->footnoteflag == LyXParagraph::OPEN_FOOTNOTE
@@ -2004,6 +2011,7 @@ void LyXText::UpdateCounters(BufferView * bview, Row * row) const
 					AppendParagraph(bview, row);
 				}
 			}
+#endif
 		}
      
 		par = par->LastPhysicalPar()->Next();
@@ -2013,15 +2021,19 @@ void LyXText::UpdateCounters(BufferView * bview, Row * row) const
 
 
 /* insets an inset. */ 
-void LyXText::InsertInset(BufferView * bview, Inset *inset)
+void LyXText::InsertInset(BufferView * bview, Inset * inset)
 {
 	if (!cursor.par()->InsertInsetAllowed(inset))
 		return;
 	SetUndo(bview->buffer(), Undo::INSERT, 
 		cursor.par()->ParFromPos(cursor.pos())->previous, 
 		cursor.par()->ParFromPos(cursor.pos())->next);
+#ifdef NEW_WAY
+	cursor.par()->InsertInset(cursor.pos(), inset);
+#else
 	cursor.par()->InsertChar(cursor.pos(), LyXParagraph::META_INSET);
 	cursor.par()->InsertInset(cursor.pos(), inset);
+#endif
 	InsertChar(bview, LyXParagraph::META_INSET);  /* just to rebreak and refresh correctly.
 				      * The character will not be inserted a
 				      * second time */
@@ -2059,7 +2071,8 @@ void LyXText::CutSelection(BufferView * bview, bool doclear)
 	// OK, we have a selection. This is always between sel_start_cursor
 	// and sel_end cursor
 	LyXParagraph * tmppar;
-    
+
+#ifndef NEW_INSETS
 	// Check whether there are half footnotes in the selection
 	if (sel_start_cursor.par()->footnoteflag != LyXParagraph::NO_FOOTNOTE
 	    || sel_end_cursor.par()->footnoteflag != LyXParagraph::NO_FOOTNOTE) {
@@ -2074,7 +2087,7 @@ void LyXText::CutSelection(BufferView * bview, bool doclear)
 			tmppar = tmppar->Next();
 		}
 	}
-
+#endif
 #ifndef NEW_TABULAR
 	/* table stuff -- begin */
 	if (sel_start_cursor.par()->table || sel_end_cursor.par()->table) {
@@ -2164,7 +2177,8 @@ void LyXText::CopySelection(BufferView * bview)
 	// ok we have a selection. This is always between sel_start_cursor
 	// and sel_end cursor
 	LyXParagraph * tmppar;
-   
+
+#ifndef NEW_INSETS
 	/* check wether there are half footnotes in the selection */
 	if (sel_start_cursor.par()->footnoteflag != LyXParagraph::NO_FOOTNOTE
 	    || sel_end_cursor.par()->footnoteflag != LyXParagraph::NO_FOOTNOTE) {
@@ -2181,7 +2195,7 @@ void LyXText::CopySelection(BufferView * bview)
 			tmppar = tmppar->Next();
 		}
 	}
-
+#endif
 #ifndef NEW_TABULAR
 	/* table stuff -- begin */
 	if (sel_start_cursor.par()->table || sel_end_cursor.par()->table){
@@ -2293,8 +2307,12 @@ void LyXText::ReplaceSelectionWithString(BufferView * bview, char const * str)
 
 	// Insert the new string
 	for (int i = 0; str[i]; ++i) {
+#ifdef NEW_WAY
+		sel_end_cursor.par()->InsertChar(pos, str[i], font);
+#else
 		sel_end_cursor.par()->InsertChar(pos, str[i]);
 		sel_end_cursor.par()->SetFont(pos, font);
+#endif
 		++pos;
 	}
 
@@ -2378,8 +2396,12 @@ void LyXText::InsertStringA(BufferView * bview, string const & str)
 			if (str[i] == ' ' 
 			    && i + 1 < str.length() && str[i + 1] != ' '
 			    && pos && par->GetChar(pos - 1)!= ' ') {
+#ifdef NEW_WAY
+				par->InsertChar(pos, ' ', current_font);
+#else
 				par->InsertChar(pos,' ');
 				par->SetFont(pos, current_font);
+#endif
 				++pos;
 #ifndef NEW_TABLAR
 			} else if (par->table) {
@@ -2393,8 +2415,13 @@ void LyXText::InsertStringA(BufferView * bview, string const & str)
 						break;
 				} else if ((str[i] != 13) &&
 					   ((str[i] & 127) >= ' ')) {
+#ifdef NEW_WAY
+					par->InsertChar(pos, str[i],
+							current_font);
+#else
 					par->InsertChar(pos, str[i]);
 					par->SetFont(pos, current_font);
+#endif
 					++pos;
 				}
 #endif
@@ -2402,9 +2429,14 @@ void LyXText::InsertStringA(BufferView * bview, string const & str)
 				InsetSpecialChar * new_inset =
 					new InsetSpecialChar(InsetSpecialChar::PROTECTED_SEPARATOR);
 				if (par->InsertInsetAllowed(new_inset)) {
+#ifdef NEW_WAY
+					par->InsertInset(pos, new_inset,
+							 current_font);
+#else
 					par->InsertChar(pos, LyXParagraph::META_INSET);
 					par->SetFont(pos, current_font);
 					par->InsertInset(pos, new_inset);
+#endif
 				} else {
 					delete new_inset;
 				}
@@ -2414,9 +2446,14 @@ void LyXText::InsertStringA(BufferView * bview, string const & str)
 				InsetSpecialChar * new_inset =
 					new InsetSpecialChar(InsetSpecialChar::PROTECTED_SEPARATOR);
 				if (par->InsertInsetAllowed(new_inset)) {
+#ifdef NEW_WAY
+					par->InsertInset(pos, new_inset,
+							 current_font);
+#else
 					par->InsertChar(pos, LyXParagraph::META_INSET);
 					par->SetFont(pos, current_font);
 					par->InsertInset(pos, new_inset);
+#endif
 				} else {
 					delete new_inset;
 				}
@@ -2425,8 +2462,12 @@ void LyXText::InsertStringA(BufferView * bview, string const & str)
 			} else if (str[i] != 13 && 
 				   // Ignore unprintables
 				   (str[i] & 127) >= ' ') {
+#ifdef NEW_WAY
+				par->InsertChar(pos, str[i], current_font);
+#else
 				par->InsertChar(pos, str[i]);
 				par->SetFont(pos, current_font);
+#endif
 				++pos;
 			}
 		} else {
@@ -2460,9 +2501,15 @@ void LyXText::InsertStringA(BufferView * bview, string const & str)
 					InsetSpecialChar * new_inset =
 						new InsetSpecialChar(InsetSpecialChar::PROTECTED_SEPARATOR);
 					if (par->InsertInsetAllowed(new_inset)) {
+#ifdef NEW_WAY
+						par->InsertInset(pos,
+								 new_inset,
+								 current_font);
+#else
 						par->InsertChar(pos, LyXParagraph::META_INSET);
 						par->SetFont(pos, current_font);
 						par->InsertInset(pos, new_inset);
+#endif
 					} else {
 						delete new_inset;
 					}
@@ -2704,6 +2751,7 @@ void LyXText::SetCursor(BufferView *bview, LyXCursor & cur, LyXParagraph * par,
 		pos = par->PositionInParFromPos(pos);
 		par = tmppar;
 	}
+#ifndef NEW_INSETS
 	if (par->IsDummy() && par->previous &&
 	    par->previous->footnoteflag == LyXParagraph::CLOSED_FOOTNOTE) {
 		while (par->previous &&
@@ -2723,7 +2771,7 @@ void LyXText::SetCursor(BufferView *bview, LyXCursor & cur, LyXParagraph * par,
 		}
 		pos += par->size() + 1;
 	}
-
+#endif
 	cur.par(par);
 	cur.pos(pos);
 	cur.boundary(boundary);
@@ -2834,127 +2882,6 @@ void LyXText::SetCursorIntern(BufferView * bview, LyXParagraph * par,
 			      bool setfont, bool boundary) const
 {
 	SetCursor(bview, cursor, par, pos, boundary);
-// #warning Remove this when verified working (Jug 20000413)
-#if 0
-	// correct the cursor position if impossible
-	if (pos > par->Last()){
-		LyXParagraph * tmppar = par->ParFromPos(pos);
-		pos = par->PositionInParFromPos(pos);
-		par = tmppar;
-	}
-	if (par->IsDummy() && par->previous &&
-	    par->previous->footnoteflag == LyXParagraph::CLOSED_FOOTNOTE) {
-		while (par->previous &&
-		       ((par->previous->IsDummy() && par->previous->previous->footnoteflag == LyXParagraph::CLOSED_FOOTNOTE) ||
-			(par->previous->footnoteflag == LyXParagraph::CLOSED_FOOTNOTE))) {
-			par = par->previous ;
-			if (par->IsDummy() &&
-			    par->previous->footnoteflag == LyXParagraph::CLOSED_FOOTNOTE)
-				pos += par->size() + 1;
-		}
-		if (par->previous) {
-			par = par->previous;
-		}
-		pos += par->size() + 1;
-	}
-
-	cursor.par() = par;
-	cursor.pos() = pos;
-
-	/* get the cursor y position in text  */
-	long y = 0;
-	Row * row = GetRow(par, pos, y);
-	/* y is now the beginning of the cursor row */ 
-	y += row->baseline();
-	/* y is now the cursor baseline */ 
-	cursor.y() = y;
-   
-	/* now get the cursors x position */
-	float x;
-	float fill_separator, fill_hfill, fill_label_hfill;
-	PrepareToPrint(row, x, fill_separator, fill_hfill, fill_label_hfill);
-	LyXParagraph::size_type cursor_vpos;
-	LyXParagraph::size_type last = RowLastPrintable(row);
-
-	if (pos > last + 1)   // This shouldn't happen.
-		pos = last+1;
-
-	if (last < row->pos())
-                cursor_vpos = 0;
-	else if (pos > last ||
-	    (pos - 1 >= row->pos() &&
-	     (row->par()->IsSeparator(pos) ||
-	      (row->par()->table && row->par()->IsNewline(pos))
-	      )))
-		/// Place cursor after char at (logical) position pos-1
-		cursor_vpos = (bidi_level(pos-1) % 2 == 0)
-			? log2vis(pos-1) + 1 : log2vis(pos-1);
-	else
-		/// Place cursor before char at (logical) position pos
-		cursor_vpos = (bidi_level(pos) % 2 == 0)
-			? log2vis(pos) : log2vis(pos) + 1;
-
-#ifndef NEW_TABULAR
-	/* table stuff -- begin*/
-	if (row->par()->table) {
-		int cell = NumberOfCell(row->par(), row->pos());
-		float x_old = x;
-		x += row->par()->table->GetBeginningOfTextInCell(cell);
-		for (LyXParagraph::size_type vpos = row->pos(); vpos < cursor_vpos; ++vpos)  {
-			pos = vis2log(vpos);
-			if (row->par()->IsNewline(pos)) {
-				x = x_old + row->par()->table->WidthOfColumn(cell);
-				x_old = x;
-				++cell;
-				x += row->par()->table->GetBeginningOfTextInCell(cell);
-			} else {
-				x += SingleWidth(row->par(), pos);
-			}
-		}
-	} else {
-		/* table stuff -- end*/
-#endif
-		LyXParagraph::size_type main_body =
-			BeginningOfMainBody(row->par());
-		if (main_body > 0 &&
-		    (main_body-1 > last || 
-		     !row->par()->IsLineSeparator(main_body-1)))
-			main_body = 0;
-
-		for (LyXParagraph::size_type vpos = row->pos(); vpos < cursor_vpos; ++vpos)  {
-			pos = vis2log(vpos);
-			if (main_body > 0 && pos == main_body-1) {
-				x += fill_label_hfill +
-					lyxfont::width(textclasslist
-						       .Style(bview->buffer()->params.textclass,
-							      row->par()->GetLayout())
-						       .labelsep,
-						       GetFont(row->par(), -2));
-				if (row->par()->IsLineSeparator(main_body-1))
-					x -= SingleWidth(row->par(), main_body-1);
-			}
-			if (HfillExpansion(row, pos)) {
-				x += SingleWidth(row->par(), pos);
-				if (pos >= main_body)
-					x += fill_hfill;
-				else 
-					x += fill_label_hfill;
-			}
-			else if (row->par()->IsSeparator(pos)) {
-				x += SingleWidth(row->par(), pos);
-				if (pos >= main_body)
-					x += fill_separator;
-			} else
-				x += SingleWidth(row->par(), pos);
-		}
-#ifndef NEW_TABULAR
-	}
-#endif
-	cursor.x = int(x);
-   
-	cursor.x_fix = cursor.x;
-	cursor.row() = row;
-#endif
 	if (setfont)
 		SetCurrentFont(bview);
 }
@@ -2979,7 +2906,8 @@ void LyXText::SetCurrentFont(BufferView * bview) const
 		}
 	}
 
-	current_font = cursor.par()->GetFontSettings(bview->buffer()->params, pos);
+	current_font =
+		cursor.par()->GetFontSettings(bview->buffer()->params, pos);
 	real_current_font = GetFont(bview->buffer(), cursor.par(), pos);
 }
 

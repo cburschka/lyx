@@ -29,6 +29,9 @@ lyx_SOURCES = \
 	CutAndPaste.h \
 	DepTable.C \
 	DepTable.h \
+	FloatList.C \
+	FloatList.h \
+	Floating.h \
 	FontInfo.C \
 	FontInfo.h \
 	FontLoader.C \

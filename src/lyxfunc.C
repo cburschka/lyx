@@ -56,6 +56,10 @@ using std::istringstream;
 #include "insets/insetexternal.h"
 #include "insets/insetgraphics.h"
 #include "insets/insetfoot.h"
+#include "insets/insetmarginal.h"
+#include "insets/insetminipage.h"
+#include "insets/insetfloat.h"
+#include "insets/insetlist.h"
 #include "insets/insettabular.h"
 #include "mathed/formulamacro.h"
 #include "toolbar.h"
@@ -1996,16 +2000,17 @@ string LyXFunc::Dispatch(int ac,
 	
 	case LFUN_INSET_TEXT:
 	{
-		InsetText * new_inset = new InsetText();
+		InsetText * new_inset = new InsetText;
 		if (owner->view()->insertInset(new_inset))
 			new_inset->Edit(owner->view(), 0, 0, 0);
 		else
 			delete new_inset;
 	}
 	break;
+	
 	case LFUN_INSET_ERT:
 	{
-		InsetERT * new_inset = new InsetERT();
+		InsetERT * new_inset = new InsetERT;
 		if (owner->view()->insertInset(new_inset))
 			new_inset->Edit(owner->view(), 0, 0, 0);
 		else
@@ -2015,7 +2020,7 @@ string LyXFunc::Dispatch(int ac,
 	
 	case LFUN_INSET_EXTERNAL:
 	{
-		InsetExternal * new_inset = new InsetExternal();
+		InsetExternal * new_inset = new InsetExternal;
 		if (owner->view()->insertInset(new_inset))
 			new_inset->Edit(owner->view(), 0, 0, 0);
 		else
@@ -2025,7 +2030,7 @@ string LyXFunc::Dispatch(int ac,
 	
 	case LFUN_INSET_FOOTNOTE:
 	{
-		InsetFoot * new_inset = new InsetFoot();
+		InsetFoot * new_inset = new InsetFoot;
 		if (owner->view()->insertInset(new_inset))
 			new_inset->Edit(owner->view(), 0, 0, 0);
 		else
@@ -2033,6 +2038,46 @@ string LyXFunc::Dispatch(int ac,
 	}
 	break;
 
+	case LFUN_INSET_MARGINAL:
+	{
+		InsetMarginal * new_inset = new InsetMarginal;
+		if (owner->view()->insertInset(new_inset))
+			new_inset->Edit(owner->view(), 0, 0, 0);
+		else
+			delete new_inset;
+	}
+	break;
+
+	case LFUN_INSET_MINIPAGE:
+	{
+		InsetMinipage * new_inset = new InsetMinipage;
+		if (owner->view()->insertInset(new_inset))
+			new_inset->Edit(owner->view(), 0, 0, 0);
+		else
+			delete new_inset;
+	}
+	break;
+
+	case LFUN_INSET_FLOAT:
+	{
+		InsetFloat * new_inset = new InsetFloat;
+		if (owner->view()->insertInset(new_inset))
+			new_inset->Edit(owner->view(), 0, 0, 0);
+		else
+			delete new_inset;
+	}
+	break;
+
+	case LFUN_INSET_LIST:
+	{
+		InsetList * new_inset = new InsetList;
+		if (owner->view()->insertInset(new_inset))
+			new_inset->Edit(owner->view(), 0, 0, 0);
+		else
+			delete new_inset;
+	}
+	break;
+	
 	case LFUN_INSET_TABULAR:
 	{
 		int r = 2, c = 2;

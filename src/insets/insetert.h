@@ -29,21 +29,23 @@ class Painter;
 */
 class InsetERT : public InsetCollapsable {
 public:
-    ///
-    InsetERT();
-    ///
-    ~InsetERT() {}
-    ///
-    Inset * Clone() const;
-    ///
-    char const * EditMessage() const;
-    ///
-    bool InsertInset(BufferView *, Inset *);
-    ///
-    void SetFont(BufferView *, LyXFont const &, bool toggleall = false);
-    ///
-    void Edit(BufferView *, int, int, unsigned int);
-    ///
+	///
+	InsetERT();
+	///
+	~InsetERT() {}
+	///
+	void Write(Buffer const * buf, ostream & os) const;
+	///
+	Inset * Clone() const;
+	///
+	char const * EditMessage() const;
+	///
+	bool InsertInset(BufferView *, Inset *);
+	///
+	void SetFont(BufferView *, LyXFont const &, bool toggleall = false);
+	///
+	void Edit(BufferView *, int, int, unsigned int);
+	///
 };
 
 #endif

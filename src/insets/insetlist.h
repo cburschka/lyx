@@ -6,13 +6,11 @@
  *
  *           Copyright 1998 The LyX Team.
  *
- *======================================================
+ * ======================================================
  */
-// The pristine updatable inset: Text
 
-
-#ifndef INSETFOOT_H
-#define INSETFOOT_H
+#ifndef InsetList_H
+#define InsetList_H
 
 #ifdef __GNUG__
 #pragma interface
@@ -25,13 +23,13 @@ class Painter;
 /** The footnote inset
   
 */
-class InsetFoot : public InsetCollapsable {
+class InsetList : public InsetCollapsable {
 public:
 	///
 	explicit
-	InsetFoot();
+	InsetList();
 	///
-	~InsetFoot() {}
+	~InsetList() {}
 	///
 	void Write(Buffer const * buf, ostream & os) const;
 	///

@@ -101,9 +101,13 @@ private:
     string label;
     ///
     bool autocollapse;
+protected:
+	// Instead of making these ints protected we could have a
+	// protected method "clickInButton" (Lgb)
     ///
     mutable int
 	button_length, button_top_y, button_bottom_y;
+private:
     ///
     int widthOffset;
 };

@@ -26,6 +26,8 @@
 #include "support/block.h"
 #include "language.h"
 
+#define NEW_WAY 1
+
 class BufferParams;
 class LyXBuffer;
 class TexRow;
@@ -56,6 +58,7 @@ public:
 		///
 		MINIPAGE_ALIGN_BOTTOM
 	};
+#ifndef NEW_INSETS
 	///
 	enum META_KIND {
 		///
@@ -109,7 +112,7 @@ public:
 		///
 		WIDE_TAB    // CFO-G, 971106
 	};
-	
+#endif
 	///
 	typedef char value_type;
 	///
@@ -230,7 +233,7 @@ public:
 	
 	///
 	LyXTextClass::LayoutList::size_type layout;
-	
+#ifndef NEW_INSETS
 	/**
 	  \begin{itemize}
 	  \item no footnote, closed footnote, 
@@ -242,7 +245,7 @@ public:
 
 	/// footnote, margin, fig, tab
 	footnote_kind footnotekind;
-   
+#endif
 	//@Man: the LyX- DTP-switches
 	//@{
 	///
@@ -421,8 +424,16 @@ public:
 					      size_type endpos) const;
 	///
 	void InsertChar(size_type pos, char c);
+#ifdef NEW_WAY
+	///
+	void InsertChar(size_type pos, char c, LyXFont const &);
+#endif
 	///
 	void InsertInset(size_type pos, Inset * inset);
+#ifdef NEW_WAY
+	///
+	void InsertInset(size_type pos, Inset * inset, LyXFont const &);
+#endif
 	///
 	bool InsertInsetAllowed(Inset * inset);
 	///
@@ -502,10 +513,6 @@ public:
 			   int type, char const * width, char const * widthp);
 	///
         void UnsetPExtraType(BufferParams const &);
-#if 0
-	///
-	bool RoffContTableRows(std::ostream &, size_type i, int actcell);
-#endif
 	///
 	bool linuxDocConvertChar(char c, string & sgml_string);
 	///

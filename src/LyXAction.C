@@ -218,6 +218,8 @@ void LyXAction::init()
 		  Noop },
 		{ LFUN_INSET_FOOTNOTE, "footnote-inset-insert",
 		  N_("Insert Footnote"), Noop },
+		{ LFUN_INSET_MARGINAL, "marginalnote-inset-insert",
+		  N_("Insert Marginalnote"), Noop },
 		{ LFUN_RIGHTSEL, "forward-select", N_("Select next char"),
 		  ReadOnly },
 		{ LFUN_HFILL, "hfill-insert",
@@ -394,6 +396,9 @@ void LyXAction::init()
 		{ LFUN_DATE_INSERT, "date-insert", "", Noop },
 		{ LFUN_PARAGRAPH_SPACING, "paragraph-spacing", "", Noop },
 		{ LFUN_SET_COLOR, "set-color", "", Noop },
+		{ LFUN_INSET_MINIPAGE, "minipage-inset-insert", "", Noop },
+		{ LFUN_INSET_FLOAT, "float-inset-insert", "", Noop },
+		{ LFUN_INSET_LIST, "list-inset-insert", "", Noop },
 		{ LFUN_NOACTION, "", "", Noop }
 	};
 

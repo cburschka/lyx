@@ -255,6 +255,10 @@ enum kb_action {
 	LFUN_LOAVIEW,			// Dekel 20000519
  	LFUN_SET_COLOR,			// SLior 20000611
 	LFUN_INSET_EXTERNAL,		// Alstrup 20000609
+	LFUN_INSET_MARGINAL,            // Lgb 20000626
+	LFUN_INSET_MINIPAGE,            // Lgb 20000627
+	LFUN_INSET_FLOAT,               // Lgb 20000627
+	LFUN_INSET_LIST,                // Lgb 20000627
 	LFUN_LASTACTION  /* this marks the end of the table */
 };
 

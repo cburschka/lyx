@@ -195,6 +195,11 @@ private:
     int cpos(BufferView *) const;
     LyXParagraph * cpar(BufferView *) const;
     Row * crow(BufferView *) const;
+
+	/// This instead of a macro
+	LyXText * TEXT(BufferView * bv) const {
+		return getLyXText(bv);
+	}
 	
     /* Private structures and variables */
     ///

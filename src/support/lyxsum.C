@@ -126,6 +126,7 @@ unsigned long lyx::sum(char const * file)
 #else
 	ostrstream ostr;
 	ostr << ifs.rdbuf();
+	ostr << '\0';
 	char * tmp = ostr.str();
 	if (!tmp) return 0; // empty file
 	string w(tmp, ostr.tellp());

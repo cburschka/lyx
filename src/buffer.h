@@ -375,11 +375,6 @@ private:
 	void pop_tag(std::ostream & os, char const * tag,
 		     int & pos, char stack[5][3]);
 
-#if 0
-	///
-	void RoffAsciiTable(std::ostream &, LyXParagraph * par);
-#endif
-	
 	/// is save needed
 	mutable bool lyx_clean;
 	

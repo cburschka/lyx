@@ -207,6 +207,7 @@ int LyXText::SingleWidth(BufferView * bview, LyXParagraph * par,
 	} else if (IsHfillChar(c)) {
 		return 3;	/* Because of the representation
 				 * as vertical lines */
+#ifndef NEW_INSETS
 	} else if (c == LyXParagraph::META_FOOTNOTE ||
 		   c == LyXParagraph::META_MARGIN ||
 		   c == LyXParagraph::META_FIG ||
@@ -241,6 +242,7 @@ int LyXText::SingleWidth(BufferView * bview, LyXParagraph * par,
 		font.decSize();
 		font.decSize();
 		return lyxfont::width(fs, font);
+#endif
 	} else if (c == LyXParagraph::META_INSET) {
 		Inset * tmpinset = par->GetInset(pos);
 		if (tmpinset) {
@@ -420,6 +422,7 @@ bool LyXText::IsBoundary(Buffer const * buf, LyXParagraph * par,
 	return rtl != rtl2;
 }
 
+
 bool LyXText::IsBoundary(Buffer const * buf, LyXParagraph * par,
 			 LyXParagraph::size_type pos,
 			 LyXFont const & font) const
@@ -508,7 +511,7 @@ void LyXText::draw(BufferView * bview, Row const * row,
 
 	LyXFont font = GetFont(bview->buffer(), row->par(), pos);
 	LyXFont font2 = font;
-
+#ifndef NEW_INSETS
 	if (c == LyXParagraph::META_FOOTNOTE
 	    || c == LyXParagraph::META_MARGIN
 	    || c == LyXParagraph::META_FIG
@@ -559,7 +562,9 @@ void LyXText::draw(BufferView * bview, Row const * row,
 
 		++vpos;
 		return;
-	} else if (c == LyXParagraph::META_INSET) {
+	} else
+#endif
+		if (c == LyXParagraph::META_INSET) {
 		Inset const * tmpinset = row->par()->GetInset(pos);
 		if (tmpinset) {
 			tmpinset->draw(bview, font, offset+row->baseline(), x,
@@ -700,14 +705,14 @@ int LyXText::LeftMargin(BufferView * bview, Row const * row) const
 				  textclasslist
 				  .TextClass(bview->buffer()->params.textclass)
 				  .defaultfont());
-	
+#ifndef NEW_INSETS
 	if (row->par()->footnoteflag == LyXParagraph::OPEN_FOOTNOTE)  {
 		LyXFont font(LyXFont::ALL_SANE);
 		font.setSize(LyXFont::SIZE_SMALL);
 		x += lyxfont::width("Mwide-figM", font)
 			+ LYX_PAPER_MARGIN/2;
 	}
-	
+#endif
 	// this is the way, LyX handles the LaTeX-Environments.
 	// I have had this idea very late, so it seems to be a
 	// later added hack and this is true
@@ -916,11 +921,12 @@ int LyXText::RightMargin(Buffer const * buf, Row const * row) const
 				       textclasslist
 				       .TextClass(buf->params.textclass)
 				       .defaultfont());
-	
+
+#ifndef NEW_INSETS
 	if (row->par()->footnoteflag == LyXParagraph::OPEN_FOOTNOTE)  {
 		x += LYX_PAPER_MARGIN / 2;
 	}
-	
+#endif
 	// this is the way, LyX handles the LaTeX-Environments.
 	// I have had this idea very late, so it seems to be a
 	// later added hack and this is true
@@ -982,6 +988,7 @@ int LyXText::LabelEnd (BufferView * bview, Row const * row) const
 }
 
 
+#ifndef NEW_TABULAR
 /* table stuff -- begin*/
 int LyXText::NumberOfCell(LyXParagraph * par,
 			  LyXParagraph::size_type pos) const
@@ -1011,7 +1018,6 @@ int LyXText::WidthOfCell(BufferView * bview, LyXParagraph * par,
 }
 
 
-#ifndef NEW_TABULAR
 bool LyXText::HitInTable(BufferView * bview, Row * row, int x) const
 {
 	float tmpx;
@@ -1022,7 +1028,6 @@ bool LyXText::HitInTable(BufferView * bview, Row * row, int x) const
 		       fill_hfill, fill_label_hfill, false);
 	return (x > tmpx && x < tmpx + row->par()->table->WidthOfTable());
 }
-#endif
 
 
 bool LyXText::MouseHitInTable(BufferView * bview, int x, long y) const
@@ -1033,6 +1038,7 @@ bool LyXText::MouseHitInTable(BufferView * bview, int x, long y) const
 
 
 /* table stuff -- end*/
+#endif
 
 
 // get the next breakpoint in a given paragraph
@@ -1927,6 +1933,7 @@ void LyXText::BreakParagraph(BufferView * bview, char keep_layout)
 }
 
 
+#ifndef NEW_INSETS
 void LyXText::OpenFootnote(BufferView * bview)
 {
    LyXParagraph * endpar,* tmppar;
@@ -1981,8 +1988,10 @@ void LyXText::OpenFootnote(BufferView * bview)
    SetCursor(bview, par->next, 0);
    sel_cursor = cursor;
 }
-   
+#endif
 
+
+#ifndef NEW_TABULAR
 /* table stuff -- begin*/
 
 void LyXText::TableFeatures(BufferView * bview, int feature, string const & val) const
@@ -2086,8 +2095,12 @@ void LyXText::TableFeatures(BufferView * bview, int feature) const
 	  Language const * lang = cursor.par()->getParLanguage(bview->buffer()->params);
 	  LyXFont font(LyXFont::ALL_INHERIT,lang);
           for (int i = 0; i < number; ++i) {
+#ifdef NEW_WAY
+              cursor.par()->InsertChar(pos, LyXParagraph::META_NEWLINE, font);
+#else
               cursor.par()->InsertChar(pos, LyXParagraph::META_NEWLINE);
 	      cursor.par()->SetFont(pos, font);
+#endif
 	  }
 		
           /* append the row into the table */
@@ -2125,8 +2138,12 @@ void LyXText::TableFeatures(BufferView * bview, int feature) const
 	  Language const * lang = cursor.par()->getParLanguage(bview->buffer()->params);
 	  LyXFont font(LyXFont::ALL_INHERIT,lang);
           for (int i = 0; i < number; ++i) {
+#ifdef NEW_WAY
+              cursor.par()->InsertChar(pos, LyXParagraph::META_NEWLINE, font);
+#else
               cursor.par()->InsertChar(pos, LyXParagraph::META_NEWLINE);
 	      cursor.par()->SetFont(pos, font);
+#endif
 	  }
 
           /* append the row into the table */
@@ -2143,8 +2160,14 @@ void LyXText::TableFeatures(BufferView * bview, int feature) const
           do{
               if (pos && (cursor.par()->IsNewline(pos-1))){
                   if (cursor.par()->table->AppendCellAfterCell(cell_org, cell)) {
+#ifdef NEW_WAY
+                      cursor.par()->InsertChar(pos,
+					       LyXParagraph::META_NEWLINE,
+					       font);
+#else
                       cursor.par()->InsertChar(pos, LyXParagraph::META_NEWLINE);
 		      cursor.par()->SetFont(pos, font);
+#endif
                       if (pos <= cursor.pos())
                           cursor.pos(cursor.pos() + 1);
                       ++pos;
@@ -2157,8 +2180,13 @@ void LyXText::TableFeatures(BufferView * bview, int feature) const
              This saves one byte memory per table ;-) */
           if (cursor.par()->table->AppendCellAfterCell(cell_org, cell)) {
 		  LyXParagraph::size_type last = cursor.par()->Last();
+#ifdef NEW_WAY
+		  cursor.par()->InsertChar(last,
+					   LyXParagraph::META_NEWLINE, font);
+#else
 		  cursor.par()->InsertChar(last, LyXParagraph::META_NEWLINE);
 		  cursor.par()->SetFont(last, font);
+#endif
 	  }
 		
           /* append the column into the table */ 
@@ -2656,6 +2684,7 @@ void LyXText::BackspaceInTable(BufferView * bview)
 }
 
 /* table stuff -- end*/
+#endif
 
 
 // Just a macro to make some thing easier. 
@@ -2895,6 +2924,7 @@ void LyXText::charInserted()
 	}
 }
 
+
 void LyXText::PrepareToPrint(BufferView * bview,
 			     Row * row, float & x,
 			     float & fill_separator, 
@@ -2910,6 +2940,7 @@ void LyXText::PrepareToPrint(BufferView * bview,
 	fill_separator = 0;
 	fill_label_hfill = 0;
 
+#ifndef NEW_INSETS
         bool is_rtl = row->par()->isRightToLeftPar(bview->buffer()->params);
 
 	if (is_rtl) {
@@ -2919,7 +2950,9 @@ void LyXText::PrepareToPrint(BufferView * bview,
 			font.setSize(LyXFont::SIZE_SMALL);
 			x += lyxfont::width("Mwide-figM", font);
 		}
-	} else if (workWidth(bview) > 0)
+	} else
+#endif
+		if (workWidth(bview) > 0)
 		x = LeftMargin(bview, row);
 	else
 		x = 0;
@@ -3969,6 +4002,7 @@ void LyXText::GetVisibleRow(BufferView * bview, int y_offset, int x_offset,
 	}
 
 	int box_x = 0;
+#ifndef NEW_INSETS
 	if (row_ptr->par()->footnoteflag == LyXParagraph::OPEN_FOOTNOTE) {
 		LyXFont font(LyXFont::ALL_SANE);
 		font.setSize(LyXFont::SIZE_FOOTNOTE);
@@ -4086,7 +4120,7 @@ void LyXText::GetVisibleRow(BufferView * bview, int y_offset, int x_offset,
 			  workWidth(bview) - LYX_PAPER_MARGIN,
 			  y_offset, LColor::footnote);
 	}
-
+#endif
 	// Draw appendix lines
 	LyXParagraph * firstpar = row_ptr->par()->FirstPhysicalPar();
 	if (firstpar->appendix){
@@ -4800,7 +4834,8 @@ int LyXText::GetColumnNearX(BufferView * bview, Row * row, int & x,
 	return c;
 }
 
-   
+
+#ifndef NEW_INSETS
 /* turn the selection into a new environment. If there is no selection,
 * create an empty environment */ 
 void LyXText::InsertFootnoteEnvironment(BufferView * bview, 
@@ -4943,7 +4978,8 @@ void LyXText::InsertFootnoteEnvironment(BufferView * bview,
 
    ClearSelection();
 }
-   
+#endif
+
 
 // returns pointer to a specified row
 Row * LyXText::GetRow(LyXParagraph * par,

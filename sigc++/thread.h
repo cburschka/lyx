@@ -191,13 +191,13 @@ class Private<int> : private Private_
         int& operator =(const int& t)
           {return (((int&)*this)=t);}
 
-        operator int& ()
-          {
-           int *value=(int*)get();
-           if (!value)
-             set((void*)(value=new int(0)));  
-           return *(value); 
-          }
+	  operator int& ();
+          //{
+          // int *value=(int*)get();
+          // if (!value)
+          //   set((void*)(value=new int(0)));  
+          // return *(value); 
+          //}
 
         Private() { create(&dtor); }
         ~Private() { destroy(); }

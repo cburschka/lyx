@@ -37,6 +37,13 @@ InsetMarginal::InsetMarginal() : InsetCollapsable()
 }
 
 
+void InsetMarginal::Write(Buffer const * buf, ostream & os) const
+{
+	os << getInsetName() << "\n";
+	InsetCollapsable::Write(buf, os);
+}
+
+
 Inset * InsetMarginal::Clone() const
 {
 	InsetMarginal * result = new InsetMarginal;
@@ -56,10 +63,10 @@ char const * InsetMarginal::EditMessage() const
 int InsetMarginal::Latex(Buffer const * buf,
 			 ostream & os, bool fragile, bool fp) const
 {
-    os << "\\marginpar{%" << endl;
+    os << "\\marginpar{%\n";
     
     int i = InsetText::Latex(buf, os, fragile, fp);
-    os << "}%" << endl;
+    os << "}%\n";
     
     return i + 2;
 }
