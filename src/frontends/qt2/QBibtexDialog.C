@@ -18,6 +18,7 @@
 #include "Dialogs.h"
 #include "ControlBibtex.h" 
 #include "gettext.h" 
+#include "debug.h"
 
 #include "support/filetools.h"
 
@@ -40,10 +41,12 @@ void QBibtexDialog::change_adaptor()
 
 void QBibtexDialog::browsePressed()
 {
-	string file(QFileDialog::getOpenFileName(QString::null, 
-		_("BibTeX style files (*.bst)"), this, 0, _("Select a BibTeX style")).latin1()); 
-	if (!file.empty()) {
-		styleED->setText(ChangeExtension(OnlyFilename(file), "").c_str());
+	QString file = QFileDialog::getOpenFileName(QString::null, 
+		_("BibTeX style files (*.bst)"), this, 0, _("Select a BibTeX style"));
+	lyxerr << "HELLO" << std::endl;
+	if (!file.isNull()) {
+		lyxerr << "MONKEYS" << std::endl;
+		styleED->setText(ChangeExtension(OnlyFilename(file.latin1()), "").c_str());
 		form_->changed();
 	}
 }
