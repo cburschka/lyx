@@ -104,7 +104,7 @@ LyX::LyX(int * argc, char * argv[])
 
 	if (first_start) {
 		string splash = i18nLibFileSearch("examples", "splash.lyx");
-		lyxerr.debug() << "Opening splash document "
+		lyxerr[Debug::INIT] << "Opening splash document "
 			       << splash << "..." << endl;
 		Buffer * loadb = bufferlist.loadLyXFile(splash);
 		if (loadb != 0) {
@@ -113,7 +113,7 @@ LyX::LyX(int * argc, char * argv[])
 	}
 
 	if (last_loaded != 0) {
-		lyxerr.debug() << "Yes we loaded some files." << endl;
+		lyxerr[Debug::INIT] << "Yes we loaded some files." << endl;
 		if (lyxrc.use_gui)
 			lyxGUI->regBuf(last_loaded);
 	}
@@ -356,7 +356,7 @@ void LyX::init(int */*argc*/, char **argv, bool gui)
         // Calculate screen dpi as average of x-DPI and y-DPI:
 	if (lyxrc.use_gui) {
 		lyxrc.dpi = getScreenDPI();
-		lyxerr[Debug::INFO] << "DPI setting detected to be "
+		lyxerr[Debug::INIT] << "DPI setting detected to be "
                                                 << lyxrc.dpi + 0.5 << endl;
 	} else {
 		lyxrc.dpi = 1; // I hope this is safe
@@ -730,7 +730,8 @@ void error_handler(int err_sig)
 	bufferlist.emergencyWriteAll();
 
 	lyxerr << "Bye." << endl;
-	if(err_sig!= SIGHUP && (!GetEnv("LYXDEBUG").empty() || err_sig == SIGSEGV))
+	if(err_sig!= SIGHUP && 
+	   (!GetEnv("LYXDEBUG").empty() || err_sig == SIGSEGV))
 		lyx::abort();
 	exit(0);
 }

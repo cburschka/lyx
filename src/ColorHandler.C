@@ -144,8 +144,9 @@ GC LyXColorHandler::getGCForeground(LColor::color c)
 			    "color with (r,g,b)=(") 
 		       << cmap[closest_pixel].red << ","
 		       << cmap[closest_pixel].green << ","
-		       << cmap[closest_pixel].blue << ") instead.\n"
-		       << "Pixel [" << closest_pixel << "] is used." << endl;
+		       << cmap[closest_pixel].blue << _(") instead.\n")
+		       << _("Pixel [") << closest_pixel << _("] is used.") 
+		       << endl;
 		val.foreground = cmap[closest_pixel].pixel;
 		delete[] cmap;
 	}

@@ -77,12 +77,25 @@
 # Reprise des corrections proposées par Olivier Faucheux
 # (olivier.faucheux@depinfo.enseeiht.fr) 29/2/00
 # maladresses d'expression diverses
+# ------------------------------------------------------------------------
+# MAJ 1.1.5pre3 par J.P. Chrétien (chretien@cert.fr) 25/05/00
+# nouveautés:
+#   - messagerie temporaire dans le buffer pour info sur le style courant
+#   - messagerie sur les remplacements de couleurs
+#   - accès aux références personnalisées (varioref et prettyref)
+#   - mise à linfinitif de toutes les expressions impersonnelles
+#   - version française de la références à la GPL (E. Gureghian)
+# Revue rapide de la messagerie, problèmes en suspens:
+#   - le « instead » n'est pas traduit à l'exécution (src/lyx_main.C:514)
+#   - peut-on traduire vRef, PrettyRef,... ?
+#   - les raccourcis restent à revoir
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.1.4\n"
-"POT-Creation-Date: 2000-05-21 02:28+0200\n"
+"POT-Creation-Date: 2000-05-21 05:20+0200\n"
 "PO-Revision-Date: 2000-03-10 02:56+01:00\n"
-"Last-Translator:  Olivier Faucheux <olivier.faucheux@depinfo.enseeiht.fr>\n"
+"Last-Translator:  Jean-Pierre Chrétien <chretien@cert.fr>\n"
 "Language-Team: lyxfr <http://www.bde.enseeiht.fr/~faucheo/lyxfr.html>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=ISO-8859-1\n"
@@ -113,7 +126,7 @@ msgstr "Attention : seul le format lyx %.2f peut être lu, pas le %.2f\n"
 #: src/buffer.C:1107
 #, c-format
 msgid "ERROR: need lyxformat %.2f but found %.2f\n"
-msgstr "ERREUR : Seul le format lyx %.2f peut être lu, pas le %.2f\n"
+msgstr "ERREUR : seul le format lyx %.2f peut être lu, pas le %.2f\n"
 
 #: src/buffer.C:1118
 msgid "Warning!"
@@ -135,7 +148,7 @@ msgstr "ERREUR !"
 #: src/buffer.C:1127
 msgid "Old LyX file format found. Use LyX 0.10.x to read this!"
 msgstr ""
-"Fichier enregistré sous un format obsolète. Utilisez LyX 0.10.x pour le "
+"Fichier enregistré sous un format obsolète. Utiliser LyX 0.10.x pour le "
 "relire !"
 
 #: src/buffer.C:1133
@@ -159,7 +172,7 @@ msgid "Error! Cannot write file: "
 msgstr "Erreur ! Impossible d'écrire le fichier : "
 
 #: src/buffer.C:1266 src/buffer.C:1269
-#, fuzzy
+# defuzzifié
 msgid "Error! Cannot open file: "
 msgstr "Erreur ! Impossible de lire le fichier : "
 
@@ -167,12 +180,10 @@ msgstr "Erreur ! Impossible de lire le fichier : "
 msgid "Error: Cannot write file:"
 msgstr "Erreur ! Impossible d'écrire le fichier : "
 
-# fuzzy original désactivé
 #: src/buffer.C:1646
 msgid "Error: Cannot open file: "
 msgstr "Erreur ! Impossible de lire le fichier : "
 
-# fuzzy original désactivé
 #: src/buffer.C:2249 src/buffer.C:2854 src/buffer.C:3519
 msgid "LYX_ERROR:"
 msgstr "ERREUR !"
@@ -326,7 +337,6 @@ msgstr "Le fichier `"
 msgid "' is read-only."
 msgstr "' est en lecture seule."
 
-# fuzzy original désactivé
 #. Ask if the file should be checked out for
 #. viewing/editing, if so: load it.
 #: src/bufferlist.C:468
@@ -444,12 +454,10 @@ msgstr "Police : "
 msgid ", Depth: "
 msgstr ", profondeur : "
 
-# fuzzy original désactivé
 #: src/bufferview_funcs.C:257
 msgid ", Spacing: "
 msgstr ", espacement "
 
-# fuzzy original désactivé
 #: src/bufferview_funcs.C:260
 msgid "Single"
 msgstr "simple|#S"
@@ -458,7 +466,6 @@ msgstr "simple|#S"
 msgid "Onehalf"
 msgstr "un et demi"
 
-# fuzzy original désactivé
 #: src/bufferview_funcs.C:266
 msgid "Double"
 msgstr ""
@@ -593,7 +600,6 @@ msgstr "Mise en garde ChkTeX n°"
 msgid "LyX: Unknown X11 color "
 msgstr "LyX : couleur X11 inconnue "
 
-# fuzzy original désactivé
 #: src/ColorHandler.C:83
 msgid " for "
 msgstr " pour "
@@ -618,7 +624,6 @@ msgstr "LyX: utilisation de la couleur X11 voisine "
 msgid "LyX: Couldn't allocate '"
 msgstr "LyX: ne peut allouer '"
 
-# fuzzy original désactivé
 #: src/ColorHandler.C:139
 msgid "' for "
 msgstr " pour "
@@ -674,7 +679,10 @@ msgid ""
 "Public License as published by the Free Software\n"
 "Foundation; either version 2 of the License, or\n"
 "(at your option) any later version."
-msgstr ""
+msgstr "Ce logiciel est un logiciel libre ; vous pouvez le redistribuer\n"
+"et/ou le modifier sous les termes de la licence GNU GPL\n"
+"telle qu'elle est publiée par la FSF (Fondation pour le logiciel libre),\n"
+"soit dans sa version n°2 soit dans une version ultérieure."
 
 #: src/credits_form.C:64
 msgid ""
@@ -815,7 +823,7 @@ msgstr "Angle :|#L"
 #: src/form1.C:139
 #, no-c-format
 msgid "% of Page|#g"
-msgstr "% de la page|#"
+msgstr "% de la page|#g"
 
 # contrainte de longueur
 #: src/form1.C:142
@@ -988,7 +996,7 @@ msgstr "[pas de fichier]"
 
 #: src/insets/figinset.C:1070
 msgid "[bad file name]"
-msgstr ""
+msgstr "[nom de fichier incorrect]"
 
 #: src/insets/figinset.C:1072
 msgid "[not displayed]"
@@ -1138,7 +1146,6 @@ msgid "ERT"
 msgstr ""
 
 # à revoir
-# fuzzy original désactivé
 #: src/insets/insetert.C:54
 msgid "Opened ERT Inset"
 msgstr "Insert ERT ouvert"
@@ -1148,13 +1155,11 @@ msgid "Not permitted to change font-types inside ERT-insets!"
 msgstr "Modification des polices interdites dans les inserts ERT"
 
 # contrainte de longueur
-# fuzzy original désactivé
 #: src/insets/insetfoot.C:29
 msgid "foot"
 msgstr "pied"
 
 # à revoir
-# fuzzy original désactivé
 #: src/insets/insetfoot.C:52
 msgid "Opened Footnote Inset"
 msgstr "Insert de note de bas de page ouvert"
@@ -1251,7 +1256,6 @@ msgid "Close|#C^["
 msgstr "Fermer|#C^["
 
 #: src/insets/insetlabel.C:56
-#, fuzzy
 msgid "Enter label:"
 msgstr "Insérer étiquette"
 
@@ -1280,22 +1284,18 @@ msgid "Page: "
 msgstr "Page : "
 
 #: src/insets/insetref.C:86
-#, fuzzy
 msgid "vRef: "
-msgstr "Ref : "
+msgstr "vRef : "
 
 #: src/insets/insetref.C:86
-#, fuzzy
 msgid "vPage: "
-msgstr "Page : "
+msgstr "vPage : "
 
 #: src/insets/insetref.C:87
-#, fuzzy
 msgid "PrettyRef: "
-msgstr "Ref : "
+msgstr "PrettyRef : "
 
 # à revoir
-# fuzzy original désactivé
 #: src/insets/insettabular.C:235
 msgid "Opened Tabular Inset"
 msgstr "Insert de tableau ouvert"
@@ -1305,7 +1305,6 @@ msgid "Multicolumns can only be horizontally."
 msgstr "Les multicolonnes ne peuvent être qu'horizontales."
 
 # à revoir
-# fuzzy original désactivé
 #: src/insets/insettext.C:336
 msgid "Opened Text Inset"
 msgstr "Insert de texte ouvert"
@@ -1320,7 +1319,6 @@ msgid " not known"
 msgstr " inconnu"
 
 # à revoir
-# fuzzy original désactivé
 #: src/insets/insettext.C:1509
 msgid "Cannot include more than one paragraph!"
 msgstr ""
@@ -1341,11 +1339,11 @@ msgstr "Insérer URL"
 
 #: src/insets/inseturl.C:164
 msgid "HtmlUrl: "
-msgstr ""
+msgstr "HtmlUrl : "
 
 #: src/insets/inseturl.C:166
 msgid "Url: "
-msgstr ""
+msgstr "Url : "
 
 #: src/intl.C:289 src/intl.C:290
 msgid "other..."
@@ -1459,10 +1457,9 @@ msgstr ""
 msgid "Irish"
 msgstr ""
 
-# fuzzy original désactivé
 #: src/language.C:63
 msgid "Italian"
-msgstr "Italique"
+msgstr ""
 
 #: src/language.C:64
 msgid "Lsorbian"
@@ -1484,10 +1481,9 @@ msgstr ""
 msgid "Portuges"
 msgstr ""
 
-# fuzzy original désactivé
 #: src/language.C:69
 msgid "Romanian"
-msgstr "Romain"
+msgstr ""
 
 #: src/language.C:70
 msgid "Russian"
@@ -1782,7 +1778,6 @@ msgstr "Saut de Page"
 msgid "Lines"
 msgstr "Lignes"
 
-# fuzzy original désactivé
 #: src/layout_forms.C:357 src/layout_forms.C:595 src/layout_forms.C:721
 msgid "Alignment"
 msgstr "Align."
@@ -2073,33 +2068,28 @@ msgstr "Align. spécial des multicol."
 msgid "Special Column Alignment"
 msgstr "Align. spécial des col."
 
-# fuzzy original désactivé
+# à revoir, accord avec les autres mots incertain
 #.  LColor::color, gui, latex, x11, lyx
 #: src/LColor.C:42
 msgid "none"
-msgstr "Terminé"
+msgstr "aucune"
 
-# fuzzy original désactivé
 #: src/LColor.C:43
 msgid "black"
 msgstr "noir"
 
-# fuzzy original désactivé
 #: src/LColor.C:44
 msgid "white"
 msgstr "blanc"
 
-# fuzzy original désactivé
 #: src/LColor.C:45
 msgid "red"
 msgstr "rouge"
 
-# fuzzy original désactivé
 #: src/LColor.C:46
 msgid "green"
 msgstr "vert"
 
-# fuzzy original désactivé
 #: src/LColor.C:47
 msgid "blue"
 msgstr "bleu"
@@ -2112,7 +2102,6 @@ msgstr ""
 msgid "magenta"
 msgstr ""
 
-# fuzzy original désactivé
 #: src/LColor.C:50
 msgid "yellow"
 msgstr "jaune"
@@ -2125,12 +2114,10 @@ msgstr "fond"
 msgid "foreground"
 msgstr "avant-plan"
 
-# fuzzy original désactivé
 #: src/LColor.C:53
 msgid "selection"
 msgstr "sélection"
 
-# fuzzy original désactivé
 #: src/LColor.C:54
 msgid "latex"
 msgstr ""
@@ -2139,7 +2126,6 @@ msgstr ""
 msgid "floats"
 msgstr "flottants"
 
-# fuzzy original désactivé
 #: src/LColor.C:56
 msgid "note"
 msgstr ""
@@ -2164,12 +2150,10 @@ msgstr "commande d'insert"
 msgid "command-inset background"
 msgstr "fond de commande d'insert"
 
-# fuzzy original désactivé
 #: src/LColor.C:62 src/LColor.C:79
 msgid "inset frame"
 msgstr "cadre d'insert"
 
-# fuzzy original désactivé
 #: src/LColor.C:63
 msgid "accent"
 msgstr ""
@@ -2190,7 +2174,6 @@ msgstr "ligne de minipage"
 msgid "special char"
 msgstr "caractère spécial"
 
-# fuzzy original désactivé
 #: src/LColor.C:68
 msgid "math"
 msgstr "mathématique"
@@ -2199,7 +2182,6 @@ msgstr "mathématique"
 msgid "math background"
 msgstr "fond mathématique"
 
-# fuzzy original désactivé
 #: src/LColor.C:70
 msgid "math frame"
 msgstr "cadre mathématique"
@@ -2208,12 +2190,10 @@ msgstr "cadre mathématique"
 msgid "math cursor"
 msgstr "curseur mathématique"
 
-# fuzzy original désactivé
 #: src/LColor.C:72
 msgid "math line"
 msgstr "ligne mathématique"
 
-# fuzzy original désactivé
 #: src/LColor.C:73
 msgid "footnote"
 msgstr "note de bas de page"
@@ -2226,12 +2206,10 @@ msgstr "fond de note de bas de page"
 msgid "footnote frame"
 msgstr "cadre de note de bas de page"
 
-# fuzzy original désactivé
 #: src/LColor.C:76
 msgid "ert"
-msgstr "TeX"
+msgstr "source TeX"
 
-# fuzzy original désactivé
 #: src/LColor.C:77
 msgid "inset"
 msgstr "insert"
@@ -2240,7 +2218,6 @@ msgstr "insert"
 msgid "inset background"
 msgstr "fond d'insert"
 
-# fuzzy original désactivé
 #: src/LColor.C:80
 msgid "error"
 msgstr "erreur"
@@ -2250,7 +2227,6 @@ msgid "end-of-line marker"
 msgstr "marqueur de fin de ligne"
 
 # à revoir
-# fuzzy original désactivé
 #: src/LColor.C:82
 msgid "appendix line"
 msgstr "ligne d'annexe"
@@ -2263,7 +2239,6 @@ msgstr "ligne de ressort vertical"
 msgid "top/bottom line"
 msgstr "ligne haut/bas"
 
-# fuzzy original désactivé
 #: src/LColor.C:85
 msgid "table line"
 msgstr "ligne de table"
@@ -2280,7 +2255,6 @@ msgstr "ligne de tabularonoff"
 msgid "bottom area"
 msgstr "zone basse"
 
-# fuzzy original désactivé
 #: src/LColor.C:91
 msgid "page break"
 msgstr "saut de page"
@@ -2487,16 +2461,14 @@ msgstr "Erreur suivante"
 msgid "Remove all error boxes"
 msgstr "Enlever toutes les marques d'erreur"
 
-# fuzzy original désactivé
 #: src/LyXAction.C:184
 msgid "Insert a new ERT Inset"
-msgstr "Inserer la liste d'index"
+msgstr "Insérer un nouveau ERT"
 
 #: src/LyXAction.C:185 src/lyx_cb.C:2928
 msgid "Insert Figure"
 msgstr "Insérer figure"
 
-# fuzzy original désactivé
 #: src/LyXAction.C:187
 msgid "Insert Graphics"
 msgstr "Insérer graphique"
@@ -2598,7 +2570,6 @@ msgstr "(Dés)Activer la réaffectation des touches"
 msgid "Insert Label"
 msgstr "Insérer étiquette"
 
-# fuzzy original désactivé
 #: src/LyXAction.C:237
 msgid "Change language"
 msgstr "Langue"
@@ -2633,28 +2604,25 @@ msgstr "Sélectionner jusqu'à la fin de la ligne"
 
 #: src/LyXAction.C:264
 msgid "Insert list of algorithms"
-msgstr "Liste des algorithmes"
+msgstr "Insérer liste des algorithmes"
 
 #: src/LyXAction.C:266
-#, fuzzy
 msgid "View list of algorithms"
 msgstr "Liste des algorithmes"
 
 #: src/LyXAction.C:268
 msgid "Insert list of figures"
-msgstr "Liste des figures"
+msgstr "Insérer liste des figures"
 
 #: src/LyXAction.C:270
-#, fuzzy
 msgid "View list of figures"
 msgstr "Liste des figures"
 
 #: src/LyXAction.C:272
 msgid "Insert list of tables"
-msgstr "Liste des tableaux"
+msgstr "Insérer liste des tableaux"
 
 #: src/LyXAction.C:274
-#, fuzzy
 msgid "View list of tables"
 msgstr "Liste des tableaux"
 
@@ -2678,7 +2646,6 @@ msgstr "Insérer un symbole math."
 msgid "Math mode"
 msgstr "Mode Mathématique"
 
-# fuzzy original désactivé
 #: src/LyXAction.C:302
 msgid "Insert a new Number Inset"
 msgstr "Insérer numéro de page|#P"
@@ -2719,16 +2686,14 @@ msgstr "Insérer une référence croisée"
 msgid "Insert Table"
 msgstr "Insérer un tableau"
 
-# fuzzy original désactivé
 #: src/LyXAction.C:350
 msgid "Insert a new Tabular Inset"
-msgstr "Insérer un tableau"
+msgstr "Nouvel insert de tableau"
 
 #: src/LyXAction.C:351
 msgid "Toggle TeX style"
 msgstr "(Dés)activer le  mode TeX"
 
-# fuzzy original désactivé
 #: src/LyXAction.C:353
 msgid "Insert a new Text Inset"
 msgstr "Nouvel insert de texte"
@@ -2791,7 +2756,6 @@ msgid "Update|Uu#u"
 msgstr "Mise à jour|Uu#u"
 
 #: src/lyx.C:133
-#, fuzzy
 msgid "Type|Tt#t"
 msgstr "Type :|#T"
 
@@ -2805,31 +2769,27 @@ msgstr "Insérer référence|#I^M"
 
 #: src/lyx.C:166
 msgid "Insert Page Number|#P"
-msgstr "Insérer numéro de page|#P"
+msgstr "Insérer n° de page|#P"
 
 #: src/lyx.C:170
 msgid "Go to Reference|#G"
-msgstr "Positionnement sur référence||#G"
+msgstr "Aller à la référence|#A"
 
 #: src/lyx.C:177
-#, fuzzy
 msgid "Sort keys|#S"
-msgstr "Série :|#S"
+msgstr "Tri des étiquettes|#S"
 
 #: src/lyx.C:181
-#, fuzzy
 msgid "Insert vReference|#V"
-msgstr "Insérer référence"
+msgstr "Insérer vRéférence|#V"
 
 #: src/lyx.C:185
-#, fuzzy
 msgid "Insert vPage Number|#N"
-msgstr "Insérer numéro de page|#P"
+msgstr "Insérer n° de vPage|#N"
 
 #: src/lyx.C:189
-#, fuzzy
 msgid "Insert Pretty Ref|#T"
-msgstr "Insérer numéro de page|#P"
+msgstr "Insérer Pretty Ref|#P"
 
 #: src/lyx_cb.C:224
 msgid "Save failed. Rename and try again?"
@@ -2845,7 +2805,7 @@ msgstr "Modèles"
 
 #: src/lyx_cb.C:254
 msgid "Enter Filename to Save Document as"
-msgstr "Entrez le nom sous lequel le fichier sera sauvé"
+msgstr "Entrer le nom sous lequel le fichier sera sauvé"
 
 #: src/lyx_cb.C:270
 msgid "Same name as document already has:"
@@ -2925,7 +2885,7 @@ msgstr "Un avertissement a été détecté."
 
 #: src/lyx_cb.C:388
 msgid "Use 'Edit->Go to Error' to find it."
-msgstr "Utilisez 'Éditer->Atteindre Erreur' pour le trouver."
+msgstr "Utiliser 'Éditer->Atteindre Erreur' pour le trouver."
 
 #: src/lyx_cb.C:391
 msgid " warnings found."
@@ -2933,7 +2893,7 @@ msgstr " avertissements détectés."
 
 #: src/lyx_cb.C:392
 msgid "Use 'Edit->Go to Error' to find them."
-msgstr "Utilisez 'Éditer->Atteindre Erreur' pour les trouver."
+msgstr "Utiliser 'Éditer->Atteindre Erreur' pour les trouver."
 
 #: src/lyx_cb.C:394
 msgid "Chktex run successfully"
@@ -3038,7 +2998,7 @@ msgstr "Table des matières"
 
 #: src/lyx_cb.C:1194 src/mathed/formula.C:1028
 msgid "Enter new label to insert:"
-msgstr "Entrez une nouvelle étiquette à insérer :"
+msgstr "Entrer une nouvelle étiquette à insérer :"
 
 #: src/lyx_cb.C:1218
 msgid "Insert Reference"
@@ -3163,11 +3123,11 @@ msgstr "ERREUR ! Impossible d'imprimer"
 
 #: src/lyx_cb.C:2781
 msgid "Check 'range of pages'!"
-msgstr "Vérifiez les pages !"
+msgstr "Vérifier les pages !"
 
 #: src/lyx_cb.C:2799
 msgid "Check 'number of copies'!"
-msgstr "Vérifiez le nombre de copies !"
+msgstr "Vérifier le nombre de copies !"
 
 #: src/lyx_cb.C:2908
 msgid "Error:"
@@ -3179,7 +3139,7 @@ msgstr "Impossible d'imprimer"
 
 #: src/lyx_cb.C:2910
 msgid "Check that your parameters are correct"
-msgstr "Vérifiez que les paramètres sont corrects"
+msgstr "Vérifier que les paramètres sont corrects"
 
 #: src/lyx_cb.C:2955
 msgid "Inserting figure..."
@@ -3364,7 +3324,6 @@ msgstr ""
 msgid "Default"
 msgstr "défaut"
 
-# fuzzy original désactivé
 #: src/lyxfont.C:413
 msgid "Language: "
 msgstr "langue : "
@@ -3440,7 +3399,6 @@ msgstr "Marque désactivée"
 msgid "Mark on"
 msgstr "Marque Activée"
 
-# fuzzy original désactivé
 #: src/lyxfunc.C:1989
 msgid "Unknown spacing argument: "
 msgstr "Argument manquant"
@@ -3485,7 +3443,6 @@ msgstr "Ouverture du document fils"
 msgid "Unknown kind of footnote"
 msgstr "Type de note de bas de page inconnu"
 
-# fuzzy original désactivé
 #: src/lyxfunc.C:2629
 msgid "No document open"
 msgstr "* Aucun document ouvert *"
@@ -3496,7 +3453,7 @@ msgstr "Le document est en lecture seule"
 
 #: src/lyxfunc.C:2729
 msgid "Enter Filename for new document"
-msgstr "Entrez le nom du fichier du nouveau document"
+msgstr "Entrer le nom du fichier du nouveau document"
 
 #: src/lyxfunc.C:2730
 msgid "newfile"
@@ -3531,7 +3488,7 @@ msgstr "ouvert."
 
 #: src/lyxfunc.C:2790
 msgid "Choose template"
-msgstr "Choisissez le modèle"
+msgstr "Choisir le modèle"
 
 #: src/lyxfunc.C:2818 src/lyxfunc.C:2878 src/lyxfunc.C:3011
 msgid "Examples"
@@ -3539,7 +3496,7 @@ msgstr "Exemples"
 
 #: src/lyxfunc.C:2820
 msgid "Select Document to Open"
-msgstr "Sélectionnez le document à ouvrir"
+msgstr "Sélectionner le document à ouvrir"
 
 #: src/lyxfunc.C:2846
 msgid "Could not open document"
@@ -3554,18 +3511,16 @@ msgid "already exists. Overwrite?"
 msgstr "Écraser ?"
 
 #: src/lyxfunc.C:2931
-#, fuzzy
 msgid "Importing"
-msgstr "|Importer%m"
+msgstr "Importation"
 
 #: src/lyxfunc.C:2938
 msgid "imported."
 msgstr "importé."
 
 #: src/lyxfunc.C:2940
-#, fuzzy
 msgid ": import failed."
-msgstr "importé."
+msgstr ": l'importation a échoué."
 
 #: src/lyxfunc.C:3013
 msgid "Select Document to Insert"
@@ -3585,25 +3540,20 @@ msgid "Could not insert document"
 msgstr "Impossible d'insérer le document"
 
 #: src/lyxfunc.C:3053
-#, fuzzy
 msgid "Select LaTeX file to import"
 msgstr "Sélectionner le fichier LaTeX à importer"
 
 #: src/lyxfunc.C:3057 src/lyxfunc.C:3061
-#, fuzzy
 msgid "Select ASCII file to import"
-msgstr "Sélectionnez le fichier ASCII à importer"
+msgstr "Sélectionner le fichier ASCII à importer"
 
 #: src/lyxfunc.C:3065
-#, fuzzy
 msgid "Select NoWeb file to import"
 msgstr "Sélectionner le fichier Noweb à importer"
 
-# fuzzy original désactivé
 #: src/lyxfunc.C:3069
-#, fuzzy
 msgid "Select LinuxDoc file to import"
-msgstr "Sélectionner le fichier Noweb à importer"
+msgstr "Sélectionner le fichier LinuxDoc à importer"
 
 #: src/lyxfunc.C:3072
 msgid "Unknown import type: "
@@ -3678,7 +3628,7 @@ msgstr " ``texte'' | ''texte'' | ,,texte`` | ,,texte'' | «texte» | »texte« "
 
 #: src/lyx_gui.C:562
 msgid " TOC | LOF | LOT | LOA "
-msgstr ""
+msgstr "TDM | LDF | LDT | LDA "
 
 #: src/lyx_gui.C:602
 msgid "LyX Banner"
@@ -3715,7 +3665,7 @@ msgstr "Avertissment : impossible de trouver l'emplacement du binaire."
 
 #: src/lyx_main.C:200
 msgid "If you have problems, try starting LyX with an absolute path."
-msgstr "En cas de problème, lancez LyX avec le chemin complet."
+msgstr "En cas de problème, lancer LyX avec le chemin complet."
 
 #: src/lyx_main.C:290
 msgid "LYX_DIR_11x environment variable no good."
@@ -3731,12 +3681,12 @@ msgstr "Avertissement LyX: impossible de déterminer le répertoire système."
 
 #: src/lyx_main.C:301
 msgid "Try the '-sysdir' command line parameter or"
-msgstr "Essayez le paramètre de ligne de commande '-sysdir' ou"
+msgstr "Essayer le paramètre de ligne de commande '-sysdir' ou"
 
 #: src/lyx_main.C:302
 msgid "set the environment variable LYX_DIR_11x to the LyX system directory"
 msgstr ""
-"positionnez la variable d'environnement LYX_DIR_11x sur le répertoire système"
+"positionner la variable d'environnement LYX_DIR_11x sur le répertoire système"
 
 #: src/lyx_main.C:304
 msgid "containing the file `chkconfig.ltx'."
@@ -3808,7 +3758,6 @@ msgstr "Utilisation des réglages usine."
 msgid "Setting debug level to "
 msgstr "Niveau de débogage "
 
-# fuzzy original désactivé
 #: src/lyx_main.C:558
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
@@ -3834,7 +3783,7 @@ msgstr ""
 "\t-ypos y         positionne la fenêtre à l'ordonnée y\n"
 "\t-dbg fonction[,fonction] ...\n"
 "                  sélectionne les fonctions à examiner.\n"
-"                  Essayez lyx -dbg pour voir la liste des fonctions.\n"
+"                  Essayer lyx -dbg pour voir la liste des fonctions.\n"
 "Voir la page man de LyX pour les détails."
 
 #: src/lyx_main.C:591
@@ -3845,12 +3794,10 @@ msgstr "Liste des options de déboguage acceptées :"
 msgid "Missing directory for -sysdir switch!"
 msgstr "Il manque un répertoire pour le paramètre -sysdir !"
 
-# fuzzy original désactivé
 #: src/lyx_main.C:636
 msgid "Missing command string after  -x switch!"
 msgstr "Il manque une valeur pour le paramètre -x !"
 
-# fuzzy original désactivé
 #: src/lyx_main.C:662
 msgid "Unknown file type '"
 msgstr "Format de sortie inconnu : "
@@ -3868,9 +3815,8 @@ msgid "Missing file type [eg latex, ps...] after "
 msgstr "Type de fichier manquant ]latex, ps,..] après "
 
 #: src/lyx_main.C:686
-#, fuzzy
 msgid "Missing type [eg latex, ps...] after "
-msgstr "Type de fichier manquant ]latex, ps,..] après "
+msgstr "Type de fichier manquant [e.g. latex, ps,..] après "
 
 #: src/lyx_sendfax.C:21
 msgid "Fax no.:|#F"
@@ -4151,12 +4097,11 @@ msgstr "Éditer"
 
 #: src/menus.C:186 src/menus.C:274 src/menus.C:275 src/menus.C:276
 msgid "TOC"
-msgstr ""
+msgstr "TDM"
 
 #: src/menus.C:188 src/menus.C:288 src/menus.C:289 src/menus.C:290
-#, fuzzy
 msgid "Refs"
-msgstr "Ref : "
+msgstr "Refs"
 
 # revu
 #: src/menus.C:190 src/menus.C:302 src/menus.C:303 src/menus.C:304
@@ -4185,14 +4130,12 @@ msgid "MB|#E"
 msgstr ""
 
 #: src/menus.C:278
-#, fuzzy
 msgid "MB|#T"
-msgstr "MB|#r"
+msgstr ""
 
 #: src/menus.C:292
-#, fuzzy
 msgid "MB|#R"
-msgstr "MB|#r"
+msgstr ""
 
 #: src/menus.C:306
 msgid "MB|#L"
@@ -4222,7 +4165,6 @@ msgstr ""
 msgid "Screen Options"
 msgstr "Options d'affichage"
 
-# fuzzy original désactivé
 #: src/menus.C:520
 msgid ""
 "Import%t|LaTeX...%x30|Ascii Text as Lines...%x31|Ascii Text as "
@@ -4247,7 +4189,6 @@ msgstr "FIT|Pp#p#P"
 msgid "FIM|Nn#n#N"
 msgstr "FIM|Nn#n#N"
 
-# fuzzy original désactivé
 #: src/menus.C:531 src/menus.C:788
 msgid "FIM|Dd#d#D"
 msgstr "FM|Dd#d#D"
@@ -4260,7 +4201,6 @@ msgstr ""
 "Exporter%t|en LaTeX...%x40|en DVI...%x41|en PostScript...%x42|en texte Ascii "
 "...%x43|en HTML...%x44|Personnalisé...%x45"
 
-# fuzzy original désactivé
 #: src/menus.C:549
 msgid ""
 "Export%t|as LinuxDoc...%x40|as DVI...%x41|as PostScript...%x42|as Ascii "
@@ -4269,7 +4209,6 @@ msgstr ""
 "Exporter%t|en LinuxDoc...%x40|en DVI...%x41|en PostScript...%x42|en texte "
 "Ascii...%x43"
 
-# fuzzy original désactivé
 #: src/menus.C:557
 msgid ""
 "Export%t|as DocBook...%x40|as DVI...%x41|as PostScript...%x42|as Ascii "
@@ -4397,7 +4336,6 @@ msgstr "FM|xX#x#X"
 msgid "FM|xX#x#X"
 msgstr "FM|Qq#q#Q"
 
-# fuzzy original désactivé
 #: src/menus.C:777
 msgid ""
 "Import%t|LaTeX...%x15|Ascii Text as Lines...%x16|Ascii Text as "
@@ -4681,7 +4619,6 @@ msgid "EMV|Hh#h#H"
 msgstr ""
 
 #: src/menus.C:1124
-#, fuzzy
 msgid ""
 "Undo|Redo %l|Cut|Copy|Paste%l|Find & Replace...|Go to Error|Go to "
 "Note|Floats & Insets%m|Table%m|Spellchecker....|Check TeX|Table of "
@@ -4764,49 +4701,40 @@ msgid "EM|gG#g#G"
 msgstr ""
 
 #: src/menus.C:1342
-#, fuzzy, no-c-format
 msgid "List of Figures%m%l"
-msgstr "Liste des figures"
+msgstr "Liste des figures%m%l"
 
 #: src/menus.C:1344
-#, fuzzy, no-c-format
 msgid "List of Tables%m%l"
-msgstr "Liste des tableaux"
+msgstr "Liste des tableaux%m%l"
 
 #: src/menus.C:1346
-#, fuzzy, no-c-format
 msgid "List of Algorithms%m%l"
-msgstr "Liste des algorithmes"
+msgstr "Liste des algorithmes%m%l"
 
 #: src/menus.C:1434
-#, fuzzy, no-c-format
 msgid "Insert Page Number%m"
-msgstr "Insérer numéro de page|#P"
+msgstr "Insérer n° de page%m"
 
 #: src/menus.C:1436
-#, fuzzy, no-c-format
 msgid "Insert vref%m"
-msgstr "Insérer URL"
+msgstr "Insérer vref%m"
 
 #: src/menus.C:1438
-#, fuzzy, no-c-format
 msgid "Insert vpageref%m"
-msgstr "Insérer figure"
+msgstr "Insérer vpageref%m"
 
 #: src/menus.C:1440
-#, fuzzy, no-c-format
 msgid "Insert Pretty Ref%m"
-msgstr "Insérer une marque d'index"
+msgstr "Insérer Pretty Ref%m"
 
 #: src/menus.C:1442
-#, fuzzy, no-c-format
 msgid "Goto Reference%m%l"
-msgstr "Positionnement sur référence||#G"
+msgstr "Aller à la reférence%m%l"
 
 #: src/menus.C:1451
-#, fuzzy, c-format
 msgid "Insert Reference:%d%x0"
-msgstr "Insérer référence"
+msgstr "Insérer référence%d%x0"
 
 #: src/menus.C:1504
 msgid ""
@@ -5145,7 +5073,6 @@ msgstr ""
 msgid "No Documents Open!%t"
 msgstr "Pas de documents ouverts !%t"
 
-# fuzzy original désactivé
 #: src/menus.C:1970
 msgid ""
 "Introduction|Tutorial|User's Guide|Extended Features|Customization|Reference "
@@ -5181,12 +5108,10 @@ msgstr ""
 msgid "HM|Rr#R#r"
 msgstr ""
 
-# fuzzy original désactivé
 #: src/menus.C:1990
 msgid "HM|Ff#F#f"
 msgstr "FM|vV#v#V"
 
-# fuzzy original désactivé
 #: src/menus.C:1991
 msgid "HM|aA#a#A"
 msgstr "FM|sS#s#S"
@@ -5228,7 +5153,6 @@ msgstr "Répertoire bibliothèque :"
 msgid "User directory: "
 msgstr "Répertoire utilisateur :"
 
-# fuzzy original désactivé
 #: src/menus.C:2037
 msgid "Could not find requested Documentation file"
 msgstr "Impossible d'insérer le document"
@@ -5393,7 +5317,7 @@ msgstr ""
 "Le processus i-spell est mort de sa belle mort. *Une* raison possible\n"
 "est que vous ne possédez pas de fichier dictionnaire\n"
 "pour la langue dans laquelle le document est écrit.\n"
-"Vérifiez /usr/lib/ispell ou paramétrez un autre\n"
+"Vérifier /usr/lib/ispell ou paramétrer un autre\n"
 "dictionnaire dans le menu Options-> Dictionnaire."
 
 #: src/spellchecker.C:794
@@ -5542,7 +5466,6 @@ msgstr "Erreur ! Impossible de créer le répertoire :"
 msgid "unknown"
 msgstr "inconnu"
 
-# fuzzy original désactivé
 #: src/table.C:989 src/tabular.C:1219
 msgid "Warning:"
 msgstr "Attention !"
@@ -5569,10 +5492,9 @@ msgstr "Attention : mauvaise position du curseur, MàJ fenêtre"
 
 #: src/TableLayout.C:343 src/TabularLayout.C:318
 msgid "Confirm: press Delete-Button again"
-msgstr "Confirmation : réappuyez sur le bouton Effacer"
+msgstr "Confirmation : réappuyer sur le bouton Effacer"
 
 #: src/TabularLayout.C:56
-#, fuzzy
 msgid "Tabular Layout"
 msgstr "Style du tableau"
 
@@ -5622,7 +5544,6 @@ msgid "You cannot type two spaces this way.  Please read the Tutorial."
 msgstr ""
 "Vous ne pouvez pas entrer deux espaces ici. Lisez le manuel d'apprentissage."
 
-# fuzzy original désactivé
 #: src/text.C:3984 src/text.C:3990
 msgid "Page Break (top)"
 msgstr "Saut de Page"

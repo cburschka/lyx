@@ -1,3 +1,13 @@
+2000-05-25  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/ColorHandler.C (getGCForeground): put more test into _()
+
+	* lib/examples/eu_splash.lyx: new file (Basque translation) from
+	Dooteo. 
+
+	* config/lyxinclude.m4 (LYX_PROG_CXX): use ${CXX} and not g++ to
+	get the version.
+
 2000-05-25 Dekel Tsur  <dekel@math.tau.ac.il>
 
 	* src/lyx_cb.C (RefUpdateCB): disable appropriate buttons when

@@ -176,7 +176,7 @@ dnl normal versions of a library), tasteless as that idea is.
   ac_save_CXXFLAGS="$CXXFLAGS"
   CXXFLAGS=
 dnl Check the version of g++
-  gxx_version=`g++ --version`
+  gxx_version=`${CXX} --version`
   
   AC_PROG_CXX_G
   if test "$ac_test_CXXFLAGS" = set; then
