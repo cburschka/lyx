@@ -89,5 +89,4 @@ libmathed_la_SOURCES = \
 	math_symbolinset.C \
 	math_symbolinset.h \
 	support.C \
-	support.h \
-	symbol_def.h
+	support.h
