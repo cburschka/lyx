@@ -960,7 +960,7 @@ int LyXRC::read(string const & filename)
 
 		case RC_PREVIEW_SCALE_FACTOR:
 			if (lexrc.next())
-				preview_hashed_labels = lexrc.getInteger();
+				preview_scale_factor = lexrc.getFloat();
 			break;
 
 		case RC_LAST: break; // this is just a dummy

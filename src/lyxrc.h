@@ -355,7 +355,7 @@ enum LyXRCTags {
 	///
 	bool preview_hashed_labels;
 	///
-	int preview_scale_factor;
+	float preview_scale_factor;
 	
 private:
 	/// Is a bind file already (or currently) read?
