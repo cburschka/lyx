@@ -595,7 +595,7 @@ LyXFont const Paragraph::getFontSettings(BufferParams const & bparams,
 	Pimpl::FontList::const_iterator cit = pimpl_->fontlist.begin();
 	Pimpl::FontList::const_iterator end = pimpl_->fontlist.end();
 	for (; cit != end; ++cit) {
-		if (cit->pos() > pos)
+		if (cit->pos() >= pos)
 			break;
 	}
 
@@ -695,7 +695,7 @@ Paragraph::highestFontInRange(pos_type startpos, pos_type endpos,
 	Pimpl::FontList::const_iterator end_it = pimpl_->fontlist.begin();
 	Pimpl::FontList::const_iterator end = pimpl_->fontlist.end();
 	for (; end_it != end; ++end_it) {
-		if (end_it->pos() > endpos)
+		if (end_it->pos() >= endpos)
 			break;
 	}
 
@@ -704,7 +704,7 @@ Paragraph::highestFontInRange(pos_type startpos, pos_type endpos,
 
 	Pimpl::FontList::const_iterator cit = pimpl_->fontlist.begin();
 	for (; cit != end; ++cit) {
-		if (cit->pos() > startpos)
+		if (cit->pos() >= startpos)
 			break;
 	}
 
@@ -776,7 +776,7 @@ void Paragraph::setFont(pos_type pos, LyXFont const & font)
 	Pimpl::FontList::iterator it = beg;
 	Pimpl::FontList::iterator endit = pimpl_->fontlist.end();
 	for (; it != endit; ++it) {
-		if (it->pos() > pos)
+		if (it->pos() >= pos)
 			break;
 	}
 	unsigned int i = std::distance(beg, it);

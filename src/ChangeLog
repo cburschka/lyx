@@ -1,3 +1,9 @@
+2002-03-14  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* paragraph.C (getFontSettings): compare >= not just >
+	(highestFontInRange): ditto
+	(setFont): ditto
+
 2002-03-13  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* paragraph.C: change several algorithm to be more appripriate for
