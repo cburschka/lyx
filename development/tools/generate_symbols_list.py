@@ -107,5 +107,13 @@ for x in exceptions:
     if xsymbols.has_key(x[0]):
 	del xsymbols[x[0]]
 
+print """
+lyxbar             cmsy 161   0 mathord
+lyxeq              cmr   61   0 mathord      
+lyxdabar           msa   57   0 mathord
+lyxright           msa   75   0 mathord
+lyxleft            msa   76   0 mathord
+"""
+
 for symbol in xsymbols.keys():
     sys.stderr.write(symbol+"\n")
