@@ -120,7 +120,7 @@ public:
 	bool script(bool);
 	///
 	bool interpret(string const &);
-	///
+	/// 
 	bool interpret(char);
 	///
 	bool toggleLimits();
@@ -292,6 +292,8 @@ private:
 	bool selection_;
 	/// are we entering a macro name?
 	bool macromode_;
+	/// are we targeting a certain x coordinate, if so, which one?
+	int targetx_;
 };
 
 extern MathCursor * mathcursor;

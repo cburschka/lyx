@@ -304,6 +304,7 @@ bool MathCursor::left(bool sel)
 {
 	dump("Left 1");
 	autocorrect_ = false;
+	targetx_ = false;
 	if (inMacroMode()) {
 		macroModeClose();
 		return true;
@@ -323,6 +324,7 @@ bool MathCursor::right(bool sel)
 {
 	dump("Right 1");
 	autocorrect_ = false;
+	targetx_ = false;
 	if (inMacroMode()) {
 		macroModeClose();
 		return true;
@@ -1172,6 +1174,12 @@ bool MathCursor::goUpDown(bool up)
   int xo, yo;
 	getPos(xo, yo);
 
+	// check if we had something else in mind, if not, this is the future goal
+	if (targetx_)
+		xo = targetx_;
+	else	
+		targetx_ = xo;
+
 	// try neigbouring script insets
 	// try left
 	if (hasPrevAtom()) {
@@ -1415,6 +1423,7 @@ bool MathCursor::inMathMode() const
 bool MathCursor::interpret(char c)
 {
 	//lyxerr << "interpret 2: '" << c << "'\n";
+	targetx_ = false;
 	if (inMacroArgMode()) {
 		--pos();
 		plainErase();
