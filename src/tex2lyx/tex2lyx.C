@@ -41,8 +41,7 @@ using std::string;
 using std::vector;
 
 // Hacks to allow the thing to link in the lyxlayout stuff
-Debug::type const Debug::ANY = Debug::type(0);
-DebugStream lyxerr;
+LyXErr lyxerr(std::cerr.rdbuf());
 
 void LyX::emergencyCleanup() {}
 

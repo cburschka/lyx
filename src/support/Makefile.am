@@ -16,8 +16,6 @@ BUILT_SOURCES = path_defines.C
 
 libsupport_la_SOURCES = \
 	BoostFormat.h \
-	DebugStream.C \
-	DebugStream.h \
 	FileInfo.C \
 	FileInfo.h \
 	FileMonitor.h \
@@ -29,6 +27,7 @@ libsupport_la_SOURCES = \
 	copy.C \
 	copied_ptr.h \
 	cow_ptr.h \
+	debugstream,h \
 	filename.C \
 	filename.h \
 	filetools.C \

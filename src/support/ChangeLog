@@ -1,3 +1,9 @@
+2003-09-26  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* debugstream.h: add file, updated version of the DebugStream
+
+	* DebugStream.C,DebugStream.h: delete files
+
 2003-09-25  Angus Leeming  <leeming@lyx.org>
 
 	* filetools.C (ReplaceEnvironmentPath): rewrite to use boost::regex.

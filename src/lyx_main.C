@@ -87,8 +87,6 @@ extern void QuitLyX();
 
 extern LyXServer * lyxserver;
 
-DebugStream lyxerr;
-
 boost::scoped_ptr<LastFiles> lastfiles;
 
 // This is the global bufferlist object

@@ -15,12 +15,13 @@
 
 
 #include "support/std_string.h"
+#include "support/debugstream.h"
 
 /** Ideally this should have been a namespace, but since we try to be
     compilable on older C++ compilators too, we use a struct instead.
     This is all the different debug levels that we have.
 */
-struct Debug {
+struct lyx_debug_trait {
 	///
 	enum type {
 		///
@@ -72,15 +73,19 @@ struct Debug {
 		/// change tracking
 		CHANGES    = (1 << 22),
 		///
-		EXTERNAL   = (1 << 23)
+		EXTERNAL   = (1 << 23),
+		///
+		ANY = 0xffffff
 	};
-	///
-	static type const ANY;
+
+	static bool match(type a, type b) {
+		return (a & b);
+	}
 
 	/** A function to convert symbolic string names on debug levels
 	    to their numerical value.
 	*/
-	static Debug::type value(string const & val);
+	static type value(string const & val);
 
 	/** Display the tags and descriptions of the current debug level
 	    of ds
@@ -95,18 +100,17 @@ struct Debug {
 
 
 inline
-void operator|=(Debug::type & d1, Debug::type d2)
+void operator|=(lyx_debug_trait::type & d1, lyx_debug_trait::type d2)
 {
-	d1 = static_cast<Debug::type>(d1 | d2);
+	d1 = static_cast<lyx_debug_trait::type>(d1 | d2);
 }
 
 
-#include "support/DebugStream.h"
+// std::ostream & operator<<(std::ostream & o, Debug::type t);
 
+typedef basic_debugstream<lyx_debug_trait> LyXErr;
+typedef LyXErr::debug Debug;
 
-
-std::ostream & operator<<(std::ostream & o, Debug::type t);
-
-extern DebugStream lyxerr;
+extern LyXErr lyxerr;
 
 #endif

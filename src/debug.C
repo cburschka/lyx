@@ -16,6 +16,7 @@
 
 #include "support/lstrings.h"
 
+#include <iostream>
 #include <iomanip>
 
 using lyx::support::ascii_lowercase;
@@ -71,16 +72,7 @@ int const numErrorTags = sizeof(errorTags)/sizeof(error_item);
 } // namespace anon
 
 
-Debug::type const Debug::ANY = Debug::type(
-	Debug::INFO | Debug::INIT | Debug::KEY | Debug::GUI |
-	Debug::PARSER | Debug::LYXRC | Debug::KBMAP | Debug::LATEX |
-	Debug::MATHED | Debug::FONT | Debug::TCLASS | Debug::LYXVC |
-	Debug::LYXSERVER | Debug::ROFF | Debug::ACTION | Debug::LYXLEX |
-	Debug::DEPEND | Debug::INSETS | Debug::FILES | Debug::WORKAREA |
-	Debug::INSETTEXT | Debug::GRAPHICS | Debug::CHANGES | Debug::EXTERNAL);
-
-
-Debug::type Debug::value(string const & val)
+lyx_debug_trait::type lyx_debug_trait::value(string const & val)
 {
 	type l = Debug::NONE;
 	string v(val);
@@ -106,7 +98,7 @@ Debug::type Debug::value(string const & val)
 }
 
 
-void Debug::showLevel(ostream & os, Debug::type level)
+void lyx_debug_trait::showLevel(ostream & os, lyx_debug_trait::type level)
 {
 	// Show what features are traced
 	for (int i = 0; i < numErrorTags ; ++i) {
@@ -122,7 +114,7 @@ void Debug::showLevel(ostream & os, Debug::type level)
 }
 
 
-void Debug::showTags(ostream & os)
+void lyx_debug_trait::showTags(ostream & os)
 {
 	for (int i = 0; i < numErrorTags ; ++i)
 		os << setw(7) << errorTags[i].level
@@ -130,3 +122,5 @@ void Debug::showTags(ostream & os)
 		   << "  " << _(errorTags[i].desc) << '\n';
 	os.flush();
 }
+
+LyXErr lyxerr(std::cerr.rdbuf());

@@ -1,3 +1,12 @@
+2003-09-26  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* lyx_main.C: remove the glboal debug object 
+
+	* debug.h: adjust for new debugstream
+
+	* debug.C: adjust for new debugstream and keep the global debug
+	object here.
+
 2003-09-22  Angus Leeming  <leeming@lyx.org>
 
 	* paragraph_pimpl.h: add #include "lyxfont.h". Needed by earlier versions
@@ -20,13 +29,13 @@
 
 	* kbsequence.C (addkey): return a FuncRequest
 
-	* kbmap.h (kb_key): struct var FuncRequest instead of int action. 
+	* kbmap.h (kb_key): struct var FuncRequest instead of int action.
 
 	* kbmap.C (bind): take a FuncRequest as arg, adjust
 	(read): adjust
 	(lookup): adjust
 	(defkey): change to take a FuncRequest as arg, adjust
-	(findbinding): take a FuncRequest as arg, adjust. 
+	(findbinding): take a FuncRequest as arg, adjust.
 
 	* funcrequest.h (operator=): added
 
