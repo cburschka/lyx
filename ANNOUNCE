@@ -1,101 +1,171 @@
-Public release of LyX version 1.2.0
+Public release of LyX version 1.3.0
 ===================================
 
-What is LyX?
-------------
+We are glad to announce the release of LyX 1.3.0.
 
-LyX is an advanced open-source "document processor". Unlike standard
-word processors, LyX encourages writing based on the structure of your
-documents, not their appearance, It lets you concentrate on writing,
-leaving details of visual layout to the software.
+As with the previous major version 1.2.0, many things make this new
+release an exciting one. One of the major projects that has been going
+on behind the scenes is the so-called GUI-independence project. We are
+glad to announce that version 1.3.0 shows the first results of this. 
+LyX now comes in two flavours: Qt-LyX and xforms-LyX!
 
-With the familiar face of a WISYWIG word processor, LyX produces high
-quality, professional output -- using LaTeX, an industrial
-strength typesetting engine. No knowledge of LaTeX is required to
-use LyX; however, there is also a "TeX mode" which allows you to enter
-plain LaTeX commands.
+Although this is the most visible change in version 1.3, this should not
+hide the fact that the `under the hood' changes to the code have again
+been very important. A detailed list can be found below.
 
-All in all, LyX is a complete environment for writing documents. It has
-superior support for scientific writing, but works well for any kind of
-document.
+In case you are wondering what LyX is, here is what
+http://www.lyx.org/ has to say on the subject:
 
-Read more about LyX (including screenshots) at:
+  LyX is an advanced open source document processor that encourages an
+  approach to writing based on the structure of your documents, not their
+  appearance. LyX lets you concentrate on writing, leaving details of 
+  visual layout to the software.
 
-    http://www.lyx.org/
+  LyX runs on many Unix platforms (including MacOS X), OS/2, and under
+  Windows/Cygwin. Note that all these ports use the same xforms interface 
+  and therefore need an X server. 
 
-What can LyX do?
-----------------
+You can download LyX 1.3.0 here :
 
-A very incomplete feature list:
+	ftp://ftp.lyx.org/pub/lyx/stable/lyx-1.3.0.tar.gz
+	ftp://ftp.devel.lyx.org/pub/lyx/lyx-1.3.0.tar.gz
 
-- "standard" word processing: fonts, cut & paste, infinite undo...
-- footnotes, citations, cross-referencing, faxes, spellchecking
-- almost any math expression (with a simple, but powerfull interface)
-- automatic, multilevel outline support (enumerated or bullets)
-- tables and embedded figures support (with automatic conversion)
-- import LaTeX or ASCII
-- export LaTeX, ASCII, DVI, PostScript, LinuxDoc-SGML, DocBook-SGML
-- fair support for non-English documents and/or menus
-- extensive documentation, including a tutorial
-- version control using RCS (some support for CVS)
+and it should shortly propagate to the following mirrors :
 
-How stable is LyX?
-------------------
+        ftp://ftp.sdsc.edu/pub/other/lyx/stable/lyx-1.3.0.tar.gz
+        ftp://ftp.lip6.fr/pub/lyx/stable/lyx-1.3.0.tar.gz
+        ftp://gd.tuwien.ac.at/publishing/tex/lyx/stable/lyx-1.3.0.tar.gz
+        ftp://ftp.ntua.gr/pub/X11/LyX/stable/lyx-1.3.0.tar.gz
+        ftp://ftp.icm.edu.pl/vol/rzm0/lyx/stable/lyx-1.3.0.tar.gz
 
-This release is considered stable, but as with any software, you should 
-take appropriate back-up steps in a production environment.
 
-Where can I get it?
--------------------
+Prebuild binaries (mainly rpms for linux distributions) should soon be 
+available at
+	ftp://ftp.lyx.org/pub/lyx/bin/1.3.0
+ 
+If you find what you think is a bug in LyX 1.3.0, you may either
+e-mail the LyX user's mailing list (lyx-users@lists.lyx.org), or open
+a bug report at http://bugzilla.lyx.org
 
-LyX is distributed under the GNU General Public Licence (GPL), which
-means that you can not only use it freely, but also modify and
-redistribute it, provided that you include the source of the program.
-
-The main LyX site is
-
-	ftp://ftp.lyx.org/pub/lyx/
-
-with mirrors at
-
-	ftp://alpha.tat.physik.uni-tuebingen.de/pub/lyx
-        ftp://ftp.lip6.fr/pub/lyx/
-	ftp://ftp.chg.ru/packages/lyx/
-        ftp://ftp.sdsc.edu/pub/other/lyx/
-        ftp://ftp.fciencias.unam.mx/pub/Lyx/
-	ftp://mirror.aarnet.edu.au/pub/LyX/
-	
-The source code package is available at:
-
-        ftp://ftp.lyx.org/pub/lyx/stable/lyx-1.2.0.tar.gz
-	ftp://ftp.devel.lyx.org/pub/lyx/lyx-1.2.0.tar.gz
-
-and at the mirrors listed above.
-
-You need to have XForms version 0.88 or newer to compile your own 
-version.  Version 0.89 is highly recommended. LyX should also compile
-with 0.88.
-
-Credits
--------
-
-The LyX Team is composed of volunteers from around the world.  Many, many 
-people have helped make the 1.2.0 release possible, including:
-
-    Lars Gullik Bjoennes, Alejandro Aguilar Sierra, Asger Alstrup,
-    Jean-Marc Lasgouttes, Juergen Vigna, John P. Weiss, Bernhard Iselborn,
-    Andre Spiegel, Allan Rae, Henner Zeller, Robert van der Kamp,
-    David L. Johnson, Amir Karger, Joacim Persson, Peter Suetterlin,
-    SMiyata, Alkis Polyzotis, ...
-
-Special thanks should go to Matthias Ettrich who started it all.
-
-Feedback
---------
-
-Please direct any comments or questions to the appropriate mailing list as
-described on the LyX homepage (http://www.lyx.org/).
+If you're having trouble using the new version of LyX, or have a question,
+first check out http://www.lyx.org/help/, and e-mail the LyX user's list if you
+can't find an answer there.  
 
 Enjoy!
 
-The LyX Team
+The LyX team.
+
+
+New features
+============
+
+** Qt frontend
+
+This is of course the most visible new feature. This frontend supports
+either Qt 2.x or 3.x and is mostly feature complete. Note that some
+of the dialogs are slightly different in design, but are generally
+functionally equivalent.
+
+Note that if Qt is using Xft2/fontconfig, you may need to install the
+latex-ttf-fonts package on ftp://ftp.lyx.org/ to get maths symbols
+displayed properly.
+
+** Xforms frontend
+
+The advent of the Qt frontend does not mean that the historical xforms
+frontend is dead. Actually, it is still the one which is the best
+implemented, because we have had more time to polish it. In this release,
+most of the dialogs have been redesigned to be tighter.
+
+Note also that the xforms library has been very recently updated to
+version 1.0. This version has been released under the LGPL (Lesser
+General Public License), and the availability of the source means that
+many bugs that have been plaguing LyX have been fixed in xforms. You
+are advised to upgrade to xforms 1.0 to enjoy all these new fixes. 
+In fact, LyX 1.3.0 no longer supports versions of xforms older than 0.89.5.
+
+In most cases the dialogs have been designed to make it impossible to input 
+invalid parameters. The exception to this rule is the input of length data. 
+Power LaTeX users can still input obtuse "glue lengths", but the widgets are 
+highlighted in red if this input is invalid or incomplete. This visual 
+feedback makes it easy to see why LyX won't allow you to Apply your changes.
+
+** Gnome frontend
+
+Unfortunately, the development of the Gnome frontend has mostly
+stopped recently and we have therefore chosen to disable it. We
+strongly invite anyone willing to revive this port to volunteer on the
+developer's list.
+
+** Instant preview
+
+preview-latex is an emacs package for LaTeX that allows "instant previews"
+of LaTeX code, so you can immediately see the visual rendering of the 
+LaTeX in the document. Its project home page can be found at 
+http://sourceforge.net/projects/preview-latex. With the help of David
+Kastrup, the author, LyX 1.3.0 can harness this functionality to
+allow instant previews in the LyX window of math equations and
+figures. This feature can be immensely useful, ensuring that the
+rendering of your equation will look right in the final output. The
+preview is only displayed (if enabled) when you're not editing the
+actual equation, so it's unobtrusive too.
+
+** Math editor
+
+There have been a few visible and some not-so-visible changes. On the
+visible side we have better visual feedback regarding the structure of
+a formula, showing the nesting by small purple decorations in the
+formula itself and revealing the names of the nesting levels in the
+minibuffer. There is now native support for symbols from the wasy
+package containing e.g. the zodiac symbols. New also is the internal
+structure of font changes which are now proper "insets", just like 
+anything else from a square root to an array. This not only simplifies
+the code greatly but also allows the same editing tricks as for the
+"regular" math. However, it was not possible to tweak the visible
+behaviour to mimic 1.2 in all cases, so this might take some time to
+get accustomed to. On the pro side, the new structure allowed
+support for LaTeX's \mbox and \fbox to be implemented and general
+"switching back to text mode within math", so a lot of "evil red text"
+trickery is not needed anymore. The most visible changes are the following:
+
+- Pressing { and } will insert LaTeX's \{ and \} which show up as { }
+  in the printout. To get LaTeX's {} nesting, you need to type \{.
+
+- Fonts changes now really nest. Repeated application of a font change
+  will result in nested font changes!  To remove a font change without
+  removing the "contents", it is now possible to "pull the argument"
+  like in other insets, i.e. put the cursor in the first position of
+  the inset and press 'backspace'.
+
+** Reading old files
+
+LyX now has a new script lyx2lyx which enables the reading of any file
+produced by LyX versions as old as 0.12. Work is in progress on files 
+created with LyX 0.10 (LyX 1.4 time-line) and still older files are 
+in the forge. Basically if lyx wrote it LyX will read it. :-)
+
+There is also a strong demand to be able to read files produced by
+_newer_ versions of LyX. While lyx2lyx has the infrastructure in place
+to do such things, the filters to `downgrade' LyX files (from 1.3.0 to
+1.2.x, for example) have not yet been written.
+
+** Miscellaneous changes
+
+- LyX now automatically uses TeX fonts for screen rendering of math
+  equations if they are available (it is not necessary anymore to
+  configure your font server).
+
+- The Insert>Short Title allows the addition of an optional text 
+  for section headings and captions that is designed to be used in 
+  tables of contents.
+
+- The Insert>Float>Floatflt Figure menu item restores the ability 
+  to wrap text around an image which was present in 1.1.6 and
+  removed in 1.2.0
+
+- If you configure with --with-pspell (which uses the PSpell library for
+  spellchecking), you will be able to automatically spell-check
+  multi-language documents, assuming you have the right dictionaries
+  installed.
+
+

@@ -2,16 +2,19 @@ What's new in version 1.3.0?
 ----------------------------
 
 As with the previous major version 1.2.0, many things make this new
-release an exciting one. This should not however hide the fact that
-the `under the hood' changes to the code have again been very
-important. One of these invisible changes that have been going on for
-a long time is the so-called GUI-independence project. We are glad to
-announce that version 1.3.0 shows the first results of this.
+release an exciting one. One of the major projects that has been going
+on behind the scenes is the so-called GUI-independence project. We are
+glad to announce that version 1.3.0 shows the first results of this. 
+LyX now comes in two flavours: Qt-LyX and xforms-LyX!
+
+Although this is the most visible change in version 1.3, this should not
+hide the fact that the `under the hood' changes to the code have again
+been very important. A detailed list can be found below.
 
 ** Qt frontend
 
 This is of course the most visible new feature. This frontend supports
-either Qt 2.x or 3.0.x and is mostly feature complete. Note that some
+either Qt 2.x or 3.x and is mostly feature complete. Note that some
 of the dialogs are slightly different in design, but are generally
 functionally equivalent.
 
@@ -21,7 +24,7 @@ displayed properly.
 
 ** Xforms frontend
 
-The avent of the Qt frontend does not mean that the historical xforms
+The advent of the Qt frontend does not mean that the historical xforms
 frontend is dead. Actually, it is still the one which is the best
 implemented, because we have had more time to polish it. In this release,
 most of the dialogs have been redesigned to be tighter.
