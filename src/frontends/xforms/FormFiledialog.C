@@ -14,7 +14,6 @@
 #include <pwd.h>
 #include <grp.h>
 #include <map>
-#include <algorithm>
 
 using std::map;
 using std::max;
@@ -311,7 +310,8 @@ void FileDialog::Private::Reread()
 		tmp.ls_entry_ = buffer;
 		// creates used name
 		string temp = fname;
-		if (isDir) temp += '/';
+		if (isDir)
+			temp += '/';
 
 		tmp.name_ = temp;
 		// creates displayed name
@@ -433,28 +433,30 @@ void FileDialog::Private::redraw()
 
 
 // SetButton: sets file selector user button action
-void FileDialog::Private::SetButton(int iIndex, string const & name_,
-			   string const & pszPath)
+void FileDialog::Private::SetButton(int index, string const & name,
+			   string const & path)
 {
 	FL_OBJECT * ob;
-	string * pTemp;
+	string * tmp;
 
-	if (iIndex == 0) {
+	if (index == 0) {
 		ob = file_dlg_form_->User1;
-		pTemp = &user_path1_;
-	} else if (iIndex == 1) {
+		tmp = &user_path1_;
+	} else if (index == 1) {
 		ob = file_dlg_form_->User2;
-		pTemp = &user_path2_;
-	} else return;
+		tmp = &user_path2_;
+	} else {
+		return;
+	}
 
-	if (!name_.empty()) {
-		fl_set_object_label(ob, idex(name_.c_str()));
-		fl_set_button_shortcut(ob, scex(name_.c_str()), 1);
+	if (!name.empty()) {
+		fl_set_object_label(ob, idex(name.c_str()));
+		fl_set_button_shortcut(ob, scex(name.c_str()), 1);
 		fl_show_object(ob);
-		*pTemp = pszPath;
+		*tmp = path;
 	} else {
 		fl_hide_object(ob);
-		pTemp->erase();
+		tmp->erase();
 	}
 }
 
@@ -490,8 +492,7 @@ bool FileDialog::Private::RunDialog()
 			if (HandleOK())
 				return x_sync_kludge(true);
 
-		} else if (ob == file_dlg_form_->Cancel
-			   || force_cancel_)
+		} else if (ob == file_dlg_form_->Cancel || force_cancel_)
 			return x_sync_kludge(false);
 
 		else if (force_ok_)
@@ -579,7 +580,7 @@ bool FileDialog::Private::HandleDoubleClick()
 	// set info line
 	bool isDir = true;
 	int const select_ = fl_get_browser(file_dlg_form_->List);
-	if (select_ > depth_)  {
+	if (select_ > depth_) {
 		tmp = dir_entries_[select_ - depth_ - 1].name_;
 		SetInfoLine(dir_entries_[select_ - depth_ - 1].ls_entry_);
 		if (!suffixIs(tmp, '/')) {
@@ -716,7 +717,8 @@ string const FileDialog::Private::Select(string const & title,
 		}
 	}
 
-	if (sel != 0) fl_select_browser_line(file_dlg_form_->List, sel);
+	if (sel != 0)
+		fl_select_browser_line(file_dlg_form_->List, sel);
 	int const top = max(sel - 5, 1);
 	fl_set_browser_topline(file_dlg_form_->List, top);
 
