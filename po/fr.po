@@ -164,10 +164,12 @@
 # pas encore été traitée
 # -----------------------------------------------------------------------------
 # AR 26 avril 2002 : Importante mise à jour en vue de LyX 1.2.0
+# -----------------------------------------------------------------------------
+# AR 24 septembre 2002 : Mise à jour en vue de LyX 1.2.2
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.2.0cvs\n"
-"POT-Creation-Date: 2002-08-20 14:00+0200\n"
+"POT-Creation-Date: 2002-09-24 21:19+0200\n"
 "PO-Revision-Date: 2001-06-23 02:56+01:00\n"
 "Last-Translator:  Adrien Rebollo <adrien.rebollo@wanadoo.fr>\n"
 "Language-Team: lyxfr <http://perso.wanadoo.fr/adrien.rebollo/lyxfr/lyxfr."
@@ -374,8 +376,8 @@ msgstr "  La sauvegarde a échoué ! Nouvel essai..."
 msgid "  Save failed! Bummer. Document is lost."
 msgstr "  La sauvegarde a échoué. Las ! le document est perdu."
 
-#: src/BufferView2.C:72 src/BufferView2.C:82 src/bufferlist.C:369
-#: src/bufferlist.C:481 src/lyx_cb.C:218
+#: src/bufferlist.C:369 src/bufferlist.C:481 src/BufferView2.C:72
+#: src/BufferView2.C:82 src/lyx_cb.C:218
 msgid "Error!"
 msgstr "Erreur !"
 
@@ -493,8 +495,8 @@ msgstr ", Profondeur : "
 msgid ", Spacing: "
 msgstr ", Espacement : "
 
-#: src/bufferview_funcs.C:182 src/ext_l10n.h:653
-#: src/frontends/qt2/QDocument.C:111
+#: src/bufferview_funcs.C:182 src/frontends/qt2/QDocument.C:111
+#: src/ext_l10n.h:653
 msgid "Single"
 msgstr "Simple"
 
@@ -502,15 +504,15 @@ msgstr "Simple"
 msgid "Onehalf"
 msgstr "Un et demi"
 
-#: src/bufferview_funcs.C:189 src/ext_l10n.h:655
-#: src/frontends/qt2/QDocument.C:113 src/frontends/xforms/form_tabular.C:492
+#: src/bufferview_funcs.C:189 src/frontends/qt2/QDocument.C:113
+#: src/frontends/xforms/form_tabular.C:492
 #: src/frontends/xforms/form_tabular.C:494
 #: src/frontends/xforms/form_tabular.C:508
 #: src/frontends/xforms/form_tabular.C:510
 #: src/frontends/xforms/form_tabular.C:512
 #: src/frontends/xforms/form_tabular.C:514
 #: src/frontends/xforms/form_tabular.C:516
-#: src/frontends/xforms/form_tabular.C:518
+#: src/frontends/xforms/form_tabular.C:518 src/ext_l10n.h:655
 msgid "Double"
 msgstr "Double"
 
@@ -522,23 +524,23 @@ msgstr "Autre ("
 msgid ", Paragraph: "
 msgstr ", Paragraphe : "
 
-#: src/BufferView_pimpl.C:329
+#: src/BufferView_pimpl.C:330
 msgid "Formatting document..."
 msgstr "Formatage du document..."
 
-#: src/BufferView_pimpl.C:1352
+#: src/BufferView_pimpl.C:1355
 msgid "Saved bookmark"
 msgstr "Signet enregistré"
 
-#: src/BufferView_pimpl.C:1384
+#: src/BufferView_pimpl.C:1387
 msgid "Moved to bookmark"
 msgstr "Déplacé au signet"
 
-#: src/BufferView_pimpl.C:1624
+#: src/BufferView_pimpl.C:1627
 msgid "Select LyX document to insert"
 msgstr "Choisir le document à insérer"
 
-#: src/BufferView_pimpl.C:1626 src/frontends/controllers/ControlBibtex.C:68
+#: src/BufferView_pimpl.C:1629 src/frontends/controllers/ControlBibtex.C:68
 #: src/frontends/controllers/ControlExternal.C:166
 #: src/frontends/controllers/ControlGraphics.C:154
 #: src/frontends/controllers/ControlInclude.C:71 src/lyx_cb.C:113
@@ -546,97 +548,92 @@ msgstr "Choisir le document à insérer"
 msgid "Documents|#o#O"
 msgstr "Documents|#D#d"
 
-#: src/BufferView_pimpl.C:1628 src/lyxfunc.C:1867 src/lyxfunc.C:1954
+#: src/BufferView_pimpl.C:1631 src/lyxfunc.C:1867 src/lyxfunc.C:1954
 msgid "Examples|#E#e"
 msgstr "Exemples|#E#e"
 
-#: src/BufferView_pimpl.C:1633 src/frontends/controllers/ControlInclude.C:67
+#: src/BufferView_pimpl.C:1636 src/frontends/controllers/ControlInclude.C:67
 msgid "*.lyx| LyX Documents (*.lyx)"
 msgstr "*.lyx| Documents LyX (*.lyx)"
 
 #. Cancel: Do nothing
-#: src/BufferView_pimpl.C:1642 src/lyxfunc.C:1751 src/lyxfunc.C:1778
+#: src/BufferView_pimpl.C:1645 src/lyxfunc.C:1751 src/lyxfunc.C:1778
 #: src/lyxfunc.C:1881 src/lyxfunc.C:1971 src/lyxfunc.C:1999
 msgid "Canceled."
 msgstr "Annulé."
 
-#: src/BufferView_pimpl.C:1654
+#: src/BufferView_pimpl.C:1657
 msgid "Inserting document"
 msgstr "Insertion du document en cours..."
 
-#: src/BufferView_pimpl.C:1660 src/ext_l10n.h:636
-#: src/frontends/xforms/FormDocument.C:327 src/lyxfunc.C:1799
-#: src/lyxfunc.C:1919
+#: src/BufferView_pimpl.C:1663 src/frontends/xforms/FormDocument.C:327
+#: src/lyxfunc.C:1799 src/lyxfunc.C:1919 src/ext_l10n.h:636
 msgid "Document"
 msgstr "Document"
 
-#: src/BufferView_pimpl.C:1661
+#: src/BufferView_pimpl.C:1664
 msgid "inserted."
 msgstr "inséré."
 
-#: src/BufferView_pimpl.C:1665
+#: src/BufferView_pimpl.C:1668
 msgid "Could not insert document"
 msgstr "Impossible d'insérer le document"
 
-#: src/BufferView_pimpl.C:1831
+#: src/BufferView_pimpl.C:1834
 msgid "LyX function 'layout' needs an argument."
 msgstr "La fonction 'layout' nécessite un argument."
 
 # revu
-#: src/BufferView_pimpl.C:1849 src/insets/insettext.C:1473
+#: src/BufferView_pimpl.C:1852 src/insets/insettext.C:1473
 msgid "Layout "
 msgstr "Format "
 
-#: src/BufferView_pimpl.C:1850 src/insets/insettext.C:1473
+#: src/BufferView_pimpl.C:1853 src/insets/insettext.C:1473
 msgid " not known"
 msgstr " inconnu"
 
-#: src/BufferView_pimpl.C:2046 src/insets/inseterror.C:55
+#: src/BufferView_pimpl.C:2049 src/insets/inseterror.C:55
 #: src/insets/inseterror.C:77
 msgid "Error"
 msgstr "Erreur"
 
-#: src/BufferView_pimpl.C:2047
+#: src/BufferView_pimpl.C:2050
 msgid "Couldn't find this label"
 msgstr "Impossible de trouver cette étiquette"
 
-#: src/BufferView_pimpl.C:2048
+#: src/BufferView_pimpl.C:2051
 msgid "in current document."
 msgstr "dans le document courant."
 
-#: src/BufferView_pimpl.C:2545
+#: src/BufferView_pimpl.C:2548
 msgid "Mark removed"
 msgstr "Marque enlevée"
 
-#: src/BufferView_pimpl.C:2552
+#: src/BufferView_pimpl.C:2555
 msgid "Mark set"
 msgstr "Marque posée"
 
-#: src/BufferView_pimpl.C:2683
+#: src/BufferView_pimpl.C:2686
 msgid "Mark off"
 msgstr "Marque désactivée"
 
-#: src/BufferView_pimpl.C:2696
+#: src/BufferView_pimpl.C:2699
 msgid "Mark on"
 msgstr "Marque activée"
 
-#: src/BufferView_pimpl.C:2870 src/insets/insettext.C:1526
+#: src/BufferView_pimpl.C:2873 src/insets/insettext.C:1526
 msgid "Unknown spacing argument: "
 msgstr "Paramètre d'espacement inconnu : "
 
-#: src/BufferView_pimpl.C:3225
+#: src/BufferView_pimpl.C:3229
 msgid "Word `"
 msgstr "Mot « "
 
-#: src/BufferView_pimpl.C:3226
-msgid "' indexed."
-msgstr " » indexé."
-
-#: src/BufferView_pimpl.C:3383
+#: src/BufferView_pimpl.C:3387
 msgid "Unknown function!"
 msgstr "Fonction inconnue !"
 
-#: src/BufferView_pimpl.C:3646 src/BufferView_pimpl.C:3649
+#: src/BufferView_pimpl.C:3652 src/BufferView_pimpl.C:3655
 msgid "No more insets"
 msgstr "Pas d'autre insert"
 
@@ -720,7 +717,7 @@ msgstr "Impossible de convertir le fichier"
 msgid "No information for converting from "
 msgstr "Pas d´information pour la conversion de "
 
-#: src/CutAndPaste.C:425 src/CutAndPaste.C:428 src/converter.C:588
+#: src/converter.C:588 src/CutAndPaste.C:425 src/CutAndPaste.C:428
 msgid " to "
 msgstr " vers "
 
@@ -969,19 +966,19 @@ msgid "No year"
 msgstr "Pas d'année"
 
 #. /
-#: src/LyXAction.C:157 src/ext_l10n.h:570 src/ext_l10n.h:604
-#: src/ext_l10n.h:763 src/ext_l10n.h:900
-#: src/frontends/controllers/ButtonController.h:73 src/lyxfunc.C:1084
+#: src/frontends/controllers/ButtonController.h:73 src/LyXAction.C:157
+#: src/lyxfunc.C:1084 src/ext_l10n.h:570 src/ext_l10n.h:604 src/ext_l10n.h:763
+#: src/ext_l10n.h:900
 msgid "Cancel"
 msgstr "Annuler"
 
-#: src/LyXAction.C:130 src/ext_l10n.h:1099 src/ext_l10n.h:1158
 #: src/frontends/controllers/ButtonController.h:74
+#: src/frontends/xforms/form_maths_deco.C:32
 #: src/frontends/xforms/FormMathsPanel.C:71
 #: src/frontends/xforms/FormMathsPanel.C:407
-#: src/frontends/xforms/form_maths_deco.C:32
 #: src/frontends/xforms/form_maths_space.C:73
-#: src/frontends/xforms/form_maths_style.C:35
+#: src/frontends/xforms/form_maths_style.C:35 src/LyXAction.C:130
+#: src/ext_l10n.h:1099 src/ext_l10n.h:1158
 msgid "Close"
 msgstr "Fermer"
 
@@ -1063,8 +1060,8 @@ msgstr "Petit (-1)"
 msgid "Normal"
 msgstr "Normal"
 
-#: src/ext_l10n.h:744 src/frontends/controllers/character.C:105
-#: src/frontends/qt2/QDocument.C:203 src/lyxfont.C:56
+#: src/frontends/controllers/character.C:105 src/frontends/qt2/QDocument.C:203
+#: src/lyxfont.C:56 src/ext_l10n.h:744
 msgid "Large"
 msgstr "Grand"
 
@@ -1076,8 +1073,8 @@ msgstr "Très Grand (+2)"
 msgid "Largest"
 msgstr "Très Très Grand (+3)"
 
-#: src/ext_l10n.h:747 src/frontends/controllers/character.C:111
-#: src/frontends/qt2/QDocument.C:206 src/lyxfont.C:57
+#: src/frontends/controllers/character.C:111 src/frontends/qt2/QDocument.C:206
+#: src/lyxfont.C:57 src/ext_l10n.h:747
 msgid "Huge"
 msgstr "ÉNORME"
 
@@ -1223,7 +1220,7 @@ msgstr "Choisir le fichier graphique"
 msgid "Clipart|#C#c"
 msgstr "Clipart|#C#c"
 
-#: src/ext_l10n.h:860 src/frontends/controllers/ControlGraphics.C:202
+#: src/frontends/controllers/ControlGraphics.C:202 src/ext_l10n.h:860
 msgid "center"
 msgstr "centre"
 
@@ -1361,7 +1358,6 @@ msgid "Filename can't contain any of these characters:"
 msgstr "Le nom du fichier ne peut contenir aucun de ces caractères :"
 
 #: src/frontends/controllers/helper_funcs.C:61
-#, c-format
 msgid "space, '#', '~', '$' or '%'."
 msgstr "espace, '#', '~', '$' ou '%'."
 
@@ -1373,8 +1369,8 @@ msgstr "&Oui"
 msgid "&No"
 msgstr "&Non"
 
-#: src/ext_l10n.h:538 src/ext_l10n.h:1062 src/frontends/qt2/Alert_pimpl.C:45
-#: src/frontends/qt2/QParagraphDialog.C:49
+#: src/frontends/qt2/Alert_pimpl.C:45 src/frontends/qt2/QParagraphDialog.C:49
+#: src/ext_l10n.h:538 src/ext_l10n.h:1062
 msgid "&Cancel"
 msgstr "&Annuler"
 
@@ -1386,18 +1382,18 @@ msgstr "LyX : "
 msgid "*|All files"
 msgstr "*|Tous les fichiers"
 
-#: src/ext_l10n.h:837 src/ext_l10n.h:840 src/ext_l10n.h:843 src/ext_l10n.h:846
-#: src/frontends/qt2/lengthcombo.C:19
+#: src/frontends/qt2/lengthcombo.C:19 src/ext_l10n.h:837 src/ext_l10n.h:840
+#: src/ext_l10n.h:843 src/ext_l10n.h:846
 msgid "cm"
 msgstr "cm"
 
-#: src/ext_l10n.h:838 src/ext_l10n.h:841 src/ext_l10n.h:844 src/ext_l10n.h:847
-#: src/frontends/qt2/lengthcombo.C:20
+#: src/frontends/qt2/lengthcombo.C:20 src/ext_l10n.h:838 src/ext_l10n.h:841
+#: src/ext_l10n.h:844 src/ext_l10n.h:847
 msgid "in"
 msgstr "in"
 
-#: src/ext_l10n.h:836 src/ext_l10n.h:839 src/ext_l10n.h:842 src/ext_l10n.h:845
-#: src/frontends/qt2/lengthcombo.C:21
+#: src/frontends/qt2/lengthcombo.C:21 src/ext_l10n.h:836 src/ext_l10n.h:839
+#: src/ext_l10n.h:842 src/ext_l10n.h:845
 msgid "pt"
 msgstr "pt"
 
@@ -1429,7 +1425,7 @@ msgstr "bp"
 msgid "dd"
 msgstr "dd"
 
-#: src/ext_l10n.h:227 src/frontends/qt2/lengthcombo.C:29
+#: src/frontends/qt2/lengthcombo.C:29 src/ext_l10n.h:227
 msgid "cc"
 msgstr "cc"
 
@@ -1448,7 +1444,6 @@ msgid "%c"
 msgstr "%c"
 
 #: src/frontends/qt2/lengthcombo.C:33
-#, c-format
 msgid "%l"
 msgstr "%l"
 
@@ -1456,8 +1451,8 @@ msgstr "%l"
 msgid "FIXME - describe the units."
 msgstr "À VOIR - décrit les unités."
 
-#: src/ext_l10n.h:529 src/frontends/qt2/QAbout.C:32
-#: src/frontends/xforms/FormAboutlyx.C:28
+#: src/frontends/qt2/QAbout.C:32 src/frontends/xforms/FormAboutlyx.C:28
+#: src/ext_l10n.h:529
 msgid "About LyX"
 msgstr "À Propos de LyX"
 
@@ -1469,8 +1464,8 @@ msgstr "Entrée Bibliographique"
 msgid "BibTeX"
 msgstr "BibTeX"
 
-#: src/ext_l10n.h:561 src/frontends/qt2/QBibtex.C:114
-#: src/frontends/qt2/QBibtexDialog.C:77
+#: src/frontends/qt2/QBibtex.C:114 src/frontends/qt2/QBibtexDialog.C:77
+#: src/ext_l10n.h:561
 msgid "Other ..."
 msgstr "Autre ..."
 
@@ -1492,13 +1487,13 @@ msgstr "Fichiers de Données BibTeX (*.bib)"
 msgid "Select a BibTeX database to add"
 msgstr "Choisir une base de D. BibTeX"
 
-#: src/ext_l10n.h:571 src/frontends/qt2/QCharacter.C:31
+#: src/frontends/qt2/QCharacter.C:31 src/ext_l10n.h:571
 msgid "Character"
 msgstr "Caractère"
 
 # ---------------------------XFORMS---------------------------
-#: src/ext_l10n.h:600 src/frontends/qt2/QCitation.C:45
-#: src/frontends/xforms/FormCitation.C:117
+#: src/frontends/qt2/QCitation.C:45 src/frontends/xforms/FormCitation.C:117
+#: src/ext_l10n.h:600
 msgid "Citation"
 msgstr "Citation"
 
@@ -1511,28 +1506,28 @@ msgstr "Pas encore supporté"
 msgid "Document Settings"
 msgstr "Paramètres du Document"
 
-#: src/ext_l10n.h:672 src/frontends/qt2/QDocument.C:72 src/lyxfont.C:568
+#: src/frontends/qt2/QDocument.C:72 src/lyxfont.C:568 src/ext_l10n.h:672
 msgid "Default"
 msgstr "Défaut"
 
-#: src/ext_l10n.h:673 src/ext_l10n.h:1010 src/ext_l10n.h:1019
-#: src/frontends/qt2/QDocument.C:73
+#: src/frontends/qt2/QDocument.C:73 src/ext_l10n.h:673 src/ext_l10n.h:1010
+#: src/ext_l10n.h:1019
 msgid "Custom"
 msgstr "Paramétré"
 
-#: src/ext_l10n.h:674 src/frontends/qt2/QDocument.C:74
+#: src/frontends/qt2/QDocument.C:74 src/ext_l10n.h:674
 msgid "USletter"
 msgstr "LettreUS"
 
-#: src/ext_l10n.h:675 src/frontends/qt2/QDocument.C:75
+#: src/frontends/qt2/QDocument.C:75 src/ext_l10n.h:675
 msgid "USlegal"
 msgstr "LégalUS"
 
-#: src/ext_l10n.h:676 src/frontends/qt2/QDocument.C:76
+#: src/frontends/qt2/QDocument.C:76 src/ext_l10n.h:676
 msgid "USexecutive"
 msgstr "ExecutiveUS"
 
-#: src/ext_l10n.h:677 src/frontends/qt2/QDocument.C:77
+#: src/frontends/qt2/QDocument.C:77 src/ext_l10n.h:677
 msgid "A3"
 msgstr "A3"
 
@@ -1540,81 +1535,81 @@ msgstr "A3"
 msgid "A4"
 msgstr "A4"
 
-#: src/ext_l10n.h:678 src/frontends/qt2/QDocument.C:79
+#: src/frontends/qt2/QDocument.C:79 src/ext_l10n.h:678
 msgid "A5"
 msgstr "A5"
 
-#: src/ext_l10n.h:679 src/frontends/qt2/QDocument.C:80
+#: src/frontends/qt2/QDocument.C:80 src/ext_l10n.h:679
 msgid "B3"
 msgstr "B3"
 
-#: src/ext_l10n.h:680 src/frontends/qt2/QDocument.C:81
+#: src/frontends/qt2/QDocument.C:81 src/ext_l10n.h:680
 msgid "B4"
 msgstr "B4"
 
-#: src/ext_l10n.h:681 src/frontends/qt2/QDocument.C:82
+#: src/frontends/qt2/QDocument.C:82 src/ext_l10n.h:681
 msgid "B5"
 msgstr "B5"
 
-#: src/ext_l10n.h:683 src/ext_l10n.h:1004 src/ext_l10n.h:1013
-#: src/ext_l10n.h:1047 src/frontends/qt2/QDocument.C:84
+#: src/frontends/qt2/QDocument.C:84 src/ext_l10n.h:683 src/ext_l10n.h:1004
+#: src/ext_l10n.h:1013 src/ext_l10n.h:1047
 msgid "None"
 msgstr "Sans"
 
-#: src/ext_l10n.h:684 src/frontends/qt2/QDocument.C:85
+#: src/frontends/qt2/QDocument.C:85 src/ext_l10n.h:684
 msgid "A4 small Margins (only portrait)"
 msgstr "A4 petites Marges (portrait seul)"
 
-#: src/ext_l10n.h:685 src/frontends/qt2/QDocument.C:86
+#: src/frontends/qt2/QDocument.C:86 src/ext_l10n.h:685
 msgid "A4 very small Margins (only portrait)"
 msgstr "A4 très petites marges (portrait seul)"
 
-#: src/ext_l10n.h:686 src/frontends/qt2/QDocument.C:87
+#: src/frontends/qt2/QDocument.C:87 src/ext_l10n.h:686
 msgid "A4 very wide margins (only portrait)"
 msgstr "A4 très grandes marges (portrait seul)"
 
-#: src/ext_l10n.h:654 src/frontends/qt2/QDocument.C:112
+#: src/frontends/qt2/QDocument.C:112 src/ext_l10n.h:654
 msgid "OneHalf"
 msgstr "Un et Demi"
 
-#: src/ext_l10n.h:656 src/frontends/qt2/QDocument.C:114
+#: src/frontends/qt2/QDocument.C:114 src/ext_l10n.h:656
 msgid "Other"
 msgstr "Autre"
 
 #. the document language page
+#: src/frontends/qt2/QDocument.C:116 src/frontends/qt2/QDocument.C:124
+#: src/frontends/qt2/QDocument.C:152 src/frontends/qt2/QDocument.C:196
+#: src/frontends/qt2/QDocument.C:575 src/frontends/qt2/QDocument.C:579
 #: src/ext_l10n.h:641 src/ext_l10n.h:657 src/ext_l10n.h:706 src/ext_l10n.h:737
-#: src/ext_l10n.h:856 src/frontends/qt2/QDocument.C:116
-#: src/frontends/qt2/QDocument.C:124 src/frontends/qt2/QDocument.C:152
-#: src/frontends/qt2/QDocument.C:196 src/frontends/qt2/QDocument.C:575
-#: src/frontends/qt2/QDocument.C:579
+#: src/ext_l10n.h:856
 msgid "default"
 msgstr "défaut"
 
-#: src/ext_l10n.h:658 src/frontends/qt2/QDocument.C:117
+#: src/frontends/qt2/QDocument.C:117 src/ext_l10n.h:658
 msgid "10"
 msgstr "10"
 
-#: src/ext_l10n.h:659 src/frontends/qt2/QDocument.C:118
+#: src/frontends/qt2/QDocument.C:118 src/ext_l10n.h:659
 msgid "11"
 msgstr "11"
 
-#: src/ext_l10n.h:660 src/frontends/qt2/QDocument.C:119
+#: src/frontends/qt2/QDocument.C:119 src/ext_l10n.h:660
 msgid "12"
 msgstr "12"
 
-#: src/ext_l10n.h:642 src/frontends/qt2/QDocument.C:125
+#: src/frontends/qt2/QDocument.C:125 src/ext_l10n.h:642
 msgid "empty"
 msgstr "vide"
 
-#: src/ext_l10n.h:557 src/ext_l10n.h:643 src/frontends/qt2/QDocument.C:126
+#: src/frontends/qt2/QDocument.C:126 src/ext_l10n.h:557 src/ext_l10n.h:643
 msgid "plain"
 msgstr "ordinaire"
 
-#: src/ext_l10n.h:644 src/frontends/qt2/QDocument.C:127
+#: src/frontends/qt2/QDocument.C:127 src/ext_l10n.h:644
 msgid "headings"
 msgstr "en-têtes"
 
-#: src/ext_l10n.h:645 src/frontends/qt2/QDocument.C:128
+#: src/frontends/qt2/QDocument.C:128 src/ext_l10n.h:645
 msgid "fancy"
 msgstr "sophistiquée"
 
@@ -1634,67 +1629,67 @@ msgstr "Gros"
 msgid "Length"
 msgstr "Valeur"
 
-#: src/ext_l10n.h:707 src/frontends/qt2/QDocument.C:153
+#: src/frontends/qt2/QDocument.C:153 src/ext_l10n.h:707
 msgid "auto"
 msgstr "auto"
 
-#: src/ext_l10n.h:708 src/frontends/qt2/QDocument.C:154
+#: src/frontends/qt2/QDocument.C:154 src/ext_l10n.h:708
 msgid "latin1"
 msgstr "latin1"
 
-#: src/ext_l10n.h:709 src/frontends/qt2/QDocument.C:155
+#: src/frontends/qt2/QDocument.C:155 src/ext_l10n.h:709
 msgid "latin2"
 msgstr "latin2"
 
-#: src/ext_l10n.h:710 src/frontends/qt2/QDocument.C:156
+#: src/frontends/qt2/QDocument.C:156 src/ext_l10n.h:710
 msgid "latin3"
 msgstr "latin3"
 
-#: src/ext_l10n.h:711 src/frontends/qt2/QDocument.C:157
+#: src/frontends/qt2/QDocument.C:157 src/ext_l10n.h:711
 msgid "latin4"
 msgstr "latin4"
 
-#: src/ext_l10n.h:712 src/frontends/qt2/QDocument.C:158
+#: src/frontends/qt2/QDocument.C:158 src/ext_l10n.h:712
 msgid "latin5"
 msgstr "latin5"
 
-#: src/ext_l10n.h:713 src/frontends/qt2/QDocument.C:159
+#: src/frontends/qt2/QDocument.C:159 src/ext_l10n.h:713
 msgid "latin9"
 msgstr "latin9"
 
-#: src/ext_l10n.h:714 src/frontends/qt2/QDocument.C:160
+#: src/frontends/qt2/QDocument.C:160 src/ext_l10n.h:714
 msgid "koi8-r"
 msgstr "koi8-r"
 
-#: src/ext_l10n.h:715 src/frontends/qt2/QDocument.C:161
+#: src/frontends/qt2/QDocument.C:161 src/ext_l10n.h:715
 msgid "koi8-u"
 msgstr "koi8-u"
 
-#: src/ext_l10n.h:716 src/frontends/qt2/QDocument.C:162
+#: src/frontends/qt2/QDocument.C:162 src/ext_l10n.h:716
 msgid "cp866"
 msgstr "cp866"
 
-#: src/ext_l10n.h:717 src/frontends/qt2/QDocument.C:163
+#: src/frontends/qt2/QDocument.C:163 src/ext_l10n.h:717
 msgid "cp1251"
 msgstr "cp1251"
 
-#: src/ext_l10n.h:718 src/frontends/qt2/QDocument.C:164
+#: src/frontends/qt2/QDocument.C:164 src/ext_l10n.h:718
 msgid "iso88595"
 msgstr "iso88595"
 
-#: src/ext_l10n.h:721 src/frontends/qt2/QDocument.C:171
+#: src/frontends/qt2/QDocument.C:171 src/ext_l10n.h:721
 msgid "``text''"
 msgstr "``texte''"
 
-#: src/ext_l10n.h:722 src/frontends/qt2/QDocument.C:172
+#: src/frontends/qt2/QDocument.C:172 src/ext_l10n.h:722
 msgid "''text''"
 msgstr "''texte''"
 
-#: src/ext_l10n.h:723 src/frontends/qt2/QDocument.C:173
+#: src/frontends/qt2/QDocument.C:173 src/ext_l10n.h:723
 msgid ",,text``"
 msgstr ",,texte``"
 
-#: src/ext_l10n.h:724 src/frontends/qt2/QDocument.C:174
+#: src/frontends/qt2/QDocument.C:174 src/ext_l10n.h:724
 msgid ",,text''"
 msgstr ",,texte''"
 
@@ -1706,40 +1701,40 @@ msgstr "«texte»"
 msgid "»text«"
 msgstr "»texte«"
 
-#: src/ext_l10n.h:738 src/frontends/qt2/QDocument.C:197
-#: src/frontends/xforms/form_preferences.C:171
+#: src/frontends/qt2/QDocument.C:197
+#: src/frontends/xforms/form_preferences.C:171 src/ext_l10n.h:738
 msgid "tiny"
 msgstr "minuscule"
 
-#: src/ext_l10n.h:739 src/frontends/qt2/QDocument.C:198
+#: src/frontends/qt2/QDocument.C:198 src/ext_l10n.h:739
 msgid "script"
 msgstr "tout petit"
 
-#: src/ext_l10n.h:740 src/frontends/qt2/QDocument.C:199
+#: src/frontends/qt2/QDocument.C:199 src/ext_l10n.h:740
 msgid "footnote"
 msgstr "très petit"
 
-#: src/ext_l10n.h:741 src/frontends/qt2/QDocument.C:200
-#: src/frontends/xforms/form_preferences.C:180
+#: src/frontends/qt2/QDocument.C:200
+#: src/frontends/xforms/form_preferences.C:180 src/ext_l10n.h:741
 msgid "small"
 msgstr "petit"
 
-#: src/ext_l10n.h:742 src/frontends/qt2/QDocument.C:201
-#: src/frontends/xforms/form_preferences.C:183
+#: src/frontends/qt2/QDocument.C:201
+#: src/frontends/xforms/form_preferences.C:183 src/ext_l10n.h:742
 msgid "normal"
 msgstr "normal"
 
-#: src/ext_l10n.h:743 src/frontends/qt2/QDocument.C:202
-#: src/frontends/xforms/form_preferences.C:186
+#: src/frontends/qt2/QDocument.C:202
+#: src/frontends/xforms/form_preferences.C:186 src/ext_l10n.h:743
 msgid "large"
 msgstr "grand"
 
-#: src/ext_l10n.h:745 src/frontends/qt2/QDocument.C:204
+#: src/frontends/qt2/QDocument.C:204 src/ext_l10n.h:745
 msgid "LARGE"
 msgstr "GRAND"
 
-#: src/ext_l10n.h:746 src/frontends/qt2/QDocument.C:205
-#: src/frontends/xforms/form_preferences.C:195
+#: src/frontends/qt2/QDocument.C:205
+#: src/frontends/xforms/form_preferences.C:195 src/ext_l10n.h:746
 msgid "huge"
 msgstr "énorme"
 
@@ -1797,8 +1792,8 @@ msgstr "leur valeur par défaut dans cette classe ?"
 msgid "Unable to switch to new document class."
 msgstr "Impossible de passer à la nouvelle classe de document."
 
-#: src/ext_l10n.h:764 src/frontends/qt2/QError.C:23
-#: src/frontends/xforms/FormError.C:24
+#: src/frontends/qt2/QError.C:23 src/frontends/xforms/FormError.C:24
+#: src/ext_l10n.h:764
 msgid "LaTeX Error"
 msgstr "Erreur LaTeX"
 
@@ -1832,12 +1827,12 @@ msgstr "Graphique"
 msgid "Include"
 msgstr "Inclusion"
 
-#: src/ext_l10n.h:539 src/ext_l10n.h:896 src/frontends/qt2/QIndex.C:23
-#: src/frontends/xforms/FormIndex.C:24 src/insets/insetindex.C:61
+#: src/frontends/qt2/QIndex.C:23 src/frontends/xforms/FormIndex.C:24
+#: src/insets/insetindex.C:61 src/ext_l10n.h:539 src/ext_l10n.h:896
 msgid "Index"
 msgstr "Index"
 
-#: src/ext_l10n.h:901 src/frontends/qt2/QLog.C:33
+#: src/frontends/qt2/QLog.C:33 src/ext_l10n.h:901
 msgid "Log"
 msgstr "Log"
 
@@ -1857,7 +1852,7 @@ msgstr "Fichier log introuvable"
 msgid "No LaTeX log file found"
 msgstr "Fichier log introuvable"
 
-#: src/ext_l10n.h:1048 src/frontends/qt2/QMinipage.C:33
+#: src/frontends/qt2/QMinipage.C:33 src/ext_l10n.h:1048
 msgid "Minipage"
 msgstr "Minipage"
 
@@ -1870,13 +1865,13 @@ msgstr "Le style du paragraphe a été paramétré"
 msgid "LyX: Paragraph Settings"
 msgstr "LyX : Options de Paragraphe"
 
-#: src/ext_l10n.h:534 src/ext_l10n.h:545 src/ext_l10n.h:599 src/ext_l10n.h:766
-#: src/ext_l10n.h:775 src/ext_l10n.h:793 src/ext_l10n.h:798 src/ext_l10n.h:874
-#: src/ext_l10n.h:893 src/ext_l10n.h:904 src/ext_l10n.h:918
-#: src/ext_l10n.h:1069 src/ext_l10n.h:1118 src/ext_l10n.h:1128
-#: src/ext_l10n.h:1130 src/ext_l10n.h:1142 src/ext_l10n.h:1172
-#: src/ext_l10n.h:1184 src/ext_l10n.h:1189 src/ext_l10n.h:1199
-#: src/ext_l10n.h:1203 src/frontends/qt2/QParagraphDialog.C:49
+#: src/frontends/qt2/QParagraphDialog.C:49 src/ext_l10n.h:534
+#: src/ext_l10n.h:545 src/ext_l10n.h:599 src/ext_l10n.h:766 src/ext_l10n.h:775
+#: src/ext_l10n.h:793 src/ext_l10n.h:798 src/ext_l10n.h:874 src/ext_l10n.h:893
+#: src/ext_l10n.h:904 src/ext_l10n.h:918 src/ext_l10n.h:1069
+#: src/ext_l10n.h:1118 src/ext_l10n.h:1128 src/ext_l10n.h:1130
+#: src/ext_l10n.h:1142 src/ext_l10n.h:1172 src/ext_l10n.h:1184
+#: src/ext_l10n.h:1189 src/ext_l10n.h:1199 src/ext_l10n.h:1203
 msgid "&Close"
 msgstr "&Fermer"
 
@@ -1898,9 +1893,9 @@ msgstr "Entrer le programme d'édition"
 msgid "Editor"
 msgstr "Éditeur"
 
-#: src/LyXAction.C:138 src/LyXAction.C:145 src/ext_l10n.h:1070
-#: src/frontends/qt2/QPrint.C:35 src/frontends/xforms/FormPrint.C:35
-#: src/frontends/xforms/form_print.C:133
+#: src/frontends/qt2/QPrint.C:35 src/frontends/xforms/form_print.C:133
+#: src/frontends/xforms/FormPrint.C:35 src/LyXAction.C:138 src/LyXAction.C:145
+#: src/ext_l10n.h:1070
 msgid "Print"
 msgstr "Imprimer"
 
@@ -1924,7 +1919,7 @@ msgstr "&Revenir"
 msgid "Go back"
 msgstr "Revenir"
 
-#: src/ext_l10n.h:1106 src/frontends/qt2/QRef.C:103
+#: src/frontends/qt2/QRef.C:103 src/ext_l10n.h:1106
 msgid "&Goto"
 msgstr "&Aller"
 
@@ -1933,8 +1928,8 @@ msgstr "&Aller"
 msgid "Go to reference"
 msgstr "Aller à la référence"
 
-#: src/ext_l10n.h:611 src/frontends/qt2/QSearch.C:31
-#: src/frontends/xforms/form_citation.C:78
+#: src/frontends/qt2/QSearch.C:31 src/frontends/xforms/form_citation.C:78
+#: src/ext_l10n.h:611
 msgid "Search"
 msgstr "Chercher"
 
@@ -1942,7 +1937,7 @@ msgstr "Chercher"
 msgid "ShowFile"
 msgstr ""
 
-#: src/ext_l10n.h:1131 src/frontends/qt2/QSpellchecker.C:27
+#: src/frontends/qt2/QSpellchecker.C:27 src/ext_l10n.h:1131
 msgid "Spellchecker"
 msgstr "Correcteur Orthographique"
 
@@ -1950,8 +1945,7 @@ msgstr "Correcteur Orthographique"
 msgid "Spellcheck complete"
 msgstr "Correction orthographique terminée"
 
-#: src/ext_l10n.h:537 src/ext_l10n.h:569 src/ext_l10n.h:602 src/ext_l10n.h:761
-#: src/ext_l10n.h:774 src/ext_l10n.h:899 src/frontends/qt2/QSpellchecker.C:114
+#: src/frontends/qt2/QSpellchecker.C:114
 #: src/frontends/xforms/form_bibitem.C:35
 #: src/frontends/xforms/form_bibtex.C:35
 #: src/frontends/xforms/form_citation.C:173
@@ -1966,15 +1960,16 @@ msgstr "Correction orthographique terminée"
 #: src/frontends/xforms/form_print.C:53 src/frontends/xforms/form_ref.C:86
 #: src/frontends/xforms/form_sendto.C:46
 #: src/frontends/xforms/form_tabular_create.C:28
-#: src/frontends/xforms/form_url.C:64
+#: src/frontends/xforms/form_url.C:64 src/ext_l10n.h:537 src/ext_l10n.h:569
+#: src/ext_l10n.h:602 src/ext_l10n.h:761 src/ext_l10n.h:774 src/ext_l10n.h:899
 msgid "OK"
 msgstr "OK"
 
-#: src/ext_l10n.h:1151 src/frontends/qt2/QTabularCreate.C:28
+#: src/frontends/qt2/QTabularCreate.C:28 src/ext_l10n.h:1151
 msgid "Insert table"
 msgstr "Insérer un tableau"
 
-#: src/ext_l10n.h:446 src/ext_l10n.h:1174 src/frontends/qt2/QThesaurus.C:28
+#: src/frontends/qt2/QThesaurus.C:28 src/ext_l10n.h:446 src/ext_l10n.h:1174
 msgid "Thesaurus"
 msgstr "Dictionnaire de Synonymes"
 
@@ -1982,8 +1977,8 @@ msgstr "Dictionnaire de Synonymes"
 msgid "Table of contents"
 msgstr "Table des Matières"
 
-#: src/ext_l10n.h:467 src/ext_l10n.h:1192 src/ext_l10n.h:1195
-#: src/frontends/qt2/QURL.C:25
+#: src/frontends/qt2/QURL.C:25 src/ext_l10n.h:467 src/ext_l10n.h:1192
+#: src/ext_l10n.h:1195
 msgid "URL"
 msgstr "URL"
 
@@ -2053,9 +2048,10 @@ msgstr "AVERTISSEMENT ! "
 msgid "*"
 msgstr "*"
 
-#: src/frontends/xforms/FormMathsBitmap.C:89
 #: src/frontends/xforms/form_aboutlyx.C:29
-#: src/frontends/xforms/form_forks.C:66 src/frontends/xforms/form_search.C:73
+#: src/frontends/xforms/form_forks.C:66
+#: src/frontends/xforms/FormMathsBitmap.C:89
+#: src/frontends/xforms/form_search.C:73
 #: src/frontends/xforms/form_tabular.C:31
 msgid "Close|^["
 msgstr "Fermer|^["
@@ -2076,7 +2072,7 @@ msgstr "Copyright et Version"
 msgid "License and Warranty"
 msgstr "Licence et Garantie"
 
-#: src/ext_l10n.h:532 src/frontends/xforms/FormAboutlyx.C:65
+#: src/frontends/xforms/FormAboutlyx.C:65 src/ext_l10n.h:532
 msgid "Credits"
 msgstr "Crédits"
 
@@ -2297,7 +2293,7 @@ msgstr "@2->"
 msgid "#&B"
 msgstr "#&B"
 
-#: src/ext_l10n.h:609 src/frontends/xforms/form_citation.C:73 src/lyxvc.C:132
+#: src/frontends/xforms/form_citation.C:73 src/lyxvc.C:132 src/ext_l10n.h:609
 msgid "Info"
 msgstr "Informations"
 
@@ -2317,7 +2313,7 @@ msgstr "Précédent|#P"
 msgid "Next|#N"
 msgstr "Suivant|#S"
 
-#: src/ext_l10n.h:606 src/frontends/xforms/form_citation.C:116
+#: src/frontends/xforms/form_citation.C:116 src/ext_l10n.h:606
 msgid "Citation style"
 msgstr "Style de citation"
 
@@ -2390,7 +2386,7 @@ msgstr ""
 
 #: src/frontends/xforms/FormCitation.C:205
 msgid "Information about the selected entry"
-msgstr "Information sur l'entrée sélectionnée"
+msgstr "Informations sur l'entrée sélectionnée"
 
 #: src/frontends/xforms/FormCitation.C:208
 msgid ""
@@ -2476,7 +2472,7 @@ msgstr "Largeur :|#L"
 msgid "Height:|#H"
 msgstr "Hauteur :|#t"
 
-#: src/ext_l10n.h:688 src/frontends/xforms/form_document.C:123
+#: src/frontends/xforms/form_document.C:123 src/ext_l10n.h:688
 msgid "Orientation"
 msgstr "Orientation"
 
@@ -2488,7 +2484,7 @@ msgstr "Portrait|#o"
 msgid "Landscape|#L"
 msgstr "Paysage|#y"
 
-#: src/ext_l10n.h:691 src/frontends/xforms/form_document.C:143
+#: src/frontends/xforms/form_document.C:143 src/ext_l10n.h:691
 msgid "Margins"
 msgstr "Marges"
 
@@ -2530,7 +2526,7 @@ msgstr "Sép. En-tête :|#p"
 msgid "Footskip:|#F"
 msgstr "Esp. Bas :|#E"
 
-#: src/ext_l10n.h:667 src/frontends/xforms/form_document.C:254
+#: src/frontends/xforms/form_document.C:254 src/ext_l10n.h:667
 msgid "Separation"
 msgstr "Séparation"
 
@@ -2538,7 +2534,7 @@ msgstr "Séparation"
 msgid "Page cols"
 msgstr "Colonnes"
 
-#: src/ext_l10n.h:661 src/frontends/xforms/form_document.C:256
+#: src/frontends/xforms/form_document.C:256 src/ext_l10n.h:661
 msgid "Sides"
 msgstr "Faces"
 
@@ -2676,7 +2672,7 @@ msgid "4|#4"
 msgstr "4|#4"
 
 # Contrainte de longueur
-#: src/ext_l10n.h:748 src/frontends/xforms/form_document.C:608
+#: src/frontends/xforms/form_document.C:608 src/ext_l10n.h:748
 msgid "Bullet Depth"
 msgstr "Prof. Puces"
 
@@ -2704,7 +2700,7 @@ msgstr "Ding 3|#n"
 msgid "Ding 4|#g"
 msgstr "Ding 4|#g"
 
-#: src/ext_l10n.h:635 src/frontends/xforms/FormDocument.C:58
+#: src/frontends/xforms/FormDocument.C:58 src/ext_l10n.h:635
 msgid "Document Layout"
 msgstr "Style de Document"
 
@@ -2744,22 +2740,22 @@ msgstr ""
 " défaut | minuscule(-4) | tout petit(-3) | très petit(-2)  | petit(-1) | "
 "normal | grand(+1) | Grand(+2) | GRAND(+3) | énorme(+4) | Énorme(+5)"
 
-#: src/ext_l10n.h:670 src/frontends/xforms/FormDocument.C:329
+#: src/frontends/xforms/FormDocument.C:329 src/ext_l10n.h:670
 msgid "Paper"
 msgstr "Papier"
 
-#: src/ext_l10n.h:577 src/ext_l10n.h:585 src/ext_l10n.h:703
 #: src/frontends/xforms/FormDocument.C:331
-#: src/frontends/xforms/FormPreferences.C:258
+#: src/frontends/xforms/FormPreferences.C:258 src/ext_l10n.h:577
+#: src/ext_l10n.h:585 src/ext_l10n.h:703
 msgid "Language"
 msgstr "Langue"
 
-#: src/ext_l10n.h:729 src/ext_l10n.h:852
-#: src/frontends/xforms/FormDocument.C:333
+#: src/frontends/xforms/FormDocument.C:333 src/ext_l10n.h:729
+#: src/ext_l10n.h:852
 msgid "Extra"
 msgstr "Autres"
 
-#: src/ext_l10n.h:735 src/frontends/xforms/FormDocument.C:335
+#: src/frontends/xforms/FormDocument.C:335 src/ext_l10n.h:735
 msgid "Bullets"
 msgstr "Puces"
 
@@ -2880,7 +2876,7 @@ msgid "Warning! Couldn't open directory."
 msgstr "Attention ! Impossible d'ouvrir le répertoire."
 
 # contrainte de longueur
-#: src/ext_l10n.h:799 src/frontends/xforms/form_float.C:29
+#: src/frontends/xforms/form_float.C:29 src/ext_l10n.h:799
 msgid "Placement"
 msgstr "Emplacement"
 
@@ -2905,9 +2901,8 @@ msgid "Here, definitely|#H"
 msgstr "Ici, à tout prix|#x"
 
 #: src/frontends/xforms/form_float.C:92
-#, fuzzy
 msgid "Document defaults|#D"
-msgstr "Retenir ces Valeurs par Défaut|#D"
+msgstr "Valeurs par Défaut du Document|#D"
 
 #: src/frontends/xforms/FormFloat.C:25
 msgid "Float Options"
@@ -3017,8 +3012,8 @@ msgstr "Personnalisé|#P"
 msgid "Value|#V"
 msgstr "Valeur|#V"
 
-#: src/ext_l10n.h:826 src/frontends/xforms/form_graphics.C:227
-#: src/frontends/xforms/form_graphics.C:444
+#: src/frontends/xforms/form_graphics.C:227
+#: src/frontends/xforms/form_graphics.C:444 src/ext_l10n.h:826
 #, no-c-format
 msgid "%"
 msgstr "%"
@@ -3120,7 +3115,7 @@ msgid "Get LaTeX size|#L"
 msgstr "Taille LaTeX|#L"
 
 #. add the different tabfolders
-#: src/ext_l10n.h:806 src/frontends/xforms/FormGraphics.C:190
+#: src/frontends/xforms/FormGraphics.C:190 src/ext_l10n.h:806
 msgid "File"
 msgstr "Fichier"
 
@@ -3264,8 +3259,8 @@ msgstr "Fermer "
 msgid "Functions"
 msgstr "Fonctions"
 
-#: src/ext_l10n.h:505 src/frontends/xforms/FormMathsPanel.C:103
 #: src/frontends/xforms/form_maths_panel.C:35
+#: src/frontends/xforms/FormMathsPanel.C:103 src/ext_l10n.h:505
 msgid "Greek"
 msgstr "Grec"
 
@@ -3284,17 +3279,17 @@ msgstr "± ´"
 msgid "£ @"
 msgstr "£ @"
 
+#: src/frontends/xforms/form_maths_panel.C:51
+#: src/frontends/xforms/form_maths_panel.C:114
 #: src/frontends/xforms/FormMathsPanel.C:109
 #: src/frontends/xforms/FormPreferences.C:225
 #: src/frontends/xforms/FormPreferences.C:242
 #: src/frontends/xforms/FormPreferences.C:250
-#: src/frontends/xforms/form_maths_panel.C:51
-#: src/frontends/xforms/form_maths_panel.C:114
 msgid "Misc"
 msgstr "Divers"
 
-#: src/frontends/xforms/FormMathsPanel.C:116
 #: src/frontends/xforms/form_maths_panel.C:77
+#: src/frontends/xforms/FormMathsPanel.C:116
 msgid "Dots"
 msgstr "Points"
 
@@ -3382,8 +3377,8 @@ msgstr "textrm"
 msgid "Maths Styles & Fonts"
 msgstr "Styles & Polices Mathématiques"
 
-#: src/ext_l10n.h:812 src/ext_l10n.h:828
-#: src/frontends/xforms/form_minipage.C:28
+#: src/frontends/xforms/form_minipage.C:28 src/ext_l10n.h:812
+#: src/ext_l10n.h:828
 msgid "Width"
 msgstr "Largeur"
 
@@ -3519,7 +3514,7 @@ msgstr " Défaut | Simple | Un et Demi | Double | Personnalisé "
 msgid "LaTeX preamble"
 msgstr "Préambule LaTeX"
 
-#: src/LyXAction.C:154 src/frontends/xforms/form_preferences.C:39
+#: src/frontends/xforms/form_preferences.C:39 src/LyXAction.C:154
 msgid "Save"
 msgstr "Enregistrer"
 
@@ -3580,7 +3575,7 @@ msgstr "GRAND"
 msgid "huger"
 msgstr "ÉNORME"
 
-#: src/ext_l10n.h:822 src/frontends/xforms/form_preferences.C:201
+#: src/frontends/xforms/form_preferences.C:201 src/ext_l10n.h:822
 msgid "Size"
 msgstr "Taille"
 
@@ -3661,6 +3656,7 @@ msgstr "HSV"
 msgid "RGB"
 msgstr "RGB"
 
+#: src/frontends/xforms/form_preferences.C:387
 #: src/frontends/xforms/FormPreferences.C:1073
 #: src/frontends/xforms/FormPreferences.C:1074
 #: src/frontends/xforms/FormPreferences.C:1112
@@ -3669,7 +3665,6 @@ msgstr "RGB"
 #: src/frontends/xforms/FormPreferences.C:1343
 #: src/frontends/xforms/FormPreferences.C:1386
 #: src/frontends/xforms/FormPreferences.C:1388
-#: src/frontends/xforms/form_preferences.C:387
 msgid "Modify|#M"
 msgstr "Modifier|#M"
 
@@ -3755,8 +3750,8 @@ msgstr "Utiliser l'encodage d'entrée|#e"
 msgid "Advanced Options"
 msgstr "Options Avancées"
 
-#: src/frontends/xforms/FormPreferences.C:219
 #: src/frontends/xforms/form_preferences.C:608
+#: src/frontends/xforms/FormPreferences.C:219
 msgid "Interface"
 msgstr "Interface"
 
@@ -3848,12 +3843,12 @@ msgstr "Extension|#x"
 msgid "Viewer|#V"
 msgstr "Visionneuse|#V"
 
+#: src/frontends/xforms/form_preferences.C:814
+#: src/frontends/xforms/form_preferences.C:887
 #: src/frontends/xforms/FormPreferences.C:1104
 #: src/frontends/xforms/FormPreferences.C:1106
 #: src/frontends/xforms/FormPreferences.C:1377
 #: src/frontends/xforms/FormPreferences.C:1379
-#: src/frontends/xforms/form_preferences.C:814
-#: src/frontends/xforms/form_preferences.C:887
 msgid "Add|#A"
 msgstr "Ajouter|#j"
 
@@ -4365,7 +4360,7 @@ msgstr "à"
 msgid "Order"
 msgstr "Ordre"
 
-#: src/ext_l10n.h:1094 src/frontends/xforms/form_print.C:139
+#: src/frontends/xforms/form_print.C:139 src/ext_l10n.h:1094
 msgid "Copies"
 msgstr "Exemplaires"
 
@@ -4401,8 +4396,8 @@ msgstr "Type de référence|#y"
 msgid "Goto reference|#G"
 msgstr "Atteindre référence|#l"
 
-#: src/ext_l10n.h:374 src/ext_l10n.h:1100 src/ext_l10n.h:1108
-#: src/frontends/xforms/FormRef.C:33
+#: src/frontends/xforms/FormRef.C:33 src/ext_l10n.h:374 src/ext_l10n.h:1100
+#: src/ext_l10n.h:1108
 msgid "Reference"
 msgstr "Référence"
 
@@ -4477,7 +4472,7 @@ msgstr ""
 msgid "Replace"
 msgstr "Remplacer"
 
-#: src/ext_l10n.h:1144 src/frontends/xforms/form_spellchecker.C:37
+#: src/frontends/xforms/form_spellchecker.C:37 src/ext_l10n.h:1144
 msgid "Suggestions"
 msgstr "Suggestions"
 
@@ -4743,7 +4738,7 @@ msgstr "Tab.Long"
 msgid "Wrong Cursor position, updated window"
 msgstr "Mauvaise position du curseur, MàJ fenêtre"
 
-#: src/ext_l10n.h:664 src/frontends/xforms/form_tabular_create.C:45
+#: src/frontends/xforms/form_tabular_create.C:45 src/ext_l10n.h:664
 msgid "Columns"
 msgstr "Colonnes"
 
@@ -4843,8 +4838,8 @@ msgid "Replace|^R"
 msgstr "Remplacer|^R"
 
 #: src/frontends/xforms/form_thesaurus.C:38
-msgid "Close|^C"
-msgstr "Fermer|^F"
+msgid "Close|#C^["
+msgstr "Fermer|#F^["
 
 #: src/frontends/xforms/form_thesaurus.C:45
 msgid "Entry : "
@@ -4902,8 +4897,8 @@ msgstr "ERREUR ! Impossible d'imprimer !"
 msgid "Check 'range of pages'!"
 msgstr "Vérifier les pages sélectionnées !"
 
-#: src/ext_l10n.h:329 src/frontends/xforms/Menubar_pimpl.C:279
-#: src/frontends/xforms/Menubar_pimpl.C:352
+#: src/frontends/xforms/Menubar_pimpl.C:279
+#: src/frontends/xforms/Menubar_pimpl.C:352 src/ext_l10n.h:329
 msgid "More"
 msgstr "Poursuivre"
 
@@ -5005,7 +5000,7 @@ msgid "Opened ERT Inset"
 msgstr "Insert ERT ouvert"
 
 # à revoir
-#: src/insets/insetert.C:249 src/insets/insettabular.C:2053
+#: src/insets/insetert.C:249 src/insets/insettabular.C:2054
 msgid "Impossible Operation!"
 msgstr "Opération Interdite !"
 
@@ -5013,7 +5008,7 @@ msgstr "Opération Interdite !"
 msgid "Not permitted to change font-types inside ERT-insets!"
 msgstr "Modification des polices interdites dans les inserts ERT !"
 
-#: src/insets/insetert.C:251 src/insets/insettabular.C:2055
+#: src/insets/insetert.C:251 src/insets/insettabular.C:2056
 #: src/insets/insettext.C:1405
 msgid "Sorry."
 msgstr "Désolé."
@@ -5158,7 +5153,7 @@ msgstr "minipage"
 msgid "Opened Minipage Inset"
 msgstr "Insert de minipage ouvert"
 
-#: src/LColor.C:65 src/insets/insetnote.C:39
+#: src/insets/insetnote.C:39 src/LColor.C:65
 msgid "note"
 msgstr "note"
 
@@ -5170,7 +5165,7 @@ msgstr "Insert de note ouvert"
 msgid "Parent:"
 msgstr "Parent :"
 
-#: src/ext_l10n.h:414 src/insets/insetref.C:110
+#: src/insets/insetref.C:110 src/ext_l10n.h:414
 msgid "Standard"
 msgstr "Standard"
 
@@ -5196,7 +5191,7 @@ msgstr "Page du Texte : "
 
 #: src/insets/insetref.C:113
 msgid "Standard+Textual Page"
-msgstr "Standard + N° Page du Texte"
+msgstr "Standard + N° de Page du Texte"
 
 #: src/insets/insetref.C:113
 msgid "Ref+Text: "
@@ -5215,7 +5210,7 @@ msgstr "PrettyRef : "
 msgid "Opened Tabular Inset"
 msgstr "Insert de tableau ouvert"
 
-#: src/insets/insettabular.C:2054
+#: src/insets/insettabular.C:2055
 msgid "Multicolumns can only be horizontally."
 msgstr "Les multicolonnes ne peuvent être qu'horizontales."
 
@@ -5265,7 +5260,7 @@ msgstr "URLHtml : "
 msgid "   options: "
 msgstr "   options : "
 
-#: src/ext_l10n.h:496 src/language.C:45
+#: src/language.C:45 src/ext_l10n.h:496
 msgid "English"
 msgstr "Anglais"
 
@@ -6192,12 +6187,12 @@ msgstr "Syntaxe : set-color <nom_lyx> <nom_x11>"
 
 #: src/lyxfunc.C:1643
 msgid "Set-color \""
-msgstr "'Set-color' \""
+msgstr "'Set-color' « "
 
 #: src/lyxfunc.C:1645
 msgid "\" failed - color is undefined or may not be redefined"
 msgstr ""
-"\" a échoué - la couleur n'est pas définie ou ne peut pas être redéfinie"
+" » a échoué - la couleur n'est pas définie ou ne peut pas être redéfinie"
 
 #: src/lyxfunc.C:1738
 msgid "Enter filename for new document"
@@ -6240,12 +6235,10 @@ msgid "Select document to open"
 msgstr "Choisir le document à ouvrir"
 
 #: src/lyxfunc.C:1899
-#, fuzzy
 msgid "No such file"
-msgstr "Charger le fichier"
+msgstr "Fichier inexistant"
 
 #: src/lyxfunc.C:1900
-#, fuzzy
 msgid "Start a new document with this filename ?"
 msgstr "Créer un nouveau document avec ce nom ?"
 
@@ -6281,7 +6274,7 @@ msgstr "Écraser ?"
 msgid "Welcome to LyX!"
 msgstr "Bienvenue dans LyX !"
 
-#: src/LyXView.C:230 src/lyxfunc.C:2103
+#: src/lyxfunc.C:2103 src/LyXView.C:230
 msgid " (Changed)"
 msgstr " (Modifié)"
 
@@ -7230,20 +7223,20 @@ msgid "You cannot type two spaces this way.  Please read the Tutorial."
 msgstr ""
 "Vous ne pouvez pas entrer deux espaces ici. Lisez le Manuel d'Apprentissage."
 
-#: src/text.C:3372 src/text.C:3374
+#: src/text.C:3368 src/text.C:3370
 msgid "Page Break (top)"
 msgstr "Saut de Page (Haut)"
 
 #. draw the additional space if needed:
-#: src/text.C:3381
+#: src/text.C:3377
 msgid "Space above"
 msgstr "Espacement au-dessus"
 
-#: src/text.C:3551 src/text.C:3553
+#: src/text.C:3547 src/text.C:3549
 msgid "Page Break (bottom)"
 msgstr "Saut de Page (Bas)"
 
-#: src/text.C:3562
+#: src/text.C:3558
 msgid "Space below"
 msgstr "Espacement au-dessous"
 
@@ -8596,7 +8589,7 @@ msgstr ""
 
 #: src/ext_l10n.h:358
 msgid "PostalComment"
-msgstr ""
+msgstr "CommentairePostal"
 
 #: src/ext_l10n.h:359
 msgid "Postvermerk"
@@ -10820,6 +10813,12 @@ msgstr "Imprimer comme lien hypertexte ?"
 #: src/ext_l10n.h:1200
 msgid "Version control log"
 msgstr "Historique de Contrôle de Version"
+
+#~ msgid "Close|^C"
+#~ msgstr "Fermer|^F"
+
+#~ msgid "' indexed."
+#~ msgstr " » indexé."
 
 #~ msgid "Could not find file"
 #~ msgstr "Impossible de trouver le fichier"
