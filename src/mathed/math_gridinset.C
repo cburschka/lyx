@@ -607,8 +607,8 @@ void MathGridInset::idxDelete(idx_type & idx, bool & popit, bool & deleteit)
 	popit    = false;
 	deleteit = false;
 
-	// nothing to do if we are in the last row of the inset
-	if (row(idx) + 1 == nrows())
+	// nothing to do if we are in the middle of the last row of the inset
+	if (idx + ncols() > nargs())
 		return;
 
 	// try to delete entire sequence of ncols() empty cells if possible
