@@ -217,15 +217,16 @@ Menuset
 # most people using mathed learn key shortcuts quite quickly anyway)
 		Submenu "Math|h" "insert_math"
 		Submenu "Special Character|S" "insert_special"
+		Submenu "Special Formatting|o" "insert_formatting"
 		Submenu "Float|a" "insert_float"
-		Submenu "List / TOC|O" "insert_toc"
+		Submenu "List / TOC|i" "insert_toc"
 # YUCK
 		Submenu "File|e" "insert_file"
 		Separator
 		Item "Citation Reference...|C" "dialog-show-new-inset citation"
 		Item "Cross Reference...|R" "dialog-show-new-inset ref"
 		Item "Label...|L" "label-insert"
-		Item "Index Entry|I" "index-insert"
+		Item "Index Entry|d" "index-insert"
 # I'm going to kill this dumb dialog, but for now ...
 		Separator
 		Item "Table...|T" "tabular-insert"
@@ -237,24 +238,27 @@ Menuset
 		Item "Minipage|p" "minipage-insert"
 		Item "Short Title" "optional-insert"
 		Item "TeX|X" "ert-insert"
-		Item "External Material..." "dialog-show-new-inset external"
-		Item "Child Document...|d" "dialog-show-new-inset include"
 	End
 
 	Menu "insert_special"
-		Item "Superscript|S" "command-sequence math-mode ; math-superscript ; font-free-apply; "
-		Item "Subscript|u" "command-sequence math-mode ; math-subscript ; font-free-apply; "
-		Item "Horizontal Fill|H" "hfill-insert"
-		Item "Hyphenation Point|P" "hyphenation-point-insert"
-		Item "Ligature Break|k" "ligature-break-insert"
-		Item "Protected Space|r" "space-insert protected"
-		Item "Inter-word Space|w" "space-insert normal"
-		Item "Thin Space|T" "space-insert thin"
-		Item "Linebreak|L" "break-line"
 		Item "Ellipsis|i" "dots-insert"
 		Item "End of Sentence|E" "end-of-sentence-period-insert"
 		Item "Ordinary Quote|Q" "self-insert \""
 		Item "Menu Separator|M" "menu-separator-insert"
+	End
+
+	Menu "insert_formatting"
+		Item "Superscript|S" "command-sequence math-mode ; math-superscript ; font-free-apply; "
+		Item "Subscript|u" "command-sequence math-mode ; math-subscript ; font-free-apply; "
+		Separator
+		Item "Protected Space|r" "space-insert protected"
+		Item "Inter-word Space|w" "space-insert normal"
+		Item "Thin Space|T" "space-insert thin"
+		Item "Horizontal Fill|H" "hfill-insert"
+		Separator
+		Item "Hyphenation Point|P" "hyphenation-point-insert"
+		Item "Ligature Break|k" "ligature-break-insert"
+		Item "Linebreak|L" "break-line"
 	End
 
 	Menu "insert_math"
@@ -316,6 +320,9 @@ Menuset
 		Item "LyX Document...|X" "file-insert"
 		Item "ASCII as Lines...|L" "file-insert-ascii"
 		Item "ASCII as Paragraphs...|P" "file-insert-ascii-para"
+		Separator
+		Item "External Material..." "dialog-show-new-inset external"
+		Item "Child Document...|d" "dialog-show-new-inset include"
 	End
 
 #
