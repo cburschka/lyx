@@ -617,7 +617,7 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 
 	case LFUN_MATH_DELIM:
 	{
-		lyxerr << "formulabase::LFUN_MATH_DELIM, arg: '" << arg << "'\n";
+		//lyxerr << "formulabase::LFUN_MATH_DELIM, arg: '" << arg << "'\n";
 		string ls;
 		string rs;
 		istringstream is(arg.c_str());
