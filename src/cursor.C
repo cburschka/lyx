@@ -1912,7 +1912,7 @@ string LCursor::currentState()
 		info(os);
 		return os.str();
 	}
-	return text()->currentState(*this);
+	return text() ? text()->currentState(*this) : string();
 }
 
 
