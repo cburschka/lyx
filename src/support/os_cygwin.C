@@ -143,7 +143,7 @@ char path_separator()
 
 void cygwin_path_fix(bool use_cygwin_paths)
 {
-	use_cygwin_paths_ = use_cygwin_paths;
+	cygwin_path_fix_ = use_cygwin_paths;
 }
 
 } // namespace os
