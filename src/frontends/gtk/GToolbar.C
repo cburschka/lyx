@@ -211,13 +211,13 @@ void GToolbar::update()
 			if (item->first.action == ToolbarBackend::LAYOUTS) {
 				LyXFunc const & lf = view_->getLyXFunc();
 				bool const sensitive =
-					!lf.getStatus(FuncRequest(LFUN_LAYOUT)).disabled();
+					lf.getStatus(FuncRequest(LFUN_LAYOUT)).enabled();
 				widget->set_sensitive(sensitive);
 				continue;
 			}
 			FuncStatus const status = view_->
 				getLyXFunc().getStatus(item->first);
-			bool sensitive = !status.disabled();
+			bool sensitive = status.enabled();
 			widget->set_sensitive(sensitive);
 			if (it->get_type() != Gtk::TOOLBAR_CHILD_BUTTON)
 				return;

@@ -140,7 +140,7 @@ bool GMenubar::submenuDisabled(MenuItem const * item)
 		{
 			FuncStatus const flag =
 				view_->getLyXFunc().getStatus(i->func());
-			if (!flag.disabled())
+			if (flag.enabled())
 				return false;
 			break;
 		}
@@ -206,7 +206,7 @@ void GMenubar::onSubMenuActivate(MenuItem const * item,
 			item.signal_activate().connect(
 				SigC::bind(SigC::slot(*this, &GMenubar::onCommandActivate),
 					   &(*i), &item));
-			if (flag.disabled())
+			if (!flag.enabled())
 				item.set_sensitive(false);
 			break;
 		}

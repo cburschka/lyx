@@ -1,3 +1,13 @@
+2004-03-24  Angus Leeming  <leeming@lyx.org>
+
+	* GMenubar.C (submenuDisabled, onSubMenuActivate): compile fixes
+	due to the changes in FuncStatus.
+
+	* GToolbar.C (update): ditto.
+
+	* lyx_gui.C (start): remove code to order buffers as it no longer
+	compiles and none of the other frontends do this anymore.
+
 2004-03-17  Angus Leeming  <leeming@lyx.org>
 
 	* Makefile.am: remove mention of the forks dialog.
