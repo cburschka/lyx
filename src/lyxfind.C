@@ -44,7 +44,7 @@ int LyXReplace(BufferView * bv,
 	if (searchstr.length() == 0
 		|| (searchstr.length() == 1 && searchstr[0] == ' ')) {
 #ifdef WITH_WARNINGS
-#warning BLECH. If we have an LFUN for replace, we can fix this bogosity
+#warning BLECH. If we have an LFUN for replace, we can sort of fix this bogosity
 #endif
 		Alert::error(_("Cannot replace"),
 			_("You cannot replace a single space or "
@@ -78,8 +78,7 @@ int LyXReplace(BufferView * bv,
 	}
 	if (str1 != str2) {
 		if (!LyXFind(bv, searchstr, fw, casesens, matchwrd) ||
-			!replaceall)
-		{
+			!replaceall) {
 			return 0;
 		}
 	}
@@ -92,8 +91,7 @@ int LyXReplace(BufferView * bv,
 		// return their own LyXText but the LyXText of it's parent!
 		if (!bv->theLockingInset() ||
 			((text != bv->text) &&
-			 (text->inset_owner == text->inset_owner->getLockingInset())))
-		{
+			 (text->inset_owner == text->inset_owner->getLockingInset()))) {
 			bv->hideCursor();
 			bv->update(text, BufferView::SELECT);
 			bv->toggleSelection(false);
@@ -197,29 +195,27 @@ SearchResult LyXFind(BufferView * bv, LyXText * text,
 
 
 // returns true if the specified string is at the specified position
-bool IsStringInText(Paragraph * par, pos_type pos,
+bool IsStringInText(Paragraph const & par, pos_type pos,
 		    string const & str, bool const & cs,
 		    bool const & mw)
 {
-	if (!par)
-		return false;
-
 	string::size_type size = str.length();
 	pos_type i = 0;
-	while (((pos + i) < par->size())
+	pos_type parsize = par.size();
+	while (((pos + i) < parsize)
 	       && (string::size_type(i) < size)
-	       && (cs ? (str[i] == par->getChar(pos + i))
-		   : (uppercase(str[i]) == uppercase(par->getChar(pos + i)))))
-	{
+	       && (cs ? (str[i] == par.getChar(pos + i))
+		   : (uppercase(str[i]) == uppercase(par.getChar(pos + i))))) {
 		++i;
 	}
+
 	if (size == string::size_type(i)) {
 		// if necessary, check whether string matches word
 		if (!mw)
 			return true;
-		if ((pos <= 0 || !IsLetterCharOrDigit(par->getChar(pos - 1)))
-			&& (pos + pos_type(size) >= par->size()
-			|| !IsLetterCharOrDigit(par->getChar(pos + size)))) {
+		if ((pos <= 0 || !IsLetterCharOrDigit(par.getChar(pos - 1)))
+			&& (pos + pos_type(size) >= parsize
+			|| !IsLetterCharOrDigit(par.getChar(pos + size)))) {
 			return true;
 		}
 	}
@@ -232,26 +228,27 @@ bool IsStringInText(Paragraph * par, pos_type pos,
 SearchResult SearchForward(BufferView * bv, LyXText * text, string const & str,
 			   bool const & cs, bool const & mw)
 {
-	Paragraph * par = &*text->cursor.par();
+	ParagraphList::iterator pit = text->cursor.par();
+	ParagraphList::iterator pend = text->ownerParagraphs().end();
 	pos_type pos = text->cursor.pos();
 	UpdatableInset * inset;
 
-	while (par && !IsStringInText(par, pos, str, cs, mw)) {
-		if (pos < par->size()
-		    && par->isInset(pos)
-		    && (inset = (UpdatableInset *)par->getInset(pos))
+	while (pit != pend && !IsStringInText(*pit, pos, str, cs, mw)) {
+		if (pos < pit->size()
+		    && pit->isInset(pos)
+		    && (inset = (UpdatableInset *)pit->getInset(pos))
 		    && inset->isTextInset()
 		    && inset->searchForward(bv, str, cs, mw))
 			return SR_FOUND_NOUPDATE;
 
-		if (++pos >= par->size()) {
-			par = par->next();
+		if (++pos >= pit->size()) {
+			++pit;
 			pos = 0;
 		}
 	}
 
-	if (par) {
-		text->setCursor(par, pos);
+	if (pit != pend) {
+		text->setCursor(pit, pos);
 		return SR_FOUND;
 	} else
 		return SR_NOT_FOUND;
@@ -265,87 +262,98 @@ SearchResult SearchBackward(BufferView * bv, LyXText * text,
 			    string const & str,
 			    bool const & cs, bool const & mw)
 {
-	Paragraph * par = &*text->cursor.par();
+	ParagraphList::iterator pit = text->cursor.par();
+	ParagraphList::iterator pbegin = text->ownerParagraphs().begin();
 	pos_type pos = text->cursor.pos();
 
-	do {
-		if (pos > 0)
-			--pos;
-		else {
-			// We skip empty paragraphs (Asger)
-			do {
-				par = par->previous();
-				if (par)
-					pos = par->size() - 1;
-			} while (par && pos < 0);
-		}
-		UpdatableInset * inset;
-		if (par && par->isInset(pos)
-		    && (inset = (UpdatableInset *)par->getInset(pos))
-		    && inset->isTextInset()
-		    && inset->searchBackward(bv, str, cs, mw))
-			return SR_FOUND_NOUPDATE;
-	} while (par && !IsStringInText(par, pos, str, cs, mw));
-
-	if (par) {
-		text->setCursor(par, pos);
-		return SR_FOUND;
-	} else
+	// skip past a match at the current cursor pos
+	if (pos > 0) {
+		--pos;
+	} else if (pit != pbegin) {
+		--pit;
+		pos = pit->size();
+	} else {
 		return SR_NOT_FOUND;
+	}
+
+	while (true) {
+		if (pos < pit->size()) {
+			if (pit->isInset(pos) && pit->getInset(pos)->isTextInset()) {
+				UpdatableInset * inset = (UpdatableInset *)pit->getInset(pos);
+				if (inset->searchBackward(bv, str, cs, mw))
+					return SR_FOUND_NOUPDATE;
+			}
+
+			if (IsStringInText(*pit, pos, str, cs, mw)) {
+				text->setCursor(pit, pos);
+				return SR_FOUND;
+			}
+		}
+
+		if (pos == 0 && pit == pbegin)
+			break;
+
+		if (pos > 0) {
+			--pos;
+		} else if (pit != pbegin) {
+			--pit;
+			pos = pit->size();
+		}
+	}
+
+	return SR_NOT_FOUND;
 }
 
 
 SearchResult nextChange(BufferView * bv, LyXText * text, pos_type & length)
 {
-	Paragraph * par = &*text->cursor.par();
+	ParagraphList::iterator pit = text->cursor.par();
+	ParagraphList::iterator pend = text->ownerParagraphs().end();
 	pos_type pos = text->cursor.pos();
-	Paragraph * prev_par = par;
-	UpdatableInset * inset;
 
-	while (par) {
-		if ((!par->size() || pos != par->size())
-			&& par->lookupChange(pos) != Change::UNCHANGED)
-			break;
+	while (pit != pend) {
+		pos_type parsize = pit->size();
 
-		if (par->isInset(pos) &&
-			(inset = (UpdatableInset *)par->getInset(pos)) &&
-			(inset->isTextInset())) {
-			if (inset->nextChange(bv, length))
-				return SR_FOUND_NOUPDATE;
+		if (pos < parsize) {
+			if ((!parsize || pos != parsize)
+				&& pit->lookupChange(pos) != Change::UNCHANGED)
+				break;
+
+			if (pit->isInset(pos) && pit->getInset(pos)->isTextInset()) {
+				UpdatableInset * inset = (UpdatableInset *)pit->getInset(pos);
+				if (inset->nextChange(bv, length))
+					return SR_FOUND_NOUPDATE;
+			}
 		}
 
 		++pos;
 
-		if (pos >= par->size()) {
-			prev_par = par;
-			par = par->next();
+		if (pos >= parsize) {
+			++pit;
 			pos = 0;
 		}
 	}
 
-	if (par) {
-		text->setCursor(par, pos);
-		Change orig_change = par->lookupChangeFull(pos);
-		pos_type end = pos;
-
-		for (; end != par->size(); ++end) {
-			Change change = par->lookupChangeFull(end);
-			if (change != orig_change) {
-				// slight UI optimisation: for replacements, we get
-				// text like : _old_new. Consider that as one change.
-				if (!(orig_change.type == Change::DELETED &&
-					change.type == Change::INSERTED))
-					break;
-			}
-		}
-		length = end - pos;
-		return SR_FOUND;
-	} else {
-		// make sure we end up at the end of the text,
-		// not the start point of the last search
-		text->setCursor(prev_par, prev_par->size());
+	if (pit == pend)
 		return SR_NOT_FOUND;
+
+	text->setCursor(pit, pos);
+	Change orig_change = pit->lookupChangeFull(pos);
+	pos_type parsize = pit->size();
+	pos_type end = pos;
+
+	for (; end != parsize; ++end) {
+		Change change = pit->lookupChangeFull(end);
+		if (change != orig_change) {
+			// slight UI optimisation: for replacements, we get
+			// text like : _old_new. Consider that as one change.
+			if (!(orig_change.type == Change::DELETED &&
+				change.type == Change::INSERTED))
+				break;
+		}
 	}
+	length = end - pos;
+	return SR_FOUND;
 }
 
 
@@ -395,8 +403,6 @@ bool findNextChange(BufferView * bv)
 	text->clearSelection();
 
 	SearchResult result = nextChange(bv, text, length);
-
-	lyxerr << "Result is " << result << endl;
 
 	bool found = true;
 
