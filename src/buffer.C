@@ -229,7 +229,7 @@ void Buffer::fileName(string const & newfile)
 // else insert behavior
 // Returns false if "\the_end" is not read for formats >= 2.13. (Asger)
 #define USE_PARSE_FUNCTION 1
-#define USE_TABULAR_INSETS 1
+//#define USE_TABULAR_INSETS 1
 bool Buffer::readLyXformat2(LyXLex & lex, LyXParagraph * par)
 {
 	string tmptok;
