@@ -39,19 +39,43 @@ void catInit()
 	theCatcode[int('}')]  = catEnd;
 	theCatcode[int('$')]  = catMath;
 	theCatcode[int('&')]  = catAlign;
-	theCatcode[10]   = catNewline;
+	theCatcode[int('\n')] = catNewline;
 	theCatcode[int('#')]  = catParameter;
 	theCatcode[int('^')]  = catSuper;
 	theCatcode[int('_')]  = catSub;
-	theCatcode[0x7f] = catIgnore;
+	theCatcode[0x7f]      = catIgnore;
 	theCatcode[int(' ')]  = catSpace;
 	theCatcode[int('\t')] = catSpace;
-	theCatcode[13]   = catIgnore;
+	theCatcode[int('\r')] = catNewline;
 	theCatcode[int('~')]  = catActive;
 	theCatcode[int('%')]  = catComment;
 
 	// This is wrong!
 	theCatcode[int('@')]  = catLetter;
+}
+
+
+/*!
+ * Translate a line ending to '\n'.
+ * \p c must have catcode catNewline, and it must be the last character read
+ * from \p is.
+ */
+char getNewline(istream & is, char c)
+{
+	// we have to handle 3 different line endings:
+	// - UNIX (\n)
+	// - MAC  (\r)
+	// - DOS  (\r\n)
+	if (c == '\r') {
+		// MAC or DOS
+		if (is.get(c) && c != '\n') {
+			// MAC
+			is.putback(c);
+		}
+		return '\n';
+	}
+	// UNIX
+	return c;
 }
 
 }
@@ -309,10 +333,10 @@ void Parser::tokenize(istream & is)
 
 			case catNewline: {
 				++lineno_;
-				string s(1, c);
+				string s(1, getNewline(is, c));
 				while (is.get(c) && catcode(c) == catNewline) {
 					++lineno_;
-					s += c;
+					s += getNewline(is, c);
 				}
 				if (catcode(c) != catNewline)
 					is.putback(c);
@@ -326,6 +350,9 @@ void Parser::tokenize(istream & is)
 				string s;
 				while (is.get(c) && catcode(c) != catNewline)
 					s += c;
+				// handle possible DOS line ending
+				if (catcode(c) == catNewline)
+					c = getNewline(is, c);
 				// Note: The '%' at the beginning and the '\n' at the end
 				// of the comment are not stored.
 				++lineno_;
@@ -352,8 +379,7 @@ void Parser::tokenize(istream & is)
 			}
 
 			case catIgnore: {
-				if (c != 13)
-					cerr << "ignoring a char: " << int(c) << "\n";
+				cerr << "ignoring a char: " << int(c) << "\n";
 				break;
 			}
 
