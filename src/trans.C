@@ -35,6 +35,7 @@ DefaultTrans::DefaultTrans()
 }
 
 
+#if 0
 string const DefaultTrans::process(char c, TransManager & k)
 {
 	char dummy[2] = "?";
@@ -42,6 +43,12 @@ string const DefaultTrans::process(char c, TransManager & k)
     
 	return k.normalkey(c, dummy);
 }
+#else
+string const DefaultTrans::process(char c, TransManager & k)
+{
+	return k.normalkey(c);
+}
+#endif
 
 
 // Trans class
@@ -346,10 +353,9 @@ bool Trans::isAccentDefined(tex_accent accent, KmodInfo & i) const
 }
 
 
+#if 0
 string const Trans::process(char c, TransManager & k)
 {
-	//string dummy("?");
-	//string dt = dummy;
 	string dt("?");
 	string const t = Match(static_cast<unsigned char>(c));
 
@@ -364,6 +370,21 @@ string const Trans::process(char c, TransManager & k)
 				 *kmod_list_[static_cast<tex_accent>(t[1])]);
 	}
 }
+#else
+string const Trans::process(char c, TransManager & k)
+{
+	string const t = Match(static_cast<unsigned char>(c));
+
+	if (t.empty() && c != 0) {
+		return k.normalkey(c);
+	} else if (!t.empty() && t[0] != char(0)) {
+		return k.normalkey(c);
+	} else {
+		return k.deadkey(c,
+				 *kmod_list_[static_cast<tex_accent>(t[1])]);
+	}
+}
+#endif
 
 
 int Trans::Load(string const & language)

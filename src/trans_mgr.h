@@ -19,8 +19,13 @@ class TransState {
 public:
 	///
 	virtual ~TransState() {}
+#if 0
 	///
 	virtual string const normalkey(char, string const &) = 0;
+#else
+	///
+	virtual string const normalkey(char) = 0;
+#endif
 	///
 	virtual bool backspace() = 0;
 	///
@@ -65,8 +70,13 @@ class TransInitState : 	virtual public TransFSMData, public TransState {
 public:
 	///
 	TransInitState();
+#if 0
 	///
 	virtual string const normalkey(char, string const &);
+#else
+	///
+	virtual string const normalkey(char);
+#endif
 	///
 	virtual bool backspace() { return true; }
 	///
@@ -79,8 +89,13 @@ class TransDeadkeyState : virtual public TransFSMData, public TransState {
 public:
 	///
 	TransDeadkeyState();
+#if 0
 	///
 	virtual string const normalkey(char, string const &);
+#else
+	///
+	virtual string const normalkey(char);
+#endif
 	///
 	virtual bool backspace() {
 		currentState = init_state_;
@@ -96,8 +111,13 @@ class TransCombinedState : virtual public TransFSMData, public TransState {
 public:
 	///
 	TransCombinedState();
+#if 0
 	///
 	virtual string const normalkey(char, string const &);
+#else
+	///
+	virtual string const normalkey(char);
+#endif
 	///
 	virtual bool backspace() {
 		// cancel the second deadkey
@@ -166,20 +186,35 @@ public:
 	///
 	void TranslateAndInsert(char, LyXText *);
 	///
-	inline string const deadkey(char, KmodInfo);
+	string const deadkey(char, KmodInfo);
+#if 0
 	///
-	inline string const normalkey(char, string const &);
+	string const normalkey(char, string const &);
+#else
+	///
+	string const normalkey(char);
+#endif
 	///
 	void deadkey(char, tex_accent, LyXText *);
 };
 
 
+#if 0
+inline
 string const TransManager::normalkey(char c, string const & t)
 {
 	return trans_fsm_.currentState->normalkey(c, t);
 }
+#else
+inline
+string const TransManager::normalkey(char c)
+{
+	return trans_fsm_.currentState->normalkey(c);
+}
+#endif
 
 
+inline
 string const TransManager::deadkey(char c, KmodInfo t)
 {
 	return trans_fsm_.currentState->deadkey(c, t);

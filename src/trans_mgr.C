@@ -45,6 +45,7 @@ TransInitState::TransInitState()
 }
 
 
+#if 0
 string const TransInitState::normalkey(char c, string const & t)
 {
 	string res;
@@ -53,6 +54,14 @@ string const TransInitState::normalkey(char c, string const & t)
 	
 	return res;
 }
+#else
+string const TransInitState::normalkey(char c)
+{
+	string res;
+	res = c;
+	return res;
+}
+#endif
 
 
 string const TransInitState::deadkey(char c, KmodInfo d)
@@ -71,6 +80,7 @@ TransDeadkeyState::TransDeadkeyState()
 }
 
 
+#if 0
 string const TransDeadkeyState::normalkey(char c, string const & trans)
 {
 	string res;
@@ -85,12 +95,9 @@ string const TransDeadkeyState::normalkey(char c, string const & trans)
 		l = l->next;
 	}
 	if (l == 0) {
-#if 0
 		// Not an exception. Check if it allowed
 		if (countChar(deadkey_info_.allowed, c) > 0) {
-#endif
 			res = DoAccent(c, deadkey_info_.accent);
-#if 0
 		} else {
 			// Not allowed
 			if (deadkey_!= 0)
@@ -98,11 +105,31 @@ string const TransDeadkeyState::normalkey(char c, string const & trans)
 			res+= TOKEN_SEP;
 			res+= trans;
 		}
-#endif
 	}
 	currentState = init_state_;
 	return res;
 }
+#else
+string const TransDeadkeyState::normalkey(char c)
+{
+	string res;
+	
+	// Check if it is an exception
+	KmodException l = deadkey_info_.exception_list;
+	while(l != 0) {
+		if (l->c == c) {
+			res = l->data;
+			break;
+		}
+		l = l->next;
+	}
+	if (l == 0) {
+			res = DoAccent(c, deadkey_info_.accent);
+	}
+	currentState = init_state_;
+	return res;
+}
+#endif
 
 
 string const TransDeadkeyState::deadkey(char c, KmodInfo d)
@@ -122,7 +149,7 @@ string const TransDeadkeyState::deadkey(char c, KmodInfo d)
 	KmodException l;
 	l = deadkey_info_.exception_list;
 	
-	while(l) {
+	while (l) {
 		if (l->combined == true && l->accent == d.accent) {
 			deadkey2_ = c;
 			deadkey2_info_ = d;
@@ -158,18 +185,16 @@ TransCombinedState::TransCombinedState()
 }
 
 
+#if 0
 string const TransCombinedState::normalkey(char c, string const & trans)
 {
 	string res;
 
-#if 0
 	// Check if the key is allowed on the combination
 	if (countChar(comb_info_->data, c) > 0) {
-#endif
 		string const temp = DoAccent(c, deadkey2_info_.accent);
 		res = DoAccent(temp, deadkey_info_.accent);
 		currentState = init_state_;
-#if 0
 	} else {
 		// Not allowed. Output deadkey1 and check deadkey2 + c
 		if (deadkey_ != 0)
@@ -180,9 +205,19 @@ string const TransCombinedState::normalkey(char c, string const & trans)
 		// Call deadkey state and leave it to setup the FSM
 		res += deadkey_state_->normalkey(c, trans);
 	}
-#endif
 	return res;
 }
+#else
+string const TransCombinedState::normalkey(char c)
+{
+	string res;
+
+	string const temp = DoAccent(c, deadkey2_info_.accent);
+	res = DoAccent(temp, deadkey_info_.accent);
+	currentState = init_state_;
+	return res;
+}
+#endif
 
 
 string const TransCombinedState::deadkey(char c, KmodInfo d)

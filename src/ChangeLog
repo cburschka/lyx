@@ -1,3 +1,8 @@
+2001-07-07  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* trans_mgr.[Ch]: simplify normalkey to only take a char as arg.
+	* trans.C: changes because of the above.
+
 2001-07-07  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* text2.C (setCounter): Fix counters bug with bibliography layout.
