@@ -125,7 +125,9 @@ public:
 		///
 		OPTARG_CODE,
 		///
-		HFILL_CODE
+		HFILL_CODE,
+		///
+		NEWLINE_CODE
 	};
 
 	///

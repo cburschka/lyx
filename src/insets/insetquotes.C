@@ -86,8 +86,9 @@ InsetQuotes::InsetQuotes(char c, BufferParams const & params)
 	// Decide whether left or right
 	switch (c) {
 	case ' ': case '(':
+#warning eh ? I am lost here ...
 	//case Paragraph::META_HFILL:
-	case Paragraph::META_NEWLINE:
+	// case Paragraph::META_NEWLINE:
 		side_ = LeftQ;   // left quote
 		break;
 	default:

@@ -33,6 +33,7 @@
 #include "insets/insettext.h"
 #include "insets/insetquotes.h"
 #include "insets/insetcommand.h"
+#include "insets/insetnewline.h"
 #include "undo_funcs.h"
 
 #include <ctime>
@@ -716,13 +717,20 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 		finishChange(bv, false);
 		break;
 
-	case LFUN_BREAKLINE:
+	case LFUN_BREAKLINE: {
+		lyx::pos_type body = cursor.par()->beginningOfBody();
+
+		// Not allowed by LaTeX (labels or empty par)
+		if (cursor.pos() <= body)
+			break;
+
 		bv->beforeChange(this);
-		insertChar(bv, Paragraph::META_NEWLINE);
+		insertInset(bv, new InsetNewline);
 		update(bv, true);
 		setCursor(bv, cursor.par(), cursor.pos());
 		moveCursorUpdate(bv, false);
 		break;
+	}
 
 	case LFUN_DELETE:
 		if (!selection.set()) {

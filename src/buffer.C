@@ -911,18 +911,6 @@ string const Buffer::asciiParagraph(Paragraph const & par,
 		}
 		break;
 
-		case Paragraph::META_NEWLINE:
-			if (linelen > 0) {
-				buffer << word << "\n";
-				word.erase();
-
-				pair<int, string> p = addDepth(depth,
-							       ltype_depth);
-				buffer << p.second;
-				currlinelen = p.first;
-			}
-			break;
-
 		default:
 			if (c == ' ') {
 				if (linelen > 0 &&

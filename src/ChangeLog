@@ -1,5 +1,20 @@
 2003-03-12  John Levon  <levon@movementarian.org>
 
+	* buffer.C:
+	* paragraph.h:
+	* paragraph.C:
+	* paragraph_funcs.C:
+	* paragraph_pimpl.C:
+	* sgml.C:
+	* tabular.C:
+	* text.C:
+	* text3.C: remove META_NEWLINE in favour of an inset
+
+	* rowpainter.h:
+	* rowpainter.C: remove paintNewline (done by inset)
+
+2003-03-12  John Levon  <levon@movementarian.org>
+
 	* paragraph_pimpl.C: complain about bad getChar()s
 	for a while at least
 

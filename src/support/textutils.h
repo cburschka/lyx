@@ -15,14 +15,6 @@
 #ifndef TEXTUTILS_H
 #define TEXTUTILS_H
 
-/// return true if the char is a meta-character newline
-inline
-bool IsNewlineChar(char c)
-{
-	return (c == Paragraph::META_NEWLINE);
-}
-
-
 /// return true if the char is a word separator
 inline
 bool IsSeparatorChar(char c)
@@ -74,7 +66,6 @@ bool IsKommaChar(char c)
 		|| c == '^'
 		|| c == '/'
 		|| c == '\\'
-		|| c == Paragraph::META_NEWLINE
 		);
 }
 

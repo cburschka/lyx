@@ -39,10 +39,12 @@ class Paragraph  {
 public:
 	///
 	enum META_KIND {
-		///
-		META_NEWLINE = 2,
-		///
-		META_INSET
+		/// Note that this is 1 right now to avoid
+		/// crashes where getChar() is called wrongly
+		/// (returning 0) - if this was 0, then we'd
+		/// try getInset() and crash. We should fix
+		/// all these places.
+		META_INSET = 1
 	};
 	///
 	typedef char value_type;

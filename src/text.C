@@ -254,8 +254,6 @@ int LyXText::singleWidth(BufferView * bview, Paragraph * par,
 
 	if (IsSeparatorChar(c))
 		c = ' ';
-	else if (IsNewlineChar(c))
-		c = 'n';
 	return font_metrics::width(c, font);
 }
 
@@ -739,12 +737,12 @@ LyXText::rowBreakPoint(BufferView & bv, Row const & row) const
 
 	for (i = pos; i < last; ++i) {
 
-		char const c = par->getChar(i);
-
-		if (IsNewlineChar(c)) {
+		if (par->isNewline(i)) {
 			point = i;
 			break;
 		}
+
+		char const c = par->getChar(i);
 
 		int thiswidth = singleWidth(&bv, par, i, c);
 
@@ -1594,21 +1592,8 @@ void LyXText::insertChar(BufferView * bview, char c)
 			charInserted();
 			return;
 		}
-	} else if (IsNewlineChar(c)) {
-		if (cursor.pos() <= cursor.par()->beginningOfBody()) {
-			charInserted();
-			return;
-		}
-		// No newline at first position of a paragraph or behind labels.
-		// TeX does not allow that
-
-		if (cursor.pos() < cursor.par()->size() &&
-		    cursor.par()->isLineSeparator(cursor.pos()))
-			// newline always after a blank!
-			cursorRight(bview);
-		cursor.row()->fill(-1);	       // to force a new break
 	}
-
+	
 	// the display inset stuff
 	if (cursor.row()->par()->isInset(cursor.row()->pos())) {
 		Inset * inset = cursor.row()->par()->getInset(cursor.row()->pos());
@@ -1959,7 +1944,8 @@ void LyXText::cursorLeftOneWord(LyXCursor & cur) const
 	cur = cursor;
 	while (cur.pos()
 	       && (cur.par()->isSeparator(cur.pos() - 1)
-		   || cur.par()->isKomma(cur.pos() - 1))
+		   || cur.par()->isKomma(cur.pos() - 1)
+		   || cur.par()->isNewline(cur.pos() - 1))
 	       && !(cur.par()->isHfill(cur.pos() - 1)
 		    || cur.par()->isInset(cur.pos() - 1)))
 		cur.pos(cur.pos() - 1);
@@ -1993,8 +1979,10 @@ void LyXText::getWord(LyXCursor & from, LyXCursor & to,
 		if (cursor.pos() == 0 || cursor.pos() == cursor.par()->size()
 		    || cursor.par()->isSeparator(cursor.pos())
 		    || cursor.par()->isKomma(cursor.pos())
+		    || cursor.par()->isNewline(cursor.pos())
 		    || cursor.par()->isSeparator(cursor.pos() - 1)
-		    || cursor.par()->isKomma(cursor.pos() - 1)) {
+		    || cursor.par()->isKomma(cursor.pos() - 1)
+		    || cursor.par()->isNewline(cursor.pos() - 1)) {
 			to = from;
 			return;
 		}
@@ -2003,7 +1991,8 @@ void LyXText::getWord(LyXCursor & from, LyXCursor & to,
 	case WHOLE_WORD:
 		// Move cursor to the beginning, when not already there.
 		if (from.pos() && !from.par()->isSeparator(from.pos() - 1)
-		    && !from.par()->isKomma(from.pos() - 1))
+		    && !(from.par()->isKomma(from.pos() - 1)
+		         || from.par()->isNewline(from.pos() - 1)))
 			cursorLeftOneWord(from);
 		break;
 	case PREVIOUS_WORD:
@@ -2020,6 +2009,7 @@ void LyXText::getWord(LyXCursor & from, LyXCursor & to,
 	while (to.pos() < to.par()->size()
 	       && !to.par()->isSeparator(to.pos())
 	       && !to.par()->isKomma(to.pos())
+	       && !to.par()->isNewline(to.pos())
 	       && !to.par()->isHfill(to.pos())
 	       && !to.par()->isInset(to.pos()))
 	{

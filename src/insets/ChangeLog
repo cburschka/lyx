@@ -1,5 +1,17 @@
 2003-03-12  John Levon  <levon@movementarian.org>
 
+	* Makefile.am:
+	* inset.h:
+	* inset.C:
+	* insetert.h:
+	* insetert.C:
+	* insetnewline.h:
+	* insetnewline.C:
+	* insetquotes.C:
+	* insettext.C: use new insetnewline
+
+2003-03-12  John Levon  <levon@movementarian.org>
+
 	* insettext.C: readToken became readParagraph
 
 2003-03-12  John Levon  <levon@movementarian.org>

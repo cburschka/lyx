@@ -57,7 +57,7 @@ public:
 	///
 	bool insertInset(BufferView *, Inset *);
 	///
-	bool insetAllowed(Inset::Code) const { return false; }
+	bool insetAllowed(Inset::Code code) const { return code == Inset::NEWLINE_CODE; }
 	///
 	void setFont(BufferView *, LyXFont const &,
 			     bool toggleall = false, bool selectall = false);

@@ -32,6 +32,7 @@
 #include "insets/insettabular.h"
 #include "insets/insethfill.h"
 #include "insets/inseterror.h"
+#include "insets/insetnewline.h"
 
 extern string bibitemWidest(Buffer const *);
 
@@ -916,9 +917,10 @@ int readParToken(Buffer & buf, Paragraph & par, LyXLex & lex, string const & tok
 		par.insertInset(par.size(), inset, font, change);
 	} else if (token == "\\backslash") {
 		par.insertChar(par.size(), '\\', font, change);
-	// do not delete this token, it is still needed!
 	} else if (token == "\\newline") {
-		par.insertChar(par.size(), Paragraph::META_NEWLINE, font, change);
+		Inset * inset = new InsetNewline;
+		inset->read(&buf, lex);
+		par.insertInset(par.size(), inset, font, change);
 	} else if (token == "\\LyXTable") {
 		Inset * inset = new InsetTabular(buf);
 		inset->read(&buf, lex);

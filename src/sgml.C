@@ -26,9 +26,6 @@ pair<bool, string> escapeChar(char c)
 	string str;
 
 	switch (c) {
-	case Paragraph::META_NEWLINE:
-		str = '\n';
-		break;
 	case ' ':
 		return make_pair(true, string(" "));
 		break;

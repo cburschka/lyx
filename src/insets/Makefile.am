@@ -71,6 +71,8 @@ libinsets_la_SOURCES = \
 	insetmarginal.C \
 	insetminipage.C \
 	insetminipage.h \
+	insetnewline.C \
+	insetnewline.h \
 	insetnote.C \
 	insetnote.h \
 	insetoptarg.C \

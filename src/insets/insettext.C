@@ -37,6 +37,7 @@
 #include "paragraph_funcs.h"
 #include "sgml.h"
 #include "rowpainter.h"
+#include "insetnewline.h"
 
 #include "frontends/Alert.h"
 #include "frontends/Dialogs.h"
@@ -1468,7 +1469,7 @@ Inset::RESULT InsetText::localDispatch(FuncRequest const & ev)
 		setUndo(bv, Undo::INSERT,
 			lt->cursor.par(), lt->cursor.par()->next());
 #endif
-		lt->insertChar(bv, Paragraph::META_NEWLINE);
+		lt->insertInset(bv, new InsetNewline);
 		updwhat = CURSOR | CURSOR_PAR;
 		updflag = true;
 	}
@@ -2442,7 +2443,7 @@ void InsetText::removeNewlines()
 	ParagraphList::iterator end = paragraphs.end();
 	for (; it != end; ++it) {
 		for (int i = 0; i < it->size(); ++i) {
-			if (it->getChar(i) == Paragraph::META_NEWLINE) {
+			if (it->isNewline(i)) {
 				changed = true;
 				it->erase(i);
 			}

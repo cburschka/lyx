@@ -208,11 +208,14 @@ void InsetERT::write(Buffer const * buf, ostream & os) const
 			Paragraph::value_type c = par->getChar(i);
 			switch (c) {
 			case Paragraph::META_INSET:
-				lyxerr << "Element is not allowed in insertERT"
-				       << endl;
-			case Paragraph::META_NEWLINE:
-				os << "\n\\newline \n";
+				if (par->getInset(i)->lyxCode() != Inset::NEWLINE_CODE) {
+					lyxerr << "Element is not allowed in insertERT"
+					       << endl;
+				} else {
+					par->getInset(i)->write(buf, os);
+				}
 				break;
+
 			case '\\':
 				os << "\n\\backslash \n";
 				break;
@@ -353,15 +356,11 @@ int InsetERT::latex(Buffer const *, ostream & os, bool /*fragile*/,
 			if (isDeletedText(*par, i))
 				continue;
  
-			Paragraph::value_type c = par->getChar(i);
-			switch (c) {
-			case Paragraph::META_NEWLINE:
+			if (par->isNewline(i)) {
 				os << '\n';
 				++lines;
-				break;
-			default:
-				os << c;
-				break;
+			} else {
+				os << par->getChar(i);
 			}
 		}
 		par = par->next();
@@ -388,15 +387,11 @@ int InsetERT::linuxdoc(Buffer const *, ostream & os) const
 	while (par) {
 		pos_type siz = par->size();
 		for (pos_type i = 0; i < siz; ++i) {
-			Paragraph::value_type c = par->getChar(i);
-			switch (c) {
-			case Paragraph::META_NEWLINE:
+			if (par->isNewline(i)) {
 				os << '\n';
 				++lines;
-				break;
-			default:
-				os << c;
-				break;
+			} else {
+				os << par->getChar(i);
 			}
 		}
 		par = par->next();
@@ -417,15 +412,11 @@ int InsetERT::docbook(Buffer const *, ostream & os, bool) const
 	while (par) {
 		pos_type siz = par->size();
 		for (pos_type i = 0; i < siz; ++i) {
-			Paragraph::value_type c = par->getChar(i);
-			switch (c) {
-			case Paragraph::META_NEWLINE:
+			if (par->isNewline(i)) {
 				os << '\n';
 				++lines;
-				break;
-			default:
-				os << c;
-				break;
+			} else {
+				os << par->getChar(i);
 			}
 		}
 		par = par->next();

@@ -45,7 +45,6 @@ private:
 	void paintChangeBar();
 	void paintFirst();
 	void paintLast();
-	void paintNewline(lyx::pos_type const pos);
 	void paintForeignMark(float const orig_x, LyXFont const & orig_font);
 	void paintHebrewComposeChar(lyx::pos_type & vpos);
 	void paintArabicComposeChar(lyx::pos_type & vpos);

@@ -517,6 +517,34 @@ void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const * buf,
 		if (!inset)
 			break;
 
+		// FIXME: move this to InsetNewline::latex
+		if (inset->lyxCode() == Inset::NEWLINE_CODE) {
+			// newlines are handled differently here than
+			// the default in simpleTeXSpecialChars().
+			if (!style.newline_allowed) {
+				os << '\n';
+			} else {
+				if (open_font) {
+					column += running_font.latexWriteEndChanges(os, basefont, basefont);
+					open_font = false;
+				}
+				basefont = owner_->getLayoutFont(bparams);
+				running_font = basefont;
+
+				if (font.family() == LyXFont::TYPEWRITER_FAMILY)
+					os << '~';
+
+				if (moving_arg)
+					os << "\\protect ";
+
+				os << "\\\\\n";
+			}
+			texrow.newline();
+			texrow.start(owner_, i + 1);
+			column = 0;
+			break;
+		}
+
 		if (inset->isTextInset()) {
 			column += Changes::latexMarkChange(os, running_change,
 				Change::UNCHANGED);
@@ -568,17 +596,6 @@ void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const * buf,
 		}
 	}
 	break;
-
-	case Paragraph::META_NEWLINE:
-		if (open_font) {
-			column += running_font.latexWriteEndChanges(os,
-								    basefont,
-								    basefont);
-			open_font = false;
-		}
-		basefont = owner_->getLayoutFont(bparams);
-		running_font = basefont;
-		break;
 
 	default:
 		// And now for the special cases within each mode

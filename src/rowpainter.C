@@ -105,53 +105,6 @@ int RowPainter::leftMargin() const
 }
 
 
-void RowPainter::paintNewline(pos_type const pos)
-{
-	LyXFont const font = getFont(pos);
-	int const wid = font_metrics::width('n', font);
-	int const asc = font_metrics::maxAscent(font);
-	int const y = yo_ + row_.baseline();
-	// FIXME: rtl_pos, or ltr_pos ?
-	bool const rtl_pos = (text_.bidi_level(pos) % 2 == 0);
-	int xp[3];
-	int yp[3];
-
-	yp[0] = int(y - 0.875 * asc * 0.75);
-	yp[1] = int(y - 0.500 * asc * 0.75);
-	yp[2] = int(y - 0.125 * asc * 0.75);
-
-	if (rtl_pos) {
-		xp[0] = int(x_ + wid * 0.375);
-		xp[1] = int(x_);
-		xp[2] = int(x_ + wid * 0.375);
-	} else {
-		xp[0] = int(x_ + wid * 0.625);
-		xp[1] = int(x_ + wid);
-		xp[2] = int(x_ + wid * 0.625);
-	}
-
-	pain_.lines(xp, yp, 3, LColor::eolmarker);
-
-	yp[0] = int(y - 0.500 * asc * 0.75);
-	yp[1] = int(y - 0.500 * asc * 0.75);
-	yp[2] = int(y - asc * 0.75);
-
-	if (rtl_pos) {
-		xp[0] = int(x_);
-		xp[1] = int(x_ + wid);
-		xp[2] = int(x_ + wid);
-	} else {
-		xp[0] = int(x_ + wid);
-		xp[1] = int(x_);
-		xp[2] = int(x_);
-	}
-
-	pain_.lines(xp, yp, 3, LColor::eolmarker);
-
-	x_ += wid;
-}
-
-
 bool RowPainter::paintInset(pos_type const pos)
 {
 	Inset * inset = const_cast<Inset*>(par_.getInset(pos));
@@ -318,11 +271,7 @@ bool RowPainter::paintFromPos(pos_type & vpos)
 
 	char const c = par_.getChar(pos);
 
-	if (IsNewlineChar(c)) {
-		++vpos;
-		paintNewline(pos);
-		return true;
-	} else if (IsInsetChar(c)) {
+	if (IsInsetChar(c)) {
 		if (paintInset(pos))
 			return true;
 		++vpos;

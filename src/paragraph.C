@@ -209,10 +209,6 @@ void Paragraph::write(Buffer const * buf, ostream & os,
 				}
 		}
 		break;
-		case META_NEWLINE:
-			os << "\n\\newline \n";
-			column = 0;
-			break;
 		case '\\':
 			os << "\n\\backslash \n";
 			column = 0;
@@ -787,19 +783,22 @@ int Paragraph::beginningOfBody() const
 	// and remember the previous character to
 	// remove unnecessary GetChar() calls
 	pos_type i = 0;
-	if (i < size() && getChar(i) != Paragraph::META_NEWLINE) {
+	if (i < size() && !isNewline(i)) {
 		++i;
 		char previous_char = 0;
 		char temp = 0;
-		if (i < size()
-		    && (previous_char = getChar(i)) != Paragraph::META_NEWLINE) {
-			// Yes, this  ^ is supposed to be "= " not "=="
-			++i;
-			while (i < size()
-			       && previous_char != ' '
-			       && (temp = getChar(i)) != Paragraph::META_NEWLINE) {
+		if (i < size()) {
+		        previous_char = getChar(i);
+			if (!isNewline(i)) {
 				++i;
-				previous_char = temp;
+				while (i < size() && previous_char != ' ') {
+					temp = getChar(i);
+					if (isNewline(i))
+						break;
+
+					++i;
+					previous_char = temp;
+				}
 			}
 		}
 	}
@@ -1150,38 +1149,12 @@ bool Paragraph::simpleTeXOnePar(Buffer const * buf,
 		column += Changes::latexMarkChange(os, running_change, change);
 		running_change = change;
 
-		if (c == Paragraph::META_NEWLINE) {
-			// newlines are handled differently here than
-			// the default in SimpleTeXSpecialChars().
-			if (!style->newline_allowed) {
-				os << '\n';
-			} else {
-				if (open_font) {
-					column += running_font.latexWriteEndChanges(os, basefont, basefont);
-					open_font = false;
-				}
-				basefont = getLayoutFont(bparams);
-				running_font = basefont;
-				if (font.family() ==
-				    LyXFont::TYPEWRITER_FAMILY) {
-					os << '~';
-				}
-				if (moving_arg)
-					os << "\\protect ";
-
-				os << "\\\\\n";
-			}
-			texrow.newline();
-			texrow.start(this, i + 1);
-			column = 0;
-		} else {
-			pimpl_->simpleTeXSpecialChars(buf, bparams,
-						      os, texrow, moving_arg,
-						      font, running_font,
-						      basefont, open_font,
-						      running_change,
-						      *style, i, column, c);
-		}
+		pimpl_->simpleTeXSpecialChars(buf, bparams,
+					      os, texrow, moving_arg,
+					      font, running_font,
+					      basefont, open_font,
+					      running_change,
+					      *style, i, column, c);
 	}
 
 	column += Changes::latexMarkChange(os,
@@ -1229,7 +1202,7 @@ bool Paragraph::simpleTeXOnePar(Buffer const * buf,
 bool Paragraph::isHfill(pos_type pos) const
 {
 	return IsInsetChar(getChar(pos))
-					&& getInset(pos)->lyxCode() == Inset::HFILL_CODE;
+	       && getInset(pos)->lyxCode() == Inset::HFILL_CODE;
 }
 
 
@@ -1241,7 +1214,8 @@ bool Paragraph::isInset(pos_type pos) const
 
 bool Paragraph::isNewline(pos_type pos) const
 {
-	return pos >= 0 && IsNewlineChar(getChar(pos));
+	return IsInsetChar(getChar(pos))
+	       && getInset(pos)->lyxCode() == Inset::NEWLINE_CODE;
 }
 
 
@@ -1371,8 +1345,6 @@ string const Paragraph::asString(Buffer const * buffer,
 		value_type const c = getUChar(buffer->params, i);
 		if (IsPrintable(c))
 			os << c;
-		else if (c == META_NEWLINE)
-			os << '\n';
 		else if (c == META_INSET) 
 			getInset(i)->ascii(buffer, os);
 	}

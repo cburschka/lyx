@@ -2766,7 +2766,7 @@ LyXTabular::BoxType LyXTabular::UseParbox(int cell) const
 
 	for (; cit != end; ++cit) {
 		for (int i = 0; i < cit->size(); ++i) {
-			if (cit->getChar(i) == Paragraph::META_NEWLINE)
+			if (cit->isNewline(i))
 				return BOX_PARBOX;
 		}
 	}
