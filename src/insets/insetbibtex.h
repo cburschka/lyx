@@ -16,7 +16,7 @@
 #include <vector>
 #include "insetcommand.h"
 
-class Buffer;
+//class Buffer;
 
 /** Used to insert BibTeX's information
   */
