@@ -19,7 +19,7 @@
 /// Extract shortcut from "<ident>|<shortcut>" string
 char const * scex(char const *);
 
-/// Extract ident from "<ident>|<shortcut>" string
+/// Extract identifier from "<ident>|<shortcut>" string
 char const * idex(char const *);
 
 #endif // FORMS_GETTEXT_H

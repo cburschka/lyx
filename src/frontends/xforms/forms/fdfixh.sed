@@ -69,8 +69,7 @@ s/extern \(.*\) create_form_form_\(.*\)[(]void[)]/\1 build_\2(void *)/
 
 # All other lines are deleted:
 /^typedef struct/d
-/^	FL_FORM/d
-/[vcl]data/d
+/^	/{; /FL_OBJECT/!d; }
 
 
 # For all lines starting with FL_OBJECT...
@@ -86,7 +85,7 @@ H; d
 
 # The struct is ended by "} FD_xxx;", so now's the time to paste back the
 # contents of the hold space.
-/} FD_/{
+/^} FD_.*;/{
 
 # 1. Rewrite "} FD_xxx;" as   "\nstruct FD_xxx : public FD_base {".
 s/} \(.*\);/\
