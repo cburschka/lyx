@@ -24,7 +24,7 @@ extern FD_form_table_extra * fd_form_table_extra;
 extern BufferView * current_view;
 
 extern void OpenLayoutTableExtra();
-extern bool UpdateLayoutTabular(bool);
+extern bool UpdateLayoutTabular(bool, InsetTabular *);
 
 static int Confirmed = false;
 static int ActCell;
@@ -46,22 +46,24 @@ void MenuLayoutTabular(bool flag, InsetTabular * ins)
     inset = ins;
     if (!inset)
 	return;
-    if (UpdateLayoutTabular(flag)) {
+    if (UpdateLayoutTabular(flag, ins)) {
         if (fd_form_table_options->form_table_options->visible) {
             fl_raise_form(fd_form_table_options->form_table_options);
         }
         else {
             fl_show_form(fd_form_table_options->form_table_options,
                          FL_PLACE_MOUSE, FL_FULLBORDER,
-                         _("Table Layout"));
+                         _("Tabular Layout"));
         }
     }
 }
 
-bool UpdateLayoutTabular(bool flag)
+bool UpdateLayoutTabular(bool flag, InsetTabular *ins)
 {
-    if (!inset)
+    if (!ins)
 	return false;
+
+    inset = ins;
 
     bool update = true;
     if (!current_view->available())
@@ -245,10 +247,9 @@ bool UpdateLayoutTabular(bool flag)
 
 void TabularOptionsCB(FL_OBJECT * ob, long)
 {
-    if (!inset) {
-        MenuLayoutTable(0);
+    if (!inset)
 	return;
-    }
+
     int s, num = 0;
     string special, str;
 
@@ -256,7 +257,7 @@ void TabularOptionsCB(FL_OBJECT * ob, long)
     
     int cell = inset->GetActCell();
     if (ActCell != cell) {
-        MenuLayoutTable(0);
+        MenuLayoutTabular(false, inset);
         fl_set_object_label(fd_form_table_options->text_warning,
                           _("Warning: Wrong Cursor position, updated window"));
         fl_show_object(fd_form_table_options->text_warning);
@@ -268,7 +269,7 @@ void TabularOptionsCB(FL_OBJECT * ob, long)
     // No point in processing directives that you can't do anything with
     // anyhow, so exit now if the buffer is read-only.
     if (current_view->buffer()->isReadonly()) {
-      MenuLayoutTable(0);
+      MenuLayoutTabular(false, inset);
       return;
     }
     
@@ -406,18 +407,14 @@ void TabularOptionsCB(FL_OBJECT * ob, long)
         return;
     if (current_view->available()) {
 	current_view->hideCursor();
-//        if ((num == LyXTabular::SET_SPECIAL_COLUMN) ||
-//            (num == LyXTabular::SET_SPECIAL_MULTI))
 	inset->TabularFeatures(current_view, num, special);
-//        else
-//            inset->TabularFeatures(num);
     }
     if (num == LyXTabular::DELETE_TABULAR) {
 	fl_set_focus_object(fd_form_table_options->form_table_options,
 			    fd_form_table_options->button_table_delete);
         fl_hide_form(fd_form_table_options->form_table_options);
     } else
-        UpdateLayoutTabular(true);
+        UpdateLayoutTabular(true, inset);
     return;
 }
 
@@ -441,6 +438,12 @@ void SetPWidthTabularCB(FL_OBJECT * ob, long)
             current_view->hideCursor();
             inset->TabularFeatures(current_view, LyXTabular::SET_PWIDTH, str);
         }
-        MenuLayoutTable(0); // update for alignment
+        MenuLayoutTabular(false, inset); // update for alignment
     }
 }
+
+void TabularOptClose()
+{
+    inset = 0;
+}
+

@@ -97,23 +97,6 @@ LyXTabular::rowstruct::rowstruct()
 }
 
 
-// Nothing to do, but gcc 2.7.2.3 wants one... (JMarc)
-//LyXTabular::rowstruct::~rowstruct() 
-//{}
-
-
-//LyXTabular::rowstruct & 
-//  LyXTabular::rowstruct::operator=(rowstruct const & rs)
-//{
-//    top_line = rs.top_line;
-//    bottom_line = rs.bottom_line;
-//    ascent_of_row = rs.ascent_of_row;
-//    descent_of_row = rs.descent_of_row;
-//    newpage = rs.newpage;
-//    return *this;
-//}
-
-
 LyXTabular::columnstruct::columnstruct() 
 {
     left_line = true;
@@ -121,24 +104,6 @@ LyXTabular::columnstruct::columnstruct()
     alignment = LYX_ALIGN_CENTER;
     width_of_column = 0;
 }
-
-
-//LyXTabular::columnstruct::~columnstruct() 
-//{
-//}
-
-
-//LyXTabular::columnstruct & 
-//  LyXTabular::columnstruct::operator=(columnstruct const & cs)
-//{
-//    left_line = cs.left_line;
-//    right_line = cs.right_line;
-//    alignment = cs.alignment;
-//    width_of_column = cs.width_of_column;
-//    p_width = cs.p_width;
-//    align_special = cs.align_special;
-//    return *this;
-//}
 
 
 /* konstruktor */
@@ -179,24 +144,9 @@ LyXTabular & LyXTabular::operator=(LyXTabular const & lt)
     // call abort()
     Assert(rows_ == lt.rows_ && columns_ == lt.columns_);
 
-//    int row = 0, column = 0;
-
     cell_info = lt.cell_info;
-//    for (row = 0; row < rows_; ++row) {
-//        for (column = 0; column < columns_; ++column) {
-//            cell_info[row][column] = lt.cell_info[row][column];
-//        }
-//    }
-
     row_info = lt.row_info;
-//    for (row = 0; row < rows_; ++row) {
-//        row_info[row] = lt.row_info[row];
-//    }
-
     column_info = lt.column_info;
-//    for (column = 0; column < columns_; ++column) {
-//	column_info[column] = lt.column_info[column];
-//    }
 
     // long tabular stuff
     SetLongTabular(lt.is_long_tabular);
@@ -216,6 +166,19 @@ LyXTabular & LyXTabular::operator=(LyXTabular const & lt)
 LyXTabular * LyXTabular::Clone(InsetTabular * inset)
 {
     LyXTabular * result = new LyXTabular(inset, *this);
+    ///
+    // don't know if this is good but I need to Clone also
+    // the text-insets here, this is for the Undo-facility!
+    ///
+    int i,j;
+    for(i=0; i < rows_; ++i) {
+	for(j=0; j < columns_; ++j) {
+	    delete result->cell_info[i][j].inset;
+	    result->cell_info[i][j].inset=new InsetText(*cell_info[i][j].inset,
+							inset->BufferOwner());
+	    result->cell_info[i][j].inset->setOwner(inset);
+	}
+    }
     return result;
 }
 

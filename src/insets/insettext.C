@@ -84,6 +84,7 @@ void InsetText::init(Buffer * buf, InsetText const * ins)
     if (ins) {
 	SetParagraphData(ins->par);
 	autoBreakRows = ins->autoBreakRows;
+	drawLockedFrame = ins->drawLockedFrame;
     }
     par->SetInsetOwner(this);
     cursor.par = par;

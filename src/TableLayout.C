@@ -15,6 +15,7 @@
 #include "gettext.h"
 #include "lyxtext.h"
 #include "layout.h"
+#include "insets/lyxinset.h"
 
 
 // Prototypes
@@ -40,7 +41,8 @@ static int extra_col_cursor_x; // need no y's, one-line input fields
 static int extra_multicol_cursor_x;
 // Joacim
 
-#define IS_TABULAR  (current_view->the_locking_inset != 0)
+#define IS_TABULAR  (current_view->the_locking_inset && \
+		     current_view->the_locking_inset->GetFirstLockingInsetOfType(Inset::TABULAR_CODE))
 
 bool UpdateLayoutTable(int flag)
 {

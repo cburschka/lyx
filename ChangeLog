@@ -1,3 +1,21 @@
+2000-05-16  Juergen Vigna  <jug@sad.it>
+
+	* src/insets/insettabular.C (UnlockInsetInInset): Changes to update
+	the TabularLayout on cursor move.
+
+	* src/TabularLayout.C (TabularOptionsCB): Wrong call to MenuLayoutTable
+
+	* src/insets/insettabular.C (Clone): Clone the LyXTabular for
+	undo-handling.
+	(getCellXPos): 
+	(draw): fixed cursor position and drawing so that the cursor is
+	visible when before the tabular-inset.
+
+	* src/insets/insettext.C (init): drawLockedFrame was not initialized
+	when creating from old insettext.
+
+	* src/tabular.C (Clone): added Clone of text-inset for undo-handling.
+
 2000-05-15  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* lib/tex/hollywood.cls: better algorithm for page breaks (Garst)

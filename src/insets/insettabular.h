@@ -204,9 +204,11 @@ private:
 	sel_cell_start,
 	sel_cell_end,
         actcell,
+	oldcell,
         actcol,
         actrow;
     bool
+        locked,
         no_selection;
     mutable bool
         init_inset;
