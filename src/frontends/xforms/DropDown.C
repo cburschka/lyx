@@ -100,6 +100,7 @@ int DropDown::peek(XEvent * xev)
 			fl_hide_form(form_);
 			return 1;
 		}
+		XUngrabPointer(fl_get_display(), CurrentTime);
 	} else if (xev->type == KeyPress) {
 		char s_r[10]; s_r[9] = '\0';
 		KeySym keysym_return;
@@ -114,6 +115,18 @@ int DropDown::peek(XEvent * xev)
 			case XK_Return:
 				completed(); 
 				return 1;
+			case XK_Escape:
+				fl_select_browser_line(browser_, 0);
+				completed();
+				return 1;
+			default:
+				// FIXME: if someone has a got a way to
+				// convince the event to fall back to the
+				// minibuffer, I'm glad to hear it.
+				// fl_XPutBackEvent() doesn't work. 
+				fl_select_browser_line(browser_, 0);
+				completed();
+				return 1;
 		}
 	}
 	return 0; 
@@ -122,9 +135,10 @@ int DropDown::peek(XEvent * xev)
  
 void DropDown::completed()
 {
+	XUngrabPointer(fl_get_display(), CurrentTime);
 	string selection;
 	int i = fl_get_browser(browser_);
-	if (i == -1)
+	if (i < 1)
 		selection = "";
 	else
 		selection = fl_get_browser_line(browser_, i); 

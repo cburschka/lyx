@@ -69,7 +69,7 @@ private:
 	int startPipe(string const &);
  
 	/// finish a pipe
-	void endPipe(int, string const &);
+	void endPipe(int &, string const &);
  
 	/// This is -1 if not open
 	int infd;

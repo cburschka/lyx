@@ -96,7 +96,6 @@ Menuset
 	Item "Find & Replace...|F" "find-replace"
 	Submenu "Tabular|T" "edit_tabular"
 	Submenu "Floats & Insets|I" "edit_floats"
-	Item "Math Panel|l" "math-panel"
 	Submenu "Math|M" "edit_math"
 	Separator
 	#Item "Read Only" "buffer-toggle-read-only"
@@ -185,6 +184,7 @@ Menuset
     Menu "insert"
 	Item "Math Formula|h" "math-mode"
 	Item "Display Formula|D" "math-display"
+	Item "Math Panel|l" "math-panel"
 	#Item "Display Formula|D" "math-mode display"
 	#Item "Change to Inline Math Formula|q" "math-mutate simple"
 	#Item "Change to Displayed Math Formula|q" "math-mutate equation"

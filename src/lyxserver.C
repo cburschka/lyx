@@ -215,7 +215,7 @@ int LyXComm::startPipe(string const & filename)
 }
 
 
-void LyXComm::endPipe(int fd, string const & filename)
+void LyXComm::endPipe(int & fd, string const & filename)
 {
 	if (fd < 0)
 		return;
@@ -245,6 +245,8 @@ void LyXComm::endPipe(int fd, string const & filename)
 		       << '\n' << strerror(errno) << endl;
 	};
 #endif
+
+	fd = -1;
 }
 
 

@@ -74,7 +74,9 @@ private:
 	void stored_slot();
 	///
 	void stored_set(string const &);
-	///
+	/// set the minibuffer content if str non-empty 
+	void set_complete_input(string const &);
+	/// set the minibuffer content
 	void set_input(string const &);
 	///
 	void init();

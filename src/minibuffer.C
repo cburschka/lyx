@@ -70,7 +70,7 @@ MiniBuffer::MiniBuffer(LyXView * o, FL_Coord x, FL_Coord y,
 void MiniBuffer::dd_init()
 {
 	dropdown_ = new DropDown(owner_, the_buffer);
-	dropdown_->result.connect(slot(this, &MiniBuffer::set_input));
+	dropdown_->result.connect(slot(this, &MiniBuffer::set_complete_input));
 }
 
 
@@ -153,14 +153,15 @@ int MiniBuffer::peek_event(FL_OBJECT * ob, int event, int key)
 				// Perfect match
 				string const tmp =
 					comp[0] + _(" [sole completion]");
-				stored_set(comp[0]);
+				stored_set(comp[0] + " ");
 				set_input(tmp);
 			} else {
 				// More that one match
 				// Find maximal avaliable prefix
 				string const tmp = comp[0];
 				string test(input);
-				test += tmp[test.length()];
+				if (tmp.length() > test.length())
+					test += tmp[test.length()];
 				while (test.length() < tmp.length()) {
 					vector<string> vtmp;
 					lyx::copy_if(comp.begin(),
@@ -378,6 +379,13 @@ void MiniBuffer::redraw()
 }
 
 
+void MiniBuffer::set_complete_input(string const & str)
+{
+	if (!str.empty())
+		set_input(str);
+}
+
+ 
 void MiniBuffer::set_input(string const & str)
 {
 	fl_set_input(the_buffer, str.c_str());
