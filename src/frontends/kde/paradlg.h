@@ -156,7 +156,7 @@ private:
 			case 5: return VSpace::VFILL;
 			case 6: return VSpace::LENGTH;
 			default:
-				lyxerr[Debug::GUI] << "Unknown kind combo entry " << val << endl;
+				lyxerr[Debug::GUI] << "Unknown kind combo entry " << val << std::endl;
 		}
 		return VSpace::NONE;
 	}

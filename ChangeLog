@@ -1,3 +1,15 @@
+2000-11-22  Angus Leeming <a.leeming@ic.ac.uk>
+
+	* src/frontends/kde/Dialogs.C: added signal Dialogs::redrawGUI.
+
+	* src/frontends/kde/FormParagraph.C: added using directive.
+
+	* src/frontends/kde/paradlg.C: added config.h and using directive.
+
+	* src/frontends/kde/paradlg.h: added std::qualifier.
+
+	* src/frontends/kde/Makefile.am: added Color.lo to libkde_la_OBJADD.
+
 2000-11-22  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* configure.in (AC_OUTPUT): don't output src/xtl/Makefile

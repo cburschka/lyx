@@ -352,7 +352,7 @@ bool InsetBibtex::delDatabase(string const & db)
 {
 	if (contains(getContents(), db)) {
 		string bd = db;
-		int n = tokenPos(getContents(), ',', bd);
+		int const n = tokenPos(getContents(), ',', bd);
 		if (n > 0) {
 			// Weird code, would someone care to explain this?(Lgb)
 			string tmp(", ");
@@ -376,7 +376,7 @@ int bibitemMaxWidth(BufferView * bv, LyXFont const & font)
     
 	while (par) {
 		if (par->bibkey) {
-			int wx = par->bibkey->width(bv, font);
+			int const wx = par->bibkey->width(bv, font);
 			if (wx > w) w = wx;
 		}
 		par = par->next;
@@ -397,7 +397,7 @@ string const bibitemWidest(Buffer const * buffer)
       
 	while (par) {
 		if (par->bibkey) {
-			int wx = par->bibkey->width(bv, font);
+			int const wx = par->bibkey->width(bv, font);
 			if (wx > w) {
 				w = wx;
 				bkey = par->bibkey;

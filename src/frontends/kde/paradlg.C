@@ -13,12 +13,14 @@
  *                                                                         *
  ***************************************************************************/
 
+#include <config.h>
+
 #include "support/lstrings.h" 
-
 #include "paradlg.h"
-
 #include "gettext.h"
 #include "debug.h"
+
+using std::endl;
 
 /*
  * This is the top-level dialog which contains the buttons, and the tab bar for adding
