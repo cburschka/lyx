@@ -15,6 +15,8 @@
 #ifndef TEXTUTILS_H
 #define TEXTUTILS_H
 
+#include "paragraph.h"
+
 /// return true if the char is a word separator
 inline
 bool IsSeparatorChar(char c)

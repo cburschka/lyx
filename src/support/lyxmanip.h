@@ -12,6 +12,7 @@
 #ifndef LYX_MANIP_H
 #define LYX_MANIP_H
 
+#include "LString.h"
 #include "support/LOstream.h"
 
 ///
