@@ -21,7 +21,14 @@
 #include "xformsBC.h"
 #include "support/LAssert.h"
 
+// Callback function invoked by xforms when the dialog is closed by the
+// window manager
 extern "C" int C_FormBaseWMHideCB(FL_FORM * form, void *);
+
+// To trigger an input event when pasting in an xforms input object
+// using the middle mouse button.
+extern "C" int C_CutandPastePH(FL_OBJECT *, int, FL_Coord, FL_Coord,
+			       int, void *);
 
 
 FormBase::FormBase(ControlButtons & c, string const & t, bool allowResize)
@@ -154,4 +161,17 @@ extern "C" void C_FormBaseRestoreCB(FL_OBJECT * ob, long)
 extern "C" void C_FormBaseInputCB(FL_OBJECT * ob, long d)
 {
 	GetForm(ob)->InputCB(ob, d);
+}
+
+
+// To trigger an input event when pasting in an xforms input object
+// using the middle mouse button.
+extern "C" int C_CutandPastePH(FL_OBJECT * ob, int event,
+			       FL_Coord, FL_Coord, int key, void *)
+{
+	if ((event == FL_PUSH) && (key == 2) && (ob->objclass == FL_INPUT)) {
+		C_FormBaseInputCB(ob, 0);
+	}
+
+	return 0;
 }
