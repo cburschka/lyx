@@ -1282,50 +1282,57 @@ void Menus::ShowEditMenu(FL_OBJECT * ob, long)
 	fl_freepup(SubVersionControl);
 }
 
+vector<int>::size_type const max_number_of_menus = 32;
 
 void Add_to_toc_menu(vector<Buffer::TocItem> const & toclist, 
 		     unsigned int from, unsigned int to, int depth,
 		     int menu, vector<int> & menus, FL_OBJECT * ob)
 {
 	unsigned int const max_number_of_items = 25;
-	unsigned int const max_item_length = 40;
+	string::size_type const max_item_length = 45;
 	if (to - from <= max_number_of_items) {
 		for (unsigned int i = from; i < to; ++i) {
-			
-			string line(4 * max(0, toclist[i].depth - depth),' ');
-			line += toclist[i].str;
-			string entry(line, 0, max_item_length);
+			string entry(4 * max(0, toclist[i].depth - depth),' ');
+			entry += toclist[i].str;
+			if (entry.size() > max_item_length)
+				entry = entry.substr(0, max_item_length-3) + "...";
 			entry += "%x";
 			entry += tostr(i + 1);
-			
 			fl_addtopup(menu, entry.c_str());
 		}
 	} else {
 		unsigned int pos = from;
+		unsigned int count = 0;
 		while (pos < to) {
+			++count;
+			if (count > max_number_of_items) {
+				fl_addtopup(menu, ". . .%d");
+				break;
+			}
 			unsigned int new_pos = pos+1;
 			while (new_pos < to &&
 			       toclist[new_pos].depth > depth)
 				++new_pos;
+
+			string entry(4 * max(0, toclist[pos].depth - depth), ' ');
+			entry += toclist[pos].str;
+			if (entry.size() > max_item_length)
+				entry = entry.substr(0, max_item_length-3) + "...";
+
 			if (new_pos == pos + 1) {
-				string line(4 * max(0, toclist[pos].depth - depth), ' ');
-				line += toclist[pos].str;
-				string entry(line, 0, max_item_length);
 				entry += "%x";
 				entry += tostr(pos + 1);
-				
 				fl_addtopup(menu, entry.c_str());
-			} else {
+			} else if (menus.size() < max_number_of_menus) {
 				int menu2 = fl_newpup(FL_ObjWin(ob));
 				menus.push_back(menu2);
 				Add_to_toc_menu(toclist, pos, new_pos,
 						depth + 1, menu2, menus,ob);
-				string line(4 * max(0, toclist[pos].depth - depth), ' ');
-				line += toclist[pos].str;
-				string entry(line, 0, max_item_length);
 				entry += "%m";
-
 				fl_addtopup(menu, entry.c_str(), menu2);
+			} else {
+				entry += "%d";
+				fl_addtopup(menu, entry.c_str());
 			}
 			pos = new_pos;
 		}
@@ -1416,24 +1423,34 @@ void Add_to_refs_menu(vector<string> const & label_list, int offset,
 			fl_addtopup(menu,
 				    (label_list[i] + "%x"
 				     +tostr(i+offset)).c_str());
-	else
+	else {
+		size_type count = 0;
 		for (size_type i = 0; i < label_list.size();
 		     i += max_number_of_items2) {
+			++count;
+			if (count > max_number_of_items) {
+				fl_addtopup(menu, ". . .%d");
+				break;
+			}
 			size_type j = std::min(label_list.size(),
-						  i+max_number_of_items2);
-			int menu2 = fl_newpup(FL_ObjWin(ob));
-			menus.push_back(menu2);
-			for (size_type k = i;  k < j; ++k)
-				fl_addtopup(menu2,
-					    (label_list[k] + "%x"
-					     + tostr(k+offset)).c_str());
-			fl_addtopup(menu,
-				    (label_list[i]+".."
-				     +label_list[j-1]+"%m").c_str(),
-				    menu2);
+					       i+max_number_of_items2);
+			string entry = label_list[i]+".."+label_list[j-1];
+
+			if (menus.size() < max_number_of_menus) {
+				int menu2 = fl_newpup(FL_ObjWin(ob));
+				menus.push_back(menu2);
+				for (size_type k = i;  k < j; ++k)
+					fl_addtopup(menu2,
+						    (label_list[k] + "%x"
+						     + tostr(k+offset)).c_str());
+				entry += "%m";
+				fl_addtopup(menu, entry.c_str(), menu2);
+			} else {
+				entry += "%d";
+				fl_addtopup(menu, entry.c_str());
+			}
 		}
-
-
+	}
 }
 
 void Menus::ShowRefsMenu(FL_OBJECT * ob, long)
@@ -1467,10 +1484,16 @@ void Menus::ShowRefsMenu(FL_OBJECT * ob, long)
 					     N_("Goto Reference%m") };
 
 	for (int j = 0; j < 6; ++j) {
-		int menu2 = fl_newpup(FL_ObjWin(ob));
-		menus.push_back(menu2);
-		Add_to_refs_menu(label_list, 1+j*BIG_NUM, menu2, menus, ob);
-		fl_addtopup(RefsMenu, _(MenuNames[j]), menu2);
+		if (menus.size() < max_number_of_menus) {
+			int menu2 = fl_newpup(FL_ObjWin(ob));
+			menus.push_back(menu2);
+			Add_to_refs_menu(label_list, 1+j*BIG_NUM, menu2, menus, ob);
+			fl_addtopup(RefsMenu, _(MenuNames[j]), menu2);
+		} else {
+			string tmp = _(MenuNames[j]);
+			tmp += "%d";
+			fl_addtopup(RefsMenu, tmp.c_str());	
+		}
 	}
 
 	bool empty = label_list.empty();

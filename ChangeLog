@@ -1,3 +1,9 @@
+2000-05-26 Dekel Tsur  <dekel@math.tau.ac.il>
+
+	* src/menus.C (Add_to_toc_menu): Limit the number of popups, and
+	the number of items per popup.
+	(Add_to_refs_menu): Ditto.
+	
 2000-05-26  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/lyxparagraph.h: renamed ClearParagraph() to
