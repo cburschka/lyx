@@ -1,3 +1,7 @@
+2001-02-06  Allan Rae  <rae@lyx.org>
+
+	* LaTeX.h: Another bug fix.  Missing std:: this time.
+
 2001-02-04  Allan Rae  <rae@lyx.org>
 
 	* paragraph.C (TeXOnePar): Partial fix for the '\n' generation in

@@ -178,7 +178,8 @@ protected:
 	void scanAuxFile(string const &, Aux_Info &);
 	
 	///
-	void updateBibtexDependencies(DepTable &, vector<Aux_Info> const &);
+	void updateBibtexDependencies(DepTable &,
+				      std::vector<Aux_Info> const &);
 
 	///
 	bool runBibTeX(vector<Aux_Info> const &);
