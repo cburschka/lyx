@@ -59,8 +59,6 @@ enum MathTokenEnum
 	LM_TK_BEGIN,
 	///
 	LM_TK_END,
-	///
-	LM_TK_NEWLINE,
 	/// mathcal, mathrm...
 	LM_TK_OLDFONT,
 	/// cal,...

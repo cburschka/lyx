@@ -37,7 +37,6 @@ key_type wordlist_array[] =
 	{";",  LM_TK_SPACE, 3},
 	{"Pr",  LM_TK_FUNCLIM, 0},
 	{"[",  LM_TK_BEGIN, LM_OT_EQUATION},
-	{"\\",  LM_TK_NEWLINE, static_cast<unsigned>(-1)}, // -1 needed in mathed_parse_lines!
 	{"]",  LM_TK_END, LM_OT_EQUATION},
 	{"_",  LM_TK_SPECIAL, '_'},
 	{"acute",  LM_TK_DECORATION, 0},

@@ -188,6 +188,8 @@ public:
 	char character() const { return char_; }
 	///
 	string asString() const;
+	///
+	bool isCR() const;
 
 private:	
 	///
@@ -197,6 +199,11 @@ private:
 	///
 	CatCode cat_;
 };
+
+bool Token::isCR() const
+{
+	return cs_ == "\\" || cs_ == "cr" || cs_ == "crcr";
+}
 
 string Token::asString() const
 {
@@ -507,7 +514,7 @@ bool Parser::parse_lines(MathAtom & t, bool numbered, bool outmost)
 		}
 
 		// no newline?
-		if (prevToken() != Token("\\")) {
+		if (!prevToken().isCR()) {
 			//lyxerr << "no newline here\n";
 			break;
 		}
@@ -699,7 +706,7 @@ void Parser::parse_into(MathArray & array, unsigned flags, MathTextCodes code)
 		}
 
 		if (flags & FLAG_BLOCK) {
-			if (t.cat() == catAlign || t.cs() == "\\")
+			if (t.cat() == catAlign || t.isCR())
 				return;
 			if (t.cs() == "end") {
 				getArg('{', '}');
