@@ -299,6 +299,10 @@ public:
 	virtual string fileInsetLabel() const { return "Formula"; }
 	/// usually the latex name
 	virtual string name() const;
+
+protected:
+	/// a dirty hack
+	BufferView * view() const;
 };
 
 std::ostream & operator<<(std::ostream &, MathAtom const &);
@@ -310,9 +314,5 @@ MathArray asArray(string const & str);
 
 // initialize math
 void initMath();
-
-/// here to ssave a few includes in the insets
-class Dialogs;
-Dialogs & getDialogs();
 
 #endif

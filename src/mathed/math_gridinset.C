@@ -5,6 +5,7 @@
 #include "funcrequest.h"
 #include "frontends/Painter.h"
 #include "debug.h"
+#include "Lsstream.h"
 
 
 #include "insets/mailinset.h"
@@ -27,8 +28,12 @@ public:
 	///
 	virtual string const inset2string() const
 	{
-		lyxerr << "inset2string called" << std::endl;
-		return "whatever"; //(inset_);
+		ostringstream data;
+		//data << name() << " active_cell " << inset.getActCell() << '\n';
+		data << name() << " active_cell " << 0 << '\n';
+		WriteStream ws(data);
+		inset_.write(ws);
+		return data.str();
 	}
 
 protected:
@@ -1003,17 +1008,13 @@ dispatch_result MathGridInset::dispatch
 {
 	switch (cmd.action) {
 
-		case LFUN_MOUSE_RELEASE: {
-			if (cmd.button() == mouse_button::button3) {
-				WriteStream ws(lyxerr);
-				write(ws);
-				GridInsetMailer mailer(*this);
-				lyxerr << "mailer " << mailer.name() << " active\n";
-				mailer.showDialog(cmd.view());
-				return DISPATCHED;
-			}
+		case LFUN_MOUSE_RELEASE:
+			//if (cmd.button() == mouse_button::button3) {
+			//	GridInsetMailer mailer(*this);
+			//	mailer.showDialog();
+			//	return DISPATCHED;
+			//}
 			break;
-		}
 
 		case LFUN_INSET_DIALOG_UPDATE: {
 			GridInsetMailer mailer(*this);

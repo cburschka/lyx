@@ -652,7 +652,7 @@ dispatch_result InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 		break;
 
 	//  Math fonts
-	case LFUN_GREEK_TOGGLE: handleFont(bv, cmd.argument, "lyxgreek"); break;
+	//case LFUN_GREEK_TOGGLE: handleFont(bv, cmd.argument, "lyxgreek"); break;
 	case LFUN_BOLD:         handleFont(bv, cmd.argument, "mathbf"); break;
 	case LFUN_SANS:         handleFont(bv, cmd.argument, "mathsf"); break;
 	case LFUN_EMPH:         handleFont(bv, cmd.argument, "mathcal"); break;
@@ -664,11 +664,11 @@ dispatch_result InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 	case LFUN_FREE:         handleFont(bv, cmd.argument, "textrm"); break;
 	case LFUN_DEFAULT:      handleFont(bv, cmd.argument, "textnormal"); break;
 
-	case LFUN_GREEK:
-		handleFont(bv, cmd.argument, "lyxgreek1");
-		if (cmd.argument.size())
-			mathcursor->insert(asArray(cmd.argument));
-		break;
+	//case LFUN_GREEK:
+	//	handleFont(bv, cmd.argument, "lyxgreek1");
+	//	if (cmd.argument.size())
+	//		mathcursor->insert(asArray(cmd.argument));
+	//	break;
 
 	case LFUN_MATH_MODE:
 		if (mathcursor->currentMode() == MathInset::TEXT_MODE) {

@@ -83,6 +83,7 @@ void MathSpaceInset::incSpace()
 	space_ = (space_ + 1) % (nSpace - 2);
 }
 
+
 void MathSpaceInset::validate(LaTeXFeatures & features) const
 {
 	if (space_ >= 0 && space_< nSpace) {

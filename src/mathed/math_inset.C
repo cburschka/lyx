@@ -34,6 +34,14 @@
 using std::ostream;
 
 
+BufferView * MathInset::view() const
+{
+	if (!mathcursor)
+		return 0;
+	return mathcursor->formula()->view();
+}
+
+
 int MathInset::height() const
 {
 	return ascent() + descent();
@@ -297,8 +305,3 @@ ostream & operator<<(ostream & os, MathAtom const & at)
 	return os;
 }
 
-
-Dialogs & getDialogs()
-{
-	return mathcursor->formula()->view()->owner()->getDialogs();
-}
