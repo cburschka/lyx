@@ -83,7 +83,7 @@ void BranchList::setColor(string const & s, string const & val)
 	List::iterator it = list.begin();
 	List::iterator end = list.end();
 	for (; it != end; ++it) {
-		if (s.find(it->getBranch(), 0) != string::npos) {
+		if (s == it->getBranch()) {
 			it->setColor(val);
 			return;
 		}
