@@ -368,53 +368,6 @@ string const GetEnvPath(string const & name)
 }
 
 
-bool PutEnv(string const & envstr)
-{
-	// CHECK Look at and fix this.
-	// f.ex. what about error checking?
-
-#if HAVE_PUTENV
-	// this leaks, but what can we do about it?
-	//   Is doing a getenv() and a free() of the older value
-	//   a good idea? (JMarc)
-	// Actually we don't have to leak...calling putenv like this
-	// should be enough: ... and this is obviously not enough if putenv
-	// does not make a copy of the string. It is also not very wise to
-	// put a string on the free store. If we have to leak we should do it
-	// like this:
-	char * leaker = new char[envstr.length() + 1];
-	envstr.copy(leaker, envstr.length());
-	leaker[envstr.length()] = '\0';
-	int const retval = lyx::putenv(leaker);
-
-	// If putenv does not make a copy of the char const * this
-	// is very dangerous. OTOH if it does take a copy this is the
-	// best solution.
-	// The  only implementation of putenv that I have seen does not
-	// allocate memory. _And_ after testing the putenv in glibc it
-	// seems that we need to make a copy of the string contents.
-	// I will enable the above.
-	//int retval = lyx::putenv(envstr.c_str());
-#else
-#ifdef HAVE_SETENV
-	string varname;
-	string const str = envstr.split(varname,'=');
-	int const retval = ::setenv(varname.c_str(), str.c_str(), true);
-#else
-	// No environment setting function. Can this happen?
-	int const retval = 1; //return an error condition.
-#endif
-#endif
-	return retval == 0;
-}
-
-
-bool PutEnvPath(string const & envstr)
-{
-	return PutEnv(envstr);
-}
-
-
 namespace {
 
 int DeleteAllFilesInDir(string const & path)

@@ -108,12 +108,6 @@ string const GetEnv(string const & envname);
 /// A helper function.
 string const GetEnvPath(string const & name);
 
-///
-bool PutEnv(string const & envstr);
-
-///
-bool PutEnvPath(string const & envstr);
-
 /// Substitutes active latex characters with underscores in filename
 string const MakeLatexName(string const & file);
 
