@@ -4,6 +4,7 @@
 #define LYX_ALGO_H
 
 #include <utility>
+#include <iterator>
 
 namespace lyx {
 
@@ -54,5 +55,22 @@ OutputIter copy_if(InputIter first, InputIter last,
 	return result;
 }
 
-}  // end of namespace lyx
+
+/// A slot in replacement for std::count for systems where it is broken.
+template <class Iterator, class T>
+typename std::iterator_traits<Iterator>::difference_type
+count (Iterator first, Iterator last, T const & value)
+{
+#ifdef HAVE_STD_COUNT
+        return std::count(first, last, value);
+#else
+        std::iterator_traits<Iterator>::difference_type n = 0;
+	while (first != last) 
+		if (*first++ == value) ++n;
+	return n;
+#endif
+}
+
+} // namespace lyx
+
 #endif

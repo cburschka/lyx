@@ -93,6 +93,7 @@
 #include "support/lyxlib.h"
 #include "support/FileInfo.h"
 #include "support/lyxmanip.h"
+#include "support/lyxalgo.h" // for lyx::count
 
 #include <fstream>
 #include <iomanip>
@@ -2449,7 +2450,9 @@ void Buffer::makeLaTeXFile(string const & fname,
 		if (!bullets_def.empty())
 		  preamble += bullets_def + "}\n\n";
 
-		for (int j = countChar(preamble, '\n'); j-- ;) {
+		int const nlines =
+			int(lyx::count(preamble.begin(), preamble.end(), '\n'));
+		for (int j = 0; j != nlines; ++j) {
 			texrow.newline();
 		}
 

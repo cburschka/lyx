@@ -1,3 +1,10 @@
+2002-01-14  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* math_mathmlstream.C (operator<<): use lyx::count rather than
+	countChar.
+
+	* math_streamstr.C (operator<<): ditto.
+
 2002-01-10  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* math_support.C: change latex_mathfontcmds to an array of

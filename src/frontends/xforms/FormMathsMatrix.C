@@ -24,6 +24,7 @@
 #include "Lsstream.h"
 #include "lyxfunc.h"
 #include "support/LAssert.h"
+#include "support/lyxalgo.h" // lyx::count
 
 #ifndef CXX_GLOBAL_CSTD
 using std::strlen;
@@ -119,19 +120,10 @@ bool FormMathsMatrix::input(FL_OBJECT * ob, long)
 int FormMathsMatrix::AlignFilter(char const * cur, int c)
 {
 	size_t len = strlen(cur);
-	// Use the HP version of std::count because the other one is broken on
-	// some systems, (anon)  and the HP one might even not exist... (Lgb)
-	// Before "fixing" this again, please investige _why_ the standard
-	// count is not working. Run it my be as well. (Lgb)
-#if 0
-	int counted = 0;
-	std::count(cur, cur+len, '|', counted);
-#else
-	int counted = std::count(cur, cur + len, '|');
-#endif
 	
 	int const n = int(fl_get_slider_value(dialog_->slider_columns) + 0.5) -
-		int(len) + counted;
+		int(len) +
+		int(lyx::count(cur, cur + len, '|'));
 	if (n < 0)
 		return FL_INVALID;
 

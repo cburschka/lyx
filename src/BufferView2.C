@@ -34,9 +34,9 @@
 #include "support/filetools.h"
 #include "support/lyxfunctional.h" //equal_1st_in_pair
 #include "support/types.h"
+#include "support/lyxalgo.h" // lyx_count
 
 #include <fstream>
-#include <algorithm>
 
 extern BufferList bufferlist;
 
@@ -47,7 +47,6 @@ using std::endl;
 using std::ifstream;
 using std::vector;
 using std::find;
-using std::count;
 using std::count_if;
 
 
@@ -650,11 +649,8 @@ bool BufferView::ChangeRefsIfUnique(string const & from, string const & to)
 {
 	// Check if the label 'from' appears more than once
 	vector<string> labels = buffer()->getLabelList();
-	// count is broken on some systems, so use the HP version (anon)
-	// Which does not exist on certain systems, so _we_
-	// use the standard version. (Lgb)
-	int res = count(labels.begin(), labels.end(), from);
-	if (res > 1)
+
+	if (lyx::count(labels.begin(), labels.end(), from) > 1)
 		return false;
 
 	return ChangeInsets(Inset::REF_CODE, from, to);

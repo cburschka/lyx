@@ -4,9 +4,7 @@
 #include "math_inset.h"
 #include "math_extern.h"
 #include "debug.h"
-#include "support/lstrings.h"
-
-#include <algorithm>
+#include "support/lyxalgo.h"
 
 
 MathMLStream::MathMLStream(std::ostream & os)
@@ -222,7 +220,7 @@ WriteStream & operator<<(WriteStream & ws, MathArray const & ar)
 WriteStream & operator<<(WriteStream & ws, char const * s)
 {
 	ws.os() << s;
-	ws.addlines(int(countChar(s, '\n')));
+	ws.addlines(int(lyx::count(s, s+strlen(s), '\n')));
 	return ws;
 }
 

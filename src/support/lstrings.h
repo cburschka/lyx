@@ -157,9 +157,6 @@ bool containsOnly(char const *, char const *);
 ///
 bool containsOnly(char const *, string const &);
 
-/// Counts how many of character c there is in a
-string::size_type countChar(string const & a, char c);
-
 /** Extracts a token from this string at the nth delim.
     Doesn't modify the original string. Similar to strtok.
     Example:

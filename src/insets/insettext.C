@@ -48,6 +48,7 @@
 #include "support/textutils.h"
 #include "support/LAssert.h"
 #include "support/lstrings.h"
+#include "support/lyxalgo.h" // lyx::count
 
 #include <fstream>
 #include <algorithm>
@@ -1436,7 +1437,7 @@ int InsetText::ascii(Buffer const * buf, ostream & os, int linelen) const
 	
 	while (p) {
 		string const tmp = buf->asciiParagraph(p, linelen, p->previous()==0);
-		lines += countChar(tmp, '\n');
+		lines += lyx::count(tmp.begin(), tmp.end(), '\n');
 		os << tmp;
 		p = p->next();
 	}

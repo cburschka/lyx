@@ -1,5 +1,13 @@
 2002-01-14  Angus Leeming  <a.leeming@ic.ac.uk>
 
+	* BufferView2.C (ChangeRefsIfUnique): use lyx::count rather than
+	std::count.
+
+	* buffer.C (makeLaTeXFile): ditto.
+	Also make loop operation more transparent.
+
+2002-01-14  Angus Leeming  <a.leeming@ic.ac.uk>
+
 	* ToolbarDefaults.C: remove trailing comma closing namespace.
 
 	* WorkArea.h: remove WorkArea:: from declaration of event_cb.

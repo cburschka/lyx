@@ -422,18 +422,6 @@ bool containsOnly(char const * s, string const & cset)
 }
 
 
-string::size_type countChar(string const & a, char c)
-{
-#ifdef HAVE_STD_COUNT
-	return count(a.begin(), a.end(), c);
-#else
-	unsigned int n = 0;
-	count(a.begin(), a.end(), c, n);
-	return n;
-#endif
-}
-
-
 // ale970405+lasgoutt-970425
 // rewritten to use new string (Lgb)
 string const token(string const & a, char delim, int n)
