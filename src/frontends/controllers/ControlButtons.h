@@ -42,9 +42,9 @@ class ButtonControllerBase;
  */
 class ControlButtons : public DialogBase
 {
-public: // methods
+public:
 	///
-	ControlButtons() {}
+	ControlButtons();
 	///
 	virtual ~ControlButtons() {}
 
@@ -64,6 +64,10 @@ public: // methods
 	virtual ButtonControllerBase & bc() = 0;
 
 protected:
+	/** When Applying it's useful to know whether the dialog is about
+	    to close or not (no point refreshing the display for example). */
+	bool isClosing() const { return is_closing_; }
+
 	/// Get changed parameters and Dispatch them to the kernel.
 	virtual void apply() = 0;
 	/// Disconnect signals and hide View.
@@ -75,6 +79,11 @@ protected:
 	    instantiated in a daughter class that creates the actual instance
 	    of the View. */
 	virtual ViewBase & view() = 0;
+
+private:
+	///
+	bool is_closing_;
+	
 };
 
 #endif // CONTROLBUTTONS_H

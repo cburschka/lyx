@@ -21,6 +21,11 @@
 #include "ButtonControllerBase.h"
 #include "ViewBase.h"
 
+ControlButtons::ControlButtons()
+	: is_closing_(false)
+{}
+
+
 void ControlButtons::ApplyButton()
 {
 	apply();
@@ -30,7 +35,9 @@ void ControlButtons::ApplyButton()
 
 void ControlButtons::OKButton()
 {
+	is_closing_ = true;
 	apply();
+	is_closing_ = false;
 	hide();
 	bc().ok();
 }
