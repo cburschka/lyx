@@ -222,7 +222,8 @@ bool CutAndPaste::pasteSelection(Paragraph ** par, Paragraph ** endpar,
 	// Paragraph * tmpbuf;
 	Paragraph * tmppar = *par;
 	int tmppos = pos;
-	
+
+#if 0
 	// There are two cases: cutbuffer only one paragraph or many
 	if (!buf->next()) {
 		// only within a paragraph
@@ -251,7 +252,9 @@ bool CutAndPaste::pasteSelection(Paragraph ** par, Paragraph ** endpar,
 		buf = tmpbuf;
 		*endpar = tmppar->next();
 		pos = tmppos;
-	} else {
+	} else
+#endif
+	{
 		// many paragraphs
 		
 		// make a copy of the simple cut_buffer
