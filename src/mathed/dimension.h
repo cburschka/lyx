@@ -1,10 +1,28 @@
+// -*- C++ -*-
+
+/** 
+ *  \file dimension.h
+ *
+ *  This file is part of LyX, the document processor.
+ *  Licence details can be found in the file COPYING.
+ *
+ *  \author André Pönitz
+ *
+ *  Full author contact details are available in file CREDITS.
+ */
+
 #ifndef DIMENSION_H
 #define DIMENSION_H
+
+#ifdef __GNUG__
+#pragma interface
+#endif
 
 #include <iosfwd>
 
 class LyXFont;
 
+/// Simple wrapper around three ints
 class Dimension {
 public:
 	/// constructor

@@ -1,5 +1,5 @@
 // -*- C++ -*-
-/*
+/**
  *  File:        math_inset.h
  *  Purpose:     Declaration of insets for mathed
  *  Author:      Alejandro Aguilar Sierra <asierra@servidor.unam.mx>

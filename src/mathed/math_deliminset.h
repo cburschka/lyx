@@ -10,7 +10,9 @@
 #endif
 
 /** A delimiter
-    \author Alejandro Aguilar Sierra
+ *  \author Alejandro Aguilar Sierra
+ *
+ * Full author contact details are available in file CREDITS
 */
 
 class MathDelimInset : public MathNestInset {

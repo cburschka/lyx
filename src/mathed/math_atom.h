@@ -7,6 +7,14 @@
 #pragma interface
 #endif
 
+/** 
+ * Wrapper for MathInset * with copy-semantics
+ *
+ * \author André Pönitz
+ *
+ * Full author contact details are available in file CREDITS
+ */
+
 /**
 The 'atom' is the major blob in math typesetting.  And 'atom' consists
 of a nucleus, an optional superscript, and an optional subscript.

@@ -1,15 +1,13 @@
 // -*- C++ -*-
+
 /*
- *  File:        formulabase.h
- *  Purpose:     Common parts of the math LyX insets
- *  Author:      André Pönitz
- *  Created:     May 2001
- *  Description: Allows the edition of math paragraphs inside Lyx.
+ * Common parts of the math LyX insets
+ * \author  André Pönitz
  *
- *  Copyright: 2001, The LyX Project
+ * Full author contact details are available in file CREDITS
  *
- *   You are free to use and modify this code under the terms of
- *   the GNU General Public Licence version 2 or later.
+ * You are free to use and modify this code under the terms of
+ * the GNU General Public Licence version 2 or later.
  */
 
 #ifndef INSET_FORMULABASE_H

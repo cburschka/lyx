@@ -213,8 +213,11 @@ void MathScriptInset::draw(MathPainterInfo & pi, int x, int y) const
 {
 	if (nuc().size())
 		nuc().draw(pi, x + dxx(), y);
-	else if (editing())
-		drawStr(pi, pi.base.font, x + dxx(), y, ".");
+	else {
+		nuc().setXY(x + dxx(), y);
+		if (editing())
+			drawStr(pi, pi.base.font, x + dxx(), y, ".");
+	}
 	MathScriptChanger dummy(pi.base);
 	if (hasUp())
 		up().draw(pi, x + dx1(), y - dy1());

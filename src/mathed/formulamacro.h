@@ -1,17 +1,15 @@
 // -*- C++ -*-
+
 /*
- *  File:        formula.h
- *  Purpose:     Declaration of formula inset
- *  Author:      Alejandro Aguilar Sierra <asierra@servidor.unam.mx>
- *  Created:     January 1996
- *  Description: Allows the edition of math paragraphs inside Lyx.
+ *  Main LyX Inset for defining math macros
  *
- *  Copyright: 1996, Alejandro Aguilar Sierra
+ *  \author Alejandro Aguilar Sierra
+ *  \author André Pönitz
  *
- *  Version: 0.4, Lyx project.
+ *  Full author contact details are available in file CREDITS
  *
- *   You are free to use and modify this code under the terms of
- *   the GNU General Public Licence version 2 or later.
+ *  You are free to use and modify this code under the terms of
+ *  the GNU General Public Licence version 2 or later.
  */
 
 #ifndef INSET_FORMULA_MACRO_H

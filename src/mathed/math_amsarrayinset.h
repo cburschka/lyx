@@ -8,10 +8,13 @@
 #pragma interface
 #endif
 
-//
-// used for [pbvV]matrix, psmatrix etc
-//
-
+/** 
+ * Inset for things like [pbvV]matrix, psmatrix etc
+ *
+ * \author André Pönitz
+ *
+ * Full author contact details are available in file CREDITS
+ */
 
 class MathAMSArrayInset : public MathGridInset {
 public:

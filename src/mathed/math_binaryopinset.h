@@ -10,7 +10,9 @@
 #endif
 
 /** An inset for multiplication
-    \author André Pönitz
+ *  \author André Pönitz
+ *
+ * Full author contact details are available in file CREDITS
  */
 class MathBinaryOpInset : public MathNestInset {
 public:

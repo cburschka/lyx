@@ -1,5 +1,5 @@
 // -*- C++ -*-
-/*
+/**
  *  File:        math_cursor.h
  *  Purpose:     Declaration of interaction classes for mathed
  *  Author:      Alejandro Aguilar Sierra <asierra@servidor.unam.mx>

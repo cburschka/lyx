@@ -9,7 +9,9 @@
 #endif
 
 /** A macro argument
-    \author Alejandro Aguilar Sierra
+ *  \author Alejandro Aguilar Sierra
+ *
+ * Full author contact details are available in file CREDITS
 */
 class MathMacroArgument : public MathNestInset {
 public:

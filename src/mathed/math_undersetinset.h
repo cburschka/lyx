@@ -1,16 +1,21 @@
 // -*- C++ -*-
+
+/** Underset objects
+ *  \author André Pönitz
+ *
+ *  Full author contact details are available in file CREDITS
+ */
+
 #ifndef MATH_UNDERSETINSET_H
 #define MATH_UNDERSETINSET_H
-
-#include "math_fracbase.h"
 
 #ifdef __GNUG__
 #pragma interface
 #endif
 
-/** Underset objects
-    \author André Pönitz
- */
+#include "math_fracbase.h"
+
+/// Inset for underset
 class MathUndersetInset : public MathFracbaseInset {
 public:
 	///

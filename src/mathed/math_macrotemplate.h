@@ -12,7 +12,9 @@
 class MathMacro;
 
 /** This class contains the macro definition
-    \author Alejandro Aguilar Sierra
+ *  \author Alejandro Aguilar Sierra
+ *
+ * Full author contact details are available in file CREDITS
  */
 //class MathMacroTemplate : public MathInset, boost::noncopyable
 

@@ -379,7 +379,7 @@ void MathArray::towards(int & x, int & y) const
 }
 
 
-void MathArray::setXY(int x, int y)
+void MathArray::setXY(int x, int y) const
 {
 	xo_ = x;
 	yo_ = y;

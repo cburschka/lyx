@@ -10,6 +10,8 @@
 
 /** This provides an interface between "LyX insets" and "LyX math insets"
  *  \author André Pönitz
+ *
+ * Full author contact details are available in file CREDITS
  */
 
 class LaTeXFeatures;

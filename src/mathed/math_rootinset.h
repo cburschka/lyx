@@ -1,5 +1,5 @@
 // -*- C++ -*-
-/*
+/**
  *  File:        math_root.h
  *  Purpose:     Declaration of the root object
  *  Author:      Alejandro Aguilar Sierra <asierra@servidor.unam.mx>
@@ -22,7 +22,9 @@
 #endif
 
 /** The general n-th root inset.
-    \author Alejandro Aguilar Sierra
+ *  \author Alejandro Aguilar Sierra
+ *
+ * Full author contact details are available in file CREDITS
     \version January 1999
  */
 class MathRootInset : public MathNestInset {

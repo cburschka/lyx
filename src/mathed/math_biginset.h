@@ -1,18 +1,27 @@
 // -*- C++ -*-
+
+/** 
+ *  \file math_biginset.h
+ *
+ *  This file is part of LyX, the document processor.
+ *  Licence details can be found in the file COPYING.
+ *
+ *  \author André Pönitz
+ *
+ *  Full author contact details are available in file CREDITS.
+ */
+
 #ifndef MATH_BIGINSET_H
 #define MATH_BIGINSET_H
-
-#include "math_diminset.h"
-#include "LString.h"
 
 #ifdef __GNUG__
 #pragma interface
 #endif
 
-/** Inset for \bigl & Co.
-    \author André Pönitz
- */
+#include "math_diminset.h"
+#include "LString.h"
 
+/// Inset for \bigl & Co.
 class MathBigInset : public MathDimInset {
 public:
 	///
@@ -20,7 +29,7 @@ public:
 	///
 	MathInset * clone() const;
 	///
-	void draw(MathPainterInfo &, int x, int y) const;
+	void draw(MathPainterInfo & pi, int x, int y) const;
 	///
 	void write(WriteStream & os) const;
 	///

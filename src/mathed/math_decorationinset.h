@@ -10,7 +10,9 @@
 #endif
 
 /** Decorations and accents over (below) a math object
-    \author Alejandro Aguilar Sierra
+ *  \author Alejandro Aguilar Sierra
+ *
+ * Full author contact details are available in file CREDITS
  */
 
 class latexkeys;

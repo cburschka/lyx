@@ -1,3 +1,6 @@
+#ifdef __GNUG__
+#pragma implementation
+#endif
 
 #include "command_inset.h"
 #include "math_mathmlstream.h"

@@ -9,7 +9,9 @@
 #endif
 
 /** for proof.sty's \infer
-    \author André Poenitz
+ *  \author André Poenitz
+ *
+ * Full author contact details are available in file CREDITS
  */
 class MathInferInset : public MathGridInset {
 public:

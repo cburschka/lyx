@@ -1,14 +1,16 @@
 // -*- C++ -*-
-/*
+/**
  *   You are free to use and modify this code under the terms of
  *   the GNU General Public Licence version 2 or later.
  */
 
 /** \class MathArray
     \brief Low level container for math insets
-    \author Alejandro Aguilar Sierra
-    \author André Pönitz
-    \author Lars Gullik Bjønnes
+ *  \author Alejandro Aguilar Sierra
+ *  \author André Pönitz
+ *  \author Lars Gullik Bjønnes
+ *
+ * Full author contact details are available in file CREDITS
     \version February 2001
   */
 
@@ -125,7 +127,7 @@ public:
 	/// access to cached y coordinate of mid point of last drawing
 	int ym() const { return yo_ + (dim_.d - dim_.a) / 2; }
 	/// write access to coordinate;
-	void setXY(int x, int y);
+	void setXY(int x, int y) const;
 	/// returns x coordinate of given position in the array
 	int pos2x(size_type pos) const;
 	/// returns position of given x coordinate

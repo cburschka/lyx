@@ -9,7 +9,9 @@
 #endif
 
 /** Fraction like objects (frac, binom)
-    \author Alejandro Aguilar Sierra
+ *  \author Alejandro Aguilar Sierra
+ *
+ * Full author contact details are available in file CREDITS
  */
 class MathFracInset : public MathFracbaseInset {
 public:

@@ -10,7 +10,9 @@
 #endif
 
 /** Extra nesting
-    \author André Pönitz
+ *  \author André Pönitz
+ *
+ * Full author contact details are available in file CREDITS
 */
 
 class latexkeys;

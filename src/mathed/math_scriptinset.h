@@ -9,7 +9,9 @@
 #endif
 
 /** Inset for super- and subscripts
-    \author André Pönitz
+ *  \author André Pönitz
+ *
+ * Full author contact details are available in file CREDITS
  */
 
 class MathScriptInset : public MathNestInset {

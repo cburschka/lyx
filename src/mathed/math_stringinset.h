@@ -11,6 +11,8 @@
 /** Some collection of chars with similar properties
  *  maily for math-extern
  *  \author André Pönitz
+ *
+ * Full author contact details are available in file CREDITS
  */
 
 class MathStringInset : public MathDimInset {

@@ -1,5 +1,5 @@
 // -*- C++ -*-
-/*
+/**
  *  File:        math_parser.h
  *  Purpose:     Declaration of parsing utilities for mathed
  *  Author:      Alejandro Aguilar Sierra <asierra@servidor.unam.mx>

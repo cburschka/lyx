@@ -9,7 +9,9 @@
 #endif
 
 /** The square root inset.
-    \author Alejandro Aguilar Siearra
+ *  \author Alejandro Aguilar Siearra
+ *
+ * Full author contact details are available in file CREDITS
  */
 class MathSqrtInset : public MathNestInset {
 public:

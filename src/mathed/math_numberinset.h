@@ -11,6 +11,8 @@
 /** Some inset that "is" a number
  *  maily for math-extern
  *  \author André Pönitz
+ *
+ * Full author contact details are available in file CREDITS
  */
 
 class MathNumberInset : public MathDimInset {

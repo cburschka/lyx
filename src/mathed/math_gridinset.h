@@ -13,7 +13,9 @@
 /** Gridded math inset base class.
     This is the base to all grid-like editable math objects
     like array and eqnarray.
-    \author André Pönitz 2001
+ *  \author André Pönitz 2001
+ *
+ * Full author contact details are available in file CREDITS
 */
 
 class MathGridInset : public MathNestInset {

@@ -1,5 +1,5 @@
 // -*- C++ -*-
-/*
+/**
  *  File:        math_macro.h
  *  Purpose:     Declaration of macro class for mathed
  *  Author:      Alejandro Aguilar Sierra <asierra@servidor.unam.mx>
@@ -30,7 +30,9 @@ class MathMacroTemplate;
 
 
 /** This class contains the data for a macro
-    \author Alejandro Aguilar Sierra <asierra@servidor.unam.mx>
+ *  \author Alejandro Aguilar Sierra 
+ *
+ * Full author contact details are available in file CREDITS
     \version November 1996
  */
 class MathMacro : public MathNestInset {
