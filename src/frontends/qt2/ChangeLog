@@ -1,3 +1,9 @@
+2004-08-09  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* FileDialog.C: #define USE_NATIVE_FILEDIALOG under LyX/Mac
+	(save, open, opendir): when USE_NATIVE_FILEDIALOG
+	is defined, use QFileDialog::getOpenFileName and friends.
+
 2004-08-08  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* Makefile.am (AM_CXXFLAGS): do not disable QTranslator code

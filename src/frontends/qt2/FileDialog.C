@@ -4,6 +4,7 @@
  * Licence details can be found in the file COPYING.
  *
  * \author John Levon
+ * \author Jean-Marc Lasgouttes
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -20,6 +21,24 @@
 
 #include "support/globbing.h"
 
+/** when this is defined, the code will use
+ * QFileDialog::getOpenFileName and friends to create filedialogs.
+ * Effects:
+ * - the dialog does not use the quick directory buttons (Button
+ *   parameters);
+ * - with Qt/Mac or Qt/Win, the dialogs native to the environment are used.
+ *
+ * Therefore there is a tradeoff in enabling or disabling this (JMarc)
+ */
+#ifdef Q_WS_MACX
+#define USE_NATIVE_FILEDIALOG 1
+#endif
+
+#ifdef USE_NATIVE_FILEDIALOG
+#include <qapplication.h>
+#include "support/filetools.h"
+using lyx::support::MakeAbsPath;
+#endif
 
 using lyx::support::FileFilterList;
 
@@ -52,24 +71,33 @@ FileDialog::Result const FileDialog::save(string const & path,
 					  FileFilterList const & filters,
 					  string const & suggested)
 {
-	LyXFileDialog dlg(path, filters, title_, private_->b1, private_->b2);
 	lyxerr[Debug::GUI] << "Select with path \"" << path
 			   << "\", mask \"" << filters.str(false)
-			   << "\", suggested \"" << suggested << endl;
+			   << "\", suggested \"" << suggested << '"' << endl;
+	FileDialog::Result result;
+	result.first = FileDialog::Chosen;
 
+#ifdef USE_NATIVE_FILEDIALOG
+	string const startsWith = MakeAbsPath(suggested, path);
+	result.second = fromqstr(
+		QFileDialog::getSaveFileName(toqstr(startsWith),
+					     toqstr(filters.str(true)),
+					     qApp->focusWidget() ? qApp->focusWidget() : qApp->mainWidget(),
+					     title_.c_str()));
+#else
+	LyXFileDialog dlg(path, filters, title_, private_->b1, private_->b2);
 	dlg.setMode(QFileDialog::AnyFile);
 
 	if (!suggested.empty())
 		dlg.setSelection(toqstr(suggested));
 
-	FileDialog::Result result;
 	lyxerr[Debug::GUI] << "Synchronous FileDialog: " << endl;
-	result.first = FileDialog::Chosen;
 	int res = dlg.exec();
 	lyxerr[Debug::GUI] << "result " << res << endl;
 	if (res == QDialog::Accepted)
 		result.second = fromqstr(dlg.selectedFile());
 	dlg.hide();
+#endif
 	return result;
 }
 
@@ -78,22 +106,32 @@ FileDialog::Result const FileDialog::open(string const & path,
 					  FileFilterList const & filters,
 					  string const & suggested)
 {
-	LyXFileDialog dlg(path, filters, title_, private_->b1, private_->b2);
 	lyxerr[Debug::GUI] << "Select with path \"" << path
 			   << "\", mask \"" << filters.str(false)
-			   << "\", suggested \"" << suggested << endl;
+			   << "\", suggested \"" << suggested << '"' << endl;
+	FileDialog::Result result;
+	result.first = FileDialog::Chosen;
+
+#ifdef USE_NATIVE_FILEDIALOG
+	string const startsWith = MakeAbsPath(suggested, path);
+	result.second = fromqstr(
+		QFileDialog::getOpenFileName(toqstr(startsWith),
+					     toqstr(filters.str(true)),
+					     qApp->focusWidget() ? qApp->focusWidget() : qApp->mainWidget(),
+					     title_.c_str()));
+#else
+	LyXFileDialog dlg(path, filters, title_, private_->b1, private_->b2);
 
 	if (!suggested.empty())
 		dlg.setSelection(toqstr(suggested));
 
-	FileDialog::Result result;
 	lyxerr[Debug::GUI] << "Synchronous FileDialog: " << endl;
-	result.first = FileDialog::Chosen;
 	int res = dlg.exec();
 	lyxerr[Debug::GUI] << "result " << res << endl;
 	if (res == QDialog::Accepted)
 		result.second = fromqstr(dlg.selectedFile());
 	dlg.hide();
+#endif
 	return result;
 }
 
@@ -101,24 +139,33 @@ FileDialog::Result const FileDialog::open(string const & path,
 FileDialog::Result const FileDialog::opendir(string const & path,
 					    string const & suggested)
 {
+	lyxerr[Debug::GUI] << "Select with path \"" << path
+			   << "\", suggested \"" << suggested << '"' << endl;
+	FileDialog::Result result;
+	result.first = FileDialog::Chosen;
+
+#ifdef USE_NATIVE_FILEDIALOG
+	string const startsWith = MakeAbsPath(suggested, path);
+	result.second = fromqstr(
+		QFileDialog::getExistingDirectory(toqstr(startsWith),
+						  qApp->focusWidget() ? qApp->focusWidget() : qApp->mainWidget(),
+						  title_.c_str()));
+#else
 	FileFilterList const filter(_("Directories"));
 
 	LyXFileDialog dlg(path, filter, title_, private_->b1, private_->b2);
-	lyxerr[Debug::GUI] << "Select with path \"" << path
-			   << "\", suggested \"" << suggested << endl;
 
 	dlg.setMode(QFileDialog::DirectoryOnly);
 
 	if (!suggested.empty())
 		dlg.setSelection(toqstr(suggested));
 
-	FileDialog::Result result;
 	lyxerr[Debug::GUI] << "Synchronous FileDialog: " << endl;
-	result.first = FileDialog::Chosen;
 	int res = dlg.exec();
 	lyxerr[Debug::GUI] << "result " << res << endl;
 	if (res == QDialog::Accepted)
 		result.second = fromqstr(dlg.selectedFile());
 	dlg.hide();
+#endif
 	return result;
 }
