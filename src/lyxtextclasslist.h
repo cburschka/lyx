@@ -42,18 +42,14 @@ public:
 	///
 	const_iterator end() const { return classlist.end(); }
 
-	/** Gets textclass number from name.
-	    Returns -1 if textclass name does not exist
-	*/
+	/// Gets textclass number from name, -1 if textclass name does not exist
 	std::pair<bool, lyx::textclass_type> const
 	NumberOfClass(string const & textclass) const;
 
 	///
 	LyXTextClass const & operator[](lyx::textclass_type textclass) const;
 
-	/** Read textclass list.
-	    Returns false if this fails
-	*/
+	/// Read textclass list.  Returns false if this fails.
 	bool Read();
 private:
 	///

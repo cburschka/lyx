@@ -317,8 +317,7 @@ void LyXText::computeBidiTables(Buffer const * buf, Row * row) const
 	bool rtl0 = false;
 	pos_type const main_body = beginningOfMainBody(buf, row->par());
 
-	for (pos_type lpos = bidi_start;
-	     lpos <= bidi_end; ++lpos) {
+	for (pos_type lpos = bidi_start; lpos <= bidi_end; ++lpos) {
 		bool is_space = row->par()->isLineSeparator(lpos);
 		pos_type const pos =
 			(is_space && lpos + 1 <= bidi_end &&
@@ -433,6 +432,7 @@ bool LyXText::isBoundary(Buffer const * buf, Paragraph * par,
 		: par->isRightToLeftPar(buf->params);
 	return rtl != rtl2;
 }
+
 
 void LyXText::drawNewline(DrawRowParams & p, pos_type const pos)
 {

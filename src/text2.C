@@ -915,9 +915,9 @@ void LyXText::fullRebreak(BufferView * bview)
 // important for the screen
 
 
-/* the cursor set functions have a special mechanism. When they
- * realize, that you left an empty paragraph, they will delete it.
- * They also delete the corresponding row */
+// the cursor set functions have a special mechanism. When they
+// realize, that you left an empty paragraph, they will delete it.
+// They also delete the corresponding row 
 
 // need the selection cursor:
 void LyXText::setSelection(BufferView * bview)
@@ -1147,11 +1147,11 @@ pos_type LyXText::beginningOfMainBody(Buffer const * buf,
 }
 
 
-/* the DTP switches for paragraphs. LyX will store them in the
-* first physicla paragraph. When a paragraph is broken, the top settings
-* rest, the bottom settings are given to the new one. So I can make shure,
-* they do not duplicate themself and you cannnot make dirty things with
-* them!  */
+// the DTP switches for paragraphs. LyX will store them in the first
+// physicla paragraph. When a paragraph is broken, the top settings rest,
+// the bottom settings are given to the new one. So I can make shure,
+// they do not duplicate themself and you cannnot make dirty things with
+// them!
 
 void LyXText::setParagraph(BufferView * bview,
 			   bool line_top, bool line_bottom,
@@ -1339,9 +1339,7 @@ void LyXText::setCounter(Buffer const * buf, Paragraph * par) const
 		par->enumdepth = par->depthHook(par->getDepth())->enumdepth;
 		par->setCounter(6 + par->enumdepth,
 				par->depthHook(par->getDepth())->getCounter(6 + par->enumdepth));
-		/* reset the counters.
-		 * A depth change is like a breaking layout
-		 */
+		// reset the counters.A depth change is like a breaking layout
 		for (int i = 6 + par->enumdepth + 1; i < 10; ++i)
 			par->setCounter(i, 0);
 	}

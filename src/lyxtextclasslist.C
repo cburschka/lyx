@@ -129,22 +129,17 @@ bool LyXTextClassList::Read ()
 			lyxerr[Debug::TCLASS] << "Fname: " << fname << endl;
 			if (lex.next()) {
 				string const clname = lex.getString();
-				lyxerr[Debug::TCLASS]
-					<< "Clname: " << clname << endl;
+				lyxerr[Debug::TCLASS] << "Clname: " << clname << endl;
 				if (lex.next()) {
-					      string const desc = lex.getString();
-					      lyxerr[Debug::TCLASS]
-						      << "Desc: " << desc << endl;
-					      // This code is run when we have
-					      // fname, clname and desc
-					      LyXTextClass tmpl(fname,
-								clname,
-								desc);
-					      if (lyxerr.
-						  debugging(Debug::TCLASS)) {
-						      tmpl.load();
-					      }
-					      Add (tmpl);
+					string const desc = lex.getString();
+					lyxerr[Debug::TCLASS] << "Desc: " << desc << endl;
+					// This code is run when we have
+					// fname, clname and desc
+					LyXTextClass tmpl(fname, clname, desc);
+					if (lyxerr.debugging(Debug::TCLASS)) {
+						tmpl.load();
+					}
+					Add(tmpl);
 				}
 			}
 		}
