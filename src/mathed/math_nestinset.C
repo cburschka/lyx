@@ -924,17 +924,17 @@ void MathNestInset::lfunMousePress(LCursor & cur, FuncRequest & cmd)
 void MathNestInset::lfunMouseMotion(LCursor & cur, FuncRequest & cmd)
 {
 	// only select with button 1
-	if (cmd.button() != mouse_button::button1)
-		return;
+	if (cmd.button() == mouse_button::button1) {
+		LCursor & bvcur = cur.bv().cursor();
+		if (abs(cmd.x - first_x) + abs(cmd.y - first_y) > 4
+        && cur.size() <= bvcur.anchor_.size()) {
+			first_x = cmd.x;
+			first_y = cmd.y;
 
-	if (abs(cmd.x - first_x) < 2 && abs(cmd.y - first_y) < 2)
-		return;
-
-	first_x = cmd.x;
-	first_y = cmd.y;
-
-	cur.bv().cursor().setCursor(cur);
-	cur.bv().cursor().selection() = true;
+			bvcur.setCursor(cur);
+			bvcur.selection() = true;
+		}
+	}
 }
 
 
@@ -943,7 +943,6 @@ void MathNestInset::lfunMouseRelease(LCursor & cur, FuncRequest & cmd)
 	lyxerr << "lfunMouseRelease: buttons: " << cmd.button() << endl;
 
 	if (cmd.button() == mouse_button::button1) {
-		// try to dispatch to enclosed insets first
 		//cur.bv().stuffClipboard(cur.grabSelection());
 		return;
 	}

@@ -1060,43 +1060,6 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		}
 		break;
 
-	case LFUN_MOUSE_MOTION: {
-		// Only use motion with button 1
-		//if (cmd.button() != mouse_button::button1)
-		//	return false;
-		// We want to use only motion events for which
-		// the button press event was on the drawing area too.
-		if (!selection_possible) {
-			lyxerr[Debug::ACTION] << "BufferView::Pimpl::"
-				"dispatch: no selection possible\n";
-			lyxerr << "BufferView::Pimpl::dispatch: no selection possible\n";
-			break;
-		}
-
-		// ignore motions deeper nested than the real anchor
-		LCursor & bvcur = cur.bv().cursor();
-		if (bvcur.selection() && bvcur.anchor_.size() < cur.size())
-			break;
-
-		CursorSlice old = cur.top();
-		setCursorFromCoordinates(cur, cmd.x, cmd.y);
-
-		// This is to allow jumping over large insets
-		// FIXME: shouldn't be top-text-specific
-		if (isMainText() && cur.top() == old) {
-			if (cmd.y - bv->top_y() >= bv->workHeight())
-				cursorDown(cur);
-			else if (cmd.y - bv->top_y() < 0)
-				cursorUp(cur);
-		}
-
-		// don't set anchor_
-		bv->cursor().setCursor(cur);
-		bv->cursor().selection() = true;
-		lyxerr << "MOTION: " << bv->cursor() << endl;
-		break;
-	}
-
 	// Single-click on work area
 	case LFUN_MOUSE_PRESS: {
 		// Right click on a footnote flag opens float menu
@@ -1148,6 +1111,43 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 			selection_possible = false;
 		}
 
+		break;
+	}
+
+	case LFUN_MOUSE_MOTION: {
+		// Only use motion with button 1
+		//if (cmd.button() != mouse_button::button1)
+		//	return false;
+		// We want to use only motion events for which
+		// the button press event was on the drawing area too.
+		if (!selection_possible) {
+			lyxerr[Debug::ACTION] << "BufferView::Pimpl::"
+				"dispatch: no selection possible\n";
+			lyxerr << "BufferView::Pimpl::dispatch: no selection possible\n";
+			break;
+		}
+
+		// ignore motions deeper nested than the real anchor
+		LCursor & bvcur = cur.bv().cursor();
+		if (bvcur.anchor_.size() < cur.size())
+			break;
+
+		CursorSlice old = cur.top();
+		setCursorFromCoordinates(cur, cmd.x, cmd.y);
+
+		// This is to allow jumping over large insets
+		// FIXME: shouldn't be top-text-specific
+		if (isMainText() && cur.top() == old) {
+			if (cmd.y - bv->top_y() >= bv->workHeight())
+				cursorDown(cur);
+			else if (cmd.y - bv->top_y() < 0)
+				cursorUp(cur);
+		}
+
+		// don't set anchor_
+		bv->cursor().setCursor(cur);
+		bv->cursor().selection() = true;
+		lyxerr << "MOTION: " << bv->cursor() << endl;
 		break;
 	}
 
