@@ -24,6 +24,7 @@
 #include "LColor.h"
 #include "paragraph.h"
 #include "lyxcursor.h"
+
 #include <boost/smart_ptr.hpp>
 
 class Painter;
@@ -99,7 +100,7 @@ public:
 	///
 	void draw(BufferView *, LyXFont const &, int , float &, bool) const;
 	///
-	void update(BufferView *, LyXFont const &, bool =false);
+	void update(BufferView *, LyXFont const &, bool = false);
 	///
 	void setUpdateStatus(BufferView *, int what) const;
 	///
@@ -152,7 +153,7 @@ public:
 	///
 	void toggleInsetCursor(BufferView *);
 	///
-	void showInsetCursor(BufferView *, bool show=true);
+	void showInsetCursor(BufferView *, bool show = true);
 	///
 	void hideInsetCursor(BufferView *);
 	///
@@ -201,19 +202,19 @@ public:
 	///
 	bool nodraw() const;
 	///
-	int scroll(bool recursive=true) const;
+	int scroll(bool recursive = true) const;
 	///
-	void scroll(BufferView *bv, float sx) const {
+	void scroll(BufferView * bv, float sx) const {
 		UpdatableInset::scroll(bv, sx);
 	}
 	///
-	void scroll(BufferView *bv, int offset) const {
+	void scroll(BufferView * bv, int offset) const {
 		UpdatableInset::scroll(bv, offset);
 	}
 	///
-	void selectAll(BufferView *bv);
+	void selectAll(BufferView * bv);
 	///
-	void clearSelection(BufferView *bv);
+	void clearSelection(BufferView * bv);
 	///
 	Paragraph * getParFromID(int id) const;
 	///
@@ -230,14 +231,18 @@ public:
 	void paragraph(Paragraph *);
 	///
 	bool allowSpellcheck() { return true; }
-	string const selectNextWordToSpellcheck(BufferView *, float & value) const;
+	///
+	string const selectNextWordToSpellcheck(BufferView *,
+						float & value) const;
 	void selectSelectedWord(BufferView *);
+	///
 	void toggleSelection(BufferView *, bool kill_selection);
 	///
 	bool searchForward(BufferView *, string const &,
-	                   bool const & = true, bool const & = false);
+	                   bool = true, bool = false);
+	///
 	bool searchBackward(BufferView *, string const &,
-	                    bool const & = true, bool const & = false);
+	                    bool = true, bool = false);
 	///
 	bool checkInsertChar(LyXFont &);
 	///
@@ -263,14 +268,17 @@ protected:
 	LColor::color frame_color;
 
 private:
+	///
 	struct InnerCache {
+		///
 		InnerCache(boost::shared_ptr<LyXText>);
-
+		///
 		boost::shared_ptr<LyXText> text;
+		///
 		bool remove;
 	};
 	///
-	typedef std::map<BufferView *, struct InnerCache > Cache;
+	typedef std::map<BufferView *, InnerCache> Cache;
 	///
 	typedef Cache::value_type value_type;
 	///
@@ -325,6 +333,7 @@ private:
 	void clearInset(BufferView *, int baseline, bool & cleared) const;
 	///
 	void saveLyXTextState(LyXText *) const;
+	///
 	void restoreLyXTextState(BufferView *, LyXText *) const;
 	///
 	void reinitLyXText() const;
@@ -373,7 +382,7 @@ private:
 	///
 	mutable boost::shared_ptr<LyXText> cached_text;
 	///
-	mutable struct save_state {
+	struct save_state {
 		Paragraph * lpar;
 		Paragraph * selstartpar;
 		Paragraph * selendpar;
@@ -386,7 +395,10 @@ private:
 		bool selection;
 		bool mark_set;
 		bool refresh;
-	} sstate;
+	};
+	///
+	mutable save_state sstate;
+	
 	///
 	// this is needed globally so we know that we're using it actually and
 	// so the LyXText-Cache is not erased until used!

@@ -10,12 +10,6 @@
 
 #include <config.h>
 
-#include <fstream>
-#include <algorithm>
-
-#include <cstdlib>
-//#include <signal.h>
-
 #ifdef __GNUG__
 #pragma implementation
 #endif
@@ -32,15 +26,11 @@
 #include "layout.h"
 #include "LaTeXFeatures.h"
 #include "Painter.h"
-#include "frontends/Alert.h"
 #include "lyxtext.h"
 #include "lyxcursor.h"
 #include "CutAndPaste.h"
 #include "font.h"
 #include "LColor.h"
-#include "support/textutils.h"
-#include "support/LAssert.h"
-#include "support/lstrings.h"
 #include "lyxrow.h"
 #include "lyxrc.h"
 #include "intl.h"
@@ -52,6 +42,17 @@
 #include "ParagraphParameters.h"
 #include "undo_funcs.h"
 #include "lyxfind.h"
+
+#include "frontends/Alert.h"
+
+#include "support/textutils.h"
+#include "support/LAssert.h"
+#include "support/lstrings.h"
+
+#include <fstream>
+#include <algorithm>
+#include <cstdlib>
+//#include <csignal>
 
 using std::ostream;
 using std::ifstream;
@@ -919,7 +920,10 @@ void InsetText::insetButtonPress(BufferView * bv, int x, int y, int button)
 	hideInsetCursor(bv);
 	if (the_locking_inset) {
 		if (the_locking_inset == inset) {
-			the_locking_inset->insetButtonPress(bv,x-inset_x,y-inset_y,button);
+			the_locking_inset->insetButtonPress(bv,
+							    x - inset_x,
+							    y - inset_y,
+							    button);
 			no_selection = false;
 			return;
 		} else if (inset) {
@@ -928,7 +932,8 @@ void InsetText::insetButtonPress(BufferView * bv, int x, int y, int button)
 			inset_x = cx(bv) - top_x + drawTextXOffset;
 			inset_y = cy(bv) + drawTextYOffset;
 			the_locking_inset = static_cast<UpdatableInset*>(inset);
-			inset->insetButtonPress(bv, x - inset_x, y - inset_y, button);
+			inset->insetButtonPress(bv, x - inset_x,
+						y - inset_y, button);
 			inset->edit(bv, x - inset_x, y - inset_y, button);
 			if (the_locking_inset)
 				updateLocal(bv, CURSOR, false);
@@ -968,10 +973,13 @@ void InsetText::insetButtonPress(BufferView * bv, int x, int y, int button)
 			lt = getLyXText(bv);
 			clear = true;
 		}
-		lt->setCursorFromCoordinates(bv, x-drawTextXOffset, y + insetAscent);
+
+		lt->setCursorFromCoordinates(bv, x - drawTextXOffset,
+					     y + insetAscent);
 		// set the selection cursor!
 		lt->selection.cursor = lt->cursor;
 		lt->cursor.x_fix(lt->cursor.x());
+
 		if (lt->selection.set()) {
 			lt->clearSelection();
 			updateLocal(bv, FULL, false);
@@ -2540,7 +2548,7 @@ void InsetText::toggleSelection(BufferView * bv, bool kill_selection)
 
 
 bool InsetText::searchForward(BufferView * bv, string const & str,
-                              bool const & cs, bool const & mw)
+                              bool cs, bool mw)
 {
 	if (the_locking_inset) {
 		if (the_locking_inset->searchForward(bv, str, cs, mw))
@@ -2578,7 +2586,7 @@ bool InsetText::searchForward(BufferView * bv, string const & str,
 }
 
 bool InsetText::searchBackward(BufferView * bv, string const & str,
-                               bool const & cs, bool const & mw)
+                               bool cs, bool mw)
 {
 	if (the_locking_inset)
 		if (the_locking_inset->searchBackward(bv, str, cs, mw))

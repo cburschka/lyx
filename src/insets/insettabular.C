@@ -10,12 +10,6 @@
 
 #include <config.h>
 
-#include <fstream>
-#include <algorithm>
-
-#include <cstdlib>
-#include <map>
-//#include <signal.h>
 #ifdef __GNUG__
 #pragma implementation
 #endif
@@ -33,16 +27,25 @@
 #include "lyx_gui_misc.h"
 #include "LyXView.h"
 #include "insets/insettext.h"
-#include "frontends/Dialogs.h"
-#include "frontends/Alert.h"
 #include "debug.h"
 #include "WorkArea.h"
 #include "gettext.h"
 #include "language.h"
 #include "BufferView.h"
 #include "undo_funcs.h"
+#include "lyxlength.h"
+
+#include "frontends/Dialogs.h"
+#include "frontends/Alert.h"
+
 #include "support/LAssert.h"
 #include "support/lstrings.h"
+
+#include <fstream>
+#include <algorithm>
+#include <cstdlib>
+#include <map>
+//#include <signal.h>
 
 using std::ostream;
 using std::ifstream;
@@ -53,8 +56,9 @@ using std::max;
 
 namespace {
 
-const int ADD_TO_HEIGHT = 2;
-const int ADD_TO_TABULAR_WIDTH = 2;
+int const ADD_TO_HEIGHT = 2;
+int const ADD_TO_TABULAR_WIDTH = 2;
+
 ///
 LyXTabular * paste_tabular = 0;
 
@@ -64,7 +68,6 @@ struct TabularFeature {
 	string feature;
 };
 
-//tabular_features * tabularFeatures = 0;
 
 TabularFeature tabularFeature[] =
 {
@@ -183,9 +186,6 @@ void InsetTabular::read(Buffer const * buf, LyXLex & lex)
 {
 	bool const old_format = (lex.getString() == "\\LyXTable");
 
-	//if (tabular)
-	//delete tabular;
-	//tabular = new LyXTabular(buf, this, lex);
 	tabular.reset(new LyXTabular(buf, this, lex));
 
 	need_update = INIT;
@@ -400,7 +400,7 @@ void InsetTabular::draw(BufferView * bv, LyXFont const & font, int baseline,
 	x += width(bv, font);
 	if (bv->text->status() == LyXText::CHANGED_IN_DRAW) {
 		int i = 0;
-		for(Inset * inset=owner(); inset; ++i)
+		for(Inset * inset = owner(); inset; ++i)
 			inset = inset->owner();
 		if (calculate_dimensions_of_cells(bv, font, false))
 			need_update = INIT;
@@ -460,7 +460,8 @@ void InsetTabular::drawCellSelection(Painter & pain, int x, int baseline,
 	
 	int rs = tabular->row_of_cell(sel_cell_start);
 	int re = tabular->row_of_cell(sel_cell_end);
-	if (rs > re) swap(rs, re);
+	if (rs > re)
+		swap(rs, re);
 	
 	if ((column >= cs) && (column <= ce) && (row >= rs) && (row <= re)) {
 		int w = tabular->GetWidthOfColumn(cell);
@@ -903,7 +904,7 @@ InsetTabular::localDispatch(BufferView * bv, kb_action action,
 	}
 
 	hideInsetCursor(bv);
-	result=DISPATCHED;
+	result = DISPATCHED;
 	switch (action) {
 		// --- Cursor Movements ----------------------------------
 	case LFUN_RIGHTSEL: {
@@ -1053,10 +1054,8 @@ InsetTabular::localDispatch(BufferView * bv, kb_action action,
 	case LFUN_ENDSEL:
 		break;
 	case LFUN_LAYOUT_TABULAR:
-	{
 		bv->owner()->getDialogs()->showTabular(this);
-	}
-	break;
+		break;
 	case LFUN_TABULAR_FEATURE:
 		if (!tabularFeatures(bv, arg))
 			result = UNDISPATCHED;
@@ -1729,9 +1728,11 @@ void InsetTabular::tabularFeatures(BufferView * bv,
 	switch (feature) {
 	case LyXTabular::SET_PWIDTH:
 	{
-		LyXLength const vallen = LyXLength(value);
-		bool const update = (tabular->GetColumnPWidth(actcell) != vallen);
-		tabular->SetColumnPWidth(actcell,vallen);
+		LyXLength const vallen(value);
+		LyXLength const & tmplen = tabular->GetColumnPWidth(actcell);
+		
+		bool const update = (tmplen != vallen);
+		tabular->SetColumnPWidth(actcell, vallen);
 		if (update) {
 			for (int i = 0; i < tabular->rows(); ++i) {
 				tabular->GetCellInset(tabular->GetCellNumber(i, column))->
@@ -1743,9 +1744,11 @@ void InsetTabular::tabularFeatures(BufferView * bv,
 	break;
 	case LyXTabular::SET_MPWIDTH:
 	{
-		LyXLength const vallen = LyXLength(value);
-		bool const update = (tabular->GetPWidth(actcell) != vallen);
-		tabular->SetMColumnPWidth(actcell,vallen);
+		LyXLength const vallen(value);
+		LyXLength const & tmplen = tabular->GetPWidth(actcell);
+		
+		bool const update = (tmplen != vallen);
+		tabular->SetMColumnPWidth(actcell, vallen);
 		if (update) {
 			for (int i = 0; i < tabular->rows(); ++i) {
 				tabular->GetCellInset(tabular->GetCellNumber(i, column))->
@@ -2408,7 +2411,7 @@ bool InsetTabular::copySelection(BufferView * bv)
 	while (paste_tabular->rows() > rows)
 		paste_tabular->DeleteRow(rows);
 	paste_tabular->SetTopLine(0, true, true);
-	paste_tabular->SetBottomLine(paste_tabular->GetFirstCellInRow(rows-1),
+	paste_tabular->SetBottomLine(paste_tabular->GetFirstCellInRow(rows - 1),
 				     true, true);
 	for (int i = 0; i < sel_col_start; ++i)
 		paste_tabular->DeleteColumn(0);
@@ -2519,7 +2522,8 @@ bool InsetTabular::doClearArea() const
 }
 
 
-void InsetTabular::getSelection(int & srow, int & erow, int & scol, int & ecol) const
+void InsetTabular::getSelection(int & srow, int & erow,
+				int & scol, int & ecol) const
 {
 	int const start = hasSelection() ? sel_cell_start : actcell;
 	int const end = hasSelection() ? sel_cell_end : actcell;
@@ -2583,8 +2587,8 @@ Inset * InsetTabular::getInsetFromID(int id_arg) const
 		return const_cast<InsetTabular *>(this);
 
 	Inset * result;
-	for(int i=0; i < tabular->rows(); ++i) {
-		for(int j=0; j < tabular->columns(); ++j) {
+	for(int i = 0; i < tabular->rows(); ++i) {
+		for(int j = 0; j < tabular->columns(); ++j) {
 			if ((result = tabular->GetCellInset(i, j)->getInsetFromID(id_arg)))
 				return result;
 		}
@@ -2593,7 +2597,8 @@ Inset * InsetTabular::getInsetFromID(int id_arg) const
 }
 
 
-string const InsetTabular::selectNextWordToSpellcheck(BufferView * bv, float & value) const
+string const
+InsetTabular::selectNextWordToSpellcheck(BufferView * bv, float & value) const
 {
 	if (the_locking_inset) {
 		string const str(the_locking_inset->selectNextWordToSpellcheck(bv, value));
