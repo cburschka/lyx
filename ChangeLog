@@ -1,3 +1,10 @@
+2000-10-13  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* configure.in (CPPFLAGS): add snprintf and vsnprintf to
+	AC_CHECK_FUNCS
+
+	* src/support/snprintf.[ch]: new files
+
 2000-10-13  John Levon  <moz@compsoc.man.ac.uk>
 
 	* src/frontends/kde/formprintdialog.C: add

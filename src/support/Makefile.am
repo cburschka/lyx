@@ -56,6 +56,8 @@ libsupport_la_SOURCES = \
 	putenv.C \
 	rename.C \
 	rmdir.C \
+	snprintf.h \
+	snprintf.c \
 	sstream.h \
 	$(REGEX) syscall.C \
 	syscall.h \

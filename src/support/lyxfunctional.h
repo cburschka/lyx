@@ -25,7 +25,7 @@ public:
 	void_class_fun_t(C & ct, void(C::*p)(A))
 		: c(ct), cmf(p) {}
 	void operator()(A & a) const {
-		return (c.*cmf)(a);
+		(c.*cmf)(a);
 	}
 private:
 	C & c;
@@ -122,7 +122,7 @@ back_inserter_fun(Cont & cont, MemRet(Type::*p)())
 
 
 template <class Cont, class Type, class MemRet>
-back_insert_fun_iterator<Cont, Type, MemRet>
+const_back_insert_fun_iterator<Cont, Type, MemRet>
 back_inserter_fun(Cont & cont, MemRet(Type::*p)() const)
 {
 	return const_back_insert_fun_iterator<Cont, Type, MemRet>(cont, p);
