@@ -1440,7 +1440,7 @@ void LyXTabular::OldFormatRead(LyXLex & lex, string const & fl)
 #ifndef NO_COMPABILITY
 			// Here we need to insert the inset_ert_contents into the last
 			// cell of the tabular.
-			owner_->bufferOwner()->insertErtContents(par, pos, font);
+			owner_->bufferOwner()->insertErtContents(par, pos);
 #endif
 			break;
 		}

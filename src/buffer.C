@@ -287,6 +287,7 @@ struct ErtComp
 	string contents;
 	bool active;
 	bool in_tabular;
+	LyXFont font;
 };
 
 std::stack<ErtComp> ert_stack;
@@ -395,16 +396,13 @@ bool Buffer::readLyXformat2(LyXLex & lex, Paragraph * par)
 
 
 #ifndef NO_COMPABILITY
-void Buffer::insertErtContents(Paragraph * par, int & pos,
-			LyXFont const & f, bool set_inactive) 
+void Buffer::insertErtContents(Paragraph * par, int & pos, bool set_inactive) 
 {
 	if (!ert_comp.contents.empty()) {
 		lyxerr[Debug::INSETS] << "ERT contents:\n'"
 				      << ert_comp.contents << "'" << endl;
 		Inset * inset = new InsetERT(ert_comp.contents, true);
-		LyXFont font;
-		font.setLanguage(f.language());
-		par->insertInset(pos++, inset, font);
+		par->insertInset(pos++, inset, ert_comp.font);
 		ert_comp.contents.erase();
 	}
 	if (set_inactive) {
@@ -457,7 +455,7 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 #ifndef NO_COMPABILITY
 		ert_comp.in_tabular = false;
 		// Do the insetert.
-		insertErtContents(par, pos, font);
+		insertErtContents(par, pos);
 #endif
 		lex.eatLine();
 		string const layoutname = lex.getString();
@@ -472,6 +470,7 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 #ifndef NO_COMPABILITY
 		if (compare_no_case(layoutname, "latex") == 0) {
 			ert_comp.active = true;
+			ert_comp.font = font;
 		}
 #endif
 #ifdef USE_CAPTION
@@ -575,8 +574,8 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 
 #ifndef NO_COMPABILITY
 	} else if (token == "\\begin_float") {
-		insertErtContents(par, pos, font);
-		//insertErtContents(par, pos, font, false);
+		insertErtContents(par, pos);
+		//insertErtContents(par, pos, false);
 		//ert_stack.push(ert_comp);
 		//ert_comp = ErtComp();
 		
@@ -666,7 +665,7 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 		inset->read(this, nylex);
 		par->insertInset(pos, inset, font);
 		++pos;
-		insertErtContents(par, pos, font);
+		insertErtContents(par, pos);
 #endif
 	} else if (token == "\\begin_deeper") {
 		++depth;
@@ -977,12 +976,13 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 		string const tok = lex.getString();
 		if (tok == "no_latex") {
 			// Do the insetert.
-			insertErtContents(par, pos, font);
+			insertErtContents(par, pos);
 		} else if (tok == "latex") {
 			ert_comp.active = true;
+			ert_comp.font = font;
 		} else if (tok == "default") {
 			// Do the insetert.
-			insertErtContents(par, pos, font);
+			insertErtContents(par, pos);
 		} else {
 			lex.printError("Unknown LaTeX font flag "
 				       "`$$Token'");
@@ -1073,7 +1073,7 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 		// the inset isn't it? Lgb.
 	} else if (token == "\\begin_inset") {
 #ifndef NO_COMPABILITY
-		insertErtContents(par, pos, font, false);
+		insertErtContents(par, pos, false);
 		ert_stack.push(ert_comp);
 		ert_comp = ErtComp();
 #endif
@@ -1081,7 +1081,7 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 #ifndef NO_COMPABILITY
 		ert_comp = ert_stack.top();
 		ert_stack.pop();
-		insertErtContents(par, pos, font);
+		insertErtContents(par, pos);
 #endif
 	} else if (token == "\\SpecialChar") {
 		LyXLayout const & layout =
@@ -1119,7 +1119,7 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 			// Since we cannot know it this is only a regular
 			// newline or a tabular cell delimter we have to
 			// handle the ERT here.
-			insertErtContents(par, pos, font, false);
+			insertErtContents(par, pos, false);
 
 			par->insertChar(pos, Paragraph::META_NEWLINE, font);
 			++pos;
@@ -1175,7 +1175,7 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 #ifndef NO_COMPABILITY
 		// If we still have some ert active here we have to insert
 		// it so we don't loose it. (Lgb)
-		insertErtContents(par, pos, font);
+		insertErtContents(par, pos);
 #endif
 		the_end_read = true;
 #ifndef NO_COMPABILITY

@@ -1,3 +1,7 @@
+2002-01-12  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* buffer.C (insertErtContents): Fix (partially) the font bug.
+
 2002-01-11  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* BufferView2.C (ChangeRefsIfUnique): use the HP version of std::count

@@ -128,7 +128,6 @@ public:
 #ifndef NO_COMPABILITY
 	///
 	void insertErtContents(Paragraph * par, int & pos,
-			       LyXFont const & font,
 			       bool set_inactive = true);
 #endif
 	///
