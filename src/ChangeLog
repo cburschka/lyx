@@ -1,3 +1,7 @@
+2004-10-24  José Matos  <jamatos@lyx.org>
+
+	* output_docbook.C: remove using statement for stack.
+
 2004-10-23  José Matos  <jamatos@lyx.org>
 
 	* buffer.C (makeDocBookFile): reorganize the comments about lyx.

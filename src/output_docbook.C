@@ -36,7 +36,6 @@ using lyx::support::subst;
 
 using std::endl;
 using std::ostream;
-using std::stack;
 using std::vector;
 using std::string;
 
