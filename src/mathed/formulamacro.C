@@ -77,7 +77,7 @@ void InsetFormulaMacro::write(Buffer const &, ostream & os) const
 int InsetFormulaMacro::latex(Buffer const &, ostream & os,
 			     OutputParams const & runparams) const
 {
-	lyxerr << "InsetFormulaMacro::latex" << endl;
+	//lyxerr << "InsetFormulaMacro::latex" << endl;
 	WriteStream wi(os, runparams.moving_arg, true);
 	tmpl()->write(wi);
 	return 2;
@@ -129,6 +129,7 @@ string InsetFormulaMacro::prefix() const
 
 void InsetFormulaMacro::metrics(MetricsInfo & mi, Dimension & dim) const
 {
+	//lyxerr << "InsetFormulaMacro: " << this << " -- " << &tmpl() << endl;
 	tmpl()->metrics(mi, dim);
 	dim.asc += 5;
 	dim.des += 5;

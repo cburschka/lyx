@@ -17,10 +17,10 @@
 #include "debug.h"
 #include "LColor.h"
 
-
 using std::string;
 using std::auto_ptr;
 using std::endl;
+
 
 
 MathMacroTemplate::MathMacroTemplate()
@@ -81,6 +81,7 @@ string MathMacroTemplate::name() const
 
 void MathMacroTemplate::metrics(MetricsInfo & mi, Dimension & dim) const
 {
+	lyxerr << "drawing template " << name() << ' ' << this << std::endl;
 	cell(0).metrics(mi);
 	cell(1).metrics(mi);
 	dim.wid = cell(0).width() + cell(1).width() + 10;

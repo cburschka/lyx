@@ -194,6 +194,8 @@ void MathNestInset::draw(PainterInfo &, int, int) const
 
 void MathNestInset::drawSelection(PainterInfo & pi, int, int) const
 {
+	//lyxerr << "MathNestInset::drawing selection: "
+	//	<< " x: " << x << " y: " << y << endl;
 	// this should use the x/y values given, not the cached values
 	LCursor & cur = pi.base.bv->cursor();
 	if (!cur.selection())
@@ -202,6 +204,8 @@ void MathNestInset::drawSelection(PainterInfo & pi, int, int) const
 		return;
 	CursorSlice s1 = cur.selBegin();
 	CursorSlice s2 = cur.selEnd();
+	lyxerr << "MathNestInset::drawing selection: "
+		<< " s1: " << s1 << " s2: " << s2 << endl; 
 	if (s1.idx() == s2.idx()) {
 		MathArray const & c = cell(s1.idx());
 		int x1 = c.xo() + c.pos2x(s1.pos());

@@ -264,6 +264,7 @@ void MathArray::draw(PainterInfo & pi, int x, int y) const
 
 	for (const_iterator it = begin(), et = end(); it != et; ++it) {
 		//pi.width = it->width_;
+		(*it)->drawSelection(pi, x, y);
 		(*it)->draw(pi, x, y);
 		x += (*it)->width();
 	}
@@ -405,34 +406,4 @@ void MathArray::setXY(int x, int y) const
 {
 	xo_ = x;
 	yo_ = y;
-}
-
-
-void MathArray::notifyCursorLeaves()
-{
-	// do not recurse!
-
-/*
-	// remove base-only "scripts"
-	for (pos_type i = 0; i + 1 < size(); ++i) {
-		MathScriptInset * p = operator[](i).nucleus()->asScriptInset();
-		if (p && p->cell(0).empty() && p->cell(1).empty()) {
-			MathArray ar = p->nuc();
-			erase(i);
-			insert(i, ar);
-			mathcursor->adjust(i, ar.size() - 1);
-		}
-	}
-
-	// glue adjacent font insets of the same kind
-	for (pos_type i = 0; i + 1 < size(); ++i) {
-		MathFontInset * p = operator[](i).nucleus()->asFontInset();
-		MathFontInset const * q = operator[](i + 1)->asFontInset();
-		if (p && q && p->name() == q->name()) {
-			p->cell(0).append(q->cell(0));
-			erase(i + 1);
-			mathcursor->adjust(i, -1);
-		}
-	}
-*/
 }

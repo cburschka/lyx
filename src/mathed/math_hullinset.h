@@ -118,6 +118,9 @@ public:
 protected:
 	///
 	void priv_dispatch(LCursor & cur, FuncRequest & cmd);
+	/// do we want to handle this event?
+	bool getStatus(LCursor & cur, FuncRequest const & cmd,
+		FuncStatus & status) const;
 	///
 	std::string eolString(row_type row, bool fragile) const;
 
@@ -176,6 +179,8 @@ public:
 	virtual void revealCodes(LCursor & cur) const;
 	///
 	virtual EDITABLE editable() const { return HIGHLY_EDITABLE; }
+	///
+	void edit(LCursor & cur, bool left);
 	///
 	bool display() const;
 	///

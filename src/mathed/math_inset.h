@@ -82,9 +82,6 @@ public:
 
 	/// substitutes macro arguments if necessary
 	virtual void substitute(MathMacro const & macro);
-	/// draw selection between two positions
-	virtual void drawSelection(PainterInfo & pi,
-		idx_type idx1, pos_type pos1, idx_type idx2, pos_type pos2) const;
 	/// the ascent of the inset above the baseline
 	/// compute the size of the object for text based drawing
 	virtual void metricsT(TextMetricsInfo const & mi, Dimension & dim) const;

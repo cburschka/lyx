@@ -51,13 +51,6 @@ void MathInset::dump() const
 }
 
 
-void MathInset::drawSelection(PainterInfo &,
-	idx_type, pos_type, idx_type, pos_type) const
-{
-	lyxerr << "MathInset::drawSelection() called directly!" << endl;
-}
-
-
 void MathInset::metricsT(TextMetricsInfo const &, Dimension &) const
 {
 #ifdef WITH_WARNINGS

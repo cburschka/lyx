@@ -458,6 +458,7 @@ void MathGridInset::metrics(MetricsInfo & mi) const
 		cxrow->setBaseline(cxrow->getBaseline() - ascent);
 	}
 */
+	metricsMarkers2(dim_);
 }
 
 
@@ -490,6 +491,7 @@ void MathGridInset::draw(PainterInfo & pi, int x, int y) const
 				     xx, y + dim_.descent() - 1,
 				     LColor::foreground);
 		}
+	drawMarkers2(pi, x, y);
 }
 
 

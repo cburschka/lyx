@@ -224,8 +224,6 @@ void MathHullInset::metrics(MetricsInfo & mi, Dimension & dim) const
 	dim.asc = max(dim.asc, asc);
 	dim.des = max(dim.des, des);
 
-	// for markers
-	metricsMarkers2(dim);
 	dim_ = dim;
 }
 
@@ -244,8 +242,6 @@ void MathHullInset::draw(PainterInfo & pi, int x, int y) const
 			drawStr(pi, pi.base.font, xx, yy, nicelabel(row));
 		}
 	}
-
-	drawMarkers2(pi, x, y);
 }
 
 
@@ -787,7 +783,7 @@ void MathHullInset::doExtern(LCursor & cur, FuncRequest & func)
 
 void MathHullInset::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 {
-	//lyxerr << "*** MathHullInset: request: " << cmd << endl;
+	lyxerr << "*** MathHullInset: request: " << cmd << endl;
 	switch (cmd.action) {
 
 	case LFUN_BREAKLINE:
@@ -796,10 +792,10 @@ void MathHullInset::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 			cur.idx() = 1;
 			cur.pos() = 0;
 			//cur.dispatched(FINISHED);
-			return;
+			break;
 		}
 		MathGridInset::priv_dispatch(cur, cmd);
-		return;
+		break;
 
 	case LFUN_MATH_NUMBER:
 		//lyxerr << "toggling all numbers" << endl;
@@ -813,7 +809,7 @@ void MathHullInset::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 					numbered(row, !old);
 			cur.message(old ? _("No number") : _("Number"));
 		}
-		return;
+		break;
 
 	case LFUN_MATH_NONUMBER:
 		if (display()) {
@@ -823,7 +819,7 @@ void MathHullInset::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 			cur.message(old ? _("No number") : _("Number"));
 			numbered(r, !old);
 		}
-		return;
+		break;
 
 	case LFUN_INSERT_LABEL: {
 		row_type r = (type_ == "multline") ? nrows() - 1 : cur.row();
@@ -842,13 +838,13 @@ void MathHullInset::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 		if (!new_label.empty())
 			numbered(r, true);
 		label(r, new_label);
-		return;
+		break;
 	}
 
 	case LFUN_MATH_EXTERN:
 		doExtern(cur, cmd);
 		//cur.dispatched(FINISHED);
-		return;
+		break;
 
 	case LFUN_MATH_MUTATE: {
 		lyxerr << "Hull: MUTATE: " << cmd.argument << endl;
@@ -863,7 +859,7 @@ void MathHullInset::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 		if (cur.pos() > cur.lastpos())
 			cur.pos() = cur.lastpos();
 		//cur.dispatched(FINISHED);
-		return;
+		break;
 	}
 
 	case LFUN_MATH_DISPLAY: {
@@ -871,12 +867,31 @@ void MathHullInset::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 		cur.idx() = 0;
 		cur.pos() = cur.lastpos();
 		//cur.dispatched(FINISHED);
-		return;
+		break;
 	}
 
 	default:
 		MathGridInset::priv_dispatch(cur, cmd);
-		return;
+		break;
+	}
+}
+
+
+bool MathHullInset::getStatus(LCursor & cur, FuncRequest const & cmd,
+		FuncStatus & flag) const
+{
+	switch (cmd.action) {
+	case LFUN_BREAKLINE:
+	case LFUN_MATH_NUMBER:
+	case LFUN_MATH_NONUMBER:
+	case LFUN_INSERT_LABEL:
+	case LFUN_MATH_EXTERN:
+	case LFUN_MATH_MUTATE:
+	case LFUN_MATH_DISPLAY:
+		// we handle these
+		return true;
+	default:
+		return MathGridInset::getStatus(cur, cmd, flag);
 	}
 }
 
@@ -957,6 +972,13 @@ void MathHullInset::handleFont2(LCursor & cur, string const & arg)
 		asArray(lcolor.getGUIName(font.color()), at.nucleus()->cell(0));
 		cur.handleNest(at, 1);
 	}
+}
+
+
+void MathHullInset::edit(LCursor & cur, bool left)
+{
+	lyxerr << "MathHullInset: edit left/right" << endl;
+	cur.push(*this);
 }
 
 

@@ -78,9 +78,7 @@ auto_ptr<InsetBase> MathArrayInset::clone() const
 void MathArrayInset::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	ArrayChanger dummy(mi.base);
-	MathGridInset::metrics(mi);
-	metricsMarkers2(dim_);
-	dim = dim_;
+	MathGridInset::metrics(mi, dim);
 }
 
 
@@ -88,7 +86,6 @@ void MathArrayInset::draw(PainterInfo & pi, int x, int y) const
 {
 	ArrayChanger dummy(pi.base);
 	MathGridInset::draw(pi, x + 1, y);
-	drawMarkers2(pi, x, y);
 }
 
 

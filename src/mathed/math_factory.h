@@ -12,12 +12,11 @@
 #ifndef MATH_FACTORY_H
 #define MATH_FACTORY_H
 
-
 #include <string>
-
 
 class MathAtom;
 class MathArray;
+
 
 MathAtom createMathInset(std::string const &);
 

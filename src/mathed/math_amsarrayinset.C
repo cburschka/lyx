@@ -73,9 +73,9 @@ void MathAMSArrayInset::metrics(MetricsInfo & mi, Dimension & dim) const
 	MetricsInfo m = mi;
 	if (m.base.style == LM_ST_DISPLAY)
 		m.base.style = LM_ST_TEXT;
-	MathGridInset::metrics(m);
-	dim_.wid += 12;
-	dim = dim_;
+	MathGridInset::metrics(m, dim);
+	dim.wid += 12;
+	dim_ = dim;
 }
 
 

@@ -37,7 +37,6 @@ void MathSubstackInset::metrics(MetricsInfo & mi, Dimension & dim) const
 	} else {
 		MathGridInset::metrics(mi, dim);
 	}
-	metricsMarkers(dim);
 	dim_ = dim;
 }
 
@@ -45,7 +44,6 @@ void MathSubstackInset::metrics(MetricsInfo & mi, Dimension & dim) const
 void MathSubstackInset::draw(PainterInfo & pi, int x, int y) const
 {
 	MathGridInset::draw(pi, x + 1, y);
-	drawMarkers(pi, x, y);
 }
 
 

@@ -55,8 +55,8 @@ string MathMacro::name() const
 
 bool MathMacro::defining() const
 {
-	return 0;
-	//return mathcursor && mathcursor->formula()->getInsetName() == name();
+	return false;
+	//return mathcursor->formula()->getInsetName() == name();
 }
 
 
@@ -78,7 +78,7 @@ void MathMacro::metrics(MetricsInfo & mi, Dimension & dim) const
 	} else if (editing(mi.base.bv)) {
 
 		expand();
-		expanded_.metrics(mi_, dim);
+		expanded_.metrics(mi, dim);
 		metricsMarkers(dim);
 
 		dim.wid += mathed_string_width(font_, name()) + 10;
@@ -87,17 +87,16 @@ void MathMacro::metrics(MetricsInfo & mi, Dimension & dim) const
 
 		for (idx_type i = 0; i < nargs(); ++i) {
 			MathArray const & c = cell(i);
-			c.metrics(mi_);
+			c.metrics(mi);
 			dim.wid  = max(dim.wid, c.width() + ww);
-			dim.des += max(c.ascent(),  dim.asc) + 5;
-			dim.des += max(c.descent(), dim.des) + 5;
+			dim.des += c.height() + 10;
 		}
 
 	} else {
 
 		expand();
 		expanded_.substitute(*this);
-		expanded_.metrics(mi_, dim);
+		expanded_.metrics(mi, dim);
 
 	}
 

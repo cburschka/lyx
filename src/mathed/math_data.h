@@ -154,8 +154,6 @@ public:
 	void center(int & x, int & y) const;
 	/// adjust (x,y) to point on boundary on a straight line from the center
 	void towards(int & x, int & y) const;
-	/// clean up if necessary
-	void notifyCursorLeaves();
 
 private:
 	/// is this an exact match at this position?
