@@ -314,33 +314,19 @@ bool LCursor::posRight()
 }
 
 
-CursorSlice & LCursor::anchor()
+CursorSlice LCursor::anchor() const
 {
-	if (anchor_.size() < size()) {
-		lyxerr << "anchor_.size() < cursor_.size() "
-			"should not happen when accessing the anchor" << endl;
-		BOOST_ASSERT(false);
+	BOOST_ASSERT(anchor_.size() >= size());
+	CursorSlice normal = anchor_[size() - 1];
+	if (size() < anchor_.size() && back() <= normal) {
+		// anchor is behind cursor -> move anchor behind the inset
+		++normal.pos();
 	}
-	BOOST_ASSERT(!anchor_.empty());
-	// this size is cursor_.size()
-	return anchor_[size() - 1];
+	return normal;
 }
 
 
-CursorSlice const & LCursor::anchor() const
-{
-	if (anchor_.size() < size()) {
-		lyxerr << "anchor_.size() < cursor_.size() "
-			"should not happen when accessing the anchor" << endl;
-		BOOST_ASSERT(false);
-	}
-	// this size is cursor_.size()
-	BOOST_ASSERT(!anchor_.empty());
-	return anchor_[size() - 1];
-}
-
-
-CursorSlice const & LCursor::selBegin() const
+CursorSlice LCursor::selBegin() const
 {
 	if (!selection())
 		return back();
@@ -348,7 +334,7 @@ CursorSlice const & LCursor::selBegin() const
 }
 
 
-CursorSlice const & LCursor::selEnd() const
+CursorSlice LCursor::selEnd() const
 {
 	if (!selection())
 		return back();
@@ -920,18 +906,6 @@ int LCursor::targetX() const
 }
 
 
-void LCursor::adjust(pos_type from, int diff)
-{
-	if (pos() > from)
-		pos() += diff;
-	if (anchor().pos() > from)
-		anchor().pos() += diff;
-	// just to be on the safe side
-	// theoretically unecessary
-	normalize();
-}
-
-
 bool LCursor::inMacroMode() const
 {
 	if (!pos() != 0)
@@ -1157,25 +1131,6 @@ void LCursor::bruteFind2(int x, int y)
 			break;
 		it.forwardPos();
 	}
-}
-
-
-CursorSlice LCursor::normalAnchor()
-{
-	if (anchor_.size() < depth()) {
-		resetAnchor();
-		lyxerr << "unusual Anchor size" << endl;
-	}
-	//lyx::BOOST_ASSERT(Anchor_.size() >= cursor.depth());
-	// use Anchor on the same level as Cursor
-	CursorSlice normal = anchor_[size() - 1];
-#if 0
-	if (depth() < anchor_.size() && !(normal < xx())) {
-		// anchor is behind cursor -> move anchor behind the inset
-		++normal.pos_;
-	}
-#endif
-	return normal;
 }
 
 

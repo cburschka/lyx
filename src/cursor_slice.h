@@ -153,5 +153,7 @@ bool operator!=(CursorSlice const &, CursorSlice const &);
 bool operator<(CursorSlice const &, CursorSlice const &);
 /// test for order
 bool operator>(CursorSlice const &, CursorSlice const &);
+/// test for order
+bool operator<=(CursorSlice const &, CursorSlice const &);
 
 #endif

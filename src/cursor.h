@@ -72,9 +72,9 @@ public:
 	///
 	void clearSelection();
 	/// access start of selection
-	CursorSlice const & selBegin() const;
+	CursorSlice selBegin() const;
 	/// access end of selection
-	CursorSlice const & selEnd() const;
+	CursorSlice selEnd() const;
 	/// access start of selection
 	DocIterator selectionBegin() const;
 	/// access start of selection
@@ -140,10 +140,8 @@ public:
 	/// clear target x position of cursor
 	void clearTargetX();
 
-	/// access to selection anchor
-	CursorSlice & anchor();
-	/// access to selection anchor
-	CursorSlice const & anchor() const;
+	/// access to normalized selection anchor
+	CursorSlice anchor() const;
 	/// cache the absolute coordinate from the top inset
 	void updatePos();
 	/// sets anchor to cursor position
@@ -245,8 +243,6 @@ public:
 	void setScreenPos(int x, int y);
 	/// in pixels from left of screen
 	int targetX() const;
-	/// adjust anchor position after deletions/insertions
-	void adjust(pos_type from, int diff);
 	/// current offset in the top cell
 	/// interpret name a name of a macro
 	void macroModeClose();
@@ -265,9 +261,6 @@ public:
 	void normalize();
 	/// mark current cursor trace for redraw
 	void touch();
-
-	/// returns the normalized anchor of the selection
-	CursorSlice normalAnchor();
 
 	/// hack for reveal codes
 	void markInsert();

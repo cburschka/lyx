@@ -145,9 +145,11 @@ FontSetChanger::FontSetChanger(MetricsBase & mb, char const * name)
 	:	Changer<MetricsBase>(mb)
 {
 	save_ = mb;
+	LyXFont::FONT_SIZE oldsize = save_.font.size();
 	mb.fontname = name;
 	mb.font = LyXFont();
 	augmentFont(mb.font, name);
+	mb.font.setSize(oldsize);
 }
 
 
