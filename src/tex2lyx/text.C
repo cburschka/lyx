@@ -26,6 +26,10 @@
 #include <sstream>
 #include <vector>
 
+using lyx::support::rtrim;
+using lyx::support::suffixIs;
+using lyx::support::contains;
+
 using std::cerr;
 using std::endl;
 
@@ -35,10 +39,6 @@ using std::ostringstream;
 using std::istringstream;
 using std::string;
 using std::vector;
-
-using lyx::support::rtrim;
-using lyx::support::suffixIs;
-using lyx::support::contains;
 
 
 // thin wrapper around parse_text using a string
@@ -160,7 +160,7 @@ bool translate_len(string const & length, string & valstring, string & unit)
 	// a normal length
 	if (unit.empty() || unit[0] != '\\')
 		return true;
-	const string::size_type i = unit.find(" ", i);
+	string::size_type const i = unit.find(' ');
 	string const endlen = (i == string::npos) ? string() : string(unit, i);
 	if (unit == "\\textwidth") {
 		valstring = percentval;
@@ -286,10 +286,11 @@ void handle_comment(ostream & os, string const & s, Context & context)
 }
 
 
-struct isLayout {
+class isLayout : public std::unary_function<LyXLayout_ptr, bool> {
+public:
 	isLayout(string const name) : name_(name) {}
-	bool operator()(LyXLayout_ptr const & ptr) {
-		return ptr.get() && ptr->latexname() == name_;
+	bool operator()(LyXLayout_ptr const & ptr) const {
+		return ptr->latexname() == name_;
 	}
 private:
 	string const name_;
@@ -299,9 +300,12 @@ private:
 LyXLayout_ptr findLayout(LyXTextClass const & textclass,
 			 string const & name)
 {
-	LyXTextClass::const_iterator it  = textclass.begin();
+	LyXTextClass::const_iterator beg  = textclass.begin();
 	LyXTextClass::const_iterator end = textclass.end();
-	it = std::find_if(it, end, isLayout(name));
+
+	LyXTextClass::const_iterator
+		it = std::find_if(beg, end, isLayout(name));
+
 	return (it == end) ? LyXLayout_ptr() : *it;
 }
 
