@@ -203,9 +203,7 @@ void FormTabular::update()
 			fl_set_button(cell_options_->radio_align_right, 1);
 		else
 			fl_set_button(cell_options_->radio_align_center, 1);
-		setEnabled(cell_options_->radio_align_left,   true);
-		setEnabled(cell_options_->radio_align_right,  true);
-		setEnabled(cell_options_->radio_align_center, true);
+
 		align = tabular->GetVAlignment(cell);
 		fl_set_button(cell_options_->radio_valign_top, 0);
 		fl_set_button(cell_options_->radio_valign_bottom, 0);
@@ -216,9 +214,7 @@ void FormTabular::update()
 			fl_set_button(cell_options_->radio_valign_bottom, 1);
 		else
 			fl_set_button(cell_options_->radio_valign_top, 1);
-		setEnabled(cell_options_->radio_valign_top,    true);
-		setEnabled(cell_options_->radio_valign_bottom, true);
-		setEnabled(cell_options_->radio_valign_center, true);
+
 		special = tabular->GetAlignSpecial(cell, LyXTabular::SET_SPECIAL_MULTI);
 		fl_set_input(cell_options_->input_special_multialign, special.c_str());
 		bool const metric = lyxrc.default_papersize > 3;
