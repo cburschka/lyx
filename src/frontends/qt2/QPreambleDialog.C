@@ -60,7 +60,8 @@ void QPreambleDialog::editClicked()
 	if (editor.empty()) {
 		static string lastentry = "";
 		editor = QInputDialog::getText(
-			_("Enter editor program"), _("Editor"), lastentry.c_str()).latin1();
+			_("Enter editor program"), _("Editor"), QLineEdit::Normal, 
+			lastentry.c_str()).latin1();
 		if (editor.empty())
 			return;
 		lastentry = editor; 

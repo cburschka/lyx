@@ -16,6 +16,7 @@ include ../Makefile.dialogs
 libqt2moc_la_SOURCES := FileDialog_private_moc.C \
 	emptytable_moc.C \
 	lengthcombo_moc.C \
+	qttableview_moc.C \
 	Qt2Base_moc.C \
 	$(MOCDIALOGS)
 

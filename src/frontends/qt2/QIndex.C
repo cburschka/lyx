@@ -37,13 +37,13 @@ void QIndex::build_dialog()
  
 void QIndex::update_contents()
 {
-	dialog_->keywordED->setText(controller().params().getContents().c_str());
+	dialog_->keywordED->setText(controller().getContents().c_str());
 }
 
  
 void QIndex::apply()
 {
-	controller().params().setContents(dialog_->keywordED->text().latin1());
+	controller().setContents(dialog_->keywordED->text().latin1());
 }
 
 

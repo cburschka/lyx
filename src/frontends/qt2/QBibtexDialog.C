@@ -10,6 +10,7 @@
 #include <qpushbutton.h>
 #include <qcombobox.h>
 #include <qlistbox.h>
+#include <qlineedit.h>
 #include <qcheckbox.h>
 #include <qfiledialog.h>
  

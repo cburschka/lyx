@@ -13,7 +13,7 @@
 #include <qfiledialog.h>
 #include <qcombobox.h>
 #include <qtextview.h>
- 
+#include <qlineedit.h> 
 
 #include "gettext.h" 
 #include "QExternalDialog.h"

@@ -15,6 +15,7 @@
 #include "ui/QParagraphDialogBase.h"
 #include "vspace.h"
 #include "paragraph.h"
+#include "layout.h"
 
 
 class QParagraph;

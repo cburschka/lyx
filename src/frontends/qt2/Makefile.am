@@ -20,6 +20,7 @@ libqt2_la_LIBADD = \
 	ui/moc/libqt2uimoc.la \
 	../controllers/ButtonControllerBase.lo \
 	../xforms/combox.lo \
+	../xforms/Alert_pimpl.lo \
 	../xforms/Color.lo \
 	../xforms/DropDown.lo \
 	../xforms/FormBaseDeprecated.lo	\
@@ -78,4 +79,6 @@ libqt2_la_SOURCES = \
 	emptytable.C \
 	emptytable.h \
 	lengthcombo.C \
-	lengthcombo.h
+	lengthcombo.h \
+	qttableview.h \
+	qttableview.C

@@ -10,13 +10,13 @@
 #define EMPTYTABLE_H
 
 #include <qpainter.h> 
-#include <qtableview.h> 
+#include "qttableview.h"
 
 /**
  * A simple widget for a quick "preview" in TabularCreateDialog.
  * The user can drag on the widget to change the table dimensions.
  */
-class EmptyTable : public QTableView {
+class EmptyTable : public QtTableView {
 	Q_OBJECT
 public:
 	EmptyTable(QWidget * parent = 0, const char * name = 0);
