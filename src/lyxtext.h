@@ -200,12 +200,6 @@ private:
 	 * the viewable portion of the lyxtext).
 	 */
 	int refresh_y;
-	/**
-	 * The row from which to repaint the screen, used by screen.c.
-	 * This must be set if the pending update is REFRESH_ROW.
-	 * It doesn't make any difference for REFRESH_AREA.
-	 */
-	RowList::iterator refresh_row;
 	// do we need a refresh?
 	bool need_refresh_;
 

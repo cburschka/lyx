@@ -63,7 +63,6 @@ LyXText::LyXText(BufferView * bv)
 {
 	anchor_row_ = rows().end();
 	need_break_row = rows().end();
-	refresh_row = rows().end();
 
 	clearPaint();
 }
@@ -75,7 +74,6 @@ LyXText::LyXText(BufferView * bv, InsetText * inset)
 {
 	anchor_row_ = rows().end();
 	need_break_row = rows().end();
-	refresh_row = rows().end();
 
 	clearPaint();
 }
@@ -260,17 +258,6 @@ void LyXText::setCharFont(Buffer const * buf, ParagraphList::iterator pit,
 // removes the row and reset the touched counters
 void LyXText::removeRow(RowList::iterator rit)
 {
-	/* FIXME: when we cache the bview, this should just
-	 * become a postPaint(), I think */
-	if (refresh_row == rit) {
-		if (rit == rows().begin())
-			refresh_row = boost::next(rit);
-		else
-			refresh_row = boost::prior(rit);
-
-		// what about refresh_y
-	}
-
 	if (anchor_row_ == rit) {
 		if (rit != rows().begin()) {
 			anchor_row_ = boost::prior(rit);
@@ -2297,7 +2284,6 @@ bool LyXText::needRefresh() const
 void LyXText::clearPaint()
 {
 	need_refresh_ = false;
-	refresh_row = rows().end();
 	refresh_y = 0;
 }
 
@@ -2307,7 +2293,6 @@ void LyXText::postPaint(int start_y)
 	bool old = need_refresh_;
 
 	need_refresh_ = true;
-	refresh_row = rows().end();
 
 	if (old && refresh_y < start_y)
 		return;
@@ -2339,7 +2324,6 @@ void LyXText::postRowPaint(RowList::iterator rit, int start_y)
 		return;
 
 	need_refresh_ = true;
-	refresh_row = rit;
 
 	if (!inset_owner)
 		return;
