@@ -18,6 +18,9 @@ constructor, and use _("..."). Non-trivial means that things like "OK"
 *DO NOT USE DESIGNER FROM Qt 3*. You must use a designer from Qt 2 to
 maintain compatibility.
 
+moc is incredibly stupid and sometimes you need a fully qualified
+"std::string" for .connect() statements to work. Be very, very careful.
+
 Remember to check tab order on a dialog (third icon, with blue bars in designer).
 
 Remember to check sensible resizing behaviour on a dialog.

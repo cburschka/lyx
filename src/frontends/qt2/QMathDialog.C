@@ -169,7 +169,9 @@ IconPalette * QMathDialog::makePanel(QWidget * parent, char const ** entries)
 	for (int i = 0; *entries[i]; ++i) {
 		p->add(QPixmap(toqstr(find_xpm(entries[i]))), entries[i], string("\\") + entries[i]);
 	}
-	connect(p, SIGNAL(button_clicked(const string &)), this, SLOT(symbol_clicked(const string &)));
+	// Leave these std:: qualifications alone !
+	connect(p, SIGNAL(button_clicked(const std::string &)),
+		this, SLOT(symbol_clicked(const std::string &)));
 
 	return p;
 }

@@ -86,8 +86,11 @@ QDelimiterDialog::QDelimiterDialog(QMathDelimiter * form)
 
 	leftIP->add(QPixmap(toqstr(empty_xpm)), "empty", "empty");
 	rightIP->add(QPixmap(toqstr(empty_xpm)), "empty", "empty");
-	connect(leftIP, SIGNAL(button_clicked(const string &)), this, SLOT(ldelim_clicked(const string &)));
-	connect(rightIP, SIGNAL(button_clicked(const string &)), this, SLOT(rdelim_clicked(const string &)));
+	// Leave these std:: qualifications alone !
+	connect(leftIP, SIGNAL(button_clicked(const std::string &)),
+		this, SLOT(ldelim_clicked(const std::string &)));
+	connect(rightIP, SIGNAL(button_clicked(const std::string &)),
+		this, SLOT(rdelim_clicked(const std::string &)));
 	ldelim_clicked("(");
 	rdelim_clicked(")");
 }
