@@ -24,15 +24,8 @@
 #include "lyx_gui_misc.h"      // WriteAlert
 #include "xforms_helpers.h"     // for browseFile
 
-#ifdef SIGC_CXX_NAMESPACES
-using SigC::slot;
-#endif
-
-#ifdef CXX_WORKING_NAMESPACES
 using Liason::printBuffer;
 using Liason::getPrinterParams;
-#endif
-
 using std::make_pair;
 
 FormPrint::FormPrint(LyXView * lv, Dialogs * d)

@@ -20,10 +20,6 @@
 #include <sigc++/signal_system.h>
 #include <boost/utility.hpp>
 
-#ifdef SIGC_CXX_NAMESPACES
-using SigC::Signal0;
-#endif
-
 // Created by Alejandro 970222
 /** Used to insert a LaTeX command automatically
  *
@@ -131,7 +127,7 @@ public:
 	///
 	void setParams(InsetCommandParams const &);
 	///
-	Signal0<void> hideDialog;
+	SigC::Signal0<void> hideDialog;
 private:
 	///
 	InsetCommandParams p_;

@@ -23,10 +23,6 @@
 #include "ViewBase.h"
 #include "insets/lyxinset.h"
 
-#ifdef SIGC_CXX_NAMESPACES
-using SigC::slot;
-#endif
-
 ControlConnectBase::ControlConnectBase(LyXView & lv, Dialogs & d)
 	: ControlBase(lv),
 	  d_(d), h_(0), r_(0)

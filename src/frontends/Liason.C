@@ -33,10 +33,7 @@ using std::endl;
 
 extern LyXRC lyxrc;
 
-#ifdef CXX_WORKING_NAMESPACES
-namespace Liason 
-{
-#endif
+namespace Liason {
 
 PrinterParams getPrinterParams(Buffer * buffer)
 {
@@ -162,7 +159,4 @@ void setMinibuffer(LyXView * lv, char const * msg)
 	lv->getMiniBuffer()->Set(msg);
 }
 
-#ifdef CXX_WORKING_NAMESPACES
-}
-#endif
-
+} // namespace Liason

@@ -17,13 +17,8 @@
 
 struct Figref;
 
-#ifdef SIGC_CXX_NAMESPACES
-using SigC::Object;
-using SigC::Connection;
-#endif
-
 ///
-class InsetFig: public Inset, public Object {
+class InsetFig: public Inset, public SigC::Object {
 public:
 	///
 	InsetFig(int tmpx, int tmpy, Buffer const &);
@@ -156,7 +151,7 @@ private:
 	/// get sizes from .eps file
 	void GetPSSizes();
 	/// Redraw connection.
-	Connection r_;
+	SigC::Connection r_;
 };
 
 

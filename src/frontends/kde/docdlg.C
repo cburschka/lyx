@@ -23,11 +23,8 @@
 #include "gettext.h"
 #include "debug.h"
 
-#ifdef CXX_WORKING_NAMESPACES
 using kde_helpers::setSizeHint;
 using kde_helpers::setComboFromStr;
-#endif
-
 using std::endl;
 
 DocDialog::DocDialog(FormDocument * form, QWidget * parent, char const * name, bool, WFlags)

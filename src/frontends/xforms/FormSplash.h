@@ -48,7 +48,7 @@ private:
 	/// our container
 	Dialogs * d_; 
 	/// the show connection
-	Connection c_; 
+	SigC::Connection c_; 
 };
 
 #endif // FORMSPLASH_H

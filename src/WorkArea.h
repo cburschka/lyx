@@ -23,14 +23,6 @@
 #include FORMS_H_LOCATION
 #include "Painter.h"
 
-#ifdef SIGC_CXX_NAMESPACES
-using SigC::Signal0;
-using SigC::Signal1;
-using SigC::Signal2;
-using SigC::Signal3;
-#endif
-
-
 ///
 class WorkArea {
 public:
@@ -105,29 +97,29 @@ public:
 	void putClipboard(string const &) const;
 	// Signals
 	///
-	Signal0<void> workAreaExpose;
+	SigC::Signal0<void> workAreaExpose;
 	///
-	Signal1<void, double> scrollCB;
+	SigC::Signal1<void, double> scrollCB;
 	///
-	Signal2<void, KeySym, unsigned int> workAreaKeyPress;
+	SigC::Signal2<void, KeySym, unsigned int> workAreaKeyPress;
 	///
-	Signal3<void, int, int, unsigned int> workAreaButtonPress;
+	SigC::Signal3<void, int, int, unsigned int> workAreaButtonPress;
 	///
-	Signal3<void, int, int, unsigned int> workAreaButtonRelease;
+	SigC::Signal3<void, int, int, unsigned int> workAreaButtonRelease;
 	///
-	Signal3<void, int, int, unsigned int> workAreaMotionNotify;
+	SigC::Signal3<void, int, int, unsigned int> workAreaMotionNotify;
 	///
-	Signal0<void> workAreaFocus;
+	SigC::Signal0<void> workAreaFocus;
 	///
-	Signal0<void> workAreaUnfocus;
+	SigC::Signal0<void> workAreaUnfocus;
 	///
-	Signal0<void> workAreaEnter;
+	SigC::Signal0<void> workAreaEnter;
 	///
-	Signal0<void> workAreaLeave;
+	SigC::Signal0<void> workAreaLeave;
 	///
-	Signal3<void, int, int, unsigned int> workAreaDoubleClick;
+	SigC::Signal3<void, int, int, unsigned int> workAreaDoubleClick;
 	///
-	Signal3<void, int, int, unsigned int> workAreaTripleClick;
+	SigC::Signal3<void, int, int, unsigned int> workAreaTripleClick;
 private:
 	///
 	void createPixmap(int, int);

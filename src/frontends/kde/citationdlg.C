@@ -11,9 +11,7 @@
 #include "dlg/helpers.h"
 #include "citationdlg.h"
 
-#ifdef CXX_WORKING_NAMESPACES
 using kde_helpers::setSizeHint;
-#endif
 
 CitationDialog::CitationDialog(FormCitation *form, QWidget *parent, char const * name, bool, WFlags)
 	: QDialog(parent,name,0), form_(form)

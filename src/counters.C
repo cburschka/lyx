@@ -18,11 +18,6 @@
 #include "counters.h"
 #include "debug.h"
 
-#ifdef SIGC_CXX_NAMESPACES
-using SigC::Connection;
-using SigC::slot;
-#endif
-
 using std::endl;
 
 
@@ -105,7 +100,7 @@ void Counters::newCounter(string const & newc, string const & oldc)
 	}
 
 	Counter * tmp = new Counter;
-	(*it).second->onstep.connect(slot(tmp,
+	(*it).second->onstep.connect(SigC::slot(tmp,
 					 &Counter::reset));
 	counterList[newc] = tmp;
 }

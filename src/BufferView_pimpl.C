@@ -61,10 +61,6 @@ extern void math_insert_symbol(BufferView *, string const &);
 extern bool math_insert_greek(BufferView *, char);
 extern int greek_kb_flag;
 
-#ifdef SIGC_CXX_NAMESPACES
-using SigC::slot;
-#endif
-
 using std::vector;
 using std::find_if;
 using std::pair;

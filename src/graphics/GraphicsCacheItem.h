@@ -24,11 +24,7 @@
 #include <boost/utility.hpp>
 #include <boost/smart_ptr.hpp>
 
-#include "sigc++/signal_system.h"
-#ifdef SIGC_CXX_NAMESPACES
-using SigC::Signal0;
-#endif
-
+#include <sigc++/signal_system.h>
 
 class LyXImage;
 

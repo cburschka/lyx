@@ -49,12 +49,6 @@ using std::max;
 using std::min;
 using std::find;
 
-#ifdef SIGC_CXX_NAMESPACES
-using SigC::slot;
-using SigC::bind;
-#endif
-
-
 // configuration keys
 static string const  LOCAL_CONFIGURE_PREFIX("FormCitation");
 
@@ -76,8 +70,8 @@ FormCitation::FormCitation(LyXView * lv, Dialogs * d)
   // let the dialog be shown
   // These are permanent connections so we won't bother
   // storing a copy because we won't be disconnecting.
-  d->showCitation.connect(slot(this, &FormCitation::showInset));
-  d->createCitation.connect(slot(this, &FormCitation::createInset));
+  d->showCitation.connect(SigC::slot(this, &FormCitation::showInset));
+  d->createCitation.connect(SigC::slot(this, &FormCitation::createInset));
 
   cleanupWidgets();
 }
@@ -92,10 +86,10 @@ void FormCitation::showInset( InsetCommand * const inset )
   if( dialog_!=0 || inset == 0 ) return;
   
   inset_ = inset;
-  ih_ = inset_->hideDialog.connect(slot(this, &FormCitation::hide));
+  ih_ = inset_->hideDialog.connect(SigC::slot(this, &FormCitation::hide));
 
-  u_ = d_->updateBufferDependent.connect(slot(this, &FormCitation::updateSlot));
-  h_ = d_->hideBufferDependent.connect(slot(this, &FormCitation::hide));
+  u_ = d_->updateBufferDependent.connect(SigC::slot(this, &FormCitation::updateSlot));
+  h_ = d_->hideBufferDependent.connect(SigC::slot(this, &FormCitation::hide));
   
   params = inset->params();
 
@@ -108,8 +102,8 @@ void FormCitation::createInset( string const & arg )
 {
   if( dialog_!=0 ) return;
   
-  u_ = d_->updateBufferDependent.connect(slot(this, &FormCitation::updateSlot)); 
-  h_ = d_->hideBufferDependent.connect(slot(this, &FormCitation::hide));
+  u_ = d_->updateBufferDependent.connect(SigC::slot(this, &FormCitation::updateSlot)); 
+  h_ = d_->hideBufferDependent.connect(SigC::slot(this, &FormCitation::hide));
   
   params.setFromString( arg );
   showStageSearch();
@@ -117,12 +111,13 @@ void FormCitation::createInset( string const & arg )
 
 
 static
-void parseBibTeX(string data,
+void parseBibTeX(string const & dat,
 		 string const & findkey,
 		 string & keyvalue)
 {
   unsigned int i;
-
+  string data(dat);
+  
   keyvalue = "";
   
   for (i=0; i<data.length(); ++i)
@@ -137,7 +132,8 @@ void parseBibTeX(string data,
     {
       unsigned int keypos = min(data.find(' '), data.find('='));
       string key = lowercase( data.substr(0, keypos) );
-      string value, tmp;
+      string value;
+      string tmp;
       char enclosing;
       
       data = data.substr(keypos, data.length()-1);
@@ -478,11 +474,11 @@ void FormCitation::showStageSearch()
       gtk_widget_grab_default (GTK_WIDGET(search_text_->get_entry()->gtkobj()));
 
       // connecting signals
-      b_ok->clicked.connect(slot(this, &FormCitation::moveFromSearchToSelect));
-      search_text_->get_entry()->activate.connect(slot(this, &FormCitation::moveFromSearchToSelect));
+      b_ok->clicked.connect(SigC::slot(this, &FormCitation::moveFromSearchToSelect));
+      search_text_->get_entry()->activate.connect(SigC::slot(this, &FormCitation::moveFromSearchToSelect));
 
-      b_cancel->clicked.connect(slot(mainAppWin, &GLyxAppWin::remove_action));
-      dialog_->destroy.connect(slot(this, &FormCitation::free));
+      b_cancel->clicked.connect(SigC::slot(mainAppWin, &GLyxAppWin::remove_action));
+      dialog_->destroy.connect(SigC::slot(this, &FormCitation::free));
     }
 }
 
@@ -569,17 +565,17 @@ void FormCitation::showStageSelect()
       gtk_widget_grab_default (GTK_WIDGET(b_ok->gtkobj()));
 
       // connecting signals
-      b_ok->clicked.connect(slot(this, &FormCitation::applySelect));
-      text_after_->get_entry()->activate.connect(slot(this, &FormCitation::applySelect));
+      b_ok->clicked.connect(SigC::slot(this, &FormCitation::applySelect));
+      text_after_->get_entry()->activate.connect(SigC::slot(this, &FormCitation::applySelect));
 
-      b_cancel->clicked.connect(slot(mainAppWin, &GLyxAppWin::remove_action));
+      b_cancel->clicked.connect(SigC::slot(mainAppWin, &GLyxAppWin::remove_action));
 
-      dialog_->destroy.connect(slot(this, &FormCitation::free));
+      dialog_->destroy.connect(SigC::slot(this, &FormCitation::free));
 
-      clist_bib_->click_column.connect(slot(this, &FormCitation::sortBibList));
-      clist_bib_->select_row.connect(bind(slot(this, &FormCitation::selectionToggled),
+      clist_bib_->click_column.connect(SigC::slot(this, &FormCitation::sortBibList));
+      clist_bib_->select_row.connect(SigC::bind(SigC::slot(this, &FormCitation::selectionToggled),
 					  true, false));
-      clist_bib_->unselect_row.connect(bind(slot(this, &FormCitation::selectionToggled),
+      clist_bib_->unselect_row.connect(SigC::bind(SigC::slot(this, &FormCitation::selectionToggled),
 					    false, false));
     }
 }
@@ -666,20 +662,20 @@ void FormCitation::showStageEdit()
       gtk_widget_grab_default (GTK_WIDGET(b_ok->gtkobj()));
 
       // connecting signals
-      b_ok->clicked.connect(slot(this, &FormCitation::applyEdit));
-      text_after_->get_entry()->activate.connect(slot(this, &FormCitation::applyEdit));
+      b_ok->clicked.connect(SigC::slot(this, &FormCitation::applyEdit));
+      text_after_->get_entry()->activate.connect(SigC::slot(this, &FormCitation::applyEdit));
 
-      b_cancel->clicked.connect(slot(mainAppWin, &GLyxAppWin::remove_action));
+      b_cancel->clicked.connect(SigC::slot(mainAppWin, &GLyxAppWin::remove_action));
 
-      dialog_->destroy.connect(slot(this, &FormCitation::free));
+      dialog_->destroy.connect(SigC::slot(this, &FormCitation::free));
 
-      button_unselect_->clicked.connect(slot(this, &FormCitation::removeCitation));
-      button_up_->clicked.connect(slot(this, &FormCitation::moveCitationUp));
-      button_down_->clicked.connect(slot(this, &FormCitation::moveCitationDown));      
+      button_unselect_->clicked.connect(SigC::slot(this, &FormCitation::removeCitation));
+      button_up_->clicked.connect(SigC::slot(this, &FormCitation::moveCitationUp));
+      button_down_->clicked.connect(SigC::slot(this, &FormCitation::moveCitationDown));      
 
-      clist_selected_->select_row.connect(bind(slot(this, &FormCitation::selectionToggled),
+      clist_selected_->select_row.connect(SigC::bind(SigC::slot(this, &FormCitation::selectionToggled),
 					  true, true));
-      clist_selected_->unselect_row.connect(bind(slot(this, &FormCitation::selectionToggled),
+      clist_selected_->unselect_row.connect(SigC::bind(SigC::slot(this, &FormCitation::selectionToggled),
 					    false, true));
     }
 }
@@ -808,13 +804,10 @@ void FormCitation::applySelect()
 {
   if( lv_->buffer()->isReadonly() ) return;
 
-  string contents;
-  int sz;
-
-  contents = frontStrip( strip(params.getContents()) );
+  string contents = frontStrip( strip(params.getContents()) );
   if (!contents.empty()) contents += ", ";
   
-  sz = clist_bib_->selection().size();
+  int sz = clist_bib_->selection().size();
   for (int i=0; i < sz; ++i)
     {
       if (i > 0) contents += ", ";
@@ -894,7 +887,7 @@ void FormCitation::search()
 // looking for entries which match regexp
 void FormCitation::searchReg()
 {
-  string tmp, rexptxt( search_string_ );
+  string rexptxt(search_string_);
   rexptxt = frontStrip( strip( rexptxt ) );
   
   LRegex reg(rexptxt);
@@ -908,7 +901,7 @@ void FormCitation::searchReg()
   bool additem;
   for ( int i = 0; i < sz; ++i )
     {
-      string data = bibkeys[i] + bibkeysInfo[i];
+      string const data = bibkeys[i] + bibkeysInfo[i];
 
       if (rexptxt.empty()) additem = true;
       else additem = (reg.exec(data).size() > 0);

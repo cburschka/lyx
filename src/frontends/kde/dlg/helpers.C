@@ -19,9 +19,7 @@
 
 using std::endl;
 
-#ifdef CXX_WORKING_NAMESPACES
 namespace kde_helpers {
-#endif
 
 bool setComboFromStr(QComboBox *box, const string & str)
 {
@@ -35,6 +33,4 @@ bool setComboFromStr(QComboBox *box, const string & str)
 	return false;
 }
 
-#ifdef CXX_WORKING_NAMESPACES
-}; /* namespace kde_helpers */
-#endif
+} // namespace kde_helpers

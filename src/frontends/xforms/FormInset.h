@@ -36,7 +36,7 @@ protected:
 	virtual void updateSlot(bool);
 
 	/// inset::hide connection.
-	Connection ih_;
+	SigC::Connection ih_;
 };
 
 

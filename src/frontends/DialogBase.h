@@ -20,22 +20,13 @@
 #include <sigc++/signal_system.h>
 #include <boost/utility.hpp>
 
-// If we do not want to bring them in global namespace, they could be
-// defined inside DialogBase... (JMarc) 
-#ifdef SIGC_CXX_NAMESPACES
-using SigC::Connection;
-using SigC::slot;
-using SigC::Object;
-#endif
-
-
 /** Abstract base class of all dialogs.
     The outside world only needs some way to tell a dialog when to show, hide
     or update itself.  A dialog then takes whatever steps are necessary to
     satisfy that request.  Thus a dialog will have to "pull" the necessary
     details from the core of the program.
  */
-class DialogBase : public Object, public boost::noncopyable
+class DialogBase : public SigC::Object, public boost::noncopyable
 {
 public:
 	/**@name Constructors and Deconstructors */

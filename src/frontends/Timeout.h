@@ -17,10 +17,6 @@
 
 #include <sigc++/signal_system.h>
 
-#ifdef SIGC_CXX_NAMESPACES
-using SigC::Signal0;
-#endif
-
 /**
  * This class executes the callback when the timeout expires.
  */
@@ -46,7 +42,7 @@ public:
 	/// restart the timer
 	void restart();
 	/// signal emitted on timer expiry
-	Signal0<void> timeout;
+	SigC::Signal0<void> timeout;
 	/// emit the signal
 	void emit();
 	/// set the timer type

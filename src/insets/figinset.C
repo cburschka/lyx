@@ -65,10 +65,6 @@
 #include "converter.h"
 #include "frontends/Dialogs.h" // redrawGUI
 
-#ifdef SIGC_CXX_NAMESPACES
-using SigC::slot;
-#endif
-
 using std::ostream;
 using std::istream;
 using std::ofstream;
@@ -955,7 +951,7 @@ InsetFig::InsetFig(int tmpx, int tmpy, Buffer const & o)
 	raw_wid = raw_hgh = 0;
 	changedfname = false;
 	RegisterFigure(this);
-	r_ = Dialogs::redrawGUI.connect(slot(this, &InsetFig::redraw));
+	r_ = Dialogs::redrawGUI.connect(SigC::slot(this, &InsetFig::redraw));
 }
 
 

@@ -13,12 +13,8 @@
 
 class LyXView;
 
-#ifdef SIGC_CXX_NAMESPACES
-using SigC::Object;
-#endif
-
 ///
-class MiniBuffer : public Object{
+class MiniBuffer : public SigC::Object {
 public:
 	///
 	MiniBuffer(LyXView * o,

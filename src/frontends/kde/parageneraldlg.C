@@ -15,9 +15,7 @@
 
 #include <qtooltip.h>
 
-#ifdef CXX_WORKING_NAMESPACES
 using kde_helpers::setSizeHint;
-#endif
 
 ParaGeneralDialog::ParaGeneralDialog (QWidget * parent, char const * name)
 	: ParaGeneralDialogData(parent, name)

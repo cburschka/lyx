@@ -40,9 +40,7 @@
 #include "bufferview_funcs.h"
 #include "xforms_helpers.h" 
 
-#ifdef CXX_WORKING_NAMESPACES
 using Liason::setMinibuffer;
-#endif
 
 #define USE_CLASS_COMBO 1
 

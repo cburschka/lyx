@@ -21,10 +21,6 @@
 #include "LString.h"
 #include <sigc++/signal_system.h>
 
-#ifdef SIGC_CXX_NAMESPACES
-using SigC::Signal0;
-#endif
-
 ///
 class InsetExternal : public InsetButton {
 public:
@@ -101,7 +97,7 @@ public:
 	InsetExternalParams params() const;
 
 	/// hide connection
-	Signal0<void> hideDialog;
+	SigC::Signal0<void> hideDialog;
 
 private:
 	/// Write the output for a specific file format

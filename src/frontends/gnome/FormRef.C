@@ -39,8 +39,6 @@
 #include "mainapp.h"
 extern GLyxAppWin * mainAppWin;
 
-using SigC::bind;
-
 // configuration keys
 static string const CONF_ENTRY_NAME("FormRef_name");
 

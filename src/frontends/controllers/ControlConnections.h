@@ -45,9 +45,9 @@ protected:
 	/// Contains the signals we have to connect to.
 	Dialogs & d_;
 	/// Hide connection.
-	Connection h_;
+	SigC::Connection h_;
 	/// Redraw connection.
-	Connection r_;
+	SigC::Connection r_;
 };
 
 
@@ -91,7 +91,7 @@ protected:
 
 private:
 	/// Update connection.
-	Connection u_;
+	SigC::Connection u_;
 };
 
 /** Base class to control connection/disconnection of signals with the LyX
@@ -122,14 +122,14 @@ protected:
 
 private:
 	/// inset::hide connection.
-	Connection ih_;
+	SigC::Connection ih_;
 };
 
 
 template <class Inset>
 ControlConnectInset<Inset>::ControlConnectInset(LyXView & lv, Dialogs & d)
 	: ControlConnectBD(lv, d),
-	  ih_(0), inset_(0)
+	  inset_(0), ih_(0)
 {}
 
 

@@ -109,9 +109,9 @@ protected: // methods
 	/// Used so we can get at the signals we have to connect to.
 	Dialogs * d_;
 	/// Hide connection.
-	Connection h_;
+	SigC::Connection h_;
 	/// Redraw connection.
-	Connection r_;
+	SigC::Connection r_;
 	/// dialog title, displayed by WM.
   	string title;
 public:
@@ -151,7 +151,7 @@ protected:
 	virtual void updateSlot(bool) { update(); }
 
 	/// Update connection.
-	Connection u_;
+	SigC::Connection u_;
 };
 
 

@@ -37,16 +37,15 @@ extern "C" {
 #include <gtk--/menu.h>
 #include <gtk--/menuitem.h>
 
-using SigC::bind;
-
 FormToc::FormToc(LyXView * lv, Dialogs * d)
-  : lv_(lv), d_(d), inset_(0), u_(0), h_(0), ih_(0), dialog_(0), ignore_callback_(false)
+  : lv_(lv), d_(d), inset_(0), u_(0), h_(0), ih_(0), dialog_(0),
+    ignore_callback_(false)
 {
   // let the dialog be shown
   // These are permanent connections so we won't bother
   // storing a copy because we won't be disconnecting.
-  d->showTOC.connect(slot(this, &FormToc::showInset));
-  d->createTOC.connect(slot(this, &FormToc::createInset));
+  d->showTOC.connect(SigC::slot(this, &FormToc::showInset));
+  d->createTOC.connect(SigC::slot(this, &FormToc::createInset));
 }
 
 
@@ -57,10 +56,10 @@ FormToc::~FormToc()
 
 void FormToc::showInset( InsetCommand * const inset )
 {
-  if( dialog_!=0 || inset == 0 ) return;
+  if ( dialog_!=0 || inset == 0 ) return;
   
   inset_ = inset;
-  ih_ = inset_->hideDialog.connect(slot(this, &FormToc::hide));
+  ih_ = inset_->hideDialog.connect(SigC::slot(this, &FormToc::hide));
   
   params = inset->params();
   show();
@@ -99,31 +98,31 @@ void FormToc::show()
       choice_->get_menu()->items().clear();
       
       e = manage( new Gtk::MenuItem(_("Table of Contents")) );
-      e->activate.connect(bind<Buffer::TocType>(slot(this, &FormToc::changeList), Buffer::TOC_TOC));
+      e->activate.connect(SigC::bind<Buffer::TocType>(SigC::slot(this, &FormToc::changeList), Buffer::TOC_TOC));
       choice_->get_menu()->append( *e );
 
       e = manage( new Gtk::MenuItem(_("List of Figures")) );
-      e->activate.connect(bind<Buffer::TocType>(slot(this, &FormToc::changeList), Buffer::TOC_LOF));
+      e->activate.connect(SigC::bind<Buffer::TocType>(SigC::slot(this, &FormToc::changeList), Buffer::TOC_LOF));
       choice_->get_menu()->append( *e );
 
       e = manage( new Gtk::MenuItem(_("List of Tables")) );
-      e->activate.connect(bind<Buffer::TocType>(slot(this, &FormToc::changeList), Buffer::TOC_LOT));
+      e->activate.connect(SigC::bind<Buffer::TocType>(SigC::slot(this, &FormToc::changeList), Buffer::TOC_LOT));
       choice_->get_menu()->append( *e );
 
       e = manage( new Gtk::MenuItem(_("List of Algorithms")) );
-      e->activate.connect(bind<Buffer::TocType>(slot(this, &FormToc::changeList), Buffer::TOC_LOA));
+      e->activate.connect(SigC::bind<Buffer::TocType>(SigC::slot(this, &FormToc::changeList), Buffer::TOC_LOA));
       choice_->get_menu()->append( *e );
 
       // wrap buttons and connect slots
       b_refresh = Gtk::wrap( GTK_BUTTON( lookup_widget(pd, "button_refresh") ) );
       b_close   = Gtk::wrap( GTK_BUTTON( lookup_widget(pd, "button_close") ) );
       
-      b_refresh->clicked.connect(bind<bool>(slot(this, &FormToc::updateSlot),false));
+      b_refresh->clicked.connect(SigC::bind<bool>(SigC::slot(this, &FormToc::updateSlot),false));
       b_close->clicked.connect(dialog_->destroy.slot());
-      dialog_->destroy.connect(slot(this, &FormToc::free));
+      dialog_->destroy.connect(SigC::slot(this, &FormToc::free));
 
-      u_ = d_->updateBufferDependent.connect(slot(this, &FormToc::updateSlot));
-      h_ = d_->hideBufferDependent.connect(slot(this, &FormToc::hide));
+      u_ = d_->updateBufferDependent.connect(SigC::slot(this, &FormToc::updateSlot));
+      h_ = d_->hideBufferDependent.connect(SigC::slot(this, &FormToc::hide));
 
       if (!dialog_->is_visible()) dialog_->show_all();
 

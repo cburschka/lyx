@@ -22,20 +22,14 @@
 
 #include <kmsgbox.h>
 
-#ifdef SIGC_CXX_NAMESPACES
-using SigC::slot;
-#endif
-
-#ifdef CXX_WORKING_NAMESPACES
 using Liason::printBuffer;
 using Liason::getPrinterParams;
 using std::max;
-#endif
 
 FormPrint::FormPrint(LyXView *v, Dialogs *d)
 	: dialog_(0), lv_(v), d_(d), h_(0), u_(0)
 {
-	d->showPrint.connect(slot(this, &FormPrint::show));
+	d->showPrint.connect(SigC::slot(this, &FormPrint::show));
 }
 
 
@@ -88,8 +82,7 @@ void FormPrint::print()
 			to = strToInt(dialog_->getTo());
 	}
 	
-	int retval; 
-	retval = printBuffer(lv_->buffer(), PrinterParams(dialog_->getTarget(),
+	int retval = printBuffer(lv_->buffer(), PrinterParams(dialog_->getTarget(),
 		string(dialog_->getPrinter()), string(dialog_->getFile()), 
 		dialog_->getWhichPages(), from, to, dialog_->getReverse(), 
 		dialog_->getSort(), max(strToInt(dialog_->getCount()),1)));
@@ -112,8 +105,8 @@ void FormPrint::show()
 		dialog_ = new PrintDialog(this, 0, _("LyX: Print"));
  
 	if (!dialog_->isVisible()) {
-		h_ = d_->hideBufferDependent.connect(slot(this, &FormPrint::hide));
-		u_ = d_->updateBufferDependent.connect(slot(this, &FormPrint::update));
+		h_ = d_->hideBufferDependent.connect(SigC::slot(this, &FormPrint::hide));
+		u_ = d_->updateBufferDependent.connect(SigC::slot(this, &FormPrint::update));
 	}
 
 	dialog_->raise();

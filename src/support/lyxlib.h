@@ -19,50 +19,39 @@
 // (an inlined member of some class)?
 
 // Use a namespace if we can, a struct otherwise
-#ifdef CXX_WORKING_NAMESPACES
-#define OPT_STATIC
 namespace lyx {
-#else
-#define OPT_STATIC static
-struct lyx {
-#endif	
-	///
-	OPT_STATIC string const getcwd();
-        ///
-        OPT_STATIC int chdir(string const & name);
-        /// Returns false if it fails
-        OPT_STATIC bool rename(string const & from, string const & to);
-	/// Returns false it it fails
-	OPT_STATIC bool copy(string const & from, string const & to);
-	/// generates a checksum
-	OPT_STATIC unsigned long sum(string const & file);
-	/// returns a date string (not used currently)
-	OPT_STATIC char * date(); 
-	/// returns the name of the user (not used currently)
-	OPT_STATIC string const getUserName();
-	///
-	OPT_STATIC int kill(int pid, int sig);
-	///
-	OPT_STATIC void abort();
-        ///
-        OPT_STATIC int mkdir(string const & pathname, unsigned long int mode);
-	///
-	OPT_STATIC int putenv(char const * str);
-        ///
-        OPT_STATIC int unlink(string const & file);
-        ///
-        OPT_STATIC int rmdir(string const & file);
-        ///
-        OPT_STATIC int atoi(string const & nstr);
-	///
-	OPT_STATIC string const tempName(string const & dir = string(),
-					 string const & mask = string());
-#ifdef CXX_WORKING_NAMESPACES
-}
-#else
-};
-#endif
 
-#undef OPT_STATIC
-	
+///
+string const getcwd();
+///
+int chdir(string const & name);
+/// Returns false if it fails
+bool rename(string const & from, string const & to);
+/// Returns false it it fails
+bool copy(string const & from, string const & to);
+/// generates a checksum
+unsigned long sum(string const & file);
+/// returns a date string (not used currently)
+char * date(); 
+/// returns the name of the user (not used currently)
+string const getUserName();
+///
+int kill(int pid, int sig);
+///
+void abort();
+///
+int mkdir(string const & pathname, unsigned long int mode);
+///
+int putenv(char const * str);
+///
+int unlink(string const & file);
+///
+int rmdir(string const & file);
+///
+int atoi(string const & nstr);
+///
+string const tempName(string const & dir = string(),
+		      string const & mask = string());
+
+} // namespace lyx
 #endif /* LYX_LIB_H */

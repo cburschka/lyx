@@ -74,7 +74,7 @@ private:
 	ButtonController<OkCancelReadOnlyPolicy, xformsBC> bc_;
 
 	/// inset::hide connection.
-	Connection ih_;
+	SigC::Connection ih_;
  
 	/// pointer to the inset passed through showInset
 	InsetInclude * inset_;

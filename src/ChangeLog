@@ -1,5 +1,7 @@
 2001-03-15  Lars Gullik Bjønnes  <larsbj@trylle.birdstep.com>
 
+	* several files: remove CXX_WORKING_NAMESPACES
+
 	* buffer.C (pop_tag): tie is in namespace boost
 
 	* BufferView.h: noncopyable is in namespace boost

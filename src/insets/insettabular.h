@@ -56,10 +56,6 @@
 #include "lyxfunc.h"
 #include <sigc++/signal_system.h>
 
-#ifdef SIGC_CXX_NAMESPACES
-using SigC::Signal0;
-#endif
-
 class LyXLex;
 class Painter;
 class BufferView;
@@ -180,7 +176,7 @@ public:
     ///
     LyXTabular * tabular;
     ///
-    Signal0<void> hideDialog;
+    SigC::Signal0<void> hideDialog;
 
 private:
     ///

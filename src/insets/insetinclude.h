@@ -106,7 +106,7 @@ public:
 	bool loadIfNeeded() const;
  
 	/// hide a dialog if about 
-	Signal0<void> hideDialog;
+	SigC::Signal0<void> hideDialog;
 private:
 	/// get the text displayed on the button
 	string const getScreenLabel() const;

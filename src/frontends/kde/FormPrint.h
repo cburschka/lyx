@@ -1,3 +1,4 @@
+// -*- C++ -*-
 /**
  * \file FormPrint.h
  * Copyright 2001 the LyX Team
@@ -16,14 +17,12 @@ class Dialogs;
 class LyXView;
 class PrintDialog;
 
-#ifdef SIGC_CXX_NAMESPACES
-using SigC::Connection;
-#endif
-
+///
 class FormPrint : public DialogBase {
-public: 
+public:
+        ///
 	FormPrint(LyXView *, Dialogs *);
-
+	///
 	~FormPrint();
 
 	/// start print
@@ -51,9 +50,9 @@ private:
 	Dialogs * d_;
 	
 	/// Hide connection.
-	Connection h_;
+	SigC::Connection h_;
 	/// Update connection.
-	Connection u_;
+	SigC::Connection u_;
 };
 
 #endif // FORMPRINT_H

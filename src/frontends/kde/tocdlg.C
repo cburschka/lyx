@@ -11,9 +11,7 @@
 
 #include "dlg/helpers.h"
 
-#ifdef CXX_WORKING_NAMESPACES
 using kde_helpers::setSizeHint;
-#endif
 
 TocDialog::TocDialog(FormToc * form, QWidget * parent, char const * name, bool, WFlags)
 	: QDialog(parent,name,0), form_(form)

@@ -19,10 +19,7 @@
 #include "lyxtext.h"
 #include "debug.h"
 
-#ifdef CXX_WORKING_NAMESPACES
 using Liason::setMinibuffer;
-#endif
-
 using std::endl;
 
 FormParagraph::FormParagraph(LyXView *v, Dialogs *d)

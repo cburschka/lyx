@@ -30,10 +30,6 @@
 #include "support/path.h"
 #include "support/syscall.h"
 
-#ifdef SIGC_CXX_NAMESPACES
-using SigC::slot;
-#endif
-
 using std::endl;
 
 InsetExternal::InsetExternal() 

@@ -22,14 +22,8 @@
 #include <sigc++/signal_system.h>
 #include "LString.h"
 
-#ifdef SIGC_CXX_NAMESPACES
-using SigC::Object;
-using SigC::Signal0;
-#endif
-
-
 ///
-class Counter : public Object {
+class Counter : public SigC::Object {
 public:
 	///
 	Counter();
@@ -44,7 +38,7 @@ public:
 	///
 	void reset();
 	///
-	Signal0<void> onstep;
+	SigC::Signal0<void> onstep;
 private:
 	///
 	int value_;

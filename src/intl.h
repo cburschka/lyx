@@ -21,11 +21,6 @@
 class LyXText;
 class Combox;
 
-#ifdef SIGC_CXX_NAMESPACES
-using SigC::Object;
-using SigC::Connection;
-#endif
-
 /// default character set
 #define DEFCHSET "iso8859-1"
 
@@ -34,7 +29,7 @@ using SigC::Connection;
   classes. Probably should the gui class just have a pointer to the non
   gui class.
   */
-class Intl : public Object {
+class Intl : public SigC::Object {
 public:
 	///
 	Intl();
@@ -101,7 +96,7 @@ private:
 	///
 	TransManager trans;
 	/// Redraw connection.
-	Connection r_;
+	SigC::Connection r_;
 };
 
 

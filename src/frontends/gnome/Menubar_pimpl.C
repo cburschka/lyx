@@ -36,9 +36,6 @@
 
 #include <gtk--/menu.h>
 
-using SigC::slot;
-using SigC::bind;
-
 using std::endl;
 
 // temporary solution for LyXView
@@ -66,7 +63,7 @@ Menubar::Pimpl::~Pimpl()
 void Menubar::Pimpl::set(string const & menu_name) 
 {
   // if (current_menu_name_ != menu_name)  // disabled until Lastfiles and Documents are added dynamically to menu
-    {
+	//{
       current_menu_name_ = menu_name;
 
       // clean up the lists
@@ -90,7 +87,7 @@ void Menubar::Pimpl::set(string const & menu_name)
       // update state of the items
       update();
       updateAllLists();
-    }
+      //}
 }
 
 void Menubar::Pimpl::updateAllLists()
@@ -104,6 +101,7 @@ void Menubar::Pimpl::updateAllLists()
 }
 
 int const max_number_of_items = 25;
+
 void Menubar::Pimpl::updateList(vector<Buffer::TocItem> * toclist, vector<ListsHolder> * pgui) 
 {
   vector<ListsHolder> & gui = *pgui;
@@ -116,7 +114,7 @@ void Menubar::Pimpl::updateList(vector<Buffer::TocItem> * toclist, vector<ListsH
       string label;
 
       menu.push_back(Gnome::UI::Item(Gnome::UI::Icon(GNOME_STOCK_MENU_REFRESH),
-				     _("Refresh"), slot(this, &Menubar::Pimpl::updateAllLists)));
+				     _("Refresh"), SigC::slot(this, &Menubar::Pimpl::updateAllLists)));
 
       if (toclist->size() > max_number_of_items)
 	composeTocUIInfo(menu, *toclist, toclist->begin(), 0);
@@ -130,7 +128,7 @@ void Menubar::Pimpl::updateList(vector<Buffer::TocItem> * toclist, vector<ListsH
 	      label = string(4*(*it).depth,' ')+(*it).str;
 	      
 	      menu.push_back(Gnome::UI::Item(label,
-					     bind<Buffer::TocItem>(slot(this, &Menubar::Pimpl::callbackToc), (*it)),
+					     SigC::bind<Buffer::TocItem>(SigC::slot(this, &Menubar::Pimpl::callbackToc), (*it)),
 					     label));
 	    }
 	}
@@ -157,7 +155,7 @@ Menubar::Pimpl::composeTocUIInfo(vector<Gnome::UI::Info> & menu,
 	{
 	  label = (*it).str;
 	  menu.push_back(Gnome::UI::Item(label,
-				       bind<Buffer::TocItem>(slot(this, &Menubar::Pimpl::callbackToc), (*it)),
+				       SigC::bind<Buffer::TocItem>(SigC::slot(this, &Menubar::Pimpl::callbackToc), (*it)),
 					 label));
 	}
       else
@@ -167,7 +165,7 @@ Menubar::Pimpl::composeTocUIInfo(vector<Gnome::UI::Info> & menu,
 	    {
 	      label = (*it).str;
 	      submenu.push_back(Gnome::UI::Item(label,
-						bind<Buffer::TocItem>(slot(this, &Menubar::Pimpl::callbackToc), (*it)),
+						SigC::bind<Buffer::TocItem>(SigC::slot(this, &Menubar::Pimpl::callbackToc), (*it)),
 						label));
 	      ++it;    
 	    }
@@ -233,7 +231,7 @@ void Menubar::Pimpl::composeUIInfo(string const & menu_name, vector<Gnome::UI::I
 	LyXFunc::func_status flag = owner_->getLyXFunc()->getStatus(item.action());
 
 	Gnome::UI::Info gitem;
-	SigC::Slot0<void> cback = bind<int>(slot(this, &Menubar::Pimpl::callback),item.action());
+	SigC::Slot0<void> cback = SigC::bind<int>(SigC::slot(this, &Menubar::Pimpl::callback),item.action());
 
 	{
 	  using namespace Gnome::MenuItems;

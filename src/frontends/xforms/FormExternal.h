@@ -89,7 +89,7 @@ private:
 	bool input(FL_OBJECT * obj, long data);
 
 	/// inset::hide connection.
-	Connection ih_;
+	SigC::Connection ih_;
 
 	/// build the dialog
 	FD_form_external * build_external();

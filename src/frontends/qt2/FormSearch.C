@@ -19,9 +19,7 @@
 //#include "language.h"
 #include "support/lstrings.h"
 
-#ifdef CXX_WORKING_NAMESPACES
 using Liason::setMinibuffer;
-#endif
 
 FormSearch::FormSearch(LyXView *v, Dialogs *d)
 	: dialog_(0), lv_(v), d_(d), h_(0), u_(0)
@@ -29,7 +27,7 @@ FormSearch::FormSearch(LyXView *v, Dialogs *d)
    // let the popup be shown
    // This is a permanent connection so we won't bother
    // storing a copy because we won't be disconnecting.
-   d->showSearch.connect(slot(this, &FormSearch::show));
+   d->showSearch.connect(SigC::slot(this, &FormSearch::show));
    // perhaps in the future we'd like a
    // "search again" button/keybinding
 //    d->searchAgain.connect(slot(this, &FormSearch::FindNext));
@@ -48,8 +46,8 @@ void FormSearch::show()
    }
 
    if (!dialog_->isVisible()) {
-      h_ = d_->hideBufferDependent.connect(slot(this, &FormSearch::hide));
-      u_ = d_->updateBufferDependent.connect(slot(this, &FormSearch::update));
+      h_ = d_->hideBufferDependent.connect(SigC::slot(this, &FormSearch::hide));
+      u_ = d_->updateBufferDependent.connect(SigC::slot(this, &FormSearch::update));
    }
    
    dialog_->raise();
@@ -88,6 +86,8 @@ void FormSearch::replace(string const & searchstr, string const & replacestr,
       }
    }
 }
+
+
 void FormSearch::close()
 {
    h_.disconnect();

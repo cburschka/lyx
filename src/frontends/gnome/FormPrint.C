@@ -37,15 +37,8 @@ extern "C" {
 #include <gtk--/base.h>
 #include <gtk--/button.h>
 
-#ifdef SIGC_CXX_NAMESPACES
-using SigC::slot;
-using SigC::bind;
-#endif
-
-#ifdef CXX_WORKING_NAMESPACES
 using Liason::printBuffer;
 using Liason::getPrinterParams;
-#endif
 
 FormPrint::FormPrint(LyXView * lv, Dialogs * d)
   : dialog_(0), lv_(lv), d_(d), u_(0), h_(0)
@@ -53,7 +46,7 @@ FormPrint::FormPrint(LyXView * lv, Dialogs * d)
   // let the dialog be shown
   // This is a permanent connection so we won't bother
   // storing a copy because we won't be disconnecting.
-  d->showPrint.connect(slot(this,&FormPrint::show));
+  d->showPrint.connect(SigC::slot(this,&FormPrint::show));
 }
 
 
@@ -97,12 +90,12 @@ void FormPrint::show()
       b_cancel = Gtk::wrap( GTK_BUTTON( lookup_widget(pd, "button_cancel") ) );
 
       // setting up connections
-      b_ok->clicked.connect(slot(this, &FormPrint::apply));
+      b_ok->clicked.connect(SigC::slot(this, &FormPrint::apply));
       b_ok->clicked.connect(dialog_->destroy.slot());
       b_cancel->clicked.connect(dialog_->destroy.slot());
-      dialog_->destroy.connect(slot(this, &FormPrint::free));
+      dialog_->destroy.connect(SigC::slot(this, &FormPrint::free));
 
-      u_ = d_->updateBufferDependent.connect(slot(this,
+      u_ = d_->updateBufferDependent.connect(SigC::slot(this,
 						  &FormPrint::updateSlot));
       h_ = d_->hideBufferDependent.connect(dialog_->destroy.slot());
 

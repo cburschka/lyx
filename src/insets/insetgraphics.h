@@ -26,22 +26,12 @@
 
 // We need a signal here to hide an active dialog when we are deleted.
 #include "sigc++/signal_system.h"
-#ifdef SIGC_CXX_NAMESPACES
-using SigC::Signal0;
-using SigC::slot;
-using SigC::Object;
-#endif 
 
 class Dialogs;
 class LyXImage;
 
 ///
-#ifdef SIGC_CXX_NAMESPACES
-class InsetGraphics : public Inset, public SigC::Object
-#else
-class InsetGraphics : public Inset, public Object
-#endif
-{
+class InsetGraphics : public Inset, public SigC::Object {
 public:
 	///
 	InsetGraphics();
@@ -101,7 +91,7 @@ public:
 	/** This signal is connected by our dialog and called when the inset
 	    is deleted.
 	*/
-	Signal0 <void> hideDialog;
+	SigC::Signal0<void> hideDialog;
 
 private:
 	/// Update the inset after parameter change.

@@ -15,9 +15,7 @@
 
 #include <gettext.h>
 
-#ifdef CXX_WORKING_NAMESPACES
 using kde_helpers::setSizeHint;
-#endif
 
 ParaExtraDialog::ParaExtraDialog (QWidget * parent, char const * name) 
 	: ParaExtraDialogData(parent, name)

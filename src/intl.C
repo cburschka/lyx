@@ -31,10 +31,6 @@
 #include "language.h"
 #include "frontends/Dialogs.h" // redrawGUI
 
-#ifdef SIGC_CXX_NAMESPACES
-using SigC::slot;
-#endif
-
 using std::endl;
 
 // a wrapper around the callback static member.

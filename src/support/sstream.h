@@ -39,11 +39,8 @@ the executable file might be covered by the GNU General Public License. */
 #include <iostream>
 #include <streambuf.h>
 
-#ifdef CXX_WORKING_NAMESPACES
 namespace std
 {
-#endif
-	
   class stringbuf : public streambuf
   {
   public:
@@ -169,9 +166,7 @@ namespace std
     { }
   };
 
-#ifdef CXX_WORKING_NAMESPACES
-}
-#endif
+} // namespace std
 
 inline int stringbuf::sync()
 {

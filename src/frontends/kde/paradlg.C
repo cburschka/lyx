@@ -17,10 +17,7 @@
 #include "gettext.h"
 #include "debug.h"
 
-#ifdef CXX_WORKING_NAMESPACES
 using kde_helpers::setSizeHint;
-#endif
-
 using std::endl;
 
 ParaDialog::ParaDialog(FormParagraph * form, QWidget * parent, char const * name, bool, WFlags)

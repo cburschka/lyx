@@ -20,10 +20,6 @@
 #include "LString.h"
 #include <sigc++/signal_system.h>
 
-#ifdef SIGC_CXX_NAMESPACES
-using SigC::Signal0;
-#endif
-
 /** Used for error messages from LaTeX runs.
   
   The edit-operation opens a 
@@ -73,8 +69,7 @@ public:
 	///
 	string const & getContents() const { return contents; }
 	///
-	Signal0<void> hideDialog;
-
+	SigC::Signal0<void> hideDialog;
 private:
 	///
 	string contents;

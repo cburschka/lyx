@@ -1,3 +1,4 @@
+// -*- C++ -*-
 /**
  * \file FormFiledialog.h
  * Copyright 2001 the LyX Team
@@ -25,11 +26,6 @@
 
 #include "frontends/FileDialog.h"
 
-#ifdef SIGC_CXX_NAMESPACES
-using SigC::Object;
-using SigC::Connection;
-#endif
-
 /// DirEntry internal structure definition
 class DirEntry {
 public:
@@ -45,7 +41,7 @@ extern "C" void C_LyXFileDlg_FileDlgCB(FL_OBJECT * ob, long data);
 extern "C" void C_LyXFileDlg_DoubleClickCB(FL_OBJECT * ob, long data);
 extern "C" int C_LyXFileDlg_CancelCB(FL_FORM *fl, void *xev);
 
-class FileDialog::Private : public Object
+class FileDialog::Private : public SigC::Object
 {
 public:
 	///
@@ -128,7 +124,7 @@ private:
 	/// Simulates a click on OK/Cancel
 	void Force(bool);
 	/// Redraw connection.
-	Connection r_;
+	SigC::Connection r_;
 };
 
 #endif // FORMFILEDIALOG_H

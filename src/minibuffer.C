@@ -30,10 +30,6 @@
 
 using std::endl;
 
-#ifdef SIGC_CXX_NAMESPACES
-using SigC::slot;
-#endif
-
 extern bool keyseqUncomplete();
 extern string keyseqOptions(int l = 190);
 extern string keyseqStr(int l = 190);

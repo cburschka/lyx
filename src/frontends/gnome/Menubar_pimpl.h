@@ -28,10 +28,6 @@ class MenuBackend;
 class MenuItem;
 class StrPool;
 
-#ifdef SIGC_CXX_NAMESPACES
-using SigC::Connection;
-#endif
-
 #include "debug.h"
 
 /*
@@ -107,7 +103,7 @@ private:
   vector<GtkWidgetToAction> wid_act_;
 
   /// toc
-  Connection utoc_;
+  SigC::Connection utoc_;
   vector<ListsHolder> toc_;
 };
 #endif

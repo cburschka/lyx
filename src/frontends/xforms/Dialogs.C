@@ -50,7 +50,7 @@
 
 // Signal enabling all visible popups to be redrawn if so desired.
 // E.g., when the GUI colours have been remapped.
-Signal0<void> Dialogs::redrawGUI;
+SigC::Signal0<void> Dialogs::redrawGUI;
 
 Dialogs::Dialogs(LyXView * lv)
 {

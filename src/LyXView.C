@@ -50,10 +50,6 @@ BufferView * current_view;
 
 extern "C" int C_LyXView_atCloseMainFormCB(FL_FORM *, void *);
 
-#ifdef SIGC_CXX_NAMESPACES
-using SigC::Connection;
-using SigC::slot;
-#endif
 
 LyXView::LyXView(int width, int height)
 {
@@ -70,11 +66,11 @@ LyXView::LyXView(int width, int height)
 	dialogs_ = new Dialogs(this);
 	// temporary until all dialogs moved into Dialogs.
 	dialogs_->updateBufferDependent
-		.connect(slot(&updateAllVisibleBufferRelatedDialogs));
+		.connect(SigC::slot(&updateAllVisibleBufferRelatedDialogs));
 	dialogs_->hideBufferDependent
-		.connect(slot(&CloseAllBufferRelatedDialogs));
-	Dialogs::redrawGUI.connect(slot(this, &LyXView::redraw));
-	Dialogs::redrawGUI.connect(slot(&RedrawAllBufferRelatedDialogs));
+		.connect(SigC::slot(&CloseAllBufferRelatedDialogs));
+	Dialogs::redrawGUI.connect(SigC::slot(this, &LyXView::redraw));
+	Dialogs::redrawGUI.connect(SigC::slot(&RedrawAllBufferRelatedDialogs));
 }
 
 
@@ -274,7 +270,7 @@ void LyXView::create_form_form_main(int width, int height)
 	// TIMERS
 	//
 
-	autosave_timeout.timeout.connect(slot(this, &LyXView::AutoSave));
+	autosave_timeout.timeout.connect(SigC::slot(this, &LyXView::AutoSave));
 	
 	//
 	// Misc

@@ -31,10 +31,6 @@
 class LyXView;
 class Dialogs;
 
-#ifdef SIGC_CXX_NAMESPACES
-using SigC::Connection;
-#endif
-
 /** This class provides an Gnome implementation of the FormPrint Dialog.
     The print dialog allows users to print their documents.
  */
@@ -99,9 +95,9 @@ private:
   LyXView * lv_;
   Dialogs * d_;
   /// Update connection.
-  Connection u_;
+  SigC::Connection u_;
   /// Hide connection.
-  Connection h_;
+  SigC::Connection h_;
   //@}
 };
 

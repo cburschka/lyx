@@ -25,9 +25,7 @@
 #include "language.h"
 #include "combox.h"
 
-#ifdef CXX_WORKING_NAMESPACES
 using Liason::setMinibuffer;
-#endif
 
 
 FormCharacter::FormCharacter(LyXView * lv, Dialogs * d)

@@ -26,9 +26,7 @@
 #include "lyxtext.h"
 #include "xforms_helpers.h"
 
-#ifdef CXX_WORKING_NAMESPACES
 using Liason::setMinibuffer;
-#endif
 
 FormParagraph::FormParagraph(LyXView * lv, Dialogs * d)
 	: FormBaseBD(lv, d, _("Paragraph Layout"))

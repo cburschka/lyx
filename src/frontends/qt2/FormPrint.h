@@ -15,10 +15,6 @@ class Dialogs;
 class LyXView;
 class PrintDlgImpl;
 
-#ifdef SIGC_CXX_NAMESPACES
-using SigC::Connection;
-#endif
-
 class FormPrint : public DialogBase {
 public: 
 	/**@name Constructors and Destructors */
@@ -54,9 +50,9 @@ private:
 	Dialogs * d_;
 	
 	/// Hide connection.
-	Connection h_;
+	SigC::Connection h_;
 	/// Update connection.
-	Connection u_;
+	SigC::Connection u_;
 };
 
 #endif

@@ -23,9 +23,7 @@
 #include "gettext.h"
 #include "xforms_helpers.h"
 
-#ifdef CXX_WORKING_NAMESPACES
 using Liason::setMinibuffer;
-#endif
 
 FormPreamble::FormPreamble(LyXView * lv, Dialogs * d)
 	: FormBaseBD(lv, d, _("LaTeX preamble"))

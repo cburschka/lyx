@@ -23,9 +23,7 @@
 #include "lyxfind.h"
 #include "debug.h"
 
-#ifdef CXX_WORKING_NAMESPACES
 using Liason::setMinibuffer;
-#endif
 
 
 FormSearch::FormSearch(LyXView * lv, Dialogs * d)

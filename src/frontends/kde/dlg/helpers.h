@@ -16,9 +16,7 @@
 
 #include "vspace.h"
 
-#ifdef CXX_WORKING_NAMESPACES
 namespace kde_helpers {
-#endif
  
 /**
  * \fn setSizeHint
@@ -43,8 +41,6 @@ inline void setSizeHint(QWidget *widget)
  */
 bool setComboFromStr(QComboBox *box, const string & str);
 
-#ifdef CXX_WORKING_NAMESPACES
-}; /* namespace kde_helpers */
-#endif
+} // namespace kde_helpers
 
 #endif /* HELPERS_H */

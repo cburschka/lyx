@@ -19,10 +19,6 @@
 #include "lyxrc.h"
 #include "buffer.h"
 
-#ifdef SIGC_CXX_NAMESPACES
-using SigC::slot;
-#endif
-
 FormLog::FormLog(LyXView * lv, Dialogs * d)
 	: FormBrowser(lv, d, _("LaTeX Log"))
 {

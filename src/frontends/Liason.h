@@ -44,10 +44,7 @@ class BufferParams;
     worked so nicely on a very small number of compilers and systems.
     See the "dialogbase" branch of lyx-devel cvs module for xtl implementation.
 */
-#ifdef CXX_WORKING_NAMESPACES
-namespace Liason
-{
-#endif
+namespace Liason {
 	/**@name Global support functions */
 	//@{
 	/// get global printer parameters
@@ -58,8 +55,9 @@ namespace Liason
 	void setMinibuffer(LyXView *, char const  * msg);
 	//@}
 
-#ifdef CXX_WORKING_NAMESPACES
-}
+} // namespace Liason
 #endif
 
-#endif
+
+
+

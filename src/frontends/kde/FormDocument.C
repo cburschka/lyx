@@ -20,9 +20,7 @@
 #include "QtLyXView.h"
 #include "debug.h"
 
-#ifdef CXX_WORKING_NAMESPACES
 using Liason::setMinibuffer;
-#endif
 
 FormDocument::FormDocument(LyXView *v, Dialogs *d)
 	: dialog_(0), lv_(v), d_(d), h_(0)
