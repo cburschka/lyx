@@ -26,7 +26,7 @@ What's new
   changes :
 
   o start spell-checking immediately on pressing F7
-  o xform's broken start/stop button removed
+  o xforms' broken start/stop button removed
   o better spell progress feedback
   o long hang on ispell error changed
   o infinite hang on ispell error fixed
@@ -68,7 +68,7 @@ What's new
 - the Home/End keys no longer mark the document as "(changed)"
 
 - the window title no longer wrongly marks document paths as coming from ~/
-  [bug 993]
+  [bug #993]
 
 - fix reading of subcaptions (in graphics inset) that contain explicit
   double quote characters [bug #656]
@@ -90,7 +90,7 @@ What's new
 
 - fix document class for mwbk textclass
 
-- fix a couple of layouts in llncs [Bug #1068]
+- fix a couple of layouts in llncs [bug #1068]
 
 - fix building of xforms dialogs' source on SMP machines [Bug #944,
   xforms only]
