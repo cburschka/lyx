@@ -469,7 +469,7 @@ void runqueue()
 {
 	// This _have_ to be set before the fork!
 	unsigned long background_pixel =
-		lyxColorHandler->colorPixel(LColor::background);
+		lyxColorHandler->colorPixel(LColor::graphicsbg);
 	
 	// run queued requests for ghostscript, if any
 	if (!gsrunning && gs_color && !gs_xcolor) {

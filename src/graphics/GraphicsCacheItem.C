@@ -129,7 +129,16 @@ GraphicsCacheItem::convertImage(string const & filename)
 	string const to = findTargetFormat(from);
 	if (to.empty()) 
 		return false;
-	
+
+	if (from == to) {
+		// No conversion needed!
+		// Saves more than just time: prevents the deletion of
+		// the "to" file after loading when it's the same as the "from"!
+		tempfile = filename;
+		loadImage();	
+		return true;
+	}
+
 	// Take only the filename part of the file, without path or extension.
 	string temp = OnlyFilename(filename);
 	temp = ChangeExtension(filename, string());

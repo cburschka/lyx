@@ -1,3 +1,9 @@
+2001-09-18  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* figinset.C (runqueue):
+	* insetgraphics.C (draw): set background colour of inset from
+	background to the user-configurable graphicsbg.
+
 2001-09-07  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* insetquotes.C (InsetQuotes): when trying to decide the side of

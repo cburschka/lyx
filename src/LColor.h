@@ -99,6 +99,8 @@ public:
 		/// Special chars text color
 		special,
 
+		/// Graphics inset background color
+		graphicsbg,
 		/// Math inset text color
 		math,
 		/// Math inset background color
