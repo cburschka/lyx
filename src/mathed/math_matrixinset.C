@@ -108,15 +108,6 @@ int MathMatrixInset::defaultColSpace(int col)
 }
 
 
-void MathMatrixInset::setDefaults()
-{
-	for (int col = 0; col < ncols(); ++col) {
-		colinfo_[col].align_ = defaultColAlign(col);
-		colinfo_[col].skip_  = defaultColSpace(col);
-	}
-}
-
-
 void MathMatrixInset::metrics(MathStyles) const
 {
 	size_ = (getType() == LM_OT_SIMPLE) ? LM_ST_TEXT : LM_ST_DISPLAY;

@@ -24,6 +24,7 @@ MathGridInset::RowInfo::RowInfo()
 {}
 
 
+
 int MathGridInset::RowInfo::skipPixels() const
 {
 #ifdef WITH_WARNINGS
@@ -46,10 +47,7 @@ MathGridInset::MathGridInset(int m, int n)
 		lyxerr << "positve number of columns expected\n";
 	if (n <= 0)
 		lyxerr << "positve number of rows expected\n";
-	for (int col = 0; col < m; ++col) {
-		colinfo_[col].skip_  = defaultColSpace(col);
-		colinfo_[col].align_ = defaultColAlign(col);
-	}
+	setDefaults();
 }
 
 
@@ -58,6 +56,14 @@ int MathGridInset::index(int row, int col) const
 	return col + ncols() * row;
 }
 
+
+void MathGridInset::setDefaults()
+{
+	for (int col = 0; col < ncols(); ++col) {
+		colinfo_[col].align_ = defaultColAlign(col);
+		colinfo_[col].skip_  = defaultColSpace(col);
+	}
+}
 
 
 void MathGridInset::halign(string const & hh)

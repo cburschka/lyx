@@ -77,8 +77,6 @@ public:
 
 private:
 	///
-	void setDefaults();
-	///
 	void setType(MathInsetTypes t);
 	///
 	void validate1(LaTeXFeatures & features);

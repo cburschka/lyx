@@ -40,6 +40,7 @@
 #include "math_sqrtinset.h"
 #include "math_scriptinset.h"
 #include "math_specialcharinset.h"
+#include "math_splitinset.h"
 #include "math_sqrtinset.h"
 #include "debug.h"
 #include "support.h"
@@ -823,6 +824,10 @@ void Parser::parse_into(MathArray & array, unsigned flags, MathTextCodes code)
 				MathArrayInset * m = new MathArrayInset(halign.size(), 1);
 				m->valign(valign[0]);
 				m->halign(halign);
+				parse_lines(m, false, false);
+				array.push_back(m);
+			} else if (name == "split") {
+				MathSplitInset * m = new MathSplitInset(1);
 				parse_lines(m, false, false);
 				array.push_back(m);
 			} else 

@@ -80,6 +80,8 @@ libmathed_la_SOURCES = \
 	math_spaceinset.h \
 	math_specialcharinset.C \
 	math_specialcharinset.h \
+	math_splitinset.C \
+	math_splitinset.h \
 	math_sqrtinset.C \
 	math_sqrtinset.h \
 	math_stackrelinset.C \

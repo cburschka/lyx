@@ -138,6 +138,8 @@ public:
 	virtual int defaultColSpace(int) { return 10; }
 	///
 	virtual char defaultColAlign(int) { return 'c'; }
+	///
+	void setDefaults();
 
 protected:
 	/// returns proper 'end of line' code for LaTeX
