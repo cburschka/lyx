@@ -365,7 +365,7 @@ Buffer * BufferList::readFile(string const & s, bool ronly)
 			text += file + _(" exists.\n\nRecover emergency save?");
 #endif
 			int const ret = Alert::prompt(_("Load emergency save?"),
-				text, 0, _("&Recover"), _("&Load original"));
+				text, 0, _("&Recover"), _("&Load Original"));
 
 			if (ret == 0) {
 				ts = e;

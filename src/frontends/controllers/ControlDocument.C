@@ -121,36 +121,60 @@ void ControlDocument::classApply()
 		old_class, new_class,
 		&*(lv_.buffer()->paragraphs.begin()),
 		lv_.buffer()->params);
-	if (ret) {
-		string s;
-		if (ret == 1) {
-			s = _("One paragraph couldn't be converted");
-		} else {
+
+	if (!ret)
+		return;
+
+	string s;
 #if USE_BOOST_FORMAT
-			boost::format fmt(_("%1$s paragraphs couldn't be converted"));
-			fmt % ret;
-			s = fmt.str();
-#else
-			s += tostr(ret);
-			s += _(" paragraphs couldn't be converted");
-#endif
-		}
-		Alert::alert(_("Conversion Errors!"),s,
-			     _("into chosen document class"));
+	if (ret == 1) {
+		boost::format fmt(_("One paragraph could not be converted\n"
+			"into the document class %2$s."));
+		fmt % textclasslist[new_class].name();
+		s = fmt.str();
+	} else {
+		boost::format fmt(_("%1$s paragraphs could not be converted\n"
+			"into the document class %2$s."));
+		fmt % tostr(ret);
+		fmt % textclasslist[new_class].name();
+		s = fmt.str();
 	}
+#else
+	if (ret == 1) {
+		s += _("One paragraph could not be converted\n"
+			"into the document class ");
+		s += textclasslist[new_class].name() + ".";
+	} else {
+		s += tostr(ret);
+		s += _(" paragraphs could not be converted\n"
+			"into the document class ");
+		s += textclasslist[new_class].name() + ".";
+	}
+#endif
+	Alert::warning(_("Class conversion errors"), s);
 }
 
 
 bool ControlDocument::loadTextclass(lyx::textclass_type tc) const
 {
 	bool const success = textclasslist[tc].load();
-	if (!success) {
-		// problem changing class
-		// -- warn user (to retain old style)
-		Alert::alert(_("Conversion Errors!"),
-			     _("Errors loading new document class."),
-			     _("Reverting to original document class."));
-	}
+	if (success)
+		return success;
+
+	string s;
+
+#if USE_BOOST_FORMAT
+	boost::format fmt(_("The document could not be converted\n"
+			"into the document class %1$s."));
+	fmt % textclasslist[tc].name();
+	s = fmt.str();
+#else
+	s += _("The document could not be converted\n"
+	       "into the document class ");
+	s += textclasslist[tc].name() + ".";
+#endif
+	Alert::error(_("Could not change class"), s);
+
 	return success;
 }
 

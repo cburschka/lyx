@@ -158,12 +158,14 @@ bool Formats::view(Buffer const * buffer, string const & filename,
 	    format->isChildFormat())
 		format = getFormat(format->parentFormat());
 	if (!format || format->viewer().empty()) {
+// I believe this is the wrong place to show alerts, it should be done by
+// the caller (this should be "utility" code
 #if USE_BOOST_FORMAT
-		Alert::alert(_("Cannot view file"),
+		Alert::error(_("Cannot view file"),
 			     boost::io::str(boost::format(_("No information for viewing %1$s"))
 			   % prettyName(format_name)));
 #else
-		Alert::alert(_("Cannot view file"),
+		Alert::error(_("Cannot view file"),
 			     _("No information for viewing ")
 			     + prettyName(format_name));
 #endif
@@ -199,9 +201,15 @@ bool Formats::view(Buffer const * buffer, string const & filename,
 	int const res = one.startscript(Systemcall::DontWait, command);
 
 	if (res) {
-		Alert::alert(_("Cannot view file"),
-			   _("Error while executing"),
-			   command.substr(0, 50));
+#if USE_BOOST_FORMAT
+		Alert::error(_("Cannot view file"),
+			     boost::io::str(boost::format(_("An error occurred whilst running %1$s"))
+			   % command.substr(0, 50)));
+#else
+		Alert::error(_("Cannot view file"),
+			     _("An error occurred whilst running ")
+			     + command.substr(0, 50));
+#endif
 		return false;
 	}
 	return true;

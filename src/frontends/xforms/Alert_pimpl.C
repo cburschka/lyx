@@ -25,13 +25,6 @@ using std::pair;
 using std::make_pair;
 using std::endl;
 
-void alert_pimpl(string const & s1, string const & s2, string const & s3)
-{
-	fl_set_resource("flAlert.dismiss.label", _("Dismiss"));
-	fl_show_alert(s1.c_str(), s2.c_str(), s3.c_str(), 0);
-}
-
-
 void warning_pimpl(string const &, string const & message)
 {
 	fl_show_messages(message.c_str());
@@ -60,7 +53,6 @@ int prompt_pimpl(string const &, string const & question,
 	boost::tie(b1label, b1sc) = parse_shortcut(b1);
 	boost::tie(b2label, b2sc) = parse_shortcut(b2);
 	boost::tie(b3label, b3sc) = parse_shortcut(b3);
-	lyxerr  << "Parsed " << b1 << " as " << b1label << " and " << b1sc << endl;
 
 	if (b3.empty()) {
 		fl_set_choices_shortcut(b1sc.c_str(), b2sc.c_str(), "");

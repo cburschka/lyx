@@ -641,13 +641,14 @@ bool LyX::readRcFile(string const & name)
 				    << " in " << lyxrc_path << endl;
 		if (lyxrc.read(lyxrc_path) < 0) {
 #if USE_BOOST_FORMAT
-			Alert::alert(_("LyX Warning!"),
-				   boost::io::str(boost::format(_("Error while reading %1$s.")) % lyxrc_path),
-				   _("Using built-in defaults."));
+			Alert::warning(_("Could not read preferences"),
+				   boost::io::str(boost::format(
+				   _("Error while reading the preferences file\n%1$s.\n"
+				     "LyX will use the built-in defaults.")) % lyxrc_path));
 #else
-			Alert::alert(_("LyX Warning!"),
-				   _("Error while reading ") + lyxrc_path,
-				   _("Using built-in defaults."));
+			Alert::warning(_("Could not read preferences"),
+				   string(_("Error while reading the preferences file\n"))
+				   + lyxrc_path + _("LyX will use the built-in defaults."));
 #endif
 			return false;
 		}

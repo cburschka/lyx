@@ -21,18 +21,6 @@ using std::endl;
 using std::pair;
 using std::make_pair;
 
-void Alert::alert(string const & s1, string const & s2, string const & s3)
-{
-	if (!lyxrc.use_gui) {
-		lyxerr << "------------------------------" << endl
-		       << s1 << endl << s2 << endl << s3 << endl
-		       << "------------------------------" << endl;
-	} else {
-		alert_pimpl(s1, s2, s3);
-	}
-}
-
-
 int Alert::prompt(string const & title, string const & question,
            int default_button,
 	   string const & b1, string const & b2, string const & b3)

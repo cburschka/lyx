@@ -1,12 +1,13 @@
-/* This file is part of
- * ======================================================
+/**
+ * \file exporter.C
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
  *
- *           LyX, The Document Processor
+ * \author unknown
  *
- *           Copyright 1995 Matthias Ettrich
- *           Copyright 1995-2001 The LyX Team.
- *
- * ====================================================== */
+ * Full author contact details are available in file CREDITS
+ */
+
 
 #include <config.h>
 
@@ -62,13 +63,14 @@ bool Importer::Import(LyXView * lv, string const & filename,
 		}
 		if (loader_format.empty()) {
 #if USE_BOOST_FORMAT
-			Alert::alert(_("Cannot import file"),
-				     boost::io::str(boost::format(_("No information for importing from %1$s"))
+// FIXME: better english ...
+			Alert::error(_("Couldn't import file"),
+				     boost::io::str(boost::format(_("No information for importing the format %1$s."))
 				   % formats.prettyName(format)));
 #else
-			Alert::alert(_("Cannot import file"),
-				     _("No information for importing from ")
-				     + formats.prettyName(format));
+			Alert::error(_("Couldn't import file"),
+				     _("No information for importing the format ")
+				     + formats.prettyName(format) + ".");
 #endif
 			return false;
 		}

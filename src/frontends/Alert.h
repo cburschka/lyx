@@ -33,13 +33,13 @@ int prompt(string const & title, string const & question,
 	   string const & b1, string const & b2, string const & b3 = string());
 
 /**
- * Display a warning to the user. Title should be a short summary.
+ * Display a warning to the user. Title should be a short (general) summary.
  * Only use this if the user cannot perform some remedial action.
  */
 void warning(string const & title, string const & message);
 
 /**
- * Display a warning to the user. Title should be a short summary.
+ * Display a warning to the user. Title should be a short (general) summary.
  * Only use this if the user cannot perform some remedial action.
  */
 void error(string const & title, string const & message);
@@ -51,10 +51,6 @@ void error(string const & title, string const & message);
  * eating.
  */
 void information(string const & title, string const & message);
-
-/// show an alert message. DO NOT USE !!
-void alert(string const & title, string const & s1 = string(),
-	   string const & s2 = string());
 
 /// Asks for a text. DO NOT USE !!
 std::pair<bool, string> const

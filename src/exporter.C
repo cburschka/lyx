@@ -1,12 +1,12 @@
-/* This file is part of
- * ======================================================
+/**
+ * \file exporter.C
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
  *
- *           LyX, The Document Processor
+ * \author unknown
  *
- *           Copyright 1995 Matthias Ettrich
- *           Copyright 1995-2001 The LyX Team.
- *
- * ====================================================== */
+ * Full author contact details are available in file CREDITS
+ */
 
 #include <config.h>
 
@@ -16,6 +16,7 @@
 #include "buffer.h"
 #include "lyx_cb.h" //ShowMessage()
 #include "support/filetools.h"
+#include "support/BoostFormat.h"
 #include "lyxrc.h"
 #include "converter.h"
 #include "format.h"
@@ -56,9 +57,16 @@ bool Exporter::Export(Buffer * buffer, string const & format,
 			}
 		}
 		if (backend_format.empty()) {
-			Alert::alert(_("Cannot export file"),
-				   _("No information for exporting to ")
-				   + formats.prettyName(format));
+#if USE_BOOST_FORMAT
+// FIXME: better english ...
+			Alert::error(_("Couldn't export file"),
+				     boost::io::str(boost::format(_("No information for exporting the format %1$s."))
+				   % formats.prettyName(format)));
+#else
+			Alert::error(_("Couldn't export file"),
+				     _("No information for exporting the format ")
+				     + formats.prettyName(format) + ".");
+#endif
 			return false;
 		}
 	} else
@@ -83,8 +91,8 @@ bool Exporter::Export(Buffer * buffer, string const & format,
 	else if (backend_format == format)
 		buffer->makeLaTeXFile(filename, string(), true);
 	else if (contains(buffer->filePath(), ' ')) {
-		Alert::alert(_("Cannot run LaTeX."),
-			   _("The path to the lyx file cannot contain spaces."));
+		Alert::error(_("File name error"),
+			   _("The directory path to the document cannot contain spaces."));
 		return false;
 	} else
 		buffer->makeLaTeXFile(filename, buffer->filePath(), false);

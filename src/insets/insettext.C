@@ -1290,9 +1290,7 @@ Inset::RESULT InsetText::localDispatch(FuncRequest const & ev)
 #ifdef WITH_WARNINGS
 #warning FIXME horrendously bad UI
 #endif
-				Alert::alert(_("Impossible operation!"),
-						   _("Cannot include more than one paragraph!"),
-						   _("Sorry."));
+				Alert::error(_("Paste failed"), _("Cannot include more than one paragraph."));
 				break;
 			}
 		}

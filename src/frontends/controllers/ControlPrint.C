@@ -29,6 +29,7 @@
 #include "support/filetools.h"
 #include "support/path.h"
 #include "support/systemcall.h"
+#include "support/BoostFormat.h"
 
 #include "debug.h" // for lyxerr
 
@@ -78,6 +79,26 @@ string const ControlPrint::Browse(string const & in_name)
 	// Show the file browser dialog
 	return browseRelFile(in_name, buffer()->filePath(),
 			     title, pattern, true);
+}
+
+
+namespace {
+
+void showPrintError(string const & name)
+{
+#if USE_BOOST_FORMAT
+		boost::format fmt(_("Could not print the document %1$s.\n"
+			"Check that your printer is set up correctly."));
+		fmt % MakeDisplayPath(name, 50);
+		string str = fmt.str();
+#else
+		string str = _("Could not print the document ");
+		str += MakeDisplayPath(name, 50);
+		str += _(".\nCheck that your printer is set up correctly.");
+#endif
+		Alert::error(_("Print document failed"), str);
+}
+
 }
 
 
@@ -142,9 +163,7 @@ void ControlPrint::apply()
 	command += converters.dvips_options(buffer()) + ' ';
 
 	if (!Exporter::Export(buffer(), "dvi", true)) {
-		Alert::alert(_("Error:"),
-			   _("Unable to print"),
-			   _("Check that your parameters are correct"));
+		showPrintError(buffer()->fileName());
 		return;
 	}
 
@@ -205,9 +224,6 @@ void ControlPrint::apply()
 	lyxerr[Debug::LATEX] << "ControlPrint::apply(): print command = \""
 			     << command << '"' << endl;
 
-	if (res != 0) {
-		Alert::alert(_("Error:"),
-			   _("Unable to print"),
-			   _("Check that your parameters are correct"));
-	}
+	if (res != 0)
+		showPrintError(buffer()->fileName());
 }

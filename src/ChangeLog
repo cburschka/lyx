@@ -1,3 +1,13 @@
+2003-03-31  John Levon  <levon@movementarian.org>
+
+	* bufferlist.C: "Load original" -> "Load Original"
+
+	* converter.C:
+	* exporter.C:
+	* importer.C:
+	* lyx_main.C:
+	* format.C: more Alert cleanups
+
 2003-03-30  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* text2.C (removeParagraph): make it take a RowList::iterator as

@@ -654,8 +654,16 @@ string const InsetGraphics::prepareFile(Buffer const * buf) const
 				<< temp_file
 				<< (success ? " succeeded\n" : " failed\n");
 			if (!success) {
-				Alert::alert(_("Cannot copy file"), orig_file_with_path,
-					_("into tempdir"));
+#if USE_BOOST_FORMAT
+				boost::format fmt(_("Could not copy the file\n%1$s\ninto the temporary directory."));
+				fmt % orig_file_with_path;
+				string str = fmt.str();
+#else
+				string str = _("Could not copy the file\n");
+				str += orig_file_with_path;
+				str += _("\ninto the temporary directory.");
+#endif
+				Alert::error(_("Graphics display failed"), str);
 				return orig_file;
 			}
 		}
@@ -689,15 +697,19 @@ string const InsetGraphics::prepareFile(Buffer const * buf) const
 			<< command << endl;
 		Systemcall one;
 		one.startscript(Systemcall::Wait, command);
-		if (!IsFileReadable(ChangeExtension(outfile_base, to)))
+		if (!IsFileReadable(ChangeExtension(outfile_base, to))) {
 #if USE_BOOST_FORMAT
-			Alert::alert(_("Cannot convert Image (not existing file?)"),
-				     boost::io::str(boost::format(_("No information for converting from %1$s to %2$s"))
-				% from % to));
+			boost::format fmt(_("No information for converting %1$s format files to %1$s.\n"
+				"Try defining a convertor in the preferences."));
+			fmt % from % to;
+			string str = fmt.str();
 #else
-			Alert::alert(_("Cannot convert Image (not existing file?)"),
-				     _("No information for converting from ") + from + " to " + to);
+			string str = _("No information for converting ");
+			str += from + _(" format files to " + to;
+			str += ".\nTry defining a convertor in the preferences.");
 #endif
+			Alert::error(_("Could not convert image"), str);
+		}
 	}
 
 	return RemoveExtension(temp_file);
