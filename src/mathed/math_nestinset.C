@@ -901,36 +901,6 @@ InsetBase * MathNestInset::editXY(LCursor & cur, int x, int y) const
 }
 
 
-void MathNestInset::lfunMouseRelease(LCursor & cur, FuncRequest & cmd)
-{
-	//lyxerr << "lfunMouseRelease: buttons: " << cmd.button() << endl;
-
-	if (cmd.button() == mouse_button::button1) {
-		// try to dispatch to enclosed insets first
-		//cur.bv().stuffClipboard(cur.grabSelection());
-		return;
-	}
-
-	if (cmd.button() == mouse_button::button2) {
-		MathArray ar;
-		asArray(cur.bv().getClipboard(), ar);
-		cur.clearSelection();
-		cur.setScreenPos(cmd.x, cmd.y);
-		cur.insert(ar);
-		cur.bv().update();
-		return;
-	}
-
-	if (cmd.button() == mouse_button::button3) {
-		// try to dispatch to enclosed insets first
-		cur.bv().owner()->getDialogs().show("mathpanel");
-		return;
-	}
-
-	cur.undispatched();
-}
-
-
 void MathNestInset::lfunMousePress(LCursor & cur, FuncRequest & cmd)
 {
 	lyxerr << "lfunMousePress: buttons: " << cmd.button() << endl;
@@ -962,6 +932,36 @@ void MathNestInset::lfunMouseMotion(LCursor & cur, FuncRequest & cmd)
 	first_y = cmd.y;
 
 	cur.bv().cursor().setCursor(cur, true);
+}
+
+
+void MathNestInset::lfunMouseRelease(LCursor & cur, FuncRequest & cmd)
+{
+	lyxerr << "lfunMouseRelease: buttons: " << cmd.button() << endl;
+
+	if (cmd.button() == mouse_button::button1) {
+		// try to dispatch to enclosed insets first
+		//cur.bv().stuffClipboard(cur.grabSelection());
+		return;
+	}
+
+	if (cmd.button() == mouse_button::button2) {
+		MathArray ar;
+		asArray(cur.bv().getClipboard(), ar);
+		cur.clearSelection();
+		cur.setScreenPos(cmd.x, cmd.y);
+		cur.insert(ar);
+		cur.bv().update();
+		return;
+	}
+
+	if (cmd.button() == mouse_button::button3) {
+		// try to dispatch to enclosed insets first
+		cur.bv().owner()->getDialogs().show("mathpanel");
+		return;
+	}
+
+	cur.undispatched();
 }
 
 

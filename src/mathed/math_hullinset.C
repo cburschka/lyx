@@ -744,7 +744,7 @@ void MathHullInset::mutate(string const & newtype)
 
 	else if (type_ == "gather") {
 		if (newtype == "multline") {
-			setType("multline");
+			setType(newtype);
 		} else {
 			lyxerr << "mutation from '" << type_
 				<< "' to '" << newtype << "' not implemented" << endl;
