@@ -1,3 +1,9 @@
+
+2002-08-29  André Pönitz <poenitz@gmx.net>
+
+	* lyxtext.h:
+	* text2.C: remove unused member number_of_rows
+
 2002-08-29  John Levon  <levon@movementarian.org>
 
 	* BufferView_pimpl.C (dispatch): do not continue when

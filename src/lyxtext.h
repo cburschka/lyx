@@ -67,15 +67,13 @@ public:
 
 	/// Constructor
 	LyXText(BufferView *);
-	///
+	/// sets inset as owner
 	LyXText(InsetText *);
 
 	/// Destructor
 	~LyXText();
 
 	void init(BufferView *, bool reinit = false);
-	///
-	mutable int number_of_rows;
 	///
 	mutable int height;
 	///
@@ -215,8 +213,7 @@ public:
 	/** returns a pointer to a specified row. y is set to the beginning
 	 of the row
 	 */
-	Row * getRow(Paragraph * par,
-		     lyx::pos_type pos, int & y) const;
+	Row * getRow(Paragraph * par, lyx::pos_type pos, int & y) const;
 	/** returns the firstrow, this could be done with the above too but
 	    IMO it's stupid to have to allocate a dummy y all the time I need
 	    the first row
