@@ -64,23 +64,12 @@ void recordUndo(BufferView * bv, Undo::undo_kind kind,
 	for (ParIterator it = buf->par_iterator_begin(); it != null; ++it, ++pcount)
 		if (&it.plist() == &plist)
 			break;
-	//lyxerr << "This is plist #" << pcount << ' ' << &plist << endl;
 		
-	// We simply record the entire outer paragraphs
-	// First, identify the outer paragraphs
-	for (ParIterator it = buf->par_iterator_begin(); it != null; ++it) {
-		if (it->id() == first->id())
-			first = it.outerPar();
-		if (it->id() == last->id())
-			last = it.outerPar();
-	}
-
 	// And calculate a stable reference to them
 	int const first_offset = firstpar;
 	int const last_offset = plist.size() - lastpar;
 
 	// Undo::ATOMIC are always recorded (no overlapping there).
-
 	// Overlapping only with insert and delete inside one paragraph:
 	// Nobody wants all removed character appear one by one when undoing.
 	if (! undo_finished && kind != Undo::ATOMIC) {
@@ -124,14 +113,14 @@ void recordUndo(BufferView * bv, Undo::undo_kind kind,
 bool performUndoOrRedo(BufferView * bv, Undo const & undo)
 {
 	Buffer * buf = bv->buffer();
-	ParagraphList & plist = buf->paragraphs();
 
 	ParIterator null = buf->par_iterator_end();
 	ParIterator plit = buf->par_iterator_begin();
 	int n = undo.plist;
 	for ( ; n && plit != null; ++plit, --n)
 		;
-	//lyxerr << "undo: using plist #" << undo.plist << " " << &plit.plist() << endl;
+	BOOST_ASSERT(plit != null);
+	ParagraphList & plist = plit.plist();
 
 	// Remove new stuff between first and last
 	{
