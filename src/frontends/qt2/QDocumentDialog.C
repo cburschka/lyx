@@ -161,8 +161,7 @@ QDocumentDialog::QDocumentDialog(QDocument * form)
 	connect(pageLayoutModule->pagestyleCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
 
 	// bullets
-	connect(bulletsModule->bulletsizeCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
-	connect(bulletsModule->bulletsLV, SIGNAL(selectionChanged()), this, SLOT(change_adaptor()));
+	connect(bulletsModule, SIGNAL(changed()), this, SLOT(change_adaptor()));
 }
 
 

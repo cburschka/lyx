@@ -20,58 +20,61 @@
 #include <boost/array.hpp>
 
 class QBrowseBox;
-class QListViewItem;
-
+class QPushButton;
+class QComboBox;
+class QPixmap;
 
 class BulletsModule : public BulletsModuleBase {
 	Q_OBJECT
 public:
-	BulletsModule(QWidget* parent = 0, const char* name = 0,
-		      WFlags fl = 0);
+
+	BulletsModule(QWidget * parent = 0, const char * name = 0, WFlags fl = 0);
+
 	~BulletsModule();
 
-	///
+	/// set a bullet
 	void setBullet(int level, const Bullet & bullet);
-	///
-	Bullet getBullet(int level);
+
+	/// get bullet setting
+	Bullet const getBullet(int level);
+
+signals:
+	void changed();
 
 protected slots:
-	///
+
+	/// menu callbacks
 	void standard(int row, int col);
-	///
 	void maths(int row, int col);
-	///
 	void ding1(int row, int col);
-	///
 	void ding2(int row, int col);
-	///
 	void ding3(int row, int col);
-	///
 	void ding4(int row, int col);
+
+	void updateSizes();
+
+	void pressed1();
+	void pressed2();
+	void pressed3();
+	void pressed4();
+
 	/// set custom (text) bullet
 	void setCustom();
-	/// make level active
-	void setActive(QListViewItem*);
-	/// set size
-	void setSize(int size);
 
 private:
-	/// get the pixmap that matches font/character
 	QPixmap getPixmap(int font, int character);
-	/// get the qlistviewitem of level
-	QListViewItem *  getItem(int level);
-	/// make level active
-	void setActive(int level);
-	/// set bullet for standard font/character
-	void setBullet(int font, int character);
-	/// set bullet for custom text
-	void setBullet(string text);
-	/// pointer to the bullet of the level we're at
-	Bullet * activebullet_;
-	/// qlistviewitem of the level we're at
-	QListViewItem * activeitem_;
+
+	/// update GUI view
+	void setBullet(QPushButton * pb, QComboBox * co, Bullet const & b);
+
+	/// set from menu
+	void setCurrentBullet(int font, int character);
+
+	bool tmpbulletset;
+	Bullet tmpbullet;
+
 	/// store results
-	boost::array<Bullet,4> bullets_;
+	boost::array<Bullet, 4> bullets_;
 
 	QBrowseBox * standard_;
 	QBrowseBox * maths_;

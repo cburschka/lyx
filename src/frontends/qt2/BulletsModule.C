@@ -4,6 +4,7 @@
  * Licence details can be found in the file COPYING.
  *
  * \author Edwin Leuven
+ * \author John Levon
  *
  * Full author contact details are available in file CREDITS
  */
@@ -11,24 +12,23 @@
 #include <config.h>
 #include "qt_helpers.h"
 
+#include "support/filetools.h"
+#include "support/LAssert.h"
+#include "debug.h"
 
-#include <functional> // for operator %
+#include "Bullet.h"
+#include "ui/BulletsModuleBase.h"
+#include "QBrowseBox.h"
+#include "BulletsModule.h"
 
 #include <qinputdialog.h>
 #include <qpopupmenu.h>
 #include <qpixmap.h>
-#include <qtoolbutton.h>
-#include <qlistview.h>
+#include <qpushbutton.h>
 #include <qcombobox.h>
-#include <qlabel.h>
-#include "BulletsModule.h"
-#include "Bullet.h"
-#include "ui/BulletsModuleBase.h"
-#include "QBrowseBox.h"
-#include "support/filetools.h"
 
 BulletsModule::BulletsModule(QWidget * parent,  char const * name, WFlags fl)
-	: BulletsModuleBase(parent, name, fl)
+	: BulletsModuleBase(parent, name, fl), tmpbulletset(0)
 {
 	for (int iter = 0; iter < 4; ++iter) {
 		bullets_[iter] = ITEMIZE_DEFAULTS[iter];
@@ -57,15 +57,20 @@ BulletsModule::BulletsModule(QWidget * parent,  char const * name, WFlags fl)
 	pm5->insertItem(ding3_);
 	pm6->insertItem(ding4_);
 
-	pm->insertItem("Standard", pm1);
-	pm->insertItem("Maths", pm2);
-	pm->insertItem("Ding 1",pm3);
-	pm->insertItem("Ding 2",pm4);
-	pm->insertItem("Ding 3",pm5);
-	pm->insertItem("Ding 4",pm6);
-	pm->insertItem("Custom...", this, SLOT(setCustom()));
+	pm->insertItem(qt_("&Standard"), pm1, 0);
+	pm->insertItem(qt_("&Maths"), pm2, 1);
+	pm->insertItem(qt_("Dings &1"), pm3, 2);
+	pm->insertItem(qt_("Dings &2"), pm4, 3);
+	pm->insertItem(qt_("Dings &3"), pm5, 4);
+	pm->insertItem(qt_("Dings &4"), pm6, 5);
+	pm->insertSeparator();
+	// FIXME: make this checkable
+	pm->insertItem(qt_("&Custom..."), this, SLOT(setCustom()), 0, 6);
 
-	setbulletTB->setPopup(pm);
+	bullet1PB->setPopup(pm);
+	bullet2PB->setPopup(pm);
+	bullet3PB->setPopup(pm);
+	bullet4PB->setPopup(pm);
 
 	// insert pixmaps
 	string bmfile;
@@ -105,12 +110,18 @@ BulletsModule::BulletsModule(QWidget * parent,  char const * name, WFlags fl)
 	connect(ding4_, SIGNAL(selected(int, int)),
 		this, SLOT(ding4(int, int)));
 
+	connect(bullet1PB, SIGNAL(pressed()), this, SLOT(pressed1()));
+	connect(bullet2PB, SIGNAL(pressed()), this, SLOT(pressed2()));
+	connect(bullet3PB, SIGNAL(pressed()), this, SLOT(pressed3()));
+	connect(bullet4PB, SIGNAL(pressed()), this, SLOT(pressed4()));
+	connect(bulletsize1CO, SIGNAL(activated(int)), this, SLOT(updateSizes()));
+	connect(bulletsize2CO, SIGNAL(activated(int)), this, SLOT(updateSizes()));
+	connect(bulletsize3CO, SIGNAL(activated(int)), this, SLOT(updateSizes()));
+	connect(bulletsize4CO, SIGNAL(activated(int)), this, SLOT(updateSizes()));
+
 	// update the view
-	for (int iter = 0; iter < 4; ++iter) {
-		setBullet(iter,bullets_[iter]);
-	}
-	activeitem_ = bulletsLV->firstChild();
-	activebullet_ = &bullets_[0];
+	for (int i = 0; i < 4; ++i)
+		setBullet(bullet1PB, bulletsize1CO, bullets_[i]);
 }
 
 
@@ -119,11 +130,69 @@ BulletsModule::~BulletsModule()
 }
 
 
+void BulletsModule::updateSizes()
+{
+	emit changed();
+
+	// -1 apparently means default...
+	bullets_[0].setSize(bulletsize1CO->currentItem() - 1);
+	bullets_[1].setSize(bulletsize2CO->currentItem() - 1);
+	bullets_[2].setSize(bulletsize3CO->currentItem() - 1);
+	bullets_[3].setSize(bulletsize4CO->currentItem() - 1);
+}
+
+
+// These arrive *after* the menus have done their work
+void BulletsModule::pressed1()
+{
+	if (!tmpbulletset)
+		return;
+	tmpbulletset = false;
+	bullets_[0] = tmpbullet;
+	setBullet(bullet1PB, bulletsize1CO, bullets_[0]);
+	emit changed();
+}
+
+
+void BulletsModule::pressed2()
+{
+	if (!tmpbulletset)
+		return;
+	tmpbulletset = false;
+	bullets_[1] = tmpbullet;
+	setBullet(bullet2PB, bulletsize2CO, bullets_[1]);
+	emit changed();
+}
+
+
+void BulletsModule::pressed3()
+{
+	if (!tmpbulletset)
+		return;
+	tmpbulletset = false;
+	bullets_[2] = tmpbullet;
+	setBullet(bullet3PB, bulletsize3CO, bullets_[2]);
+	emit changed();
+}
+
+
+void BulletsModule::pressed4()
+{
+	if (!tmpbulletset)
+		return;
+	tmpbulletset = false;
+	bullets_[3] = tmpbullet;
+	setBullet(bullet4PB, bulletsize4CO, bullets_[3]);
+	emit changed();
+}
+
+
 QPixmap BulletsModule::getPixmap(int font, int character)
 {
-	int col = character%6;
-	int row = (character - col)/6;
-	switch(font) {
+	int col = character % 6;
+	int row = (character - col) / 6;
+
+	switch (font) {
 	case 0:
 		return standard_->pixmap(row,col);
 	case 1:
@@ -142,110 +211,88 @@ QPixmap BulletsModule::getPixmap(int font, int character)
 }
 
 
-QListViewItem *  BulletsModule::getItem(int level)
+void BulletsModule::setBullet(QPushButton * pb, QComboBox * co, Bullet const & b)
 {
-	QListViewItemIterator it(bulletsLV->firstChild());
-	for(int i=0; i<level; ++i) {
-		++it;
+	if (b.getFont() == -1) {
+		pb->setPixmap(QPixmap());
+		pb->setText("...");
+	} else {
+		pb->setPixmap(getPixmap(b.getFont(), b.getCharacter()));
 	}
-	return it.current();
-}
 
+	pb->setMinimumSize(QSize(50, 50));
 
-void BulletsModule::setActive(int level)
-{
-	activeitem_ = getItem(level);
-	activebullet_ = &bullets_[level];
-}
-
-
-void BulletsModule::setActive(QListViewItem * item)
-{
-	activeitem_ = item;
-	activebullet_ = &bullets_[item->depth()];
-}
-
-
-void BulletsModule::setBullet(int font, int character)
-{
-	activeitem_->setText(0,"");
-	activeitem_->setPixmap(0,getPixmap(font,character));
-
-	activebullet_->setFont(font);
-	activebullet_->setCharacter(character);
-}
-
-
-void BulletsModule::setBullet(string text)
-{
-	activeitem_->setPixmap(0, QPixmap());
-	activeitem_->setText(0, toqstr(text));
-
-	activebullet_->setText(text);
+	co->setCurrentItem(b.getSize() + 1);
 }
 
 
 void BulletsModule::setBullet(int level, const Bullet & bullet)
 {
-	setActive(level);
 	bullets_[level] = bullet;
-	// set size
-	setSize(bullet.getSize()+1);
-	// set pixmap
-	if (bullet.getFont()!=-1) {
-		setBullet(bullet.getFont(),
-			  bullet.getCharacter());
-	} else {
-		setBullet(bullet.getText());
+
+	QPushButton * pb;
+	QComboBox * co;
+
+	switch (level) {
+		case 0: pb = bullet1PB; co = bulletsize1CO; break;
+		case 1: pb = bullet2PB; co = bulletsize2CO; break;
+		case 2: pb = bullet3PB; co = bulletsize3CO; break;
+		case 3: pb = bullet4PB; co = bulletsize4CO; break;
+		default: lyx::Assert(false); break;
 	}
+
+	setBullet(pb, co, bullet);
 }
 
 
-Bullet BulletsModule::getBullet(int level)
+Bullet const BulletsModule::getBullet(int level)
 {
 	return bullets_[level];
 }
 
 
-void BulletsModule::setSize(int size)
+void BulletsModule::setCurrentBullet(int font, int character)
 {
-	activeitem_->setText(1,bulletsizeCO->text(size));
-	activebullet_->setSize(size-1);
+	lyxerr << "set current bullet " << std::endl;
+	tmpbulletset = true;
+	tmpbullet.setFont(font);
+	tmpbullet.setCharacter(character);
 }
 
 
 void BulletsModule::standard(int row, int col)
 {
-	setBullet(0,6*row + col);
+	setCurrentBullet(0, 6 * row + col);
 }
+
 
 void BulletsModule::maths(int row, int col)
 {
-	setBullet(1,6*row + col);
+	setCurrentBullet(1, 6 * row + col);
 }
 
 
 void BulletsModule::ding1(int row, int col)
 {
-	setBullet(2,6*row + col);
+	setCurrentBullet(2, 6 * row + col);
 }
 
 
 void BulletsModule::ding2(int row, int col)
 {
-	setBullet(3,6*row + col);
+	setCurrentBullet(3, 6 * row + col);
 }
 
 
 void BulletsModule::ding3(int row, int col)
 {
-	setBullet(4,6*row + col);
+	setCurrentBullet(4, 6 * row + col);
 }
 
 
 void BulletsModule::ding4(int row, int col)
 {
-	setBullet(5,6*row + col);
+	setCurrentBullet(5, 6 * row + col);
 }
 
 
@@ -258,10 +305,10 @@ void BulletsModule::setCustom()
 		QLineEdit::Normal,
 		QString::null, &ok, this );
 
-	if (ok) {
-		activeitem_->setPixmap(0,QPixmap());
-		activeitem_->setText(0,text);
-		activebullet_->setText(fromqstr(text));
-		activebullet_->setFont(-1);
-	}
+	if (!ok)
+		return;
+
+	tmpbulletset = true;
+	tmpbullet.setText(fromqstr(text));
+	tmpbullet.setFont(-1);
 }
