@@ -1111,7 +1111,7 @@ bool FormPreferences::Converters::Input()
 	} else {
 		fl_set_object_label(dialog_->button_add, idex(_("Modify|#M")));
 		fl_set_button_shortcut(dialog_->button_add,
-					scex(_("Modify|#M")), 1);
+				       scex(_("Modify|#M")), 1);
 		
 		int top = max(sel-5, 0);
 		fl_set_browser_topline(dialog_->browser_all, top);
@@ -1374,18 +1374,18 @@ bool FormPreferences::Formats::Input()
 
 	if (sel < 0) {
 		fl_set_object_label(dialog_->button_add,
-				     idex(_("Add|#A")));
+				    idex(_("Add|#A")));
 		fl_set_button_shortcut(dialog_->button_add,
-					scex(_("Add|#A")), 1);
+				       scex(_("Add|#A")), 1);
 
 		fl_deselect_browser(dialog_->browser_all);
 		setEnabled(dialog_->button_delete, false);
 
 	} else {
 		fl_set_object_label(dialog_->button_add,
-				     idex(_("Modify|#M")));
+				    idex(_("Modify|#M")));
 		fl_set_button_shortcut(dialog_->button_add,
-					scex(_("Modify|#M")), 1);
+				       scex(_("Modify|#M")), 1);
 
 		int const top = max(sel-5, 0);
 		fl_set_browser_topline(dialog_->browser_all, top);
@@ -1645,7 +1645,7 @@ void FormPreferences::Language::build()
 	combo_default_lang->setcallback(ComboCB, &parent_);
 
 	for (Languages::const_iterator cit = languages.begin();
-	    cit != languages.end(); ++cit) {
+	     cit != languages.end(); ++cit) {
 		combo_default_lang->addto(cit->second.lang());
 	}
 
@@ -1792,10 +1792,10 @@ void FormPreferences::Language::update()
 
 void FormPreferences::Language::ComboCB(int, void * v, Combox * combox)
 {
-    FormPreferences * pre = static_cast<FormPreferences*>(v);
-    // This is safe, as nothing is done to the pointer, other than
-    // to use its address in a block-if statement.
-    pre->bc().valid(pre->input(reinterpret_cast<FL_OBJECT *>(combox), 0));
+	FormPreferences * pre = static_cast<FormPreferences*>(v);
+	// This is safe, as nothing is done to the pointer, other than
+	// to use its address in a block-if statement.
+	pre->bc().valid(pre->input(reinterpret_cast<FL_OBJECT *>(combox), 0));
 }
 
 
@@ -2025,7 +2025,7 @@ void FormPreferences::OutputsMisc::update()
 	fl_set_input(dialog_->input_paperoption,
                      lyxrc.view_dvi_paper_option.c_str());
 	fl_set_button(dialog_->check_autoreset_classopt,
-                     lyxrc.auto_reset_options);
+		      lyxrc.auto_reset_options);
 
 }
 
@@ -2690,8 +2690,8 @@ bool FormPreferences::ScreenFonts::input()
 		activate = false;
 		str = N_("Fonts must be positive!");
 
-	// Fontsizes -- tiny < script < footnote etc.
 	} else if (strToDbl(fl_get_input(dialog_->input_tiny)) >
+		   // Fontsizes -- tiny < script < footnote etc.
 		   strToDbl(fl_get_input(dialog_->input_script)) ||
 		   strToDbl(fl_get_input(dialog_->input_script)) >
 		   strToDbl(fl_get_input(dialog_->input_footnote)) ||
@@ -2838,11 +2838,7 @@ void FormPreferences::SpellOptions::build()
 	dialog_.reset(parent_.build_spelloptions());
 
 	fl_addto_choice(dialog_->choice_spell_command,
-#if 0
-			_(" none | ispell | aspell "));
-#else
 			_(" ispell | aspell "));
-#endif
 	fl_set_input_return(dialog_->input_alt_lang,      FL_RETURN_CHANGED);
 	fl_set_input_return(dialog_->input_escape_chars,  FL_RETURN_CHANGED);
 	fl_set_input_return(dialog_->input_personal_dict, FL_RETURN_CHANGED);

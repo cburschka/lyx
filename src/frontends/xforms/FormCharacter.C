@@ -86,13 +86,13 @@ void FormCharacter::build()
 
 	// insert default language box manually
 	fl_addto_form(dialog_->form);
-		FL_OBJECT * ob = dialog_->choice_language;
-		fl_hide_object(dialog_->choice_language);
+	FL_OBJECT * ob = dialog_->choice_language;
+	fl_hide_object(dialog_->choice_language);
 
-		combo_language2_.reset(new Combox(FL_COMBOX_DROPLIST));
-		combo_language2_->add(ob->x, ob->y, ob->w, ob->h, 250);
-		combo_language2_->shortcut("#L", 1);
-		combo_language2_->setcallback(ComboInputCB, this);
+	combo_language2_.reset(new Combox(FL_COMBOX_DROPLIST));
+	combo_language2_->add(ob->x, ob->y, ob->w, ob->h, 250);
+	combo_language2_->shortcut("#L", 1);
+	combo_language2_->setcallback(ComboInputCB, this);
 	fl_end_form();
 
 	// build up the combox entries
@@ -137,6 +137,7 @@ void FormCharacter::apply()
 	controller().setToggleAll(toggleall);
 }
 
+
 namespace {
 
 template<class A>
@@ -147,8 +148,9 @@ typename vector<A>::size_type findPos(vector<A> const & vec, A const & val)
 		return 0;
 	return it - vec.begin();
 }
- 
+
 } // namespace anon
+
 
 void FormCharacter::update()
 {

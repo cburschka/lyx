@@ -64,7 +64,7 @@ bool FormMathsSpace::input(FL_OBJECT *, long data)
  
 	if (data >= 0 && data < 6) {
 		space_ = short(data);
-	apply();
+		apply();
 	}
 	return true;
 }

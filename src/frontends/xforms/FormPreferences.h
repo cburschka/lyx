@@ -77,9 +77,9 @@ private:
  	string const getFeedback(FL_OBJECT *);
 	///
 	void browse(FL_OBJECT * input,
-		     string const & title, string const & pattern, 
-		     std::pair<string,string> const & dir1= std::make_pair(string(),string()), 
-		     std::pair<string,string> const & dir2 = std::make_pair(string(),string()));
+		    string const & title, string const & pattern, 
+		    std::pair<string,string> const & dir1= std::make_pair(string(),string()), 
+		    std::pair<string,string> const & dir2 = std::make_pair(string(),string()));
 	
 	/// Fdesign generated methods
 	FD_form_preferences * build_preferences();

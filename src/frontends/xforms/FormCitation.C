@@ -103,7 +103,9 @@ void updateStyle(FD_form_citation * dialog, string command)
 
 } // namespace anon
 
+
 typedef FormCB<ControlCitation, FormDB<FD_form_citation> > base_class;
+
 
 FormCitation::FormCitation(ControlCitation & c)
 	: base_class(c, _("Citation"), false)
@@ -238,8 +240,8 @@ void FormCitation::findBiblio(biblio::Direction const dir)
 
 
 	vector<string>::const_iterator const cit =
-	biblio::searchKeys(theMap, bibkeys, str,
-			   start, type, dir, caseSensitive);
+		biblio::searchKeys(theMap, bibkeys, str,
+				   start, type, dir, caseSensitive);
 
 	if (cit == bibkeys.end())
 		return;
@@ -278,7 +280,7 @@ ButtonPolicy::SMInput FormCitation::input(FL_OBJECT * ob, long)
 
 		string const tmp = formatted(biblio::getInfo(theMap,
 							     bibkeys[sel-1]),
-					      dialog_->browser_info->w-10);
+					     dialog_->browser_info->w-10);
 		fl_add_browser_line(dialog_->browser_info, tmp.c_str());
 
 		// Highlight the selected browser_bib key in browser_cite if
@@ -338,7 +340,7 @@ ButtonPolicy::SMInput FormCitation::input(FL_OBJECT * ob, long)
 
 		// Add the selected browser_bib key to browser_cite
 		fl_addto_browser(dialog_->browser_cite,
-				  bibkeys[sel-1].c_str());
+				 bibkeys[sel-1].c_str());
 		citekeys.push_back(bibkeys[sel-1]);
 
 		int const n = int(citekeys.size());

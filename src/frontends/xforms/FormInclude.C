@@ -93,9 +93,9 @@ void FormInclude::apply()
 
 	string const file = fl_get_input(dialog_->input_filename);
 	if (controller().fileExists(file))
-	    controller().params().cparams.setContents(file);
+		controller().params().cparams.setContents(file);
 	else
-	    controller().params().cparams.setContents("");
+		controller().params().cparams.setContents("");
 
 	if (fl_get_button(dialog_->radio_useinput))
 		controller().params().flag = InsetInclude::INPUT;

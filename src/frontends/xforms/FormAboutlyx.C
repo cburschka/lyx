@@ -59,17 +59,12 @@ void FormAboutlyx::build()
 
 	// stack tabs
 	fl_addto_tabfolder(dialog_->tabfolder,_("Copyright and Version"),
-		       version_->form);
+			   version_->form);
 	fl_addto_tabfolder(dialog_->tabfolder,_("License and Warranty"),
-		       license_->form);
+			   license_->form);
 	fl_addto_tabfolder(dialog_->tabfolder,_("Credits"),
-		       credits_->form);
+			   credits_->form);
 
 	// Manage the cancel/close button
 	bc().setCancel(dialog_->button_close);
 }
-
-
-
-
-

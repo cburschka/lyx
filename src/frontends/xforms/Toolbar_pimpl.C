@@ -275,15 +275,15 @@ void setPixmap(FL_OBJECT * obj, int action, int buttonwidth, int height)
 
 	if (!fullname.empty()) {
 		lyxerr[Debug::GUI] << "Full icon name is `" 
-				       << fullname << "'" << endl;
+				   << fullname << "'" << endl;
 		fl_set_pixmapbutton_file(obj, fullname.c_str());
 		return;
 	}
 
 	if (act == LFUN_INSERT_MATH && !arg.empty()) {
 		char const ** pixmap = get_pixmap_from_symbol(arg.c_str(),
-							buttonwidth,
-							height);
+							      buttonwidth,
+							      height);
 		if (pixmap) {
 			lyxerr[Debug::GUI] << "Using mathed-provided icon"
 					   << endl;
@@ -297,7 +297,7 @@ void setPixmap(FL_OBJECT * obj, int action, int buttonwidth, int height)
 	fullname = LibFileSearch("images", "unknown", "xpm");
 	if (!fullname.empty()) {
 		lyxerr[Debug::GUI] << "Using default `unknown' icon" 
-				       << endl;
+				   << endl;
 		fl_set_pixmapbutton_file(obj, fullname.c_str());
 	}
 }
@@ -453,7 +453,7 @@ void Toolbar::Pimpl::clean()
 void Toolbar::Pimpl::push(int nth)
 {
 	lyxerr[Debug::GUI] << "Toolbar::push: trying to trigger no `"
-			       << nth << '\'' << endl;
+			   << nth << '\'' << endl;
 	
 	if (nth <= 0 || nth >= int(toollist.size())) {
 		// item nth not found...

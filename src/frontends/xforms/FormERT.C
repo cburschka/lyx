@@ -55,15 +55,15 @@ void FormERT::apply()
 
 void FormERT::update()
 {
-    switch (controller().params().status) {
-    case InsetERT::Open:
+	switch (controller().params().status) {
+	case InsetERT::Open:
 		fl_set_button(dialog_->radio_open, 1);
 		break;
-    case InsetERT::Collapsed:
+	case InsetERT::Collapsed:
 		fl_set_button(dialog_->radio_collapsed, 1);
 		break;
-    case InsetERT::Inlined:
+	case InsetERT::Inlined:
 		fl_set_button(dialog_->radio_inlined, 1);
 		break;
-    }
+	}
 }

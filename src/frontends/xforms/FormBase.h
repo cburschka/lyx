@@ -39,7 +39,8 @@ public:
 	virtual ~FormBase();
 
 	/** input callback function. invoked only by the xforms callback
-	    interface */
+	 *  interface
+	 */
 	void InputCB(FL_OBJECT *, long);
 
 	Tooltips & tooltips();
@@ -53,11 +54,11 @@ protected:
 	void show();
 
 	/** Prepare the way to:
-	    1. display feedback as the mouse moves over ob. This feedback will
-	    typically be rather more verbose than just a tooltip.
-	    2. activate the button controller after a paste with the middle
-	    mouse button.
-	*/
+	 *  1. display feedback as the mouse moves over ob. This feedback will
+	 *  typically be rather more verbose than just a tooltip.
+	 *  2. activate the button controller after a paste with the middle
+	 *  mouse button.
+	 */
 	static void setPrehandler(FL_OBJECT * ob);
 
 private:
@@ -67,7 +68,8 @@ private:
 	virtual ButtonPolicy::SMInput input(FL_OBJECT *, long);
 
 	/** Redraw the form (on receipt of a Signal indicating, for example,
-	    that the xform colors have been re-mapped). */
+	 *  that the xform colors have been re-mapped).
+	 */
 	virtual void redraw();
 
 	/// The dialog's minimum allowable dimensions.

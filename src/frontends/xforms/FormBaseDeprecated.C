@@ -117,9 +117,9 @@ void FormBaseDeprecated::show()
 			fl_set_form_maxsize(form(), minw_, minh_);
 
 		fl_show_form(form(),
-			FL_PLACE_MOUSE | FL_FREE_SIZE,
-			(lyxrc.dialogs_iconify_with_main ? FL_TRANSIENT : 0),
-			title_.c_str());
+			     FL_PLACE_MOUSE | FL_FREE_SIZE,
+			     (lyxrc.dialogs_iconify_with_main ? FL_TRANSIENT : 0),
+			     title_.c_str());
 	}
 
 	tooltips().set();
@@ -221,9 +221,9 @@ FormBaseBD::FormBaseBD(LyXView * lv, Dialogs * d, string const & t,
 void FormBaseBD::connect()
 {
 	u_ = d_->updateBufferDependent.
-		 connect(slot(this, &FormBaseBD::updateSlot));
+		connect(slot(this, &FormBaseBD::updateSlot));
 	h_ = d_->hideBufferDependent.
-		 connect(slot(this, &FormBaseBD::hide));
+		connect(slot(this, &FormBaseBD::hide));
 	FormBaseDeprecated::connect();
 }
 

@@ -3,7 +3,7 @@
  * Copyright 2000-2001 The LyX Team.
  * See the file COPYING.
  *
- * \author \author Jürgen Vigna, jug@sad.it
+ * \author Jürgen Vigna, jug@sad.it
  */
 
 #include <config.h>

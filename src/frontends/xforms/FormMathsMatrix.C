@@ -52,7 +52,7 @@ extern "C" {
 
 
 FormMathsMatrix::FormMathsMatrix(LyXView * lv, Dialogs * d,
-			       FormMathsPanel const & p)
+				 FormMathsPanel const & p)
 	: FormMathsSub(lv, d, p, _("Maths Matrix"), false)
 {}
 

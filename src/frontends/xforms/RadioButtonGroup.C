@@ -56,8 +56,8 @@ struct equal_to_second_in_pair
 	typedef typename T::second_type second_argument_type;
 
 	bool operator() (
-	    pair < typename T::first_type, typename T::second_type > const & left,
-	    typename T::second_type const & right) const
+		pair < typename T::first_type, typename T::second_type > const & left,
+		typename T::second_type const & right) const
 	{
 		return left.second == right;
 	}
@@ -69,9 +69,9 @@ void RadioButtonGroup::setButton(int value)
 {
 #if 0
 	ButtonValueMap::const_iterator it =
-	    find_if(map.begin(), map.end(),
-	            bind2nd(equal_to_second_in_pair<ButtonValuePair>(),
-	                    value));
+		find_if(map.begin(), map.end(),
+			bind2nd(equal_to_second_in_pair<ButtonValuePair>(),
+				value));
 #else
 	ButtonValueMap::const_iterator it =
 		find_if(map.begin(), map.end(),
@@ -81,7 +81,7 @@ void RadioButtonGroup::setButton(int value)
 	// If we found nothing, report it and return
 	if (it == map.end()) {
 		lyxerr << "BUG: Requested value in RadioButtonGroup doesn't exists"
-		<< endl;
+		       << endl;
 	}
 	else {
 		fl_set_button(it->first, 1);
@@ -103,8 +103,8 @@ int RadioButtonGroup::getButton()
 {
 	// Find the first button that is active
 	ButtonValueMap::iterator it =
-	    find_if(map.begin(), map.end(),
-	            is_set_button<ButtonValuePair> ());
+		find_if(map.begin(), map.end(),
+			is_set_button<ButtonValuePair> ());
 
 	// If such a button was found, return its value.
 	if (it != map.end()) {

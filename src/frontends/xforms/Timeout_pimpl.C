@@ -24,12 +24,12 @@ namespace {
 
 extern "C" {
 	
-	static
-	void C_intern_timeout_cb(int, void * data)
-	{
-		Timeout * to = static_cast<Timeout *>(data);
-		to->emit();
-	}
+static
+void C_intern_timeout_cb(int, void * data)
+{
+	Timeout * to = static_cast<Timeout *>(data);
+	to->emit();
+}
 
 }
 

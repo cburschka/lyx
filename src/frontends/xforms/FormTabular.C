@@ -152,8 +152,7 @@ void FormTabular::build()
 	vector<string> units_vec = getLatexUnits();
 #if 0
 	for (vector<string>::iterator it = units_vec.begin();
-	     it != units_vec.end(); ++it)
-	{
+	     it != units_vec.end(); ++it) {
 		if (contains(*it, "%"))
 			it = units_vec.erase(it, it + 1) - 1;
 	}
@@ -214,20 +213,18 @@ void FormTabular::update()
 		// to set if we are in first/last cell of row or if the left/right
 		// cell is also a multicolumn.
 		if (tabular->IsFirstCellInRow(cell) ||
-			tabular->IsMultiColumn(cell-1))
-		{
+		    tabular->IsMultiColumn(cell-1)) {
 			fl_set_button(cell_options_->check_border_left,
-			              tabular->LeftLine(cell)?1:0);
+				      tabular->LeftLine(cell)?1:0);
 			setEnabled(cell_options_->check_border_left, true);
 		} else {
 			fl_set_button(cell_options_->check_border_left, 0);
 			setEnabled(cell_options_->check_border_left, false);
 		}
 		if (tabular->IsLastCellInRow(cell) ||
-			tabular->IsMultiColumn(cell+1))
-		{
+		    tabular->IsMultiColumn(cell+1)) {
 			fl_set_button(cell_options_->check_border_right,
-		                  tabular->RightLine(cell)?1:0);
+				      tabular->RightLine(cell)?1:0);
 			setEnabled(cell_options_->check_border_right, true);
 		} else {
 			fl_set_button(cell_options_->check_border_right, 0);
@@ -527,7 +524,7 @@ bool FormTabular::input(FL_OBJECT * ob, long)
 		LyXTabular * tabular = inset_->tabular.get();
 		string str1 =
 			getLengthFromWidgets(column_options_->input_column_width,
-								 column_options_->choice_value_column_width);
+					     column_options_->choice_value_column_width);
 		string str2;
 		LyXLength llen = tabular->GetColumnPWidth(cell);
 		if (!llen.zero())
@@ -564,35 +561,33 @@ bool FormTabular::input(FL_OBJECT * ob, long)
 	// No point in processing directives that you can't do anything with
 	// anyhow, so exit now if the buffer is read-only.
 	if (lv_->buffer()->isReadonly()) {
-	  update();
-	  return false;
-	}
-	if ((ob == column_options_->input_column_width) ||
-		(ob == column_options_->choice_value_column_width))
-	{
-	string const str =
-		getLengthFromWidgets(column_options_->input_column_width,
-		                     column_options_->choice_value_column_width);
-	inset_->tabularFeatures(lv_->view(), LyXTabular::SET_PWIDTH, str);
-
-	//check if the input is valid
-	string const input =
-		fl_get_input(column_options_->input_column_width);
-	if (!input.empty() && !isValidLength(input) && !isStrDbl(input)) {
-		postWarning(_("Invalid Length (valid example: 10mm)"));
+		update();
 		return false;
 	}
+	if ((ob == column_options_->input_column_width) ||
+	    (ob == column_options_->choice_value_column_width)) {
+		string const str =
+			getLengthFromWidgets(column_options_->input_column_width,
+					     column_options_->choice_value_column_width);
+		inset_->tabularFeatures(lv_->view(), LyXTabular::SET_PWIDTH, str);
 
-	update(); // update for alignment
-	return true;
+		//check if the input is valid
+		string const input =
+			fl_get_input(column_options_->input_column_width);
+		if (!input.empty() && !isValidLength(input) && !isStrDbl(input)) {
+			postWarning(_("Invalid Length (valid example: 10mm)"));
+			return false;
+		}
+
+		update(); // update for alignment
+		return true;
 	}
 	
 	if ((ob == cell_options_->input_mcolumn_width) ||
-		(ob == cell_options_->choice_value_mcolumn_width))
-	{
+	    (ob == cell_options_->choice_value_mcolumn_width)) {
 		string const str =
 			getLengthFromWidgets(cell_options_->input_mcolumn_width,
-			                     cell_options_->choice_value_mcolumn_width);
+					     cell_options_->choice_value_mcolumn_width);
 		inset_->tabularFeatures(lv_->view(), LyXTabular::SET_MPWIDTH, str);
 
 		//check if the input is valid
@@ -642,7 +637,7 @@ bool FormTabular::input(FL_OBJECT * ob, long)
 		num = LyXTabular::MULTICOLUMN;
 	else if (ob == tabular_options_->check_longtable) {
 		if (fl_get_button(tabular_options_->check_longtable))
-		    num = LyXTabular::SET_LONGTABULAR;
+			num = LyXTabular::SET_LONGTABULAR;
 		else
 			num = LyXTabular::UNSET_LONGTABULAR;
 	} else if (ob == tabular_options_->check_rotate_tabular) {
@@ -673,8 +668,7 @@ bool FormTabular::input(FL_OBJECT * ob, long)
 	           (ob == longtable_options_->check_lt_lastfoot) ||
 	           (ob == longtable_options_->check_lastfoot_2border_above) ||
 	           (ob == longtable_options_->check_lastfoot_2border_below) ||
-	           (ob == longtable_options_->check_lastfoot_empty))
-	{
+	           (ob == longtable_options_->check_lastfoot_empty)) {
 		num = static_cast<LyXTabular::Feature>(checkLongtableOptions(ob, special));
 	} else if (ob == longtable_options_->check_lt_newpage) {
 		num = LyXTabular::SET_LTNEWPAGE;
@@ -719,18 +713,15 @@ int FormTabular::checkLongtableOptions(FL_OBJECT * ob, string & special)
 	if ((ob == longtable_options_->check_1head_2border_above) ||
 	    (ob == longtable_options_->check_head_2border_above) ||
 	    (ob == longtable_options_->check_foot_2border_above) ||
-	    (ob == longtable_options_->check_lastfoot_2border_above))
-	{
+	    (ob == longtable_options_->check_lastfoot_2border_above)) {
 		special = "dl_above";
 	} else if ((ob == longtable_options_->check_1head_2border_below) ||
-	           (ob == longtable_options_->check_head_2border_below) ||
-	           (ob == longtable_options_->check_foot_2border_below) ||
-	           (ob == longtable_options_->check_lastfoot_2border_below))
-	{
+		   (ob == longtable_options_->check_head_2border_below) ||
+		   (ob == longtable_options_->check_foot_2border_below) ||
+		   (ob == longtable_options_->check_lastfoot_2border_below)) {
 		special = "dl_below";
 	} else if ((ob == longtable_options_->check_1head_empty) ||
-	           (ob == longtable_options_->check_lastfoot_empty))
-	{
+		   (ob == longtable_options_->check_lastfoot_empty)) {
 		special = "empty";
 	} else {
 		special = "";
@@ -738,27 +729,24 @@ int FormTabular::checkLongtableOptions(FL_OBJECT * ob, string & special)
 	if ((ob == longtable_options_->check_lt_firsthead) ||
 	    (ob == longtable_options_->check_1head_2border_above) ||
 	    (ob == longtable_options_->check_1head_2border_below) ||
-	    (ob == longtable_options_->check_1head_empty))
-	{
+	    (ob == longtable_options_->check_1head_empty)) {
 		return (flag ? LyXTabular::SET_LTFIRSTHEAD :
-		        LyXTabular::UNSET_LTFIRSTHEAD);
+			LyXTabular::UNSET_LTFIRSTHEAD);
 	} else if ((ob == longtable_options_->check_lt_head) ||
-	           (ob == longtable_options_->check_head_2border_above) ||
-	           (ob == longtable_options_->check_head_2border_below))
-	{
+			   (ob == longtable_options_->check_head_2border_above) ||
+			   (ob == longtable_options_->check_head_2border_below)) {
 		return (flag ? LyXTabular::SET_LTHEAD : LyXTabular::UNSET_LTHEAD);
 	} else if ((ob == longtable_options_->check_lt_foot) ||
-	           (ob == longtable_options_->check_foot_2border_above) ||
-	           (ob == longtable_options_->check_foot_2border_below))
-	{
+		   (ob == longtable_options_->check_foot_2border_above) ||
+		   (ob == longtable_options_->check_foot_2border_below)) {
 		return (flag ? LyXTabular::SET_LTFOOT : LyXTabular::UNSET_LTFOOT);
 	} else if ((ob == longtable_options_->check_lt_lastfoot) ||
-	           (ob == longtable_options_->check_lastfoot_2border_above) ||
-	           (ob == longtable_options_->check_lastfoot_2border_below) ||
-	           (ob == longtable_options_->check_lastfoot_empty))
-	{
+		   (ob == longtable_options_->check_lastfoot_2border_above) ||
+		   (ob == longtable_options_->check_lastfoot_2border_below) ||
+		   (ob == longtable_options_->check_lastfoot_empty)) {
 		return (flag ? LyXTabular::SET_LTLASTFOOT :
-		        LyXTabular::UNSET_LTLASTFOOT);
+			LyXTabular::UNSET_LTLASTFOOT);
 	}
+
 	return LyXTabular::LAST_ACTION;
 }

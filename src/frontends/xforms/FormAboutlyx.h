@@ -60,4 +60,3 @@ private:
 };
 
 #endif // FORMABOUTLYX_H
-

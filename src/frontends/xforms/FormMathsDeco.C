@@ -86,4 +86,3 @@ bool FormMathsDeco::input(FL_OBJECT * ob, long)
 	apply();
 	return true;
 }
-

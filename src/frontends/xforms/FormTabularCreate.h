@@ -5,7 +5,7 @@
  * Copyright 1995-2001 the LyX Team
  * Read the file COPYING
  *
- * \author unknown.
+ * \author Jürgen Vigna, jug@sad.it
  */
 
 #ifndef FORMTABULARCREATE_H

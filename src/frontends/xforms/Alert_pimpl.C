@@ -57,7 +57,7 @@ pair<bool, string> const askForText_pimpl(string const & msg, string const & dfl
 	fl_set_resource("flInput.clear.label", idex(_("Clear|#e")));
 	char const * tmp = fl_show_input(msg.c_str(), dflt.c_str());
 	if (tmp != 0)
-	  return make_pair<bool, string>(true, string(tmp));
+		return make_pair<bool, string>(true, string(tmp));
 	else
-	  return make_pair<bool, string>(false, string());
+		return make_pair<bool, string>(false, string());
 }

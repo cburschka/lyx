@@ -56,37 +56,37 @@ void FormMathsStyle::build()
 	dialog_.reset(build_maths_style());
 
 	fl_set_bmtable_data(dialog_->bmtable_style1, 1, 1,
-					style1_width, style1_height, style1_bits);
+			    style1_width, style1_height, style1_bits);
 	fl_set_bmtable_maxitems(dialog_->bmtable_style1, 1);
 	bc().addReadOnly(dialog_->bmtable_style1);
 
 	fl_set_bmtable_data(dialog_->bmtable_style2, 1, 3,
-					style2_width, style2_height, style2_bits);
+			    style2_width, style2_height, style2_bits);
 	fl_set_bmtable_maxitems(dialog_->bmtable_style2, 3);
 	bc().addReadOnly(dialog_->bmtable_style2);
 
 	fl_set_bmtable_data(dialog_->bmtable_font1, 1, 5,
-					font1_width, font1_height, font1_bits);
+			    font1_width, font1_height, font1_bits);
 	fl_set_bmtable_maxitems(dialog_->bmtable_font1, 5);
 	bc().addReadOnly(dialog_->bmtable_font1);
 
 	fl_set_bmtable_data(dialog_->bmtable_font2, 1, 3,
-					font2_width, font2_height, font2_bits);
+			    font2_width, font2_height, font2_bits);
 	fl_set_bmtable_maxitems(dialog_->bmtable_font2, 3);
 	bc().addReadOnly(dialog_->bmtable_font2);
 
 	bc().setCancel(dialog_->button_close);
-	}
+}
 
 
 void FormMathsStyle::apply()
 {
 	if ((style_ >= 0) && (style_ < 4)) 
 		parent_.insertSymbol(latex_mathstyle[style_]);
-	else
-	if ((style_ >= 4) && (style_ < 14)) 
+	else if ((style_ >= 4) && (style_ < 14)) 
 		parent_.dispatchFunc(latex_mathfontcmds[style_ - 4]);
 }
+
 
 bool FormMathsStyle::input(FL_OBJECT * ob, long data)
 {

@@ -139,7 +139,7 @@ void FormDocument::build()
 	vector<string> units_vec = getLatexUnits();
 #if 0
 	for (vector<string>::iterator it = units_vec.begin();
-		it != units_vec.end(); ++it) {
+	     it != units_vec.end(); ++it) {
 		if (contains(*it, "%"))
 			it = units_vec.erase(it, it+1) - 1;
 	}
@@ -396,8 +396,8 @@ namespace {
 bool saveParamsAsDefault(BufferParams const &params)
 {
 	if (!Alert::askQuestion(_("Do you want to save the current settings"),
-			 _("for the document layout as default?"),
-			 _("(they will be valid for any new document)")))
+				_("for the document layout as default?"),
+				_("(they will be valid for any new document)")))
 		return false;
 	
 	string const fname = AddName(AddPath(user_lyxdir, "templates/"),
@@ -412,6 +412,7 @@ bool saveParamsAsDefault(BufferParams const &params)
 }
 
 } //namespace
+
 
 bool FormDocument::input(FL_OBJECT * ob, long data)
 {
@@ -501,7 +502,7 @@ bool FormDocument::input(FL_OBJECT * ob, long data)
 
 	if (ob == paper_->radio_landscape)
 		fl_set_choice(paper_->choice_paperpackage,
-		BufferParams::PACKAGE_NONE + 1);
+			      BufferParams::PACKAGE_NONE + 1);
 
 	if (ob == paper_->choice_papersize) {
 		int const paperchoice = fl_get_choice(paper_->choice_papersize);
@@ -548,8 +549,8 @@ bool FormDocument::input(FL_OBJECT * ob, long data)
 			|| paperchoice == 2 || paperchoice > 5;
 		int const default_unit = metric ? 8 : 9;
 		if (strip(fl_get_input(paper_->input_custom_width)).empty())
-		fl_set_choice(paper_->choice_custom_width_units,
-			      default_unit);
+			fl_set_choice(paper_->choice_custom_width_units,
+				      default_unit);
 		if (strip(fl_get_input(paper_->input_custom_height)).empty())
 			fl_set_choice(paper_->choice_custom_height_units,
 				      default_unit);
@@ -694,8 +695,8 @@ bool FormDocument::class_apply(BufferParams &params)
 		params.setDefSkip(VSpace(VSpace::MEDSKIP));
 		break;
     	case 3:
-	    params.setDefSkip(VSpace(VSpace::BIGSKIP));
-	    break;
+		params.setDefSkip(VSpace(VSpace::BIGSKIP));
+		break;
 	case 4:
 	{
 		string const length =
@@ -778,14 +779,14 @@ bool FormDocument::class_apply()
 					s += _(" paragraphs couldn't be converted");
 				}
 				Alert::alert(_("Conversion Errors!"),s,
-					   _("into chosen document class"));
+					     _("into chosen document class"));
 			}
 			
 		} else {
 			// problem changing class -- warn user and retain old style
 			Alert::alert(_("Conversion Errors!"),
-				   _("Errors loading new document class."),
-				   _("Reverting to original document class."));
+				     _("Errors loading new document class."),
+				     _("Reverting to original document class."));
 			combo_doc_class->select(int(old_class) + 1);
 		}
 	}
@@ -1014,8 +1015,8 @@ void FormDocument::class_update(BufferParams const & params)
 		string const default_unit = metric ? "cm" : "in";
 		string const length = params.getDefSkip().asLyXCommand();
 		updateWidgetsFromLengthString(class_->input_doc_skip,
-				      class_->choice_default_skip_units,
-				      length, default_unit);
+					      class_->choice_default_skip_units,
+					      length, default_unit);
 		break;
 	}
 	default:
@@ -1142,11 +1143,11 @@ void FormDocument::paper_update(BufferParams const & params)
 
 	// Default unit choice is cm if metric, inches if US paper.
 	bool const metric = (paperchoice == 1 && lyxrc.default_papersize > 3)
-			|| paperchoice == 2 || paperchoice > 5;
+		|| paperchoice == 2 || paperchoice > 5;
 	string const default_unit = metric ? "cm" : "in";
 	updateWidgetsFromLengthString(paper_->input_custom_width,
-			      paper_->choice_custom_width_units,
-			      params.paperwidth, default_unit);
+				      paper_->choice_custom_width_units,
+				      params.paperwidth, default_unit);
 	setEnabled(paper_->input_custom_width, useCustom);
 	setEnabled(paper_->choice_custom_width_units, useCustom);
 
@@ -1269,15 +1270,15 @@ bool FormDocument::CheckDocumentInput(FL_OBJECT * ob, long)
 
 	//display warning if input is not valid
 	if (ob == class_->input_doc_skip
-			|| ob == paper_->input_custom_width
-			|| ob == paper_->input_custom_height
-			|| ob == paper_->input_outer_margin
-			|| ob == paper_->input_inner_margin
-			|| ob == paper_->input_top_margin
-			|| ob == paper_->input_bottom_margin
-			|| ob == paper_->input_head_height
-			|| ob == paper_->input_head_sep
-			|| ob == paper_->input_foot_skip) {
+	    || ob == paper_->input_custom_width
+	    || ob == paper_->input_custom_height
+	    || ob == paper_->input_outer_margin
+	    || ob == paper_->input_inner_margin
+	    || ob == paper_->input_top_margin
+	    || ob == paper_->input_bottom_margin
+	    || ob == paper_->input_head_height
+	    || ob == paper_->input_head_sep
+	    || ob == paper_->input_foot_skip) {
 		if (!ok) {
 			postWarning(_("Invalid Length (valid example: 10mm)"));
 			return false;
@@ -1461,8 +1462,8 @@ void FormDocument::CheckChoiceClass(FL_OBJECT * ob, long)
 	} else {
 		// unable to load new style
 		Alert::alert(_("Conversion Errors!"),
-			   _("Unable to switch to new document class."),
-			   _("Reverting to original document class."));
+			     _("Unable to switch to new document class."),
+			     _("Reverting to original document class."));
 		combo_doc_class->select(int(lv_->buffer()->params.textclass) + 1);
 	}
 	lv_->allowInput();

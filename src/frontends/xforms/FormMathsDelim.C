@@ -99,8 +99,8 @@ bool FormMathsDelim::input(FL_OBJECT *, long)
 
 	int const i = fl_get_bmtable(dialog_->bmtable);
 	int const button = fl_get_bmtable_numb(dialog_->bmtable);
-	bool const both = (button == FL_MIDDLE_MOUSE) 
-			|| (fl_get_button(dialog_->radio_both) != 0);
+	bool const both = (button == FL_MIDDLE_MOUSE ||
+			   fl_get_button(dialog_->radio_both) != 0);
 	
 	if (i >= 0) {
 		if (side || (button == FL_RIGHT_MOUSE))

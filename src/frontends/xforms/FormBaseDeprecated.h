@@ -62,10 +62,10 @@ protected: // methods
 	virtual xformsBC & bc() = 0;
 
 	/** Redraw the form (on receipt of a Signal indicating, for example,
-	    that the xform colors have been re-mapped).
-	    Must be virtual because dialogs with tabbed folders will need to
-	    redraw the form for each tab.
-	*/
+	 *  that the xform colors have been re-mapped).
+	 *  Must be virtual because dialogs with tabbed folders will need to
+	 *  redraw the form for each tab.
+	 */
 	virtual void redraw();
 
 	/// Create the dialog if necessary, update it and display it.
@@ -81,7 +81,7 @@ protected: // methods
 	/// Build the dialog
 	virtual void build() = 0;
 	/** Filter the inputs on callback from xforms
-	    Return true if inputs are valid.
+	 *  Return true if inputs are valid.
 	 */
 	virtual bool input( FL_OBJECT *, long) {
 		return true;
@@ -105,17 +105,17 @@ protected: // methods
 	virtual FL_FORM * form() const = 0;
 
 	/** Prepare the way to:
-	    1. display feedback as the mouse moves over ob. This feedback will
-	    typically be rather more verbose than just a tooltip.
-	    2. activate the button controller after a paste with the middle
-	    mouse button.
-	*/
+	 *  1. display feedback as the mouse moves over ob. This feedback will
+	 *  typically be rather more verbose than just a tooltip.
+	 *  2. activate the button controller after a paste with the middle
+	 *  mouse button.
+	 */
 	static void setPrehandler(FL_OBJECT * ob);
 
 	/** Which LyXFunc do we use?
-	    We could modify Dialogs to have a visible LyXFunc* instead and
-	    save a couple of bytes per dialog.
-	*/
+	 *  We could modify Dialogs to have a visible LyXFunc* instead and
+	 *  save a couple of bytes per dialog.
+	 */
 	LyXView * lv_;
 	/// Used so we can get at the signals we have to connect to.
 	Dialogs * d_;
@@ -139,8 +139,8 @@ private:
 
 
 /** This class is an XForms GUI base class for Buffer Independent dialogs.
-    Such dialogs do not require an update Connection although they may use
-    an update() function which is also supported by restore().
+ *  Such dialogs do not require an update Connection although they may use
+ *  an update() function which is also supported by restore().
  */
 class FormBaseBI : public FormBaseDeprecated {
 protected:

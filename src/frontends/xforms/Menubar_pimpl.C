@@ -87,7 +87,7 @@ Menubar::Pimpl::Pimpl(LyXView * view, MenuBackend const & mb)
 	: owner_(view), menubackend_(&mb), current_group_(0)
 {
 	for (MenuBackend::const_iterator menu = menubackend_->begin();
-	    menu != menubackend_->end() ; ++menu) {
+	     menu != menubackend_->end() ; ++menu) {
 		if (menu->menubar()) {
 			FL_OBJECT * group = fl_bgn_group();
 			makeMenubar(*menu);
@@ -327,6 +327,7 @@ void add_toc2(int menu, string const & extra_label,
 }
 
 } // namespace anon
+
 
 void Menubar::Pimpl::add_toc(int menu, string const & extra_label,
 			     vector<int> & smn, Window win)

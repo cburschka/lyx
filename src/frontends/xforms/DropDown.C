@@ -89,9 +89,9 @@ void DropDown::line_up()
 	if (fl_get_browser(browser_) > 1)
 		fl_select_browser_line(browser_, fl_get_browser(browser_) - 1);
 	if (fl_get_browser(browser_) >= fl_get_browser_topline(browser_) +
-		fl_get_browser_screenlines(browser_))
-			fl_set_browser_topline(browser_, fl_get_browser(browser_)
-				- fl_get_browser_screenlines(browser_) + 1);
+	    fl_get_browser_screenlines(browser_))
+		fl_set_browser_topline(browser_, fl_get_browser(browser_)
+				       - fl_get_browser_screenlines(browser_) + 1);
 	if (fl_get_browser(browser_) < fl_get_browser_topline(browser_))
 		fl_set_browser_topline(browser_, fl_get_browser(browser_));
 }
@@ -102,9 +102,9 @@ void DropDown::line_down()
 	if (fl_get_browser(browser_) < fl_get_browser_maxline(browser_))
 		fl_select_browser_line(browser_, fl_get_browser(browser_) + 1);
 	if (fl_get_browser(browser_) >= fl_get_browser_topline(browser_) +
-		fl_get_browser_screenlines(browser_))
-			fl_set_browser_topline(browser_, fl_get_browser(browser_)
-				- fl_get_browser_screenlines(browser_) + 1);
+	    fl_get_browser_screenlines(browser_))
+		fl_set_browser_topline(browser_, fl_get_browser(browser_)
+				       - fl_get_browser_screenlines(browser_) + 1);
 	if (fl_get_browser(browser_) < fl_get_browser_topline(browser_))
 		fl_set_browser_topline(browser_, fl_get_browser(browser_));
 }
@@ -119,7 +119,7 @@ int DropDown::peek(XEvent * xev)
  
 	if (xev->type == ButtonPress) {
 		if (!(x >= form_->x && x <= (form_->x + form_->w) &&
-			y >= form_->y && y << (form_->y + form_->h))) {
+		      y >= form_->y && y << (form_->y + form_->h))) {
 			fl_hide_form(form_);
 			return 1;
 		}
@@ -129,37 +129,37 @@ int DropDown::peek(XEvent * xev)
 		KeySym keysym_return;
 		XLookupString(&xev->xkey, s_r, 10, &keysym_return, 0);
 		switch (keysym_return) {
-			case XK_Down:
-				line_down();
-				return 1;
-			case XK_Up:
-				line_up();
-				return 1;
-			case XK_Return:
-				completed(); 
-				return 1;
-			case XK_Escape:
-				fl_deselect_browser(browser_);
-				completed();
-				return 1;
-			default:
-				// FIXME: if someone has a got a way to
-				// convince the event to fall back to the
-				// minibuffer, I'm glad to hear it.
-				// fl_XPutBackEvent() doesn't work. 
+		case XK_Down:
+			line_down();
+			return 1;
+		case XK_Up:
+			line_up();
+			return 1;
+		case XK_Return:
+			completed(); 
+			return 1;
+		case XK_Escape:
+			fl_deselect_browser(browser_);
+			completed();
+			return 1;
+		default:
+			// FIXME: if someone has a got a way to
+			// convince the event to fall back to the
+			// minibuffer, I'm glad to hear it.
+			// fl_XPutBackEvent() doesn't work. 
 
-				// This is a bit less elegant perhaps, but works
-				// well enough. Angus 11 Jan 2002
-				if (s_r[0] && isprint(s_r[0])) {
-					key_pressed(s_r[0]);
-					return 1;
-				}
+			// This is a bit less elegant perhaps, but works
+			// well enough. Angus 11 Jan 2002
+			if (s_r[0] && isprint(s_r[0])) {
+				key_pressed(s_r[0]);
+				return 1;
+			}
 		}
 	}
 	return 0; 
 }
 
- 
+
 void DropDown::completed()
 {
 	XUngrabPointer(fl_get_display(), CurrentTime);

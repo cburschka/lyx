@@ -127,7 +127,7 @@ void FormSpellchecker::partialUpdate(int id)
 			fl_add_browser_line(dialog_->browser, w.c_str());
 		}
 	}
-		break;
+	break;
 	case 2:
 		// show exit message
 		fl_show_messages(controller().getMessage().c_str());

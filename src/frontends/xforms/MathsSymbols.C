@@ -70,8 +70,7 @@ char const * function_names[] = {
 	"tan", "tanh"
 };
 
-int const nr_function_names = sizeof(function_names) /
-	       			     sizeof(char const *);
+int const nr_function_names = sizeof(function_names) / sizeof(char const *);
 
 char const * latex_arrow[] = {
 	"downarrow", "leftarrow", "Downarrow", "Leftarrow",
@@ -239,17 +238,17 @@ int const nr_latex_ams_ops = sizeof(latex_ams_ops) / sizeof(char const *);
 static char const ** mathed_get_pixmap_from_icon(int d)
 {
 	switch (d) {
-		case MM_FRAC: return frac;
-		case MM_SQRT: return sqrt_xpm;
-		case MM_SUPER: return super_xpm;
-		case MM_SUB: return sub_xpm;
-		case MM_STYLE: return style_xpm;
-		case MM_DELIM: return delim;
-		case MM_MATRIX: return matrix;
-		case MM_EQU: return equation;
-		case MM_DECO: return deco;
-		case MM_SPACE: return space_xpm;
-		default: return 0;
+	case MM_FRAC: return frac;
+	case MM_SQRT: return sqrt_xpm;
+	case MM_SUPER: return super_xpm;
+	case MM_SUB: return sub_xpm;
+	case MM_STYLE: return style_xpm;
+	case MM_DELIM: return delim;
+	case MM_MATRIX: return matrix;
+	case MM_EQU: return equation;
+	case MM_DECO: return deco;
+	case MM_SPACE: return space_xpm;
+	default: return 0;
 	}
 }
  
@@ -274,7 +273,7 @@ static char const ** pixmapFromBitmapData(char const * s, int wx, int hx)
 		case 8: latex_str = latex_ams_rel; break;
 		case 9: latex_str = latex_ams_nrel; break;
 		case 10: latex_str = latex_ams_ops; break;
-		// Add AMS stuff here -- MV
+			// Add AMS stuff here -- MV
 		}
 
 		for (int k = 0; latex_str[k][0] > ' '; ++k) {

@@ -404,7 +404,7 @@ void FormMathsPanel::mathDisplay() const
 
 FormMathsSub::FormMathsSub(LyXView * lv, Dialogs * d, FormMathsPanel const & p,
 			   string const & t, bool allowResize)
-    : FormBaseBD(lv, d, t, allowResize), parent_(p), bc_("Close")
+	: FormBaseBD(lv, d, t, allowResize), parent_(p), bc_("Close")
 {}
 
 
@@ -420,5 +420,3 @@ void FormMathsSub::disconnect()
 	parent_.setActive(0);
 	FormBaseBD::disconnect();
 }
-
-
