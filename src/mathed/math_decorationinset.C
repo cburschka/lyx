@@ -116,6 +116,7 @@ void MathDecorationInset::validate(LaTeXFeatures & features) const
 {
 	if (ams())
 		features.require("amsmath");
+	MathNestInset::validate(features);
 }
 
 

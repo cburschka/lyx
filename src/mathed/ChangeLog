@@ -1,3 +1,8 @@
+2005-01-19  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* math_decorationinset.C (validate): do not forget to call
+	validate on the contents of the inset.
+
 2005-01-03  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* math_decorationinset.C (ams, validate): new methods. Require
