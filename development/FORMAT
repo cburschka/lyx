@@ -1,6 +1,14 @@
 LyX file-format changes
 -----------------------
 
+2003-12-15  Angus Leeming  <leeming@lyx.org>
+
+	* format incremented to 228.
+	* Change the output of all insets derived from InsetCollapsable
+	except for InsetERT (which has this output already), changing lines
+	"collapsed true" -> "status collapsed"
+	"collapsed false" -> "status open".
+
 2003-12-10  Angus Leeming  <leeming@lyx.org>
 
 	* format NOT incremented.

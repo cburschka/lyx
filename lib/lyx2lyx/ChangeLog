@@ -1,3 +1,10 @@
+2003-12-15  Angus Leeming  <leeming@lyx.org>
+
+	* lyx2lyx:
+	* lyxconvert_227.py:
+	* lyxrevert_228.py: convert the InsetCollapsable format between
+	formats 227 and 228.
+
 2003-12-10  Angus Leeming  <leeming@lyx.org>
 
 	* lyxrevert_227.py: InsetExternal gains a 'draft' option, so remove
