@@ -1,3 +1,11 @@
+2003-07-23  Angus Leeming  <leeming@lyx.org>
+
+	* Kernel.[Ch] (bufferFilepath): new wrapper for Buffer::filePath.
+
+	* ControlBibtex.C:
+	* ControlExternal.C:
+	* ControlGraphics.C: use it.
+
 2003-07-21  Angus Leeming  <leeming@lyx.org>
 
 	* ControlGraphics.C (initialiseParams, dispatchParams): no need

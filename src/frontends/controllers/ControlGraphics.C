@@ -15,7 +15,6 @@
 
 #include "helper_funcs.h"
 
-#include "buffer.h"
 #include "BufferView.h"
 #include "funcrequest.h"
 #include "gettext.h"
@@ -50,7 +49,7 @@ ControlGraphics::ControlGraphics(Dialog & parent)
 
 bool ControlGraphics::initialiseParams(string const & data)
 {
-	string const bufpath = kernel().buffer()->filePath();
+	string const bufpath = kernel().bufferFilepath();
 	InsetGraphicsParams params;
 	InsetGraphicsMailer::string2params(data, bufpath, params);
 	params_.reset(new InsetGraphicsParams(params));
@@ -66,7 +65,7 @@ void ControlGraphics::clearParams()
 
 void ControlGraphics::dispatchParams()
 {
-	string const buffer_path = kernel().buffer()->filePath();
+	string const buffer_path = kernel().bufferFilepath();
 	InsetGraphicsParams tmp_params(params());
 	string const lfun =
 		InsetGraphicsMailer::params2string(tmp_params, buffer_path);
@@ -87,7 +86,7 @@ string const ControlGraphics::Browse(string const & in_name)
 	pair<string, string> dir1(_("Clipart|#C#c"), clipdir);
 	pair<string, string> dir2(_("Documents|#o#O"), string(lyxrc.document_path));
 	// Show the file browser dialog
-	return browseRelFile(in_name, kernel().buffer()->filePath(),
+	return browseRelFile(in_name, kernel().bufferFilepath(),
 			     title, "*.*", false, dir1, dir2);
 }
 
@@ -95,7 +94,7 @@ string const ControlGraphics::Browse(string const & in_name)
 string const ControlGraphics::readBB(string const & file)
 {
 	string const abs_file =
-		MakeAbsPath(file, kernel().buffer()->filePath());
+		MakeAbsPath(file, kernel().bufferFilepath());
 
 	// try to get it from the file, if possible. Zipped files are
 	// unzipped in the readBB_from_PSFile-Function
@@ -124,7 +123,7 @@ string const ControlGraphics::readBB(string const & file)
 bool ControlGraphics::isFilenameValid(string const & fname) const
 {
 	// It may be that the filename is relative.
-	string const name = MakeAbsPath(fname, kernel().buffer()->filePath());
+	string const name = MakeAbsPath(fname, kernel().bufferFilepath());
 	return IsFileReadable(name);
 }
 

@@ -15,7 +15,6 @@
 #include "ControlBibtex.h"
 #include "Kernel.h"
 
-#include "buffer.h"
 #include "lyxrc.h"
 #include "helper_funcs.h"
 #include "tex_helpers.h"
@@ -40,7 +39,7 @@ string const ControlBibtex::Browse(string const & in_name,
 {
 	pair<string, string> dir1(_("Documents|#o#O"),
 				  string(lyxrc.document_path));
-	return browseRelFile(in_name, kernel().buffer()->filePath(),
+	return browseRelFile(in_name, kernel().bufferFilepath(),
 			     title, pattern, false, dir1);
 }
 

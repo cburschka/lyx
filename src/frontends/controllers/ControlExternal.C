@@ -36,7 +36,7 @@ ControlExternal::ControlExternal(Dialog & parent)
 bool ControlExternal::initialiseParams(string const & data)
 {
 	params_.reset(new InsetExternal::Params);
-	InsetExternalMailer::string2params(data, *params_);
+	InsetExternalMailer::string2params(data, kernel().buffer(), *params_);
 	return true;
 }
 
@@ -49,7 +49,8 @@ void ControlExternal::clearParams()
 
 void ControlExternal::dispatchParams()
 {
-	string const lfun = InsetExternalMailer::params2string(params());
+	string const lfun =
+		InsetExternalMailer::params2string(params(), kernel().buffer());
 	kernel().dispatch(FuncRequest(LFUN_INSET_APPLY, lfun));
 }
 
@@ -73,7 +74,8 @@ void ControlExternal::editExternal()
 	Assert(params_.get());
 
 	dialog().view().apply();
-	string const lfun = InsetExternalMailer::params2string(params());
+	string const lfun =
+		InsetExternalMailer::params2string(params(), kernel().buffer());
 	kernel().dispatch(FuncRequest(LFUN_EXTERNAL_EDIT, lfun));
 }
 
@@ -138,7 +140,7 @@ string const ControlExternal::Browse(string const & input) const
 {
 	string const title =  _("Select external file");
 
-	string const bufpath = kernel().buffer()->filePath();
+	string const bufpath = kernel().bufferFilepath();
 
 	/// Determine the template file extension
 	string pattern = "*";

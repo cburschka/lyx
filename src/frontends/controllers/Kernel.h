@@ -63,6 +63,7 @@ public:
 	//@{
 	bool isBufferAvailable() const;
 	bool isBufferReadonly() const;
+	string const bufferFilepath() const;
 	//@}
 
 	/** \enum DocTypes used to flag the different kinds of buffer
