@@ -1,3 +1,8 @@
+2001-01-29  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* BufferView_pimpl.C (savePosition, restorePosition): Write
+	messages to minibuffer.
+
 2001-01-28  José Matos  <jamatos@fep.up.pt>
 
 	* buffer.C (makeDocBookFile): adds support for document language.

@@ -1181,6 +1181,8 @@ void BufferView::Pimpl::savePosition(unsigned int i)
 	saved_positions[i] = Position(buffer_->fileName(),
 				      bv_->text->cursor.par()->id(),
 				      bv_->text->cursor.pos());
+	if (i > 0)
+		owner_->getMiniBuffer()->Set(_("Saved bookmark ") + tostr(i));
 }
 
 
@@ -1188,7 +1190,6 @@ void BufferView::Pimpl::restorePosition(unsigned int i)
 {
 	if (i >= saved_positions_num)
 		return;
-
 
 	string fname = saved_positions[i].filename;
 
@@ -1208,6 +1209,8 @@ void BufferView::Pimpl::restorePosition(unsigned int i)
 	bv_->text->SetCursor(bv_, par,
 			     min(par->Last(), saved_positions[i].par_pos));
 	update(BufferView::SELECT|BufferView::FITCUR);
+	if (i > 0)
+		owner_->getMiniBuffer()->Set(_("Moved to bookmark ") + tostr(i));
 }
 
 
