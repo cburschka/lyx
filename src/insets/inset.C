@@ -14,17 +14,13 @@
 #pragma implementation "lyxinset.h"
 #endif
 
-#define SCROLL_INSET
-
 #include "lyxinset.h"
 #include "debug.h"
 #include "BufferView.h"
 #include "support/lstrings.h"
 #include "Painter.h"
-#ifdef SCROLL_INSET
 #include "commandtags.h"
 #include "support/lstrings.h"
-#endif
 
 using std::endl;
 
@@ -162,7 +158,6 @@ void UpdatableInset::SetFont(BufferView *, LyXFont const &, bool )
 }
 
 
-#ifdef SCROLL_INSET
 void UpdatableInset::scroll(BufferView * bv, float s) const
 {
     LyXFont font;
@@ -212,21 +207,11 @@ void UpdatableInset::scroll(BufferView * bv, int offset) const
 //    bv->updateInset(const_cast<UpdatableInset *>(this), false);
 }
 
-
-#endif
-
 ///  An updatable inset could handle lyx editing commands
-#ifdef SCROLL_INSET
 UpdatableInset::RESULT
 UpdatableInset::LocalDispatch(BufferView * bv, 
 			      int action, string const & arg) 
-#else
-UpdatableInset::RESULT
-UpdatableInset::LocalDispatch(BufferView *, int, string const &)
-#endif
 {
-#ifdef SCROLL_INSET
-
     if (!arg.empty() && (action==LFUN_SCROLL_INSET)) {
 	if (arg.find('.') != arg.npos) {
 	    float xx = static_cast<float>(strToDbl(arg));
@@ -239,7 +224,6 @@ UpdatableInset::LocalDispatch(BufferView *, int, string const &)
 	
 	return DISPATCHED;
     }
-#endif
     return UNDISPATCHED; 
 }
 
