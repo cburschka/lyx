@@ -1194,7 +1194,7 @@ void InsetFig::Read(LyXLex & lex)
 }
 
 
-int InsetFig::Latex(ostream & os, signed char /* fragile*/ ) const
+int InsetFig::Latex(ostream & os, signed char /* fragile*/, bool /* fs*/) const
 {
 	Regenerate();
 	if (!cmd.empty()) os << cmd << " ";
@@ -1203,7 +1203,7 @@ int InsetFig::Latex(ostream & os, signed char /* fragile*/ ) const
 
 
 #ifndef USE_OSTREAM_ONLY
-int InsetFig::Latex(string & file, signed char /* fragile*/ ) const
+int InsetFig::Latex(string & file, signed char /* fragile*/, bool/* fs*/) const
 {
 	Regenerate();
 	file += cmd + ' ';

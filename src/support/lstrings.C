@@ -18,6 +18,7 @@ using std::transform;
 using std::tolower;
 using std::toupper;
 
+	
 int compare_no_case(string const & s, string const & s2)
 {
 	// ANSI C

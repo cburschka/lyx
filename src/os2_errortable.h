@@ -4,7 +4,8 @@
 * 
 *           LyX, The Document Processor
 *        
-*           Copyright (C) 1995, 1996 Matthias Ettrich
+*           Copyright 1995 Matthias Ettrich
+*           Copyright 1995-2000 The LyX Team.
 *
 * ======================================================
  A table for translating OS/2 API return code into errno.

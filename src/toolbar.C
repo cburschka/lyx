@@ -600,7 +600,7 @@ void Toolbar::read(LyXLex & lex)
 	lex.pushTable(toolTags, TO_LAST - 1);
 
 	if (lyxerr.debugging(Debug::PARSER))
-		lex.printTable();
+		lex.printTable(lyxerr);
 	
 	while (lex.IsOK() && !quit) {
 		

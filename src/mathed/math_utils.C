@@ -4,7 +4,7 @@
  *  Author:      Alejandro Aguilar Sierra <asierra@servidor.unam.mx> 
  *  Created:     August 1996
  *  
- *  Copyright: (c) 1996, 1997 Alejandro Aguilar Sierra
+ *  Copyright: 1996, 1997 Alejandro Aguilar Sierra
  *
  *  License: GNU GPL version 2 or later
  */

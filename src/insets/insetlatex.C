@@ -92,14 +92,14 @@ void InsetLatex::Read(LyXLex & lex)
 }
 
 
-int InsetLatex::Latex(FILE * file, signed char /*fragile*/)
+int InsetLatex::Latex(FILE * file, signed char /*fragile*/, bool /*fs*/)
 {
 	fprintf(file, "%s", contents.c_str());
 	return 0;
 }
 
 
-int InsetLatex::Latex(string & file, signed char /*fragile*/)
+int InsetLatex::Latex(string & file, signed char /*fragile*/, bool /*fs*/)
 {
 	file += contents;
 	return 0;

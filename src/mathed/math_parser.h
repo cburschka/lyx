@@ -8,7 +8,7 @@
  *
  *  Dependencies: Xlib, XForms
  *
- *  Copyright: (c) 1996, Alejandro Aguilar Sierra
+ *  Copyright: 1996, Alejandro Aguilar Sierra
  *
  *   Version: 0.8beta.
  *

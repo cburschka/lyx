@@ -6,7 +6,7 @@
  *  Created:     January 1999
  *  Description: Root math object
  *
- *  Copyright: (c) 1999 Alejandro Aguilar Sierra
+ *  Copyright: 1999 Alejandro Aguilar Sierra
  *
  *   You are free to use and modify this code under the terms of
  *   the GNU General Public Licence version 2 or later.

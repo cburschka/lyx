@@ -31,7 +31,7 @@ using std::ifstream;
 // Inserts a file into current document
 bool BufferView::insertLyXFile(string const & filen)
 	//
-	// (c) CHT Software Service GmbH
+	// Copyright CHT Software Service GmbH
 	// Uwe C. Schroeder
 	//
 	// Insert a Lyxformat - file into current buffer

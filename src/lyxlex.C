@@ -2,10 +2,11 @@
 //  It can be used for simple syntax parsers, like lyxrc,
 //  texclass and others to come.   [asierra30/03/96]
 //
-//   (C) 1996 Lyx Team.
+//   Copyright 1996 Lyx Team.
 
 #include <config.h>
 
+#include <algorithm>
 #include <cstdlib>
 
 #ifdef __GNUG__
@@ -15,15 +16,47 @@
 #include "lyxlex.h"
 #include "debug.h"
 #include "support/filetools.h"
+#include "support/lyxalgo.h"
 
 using std::ios;
+using std::lower_bound;
+using std::sort;
+
+
+// namespace {
+struct compare_tags {
+	// used by lower_bound
+	inline
+	int operator()(keyword_item const & a, char const * const tag) const {
+		return compare_no_case(a.tag, tag) < 0;
+	}
+	// used by sorted and sort
+	inline
+	int operator()(keyword_item const & a, keyword_item const & b) const {
+		return compare_no_case(a.tag, b.tag) < 0;
+	}
+};
+// } // end of anon namespace
+
 
 LyXLex::LyXLex(keyword_item * tab, int num)
 	: is(&fb__), table(tab), no_items(num)
 {
-	
-	status = 0;
+	status = 0; 
 	pushed = 0;
+	// Check if the table is sorted and if not, sort it.
+	if (table && !sorted(table, table + no_items, compare_tags())) {
+		lyxerr << "The table passed to LyXLex is not sorted!!\n"
+		       << "Tell the developers to fix it!" << endl;
+		// We sort it anyway to avoid problems.
+		lyxerr << "\nUnsorted:\n";
+		printTable(lyxerr);
+		
+		sort(table, table + no_items,
+		     compare_tags());
+		lyxerr << "\nSorted:\n";
+		printTable(lyxerr);
+	}
 }
 
 
@@ -36,6 +69,18 @@ void LyXLex::pushTable(keyword_item * tab, int num)
 	pushed = tmppu;
 	table = tab;
 	no_items = num;
+	// Check if the table is sorted and if not, sort it.
+	if (table && !sorted(table, table + no_items, compare_tags())) {
+		lyxerr << "The table passed to LyXLex is not sorted!!\n"
+		       << "Tell the developers to fix it!" << endl;
+		// We sort it anyway to avoid problems.
+		lyxerr << "\nUnsorted:\n";
+		printTable(lyxerr);
+		
+		sort(table, table + no_items, compare_tags());
+		lyxerr << "\nSorted:\n";
+		printTable(lyxerr);
+	}
 }
 
 
@@ -54,14 +99,14 @@ void LyXLex::popTable()
 }
 
 
-void LyXLex::printTable()
+void LyXLex::printTable(ostream & os)
 {
-	lyxerr << "\nNumber of tags: " << no_items << endl;
+	os << "\nNumber of tags: " << no_items << '\n';
 	for(int i= 0; i < no_items; ++i)
-		lyxerr << "table[" << i
-		       << "]:  tag: `" << table[i].tag
-		       << "'  code:" << table[i].code << endl;
-	lyxerr << endl;
+		os << "table[" << i
+		   << "]:  tag: `" << table[i].tag
+		   << "'  code:" << table[i].code << '\n';
+	os.flush();
 }
 
 
@@ -227,25 +272,10 @@ bool LyXLex::EatLine()
 
 int LyXLex::search_kw(char const * const tag) const
 {
-	int m, k = 0 , l = 0, r = no_items;
-
-	while (l < r) {
-		m = (l + r) / 2;
-
-		if (lyxerr.debugging(Debug::PARSER)) {
-			lyxerr << "LyXLex::search_kw: elem " << m
-			       << " tag " << table[m].tag
-			       << " search tag " << tag
-			       << endl;
-		}
-
-		if (table[m].tag)
-			k = compare_no_case(table[m].tag, tag);
-		if (k == 0)
-			return table[m].code;
-		else
-			if (k < 0) l = m + 1; else r = m;
-	}
+	keyword_item * res =
+		lower_bound(table, table + no_items, tag, compare_tags());
+	if (res != table + no_items && !compare_no_case(res->tag, tag))
+		return res->code;
 	return LEX_UNDEF;
 }
 

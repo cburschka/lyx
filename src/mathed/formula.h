@@ -6,7 +6,7 @@
  *  Created:     January 1996
  *  Description: Allows the edition of math paragraphs inside Lyx. 
  *
- *  Copyright: (c) 1996, Alejandro Aguilar Sierra
+ *  Copyright: 1996, Alejandro Aguilar Sierra
  *
  *  Version: 0.4, Lyx project.
  *
@@ -49,10 +49,10 @@ public:
 	///
 	void Read(LyXLex & lex);
 	///
-	int Latex(ostream &, signed char fragile) const;
+	int Latex(ostream &, signed char fragile, bool free_spc) const;
 #ifndef USE_OSTREAM_ONLY
 	///
-	int Latex(string & file, signed char fragile) const;
+	int Latex(string & file, signed char fragile, bool free_spc) const;
 	///
 	int Linuxdoc(string & file) const;
 	///

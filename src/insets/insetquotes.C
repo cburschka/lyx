@@ -224,7 +224,7 @@ void InsetQuotes::Read(LyXLex & lex)
 }
 
 
-int InsetQuotes::Latex(ostream & os, signed char /*fragile*/) const
+int InsetQuotes::Latex(ostream & os, signed char /*fragile*/, bool) const
 {
 #ifdef USE_OSTREAM_ONLY
 	string doclang = 
@@ -264,7 +264,7 @@ int InsetQuotes::Latex(ostream & os, signed char /*fragile*/) const
 	return 0;
 #else
 	string quote;
-	int res = Latex(quote, 0);
+	int res = Latex(quote, 0, 0);
 	os << quote;
 	return res;
 #endif
@@ -272,7 +272,7 @@ int InsetQuotes::Latex(ostream & os, signed char /*fragile*/) const
 
 
 #ifndef USE_OSTREAM_ONLY
-int InsetQuotes::Latex(string & file, signed char /*fragile*/) const
+int InsetQuotes::Latex(string & file, signed char /*fragile*/, bool /*free_spc*/) const
 {
 	string doclang = 
 		current_view->buffer()->GetLanguage();

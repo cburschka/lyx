@@ -7,7 +7,7 @@
  *
  *  Dependencies: Xlib, XForms
  *
- *  Copyright: (c) 1996, Alejandro Aguilar Sierra
+ *  Copyright: 1996, Alejandro Aguilar Sierra
  *
  *   Version: 0.8beta, Mathed & Lyx project.
  *
@@ -18,11 +18,15 @@
 #include <config.h>
 
 #include FORMS_H_LOCATION
+#include <algorithm>
 #include <cstdlib>
 #include "symbol_def.h"
 #include "math_inset.h"
 #include "LColor.h"
 #include "Painter.h"
+
+using std::sort;
+using std::lower_bound;
 
 /* 
  * Internal struct of a drawing: code n x1 y1 ... xn yn, where code is:
@@ -164,9 +168,14 @@ static float tilde[] = {
    0.0
 };
 
-static struct math_deco_struct {
-    int code; float *data; int angle;
-} math_deco_table[] = {   
+struct math_deco_struct {
+	int code;
+	float * data;
+	int angle;
+};
+
+static
+math_deco_struct math_deco_table[] = {   
 
    // Decorations
   { LM_widehat, &angle[0], 3 },
@@ -219,9 +228,7 @@ static struct math_deco_struct {
   { LM_ldots, &hline3[0], 0 }, 
   { LM_cdots, &hline3[0], 0 },
   { LM_vdots, &hline3[0], 1 },
-  { LM_ddots, &dline3[0], 0 },
-     
-  { 0, 0, 0 }
+  { LM_ddots, &dline3[0], 0 }
 };
 
 
@@ -289,14 +296,52 @@ void Matriz::transf(float xp, float yp, float & x, float & y)
 }
 
 
+struct math_deco_compare {
+	/// for use by sort
+	inline
+	int operator()(math_deco_struct const & a,
+		       math_deco_struct const & b) const {
+		return a.code < b.code;
+	}
+	/// for use by lower_bound
+	inline
+	int operator()(math_deco_struct const & a, int b) const {
+		return a.code < b;
+	}
+};
+
+
+static
+int const math_deco_table_size = sizeof(math_deco_table) /sizeof(math_deco_struct);
+
+class init_deco_table {
+public:
+	init_deco_table() {
+		if (!init) {
+			sort(math_deco_table,
+			     math_deco_table + math_deco_table_size,
+			     math_deco_compare());
+			init_deco_table::init == true;
+		}
+	}
+private:
+	static bool init;
+};
+
+bool init_deco_table::init = false;
+static init_deco_table idt;
+
 static
 int search_deco(int code)
 {
-   int i = 0;
-   
-   while (math_deco_table[i].code &&  math_deco_table[i].code != code) ++i;
-   if (!math_deco_table[i].code) i = -1;
-   return i;
+	math_deco_struct * res =
+		lower_bound(math_deco_table,
+			    math_deco_table + math_deco_table_size,
+			    code, math_deco_compare());
+	if (res != math_deco_table + math_deco_table_size &&
+	    res->code == code)
+		return res - math_deco_table;
+	return -1;
 }
 
 
@@ -375,14 +420,14 @@ MathDelimInset::draw(Painter & pain, int x, int y)
 	if (left == '.') {
 		pain.line(x + 4, yo - ascent,
 			  x + 4, yo + descent,
-			  LColor::mathcursor);
+			  LColor::mathcursor, Painter::line_onoffdash);
 	} else
 		mathed_draw_deco(pain, x, y - ascent, dw, Height(), left);
-	x += Width()-dw-2;
+	x += Width() - dw - 2;
 	if (right == '.') {
 		pain.line(x + 4, yo - ascent,
 			  x + 4, yo + descent,
-			  LColor::mathcursor);
+			  LColor::mathcursor, Painter::line_onoffdash);
 	} else
 		mathed_draw_deco(pain, x, y-ascent, dw, Height(), right);
 }

@@ -3,7 +3,7 @@
 //  It can be used for simple syntax parsers, like lyxrc,
 //  texclass and others to come.   [asierra30/03/96]
 //
-//   (C) 1996 Lyx Team.
+//   Copyright 1996 Lyx Team.
 #ifndef LYXLEX_H
 #define LYXLEX_H
 
@@ -84,14 +84,14 @@ public:
 	string GetString() const;
 	
 	/// get a long string, ended by the tag `endtag'
-	string getLongString(string const & endtoken);
+	string getLongString(string const & endtag);
 	
 	///
 	bool EatLine();
 	///
-	int FindToken(char const * string[]);
+	int FindToken(char const * str[]);
 	///
-	int CheckToken(char const * string[], int print_error);
+	int CheckToken(char const * str[], int print_error);
 
 	///
 	char const * text() const { return &buff[0]; }
@@ -112,9 +112,9 @@ public:
 	void printError(string const & message) const;
 
 	/**
-	  Prints the current token table on cerr.
+	  Prints the current token table on the supplied ostream.
 	  */
-	void printTable();
+	void printTable(ostream &);
 protected:
 	///
 	enum {

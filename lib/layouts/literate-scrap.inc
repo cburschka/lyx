@@ -2,8 +2,7 @@
 # Suggested style to write your code:
 # Within same scrap, lines are separated by new-lines (Ctrl-return), use:
 #  ItemSep               0.4
-#     . disavantage: lyx doesn't allow space on first column, use proteced space
-#                    must type ctrl-return every single line
+#     . disavantage: must type ctrl-return every single line
 #     . advantage:   looks better (IMHO)
 #                    resembles more closelly the produced paper doc. (more WYSIWYG)
 #

@@ -101,14 +101,14 @@ void InsetError::Read(LyXLex &)
 }
 
 
-int InsetError::Latex(ostream &, signed char /*fragile*/) const
+int InsetError::Latex(ostream &, signed char /*fragile*/, bool /*fs*/) const
 {
 	return 0;
 }
 
 
 #ifndef USE_OSTREAM_ONLY
-int InsetError::Latex(string &, signed char /*fragile*/) const
+int InsetError::Latex(string &, signed char /*fragile*/, bool /*fs*/) const
 {
 	return 0;
 }

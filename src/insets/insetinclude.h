@@ -4,7 +4,7 @@
  *
  *           LyX, The Document Processor
  * 	 
- *	    Copyright (C) 1997 LyX Team (this file was created this year)
+ *	    Copyright 1997 LyX Team (this file was created this year)
  * 
  * ====================================================== */
 
@@ -58,10 +58,10 @@ public:
         ///
 	void Read(LyXLex &);
 	/// 
-	int Latex(ostream &, signed char fragile) const;
+	int Latex(ostream &, signed char fragile, bool free_spc) const;
 #ifndef USE_OSTREAM_ONLY
 	///
-	int Latex(string & file, signed char fragile) const;
+	int Latex(string & file, signed char fragile, bool free_spc) const;
 #endif
 	///
 	void Validate(LaTeXFeatures &) const;

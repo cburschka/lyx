@@ -4,7 +4,8 @@
 * 
 *           LyX, the High Level Word Processor
 *        
-*           Copyright (C) 1995, 1996 Matthias Ettrich
+*           Copyright 1995 Matthias Ettrich
+*           Copyright 1995-2000 The LyX Team.
 *
 * ======================================================
  A few prototypes and definitions needed for VMS / OpenVMS */

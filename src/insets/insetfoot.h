@@ -4,7 +4,7 @@
  * 
  *           LyX, The Document Processor
  *
- *           Copyright (C) 1998 The LyX Team.
+ *           Copyright 1998 The LyX Team.
  *
  *======================================================
  */
@@ -41,7 +41,7 @@ public:
     int Latex(string &, signed char) const;
 #endif
     ///
-    int Latex(ostream &, signed char) const;
+    int Latex(ostream &, signed char, bool fp) const;
     ///
     void Write(ostream &) const;
     ///

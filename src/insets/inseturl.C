@@ -166,7 +166,7 @@ string InsetUrl::getScreenLabel() const
 }
 
 
-int InsetUrl::Latex(ostream & os, signed char fragile) const
+int InsetUrl::Latex(ostream & os, signed char fragile, bool free_spc) const
 {
 #ifdef USE_OSTREAM_ONLY
 	if (!getOptions().empty())
@@ -177,7 +177,7 @@ int InsetUrl::Latex(ostream & os, signed char fragile) const
 	return 0;
 #else
 	string latex_output;
-	int res = Latex(latex_output, fragile);
+	int res = Latex(latex_output, fragile, free_spc);
 	os << latex_output;
 
 	return res;
@@ -186,7 +186,7 @@ int InsetUrl::Latex(ostream & os, signed char fragile) const
 
 
 #ifndef USE_OSTREAM_ONLY
-int InsetUrl::Latex(string & file, signed char fragile) const
+int InsetUrl::Latex(string & file, signed char fragile, bool /*free_spc*/) const
 {
 	if (!getOptions().empty())
 		file += getOptions() + ' ';

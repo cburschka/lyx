@@ -6,7 +6,7 @@
  *  Description: A bitmap table uses a single bitmap to simulate a 2d array 
  *               of bitmap buttons. It can be used to build bitmap menus.
  *               
- *  Copyright (C) 1995, 1996 Alejandro Aguilar Sierra 
+ *  Copyright 1995, 1996 Alejandro Aguilar Sierra 
  *
  *  You are free to use and modify this code under the terms of
  *  the GNU General Public Licence version 2 or later. 

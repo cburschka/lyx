@@ -47,7 +47,7 @@ FD_copyright *create_form_copyright(void)
 
   fdui->copyright = fl_bgn_form(FL_NO_BOX, 450, 430);
   obj = fl_add_box(FL_UP_BOX, 0, 0, 450, 430, "");
-  obj = fl_add_text(FL_NORMAL_TEXT, 10, 10, 430, 50, _("LyX is Copyright (C) 1995 by Matthias Ettrich,\n1995-1999 LyX Team"));
+  obj = fl_add_text(FL_NORMAL_TEXT, 10, 10, 430, 50, _("LyX is Copyright 1995 by Matthias Ettrich,\n1995-2000 LyX Team"));
     fl_set_object_boxtype(obj, FL_FRAME_BOX);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_lalign(obj, FL_ALIGN_CENTER|FL_ALIGN_INSIDE);

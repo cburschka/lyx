@@ -6,7 +6,7 @@
  *  Created:     January 1996
  *  Description: Allows the edition of math paragraphs inside Lyx. 
  *
- *  Copyright: (c) 1996, Alejandro Aguilar Sierra
+ *  Copyright: 1996, Alejandro Aguilar Sierra
  *
  *  Version: 0.4, Lyx project.
  *

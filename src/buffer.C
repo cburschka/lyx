@@ -919,11 +919,39 @@ bool Buffer::parseSingleLyXformat2Token(LyXLex & lex, LyXParagraph *& par,
 		par->SetFont(pos, font);
 		++pos;
 	} else if (token == "\\SpecialChar") {
-		inset = new InsetSpecialChar;
-		inset->Read(lex);
-		par->InsertChar(pos, LyXParagraph::META_INSET); 
-		par->InsertInset(pos, inset);
-		par->SetFont(pos, font);
+		LyXLayout const & layout =
+			textclasslist.Style(params.textclass, 
+					    par->GetLayout());
+
+		// Insets don't make sense in a free-spacing context! ---Kayvan
+		if (layout.free_spacing)
+		{
+			if (lex.IsOK()) {
+				string next_token;
+				lex.next();
+				next_token = lex.GetString();
+				if (next_token == "\\-") {
+					par->InsertChar(pos, '-');
+					par->SetFont(pos, font);
+				} else if (next_token == "\\protected_separator") {
+					par->InsertChar(pos, ' ');
+					par->SetFont(pos, font);
+				} else {
+					lex.printError("Token `$$Token' "
+						       "is in free space "
+						       "paragraph layout!");
+					pos--;
+				}
+			}
+		}
+		else
+		{
+			inset = new InsetSpecialChar;
+			inset->Read(lex);
+			par->InsertChar(pos, LyXParagraph::META_INSET); 
+			par->InsertInset(pos, inset);
+			par->SetFont(pos, font);
+		}
 		++pos;
 	} else if (token == "\\Figure") {
 		inset = new InsetFig(100, 100, this);
@@ -951,10 +979,19 @@ bool Buffer::parseSingleLyXformat2Token(LyXLex & lex, LyXParagraph *& par,
 		++pos;
 	} else if (token == "\\protected_separator") { // obsolete
 #if 1
-		inset = new InsetSpecialChar(InsetSpecialChar::PROTECTED_SEPARATOR);
-		par->InsertChar(pos, LyXParagraph::META_INSET);
-		par->InsertInset(pos, inset);
-		par->SetFont(pos, font);
+		LyXLayout const & layout =
+			textclasslist.Style(params.textclass, 
+					    par->GetLayout());
+
+		if (layout.free_spacing) {
+			par->InsertChar(pos, ' ');
+			par->SetFont(pos, font);
+		} else {
+			inset = new InsetSpecialChar(InsetSpecialChar::PROTECTED_SEPARATOR);
+			par->InsertChar(pos, LyXParagraph::META_INSET);
+			par->InsertInset(pos, inset);
+			par->SetFont(pos, font);
+		}
 #else
 		par->InsertChar(pos, LyXParagraph::META_PROTECTED_SEPARATOR);
 		par->SetFont(pos, font);
@@ -1292,6 +1329,11 @@ void Buffer::writeFileAscii(string const & fname, int linelen)
 			noparbreak = 1;
 		}
       
+		LyXLayout const & layout =
+			textclasslist.Style(params.textclass, 
+					    par->GetLayout());
+		bool free_spc = layout.free_spacing;
+
 		/* It might be a table */ 
 		if (par->table){
 #if 0
@@ -1307,6 +1349,7 @@ void Buffer::writeFileAscii(string const & fname, int linelen)
 			cells = par->table->columns;
 			clen = new int [cells];
 			memset(clen, 0, sizeof(int) * cells);
+
 			for (i = 0, j = 0, h = 1; i < par->size(); ++i, ++h) {
 				c = par->GetChar(i);
 				if (c == LyXParagraph::META_INSET) {
@@ -1314,11 +1357,11 @@ void Buffer::writeFileAscii(string const & fname, int linelen)
 #if 1
 #ifdef HAVE_SSTREAM
 						ostringstream ost;
-						inset->Latex(ost, -1);
+						inset->Latex(ost, -1, free_spc);
 						h += ost.str().length();
 #else
 						ostrstream ost;
-						inset->Latex(ost, -1);
+						inset->Latex(ost, -1, free_spc);
 						ost << '\0';
 						char * tmp = ost.str();
 						string tstr(tmp);
@@ -1331,7 +1374,7 @@ void Buffer::writeFileAscii(string const & fname, int linelen)
 							WriteFSAlert(_("Error: Cannot open temporary file:"), fname1);
 							return;
 						}
-						inset->Latex(fs, -1);
+						inset->Latex(fs, -1, free_spc);
 						h += fs.tellp() - 1;
 						::remove(fname1.c_str());
 #endif
@@ -1416,7 +1459,7 @@ void Buffer::writeFileAscii(string const & fname, int linelen)
 			case LyXParagraph::META_INSET:
 				if ((inset = par->GetInset(i))) {
 					fpos = ofs.tellp();
-					inset->Latex(ofs, -1);
+					inset->Latex(ofs, -1, free_spc);
 					currlinelen += (ofs.tellp() - fpos);
 					actpos += (ofs.tellp() - fpos) - 1;
 				}
@@ -2839,6 +2882,9 @@ void Buffer::DocBookHandleCaption(ostream & os, string & inner_tag,
 		string extra_par;
 		SimpleDocBookOnePar(os, extra_par, tpar,
 				    desc_on, depth + 2);
+		sgmlCloseTag(os, depth+1, inner_tag);
+		if(!extra_par.empty())
+			os << extra_par;
 #else
 		string tmp_par, extra_par;
 		SimpleDocBookOnePar(tmp_par, extra_par, tpar,
@@ -2846,10 +2892,10 @@ void Buffer::DocBookHandleCaption(ostream & os, string & inner_tag,
 		tmp_par = strip(tmp_par);
 		tmp_par = frontStrip(tmp_par);
 		os << tmp_par;
-#endif
 		sgmlCloseTag(os, depth+1, inner_tag);
 		if(!extra_par.empty())
 			os << extra_par;
+#endif
 	}
 }
 
@@ -2862,9 +2908,7 @@ void Buffer::DocBookHandleFootnote(ostream & os, LyXParagraph * & par,
 	bool inner_span = false;
 	int desc_on = 4;
 
-	// This is not how I like to see enums. They should not be anonymous
-	// and variables of its type should not be declared right after the
-	// last brace. (Lgb)
+	// Someone should give this enum a proper name (Lgb)
 	enum SOME_ENUM {
 		NO_ONE,
 		FOOTNOTE_LIKE,
@@ -2881,8 +2925,8 @@ void Buffer::DocBookHandleFootnote(ostream & os, LyXParagraph * & par,
 				if(!tmp_par.empty()) {
 					os << tmp_par;
 					tmp_par.clear();
-					sgmlCloseTag(os, depth+1, inner_tag);
-					sgmlOpenTag(os, depth+1, inner_tag);
+					sgmlCloseTag(os, depth + 1, inner_tag);
+					sgmlOpenTag(os, depth + 1, inner_tag);
 				}
 			}
 			else
@@ -2934,8 +2978,9 @@ void Buffer::DocBookHandleFootnote(ostream & os, LyXParagraph * & par,
 			}
 		}
 		// ignore all caption here, we processed them above!!!
-		if (par->layout != textclasslist.NumberOfLayout(params.textclass,
-							   "Caption").second) {
+		if (par->layout != textclasslist
+		    .NumberOfLayout(params.textclass,
+				    "Caption").second) {
 #ifdef USE_OSTREAM_ONLY
 #ifdef HAVE_SSTREAM
 			ostringstream ost;
@@ -3159,7 +3204,7 @@ void Buffer::SimpleLinuxDocOnePar(ostream & os, LyXParagraph * par,
       
 		if (font2.latex() == LyXFont::ON) {
 			// "TeX"-Mode on == > SGML-Mode on.
-			if (c!= '\0')
+			if (c != '\0')
 				os << c; // see LaTeX-Generation...
 			++char_line_count;
 		} else if (c == LyXParagraph::META_INSET) {
@@ -3546,54 +3591,50 @@ void Buffer::SimpleDocBookOnePar(ostream & os, string & extra,
 		par->SimpleDocBookOneTablePar(os, extra, desc_on, depth);
 		return;
 	}
-	LyXFont font1, font2;
-	char c;
-	Inset * inset;
-	LyXParagraph::size_type main_body;
-	int j;
-	//string emph = "emphasis";
+
 	bool emph_flag = false;
-	int char_line_count = 0;
 
 	LyXLayout const & style = textclasslist.Style(params.textclass,
 						      par->GetLayout());
 
+	LyXParagraph::size_type main_body;
 	if (style.labeltype != LABEL_MANUAL)
 		main_body = 0;
 	else
 		main_body = par->BeginningOfMainBody();
 
 	// gets paragraph main font
-	if (main_body > 0)
-		font1 = style.labelfont;
-	else
-		font1 = style.font;
-
-	char_line_count = depth;
+	//if (main_body > 0)
+	//	font1 = style.labelfont;
+	//else
+	//	font1 = style.font;
+	LyXFont font1 = main_body > 0 ? style.labelfont : style.font;
+	
+	int char_line_count = depth;
 	if(!style.free_spacing)
-		for (j = 0; j < depth; ++j)
+		for (int j = 0; j < depth; ++j)
 			os << ' ';
 
 	// parsing main loop
 	for (LyXParagraph::size_type i = 0;
 	     i < par->size(); ++i) {
-		font2 = par->getFont(i);
+		LyXFont font2 = par->getFont(i);
 
 		// handle <emphasis> tag
 		if (font1.emph() != font2.emph() && i) {
 			if (font2.emph() == LyXFont::ON) {
 				os << "<emphasis>";
-				emph_flag= true;
+				emph_flag = true;
 			}else {
 				os << "</emphasis>";
-				emph_flag= false;
+				emph_flag = false;
 			}
 		}
       
-		c = par->GetChar(i);
+		char c = par->GetChar(i);
 
 		if (c == LyXParagraph::META_INSET) {
-			inset = par->GetInset(i);
+			Inset * inset = par->GetInset(i);
 #ifdef HAVE_SSTREAM
 			ostringstream ost;
 			inset->DocBook(ost);
@@ -3628,7 +3669,7 @@ void Buffer::SimpleDocBookOnePar(ostream & os, string & extra,
 			}
 		} else if (font2.latex() == LyXFont::ON) {
 			// "TeX"-Mode on ==> SGML-Mode on.
-			if (c!= '\0')
+			if (c != '\0')
 				os << c;
 			++char_line_count;
 		}
@@ -3688,7 +3729,6 @@ void Buffer::SimpleDocBookOnePar(string & file, string & extra,
 	int j;
 	string emph= "emphasis";
 	bool emph_flag= false;
-	int char_line_count= 0;
 
 	LyXLayout const & style = textclasslist.Style(params.textclass,
 						      par->GetLayout());
@@ -3704,7 +3744,7 @@ void Buffer::SimpleDocBookOnePar(string & file, string & extra,
 	else
 		font1 = style.font;
 
-	char_line_count = depth;
+	int char_line_count = depth;
 	if(!style.free_spacing)
 		for (j = 0; j < depth; ++j)
 			file += ' ';
@@ -3729,23 +3769,9 @@ void Buffer::SimpleDocBookOnePar(string & file, string & extra,
 
 		if (c == LyXParagraph::META_INSET) {
 			inset = par->GetInset(i);
-#ifdef USE_OSTREAM_ONLY
-#ifdef HAVE_SSTREAM
-			ostringstream ost;
-			inset->DocBook(ost);
-			string tmp_out = ost.str().c_str();
-#else
-			ostrstream ost;
-			inset->DocBook(ost);
-			ost << '\0';
-			char * ctmp = ost.str();
-			string tmp_out(ctmp);
-			delete [] ctmp;
-#endif
-#else
 			string tmp_out;
 			inset->DocBook(tmp_out);
-#endif
+
 			//
 			// This code needs some explanation:
 			// Two insets are treated specially

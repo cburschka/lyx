@@ -3248,6 +3248,11 @@ void LyXText::DeleteEmptyParagraphMechanism(LyXCursor const & old_cursor) const
 	// this is the delete-empty-paragraph-mechanism.
 	if (selection) return;
 
+	// if free-spacing, then return also.
+	if (textclasslist.Style(parameters->textclass,
+				old_cursor.row->par->GetLayout()).free_spacing)
+		return;
+
 #ifdef FIX_DOUBLE_SPACE
 	/* Ok I'll put some comments here about what is missing.
 	   I have fixed BackSpace (and thus Delete) to not delete

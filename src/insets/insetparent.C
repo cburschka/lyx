@@ -3,7 +3,7 @@
  *
  *           LyX, The Document Processor
  * 	 
- *           Copyright (C) 1997-1999 LyX Team
+ *           Copyright 1997-2000 The LyX Team.
  * 
  * ====================================================== */
 
@@ -43,20 +43,20 @@ void InsetParent::Edit(BufferView * bv, int, int, unsigned int)
 
 
 // LaTeX must just ignore this command
-int InsetParent::Latex(ostream & os, signed char fragile) const
+int InsetParent::Latex(ostream & os, signed char fragile, bool free_spc) const
 {
 	os << "%%#{lyx}";
-	InsetCommand::Latex(os, fragile);
+	InsetCommand::Latex(os, fragile, free_spc);
 	return 0;
 }
 
 
 #ifndef USE_OSTREAM_ONLY
 // LaTeX must just ignore this command
-int InsetParent::Latex(string & file, signed char fragile) const
+int InsetParent::Latex(string & file, signed char fragile, bool free_spc) const
 {
 	file += "%%#{lyx}";
-	InsetCommand::Latex(file, fragile);
+	InsetCommand::Latex(file, fragile, free_spc);
 	return 0;
 }
 #endif

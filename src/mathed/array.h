@@ -7,7 +7,7 @@
  *
  *  Dependencies: None (almost)
  *
- *  Copyright: (c) 1996, Alejandro Aguilar Sierra
+ *  Copyright: 1996, Alejandro Aguilar Sierra
  *                 1997  The LyX Team!
  *
  *   You are free to use and modify this code under the terms of

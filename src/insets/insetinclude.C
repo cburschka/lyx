@@ -315,7 +315,7 @@ bool InsetInclude::loadIfNeeded() const
 }
 
 
-int InsetInclude::Latex(ostream & os, signed char /*fragile*/) const
+int InsetInclude::Latex(ostream & os, signed char /*fragile*/, bool /*fs*/) const
 {
 #ifdef USE_OSTREAM_ONLY
 	// Do nothing if no file name has been specified
@@ -386,7 +386,7 @@ int InsetInclude::Latex(ostream & os, signed char /*fragile*/) const
 #else
 	string include_file;
 	signed char dummy = 0;
-	Latex(include_file, dummy);
+	Latex(include_file, dummy, 0);
 	os << include_file;
 	return 0;
 #endif
@@ -394,7 +394,7 @@ int InsetInclude::Latex(ostream & os, signed char /*fragile*/) const
 
 
 #ifndef USE_OSTREAM_ONLY
-int InsetInclude::Latex(string & file, signed char /*fragile*/) const
+int InsetInclude::Latex(string & file, signed char /*fragile*/, bool /*fs*/) const
 {
 	// Do nothing if no file name has been specified
 	if (contents.empty())

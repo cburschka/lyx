@@ -45,9 +45,9 @@ public:
 	///
 	void Read(LyXLex & lex);
 	///
-	int Latex(FILE * file, signed char fragile);
+	int Latex(FILE * file, signed char fragile, bool free_spc);
 	///
-	int Latex(string & file, signed char fragile);
+	int Latex(string & file, signed char fragile, bool free_spc);
 	///
 	int Linuxdoc(string & file);
 	///

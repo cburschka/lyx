@@ -43,7 +43,7 @@ string InsetLabel::getLabel(int) const
 }
 
 
-int InsetLabel::Latex(ostream & os, signed char /*fragile*/) const
+int InsetLabel::Latex(ostream & os, signed char /*fragile*/, bool /*fs*/) const
 {
 	os << escape(getCommand());
 	return 0;
@@ -51,7 +51,7 @@ int InsetLabel::Latex(ostream & os, signed char /*fragile*/) const
 
 
 #ifndef USE_OSTREAM_ONLY
-int InsetLabel::Latex(string & file, signed char /*fragile*/) const
+int InsetLabel::Latex(string & file, signed char /*fragile*/, bool /*fs*/) const
 {
 	file += escape(getCommand());
 	return 0;

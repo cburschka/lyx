@@ -8,7 +8,7 @@
  *
  *  Dependencies: Mathed
  *
- *  Copyright: (c) 1996, 1997 Alejandro Aguilar Sierra
+ *  Copyright: 1996, 1997 Alejandro Aguilar Sierra
  *
  *  Version: 0.2, Mathed & Lyx project.
  *

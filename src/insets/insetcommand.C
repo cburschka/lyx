@@ -244,7 +244,7 @@ void InsetCommand::Read(LyXLex & lex)
 }
 
 
-int InsetCommand::Latex(ostream & os, signed char /*fragile*/) const
+int InsetCommand::Latex(ostream & os, signed char /*fragile*/, bool/*fs*/) const
 {
 	os << getCommand();
 	return 0;
@@ -252,7 +252,7 @@ int InsetCommand::Latex(ostream & os, signed char /*fragile*/) const
 
 
 #ifndef USE_OSTREAM_ONLY
-int InsetCommand::Latex(string & file, signed char /*fragile*/) const
+int InsetCommand::Latex(string & file, signed char /*fragile*/, bool/*fs*/) const
 {
 	file += getCommand();
 	return 0;

@@ -6,7 +6,7 @@
  * 
  *  Dependencies: Xlib, Xpm, XForms, Lyx
  *
- *  Copyright: (c) 1996, Alejandro Aguilar Sierra 
+ *  Copyright: 1996, Alejandro Aguilar Sierra 
  *
  *   You are free to use and modify it under the terms of
  *   the GNU General Public Licence version 2 or later.

@@ -127,10 +127,10 @@ public:
 	///
 	void Edit(BufferView *, int x, int y, unsigned int button);
 	/// 
-	int Latex(ostream &, signed char) const;
+	int Latex(ostream &, signed char, bool) const;
 #ifndef USE_OSTREAM_ONLY
 	///
-	int Latex(string & file, signed char fragile) const;
+	int Latex(string & file, signed char fragile, bool) const;
 #endif
 	///
 	string getKeys(char delim);

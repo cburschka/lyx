@@ -4,8 +4,8 @@
  *
  *           LyX, The Document Processor
  * 	 
- *          Copyright (C) 1995 Matthias Ettrich
- *          Copyright (C) 1996-1999 The LyX Team.
+ *          Copyright 1995 Matthias Ettrich
+ *          Copyright 1996-2000 The LyX Team.
  * 
  * ====================================================== */
 

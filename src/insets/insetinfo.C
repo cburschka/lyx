@@ -126,14 +126,14 @@ void InsetInfo::Read(LyXLex & lex)
 }
       
 
-int InsetInfo::Latex(ostream &, signed char /*fragile*/) const
+int InsetInfo::Latex(ostream &, signed char /*fragile*/, bool /*free_spc*/) const
 {
 	return 0;
 }
 
 
 #ifndef USE_OSTREAM_ONLY
-int InsetInfo::Latex(string &, signed char /*fragile*/) const
+int InsetInfo::Latex(string &, signed char /*fragile*/, bool /*free_spc*/) const
 {
 	return 0;
 }

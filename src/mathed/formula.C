@@ -5,7 +5,7 @@
  *  Created:     January 1996
  *  Description: Allows the edition of math paragraphs inside Lyx. 
  *
- *  Copyright: (c) 1996-1998 Alejandro Aguilar Sierra
+ *  Copyright: 1996-1998 Alejandro Aguilar Sierra
  *
  *  Version: 0.4, Lyx project.
  *
@@ -295,11 +295,16 @@ Inset * InsetFormula::Clone() const
 void InsetFormula::Write(ostream & os) const
 {
 	os << "Formula ";
-	Latex(os, 0);
+	Latex(os, 0, 0);
 }
 
 
-int InsetFormula::Latex(ostream & os, signed char fragile) const
+int InsetFormula::Latex(ostream & os, signed char fragile,
+#ifdef USE_OSTREAM_ONLY
+			bool) const
+#else
+			bool free_spc) const
+#endif
 {
     int ret = 0;      
 //#warning Alejandro, the number of lines is not returned in this case
@@ -312,7 +317,7 @@ int InsetFormula::Latex(ostream & os, signed char fragile) const
     
 #else
     string output;
-    InsetFormula::Latex(output, fragile);
+    InsetFormula::Latex(output, fragile, free_spc);
     os << output;
 #endif
     return ret;

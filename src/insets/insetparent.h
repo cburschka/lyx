@@ -32,10 +32,10 @@ public:
 	///
         InsetParent(string const & fn, Buffer * owner = 0);
 	/// 
-	int Latex(ostream &, signed char fragile) const;
+	int Latex(ostream &, signed char fragile, bool free_spc) const;
 #ifndef USE_OSTREAM_ONLY
 	///
-	int Latex(string & file, signed char fragile) const;
+	int Latex(string & file, signed char fragile, bool free_spc) const;
 #endif
         ///
         Inset * Clone() const { return new InsetParent(getContents()); }

@@ -1091,7 +1091,7 @@ void AutoSave()
 
 
 //
-// (c) CHT Software Service GmbH
+// Copyright CHT Software Service GmbH
 // Uwe C. Schroeder
 //
 // create new file with template

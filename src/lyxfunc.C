@@ -1643,7 +1643,19 @@ string LyXFunc::Dispatch(int ac,
 		
 	case LFUN_PROTECTEDSPACE:
 #if 1
-		owner->view()->protectedBlank();
+	{
+		LyXLayout const & style =
+			textclasslist.Style(owner->view()->buffer()->params.textclass,
+					    owner->view()->text->cursor.par->GetLayout());
+
+		if (style.free_spacing) {
+			owner->view()->text->InsertChar(' ');
+			owner->view()->update(-1);
+		} else {
+			owner->view()->protectedBlank();
+		}
+		moveCursorUpdate(false);
+	}
 #else
 		owner->view()->beforeChange();
 		owner->view()->text->

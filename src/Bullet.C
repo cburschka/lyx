@@ -8,7 +8,7 @@
  *
  *           LyX, The Document Processor
  *
- *           Copyright (C) 1997-1998 Allan Rae
+ *           Copyright 1997-1998 Allan Rae
  *           and the LyX Team
  *
  * ====================================================== */

@@ -2404,24 +2404,12 @@ void LyXText::InsertChar(char c)
 		cursor.par->ParFromPos(cursor.pos)->next);
 
 	/* When the free-spacing option is set for the current layout,
-	 * all spaces are converted to protected spaces. */
-	// Thinko!
-#warning think about this
-#if 0
-	bool freeSpacingBo = 
+	 * disable the double-space checking */
+
+	bool freeSpacing = 
 		textclasslist.Style(parameters->textclass,
 			       cursor.row->par->GetLayout()).free_spacing;
 
-	// Thinkee: (not done)
-	// It seems that we should insert a InsetSpecialChar, do we really
-	// have to? I don't know the free spacing politics too deeply.
-	// Some others should have a look at this.
-	if (freeSpacingBo && IsLineSeparatorChar(c) 
-	    && (!cursor.pos || cursor.par->IsLineSeparator(cursor.pos - 1))) {
-		c = LyXParagraph::META_PROTECTED_SEPARATOR;
-	}
-#endif
-	
 	/* table stuff -- begin*/
   	if (cursor.par->table) {
 		InsertCharInTable(c);
@@ -2456,7 +2444,7 @@ void LyXText::InsertChar(char c)
 
 	bool jumped_over_space = false;
    
-	if (IsLineSeparatorChar(c)) {
+	if (!freeSpacing && IsLineSeparatorChar(c)) {
 #ifndef FIX_DOUBLE_SPACE
 		if (cursor.pos < lastpos
 		    && cursor.par->IsLineSeparator(cursor.pos)) {
@@ -2993,7 +2981,7 @@ char * LyXText::SelectNextWord(float & value)
 	       && (cursor.par->IsLetter(cursor.pos)) 
 	           || (cursor.par->GetChar(cursor.pos) == LyXParagraph::META_INSET
 		       && cursor.par->GetInset(cursor.pos) != 0
-		       && cursor.par->GetInset(cursor.pos)->Latex(latex, 0) == 0
+		       && cursor.par->GetInset(cursor.pos)->Latex(latex, 0, false) == 0
 #ifdef USE_OSTREAM_ONLY
 #ifdef HAVE_SSTREAM
 		       && latex.str() == "\\-"
@@ -3051,7 +3039,7 @@ void LyXText::SelectSelectedWord()
 	       && (cursor.par->IsLetter(cursor.pos)
 	           || (cursor.par->GetChar(cursor.pos) == LyXParagraph::META_INSET
 		       && cursor.par->GetInset(cursor.pos) != 0
-		       && cursor.par->GetInset(cursor.pos)->Latex(latex, 0) == 0
+		       && cursor.par->GetInset(cursor.pos)->Latex(latex, 0, false) == 0
 #ifdef USE_OSTREAM_ONLY
 #ifdef HAVE_SSTREAM
 		       && latex.str() == "\\-"

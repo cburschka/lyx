@@ -321,7 +321,7 @@ string InsetBibtex::getScreenLabel() const
 }
 
 
-int InsetBibtex::Latex(ostream & os, signed char /*fragile*/) const
+int InsetBibtex::Latex(ostream & os, signed char /*fragile*/, bool/*fs*/) const
 {
 #ifdef USE_OSTREAM_ONLY
 	// this looks like an horrible hack and it is :) The problem
@@ -361,7 +361,7 @@ int InsetBibtex::Latex(ostream & os, signed char /*fragile*/) const
 #else
 	string bib;
 	signed char dummy = 0;
-	int result = Latex(bib, dummy);
+	int result = Latex(bib, dummy, 0);
 	os << bib;
 	return result;
 #endif
@@ -369,7 +369,7 @@ int InsetBibtex::Latex(ostream & os, signed char /*fragile*/) const
 
 
 #ifndef USE_OSTREAM_ONLY
-int InsetBibtex::Latex(string & file, signed char /*fragile*/) const
+int InsetBibtex::Latex(string & file, signed char /*fragile*/, bool/*fs*/) const
 {
 	// this looks like an horrible hack and it is :) The problem
 	// is that owner is not initialized correctly when the bib

@@ -1,3 +1,128 @@
+2000-03-07  Kayvan A. Sylvan  <kayvan@camel.internal.sylvan.com>
+
+	* lib/layouts/literate-scrap.inc: Fixed initial comment. Now we
+	can add multiple spaces in Scrap (literate programming) styles...
+	which, by the way, is how I got hooked on LyX to begin with.
+ 
+	* src/mathed/formula.C (Write): Added dummy variable to an
+	inset::Latex() call.
+	(Latex): Add free_spacing boolean to inset::Latex()
+
+	* src/mathed/formula.h (Latex):	Added free_spacing boolean arg.
+ 	
+	* src/insets/lyxinset.h: Changed definition of the inset::Latex()
+	virtual function to include the free_spacing boolean from
+	the containing paragraph's style.
+ 
+	* src/insets/inseturl.C, src/insets/inseturl.h (Latex):
+ 	Added free_spacing boolean arg to match inset.h
+ 	
+	* src/insets/insettext.C, src/insets/insettext.h (Latex):
+ 	Added free_spacing boolean arg to match inset.h
+ 	
+	* src/insets/insetspecialchar.C, src/insets/insetspecialchar.h (Latex):
+ 	Added free_spacing boolean and made sure that if in a free_spacing
+ 	paragraph, that we output normal space if there is a protected space.
+ 	
+	* src/insets/insetref.C, src/insets/insetref.h (Latex):
+ 	Added free_spacing boolean arg to match inset.h
+	
+	* src/insets/insetquotes.C, src/insets/insetquotes.h (Latex):
+ 	Added free_spacing boolean arg to match inset.h
+	
+	* src/insets/insetparent.C, src/insets/insetparent.h (Latex):
+	Added free_spacing boolean arg to match inset.h
+	
+	* src/insets/insetlatexaccent.C, src/insets/insetlatexaccent.h (Latex):
+	Added free_spacing boolean arg to match inset.h
+	
+	* src/insets/insetlatex.C, src/insets/insetlatex.h (Latex):
+	Added free_spacing boolean arg to match inset.h
+	
+	* src/insets/insetlabel.C, src/insets/insetlabel.h (Latex): Added
+	free_spacing boolean arg to match inset.h 
+	
+	* src/insets/insetinfo.C, src/insets/insetinfo.h (Latex):
+	Added free_spacing boolean arg to match inset.h
+	
+	* src/insets/insetinclude.C, src/insets/insetinclude.h (Latex):
+	Added free_spacing boolean arg to match inset.h
+	
+	* src/insets/insetgraphics.C, src/insets/insetgraphics.h (Latex):
+	Added free_spacing boolean arg to match inset.h
+	
+	* src/insets/inseterror.C, src/insets/inseterror.h (Latex):
+	Added free_spacing boolean arg to match inset.h
+	
+	* src/insets/insetcommand.C, src/insets/insetcommand.h (Latex):
+	Added free_spacing boolean arg to match inset.h
+	
+	* src/insets/insetbib.C, src/insets/insetbib.h (Latex): Added
+	free_spacing boolean arg to match inset.h
+	
+	* src/insets/figinset.C, src/insets/figinset.h (Latex): Added
+	free_spacing boolean arg to match inset.h
+	
+	* src/text2.C (DeleteEmptyParagraphMechanism): Fix this to
+	ignore free_spacing paragraphs. The user's spaces are left
+	alone. 
+	
+	* src/text.C (InsertChar): Fixed the free_spacing layout
+	attribute behavior. Now, if free_spacing is set, you can
+	add multiple spaces in a paragraph with impunity (and they
+	get output verbatim).
+	(SelectSelectedWord): Added dummy argument to inset::Latex()
+	call.
+	
+	* src/paragraph.C (TeXOnePar): Added dummy args to inset::Latex(...)
+	calls.
+	
+	* src/lyxfunc.C (Dispatch): Hard-spaces input in free_spacing
+	paragraph layouts now only input a simple space instead.
+	Special character insets don't make any sense in free-spacing
+	paragraphs.
+	
+	* src/buffer.C (parseSingleLyXformat2Token): Code to convert
+	hard-spaces in the *input* file to simple spaces if the layout
+	is free-spacing. This converts old files which had to have
+	hard-spaces in free-spacing layouts where a simple space was
+	preferrable.
+	(writeFileAscii): Added free_spacing check to pass to the newly
+	reworked inset::Latex(...) methods. The inset::Latex() code
+	ensures that hard-spaces in free-spacing paragraphs get output
+	as spaces (rather than "~").
+	
+2000-03-09  Lars Gullik Bjønnes  <larsbj@lyx.org>
+	
+	* src/mathed/math_delim.C (draw): draw the empty placeholder
+	delims with a onoffdash line.
+	(struct math_deco_compare): struct that holds the "functors" used
+	for the sort and the binary search in math_deco_table.
+	(class init_deco_table): class used for initial sort of the
+	math_deco_table. 
+	(search_deco): use lower_bound to do a binary search in the
+	math_deco_table.
+
+2000-03-08  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/lyxrc.C: a small secret thingie...
+
+	* src/lyxlex.C (printTable): changed to take a ostream as paramter
+	and to not flush the stream as often as it used to.
+
+	* src/support/lyxalgo.h: new file 
+	(sorted): template function used for checking if a sequence is
+	sorted or not. Two versions with and without user supplied
+	compare. Uses same compare as std::sort.
+
+	* src/lyxlex.C (LyXLex): check if the table is sorted, if not sort
+	it and give warning on lyxerr.
+	(pushTable): ditto
+	(struct compare_tags): struct with function operators used for
+	checking if sorted, sorting and lower_bound.
+	(search_kw): use lower_bound instead of manually implemented
+	binary search.
+
 2000-03-08  Juergen Vigna  <jug@sad.it>
 
 	* src/lyxfunc.C (Dispatch): forgot a break in the LFUN_INSET_ERT

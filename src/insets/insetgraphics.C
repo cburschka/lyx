@@ -83,7 +83,7 @@ void InsetGraphics::Read(LyXLex & /*lex*/)
 }
 
 
-int InsetGraphics::Latex(ostream & os, signed char /*fragile*/) const
+int InsetGraphics::Latex(ostream & os, signed char /*fragile*/, bool/*fs*/) const
 {
 	// MISSING: We have to decide how to do the order of the options
 	// that is depentant of order, like witdth, height, andlge. Should
@@ -226,7 +226,7 @@ int InsetGraphics::Latex(ostream & os, signed char /*fragile*/) const
 
 
 #ifndef USE_OSTREAM_ONLY
-int InsetGraphics::Latex(string & /*file*/, signed char /*fragile*/) const
+int InsetGraphics::Latex(string & /*file*/, signed char /*fragile*/, bool/*fs*/) const
 {
 	return 0;
 }

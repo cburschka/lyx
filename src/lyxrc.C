@@ -232,8 +232,8 @@ keyword_item lyxrcTags[] = {
 	{ "\\view_dvi_command", RC_VIEWDVI_COMMAND },
 	{ "\\view_dvi_paper_option", RC_VIEWDVI_PAPEROPTION },
 	{ "\\view_pdf_command", RC_VIEWPDF_COMMAND },
-	{ "\\view_ps_command", RC_VIEWPS_COMMAND },
-        { "\\view_pspic_command", RC_VIEWPSPIC_COMMAND }
+        { "\\view_pspic_command", RC_VIEWPSPIC_COMMAND },
+	{ "\\view_ps_command", RC_VIEWPS_COMMAND }
 };
 
 /* Let the range depend of the size of lyxrcTags.  Alejandro 240596 */
@@ -357,7 +357,7 @@ int LyXRC::read(string const & filename)
 	
 	LyXLex lexrc(lyxrcTags, lyxrcCount);
 	if (lyxerr.debugging(Debug::PARSER))
-		lexrc.printTable();
+		lexrc.printTable(lyxerr);
 	
 	lexrc.setFile(filename);
 	if (!lexrc.IsOK()) return -2;

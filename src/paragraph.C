@@ -1936,7 +1936,7 @@ LyXParagraph * LyXParagraph::TeXOnePar(ostream & os, TexRow & texrow,
 		break;
 	case LATEX_ITEM_ENVIRONMENT:
 	        if (bibkey) {
-			bibkey->Latex(os, false);
+			bibkey->Latex(os, false, false);
 		} else
 			os << "\\item ";
 		break;
@@ -4003,7 +4003,8 @@ void LyXParagraph::SimpleTeXSpecialChars(ostream & os, TexRow & texrow,
 				close = true;
 			}
 
-			int tmp = inset->Latex(os, style.isCommand());
+			int tmp = inset->Latex(os, style.isCommand(),
+					       style.free_spacing);
 
 			if (close)
 				os << "}";

@@ -188,7 +188,8 @@ void InsetSpecialChar::Read(LyXLex & lex)
 }
 
 
-int InsetSpecialChar::Latex(ostream & os, signed char /*fragile*/) const
+int InsetSpecialChar::Latex(ostream & os, signed char /*fragile*/,
+			    bool free_space) const
 {
 #ifdef USE_OSTREAM_ONLY
 	switch (kind) {
@@ -196,13 +197,13 @@ int InsetSpecialChar::Latex(ostream & os, signed char /*fragile*/) const
 	case END_OF_SENTENCE:	  os << "\\@.";	break;
 	case LDOTS:		  os << "\\ldots{}";	break;
 	case MENU_SEPARATOR:      os << "\\lyxarrow{}"; break;
-	case PROTECTED_SEPARATOR: os << "~";          break;
+	case PROTECTED_SEPARATOR: os << (free_space ? " " : "~"); break;
 	}
 	return 0;
 #else
 	string command;
 	signed char dummy = 0;
-	Latex(command, dummy);
+	Latex(command, dummy, free_space);
 	os << command;
 	return 0;
 #endif
@@ -210,14 +211,15 @@ int InsetSpecialChar::Latex(ostream & os, signed char /*fragile*/) const
 
 
 #ifndef USE_OSTREAM_ONLY
-int InsetSpecialChar::Latex(string & file, signed char /*fragile*/) const
+int InsetSpecialChar::Latex(string & file, signed char /*fragile*/,
+			    bool free_space) const
 {
 	switch (kind) {
 	case HYPHENATION:	file += "\\-";	break;
 	case END_OF_SENTENCE:	file += "\\@.";	break;
 	case LDOTS:		file += "\\ldots{}";	break;
 	case MENU_SEPARATOR:    file += "\\lyxarrow{}"; break;
-	case PROTECTED_SEPARATOR: file += "~";          break;
+	case PROTECTED_SEPARATOR: file += (free_space ? " " : "~"); break;
 	}
 	return 0;
 }

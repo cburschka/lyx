@@ -67,7 +67,7 @@ string InsetRef::getScreenLabel() const
 }
 
 
-int InsetRef::Latex(ostream & os, signed char /*fragile*/) const
+int InsetRef::Latex(ostream & os, signed char /*fragile*/, bool /*fs*/) const
 {
 	if(getOptions().empty())
 		os << escape(getCommand());
@@ -82,7 +82,7 @@ int InsetRef::Latex(ostream & os, signed char /*fragile*/) const
 
 
 #ifndef USE_OSTREAM_ONLY
-int InsetRef::Latex(string & file, signed char /*fragile*/) const
+int InsetRef::Latex(string & file, signed char /*fragile*/, bool /*fs*/) const
 {
 	if(getOptions().empty())
 		file += escape(getCommand());

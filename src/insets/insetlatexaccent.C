@@ -745,7 +745,7 @@ void InsetLatexAccent::Read(LyXLex & lex)
 }
 
 
-int InsetLatexAccent::Latex(ostream & os, signed char /*fragile*/) const
+int InsetLatexAccent::Latex(ostream & os, signed char /*fragile*/, bool/*fs*/) const
 {
 	os << contents;
 	return 0;
@@ -753,7 +753,7 @@ int InsetLatexAccent::Latex(ostream & os, signed char /*fragile*/) const
 
 
 #ifndef USE_OSTREAM_ONLY
-int InsetLatexAccent::Latex(string & file, signed char /*fragile*/) const
+int InsetLatexAccent::Latex(string & file, signed char /*fragile*/, bool /*fs*/) const
 {
 	file += contents;
 	return 0;

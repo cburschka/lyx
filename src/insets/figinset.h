@@ -1,7 +1,7 @@
 // -*- C++ -*-
 /*
   figinset.h - Figure inset header - part of LyX project
-  (C)1996 by Ivan Schreter
+  Copyright 1996 by Ivan Schreter
   */
 
 #ifndef FIGINSET_H
@@ -38,10 +38,10 @@ public:
 	///
 	void Read(LyXLex & lex);
 	///
-	int Latex(ostream &, signed char fragile) const;
+	int Latex(ostream &, signed char fragile, bool free_space) const;
 #ifndef USE_OSTREAM_ONLY
 	///
-	int Latex(string & file, signed char fragile) const;
+	int Latex(string & file, signed char fragile, bool free_space) const;
 	///
 	int Linuxdoc(string & file) const;
 	///

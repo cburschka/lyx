@@ -62,7 +62,7 @@ int InsetFoot::Latex(string & l, signed char fragile) const
 }
 #endif
 
-int InsetFoot::Latex(ostream & os, signed char fragile) const
+int InsetFoot::Latex(ostream & os, signed char fragile, bool fp) const
 {
     int i;
     
@@ -71,7 +71,7 @@ int InsetFoot::Latex(ostream & os, signed char fragile) const
     else 
 	os << "\\footnote{";
 
-    i = InsetText::Latex(os, fragile);
+    i = InsetText::Latex(os, fragile, fp);
     os << "}";
 
     return i;

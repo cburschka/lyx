@@ -584,7 +584,12 @@ InsetText::LocalDispatch(BufferView * bv,
 }
 
 
-int InsetText::Latex(ostream & os, signed char /*fragile*/) const
+int InsetText::Latex(ostream & os, signed char /*fragile*/,
+#ifdef USE_OSTREAM_ONLY
+		     bool) const
+#else
+		     bool free_spc) const
+#endif
 {
 #ifdef USE_OSTREAM_ONLY
 	TexRow texrow;
@@ -593,7 +598,7 @@ int InsetText::Latex(ostream & os, signed char /*fragile*/) const
 #else
     string fstr;
 
-    int i = Latex(fstr, fragile);
+    int i = Latex(fstr, fragile, free_spc);
     os << fstr;
     return i;
 #endif
