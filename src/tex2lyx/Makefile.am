@@ -48,11 +48,9 @@ FloatList.C: link_files
 
 link_files:
 	for i in $(linked_files); do \
-		ln -sf "$(top_srcdir)/src/$$i" . ; \
-	done ; \
-	for i in $(graphics_linked_files); do \
-		ln -sf "$(top_srcdir)/src/graphics/$$i" . ; \
+		rm -f $$i; \
+		ln -s "$(top_srcdir)/src/$$i" . ; \
 	done
 
 rm_link_files:
-	rm -f $(linked_files) $(graphics_linked_files)
+	rm -f $(linked_files)

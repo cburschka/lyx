@@ -1,5 +1,10 @@
 2003-07-27  Angus Leeming  <leeming@lyx.org>
 
+	* Makefile.am: remove unused graphics_link_files cruft.
+	Thanks, Kayvan!
+
+2003-07-27  Angus Leeming  <leeming@lyx.org>
+
 	* tex2lyx.C: add Debug::ANY hack.
 
 	* text.C: remove hardcoded command layouts.
