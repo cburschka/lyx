@@ -55,6 +55,7 @@ using std::cout;
 using std::ios;
 using std::istream_iterator;
 using std::pair;
+using std::reverse;
 
 extern Combox * combo_language;
 extern Combox * combo_language2;
@@ -3239,7 +3240,8 @@ extern "C" void TocUpdateCB(FL_OBJECT *, long)
 				++i;
 			}
 			if (par->isRightToLeftPar())
-				reverse(line+pos0,line+pos);
+				reverse(line + pos0, line + pos);
+			
 			line[pos] = '\0';
 			fl_add_browser_line(fd_form_toc->browser_toc, line);
 			

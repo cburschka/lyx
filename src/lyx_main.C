@@ -602,7 +602,8 @@ bool LyX::easyParse(int * argc, char * argv[])
 				--i; // After shift, check this number again.
 	
 				batch_command = "buffer-import " + type + " " + file;
-				cerr << "batch_command: " << batch_command << endl;
+				lyxerr << "batch_command: "
+				       << batch_command << endl;
 
 			} else
 				lyxerr << _("Missing type [eg latex, "

@@ -180,6 +180,9 @@ protected:
 	
 	///
 	bool runBibTeX(string const &, DepTable &);
+
+	///
+	void deleteFilesOnError() const;
 	
 	///
 	string cmd;

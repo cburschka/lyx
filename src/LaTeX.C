@@ -98,6 +98,31 @@ LaTeX::LaTeX(string const & latex, string const & f, string const & p)
 }
 
 
+void LaTeX::deleteFilesOnError() const
+{
+	// currently just a dummy function.
+
+	// What files do we have to delete?
+
+	// This will at least make latex do all the runs
+	::unlink(depfile.c_str());
+
+	// but the reason for the error might be in a generated file...
+
+	// bibtex file
+	string bbl = ChangeExtension(file, ".bbl", true);
+	::unlink(bbl.c_str());
+
+	// makeindex file
+	string ind = ChangeExtension(file, ".ind", true);
+	::unlink(ind.c_str());
+	
+	// Also remove the aux file
+	string aux = ChangeExtension(file, ".aux", true);
+	::unlink(aux.c_str());
+}
+
+
 int LaTeX::run(TeXErrors & terr, MiniBuffer * minib)
 	// We know that this function will only be run if the lyx buffer
 	// has been changed. We also know that a newly written .tex file
@@ -151,7 +176,11 @@ int LaTeX::run(TeXErrors & terr, MiniBuffer * minib)
 			minib->Store();
 			this->operator()();
 			scanres = scanLogFile(terr);
-			if (scanres & LaTeX::ERRORS) return scanres; // return on error
+			if (scanres & LaTeX::ERRORS) {
+				deleteFilesOnError();
+				return scanres; // return on error
+			}
+			
 			run_bibtex = scanAux(head);
 			if (run_bibtex)
 				lyxerr[Debug::DEPEND]
@@ -164,6 +193,7 @@ int LaTeX::run(TeXErrors & terr, MiniBuffer * minib)
 		++count;
 		lyxerr[Debug::DEPEND]
 			<< "Dependency file does not exist" << endl;
+		
 		lyxerr[Debug::LATEX]
 			<< "Run #" << count << endl;
 		head.insert(file, true);
@@ -171,7 +201,11 @@ int LaTeX::run(TeXErrors & terr, MiniBuffer * minib)
 		minib->Store();
 		this->operator()();
 		scanres = scanLogFile(terr);
-		if (scanres & LaTeX::ERRORS) return scanres; // return on error
+		if (scanres & LaTeX::ERRORS) {
+			deleteFilesOnError();
+			return scanres; // return on error
+		}
+		
 	}
 
 	// update the dependencies.
@@ -232,7 +266,11 @@ int LaTeX::run(TeXErrors & terr, MiniBuffer * minib)
 		minib->Store();
 		this->operator()();
 		scanres = scanLogFile(terr);
-		if (scanres & LaTeX::ERRORS) return scanres; // return on error
+		if (scanres & LaTeX::ERRORS) {
+			deleteFilesOnError();
+			return scanres; // return on error
+		}
+		
 		// update the depedencies
 		deplog(head); // reads the latex log
 		head.update();
@@ -278,7 +316,11 @@ int LaTeX::run(TeXErrors & terr, MiniBuffer * minib)
 		minib->Store();
 		this->operator()();
 		scanres = scanLogFile(terr);
-		if (scanres & LaTeX::ERRORS) return scanres; // return on error
+		if (scanres & LaTeX::ERRORS) {
+			deleteFilesOnError();
+			return scanres; // return on error
+		}
+		
 		// keep this updated
 		head.update();
 	}

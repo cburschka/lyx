@@ -1,3 +1,15 @@
+2000-04-28  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/lyx_main.C (easyParse): use lyxerr instead of cerr.
+
+	* src/lyx_cb.C: add using std::reverse;
+
+	* src/LaTeX.C (run): on error always run deleteFilesOnError before
+	returning.
+
+	* src/LaTeX.[Ch] (deleteFilesOnError): new method. unlinks some
+	selected files. Should fix repeated errors from generated files.
+
 2000-04-27  Dekel Tsur  <dekel@math.tau.ac.il>
 
 	* src/lyx_cb.C (TocUpdateCB): Reverse strings for Hebrew paragraphs
