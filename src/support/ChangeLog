@@ -1,3 +1,24 @@
+2005-01-27  Lars Gullik Bjonnes  <larsbj@gullik.net>
+
+	* tests: add some code for automatic regression testing, can be
+	improved or removed as we see fit
+	
+	* lyxlib.h (atoi): delete func
+	
+	* lstrings.[Ch] (strToInt): delete func
+	(strToUnsignedInt): delete func
+	(strToDbl): delete func
+
+	* Makefile.am: add subdir tests, delete atoi.C
+
+	* atoi.C: delete file
+
+	* convert.C: add specializations for converting to int, unsigned
+	int, double from string, and for converting to int and double from
+	char const *
+
+	* convert.h: remove commented code
+
 2005-01-22  Angus Leeming   <leeming@lyx.org>
 
 	* path.C (Path): revert the patch since the if statement has side
@@ -28,7 +49,7 @@
 	* filetools.[Ch] (LibScriptSearch): modify the code that replaces
 	the $$s placeholder with a path, so that it now inserts the path
 	of the lyx support directory, not the scripts subdirectory.
-	
+
 2005-01-19  Asger Ottar Alstrup  <aalstrup@laerdal.dk>
 
 	* lyxsum.C, socktools.C, tempname.C, userinfo.C: use the

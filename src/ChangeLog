@@ -1,20 +1,28 @@
+2005-01-27  Lars Gullik Bjonnes  <larsbj@gullik.net>
+
+	* lyxlayout.[Ch]: change some vars from float to double
+
+	* buffer.C (readFile): make a local var const
+
+	* Several files: use convert<> instead of atoi,strToXXX and friends
+
 2005-01-24  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* LaTeXFeatures.[Ch]: Add a static list packages_ that
 	holds the contens of packages.lst. New functions getAvailable
 	and isAvailable to parse and check that list, resp.
-	
+
 	* LyXAction.C:
 	* lfuns.h:
 	* BufferView_pimpl.C: new LFUN_OUTPUT_CHANGES.
-	
+
 	* bufferparams.[Ch]: new param output_changes.
-	
+
 	* Buffer.C: increase file format to 240.
 	Use output_changes and isVailable.
-	
-	* changes.[Ch]: 
-	* paragraph.C: 
+
+	* changes.[Ch]:
+	* paragraph.C:
 	* paragraph_pimpl.C: Use output_changes and isVailable.
 
 2005-01-23  Angus Leeming  <leeming@lyx.org>
@@ -28,7 +36,7 @@
 
 2005-01-20  Angus Leeming  <leeming@lyx.org>
 
-	* lyxfont.C (setLyXFamily, setLyXSeries, setLyXShape, setLyXSize) 
+	* lyxfont.C (setLyXFamily, setLyXSeries, setLyXShape, setLyXSize)
 	(setLyXMisc): (char string literal) != (char string literal) is
 	performing a comparison on the addresses. Convert one operand
 	explicitly to string to guarantee expected behaviour.
@@ -40,7 +48,7 @@
 	* lyxlex_pimpl.[Ch]: use USE_COMPRESSION guard.
 
 	* output_plaintext.C: remove unneeded #include gzstream.h.
-	
+
 2005-01-20  Angus Leeming  <leeming@lyx.org>
 
 	* SpellBase.h: rename some of the elements of the Result enum.

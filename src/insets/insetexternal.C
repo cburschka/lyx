@@ -228,7 +228,7 @@ void InsetExternalParams::write(Buffer const & buffer, ostream & os) const
 
 	if (!resizedata.no_resize()) {
 		using support::float_equal;
-		double scl = support::strToDbl(resizedata.scale);
+		double const scl = convert<double>(resizedata.scale);
 		if (!float_equal(scl, 0.0, 0.05)) {
 			if (!float_equal(scl, 100.0, 0.05))
 				os << "\tscale "
@@ -524,7 +524,7 @@ graphics::Params get_grfx_params(InsetExternalParams const & eparams)
 	gparams.scale = eparams.lyxscale;
 	if (eparams.clipdata.clip)
 		gparams.bb = eparams.clipdata.bbox;
-	gparams.angle = lyx::support::strToDbl(eparams.rotationdata.adjAngle());
+	gparams.angle = convert<double>(eparams.rotationdata.adjAngle());
 
 	switch (eparams.display) {
 	case external::DefaultDisplay:

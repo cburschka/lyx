@@ -16,21 +16,7 @@
 #ifndef CONVERT_H
 #define CONVERT_H
 
-#if 0
-#include <boost/static_assert.hpp>
-
-// Commented out since BOOST_STATIC_ASSERT does not work with gcc 4.0
-template <class Target, class Source>
-Target convert(Source arg)
-{
-	// We use a static assert here since we want all instances of
-	// this template to be specializations.
-	BOOST_STATIC_ASSERT(sizeof(bool) == 0);
-	return Target();
-}
-#else
 template <class Target, class Source>
 Target convert(Source arg);
-#endif
 
 #endif

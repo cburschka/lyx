@@ -33,6 +33,8 @@
 #include "ParagraphParameters.h"
 #include "undo.h"
 
+#include "support/convert.h"
+
 #include "frontends/Alert.h"
 #include "frontends/font_metrics.h"
 #include "frontends/LyXView.h"
@@ -46,8 +48,6 @@
 using lyx::graphics::PreviewLoader;
 
 using lyx::support::ltrim;
-using lyx::support::strToInt;
-using lyx::support::strToDbl;
 
 using boost::shared_ptr;
 
@@ -496,9 +496,9 @@ void InsetTabular::doDispatch(LCursor & cur, FuncRequest & cmd)
 		if (cmd.argument.empty())
 			break;
 		if (cmd.argument.find('.') != cmd.argument.npos)
-			scroll(cur.bv(), static_cast<float>(strToDbl(cmd.argument)));
+			scroll(cur.bv(), static_cast<float>(convert<double>(cmd.argument)));
 		else
-			scroll(cur.bv(), strToInt(cmd.argument));
+			scroll(cur.bv(), convert<int>(cmd.argument));
 		break;
 
 	case LFUN_RIGHTSEL:
@@ -878,7 +878,7 @@ bool InsetTabular::getStatus(LCursor & cur, FuncRequest const & cmd,
 			break;
 
 		case LyXTabular::SET_USEBOX:
-			status.setOnOff(strToInt(argument) == tabular.getUsebox(cur.idx()));
+			status.setOnOff(convert<int>(argument) == tabular.getUsebox(cur.idx()));
 			break;
 
 		case LyXTabular::SET_LTFIRSTHEAD:
@@ -1496,7 +1496,7 @@ void InsetTabular::tabularFeatures(LCursor & cur,
 		break;
 
 	case LyXTabular::SET_USEBOX: {
-		LyXTabular::BoxType val = LyXTabular::BoxType(strToInt(value));
+		LyXTabular::BoxType val = LyXTabular::BoxType(convert<int>(value));
 		if (val == tabular.getUsebox(cur.idx()))
 			val = LyXTabular::BOX_NONE;
 		for (row_type i = sel_row_start; i <= sel_row_end; ++i)

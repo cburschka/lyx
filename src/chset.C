@@ -15,14 +15,13 @@
 
 #include "debug.h"
 
+#include "support/convert.h"
 #include "support/filetools.h"
-#include "support/lyxlib.h"
 
 #include <boost/regex.hpp>
 
 #include <fstream>
 
-using lyx::support::atoi;
 using lyx::support::LibFileSearch;
 
 using boost::regex;
@@ -66,7 +65,7 @@ bool CharacterSet::loadFile(string const & fname)
 	while (getline(ifs, line)) {
 		smatch sub;
 		if (regex_match(line, sub, reg)) {
-			int const n = atoi(sub.str(1));
+			int const n = convert<int>(sub.str(1));
 			string const str = sub.str(2);
 			if (lyxerr.debugging(Debug::KBMAP))
 				lyxerr << "Chardef: " << n

@@ -18,6 +18,7 @@
 #include "debug.h"
 #include "lyxlex_pimpl.h"
 
+#include "support/convert.h"
 #include "support/lstrings.h"
 
 using lyx::support::compare_ascii_no_case;
@@ -25,8 +26,6 @@ using lyx::support::isStrDbl;
 using lyx::support::isStrInt;
 using lyx::support::ltrim;
 using lyx::support::prefixIs;
-using lyx::support::strToDbl;
-using lyx::support::strToInt;
 using lyx::support::subst;
 using lyx::support::trim;
 
@@ -121,20 +120,20 @@ int LyXLex::lex()
 int LyXLex::getInteger() const
 {
 	if (isStrInt(pimpl_->getString()))
-		return strToInt(pimpl_->getString());
+		return convert<int>(pimpl_->getString());
 	pimpl_->printError("Bad integer `$$Token'");
 	return -1;
 }
 
 
-float LyXLex::getFloat() const
+double LyXLex::getFloat() const
 {
 	// replace comma with dot in case the file was written with
 	// the wrong locale (should be rare, but is easy enough to
 	// avoid).
-	string str = subst(pimpl_->getString(), ",", ".");
+	string const str = subst(pimpl_->getString(), ",", ".");
 	if (isStrDbl(str))
-		return strToDbl(str);
+		return convert<double>(str);
 	pimpl_->printError("Bad float `$$Token'");
 	return -1;
 }
@@ -256,7 +255,7 @@ LyXLex & LyXLex::operator>>(std::string & s)
 }
 
 
-LyXLex & LyXLex::operator>>(float & s)
+LyXLex & LyXLex::operator>>(double & s)
 {
 	if (isOK()) {
 		next();

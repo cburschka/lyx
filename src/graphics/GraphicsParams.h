@@ -69,7 +69,7 @@ public:
 	 *  image.
 	 */
 	/// Rotation angle.
-	float angle;
+	double angle;
 };
 
 bool operator==(Params const &, Params const &);

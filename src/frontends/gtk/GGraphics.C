@@ -26,9 +26,9 @@
 #include "paper.h"
 #include "lyxrc.h" // for lyxrc.default_papersize
 
+#include "support/convert.h"
 #include "support/lyxlib.h"  // for float_equal
 #include "support/lstrings.h"
-#include "support/convert.h"
 
 #include "debug.h"
 
@@ -38,7 +38,6 @@ using std::string;
 namespace lyx {
 
 using support::float_equal;
-using support::strToDbl;
 using support::token;
 
 namespace frontend {
@@ -372,7 +371,7 @@ void GGraphics::update() {
 		displaycombo_->set_active(0);
 	}
 
-	outputscalespin_->get_adjustment()->set_value(strToDbl(igp.scale));
+	outputscalespin_->get_adjustment()->set_value(convert<double>(igp.scale));
 	widthspin_->get_adjustment()->set_value(igp.width.value());
 	unitsComboFromLength(widthunitscombo_, stringcol_,
 	                     igp.width, defaultUnit);
@@ -381,7 +380,7 @@ void GGraphics::update() {
 	                     igp.height, defaultUnit);
 
 	if (!igp.scale.empty()
-		&& !float_equal(strToDbl(igp.scale), 0.0, 0.05)) {
+		&& !float_equal(convert<double>(igp.scale), 0.0, 0.05)) {
 		// scaling sizing mode
 		setscalingradio_->set_active(true);
 	} else {
@@ -400,7 +399,7 @@ void GGraphics::update() {
 	clipcheck_->set_active(igp.clip);
 
 	// the extra section
-	anglespin_->get_adjustment()->set_value(strToDbl(igp.rotateAngle));
+	anglespin_->get_adjustment()->set_value(convert<double>(igp.rotateAngle));
 
 	int origin_pos;
 	if (igp.rotateOrigin.empty()) {

@@ -15,16 +15,15 @@
 
 #include "LaTeX.h" // TeXErrors
 
+#include "support/convert.h"
 #include "support/filetools.h"
 #include "support/lstrings.h"
-#include "support/lyxlib.h"
 #include "support/systemcall.h"
 
 #include <boost/format.hpp>
 
 #include <fstream>
 
-using lyx::support::atoi;
 using lyx::support::ChangeExtension;
 using lyx::support::OnlyFilename;
 using lyx::support::split;
@@ -82,7 +81,7 @@ int Chktex::scanLogFile(TeXErrors & terr)
 		token = split(token, warno, ':');
 		token = split(token, warning, ':');
 
-		int const lineno = atoi(line);
+		int const lineno = convert<int>(line);
 
 #if USE_BOOST_FORMAT
 		msg % warno;

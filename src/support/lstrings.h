@@ -61,16 +61,7 @@ bool isStrInt(std::string const & str);
 bool isStrUnsignedInt(std::string const & str);
 
 ///
-int strToInt(std::string const & str);
-
-/// convert string to an unsigned integer
-unsigned int strToUnsignedInt(std::string const & str);
-
-///
 bool isStrDbl(std::string const & str);
-
-///
-double strToDbl(std::string const & str);
 
 ///
 char lowercase(char c);

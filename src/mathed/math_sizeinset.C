@@ -16,16 +16,14 @@
 #include "math_parser.h"
 #include "math_streamstr.h"
 
+#include "support/convert.h"
 #include "support/std_ostream.h"
-#include "support/lyxlib.h"
-
-using lyx::support::atoi;
 
 using std::auto_ptr;
 
 
 MathSizeInset::MathSizeInset(latexkeys const * l)
-	: MathNestInset(1), key_(l), style_(Styles(atoi(l->extra)))
+	: MathNestInset(1), key_(l), style_(Styles(convert<int>(l->extra)))
 {}
 
 

@@ -17,6 +17,8 @@
 
 #include "debug.h"
 #include "lyxtextclass.h"
+
+#include "support/convert.h"
 #include "support/filetools.h"
 #include "support/lstrings.h"
 #include "support/lyxlib.h"
@@ -50,7 +52,6 @@ using std::map;
 using lyx::support::isStrUnsignedInt;
 using lyx::support::ltrim;
 using lyx::support::rtrim;
-using lyx::support::strToUnsignedInt;
 using lyx::support::IsFileReadable;
 using lyx::support::IsFileWriteable;
 
@@ -137,7 +138,7 @@ void add_known_command(string const & command, string const & o1,
 	string const opt1 = rtrim(ltrim(o1, "["), "]");
 	if (isStrUnsignedInt(opt1)) {
 		// The command has arguments
-		nargs = strToUnsignedInt(opt1);
+		nargs = convert<unsigned int>(opt1);
 		if (nargs > 0 && o2) {
 			// The first argument is optional
 			arguments.push_back(optional);

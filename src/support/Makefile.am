@@ -1,5 +1,7 @@
 include $(top_srcdir)/config/common.am
 
+SUBDIRS = . tests
+
 noinst_LTLIBRARIES = libsupport.la
 
 CLEANFILES += path_defines.C
@@ -20,7 +22,6 @@ libsupport_la_SOURCES = \
 	FileMonitor.h \
 	FileMonitor.C \
 	abort.C \
-	atoi.C \
 	chdir.C \
 	convert.C \
 	convert.h \

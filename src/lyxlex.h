@@ -96,7 +96,7 @@ public:
 	///
 	bool getBool() const;
 	///
-	float getFloat() const;
+	double getFloat() const;
 	///
 	std::string const getString() const;
 
@@ -131,8 +131,6 @@ public:
 
 	/// extract string
 	LyXLex & operator>>(std::string &);
-	/// extract float
-	LyXLex & operator>>(float &);
 	/// extract double
 	LyXLex & operator>>(double &);
 	/// extract integer

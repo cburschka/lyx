@@ -413,6 +413,7 @@ AC_CONFIG_FILES([Makefile  m4/Makefile \
        src/graphics/Makefile \
        src/insets/Makefile \
        src/support/Makefile \
+       src/support/tests/Makefile \
        src/frontends/Makefile \
        src/frontends/controllers/Makefile \
        src/frontends/xforms/Makefile \

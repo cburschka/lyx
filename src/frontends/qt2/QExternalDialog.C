@@ -18,6 +18,7 @@
 #include "controllers/ButtonController.h"
 #include "controllers/ControlExternal.h"
 
+#include "support/convert.h"
 #include "support/lstrings.h"
 #include "support/lyxlib.h"
 
@@ -38,7 +39,6 @@
 
 using lyx::support::float_equal;
 using lyx::support::isStrDbl;
-using lyx::support::strToDbl;
 using std::string;
 
 namespace lyx {
@@ -100,7 +100,7 @@ bool QExternalDialog::activateAspectratio() const
 	if (wstr.empty())
 		return false;
 	bool const wIsDbl = isStrDbl(wstr);
-	if (wIsDbl && float_equal(strToDbl(wstr), 0.0, 0.05))
+	if (wIsDbl && float_equal(convert<double>(wstr), 0.0, 0.05))
 		return false;
 	LyXLength l;
 	if (!wIsDbl && (!isValidLength(wstr, &l) || l.zero()))
@@ -110,7 +110,7 @@ bool QExternalDialog::activateAspectratio() const
 	if (hstr.empty())
 		return false;
 	bool const hIsDbl = isStrDbl(hstr);
-	if (hIsDbl && float_equal(strToDbl(hstr), 0.0, 0.05))
+	if (hIsDbl && float_equal(convert<double>(hstr), 0.0, 0.05))
 		return false;
 	if (!hIsDbl && (!isValidLength(hstr, &l) || l.zero()))
 		return false;

@@ -47,8 +47,6 @@ using support::bformat;
 using support::float_equal;
 using support::getStringFromVector;
 using support::isStrDbl;
-using support::strToDbl;
-using support::strToInt;
 using support::token;
 using support::trim;
 
@@ -145,7 +143,7 @@ void getDisplay(external::DisplayType & display,
 	if (!fl_get_button(displayCB))
 		display = external::NoDisplay;
 
-	scale = strToInt(getString(scaleED));
+	scale = convert<int>(getString(scaleED));
 }
 
 
@@ -243,13 +241,12 @@ void getSize(external::ResizeData & data,
 		if (isValidLength(width, &w))
 			data.width = w;
 		else if (isStrDbl(width))
-			data.width = LyXLength(strToDbl(width),
+			data.width = LyXLength(convert<double>(width),
 					   static_cast<LyXLength::UNIT>(unit));
 		else
 			data.width = LyXLength();
 
-		data.scale = string();
-
+		data.scale.erase();
 	} else {
 		// scaling instead of a width
 		data.scale = width;
@@ -299,10 +296,10 @@ void getCrop(external::ClipData & data,
 	if (!bb_changed)
 		return;
 
-	data.bbox.xl = strToInt(getString(xlED));
-	data.bbox.yb = strToInt(getString(ybED));
-	data.bbox.xr = strToInt(getString(xrED));
-	data.bbox.yt = strToInt(getString(ytED));
+	data.bbox.xl = convert<int>(getString(xlED));
+	data.bbox.yb = convert<int>(getString(ybED));
+	data.bbox.xr = convert<int>(getString(xrED));
+	data.bbox.yt = convert<int>(getString(ytED));
 }
 
 
@@ -696,7 +693,7 @@ bool FormExternal::activateAspectratio() const
 	if (wstr.empty())
 		return false;
 	bool const wIsDbl = isStrDbl(wstr);
-	if (wIsDbl && float_equal(strToDbl(wstr), 0.0, 0.05))
+	if (wIsDbl && float_equal(convert<double>(wstr), 0.0, 0.05))
 		return false;
 	LyXLength l;
 	if (!wIsDbl && (!isValidLength(wstr, &l) || l.zero()))
@@ -706,7 +703,7 @@ bool FormExternal::activateAspectratio() const
 	if (hstr.empty())
 		return false;
 	bool const hIsDbl = isStrDbl(hstr);
-	if (hIsDbl && float_equal(strToDbl(hstr), 0.0, 0.05))
+	if (hIsDbl && float_equal(convert<double>(hstr), 0.0, 0.05))
 		return false;
 	if (!hIsDbl && (!isValidLength(hstr, &l) || l.zero()))
 		return false;

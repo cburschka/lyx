@@ -111,7 +111,6 @@ using lyx::support::removeAutosaveFile;
 using lyx::support::rename;
 using lyx::support::RunCommand;
 using lyx::support::split;
-using lyx::support::strToInt;
 using lyx::support::subst;
 using lyx::support::tempName;
 using lyx::support::trim;
@@ -609,7 +608,7 @@ bool Buffer::readFile(LyXLex & lex, string const & filename, pit_type const pit)
 	//lyxerr << "           dot found at " << dot << endl;
 	if (dot != string::npos)
 			tmp_format.erase(dot, 1);
-	int file_format = strToInt(tmp_format);
+	int const file_format = convert<int>(tmp_format);
 	//lyxerr << "format: " << file_format << endl;
 
 	if (file_format != LYX_FORMAT) {
@@ -650,7 +649,7 @@ bool Buffer::readFile(LyXLex & lex, string const & filename, pit_type const pit)
 					      filename));
 			return false;
 		} else {
-			bool ret = readFile(tmpfile, pit);
+			bool const ret = readFile(tmpfile, pit);
 			// Do stuff with tmpfile name and buffer name here.
 			return ret;
 		}
@@ -1185,7 +1184,7 @@ void Buffer::validate(LaTeXFeatures & features) const
 {
 	LyXTextClass const & tclass = params().getLyXTextClass();
 
-	if (features.isAvailable("dvipost") && params().tracking_changes 
+	if (features.isAvailable("dvipost") && params().tracking_changes
 		&& params().output_changes) {
 		features.require("dvipost");
 		features.require("color");

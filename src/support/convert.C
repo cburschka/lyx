@@ -83,3 +83,38 @@ string convert<string>(double d)
 {
 	return lexical_cast<string>(d);
 }
+
+
+template<>
+int convert<int>(string const s)
+{
+	return strtol(s.c_str(), 0, 10);
+}
+
+
+template<>
+unsigned int convert<unsigned int>(string const s)
+{
+	return strtoul(s.c_str(), 0, 10);
+}
+
+
+template<>
+double convert<double>(string const s)
+{
+	return strtod(s.c_str(), 0);
+}
+
+
+template<>
+int convert<int>(char const * cptr)
+{
+	return strtol(cptr, 0, 10);
+}
+
+
+template<>
+double convert<double>(char const * cptr)
+{
+	return strtod(cptr, 0);
+}

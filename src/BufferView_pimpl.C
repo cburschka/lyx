@@ -88,7 +88,6 @@ using lyx::support::IsDirWriteable;
 using lyx::support::MakeDisplayPath;
 using lyx::support::MakeAbsPath;
 using lyx::support::package;
-using lyx::support::strToUnsignedInt;
 
 using std::endl;
 using std::istringstream;
@@ -966,7 +965,7 @@ FuncStatus BufferView::Pimpl::getStatus(FuncRequest const & cmd)
 		break;
 
 	case LFUN_BOOKMARK_GOTO:
-		flag.enabled(bv_->isSavedPosition(strToUnsignedInt(cmd.argument)));
+		flag.enabled(bv_->isSavedPosition(convert<unsigned int>(cmd.argument)));
 		break;
 	case LFUN_TRACK_CHANGES:
 		flag.enabled(true);
@@ -975,7 +974,7 @@ FuncStatus BufferView::Pimpl::getStatus(FuncRequest const & cmd)
 
 	case LFUN_OUTPUT_CHANGES: {
 		LaTeXFeatures features(*buf, buf->params(), false);
-		flag.enabled(buf && buf->params().tracking_changes 
+		flag.enabled(buf && buf->params().tracking_changes
 			&& features.isAvailable("dvipost"));
 		flag.setOnOff(buf->params().output_changes);
 		break;
@@ -1052,11 +1051,11 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & cmd)
 		break;
 
 	case LFUN_BOOKMARK_SAVE:
-		savePosition(strToUnsignedInt(cmd.argument));
+		savePosition(convert<unsigned int>(cmd.argument));
 		break;
 
 	case LFUN_BOOKMARK_GOTO:
-		restorePosition(strToUnsignedInt(cmd.argument));
+		restorePosition(convert<unsigned int>(cmd.argument));
 		break;
 
 	case LFUN_REF_GOTO: {

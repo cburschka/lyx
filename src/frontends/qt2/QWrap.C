@@ -27,7 +27,6 @@
 #include <qlineedit.h>
 #include <qpushbutton.h>
 
-using lyx::support::strToDbl;
 
 using std::string;
 
@@ -59,7 +58,7 @@ void QWrap::build_dialog()
 
 void QWrap::apply()
 {
-	double const value = strToDbl(fromqstr(dialog_->widthED->text()));
+	double const value = convert<double>(fromqstr(dialog_->widthED->text()));
 	LyXLength::UNIT unit = dialog_->unitsLC->currentLengthItem();
 	if (dialog_->widthED->text().isEmpty())
 		unit = LyXLength::UNIT_NONE;

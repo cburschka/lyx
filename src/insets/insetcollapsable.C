@@ -210,7 +210,7 @@ void InsetCollapsable::getCursorPos
 		y = yo();
 		return;
 	}
-	
+
 	InsetText::getCursorPos(sl, x, y);
 	if (status_ == Open) {
 		if (openinlined_)
@@ -408,7 +408,7 @@ void InsetCollapsable::setLabelFont(LyXFont & font)
 }
 
 
-void InsetCollapsable::scroll(BufferView & bv, float sx) const
+void InsetCollapsable::scroll(BufferView & bv, double sx) const
 {
 	UpdatableInset::scroll(bv, sx);
 }
@@ -418,4 +418,3 @@ void InsetCollapsable::scroll(BufferView & bv, int offset) const
 {
 	UpdatableInset::scroll(bv, offset);
 }
-

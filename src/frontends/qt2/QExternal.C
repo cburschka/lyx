@@ -42,8 +42,6 @@
 namespace external = lyx::external;
 
 using lyx::support::isStrDbl;
-using lyx::support::strToDbl;
-using lyx::support::strToInt;
 using lyx::support::token;
 using lyx::support::trim;
 
@@ -134,7 +132,7 @@ void getDisplay(external::DisplayType & display,
 	if (!displayCB.isChecked())
 		display = external::NoDisplay;
 
-	scale = strToInt(fromqstr(scaleED.text()));
+	scale = convert<int>(fromqstr(scaleED.text()));
 }
 
 
@@ -211,7 +209,7 @@ void getSize(external::ResizeData & data,
 		if (isValidLength(width, &w))
 			data.width = w;
 		else if (isStrDbl(width))
-			data.width = LyXLength(strToDbl(width),
+			data.width = LyXLength(convert<double>(width),
 					   static_cast<LyXLength::UNIT>(unit));
 		else
 			data.width = LyXLength();
@@ -255,10 +253,10 @@ void getCrop(external::ClipData & data,
 	if (!bb_changed)
 		return;
 
-	data.bbox.xl = strToInt(fromqstr(xlED.text()));
-	data.bbox.yb = strToInt(fromqstr(ybED.text()));
-	data.bbox.xr = strToInt(fromqstr(xrED.text()));
-	data.bbox.yt = strToInt(fromqstr(ytED.text()));
+	data.bbox.xl = convert<int>(fromqstr(xlED.text()));
+	data.bbox.yb = convert<int>(fromqstr(ybED.text()));
+	data.bbox.xr = convert<int>(fromqstr(xrED.text()));
+	data.bbox.yt = convert<int>(fromqstr(ytED.text()));
 }
 
 

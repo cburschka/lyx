@@ -21,8 +21,8 @@
 
 #include "PrinterParams.h"
 
-#include "support/lstrings.h"
 #include "support/convert.h"
+#include "support/lstrings.h"
 
 #include <libglademm.h>
 
@@ -47,9 +47,9 @@ void GPrint::apply()
 	pp.all_pages = all_->get_active();
 	pp.from_page = pp.to_page = 0;
 	if (!fromEntry_->get_text().empty()) {
-		pp.from_page = strToInt(fromEntry_->get_text());
+		pp.from_page = convert<int>(fromEntry_->get_text());
 		if (!toEntry_->get_text().empty())
-			pp.to_page = strToInt(toEntry_->get_text());
+			pp.to_page = convert<int>(toEntry_->get_text());
 	}
 	pp.odd_pages = odd_->get_active();
 	pp.even_pages = even_->get_active();
@@ -93,7 +93,7 @@ void GPrint::updateUI()
 	if (fromTo_->get_active()) {
 		string from = fromEntry_->get_text();
 		string to = toEntry_->get_text();
-		if (from.empty() || (!to.empty() && strToInt(from) > strToInt(to)))
+		if (from.empty() || (!to.empty() && convert<int>(from) > convert<int>(to)))
 			activate = ButtonPolicy::SMI_INVALID;
 	}
 	bool const enableCounter = printer_->get_active();

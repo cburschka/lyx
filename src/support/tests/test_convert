@@ -1,0 +1,7 @@
+#!/bin/bash
+
+regfile=`cat regfiles/convert`
+output=`./convert`
+
+test "$regfile" = "$output"
+exit $?

@@ -62,11 +62,10 @@ following hack as starting point to write some macros:
 
 #include "lyxlex.h"
 #include "debug.h"
-#include "support/lyxlib.h"
+
+#include "support/convert.h"
 
 #include <sstream>
-
-using lyx::support::atoi;
 
 using std::endl;
 using std::fill;
@@ -854,9 +853,9 @@ void Parser::parse1(MathGridInset & grid, unsigned flags,
 					return;
 				}
 
-				string arg  = getArg('[', ']');
+				string const arg  = getArg('[', ']');
 				if (!arg.empty())
-					nargs = atoi(arg);
+					nargs = convert<int>(arg);
 
 			}
 

@@ -1,3 +1,8 @@
+2005-01-27  Lars Gullik Bjonnes  <larsbj@gullik.net>
+
+	* math_parser.C,math_sizeinset.C: use convert<> instead of
+	atoi,strToXXX and friends
+
 2005-01-20  Angus Leeming  <leeming@lyx.org>
 
 	* math_spaceinset.C (validate):

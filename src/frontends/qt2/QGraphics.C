@@ -28,8 +28,8 @@
 
 #include "insets/insetgraphicsParams.h"
 
-#include "support/lstrings.h"
 #include "support/convert.h"
+#include "support/lstrings.h"
 #include "support/lyxlib.h"
 
 #include <qlineedit.h>
@@ -41,8 +41,6 @@
 #include <cmath>
 
 using lyx::support::float_equal;
-using lyx::support::strToDbl;
-using lyx::support::strToInt;
 using lyx::support::token;
 
 #ifndef CXX_GLOBAL_CSTD
@@ -257,7 +255,7 @@ void QGraphics::update_contents()
 		dialog_->widthUnit->insertItem(unit_name_gui[i], -1);
 
 	if (!igp.scale.empty()
-		&& !float_equal(strToDbl(igp.scale), 0.0, 0.05)) {
+		&& !float_equal(convert<double>(igp.scale), 0.0, 0.05)) {
 		dialog_->width->setText(toqstr(igp.scale));
 		dialog_->widthUnit->setCurrentItem(0);
 	} else {
@@ -320,8 +318,8 @@ void QGraphics::apply()
 		string rtX(fromqstr(dialog_->rtX->text()));
 		string rtY(fromqstr(dialog_->rtY->text()));
 		int bb_sum =
-			strToInt(lbX) + strToInt(lbY) +
-			strToInt(rtX) + strToInt(rtX);
+			convert<int>(lbX) + convert<int>(lbY) +
+			convert<int>(rtX) + convert<int>(rtX);
 		if (bb_sum) {
 			if (lbX.empty())
 				bb = "0 ";
@@ -378,11 +376,11 @@ void QGraphics::apply()
 
 	igp.noUnzip = dialog_->unzipCB->isChecked();
 
-	igp.lyxscale = strToInt(fromqstr(dialog_->displayscale->text()));
+	igp.lyxscale = convert<int>(fromqstr(dialog_->displayscale->text()));
 
 	igp.rotateAngle = fromqstr(dialog_->angle->text());
 
-	float rotAngle = strToDbl(igp.rotateAngle);
+	double rotAngle = convert<double>(igp.rotateAngle);
 	if (std::abs(rotAngle) > 360.0) {
 		rotAngle -= 360.0 * floor(rotAngle / 360.0);
 		igp.rotateAngle = convert<string>(rotAngle);

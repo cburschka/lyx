@@ -18,9 +18,7 @@
 #include <sstream>
 #include <string>
 
-using lyx::support::strToDbl;
 
-//using std::ios;
 using std::ostream;
 using std::ostringstream;
 using std::string;
@@ -45,11 +43,11 @@ string const Spacing::getValueAsString() const
 
 double Spacing::getValue() const
 {
-	return strToDbl(getValueAsString());
+	return convert<double>(getValueAsString());
 }
 
 
-void Spacing::set(Spacing::Space sp, float val)
+void Spacing::set(Spacing::Space sp, double val)
 {
 	set(sp, convert<string>(val));
 }
@@ -59,7 +57,7 @@ void Spacing::set(Spacing::Space sp, string const & val)
 {
 	space = sp;
 	if (sp == Other) {
-		switch (int(strToDbl(val) * 1000 + 0.5)) {
+		switch (int(convert<double>(val) * 1000 + 0.5)) {
 		case 1000:
 			space = Single;
 			break;

@@ -21,6 +21,7 @@
 
 #include "graphics/GraphicsParams.h"
 
+#include "support/convert.h"
 #include "support/filetools.h"
 #include "support/lyxlib.h"
 #include "support/lstrings.h"
@@ -28,8 +29,6 @@
 
 using lyx::support::float_equal;
 using lyx::support::readBB_from_PSFile;
-using lyx::support::strToDbl;
-using lyx::support::strToInt;
 using lyx::support::token;
 
 using std::string;
@@ -155,8 +154,8 @@ void InsetGraphicsParams::Write(ostream & os, string const & bufpath) const
 		os << "\tlyxscale " << lyxscale << '\n';
 	if (display != lyx::graphics::DefaultDisplay)
 		os << "\tdisplay " << lyx::graphics::displayTranslator().find(display) << '\n';
-	if (!scale.empty() && !float_equal(strToDbl(scale), 0.0, 0.05)) {
-		if (!float_equal(strToDbl(scale), 100.0, 0.05))
+	if (!scale.empty() && !float_equal(convert<double>(scale), 0.0, 0.05)) {
+		if (!float_equal(convert<double>(scale), 100.0, 0.05))
 			os << "\tscale " << scale << '\n';
 	} else {
 		if (!width.zero())
@@ -178,7 +177,7 @@ void InsetGraphicsParams::Write(ostream & os, string const & bufpath) const
 		os << "\tclip\n";
 
 	if (!rotateAngle.empty()
-		&& !float_equal(strToDbl(rotateAngle), 0.0, 0.001))
+		&& !float_equal(convert<double>(rotateAngle), 0.0, 0.001))
 		os << "\trotateAngle " << rotateAngle << '\n';
 	if (!rotateOrigin.empty())
 		os << "\trotateOrigin " << rotateOrigin << '\n';
@@ -267,7 +266,7 @@ lyx::graphics::Params InsetGraphicsParams::as_grfxParams() const
 	lyx::graphics::Params pars;
 	pars.filename = filename.absFilename();
 	pars.scale = lyxscale;
-	pars.angle = lyx::support::strToDbl(rotateAngle);
+	pars.angle = convert<double>(rotateAngle);
 
 	if (clip) {
 		pars.bb = bb;
@@ -276,8 +275,9 @@ lyx::graphics::Params InsetGraphicsParams::as_grfxParams() const
 		string const tmp = readBB_from_PSFile(filename.absFilename());
 		lyxerr[Debug::GRAPHICS] << "BB_from_File: " << tmp << std::endl;
 		if (!tmp.empty()) {
-			unsigned int const bb_orig_xl = strToInt(token(tmp, ' ', 0));
-			unsigned int const bb_orig_yb = strToInt(token(tmp, ' ', 1));
+#warning why not convert to unsigned int? (Lgb)
+			unsigned int const bb_orig_xl = convert<int>(token(tmp, ' ', 0));
+			unsigned int const bb_orig_yb = convert<int>(token(tmp, ' ', 1));
 
 			// new pars.bb values must be >= zero
 			if  (pars.bb.xl > bb_orig_xl)

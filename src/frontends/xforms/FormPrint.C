@@ -31,8 +31,6 @@ using std::string;
 
 namespace lyx {
 
-using support::strToInt;
-
 namespace frontend {
 
 typedef FormController<ControlPrint, FormView<FD_print> > base_class;
@@ -128,10 +126,10 @@ void FormPrint::apply()
 	pp.from_page = pp.to_page = 0;
 	if (!getString(dialog_->input_from_page).empty()) {
 		// we have at least one page requested
-		pp.from_page = strToInt(fl_get_input(dialog_->input_from_page));
+		pp.from_page = convert<int>(fl_get_input(dialog_->input_from_page));
 		if (!getString(dialog_->input_to_page).empty()) {
 			// okay we have a range
-			pp.to_page = strToInt(fl_get_input(dialog_->input_to_page));
+			pp.to_page = convert<int>(fl_get_input(dialog_->input_to_page));
 		} // else we only print one page.
 	}
 
@@ -228,18 +226,18 @@ ButtonPolicy::SMInput FormPrint::input(FL_OBJECT * ob, long)
 		bool const to_input = static_cast<bool>(*to);
 
 		setEnabled(dialog_->input_to_page, from_input);
-		if (!from_input || (to_input && strToInt(from) > strToInt(to))) {
+		if (!from_input || (to_input && convert<int>(from) > convert<int>(to))) {
 			// Invalid input. Either 'from' is empty, or 'from' > 'to'.
 			// Probably editting these fields, so deactivate OK/Apply until input is valid again.
 			activate = ButtonPolicy::SMI_INVALID;
-		} else if (!to_input || strToInt(from) == strToInt(to)) {
+		} else if (!to_input || convert<int>(from) == convert<int>(to)) {
 			// Valid input. Either there's only 'from' input, or 'from' == 'to'.
 			// Deactivate OK/Apply if odd/even selection implies no pages.
 			bool const odd_pages = static_cast<bool>(fl_get_button(dialog_->check_odd_pages));
 			bool const even_pages = static_cast<bool>(fl_get_button(dialog_->check_even_pages));
 			bool const odd_only = odd_pages && !even_pages;
 			bool const even_only = even_pages && !odd_pages;
-			bool const from_is_odd = static_cast<bool>(strToInt(from) % 2);
+			bool const from_is_odd = static_cast<bool>(convert<int>(from) % 2);
 			if ( (from_is_odd && even_only) || (!from_is_odd && odd_only) ) {
 				activate = ButtonPolicy::SMI_INVALID;
 			}

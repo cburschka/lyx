@@ -25,7 +25,6 @@
 #include <sstream>
 
 using lyx::support::float_equal;
-using lyx::support::strToDbl;
 
 using std::string;
 
@@ -54,20 +53,20 @@ bool ResizeData::no_resize() const
 
 bool ResizeData::usingScale() const
 {
-	return (!scale.empty() && !float_equal(strToDbl(scale), 0.0, 0.05));
+	return (!scale.empty() && !float_equal(convert<double>(scale), 0.0, 0.05));
 }
 
 
 bool RotationData::no_rotation() const
 {
-	return (angle.empty() || std::abs(strToDbl(angle)) < 0.1);
+	return (angle.empty() || std::abs(convert<double>(angle)) < 0.1);
 }
 
 
 string const RotationData::adjAngle() const
 {
 	// Ensure that angle lies in the range -360 < angle < 360
-	double rotAngle = strToDbl(angle);
+	double rotAngle = convert<double>(angle);
 	if (std::abs(rotAngle) > 360.0) {
 		rotAngle -= 360.0 * floor(rotAngle / 360.0);
 		return convert<string>(rotAngle);
@@ -103,7 +102,7 @@ string const ResizeLatexCommand::front_impl() const
 
 	std::ostringstream os;
 	if (data.usingScale()) {
-		double const scl = strToDbl(data.scale) / 100.0;
+		double const scl = convert<double>(data.scale) / 100.0;
 		os << "\\scalebox{" << scl << "}[" << scl << "]{";
 	} else {
 		string width  = "!";
@@ -235,7 +234,7 @@ string const ResizeLatexOption::option_impl() const
 
 	std::ostringstream os;
 	if (data.usingScale()) {
-		double scl = strToDbl(data.scale);
+		double const scl = convert<double>(data.scale);
 		if (!float_equal(scl, 100.0, 0.05))
 			os << "scale=" << scl / 100.0 << ',';
 		return os.str();

@@ -74,6 +74,7 @@ TODO
 #include "frontends/Alert.h"
 #include "frontends/LyXView.h"
 
+#include "support/convert.h"
 #include "support/filetools.h"
 #include "support/lyxalgo.h" // lyx::count
 #include "support/lyxlib.h" // lyx::sum
@@ -99,7 +100,6 @@ using lyx::support::GetExtension;
 using lyx::support::IsFileReadable;
 using lyx::support::OnlyFilename;
 using lyx::support::rtrim;
-using lyx::support::strToDbl;
 using lyx::support::subst;
 using lyx::support::Systemcall;
 using lyx::support::unzipFile;
@@ -299,7 +299,7 @@ string const InsetGraphics::createLatexOptions() const
 	    options << " draft,\n";
 	if (params().clip)
 	    options << " clip,\n";
-	double const scl = strToDbl(params().scale);
+	double const scl = convert<double>(params().scale);
 	if (!params().scale.empty() && !float_equal(scl, 0.0, 0.05)) {
 		if (!float_equal(scl, 100.0, 0.05))
 			options << " scale=" << scl / 100.0
@@ -316,7 +316,7 @@ string const InsetGraphics::createLatexOptions() const
 	// Make sure rotation angle is not very close to zero;
 	// a float can be effectively zero but not exactly zero.
 	if (!params().rotateAngle.empty()
-		&& !float_equal(strToDbl(params().rotateAngle), 0.0, 0.001)) {
+		&& !float_equal(convert<double>(params().rotateAngle), 0.0, 0.001)) {
 	    options << "  angle=" << params().rotateAngle << ",\n";
 	    if (!params().rotateOrigin.empty()) {
 		options << "  origin=" << params().rotateOrigin[0];
@@ -405,7 +405,7 @@ string const InsetGraphics::createDocBookAttributes() const
 	// Right now it only works with my version of db2latex :-)
 
 	ostringstream options;
-	double const scl = strToDbl(params().scale);
+	double const scl = convert<double>(params().scale);
 	if (!params().scale.empty() && !float_equal(scl, 0.0, 0.05)) {
 		if (!float_equal(scl, 100.0, 0.05))
 			options << " scale=\""

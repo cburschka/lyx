@@ -29,7 +29,7 @@ public:
 		Default
 	};
 	///
-	void set(Spacing::Space, float = 1.0) {}
+	void set(Spacing::Space, double = 1.0) {}
 	///
 	void set(Spacing::Space, std::string const &) {}
 };

@@ -19,6 +19,7 @@
 
 #include "frontends/lyx_gui.h"
 
+#include "support/convert.h"
 #include "support/filetools.h"
 #include "support/lstrings.h"
 #include "support/systemcall.h"
@@ -38,7 +39,6 @@ using lyx::support::LibFileSearch;
 using lyx::support::OnlyPath;
 using lyx::support::QuoteName;
 using lyx::support::Systemcall;
-using lyx::support::strToDbl;
 
 using std::endl;
 using std::make_pair;
@@ -316,7 +316,7 @@ qfont_loader::font_info::font_info(LyXFont const & f)
 		}
 	}
 
-	font.setPointSizeFloat(strToDbl(lyxrc.font_sizes[f.size()])
+	font.setPointSizeFloat(convert<double>(lyxrc.font_sizes[f.size()])
 			       * lyxrc.zoom / 100.0);
 
 	switch (f.series()) {

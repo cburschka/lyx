@@ -40,7 +40,7 @@ protected:
 	///  An updatable inset could handle lyx editing commands
 	virtual void doDispatch(LCursor & cur, FuncRequest & cmd);
 	/// scrolls to absolute position in bufferview-workwidth * sx units
-	void scroll(BufferView &, float sx) const;
+	void scroll(BufferView &, double sx) const;
 	/// scrolls offset pixels
 	void scroll(BufferView &, int offset) const;
 };

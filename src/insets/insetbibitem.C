@@ -28,7 +28,6 @@
 #include "support/convert.h"
 
 using lyx::support::prefixIs;
-using lyx::support::strToInt;
 
 using std::max;
 using std::string;
@@ -103,7 +102,7 @@ void InsetBibitem::read(Buffer const &, LyXLex & lex)
 		lex.printError("InsetCommand: Parse error: `$$Token'");
 
 	if (prefixIs(getContents(), key_prefix)) {
-		int key = strToInt(getContents().substr(key_prefix.length()));
+		int const key = convert<int>(getContents().substr(key_prefix.length()));
 		key_counter = max(key_counter, key);
 	}
 }

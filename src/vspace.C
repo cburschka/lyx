@@ -17,6 +17,7 @@
 #include "lengthcommon.h"
 #include "lyxtext.h"
 
+#include "support/convert.h"
 #include "support/lstrings.h"
 
 using lyx::support::compare;
@@ -24,7 +25,6 @@ using lyx::support::isStrDbl;
 using lyx::support::ltrim;
 using lyx::support::prefixIs;
 using lyx::support::rtrim;
-using lyx::support::strToDbl;
 
 using std::string;
 
@@ -117,7 +117,7 @@ char nextToken(string & data)
 		lyx_advance(data, i);
 
 		if (isStrDbl(buffer)) {
-			number[number_index] = strToDbl(buffer);
+			number[number_index] = convert<double>(buffer);
 			++number_index;
 			return 'n';
 		}
@@ -388,7 +388,7 @@ VSpace::VSpace(string const & data)
 		// without units in added_space_top/bottom.
 		// Let unit default to centimeters here.
 		kind_ = LENGTH;
-		len_  = LyXGlueLength(LyXLength(strToDbl(input), LyXLength::CM));
+		len_  = LyXGlueLength(LyXLength(convert<double>(input), LyXLength::CM));
 	}
 }
 

@@ -28,6 +28,7 @@
 #include "LColor.h"
 #include "lyxfont.h"
 
+#include "support/convert.h"
 #include "support/lstrings.h"
 #include "support/package.h"
 #include "support/filetools.h"
@@ -52,7 +53,6 @@ using support::AddName;
 using support::ChangeExtension;
 using support::package;
 using support::rtrim;
-using support::strToDbl;
 using support::trim;
 
 namespace frontend {
@@ -2825,38 +2825,37 @@ bool FormPreferences::ScreenFonts::input()
 
 	// Make sure that all fonts all have positive entries
 	// Also note that an empty entry is returned as 0.0 by strToDbl
-	if (0.0 >= strToDbl(getString(dialog_->input_tiny))
-	    || 0.0 >= strToDbl(getString(dialog_->input_script))
-	    || 0.0 >= strToDbl(getString(dialog_->input_footnote))
-	    || 0.0 >= strToDbl(getString(dialog_->input_small))
-	    || 0.0 >= strToDbl(getString(dialog_->input_normal))
-	    || 0.0 >= strToDbl(getString(dialog_->input_large))
-	    || 0.0 >= strToDbl(getString(dialog_->input_larger))
-	    || 0.0 >= strToDbl(getString(dialog_->input_largest))
-	    || 0.0 >= strToDbl(getString(dialog_->input_huge))
-	    || 0.0 >= strToDbl(getString(dialog_->input_huger))) {
+	if (0.0 >= convert<double>(fl_get_input(dialog_->input_tiny))
+	    || 0.0 >= convert<double>(fl_get_input(dialog_->input_script))
+	    || 0.0 >= convert<double>(fl_get_input(dialog_->input_footnote))
+	    || 0.0 >= convert<double>(fl_get_input(dialog_->input_small))
+	    || 0.0 >= convert<double>(fl_get_input(dialog_->input_normal))
+	    || 0.0 >= convert<double>(fl_get_input(dialog_->input_large))
+	    || 0.0 >= convert<double>(fl_get_input(dialog_->input_larger))
+	    || 0.0 >= convert<double>(fl_get_input(dialog_->input_largest))
+	    || 0.0 >= convert<double>(fl_get_input(dialog_->input_huge))
+	    || 0.0 >= convert<double>(fl_get_input(dialog_->input_huger))) {
 		activate = false;
 		str = _("Fonts must be positive!");
-
-	} else if (strToDbl(getString(dialog_->input_tiny)) >
+	} else if (convert<double>(fl_get_input(dialog_->input_tiny)) >
 		   // Fontsizes -- tiny < script < footnote etc.
-		   strToDbl(getString(dialog_->input_script)) ||
-		   strToDbl(getString(dialog_->input_script)) >
-		   strToDbl(getString(dialog_->input_footnote)) ||
-		   strToDbl(getString(dialog_->input_footnote)) >
-		   strToDbl(getString(dialog_->input_small)) ||
-		   strToDbl(getString(dialog_->input_small)) >
-		   strToDbl(getString(dialog_->input_normal)) ||
-		   strToDbl(getString(dialog_->input_normal)) >
-		   strToDbl(getString(dialog_->input_large)) ||
-		   strToDbl(getString(dialog_->input_large)) >
-		   strToDbl(getString(dialog_->input_larger)) ||
-		   strToDbl(getString(dialog_->input_larger)) >
-		   strToDbl(getString(dialog_->input_largest)) ||
-		   strToDbl(getString(dialog_->input_largest)) >
-		   strToDbl(getString(dialog_->input_huge)) ||
-		   strToDbl(getString(dialog_->input_huge)) >
-		   strToDbl(getString(dialog_->input_huger))) {
+		   convert<double>(fl_get_input(dialog_->input_script)) ||
+		   convert<double>(fl_get_input(dialog_->input_script)) >
+		   convert<double>(fl_get_input(dialog_->input_footnote)) ||
+		   convert<double>(fl_get_input(dialog_->input_footnote)) >
+		   convert<double>(fl_get_input(dialog_->input_small)) ||
+		   convert<double>(fl_get_input(dialog_->input_small)) >
+		   convert<double>(fl_get_input(dialog_->input_normal)) ||
+		   convert<double>(fl_get_input(dialog_->input_normal)) >
+		   convert<double>(fl_get_input(dialog_->input_large)) ||
+		   convert<double>(fl_get_input(dialog_->input_large)) >
+		   convert<double>(fl_get_input(dialog_->input_larger)) ||
+		   convert<double>(fl_get_input(dialog_->input_larger)) >
+		   convert<double>(fl_get_input(dialog_->input_largest)) ||
+		   convert<double>(fl_get_input(dialog_->input_largest)) >
+		   convert<double>(fl_get_input(dialog_->input_huge)) ||
+		   convert<double>(fl_get_input(dialog_->input_huge)) >
+		   convert<double>(fl_get_input(dialog_->input_huger))) {
 		activate = false;
 
 		str = _("Fonts must be input in the order Tiny > Smallest > Smaller > Small > Normal > Large > Larger > Largest > Huge > Huger.");

@@ -110,17 +110,17 @@ public:
 	/// Text that dictates the width of the indentation of indented pars
 	std::string parindent;
 	///
-	float parskip;
+	double parskip;
 	///
-	float itemsep;
+	double itemsep;
 	///
-	float topsep;
+	double topsep;
 	///
-	float bottomsep;
+	double bottomsep;
 	///
-	float labelbottomsep;
+	double labelbottomsep;
 	///
-	float parsep;
+	double parsep;
 	///
 	Spacing spacing;
 	///

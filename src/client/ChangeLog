@@ -1,3 +1,7 @@
+2005-01-27  Lars Gullik Bjonnes  <larsbj@gullik.net>
+
+	* debug.C: use convert<> instead of atoi,strToXXX and friends
+
 2005-01-20  Asger Ottar Alstrup  <aalstrup@laerdal.dk>
 
 	* pch.h: use the HAVE_UNISTD_H preprocessor guard.

@@ -70,8 +70,6 @@ using lyx::cap::pasteSelection;
 using lyx::cap::replaceSelection;
 
 using lyx::support::isStrUnsignedInt;
-using lyx::support::strToUnsignedInt;
-using lyx::support::atoi;
 using lyx::support::token;
 
 using std::endl;
@@ -886,7 +884,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 #warning FIXME Check if the arg is in the domain of available selections.
 #endif
 		if (isStrUnsignedInt(cmd.argument))
-			pasteSelection(cur, strToUnsignedInt(cmd.argument));
+			pasteSelection(cur, convert<unsigned int>(cmd.argument));
 		else
 			pasteSelection(cur, 0);
 		cur.clearSelection(); // bug 393
@@ -1331,7 +1329,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		else {
 			string s = cmd.argument;
 			string const s1 = token(s, ' ', 1);
-			int const nargs = s1.empty() ? 0 : atoi(s1);
+			int const nargs = s1.empty() ? 0 : convert<int>(s1);
 			string const s2 = token(s, ' ', 2);
 			string const type = s2.empty() ? "newcommand" : s2;
 			cur.insert(new MathMacroTemplate(token(s, ' ', 0), nargs, s2));

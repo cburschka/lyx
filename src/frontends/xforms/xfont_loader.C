@@ -19,8 +19,8 @@
 
 #include "frontends/lyx_gui.h"
 
+#include "support/convert.h"
 #include "support/filetools.h"
-#include "support/lstrings.h"
 #include "support/systemcall.h"
 
 #include "lyx_forms.h"
@@ -33,7 +33,6 @@ using std::string;
 namespace lyx {
 
 using support::LibFileSearch;
-using support::strToDbl;
 using support::OnlyPath;
 using support::Systemcall;
 
@@ -333,7 +332,7 @@ XFontStruct * xfont_loader::doLoad(LyXFont::FONT_FAMILY family,
 
 	getFontinfo(family, series, shape);
 	// FIXME! CHECK! Should we use 72.0 or 72.27? (Lgb)
-	int fsize = int((strToDbl(lyxrc.font_sizes[size]) * lyxrc.dpi *
+	int fsize = int((convert<double>(lyxrc.font_sizes[size]) * lyxrc.dpi *
 			  (lyxrc.zoom/100.0)) / 72.27 + 0.5);
 
 	string font = fontinfo[family][series][shape]->getFontname(fsize);

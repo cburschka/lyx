@@ -37,7 +37,6 @@
 using lyx::support::ltrim;
 using lyx::support::prefixIs;
 using lyx::support::rtrim;
-using lyx::support::strToInt;
 using lyx::support::suffixIs;
 
 using boost::shared_ptr;
@@ -249,7 +248,7 @@ bool getTokenValue(string const & str, char const * token, int & num)
 	num = 0;
 	if (!getTokenValue(str, token, tmp))
 		return false;
-	num = strToInt(tmp);
+	num = convert<int>(tmp);
 	return true;
 }
 

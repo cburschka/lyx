@@ -35,7 +35,7 @@ public:
 	///
 	Spacing() : space(Default), value("1.0") {}
 	///
-	Spacing(Spacing::Space sp, float val = 1.0) {
+	Spacing(Spacing::Space sp, double val = 1.0) {
 		set(sp, val);
 	}
 	Spacing(Spacing::Space sp, std::string const & val) {
@@ -52,7 +52,7 @@ public:
 	///
 	Spacing::Space getSpace() const { return space; }
 	///
-	void set(Spacing::Space sp, float val = 1.0);
+	void set(Spacing::Space sp, double val = 1.0);
 	///
 	void set(Spacing::Space sp, std::string const & val);
 	///

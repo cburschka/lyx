@@ -1,3 +1,10 @@
+2005-01-27  Lars Gullik Bjonnes  <larsbj@gullik.net>
+
+	* PreviewLoader.C (Impl): use convert<> instead of atoi,strToXXX
+	and friends
+
+	* GraphicsParams.h (class Params): change angle from float to double
+
 2005-01-06  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
 	* PreviewLoader.C (unique_filename): tostr -> convert

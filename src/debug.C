@@ -14,6 +14,7 @@
 #include "debug.h"
 #include "gettext.h"
 
+#include "support/convert.h"
 #include "support/lstrings.h"
 
 #include <iostream>
@@ -22,7 +23,6 @@
 using lyx::support::ascii_lowercase;
 using lyx::support::bformat;
 using lyx::support::isStrInt;
-using lyx::support::strToInt;
 
 using std::setw;
 using std::string;
@@ -78,13 +78,13 @@ lyx_debug_trait::type lyx_debug_trait::value(string const & val)
 	type l = Debug::NONE;
 	string v(val);
 	while (!v.empty()) {
-		string::size_type st = v.find(',');
-		string tmp(ascii_lowercase(v.substr(0, st)));
+		string::size_type const st = v.find(',');
+		string const tmp(ascii_lowercase(v.substr(0, st)));
 		if (tmp.empty())
 			break;
 		// Is it a number?
 		if (isStrInt(tmp))
-			l |= static_cast<type>(strToInt(tmp));
+			l |= static_cast<type>(convert<int>(tmp));
 		else
 		// Search for an explicit name
 		for (int i = 0 ; i < numErrorTags ; ++i)

@@ -113,8 +113,6 @@ using lyx::support::Path;
 using lyx::support::QuoteName;
 using lyx::support::rtrim;
 using lyx::support::split;
-using lyx::support::strToInt;
-using lyx::support::strToUnsignedInt;
 using lyx::support::subst;
 using lyx::support::Systemcall;
 using lyx::support::token;

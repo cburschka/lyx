@@ -23,13 +23,9 @@
 #include "funcrequest.h"
 #include "lyxtext.h"
 
-#include "support/lstrings.h"
+#include "support/convert.h"
 
 #include <boost/assert.hpp>
-
-using lyx::support::strToDbl;
-using lyx::support::strToInt;
-
 
 
 // An updatable inset is highly editable by definition
@@ -39,7 +35,7 @@ InsetBase::EDITABLE UpdatableInset::editable() const
 }
 
 
-void UpdatableInset::scroll(BufferView & bv, float s) const
+void UpdatableInset::scroll(BufferView & bv, double s) const
 {
 	if (!s) {
 		scx = 0;
@@ -52,7 +48,7 @@ void UpdatableInset::scroll(BufferView & bv, float s) const
 
 	if (tmp_xo_ > 0 && tmp_xo_ + width() < workW)
 		return;
-	if (s > 0 && xo_ > 0)
+	if (s > 0.0 && xo_ > 0)
 		return;
 
 	scx = int(s * workW / 2);
@@ -100,9 +96,9 @@ void UpdatableInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 	case LFUN_SCROLL_INSET:
 		if (cmd.argument.empty()) {
 			if (cmd.argument.find('.') != cmd.argument.npos)
-				scroll(cur.bv(), static_cast<float>(strToDbl(cmd.argument)));
+				scroll(cur.bv(), static_cast<float>(convert<double>(cmd.argument)));
 			else
-				scroll(cur.bv(), strToInt(cmd.argument));
+				scroll(cur.bv(), convert<int>(cmd.argument));
 			cur.bv().update();
 		}
 		break;

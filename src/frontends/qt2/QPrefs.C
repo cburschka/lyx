@@ -24,7 +24,7 @@
 #include "ui/QPrefScreenFontsModule.h"
 #include "ui/QPrefColorsModule.h"
 #if defined(__CYGWIN__) || defined(__CYGWIN32__)
-#include "ui/QPrefCygwinPathModule.h"	
+#include "ui/QPrefCygwinPathModule.h"
 #endif
 #include "ui/QPrefDisplayModule.h"
 #include "ui/QPrefPathsModule.h"
@@ -61,7 +61,6 @@
 #include <sstream>
 
 using lyx::support::compare_no_case;
-using lyx::support::strToDbl;
 
 using std::distance;
 using std::endl;

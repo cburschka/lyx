@@ -73,7 +73,7 @@ public:
 	///
 	int scroll(bool recursive = true) const;
 	///
-	void scroll(BufferView & bv, float sx) const;
+	void scroll(BufferView & bv, double sx) const;
 	///
 	void scroll(BufferView & bv, int offset) const;
 	///

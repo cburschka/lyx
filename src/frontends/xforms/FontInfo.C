@@ -32,7 +32,6 @@ using std::string;
 
 namespace lyx {
 
-using support::atoi;
 using support::token;
 
 namespace frontend {
@@ -143,14 +142,14 @@ void FontInfo::query()
 			string name(list[i]);
 			lyxerr[Debug::FONT] << "match #" << i << ' '
 					    << name << endl;
-			sizes[i] = atoi(token(name, '-', 7));
+			sizes[i] = convert<int>(token(name, '-', 7));
 			strings[i] = name;
 			if (sizes[i] == 0) {
 				if (scaleindex == -1) {
 					scaleindex = i;
 				}
 				scalable = true;
-			} else if (atoi(token(name, '-', 12)) == 0)
+			} else if (convert<int>(token(name, '-', 12)) == 0)
 				// Ignore bogus matches of scalable fonts.
 				sizes[i] = 0;
 		};

@@ -1,0 +1,7 @@
+#!/bin/bash
+
+regfile=`cat regfiles/lstrings`
+output=`./lstrings`
+
+test "$regfile" = "$output"
+exit $?

@@ -37,7 +37,6 @@ using std::string;
 using std::vector;
 
 #ifndef CXX_GLOBAL_CSTD
-using std::atof;
 using std::isdigit;
 using std::tolower;
 using std::toupper;
@@ -158,32 +157,6 @@ bool isStrUnsignedInt(string const & str)
 }
 
 
-int strToInt(string const & str)
-{
-	if (isStrInt(str)) {
-		// Remove leading and trailing white space chars.
-		string const tmpstr = trim(str);
-		// Do the conversion proper.
-		return atoi(tmpstr);
-	} else {
-		return 0;
-	}
-}
-
-
-unsigned int strToUnsignedInt(string const & str)
-{
-	if (isStrUnsignedInt(str)) {
-		// Remove leading and trailing white space chars.
-		string const tmpstr = trim(str);
-		// Do the conversion proper.
-		return atoi(tmpstr);
-	} else {
-		return 0;
-	}
-}
-
-
 bool isStrDbl(string const & str)
 {
 	if (str.empty()) return false;
@@ -211,19 +184,6 @@ bool isStrDbl(string const & str)
 		}
 	}
 	return true;
-}
-
-
-double strToDbl(string const & str)
-{
-	if (isStrDbl(str)) {
-		// Remove leading and trailing white space chars.
-		string const tmpstr = trim(str);
-		// Do the conversion proper.
-		return ::atof(tmpstr.c_str());
-	} else {
-		return 0.0;
-	}
 }
 
 

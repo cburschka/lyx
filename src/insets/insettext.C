@@ -57,7 +57,6 @@ using lyx::pos_type;
 using lyx::graphics::PreviewLoader;
 
 using lyx::support::isStrUnsignedInt;
-using lyx::support::strToUnsignedInt;
 
 using boost::bind;
 using boost::ref;
