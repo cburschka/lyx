@@ -12,6 +12,7 @@
 
 #include "format.h"
 #include "buffer.h"
+#include "bufferparams.h"
 #include "lyxrc.h"
 #include "debug.h"
 #include "gettext.h"

@@ -12,11 +12,8 @@
 #ifndef BUFFER_H
 #define BUFFER_H
 
-#include "bufferparams.h"
 #include "InsetList.h"
-#include "lyxvc.h"
 #include "ParagraphList_fwd.h"
-#include "texrow.h"
 
 #include "support/limited_stack.h"
 #include "support/types.h"
@@ -33,8 +30,12 @@
 
 
 class AuthorList;
+class BufferParams;
 class ErrorItem;
+class LyXFont;
+class LyXLex;
 class LyXRC;
+class LyXVC;
 class LaTeXFeatures;
 class LatexRunParams;
 class Language;
@@ -42,6 +43,7 @@ class Messages;
 class ParIterator;
 class ParConstIterator;
 class TeXErrors;
+class TexRow;
 class Undo;
 
 
@@ -301,51 +303,6 @@ public:
 	/// the author list for the document
 	AuthorList & authors();
 
-private:
-	/** Inserts a file into a document
-	    \param par if != 0 insert the file.
-	    \return \c false if method fails.
-	*/
-	bool readFile(LyXLex &, string const & filename,
-		      ParagraphList::iterator pit);
-
-	bool do_writeFile(std::ostream & ofs) const;
-
-	limited_stack<Undo> undostack_;
-	limited_stack<Undo> redostack_;
-	BufferParams params_;
-	ParagraphList paragraphs_;
-	LyXVC lyxvc_;
-	string temppath_;
-	bool nicefile_;
-	TexRow texrow_;
-
-	typedef std::map<string, bool> DepClean;
-
-	/// need to regenerate .tex ?
-	DepClean dep_clean_;
-
-	/// is save needed
-	mutable bool lyx_clean;
-
-	/// is autosave needed
-	mutable bool bak_clean;
-
-	/// is this a unnamed file (New...)
-	bool unnamed;
-
-	/// buffer is r/o
-	bool read_only;
-
-	/// name of the file the buffer is associated with.
-	string filename_;
-
-	/// The path to the document file.
-	string filepath_;
-
-	///
-	boost::scoped_ptr<Messages> messages_;
-public:
 	///
 	class inset_iterator {
 	public:
@@ -414,6 +371,21 @@ public:
 
 	///
 	InsetOld * getInsetFromID(int id_arg) const;
+
+private:
+	/** Inserts a file into a document
+	    \param par if != 0 insert the file.
+	    \return \c false if method fails.
+	*/
+	bool readFile(LyXLex &, string const & filename,
+		      ParagraphList::iterator pit);
+
+	bool do_writeFile(std::ostream & ofs) const;
+
+	/// Use the Pimpl idiom to hide the internals.
+	class Impl;
+	/// The pointer never changes although *pimpl_'s contents may.
+	boost::scoped_ptr<Impl> const pimpl_;
 };
 
 bool operator==(Buffer::inset_iterator const & iter1,

@@ -20,6 +20,7 @@
 #include "tabular.h"
 
 #include "buffer.h"
+#include "bufferparams.h"
 #include "debug.h"
 #include "LaTeXFeatures.h"
 #include "lyxlex.h"

@@ -22,6 +22,8 @@
 
 #include "frontends/lyx_gui.h" // hexname
 
+#include "insets/inset.h"
+
 #include "support/filetools.h"
 #include "support/forkedcall.h"
 #include "support/forkedcontr.h"

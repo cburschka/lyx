@@ -12,8 +12,10 @@
 #include <config.h>
 
 #include "InsetList.h"
-#include "BufferView.h"
+
 #include "buffer.h"
+#include "bufferparams.h"
+#include "BufferView.h"
 #include "debug.h"
 
 #include "insets/insetbranch.h"

@@ -15,6 +15,7 @@
 #include "CutAndPaste.h"
 
 #include "buffer.h"
+#include "bufferparams.h"
 #include "errorlist.h"
 #include "gettext.h"
 #include "iterators.h"

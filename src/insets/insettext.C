@@ -14,6 +14,7 @@
 #include "insetnewline.h"
 
 #include "buffer.h"
+#include "bufferparams.h"
 #include "BufferView.h"
 #include "CutAndPaste.h"
 #include "debug.h"
@@ -30,6 +31,7 @@
 #include "ParagraphParameters.h"
 #include "rowpainter.h"
 #include "sgml.h"
+#include "texrow.h"
 #include "undo_funcs.h"
 #include "WordLangTuple.h"
 

@@ -14,6 +14,7 @@
 #include "rowpainter.h"
 
 #include "buffer.h"
+#include "bufferparams.h"
 #include "BufferView.h"
 #include "encoding.h"
 #include "gettext.h"

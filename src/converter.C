@@ -11,6 +11,7 @@
 #include <config.h>
 
 #include "converter.h"
+#include "bufferparams.h"
 #include "format.h"
 #include "buffer.h"
 #include "buffer_funcs.h"

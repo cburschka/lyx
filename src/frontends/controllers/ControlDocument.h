@@ -13,11 +13,14 @@
 #define CONTROLDOCUMENT_H
 
 #include "ControlDialog_impl.h"
-#include "bufferparams.h"
+
+#include "support/types.h"
 
 #include <boost/scoped_ptr.hpp>
 
+class BufferParams;
 class Language;
+class LyXTextClass;
 
 
 /** A controller for Document dialogs.

@@ -11,9 +11,10 @@
 #include <config.h>
 
 #include "vspace.h"
-#include "lengthcommon.h"
 #include "buffer.h"
+#include "bufferparams.h"
 #include "BufferView.h"
+#include "lengthcommon.h"
 #include "lyxtext.h"
 
 #include "support/lstrings.h"

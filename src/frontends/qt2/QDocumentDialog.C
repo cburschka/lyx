@@ -15,14 +15,13 @@
 
 #include "ControlDocument.h"
 #include "QDocument.h"
-
-
 #include "QDocumentDialog.h"
 
 #include "panelstack.h"
 #include "floatplacement.h"
 
 #include "support/lstrings.h"
+#include "bufferparams.h"
 #include "lyxrc.h"
 
 

@@ -16,6 +16,7 @@
 #include "ButtonController.h"
 
 #include "buffer.h"
+#include "bufferparams.h"
 #include "gettext.h"
 #include "helper_funcs.h"
 #include "PrinterParams.h"

@@ -15,6 +15,7 @@
 
 #include "buffer.h"
 #include "buffer_funcs.h"
+#include "bufferparams.h"
 #include "BufferView.h"
 #include "CutAndPaste.h"
 #include "errorlist.h"

@@ -19,6 +19,7 @@
 #include "lyxtext.h"
 
 #include "buffer.h"
+#include "bufferparams.h"
 #include "BufferView.h"
 #include "debug.h"
 #include "encoding.h"

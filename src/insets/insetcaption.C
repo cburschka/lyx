@@ -15,6 +15,7 @@
 #include "insetwrap.h"
 
 #include "buffer.h"
+#include "bufferparams.h"
 #include "BufferView.h"
 #include "Floating.h"
 #include "FloatList.h"

@@ -18,7 +18,7 @@
 #include "support/tostr.h"
 #include "support/lyxlib.h"
 #include "insets/insetgraphicsParams.h"
-//#include "bufferparams.h"
+
 #include "lyxrc.h"
 #include "lengthcombo.h"
 #include "qt_helpers.h"

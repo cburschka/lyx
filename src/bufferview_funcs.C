@@ -16,6 +16,7 @@
 #include "bufferview_funcs.h"
 
 #include "buffer.h"
+#include "bufferparams.h"
 #include "BufferView.h"
 #include "gettext.h"
 #include "language.h"

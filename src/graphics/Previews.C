@@ -16,6 +16,8 @@
 #include "buffer.h"
 #include "lyxrc.h"
 
+#include "insets/inset.h"
+
 #include "support/LAssert.h"
 
 namespace support = lyx::support;

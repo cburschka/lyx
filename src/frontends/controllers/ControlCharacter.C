@@ -14,6 +14,7 @@
 #include "ButtonController.h"
 
 #include "buffer.h"
+#include "bufferparams.h"
 #include "bufferview_funcs.h"
 #include "funcrequest.h"
 #include "language.h"

@@ -21,6 +21,7 @@
 #include "paragraph_pimpl.h"
 
 #include "buffer.h"
+#include "bufferparams.h"
 #include "encoding.h"
 #include "debug.h"
 #include "gettext.h"
@@ -28,6 +29,7 @@
 #include "latexrunparams.h"
 #include "lyxrc.h"
 #include "lyxrow.h"
+#include "texrow.h"
 
 #include "insets/insetbibitem.h"
 #include "insets/insetoptarg.h"

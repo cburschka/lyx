@@ -23,6 +23,7 @@
 #include "gettext.h"
 #include "lastfiles.h"
 #include "lyx_main.h"
+#include "lyxlayout.h"
 #include "lyxrc.h"
 #include "lyxtext.h"
 #include "paragraph.h"

@@ -12,12 +12,14 @@
 
 #include "ControlSpellchecker.h"
 #include "ViewBase.h"
+
 #include "buffer.h"
+#include "bufferparams.h"
 #include "BufferView.h"
+#include "debug.h"
 #include "gettext.h"
 #include "language.h"
 #include "lyxrc.h"
-#include "debug.h"
 
 #include "ispell.h"
 #ifdef USE_PSPELL

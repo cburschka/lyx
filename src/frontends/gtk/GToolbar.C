@@ -17,6 +17,7 @@
 #include "lyxfunc.h"
 #include "FuncStatus.h"
 #include "buffer.h"
+#include "bufferparams.h"
 #include "funcrequest.h"
 #include "gettext.h"
 #include "Tooltips.h"

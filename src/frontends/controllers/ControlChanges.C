@@ -12,6 +12,7 @@
 
 #include "ControlChanges.h"
 #include "buffer.h"
+#include "bufferparams.h"
 #include "BufferView.h"
 #include "changes.h"
 #include "funcrequest.h"

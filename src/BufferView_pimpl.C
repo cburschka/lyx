@@ -22,6 +22,7 @@
 #include "buffer.h"
 #include "buffer_funcs.h"
 #include "bufferlist.h"
+#include "bufferparams.h"
 #include "debug.h"
 #include "factory.h"
 #include "FloatList.h"

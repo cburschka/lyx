@@ -14,6 +14,7 @@
 #include "insetcite.h"
 
 #include "buffer.h"
+#include "bufferparams.h"
 #include "BufferView.h"
 #include "funcrequest.h"
 #include "LaTeXFeatures.h"

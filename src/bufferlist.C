@@ -13,6 +13,7 @@
 #include "bufferlist.h"
 
 #include "buffer.h"
+#include "bufferparams.h"
 #include "debug.h"
 #include "gettext.h"
 #include "lastfiles.h"

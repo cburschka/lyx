@@ -14,6 +14,7 @@
 #include "ControlVCLog.h"
 #include "buffer.h"
 #include "gettext.h"
+#include "lyxvc.h"
 #include "support/lyxlib.h"
 #include <fstream>
 

@@ -31,6 +31,7 @@
 #include "controllers/frnt_lang.h"
 #include "controllers/helper_funcs.h"
 
+#include "bufferparams.h"
 #include "language.h"
 #include "lyxrc.h"
 #include "lyxtextclasslist.h"

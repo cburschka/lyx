@@ -13,6 +13,7 @@
 #include "ControlCitation.h"
 
 #include "buffer.h"
+#include "bufferparams.h"
 
 using std::vector;
 using std::pair;

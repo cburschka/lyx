@@ -25,6 +25,7 @@
 #include "converter.h"
 #include "format.h"
 #include "frnt_lang.h"
+#include "lyxfont.h"
 
 #include "support/LAssert.h"
 #include "support/lstrings.h"

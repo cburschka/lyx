@@ -11,11 +11,13 @@
 #include <config.h>
 
 #include "factory.h"
-#include "funcrequest.h"
+
 #include "buffer.h"
-#include "FloatList.h"
-#include "debug.h"
 #include "BufferView.h"
+#include "bufferparams.h"
+#include "debug.h"
+#include "FloatList.h"
+#include "funcrequest.h"
 #include "lyxlex.h"
 
 #include "insets/insetbibitem.h"

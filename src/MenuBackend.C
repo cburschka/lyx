@@ -16,6 +16,7 @@
 #include <config.h>
 
 #include "MenuBackend.h"
+#include "bufferparams.h"
 #include "lyxlex.h"
 #include "LyXAction.h"
 #include "debug.h"

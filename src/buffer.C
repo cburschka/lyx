@@ -14,6 +14,7 @@
 
 #include "buffer_funcs.h"
 #include "bufferlist.h"
+#include "bufferparams.h"
 #include "Chktex.h"
 #include "debug.h"
 #include "errorlist.h"
@@ -27,10 +28,12 @@
 #include "LyXAction.h"
 #include "lyxlex.h"
 #include "lyxrc.h"
+#include "lyxvc.h"
 #include "messages.h"
 #include "paragraph_funcs.h"
 #include "ParagraphParameters.h"
 #include "sgml.h"
+#include "texrow.h"
 #include "undo.h"
 #include "version.h"
 
@@ -105,22 +108,64 @@ bool openFileWrite(ofstream & ofs, string const & fname)
 	return true;
 }
 
-
 } // namespace anon
 
+
+typedef std::map<string, bool> DepClean;
+
+struct Buffer::Impl 
+{
+	Impl(Buffer & parent, string const & file, bool readonly);
+
+	limited_stack<Undo> undostack;
+	limited_stack<Undo> redostack;
+	BufferParams params;
+	ParagraphList paragraphs;
+	LyXVC lyxvc;
+	string temppath;
+	bool nicefile;
+	TexRow texrow;
+
+	/// need to regenerate .tex ?
+	DepClean dep_clean;
+
+	/// is save needed
+	mutable bool lyx_clean;
+
+	/// is autosave needed
+	mutable bool bak_clean;
+
+	/// is this a unnamed file (New...)
+	bool unnamed;
+
+	/// buffer is r/o
+	bool read_only;
+
+	/// name of the file the buffer is associated with.
+	string filename;
+
+	/// The path to the document file.
+	string filepath;
+
+	boost::scoped_ptr<Messages> messages;
+};
+
+
+Buffer::Impl::Impl(Buffer & parent, string const & file, bool readonly_)
+	: nicefile(true),
+	  lyx_clean(true), bak_clean(true), unnamed(false), read_only(readonly_),
+	  filename(file), filepath(OnlyPath(file))
+{
+	lyxvc.buffer(&parent);
+	if (readonly_ || lyxrc.use_tempdir)
+		temppath = CreateBufferTmpDir();
+}
+
+
 Buffer::Buffer(string const & file, bool ronly)
-	: nicefile_(true), lyx_clean(true), bak_clean(true),
-	  unnamed(false), read_only(ronly),
-	  filename_(file)
+	: pimpl_(new Impl(*this, file, ronly))
 {
 	lyxerr[Debug::INFO] << "Buffer::Buffer()" << endl;
-	filepath_ = OnlyPath(file);
-	lyxvc().buffer(this);
-	if (read_only || lyxrc.use_tempdir) {
-		temppath_ = CreateBufferTmpDir();
-	} else {
-		temppath_.erase();
-	}
 
 	// set initial author
 	authors().record(Author(lyxrc.user_name, lyxrc.user_email));
@@ -149,91 +194,91 @@ Buffer::~Buffer()
 
 limited_stack<Undo> & Buffer::undostack()
 {
-	return undostack_;
+	return pimpl_->undostack;
 }
 
 
 limited_stack<Undo> const & Buffer::undostack() const
 {
-	return undostack_;
+	return pimpl_->undostack;
 }
 
 
 limited_stack<Undo> & Buffer::redostack()
 {
-	return redostack_;
+	return pimpl_->redostack;
 }
 
 
 limited_stack<Undo> const & Buffer::redostack() const
 {
-	return redostack_;
+	return pimpl_->redostack;
 }
 
 
 BufferParams & Buffer::params()
 {
-	return params_;
+	return pimpl_->params;
 }
 
 
 BufferParams const & Buffer::params() const
 {
-	return params_;
+	return pimpl_->params;
 }
 
 
 ParagraphList & Buffer::paragraphs()
 {
-	return paragraphs_;
+	return pimpl_->paragraphs;
 }
 
 
 ParagraphList const & Buffer::paragraphs() const
 {
-	return paragraphs_;
+	return pimpl_->paragraphs;
 }
 
 
 LyXVC & Buffer::lyxvc()
 {
-	return lyxvc_;
+	return pimpl_->lyxvc;
 }
 
 
 LyXVC const & Buffer::lyxvc() const
 {
-	return lyxvc_;
+	return pimpl_->lyxvc;
 }
 
 
 string const & Buffer::temppath() const
 {
-	return temppath_;
+	return pimpl_->temppath;
 }
 
 
 bool & Buffer::niceFile()
 {
-	return nicefile_;
+	return pimpl_->nicefile;
 }
 
 
 bool Buffer::niceFile() const
 {
-	return nicefile_;
+	return pimpl_->nicefile;
 }
 
 
 TexRow & Buffer::texrow()
 {
-	return texrow_;
+	return pimpl_->texrow;
 }
 
 
 TexRow const & Buffer::texrow() const
 {
-	return texrow_;
+	return pimpl_->texrow;
 }
 
 
@@ -281,8 +326,8 @@ pair<Buffer::LogType, string> const Buffer::getLogName() const
 
 void Buffer::setReadonly(bool flag)
 {
-	if (read_only != flag) {
-		read_only = flag;
+	if (pimpl_->read_only != flag) {
+		pimpl_->read_only = flag;
 		readonly(flag);
 	}
 }
@@ -296,9 +341,9 @@ AuthorList & Buffer::authors()
 
 void Buffer::setFileName(string const & newfile)
 {
-	filename_ = MakeAbsPath(newfile);
-	filepath_ = OnlyPath(filename_);
-	setReadonly(IsFileWriteable(filename_) == 0);
+	pimpl_->filename = MakeAbsPath(newfile);
+	pimpl_->filepath = OnlyPath(pimpl_->filename);
+	setReadonly(IsFileWriteable(pimpl_->filename) == 0);
 	updateTitles();
 }
 
@@ -705,7 +750,7 @@ bool Buffer::save() const
 
 bool Buffer::writeFile(string const & fname) const
 {
-	if (read_only && (fname == fileName())) {
+	if (pimpl_->read_only && (fname == fileName())) {
 		return false;
 	}
 
@@ -1192,7 +1237,7 @@ void Buffer::makeLinuxDocFile(string const & fname, bool nice, bool body_only)
 		ofs << "<!doctype linuxdoc system";
 
 		string preamble = params().preamble;
-		string const name = nice ? ChangeExtension(filename_, ".sgml")
+		string const name = nice ? ChangeExtension(pimpl_->filename, ".sgml")
 			 : fname;
 		preamble += features.getIncludedFiles(name);
 		preamble += features.getLyXSGMLEntities();
@@ -1621,7 +1666,7 @@ void Buffer::makeDocBookFile(string const & fname, bool nice, bool only_body)
 		    << "  PUBLIC \"-//OASIS//DTD DocBook V4.1//EN\"";
 
 		string preamble = params().preamble;
-		string const name = nice ? ChangeExtension(filename_, ".sgml")
+		string const name = nice ? ChangeExtension(pimpl_->filename, ".sgml")
 			 : fname;
 		preamble += features.getIncludedFiles(name);
 		preamble += features.getLyXSGMLEntities();
@@ -2107,8 +2152,8 @@ void Buffer::fillWithBibKeys(std::vector<std::pair<string, string> > & keys) con
 
 bool Buffer::isDepClean(string const & name) const
 {
-	DepClean::const_iterator it = dep_clean_.find(name);
-	if (it == dep_clean_.end())
+	DepClean::const_iterator it = pimpl_->dep_clean.find(name);
+	if (it == pimpl_->dep_clean.end())
 		return true;
 	return it->second;
 }
@@ -2116,7 +2161,7 @@ bool Buffer::isDepClean(string const & name) const
 
 void Buffer::markDepClean(string const & name)
 {
-	dep_clean_[name] = true;
+	pimpl_->dep_clean[name] = true;
 }
 
 
@@ -2165,7 +2210,7 @@ void Buffer::changeLanguage(Language const * from, Language const * to)
 
 void Buffer::updateDocLang(Language const * nlang)
 {
-	messages_.reset(new Messages(nlang->code()));
+	pimpl_->messages.reset(new Messages(nlang->code()));
 }
 
 
@@ -2280,8 +2325,8 @@ Language const * Buffer::getLanguage() const
 
 string const Buffer::B_(string const & l10n) const
 {
-	if (messages_.get()) {
-		return messages_->get(l10n);
+	if (pimpl_->messages.get()) {
+		return pimpl_->messages->get(l10n);
 	}
 
 	return _(l10n);
@@ -2290,56 +2335,56 @@ string const Buffer::B_(string const & l10n) const
 
 bool Buffer::isClean() const
 {
-	return lyx_clean;
+	return pimpl_->lyx_clean;
 }
 
 
 bool Buffer::isBakClean() const
 {
-	return bak_clean;
+	return pimpl_->bak_clean;
 }
 
 
 void Buffer::markClean() const
 {
-	if (!lyx_clean) {
-		lyx_clean = true;
+	if (!pimpl_->lyx_clean) {
+		pimpl_->lyx_clean = true;
 		updateTitles();
 	}
 	// if the .lyx file has been saved, we don't need an
 	// autosave
-	bak_clean = true;
+	pimpl_->bak_clean = true;
 }
 
 
 void Buffer::markBakClean()
 {
-	bak_clean = true;
+	pimpl_->bak_clean = true;
 }
 
 
 void Buffer::setUnnamed(bool flag)
 {
-	unnamed = flag;
+	pimpl_->unnamed = flag;
 }
 
 
 bool Buffer::isUnnamed()
 {
-	return unnamed;
+	return pimpl_->unnamed;
 }
 
 
 void Buffer::markDirty()
 {
-	if (lyx_clean) {
-		lyx_clean = false;
+	if (pimpl_->lyx_clean) {
+		pimpl_->lyx_clean = false;
 		updateTitles();
 	}
-	bak_clean = false;
+	pimpl_->bak_clean = false;
 
-	DepClean::iterator it = dep_clean_.begin();
-	DepClean::const_iterator const end = dep_clean_.end();
+	DepClean::iterator it = pimpl_->dep_clean.begin();
+	DepClean::const_iterator const end = pimpl_->dep_clean.end();
 
 	for (; it != end; ++it) {
 		it->second = false;
@@ -2349,19 +2394,19 @@ void Buffer::markDirty()
 
 string const & Buffer::fileName() const
 {
-	return filename_;
+	return pimpl_->filename;
 }
 
 
 string const & Buffer::filePath() const
 {
-	return filepath_;
+	return pimpl_->filepath;
 }
 
 
 bool Buffer::isReadonly() const
 {
-	return read_only;
+	return pimpl_->read_only;
 }
 
 

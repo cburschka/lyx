@@ -13,6 +13,7 @@
 #include "insetfloatlist.h"
 
 #include "buffer.h"
+#include "bufferparams.h"
 #include "debug.h"
 #include "Floating.h"
 #include "FloatList.h"

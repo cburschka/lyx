@@ -20,6 +20,7 @@
 
 #include "BufferView.h"
 #include "buffer.h"
+#include "bufferparams.h"
 #include "debug.h"
 #include "language.h"
 #include "lyxfont.h"

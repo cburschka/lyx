@@ -16,10 +16,13 @@
 
 #include "buffer.h"
 #include "bufferlist.h"
+#include "bufferparams.h"
 #include "errorlist.h"
 #include "gettext.h"
 #include "LaTeX.h"
 #include "paragraph.h"
+#include "lyxvc.h"
+#include "texrow.h"
 #include "vc-backend.h"
 
 #include "frontends/Alert.h"

@@ -13,6 +13,7 @@
 #include "insetbranch.h"
 
 #include "buffer.h"
+#include "bufferparams.h"
 #include "BufferView.h"
 #include "funcrequest.h"
 #include "gettext.h"

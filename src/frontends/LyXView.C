@@ -18,6 +18,7 @@
 #include "Menubar.h"
 
 #include "buffer.h"
+#include "bufferparams.h"
 #include "BufferView.h"
 #include "bufferview_funcs.h"
 #include "debug.h"

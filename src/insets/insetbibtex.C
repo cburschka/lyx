@@ -13,6 +13,7 @@
 #include "insetbibtex.h"
 
 #include "buffer.h"
+#include "bufferparams.h"
 #include "debug.h"
 #include "funcrequest.h"
 #include "gettext.h"

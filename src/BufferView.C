@@ -22,9 +22,11 @@
 #include "gettext.h"
 #include "iterators.h"
 #include "language.h"
+#include "lyxlayout.h"
 #include "lyxtext.h"
 #include "paragraph.h"
 #include "paragraph_funcs.h"
+#include "texrow.h"
 #include "undo_funcs.h"
 #include "WordLangTuple.h"
 

@@ -14,6 +14,7 @@
 #include "toc.h"
 
 #include "buffer.h"
+#include "bufferparams.h"
 #include "funcrequest.h"
 #include "iterators.h"
 #include "LyXAction.h"

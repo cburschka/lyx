@@ -20,6 +20,7 @@
 #include "XFormsView.h"
 
 #include "buffer.h"
+#include "bufferparams.h"
 #include "debug.h"
 #include "funcrequest.h"
 #include "FuncStatus.h"

@@ -13,6 +13,7 @@
 #include "insettabular.h"
 
 #include "buffer.h"
+#include "bufferparams.h"
 #include "BufferView.h"
 #include "debug.h"
 #include "funcrequest.h"

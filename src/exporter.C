@@ -20,6 +20,7 @@
 
 #include "buffer.h"
 #include "buffer_funcs.h"
+#include "bufferparams.h"
 #include "converter.h"
 #include "format.h"
 #include "gettext.h"

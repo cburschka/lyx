@@ -16,6 +16,7 @@
 #include "ViewBase.h"
 
 #include "buffer.h"
+#include "bufferparams.h"
 #include "gettext.h"
 
 #include "frontends/LyXView.h"

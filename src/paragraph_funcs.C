@@ -13,6 +13,8 @@
 #include "paragraph_funcs.h"
 
 #include "buffer.h"
+#include "bufferparams.h"
+
 #include "debug.h"
 #include "encoding.h"
 #include "errorlist.h"
@@ -23,6 +25,7 @@
 #include "lyxlex.h"
 #include "lyxrc.h"
 #include "paragraph_pimpl.h"
+#include "texrow.h"
 
 #include "insets/insetbibitem.h"
 #include "insets/insethfill.h"

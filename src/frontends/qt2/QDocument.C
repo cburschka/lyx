@@ -16,7 +16,7 @@
 #include "QDocument.h"
 #include "QDocumentDialog.h"
 
-
+#include "bufferparams.h"
 #include "language.h"
 #include "helper_funcs.h" // getSecond()
 #include "frnt_lang.h"
