@@ -98,30 +98,27 @@ bool textHandleUndo(BufferView * bv, Undo & undo)
 	}
 
 	// Replace the paragraphs with the undo informations.
-
-	Paragraph * undopar = undo.pars.empty() ? 0 : undo.pars[0];
-	// Otherwise the undo destructor would
-	// delete the paragraph.
-	undo.pars.resize(0);
+	Paragraph * undopar     = undo.pars.empty() ? 0 : undo.pars.front();
+	Paragraph * lastundopar = undo.pars.empty() ? 0 : undo.pars.back();
 
 	// Get last undo par and set the right(new) inset-owner of the
 	// paragraph if there is any. This is not needed if we don't
 	// have a paragraph before because then in is automatically
 	// done in the function which assigns the first paragraph to
 	// an InsetText. (Jug)
-	Paragraph * lastundopar = undopar;
-	if (lastundopar) {
+	if (!undo.pars.empty()) {
 		Inset * in = 0;
 		if (before)
 			in = before->inInset();
 		else if (undo.number_of_inset_id >= 0)
 			in = bv->buffer()->getInsetFromID(undo.number_of_inset_id);
-		lastundopar->setInsetOwner(in);
-		while (lastundopar->next()) {
-			lastundopar = lastundopar->next();
-			lastundopar->setInsetOwner(in);
-		}
+		for (size_t i = 0, n = undo.pars.size(); i < n; ++i)
+			undo.pars[i]->setInsetOwner(in);
 	}
+
+	// Otherwise the undo destructor would
+	// delete the paragraph.
+	undo.pars.resize(0);
 
 	vector<Paragraph *> deletelist;
 
