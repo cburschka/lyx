@@ -52,6 +52,10 @@ fi
 FDESIGN=fdesign
 FDFILE=${BASENAME}.fd
 (cd ${DIRNAME}; ${FDESIGN} -convert ${FDFILE})
+if [ $? -ne 0 ]; then
+    echo "\"${FDESIGN} -convert ${FDFILE}\" failed. Please investigate."
+    exit 1
+fi
 
 #==================================
 # Modify the .h file for use by LyX
@@ -72,9 +76,24 @@ if [ -f "${HPATCH}" ] ; then
     patch -s ${HOUT} < ${HPATCH}
 fi
 
-# Clean up, to leave the finished .h file
+# Clean up, to leave the finished .h file. We can be a little tricky here
+# testing to see if the finished file exists already and if it does
+# testing whether there are any differences.
+# If there are no differences, then don't overwrite to prevent unnecessary
+# compilation in the xforms directory.
 rm -f ${HIN}
-mv ${HOUT} ${BASENAME}.h
+MOVE_H_FILE=1
+if [ -r ${BASENAME}.h ]; then
+    cmp -s ${HOUT} ${BASENAME}.h
+    if [ $? -eq 0 ]; then
+	MOVE_H_FILE=0
+    fi
+fi
+if [ ${MOVE_H_FILE} -eq 1 ]; then
+    mv ${HOUT} ${BASENAME}.h
+else
+    rm -f ${HOUT}
+fi
 
 #==================================
 # Create the .C file for use by LyX

@@ -52,9 +52,13 @@ If you follow these simple rules then you will generate code for functions
 build_xxx that will need no further editing to make them work. For example,
 form_graphics.h contains the struct declarations and build methods, so:
 
-extern FD_graphics * build_graphics();
-extern FD_graphics_file * build_graphics_file();
-extern FD_graphics_size * build_graphics_size();
-extern FD_graphics_bbox * build_graphics_bbox();
-extern FD_graphics_special * build_graphics_special();
-extern FD_graphics_lyxview * build_graphics_lyxview();
+extern FD_graphics * build_graphics(void *);
+extern FD_graphics_file * build_graphics_file(void *);
+extern FD_graphics_size * build_graphics_size(void *);
+extern FD_graphics_bbox * build_graphics_bbox(void *);
+extern FD_graphics_special * build_graphics_special(void *);
+extern FD_graphics_lyxview * build_graphics_lyxview(void *);
+
+where the function is to be passed a pointer to the parent dialog
+(usually "this") so that this pointer can be cast of to FormBase * and
+the appropriate method called.
