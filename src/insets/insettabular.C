@@ -333,6 +333,12 @@ void InsetTabular::draw(BufferView * bv, LyXFont const & font, int baseline,
 			nx += tabular->GetWidthOfColumn(cell);
 			++cell;
 		}
+
+		// avoiding drawing the rest of a long table is
+		// a pretty big speedup
+		if (baseline > bv->workHeight())
+			break;
+
 		baseline += tabular->GetDescentOfRow(i) +
 			tabular->GetAscentOfRow(i + 1) +
 			tabular->GetAdditionalHeight(i + 1);
