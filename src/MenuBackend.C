@@ -480,6 +480,12 @@ void expandToc2(Menu & tomenu, toc::Toc const & toc_list,
 
 void expandToc(Menu & tomenu, Buffer const * buf)
 {
+	if (!buf) {
+		tomenu.add(MenuItem(MenuItem::Command,
+				    _("No Documents Open!"), LFUN_NOACTION));
+		return;
+	}
+
 	FloatList const & floats = buf->params.getLyXTextClass().floats();
 	toc::TocList toc_list = toc::getTocList(buf);
 	toc::TocList::const_iterator cit = toc_list.begin();
