@@ -146,7 +146,7 @@ AC_DEFUN(QT_GET_VERSION,
 EOF
 		lyx_cv_qtversion=`(eval "$ac_cpp conftest.$ac_ext") 2>&5 | \
 			grep '^"%%%"'  2>/dev/null | \
-			sed -e 's/^"%%%""\(.*\)""%%%"/\1/' -e 's/ //g'`
+			sed -e 's/"%%%"//g' -e 's/"//g'`
 		rm -f conftest.$ac_ext
 		CPPFLAGS=$SAVE_CPPFLAGS
 	])
