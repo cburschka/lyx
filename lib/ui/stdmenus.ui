@@ -213,8 +213,9 @@ Menuset
 		Submenu "Math|h" "insert_math"
 		Submenu "Special Character|S" "insert_special"
 		Submenu "Special Formatting|o" "insert_formatting"
-		Submenu "Float|a" "insert_float"
 		Submenu "List / TOC|i" "insert_toc"
+		Submenu "Float|a" "insert_float"
+		Submenu "Note|N" "insert_note"
 # YUCK
 		Submenu "File|e" "insert_file"
 		Separator
@@ -229,7 +230,6 @@ Menuset
 		Item "URL...|U" "url-insert"
 		Item "Footnote|F" "footnote-insert"
 		Item "Marginal Note|M" "marginalnote-insert"
-		Submenu "Note|N" "insert_note"
 		Item "Minipage|p" "minipage-insert"
 		Item "Short Title" "optional-insert"
 		Item "TeX|X" "ert-insert"
