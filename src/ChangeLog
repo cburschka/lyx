@@ -5,6 +5,9 @@
 	* text.C: remove troublesome depth-fiddling code
 	in leftMargin() and rightMargin() (bug 1017)
 
+	* text.C: fix breaking of rows in nested lists
+	(bug 1004)
+
 	* text2.C (updateCounters): fix up depth values
 	(bug 1013)
 
