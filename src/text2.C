@@ -596,7 +596,7 @@ void LyXText::setParagraph(Spacing const & spacing, LyXAlignment align,
 	ParagraphList::reverse_iterator pit(getPar(selEnd().par()));
 	ParagraphList::reverse_iterator beg(getPar(selStart().par()));
 
-	for (++beg; pit != beg; ++pit) {
+	for (--pit; pit != beg; ++pit) {
 		ParagraphParameters & params = pit->params();
 		params.spacing(spacing);
 

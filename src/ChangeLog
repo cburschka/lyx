@@ -1,3 +1,8 @@
+
+2003-12-19  Alfredo Braunstein  <abraunst@lyx.org>
+
+	* text2.C (setParagraph): fix off-by-one crash
+
 2003-12-18  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* output_docbook.C: header stuff for AGU
