@@ -1121,10 +1121,6 @@ def revert_float(lines, opt):
 def convert_graphics(lines, opt):
     """ Add extension to filenames of insetgraphics if necessary.
     """
-    if opt.input == stdin:
-	dir = ""
-    else:
-	dir = os.path.dirname(os.path.abspath(opt.input.name))
     i = 0
     while 1:
         i = find_token(lines, "\\begin_inset Graphics", i)
@@ -1136,7 +1132,7 @@ def convert_graphics(lines, opt):
             return
         i = i + 1
 	filename = split(lines[j])[1]
-	absname = os.path.normpath(os.path.join(dir, filename))
+	absname = os.path.normpath(os.path.join(opt.dir, filename))
 	if opt.input == stdin and not os.path.isabs(filename):
 	    # We don't know the directory and cannot check the file.
 	    # We could use a heuristic and take the current directory,

@@ -19,6 +19,7 @@
 import getopt
 import gzip
 import sys
+import os.path
 from parser_tools import read_file, write_file, read_version, set_version, \
      read_format, set_format, chain, lyxformat, get_value
 
@@ -30,10 +31,11 @@ class struct:
         self.input = sys.stdin
         self.err = sys.stderr
         self.debug = 1
+        self.dir = ""
         self.start = None
         self.end = None
 
-    def warning(self, message, debug_level= 10):
+    def warning(self, message, debug_level= 1):
         if debug_level <= self.debug:
             self.err.write(message + "\n")
 
@@ -94,6 +96,7 @@ def parse_options(argv, version, opt):
 
     if args:
         file = args[0]
+        opt.dir = os.path.dirname(os.path.abspath(file))
         try:
             gzip.open(file).readline()
             opt.output = gzip.GzipFile("","wb",6,opt.output)

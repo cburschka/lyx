@@ -1,3 +1,10 @@
+2004-05-03  José Matos  <jamatos@lyx.org>
+
+	* lyx_1_4.py (convert_graphics):
+	* lyx2lyx: introduce new member of the structure class, dir which
+	carries the directory of the converted file.
+	* lyx2lyx: move default warning level to 1.
+
 2004-04-29  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* lyx_1_4.py (convert_graphics): new, convert graphics filenames
