@@ -1,3 +1,12 @@
+2002-07-08  Angus Leeming  <leeming@lyx.org>
+
+	* PreviewLoader.C: Further refactoring of the code. Should now be
+	pretty clean.
+
+	* PreviewMetrics.[Ch]: removed. Had a v. short shlf life and is now
+	past it's sell-by date. The code to read the metrics file is now found
+	as a helper function in PreviewLoader.C.
+
 2002-07-08  Herbert Voss  <voss@lyx.org>
 
 	* PreviewLoader.C: use of preview_size_factor to get the right

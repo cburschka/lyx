@@ -28,8 +28,6 @@ libgraphics_la_SOURCES = \
 	PreviewImage.C \
 	PreviewLoader.h \
 	PreviewLoader.C \
-	PreviewMetrics.h \
-	PreviewMetrics.C \
 	Previews.h \
 	Previews.C
 

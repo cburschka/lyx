@@ -14,7 +14,6 @@
 
 #include "PreviewLoader.h"
 #include "PreviewImage.h"
-#include "PreviewMetrics.h"
 
 #include "buffer.h"
 #include "bufferparams.h"
@@ -39,17 +38,21 @@
 
 #include <fstream>
 #include <iomanip>
+#include <list>
 #include <map>
+#include <utility>
+#include <vector>
 
 using std::endl;
 using std::find;
+using std::fill;
 using std::find_if;
 using std::getline;
 using std::make_pair;
 using std::setfill;
 using std::setw;
-using std::sort;
 
+using std::list;
 using std::map;
 using std::ifstream;
 using std::ofstream;
@@ -59,16 +62,21 @@ using std::vector;
 
 namespace {
 
-double getScalingFactor(Buffer &);
-
 typedef pair<string, string> StrPair;
 
-struct CompSecond {
-	bool operator()(StrPair const & lhs, StrPair const & rhs)
-	{
-		return lhs.second < rhs.second;
-	}
-};
+typedef list<string> PendingStore;
+
+typedef vector<StrPair> InProgressStore;
+
+
+double setFontScalingFactor(Buffer &);
+
+string const unique_filename(string const bufferpath);
+
+Converter const * setConverter();
+
+void setAscentFractions(vector<double> & ascent_fractions,
+			string const & metrics_file);
 
 struct FindFirst {
 	FindFirst(string const & comp) : comp_(comp) {}
@@ -81,22 +89,14 @@ private:
 };
 
 
-string const unique_filename(string const bufferpath)
-{
-	static int theCounter = 0;
-	string const filename = tostr(theCounter++) + "lyxpreview";
-	return AddName(bufferpath, filename);
-}
-
-
 /// Store info on a currently executing, forked process.
 struct InProgress {
 	///
 	InProgress() : pid(0) {}
 	///
-	InProgress(string const & f, vector<StrPair> const & s)
-		: pid(0), metrics_file(f), snippets(s)
-	{}
+	InProgress(string const & filename_base,
+		   PendingStore const & pending,
+		   string const & to_format);
 	/// Remove any files left lying around and kill the forked process. 
 	void stop() const;
 
@@ -105,7 +105,7 @@ struct InProgress {
 	///
 	string metrics_file;
 	/// Each item in the vector is a pair<snippet, image file name>.
-	vector<StrPair> snippets;
+	InProgressStore snippets;
 };
 
 
@@ -131,19 +131,12 @@ struct PreviewLoader::Impl : public boost::signals::trackable {
 	void startLoading();
 
 private:
-	///
-	static bool haveConverter();
-	/// We don't own this
-	static Converter const * pconverter_;
-
 	/// Called by the Forkedcall process that generated the bitmap files.
 	void finishedGenerating(string const &, pid_t, int);
 	///
 	void dumpPreamble(ostream &) const;
 	///
-	void dumpData(ostream &, vector<StrPair> const &) const;
-	///
-	double fontScalingFactor() const;
+	void dumpData(ostream &, InProgressStore const &) const;
 
 	/** cache_ allows easy retrieval of already-generated images
 	 *  using the LaTeX snippet as the identifier.
@@ -157,7 +150,7 @@ private:
 	/** pending_ stores the LaTeX snippets in anticipation of them being
 	 *  sent to the converter.
 	 */
-	vector<string> pending_;
+	PendingStore pending_;
 
 	/** in_progress_ stores all forked processes so that we can proceed
 	 *  thereafter.
@@ -172,7 +165,10 @@ private:
 	///
 	Buffer const & buffer_;
 	///
-	mutable double font_scaling_factor_;
+	double font_scaling_factor_;
+
+	/// We don't own this
+	static Converter const * pconverter_;	
 };
 
 
@@ -227,6 +223,30 @@ void PreviewLoader::startLoading()
 
 namespace {
 
+InProgress::InProgress(string const & filename_base,
+		       PendingStore const & pending,
+		       string const & to_format)
+	: pid(0),
+	  metrics_file(filename_base + ".metrics"),
+	  snippets(pending.size())
+{
+	InProgressStore::iterator sit = snippets.begin();
+	PendingStore::const_iterator pit  = pending.begin();
+	PendingStore::const_iterator pend = pending.end();
+
+	int counter = 1; // file numbers start at 1
+	for (; pit != pend; ++pit, ++sit, ++counter) {
+		ostringstream os;
+		os << filename_base
+		   << setfill('0') << setw(3) << counter
+		   << "." << to_format;
+		string const file = os.str().c_str();
+
+		*sit = make_pair(*pit, file);
+	}
+}
+
+
 void InProgress::stop() const
 {
 	if (pid)
@@ -235,8 +255,8 @@ void InProgress::stop() const
 	if (!metrics_file.empty())
 		lyx::unlink(metrics_file);
 
-	vector<StrPair>::const_iterator vit  = snippets.begin();
-	vector<StrPair>::const_iterator vend = snippets.end();
+	InProgressStore::const_iterator vit  = snippets.begin();
+	InProgressStore::const_iterator vend = snippets.end();
 	for (; vit != vend; ++vit) {
 		if (!vit->second.empty())
 			lyx::unlink(vit->second);
@@ -248,46 +268,17 @@ void InProgress::stop() const
 
 namespace grfx {
 
-bool PreviewLoader::Impl::haveConverter()
-{
-	if (pconverter_)
-		return true;
-
-	string const from = "lyxpreview";
-
-	Formats::FormatList::const_iterator it  = formats.begin();
-	Formats::FormatList::const_iterator end = formats.end();
-
-	for (; it != end; ++it) {
-		string const to = it->name();
-		if (from == to)
-			continue;
-		Converter const * ptr = converters.getConverter(from, to);
-		if (ptr) {
-			pconverter_ = ptr;
-			break;
-		}
-	}
-
-	if (pconverter_)
-		return true;
-
-	static bool first = true;
-	if (first) {
-		first = false;
-		lyxerr << "PreviewLoader::startLoading()\n"
-		       << "No converter from \"lyxpreview\" format has been "
-			"defined."
-		       << endl;
-	}
-	
-	return false;
-}
-
-
 PreviewLoader::Impl::Impl(PreviewLoader & p, Buffer const & b)
 	: parent_(p), buffer_(b), font_scaling_factor_(0.0)
-{}
+{
+	font_scaling_factor_ = setFontScalingFactor(const_cast<Buffer &>(b));
+
+	lyxerr[Debug::GRAPHICS] << "The font scaling factor is "
+				<< font_scaling_factor_ << endl;
+
+	if (!pconverter_)
+		pconverter_ = setConverter();
+}
 
 
 PreviewLoader::Impl::~Impl()
@@ -316,23 +307,23 @@ PreviewLoader::Impl::status(string const & latex_snippet) const
 	if (cit != cache_.end())
 		return Ready;
 
-	vector<string>::const_iterator vit  = pending_.begin();
-	vector<string>::const_iterator vend = pending_.end();
-	vit = find(vit, vend, latex_snippet);
+	PendingStore::const_iterator pit  = pending_.begin();
+	PendingStore::const_iterator pend = pending_.end();
+	pit = find(pit, pend, latex_snippet);
 
-	if (vit != vend)
+	if (pit != pend)
 		return InQueue;
 
 	InProgressMap::const_iterator ipit  = in_progress_.begin();
 	InProgressMap::const_iterator ipend = in_progress_.end();
 
 	for (; ipit != ipend; ++ipit) {
-		vector<StrPair> const & snippets = ipit->second.snippets;
-		vector<StrPair>::const_iterator vit  = snippets.begin();
-		vector<StrPair>::const_iterator vend = snippets.end();
-		vit = find_if(vit, vend, FindFirst(latex_snippet));
+		InProgressStore const & snippets = ipit->second.snippets;
+		InProgressStore::const_iterator sit  = snippets.begin();
+		InProgressStore::const_iterator send = snippets.end();
+		sit = find_if(sit, send, FindFirst(latex_snippet));
 
-		if (vit != vend)
+		if (sit != send)
 			return Processing;
 	}
 
@@ -342,14 +333,10 @@ PreviewLoader::Impl::status(string const & latex_snippet) const
 
 void PreviewLoader::Impl::add(string const & latex_snippet)
 {
-	if (!haveConverter())
-		return;
-
-	if (status(latex_snippet) != NotFound)
+	if (!pconverter_ || status(latex_snippet) != NotFound)
 		return;
 
 	pending_.push_back(latex_snippet);
-	sort(pending_.begin(), pending_.end());
 }
 
 
@@ -359,12 +346,14 @@ void PreviewLoader::Impl::remove(string const & latex_snippet)
 	if (cit != cache_.end())
 		cache_.erase(cit);
 
-	vector<string>::iterator vit  = pending_.begin();
-	vector<string>::iterator vend = pending_.end();
-	vit = find(vit, vend, latex_snippet);
+	PendingStore::iterator pit  = pending_.begin();
+	PendingStore::iterator pend = pending_.end();
+	pit = find(pit, pend, latex_snippet);
 
-	if (vit != vend)
-		pending_.erase(vit, vit+1);
+	if (pit != pend) {
+		PendingStore::iterator first = pit++;
+		pending_.erase(first, pit);
+	}
 
 	InProgressMap::iterator ipit  = in_progress_.begin();
 	InProgressMap::iterator ipend = in_progress_.end();
@@ -373,13 +362,13 @@ void PreviewLoader::Impl::remove(string const & latex_snippet)
 		InProgressMap::iterator curr = ipit;
 		++ipit;
 
-		vector<StrPair> & snippets = curr->second.snippets;
-		vector<StrPair>::iterator vit  = snippets.begin();
-		vector<StrPair>::iterator vend = snippets.end();
-		vit = find_if(vit, vend, FindFirst(latex_snippet));
+		InProgressStore & snippets = curr->second.snippets;
+		InProgressStore::iterator sit  = snippets.begin();
+		InProgressStore::iterator send = snippets.end();
+		sit = find_if(sit, send, FindFirst(latex_snippet));
 
-		if (vit != vend)
-			snippets.erase(vit, vit+1);
+		if (sit != send)
+			snippets.erase(sit, sit+1);
 
 		if (snippets.empty())
 			in_progress_.erase(curr);
@@ -389,10 +378,7 @@ void PreviewLoader::Impl::remove(string const & latex_snippet)
 
 void PreviewLoader::Impl::startLoading()
 {
-	if (pending_.empty())
-		return;
-
-	if (!haveConverter())
+	if (pending_.empty() || !pconverter_)
 		return;
 
 	lyxerr[Debug::GRAPHICS] << "PreviewLoader::startLoading()" << endl;
@@ -402,24 +388,7 @@ void PreviewLoader::Impl::startLoading()
 
 	// Create an InProgress instance to place in the map of all
 	// such processes if it starts correctly.
-	vector<StrPair> snippets(pending_.size());
-	vector<StrPair>::iterator sit = snippets.begin();
-	vector<string>::const_iterator pit  = pending_.begin();
-	vector<string>::const_iterator pend = pending_.end();
-
-	int counter = 1; // file numbers start at 1
-	for (; pit != pend; ++pit, ++sit, ++counter) {
-		ostringstream os;
-		os << filename_base
-		   << setfill('0') << setw(3) << counter
-		   << "." << pconverter_->to;
-		string const file = os.str().c_str();
-
-		*sit = make_pair(*pit, file);
-	}
-
-	string const metrics_file = filename_base + ".metrics";
-	InProgress inprogress(metrics_file, snippets);
+	InProgress inprogress(filename_base, pending_, pconverter_->to);
 
 	// clear pending_, so we're ready to start afresh.
 	pending_.clear();
@@ -435,12 +404,9 @@ void PreviewLoader::Impl::startLoading()
 	of.close();
 
 	// The conversion command.
-	double const scaling_factor = fontScalingFactor();
-	lyxerr[Debug::GRAPHICS] << "The font scaling factor is "
-				<< scaling_factor << endl;
 	ostringstream cs;
 	cs << pconverter_->command << " " << latexfile << " "
-	   << scaling_factor;
+	   << font_scaling_factor_;
 
 	string const command = cs.str().c_str();
 
@@ -486,35 +452,21 @@ void PreviewLoader::Impl::finishedGenerating(string const & command,
 	}
 
 	// Read the metrics file, if it exists
-	PreviewMetrics metrics_file(git->second.metrics_file);
+	vector<double> ascent_fractions(git->second.snippets.size());
+	setAscentFractions(ascent_fractions, git->second.metrics_file);
 
 	// Add these newly generated bitmap files to the cache and
 	// start loading them into LyX.
-	vector<StrPair>::const_iterator it  = git->second.snippets.begin();
-	vector<StrPair>::const_iterator end = git->second.snippets.end();
+	InProgressStore::const_iterator it  = git->second.snippets.begin();
+	InProgressStore::const_iterator end = git->second.snippets.end();
 
 	int metrics_counter = 0;
-	for (; it != end; ++it) {
+	for (; it != end; ++it, ++metrics_counter) {
 		string const & snip = it->first;
-
-		// Paranoia check
-		Cache::const_iterator chk = cache_.find(snip);
-		if (chk != cache_.end())
-			continue;
-
-		// Mental note (Angus, 4 July 2002, having just found out the
-		// hard way :-().
-		// We /must/ first add to the cache and then start the
-		// image loading process.
-		// If not, then outside functions can be called before by the
-		// image loader before the PreviewImage/map is properly
-		// constucted.
-		// This can lead to all sorts of horribleness if such a
-		// function attempts to access the cache's internals.
 		string const & file = it->second;
-		double af = metrics_file.ascent_fraction(metrics_counter++);
-		PreviewImagePtr ptr(new PreviewImage(parent_, snip, file, af));
+		double af = ascent_fractions[metrics_counter];
 
+		PreviewImagePtr ptr(new PreviewImage(parent_, snip, file, af));
 		cache_[snip] = ptr;
 
 		ptr->startLoading();
@@ -564,13 +516,13 @@ void PreviewLoader::Impl::dumpPreamble(ostream & os) const
 
 
 void PreviewLoader::Impl::dumpData(ostream & os,
-				   vector<StrPair> const & vec) const
+				   InProgressStore const & vec) const
 {
 	if (vec.empty())
 		return;
 
-	vector<StrPair>::const_iterator it  = vec.begin();
-	vector<StrPair>::const_iterator end = vec.end();
+	InProgressStore::const_iterator it  = vec.begin();
+	InProgressStore::const_iterator end = vec.end();
 
 	for (; it != end; ++it) {
 		os << "\\begin{preview}\n"
@@ -579,25 +531,52 @@ void PreviewLoader::Impl::dumpData(ostream & os,
 	}
 }
 
-
-double PreviewLoader::Impl::fontScalingFactor() const
-{
-	static double const lyxrc_preview_scale_factor = 0.9;
-
-	if (font_scaling_factor_ > 0.01)
-		return font_scaling_factor_;
-
-	font_scaling_factor_ =  getScalingFactor(const_cast<Buffer &>(buffer_));
-	return font_scaling_factor_;
-}
-
-
 } // namespace grfx
 
 
 namespace {
 
-double getScalingFactor(Buffer & buffer)
+string const unique_filename(string const bufferpath)
+{
+	static int theCounter = 0;
+	string const filename = tostr(theCounter++) + "lyxpreview";
+	return AddName(bufferpath, filename);
+}
+
+
+Converter const * setConverter()
+{
+	Converter const * converter = 0;
+
+	string const from = "lyxpreview";
+
+	Formats::FormatList::const_iterator it  = formats.begin();
+	Formats::FormatList::const_iterator end = formats.end();
+
+	for (; it != end; ++it) {
+		string const to = it->name();
+		if (from == to)
+			continue;
+
+		Converter const * ptr = converters.getConverter(from, to);
+		if (ptr)
+			return ptr;
+	}
+
+	static bool first = true;
+	if (first) {
+		first = false;
+		lyxerr << "PreviewLoader::startLoading()\n"
+		       << "No converter from \"lyxpreview\" format has been "
+			"defined."
+		       << endl;
+	}
+	
+	return 0;
+}
+
+
+double setFontScalingFactor(Buffer & buffer)
 {
 	static double const lyxrc_preview_scale_factor = 0.9;
 	double scale_factor = 0.01 * lyxrc.dpi * lyxrc.zoom *
@@ -632,7 +611,7 @@ double getScalingFactor(Buffer & buffer)
 		getline(ifs, str);
 		// To get the default font size, look for a line like
 		// "\ExecuteOptions{letterpaper,10pt,oneside,onecolumn,final}"
-		if (!prefixIs(str, "\\ExecuteOptions"))
+		if (!prefixIs(frontStrip(str), "\\ExecuteOptions"))
 			continue;
 
 		str = split(str, '{');
@@ -652,6 +631,49 @@ double getScalingFactor(Buffer & buffer)
 	}
 
 	return scaling;
+}
+
+
+void setAscentFractions(vector<double> & ascent_fractions,
+			string const & metrics_file)
+{
+	// If all else fails, then the images will have equal ascents and
+	// descents.
+	vector<double>::iterator it  = ascent_fractions.begin();
+	vector<double>::iterator end = ascent_fractions.end();
+	fill(it, end, 0.5);
+
+	ifstream ifs(metrics_file.c_str());
+	if (!ifs.good()) {
+		lyxerr[Debug::GRAPHICS] << "setAscentFractions("
+					<< metrics_file << ")\n"
+					<< "Unable to open file!"
+					<< endl;
+		return;
+	}
+
+	for (; it != end; ++it) {
+		string page;
+		string page_id;
+		int dummy;
+		int ascent;
+		int descent;
+
+		ifs >> page >> page_id >> dummy >> dummy >> dummy >> dummy
+		    >> ascent >> descent >> dummy;
+
+		if (!ifs.good() ||
+		    page != "%%Page" ||
+		    !isStrUnsignedInt(strip(page_id, ':'))) {
+			lyxerr[Debug::GRAPHICS] << "setAscentFractions("
+						<< metrics_file << ")\n"
+						<< "Error reading file!"
+						<< endl;
+			break;
+		}
+		
+		*it = ascent / (ascent + descent);
+	}
 }
 
 } // namespace anon

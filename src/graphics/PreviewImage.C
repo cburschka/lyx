@@ -92,7 +92,8 @@ int PreviewImage::descent() const
 	if (!image)
 		return 0;
 
-	return int((1.0 - pimpl_->ascent_frac_) * double(image->getHeight()));
+	// Avoids rounding errors.
+	return image->getHeight() - ascent();
 }
 
 
