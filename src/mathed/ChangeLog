@@ -1,3 +1,8 @@
+2005-03-02  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* math_parser.C (parse1): Don't parse "\|" following a "\left" or
+	"\right" as "|"
+
 2005-02-11  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* math_casesinset.C (validate): New method. Requires amsmath.
