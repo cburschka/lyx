@@ -71,21 +71,21 @@ void FormBox::build()
 	bcview().addReadOnly(dialog_->radio_minipage);
 
 	bcview().addReadOnly(dialog_->choice_pos);
-	fl_addto_choice(dialog_->choice_pos, _("top").c_str());
-	fl_addto_choice(dialog_->choice_pos, _("middle").c_str());
-	fl_addto_choice(dialog_->choice_pos, _("bottom").c_str());
+	fl_addto_choice(dialog_->choice_pos, _("Top").c_str());
+	fl_addto_choice(dialog_->choice_pos, _("Middle").c_str());
+	fl_addto_choice(dialog_->choice_pos, _("Bottom").c_str());
 
 	bcview().addReadOnly(dialog_->choice_inner_pos);
-	fl_addto_choice(dialog_->choice_inner_pos, _("top").c_str());
-	fl_addto_choice(dialog_->choice_inner_pos, _("middle").c_str());
-	fl_addto_choice(dialog_->choice_inner_pos, _("bottom").c_str());
-	fl_addto_choice(dialog_->choice_inner_pos, _("stretch").c_str());
+	fl_addto_choice(dialog_->choice_inner_pos, _("Top").c_str());
+	fl_addto_choice(dialog_->choice_inner_pos, _("Middle").c_str());
+	fl_addto_choice(dialog_->choice_inner_pos, _("Bottom").c_str());
+	fl_addto_choice(dialog_->choice_inner_pos, _("Stretch").c_str());
 
 	bcview().addReadOnly(dialog_->choice_hor_pos);
-	fl_addto_choice(dialog_->choice_hor_pos, _("left").c_str());
-	fl_addto_choice(dialog_->choice_hor_pos, _("center").c_str());
-	fl_addto_choice(dialog_->choice_hor_pos, _("right").c_str());
-	fl_addto_choice(dialog_->choice_hor_pos, _("stretch").c_str());
+	fl_addto_choice(dialog_->choice_hor_pos, _("Left").c_str());
+	fl_addto_choice(dialog_->choice_hor_pos, _("Center").c_str());
+	fl_addto_choice(dialog_->choice_hor_pos, _("Right").c_str());
+	fl_addto_choice(dialog_->choice_hor_pos, _("Stretch").c_str());
 
 	bcview().addReadOnly(dialog_->input_width);
 	bcview().addReadOnly(dialog_->choice_width_unit);
@@ -261,7 +261,7 @@ ButtonPolicy::SMInput FormBox::input(FL_OBJECT * ob, long)
 		string const input = getString(dialog_->input_width);
 		bool const invalid = !isValidLength(input) && !isStrDbl(input);
 		if (invalid) {
-			postWarning(_("Invalid Length!"));
+			postWarning(_("Invalid length!"));
 			return ButtonPolicy::SMI_INVALID;
 		}
 	}
@@ -269,7 +269,7 @@ ButtonPolicy::SMInput FormBox::input(FL_OBJECT * ob, long)
 		string const input = getString(dialog_->input_height);
 		bool const invalid = !isValidLength(input) && !isStrDbl(input);
 		if (invalid) {
-			postWarning(_("Invalid Length!"));
+			postWarning(_("Invalid length!"));
 			return ButtonPolicy::SMI_INVALID;
 		}
 	}

@@ -309,7 +309,7 @@ void FormDocument::build()
 	fl_set_input_return(options_->input_float_placement, FL_RETURN_CHANGED);
 
 	fl_addto_choice(options_->choice_ams_math,
-			_("Never | Automatically | Yes ").c_str());
+			_(" Never | Automatically | Yes ").c_str());
 
 	for (int n = 0; tex_graphics[n][0]; ++n) {
 		fl_addto_choice(options_->choice_postscript_driver,

@@ -1,3 +1,11 @@
+2003-11-28  Michael Schmitt  <michael.schmitt@teststep.org>
+
+	* src/frontends/xforms/forms/form_box.fd:
+	* src/frontends/xforms/FormMinipage.C:
+	* src/frontends/xforms/FormDocument.C:
+	* src/frontends/xforms/FormBox.C: fix capitalization in
+	messages; harmonize messages of different dialogs
+
 2003-11-28  Angus Leeming  <leeming@lyx.org>
 
 	* FormVSpace (build): fill the 'choice_space' widget. Enable the other

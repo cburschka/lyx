@@ -118,7 +118,7 @@ ButtonPolicy::SMInput FormMinipage::input(FL_OBJECT * ob, long)
 		string const input = getString(dialog_->input_width);
 		bool const invalid = !isValidLength(input) && !isStrDbl(input);
 		if (invalid) {
-			postWarning(_("Invalid Length!"));
+			postWarning(_("Invalid length!"));
 			action = ButtonPolicy::SMI_INVALID;
 		} else {
 			action = ButtonPolicy::SMI_VALID;
