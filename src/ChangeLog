@@ -1,3 +1,10 @@
+2003-04-04  Angus Leeming  <angus@localhost.localdomain>
+
+	* LaTeX.h: move AuxInfo operator==, != out of line.
+	Remove LaTeX virtual destructor; nothing derives from it.
+	Move operator()() out of public area and rename it startscript().
+	Change protected for private.
+
 2003-04-04  Angus Leeming  <leeming@lyx.org>
 
 	* lyxfunc.C:

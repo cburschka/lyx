@@ -58,6 +58,7 @@ private:
 	Errors errors;
 };
 
+
 class Aux_Info {
 public:
 	///
@@ -74,22 +75,8 @@ public:
 
 
 ///
-inline
-bool operator==(Aux_Info const & a, Aux_Info const & o)
-{
-	return a.aux_file == o.aux_file &&
-		a.citations == o.citations &&
-		a.databases == o.databases &&
-		a.styles == o.styles;
-}
-
-
-///
-inline
-bool operator!=(Aux_Info const & a, Aux_Info const & o)
-{
-	return !(a == o);
-}
+bool operator==(Aux_Info const &, Aux_Info const &);
+bool operator!=(Aux_Info const &, Aux_Info const &);
 
 
 ///
@@ -144,22 +131,19 @@ public:
 	*/
 	LaTeX(string const & cmd, string const & file, string const & path);
 
-	///
-	virtual ~LaTeX() {}
-
 	/// runs LaTeX several times
 	int run(TeXErrors &, LyXFunc *);
 
 	///
 	int getNumErrors() { return num_errors;}
 
-	/// use this for running LaTeX once
-	int operator() ();
-
 	///
 	int scanLogFile(TeXErrors &);
 
-protected:
+private:
+	/// use this for running LaTeX once
+	int startscript();
+
 	/// The dependency file.
 	string depfile;
 

@@ -92,6 +92,22 @@ void TeXErrors::insertError(int line, string const & error_desc,
 	errors.push_back(newerr);
 }
 
+
+bool operator==(Aux_Info const & a, Aux_Info const & o)
+{
+	return a.aux_file == o.aux_file &&
+		a.citations == o.citations &&
+		a.databases == o.databases &&
+		a.styles == o.styles;
+}
+
+
+bool operator!=(Aux_Info const & a, Aux_Info const & o)
+{
+	return !(a == o);
+}
+
+
 /*
  * CLASS LaTeX
  */
@@ -219,11 +235,11 @@ int LaTeX::run(TeXErrors & terr, LyXFunc * lfun)
 		showRunMessage(lfun, count);
 	}
 
-	this->operator()();
+	startscript();
 	scanres = scanLogFile(terr);
 	if (scanres & ERROR_RERUN) {
 		lyxerr[Debug::LATEX] << "Rerunning LaTeX" << endl;
-		this->operator()();
+		startscript();
 		scanres = scanLogFile(terr);
 	}
 
@@ -302,7 +318,7 @@ int LaTeX::run(TeXErrors & terr, LyXFunc * lfun)
 			showRunMessage(lfun, count);
 		}
 
-		this->operator()();
+		startscript();
 		scanres = scanLogFile(terr);
 		if (scanres & ERRORS) {
 			deleteFilesOnError();
@@ -356,7 +372,7 @@ int LaTeX::run(TeXErrors & terr, LyXFunc * lfun)
 			showRunMessage(lfun, count);
 		}
 
-		this->operator()();
+		startscript();
 		scanres = scanLogFile(terr);
 		if (scanres & ERRORS) {
 			deleteFilesOnError();
@@ -374,7 +390,7 @@ int LaTeX::run(TeXErrors & terr, LyXFunc * lfun)
 }
 
 
-int LaTeX::operator()()
+int LaTeX::startscript()
 {
 #ifndef __EMX__
 	string tmp = cmd + ' ' + QuoteName(file) + " > /dev/null";
