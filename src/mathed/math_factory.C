@@ -23,7 +23,8 @@
 #include "math_symbolinset.h"
 #include "math_undersetinset.h"
 #include "math_unknowninset.h"
-#include "math_xymatrix.h"
+#include "math_xarrowinset.h"
+#include "math_xymatrixinset.h"
 
 
 MathAtom createMathInset(latexkeys const * l)
@@ -93,6 +94,9 @@ MathAtom createMathInset(string const & s)
 
 	if (s == "xymatrix")
 		return MathAtom(new MathXYMatrixInset);
+
+	if (s == "xrightarrow")
+		return MathAtom(new MathXArrowInset(s));
 
 	latexkeys const * l = in_word_set(s);
 	if (l)
