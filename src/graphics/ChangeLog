@@ -1,3 +1,10 @@
+2001-02-28  Baruch Even  <baruch@ev-en.org>
+
+	* GraphicsCache.h:
+	* GraphicsCache.C: Changed the singleton pattern implementation, the
+	former version "leaked" in the sense that it was not deallocated at
+	program end.
+
 2001-02-20  Baruch Even  <baruch@ev-en.org>
 
 	* GraphicsCache.C: Changed to use shared_ptr<GraphicsCacheItem>

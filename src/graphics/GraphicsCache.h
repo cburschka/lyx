@@ -34,7 +34,9 @@ class GraphicsCacheItem;
 class GraphicsCache : public noncopyable {
 public:
 	/// Get the instance of the class.
-	static GraphicsCache * getInstance();
+	static GraphicsCache & getInstance();
+	/// Public destructor due to compiler warnings.
+	~GraphicsCache();
 
 	typedef boost::shared_ptr<GraphicsCacheItem> shared_ptr_item;
 
@@ -48,11 +50,6 @@ private:
 	/// Private c-tor so we can control how many objects are instantiated.
 	GraphicsCache() {}
 	
-	/// Private d-tor so that no-one will destroy us.
-	~GraphicsCache();
-	
-	/// Holder of the single instance of the class.
-	static GraphicsCache * singleton;
 	///
 	typedef std::map<string, shared_ptr_item> CacheType;
 	///

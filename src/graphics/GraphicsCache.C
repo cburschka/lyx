@@ -20,17 +20,10 @@
 
 #include "support/LAssert.h"
 
-GraphicsCache * GraphicsCache::singleton = 0;
-
-
-GraphicsCache * 
+GraphicsCache &
 GraphicsCache::getInstance()
 {
-	if (!singleton) {
-		singleton = new GraphicsCache;
-		Assert(singleton != 0);
-	}
-
+	static GraphicsCache singleton;
 	return singleton;
 }
 
@@ -39,8 +32,6 @@ GraphicsCache::~GraphicsCache()
 {
 	// The map elements should have already been eliminated.
 	Assert(cache.empty());
-	
-	delete singleton;
 }
 
 

@@ -575,13 +575,13 @@ void InsetGraphics::Validate(LaTeXFeatures & features) const
 // dialog.
 void InsetGraphics::updateInset() const
 {
-	GraphicsCache * gc = GraphicsCache::getInstance();
+	GraphicsCache & gc = GraphicsCache::getInstance();
 	boost::shared_ptr<GraphicsCacheItem> temp(0);
 
 	// We do it this way so that in the face of some error, we will still
 	// be in a valid state.
 	if (!params.filename.empty()) {
-		temp = gc->addFile(params.filename);
+		temp = gc.addFile(params.filename);
 	}
 
 	// Mark the image as unloaded so that it gets updated.
