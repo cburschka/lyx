@@ -17,6 +17,7 @@
 #include "debug.h"
 
 #include <qbutton.h>
+#include <qlineedit.h>
 
 Qt2BC::Qt2BC(string const & cancel, string const & close)
 	: GuiBC<QButton, QWidget>(cancel, close)
@@ -25,13 +26,26 @@ Qt2BC::Qt2BC(string const & cancel, string const & close)
 
 void Qt2BC::setButtonEnabled(QButton * obj, bool enabled)
 {
+	lyxerr << "Qt2BC: setting button " 
+		<< obj << " to " << enabled << std::endl;
+ 
 	obj->setEnabled(enabled);
 }
 
 
 void Qt2BC::setWidgetEnabled(QWidget * obj, bool enabled)
 {
-	obj->setEnabled(enabled);
+	lyxerr << "Qt2BC: setting " 
+		<< obj << " to " << enabled << std::endl;
+ 
+	// yuck, rtti, but the user comes first
+	if (obj->inherits("QLineEdit")) {
+		QLineEdit * le(static_cast<QLineEdit*>(obj)); 
+		le->setReadOnly(enabled);
+	} else {
+		obj->setEnabled(enabled);
+	}
+ 
 	QWidget::FocusPolicy const p =
 		(enabled) ? QWidget::StrongFocus : QWidget::NoFocus; 
 	obj->setFocusPolicy(p);

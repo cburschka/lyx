@@ -8,14 +8,20 @@
 
 #include <config.h>
  
+#include <qpushbutton.h>
+ 
 #include "QURLDialog.h"
 #include "Dialogs.h"
 #include "QURL.h"
 
-QURLDialog::QURLDialog(QURL * form, QWidget * parent,  const char * name, bool modal, WFlags fl)
-	: QURLDialogBase(parent, name, modal, fl),
+QURLDialog::QURLDialog(QURL * form)
+	: QURLDialogBase(0, 0, false, 0),
 	form_(form)
 {
+	connect(okPB, SIGNAL(clicked()),
+		form_, SLOT(slotOK()));
+	connect(closePB, SIGNAL(clicked()),
+		form_, SLOT(slotClose()));
 }
 
  
@@ -24,23 +30,14 @@ QURLDialog::~QURLDialog()
 }
 
  
-void QURLDialog::apply_adaptor()
+void QURLDialog::changed_adaptor()
 {
-	form_->apply();
-	form_->close();
-	hide();
+	form_->changed();
 }
 
 
-void QURLDialog::close_adaptor()
-{
-	form_->close();
-	hide();
-}
-
- 
 void QURLDialog::closeEvent(QCloseEvent * e)
 {
-	form_->close();
+	form_->slotWMHide();
 	e->accept();
 }

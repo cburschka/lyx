@@ -41,14 +41,19 @@ void QIndex::build()
 }
 
  
-void QIndex::update()
+void QIndex::update_contents()
 {
 	dialog_->keywordED->setText(controller().params().getContents().c_str());
-	reset();
 }
 
  
 void QIndex::apply()
 {
 	controller().params().setContents(dialog_->keywordED->text().latin1());
+}
+
+
+bool QIndex::isValid()
+{
+	return !string(dialog_->keywordED->text()).empty();
 }

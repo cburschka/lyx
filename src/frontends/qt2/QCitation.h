@@ -46,7 +46,7 @@ private:
 	/// Hide the dialog.
 	virtual void hide();
 	/// Update dialog before/whilst showing it.
-	virtual void update();
+	virtual void update_contents();
 
 	void updateBrowser(QListBox *, std::vector<string> const &) const;
 	///

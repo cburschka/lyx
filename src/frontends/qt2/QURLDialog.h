@@ -17,12 +17,11 @@ class QURLDialog : public QURLDialogBase
 { Q_OBJECT
 
 public:
-	QURLDialog(QURL * form, QWidget * parent = 0, const char * name = 0, bool modal = FALSE, WFlags fl = 0);
+	QURLDialog(QURL * form);
 	~QURLDialog();
 
 public slots:
-	void apply_adaptor();
-	void close_adaptor();
+	void changed_adaptor();
 
 protected:
 	void closeEvent(QCloseEvent *);

@@ -1,3 +1,29 @@
+2001-08-25  John Levon  <moz@compsoc.man.ac.uk>
+
+	* Dialogs.C: add URL
+ 
+	* QAbout.h:
+	* QCitation.h:
+	* QDocument.h: 
+	* QIndex.C: 
+	* Qt2Base.h:
+	* Qt2Base.C: add an updating_ variable to prevent
+	  bc() breakage.
+
+	* QURL.h:
+	* QURL.C:
+	* QURLDialog.h:
+	* QURLDialog.C:
+	* ui/QURLDialog.ui: make alive again
+	 
+	* Qt2BC.C: make lineedits ReadOnly not disabled 
+ 
+	* README: update
+ 
+	* ui/QCitationDialog.ui: small cleanups
+
+	* ui/QIndexDialog.ui: add a what's this
+ 
 2001-08-24  John Levon  <moz@compsoc.man.ac.uk>
 
 	* Dialogs.C: include the right files

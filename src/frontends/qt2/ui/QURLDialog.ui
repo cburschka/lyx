@@ -171,11 +171,11 @@
                     <class>QPushButton</class>
                     <property stdset="1">
                         <name>name</name>
-                        <cstring>cancelPB</cstring>
+                        <cstring>closePB</cstring>
                     </property>
                     <property stdset="1">
                         <name>text</name>
-                        <string>&amp;Cancel</string>
+                        <string>&amp;Close</string>
                     </property>
                 </widget>
             </hbox>
@@ -184,18 +184,23 @@
 </widget>
 <connections>
     <connection>
-        <sender>okPB</sender>
-        <signal>clicked()</signal>
+        <sender>urlED</sender>
+        <signal>textChanged(const QString&amp;)</signal>
         <receiver>QURLDialogBase</receiver>
-        <slot>apply_adaptor()</slot>
+        <slot>changed_adaptor()</slot>
     </connection>
     <connection>
-        <sender>cancelPB</sender>
+        <sender>hyperlinkCB</sender>
         <signal>clicked()</signal>
         <receiver>QURLDialogBase</receiver>
-        <slot>close_adaptor()</slot>
+        <slot>changed_adaptor()</slot>
     </connection>
-    <slot access="public">apply_adaptor()</slot>
-    <slot access="public">close_adaptor()</slot>
+    <connection>
+        <sender>nameED</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>QURLDialogBase</receiver>
+        <slot>changed_adaptor()</slot>
+    </connection>
+    <slot access="public">changed_adaptor()</slot>
 </connections>
 </UI>

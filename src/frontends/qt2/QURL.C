@@ -9,142 +9,62 @@
 #include <config.h>
 
 #include "QURLDialog.h"
-#include "QtLyXView.h"
-#include "BufferView.h" 
-
-#include "Dialogs.h"
-#include "QURL.h"
-#include "gettext.h"
-#include "buffer.h"
-#include "lyxfunc.h" 
-
-#include <qlineedit.h>
 #include <qcheckbox.h>
 #include <qpushbutton.h>
+#include <qlineedit.h>
+ 
+#include "ControlUrl.h"
+#include "Qt2BC.h"
+#include "QURL.h"
+#include "debug.h"
+#include "gettext.h"
 
-QURL::QURL(LyXView *v, Dialogs *d)
-	: dialog_(0), lv_(v), d_(d), inset_(0), h_(0), u_(0), ih_(0)
+typedef Qt2CB<ControlUrl, Qt2DB<QURLDialog> > base_class;
+ 
+QURL::QURL(ControlUrl & c)
+	: base_class(c, _("URL"))
 {
-	// let the dialog be shown
-	// This is a permanent connection so we won't bother
-	// storing a copy because we won't be disconnecting.
-	d->showUrl.connect(slot(this, &QURL::showUrl));
-	d->createUrl.connect(slot(this, &QURL::createUrl));
+}
+
+
+void QURL::build()
+{
+	dialog_.reset(new QURLDialog(this));
+
+	bc().setOK(dialog_->okPB);
+	bc().setCancel(dialog_->closePB);
+	bc().addReadOnly(dialog_->urlED);
+	bc().addReadOnly(dialog_->nameED);
+	bc().addReadOnly(dialog_->hyperlinkCB);
 }
 
  
-QURL::~QURL()
+void QURL::update_contents()
 {
-	delete dialog_;
-}
-
-
-void QURL::showUrl(InsetCommand * const inset)
-{
-	// FIXME: when could inset be 0 here ?
-	if (inset==0)
-		return;
-
-	inset_ = inset;
-	readonly = lv_->buffer()->isReadonly();
-	//ih_ = inset_->hide.connect(slot(this,&QURL::hide));
-	params = inset->params();
-	
-	show();
-}
-
- 
-void QURL::createUrl(string const & arg)
-{
-	// we could already be showing a URL, clear it out
-	if (inset_)
-		close();
- 
-	readonly = lv_->buffer()->isReadonly();
-	params.setFromString(arg);
-	show();
-}
-
- 
-void QURL::update()
-{
-	dialog_->urlED->setText(params.getContents().c_str());
-	dialog_->nameED->setText(params.getOptions().c_str());
-
-	if (params.getCmdName()=="url") 
-		dialog_->hyperlinkCB->setChecked(false);
-	else
-		dialog_->hyperlinkCB->setChecked(true);
-
-	if (readonly) {
-		dialog_->nameED->setFocusPolicy(QWidget::NoFocus);
-		dialog_->urlED->setFocusPolicy(QWidget::NoFocus);
-		dialog_->okPB->setEnabled(false);
-		dialog_->cancelPB->setText(_("Close"));
-		dialog_->hyperlinkCB->setEnabled(false);
-	} else {
-		dialog_->nameED->setFocusPolicy(QWidget::StrongFocus);
-		dialog_->urlED->setFocusPolicy(QWidget::StrongFocus);
-		dialog_->urlED->setFocus();
-		dialog_->okPB->setEnabled(true);
-		dialog_->cancelPB->setText(_("Cancel"));
-		dialog_->hyperlinkCB->setEnabled(true);
-	}
+	lyxerr << "update_contents URL" << std::endl;
+	lyxerr << dialog_->okPB << std::endl;
+	dialog_->urlED->setText(controller().params().getContents().c_str());
+	dialog_->nameED->setText(controller().params().getOptions().c_str());
+	dialog_->hyperlinkCB->setChecked(controller().params().getCmdName() != "url");
 }
 
  
 void QURL::apply()
 {
-	if (readonly)
-		return;
-
-	params.setContents(dialog_->urlED->text().latin1());
-	params.setOptions(dialog_->nameED->text().latin1());
+	controller().params().setContents(dialog_->urlED->text().latin1());
+	controller().params().setOptions(dialog_->nameED->text().latin1());
 
 	if (dialog_->hyperlinkCB->isChecked())
-		params.setCmdName("htmlurl");
+		controller().params().setCmdName("htmlurl");
 	else
-		params.setCmdName("url");
-
-	if (inset_ != 0) {
-		if (params != inset_->params()) {
-			inset_->setParams(params);
-			lv_->view()->updateInset(inset_, true);
-		}
-	} else
-		lv_->getLyXFunc()->dispatch(LFUN_INSERT_URL, params.getAsString().c_str());
+		controller().params().setCmdName("url");
 }
- 
 
-void QURL::show()
+
+bool QURL::isValid()
 {
-	if (!dialog_)
-		dialog_ = new QURLDialog(this, 0, _("LyX: Url"), false);
- 
-	if (!dialog_->isVisible()) {
-		h_ = d_->hideBufferDependent.connect(slot(this, &QURL::hide));
-		//u_ = d_->updateBufferDependent.connect(slot(this, &QURL::update));
-	}
+	string const u(dialog_->urlED->text().latin1());
+	string const n(dialog_->nameED->text().latin1());
 
-	dialog_->raise();
-	dialog_->setActiveWindow();
- 
-	update();
-	dialog_->show();
-}
-
- 
-void QURL::close()
-{
-	h_.disconnect();
-	u_.disconnect();
-	ih_.disconnect();
-	inset_ = 0;
-}
-
- 
-void QURL::hide()
-{
-	dialog_->hide();
-	close();
-}
+	return !u.empty() && !n.empty(); 
+} 

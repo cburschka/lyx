@@ -89,7 +89,7 @@ void QCitation::build()
 }
 
 
-void QCitation::update()
+void QCitation::update_contents()
 {
 	// Make the list of all available bibliography keys
 	bibkeys = biblio::getKeys(controller().bibkeysInfo());
@@ -105,8 +105,6 @@ void QCitation::update()
 	setCiteButtons(OFF);
 
 	dialog_->textAfterED->setText(controller().params().getOptions().c_str());
-
-	reset();
 }
 
 

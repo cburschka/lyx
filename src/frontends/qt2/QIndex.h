@@ -24,11 +24,14 @@ class QIndex :
 public: 
 	QIndex(ControlIndex &);
 
+protected:
+	virtual bool isValid();
+ 
 private: 
 	/// Apply changes
 	virtual void apply();
 	/// update
-	virtual void update();
+	virtual void update_contents();
 	/// build the dialog
 	virtual void build();
 };

@@ -14,12 +14,12 @@
 #ifndef QT2BASE_H
 #define QT2BASE_H
 
-class QDialog;
-
 #include <config.h> 
  
 #include <qfont.h>
+#include <qdialog.h>
 #include <qobject.h>
+#include <qapplication.h>
 
 #ifdef __GNUG__
 #pragma interface
@@ -52,8 +52,8 @@ protected:
 	virtual void hide();
 	/// Create the dialog if necessary, update it and display it.
 	virtual void show();
-	/// reset after an update
-	virtual void reset();
+	/// update the dialog's contents
+	virtual void update_contents() = 0; 
 
 	/// the dialog has changed contents
 	virtual void changed(); 
@@ -61,6 +61,9 @@ protected:
 	/// is the dialog currently valid ? 
 	virtual bool isValid();
 
+	/// are we updating ?
+	bool updating_; 
+ 
 protected slots:
 	// dialog closed from WM
 	void slotWMHide();
@@ -91,10 +94,13 @@ template <class Dialog>
 class Qt2DB: public Qt2Base
 {
 protected:
-	Qt2DB(ControlButtons &, const QString&);
+	Qt2DB(ControlButtons &, const QString &);
+ 
+	/// update the dialog 
+	virtual void update();
  
 	/// Pointer to the actual instantiation of the Qt dialog
-	virtual QDialog* form() const;
+	virtual QDialog * form() const;
 	/// Real GUI implementation.
 	boost::scoped_ptr<Dialog> dialog_;
 
@@ -102,18 +108,39 @@ protected:
 
 
 template <class Dialog>
-Qt2DB<Dialog>::Qt2DB(ControlButtons & c, const QString& t)
+Qt2DB<Dialog>::Qt2DB(ControlButtons & c, const QString & t)
 	: Qt2Base(c, t)
 {}
 
 
 template <class Dialog>
-QDialog* Qt2DB<Dialog>::form() const
+QDialog * Qt2DB<Dialog>::form() const
 {
 	return dialog_.get();
 }
 
 
+template <class Dialog>
+void Qt2DB<Dialog>::update()
+{
+	form()->setUpdatesEnabled(false);
+ 
+	// this is tricky. First we process pending events
+	// as a result of the bc() state change (if any).
+	// then we lock out any bc() changes as a result of
+	// "innocent" updates during update_contents()
+	// then we enable normal behaviour again.
+	qApp->processEvents();
+	updating_ = true;
+	update_contents();
+	qApp->processEvents();
+	updating_ = false;
+ 
+	form()->setUpdatesEnabled(true);
+	form()->update();
+}
+
+ 
 template <class Controller, class Base>
 class Qt2CB: public Base
 {

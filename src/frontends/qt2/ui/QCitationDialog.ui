@@ -11,7 +11,7 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>439</width>
+            <width>427</width>
             <height>585</height>
         </rect>
     </property>
@@ -79,6 +79,10 @@
                                 <name>pixmap</name>
                                 <pixmap>image0</pixmap>
                             </property>
+                            <property>
+                                <name>toolTip</name>
+                                <string>Add the selected citation</string>
+                            </property>
                         </widget>
                         <widget>
                             <class>QPushButton</class>
@@ -100,6 +104,10 @@
                             <property stdset="1">
                                 <name>pixmap</name>
                                 <pixmap>image1</pixmap>
+                            </property>
+                            <property>
+                                <name>toolTip</name>
+                                <string>Remove the selected citation</string>
                             </property>
                         </widget>
                         <widget>
@@ -123,6 +131,10 @@
                                 <name>pixmap</name>
                                 <pixmap>image2</pixmap>
                             </property>
+                            <property>
+                                <name>toolTip</name>
+                                <string>Move the selected citation up</string>
+                            </property>
                         </widget>
                         <widget>
                             <class>QPushButton</class>
@@ -144,6 +156,10 @@
                             <property stdset="1">
                                 <name>pixmap</name>
                                 <pixmap>image3</pixmap>
+                            </property>
+                            <property>
+                                <name>toolTip</name>
+                                <string>Move the selected citation down</string>
                             </property>
                         </widget>
                     </vbox>
@@ -184,7 +200,7 @@
                     </property>
                     <property>
                         <name>toolTip</name>
-                        <string>Reference keys available</string>
+                        <string>Available citation keys</string>
                     </property>
                 </widget>
                 <widget row="1"  column="0" >
@@ -205,7 +221,7 @@
                     </property>
                     <property>
                         <name>toolTip</name>
-                        <string>Keys currently selected</string>
+                        <string>Citations currently selected</string>
                     </property>
                 </widget>
             </grid>
@@ -262,7 +278,7 @@
             </property>
             <property>
                 <name>toolTip</name>
-                <string>Reference entry text</string>
+                <string>Citation entry</string>
             </property>
         </widget>
         <spacer>
@@ -311,6 +327,10 @@
                         <name>name</name>
                         <cstring>searchED</cstring>
                     </property>
+                    <property>
+                        <name>toolTip</name>
+                        <string>Search the available citations</string>
+                    </property>
                 </widget>
                 <widget>
                     <class>QLayoutWidget</class>
@@ -336,6 +356,10 @@
                             <property stdset="1">
                                 <name>text</name>
                                 <string>Regular E&amp;xpression</string>
+                            </property>
+                            <property>
+                                <name>toolTip</name>
+                                <string>Interpret search entry as a regular expression</string>
                             </property>
                         </widget>
                         <spacer>
@@ -396,6 +420,10 @@
                             <property stdset="1">
                                 <name>text</name>
                                 <string>&amp;Case sensitive</string>
+                            </property>
+                            <property>
+                                <name>toolTip</name>
+                                <string>Make the search case-sensitive</string>
                             </property>
                         </widget>
                         <spacer>
@@ -486,6 +514,10 @@
                     <property stdset="1">
                         <name>name</name>
                         <cstring>citationStyleCO</cstring>
+                    </property>
+                    <property>
+                        <name>toolTip</name>
+                        <string>FIXME</string>
                     </property>
                 </widget>
                 <spacer>
@@ -773,4 +805,24 @@
     <slot access="protected">slotSearchTypeSelected(bool)</slot>
     <slot access="protected">slotUpClicked()</slot>
 </connections>
+<tabstops>
+    <tabstop>addPB</tabstop>
+    <tabstop>delPB</tabstop>
+    <tabstop>upPB</tabstop>
+    <tabstop>downPB</tabstop>
+    <tabstop>citeLB</tabstop>
+    <tabstop>bibLB</tabstop>
+    <tabstop>searchED</tabstop>
+    <tabstop>searchTypeCB</tabstop>
+    <tabstop>searchCaseCB</tabstop>
+    <tabstop>previousPB</tabstop>
+    <tabstop>nextPB</tabstop>
+    <tabstop>citationStyleCO</tabstop>
+    <tabstop>textBeforeED</tabstop>
+    <tabstop>textAfterED</tabstop>
+    <tabstop>restorePB</tabstop>
+    <tabstop>okPB</tabstop>
+    <tabstop>applyPB</tabstop>
+    <tabstop>closePB</tabstop>
+</tabstops>
 </UI>

@@ -75,7 +75,7 @@ private:
 // 	/// Filter the inputs
 // 	virtual bool input( FL_OBJECT *, long );
 	/// Update the dialog.
-	virtual void update();
+	virtual void update_contents();
 	/// Apply from dialog
 	virtual void apply();
 	/// Cancel from dialog

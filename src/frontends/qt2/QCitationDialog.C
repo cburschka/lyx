@@ -265,12 +265,23 @@ void QCitationDialog::doFind(biblio::Direction const dir)
 
 	bool const caseSensitive = searchCaseCB->isChecked();
 	
-	vector<string>::const_iterator const cit =
+	vector<string>::const_iterator cit =
 		biblio::searchKeys(theMap, form_->bibkeys, str,
-			   start, type, dir, caseSensitive);
+			start, type, dir, caseSensitive);
 
+	// FIXME: should work ... 
 	if (cit == form_->bibkeys.end()) {
-		return;
+		// not found. let's loop round
+		if (dir == biblio::FORWARD)
+			start = form_->bibkeys.begin();
+		else
+			start = form_->bibkeys.end();
+		
+		cit = biblio::searchKeys(theMap, form_->bibkeys, str,
+			start, type, dir, caseSensitive);
+ 
+		if (cit == form_->bibkeys.end())
+			return;
 	}
 
 	int const found = int(cit - form_->bibkeys.begin());

@@ -28,7 +28,7 @@ private:
 	/// not needed
 	virtual void apply() {}
 	/// not needed
-	virtual void update() {}
+	virtual void update_contents() {}
 	// build the dialog
 	virtual void build();
 };

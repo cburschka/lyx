@@ -27,7 +27,7 @@
 #include "support/LAssert.h"
 
 Qt2Base::Qt2Base(ControlButtons & c, QString const & t)
-	: ViewBC<Qt2BC>(c), title_(t)
+	: ViewBC<Qt2BC>(c), updating_(false), title_(t)
 {}
 
 
@@ -50,12 +50,6 @@ void Qt2Base::show()
 }
 
 
-void Qt2Base::reset()
-{
-	qApp->processEvents();
-}
-
- 
 void Qt2Base::hide()
 {
 	if (form() && form()->isVisible())
@@ -71,6 +65,11 @@ bool Qt2Base::isValid()
  
 void Qt2Base::changed()
 {
+	lyxerr << "got changed() during updating:" << updating_ << std::endl;
+ 
+	if (updating_)
+		return;
+ 
 	if (isValid())
 		bc().valid(); 
 	else

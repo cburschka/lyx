@@ -245,7 +245,7 @@ void QDocument::cancel()
 }
 
 
-void QDocument::update()
+void QDocument::update_contents()
 {
 	if (!dialog_.get())
 		return;
