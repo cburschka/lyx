@@ -1451,7 +1451,7 @@ void LyXFunc::sendDispatchMessage(string const & msg,
 		}
 	}
 
-	string const shortcuts = toplevel_keymap->findbinding(cmd);
+	string const shortcuts = toplevel_keymap->printbindings(cmd);
 
 	if (!shortcuts.empty()) {
 		comname += ": " + shortcuts;

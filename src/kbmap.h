@@ -21,6 +21,7 @@
 #include <boost/shared_ptr.hpp>
 
 #include <vector>
+#include <deque>
 
 class kb_sequence;
 class LyXKeySym;
@@ -55,9 +56,14 @@ public:
 	lookup(LyXKeySymPtr key,
 	       key_modifier::state mod, kb_sequence * seq) const;
 
+	///
+	typedef std::deque<kb_sequence> Bindings;
+
 	/// Given an action, find all keybindings.
-	std::string const findbinding(FuncRequest const & func,
-				 std::string const & prefix = std::string()) const;
+	Bindings findbindings(FuncRequest const & func) const;
+
+	/// Given an action, print the keybindings.
+	std::string const printbindings(FuncRequest const & func) const;
 
 	/**
 	 * Returns a string of the given keysym, with modifiers.
@@ -94,6 +100,14 @@ private:
 
 	///  Returns a string of the given key
 	std::string const printKey(kb_key const & key) const;
+
+	/**
+	 * Given an action, find all keybindings
+	 * @param func the action
+	 * @param prefix a sequence to prepend the results
+	 */
+	Bindings findbindings(FuncRequest const & func,
+			      kb_sequence const & prefix) const;
 
 	/// is the table empty ?
 	bool empty() const {

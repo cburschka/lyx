@@ -23,6 +23,7 @@
 #include "frontends/LyXKeySym.h"
 
 #include "support/filetools.h"
+#include "support/std_sstream.h"
 
 using lyx::support::i18nLibFileSearch;
 
@@ -281,24 +282,44 @@ void kb_keymap::defkey(kb_sequence * seq,
 }
 
 
-string const kb_keymap::findbinding(FuncRequest const & func,
-				    string const & prefix) const
+string const kb_keymap::printbindings(FuncRequest const & func) const
 {
-	string res;
+	std::ostringstream res;
+	Bindings bindings = findbindings(func);
+	for (Bindings::const_iterator cit = bindings.begin();
+	     cit != bindings.end() ; ++cit)
+		res << '[' << cit->print() << ']';
+	return res.str();
+}
+
+
+kb_keymap::Bindings 
+kb_keymap::findbindings(FuncRequest const & func) const
+{
+	return findbindings(func, kb_sequence(0, 0));
+}
+
+
+kb_keymap::Bindings 
+kb_keymap::findbindings(FuncRequest const & func,
+			kb_sequence const & prefix) const
+{
+	Bindings res;
 	if (table.empty()) return res;
 
 	Table::const_iterator end = table.end();
 	for (Table::const_iterator cit = table.begin();
 	    cit != end; ++cit) {
 		if (cit->table.get()) {
-			res += cit->table->findbinding(func,
-						       prefix
-						       + printKey((*cit))
-						       + ' ');
+			kb_sequence seq = prefix;
+			seq.addkey(cit->code, cit->mod.first);
+			Bindings res2 = 
+				cit->table->findbindings(func, seq);
+			res.insert(res.end(), res2.begin(), res2.end());
 		} else if (cit->func == func) {
-			res += '[';
-			res += prefix + printKey((*cit));
-			res += "] ";
+			kb_sequence seq = prefix;
+			seq.addkey(cit->code, cit->mod.first);
+			res.push_back(seq);
 		}
 	}
 

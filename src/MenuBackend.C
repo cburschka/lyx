@@ -137,13 +137,13 @@ string const MenuItem::binding() const
 
 	// Get the keys bound to this action, but keep only the
 	// first one later
-	string bindings = toplevel_keymap->findbinding(func_);
+	kb_keymap::Bindings bindings = toplevel_keymap->findbindings(func_);
 
-	if (!bindings.empty()) {
-		return bindings.substr(1, bindings.find(']') - 1);
+	if (bindings.size()) {
+		return bindings.begin()->print();
 	} else {
 		lyxerr[Debug::KBMAP]
-			<< "No bindings for "
+			<< "No binding for "
 			<< lyxaction.getActionName(func_.action)
 			<< '(' << func_.argument << ')' << endl;
 		return string();
