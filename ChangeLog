@@ -1,3 +1,19 @@
+2000-10-24  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* lib/kbd/latvian.kmap: new file from Janne Pänkälä (epa@iki.fi)
+
+2000-10-23  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/insets/figinset.C (GhostscriptMsg): use DisplayString() to
+	open a new display.
+	(runqueue): ditto.
+
+2000-10-20  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/gettext.h (locale_init): and re-add it here.
+
+	* src/main.C (main): remove call to setlocale
+
 2000-10-18  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/version.h (LYX_VERSION): reset version to 1.1.5fixcvs

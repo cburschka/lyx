@@ -234,7 +234,7 @@ int GhostscriptMsg(FL_OBJECT *, Window, int, int,
 					addpidwait(forkstat);
 					break;
 				} else {  // child
-					tmpdisp = XOpenDisplay(XDisplayName(0));
+					tmpdisp = XOpenDisplay(DisplayString(fl_get_display()));
 					XFlush(tmpdisp);
 				}
 				im = XGetImage(tmpdisp, p->bitmap, 0, 0,
@@ -517,7 +517,7 @@ void runqueue()
 		if (pid == 0) { // child
 			char ** env;
 			int ne = 0;
-			Display * tempdisp = XOpenDisplay(XDisplayName(0));
+			Display * tempdisp = XOpenDisplay(DisplayString(fl_get_display()));
 
 			// create translation file
 			ofstream ofs;
