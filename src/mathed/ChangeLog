@@ -1,3 +1,10 @@
+2001-02-12  André Pönitz  <poenitz@htwm.de>
+	
+	* math_macro.[hC]: replace MathMacroArgument[] with
+	  std::vector<MathMacroArgument>
+	* math_defs.h:
+	  math_inset.C: replace int[] with std::vector<int>
+
 2001-02-12  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* math_defs.h (struct MathedRowSt): make all private variables end

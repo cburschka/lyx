@@ -505,7 +505,7 @@ class MathMatrixInset: public MathParInset {
     ///
     int nr;
     /// tab sizes
-    int * ws;   
+    std::vector<int> ws_;   
     /// 
     char v_align; // add approp. type
     ///

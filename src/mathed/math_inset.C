@@ -287,11 +287,9 @@ void MathFracInset::SetFocus(int /*x*/, int y)
 
 
 MathMatrixInset::MathMatrixInset(int m, int n, short st)
-	: MathParInset(st, "array", LM_OT_MATRIX), nc(m),
+	: MathParInset(st, "array", LM_OT_MATRIX), nc(m), nr(0), ws_(m),
 	v_align(0), h_align(nc, 'c')
 {
-    ws = new int[nc]; 
-    nr = 0;
     row = 0;
     flag = 15;
     if (n > 0) {
@@ -312,10 +310,8 @@ MathMatrixInset::MathMatrixInset(int m, int n, short st)
 
 MathMatrixInset::MathMatrixInset(MathMatrixInset * mt)
 	: MathParInset(mt->GetStyle(), mt->GetName(), mt->GetType()),
-	  nc(mt->nc), v_align(mt->v_align), h_align(mt->h_align)
+	  nc(mt->nc), nr(0), ws_(mt->nc), v_align(mt->v_align), h_align(mt->h_align)
 {
-    nr = 0;
-    ws = new int[nc];
     MathedIter it;
     it.SetData(mt->GetData());
     array = it.Copy();
@@ -343,8 +339,6 @@ MathMatrixInset::MathMatrixInset(MathMatrixInset * mt)
 
 MathMatrixInset::~MathMatrixInset()
 {
-    delete[] ws;
-    
     MathedRowSt * r = row;
     while (r) {
 	MathedRowSt * q = r->getNext();
@@ -439,9 +433,9 @@ void MathMatrixInset::Metrics()
     cxrow = row;     
     while (cxrow) {
 	for (i = 0; i < nc; ++i) {
-	    if (cxrow == row || ws[i] < cxrow->getTab(i))
-		    ws[i] = cxrow->getTab(i);
-	    if (cxrow->getNext() == 0 && ws[i] == 0) ws[i] = df_width;
+	    if (cxrow == row || ws_[i] < cxrow->getTab(i))
+		    ws_[i] = cxrow->getTab(i);
+	    if (cxrow->getNext() == 0 && ws_[i] == 0) ws_[i] = df_width;
 	}
 	
 	cxrow->setBaseline((cxrow == row) ?
@@ -464,14 +458,14 @@ void MathMatrixInset::Metrics()
     }
     descent = h - ascent + 2;
     
-    // Increase ws[i] for 'R' columns (except the first one)
+    // Increase ws_[i] for 'R' columns (except the first one)
     for (i = 1; i < nc; ++i)
 	if (h_align[i] == 'R')
-	    ws[i] += 10*df_width;
-    // Increase ws[i] for 'C' column
+	    ws_[i] += 10*df_width;
+    // Increase ws_[i] for 'C' column
     if (h_align[0] == 'C')
-	if (ws[0] < 7*workWidth/8)
-	    ws[0] = 7*workWidth/8;
+	if (ws_[0] < 7*workWidth/8)
+	    ws_[0] = 7*workWidth/8;
 
    // Adjust local tabs
     cxrow = row;
@@ -489,25 +483,25 @@ void MathMatrixInset::Metrics()
 		lf = 0;
 		break;
 	    case 'c':
-		lf = (ws[i] - cxrow->getTab(i))/2; 
+		lf = (ws_[i] - cxrow->getTab(i))/2; 
 		break;
 	    case 'r':
 	    case 'R':
-		lf = ws[i] - cxrow->getTab(i);
+		lf = ws_[i] - cxrow->getTab(i);
 		break;
 	    case 'C':
 		if (cxrow == row)
 		    lf = 0;
 		else if (!cxrow->getNext())
-		     lf = ws[i] - cxrow->getTab(i);
+		     lf = ws_[i] - cxrow->getTab(i);
 		else
-		    lf = (ws[i] - cxrow->getTab(i))/2; 
+		    lf = (ws_[i] - cxrow->getTab(i))/2; 
 		break;
 	    }
 	    ww = (isvoid) ? lf : lf + cxrow->getTab(i);
 	    cxrow->setTab(i, lf + rg);
-	    rg = ws[i] - ww + MATH_COLSEP;
-	    if (cxrow == row) width += ws[i] + MATH_COLSEP;
+	    rg = ws_[i] - ww + MATH_COLSEP;
+	    if (cxrow == row) width += ws_[i] + MATH_COLSEP;
 	}
 	cxrow->setBaseline(cxrow->getBaseline() - ascent);
 	cxrow = cxrow->getNext();
