@@ -87,12 +87,12 @@ void DepTable::update()
 		if (stat(itr->first.c_str(), &f_info) == 0) {
 			if (di.mtime_cur == f_info.st_mtime) {
 				di.crc_prev = di.crc_cur;
-				lyxerr[Debug::DEPEND] << itr->first << " same mtime";
+				lyxerr[Debug::DEPEND] << itr->first << " same mtime" << endl;
 			} else {
 				di.crc_prev = di.crc_cur;
-				lyxerr[Debug::DEPEND] << itr->first << " CRC... ";
+				lyxerr[Debug::DEPEND] << itr->first << " CRC... " << flush;
 				di.crc_cur = sum(itr->first);
-				lyxerr[Debug::DEPEND] << "done";
+				lyxerr[Debug::DEPEND] << "done" << endl;
 			}
 		} else {
 			// file doesn't exist
