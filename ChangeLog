@@ -1,3 +1,13 @@
+2000-10-16  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/mathed/math_macro.C (MathMacroTemplate): initialize args to
+	0 when there are no arguments.
+
+2000-10-16  Angus Leeming <a.leeming@ic.ac.uk>
+
+	* src/insets/insetbib.C: re-introduce current_view as a temporary fix
+	to segfaults when pressing Ok in InsetBibtex dialog.
+
 2000-10-16  Angus Leeming <a.leeming@ic.ac.uk>
 
 	* forms/layout_forms.fd:

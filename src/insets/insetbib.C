@@ -31,14 +31,18 @@ FD_bibitem_form * bibitem_form = 0;
 
 FD_bibitem_form * create_form_bibitem_form(void);
 
+extern BufferView * current_view;
 
+// This is foul!
+// called from both InsetBibKey and InsetBibtex dialogs yet cast off
+// only to InsetBibKey holder. Real problems can ensue.
 extern "C"
 void bibitem_cb(FL_OBJECT *, long data)
 {
 	InsetBibKey::Holder * holder =
 		static_cast<InsetBibKey::Holder*>
 		(bibitem_form->bibitem_form->u_vdata);
-	
+
 	holder->inset->callback( bibitem_form, data );
 }
 
@@ -99,12 +103,15 @@ void InsetBibKey::callback( FD_bibitem_form * form, long data )
 {
 	switch (data) {
 	case 1:
-		if(!holder.view->buffer()->isReadonly()) {
+		// Do NOT change this to
+		// holder.view->buffer() as this code is used by both
+		// InsetBibKey and InsetBibtex! Ughhhhhhh!!!!
+		if(!current_view->buffer()->isReadonly()) {
 			setContents(fl_get_input(form->key));
 			setOptions(fl_get_input(form->label));
 			// shouldn't mark the buffer dirty unless
 			// something was actually altered
-			holder.view->updateInset( this, true );
+			current_view->updateInset( this, true );
 		} // fall through to Cancel
 	case 0:
 		fl_hide_form(form->bibitem_form);
