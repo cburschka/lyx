@@ -28,7 +28,9 @@
 /// Types of lyx-math insets
 enum MathInsetTypes  {
 	///
-	LM_OT_SIMPLE = 0,
+	LM_OT_NONE = 0,
+	///
+	LM_OT_SIMPLE,
 	///
 	LM_OT_EQUATION,
 	///
@@ -45,13 +47,11 @@ enum MathInsetTypes  {
 	LM_OT_MULTLINE,
 	///
 	LM_OT_GATHER,
-	/// An array
+	/// an array
 	LM_OT_MATRIX,
 
-	/// A LaTeX macro
-	LM_OT_MACRO,
-	///
-	LM_OT_NONE
+	/// a LaTeX macro
+	LM_OT_MACRO
 };
 
 #endif

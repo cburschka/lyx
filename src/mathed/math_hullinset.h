@@ -27,11 +27,11 @@ public:
 	///
 	MathInset * clone() const;
 	///
-	void metrics(MathMetricsInfo & st) const;
+	void metrics(MathMetricsInfo & mi) const;
 	///
 	void draw(MathPainterInfo &, int x, int y) const;
 	///
-	void metricsT(TextMetricsInfo const & st) const;
+	void metricsT(TextMetricsInfo const & mi) const;
 	///
 	void drawT(TextPainter &, int x, int y) const;
 	///
@@ -101,9 +101,11 @@ private:
 	///
 	void footer_write(WriteStream &) const;
 	///
+	string nicelabel(row_type row) const;
+	///
 	void glueall();
 	///
-	string nicelabel(row_type row) const;
+	char const * standardFont() const;
 	/// consistency check
 	void check() const;
 
@@ -114,5 +116,26 @@ private:
 	///
 	std::vector<string> label_;
 };
+
+
+class MathParInset : public MathHullInset {
+public:
+	///
+	MathParInset();
+	///
+	MathParInset * asParInset() { return this; }
+	///
+	void metrics(MathMetricsInfo & mi) const;
+	///
+	void draw(MathPainterInfo &, int x, int y) const;
+	///
+	void infoize(std::ostream & os) const;
+	///
+	void write(WriteStream & os) const;
+private:
+	///
+	void rebreak();
+};
+
 
 #endif

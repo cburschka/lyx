@@ -45,14 +45,7 @@ void MathFontInset::draw(MathPainterInfo & pi, int x, int y) const
 	//MathNestInset::draw(pi, x, y);
 	MathFontSetChanger dummy(pi.base, name_.c_str());
 	xcell(0).draw(pi, x + 1, y);
-	if (editing()) {
-		int t = x + width() - 1;
-		int d = y + descent();
-		pi.pain.line(x, d - 3, x, d, LColor::mathframe); 
-		pi.pain.line(t, d - 3, t, d, LColor::mathframe); 
-		pi.pain.line(x, d, x + 3, d, LColor::mathframe); 
-		pi.pain.line(t - 2, d, t, d, LColor::mathframe); 
-	}
+	drawMarkers(pi, x, y);
 }
 
 

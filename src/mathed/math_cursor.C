@@ -38,6 +38,7 @@
 #include "math_deliminset.h"
 #include "math_extern.h"
 #include "math_factory.h"
+#include "math_fboxinset.h"
 #include "math_hullinset.h"
 #include "math_iterator.h"
 #include "math_macroarg.h"
@@ -324,6 +325,15 @@ void MathCursor::plainInsert(MathAtom const & t)
 {
 	array().insert(pos(), t);
 	++pos();
+}
+
+
+void MathCursor::insert(string const & str)
+{
+	//lyxerr << "inserting '" << str << "'\n";
+	selClearOrDel();
+	for (string::const_iterator it = str.begin(); it != str.end(); ++it)
+		plainInsert(MathAtom(new MathCharInset(*it)));
 }
 
 
@@ -1354,7 +1364,13 @@ bool MathCursor::script(bool up)
 
 bool MathCursor::inMathMode() const
 {
-	return !par()->asBoxInset();
+	if (par()->asBoxInset())
+		return false;
+	if (par()->asFboxInset())
+		return false;
+	if (par()->asParInset())
+		return false;
+	return true;
 }
 
 
@@ -1415,7 +1431,7 @@ bool MathCursor::interpret(char c)
 		return true;
 	}
 
-	// just clear selection on pressing the space par
+	// just clear selection on pressing the space bar
 	if (selection_ && c == ' ') {
 		selection_ = false;
 		return true;
@@ -1522,8 +1538,14 @@ void MathCursor::setSelection(cursor_type const & where, size_type n)
 
 void MathCursor::insetToggle()
 {
-	if (hasNextAtom())
+	if (hasNextAtom()) {
+		// toggle next inset ...
 		nextAtom()->lock(!nextAtom()->lock());
+	} else if (popLeft() && hasNextAtom()) {
+		// ... or enclosing inset if we are in the last inset position
+		nextAtom()->lock(!nextAtom()->lock());
+		posRight();
+	}
 }
 
 
@@ -1715,4 +1737,15 @@ void MathCursor::handleExtern(const string & arg)
 		idxLineLast();
 	}
 
+}
+
+
+int MathCursor::dispatch(string const & cmd)
+{
+	for (int i = Cursor_.size() - 1; i >= 0; --i) {
+		MathCursorPos & pos = Cursor_[i];
+		if (int res = pos.par_-> dispatch(cmd, pos.idx_, pos.pos_))
+			return res;
+	}
+	return 0;
 }

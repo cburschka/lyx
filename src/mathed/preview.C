@@ -128,5 +128,6 @@ grfx::ImagePtr preview(string const & str)
 
 	return im;
 #endif
+	return it->second;	
 }
 

@@ -156,6 +156,19 @@ void MathNestInset::draw(MathPainterInfo &, int, int) const
 }
 
 
+void MathNestInset::drawMarkers(MathPainterInfo & pi, int x, int y) const
+{
+	if (!editing())
+		return;
+	int t = x + width() - 1;
+	int d = y + descent();
+	pi.pain.line(x, d - 3, x, d, LColor::mathframe); 
+	pi.pain.line(t, d - 3, t, d, LColor::mathframe); 
+	pi.pain.line(x, d, x + 3, d, LColor::mathframe); 
+	pi.pain.line(t - 2, d, t, d, LColor::mathframe); 
+}
+
+
 void MathNestInset::validate(LaTeXFeatures & features) const
 {
 	for (idx_type i = 0; i < nargs(); ++i)

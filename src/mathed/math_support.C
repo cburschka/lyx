@@ -230,7 +230,7 @@ double const  Vert[] = {
 
 double const tilde[] = {
 	2, 4,
-	0.05, 0.8,  0.25, 0.2,  0.75, 0.8,  0.95, 0.2,
+	0.00, 0.8,  0.25, 0.2,  0.75, 0.8,  1.00, 0.2,
 	0
 };
 
@@ -556,47 +556,46 @@ struct fontinfo {
 };
 
 
-LyXFont::FONT_FAMILY const def_family = LyXFont::INHERIT_FAMILY;
-LyXFont::FONT_SERIES const def_series = LyXFont::INHERIT_SERIES;
-LyXFont::FONT_SHAPE  const def_shape  = LyXFont::INHERIT_SHAPE; 
+LyXFont::FONT_FAMILY const inh_family = LyXFont::INHERIT_FAMILY;
+LyXFont::FONT_SERIES const inh_series = LyXFont::INHERIT_SERIES;
+LyXFont::FONT_SHAPE  const inh_shape  = LyXFont::INHERIT_SHAPE; 
 
 
 
 fontinfo fontinfos[] = {
-	{"cmex",   LyXFont::CMEX_FAMILY, def_series, def_shape, LColor::math},
-	{"cmm",    LyXFont::CMM_FAMILY, def_series, def_shape, LColor::math},
-	{"cmr",    LyXFont::CMR_FAMILY, def_series, def_shape, LColor::math},
-	{"cmsy",   LyXFont::CMSY_FAMILY, def_series, def_shape, LColor::math},
-	{"eufrak", LyXFont::EUFRAK_FAMILY, def_series, def_shape, LColor::math},
-	{"mathbf", def_family, LyXFont::BOLD_SERIES, def_shape, LColor::math},
-	{"mathcal",LyXFont::CMSY_FAMILY, def_series, def_shape, LColor::math},
-	{"mathfrak", LyXFont::EUFRAK_FAMILY, def_series, def_shape, LColor::math},
-	{"mathnormal", def_family,def_series, LyXFont::UP_SHAPE, LColor::math},
-	{"mathrm", LyXFont::ROMAN_FAMILY, def_series, def_shape, LColor::math},
-	{"mathsf", LyXFont::SANS_FAMILY, def_series, def_shape, LColor::math},
-	{"msa",    LyXFont::MSA_FAMILY, def_series, def_shape, LColor::math},
-	{"msb",    LyXFont::MSB_FAMILY, def_series, def_shape, LColor::math},
-	{"textbf", def_family, LyXFont::BOLD_SERIES, def_shape, LColor::black},
-	{"textit", def_family, def_series, LyXFont::ITALIC_SHAPE, LColor::black},
-	{"textmd", def_family, LyXFont::MEDIUM_SERIES, def_shape, LColor::black},
-	{"textnormal", def_family, def_series, LyXFont::UP_SHAPE, LColor::black},
-	{"textrm", LyXFont::ROMAN_FAMILY, def_series,LyXFont::UP_SHAPE,LColor::black},
-	{"textsc", def_family, def_series, LyXFont::SMALLCAPS_SHAPE, LColor::black},
-	{"textsf", LyXFont::SANS_FAMILY, def_series, def_shape, LColor::black},
-	{"textsl", def_family, def_series, LyXFont::SLANTED_SHAPE, LColor::black},
-	{"texttt", LyXFont::TYPEWRITER_FAMILY, def_series, def_shape, LColor::black},
-	{"textup", def_family, def_series, LyXFont::UP_SHAPE, LColor::black},
+	{"cmex",   LyXFont::CMEX_FAMILY, inh_series, inh_shape, LColor::math},
+	{"cmm",    LyXFont::CMM_FAMILY, inh_series, inh_shape, LColor::math},
+	{"cmr",    LyXFont::CMR_FAMILY, inh_series, inh_shape, LColor::math},
+	{"cmsy",   LyXFont::CMSY_FAMILY, inh_series, inh_shape, LColor::math},
+	{"eufrak", LyXFont::EUFRAK_FAMILY, inh_series, inh_shape, LColor::math},
+	{"mathbf", inh_family, LyXFont::BOLD_SERIES, inh_shape, LColor::math},
+	{"mathcal",LyXFont::CMSY_FAMILY, inh_series, inh_shape, LColor::math},
+	{"mathfrak", LyXFont::EUFRAK_FAMILY, inh_series, inh_shape, LColor::math},
+	{"mathnormal", inh_family,inh_series, LyXFont::UP_SHAPE, LColor::math},
+	{"mathrm", LyXFont::ROMAN_FAMILY, inh_series, inh_shape, LColor::math},
+	{"mathsf", LyXFont::SANS_FAMILY, inh_series, inh_shape, LColor::math},
+	{"msa",    LyXFont::MSA_FAMILY, inh_series, inh_shape, LColor::math},
+	{"msb",    LyXFont::MSB_FAMILY, inh_series, inh_shape, LColor::math},
+	{"textbf", inh_family, LyXFont::BOLD_SERIES, inh_shape, LColor::black},
+	{"textit", inh_family, inh_series, LyXFont::ITALIC_SHAPE, LColor::black},
+	{"textmd", inh_family, LyXFont::MEDIUM_SERIES, inh_shape, LColor::black},
+	{"textnormal", inh_family, inh_series, LyXFont::UP_SHAPE, LColor::black},
+	{"textrm", LyXFont::ROMAN_FAMILY, inh_series,LyXFont::UP_SHAPE,LColor::black},
+	{"textsc", inh_family, inh_series, LyXFont::SMALLCAPS_SHAPE, LColor::black},
+	{"textsf", LyXFont::SANS_FAMILY, inh_series, inh_shape, LColor::black},
+	{"textsl", inh_family, inh_series, LyXFont::SLANTED_SHAPE, LColor::black},
+	{"texttt", LyXFont::TYPEWRITER_FAMILY, inh_series, inh_shape, LColor::black},
+	{"textup", inh_family, inh_series, LyXFont::UP_SHAPE, LColor::black},
 
-	{"lyxtex", def_family, def_series, def_shape, LColor::latex},
-	{"lyxsymbol", LyXFont::SYMBOL_FAMILY, def_series, def_shape, LColor::math},
+	{"lyxtex", inh_family, inh_series, inh_shape, LColor::latex},
+	{"lyxsymbol", LyXFont::SYMBOL_FAMILY, inh_series, inh_shape, LColor::math},
 	{"lyxboldsymbol",
-		LyXFont::SYMBOL_FAMILY, LyXFont::BOLD_SERIES, def_shape, LColor::math},
+		LyXFont::SYMBOL_FAMILY, LyXFont::BOLD_SERIES, inh_shape, LColor::math},
 	{"lyxitsymbol", LyXFont::SYMBOL_FAMILY,
-		def_series, LyXFont::ITALIC_SHAPE, LColor::math},
-	{"lyxredtext", LyXFont::ROMAN_FAMILY,
-		LyXFont::MEDIUM_SERIES, LyXFont::UP_SHAPE, LColor::red},
+		inh_series, LyXFont::ITALIC_SHAPE, LColor::math},
 	{"lyxblacktext", LyXFont::ROMAN_FAMILY,
 		LyXFont::MEDIUM_SERIES, LyXFont::UP_SHAPE, LColor::black},
+	{"lyxnochange", inh_family, inh_series, inh_shape, LColor::black},
 
 	{"lyxfakebb", LyXFont::TYPEWRITER_FAMILY, LyXFont::BOLD_SERIES,
 		LyXFont::UP_SHAPE, LColor::math},
@@ -655,11 +654,11 @@ void augmentFont(LyXFont & font, string const & name)
 			fakeFont("mathcal", "lyxfakecal");
 	}
 	fontinfo * info = searchFont(name);
-	if (info->family_ != def_family)
+	if (info->family_ != inh_family)
 		font.setFamily(info->family_);
-	if (info->series_ != def_series)
+	if (info->series_ != inh_series)
 		font.setSeries(info->series_);
-	if (info->shape_ != def_shape)
+	if (info->shape_ != inh_shape)
 		font.setShape(info->shape_);
 	if (info->color_ != LColor::none)
 		font.setColor(info->color_);

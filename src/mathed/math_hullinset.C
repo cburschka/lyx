@@ -57,7 +57,8 @@ namespace {
 
 	MathInsetTypes typecode(string const & s)
 	{
-		if (s == "none")      return LM_OT_NONE;
+		if (s == "inline")    return LM_OT_SIMPLE;
+		if (s == "simple")    return LM_OT_SIMPLE;
 		if (s == "equation")  return LM_OT_EQUATION;
 		if (s == "display")   return LM_OT_EQUATION;
 		if (s == "eqnarray")  return LM_OT_EQNARRAY;
@@ -67,7 +68,7 @@ namespace {
 		if (s == "xxalignat") return LM_OT_XXALIGNAT;
 		if (s == "multline")  return LM_OT_MULTLINE;
 		if (s == "gather")    return LM_OT_GATHER;
-		return LM_OT_SIMPLE;
+		return LM_OT_NONE;
 	}
 
 
@@ -92,7 +93,7 @@ namespace {
 
 
 MathHullInset::MathHullInset()
-	: MathGridInset(1, 1), objtype_(LM_OT_SIMPLE), nonum_(1), label_(1)
+	: MathGridInset(1, 1), objtype_(LM_OT_NONE), nonum_(1), label_(1)
 {
 	setDefaults();
 }
@@ -173,9 +174,17 @@ int MathHullInset::defaultColSpace(col_type col)
 }
 
 
+char const * MathHullInset::standardFont() const
+{
+	if (getType() == LM_OT_NONE)
+		return "lyxnochange";
+	return "mathnormal";
+}
+
+
 void MathHullInset::metrics(MathMetricsInfo & mi) const
 {
-	MathFontSetChanger dummy(mi.base, "mathnormal");
+	MathFontSetChanger dummy(mi.base, standardFont());
 
 	// let the cells adjust themselves
 	MathGridInset::metrics(mi);
@@ -206,14 +215,15 @@ void MathHullInset::metrics(MathMetricsInfo & mi) const
 
 void MathHullInset::draw(MathPainterInfo & pi, int x, int y) const
 {
-	MathFontSetChanger dummy(pi.base, "mathnormal");
+	MathFontSetChanger dummy(pi.base, standardFont());
 	MathGridInset::draw(pi, x, y);
 
 	if (numberedType()) {
 		int const xx = x + colinfo_.back().offset_ + colinfo_.back().width_ + 20;
 		for (row_type row = 0; row < nrows(); ++row) {
 			int const yy = y + rowinfo_[row].offset_;
-			drawStrBlack(pi, xx, yy, nicelabel(row));
+			MathFontSetChanger dummy(pi.base, "mathrm");
+			drawStr(pi, pi.base.font, xx, yy, nicelabel(row));
 		}
 	}
 }
@@ -293,7 +303,7 @@ bool MathHullInset::ams() const
 
 bool MathHullInset::display() const
 {
-	return getType() != LM_OT_SIMPLE;
+	return getType() != LM_OT_SIMPLE && getType() != LM_OT_NONE;
 }
 
 
@@ -309,7 +319,11 @@ vector<string> const MathHullInset::getLabelList() const
 
 bool MathHullInset::numberedType() const
 {
-	if (getType() == LM_OT_SIMPLE || getType() == LM_OT_XXALIGNAT)
+	if (getType() == LM_OT_NONE)
+		return false;
+	if (getType() == LM_OT_SIMPLE)
+		return false;
+	if (getType() == LM_OT_XXALIGNAT)
 		return false;
 	for (row_type row = 0; row < nrows(); ++row)
 		if (!nonum_[row])
@@ -341,6 +355,9 @@ void MathHullInset::header_write(WriteStream & os) const
 	bool n = numberedType();
 
 	switch (getType()) {
+		case LM_OT_NONE:
+			break;
+
 		case LM_OT_SIMPLE:
 			os << '$';
 			if (cell(0).empty())
@@ -385,9 +402,6 @@ void MathHullInset::header_write(WriteStream & os) const
 			os << "\\begin{gather}\n";
 			break;
 
-		case LM_OT_NONE:
-			break;
-
 		default:
 			os << "\\begin{unknown" << star(n) << "}";
 	}
@@ -399,6 +413,10 @@ void MathHullInset::footer_write(WriteStream & os) const
 	bool n = numberedType();
 
 	switch (getType()) {
+		case LM_OT_NONE:
+			os << "\n";
+			break;
+
 		case LM_OT_SIMPLE:
 			os << '$';
 			break;
@@ -436,10 +454,6 @@ void MathHullInset::footer_write(WriteStream & os) const
 
 		case LM_OT_GATHER:
 			os << "\n\\end{gather}\n";
-			break;
-
-		case LM_OT_NONE:
-			os << "\n";
 			break;
 
 		default:
@@ -562,16 +576,30 @@ void MathHullInset::mutate(MathInsetTypes newtype)
 		return;
 
 	switch (getType()) {
-		case LM_OT_SIMPLE:
-			setType(LM_OT_EQUATION);
+		case LM_OT_NONE:
+			setType(LM_OT_SIMPLE);
 			numbered(0, false);
 			mutate(newtype);
 			break;
 
+		case LM_OT_SIMPLE:
+			switch (newtype) {
+				case LM_OT_NONE:
+					setType(LM_OT_NONE);
+					break;
+				default:
+					setType(LM_OT_EQUATION);
+					numbered(0, false);
+					mutate(newtype);
+			}
+			break;
+
 		case LM_OT_EQUATION:
 			switch (newtype) {
+				case LM_OT_NONE:
 				case LM_OT_SIMPLE:
 					setType(LM_OT_SIMPLE);
+					mutate(newtype);
 					break;
 
 				case LM_OT_ALIGN:
@@ -752,11 +780,53 @@ void MathHullInset::mathmlize(MathMLStream & os) const
 
 void MathHullInset::infoize(std::ostream & os) const
 {
-	os << normalName(getType());
+	os << "Type: " << normalName(getType());
 }
+
 
 void MathHullInset::check() const
 {
 	lyx::Assert(nonum_.size() == nrows());
 	lyx::Assert(label_.size() == nrows());
 }
+
+
+
+
+
+//
+// MathParInset
+//
+
+MathParInset::MathParInset()
+{
+	lyxerr << "constructing MathParInset\n";
+}
+
+
+void MathParInset::metrics(MathMetricsInfo & mi) const
+{
+	MathFontSetChanger dummy(mi.base, "textnormal");
+	MathGridInset::metrics(mi);
+}
+
+
+void MathParInset::draw(MathPainterInfo & pi, int x, int y) const
+{
+	MathFontSetChanger dummy(pi.base, "textnormal");
+	MathGridInset::draw(pi, x, y);
+}
+
+
+void MathParInset::write(WriteStream & os) const
+{
+	for (idx_type i = 0; i < nargs(); ++i)
+		os << cell(i) << "\n";
+}
+
+
+void MathParInset::infoize(std::ostream & os) const
+{
+	os << "Type: Paragraph ";
+}
+

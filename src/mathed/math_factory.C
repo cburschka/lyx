@@ -8,6 +8,7 @@
 #include "math_casesinset.h"
 #include "math_decorationinset.h"
 #include "math_dotsinset.h"
+#include "math_fboxinset.h"
 #include "math_fontinset.h"
 #include "math_fracinset.h"
 #include "math_kerninset.h"
@@ -54,95 +55,103 @@ struct key_type {
 	///
 	string inset;
 	///
-	int id;
+	string extra;
 };
 
 
 key_type wordlist_array[] =
 {
-	{"!",  "space", 0},
-	{"(",  "begin", LM_OT_SIMPLE},
-	{")",  "end", LM_OT_SIMPLE},
-	{",",  "space", 1},
-	{":",  "space", 2},
-	{";",  "space", 3},
-	{"[",  "begin", LM_OT_EQUATION},
-	{"]",  "end", LM_OT_EQUATION},
-	{"acute",  "decoration", 0},
-	{"bar",  "decoration", 0},
-	{"begin",  "begin", 0},
-	{"bf",  "oldfont", 0},
-	{"breve",  "decoration", 0},
-	{"cal",  "oldfont", 0},
-	{"cdots",  "dots", 0},
-	{"check",  "decoration", 0},
-	{"ddot",  "decoration", 0},
-	{"dddot",  "decoration", 0},
-	{"ddots",  "dots", 0},
-	{"displaystyle",  "style", LM_ST_DISPLAY},
-	{"dot",  "decoration", 0},
-	{"dotsb",  "dots", 0},
-	{"dotsc",  "dots", 0},
-	{"dotsi",  "dots", 0},
-	{"dotsm",  "dots", 0},
-	{"dotso",  "dots", 0},
-	{"end",  "end", 0},
-	{"frak",  "font", 0},
-	{"grave",  "decoration", 0},
-	{"hat",  "decoration", 0},
-	{"it",  "oldfont", 0},
-	{"label",  "label", 0},
-	{"ldots",  "dots", 0},
-	{"left",  "left", 0},
-	{"limits",  "limit", 1 },
-	{"lyxbox",  "box", 0},
-	{"lyxnegspace",  "space", 6},
-	{"mathbb",  "font", 0},
-	{"mathbf",  "font", 0},
-	{"mathcal",  "font", 0},
-	{"mathfrak",  "font", 0},
-	{"mathit",  "font", 0},
-	{"mathnormal",  "font", 0},
-	{"mathring",  "decoration", 0},
-	{"mathrm",  "font", 0},
-	{"mathsf",  "font", 0},
-	{"mathtt",  "font", 0},
-	{"mbox",  "box", 0},
-	{"newcommand",  "newcommand", 0 },
-	{"nolimits",  "limit", -1},
-	{"nonumber",  "nonum", 0},
-	{"overbrace",  "decoration", 0},
-	{"overleftarrow",  "decoration", 0},
-	{"overline",  "decoration", 0},
-	{"overrightarrow",  "decoration", 0},
-	{"overleftrightarrow", "decoration", 0},
-	{"protect",  "protect", 0},
-	{"qquad",  "space", 5},
-	{"quad",  "space", 4},
-	{"right",  "right", 0},
-	{"rm",  "oldfont", 0},
-	{"scriptscriptstyle",  "style", LM_ST_SCRIPTSCRIPT},
-	{"scriptstyle",  "style", LM_ST_SCRIPT},
-	{"textbf",  "font", 1},
-	{"textit",  "font", 1},
-	{"textmd",  "font", 1},
-	{"textrm",  "font", 1},
-	{"textsl",  "font", 1},
-	{"textup",  "font", 1},
-	{"textstyle",  "style", LM_ST_TEXT},
-	{"tilde",  "decoration", 0},
-	{"tt",  "oldfont", 0},
-	{"underbar",  "decoration", 0},
-	{"underbrace",  "decoration", 0},
-	{"underleftarrow", "decoration", 0},
-	{"underline",  "decoration", 0},
-	{"underrightarrow", "decoration", 0},
-	{"underleftrightarrow", "decoration", 0},
-	{"underset",  "underset", 0},
-	{"vdots",  "dots", 0},
-	{"vec",  "decoration", 0},
-	{"widehat",  "decoration", 0},
-	{"widetilde",  "decoration", 0}
+	{"!",  "space", ""},
+	//{"(",  "begin", ""},
+	//{")",  "end", ""},
+	{",",  "space", ""},
+	{":",  "space", ""},
+	{";",  "space", ""},
+	//{"[",  "begin", ""},
+	//{"]",  "end", ""},
+	{"Vmatrix",  "matrix", ""},
+	{"acute",  "decoration", ""},
+	{"bar",  "decoration", ""},
+	{"begin",  "begin", ""},
+	{"bf",  "oldfont", ""},
+	{"bmatrix",  "matrix", ""},
+	{"acute",  "decoration", ""},
+	{"breve",  "decoration", ""},
+	{"cal",  "oldfont", ""},
+	{"cdots",  "dots", ""},
+	{"check",  "decoration", ""},
+	{"ddot",  "decoration", ""},
+	{"dddot",  "decoration", ""},
+	{"ddots",  "dots", ""},
+	{"displaystyle",  "style", ""},
+	{"dot",  "decoration", ""},
+	{"dotsb",  "dots", ""},
+	{"dotsc",  "dots", ""},
+	{"dotsi",  "dots", ""},
+	{"dotsm",  "dots", ""},
+	{"dotso",  "dots", ""},
+	{"end",  "end", ""},
+	{"fbox",  "fbox", ""},
+	{"frak",  "font", ""},
+	{"grave",  "decoration", ""},
+	{"hat",  "decoration", ""},
+	{"it",  "oldfont", ""},
+	{"label",  "label", ""},
+	{"ldots",  "dots", ""},
+	{"left",  "left", ""},
+	{"limits",  "limit", ""},
+	{"lyxbox",  "box", ""},
+	{"lyxnegspace",  "space", ""},
+	{"lyxposspace",  "space", ""},
+	{"mathbb",  "font", ""},
+	{"mathbf",  "font", ""},
+	{"mathcal",  "font", ""},
+	{"mathfrak",  "font", ""},
+	{"mathit",  "font", ""},
+	{"mathnormal",  "font", ""},
+	{"mathring",  "decoration", ""},
+	{"mathrm",  "font", ""},
+	{"mathsf",  "font", ""},
+	{"mathtt",  "font", ""},
+	{"matrix",  "matrix", ""},
+	{"mbox",  "box", ""},
+	{"newcommand",  "newcommand", ""},
+	{"nolimits",  "limit", ""},
+	{"nonumber",  "nonum", ""},
+	{"overbrace",  "decoration", ""},
+	{"overleftarrow",  "decoration", ""},
+	{"overline",  "decoration", ""},
+	{"overrightarrow",  "decoration", ""},
+	{"overleftrightarrow", "decoration", ""},
+	{"pmatrix",  "matrix", ""},
+	{"protect",  "protect", ""},
+	{"qquad",  "space", ""},
+	{"quad",  "space", ""},
+	{"right",  "right", ""},
+	{"rm",  "oldfont", ""},
+	{"scriptscriptstyle",  "style", ""},
+	{"scriptstyle",  "style", ""},
+	{"textbf",  "font", "mathtext"},
+	{"textit",  "font", "mathtext"},
+	{"textmd",  "font", "mathtext"},
+	{"textrm",  "font", "mathtext"},
+	{"textsl",  "font", "mathtext"},
+	{"textup",  "font", "mathtext"},
+	{"textstyle",  "style", ""},
+	{"tilde",  "decoration", ""},
+	{"tt",  "oldfont", ""},
+	{"underbar",  "decoration", ""},
+	{"underbrace",  "decoration", ""},
+	{"underleftarrow", "decoration", ""},
+	{"underline",  "decoration", ""},
+	{"underrightarrow", "decoration", ""},
+	{"underleftrightarrow", "decoration", ""},
+	{"underset",  "underset", ""},
+	{"vdots",  "dots", ""},
+	{"vec",  "decoration", ""},
+	{"vmatrix",  "matrix", ""},
+	{"widehat",  "decoration", ""},
+	{"widetilde",  "decoration", ""}
 };
 
 
@@ -161,7 +170,7 @@ bool math_font_available(string & name)
 		return true;
 	}
 
-	lyxerr << "font " << name << " not available and I can't fake it\n";
+	lyxerr[Debug::MATHED] << "font " << name << " not available and I can't fake it\n";
 	return false;
 }
 
@@ -203,7 +212,7 @@ void readSymbols(string const & filename)
 		} else {
 			lyxerr[Debug::MATHED] << "faking " << tmp.name << "\n";
 			tmp.draw = tmp.name;
-			tmp.inset = "lyxredtext";
+			tmp.inset = "lyxtex";
 		}
 
 		if (theWordList.find(tmp.name) != theWordList.end())
@@ -282,9 +291,6 @@ MathAtom createMathInset(string const & s)
 		return MathAtom(new MathSubstackInset);
 	if (s == "subarray" || s == "array")
 		return MathAtom(new MathArrayInset(s, 1, 1));
-	if (s == "pmatrix" || s == "bmatrix" || s == "vmatrix" || s == "Vmatrix" ||
-		  s == "matrix")
-		return MathAtom(new MathAMSArrayInset(s));
 	if (s == "sqrt")
 		return MathAtom(new MathSqrtInset);
 	if (s == "root")
@@ -301,6 +307,9 @@ MathAtom createMathInset(string const & s)
 		return MathAtom(new MathNotInset);
 	if (s == "lefteqn")
 		return MathAtom(new MathLefteqnInset);
+	if (s == "ref")
+		return MathAtom(new RefInset);
+
 
 	latexkeys const * l = in_word_set(s);
 	if (l) {
@@ -316,12 +325,16 @@ MathAtom createMathInset(string const & s)
 			return MathAtom(new MathDotsInset(l->name));
 		if (inset == "box")
 			return MathAtom(new MathBoxInset(l->name));
+		if (inset == "fbox")
+			return MathAtom(new MathFboxInset);
 		if (inset == "style")
 			return MathAtom(new MathSizeInset(l));
 		if (inset == "font")
 			return MathAtom(new MathFontInset(l->name));
 		if (inset == "oldfont")
 			return MathAtom(new MathFontInset(l->name));
+		if (inset == "matrix")
+			return MathAtom(new MathAMSArrayInset(s));
 		return MathAtom(new MathSymbolInset(l));
 	}
 

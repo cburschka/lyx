@@ -1,6 +1,6 @@
 // -*- C++ -*-
-#ifndef MATH_BRACEINSET_H
-#define MATH_BRACEINSET_H
+#ifndef MATH_FBOXINSET_H
+#define MATH_FBOXINSET_H
 
 #include "math_nestinset.h"
 #include "math_metricsinfo.h"
@@ -13,26 +13,22 @@
     \author André Pönitz
 */
 
-class MathBraceInset : public MathNestInset {
+class MathFboxInset : public MathNestInset {
 public:
 	///
-	MathBraceInset();
+	MathFboxInset();
 	///
 	MathInset * clone() const;
 	///
-	MathBraceInset * asBraceInset() { return this; }
+	MathFboxInset * asFboxInset() { return this; }
+	///
+	void metrics(MathMetricsInfo & mi) const;
 	///
 	void draw(MathPainterInfo &, int x, int y) const;
 	///
 	void write(WriteStream & os) const;
 	/// write normalized content
 	void normalize(NormalStream & ns) const;
-	///
-	void metrics(MathMetricsInfo & mi) const;
-
-private:
-	/// width of brace character
-	mutable int wid_;
 };
 
 #endif

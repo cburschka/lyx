@@ -380,6 +380,7 @@ bool InsetFormula::insetAllowed(Inset::Code code) const
 {
 	return
 		(code == Inset::LABEL_CODE && display())
+		|| code == Inset::REF_CODE	
 		|| code == Inset::ERT_CODE;
 }
 

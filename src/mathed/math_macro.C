@@ -115,7 +115,7 @@ void MathMacro::metrics(MathMetricsInfo & mi) const
 }
 
 
-void MathMacro::draw(MathPainterInfo & pain, int x, int y) const
+void MathMacro::draw(MathPainterInfo & pi, int x, int y) const
 {
 	metrics(mi_);
 
@@ -123,16 +123,16 @@ void MathMacro::draw(MathPainterInfo & pain, int x, int y) const
 	augmentFont(texfont, "lyxtex");
 
 	if (defining()) {
-		drawStr(pain, texfont, x, y, name());
+		drawStr(pi, texfont, x, y, name());
 		return;
 	}
 
 	if (editing()) {
 		int h = y - ascent() + 2 + expanded_.ascent();
-		drawStr(pain, font_, x + 3, h, name());
+		drawStr(pi, font_, x + 3, h, name());
 
 		int const w = mathed_string_width(font_, name());
-		expanded_.draw(pain, x + w + 12, h);
+		expanded_.draw(pi, x + w + 12, h);
 		h += expanded_.descent();
 
 		int lasc;
@@ -143,16 +143,16 @@ void MathMacro::draw(MathPainterInfo & pain, int x, int y) const
 		for (idx_type i = 0; i < nargs(); ++i) {
 			MathXArray const & c = xcell(i);
 			h += max(c.ascent(), lasc) + 5;
-			c.draw(pain, x + lwid, h);
+			c.draw(pi, x + lwid, h);
 			char str[] = "#1:";
 			str[1] += static_cast<char>(i);
-			drawStr(pain, texfont, x + 3, h, str);
+			drawStr(pi, texfont, x + 3, h, str);
 			h += max(c.descent(), ldes) + 5;
 		}
 		return;
 	}
 
-	expanded_.draw(pain, x, y);
+	expanded_.draw(pi, x, y);
 }
 
 

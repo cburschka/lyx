@@ -238,6 +238,8 @@ public:
 	/// how deep are we nested?
 	unsigned depth() const;
 
+	/// local dispatcher
+	int dispatch(string const & cmd);
 	/// describe the situation
 	string info() const;
 	/// dump selection information for debugging
@@ -247,7 +249,9 @@ public:
 	/// moves on
 	void setSelection(cursor_type const & where, size_type n);
 	///
-	void insert(char);
+	void insert(char c);
+	///
+	void insert(string const & str);
 	/// lock/unlock inset
 	void insetToggle();
 

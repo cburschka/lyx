@@ -24,9 +24,11 @@ public:
 	///
 	void write(WriteStream & os) const;
 	///
-	void metrics(MathMetricsInfo & st) const;
+	void metrics(MathMetricsInfo & mi) const;
 	///
 	void normalize(NormalStream & os) const;
+	///
+	void infoize(std::ostream & os) const;
 	///
 	bool isScriptable() const;
 

@@ -38,6 +38,7 @@
 #include "frontends/mouse_state.h"
 #include "Lsstream.h"
 #include "math_arrayinset.h"
+#include "math_boxinset.h"
 #include "math_charinset.h"
 #include "math_cursor.h"
 #include "math_factory.h"
@@ -52,6 +53,7 @@
 #include "textpainter.h"
 #include "frontends/Dialogs.h"
 #include "intl.h"
+#include "../insets/insetcommand.h"
 
 using std::endl;
 using std::ostream;
@@ -126,8 +128,7 @@ void InsetFormulaBase::handleFont
 	if (sel)
 		updateLocal(bv, true);
 	mathcursor->handleNest(new MathFontInset(font));
-  for (string::const_iterator it = arg.begin(); it != arg.end(); ++it)
-    mathcursor->insert(*it);
+	mathcursor->insert(arg);
 	if (!sel)
 		updateLocal(bv, false);
 }
@@ -303,7 +304,7 @@ void InsetFormulaBase::updateLocal(BufferView * bv, bool dirty)
 
 
 bool InsetFormulaBase::insetButtonRelease(BufferView * bv,
-					  int /*x*/, int /*y*/, mouse_button::state button)
+	int /*x*/, int /*y*/, mouse_button::state button)
 {
 	//lyxerr << "insetButtonRelease: " << x << " " << y << "\n";
 
@@ -314,6 +315,10 @@ bool InsetFormulaBase::insetButtonRelease(BufferView * bv,
 	bv->updateInset(this, false);
 
 	if (button == mouse_button::button3) {
+		// try to dispatch to enclosed insets first
+		if (mathcursor->dispatch("mouse 3"))
+			return true;
+
 		// launch math panel for right mouse button
 		bv->owner()->getDialogs()->showMathPanel();
 		return true;
@@ -430,7 +435,7 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 
 	switch (action) {
 
-		// --- Cursor Movements ---------------------------------------------
+	// --- Cursor Movements ---------------------------------------------
 
 	case LFUN_RIGHTSEL:
 		sel = true; // fall through...
@@ -750,6 +755,32 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 		updateLocal(bv, true);
 		break;
 
+	case LFUN_REF_INSERT:
+		//if (argument.empty()) {
+		//	InsetCommandParams p("ref");
+		//	owner_->getDialogs()->createRef(p.getAsString());
+		//} else {
+		//	InsetCommandParams p;
+		//	p.setFromString(argument);
+
+		//	InsetRef * inset = new InsetRef(p, *buffer_);
+		//	if (!insertInset(inset))
+		//		delete inset;
+		//	else
+		//		updateInset(inset, true);
+		//}
+		//
+		if (arg.empty()) {
+			InsetCommandParams p("ref");
+			bv->owner()->getDialogs()->createRef(p.getAsString());
+		} else {
+			//mathcursor->handleNest(new RefInset);
+			//mathcursor->insert(arg);
+			mathcursor->insert(MathAtom(new RefInset(arg)));
+		}
+		updateLocal(bv, true);
+		break;
+
 	default:
 		result = UNDISPATCHED;
 	}
@@ -913,7 +944,7 @@ void mathDispatchCreation(BufferView * bv, string const & arg, bool display)
 
 		InsetFormulaBase * f;
 		if (sel.empty()) {
-			f = new InsetFormula;
+			f = new InsetFormula(LM_OT_SIMPLE);
 			if (openNewInset(bv, f)) {
 				// don't do that also for LFUN_MATH_MODE unless you want end up with
 				// always changing to mathrm when opening an inlined inset
@@ -979,7 +1010,7 @@ void mathDispatchMathMacro(BufferView * bv, string const & arg)
 void mathDispatchMathDelim(BufferView * bv, string const & arg)
 {
 	if (bv->available()) {
-		if (openNewInset(bv, new InsetFormula))
+		if (openNewInset(bv, new InsetFormula(LM_OT_SIMPLE)))
 			bv->theLockingInset()->localDispatch(bv, LFUN_MATH_DELIM, arg);
 	}
 }
@@ -988,7 +1019,7 @@ void mathDispatchMathDelim(BufferView * bv, string const & arg)
 void mathDispatchInsertMatrix(BufferView * bv, string const & arg)
 {
 	if (bv->available()) {
-		if (openNewInset(bv, new InsetFormula))
+		if (openNewInset(bv, new InsetFormula(LM_OT_SIMPLE)))
 			bv->theLockingInset()->localDispatch(bv, LFUN_INSERT_MATRIX, arg);
 	}
 }
@@ -1013,7 +1044,7 @@ void mathDispatchInsertMath(BufferView * bv, string const & arg)
 void mathDispatchGreek(BufferView * bv, string const & arg)
 {
 	if (bv->available()) {
-		InsetFormula * f = new InsetFormula;
+		InsetFormula * f = new InsetFormula(LM_OT_SIMPLE);
 		if (openNewInset(bv, f)) {
 			bv->theLockingInset()->localDispatch(bv, LFUN_GREEK, arg);
 			bv->unlockInset(f);

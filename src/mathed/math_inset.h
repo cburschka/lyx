@@ -53,12 +53,14 @@ class MathBraceInset;
 class MathBoxInset;
 class MathCharInset;
 class MathDelimInset;
+class MathFboxInset;
 class MathFontInset;
 class MathGridInset;
 class MathFracInset;
 class MathHullInset;
 class MathMatrixInset;
 class MathNestInset;
+class MathParInset;
 class MathScriptInset;
 class MathStringInset;
 class MathSpaceInset;
@@ -192,6 +194,7 @@ public:
 	virtual MathCharInset const    * asCharInset() const    { return 0; }
 	virtual MathDelimInset         * asDelimInset()         { return 0; }
 	virtual MathDelimInset const   * asDelimInset() const   { return 0; }
+	virtual MathFboxInset          * asFboxInset()          { return 0; }
 	virtual MathFontInset const    * asFontInset() const    { return 0; }
 	virtual MathFracInset          * asFracInset()          { return 0; }
 	virtual MathGridInset          * asGridInset()          { return 0; }
@@ -200,6 +203,7 @@ public:
 	virtual MathMacroTemplate      * asMacroTemplate()      { return 0; }
 	virtual MathMatrixInset const  * asMatrixInset() const  { return 0; }
 	virtual MathNestInset          * asNestInset()          { return 0; }
+	virtual MathParInset           * asParInset()           { return 0; }
 	virtual MathScriptInset        * asScriptInset()        { return 0; }
 	virtual MathScriptInset const  * asScriptInset() const  { return 0; }
 	virtual MathSpaceInset         * asSpaceInset()         { return 0; }
@@ -253,12 +257,23 @@ public:
 	virtual void octavize(OctaveStream &) const;
 	/// describe content
 	virtual void infoize(std::ostream &) const {}
+	/// plain ascii output
+	virtual int ascii(std::ostream & os, int) const;
+	/// linuxdoc output
+	virtual int linuxdoc(std::ostream & os) const;
+	/// docbook output
+	virtual int docbook(std::ostream & os, bool) const;
 
 	/// dump content to stderr for debugging
 	virtual void dump() const;
+	/// local dispatcher
+	virtual int dispatch(string const & cmd, idx_type idx, pos_type pos);
 };
 
 std::ostream & operator<<(std::ostream &, MathInset const &);
 std::ostream & operator<<(std::ostream &, MathAtom const &);
+
+string asString(MathArray const & ar);
+MathArray asArray(string const & str);
 
 #endif

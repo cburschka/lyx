@@ -12,9 +12,9 @@
 class MathAMSArrayInset : public MathGridInset {
 public:
 	///
-	MathAMSArrayInset(string const & name_, int m, int n);
+	MathAMSArrayInset(string const & name, int m, int n);
 	///
-	MathAMSArrayInset(string const & name_);
+	MathAMSArrayInset(string const & name);
 	///
 	MathInset * clone() const;
 	///

@@ -24,6 +24,7 @@
 #include "Lsstream.h"
 #include "math_inset.h"
 #include "math_scriptinset.h"
+#include "math_charinset.h"
 #include "math_mathmlstream.h"
 #include "debug.h"
 
@@ -243,4 +244,47 @@ void MathInset::mathmlize(MathMLStream & os) const
 {
 	NormalStream ns(os.os());
 	normalize(ns);
+}
+
+
+int MathInset::ascii(std::ostream &, int) const
+{
+	return 0;
+}
+
+
+int MathInset::linuxdoc(std::ostream &) const
+{
+	return 0;
+}
+
+
+int MathInset::docbook(std::ostream &, bool) const
+{
+	return 0;
+}
+
+
+int MathInset::dispatch(string const &, idx_type, pos_type) 
+{
+	return 0; // undispatched
+}
+
+
+string asString(MathArray const & ar)
+{
+	string res;
+	for (MathArray::const_iterator it = ar.begin(); it != ar.end(); ++it)
+		if ((*it)->getChar())
+			res += (*it)->getChar();
+	return res;
+}
+
+
+MathArray asArray(string const & str)
+{
+	MathArray ar;
+	for (string::const_iterator it = str.begin(); it != str.end(); ++it)
+		ar.push_back(MathAtom(new MathCharInset(*it)));
+	return ar;
 }
