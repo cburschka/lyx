@@ -231,8 +231,8 @@ bool InsetExternal::Params::read(Buffer const & buffer, LyXLex & lex)
 
 	return !read_error;
 }
- 
- 
+
+
 InsetExternal::InsetExternal()
 	: renderer_(new ButtonRenderer)
 {}
