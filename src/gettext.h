@@ -9,8 +9,8 @@
  *
  * Full author contact details are available in file CREDITS
  */
-#ifndef _GETTEXT_H_
-#define _GETTEXT_H_
+#ifndef GETTEXT_H
+#define GETTEXT_H
 
 /*
  * Native Language Support

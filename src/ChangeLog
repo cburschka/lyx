@@ -1,3 +1,10 @@
+2003-05-20  Angus Leeming  <leeming@lyx.org>
+
+	* Makefile.am (lyx_SOURCES): move format.[Ch] and graph.[Ch] so that
+	files are compiled in alphabetical order again.
+
+	* gettext.h: #ifndef _GETTEXT_H_ -> #ifndef GETTEXT_H.
+
 2003-05-19  Angus Leeming  <leeming@lyx.org>
 
 	* gettext.[Ch]: remove "char const * _(char const *)".
