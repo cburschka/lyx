@@ -278,7 +278,7 @@ int InsetCollapsable::docbook(Buffer const & buf, ostream & os, bool mixcont) co
 
 bool InsetCollapsable::hitButton(FuncRequest const & cmd) const
 {
-	return button_dim.contained(cmd.x, cmd.y);
+	return button_dim.contains(cmd.x, cmd.y);
 }
 
 

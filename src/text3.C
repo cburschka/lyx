@@ -125,7 +125,7 @@ namespace {
 			cur.y() + inset->descent()
 		);
 
-		if (!b.contained(x, y)) {
+		if (!b.contains(x, y)) {
 			lyxerr[Debug::GUI] << "Missed inset at x,y "
 					   << x << ',' << y
 					   << " box " << b << endl;

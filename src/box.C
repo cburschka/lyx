@@ -24,7 +24,7 @@ Box::Box(int x1_, int x2_, int y1_, int y2_) :
 {}
 
 
-bool Box::contained(int x, int y)
+bool Box::contains(int x, int y)
 {
 	return (x1 < x && x2 > x && y1 < y && y2 > y);
 }
