@@ -34,6 +34,7 @@
 #include <qapplication.h>
 #include <qpixmap.h>
 #include <qmenubar.h>
+#include <qstatusbar.h>
  
 using std::endl;
 
@@ -57,6 +58,8 @@ QtView::QtView(unsigned int width, unsigned int height)
 	toolbar_.reset(new Toolbar(this, *getDialogs(), 0, 0, toolbardefaults));
 	toolbar_->set(true);
 
+	statusBar()->setSizeGripEnabled(false);
+ 
 	minibuffer_.reset(new QMiniBuffer(this)); 
  
 	bufferview_.reset(new BufferView(this, 0, 0, width, height));

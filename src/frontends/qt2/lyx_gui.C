@@ -121,8 +121,8 @@ void lyx_gui::start(string const & batch, vector<string> files)
  
 string const lyx_gui::hexname(LColor::color col)
 {
-	// FIXME
-	return "";
+	QColor color(lcolor.getX11Name(col).c_str());
+	return color.name().latin1();
 }
 
 

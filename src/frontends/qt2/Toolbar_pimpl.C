@@ -43,7 +43,7 @@ extern LyXAction lyxaction;
 
 namespace {
  
-string const getPixmap(int action)
+QPixmap getIconPixmap(int action)
 {
 	string arg;
 	string xpm_name;
@@ -60,23 +60,20 @@ string const getPixmap(int action)
 	if (!fullname.empty()) {
 		lyxerr[Debug::GUI] << "Full icon name is `" 
 				       << fullname << "'" << endl;
-		return fullname;
+		return QPixmap(fullname.c_str());
 	}
 
-#if 0 // FIXME 
 	if (act == LFUN_INSERT_MATH && !arg.empty()) {
-		char const ** pixmap = get_pixmap_from_symbol(arg.c_str(),
-							buttonwidth,
-							height);
+#if 0 // FIXME: GUII
+		char const ** pixmap =
+			get_pixmap_from_symbol(arg.c_str(), 30, 30);
 		if (pixmap) {
 			lyxerr[Debug::GUI] << "Using mathed-provided icon"
 					   << endl;
-			fl_set_pixmapbutton_data(obj,
-						 const_cast<char **>(pixmap));
-			return;
+			return QPixmap(pixmap);
 		}
-	}
 #endif
+	}
 	
 	lyxerr << "Unable to find icon `" << xpm_name << "'" << endl;
 	fullname = LibFileSearch("images", "unknown", "xpm");
@@ -84,7 +81,7 @@ string const getPixmap(int action)
 		lyxerr[Debug::GUI] << "Using default `unknown' icon" 
 				       << endl;
 	}
-	return fullname;
+	return QPixmap(fullname.c_str());
 }
 
 } // namespace anon
@@ -255,16 +252,19 @@ void Toolbar::Pimpl::add(int action, bool)
 			proxy_.get(), SLOT(layout_selected(const QString &)));
 		break;
 	}
-	default:
+	default: {
+		char const * tooltip = _(lyxaction.helpText(action)).c_str();
+ 
 		QToolButton * tb = 
-			new QToolButton(QPixmap(getPixmap(action).c_str()),
-			"FIXME", "FIXME", 
+			new QToolButton(getIconPixmap(action),
+			tooltip, tooltip,
 			proxy_.get(), SLOT(button_selected()), toolbars_.back());
 
 		map_[tb] = action;
  
-		QToolTip::add(tb, _(lyxaction.helpText(action)).c_str());
+		QToolTip::add(tb, tooltip);
 		break;
+	}
 	}
 }
 
