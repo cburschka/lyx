@@ -129,17 +129,23 @@ Menuset
 	Item "Toggle numbering|n" "math-number"
 	Item "Toggle numbering of line|u" "math-nonumber"
 #	Item "Toggle limits|l" "math-limits"
-	Submenu "Change limits type...|l" "edit_math_limits"
+	Submenu "Change limits type|l" "edit_math_limits"
 	Separator
-	Submenu "Change formula type...|t" "edit_math_mutate"
+	Submenu "Change formula type|f" "edit_math_mutate"
 	Separator
-	Submenu "Use computer algebra system|t" "edit_math_extern"
-
-	#Item "Line Top|T" "tabular-feature toggle-line-top"
-	#Item "Line Bottom|B" "tabular-feature toggle-line-bottom"
-	#Item "Line Left|L" "tabular-feature toggle-line-left"
-	#Item "Line Right|R" "tabular-feature toggle-line-right"
-	#Separator
+	Submenu "Use computer algebra system|s" "edit_math_extern"
+	Separator
+	Submenu "Alignment|A" "edit_math_align"
+	Separator
+	Item "Add Row|R" "tabular-feature append-row"
+	Item "Delete Row|D" "tabular-feature delete-row"
+	Item "Copy Row" "tabular-feature copy-row"
+	Item "Swap Rows" "tabular-feature swap-row"
+	Separator
+	Item "Add Column|C" "tabular-feature append-column"
+	Item "Delete Column|e" "tabular-feature delete-column"
+	Item "Copy Column" "tabular-feature copy-column"
+	Item "Swap Columns" "tabular-feature swap-column"
     End
 
     Menu "edit_math_limits"
@@ -160,18 +166,27 @@ Menuset
     End
 
     Menu "edit_math_mutate"
-	Item "Inline formula|I" "math-mutate simple"
-	Item "Displayed formula|D" "math-mutate equation"
-	Item "Eqnarray environment|q" "math-mutate eqnarray"
-	Item "Align environment|A" "math-mutate align"
-	Item "AlignAt environment" "math-mutate alignat"
-	Item "Flalign environment|f" "math-mutate flalign"
-	#Item "XAlignAt environment" "math-mutate xalignat"
-	#Item "XXAlignAt environment" "math-mutate xxalignat"
-	Item "Gather environment" "math-mutate gather"
-	Item "Multline environment" "math-mutate multline"
+	Item "Inline Formula|I" "math-mutate simple"
+	Item "Displayed Formula|D" "math-mutate equation"
+	Item "Eqnarray Environment|q" "math-mutate eqnarray"
+	Item "Align Environment|A" "math-mutate align"
+	Item "AlignAt Environment" "math-mutate alignat"
+	Item "Flalign Environment|f" "math-mutate flalign"
+	#Item "XAlignAt Environment" "math-mutate xalignat"
+	#Item "XXAlignAt Environment" "math-mutate xxalignat"
+	Item "Gather Environment" "math-mutate gather"
+	Item "Multline Environment" "math-mutate multline"
     End
 
+    Menu "edit_math_align"
+	Item "Align Left|L" "tabular-feature align-left"
+	Item "Align Center|C" "tabular-feature align-center"
+	Item "Align Right|R" "tabular-feature align-right"
+	Separator
+	Item "V.Align Top|T" "tabular-feature valign-top"
+	Item "V.Align Center|e" "tabular-feature valign-center"
+	Item "V.Align Bottom|B" "tabular-feature valign-bottom"
+    End
 #
 # INSERT MENU
 #
@@ -184,7 +199,7 @@ Menuset
 	Item "Label...|L" "label-insert"
 	Item "Footnote|F" "footnote-insert"
 	Item "Marginal Note|M" "marginalnote-insert"
-	Item "Short title" "optional-insert"
+	Item "Short Title" "optional-insert"
 	Item "Index Entry|I" "index-insert"
 	Item "URL...|U" "url-insert"
 	Item "Note|N" "note-insert"
@@ -206,7 +221,7 @@ Menuset
 	Item "Subscript|u" "command-sequence math-mode ; math-subscript ; font-free; "
 	Item "HFill|H" "hfill-insert"
 	Item "Hyphenation Point|P" "hyphenation-point-insert"
-	Item "Ligature break|k" "ligature-break-insert"
+	Item "Ligature Break|k" "ligature-break-insert"
 	Item "Protected Blank|B" "protected-space-insert"
 	Item "Linebreak|L" "break-line"
 	Item "Ellipsis|i" "dots-insert"
@@ -218,17 +233,17 @@ Menuset
     Menu "insert_math"
 	Item "Inline Formula|I" "math-mode"
 	Item "Display Formula|D" "math-display"
-	Item "Eqnarray environment|E" "command-sequence math-mode; math-mutate eqnarray;"
-	Item "AMS align environment|A" "command-sequence math-mode; math-mutate align;"
-	Item "AMS alignat environment|t" "command-sequence math-mode; math-mutate alignat;"
-	Item "AMS flalign environment|f" "command-sequence math-mode; math-mutate flalign;"
-	#Item "AMS xalignat environment|x" "command-sequence math-mode; math-mutate xalignat;"
-	#Item "AMS xxalignat environment" "command-sequence math-mode; math-mutate xxalignat;"
-	Item "AMS gather environment" "command-sequence math-mode; math-mutate gather;"
-	Item "AMS multline environment" "command-sequence math-mode; math-mutate multline;"
+	Item "Eqnarray Environment|E" "command-sequence math-mode; math-mutate eqnarray;"
+	Item "AMS align Environment|A" "command-sequence math-mode; math-mutate align;"
+	Item "AMS alignat Environment|t" "command-sequence math-mode; math-mutate alignat;"
+	Item "AMS flalign Environment|f" "command-sequence math-mode; math-mutate flalign;"
+	#Item "AMS xalignat Environment|x" "command-sequence math-mode; math-mutate xalignat;"
+	#Item "AMS xxalignat Environment" "command-sequence math-mode; math-mutate xxalignat;"
+	Item "AMS gather Environment" "command-sequence math-mode; math-mutate gather;"
+	Item "AMS multline Environment" "command-sequence math-mode; math-mutate multline;"
   Separator
-	Item "Array environment|y" "math-matrix 2 2"
-	Item "Cases environment|C" "math-insert \cases"
+	Item "Array Environment|y" "math-matrix 2 2"
+	Item "Cases Environment|C" "math-insert \cases"
   Separator
 	Submenu "Font Change|f" "insert_math_font"
 	Item "Math Panel|l" "math-panel"
