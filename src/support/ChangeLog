@@ -1,3 +1,8 @@
+2003-02-27  Ling Li  <ling@caltech.edu>
+
+	* lyxalgo.h (eliminate_duplicates): re-written to avoid the initial
+	sort.
+
 2003-02-25  Angus Leeming  <leeming@lyx.org>
 
 	* forkedcontr.C (timer): don't start a running timer.

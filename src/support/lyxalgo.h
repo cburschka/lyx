@@ -17,6 +17,8 @@
 #include <utility>
 #include <iterator>
 #include <algorithm>
+#include <set>
+
 
 namespace lyx {
 
@@ -91,9 +93,16 @@ count (Iterator first, Iterator last, T const & value)
 template<class C>
 void eliminate_duplicates(C & c)
 {
-	std::sort(c.begin(), c.end());
-	typename C::iterator p = std::unique(c.begin(), c.end());
-	c.erase(p, c.end());
+	C unique_c;
+	std::set<typename C::value_type> s;
+
+	for (typename C::iterator p = c.begin(); p != c.end(); ++p) {
+		if (s.find(*p) == s.end()) {
+			unique_c.push_back(*p);
+			s.insert(*p);
+		}
+	}
+	swap(c, unique_c);
 }
 
 } // namespace lyx

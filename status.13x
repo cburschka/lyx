@@ -34,9 +34,10 @@ What's new
 
 - new "polski" keymap, useful for entering Polish on a QWERTY keyboard
 
-- updated french and polish translation of menus
+- updates to the french and polish translation of menus
 
-- updates to the Extended and Customization manuals
+- updates to the Extended and Customization manuals; updates to the
+  french translations of the manuals
 
 ** Bug fixes
 
@@ -49,6 +50,8 @@ What's new
 
 - graphics that have been set to not display in LyX are no longer
   converted [bug #920]
+
+- fix bug where preview snippets would most of the time be processed twice
 
 - squash a potential bug in the PreviewLoader before it bites.
 
@@ -79,6 +82,9 @@ What's new
 
 - in the BibTeX dialog, fix the browsing mechanism of *.sty files and
   remove the unused Update button [bug #773, Qt only]
+
+- in the BibTeX dialog, for a bug where the list of .bib files would
+  get unnecessarily sorted [Bug #907, XForms only]
 
 - fix some dialogs to make OK the default button [bug #921, Qt only]
 
