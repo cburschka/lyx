@@ -65,7 +65,7 @@ external::DisplayType const defaultDisplayType = external::NoDisplay;
 
 unsigned int const defaultLyxScale = 100;
 
-string const defaultTemplateName = "RasterImage";
+string defaultTemplateName = "RasterImage";
 
 } // namespace anon
 
@@ -595,6 +595,10 @@ void InsetExternal::setParams(InsetExternalParams const & p,
 			      Buffer const & buffer)
 {
 	params_ = p;
+
+	// Subsequent calls to the InsetExternal::Params default constructor
+	// will use this.
+	defaultTemplateName = params_.templatename();
 
 	switch (getRenderType(params_)) {
 	case RENDERBUTTON: {
