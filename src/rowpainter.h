@@ -29,4 +29,25 @@ void refreshPar(BufferView const & bv, LyXText const & text,
 /// paint the rows of a text inset
 void paintTextInset(LyXText const & text, PainterInfo & pi);
 
+/// some space for drawing the 'nested' markers (in pixel)
+inline int nestMargin()
+{
+	return 15;
+}
+
+
+/// margin for changebar
+inline int changebarMargin()
+{
+	return 10;
+}
+
+
+/// right margin
+inline int rightMargin()
+{
+	return 30;
+}
+
+
 #endif // ROWPAINTER_H

@@ -186,7 +186,7 @@ string const freefont2string()
 
 
 // takes absolute x,y coordinates
-InsetBase * LyXText::checkInsetHit(int x, int y) const 
+InsetBase * LyXText::checkInsetHit(int x, int y) const
 {
 	par_type pit;
 	par_type end;
@@ -196,15 +196,17 @@ InsetBase * LyXText::checkInsetHit(int x, int y) const
 		       bv()->top_y() - yo_ + bv()->workHeight(),
 		       pit, end);
 
-	lyxerr << "checkInsetHit: x: " << x << " y: " << y << endl;
-	lyxerr << "  pit: " << pit << " end: " << end << endl;
+	lyxerr[Debug::DEBUG] << BOOST_CURRENT_FUNCTION
+			     << ": x: " << x << " y: " << y
+			     << "  pit: " << pit << " end: " << end << endl;
 	for (; pit != end; ++pit) {
 		InsetList::const_iterator iit = pars_[pit].insetlist.begin();
 		InsetList::const_iterator iend = pars_[pit].insetlist.end();
 		for (; iit != iend; ++iit) {
 			InsetBase * inset = iit->inset;
 #if 1
-			lyxerr << "examining inset " << inset << endl;
+			lyxerr[Debug::DEBUG]
+				<< "examining inset " << inset << endl;
 			if (theCoords.insets_.has(inset))
 				lyxerr
 					<< " xo: " << inset->xo() << "..." << inset->xo() + inset->width()
@@ -214,12 +216,13 @@ InsetBase * LyXText::checkInsetHit(int x, int y) const
 				lyxerr << " inset has no cached position";
 #endif
 			if (inset->covers(x, y)) {
-				lyxerr << "Hit inset: " << inset << endl;
+				lyxerr[Debug::DEBUG]
+					<< "Hit inset: " << inset << endl;
 				return inset;
 			}
 		}
 	}
-	lyxerr << "No inset hit. " << endl;
+	lyxerr[Debug::DEBUG] << "No inset hit. " << endl;
 	return 0;
 }
 
@@ -1448,21 +1451,21 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 	}
 
 	case LFUN_FINISHED_LEFT:
-		lyxerr << "handle LFUN_FINISHED_LEFT:\n" << cur << endl;
+		lyxerr[Debug::DEBUG] << "handle LFUN_FINISHED_LEFT:\n" << cur << endl;
 		break;
 
 	case LFUN_FINISHED_RIGHT:
-		lyxerr << "handle LFUN_FINISHED_RIGHT:\n" << cur << endl;
+		lyxerr[Debug::DEBUG] << "handle LFUN_FINISHED_RIGHT:\n" << cur << endl;
 		++cur.pos();
 		break;
 
 	case LFUN_FINISHED_UP:
-		lyxerr << "handle LFUN_FINISHED_UP:\n" << cur << endl;
+		lyxerr[Debug::DEBUG] << "handle LFUN_FINISHED_UP:\n" << cur << endl;
 		cursorUp(cur);
 		break;
 
 	case LFUN_FINISHED_DOWN:
-		lyxerr << "handle LFUN_FINISHED_DOWN:\n" << cur << endl;
+		lyxerr[Debug::DEBUG] << "handle LFUN_FINISHED_DOWN:\n" << cur << endl;
 		cursorDown(cur);
 		break;
 

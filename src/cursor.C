@@ -44,6 +44,7 @@
 #include "frontends/LyXView.h"
 
 #include <boost/assert.hpp>
+#include <boost/current_function.hpp>
 
 #include <sstream>
 
@@ -96,7 +97,7 @@ namespace {
 			double d = (x - xo) * (x - xo) + (y - yo) * (y - yo);
 			// '<=' in order to take the last possible position
 			// this is important for clicking behind \sum in e.g. '\sum_i a'
-			lyxerr << "i: " << i << " d: " << d << " best: " << best_dist << endl;
+			lyxerr[Debug::DEBUG] << "i: " << i << " d: " << d << " best: " << best_dist << endl;
 			if (d <= best_dist) {
 				best_dist = d;
 				result = it;
@@ -197,8 +198,8 @@ void LCursor::dispatch(FuncRequest const & cmd0)
 	FuncRequest cmd = cmd0;
 	LCursor safe = *this;
 
-	for ( ; size(); pop()) {
-		lyxerr << "LCursor::dispatch: cmd: " << cmd0 << endl << *this << endl;
+	for (; size(); pop()) {
+		lyxerr[Debug::DEBUG] << "LCursor::dispatch: cmd: " << cmd0 << endl << *this << endl;
 		BOOST_ASSERT(pos() <= lastpos());
 		BOOST_ASSERT(idx() <= lastidx());
 		BOOST_ASSERT(par() <= lastpar());
@@ -1001,7 +1002,7 @@ bool LCursor::goUpDown(bool up)
 
 void LCursor::handleFont(string const & font)
 {
-	lyxerr << "LCursor::handleFont: " << font << endl;
+	lyxerr[Debug::DEBUG] << BOOST_CURRENT_FUNCTION << ": " << font << endl;
 	string safe;
 	if (selection()) {
 		macroModeClose();
@@ -1150,5 +1151,3 @@ void LCursor::noUpdate()
 {
 	disp_.update(false);
 }
-
-

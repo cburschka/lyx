@@ -377,7 +377,9 @@ void LyXTabular::fixCellNums()
 	int cellno = 0;
 	for (int i = 0; i < rows_; ++i) {
 		for (int j = 0; j < columns_; ++j) {
-			cell_info[i][j].inset.setDrawFrame(InsetText::LOCKED);
+			// When debugging it can be nice to set
+			// this to true.
+			cell_info[i][j].inset.setDrawFrame(false);
 			cell_info[i][j].cellno = cellno++;
 		}
 		cell_info[i].back().right_line = true;

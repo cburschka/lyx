@@ -90,14 +90,6 @@ using std::endl;
 using std::string;
 
 
-/// some space for drawing the 'nested' markers (in pixel)
-extern int const NEST_MARGIN = 20;
-/// margin for changebar
-extern int const CHANGEBAR_MARGIN = 10;
-/// right margin
-extern int const RIGHT_MARGIN = 10;
-
-
 namespace {
 
 int numberOfSeparators(Paragraph const & par, Row const & row)
@@ -506,40 +498,26 @@ int LyXText::leftMargin(par_type pit, pos_type pos) const
 
 	string parindent = layout->parindent;
 
-	int x = NEST_MARGIN + CHANGEBAR_MARGIN;
+	int l_margin = 0;
 
-	x += font_metrics::signedWidth(tclass.leftmargin(), tclass.defaultfont());
+	if (xo_ == 0)
+		l_margin += changebarMargin();
 
-	// This is the way LyX handles LaTeX-Environments.
-	// I have had this idea very late, so it seems to be a
-	// later added hack and this is true
-	if (pars_[pit].getDepth() == 0) {
-		if (pars_[pit].layout() == tclass.defaultLayout()) {
-			// find the previous same level paragraph
-			if (pit != 0) {
-				par_type newpit =
-					depthHook(pit, paragraphs(), pars_[pit].getDepth());
-				if (newpit == pit && pars_[newpit].layout()->nextnoindent)
-					parindent.erase();
+	l_margin += font_metrics::signedWidth(tclass.leftmargin(), tclass.defaultfont());
+
+	if (pars_[pit].getDepth() != 0) {
+	// find the next level paragraph
+	par_type newpar = outerHook(pit, pars_);
+		if (newpar != par_type(pars_.size())) {
+			if (pars_[newpar].layout()->isEnvironment()) {
+				l_margin = leftMargin(newpar);
 			}
-		}
-	} else {
-		// find the next level paragraph
-		par_type newpar = outerHook(pit, pars_);
-
-		// Make a corresponding row. Need to call leftMargin()
-		// to check whether it is a sufficent paragraph.
-		if (newpar != par_type(pars_.size())
-		    && pars_[newpar].layout()->isEnvironment()) {
-			x = leftMargin(newpar);
-		}
-
-		if (newpar != par_type(paragraphs().size())
-		    && pars_[pit].layout() == tclass.defaultLayout()) {
-			if (pars_[newpar].params().noindent())
-				parindent.erase();
-			else
-				parindent = pars_[newpar].layout()->parindent;
+			if (pars_[pit].layout() == tclass.defaultLayout()) {
+				if (pars_[newpar].params().noindent())
+					parindent.erase();
+				else
+					parindent = pars_[newpar].layout()->parindent;
+			}
 		}
 	}
 
@@ -547,41 +525,41 @@ int LyXText::leftMargin(par_type pit, pos_type pos) const
 	switch (layout->margintype) {
 	case MARGIN_DYNAMIC:
 		if (!layout->leftmargin.empty())
-			x += font_metrics::signedWidth(layout->leftmargin,
+			l_margin += font_metrics::signedWidth(layout->leftmargin,
 						  tclass.defaultfont());
 		if (!pars_[pit].getLabelstring().empty()) {
-			x += font_metrics::signedWidth(layout->labelindent,
+			l_margin += font_metrics::signedWidth(layout->labelindent,
 						  labelfont);
-			x += font_metrics::width(pars_[pit].getLabelstring(),
+			l_margin += font_metrics::width(pars_[pit].getLabelstring(),
 					    labelfont);
-			x += font_metrics::width(layout->labelsep, labelfont);
+			l_margin += font_metrics::width(layout->labelsep, labelfont);
 		}
 		break;
 
 	case MARGIN_MANUAL:
-		x += font_metrics::signedWidth(layout->labelindent, labelfont);
+		l_margin += font_metrics::signedWidth(layout->labelindent, labelfont);
 		// The width of an empty par, even with manual label, should be 0
 		if (!pars_[pit].empty() && pos >= pars_[pit].beginOfBody()) {
 			if (!pars_[pit].getLabelWidthString().empty()) {
-				x += font_metrics::width(pars_[pit].getLabelWidthString(),
+				l_margin += font_metrics::width(pars_[pit].getLabelWidthString(),
 					       labelfont);
-				x += font_metrics::width(layout->labelsep, labelfont);
+				l_margin += font_metrics::width(layout->labelsep, labelfont);
 			}
 		}
 		break;
 
 	case MARGIN_STATIC:
-		x += font_metrics::signedWidth(layout->leftmargin, tclass.defaultfont()) * 4
+		l_margin += font_metrics::signedWidth(layout->leftmargin, tclass.defaultfont()) * 4
 			/ (pars_[pit].getDepth() + 4);
 		break;
 
 	case MARGIN_FIRST_DYNAMIC:
 		if (layout->labeltype == LABEL_MANUAL) {
 			if (pos >= pars_[pit].beginOfBody()) {
-				x += font_metrics::signedWidth(layout->leftmargin,
+				l_margin += font_metrics::signedWidth(layout->leftmargin,
 							  labelfont);
 			} else {
-				x += font_metrics::signedWidth(layout->labelindent,
+				l_margin += font_metrics::signedWidth(layout->labelindent,
 							  labelfont);
 			}
 		} else if (pos != 0
@@ -589,17 +567,17 @@ int LyXText::leftMargin(par_type pit, pos_type pos) const
 			   // theorems (JMarc)
 			   || (layout->labeltype == LABEL_STATIC
 			       && layout->latextype == LATEX_ENVIRONMENT
-			       && !isFirstInSequence(pit, paragraphs()))) {
-			x += font_metrics::signedWidth(layout->leftmargin,
+			       && !isFirstInSequence(pit, pars_))) {
+			l_margin += font_metrics::signedWidth(layout->leftmargin,
 						  labelfont);
 		} else if (layout->labeltype != LABEL_TOP_ENVIRONMENT
 			   && layout->labeltype != LABEL_BIBLIO
 			   && layout->labeltype !=
 			   LABEL_CENTERED_TOP_ENVIRONMENT) {
-			x += font_metrics::signedWidth(layout->labelindent,
+			l_margin += font_metrics::signedWidth(layout->labelindent,
 						  labelfont);
-			x += font_metrics::width(layout->labelsep, labelfont);
-			x += font_metrics::width(pars_[pit].getLabelstring(),
+			l_margin += font_metrics::width(layout->labelsep, labelfont);
+			l_margin += font_metrics::width(pars_[pit].getLabelstring(),
 					    labelfont);
 		}
 		break;
@@ -617,19 +595,18 @@ int LyXText::leftMargin(par_type pit, pos_type pos) const
 		for ( ; rit != end; ++rit)
 			if (rit->fill() < minfill)
 				minfill = rit->fill();
-		x += font_metrics::signedWidth(layout->leftmargin,
+		l_margin += font_metrics::signedWidth(layout->leftmargin,
 			tclass.defaultfont());
-		x += minfill;
+		l_margin += minfill;
 #endif
 		// also wrong, but much shorter.
-		x += maxwidth_ / 2;
+		l_margin += maxwidth_ / 2;
 		break;
 	}
 	}
 
-
 	if (!pars_[pit].params().leftIndent().zero())
-		x += pars_[pit].params().leftIndent().inPixels(maxwidth_);
+		l_margin += pars_[pit].params().leftIndent().inPixels(maxwidth_);
 
 	LyXAlignment align;
 
@@ -645,20 +622,20 @@ int LyXText::leftMargin(par_type pit, pos_type pos) const
 	       || layout->labeltype == LABEL_CENTERED_TOP_ENVIRONMENT
 	       || (layout->labeltype == LABEL_STATIC
 	           && layout->latextype == LATEX_ENVIRONMENT
-	           && !isFirstInSequence(pit, paragraphs())))
+	           && !isFirstInSequence(pit, pars_)))
 	    && align == LYX_ALIGN_BLOCK
 	    && !pars_[pit].params().noindent()
 	    // in tabulars and ert paragraphs are never indented!
-	    && (pars_[pit].ownerCode() != InsetOld::TABULAR_CODE
-	            && pars_[pit].ownerCode() != InsetOld::ERT_CODE)
+	    && (pars_[pit].ownerCode() != InsetBase::TEXT_CODE
+	            && pars_[pit].ownerCode() != InsetBase::ERT_CODE)
 	    && (pars_[pit].layout() != tclass.defaultLayout()
 	        || bv()->buffer()->params().paragraph_separation ==
 	           BufferParams::PARSEP_INDENT))
 	{
-		x += font_metrics::signedWidth(parindent, tclass.defaultfont());
+		l_margin += font_metrics::signedWidth(parindent, tclass.defaultfont());
 	}
 
-	return x;
+	return l_margin;
 }
 
 
@@ -666,13 +643,20 @@ int LyXText::rightMargin(Paragraph const & par) const
 {
 	LyXTextClass const & tclass = bv()->buffer()->params().getLyXTextClass();
 
-	return
-		RIGHT_MARGIN
+	// We do not want rightmargins on inner texts.
+	if (bv()->text() != this)
+		return 0;
+
+	int const r_margin =
+		::rightMargin()
 		+ font_metrics::signedWidth(tclass.rightmargin(),
-				       tclass.defaultfont())
+					    tclass.defaultfont())
 		+ font_metrics::signedWidth(par.layout()->rightmargin,
-				       tclass.defaultfont())
+					    tclass.defaultfont())
 		* 4 / (par.getDepth() + 4);
+
+	return r_margin;
+
 }
 
 

@@ -55,7 +55,7 @@ InsetCollapsable::InsetCollapsable(BufferParams const & bp,
 	: InsetText(bp), label("Label"), status_(status), openinlined_(false)
 {
 	setAutoBreakRows(true);
-	setDrawFrame(InsetText::ALWAYS);
+	setDrawFrame(true);
 	setFrameColor(LColor::collapsableframe);
 	setInsetName("Collapsable");
 	setButtonLabel();
@@ -253,16 +253,16 @@ InsetBase * InsetCollapsable::editXY(LCursor & cur, int x, int y) const
 
 void InsetCollapsable::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 {
-// 	lyxerr << "InsetCollapsable::priv_dispatch (begin): cmd: " << cmd
-// 	       << "  button y: " << button_dim.y2 
-// 	       << "  coll/inline/open: " << status_ << endl;
+//	lyxerr << "InsetCollapsable::priv_dispatch (begin): cmd: " << cmd
+//	       << "  button y: " << button_dim.y2
+//	       << "  coll/inline/open: " << status_ << endl;
 	switch (cmd.action) {
 	case LFUN_MOUSE_PRESS:
 		if (status_ == Inlined)
 			InsetText::priv_dispatch(cur, cmd);
 		else if (status_ == Open && !hitButton(cmd))
 			InsetText::priv_dispatch(cur, cmd);
-		else 
+		else
 		  cur.noUpdate();
 		break;
 

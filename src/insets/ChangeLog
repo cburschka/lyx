@@ -1,4 +1,12 @@
+2004-08-14  Lars Gullik Bjonnes  <larsbj@lyx.org>
 
+	* insettext.[Ch] (setDrawFrame): take a bool, get rid of the
+	DrawFrame enum.
+
+	* insetcaption.C (InsetCaption): modify call to setDrawFrame
+	* insetcollapsable.C (InsetCollapsable): ditto
+	* insetenv.C (InsetEnvironment): ditto
+	
 2004-08-14  André Pönitz  <poenitz@gmx.net>
 
 	* inset.[Ch]:
@@ -9,16 +17,16 @@
 	* insetoptarg.C (latexOptional): if the optional argument contains
 	a ']' enclose it in {curly brackets}
 
-	* insettext.C (editXY): 
-	* insettabular.C (editXY): 
-	* insetcollapsable.C (editXY): 
+	* insettext.C (editXY):
+	* insettabular.C (editXY):
+	* insetcollapsable.C (editXY):
 	* insetbase.C (editXY): constify
 
 	* insetcollapsable.C (priv_dispatch): on a mouse press event, do
 	not ask for an update if we did nothing; on a mouse release, make
 	sure that the cursor is  moved to the right position; on a mouse
 	release, exit from the inset instead of invoking a
-	LFUN_FINISHED_RIGHT. 
+	LFUN_FINISHED_RIGHT.
 
 	* insetbase.C (dispatch): before invoking dispatch, set cursor
 	result to dispatch=update=true.

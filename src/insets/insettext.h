@@ -39,15 +39,6 @@ class Row;
 class InsetText : public UpdatableInset {
 public:
 	///
-	enum DrawFrame {
-		///
-		NEVER = 0,
-		///
-		LOCKED,
-		///
-		ALWAYS
-	};
-	///
 	explicit InsetText(BufferParams const &);
 	///
 	explicit InsetText();
@@ -102,7 +93,7 @@ public:
 	///
 	bool getAutoBreakRows() const { return autoBreakRows_; }
 	///
-	void setDrawFrame(DrawFrame);
+	void setDrawFrame(bool);
 	///
 	LColor_color frameColor() const;
 	///
@@ -174,7 +165,7 @@ private:
 	///
 	bool autoBreakRows_;
 	///
-	DrawFrame drawFrame_;
+	bool drawFrame_;
 	/** We store the LColor::color value as an int to get LColor.h out
 	 *  of the header file.
 	 */

@@ -47,9 +47,6 @@ using std::endl;
 using std::max;
 using std::string;
 
-extern int NEST_MARGIN;
-extern int CHANGEBAR_MARGIN;
-
 
 namespace {
 
@@ -129,8 +126,10 @@ RowPainter::RowPainter(BufferView const & bv, Painter & pain,
 	//lyxerr << "RowPainter: x: " << x_ << " xo: " << xo << " yo: " << yo
 	//	<< " pit->y: " << pit_->y
 	//	<< " row: " << (pars_[pit_].size() ? pars_[pit_].getChar(row_.pos()) : 'X') << endl;
+
 	RowMetrics m = text_.computeRowMetrics(pit, row_);
 	x_ = m.x + xo_;
+
 	separator_ = m.separator;
 	hfill_ = m.hfill;
 	label_hfill_ = m.label_hfill;
@@ -544,11 +543,12 @@ void RowPainter::paintDepthBar()
 	}
 
 	for (Paragraph::depth_type i = 1; i <= depth; ++i) {
-		int const w = NEST_MARGIN / 5;
-		int x = int(w * i + xo_);
+		int const w = nestMargin() / 5;
+		int x = xo_ + w * i;
 		// only consider the changebar space if we're drawing outer left
 		if (xo_ == 0)
-			x += CHANGEBAR_MARGIN;
+			x += changebarMargin();
+
 		int const h = yo_ + row_.height() - 1 - (i - next_depth - 1) * 3;
 
 		pain_.line(x, yo_, x, h, LColor::depthbar);
@@ -718,7 +718,7 @@ void RowPainter::paintLast()
 		LyXFont const font = getLabelFont();
 		int const size = int(0.75 * font_metrics::maxAscent(font));
 		int const y = yo_ + row_.baseline() - size;
-		int x = is_rtl ? NEST_MARGIN + CHANGEBAR_MARGIN: width_ - size;
+		int x = is_rtl ? nestMargin() + changebarMargin() : width_ - size;
 
 		if (width_ - int(row_.width()) <= size)
 			x += (size - width_ + row_.width() + 1) * (is_rtl ? -1 : 1);

@@ -187,7 +187,7 @@ InsetBase * createInset(BufferView * bv, FuncRequest const & cmd)
 		if (!up) {
 			auto_ptr<InsetCaption> inset(new InsetCaption(params));
 			inset->setAutoBreakRows(true);
-			inset->setDrawFrame(InsetText::LOCKED);
+			inset->setDrawFrame(true);
 			inset->setFrameColor(LColor::captionframe);
 			return inset.release();
 		}

@@ -69,7 +69,7 @@ using std::vector;
 
 
 InsetText::InsetText(BufferParams const & bp)
-	: autoBreakRows_(false), drawFrame_(NEVER),
+	: autoBreakRows_(false), drawFrame_(false),
 	  frame_color_(LColor::insetframe), text_(0)
 {
 	paragraphs().push_back(Paragraph());
@@ -205,7 +205,7 @@ void InsetText::draw(PainterInfo & pi, int x, int y) const
 
 	text_.draw(pi, x, y + bv->top_y());
 
-	if (drawFrame_ == ALWAYS || drawFrame_ == LOCKED)
+	if (drawFrame_)
 		drawFrame(pi.pain, x, y);
 }
 
@@ -306,7 +306,7 @@ void InsetText::edit(LCursor & cur, bool left)
 
 InsetBase * InsetText::editXY(LCursor & cur, int x, int y) const
 {
-	lyxerr << "InsetText::edit xy" << endl;
+	lyxerr[Debug::DEBUG] << BOOST_CURRENT_FUNCTION << endl;
 	old_par = -1;
 	return text_.editXY(cur, x, y);
 	//sanitizeEmptyText(cur.bv());
@@ -448,9 +448,9 @@ void InsetText::setAutoBreakRows(bool flag)
 }
 
 
-void InsetText::setDrawFrame(DrawFrame how)
+void InsetText::setDrawFrame(bool flag)
 {
-	drawFrame_ = how;
+	drawFrame_ = flag;
 }
 
 

@@ -44,7 +44,7 @@ InsetCaption::InsetCaption(BufferParams const & bp)
 	: InsetText(bp)
 {
 	setAutoBreakRows(true);
-	setDrawFrame(InsetText::LOCKED);
+	setDrawFrame(true);
 	setFrameColor(LColor::captionframe);
 }
 

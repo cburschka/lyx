@@ -32,7 +32,7 @@ InsetEnvironment::InsetEnvironment
 {
 	setInsetName(name);
 	setAutoBreakRows(true);
-	setDrawFrame(ALWAYS);
+	setDrawFrame(true);
 }
 
 
