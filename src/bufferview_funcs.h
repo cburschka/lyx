@@ -46,7 +46,7 @@ void update_and_apply_freefont(BufferView * bv, std::string const & data);
 void apply_freefont(BufferView * bv);
 
 
-void put_selection_at(BufferView * bv, PosIterator & cur,
+void put_selection_at(BufferView * bv, PosIterator const & cur,
 		      int length, bool backwards);
 
 
