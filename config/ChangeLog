@@ -1,3 +1,12 @@
+2002-03-15  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* lyxinclude.m4 (LYX_PROG_CXX): also look at $CXX when searching
+	for a good C++ compiler
+	(LYX_PATH_XFORMS): small cleanups
+	(LYX_USE_XFORMS_IMAGE_LOADER): override LIBS instead of LDFLAGS;
+	set the conditional USE_BASIC_IMAGE_LOADER here. Add a flag
+	xforsm-image-loader to version info.
+
 2002-03-14  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* lyxinclude.m4 (LYX_PATH_XFORMS): set XFORMS_NAME to the name of

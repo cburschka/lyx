@@ -560,14 +560,12 @@ fi])
 
 
 dnl Usage LYX_PATH_XFORMS: Checks for xforms library and flags
-dnl   If it is found, the variable XFORMS_NAME is set to its name on disk, 
-dnl   and XFORMS_LIBS is set to the relevant -l flag.
+dnl   If it is found, the variable XFORMS_LIB is set to the relevant -l flag.
 AC_DEFUN(LYX_PATH_XFORMS,[
 ### Check for xforms library
-AC_CHECK_LIB(forms, fl_initialize, XFORMS_NAME="forms", 
-  [AC_CHECK_LIB(xforms, fl_initialize, XFORMS_NAME="xforms", 
+AC_CHECK_LIB(forms, fl_initialize, XFORMS_LIB="-lforms", 
+  [AC_CHECK_LIB(xforms, fl_initialize, XFORMS_LIB="-lxforms", 
     [LYX_LIB_ERROR(libforms or libxforms,xforms)])])
-test -n "$XFORMS_NAME" && XFORMS_LIB=-l$XFORMS_NAME
 AC_SUBST(XFORMS_LIB)
 ### Check for xforms headers
 lyx_cv_forms_h_location="<forms.h>"
@@ -624,7 +622,7 @@ AC_CHECK_FUNCS(flimage_dup,[
     lyx_use_xforms_image_loader=yes
     AC_CHECK_FUNCS(flimage_enable_ps)])])
 LIBS=$save_LIBS
-
+test $lyx_use_xforms_image_loader = yes && lyx_flags="$lyx_flags xforms-image-loader"
 ### If the gui cannot load images itself, then we default to the
 ### very simple one in graphics/GraphicsImageXPM.[Ch]
 AM_CONDITIONAL(USE_BASIC_IMAGE_LOADER,
