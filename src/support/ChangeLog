@@ -1,3 +1,7 @@
+2001-02-16  John Levon  <moz@compsoc.man.ac.uk>
+
+	* syscontr.h: fix header include
+
 2001-02-28  Baruch Even  <baruch@ev-en.org>
 
 	* filetools.C: Removed dependency on syscall.h
@@ -16,7 +20,7 @@
 
 	* filetools.C (IsLyXFilename):
 	* filetools.C (IsSGMLFilename): test if extension is suffix and not
-	only containned.
+	only contained.
 
 2001-02-14  Lars Gullik Bjønnes  <larsbj@lyx.org>
 

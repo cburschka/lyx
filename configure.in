@@ -11,12 +11,8 @@ LYX_GET_VERSION(${srcdir}/src/version.h)
 AC_CANONICAL_SYSTEM
 AC_VALIDATE_CACHE_SYSTEM_TYPE
 
-AC_ARG_WITH(lyx-suffix,
-  [  --with-lyx-suffix       install lyx files as lyx-<suffix>],
-  [lyxname="lyx-$withval"
-   program_suffix=-$withval],
-  [lyxname=lyx])
-
+LYX_VERSION_SUFFIX
+ 
 AM_INIT_AUTOMAKE($lyxname, $VERSION)
 
 # The list of languages known to LyX

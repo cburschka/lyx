@@ -294,7 +294,7 @@ void InsetFormula::Validate(LaTeXFeatures & features) const
 }
 
 
-void InsetFormula::Read(Buffer const *, LyXLex & lex)
+void InsetFormula::Read(Buffer const *buffer, LyXLex & lex)
 {
 	istream & is = lex.getStream();
 
@@ -325,9 +325,8 @@ void InsetFormula::Read(Buffer const *, LyXLex & lex)
 			" or missing \\end_inset!" << endl;
 	}
 
-#ifdef DEBUG
-	Write(lyxerr);
-#endif
+	if (lyxerr.debugging(Debug::MATHED))
+		Write(buffer, lyxerr);
 }
 
 

@@ -1,10 +1,17 @@
+2001-02-16  John Levon  <moz@compsoc.man.ac.uk>
+
+	* reLyX/Makefile.am: fix uninstall
+
+	* reLyX/configure.in: --with-lyx-version
+
 2001-02-26  José Matos  <jamatos@fep.up.pt>
 
 	* templates/docbook_template.lyx: removed.
 	* templates/docbook_article.lyx: updated file, to replace the previous.
 
 	* templates/linuxdoctemplate.lyx: removed.
-	* templates/linuxdoc_article.lyx: updated file, to replace the previous.
+	* templates/linuxdoc_article.lyx: updated file, to replace the
+	previous.
 
 2001-02-11  José Matos  <jamatos@fep.up.pt>
 

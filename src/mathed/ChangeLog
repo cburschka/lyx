@@ -1,3 +1,8 @@
+2001-02-23  John Levon  <moz@compsoc.man.ac.uk>
+
+	* math_parser.C:
+	* formula.C: make DEBUG into lyxerr
+
 2001-03-01  Lars Gullik Bjønnes  <larsbj@trylle.birdstep.com>
 
 	* math_macrotemplate.h: make noncopyable, remove last arg to
@@ -199,7 +204,8 @@
 
 2001-02-14  André Pönitz  <poenitz@htwm.de>
 
-	* array.[Ch]: "deep" copy constructor and assignment operator for MathArray
+	* array.[Ch]: "deep" copy constructor and assignment operator for
+	MathArray 
 
 	* math_iter.[Ch]: seperate Copy() from Copy(int, int)
 
@@ -208,7 +214,8 @@
 
 2001-02-14  André Pönitz  <poenitz@htwm.de>
 
-	* array.[Ch]: remove constructor and  enums ARRAY_MIN_SIZE and ARRAY_STEP
+	* array.[Ch]: remove constructor and  enums ARRAY_MIN_SIZE and
+	ARRAY_STEP 
 
 	* math_iter.C: default-construct and resize array
 

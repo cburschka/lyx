@@ -1,3 +1,8 @@
+2001-03-01  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* bufferview_funcs.C (ToggleAndShow): do not provide optional
+	arguments in function implementation.
+
 2001-02-28  Lars Gullik Bjønnes  <larsbj@trylle.birdstep.com>
 
 	* BufferView_pimpl.C: add <ctime>

@@ -4,7 +4,7 @@
 #pragma interface
 #endif
 
-#include <LString.h>
+#include "LString.h"
 
 
 class Systemcalls;

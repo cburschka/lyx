@@ -286,7 +286,7 @@ string const CurrentState(BufferView * bv)
 /* -------> Does the actual toggle job of the XxxCB() calls above.
  * Also shows the current font state.
  */
-void ToggleAndShow(BufferView * bv, LyXFont const & font, bool toggleall=true)
+void ToggleAndShow(BufferView * bv, LyXFont const & font, bool toggleall)
 {
 	if (bv->available()) { 
 		LyXText * text = bv->getLyXText();

@@ -875,9 +875,7 @@ void mathed_parse(MathedArray & array, unsigned flags = 0,
 					crow = mt->getRowSt();
 				}
 				
-#ifdef DEBUG
-				lyxerr << "MATH BEGIN[" << mathed_env << "]" << endl;
-#endif
+				lyxerr[Debug::MATHED] << "MATH BEGIN[" << mathed_env << "]" << endl;
 			} else {
 //	     lyxerr << "MATHCRO[" << yytext << "]";
 				MathMacro * p = 
@@ -924,9 +922,7 @@ void mathed_parse(MathedArray & array, unsigned flags = 0,
 			} else {
 				mathed_label = yytext.data();
 			}
-#ifdef DEBUG
-			lyxerr << "Label[" << mathed_label << "]" << endl;
-#endif
+			lyxerr[Debug::MATHED] << "Label[" << mathed_label << "]" << endl;
 			break;
 		}
 		

@@ -122,14 +122,15 @@ flags:
        --with-extra-lib=DIRECTORY/lib --with-extra-inc=DIRECTORY/include
     If DIRECTORY is not specified, the current prefix is used.
 
-  o --with-lyx-suffix=STRING adds the given suffix to the names of the 
-    LyX binary and scripts, and the library directory. For example,
-    "--with-lyx-suffix=1.1.6" would install a binary "lyx-1.1.6", and
-    create a directory "/usr/share/lyx-1.1.6", install "reLyX-1.1.6" etc.
-    Additionally, LyX will look for the user configuration file in e.g.
-    "$HOME/.lyx-1.1.6". This feature is useful for installing more than
-    one version of LyX on the same machine.
+  o --with-lyx-version will install LyX as lyx-<version>, e.g. lyx-1.1.6
+    The LyX data directory will be something like <whatever>/lyx-1.1.6/.
+    Additionally your user configuration files will be found in e.g.
+    $HOME/.lyx-1.1.6
 
+    You can use this feature to install more than one version of LyX on
+    the same system. You can optionally specify a "version" of your own,
+    by doing something like : ./configure --with-lyx-version=latestcvs
+ 
 There are also flags to control the internationalization support in
 LyX:
 
