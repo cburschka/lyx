@@ -167,8 +167,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.2.0cvs\n"
-"POT-Creation-Date: 2002-12-16 23:52+0100\n"
-"PO-Revision-Date: 2002-12-17 00:02+0100\n"
+"POT-Creation-Date: 2002-12-19 18:57+0100\n"
+"PO-Revision-Date: 2002-12-19 19:00+0100\n"
 "Last-Translator:  Adrien Rebollo <adrien.rebollo@wanadoo.fr>\n"
 "Language-Team: lyxfr <http://perso.wanadoo.fr/adrien.rebollo/lyxfr/lyxfr."
 "html>\n"
@@ -217,13 +217,13 @@ msgstr ""
 #: ../src/frontends/xforms/forms/form_url.fd:116
 #: ../src/frontends/xforms/forms/form_wrap.fd:242
 #: ../src/frontends/qt2/ui/QAskForTextDialog.ui:124
-#: ../src/frontends/qt2/ui/QBibtexDialog.ui:81
+#: ../src/frontends/qt2/ui/QBibtexDialog.ui:279
 #: ../src/frontends/qt2/ui/QCitationDialog.ui:92
 #: ../src/frontends/qt2/ui/QERTDialog.ui:147
 #: ../src/frontends/qt2/ui/QGraphicsDialog.ui:1138
 #: ../src/frontends/qt2/ui/QIndexDialog.ui:128
 #: ../src/frontends/qt2/ui/QSendtoDialog.ui:90
-#: src/frontends/qt2/QSpellchecker.C:123
+#: src/frontends/qt2/QSpellchecker.C:122
 msgid "OK"
 msgstr "OK"
 
@@ -1166,9 +1166,9 @@ msgstr "OK"
 #: ../src/frontends/xforms/forms/form_maths_space.fd:170
 #: ../src/frontends/xforms/forms/form_maths_style.fd:80
 #: ../src/frontends/qt2/ui/QGraphicsDialog.ui:1190
-#: ../src/frontends/qt2/ui/QMathMatrixDialog.ui:261
 #: ../src/frontends/qt2/ui/QPrintDialog.ui:358
 #: ../src/frontends/qt2/ui/QTabularCreateDialog.ui:291
+#: ../src/frontends/qt2/ui/QMathMatrixDialog.ui:261
 #: ../src/frontends/qt2/ui/QTabularDialog.ui:1334
 #: src/frontends/controllers/ButtonController.h:73 src/LyXAction.C:129
 msgid "Close"
@@ -1181,7 +1181,7 @@ msgstr "Fonctions"
 
 #: ../src/frontends/xforms/forms/form_maths_panel.fd:81
 #: ../src/frontends/qt2/ui/QMathDialog.ui:511 ../lib/languages:32
-#: src/ext_l10n.h:249 src/frontends/xforms/FormMathsPanel.C:152
+#: src/frontends/xforms/FormMathsPanel.C:152
 msgid "Greek"
 msgstr "Grec"
 
@@ -2480,8 +2480,8 @@ msgstr "Défaut"
 #: ../src/frontends/qt2/ui/QFloatDialog.ui:22
 #: ../src/frontends/qt2/ui/QGraphicsDialog.ui:22
 #: ../src/frontends/qt2/ui/QParagraphDialog.ui:22
-#: ../src/frontends/qt2/ui/QPrefPathsModule.ui:22
 #: ../src/frontends/qt2/ui/QTexinfoDialog.ui:22
+#: ../src/frontends/qt2/ui/QPrefPathsModule.ui:22
 msgid "Form1"
 msgstr ""
 
@@ -2511,7 +2511,7 @@ msgstr "Puces"
 #: ../src/frontends/qt2/ui/BulletsModuleBase.ui:104
 #: ../src/frontends/qt2/ui/BulletsModuleBase.ui:121
 #: ../src/frontends/qt2/ui/BulletsModuleBase.ui:251
-#: src/frontends/qt2/QDocument.C:128 src/frontends/qt2/QDocument.C:138
+#: src/frontends/qt2/QDocument.C:135 src/frontends/qt2/QDocument.C:145
 msgid "default"
 msgstr "défaut"
 
@@ -2718,8 +2718,8 @@ msgstr "Hauteur :"
 
 #: ../src/frontends/qt2/ui/PaperModuleBase.ui:130
 #: ../src/frontends/qt2/ui/QMinipageDialog.ui:75
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:365
 #: ../src/frontends/qt2/ui/QWrapDialog.ui:75
+#: ../src/frontends/qt2/ui/QTabularDialog.ui:365
 msgid "&Width:"
 msgstr "Largeur :"
 
@@ -2775,7 +2775,6 @@ msgstr "Copyright"
 #: ../src/frontends/qt2/ui/QMinipageDialog.ui:312
 #: ../src/frontends/qt2/ui/QParagraphDialog.ui:722
 #: ../src/frontends/qt2/ui/QPreambleDialog.ui:149
-#: ../src/frontends/qt2/ui/QPrefsDialog.ui:121
 #: ../src/frontends/qt2/ui/QRefDialog.ui:308
 #: ../src/frontends/qt2/ui/QSearchDialog.ui:306
 #: ../src/frontends/qt2/ui/QShowFileDialog.ui:92
@@ -2786,6 +2785,7 @@ msgstr "Copyright"
 #: ../src/frontends/qt2/ui/QURLDialog.ui:171
 #: ../src/frontends/qt2/ui/QVCLogDialog.ui:107
 #: ../src/frontends/qt2/ui/QWrapDialog.ui:318
+#: ../src/frontends/qt2/ui/QPrefsDialog.ui:121
 msgid "&Close"
 msgstr "&Fermer"
 
@@ -2833,7 +2833,6 @@ msgstr "Le nom du format tel qu'il apparaîtra dans le document"
 #: ../src/frontends/qt2/ui/QExternalDialog.ui:111
 #: ../src/frontends/qt2/ui/QFloatDialog.ui:288
 #: ../src/frontends/qt2/ui/QIncludeDialog.ui:356
-#: ../src/frontends/qt2/ui/QMathMatrixDialog.ui:250
 #: ../src/frontends/qt2/ui/QMinipageDialog.ui:274
 #: ../src/frontends/qt2/ui/QParagraphDialog.ui:700
 #: ../src/frontends/qt2/ui/QPreambleDialog.ui:111
@@ -2841,6 +2840,7 @@ msgstr "Le nom du format tel qu'il apparaîtra dans le document"
 #: ../src/frontends/qt2/ui/QTabularCreateDialog.ui:280
 #: ../src/frontends/qt2/ui/QURLDialog.ui:156
 #: ../src/frontends/qt2/ui/QWrapDialog.ui:280
+#: ../src/frontends/qt2/ui/QMathMatrixDialog.ui:250
 msgid "&OK"
 msgstr "&OK"
 
@@ -2848,49 +2848,81 @@ msgstr "&OK"
 msgid "Bibtex"
 msgstr "BibTeX"
 
-#. /
-#: ../src/frontends/qt2/ui/QBibtexDialog.ui:96
-#: ../src/frontends/qt2/ui/QCitationDialog.ui:122
-#: ../src/frontends/qt2/ui/QIndexDialog.ui:143
-#: ../src/frontends/qt2/ui/QSendtoDialog.ui:120
-#: src/frontends/controllers/ButtonController.h:72 src/LyXAction.C:152
-#: src/lyxfunc.C:928
-msgid "Cancel"
-msgstr "Annuler"
-
 # contrainte de longueur
-#: ../src/frontends/qt2/ui/QBibtexDialog.ui:109
+#: ../src/frontends/qt2/ui/QBibtexDialog.ui:45
 #, fuzzy
 msgid "Databa&ses"
 msgstr "Base de D."
 
 # contrainte de longueur
-#: ../src/frontends/qt2/ui/QBibtexDialog.ui:121
+#: ../src/frontends/qt2/ui/QBibtexDialog.ui:57
 msgid "BibTeX database to use"
 msgstr "Base de D. BibTeX"
 
-#: ../src/frontends/qt2/ui/QBibtexDialog.ui:135
-#, fuzzy
-msgid "&Add..."
-msgstr "&Ajouter ..."
+# contrainte de longueur
+#: ../src/frontends/qt2/ui/QBibtexDialog.ui:75
+msgid "Available BibTeX databases"
+msgstr "Bases de D. BibTeX disponibles"
+
+#: ../src/frontends/qt2/ui/QBibtexDialog.ui:86
+#: ../src/frontends/qt2/ui/QSpellcheckerDialog.ui:75
+#: ../src/frontends/qt2/ui/QTabularDialog.ui:246
+msgid "&Add"
+msgstr "&Ajouter"
 
 # contrainte de longueur
-#: ../src/frontends/qt2/ui/QBibtexDialog.ui:143
+#: ../src/frontends/qt2/ui/QBibtexDialog.ui:90
 msgid "Add a BibTeX database file"
 msgstr "Ajouter un fichier BibTeX"
 
-#: ../src/frontends/qt2/ui/QBibtexDialog.ui:154
+# contrainte de longueur
+#: ../src/frontends/qt2/ui/QBibtexDialog.ui:101
+#, fuzzy
+msgid "Add a BibTeX file manually"
+msgstr "Ajouter un fichier BibTeX"
+
+#: ../src/frontends/qt2/ui/QBibtexDialog.ui:112
+#: ../src/frontends/qt2/ui/QPrefKeyboardModule.ui:76
+#: ../src/frontends/qt2/ui/QPrefUIModule.ui:104
+#, fuzzy
+msgid "Bro&wse..."
+msgstr "Parcourir..."
+
+# contrainte de longueur
+#: ../src/frontends/qt2/ui/QBibtexDialog.ui:120
+#, fuzzy
+msgid "Browse for a BibTeX database file"
+msgstr "Ajouter un fichier BibTeX"
+
+#: ../src/frontends/qt2/ui/QBibtexDialog.ui:131
+msgid "&Delete"
+msgstr "&Effacer"
+
+#: ../src/frontends/qt2/ui/QBibtexDialog.ui:135
+msgid "Remove the selected database"
+msgstr "Enlever la base de D. sélectionnée"
+
+#: ../src/frontends/qt2/ui/QBibtexDialog.ui:186
+#, fuzzy
+msgid "St&yle"
+msgstr "&Style"
+
+#: ../src/frontends/qt2/ui/QBibtexDialog.ui:194
+msgid "The BibTeX style"
+msgstr "Le style BibTeX"
+
+#: ../src/frontends/qt2/ui/QBibtexDialog.ui:205
 #: ../src/frontends/qt2/ui/QExternalDialog.ui:290
 #: ../src/frontends/qt2/ui/QIncludeDialog.ui:90
 #, fuzzy
 msgid "&Browse..."
 msgstr "&Parcourir ..."
 
-#: ../src/frontends/qt2/ui/QBibtexDialog.ui:162
+#: ../src/frontends/qt2/ui/QBibtexDialog.ui:213
 msgid "Choose a style file"
 msgstr "Choisir un fichier de style"
 
-#: ../src/frontends/qt2/ui/QBibtexDialog.ui:173
+#: ../src/frontends/qt2/ui/QBibtexDialog.ui:224
 #: ../src/frontends/qt2/ui/QLogDialog.ui:88
 #: ../src/frontends/qt2/ui/QRefDialog.ui:67
 #: ../src/frontends/qt2/ui/QTocDialog.ui:171
@@ -2898,40 +2930,28 @@ msgstr "Choisir un fichier de style"
 msgid "&Update"
 msgstr "&Mise à jour"
 
-#: ../src/frontends/qt2/ui/QBibtexDialog.ui:181
+#: ../src/frontends/qt2/ui/QBibtexDialog.ui:232
 #, fuzzy
 msgid "Update style list"
 msgstr "Mettre à jour l'affichage"
 
-#: ../src/frontends/qt2/ui/QBibtexDialog.ui:211
+#. /
+#: ../src/frontends/qt2/ui/QBibtexDialog.ui:294
+#: ../src/frontends/qt2/ui/QCitationDialog.ui:122
+#: ../src/frontends/qt2/ui/QIndexDialog.ui:143
+#: ../src/frontends/qt2/ui/QSendtoDialog.ui:120
+#: src/frontends/controllers/ButtonController.h:72 src/LyXAction.C:152
+#: src/lyxfunc.C:934
+msgid "Cancel"
+msgstr "Annuler"
+
+#: ../src/frontends/qt2/ui/QBibtexDialog.ui:307
 msgid "Add bibliography to &TOC"
 msgstr "Ajouter la bibliographie à la &TdM"
 
-#: ../src/frontends/qt2/ui/QBibtexDialog.ui:215
+#: ../src/frontends/qt2/ui/QBibtexDialog.ui:311
 msgid "Add bibliography to the table of contents"
 msgstr "Ajouter la bibliographie à la table des matières"
-
-#: ../src/frontends/qt2/ui/QBibtexDialog.ui:226
-msgid "&Delete"
-msgstr "&Effacer"
-
-#: ../src/frontends/qt2/ui/QBibtexDialog.ui:230
-msgid "Remove the selected database"
-msgstr "Enlever la base de D. sélectionnée"
-
-# contrainte de longueur
-#: ../src/frontends/qt2/ui/QBibtexDialog.ui:245
-msgid "Available BibTeX databases"
-msgstr "Bases de D. BibTeX disponibles"
-
-#: ../src/frontends/qt2/ui/QBibtexDialog.ui:277
-#, fuzzy
-msgid "St&yle"
-msgstr "&Style"
-
-#: ../src/frontends/qt2/ui/QBibtexDialog.ui:285
-msgid "The BibTeX style"
-msgstr "Le style BibTeX"
 
 #: ../src/frontends/qt2/ui/QCharacterDialog.ui:22
 #: ../src/frontends/qt2/ui/QCharacterDialog.ui:66
@@ -2960,7 +2980,7 @@ msgstr "Série police :"
 #. language settings
 #: ../src/frontends/qt2/ui/QCharacterDialog.ui:152
 #: ../src/frontends/qt2/ui/QCharacterDialog.ui:238
-#: src/frontends/qt2/QDocumentDialog.C:70 src/frontends/qt2/QPrefsDialog.C:119
+#: src/frontends/qt2/QDocumentDialog.C:70 src/frontends/qt2/QPrefsDialog.C:120
 #: src/frontends/xforms/FormDocument.C:343
 #: src/frontends/xforms/FormPreferences.C:246
 msgid "Language"
@@ -3035,9 +3055,9 @@ msgstr "Appliquer tous les changements automatiquement"
 #: ../src/frontends/qt2/ui/QMinipageDialog.ui:293
 #: ../src/frontends/qt2/ui/QParagraphDialog.ui:711
 #: ../src/frontends/qt2/ui/QPreambleDialog.ui:130
-#: ../src/frontends/qt2/ui/QPrefsDialog.ui:110
 #: ../src/frontends/qt2/ui/QSendtoDialog.ui:109
 #: ../src/frontends/qt2/ui/QWrapDialog.ui:299
+#: ../src/frontends/qt2/ui/QPrefsDialog.ui:110
 msgid "&Apply"
 msgstr "&Appliquer"
 
@@ -3053,8 +3073,8 @@ msgstr "Citation"
 #: ../src/frontends/qt2/ui/QGraphicsDialog.ui:1098
 #: ../src/frontends/qt2/ui/QMinipageDialog.ui:234
 #: ../src/frontends/qt2/ui/QParagraphDialog.ui:668
-#: ../src/frontends/qt2/ui/QPrefsDialog.ui:67
 #: ../src/frontends/qt2/ui/QWrapDialog.ui:240
+#: ../src/frontends/qt2/ui/QPrefsDialog.ui:67
 msgid "&Restore"
 msgstr "&Restaurer"
 
@@ -3088,10 +3108,10 @@ msgstr "Précédent"
 
 #: ../src/frontends/qt2/ui/QCitationDialog.ui:213
 #: ../src/frontends/qt2/ui/QCitationDialog.ui:362
-#: ../src/frontends/qt2/ui/QPrefConvertersModule.ui:83
-#: ../src/frontends/qt2/ui/QPrefFileformatsModule.ui:94
 #: ../src/frontends/qt2/ui/QSendtoDialog.ui:176
 #: ../src/frontends/qt2/ui/QTexinfoDialog.ui:124
+#: ../src/frontends/qt2/ui/QPrefConvertersModule.ui:83
+#: ../src/frontends/qt2/ui/QPrefFileformatsModule.ui:94
 msgid "New Item"
 msgstr "Nouvel Élément"
 
@@ -3464,7 +3484,7 @@ msgstr "Affichage"
 #: ../src/frontends/qt2/ui/QParagraphDialog.ui:113
 #: ../src/frontends/qt2/ui/QPrefLatexModule.ui:68
 #: src/frontends/controllers/ControlGraphics.C:156
-#: src/frontends/qt2/QDocument.C:112 src/frontends/qt2/QDocumentDialog.C:343
+#: src/frontends/qt2/QDocument.C:112 src/frontends/qt2/QDocumentDialog.C:341
 #: src/lyxfont.C:554
 msgid "Default"
 msgstr "Défaut"
@@ -3861,84 +3881,31 @@ msgstr ""
 msgid "Open this panel as a separate window"
 msgstr ""
 
-#: ../src/frontends/qt2/ui/QMathMatrixDialog.ui:68
-#: ../src/frontends/qt2/ui/QTabularCreateDialog.ui:60
-msgid "&Rows:"
-msgstr "&Rangées :"
-
-#: ../src/frontends/qt2/ui/QMathMatrixDialog.ui:76
-#: ../src/frontends/qt2/ui/QMathMatrixDialog.ui:99
-#: ../src/frontends/qt2/ui/QTabularCreateDialog.ui:68
-#: ../src/frontends/qt2/ui/QTabularCreateDialog.ui:91
-msgid "Number of rows"
-msgstr "Nombre de rangées"
-
-#: ../src/frontends/qt2/ui/QMathMatrixDialog.ui:110
-#: ../src/frontends/qt2/ui/QTabularCreateDialog.ui:102
-msgid "&Columns:"
-msgstr "&Colonnes :"
-
-#: ../src/frontends/qt2/ui/QMathMatrixDialog.ui:118
-#: ../src/frontends/qt2/ui/QMathMatrixDialog.ui:141
-#: ../src/frontends/qt2/ui/QTabularCreateDialog.ui:110
-#: ../src/frontends/qt2/ui/QTabularCreateDialog.ui:133
-msgid "Number of columns"
-msgstr "Nombre de colonnes"
-
-#: ../src/frontends/qt2/ui/QMathMatrixDialog.ui:203
-#: ../src/frontends/qt2/ui/QTabularCreateDialog.ui:231
-msgid "Resize this to the correct table dimensions"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QMathMatrixDialog.ui:311
-#: ../src/frontends/qt2/ui/QMinipageDialog.ui:87
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:377
-msgid "Top"
-msgstr "&Haut"
-
-#: ../src/frontends/qt2/ui/QMathMatrixDialog.ui:317
-#: ../src/frontends/qt2/ui/QParagraphDialog.ui:89
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:121
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:383
-#: src/frontends/controllers/ControlGraphics.C:158
-#: src/frontends/qt2/QTabular.C:181 src/frontends/xforms/FormParagraph.C:302
-#, fuzzy
-msgid "Center"
-msgstr "Centré"
-
-#: ../src/frontends/qt2/ui/QMathMatrixDialog.ui:323
-#: ../src/frontends/qt2/ui/QMinipageDialog.ui:99
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:389
-msgid "Bottom"
-msgstr "&Bas"
-
-#: ../src/frontends/qt2/ui/QMathMatrixDialog.ui:332
-#: ../src/frontends/qt2/ui/QMinipageDialog.ui:108
-#: ../src/frontends/qt2/ui/QWrapDialog.ui:114
-msgid "Vertical alignment"
-msgstr "Alignement vertical"
-
-#: ../src/frontends/qt2/ui/QMathMatrixDialog.ui:351
-#, fuzzy
-msgid "&Vertical:"
-msgstr "Espacement vertical"
-
-#: ../src/frontends/qt2/ui/QMathMatrixDialog.ui:380
-msgid "Horizontal alignment per column (t,c,b)"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QMathMatrixDialog.ui:399
-#, fuzzy
-msgid "&Horizontal:"
-msgstr "Alignement Horizontal|#H"
-
 #: ../src/frontends/qt2/ui/QMinipageDialog.ui:23
 msgid "Minipage settings"
 msgstr "Options de minipage"
 
+#: ../src/frontends/qt2/ui/QMinipageDialog.ui:87
+#: ../src/frontends/qt2/ui/QMathMatrixDialog.ui:311
+#: ../src/frontends/qt2/ui/QTabularDialog.ui:377
+msgid "Top"
+msgstr "&Haut"
+
 #: ../src/frontends/qt2/ui/QMinipageDialog.ui:93
 msgid "Middle"
 msgstr "&Milieu"
+
+#: ../src/frontends/qt2/ui/QMinipageDialog.ui:99
+#: ../src/frontends/qt2/ui/QMathMatrixDialog.ui:323
+#: ../src/frontends/qt2/ui/QTabularDialog.ui:389
+msgid "Bottom"
+msgstr "&Bas"
+
+#: ../src/frontends/qt2/ui/QMinipageDialog.ui:108
+#: ../src/frontends/qt2/ui/QWrapDialog.ui:114
+#: ../src/frontends/qt2/ui/QMathMatrixDialog.ui:332
+msgid "Vertical alignment"
+msgstr "Alignement vertical"
 
 #: ../src/frontends/qt2/ui/QMinipageDialog.ui:119
 msgid "A&lignment:"
@@ -3969,18 +3936,28 @@ msgid "Justified"
 msgstr "Justifié"
 
 #: ../src/frontends/qt2/ui/QParagraphDialog.ui:77
+#: ../src/frontends/qt2/ui/QWrapDialog.ui:93
 #: ../src/frontends/qt2/ui/QTabularDialog.ui:115
-#: ../src/frontends/qt2/ui/QWrapDialog.ui:93 src/frontends/qt2/QTabular.C:180
-#: src/frontends/xforms/FormParagraph.C:309
+#: src/frontends/qt2/QTabular.C:180 src/frontends/xforms/FormParagraph.C:309
 msgid "Left"
 msgstr "À gauche"
 
 #: ../src/frontends/qt2/ui/QParagraphDialog.ui:83
+#: ../src/frontends/qt2/ui/QWrapDialog.ui:99
 #: ../src/frontends/qt2/ui/QTabularDialog.ui:127
-#: ../src/frontends/qt2/ui/QWrapDialog.ui:99 src/frontends/qt2/QTabular.C:182
-#: src/frontends/xforms/FormParagraph.C:316
+#: src/frontends/qt2/QTabular.C:182 src/frontends/xforms/FormParagraph.C:316
 msgid "Right"
 msgstr "À droite"
+
+#: ../src/frontends/qt2/ui/QParagraphDialog.ui:89
+#: ../src/frontends/qt2/ui/QMathMatrixDialog.ui:317
+#: ../src/frontends/qt2/ui/QTabularDialog.ui:121
+#: ../src/frontends/qt2/ui/QTabularDialog.ui:383
+#: src/frontends/controllers/ControlGraphics.C:158
+#: src/frontends/qt2/QTabular.C:181 src/frontends/xforms/FormParagraph.C:302
+#, fuzzy
+msgid "Center"
+msgstr "Centré"
 
 #: ../src/frontends/qt2/ui/QParagraphDialog.ui:119 src/bufferview_funcs.C:188
 #: src/frontends/qt2/QDocument.C:97
@@ -3994,8 +3971,8 @@ msgstr ""
 #: ../src/frontends/qt2/ui/QParagraphDialog.ui:137
 #: ../src/frontends/qt2/ui/QParagraphDialog.ui:326
 #: ../src/frontends/qt2/ui/QParagraphDialog.ui:375
-#: src/frontends/qt2/QDocument.C:103 src/frontends/qt2/QDocument.C:112
-#: src/frontends/qt2/QDocumentDialog.C:343
+#: src/frontends/qt2/QDocument.C:103 src/frontends/qt2/QDocument.C:113
+#: src/frontends/qt2/QDocumentDialog.C:342
 msgid "Custom"
 msgstr "Paramétré"
 
@@ -4140,6 +4117,774 @@ msgstr "&Éditer ..."
 msgid "Edit the pre-amble in an external editor"
 msgstr "Éditer le préambule dans un éditeur externe"
 
+#: ../src/frontends/qt2/ui/QPrintDialog.ui:22 src/frontends/qt2/QPrint.C:39
+#: src/frontends/xforms/FormPrint.C:36 src/LyXAction.C:140
+msgid "Print"
+msgstr "Imprimer"
+
+#: ../src/frontends/qt2/ui/QPrintDialog.ui:101
+msgid "Page number to print from"
+msgstr "Numéro de la page à partir de laquelle imprimer"
+
+#: ../src/frontends/qt2/ui/QPrintDialog.ui:112
+#, fuzzy
+msgid "&to"
+msgstr "à"
+
+#: ../src/frontends/qt2/ui/QPrintDialog.ui:131
+msgid "Page number to print to"
+msgstr "Numéro de la page jusqu'à laquelle imprimer"
+
+#: ../src/frontends/qt2/ui/QPrintDialog.ui:144
+#, fuzzy
+msgid "Fro&m"
+msgstr "Depuis|#D"
+
+#: ../src/frontends/qt2/ui/QPrintDialog.ui:152
+#: ../src/frontends/qt2/ui/QPrintDialog.ui:171
+msgid "Print all pages"
+msgstr "Imprime toutes les pages"
+
+#: ../src/frontends/qt2/ui/QPrintDialog.ui:163
+msgid "&All"
+msgstr "&Toutes"
+
+#: ../src/frontends/qt2/ui/QPrintDialog.ui:184
+#, fuzzy
+msgid "Print &odd-numbered pages"
+msgstr "Imprime seulement les pages impaires"
+
+#: ../src/frontends/qt2/ui/QPrintDialog.ui:199
+#, fuzzy
+msgid "Print &even-numbered pages"
+msgstr "Imprime seulement les pages paires"
+
+#: ../src/frontends/qt2/ui/QPrintDialog.ui:214
+msgid "Re&verse order"
+msgstr "&Ordre inverse"
+
+#: ../src/frontends/qt2/ui/QPrintDialog.ui:218
+msgid "Print in reverse order"
+msgstr "Imprime à partir de la derniére page"
+
+#: ../src/frontends/qt2/ui/QPrintDialog.ui:258
+msgid "Number of copies"
+msgstr "Nombre d'exemplaires"
+
+#: ../src/frontends/qt2/ui/QPrintDialog.ui:273
+msgid "&Collate"
+msgstr "Accoler"
+
+#: ../src/frontends/qt2/ui/QPrintDialog.ui:277
+msgid "Collate copies"
+msgstr "Accoler les exemplaires"
+
+#: ../src/frontends/qt2/ui/QPrintDialog.ui:347
+msgid "&Print"
+msgstr "&Imprimer"
+
+#: ../src/frontends/qt2/ui/QPrintDialog.ui:375
+msgid "Print Destination"
+msgstr "Destination"
+
+#: ../src/frontends/qt2/ui/QPrintDialog.ui:397
+msgid "P&rinter"
+msgstr "Imprimante"
+
+#: ../src/frontends/qt2/ui/QPrintDialog.ui:405
+msgid "Send output to the printer"
+msgstr "Envoie le résultat à l'imprimante"
+
+#: ../src/frontends/qt2/ui/QPrintDialog.ui:416
+msgid "Send output to the given printer"
+msgstr "Envoie le résultat à l'imprimante donnée"
+
+#: ../src/frontends/qt2/ui/QPrintDialog.ui:427
+msgid "&File"
+msgstr "&Fichier"
+
+#: ../src/frontends/qt2/ui/QPrintDialog.ui:431
+#: ../src/frontends/qt2/ui/QPrintDialog.ui:446
+msgid "Send output to a file"
+msgstr "Envoie le résultat à un fichier"
+
+#: ../src/frontends/qt2/ui/QRefDialog.ui:22
+#: ../lib/layouts/g-brief-en.layout:494 src/frontends/xforms/FormRef.C:37
+msgid "Reference"
+msgstr "Référence"
+
+#: ../src/frontends/qt2/ui/QRefDialog.ui:71
+msgid "Update the reference list"
+msgstr "Met à jour la liste des références"
+
+#: ../src/frontends/qt2/ui/QRefDialog.ui:89 src/frontends/qt2/QRef.C:129
+msgid "&Goto"
+msgstr "&Aller"
+
+#: ../src/frontends/qt2/ui/QRefDialog.ui:93
+msgid "Move the document cursor to reference"
+msgstr "Déplace le curseur à la référence"
+
+#: ../src/frontends/qt2/ui/QRefDialog.ui:106
+msgid "Sort"
+msgstr "Trier"
+
+#: ../src/frontends/qt2/ui/QRefDialog.ui:110
+msgid "Sort references in alphabetical order"
+msgstr "Trie les références par ordre aphabétique"
+
+#: ../src/frontends/qt2/ui/QRefDialog.ui:125
+#, fuzzy
+msgid "<reference>"
+msgstr "Préférences"
+
+#: ../src/frontends/qt2/ui/QRefDialog.ui:131
+#, fuzzy
+msgid "<page>"
+msgstr "Minipage"
+
+#: ../src/frontends/qt2/ui/QRefDialog.ui:137
+msgid "on page <page>"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QRefDialog.ui:143
+msgid "<reference> on page <page>"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QRefDialog.ui:149
+#, fuzzy
+msgid "Formatted reference"
+msgstr "Jolie Référence"
+
+#: ../src/frontends/qt2/ui/QRefDialog.ui:165
+msgid "Reference as it appears in output"
+msgstr "Référence telle qu'elle sera imprimée"
+
+#: ../src/frontends/qt2/ui/QRefDialog.ui:176
+msgid "&Reference:"
+msgstr "Référence :"
+
+#: ../src/frontends/qt2/ui/QRefDialog.ui:198
+#, fuzzy
+msgid "&Format:"
+msgstr "Formats"
+
+#: ../src/frontends/qt2/ui/QRefDialog.ui:224
+msgid "&Name:"
+msgstr "Nom :"
+
+#: ../src/frontends/qt2/ui/QRefDialog.ui:321
+#, fuzzy
+msgid "Available references in selected document:"
+msgstr "Références disponibles"
+
+#: ../src/frontends/qt2/ui/QRefDialog.ui:343
+msgid "Available references"
+msgstr "Références disponibles"
+
+#: ../src/frontends/qt2/ui/QRefDialog.ui:354
+#, fuzzy
+msgid "&Document:"
+msgstr "Document"
+
+#: ../src/frontends/qt2/ui/QSearchDialog.ui:22
+msgid "Search and replace"
+msgstr "Rechercher et Remplacer"
+
+#: ../src/frontends/qt2/ui/QSearchDialog.ui:51
+msgid "&Find:"
+msgstr "Rechercher :"
+
+#: ../src/frontends/qt2/ui/QSearchDialog.ui:108
+msgid "Replace &with:"
+msgstr "Remplacer par :"
+
+#: ../src/frontends/qt2/ui/QSearchDialog.ui:161
+msgid "Case &sensitive"
+msgstr "Selon la casse"
+
+#: ../src/frontends/qt2/ui/QSearchDialog.ui:172
+msgid "Match whole words onl&y"
+msgstr "Mots complets seulement"
+
+#: ../src/frontends/qt2/ui/QSearchDialog.ui:250
+msgid "Find &Next"
+msgstr "Suivant"
+
+#: ../src/frontends/qt2/ui/QSearchDialog.ui:269
+#: ../src/frontends/qt2/ui/QSpellcheckerDialog.ui:60
+#: ../src/frontends/qt2/ui/QThesaurusDialog.ui:187
+msgid "&Replace"
+msgstr "Remplacer"
+
+#: ../src/frontends/qt2/ui/QSearchDialog.ui:284
+msgid "Replace &All "
+msgstr "Remplacer tout"
+
+#: ../src/frontends/qt2/ui/QSearchDialog.ui:295
+msgid "Search &backwards"
+msgstr "Rechercher en arrière"
+
+#: ../src/frontends/qt2/ui/QSendtoDialog.ui:22
+#, fuzzy
+msgid "Custom Export"
+msgstr "Client"
+
+#: ../src/frontends/qt2/ui/QSendtoDialog.ui:45
+#, fuzzy
+msgid "&Command:"
+msgstr "commande"
+
+#: ../src/frontends/qt2/ui/QSendtoDialog.ui:60
+#, fuzzy
+msgid "&Export formats:"
+msgstr "Format d'exportation|#e"
+
+#: ../src/frontends/qt2/ui/QSendtoDialog.ui:168
+msgid "Process the converted file with this command ($$FName = file name)"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QSendtoDialog.ui:192
+#, fuzzy
+msgid "Available export converters"
+msgstr "Modèles disponibles"
+
+#: ../src/frontends/qt2/ui/QShowFileDialog.ui:22
+msgid "File: "
+msgstr "Fichier :"
+
+#: ../src/frontends/qt2/ui/QSpellcheckerDialog.ui:22
+#: src/frontends/qt2/QPrefsDialog.C:122 src/frontends/qt2/QSpellchecker.C:35
+#: src/frontends/xforms/FormSpellchecker.C:33
+msgid "Spellchecker"
+msgstr "Correcteur Orthographique"
+
+#: ../src/frontends/qt2/ui/QSpellcheckerDialog.ui:45
+msgid "Suggestions:"
+msgstr "Suggestions :"
+
+#: ../src/frontends/qt2/ui/QSpellcheckerDialog.ui:64
+msgid "Replace word with current choice"
+msgstr "Remplace le mot par le choix sélectionné"
+
+#: ../src/frontends/qt2/ui/QSpellcheckerDialog.ui:79
+msgid "Add the word to your personal dictionary"
+msgstr "Ajoute le mot à votre dictionnaire personnel"
+
+#: ../src/frontends/qt2/ui/QSpellcheckerDialog.ui:90
+msgid "&Ignore"
+msgstr "Ignorer"
+
+#: ../src/frontends/qt2/ui/QSpellcheckerDialog.ui:94
+msgid "Ignore this word"
+msgstr "Ignore le mot"
+
+#: ../src/frontends/qt2/ui/QSpellcheckerDialog.ui:105
+msgid "&Accept"
+msgstr "Accepter"
+
+#: ../src/frontends/qt2/ui/QSpellcheckerDialog.ui:109
+msgid "Accept word for this session"
+msgstr "Accepte ce mot durant cette session"
+
+#: ../src/frontends/qt2/ui/QSpellcheckerDialog.ui:152
+msgid "How far spellchecking has got"
+msgstr "État d'avancement de la correction"
+
+#: ../src/frontends/qt2/ui/QSpellcheckerDialog.ui:163
+msgid "Suggestions"
+msgstr "Suggestions"
+
+#: ../src/frontends/qt2/ui/QSpellcheckerDialog.ui:195
+msgid "Replacement:"
+msgstr "Remplacement :"
+
+#: ../src/frontends/qt2/ui/QSpellcheckerDialog.ui:210
+msgid "Current word"
+msgstr "Mot actuel"
+
+#: ../src/frontends/qt2/ui/QSpellcheckerDialog.ui:263
+msgid "Replace with selected word"
+msgstr "Remplace par le mot sélectionné"
+
+#: ../src/frontends/qt2/ui/QSpellcheckerDialog.ui:274
+msgid "&Start..."
+msgstr "&Commencer..."
+
+#: ../src/frontends/qt2/ui/QSpellcheckerDialog.ui:278
+msgid "Start spellcheck"
+msgstr "Commence la correction"
+
+#: ../src/frontends/qt2/ui/QTabularCreateDialog.ui:26
+#: src/frontends/qt2/QTabularCreate.C:31
+msgid "Insert table"
+msgstr "Insérer un tableau"
+
+#: ../src/frontends/qt2/ui/QTabularCreateDialog.ui:60
+#: ../src/frontends/qt2/ui/QMathMatrixDialog.ui:68
+msgid "&Rows:"
+msgstr "&Rangées :"
+
+#: ../src/frontends/qt2/ui/QTabularCreateDialog.ui:68
+#: ../src/frontends/qt2/ui/QTabularCreateDialog.ui:91
+#: ../src/frontends/qt2/ui/QMathMatrixDialog.ui:76
+#: ../src/frontends/qt2/ui/QMathMatrixDialog.ui:99
+msgid "Number of rows"
+msgstr "Nombre de rangées"
+
+#: ../src/frontends/qt2/ui/QTabularCreateDialog.ui:102
+#: ../src/frontends/qt2/ui/QMathMatrixDialog.ui:110
+msgid "&Columns:"
+msgstr "&Colonnes :"
+
+#: ../src/frontends/qt2/ui/QTabularCreateDialog.ui:110
+#: ../src/frontends/qt2/ui/QTabularCreateDialog.ui:133
+#: ../src/frontends/qt2/ui/QMathMatrixDialog.ui:118
+#: ../src/frontends/qt2/ui/QMathMatrixDialog.ui:141
+msgid "Number of columns"
+msgstr "Nombre de colonnes"
+
+#: ../src/frontends/qt2/ui/QTabularCreateDialog.ui:231
+#: ../src/frontends/qt2/ui/QMathMatrixDialog.ui:203
+msgid "Resize this to the correct table dimensions"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QTexinfoDialog.ui:57
+msgid "LaTeX classes"
+msgstr "Classes LaTeX"
+
+#: ../src/frontends/qt2/ui/QTexinfoDialog.ui:63
+msgid "LaTeX styles"
+msgstr "Styles LaTeX"
+
+#: ../src/frontends/qt2/ui/QTexinfoDialog.ui:69
+msgid "BibTeX styles"
+msgstr "Styles BibTeX"
+
+#: ../src/frontends/qt2/ui/QTexinfoDialog.ui:78
+msgid "Selected classes or styles"
+msgstr "Classes ou styles sélectionnés"
+
+#: ../src/frontends/qt2/ui/QTexinfoDialog.ui:110
+msgid "Show &path"
+msgstr "Afficher le chemin"
+
+#: ../src/frontends/qt2/ui/QTexinfoDialog.ui:114
+msgid "Toggles view of the file list"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QTexinfoDialog.ui:133
+msgid "Installed files"
+msgstr "Fichiers installés"
+
+#: ../src/frontends/qt2/ui/QTexinfoDialog.ui:180
+msgid "&Rescan"
+msgstr "&Rafraîchir"
+
+#: ../src/frontends/qt2/ui/QTexinfoDialog.ui:184
+msgid "Built new file list"
+msgstr "A reconstruit la liste des fichiers"
+
+#: ../src/frontends/qt2/ui/QTexinfoDialog.ui:199
+msgid "&View"
+msgstr "Visualiser"
+
+#: ../src/frontends/qt2/ui/QTexinfoDialog.ui:203
+msgid ""
+"Show contents of marked file. Only possible when files are shown with path"
+msgstr ""
+"Affiche le contenu du fichier sélectionné. Seulement possible quand le "
+"chemin est affiché."
+
+#: ../src/frontends/qt2/ui/QTexinfoDialog.ui:256
+msgid "Close this dialog"
+msgstr "Fermer cette fenêtre"
+
+#: ../src/frontends/qt2/ui/QThesaurusDialog.ui:22
+#: ../lib/layouts/aapaper.inc:113 ../lib/layouts/aapaper.layout:77
+#: ../lib/ui/default.ui:79 src/frontends/qt2/QThesaurus.C:31
+#: src/frontends/xforms/FormThesaurus.C:39
+msgid "Thesaurus"
+msgstr "Dictionnaire de Synonymes"
+
+#: ../src/frontends/qt2/ui/QThesaurusDialog.ui:79
+msgid "Entry"
+msgstr "Entrée"
+
+#: ../src/frontends/qt2/ui/QThesaurusDialog.ui:110
+msgid "Thesaurus entries"
+msgstr "Entrées du Dictionnaire"
+
+#: ../src/frontends/qt2/ui/QThesaurusDialog.ui:131
+msgid "Select a related word"
+msgstr "Sélectionne un synonyme"
+
+#: ../src/frontends/qt2/ui/QThesaurusDialog.ui:157
+msgid "&Selection"
+msgstr "&Sélection"
+
+#: ../src/frontends/qt2/ui/QThesaurusDialog.ui:165
+#: ../src/frontends/qt2/ui/QThesaurusDialog.ui:176
+msgid "The selected entry"
+msgstr "L'entrée sélectionnée"
+
+#: ../src/frontends/qt2/ui/QThesaurusDialog.ui:191
+msgid "Replace the entry with the selection"
+msgstr "Remplace l'entrée par la sélection"
+
+#: ../src/frontends/qt2/ui/QTocDialog.ui:22
+msgid "Table Of Contents"
+msgstr "Table des Matières"
+
+#: ../src/frontends/qt2/ui/QTocDialog.ui:60
+msgid "&Type"
+msgstr "Type"
+
+#: ../src/frontends/qt2/ui/QTocDialog.ui:109
+msgid "Contents list"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QURLDialog.ui:22
+msgid "Insert URL"
+msgstr "Insérer une URL"
+
+#: ../src/frontends/qt2/ui/QURLDialog.ui:45
+msgid "&URL"
+msgstr "&URL"
+
+#: ../src/frontends/qt2/ui/QURLDialog.ui:53
+#: ../src/frontends/qt2/ui/QURLDialog.ui:94 ../lib/layouts/amsdefs.inc:223
+#: src/frontends/qt2/QURL.C:33
+msgid "URL"
+msgstr "URL"
+
+#: ../src/frontends/qt2/ui/QURLDialog.ui:64
+msgid "&Name"
+msgstr "&Nom"
+
+#: ../src/frontends/qt2/ui/QURLDialog.ui:72
+#: ../src/frontends/qt2/ui/QURLDialog.ui:83
+msgid "Name associated with the URL"
+msgstr "Nom associé à l'URL"
+
+#: ../src/frontends/qt2/ui/QURLDialog.ui:120
+msgid "&Generate hyperlink"
+msgstr "&Créer un lien hypertexte"
+
+#: ../src/frontends/qt2/ui/QURLDialog.ui:124
+msgid "Output as a hyperlink ?"
+msgstr "Imprimer comme lien hypertexte ?"
+
+#: ../src/frontends/qt2/ui/QVCLogDialog.ui:22
+msgid "Version control log"
+msgstr "Historique de Contrôle de Version"
+
+# contrainte de longueur
+#: ../src/frontends/qt2/ui/QWrapDialog.ui:23 src/frontends/qt2/QWrap.C:36
+#: src/frontends/xforms/FormWrap.C:33
+#, fuzzy
+msgid "Wrap Options"
+msgstr "Autres Options :"
+
+#: ../src/frontends/qt2/ui/QWrapDialog.ui:87
+#, fuzzy
+msgid "Default (outer)"
+msgstr "Répertoire par défaut"
+
+#: ../src/frontends/qt2/ui/QWrapDialog.ui:105
+#, fuzzy
+msgid "Outer"
+msgstr "Autre"
+
+# contrainte de longueur
+#: ../src/frontends/qt2/ui/QWrapDialog.ui:125
+#, fuzzy
+msgid "&Placement:"
+msgstr "Emplacement"
+
+#: ../src/frontends/qt2/ui/QMathMatrixDialog.ui:351
+#, fuzzy
+msgid "&Vertical:"
+msgstr "Espacement vertical"
+
+#: ../src/frontends/qt2/ui/QMathMatrixDialog.ui:380
+msgid "Horizontal alignment per column (t,c,b)"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QMathMatrixDialog.ui:399
+#, fuzzy
+msgid "&Horizontal:"
+msgstr "Alignement Horizontal|#H"
+
+#: ../src/frontends/qt2/ui/QTabularDialog.ui:22
+#, fuzzy
+msgid "Table Settings"
+msgstr "Options de minipage"
+
+#: ../src/frontends/qt2/ui/QTabularDialog.ui:63
+#, fuzzy
+msgid "&Table Settings"
+msgstr "Options de minipage"
+
+#: ../src/frontends/qt2/ui/QTabularDialog.ui:82
+#, fuzzy
+msgid "&Horizontal alignment:"
+msgstr "Alignement Horizontal|#H"
+
+#: ../src/frontends/qt2/ui/QTabularDialog.ui:97
+#, fuzzy
+msgid "&Multicolumn"
+msgstr "Multi-Colonnes|M"
+
+#: ../src/frontends/qt2/ui/QTabularDialog.ui:101
+msgid "Merge cells"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QTabularDialog.ui:109
+#: src/frontends/qt2/QTabular.C:184 src/frontends/xforms/FormParagraph.C:295
+#, fuzzy
+msgid "Block"
+msgstr "Noir"
+
+#: ../src/frontends/qt2/ui/QTabularDialog.ui:136
+#, fuzzy
+msgid "Horizontal alignment in column"
+msgstr "Alignement Horizontal|#H"
+
+#: ../src/frontends/qt2/ui/QTabularDialog.ui:168
+#, fuzzy
+msgid "Column"
+msgstr "Colonnes"
+
+#: ../src/frontends/qt2/ui/QTabularDialog.ui:187
+#, fuzzy
+msgid "A&dd"
+msgstr "Ajouter"
+
+#: ../src/frontends/qt2/ui/QTabularDialog.ui:195
+#, fuzzy
+msgid "Append column (right)"
+msgstr "Ajouter Colonne|#C"
+
+#: ../src/frontends/qt2/ui/QTabularDialog.ui:206
+#, fuzzy
+msgid "De&lete"
+msgstr "&Effacer"
+
+#: ../src/frontends/qt2/ui/QTabularDialog.ui:214
+#, fuzzy
+msgid "Delete current column"
+msgstr "Supprimer Colonne|p"
+
+#: ../src/frontends/qt2/ui/QTabularDialog.ui:227
+#, fuzzy
+msgid "Row"
+msgstr "Rangées"
+
+#: ../src/frontends/qt2/ui/QTabularDialog.ui:254
+msgid "Append row (below)"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QTabularDialog.ui:265
+#, fuzzy
+msgid "Dele&te"
+msgstr "&Effacer"
+
+#: ../src/frontends/qt2/ui/QTabularDialog.ui:273
+#, fuzzy
+msgid "Delete this row"
+msgstr "Supprimer Rangée|u"
+
+#: ../src/frontends/qt2/ui/QTabularDialog.ui:286
+#, fuzzy
+msgid "Column Width"
+msgstr "Colonnes "
+
+#: ../src/frontends/qt2/ui/QTabularDialog.ui:305
+#, fuzzy
+msgid "&Vertical alignment:"
+msgstr "Alignement vertical"
+
+#: ../src/frontends/qt2/ui/QTabularDialog.ui:335
+#, fuzzy
+msgid "Width unit"
+msgstr "Largeur"
+
+#: ../src/frontends/qt2/ui/QTabularDialog.ui:354
+msgid "Fixed with of the column"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QTabularDialog.ui:398
+msgid "Vertical alignment for fixed width columns"
+msgstr ""
+
+# contrainte de longueur
+#: ../src/frontends/qt2/ui/QTabularDialog.ui:411
+#, fuzzy
+msgid "Rotate 90Â°"
+msgstr "Rotation 90°|#9"
+
+#: ../src/frontends/qt2/ui/QTabularDialog.ui:434
+#, fuzzy
+msgid "&Rotate Table"
+msgstr "PlacementTableau"
+
+#: ../src/frontends/qt2/ui/QTabularDialog.ui:438
+msgid "Rotate the table by 90Â°"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QTabularDialog.ui:449
+msgid "Rotate &Cell"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QTabularDialog.ui:453
+msgid "Rotate this cell by 90Â°"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QTabularDialog.ui:466
+msgid "Custom column format (LaTeX)"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QTabularDialog.ui:477
+#, fuzzy
+msgid "LaTe&X argument:"
+msgstr "Paramètre LaTeX|#A"
+
+#: ../src/frontends/qt2/ui/QTabularDialog.ui:494
+#, fuzzy
+msgid "&Borders"
+msgstr "Bordures"
+
+#: ../src/frontends/qt2/ui/QTabularDialog.ui:513
+#, fuzzy
+msgid "Set Borders"
+msgstr "Activer Bordures|#B"
+
+#: ../src/frontends/qt2/ui/QTabularDialog.ui:804
+#, fuzzy
+msgid "All Borders"
+msgstr "Bordures"
+
+#: ../src/frontends/qt2/ui/QTabularDialog.ui:823
+msgid "&Default"
+msgstr "&Défaut"
+
+#: ../src/frontends/qt2/ui/QTabularDialog.ui:827
+#, fuzzy
+msgid "Set all borders"
+msgstr "Activer Bordures|#B"
+
+#: ../src/frontends/qt2/ui/QTabularDialog.ui:838
+#, fuzzy
+msgid "C&lear"
+msgstr "Effacer|#E"
+
+# contrainte de longueur
+#: ../src/frontends/qt2/ui/QTabularDialog.ui:842
+#, fuzzy
+msgid "Unset all borders"
+msgstr "Désact. Bordures|#d"
+
+#: ../src/frontends/qt2/ui/QTabularDialog.ui:899
+#, fuzzy
+msgid "&Longtable"
+msgstr "Tab.Long"
+
+#: ../src/frontends/qt2/ui/QTabularDialog.ui:918
+msgid "&Use long table"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QTabularDialog.ui:922
+msgid "Select for tables that span multiple pages"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QTabularDialog.ui:937
+#, fuzzy
+msgid "Settings"
+msgstr "Section"
+
+#: ../src/frontends/qt2/ui/QTabularDialog.ui:967
+#, fuzzy
+msgid "Header:"
+msgstr "En-tête"
+
+# contrainte de longueur
+#: ../src/frontends/qt2/ui/QTabularDialog.ui:978
+#, fuzzy
+msgid "Footer:"
+msgstr "Pied"
+
+#: ../src/frontends/qt2/ui/QTabularDialog.ui:989
+#, fuzzy
+msgid "First header:"
+msgstr "Premier En-tête"
+
+# contrainte de longueur
+#: ../src/frontends/qt2/ui/QTabularDialog.ui:1000
+#, fuzzy
+msgid "Last footer:"
+msgstr "Dernier Pied"
+
+#: ../src/frontends/qt2/ui/QTabularDialog.ui:1022
+#, fuzzy
+msgid "Border above"
+msgstr "Bordure Haut"
+
+#: ../src/frontends/qt2/ui/QTabularDialog.ui:1033
+#, fuzzy
+msgid "Border below"
+msgstr "Bordure Bas"
+
+#: ../src/frontends/qt2/ui/QTabularDialog.ui:1044
+#: ../src/frontends/qt2/ui/QTabularDialog.ui:1055
+#: ../src/frontends/qt2/ui/QTabularDialog.ui:1066
+#: ../src/frontends/qt2/ui/QTabularDialog.ui:1077
+#, fuzzy
+msgid "on"
+msgstr "Ville"
+
+#: ../src/frontends/qt2/ui/QTabularDialog.ui:1088
+#: ../src/frontends/qt2/ui/QTabularDialog.ui:1099
+#: ../src/frontends/qt2/ui/QTabularDialog.ui:1110
+#: ../src/frontends/qt2/ui/QTabularDialog.ui:1121
+#: ../src/frontends/qt2/ui/QTabularDialog.ui:1132
+#: ../src/frontends/qt2/ui/QTabularDialog.ui:1143
+#: ../src/frontends/qt2/ui/QTabularDialog.ui:1154
+#: ../src/frontends/qt2/ui/QTabularDialog.ui:1165
+#, fuzzy
+msgid "double"
+msgstr "Double"
+
+#: ../src/frontends/qt2/ui/QTabularDialog.ui:1176
+#: ../src/frontends/qt2/ui/QTabularDialog.ui:1187
+#, fuzzy
+msgid "is empty"
+msgstr "vide"
+
+#: ../src/frontends/qt2/ui/QTabularDialog.ui:1204
+#, fuzzy
+msgid "Page &break on current row"
+msgstr "Saut de page dans la rangée en cours|#S"
+
+#: ../src/frontends/qt2/ui/QTabularDialog.ui:1208
+#, fuzzy
+msgid "Set a page break on the current row"
+msgstr "Saut de page dans la rangée en cours|#S"
+
+#: ../src/frontends/qt2/ui/QTabularDialog.ui:1237
+#, fuzzy
+msgid "Current cell :"
+msgstr "Mot actuel"
+
+#: ../src/frontends/qt2/ui/QTabularDialog.ui:1266
+#, fuzzy
+msgid "Current row position"
+msgstr "Proposition"
+
+#: ../src/frontends/qt2/ui/QTabularDialog.ui:1295
+msgid "Current column position"
+msgstr ""
+
 #: ../src/frontends/qt2/ui/QPrefAsciiModule.ui:22
 msgid "ASCII settings"
 msgstr ""
@@ -4165,7 +4910,7 @@ msgid "External app for formating tables in ASCII output"
 msgstr ""
 
 #: ../src/frontends/qt2/ui/QPrefColorsModule.ui:22
-#: src/frontends/qt2/QPrefsDialog.C:132
+#: src/frontends/qt2/QPrefsDialog.C:133
 #: src/frontends/xforms/FormPreferences.C:210
 msgid "Colors"
 msgstr "Couleurs"
@@ -4296,16 +5041,10 @@ msgid "E&xtension:"
 msgstr "Extension|#x"
 
 #: ../src/frontends/qt2/ui/QPrefKeyboardModule.ui:22
-#: src/frontends/qt2/QPrefsDialog.C:136
+#: src/frontends/qt2/QPrefsDialog.C:137
 #, fuzzy
 msgid "Keyboard"
 msgstr "Mot-Clé"
-
-#: ../src/frontends/qt2/ui/QPrefKeyboardModule.ui:76
-#: ../src/frontends/qt2/ui/QPrefUIModule.ui:104
-#, fuzzy
-msgid "Bro&wse..."
-msgstr "Parcourir..."
 
 #: ../src/frontends/qt2/ui/QPrefKeyboardModule.ui:91
 #, fuzzy
@@ -4330,7 +5069,7 @@ msgid "Use &keyboard map"
 msgstr "Réaffectation clavier"
 
 #: ../src/frontends/qt2/ui/QPrefLanguageModule.ui:22
-#: src/frontends/qt2/QPrefsDialog.C:80
+#: src/frontends/qt2/QPrefsDialog.C:81
 #, fuzzy
 msgid "Language settings"
 msgstr "Options de Langue"
@@ -4405,22 +5144,22 @@ msgid "Executive"
 msgstr "ExecutiveUS"
 
 #: ../src/frontends/qt2/ui/QPrefLatexModule.ui:92
-#: src/frontends/qt2/QDocument.C:113
+#: src/frontends/qt2/QDocument.C:117
 msgid "A3"
 msgstr "A3"
 
 #: ../src/frontends/qt2/ui/QPrefLatexModule.ui:98
-#: src/frontends/qt2/QDocument.C:113
+#: src/frontends/qt2/QDocument.C:118
 msgid "A4"
 msgstr "A4"
 
 #: ../src/frontends/qt2/ui/QPrefLatexModule.ui:104
-#: src/frontends/qt2/QDocument.C:113
+#: src/frontends/qt2/QDocument.C:119
 msgid "A5"
 msgstr "A5"
 
 #: ../src/frontends/qt2/ui/QPrefLatexModule.ui:110
-#: src/frontends/qt2/QDocument.C:114
+#: src/frontends/qt2/QDocument.C:122
 msgid "B5"
 msgstr "B5"
 
@@ -4805,736 +5544,6 @@ msgstr "Préférences"
 #, fuzzy
 msgid "&Save"
 msgstr "Enregistrer"
-
-#: ../src/frontends/qt2/ui/QPrintDialog.ui:22 src/frontends/qt2/QPrint.C:39
-#: src/frontends/xforms/FormPrint.C:36 src/LyXAction.C:140
-msgid "Print"
-msgstr "Imprimer"
-
-#: ../src/frontends/qt2/ui/QPrintDialog.ui:101
-msgid "Page number to print from"
-msgstr "Numéro de la page à partir de laquelle imprimer"
-
-#: ../src/frontends/qt2/ui/QPrintDialog.ui:112
-#, fuzzy
-msgid "&to"
-msgstr "à"
-
-#: ../src/frontends/qt2/ui/QPrintDialog.ui:131
-msgid "Page number to print to"
-msgstr "Numéro de la page jusqu'à laquelle imprimer"
-
-#: ../src/frontends/qt2/ui/QPrintDialog.ui:144
-#, fuzzy
-msgid "Fro&m"
-msgstr "Depuis|#D"
-
-#: ../src/frontends/qt2/ui/QPrintDialog.ui:152
-#: ../src/frontends/qt2/ui/QPrintDialog.ui:171
-msgid "Print all pages"
-msgstr "Imprime toutes les pages"
-
-#: ../src/frontends/qt2/ui/QPrintDialog.ui:163
-msgid "&All"
-msgstr "&Toutes"
-
-#: ../src/frontends/qt2/ui/QPrintDialog.ui:184
-#, fuzzy
-msgid "Print &odd-numbered pages"
-msgstr "Imprime seulement les pages impaires"
-
-#: ../src/frontends/qt2/ui/QPrintDialog.ui:199
-#, fuzzy
-msgid "Print &even-numbered pages"
-msgstr "Imprime seulement les pages paires"
-
-#: ../src/frontends/qt2/ui/QPrintDialog.ui:214
-msgid "Re&verse order"
-msgstr "&Ordre inverse"
-
-#: ../src/frontends/qt2/ui/QPrintDialog.ui:218
-msgid "Print in reverse order"
-msgstr "Imprime à partir de la derniére page"
-
-#: ../src/frontends/qt2/ui/QPrintDialog.ui:258
-msgid "Number of copies"
-msgstr "Nombre d'exemplaires"
-
-#: ../src/frontends/qt2/ui/QPrintDialog.ui:273
-msgid "&Collate"
-msgstr "Accoler"
-
-#: ../src/frontends/qt2/ui/QPrintDialog.ui:277
-msgid "Collate copies"
-msgstr "Accoler les exemplaires"
-
-#: ../src/frontends/qt2/ui/QPrintDialog.ui:347
-msgid "&Print"
-msgstr "&Imprimer"
-
-#: ../src/frontends/qt2/ui/QPrintDialog.ui:375
-msgid "Print Destination"
-msgstr "Destination"
-
-#: ../src/frontends/qt2/ui/QPrintDialog.ui:397
-msgid "P&rinter"
-msgstr "Imprimante"
-
-#: ../src/frontends/qt2/ui/QPrintDialog.ui:405
-msgid "Send output to the printer"
-msgstr "Envoie le résultat à l'imprimante"
-
-#: ../src/frontends/qt2/ui/QPrintDialog.ui:416
-msgid "Send output to the given printer"
-msgstr "Envoie le résultat à l'imprimante donnée"
-
-#: ../src/frontends/qt2/ui/QPrintDialog.ui:427
-msgid "&File"
-msgstr "&Fichier"
-
-#: ../src/frontends/qt2/ui/QPrintDialog.ui:431
-#: ../src/frontends/qt2/ui/QPrintDialog.ui:446
-msgid "Send output to a file"
-msgstr "Envoie le résultat à un fichier"
-
-#: ../src/frontends/qt2/ui/QRefDialog.ui:22
-#: ../lib/layouts/g-brief-en.layout:494 src/frontends/xforms/FormRef.C:37
-msgid "Reference"
-msgstr "Référence"
-
-#: ../src/frontends/qt2/ui/QRefDialog.ui:71
-msgid "Update the reference list"
-msgstr "Met à jour la liste des références"
-
-#: ../src/frontends/qt2/ui/QRefDialog.ui:89 src/frontends/qt2/QRef.C:129
-msgid "&Goto"
-msgstr "&Aller"
-
-#: ../src/frontends/qt2/ui/QRefDialog.ui:93
-msgid "Move the document cursor to reference"
-msgstr "Déplace le curseur à la référence"
-
-#: ../src/frontends/qt2/ui/QRefDialog.ui:106
-msgid "Sort"
-msgstr "Trier"
-
-#: ../src/frontends/qt2/ui/QRefDialog.ui:110
-msgid "Sort references in alphabetical order"
-msgstr "Trie les références par ordre aphabétique"
-
-#: ../src/frontends/qt2/ui/QRefDialog.ui:125
-#, fuzzy
-msgid "<reference>"
-msgstr "Préférences"
-
-#: ../src/frontends/qt2/ui/QRefDialog.ui:131
-#, fuzzy
-msgid "<page>"
-msgstr "Minipage"
-
-#: ../src/frontends/qt2/ui/QRefDialog.ui:137
-msgid "on page <page>"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QRefDialog.ui:143
-msgid "<reference> on page <page>"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QRefDialog.ui:149
-#, fuzzy
-msgid "Formatted reference"
-msgstr "Jolie Référence"
-
-#: ../src/frontends/qt2/ui/QRefDialog.ui:165
-msgid "Reference as it appears in output"
-msgstr "Référence telle qu'elle sera imprimée"
-
-#: ../src/frontends/qt2/ui/QRefDialog.ui:176
-msgid "&Reference:"
-msgstr "Référence :"
-
-#: ../src/frontends/qt2/ui/QRefDialog.ui:198
-#, fuzzy
-msgid "&Format:"
-msgstr "Formats"
-
-#: ../src/frontends/qt2/ui/QRefDialog.ui:224
-msgid "&Name:"
-msgstr "Nom :"
-
-#: ../src/frontends/qt2/ui/QRefDialog.ui:321
-#, fuzzy
-msgid "Available references in selected document:"
-msgstr "Références disponibles"
-
-#: ../src/frontends/qt2/ui/QRefDialog.ui:343
-msgid "Available references"
-msgstr "Références disponibles"
-
-#: ../src/frontends/qt2/ui/QRefDialog.ui:354
-#, fuzzy
-msgid "&Document:"
-msgstr "Document"
-
-#: ../src/frontends/qt2/ui/QSearchDialog.ui:22
-msgid "Search and replace"
-msgstr "Rechercher et Remplacer"
-
-#: ../src/frontends/qt2/ui/QSearchDialog.ui:51
-msgid "&Find:"
-msgstr "Rechercher :"
-
-#: ../src/frontends/qt2/ui/QSearchDialog.ui:108
-msgid "Replace &with:"
-msgstr "Remplacer par :"
-
-#: ../src/frontends/qt2/ui/QSearchDialog.ui:161
-msgid "Case &sensitive"
-msgstr "Selon la casse"
-
-#: ../src/frontends/qt2/ui/QSearchDialog.ui:172
-msgid "Match whole words onl&y"
-msgstr "Mots complets seulement"
-
-#: ../src/frontends/qt2/ui/QSearchDialog.ui:250
-msgid "Find &Next"
-msgstr "Suivant"
-
-#: ../src/frontends/qt2/ui/QSearchDialog.ui:269
-#: ../src/frontends/qt2/ui/QSpellcheckerDialog.ui:60
-#: ../src/frontends/qt2/ui/QThesaurusDialog.ui:187
-msgid "&Replace"
-msgstr "Remplacer"
-
-#: ../src/frontends/qt2/ui/QSearchDialog.ui:284
-msgid "Replace &All "
-msgstr "Remplacer tout"
-
-#: ../src/frontends/qt2/ui/QSearchDialog.ui:295
-msgid "Search &backwards"
-msgstr "Rechercher en arrière"
-
-#: ../src/frontends/qt2/ui/QSendtoDialog.ui:22
-#, fuzzy
-msgid "Custom Export"
-msgstr "Client"
-
-#: ../src/frontends/qt2/ui/QSendtoDialog.ui:45
-#, fuzzy
-msgid "&Command:"
-msgstr "commande"
-
-#: ../src/frontends/qt2/ui/QSendtoDialog.ui:60
-#, fuzzy
-msgid "&Export formats:"
-msgstr "Format d'exportation|#e"
-
-#: ../src/frontends/qt2/ui/QSendtoDialog.ui:168
-msgid "Process the converted file with this command ($$FName = file name)"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QSendtoDialog.ui:192
-#, fuzzy
-msgid "Available export converters"
-msgstr "Modèles disponibles"
-
-#: ../src/frontends/qt2/ui/QShowFileDialog.ui:22
-msgid "File: "
-msgstr "Fichier :"
-
-#: ../src/frontends/qt2/ui/QSpellcheckerDialog.ui:22
-#: src/frontends/qt2/QPrefsDialog.C:121 src/frontends/qt2/QSpellchecker.C:35
-#: src/frontends/xforms/FormSpellchecker.C:33
-msgid "Spellchecker"
-msgstr "Correcteur Orthographique"
-
-#: ../src/frontends/qt2/ui/QSpellcheckerDialog.ui:45
-msgid "Suggestions:"
-msgstr "Suggestions :"
-
-#: ../src/frontends/qt2/ui/QSpellcheckerDialog.ui:64
-msgid "Replace word with current choice"
-msgstr "Remplace le mot par le choix sélectionné"
-
-#: ../src/frontends/qt2/ui/QSpellcheckerDialog.ui:75
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:246
-msgid "&Add"
-msgstr "&Ajouter"
-
-#: ../src/frontends/qt2/ui/QSpellcheckerDialog.ui:79
-msgid "Add the word to your personal dictionary"
-msgstr "Ajoute le mot à votre dictionnaire personnel"
-
-#: ../src/frontends/qt2/ui/QSpellcheckerDialog.ui:90
-msgid "&Ignore"
-msgstr "Ignorer"
-
-#: ../src/frontends/qt2/ui/QSpellcheckerDialog.ui:94
-msgid "Ignore this word"
-msgstr "Ignore le mot"
-
-#: ../src/frontends/qt2/ui/QSpellcheckerDialog.ui:105
-msgid "&Accept"
-msgstr "Accepter"
-
-#: ../src/frontends/qt2/ui/QSpellcheckerDialog.ui:109
-msgid "Accept word for this session"
-msgstr "Accepte ce mot durant cette session"
-
-#: ../src/frontends/qt2/ui/QSpellcheckerDialog.ui:152
-msgid "How far spellchecking has got"
-msgstr "État d'avancement de la correction"
-
-#: ../src/frontends/qt2/ui/QSpellcheckerDialog.ui:163
-msgid "Suggestions"
-msgstr "Suggestions"
-
-#: ../src/frontends/qt2/ui/QSpellcheckerDialog.ui:195
-msgid "Replacement:"
-msgstr "Remplacement :"
-
-#: ../src/frontends/qt2/ui/QSpellcheckerDialog.ui:210
-msgid "Current word"
-msgstr "Mot actuel"
-
-#: ../src/frontends/qt2/ui/QSpellcheckerDialog.ui:263
-msgid "Replace with selected word"
-msgstr "Remplace par le mot sélectionné"
-
-#: ../src/frontends/qt2/ui/QSpellcheckerDialog.ui:274
-msgid "&Start..."
-msgstr "&Commencer..."
-
-#: ../src/frontends/qt2/ui/QSpellcheckerDialog.ui:278
-msgid "Start spellcheck"
-msgstr "Commence la correction"
-
-#: ../src/frontends/qt2/ui/QTabularCreateDialog.ui:26
-#: src/frontends/qt2/QTabularCreate.C:31
-msgid "Insert table"
-msgstr "Insérer un tableau"
-
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:22
-#, fuzzy
-msgid "Table Settings"
-msgstr "Options de minipage"
-
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:63
-#, fuzzy
-msgid "&Table Settings"
-msgstr "Options de minipage"
-
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:82
-#, fuzzy
-msgid "&Horizontal alignment:"
-msgstr "Alignement Horizontal|#H"
-
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:97
-#, fuzzy
-msgid "&Multicolumn"
-msgstr "Multi-Colonnes|M"
-
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:101
-msgid "Merge cells"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:109
-#: src/frontends/qt2/QTabular.C:184 src/frontends/xforms/FormParagraph.C:295
-#, fuzzy
-msgid "Block"
-msgstr "Noir"
-
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:136
-#, fuzzy
-msgid "Horizontal alignment in column"
-msgstr "Alignement Horizontal|#H"
-
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:168
-#, fuzzy
-msgid "Column"
-msgstr "Colonnes"
-
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:187
-#, fuzzy
-msgid "A&dd"
-msgstr "Ajouter"
-
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:195
-#, fuzzy
-msgid "Append column (right)"
-msgstr "Ajouter Colonne|#C"
-
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:206
-#, fuzzy
-msgid "De&lete"
-msgstr "&Effacer"
-
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:214
-#, fuzzy
-msgid "Delete current column"
-msgstr "Supprimer Colonne|p"
-
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:227
-#, fuzzy
-msgid "Row"
-msgstr "Rangées"
-
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:254
-msgid "Append row (below)"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:265
-#, fuzzy
-msgid "Dele&te"
-msgstr "&Effacer"
-
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:273
-#, fuzzy
-msgid "Delete this row"
-msgstr "Supprimer Rangée|u"
-
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:286
-#, fuzzy
-msgid "Column Width"
-msgstr "Colonnes "
-
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:305
-#, fuzzy
-msgid "&Vertical alignment:"
-msgstr "Alignement vertical"
-
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:335
-#, fuzzy
-msgid "Width unit"
-msgstr "Largeur"
-
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:354
-msgid "Fixed with of the column"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:398
-msgid "Vertical alignment for fixed width columns"
-msgstr ""
-
-# contrainte de longueur
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:411
-#, fuzzy
-msgid "Rotate 90Â°"
-msgstr "Rotation 90°|#9"
-
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:434
-#, fuzzy
-msgid "&Rotate Table"
-msgstr "PlacementTableau"
-
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:438
-msgid "Rotate the table by 90Â°"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:449
-msgid "Rotate &Cell"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:453
-msgid "Rotate this cell by 90Â°"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:466
-msgid "Custom column format (LaTeX)"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:477
-#, fuzzy
-msgid "LaTe&X argument:"
-msgstr "Paramètre LaTeX|#A"
-
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:494
-#, fuzzy
-msgid "&Borders"
-msgstr "Bordures"
-
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:513
-#, fuzzy
-msgid "Set Borders"
-msgstr "Activer Bordures|#B"
-
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:804
-#, fuzzy
-msgid "All Borders"
-msgstr "Bordures"
-
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:823
-msgid "&Default"
-msgstr "&Défaut"
-
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:827
-#, fuzzy
-msgid "Set all borders"
-msgstr "Activer Bordures|#B"
-
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:838
-#, fuzzy
-msgid "C&lear"
-msgstr "Effacer|#E"
-
-# contrainte de longueur
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:842
-#, fuzzy
-msgid "Unset all borders"
-msgstr "Désact. Bordures|#d"
-
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:899
-#, fuzzy
-msgid "&Longtable"
-msgstr "Tab.Long"
-
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:918
-msgid "&Use long table"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:922
-msgid "Select for tables that span multiple pages"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:937
-#, fuzzy
-msgid "Settings"
-msgstr "Section"
-
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:967
-#, fuzzy
-msgid "Header:"
-msgstr "En-tête"
-
-# contrainte de longueur
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:978
-#, fuzzy
-msgid "Footer:"
-msgstr "Pied"
-
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:989
-#, fuzzy
-msgid "First header:"
-msgstr "Premier En-tête"
-
-# contrainte de longueur
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:1000
-#, fuzzy
-msgid "Last footer:"
-msgstr "Dernier Pied"
-
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:1022
-#, fuzzy
-msgid "Border above"
-msgstr "Bordure Haut"
-
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:1033
-#, fuzzy
-msgid "Border below"
-msgstr "Bordure Bas"
-
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:1044
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:1055
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:1066
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:1077
-#, fuzzy
-msgid "on"
-msgstr "Ville"
-
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:1088
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:1099
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:1110
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:1121
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:1132
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:1143
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:1154
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:1165
-#, fuzzy
-msgid "double"
-msgstr "Double"
-
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:1176
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:1187
-#, fuzzy
-msgid "is empty"
-msgstr "vide"
-
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:1204
-#, fuzzy
-msgid "Page &break on current row"
-msgstr "Saut de page dans la rangée en cours|#S"
-
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:1208
-#, fuzzy
-msgid "Set a page break on the current row"
-msgstr "Saut de page dans la rangée en cours|#S"
-
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:1237
-#, fuzzy
-msgid "Current cell :"
-msgstr "Mot actuel"
-
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:1266
-#, fuzzy
-msgid "Current row position"
-msgstr "Proposition"
-
-#: ../src/frontends/qt2/ui/QTabularDialog.ui:1295
-msgid "Current column position"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QTexinfoDialog.ui:57
-msgid "LaTeX classes"
-msgstr "Classes LaTeX"
-
-#: ../src/frontends/qt2/ui/QTexinfoDialog.ui:63
-msgid "LaTeX styles"
-msgstr "Styles LaTeX"
-
-#: ../src/frontends/qt2/ui/QTexinfoDialog.ui:69
-msgid "BibTeX styles"
-msgstr "Styles BibTeX"
-
-#: ../src/frontends/qt2/ui/QTexinfoDialog.ui:78
-msgid "Selected classes or styles"
-msgstr "Classes ou styles sélectionnés"
-
-#: ../src/frontends/qt2/ui/QTexinfoDialog.ui:110
-msgid "Show &path"
-msgstr "Afficher le chemin"
-
-#: ../src/frontends/qt2/ui/QTexinfoDialog.ui:114
-msgid "Toggles view of the file list"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QTexinfoDialog.ui:133
-msgid "Installed files"
-msgstr "Fichiers installés"
-
-#: ../src/frontends/qt2/ui/QTexinfoDialog.ui:180
-msgid "&Rescan"
-msgstr "&Rafraîchir"
-
-#: ../src/frontends/qt2/ui/QTexinfoDialog.ui:184
-msgid "Built new file list"
-msgstr "A reconstruit la liste des fichiers"
-
-#: ../src/frontends/qt2/ui/QTexinfoDialog.ui:199
-msgid "&View"
-msgstr "Visualiser"
-
-#: ../src/frontends/qt2/ui/QTexinfoDialog.ui:203
-msgid ""
-"Show contents of marked file. Only possible when files are shown with path"
-msgstr ""
-"Affiche le contenu du fichier sélectionné. Seulement possible quand le "
-"chemin est affiché."
-
-#: ../src/frontends/qt2/ui/QTexinfoDialog.ui:256
-msgid "Close this dialog"
-msgstr "Fermer cette fenêtre"
-
-#: ../src/frontends/qt2/ui/QThesaurusDialog.ui:22
-#: ../lib/layouts/aapaper.inc:113 ../lib/layouts/aapaper.layout:77
-#: ../lib/ui/default.ui:79 src/ext_l10n.h:40 src/frontends/qt2/QThesaurus.C:31
-#: src/frontends/xforms/FormThesaurus.C:39
-msgid "Thesaurus"
-msgstr "Dictionnaire de Synonymes"
-
-#: ../src/frontends/qt2/ui/QThesaurusDialog.ui:79
-msgid "Entry"
-msgstr "Entrée"
-
-#: ../src/frontends/qt2/ui/QThesaurusDialog.ui:110
-msgid "Thesaurus entries"
-msgstr "Entrées du Dictionnaire"
-
-#: ../src/frontends/qt2/ui/QThesaurusDialog.ui:131
-msgid "Select a related word"
-msgstr "Sélectionne un synonyme"
-
-#: ../src/frontends/qt2/ui/QThesaurusDialog.ui:157
-msgid "&Selection"
-msgstr "&Sélection"
-
-#: ../src/frontends/qt2/ui/QThesaurusDialog.ui:165
-#: ../src/frontends/qt2/ui/QThesaurusDialog.ui:176
-msgid "The selected entry"
-msgstr "L'entrée sélectionnée"
-
-#: ../src/frontends/qt2/ui/QThesaurusDialog.ui:191
-msgid "Replace the entry with the selection"
-msgstr "Remplace l'entrée par la sélection"
-
-#: ../src/frontends/qt2/ui/QTocDialog.ui:22
-msgid "Table Of Contents"
-msgstr "Table des Matières"
-
-#: ../src/frontends/qt2/ui/QTocDialog.ui:60
-msgid "&Type"
-msgstr "Type"
-
-#: ../src/frontends/qt2/ui/QTocDialog.ui:109
-msgid "Contents list"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QURLDialog.ui:22
-msgid "Insert URL"
-msgstr "Insérer une URL"
-
-#: ../src/frontends/qt2/ui/QURLDialog.ui:45
-msgid "&URL"
-msgstr "&URL"
-
-#: ../src/frontends/qt2/ui/QURLDialog.ui:53
-#: ../src/frontends/qt2/ui/QURLDialog.ui:94 ../lib/layouts/amsdefs.inc:223
-#: src/frontends/qt2/QURL.C:33
-msgid "URL"
-msgstr "URL"
-
-#: ../src/frontends/qt2/ui/QURLDialog.ui:64
-msgid "&Name"
-msgstr "&Nom"
-
-#: ../src/frontends/qt2/ui/QURLDialog.ui:72
-#: ../src/frontends/qt2/ui/QURLDialog.ui:83
-msgid "Name associated with the URL"
-msgstr "Nom associé à l'URL"
-
-#: ../src/frontends/qt2/ui/QURLDialog.ui:120
-msgid "&Generate hyperlink"
-msgstr "&Créer un lien hypertexte"
-
-#: ../src/frontends/qt2/ui/QURLDialog.ui:124
-msgid "Output as a hyperlink ?"
-msgstr "Imprimer comme lien hypertexte ?"
-
-#: ../src/frontends/qt2/ui/QVCLogDialog.ui:22
-msgid "Version control log"
-msgstr "Historique de Contrôle de Version"
-
-# contrainte de longueur
-#: ../src/frontends/qt2/ui/QWrapDialog.ui:23 src/frontends/qt2/QWrap.C:36
-#: src/frontends/xforms/FormWrap.C:33
-#, fuzzy
-msgid "Wrap Options"
-msgstr "Autres Options :"
-
-#: ../src/frontends/qt2/ui/QWrapDialog.ui:87
-#, fuzzy
-msgid "Default (outer)"
-msgstr "Répertoire par défaut"
-
-#: ../src/frontends/qt2/ui/QWrapDialog.ui:105
-#, fuzzy
-msgid "Outer"
-msgstr "Autre"
-
-# contrainte de longueur
-#: ../src/frontends/qt2/ui/QWrapDialog.ui:125
-#, fuzzy
-msgid "&Placement:"
-msgstr "Emplacement"
 
 #: ../lib/layouts/IEEEtran.layout:38 ../lib/layouts/aa.layout:30
 #: ../lib/layouts/aapaper.layout:33 ../lib/layouts/aastex.layout:54
@@ -5938,7 +5947,7 @@ msgid "Email"
 msgstr "Email"
 
 #: ../lib/layouts/aapaper.layout:57 ../lib/layouts/egs.layout:726
-#: ../lib/layouts/obsolete.inc:14 src/frontends/qt2/QPrefsDialog.C:145
+#: ../lib/layouts/obsolete.inc:14 src/frontends/qt2/QPrefsDialog.C:146
 msgid "LaTeX"
 msgstr "LaTeX"
 
@@ -6673,7 +6682,7 @@ msgstr "P.J."
 msgid "Remarks"
 msgstr "Remarques"
 
-#: ../lib/layouts/hollywood.layout:55 src/frontends/xforms/Menubar_pimpl.C:255
+#: ../lib/layouts/hollywood.layout:55 src/frontends/xforms/Menubar_pimpl.C:260
 msgid "More"
 msgstr "Poursuivre"
 
@@ -7001,32 +7010,32 @@ msgstr "Offprints"
 msgid " Keywords"
 msgstr "Mots-Clés"
 
-#: ../lib/languages:2 src/ext_l10n.h:222
+#: ../lib/languages:2
 msgid "Afrikaans"
 msgstr "Afrikaans"
 
-#: ../lib/languages:3 src/ext_l10n.h:223
+#: ../lib/languages:3
 msgid "American"
 msgstr "Américain"
 
-#: ../lib/languages:4 src/ext_l10n.h:224
+#: ../lib/languages:4
 msgid "Arabic"
 msgstr "Arabe"
 
-#: ../lib/languages:5 src/ext_l10n.h:225
+#: ../lib/languages:5
 msgid "Austrian"
 msgstr "Autrichien"
 
-#: ../lib/languages:6 src/ext_l10n.h:226
+#: ../lib/languages:6
 msgid "Bahasa"
 msgstr "Bahasa"
 
-#: ../lib/languages:7 src/ext_l10n.h:227
+#: ../lib/languages:7
 #, fuzzy
 msgid "Belarusian"
 msgstr "Bulgare"
 
-#: ../lib/languages:8 src/ext_l10n.h:228
+#: ../lib/languages:8
 msgid "Basque"
 msgstr "Basque"
 
@@ -7035,979 +7044,1073 @@ msgstr "Basque"
 msgid "Portuguese"
 msgstr "Portugais"
 
-#: ../lib/languages:10 src/ext_l10n.h:230
+#: ../lib/languages:10
 msgid "Breton"
 msgstr "Breton"
 
-#: ../lib/languages:11 src/ext_l10n.h:231
+#: ../lib/languages:11
 msgid "British"
 msgstr "Anglais Britannique"
 
-#: ../lib/languages:12 src/ext_l10n.h:232
+#: ../lib/languages:12
 msgid "Bulgarian"
 msgstr "Bulgare"
 
-#: ../lib/languages:13 src/ext_l10n.h:233
+#: ../lib/languages:13
 msgid "Canadian"
 msgstr "Canadien"
 
 #: ../lib/languages:14 ../lib/languages:25 ../lib/languages:26
-#: src/ext_l10n.h:244
 msgid "French"
 msgstr "Français"
 
-#: ../lib/languages:15 src/ext_l10n.h:235
+#: ../lib/languages:15
 msgid "Catalan"
 msgstr "Catalan"
 
-#: ../lib/languages:16 src/ext_l10n.h:236
+#: ../lib/languages:16
 msgid "Croatian"
 msgstr "Croate"
 
-#: ../lib/languages:17 src/ext_l10n.h:237
+#: ../lib/languages:17
 msgid "Czech"
 msgstr "Tchèque"
 
-#: ../lib/languages:18 src/ext_l10n.h:238
+#: ../lib/languages:18
 msgid "Danish"
 msgstr "Danois"
 
-#: ../lib/languages:19 src/ext_l10n.h:239
+#: ../lib/languages:19
 msgid "Dutch"
 msgstr "Néerlandais"
 
-#: ../lib/languages:20 src/ext_l10n.h:240 src/language.C:41
+#: ../lib/languages:20 src/language.C:41
 msgid "English"
 msgstr "Anglais"
 
-#: ../lib/languages:21 src/ext_l10n.h:241
+#: ../lib/languages:21
 msgid "Esperanto"
 msgstr "Espéranto"
 
-#: ../lib/languages:23 src/ext_l10n.h:242
+#: ../lib/languages:23
 msgid "Estonian"
 msgstr "Estonien"
 
-#: ../lib/languages:24 src/ext_l10n.h:243
+#: ../lib/languages:24
 msgid "Finnish"
 msgstr "Finnois"
 
-#: ../lib/languages:27 src/ext_l10n.h:246
+#: ../lib/languages:27
 msgid "Galician"
 msgstr "Galicien"
 
-#: ../lib/languages:30 ../lib/languages:31 src/ext_l10n.h:247
+#: ../lib/languages:30 ../lib/languages:31
 msgid "German"
 msgstr "Allemand"
 
-#: ../lib/languages:33 src/ext_l10n.h:250
+#: ../lib/languages:33
 msgid "Hebrew"
 msgstr "Hébreu"
 
-#: ../lib/languages:35 src/ext_l10n.h:251
+#: ../lib/languages:35
 msgid "Irish"
 msgstr "Irlandais"
 
-#: ../lib/languages:36 src/ext_l10n.h:252
+#: ../lib/languages:36
 msgid "Italian"
 msgstr "Italien"
 
-#: ../lib/languages:37 src/ext_l10n.h:253
+#: ../lib/languages:37
 msgid "Kazakh"
 msgstr ""
 
-#: ../lib/languages:38 src/ext_l10n.h:254
+#: ../lib/languages:38
 msgid "Lsorbian"
 msgstr "Bas-Sorbe"
 
-#: ../lib/languages:40 src/ext_l10n.h:255
+#: ../lib/languages:40
 msgid "Magyar"
 msgstr "Magyar"
 
-#: ../lib/languages:41 src/ext_l10n.h:256
+#: ../lib/languages:41
 msgid "Norsk"
 msgstr "Norvégien"
 
-#: ../lib/languages:42 src/ext_l10n.h:257
+#: ../lib/languages:42
 msgid "Polish"
 msgstr "Polonais"
 
-#: ../lib/languages:43 src/ext_l10n.h:258
+#: ../lib/languages:43
 msgid "Portugese"
 msgstr "Portugais"
 
-#: ../lib/languages:44 src/ext_l10n.h:259
+#: ../lib/languages:44
 msgid "Romanian"
 msgstr "Roumain"
 
-#: ../lib/languages:45 src/ext_l10n.h:260
+#: ../lib/languages:45
 msgid "Russian"
 msgstr "Russe"
 
-#: ../lib/languages:46 src/ext_l10n.h:261
+#: ../lib/languages:46
 msgid "Scottish"
 msgstr "Écossais"
 
-#: ../lib/languages:47 src/ext_l10n.h:262
+#: ../lib/languages:47
 msgid "Serbian"
 msgstr "Serbe"
 
-#: ../lib/languages:48 src/ext_l10n.h:263
+#: ../lib/languages:48
 msgid "Serbo-Croatian"
 msgstr "Serbo-Croate"
 
-#: ../lib/languages:49 src/ext_l10n.h:264
+#: ../lib/languages:49
 msgid "Spanish"
 msgstr "Espagnol"
 
-#: ../lib/languages:50 src/ext_l10n.h:265
+#: ../lib/languages:50
 msgid "Slovak"
 msgstr "Slovaque"
 
-#: ../lib/languages:51 src/ext_l10n.h:266
+#: ../lib/languages:51
 msgid "Slovene"
 msgstr "Slovène"
 
-#: ../lib/languages:52 src/ext_l10n.h:267
+#: ../lib/languages:52
 msgid "Swedish"
 msgstr "Suédois"
 
-#: ../lib/languages:53 src/ext_l10n.h:268
+#: ../lib/languages:53
 msgid "Thai"
 msgstr "Thaï"
 
-#: ../lib/languages:54 src/ext_l10n.h:269
+#: ../lib/languages:54
 msgid "Turkish"
 msgstr "Turc"
 
-#: ../lib/languages:55 src/ext_l10n.h:270
+#: ../lib/languages:55
 msgid "Ukrainian"
 msgstr "Ukrainien"
 
-#: ../lib/languages:56 src/ext_l10n.h:271
+#: ../lib/languages:56
 msgid "Usorbian"
 msgstr "Haut-Sorbe"
 
-#: ../lib/languages:58 src/ext_l10n.h:272
+#: ../lib/languages:58
 msgid "Welsh"
 msgstr "Gallois"
 
-#: ../lib/ui/default.ui:22 src/ext_l10n.h:9
+#: ../lib/ui/default.ui:7 src/MenuBackend.C:683
+msgid "File|F"
+msgstr "Fichier|F"
+
+#: ../lib/ui/default.ui:8 src/MenuBackend.C:684
+msgid "Edit|E"
+msgstr "Éditer|e"
+
+#: ../lib/ui/default.ui:9
+msgid "Insert|I"
+msgstr "Insérer|I"
+
+#: ../lib/ui/default.ui:10
+msgid "Layout|L"
+msgstr "Format|t"
+
+#: ../lib/ui/default.ui:11
+msgid "View|V"
+msgstr "Visualiser|V"
+
+#: ../lib/ui/default.ui:12
+msgid "Navigate|N"
+msgstr "Naviguer|N"
+
+#: ../lib/ui/default.ui:13 src/MenuBackend.C:686
+msgid "Documents|D"
+msgstr "Documents|D"
+
+#: ../lib/ui/default.ui:14
+msgid "Help|H"
+msgstr "Aide|A"
+
+#: ../lib/ui/default.ui:22
 #, fuzzy
 msgid "New|N"
 msgstr "Nouveau|N"
 
-#: ../lib/ui/default.ui:23 src/ext_l10n.h:10
+#: ../lib/ui/default.ui:23
 msgid "New from Template...|T"
 msgstr "Nouveau avec Modèle...|M"
 
-#: ../lib/ui/default.ui:24 src/ext_l10n.h:11 src/MenuBackend.C:656
+#: ../lib/ui/default.ui:24 src/MenuBackend.C:656
 msgid "Open...|O"
 msgstr "Ouvrir...|O"
 
-#: ../lib/ui/default.ui:26 src/ext_l10n.h:12
+#: ../lib/ui/default.ui:26
 msgid "Close|C"
 msgstr "Fermer|F"
 
-#: ../lib/ui/default.ui:27 src/ext_l10n.h:13
+#: ../lib/ui/default.ui:27
 msgid "Save|S"
 msgstr "Enregistrer|E"
 
-#: ../lib/ui/default.ui:28 src/ext_l10n.h:14
+#: ../lib/ui/default.ui:28
 msgid "Save As...|A"
 msgstr "Enregistrer Sous...|S"
 
-#: ../lib/ui/default.ui:29 src/ext_l10n.h:15
+#: ../lib/ui/default.ui:29
 #, fuzzy
 msgid "Revert|R"
 msgstr "Initialiser le Contrôle|I"
 
+#: ../lib/ui/default.ui:30
+msgid "Version Control|V"
+msgstr "Contrôle de Version|V"
+
+#: ../lib/ui/default.ui:32 src/MenuBackend.C:657
+msgid "Import|I"
+msgstr "Importer|I"
+
+#: ../lib/ui/default.ui:33
+msgid "Export|E"
+msgstr "Exporter|x"
+
 # contrainte de longueur
-#: ../lib/ui/default.ui:34 src/ext_l10n.h:19
+#: ../lib/ui/default.ui:34
 msgid "Print...|P"
 msgstr "Imprimer...|p"
 
-#: ../lib/ui/default.ui:35 src/ext_l10n.h:20
+#: ../lib/ui/default.ui:35
 msgid "Fax...|F"
 msgstr "Fax...|T"
 
-#: ../lib/ui/default.ui:37 src/ext_l10n.h:21
+#: ../lib/ui/default.ui:37
 msgid "Exit|x"
 msgstr "Quitter|Q"
 
-#: ../lib/ui/default.ui:43 src/ext_l10n.h:22
+#: ../lib/ui/default.ui:43
 msgid "Register|R"
 msgstr "Initialiser le Contrôle|I"
 
-#: ../lib/ui/default.ui:44 src/ext_l10n.h:23
+#: ../lib/ui/default.ui:44
 #, fuzzy
 msgid "Check In Changes...|I"
 msgstr "Figer cette Version|F"
 
-#: ../lib/ui/default.ui:45 src/ext_l10n.h:24
+#: ../lib/ui/default.ui:45
 msgid "Check Out for Edit|O"
 msgstr "Nouvelle Version Éditable|N"
 
-#: ../lib/ui/default.ui:46 src/ext_l10n.h:25
+#: ../lib/ui/default.ui:46
 msgid "Revert to Last Version|L"
 msgstr "Recharger la Version Précédente|R"
 
-#: ../lib/ui/default.ui:47 src/ext_l10n.h:26
+#: ../lib/ui/default.ui:47
 msgid "Undo Last Check In|U"
 msgstr "Annuler Figer|A"
 
-#: ../lib/ui/default.ui:48 src/ext_l10n.h:27
+#: ../lib/ui/default.ui:48
 msgid "Show History|H"
 msgstr "Visualiser l'Historique|H"
 
-#: ../lib/ui/default.ui:57 src/ext_l10n.h:28
+#: ../lib/ui/default.ui:57
 msgid "Custom...|C"
 msgstr "Personnalisé...|e"
 
-#: ../lib/ui/default.ui:65 src/ext_l10n.h:29
+#: ../lib/ui/default.ui:65
 msgid "Undo|U"
 msgstr "Annuler|A"
 
-#: ../lib/ui/default.ui:66 src/ext_l10n.h:30
+#: ../lib/ui/default.ui:66
 msgid "Redo|d"
 msgstr "Refaire|R"
 
-#: ../lib/ui/default.ui:68 src/ext_l10n.h:31
+#: ../lib/ui/default.ui:68
 msgid "Cut|C"
 msgstr "Couper|o"
 
-#: ../lib/ui/default.ui:69 src/ext_l10n.h:32
+#: ../lib/ui/default.ui:69
 msgid "Copy|o"
 msgstr "Copier|C"
 
-#: ../lib/ui/default.ui:70 src/ext_l10n.h:33
+#: ../lib/ui/default.ui:70
 msgid "Paste|a"
 msgstr "Coller|l"
 
-#: ../lib/ui/default.ui:73 src/ext_l10n.h:35
+#: ../lib/ui/default.ui:71
+msgid "Paste External Selection|x"
+msgstr "Copier Sélection Externe|S"
+
+#: ../lib/ui/default.ui:73
 msgid "Find & Replace...|F"
 msgstr "Rechercher et Remplacer...|h"
 
-#: ../lib/ui/default.ui:77 src/ext_l10n.h:38
+#: ../lib/ui/default.ui:74 ../lib/ui/default.ui:302
+msgid "Tabular|T"
+msgstr "Tableau|T"
+
+#: ../lib/ui/default.ui:75
+msgid "Math|M"
+msgstr "Math|M"
+
+#: ../lib/ui/default.ui:77
 msgid "Read Only"
 msgstr "Lecture Seule"
 
-#: ../lib/ui/default.ui:78 src/ext_l10n.h:39
+#: ../lib/ui/default.ui:78
 #, fuzzy
 msgid "Spellchecker|S"
 msgstr "Correcteur Orthographique"
 
-#: ../lib/ui/default.ui:80 src/ext_l10n.h:41
+#: ../lib/ui/default.ui:80
 msgid "Check TeX|h"
 msgstr "Correcteur TeX|X"
 
-#: ../lib/ui/default.ui:81 src/ext_l10n.h:42
+#: ../lib/ui/default.ui:81
 msgid "Remove All Error Boxes|E"
 msgstr "Enlever Toutes les Marques d'Erreur|E"
 
-#: ../lib/ui/default.ui:82 src/ext_l10n.h:43
+#: ../lib/ui/default.ui:82
 msgid "Open/Close float|l"
 msgstr "Ouvrir/Fermer le Flottant|F"
 
-#: ../lib/ui/default.ui:84 src/ext_l10n.h:44
+#: ../lib/ui/default.ui:84
 #, fuzzy
 msgid "Preferences|P"
 msgstr "Préférences"
 
-#: ../lib/ui/default.ui:85 src/ext_l10n.h:45
+#: ../lib/ui/default.ui:85
 msgid "Reconfigure|R"
 msgstr "Reconfigurer|g"
 
-#: ../lib/ui/default.ui:89 src/ext_l10n.h:46
+#: ../lib/ui/default.ui:89
 msgid "as Lines|L"
 msgstr "en Lignes|L"
 
-#: ../lib/ui/default.ui:90 src/ext_l10n.h:47
+#: ../lib/ui/default.ui:90
 msgid "as Paragraphs|P"
 msgstr "en Paragraphes|P"
 
-#: ../lib/ui/default.ui:94 src/ext_l10n.h:48
+#: ../lib/ui/default.ui:94
 msgid "Multicolumn|M"
 msgstr "Multi-Colonnes|M"
 
-#: ../lib/ui/default.ui:96 src/ext_l10n.h:49
+#: ../lib/ui/default.ui:96
 msgid "Line Top|T"
 msgstr "Ligne en Haut|H"
 
-#: ../lib/ui/default.ui:97 src/ext_l10n.h:50
+#: ../lib/ui/default.ui:97
 msgid "Line Bottom|B"
 msgstr "Ligne en Bas|B"
 
-#: ../lib/ui/default.ui:98 src/ext_l10n.h:51
+#: ../lib/ui/default.ui:98
 msgid "Line Left|L"
 msgstr "Ligne à Gauche|G"
 
-#: ../lib/ui/default.ui:99 src/ext_l10n.h:52
+#: ../lib/ui/default.ui:99
 msgid "Line Right|R"
 msgstr "Ligne à Droite|D"
 
-#: ../lib/ui/default.ui:101 src/ext_l10n.h:53
+#: ../lib/ui/default.ui:101
 msgid "Align Left|e"
 msgstr "Aligner à Gauche|a"
 
-#: ../lib/ui/default.ui:102 ../lib/ui/default.ui:183 src/ext_l10n.h:54
-#: src/ext_l10n.h:110
+#: ../lib/ui/default.ui:102 ../lib/ui/default.ui:183
 msgid "Align Center|C"
 msgstr "Centrer|C"
 
-#: ../lib/ui/default.ui:103 src/ext_l10n.h:55
+#: ../lib/ui/default.ui:103
 msgid "Align Right|i"
 msgstr "Aligner à Droite|r"
 
-#: ../lib/ui/default.ui:105 src/ext_l10n.h:56
+#: ../lib/ui/default.ui:105
 msgid "V.Align Top|o"
 msgstr "Aligner en Haut|t"
 
-#: ../lib/ui/default.ui:106 src/ext_l10n.h:57
+#: ../lib/ui/default.ui:106
 msgid "V.Align Center|n"
 msgstr "Centrer Verticalement|V"
 
-#: ../lib/ui/default.ui:107 src/ext_l10n.h:58
+#: ../lib/ui/default.ui:107
 msgid "V.Align Bottom|V"
 msgstr "Aligner en Bas|s"
 
-#: ../lib/ui/default.ui:109 src/ext_l10n.h:59
+#: ../lib/ui/default.ui:109
 msgid "Add Row|A"
 msgstr "Ajouter Rangée|j"
 
-#: ../lib/ui/default.ui:110 src/ext_l10n.h:60
+#: ../lib/ui/default.ui:110
 msgid "Delete Row|w"
 msgstr "Supprimer Rangée|u"
 
-#: ../lib/ui/default.ui:111 ../lib/ui/default.ui:142 src/ext_l10n.h:61
-#: src/ext_l10n.h:83
+#: ../lib/ui/default.ui:111 ../lib/ui/default.ui:142
 #, fuzzy
 msgid "Copy Row"
 msgstr "Copier|C"
 
-#: ../lib/ui/default.ui:112 ../lib/ui/default.ui:143 src/ext_l10n.h:62
-#: src/ext_l10n.h:84
+#: ../lib/ui/default.ui:112 ../lib/ui/default.ui:143
 #, fuzzy
 msgid "Swap Rows"
 msgstr "Rangées"
 
-#: ../lib/ui/default.ui:114 src/ext_l10n.h:63
+#: ../lib/ui/default.ui:114
 msgid "Add Column|u"
 msgstr "Ajouter Colonne|o"
 
 # contrainte de longueur
-#: ../lib/ui/default.ui:115 src/ext_l10n.h:64
+#: ../lib/ui/default.ui:115
 msgid "Delete Column|D"
 msgstr "Supprimer Colonne|p"
 
-#: ../lib/ui/default.ui:116 ../lib/ui/default.ui:147 src/ext_l10n.h:65
-#: src/ext_l10n.h:87
+#: ../lib/ui/default.ui:116 ../lib/ui/default.ui:147
 #, fuzzy
 msgid "Copy Column"
 msgstr "Ajouter Colonne|o"
 
-#: ../lib/ui/default.ui:117 ../lib/ui/default.ui:148 src/ext_l10n.h:66
-#: src/ext_l10n.h:88
+#: ../lib/ui/default.ui:117 ../lib/ui/default.ui:148
 #, fuzzy
 msgid "Swap Columns"
 msgstr "Colonnes"
 
-#: ../lib/ui/default.ui:121 src/ext_l10n.h:67
+#: ../lib/ui/default.ui:121
 msgid "Make eqnarray|e"
 msgstr ""
 
-#: ../lib/ui/default.ui:122 src/ext_l10n.h:68
+#: ../lib/ui/default.ui:122
 msgid "Make multline|m"
 msgstr ""
 
-#: ../lib/ui/default.ui:123 src/ext_l10n.h:69
+#: ../lib/ui/default.ui:123
 msgid "Make align 1 column|1"
 msgstr ""
 
-#: ../lib/ui/default.ui:124 src/ext_l10n.h:70
+#: ../lib/ui/default.ui:124
 msgid "Make align 2 columns|2"
 msgstr ""
 
-#: ../lib/ui/default.ui:125 src/ext_l10n.h:71
+#: ../lib/ui/default.ui:125
 msgid "Make align 3 columns|3"
 msgstr ""
 
-#: ../lib/ui/default.ui:126 src/ext_l10n.h:72
+#: ../lib/ui/default.ui:126
 msgid "Make alignat 2 columns|2"
 msgstr ""
 
-#: ../lib/ui/default.ui:127 src/ext_l10n.h:73
+#: ../lib/ui/default.ui:127
 msgid "Make alignat 3 columns|3"
 msgstr ""
 
-#: ../lib/ui/default.ui:129 src/ext_l10n.h:74
+#: ../lib/ui/default.ui:129
 #, fuzzy
 msgid "Toggle Numbering|N"
 msgstr "(Dés)Activer Numérotation|N"
 
-#: ../lib/ui/default.ui:130 src/ext_l10n.h:75
+#: ../lib/ui/default.ui:130
 #, fuzzy
 msgid "Toggle Numbering of Line|u"
 msgstr "(Dés)Activer Numérotation de la Ligne|m"
 
-#: ../lib/ui/default.ui:131 src/ext_l10n.h:76
+#: ../lib/ui/default.ui:131
 msgid "Toggle limits|l"
 msgstr "(Dés)Activer Limites|i"
 
-#: ../lib/ui/default.ui:140 src/ext_l10n.h:81
+#: ../lib/ui/default.ui:132
+msgid "Change Limits Type|L"
+msgstr ""
+
+#: ../lib/ui/default.ui:134
+msgid "Change Formula Type|F"
+msgstr ""
+
+#: ../lib/ui/default.ui:136
+msgid "Use Computer Algebra System|S"
+msgstr ""
+
+#: ../lib/ui/default.ui:138
+#, fuzzy
+msgid "Alignment|A"
+msgstr "Alignement"
+
+#: ../lib/ui/default.ui:140
 #, fuzzy
 msgid "Add Row|R"
 msgstr "Ajouter Rangée|j"
 
-#: ../lib/ui/default.ui:141 src/ext_l10n.h:82
+#: ../lib/ui/default.ui:141
 #, fuzzy
 msgid "Delete Row|D"
 msgstr "Supprimer Rangée|u"
 
-#: ../lib/ui/default.ui:145 src/ext_l10n.h:85
+#: ../lib/ui/default.ui:145
 #, fuzzy
 msgid "Add Column|C"
 msgstr "Ajouter Colonne|o"
 
 # contrainte de longueur
-#: ../lib/ui/default.ui:146 src/ext_l10n.h:86
+#: ../lib/ui/default.ui:146
 #, fuzzy
 msgid "Delete Column|e"
 msgstr "Supprimer Colonne|p"
 
-#: ../lib/ui/default.ui:152 src/ext_l10n.h:89
+#: ../lib/ui/default.ui:152
 #, fuzzy
 msgid "Default|t"
 msgstr "Défaut"
 
-#: ../lib/ui/default.ui:153 src/ext_l10n.h:90
+#: ../lib/ui/default.ui:153
 #, fuzzy
 msgid "Display|D"
 msgstr "Ne pas afficher|#N"
 
-#: ../lib/ui/default.ui:154 src/ext_l10n.h:91
+#: ../lib/ui/default.ui:154
 #, fuzzy
 msgid "Inline|I"
 msgstr "&En Ligne"
 
-#: ../lib/ui/default.ui:158 src/ext_l10n.h:92
+#: ../lib/ui/default.ui:158
 msgid "Octave"
 msgstr ""
 
-#: ../lib/ui/default.ui:159 src/ext_l10n.h:93
+#: ../lib/ui/default.ui:159
 msgid "Maxima"
 msgstr ""
 
-#: ../lib/ui/default.ui:160 src/ext_l10n.h:94
+#: ../lib/ui/default.ui:160
 #, fuzzy
 msgid "Mathematica"
 msgstr "Matrice Mathématique"
 
-#: ../lib/ui/default.ui:162 src/ext_l10n.h:95
+#: ../lib/ui/default.ui:162
 msgid "Maple, simplify"
 msgstr ""
 
-#: ../lib/ui/default.ui:163 src/ext_l10n.h:96
+#: ../lib/ui/default.ui:163
 msgid "Maple, factor"
 msgstr ""
 
-#: ../lib/ui/default.ui:164 src/ext_l10n.h:97
+#: ../lib/ui/default.ui:164
 msgid "Maple, evalm"
 msgstr ""
 
-#: ../lib/ui/default.ui:165 src/ext_l10n.h:98
+#: ../lib/ui/default.ui:165
 msgid "Maple, evalf"
 msgstr ""
 
-#: ../lib/ui/default.ui:169 ../lib/ui/default.ui:234 src/ext_l10n.h:99
-#: src/ext_l10n.h:146
+#: ../lib/ui/default.ui:169 ../lib/ui/default.ui:234
 msgid "Inline Formula|I"
 msgstr "Formule En Ligne|L"
 
-#: ../lib/ui/default.ui:170 src/ext_l10n.h:100
+#: ../lib/ui/default.ui:170
 #, fuzzy
 msgid "Displayed Formula|D"
 msgstr "Formule Hors Ligne|H"
 
-#: ../lib/ui/default.ui:171 src/ext_l10n.h:101
+#: ../lib/ui/default.ui:171
 #, fuzzy
 msgid "Eqnarray Environment|q"
 msgstr "Environnement Tableau d'Équations|q"
 
-#: ../lib/ui/default.ui:172 src/ext_l10n.h:102
+#: ../lib/ui/default.ui:172
 #, fuzzy
 msgid "Align Environment|A"
 msgstr "Environnement Aligné|A"
 
-#: ../lib/ui/default.ui:173 src/ext_l10n.h:103
+#: ../lib/ui/default.ui:173
 #, fuzzy
 msgid "AlignAt Environment"
 msgstr "Environnement Aligné|A"
 
-#: ../lib/ui/default.ui:174 src/ext_l10n.h:104
+#: ../lib/ui/default.ui:174
 #, fuzzy
 msgid "Flalign Environment|f"
 msgstr "Environnement Aligné|A"
 
-#: ../lib/ui/default.ui:175 src/ext_l10n.h:105
+#: ../lib/ui/default.ui:175
 #, fuzzy
 msgid "XAlignAt Environment"
 msgstr "Environnement Aligné|A"
 
-#: ../lib/ui/default.ui:176 src/ext_l10n.h:106
+#: ../lib/ui/default.ui:176
 #, fuzzy
 msgid "XXAlignAt Environment"
 msgstr "Environnement Aligné|A"
 
-#: ../lib/ui/default.ui:177 src/ext_l10n.h:107
+#: ../lib/ui/default.ui:177
 #, fuzzy
 msgid "Gather Environment"
 msgstr "Environnement de liste"
 
-#: ../lib/ui/default.ui:178 src/ext_l10n.h:108
+#: ../lib/ui/default.ui:178
 #, fuzzy
 msgid "Multline Environment"
 msgstr "Environnement Aligné|A"
 
-#: ../lib/ui/default.ui:182 src/ext_l10n.h:109
+#: ../lib/ui/default.ui:182
 #, fuzzy
 msgid "Align Left|L"
 msgstr "Aligner à Gauche|a"
 
-#: ../lib/ui/default.ui:184 src/ext_l10n.h:111
+#: ../lib/ui/default.ui:184
 msgid "Align Right|R"
 msgstr "Aligner à Droite|D"
 
-#: ../lib/ui/default.ui:186 src/ext_l10n.h:112
+#: ../lib/ui/default.ui:186
 msgid "V.Align Top|T"
 msgstr "Aligner en Haut|t"
 
-#: ../lib/ui/default.ui:187 src/ext_l10n.h:113
+#: ../lib/ui/default.ui:187
 msgid "V.Align Center|e"
 msgstr "Centrer Verticalement|V"
 
-#: ../lib/ui/default.ui:188 src/ext_l10n.h:114
+#: ../lib/ui/default.ui:188
 msgid "V.Align Bottom|B"
 msgstr "Aligner en Bas|s"
 
-#: ../lib/ui/default.ui:197 src/ext_l10n.h:117
+#: ../lib/ui/default.ui:194
+msgid "Math|h"
+msgstr "Math|M"
+
+#: ../lib/ui/default.ui:196
+msgid "Special Character|S"
+msgstr "Caractère Spécial|S"
+
+#: ../lib/ui/default.ui:197
 msgid "Citation Reference...|C"
 msgstr "Citation...|C"
 
-#: ../lib/ui/default.ui:198 src/ext_l10n.h:118
+#: ../lib/ui/default.ui:198
 msgid "Cross Reference...|R"
 msgstr "Référence Croisée...|R"
 
-#: ../lib/ui/default.ui:199 src/ext_l10n.h:119
+#: ../lib/ui/default.ui:199
 msgid "Label...|L"
 msgstr "Étiquette...|q"
 
-#: ../lib/ui/default.ui:200 src/ext_l10n.h:120
+#: ../lib/ui/default.ui:200
 msgid "Footnote|F"
 msgstr "Note en Bas de Page|B"
 
-#: ../lib/ui/default.ui:201 src/ext_l10n.h:121
+#: ../lib/ui/default.ui:201
 msgid "Marginal Note|M"
 msgstr "Note en Marge|M"
 
-#: ../lib/ui/default.ui:202 src/ext_l10n.h:122
+#: ../lib/ui/default.ui:202
 #, fuzzy
 msgid "Short Title"
 msgstr "TitreCourt"
 
 # contrainte de longueur
-#: ../lib/ui/default.ui:203 src/ext_l10n.h:123
+#: ../lib/ui/default.ui:203
 #, fuzzy
 msgid "Index Entry|I"
 msgstr "Entrée d'Index...|d"
 
-#: ../lib/ui/default.ui:204 src/ext_l10n.h:124
+#: ../lib/ui/default.ui:204
 msgid "URL...|U"
 msgstr "URL...|U"
 
-#: ../lib/ui/default.ui:205 ../lib/ui/default.ui:341 src/ext_l10n.h:125
-#: src/ext_l10n.h:202
+#: ../lib/ui/default.ui:205 ../lib/ui/default.ui:341
 msgid "Note|N"
 msgstr "Note|N"
 
-#: ../lib/ui/default.ui:208 src/ext_l10n.h:127
+#: ../lib/ui/default.ui:206
+msgid "Lists & TOC|O"
+msgstr "Listes & TdM|L"
+
+#: ../lib/ui/default.ui:208
 msgid "TeX|T"
 msgstr "TeX|T"
 
-#: ../lib/ui/default.ui:209 src/ext_l10n.h:128
+#: ../lib/ui/default.ui:209
 msgid "Minipage|p"
 msgstr "Minipage|p"
 
-#: ../lib/ui/default.ui:210 src/ext_l10n.h:129
+#: ../lib/ui/default.ui:210
 msgid "Graphics...|G"
 msgstr "Graphique...|G"
 
-#: ../lib/ui/default.ui:211 src/ext_l10n.h:130
+#: ../lib/ui/default.ui:211
 msgid "Tabular Material...|b"
 msgstr "Tableau...|b"
 
-#: ../lib/ui/default.ui:214 src/ext_l10n.h:132
+#: ../lib/ui/default.ui:212
+msgid "Floats|a"
+msgstr "Flottants|o"
+
+#: ../lib/ui/default.ui:214
 msgid "Include File...|d"
 msgstr "Inclure Fichier...|u"
 
-#: ../lib/ui/default.ui:216 src/ext_l10n.h:134
+#: ../lib/ui/default.ui:215
+msgid "Insert File|e"
+msgstr "Insérer Fichier|I"
+
+#: ../lib/ui/default.ui:216
 msgid "External Material...|x"
 msgstr "Objet Externe...|E"
 
-#: ../lib/ui/default.ui:220 src/ext_l10n.h:135
+#: ../lib/ui/default.ui:220
 msgid "Superscript|S"
 msgstr "Exposant|x"
 
-#: ../lib/ui/default.ui:221 src/ext_l10n.h:136
+#: ../lib/ui/default.ui:221
 msgid "Subscript|u"
 msgstr "Indice|I"
 
-#: ../lib/ui/default.ui:222 src/ext_l10n.h:137
+#: ../lib/ui/default.ui:222
 msgid "HFill|H"
 msgstr "Ressort Horizontal|H"
 
-#: ../lib/ui/default.ui:223 src/ext_l10n.h:138
+#: ../lib/ui/default.ui:223
 msgid "Hyphenation Point|P"
 msgstr "Point de Césure|C"
 
-#: ../lib/ui/default.ui:224 src/ext_l10n.h:139
+#: ../lib/ui/default.ui:224
 #, fuzzy
 msgid "Ligature Break|k"
 msgstr "Séparation de Ligature|a"
 
-#: ../lib/ui/default.ui:225 src/ext_l10n.h:140
+#: ../lib/ui/default.ui:225
 msgid "Protected Blank|B"
 msgstr "Espace Insécable|E"
 
-#: ../lib/ui/default.ui:226 src/ext_l10n.h:141
+#: ../lib/ui/default.ui:226
 msgid "Linebreak|L"
 msgstr "Passage à la Ligne|L"
 
-#: ../lib/ui/default.ui:227 src/ext_l10n.h:142
+#: ../lib/ui/default.ui:227
 msgid "Ellipsis|i"
 msgstr "Points de Suspension|S"
 
-#: ../lib/ui/default.ui:228 src/ext_l10n.h:143
+#: ../lib/ui/default.ui:228
 msgid "End of Sentence|E"
 msgstr "Point Final|F"
 
-#: ../lib/ui/default.ui:229 src/ext_l10n.h:144
+#: ../lib/ui/default.ui:229
 msgid "Ordinary Quote|Q"
 msgstr "Guillemet Droit|G"
 
-#: ../lib/ui/default.ui:230 src/ext_l10n.h:145
+#: ../lib/ui/default.ui:230
 msgid "Menu Separator|M"
 msgstr "Séparateur de Menu|M"
 
-#: ../lib/ui/default.ui:235 src/ext_l10n.h:147
+#: ../lib/ui/default.ui:235
 msgid "Display Formula|D"
 msgstr "Formule Hors Ligne|H"
 
-#: ../lib/ui/default.ui:236 src/ext_l10n.h:148
+#: ../lib/ui/default.ui:236
 #, fuzzy
 msgid "Eqnarray Environment|E"
 msgstr "Environnement Tableau d'Équations|E"
 
-#: ../lib/ui/default.ui:237 src/ext_l10n.h:149
+#: ../lib/ui/default.ui:237
 #, fuzzy
 msgid "AMS align Environment|A"
 msgstr "Environnement AMS align|A"
 
-#: ../lib/ui/default.ui:238 src/ext_l10n.h:150
+#: ../lib/ui/default.ui:238
 #, fuzzy
 msgid "AMS alignat Environment|t"
 msgstr "Environnement AMS alignat|M"
 
-#: ../lib/ui/default.ui:239 src/ext_l10n.h:151
+#: ../lib/ui/default.ui:239
 #, fuzzy
 msgid "AMS flalign Environment|f"
 msgstr "Environnement AMS align|A"
 
-#: ../lib/ui/default.ui:240 src/ext_l10n.h:152
+#: ../lib/ui/default.ui:240
 #, fuzzy
 msgid "AMS xalignat Environment|x"
 msgstr "Environnement AMS xalignat|S"
 
-#: ../lib/ui/default.ui:241 src/ext_l10n.h:153
+#: ../lib/ui/default.ui:241
 #, fuzzy
 msgid "AMS xxalignat Environment"
 msgstr "Environnement AMS xxalignat|x"
 
-#: ../lib/ui/default.ui:242 src/ext_l10n.h:154
+#: ../lib/ui/default.ui:242
 #, fuzzy
 msgid "AMS gather Environment"
 msgstr "Environnement AMS alignat|M"
 
-#: ../lib/ui/default.ui:243 src/ext_l10n.h:155
+#: ../lib/ui/default.ui:243
 #, fuzzy
 msgid "AMS multline Environment"
 msgstr "Environnement AMS align|A"
 
-#: ../lib/ui/default.ui:245 src/ext_l10n.h:156
+#: ../lib/ui/default.ui:245
 #, fuzzy
 msgid "Array Environment|y"
 msgstr "Environnement Tableau|b"
 
-#: ../lib/ui/default.ui:246 src/ext_l10n.h:157
+#: ../lib/ui/default.ui:246
 #, fuzzy
 msgid "Cases Environment|C"
 msgstr "Environnement Cas|C"
 
-#: ../lib/ui/default.ui:249 src/ext_l10n.h:159
+#: ../lib/ui/default.ui:248
+#, fuzzy
+msgid "Font Change|f"
+msgstr "Forme police"
+
+#: ../lib/ui/default.ui:249
 #, fuzzy
 msgid "Math Panel|l"
 msgstr "Palette Mathématique...|P"
 
-#: ../lib/ui/default.ui:253 src/ext_l10n.h:160
+#: ../lib/ui/default.ui:253
 msgid "Math normal font"
 msgstr ""
 
-#: ../lib/ui/default.ui:255 src/ext_l10n.h:161
+#: ../lib/ui/default.ui:255
 msgid "Math calligraphic family"
 msgstr ""
 
-#: ../lib/ui/default.ui:256 src/ext_l10n.h:162
+#: ../lib/ui/default.ui:256
 msgid "Math fraktur family"
 msgstr ""
 
-#: ../lib/ui/default.ui:257 src/ext_l10n.h:163
+#: ../lib/ui/default.ui:257
 #, fuzzy
 msgid "Math roman family"
 msgstr "Famille police"
 
-#: ../lib/ui/default.ui:258 src/ext_l10n.h:164
+#: ../lib/ui/default.ui:258
 msgid "Math sans serif family"
 msgstr ""
 
-#: ../lib/ui/default.ui:260 src/ext_l10n.h:165
+#: ../lib/ui/default.ui:260
 #, fuzzy
 msgid "Math bold series"
 msgstr "Mode Mathématique"
 
-#: ../lib/ui/default.ui:262 src/ext_l10n.h:166
+#: ../lib/ui/default.ui:262
 #, fuzzy
 msgid "Text normal font"
 msgstr "Texte après le paramètre"
 
-#: ../lib/ui/default.ui:264 src/ext_l10n.h:167
+#: ../lib/ui/default.ui:264
 #, fuzzy
 msgid "Text roman family"
 msgstr "Famille police"
 
-#: ../lib/ui/default.ui:265 src/ext_l10n.h:168
+#: ../lib/ui/default.ui:265
 msgid "Text sans serif family"
 msgstr ""
 
-#: ../lib/ui/default.ui:266 src/ext_l10n.h:169
+#: ../lib/ui/default.ui:266
 #, fuzzy
 msgid "Text typewriter family"
 msgstr "Chasse fixe"
 
-#: ../lib/ui/default.ui:268 src/ext_l10n.h:170
+#: ../lib/ui/default.ui:268
 #, fuzzy
 msgid "Text bold series"
 msgstr "Texte avant"
 
-#: ../lib/ui/default.ui:269 src/ext_l10n.h:171
+#: ../lib/ui/default.ui:269
 msgid "Text medium series"
 msgstr ""
 
-#: ../lib/ui/default.ui:271 src/ext_l10n.h:172
+#: ../lib/ui/default.ui:271
 msgid "Text italic shape"
 msgstr ""
 
-#: ../lib/ui/default.ui:272 src/ext_l10n.h:173
+#: ../lib/ui/default.ui:272
 msgid "Text small caps shape"
 msgstr ""
 
-#: ../lib/ui/default.ui:273 src/ext_l10n.h:174
+#: ../lib/ui/default.ui:273
 msgid "Text slanted shape"
 msgstr ""
 
-#: ../lib/ui/default.ui:274 src/ext_l10n.h:175
+#: ../lib/ui/default.ui:274
 msgid "Text upright shape"
 msgstr ""
 
-#: ../lib/ui/default.ui:279 src/ext_l10n.h:176
+#: ../lib/ui/default.ui:279
 #, fuzzy
 msgid "Floatflt Figure"
 msgstr "AjusteFigure"
 
-#: ../lib/ui/default.ui:283 src/ext_l10n.h:177
+#: ../lib/ui/default.ui:283
 msgid "Table of Contents|C"
 msgstr "Table des Matières|M"
 
-#: ../lib/ui/default.ui:285 src/ext_l10n.h:178
+#: ../lib/ui/default.ui:285
 msgid "Index List|I"
 msgstr "Index|I"
 
-#: ../lib/ui/default.ui:286 src/ext_l10n.h:179
+#: ../lib/ui/default.ui:286
 msgid "BibTeX Reference...|B"
 msgstr "Références BibTeX...|B"
 
-#: ../lib/ui/default.ui:290 src/ext_l10n.h:180
+#: ../lib/ui/default.ui:290
 msgid "LyX Document...|X"
 msgstr "Document LyX...|X"
 
-#: ../lib/ui/default.ui:291 src/ext_l10n.h:181
+#: ../lib/ui/default.ui:291
 #, fuzzy
 msgid "ASCII as Lines...|L"
 msgstr "Ascii en Lignes...|L"
 
-#: ../lib/ui/default.ui:292 src/ext_l10n.h:182
+#: ../lib/ui/default.ui:292
 #, fuzzy
 msgid "ASCII as Paragraphs...|P"
 msgstr "Ascii en Paragraphes...|P"
 
-#: ../lib/ui/default.ui:299 src/ext_l10n.h:183
+#: ../lib/ui/default.ui:299
 #, fuzzy
 msgid "Character|C"
 msgstr "Caractère"
 
-#: ../lib/ui/default.ui:300 src/ext_l10n.h:184
+#: ../lib/ui/default.ui:300
 #, fuzzy
 msgid "Paragraph|P"
 msgstr "Paragraphe"
 
-#: ../lib/ui/default.ui:301 src/ext_l10n.h:185
+#: ../lib/ui/default.ui:301
 #, fuzzy
 msgid "Document|D"
 msgstr "Documents|D"
 
-#: ../lib/ui/default.ui:302 src/ext_l10n.h:36 src/ext_l10n.h:186
-msgid "Tabular|T"
-msgstr "Tableau|T"
-
-#: ../lib/ui/default.ui:304 src/ext_l10n.h:187
+#: ../lib/ui/default.ui:304
 msgid "Emphasize Style|E"
 msgstr "En Évidence|E"
 
-#: ../lib/ui/default.ui:305 src/ext_l10n.h:188
+#: ../lib/ui/default.ui:305
 msgid "Noun Style|N"
 msgstr "Nom Propre|N"
 
-#: ../lib/ui/default.ui:306 src/ext_l10n.h:189
+#: ../lib/ui/default.ui:306
 msgid "Bold Style|B"
 msgstr "Gras|G"
 
-#: ../lib/ui/default.ui:307 src/ext_l10n.h:190
+#: ../lib/ui/default.ui:307
 msgid "TeX Style|X"
 msgstr "TeX|X"
 
-#: ../lib/ui/default.ui:309 src/ext_l10n.h:191
+#: ../lib/ui/default.ui:309
 #, fuzzy
 msgid "Decrease Environment Depth|v"
 msgstr "Changer la Profondeur d'Environnement|f"
 
-#: ../lib/ui/default.ui:310 src/ext_l10n.h:192
+#: ../lib/ui/default.ui:310
 #, fuzzy
 msgid "Increase Environment Depth|i"
 msgstr "Augmenter la profondeur d'environnement"
 
-#: ../lib/ui/default.ui:311 src/ext_l10n.h:193
+#: ../lib/ui/default.ui:311
 #, fuzzy
 msgid "Preamble|r"
 msgstr "Préambule...|m"
 
-#: ../lib/ui/default.ui:312 src/ext_l10n.h:194
+#: ../lib/ui/default.ui:312
 #, fuzzy
 msgid "Start Appendix Here|S"
 msgstr "Appendice|A"
 
-#: ../lib/ui/default.ui:321 src/ext_l10n.h:195
+#: ../lib/ui/default.ui:321
 msgid "Build Program|B"
 msgstr "Compiler|C"
 
-#: ../lib/ui/default.ui:324 src/ext_l10n.h:197
+#: ../lib/ui/default.ui:322
+msgid "Update|U"
+msgstr "Mise à Jour|J"
+
+#: ../lib/ui/default.ui:324
 msgid "LaTeX Logfile|L"
 msgstr "Fichier log LaTeX|L"
 
-#: ../lib/ui/default.ui:325 src/ext_l10n.h:198
+#: ../lib/ui/default.ui:325
 msgid "Table of Contents|T"
 msgstr "Table des Matières|M"
 
-#: ../lib/ui/default.ui:326 src/ext_l10n.h:199
+#: ../lib/ui/default.ui:326
 #, fuzzy
 msgid "Child Processes|C"
 msgstr "Processus Enfantés|c"
 
-#: ../lib/ui/default.ui:327 src/ext_l10n.h:200
+#: ../lib/ui/default.ui:327
 msgid "TeX Information|X"
 msgstr "Informations TeX|X"
 
-#: ../lib/ui/default.ui:340 src/ext_l10n.h:201
+#: ../lib/ui/default.ui:340
 msgid "Error|E"
 msgstr "Erreur|E"
 
-#: ../lib/ui/default.ui:342 src/ext_l10n.h:203
+#: ../lib/ui/default.ui:342
 msgid "Refs|R"
 msgstr "Référence|R"
 
-#: ../lib/ui/default.ui:347 src/ext_l10n.h:205
+#: ../lib/ui/default.ui:343
+msgid "Bookmarks|B"
+msgstr "Signets|S"
+
+#: ../lib/ui/default.ui:347
 msgid "Save Bookmark 1|S"
 msgstr "Enregistrer signet 1|E"
 
-#: ../lib/ui/default.ui:348 src/ext_l10n.h:206
+#: ../lib/ui/default.ui:348
 msgid "Save Bookmark 2"
 msgstr "Enregistrer signet 2|n"
 
-#: ../lib/ui/default.ui:349 src/ext_l10n.h:207
+#: ../lib/ui/default.ui:349
 msgid "Save Bookmark 3"
 msgstr "Enregistrer signet 3|r"
 
-#: ../lib/ui/default.ui:351 src/ext_l10n.h:208
+#: ../lib/ui/default.ui:351
 msgid "Goto Bookmark 1|1"
 msgstr "Aller au signet 1|1"
 
-#: ../lib/ui/default.ui:352 src/ext_l10n.h:209
+#: ../lib/ui/default.ui:352
 msgid "Goto Bookmark 2|2"
 msgstr "Aller au signet 2|2"
 
-#: ../lib/ui/default.ui:353 src/ext_l10n.h:210
+#: ../lib/ui/default.ui:353
 msgid "Goto Bookmark 3|3"
 msgstr "Aller au signet 3|3"
 
-#: ../lib/ui/default.ui:368 src/ext_l10n.h:211
+#: ../lib/ui/default.ui:368
 msgid "Tooltips|o"
 msgstr "InfoBulles|B"
 
-#: ../lib/ui/default.ui:370 src/ext_l10n.h:212
+#: ../lib/ui/default.ui:370
 msgid "Introduction|I"
 msgstr "Introduction|I"
 
-#: ../lib/ui/default.ui:371 src/ext_l10n.h:213
+#: ../lib/ui/default.ui:371
 msgid "Tutorial|T"
 msgstr "Manuel d'Apprentissage|A"
 
-#: ../lib/ui/default.ui:372 src/ext_l10n.h:214
+#: ../lib/ui/default.ui:372
 msgid "User's Guide|U"
 msgstr "Guide de l'Utilisateur|U"
 
-#: ../lib/ui/default.ui:373 src/ext_l10n.h:215
+#: ../lib/ui/default.ui:373
 msgid "Extended Features|E"
 msgstr "Options Avancées|O"
 
-#: ../lib/ui/default.ui:374 src/ext_l10n.h:216
+#: ../lib/ui/default.ui:374
 msgid "Customization|C"
 msgstr "Personnalisation|P"
 
-#: ../lib/ui/default.ui:375 src/ext_l10n.h:217
+#: ../lib/ui/default.ui:375
 msgid "Reference Manual|R"
 msgstr "Manuel de Référence|R"
 
-#: ../lib/ui/default.ui:376 src/ext_l10n.h:218
+#: ../lib/ui/default.ui:376
 msgid "FAQ|F"
 msgstr "FAQ|F"
 
-#: ../lib/ui/default.ui:377 src/ext_l10n.h:219
+#: ../lib/ui/default.ui:377
 msgid "Table of Contents|a"
 msgstr "Table des Matières|M"
 
-#: ../lib/ui/default.ui:378 src/ext_l10n.h:220
+#: ../lib/ui/default.ui:378
 msgid "LaTeX Configuration|L"
 msgstr "Configuration LaTeX|X"
 
-#: ../lib/ui/default.ui:380 src/ext_l10n.h:221
+#: ../lib/ui/default.ui:380
 msgid "About LyX|X"
 msgstr "À Propos de LyX...|L"
 
@@ -8238,7 +8341,7 @@ msgstr "Le charger ?"
 msgid "Unable to open template"
 msgstr "Impossible d'ouvrir le modèle"
 
-#: src/bufferlist.C:518 src/lyxfunc.C:1805
+#: src/bufferlist.C:518 src/lyxfunc.C:1811
 msgid "Document is already open:"
 msgstr "Le document est déjà ouvert :"
 
@@ -8364,11 +8467,11 @@ msgstr "Choisir le document à insérer"
 #: src/frontends/controllers/ControlExternal.C:154
 #: src/frontends/controllers/ControlGraphics.C:93
 #: src/frontends/controllers/ControlInclude.C:70 src/lyx_cb.C:110
-#: src/lyxfunc.C:1629 src/lyxfunc.C:1668 src/lyxfunc.C:1773
+#: src/lyxfunc.C:1635 src/lyxfunc.C:1674 src/lyxfunc.C:1779
 msgid "Documents|#o#O"
 msgstr "Documents|#D#d"
 
-#: src/BufferView_pimpl.C:865 src/lyxfunc.C:1670 src/lyxfunc.C:1775
+#: src/BufferView_pimpl.C:865 src/lyxfunc.C:1676 src/lyxfunc.C:1781
 msgid "Examples|#E#e"
 msgstr "Exemples|#E#e"
 
@@ -8376,8 +8479,8 @@ msgstr "Exemples|#E#e"
 msgid "*.lyx| LyX Documents (*.lyx)"
 msgstr "*.lyx| Documents LyX (*.lyx)"
 
-#: src/BufferView_pimpl.C:879 src/lyxfunc.C:1684 src/lyxfunc.C:1792
-#: src/lyxfunc.C:1819
+#: src/BufferView_pimpl.C:879 src/lyxfunc.C:1690 src/lyxfunc.C:1798
+#: src/lyxfunc.C:1825
 msgid "Canceled."
 msgstr "Annulé."
 
@@ -8401,7 +8504,7 @@ msgstr "&Éditer ..."
 msgid "Document %1$s inserted."
 msgstr "Document exporté comme "
 
-#: src/BufferView_pimpl.C:903 src/lyxfunc.C:1729
+#: src/BufferView_pimpl.C:903 src/lyxfunc.C:1735
 #, fuzzy
 msgid "Document "
 msgstr "Document"
@@ -8705,124 +8808,6 @@ msgstr "Document exporté comme "
 #: src/exporter.C:106
 msgid " to file `"
 msgstr " dans le fichier `"
-
-#: src/ext_l10n.h:1 src/MenuBackend.C:683
-msgid "File|F"
-msgstr "Fichier|F"
-
-#: src/ext_l10n.h:2 src/MenuBackend.C:684
-msgid "Edit|E"
-msgstr "Éditer|e"
-
-#: src/ext_l10n.h:3
-msgid "Insert|I"
-msgstr "Insérer|I"
-
-#: src/ext_l10n.h:4
-msgid "Layout|L"
-msgstr "Format|t"
-
-#: src/ext_l10n.h:5
-msgid "View|V"
-msgstr "Visualiser|V"
-
-#: src/ext_l10n.h:6
-msgid "Navigate|N"
-msgstr "Naviguer|N"
-
-#: src/ext_l10n.h:7 src/MenuBackend.C:686
-msgid "Documents|D"
-msgstr "Documents|D"
-
-#: src/ext_l10n.h:8
-msgid "Help|H"
-msgstr "Aide|A"
-
-#: src/ext_l10n.h:16
-msgid "Version Control|V"
-msgstr "Contrôle de Version|V"
-
-#: src/ext_l10n.h:17 src/MenuBackend.C:657
-msgid "Import|I"
-msgstr "Importer|I"
-
-#: src/ext_l10n.h:18
-msgid "Export|E"
-msgstr "Exporter|x"
-
-#: src/ext_l10n.h:34
-msgid "Paste External Selection|x"
-msgstr "Copier Sélection Externe|S"
-
-#: src/ext_l10n.h:37
-msgid "Math|M"
-msgstr "Math|M"
-
-#: src/ext_l10n.h:77
-msgid "Change Limits Type|L"
-msgstr ""
-
-#: src/ext_l10n.h:78
-msgid "Change Formula Type|F"
-msgstr ""
-
-#: src/ext_l10n.h:79
-msgid "Use Computer Algebra System|S"
-msgstr ""
-
-#: src/ext_l10n.h:80
-#, fuzzy
-msgid "Alignment|A"
-msgstr "Alignement"
-
-#: src/ext_l10n.h:115
-msgid "Math|h"
-msgstr "Math|M"
-
-#: src/ext_l10n.h:116
-msgid "Special Character|S"
-msgstr "Caractère Spécial|S"
-
-#: src/ext_l10n.h:126
-msgid "Lists & TOC|O"
-msgstr "Listes & TdM|L"
-
-#: src/ext_l10n.h:131
-msgid "Floats|a"
-msgstr "Flottants|o"
-
-#: src/ext_l10n.h:133
-msgid "Insert File|e"
-msgstr "Insérer Fichier|I"
-
-#: src/ext_l10n.h:158
-#, fuzzy
-msgid "Font Change|f"
-msgstr "Forme police"
-
-#: src/ext_l10n.h:196
-msgid "Update|U"
-msgstr "Mise à Jour|J"
-
-#: src/ext_l10n.h:204
-msgid "Bookmarks|B"
-msgstr "Signets|S"
-
-#: src/ext_l10n.h:229
-msgid "Portuguese (Brazil)"
-msgstr "Portugais (Brésil)"
-
-#: src/ext_l10n.h:234
-msgid "French Canadian"
-msgstr "Français Canadien"
-
-#: src/ext_l10n.h:245
-msgid "French (GUTenberg)"
-msgstr "Français (GUTenberg)"
-
-#: src/ext_l10n.h:248
-msgid "German (new spelling)"
-msgstr "Allemand (nouvelle orthographe)"
 
 #: src/frontends/controllers/biblio.C:101
 #, c-format
@@ -9359,32 +9344,33 @@ msgstr "Entrée Bibliographique"
 msgid "BibTeX"
 msgstr "BibTeX"
 
-#: src/frontends/qt2/QBibtexDialog.C:58
+#: src/frontends/qt2/QBibtexDialog.C:59
 msgid "BibTeX style files (*.bst)"
 msgstr "Fichiers de style BibTeX (*.bst)"
 
-#: src/frontends/qt2/QBibtexDialog.C:61
+#: src/frontends/qt2/QBibtexDialog.C:62
 msgid "Select a BibTeX style"
 msgstr "Choisir un style BibTeX"
 
 # contrainte de longueur
-#: src/frontends/qt2/QBibtexDialog.C:72
+#: src/frontends/qt2/QBibtexDialog.C:73
 msgid "BibTeX database files (*.bib)"
 msgstr "Fichiers de Données BibTeX (*.bib)"
 
 # contrainte de longueur
-#: src/frontends/qt2/QBibtexDialog.C:72
+#: src/frontends/qt2/QBibtexDialog.C:73
 msgid "Select a BibTeX database to add"
 msgstr "Choisir une base de D. BibTeX"
 
-#: src/frontends/qt2/QCommandBuffer.C:73
-msgid "Up"
-msgstr ""
-
 #: src/frontends/qt2/QCommandBuffer.C:74
 #, fuzzy
-msgid "Down"
-msgstr "Ville"
+msgid "Previous command"
+msgstr "Commandes utilisateur"
+
+#: src/frontends/qt2/QCommandBuffer.C:75
+#, fuzzy
+msgid "Next command"
+msgstr "Exécuter la commande"
 
 #: src/frontends/qt2/QDelimiterDialog.C:81
 #, fuzzy
@@ -9434,70 +9420,70 @@ msgstr "»texte«"
 msgid "OneHalf"
 msgstr "Un et Demi"
 
-#: src/frontends/qt2/QDocument.C:112
+#: src/frontends/qt2/QDocument.C:114
 #, fuzzy
 msgid "US letter"
 msgstr "LettreUS"
 
-#: src/frontends/qt2/QDocument.C:112
+#: src/frontends/qt2/QDocument.C:115
 #, fuzzy
 msgid "US legal"
 msgstr "LégalUS"
 
-#: src/frontends/qt2/QDocument.C:113
+#: src/frontends/qt2/QDocument.C:116
 #, fuzzy
 msgid "US executive"
 msgstr "ExecutiveUS"
 
-#: src/frontends/qt2/QDocument.C:114
+#: src/frontends/qt2/QDocument.C:120
 msgid "B3"
 msgstr "B3"
 
-#: src/frontends/qt2/QDocument.C:114
+#: src/frontends/qt2/QDocument.C:121
 msgid "B4"
 msgstr "B4"
 
-#: src/frontends/qt2/QDocument.C:129
+#: src/frontends/qt2/QDocument.C:136
 msgid "10"
 msgstr "10"
 
-#: src/frontends/qt2/QDocument.C:130
+#: src/frontends/qt2/QDocument.C:137
 msgid "11"
 msgstr "11"
 
-#: src/frontends/qt2/QDocument.C:131
+#: src/frontends/qt2/QDocument.C:138
 msgid "12"
 msgstr "12"
 
-#: src/frontends/qt2/QDocument.C:133
+#: src/frontends/qt2/QDocument.C:140
 msgid "Smallskip"
 msgstr "Petit"
 
-#: src/frontends/qt2/QDocument.C:134
+#: src/frontends/qt2/QDocument.C:141
 msgid "Medskip"
 msgstr "Moyen"
 
-#: src/frontends/qt2/QDocument.C:135
+#: src/frontends/qt2/QDocument.C:142
 msgid "Bigskip"
 msgstr "Gros"
 
-#: src/frontends/qt2/QDocument.C:136
+#: src/frontends/qt2/QDocument.C:143
 msgid "Length"
 msgstr "Valeur"
 
-#: src/frontends/qt2/QDocument.C:139
+#: src/frontends/qt2/QDocument.C:146
 msgid "empty"
 msgstr "vide"
 
-#: src/frontends/qt2/QDocument.C:140
+#: src/frontends/qt2/QDocument.C:147
 msgid "plain"
 msgstr "ordinaire"
 
-#: src/frontends/qt2/QDocument.C:141
+#: src/frontends/qt2/QDocument.C:148
 msgid "headings"
 msgstr "en-têtes"
 
-#: src/frontends/qt2/QDocument.C:142
+#: src/frontends/qt2/QDocument.C:149
 msgid "fancy"
 msgstr "sophistiquée"
 
@@ -9556,19 +9542,20 @@ msgstr "Entrée Bibliographique"
 msgid "LaTeX Preamble"
 msgstr "Préambule LaTeX"
 
-#: src/frontends/qt2/QDocumentDialog.C:340
+#: src/frontends/qt2/QDocumentDialog.C:344
 #, fuzzy
-msgid "Small Margins"
+msgid "Small margins"
 msgstr "Marges"
 
-#: src/frontends/qt2/QDocumentDialog.C:340
+#: src/frontends/qt2/QDocumentDialog.C:345
 #, fuzzy
-msgid "Very small Margins"
+msgid "Very small margins"
 msgstr "A4 très petites marges (portrait seul)"
 
-#: src/frontends/qt2/QDocumentDialog.C:341
-msgid "Very wide Margins "
-msgstr ""
+#: src/frontends/qt2/QDocumentDialog.C:346
+#, fuzzy
+msgid "Very wide margins"
+msgstr "A4 très petites marges (portrait seul)"
 
 #: src/frontends/qt2/QERT.C:31
 msgid "LaTeX ERT"
@@ -9591,7 +9578,7 @@ msgstr "Choisir l'objet externe"
 msgid "Float Settings"
 msgstr "Options de Flottant"
 
-#: src/frontends/qt2/QGraphics.C:53 src/frontends/qt2/QPrefsDialog.C:134
+#: src/frontends/qt2/QGraphics.C:53 src/frontends/qt2/QPrefsDialog.C:135
 #: src/frontends/xforms/FormGraphics.C:64
 msgid "Graphics"
 msgstr "Graphique"
@@ -9740,7 +9727,7 @@ msgstr "Minipage"
 msgid "Paragraph Layout"
 msgstr "Style de Paragraphe"
 
-#: src/frontends/qt2/QParagraph.C:303 src/frontends/xforms/FormParagraph.C:287
+#: src/frontends/qt2/QParagraph.C:304 src/frontends/xforms/FormParagraph.C:287
 #: src/paragraph.C:820
 msgid "Senseless with this layout!"
 msgstr "Aucun sens avec ce style !"
@@ -9761,81 +9748,81 @@ msgstr "Préférences"
 # ou "Environnement" ?
 #. OK, Qt is REALLY broken. We have to hard
 #. code the menu structure here.
-#: src/frontends/qt2/QPrefsDialog.C:77
+#: src/frontends/qt2/QPrefsDialog.C:78
 #, fuzzy
 msgid "Look and feel"
 msgstr "Aspect"
 
-#: src/frontends/qt2/QPrefsDialog.C:82
+#: src/frontends/qt2/QPrefsDialog.C:83
 #: src/frontends/xforms/FormPreferences.C:198
 msgid "Outputs"
 msgstr "Sorties"
 
 #. UI
-#: src/frontends/qt2/QPrefsDialog.C:126
+#: src/frontends/qt2/QPrefsDialog.C:127
 #, fuzzy
 msgid "User interface"
 msgstr "Fichier d'interface|#i"
 
-#: src/frontends/qt2/QPrefsDialog.C:130
+#: src/frontends/qt2/QPrefsDialog.C:131
 #, fuzzy
 msgid "Screen fonts"
 msgstr "Polices d'Écran"
 
 #. output
-#: src/frontends/qt2/QPrefsDialog.C:141
+#: src/frontends/qt2/QPrefsDialog.C:142
 msgid "Ascii"
 msgstr ""
 
-#: src/frontends/qt2/QPrefsDialog.C:143
+#: src/frontends/qt2/QPrefsDialog.C:144
 #, fuzzy
 msgid "Date format"
 msgstr "Format de la date|#F"
 
-#: src/frontends/qt2/QPrefsDialog.C:147
+#: src/frontends/qt2/QPrefsDialog.C:148
 #: src/frontends/xforms/FormPreferences.C:235
 msgid "Printer"
 msgstr "Imprimante"
 
-#: src/frontends/qt2/QPrefsDialog.C:150
+#: src/frontends/qt2/QPrefsDialog.C:151
 #: src/frontends/xforms/FormPreferences.C:227
 msgid "Paths"
 msgstr "Répertoires"
 
-#: src/frontends/qt2/QPrefsDialog.C:152
+#: src/frontends/qt2/QPrefsDialog.C:153
 #: src/frontends/xforms/FormPreferences.C:221
 msgid "Converters"
 msgstr "Convertisseurs"
 
-#: src/frontends/qt2/QPrefsDialog.C:154
+#: src/frontends/qt2/QPrefsDialog.C:155
 #, fuzzy
 msgid "File formats"
 msgstr "Formats"
 
-#: src/frontends/qt2/QPrefsDialog.C:442 src/frontends/qt2/QPrefsDialog.C:445
+#: src/frontends/qt2/QPrefsDialog.C:444 src/frontends/qt2/QPrefsDialog.C:447
 msgid "New"
 msgstr ""
 
-#: src/frontends/qt2/QPrefsDialog.C:544
+#: src/frontends/qt2/QPrefsDialog.C:548
 #, fuzzy
 msgid "Select a document templates directory"
 msgstr "Choisir le document à insérer"
 
-#: src/frontends/qt2/QPrefsDialog.C:552
+#: src/frontends/qt2/QPrefsDialog.C:556
 #, fuzzy
 msgid "Select a temporary directory"
 msgstr "Erreur ! Impossible de créer le répertoire temporaire :"
 
-#: src/frontends/qt2/QPrefsDialog.C:560
+#: src/frontends/qt2/QPrefsDialog.C:564
 msgid "Select a backups directory"
 msgstr ""
 
-#: src/frontends/qt2/QPrefsDialog.C:568
+#: src/frontends/qt2/QPrefsDialog.C:572
 #, fuzzy
 msgid "Selection a documents directory"
 msgstr "Choisir le document à insérer"
 
-#: src/frontends/qt2/QPrefsDialog.C:576
+#: src/frontends/qt2/QPrefsDialog.C:580
 msgid "Give a filename for the LyX server pipe"
 msgstr ""
 
@@ -9863,7 +9850,7 @@ msgstr "Envoyer le Document à la Commande"
 msgid "ShowFile"
 msgstr ""
 
-#: src/frontends/qt2/QSpellchecker.C:121
+#: src/frontends/qt2/QSpellchecker.C:120
 msgid "Spellcheck complete"
 msgstr "Correction orthographique terminée"
 
@@ -11275,7 +11262,7 @@ msgstr "Importation"
 msgid "Importing "
 msgstr "Importation"
 
-#: src/importer.C:47 src/lyxfunc.C:973 src/lyxfunc.C:1136 src/lyxfunc.C:1717
+#: src/importer.C:47 src/lyxfunc.C:979 src/lyxfunc.C:1142 src/lyxfunc.C:1723
 msgid "..."
 msgstr ""
 
@@ -11334,7 +11321,7 @@ msgid "Not permitted to change font-types inside ERT-insets!"
 msgstr "Modification des polices interdites dans les inserts ERT !"
 
 #: src/insets/insetert.C:250 src/insets/insettabular.C:2092
-#: src/insets/insettext.C:1421
+#: src/insets/insettext.C:1423
 msgid "Sorry."
 msgstr "Désolé."
 
@@ -11425,35 +11412,35 @@ msgstr "Erreur lors de la conversion vers un format lisible"
 msgid "No image"
 msgstr "Pas d'image"
 
-#: src/insets/insetgraphics.C:636
+#: src/insets/insetgraphics.C:641
 msgid "Cannot copy file"
 msgstr "Impossible de copier le fichier"
 
-#: src/insets/insetgraphics.C:637
+#: src/insets/insetgraphics.C:642
 msgid "into tempdir"
 msgstr "dans le répertoire temporaire"
 
-#: src/insets/insetgraphics.C:670 src/insets/insetgraphics.C:674
+#: src/insets/insetgraphics.C:679 src/insets/insetgraphics.C:683
 #, fuzzy
 msgid "Cannot convert Image (not existing file?)"
 msgstr "Impossible de convertir le fichier"
 
-#: src/insets/insetgraphics.C:671
+#: src/insets/insetgraphics.C:680
 #, fuzzy, c-format
 msgid "No information for converting from %1$s to %2$s"
 msgstr "Pas d´information pour la conversion de "
 
-#: src/insets/insetgraphics.C:675
+#: src/insets/insetgraphics.C:684
 #, fuzzy
 msgid "No information for converting from "
 msgstr "Pas d´information pour la conversion de "
 
-#: src/insets/insetgraphics.C:767
+#: src/insets/insetgraphics.C:776
 #, fuzzy, c-format
 msgid "Graphic file: %1$s"
 msgstr "Fichier graphique :"
 
-#: src/insets/insetgraphics.C:771
+#: src/insets/insetgraphics.C:780
 #, fuzzy
 msgid "Graphic file: "
 msgstr "Fichier graphique :"
@@ -11582,29 +11569,29 @@ msgid "Opened Text Inset"
 msgstr "Insert de texte ouvert"
 
 # à revoir
-#: src/insets/insettext.C:1419
+#: src/insets/insettext.C:1421
 msgid "Impossible operation"
 msgstr "Opération interdite"
 
 # à revoir
-#: src/insets/insettext.C:1420
+#: src/insets/insettext.C:1422
 msgid "Cannot include more than one paragraph!"
 msgstr "Les cases d'un tableau ne doivent pas inclure plus d'un paragraphe !"
 
 # revu
-#: src/insets/insettext.C:1495 src/text3.C:1098
+#: src/insets/insettext.C:1497 src/text3.C:1098
 msgid "Layout "
 msgstr "Format "
 
-#: src/insets/insettext.C:1495 src/text3.C:1099
+#: src/insets/insettext.C:1497 src/text3.C:1099
 msgid " not known"
 msgstr " inconnu"
 
-#: src/insets/insettext.C:1548 src/text3.C:880
+#: src/insets/insettext.C:1550 src/text3.C:880
 msgid "Unknown spacing argument: "
 msgstr "Paramètre d'espacement inconnu : "
 
-#: src/insets/insettext.C:1667
+#: src/insets/insettext.C:1669
 msgid "Error : LatexType Command not allowed here.\n"
 msgstr "Erreur : commande LaTeX non permise ici.\n"
 
@@ -12426,11 +12413,11 @@ msgstr "(Sinon le document ne sera pas enregistré.)"
 msgid "Choose a filename to save document as"
 msgstr "Choisir le nom sous lequel enregistrer le fichier"
 
-#: src/lyx_cb.C:112 src/lyxfunc.C:1631
+#: src/lyx_cb.C:112 src/lyxfunc.C:1637
 msgid "Templates|#T#t"
 msgstr "Modèles|#M#m"
 
-#: src/lyx_cb.C:120 src/lyxfunc.C:1636
+#: src/lyx_cb.C:120 src/lyxfunc.C:1642
 msgid "*.lyx|LyX Documents (*.lyx)"
 msgstr "*.lyx|Documents LyX (*.lyx)"
 
@@ -12656,159 +12643,159 @@ msgstr "Fonction inconnue"
 msgid "Nothing to do"
 msgstr "Rien à faire"
 
-#: src/lyxfunc.C:275
+#: src/lyxfunc.C:286
 msgid "Unknown action"
 msgstr "Action inconnue"
 
 #. the default error message if we disable the command
-#: src/lyxfunc.C:280
+#: src/lyxfunc.C:291
 msgid "Command disabled"
 msgstr "Commande désactivée"
 
 #. no
-#: src/lyxfunc.C:292
+#: src/lyxfunc.C:303
 msgid "Document is read-only"
 msgstr "Document en lecture seule"
 
 #. no
-#: src/lyxfunc.C:297
+#: src/lyxfunc.C:308
 msgid "Command not allowed without any document open"
 msgstr "Commande non autorisée si aucun document n'est ouvert"
 
-#: src/lyxfunc.C:688
+#: src/lyxfunc.C:694
 #, fuzzy, c-format
 msgid "Unknown function (%1$s)"
 msgstr "Fonction inconnue ("
 
-#: src/lyxfunc.C:692
+#: src/lyxfunc.C:698
 msgid "Unknown function ("
 msgstr "Fonction inconnue ("
 
-#: src/lyxfunc.C:968
+#: src/lyxfunc.C:974
 #, fuzzy, c-format
 msgid "Saving document %1$s..."
 msgstr "Enregistrement du document"
 
-#: src/lyxfunc.C:971
+#: src/lyxfunc.C:977
 #, fuzzy
 msgid "Saving document "
 msgstr "Enregistrement du document"
 
-#: src/lyxfunc.C:977
+#: src/lyxfunc.C:983
 #, fuzzy
 msgid " done."
 msgstr "Vers le bas"
 
-#: src/lyxfunc.C:1119 src/mathed/formulabase.C:1036
+#: src/lyxfunc.C:1125 src/mathed/formulabase.C:1036
 msgid "Missing argument"
 msgstr "Paramètre manquant"
 
-#: src/lyxfunc.C:1132
+#: src/lyxfunc.C:1138
 #, fuzzy, c-format
 msgid "Opening help file %1$s..."
 msgstr "Ouverture du fichier d'aide"
 
-#: src/lyxfunc.C:1135
+#: src/lyxfunc.C:1141
 #, fuzzy
 msgid "Opening help file "
 msgstr "Ouverture du fichier d'aide"
 
-#: src/lyxfunc.C:1341
+#: src/lyxfunc.C:1347
 msgid "This is only allowed in math mode!"
 msgstr "Ceci n'est autorisé qu'en mode mathématique !"
 
-#: src/lyxfunc.C:1383
+#: src/lyxfunc.C:1389
 msgid "Opening child document "
 msgstr "Ouverture du document fils"
 
-#: src/lyxfunc.C:1457
+#: src/lyxfunc.C:1463
 msgid "Syntax: set-color <lyx_name> <x11_name>"
 msgstr "Syntaxe : set-color <nom_lyx> <nom_x11>"
 
-#: src/lyxfunc.C:1471
+#: src/lyxfunc.C:1477
 #, fuzzy, c-format
 msgid "Set-color \"%1$s\" failed - color is undefined or may not be redefined"
 msgstr ""
 "\" a échoué - la couleur n'est pas définie ou ne peut pas être redéfinie"
 
-#: src/lyxfunc.C:1476
+#: src/lyxfunc.C:1482
 msgid "Set-color "
 msgstr ""
 
-#: src/lyxfunc.C:1477
+#: src/lyxfunc.C:1483
 #, fuzzy
 msgid " failed - color is undefined or may not be redefined"
 msgstr ""
 "\" a échoué - la couleur n'est pas définie ou ne peut pas être redéfinie"
 
-#: src/lyxfunc.C:1627
+#: src/lyxfunc.C:1633
 msgid "Select template file"
 msgstr "Choisir le modèle"
 
-#: src/lyxfunc.C:1666
+#: src/lyxfunc.C:1672
 msgid "Select document to open"
 msgstr "Choisir le document à ouvrir"
 
-#: src/lyxfunc.C:1702
+#: src/lyxfunc.C:1708
 #, fuzzy
 msgid "No such file"
 msgstr "Charger le fichier"
 
-#: src/lyxfunc.C:1703
+#: src/lyxfunc.C:1709
 #, fuzzy
 msgid "Start a new document with this filename ?"
 msgstr "Créer un nouveau document avec ce nom ?"
 
-#: src/lyxfunc.C:1704 src/lyxfunc.C:1829
+#: src/lyxfunc.C:1710 src/lyxfunc.C:1835
 msgid "Canceled"
 msgstr "Annulé"
 
-#: src/lyxfunc.C:1715
+#: src/lyxfunc.C:1721
 #, fuzzy, c-format
 msgid "Opening document %1$s..."
 msgstr "Ouverture du document en cours..."
 
-#: src/lyxfunc.C:1717
+#: src/lyxfunc.C:1723
 #, fuzzy
 msgid "Opening document "
 msgstr "Ouverture du document fils"
 
-#: src/lyxfunc.C:1727
+#: src/lyxfunc.C:1733
 #, fuzzy, c-format
 msgid "Document %1$s opened."
 msgstr "Aucun Document Ouvert !"
 
-#: src/lyxfunc.C:1729
+#: src/lyxfunc.C:1735
 #, fuzzy
 msgid " opened."
 msgstr "Vers le bas"
 
-#: src/lyxfunc.C:1733
+#: src/lyxfunc.C:1739
 #, fuzzy, c-format
 msgid "Could not open document %1$s"
 msgstr "Impossible d'ouvrir le document"
 
-#: src/lyxfunc.C:1736
+#: src/lyxfunc.C:1742
 #, fuzzy
 msgid "Could not open document "
 msgstr "Impossible d'ouvrir le document"
 
-#: src/lyxfunc.C:1763
+#: src/lyxfunc.C:1769
 #, fuzzy, c-format
 msgid "Select %1$s file to import"
 msgstr "Choisir le fichier à insérer"
 
-#: src/lyxfunc.C:1767
+#: src/lyxfunc.C:1773
 #, fuzzy
 msgid "Select "
 msgstr "Sélectionné"
 
-#: src/lyxfunc.C:1768
+#: src/lyxfunc.C:1774
 #, fuzzy
 msgid " file to import"
 msgstr "Choisir le fichier à insérer"
 
-#: src/lyxfunc.C:1807
+#: src/lyxfunc.C:1813
 msgid ""
 "Do you want to close that document now?\n"
 "('No' will just switch to the open version)"
@@ -12816,15 +12803,15 @@ msgstr ""
 "Voulez-vous fermer le document maintenant ?\n"
 "('Non' vous ramènera à la version ouverte)"
 
-#: src/lyxfunc.C:1827
+#: src/lyxfunc.C:1833
 msgid "A document by the name"
 msgstr "Un document possède le même nom"
 
-#: src/lyxfunc.C:1828
+#: src/lyxfunc.C:1834
 msgid "already exists. Overwrite?"
 msgstr "Écraser ?"
 
-#: src/lyxfunc.C:1900
+#: src/lyxfunc.C:1906
 msgid "Welcome to LyX!"
 msgstr "Bienvenue dans LyX !"
 

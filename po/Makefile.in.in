@@ -89,7 +89,7 @@ all-no:
 $(srcdir)/$(PACKAGE).pot: $(POTFILES) $(srcdir)/POTFILES.in l10n_pots
 	$(XGETTEXT) --join-existing --default-domain=$(PACKAGE) --directory=$(top_srcdir) \
 	  --escape --add-comments --keyword=_ --keyword=N_ \
-	  --files-from=$(srcdir)/POTFILES.in \
+	  --keyword=qt_ --files-from=$(srcdir)/POTFILES.in \
 	&& test ! -f $(PACKAGE).po \
 	   || ( rm -f $(srcdir)/$(PACKAGE).pot \
 		&& mv $(PACKAGE).po $(srcdir)/$(PACKAGE).pot )
@@ -201,7 +201,6 @@ ${srcdir}/POTFILES.in: $(POTFILE_IN_DEPS)
 	     grep -l "_(\".*\")" `find src -name \*.[hHC] -print` |\
 	     sed -e '/xforms.forms/d' | \
 	     sort -f -n | uniq ) > $@-t \
-	&& echo "src/ext_l10n.h" >> $@-t \
 	&& mv $@-t $@
 
 
@@ -274,7 +273,7 @@ languages_l10n.pot: $(top_srcdir)/lib/languages
 
 default_ui_l10n.pot: $(top_srcdir)/lib/ui/default.ui
 	awk ' \
-	    /SubMenu/ { \
+	    /Submenu/ { \
 		line=$$0; \
                 sub(/[^"]*"/, "", line); \
                 sub(/".*/, "", line); \
