@@ -301,6 +301,7 @@ void specialChar(LCursor & cur, InsetSpecialChar::Kind kind)
 {
 	lyx::cap::replaceSelection(cur);
 	cur.insert(new InsetSpecialChar(kind));
+	cur.posRight();
 }
 
 
@@ -625,6 +626,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		if (cur.pos() > cur.paragraph().beginOfBody()) {
 			lyx::cap::replaceSelection(cur);
 			cur.insert(new InsetNewline);
+			cur.posRight();
 			moveCursor(cur, false);
 		}
 		break;
@@ -800,8 +802,10 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 	case LFUN_SPACE_INSERT:
 		if (cur.paragraph().layout()->free_spacing)
 			insertChar(cur, ' ');
-		else
+		else {
 			doInsertInset(cur, this, cmd, false, false);
+			cur.posRight();
+		}
 		moveCursor(cur, false);
 		break;
 
@@ -1488,6 +1492,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 			setLayout(cur, tclass.defaultLayoutName());
 			setParagraph(cur, Spacing(), LYX_ALIGN_LAYOUT, string(), 0);
 			insertInset(cur, new InsetFloatList(cmd.argument));
+			cur.posRight();
 		} else {
 			lyxerr << "Non-existent float type: "
 			       << cmd.argument << endl;

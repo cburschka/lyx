@@ -1,3 +1,8 @@
+2004-11-02  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* text3.C (specialChar, dispatch): make sure cursor moves to the
+	right after inserting an inset
+
 2004-11-02  José Matos  <jamatos@lyx.org>
 
 	* output_docbook.C (docbook):
@@ -35,9 +40,11 @@
 
 2004-10-30  José Matos  <jamatos@lyx.org>
 
-	* paragraph.C (getFirstWord): the content should always be escaped there.
+	* paragraph.C (getFirstWord): the content should always be escaped
+	there. 
 	(simpleDocBookOnePar):
-	* output_docbook.C (makeEnvironment): replace reference to CDATA to style pass_thru.
+	* output_docbook.C (makeEnvironment): replace reference to CDATA
+	to style pass_thru. 
 
 2004-10-30  José Matos  <jamatos@lyx.org>
 
@@ -68,9 +75,10 @@
 
 2004-10-28  José Matos  <jamatos@lyx.org>
 
-	* output_docbook.C (makeEnvironment): move id to broadest possible scope.
+	* output_docbook.C (makeEnvironment): move id to broadest possible
+	scope. 
 
-	* sgml.C (openTag): apply substitution of <> for all attribuites.
+	* sgml.C (openTag): apply substitution of <> for all attributes.
 
 2004-10-28  José Matos  <jamatos@lyx.org>
 
@@ -100,7 +108,8 @@
 
 2004-10-25  José Matos  <jamatos@lyx.org>
 
-	* output_docbook.C (makeCommand): merge two if's that tested the same condition.
+	* output_docbook.C (makeCommand): merge two if's that tested the
+	same condition. 
 
 2004-10-25  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
