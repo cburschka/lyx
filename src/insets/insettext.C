@@ -125,7 +125,7 @@ void InsetText::restoreLyXTextState() const
 
 
 InsetText::InsetText(BufferParams const & bp)
-	: UpdatableInset(), in_update(false), text_(0, this)
+	: UpdatableInset(), text_(0, this)
 {
 	paragraphs.push_back(Paragraph());
 	paragraphs.begin()->layout(bp.getLyXTextClass().defaultLayout());
@@ -136,7 +136,7 @@ InsetText::InsetText(BufferParams const & bp)
 
 
 InsetText::InsetText(InsetText const & in)
-	: UpdatableInset(in), in_update(false), text_(0, this)
+	: UpdatableInset(in), text_(0, this)
 {
 	init(&in);
 }

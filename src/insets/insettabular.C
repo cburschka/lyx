@@ -167,7 +167,6 @@ InsetTabular::InsetTabular(Buffer const & buf, int rows, int columns)
 	actrow = actcell = 0;
 	clearSelection();
 	need_update = INIT;
-	in_update = false;
 	in_reset_pos = 0;
 	inset_x = 0;
 	inset_y = 0;
@@ -186,7 +185,6 @@ InsetTabular::InsetTabular(InsetTabular const & tab)
 	actrow = actcell = 0;
 	clearSelection();
 	need_update = INIT;
-	in_update = false;
 	in_reset_pos = 0;
 	inset_x = 0;
 	inset_y = 0;

@@ -362,8 +362,6 @@ private:
 	mutable int frame_y;
 	mutable int frame_w;
 	mutable int frame_h;
-	///
-	bool in_update; /* as update is not reentrant! */
 	mutable bool in_insetAllowed;
 	///
 	// these are used to check for mouse movement in Motion selection code

@@ -345,8 +345,6 @@ private:
 	///
 	mutable UpdateCodes need_update;
 	///
-	bool in_update;
-	///
 	mutable int in_reset_pos;
 };
 
