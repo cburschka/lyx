@@ -1,3 +1,57 @@
+2002-08-12  Angus Leeming  <leeming@lyx.org>
+
+	* Menubar_pimpl.C: no need to #include "Dialogs.h". Remove semi-colon
+	from namespace closing delimiter.
+
+	* Menubar_pimpl.h:  remove MenuItemInfo:: prefix from c-tor declaration.
+
+	* QAbout.[Ch]:
+	* QBibitem.[Ch]:
+	* QBibtex.[Ch]:
+	* QCharacter.[Ch]:
+	* QCitation.[Ch]:
+	* QERT.[Ch]:
+	* QError.[Ch]:
+	* QExternal.[Ch]:
+	* QFloat.[Ch]:
+	* QGraphics.[Ch]:
+	* QInclude.[Ch]:
+	* QIndex.[Ch]:
+	* QLog.[Ch]:
+	* QMinipage.[Ch]:
+	* QParagraph.[Ch]:
+	* QPreamble.[Ch]:
+	* QPrint.[Ch]:
+	* QRef.[Ch]:
+	* QSearch.[Ch]:
+	* QShowFile.[Ch]:
+	* QSpellchecker.[Ch]:
+	* QTabularCreate.[Ch]:
+	* QTexinfo.[Ch]:
+	* QThesaurus.[Ch]:
+	* QToc.[Ch]:
+	* QURL.[Ch]:
+	* QVCLog.[Ch]:
+	No longer pass Controller or Dialogs to the c-tor.
+	No longer forward-declare Dialogs.
+
+	* Qt2Base.[Ch]: derives from ViewBase directly.
+	No longer passed ControlButtons & or Dialogs &.
+	(bc): new method, enabling the daughter classes to access the
+	ButtonController.
+	(slotWMHide):
+	(slotApply):
+	(slotOK):
+	(slotClose):
+	(slotRestore): changes due to a change in the ViewBase class.
+
+	* QtView.C (c-tor): no longer pass Dialogs & to the Toolbar.
+
+	* Toolbar_pimpl.[Ch] (c-tor): no longer passed a Dialogs &.
+
+	* guiapi.C: access the controller methods by explicit invocation of the
+	controller.
+
 2002-08-09  John Levon  <levon@movementarian.org>
 
 	* Toolbar_pimpl.C: add missing header

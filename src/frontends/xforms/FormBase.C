@@ -12,8 +12,9 @@
 #pragma implementation
 #endif
 
-#include "Dialogs.h"
 #include "FormBase.h"
+
+#include "ControlButtons.h"
 #include "xformsBC.h"
 #include "xforms_resize.h"
 #include "Tooltips.h"
@@ -32,10 +33,9 @@ static int C_PrehandlerCB(FL_OBJECT *, int, FL_Coord, FL_Coord, int, void *);
 } // extern "C"
 
 
-FormBase::FormBase(ControlButtons & c, Dialogs & d,
-		   string const & t, bool allowResize)
-	: ViewBC<xformsBC>(c), minw_(0), minh_(0), allow_resize_(allowResize),
-	  title_(t), tooltips_(new Tooltips(d))
+FormBase::FormBase(string const & t, bool allowResize)
+	: ViewBase(), minw_(0), minh_(0), allow_resize_(allowResize),
+	  title_(t), tooltips_(new Tooltips())
 {}
 
 
@@ -55,6 +55,13 @@ void FormBase::redraw()
 {
 	if (form() && form()->visible)
 		fl_redraw_form(form());
+}
+
+
+xformsBC & FormBase::bc()
+{
+	return static_cast<xformsBC &>(getController().bc());
+	// return dynamic_cast<GUIbc &>(controller_ptr_->bc());
 }
 
 
@@ -102,9 +109,12 @@ void FormBase::show()
 		if (!allow_resize_)
 			fl_set_form_maxsize(form(), minw_, minh_);
 
+		int const iconify = getController().IconifyWithMain() ?
+			FL_TRANSIENT : 0;
+
 		fl_show_form(form(),
 			     FL_PLACE_MOUSE | FL_FREE_SIZE,
-			     (controller_.IconifyWithMain() ? FL_TRANSIENT : 0),
+			     iconify,
 			     title_.c_str());
 	}
 
@@ -166,26 +176,26 @@ extern "C" {
 
 void C_FormBaseApplyCB(FL_OBJECT * ob, long)
 {
-	GetForm(ob)->ApplyButton();
+	GetForm(ob)->getController().ApplyButton();
 }
 
 
 void C_FormBaseOKCB(FL_OBJECT * ob, long)
 {
-	GetForm(ob)->OKButton();
+	GetForm(ob)->getController().OKButton();
 }
 
 
 void C_FormBaseCancelCB(FL_OBJECT * ob, long)
 {
 	FormBase * form = GetForm(ob);
-	form->CancelButton();
+	form->getController().CancelButton();
 }
 
 
 void C_FormBaseRestoreCB(FL_OBJECT * ob, long)
 {
-	GetForm(ob)->RestoreButton();
+	GetForm(ob)->getController().RestoreButton();
 }
 
 
@@ -200,7 +210,7 @@ static int C_WMHideCB(FL_FORM * form, void *)
 	// Close the dialog cleanly, even if the WM is used to do so.
 	lyx::Assert(form && form->u_vdata);
 	FormBase * ptr = static_cast<FormBase *>(form->u_vdata);
-	ptr->CancelButton();
+	ptr->getController().CancelButton();
 	return FL_CANCEL;
 }
 

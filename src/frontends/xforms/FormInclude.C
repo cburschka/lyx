@@ -26,8 +26,8 @@
 
 typedef FormCB<ControlInclude, FormDB<FD_include> > base_class;
 
-FormInclude::FormInclude(ControlInclude & c, Dialogs & d)
-	: base_class(c, d, _("Include file"))
+FormInclude::FormInclude()
+	: base_class(_("Include file"))
 {}
 
 
@@ -150,7 +150,7 @@ ButtonPolicy::SMInput FormInclude::input(FL_OBJECT * ob, long)
 		string const in_name = fl_get_input(dialog_->input_filename);
 		if (!rtrim(in_name).empty() && controller().fileExists(in_name)) {
 //			ApplyButton();
-			OKButton();
+			controller().OKButton();
 			controller().load(rtrim(in_name));
 			action = ButtonPolicy::SMI_NOOP;
 		}

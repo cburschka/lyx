@@ -28,7 +28,7 @@ public:
 	///
 	friend class QTexinfoDialog;
 	///
-	QTexinfo(ControlTexinfo &, Dialogs &);
+	QTexinfo();
 private:
 	/// Apply changes
 	virtual void apply() { };

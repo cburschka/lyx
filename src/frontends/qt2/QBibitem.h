@@ -21,7 +21,7 @@ class QBibitem :
 	friend class QBibitemDialog;
 
 public:
-	QBibitem(ControlBibitem &, Dialogs &);
+	QBibitem();
 
 protected:
 	virtual bool isValid();

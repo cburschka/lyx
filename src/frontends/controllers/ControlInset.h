@@ -37,12 +37,13 @@ public:
 	///
 	Params const & params() const;
 
-protected:
 	/// Slots connected in the daughter classes c-tor.
 	/// Slot launching dialog to (possibly) create a new inset.
 	void createInset(string const &);
 	/// Slot launching dialog to an existing inset.
 	void showInset(Inset *);
+
+protected:
 	/// Allow the daughter methods to access the inset.
 	Inset * inset() const;
 

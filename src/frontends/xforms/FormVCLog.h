@@ -25,7 +25,7 @@ class ControlVCLog;
 class FormVCLog : public FormCB<ControlVCLog, FormBrowser> {
 public:
 	///
-	FormVCLog(ControlVCLog &, Dialogs &);
+	FormVCLog();
 
 	// Functions accessible to the Controller.
 

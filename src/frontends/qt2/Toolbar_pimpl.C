@@ -93,7 +93,7 @@ public:
 };
 
  
-Toolbar::Pimpl::Pimpl(LyXView * o, Dialogs &, int, int)
+Toolbar::Pimpl::Pimpl(LyXView * o, int, int)
 	: owner_(static_cast<QtView *>(o)), 
 	combo_(0)
 {

@@ -25,7 +25,7 @@ struct FD_include;
 class FormInclude : public FormCB<ControlInclude, FormDB<FD_include> > {
 public:
 	///
-	FormInclude(ControlInclude &, Dialogs &);
+	FormInclude();
 private:
 	/// Set the Params variable for the Controller.
 	virtual void apply();

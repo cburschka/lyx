@@ -18,7 +18,7 @@
 
 class ControlSearch;
 class QSearchDialog;
-class Dialogs;
+
 
 ///
 class QSearch
@@ -28,7 +28,7 @@ public:
 	///
 	friend class QSearchDialog;
 	///
-	QSearch(ControlSearch &, Dialogs &);
+	QSearch();
 
 private:
 	/// Apply changes

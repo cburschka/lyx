@@ -23,8 +23,8 @@
 
 typedef Qt2CB<ControlSpellchecker, Qt2DB<QSpellcheckerDialog> > base_class;
 
-QSpellchecker::QSpellchecker(ControlSpellchecker & c, Dialogs &)
-	: base_class(c, _("Spellchecker"))
+QSpellchecker::QSpellchecker()
+	: base_class(_("Spellchecker"))
 {
 }
 

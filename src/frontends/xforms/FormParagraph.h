@@ -25,7 +25,7 @@ class FormParagraph
 	: public FormCB<ControlParagraph, FormDB<FD_paragraph> > {
 public:
 	///
-	FormParagraph(ControlParagraph &, Dialogs &);
+	FormParagraph();
 private:
 	/// Build the dialog
 	virtual void build();

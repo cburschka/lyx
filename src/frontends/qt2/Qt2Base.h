@@ -21,7 +21,6 @@
 #include "LString.h"
 #include "debug.h"
 #include "ButtonPolicies.h"
-#include "ControlButtons.h"
 
 #include <boost/scoped_ptr.hpp>
 
@@ -34,12 +33,12 @@ class Qt2BC;
 
 /** This class is an Qt2 GUI base class.
  */
-class Qt2Base : public QObject, public ViewBC<Qt2BC>
+class Qt2Base : public QObject, public ViewBase
 {
 	Q_OBJECT
 public:
 	///
-	Qt2Base(ControlButtons &, QString const &);
+	Qt2Base(QString const &);
 	///
 	virtual ~Qt2Base() {}
 
@@ -58,6 +57,9 @@ protected:
 
 	/// is the dialog currently valid ?
 	virtual bool isValid();
+
+	///
+	Qt2BC & bc();
 
 	/// are we updating ?
 	bool updating_;
@@ -92,7 +94,7 @@ template <class Dialog>
 class Qt2DB: public Qt2Base
 {
 protected:
-	Qt2DB(ControlButtons &, QString const &);
+	Qt2DB(QString const &);
 
 	/// update the dialog
 	virtual void update();
@@ -110,8 +112,8 @@ protected:
 
 
 template <class Dialog>
-Qt2DB<Dialog>::Qt2DB(ControlButtons & c, QString const & t)
-	: Qt2Base(c, t)
+Qt2DB<Dialog>::Qt2DB(QString const & t)
+	: Qt2Base(t)
 {}
 
 
@@ -163,23 +165,31 @@ public:
 
 protected:
 	///
-	Qt2CB(ControlButtons &, QString const &);
+	Qt2CB(QString const &);
 	/// The parent controller
-	Controller & controller() const;
+	Controller & controller();
+	/// The parent controller
+	Controller const & controller() const;
 };
 
 
 template <class Controller, class Base>
-Qt2CB<Controller, Base>::Qt2CB(ControlButtons & c, QString const & t)
-	: Base(c, t)
+Qt2CB<Controller, Base>::Qt2CB(QString const & t)
+	: Base(t)
 {}
 
 
 template <class Controller, class Base>
-Controller & Qt2CB<Controller, Base>::controller() const
+Controller & Qt2CB<Controller, Base>::controller()
 {
-	return static_cast<Controller &>(controller_);
-	//return dynamic_cast<Controller &>(controller_);
+	return static_cast<Controller &>(getController());
+}
+
+
+template <class Controller, class Base>
+Controller const & Qt2CB<Controller, Base>::controller() const
+{
+	return static_cast<Controller const &>(getController());
 }
 
 

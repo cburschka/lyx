@@ -21,7 +21,7 @@ class QBibtex :
 	friend class QBibtexDialog;
 
 public:
-	QBibtex(ControlBibtex &, Dialogs &);
+	QBibtex();
 
 protected:
 	virtual bool isValid();

@@ -36,8 +36,8 @@ using std::sort;
 
 typedef FormCB<ControlBibtex, FormDB<FD_bibtex> > base_class;
 
-FormBibtex::FormBibtex(ControlBibtex & c, Dialogs & d)
-	: base_class(c, d, _("BibTeX Database"))
+FormBibtex::FormBibtex()
+	: base_class(_("BibTeX Database"))
 {}
 
 

@@ -26,8 +26,8 @@
 
 typedef Qt2CB<ControlVCLog, Qt2DB<QVCLogDialog> > base_class;
 
-QVCLog::QVCLog(ControlVCLog & c, Dialogs &)
-	: base_class(c, _("VCLog"))
+QVCLog::QVCLog()
+	: base_class(_("VCLog"))
 {
 }
 

@@ -89,11 +89,11 @@ Toolbar::Pimpl::toolbarItem::operator=(toolbarItem const & ti)
 
 
 
-Toolbar::Pimpl::Pimpl(LyXView * o, Dialogs & d, int x, int y)
+Toolbar::Pimpl::Pimpl(LyXView * o, int x, int y)
 	: owner_(static_cast<XFormsView *>(o)), xpos(x), ypos(y)
 {
 	combox_ = 0;
-	tooltip_ = new Tooltips(d);
+	tooltip_ = new Tooltips();
 }
 
 

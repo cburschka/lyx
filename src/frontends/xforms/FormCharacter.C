@@ -36,8 +36,8 @@ using namespace frnt;
 
 typedef FormCB<ControlCharacter, FormDB<FD_character> > base_class;
 
-FormCharacter::FormCharacter(ControlCharacter & c, Dialogs & d)
-	: base_class(c, d, _("Character Layout"), false)
+FormCharacter::FormCharacter()
+	: base_class(_("Character Layout"), false)
 {}
 
 

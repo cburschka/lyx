@@ -14,7 +14,7 @@
 
 class ControlShowFile;
 class QShowFileDialog;
-class Dialogs;
+
 
 class QShowFile :
 	public Qt2CB<ControlShowFile, Qt2DB<QShowFileDialog> >
@@ -22,7 +22,7 @@ class QShowFile :
 	friend class QShowFileDialog;
 
 public:
-	QShowFile(ControlShowFile &, Dialogs &);
+	QShowFile();
 
 private:
 	/// Apply changes

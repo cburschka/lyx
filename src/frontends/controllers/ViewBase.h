@@ -14,18 +14,22 @@
 #ifndef VIEWBASE_H
 #define VIEWBASE_H
 
-#include <boost/utility.hpp>
-#include "ControlButtons.h"
+#include "support/LAssert.h"
+
+class ControlButtons;
+
 
 class ViewBase {
 public:
 	///
-	ViewBase(ControlButtons & c) : controller_(c) {}
+	ViewBase() : controller_ptr_(0) {}
 	///
 	virtual ~ViewBase() {}
 
 	/// Apply changes to LyX data from dialog.
 	virtual void apply() = 0;
+	/// build the dialog
+	virtual void build() = 0;
 	/// Hide the dialog.
 	virtual void hide() = 0;
 	/// Redraw the dialog (e.g. if the colors have been remapped).
@@ -34,47 +38,35 @@ public:
 	virtual void show() = 0;
 	/// Update dialog before/whilst showing it.
 	virtual void update() = 0;
-	/// build the dialog
-	virtual void build() = 0;
 
-	/** These shortcuts allow (e.g. xform's) global callback functions
-	    access to the buttons without making the whole controller_ public.
-	*/
-	///
-	void ApplyButton() { controller_.ApplyButton(); }
-	///
-	void OKButton() { controller_.OKButton(); }
-	///
-	void CancelButton() { controller_.CancelButton(); }
-	///
-	void RestoreButton() { controller_.RestoreButton(); }
-
-	/** Defaults to nothing. Can be used by the Controller, however, to
-	    indicate to the View that something has changed and that the
-	    dialog therefore needs updating. */
+	/** Defaults to nothing. Can be used by the controller, however, to
+	 *  indicate to the view that something has changed and that the
+	 *  dialog therefore needs updating.
+	 */
 	virtual void partialUpdate(int) {}
 
-protected:
-	/// The view is, after all, controlled!
-	ControlButtons & controller_;
-};
-
-
-/** A generic class to cast the ButtonController controller_.bc_ to it's
-    daughter class. */
-template <class GUIbc>
-class ViewBC : public ViewBase {
-public:
+	/** This should be set by the GUI class that owns both the controller
+	 *  and the view
+	 */
+	void setController(ControlButtons & c) { controller_ptr_ = &c; }
+	
 	///
-	ViewBC(ControlButtons & c) : ViewBase(c) {}
-
-protected:
-	///
-	GUIbc & bc() const
+	ControlButtons & getController()
 	{
-		return static_cast<GUIbc &>(controller_.bc());
-		// return dynamic_cast<GUIbc &>(controller_.bc());
+		lyx::Assert(controller_ptr_);
+		return *controller_ptr_;
 	}
+	///
+	ControlButtons const & getController() const
+	{
+		lyx::Assert(controller_ptr_);
+		return *controller_ptr_;
+	}
+
+protected:
+	/// We don't own this.
+	ControlButtons * controller_ptr_;
 };
+
 
 #endif // VIEWBASE_H

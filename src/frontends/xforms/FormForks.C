@@ -30,8 +30,8 @@ using std::find_if;
 
 typedef FormCB<ControlForks, FormDB<FD_forks> > base_class;
 
-FormForks::FormForks(ControlForks & c, Dialogs & d)
-	: base_class(c, d, _("Child processes"))
+FormForks::FormForks()
+	: base_class(_("Child processes"))
 {}
 
 

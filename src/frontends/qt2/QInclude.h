@@ -27,7 +27,7 @@ public:
 	///
 	friend class QIncludeDialog;
 	///
-	QInclude(ControlInclude &, Dialogs &);
+	QInclude();
 
 protected:
 	virtual bool isValid();

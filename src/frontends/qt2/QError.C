@@ -20,8 +20,8 @@
  
 typedef Qt2CB<ControlError, Qt2DB<QErrorDialog> > base_class;
 
-QError::QError(ControlError & c, Dialogs &)
-	: base_class(c, _("LaTeX Error"))
+QError::QError()
+	: base_class(_("LaTeX Error"))
 {
 }
 

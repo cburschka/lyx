@@ -35,7 +35,7 @@ struct FD_graphics_special;
 class FormGraphics : public FormCB<ControlGraphics, FormDB<FD_graphics> > {
 public:
 	///
-	FormGraphics(ControlGraphics &, Dialogs &);
+	FormGraphics();
 private:
 
 	/** Redraw the form (on receipt of a Signal indicating, for example,

@@ -15,7 +15,7 @@
 
 class ControlIndex;
 class QIndexDialog;
-class Dialogs;
+
 
 class QIndex :
 	public Qt2CB<ControlIndex, Qt2DB<QIndexDialog> >
@@ -23,7 +23,7 @@ class QIndex :
 	friend class QIndexDialog;
 
 public:
-	QIndex(ControlIndex &, Dialogs &);
+	QIndex();
 
 protected:
 	virtual bool isValid();

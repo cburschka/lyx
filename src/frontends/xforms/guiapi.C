@@ -216,7 +216,7 @@ extern "C" {
 	{
 		static GUI<ControlAboutlyx, FormAboutlyx,
 			OkCancelPolicy, xformsBC> cal(lv, d);
-		cal.show();
+		cal.controller().show();
 	}
 
 
@@ -224,7 +224,7 @@ extern "C" {
 	{
 		static GUI<ControlBibitem, FormBibitem,
 			OkCancelReadOnlyPolicy, xformsBC> cbi(lv, d);
-		cbi.showInset(ic);
+		cbi.controller().showInset(ic);
 	}
 
 
@@ -232,31 +232,31 @@ extern "C" {
 	{
 		static GUI<ControlBibtex, FormBibtex,
 			OkCancelReadOnlyPolicy, xformsBC> cbt(lv, d);
-		cbt.showInset(ic);
+		cbt.controller().showInset(ic);
 	}
 
 
 	void gui_ShowCharacter(LyXView & lv, Dialogs & d)
 	{
-		controlCharacterSingleton.get(lv, d).show();
+		controlCharacterSingleton.get(lv, d).controller().show();
 	}
 
 
 	void gui_SetUserFreeFont(LyXView & lv, Dialogs & d)
 	{
-		controlCharacterSingleton.get(lv, d).apply();
+		controlCharacterSingleton.get(lv, d).controller().apply();
 	}
 
 
 	void gui_ShowCitation(InsetCommand * ic, LyXView & lv, Dialogs & d)
 	{
-		controlCitationSingleton.get(lv, d).showInset(ic);
+		controlCitationSingleton.get(lv, d).controller().showInset(ic);
 	}
 
 
 	void gui_CreateCitation(string const & s, LyXView & lv, Dialogs & d)
 	{
-		controlCitationSingleton.get(lv, d).createInset(s);
+		controlCitationSingleton.get(lv, d).controller().createInset(s);
 	}
 
 
@@ -271,19 +271,19 @@ extern "C" {
 	{
 		static GUI<ControlError, FormError,
 			OkCancelPolicy, xformsBC> ce(lv, d);
-		ce.showInset(ie);
+		ce.controller().showInset(ie);
 	}
 
 
 	void gui_ShowERT(InsetERT * ie, LyXView & lv, Dialogs & d)
 	{
-		controlERTSingleton.get(lv, d).showInset(ie);
+		controlERTSingleton.get(lv, d).controller().showInset(ie);
 	}
 
 
 	void gui_UpdateERT(InsetERT * ie, LyXView & lv, Dialogs & d)
 	{
-		controlERTSingleton.get(lv, d).showInset(ie);
+		controlERTSingleton.get(lv, d).controller().showInset(ie);
 	}
 
 
@@ -291,7 +291,7 @@ extern "C" {
 	{
 		static GUI<ControlExternal, FormExternal,
 			OkApplyCancelReadOnlyPolicy, xformsBC> ce(lv, d);
-		ce.showInset(ie);
+		ce.controller().showInset(ie);
 	}
 
 
@@ -299,7 +299,7 @@ extern "C" {
 	{
 		static GUI<ControlShowFile, FormShowFile,
 			OkCancelPolicy, xformsBC> csf(lv, d);
-		csf.showFile(f);
+		csf.controller().showFile(f);
 	}
 
 
@@ -307,7 +307,7 @@ extern "C" {
 	{
 		static GUI<ControlFloat, FormFloat,
 			NoRepeatedApplyReadOnlyPolicy, xformsBC> cf(lv, d);
-		cf.showInset(ifl);
+		cf.controller().showInset(ifl);
 	}
 
 
@@ -315,7 +315,7 @@ extern "C" {
 	{
 		static GUI<ControlForks, FormForks,
 			OkApplyCancelPolicy, xformsBC> cf(lv, d);
-		cf.show();
+		cf.controller().show();
 	}
 
 
@@ -323,7 +323,7 @@ extern "C" {
 	{
 		static GUI<ControlGraphics, FormGraphics,
 			NoRepeatedApplyReadOnlyPolicy, xformsBC> cg(lv, d);
-		cg.showInset(ig);
+		cg.controller().showInset(ig);
 	}
 
 
@@ -331,19 +331,19 @@ extern "C" {
 	{
 		static GUI<ControlInclude, FormInclude,
 			OkCancelReadOnlyPolicy, xformsBC> ci(lv, d);
-		ci.showInset(ii);
+		ci.controller().showInset(ii);
 	}
 
 
 	void gui_ShowIndex(InsetCommand * ic, LyXView & lv, Dialogs & d)
 	{
-		controlIndexSingleton.get(lv, d).showInset(ic);
+		controlIndexSingleton.get(lv, d).controller().showInset(ic);
 	}
 
 
 	void gui_CreateIndex(LyXView & lv, Dialogs & d)
 	{
-		controlIndexSingleton.get(lv, d).createInset("");
+		controlIndexSingleton.get(lv, d).controller().createInset("");
 	}
 
 
@@ -358,7 +358,7 @@ extern "C" {
 	{
 		static GUI<ControlLog, FormLog,
 			OkCancelPolicy, xformsBC> cl(lv, d);
-		cl.show();
+		cl.controller().show();
 	}
 
 
@@ -371,13 +371,13 @@ extern "C" {
 
 	void gui_ShowMinipage(InsetMinipage * im, LyXView & lv, Dialogs & d)
 	{
-		controlMinipageSingleton.get(lv, d).showInset(im);
+		controlMinipageSingleton.get(lv, d).controller().showInset(im);
 	}
 
 
 	void gui_UpdateMinipage(InsetMinipage * im, LyXView & lv, Dialogs & d)
 	{
-		controlMinipageSingleton.get(lv, d).showInset(im);
+		controlMinipageSingleton.get(lv, d).controller().showInset(im);
 	}
 
 
@@ -385,7 +385,7 @@ extern "C" {
 	{
 		static GUI<ControlParagraph, FormParagraph,
 			OkApplyCancelReadOnlyPolicy, xformsBC> cp(lv, d);
-		cp.show();
+		cp.controller().show();
 	}
 
 
@@ -407,7 +407,7 @@ extern "C" {
 	{
 		static GUI<ControlPreamble, FormPreamble,
 			NoRepeatedApplyReadOnlyPolicy, xformsBC> cp(lv, d);
-		cp.show();
+		cp.controller().show();
 	}
 
 
@@ -421,19 +421,19 @@ extern "C" {
 	{
 		static GUI<ControlPrint, FormPrint,
 			OkApplyCancelPolicy, xformsBC> cp(lv, d);
-		cp.show();
+		cp.controller().show();
 	}
 
 
 	void gui_ShowRef(InsetCommand * ic, LyXView & lv, Dialogs & d)
 	{
-		controlRefSingleton.get(lv, d).showInset(ic);
+		controlRefSingleton.get(lv, d).controller().showInset(ic);
 	}
 
 
 	void gui_CreateRef(string const & s, LyXView & lv, Dialogs & d)
 	{
-		controlRefSingleton.get(lv, d).createInset(s);
+		controlRefSingleton.get(lv, d).controller().createInset(s);
 	}
 
 
@@ -441,7 +441,7 @@ extern "C" {
 	{
 		static GUI<ControlSearch, FormSearch,
 			NoRepeatedApplyReadOnlyPolicy, xformsBC> cs(lv, d);
-		cs.show();
+		cs.controller().show();
 	}
 
 
@@ -449,7 +449,7 @@ extern "C" {
 	{
 		static GUI<ControlSendto, FormSendto,
 			OkApplyCancelPolicy, xformsBC> cs(lv, d);
-		cs.show();
+		cs.controller().show();
 	}
 
 
@@ -457,7 +457,7 @@ extern "C" {
 	{
 		static GUI<ControlSpellchecker, FormSpellchecker,
 			NoRepeatedApplyReadOnlyPolicy, xformsBC> cp(lv, d);
-		cp.show();
+		cp.controller().show();
 	}
 
 
@@ -477,7 +477,7 @@ extern "C" {
 	{
 		static GUI<ControlTabularCreate, FormTabularCreate,
 			OkApplyCancelReadOnlyPolicy, xformsBC> ctc(lv, d);
-		ctc.show();
+		ctc.controller().show();
 	}
 
 
@@ -485,7 +485,7 @@ extern "C" {
 	{
 		static GUI<ControlTexinfo, FormTexinfo,
 			OkCancelPolicy, xformsBC> ct(lv, d);
-		ct.show();
+		ct.controller().show();
 	}
 
 
@@ -495,7 +495,7 @@ extern "C" {
 	{
 		static GUI<ControlThesaurus, FormThesaurus,
 			OkApplyCancelReadOnlyPolicy, xformsBC> ct(lv, d);
-		ct.showEntry(s);
+		ct.controller().showEntry(s);
 	}
 
 #else
@@ -508,25 +508,25 @@ extern "C" {
 
 	void gui_ShowTOC(InsetCommand * ic, LyXView & lv, Dialogs & d)
 	{
-		controlTocSingleton.get(lv, d).showInset(ic);
+		controlTocSingleton.get(lv, d).controller().showInset(ic);
 	}
 
 
 	void gui_CreateTOC(string const & s, LyXView & lv, Dialogs & d)
 	{
-		controlTocSingleton.get(lv, d).createInset(s);
+		controlTocSingleton.get(lv, d).controller().createInset(s);
 	}
 
 
 	void gui_ShowUrl(InsetCommand * ic, LyXView & lv, Dialogs & d)
 	{
-		controlUrlSingleton.get(lv, d).showInset(ic);
+		controlUrlSingleton.get(lv, d).controller().showInset(ic);
 	}
 
 
 	void gui_CreateUrl(string const & s, LyXView & lv, Dialogs & d)
 	{
-		controlUrlSingleton.get(lv, d).createInset(s);
+		controlUrlSingleton.get(lv, d).controller().createInset(s);
 	}
 
 
@@ -534,7 +534,7 @@ extern "C" {
 	{
 		static GUI<ControlVCLog, FormVCLog,
 			OkCancelPolicy, xformsBC> cv(lv, d);
-		cv.show();
+		cv.controller().show();
 	}
 
 } // extern "C"

@@ -36,10 +36,10 @@ class MenuBackend;
 /// stored state for menu items
 struct MenuItemInfo {
 	// I REALLY hate this stupid requirement of std::map
-	MenuItemInfo::MenuItemInfo()
+	MenuItemInfo()
 		: parent_(0), id_(0), item_(0) {};
  
-	MenuItemInfo::MenuItemInfo(QMenuData * p, int id, MenuItem const * item)
+	MenuItemInfo(QMenuData * p, int id, MenuItem const * item)
 		: parent_(p), id_(id), item_(item) {};
  
 	/// menu containing item

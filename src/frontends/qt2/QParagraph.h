@@ -16,7 +16,7 @@
 
 class ControlParagraph;
 class QParagraphDialog;
-class Dialogs;
+
 
 class QParagraph :
 	public Qt2CB<ControlParagraph, Qt2DB<QParagraphDialog> >
@@ -24,7 +24,7 @@ class QParagraph :
 	friend class QParagraphDialog;
 
 public:
-	QParagraph(ControlParagraph &, Dialogs &);
+	QParagraph();
 
 private:
 	/// Apply changes

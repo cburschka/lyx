@@ -54,8 +54,8 @@ LyXLength getLyXLengthFromWidgets(FL_OBJECT * input, FL_OBJECT * choice)
 
 typedef FormCB<ControlGraphics, FormDB<FD_graphics> > base_class;
 
-FormGraphics::FormGraphics(ControlGraphics & c, Dialogs & d)
-	: base_class(c, d, _("Graphics"), false)
+FormGraphics::FormGraphics()
+	: base_class(_("Graphics"), false)
 {}
 
 

@@ -115,8 +115,8 @@ void updateStyle(FD_citation * dialog, string command)
 typedef FormCB<ControlCitation, FormDB<FD_citation> > base_class;
 
 
-FormCitation::FormCitation(ControlCitation & c, Dialogs & d)
-	: base_class(c, d, _("Citation"), false)
+FormCitation::FormCitation()
+	: base_class(_("Citation"), false)
 {}
 
 

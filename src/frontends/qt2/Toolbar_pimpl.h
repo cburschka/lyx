@@ -36,7 +36,7 @@ struct Toolbar::Pimpl {
 	friend class ToolbarProxy;
  
 public:
-	Pimpl(LyXView * o, Dialogs &, int x, int y);
+	Pimpl(LyXView * o, int x, int y);
 
 	~Pimpl();
 	

@@ -24,7 +24,7 @@ struct FD_ref;
 class FormRef : public FormCB<ControlRef, FormDB<FD_ref> > {
 public:
 	///
-	FormRef(ControlRef &, Dialogs &);
+	FormRef();
 private:
 	/// Set the Params variable for the Controller.
 	virtual void apply();

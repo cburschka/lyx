@@ -22,7 +22,7 @@
 
 class ControlCharacter;
 class QCharacterDialog;
-class Dialogs;
+
 
 class QCharacter :
 	public Qt2CB<ControlCharacter, Qt2DB<QCharacterDialog> >
@@ -30,7 +30,7 @@ class QCharacter :
 	friend class QCharacterDialog;
 
 public:
-	QCharacter(ControlCharacter &, Dialogs &);
+	QCharacter();
 
 private:
 	/// Apply changes

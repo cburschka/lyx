@@ -26,7 +26,7 @@ class FormERT
 	: public FormCB<ControlERT, FormDB<FD_ert> > {
 public:
 	///
-	FormERT(ControlERT &, Dialogs &);
+	FormERT();
 private:
 	/// Set the Params variable for the Controller.
 	virtual void apply();

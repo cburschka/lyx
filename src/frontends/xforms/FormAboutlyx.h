@@ -30,7 +30,7 @@ struct FD_aboutlyx_license;
 class FormAboutlyx : public FormCB<ControlAboutlyx, FormDB<FD_aboutlyx> > {
 public:
 	///
-	FormAboutlyx(ControlAboutlyx &, Dialogs &);
+	FormAboutlyx();
 
 private:
 	/// not needed.

@@ -24,7 +24,7 @@ struct FD_search;
 class FormSearch : public FormCB<ControlSearch, FormDB<FD_search> > {
 public:
 	///
-	FormSearch(ControlSearch &, Dialogs &);
+	FormSearch();
 private:
 	/// not needed.
 	virtual void apply() {}

@@ -27,8 +27,8 @@
 
 typedef FormCB<ControlExternal, FormDB<FD_external> > base_class;
 
-FormExternal::FormExternal(ControlExternal & c, Dialogs & d)
-	: base_class(c, d, _("Edit external file"))
+FormExternal::FormExternal()
+	: base_class(_("Edit external file"))
 {}
 
 

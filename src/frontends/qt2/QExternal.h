@@ -21,7 +21,7 @@ class QExternal :
 	friend class QExternalDialog;
 
 public:
-	QExternal(ControlExternal &, Dialogs &);
+	QExternal();
 
 protected:
 	virtual bool isValid();

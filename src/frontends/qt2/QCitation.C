@@ -41,8 +41,8 @@ using std::vector;
 
 typedef Qt2CB<ControlCitation, Qt2DB<QCitationDialog> > base_class;
 
-QCitation::QCitation(ControlCitation & c, Dialogs &)
-	: base_class(c, _("Citation"))
+QCitation::QCitation()
+	: base_class(_("Citation"))
 {}
 
 

@@ -22,7 +22,6 @@
 
 class XFormsView;
 class Tooltips;
-class Dialogs;
 class Combox;
 
 /** The LyX xforms toolbar class
@@ -33,7 +32,7 @@ public:
 	static void layoutSelectedCB(int, void *, Combox *);
  
 	/// create an empty toolbar
-	Pimpl(LyXView * o, Dialogs &, int x, int y);
+	Pimpl(LyXView * o, int x, int y);
 
 	~Pimpl();
 

@@ -26,7 +26,7 @@ struct FD_sendto;
 class FormSendto : public FormCB<ControlSendto, FormDB<FD_sendto> > {
 public:
 	///
-	FormSendto(ControlSendto &, Dialogs &);
+	FormSendto();
 private:
 	/// Apply from dialog (modify or create inset)
 	virtual void apply();

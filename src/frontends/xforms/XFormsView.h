@@ -20,7 +20,6 @@
 
 #include "frontends/LyXView.h"
 
-class Dialogs;
 class XMiniBuffer;
 
 /**
@@ -70,7 +69,7 @@ private:
 	void show_view_state();
 
 	/// makes the main form.
-	void create_form_form_main(Dialogs & d, int width, int height);
+	void create_form_form_main(int width, int height);
 	/// the minibuffer
 	boost::scoped_ptr<XMiniBuffer> minibuffer_;
 	///

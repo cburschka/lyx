@@ -20,8 +20,8 @@
 #include "gettext.h"
 #include FORMS_H_LOCATION
 
-FormVCLog::FormVCLog(ControlVCLog & c, Dialogs & d)
-	: FormCB<ControlVCLog, FormBrowser>(c, d, _("Version Control Log"))
+FormVCLog::FormVCLog()
+	: FormCB<ControlVCLog, FormBrowser>(_("Version Control Log"))
 {}
 
 

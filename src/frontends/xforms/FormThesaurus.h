@@ -24,7 +24,7 @@ struct FD_thesaurus;
 class FormThesaurus : public FormCB<ControlThesaurus, FormDB<FD_thesaurus> > {
 public:
 	///
-	FormThesaurus(ControlThesaurus &, Dialogs &);
+	FormThesaurus();
 private:
 	/// not needed.
 	virtual void apply() {}

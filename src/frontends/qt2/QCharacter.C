@@ -27,8 +27,8 @@ using std::vector;
 
 typedef Qt2CB<ControlCharacter, Qt2DB<QCharacterDialog> > base_class;
 
-QCharacter::QCharacter(ControlCharacter & c, Dialogs &)
-	: base_class(c, _("Character"))
+QCharacter::QCharacter()
+	: base_class(_("Character"))
 {
 }
 

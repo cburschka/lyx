@@ -13,7 +13,6 @@
 #include "Qt2Base.h"
 #include "boost/utility.hpp"
 
-class Dialogs;
 class LyXView;
 class QAboutDialog;
 class ControlAboutlyx;
@@ -22,7 +21,7 @@ class QAbout
 	: public Qt2CB<ControlAboutlyx, Qt2DB<QAboutDialog> >
 {
 public:
-	QAbout(ControlAboutlyx &, Dialogs &);
+	QAbout();
 
 private:
 	/// not needed

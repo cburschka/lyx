@@ -180,7 +180,7 @@ extern "C" {
 	{
 		static GUI<ControlAboutlyx, QAbout,
 			OkCancelPolicy, Qt2BC> cal(lv, d);
-		cal.show();
+		cal.controller().show();
 	}
 
 
@@ -188,7 +188,7 @@ extern "C" {
 	{
 		static GUI<ControlBibitem, QBibitem,
 			OkCancelReadOnlyPolicy, Qt2BC> cbi(lv, d);
-		cbi.showInset(ic);
+		cbi.controller().showInset(ic);
 	}
 
 
@@ -196,31 +196,31 @@ extern "C" {
 	{
 		static GUI<ControlBibtex, QBibtex,
 			OkCancelReadOnlyPolicy, Qt2BC> cbt(lv, d);
-		cbt.showInset(ic);
+		cbt.controller().showInset(ic);
 	}
 
 
 	void gui_ShowCharacter(LyXView & lv, Dialogs & d)
 	{
-		controlCharacterSingleton.get(lv, d).show();
+		controlCharacterSingleton.get(lv, d).controller().show();
 	}
 
 
 	void gui_SetUserFreeFont(LyXView & lv, Dialogs & d)
 	{
-		controlCharacterSingleton.get(lv, d).apply();
+		controlCharacterSingleton.get(lv, d).controller().apply();
 	}
 
 
 	void gui_ShowCitation(InsetCommand * ic, LyXView & lv, Dialogs & d)
 	{
-		controlCitationSingleton.get(lv, d).showInset(ic);
+		controlCitationSingleton.get(lv, d).controller().showInset(ic);
 	}
 
 
 	void gui_CreateCitation(string const & s, LyXView & lv, Dialogs & d)
 	{
-		controlCitationSingleton.get(lv, d).createInset(s);
+		controlCitationSingleton.get(lv, d).controller().createInset(s);
 	}
 
 
@@ -235,19 +235,19 @@ extern "C" {
 	{
 		static GUI<ControlError, QError,
 			OkCancelPolicy, Qt2BC> ce(lv, d);
-		ce.showInset(ie);
+		ce.controller().showInset(ie);
 	}
 
 
 	void gui_ShowERT(InsetERT * ie, LyXView & lv, Dialogs & d)
 	{
-		controlERTSingleton.get(lv, d).showInset(ie);
+		controlERTSingleton.get(lv, d).controller().showInset(ie);
 	}
 
 
 	void gui_UpdateERT(InsetERT * ie, LyXView & lv, Dialogs & d)
 	{
-		controlERTSingleton.get(lv, d).showInset(ie);
+		controlERTSingleton.get(lv, d).controller().showInset(ie);
 	}
 
 
@@ -255,7 +255,7 @@ extern "C" {
 	{
 		static GUI<ControlExternal, QExternal,
 			OkApplyCancelReadOnlyPolicy, Qt2BC> ce(lv, d);
-		ce.showInset(ie);
+		ce.controller().showInset(ie);
 	}
 
 
@@ -263,7 +263,7 @@ extern "C" {
 	{
 		static GUI<ControlShowFile, QShowFile,
 			OkCancelPolicy, Qt2BC> csf(lv, d);
-		csf.showFile(f);
+		csf.controller().showFile(f);
 	}
 
 
@@ -271,7 +271,7 @@ extern "C" {
 	{
 		static GUI<ControlFloat, QFloat,
 			NoRepeatedApplyReadOnlyPolicy, Qt2BC> cf(lv, d);
-		cf.showInset(ifl);
+		cf.controller().showInset(ifl);
 	}
 
 
@@ -280,7 +280,7 @@ extern "C" {
 #if 0
 		static GUI<ControlForks, QForks,
 			OkApplyCancelPolicy, Qt2BC> cf(lv, d);
-		cf.show();
+		cf.controller().show();
 #endif 
 	}
 
@@ -289,7 +289,7 @@ extern "C" {
 	{
 		static GUI<ControlGraphics, QGraphics,
 			NoRepeatedApplyReadOnlyPolicy, Qt2BC> cg(lv, d);
-		cg.showInset(ig);
+		cg.controller().showInset(ig);
 	}
 
 
@@ -297,19 +297,19 @@ extern "C" {
 	{
 		static GUI<ControlInclude, QInclude,
 			OkCancelReadOnlyPolicy, Qt2BC> ci(lv, d);
-		ci.showInset(ii);
+		ci.controller().showInset(ii);
 	}
 
 
 	void gui_ShowIndex(InsetCommand * ic, LyXView & lv, Dialogs & d)
 	{
-		controlIndexSingleton.get(lv, d).showInset(ic);
+		controlIndexSingleton.get(lv, d).controller().showInset(ic);
 	}
 
 
 	void gui_CreateIndex(LyXView & lv, Dialogs & d)
 	{
-		controlIndexSingleton.get(lv, d).createInset("");
+		controlIndexSingleton.get(lv, d).controller().createInset("");
 	}
 
 
@@ -324,7 +324,7 @@ extern "C" {
 	{
 		static GUI<ControlLog, QLog,
 			OkCancelPolicy, Qt2BC> cl(lv, d);
-		cl.show();
+		cl.controller().show();
 	}
 
 
@@ -337,23 +337,23 @@ extern "C" {
 
 	void gui_ShowMinipage(InsetMinipage * im, LyXView & lv, Dialogs & d)
 	{
-		controlMinipageSingleton.get(lv, d).showInset(im);
+		controlMinipageSingleton.get(lv, d).controller().showInset(im);
 	}
 
 
 	void gui_UpdateMinipage(InsetMinipage * im, LyXView & lv, Dialogs & d)
 	{
-		controlMinipageSingleton.get(lv, d).showInset(im);
+		controlMinipageSingleton.get(lv, d).controller().showInset(im);
 	}
 
 
 	void gui_ShowParagraph(LyXView & lv, Dialogs & d)
 	{
-		controlParagraphSingleton.get(lv, d).show();
+		controlParagraphSingleton.get(lv, d).controller().show();
 #if 0
 		static GUI<ControlParagraph, QParagraph,
 			OkApplyCancelReadOnlyPolicy, Qt2BC> cp(lv, d);
-		cp.show();
+		cp.controller().show();
 #endif
 	}
 
@@ -376,7 +376,7 @@ extern "C" {
 	{
 		static GUI<ControlPreamble, QPreamble,
 			NoRepeatedApplyReadOnlyPolicy, Qt2BC> cp(lv, d);
-		cp.show();
+		cp.controller().show();
 	}
 
 
@@ -390,19 +390,19 @@ extern "C" {
 	{
 		static GUI<ControlPrint, QPrint,
 			OkApplyCancelPolicy, Qt2BC> cp(lv, d);
-		cp.show();
+		cp.controller().show();
 	}
 
 
 	void gui_ShowRef(InsetCommand * ic, LyXView & lv, Dialogs & d)
 	{
-		controlRefSingleton.get(lv, d).showInset(ic);
+		controlRefSingleton.get(lv, d).controller().showInset(ic);
 	}
 
 
 	void gui_CreateRef(string const & s, LyXView & lv, Dialogs & d)
 	{
-		controlRefSingleton.get(lv, d).createInset(s);
+		controlRefSingleton.get(lv, d).controller().createInset(s);
 	}
 
 
@@ -410,7 +410,7 @@ extern "C" {
 	{
 		static GUI<ControlSearch, QSearch,
 			NoRepeatedApplyReadOnlyPolicy, Qt2BC> cs(lv, d);
-		cs.show();
+		cs.controller().show();
 	}
 
 
@@ -428,7 +428,7 @@ extern "C" {
 	{
 		static GUI<ControlSpellchecker, QSpellchecker,
 			NoRepeatedApplyReadOnlyPolicy, Qt2BC> cp(lv, d);
-		cp.show();
+		cp.controller().show();
 	}
 
 
@@ -448,7 +448,7 @@ extern "C" {
 	{
 		static GUI<ControlTabularCreate, QTabularCreate,
 			OkApplyCancelReadOnlyPolicy, Qt2BC> ctc(lv, d);
-		ctc.show();
+		ctc.controller().show();
 	}
 
 
@@ -456,7 +456,7 @@ extern "C" {
 	{
 		static GUI<ControlTexinfo, QTexinfo,
 			OkCancelPolicy, Qt2BC> ct(lv, d);
-		ct.show();
+		ct.controller().show();
 	}
 
 
@@ -465,32 +465,32 @@ extern "C" {
 #ifdef HAVE_LIBAIKSAURUS
 		static GUI<ControlThesaurus, QThesaurus,
 			OkApplyCancelReadOnlyPolicy, Qt2BC> ct(lv, d);
-		ct.showEntry(s);
+		ct.controller().showEntry(s);
 #endif
 	}
 
 
 	void gui_ShowTOC(InsetCommand * ic, LyXView & lv, Dialogs & d)
 	{
-		controlTocSingleton.get(lv, d).showInset(ic);
+		controlTocSingleton.get(lv, d).controller().showInset(ic);
 	}
 
 
 	void gui_CreateTOC(string const & s, LyXView & lv, Dialogs & d)
 	{
-		controlTocSingleton.get(lv, d).createInset(s);
+		controlTocSingleton.get(lv, d).controller().createInset(s);
 	}
 
 
 	void gui_ShowUrl(InsetCommand * ic, LyXView & lv, Dialogs & d)
 	{
-		controlUrlSingleton.get(lv, d).showInset(ic);
+		controlUrlSingleton.get(lv, d).controller().showInset(ic);
 	}
 
 
 	void gui_CreateUrl(string const & s, LyXView & lv, Dialogs & d)
 	{
-		controlUrlSingleton.get(lv, d).createInset(s);
+		controlUrlSingleton.get(lv, d).controller().createInset(s);
 	}
 
 
@@ -498,7 +498,7 @@ extern "C" {
 	{
 		static GUI<ControlVCLog, QVCLog,
 			OkCancelPolicy, Qt2BC> cv(lv, d);
-		cv.show();
+		cv.controller().show();
 	}
 
 } // extern "C"

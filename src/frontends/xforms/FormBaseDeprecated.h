@@ -27,7 +27,7 @@
 
 #include "forms_fwd.h"
 
-//#include <boost/signals/trackable.hpp>
+#include <boost/signals/connection.hpp>
 
 class Buffer;
 class Dialogs;

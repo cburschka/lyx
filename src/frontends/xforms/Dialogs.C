@@ -16,6 +16,8 @@
 #include "Dialogs.h"
 #include "Tooltips.h"
 
+#include <boost/bind.hpp>
+
 LyXView * dialogs_lyxview;
 
 
@@ -31,6 +33,7 @@ Dialogs::Dialogs(LyXView * lv)
 #if 1
 	dialogs_lyxview = lv;
 #endif
+	toggleTooltips.connect(boost::bind(&Tooltips::toggleEnabled));
 	// reduce the number of connections needed in
 	// dialogs by a simple connection here.
 	hideAll.connect(hideBufferDependent);

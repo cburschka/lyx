@@ -33,8 +33,8 @@ using std::endl;
 
 typedef Qt2CB<ControlRef, Qt2DB<QRefDialog> > base_class;
 
-QRef::QRef(ControlRef & c, Dialogs &)
-	: base_class(c, _("Cross Reference")),
+QRef::QRef()
+	: base_class(_("Cross Reference")),
 	sort_(false), at_ref_(false)
 {
 }

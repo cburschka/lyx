@@ -27,7 +27,7 @@ class FormTabularCreate :
 	public FormCB<ControlTabularCreate, FormDB<FD_tabular_create> > {
 public:
 	///
-	FormTabularCreate(ControlTabularCreate &, Dialogs &);
+	FormTabularCreate();
 private:
 	/// Apply from dialog
 	virtual void apply();

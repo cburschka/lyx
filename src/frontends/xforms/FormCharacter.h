@@ -35,7 +35,7 @@ class FormCharacter
 	: public FormCB<ControlCharacter, FormDB<FD_character> > {
 public:
 	///
-	FormCharacter(ControlCharacter &, Dialogs &);
+	FormCharacter();
 private:
 
 	/// Apply from dialog

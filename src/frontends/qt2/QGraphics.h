@@ -28,7 +28,7 @@ public:
 	///
 	friend class QGraphicsDialog;
 	///
-	QGraphics(ControlGraphics &, Dialogs &);
+	QGraphics();
 
 protected:
 	virtual bool isValid();

@@ -17,7 +17,7 @@
 
 class ControlRef;
 class QRefDialog;
-class Dialogs;
+
 
 class QRef :
 	public Qt2CB<ControlRef, Qt2DB<QRefDialog> >
@@ -25,7 +25,7 @@ class QRef :
 	friend class QRefDialog;
 
 public:
-	QRef(ControlRef & c, Dialogs &);
+	QRef();
 
 private:
 	/// apply changes

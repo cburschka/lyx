@@ -29,9 +29,12 @@ public:
 	///
 	ControlDialog(LyXView &, Dialogs &);
 
-protected:
-	/// Show the dialog.
+	/** Show the dialog.
+	 *  Publicly accessible so that it can be invoked by the Dialogs class.
+	 */
 	virtual void show();
+
+protected:
 	/// Hide the dialog.
 	virtual void hide();
 	/// Update the dialog.

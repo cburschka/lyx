@@ -27,7 +27,7 @@ public:
 	///
 	friend class QMinipageDialog;
 	///
-	QMinipage(ControlMinipage &, Dialogs &);
+	QMinipage();
 
 private:
 	/// Apply changes

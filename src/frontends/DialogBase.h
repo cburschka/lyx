@@ -17,7 +17,6 @@
 #ifndef DIALOGBASE_H
 #define DIALOGBASE_H
 
-#include <boost/signals/trackable.hpp>
 #include <boost/utility.hpp>
 
 /** Abstract base class of all dialogs.
@@ -26,7 +25,7 @@
     satisfy that request.  Thus a dialog will have to "pull" the necessary
     details from the core of the program.
  */
-class DialogBase : public boost::signals::trackable, boost::noncopyable
+class DialogBase : boost::noncopyable
 {
 public:
 	/**@name Constructors and Deconstructors */

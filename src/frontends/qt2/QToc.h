@@ -27,7 +27,7 @@ class QToc :
 	public Qt2CB<ControlToc, Qt2DB<QTocDialog> >
 {
 public:
-	QToc(ControlToc &, Dialogs &);
+	QToc();
 
 	friend class QTocDialog;
 

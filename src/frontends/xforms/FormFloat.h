@@ -25,7 +25,7 @@ struct FD_float;
 class FormFloat : public FormCB<ControlFloat, FormDB<FD_float> > {
 public:
 	///
-	FormFloat(ControlFloat &, Dialogs &);
+	FormFloat();
 private:
 	/// Set the Params variable for the Controller.
 	virtual void apply();

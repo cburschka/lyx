@@ -23,8 +23,8 @@
  
 typedef Qt2CB<ControlBibitem, Qt2DB<QBibitemDialog> > base_class;
 
-QBibitem::QBibitem(ControlBibitem & c, Dialogs &)
-	: base_class(c, _("Bibliography Item"))
+QBibitem::QBibitem()
+	: base_class(_("Bibliography Item"))
 {
 }
 

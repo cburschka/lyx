@@ -28,16 +28,15 @@
 
 class xformsBC;
 class Tooltips;
-class Dialogs;
+
 
 /** This class is an XForms GUI base class.
  */
-class FormBase : public ViewBC<xformsBC>, public FeedbackController
+class FormBase : public ViewBase, public FeedbackController
 {
 public:
 	///
-	FormBase(ControlButtons &, Dialogs &,
-		 string const &, bool allowResize);
+	FormBase(string const &, bool allowResize);
 	///
 	virtual ~FormBase();
 
@@ -63,6 +62,9 @@ protected:
 	 *  mouse button.
 	 */
 	static void setPrehandler(FL_OBJECT * ob);
+
+	///
+	xformsBC & bc();
 
 private:
 	/// Pointer to the actual instantiation of xform's form
@@ -93,8 +95,7 @@ class FormDB: public FormBase
 {
 protected:
 	///
-	FormDB(ControlButtons &, Dialogs &,
-	       string const &, bool allowResize=true);
+	FormDB(string const &, bool allowResize=true);
 	/// Pointer to the actual instantiation of xform's form
 	virtual FL_FORM * form() const;
 	/// Real GUI implementation.
@@ -103,9 +104,8 @@ protected:
 
 
 template <class Dialog>
-FormDB<Dialog>::FormDB(ControlButtons & c, Dialogs & d,
-		       string const & t, bool allowResize)
-	: FormBase(c, d, t, allowResize)
+FormDB<Dialog>::FormDB(string const & t, bool allowResize)
+	: FormBase(t, allowResize)
 {}
 
 
@@ -122,25 +122,31 @@ class FormCB: public Base
 {
 protected:
 	///
-	FormCB(Controller &, Dialogs &,
-	       string const &, bool allowResize = true);
+	FormCB(string const &, bool allowResize = true);
 	/// The parent controller
-	Controller & controller() const;
+	Controller & controller();
+	///
+	Controller const & controller() const;
 };
 
 
 template <class Controller, class Base>
-FormCB<Controller, Base>::FormCB(Controller & c, Dialogs & d,
-				 string const & t, bool allowResize)
-	: Base(c, d, t, allowResize)
+FormCB<Controller, Base>::FormCB(string const & t, bool allowResize)
+	: Base(t, allowResize)
 {}
 
 
 template <class Controller, class Base>
-Controller & FormCB<Controller, Base>::controller() const
+Controller & FormCB<Controller, Base>::controller()
 {
-	return static_cast<Controller &>(controller_);
-	//return dynamic_cast<Controller &>(controller_);
+	return static_cast<Controller &>(getController());
+}
+
+
+template <class Controller, class Base>
+Controller const & FormCB<Controller, Base>::controller() const
+{
+	return static_cast<Controller const &>(getController());
 }
 
 

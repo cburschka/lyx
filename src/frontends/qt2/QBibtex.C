@@ -29,8 +29,8 @@ using std::vector;
 
 typedef Qt2CB<ControlBibtex, Qt2DB<QBibtexDialog> > base_class;
 
-QBibtex::QBibtex(ControlBibtex & c, Dialogs &)
-	: base_class(c, _("BibTeX"))
+QBibtex::QBibtex()
+	: base_class(_("BibTeX"))
 {
 }
 

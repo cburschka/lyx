@@ -13,14 +13,14 @@
 
 class ControlUrl;
 class QURLDialog;
-class Dialogs;
+
 
 class QURL :
 	public Qt2CB<ControlUrl, Qt2DB<QURLDialog> >
 {
 	friend class QURLDialog;
 public:
-	QURL(ControlUrl & c, Dialogs &);
+	QURL();
 
 protected:
 	virtual bool isValid();

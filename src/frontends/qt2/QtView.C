@@ -65,7 +65,7 @@ QtView::QtView(unsigned int width, unsigned int height)
 	connect(menuBar(), SIGNAL(activated(int)),
 		this, SLOT(activated(int)));
  
-	toolbar_.reset(new Toolbar(this, *getDialogs(), 0, 0, toolbardefaults));
+	toolbar_.reset(new Toolbar(this, 0, 0, toolbardefaults));
 
 	statusBar()->setSizeGripEnabled(false);
  

@@ -22,8 +22,8 @@
 
 typedef Qt2CB<ControlUrl, Qt2DB<QURLDialog> > base_class;
 
-QURL::QURL(ControlUrl & c, Dialogs &)
-	: base_class(c, _("URL"))
+QURL::QURL()
+	: base_class(_("URL"))
 {
 }
 

@@ -26,7 +26,7 @@ class FormMinipage
 	: public FormCB<ControlMinipage, FormDB<FD_minipage> > {
 public:
 	///
-	FormMinipage(ControlMinipage &, Dialogs &);
+	FormMinipage();
 private:
 	/// Set the Params variable for the Controller.
 	virtual void apply();

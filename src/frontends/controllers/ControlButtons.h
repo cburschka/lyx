@@ -48,7 +48,9 @@ public:
 	///
 	virtual ~ControlButtons() {}
 
-	/// These functions are called when the controlling buttons are pressed.
+	/** These functions are called by the view when the appropriate buttons
+	 *  are pressed.
+	 */
 	///
 	void ApplyButton();
 	///
@@ -57,15 +59,22 @@ public:
 	void CancelButton();
 	///
 	void RestoreButton();
-	///
+
+	/// Returns the user-specified iconification policy.
 	bool IconifyWithMain() const;
 
-	/** Allow the view to access the ButtonController. This method must be
-	    instantiated in a daughter class that creates the actual instance
-	    of the ButtonController. */
-	virtual ButtonControllerBase & bc() = 0;
+	///
+	ButtonControllerBase & bc();
+
+	///
+	void setView(ViewBase &);
+	///
+	void setButtonController(ButtonControllerBase &);
 
 protected:
+	///
+	ViewBase & view();
+
 	/** When Applying it's useful to know whether the dialog is about
 	    to close or not (no point refreshing the display for example). */
 	bool isClosing() const { return is_closing_; }
@@ -77,11 +86,6 @@ protected:
 	/// Update dialog before showing it.
 	virtual void update() = 0;
 
-	/** Allow the Controller to access the View. This method must be
-	    instantiated in a daughter class that creates the actual instance
-	    of the View. */
-	virtual ViewBase & view() = 0;
-
 	/** This flag can be set by one of the miriad the controller methods
 	    to ensure that the dialog is shut down. */
 	bool emergency_exit_;
@@ -89,7 +93,10 @@ protected:
 private:
 	///
 	bool is_closing_;
-
+	/// We own neither of these pointers.
+	ButtonControllerBase * bc_ptr_;
+	///
+	ViewBase * view_ptr_;
 };
 
 #endif // CONTROLBUTTONS_H

@@ -24,11 +24,19 @@
 #include "Dialogs.h"
 #include "Qt2Base.h"
 #include "Qt2BC.h"
+#include "ControlButtons.h"
 #include "support/LAssert.h"
 
-Qt2Base::Qt2Base(ControlButtons & c, QString const & t)
-	: ViewBC<Qt2BC>(c), updating_(false), title_(t)
+Qt2Base::Qt2Base(QString const & t)
+	: ViewBase(), updating_(false), title_(t)
 {}
+
+
+Qt2BC & Qt2Base::bc()
+{
+	return static_cast<Qt2BC &>(getController().bc());
+	// return dynamic_cast<Qt2BC &>(getController().bc());
+}
 
 
 void Qt2Base::show()
@@ -77,29 +85,29 @@ void Qt2Base::changed()
 
 void Qt2Base::slotWMHide()
 {
-	CancelButton();
+	getController().CancelButton();
 }
 
 
 void Qt2Base::slotApply()
 {
-	ApplyButton();
+	getController().ApplyButton();
 }
 
 
 void Qt2Base::slotOK()
 {
-	OKButton();
+	getController().OKButton();
 }
 
 
 void Qt2Base::slotClose()
 {
-	CancelButton();
+	getController().CancelButton();
 }
 
 
 void Qt2Base::slotRestore()
 {
-	RestoreButton();
+	getController().RestoreButton();
 }

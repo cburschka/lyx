@@ -26,16 +26,14 @@
 
 #include <map>
 
-class Dialogs;
-
-
 #ifdef __GNUG__
 #pragma interface
 #endif
 
 class Tooltips : boost::noncopyable, public boost::signals::trackable {
 public:
-	Tooltips(Dialogs &);
+	///
+	Tooltips();
 
 	/// Initialise a tooltip for this ob.
 	void init(FL_OBJECT * ob, string const & tip);
@@ -55,15 +53,15 @@ public:
 
 #endif
 
-private:
-
-	/// Are the tooltips on or off?
-	static bool enabled_;
-
 	/** This method is connected to Dialogs::toggleTooltips and toggles
 	 *  the state of enabled_.
 	 */
 	static void toggleEnabled();
+
+private:
+
+	/// Are the tooltips on or off?
+	static bool enabled_;
 
 	/** Once enabled_ is changed, then this signal is emitted to update
 	 *  all the tooltips.

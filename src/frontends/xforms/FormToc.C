@@ -30,8 +30,8 @@ using std::endl;
 
 typedef FormCB<ControlToc, FormDB<FD_toc> > base_class;
 
-FormToc::FormToc(ControlToc & c, Dialogs & d)
-	: base_class(c, d, _("Table of Contents"))
+FormToc::FormToc()
+	: base_class(_("Table of Contents"))
 {}
 
 

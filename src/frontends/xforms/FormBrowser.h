@@ -26,8 +26,7 @@ struct FD_browser;
 class FormBrowser : public FormDB<FD_browser> {
 public:
 	///
-	FormBrowser(ControlButtons &, Dialogs &,
-		    string const &, bool allowResize = true);
+	FormBrowser(string const &, bool allowResize = true);
 private:
 	/// Build the dialog.
 	virtual void build();

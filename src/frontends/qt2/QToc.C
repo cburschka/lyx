@@ -35,8 +35,8 @@ using std::vector;
 
 typedef Qt2CB<ControlToc, Qt2DB<QTocDialog> > base_class;
 
-QToc::QToc(ControlToc & c, Dialogs &)
-	: base_class(c, _("Table of contents")), depth_(1)
+QToc::QToc()
+	: base_class(_("Table of contents")), depth_(1)
 {}
 
 

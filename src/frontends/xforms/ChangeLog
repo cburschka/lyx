@@ -1,3 +1,62 @@
+2002-08-12  Angus Leeming  <leeming@lyx.org>
+
+	* Dialogs.C (c-tor): connect the Tooltips::toggleEnabled method to
+	the Dialogs::toggleTooltips signal.
+
+	* FormAboutlyx.[Ch]:
+	* FormBibitem.[Ch]:
+	* FormBibtex.[Ch]:
+	* FormBrowser.[Ch]:
+	* FormCharacter.[Ch]:
+	* FormCitation.[Ch]:
+	* FormERT.[Ch]:
+	* FormError.[Ch]:
+	* FormExternal.[Ch]:
+	* FormFloat.[Ch]:
+	* FormForks.[Ch]:
+	* FormGraphics.[Ch]:
+	* FormInclude.[Ch]:
+	* FormIndex.[Ch]:
+	* FormLog.[Ch]:
+	* FormMinipage.[Ch]:
+	* FormParagraph.[Ch]:
+	* FormPreamble.[Ch]:
+	* FormPrint.[Ch]:
+	* FormRef.[Ch]:
+	* FormSearch.[Ch]:
+	* FormSendto.[Ch]:
+	* FormShowFile.[Ch]:
+	* FormSpellchecker.[Ch]:
+	* FormTabularCreate.[Ch]:
+	* FormTexinfo.[Ch]:
+	* FormThesaurus.[Ch]:
+	* FormToc.[Ch]:
+	* FormURL.[Ch]:
+	* FormVCLog.[Ch]:
+	No longer pass Controller or Dialogs to the c-tor.
+	No longer forward-declare Dialogs.
+
+	* FormBase.[Ch]: derives from ViewBase directly.
+	No longer passed ControlButtons & or Dialogs &.
+	(bc): new method, enabling the daughter classes to access the
+	ButtonController.
+	(C_FormBaseApplyCB):
+	(C_FormBaseOKCB):
+	(C_FormBaseCancelCB):
+	(C_FormBaseRestoreCB):
+	(C_WMHideCB): changes due to a change in the ViewBase class.
+
+	* Toolbar_pimpl.[Ch] (c-tor):
+	* Tooltips.[Ch] (c-tor): no longer passed a Dialogs &.
+
+	* Tooltips.h (toggleEnabled): made public for the Dialogs c-tor.
+
+	* XFormsView.[Ch] (c-tor, create_form_form_main): no longer pass
+	Dialogs & to the Toolbar.
+
+	* guiapi.C: access the controller methods by explicit invocation of the
+	controller.
+
 2002-08-12  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* FormDocument.C (saveParamsAsDefault): ParagraphList changes

@@ -59,7 +59,7 @@ int C_XFormsView_atCloseMainFormCB(FL_FORM * form, void * p)
 XFormsView::XFormsView(int width, int height)
 	: LyXView()
 {
-	create_form_form_main(*getDialogs(), width, height);
+	create_form_form_main(width, height);
 	fl_set_form_atclose(getForm(), C_XFormsView_atCloseMainFormCB, 0);
 
 	view_state_con = view_state_changed.connect(boost::bind(&XFormsView::show_view_state, this));
@@ -125,7 +125,7 @@ void XFormsView::show(int x, int y, string const & title)
 }
 
 
-void XFormsView::create_form_form_main(Dialogs & dia, int width, int height)
+void XFormsView::create_form_form_main(int width, int height)
 	/* to make this work as it should, .lyxrc should have been
 	 * read first; OR maybe this one should be made dynamic.
 	 * Hmmmm. Lgb.
@@ -146,8 +146,7 @@ void XFormsView::create_form_form_main(Dialogs & dia, int width, int height)
 
 	menubar_.reset(new Menubar(this, menubackend));
 
-	toolbar_.reset(new Toolbar(this, dia,
-				   air, 30 + air + bw, toolbardefaults));
+	toolbar_.reset(new Toolbar(this, air, 30 + air + bw, toolbardefaults));
 
 	int const ywork = 60 + 2 * air + bw;
 	int const workheight = height - ywork - (25 + 2 * air);

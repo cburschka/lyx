@@ -19,7 +19,6 @@
 #include "LyXAction.h"
 #include "kbmap.h"
 #include "buffer.h"
-#include "Dialogs.h"
 #include "lyxfunc.h"
 #include "FloatList.h"
 #include "support/lstrings.h"
@@ -58,7 +57,7 @@ string const getLabel(MenuItem const & mi)
 	return label;
 }
 
-};
+}
  
 typedef vector<int>::size_type size_type;
 

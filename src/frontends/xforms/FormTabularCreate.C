@@ -26,8 +26,8 @@ using std::make_pair;
 
 typedef FormCB<ControlTabularCreate, FormDB<FD_tabular_create> > base_class;
 
-FormTabularCreate::FormTabularCreate(ControlTabularCreate & c, Dialogs & d)
-	: base_class(c, d, _("Insert Tabular"))
+FormTabularCreate::FormTabularCreate()
+	: base_class(_("Insert Tabular"))
 {}
 
 

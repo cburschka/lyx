@@ -27,8 +27,8 @@
 
 typedef Qt2CB<ControlFloat, Qt2DB<QFloatDialog> > base_class;
 
-QFloat::QFloat(ControlFloat & c, Dialogs &)
-	: base_class(c, _("LaTeX Information"))
+QFloat::QFloat()
+	: base_class(_("LaTeX Information"))
 {
 }
 

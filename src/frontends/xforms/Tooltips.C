@@ -19,7 +19,6 @@
 #endif
 
 #include "Tooltips.h"
-#include "Dialogs.h"
 #include "xforms_helpers.h" // formatted
 #include "gettext.h"
 #include "support/lstrings.h"
@@ -35,13 +34,8 @@ boost::signal0<void> Tooltips::toggled;
 
 #if FL_VERSION > 0 || FL_REVISION >= 89
 
-Tooltips::Tooltips(Dialogs & d)
+Tooltips::Tooltips()
 {
-	static bool first = true;
-	if (first) {
-		first = false;
-		d.toggleTooltips.connect(boost::bind(&Tooltips::toggleEnabled));
-	}
 	toggled.connect(boost::bind(&Tooltips::set, this));
 }
 

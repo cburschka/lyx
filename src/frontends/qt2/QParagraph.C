@@ -42,8 +42,8 @@ using std::remove_if;
 
 typedef Qt2CB<ControlParagraph, Qt2DB<QParagraphDialog> > base_class;
 
-QParagraph::QParagraph(ControlParagraph & c, Dialogs &)
-	: base_class(c, _("Paragraph Layout"))
+QParagraph::QParagraph()
+	: base_class(_("Paragraph Layout"))
 {}
 
 void QParagraph::build_dialog()

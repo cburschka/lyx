@@ -22,6 +22,9 @@
 #include "lyxfont.h"
 #include "LColor.h"
 
+#include <utility>
+#include <vector>
+
 /** Functions of use to the character GUI controller and view */
 namespace frnt {
 	///

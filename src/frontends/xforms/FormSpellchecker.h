@@ -24,7 +24,7 @@ struct FD_spellchecker;
 class FormSpellchecker : public FormCB<ControlSpellchecker, FormDB<FD_spellchecker> > {
 public:
 	///
-	FormSpellchecker(ControlSpellchecker &, Dialogs &);
+	FormSpellchecker();
 private:
 	/// not needed.
 	void apply() {}

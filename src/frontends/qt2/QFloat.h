@@ -27,7 +27,7 @@ public:
 	///
 	friend class QFloatDialog;
 	///
-	QFloat(ControlFloat &, Dialogs &);
+	QFloat();
 private:
 	/// Apply changes
 	virtual void apply();
