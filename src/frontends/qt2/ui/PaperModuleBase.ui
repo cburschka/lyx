@@ -13,8 +13,8 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>204</width>
-            <height>258</height>
+            <width>235</width>
+            <height>269</height>
         </rect>
     </property>
     <property stdset="1">
@@ -59,7 +59,7 @@
             </property>
             <property stdset="1">
                 <name>text</name>
-                <string>&amp;Two Columns</string>
+                <string>Two-&amp;column document</string>
             </property>
         </widget>
         <widget row="3"  column="0" >
@@ -70,7 +70,7 @@
             </property>
             <property stdset="1">
                 <name>text</name>
-                <string>&amp;Facing Pages</string>
+                <string>&amp;Two-sided document</string>
             </property>
         </widget>
         <widget row="0"  column="0"  rowspan="1"  colspan="2" >
@@ -142,7 +142,7 @@
                     </property>
                     <property stdset="1">
                         <name>text</name>
-                        <string>Paper &amp;Size:</string>
+                        <string>Paper &amp;size:</string>
                     </property>
                     <property>
                         <name>buddy</name>
