@@ -19,7 +19,6 @@ class Dialogs;
 class InsetFloat;
 class InsetWrap;
 class InsetGraphics;
-class InsetInclude;
 class InsetMinipage;
 class InsetTabular;
 
@@ -35,7 +34,6 @@ void gui_ShowFile(string const &, Dialogs &);
 void gui_ShowFloat(InsetFloat *, Dialogs &);
 void gui_ShowForks(Dialogs &);
 void gui_ShowGraphics(InsetGraphics *, Dialogs &);
-void gui_ShowInclude(InsetInclude *, Dialogs &);
 void gui_ShowLogFile(Dialogs &);
 void gui_ShowMathPanel(Dialogs &);
 void gui_ShowMinipage(InsetMinipage *, Dialogs &);

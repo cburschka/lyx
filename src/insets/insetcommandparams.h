@@ -51,10 +51,6 @@ public:
 	///
 	void setContents(string const & c) { contents = c; }
 	///
-	string const getAsString() const;
-	///
-	void setFromString(string const &);
-	///
 	bool preview() const { return preview_; }
 	///
 	void preview(bool p) { preview_ = p; }

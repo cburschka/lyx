@@ -26,10 +26,10 @@
 #include "support/lstrings.h" // strip
 #include FORMS_H_LOCATION
 
-typedef FormCB<ControlInclude, FormDB<FD_include> > base_class;
+typedef FormController<ControlInclude, FormView<FD_include> > base_class;
 
-FormInclude::FormInclude()
-	: base_class(_("Include file"))
+FormInclude::FormInclude(Dialog & parent)
+	: base_class(parent, _("Include file"))
 {}
 
 
@@ -113,26 +113,29 @@ void FormInclude::update()
 
 void FormInclude::apply()
 {
-	controller().params().cparams
-		.preview(fl_get_button(dialog_->check_preview));
+	InsetInclude::Params params = controller().params();
+
+	params.cparams.preview(fl_get_button(dialog_->check_preview));
 
 	string const file = fl_get_input(dialog_->input_filename);
 	if (controller().fileExists(file))
-		controller().params().cparams.setContents(file);
+		params.cparams.setContents(file);
 	else
-		controller().params().cparams.setContents("");
+		params.cparams.setContents("");
 
 	ControlInclude::Type const type = ControlInclude::Type(type_.get());
 	if (type == ControlInclude::INPUT)
-		controller().params().flag = InsetInclude::INPUT;
+		params.flag = InsetInclude::INPUT;
 	else if (type == ControlInclude::INCLUDE)
-		controller().params().flag = InsetInclude::INCLUDE;
+		params.flag = InsetInclude::INCLUDE;
 	else if (type == ControlInclude::VERBATIM) {
 		if (fl_get_button(dialog_->check_visiblespace))
-			controller().params().flag = InsetInclude::VERBAST;
+			params.flag = InsetInclude::VERBAST;
 		else
-			controller().params().flag = InsetInclude::VERB;
+			params.flag = InsetInclude::VERB;
 	}
+
+	controller().setParams(params);
 }
 
 
@@ -151,7 +154,7 @@ ButtonPolicy::SMInput FormInclude::input(FL_OBJECT * ob, long)
 	} else if (ob == dialog_->button_load) {
 		string const in_name = fl_get_input(dialog_->input_filename);
 		if (!rtrim(in_name).empty() && controller().fileExists(in_name)) {
-			controller().OKButton();
+			dialog().OKButton();
 			controller().load(rtrim(in_name));
 			action = ButtonPolicy::SMI_NOOP;
 		}

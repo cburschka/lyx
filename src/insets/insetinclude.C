@@ -15,9 +15,11 @@
 #include "bufferlist.h"
 #include "BufferView.h"
 #include "debug.h"
-#include "lyxrc.h"
-#include "LaTeXFeatures.h"
+#include "funcrequest.h"
 #include "gettext.h"
+#include "LaTeXFeatures.h"
+#include "lyxlex.h"
+#include "lyxrc.h"
 
 #include "frontends/Dialogs.h"
 #include "frontends/LyXView.h"
@@ -106,7 +108,26 @@ InsetInclude::InsetInclude(InsetCommandParams const & p, Buffer const & b)
 
 InsetInclude::~InsetInclude()
 {
-	hideDialog();
+	InsetIncludeMailer mailer(*this);
+	mailer.hideDialog();
+}
+
+
+dispatch_result InsetInclude::localDispatch(FuncRequest const & cmd)
+{
+	if (cmd.action != LFUN_INSET_MODIFY)
+		return UNDISPATCHED;
+
+	InsetInclude::Params p;
+	InsetIncludeMailer::string2params(cmd.argument, p);
+	if (p.cparams.getCmdName().empty())
+		return UNDISPATCHED;
+
+	set(p);
+	params_.masterFilename_ = cmd.view()->buffer()->fileName();
+
+	cmd.view()->updateInset(this, true);
+	return DISPATCHED;
 }
 
 
@@ -172,9 +193,10 @@ Inset * InsetInclude::clone(Buffer const & buffer, bool) const
 }
 
 
-void InsetInclude::edit(BufferView * bv, int, int, mouse_button::state)
+void InsetInclude::edit(BufferView *, int, int, mouse_button::state)
 {
-	bv->owner()->getDialogs().showInclude(this);
+	InsetIncludeMailer mailer(*this);
+	mailer.showDialog();
 }
 
 
@@ -586,3 +608,57 @@ void InsetInclude::PreviewImpl::restartLoading()
 		view()->updateInset(&parent(), false);
 	generatePreview();
 }
+
+
+InsetIncludeMailer::InsetIncludeMailer(InsetInclude & inset)
+	: name_("include"), inset_(inset)
+{}
+
+
+string const InsetIncludeMailer::inset2string() const
+{
+	return params2string(name(), inset_.params());
+}
+
+
+void InsetIncludeMailer::string2params(string const & in,
+				       InsetInclude::Params & params)
+{
+	params = InsetInclude::Params();
+
+	string name;
+	string body = split(in, name, ' ');
+
+	if (name != "include" || body.empty())
+		return;
+
+	// This is part of the inset proper that is usually swallowed
+	// by Buffer::readInset
+	body = split(body, name, ' ');
+	if (name != "Include")
+		return;
+
+	istringstream data(body);
+	LyXLex lex(0,0);
+	lex.setStream(data);
+
+	InsetInclude inset(params);	
+	inset.read(0, lex);
+	params = inset.params();
+}
+
+
+string const
+InsetIncludeMailer::params2string(string const & name,
+				  InsetInclude::Params const & params)
+{
+	InsetInclude inset(params);
+	inset.set(params);
+	ostringstream data;
+	data << name << ' ';
+	inset.write(0, data);
+	data << "\\end_inset\n";
+
+	return data.str();
+}
+

@@ -25,13 +25,12 @@
 #include <qcombobox.h>
 
 
-typedef Qt2CB<ControlInclude, Qt2DB<QIncludeDialog> > base_class;
+typedef QController<ControlInclude, QView<QIncludeDialog> > base_class;
 
 
-QInclude::QInclude()
-	: base_class(qt_("LyX: Include File"))
-{
-}
+QInclude::QInclude(Dialog & parent)
+	: base_class(parent, qt_("LyX: Include File"))
+{}
 
 
 void QInclude::build_dialog()
@@ -82,7 +81,7 @@ void QInclude::update_contents()
 
 void QInclude::apply()
 {
-	InsetInclude::Params & params = controller().params();
+	InsetInclude::Params params = controller().params();
 
 	params.cparams.setContents(fromqstr(dialog_->filenameED->text()));
 	params.cparams.preview(dialog_->previewCB->isChecked());
@@ -98,6 +97,7 @@ void QInclude::apply()
 		else
 			params.flag = InsetInclude::VERB;
 	}
+	controller().setParams(params);
 }
 
 

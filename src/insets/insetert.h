@@ -176,5 +176,4 @@ private:
 	InsetERT & inset_;
 };
 
-
 #endif

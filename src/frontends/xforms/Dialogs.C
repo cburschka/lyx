@@ -34,7 +34,6 @@ Dialogs::Impl::Impl(LyXView & lv, Dialogs & d)
 	  floats(lv, d),
 	  forks(lv, d),
 	  graphics(lv, d),
-	  include(lv, d),
 	  logfile(lv, d),
 	  mathpanel(lv, d),
 	  minipage(lv, d),

@@ -13,20 +13,20 @@
 #define QINCLUDE_H
 
 
-#include "Qt2Base.h"
+#include "QDialogView.h"
+
 
 class ControlInclude;
 class QIncludeDialog;
 
 ///
-class QInclude
-	: public Qt2CB<ControlInclude, Qt2DB<QIncludeDialog> >
+class QInclude : public QController<ControlInclude, QView<QIncludeDialog> >
 {
 public:
 	///
 	friend class QIncludeDialog;
 	///
-	QInclude();
+	QInclude(Dialog &);
 protected:
 	virtual bool isValid();
 private:

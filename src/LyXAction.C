@@ -114,7 +114,6 @@ void LyXAction::init()
 		  N_("Go to beginning of document"), ReadOnly },
 		{ LFUN_BEGINNINGBUFSEL, "buffer-begin-select",
 		  N_("Select to beginning of document"), ReadOnly },
-		{ LFUN_CHILD_INSERT, "buffer-child-insert", "", Noop },
 		{ LFUN_CHILDOPEN, "buffer-child-open", "", ReadOnly },
 		{ LFUN_RUNCHKTEX, "buffer-chktex", N_("Check TeX"), ReadOnly },
 		{ LFUN_CLOSEBUFFER, "buffer-close", N_("Close"), ReadOnly },

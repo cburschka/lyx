@@ -1204,23 +1204,6 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev_in)
 	}
 	break;
 
-	case LFUN_CHILD_INSERT:
-	{
-		InsetInclude::Params p;
-		if (!ev.argument.empty())
-			p.cparams.setFromString(ev.argument);
-		p.masterFilename_ = buffer_->fileName();
-
-		InsetInclude * inset = new InsetInclude(p);
-		if (!insertInset(inset))
-			delete inset;
-		else {
-			updateInset(inset, true);
-			bv_->owner()->getDialogs().showInclude(inset);
-		}
-	}
-	break;
-
 	case LFUN_FLOAT_LIST:
 		if (tclass.floats().typeExist(ev.argument)) {
 			Inset * inset = new InsetFloatList(ev.argument);

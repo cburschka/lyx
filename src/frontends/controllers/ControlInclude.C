@@ -12,7 +12,6 @@
 
 #include <config.h>
 
-
 #include "ControlInclude.h"
 
 #include "helper_funcs.h"
@@ -32,17 +31,37 @@
 using std::pair;
 
 
-ControlInclude::ControlInclude(LyXView & lv, Dialogs & d)
-	: ControlInset<InsetInclude, InsetInclude::Params>(lv, d)
+ControlInclude::ControlInclude(Dialog & parent)
+	: Dialog::Controller(parent)
 {}
 
 
-void ControlInclude::applyParamsToInset()
+void ControlInclude::initialiseParams(string const & data)
 {
-	inset()->set(params());
-	bufferview()->updateInset(inset(), true);
+	InsetInclude::Params params;
+	InsetIncludeMailer::string2params(data, params);
+	inset_.reset(new InsetInclude(params));
 }
 
+
+void ControlInclude::clearParams()
+{
+	inset_.reset();
+}
+
+
+void ControlInclude::dispatchParams()
+{
+	InsetInclude::Params p = params();
+	string const lfun = InsetIncludeMailer::params2string("include", p);
+	kernel().dispatch(FuncRequest(LFUN_INSET_APPLY, lfun));
+}
+
+
+void ControlInclude::setParams(InsetInclude::Params const & params)
+{
+	inset_->set(params);
+}
 
 string const ControlInclude::Browse(string const & in_name, Type in_type)
 {
@@ -75,7 +94,7 @@ string const ControlInclude::Browse(string const & in_name, Type in_type)
 
 void ControlInclude::load(string const & file)
 {
-	lyxfunc().dispatch(FuncRequest(LFUN_CHILDOPEN, file));
+	kernel().dispatch(FuncRequest(LFUN_CHILDOPEN, file));
 }
 
 

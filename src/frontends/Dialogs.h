@@ -26,7 +26,6 @@ class LyXView;
 class InsetFloat;
 class InsetWrap;
 class InsetGraphics;
-class InsetInclude;
 class InsetInfo;
 class InsetMinipage;
 class Paragraph;
@@ -96,8 +95,6 @@ public:
 	void showForks();
 	///
 	void showGraphics(InsetGraphics *);
-	/// show the details of a LyX file include inset
-	void showInclude(InsetInclude *);
 	/// show the LaTeX log or build file
 	void showLogFile();
 	/// display the top-level maths panel

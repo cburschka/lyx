@@ -14,18 +14,20 @@
 #define FORMINCLUDE_H
 
 
-#include "FormBase.h"
+#include "FormDialogView.h"
 #include "RadioButtonGroup.h"
+
 
 class ControlInclude;
 struct FD_include;
 
 /** This class provides an XForms implementation of the Include Dialog.
  */
-class FormInclude : public FormCB<ControlInclude, FormDB<FD_include> > {
+class FormInclude
+	: public FormController<ControlInclude, FormView<FD_include> > {
 public:
 	///
-	FormInclude();
+	FormInclude(Dialog &);
 private:
 	/// Set the Params variable for the Controller.
 	virtual void apply();

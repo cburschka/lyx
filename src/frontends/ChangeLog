@@ -1,5 +1,10 @@
 2003-03-05  Angus Leeming  <leeming@lyx.org>
 
+	* Dialogs.h: remove showInclude.
+	* guiapi.[Ch]: remove gui_ShowInclude.
+
+2003-03-05  Angus Leeming  <leeming@lyx.org>
+
 	* Dialogs.h: remove showExternal.
 	* guiapi.[Ch]: remove gui_ShowExternal.
 

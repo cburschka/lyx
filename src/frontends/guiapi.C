@@ -74,12 +74,6 @@ void gui_ShowGraphics(InsetGraphics * ig, Dialogs & d)
 }
 
 
-void gui_ShowInclude(InsetInclude * ii, Dialogs & d)
-{
-	d.showInclude(ii);
-}
-
-
 void gui_ShowLogFile(Dialogs & d)
 {
 	d.showLogFile();

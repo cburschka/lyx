@@ -564,9 +564,6 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 	case LFUN_INDEX_PRINT:
 		code = Inset::INDEX_PRINT_CODE;
 		break;
-	case LFUN_CHILD_INSERT:
-		code = Inset::INCLUDE_CODE;
-		break;
 	case LFUN_TOC_INSERT:
 		code = Inset::TOC_CODE;
 		break;

@@ -11,7 +11,6 @@
 #ifndef DIALOGS_IMPL_H
 #define DIALOGS_IMP_H
 
-
 #include "Dialogs.h"
 #include "controllers/GUI.h"
 
@@ -49,10 +48,6 @@
 #include "ControlGraphics.h"
 #include "FormGraphics.h"
 #include "forms/form_graphics.h"
-
-#include "ControlInclude.h"
-#include "FormInclude.h"
-#include "forms/form_include.h"
 
 #include "ControlLog.h"
 #include "FormLog.h"
@@ -146,9 +141,6 @@ ForksDialog;
 typedef GUI<ControlGraphics, FormGraphics, NoRepeatedApplyReadOnlyPolicy, xformsBC>
 GraphicsDialog;
 
-typedef GUI<ControlInclude, FormInclude, OkCancelReadOnlyPolicy, xformsBC>
-IncludeDialog;
-
 typedef GUI<ControlLog, FormLog, OkCancelPolicy, xformsBC>
 LogFileDialog;
 
@@ -210,7 +202,6 @@ struct Dialogs::Impl {
 	FloatDialog         floats;
 	ForksDialog         forks;
 	GraphicsDialog      graphics;
-	IncludeDialog       include;
 	LogFileDialog       logfile;
 	MathPanelDialog     mathpanel;
 	MinipageDialog      minipage;

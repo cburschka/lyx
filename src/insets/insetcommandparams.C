@@ -32,36 +32,6 @@ InsetCommandParams::InsetCommandParams(string const & n,
 {}
 
 
-string const InsetCommandParams::getAsString() const
-{
-	return cmdname + "|++|" + contents + "|++|" + options;
-}
-
-
-void InsetCommandParams::setFromString(string const & b)
-{
-	string::size_type idx = b.find("|++|");
-	if (idx == string::npos) {
-		cmdname = b;
-		contents = "";
-		options = "";
-		return;
-	}
-
-	cmdname = b.substr(0, idx);
-	string tmp = b.substr(idx+4);
-
-	idx = tmp.find("|++|");
-	if (idx == string::npos) {
-		contents = tmp;
-		options = "";
-	} else {
-		contents  = tmp.substr(0, idx);
-		options = tmp.substr(idx+4);
-	}
-}
-
-
 void InsetCommandParams::scanCommand(string const & cmd)
 {
 	string tcmdname, toptions, tcontents;

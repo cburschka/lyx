@@ -15,7 +15,6 @@
 
 #include "insetcommand.h"
 
-#include <boost/signals/signal0.hpp>
 #include <boost/scoped_ptr.hpp>
 
 class Buffer;
@@ -57,6 +56,9 @@ public:
 	InsetInclude(InsetCommandParams const &, Buffer const &);
 
 	~InsetInclude();
+
+	///
+	virtual dispatch_result localDispatch(FuncRequest const & cmd);	
 
 	/// Override these InsetButton methods if Previewing
 	int ascent(BufferView *, LyXFont const &) const;
@@ -119,8 +121,6 @@ public:
 	///
 	void addPreview(grfx::PreviewLoader &) const;
 
-	/// hide a dialog if about
-	boost::signal0<void> hideDialog;
 private:
 	/// get the text displayed on the button
 	string const getScreenLabel(Buffer const *) const;
@@ -148,5 +148,29 @@ inline bool InsetInclude::isVerbatim() const
 {
 	return params_.flag == VERB || params_.flag == VERBAST;
 }
+
+#include "mailinset.h"
+
+class InsetIncludeMailer : public MailInset {
+public:
+	///
+	InsetIncludeMailer(InsetInclude & inset);
+	///
+	virtual Inset & inset() const { return inset_; }
+	///
+	virtual string const & name() const { return name_; }
+	///
+	virtual string const inset2string() const;
+	///
+	static void string2params(string const &, InsetInclude::Params &);
+	///
+	static string const params2string(string const & name,
+					  InsetInclude::Params const &);
+private:
+	///
+	string const name_;
+	///
+	InsetInclude & inset_;
+};
 
 #endif // INSETINCLUDE_H

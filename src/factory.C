@@ -26,6 +26,7 @@
 #include "insets/insetexternal.h"
 #include "insets/insetfloat.h"
 #include "insets/insetfoot.h"
+#include "insets/insetinclude.h"
 #include "insets/insetindex.h"
 #include "insets/insetlabel.h"
 #include "insets/insetmarginal.h"
@@ -190,6 +191,11 @@ Inset * createInset(FuncRequest const & cmd)
 			InsetExternal * inset = new InsetExternal;
 			inset->setFromParams(iep);
 			return inset;
+
+		} else if (name == "include") {
+			InsetInclude::Params iip;
+			InsetIncludeMailer::string2params(cmd.argument, iip);
+			return new InsetInclude(iip);
 
 		} else if (name == "index") {
 			InsetCommandParams icp;

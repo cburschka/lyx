@@ -1,5 +1,12 @@
 2003-03-05  Angus Leeming  <leeming@lyx.org>
 
+	* insetcommandparams.[Ch] (getAsString, setFromString): remove.
+
+	* insetinclude.[Ch]: define a new class InsetIncludeMailer and use
+	it to communicate with the frontend dialogs.
+
+2003-03-05  Angus Leeming  <leeming@lyx.org>
+
 	* insetexternal.[Ch]: define a new class InsetExternalMailer and use
 	it to communicate with the frontend dialogs.
 

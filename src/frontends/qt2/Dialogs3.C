@@ -19,6 +19,7 @@
 #include "ControlError.h"
 #include "ControlERT.h"
 #include "ControlExternal.h"
+#include "ControlInclude.h"
 #include "ControlIndex.h"
 #include "ControlLabel.h"
 #include "ControlRef.h"
@@ -41,6 +42,8 @@
 // of the Qt headers, those most fucked up of disgusting ratholes.
 // But I won't.
 #undef signals
+#include "QInclude.h"
+#include "QIncludeDialog.h"
 #include "QIndex.h"
 #include "QIndexDialog.h"
 #include "QRef.h"
@@ -67,12 +70,11 @@ typedef ButtonController<OkApplyCancelReadOnlyPolicy, Qt2BC>
 typedef ButtonController<NoRepeatedApplyReadOnlyPolicy, Qt2BC>
 	NoRepeatedApplyReadOnlyBC;
 
-
 namespace {
 
 char const * const dialognames[] = { "bibitem", "bibtex", "citation",
-				     "error", "ert", "external", "index",
-				     "label", "ref", "toc", "url" };
+				     "error", "ert", "external", "include",
+				     "index", "label", "ref", "toc", "url" };
 
 char const * const * const end_dialognames =
 	dialognames + (sizeof(dialognames) / sizeof(char *));
@@ -127,6 +129,10 @@ Dialog * Dialogs::build(string const & name)
 	} else if (name == "external") {
 		dialog->setController(new ControlExternal(*dialog));
 		dialog->setView(new QExternal(*dialog));
+		dialog->setButtonController(new OkApplyCancelReadOnlyBC);
+	} else if (name == "include") {
+		dialog->setController(new ControlInclude(*dialog));
+		dialog->setView(new QInclude(*dialog));
 		dialog->setButtonController(new OkApplyCancelReadOnlyBC);
 	} else if (name == "index") {
 		dialog->setController(new ControlIndex(*dialog));

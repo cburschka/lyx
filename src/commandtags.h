@@ -196,7 +196,6 @@ enum kb_action {
 	LFUN_LAYOUT_COPY,               // Asger 1997-05-04
 	LFUN_LAYOUT_PASTE,              // Asger 1997-05-04
 	LFUN_TABINSERT, // 180          // Ale 970515
-	LFUN_CHILD_INSERT,              // Ale 970521
 	LFUN_CHILDOPEN,                 // Ale 970528
 	LFUN_TOC_INSERT,                // Lgb 97-05-27
 	LFUN_FLOAT_LIST,                // Lgb 20010503

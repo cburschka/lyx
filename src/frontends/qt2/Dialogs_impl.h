@@ -11,7 +11,6 @@
 #ifndef DIALOGS_IMPL_H
 #define DIALOGS_IMP_H
 
-
 #include "Dialogs.h"
 #include "controllers/GUI.h"
 
@@ -23,7 +22,6 @@
 #include "ControlForks.h"
 #include "ControlGraphics.h"
 #include "insets/insetgraphicsParams.h"
-#include "ControlInclude.h"
 #include "ControlLog.h"
 #include "ControlMinipage.h"
 #include "ControlParagraph.h"
@@ -56,8 +54,6 @@
 #undef signals
 #include "QGraphics.h"
 #include "QGraphicsDialog.h"
-#include "QInclude.h"
-#include "QIncludeDialog.h"
 #include "QLog.h"
 #include "QLogDialog.h"
 #include "QMinipage.h"
@@ -119,9 +115,6 @@ FloatDialog;
 typedef GUI<ControlGraphics, QGraphics, NoRepeatedApplyReadOnlyPolicy, Qt2BC>
 GraphicsDialog;
 
-typedef GUI<ControlInclude, QInclude, OkCancelReadOnlyPolicy, Qt2BC>
-IncludeDialog;
-
 typedef GUI<ControlLog, QLog, OkCancelPolicy, Qt2BC>
 LogFileDialog;
 
@@ -177,7 +170,6 @@ struct Dialogs::Impl {
 	FileDialog          file;
 	FloatDialog         floats;
 	GraphicsDialog      graphics;
-	IncludeDialog       include;
 	LogFileDialog       logfile;
 	MinipageDialog      minipage;
 	ParagraphDialog     paragraph;

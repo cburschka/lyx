@@ -12,7 +12,6 @@
 
 #include <config.h>
 
-
 #include "Dialogs_impl.h"
 
 
@@ -65,12 +64,6 @@ void Dialogs::showForks()
 void Dialogs::showGraphics(InsetGraphics * ig)
 {
 	pimpl_->graphics.controller().showInset(ig);
-}
-
-
-void Dialogs::showInclude(InsetInclude * ii)
-{
-	pimpl_->include.controller().showInset(ii);
 }
 
 
