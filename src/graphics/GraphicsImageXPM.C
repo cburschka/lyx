@@ -17,7 +17,7 @@
 #include "GraphicsParams.h"
 #include "ColorHandler.h"
 #include "debug.h"
-#include "frontends/GUIRunTime.h" // x11Display
+#include "frontends/GUIRunTime.h" // x11Display, x11Screen
 #include "support/filetools.h"    // IsFileReadable
 #include "support/lstrings.h"
 #include "Lsstream.h"
@@ -54,14 +54,14 @@ GImageXPM::GImageXPM()
 GImageXPM::GImageXPM(GImageXPM const & other)
 	: GImage(other),
 	  image_(other.image_),
-	  pixmap_(other.pixmap_),
-	  pixmap_status_(other.pixmap_status_)
+	  pixmap_(0),
+	  pixmap_status_(PIXMAP_UNINITIALISED)
 {}
 
 
 GImageXPM::~GImageXPM()
 {
-	if (pixmap_ && pixmap_status_ == PIXMAP_SUCCESS)
+	if (pixmap_)
 		XFreePixmap(GUIRunTime::x11Display(), pixmap_);
 }
 

@@ -7,6 +7,11 @@
 
 	* Makefile.am: add GraphicsTypes.h which I'd carelessly left out.
 
+	* GraphicsCache.C: move connections to the GImage-derived classes to
+	the frontends.
+
+	* GraphicsImageXPM.C (copy c-tor): don't copy pixmap.
+
 2002-02-27  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* GraphicsCache.C: improve commentary to graphicsInit and where it

@@ -18,32 +18,8 @@
 #include "GraphicsImage.h"
 #include "GraphicsParams.h"
 #include "insets/insetgraphics.h"
+#include "frontends/Dialogs.h"
 
-
-// I think that graphicsInit should become a new Dialogs::graphicsInit 
-// static method.
-// These #includes would then be moved to Dialogs.C.
-// Angus 25 Feb 2002
-#include "GraphicsImageXPM.h"
-//#include "xformsGraphicsImage.h"
-
-namespace {
-
-void graphicsInit() 
-{
-	using namespace grfx;
-	using SigC::slot;
-    
-	// connect the image loader based on the XPM library
-	GImage::newImage.connect(slot(&GImageXPM::newImage));
-	GImage::loadableFormats.connect(slot(&GImageXPM::loadableFormats));
-	// connect the image loader based on the xforms library
-//	GImage::newImage.connect(slot(&xformsGImage::newImage));
-//	GImage::loadableFormats.connect(slot(&xformsGImage::loadableFormats));
-}
-    
-} // namespace anon
- 
 
 namespace grfx {
 
@@ -52,7 +28,7 @@ GCache & GCache::get()
 	static bool start = true;
 	if (start) {
 		start = false;
-		graphicsInit();
+		Dialogs::initialiseGraphics();
 	}
 
 	// Now return the cache
