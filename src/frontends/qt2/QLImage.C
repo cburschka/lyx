@@ -27,6 +27,7 @@
 #include <boost/tuple/tuple.hpp>
 
 using std::find_if;
+using std::endl;
 
 namespace grfx {
 
