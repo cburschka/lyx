@@ -80,6 +80,15 @@ enum LYX_LATEX_TYPES {
 };
 
 
+/// The different title types
+enum LYX_TITLE_LATEX_TYPES {
+	///
+	TITLE_COMMAND_AFTER = 1,
+	///
+	TITLE_ENVIRONMENT
+};
+
+
 /// The different label types
 enum LYX_LABEL_TYPES {
 	///

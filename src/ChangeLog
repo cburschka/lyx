@@ -1,3 +1,13 @@
+2003-02-11  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* paragraph.C (asString): remove two unused variables
+
+	* lyxtextclass.C (readTitleType): 
+	(Read): 
+	(LyXTextClass): handle new members titletype_ and titlename_
+
+	* buffer.C (latexParagraphs): honor LyXTextClass::titletype
+
 2003-02-13  John Levon  <levon@movementarian.org>
 
 	* CutAndPaste.C: remove debug

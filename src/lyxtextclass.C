@@ -60,6 +60,8 @@ LyXTextClass::LyXTextClass(string const & fn, string const & cln,
 	opt_fontsize_ = "10|11|12";
 	opt_pagestyle_ = "empty|plain|headings|fancy";
 	provides_ = nothing;
+	titletype_ = TITLE_COMMAND_AFTER;
+	titlename_ = "maketitle";
 	loaded = false;
 }
 
@@ -103,9 +105,10 @@ enum TextClassTags {
 	TC_RIGHTMARGIN,
 	TC_FLOAT,
 	TC_COUNTER,
-	TC_NOFLOAT
+	TC_NOFLOAT,
+	TC_TITLELATEXNAME,
+	TC_TITLELATEXTYPE
 };
-
 
 // Reads a textclass structure from file.
 bool LyXTextClass::Read(string const & filename, bool merge)
@@ -133,6 +136,8 @@ bool LyXTextClass::Read(string const & filename, bool merge)
 		{ "secnumdepth",     TC_SECNUMDEPTH },
 		{ "sides",           TC_SIDES },
 		{ "style",           TC_STYLE },
+		{ "titlelatexname",  TC_TITLELATEXNAME },
+		{ "titlelatextype",  TC_TITLELATEXTYPE },
 		{ "tocdepth",        TC_TOCDEPTH }
 	};
 
@@ -145,7 +150,7 @@ bool LyXTextClass::Read(string const & filename, bool merge)
 				     << MakeDisplayPath(filename)
 				     << endl;
 
-	LyXLex lexrc(textClassTags, TC_NOFLOAT);
+	LyXLex lexrc(textClassTags, TC_TITLELATEXTYPE);
 	bool error = false;
 
 	lexrc.setFile(filename);
@@ -323,13 +328,19 @@ bool LyXTextClass::Read(string const & filename, bool merge)
 		case TC_COUNTER:
 			readCounter(lexrc);
 			break;
+		case TC_TITLELATEXTYPE:
+			readTitleType(lexrc);
+			break;
+		case TC_TITLELATEXNAME:
+			if (lexrc.next())
+				titlename_ = lexrc.getString();
+			break;
 		case TC_NOFLOAT:
 			if (lexrc.next()) {
 				string const nofloat = lexrc.getString();
 				floatlist_->erase(nofloat);
 			}
 			break;
-
 		}
 	}
 
@@ -348,6 +359,33 @@ bool LyXTextClass::Read(string const & filename, bool merge)
 				      << endl;
 
 	return error;
+}
+
+
+void LyXTextClass::readTitleType(LyXLex & lexrc)
+{
+	keyword_item titleTypeTags[] = {
+		{ "commandafter", TITLE_COMMAND_AFTER },
+		{ "environment", TITLE_ENVIRONMENT }
+	};
+
+	pushpophelper pph(lexrc, titleTypeTags, TITLE_ENVIRONMENT);
+
+	int le = lexrc.lex();
+	switch (le) {
+	case LyXLex::LEX_UNDEF:
+		lexrc.printError("Unknown output type `$$Token'");
+		return;
+	case TITLE_COMMAND_AFTER:
+	case TITLE_ENVIRONMENT:
+		titletype_ = static_cast<LYX_TITLE_LATEX_TYPES>(le);
+		break;
+	default:
+		lyxerr << "Unhandled value " << le
+		       << " in LyXTextClass::readTitleType." << endl;
+
+		break;
+	}
 }
 
 
@@ -883,6 +921,21 @@ int LyXTextClass::maxcounter() const
 {
 	return maxcounter_;
 }
+
+
+LYX_TITLE_LATEX_TYPES LyXTextClass::titletype() const
+{
+	return titletype_;
+}
+
+
+string const & LyXTextClass::titlename() const
+{
+	return titlename_;
+}
+
+
+
 
 
 int LyXTextClass::size() const
