@@ -245,9 +245,9 @@ private:
 unsigned char Parser::getuchar()
 {
 	char c = 0;
-	is_.get(c);
 	if (!is_.good())
 		lyxerr << "The input stream is not well..." << endl;
+	is_.get(c);
 	return static_cast<unsigned char>(c);
 }
 
@@ -303,7 +303,7 @@ int Parser::yylex()
 	
 	while (is_.good()) {
 		unsigned char c = getuchar();
-		lyxerr << "reading byte: '" << c << "' code: " << lexcode[c] << endl;
+		//lyxerr << "reading byte: '" << c << "' code: " << lexcode[c] << endl;
 		
 		if (lexcode[c] == LexNewLine) {
 			++lineno_; 

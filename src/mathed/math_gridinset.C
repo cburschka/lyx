@@ -312,6 +312,7 @@ int MathGridInset::cellYOffset(int idx) const
 	return rowinfo_[row(idx)].offset_;
 }
 
+
 bool MathGridInset::idxUp(int & idx, int & pos) const
 {
 	if (idx < ncols())
