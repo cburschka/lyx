@@ -1277,11 +1277,11 @@ void Menus::ShowInsertMenu(FL_OBJECT * ob, long)
 
 	int SubInsertFloatList = fl_defpup(FL_ObjWin(ob),
 					   _("Floats%t"
-					     "|Figure Float%x71"
-					     "|Table Float%x72"
-					     "|Wide Figure Float%x73"
-					     "|Wide Table Float%l%x74"
-					     "|Algorithm Float%x75"));
+					     "|Figure%x71"
+					     "|Table%x72"
+					     "|Wide Figure%x73"
+					     "|Wide Table%l%x74"
+					     "|Algorithm%x75"));
 	
 	fl_setpup_shortcut(SubInsertFloatList, 71, scex(_("IMF|gG#g#G")));
 	fl_setpup_shortcut(SubInsertFloatList, 72, scex(_("IMF|Tt#t#T")));
@@ -1310,14 +1310,14 @@ void Menus::ShowInsertMenu(FL_OBJECT * ob, long)
 	fl_setpup_shortcut(SubInsertSpecial, 38, scex(_("IMS|Mm#m#M")));
 	
 	int InsertMenu = fl_defpup(FL_ObjWin(ob),
-				   _("Figure..."
-				     "|Table...%l"
+				   _("Graphic..."
+				     "|Table Box...%l"
 				     "|Include File..." 
 				     "|Import ASCII File%m"
 				     "|Insert LyX File...%l"
 				     "|Footnote"
 				     "|Margin Note"
-				     "|Floats%m%l"      
+				     "|Floating Material%m%l"      
 				     "|Lists & TOC%m%l"
 				     "|Special Character%m%l"
 				     "|Note..."
@@ -1615,6 +1615,7 @@ static
 char const * doc_files [] = {"Intro", "Tutorial", 
 			     "UserGuide", "Extended",
 			     "Customization", "Reference",
+			     "FAQ", "TOC",  
 			     "BUGS", "LaTeXConfig"}; 
 
 void Menus::ShowHelpMenu(FL_OBJECT * ob, long)
@@ -1633,6 +1634,8 @@ void Menus::ShowHelpMenu(FL_OBJECT * ob, long)
 				   "|Extended Features"
 				   "|Customization"
 				   "|Reference Manual"
+				   "|FAQ"
+				   "|Table of Contents"
 				   "|Known Bugs"
 				   "|LaTeX Configuration%l"
 				   "|Copyright and Warranty..."
@@ -1645,11 +1648,13 @@ void Menus::ShowHelpMenu(FL_OBJECT * ob, long)
 	fl_setpup_shortcut(HelpMenu,  4, scex(_("HM|xX#x#X")));
 	fl_setpup_shortcut(HelpMenu,  5, scex(_("HM|Cc#C#c")));
 	fl_setpup_shortcut(HelpMenu,  6, scex(_("HM|Rr#R#r")));
-	fl_setpup_shortcut(HelpMenu,  7, scex(_("HM|Kk#K#k")));
-	fl_setpup_shortcut(HelpMenu,  8, scex(_("HM|Ll#L#l")));
-	fl_setpup_shortcut(HelpMenu,  9, scex(_("HM|oO#o#O")));
-	fl_setpup_shortcut(HelpMenu, 10, scex(_("HM|eE#e#E")));
-	fl_setpup_shortcut(HelpMenu, 11, scex(_("HM|Vv#v#V")));
+	fl_setpup_shortcut(HelpMenu,  7, scex(_("HM|Ff#F#f")));
+	fl_setpup_shortcut(HelpMenu,  8, scex(_("HM|aA#a#A")));
+	fl_setpup_shortcut(HelpMenu,  9, scex(_("HM|Kk#K#k")));
+	fl_setpup_shortcut(HelpMenu, 10, scex(_("HM|Ll#L#l")));
+	fl_setpup_shortcut(HelpMenu, 11, scex(_("HM|oO#o#O")));
+	fl_setpup_shortcut(HelpMenu, 12, scex(_("HM|eE#e#E")));
+	fl_setpup_shortcut(HelpMenu, 13, scex(_("HM|Vv#v#V")));
 
 	fl_setpup_position(
 		men->_view->getForm()->x + ob->x,
@@ -1663,14 +1668,14 @@ void Menus::ShowHelpMenu(FL_OBJECT * ob, long)
 
 	switch (choice) {
 	case 1: case 2: case 3: case 4: case 5: 
-	case 6: case 7: case 8:
+	case 6: case 7: case 8: case 9: case 10:
 		ProhibitInput();
 		men->MenuDocu(doc_files[choice - 1]);
 		AllowInput();
 		break;
-	case 9: ShowCopyright(); break;
-	case 10: ShowCredits(); break;
-	case 11:
+	case 11: ShowCopyright(); break;
+	case 12: ShowCredits(); break;
+	case 13:
 		ProhibitInput();
 		fl_show_message((string(_("LyX Version ")) + LYX_VERSION 
 				 + _(" of ") + LYX_RELEASE).c_str(),

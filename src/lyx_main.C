@@ -336,16 +336,13 @@ void LyX::init(int */*argc*/, char **argv, bool gui)
 		lyxrc.lastfiles = AddName(user_lyxdir, "lastfiles");
 	}
 
-	// Calculate screen dpi as average of x-DPI and y-DPI:
 	// Disable gui when either lyxrc or easyparse says so
 	if (!gui)
 		lyxrc.use_gui = false;
  
         // Calculate screen dpi as average of x-DPI and y-DPI:
 	if (lyxrc.use_gui) {
-		Screen * scr = DefaultScreenOfDisplay(fl_get_display());
-		lyxrc.dpi = ((HeightOfScreen(scr)* 25.4 / HeightMMOfScreen(scr)) +
-			      (WidthOfScreen(scr)* 25.4 / WidthMMOfScreen(scr))) / 2;
+		lyxrc.dpi = getScreenDPI();
 		lyxerr[Debug::INFO] << "DPI setting detected to be "
                                                 << lyxrc.dpi + 0.5 << endl;
 	} else {

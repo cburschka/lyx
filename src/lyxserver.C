@@ -430,6 +430,7 @@ void LyXServer::callback(LyXServer * serv, string const & msg)
 	bool server_only = false;
 	while(*p) {
 		// --- 1. check 'header' ---
+
 	        if (strncmp(p, "LYXSRV:", 7) == 0) {
 			server_only = true; 
 		} else if(0!= strncmp(p, "LYXCMD:", 7)) {
@@ -527,7 +528,7 @@ void LyXServer::callback(LyXServer * serv, string const & msg)
 			string rval, buf;
 		    
 			if (action>= 0) {
-				rval = serv->func->Dispatch(cmd);
+				rval = serv->func->Dispatch(action, arg.c_str());
 			} else {
 				rval = "Unknown command";
 			}

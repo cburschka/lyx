@@ -167,14 +167,14 @@ Buffer::~Buffer()
 }
 
 
-string Buffer::getLatexName(bool no_path = true) const
+string Buffer::getLatexName(bool no_path /* = true */) const
 {
 	return ChangeExtension(MakeLatexName(filename), 
 			       ".tex", no_path); 
 }
 
 
-void Buffer::setReadonly(bool flag = true)
+void Buffer::setReadonly(bool flag /* = true */)
 {
 	if (read_only != flag) {
 		read_only = flag; 

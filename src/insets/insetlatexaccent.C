@@ -180,7 +180,7 @@ void InsetLatexAccent::checkContents()
  		plusasc = true; // at the top (not really needed)
  		break;
 	default:
- 	        printf ("Default\n");
+		lyxerr[Debug::KEY] << "Default" << endl;
 		// unknow accent (or something else)
                 return;
         }

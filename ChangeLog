@@ -1,15 +1,42 @@
+2000-04-11  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/lyxserver.C (callback): fix dispatch of functions
+
+	* src/insets/insetlatexaccent.C (checkContents): turn bogus
+	printf() into lyxerr call. 
+
+	* src/tex-strings.C (tex_fonts): add "pslatex" to the choice of
+	fonts. 
+
+	* src/menus.C (ShowInsertMenu): rename "Figure" to "Graphic",
+	"Table" to "Table Box", "Float" to "Floating Material"; deletes
+	the "Float" from each of the subitems.
+	(ShowHelpMenu): add entry for "FAQ" and "TOC".
+
+	* src/support/DebugStream.h: add an #ifdef to work around a gcc
+	2.8.x compiler error. Yes, I know, gcc 2.8.1 is bad, but I
+	documented the change so that the workaround can be nuked later.
+
+	* src/lyx_gui_misc.C (getScreenDPI): new function. Code moved from 
+	LyX::init().
+	
+	* src/lyxlex_pimpl.C (next): do not re-declare the default value
+	of arguments.
+	* src/buffer.C (getLatexName): ditto
+	(setReadonly): ditto
+
 2000-04-11  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/LaTeXFeatures.h: add a const reference to BufferParams, to
 	avoid some uses of current_view. Added also a bufferParams()
-	mathod to get at this.
+	method to get at this.
 
 	* src/lyxtext.h: changed params->buffer and paramters->bparams.
 
 2000-04-10  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/lyxparagraph.[Ch]: removed
-	operator<(LyXParagraph::InsetTabe..., added a struct matchIT
+	operator<(LyXParagraph::InsetTable..., added a struct matchIT
 	with operators used by lower_bound and
 	upper_bound in InsetTable's
 	Make struct InsetTable private again. Used matchpos.
@@ -106,23 +133,23 @@
 	* src/*: Add "explicit" on several constructors, I added probably
 	some unneeded ones. A couple of changes to code because of this.
 
-	* src/BufferView.[Ch]: Used the "pimpl" idom to hide more of the
+	* src/BufferView.[Ch]: Used the "pimpl" idiom to hide more of the
 	implementation and private parts from the users of BufferView. Not
 	quite finished.
 
-	* src/lyxlex.[Ch]: Used the "pimpl" idom to hide more of the
-	implementaaion and private parts from the users of LyXLex. Not
+	* src/lyxlex.[Ch]: Used the "pimpl" idiom to hide more of the
+	implementation and private parts from the users of LyXLex. Not
 	quite finished.
 
 	* src/BufferView_pimpl.[Ch]: new files
 
 	* src/lyxlex_pimpl.[Ch]: new files
 
-	* src/LyXView.[Ch]: some inline functios move out-of-line
+	* src/LyXView.[Ch]: some inline functions move out-of-line
 
 2000-04-04  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
-	* src/lyxparagraph.h: make strict InsetTable public.
+	* src/lyxparagraph.h: make struct InsetTable public.
 
 	* src/support/lyxstring.h: change lyxstring::difference_type to be
 	ptrdiff_t. Add std:: modifiers to streams.

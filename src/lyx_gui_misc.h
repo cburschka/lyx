@@ -61,6 +61,9 @@ std::pair<bool, string> askForText(string const & msg,
 /// Informs the user that changes in the coming form will be ignored
 void WarnReadonly(string const & file);
 
+/// Get the dpi setting of the current screen
+float getScreenDPI();
+
 // inlined functions
 /// rings the audio bell.
 inline

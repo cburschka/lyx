@@ -140,7 +140,7 @@ void LyXLex::Pimpl::setStream(istream & i)
 }
 
 
-bool LyXLex::Pimpl::next(bool esc = false)
+bool LyXLex::Pimpl::next(bool esc /* = false */)
 {
 	if (!esc) {
 		unsigned char c = 0; // getc() returns an int
