@@ -1,3 +1,9 @@
+2002-04-19  Marco Morandini <morandini@aero.polimi.it>
+
+	* GraphicsCache.[Ch] (loadableFormats): new method. A wrapper for
+	GImage::loadableFormats() that ensures that the signal is connected
+	to the derived class' method.
+
 2002-04-18  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* GraphicsImageXPM.C (convertTo7chars): drop all conversions and

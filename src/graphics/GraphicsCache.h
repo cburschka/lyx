@@ -23,6 +23,7 @@
 
 #include "GraphicsTypes.h"
 #include <map>
+#include <vector>
 #include "LString.h"
 #include <boost/utility.hpp>
 
@@ -71,6 +72,8 @@ public:
 	unsigned int raw_width(string const & filename) const;
 	///
 	unsigned int raw_height(string const & filename) const;
+	///
+	std::vector<string> loadableFormats() const;
 	
 private:
 	/** Make the c-tor private so we can control how many objects

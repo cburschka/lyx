@@ -185,5 +185,10 @@ unsigned int GCache::raw_height(string const & filename) const
 	return it->second->raw_height();
 }
 
+
+std::vector<string> GCache::loadableFormats() const {
+	return GImage::loadableFormats();
+}
+
 } // namespace grfx
 
