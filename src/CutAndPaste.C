@@ -61,64 +61,57 @@ textclass_type textclass = 0;
 
 } // namespace anon
 
+typedef std::pair<ParagraphList::iterator, int> pitPosPair;
 
-bool CutAndPaste::cutSelection(Paragraph * startpar, Paragraph * endpar,
-			       int start, int & end, textclass_type tc,
-			       bool doclear, bool realcut)
+pitPosPair CutAndPaste::cutSelection(ParagraphList & pars, 
+				     ParagraphList::iterator startpit, 
+				     ParagraphList::iterator endpit,
+				     int startpos, int endpos, 
+				     textclass_type tc, bool doclear)
 {
-	if (!startpar || (start > startpar->size()))
-		return false;
+	copySelection(&*startpit, &*endpit, startpos, endpos, tc);
+	return eraseSelection(pars, startpit, endpit, startpos, 
+			      endpos, doclear);
+}
 
-	if (realcut) {
-		copySelection(startpar, endpar, start, end, tc);
+
+pitPosPair CutAndPaste::eraseSelection(ParagraphList & pars, 
+				       ParagraphList::iterator startpit, 
+				       ParagraphList::iterator endpit,
+				       int startpos, int endpos, bool doclear)
+{
+	if (startpit == pars.end() || (startpos > startpit->size()))
+		return pitPosPair(endpit, endpos);
+
+	if (endpit == pars.end() || startpit == endpit) {
+		endpos -= startpit->erase(startpos, endpos);
+		return pitPosPair(endpit, endpos);
 	}
-
-	if (!endpar || startpar == endpar) {
-		if (startpar->erase(start, end)) {
-			// Some chars were erased, go to start to be safe
-			end = start;
-		}
-		return true;
-	}
-
-	bool actually_erased = false;
 
 	// clear end/begin fragments of the first/last par in selection
-	actually_erased |= (startpar)->erase(start, startpar->size());
-	if (endpar->erase(0, end)) {
-		actually_erased = true;
-		end = 0;
-	}
+	bool all_erased = true;
+
+	startpit->erase(startpos, startpit->size());
+	if (startpit->size() != startpos)
+		all_erased = false;
+
+	endpos -= endpit->erase(0, endpos);
+	if (endpos != 0)
+		all_erased = false;
 
 	// Loop through the deleted pars if any, erasing as needed
 
-	Paragraph * pit = startpar->next();
+	ParagraphList::iterator pit = boost::next(startpit);
 
-	while (true) {
-		// *endpar can be 0
-		if (!pit)
-			break;
-
-		Paragraph * next = pit->next();
-
+	while (pit != endpit && pit != pars.end()) {
+		ParagraphList::iterator const next = boost::next(pit);
 		// "erase" the contents of the par
-		if (pit != endpar) {
-			actually_erased |= pit->erase(0, pit->size());
-
+		pit->erase(0, pit->size());
+		if (!pit->size()) {
 			// remove the par if it's now empty
-			if (actually_erased) {
-				pit->previous()->next(pit->next());
-				if (next) {
-					next->previous(pit->previous());
-				}
-
-				delete pit;
-			}
-		}
-
-		if (pit == endpar)
-			break;
-
+			pars.erase(pit);
+		} else
+			all_erased = false;
 		pit = next;
 	}
 
@@ -131,31 +124,28 @@ bool CutAndPaste::cutSelection(Paragraph * startpar, Paragraph * endpar,
 	}
 #endif
 
-	if (!startpar->next())
-		return true;
-
-	Buffer * buffer = current_view->buffer();
+	if (boost::next(startpit) == pars.end())
+		return pitPosPair(endpit, endpos);
 
 	if (doclear) {
-		startpar->next()->stripLeadingSpaces();
+		boost::next(startpit)->stripLeadingSpaces();
 	}
-
-	if (!actually_erased)
-		return true;
 
 	// paste the paragraphs again, if possible
-	if (startpar->hasSameLayout(startpar->next()) ||
-	    startpar->next()->empty()) {
-#warning This is suspect. (Lgb)
-		// When doing this merge we must know if the par really
-		// belongs to an inset, and if it does then we have to use
-		// the insets paragraphs, and not the buffers. (Lgb)
-		mergeParagraph(buffer->params, buffer->paragraphs, startpar);
+	if (all_erased && 
+	    (startpit->hasSameLayout(&*boost::next(startpit)) ||
+	     boost::next(startpit)->empty())) {
+#warning current_view used here.
+// should we pass buffer or buffer->params around?
+		Buffer * buffer = current_view->buffer();
+		mergeParagraph(buffer->params, pars, &*startpit);
 		// this because endpar gets deleted here!
-		endpar = startpar;
+		endpit = startpit;
+		endpos = startpos;
 	}
 
-	return true;
+	return pitPosPair(endpit, endpos);
+
 }
 
 

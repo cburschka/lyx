@@ -40,6 +40,7 @@
 #include "support/lstrings.h"
 
 #include "support/BoostFormat.h"
+#include <boost/tuple/tuple.hpp>
 
 using std::vector;
 using std::copy;
@@ -1309,41 +1310,34 @@ void LyXText::cutSelection(bool doclear, bool realcut)
 
 	setUndo(bv(), Undo::DELETE, &*selection.start.par(), &*undoendpit);
 
-	// there are two cases: cut only within one paragraph or
-	// more than one paragraph
-	if (selection.start.par() == selection.end.par()) {
-		// only within one paragraph
-		endpit = selection.end.par();
-		int pos = selection.end.pos();
-		CutAndPaste::cutSelection(&*selection.start.par(), &*endpit,
-					  selection.start.pos(), pos,
-					  bv()->buffer()->params.textclass,
-					  doclear, realcut);
-		selection.end.pos(pos);
-	} else {
-		endpit = selection.end.par();
-		int pos = selection.end.pos();
-		CutAndPaste::cutSelection(&*selection.start.par(), &*endpit,
-					  selection.start.pos(), pos,
-					  bv()->buffer()->params.textclass,
-					  doclear, realcut);
-		cursor.par(endpit);
-		selection.end.par(endpit);
-		selection.end.pos(pos);
-		cursor.pos(selection.end.pos());
-	}
-	++endpit;
 
+	endpit = selection.end.par();
+	int endpos = selection.end.pos();
+
+	boost::tie(endpit, endpos) = realcut ? 
+		CutAndPaste::cutSelection(ownerParagraphs(),
+					  selection.start.par(), endpit,
+					  selection.start.pos(), endpos,
+					  bv()->buffer()->params.textclass,
+					  doclear)
+		: CutAndPaste::eraseSelection(ownerParagraphs(),
+					      selection.start.par(), endpit,
+					      selection.start.pos(), endpos,
+					      doclear);
 	// sometimes necessary
 	if (doclear)
 		selection.start.par()->stripLeadingSpaces();
 
-	redoParagraphs(selection.start, endpit);
-
+	redoParagraphs(selection.start, boost::next(endpit));
+#warning FIXME latent bug
+	// endpit will be invalidated on redoParagraphs once ParagraphList
+	// becomes a std::list? There are maybe other places on which this
+	// can happend? (Ab)
 	// cutSelection can invalidate the cursor so we need to set
 	// it anew. (Lgb)
 	// we prefer the end for when tracking changes
-	cursor = selection.end;
+	cursor.pos(endpos);
+	cursor.par(endpit);
 
 	// need a valid cursor. (Lgb)
 	clearSelection();
@@ -1632,17 +1626,18 @@ void LyXText::setCursor(LyXCursor & cur, ParagraphList::iterator pit,
 	// same paragraph and there is a previous row then put the cursor on
 	// the end of the previous row
 	cur.iy(y + row->baseline());
-	Inset * ins;
-	if (row != beg && pos &&
-		boost::prior(row)->par() == row->par() &&
-	    pos < pit->size() &&
-		pit->getChar(pos) == Paragraph::META_INSET &&
-		(ins = pit->getInset(pos)) && (ins->needFullRow() || ins->display()))
-	{
-		--row;
-		y -= row->height();
+	if (row != beg && 
+	    pos && 
+	    boost::prior(row)->par() == row->par() && 
+	    pos < pit->size() && 
+	    pit->getChar(pos) == Paragraph::META_INSET) {
+		Inset * ins = pit->getInset(pos);
+		if (ins && (ins->needFullRow() || ins->display())) {
+			--row;
+			y -= row->height();
+		}
 	}
-
+	
 	cur.row(row);
 	// y is now the beginning of the cursor row
 	y += row->baseline();

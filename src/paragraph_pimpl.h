@@ -82,7 +82,7 @@ struct Paragraph::Pimpl {
 	/// erase the given position
 	void erase(lyx::pos_type pos);
 	/// erase the given range
-	bool erase(lyx::pos_type start, lyx::pos_type end);
+	int erase(lyx::pos_type start, lyx::pos_type end);
 	///
 	Inset * inset_owner;
 

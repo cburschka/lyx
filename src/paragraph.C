@@ -330,7 +330,7 @@ void Paragraph::erase(pos_type pos)
 }
 
 
-bool Paragraph::erase(pos_type start, pos_type end)
+int Paragraph::erase(pos_type start, pos_type end)
 {
 	return pimpl_->erase(start, end);
 }

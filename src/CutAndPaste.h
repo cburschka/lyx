@@ -12,6 +12,7 @@
 #define CUTANDPASTE_H
 
 #include "support/types.h"
+#include "ParagraphList.h"
 
 class Paragraph;
 class BufferParams;
@@ -19,12 +20,19 @@ class LyXTextClass;
 
 ///
 namespace CutAndPaste {
-
-/// realcut == false is we actually want a delete
-bool cutSelection(Paragraph * startpar, Paragraph * endpar,
-		  int start, int & end, lyx::textclass_type tc,
-		  bool doclear = false, bool realcut = true);
-
+///
+std::pair<ParagraphList::iterator, int>
+cutSelection(ParagraphList & pars,
+	     ParagraphList::iterator startpit, 
+	     ParagraphList::iterator endpit,
+	     int start, int end, lyx::textclass_type tc,
+	     bool doclear = false);
+///
+std::pair<ParagraphList::iterator, int>
+eraseSelection(ParagraphList & pars,
+	       ParagraphList::iterator startpit, 
+	       ParagraphList::iterator endpit,
+	       int start, int end, bool doclear = false);
 ///
 bool copySelection(Paragraph * startpar, Paragraph * endpar,
 		   int start, int end, lyx::textclass_type tc);

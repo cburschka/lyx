@@ -409,21 +409,17 @@ void Paragraph::Pimpl::erase(pos_type pos)
 }
 
 
-bool Paragraph::Pimpl::erase(pos_type start, pos_type end)
+int Paragraph::Pimpl::erase(pos_type start, pos_type end)
 {
 	pos_type i = start;
 	pos_type count = end - start;
-	bool any_erased = false;
-
 	while (count) {
 		if (!erasePos(i)) {
 			++i;
-		} else {
-			any_erased = true;
-		}
+		} 
 		--count;
 	}
-	return any_erased;
+	return end - i;
 }
 
 
