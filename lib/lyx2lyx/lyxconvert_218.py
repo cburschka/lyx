@@ -379,8 +379,12 @@ def remove_figinset(lines):
 	    break
 	j = find_end_of_inset(lines, i)
 
-	lyxwidth = string.split(lines[i])[3]+"pt"
-	lyxheight = string.split(lines[i])[4]+"pt"
+	if ( len(string.split(lines[i])) > 2 ):
+	    lyxwidth = string.split(lines[i])[3]+"pt"
+	    lyxheight = string.split(lines[i])[4]+"pt"
+	else:
+	    lyxwidth = ""
+	    lyxheight = ""
 
 	filename = get_value(lines, "file", i+1, j)
 

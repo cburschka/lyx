@@ -1,3 +1,8 @@
+2003-01-15  Michael Schmitt  <Michael.Schmitt@teststep.org>
+
+	* lyx2lyx/lyxconvert_218.py(remove_figinset):
+	Fix bug 816, make function more robust.
+
 2003-01-13  Angus Leeming  <leeming@lyx.org>
 
 	* scripts/convertDefault.sh: make it return the exit status of the
