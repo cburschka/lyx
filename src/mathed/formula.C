@@ -275,6 +275,8 @@ InsetFormula::localDispatch(BufferView * bv, kb_action action,
 
 		case LFUN_MATH_NUMBER:
 		{
+			if (!hull())
+				break;
 			//lyxerr << "toggling all numbers\n";
 			if (display()) {
 				bv->lockedInsetStoreUndo(Undo::INSERT);
@@ -303,6 +305,9 @@ InsetFormula::localDispatch(BufferView * bv, kb_action action,
 
 		case LFUN_INSERT_LABEL:
 		{
+			if (!hull())
+				break;
+
 			bv->lockedInsetStoreUndo(Undo::INSERT);
 
 			MathCursor::row_type row = mathcursor->hullRow();
@@ -402,14 +407,7 @@ bool InsetFormula::display() const
 }
 
 
-MathHullInset const * InsetFormula::hull() const
-{
-	lyx::Assert(par_->asHullInset());
-	return par_->asHullInset();
-}
-
-
-MathHullInset * InsetFormula::hull()
+MathHullInset * InsetFormula::hull() const
 {
 	lyx::Assert(par_->asHullInset());
 	return par_->asHullInset();
