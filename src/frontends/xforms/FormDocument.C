@@ -417,6 +417,7 @@ bool FormDocument::class_apply()
 #else
 	unsigned int const new_class = fl_get_choice(class_->choice_doc_class) - 1;
 #endif
+	
 	if (params.textclass != new_class) {
 		// try to load new_class
 		if (textclasslist.Load(new_class)) {
@@ -1091,10 +1092,13 @@ void FormDocument::CheckChoiceClass(FL_OBJECT * ob, long)
     string tct = fl_get_choice_text(ob);
 #endif
     if (textclasslist.Load(tc)) {
-	if (AskQuestion(_("Should I set some parameters to"), tct,
-			_("the defaults of this document class?"))) {
-	    BufferParams & params = lv_->buffer()->params;
+	    // we use a copy of the bufferparams because we do not
+	    // want to modify them yet. 
+	    BufferParams params = lv_->buffer()->params;
 
+	    if (params.textclass != tc
+		&& AskQuestion(_("Should I set some parameters to"), 
+			       _("the defaults of this document class?"))) {
 	    params.textclass = tc;
 	    params.useClassDefaults();
 	    UpdateLayoutDocument(params);

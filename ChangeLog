@@ -1,3 +1,8 @@
+2001-01-09  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/frontends/xforms/FormDocument.C (CheckChoiceClass): fix
+	class switching; do not do anything if class has not been changed.
+
 2001-01-07  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* lib/build-listerrors: Exit if literate-article doesn't appear in
