@@ -665,10 +665,8 @@ void LyXParagraph::InsertInset(LyXParagraph::size_type pos,
 
 bool LyXParagraph::InsertInsetAllowed(Inset * inset)
 {
-	if (inset_owner) {
-		lyxerr << "CODE: << " << inset->LyxCode() << endl;
+	if (inset_owner)
 		return inset_owner->InsertInsetAllowed(inset);
-	}
 	return true;
 }
 
@@ -1623,9 +1621,10 @@ void LyXParagraph::PasteParagraph()
 	}
    
 	// delete the next paragraph
-	LyXParagraph *prev = the_next->previous;
+	LyXParagraph *ppar = the_next->previous;
+	LyXParagraph *npar = the_next->next;
 	delete the_next;
-	prev->next = 0;
+	ppar->next = npar;
 }
 
 

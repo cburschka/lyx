@@ -150,7 +150,11 @@ public:
 private:
     void calculate_width_of_cells(Painter &, LyXFont const &) const;
     ///
-    void DrawCellLines(Painter &, int x, int baseline, int row, int cell) const;
+    void DrawCellLines(Painter &, int x, int baseline, int row, int cell)
+	    const;
+    ///
+    void DrawCellSelection(Painter &, int x, int baseline, int row, int cell)
+	    const;
     ///
     void ShowInsetCursor(BufferView *);
     ///
@@ -162,10 +166,10 @@ private:
     ///
     UpdatableInset::RESULT moveRight(BufferView *, bool lock=true);
     UpdatableInset::RESULT moveLeft(BufferView *, bool lock=true);
-    UpdatableInset::RESULT moveUp();
-    UpdatableInset::RESULT moveDown();
-    bool moveNextCell();
-    bool movePrevCell();
+    UpdatableInset::RESULT moveUp(BufferView *);
+    UpdatableInset::RESULT moveDown(BufferView *);
+    bool moveNextCell(BufferView *);
+    bool movePrevCell(BufferView *);
     bool Delete();
     ///
     int getCellXPos(int cell) const;
@@ -173,9 +177,8 @@ private:
     ///
     void RemoveTabularRow();
     ///
-    bool hasCharSelection() const {return (sel_pos_start != sel_pos_end);}
-    bool hasCellSelection() const {return hasCharSelection() &&
-				 (sel_cell_start != sel_cell_end);}
+    bool hasSelection() const {return ((sel_pos_start != sel_pos_end) ||
+				       (sel_cell_start != sel_cell_end));}
     ///
     bool ActivateCellInset(BufferView *, int x=0, int y=0, int button=0,
 			   bool behind = false);

@@ -227,6 +227,8 @@ public:
     ///
     int GetCellAbove(int cell) const;
     ///
+    int GetCellBelow(int cell) const;
+    ///
     int GetCellNumber(int row, int column) const;
     ///
     void SetLinebreaks(int cell, bool what);

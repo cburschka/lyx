@@ -1499,6 +1499,7 @@ string LyXFunc::Dispatch(int ac,
 		owner->getMiniBuffer()->Set(CurrentState(owner->view()));
 		break;
 		
+	case LFUN_SHIFT_TAB:
 	case LFUN_TAB:
 		if(!owner->view()->text->mark_set)
 			owner->view()->beforeChange();

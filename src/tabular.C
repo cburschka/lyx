@@ -1669,7 +1669,7 @@ bool LyXTabular::NeedRotating() const
 
 bool LyXTabular::IsLastCell(int cell) const
 {
-    if (cell < GetNumberOfCells())
+    if ((cell+1) < GetNumberOfCells())
         return false;
     return true;
 }
@@ -1679,6 +1679,14 @@ int LyXTabular::GetCellAbove(int cell) const
 {
     if (row_of_cell(cell) > 0)
         return cell_info[row_of_cell(cell)-1][column_of_cell(cell)].cellno;
+    return cell;
+}
+
+
+int LyXTabular::GetCellBelow(int cell) const
+{
+    if (row_of_cell(cell)+1 < rows_)
+        return cell_info[row_of_cell(cell)+1][column_of_cell(cell)].cellno;
     return cell;
 }
 

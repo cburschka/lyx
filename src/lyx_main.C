@@ -449,6 +449,7 @@ void LyX::defaultKeyBindings(kb_keymap  * kbmap)
 	 * handled seperatly (LFUN_SELFINSERT.) Lgb. */
 	
         kbmap->bind("C-Tab", LFUN_TABINSERT);  // ale970515
+	kbmap->bind("S-Tab", LFUN_SHIFT_TAB);  // jug20000522
 }
 
 // LyX can optionally take over the handling of deadkeys

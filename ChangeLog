@@ -1,3 +1,13 @@
+2000-05-22  Juergen Vigna  <jug@sad.it>
+
+	* src/insets/insettabular.C (LocalDispatch): added some more cursor
+	movement support (Up/Down/Tab/Shift-Tab).
+	(LocalDispatch): added also preliminari cursor-selection.
+
+	* src/LyXAction.C (init): added SHIFT-Tab as tab-backward.
+
+	* src/paragraph.C (PasteParagraph): Hopefully now right!
+
 2000-05-22  Garst R. Reese  <reese@isn.net>
 
 	* layouts/hollywood.layout, broadway.layout : move Dialogue to top

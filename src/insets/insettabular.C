@@ -44,6 +44,7 @@ using std::ifstream;
 using std::max;
 using std::endl;
 
+#define cellstart(p) ((p % 2) == 0)
 
 InsetTabular::InsetTabular(Buffer * buf, int rows, int columns)
 {
@@ -183,6 +184,8 @@ void InsetTabular::draw(Painter & pain, const LyXFont & font, int baseline,
 	    if (tabular->IsPartOfMultiColumn(i,j))
 		continue;
 	    cx = nx + tabular->GetBeginningOfTextInCell(cell);
+	    if (hasSelection())
+		DrawCellSelection(pain, nx, baseline, i, cell);
 	    tabular->GetCellInset(cell)->draw(pain, font, baseline, cx);
 	    DrawCellLines(pain, nx, baseline, i, cell);
 	    nx += tabular->GetWidthOfColumn(cell);
@@ -230,6 +233,36 @@ void InsetTabular::DrawCellLines(Painter & pain, int x, int baseline,
 }
 
 
+void InsetTabular::DrawCellSelection(Painter & pain, int x, int baseline,
+				     int row, int cell) const
+{
+    int start, end;
+    if (sel_cell_start > sel_cell_end) {
+	start = sel_cell_end;
+	end = sel_cell_start;
+    } else {
+	start = sel_cell_start;
+	end = sel_cell_end;
+    }
+    int c1 = tabular->column_of_cell(cell);
+    int cs = tabular->column_of_cell(start);
+    int ce;
+    if (tabular->IsLastCellInRow(end))
+	ce = tabular->columns() - 1;
+    else
+	ce = tabular->column_of_cell(end+1) - 1; // because of multic.
+    int rs = tabular->row_of_cell(start);
+    int re = tabular->row_of_cell(end);
+
+    if ((c1 >= cs) && (c1 <= ce) && (row >= rs) && (row <= re)) {
+	int w = tabular->GetWidthOfColumn(cell);
+	int h = tabular->GetAscentOfRow(row) + tabular->GetDescentOfRow(row);
+	pain.fillRectangle(x, baseline - tabular->GetAscentOfRow(row),
+			   w, h, LColor::selection);
+    }
+}
+
+
 char const * InsetTabular::EditMessage() const
 {
     return _("Opened Tabular Inset");
@@ -246,9 +279,10 @@ void InsetTabular::Edit(BufferView * bv, int x, int y, unsigned int button)
     }
     locked = true;
     the_locking_inset = 0;
-    sel_pos_start = sel_pos_end = inset_pos = inset_x = inset_y = 0;
+    inset_pos = inset_x = inset_y = 0;
     setPos(bv->painter(), x, y);
     sel_pos_start = sel_pos_end = cursor.pos;
+    sel_cell_start = sel_cell_end = actcell;
     bv->text->FinishUndo();
     if (InsetHit(bv, x, y)) {
 	ActivateCellInset(bv, x, y, button);
@@ -266,11 +300,11 @@ void InsetTabular::InsetUnlock(BufferView * bv)
 	the_locking_inset = 0;
     }
     HideInsetCursor(bv);
-    if (hasCharSelection()) {
+    if (hasSelection()) {
 	sel_pos_start = sel_pos_end = cursor.pos;
+	sel_cell_start = sel_cell_end = actcell;
 	UpdateLocal(bv, false);
-    } else
-	sel_pos_start = sel_pos_end = cursor.pos;
+    }
     no_selection = false;
     oldcell = -1;
     locked = false;
@@ -408,8 +442,8 @@ void InsetTabular::InsetButtonRelease(BufferView * bv,
 
 void InsetTabular::InsetButtonPress(BufferView * bv, int x, int y, int button)
 {
-    if (hasCharSelection()) {
-	sel_pos_start = sel_pos_end = 0;
+    if (hasSelection()) {
+	sel_pos_start = sel_pos_end = sel_cell_start = sel_cell_end = 0;
 	UpdateLocal(bv, false);
     }
     no_selection = false;
@@ -417,6 +451,8 @@ void InsetTabular::InsetButtonPress(BufferView * bv, int x, int y, int button)
     int ocell = actcell;
 
     setPos(bv->painter(), x, y);
+    sel_pos_start = sel_pos_end = cursor.pos;
+    sel_cell_start = sel_cell_end = actcell;
 
     bool inset_hit = InsetHit(bv, x, y);
 
@@ -427,8 +463,6 @@ void InsetTabular::InsetButtonPress(BufferView * bv, int x, int y, int button)
 	the_locking_inset->InsetUnlock(bv);
     }
     the_locking_inset = 0;
-    sel_pos_start = sel_pos_end = cursor.pos;
-    sel_cell_start = sel_cell_end = actcell;
     if (inset_hit && bv->the_locking_inset) {
 	ActivateCellInset(bv, x, y, button);
 	the_locking_inset->InsetButtonPress(bv, x-inset_x, y-inset_y, button);
@@ -519,6 +553,7 @@ UpdatableInset::RESULT InsetTabular::LocalDispatch(BufferView * bv, int action,
 	}
     }
 
+    bool hs = hasSelection();
     HideInsetCursor(bv);
     switch (action) {
 	// Normal chars not handled here
@@ -528,54 +563,64 @@ UpdatableInset::RESULT InsetTabular::LocalDispatch(BufferView * bv, int action,
     case LFUN_RIGHTSEL:
 	moveRight(bv, false);
 	sel_pos_end = cursor.pos;
+	if (!cellstart(cursor.pos)) {
+	    if (sel_cell_start >= actcell)
+		sel_cell_end = actcell+1;
+	    else
+		sel_cell_end = actcell;
+	}
 	UpdateLocal(bv, false);
 	break;
     case LFUN_RIGHT:
 	result = moveRight(bv);
-	if (hasCharSelection()) {
-	    sel_pos_start = sel_pos_end = cursor.pos;
+	sel_pos_start = sel_pos_end = cursor.pos;
+	sel_cell_start = sel_cell_end = actcell;
+	if (hs)
 	    UpdateLocal(bv, false);
-	} else
-	    sel_pos_start = sel_pos_end = cursor.pos;
-          break;
+	break;
     case LFUN_LEFTSEL:
 	moveLeft(bv, false);
 	sel_pos_end = cursor.pos;
+	if (cellstart(cursor.pos)) {
+	    if (sel_cell_start >= actcell)
+		sel_cell_end = actcell;
+	    else
+		sel_cell_end = actcell-1;
+	}
 	UpdateLocal(bv, false);
 	break;
     case LFUN_LEFT:
 	result = moveLeft(bv);
-	if (hasCharSelection()) {
-	    sel_pos_start = sel_pos_end = cursor.pos;
+	sel_pos_start = sel_pos_end = cursor.pos;
+	sel_cell_start = sel_cell_end = actcell;
+	if (hs)
 	    UpdateLocal(bv, false);
-	} else
-	    sel_pos_start = sel_pos_end = cursor.pos;
 	break;
     case LFUN_DOWNSEL:
-	moveDown();
+	moveDown(bv);
 	sel_pos_end = cursor.pos;
+	sel_cell_end = actcell;
 	UpdateLocal(bv, false);
 	break;
     case LFUN_DOWN:
-	result= moveDown();
-	if (hasCharSelection()) {
-	    sel_pos_start = sel_pos_end = cursor.pos;
+	result= moveDown(bv);
+	sel_pos_start = sel_pos_end = cursor.pos;
+	sel_cell_start = sel_cell_end = actcell;
+	if (hs)
 	    UpdateLocal(bv, false);
-	} else
-	    sel_pos_start = sel_pos_end = cursor.pos;
 	break;
     case LFUN_UPSEL:
-	moveUp();
+	moveUp(bv);
 	sel_pos_end = cursor.pos;
+	sel_cell_end = actcell;
 	UpdateLocal(bv, false);
 	break;
     case LFUN_UP:
-	result= moveUp();
-	if (hasCharSelection()) {
-	    sel_pos_start = sel_pos_end = cursor.pos;
+	result= moveUp(bv);
+	sel_pos_start = sel_pos_end = cursor.pos;
+	sel_cell_start = sel_cell_end = actcell;
+	if (hs)
 	    UpdateLocal(bv, false);
-	} else
-	    sel_pos_start = sel_pos_end = cursor.pos;
 	break;
     case LFUN_BACKSPACE:
 	break;
@@ -585,13 +630,20 @@ UpdatableInset::RESULT InsetTabular::LocalDispatch(BufferView * bv, int action,
 	break;
     case LFUN_END:
 	break;
+    case LFUN_SHIFT_TAB:
     case LFUN_TAB:
-	if (hasCharSelection()) {
-	    sel_pos_start = sel_pos_end = cursor.pos;
-	    UpdateLocal(bv, false);
+	if (the_locking_inset) {
+	    the_locking_inset->InsetUnlock(bv);
 	}
+	the_locking_inset = 0;
+	if (action == LFUN_TAB)
+	    moveNextCell(bv);
+	else
+	    movePrevCell(bv);
 	sel_pos_start = sel_pos_end = cursor.pos;
-	moveNextCell();
+	sel_cell_start = sel_cell_end = actcell;
+	if (hs)
+	    UpdateLocal(bv, false);
 	break;
     case LFUN_LAYOUT_TABLE:
     {
@@ -852,27 +904,51 @@ UpdatableInset::RESULT InsetTabular::moveLeft(BufferView * bv, bool lock)
 }
 
 
-UpdatableInset::RESULT InsetTabular::moveUp()
+UpdatableInset::RESULT InsetTabular::moveUp(BufferView * bv)
 {
+    int ocell = actcell;
+    actcell = tabular->GetCellAbove(actcell);
+    if (actcell == ocell) // we moved out of the inset
+	return FINISHED;
+    resetPos(bv->painter());
     return DISPATCHED_NOUPDATE;
 }
 
 
-UpdatableInset::RESULT InsetTabular::moveDown()
+UpdatableInset::RESULT InsetTabular::moveDown(BufferView * bv)
 {
+    int ocell = actcell;
+    actcell = tabular->GetCellBelow(actcell);
+    if (actcell == ocell) // we moved out of the inset
+	return FINISHED;
+    resetPos(bv->painter());
     return DISPATCHED_NOUPDATE;
 }
 
 
-bool InsetTabular::moveNextCell()
+bool InsetTabular::moveNextCell(BufferView * bv)
 {
-    return false;
+    if (tabular->IsLastCell(actcell))
+	return false;
+    ++actcell;
+    ++cursor.pos;
+    if (!cellstart(cursor.pos))
+	++cursor.pos;
+    resetPos(bv->painter());
+    return true;
 }
 
 
-bool InsetTabular::movePrevCell()
+bool InsetTabular::movePrevCell(BufferView * bv)
 {
-    return false;
+    if (!actcell) // first cell
+	return false;
+    --actcell;
+    --cursor.pos;
+    if (cellstart(cursor.pos))
+	--cursor.pos;
+    resetPos(bv->painter());
+    return true;
 }
 
 
@@ -912,7 +988,7 @@ void InsetTabular::TabularFeatures(BufferView * bv, int feature, string val)
       default:
           break;
     }
-    if (hasCellSelection()) {
+    if (hasSelection()) {
 	if (sel_cell_start > sel_cell_end) {
 	    sel_start = sel_cell_end;
 	    sel_end = sel_cell_start;
@@ -1004,7 +1080,7 @@ void InsetTabular::TabularFeatures(BufferView * bv, int feature, string val)
 	      return;
 	  }
 	  // just multicol for one Single Cell
-	  if (!hasCellSelection()) {
+	  if (!hasSelection()) {
 	      // check wether we are completly in a multicol
 	      if (tabular->IsMultiColumn(actcell)) {
 		  tabular->UnsetMultiColumn(actcell);
