@@ -296,7 +296,6 @@ void InsetText::doDispatch(LCursor & cur, FuncRequest & cmd)
 	//lyxerr << "InsetText::doDispatch: " << cmd.action << " " << endl;
 	setViewCache(&cur.bv());
 
-	bool was_empty = paragraphs().begin()->empty() && paragraphs().size() == 1;
 	text_.dispatch(cur, cmd);
 
 }

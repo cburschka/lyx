@@ -250,7 +250,7 @@ void fl_set_bmtable_pixmap_data(FL_OBJECT * ob, int nx, int ny,
 	BMTABLE_SPEC * sp = (BMTABLE_SPEC *)ob->spec;
 	if (sp) {
 		Pixmap dummy_shapemask = 0;
-		XpmAttributes dumb_attributes = { 0 };
+		XpmAttributes dumb_attributes;
 		sp->nx = nx;
 		sp->ny = ny;
 		sp->bx = FL_abs(ob->bw);
@@ -314,7 +314,7 @@ void fl_set_bmtable_pixmap_file(FL_OBJECT *ob, int nx, int ny, char const *filen
 	BMTABLE_SPEC *sp = (BMTABLE_SPEC *)ob->spec;
 	if (sp) {
 		Pixmap dummy_shapemask = 0;
-		XpmAttributes dumb_attributes = { 0 };
+		XpmAttributes dumb_attributes;
 		XpmColorSymbol xpm_col;
 		sp->nx = nx;
 		sp->ny = ny;

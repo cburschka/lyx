@@ -1,5 +1,12 @@
 2004-12-28  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
+	* text2.C (setLayout): remove unused variable endpit.
+	(deleteEmptyParagraphMechanism): remove unused variable tmpcursor.
+
+	* paragraph.C (onlyText): remove unused variable style.
+
+	* cursor.C (bruteFind): remove unused variables beg and end.
+
 	* Makefile.am (dist_noinset_DATA): not needed anymore
 
 	* cheaders/*: remove.

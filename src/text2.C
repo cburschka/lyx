@@ -336,7 +336,7 @@ void LyXText::setLayout(LCursor & cur, string const & layout)
 
 	pit_type start = cur.selBegin().pit();
 	pit_type end = cur.selEnd().pit() + 1;
-	pit_type endpit = setLayout(start, end, layout);
+	setLayout(start, end, layout);
 	updateCounters();
 }
 
@@ -1423,8 +1423,6 @@ bool LyXText::deleteEmptyParagraphMechanism(LCursor & cur, LCursor const & old)
 
 	if (oldpar.empty() || (oldpar.size() == 1 && oldpar.isLineSeparator(0))) {
 		// ok, we will delete something
-		CursorSlice tmpcursor;
-
 		deleted = true;
 
 		bool selection_position_was_oldcursor_position =

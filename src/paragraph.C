@@ -1383,7 +1383,6 @@ pos_type Paragraph::getFirstWord(Buffer const & buf, ostream & os, OutputParams 
 
 bool Paragraph::onlyText(Buffer const & buf, LyXFont const & outerfont, pos_type initial) const
 {
-	LyXLayout_ptr const & style = layout();
 	LyXFont font_old;
 
 	for (pos_type i = initial; i < size(); ++i) {

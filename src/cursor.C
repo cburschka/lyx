@@ -120,7 +120,6 @@ namespace {
 		int x, int y, int xlow, int xhigh, int ylow, int yhigh)
 	{
 		BOOST_ASSERT(!cursor.empty());
-		pit_type beg, end;
 		CursorSlice bottom = cursor[0];
 		LyXText * text = bottom.text();
 		BOOST_ASSERT(text);
