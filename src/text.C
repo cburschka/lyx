@@ -378,7 +378,6 @@ void readParagraph(Buffer const & buf, Paragraph & par, LyXLex & lex)
 			       << "Missing \\end_layout.\n";
 			break;
 		}
-		lyxerr << "Paragraph token unknown: `" << token << '\'' << endl;
 	}
 }
 
