@@ -16,13 +16,13 @@
 #pragma interface
 #endif
 
+///
 class GraphicsCacheItem {
 public:
-    ~GraphicsCacheItem() {}
-    
 private:
+    ///
     GraphicsCacheItem() {}
-
+    //
     friend class GraphicsCache;
 };
 

@@ -33,34 +33,33 @@ struct LyXLex::Pimpl {
 		///
 		int table_siz;
 	};
-	
+	///
 	Pimpl(keyword_item * tab, int num);
-	
+	///
 	string GetString() const;
-	
+	///
 	void printError(string const & message) const;
-	
+	///
 	void printTable(std::ostream & os);
-	
+	///
 	void pushTable(keyword_item * tab, int num);
-	
+	///
 	void popTable();
-	
+	///
 	bool setFile(string const & filename);
-	
+	///
 	void setStream(std::istream & i);
-	
+	///
 	bool next(bool esc = false);
-	
 	///
 	int search_kw(char const * const tag) const;
-	
+	///
 	int lex();
-	
+	///
 	bool EatLine();
-	
+	///
 	bool nextToken();
-	
+	///
 	void pushToken(string const &);
 
 	/// fb__ is only used to open files, the stream is accessed through is

@@ -73,10 +73,11 @@ bool BufferView::insertLyXFile(string const & filen)
 			   MakeDisplayPath(fname, 50));
 		return false;
 	}
+	
+	char c = ifs.peek();
+       
 	LyXLex lex(0, 0);
 	lex.setStream(ifs);
-	char c; ifs.get(c);
-	ifs.putback(c);
 
 	bool res = true;
 

@@ -1,3 +1,21 @@
+2000-07-31  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/support/translator.h (equal_1st_in_pair::operator()): take
+	const ref pair_type as arg. 
+	(equal_2nd_in_pair::operator()): ditto
+	(Translator::~Translator): remove empty d-tor.
+
+	* src/graphics/GraphicsCache.C: move include config.h to top, also
+	put initialization of GraphicsCache::singleton here.
+	(~GraphicsCache): move here
+	(addFile): take const ref as arg
+	(removeFile): ditto
+
+	* src/lyxlex_pimpl.C (setFile): comment in old behaviour
+
+	* src/BufferView2.C (insertLyXFile): change te with/without header
+	check slightly.
+
 2000-07-31  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/frontends/xforms/FormGraphics.C (apply): add some

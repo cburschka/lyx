@@ -33,19 +33,17 @@ public:
     static GraphicsCache * getInstance();
 
     /// Add a file to the cache.
-    GraphicsCacheItem * addFile(string filename);
+    GraphicsCacheItem * addFile(string const & filename);
 
 private:
     /// Remove a cache item if it's count has gone to zero.
-    void removeFile(string filename);
+    void removeFile(string const & filename);
     
     /// Private c-tor so we can control how many objects are instantiated.
     GraphicsCache() {}
 
     /// Private d-tor so that no-one will destroy us.
-    ~GraphicsCache() {
-        delete singleton;
-    }
+    ~GraphicsCache();
 
     /// Holder of the single instance of the class.
     static GraphicsCache * singleton;
@@ -53,7 +51,4 @@ private:
     typedef std::map<string, GraphicsCacheItem *> CacheType;
     CacheType cache;
 };
-
-GraphicsCache * GraphicsCache::singleton = 0;
-
 #endif

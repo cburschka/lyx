@@ -9,12 +9,17 @@
  *          This file Copyright 2000 Baruch Even
  * ================================================= */
 
+#include <config.h>
+
 #ifdef __GNUG__
 #pragma implementation
 #endif
 
-#include <config.h>
 #include "GraphicsCache.h"
+
+
+GraphicsCache * GraphicsCache::singleton = 0;
+
 
 GraphicsCache * 
 GraphicsCache::getInstance()
@@ -27,8 +32,14 @@ GraphicsCache::getInstance()
 }
 
 
+GraphicsCache::~GraphicsCache()
+{
+        delete singleton;
+}
+
+
 GraphicsCacheItem * 
-GraphicsCache::addFile(string filename)
+GraphicsCache::addFile(string const & filename)
 {
     CacheType::const_iterator it = cache.find(filename);
     
@@ -39,8 +50,9 @@ GraphicsCache::addFile(string filename)
     return 0;
 }
 
+
 void
-GraphicsCache::removeFile(string filename)
+GraphicsCache::removeFile(string const & filename)
 {
     CacheType::const_iterator it = cache.find(filename);
     

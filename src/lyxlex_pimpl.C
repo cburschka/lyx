@@ -114,11 +114,11 @@ void LyXLex::Pimpl::popTable()
 
 bool LyXLex::Pimpl::setFile(string const & filename)
 {
-	//if (fb__.is_open())
-	//	lyxerr << "Error in LyXLex::setFile: "
-	//		"file or stream already set." << endl;
+	if (fb__.is_open())
+		lyxerr << "Error in LyXLex::setFile: "
+			"file or stream already set." << endl;
 	fb__.open(filename.c_str(), ios::in);
-	//is.rdbuf(&fb__);
+	is.rdbuf(&fb__);
 	name = filename;
 	lineno = 0;
 	return fb__.is_open() && is.good();

@@ -25,7 +25,7 @@ public:
     equal_1st_in_pair(T1 const & value) : value_(value) {}
 
     typedef std::pair<T1, T2> pair_type;
-    bool operator() (pair_type p) const {
+    bool operator() (pair_type const & p) const {
         return p.first == value_;
     }
 private:
@@ -38,7 +38,7 @@ public:
     equal_2nd_in_pair(T2 const & value) : value_(value) {}
 
     typedef std::pair<T1, T2> pair_type;
-    bool operator() (pair_type p) const {
+    bool operator() (pair_type const & p) const {
         return p.second == value_;
     }
 private:
@@ -62,8 +62,6 @@ public:
     Translator(T1 const & t1, T2 const & t2) 
         : default_t1(t1), default_t2(t2) 
         {}
-    /// d-tor. Not virtual since it's not going to be inherited.
-    ~Translator() {}
 
     /// Add a mapping to the translator.
     void addPair(T1 const & first, T2 const & second) {

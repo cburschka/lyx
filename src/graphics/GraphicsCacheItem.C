@@ -9,10 +9,11 @@
  *          This file Copyright 2000 Baruch Even
  * ================================================= */
 
+#include <config.h>
+
 #ifdef __GNUG__
 #pragma implementation
 #endif
 
-#include <config.h>
 #include "GraphicsCacheItem.h"
 
