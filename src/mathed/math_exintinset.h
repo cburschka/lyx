@@ -2,21 +2,18 @@
 #ifndef MATH_EXINTINSET_H
 #define MATH_EXINTINSET_H
 
-// /\int_l^u f(x) dxin one block (as opposed to 'f','(','x',')' or 'f','x')
-// for interfacing external programs
+// \int_l^u f(x) dx in one block (as opposed to 'f','(','x',')' or 'f','x')
+// or \sum, \prod...  for interfacing external programs
 
 #include "math_scriptinset.h"
 
-class MathExIntInset : public MathInset {
+// cell(0) is stuff before the 'd', cell(1) the stuff after
+class MathExIntInset : public MathNestInset {
 public:
 	///
 	explicit MathExIntInset(string const & name_);
 	///
 	MathInset * clone() const;
-	///
-	void index(MathArray const &);
-	///
-	void core(MathArray const &);
 	///
 	void scripts(MathAtom const &);
 	///
@@ -44,10 +41,6 @@ private:
 	string symbol_;
 	///
 	MathAtom scripts_;
-	///
-	MathArray core_;
-	///
-	MathArray index_;
 };
 
 #endif

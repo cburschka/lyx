@@ -6,25 +6,13 @@
 
 
 MathExIntInset::MathExIntInset(string const & name)
-	: symbol_(name)
+	: MathNestInset(2), symbol_(name)
 {}
 
 
 MathInset * MathExIntInset::clone() const
 {
 	return new MathExIntInset(*this);
-}
-
-
-void MathExIntInset::index(MathArray const & ar)
-{
-	index_ = ar;
-}
-
-
-void MathExIntInset::core(MathArray const & ar)
-{
-	core_ = ar;
 }
 
 
@@ -55,12 +43,10 @@ bool MathExIntInset::hasScripts() const
 
 void MathExIntInset::normalize(NormalStream & os) const
 {
-	os << '[' << symbol_.c_str() << ' ';
+	os << '[' << symbol_.c_str() << ' ' << cell(0) << ' ' << cell(1);
 	if (hasScripts())
 		os << scripts_.nucleus();
-	else 
-		os << "{}";
-	os << ' ' << core_ << ' ' << index_ << ']';
+	os << ']';
 }
 
 
@@ -79,11 +65,11 @@ void MathExIntInset::draw(Painter &, int, int) const
 void MathExIntInset::maplize(MapleStream & os) const
 {
 	os << symbol_.c_str() << '(';
-	if (core_.size())
-		os << core_;
+	if (cell(0).size())
+		os << cell(0);
 	else 
 		os << '1';
-	os << ',' << index_;
+	os << ',' << cell(1);
 	if (hasScripts()) {
 		MathScriptInset * p = scripts_->asScriptInset();
 		os << '=' << p->down().data_ << ".." << p->up().data_;
@@ -100,9 +86,9 @@ void MathExIntInset::mathmlize(MathMLStream & os) const
 	else 
 		sym->mathmlize(os);
 	delete sym;
-	os << core_ << "<mo> &InvisibleTimes; </mo>"
+	os << cell(0) << "<mo> &InvisibleTimes; </mo>"
 	   << MTag("mrow") << "<mo> &DifferentialD; </mo>"
-	   << index_ << ETag("mrow");
+	   << cell(1) << ETag("mrow");
 }
 
 

@@ -21,6 +21,8 @@ public:
 	void metrics(MathMetricsInfo const & st) const;
 	///
 	void draw(Painter &, int x, int y) const;
+	///
+	MathFracInset * asFracInset();
 
 	///
 	void write(WriteStream & os) const;

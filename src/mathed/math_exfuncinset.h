@@ -10,7 +10,7 @@
 class MathExFuncInset : public MathNestInset {
 public:
 	///
-	MathExFuncInset(string const & name, MathArray const & arg);
+	explicit MathExFuncInset(string const & name);
 	///
 	MathInset * clone() const;
 	///

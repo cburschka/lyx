@@ -44,6 +44,7 @@ class MathCharInset;
 class MathDelimInset;
 class MathFuncInset;
 class MathGridInset;
+class MathFracInset;
 class MathHullInset;
 class MathMatrixInset;
 class MathNestInset;
@@ -179,6 +180,7 @@ public:
 	virtual MathDelimInset        * asDelimInset()        { return 0; }
 	virtual MathDelimInset const  * asDelimInset() const  { return 0; }
 	virtual MathFuncInset         * asFuncInset()         { return 0; }
+	virtual MathFracInset         * asFracInset()         { return 0; }
 	virtual MathGridInset         * asGridInset()         { return 0; }
 	virtual MathHullInset         * asHullInset()         { return 0; }
 	virtual MathHullInset const   * asHullInset() const   { return 0; }

@@ -19,6 +19,12 @@ MathInset * MathFracInset::clone() const
 }
 
 
+MathFracInset * MathFracInset::asFracInset()
+{
+	return atop_ ? 0 : this;
+}
+
+
 void MathFracInset::metrics(MathMetricsInfo const & mi) const
 {
 	MathMetricsInfo m = mi;
