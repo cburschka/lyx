@@ -162,7 +162,7 @@ void LyXAction::init()
 		{ LFUN_EXEC_COMMAND, "command-execute", "", NoBuffer },
 		{ LFUN_PREFIX, "command-prefix",
 		  N_("Execute command"), NoBuffer },
-		{ LFUN_SEQUENCE, "command-sequence", "", Noop },
+		{ LFUN_SEQUENCE, "command-sequence", "", NoBuffer },
 		{ LFUN_COPY, "copy", N_("Copy"), ReadOnly },
 		{ LFUN_CUT, "cut", N_("Cut"), Noop },
 		{ LFUN_DATE_INSERT, "date-insert", "", Noop },

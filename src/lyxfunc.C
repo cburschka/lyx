@@ -1554,7 +1554,7 @@ string const LyXFunc::dispatch(kb_action action, string argument)
 	case LFUN_SEQUENCE:
 	{
 		// argument contains ';'-terminated commands
-		while (argument.find(';') != string::npos) {
+		while (!argument.empty()) {
 			string first;
 			argument = split(argument, first, ';');
 			verboseDispatch(first, false);
