@@ -45,6 +45,8 @@
 #include <qcombobox.h> 
 #include <qlistbox.h>
  
+using std::vector;
+ 
 typedef Qt2CB<ControlPrefs, Qt2DB<QPrefsDialog> > base_class;
 
 
