@@ -48,6 +48,7 @@
 #include <qlineedit.h>
 #include <qpushbutton.h>
 #include <qspinbox.h>
+#include <qstring.h>
 
 using std::string;
 
@@ -173,6 +174,10 @@ QPrefsDialog::QPrefsDialog(QPrefs * form)
 	connect(convertersModule->converterRemovePB, SIGNAL(clicked()), this, SLOT(remove_converter()));
 	connect(convertersModule->converterModifyPB, SIGNAL(clicked()), this, SLOT(modify_converter()));
 	connect(convertersModule->convertersLB, SIGNAL(highlighted(int)), this, SLOT(switch_converter(int)));
+	connect(convertersModule->converterFromCO, SIGNAL(activated(const QString&)), this, SLOT(converter_changed()));
+	connect(convertersModule->converterToCO, SIGNAL(activated(const QString&)), this, SLOT(converter_changed()));
+	connect(convertersModule->converterED, SIGNAL(textChanged(const QString&)), this, SLOT(converter_changed()));
+	connect(convertersModule->converterFlagED, SIGNAL(textChanged(const QString&)), this, SLOT(converter_changed()));
 
 	// Qt really sucks. This is as ugly as it looks, but the alternative
 	// means having to derive every module == bloat
@@ -311,13 +316,15 @@ void QPrefsDialog::updateConverters()
 	Converters::const_iterator ccit = form_->converters().begin();
 	Converters::const_iterator cend = form_->converters().end();
 	for (; ccit != cend; ++ccit) {
-		string const name(ccit->From->prettyname() + " -> " +
-			ccit->To->prettyname());
+		std::string const name = ccit->From->prettyname() + " -> " 
+			+ ccit->To->prettyname();
 		convertmod->convertersLB->insertItem(toqstr(name));
 	}
 
 	if (convertmod->convertersLB->currentItem() == -1)
 		convertmod->convertersLB->setCurrentItem(0);
+
+	updateConverterButtons();
 }
 
 
@@ -328,6 +335,40 @@ void QPrefsDialog::switch_converter(int nr)
 	convertersModule->converterToCO->setCurrentItem(form_->formats().getNumber(c.to));
 	convertersModule->converterED->setText(toqstr(c.command));
 	convertersModule->converterFlagED->setText(toqstr(c.flags));
+	
+	updateConverterButtons();
+}
+
+
+void QPrefsDialog::converter_changed()
+{
+	updateConverterButtons();
+}
+
+
+void QPrefsDialog::updateConverterButtons()
+{
+	Format const & from(form_->formats().get(
+		convertersModule->converterFromCO->currentItem()));
+	Format const & to(form_->formats().get(
+		convertersModule->converterToCO->currentItem()));
+	int const sel = form_->converters().getNumber(from.name(), to.name());
+	bool const known = !(sel < 0);
+	bool const valid = !(convertersModule->converterED->text().isEmpty() 
+		|| from.name() == to.name());
+	
+	Converter const & c(form_->converters().get(
+		convertersModule->convertersLB->currentItem()));
+	string const old_command = c.command;
+	string const old_flag = c.flags;
+	string const new_command(fromqstr(convertersModule->converterED->text()));
+	string const new_flag(fromqstr(convertersModule->converterFlagED->text()));
+	
+	bool modified = ((old_command != new_command) || (old_flag != new_flag));
+	
+	convertersModule->converterModifyPB->setEnabled(valid && known && modified);
+	convertersModule->converterNewPB->setEnabled(valid && !known);
+	convertersModule->converterRemovePB->setEnabled(known);
 }
 
 
@@ -337,9 +378,11 @@ void QPrefsDialog::new_converter()
 {
 	Format const & from(form_->formats().get(convertersModule->converterFromCO->currentItem()));
 	Format const & to(form_->formats().get(convertersModule->converterToCO->currentItem()));
+	string const command(fromqstr(convertersModule->converterED->text()));
+	string const flags(fromqstr(convertersModule->converterFlagED->text()));
 
 	Converter const * old = form_->converters().getConverter(from.name(), to.name());
-	form_->converters().add(from.name(), to.name(), "", "");
+	form_->converters().add(from.name(), to.name(), command, flags);
 	if (!old) {
 		form_->converters().updateLast(form_->formats());
 	}
@@ -589,6 +632,7 @@ void QPrefsDialog::new_format()
 	form_->formats().sort();
 	updateFormats();
 	fileformatsModule->formatsLB->setCurrentItem(form_->formats().getNumber(_("New")));
+	form_->converters().update(form_->formats());
 	updateConverters();
 }
 
@@ -625,6 +669,7 @@ void QPrefsDialog::remove_format()
 		return;
 	form_->formats().erase(form_->formats().get(nr).name());
 	updateFormats();
+	form_->converters().update(form_->formats());
 	updateConverters();
 }
 

@@ -49,6 +49,7 @@ public:
 	~QPrefsDialog();
 
 	void updateConverters();
+	void updateConverterButtons();
 	void updateCopiers();
 	void updateFormats();
 
@@ -61,6 +62,7 @@ public slots:
 	void remove_format();
 
 	void switch_converter(int);
+	void converter_changed();
 	void new_converter();
 	void modify_converter();
 	void remove_converter();

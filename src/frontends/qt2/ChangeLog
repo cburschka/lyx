@@ -1,3 +1,12 @@
+2004-11-08  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* QPrefsDialog.C (new_format(), remove_format()): fix crash when 
+	adding new formats (add missing converters().update() call) [bug 1692]
+	
+	* QPrefsDialog.[Ch]:
+	* ui/QPrefConvertersModule.C: improve ui for converter changes 
+	[bug 1488].
+
 2004-11-06  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
 	* QLImage.C (loadableFormats): use bind, equal_to instead of
