@@ -18,6 +18,7 @@
 
 #include "support/lstrings.h"
 #include "support/lyxlib.h"
+#include "frontends/lyx_gui.h"
 
 #include <cmath>	// abs()
 
