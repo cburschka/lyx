@@ -106,6 +106,8 @@ public:
 	MathInset * par() const;
 	/// return the next enclosing grid inset and the cursor's index in it
 	MathGridInset * enclosingGrid(idx_type &) const;
+	/// return the next enclosing grid inset and the cursor's index in it
+	void popToEnclosingGrid();
 	///
 	InsetFormulaBase * formula();
 	/// current offset in the current cell

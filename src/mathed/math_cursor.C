@@ -897,9 +897,17 @@ MathGridInset * MathCursor::enclosingGrid(MathCursor::idx_type & idx) const
 		if (p) {
 			idx = Cursor_[i].idx_;
 			return p;
+			lyxerr << "found grid and idx: " << idx << "\n";
 		}
 	}
 	return 0;
+}
+
+
+void MathCursor::popToEnclosingGrid()
+{
+	while (Cursor_.size() && !Cursor_.back().par_->asGridInset())
+		Cursor_.pop_back();
 }
 
 

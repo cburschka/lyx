@@ -667,11 +667,12 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 		MathInset::idx_type idx = 0;
 		MathGridInset * p = mathcursor ? mathcursor->enclosingGrid(idx) : 0;
 		if (p) {
+			mathcursor->popToEnclosingGrid();
 			bv->lockedInsetStoreUndo(Undo::EDIT);
-			char al = arg.size() ? arg[0] : 'c';
+			char align = arg.size() ? arg[0] : 'c';
 			switch (action) {
-				case LFUN_MATH_HALIGN: p->halign(al, p->col(idx)); break;
-				case LFUN_MATH_VALIGN: p->valign(al); break;
+				case LFUN_MATH_HALIGN: p->halign(align, p->col(idx)); break;
+				case LFUN_MATH_VALIGN: p->valign(align); break;
 				case LFUN_MATH_ROW_INSERT: p->addRow(p->row(idx)); break;
 				case LFUN_MATH_ROW_DELETE: p->delRow(p->row(idx)); break;
 				case LFUN_MATH_COLUMN_INSERT: p->addCol(p->col(idx)); break;
