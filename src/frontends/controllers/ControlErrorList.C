@@ -69,17 +69,14 @@ void ControlErrorList::goTo(int item)
 	}
 
 	// Now make the selection.
-#ifdef WITH_WARNINGS
-#warning FIXME (goto error)
-#warning This should be implemented using an LFUN. (Angus)
-#endif
-#if 0
+	// This should be implemented using an LFUN. (Angus)
 	pos_type const end = std::min(err.pos_end, pit->size());
 	pos_type const start = std::min(err.pos_start, end);
 	pos_type const range = end - start;
-	PosIterator const pos(pit, start);
-	kernel().bufferview()->putSelectionAt(pos, range, false);
-#endif
+	DocIterator const dit = makeDocIterator(pit, start);
+	kernel().bufferview()->putSelectionAt(dit, range, false);
+	// If we used an LFUN, we would not need that
+	kernel().bufferview()->update();
 }
 
 } // namespace frontend
