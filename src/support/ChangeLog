@@ -1,3 +1,16 @@
+2003-07-27  Angus Leeming  <leeming@lyx.org>
+
+	* path_defines.{h,C.in}, : new files. Store/set the various lyx
+	paths, lyx_dir, top_srcdir, localedir, system_lyxdir, build_lyxdir
+	user_lyxdir.
+	
+	* Makefile.am: add some magic to enable the user to set the path to
+	the system-level lyx support files, the top of the lyx build tree
+	and the system-level lyx locale directory at _make_ time rather
+	than configure time.
+	
+	* .cvsignore: add path_defines.C.
+
 2003-07-26  Angus Leeming  <leeming@lyx.org>
 
 	* os.h: remove irrelevant discussion of system_tempdir.

@@ -39,8 +39,6 @@ lyx_DEPENDENCIES = $(LYX_CONV_LIBS) $(BOOST_LIBS) $(INTLLIBS)
 
 INCLUDES = $(BOOST_INCLUDES)
 
-localedir = $(datadir)/locale
-
 BUILT_SOURCES = version.C
 
 lyx_SOURCES = \
@@ -250,16 +248,6 @@ lyx_SOURCES = \
 	version.h \
 	vspace.C \
 	vspace.h
-
-lyx_main.o: lyx_main.C lyx_main.h config.h version.h \
-	lyxrc.h support/path.h support/filetools.h \
-	bufferlist.h debug.h support/FileInfo.h lastfiles.h intl.h \
-	lyxserver.h layout.h gettext.h kbmap.h lfuns.h language.h
-	$(CXXCOMPILE) -DLYX_DIR=\"$(pkgdatadir)\" \
-	  -DTOP_SRCDIR=\"$(top_srcdir)\" -c $(top_srcdir)/src/lyx_main.C
-
-messages.o: messages.C messages.h config.h LString.h support/filetools.h
-	$(CXXCOMPILE) -DLOCALEDIR=\"$(localedir)\" -c $(top_srcdir)/src/messages.C
 
 dist-hook:
 	cd $(distdir) ; rm -rf `find cheaders -name \*CVS\*`

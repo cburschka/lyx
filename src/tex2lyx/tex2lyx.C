@@ -9,6 +9,8 @@
 #include "debug.h"
 #include "lyx_main.h"
 #include "lyxtextclass.h"
+#include "support/path_defines.h"
+#include "support/os.h"
 
 #include <cctype>
 #include <fstream>
@@ -31,9 +33,6 @@ using std::string;
 using std::vector;
 
 // Hacks to allow the thing to link in the lyxlayout stuff
-string system_lyxdir = "../../../lib";
-string build_lyxdir = "../../lib";
-string user_lyxdir = ".";
 Debug::type const Debug::ANY = Debug::type(0);
 DebugStream lyxerr;
 
@@ -149,6 +148,9 @@ int main(int argc, char * argv[])
 		cerr << "Usage: " << argv[0] << " <infile.tex>" << endl;
 		return 2;
 	}
+
+	lyx::support::os::init(&argc, &argv);
+	lyx::support::setLyxPaths();
 
 	ifstream is(argv[1]);
 	Parser p(is);

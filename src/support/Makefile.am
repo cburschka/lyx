@@ -1,15 +1,20 @@
 include $(top_srcdir)/config/common.am
 
+nodist_include_HEADERS = path_defines.C
 noinst_LTLIBRARIES = libsupport.la
+
+CLEANFILES = path_defines.C
 
 INCLUDES = -I$(srcdir)/../ $(BOOST_INCLUDES)
 
-EXTRA_DIST = lyxstring.C lyxstring.h \
+EXTRA_DIST = path_defines.C.in lyxstring.C lyxstring.h \
 	     os_unix.C os_win32.C os_os2.C
 
 if USE_LYXSTRING
 LYXSTRING = lyxstring.C lyxstring.h
 endif
+
+BUILT_SOURCES = path_defines.C
 
 libsupport_la_SOURCES = \
 	BoostFormat.h \
@@ -58,6 +63,7 @@ libsupport_la_SOURCES = \
 	os2_errortable.h \
 	path.C \
 	path.h \
+	path_defines.C \
 	putenv.C \
 	rename.C \
 	rmdir.C \
@@ -75,3 +81,20 @@ libsupport_la_SOURCES = \
 	userinfo.C \
 	userinfo.h \
 	unlink.C
+
+
+path_defines.C: build_path_defines
+
+build_path_defines: path_defines.C.in
+	@rm -f tmp_path_defines ;\
+	ABS_SRCDIR=`cd $(top_srcdir) && pwd` ;\
+	sed "s,%LYX_DIR%,$(pkgdatadir), ;\
+		s,%LOCALEDIR%,$(datadir)/locale, ;\
+		s,%TOP_SRCDIR%,$${ABS_SRCDIR}," \
+		$(srcdir)/path_defines.C.in > tmp_path_defines ;\
+	if cmp -s tmp_path_defines path_defines.C ; then \
+		rm -f tmp_path_defines ;\
+	else \
+		rm -f path_defines.C ;\
+		mv tmp_path_defines path_defines.C ;\
+	fi
