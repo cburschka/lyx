@@ -181,33 +181,22 @@ private:
 		///
 		void InputBrowserLyX() const;
 		///
-		void InputBrowserX11() const;
-		///
 		void InputHSV();
+		///
+		void InputRGB();
 		///
 		void LoadBrowserLyX();
 		///
-		bool LoadBrowserX11(string const &);
-		///
-		bool LoadDatabase();
-		///
 		void Modify();
 		///
-		int SearchEntry(RGBColor const &) const;
+		void SwitchColorSpace() const;
 		///
-		void Sort();
-		///
-		void SortType();
+		string const X11hexname(RGBColor const &) const;
 
 		///
 		FormPreferences & parent_;
 		///
 		FD_form_colors * dialog_;
-		/// The usual location of the X11 name database.
-		static string const colorFile;
-		/** A vector of RGB colors and associated name.
-		    Each RGB color is unique. */
-		static std::vector<NamedColor> colorDB;
 
 		/// A vector of LyX LColor GUI name and associated RGB color.
 		std::vector<NamedColor> lyxColorDB;

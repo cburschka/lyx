@@ -129,20 +129,17 @@ struct FD_form_colors {
 	~FD_form_colors();
 
 	FL_FORM *form;
-	FL_OBJECT *input_name;
-	FL_OBJECT *button_browse;
-	FL_OBJECT *text_file_warning;
-	FL_OBJECT *browser_x11;
 	FL_OBJECT *button_color;
 	FL_OBJECT *browser_lyx_objs;
 	FL_OBJECT *button_modify;
-	FL_OBJECT *button_sort;
 	FL_OBJECT *slider_saturation;
 	FL_OBJECT *slider_value;
 	FL_OBJECT *dial_hue;
-	FL_OBJECT *text_1;
-	FL_OBJECT *text_0;
-	FL_OBJECT *button_type_sort;
+	FL_OBJECT *slider_red;
+	FL_OBJECT *slider_blue;
+	FL_OBJECT *slider_green;
+	FL_OBJECT *button_colorspace;
+	FL_OBJECT *text_color_values;
 };
 struct FD_form_converters {
 	~FD_form_converters();

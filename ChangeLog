@@ -1,3 +1,20 @@
+2000-12-04  Angus Leeming <a.leeming@ic.ac.uk>
+
+	* lib/ui/default.ui: small grammatical change.
+
+	* src/frontends/xforms/xform_macros.h: removed.
+
+	* src/frontends/xforms/FormBase.C:
+	* src/frontends/xforms/FormPreferences.C:
+	* src/frontends/xforms/Makefile.am: changes associated with removing
+	xform_macros.h. Should make Lars' debugging a little easier.
+
+	* src/frontends/xforms/FormPreferences.C:
+	* src/frontends/xforms/FormPreferences.h:
+	* src/frontends/xforms/forms/form_preferences.fd (Colors tab): no
+	longer use X11 color name database. HSV and RGB dials/sliders.
+	Please let this be the end of this!
+
 2000-11-30  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* Several files: Allow compilation when the compiler doesn't
@@ -6,7 +23,7 @@
 2000-11-30  Angus Leeming <a.leeming@ic.ac.uk>
 
 	* lyx.man:
-	* src/lyx_main.C (commandLineHelp, easyParse): documented remianing
+	* src/lyx_main.C (commandLineHelp, easyParse): documented remaining
 	command line options.
 
 2000-11-17  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>

@@ -86,7 +86,6 @@ libxforms_la_SOURCES = \
 	RadioButtonGroup.h \
 	Toolbar_pimpl.C \
 	Toolbar_pimpl.h \
-	xform_macros.h \
 	xform_helpers.C \
 	xform_helpers.h
 

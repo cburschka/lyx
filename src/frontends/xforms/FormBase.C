@@ -20,27 +20,33 @@
 #include "Dialogs.h"
 #include "FormBase.h"
 #include "LyXView.h"
-#include "xform_macros.h"
 #include "support/LAssert.h"
-//#include "debug.h"
+#include "debug.h"
 
-// The current scheme muddles debugging.
-// Can we please use some other means to create these functions?
-// I really don't like to use the preprossessor for this.
-// My suggestion: First of all move these functions into their own
-// file (that can be included here if wanted, and use m4 to expand
-// that file. So create a m4 function to do the expansion, a file
-// that contains the calls to to this function and a script to run
-// it and create the C++ file with the expanded functions. (Lgb)
-// Possible startoff point:
-// define([C_RETURNCB],[extern "C" int C_$1$2(FL_FORM * ob, void * d) { return $1::$2(ob, d); }])
-
-C_RETURNCB (FormBase, WMHideCB)
-C_GENERICCB(FormBase, ApplyCB)
-C_GENERICCB(FormBase, OKCB)
-C_GENERICCB(FormBase, CancelCB)
-C_GENERICCB(FormBase, InputCB)
-C_GENERICCB(FormBase, RestoreCB)
+extern "C" int C_FormBaseWMHideCB(FL_FORM * ob, void * d)
+{
+	return FormBase::WMHideCB(ob, d);
+}
+extern "C" void C_FormBaseApplyCB(FL_OBJECT * ob, long d)
+{
+	FormBase::ApplyCB(ob, d);
+}
+extern "C" void C_FormBaseOKCB(FL_OBJECT * ob, long d)
+{
+	FormBase::OKCB(ob, d);
+}
+extern "C" void C_FormBaseCancelCB(FL_OBJECT * ob, long d)
+{
+	FormBase::CancelCB(ob, d);
+}
+extern "C" void C_FormBaseInputCB(FL_OBJECT * ob, long d)
+{
+	FormBase::InputCB(ob, d);
+}
+extern "C" void C_FormBaseRestoreCB(FL_OBJECT * ob, long d)
+{
+	FormBase::RestoreCB(ob, d);
+}
 
 
 FormBase::FormBase(LyXView * lv, Dialogs * d, string const & t,
