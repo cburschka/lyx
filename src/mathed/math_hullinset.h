@@ -23,8 +23,6 @@ public:
 	///
 	MathHullInset(string const & type, MathGridInset const & grid);
 	///
-	MathHullInset(string const & type, col_type cols);
-	///
 	MathInset * clone() const;
 	///
 	void metrics(MathMetricsInfo & mi) const;

@@ -11,9 +11,10 @@
 #include "math_support.h"
 #include "support/LOstream.h"
 
+using std::atoi;
 
 MathSizeInset::MathSizeInset(latexkeys const * l)
-	: MathNestInset(1), key_(l)
+	: MathNestInset(1), key_(l), style_(MathStyles(atoi(l->extra.c_str())))
 {}
 
 
@@ -25,7 +26,7 @@ MathInset * MathSizeInset::clone() const
 
 void MathSizeInset::metrics(MathMetricsInfo & mi) const
 {
-	//MathStyleChanger dummy(mi.base, MathStyles(key_->id));
+	MathStyleChanger dummy(mi.base, style_);
 	dim_ = xcell(0).metrics(mi);
 	metricsMarkers2();
 }
@@ -33,7 +34,7 @@ void MathSizeInset::metrics(MathMetricsInfo & mi) const
 
 void MathSizeInset::draw(MathPainterInfo & pi, int x, int y) const
 {
-	//MathStyleChanger dummy(pi.base, MathStyles(key_->id));
+	MathStyleChanger dummy(pi.base, style_);
 	xcell(0).draw(pi, x + 1, y);
 	drawMarkers2(pi, x, y);
 }

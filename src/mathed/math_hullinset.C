@@ -94,19 +94,13 @@ MathHullInset::MathHullInset(string const & type)
 	setDefaults();
 }
 
-
+/*
 MathHullInset::MathHullInset(string const & type, MathGridInset const & grid)
 	: MathGridInset(grid), type_(type), nonum_(1), label_(1)
 {
 	setDefaults();
 }
-
-
-MathHullInset::MathHullInset(string const & type, col_type cols)
-	: MathGridInset(cols, 1), type_(type), nonum_(1), label_(1)
-{
-	setDefaults();
-}
+*/
 
 
 MathInset * MathHullInset::clone() const
@@ -354,11 +348,11 @@ void MathHullInset::header_write(WriteStream & os) const
 
 	else if (type_ == "alignat" || type_ == "xalignat") 
 		os << "\\begin{" << type_ << star(n) << "}"
-		  << "{" << static_cast<unsigned int>(ncols()/2) << "}\n";
+		  << "{" << static_cast<unsigned int>((ncols() + 1)/2) << "}\n";
  
 	else if (type_ == "xxalignat") 
 		os << "\\begin{" << type_ << "}"
-		  << "{" << static_cast<unsigned int>(ncols()/2) << "}\n";
+		  << "{" << static_cast<unsigned int>((ncols() + 1)/2) << "}\n";
  
 	else if (type_ == "multline" || type_ == "gather") 
 		os << "\\begin{" << type_ << "}\n";
@@ -427,19 +421,15 @@ void MathHullInset::addFancyCol(col_type col)
 		addFancyCol(col);
 	}
 
-	else if (type_ == "alignat" || type_ == "xalignat" || type_ == "xxalignat") {
+	else if (type_ == "alignat" || type_ == "xalignat" || type_ == "xxalignat") 
 		MathGridInset::addCol(col);
-		MathGridInset::addCol(col + 1);
-	}
 }
 
 
 void MathHullInset::delFancyCol(col_type col)
 {
-	if (type_ == "alignat" || type_ == "xalignat" || type_ == "xxalignat") {
-		MathGridInset::delCol(col + 1);
+	if (type_ == "alignat" || type_ == "xalignat" || type_ == "xxalignat") 
 		MathGridInset::delCol(col);
-	}
 }
 
 

@@ -37,6 +37,8 @@ public:
 private:
 	///
 	latexkeys const * key_;
+	///
+	MathStyles const style_;
 };
 
 #endif
