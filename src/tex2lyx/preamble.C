@@ -184,7 +184,7 @@ LyXTextClass const parse_preamble(Parser & p, ostream & os, string const & force
 	special_columns['D'] = 3;
 	bool is_full_document = false;
 
-	// determine wether this is a full document or a fragment for inclusion
+	// determine whether this is a full document or a fragment for inclusion
 	while (p.good()) {
 		Token const & t = p.get_token();
 

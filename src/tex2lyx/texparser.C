@@ -61,16 +61,6 @@ void catInit()
 // catcodes
 //
 
-mode_type asMode(mode_type oldmode, string const & str)
-{
-	if (str == "mathmode")
-		return MATH_MODE;
-	if (str == "textmode" || str == "forcetext")
-		return TEXT_MODE;
-	return oldmode;
-}
-
-
 CatCode catcode(unsigned char c)
 {
 	return theCatcode[c];
@@ -177,20 +167,45 @@ Token const & Parser::get_token()
 }
 
 
+bool Parser::isParagraph() const
+{
+	// A new paragraph in TeX ist started
+	// - either by a newline, following any amount of whitespace
+	//   characters (including zero), and another newline
+	// - or the token \par
+	if (curr_token().cat() == catNewline &&
+	    (curr_token().cs().size() > 1 ||
+	     (next_token().cat() == catSpace &&
+	      pos_ < tokens_.size() - 1 &&
+	      tokens_[pos_ + 1].cat() == catNewline)))
+		return true;
+	if (curr_token().cat() == catEscape && curr_token().cs() == "par")
+		return true;
+	return false;
+}
+
+
 void Parser::skip_spaces(bool skip_comments)
 {
 	// We just silently return if we have no more tokens.
 	// skip_spaces() should be callable at any time,
 	// the caller must check p::good() anyway.
 	while (good()) {
-		if ( next_token().cat() == catSpace ||
-		    (next_token().cat() == catNewline && next_token().cs().size() == 1) ||
-		     next_token().cat() == catComment && next_token().cs().empty())
-			get_token();
-		else if (skip_comments && next_token().cat() == catComment)
-			cerr << "  Ignoring comment: " << get_token().asInput();
-		else
+		get_token();
+		if (isParagraph()) {
+			putback();
 			break;
+		}
+		if ( curr_token().cat() == catSpace ||
+		     curr_token().cat() == catNewline ||
+		    (curr_token().cat() == catComment && curr_token().cs().empty()))
+			continue;
+		if (skip_comments && curr_token().cat() == catComment)
+			cerr << "  Ignoring comment: " << curr_token().asInput();
+		else {
+			putback();
+			break;
+		}
 	}
 }
 
@@ -253,10 +268,8 @@ string Parser::getArg(char left, char right)
 				if (!curr_token().cs().empty())
 					cerr << "Ignoring comment: " << curr_token().asInput();
 			}
-			else if (curr_token().cat() == catSpace || curr_token().cat() == catNewline)
-				result += curr_token().cs();
 			else
-				result += c;
+				result += curr_token().asInput();
 		}
 
 	return result;

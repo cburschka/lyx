@@ -1324,7 +1324,7 @@ void InsetTabular::tabularFeatures(LCursor & cur,
 #if 0
 		// just multicol for one Single Cell
 		if (!hasSelection()) {
-			// check wether we are completly in a multicol
+			// check whether we are completly in a multicol
 			if (tabular.isMultiColumn(actcell))
 				tabular.unsetMultiColumn(actcell);
 			else

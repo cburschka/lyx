@@ -1,3 +1,12 @@
+2004-06-18  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* preamble.C, text.C: s/wether/whether/g
+	* text.C (eat_whitespace): new method
+	* texparser.C (getArg): use always curr_token().asInput()
+	* texparser.[Ch] (isParagraph): new method
+	* texparser.C (skip_spaces): handle "\n +\n" correctly
+	* texparser.[Ch] (asMode): remove, since it is unused
+
 2004-05-27  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
 	* Makefile.am (BUILT_SOURCES): move lengthcommon.C from here...

@@ -144,8 +144,8 @@ bool splitLatexLength(string const & len, string & value, string & unit)
 }
 
 
-// A simple function to translate a latex length to something lyx can
-// understand. Not perfect, but rather best-effort.
+/// A simple function to translate a latex length to something lyx can
+/// understand. Not perfect, but rather best-effort.
 bool translate_len(string const & length, string & valstring, string & unit)
 {
 	if (!splitLatexLength(length, valstring, unit))
@@ -313,6 +313,9 @@ LyXLayout_ptr findLayout(LyXTextClass const & textclass,
 }
 
 
+void eat_whitespace(Parser &, ostream &, Context &, bool);
+
+
 void output_command_layout(ostream & os, Parser & p, bool outer,
 			   Context & parent_context,
 			   LyXLayout_ptr newlayout)
@@ -323,13 +326,14 @@ void output_command_layout(ostream & os, Parser & p, bool outer,
 	context.check_deeper(os);
 	context.check_layout(os);
 	if (context.layout->optionalargs > 0) {
-		p.skip_spaces();
+		eat_whitespace(p, os, context, false);
 		if (p.next_token().character() == '[') {
 			p.get_token(); // eat '['
 			begin_inset(os, "OptArg\n");
 			os << "status collapsed\n\n";
 			parse_text_in_inset(p, os, FLAG_BRACK_LAST, outer, context);
 			end_inset(os);
+			eat_whitespace(p, os, context, false);
 		}
 	}
 	parse_text_snippet(p, os, FLAG_ITEM, outer, context);
@@ -378,7 +382,7 @@ void check_space(Parser const & p, ostream & os, Context & context)
 
 
 /*!
- * Check wether \param command is a known command. If yes,
+ * Check whether \p command is a known command. If yes,
  * handle the command with all arguments.
  * \return true if the command was parsed, false otherwise.
  */
@@ -522,8 +526,8 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 	string const name = p.getArg('{', '}');
 	const bool is_starred = suffixIs(name, '*');
 	string const unstarred_name = rtrim(name, "*");
+	eat_whitespace(p, os, parent_context, false);
 	active_environments.push_back(name);
-	p.skip_spaces();
 
 	if (is_math_env(name)) {
 		parent_context.check_layout(os);
@@ -651,9 +655,52 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 		p.skip_spaces();
 }
 
+/// parses a comment and outputs it to \p os.
+void parse_comment(Parser & p, ostream & os, Token const & t, Context & context)
+{
+	BOOST_ASSERT(t.cat() == catComment);
+	context.check_layout(os);
+	if (!t.cs().empty()) {
+		handle_comment(os, '%' + t.cs(), context);
+		if (p.next_token().cat() == catNewline) {
+			// A newline after a comment line starts a new
+			// paragraph
+			if(!context.atParagraphStart()) {
+				// Only start a new paragraph if not already
+				// done (we might get called recursively)
+				context.new_paragraph(os);
+			}
+			eat_whitespace(p, os, context, true);
+		}
+	} else {
+		// "%\n" combination
+		p.skip_spaces();
+	}
+}
+
+
+/*!
+ * Reads spaces and comments until the first non-space, non-comment token.
+ * New paragraphs (double newlines or \\par) are handled like simple spaces
+ * if \p eatParagraph is true.
+ * Spaces are skipped, but comments are written to \p os.
+ */
+void eat_whitespace(Parser & p, ostream & os, Context & context,
+                    bool eatParagraph)
+{
+	while (p.good()) {
+		Token const & t = p.get_token();
+		if (t.cat() == catComment)
+			parse_comment(p, os, t, context);
+		else if ((! eatParagraph && p.isParagraph()) ||
+		         (t.cat() != catSpace && t.cat() != catNewline)) {
+			p.putback();
+			return;
+		}
+	}
+}
+
 } // anonymous namespace
-
-
 
 
 void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
@@ -738,7 +785,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			skip_braces(p);
 		}
 
-		else if (t.cat() == catSpace || (t.cat() == catNewline && t.cs().size() == 1))
+		else if (t.cat() == catSpace || (t.cat() == catNewline && ! p.isParagraph()))
 			check_space(p, os, context);
 
 		else if (t.cat() == catLetter ||
@@ -749,9 +796,9 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			os << t.character();
 		}
 
-		else if (t.cat() == catNewline || (t.cat() == catEscape && t.cs() == "par")) {
-			p.skip_spaces();
+		else if (p.isParagraph()) {
 			context.new_paragraph(os);
+			eat_whitespace(p, os, context, true);
 		}
 
 		else if (t.cat() == catActive) {
@@ -792,20 +839,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			handle_ert(os, "}", context);
 		}
 
-		else if (t.cat() == catComment) {
-			context.check_layout(os);
-			if (!t.cs().empty()) {
-				handle_comment(os, '%' + t.cs(), context);
-				if (p.next_token().cat() == catNewline) {
-					// A newline after a comment line starts a new paragraph
-					context.new_paragraph(os);
-					p.skip_spaces();
-				}
-			} else {
-				// "%\n" combination
-				p.skip_spaces();
-			}
-		}
+		else if (t.cat() == catComment)
+			parse_comment(p, os, t, context);
 
 		//
 		// control sequences
@@ -865,7 +900,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				} else if (!s.empty()) {
 					// The space is needed to separate the item from the rest of the sentence.
 					os << s << ' ';
-					p.skip_spaces();
+					eat_whitespace(p, os, context, false);
 				}
 			}
 		}
@@ -879,8 +914,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		}
 
 		else if (t.cs() == "def") {
-			p.skip_spaces();
 			context.check_layout(os);
+			eat_whitespace(p, os, context, false);
 			string name = p.get_token().cs();
 			while (p.next_token().cat() != catBegin)
 				name += p.get_token().asString();
@@ -1010,7 +1045,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			}
 			// TODO: Handle the unknown settings better.
 			// Warn about invalid options.
-			// Check wether some option was given twice.
+			// Check whether some option was given twice.
 			end_inset(os);
 		}
 
@@ -1046,7 +1081,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 
 		else if (t.cs() == "hfill") {
 			context.check_layout(os);
-			os << "\n\\hfill\n";
+			os << "\n\\hfill \n";
 			skip_braces(p);
 			p.skip_spaces();
 		}
@@ -1172,6 +1207,10 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			begin_inset(os, "Quotes ");
 			os << known_coded_quotes[where - known_quotes];
 			end_inset(os);
+			// LyX adds {} after the quote, so we have to eat
+			// spaces here if there are any before a possible
+			// {} pair.
+			eat_whitespace(p, os, context, false);
 			skip_braces(p);
 		}
 
@@ -1179,7 +1218,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			char const ** where = is_known(t.cs(), known_sizes);
 			context.check_layout(os);
 			os << "\n\\size " << known_coded_sizes[where - known_sizes] << "\n";
-			p.skip_spaces();
+			eat_whitespace(p, os, context, false);
 		}
 
 		else if (t.cs() == "LyX" || t.cs() == "TeX"
@@ -1374,6 +1413,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			begin_inset(os, "VSpace ");
 			os << t.cs();
 			end_inset(os);
+			skip_braces(p);
 		}
 
 		else if (t.cs() == "vspace") {

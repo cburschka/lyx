@@ -34,6 +34,7 @@ void parse_text(Parser & p, std::ostream & os, unsigned flags, bool outer,
 //std::string parse_text(Parser & p, unsigned flags, const bool outer,
 //		       Context & context);
 
+/// parses a subdocument, usually useful in insets (whence the name)
 void parse_text_in_inset(Parser & p, std::ostream & os, unsigned flags,
 			 bool outer, Context & context);
 

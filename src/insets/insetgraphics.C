@@ -477,7 +477,7 @@ string const InsetGraphics::prepareFile(Buffer const & buf,
 
 	if (zipped) {
 		if (params().noUnzip) {
-			// We don't know wether latex can actually handle
+			// We don't know whether latex can actually handle
 			// this file, but we can't check, because that would
 			// mean to unzip the file and thereby making the
 			// noUnzip parameter meaningless.

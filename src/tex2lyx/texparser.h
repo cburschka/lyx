@@ -79,13 +79,13 @@ public:
 
 	///
 	std::string const & cs() const { return cs_; }
-	///
+	/// Returns the catcode of the token
 	CatCode cat() const { return cat_; }
 	///
 	char character() const { return char_; }
-	///
+	/// Returns the token as string
 	std::string asString() const;
-	///
+	/// Returns the token verbatim
 	std::string asInput() const;
 
 private:
@@ -130,27 +130,29 @@ public:
 	std::string getArg(char left, char right);
 	/// getArg('[', ']') including the brackets
 	std::string getOpt();
-	///
+	/// Returns the character of the current token and increments the token position.
 	char getChar();
 	///
 	void error(std::string const & msg);
-	///
+	/// Parses \p is into tokens
 	void tokenize(std::istream & is);
 	///
 	void push_back(Token const & t);
 	///
 	void pop_back();
-	///
+	/// The previous token.
 	Token const & prev_token() const;
-	///
+	/// The current token.
 	Token const & curr_token() const;
-	///
+	/// The next token.
 	Token const & next_token() const;
 	/// Make the next token current and return that.
 	Token const & get_token();
-	/// skips spaces (and comments if \param skip_comments is true)
+	/// \return whether the current token starts a new paragraph
+	bool isParagraph() const;
+	/// skips spaces (and comments if \p skip_comments is true)
 	void skip_spaces(bool skip_comments = false);
-	/// puts back spaces (and comments if \param skip_comments is true)
+	/// puts back spaces (and comments if \p skip_comments is true)
 	void unskip_spaces(bool skip_comments = false);
 	///
 	void lex(std::string const & s);
