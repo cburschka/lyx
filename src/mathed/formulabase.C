@@ -536,7 +536,7 @@ Inset::RESULT InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 	case LFUN_PRIOR:
 	case LFUN_BEGINNINGBUFSEL:
 	case LFUN_BEGINNINGBUF:
-		result = FINISHED_UP;
+		result = FINISHED;
 		updateLocal(bv, false);
 		break;
 
@@ -544,7 +544,7 @@ Inset::RESULT InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 	case LFUN_NEXT:
 	case LFUN_ENDBUFSEL:
 	case LFUN_ENDBUF:
-		result = FINISHED_DOWN;
+		result = FINISHED_RIGHT;
 		updateLocal(bv, false);
 		break;
 
