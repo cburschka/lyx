@@ -44,6 +44,13 @@ public:
 		NEED_VERY_LITTLE_REFRESH
 	};
 
+	enum Letter_Form {
+		FORM_ISOLATED,
+		FORM_INITIAL,
+		FORM_MEDIAL,
+		FORM_FINAL
+	};
+
 	/// points to Buffer.params
 	BufferParams * parameters;
 	/// points to Buffer
@@ -635,6 +642,13 @@ private:
 		else
 			return vis2log_list[pos-bidi_start];
 	}
+
+	///
+	unsigned char TransformChar(unsigned char c, Letter_Form form) const;
+
+	///
+	unsigned char TransformChar(unsigned char c, LyXParagraph * par,
+				LyXParagraph::size_type pos) const;
 
 	/** returns the paragraph position of the last character in the 
 	  specified row

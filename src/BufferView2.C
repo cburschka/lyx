@@ -719,8 +719,8 @@ void BufferView::showLockedInsetCursor(long x, long y, int asc, int desc)
 {
 	if (the_locking_inset && available()) {
 		y += text->cursor.y;
-		screen->ShowManualCursor(x, y,
-					      asc, desc);
+		screen->ShowManualCursor(x, y, asc, desc,
+					 LyXScreen::BAR_SHAPE);
 	}
 }
 

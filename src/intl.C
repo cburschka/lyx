@@ -28,6 +28,7 @@
 #include "lyxrc.h"
 #include "trans_mgr.h"
 #include "support/lstrings.h"
+#include "language.h"
 
 extern LyXRC * lyxrc;
 
@@ -130,10 +131,11 @@ void Intl::KeyMapPrim()
 
 	/* read text from choice */
 	int i = Language->get();
-	
+
+#if 0
 	if (lyxerr.debugging(Debug::KBMAP))
 		lyxerr << "Table: " << tex_babel[i-1] << endl;
-
+#endif
 	string p;
 	if (i == otherkeymap)
 		p = fl_get_input(fd_form_keymap->OtherKeymap);
@@ -164,10 +166,11 @@ void Intl::KeyMapSec()
 
 	/* read text from choice */
 	int i = Language2->get();
-	
+
+#if 0
 	if (lyxerr.debugging(Debug::KBMAP))
 		lyxerr << "Table: " << tex_babel[i-1] << endl;
-
+#endif
 	string p;
 	if (i == otherkeymap)
 		p = fl_get_input(fd_form_keymap->OtherKeymap2);
@@ -280,8 +283,8 @@ void Intl::InitKeyMapper(bool on)
 	Language2->add(120, 110, 160, 30, 300);	// Secondary
 	fl_end_form();
 
+#if 0
 	int n = 0;
-
  	while (true)
 		if (!strlen(tex_babel[n]))
 			break;
@@ -290,7 +293,18 @@ void Intl::InitKeyMapper(bool on)
 			Language2->addto(tex_babel[n]);
 			++n;
 		}
-	
+#else
+	int n = 1;
+	// Default is not in the language map
+	Language->addto("default");
+	Language2->addto("default");
+	for (Languages::const_iterator cit = languages.begin();
+	     cit != languages.end(); ++cit) {
+		Language->addto((*cit).second.lang.c_str());
+		Language2->addto((*cit).second.lang.c_str());
+		++n;
+	}
+#endif
 	Language->addto(_("other..."));
 	Language2->addto(_("other..."));
 	otherkeymap = n + 1;

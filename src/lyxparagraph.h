@@ -178,6 +178,9 @@ public:
 			|| dhook->GetDepth() != GetDepth());
 	}
 
+	/// Check if the current paragraph is the last paragraph in a
+	/// proof environment
+	int GetEndLabel() const;
 
 	///
 	TextContainer text;
@@ -299,6 +302,8 @@ public:
 	LyXParagraph * PreviousBeforeFootnote();
 	///
 	LyXParagraph * LastPhysicalPar();
+	///
+	LyXParagraph const * LastPhysicalPar() const;
 	
 	///
 	LyXParagraph * FirstPhysicalPar();

@@ -40,6 +40,7 @@ Style Proof
   AlignPossible		Block, Left
   LabelType		Static
   LabelString		"Proof."
+  EndLabelType		Box
   
   # standard font definition
   Font

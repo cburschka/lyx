@@ -21,6 +21,7 @@
 #include "lyxrow.h"
 #include "Painter.h"
 #include "WorkArea.h"
+#include "bufferparams.h"
 
 using std::max;
 using std::min;
@@ -185,52 +186,19 @@ void LyXScreen::Draw(long  y)
 
 void LyXScreen::ShowCursor()
 {
-	if (cursor_visible) return;
-   
-	long x = text->cursor.x;
-	
-	long y1 = max(text->cursor.y -
-		      text->real_current_font.maxAscent() - first, 0L);
-	
-	long y2 = min(text->cursor.y +
-		      text->real_current_font.maxDescent() - first,
-		      long(owner.height()));
-
-	// Secure against very strange situations
-	if (y2 < y1) y2 = y1;
-
-	if (cursor_pixmap){
-		XFreePixmap(fl_display, cursor_pixmap);
-		cursor_pixmap = 0;
-	}
-   
-	if (y2 > 0 && y1 < owner.height()) {
-		cursor_pixmap_w = 1;
-		cursor_pixmap_h = y2 - y1 + 1;
-		cursor_pixmap_x = x;
-		cursor_pixmap_y = y1;
-		cursor_pixmap = 
-			XCreatePixmap(fl_display,
-				      fl_root,
-				      cursor_pixmap_w,
-				      cursor_pixmap_h,
-				      fl_get_visual_depth());
-		XCopyArea(fl_display,
-			  owner.getWin(),
-			  cursor_pixmap,
-			  gc_copy,
-			  owner.xpos() + cursor_pixmap_x,
-			  owner.ypos() + cursor_pixmap_y,
-			  cursor_pixmap_w, cursor_pixmap_h,
-			  0, 0);
-		XDrawLine(fl_display,
-			  owner.getWin(),
-			  gc_copy,
-			  x + owner.xpos(),
-			  y1 + owner.ypos(),
-			  x + owner.xpos(),
-			  y2 + owner.ypos());
-		cursor_visible = true;
+	if (!cursor_visible) {
+		Cursor_Shape shape = BAR_SHAPE;
+		if (text->real_current_font.getFontDirection()
+		    != text->parameters->getDocumentDirection())
+			if (text->real_current_font.getFontDirection()
+			    == LYX_DIR_LEFT_TO_RIGHT)
+				shape = L_SHAPE;
+			else
+				shape = REVERSED_L_SHAPE;
+		ShowManualCursor(text->cursor.x, text->cursor.y,
+				 text->real_current_font.maxAscent(),
+				 text->real_current_font.maxDescent(),
+				 shape);
 	}
 }
 
@@ -258,22 +226,40 @@ int LyXScreen::FitManualCursor(long /*x*/, long y, int asc, int desc)
 }
 
 
-void  LyXScreen::ShowManualCursor(long x, long y, int asc, int desc)
+void  LyXScreen::ShowManualCursor(long x, long y, int asc, int desc,
+				  Cursor_Shape shape)
 {
 	long y1 = max(y - first - asc, 0L);
 	long y2 = min(y - first + desc, long(owner.height()));
+
+	// Secure against very strange situations
+	if (y2 < y1) y2 = y1;
 
 	if (cursor_pixmap){
 		XFreePixmap(fl_display, cursor_pixmap);
 		cursor_pixmap = 0;
 	}
-		
+
 	if (y2 > 0 && y1 <
 	    owner.height()) {
-		cursor_pixmap_w = 1;
 		cursor_pixmap_h = y2 - y1 + 1;
-		cursor_pixmap_x = x,
-			cursor_pixmap_y = y1;
+		cursor_pixmap_y = y1;
+
+		switch(shape) {
+		case BAR_SHAPE:
+			cursor_pixmap_w = 1;
+			cursor_pixmap_x = x;
+			break;
+		case L_SHAPE:
+			cursor_pixmap_w = cursor_pixmap_h/3;
+			cursor_pixmap_x = x;
+			break;
+		case REVERSED_L_SHAPE:
+			cursor_pixmap_w = cursor_pixmap_h/3;
+			cursor_pixmap_x = x - cursor_pixmap_w + 1;
+			break;
+		}
+
 		cursor_pixmap = 
 			XCreatePixmap (fl_display,
 				       fl_root,
@@ -296,6 +282,21 @@ void  LyXScreen::ShowManualCursor(long x, long y, int asc, int desc)
 			  y1 + owner.ypos(),
 			  x + owner.xpos(),
 			  y2 + owner.ypos());
+		switch(shape) {
+		case BAR_SHAPE:
+			break;
+		case L_SHAPE:
+		case REVERSED_L_SHAPE:
+			int rectangle_h = (cursor_pixmap_h+10)/20;
+			XFillRectangle(fl_display,
+				       owner.getWin(),
+				       gc_copy,
+				       cursor_pixmap_x + owner.xpos(),
+				       y2 - rectangle_h + 1 + owner.ypos(),
+				       cursor_pixmap_w - 1, rectangle_h);
+			break;
+		}
+
 	}
 	cursor_visible = true;
 }

@@ -146,7 +146,19 @@ enum LYX_LABEL_TYPES {
 	LABEL_FIRST_COUNTER = LABEL_COUNTER_CHAPTER
 };
 
-
+enum LYX_END_LABEL_TYPES {
+	///
+	END_LABEL_NO_LABEL,
+	///
+	END_LABEL_BOX,
+	///
+	END_LABEL_FILLED_BOX,
+	///
+	END_LABEL_ENUM_FIRST = END_LABEL_NO_LABEL,
+	///
+	END_LABEL_ENUM_LAST = END_LABEL_FILLED_BOX
+};
+		
 /* Fix labels are printed flushright, manual labels flushleft. 
  * MARGIN_MANUAL and MARGIN_FIRST_DYNAMIC are *only* for LABEL_MANUAL,
  * MARGIN_DYNAMIC and MARGIN_STATIC are *not* for LABEL_MANUAL. 
@@ -181,6 +193,7 @@ public:
 	void readAlign(LyXLex &);
 	void readAlignPossible(LyXLex &);
 	void readLabelType(LyXLex &);
+	void readEndLabelType(LyXLex &);
 	void readMargin(LyXLex &);
 	void readLatexType(LyXLex &);
 	void readSpacing(LyXLex &);
@@ -267,6 +280,9 @@ public:
 
 	///
 	char labeltype; // add approp. type
+
+	///
+	char endlabeltype;
 
 	///
 	LYX_MARGIN_TYPE margintype;

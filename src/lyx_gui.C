@@ -36,6 +36,7 @@
 #include "lyx_gui_misc.h"
 #include "lyxlookup.h"
 #include "bufferlist.h"
+#include "language.h"
 
 #ifdef TWO_COLOR_ICONS
 #include "banner_bw.xbm"
@@ -226,15 +227,17 @@ void LyXGUI::init()
 		return;
 
 	create_forms();
-	
+
+	if (lyxrc->font_norm_menu.empty())
+		lyxrc->font_norm_menu = lyxrc->font_norm;
 	// Set the font name for popups and menus
         string menufontname = lyxrc->menu_font_name 
 		               + "-*-*-*-?-*-*-*-*-"  
-		               + lyxrc->font_norm; 
+		               + lyxrc->font_norm_menu;
 		// "?" means "scale that font"
         string popupfontname = lyxrc->popup_font_name 
 		               + "-*-*-*-?-*-*-*-*-"  
-		               + lyxrc->font_norm; 
+		               + lyxrc->font_norm_menu;
 
         if (fl_set_font_name(FL_BOLD_STYLE, menufontname.c_str()) < 0)
                 lyxerr << "Could not set menu font to "
@@ -405,15 +408,24 @@ void LyXGUI::create_forms()
 	combo_language->add(ob->x, ob->y, ob->w, ob->h, 250);
 	combo_language->shortcut("#G", 1);
 	fl_end_form();
+#if 0
 	int n; // declared here because DEC cxx does not like multiple
 	       // declarations of variables in for() loops (JMarc)
         for (n = 0; tex_babel[n][0]; ++n) {
 	    combo_language->addto(tex_babel[n]);
 	}
+#else
+	// "default" is not part of the languages array any more.
+	combo_language->addto("default");
+	for(Languages::const_iterator cit = languages.begin();
+	    cit != languages.end(); ++cit) {
+		combo_language->addto((*cit).second.lang.c_str());
+	}
+#endif
 
 	// not really necessary, but we can do it anyway.
 	fl_addto_choice(fd_form_document->choice_fontsize, "default|10|11|12");
-	
+	int n;
         for (n = 0; tex_fonts[n][0]; ++n) {
 	    fl_addto_choice(fd_form_document->choice_fonts, tex_fonts[n]);
 	}

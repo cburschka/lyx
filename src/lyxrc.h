@@ -158,6 +158,8 @@ public:
 	///
 	string font_norm;
 	///
+	string font_norm_menu;
+	///
 	unsigned int autosave;
 	///
 	string fax_command;
@@ -201,6 +203,17 @@ public:
 	string lyxpipes;
 	///
 	string date_insert_format;
+	///
+	string language_package;
+	///
+	bool language_command_begin;
+	///
+	bool language_command_end;
+	///
+	string language_command_rtl;
+	///
+	string language_command_ltr;
+
 	///
 	bool rtl_support;
 	///

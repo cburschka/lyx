@@ -81,6 +81,7 @@ enum LyXRCTags {
 	RC_SCREEN_FONT_MENU,
 	RC_SCREEN_FONT_POPUP,
 	RC_SCREEN_FONT_ENCODING,
+	RC_SCREEN_FONT_ENCODING_MENU,
 	RC_AUTOSAVE,
 	RC_SGML_EXTRA_OPTIONS,
 	RC_DOCUMENTPATH,
@@ -129,6 +130,11 @@ enum LyXRCTags {
 	RC_HTML_COMMAND,
 	RC_MAKE_BACKUP,
 	RC_RTL_SUPPORT,
+	RC_LANGUAGE_PACKAGE,
+	RC_LANGUAGE_COMMAND_BEGIN,
+	RC_LANGUAGE_COMMAND_END,
+	RC_LANGUAGE_COMMAND_RTL,
+	RC_LANGUAGE_COMMAND_LTR,
 	RC_PDFLATEX_COMMAND,
 	RC_PDF_MODE,
 	RC_VIEWPDF_COMMAND,
@@ -174,6 +180,11 @@ keyword_item lyxrcTags[] = {
 	{ "\\kbmap", RC_KBMAP },
 	{ "\\kbmap_primary", RC_KBMAP_PRIMARY },
 	{ "\\kbmap_secondary", RC_KBMAP_SECONDARY },
+	{ "\\language_command_begin", RC_LANGUAGE_COMMAND_BEGIN },
+	{ "\\language_command_end", RC_LANGUAGE_COMMAND_END },
+	{ "\\language_command_ltr", RC_LANGUAGE_COMMAND_LTR },
+	{ "\\language_command_rtl", RC_LANGUAGE_COMMAND_RTL },
+	{ "\\language_package", RC_LANGUAGE_PACKAGE },
 	{ "\\lastfiles", RC_LASTFILES },
 	{ "\\latex_command", RC_LATEX_COMMAND },
         { "\\literate_command", RC_LITERATE_COMMAND },
@@ -209,6 +220,7 @@ keyword_item lyxrcTags[] = {
 	{ "\\rtl", RC_RTL_SUPPORT },
 	{ "\\screen_dpi", RC_SCREEN_DPI },
 	{ "\\screen_font_encoding", RC_SCREEN_FONT_ENCODING },
+	{ "\\screen_font_encoding_menu", RC_SCREEN_FONT_ENCODING_MENU },
 	{ "\\screen_font_menu", RC_SCREEN_FONT_MENU },
 	{ "\\screen_font_popup", RC_SCREEN_FONT_POPUP },
 	{ "\\screen_font_roman", RC_SCREEN_FONT_ROMAN },
@@ -312,6 +324,7 @@ LyXRC::LyXRC()
 	menu_font_name = "-*-helvetica-bold-r";
 	popup_font_name = "-*-helvetica-medium-r";
 	font_norm = "iso8859-1";
+	font_norm_menu = "";
 	autosave = 300;
 	auto_region_delete = true;
 	ascii_linelen = 75;
@@ -330,6 +343,13 @@ LyXRC::LyXRC()
 	use_kbmap = false;
 	hasBindFile = false;
 	rtl_support = false;
+	language_package = "\\usepackage{babel}";
+	language_command_begin = false;
+	language_command_end = false;
+	language_command_rtl = "\\sethebrew";
+	language_command_ltr = "\\unsethebrew";
+	defaultKeyBindings();
+	///
 	date_insert_format = "%A, %e %B %Y";
 	show_banner = true;
 	//
@@ -780,7 +800,12 @@ int LyXRC::read(string const & filename)
 			if (lexrc.next())
 				font_norm = lexrc.GetString();
 			break;
-			
+
+		case RC_SCREEN_FONT_ENCODING_MENU:
+			if (lexrc.next())
+				font_norm_menu = lexrc.GetString();
+			break;
+
 		case RC_AUTOREGIONDELETE:
 			// Auto region delete defaults to true
 		        if (lexrc.next())
@@ -920,6 +945,26 @@ int LyXRC::read(string const & filename)
 		case RC_DATE_INSERT_FORMAT:
 			if (lexrc.next())
 				date_insert_format = lexrc.GetString();
+			break;
+		case RC_LANGUAGE_PACKAGE:
+			if (lexrc.next())
+				language_package = lexrc.GetString();
+			break;
+		case RC_LANGUAGE_COMMAND_BEGIN:
+			if (lexrc.next())
+				language_command_begin = lexrc.GetBool();
+			break;
+		case RC_LANGUAGE_COMMAND_END:
+			if (lexrc.next())
+				language_command_end = lexrc.GetBool();
+			break;
+		case RC_LANGUAGE_COMMAND_RTL:
+			if (lexrc.next())
+				language_command_rtl = lexrc.GetString();
+			break;
+		case RC_LANGUAGE_COMMAND_LTR:
+			if (lexrc.next())
+				language_command_ltr = lexrc.GetString();
 			break;
 		case RC_RTL_SUPPORT:
 			if (lexrc.next())
@@ -1173,6 +1218,9 @@ void LyXRC::output(ostream & os) const
 		os << "\\screen_font_popup \"" << popup_font_name << "\"\n";
 	case RC_SCREEN_FONT_ENCODING:
 		os << "\\screen_font_encoding \"" << font_norm << "\"\n";
+	case RC_SCREEN_FONT_ENCODING_MENU:
+		os << "\\screen_font_encoding_menu \"" << font_norm_menu
+		   << "\"\n";
 	case RC_SCREEN_FONT_SCALABLE:
 		os << "\\screen_font_scalable " << tostr(use_scalable_fonts)
 		   << "\n";
@@ -1218,6 +1266,20 @@ void LyXRC::output(ostream & os) const
 		os << "\\escape_chars \"" << isp_esc_chars << "\"\n";
 	case RC_RTL_SUPPORT:
 		os << "\\rtl " << tostr(rtl_support) << "\n";
+	case RC_LANGUAGE_COMMAND_BEGIN:
+		os << "\\language_command_begin " 
+		   << tostr(language_command_begin) << "\n";
+	case RC_LANGUAGE_COMMAND_END:
+		os << "\\language_command_end " 
+		   << tostr(language_command_end) << "\n";
+	case RC_LANGUAGE_PACKAGE:
+		os << "\\language_package \"" << language_package << "\"\n";
+	case RC_LANGUAGE_COMMAND_LTR:
+		os << "\\language_command_ltr \"" << language_command_ltr
+		   << "\"\n";
+	case RC_LANGUAGE_COMMAND_RTL:
+		os << "\\language_command_rtl \"" << language_command_rtl
+		   << "\"\n";
 	case RC_MAKE_BACKUP:
 		os << "\\make_backup " << tostr(make_backup) << "\n";
 	case RC_DATE_INSERT_FORMAT:

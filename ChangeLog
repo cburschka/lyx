@@ -1,5 +1,62 @@
 2000-03-10  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
+	* src/bufferparams.C (readLanguage): use the new language map
+
+	* src/intl.C (InitKeyMapper): use the new language map
+
+	* src/lyx_gui.C (create_forms): use the new language map
+
+	* src/language.[Ch]: New files. Used for holding the information
+	about each language. Now! Use this new language map enhance it and
+	make it really usable for our needs. 
+
+2000-03-09 Dekel Tsur <dekel@math.tau.ac.il>
+	
+	* screen.C (ShowCursor): Removed duplicate code.
+	(ShowManualCursor): Support for 3 cursor shapes: Bar (default),
+	L (LTR text in RTL document), and reversed-L (RTL text in LTR document)
+	
+	* src/text.C (NextBreakPoint,Fill): Moved declaration of left_margin
+
+	* src/lyxtext.h
+	* src/text.C  Added TransformChar method. Used for rendering Arabic
+	text correctly (change the glyphs of the letter according to the
+	position in the word)
+
+	* src/buffer.C
+	* src/paragraph.C
+	* src/lyxrc.h
+	* src/lyxrc.C  Added lyxrc command {language_command_begin,
+	language_command_end,language_command_ltr,language_command_rtl,
+	language_package} which allows the use of either arabtex or Omega
+	for Arabic
+
+	* src/lyx_gui.C (init)
+	* src/lyxrc.h
+	* src/lyxrc.C Added lyxrc command screen_font_encoding_menu. Allows
+	to use encoding for menu fonts which is different than the encoding
+	for screen fonts
+
+	* src/buffer.C (makeLaTeXFile): If params.language = "default",
+	do not load the babel package.
+	To write an English document with Hebrew/Arabic, change the document
+	language to "english".
+
+	* src/text2.C (SetCounter): Fixed appendix labels for Hebrew document
+	(alphaCounter): changed to return char
+	(loweralphaCounter, hebrewCounter, romanCounter): New functions
+
+	* lib/lyxrc.example  Added examples for Hebrew/Arabic
+
+	* src/layout.h
+	* src/layout.C  Added layout command endlabeltype
+
+	* src/paragraph.C Added GetEndLabel(),LastPhysicalPar() const
+
+	* src/text.C (GetVisibleRow): Draw a box at the end of proof layout
+
+2000-03-10  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
 	* src/mathed/math_delim.C (search_deco): return a
 	math_deco_struct* instead of index.
 

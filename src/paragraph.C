@@ -1202,9 +1202,20 @@ LyXParagraph * LyXParagraph::LastPhysicalPar()
 		tmp = tmp->NextAfterFootnote();
    
 	return tmp;
-   
 }
 
+LyXParagraph const * LyXParagraph::LastPhysicalPar() const
+{
+	if (footnoteflag != LyXParagraph::NO_FOOTNOTE)
+		return this;
+   
+	LyXParagraph const * tmp = this;
+	while (tmp->next
+	       && tmp->next->footnoteflag != LyXParagraph::NO_FOOTNOTE)
+		tmp = tmp->NextAfterFootnote();
+   
+	return tmp;  
+}
 
 LyXParagraph * LyXParagraph::FirstPhysicalPar()
 {
@@ -1567,6 +1578,34 @@ void LyXParagraph::CloseFootnote(LyXParagraph::size_type pos)
 	}
 }
 
+int LyXParagraph::GetEndLabel() const
+{
+	LyXParagraph const * par = this;
+	int par_depth = GetDepth();
+	while (par) {
+		LyXTextClass::LayoutList::size_type layout = par->GetLayout();
+		int endlabeltype =
+			textclasslist.Style(current_view->buffer()->params.textclass,
+					    layout).endlabeltype;
+		if (endlabeltype != END_LABEL_NO_LABEL) {
+			LyXParagraph const * last = LastPhysicalPar();
+			if (!last || !last->next)
+				return endlabeltype;
+
+			int next_depth = last->next->GetDepth();
+			if (par_depth > next_depth ||
+			    (par_depth == next_depth && layout != last->next->GetLayout() ))
+				return endlabeltype;
+			break;
+		}
+		if (par_depth == 0)
+			break;
+		par = par->DepthHook(par_depth - 1);
+		if (par)
+			par_depth = par->GetDepth();
+	}
+	return END_LABEL_NO_LABEL;
+}
 
 LyXTextClass::size_type LyXParagraph::GetLayout() const
 {
@@ -1916,9 +1955,9 @@ LyXParagraph * LyXParagraph::TeXOnePar(ostream & os, TexRow & texrow,
 		current_view->buffer()->params.getDocumentDirection();
 	if (direction != global_direction) {
 		if (direction == LYX_DIR_LEFT_TO_RIGHT)
-			os << "\\unsethebrew\n";
+			os << lyxrc->language_command_ltr << '\n';
 		else
-			os << "\\sethebrew\n";
+			os << lyxrc->language_command_rtl << '\n';
 		texrow.newline();
 	}
 	
@@ -1981,9 +2020,9 @@ LyXParagraph * LyXParagraph::TeXOnePar(ostream & os, TexRow & texrow,
 
 	if (direction != global_direction)
 		if (direction == LYX_DIR_LEFT_TO_RIGHT)
-			os << "\\sethebrew";
+			os << '\n' << lyxrc->language_command_rtl;
 		else
-			os << "\\unsethebrew";
+			os << '\n' << lyxrc->language_command_ltr;
 	
 	switch (style.latextype) {
 	case LATEX_ITEM_ENVIRONMENT:
@@ -3755,9 +3794,9 @@ LyXParagraph * LyXParagraph::TeXFootnote(ostream & os, TexRow & texrow,
  	LyXDirection direction = getParDirection();
  	if (direction != par_direction) {
  		if (direction == LYX_DIR_LEFT_TO_RIGHT)
- 			os << "\\unsethebrew\n";
+ 			os << lyxrc->language_command_ltr << '\n';
  		else
- 			os << "\\sethebrew\n";
+ 			os << lyxrc->language_command_rtl << '\n';
  		texrow.newline();
  	}
 

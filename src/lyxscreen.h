@@ -32,6 +32,16 @@ class WorkArea;
  */
 class LyXScreen {
 public:
+
+	enum Cursor_Shape {
+		///
+		BAR_SHAPE,
+		///
+		L_SHAPE,
+		///
+		REVERSED_L_SHAPE
+	};
+
 	///
 	LyXScreen(WorkArea &, LyXText * text_ptr);
 
@@ -53,7 +63,8 @@ public:
 	///
 	void CursorToggle();
 	///
-	void ShowManualCursor(long x, long y, int asc, int desc);
+	void ShowManualCursor(long x, long y, int asc, int desc,
+			      Cursor_Shape shape);
 	/// returns 1 if first has changed, otherwise 0
 	int  FitManualCursor(long, long, int, int);
 	///

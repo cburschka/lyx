@@ -25,7 +25,7 @@ extern char const * string_align[];
 // 27 times in the object file. (Asger)
 
 ///
-extern char const * tex_babel[];
+//extern char const * tex_babel[];
 
 ///
 extern char const * tex_graphics[];

@@ -429,12 +429,14 @@ bool Buffer::parseSingleLyXformat2Token(LyXLex & lex, LyXParagraph *& par,
 	} else if (token == "\\defskip") {
 		lex.nextToken();
 		params.defskip = VSpace(lex.GetString());
+#if 0
 	} else if (token == "\\no_isolatin1") { // obsolete
 		lex.nextToken();
 	} else if (token == "\\no_babel") { // obsolete
 		lex.nextToken();
 	} else if (token == "\\no_epsfig") { // obsolete
 		lex.nextToken();
+#endif
 	} else if (token == "\\epsfig") { // obsolete
 		// Indeed it is obsolete, but we HAVE to be backwards
 		// compatible until 0.14, because otherwise all figures
@@ -1708,8 +1710,7 @@ void Buffer::makeLaTeXFile(string const & fname,
 			else if (lyxrc->rtl_support)
 				options += "hebrew,";
 			options += params.language + ',';
-		} else if (lyxrc->rtl_support)
-			options += "hebrew,english,";
+		}
 
 		// the user-defined options
 		if (!params.options.empty()) {
@@ -1864,8 +1865,8 @@ void Buffer::makeLaTeXFile(string const & fname,
 
 		// We try to load babel late, in case it interferes
 		// with other packages.
-		if (params.language != "default" || lyxrc->rtl_support ) {
-			ofs << "\\usepackage{babel}\n";
+		if (params.language != "default") {
+			ofs << lyxrc->language_package;
 			texrow.newline();
 		}
 
@@ -1990,6 +1991,9 @@ void Buffer::makeLaTeXFile(string const & fname,
 		texrow.newline();
 	} // only_body
 	lyxerr.debug() << "preamble finished, now the body." << endl;
+	if (lyxrc->language_command_begin &&
+	    params.getDocumentDirection() == LYX_DIR_RIGHT_TO_LEFT)
+		ofs << lyxrc->language_command_rtl;
 	
 	bool was_title = false;
 	bool already_title = false;
@@ -2080,6 +2084,10 @@ void Buffer::makeLaTeXFile(string const & fname,
 		ofs << "\\maketitle\n";
 		texrow.newline();
 	}
+
+	if (lyxrc->language_command_end &&
+	    params.getDocumentDirection() == LYX_DIR_RIGHT_TO_LEFT)
+		ofs << lyxrc->language_command_ltr;
 
 	if (!only_body) {
 		ofs << "\\end{document}\n";
@@ -2694,6 +2702,10 @@ void Buffer::SimpleLinuxDocOnePar(ostream & os, LyXParagraph * par,
 		}
 		font1 = font2;
 	}
+
+	if (lyxrc->language_command_end &&
+	    params.getDocumentDirection() == LYX_DIR_RIGHT_TO_LEFT)
+		os << lyxrc->language_command_ltr;
 
 	/* needed if there is an optional argument but no contents */
 	if (main_body > 0 && main_body == par->size()) {

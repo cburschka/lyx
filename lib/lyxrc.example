@@ -588,3 +588,58 @@
 # details of the format.
 #
 #\date_insert_format "%A, %e. %B %Y"
+
+#
+# HEBREW SUPPORT SECTION ####################################################
+#
+
+# To enable the Hebrew support, uncommnet the following lines:
+#\rtl true
+#\kbmap true
+#\kbmap_primary null
+#\kbmap_secondary hebrew
+#\latex_command elatex
+#\font_encoding default
+
+# You also need to bind a key for switching between Hebrew and English.
+# For example,
+#\bind "F12" "font-rtl"
+
+# Finally, you need to select iso8859-8 font encoding, and select screen fonts
+# (below are the default fonts. You need to replace them by Hebrew fonts)
+#\screen_font_encoding iso8859-8
+#\screen_font_roman "-*-times"
+#\screen_font_sans "-*-helvetica"
+#\screen_font_typewriter "-*-courier"
+#\screen_font_popup "-*-helvetica-medium-r"
+#\screen_font_menu "-*-helvetica-bold-r"
+
+#
+# ARABIC SUPPORT SECTION ####################################################
+#
+
+# To enable the Arabic support, uncommnet the following lines:
+#\rtl true
+#\kbmap true
+#\kbmap_primary null
+#\kbmap_secondary arabic
+
+# You also need to bind a key for switching between Arabic and English.
+# For example,
+#\bind "F12" "font-rtl"
+
+# If you use arabtex, uncomment the following lines
+#\language_command_begin true
+#\language_command_end true
+#\language_command_rtl "\begin{arabtext}"
+#\language_command_ltr "\end{arabtext}"
+#\language_package "\usepackage{arabtex,iso88596}\setcode{iso8859-6}"
+
+
+# Finally, you need to select iso8859-6.8x font encoding,
+# and select screen fonts.
+# iso8859-6.8x fonts can be found at
+#   http://www.langbox.com/AraMosaic/mozilla/fontXFE/
+#\screen_font_encoding iso8859-6.8x
+#\screen_font_encoding_menu iso8859-1
+#\screen_font_roman "-*-naskhi"

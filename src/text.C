@@ -44,6 +44,94 @@ extern int bibitemMaxWidth(Painter &, LyXFont const &);
 
 #define FIX_DOUBLE_SPACE 1
 
+static int iso885968x[] = {
+	0xbc,	// 0xa8 = fathatan
+	0xbd,	// 0xa9 = dammatan
+	0xbe,	// 0xaa = kasratan
+	0xdb,	// 0xab = fatha
+	0xdc,	// 0xac = damma
+	0xdd,	// 0xad = kasra
+	0xde,	// 0xae = shadda
+	0xdf,	// 0xaf = sukun
+
+	0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0, // 0xb0-0xbf
+
+	0,	// 0xc0	
+	0xc1,	// 0xc1 = hamza
+	0xc2,	// 0xc2 = ligature madda
+	0xc3,	// 0xc3 = ligature hamza on alef
+	0xc4,	// 0xc4 = ligature hamza on waw
+	0xc5,	// 0xc5 = ligature hamza under alef
+	0xc0,	// 0xc6 = ligature hamza on ya 
+	0xc7,	// 0xc7 = alef
+	0xeb,	// 0xc8 = baa 
+	0xc9,	// 0xc9 = taa marbuta
+	0xec,	// 0xca = taa
+	0xed,	// 0xcb = thaa
+	0xee,	// 0xcc = jeem
+	0xef,	// 0xcd = haa
+	0xf0,	// 0xce = khaa
+	0xcf,	// 0xcf = dal
+
+	0xd0,	// 0xd0 = thal
+	0xd1,	// 0xd1 = ra
+	0xd2,	// 0xd2 = zain
+	0xf1,	// 0xd3 = seen
+	0xf2,	// 0xd4 = sheen
+	0xf3,	// 0xd5 = sad
+	0xf4,	// 0xd6 = dad
+	0xd7,	// 0xd7 = tah
+	0xd8,	// 0xd8 = zah
+	0xf5,	// 0xd9 = ain
+	0xf6,	// 0xda = ghain
+	0,0,0,0,0, // 0xdb- 0xdf
+
+	0,	// 0xe0
+	0xf7,	// 0xe1 = fa
+	0xf8,	// 0xe2 = qaf
+	0xf9,	// 0xe3 = kaf
+	0xfa,	// 0xe4 = lam
+	0xfb,	// 0xe5 = meem
+	0xfc,	// 0xe6 = noon
+	0xfd,	// 0xe7 = ha
+	0xe8,	// 0xe8 = waw
+	0xe9,	// 0xe9 = alef maksura
+	0xfe	// 0xea = ya
+};
+
+bool is_arabic(unsigned char c)
+{
+	return 0xa8 <= c && c <= 0xea && iso885968x[c-0xa8];
+}
+
+unsigned char LyXText::TransformChar(unsigned char c, Letter_Form form) const
+{
+	if (is_arabic(c) && 
+	    (form == FORM_INITIAL || form == FORM_MEDIAL) )
+		return iso885968x[c-0xa8];
+	else
+		return c;
+}
+
+unsigned char LyXText::TransformChar(unsigned char c, LyXParagraph * par,
+			LyXParagraph::size_type pos) const
+{
+	if (!is_arabic(c))
+		return c;
+
+	bool not_first = (pos > 0 && is_arabic(par->GetChar(pos-1)));
+	if (pos < par->Last()-1 && is_arabic(par->GetChar(pos+1)))
+		if (not_first)
+			return TransformChar(c,FORM_MEDIAL);
+		else
+			return TransformChar(c,FORM_INITIAL);
+	else
+		if (not_first)
+			return TransformChar(c,FORM_FINAL);
+		else
+			return TransformChar(c,FORM_ISOLATED);
+}
+
 // This is the comments that some of the warnings below refers to.
 // There are some issues in this file and I don't think they are
 // really related to the FIX_DOUBLE_SPACE patch. I'd rather think that
@@ -84,6 +172,8 @@ int LyXText::SingleWidth(LyXParagraph * par,
 
 	// The most common case is handled first (Asger)
 	if (IsPrintable(c)) {
+		if (lyxrc->rtl_support && lyxrc->font_norm == "iso8859-6.8x")
+			c = TransformChar(c, par, pos);
 		return font.width(c);
 
 	} else if (IsHfillChar(c)) {
@@ -416,6 +506,9 @@ void LyXText::draw(Row const * row,
 	// So IMHO we should go with the easier and clearer implementation.
 	// And even if 1024 is a large number here it might overflow, string
 	// will only overflow if the machine is out of memory...
+	bool do_transform = (lyxrc->rtl_support && lyxrc->font_norm == "iso8859-6.8x");
+	if (do_transform)
+		c = TransformChar(c, row->par, pos);
 	static string textstring;
 	textstring = c;
 	++vpos;
@@ -426,6 +519,8 @@ void LyXText::draw(Row const * row,
 	       (pos = vis2log(vpos)) >= 0
 	       && static_cast<unsigned char>(c = row->par->GetChar(pos)) > ' '
 	       && font2 == GetFont(row->par, pos)) {
+		if (do_transform)
+			c = TransformChar(c, row->par, pos);
 		textstring += c;
 		++vpos;
 	}
@@ -816,7 +911,6 @@ LyXText::NextBreakPoint(Row const * row, int width) const
 	// position of the last possible breakpoint 
 	// -1 isn't a suitable value, but a flag
 	LyXParagraph::size_type last_separator = -1;
-	int left_margin = LabelEnd(row);
 	width -= RightMargin(row);
 	
 	LyXParagraph::size_type main_body = BeginningOfMainBody(par);
@@ -882,6 +976,7 @@ LyXText::NextBreakPoint(Row const * row, int width) const
 				x += GetFont(par, -2).stringWidth(layout.labelsep);
 				if (par->IsLineSeparator(i - 1))
 					x-= SingleWidth(par, i - 1);
+				int left_margin = LabelEnd(row);
 				if (x < left_margin)
 					x = left_margin;
 			}
@@ -935,9 +1030,7 @@ int LyXText::Fill(Row const * row, int paper_width) const
 			   * this point. */ 
 	}
 	/* table stuff -- end*/ 
-	
-	int left_margin = LabelEnd(row);
-	
+		
 	// if the row ends with newline, this newline will not be relevant
 	//if (last >= 0 && row->par->IsNewline(last))
 	//	--last;
@@ -969,6 +1062,7 @@ int LyXText::Fill(Row const * row, int paper_width) const
 				stringWidth(layout.labelsep);
 			if (row->par->IsLineSeparator(i - 1))
 				w -= SingleWidth(row->par, i - 1);
+			int left_margin = LabelEnd(row);
 			if (w < left_margin)
 				w = left_margin;
 		}
@@ -979,6 +1073,7 @@ int LyXText::Fill(Row const * row, int paper_width) const
 		w += GetFont(row->par, -2).stringWidth(layout.labelsep);
 		if (last >= 0 && row->par->IsLineSeparator(last))
 			w -= SingleWidth(row->par, last);
+		int left_margin = LabelEnd(row);
 		if (w < left_margin)
 			w = left_margin;
 	}
@@ -3948,6 +4043,40 @@ void LyXText::GetVisibleRow(int offset,
 				  LColor::topline, Painter::line_solid,
 				  Painter::line_thick);
 			y_bottom -= GetFont(par, par->Last() - 1).ascent('x');
+		}
+
+		// draw an endlabel
+		int endlabel = row_ptr->par->GetEndLabel();
+		if (endlabel == END_LABEL_BOX ||
+		    endlabel == END_LABEL_FILLED_BOX) {
+			LyXFont font = GetFont(row_ptr->par, RowLast(row_ptr));
+			int size = int(0.75*font.maxAscent());
+			int y = (offset + row_ptr->baseline) - size;
+			int x = (direction == LYX_DIR_LEFT_TO_RIGHT)
+				? paperwidth - LYX_PAPER_MARGIN - size
+				: LYX_PAPER_MARGIN;
+			if (row_ptr->par->footnoteflag == LyXParagraph::OPEN_FOOTNOTE)
+				if (direction == LYX_DIR_LEFT_TO_RIGHT)
+					x -= LYX_PAPER_MARGIN/2;
+				else {
+					LyXFont font(LyXFont::ALL_SANE);
+					font.setSize(LyXFont::SIZE_SMALL);
+					x += font.textWidth("Mwide-figM", 10);
+				}
+			if (row_ptr->fill <= size)
+				x += (size - row_ptr->fill + 1) * direction;
+			if (endlabel == END_LABEL_BOX) {
+				pain.line(x, y, x, y + size,
+					  LColor::eolmarker);
+				pain.line(x + size, y, x + size , y + size,
+					  LColor::eolmarker);
+				pain.line(x, y, x + size, y,
+					  LColor::eolmarker);
+				pain.line(x, y + size, x + size, y + size,
+					  LColor::eolmarker);
+			} else
+				pain.fillRectangle(x, y, size, size,
+						   LColor::eolmarker);
 		}
 	}
 	

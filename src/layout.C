@@ -74,7 +74,8 @@ enum LayoutTags {
 	LT_LABELSEP, 
 	LT_LABELSTRING, 
 	LT_LABELSTRING_APPENDIX, 
-	LT_LABELTYPE, 
+	LT_LABELTYPE,
+	LT_ENDLABELTYPE,
 	LT_LATEXNAME, 
 	LT_LATEXPARAM, 
 	LT_LATEXTYPE, 
@@ -102,6 +103,7 @@ static keyword_item layoutTags[] = {
 	{ "bottomsep",			LT_BOTTOMSEP },
 	{ "copystyle",                  LT_COPYSTYLE },
 	{ "end",			LT_END },
+	{ "endlabeltype",             	LT_ENDLABELTYPE },
 	{ "fill_bottom",		LT_FILL_BOTTOM },
 	{ "fill_top",			LT_FILL_TOP },
 	{ "font",                  	LT_FONT },
@@ -161,6 +163,7 @@ LyXLayout::LyXLayout ()
 	align = LYX_ALIGN_BLOCK;
 	alignpossible = LYX_ALIGN_BLOCK;
 	labeltype = LABEL_NO_LABEL;
+	endlabeltype = END_LABEL_NO_LABEL;
 	// Should or should not. That is the question.
 	// spacing.set(Spacing::OneHalf);
 	fill_top = false;
@@ -181,6 +184,7 @@ bool LyXLayout::Read (LyXLex & lexrc, LyXTextClass const & tclass)
 		{ "bottomsep",			LT_BOTTOMSEP },
 		{ "copystyle",                  LT_COPYSTYLE },
 		{ "end",			LT_END },
+		{ "endlabeltype",             	LT_ENDLABELTYPE },
 		{ "fill_bottom",		LT_FILL_BOTTOM },
 		{ "fill_top",			LT_FILL_TOP },
 		{ "font",                  	LT_FONT },
@@ -321,6 +325,10 @@ bool LyXLayout::Read (LyXLex & lexrc, LyXTextClass const & tclass)
 
 		case LT_LABELTYPE:
 			readLabelType(lexrc);
+			break;
+
+		case LT_ENDLABELTYPE:
+			readEndLabelType(lexrc);
 			break;
 			
 		case LT_LEFTMARGIN:	// left margin type
@@ -658,6 +666,32 @@ void LyXLayout::readLabelType(LyXLex & lexrc)
 	}
 }
 
+static keyword_item endlabelTypeTags[] = {
+	{ "box",	END_LABEL_BOX },
+	{ "filled_box",	END_LABEL_FILLED_BOX },
+	{ "no_label",	END_LABEL_NO_LABEL }
+};
+
+void LyXLayout::readEndLabelType(LyXLex & lexrc)
+{
+	pushpophelper pph(lexrc, endlabelTypeTags,
+			  END_LABEL_ENUM_LAST-END_LABEL_ENUM_FIRST+1);
+	int le = lexrc.lex();
+	switch(le) {
+	case LyXLex::LEX_UNDEF:
+		lexrc.printError("Unknown labeltype tag `$$Token'");
+		break;
+	case END_LABEL_BOX:
+	case END_LABEL_FILLED_BOX:
+	case END_LABEL_NO_LABEL:
+		endlabeltype = static_cast<LYX_END_LABEL_TYPES>(le);
+		break;
+	default:
+		lyxerr << "Unhandled value " << le
+		       << " in LyXLayout::readEndLabelType." << endl;
+		break;
+	}
+}
 
 #if 0
 static keyword_item marginTags[] = {

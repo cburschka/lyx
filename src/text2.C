@@ -1347,17 +1347,48 @@ void LyXText::SetParagraphExtraOpt(int type,
 }
 
 
-static
-string alphaCounter(int n) {
-	if (n != 0) {
-		if (n > 'Z')
-			return "??";
-		char result[2] = { 'A' + n - 1, 0 };
-		return result;
-	}
-	return "";
+char loweralphaCounter(int n)
+{
+	if (n < 1 || n > 26)
+		return '?';
+	else
+		return 'a' + n - 1;
 }
 
+char alphaCounter(int n)
+{
+	if (n < 1 || n > 26)
+		return '?';
+	else
+		return 'A' + n - 1;
+}
+
+char hebrewCounter(int n)
+{
+	static const char hebrew[22] = {
+		'à', 'á', 'â', 'ã', 'ä', 'å', 'æ', 'ç', 'è',
+		'é', 'ë', 'ì', 'î', 'ð', 'ñ', 'ò', 'ô', 'ö', 
+		'÷', 'ø', 'ù', 'ú'
+	};
+	if (n < 1 || n > 22)
+		return '?';
+	else
+		return hebrew[n-1];
+}
+
+static char const * romanCounter(int n)
+{
+	static char const * roman[20] = {
+		"i",   "ii",  "iii", "iv", "v",
+		"vi",  "vii", "viii", "ix", "x",
+		"xi",  "xii", "xiii", "xiv", "xv",
+		"xvi", "xvii", "xviii", "xix", "xx"
+	};
+	if (n < 1 || n > 20)
+		return "??";
+	else
+		return roman[n-1];
+}
 
 // set the counter of a paragraph. This includes the labels
 void LyXText::SetCounter(LyXParagraph * par) const
@@ -1544,28 +1575,51 @@ void LyXText::SetCounter(LyXParagraph * par) const
 			} else { // appendix
 				switch (2 * LABEL_FIRST_COUNTER - textclass.maxcounter() + i) {
 				case LABEL_COUNTER_CHAPTER:
-					s << alphaCounter(par->getCounter(i));
+					if (par->getParDirection() == LYX_DIR_LEFT_TO_RIGHT)
+						s << alphaCounter(par->getCounter(i));
+					else
+						s << hebrewCounter(par->getCounter(i));
 					break;
 				case LABEL_COUNTER_SECTION:
-					s << alphaCounter(par->getCounter(i - 1)) << '.'
+					if (par->getParDirection() == LYX_DIR_LEFT_TO_RIGHT)
+						s << alphaCounter(par->getCounter(i - 1));
+					else
+						s << hebrewCounter(par->getCounter(i - 1));
+
+					s << '.'
 					  << par->getCounter(i);
 
 					break;
 				case LABEL_COUNTER_SUBSECTION:
-					s << alphaCounter(par->getCounter(i - 2)) << '.'
+					if (par->getParDirection() == LYX_DIR_LEFT_TO_RIGHT)
+						s << alphaCounter(par->getCounter(i - 2));
+					else
+						s << hebrewCounter(par->getCounter(i - 2));
+
+					s << '.'
 					  << par->getCounter(i-1) << '.'
 					  << par->getCounter(i);
 
 					break;
 				case LABEL_COUNTER_SUBSUBSECTION:
-					s << alphaCounter(par->getCounter(i-3)) << '.'
+					if (par->getParDirection() == LYX_DIR_LEFT_TO_RIGHT)
+						s << alphaCounter(par->getCounter(i-3));
+					else
+						s << hebrewCounter(par->getCounter(i-3));
+
+					s << '.'
 					  << par->getCounter(i-2) << '.'
 					  << par->getCounter(i-1) << '.'
 					  << par->getCounter(i);
 
 					break;
 				case LABEL_COUNTER_PARAGRAPH:
-					s << alphaCounter(par->getCounter(i-4)) << '.'
+					if (par->getParDirection() == LYX_DIR_LEFT_TO_RIGHT)
+						s << alphaCounter(par->getCounter(i-4));
+					else
+						s << hebrewCounter(par->getCounter(i-4));
+
+					s << '.'
 					  << par->getCounter(i-3) << '.'
 					  << par->getCounter(i-2) << '.'
 					  << par->getCounter(i-1) << '.'
@@ -1573,7 +1627,12 @@ void LyXText::SetCounter(LyXParagraph * par) const
 
 					break;
 				case LABEL_COUNTER_SUBPARAGRAPH:
-					s << alphaCounter(par->getCounter(i-5)) << '.'
+					if (par->getParDirection() == LYX_DIR_LEFT_TO_RIGHT)
+						s << alphaCounter(par->getCounter(i-5));
+					else
+						s << hebrewCounter(par->getCounter(i-5));
+
+					s << '.'
 					  << par->getCounter(i-4) << '.'
 					  << par->getCounter(i-3) << '.'
 					  << par->getCounter(i-2) << '.'
@@ -1614,17 +1673,6 @@ void LyXText::SetCounter(LyXParagraph * par) const
 			par->incCounter(i + par->enumdepth);
 			int number = par->getCounter(i + par->enumdepth);
 
-			static const char *roman[20] = {
-				"i",   "ii",  "iii", "iv", "v",
-				"vi",  "vii", "viii", "ix", "x",
-				"xi",  "xii", "xiii", "xiv", "xv",
-				"xvi", "xvii", "xviii", "xix", "xx"
-			};
-			static const char hebrew[22] = {
-				'à', 'á', 'â', 'ã', 'ä', 'å', 'æ', 'ç', 'è',
-				'é', 'ë', 'ì', 'î', 'ð', 'ñ', 'ò', 'ô', 'ö', 
-				'÷', 'ø', 'ù', 'ú'
-			};
 #ifdef HAVE_SSTREAM
 			ostringstream s;
 #else
@@ -1634,31 +1682,26 @@ void LyXText::SetCounter(LyXParagraph * par) const
 			case 1:
 				if (par->getParDirection() == LYX_DIR_LEFT_TO_RIGHT)
 					s << '('
-					  << static_cast<unsigned char>
-						(((number - 1) % 26) + 'a')
+					  << loweralphaCounter(number)
 					  << ')';
-				
 				else
 					s << '('
-					  << static_cast<unsigned char>
-						(hebrew[(number - 1) % 22])
+					  << hebrewCounter(number)
 					  << ')';
 				break;
 			case 2:
 				if (par->getParDirection() == LYX_DIR_LEFT_TO_RIGHT)
-					s << roman[(number - 1) % 20] << '.';
+					s << romanCounter(number) << '.';
 				else
-					s << '.' << roman[(number - 1) % 20];
+					s << '.' << romanCounter(number);
 				break;
 			case 3:
 				if (par->getParDirection() == LYX_DIR_LEFT_TO_RIGHT)
-					s << static_cast<unsigned char>
-						(((number - 1) % 26) + 'A')
+					s << alphaCounter(number)
 					  << '.';
 				else
 					s << '.'
-					  << static_cast<unsigned char>
-						(((number - 1) % 26) + 'A');
+					  << alphaCounter(number);
 				break;
 			default:
 				if (par->getParDirection() == LYX_DIR_LEFT_TO_RIGHT)
@@ -3005,7 +3048,7 @@ void LyXText::SetCursorIntern(LyXParagraph * par,
 			current_font = cursor.par->GetFontSettings(cursor.pos);
 			real_current_font = GetFont(cursor.par, cursor.pos);
 			if (pos == 0 && par->size() == 0 
-			    && owner_->buffer()->params.getDocumentDirection() == LYX_DIR_RIGHT_TO_LEFT) {
+			    && parameters->getDocumentDirection() == LYX_DIR_RIGHT_TO_LEFT) {
 				current_font.setDirection(LyXFont::RTL_DIR);
 				real_current_font.setDirection(LyXFont::RTL_DIR);
 			}

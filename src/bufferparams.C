@@ -23,6 +23,7 @@
 #include "support/lyxlib.h"
 #include "support/lstrings.h"
 #include "lyxrc.h"
+#include "language.h"
 
 extern LyXRC * lyxrc;
 
@@ -198,9 +199,25 @@ void BufferParams::readLanguage(LyXLex & lex)
 	if (!lex.next()) return;
 	
 	string tmptok = lex.GetString();
+#if 0
 	string test;
 	int n = 0;
+#endif
 	// check if tmptok is part of tex_babel in tex-defs.h
+	Languages::iterator lit = languages.find(tmptok);
+	if (lit != languages.end()) {
+		// found it
+		language = tmptok;
+		return;
+	}
+	// not found
+	lyxerr << "Warning: language `"
+	       << tmptok << "' not recognized!\n"
+	       << "         Setting language to `default'."
+	       << endl;
+	language = "default";
+	
+#if 0	
 	while (true) {
 		test = tex_babel[n++];
 		
@@ -217,6 +234,7 @@ void BufferParams::readLanguage(LyXLex & lex)
 			break;	 
 		}      
 	}
+#endif
 }
 
 
@@ -251,6 +269,7 @@ void BufferParams::readGraphicsDriver(LyXLex & lex)
 
 LyXDirection BufferParams::getDocumentDirection() const
 {
-	return (lyxrc->rtl_support && language == "hebrew")
+	return (lyxrc->rtl_support &&
+		(language == "hebrew" || language == "arabic"))
 		? LYX_DIR_RIGHT_TO_LEFT : LYX_DIR_LEFT_TO_RIGHT;
 }

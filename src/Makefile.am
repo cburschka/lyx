@@ -98,6 +98,8 @@ lyx_SOURCES = \
 	kbmap.h \
 	kbsequence.C \
 	kbsequence.h \
+	language.C \
+	language.h \
 	lastfiles.C \
 	lastfiles.h \
 	latexoptions.C \
