@@ -1,3 +1,7 @@
+2002-12-08  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* FormGraphics.C (build): add a xgettext:no-c-format
+
 2002-12-05  John Levon  <levon@movementarian.org>
 
 	* XWorkArea.C: set I-beam cursor
@@ -16,10 +20,10 @@
 	Various other trivial clean-ups.
 
 2002-12-03  Juergen Spitzmueller  <j.spitzmueller@gmx.de>
- 
- 	* xforms_helpers.C: (updateWidgetsFromLength)
- 	use len.empty() instead of len.zero() [bug 490]
- 
+
+	* xforms_helpers.C: (updateWidgetsFromLength)
+	use len.empty() instead of len.zero() [bug 490]
+
 2002-12-03  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* XWorkArea.C (work_area_handler): send fewer motion events if the

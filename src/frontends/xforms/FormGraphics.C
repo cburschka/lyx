@@ -145,6 +145,7 @@ void FormGraphics::build()
 
 	str = _("Set the image width to the inserted value.");
 	tooltips().init(file_->input_width, str);
+	// xgettext:no-c-format
 	str = _("Select unit for width; Scale% for scaling whole image.");
 	tooltips().init(file_->choice_width, str);
 	str = _("Set the image height to the inserted value.");
