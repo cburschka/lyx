@@ -15,11 +15,12 @@
 
 #include "LaTeX.h" // TeXErrors
 
-#include "support/BoostFormat.h"
 #include "support/filetools.h"
 #include "support/lstrings.h"
 #include "support/lyxlib.h"
 #include "support/systemcall.h"
+
+#include <boost/format.hpp>
 
 #include <fstream>
 

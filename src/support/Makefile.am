@@ -15,14 +15,12 @@ endif
 BUILT_SOURCES = path_defines.C
 
 libsupport_la_SOURCES = \
-	BoostFormat.h \
 	FileInfo.C \
 	FileInfo.h \
 	FileMonitor.h \
 	FileMonitor.C \
 	abort.C \
 	atoi.C \
-	boost-inst.C \
 	chdir.C \
 	copy.C \
 	copied_ptr.h \

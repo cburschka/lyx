@@ -14,12 +14,12 @@
 #include "lstrings.h"
 #include "support/std_sstream.h"
 #include "debug.h"
-#include "BoostFormat.h"
 #include "lyxlib.h"
 #include "tostr.h"
 
 #include <boost/tokenizer.hpp>
 #include <boost/assert.hpp>
+#include <boost/format.hpp>
 
 #include <algorithm>
 

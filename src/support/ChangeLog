@@ -1,3 +1,12 @@
+2004-01-06  Lars Gullik Bjonnes  <larsbj@gullik.net>
+
+	* Makefile.am (libsupport_la_SOURCES): remove BoostFormat.h and
+	boost-inst.C
+	* BoostFormat.h: delete file
+	* boost-inst.C: delete fil
+
+	* lstrings.C: include boost/format.hpp
+
 2004-01-05  Angus Leeming  <leeming@lyx.org>
 
 	* globbing.[Ch]: new files containing some globbing utilities.
