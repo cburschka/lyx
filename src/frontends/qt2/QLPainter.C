@@ -170,7 +170,7 @@ void QLPainter::image(int x, int y, int w, int h,
 		static_cast<lyx::graphics::QLImage const &>(i);
 
 	fillRectangle(x, y, w, h, LColor::graphicsbg);
-	qp_->drawPixmap(x, y, qlimage.qpixmap(), 0, 0, w, h);
+	qp_->drawImage(x, y, qlimage.qimage(), 0, 0, w, h);
 }
 
 

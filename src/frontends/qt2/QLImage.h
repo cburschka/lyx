@@ -16,7 +16,7 @@
 
 #include "graphics/GraphicsImage.h"
 
-#include <qpixmap.h>
+#include <qimage.h>
 
 namespace lyx {
 namespace graphics {
@@ -30,7 +30,7 @@ public:
 	static FormatList loadableFormats();
 
 	~QLImage();
-	QPixmap const & qpixmap() const { return xformed_pixmap_; }
+	QImage const & qimage() const { return transformed_; }
 
 private:
 	/// Create a copy
@@ -48,10 +48,9 @@ private:
 	 */
 	virtual void load_impl(std::string const & filename);
 	/**
-	 * Generate the pixmap, based on the current state of
-	 * image_ (clipped, rotated, scaled etc).
-	 * Uses the params to decide on color, grayscale etc.
-	 * Returns true if the pixmap is created.
+	 * Finishes the process of modifying transformed_, using
+	 * \c params to decide on color, grayscale etc.
+	 * \returns true if successful.
 	 */
 	virtual bool setPixmap_impl(Params const & params);
 	/// Clip the image using params.
@@ -66,11 +65,11 @@ private:
 	///
 	QLImage(QLImage const &);
 
-	/// the original loaded image
-	QPixmap pixmap_;
+	/// The original loaded image.
+	QImage original_;
 
-	/// the transformed pixmap for display
-	QPixmap xformed_pixmap_;
+	/// The transformed image for display.
+	QImage transformed_;
 };
 
 } // namespace graphics

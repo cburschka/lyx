@@ -102,10 +102,9 @@ QLImage::QLImage()
 
 
 QLImage::QLImage(QLImage const & other)
-	: Image(other), pixmap_(other.pixmap_),
-	  xformed_pixmap_(other.pixmap_)
-{
-}
+	: Image(other), original_(other.original_),
+	  transformed_(other.original_)
+{}
 
 
 QLImage::~QLImage()
@@ -121,32 +120,32 @@ Image * QLImage::clone_impl() const
 
 unsigned int QLImage::getWidth_impl() const
 {
-	return xformed_pixmap_.width();
+	return transformed_.width();
 }
 
 
 unsigned int QLImage::getHeight_impl() const
 {
-	return xformed_pixmap_.height();
+	return transformed_.height();
 }
 
 
 void QLImage::load_impl(string const & filename)
 {
-	if (!pixmap_.isNull()) {
+	if (!original_.isNull()) {
 		lyxerr[Debug::GRAPHICS]
 			<< "Image is loaded already!" << endl;
 		finishedLoading(false);
 		return;
 	}
 
-	if (!pixmap_.load(toqstr(filename))) {
+	if (!original_.load(toqstr(filename))) {
 		lyxerr[Debug::GRAPHICS]
 			<< "Unable to open image" << endl;
 		finishedLoading(false);
 		return;
 	}
-	xformed_pixmap_ = pixmap_;
+	transformed_ = original_;
 	finishedLoading(true);
 }
 
@@ -178,24 +177,22 @@ QImage & toGray(QImage & img)
 
 bool QLImage::setPixmap_impl(Params const & params)
 {
-	if (pixmap_.isNull() || params.display == NoDisplay)
+	if (original_.isNull() || params.display == NoDisplay)
 		return false;
 
 	switch (params.display) {
 	case GrayscaleDisplay: {
-		QImage i(xformed_pixmap_.convertToImage());
-		xformed_pixmap_.convertFromImage(toGray(i));
+		toGray(transformed_);
 		break;
 	}
 
 	case MonochromeDisplay: {
-			QImage i(xformed_pixmap_.convertToImage());
-			xformed_pixmap_.convertFromImage(i, QPixmap::Mono);
-			break;
-		}
+		transformed_.convertDepth(transformed_.depth(), Qt::MonoOnly);
+		break;
+	}
 
-		default:
-			break;
+	default:
+		break;
 	}
 
 	return true;
@@ -204,7 +201,7 @@ bool QLImage::setPixmap_impl(Params const & params)
 
 void QLImage::clip_impl(Params const & params)
 {
-	if (xformed_pixmap_.isNull())
+	if (transformed_.isNull())
 		return;
 
 	if (params.bb.empty())
@@ -216,46 +213,42 @@ void QLImage::clip_impl(Params const & params)
 
 	// No need to check if the width, height are > 0 because the
 	// Bounding Box would be empty() in this case.
-	if (new_width > pixmap_.width() || new_height > pixmap_.height()) {
+	if (new_width > original_.width() || new_height > original_.height()) {
 		// Bounds are invalid.
 		return;
 	}
 
-	if (new_width == pixmap_.width() && new_height == pixmap_.height())
+	if (new_width == original_.width() && new_height == original_.height())
 		return;
 
 	int const xoffset_l = params.bb.xl;
-	int const yoffset_t = (pixmap_.height() > int(params.bb.yt) ?
-				pixmap_.height() - params.bb.yt : 0);
+	int const yoffset_t = (original_.height() > int(params.bb.yt) ?
+			       original_.height() - params.bb.yt : 0);
 
-	xformed_pixmap_.resize(new_width, new_height);
-	QPainter p;
-	p.begin(&xformed_pixmap_);
-	p.drawPixmap(0, 0, pixmap_, xoffset_l, yoffset_t, new_width, new_height);
-	p.end();
+	transformed_ = original_.copy(xoffset_l, yoffset_t,
+				      new_width, new_height);
 }
 
 
 void QLImage::rotate_impl(Params const & params)
 {
-	if (xformed_pixmap_.isNull())
+	if (transformed_.isNull())
 		return;
 
 	if (!params.angle)
 		return;
 
-	// The angle passed to flimage_rotate is the angle in one-tenth of a
-	// degree units.
-
 	QWMatrix m;
 	m.rotate(-params.angle);
-	xformed_pixmap_ = xformed_pixmap_.xForm(m);
+
+	transformed_.setAlphaBuffer(true);
+	transformed_ = transformed_.xForm(m);
 }
 
 
 void QLImage::scale_impl(Params const & params)
 {
-	if (xformed_pixmap_.isNull())
+	if (transformed_.isNull())
 		return;
 
 	unsigned int width;
@@ -267,7 +260,7 @@ void QLImage::scale_impl(Params const & params)
 
 	QWMatrix m;
 	m.scale(double(width) / getWidth(), double(height) / getHeight());
-	xformed_pixmap_ = xformed_pixmap_.xForm(m);
+	transformed_ = transformed_.xForm(m);
 }
 
 } // namespace graphics

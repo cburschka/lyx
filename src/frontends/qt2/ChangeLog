@@ -1,5 +1,13 @@
 2004-05-02  Angus Leeming  <leeming@lyx.org>
 
+	* QLImage.[Ch]: store and use QImage rather than QPixmap. Saves
+	a heap of transformations to/from QImage when manipulating the
+	data.
+
+	* QLPainter.C (image): access QLImage::qimage rather than ::qpixmap.
+
+2004-05-02  Angus Leeming  <leeming@lyx.org>
+
 	* QLPainter.C (image): set the background colour to
 	LColor::graphicsbg.
 
