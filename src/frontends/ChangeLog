@@ -1,3 +1,7 @@
+2003-04-16  Alfredo Braunstein  <abraunst@libero.it>
+
+	* screen.C (redraw): added a missing call to updateRowPositions
+
 2003-04-15  John Levon  <levon@movementarian.org>
 
 	* LyXView.C: toolbar flags changed

@@ -87,9 +87,9 @@ bool BufferList::quitWriteBuffer(Buffer * buf)
 		bool succeeded;
 
 		if (buf->isUnnamed())
-			succeeded = !WriteAs(current_view, buf);
+			succeeded = WriteAs(current_view, buf);
 		else
-			succeeded = !MenuWrite(current_view, buf);
+			succeeded = MenuWrite(current_view, buf);
 
 		if (!succeeded)
 			return false;

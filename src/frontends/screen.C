@@ -360,6 +360,7 @@ void LyXScreen::redraw(LyXText * text, BufferView * bv)
 
 	workarea().getPainter().start();
 
+	text->updateRowPositions();
 	drawFromTo(text, bv, 0, workarea().workHeight(), 0, 0);
 	expose(0, 0, workarea().workWidth(), workarea().workHeight());
 
