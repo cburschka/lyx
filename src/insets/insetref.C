@@ -48,7 +48,7 @@ dispatch_result InsetRef::localDispatch(FuncRequest const & cmd)
 		if (cmd.button() == mouse_button::button3)
 			cmd.view()->owner()->
 				dispatch(FuncRequest(LFUN_REF_GOTO, getContents()));
-		if (cmd.button() == mouse_button::button1)
+		else
 			InsetCommandMailer("ref", *this).showDialog(cmd.view());
 		return DISPATCHED;
 
