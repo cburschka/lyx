@@ -112,7 +112,6 @@ int InsetError::Latex(string &, signed char /*fragile*/) const
 {
 	return 0;
 }
-#endif
 
 
 int InsetError::Linuxdoc(string &) const
@@ -125,6 +124,20 @@ int InsetError::DocBook(string &) const
 {
 	return 0;
 }
+
+#else
+
+int InsetError::Linuxdoc(ostream &) const
+{
+	return 0;
+}
+
+
+int InsetError::DocBook(ostream &) const
+{
+	return 0;
+}
+#endif
 
 
 bool InsetError::AutoDelete() const

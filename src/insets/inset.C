@@ -110,12 +110,11 @@ void UpdatableInset::ToggleInsetCursor(BufferView *)
 
 void UpdatableInset::Edit(BufferView * bv, int, int, unsigned int)
 {
-    LyXFont
-	font;
+    LyXFont font;
 
     scx = 0;
 
-    mx_scx=abs((width(bv->getPainter(), font) - bv->paperWidth())/2);
+    mx_scx=abs((width(bv->getPainter(), font) - bv->paperWidth()) / 2);
 }
 
 
@@ -131,6 +130,7 @@ void UpdatableInset::draw(Painter &, LyXFont const &,
 void UpdatableInset::SetFont(BufferView *, LyXFont const &, bool )
 {
 }
+
 
 ///  An updatable inset could handle lyx editing commands
 #ifdef SCROLL_INSET

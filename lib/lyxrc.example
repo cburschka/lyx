@@ -58,6 +58,10 @@
 # MISC SECTION ###########################################################
 #
 
+# Set this to false if you don't want the startup banner.
+# Default is true.
+#\show_banner true
+
 # Set to false if you don't want the current selection to be replaced
 # automatically by what you type. Default is true.
 #\auto_region_delete false

@@ -2313,7 +2313,7 @@ void Free()
 extern "C" void TimerCB(FL_OBJECT *, long)
 {
 	// only if the form still exists
-	if (fd_form_title->form_title != 0) {
+	if (lyxrc->show_banner && fd_form_title->form_title != 0) {
 		if (fd_form_title->form_title->visible) {
 			fl_hide_form(fd_form_title->form_title);
 		}
@@ -3542,6 +3542,7 @@ extern "C" void RefHideCB(FL_OBJECT *, long)
 	fl_hide_form(fd_form_ref->form_ref);
 }
 
+#ifndef USE_OSTREAM_ONLY
 #ifdef WITH_WARNINGS
 #warning UGLY!!
 #endif
@@ -3554,3 +3555,4 @@ void addNewlineAndDepth(string & file, int depth)
 	file += '\n';
 	file.append(depth, ' ');
 }
+#endif

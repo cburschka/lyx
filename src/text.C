@@ -2391,12 +2391,17 @@ void LyXText::InsertChar(char c)
 
 	/* When the free-spacing option is set for the current layout,
 	 * all spaces are converted to protected spaces. */
+	// Thinko!
 #warning think about this
 #if 0
 	bool freeSpacingBo = 
 		textclasslist.Style(parameters->textclass,
 			       cursor.row->par->GetLayout()).free_spacing;
 
+	// Thinkee: (not done)
+	// It seems that we should insert a InsetSpecialChar, do we really
+	// have to? I don't know the free spacing politics too deeply.
+	// Some others should have a look at this.
 	if (freeSpacingBo && IsLineSeparatorChar(c) 
 	    && (!cursor.pos || cursor.par->IsLineSeparator(cursor.pos - 1))) {
 		c = LyXParagraph::META_PROTECTED_SEPARATOR;

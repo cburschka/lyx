@@ -300,42 +300,44 @@ void LyXGUI::create_forms()
 	//
 
 	// the title form
-	fd_form_title = create_form_form_title();
-	fl_set_form_dblbuffer(fd_form_title->form_title, 1); // use dbl buffer
-	fl_set_form_atclose(fd_form_title->form_title, CancelCloseBoxCB, 0);
-	fl_addto_form(fd_form_title->form_title);
+	if (lyxrc->show_banner) {
+		fd_form_title = create_form_form_title();
+		fl_set_form_dblbuffer(fd_form_title->form_title, 1); // use dbl buffer
+		fl_set_form_atclose(fd_form_title->form_title, CancelCloseBoxCB, 0);
+		fl_addto_form(fd_form_title->form_title);
 #ifdef TWO_COLOR_ICONS
-	FL_OBJECT *obj = fl_add_bitmapbutton(FL_NORMAL_BUTTON, 0, 0, 425, 290, "");
-	  fl_set_bitmapbutton_data(obj, banner_bw_width,
-				   banner_bw_height, banner_bw_bits);
-	  fl_set_object_color(obj, FL_WHITE, FL_BLACK);
+		FL_OBJECT *obj = fl_add_bitmapbutton(FL_NORMAL_BUTTON, 0, 0, 425, 290, "");
+		fl_set_bitmapbutton_data(obj, banner_bw_width,
+					 banner_bw_height, banner_bw_bits);
+		fl_set_object_color(obj, FL_WHITE, FL_BLACK);
 #else
-	FL_OBJECT *obj = fl_add_pixmapbutton(FL_NORMAL_BUTTON, 0, 0, 425, 290, "");
-	  fl_set_pixmapbutton_data(obj, const_cast<char **>(banner));
-
-	  fl_set_pixmapbutton_focus_outline(obj, 3);
+		FL_OBJECT *obj = fl_add_pixmapbutton(FL_NORMAL_BUTTON, 0, 0, 425, 290, "");
+		fl_set_pixmapbutton_data(obj, const_cast<char **>(banner));
+		
+		fl_set_pixmapbutton_focus_outline(obj, 3);
 #endif
-	  fl_set_button_shortcut(obj, "^M ^[", 1);
-	  fl_set_object_boxtype(obj, FL_NO_BOX);
-	  fl_set_object_callback(obj, TimerCB, 0);
-
-	obj = fl_add_text(FL_NORMAL_TEXT, 248, 265, 170, 16, LYX_VERSION);
-	  fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+		fl_set_button_shortcut(obj, "^M ^[", 1);
+		fl_set_object_boxtype(obj, FL_NO_BOX);
+		fl_set_object_callback(obj, TimerCB, 0);
+		
+		obj = fl_add_text(FL_NORMAL_TEXT, 248, 265, 170, 16, LYX_VERSION);
+		fl_set_object_lsize(obj, FL_NORMAL_SIZE);
 #ifdef TWO_COLOR_ICONS
-	  fl_set_object_color(obj, FL_WHITE, FL_WHITE);
-	  fl_set_object_lcol(obj, FL_BLACK);
+		fl_set_object_color(obj, FL_WHITE, FL_WHITE);
+		fl_set_object_lcol(obj, FL_BLACK);
 #else
 //	  fl_set_object_color(obj, FL_WHITE, FL_WHITE);
 //	  fl_set_object_lcol(obj, FL_BLACK);
-          fl_mapcolor(FL_FREE_COL2, 0x05, 0x2e, 0x4c);
-          fl_mapcolor(FL_FREE_COL3, 0xe1, 0xd2, 0x9b);
-	  fl_set_object_color(obj, FL_FREE_COL2, FL_FREE_COL2);
-	  fl_set_object_lcol(obj, FL_FREE_COL3);
+		fl_mapcolor(FL_FREE_COL2, 0x05, 0x2e, 0x4c);
+		fl_mapcolor(FL_FREE_COL3, 0xe1, 0xd2, 0x9b);
+		fl_set_object_color(obj, FL_FREE_COL2, FL_FREE_COL2);
+		fl_set_object_lcol(obj, FL_FREE_COL3);
 #endif
-	  fl_set_object_lalign(obj, FL_ALIGN_CENTER|FL_ALIGN_INSIDE);
-	  fl_set_object_lstyle(obj, FL_BOLD_STYLE);
-	fl_end_form();
-
+		fl_set_object_lalign(obj, FL_ALIGN_CENTER|FL_ALIGN_INSIDE);
+		fl_set_object_lstyle(obj, FL_BOLD_STYLE);
+		fl_end_form();
+	}
+	
 	// the paragraph form
 	fd_form_paragraph = create_form_form_paragraph();
 	fl_set_form_atclose(fd_form_paragraph->form_paragraph,
@@ -558,23 +560,28 @@ void LyXGUI::create_forms()
 	// Did we get a valid position?
 	if (xpos>= 0 && ypos>= 0) {
 		lyxViews->setPosition(xpos, ypos);
-		// show the title form in the middle of the main form
-		fl_set_form_position(fd_form_title->form_title,
-			abs(xpos + (width/2) - (370 / 2)),
-			abs(ypos + (height/2) - (290 / 2)));
-		// The use of abs() above is a trick to ensure valid positions
-		main_placement = FL_PLACE_POSITION;
-		title_placement = FL_PLACE_GEOMETRY;
+		if (lyxrc->show_banner) {
+			// show the title form in the middle of the main form
+			fl_set_form_position(fd_form_title->form_title,
+					     abs(xpos + (width/2) - (370 / 2)),
+					     abs(ypos + (height/2) - (290 / 2)));
+			title_placement = FL_PLACE_GEOMETRY;
+			// The use of abs() above is a trick to ensure
+			// valid positions
+		}
+			main_placement = FL_PLACE_POSITION;
 	}
 	lyxViews->show(main_placement, FL_FULLBORDER, "LyX");
-	fl_show_form(fd_form_title->form_title, 
-		     title_placement, FL_NOBORDER, 
-		     _("LyX Banner"));
-	fl_redraw_form(fd_form_title->form_title);
-	fl_raise_form(fd_form_title->form_title);
+	if (lyxrc->show_banner) {
+		fl_show_form(fd_form_title->form_title, 
+			     title_placement, FL_NOBORDER, 
+			     _("LyX Banner"));
+		fl_redraw_form(fd_form_title->form_title);
+		fl_raise_form(fd_form_title->form_title);
 
-	// Show the title form at most 7 secs (lowered from 10 secs)
-	fl_set_timer(fd_form_title->timer_title, 7);
+		// Show the title form at most 7 secs (lowered from 10 secs)
+		fl_set_timer(fd_form_title->timer_title, 7);
+	}
 }
 
 

@@ -1,3 +1,47 @@
+2000-03-06  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* lib/layouts/seminar.layout: feeble attempt at a layout for
+	seminar.cls, far from completet and could really use some looking
+	at from people used to write layout files.
+
+	* src/support/lyxmanip.h (newlineAndDepth): ostream manipulator to
+	use instead of the AddNewlineAndDepth funtion in lyx_cb.C. This is
+	a lot nicer and works nicely with ostreams.
+
+	* src/mathed/formula.C (draw): a slightly different solution that
+	the one posted to the list, but I think this one works too. (font
+	size wrong in headers.)
+
+	* src/insets/insettext.C (computeTextRows): some fiddling on
+	Jürgens turf, added some comments that he should read.
+
+	* src/lyxrc.C: remove all traces of RC_NOMENUACCELERATORS, never
+	used and it gave compiler warnings.
+	RC_SHOW_BANNER + "\\show_banner" added, also to reading and
+	writing of lyxrc.
+
+	* src/lyx_gui.C (create_forms): do the right thing when
+	show_banner is true/false.
+
+	* src/lyx_cb.C (TimerCB): no need to close or do anything if
+	show_banner is false.
+
+	* most file writing files: Now use iostreams to do almost all of
+	the writing. Also instead of passing string &, we now use
+	stringstreams. mathed output is still not adapted to iostreams.
+	This change can be turned off by commenting out all the occurences
+	of the "#define USE_OSTREAM_ONLY 1" lines.
+	
+	* src/WorkArea.C (createPixmap): don't output debug messages.
+	(WorkArea): don't output debug messages.
+
+	* lib/lyxrc.example: added a comment about the new variable
+	\show_banner 
+
+	* development/Code_rules/Rules: Added some more commente about how
+	to build class interfaces and on how better encapsulation can be
+	achieved. 
+
 2000-03-03  Juergen Vigna  <jug@sad.it>
 
 	* src/insets/insetert.C (InsetERT): Now ERT-insets break row

@@ -199,7 +199,7 @@ void InsetText::draw(Painter & pain, LyXFont const & f,
 		     int baseline, float & x) const
 {
 //    if (init_inset) {
-	computeTextRows(pain);
+	computeTextRows(pain, x);
 //	init_inset = false;
 //    }
     UpdatableInset::draw(pain, f, baseline, x);
@@ -208,7 +208,7 @@ void InsetText::draw(Painter & pain, LyXFont const & f,
     top_x = int(x);
     top_baseline = baseline;
     computeBaselines(baseline);
-    for(unsigned int r = 0; r < rows.size() - 1; ++r) {
+    for(RowList::size_type r = 0; r < rows.size() - 1; ++r) {
         drawRowSelection(pain, rows[r].pos, rows[r + 1].pos, r, 
                          rows[r].baseline, x);
         drawRowText(pain, rows[r].pos, rows[r + 1].pos, rows[r].baseline, x);
@@ -600,10 +600,8 @@ InsetText::LocalDispatch(BufferView * bv,
 int InsetText::Latex(ostream & os, signed char /*fragile*/) const
 {
 #ifdef USE_OSTREAM_ONLY
-	string fstr;
 	TexRow texrow;
-	int ret = par->SimpleTeXOnePar(fstr, texrow);
-	os << fstr;
+	int ret = par->SimpleTeXOnePar(os, texrow);
 	return ret;
 #else
     string fstr;
@@ -1050,7 +1048,29 @@ void InsetText::SetCharFont(int pos, LyXFont const & f)
 }
 
 
-void InsetText::computeTextRows(Painter & pain) const
+// Ok, Jürgen. Here is my small secret message to you. As you can see I
+// played a bit witht he Textinset. (But only through the InsetERT so far).
+// As you can see below I have changed the code to use max/min instead of
+// the if < construct, imo this makes it faster and easier to read. I have
+// also changed rows[rows.size() - 1] to rows.back() makes it clearer that
+// we speak about the last element in the vector. I added a second arg to
+// to this func as well. This makes it possible to take the position of the
+// inset into account when drawing the inset, this is especially needed when
+// the ERT inset is first in a paragraph. I am not sure, but this might have
+// made short ERT (less than one line, just a couple of words) draw
+// incorrectly. You should perhaps have a look yourselves at this.
+// Also (phu...) I use pain to get at paperWidth().
+// This is beginning to look like a very nice Inset (speaking of the ERT
+// inset that is), but in afterthought, do we really need it? Wouldn't a
+// non dynamic inset working in the same way as the floats be more usefull
+// and easier to work with? Jean-Marc has already aired this thought.
+// I tested also a bit on the raw insettext, it seems that it can't break
+// over several lines properly. Other than that it seems to create the basis
+// for insetfloat, insetmarginal and insetfoot just fine. How about a
+// updatable inset that does not open, unless you click on it? uff... I just
+// ramble on. Feel free to remove my comments after you have read them.
+// Lgb
+void InsetText::computeTextRows(Painter & pain, float x) const
 {
     int p,
 	nwp = 0,
@@ -1064,7 +1084,8 @@ void InsetText::computeTextRows(Painter & pain) const
     row_struct row;
 
     if (rows.size())
-	rows.erase(rows.begin(),rows.end());
+	    rows.clear();
+	    //rows.erase(rows.begin(),rows.end());
     int width = wordAscent = wordDescent = 0;
     insetWidth = maxAscent = maxDescent = 0;
     row.asc      = 0;
@@ -1076,10 +1097,12 @@ void InsetText::computeTextRows(Painter & pain) const
 	for(p = 0; p < par->Last(); ++p) {
 	    insetWidth += SingleWidth(pain, par, p);
 	    SingleHeight(pain, par, p, asc, desc);
-	    if (asc > maxAscent)
-		maxAscent = asc;
-	    if (desc > maxDescent)
-		maxDescent = desc;
+	    maxAscent = max(maxAscent, asc);
+	    //if (asc > maxAscent)
+	    //maxAscent = asc;
+	    maxDescent = max(maxDescent, desc);
+	    //if (desc > maxDescent)
+	    //maxDescent = desc;
 	}
 	rows[0].asc = maxAscent;
 	rows[0].desc = maxDescent;
@@ -1091,112 +1114,127 @@ void InsetText::computeTextRows(Painter & pain) const
 
     bool is_first_word_in_row = true;
 
-    int cw,
-	lastWordWidth = 0;
+    int cw, lastWordWidth = 0;
 
-    maxWidth = buffer->getUser()->paperWidth();
+    //maxWidth = buffer->getUser()->paperWidth();
+    maxWidth = pain.paperWidth();
     for(p = 0; p < par->Last(); ++p) {
 	cw = SingleWidth(pain, par, p);
 	width += cw;
 	lastWordWidth += cw;
 	SingleHeight(pain, par, p, asc, desc);
-	if (asc > wordAscent)
-	    wordAscent = asc;
-	if (desc > wordDescent)
-	    wordDescent = desc;
+	wordAscent = max(wordAscent, asc);
+	//if (asc > wordAscent)
+	//    wordAscent = asc;
+	wordDescent = max(wordDescent, desc);
+	//if (desc > wordDescent)
+	//    wordDescent = desc;
 	Inset const * inset = 0;
 	if (((p + 1) < par->Last()) &&
 	    (par->GetChar(p + 1)==LyXParagraph::META_INSET))
 	    inset = par->GetInset(p + 1);
 	if (inset && inset->display()) {
-	    if (!is_first_word_in_row && (width >= maxWidth)) {
+	    if (!is_first_word_in_row && (width >= maxWidth - x)) {
 		// we have to split also the row above
-		rows[rows.size() - 1].asc = oasc;
-		rows[rows.size() - 1].desc = odesc;
+		rows.back().asc = oasc;
+		rows.back().desc = odesc;
 		row.pos = nwp;
 		rows.push_back(row);
 		oasc = wordAscent;
 		odesc = wordDescent;
-		if (insetWidth < owidth)
-		    insetWidth = owidth;
+		insetWidth = max(insetWidth, owidth);
+		//if (insetWidth < owidth)
+		//    insetWidth = owidth;
 		width = lastWordWidth;
 		lastWordWidth = 0;
 	    } else {
-		if (oasc < wordAscent)
-		    oasc = wordAscent;
-		if (odesc < wordDescent)
-		    odesc = wordDescent;
+		    oasc = max(oasc, wordAscent);
+		    //if (oasc < wordAscent)
+		    //oasc = wordAscent;
+		    odesc = max(odesc, wordDescent);
+		    //if (odesc < wordDescent)
+		    //odesc = wordDescent;
 	    }
-	    rows[rows.size() - 1].asc = oasc;
-	    rows[rows.size() - 1].desc = odesc;
+	    rows.back().asc = oasc;
+	    rows.back().desc = odesc;
 	    row.pos = ++p;
 	    rows.push_back(row);
 	    SingleHeight(pain, par, p, asc, desc);
-	    rows[rows.size() - 1].asc = asc;
-	    rows[rows.size() - 1].desc = desc;
+	    rows.back().asc = asc;
+	    rows.back().desc = desc;
 	    row.pos = nwp = p + 1;
 	    rows.push_back(row);
 	    oasc = odesc = width = lastWordWidth = 0;
 	    is_first_word_in_row = true;
 	    wordAscent = wordDescent = 0;
+	    x = 0.0;
 	    continue;
 	} else if (par->IsSeparator(p)) {
-	    if (width >= maxWidth) {
+	    if (width >= maxWidth - x) {
 		if (is_first_word_in_row) {
-		    rows[rows.size() - 1].asc = wordAscent;
-		    rows[rows.size() - 1].desc = wordDescent;
+		    rows.back().asc = wordAscent;
+		    rows.back().desc = wordDescent;
 		    row.pos = p + 1;
 		    rows.push_back(row);
 		    oasc = odesc = width = 0;
 		} else {
-		    rows[rows.size() - 1].asc = oasc;
-		    rows[rows.size() - 1].desc = odesc;
+		    rows.back().asc = oasc;
+		    rows.back().desc = odesc;
 		    row.pos = nwp;
 		    rows.push_back(row);
 		    oasc = wordAscent;
 		    odesc = wordDescent;
-		    if (insetWidth < owidth)
-			insetWidth = owidth;
+		    insetWidth = max(insetWidth, owidth);
+		    //if (insetWidth < owidth)
+		    //insetWidth = owidth;
 		    width = lastWordWidth;
 		}
 		wordAscent = wordDescent = lastWordWidth = 0;
 		nwp = p + 1;
+		x = 0.0;
 		continue;
 	    }
 	    owidth = width;
-	    if (oasc < wordAscent)
-		oasc = wordAscent;
-	    if (odesc < wordDescent)
-		odesc = wordDescent;
+	    oasc = max(oasc, wordAscent);
+	    //if (oasc < wordAscent)
+	    //oasc = wordAscent;
+	    odesc = max(odesc, wordDescent);
+	    //if (odesc < wordDescent)
+	    //odesc = wordDescent;
 	    wordAscent = wordDescent = lastWordWidth = 0;
 	    nwp = p + 1;
 	    is_first_word_in_row = false;
 	}
+	x = 0.0;
     }
     // if we have some data in the paragraph we have ascent/descent
     if (p) {
 	if (width >= maxWidth) {
 	    // assign upper row
-	    rows[rows.size() - 1].asc = oasc;
-	    rows[rows.size() - 1].desc = odesc;
+	    rows.back().asc = oasc;
+	    rows.back().desc = odesc;
 	    // assign and allocate lower row
 	    row.pos = nwp;
 	    rows.push_back(row);
-	    rows[rows.size() - 1].asc = wordAscent;
-	    rows[rows.size() - 1].desc = wordDescent;
-	    if (insetWidth < owidth)
-		insetWidth = owidth;
+	    rows.back().asc = wordAscent;
+	    rows.back().desc = wordDescent;
+	    insetWidth = max(insetWidth, owidth);
+	    //if (insetWidth < owidth)
+	    //insetWidth = owidth;
 	    width -= owidth;
-	    if (insetWidth < width)
-		insetWidth = width;
+	    insetWidth = max(insetWidth, width);
+	    //if (insetWidth < width)
+	    //insetWidth = width;
 	} else {
 	    // assign last row data
-	    if (oasc < wordAscent)
-		oasc = wordAscent;
-	    if (odesc < wordDescent)
-		odesc = wordDescent;
-	    rows[rows.size() - 1].asc = oasc;
-	    rows[rows.size() - 1].desc = odesc;
+		oasc = max(oasc, wordAscent);
+		//if (oasc < wordAscent)
+		//oasc = wordAscent;
+		odesc = min(odesc, wordDescent);
+		//if (odesc < wordDescent)
+		//odesc = wordDescent;
+	    rows.back().asc = oasc;
+	    rows.back().desc = odesc;
 	}
     }
     // alocate a dummy row for the endpos
@@ -1205,9 +1243,10 @@ void InsetText::computeTextRows(Painter & pain) const
     // calculate maxAscent/Descent
     maxAscent = rows[0].asc;
     maxDescent = rows[0].desc;
-    for (unsigned int i = 1; i < rows.size() - 1; ++i) {
+    for (RowList::size_type i = 1; i < rows.size() - 1; ++i) {
 	maxDescent += rows[i].asc + rows[i].desc + interline_space;
     }
+    lyxerr << "Rows: " << rows.size() << endl;
 #if 0
     if (the_locking_inset) {
 	computeBaselines(top_baseline);

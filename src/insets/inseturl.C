@@ -197,7 +197,6 @@ int InsetUrl::Latex(string & file, signed char fragile) const
 
 	return 0;
 }
-#endif
 
 
 int InsetUrl::Linuxdoc(string & file) const
@@ -217,6 +216,26 @@ int InsetUrl::DocBook(string & file) const
 
 	return 0;
 }
+
+#else
+
+int InsetUrl::Linuxdoc(ostream & os) const
+{
+	os << "<" << getCmdName()
+	   << " url=\""  << getContents() << "\""
+	   << " name=\"" << getOptions() << "\">";
+
+	return 0;
+}
+
+
+int InsetUrl::DocBook(ostream & os) const
+{
+	os << "<ulink url=\"" << getContents() << "\">"
+	   << getOptions() << "</ulink>";
+	return 0;
+}
+#endif
 
 
 void InsetUrl::Validate(LaTeXFeatures & features) const

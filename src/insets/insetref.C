@@ -94,7 +94,6 @@ int InsetRef::Latex(string & file, signed char /*fragile*/) const
 	}
 	return 0;
 }
-#endif
 
 
 int InsetRef::Linuxdoc(string & file) const
@@ -113,6 +112,24 @@ int InsetRef::DocBook(string & file) const
 
 	return 0;
 }
+
+#else
+
+int InsetRef::Linuxdoc(ostream & os) const
+{
+	os << "<ref id=\"" << getContents()
+	   << "\" name=\"" << getOptions() << "\" >";
+	return 0;
+}
+
+
+int InsetRef::DocBook(ostream & os) const
+{
+	os << "<link linkend=\"" << getContents()
+	   << "\">" << getOptions() << "</link>";
+	return 0;
+}
+#endif
 
 
 // This function escapes 8-bit characters and other problematic characters

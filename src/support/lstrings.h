@@ -63,7 +63,7 @@ inline string tostr(T const & t)
 	return ostr.str().c_str();
 	// We need to use the .c_str since we sometimes are using
 	// our own string class and that is not compatible with
-	// basic_string<char>.
+	// basic_string<char>. (of course we don't want this later)
 #else
 	// The buf is probably a bit large, but if we want to be safer
 	// we should leave it this big. As compiler/libs gets updated

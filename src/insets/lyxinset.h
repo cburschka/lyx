@@ -118,11 +118,16 @@ public:
 #ifndef USE_OSTREAM_ONLY
 	///
 	virtual int Latex(string & file, signed char fragile) const = 0;
-#endif
 	///
 	virtual int Linuxdoc(string & /*file*/) const = 0;
 	///
 	virtual int DocBook(string & /*file*/) const = 0;
+#else
+	///
+	virtual int Linuxdoc(ostream &) const = 0;
+	///
+	virtual int DocBook(ostream &) const = 0;
+#endif
 	/// Updates needed features for this inset.
 	virtual void Validate(LaTeXFeatures & features) const;
 	///
@@ -203,7 +208,7 @@ public:
     
 	/// To convert old binary dispatch results
 	RESULT DISPATCH_RESULT(bool b) {
-		return (b) ? DISPATCHED: FINISHED;
+		return b ? DISPATCHED : FINISHED;
 	}
 
 	///
@@ -234,7 +239,8 @@ public:
 	virtual void draw(Painter &, LyXFont const &,
 			  int baseline, float & x) const;
 	///
-	virtual void SetFont(BufferView *, LyXFont const &, bool toggleall=false);
+	virtual void SetFont(BufferView *, LyXFont const &,
+			     bool toggleall = false);
 	///
 	virtual bool InsertInset(BufferView *, Inset *) { return false; }
 	///
@@ -246,7 +252,7 @@ public:
 		{ return false; }
 	///
 	virtual bool UnlockInsetInInset(BufferView *, Inset *,
-					bool /*lr*/=false)
+					bool /*lr*/ = false)
 		{ return false; }
 	///  An updatable inset could handle lyx editing commands
 	virtual RESULT LocalDispatch(BufferView *, int, string const &);

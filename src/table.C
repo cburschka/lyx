@@ -3,8 +3,8 @@
  * 
  *           LyX, The Document Processor
  * 	 
- *	  Copyright (C) 1995 Matthias Ettrich
- *        Copyright (C) 1995-1998 The LyX Team.
+ *	  Copyright 1995 Matthias Ettrich
+ *        Copyright 1995-2000 The LyX Team.
  *
  * ====================================================== 
  */
@@ -16,7 +16,6 @@
 #include "vspace.h"
 #include "layout.h"
 #include "support/lstrings.h"
-
 #include <algorithm>
 using std::max;
 
@@ -24,7 +23,11 @@ using std::max;
 #pragma implementation
 #endif
 
+#ifdef USE_OSTREAM_ONLY
+#include "support/lyxmanip.h"
+#else
 extern void addNewlineAndDepth(string & file, int depth); // Jug 990923
+#endif
 
 static int const WIDTH_OF_LINE = 5;
 
@@ -953,6 +956,344 @@ void LyXTable::Read(istream & is)
 }
 
 
+#ifdef USE_OSTREAM_ONLY
+// cell <0 will tex the preamble
+// returns the number of printed newlines
+int LyXTable::TexEndOfCell(ostream & os, int cell)
+{
+    int i;
+    int ret = 0;
+    int tmp; // tmp2;
+    int fcell, nvcell;
+    if (ShouldBeVeryLastCell(cell)) {
+        // the very end at the very beginning
+        if (Linebreaks(cell))
+		os << "\\smallskip{}}";
+        if (IsMultiColumn(cell))
+		os << '}';
+        if (RotateCell(cell)) {
+		os << "\n\\end{sideways}";
+            ++ret;
+        }
+        os << "\\\\\n";
+        ++ret;
+    
+        tmp = 0;
+        fcell = cell; 
+        while (!IsFirstCell(fcell)) --fcell;
+        for (i = 0; i < NumberOfCellsInRow(fcell); ++i) {
+            if (BottomLine(fcell + i))
+                ++tmp;
+        }
+        if (tmp == NumberOfCellsInRow(fcell)) {
+		os << "\\hline ";
+        } else {
+            tmp = 0;
+            for (i = 0; i < NumberOfCellsInRow(fcell); ++i) {
+                if (BottomLine(fcell + i)) {
+			os << "\\cline{"
+			   << column_of_cell(fcell + i) + 1
+			   << '-'
+			   << right_column_of_cell(fcell + i) + 1
+			   << "} ";
+                    tmp = 1;
+                }
+            }
+        }
+        if (tmp){
+		os << '\n';
+            ++ret;
+        }
+        if (is_long_table)
+		os << "\\end{longtable}";
+        else
+		os << "\\end{tabular}";
+        if (rotate) {
+		os << "\n\\end{sideways}";
+            ++ret;
+        }
+    } else {
+        nvcell = NextVirtualCell(cell + 1);
+        if (cell < 0){
+            // preamble
+            if (rotate) {
+		    os << "\\begin{sideways}\n";
+                ++ret;
+            }
+            if (is_long_table)
+		    os << "\\begin{longtable}{";
+            else
+		    os << "\\begin{tabular}{";
+            for (i = 0; i < columns; ++i) {
+                if (column_info[i].left_line)
+			os << '|';
+                if (!column_info[i].align_special.empty()) {
+			os << column_info[i].align_special;
+                } else if (!column_info[i].p_width.empty()) {
+			os << "p{"
+			   << column_info[i].p_width
+			   << '}';
+                } else {
+                    switch (column_info[i].alignment) {
+                      case LYX_ALIGN_LEFT:
+			      os << 'l';
+                          break;
+                      case LYX_ALIGN_RIGHT:
+			      os << 'r';
+                          break;
+                      default:
+			      os << 'c';
+                          break;
+                    }
+                }
+                if (column_info[i].right_line)
+			os << '|';
+            }
+            os << "}\n";
+            ++ret;
+            tmp = 0;
+            if (GetNumberOfCells()) {
+                fcell = 0;
+                for (i = 0; i < NumberOfCellsInRow(fcell); ++i) {
+                    if (TopLine(fcell + i))
+                        ++tmp;
+                }
+                if (tmp == NumberOfCellsInRow(fcell)){
+			os << "\\hline ";
+                } else {
+                    tmp = 0;
+                    for (i = 0; i < NumberOfCellsInRow(fcell); ++i) {
+                        if (TopLine(fcell + i)) {
+				os << "\\cline{"
+				   << column_of_cell(fcell + i) + 1
+				   << '-'
+				   << right_column_of_cell(fcell + i) + 1
+				   << "} ";
+				tmp = 1;
+                        }
+                    }
+                }
+                if (tmp){
+			os << '\n';
+                    ++ret;
+                }
+            }
+            if (RotateCell(0)) {
+		    os << "\\begin{sideways}\n";
+                ++ret;
+            }
+        } else {
+            // usual cells
+            if (Linebreaks(cell))
+		    os << "\\smallskip{}}";
+            if (IsMultiColumn(cell)){
+		    os << '}';
+            }
+            if (RotateCell(cell)) {
+		    os << "\n\\end{sideways}";
+                ++ret;
+            }
+            if (IsLastCell(cell)) {
+                int row = row_of_cell(cell);
+                string hline1, hline2;
+                bool print_hline = true;
+                bool flag1 = IsLongTable() &&
+                    ((row == endhead) || (row == endfirsthead) ||
+                     (row == endfoot) || (row == endlastfoot));
+                ++row;
+                bool flag2 = IsLongTable() &&
+                    ((row <= endhead) || (row <= endfirsthead) ||
+                     (row <= endfoot) || (row <= endlastfoot));
+                --row;
+                // print the bottom hline only if (otherwise it is doubled):
+                // - is no LongTable
+                // - there IS a first-header
+                // - the next row is no special header/footer
+                //   & this row is no special header/footer
+                // - the next row is a special header/footer
+                //   & this row is a special header/footer
+                bool pr_top_hline = (flag1 && flag2) || (!flag1 && !flag2) ||
+                    (endfirsthead == endhead);
+                os << "\\\\\n";
+                ++ret;
+                tmp = 0;
+                fcell = cell;
+                while (!IsFirstCell(fcell))
+                    --fcell;
+                for (i = 0; i < NumberOfCellsInRow(cell); ++i) {
+                    if (BottomLine(fcell + i))
+                        ++tmp;
+                }
+                if (tmp == NumberOfCellsInRow(cell)){
+			os << "\\hline ";
+                    hline1 = "\\hline ";
+                } else {
+                    tmp = 0;
+                    for (i = 0; i < NumberOfCellsInRow(fcell); ++i) {
+                        if (BottomLine(fcell + i)){
+				os << "\\cline{"
+				   << column_of_cell(fcell + i) + 1
+				   << '-'
+				   << right_column_of_cell(fcell + i) + 1
+				   << "} ";
+                            hline1 += "\\cline{";
+                            hline1 += tostr(column_of_cell(fcell + i) + 1);
+                            hline1 += '-';
+                            hline1 += tostr(right_column_of_cell(fcell + i) + 1);
+                            hline1 += "} ";
+                            tmp = 1;
+                        }
+                    }
+                }
+                if (tmp){
+			os << '\n';
+                    ++ret;
+                }
+                if (IsLongTable() && (row == endfoot)) {
+			os << "\\endfoot\n";
+                    ++ret;
+                    print_hline = false; // no double line below footer
+                }
+                if (IsLongTable() && (row == endlastfoot)) {
+			os << "\\endlastfoot\n";
+                    ++ret;
+                    print_hline = false; // no double line below footer
+                }
+                if (IsLongTable() && row_info[row].newpage) {
+			os << "\\newpage\n";
+                    ++ret;
+                    print_hline = false; // no line below a \\newpage-command
+                }
+                tmp = 0;
+                if (nvcell < numberofcells
+		    && (cell < GetNumberOfCells() - 1)
+                    && !ShouldBeVeryLastCell(cell)) {
+                    fcell = nvcell;
+                    for (i = 0; i < NumberOfCellsInRow(fcell); ++i) {
+                        if (TopLine(fcell + i))
+                            ++tmp;
+                    }
+                    if (tmp == NumberOfCellsInRow(fcell)) {
+                        if (print_hline)
+				os << "\\hline ";
+                        hline2 = "\\hline ";
+                    } else {
+                        tmp = 0;
+                        for (i = 0; i < NumberOfCellsInRow(fcell); ++i) {
+                            if (TopLine(fcell + i)) {
+                                if (print_hline) {
+					os << "\\cline{"
+					   << column_of_cell(fcell + i) + 1
+					   << '-'
+					   << right_column_of_cell(fcell + i) + 1
+					   << "} ";
+				}
+                                hline2 += "\\cline{";
+                                hline2 += tostr(column_of_cell(fcell+i)+1);
+                                hline2 += '-';
+                                hline2 += tostr(right_column_of_cell(fcell+i)+1);
+                                hline2 += "} ";
+                                tmp = 1;
+                            }
+                        }
+                    }
+                    if (tmp && print_hline){
+			    os << '\n';
+                        ++ret;
+                    }
+                }
+                // the order here is important as if one defines two
+                // or more things in one line only the first entry is
+                // displayed the other are set to an empty-row. This
+                // is important if I have a footer and want that the
+                // lastfooter is NOT displayed!!!
+                bool sflag2 = (row == endhead) || (row == endfirsthead) ||
+                    (row == endfoot) || (row == endlastfoot);
+                --row;
+//                sflag2 = IsLongTable() && (row >= 0) &&
+//                    (sflag2 || (row == endhead) || (row == endfirsthead));
+                row += 2;
+                bool sflag1 = IsLongTable() && (row != endhead) &&
+                    (row != endfirsthead) &&
+                    ((row == endfoot) || (row == endlastfoot));
+                --row;
+                if (IsLongTable() && (row == endhead)) {
+			os << "\\endhead\n";
+                    ++ret;
+                }
+                if (IsLongTable() && (row == endfirsthead)) {
+			os << "\\endfirsthead\n";
+                    ++ret;
+                }
+                if (sflag1) { // add the \hline for next foot row
+                    if (!hline1.empty()) {
+			    os << hline1 + '\n';
+                        ++ret;
+                    }
+                }
+                // add the \hline for the first row
+                if (pr_top_hline && sflag2) {
+                    if (!hline2.empty()) {
+			    os << hline2 + '\n';
+                        ++ret;
+                    }
+                }
+                if (nvcell < numberofcells && RotateCell(nvcell)) {
+			os << "\\begin{sideways}\n";
+                    ++ret;
+                }
+            } else {
+		    os << "&\n";
+                ++ret;
+                if (nvcell < numberofcells && RotateCell(nvcell)) {
+			os << "\\begin{sideways}\n";
+                    ++ret;
+                }
+            }
+        }
+        if (nvcell < numberofcells && IsMultiColumn(nvcell)) {
+		os << "\\multicolumn{"
+		   << cells_in_multicolumn(nvcell)
+		   << "}{";
+            if (!cellinfo_of_cell(cell+1)->align_special.empty()) {
+		    os << cellinfo_of_cell(cell+1)->align_special
+		       << "}{";
+            } else {
+                if (LeftLine(nvcell))
+			os << '|';
+                if (!GetPWidth(nvcell).empty()) {
+			os << "p{"
+			   << GetPWidth(nvcell)
+			   << '}';
+                } else {
+                    switch (GetAlignment(nvcell)) {
+		    case LYX_ALIGN_LEFT: os << 'l'; break;
+		    case LYX_ALIGN_RIGHT: os << 'r'; break;
+		    default:  os << 'c'; break;
+                    }
+                }
+                if (RightLine(nvcell))
+			os << '|';
+                //if (column_of_cell(cell+2)!= 0 && LeftLine(cell+2))
+                if (((nvcell + 1) < numberofcells) &&
+                    (NextVirtualCell(nvcell+1) < numberofcells) &&
+                    (column_of_cell(NextVirtualCell(nvcell+1))!= 0) &&
+                    LeftLine(NextVirtualCell(nvcell+1)))
+			os << '|';
+		
+		os << "}{";
+            }
+        }
+        if (nvcell < numberofcells && Linebreaks(nvcell)) {
+//            !column_info[column_of_cell(nvcell)].p_width.empty()) {
+		os << "\\parbox{"
+		   << GetPWidth(nvcell)
+		   << "}{\\smallskip{}";
+	}
+    }
+    return ret;
+}
+#else
 // cell <0 will tex the preamble
 // returns the number of printed newlines
 int LyXTable::TexEndOfCell(string & file, int cell)
@@ -1287,6 +1628,7 @@ int LyXTable::TexEndOfCell(string & file, int cell)
     }
     return ret;
 }
+#endif
 
 
 #if 0
@@ -1429,6 +1771,130 @@ char const *LyXTable::getDocBookAlign(int cell, bool isColumn)
     }
 }
 
+
+#ifdef USE_OSTREAM_ONLY
+// cell <0 will tex the preamble
+// returns the number of printed newlines
+int LyXTable::DocBookEndOfCell(ostream & os, int cell, int &depth)
+{
+    int i;
+    int ret = 0;
+    //int tmp; // tmp2; // unused
+    int nvcell; // fcell; // unused
+    if (ShouldBeVeryLastCell(cell)) {
+	    os << newlineAndDepth(--depth)
+	       << "</ENTRY>"
+	       << newlineAndDepth(--depth)
+	       << "</ROW>"
+	       << newlineAndDepth(--depth)
+	       << "</TBODY>"
+	       << newlineAndDepth(--depth);
+        if (is_long_table)
+		os << "</TGROUP>";
+        else
+		os << "</TGROUP>"
+		   << newlineAndDepth(--depth);
+        ret += 4;
+    } else {
+        nvcell = NextVirtualCell(cell + 1);
+        if (cell < 0) {
+            // preamble
+            if (is_long_table)
+		    os << "<TGROUP ";
+            else
+		    os << "<TGROUP ";
+            os << "COLS='"
+	       << columns
+	       << "' COLSEP='1' ROWSEP='1'>"
+	       << newlineAndDepth(++depth);
+            ++ret;
+            for (i = 0; i < columns; ++i) {
+		    os << "<COLSPEC ALIGN='"
+		       << getDocBookAlign(i, true)
+		       << "' COLNAME='col"
+		       << i + 1
+		       << "' COLNUM='"
+		       << i + 1
+		       << "' COLSEP='";
+               if (i == (columns-1)) {
+		       os << '1';
+               } else {
+                   if (column_info[i].right_line ||
+                       column_info[i+1].left_line)
+			   os << '1';
+                   else
+			   os << '0';
+               }
+               os << "'>"
+		  << newlineAndDepth(depth);
+                ++ret;
+#ifdef NOT_HANDLED_YET_AS_I_DONT_KNOW_HOW
+                if (column_info[i].left_line)
+			os << '|';
+#endif
+            }
+            os << "<TBODY>"
+	       << newlineAndDepth(++depth)
+	       << "<ROW>"
+	       << newlineAndDepth(++depth)
+	       << "<ENTRY ALIGN='"
+	       << getDocBookAlign(0)
+	       << "'";
+           if (IsMultiColumn(0)) {
+		   os << " NAMEST='col1' NAMEEND='col"
+		      << cells_in_multicolumn(0)
+		      << "'";
+           }
+	   os << ">"
+	      << newlineAndDepth(++depth);
+            ret += 3;
+        } else {
+            if (IsLastCell(cell)) {
+		    os << newlineAndDepth(--depth)
+		       << "</ENTRY>"
+		       << newlineAndDepth(--depth)
+		       << "</ROW>"
+		       << newlineAndDepth(depth)
+		       << "<ROW>"
+		       << newlineAndDepth(++depth)
+		       << "<ENTRY ALIGN='"
+		       << getDocBookAlign(cell + 1)
+		       << "' VALIGN='middle'";
+               if (IsMultiColumn(cell + 1)) {
+		       os << " NAMEST='col"
+			  << column_of_cell(cell+1) + 1
+			  << "' NAMEEND='col"
+			  << column_of_cell(cell + 1) +
+			       cells_in_multicolumn(cell + 1)
+			  << "'";
+               }
+               os << ">"
+		  << newlineAndDepth(++depth);
+                ret += 4;
+            } else {
+		    os << newlineAndDepth(--depth)
+		       << "</ENTRY>"
+		       << newlineAndDepth(depth)
+		       << "<ENTRY ALIGN='"
+		       << getDocBookAlign(cell + 1)
+		       << "' VALIGN='middle'";
+               if (IsMultiColumn(cell + 1)) {
+		       os << " NAMEST='col"
+			  << column_of_cell(cell+1) + 1
+			  << "' NAMEEND='col"
+			  << column_of_cell(cell+1) +
+			       cells_in_multicolumn(cell+1)
+			  << "'";
+               }
+               os << ">"
+		  << newlineAndDepth(++depth);
+                ret += 3;
+            }
+        }
+    }
+    return ret;
+}
+#else
 // cell <0 will tex the preamble
 // returns the number of printed newlines
 int LyXTable::DocBookEndOfCell(string & file, int cell, int &depth)
@@ -1550,6 +2016,7 @@ int LyXTable::DocBookEndOfCell(string & file, int cell, int &depth)
     }
     return ret;
 }
+#endif
 
 
 bool LyXTable::IsMultiColumn(int cell)

@@ -91,7 +91,6 @@ enum LyXRCTags {
 	RC_AUTOREGIONDELETE,
 	RC_BIND,
 	RC_SERVERPIPE,
-	RC_NOMENUACCELERATORS,
 	RC_INPUT,
 	RC_BINDFILE,
 	RC_KBMAP,
@@ -136,6 +135,7 @@ enum LyXRCTags {
 	RC_PDF_TO_PS_COMMAND,
 	RC_DVI_TO_PS_COMMAND,
 	RC_DATE_INSERT_FORMAT,
+	RC_SHOW_BANNER,
 	RC_LAST
 };
 
@@ -219,6 +219,7 @@ static keyword_item lyxrcTags[] = {
 	{ "\\selection_color", RC_SELECTION_COLOR },
 	{ "\\serverpipe", RC_SERVERPIPE },
 	{ "\\sgml_extra_options", RC_SGML_EXTRA_OPTIONS },
+	{ "\\show_banner", RC_SHOW_BANNER },
 	{ "\\spell_command", RC_SPELL_COMMAND },
 	{ "\\tempdir_path", RC_TEMPDIRPATH },
 	{ "\\template_path", RC_TEMPLATEPATH },
@@ -328,9 +329,10 @@ LyXRC::LyXRC()
 	use_kbmap = false;
 	hasBindFile = false;
 	rtl_support = false;
-	defaultKeyBindings();
-	///
 	date_insert_format = "%A, %e %B %Y";
+	show_banner = true;
+	//
+	defaultKeyBindings();
 }
 
 
@@ -922,6 +924,10 @@ int LyXRC::read(string const & filename)
 			if (lexrc.next())
 				rtl_support = lexrc.GetBool();
 			break;
+		case RC_SHOW_BANNER:
+			if (lexrc.next())
+				show_banner = lexrc.GetBool();
+			break;
 		case RC_LAST: break; // this is just a dummy
 		}
 	}
@@ -1215,7 +1221,9 @@ void LyXRC::output(ostream & os) const
 		os << "\\make_backup " << tostr(make_backup) << "\n";
 	case RC_DATE_INSERT_FORMAT:
 		os << "\\date_insert_format \"" << date_insert_format
-		   << "\"\n"; 
+		   << "\"\n";
+	case RC_SHOW_BANNER:
+		os << "\\show_banner " << tostr(show_banner) << "\n";
 	}
 	os.flush();
 }

@@ -76,13 +76,13 @@ string DoAccent(string const & s, tex_accent accent)
 {
 	string res;
 	
-	res+= lyx_accent_table[accent].cmd;
-	res+= '{';
+	res += lyx_accent_table[accent].cmd;
+	res += '{';
 	if (s == "i" || s == "j") {
-		res+= '\\';
+		res += '\\';
 	}
-	res+= s;
-	res+= '}';
+	res += s;
+	res += '}';
 	return res;
 }
 

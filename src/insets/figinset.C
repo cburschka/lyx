@@ -1209,7 +1209,6 @@ int InsetFig::Latex(string & file, signed char /* fragile*/ ) const
 	file += cmd + ' ';
 	return 0;
 }
-#endif
 
 
 int InsetFig::Linuxdoc(string &/*file*/) const
@@ -1228,6 +1227,26 @@ int InsetFig::DocBook(string & file) const
 	file += "@<graphic fileref=\"" + figurename + "\"></graphic>";
 	return 0;
 }
+
+#else
+
+int InsetFig::Linuxdoc(ostream &) const
+{
+	return 0;
+}
+
+
+int InsetFig::DocBook(ostream & os) const
+{
+	string figurename = fname;
+
+	if(suffixIs(figurename, ".eps"))
+		figurename.erase(fname.length() - 5);
+
+	os << "@<graphic fileref=\"" << figurename << "\"></graphic>";
+	return 0;
+}
+#endif
 
 
 void InsetFig::Validate(LaTeXFeatures & features) const

@@ -758,7 +758,6 @@ int InsetLatexAccent::Latex(string & file, signed char /*fragile*/) const
 	file += contents;
 	return 0;
 }
-#endif
 
 
 int InsetLatexAccent::Linuxdoc(string & file) const
@@ -773,6 +772,22 @@ int InsetLatexAccent::DocBook(string & file) const
 	file += contents;
 	return 0;
 }
+
+#else
+
+int InsetLatexAccent::Linuxdoc(ostream & os) const
+{
+	os << contents;
+	return 0;
+}
+
+
+int InsetLatexAccent::DocBook(ostream & os) const
+{
+	os << contents;
+	return 0;
+}
+#endif
 
 
 bool InsetLatexAccent::Deletable() const

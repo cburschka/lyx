@@ -43,10 +43,17 @@ public:
 	bool display() const { return true; }
 	///
 	Inset::Code LyxCode() const { return Inset::TOC_CODE; }
+#ifdef USE_OSTREAM_ONLY
+	///
+	int Linuxdoc(ostream &) const;
+	///
+	int DocBook(ostream &) const;
+#else
 	///
 	int Linuxdoc(string & file) const;
 	///
 	int DocBook(string & file) const;
+#endif
 private:
 	///
 	Buffer * owner;

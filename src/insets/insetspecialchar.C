@@ -220,7 +220,6 @@ int InsetSpecialChar::Latex(string & file, signed char /*fragile*/) const
 	}
 	return 0;
 }
-#endif
 
 
 int InsetSpecialChar::Linuxdoc(string & file) const
@@ -247,6 +246,34 @@ int InsetSpecialChar::DocBook(string & file) const
 	}
 	return 0;
 }
+
+#else
+
+int InsetSpecialChar::Linuxdoc(ostream & os) const
+{
+	switch (kind) {
+	case HYPHENATION:	  os << "";	break;
+	case END_OF_SENTENCE:	  os << "";	break;
+	case LDOTS:		  os << "...";	break;
+	case MENU_SEPARATOR:      os << "->";   break;
+	case PROTECTED_SEPARATOR: os << " ";   break;
+	}
+	return 0;
+}
+
+
+int InsetSpecialChar::DocBook(ostream & os) const
+{
+	switch (kind) {
+	case HYPHENATION:	  os << "";	break;
+	case END_OF_SENTENCE:	  os << "";	break;
+	case LDOTS:		  os << "...";	break;
+	case MENU_SEPARATOR:      os << "->";   break;
+	case PROTECTED_SEPARATOR: os << " ";   break;
+	}
+	return 0;
+}
+#endif
 
 
 Inset * InsetSpecialChar::Clone() const

@@ -84,11 +84,16 @@ public:
 #ifndef USE_OSTREAM_ONLY
     ///
     int Latex(string &, signed char) const;
-#endif
     ///
     int Linuxdoc(string &) const { return 0; }
     ///
     int DocBook(string &) const { return 0; }
+#else
+    ///
+    int Linuxdoc(ostream &) const { return 0; }
+    ///
+    int DocBook(ostream &) const { return 0; }
+#endif
     ///
     void Validate(LaTeXFeatures & features) const;
     ///
@@ -147,7 +152,7 @@ private:
     void drawRowText(Painter &, int startpos, int endpos, int baseline,
                      float x) const;
     ///
-    void computeTextRows(Painter &) const;
+    void computeTextRows(Painter &, float x = 0.0) const;
     ///
     void computeBaselines(int) const;
     ///

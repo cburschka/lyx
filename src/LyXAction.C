@@ -497,9 +497,10 @@ int LyXAction::LookupFunc(string const & func) const
 }
 
 
-#ifdef WITH_WARNINGS
-#warning Not working as it should.
-#endif
+//#ifdef WITH_WARNINGS
+//#warning Not working as it should.
+//#endif
+// I have no clue what is wrong with it... (Lgb)
 int LyXAction::getApproxFunc(string const & func) const
 	// This func should perhaps also be able to return a list of all
 	// actions that has func as a prefix. That should actually be quite

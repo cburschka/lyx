@@ -56,7 +56,6 @@ int InsetLabel::Latex(string & file, signed char /*fragile*/) const
 	file += escape(getCommand());
 	return 0;
 }
-#endif
 
 
 int InsetLabel::Linuxdoc(string & file) const
@@ -71,6 +70,24 @@ int InsetLabel::DocBook(string & file) const
 	file += "<anchor id=\"" + getContents() +"\" >";
 	return 0;
 }
+
+#else
+
+int InsetLabel::Linuxdoc(ostream & os) const
+{
+	os << "<label id=\"" << getContents() << "\" >";
+	return 0;
+}
+
+
+int InsetLabel::DocBook(ostream & os) const
+{
+	os << "<anchor id=\"" << getContents() << "\" >";
+	return 0;
+}
+#endif
+
+
 
 
 // This function escapes 8-bit characters and other problematic characters

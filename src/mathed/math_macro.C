@@ -386,7 +386,7 @@ void MathMacroTemplate::WriteDef(ostream & os)
 }
 
 
-void MathMacroTemplate::WriteDef(string &file)
+void MathMacroTemplate::WriteDef(string & file)
 {
     file += "\n\\newcommand{\\";
     file += name;

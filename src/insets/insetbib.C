@@ -239,6 +239,15 @@ void InsetBibKey::setCounter(int c)
 // of time cause LyX3 won't use lyxlex anyway.  (ale)
 void InsetBibKey::Write(ostream & os) const
 {
+#ifdef USE_OSTREAM_ONLY
+	os << "\\bibitem ";
+	if (!options.empty()) {
+		os << '['
+		   << options << ']';
+	}
+	os << '{'
+	   << contents << "}\n";
+#else
 	string s;
 	if (!options.empty()) {
 		s += '[';
@@ -247,6 +256,7 @@ void InsetBibKey::Write(ostream & os) const
 	s += '{';
 	s += contents + '}';
 	os << "\\bibitem " << s << "\n";
+#endif
 }
 
 

@@ -85,7 +85,6 @@ int InsetFormulaMacro::Latex(string &file, signed char /*fragile*/) const
     tmacro->WriteDef(file);
     return ret;
 }
-#endif
 
 
 int InsetFormulaMacro::Linuxdoc(string &/*file*/) const
@@ -98,6 +97,20 @@ int InsetFormulaMacro::DocBook(string &/*file*/) const
 {
     return 0;
 }
+
+#else
+
+int InsetFormulaMacro::Linuxdoc(ostream &) const
+{
+    return 0;
+}
+
+
+int InsetFormulaMacro::DocBook(ostream &) const
+{
+    return 0;
+}
+#endif
 
 
 void InsetFormulaMacro::Read(LyXLex & lex)

@@ -203,6 +203,8 @@ public:
 	string date_insert_format;
 	///
 	bool rtl_support;
+	///
+	bool show_banner;
 private:
 	///
 	void defaultKeyBindings();

@@ -663,6 +663,91 @@ void LyXFont::lyxWriteChanges(LyXFont const & orgfont, ostream & os) const
 
 /// Writes the head of the LaTeX needed to impose this font
 // Returns number of chars written.
+#ifdef USE_OSTREAM_ONLY
+int LyXFont::latexWriteStartChanges(ostream & os, LyXFont const & base,
+				    LyXFont const & prev) const
+{
+	LyXFont f = *this;
+	f.reduce(base);
+	
+	if (f.bits == inherit)
+		return 0;
+	
+	int count = 0;
+	bool env = false;
+
+	FONT_DIRECTION direction = f.direction();
+	if (direction != prev.direction()) {
+		if (direction == LTR_DIR) {
+			os << "\\L{";
+			count += 3;
+			env = true; //We have opened a new environment
+		}
+		if (direction == RTL_DIR) {
+			os << "\\R{";
+			count += 3;
+			env = true; //We have opened a new environment
+		}
+	}
+
+	if (f.family() != INHERIT_FAMILY) {
+		os << '\\'
+		   << LaTeXFamilyNames[f.family()]
+		   << '{'
+		   << LaTeXFamilyNames[f.family()].length() + 2;
+		env = true; //We have opened a new environment
+	}
+	if (f.series() != INHERIT_SERIES) {
+		os << '\\'
+		   << LaTeXSeriesNames[f.series()]
+		   << '{';
+		count += LaTeXSeriesNames[f.series()].length() + 2;
+		env = true; //We have opened a new environment
+	}
+	if (f.shape() != INHERIT_SHAPE) {
+		os << '\\'
+		   << LaTeXShapeNames[f.shape()]
+		   << '{';
+		count += LaTeXShapeNames[f.shape()].length() + 2;
+		env = true; //We have opened a new environment
+	}
+	if (f.color() != LColor::inherit) {
+		os << "\\textcolor{"
+		   << lcolor.getLaTeXName(f.color())
+		   << "}{";
+		count += lcolor.getLaTeXName(f.color()).length() + 13;
+		env = true; //We have opened a new environment
+	}
+	if (f.emph() == ON) {
+		os << "\\emph{";
+		count += 6;
+		env = true; //We have opened a new environment
+	}
+	if (f.underbar() == ON) {
+		os << "\\underbar{";
+		count += 10;
+		env = true; //We have opened a new environment
+	}
+	// \noun{} is a LyX special macro
+	if (f.noun() == ON) {
+		os << "\\noun{";
+		count += 8;
+		env = true; //We have opened a new environment
+	}
+	if (f.size() != INHERIT_SIZE) {
+		// If we didn't open an environment above, we open one here
+		if (!env) {
+			os << '{';
+			++count;
+		}
+		os << '\\'
+		   << LaTeXSizeNames[f.size()]
+		   << ' ';
+		count += LaTeXSizeNames[f.size()].length() + 2;
+	}
+	return count;
+}
+#else
 int LyXFont::latexWriteStartChanges(string & file, LyXFont const & base,
 				    LyXFont const & prev) const
 {
@@ -746,8 +831,10 @@ int LyXFont::latexWriteStartChanges(string & file, LyXFont const & base,
 	}
 	return count;
 }
+#endif
 
 
+#ifndef USE_OSTREAM_ONLY
 /// Writes ending block of LaTeX needed to close use of this font
 // Returns number of chars written
 // This one corresponds to latexWriteStartChanges(). (Asger)
@@ -816,9 +903,80 @@ int LyXFont::latexWriteEndChanges(string & file, LyXFont const & base,
 			++count;
 		}
 	}
-	
 	return count;
 }
+#else
+/// Writes ending block of LaTeX needed to close use of this font
+// Returns number of chars written
+// This one corresponds to latexWriteStartChanges(). (Asger)
+int LyXFont::latexWriteEndChanges(ostream & os, LyXFont const & base,
+				  LyXFont const & next) const
+{
+	LyXFont f = *this; // why do you need this?
+	f.reduce(base); // why isn't this just "reduce(base);" (Lgb)
+	// Because this function is const. Everything breaks if this
+	// method changes the font it represents. There is no speed penalty
+	// by using the temporary. (Asger)
+
+	if (f.bits == inherit)
+		return 0;
+	
+	int count = 0;
+	bool env = false;
+
+	FONT_DIRECTION direction = f.direction();
+	if ( direction != next.direction()
+	    && (direction == RTL_DIR || direction == LTR_DIR) ) {
+		os << '}';
+		++count;
+		env = true; // Size change need not bother about closing env.
+	}
+
+	if (f.family() != INHERIT_FAMILY) {
+		os << '}';
+		++count;
+		env = true; // Size change need not bother about closing env.
+	}
+	if (f.series() != INHERIT_SERIES) {
+		os << '}';
+		++count;
+		env = true; // Size change need not bother about closing env.
+	}
+	if (f.shape() != INHERIT_SHAPE) {
+		os << '}';
+		++count;
+		env = true; // Size change need not bother about closing env.
+	}
+	if (f.color() != LColor::inherit) {
+		os << '}';
+		++count;
+		env = true; // Size change need not bother about closing env.
+	}
+	if (f.emph() == ON) {
+		os << '}';
+		++count;
+		env = true; // Size change need not bother about closing env.
+	}
+	if (f.underbar() == ON) {
+		os << '}';
+		++count;
+		env = true; // Size change need not bother about closing env.
+	}
+	if (f.noun() == ON) {
+		os << '}';
+		++count;
+		env = true; // Size change need not bother about closing env.
+	}
+	if (f.size() != INHERIT_SIZE) {
+		// We only have to close if only size changed
+		if (!env) {
+			os << '}';
+			++count;
+		}
+	}
+	return count;
+}
+#endif
 
 
 LColor::color LyXFont::realColor() const

@@ -64,10 +64,11 @@ WorkArea::WorkArea(BufferView * o, int xpos, int ypos, int width, int height)
 	fl_freeze_all_forms();
 
 	figinset_canvas = 0;
-	
-	lyxerr << "Creating work area: +"
-	       << xpos << '+' << ypos << ' '
-	       << width << 'x' << height << endl;
+
+	if (lyxerr.debugging())
+		lyxerr << "Creating work area: +"
+		       << xpos << '+' << ypos << ' '
+		       << width << 'x' << height << endl;
 	//
 	FL_OBJECT * obj;
 	const int bw = int(abs(float(fl_get_border_width())));
@@ -81,9 +82,10 @@ WorkArea::WorkArea(BufferView * o, int xpos, int ypos, int width, int height)
 	fl_set_object_gravity(obj, NorthWestGravity, NorthWestGravity);
 	
 	// a box
-	lyxerr << "\tbackground box: +"
-	       << xpos << '+' << ypos << ' '
-	       << width - 15 << 'x' << height << endl;
+	if (lyxerr.debugging())
+		lyxerr << "\tbackground box: +"
+		       << xpos << '+' << ypos << ' '
+		       << width - 15 << 'x' << height << endl;
 	backgroundbox = obj = fl_add_box(FL_BORDER_BOX,
 					 xpos, ypos,
 					 width - 15,
@@ -98,9 +100,10 @@ WorkArea::WorkArea(BufferView * o, int xpos, int ypos, int width, int height)
 	// up - scrollbar button
 	fl_set_border_width(-1);
 
-	lyxerr << "\tup button: +"
-	       << xpos + width - 15 << '+' << ypos << ' '
-	       << 15 << 'x' << 15 << endl;
+	if (lyxerr.debugging())
+		lyxerr << "\tup button: +"
+		       << xpos + width - 15 << '+' << ypos << ' '
+		       << 15 << 'x' << 15 << endl;
 	button_up = obj = fl_add_pixmapbutton(FL_TOUCH_BUTTON,
 					      xpos + width - 15,
 					      ypos,
@@ -118,9 +121,11 @@ WorkArea::WorkArea(BufferView * o, int xpos, int ypos, int width, int height)
 
 	// the scrollbar slider
 	fl_set_border_width(-bw);
-	lyxerr << "\tscrollbar slider: +"
-	       << xpos + width - 15 << '+' << ypos + 15 << ' '
-	       << 15 << 'x' << height - 30 << endl;
+
+	if (lyxerr.debugging())
+		lyxerr << "\tscrollbar slider: +"
+		       << xpos + width - 15 << '+' << ypos + 15 << ' '
+		       << 15 << 'x' << height - 30 << endl;
 	scrollbar = obj = fl_add_slider(FL_VERT_SLIDER,
 					xpos + width - 15,
 					ypos + 15,
@@ -136,9 +141,11 @@ WorkArea::WorkArea(BufferView * o, int xpos, int ypos, int width, int height)
 	// down - scrollbar button
 	fl_set_border_width(-1);
 
-	lyxerr << "\tdown button: +"
-	       << xpos + width - 15 << '+' << ypos + height - 15 << ' '
-	       << 15 << 'x' << 15 << endl;
+	if (lyxerr.debugging())
+		lyxerr << "\tdown button: +"
+		       << xpos + width - 15 << '+'
+		       << ypos + height - 15 << ' '
+		       << 15 << 'x' << 15 << endl;
 	button_down = obj = fl_add_pixmapbutton(FL_TOUCH_BUTTON,
 						xpos + width - 15,
 						ypos + height - 15,
@@ -167,9 +174,12 @@ WorkArea::WorkArea(BufferView * o, int xpos, int ypos, int width, int height)
 	
 	// We add this object as late as possible to avoit problems
 	// with drawing.
-	lyxerr << "\tfree object: +"
-	       << xpos + bw << '+' << ypos + bw << ' '
-	       << width - 15 - 2 * bw << 'x' << height - 2 * bw << endl;
+	if (lyxerr.debugging())
+		lyxerr << "\tfree object: +"
+		       << xpos + bw << '+' << ypos + bw << ' '
+		       << width - 15 - 2 * bw << 'x'
+		       << height - 2 * bw << endl;
+	
 	work_area = obj = fl_add_free(FL_INPUT_FREE,
 				      xpos + bw, ypos + bw,
 				      width - 15 - 2 * bw, // scrollbarwidth
@@ -245,15 +255,18 @@ void WorkArea::createPixmap(int width, int height)
 
 	if (workareapixmap)
 		XFreePixmap(fl_display, workareapixmap);
-	
-	lyxerr << "Creating pixmap (" << width << 'x' << height << ")" << endl;
+
+	if (lyxerr.debugging())
+		lyxerr << "Creating pixmap ("
+		       << width << 'x' << height << ")" << endl;
 	
 	workareapixmap = XCreatePixmap(fl_display,
 				       RootWindow(fl_display, 0),
 				       width,
 				       height, 
 				       fl_get_visual_depth());
-	lyxerr << "\tpixmap=" << workareapixmap << endl;
+	if (lyxerr.debugging())
+		lyxerr << "\tpixmap=" << workareapixmap << endl;
 }
 
 
@@ -328,8 +341,8 @@ void WorkArea::scroll_cb(FL_OBJECT * ob, long)
 bool Lgb_bug_find_hack = false;
 
 int WorkArea::work_area_handler(FL_OBJECT * ob, int event,
-				  FL_Coord, FL_Coord ,
-				  int /*key*/, void * xev)
+				FL_Coord, FL_Coord ,
+				int /*key*/, void * xev)
 {
 	static int x_old = -1;
 	static int y_old = -1;
@@ -381,16 +394,16 @@ int WorkArea::work_area_handler(FL_OBJECT * ob, int event,
 	// Done by the raw callback:
 	//  case FL_KEYBOARD: WorkAreaKeyPress(ob, 0,0,0,ev,0); break;
 	case FL_FOCUS:
-		lyxerr << "Workarea event: FOCUS" << endl;
+		lyxerr.debug() << "Workarea event: FOCUS" << endl;
 		break;
 	case FL_UNFOCUS:
-		lyxerr << "Workarea event: UNFOCUS" << endl;
+		lyxerr.debug() << "Workarea event: UNFOCUS" << endl;
 		break;
 	case FL_ENTER:
-		lyxerr << "Workarea event: ENTER" << endl;
+		lyxerr.debug() << "Workarea event: ENTER" << endl;
 		break;
 	case FL_LEAVE:
-		lyxerr << "Workarea event: LEAVE" << endl;
+		lyxerr.debug() << "Workarea event: LEAVE" << endl;
 		break;
 	case FL_DBLCLICK:
 		if (!ev) break;

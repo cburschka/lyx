@@ -257,7 +257,6 @@ int InsetCommand::Latex(string & file, signed char /*fragile*/) const
 	file += getCommand();
 	return 0;
 }
-#endif
 
 
 int InsetCommand::Linuxdoc(string &/*file*/) const
@@ -270,6 +269,20 @@ int InsetCommand::DocBook(string &/*file*/) const
 {
 	return 0;
 }
+
+#else
+
+int InsetCommand::Linuxdoc(ostream &) const
+{
+	return 0;
+}
+
+
+int InsetCommand::DocBook(ostream &) const
+{
+	return 0;
+}
+#endif
 
 
 Inset * InsetCommand::Clone() const

@@ -17,6 +17,7 @@ void InsetTOC::Edit(BufferView * bv, int, int, unsigned int)
 	bv->owner()->getLyXFunc()->Dispatch(LFUN_TOCVIEW);
 }
 
+#ifndef USE_OSTREAM_ONLY
 int InsetTOC::Linuxdoc(string & file) const
 {
 	file += "<toc>";
@@ -29,3 +30,19 @@ int InsetTOC::DocBook(string & file) const
 	file += "<toc></toc>";
 	return 0;
 }
+
+#else
+
+int InsetTOC::Linuxdoc(ostream & os) const
+{
+	os << "<toc>";
+	return 0;
+}
+
+
+int InsetTOC::DocBook(ostream & os) const
+{
+	os << "<toc></toc>";
+	return 0;
+}
+#endif

@@ -334,7 +334,6 @@ int InsetFormula::Latex(string & file, signed char fragile) const
         mathed_write(par, file, &ret, fragile, label.c_str());
     return ret;
 }
-#endif
 
 
 int InsetFormula::Linuxdoc(string &/*file*/) const
@@ -347,6 +346,20 @@ int InsetFormula::DocBook(string &/*file*/) const
 {
     return 0;
 }
+
+#else
+
+int InsetFormula::Linuxdoc(ostream &) const
+{
+    return 0;
+}
+
+
+int InsetFormula::DocBook(ostream&) const
+{
+    return 0;
+}
+#endif
 
 
 // Check if uses AMS macros 
@@ -404,11 +417,12 @@ int InsetFormula::width(Painter &, LyXFont const & f) const
 }
 
 
-void InsetFormula::draw(Painter & pain, LyXFont const &,
+void InsetFormula::draw(Painter & pain, LyXFont const & f,
 			int baseline, float & x) const
 {
+	// Seems commenting out solves a problem.
 	LyXFont font = mathed_get_font(LM_TC_TEXTRM, LM_ST_TEXT);
-
+	font.setSize(f.size());
 	lfont_size = font.size();
 	/// Let's try to wait a bit with this... (Lgb)
 	//UpdatableInset::draw(pain, font, baseline, x);

@@ -230,7 +230,6 @@ int InsetGraphics::Latex(string & /*file*/, signed char /*fragile*/) const
 {
 	return 0;
 }
-#endif
 
 
 int InsetGraphics::Linuxdoc(string & /*file*/) const
@@ -243,6 +242,20 @@ int InsetGraphics::DocBook(string & /*file*/) const
 {
 	return 0;
 }
+
+#else
+
+int InsetGraphics::Linuxdoc(ostream &) const
+{
+	return 0;
+}
+
+
+int InsetGraphics::DocBook(ostream &) const
+{
+	return 0;
+}
+#endif
 
 
 void InsetGraphics::Validate(LaTeXFeatures & /*features*/) const

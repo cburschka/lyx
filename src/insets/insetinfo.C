@@ -137,7 +137,6 @@ int InsetInfo::Latex(string &, signed char /*fragile*/) const
 {
 	return 0;
 }
-#endif
 
 
 int InsetInfo::Linuxdoc(string &) const
@@ -150,6 +149,20 @@ int InsetInfo::DocBook(string &) const
 {
 	return 0;
 }
+
+#else
+
+int InsetInfo::Linuxdoc(ostream &) const
+{
+	return 0;
+}
+
+
+int InsetInfo::DocBook(ostream &) const
+{
+	return 0;
+}
+#endif
 
 
 unsigned char InsetInfo::Editable() const

@@ -167,3 +167,42 @@ and enums.
     own. In case you have to change the generated files for any of the
     reasons above, you should provide a patch against the clean generated
     file. Your callbacks must be in a separate file.
+
+ *************************************************************
+
+ How to create class interfaces.
+ (a.k.a How Non-Member Functions Improve Encapsulation)
+ ======================================================
+
+	I recently read an article by Scott Meyers in C/C++ Users
+Journal (Vol.18,No.2), where he makes a strong case on how non-member
+functions makes classes more encapsulated, not less. Just to skipping
+to the core of this provides us with the following algorithm for
+deciding what kind of function to add to a class interface:
+
+	- We need to add a function f to the class C's API.
+
+	if (f needs to be virtual)
+		make f a member function of C;
+	else if (f is operator>> or operator<<) {
+		make f a non-member funtion;
+		if (f needs access to non-public members of C)
+			make f a friend of C;
+	} else if (f needs type conversions on its left-most argument) {
+		make f a non-member function;
+		if (f needs access to non-public members of C)
+			make f a friend of C;
+	} else if (f can be implemented via C's public interface)
+		make f a non-member function;
+	else
+		make f a member function of C;
+ 
+Unfortunately, to make the best use of this kind of Class API's we
+need namespaces. As soon as Jean-Marc stop using gcc 2.8 and other
+compilers seem more or less up to date on namespaces we will begin to
+use them. _BUT_ we should begin to use the above algoritm ASAP. We
+should also go through old code and apply this algorithm to the
+existing member functions. That will help maintainability in the
+future.
+
+(I'll feel in more from Scott Meyers article when time allows.)

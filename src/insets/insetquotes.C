@@ -304,7 +304,6 @@ int InsetQuotes::Latex(string & file, signed char /*fragile*/) const
 	file += qstr;
 	return 0;
 }
-#endif
 
 
 int InsetQuotes::Linuxdoc(string & file) const
@@ -330,6 +329,32 @@ int InsetQuotes::DocBook(string & file) const
 	}
 	return 0;
 }
+
+#else
+
+int InsetQuotes::Linuxdoc(ostream & os) const
+{
+	os << "\"";
+	return 0;
+}
+
+
+int InsetQuotes::DocBook(ostream & os) const
+{
+	if(times == InsetQuotes::DoubleQ) {
+		if (side == InsetQuotes::LeftQ)
+			os << "&ldquo;";
+		else
+			os << "&rdquo;";
+	} else {
+		if (side == InsetQuotes::LeftQ)
+			os << "&lsquo;";
+		else
+			os << "&rsquo;";
+	}
+	return 0;
+}
+#endif
 
 
 void InsetQuotes::Validate(LaTeXFeatures & features) const 

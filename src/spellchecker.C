@@ -767,8 +767,7 @@ bool RunSpellChecker(BufferView * bv)
    
 	if(isp_pid!= -1) {
 		ispell_terminate();
-		string word_msg;
-		word_msg += tostr(word_count);
+		string word_msg(tostr(word_count));
 		if (word_count != 1) {
 			word_msg += _(" words checked.");
 		} else {
