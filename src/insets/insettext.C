@@ -87,42 +87,33 @@ void InsetText::saveLyXTextState(LyXText * t) const
 			break;
 	}
 
-	if (it != end && t->cursor.pos() <= it->size()) {
-		sstate.lpar = t->cursor.par();
-		sstate.pos = t->cursor.pos();
-		sstate.boundary = t->cursor.boundary();
-		sstate.selstartpar = t->selection.start.par();
-		sstate.selstartpos = t->selection.start.pos();
-		sstate.selstartboundary = t->selection.start.boundary();
-		sstate.selendpar = t->selection.end.par();
-		sstate.selendpos = t->selection.end.pos();
-		sstate.selendboundary = t->selection.end.boundary();
-		sstate.selection = t->selection.set();
-		sstate.mark_set = t->selection.mark();
-	} else {
-		sstate.lpar = const_cast<ParagraphList&>(paragraphs).end();
-	}
+	if (it != end && t->cursor.pos() <= it->size())
+		sstate = *t; // slicing intended
+	else
+		sstate.cursor.par(end);
 }
 
 
 void InsetText::restoreLyXTextState(LyXText * t) const
 {
-	if (sstate.lpar == const_cast<ParagraphList&>(paragraphs).end())
+	if (sstate.cursor.par() == const_cast<ParagraphList&>(paragraphs).end())
 		return;
 
 	t->selection.set(true);
-	/* at this point just to avoid the DEPM when setting the cursor */
-	t->selection.mark(sstate.mark_set);
-	if (sstate.selection) {
-		t->setCursor(sstate.selstartpar, sstate.selstartpos,
-			     true, sstate.selstartboundary);
+	// at this point just to avoid the DEPM when setting the cursor 
+	t->selection.mark(sstate.selection.mark());
+	if (sstate.selection.set()) {
+		t->setCursor(sstate.selection.start.par(),
+			sstate.selection.start.pos(),
+			true, sstate.selection.start.boundary());
 		t->selection.cursor = t->cursor;
-		t->setCursor(sstate.selendpar, sstate.selendpos,
-			     true, sstate.selendboundary);
+		t->setCursor(sstate.selection.end.par(), sstate.selection.end.pos(),
+			true, sstate.selection.end.boundary());
 		t->setSelection();
-		t->setCursor(sstate.lpar, sstate.pos);
+		t->setCursor(sstate.cursor.par(), sstate.cursor.pos());
 	} else {
-		t->setCursor(sstate.lpar, sstate.pos, true, sstate.boundary);
+		t->setCursor(sstate.cursor.par(), sstate.cursor.pos(),
+			true, sstate.cursor.boundary());
 		t->selection.cursor = t->cursor;
 		t->selection.set(false);
 	}
@@ -189,7 +180,7 @@ void InsetText::init(InsetText const * ins)
 	old_par = paragraphs.end();
 	last_drawn_width = -1;
 	cached_bview = 0;
-	sstate.lpar = paragraphs.end();
+	sstate.cursor.par(paragraphs.end());
 	in_insetAllowed = false;
 }
 
@@ -2114,7 +2105,7 @@ LyXText * InsetText::getLyXText(BufferView const * lbv,
 				if (locked) {
 					saveLyXTextState(it->second.text.get());
 				} else {
-					sstate.lpar = const_cast<ParagraphList&>(paragraphs).end();
+					sstate.cursor.par(const_cast<ParagraphList&>(paragraphs).end());
 				}
 			}
 			//

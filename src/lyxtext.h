@@ -21,6 +21,7 @@
 #include "insets/inset.h"
 #include "RowList.h"
 #include "bufferview_funcs.h"
+#include "textcursor.h"
 
 class Buffer;
 class BufferParams;
@@ -38,7 +39,10 @@ class ParagraphList;
 /**
   This class holds the mapping between buffer paragraphs and screen rows.
   */
-class LyXText {
+
+// The inheritance from TextCursor should go. It's just there to ease
+// transition...
+class LyXText : public TextCursor {
 public:
 	/// what repainting is needed
 	enum refresh_status {
@@ -268,54 +272,7 @@ public:
 		return rowlist_;
 	}
 
-	/** The cursor.
-	  Later this variable has to be removed. There should be now internal
-	  cursor in a text (and thus not in a buffer). By keeping this it is
-	  (I think) impossible to have several views with the same buffer, but
-	  the cursor placed at different places.
-	  [later]
-	  Since the LyXText now has been moved from Buffer to BufferView
-	  it should not be absolutely needed to move the cursor...
-	  */
-	LyXCursor cursor; // actual cursor position
-
-	/** The structure that keeps track of the selections set. */
-	struct Selection {
-		Selection()
-			: set_(false), mark_(false)
-			{}
-		bool set() const {
-			return set_;
-		}
-		void set(bool s) {
-			set_ = s;
-		}
-		bool mark() const {
-			return mark_;
-		}
-		void mark(bool m) {
-			mark_ = m;
-		}
-		LyXCursor cursor; // temporary cursor to hold a cursor position
-				  // until setSelection is called!
-		LyXCursor start;  // start of a REAL selection
-		LyXCursor end;    // end of a REAL selection
-	private:
-		bool set_; // former selection
-		bool mark_; // former mark_set
-
-	};
-	Selection selection;
-	// this is used to handle XSelection events in the right manner
-	Selection xsel_cache;
-
-	/// needed for the toggling (cursor position on last selection made)
-	LyXCursor last_sel_cursor;
-	/// needed for toggling the selection in screen.C
-	LyXCursor toggle_cursor;
-	/// needed for toggling the selection in screen.C
-	LyXCursor toggle_end_cursor;
-
+	
 	/// need the selection cursor:
 	void setSelection();
 	///
@@ -636,6 +593,13 @@ public:
 
 	/// return true if this is owned by an inset.
 	bool isInInset() const;
+
+private:
+	/** Cursor related data.
+	  Later this variable has to be removed. There should be now internal
+	  cursor in a text */
+	///
+	///TextCursor cursor_;
 };
 
 /// return the default height of a row in pixels, considering font zoom

@@ -344,6 +344,12 @@ bool textRedo(BufferView * bv)
 }
 
 
+void setUndo(BufferView * bv, Undo::undo_kind kind)
+{
+	setUndo(bv, kind, bv->text->cursor.par());
+}
+
+
 void setUndo(BufferView * bv, Undo::undo_kind kind,
 	     ParagraphList::iterator first)
 {

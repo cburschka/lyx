@@ -13,6 +13,7 @@
 #define INSETTEXT_H
 
 #include "updatableinset.h"
+#include "textcursor.h"
 #include "LString.h"
 #include "LColor.h"
 #include "ParagraphList.h"
@@ -372,22 +373,9 @@ private:
 	mutable BufferView * cached_bview;
 	///
 	mutable boost::shared_ptr<LyXText> cached_text;
-	///
-	struct save_state {
-		ParagraphList::iterator lpar;
-		ParagraphList::iterator selstartpar;
-		ParagraphList::iterator selendpar;
-		lyx::pos_type pos;
-		lyx::pos_type selstartpos;
-		lyx::pos_type selendpos;
-		bool boundary;
-		bool selstartboundary;
-		bool selendboundary;
-		bool selection;
-		bool mark_set;
-	};
-	///
-	mutable save_state sstate;
+
+	/// some funny 'temporarily saved state'
+	mutable TextCursor sstate;
 
 	///
 	// this is needed globally so we know that we're using it actually and

@@ -33,6 +33,8 @@ void setUndo(BufferView *, Undo::undo_kind kind,
 		    ParagraphList::iterator first, ParagraphList::iterator last);
 void setUndo(BufferView *, Undo::undo_kind kind,
 		    ParagraphList::iterator first);
+// set undo for containing paragraph
+void setUndo(BufferView *, Undo::undo_kind kind);
 /// FIXME
 void setCursorParUndo(BufferView *);
 
