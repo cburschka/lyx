@@ -13,12 +13,11 @@ libqt2_la_LIBADD = $(QT_LIB) ui/*.lo moc/*.lo ui/moc/*.lo
 AM_CPPFLAGS = \
 	-DQT_CLEAN_NAMESPACE \
 	-DQT_GENUINE_STR \
+	$(PCH_FLAGS) \
 	-I$(top_srcdir)/src/ -I$(top_srcdir)/src/frontends/ \
 	-I$(top_srcdir)/images \
 	$(QT_INCLUDES) $(BOOST_INCLUDES) \
 	-I$(top_srcdir)/src/frontends/controllers
-
-AM_CXXFLAGS = $(PCH_FLAGS)
 
 libqt2_la_SOURCES = \
 	QDialogView.C \

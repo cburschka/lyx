@@ -3,10 +3,9 @@ include $(top_srcdir)/config/common.am
 noinst_LTLIBRARIES = libboostfilesystem.la
 
 AM_CPPFLAGS = \
+	$(PCH_FLAGS) \
 	-DBOOST_USER_CONFIG="<config.h>" \
 	$(BOOST_INCLUDES)
-
-AM_CXXFLAGS = $(PCH_FLAGS)
 
 libboostfilesystem_la_SOURCES = \
 	convenience.cpp \

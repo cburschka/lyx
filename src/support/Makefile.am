@@ -12,9 +12,7 @@ endif
 
 BUILT_SOURCES = path_defines.C
 
-AM_CPPFLAGS = -I$(srcdir)/../ $(BOOST_INCLUDES)
-
-AM_CXXFLAGS = $(PCH_FLAGS)
+AM_CPPFLAGS = $(PCH_FLAGS) -I$(srcdir)/../ $(BOOST_INCLUDES)
 
 libsupport_la_SOURCES = \
 	FileInfo.C \

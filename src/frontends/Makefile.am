@@ -6,9 +6,7 @@ DIST_SUBDIRS = controllers xforms qt2 gnome gtk
 
 noinst_LTLIBRARIES = libfrontends.la
 
-AM_CPPFLAGS = -I$(srcdir)/..  $(BOOST_INCLUDES)
-
-AM_CXXFLAGS = $(PCH_FLAGS)
+AM_CPPFLAGS = $(PCH_FLAGS) -I$(srcdir)/..  $(BOOST_INCLUDES)
 
 libfrontends_la_SOURCES = \
 	Alert.C \

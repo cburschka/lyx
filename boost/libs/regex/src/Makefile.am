@@ -3,10 +3,9 @@ include $(top_srcdir)/config/common.am
 noinst_LTLIBRARIES = libboostregex.la
 
 AM_CPPFLAGS = \
+	$(PCH_FLAGS) \
 	-DBOOST_USER_CONFIG="<config.h>" \
 	$(BOOST_INCLUDES)
-
-AM_CXXFLAGS = $(PCH_FLAGS)
 
 libboostregex_la_SOURCES = \
 	cpp_regex_traits.cpp \

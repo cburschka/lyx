@@ -2,9 +2,7 @@ include $(top_srcdir)/config/common.am
 
 noinst_LTLIBRARIES = libgraphics.la
 
-AM_CPPFLAGS = -I$(srcdir)/.. $(BOOST_INCLUDES)
-
-AM_CXXFLAGS = $(PCH_FLAGS)
+AM_CPPFLAGS = $(PCH_FLAGS) -I$(srcdir)/.. $(BOOST_INCLUDES)
 
 libgraphics_la_SOURCES = \
 	GraphicsCache.h \

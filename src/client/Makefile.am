@@ -6,9 +6,7 @@ man_MANS = lyxclient.1
 
 bin_PROGRAMS = lyxclient
 
-AM_CPPFLAGS = -I$(srcdir)/../ $(BOOST_INCLUDES)
-
-AM_CXXFLAGS = $(PCH_FLAGS)
+AM_CPPFLAGS = $(PCH_FLAGS) -I$(srcdir)/../ $(BOOST_INCLUDES)
 
 if USE_INCLUDED_BOOST
 BOOST_LIBS = $(top_builddir)/boost/libs/filesystem/src/libboostfilesystem.la \

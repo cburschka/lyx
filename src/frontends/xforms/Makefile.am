@@ -14,6 +14,8 @@ AM_CPPFLAGS = \
 	-I$(top_srcdir)/src/frontends/controllers \
 	$(BOOST_INCLUDES)
 
+# This cannot be put in AM_CPPFLAGS since that is used both for C and C++
+# And the precompiled header is setup only for C++
 AM_CXXFLAGS = $(PCH_FLAGS)
 
 noinst_LTLIBRARIES = libxforms.la

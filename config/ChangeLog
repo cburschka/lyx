@@ -1,5 +1,7 @@
 2004-12-04  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
+	* lyxinclude.m4 (lyx_pch_comp): next gcc version is 4.0 not 3.5
+
 	* common.am ($(PCH_FILE)): do a subst and sed dance to get rid of
 	the PCH_FLAGS from the command line when generating the
 	precompiled header.

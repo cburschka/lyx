@@ -20,7 +20,6 @@
 #include "debug.h"
 
 #include <boost/bind.hpp>
-#include <boost/iterator/indirect_iterator.hpp>
 
 #include <cerrno>
 #include <cstdlib>
