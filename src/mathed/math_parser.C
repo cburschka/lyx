@@ -758,7 +758,7 @@ void Parser::parse1(MathGridInset & grid, unsigned flags,
 			//if (p->nuc().size() == 1 && p->nuc().back()->asNestInset() &&
 			//    p->nuc().back()->extraBraces())
 			//	p->nuc() = p->nuc().back()->asNestInset()->cell(0);
-			parse(p->cell(up), FLAG_ITEM, mode);
+			parse(p->cell(p->idxOfScript(up)), FLAG_ITEM, mode);
 			if (limits) {
 				p->limits(limits);
 				limits = 0;
