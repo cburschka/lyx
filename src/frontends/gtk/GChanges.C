@@ -90,8 +90,8 @@ void GChanges::onNext()
 void GChanges::promptChange()
 {
 	string const header = _("Accept highlighted change?");
-	string const author = controller().getChangeAuthor();
-	string const date = controller().getChangeDate();
+	string author = controller().getChangeAuthor();
+	string date = controller().getChangeDate();
 	if(author.empty())
 		author = _("unknown author");
 	if(date.empty())
