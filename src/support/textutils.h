@@ -95,11 +95,4 @@ bool IsDigit(unsigned char ch)
 }
 
 
-/// return true if the char is alphanumeric
-inline
-bool IsLetterCharOrDigit(unsigned char ch)
-{
-	return IsLetterChar(ch) || IsDigit(ch);
-}
-
 #endif // TEXTUTILS_H

@@ -1,3 +1,19 @@
+2004-09-16  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	Fix bug #1666
+	
+	* BufferView.C (putSelectionAt): change the semantics when
+	backwards == true: now, this just swaps cursor and anchor wrt the
+	forward case
+	
+	* BufferView.h (putSelectionAt): add some documentation
+
+	* lyxfind.C (findBackwards): rewrite using while(). In particular,
+	make sure backwardChar is done at least once (to avoid getting
+	stuck)
+	(findNextChange): use putSelectionAt in the forward direction
+	(operator()): use Paragraph::isWord
+
 2004-09-16  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
 	* Spacing.C (set): c_str fix

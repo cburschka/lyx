@@ -357,11 +357,8 @@ void BufferView::putSelectionAt(DocIterator const & cur,
 
 	if (length) {
 		if (backwards) {
+			cursor().pos() += length;
 			cursor().setSelection(cursor(), -length);
-			DocIterator const it = cursor();
-			cursor().setCursor(cursor().anchor_);
-			cursor().selection() = true;
-			cursor().anchor_ = it;
 		} else
 			cursor().setSelection(cursor(), length);
 	}

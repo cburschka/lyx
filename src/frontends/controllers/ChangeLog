@@ -1,3 +1,8 @@
+2004-09-14  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* ControlSpellchecker.C (check): do not set the selection
+	backwards, but translate it to the left instead.
+
 2004-09-15  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* ControlInclude.C (load): open nonlyx files via formats.edit()

@@ -213,7 +213,8 @@ void ControlSpellchecker::check()
 	}
 
 	int const size = getWord().size();
-	kernel().bufferview()->putSelectionAt(cur, size, true);
+	cur.pos() -= size;
+	kernel().bufferview()->putSelectionAt(cur, size, false);
 
 	// set suggestions
 	if (res != SpellBase::OK && res != SpellBase::IGNORE) {

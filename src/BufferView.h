@@ -162,7 +162,11 @@ public:
 	LyXText * text() const;
 	///
 	void setCursor(ParIterator const & par, lyx::pos_type pos);
-	///
+	/* Sets the selection. When \c backwards == false, set anchor
+	 * to \c cur and cursor to \c cur + \c length. When \c
+	 * backwards == true, set anchor to \c cur and cursor to \c
+	 * cur + \c length.
+	 */
 	void putSelectionAt(DocIterator const & cur,
 		int length, bool backwards);
 

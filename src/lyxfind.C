@@ -30,7 +30,6 @@
 #include "frontends/Alert.h"
 #include "frontends/LyXView.h"
 
-#include "support/textutils.h"
 #include "support/tostr.h"
 
 #include <sstream>
@@ -86,10 +85,10 @@ public:
 
 		// if necessary, check whether string matches word
 		if (mw) {
-			if (pos > 0 && IsLetterCharOrDigit(par.getChar(pos - 1)))
+			if (pos > 0 && par.isWord(pos - 1))
 				return false;
 			if (pos + lyx::pos_type(size) < parsize
-					&& IsLetterCharOrDigit(par.getChar(pos + size)));
+			    && par.isWord(pos + size));
 				return false;
 		}
 
@@ -117,9 +116,11 @@ bool findForward(DocIterator & cur, MatchString const & match)
 
 bool findBackwards(DocIterator & cur, MatchString const & match)
 {
-	for (; cur; cur.backwardChar())
+	while (cur) {
+		cur.backwardChar();
 		if (cur.inTexted() && match(cur.paragraph(), cur.pos()))
 			return true;
+	}
 	return false;
 }
 
@@ -344,10 +345,10 @@ bool findNextChange(BufferView * bv)
 		return false;
 
 	Paragraph const & par = cur.paragraph();
-	pos_type pos = cur.pos();
+	const pos_type pos = cur.pos();
 
 	Change orig_change = par.lookupChangeFull(pos);
-	pos_type parsize = par.size();
+	const pos_type parsize = par.size();
 	pos_type end = pos;
 
 	for (; end != parsize; ++end) {
@@ -361,7 +362,8 @@ bool findNextChange(BufferView * bv)
 		}
 	}
 	pos_type length = end - pos;
-	bv->putSelectionAt(cur, length, true);
+	bv->putSelectionAt(cur, length, false);
+
 	return true;
 }
 
