@@ -1,3 +1,13 @@
+2001-03-23  José Abílio Matos  <jamatos@fep.up.pt>
+
+	* buffer.C: removed bitset usage.
+	PAR_TAG moved to an anonymous name space.
+	(tag_name): new funtion, also in the anonymous namespace.
+	(SimpleLinuxDocOnePar): replaced all the references to bitset by PAR_TAG.
+	(makeDocBookFile): clean code. Completed transition from string arrays
+	to string vectors.
+	(SimpleDocBookOnePar): code clean.
+
 2001-03-23  Lars Gullik Bjønnes  <larsbj@trylle.birdstep.com>
 
 	* tabular.C: add some comments.

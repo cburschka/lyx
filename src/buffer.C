@@ -18,7 +18,7 @@
 #include <iomanip>
 #include <map>
 #include <stack>
-#include <bitset>
+#include <list>
 
 #include <cstdlib>
 #include <cmath>
@@ -114,7 +114,6 @@ using std::map;
 using std::max;
 using std::set;
 using std::stack;
-using std::bitset;
 using std::list;
 
 // all these externs should eventually be removed.
@@ -2805,7 +2804,47 @@ void linux_doc_line_break(ostream & os, string::size_type & colcount,
 	}
 }
 
+enum PAR_TAG {
+	NONE=0,
+	TT = 1,
+	SF = 2,
+	BF = 4,
+	IT = 8,
+	SL = 16,
+	EM = 32
+};
+
+
+string tag_name(PAR_TAG const & pt) {
+	switch (pt) {
+	case NONE: return "!-- --"; break;
+	case TT: return "tt"; break;
+	case SF: return "sf"; break;
+	case BF: return "bf"; break;
+	case IT: return "it"; break;
+	case SL: return "sl"; break;
+	case EM: return "em"; break;
+	}
+	return "";
+}
+
+
+inline
+void operator|=(PAR_TAG & p1, PAR_TAG const & p2)
+{
+        p1 = static_cast<PAR_TAG>(p1 | p2);
+}
+
+
+inline
+void reset(PAR_TAG & p1, PAR_TAG const & p2)
+{
+	p1 = static_cast<PAR_TAG>( p1 & ~p2);
+}
+
 } // namespace anon
+
+
 
 
 // Handle internal paragraph parsing -- layout already processed.
@@ -2832,33 +2871,22 @@ void Buffer::SimpleLinuxDocOnePar(ostream & os,
 	LyXFont::FONT_SHAPE  shape_type  = LyXFont::UP_SHAPE;
 	bool is_em = false;
 
-	enum PAR_TAG {
-		TT =0,
-		SF,
-		BF,
-		IT,
-		SL,
-		EM,
-		LAST
-	};
-	char const * tag_name[] = {"tt","sf","bf","it","sl","em"};
-
-	stack<int> tag_state;
+	stack < PAR_TAG > tag_state;
 	// parsing main loop
 	for (LyXParagraph::size_type i = 0; i < par->size(); ++i) {
 
-		bitset<LAST> tag_close;
-		list<int> tag_open;
+		PAR_TAG tag_close = NONE;
+		list < PAR_TAG > tag_open;
 
 		LyXFont const font = par->getFont(params, i);
 
 		if (font_old.family() != font.family()) {
 			switch (family_type) {
 			case LyXFont::SANS_FAMILY:
-				tag_close.set(SF);
+				tag_close |= SF;
 				break;
 			case LyXFont::TYPEWRITER_FAMILY:
-				tag_close.set(TT);
+				tag_close |= TT;
 				break;
 			default:
 				break;
@@ -2881,7 +2909,7 @@ void Buffer::SimpleLinuxDocOnePar(ostream & os,
 		if (font_old.series() != font.series()) {
 			switch (series_type) {
 			case LyXFont::BOLD_SERIES:
-				tag_close.set(BF);
+				tag_close |= BF;
 				break;
 			default:
 				break;
@@ -2902,10 +2930,10 @@ void Buffer::SimpleLinuxDocOnePar(ostream & os,
 		if (font_old.shape() != font.shape()) {
 			switch (shape_type) {
 			case LyXFont::ITALIC_SHAPE:
-				tag_close.set(IT);
+				tag_close |= IT;
 				break;
 			case LyXFont::SLANTED_SHAPE:
-				tag_close.set(SL);
+				tag_close |= SL;
 				break;
 			default:
 				break;
@@ -2929,33 +2957,34 @@ void Buffer::SimpleLinuxDocOnePar(ostream & os,
 			if (font.emph() == LyXFont::ON) {
 				tag_open.push_back(EM);
 				is_em = true;
-			} else if (is_em) {
-				tag_close.set(EM);
+			}
+			else if (is_em) {
+				tag_close |= EM;
 				is_em = false;
 			}
 		}
 
-		list<int> temp;
-		while (!tag_state.empty() && tag_close.any()) {
-			int k = tag_state.top();
+		list < PAR_TAG > temp;
+		while(!tag_state.empty() && tag_close ) {
+			PAR_TAG k =  tag_state.top();
 			tag_state.pop();
-			os << "</" << tag_name[k] << ">";
-			if (tag_close[k])
-				tag_close.reset(k);
+			os << "</" << tag_name(k) << ">";
+			if (tag_close & k)
+				reset(tag_close,k);
 			else
 				temp.push_back(k);
 		}
 
-		for (list<int>::const_iterator j = temp.begin();
+		for(list< PAR_TAG >::const_iterator j = temp.begin();
 		    j != temp.end(); ++j) {
 			tag_state.push(*j);
-			os << "<" << tag_name[*j] << ">";
+			os << "<" << tag_name(*j) << ">";
 		}
 
-		for (list<int>::const_iterator j = tag_open.begin();
+		for(list< PAR_TAG >::const_iterator j = tag_open.begin();
 		    j != tag_open.end(); ++j) {
 			tag_state.push(*j);
-			os << "<" << tag_name[*j] << ">";
+			os << "<" << tag_name(*j) << ">";
 		}
 
 		char c = par->GetChar(i);
@@ -2997,7 +3026,7 @@ void Buffer::SimpleLinuxDocOnePar(ostream & os,
 	}
 
 	while (!tag_state.empty()) {
-		os << "</" << tag_name[tag_state.top()] << ">";
+		os << "</" << tag_name(tag_state.top()) << ">";
 		tag_state.pop();
 	}
 
@@ -3022,46 +3051,25 @@ void Buffer::LinuxDocError(LyXParagraph * par, int pos,
 
 void Buffer::makeDocBookFile(string const & fname, bool nice, bool only_body)
 {
-	LyXParagraph * par = paragraph;
-
-	niceFile = nice; // this will be used by Insetincludes.
-
-	string top_element = textclasslist.LatexnameOfClass(params.textclass);
-
-	vector <string> environment_stack;
-	vector <string> environment_inner;
-	vector <string> command_stack;
-
-	bool command_flag = false;
-	int command_depth = 0;
-	int command_base = 0;
-	int cmd_depth = 0;
-
-        string item_name;
-	string command_name;
-	string c_depth;
-	string c_params;
-	string tmps;
-
-	int depth = 0; // paragraph depth
-        LyXTextClass const & tclass =
-		textclasslist.TextClass(params.textclass);
-
-	LaTeXFeatures features(params, tclass.numLayouts());
-	validate(features);
-
-	//if (nice)
-	tex_code_break_column = lyxrc.ascii_linelen;
-	//else
-	//tex_code_break_column = 0;
-
 	ofstream ofs(fname.c_str());
 	if (!ofs) {
 		WriteAlert(_("LYX_ERROR:"), _("Cannot write file"), fname);
 		return;
 	}
+
+	LyXParagraph * par = paragraph;
+
+	niceFile = nice; // this will be used by Insetincludes.
+
+        LyXTextClass const & tclass =
+		textclasslist.TextClass(params.textclass);
+
+	LaTeXFeatures features(params, tclass.numLayouts());
+	validate(features);
    
 	texrow.reset();
+
+	string top_element= textclasslist.LatexnameOfClass(params.textclass);
 
 	if (!only_body) {
 		string sgml_includedfiles=features.getIncludedFiles(fname);
@@ -3090,8 +3098,20 @@ void Buffer::makeDocBookFile(string const & fname, bool nice, bool only_body)
 	ofs << "<!-- DocBook file was created by " << LYX_DOCVERSION 
 	    << "\n  See http://www.lyx.org/ for more information -->\n";
 
+	vector <string> environment_stack(10);
+	vector <string> environment_inner(10);
+	vector <string> command_stack(10);
+
+	bool command_flag= false;
+	int command_depth= 0, command_base= 0, cmd_depth= 0;
+	int depth = 0; // paragraph depth
+
+        string item_name, command_name;
+
 	while (par) {
+		string sgmlparam, c_depth, c_params;
 		int desc_on = 0; // description mode
+
 		LyXLayout const & style =
 			textclasslist.Style(params.textclass,
 					    par->layout);
@@ -3146,24 +3166,19 @@ void Buffer::makeDocBookFile(string const & fname, bool nice, bool only_body)
 			
 			command_name = style.latexname();
 			
-			tmps = style.latexparam();
-			c_params = split(tmps, c_depth,'|');
+			sgmlparam = style.latexparam();
+			c_params = split(sgmlparam, c_depth,'|');
 			
 			cmd_depth= lyx::atoi(c_depth);
 			
 			if (command_flag) {
 				if (cmd_depth<command_base) {
-					for (int j = command_depth;
-					    j >= command_base; --j)
-						if (!command_stack[j].empty())
-							sgmlCloseTag(ofs, j, command_stack[j]);
+					for (int j = command_depth; j >= command_base; --j)
+						sgmlCloseTag(ofs, j, command_stack[j]);
 					command_depth= command_base= cmd_depth;
 				} else if (cmd_depth <= command_depth) {
-					for (int j = command_depth;
-					    j >= cmd_depth; --j)
-
-						if (!command_stack[j].empty())
-							sgmlCloseTag(ofs, j, command_stack[j]);
+					for (int j = command_depth; j >= cmd_depth; --j)
+						sgmlCloseTag(ofs, j, command_stack[j]);
 					command_depth= cmd_depth;
 				} else
 					command_depth= cmd_depth;
@@ -3171,6 +3186,8 @@ void Buffer::makeDocBookFile(string const & fname, bool nice, bool only_body)
 				command_depth = command_base = cmd_depth;
 				command_flag = true;
 			}
+			if (command_stack.size() == command_depth +1)
+				command_stack.push_back("");
 			command_stack[command_depth]= command_name;
 
 			// treat label as a special case for
@@ -3202,6 +3219,10 @@ void Buffer::makeDocBookFile(string const & fname, bool nice, bool only_body)
 			}
 
 			if (environment_stack[depth] != style.latexname()) {
+				if(environment_stack.size() == depth+1) {
+					environment_stack.push_back("!-- --");
+					environment_inner.push_back("!-- --");
+				}
 				environment_stack[depth] = style.latexname();
 				environment_inner[depth] = "!-- --";
 				sgmlOpenTag(ofs, depth + command_depth,
@@ -3342,28 +3363,20 @@ void Buffer::SimpleDocBookOnePar(ostream & os, string & extra,
 	LyXLayout const & style = textclasslist.Style(params.textclass,
 						      par->GetLayout());
 
-	LyXParagraph::size_type main_body;
-	if (style.labeltype != LABEL_MANUAL)
-		main_body = 0;
-	else
-		main_body = par->BeginningOfMainBody();
+	LyXFont font_old = style.labeltype == LABEL_MANUAL ? style.labelfont : style.font;
 
-	// gets paragraph main font
-	LyXFont font1 = main_body > 0 ? style.labelfont : style.font;
-	
 	int char_line_count = depth;
 	if (!style.free_spacing)
-		for (int j = 0; j < depth; ++j)
-			os << ' ';
+		os << string(depth,' ');
 
 	// parsing main loop
 	for (LyXParagraph::size_type i = 0;
 	     i < par->size(); ++i) {
-		LyXFont font2 = par->getFont(params, i);
+		LyXFont font = par->getFont(params, i);
 
 		// handle <emphasis> tag
-		if (font1.emph() != font2.emph()) {
-			if (font2.emph() == LyXFont::ON) {
+		if (font_old.emph() != font.emph()) {
+			if (font.emph() == LyXFont::ON) {
 				os << "<emphasis>";
 				emph_flag = true;
 			}else if(i) {
@@ -3400,7 +3413,7 @@ void Buffer::SimpleDocBookOnePar(ostream & os, string & extra,
 				else
 					os << tmp_out;
 			}
-		} else if (font2.latex() == LyXFont::ON) {
+		} else if (font.latex() == LyXFont::ON) {
 			// "TeX"-Mode on ==> SGML-Mode on.
 			if (c != '\0')
 				os << c;
@@ -3423,23 +3436,17 @@ void Buffer::SimpleDocBookOnePar(ostream & os, string & extra,
 				os << sgml_string;
 			}
 		}
-		font1 = font2;
+		font_old = font;
 	}
 
-	// needed if there is an optional argument but no contents
-	if (main_body > 0 && main_body == par->size()) {
-		font1 = style.font;
-	}
 	if (emph_flag) {
 		os << "</emphasis>";
 	}
 	
 	// resets description flag correctly
-	switch (desc_on){
-	case 1:
+	if (desc_on == 1) {
 		// <term> not closed...
 		os << "</term>";
-		break;
 	}
 	os << '\n';
 }

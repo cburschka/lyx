@@ -183,6 +183,16 @@ int InsetFloat::Latex(Buffer const * buf,
 }
 
 
+int InsetFloat::DocBook(Buffer const * buf, ostream & os) const
+{
+	os << "<" << floatType_ << ">";
+	int const i = inset->DocBook(buf, os);
+	os << "</" << floatType_ << ">";
+
+	return i;
+}
+
+
 bool InsetFloat::InsertInsetAllowed(Inset * in) const
 {
 	if ((in->LyxCode() == Inset::FOOT_CODE) ||

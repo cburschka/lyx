@@ -40,6 +40,8 @@ public:
 	///
 	int Latex(Buffer const *, std::ostream &, bool fragile, bool fp) const;
 	///
+	int DocBook(Buffer const *, std::ostream &) const;
+	///
 	string const EditMessage() const;
 	///
 	bool InsertInsetAllowed(Inset * inset) const;
