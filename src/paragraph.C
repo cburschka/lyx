@@ -1410,7 +1410,7 @@ void Paragraph::simpleDocBookOnePar(Buffer const & buf,
 	LyXFont font_old =
 		style->labeltype == LABEL_MANUAL ? style->labelfont : style->font;
 
-	bool cdata = (style->latexparam() == "CDATA");
+	bool cdata = (style->innertag() == "CDATA");
 	// parsing main loop
 	for (pos_type i = initial; i < size(); ++i) {
 		LyXFont font = getFont(buf.params(), i, outerfont);
