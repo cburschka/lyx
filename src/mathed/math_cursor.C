@@ -211,13 +211,14 @@ void MathCursor::dump(char const * what) const
 {
 	return;
 
-	lyxerr << "MC: " << what
-		<< " cursor.pos: " << cursor().pos_
-		<< " cursor.idx: " << cursor().idx_
-		<< " cursor.par: " << cursor().par_
-		<< " sel: " << selection
-		<< " data: " << array()
-		<< "\n";
+	lyxerr << "MC: " << what << "\n";
+	for (unsigned i = 0; i < Cursor_.size(); ++i)
+		lyxerr << "  i: " << i 
+			<< " pos: " << Cursor_[i].pos_
+			<< " idx: " << Cursor_[i].idx_
+			<< " par: " << Cursor_[i].par_ << "\n";
+
+	//lyxerr	<< " sel: " << selection << " data: " << array() << "\n";
 }
 
 
@@ -287,11 +288,11 @@ bool MathCursor::Left(bool sel)
 
 	MathInset * p = prevInset();
 	if (openable(p, sel, false)) {
-		array().prev(cursor().pos_);
+		plainLeft();
 		push(p, false);
 		return true;
 	} 
-	if (array().prev(cursor().pos_))
+	if (plainLeft())
 		return true;
 	if (cursor().par_->idxLeft(cursor().idx_, cursor().pos_))
 		return true;
@@ -385,7 +386,7 @@ void MathCursor::SetPos(int x, int y)
 		if (openable(n, selection, true) && n->covers(x, y))
 			push(n, true);
 		else if (openable(p, selection, true) && p->covers(x, y)) {
-			array().prev(cursor().pos_);
+			plainLeft();
 			push(p, false);
 		} else 
 			break;
@@ -497,14 +498,6 @@ void MathCursor::Delete()
 			Delete();
 	}
 
-#ifdef WITH_WARNINGS
-#warning pullArg disabled
-#endif
-	//if (cursor().pos_ == 0 && Cursor_.size() >= 1) {
-	//	lyxerr << "Delete: popping...\n";
-	//	pop();
-	//}
-
 	dump("Delete 2");
 }
 
@@ -558,7 +551,7 @@ bool MathCursor::Up(bool sel)
 	if (p) {
 		int idx, pos;
 		if (p->idxLastUp(idx, pos)) {
-			array().prev(cursor().pos_);
+			plainLeft();
 			push(p, false);
 			cursor().par_ = p;
 			cursor().idx_ = idx;
@@ -613,7 +606,7 @@ bool MathCursor::Down(bool sel)
 	if (p) {
 		int idx, pos;
 		if (p->idxLastDown(idx, pos)) {
-			array().prev(cursor().pos_);
+			plainLeft();
 			push(p, false);
 			cursor().idx_ = idx;
 			cursor().pos_ = pos;
@@ -661,7 +654,7 @@ in_word_set(s) << " \n";
 		if (!p) {
 			p = new MathScriptInset(true, false);
 			insert(p);
-			array().prev(cursor().pos_);
+			plainLeft();
 		}
 		push(p, true);
 		p->up(true);
@@ -674,7 +667,7 @@ in_word_set(s) << " \n";
 		if (!p) {
 			p = new MathScriptInset(false, true);
 			insert(p);
-			array().prev(cursor().pos_);
+			plainLeft();
 		}
 		push(p, true);
 		p->down(true);
@@ -772,7 +765,7 @@ in_word_set(s) << " \n";
 			SelCut();
 		insert(p);
 		if (p->nargs()) {
-			array().prev(cursor().pos_);
+			plainLeft();
 			push(p, true);
 			if (oldsel) 
 				SelPaste();
@@ -984,6 +977,7 @@ void MathCursor::handleDelim(int l, int r)
 		p->cell(0) = theSelection.glue();
 	}
 	insert(p);
+	plainLeft();
 	push(p, true);
 }
 
@@ -1071,12 +1065,12 @@ MathInset * MathCursor::enclosing(MathInsetTypes t, int & idx) const
 void MathCursor::pullArg()
 {
 	// pullArg
+	dump("pullarg");
 	MathArray a = array();
-	if (!Left())
-		return;
-	normalize();
-	array().erase(cursor().pos_);
-	array().insert(cursor().pos_, a);
+	if (pop()) {
+		array().erase(cursor().pos_);
+		array().insert(cursor().pos_, a);
+	}
 }
 
 
