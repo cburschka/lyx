@@ -13,7 +13,6 @@
 #include "ControlErrorList.h"
 #include "buffer.h"
 #include "BufferView.h"
-#include "bufferview_funcs.h"
 #include "debug.h"
 #include "iterators.h"
 #include "lyxtext.h"
@@ -75,5 +74,5 @@ void ControlErrorList::goTo(int item)
 
 	// Now make the selection.
 	PosIterator const pos = pit.asPosIterator(start);
-	bv_funcs::put_selection_at(kernel().bufferview(), pos, range, false);
+	kernel().bufferview()->putSelectionAt(pos, range, false);
 }

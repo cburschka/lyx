@@ -277,7 +277,7 @@ void InsetText::edit(BufferView * bv, bool left)
 	int const par = left ? 0 : paragraphs().size() - 1;
 	int const pos = left ? 0 : paragraphs().back().size();
 	text_.setCursor(par, pos);
-	text_.clearSelection();
+	bv->clearSelection();
 	finishUndo();
 	sanitizeEmptyText(bv);
 	updateLocal(bv);
@@ -290,7 +290,7 @@ void InsetText::edit(BufferView * bv, int x, int y)
 	lyxerr << "InsetText::edit xy" << endl;
 	old_par = -1;
 	text_.setCursorFromCoordinates(x - text_.xo_, y + bv->top_y() - text_.yo_);
-	text_.clearSelection();
+	bv->clearSelection();
 	finishUndo();
 	sanitizeEmptyText(bv);
 	updateLocal(bv);
@@ -542,7 +542,7 @@ void InsetText::collapseParagraphs(BufferView * bv)
 			first->insertChar(first_par_size, ' ');
 		}
 
-		text_.clearSelection();
+		bv->clearSelection();
 		mergeParagraph(bv->buffer()->params(), paragraphs(), first);
 	}
 }

@@ -14,6 +14,7 @@
 
 #include "buffer.h"
 #include "BufferView.h"
+#include "cursor_slice.h"
 #include "iterators.h"
 #include "lyxtext.h"
 #include "paragraph.h"
@@ -25,6 +26,7 @@
 #include <boost/next_prior.hpp>
 
 using boost::prior;
+
 
 PosIterator & PosIterator::operator++()
 {
@@ -128,7 +130,7 @@ PosIterator::PosIterator(ParagraphList * pl, ParagraphList::iterator pit,
 PosIterator::PosIterator(BufferView & bv)
 {
 	LyXText * text = bv.getLyXText();
-	lyx::pos_type pos = text->cursor().pos();
+	lyx::pos_type pos = bv.cursor().pos();
 	ParagraphList::iterator pit = text->cursorPar();
 	
 	ParIterator par = bv.buffer()->par_iterator_begin();

@@ -215,10 +215,8 @@ namespace {
 
 	void moveCursor(BufferView * bv, bool selecting)
 	{
-		LyXText * lt = bv->getLyXText();
-
 		if (selecting || bv->selection().mark())
-			lt->setSelection();
+			bv->setSelection();
 
 		if (!bv->selection().set())
 			bv->haveSelection(false);
@@ -321,7 +319,7 @@ bool LyXText::gotoNextInset(vector<InsetOld::Code> const & codes,
 void LyXText::gotoInset(vector<InsetOld::Code> const & codes,
 			bool same_content)
 {
-	clearSelection();
+	bv()->clearSelection();
 
 	string contents;
 	if (same_content && cursor().pos() < cursorPar()->size()
@@ -486,26 +484,26 @@ DispatchResult LyXText::dispatch(FuncRequest const & cmd)
 	}
 
 	case LFUN_DELETE_WORD_FORWARD:
-		clearSelection();
+		bv->clearSelection();
 		deleteWordForward();
 		finishChange(bv);
 		break;
 
 	case LFUN_DELETE_WORD_BACKWARD:
-		clearSelection();
+		bv->clearSelection();
 		deleteWordBackward();
 		finishChange(bv);
 		break;
 
 	case LFUN_DELETE_LINE_FORWARD:
-		clearSelection();
+		bv->clearSelection();
 		deleteLineForward();
 		finishChange(bv);
 		break;
 
 	case LFUN_WORDRIGHT:
 		if (!bv->selection().mark())
-			clearSelection();
+			bv->clearSelection();
 		if (rtl())
 			cursorLeftOneWord();
 		else
@@ -515,7 +513,7 @@ DispatchResult LyXText::dispatch(FuncRequest const & cmd)
 
 	case LFUN_WORDLEFT:
 		if (!bv->selection().mark())
-			clearSelection();
+			bv->clearSelection();
 		if (rtl())
 			cursorRightOneWord();
 		else
@@ -525,14 +523,14 @@ DispatchResult LyXText::dispatch(FuncRequest const & cmd)
 
 	case LFUN_BEGINNINGBUF:
 		if (!bv->selection().mark())
-			clearSelection();
+			bv->clearSelection();
 		cursorTop();
 		finishChange(bv);
 		break;
 
 	case LFUN_ENDBUF:
 		if (bv->selection().mark())
-			clearSelection();
+			bv->clearSelection();
 		cursorBottom();
 		finishChange(bv);
 		break;
@@ -657,21 +655,21 @@ DispatchResult LyXText::dispatch(FuncRequest const & cmd)
 
 	case LFUN_UP_PARAGRAPH:
 		if (!bv->selection().mark())
-			clearSelection();
+			bv->clearSelection();
 		cursorUpParagraph();
 		finishChange(bv);
 		break;
 
 	case LFUN_DOWN_PARAGRAPH:
 		if (!bv->selection().mark())
-			clearSelection();
+			bv->clearSelection();
 		cursorDownParagraph();
 		finishChange(bv, false);
 		break;
 
 	case LFUN_PRIOR:
 		if (!bv->selection().mark())
-			clearSelection();
+			bv->clearSelection();
 		finishChange(bv, false);
 		if (cursorPar() == firstPar() && cursorRow() == firstRow())
 			return DispatchResult(false, FINISHED_UP);
@@ -680,7 +678,7 @@ DispatchResult LyXText::dispatch(FuncRequest const & cmd)
 
 	case LFUN_NEXT:
 		if (!bv->selection().mark())
-			clearSelection();
+			bv->clearSelection();
 		finishChange(bv, false);
 		if (cursorPar() == lastPar() && cursorRow() == lastRow())
 			return DispatchResult(false, FINISHED_DOWN);
@@ -689,14 +687,14 @@ DispatchResult LyXText::dispatch(FuncRequest const & cmd)
 
 	case LFUN_HOME:
 		if (!bv->selection().mark())
-			clearSelection();
+			bv->clearSelection();
 		cursorHome();
 		finishChange(bv, false);
 		break;
 
 	case LFUN_END:
 		if (!bv->selection().mark())
-			clearSelection();
+			bv->clearSelection();
 		cursorEnd();
 		finishChange(bv, false);
 		break;
@@ -881,7 +879,7 @@ DispatchResult LyXText::dispatch(FuncRequest const & cmd)
 		break;
 
 	case LFUN_INSET_TOGGLE:
-		clearSelection();
+		bv->clearSelection();
 		if (!toggleInset())
 			return DispatchResult(false);
 		bv->update();
@@ -916,33 +914,6 @@ DispatchResult LyXText::dispatch(FuncRequest const & cmd)
 		specialChar(this, bv, InsetSpecialChar::MENU_SEPARATOR);
 		break;
 
-	case LFUN_MARK_OFF:
-		clearSelection();
-		bv->update();
-		bv->resetAnchor();
-		cmd.message(N_("Mark off"));
-		break;
-
-	case LFUN_MARK_ON:
-		clearSelection();
-		bv->selection().mark(true);
-		bv->update();
-		bv->resetAnchor();
-		cmd.message(N_("Mark on"));
-		break;
-
-	case LFUN_SETMARK:
-		clearSelection();
-		if (bv->selection().mark()) {
-			cmd.message(N_("Mark removed"));
-		} else {
-			bv->selection().mark(true);
-			cmd.message(N_("Mark set"));
-		}
-		bv->resetAnchor();
-		bv->update();
-		break;
-
 	case LFUN_UPCASE_WORD:
 		changeCase(LyXText::text_uppercase);
 		bv->update();
@@ -972,7 +943,7 @@ DispatchResult LyXText::dispatch(FuncRequest const & cmd)
 			pasteSelection(strToUnsignedInt(cmd.argument));
 		else
 			pasteSelection(0);
-		clearSelection(); // bug 393
+		bv->clearSelection(); // bug 393
 		bv->update();
 		bv->switchKeyMap();
 		finishUndo();
@@ -1097,9 +1068,7 @@ DispatchResult LyXText::dispatch(FuncRequest const & cmd)
 	}
 
 	case LFUN_PASTESELECTION: {
-		// this was originally a bv->text->clearSelection(), i.e
-		// the outermost LyXText!
-		clearSelection();
+		bv->clearSelection();
 		string const clip = bv->getClipboard();
 		if (!clip.empty()) {
 			if (cmd.argument == "paragraph")
@@ -1179,7 +1148,7 @@ DispatchResult LyXText::dispatch(FuncRequest const & cmd)
 			cursorHome();
 			bv->resetAnchor();
 			cursorEnd();
-			setSelection();
+			bv->setSelection();
 			bv->haveSelection(bv->selection().set());
 		}
 		break;
@@ -1221,7 +1190,7 @@ DispatchResult LyXText::dispatch(FuncRequest const & cmd)
 			else if (cmd.y - bv->top_y() < 0)
 				cursorUp(true);
 		}
-		setSelection();
+		bv->setSelection();
 		break;
 	}
 
@@ -1256,7 +1225,7 @@ DispatchResult LyXText::dispatch(FuncRequest const & cmd)
 		selection_possible = true;
 
 		// Clear the selection
-		clearSelection();
+		bv->clearSelection();
 
 		// Right click on a footnote flag opens float menu
 		if (cmd.button() == mouse_button::button3) {
@@ -1326,7 +1295,7 @@ DispatchResult LyXText::dispatch(FuncRequest const & cmd)
 			bv->haveSelection(false);
 		}
 
-		clearSelection();
+		bv->clearSelection();
 		LyXFont const old_font = real_current_font;
 
 		string::const_iterator cit = cmd.argument.begin();

@@ -15,7 +15,6 @@
 #define LYXTEXT_H
 
 #include "bufferview_funcs.h"
-#include "cursor_slice.h"
 #include "Bidi.h"
 #include "layout.h"
 #include "lyxfont.h"
@@ -404,11 +403,6 @@ public:
 	CursorSlice & anchor();
 	/// access to the selection anchor
 	CursorSlice const & anchor() const;
-
-	///
-	void setSelection();
-	///
-	void clearSelection();
 
 public:
 	///

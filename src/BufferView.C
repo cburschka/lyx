@@ -28,6 +28,7 @@
 #include "lyxtext.h"
 #include "paragraph.h"
 #include "paragraph_funcs.h"
+#include "PosIterator.h"
 #include "texrow.h"
 #include "undo.h"
 #include "WordLangTuple.h"
@@ -259,7 +260,7 @@ bool BufferView::insertLyXFile(string const & filen)
 
 	string const fname = MakeAbsPath(filen);
 
-	text()->clearSelection();
+	clearSelection();
 	text()->breakParagraph(buffer()->paragraphs());
 
 	bool res = buffer()->readFile(fname, text()->cursorPar());
@@ -312,7 +313,7 @@ void BufferView::gotoLabel(string const & label)
 		vector<string> labels;
 		it->getLabelList(*buffer(), labels);
 		if (find(labels.begin(),labels.end(),label) != labels.end()) {
-			text()->clearSelection();
+			clearSelection();
 			text()->setCursor(
 				std::distance(text()->paragraphs().begin(), it.getPar()),
 				it.getPos());
@@ -330,7 +331,7 @@ void BufferView::undo()
 		return;
 
 	owner()->message(_("Undo"));
-	text()->clearSelection();
+	clearSelection();
 	if (!textUndo(this))
 		owner()->message(_("No further undo information"));
 	update();
@@ -344,7 +345,7 @@ void BufferView::redo()
 		return;
 
 	owner()->message(_("Redo"));
-	text()->clearSelection();
+	clearSelection();
 	if (!textRedo(this))
 		owner()->message(_("No further redo information"));
 	update();
@@ -551,3 +552,65 @@ CursorSlice & BufferView::selEnd()
 		return cursor();
 	return anchor() > cursor() ? anchor() : cursor();
 }
+
+
+void BufferView::setSelection()
+{
+	selection().set(true);
+	// a selection with no contents is not a selection
+	if (cursor().par() == anchor().par() && cursor().pos() == anchor().pos())
+		selection().set(false);
+}
+
+
+void BufferView::clearSelection()
+{
+	selection().set(false);
+	selection().mark(false);
+	resetAnchor();
+	unsetXSel();
+}
+
+
+
+/*
+if the fitCursor call refers to some point in never-explored-land, then we
+don't have y information in insets there, then we cannot even do an update
+to get it (because we need the y infomation for setting top_y first). So
+this is solved in put_selection_at with:
+
+- setting top_y to the y of the outerPar (that has good info)
+- calling update
+- calling cursor().updatePos()
+- then call fitCursor()
+
+Ab.
+*/
+
+void BufferView::putSelectionAt(PosIterator const & cur,
+		      int length, bool backwards)
+{
+	ParIterator par(cur);
+	
+	clearSelection();
+
+	LyXText * text = par.text(*buffer());
+	par.lockPath(this);
+	// hack for the chicken and egg problem
+	if (par.inset())
+		top_y(par.outerPar()->y);
+	update();
+	text->setCursor(cur.pit(), cur.pos());
+	fullCursor().updatePos();
+
+	if (length) {
+		text->setSelectionRange(length);
+		setSelection();
+		if (backwards)
+			std::swap(cursor(), anchor());
+	}
+
+	fitCursor();
+	update();
+}
+

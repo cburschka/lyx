@@ -414,7 +414,7 @@ void BufferView::Pimpl::resizeCurrentBuffer()
 			text->setCursor(selstartpar, selstartpos);
 			bv_->resetAnchor();
 			text->setCursor(selendpar, selendpos);
-			text->setSelection();
+			bv_->setSelection();
 			text->setCursor(par, pos);
 		} else {
 			text->setCursor(par, pos);
@@ -554,7 +554,7 @@ void BufferView::Pimpl::selectionLost()
 {
 	if (available()) {
 		screen().hideCursor();
-		bv_->getLyXText()->clearSelection();
+		bv_->clearSelection();
 		xsel_cache_.set = false;
 	}
 }
@@ -661,7 +661,7 @@ void BufferView::Pimpl::restorePosition(unsigned int i)
 
 	string const fname = saved_positions[i].filename;
 
-	bv_->text()->clearSelection();
+	bv_->clearSelection();
 
 	if (fname != buffer_->fileName()) {
 		Buffer * b = 0;
@@ -713,7 +713,7 @@ void BufferView::Pimpl::center()
 {
 	LyXText * text = bv_->text();
 
-	text->clearSelection();
+	bv_->clearSelection();
 	int const half_height = workarea().workHeight() / 2;
 	int new_y = std::max(0, text->cursorY() - half_height);
 
@@ -751,7 +751,7 @@ InsetOld * BufferView::Pimpl::getInsetByCode(InsetOld::Code code)
 	// should work for now. Better infrastructure is coming. (Lgb)
 
 	Buffer * b = bv_->buffer();
-	LyXText * text =  bv_->getLyXText();
+	LyXText * text = bv_->getLyXText();
 
 	Buffer::inset_iterator beg = b->inset_iterator_begin();
 	Buffer::inset_iterator end = b->inset_iterator_end();
@@ -1243,6 +1243,33 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev_in)
 		lyx::find::replace(ev);
 		break;
 
+	case LFUN_MARK_OFF:
+		bv_->clearSelection();
+		bv_->update();
+		bv_->resetAnchor();
+		ev.message(N_("Mark off"));
+		break;
+
+	case LFUN_MARK_ON:
+		bv_->clearSelection();
+		bv_->selection().mark(true);
+		bv_->update();
+		bv_->resetAnchor();
+		ev.message(N_("Mark on"));
+		break;
+
+	case LFUN_SETMARK:
+		bv_->clearSelection();
+		if (bv_->selection().mark()) {
+			ev.message(N_("Mark removed"));
+		} else {
+			bv_->selection().mark(true);
+			ev.message(N_("Mark set"));
+		}
+		bv_->resetAnchor();
+		bv_->update();
+		break;
+
 	case LFUN_UNKNOWN_ACTION:
 		ev.errorMessage(N_("Unknown function!"));
 		break;
@@ -1261,7 +1288,7 @@ bool BufferView::Pimpl::insertInset(InsetOld * inset, string const & lout)
 	bv_->text()->recUndo(bv_->text()->cursor().par());
 	freezeUndo();
 
-	bv_->text()->clearSelection();
+	bv_->clearSelection();
 	if (!lout.empty()) {
 		bv_->text()->breakParagraph(bv_->buffer()->paragraphs());
 

@@ -236,7 +236,7 @@ void ControlSpellchecker::check()
 	if (!word_.word().empty()) {
 		int const size = word_.word().size();
 		advance(cur, -size);
-		bv_funcs::put_selection_at(bufferview(), cur, size, false);
+		bufferview()->putSelectionAt(cur, size, false);
 		advance(cur, size);
 	} else {
 		showSummary();

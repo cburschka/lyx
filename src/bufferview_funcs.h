@@ -37,9 +37,6 @@ bool string2font(std::string const & data, LyXFont & font, bool & toggle);
  *  frontends.
  */
 std::string const freefont2string();
-///
-void put_selection_at(BufferView * bv, PosIterator const & cur,
-		      int length, bool backwards);
 
 
 /// what type of depth change to make

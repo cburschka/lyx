@@ -833,7 +833,7 @@ void LyXText::breakParagraph(ParagraphList & paragraphs, char keep_layout)
 // convenience function
 void LyXText::redoParagraph()
 {
-	clearSelection();
+	bv()->clearSelection();
 	redoParagraph(cursorPar());
 	setCursorIntern(cursor().par(), cursor().pos());
 }
@@ -1106,7 +1106,7 @@ void LyXText::selectWord(word_location loc)
 		return;
 	bv()->resetAnchor();
 	setCursor(to.par(), to.pos());
-	setSelection();
+	bv()->setSelection();
 }
 
 
@@ -1133,7 +1133,7 @@ void LyXText::acceptChange()
 		recordUndo(Undo::INSERT, this, startc.par());
 		getPar(startc)->acceptChange(startc.pos(), endc.pos());
 		finishUndo();
-		clearSelection();
+		bv()->clearSelection();
 		redoParagraph(getPar(startc));
 		setCursorIntern(startc.par(), 0);
 	}
@@ -1152,7 +1152,7 @@ void LyXText::rejectChange()
 		recordUndo(Undo::INSERT, this, startc.par());
 		getPar(startc)->rejectChange(startc.pos(), endc.pos());
 		finishUndo();
-		clearSelection();
+		bv()->clearSelection();
 		redoParagraph(getPar(startc));
 		setCursorIntern(startc.par(), 0);
 	}
@@ -1172,7 +1172,7 @@ void LyXText::deleteWordForward()
 		setCursor(tmpcursor, tmpcursor.par(), tmpcursor.pos());
 		bv()->resetAnchor();
 		cursor() = tmpcursor;
-		setSelection();
+		bv()->setSelection();
 		cutSelection(true, false);
 	}
 }
@@ -1190,7 +1190,7 @@ void LyXText::deleteWordBackward()
 		setCursor(tmpcursor, tmpcursor.par(), tmpcursor.pos());
 		bv()->resetAnchor();
 		cursor() = tmpcursor;
-		setSelection();
+		bv()->setSelection();
 		cutSelection(true, false);
 	}
 }
@@ -1209,7 +1209,7 @@ void LyXText::deleteLineForward()
 		setCursor(tmpcursor, tmpcursor.par(), tmpcursor.pos());
 		bv()->resetAnchor();
 		cursor() = tmpcursor;
-		setSelection();
+		bv()->setSelection();
 		// What is this test for ??? (JMarc)
 		if (!bv()->selection().set())
 			deleteWordForward();
@@ -1957,24 +1957,3 @@ CursorSlice const & LyXText::anchor() const
 {
 	return bv()->anchor();
 }
-
-
-void LyXText::setSelection()
-{
-	bv()->selection().set(true);
-	// a selection with no contents is not a selection
-	if (cursor().par() == anchor().par() && cursor().pos() == anchor().pos())
-		bv()->selection().set(false);
-}
-
-
-void LyXText::clearSelection()
-{
-	bv()->selection().set(false);
-	bv()->selection().mark(false);
-	bv()->resetAnchor();
-	// reset this in the bv()!
-	if (bv() && bv()->text())
-		bv()->unsetXSel();
-}
-

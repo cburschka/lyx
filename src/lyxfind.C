@@ -16,6 +16,7 @@
 #include "lyxfind.h"
 
 #include "buffer.h"
+#include "cursor_slice.h"
 #include "BufferView.h"
 #include "debug.h"
 #include "iterators.h"
@@ -37,8 +38,6 @@
 using lyx::support::lowercase;
 using lyx::support::uppercase;
 using lyx::support::split;
-
-using bv_funcs::put_selection_at;
 
 using std::ostringstream;
 using std::string;
@@ -202,7 +201,7 @@ bool findNextChange(BufferView * bv)
 		}
 	}
 	pos_type length = end - pos;
-	put_selection_at(bv, cur, length, true);
+	bv->putSelectionAt(cur, length, true);
 	return true;
 }
 
@@ -317,7 +316,7 @@ bool find(BufferView * bv, string const & searchstr, bool cs, bool mw, bool fw)
 		: findBackwards(cur, beg, match);
 
 	if (found)
-		put_selection_at(bv, cur, searchstr.length(), !fw);
+		bv->putSelectionAt(cur, searchstr.length(), !fw);
 
 	return found;
 }
@@ -354,7 +353,7 @@ int replaceAll(BufferView * bv,
 
 	PosIterator beg = buf.pos_iterator_begin();
 	bv->text()->init(bv);
-	put_selection_at(bv, beg, 0, false);
+	bv->putSelectionAt(beg, 0, false);
 	if (num)
 		buf.markDirty();
 	return num;

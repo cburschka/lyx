@@ -32,6 +32,7 @@ class LyXText;
 class LyXScreen;
 class LyXView;
 class Painter;
+class PosIterator;
 class Selection;
 class TeXErrors;
 class UpdatableInset;
@@ -142,6 +143,8 @@ public:
 
 	/// replace the currently selected word
 	void replaceWord(std::string const & replacestring);
+	/// simple replacing. Use the font of the first selected character 
+	void replaceSelectionWithString(std::string const & str);
 
 	/// move cursor to the named label
 	void gotoLabel(std::string const & label);
@@ -241,6 +244,12 @@ public:
 	CursorSlice & selEnd();
 	///
 	CursorSlice const & selEnd() const;
+	///
+	void setSelection();
+	///
+	void clearSelection();
+	///
+	void putSelectionAt(PosIterator const & cur, int length, bool backwards);
 
 	///
 	Selection selection_;

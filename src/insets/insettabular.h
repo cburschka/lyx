@@ -84,7 +84,7 @@ public:
 	///
 	void updateLocal(BufferView *) const;
 	///
-	bool insetAllowed(InsetOld::Code code) const { return true; }
+	bool insetAllowed(InsetOld::Code) const { return true; }
 	///
 	bool isTextInset() const { return true; }
 	/** returns true if, when outputing LaTeX, font changes should

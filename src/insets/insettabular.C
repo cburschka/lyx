@@ -423,7 +423,7 @@ void InsetTabular::lfunMouseMotion(FuncRequest const & cmd)
 	setPos(bv, cmd.x, cmd.y);
 	if (!hasSelection()) {
 		setSelection(actcell, actcell);
-		tabular.getCellInset(actcell).text_.setSelection();
+		bv->setSelection();
 	} else {
 		bv->cursor().cell(actcell);
 		setSelection(sel_cell_start, actcell);

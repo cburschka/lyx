@@ -27,7 +27,6 @@
 #include "lyxrow.h"
 #include "paragraph.h"
 #include "ParagraphParameters.h"
-#include "PosIterator.h"
 #include "iterators.h"
 
 #include "frontends/Alert.h"
@@ -264,48 +263,5 @@ void replaceSelection(LyXText * text)
 		text->bv()->update();
 	}
 }
-
-
-/*
-if the fitCursor call refers to some point in never-explored-land, then we
-don't have y information in insets there, then we cannot even do an update
-to get it (because we need the y infomation for setting top_y first). So
-this is solved in put_selection_at with:
-
-- setting top_y to the y of the outerPar (that has good info)
-- calling update
-- calling cursor().updatePos()
-- then call fitCursor()
-
-Ab.
-*/
-
-void put_selection_at(BufferView * bv, PosIterator const & cur,
-		      int length, bool backwards)
-{
-	ParIterator par(cur);
-	
-	bv->getLyXText()->clearSelection();
-
-	LyXText * text = par.text(*bv->buffer());
-	par.lockPath(bv);
-	// hack for the chicken and egg problem
-	if (par.inset())
-		bv->top_y(par.outerPar()->y);
-	bv->update();
-	text->setCursor(cur.pit(), cur.pos());
-	bv->fullCursor().updatePos();
-
-	if (length) {
-		text->setSelectionRange(length);
-		text->setSelection();
-		if (backwards)
-			std::swap(text->cursor(), text->anchor());
-	}
-
-	bv->fitCursor();
-	bv->update();
-}
-
 
 } // namespace bv_funcs

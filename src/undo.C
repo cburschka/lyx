@@ -17,6 +17,7 @@
 #include "undo.h"
 
 #include "buffer.h"
+#include "cursor_slice.h"
 #include "debug.h"
 #include "BufferView.h"
 #include "iterators.h"
@@ -178,11 +179,11 @@ bool performUndoOrRedo(BufferView * bv, Undo const & undo)
 	       << std::endl;
 
 	// set cursor again to force the position to be the right one
-	text->cursor().par(undo.cursor_par);
-	text->cursor().pos(undo.cursor_pos);
+	bv->cursor().par(undo.cursor_par);
+	bv->cursor().pos(undo.cursor_pos);
 
 	// clear any selection
-	text->clearSelection();
+	bv->clearSelection();
 	bv->resetAnchor();
 	text->updateCounters();
 
@@ -224,9 +225,8 @@ bool textUndoOrRedo(BufferView * bv,
 			advance(last, plist.size() - undo.end_par + 1);
 			otherstack.top().pars.insert(otherstack.top().pars.begin(), first, last);
 		}
-		LyXText * text = pit.text(buf);
-		otherstack.top().cursor_pos = text->cursor().pos();
-		otherstack.top().cursor_par = text->cursor().par();
+		otherstack.top().cursor_pos = bv->cursor().pos();
+		otherstack.top().cursor_par = bv->cursor().par();
 		lyxerr << " undo other: " << otherstack.top() << std::endl;
 	}
 

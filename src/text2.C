@@ -530,7 +530,7 @@ void LyXText::toggleFree(LyXFont const & font, bool toggleall)
 	// Implicit selections are cleared afterwards
 	//and cursor is set to the original position.
 	if (implicitSelection) {
-		clearSelection();
+		bv()->clearSelection();
 		cursor() = resetCursor;
 		bv()->resetAnchor();
 	}
@@ -560,7 +560,7 @@ string LyXText::getStringToIndex()
 
 	// Clear the implicit selection.
 	if (implicitSelection)
-		clearSelection();
+		bv()->clearSelection();
 
 	return idxstring;
 }
@@ -968,7 +968,7 @@ void LyXText::cutSelection(bool doclear, bool realcut)
 	cursor().par(parOffset(endpit));
 
 	// need a valid cursor. (Lgb)
-	clearSelection();
+	bv()->clearSelection();
 	updateCounters();
 }
 
@@ -1024,11 +1024,10 @@ void LyXText::pasteSelection(size_t sel_index)
 
 	redoParagraphs(cursorPar(), endpit);
 
-	clearSelection();
-
+	bv()->clearSelection();
 	bv()->resetAnchor();
 	setCursor(ppp.first, ppp.second);
-	setSelection();
+	bv()->setSelection();
 	updateCounters();
 }
 
@@ -1041,7 +1040,7 @@ void LyXText::setSelectionRange(lyx::pos_type length)
 	bv()->resetAnchor();
 	while (length--)
 		cursorRight(true);
-	setSelection();
+	bv()->setSelection();
 }
 
 
@@ -1082,14 +1081,13 @@ void LyXText::insertStringAsLines(string const & str)
 	recUndo(cursor().par());
 
 	// only to be sure, should not be neccessary
-	clearSelection();
-
+	bv()->clearSelection();
 	bv()->buffer()->insertStringAsLines(pit, pos, current_font, str);
 
 	redoParagraphs(cursorPar(), endpit);
 	bv()->resetAnchor();
 	setCursor(pit, pos);
-	setSelection();
+	bv()->setSelection();
 }
 
 
@@ -1401,7 +1399,7 @@ DispatchResult LyXText::moveRightIntern(bool front, bool activate_inset, bool se
 		return DispatchResult(true, true);
 	cursorRight(true);
 	if (!selecting)
-		clearSelection();
+		bv()->clearSelection();
 	return DispatchResult(true);
 }
 
@@ -1413,7 +1411,7 @@ DispatchResult LyXText::moveLeftIntern(bool front,
 		return DispatchResult(false, FINISHED);
 	cursorLeft(true);
 	if (!selecting)
-		clearSelection();
+		bv()->clearSelection();
 	if (activate_inset && checkAndActivateInset(front))
 		return DispatchResult(true, true);
 	return DispatchResult(true);
@@ -1425,7 +1423,7 @@ DispatchResult LyXText::moveUp()
 	if (cursorPar() == firstPar() && cursorRow() == firstRow())
 		return DispatchResult(false, FINISHED_UP);
 	cursorUp(false);
-	clearSelection();
+	bv()->clearSelection();
 	return DispatchResult(true);
 }
 
@@ -1435,7 +1433,7 @@ DispatchResult LyXText::moveDown()
 	if (cursorPar() == lastPar() && cursorRow() == lastRow())
 		return DispatchResult(false, FINISHED_DOWN);
 	cursorDown(false);
-	clearSelection();
+	bv()->clearSelection();
 	return DispatchResult(true);
 }
 
@@ -1562,6 +1560,9 @@ void LyXText::fixCursorAfterDelete(CursorSlice & cur, CursorSlice const & where)
 
 bool LyXText::deleteEmptyParagraphMechanism(CursorSlice const & old_cursor)
 {
+#warning Disabled as it crashes after the cursor data shift... (Andre)
+	return false;
+
 	// Would be wrong to delete anything if we have a selection.
 	if (bv()->selection().set())
 		return false;
