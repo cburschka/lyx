@@ -68,8 +68,6 @@ What's new
 
 - fix the language of the russian table of contents of the documentation
 
-- fix installation problem when the program makepsres does not exist
-
 - remove non-ascii characters from translatable strings. This
   simplifies the work of translators
 
@@ -83,6 +81,9 @@ What's new
 - add a couple of forgotten MacOSX-related files
 
 - a better fix for badly placed math symbols with LyX/Mac
+
+- fix installation when program "makepsres" is not available on the
+  path [bug #1479]
 
 - compilation fixes for MacOSX
 
