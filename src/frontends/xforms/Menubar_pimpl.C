@@ -241,7 +241,7 @@ int Menubar::Pimpl::create_submenu(Window win, XFormsView * view,
 			// Build the menu label from all the info
 			string label = fixlabel(item.label());
 			FuncStatus const flag = item.status();
-			int submenuid;
+			int submenuid = 0;
 
 			// Is there a key binding?
 			string const binding = item.binding();
