@@ -18,6 +18,7 @@
 
 #include FORMS_H_LOCATION
 #include "undo.h"
+#include "support/utility.hpp"
 
 class LyXView;
 class LyXText;
@@ -27,7 +28,7 @@ class LyXScreen;
 class WorkArea;
 
 ///
-class BufferView {
+class BufferView : public noncopyable {
 public:
 	///
 	enum UpdateCodes {

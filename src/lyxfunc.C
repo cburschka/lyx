@@ -43,9 +43,6 @@ using std::istringstream;
 #include "insets/inseturl.h"
 #include "insets/insetlatexaccent.h"
 #include "insets/insettoc.h"
-#include "insets/insetlof.h"
-#include "insets/insetloa.h"
-#include "insets/insetlot.h"
 #include "insets/insetref.h"
 #include "insets/insetparent.h"
 #include "insets/insetindex.h"
@@ -107,7 +104,6 @@ extern bool math_insert_greek(char);
 extern BufferList bufferlist;
 extern LyXServer * lyxserver;
 extern int greek_kb_flag;
-extern FD_form_toc * fd_form_toc;
 extern bool selection_possible;
 
 extern kb_keymap * toplevel_keymap;
@@ -888,60 +884,40 @@ string LyXFunc::Dispatch(int ac,
 	case LFUN_LOTVIEW:
 	case LFUN_LOAVIEW:
 	{
-		Buffer::TocType type = Buffer::TOC_TOC;
-		if (action == LFUN_LOFVIEW)
-			type = Buffer::TOC_LOF;
-		else if (action == LFUN_LOTVIEW)
-			type = Buffer::TOC_LOT;
-		else if (action == LFUN_LOAVIEW)
-			type = Buffer::TOC_LOA;
-		fl_set_choice(fd_form_toc->toctype,type + 1);
-		TocUpdateCB(0, 0);
-		if (fd_form_toc->form_toc->visible) {
-			fl_raise_form(fd_form_toc->form_toc);
-		} else {
-			static int ow = -1, oh;
-			fl_show_form(fd_form_toc->form_toc,
-				     FL_PLACE_MOUSE |
-				     FL_FREE_SIZE, FL_FULLBORDER,
-				     _("Table of Contents"));
-			if (ow < 0) {
-				ow = fd_form_toc->form_toc->w;
-				oh = fd_form_toc->form_toc->h;
-			}
-			fl_set_form_minsize(fd_form_toc->form_toc, ow, oh);
-		}
+		InsetCommandParams p;
+		
+		if( action == LFUN_TOCVIEW )
+			p.setCmdName( "tableofcontents" );
+		else if( action == LFUN_LOAVIEW )
+			p.setCmdName( "listofalgorithms" );
+		else if( action == LFUN_LOFVIEW )
+			p.setCmdName( "listoffigures" );
+		else
+			p.setCmdName( "listoftables" );
+
+		owner->getDialogs()->createTOC( p.getAsString() );
 		break;
 	}	
-	case LFUN_TOC_INSERT:
-	{
-		Inset * new_inset = new InsetTOC(owner->buffer());
-		if (!owner->view()->insertInset(new_inset, "Standard", true))
-			delete new_inset;
-		break;
-	}
-	
-	case LFUN_LOF_INSERT:
-	{
-		Inset * new_inset = new InsetLOF(owner->buffer());
-		if (!owner->view()->insertInset(new_inset, "Standard", true))
-			delete new_inset;
-		break;
-	}
-	
-	case LFUN_LOA_INSERT:
-	{
-		Inset * new_inset = new InsetLOA(owner->buffer());
-		if (!owner->view()->insertInset(new_inset, "Standard", true))
-			delete new_inset;
-		break;
-	}
 
+	case LFUN_TOC_INSERT:
+	case LFUN_LOA_INSERT:
+	case LFUN_LOF_INSERT:
 	case LFUN_LOT_INSERT:
 	{
-		Inset * new_inset = new InsetLOT(owner->buffer());
-		if (!owner->view()->insertInset(new_inset, "Standard", true))
-			delete new_inset;
+		InsetCommandParams p;
+		
+		if( action == LFUN_TOC_INSERT )
+			p.setCmdName( "tableofcontents" );
+		else if( action == LFUN_LOA_INSERT )
+			p.setCmdName( "listofalgorithms" );
+		else if( action == LFUN_LOF_INSERT )
+			p.setCmdName( "listoffigures" );
+		else
+			p.setCmdName( "listoftables" );
+
+		Inset * inset = new InsetTOC( p );
+		if( !owner->view()->insertInset( inset, "Standard", true ) )
+			delete inset;
 		break;
 	}
 		
@@ -2564,7 +2540,18 @@ string LyXFunc::Dispatch(int ac,
 	
 	case LFUN_CREATE_CITATION:
 	{
-		owner->getDialogs()->createCitation( argument );
+		// Should do this "at source"
+		InsetCommandParams p;
+		p.setCmdName( "cite" );
+		
+		if (contains(argument, "|")) {
+			p.setContents( token(argument, '|', 0) );
+			p.setOptions(  token(argument, '|', 1) );
+		} else {
+			p.setContents( argument );
+		}
+
+		owner->getDialogs()->createCitation( p.getAsString() );
 	}
 	break;
 		    

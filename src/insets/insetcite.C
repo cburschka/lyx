@@ -15,19 +15,14 @@
 #endif
 
 #include "insetcite.h"
-#include "LyXView.h"
 #include "BufferView.h"
+#include "LyXView.h"
 #include "frontends/Dialogs.h"
 #include "support/lstrings.h"
 
 InsetCitation::InsetCitation(InsetCommandParams const & p)
 		: InsetCommand(p)
 {}
-
-InsetCitation::~InsetCitation()
-{
-	hide();
-}
 
 string InsetCitation::getScreenLabel() const
 {

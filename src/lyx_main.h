@@ -22,6 +22,7 @@
 #include <csignal>
 
 #include "LString.h"
+#include "support/utility.hpp"
 
 class LyXGUI;
 class LyXRC;
@@ -40,7 +41,7 @@ extern LastFiles * lastfiles; /* we should hopefully be able to move this
 /**
   This is the main LyX object it encapsulates most of the other objects.
 */
-class LyX {
+class LyX : public noncopyable {
 public:
 	/**@name Constructors and Deconstructors */
 	//@{
@@ -56,22 +57,12 @@ public:
 	LyXGUI * lyxGUI;  // should be only one of this
 	//@}
 private:
-	/**@name Constructors and Deconstructors */
-	//@{
-	/// not allowed
-	LyX(const LyX &) {} // not allowed
-	/// not allowed
-	LyX() {} // not allowed
-	//@}
-
 	/**@name Private variables */
 	//@{
 	/// does this user start lyx for the first time?
 	bool first_start;
 	///
 	string batch_command;
-	/// 
-	// struct sigaction act_; // seems to be unused
 	//@}
 	/**@name Private Members */
 	//@{

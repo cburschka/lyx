@@ -12,25 +12,16 @@
 #ifndef FORMCITATION_H
 #define FORMCITATION_H
 
-#include <vector>
-
-#include "DialogBase.h"
-#include "LString.h"
-#include "support/utility.hpp"
-
 #ifdef __GNUG__
 #pragma interface
 #endif
 
-class Dialogs;
-// same arguement as in Dialogs.h s/LyX/UI/
-class LyXView;
-class InsetCitation;
+#include "FormCommand.h"
 struct FD_form_citation;
 
 /** This class provides an XForms implementation of the FormCitation Dialog.
  */
-class FormCitation : public DialogBase, public noncopyable {
+class FormCitation : public FormCommand, public noncopyable {
 public:
 	///
 	enum State {
@@ -51,39 +42,18 @@ public:
 	~FormCitation();
 	//@}
 
-	/**@name Real per-instance Callback Methods */
-	//@{
-	static  int WMHideCB(FL_FORM *, void *);
-	static void OKCB(FL_OBJECT *, long);
-	static void CancelCB(FL_OBJECT *, long);
-	static void InputCB(FL_OBJECT *, long);
-	//@}
-
 private:
 	/**@name Slot Methods */
 	//@{
-	/// Create the dialog if necessary, update it and display it.
-	void createInset( string const & );
-	/// 
-	void showInset( InsetCitation * );
-	/// 
-	void show();
-	/// Hide the dialog.
-	void hide();
-	///
-	void update();
-	//@}
-
-	/**@name Dialog internal methods */
-	//@{
+	virtual void update();
 	/// Apply from dialog
-	void apply();
+	virtual void apply();
 	/// Filter the inputs
-	void input( State );
+	virtual void input( long );
 	/// Build the dialog
-	void build();
+	virtual void build();
 	///
-	void updateCitekeys( string const & );
+	virtual FL_FORM * const form() const;
 	///
 	void updateBrowser( FL_OBJECT *, std::vector<string> const & ) const;
 	///
@@ -94,42 +64,10 @@ private:
 	void setSize( int, bool ) const;
 	///
 	FD_form_citation * build_citation();
-	/// Explicitly free the dialog.
-	void free();
 	//@}
 
-	/**@name Private Data */
-	//@{
 	/// Real GUI implementation.
 	FD_form_citation * dialog_;
-	/** Which LyXFunc do we use?
-	    We could modify Dialogs to have a visible LyXFunc* instead and
-	    save a couple of bytes per dialog.
-	*/
-	LyXView * lv_;
-	/** Which Dialogs do we belong to?
-	    Used so we can get at the signals we have to connect to.
-	*/
-	Dialogs * d_;
-	/// Update connection.
-	Connection u_;
-	/// Hide connection.
-	Connection h_;
-	/// inset::hide connection.
-	Connection ih_;
-	///
-	InsetCitation * inset_;
-	///
-	bool dialogIsOpen;
-	///
-  	string textAfter;
-	///
-	std::vector<string> citekeys;
-	///
-	std::vector<string> bibkeys;
-	///
-	std::vector<string> bibkeysInfo;
-	//@}
 };
 
 #endif

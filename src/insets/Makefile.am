@@ -55,12 +55,6 @@ libinsets_la_SOURCES = \
 	insetlatexaccent.h \
 	insetlist.C \
 	insetlist.h \
-	insetloa.C \
-	insetloa.h \
-	insetlof.C \
-	insetlof.h \
-	insetlot.C \
-	insetlot.h \
 	insetmarginal.h \
 	insetmarginal.C \
 	insetminipage.C \

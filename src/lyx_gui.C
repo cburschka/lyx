@@ -64,7 +64,6 @@ FD_form_table * fd_form_table;
 FD_form_sendto * fd_form_sendto;
 FD_form_figure * fd_form_figure;
 FD_form_screen * fd_form_screen;
-FD_form_toc * fd_form_toc;
 FD_form_ref * fd_form_ref;
 FD_LaTeXLog * fd_latex_log; // from log_form.h
 Combox * combo_language;
@@ -531,12 +530,6 @@ void LyXGUI::create_forms()
 	fd_form_screen = create_form_form_screen();
 	fl_set_form_atclose(fd_form_screen->form_screen,
 			    CancelCloseBoxCB, 0);
-
-	// the toc form
-	fd_form_toc = create_form_form_toc();
-	fl_addto_choice(fd_form_toc->toctype,
-			_(" TOC | LOF | LOT | LOA "));
-	fl_set_form_atclose(fd_form_toc->form_toc, CancelCloseBoxCB, 0);
 
 	// the ref form
 	fd_form_ref = create_form_form_ref();

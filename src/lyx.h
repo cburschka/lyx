@@ -1,4 +1,4 @@
-/** Header file generated with fdesign on Mon Jun 19 12:55:08 2000.**/
+/** Header file generated with fdesign on Mon Jul 31 11:17:12 2000.**/
 
 #ifndef FD_form_title_h_
 #define FD_form_title_h_
@@ -13,10 +13,6 @@ extern "C" void FigureCancelCB(FL_OBJECT *, long);
 extern "C" void ScreenOKCB(FL_OBJECT *, long);
 extern "C" void ScreenApplyCB(FL_OBJECT *, long);
 extern "C" void ScreenCancelCB(FL_OBJECT *, long);
-
-extern "C" void TocSelectCB(FL_OBJECT *, long);
-extern "C" void TocCancelCB(FL_OBJECT *, long);
-extern "C" void TocUpdateCB(FL_OBJECT *, long);
 
 extern "C" void RefUpdateCB(FL_OBJECT *, long);
 extern "C" void RefHideCB(FL_OBJECT *, long);
@@ -65,16 +61,6 @@ typedef struct {
 } FD_form_screen;
 
 extern FD_form_screen * create_form_form_screen(void);
-typedef struct {
-	FL_FORM *form_toc;
-	void *vdata;
-	char *cdata;
-	long  ldata;
-	FL_OBJECT *browser_toc;
-	FL_OBJECT *toctype;
-} FD_form_toc;
-
-extern FD_form_toc * create_form_form_toc(void);
 typedef struct {
 	FL_FORM *form_ref;
 	void *vdata;

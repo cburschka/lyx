@@ -19,6 +19,7 @@
 #include FORMS_H_LOCATION
 
 #include "Timeout.h"
+#include "support/utility.hpp"
 
 // uncomment this line to try out the new menus
 #define NEW_MENUBAR 1
@@ -47,7 +48,7 @@ using SigC::Object;
   view is supposed (at least IMHO) to be another class, that shows its output
   in one or more LyXView's.
  */
-class LyXView : public Object {
+class LyXView : public Object, public noncopyable {
 public:
 	/// constructor
 	LyXView(int w, int h);

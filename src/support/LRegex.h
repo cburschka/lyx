@@ -38,10 +38,10 @@ public:
 	bool exact_match(string const & str) const;
 
 	///
-	MatchPair first_match(string const & str) const;
+	MatchPair const first_match(string const & str) const;
 
 	///
-	string getError() const;
+	string const getError() const;
 
 	///
 	int getErrorCode() const;

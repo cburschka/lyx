@@ -18,38 +18,28 @@
 
 #include "insetcommand.h"
 
-class Buffer;
-
 /** Used to insert table of contents
  */
 class InsetTOC : public InsetCommand {
 public:
 	///
-	InsetTOC() : InsetCommand("tableofcontents") {}
+	InsetTOC(InsetCommandParams const & p) : InsetCommand(p) {}
 	///
-	explicit
-	InsetTOC(Buffer * b) : InsetCommand("tableofcontents"), owner(b) {}
-        ///
-        Inset * Clone() const { return new InsetTOC(owner); }
+        Inset * Clone() const { return new InsetTOC(params()); }
     	///
 	string getScreenLabel() const;
-	/// On edit, we open the TOC pop-up
+	///
 	void Edit(BufferView * bv, int, int, unsigned int);
         ///
-	EDITABLE Editable() const {
-		return IS_EDITABLE;
-	}
+	EDITABLE Editable() const { return IS_EDITABLE; }
 	///
 	bool display() const { return true; }
 	///
-	Inset::Code LyxCode() const { return Inset::TOC_CODE; }
+	Inset::Code LyxCode() const;
 	///
 	int Linuxdoc(Buffer const *, std::ostream &) const;
 	///
 	int DocBook(Buffer const *, std::ostream &) const;
-private:
-	///
-	Buffer * owner;
 };
 
 #endif

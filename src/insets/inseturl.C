@@ -19,18 +19,6 @@ InsetUrl::InsetUrl(InsetCommandParams const & p)
 {}
 
 
-InsetUrl::~InsetUrl()
-{
-	hide();
-}
-
-
-char const * InsetUrl::EditMessage() const 
-{
-	return _("Opened Url");
-}
-
-
 void InsetUrl::Edit(BufferView * bv, int, int, unsigned int)
 {
 	bv->owner()->getDialogs()->showUrl( this );

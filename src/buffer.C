@@ -56,9 +56,6 @@
 #include "insets/insetindex.h" 
 #include "insets/insetinclude.h"
 #include "insets/insettoc.h"
-#include "insets/insetlof.h"
-#include "insets/insetlot.h"
-#include "insets/insetloa.h"
 #include "insets/insetparent.h"
 #include "insets/insetspecialchar.h"
 #include "insets/figinset.h"
@@ -981,14 +978,11 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, LyXParagraph *& par,
 				if (!inscmd.getOptions().empty() || !inscmd.getContents().empty()) {
 					inset = new InsetRef(inscmd, this);
 				}
-			} else if (inscmd.getCmdName() == "tableofcontents") {
-				inset = new InsetTOC(this);
-			} else if (inscmd.getCmdName() == "listoffigures") {
-				inset = new InsetLOF(this);
-			} else if (inscmd.getCmdName() == "listofalgorithms") {
-				inset = new InsetLOA(this);
-			} else if (inscmd.getCmdName() == "listoftables") {
-				inset = new InsetLOT(this);
+			} else if (inscmd.getCmdName() == "tableofcontents"
+				   || inscmd.getCmdName() == "listofalgorithms"
+				   || inscmd.getCmdName() == "listoffigures"
+				   || inscmd.getCmdName() == "listoftables") {
+				inset = new InsetTOC(inscmd.params());
 			} else if (inscmd.getCmdName() == "printindex") {
 				inset = new InsetPrintIndex(this);
 			} else if (inscmd.getCmdName() == "lyxparent") {
@@ -1216,14 +1210,11 @@ void Buffer::readInset(LyXLex & lex, LyXParagraph *& par,
 			    || !inscmd.getContents().empty()) {
 				inset = new InsetRef(inscmd, this);
 			}
-		} else if (inscmd.getCmdName() == "tableofcontents") {
-			inset = new InsetTOC(this);
-		} else if (inscmd.getCmdName() == "listoffigures") {
-			inset = new InsetLOF(this);
-		} else if (inscmd.getCmdName() == "listofalgorithms") {
-			inset = new InsetLOA(this);
-		} else if (inscmd.getCmdName() == "listoftables") {
-			inset = new InsetLOT(this);
+		} else if (inscmd.getCmdName() == "tableofcontents"
+			   || inscmd.getCmdName() == "listofalgorithms"
+			   || inscmd.getCmdName() == "listoffigures"
+			   || inscmd.getCmdName() == "listoftables") {
+			inset = new InsetTOC(inscmd.params());
 		} else if (inscmd.getCmdName() == "printindex") {
 			inset = new InsetPrintIndex(this);
 		} else if (inscmd.getCmdName() == "lyxparent") {

@@ -17,6 +17,11 @@
 #endif
 
 #include "insetbutton.h"
+#include <sigc++/signal_system.h>
+
+#ifdef SIGC_CXX_NAMESPACES
+using SigC::Signal0;
+#endif
 
 // Created by Alejandro 970222
 /** Used to insert a LaTeX command automatically
@@ -73,6 +78,8 @@ public:
 	explicit
 	InsetCommand(InsetCommandParams const &);
 	///
+	virtual ~InsetCommand() { hide(); };
+	///
 	void Write(Buffer const *, std::ostream &) const;
 
 	/// Parse the command.
@@ -121,6 +128,8 @@ public:
 	InsetCommandParams const & params() const { return p_; }
 	///
 	void setParams(InsetCommandParams const &);
+	///
+	Signal0<void> hide;
 private:
 	///
 	InsetCommandParams p_;

@@ -11,8 +11,6 @@
 
 #include <config.h>
 
-#include <algorithm>
-
 #include FORMS_H_LOCATION
 
 #ifdef __GNUG__
@@ -21,15 +19,12 @@
 
 
 #include "gettext.h"
-#include "BufferView.h"
 #include "Dialogs.h"
 #include "FormCitation.h"
 #include "LyXView.h"
 #include "buffer.h"
 #include "form_citation.h"
 #include "lyxfunc.h"
-#include "xform_macros.h"
-#include "insets/insetcite.h"
 #include "support/filetools.h"
 
 using std::vector;
@@ -38,14 +33,12 @@ using std::max;
 using std::min;
 using std::find;
 
-C_RETURNCB(FormCitation, WMHideCB)
-C_GENERICCB(FormCitation, OKCB)
-C_GENERICCB(FormCitation, CancelCB)
-C_GENERICCB(FormCitation, InputCB)
+static vector<string> citekeys;
+static vector<string> bibkeys;
+static vector<string> bibkeysInfo;
 
 FormCitation::FormCitation(LyXView * lv, Dialogs * d)
-	: dialog_(0), lv_(lv), d_(d), u_(0), h_(0), ih_(0),
-	  inset_(0), dialogIsOpen(false)
+	: FormCommand(lv, d, _("Citation"))
 {
 	// let the dialog be shown
 	// These are permanent connections so we won't bother
@@ -58,6 +51,7 @@ FormCitation::FormCitation(LyXView * lv, Dialogs * d)
 FormCitation::~FormCitation()
 {
 	free();
+	delete dialog_;
 }
 
 
@@ -67,60 +61,12 @@ void FormCitation::build()
 }
 
 
-void FormCitation::showInset( InsetCitation * inset )
+FL_FORM * const FormCitation::form() const
 {
-	if( dialogIsOpen || inset == 0 ) return;
-
-	inset_ = inset;
-	ih_ = inset_->hide.connect(slot(this, &FormCitation::hide));
-
-	textAfter = inset->getOptions();
-	updateCitekeys(inset->getContents());
-	show();
-}
-
-
-void FormCitation::createInset( string const & arg )
-{
-	if( dialogIsOpen ) return;
-
-	string keys;
-	if (contains(arg, "|")) {
-		keys = token(arg, '|', 0);
-		textAfter = token(arg, '|', 1);
-	} else {
-		keys = arg;
-		textAfter.erase();
-	}
-
-	updateCitekeys(keys);
-	show();
-}
-
-
-void FormCitation::show()
-{
-	if (!dialog_) {
-		build();
-		fl_set_form_atclose(dialog_->form_citation,
-				    C_FormCitationWMHideCB, 0);
-	}
-
-	update();  // make sure its up-to-date
-
-	dialogIsOpen = true;
-	if (dialog_->form_citation->visible) {
-		fl_raise_form(dialog_->form_citation);
-	} else {
-		fl_show_form(dialog_->form_citation,
-			     FL_PLACE_MOUSE | FL_FREE_SIZE,
-			     FL_TRANSIENT,
-			     _("Citation"));
-		u_ = d_->updateBufferDependent.
-		         connect(slot(this, &FormCitation::update));
-		h_ = d_->hideBufferDependent.
-		         connect(slot(this, &FormCitation::hide));
-	}
+	if( dialog_ && dialog_->form_citation )
+		return dialog_->form_citation;
+	else
+		return 0;
 }
 
 
@@ -136,12 +82,19 @@ void FormCitation::update()
 		bibkeys.push_back(blist[i].first);
 		bibkeysInfo.push_back(blist[i].second);
 	}
-
 	blist.clear();
+
+	citekeys.clear();
+	string tmp, keys( params.getContents() );
+	keys = frontStrip( split(keys, tmp, ',') );
+	while( !tmp.empty() ) {
+		citekeys.push_back( tmp );
+		keys = frontStrip( split(keys, tmp, ',') );
+	}
 
 	fl_freeze_form( dialog_->form_citation );
 
-	updateBrowser( dialog_->bibBrsr, bibkeys );
+	updateBrowser( dialog_->bibBrsr,  bibkeys );
 	updateBrowser( dialog_->citeBrsr, citekeys );
 	fl_clear_browser( dialog_->infoBrsr );
 
@@ -159,23 +112,9 @@ void FormCitation::update()
 	bool bibPresent = ( bibkeys.size() > 0 );
 	setSize( size, bibPresent );
 
-	fl_set_input( dialog_->textAftr, textAfter.c_str() );
+	fl_set_input( dialog_->textAftr, params.getOptions().c_str() );
 
 	fl_unfreeze_form( dialog_->form_citation );
-}
-
-
-void FormCitation::updateCitekeys( string const & keysIn )
-{
-	citekeys.clear();
-
-	string tmp;
-	string keys = keysIn;
-	keys = frontStrip( split(keys, tmp, ',') );
-	while( !tmp.empty() ) {
-		citekeys.push_back( tmp );
-		keys = frontStrip( split(keys, tmp, ',') );
-	}
 }
 
 
@@ -253,60 +192,63 @@ void FormCitation::setCiteButtons( State status ) const
 }
 
 
-void FormCitation::setSize( int brsrHeight, bool bibPresent ) const
+void FormCitation::setSize( int hbrsr, bool bibPresent ) const
 {
-	int const infoHeight  = 110;
-	int const otherHeight = 140;
-	brsrHeight = max( brsrHeight, 175 );
-	int formHeight = brsrHeight + otherHeight;
+	int const hinfo  = dialog_->infoBrsr->h;
+	int const hother = 140;
+	hbrsr = max( hbrsr, 175 );
+	int wform = dialog_->form_citation->w;
+	int hform = hbrsr + hother;
 
-	if( bibPresent ) formHeight += infoHeight + 30;
-	fl_set_form_size( dialog_->form_citation, 430, formHeight );
+	if( bibPresent ) hform += hinfo + 30;
+	fl_set_form_size( dialog_->form_citation, wform, hform );
 
 	// No resizing is alowed in the y-direction
-	fl_set_form_minsize( dialog_->form_citation, 430, formHeight );
-	fl_set_form_maxsize( dialog_->form_citation, 1000, formHeight );
+	fl_set_form_minsize( dialog_->form_citation, wform,   hform );
+	fl_set_form_maxsize( dialog_->form_citation, 3*wform, hform );
 
-	int ypos = 0;
-	fl_set_object_geometry( dialog_->box,      0,   ypos, 430, formHeight );
-	ypos += 30;
-	fl_set_object_geometry( dialog_->citeBrsr, 10,  ypos, 180, brsrHeight );
-	fl_set_object_geometry( dialog_->bibBrsr,  240, ypos, 180, brsrHeight );
+	int y = 0;
+	fl_set_object_geometry( dialog_->box, 0, y, wform, hform );
+	y += 30;
+	fl_set_object_geometry( dialog_->citeBrsr, 10, y, 180, hbrsr );
+	fl_set_object_geometry( dialog_->bibBrsr, 240, y, 180, hbrsr );
 
-	fl_set_object_position( dialog_->addBtn,  200, ypos );
-	ypos += 35;
-	fl_set_object_position( dialog_->delBtn,  200, ypos );
-	ypos += 35;
-	fl_set_object_position( dialog_->upBtn,   200, ypos );
-	ypos += 35;
-	fl_set_object_position( dialog_->downBtn, 200, ypos );
+	fl_set_object_position( dialog_->addBtn,  200, y );
+	y += 5 + dialog_->addBtn->h;
+	fl_set_object_position( dialog_->delBtn,  200, y );
+	y += 5 + dialog_->delBtn->h;
+	fl_set_object_position( dialog_->upBtn,   200, y );
+	y += 5 + dialog_->upBtn->h;
+	fl_set_object_position( dialog_->downBtn, 200, y );
 
-	ypos = brsrHeight+30; // base of Citation/Bibliography browsers
+	y = dialog_->bibBrsr->y + dialog_->bibBrsr->h;
 
 	// awaiting natbib support
 	fl_hide_object( dialog_->style );
 
 	if( bibPresent ) {
-		ypos += 30;
-		fl_set_object_position( dialog_->infoBrsr, 10, ypos );
+		y += 30;
+		fl_set_object_position( dialog_->infoBrsr, 10, y );
 		fl_show_object( dialog_->infoBrsr );
-		ypos += infoHeight;
+		y += hinfo;
 	}
 	else
 		fl_hide_object( dialog_->infoBrsr );
 
-	ypos += 20;
+	y += 20;
 	// awaiting natbib support
 	fl_hide_object( dialog_->textBefore );
 
-	fl_set_object_position( dialog_->textAftr, 100, ypos );
-	fl_set_object_position( dialog_->ok,       230, ypos+50 );
-	fl_set_object_position( dialog_->cancel,   330, ypos+50 );
+	fl_set_object_position( dialog_->textAftr, 100, y );
+	fl_set_object_position( dialog_->ok,       230, y+50 );
+	fl_set_object_position( dialog_->cancel,   330, y+50 );
 }
 
 
-void FormCitation::input( State cb )
+void FormCitation::input( long data )
 {
+	State cb = static_cast<FormCitation::State>( data );
+
 	switch( cb ) {
 	case BIBBRSR:
 	{
@@ -459,81 +401,20 @@ void FormCitation::apply()
 		contents += citekeys[i];
 	}
 
-	textAfter = fl_get_input(dialog_->textAftr);
+	params.setContents( contents );
+	params.setOptions( fl_get_input(dialog_->textAftr) );
 
 	if( inset_ != 0 )
 	{
-		inset_->setContents( contents );
-		inset_->setOptions( textAfter );
-		lv_->view()->updateInset( inset_, true );
-	} else {
-		InsetCommandParams p( "cite", contents, textAfter );
-		lv_->getLyXFunc()->Dispatch( LFUN_INSERT_CITATION,
-					     p.getAsString().c_str() );
-	}
-}
-
-
-void FormCitation::hide()
-{
-	if (dialog_
-	    && dialog_->form_citation
-	    && dialog_->form_citation->visible) {
-		fl_hide_form(dialog_->form_citation);
-		u_.disconnect();
-		h_.disconnect();
-	}
-
-	// free up the dialog for another inset
-	inset_ = 0;
-	ih_.disconnect();
-	dialogIsOpen = false;
-}
-
-
-void FormCitation::free()
-{
-	// we don't need to delete u and h here because
-	// hide() does that after disconnecting.
-	if (dialog_) {
-		if (dialog_->form_citation
-		    && dialog_->form_citation->visible) {
-			hide();
+		// Only update if contents have changed
+		if( params.getCmdName()  != inset_->getCmdName()  ||
+		    params.getContents() != inset_->getContents() ||
+		    params.getOptions()  != inset_->getOptions() ) {
+			inset_->setParams( params );
+			lv_->view()->updateInset( inset_, true );
 		}
-		fl_free_form(dialog_->form_citation);
-		delete dialog_;
-		dialog_ = 0;
+	} else {
+		lv_->getLyXFunc()->Dispatch( LFUN_INSERT_CITATION,
+					     params.getAsString().c_str() );
 	}
-}
-
-
-int FormCitation::WMHideCB(FL_FORM * form, void *)
-{
-	// Ensure that the signals (u and h) are disconnected even if the
-	// window manager is used to close the dialog.
-	FormCitation * pre = static_cast<FormCitation*>(form->u_vdata);
-	pre->hide();
-	return FL_CANCEL;
-}
-
-
-void FormCitation::OKCB(FL_OBJECT * ob, long)
-{
-	FormCitation * pre = static_cast<FormCitation*>(ob->form->u_vdata);
-	pre->apply();
-	pre->hide();
-}
-
-
-void FormCitation::CancelCB(FL_OBJECT * ob, long)
-{
-	FormCitation * pre = static_cast<FormCitation*>(ob->form->u_vdata);
-	pre->hide();
-}
-
-
-void FormCitation::InputCB(FL_OBJECT * ob, long data)
-{
-	FormCitation * pre = static_cast<FormCitation*>(ob->form->u_vdata);
-	pre->input( static_cast<FormCitation::State>(data) );
 }

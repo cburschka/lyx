@@ -1,7 +1,3 @@
-#ifdef __GNUG__
-#pragma implementation
-#endif
-
 #include <config.h>
 
 #include <sys/types.h>
@@ -10,6 +6,10 @@
 #include <regex.h>
 #else
 #include "lyxregex.h"
+#endif
+
+#ifdef __GNUG__
+#pragma implementation
 #endif
 
 #include "LRegex.h"
@@ -55,7 +55,7 @@ struct LRegex::Impl {
 	}
 	
 	///
-	LRegex::MatchPair first_match(string const & str) const
+	LRegex::MatchPair const first_match(string const & str) const
 	{
 		regmatch_t tmp;
 		regexec(preg, str.c_str(), 1, &tmp, 0);
@@ -67,7 +67,7 @@ struct LRegex::Impl {
 	}
 	
 	///
-	string getError() const
+	string const getError() const
 	{
 		size_t nr = regerror(error_code, preg, 0, 0);
 		char * tmp = new char[nr];
@@ -134,13 +134,13 @@ bool LRegex::exact_match(string const & str) const
 }
 
 
-LRegex::MatchPair LRegex::first_match(string const & str) const
+LRegex::MatchPair const LRegex::first_match(string const & str) const
 {
 	return impl->first_match(str);
 }
 
 
-string LRegex::getError() const
+string const LRegex::getError() const
 {
 	return impl->getError();
 }

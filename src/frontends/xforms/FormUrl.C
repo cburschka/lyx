@@ -31,27 +31,21 @@
 #include "insets/inseturl.h"
 #include "support/filetools.h"
 
-C_RETURNCB(FormUrl, WMHideCB)
-C_GENERICCB(FormUrl, OKCB)
-C_GENERICCB(FormUrl, CancelCB)
-
 FormUrl::FormUrl(LyXView * lv, Dialogs * d)
-	: dialog_(0), lv_(lv), d_(d), u_(0), h_(0), ih_(0),
-	  inset_(0), dialogIsOpen(false)
+	: FormCommand(lv, d, _("Url"))
 {
 	// let the dialog be shown
 	// These are permanent connections so we won't bother
 	// storing a copy because we won't be disconnecting.
 	d->showUrl.connect(slot(this, &FormUrl::showInset));
 	d->createUrl.connect(slot(this, &FormUrl::createInset));
-	params = new InsetCommandParams();
 }
 
 
 FormUrl::~FormUrl()
 {
 	free();
-	delete params;
+	delete dialog_;
 }
 
 
@@ -61,72 +55,52 @@ void FormUrl::build()
 }
 
 
-void FormUrl::showInset( InsetUrl * inset )
+FL_FORM * const FormUrl::form() const
 {
-	if( dialogIsOpen || inset == 0 ) return;
-
-	inset_ = inset;
-	ih_ = inset_->hide.connect(slot(this, &FormUrl::hide));
-
-	(*params) = inset->params();
-	show();
-}
-
-
-void FormUrl::createInset( string const & arg )
-{
-	if( dialogIsOpen ) return;
-
-	params->setFromString( arg );
-	show();
-}
-
-
-void FormUrl::show()
-{
-	if (!dialog_) {
-		build();
-		fl_set_form_atclose(dialog_->form_url,
-				    C_FormUrlWMHideCB, 0);
-	}
-
-	update();  // make sure its up-to-date
-
-	dialogIsOpen = true;
-	if (dialog_->form_url->visible) {
-		fl_raise_form(dialog_->form_url);
-	} else {
-		fl_show_form(dialog_->form_url,
-			     FL_PLACE_MOUSE | FL_FREE_SIZE,
-			     FL_TRANSIENT,
-			     _("Url"));
-		u_ = d_->updateBufferDependent.
-		         connect(slot(this, &FormUrl::update));
-		h_ = d_->hideBufferDependent.
-		         connect(slot(this, &FormUrl::hide));
-	}
+	if( dialog_ && dialog_->form_url )
+		return dialog_->form_url;
+	else
+		return 0;
 }
 
 
 void FormUrl::update()
 {
-	fl_set_input(dialog_->url,  params->getContents().c_str());
-	fl_set_input(dialog_->name, params->getOptions().c_str());
-
-	if ( params->getCmdName() == "url" )
-		fl_set_button(dialog_->radio_html, 0);
-	else
-		fl_set_button(dialog_->radio_html, 1);
-
 	static int ow = -1, oh;
 
 	if (ow < 0) {
 		ow = dialog_->form_url->w;
 		oh = dialog_->form_url->h;
+
+		fl_set_form_minsize(dialog_->form_url, ow, oh);
+		fl_set_form_maxsize(dialog_->form_url, 2*ow, oh);
 	}
 
-	fl_set_form_minsize(dialog_->form_url, ow, oh);
-	fl_set_form_maxsize(dialog_->form_url, 2*ow, oh);
+	fl_freeze_form( dialog_->form_url );
+
+	fl_set_input(dialog_->url,  params.getContents().c_str());
+	fl_set_input(dialog_->name, params.getOptions().c_str());
+
+	if ( params.getCmdName() == "url" )
+		fl_set_button(dialog_->radio_html, 0);
+	else
+		fl_set_button(dialog_->radio_html, 1);
+
+	if( lv_->buffer()->isReadonly() ) {
+		fl_deactivate_object( dialog_->url );
+		fl_deactivate_object( dialog_->name );
+		fl_deactivate_object( dialog_->radio_html );
+		fl_deactivate_object( dialog_->ok );
+		fl_set_object_lcol( dialog_->ok, FL_INACTIVE );
+	} else {
+		fl_activate_object( dialog_->url );
+		fl_activate_object( dialog_->name );
+		fl_activate_object( dialog_->radio_html );
+		fl_activate_object( dialog_->ok );
+		fl_set_object_lcol( dialog_->ok, FL_BLACK );
+	}
+
+	fl_unfreeze_form( dialog_->form_url );
 }
 
 
@@ -134,78 +108,25 @@ void FormUrl::apply()
 {
 	if( lv_->buffer()->isReadonly() ) return;
 
-	params->setContents( fl_get_input(dialog_->url) );
-	params->setOptions( fl_get_input(dialog_->name) );
+	params.setContents( fl_get_input(dialog_->url) );
+	params.setOptions( fl_get_input(dialog_->name) );
 
 	if (fl_get_button(dialog_->radio_html))
-		params->setCmdName("htmlurl");
+		params.setCmdName("htmlurl");
 	else
-		params->setCmdName("url");
+		params.setCmdName("url");
 
 	if( inset_ != 0 )
 	{
-		inset_->setParams( *params );
-		lv_->view()->updateInset( inset_, true );
+		// Only update if contents have changed
+		if( params.getCmdName()  != inset_->getCmdName()  ||
+		    params.getContents() != inset_->getContents() ||
+		    params.getOptions()  != inset_->getOptions() ) {
+			inset_->setParams( params );
+			lv_->view()->updateInset( inset_, true );
+		}
 	} else {
 		lv_->getLyXFunc()->Dispatch( LFUN_INSERT_URL,
-					     params->getAsString().c_str() );
+					     params.getAsString().c_str() );
 	}
-}
-
-
-void FormUrl::hide()
-{
-	if (dialog_
-	    && dialog_->form_url
-	    && dialog_->form_url->visible) {
-		fl_hide_form(dialog_->form_url);
-		u_.disconnect();
-		h_.disconnect();
-	}
-
-	// free up the dialog for another inset
-	inset_ = 0;
-	ih_.disconnect();
-	dialogIsOpen = false;
-}
-
-
-void FormUrl::free()
-{
-	// we don't need to delete u and h here because
-	// hide() does that after disconnecting.
-	if (dialog_) {
-		if (dialog_->form_url
-		    && dialog_->form_url->visible) {
-			hide();
-		}
-		fl_free_form(dialog_->form_url);
-		delete dialog_;
-		dialog_ = 0;
-	}
-}
-
-
-int FormUrl::WMHideCB(FL_FORM * form, void *)
-{
-	// Ensure that the signals (u and h) are disconnected even if the
-	// window manager is used to close the dialog.
-	FormUrl * pre = static_cast<FormUrl*>(form->u_vdata);
-	pre->hide();
-	return FL_CANCEL;
-}
-
-
-void FormUrl::OKCB(FL_OBJECT * ob, long)
-{
-	FormUrl * pre = static_cast<FormUrl*>(ob->form->u_vdata);
-	pre->apply();
-	pre->hide();
-}
-
-
-void FormUrl::CancelCB(FL_OBJECT * ob, long)
-{
-	FormUrl * pre = static_cast<FormUrl*>(ob->form->u_vdata);
-	pre->hide();
 }

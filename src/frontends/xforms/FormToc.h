@@ -9,27 +9,26 @@
  * ======================================================
  */
 
-#ifndef FORMURL_H
-#define FORMURL_H
+#ifndef FORMTOC_H
+#define FORMTOC_H
 
 #ifdef __GNUG__
 #pragma interface
 #endif
 
 #include "FormCommand.h"
-struct FD_form_url;
+struct FD_form_toc;
 
-/** This class provides an XForms implementation of the FormUrl Dialog.
+/** This class provides an XForms implementation of the FormToc Dialog.
  */
-class FormUrl : public FormCommand, public noncopyable {
+class FormToc : public FormCommand, public noncopyable {
 public:
 	/**@name Constructors and Destructors */
 	//@{
 	///
-	FormUrl(LyXView *, Dialogs *);
+	FormToc(LyXView *, Dialogs *);
 	///
-	~FormUrl();
-	//@}
+	~FormToc();
 
 private:
 	/**@name Slot Methods */
@@ -37,19 +36,21 @@ private:
 	///
 	virtual void update();
 	/// Apply from dialog
-	void apply();
+	virtual void apply();
 	///
 	virtual void input( long ) {};
 	/// Build the dialog
-	void build();
+	virtual void build();
 	///
 	virtual FL_FORM * const form() const;
 	///
-	FD_form_url * build_url();
+	void updateToc();
+	///
+	FD_form_toc * build_toc();
 	//@}
 
 	/// Real GUI implementation.
-	FD_form_url * dialog_;
+	FD_form_toc * dialog_;
 };
 
 #endif

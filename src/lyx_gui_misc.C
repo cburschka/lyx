@@ -54,7 +54,6 @@ extern FD_form_preamble * fd_form_preamble;
 extern FD_form_table * fd_form_table;
 extern FD_form_sendto * fd_form_sendto;
 extern FD_form_figure * fd_form_figure;
-extern FD_form_toc * fd_form_toc;
 extern FD_form_ref * fd_form_ref;
 extern FD_form_paragraph_extra * fd_form_paragraph_extra;
 extern FD_LaTeXLog * fd_latex_log;
@@ -69,7 +68,6 @@ extern FD_bibitem_form * bibitem_form;
 extern FD_include * form;
 extern FD_index_form * index_form;
 
-extern void TocUpdateCB();
 extern void HideFiguresPopups();
 
 // Prevents LyX from being killed when the close box is pressed in a popup.
@@ -119,9 +117,6 @@ void CloseAllBufferRelatedDialogs()
 	}
 	if (fd_form_figure->form_figure->visible) {
 		fl_hide_form(fd_form_figure->form_figure);
-	}
-	if (fd_form_toc->form_toc->visible) {
-		fl_hide_form(fd_form_toc->form_toc);
 	}
 	if (fd_form_ref->form_ref->visible) {
 		fl_hide_form(fd_form_ref->form_ref);
@@ -220,9 +215,6 @@ void updateAllVisibleBufferRelatedDialogs()
 		if (fd_form_bullet->form_bullet->visible) {
 			updateBulletForm();
 		}
-	}
-	if (fd_form_toc->browser_toc->visible) {
-		TocUpdateCB(0, 0);
 	}
 	if (fd_latex_log->LaTeXLog->visible) {
 		LatexLogUpdate(0,0);

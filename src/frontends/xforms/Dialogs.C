@@ -8,6 +8,7 @@
 #include "FormCitation.h"
 #include "FormPrint.h"
 #include "FormTabular.h"
+#include "FormToc.h"
 #include "FormUrl.h"
 
 #ifdef __GNUG__
@@ -23,6 +24,7 @@ Dialogs::Dialogs(LyXView * lv)
 	dialogs_.push_back(new FormCitation(lv, this));
 	dialogs_.push_back(new FormPrint(lv, this));
 	dialogs_.push_back(new FormTabular(lv, this));
+	dialogs_.push_back(new FormToc(lv, this));
 	dialogs_.push_back(new FormUrl(lv, this));
 
 	// reduce the number of connections needed in

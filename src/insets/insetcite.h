@@ -16,11 +16,6 @@
 #endif
 
 #include "insetcommand.h"
-#include <sigc++/signal_system.h>
-
-#ifdef SIGC_CXX_NAMESPACES
-using SigC::Signal0;
-#endif
 
 /** Used to insert citations  
  */
@@ -30,8 +25,6 @@ public:
 	explicit
 	InsetCitation(InsetCommandParams const &);
 	///
-	~InsetCitation();
-	///
 	Inset * Clone() const { return new InsetCitation(params()); }
 	///
 	string getScreenLabel() const;
@@ -39,8 +32,6 @@ public:
 	EDITABLE Editable() const { return IS_EDITABLE; }
         ///
 	void Edit(BufferView *, int, int, unsigned int);
-	///
-	Signal0<void> hide;
 };
 
 #endif // INSET_CITE_H

@@ -71,7 +71,6 @@ extern FD_form_preamble * fd_form_preamble;
 extern FD_form_table * fd_form_table;
 extern FD_form_figure * fd_form_figure;
 extern FD_form_screen * fd_form_screen;
-extern FD_form_toc * fd_form_toc;
 extern FD_form_ref * fd_form_ref;
 extern FD_form_bullet * fd_form_bullet;
 
@@ -1131,26 +1130,6 @@ void InsertAsciiFile(BufferView * bv, string const & f, bool asParagraph)
 	else
 		bv->text->InsertStringB(bv, tmpstr);
 	bv->update(BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
-}
-
-
-void MenuShowTableOfContents()
-{
-	static int ow = -1, oh;
-
-	TocUpdateCB(0, 0);
-	if (fd_form_toc->form_toc->visible) {
-		fl_raise_form(fd_form_toc->form_toc);
-	} else {
-		fl_show_form(fd_form_toc->form_toc,
-			     FL_PLACE_MOUSE | FL_FREE_SIZE, FL_FULLBORDER,
-			     _("Table Of Contents"));
-		if (ow < 0) {
-			ow = fd_form_toc->form_toc->w;
-			oh = fd_form_toc->form_toc->h;
-		}
-		fl_set_form_minsize(fd_form_toc->form_toc, ow, oh);
-	}
 }
 
 
@@ -2916,92 +2895,6 @@ void Reconfigure(BufferView * bv)
 	WriteAlert(_("The system has been reconfigured."), 
 		   _("You need to restart LyX to make use of any"),
 		   _("updated document class specifications."));
-}
-
-
-//
-// Table of Contents
-//
-
-static vector<Buffer::TocItem> toclist;
-
-
-extern "C" void TocSelectCB(FL_OBJECT * ob, long)
-{
-	if (!current_view->available())
-		return;
-   
-	TocUpdateCB(0, 0);
-	unsigned int choice = fl_get_browser(ob);
-	if (0 < choice && choice - 1 < toclist.size()) {
- 		current_view->beforeChange();
-		current_view->text->SetCursor(current_view, toclist[choice-1].par, 0);
-		current_view->text->sel_cursor = 
-			current_view->text->cursor;
-		current_view->update(BufferView::SELECT|BufferView::FITCUR);
-	} else {
-		WriteAlert(_("Error"), 
-			   _("Couldn't find this label"), 
-			   _("in current document."));
-	}
-}
-
-
-extern "C" void TocCancelCB(FL_OBJECT *, long)
-{
-	fl_hide_form(fd_form_toc->form_toc);
-}
-
-
-extern "C"
-void TocUpdateCB(FL_OBJECT *, long)
-{
-	if (!current_view->available()) {
-		toclist.clear();
-		fl_clear_browser(fd_form_toc->browser_toc);
-		fl_add_browser_line(fd_form_toc->browser_toc,
-				    _("*** No Document ***"));
-		return;
-	}
-
-	vector<vector<Buffer::TocItem> > tmp =
-		current_view->buffer()->getTocList();
-	int type = fl_get_choice(fd_form_toc->toctype)-1;
-	//if (toclist == tmp[type])
-	//	return;
-	if (toclist.size() == tmp[type].size()) {
-		// Check if all elements are the same.
-		unsigned int i = 0;
-		for (; i < toclist.size(); ++i) {
-			if (toclist[i] !=  tmp[type][i])
-				break;
-		}
-		if (i >= toclist.size()) return;
-	}
-
-	toclist = tmp[type];
-
-	static Buffer * buffer = 0;
-	int topline = 0;
-	int line = 0;
-	if (buffer == current_view->buffer()) {
-		topline = fl_get_browser_topline(fd_form_toc->browser_toc);
-		line = fl_get_browser(fd_form_toc->browser_toc);
-	} else
-		buffer = current_view->buffer();
-
-	fl_clear_browser(fd_form_toc->browser_toc);
-	fl_hide_object(fd_form_toc->browser_toc);
-
-	for (vector<Buffer::TocItem>::const_iterator it = toclist.begin();
-	     it != toclist.end(); ++it)
-		fl_add_browser_line(fd_form_toc->browser_toc,
-				    (string(4*(*it).depth,' ')+
-				     (*it).str).c_str());
-
-	fl_set_browser_topline(fd_form_toc->browser_toc, topline);
-	fl_select_browser_line(fd_form_toc->browser_toc, line);
-	fl_show_object(fd_form_toc->browser_toc);
 }
 
 

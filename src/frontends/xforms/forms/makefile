@@ -25,6 +25,7 @@ SRCS := form_citation.fd \
 	form_print.fd \
 	form_graphics.fd \
 	form_tabular.fd \
+	form_toc.fd \
 	form_url.fd
 
 

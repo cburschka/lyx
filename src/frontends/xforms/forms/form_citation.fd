@@ -8,14 +8,14 @@ Unit of measure: FL_COORD_PIXEL
 
 =============== FORM ===============
 Name: form_citation
-Width: 450
-Height: 780
+Width: 430
+Height: 770
 Number of Objects: 13
 
 --------------------
 class: FL_BOX
 type: UP_BOX
-box: 0 0 430 780
+box: 0 0 430 770
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -45,7 +45,7 @@ shortcut:
 resize: FL_RESIZE_X
 gravity: FL_NoGravity FL_NoGravity
 name: citeBrsr
-callback: C_FormCitationInputCB
+callback: C_FormCommandInputCB
 argument: CITEBRSR
 
 --------------------
@@ -63,7 +63,7 @@ shortcut:
 resize: FL_RESIZE_X
 gravity: FL_NoGravity FL_NoGravity
 name: bibBrsr
-callback: C_FormCitationInputCB
+callback: C_FormCommandInputCB
 argument: BIBBRSR
 
 --------------------
@@ -81,7 +81,7 @@ shortcut:
 resize: FL_RESIZE_NONE
 gravity: FL_NoGravity FL_NoGravity
 name: addBtn
-callback: C_FormCitationInputCB
+callback: C_FormCommandInputCB
 argument: ADD
 
 --------------------
@@ -99,7 +99,7 @@ shortcut:
 resize: FL_RESIZE_NONE
 gravity: FL_NoGravity FL_NoGravity
 name: delBtn
-callback: C_FormCitationInputCB
+callback: C_FormCommandInputCB
 argument: DELETE
 
 --------------------
@@ -117,7 +117,7 @@ shortcut:
 resize: FL_RESIZE_NONE
 gravity: FL_NoGravity FL_NoGravity
 name: upBtn
-callback: C_FormCitationInputCB
+callback: C_FormCommandInputCB
 argument: UP
 
 --------------------
@@ -135,13 +135,13 @@ shortcut:
 resize: FL_RESIZE_NONE
 gravity: FL_NoGravity FL_NoGravity
 name: downBtn
-callback: C_FormCitationInputCB
+callback: C_FormCommandInputCB
 argument: DOWN
 
 --------------------
 class: FL_BROWSER
 type: NORMAL_BROWSER
-box: 10 440 430 110
+box: 10 440 410 110
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_YELLOW
 alignment: FL_ALIGN_TOP_LEFT
@@ -225,7 +225,7 @@ shortcut: ^M
 resize: FL_RESIZE_ALL
 gravity: FL_SouthEast FL_SouthEast
 name: ok
-callback: C_FormCitationOKCB
+callback: C_FormCommandOKCB
 argument: 0
 
 --------------------
@@ -243,7 +243,7 @@ shortcut: ^[
 resize: FL_RESIZE_ALL
 gravity: FL_SouthEast FL_SouthEast
 name: cancel
-callback: C_FormCitationCancelCB
+callback: C_FormCommandCancelCB
 argument: 0
 
 ==============================

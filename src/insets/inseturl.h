@@ -16,13 +16,8 @@
 #endif
 
 #include "insetcommand.h"
-#include <sigc++/signal_system.h>
 
 struct LaTeXFeatures;
-
-#ifdef SIGC_CXX_NAMESPACES
-using SigC::Signal0;
-#endif
 
 /** The url inset  
  */
@@ -31,8 +26,6 @@ public:
 	///
 	explicit
 	InsetUrl(InsetCommandParams const &);
-	///
-	~InsetUrl();
         ///
 	Inset * Clone() const { return new InsetUrl(params()); }
 	///
@@ -43,8 +36,6 @@ public:
 	string getScreenLabel() const;
 	///
 	EDITABLE Editable() const { return IS_EDITABLE; }
-	///
-	char const * EditMessage() const;
 	///
 	void Edit(BufferView *, int, int, unsigned int);
         ///
@@ -58,8 +49,6 @@ public:
 	int Linuxdoc(Buffer const *, std::ostream &) const;
 	///
 	int DocBook(Buffer const *, std::ostream &) const;
-	///
-	Signal0<void> hide;
 };
 
 #endif

@@ -32,12 +32,11 @@ class LyXView;
 class InsetGraphics;
 class InsetBibKey;
 class InsetBibtex;
-class InsetCitation;
 class InsetInclude;
 class InsetIndex;
 class InsetInfo;
 class InsetTabular;
-class InsetUrl;
+class InsetCommand;
 
 using std::vector;
 
@@ -114,11 +113,15 @@ public:
 	///
 	Signal1<void, InsetBibKey *> showBibkey;
 	///
-	Signal1<void, InsetCitation *> showCitation;
+	Signal1<void, InsetCommand *> showCitation;
 	///
 	Signal1<void, string const &> createCitation;
 	///
-	Signal1<void, InsetUrl *> showUrl;
+	Signal1<void, InsetCommand *> showTOC;
+	///
+	Signal1<void, string const &> createTOC;
+	///
+	Signal1<void, InsetCommand *> showUrl;
 	///
 	Signal1<void, string const &> createUrl;
 	///
