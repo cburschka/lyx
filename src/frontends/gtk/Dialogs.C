@@ -85,7 +85,7 @@
 #include "FormShowFile.h"
 #include "FormSpellchecker.h"
 #include "GTableCreate.h"
-#include "FormToc.h"
+#include "GToc.h"
 #include "GUrl.h"
 #include "FormVSpace.h"
 #include "FormWrap.h"
@@ -501,8 +501,9 @@ Dialogs::DialogPtr Dialogs::build(string const & name)
 		dialog->bc().bp(new OkApplyCancelReadOnlyPolicy);
 #endif
 	} else if (name == "toc") {
+		dialog->bc().view(new GBC(dialog->bc()));
 		dialog->setController(new ControlToc(*dialog));
-		dialog->setView(new FormToc(*dialog));
+		dialog->setView(new GToc(*dialog));
 		dialog->bc().bp(new OkCancelPolicy);
 	} else if (name == "url") {
 		dialog->bc().view(new GBC(dialog->bc()));
