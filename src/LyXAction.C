@@ -194,7 +194,7 @@ void LyXAction::init()
 		  N_("Insert a new ERT Inset"), Noop },
 		{ LFUN_INSET_EXTERNAL, "external-insert",
 		  N_("Insert a new external inset"), Noop },
-		{ LFUN_FIGURE, "figure-insert", N_("Insert Figure"), Noop },
+		{ LFUN_FIGURE, "figure-insert", N_("Insert Graphics"), Noop },
 		{ LFUN_INSET_GRAPHICS, "graphics-insert",
 		  N_("Insert Graphics"), Noop },
 		{ LFUN_FILE_INSERT, "file-insert", "", Noop },

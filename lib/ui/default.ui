@@ -161,8 +161,8 @@ Menuset
 	Item "Note...|N" "note-insert"
 	Submenu "Lists & TOC|O" "insert_toc"
 	Separator
-	Item "Figure...|g" "figure-insert"
-	Item "Tabular...|b" "dialog-tabular-insert"
+	Item "Graphics...|G" "figure-insert"
+	Item "Tabular Material...|b" "dialog-tabular-insert"
 	Submenu "Floats|a" "insert_floats"
 	Separator
 	Item "Include File|e" "buffer-child-insert"
@@ -184,12 +184,12 @@ Menuset
     End
 
     Menu "insert_floats"
-	Item "Figure Float|F" "buffer-float-insert figure"
-	Item "Table Float|T" "buffer-float-insert table"
-	Item "Wide Figure Float|W" "buffer-float-insert wide-fig"
-	Item "Wide Table Float|d" "buffer-float-insert wide-tab"
+	Item "Figure|F" "buffer-float-insert figure"
+	Item "Table|T" "buffer-float-insert table"
+	Item "Wide Figure|W" "buffer-float-insert wide-fig"
+	Item "Wide Table|d" "buffer-float-insert wide-tab"
 	Separator
-	Item "Algorithm Float|A" "buffer-float-insert algorithm"
+	Item "Algorithm|A" "buffer-float-insert algorithm"
     End
 
     Menu "insert_toc"
