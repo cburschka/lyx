@@ -2817,13 +2817,13 @@ enum PAR_TAG {
 
 string tag_name(PAR_TAG const & pt) {
 	switch (pt) {
-	case NONE: return "!-- --"; break;
-	case TT: return "tt"; break;
-	case SF: return "sf"; break;
-	case BF: return "bf"; break;
-	case IT: return "it"; break;
-	case SL: return "sl"; break;
-	case EM: return "em"; break;
+	case NONE: return "!-- --";
+	case TT: return "tt";
+	case SF: return "sf";
+	case BF: return "bf";
+	case IT: return "it";
+	case SL: return "sl";
+	case EM: return "em";
 	}
 	return "";
 }

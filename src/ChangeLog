@@ -1,3 +1,10 @@
+2001-03-23  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* LString.h: removed "using std::getline"!
+
+	* buffer.C (tag_name): removed redundant break statements as they were
+	producing lots of warnings with my compiler.
+
 2001-03-23  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* LString.h: add "using std::getline" when using the real <string>.
