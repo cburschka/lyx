@@ -1041,6 +1041,9 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 		// But insets should read it, it is a part of
 		// the inset isn't it? Lgb.
 	} else if (token == "\\begin_inset") {
+		// Does this fix it? YES!
+		checkminipage = true;
+		
 #ifdef NO_LATEX
 		insertErtContents(par, pos, font, false);
 		ert_stack.push(ert_comp);

@@ -1,3 +1,8 @@
+2001-07-26  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* buffer.C (parseSingleLyXformat2Token): check minipage if we
+	insert an inset.
+
 2001-07-25  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* BufferView.h: don't forward declare WorkArea
