@@ -50,12 +50,12 @@ msgstr "-- podstawiono domy¶lny"
 #: src/buffer.C:1078
 #, c-format
 msgid "Warning: need lyxformat %.2f but found %.2f"
-msgstr "Ostrze¿enie: potrzebny format lyxa %.2f, a znaleziono %.2f"
+msgstr "Ostrze¿enie: potrzebny format LyX-a %.2f, a znaleziono %.2f"
 
 #: src/buffer.C:1082
 #, c-format
 msgid "ERROR: need lyxformat %.2f but found %.2f"
-msgstr "B³±d: potrzebny format lyxa %.2f, a znaleziono %.2f"
+msgstr "B³±d: potrzebny format LyX-a %.2f, a znaleziono %.2f"
 
 #. future format
 #: src/buffer.C:1093 src/buffer.C:1120 src/buffer.C:1140
@@ -77,7 +77,7 @@ msgstr "B³±d!"
 
 #: src/buffer.C:1102 src/buffer.C:1128
 msgid "Old LyX file format found. Use LyX 0.10.x to read this!"
-msgstr "Stary format pliku LyXa. U¿yj LyXa 0.10x aby go odczytac!"
+msgstr "Stary format pliku LyX-a. U¿yj LyX-a 0.10x aby go odczytaæ!"
 
 #: src/buffer.C:1121
 msgid "LyX file format is newer that what"
@@ -89,7 +89,7 @@ msgstr "aktualnie obs³ugiwany format. Oczekuj problemów."
 
 #: src/buffer.C:1146
 msgid "Not a LyX file!"
-msgstr "Plik nie jest w formacie LyXa!"
+msgstr "Plik nie jest w formacie LyX-a!"
 
 #: src/buffer.C:1149
 msgid "Unable to read file!"
@@ -491,7 +491,7 @@ msgstr "Brak pliku logu:"
 
 #: src/converter.C:860
 msgid "There were errors during the LaTeX run."
-msgstr "Wyst±pi³y b³êdy w trakcie przebiegu LaTeXa."
+msgstr "Wyst±pi³y b³êdy w trakcie przebiegu LaTeX-a."
 
 #: src/credits.C:55
 msgid "ERROR: LyX wasn't able to read CREDITS file"
@@ -499,11 +499,11 @@ msgstr "B³±d! Plik CREDITS nie jest osi±galny"
 
 #: src/credits.C:59
 msgid "Please install correctly to estimate the great"
-msgstr "Zainstaluj LyXa poprawnie, proszê, by zobaczyæ"
+msgstr "Zainstaluj LyX-a poprawnie, proszê, by zobaczyæ"
 
 #: src/credits.C:62
 msgid "amount of work other people have done for the LyX project."
-msgstr "jak wiele pracy w³o¿y³o wielu ludzi w projekt LyXa."
+msgstr "jak wiele pracy w³o¿y³o wielu ludzi w projekt LyX-a."
 
 #: src/credits.C:72
 msgid "Credits"
@@ -1080,7 +1080,7 @@ msgstr "Cytowanie (BibTeX)..."
 
 #: src/ext_l10n.h:116
 msgid "LyX Document...|X"
-msgstr "Dokument LyXa..."
+msgstr "Dokument LyX-a..."
 
 #: src/ext_l10n.h:117
 msgid "Ascii as Lines...|L"
@@ -1128,7 +1128,7 @@ msgstr "Zmieñ g³êboko¶æ ¶rodowiska"
 
 #: src/ext_l10n.h:128
 msgid "LaTeX Preamble...|L"
-msgstr "Preambu³a LaTeXa..."
+msgstr "Preambu³a LaTeX-a..."
 
 #: src/ext_l10n.h:129
 msgid "Toggle Appendix|A"
@@ -1148,7 +1148,7 @@ msgstr "Aktualizuj"
 
 #: src/ext_l10n.h:133
 msgid "LaTeX Logfile|L"
-msgstr "Komunikaty LaTeXa"
+msgstr "Komunikaty LaTeX-a"
 
 #: src/ext_l10n.h:134
 msgid "Table of Contents|T"
@@ -1200,7 +1200,7 @@ msgstr "Znane b³êdy"
 
 #: src/ext_l10n.h:146
 msgid "LaTeX Configuration|L"
-msgstr "Konfiguracja LaTeXa"
+msgstr "Konfiguracja LaTeX-a"
 
 #: src/ext_l10n.h:147
 msgid "Copyright and Warranty...|o"
@@ -4329,7 +4329,7 @@ msgstr "Nie mo¿na konwertowaæ na now± klasê dokumentu."
 
 #: src/frontends/xforms/FormError.C:26
 msgid "LaTeX Error"
-msgstr "B³±d LaTeXa"
+msgstr "B³±d LaTeX-a"
 
 #: src/frontends/xforms/form_graphics.C:33
 msgid "Graphics File|#F"
@@ -6017,7 +6017,7 @@ msgstr ""
 
 #: src/LaTeX.C:157 src/LaTeX.C:182 src/LaTeX.C:245 src/LaTeX.C:293
 msgid "LaTeX run number "
-msgstr "Przebieg LaTeXa numer "
+msgstr "Przebieg LaTeX-a numer "
 
 #: src/LaTeX.C:207 src/LaTeX.C:272
 msgid "Running MakeIndex."
@@ -6037,7 +6037,7 @@ msgstr "Log z budowania programu"
 
 #: src/LaTeXLog.C:54
 msgid "LaTeX Log"
-msgstr "Log LaTeXa"
+msgstr "Log LaTeX-a"
 
 #: src/layout.C:1343
 msgid "LyX wasn't able to find its layout descriptions!"
@@ -6621,7 +6621,7 @@ msgstr "Zmieñ jêzyk"
 
 #: src/LyXAction.C:264
 msgid "View LaTeX log"
-msgstr "Poka¿ log LaTeXa"
+msgstr "Poka¿ log LaTeX-a"
 
 #: src/LyXAction.C:269
 msgid "Copy paragraph environment type"
@@ -6934,7 +6934,7 @@ msgstr "Styl fontów"
 
 #: src/lyx_cb.C:673
 msgid "LaTeX Preamble"
-msgstr "Preambu³a LaTeXa"
+msgstr "Preambu³a LaTeX-a"
 
 #: src/lyx_cb.C:690
 msgid "Do you want to save the current settings"
@@ -6950,7 +6950,7 @@ msgstr "jako domy¶lne dla nowych dokumentów?"
 
 #: src/lyx_cb.C:857
 msgid "LaTeX preamble set"
-msgstr "Preambu³a LaTeXa ustawiona"
+msgstr "Preambu³a LaTeX-a ustawiona"
 
 #: src/lyx_cb.C:892
 msgid "Inserting figure..."
@@ -6974,7 +6974,7 @@ msgstr "System zosta³ zrekonfigurowany."
 
 #: src/lyx_cb.C:985
 msgid "You need to restart LyX to make use of any"
-msgstr "Musisz zrestartowac LyXa by skorzystaæ"
+msgstr "Musisz zrestartowac LyX-a by skorzystaæ"
 
 #: src/lyx_cb.C:986
 msgid "updated document class specifications."
@@ -7158,7 +7158,7 @@ msgstr "Otwieranie pliku pomocy"
 
 #: src/lyxfunc.C:1123
 msgid "LyX Version "
-msgstr "Wersja LyXa "
+msgstr "Wersja LyX-a "
 
 #: src/lyxfunc.C:1128
 msgid "Library directory: "
@@ -7198,7 +7198,7 @@ msgstr ""
 
 #: src/lyxfunc.C:2479
 msgid "Usage: toolbar-add-to <LyX command>"
-msgstr "U¿ycie: toolbar-add-to <polecenie LyXa>"
+msgstr "U¿ycie: toolbar-add-to <polecenie LyX-a>"
 
 #: src/lyxfunc.C:2496 src/mathed/formula.C:881
 msgid "Math greek mode on"
@@ -7230,7 +7230,7 @@ msgstr "Nieznany rodzaj przypisu"
 
 #: src/lyxfunc.C:2910
 msgid "Syntax: set-color <lyx_name> <x11_name>"
-msgstr "Sk³adnia: set-color <kolor LyXa> <kolor X11>"
+msgstr "Sk³adnia: set-color <kolor LyX-a> <kolor X11>"
 
 #: src/lyxfunc.C:2916
 msgid "Set-color \""
@@ -7350,7 +7350,7 @@ msgstr " Bez zmian %l| Mikroskopijny | Najmniejszy | Mniejszy | Ma³y | Normalny 
 
 #: src/lyx_gui.C:326
 msgid " No change %l| Emph | Underbar | Noun | LaTeX mode %l| Reset "
-msgstr " Bez zmian %l| Kursywa | Podkre¶lenie | Kapitaliki | Polecenie LaTeXa %l| Od¶wie¿ "
+msgstr " Bez zmian %l| Kursywa | Podkre¶lenie | Kapitaliki | Polecenie LaTeX-a %l| Od¶wie¿ "
 
 #: src/lyx_gui.C:328
 msgid " No change %l| No color | Black | White | Red | Green | Blue | Cyan | Magenta | Yellow %l| Reset "
@@ -7371,7 +7371,7 @@ msgstr "Od¶wie¿"
 
 #: src/lyx_gui.C:405
 msgid "LyX Banner"
-msgstr "Logo LyXa"
+msgstr "Logo LyX-a"
 
 #: src/lyx_gui_misc.C:337
 msgid "Dismiss"
@@ -7407,11 +7407,11 @@ msgstr "'. Koniec pracy."
 
 #: src/lyx_main.C:219
 msgid "Warning: could not determine path of binary."
-msgstr "Ostrze¿enie: nie mo¿na znale¼æ scie¿ki do binariów."
+msgstr "Ostrze¿enie: nie mo¿na znale¼æ ¶cie¿ki do binariów."
 
 #: src/lyx_main.C:221
 msgid "If you have problems, try starting LyX with an absolute path."
-msgstr "Je¶li masz problemy spróbuj uruchomic LyXa ze scie¿ka bezwzglêdn±."
+msgstr "Je¶li masz problemy spróbuj uruchomic LyX-a ze ¶cie¿k± bezwzglêdn±."
 
 #: src/lyx_main.C:311
 msgid "LYX_DIR_11x environment variable no good."
@@ -7423,7 +7423,7 @@ msgstr "¦cie¿ka do katalogu systemowego: "
 
 #: src/lyx_main.C:321
 msgid "LyX Warning! Couldn't determine system directory. "
-msgstr "Ostrze¿enie LyXa! Nie mo¿na okresliæ katalogu systemowego. "
+msgstr "Ostrze¿enie LyX-a! Nie mo¿na okresliæ katalogu systemowego. "
 
 #: src/lyx_main.C:322
 msgid "Try the '-sysdir' command line parameter or "
@@ -7431,7 +7431,7 @@ msgstr "U¿yj opcji '-sysdir' z linii komend lub "
 
 #: src/lyx_main.C:323
 msgid "set the environment variable LYX_DIR_11x to the LyX system directory "
-msgstr "ustaw warto¶æ zmiennej LYX_DIR_11x na katalog systemowy LyXa "
+msgstr "ustaw warto¶æ zmiennej LYX_DIR_11x na katalog systemowy LyX-a "
 
 #: src/lyx_main.C:325
 msgid "containing the file `chkconfig.ltx'."
@@ -7451,15 +7451,15 @@ msgstr "Spodziewaj siê problemów."
 
 #: src/lyx_main.C:558
 msgid "You have specified an invalid LyX directory."
-msgstr "Podano b³êdny katalog LyXa."
+msgstr "Podano b³êdny katalog LyX-a."
 
 #: src/lyx_main.C:559
 msgid "You don't have a personal LyX directory."
-msgstr "Nie posiadasz osobistego katalogu domowego LyXa."
+msgstr "Nie posiadasz osobistego katalogu domowego LyX-a."
 
 #: src/lyx_main.C:561
 msgid "It is needed to keep your own configuration."
-msgstr "Jest on wymagany do zapisania w³asnej konfiguracji LyXa."
+msgstr "Jest on wymagany do zapisania w³asnej konfiguracji LyX-a."
 
 #: src/lyx_main.C:562
 msgid "Should I try to set it up for you (recommended)?"
@@ -7467,7 +7467,7 @@ msgstr "Czy spróbowaæ wykonaæ to dla Ciebie (zalecane)?"
 
 #: src/lyx_main.C:563
 msgid "Running without personal LyX directory."
-msgstr "Uruchamianie bez osobistego katalogu LyXa."
+msgstr "Uruchamianie bez osobistego katalogu LyX-a."
 
 #. Tell the user what is going on
 #: src/lyx_main.C:570
@@ -7492,7 +7492,7 @@ msgstr "Zakoñczone!"
 
 #: src/lyx_main.C:599
 msgid "LyX Warning!"
-msgstr "Ostrze¿enie LyXa!"
+msgstr "Ostrze¿enie LyX-a!"
 
 #: src/lyx_main.C:600
 msgid "Error while reading "
@@ -7540,7 +7540,7 @@ msgstr "Brak typu [latex, ps, ...] po "
 
 #: src/lyxrc.C:1602
 msgid "The font encoding used for the LaTeX2e fontenc package. T1 is highly recommended for non-English languages."
-msgstr "Kodowanie u¿ywane przez pakiet fontenc latexa. Zaleca siê stosowanie kodowania T1 dla jêzyków nieangielskich."
+msgstr "Kodowanie u¿ywane przez pakiet fontenc LaTeX-a. Zaleca siê stosowanie kodowania T1 dla jêzyków nieangielskich."
 
 #: src/lyxrc.C:1606
 msgid "The default printer to print on. If none is specified, LyX will use the environment variable PRINTER."
@@ -7616,7 +7616,7 @@ msgstr "Je¶li nazwa drukarki zosta³a podana w oknie dialogowym drukowania, to te
 
 #: src/lyxrc.C:1678
 msgid "DPI (dots per inch) of your monitor is auto-detected by LyX. If that goes wrong, override the setting here."
-msgstr "Rozdzielczo¶æ (DPI) monitora jest ustalana automatycznie przez LyXa. Je¶li ta warto¶æ jest b³êdna, mo¿na skorygowaæ DPI w³a¶nie tutaj."
+msgstr "Rozdzielczo¶æ (DPI) monitora jest ustalana automatycznie przez LyX-a. Je¶li ta warto¶æ jest b³êdna, mo¿na skorygowaæ DPI w³a¶nie tutaj."
 
 #: src/lyxrc.C:1683
 #, no-c-format
@@ -7661,7 +7661,7 @@ msgstr "Po³o¿enie szablonów dokumentów."
 
 #: src/lyxrc.C:1728
 msgid "LyX will place its temporary directories in this path. They will be deleted when you quit LyX."
-msgstr "Katalog na pliki tymczasowe LyXa. Pliki te bêd± usuniête po wyj¶ciu z programu."
+msgstr "Katalog na pliki tymczasowe LyX-a. Pliki te bêd± usuniête po wyj¶ciu z programu."
 
 #: src/lyxrc.C:1732
 msgid "Select if you wish to use a temporary directory structure to store temporary TeX output."
@@ -7777,7 +7777,7 @@ msgstr "Zaznacza kolorem s³owa z jêzyka innego ni¿ g³ówny."
 
 #: src/lyxrc.C:1866
 msgid "The latex command for loading the language package. E.g. \"\\usepackage{babel}\", \"\\usepackage{omega}\"."
-msgstr "Polecenie latexa ³aduj±ce pakiet obs³ugi jêzyka, na przyk³ad \"\\usepackage{babel}\" lub \"\\usepackage{omega}\"."
+msgstr "Polecenie LaTeX-a ³aduj±ce pakiet obs³ugi jêzyka, na przyk³ad \"\\usepackage{babel}\" lub \"\\usepackage{omega}\"."
 
 #: src/lyxrc.C:1870
 msgid "Select if a language switching command is needed at the beginning of the document."
@@ -7789,11 +7789,11 @@ msgstr "W³±cz gdy polecenie zmiany jêzyka jest wymagane na koñcu dokumentu."
 
 #: src/lyxrc.C:1878
 msgid "The latex command for changing from the language of the document to another language. E.g. \\selectlanguage{$$lang} where $$lang is substituted by the name of the second language."
-msgstr "Polecenie latexa zmieniaj±ce jêzyk dokumentu. Na przyk³ad \\selectlanguage{$$lang}, gdzie $$lang jest nazw± nowego jêzyka."
+msgstr "Polecenie LaTeX-a zmieniaj±ce jêzyk dokumentu. Na przyk³ad \\selectlanguage{$$lang}, gdzie $$lang jest nazw± nowego jêzyka."
 
 #: src/lyxrc.C:1882
 msgid "The latex command for changing back to the language of the document."
-msgstr "Polecenie latexa zmieniaj±ce jêzyk dokumentu na jêzyk g³ówny."
+msgstr "Polecenie LaTeX-a zmieniaj±ce jêzyk dokumentu na jêzyk g³ówny."
 
 #: src/lyxrc.C:1887
 #, no-c-format
@@ -7802,7 +7802,7 @@ msgstr "Mo¿na u¿yæ tutaj formatowania typowego dla strftime. Zobacz stronê manua
 
 #: src/lyxrc.C:1891
 msgid "De-select if you don't want the startup banner."
-msgstr "Wy³±cz je¶li nie chcesz og³±daæ loga LyXa po starcie programu."
+msgstr "Wy³±cz je¶li nie chcesz og³±daæ loga LyX-a po starcie programu."
 
 #: src/lyxrc.C:1895
 msgid "The wheel movement factor (for mice with wheels or five button mice)."
@@ -8180,7 +8180,7 @@ msgstr "Zast±p s³owo|#Z"
 
 #: src/support/filetools.C:159
 msgid "LyX Internal Error!"
-msgstr "B³±d wewnêtrzny LyXa!"
+msgstr "B³±d wewnêtrzny LyX-a!"
 
 #: src/support/filetools.C:160
 msgid "Could not test if directory is writeable"
