@@ -1,6 +1,7 @@
 2001-05-18  Angus Leeming  <a.leeming@ic.ac.uk>
 
-	* ControlPrint.C (c-tor): initialise params_ and thereby cure crash.
+	* ControlPrint.C (c-tor):
+	* ControlPreamble.C (c-tor): initialise params_ and thereby cure crash.
 
 2001-05-14  Angus Leeming  <a.leeming@ic.ac.uk>
 
