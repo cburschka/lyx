@@ -227,7 +227,7 @@ void InsetFormula::draw(BufferView * bv, LyXFont const & font,
 	MathPainterInfo pi(bv->painter());
 
 	if (use_preview) {
-		pi.pain.image(x + 1, y - a + 1, w - 2, h - 2, 
+		pi.pain.image(x, y - a, w, h,
 			      *(preview_->pimage_->image(*this, *bv)));
 	} else {
 		//pi.base.style = display() ? LM_ST_DISPLAY : LM_ST_TEXT;
@@ -442,14 +442,14 @@ bool InsetFormula::insetAllowed(Inset::Code code) const
 int InsetFormula::ascent(BufferView *, LyXFont const &) const
 {
 	return preview_->usePreview() ?
-		1 + preview_->pimage_->ascent() : 1 + par_->ascent();
+		preview_->pimage_->ascent() : 1 + par_->ascent();
 }
 
 
 int InsetFormula::descent(BufferView *, LyXFont const &) const
 {
 	return preview_->usePreview() ?
-		1 + preview_->pimage_->descent() : 1 + par_->descent();
+		preview_->pimage_->descent() : 1 + par_->descent();
 }
 
 
