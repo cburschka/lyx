@@ -1,3 +1,13 @@
+2003-02-14  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* buffer.C (makeLaTeXFile): fix counting of number of line feeds
+	in preamble
+
+2003-02-14  Michael Schmitt <michael.schmitt@teststep.org>
+
+	* text.C (drawLengthMarker): also draw an arrow marker for
+	symbolic lengths (medskip...)
+
 2003-02-14  John Levon  <levon@movementarian.org>
 
 	* tabular.h:

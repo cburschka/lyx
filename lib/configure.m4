@@ -300,8 +300,7 @@ dnl fi
 
 # Search a GUI Fax program
 SEARCH_PROG([for a fax program], fax_command, kdeprintfax ksendfax)
-test $fax_command = "kdeprintfax" && fax_command="kdeprintfax \$\$i"
-test $fax_command = "ksendfax" && fax_command="ksendfax \$\$i"
+test $fax_command != "none" && fax_command="$fax_command \$\$i"
 
 # Search for LinuxDoc support
 SEARCH_PROG([for SGML-tools 1.x (LinuxDoc)], LINUXDOC, sgml2lyx)
