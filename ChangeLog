@@ -1,3 +1,13 @@
+2000-03-21  Kayvan A. Sylvan  <kayvan@camel.internal.sylvan.com>
+
+	* src/lyx_main.C (easyParse): Removed misplaced gui=false which
+	caused lyx to startup with no GUI in place, causing in a crash
+	upon startup when called with arguments.
+
+2000-03-21  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/FontLoader.C: better initialization of dummyXFontStruct.
+
 2000-03-20 José Abílio Matos <jamatos@lyx.org>
 
 	* src/lyxrc.[Ch] Removed \sgml_extra_options, added 6 other flags

@@ -198,27 +198,9 @@ void FontLoader::getFontinfo(LyXFont::FONT_FAMILY family,
 }
 
 
-// A dummy fontstruct used when there is no gui. Only the last 3 have
-// well-thought values...  
-static XFontStruct dummyXFontStruct = {
-	/*XExtData *ext_data; */	0,  
-	/* Font fid; */			0,
-	/* unsigned direction; */	FontLeftToRight,
-	/* unsigned min_char_or_byte2; */ 0,
-	/* unsigned max_char_or_byte2; */ 0,
-	/* unsigned min_byte1; */	0,
-        /* unsigned max_byte1; */	0,
-        /* Bool all_chars_exist; */	0,
-	/* unsigned default_char; */	0,
-        /* int n_properties; */		0,
-        /* XFontProp *properties; */	0,
-        /* XCharStruct min_bounds; */	0,
-	/* XCharStruct max_bounds; */	0,
-	/* XCharStruct *per_char; */	0, // no character specific info
-        /* int ascent; */		1, // unit ascent on character displays
-        /* int descent; */		0, // no descent on character displays
-};
-
+// A dummy fontstruct used when there is no gui. 
+static XFontStruct dummyXFontStruct;
+static bool dummyXFontStructisGood = false;
 
 /// Do load font
 XFontStruct * FontLoader::doLoad(LyXFont::FONT_FAMILY family, 
@@ -227,6 +209,16 @@ XFontStruct * FontLoader::doLoad(LyXFont::FONT_FAMILY family,
 				LyXFont::FONT_SIZE size)
 {
 	if (!lyxrc.use_gui) {
+		if (!dummyXFontStructisGood) {
+			// no character specific info
+			dummyXFontStruct.per_char=0; 
+			// unit ascent on character displays
+			dummyXFontStruct.ascent = 1; 
+			// no descent on character displays
+			dummyXFontStruct.descent = 0; 
+			dummyXFontStructisGood = true;
+		}
+
 		return &dummyXFontStruct;
 	}
 

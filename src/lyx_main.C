@@ -575,7 +575,6 @@ bool LyX::easyParse(int * argc, char * argv[])
 					    "ps...] after ")
 				       << arg << _(" switch!") << endl;
 		}
-		gui = false;
 	}
 	return gui;
 }
