@@ -518,7 +518,7 @@ void InsetInclude::fillWithBibKeys(Buffer const & buffer,
 
 void InsetInclude::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	if (preview_->previewReady()) {
+	if (RenderPreview::activated() && preview_->previewReady()) {
 		preview_->metrics(mi, dim);
 	} else {
 		if (!set_label_) {
@@ -542,7 +542,7 @@ void InsetInclude::draw(PainterInfo & pi, int x, int y) const
 {
 	cache(pi.base.bv);
 
-	if (!preview_->previewReady()) {
+	if (!RenderPreview::activated() || !preview_->previewReady()) {
 		button_.draw(pi, x + button_.box().x1, y);
 		return;
 	}

@@ -195,6 +195,7 @@ void InsetFormula::draw(PainterInfo & pi, int x, int y) const
 
 	// The previews are drawn only when we're not editing the inset.
 	bool const use_preview = (!editing_inset(this) &&
+				  RenderPreview::activated() &&
 				  preview_->previewReady());
 
 	int const w = dim_.wid;
@@ -258,6 +259,7 @@ bool InsetFormula::insetAllowed(InsetOld::Code code) const
 void InsetFormula::metrics(MetricsInfo & m, Dimension & dim) const
 {
 	bool const use_preview = (!editing_inset(this) &&
+				  RenderPreview::activated() &&
 				  preview_->previewReady());
 
 	if (use_preview) {

@@ -1,3 +1,8 @@
+2003-10-14  Angus Leeming  <leeming@lyx.org>
+
+	* formula.C (metrics, draw): only draw the preview when previews
+	are activated.
+
 2003-10-13  Angus Leeming  <leeming@lyx.org>
 
 	* formula.C (editing_inset): pass a pointer rather than a reference. 

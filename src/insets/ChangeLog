@@ -1,3 +1,7 @@
+2003-10-14  Angus Leeming  <leeming@lyx.org>
+
+	* insetinclude.C (metrics, draw): only draw the preview when previews
+	are activated.
 
 2003-10-14  André Pönitz  <poenitz@gmx.net>
 
