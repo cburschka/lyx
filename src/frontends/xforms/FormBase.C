@@ -28,8 +28,10 @@
 
 extern "C" {
 
+#if FL_VERSION > 0 || FL_REVISION >= 89
 // This should be in forms.h but isn't
 void fl_hide_tooltip();
+#endif
 
 // Callback function invoked by xforms when the dialog is closed by the
 // window manager
@@ -164,9 +166,11 @@ void FormBase::show()
 
 void FormBase::hide()
 {
+#if FL_VERSION > 0 || FL_REVISION >= 89
 	// Does no harm if none is visible and ensures that the tooltip form
 	// is hidden should the dialog be closed from the keyboard.
 	fl_hide_tooltip();
+#endif
 
 	// xforms sometimes tries to process a hint-type MotionNotify, and
 	// use XQueryPointer, without verifying if the window still exists.
