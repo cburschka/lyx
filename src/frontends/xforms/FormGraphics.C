@@ -169,7 +169,7 @@ void FormGraphics::build()
 	setPrehandler(bbox_->input_bb_x1);
 	setPrehandler(bbox_->input_bb_y1);
 
-	string const bb_units = "pt|cm|in";
+	string const bb_units = "bp|cm|in";
 	fl_addto_choice(bbox_->choice_bb_units, bb_units.c_str());
 	bc().addReadOnly(bbox_->button_getBB);
 	bc().addReadOnly(bbox_->check_clip);
@@ -294,6 +294,7 @@ void FormGraphics::apply()
 	// the special section
 	igp.special = getStringFromInput(special_->input_special);
 }
+
 
 
 void FormGraphics::update() {
@@ -453,7 +454,7 @@ void FormGraphics::updateBB(string const & filename, string const & bb_inset)
 			fl_set_input(bbox_->input_bb_x1, bb.c_str());
 			fl_set_input(bbox_->input_bb_y1, bb.c_str());
 		}
-		// "pt"
+		// "bp"
 		fl_set_choice(bbox_->choice_bb_units, 1);
 
 	} else {
@@ -464,16 +465,16 @@ void FormGraphics::updateBB(string const & filename, string const & bb_inset)
 		LyXLength anyLength;
 		anyLength = LyXLength(token(bb_inset,' ',0));
 		updateWidgetsFromLength(bbox_->input_bb_x0,
-					bbox_->choice_bb_units,anyLength,"pt");
+					bbox_->choice_bb_units,anyLength,"bp");
 		anyLength = LyXLength(token(bb_inset,' ',1));
 		updateWidgetsFromLength(bbox_->input_bb_y0,
-					bbox_->choice_bb_units,anyLength,"pt");
+					bbox_->choice_bb_units,anyLength,"bp");
 		anyLength = LyXLength(token(bb_inset,' ',2));
 		updateWidgetsFromLength(bbox_->input_bb_x1,
-					bbox_->choice_bb_units,anyLength,"pt");
+					bbox_->choice_bb_units,anyLength,"bp");
 		anyLength = LyXLength(token(bb_inset,' ',3));
 		updateWidgetsFromLength(bbox_->input_bb_y1,
-					bbox_->choice_bb_units,anyLength,"pt");
+					bbox_->choice_bb_units,anyLength,"bp");
 	}
 }
 
@@ -590,7 +591,7 @@ ButtonPolicy::SMInput FormGraphics::input(FL_OBJECT * ob, long)
 				fl_set_input(bbox_->input_bb_y0, token(bb,' ',1).c_str());
 				fl_set_input(bbox_->input_bb_x1, token(bb,' ',2).c_str());
 				fl_set_input(bbox_->input_bb_y1, token(bb,' ',3).c_str());
-				string const unit("pt");
+				string const unit("bp");
 				fl_set_choice_text(bbox_->choice_bb_units, unit.c_str());
 			}
 			controller().bbChanged = false;
@@ -599,7 +600,7 @@ ButtonPolicy::SMInput FormGraphics::input(FL_OBJECT * ob, long)
 			fl_set_input(bbox_->input_bb_y0, "");
 			fl_set_input(bbox_->input_bb_x1, "");
 			fl_set_input(bbox_->input_bb_y1, "");
-			fl_set_choice_text(bbox_->choice_bb_units, "pt");
+			fl_set_choice_text(bbox_->choice_bb_units, "bp");
 		}
 
 		// the size section

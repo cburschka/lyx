@@ -1,3 +1,8 @@
+2002-04-05  Herbert Voss  <voss@perce.de>
+
+	* FormGraphics.C: use correct unit bp (big point - PostScript point)
+	for the bounding box values
+
 2002-04-05  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* FormGraphics.C (updateBB, input): Don't set the path of the file
