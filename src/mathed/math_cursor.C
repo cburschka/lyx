@@ -1410,7 +1410,7 @@ bool MathCursor::interpret(char c)
 		int n = c - '0';
 		MathMacroTemplate * p = formula()->par()->asMacroTemplate();
 		if (p && 1 <= n && n <= p->numargs())
-			insert(MathAtom(new MathMacroArgument(c - '0')));
+			insert(MathAtom(new MathMacroArgument(c - '0', lastcode_)));
 		else {
 			insert(MathAtom(new MathSpecialCharInset('#')));
 			interpret(c); // try again
