@@ -63,10 +63,10 @@ string ImportNoweb::documentclass()
 	if (!ifs) return "nofile"; // Should not happen!
 	string line;
 	while (getline(ifs, line)) {
-		int p = line.find("\\documentclass");
+		string::size_type p = line.find("\\documentclass");
 		if (p != string::npos) {
 			p = line.find('{', p);
-			int q = line.find('}', p);
+			string::size_type q = line.find('}', p);
 			result = "literate-" + line.substr(p, q - p);
 			break;
 		}
