@@ -85,10 +85,12 @@ MathParInset::draw(Painter & pain, int x, int y)
 {
 	byte cxp = 0;
 	int xp = 0;
-	int asc = df_asc, des = 0;
+	int asc = df_asc;
+	int des = 0;
 	bool limits = false;
 	
-	xo = x;  yo = y; 
+	xo_ = x;
+	yo_ = y; 
 	if (!array || array->empty()) {
 		if (array) {
 			MathedXIter data(this);
@@ -104,8 +106,8 @@ MathParInset::draw(Painter & pain, int x, int y)
 		byte cx = data.GetChar();
 		if (cx >= ' ') {
 			string s = data.GetString();
-			drawStr(pain, data.FCode(), size, x, y, s);
-			mathed_char_height(LM_TC_CONST, size, 'y', asc, des);
+			drawStr(pain, data.FCode(), size(), x, y, s);
+			mathed_char_height(LM_TC_CONST, size(), 'y', asc, des);
 			limits = false;
 		}
 		else {
@@ -195,15 +197,16 @@ MathParInset::Metrics()
 		cx = data.GetChar();      
 		if (cx >= ' ') {
 			string s = data.GetString();
-			mathed_string_height(data.FCode(), size, s, asc, des);
+			mathed_string_height(data.FCode(),
+					     size(), s, asc, des);
 			if (asc > ascent) ascent = asc;
 			if (des > descent) descent = des;
 			limits = false;
-			mathed_char_height(LM_TC_CONST, size, 'y', asc, des);
+			mathed_char_height(LM_TC_CONST, size(), 'y', asc, des);
 		} else
 			if (MathIsInset(cx)) {
 				MathedInset * p = data.GetInset();
-				p->SetStyle(size);   
+				p->SetStyle(size());   
 				p->Metrics();
 				if (cx == LM_TC_UP) {
 					asc += (limits) ? p->Height() + 4: p->Ascent() + 
@@ -290,7 +293,7 @@ void MathParInset::Write(ostream & os, bool fragile)
 	data.Reset();
 	
 	if (!Permit(LMPF_FIXED_SIZE)) { 
-		l = lm_get_key_by_id(size, LM_TK_STY);
+		l = lm_get_key_by_id(size(), LM_TK_STY);
 		if (l) {
 			os << '\\' << l->name << ' ';
 		}
@@ -397,22 +400,22 @@ void MathParInset::Write(ostream & os, bool fragile)
 
 bool MathParInset::Inside(int x, int y) 
 {
-  return (x >= xo && x <= xo + width
-	  && y <= yo + descent && y >= yo - ascent);
+  return (x >= xo() && x <= xo() + width
+	  && y <= yo() + descent && y >= yo() - ascent);
 }
 
 
 void MathParInset::GetXY(int & x, int & y) const
 {
-   x = xo;
-   y = yo;
+   x = xo();
+   y = yo();
 }
 
 
 void MathParInset::UserSetSize(short sz)
 {
    if (sz >= 0) {
-       size = sz;      
+       size(sz);      
        flag = flag & ~LMPF_FIXED_SIZE;
    }
 }
@@ -431,12 +434,6 @@ void MathParInset::SetStyle(short sz)
 }
 
 
-void  MathParInset::setFlag(MathedParFlag f)
-{
-	flag |= f;
-}
-
-
 bool MathParInset::Permit(short f) const
 {
 	return bool(f & flag);
@@ -451,6 +448,6 @@ MathedArray * MathParInset::GetData()
 
 void MathParInset::setXY(int x, int y)
 {
-	xo = x;
-	yo = y;
+	xo_ = x;
+	yo_ = y;
 }

@@ -376,7 +376,7 @@ void mathed_draw_deco(Painter & pain, int x, int y, int w, int h, int code)
 	mt.rota(r);
 	mt.escala(w, h);
    
-	int n = (w < h) ? w: h;
+	int n = (w < h) ? w : h;
 	sqmt.rota(r);
 	sqmt.escala(n, n);
 	if (r > 0 && r < 3) y += h;   

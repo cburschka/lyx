@@ -18,7 +18,7 @@
 #include "Lsstream.h"
 
 #ifdef __GNUG__
-#pragma implementation "formula.h"
+#pragma implementation
 #endif
 
 #include "formula.h"
@@ -82,76 +82,76 @@ void mathedValidate(LaTeXFeatures & features, MathParInset * par);
 LyXFont WhichFont(short type, int size)
 {
 	LyXFont f;
-
+	
 	if (!Math_Fonts)
 		mathed_init_fonts();
 
 	switch (type) {
-		case LM_TC_SYMB:	
-			f = Math_Fonts[2];
-			break;
+	case LM_TC_SYMB:	
+		f = Math_Fonts[2];
+		break;
 
-		case LM_TC_BSYM:	
-			f = Math_Fonts[2];
-			break;
+	case LM_TC_BSYM:	
+		f = Math_Fonts[2];
+		break;
 
-		case LM_TC_VAR:
-		case LM_TC_IT:
-			f = Math_Fonts[0];
-			break;
+	case LM_TC_VAR:
+	case LM_TC_IT:
+		f = Math_Fonts[0];
+		break;
 
-		case LM_TC_BF:
-			f = Math_Fonts[3];
-			break;
+	case LM_TC_BF:
+		f = Math_Fonts[3];
+		break;
 
-		case LM_TC_SF:
-			f = Math_Fonts[7];
-			break;
+	case LM_TC_SF:
+		f = Math_Fonts[7];
+		break;
 
-		case LM_TC_CAL:
-			f = Math_Fonts[4];
-			break;
+	case LM_TC_CAL:
+		f = Math_Fonts[4];
+		break;
 
-		case LM_TC_TT:
-			f = Math_Fonts[5];
-			break;
+	case LM_TC_TT:
+		f = Math_Fonts[5];
+		break;
 
-		case LM_TC_SPECIAL: //f = Math_Fonts[0]; break;
-		case LM_TC_TEXTRM:
-		case LM_TC_RM:
-			f = Math_Fonts[6];
-			break;
+	case LM_TC_SPECIAL: //f = Math_Fonts[0]; break;
+	case LM_TC_TEXTRM:
+	case LM_TC_RM:
+		f = Math_Fonts[6];
+		break;
 
-		default:
-			f = Math_Fonts[1];
-			break;
+	default:
+		f = Math_Fonts[1];
+		break;
 	}
 
 	f.setSize(lfont_size);
 
 	switch (size) {
-		case LM_ST_DISPLAY:
-			if (type == LM_TC_BSYM) {
-				f.incSize();
-				f.incSize();
-			}
-			break;
+	case LM_ST_DISPLAY:
+		if (type == LM_TC_BSYM) {
+			f.incSize();
+			f.incSize();
+		}
+		break;
 
-		case LM_ST_TEXT:
-			break;
+	case LM_ST_TEXT:
+		break;
 
-		case LM_ST_SCRIPT:
-			f.decSize();
-			break;
+	case LM_ST_SCRIPT:
+		f.decSize();
+		break;
 
-		case LM_ST_SCRIPTSCRIPT:
-			f.decSize();
-			f.decSize();
-			break;
+	case LM_ST_SCRIPTSCRIPT:
+		f.decSize();
+		f.decSize();
+		break;
 
-		default:
-			lyxerr << "Mathed Error: wrong font size: " << size << endl;
-			break;
+	default:
+		lyxerr << "Mathed Error: wrong font size: " << size << endl;
+		break;
 	}
 
 	if (type != LM_TC_TEXTRM)
@@ -192,9 +192,9 @@ void mathed_init_fonts() //removed 'static' because DEC cxx does not
 	Math_Fonts[7].setFamily(LyXFont::SANS_FAMILY);
 
 	LyXFont f = WhichFont(LM_TC_VAR, LM_ST_TEXT);
-	MathedInset::df_asc = lyxfont::maxAscent(f);
-	MathedInset::df_des = lyxfont::maxDescent(f);
-	MathedInset::df_width = lyxfont::width('I', f);
+	MathedInset::defaultAscent(lyxfont::maxAscent(f));
+	MathedInset::defaultDescent(lyxfont::maxDescent(f));
+	MathedInset::defaultWidth(lyxfont::width('I', f));
 }
 
 
@@ -218,8 +218,8 @@ InsetFormula::InsetFormula(MathParInset * p)
 		lyxerr << "InsetFormula::InsetFormula: This shouldn't happen" << endl;
 
 	par = is_multiline(p->GetType()) ?
-	          new MathMatrixInset(static_cast<MathMatrixInset*>(p)):
-	          new MathParInset(p);
+		new MathMatrixInset(static_cast<MathMatrixInset*>(p)):
+		new MathParInset(p);
 	//   mathcursor = 0;
 
 	disp_flag = (par->GetType()>0);
@@ -317,12 +317,12 @@ void InsetFormula::Read(Buffer const *, LyXLex & lex)
 		if (lex.GetString() == "\\end_inset")
 			break;
 		lyxerr << "InsetFormula::Read: Garbage before \\end_inset,"
-		  " or missing \\end_inset!" << endl;
+			" or missing \\end_inset!" << endl;
 	}
 
-	#ifdef DEBUG
+#ifdef DEBUG
 	Write(lyxerr);
-	#endif
+#endif
 }
 
 
@@ -348,7 +348,7 @@ int InsetFormula::width(BufferView * bv, LyXFont const & f) const
 
 
 void InsetFormula::draw(BufferView * bv, LyXFont const & f,
-		int baseline, float & x, bool) const
+			int baseline, float & x, bool) const
 {
 	MathedInset::workWidth = bv->workWidth();
 	Painter & pain = bv->painter();
@@ -376,7 +376,7 @@ void InsetFormula::draw(BufferView * bv, LyXFont const & f,
 	x += float(width(bv, font));
 
 	if (is_numbered(par->GetType())) {
-		LyXFont wfont = WhichFont(LM_TC_BF, par->size);
+		LyXFont wfont = WhichFont(LM_TC_BF, par->size());
 		wfont.setLatex(LyXFont::OFF);
 
 		if (is_singlely_numbered(par->GetType())) {
@@ -388,7 +388,7 @@ void InsetFormula::draw(BufferView * bv, LyXFont const & f,
 			pain.text(int(x + 20), baseline, str, wfont);
 		} else {
 			MathMatrixInset * mt =
-			static_cast<MathMatrixInset*>(par);
+				static_cast<MathMatrixInset*>(par);
 			int y;
 			MathedRowSt const * crow = mt->getRowSt();
 			while (crow) {
@@ -424,8 +424,8 @@ void InsetFormula::Edit(BufferView * bv, int x, int y, unsigned int)
 
 	par->Metrics();
 	bv->updateInset(this, false);
-	x += par->xo;
-	y += par->yo;
+	x += par->xo();
+	y += par->yo();
 	mathcursor->SetPos(x, y);
 	sel_x = 0;
 	sel_y = 0;
@@ -460,8 +460,8 @@ void InsetFormula::InsertSymbol(BufferView * bv, string const & s)
 void InsetFormula::GetCursorPos(BufferView *, int & x, int & y) const
 {
 	mathcursor->GetPos(x, y);
-	x -= par->xo;
-	y -= par->yo;
+	x -= par->xo();
+	y -= par->yo();
 }
 
 
@@ -474,7 +474,7 @@ void InsetFormula::ToggleInsetCursor(BufferView * bv)
 	int y;
 	mathcursor->GetPos(x, y);
 	//  x -= par->xo;
-	y -= par->yo;
+	y -= par->yo();
 	LyXFont font = WhichFont(LM_TC_TEXTRM, LM_ST_TEXT);
 	int asc = lyxfont::maxAscent(font);
 	int desc = lyxfont::maxDescent(font);
@@ -496,7 +496,7 @@ void InsetFormula::ShowInsetCursor(BufferView * bv, bool)
 			int y;
 			mathcursor->GetPos(x, y);
 			//  x -= par->xo;
-			y -= par->yo;
+			y -= par->yo();
 			LyXFont font = WhichFont(LM_TC_TEXTRM, LM_ST_TEXT);
 			int asc = lyxfont::maxAscent(font);
 			int desc = lyxfont::maxDescent(font);
@@ -573,18 +573,18 @@ vector<string> const InsetFormula::getLabelList() const
 void InsetFormula::UpdateLocal(BufferView * bv)
 {
 	par->Metrics();  // To inform lyx kernel the exact size
-	                 // (there were problems with arrays).
+	// (there were problems with arrays).
 	bv->updateInset(this, true);
 }
 
 
 void InsetFormula::InsetButtonRelease(BufferView * bv,
-	int x, int y, int /*button*/)
+				      int x, int y, int /*button*/)
 {
 	if (mathcursor) {
 		HideInsetCursor(bv);
-		x += par->xo;
-		y += par->yo;
+		x += par->xo();
+		y += par->yo();
 		mathcursor->SetPos(x, y);
 		ShowInsetCursor(bv);
 		if (sel_flag) {
@@ -597,7 +597,7 @@ void InsetFormula::InsetButtonRelease(BufferView * bv,
 
 
 void InsetFormula::InsetButtonPress(BufferView * bv, int x, int y,
-		int /*button*/)
+				    int /*button*/)
 {
 	sel_flag = false;
 	sel_x = x;  sel_y = y;
@@ -609,19 +609,19 @@ void InsetFormula::InsetButtonPress(BufferView * bv, int x, int y,
 
 
 void InsetFormula::InsetMotionNotify(BufferView * bv,
- int x, int y, int /*button*/)
+				     int x, int y, int /*button*/)
 {
 	if (sel_x && sel_y && abs(x-sel_x) > 4 && !sel_flag) {
 		sel_flag = true;
 		HideInsetCursor(bv);
-		mathcursor->SetPos(sel_x + par->xo, sel_y + par->yo);
+		mathcursor->SetPos(sel_x + par->xo(), sel_y + par->yo());
 		mathcursor->SelStart();
 		ShowInsetCursor(bv);
 		mathcursor->GetPos(sel_x, sel_y);
 	} else if (sel_flag) {
 		HideInsetCursor(bv);
-		x += par->xo;
-		y += par->yo;
+		x += par->xo();
+		y += par->yo();
 		mathcursor->SetPos(x, y);
 		ShowInsetCursor(bv);
 		mathcursor->GetPos(x, y);
@@ -644,7 +644,7 @@ bool InsetFormula::SetNumber(bool numbf)
 {
 	if (disp_flag) {
 		short type = par->GetType();
-		bool oldf = is_numbered(type);
+		bool const oldf = is_numbered(type);
 		if (numbf && !oldf)
 			++type;
 		if (!numbf && oldf)
@@ -676,295 +676,295 @@ InsetFormula::LocalDispatch(BufferView * bv, int action, string const & arg)
 
 	switch (action) {
 		// --- Cursor Movements ---------------------------------------------
-		case LFUN_RIGHTSEL:
-			sel = true; // fall through...
+	case LFUN_RIGHTSEL:
+		sel = true; // fall through...
 
-		case LFUN_RIGHT:
-			result = DISPATCH_RESULT(mathcursor->Right(sel));
-			if (!sel && (result == DISPATCHED))
-				result = DISPATCHED_NOUPDATE;
-			break;
-
-
-		case LFUN_LEFTSEL:
-			sel = true; // fall through
-
-		case LFUN_LEFT:
-			result = DISPATCH_RESULT(mathcursor->Left(sel));
-			if (!sel && (result == DISPATCHED))
+	case LFUN_RIGHT:
+		result = DISPATCH_RESULT(mathcursor->Right(sel));
+		if (!sel && (result == DISPATCHED))
 			result = DISPATCHED_NOUPDATE;
-			break;
+		break;
 
 
-		case LFUN_UPSEL:
-			sel = true;
+	case LFUN_LEFTSEL:
+		sel = true; // fall through
 
-		case LFUN_UP:
-			result = DISPATCH_RESULT(mathcursor->Up(sel));
-			if (!sel && (result == DISPATCHED))
-				result = DISPATCHED_NOUPDATE;
-			break;
-
-
-		case LFUN_DOWNSEL:
-			sel = true;
-
-		case LFUN_DOWN:
-			result = DISPATCH_RESULT(mathcursor->Down(sel));
-			if (!sel && (result == DISPATCHED))
+	case LFUN_LEFT:
+		result = DISPATCH_RESULT(mathcursor->Left(sel));
+		if (!sel && (result == DISPATCHED))
 			result = DISPATCHED_NOUPDATE;
-			break;
+		break;
 
 
-		case LFUN_HOME:
-			mathcursor->Home();
+	case LFUN_UPSEL:
+		sel = true;
+
+	case LFUN_UP:
+		result = DISPATCH_RESULT(mathcursor->Up(sel));
+		if (!sel && (result == DISPATCHED))
 			result = DISPATCHED_NOUPDATE;
-			break;
+		break;
 
-		case LFUN_END:
-			mathcursor->End();
+
+	case LFUN_DOWNSEL:
+		sel = true;
+
+	case LFUN_DOWN:
+		result = DISPATCH_RESULT(mathcursor->Down(sel));
+		if (!sel && (result == DISPATCHED))
 			result = DISPATCHED_NOUPDATE;
+		break;
+
+
+	case LFUN_HOME:
+		mathcursor->Home();
+		result = DISPATCHED_NOUPDATE;
+		break;
+
+	case LFUN_END:
+		mathcursor->End();
+		result = DISPATCHED_NOUPDATE;
+		break;
+
+	case LFUN_DELETE_LINE_FORWARD:
+		bv->lockedInsetStoreUndo(Undo::DELETE);
+		mathcursor->DelLine();
+		UpdateLocal(bv);
+		break;
+
+	case LFUN_BREAKLINE: 
+	{
+		bv->lockedInsetStoreUndo(Undo::INSERT);
+		byte c = arg.empty() ? '1' : arg[0];
+		mathcursor->Insert(c, LM_TC_CR);
+		if (!label.empty()) {
+			mathcursor->setLabel(label);
+			label.erase();
+		}
+		par = mathcursor->GetPar();
+		UpdateLocal(bv);
+	}
+	break;
+
+	case LFUN_TAB:
+		bv->lockedInsetStoreUndo(Undo::INSERT);
+		mathcursor->Insert(0, LM_TC_TAB);
+		//UpdateInset(this);
+		break;
+
+	case LFUN_TABINSERT:
+		bv->lockedInsetStoreUndo(Undo::INSERT);
+		mathcursor->Insert('T', LM_TC_TAB);
+		UpdateLocal(bv);
+		break;
+
+	case LFUN_BACKSPACE:
+		if (!mathcursor->Left())
 			break;
 
-		case LFUN_DELETE_LINE_FORWARD:
-			bv->lockedInsetStoreUndo(Undo::DELETE);
-			mathcursor->DelLine();
-			UpdateLocal(bv);
-			break;
-
-		case LFUN_BREAKLINE: 
-			{
-				bv->lockedInsetStoreUndo(Undo::INSERT);
-				byte c = arg.empty() ? '1' : arg[0];
-				mathcursor->Insert(c, LM_TC_CR);
-				if (!label.empty()) {
-					mathcursor->setLabel(label);
-					label.erase();
-				}
-				par = mathcursor->GetPar();
-				UpdateLocal(bv);
-			}
-			break;
-
-		case LFUN_TAB:
-			bv->lockedInsetStoreUndo(Undo::INSERT);
-			mathcursor->Insert(0, LM_TC_TAB);
-			//UpdateInset(this);
-			break;
-
-		case LFUN_TABINSERT:
-			bv->lockedInsetStoreUndo(Undo::INSERT);
-			mathcursor->Insert('T', LM_TC_TAB);
-			UpdateLocal(bv);
-			break;
-
-		case LFUN_BACKSPACE:
-			if (!mathcursor->Left())
-				break;
-
-			if (!mathcursor->InMacroMode() && mathcursor->pullArg()) {
-				bv->updateInset(this, true);
-				break;
-			}
-			// fall through...
-
-		case LFUN_DELETE:
-			bv->lockedInsetStoreUndo(Undo::DELETE);
-			mathcursor->Delete();
+		if (!mathcursor->InMacroMode() && mathcursor->pullArg()) {
 			bv->updateInset(this, true);
 			break;
+		}
+		// fall through...
+
+	case LFUN_DELETE:
+		bv->lockedInsetStoreUndo(Undo::DELETE);
+		mathcursor->Delete();
+		bv->updateInset(this, true);
+		break;
 
 		//    case LFUN_GETXY:
 		//      sprintf(dispatch_buffer, "%d %d",);
 		//      dispatch_result = dispatch_buffer;
 		//      break;
-		case LFUN_SETXY:
-			{
-				int x;
-				int y;
-				int x1;
-				int y1;
-				istringstream ist(arg.c_str());
-				ist >> x >> y;
-				par->GetXY(x1, y1);
-				mathcursor->SetPos(x1 + x, y1 + y);
-			}
-			break;
+	case LFUN_SETXY:
+	{
+		int x;
+		int y;
+		int x1;
+		int y1;
+		istringstream ist(arg.c_str());
+		ist >> x >> y;
+		par->GetXY(x1, y1);
+		mathcursor->SetPos(x1 + x, y1 + y);
+	}
+	break;
 
 		/* cursor selection ---------------------------- */
 
-		case LFUN_PASTE:
-			if (was_macro)
-				mathcursor->MacroModeClose();
-			bv->lockedInsetStoreUndo(Undo::INSERT);
-			mathcursor->SelPaste();
-			UpdateLocal(bv);
-			break;
+	case LFUN_PASTE:
+		if (was_macro)
+			mathcursor->MacroModeClose();
+		bv->lockedInsetStoreUndo(Undo::INSERT);
+		mathcursor->SelPaste();
+		UpdateLocal(bv);
+		break;
 
-		case LFUN_CUT:
-			bv->lockedInsetStoreUndo(Undo::DELETE);
-			mathcursor->SelCut();
-			UpdateLocal(bv);
-			break;
+	case LFUN_CUT:
+		bv->lockedInsetStoreUndo(Undo::DELETE);
+		mathcursor->SelCut();
+		UpdateLocal(bv);
+		break;
 
-		case LFUN_COPY:
-			mathcursor->SelCopy();
-			break;
+	case LFUN_COPY:
+		mathcursor->SelCopy();
+		break;
 
-		case LFUN_HOMESEL:
-		case LFUN_ENDSEL:
-		case LFUN_WORDRIGHTSEL:
-		case LFUN_WORDLEFTSEL:
-			break;
+	case LFUN_HOMESEL:
+	case LFUN_ENDSEL:
+	case LFUN_WORDRIGHTSEL:
+	case LFUN_WORDLEFTSEL:
+		break;
 
 		// --- accented characters ------------------------------
 
-		case LFUN_UMLAUT:     mathcursor->setAccent(LM_ddot); break;
-		case LFUN_CIRCUMFLEX: mathcursor->setAccent(LM_hat); break;
-		case LFUN_GRAVE:      mathcursor->setAccent(LM_grave); break;
-		case LFUN_ACUTE:      mathcursor->setAccent(LM_acute); break;
-		case LFUN_TILDE:      mathcursor->setAccent(LM_tilde); break;
-		case LFUN_MACRON:     mathcursor->setAccent(LM_bar); break;
-		case LFUN_DOT:        mathcursor->setAccent(LM_dot); break;
-		case LFUN_CARON:      mathcursor->setAccent(LM_check); break;
-		case LFUN_BREVE:      mathcursor->setAccent(LM_breve); break;
-		case LFUN_VECTOR:     mathcursor->setAccent(LM_vec); break;
+	case LFUN_UMLAUT:     mathcursor->setAccent(LM_ddot); break;
+	case LFUN_CIRCUMFLEX: mathcursor->setAccent(LM_hat); break;
+	case LFUN_GRAVE:      mathcursor->setAccent(LM_grave); break;
+	case LFUN_ACUTE:      mathcursor->setAccent(LM_acute); break;
+	case LFUN_TILDE:      mathcursor->setAccent(LM_tilde); break;
+	case LFUN_MACRON:     mathcursor->setAccent(LM_bar); break;
+	case LFUN_DOT:        mathcursor->setAccent(LM_dot); break;
+	case LFUN_CARON:      mathcursor->setAccent(LM_check); break;
+	case LFUN_BREVE:      mathcursor->setAccent(LM_breve); break;
+	case LFUN_VECTOR:     mathcursor->setAccent(LM_vec); break;
 
 		// Greek mode
-		case LFUN_GREEK:
-			if (!greek_kb_flag) {
-				greek_kb_flag = 1;
-				bv->owner()->getMiniBuffer()->Set(_("Math greek mode on"));
-			} else
-				greek_kb_flag = 0;
-			break;
+	case LFUN_GREEK:
+		if (!greek_kb_flag) {
+			greek_kb_flag = 1;
+			bv->owner()->getMiniBuffer()->Set(_("Math greek mode on"));
+		} else
+			greek_kb_flag = 0;
+		break;
 
 		// Greek keyboard
-		case LFUN_GREEK_TOGGLE:
-			greek_kb_flag = (greek_kb_flag) ? 0 : 2;
-			if (greek_kb_flag)
-				bv->owner()->getMiniBuffer()->Set(_("Math greek keyboard on"));
-			else
-				bv->owner()->getMiniBuffer()->Set(_("Math greek keyboard off"));
-			break;
+	case LFUN_GREEK_TOGGLE:
+		greek_kb_flag = (greek_kb_flag) ? 0 : 2;
+		if (greek_kb_flag)
+			bv->owner()->getMiniBuffer()->Set(_("Math greek keyboard on"));
+		else
+			bv->owner()->getMiniBuffer()->Set(_("Math greek keyboard off"));
+		break;
 
 		//  Math fonts
-		case LFUN_BOLD:  mathcursor->toggleLastCode(LM_TC_BF); break;
-		case LFUN_SANS:  mathcursor->toggleLastCode(LM_TC_SF); break;
-		case LFUN_EMPH:  mathcursor->toggleLastCode(LM_TC_CAL); break;
-		case LFUN_ROMAN: mathcursor->toggleLastCode(LM_TC_RM); break;
-		case LFUN_CODE:  mathcursor->toggleLastCode(LM_TC_TT); break;
-		case LFUN_DEFAULT:  mathcursor->setLastCode(LM_TC_VAR); break;
+	case LFUN_BOLD:  mathcursor->toggleLastCode(LM_TC_BF); break;
+	case LFUN_SANS:  mathcursor->toggleLastCode(LM_TC_SF); break;
+	case LFUN_EMPH:  mathcursor->toggleLastCode(LM_TC_CAL); break;
+	case LFUN_ROMAN: mathcursor->toggleLastCode(LM_TC_RM); break;
+	case LFUN_CODE:  mathcursor->toggleLastCode(LM_TC_TT); break;
+	case LFUN_DEFAULT:  mathcursor->setLastCode(LM_TC_VAR); break;
 
-		case LFUN_TEX:
-			// varcode = LM_TC_TEX;
-			mathcursor->setLastCode(LM_TC_TEX);
-			bv->owner()->getMiniBuffer()->Set(_("TeX mode"));
-			break;
+	case LFUN_TEX:
+		// varcode = LM_TC_TEX;
+		mathcursor->setLastCode(LM_TC_TEX);
+		bv->owner()->getMiniBuffer()->Set(_("TeX mode"));
+		break;
 
-		case LFUN_MATH_NUMBER:
-			bv->lockedInsetStoreUndo(Undo::INSERT);
-			if (disp_flag) {
-				short type = par->GetType();
-				if (is_numbered(type)) {
-					--type;
-					if (!label.empty()) {
+	case LFUN_MATH_NUMBER:
+		bv->lockedInsetStoreUndo(Undo::INSERT);
+		if (disp_flag) {
+			short type = par->GetType();
+			if (is_numbered(type)) {
+				--type;
+				if (!label.empty()) {
 					label.erase();
-					}
-					bv->owner()->getMiniBuffer()->Set(_("No number"));
-				} else {
-					++type;
-					bv->owner()->getMiniBuffer()->Set(_("Number"));
 				}
-				par->SetType(type);
-				UpdateLocal(bv);
+				bv->owner()->getMiniBuffer()->Set(_("No number"));
+			} else {
+				++type;
+				bv->owner()->getMiniBuffer()->Set(_("Number"));
 			}
-			break;
+			par->SetType(type);
+			UpdateLocal(bv);
+		}
+		break;
 
-		case LFUN_MATH_NONUMBER:
-			if (is_multi_numbered(par->GetType())) {
+	case LFUN_MATH_NONUMBER:
+		if (is_multi_numbered(par->GetType())) {
 				//	   MathMatrixInset *mt = (MathMatrixInset*)par;
 				//BUG
 				//	   mt->SetNumbered(!mt->IsNumbered());
 
-				#warning This is a terrible hack! We should find a better solution.
-				while (mathcursor->getLabel() == MathedXIter::error_label) {
-					if (LocalDispatch(bv, LFUN_LEFT, string()) == FINISHED)
+#warning This is a terrible hack! We should find a better solution.
+			while (mathcursor->getLabel() == MathedXIter::error_label) {
+				if (LocalDispatch(bv, LFUN_LEFT, string()) == FINISHED)
 					return DISPATCHED;
-				}
-				mathcursor->setNumbered();
-				UpdateLocal(bv);
 			}
+			mathcursor->setNumbered();
+			UpdateLocal(bv);
+		}
+		break;
+
+	case LFUN_MATH_LIMITS:
+		bv->lockedInsetStoreUndo(Undo::INSERT);
+		if (mathcursor->Limits())
+			UpdateLocal(bv);
+		// fall through!
+
+	case LFUN_MATH_SIZE:
+		if (!arg.empty()) {
+			latexkeys * l = in_word_set(arg);
+			int sz = (l) ? l->id: -1;
+			mathcursor->SetSize(sz);
+			UpdateLocal(bv);
 			break;
+		}
+		// possible fall through?
 
-		case LFUN_MATH_LIMITS:
-			bv->lockedInsetStoreUndo(Undo::INSERT);
-			if (mathcursor->Limits())
-				UpdateLocal(bv);
-			// fall through!
-
-		case LFUN_MATH_SIZE:
-			if (!arg.empty()) {
-				latexkeys * l = in_word_set(arg);
-				int sz = (l) ? l->id: -1;
-				mathcursor->SetSize(sz);
-				UpdateLocal(bv);
-				break;
-			}
-			// possible fall through?
-
-		case LFUN_INSERT_MATH:
-			bv->lockedInsetStoreUndo(Undo::INSERT);
-			InsertSymbol(bv, arg);
-			break;
+	case LFUN_INSERT_MATH:
+		bv->lockedInsetStoreUndo(Undo::INSERT);
+		InsertSymbol(bv, arg);
+		break;
 
 
-		case LFUN_INSERT_MATRIX:
-			{
-				bv->lockedInsetStoreUndo(Undo::INSERT);
-				int k, m, n;
-				char s[80], arg2[80];
+	case LFUN_INSERT_MATRIX:
+	{
+		bv->lockedInsetStoreUndo(Undo::INSERT);
+		int k, m, n;
+		char s[80], arg2[80];
 				// This is just so that too long args won't ooze out of s.
-				strncpy(arg2, arg.c_str(), 80); arg2[79]= '\0';
-				k = sscanf(arg2, "%d %d %s", &m, &n, s);
-				s[79] = '\0';
+		strncpy(arg2, arg.c_str(), 80); arg2[79]= '\0';
+		k = sscanf(arg2, "%d %d %s", &m, &n, s);
+		s[79] = '\0';
 
-				if (k < 1) {
-					m = n = 1;
-				} else if (k == 1) {
-					n = 1;
-				}
+		if (k < 1) {
+			m = n = 1;
+		} else if (k == 1) {
+			n = 1;
+		}
 
-				MathMatrixInset * p = new MathMatrixInset(m, n);
-				if (mathcursor && p) {
-					if (k > 2 && int(strlen(s)) > m)
-						p->SetAlign(s[0], &s[1]);
-					mathcursor->Insert(p, LM_TC_ACTIVE_INSET);
-					UpdateLocal(bv);
-				}
-				break;
-			}
+		MathMatrixInset * p = new MathMatrixInset(m, n);
+		if (mathcursor && p) {
+			if (k > 2 && int(strlen(s)) > m)
+				p->SetAlign(s[0], &s[1]);
+			mathcursor->Insert(p, LM_TC_ACTIVE_INSET);
+			UpdateLocal(bv);
+		}
+		break;
+	}
 
-		case LFUN_MATH_DELIM:
-		{
-			bv->lockedInsetStoreUndo(Undo::INSERT);
-			char lf[40], rg[40], arg2[40];
-			int ilf = '(', irg = '.';
-			latexkeys * l;
-			string vdelim("(){}[]./|");
+	case LFUN_MATH_DELIM:
+	{
+		bv->lockedInsetStoreUndo(Undo::INSERT);
+		char lf[40], rg[40], arg2[40];
+		int ilf = '(', irg = '.';
+		latexkeys * l;
+		string vdelim("(){}[]./|");
 
-			if (arg.empty())
-				break;
-			::strncpy(arg2, arg.c_str(), 40);
-			arg2[39]= '\0';
-			int n = sscanf(arg2, "%s %s", lf, rg);
-			lf[39] = '\0';
-			rg[39] = '\0';
+		if (arg.empty())
+			break;
+		::strncpy(arg2, arg.c_str(), 40);
+		arg2[39]= '\0';
+		int n = sscanf(arg2, "%s %s", lf, rg);
+		lf[39] = '\0';
+		rg[39] = '\0';
 
-			if (n > 0) {
-				if (isdigit(lf[0]))
-					ilf = lyx::atoi(lf);
-				else
+		if (n > 0) {
+			if (isdigit(lf[0]))
+				ilf = lyx::atoi(lf);
+			else
 				if (lf[1]) {
 					l = in_word_set(lf, strlen(lf));
 					// Long words will cause l == 0; so check.
@@ -973,258 +973,232 @@ InsetFormula::LocalDispatch(BufferView * bv, int action, string const & arg)
 				} else if (vdelim.find(lf[0]) != string::npos)
 					ilf = lf[0];
 
-				if (n > 1) {
-					if (isdigit(rg[0]))
+			if (n > 1) {
+				if (isdigit(rg[0]))
 					irg = lyx::atoi(rg);
-					else
+				else
 					if (rg[1]) {
 						l = in_word_set(rg, strlen(rg));
 						if (l)
 							irg = l->id;
 					} else if (vdelim.find(rg[0]) != string::npos)
 						irg = rg[0];
-				}
 			}
-
-			MathDelimInset * p = new MathDelimInset(ilf, irg);
-			mathcursor->Insert(p, LM_TC_ACTIVE_INSET);
-			UpdateLocal(bv);
-			break;
 		}
 
-		case LFUN_PROTECTEDSPACE:
-			bv->lockedInsetStoreUndo(Undo::INSERT);
-			sp = new MathSpaceInset(1);
-			mathcursor->Insert(sp);
-			space_on = true;
-			UpdateLocal(bv);
+		MathDelimInset * p = new MathDelimInset(ilf, irg);
+		mathcursor->Insert(p, LM_TC_ACTIVE_INSET);
+		UpdateLocal(bv);
+		break;
+	}
+
+	case LFUN_PROTECTEDSPACE:
+		bv->lockedInsetStoreUndo(Undo::INSERT);
+		sp = new MathSpaceInset(1);
+		mathcursor->Insert(sp);
+		space_on = true;
+		UpdateLocal(bv);
+		break;
+
+	case LFUN_INSERT_LABEL:
+	{
+		bv->lockedInsetStoreUndo(Undo::INSERT);
+		if (par->GetType() < LM_OT_PAR)
 			break;
 
-		case LFUN_INSERT_LABEL:
-			{
-				bv->lockedInsetStoreUndo(Undo::INSERT);
-				if (par->GetType() < LM_OT_PAR)
-					break;
+		string old_label = is_multiline(par->GetType())
+			? mathcursor->getLabel() : label;
 
-				string old_label = is_multiline(par->GetType())
-				                     ? mathcursor->getLabel() : label;
+#warning This is a terrible hack! We should find a better solution.
+		// This is needed because in some positions
+		// mathcursor->cursor->crow is equal to 0, and therefore
+		// the label cannot be inserted.
+		// So we move the cursor left until
+		// mathcursor->cursor->crow != 0.
+		while (old_label == MathedXIter::error_label) {
+			if (LocalDispatch(bv, LFUN_LEFT, string()) == FINISHED)
+				return DISPATCHED;
+			old_label = mathcursor->getLabel();
+		}
 
-				#warning This is a terrible hack! We should find a better solution.
-				/// This is needed because in some positions mathcursor->cursor->crow
-				/// is equal to 0, and therefore the label cannot be inserted.
-				/// So we move the cursor left until mathcursor->cursor->crow != 0.
-				while (old_label == MathedXIter::error_label) {
-					if (LocalDispatch(bv, LFUN_LEFT, string()) == FINISHED)
-						return DISPATCHED;
-					old_label = mathcursor->getLabel();
-				}
+		string new_label = arg;
+		if (new_label.empty()) {
+			string default_label = (lyxrc.label_init_length >= 0) ? "eq:" : "";
+			pair<bool, string> res = old_label.empty()
+				? askForText(_("Enter new label to insert:"), default_label)
+				: askForText(_("Enter label:"), old_label);
+			if (!res.first)
+				break;
+			new_label = frontStrip(strip(res.second));
+		}
 
-				string new_label = arg;
-				if (new_label.empty()) {
-					string default_label = (lyxrc.label_init_length >= 0) ? "eq:" : "";
-					pair<bool, string> res = old_label.empty()
-						? askForText(_("Enter new label to insert:"), default_label)
-						: askForText(_("Enter label:"), old_label);
-					if (!res.first)
-						break;
-					new_label = frontStrip(strip(res.second));
-				}
+		if (new_label == old_label)
+			break;  // Nothing to do
 
-				if (new_label == old_label)
-					break;  // Nothing to do
+		if (!new_label.empty())
+			SetNumber(true);
 
-				if (!new_label.empty())
-					SetNumber(true);
+		if (!new_label.empty() && bv->ChangeRefsIfUnique(old_label, new_label))
+			bv->redraw();
 
-				if (!new_label.empty() && bv->ChangeRefsIfUnique(old_label, new_label))
-					bv->redraw();
+		if (is_multi_numbered(par->GetType())) {
+			mathcursor->setLabel(new_label);
+			// MathMatrixInset *mt = (MathMatrixInset*)par;
+			// mt->SetLabel(new_label);
+		} else
+			label = new_label;
 
-				if (is_multi_numbered(par->GetType()))
-					mathcursor->setLabel(new_label);
-				//	  MathMatrixInset *mt = (MathMatrixInset*)par;
-				//	  mt->SetLabel(new_label);
-				else
-					label = new_label;
+		UpdateLocal(bv);
+		break;
+	}
 
-				UpdateLocal(bv);
+	case LFUN_MATH_DISPLAY:
+		bv->lockedInsetStoreUndo(Undo::EDIT);
+		display(!disp_flag);
+		UpdateLocal(bv);
+		break;
+
+		// Invalid actions under math mode
+	case LFUN_MATH_MODE:
+		if (mathcursor->getLastCode()!= LM_TC_TEXTRM) {
+			bv->owner()->getMiniBuffer()->Set(_("math text mode"));
+			varcode = LM_TC_TEXTRM;
+		} else {
+			varcode = LM_TC_VAR;
+		}
+		mathcursor->setLastCode(varcode);
+		break;
+
+	case LFUN_UNDO:
+		bv->owner()->getMiniBuffer()->Set(_("Invalid action in math mode!"));
+		break;
+
+		//------- dummy actions
+	case LFUN_EXEC_COMMAND:
+		bv->owner()->getMiniBuffer()->PrepareForCommand();
+		break;
+
+	default:
+		if ((action == -1  || action == LFUN_SELFINSERT) && !arg.empty())  {
+			unsigned char c = arg[0];
+			bv->lockedInsetStoreUndo(Undo::INSERT);
+
+			if (c == ' ' && mathcursor->getAccent() == LM_hat) {
+				c = '^';
+				mathcursor->setAccent(0);
+			}
+
+			if (c == 0) {      // Dead key, do nothing
+				//lyxerr << "deadkey" << endl;
 				break;
 			}
 
-		case LFUN_MATH_DISPLAY:
-			bv->lockedInsetStoreUndo(Undo::EDIT);
-			display(!disp_flag);
-			UpdateLocal(bv);
-			break;
-
-		// Invalid actions under math mode
-		case LFUN_MATH_MODE:
-			if (mathcursor->getLastCode()!= LM_TC_TEXTRM) {
-				bv->owner()->getMiniBuffer()->Set(_("math text mode"));
-				varcode = LM_TC_TEXTRM;
-			} else {
-				varcode = LM_TC_VAR;
-			}
-			mathcursor->setLastCode(varcode);
-			break;
-
-		case LFUN_UNDO:
-			bv->owner()->getMiniBuffer()->Set(_("Invalid action in math mode!"));
-			break;
-
-		//------- dummy actions
-		case LFUN_EXEC_COMMAND:
-			bv->owner()->getMiniBuffer()->PrepareForCommand();
-			break;
-
-		default:
-			if ((action == -1  || action == LFUN_SELFINSERT) && !arg.empty())  {
-				unsigned char c = arg[0];
-				bv->lockedInsetStoreUndo(Undo::INSERT);
-
-				if (c == ' ' && mathcursor->getAccent() == LM_hat) {
-					c = '^';
-					mathcursor->setAccent(0);
-				}
-
-				if (c == 0) {      // Dead key, do nothing
-					//lyxerr << "deadkey" << endl;
-					break;
-				}
-
-				if (isalpha(c)) {
-					if (mathcursor->getLastCode() == LM_TC_TEX) {
-						mathcursor->MacroModeOpen();
-						mathcursor->clearLastCode();
-						varcode = LM_TC_MIN;
-					} else
-
-					if (!varcode) {		
-						short f = (mathcursor->getLastCode()) ?
-							mathcursor->getLastCode() :
-							static_cast<MathedTextCodes>(mathcursor->GetFCode());
-						varcode = MathIsAlphaFont(f) ?
-						static_cast<MathedTextCodes>(f) :
-						LM_TC_VAR;
-					}
-
-					//	     lyxerr << "Varcode << vardoce;
-					MathedTextCodes char_code = varcode;
-					if (greek_kb_flag) {
-						char greek[26] =
-						{'A', 'B', 'X',  0 , 'E',  0 ,  0 , 'H', 'I',  0 ,
-						'K',  0 , 'M', 'N', 'O',  0 ,  0 , 'P',  0 , 'T',
-						'Y',  0,   0,   0,   0 , 'Z' };
-
-						if ('A' <= c && c <= 'Z' && greek[c - 'A']) {
-							char_code = LM_TC_RM;
-							c = greek[c - 'A'];
-						} else
-							char_code = LM_TC_SYMB;
-					}
-
-					mathcursor->Insert(c, char_code);
-
-					if (greek_kb_flag && char_code == LM_TC_RM )
-						mathcursor->setLastCode(LM_TC_VAR);
-
-					varcode = LM_TC_MIN;
-
-					if (greek_kb_flag<2)
-						greek_kb_flag = 0;
-
-				} else
-
-				if (strchr("!,:;{}", c) && (varcode == LM_TC_TEX||was_macro)) {
-					mathcursor->Insert(c, LM_TC_TEX);
-					if (c == '{') {
-						mathcursor->Insert('}', LM_TC_TEX);
-						mathcursor->Left();
-					}
-					mathcursor->clearLastCode();
-					//	       varcode = LM_TC_MIN;
-				} else
-
-				if (c == '_' && varcode == LM_TC_TEX) {
-					mathcursor->Insert(c, LM_TC_SPECIAL);
-					mathcursor->clearLastCode();
-					//	       varcode = LM_TC_MIN;
-				} else
-
-				if (('0'<= c && c<= '9') && (varcode == LM_TC_TEX||was_macro)) {
+			if (isalpha(c)) {
+				if (mathcursor->getLastCode() == LM_TC_TEX) {
 					mathcursor->MacroModeOpen();
 					mathcursor->clearLastCode();
-					mathcursor->Insert(c, LM_TC_MIN);
-				} else
-
-				if (('0'<= c && c<= '9') || strchr(";:!|[]().,?", c)) {
-					mathcursor->Insert(c, LM_TC_CONST);
-				} else
-
-				if (strchr("+/-*<>=", c)) {
-					mathcursor->Insert(c, LM_TC_BOP);
-				} else
-
-				if (strchr(latex_special_chars, c) && c!= '_') {
-					mathcursor->Insert(c, LM_TC_SPECIAL);
-				} else
-
-				if (c == '_' || c == '^') {
-					char s[2];
-					s[0] = c;
-					s[1] = 0;
-					mathcursor->Interpret(s);
-				} else
-
-				if (c == ' ') {	
-					if (!varcode) {	
-						short f = (mathcursor->getLastCode()) ?
-									mathcursor->getLastCode() :
-									static_cast<MathedTextCodes>(mathcursor->GetFCode());
-						varcode = MathIsAlphaFont(f) ?
+					varcode = LM_TC_MIN;
+				} else if (!varcode) {		
+					short f = (mathcursor->getLastCode()) ?
+						mathcursor->getLastCode() :
+						static_cast<MathedTextCodes>(mathcursor->GetFCode());
+					varcode = MathIsAlphaFont(f) ?
 						static_cast<MathedTextCodes>(f) :
 						LM_TC_VAR;
-					}
-
-					if (varcode == LM_TC_TEXTRM) {
-						mathcursor->Insert(c, LM_TC_TEXTRM);
-					} else
-
-					if (was_macro) {
-						mathcursor->MacroModeClose();
-					} else
-
-					if (sp) {
-						int isp = (sp->GetSpace()<5) ? sp->GetSpace()+1: 0;
-						sp->SetSpace(isp);
-						space_on = true;
-					} else 
-
-					if (!mathcursor->Pop() && mathcursor->IsEnd())
-						result = FINISHED;
-				} else
-
-				if (c == '\'' || c == '@') {
-					mathcursor->Insert (c, LM_TC_VAR);
-				} else
-
-				if (c == '\\') {
-					if (was_macro)
-						mathcursor->MacroModeClose();
-					bv->owner()->getMiniBuffer()->Set(_("TeX mode"));
-					mathcursor->setLastCode(LM_TC_TEX);
 				}
-				UpdateLocal(bv);
-			} else if (action == LFUN_MATH_PANEL) {
-				result = UNDISPATCHED;
-			} else {
-				// lyxerr << "Closed by action " << action << endl;
-				result =  FINISHED;
+				
+				//	     lyxerr << "Varcode << vardoce;
+				MathedTextCodes char_code = varcode;
+				if (greek_kb_flag) {
+					char greek[26] =
+					{'A', 'B', 'X',  0 , 'E',  0 ,  0 , 'H', 'I',  0 ,
+					 'K',  0 , 'M', 'N', 'O',  0 ,  0 , 'P',  0 , 'T',
+					 'Y',  0,   0,   0,   0 , 'Z' };
+					
+					if ('A' <= c && c <= 'Z' && greek[c - 'A']) {
+						char_code = LM_TC_RM;
+						c = greek[c - 'A'];
+					} else
+						char_code = LM_TC_SYMB;
+				}
+				
+				mathcursor->Insert(c, char_code);
+				
+				if (greek_kb_flag && char_code == LM_TC_RM )
+					mathcursor->setLastCode(LM_TC_VAR);
+				
+				varcode = LM_TC_MIN;
+				
+				if (greek_kb_flag<2)
+					greek_kb_flag = 0;
+				
+			} else if (strchr("!,:;{}", c) && (varcode == LM_TC_TEX||was_macro)) {
+				mathcursor->Insert(c, LM_TC_TEX);
+				if (c == '{') {
+					mathcursor->Insert('}', LM_TC_TEX);
+					mathcursor->Left();
+				}
+				mathcursor->clearLastCode();
+				//	       varcode = LM_TC_MIN;
+			} else if (c == '_' && varcode == LM_TC_TEX) {
+				mathcursor->Insert(c, LM_TC_SPECIAL);
+				mathcursor->clearLastCode();
+				//	       varcode = LM_TC_MIN;
+			} else if (('0'<= c && c<= '9') && (varcode == LM_TC_TEX||was_macro)) {
+				mathcursor->MacroModeOpen();
+				mathcursor->clearLastCode();
+				mathcursor->Insert(c, LM_TC_MIN);
+			} else if (('0'<= c && c<= '9') || strchr(";:!|[]().,?", c)) {
+				mathcursor->Insert(c, LM_TC_CONST);
+			} else if (strchr("+/-*<>=", c)) {
+				mathcursor->Insert(c, LM_TC_BOP);
+			} else if (strchr(latex_special_chars, c) && c!= '_') {
+				mathcursor->Insert(c, LM_TC_SPECIAL);
+			} else if (c == '_' || c == '^') {
+				char s[2];
+				s[0] = c;
+				s[1] = 0;
+				mathcursor->Interpret(s);
+			} else if (c == ' ') {	
+				if (!varcode) {	
+					short f = (mathcursor->getLastCode()) ?
+						mathcursor->getLastCode() :
+						static_cast<MathedTextCodes>(mathcursor->GetFCode());
+					varcode = MathIsAlphaFont(f) ?
+						static_cast<MathedTextCodes>(f) :
+						LM_TC_VAR;
+				}
+				
+				if (varcode == LM_TC_TEXTRM) {
+					mathcursor->Insert(c, LM_TC_TEXTRM);
+				} else if (was_macro) {
+					mathcursor->MacroModeClose();
+				} else if (sp) {
+					int isp = (sp->GetSpace()<5) ? sp->GetSpace()+1: 0;
+					sp->SetSpace(isp);
+					space_on = true;
+				} else if (!mathcursor->Pop() && mathcursor->IsEnd())
+					result = FINISHED;
+			} else if (c == '\'' || c == '@') {
+				mathcursor->Insert (c, LM_TC_VAR);
+			} else if (c == '\\') {
+				if (was_macro)
+					mathcursor->MacroModeClose();
+				bv->owner()->getMiniBuffer()->Set(_("TeX mode"));
+				mathcursor->setLastCode(LM_TC_TEX);
 			}
+			UpdateLocal(bv);
+		} else if (action == LFUN_MATH_PANEL) {
+			result = UNDISPATCHED;
+		} else {
+			// lyxerr << "Closed by action " << action << endl;
+			result =  FINISHED;
+		}
 	}
-
+	
 	if (was_macro != mathcursor->InMacroMode()
-	      && action >= 0
-	      && action != LFUN_BACKSPACE) 
+	    && action >= 0
+	    && action != LFUN_BACKSPACE) 
 		UpdateLocal(bv);
 
 	if (sp && !space_on)
@@ -1234,7 +1208,7 @@ InsetFormula::LocalDispatch(BufferView * bv, int action, string const & arg)
 		ToggleInsetSelection(bv);
 
 	if ((result == DISPATCHED) || (result == DISPATCHED_NOUPDATE) ||
-	       (result == UNDISPATCHED))
+	    (result == UNDISPATCHED))
 		ShowInsetCursor(bv);
 	else
 		bv->unlockInset(this);
@@ -1254,7 +1228,7 @@ void mathedValidate(LaTeXFeatures & features, MathParInset * par)
 			if (it.IsActive()) {
 				MathParInset * p = it.GetActiveInset();
 				if (!features.binom && p->GetType() == LM_OT_MACRO &&
-								p->GetName() == "binom") {
+				    p->GetName() == "binom") {
 					features.binom = true;
 				} else {
 					for (int i = 0; i <= p->getMaxArgumentIdx(); ++i) {

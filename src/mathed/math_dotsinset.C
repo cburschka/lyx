@@ -30,8 +30,8 @@ MathDotsInset::draw(Painter & pain, int x, int y)
 void
 MathDotsInset::Metrics()
 {
-	mathed_char_height(LM_TC_VAR, size, 'M', ascent, descent);
-	width = mathed_char_width(LM_TC_VAR, size, 'M');   
+	mathed_char_height(LM_TC_VAR, size(), 'M', ascent, descent);
+	width = mathed_char_width(LM_TC_VAR, size(), 'M');   
 	switch (code) {
 	case LM_ldots: dh = 0; break;
 	case LM_cdots: dh = ascent/2; break;

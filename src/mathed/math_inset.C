@@ -36,26 +36,26 @@ int MathedInset::workWidth;
 
 MathedInset::MathedInset(MathedInset * inset) 
 {
-   if (inset) {
-      name = inset->GetName();
-      objtype = inset->GetType();
-      size = inset->GetStyle();
-      width = inset->Width();
-      ascent = inset->Ascent();
-      descent = inset->Descent();
-   } else {
-      objtype = LM_OT_UNDEF;
-      size = LM_ST_TEXT;
-      width = ascent = descent = 0;
-      //name = 0;
-   }
+	if (inset) {
+		name = inset->GetName();
+		objtype = inset->GetType();
+		size_ = inset->GetStyle();
+		width = inset->Width();
+		ascent = inset->Ascent();
+		descent = inset->Descent();
+	} else {
+		objtype = LM_OT_UNDEF;
+		size_ = LM_ST_TEXT;
+		width = ascent = descent = 0;
+		//name = 0;
+	}
 }
 
 
-MathedInset::MathedInset(string const & nm, short ot, short st):
-  name(nm), objtype(ot), size(st) 
+MathedInset::MathedInset(string const & nm, short ot, short st)
+	: name(nm), objtype(ot), size_(st) 
 {
-   width = ascent = descent = 0;
+	width = ascent = descent = 0;
 }
 
 
@@ -65,15 +65,104 @@ void MathedInset::drawStr(Painter & pain, short type, int siz,
 {
 	string st;
 	if (MathIsBinary(type))
-		for (string::const_iterator it = s.begin(); it != s.end(); ++it) {
+		for (string::const_iterator it = s.begin();
+		     it != s.end(); ++it) {
 			st += ' ';
 			st += *it;
 			st += ' ';
 		}
 	else
 		st = s;
-
+	
 	LyXFont const mf = mathed_get_font(type, siz);
 	pain.text(x, y, st, mf);
+}
+
+
+int MathedInset::Ascent() const
+{
+	return ascent;
+}
+
+
+int MathedInset::Descent() const
+{
+	return descent;
+}
+
+
+int MathedInset::Width() const
+{
+	return width;
+}
+
+
+int MathedInset::Height() const
+{
+	return ascent + descent;
+}
+
+
+bool MathedInset::GetLimits() const
+{
+	return false;
+}
+
+
+void MathedInset::SetLimits(bool) {}   
+
+
+string const & MathedInset::GetName() const
+{
+	return name;
+}
+
+
+short MathedInset::GetType() const
+{
+	return objtype;
+}
+
+
+short MathedInset::GetStyle() const
+{
+	return size_;
+}
+
+
+void  MathedInset::SetType(short t)
+{
+	objtype = t;
+}
+
+
+void  MathedInset::SetStyle(short st)
+{
+	size_ = st;
+}
+
+
+void MathedInset::SetName(string const & n)
+{
+	name = n;
+}
+
+
+void MathedInset::defaultAscent(int da)
+{
+	df_asc = da;
+}
+
+
+
+void MathedInset::defaultDescent(int dd)
+{
+	df_des = dd;
+}
+
+
+void MathedInset::defaultWidth(int dw)
+{
+	df_width = dw;
 }
 

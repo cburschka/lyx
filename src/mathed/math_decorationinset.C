@@ -42,19 +42,20 @@ MathDecorationInset::draw(Painter & pain, int x, int y)
 void
 MathDecorationInset::Metrics()
 {
-	int h = 2*mathed_char_height(LM_TC_VAR, size, 'I', ascent, descent);  
+	int h = 2 * mathed_char_height(LM_TC_VAR, size(), 'I',
+				       ascent, descent);  
 	MathParInset::Metrics();
-	int w = Width()+4;
-	if (w<16) w = 16;
-	dh = w/5;
-	if (dh>h) dh = h;
+	int w = Width() + 4;
+	if (w < 16) w = 16;
+	dh = w / 5;
+	if (dh > h) dh = h;
 	
 	if (upper) {
-		ascent += dh+2;
+		ascent += dh + 2;
 		dy = -ascent;
 	} else {
-		dy = descent+2;
-		descent += dh+4;
+		dy = descent + 2;
+		descent += dh + 4;
 	}
 	dw = width;
 	width = w;

@@ -56,9 +56,9 @@ void MathFracInset::SetStyle(short st)
 {
 	MathParInset::SetStyle(st);
 	dh = 0;
-	den->SetStyle((size == LM_ST_DISPLAY) ?
+	den->SetStyle((size() == LM_ST_DISPLAY) ?
 		      static_cast<short>(LM_ST_TEXT)
-		      : size);
+		      : size());
 }
 
 
@@ -99,16 +99,19 @@ MathedArray * MathFracInset::GetData()
 
 bool MathFracInset::Inside(int x, int y) 
 {
-	int xx = xo - (width - w0) / 2;
+	int xx = xo() - (width - w0) / 2;
 	
-	return x >= xx && x <= xx + width && y <= yo + descent && y >= yo - ascent;
+	return x >= xx
+		&& x <= xx + width
+		&& y <= yo() + descent
+		&& y >= yo() - ascent;
 }
 
 
 void MathFracInset::SetFocus(int /*x*/, int y)
 {  
 //    lyxerr << "y " << y << " " << yo << " " << den->yo << " ";
-	idx = (y > yo) ? 1: 0;
+	idx = (y > yo()) ? 1: 0;
 }
 
 
@@ -116,13 +119,13 @@ void
 MathFracInset::draw(Painter & pain, int x, int y)
 { 
 	short idxp = idx;
-	short sizex = size;
+	short sizex = size();
 	
 	idx = 0;
-	if (size == LM_ST_DISPLAY) ++size;
+	if (size() == LM_ST_DISPLAY) incSize();
 	MathParInset::draw(pain, x + (width - w0) / 2, y - des0);
 	den->draw(pain, x + (width - w1) / 2, y + den->Ascent() + 2 - dh);
-	size = sizex;
+	size(sizex);
 	if (objtype == LM_OT_FRAC)
 		pain.line(x + 2, y - dh, x + width - 4, y - dh, LColor::mathline);
 	idx = idxp;
@@ -134,14 +137,14 @@ MathFracInset::Metrics()
 {
 	if (!dh) {
 		int a, b;
-		dh = mathed_char_height(LM_TC_CONST, size, 'I', a, b)/2;
+		dh = mathed_char_height(LM_TC_CONST, size(), 'I', a, b) / 2;
 	}
 	short idxp = idx;
-	short sizex = size; 
+	short sizex = size();
 	idx = 0;
-	if (size == LM_ST_DISPLAY) ++size; 
+	if (size() == LM_ST_DISPLAY) incSize(); 
 	MathParInset::Metrics();
-	size = sizex;
+	size(sizex);
 	w0 = width;
 	int as = Height() + 2 + dh;
 	des0 = Descent() + 2 + dh;

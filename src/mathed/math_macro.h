@@ -71,7 +71,7 @@ public:
 	bool Permit(short) const;
 private:
 	///
-	MathMacroTemplate * tmplate;
+	MathMacroTemplate * tmplate_;
 	///
 	struct MacroArgumentBase {
 		/// Position of the macro
@@ -83,16 +83,16 @@ private:
 		///
 		MathedArray * array;
 		///
-		MacroArgumentBase() { x = y = 0;  array = 0; row = 0; }
+		MacroArgumentBase()
+			: x(0), y(0), row(0), array(0)
+			{}
 	};
 	std::vector<MacroArgumentBase> args_;
 	///
-	int idx;
+	int idx_;
 	///
-	int nargs;
+	int nargs_;
 	///
-	MathedTextCodes tcode;
-	///
-	friend class MathMacroTemplate;
+	MathedTextCodes tcode_;
 };
 #endif

@@ -57,37 +57,38 @@ void MathDelimInset::Write(ostream & os, bool fragile)
 void
 MathDelimInset::draw(Painter & pain, int x, int y)
 { 
-	xo = x;  yo = y; 
+	xo(x);
+	yo(y); 
 	MathParInset::draw(pain, x + dw + 2, y - dh); 
 	
 	if (left == '.') {
-		pain.line(x + 4, yo - ascent,
-			  x + 4, yo + descent,
+		pain.line(x + 4, yo() - ascent,
+			  x + 4, yo() + descent,
 			  LColor::mathcursor, Painter::line_onoffdash);
 	} else
 		mathed_draw_deco(pain, x, y - ascent, dw, Height(), left);
 	x += Width() - dw - 2;
 	if (right == '.') {
-		pain.line(x + 4, yo - ascent,
-			  x + 4, yo + descent,
+		pain.line(x + 4, yo() - ascent,
+			  x + 4, yo() + descent,
 			  LColor::mathcursor, Painter::line_onoffdash);
 	} else
-		mathed_draw_deco(pain, x, y-ascent, dw, Height(), right);
+		mathed_draw_deco(pain, x, y - ascent, dw, Height(), right);
 }
 
 
 void
 MathDelimInset::Metrics()
 {
-   MathParInset::Metrics();
-   int d;
-   
-   mathed_char_height(LM_TC_CONST, size, 'I', d, dh);
-   dh /= 2;
-   ascent += 2 + dh;
-   descent += 2 - dh;
-   dw = Height()/5;
-   if (dw > 15) dw = 15;
-   if (dw<6) dw = 6;
-   width += 2*dw+4;
+	MathParInset::Metrics();
+	int d;
+	
+	mathed_char_height(LM_TC_CONST, size(), 'I', d, dh);
+	dh /= 2;
+	ascent += 2 + dh;
+	descent += 2 - dh;
+	dw = Height()/5;
+	if (dw > 15) dw = 15;
+	if (dw < 6) dw = 6;
+	width += 2 * dw + 4;
 }

@@ -57,7 +57,7 @@ MathBigopInset::draw(Painter & pain, int x, int y)
 			 LColor::mathline);
 		++x;
 	}
-	pain.text(x, y, s, mathed_get_font(t, size));
+	pain.text(x, y, s, mathed_get_font(t, size()));
 }
 
 
@@ -76,8 +76,8 @@ MathBigopInset::Metrics()
 		s = name;
 		t = LM_TC_TEXTRM;
 	}
-	mathed_string_height(t, size, s, ascent, descent);
-	width = mathed_string_width(t, size, s);
+	mathed_string_height(t, size(), s, ascent, descent);
+	width = mathed_string_width(t, size(), s);
 	if (sym == LM_oint) width += 2;
 }
 

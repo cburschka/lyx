@@ -19,7 +19,6 @@
 
 #include FORMS_H_LOCATION
 #include <algorithm>
-#include <cstdlib>
 #include "symbol_def.h"
 #include "math_inset.h"
 #include "LColor.h"

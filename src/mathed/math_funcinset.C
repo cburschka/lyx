@@ -54,7 +54,7 @@ void
 MathFuncInset::draw(Painter & pain, int x, int y)
 { 
 	if (!name.empty() && name[0] > ' ') {
-		LyXFont font = WhichFont(LM_TC_TEXTRM, size);
+		LyXFont font = WhichFont(LM_TC_TEXTRM, size());
 		font.setLatex(LyXFont::ON);
 	        x += (lyxfont::width('I', font) + 3) / 4;
 		pain.text(x, y, name, font);
@@ -66,7 +66,7 @@ MathFuncInset::draw(Painter & pain, int x, int y)
 void MathFuncInset::Metrics() 
 {
 	//ln = (name) ? strlen(name): 0;
-	LyXFont  font = WhichFont(LM_TC_TEXTRM, size);
+	LyXFont font = WhichFont(LM_TC_TEXTRM, size());
 	font.setLatex(LyXFont::ON);
 	if (name.empty()) {
 		width = df_width;
@@ -75,6 +75,6 @@ void MathFuncInset::Metrics()
 	} else {
 		width = lyxfont::width(name, font)
 			+ lyxfont::width('I', font) / 2;
-		mathed_string_height(LM_TC_TEXTRM, size, name, ascent, descent);
+		mathed_string_height(LM_TC_TEXTRM, size(), name, ascent, descent);
 	}
 }

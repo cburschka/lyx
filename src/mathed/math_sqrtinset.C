@@ -24,10 +24,10 @@ MathedInset * MathSqrtInset::Clone()
 
 bool MathSqrtInset::Inside(int x, int y) 
 {
-	return x >= xo - hmax
-		&& x <= xo + width - hmax
-		&& y <= yo + descent
-		&& y >= yo - ascent;
+	return x >= xo() - hmax
+		&& x <= xo() + width - hmax
+		&& y <= yo() + descent
+		&& y >= yo() - ascent;
 }
 
 
@@ -55,7 +55,7 @@ MathSqrtInset::Metrics()
 	ascent += 4;
 	descent += 2;
 	int a, b;
-	hmax = mathed_char_height(LM_TC_VAR, size, 'I', a, b);
+	hmax = mathed_char_height(LM_TC_VAR, size(), 'I', a, b);
 	if (hmax < 10) hmax = 10;
 	wbody = width + 4;
 	width += hmax + 4;

@@ -28,113 +28,113 @@ using std::ostream;
 MathRootInset::MathRootInset(short st)
 	: MathSqrtInset(st)
 {
-    idx = 1;
-    uroot = new MathParInset(LM_ST_TEXT); 
+	idx = 1;
+	uroot = new MathParInset(LM_ST_TEXT); 
 }
 
 
 MathRootInset::~MathRootInset() 
 {
-    delete uroot;
+	delete uroot;
 }
 
 
 MathedInset * MathRootInset::Clone()
 {
-   MathRootInset * p = new MathRootInset(GetStyle());
-   MathedIter it(array), itr(uroot->GetData());
-   p->SetData(it.Copy());
-   p->setArgumentIdx(0);
-   p->SetData(itr.Copy());
-
-   return p;
+	MathRootInset * p = new MathRootInset(GetStyle());
+	MathedIter it(array), itr(uroot->GetData());
+	p->SetData(it.Copy());
+	p->setArgumentIdx(0);
+	p->SetData(itr.Copy());
+	
+	return p;
 }
 
 
 void MathRootInset::SetData(MathedArray * d)
 {
-   if (idx == 1)
-     MathParInset::SetData(d);
-   else {
-      uroot->SetData(d);
-   }
+	if (idx == 1)
+		MathParInset::SetData(d);
+	else {
+		uroot->SetData(d);
+	}
 }
 
 
 bool MathRootInset::setArgumentIdx(int i)
 {
-   if (i == 0 || i == 1) {
-       idx = i;
-       return true;
-   } else
-      return false;
+	if (i == 0 || i == 1) {
+		idx = i;
+		return true;
+	} else
+		return false;
 }
 
 
 void MathRootInset::GetXY(int & x, int & y) const
 {
-   if (idx == 1)
-     MathParInset::GetXY(x, y);
-   else
-     uroot->GetXY(x, y);
+	if (idx == 1)
+		MathParInset::GetXY(x, y);
+	else
+		uroot->GetXY(x, y);
 }
 
 
 MathedArray * MathRootInset::GetData()
 {
-   if (idx == 1)
-     return array;
-   else
-     return uroot->GetData();
+	if (idx == 1)
+		return array;
+	else
+		return uroot->GetData();
 }
 
 
 bool MathRootInset::Inside(int x, int y)
 {
-    return (uroot->Inside(x, y) || MathSqrtInset::Inside(x, y));
+	return (uroot->Inside(x, y) || MathSqrtInset::Inside(x, y));
 }
 
 
 void MathRootInset::Metrics()
 {
-    int idxp = idx;
-
-    idx = 1;
-    MathSqrtInset::Metrics();
-    uroot->Metrics();
-    wroot = uroot->Width();
-    dh = Height()/2;
-    width += wroot;
-    //    if (uroot->Ascent() > dh) 
-    if (uroot->Height() > dh) 
-      ascent += uroot->Height() - dh;
-    dh -= descent - uroot->Descent();
-    idx = idxp;
+	int idxp = idx;
+	
+	idx = 1;
+	MathSqrtInset::Metrics();
+	uroot->Metrics();
+	wroot = uroot->Width();
+	dh = Height()/2;
+	width += wroot;
+	//    if (uroot->Ascent() > dh) 
+	if (uroot->Height() > dh) 
+		ascent += uroot->Height() - dh;
+	dh -= descent - uroot->Descent();
+	idx = idxp;
 }
 
 
 void MathRootInset::draw(Painter & pain, int x, int y)
 {
-    int idxp = idx;
-
-    idx = 1;
-    uroot->draw(pain, x, y - dh);
-    MathSqrtInset::draw(pain, x + wroot, y);
-    idx = idxp;
+	int idxp = idx;
+	
+	idx = 1;
+	uroot->draw(pain, x, y - dh);
+	MathSqrtInset::draw(pain, x + wroot, y);
+	idx = idxp;
 }
 
 
 void MathRootInset::SetStyle(short st)
 {
-    MathSqrtInset::SetStyle(st);
-    
-    uroot->SetStyle((size<LM_ST_SCRIPTSCRIPT) ? size+1: size);
+	MathSqrtInset::SetStyle(st);
+	
+	uroot->SetStyle((size() < LM_ST_SCRIPTSCRIPT) ? size() + 1 : size());
 }
 
 
 void MathRootInset::SetFocus(int x, int)
 {  
-    idx = (x > xo + wroot) ? 1: 0;
+	idx = (x > xo() + wroot) ? 1: 0;
 }
 
 

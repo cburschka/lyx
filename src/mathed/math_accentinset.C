@@ -48,7 +48,7 @@ MathAccentInset::draw(Painter & pain, int x, int y)
 	else {
 		string s;
 		s += c;
-		drawStr(pain, fn, size, x, y, s);
+		drawStr(pain, fn, size(), x, y, s);
 	}
 	x += (code == LM_not) ? (width-dw) / 2 : 2;
 	mathed_draw_deco(pain, x, y - dy, dw, dh, code);
@@ -65,9 +65,9 @@ MathAccentInset::Metrics()
 		width = inset->Width();
 		dh = ascent;
 	} else {
-		mathed_char_height(fn, size, c, ascent, descent);
-		width = mathed_char_width(fn, size, c);
-		dh = (width-2)/2; 
+		mathed_char_height(fn, size(), c, ascent, descent);
+		width = mathed_char_width(fn, size(), c);
+		dh = (width - 2) / 2; 
 	}
 	if (code == LM_not) {
 		ascent += dh;

@@ -390,8 +390,8 @@ MathedInset * doAccent(MathedInset * p)
 }
 
 
-MathedArray * mathed_parse(unsigned flags, MathedArray * array,
-			    MathParInset ** mtx)
+MathedArray * mathed_parse(unsigned flags = 0, MathedArray * array = 0,
+			    MathParInset ** mtx = 0)
 {
    int t = yylex();
    int tprev = 0;

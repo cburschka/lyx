@@ -103,7 +103,6 @@ protected:
 	/// 
 	MathedRowSt * crow;
 	
-private:
 	///
 	friend class MathedCursor;
 };
