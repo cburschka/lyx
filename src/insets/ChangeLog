@@ -1,3 +1,9 @@
+
+2003-07-15  André Pönitz  <poenitz@gmx.net>
+
+	* insettabular.C:
+	* insettext.C: refresh_status tristate -> need_update bool
+
 2003-07-15  Alfredo Braunstein  <abraunst@libero.it>
 
 	* insettext.C: adjust call to LyXText::init
