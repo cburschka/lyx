@@ -186,6 +186,13 @@ case "$lyx_use_frontend" in
     FRONTEND_LDFLAGS="\$(GNOMEMM_LIBDIR)"
     FRONTEND_INCLUDES="-I\${srcdir}/gnome \$(GNOMEMM_INCLUDEDIR) \$(GTKMM_CFLAGS)"
     FRONTEND_LIBS="\$(GNOMEMM_LIBS) \$(GTKMM_LIBS)";;
+  qt2)
+    QT2_DO_IT_ALL
+    FRONTEND="qt2"
+    FRONTEND_GUILIB="\${top_builddir}/src/frontends/qt2/libqt2.la"
+    FRONTEND_LDFLAGS="\$(QT2_LDFLAGS)"
+    FRONTEND_INCLUDES="-I\${srcdir}/qt2 \$(QT2_INCLUDES)"
+    FRONTEND_LIBS="\$(QT2_LIBS)";;
   *)
     LYX_ERROR(Unknown frontend $lyx_use_frontend);;
 esac
@@ -298,6 +305,7 @@ AC_OUTPUT([Makefile \
        src/frontends/Makefile \
        src/frontends/support/Makefile \
        src/frontends/xforms/Makefile \
+       src/frontends/qt2/Makefile \
        src/frontends/kde/Makefile \
        src/frontends/kde/moc/Makefile \
        src/frontends/kde/dlg/Makefile \
