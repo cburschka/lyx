@@ -233,6 +233,10 @@ void InsetFormulaBase::getCursorPos(BufferView *, int & x, int & y) const
 
 void InsetFormulaBase::toggleInsetCursor(BufferView * bv)
 {
+	if (!mathcursor) {
+		lyxerr << "toggleInsetCursor impossible\n";
+		return;
+	}
 	//lyxerr << "toggleInsetCursor: " << isCursorVisible() << "\n";
 	if (isCursorVisible())
 		hideInsetCursor(bv);

@@ -149,4 +149,7 @@ protected:
 // So do it here.
 void mathDispatch(FuncRequest const &);
 
+///
+void releaseMathCursor(BufferView * bv);
+
 #endif
