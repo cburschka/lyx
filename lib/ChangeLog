@@ -1,5 +1,8 @@
 2002-11-22  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
+	* bind/sciword.bind: big update: use menus.bind and maths.bind and
+	make sure we do not use accent-vector
+
 	* configure.m4: find reLyX on Edit>Reconfigure when running from
 	build directory
 

@@ -99,7 +99,6 @@ void LyXAction::init()
 		{ LFUN_UMLAUT, "accent-umlaut", "", Noop },
 		{ LFUN_UNDERBAR, "accent-underbar", "", Noop },
 		{ LFUN_UNDERDOT, "accent-underdot", "", Noop },
-		{ LFUN_VECTOR, "accent-vector", "", Noop },
 		{ LFUN_APPENDIX, "appendix", N_("Insert appendix"), Noop },
 		{ LFUN_APROPOS, "apropos", N_("Describe command"),
 		  NoBuffer|ReadOnly },
