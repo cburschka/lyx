@@ -265,12 +265,12 @@
 #       define BOOST_NO_SLIST
 #       define BOOST_NO_HASH
 #     endif
+#   endif
 // LYX: begin
 #   ifndef HAVE_LIMITS
 #      define BOOST_NO_LIMITS
 #   endif
 // LYX: end
-#   endif
 
 //  Intel on Linux ---------------------------------------------------------
 
@@ -301,6 +301,7 @@
 #elif defined __DECCXX
 #   define BOOST_NO_SLIST
 #   define BOOST_NO_HASH
+#   define BOOST_NO_INCLASS_MEMBER_INITIALIZATION
 
 //  Greenhills C++ -----------------------------------------------------------//
 
