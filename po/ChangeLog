@@ -1,3 +1,13 @@
+2002-12-09  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* Makefile.in.in (layouts_l10n.pot): new target
+	(qt_l10n.pot): new target
+	(xforms_l10n.pot): new target
+	(l10n_pots): new target
+	($(top_srcdir)/src/ext_l10n.h): remove layout parsing and qt
+	parsing, move to their own targets.
+	($(srcdir)/$(PACKAGE).pot): depend on l10n_pots
+
 2002-12-08  Claus Hindsgaul  <claus_h@image.dk>
 
 	* da.po: update da.po
