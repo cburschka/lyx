@@ -123,6 +123,7 @@ DispatchResult LCursor::dispatch(FuncRequest const & cmd0)
 				//	<< " val: " << disp_.val() << endl;
 				break;
 		}
+		pop();
 	}
 	bv().text()->dispatch(*this, cmd);
 	if (nopop_)

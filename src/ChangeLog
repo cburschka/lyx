@@ -1,3 +1,7 @@
+2004-03-04  Alfredo Braunstein  <abraunst@lyx.org>
+
+	* cursor.C (dispatch): avoid infinite loops
+
 2004-03-01  Alfredo Braunstein  <abraunst@lyx.org>
 
 	* rowpainter.C (paintSelection): fix x coordinates
