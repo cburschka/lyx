@@ -1,5 +1,11 @@
 2000-10-03  Juergen Vigna  <jug@sad.it>
 
+	* src/BufferView2.C (theLockingInset): removed const because of
+	Agnus's compile problems.
+
+	* src/insets/insettext.C (LocalDispatch): set the language of the
+	surronding paragraph on inserting the first character.
+
 	* various files: changed use of BufferView::the_locking_inset.
 	
 	* src/BufferView2.C (theLockingInset): 

@@ -750,6 +750,23 @@ InsetText::LocalDispatch(BufferView * bv,
 			      bv->text->cursor.par()->next
 #endif
 		    );
+	    // if an empty paragraph set the language to the surronding
+	    // paragraph language on insertion of the first character!
+	    if (!par->Last() && !par->next) {
+		LyXText * text = 0;
+		if (owner()) {
+		    Inset * inset = owner();
+		    while(inset && inset->getLyXText(bv) == TEXT(bv))
+			inset = inset->owner();
+		    if (inset)
+			text = inset->getLyXText(bv);
+		}
+		if (!text)
+		    text = bv->text;
+		LyXFont font(LyXFont::ALL_IGNORE);
+		font.setLanguage(text->cursor.par()->getParLanguage(bv->buffer()->params));
+		SetFont(bv, font, false);
+	    }
 	    if (lyxrc.auto_region_delete) {
 		if (TEXT(bv)->selection){
 		    TEXT(bv)->CutSelection(bv, false);
