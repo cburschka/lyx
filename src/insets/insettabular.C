@@ -810,12 +810,11 @@ void InsetTabular::lfunMousePress(FuncRequest const & cmd)
 
 	bool const inset_hit = insetHit(bv, cmd.x, cmd.y);
 
-	FuncRequest cmd1 = cmd;
-	cmd1.x -= inset_x;
-	cmd1.y -= inset_y;
-
 	if ((ocell == actcell) && the_locking_inset && inset_hit) {
 		resetPos(bv);
+		FuncRequest cmd1 = cmd;
+		cmd1.x -= inset_x;
+		cmd1.y -= inset_y;
 		the_locking_inset->localDispatch(cmd1);
 		return;
 	}
@@ -838,6 +837,9 @@ void InsetTabular::lfunMousePress(FuncRequest const & cmd)
 			lyxerr[Debug::INSETS] << "Cannot lock inset" << endl;
 			return;
 		}
+		FuncRequest cmd1 = cmd;
+		cmd1.x -= inset_x;
+		cmd1.y -= inset_y;
 		the_locking_inset->localDispatch(cmd1);
 		return;
 	}
