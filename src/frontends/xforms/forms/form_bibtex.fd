@@ -149,13 +149,13 @@ alignment: FL_ALIGN_CENTER
 style: FL_NORMAL_STYLE
 size: FL_DEFAULT_SIZE
 lcol: FL_BLACK
-label: Add bibliography to TOC
-shortcut: T
+label: Add bibliography to TOC|#A
+shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: radio_bibtotoc
-callback: 
-argument: 
+callback: C_FormBaseInputCB
+argument: 0
 
 ==============================
 create_the_forms

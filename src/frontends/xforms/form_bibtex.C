@@ -61,8 +61,12 @@ FD_form_bibtex * FormBibtex::build_bibtex()
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
-  fdui->radio_bibtotoc = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 90, 90, 30, 30, _("Add bibliography to TOC"));
-    fl_set_button_shortcut(obj, _("T"), 1);
+  {
+    char const * const dummy = N_("Add bibliography to TOC|#A");
+    fdui->radio_bibtotoc = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 90, 90, 30, 30, idex(_(dummy)));
+    fl_set_button_shortcut(obj, scex(_(dummy)), 1);
+  }
+    fl_set_object_callback(obj, C_FormBaseInputCB, 0);
   fl_end_form();
 
   fdui->form->fdui = fdui;

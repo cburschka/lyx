@@ -58,12 +58,12 @@ ButtonPolicy::SMInput FormBibtex::input(FL_OBJECT * ob, long)
 					    "Select Database",
 					    "*.bib| BibTeX Databases (*.bib)");
 		if (!out_name.empty()) {
-			if (suffixIs(out_name,".bib")) {
-				// to prevent names like xxxbib.bib
-				// latex needs it without suffix
+			out_name = OnlyFilename(out_name); 
+			if (suffixIs(out_name,".bst")) {
+				// to prevent names like xxxbst.bst
 				out_name = ChangeExtension(out_name,"");
 			}
-    
+   
 			fl_freeze_form(form()); 
 			fl_set_input(dialog_->database, out_name.c_str());
 			fl_unfreeze_form(form()); 
