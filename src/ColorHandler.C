@@ -86,7 +86,7 @@ GC LyXColorHandler::getGCForeground(LColor::color c)
         if (XLookupColor(display, colormap, s.c_str(), &xcol, &ccol) == 0) {
 		lyxerr << _("LyX: Unknown X11 color ") << s
 		       << _(" for ") << lcolor.getGUIName(c) << '\n'
-		       << _("     Using black instead, sorry!.") << endl;
+		       << _("     Using black instead, sorry!") << endl;
 		unsigned long bla = BlackPixel(display,
 					       DefaultScreen(display));
 		val.foreground = bla;

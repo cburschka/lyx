@@ -1170,6 +1170,7 @@ if test "$TOXPM" = "convert"; then
 	eps_to_xpm="convert EPS:\$\$i XPM:\$\$o" 
 	jpg_to_xpm="convert JPG:\$\$i XPM:\$\$o"
 	png_to_xpm="convert PNG:\$\$i XPM:\$\$o"
+	ps_to_xpm="convert PS:\$\$i XPM:\$\$o" 
 fi
 
 echo $ac_n "checking For an EPS -> PDF converter""... $ac_c"

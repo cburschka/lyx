@@ -186,7 +186,6 @@ string const FileOpenSearch (string const & path, string const & name,
 			do {
 				tmppath = split(tmppath, path_element, ';');
 			} while (!tmppath.empty() && path_element.empty());
-				tmppath = split(tmppath, path_element, ';');
 		} else {
 			notfound = false;
 		}

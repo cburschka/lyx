@@ -1,3 +1,8 @@
+2002-02-04  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* filetools.C (FileOpenSearch): remove duplicated line, probably
+	resulting from bad cut-and paste.
+
 2002-01-31  Herbert Voss  <voss@perce.de>
 
 	* filetools.[Ch]: add getExtFromContents(), which returns
