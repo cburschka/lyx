@@ -53,8 +53,6 @@ libgnome_la_LIBADD = \
 #	../xforms/form_print.lo \
 #	../xforms/FormRef.lo \
 #	../xforms/form_ref.lo \
-#	../xforms/FormSplash.lo \
-#	../xforms/form_splash.lo \
 #	../xforms/FormTabular.lo \
 #	../xforms/form_tabular.lo \
 #	../xforms/FormTabularCreate.lo \

@@ -1,3 +1,16 @@
+2001-09-27  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* Dialogs.C: remove splash dialog code.
+
+	* FormSplash.[Ch]:
+	* form_splash.[Ch]:
+	* forms/form_splash.fd: removed.
+
+	* Makefile.am:
+	* forms/makefile: remove splash dialog files.
+
+	* Menubar_pimpl.C (MenuCallback): no longer call Dialogs::destroySplash.
+
 2001-09-27  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* forms/form_preferences.fd: fix typo

@@ -1,3 +1,13 @@
+2001-09-27  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* ControlSplash.[Ch]: removed.
+
+	* GUI.h: remove GUISplash class.
+
+	* ViewBase.h: remove ViewSplash class.
+
+	* Makefile.am: remove ControlSplash.[Ch].
+
 2001-09-25  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* ControlButtons.h: add variable emergency_exit_. If set to true, the

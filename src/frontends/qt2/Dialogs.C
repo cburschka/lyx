@@ -54,7 +54,6 @@
 #include "QRef.h"
 #include "QSearch.h"
 #include "QSpellchecker.h"
-#include "QSplash.h"
 #include "QTabularCreate.h"
 #include "QThesaurus.h"
 #include "QURL.h"
@@ -85,7 +84,6 @@
 #include "controllers/ControlRef.h"
 #include "controllers/ControlSearch.h"
 #include "controllers/ControlSpellchecker.h"
-#include "controllers/ControlSplash.h"
 #include "controllers/ControlTabularCreate.h"
 #include "controllers/ControlThesaurus.h"
 #include "controllers/ControlUrl.h"
@@ -105,8 +103,6 @@ SigC::Signal0<void> Dialogs::redrawGUI;
 
 Dialogs::Dialogs(LyXView * lv)
 {
-	splash_.reset(new QSplash(lv, this));
-
 	// dialogs that have been converted to new scheme
 	add(new GUICitation<QCitation, Qt2BC>(*lv, *this));
 	add(new GUIAboutlyx<QAbout, Qt2BC>(*lv, *this));

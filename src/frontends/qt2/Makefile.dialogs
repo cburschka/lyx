@@ -21,7 +21,6 @@ DIALOGS = \
 	QRef \
 	QSearch \
 	QSpellchecker \
-	QSplash \
 	QTabularCreate \
 	QThesaurus \
 	QToc \
@@ -69,8 +68,6 @@ DIALOGSOURCES = \
 	QSearch.C QSearchDialog.C \
 	QSpellchecker.h QSpellcheckerDialog.h \
 	QSpellchecker.C QSpellcheckerDialog.C \
-	QSplash.h QSplashDialog.h \
-	QSplash.C QSplashDialog.C \
 	QTabularCreate.h QTabularCreateDialog.h \
 	QTabularCreate.C QTabularCreateDialog.C \
 	QThesaurus.h QThesaurusDialog.h \
@@ -103,7 +100,6 @@ MOCDIALOGS = \
 	QRefDialog_moc.C \
 	QSearchDialog_moc.C \
 	QSpellcheckerDialog_moc.C \
-	QSplashDialog_moc.C \
 	QTabularCreateDialog_moc.C \
 	QThesaurusDialog_moc.C \
 	QTocDialog_moc.C \

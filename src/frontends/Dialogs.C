@@ -28,8 +28,3 @@ void Dialogs::add(DialogBase * ptr)
 	lyx::Assert(ptr);
 	dialogs_.push_back(db_ptr(ptr));
 }
-
-void Dialogs::destroySplash()
-{
-	splash_.reset();
-}

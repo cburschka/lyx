@@ -19,7 +19,6 @@
 #include "Dialogs.h"
 #include "gnomeBC.h"
 
-#include "ControlSplash.h"
 #include "ControlBibitem.h"
 #include "ControlBibtex.h"
 #include "ControlCharacter.h"
@@ -55,7 +54,6 @@
 #include "FormPrint.h"
 #include "FormRef.h"
 #include "FormSearch.h"
-#include "FormSplash.h"
 #include "FormTabular.h"
 #include "FormTabularCreate.h"
 #include "FormToc.h"
@@ -74,8 +72,6 @@ Dialogs::Dialogs(LyXView * lv)
 	add(new GUITabularCreate<FormTabularCreate, gnomeBC>(*lv, *this));
 
 /*	
-	splash_.reset(new FormSplash(lv, this));
-
 	add(new GUIBibitem<FormBibitem, xformsBC>(*lv, *this));
 	add(new GUIBibtex<FormBibtex, xformsBC>(*lv, *this));
 	add(new GUICharacter<FormCharacter, xformsBC>(*lv, *this));
@@ -98,7 +94,6 @@ Dialogs::Dialogs(LyXView * lv)
 	add(new FormPrint(lv, this));
 	add(new FormRef(lv, this));
 	add(new FormSearch(lv, this));
-	add(new FormSplash(lv, this));
 	add(new FormTabular(lv, this));
 	add(new FormTabularCreate(lv, this));
 	add(new FormToc(lv, this));
@@ -176,10 +171,6 @@ A.  To avoid a segfault.
        signals already. Guis that use callbacks, like xforms, must have their
        code wrapped up like that in the form_copyright.[Ch] which is awkward
        but will at least allow multiple instances of the same dialog.
-
-       Signals will also be a great help in controlling the splashscreen --
-       once signalled to hide it can disconnect from the signal and remove
-       itself from memory.
 
        LyXFuncs will be used for requesting/setting LyX internal info.  This
        will ensure that scripts or LyXServer-connected applications can all

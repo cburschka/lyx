@@ -16,7 +16,6 @@
 
 #include <boost/utility.hpp>
 #include "ControlButtons.h"
-#include "ControlSplash.h"
 
 class ViewBase {
 public:
@@ -58,30 +57,6 @@ public:
 protected:
 	/// The view is, after all, controlled!
 	ControlButtons & controller_;
-};
-
-
-class ViewSplash {
-public:
-	/// 
-	ViewSplash(ControlSplash & c) : controller_(c) {}
-	/// 
-	virtual ~ViewSplash() {}
-
-	/// Hide the dialog.
-	virtual void hide() = 0;
-	/// Create the dialog and show it.
-	virtual void show() = 0;
-
-	/** The shortcut allows (e.g. xform's) global callback functions
-	    access without making the whole controller_ public.
-	*/
-        ///
-        void Hide() { controller_.hide(); }
-
-protected:
-	/// The view is, after all, controlled!
-	ControlSplash & controller_;
 };
 
 

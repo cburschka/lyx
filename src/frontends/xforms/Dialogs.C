@@ -40,7 +40,6 @@
 #include "ControlRef.h"
 #include "ControlSearch.h"
 #include "ControlSpellchecker.h"
-#include "ControlSplash.h"
 #include "ControlTabularCreate.h"
 #include "ControlThesaurus.h"
 #include "ControlToc.h"
@@ -69,7 +68,6 @@
 #include "form_ref.h"
 #include "form_search.h"
 #include "form_spellchecker.h"
-#include "form_splash.h"
 #include "form_tabular_create.h"
 #include "form_thesaurus.h"
 #include "form_toc.h"
@@ -94,7 +92,6 @@
 #include "FormRef.h"
 #include "FormSearch.h"
 #include "FormSpellchecker.h"
-#include "FormSplash.h"
 #include "FormTabularCreate.h"
 #include "FormThesaurus.h" 
 #include "FormToc.h"
@@ -113,8 +110,6 @@ SigC::Signal0<void> Dialogs::redrawGUI;
 
 Dialogs::Dialogs(LyXView * lv)
 {
-	splash_.reset(new GUISplash<FormSplash>(*this));
-
 	add(new GUIAboutlyx<FormAboutlyx, xformsBC>(*lv, *this));
 	add(new GUIBibitem<FormBibitem, xformsBC>(*lv, *this));
 	add(new GUIBibtex<FormBibtex, xformsBC>(*lv, *this));
@@ -218,10 +213,6 @@ A.  To avoid a segfault.
        signals already. Guis that use callbacks, like xforms, must have their
        code wrapped up like that in the form_copyright.[Ch] which is awkward
        but will at least allow multiple instances of the same dialog.
-
-       Signals will also be a great help in controlling the splashscreen --
-       once signalled to hide it can disconnect from the signal and remove
-       itself from memory.
 
        LyXFuncs will be used for requesting/setting LyX internal info.  This
        will ensure that scripts or LyXServer-connected applications can all

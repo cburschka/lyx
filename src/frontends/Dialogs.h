@@ -151,10 +151,6 @@ public:
 	SigC::Signal0<void> showSpellchecker;
 	/// bring up the spellchecker tab in preferences
 	SigC::Signal0<void> showSpellcheckerPreferences;
-	/// pop up the splash
-	SigC::Signal0<void> showSplash;
-	/// destroy the splash dialog
-	void destroySplash();
 	///
 	SigC::Signal1<void, InsetTabular *> showTabular;
 	///
@@ -179,8 +175,6 @@ private:
 	void add(DialogBase *);
 	/// the dialogs being managed
 	std::vector<db_ptr> dialogs_;
-	/// the splash dialog
-	boost::scoped_ptr<DialogBase> splash_;
 };
 
 #endif

@@ -64,8 +64,6 @@ libcontrollers_la_SOURCES=\
 	ControlSearch.h \
 	ControlSpellchecker.C \
 	ControlSpellchecker.h \
-	ControlSplash.C \
-	ControlSplash.h \
 	ControlTabularCreate.C \
 	ControlTabularCreate.h \
 	ControlThesaurus.C \

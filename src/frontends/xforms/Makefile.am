@@ -144,10 +144,6 @@ libxforms_la_SOURCES = \
 	FormSpellchecker.h \
 	form_spellchecker.C \
 	form_spellchecker.h \
-	FormSplash.C \
-	FormSplash.h \
-	form_splash.C \
-	form_splash.h \
 	FormTabular.C \
 	FormTabular.h \
 	form_tabular.C \

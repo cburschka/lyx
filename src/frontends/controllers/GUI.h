@@ -11,23 +11,6 @@
 #define GUI_H
 
 /** This class instantiates and makes available the GUI-specific
-    View for the Splash screen controller.
- */
-template <class GUIview>
-class GUISplash : public ControlSplash {
-public:
-	///
-	GUISplash(Dialogs & d) : ControlSplash(d), view_(*this) {}
-	///
-	virtual ViewSplash & view() { return view_; }
-
-private:
-	///
-	GUIview view_;
-};
-
-
-/** This class instantiates and makes available the GUI-specific
     ButtonController and View.
  */
 template <class Controller, class GUIview, class Policy, class GUIbc>

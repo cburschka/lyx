@@ -541,12 +541,6 @@ void Menubar::Pimpl::MenuCallback(FL_OBJECT * ob, long button)
 	LyXView * view = iteminfo->pimpl_->owner_;
 	MenuItem const * item = iteminfo->item_.get();
 
-	/* get the splash out of the way. It would be nicer
-	 * to only have this code at the start, but xforms
-	 * makes it too ugly to do
-	 */
-	view->getDialogs()->destroySplash();
- 
 	if (button == 1) {
 		// set the pseudo menu-button
 		fl_set_object_boxtype(ob, FL_DOWN_BOX);

@@ -1,3 +1,9 @@
+2001-09-27  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* Dialogs.C: remove splash dialog code.
+
+	* Makefile.am: remove splash dialog files.
+
 2001-09-09  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* Makefile.am (libgnome_la_LIBADD): depend on the gui libs.
