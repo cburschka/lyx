@@ -27,9 +27,6 @@
 
 using std::endl;
 
-extern BufferView * current_view;
-
-
 // The global fontloader
 xfont_loader fontloader;
 
@@ -298,8 +295,6 @@ XFontStruct * xfont_loader::doLoad(LyXFont::FONT_FAMILY family,
 
 	XFontStruct * fs = 0;
 
-	current_view->owner()->messagePush(_("Loading font into X-Server..."));
-
 	fs = XLoadQueryFont(fl_get_display(), font.c_str());
 
 	if (fs == 0) {
@@ -324,8 +319,6 @@ XFontStruct * xfont_loader::doLoad(LyXFont::FONT_FAMILY family,
 		lyxerr << "Font '" << f.stateText(0)
 		       << "' matched by\n" << font << endl;
 	}
-
-	current_view->owner()->messagePop();
 
 	fontstruct[family][series][shape][size] = fs;
 	return fs;

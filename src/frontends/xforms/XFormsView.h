@@ -53,7 +53,10 @@ public:
 
 	/// callback for close event from window manager
 	static int atCloseMainFormCB(FL_FORM *, void *);
-
+ 
+	/// dispatch an action
+	void dispatch(string const & arg);
+ 
 private:
 	/**
 	 * setWindowTitle - set title of window
@@ -63,7 +66,7 @@ private:
 	virtual void setWindowTitle(string const & t, string const & it);
 
 	/// update the minibuffer state message
-	void update_view_state();
+	void show_view_state();
 
 	/// makes the main form.
 	void create_form_form_main(Dialogs & d, int width, int height);

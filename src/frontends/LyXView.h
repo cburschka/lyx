@@ -113,10 +113,6 @@ public:
 
 	/// display a message in the view
 	void message(string const &);
-	/// push a message onto the history, and show it
-	void messagePush(string const & str);
-	/// pop the last message pushed
-	void messagePop();
 
 	/// updates the title of the window
 	void updateWindowTitle();

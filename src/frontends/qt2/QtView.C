@@ -97,7 +97,7 @@ void QtView::update_view_state()
  
 void QtView::activated(int id)
 {
-	getLyXFunc()->verboseDispatch(id, true);
+	getLyXFunc()->dispatch(id, true);
 }
  
  

@@ -472,7 +472,7 @@ void LyXServer::callback(LyXServer * serv, string const & msg)
 			// support currently. (Lgb)
 
 
-			serv->func->verboseDispatch(cmd + ' ' + arg, false);
+			serv->func->dispatch(cmd + ' ' + arg);
 			string const rval = serv->func->getMessage();
 			
 			//modified june 1999 stefano@zool.su.se:

@@ -81,29 +81,6 @@ void MiniBuffer::message(string const & str)
 }
 
 
-void MiniBuffer::messagePush(string const & str)
-{
-	text_stored = text;
-	message(str);
-}
-
-
-void MiniBuffer::messagePop()
-{
-	if (!text_stored.empty()) {
-		message(text_stored);
-		text_stored.erase();
-	}
-}
-
-
-void MiniBuffer::addSet(string const & s1)
-{
-	string const str = text + ' ' +  s1;
-	message(str);
-}
-
-
 void MiniBuffer::prepareForInput(vector<string> const & completion,
 				 vector<string> & history)
 {

@@ -108,7 +108,7 @@ void lyx_gui::start(string const & batch, vector<string> files)
 
 	// handle the batch commands the user asked for
 	if (!batch.empty()) {
-		view.getLyXFunc()->verboseDispatch(batch, false);
+		view.getLyXFunc()->dispatch(batch);
 	}
 
 	// FIXME: something somewhere is EATING CPU

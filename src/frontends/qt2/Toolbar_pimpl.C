@@ -129,7 +129,7 @@ void Toolbar::Pimpl::button_selected(QToolButton * button)
 		return;
 	}
 
-	owner_->getLyXFunc()->verboseDispatch(cit->second, true);
+	owner_->getLyXFunc()->dispatch(cit->second, true);
 }
  
 

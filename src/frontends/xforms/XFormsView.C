@@ -64,10 +64,10 @@ XFormsView::XFormsView(int width, int height)
 	fl_set_form_atclose(getForm(), C_XFormsView_atCloseMainFormCB, 0);
 
 	// Connect the minibuffer signals
-	minibuffer_->inputReady.connect(boost::bind(&LyXFunc::miniDispatch, getLyXFunc(), _1));
-	minibuffer_->timeout.connect(boost::bind(&LyXFunc::initMiniBuffer, getLyXFunc()));
+	minibuffer_->inputReady.connect(boost::bind(&XFormsView::dispatch, this, _1));
 
-	view_state_changed.connect(boost::bind(&XFormsView::update_view_state, this));
+	view_state_changed.connect(boost::bind(&XFormsView::show_view_state, this));
+	minibuffer_->timeout.connect(boost::bind(&XFormsView::show_view_state, this));
  
 	// Make sure the buttons are disabled if needed.
 	updateToolbar();
@@ -82,13 +82,19 @@ XFormsView::~XFormsView()
 }
 
 
+void XFormsView::dispatch(string const & arg)
+{
+	getLyXFunc()->dispatch(arg, true);
+}
+
+ 
 /// Redraw the main form.
 void XFormsView::redraw()
 {
 	lyxerr[Debug::INFO] << "XFormsView::redraw()" << endl;
 	fl_redraw_form(getForm());
 	// This is dangerous, but we know it is safe
-	XMiniBuffer * m = static_cast<XMiniBuffer *>(getMiniBuffer());
+	XMiniBuffer * m = static_cast<XMiniBuffer *>(minibuffer_.get());
 	m->redraw();
 }
 
@@ -123,7 +129,7 @@ void XFormsView::show(int x, int y, string const & title)
 
 	fl_show_form(form, placement, FL_FULLBORDER, title.c_str());
 
-	getLyXFunc()->initMiniBuffer();
+	show_view_state();
 #if FL_VERSION < 1 && (FL_REVISION < 89 || (FL_REVISION == 89 && FL_FIXLEVEL < 5))
 	InitLyXLookup(fl_get_display(), form_->window);
 #endif
@@ -201,9 +207,9 @@ void XFormsView::setWindowTitle(string const & title, string const & icon_title)
 }
 
 
-void XFormsView::update_view_state()
+void XFormsView::show_view_state()
 {
-	minibuffer_->message(currentState(view()));
+	minibuffer_->message(getLyXFunc()->view_status_message());
 }
  
  

@@ -1,3 +1,9 @@
+2002-07-18  John Levon  <moz@compsoc.man.ac.uk>
+
+	* QtView.C:
+	* Toolbar_pimpl.C:
+	* lyx_gui.C: verboseDispatch() is now dispatch()
+ 
 2002-07-07  Edwin Leuven  <leuven@fee.uva.nl>
 
 	* QParagraph.[Ch]: Add paragraph dialog

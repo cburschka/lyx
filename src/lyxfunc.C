@@ -272,7 +272,7 @@ void LyXFunc::processKeySym(LyXKeySymPtr keysym,
 		lyxerr[Debug::KEY] << "SelfInsert arg[`"
 				   << argument << "']" << endl;
 	} else {
-		verboseDispatch(action, false);
+		dispatch(action);
 	}
 }
 
@@ -651,8 +651,7 @@ FuncStatus LyXFunc::getStatus(kb_action action,
 		default:
 			break;
 		}
-	}
-	else {
+	} else {
 		string tc = mathcursor->getLastCode();
 		switch (action) {
 		case LFUN_BOLD:
@@ -685,99 +684,31 @@ FuncStatus LyXFunc::getStatus(kb_action action,
 }
 
 
-// temporary dispatch method
-void LyXFunc::miniDispatch(string const & s)
+void LyXFunc::dispatch(string const & s, bool verbose)
 {
-	string s2(frontStrip(strip(s)));
-
-	if (!s2.empty()) {
-		verboseDispatch(s2, true);
-	}
-}
-
-
-void LyXFunc::verboseDispatch(string const & s, bool show_sc)
-{
-	int action = lyxaction.LookupFunc(frontStrip(s));
+	int const action = lyxaction.LookupFunc(frontStrip(strip(s)));
 
 	if (action == LFUN_UNKNOWN_ACTION) {
 		string const msg = string(_("Unknown function ("))
 			+ s + ")";
 		owner->message(msg);
-	} else {
-		verboseDispatch(action, show_sc);
+		return;
 	}
+
+	dispatch(action, verbose);
 }
 
 
-void LyXFunc::verboseDispatch(int ac, bool show_sc)
+void LyXFunc::dispatch(int ac, bool verbose)
 {
 	string argument;
-	kb_action action;
-
-	// get the real action and argument
-	action = lyxaction.retrieveActionArg(ac, argument);
-
-	verboseDispatch(action, argument, show_sc);
+	kb_action const action = lyxaction.retrieveActionArg(ac, argument);
+	dispatch(action, argument, verbose);
 }
 
 
 
-void LyXFunc::verboseDispatch(kb_action action,
-			      string const & argument, bool show_sc)
-{
-	string res = dispatch(action, argument);
-
-	string commandshortcut;
-
-	if (show_sc && action != LFUN_SELFINSERT) {
-		// Put name of command and list of shortcuts
-		// for it in minibuffer
-		string comname = lyxaction.getActionName(action);
-
-		int pseudoaction = action;
-		bool argsadded = false;
-
-		if (!argument.empty()) {
-			// the pseudoaction is useful for the bindings
-			pseudoaction =
-				lyxaction.searchActionArg(action,
-							  argument);
-
-			if (pseudoaction == LFUN_UNKNOWN_ACTION) {
-				pseudoaction = action;
-			} else {
-				comname += " " + argument;
-				argsadded = true;
-			}
-		}
-
-		string const shortcuts =
-			toplevel_keymap->findbinding(pseudoaction);
-
-		if (!shortcuts.empty()) {
-			comname += ": " + shortcuts;
-		} else if (!argsadded && !argument.empty()) {
-			comname += " " + argument;
-		}
-
-		if (!comname.empty()) {
-			comname = strip(comname);
-			commandshortcut = "(" + comname + ')';
-		}
-	}
-
-	if (res.empty()) {
-		if (!commandshortcut.empty()) {
-			owner->getMiniBuffer()->addSet(commandshortcut);
-		}
-	} else {
-		owner->getMiniBuffer()->addSet(' ' + commandshortcut);
-	}
-}
-
-
-string const LyXFunc::dispatch(kb_action action, string argument)
+void LyXFunc::dispatch(kb_action action, string argument, bool verbose)
 {
 	lyxerr[Debug::ACTION] << "LyXFunc::Dispatch: action[" << action
 			      <<"] arg[" << argument << "]" << endl;
@@ -1511,7 +1442,7 @@ string const LyXFunc::dispatch(kb_action action, string argument)
 		while (!argument.empty()) {
 			string first;
 			argument = split(argument, first, ';');
-			verboseDispatch(first, false);
+			dispatch(first);
 		}
 	}
 	break;
@@ -1588,14 +1519,6 @@ string const LyXFunc::dispatch(kb_action action, string argument)
 		owner->message(argument);
 		break;
 
-	case LFUN_MESSAGE_PUSH:
-		owner->messagePush(argument);
-		break;
-
-	case LFUN_MESSAGE_POP:
-		owner->messagePop();
-		break;
-
 	case LFUN_FORKS_SHOW:
 		owner->getDialogs()->showForks();
 		break;
@@ -1626,18 +1549,63 @@ string const LyXFunc::dispatch(kb_action action, string argument)
 	} // end of switch
 
 exit_with_message:
-
-	string const res = getMessage();
-
-	if (!res.empty())
-		owner->message(_(res));
-	owner->updateMenubar();
-	owner->updateToolbar();
-
-	return res;
+	string const & msg = getMessage();
+	sendDispatchMessage(msg, action, argument, verbose);
 }
 
 
+void LyXFunc::sendDispatchMessage(string const & msg, kb_action action, string const & arg, bool verbose)
+{
+	owner->updateMenubar();
+	owner->updateToolbar();
+ 
+	if (action == LFUN_SELFINSERT || !verbose) {
+		lyxerr[Debug::ACTION] << "dispatch msg is " << msg << endl;
+		if (!msg.empty())
+			owner->message(msg);
+		return;
+	}
+ 
+	string dispatch_msg(msg);
+	if (!dispatch_msg.empty())
+		dispatch_msg += " ";
+ 
+	string comname = lyxaction.getActionName(action);
+
+	int pseudoaction = action;
+	bool argsadded = false;
+
+	if (!arg.empty()) {
+		// the pseudoaction is useful for the bindings
+		pseudoaction = lyxaction.searchActionArg(action, arg);
+
+		if (pseudoaction == LFUN_UNKNOWN_ACTION) {
+			pseudoaction = action;
+		} else {
+			comname += " " + arg;
+			argsadded = true;
+		}
+	}
+
+	string const shortcuts = toplevel_keymap->findbinding(pseudoaction);
+
+	if (!shortcuts.empty()) {
+		comname += ": " + shortcuts;
+	} else if (!argsadded && !arg.empty()) {
+		comname += " " + arg;
+	}
+
+	if (!comname.empty()) {
+		comname = strip(comname);
+		dispatch_msg += "(" + comname + ')';
+	}
+
+	lyxerr[Debug::ACTION] << "verbose dispatch msg " << dispatch_msg << endl;
+	if (!dispatch_msg.empty())
+		owner->message(dispatch_msg);
+}
+
+ 
 void LyXFunc::setupLocalKeymap()
 {
 	keyseq.stdmap = keyseq.curmap = toplevel_keymap.get();
@@ -1907,48 +1875,21 @@ void LyXFunc::setStatusMessage(string const & m) const
 }
 
 
-void LyXFunc::initMiniBuffer()
+string const LyXFunc::view_status_message()
 {
-	string text = _("Welcome to LyX!");
-
 	// When meta-fake key is pressed, show the key sequence so far + "M-".
 	if (wasMetaKey()) {
-		text = keyseq.print();
-		text += "M-";
+		return keyseq.print() + "M-";
 	}
 
 	// Else, when a non-complete key sequence is pressed,
 	// show the available options.
 	if (keyseq.length() > 0 && !keyseq.deleted()) {
-		text = keyseq.printOptions();
+		return keyseq.printOptions();
 	}
 
-	// Else, show the buffer state.
-	else if (owner->view()->available()) {
-		Buffer * tmpbuf = owner->buffer();
-
-		string const nicename =
-			MakeDisplayPath(tmpbuf->fileName());
-		// Should we do this instead? (kindo like emacs)
-		// leaves more room for other information
-		text = "LyX: ";
-		text += nicename;
-		if (tmpbuf->lyxvc.inUse()) {
-			text += " [";
-			text += tmpbuf->lyxvc.versionString();
-			text += ' ';
-			text += tmpbuf->lyxvc.locker();
-			if (tmpbuf->isReadonly())
-				text += " (RO)";
-			text += ']';
-		} else if (tmpbuf->isReadonly())
-			text += " [RO]";
-		if (!tmpbuf->isLyxClean())
-			text += _(" (Changed)");
-	} else {
-		if (text != _("Welcome to LyX!")) // this is a hack
-			text = _("* No document open *");
-	}
-
-	owner->message(text);
+	if (!owner->view()->available())
+		return _("Welcome to LyX!");
+ 
+	return currentState(owner->view());
 }

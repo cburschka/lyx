@@ -38,22 +38,6 @@ public:
 	/// Displays a text for 6 seconds
 	void message(string const & str);
 	
-	/**
-	 * This will display a message for 6 seconds.
-	 * It will remember the previous text that can be restored
-	 * with messagePop. (You can only remember one message.)
-	 */
-	void messagePush(string const & str);
-	
-	/**
-	 * Restore the previous text that was messagePush'ed.
-	 * for 6 seconds
-	 */
-	void messagePop();
-	
-	/// Adds text to the text already displayed for 6 seconds
-	void addSet(string const &);
-	
 	/** Makes the minibuffer wait for a string to be inserted.
 	    Waits for a string to be inserted into the minibuffer, when
 	    the string has been inserted the signal stringReady is
@@ -126,9 +110,6 @@ protected:
 	/// This is the text for the message display
 	string text;
 	
-	/// This is the last text after a messagePush()
-	string text_stored;
-	
 	/**
 	 * This will emit the timeout signal after a message has been
 	 * displayed for 6 seconds.
@@ -148,4 +129,5 @@ protected:
 	///
 	std::vector<string>::iterator hist_iter;
 };
-#endif
+ 
+#endif // MINIBUFFER_H

@@ -223,7 +223,7 @@ void ToolbarCB(FL_OBJECT * ob, long ac)
 {
 	XFormsView * owner = static_cast<XFormsView *>(ob->u_vdata);
 
-	owner->getLyXFunc()->verboseDispatch(int(ac), true);
+	owner->getLyXFunc()->dispatch(int(ac), true);
 }
 
 

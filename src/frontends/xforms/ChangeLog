@@ -1,3 +1,12 @@
+2002-07-18  John Levon  <moz@compsoc.man.ac.uk>
+
+	* Menubar_pimpl.C: 
+	* Toolbar_pimpl.C: 
+	* lyx_gui.C:
+	* XformsView.C: remove initMiniBuffer(), verboseDispatch()
+
+	* xfont_loader.C: remove call to messagePush(),Pop() 
+
 2002-07-17  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* FormFiledialog.C: Add missing #include

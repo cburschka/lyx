@@ -35,25 +35,16 @@ public:
 	LyXFunc(LyXView *);
 
 	/// LyX dispatcher, executes lyx actions.
-	string const dispatch(kb_action ac, string argument = string());
+	void dispatch(kb_action ac, string argument = string(), bool verbose = false);
 
-	/// The same as dispatch, but also shows shortcuts and command
-	/// name in minibuffer if show_sc is true (more to come?)
-	void verboseDispatch(kb_action action,
-			     string const & argument,
-			     bool show_sc);
+	/// Dispatch via a string argument
+	void dispatch(string const & s, bool verbose = false);
+ 
+	/// Dispatch via a pseudo action, also displaying shortcut/command name
+	void dispatch(int ac, bool verbose = false);
 
-	/// Same as above, using a pseudoaction as argument
-	void verboseDispatch(int ac, bool show_sc);
-
-	/// Same as above, when the command is provided as a string
-	void verboseDispatch(string const & s, bool show_sc);
-
-	///
-	void miniDispatch(string const & s);
-
-	///
-	void initMiniBuffer();
+	/// return the status bar state string
+	string const view_status_message();
 
 	///
 	void processKeySym(LyXKeySymPtr key, key_modifier::state state);
@@ -112,6 +103,9 @@ private:
 	/** Buffer to store messages and result data from getStatus
 	*/
 	mutable string status_buffer;
+
+	/// send a post-dispatch status message
+	void sendDispatchMessage(string const & msg, kb_action ac, string const & arg, bool verbose);
 
 	// I think the following should be moved to BufferView. (Asger)
 

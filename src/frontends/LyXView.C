@@ -127,18 +127,6 @@ void LyXView::message(string const & str)
 }
 
 
-void LyXView::messagePush(string const & str)
-{
-	minibuffer_->messagePush(str);
-}
-
-
-void LyXView::messagePop()
-{
-	minibuffer_->messagePop();
-}
-
-
 Menubar * LyXView::getMenubar() const
 {
 	return menubar_.get();
