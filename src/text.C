@@ -1021,7 +1021,6 @@ int LyXText::fill(RowList::iterator row, int paper_width) const
 			<< " w " << w << " paper_width " << paper_width
 			<< " right margin " << rightMargin(*bv()->buffer(), *row) << endl;
 	}
-
 	return fill;
 }
 
@@ -1390,9 +1389,9 @@ void LyXText::setHeightOfRow(RowList::iterator rit)
 
 	rit->top_of_text(rit->baseline() - font_metrics::maxAscent(font));
 
-	int x = 0;
+	double x = 0;
 	if (layout->margintype != MARGIN_RIGHT_ADDRESS_BOX) {
-		int dummy;
+		double dummy;
 		// this IS needed
 		rit->width(maxwidth);
 		prepareToPrint(rit, x, dummy, dummy, dummy, false);
@@ -1878,13 +1877,13 @@ void LyXText::charInserted()
 }
 
 
-void LyXText::prepareToPrint(RowList::iterator rit, int & x,
-			     int & fill_separator,
-			     int & fill_hfill,
-			     int & fill_label_hfill,
+void LyXText::prepareToPrint(RowList::iterator rit, double & x,
+			     double & fill_separator,
+			     double & fill_hfill,
+			     double & fill_label_hfill,
 			     bool bidi) const
 {
-	int w = rit->fill();
+	double w = rit->fill();
 	fill_hfill = 0;
 	fill_label_hfill = 0;
 	fill_separator = 0;
@@ -1916,7 +1915,7 @@ void LyXText::prepareToPrint(RowList::iterator rit, int & x,
 			++nlh;
 
 		if (nlh && !pit->getLabelWidthString().empty()) {
-			fill_label_hfill = int(labelFill(*rit) / nlh);
+			fill_label_hfill = labelFill(*rit) / double(nlh);
 		}
 	}
 

@@ -494,10 +494,10 @@ public:
 
 	/** this calculates the specified parameters. needed when setting
 	 * the cursor and when creating a visible row */
-	void prepareToPrint(RowList::iterator row, int & x,
-			    int & fill_separator,
-			    int & fill_hfill,
-			    int & fill_label_hfill,
+	void prepareToPrint(RowList::iterator row, double & x,
+			    double & fill_separator,
+			    double & fill_hfill,
+			    double & fill_label_hfill,
 			    bool bidi = true) const;
 
 private:

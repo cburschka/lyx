@@ -1577,10 +1577,10 @@ float LyXText::getCursorX(RowList::iterator rit,
 			  pos_type pos, pos_type last, bool boundary) const
 {
 	pos_type cursor_vpos = 0;
-	int x;
-	int fill_separator;
-	int fill_hfill;
-	int fill_label_hfill;
+	double x;
+	double fill_separator;
+	double fill_hfill;
+	double fill_label_hfill;
 	// This call HAS to be here because of the BidiTables!!!
 	prepareToPrint(rit, x, fill_separator, fill_hfill,
 		       fill_label_hfill);
@@ -1603,8 +1603,8 @@ float LyXText::getCursorX(RowList::iterator rit,
 			? log2vis(pos) : log2vis(pos) + 1;
 
 	pos_type body_pos = rit_par->beginningOfBody();
-	if ((body_pos > 0) &&
-	    ((body_pos - 1 > last) || !rit_par->isLineSeparator(body_pos - 1)))
+	if (body_pos > 0 &&
+	    (body_pos - 1 > last || !rit_par->isLineSeparator(body_pos - 1)))
 		body_pos = 0;
 
 	for (pos_type vpos = rit_pos; vpos < cursor_vpos; ++vpos) {
@@ -1712,10 +1712,10 @@ void LyXText::setCurrentFont()
 pos_type
 LyXText::getColumnNearX(RowList::iterator rit, int & x, bool & boundary) const
 {
-	int tmpx = 0;
-	int fill_separator;
-	int fill_hfill;
-	int fill_label_hfill;
+	double tmpx = 0;
+	double fill_separator;
+	double fill_hfill;
+	double fill_label_hfill;
 
 	prepareToPrint(rit, tmpx, fill_separator, fill_hfill, fill_label_hfill);
 
@@ -1729,7 +1729,7 @@ LyXText::getColumnNearX(RowList::iterator rit, int & x, bool & boundary) const
 	bool left_side = false;
 
 	pos_type body_pos = rit_par->beginningOfBody();
-	int last_tmpx = tmpx;
+	double last_tmpx = tmpx;
 
 	if (body_pos > 0 &&
 	    (body_pos - 1 > last ||

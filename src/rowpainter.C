@@ -75,7 +75,7 @@ private:
 	void paintChangeBar();
 	void paintFirst();
 	void paintLast();
-	void paintForeignMark(int orig_x, LyXFont const & orig_font);
+	void paintForeignMark(double orig_x, LyXFont const & orig_font);
 	void paintHebrewComposeChar(lyx::pos_type & vpos);
 	void paintArabicComposeChar(lyx::pos_type & vpos);
 	void paintChars(lyx::pos_type & vpos, bool hebrew, bool arabic);
@@ -117,15 +117,16 @@ private:
 	mutable ParagraphList::iterator  pit_;
 
 	// Looks ugly - is
-	int xo_;
+	double xo_;
 	int yo_;
-	int x_;
+	double x_;
 	int y_;
 	int width_;
-	int separator_;
-	int hfill_;
-	int label_hfill_;
+	double separator_;
+	double hfill_;
+	double label_hfill_;
 };
+
 
 RowPainter::RowPainter(BufferView const & bv, LyXText const & text,
      RowList::iterator rit,
@@ -181,7 +182,6 @@ void RowPainter::paintInset(pos_type const pos)
 
 	PainterInfo pi(perv(bv_));
 	pi.base.font = getFont(pos);
-#warning metrics?
 	inset->draw(pi, int(x_), yo_ + row_->baseline());
 	x_ += inset->width();
 }
@@ -313,7 +313,7 @@ void RowPainter::paintChars(pos_type & vpos, bool hebrew, bool arabic)
 }
 
 
-void RowPainter::paintForeignMark(int orig_x, LyXFont const & orig_font)
+void RowPainter::paintForeignMark(double orig_x, LyXFont const & orig_font)
 {
 	if (!lyxrc.mark_foreign_language)
 		return;
@@ -333,7 +333,7 @@ void RowPainter::paintFromPos(pos_type & vpos)
 
 	LyXFont const & orig_font = getFont(pos);
 
-	int const orig_x = x_;
+	double const orig_x = x_;
 
 	char const c = pit_->getChar(pos);
 
@@ -372,7 +372,7 @@ void RowPainter::paintFromPos(pos_type & vpos)
 
 void RowPainter::paintBackground()
 {
-	int const x = xo_;
+	int const x = int(xo_);
 	int const y = yo_ < 0 ? 0 : yo_;
 	int const h = yo_ < 0 ? row_->height() + yo_ : row_->height();
 	pain_.fillRectangle(x, y, width_, h, text_.backgroundColor());
@@ -399,45 +399,46 @@ void RowPainter::paintSelection()
 
 		if (startrow == row_ && endrow == row_) {
 			if (startx < endx) {
-				x = xo_ + startx;
+				x = int(xo_) + startx;
 				w = endx - startx;
 				pain_.fillRectangle(x, y, w, h, LColor::selection);
 			} else {
-				x = xo_ + endx;
+				x = int(xo_) + endx;
 				w = startx - endx;
 				pain_.fillRectangle(x, y, w, h, LColor::selection);
 			}
 		} else if (startrow == row_) {
-			int const x = (is_rtl) ? xo_ : (xo_ + startx);
-			int const w = (is_rtl) ? startx : (width_ - startx);
+			int const x = is_rtl ? int(xo_) : int(xo_ + startx);
+			int const w = is_rtl ? startx : (width_ - startx);
 			pain_.fillRectangle(x, y, w, h, LColor::selection);
 		} else if (endrow == row_) {
-			int const x = (is_rtl) ? (xo_ + endx) : xo_;
-			int const w = (is_rtl) ? (width_ - endx) : endx;
+			int const x = is_rtl ? int(xo_ + endx) : int(xo_);
+			int const w = is_rtl ? (width_ - endx) : endx;
 			pain_.fillRectangle(x, y, w, h, LColor::selection);
 		} else if (y_ > starty && y_ < endy) {
-			pain_.fillRectangle(xo_, y, width_, h, LColor::selection);
+			pain_.fillRectangle(int(xo_), y, width_, h, LColor::selection);
 		}
 		return;
 	} else if (startrow != row_ && endrow != row_) {
 		if (y_ > starty && y_ < endy) {
 			int w = width_;
 			int h = row_->height();
-			pain_.fillRectangle(xo_, yo_, w, h, LColor::selection);
+			pain_.fillRectangle(int(xo_), yo_, w, h, LColor::selection);
 		}
 		return;
 	}
 
 	if ((startrow != row_ && !is_rtl) || (endrow != row_ && is_rtl))
-		pain_.fillRectangle(xo_, yo_, int(x_), row_->height(), LColor::selection);
+		pain_.fillRectangle(int(xo_), yo_,
+			int(x_), row_->height(), LColor::selection);
 
 	pos_type const body_pos = pit_->beginningOfBody();
 	pos_type const last = lastPrintablePos(text_, row_);
-	int tmpx = x_;
+	double tmpx = x_;
 
 	for (pos_type vpos = row_->pos(); vpos <= last; ++vpos)  {
 		pos_type pos = text_.vis2log(vpos);
-		int const old_tmpx = tmpx;
+		double const old_tmpx = tmpx;
 		if (body_pos > 0 && pos == body_pos - 1) {
 			LyXLayout_ptr const & layout = pit_->layout();
 			LyXFont const lfont = getLabelFont();
@@ -474,7 +475,7 @@ void RowPainter::paintSelection()
 	}
 
 	if ((startrow != row_ && is_rtl) || (endrow != row_ && !is_rtl)) {
-		pain_.fillRectangle(xo_ + int(tmpx),
+		pain_.fillRectangle(int(xo_ + tmpx),
 				      yo_, int(bv_.workWidth() - tmpx),
 				      row_->height(), LColor::selection);
 	}
@@ -532,7 +533,8 @@ void RowPainter::paintDepthBar()
 		next_depth = next_row->par()->getDepth();
 
 	for (Paragraph::depth_type i = 1; i <= depth; ++i) {
-		int x = (PAPER_MARGIN / 5) * i + xo_;
+		int const w = PAPER_MARGIN / 5;
+		int x = int(w * i + xo_);
 		// only consider the changebar space if we're drawing outer left
 		if (!xo_)
 			x += CHANGEBAR_MARGIN;
@@ -540,14 +542,10 @@ void RowPainter::paintDepthBar()
 
 		pain_.line(x, yo_, x, h, LColor::depthbar);
 
-		int const w = PAPER_MARGIN / 5;
-
-		if (i > prev_depth) {
+		if (i > prev_depth)
 			pain_.fillRectangle(x, yo_, w, 2, LColor::depthbar);
-		}
-		if (i > next_depth) {
+		if (i > next_depth)
 			pain_.fillRectangle(x, h, w, 2, LColor::depthbar);
-		}
 	}
 }
 
@@ -583,7 +581,7 @@ int RowPainter::paintLengthMarker(string const & prefix, VSpace const & vsp, int
 		by2 = added ? end : (end - arrow_size);
 	}
 
-	int const leftx = xo_ + leftMargin();
+	int const leftx = int(xo_) + leftMargin();
 	int const midx = leftx + arrow_size;
 	int const rightx = midx + arrow_size;
 
@@ -625,14 +623,14 @@ int RowPainter::paintPageBreak(string const & label, int y)
 	int d = 0;
 	font_metrics::rectText(label, pb_font, w, a, d);
 
-	int const text_start = xo_ + ((width_ - w) / 2);
+	int const text_start = int(xo_ + (width_ - w) / 2);
 	int const text_end = text_start + w;
 
 	pain_.rectText(text_start, y + d, label, pb_font);
 
-	pain_.line(xo_, y, text_start, y,
+	pain_.line(int(xo_), y, text_start, y,
 		LColor::pagebreak, Painter::line_onoffdash);
-	pain_.line(text_end, y, xo_ + width_, y,
+	pain_.line(text_end, y, int(xo_ + width_), y,
 		LColor::pagebreak, Painter::line_onoffdash);
 
 	return 3 * defaultRowHeight();
@@ -650,13 +648,13 @@ int RowPainter::paintAppendixStart(int y)
 	int d = 0;
 	font_metrics::rectText(label, pb_font, w, a, d);
 
-	int const text_start = xo_ + ((width_ - w) / 2);
+	int const text_start = int(xo_ + (width_ - w) / 2);
 	int const text_end = text_start + w;
 
 	pain_.rectText(text_start, y + d, label, pb_font);
 
-	pain_.line(xo_ + 1, y, text_start, y, LColor::appendix);
-	pain_.line(text_end, y, xo_ + width_ - 2, y, LColor::appendix);
+	pain_.line(int(xo_ + 1), y, text_start, y, LColor::appendix);
+	pain_.line(text_end, y, int(xo_ + width_ - 2), y, LColor::appendix);
 
 	return 3 * defaultRowHeight();
 }
@@ -669,19 +667,17 @@ void RowPainter::paintFirst()
 	int y_top = 0;
 
 	// start of appendix?
-	if (parparams.startOfAppendix()) {
+	if (parparams.startOfAppendix())
 		y_top += paintAppendixStart(yo_ + y_top + 2 * defaultRowHeight());
-	}
 
 	// the top margin
 	if (row_ == text_.rows().begin() && !text_.isInInset())
 		y_top += PAPER_MARGIN;
 
 	// draw a top pagebreak
-	if (parparams.pagebreakTop()) {
+	if (parparams.pagebreakTop())
 		y_top += paintPageBreak(_("Page Break (top)"),
 			yo_ + y_top + 2 * defaultRowHeight());
-	}
 
 	// draw the additional space if needed:
 	y_top += paintLengthMarker(_("Space above"), parparams.spaceTop(),
@@ -735,7 +731,7 @@ void RowPainter::paintFirst()
 
 		LyXFont font = getLabelFont();
 		if (!pit_->getLabelstring().empty()) {
-			int x = x_;
+			double x = x_;
 			string const str = pit_->getLabelstring();
 
 			// this is special code for the chapter layout. This is
@@ -759,7 +755,7 @@ void RowPainter::paintFirst()
 							font_metrics::width(str, font);
 					}
 
-					pain_.text(x,
+					pain_.text(int(x),
 						yo_ + row_->baseline() -
 						row_->ascent_of_text() - maxdesc,
 						str, font);
@@ -773,7 +769,7 @@ void RowPainter::paintFirst()
 						- font_metrics::width(str, font);
 				}
 
-				pain_.text(x, yo_ + row_->baseline(), str, font);
+				pain_.text(int(x), yo_ + row_->baseline(), str, font);
 			}
 		}
 
@@ -797,7 +793,7 @@ void RowPainter::paintFirst()
 				int(font_metrics::maxDescent(font) * layout->spacing.getValue() * spacing_val
 				+ (layout->labelbottomsep * defaultRowHeight()));
 
-			int x = x_;
+			double x = x_;
 			if (layout->labeltype == LABEL_CENTERED_TOP_ENVIRONMENT) {
 				x = ((is_rtl ? leftMargin() : x_)
 					 + ww - text_.rightMargin(*bv_.buffer(), *row_)) / 2;
@@ -806,8 +802,8 @@ void RowPainter::paintFirst()
 				x = ww - leftMargin() -
 					font_metrics::width(str, font);
 			}
-			pain_.text(x, yo_ + row_->baseline()
-				  - row_->ascent_of_text() - maxdesc,
+			pain_.text(int(x),
+			    yo_ + row_->baseline() - row_->ascent_of_text() - maxdesc,
 				  str, font);
 		}
 	}
@@ -844,7 +840,7 @@ void RowPainter::paintLast()
 		y_bottom -= asc;
 
 		int const w = text_.isInInset() ? text_.inset_owner->width() : ww;
-		int const xp = static_cast<int>(text_.isInInset() ? xo_ : 0);
+		int const xp = int(text_.isInInset() ? xo_ : 0);
 		int const y = yo_ + y_bottom;
 		pain_.line(xp, y, xp + w, y, LColor::topline, Painter::line_solid,
 			  Painter::line_thick);
@@ -868,21 +864,20 @@ void RowPainter::paintLast()
 		if (row_->fill() <= size)
 			x += (size - row_->fill() + 1) * (is_rtl ? -1 : 1);
 
-		if (endlabel == END_LABEL_BOX) {
+		if (endlabel == END_LABEL_BOX)
 			pain_.rectangle(x, y, size, size, LColor::eolmarker);
-		} else {
+		else
 			pain_.fillRectangle(x, y, size, size, LColor::eolmarker);
-		}
 		break;
 	}
 	case END_LABEL_STATIC:
 	{
 		LyXFont font = getLabelFont();
 		string const & str = pit_->layout()->endlabelstring();
-		int const x = is_rtl ?
+		double const x = is_rtl ?
 			x_ - font_metrics::width(str, font)
 			: ww - text_.rightMargin(*bv_.buffer(), *row_) - row_->fill();
-		pain_.text(x, yo_ + row_->baseline(), str, font);
+		pain_.text(int(x), yo_ + row_->baseline(), str, font);
 		break;
 	}
 	case END_LABEL_NO_LABEL:
@@ -896,8 +891,7 @@ void RowPainter::paintText()
 	pos_type const last = lastPrintablePos(text_, row_);
 	pos_type body_pos = pit_->beginningOfBody();
 	if (body_pos > 0 &&
-		(body_pos - 1 > last ||
-		!pit_->isLineSeparator(body_pos - 1))) {
+		(body_pos - 1 > last || !pit_->isLineSeparator(body_pos - 1))) {
 		body_pos = 0;
 	}
 
@@ -928,7 +922,7 @@ void RowPainter::paintText()
 
 		if (is_struckout && !running_strikeout) {
 			running_strikeout = true;
-			last_strikeout_x = x_;
+			last_strikeout_x = int(x_);
 		}
 
 		bool const highly_editable_inset = pit_->isInset(pos)
@@ -938,8 +932,8 @@ void RowPainter::paintText()
 		// we also don't paint across things like tables
 		if (running_strikeout && (highly_editable_inset || !is_struckout)) {
 			int const middle = yo_ + row_->top_of_text()
-				+ ((row_->baseline() - row_->top_of_text()) / 2);
-			pain_.line(last_strikeout_x, middle, x_, middle,
+				+ (row_->baseline() - row_->top_of_text()) / 2;
+			pain_.line(last_strikeout_x, middle, int(x_), middle,
 				LColor::strikeout, Painter::line_solid, Painter::line_thin);
 			running_strikeout = false;
 		}
@@ -957,24 +951,23 @@ void RowPainter::paintText()
 			int const y0 = yo_ + row_->baseline();
 			int const y1 = y0 - defaultRowHeight() / 2;
 
-			pain_.line(x_, y1, x_, y0, LColor::added_space);
+			pain_.line(int(x_), y1, int(x_), y0, LColor::added_space);
 
 			if (hfillExpansion(text_, row_, pos)) {
 				int const y2 = (y0 + y1) / 2;
 
 				if (pos >= body_pos) {
-					pain_.line(x_, y2, x_ + hfill_, y2,
+					pain_.line(int(x_), y2, int(x_ + hfill_), y2,
 						  LColor::added_space,
 						  Painter::line_onoffdash);
 					x_ += hfill_;
 				} else {
-					pain_.line(x_, y2,
-						  x_ + label_hfill_, y2,
+					pain_.line(int(x_), y2, int(x_ + label_hfill_), y2,
 						  LColor::added_space,
 						  Painter::line_onoffdash);
 					x_ += label_hfill_;
 				}
-				pain_.line(x_, y1, x_, y0, LColor::added_space);
+				pain_.line(int(x_), y1, int(x_), y0, LColor::added_space);
 			}
 			x_ += 2;
 			++vpos;
@@ -992,11 +985,10 @@ void RowPainter::paintText()
 	if (running_strikeout) {
 		int const middle = yo_ + row_->top_of_text()
 			+ ((row_->baseline() - row_->top_of_text()) / 2);
-		pain_.line(last_strikeout_x, middle, x_, middle,
+		pain_.line(last_strikeout_x, middle, int(x_), middle,
 			LColor::strikeout, Painter::line_solid, Painter::line_thin);
 		running_strikeout = false;
 	}
-	return;
 }
 
 
@@ -1019,9 +1011,8 @@ void RowPainter::paint()
 		paintBackground();
 
 	// paint the selection background
-	if (text_.selection.set()) {
+	if (text_.selection.set())
 		paintSelection();
-	}
 
 	// vertical lines for appendix
 	paintAppendix();
@@ -1032,13 +1023,11 @@ void RowPainter::paint()
 	// changebar
 	paintChangeBar();
 
-	if (row_->isParStart()) {
+	if (row_->isParStart())
 		paintFirst();
-	}
 
-	if (isParEnd(text_, row_)) {
+	if (isParEnd(text_, row_))
 		paintLast();
-	}
 
 	// paint text
 	paintText();
