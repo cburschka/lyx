@@ -1,5 +1,11 @@
 2002-08-15  Angus Leeming  <leeming@lyx.org>
 
+	* ControlConnections.C: Dialogs::redrawGUI is now a method not a signal.
+
+	* ControlParagraph.C: no longer bind to Dailogs::updateParagraph.
+
+2002-08-15  Angus Leeming  <leeming@lyx.org>
+
 	* lots: changed my email address to leeming@lyx.org.
 
 	* GUI.h: return it to private derivation from boost::noncopyable.

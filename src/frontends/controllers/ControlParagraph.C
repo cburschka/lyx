@@ -24,22 +24,16 @@
 #include "lyxtext.h"
 #include "ParagraphParameters.h"
 
-#include "frontends/Dialogs.h"
 #include "frontends/Liason.h"
 
 #include "support/LAssert.h"
-
-#include <boost/bind.hpp>
 
 using Liason::setMinibuffer;
 
 
 ControlParagraph::ControlParagraph(LyXView & lv, Dialogs & d)
 	: ControlDialogBD(lv, d), pp_(0), ininset_(false)
-{
-	d_.updateParagraph.connect(
-		boost::bind(&ControlParagraph::changedParagraph, this));
-}
+{}
 
 
 ControlParagraph::~ControlParagraph()

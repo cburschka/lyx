@@ -16,13 +16,11 @@
 #include "LString.h"
 
 #include <boost/utility.hpp>
-#include <boost/shared_ptr.hpp>
+#include <boost/scoped_ptr.hpp>
 #include <boost/signals/signal0.hpp>
 #include <boost/signals/signal1.hpp>
 
-// Maybe this should be a UIFunc modelled on LyXFunc
 class LyXView;
-
 class InsetBibKey;
 class InsetBibtex;
 class InsetCommand;
@@ -45,16 +43,20 @@ class Dialogs : boost::noncopyable
 {
 public:
 	///
-	typedef boost::shared_ptr<boost::noncopyable> db_ptr;
-	///
-	Dialogs(LyXView *);
+	Dialogs(LyXView &);
+	/// Define an empty d-tor out-of-line to keep boost::scoped_ptr happy.
+	~Dialogs();
 
 	/** Redraw all visible dialogs because, for example, the GUI colours
-	    have been re-mapped. */
-	boost::signal0<void> redrawGUI;
+	 *  have been re-mapped.
+	 *
+	 *  Note that static boost signals break some compilers, so we return a
+	 *  reference to some hidden magic ;-)
+	 */
+	static boost::signal0<void> & redrawGUI();
 
 	/// Toggle tooltips on/off in all dialogs.
-	boost::signal0<void> toggleTooltips;
+	static void toggleTooltips();
 
 	/// Are the tooltips on or off?
 	static bool tooltipsEnabled();
@@ -126,7 +128,7 @@ public:
 	///
 	void showParagraph();
 	///
-	boost::signal0<void>  updateParagraph;
+	void updateParagraph();
 	///
 	void showPreamble();
 	///
@@ -164,6 +166,12 @@ public:
 	/// show the version control log
 	void showVCLogFile();
 	//@}
+
+private:
+        /// Use the Pimpl idiom to hide the internals.
+        class Impl;
+        /// The pointer never changes although *pimpl_'s contents may.
+        boost::scoped_ptr<Impl> const pimpl_;
 };
 
 #endif

@@ -67,7 +67,7 @@ XFormsView::XFormsView(int width, int height)
 
 	// Make sure the buttons are disabled if needed.
 	updateToolbar();
-	redraw_con = getDialogs().redrawGUI.connect(boost::bind(&XFormsView::redraw, this));
+	redraw_con = getDialogs().redrawGUI().connect(boost::bind(&XFormsView::redraw, this));
 }
 
 

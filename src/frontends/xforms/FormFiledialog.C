@@ -416,7 +416,7 @@ FileDialog::Private::Private(Dialogs & dia)
 	fl_hide_object(file_dlg_form_->User1);
 	fl_hide_object(file_dlg_form_->User2);
 
-	r_ = dia.redrawGUI.connect(boost::bind(&FileDialog::Private::redraw, this));
+	r_ = dia.redrawGUI().connect(boost::bind(&FileDialog::Private::redraw, this));
 }
 
 

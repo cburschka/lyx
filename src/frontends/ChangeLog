@@ -1,3 +1,12 @@
+2002-08-15  Angus Leeming  <leeming@lyx.org>
+
+	* Dialogs.[Ch]:
+	* guiapi.[Ch]: the brave new world of Dialog creation.
+
+	* LyXView.C: associated change.
+
+	* Makefile.am: add new file guiapi.C.
+
 2002-08-13  Angus Leeming  <leeming@lyx.org>
 
 	* DialogBase.h: removed.

@@ -48,5 +48,4 @@ GUI<Controller, GUIview, Policy, GUIbc>::GUI(LyXView & lv, Dialogs & d)
 	view_.setController(controller_);
 }
 
-
 #endif // GUI_H

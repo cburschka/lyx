@@ -69,7 +69,7 @@ void FormBaseDeprecated::redraw()
 void FormBaseDeprecated::connect()
 {
 	fl_set_form_minsize(form(), minw_, minh_);
-	r_ = d_.redrawGUI.connect(boost::bind(&FormBaseDeprecated::redraw, this));
+	r_ = d_.redrawGUI().connect(boost::bind(&FormBaseDeprecated::redraw, this));
 }
 
 

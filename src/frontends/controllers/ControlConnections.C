@@ -8,7 +8,7 @@
  * ======================================================
  *
  * \file ControlConnections.C
- * \author Angus Leeming <a.leeming@ic.ac.uk>
+ * \author Angus Leeming <leeming@lyx.org>
  */
 
 #include <config.h>
@@ -36,7 +36,7 @@ ControlConnectBase::ControlConnectBase(LyXView & lv, Dialogs & d)
 
 void ControlConnectBase::connect()
 {
-	r_ = d_.redrawGUI.
+	r_ = d_.redrawGUI().
 		connect(boost::bind(&ControlConnectBase::redraw, this));
 }
 

@@ -1,5 +1,21 @@
 2002-08-15  Angus Leeming  <leeming@lyx.org>
 
+	* Dialogs.C:
+	* Dialogs2.C
+	* Dialogs3.C
+	* Dialogs_impl.h: the brave new world of Dialog creation.
+
+	* FormBaseDeprecated.C:
+	* FormFiledialog.C:
+	* XFormsView.C: Dialogs::redrawGUI is now a method not a signal.
+
+	* guiapi.C: discard.
+
+	* Makefile.am: add new files Dialogs[23].C Dialogs_impl.h and
+	remove guiapi.C.
+
+2002-08-15  Angus Leeming  <leeming@lyx.org>
+
 	* lots: changed my email address to leeming@lyx.org.
 
 	* FormBaseDeprecated.[Ch]: return it to private derivation from
