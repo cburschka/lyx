@@ -170,7 +170,7 @@ char const * simplefeatures[] = {
 	"varioref",
 	"prettyref",
 	"float",
-	"wasy"
+	"wasysym"
 };
 
 const int nb_simplefeatures = sizeof(simplefeatures) / sizeof(char const *);

@@ -1,5 +1,7 @@
 2005-01-19  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
+	* math_symbolinset.C (validate): require wasysym as needed
+
 	* math_decorationinset.C (validate): do not forget to call
 	validate on the contents of the inset.
 
