@@ -296,9 +296,9 @@ private:
 	///
 	void removeNewlines();
 	///
-	int cx(BufferView *) const;
+	int cx() const;
 	///
-	int cix(BufferView *) const;
+	int cix() const;
 	///
 	int cy() const;
 	///

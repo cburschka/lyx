@@ -333,7 +333,7 @@ void InsetText::draw(PainterInfo & pi, int x, int baseline) const
 	}
 
 	if (the_locking_inset && cpar() == inset_par && cpos() == inset_pos) {
-		inset_x = cix(bv) - x + drawTextXOffset;
+		inset_x = cix() - x + drawTextXOffset;
 		inset_y = ciy() + drawTextYOffset;
 	}
 
@@ -518,7 +518,7 @@ void InsetText::lockInset(BufferView * bv)
 void InsetText::lockInset(BufferView * bv, UpdatableInset * inset)
 {
 	the_locking_inset = inset;
-	inset_x = cix(bv) - top_x + drawTextXOffset;
+	inset_x = cix() - top_x + drawTextXOffset;
 	inset_y = ciy() + drawTextYOffset;
 	inset_pos = cpos();
 	inset_par = cpar();
@@ -571,7 +571,7 @@ bool InsetText::lockInsetInInset(BufferView * bv, UpdatableInset * inset)
 	if (the_locking_inset && the_locking_inset == inset) {
 		if (cpar() == inset_par && cpos() == inset_pos) {
 			lyxerr[Debug::INSETS] << "OK" << endl;
-			inset_x = cix(bv) - top_x + drawTextXOffset;
+			inset_x = cix() - top_x + drawTextXOffset;
 			inset_y = ciy() + drawTextYOffset;
 		} else {
 			lyxerr[Debug::INSETS] << "cursor.pos != inset_pos" << endl;
@@ -641,7 +641,7 @@ bool InsetText::updateInsetInInset(BufferView * bv, InsetOld * inset)
 		if (the_locking_inset &&
 		    cpar() == inset_par && cpos() == inset_pos)
 		{
-			inset_x = cix(bv) - top_x + drawTextXOffset;
+			inset_x = cix() - top_x + drawTextXOffset;
 			inset_y = ciy() + drawTextYOffset;
 		}
 	}
@@ -1498,7 +1498,7 @@ void InsetText::getCursor(BufferView & bv, int & x, int & y) const
 		the_locking_inset->getCursor(bv, x, y);
 		return;
 	}
-	x = cx(&bv);
+	x = cx();
 	y = cy() + InsetText::y();
 }
 
@@ -1509,7 +1509,7 @@ void InsetText::getCursorPos(BufferView * bv, int & x, int & y) const
 		the_locking_inset->getCursorPos(bv, x, y);
 		return;
 	}
-	x = cx(bv) - top_x - TEXT_TO_INSET_OFFSET;
+	x = cx() - top_x - TEXT_TO_INSET_OFFSET;
 	y = cy() - TEXT_TO_INSET_OFFSET;
 }
 
@@ -1535,7 +1535,7 @@ void InsetText::fitInsetCursor(BufferView * bv) const
 	int const asc = font_metrics::maxAscent(font);
 	int const desc = font_metrics::maxDescent(font);
 
-	if (bv->fitLockedInsetCursor(cx(bv), cy(), asc, desc))
+	if (bv->fitLockedInsetCursor(cx(), cy(), asc, desc))
 		need_update |= FULL;
 }
 
@@ -1760,7 +1760,7 @@ bool InsetText::checkAndActivateInset(BufferView * bv, int x, int y,
 		x = dim_.wid;
 	if (y < 0)
 		y = dim_.des;
-	inset_x = cix(bv) - top_x + drawTextXOffset;
+	inset_x = cix() - top_x + drawTextXOffset;
 	inset_y = ciy() + drawTextYOffset;
 	FuncRequest cmd(bv, LFUN_INSET_EDIT, x - inset_x, y - inset_y, button);
 	inset->localDispatch(cmd);
@@ -1848,7 +1848,7 @@ void InsetText::setFrameColor(BufferView * bv, LColor::color col)
 }
 
 
-int InsetText::cx(BufferView *) const
+int InsetText::cx() const
 {
 	int x = text_.cursor.x() + top_x + TEXT_TO_INSET_OFFSET;
 	if (the_locking_inset) {
@@ -1860,7 +1860,7 @@ int InsetText::cx(BufferView *) const
 }
 
 
-int InsetText::cix(BufferView *) const
+int InsetText::cix() const
 {
 	int x = text_.cursor.ix() + top_x + TEXT_TO_INSET_OFFSET;
 	if (the_locking_inset) {
@@ -1965,7 +1965,7 @@ void InsetText::resizeLyXText(BufferView * bv, bool /*force*/) const
 	// seems to be unneeded
 #if 1
 	if (the_locking_inset) {
-		inset_x = cix(bv) - top_x + drawTextXOffset;
+		inset_x = cix() - top_x + drawTextXOffset;
 		inset_y = ciy() + drawTextYOffset;
 	}
 
@@ -1997,7 +1997,7 @@ void InsetText::reinitLyXText() const
 	text_.init(bv);
 	restoreLyXTextState();
 	if (the_locking_inset) {
-		inset_x = cix(bv) - top_x + drawTextXOffset;
+		inset_x = cix() - top_x + drawTextXOffset;
 		inset_y = ciy() + drawTextYOffset;
 	}
 	text_.top_y(bv->screen().topCursorVisible(&text_));
@@ -2211,8 +2211,9 @@ bool InsetText::searchForward(BufferView * bv, string const & str,
 		text_.setSelectionRange(str.length());
 		updateLocal(bv, SELECTION, false);
 	}
-	return (result != lyx::find::SR_NOT_FOUND);
+	return result != lyx::find::SR_NOT_FOUND;
 }
+
 
 bool InsetText::searchBackward(BufferView * bv, string const & str,
 			       bool cs, bool mw)
@@ -2242,7 +2243,7 @@ bool InsetText::searchBackward(BufferView * bv, string const & str,
 		text_.setSelectionRange(str.length());
 		updateLocal(bv, SELECTION, false);
 	}
-	return (result != lyx::find::SR_NOT_FOUND);
+	return result != lyx::find::SR_NOT_FOUND;
 }
 
 
