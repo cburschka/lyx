@@ -185,8 +185,7 @@ DebugStream::~DebugStream()
 {
 	delete nullstream.rdbuf(0); // Without this we leak
 	delete rdbuf(0);            // Without this we leak
-	if (internal) // DEL LINE
-		delete internal;
+	delete internal;
 }
 
 

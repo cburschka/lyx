@@ -34,6 +34,7 @@
 #include "gettext.h"
 #include "BufferView.h"
 #include "LyXView.h"
+#include "lyxrow.h"
 
 #define FIX_DOUBLE_SPACE 1
 
@@ -1619,25 +1620,25 @@ void LyXText::SetCounter(LyXParagraph * par) const
 
 			switch (par->enumdepth) {
 			case 1:
-				if (GetParDirection(par) == LYX_DIR_LEFT_TO_RIGHT)
+				if (par->getParDirection() == LYX_DIR_LEFT_TO_RIGHT)
 					sprintf(s, "(%c)", ((number-1) % 26) + 'a');
 				else
 					sprintf(s, "(%c)", hebrew[(number-1) % 22]);
 				break;
 			case 2:
-				if (GetParDirection(par) == LYX_DIR_LEFT_TO_RIGHT)
+				if (par->getParDirection() == LYX_DIR_LEFT_TO_RIGHT)
 					sprintf(s, "%s.", roman[(number-1) % 20]);
 				else
 					sprintf(s, ".%s", roman[(number-1) % 20]);
 				break;
 			case 3:
-				if (GetParDirection(par) == LYX_DIR_LEFT_TO_RIGHT)
+				if (par->getParDirection() == LYX_DIR_LEFT_TO_RIGHT)
 					sprintf(s, "%c.", ((number-1) % 26) + 'A');
 				else
 					sprintf(s, ".%c", ((number-1) % 26) + 'A');
 				break;
 			default:
-				if (GetParDirection(par) == LYX_DIR_LEFT_TO_RIGHT)
+				if (par->getParDirection() == LYX_DIR_LEFT_TO_RIGHT)
 					sprintf(s, "%d.", number);
 				else
 					sprintf(s, ".%d", number);	
@@ -1669,27 +1670,27 @@ void LyXText::SetCounter(LyXParagraph * par) const
 			if (par->footnoteflag != LyXParagraph::NO_FOOTNOTE
 			    && (par->footnotekind == LyXParagraph::FIG
 				|| par->footnotekind == LyXParagraph::WIDE_FIG))
-				if (GetParDirection(par) == LYX_DIR_LEFT_TO_RIGHT)
+				if (par->getParDirection() == LYX_DIR_LEFT_TO_RIGHT)
 					s = "Figure:";
 				else
 					s = ":רויא";
 			else if (par->footnoteflag != LyXParagraph::NO_FOOTNOTE
 				 && (par->footnotekind == LyXParagraph::TAB
 				     || par->footnotekind == LyXParagraph::WIDE_TAB))
-				if (GetParDirection(par) == LYX_DIR_LEFT_TO_RIGHT)
+				if (par->getParDirection() == LYX_DIR_LEFT_TO_RIGHT)
 					s = "Table:";
 				else
 					s = ":הלבט";
 			else if (par->footnoteflag != LyXParagraph::NO_FOOTNOTE
 				 && par->footnotekind == LyXParagraph::ALGORITHM)
-				if (GetParDirection(par) == LYX_DIR_LEFT_TO_RIGHT)
+				if (par->getParDirection() == LYX_DIR_LEFT_TO_RIGHT)
 					s = "Algorithm:";
 				else
 					s = ":םתירוגלא";
 			else {
 				/* par->SetLayout(0); 
 				   s = layout->labelstring;  */
-				if (GetParDirection(par) == LYX_DIR_LEFT_TO_RIGHT)
+				if (par->getParDirection() == LYX_DIR_LEFT_TO_RIGHT)
 					s = "Senseless: ";
 				else
 					s = " :תועמשמ רסח";
@@ -2328,17 +2329,6 @@ void LyXText::PasteSelection()
 		while (lastbuffer->Next())
 			lastbuffer = lastbuffer->Next();
      
-		// find the physical end of the buffer
-#ifdef WITH_WARNINGS
-#warning Explain this please.
-#endif
-#if 0
-		// Can someone explain to be why this is done a second time?
-		// (Lgb)
-		lastbuffer = simple_cut_buffer;
-		while (lastbuffer->Next())
-			lastbuffer = lastbuffer->Next();
-#endif 
 #ifndef FIX_DOUBLE_SPACE
 		// Please break behind a space, if there is one. The space 
 		// should be copied too.
@@ -2965,7 +2955,7 @@ void LyXText::SetCursorIntern(LyXParagraph * par,
 			current_font = cursor.par->GetFontSettings(cursor.pos);
 			real_current_font = GetFont(cursor.par, cursor.pos);
 			if (pos == 0 && par->size() == 0 
-			    && GetDocumentDirection() == LYX_DIR_RIGHT_TO_LEFT) {
+			    && current_view->buffer()->params.getDocumentDirection() == LYX_DIR_RIGHT_TO_LEFT) {
 				current_font.setDirection(LyXFont::RTL_DIR);
 				real_current_font.setDirection(LyXFont::RTL_DIR);
 			}
@@ -2987,8 +2977,10 @@ void LyXText::SetCursorIntern(LyXParagraph * par,
 	if (row->pos > last)
 		cursor_vpos = 0;
 	else if (pos <= last ) {
-		LyXDirection letter_direction = GetLetterDirection(row->par, pos);
-		LyXDirection font_direction = GetFontDirection(real_current_font);
+		LyXDirection letter_direction =
+			row->par->getLetterDirection(pos);
+		LyXDirection font_direction =
+			real_current_font.getFontDirection();
 		if (letter_direction == font_direction || pos == 0)
 			cursor_vpos = (letter_direction == LYX_DIR_LEFT_TO_RIGHT)
 				? log2vis(pos) : log2vis(pos)+1;
@@ -2996,7 +2988,7 @@ void LyXText::SetCursorIntern(LyXParagraph * par,
 			cursor_vpos = (font_direction == LYX_DIR_LEFT_TO_RIGHT)
 				? log2vis(pos-1)+1 : log2vis(pos-1);
 	} else
-		cursor_vpos = (GetLetterDirection(row->par, last) == LYX_DIR_LEFT_TO_RIGHT)
+		cursor_vpos = (row->par->getLetterDirection(last) == LYX_DIR_LEFT_TO_RIGHT)
 			? log2vis(last)+1 : log2vis(last);
 
 	/* table stuff -- begin*/
@@ -3375,16 +3367,6 @@ void LyXText::DeleteEmptyParagraphMechanism(LyXCursor const & old_cursor) const
 			}
 		}
 	}
-#if 0
-	else if (cursor.par->table && (cursor.row != old_cursor.row)) {
-		int cell = NumberOfCell(old_cursor.par, old_cursor.pos);
-		if (old_cursor.par->table->IsContRow(cell) &&
-		    IsEmptyTableRow(old_cursor)) {
-			RemoveTableRow(const_cast<LyXCursor*>(&old_cursor));
-			RedoParagraph();
-		}
-	}
-#endif
 }
 
 
@@ -3742,40 +3724,6 @@ void LyXText::RemoveTableRow(LyXCursor * cur) const
 	cur->par->table->DeleteRow(cell_org);
 	return;
 }
-
-
-#if 0
-bool LyXText::IsEmptyTableRow(LyXCursor const & old_cursor) const
-{
-	if (!old_cursor.par->table)
-		return false;
-#ifdef I_DONT_KNOW_IF_I_SHOULD_DO_THIS
-	int pos = old_cursor.pos;
-	int cell = NumberOfCell(old_cursor.par, pos);
-	
-	// search first charater of this table row
-	while (pos && !old_cursor.par->table->IsFirstCell(cell)) {
-		--pos;
-		while (pos && !old_cursor.par->IsNewline(pos-1))
-			--pos;
-		--cell;
-	}
-	if (!old_cursor.par->IsNewline(pos))
-		return false;
-	++cell;
-	++pos;
-	while ((pos < old_cursor.par->Last()) &&
-	       !old_cursor.par->table->IsFirstCell(cell)) {
-		if (!old_cursor.par->IsNewline(pos))
-			return false;
-		++pos;
-		++cell;
-	}
-	return true;
-#endif
-	return false;
-}
-#endif
 
 
 bool LyXText::IsEmptyTableCell() const

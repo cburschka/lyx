@@ -87,15 +87,14 @@ struct isp_result {
 	int flag;
 	int count;
 	string str;
-	char **misses;
+	char ** misses;
 	isp_result() {
 		flag = ISP_UNKNOWN;
 		count = 0;
 		misses = static_cast<char**>(0);
 	}
 	~isp_result() {
-		if (misses) // DEL LINE
-			delete[] misses;
+		delete[] misses;
 	}
 };
 

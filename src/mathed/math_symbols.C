@@ -157,11 +157,10 @@ BitmapMenu::BitmapMenu(int n,  FL_OBJECT * bt, BitmapMenu * prevx): nb(n)
 
 BitmapMenu::~BitmapMenu()
 {
- if (next) // DEL LINE
-	 delete next;
- if (form->visible) Hide();
- fl_free_form(form);  
- delete[] bitmap;
+	delete next;
+	if (form->visible) Hide();
+	fl_free_form(form);  
+	delete[] bitmap;
 }
 
 

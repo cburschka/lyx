@@ -4,8 +4,8 @@
 * 
 *           LyX, The Document Processor
 *        
-*           Copyright (C) 1995 Matthias Ettrich
-*           Copyright (C) 1995-1999 the LyX Team.
+*           Copyright 1995 Matthias Ettrich
+*           Copyright 1995-2000 the LyX Team.
 *
 * ====================================================== */
 
@@ -35,14 +35,14 @@ struct LaTeXFeatures {
 	///
 	LaTeXFeatures(int n) ;
 	/// The packaes needed by the document
-	string getPackages(BufferParams const &params);
+	string getPackages(BufferParams const & params);
 	/// The macros definitions needed by the document
-	string getMacros(BufferParams const &params);
+	string getMacros(BufferParams const & params);
 	/// The definitions needed by the document's textclass
-	string getTClassPreamble(BufferParams const &params);
+	string getTClassPreamble(BufferParams const & params);
 
 	///
-	void showStruct(BufferParams &params);
+	void showStruct(BufferParams const & params);
 
 	//@Man: Packages
 	//@{

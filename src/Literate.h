@@ -2,8 +2,10 @@
 /* This file is part of
  * ====================================================== 
  * 
- *           LyX, The Document Processor 	 
- *	     Copyright (C) 1995 Matthias Ettrich
+ *           LyX, The Document Processor
+ *
+ *           Copyright 1995 Matthias Ettrich
+ *           Copyright 1995-2000 The LyX Team.
  *
  * ====================================================== 
  */
@@ -30,8 +32,6 @@ public:
 
         /// runs literate and build
         int build(TeXErrors &, MiniBuffer *);
-
-
 private:
         ///
         int scanLiterateLogFile();

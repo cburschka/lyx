@@ -5,7 +5,7 @@
  *           LyX, The Document Processor
  *        
  *           Copyright 1995 Matthias Ettrich
- *           Copyright 1995-1999 The LyX Team.
+ *           Copyright 1995-2000 The LyX Team.
  *
  * ====================================================== */
 
@@ -36,14 +36,12 @@ public:
 		Other
 	};
 	///
-	Spacing()
-	{
+	Spacing() {
 		space = Single;
 		value = getValue();
 	}
 	///
-	float getValue() const
-	{
+	float getValue() const {
 		switch(space) {
 		case Single: return 1.0;
 		case Onehalf: return 1.25;
@@ -53,13 +51,11 @@ public:
 		return 1.0;
 	}
 	///
-	Spacing::Space getSpace() const
-	{
+	Spacing::Space getSpace() const {
 		return space;
 	}
 	///
-	void set(Spacing::Space sp, float val = 1.0)
-	{
+	void set(Spacing::Space sp, float val = 1.0) {
 		space = sp;
 		if (sp == Other) {
 			switch(int(val * 1000 + 0.5)) {
@@ -71,8 +67,7 @@ public:
 		}
 	}
 	///
-	void set(Spacing::Space sp, char const * val)
-	{
+	void set(Spacing::Space sp, char const * val) {
 		float fval;
 #ifdef HAVE_SSTREAM
 		istringstream istr(val);
@@ -85,8 +80,7 @@ public:
 	///
 	void writeFile(ostream &);
 	///
-	friend bool operator!=(Spacing const & a, Spacing const & b)
-	{
+	friend bool operator!=(Spacing const & a, Spacing const & b) {
 		if (a.space == b.space && a.getValue() == b.getValue())
 			return false;
 		return true;

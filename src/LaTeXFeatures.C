@@ -238,7 +238,7 @@ string LaTeXFeatures::getTClassPreamble(BufferParams const & params)
 }	
 
 
-void LaTeXFeatures::showStruct(BufferParams & params) {
+void LaTeXFeatures::showStruct(BufferParams const & params) {
 	lyxerr << "LyX needs the following commands when LaTeXing:"
 	// packs
 	       << "\n***** Packages:" << getPackages(params)

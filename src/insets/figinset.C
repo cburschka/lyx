@@ -67,20 +67,10 @@ using std::flush;
 #include "support/lyxlib.h"
 
 extern BufferView * current_view;
-#if 0
-static volatile bool alarmed;
-#endif
 extern FL_OBJECT * figinset_canvas;
-#if 0
-//inline
-extern "C" void waitalarm(int)
-{
-	alarmed = true;
-}
-#endif
 
 extern char ** environ; // is this only redundtant on linux systems? Lgb.
-extern void UpdateInset(Inset * inset, bool mark_dirty = true);
+extern void UpdateInset(BufferView *, Inset * inset, bool mark_dirty = true);
 // better for asyncron updating:
 void PutInsetIntoInsetUpdateList(Inset * inset);
 extern void ProhibitInput();
@@ -452,19 +442,6 @@ int FindBmpIndex(figdata * tmpdata)
 }
 
 
-static void chpixmap(Pixmap, int, int)
-{
-#if 0
-	Display * tempdisp = XOpenDisplay(XDisplayName(0));
-
-	// here read the pixmap and change all colors to those we
-	// have allocated
-
-	XCloseDisplay(tempdisp);
-#endif
-}
-
-
 static void freefigdata(figdata * tmpdata)
 {
 	tmpdata->ref--;
@@ -473,8 +450,6 @@ static void freefigdata(figdata * tmpdata)
 	if (tmpdata->gspid > 0) {
 		int pid = tmpdata->gspid;
 		char buf[128];
-		// change Pixmap according to our allocated colormap
-		chpixmap(tmpdata->bitmap, tmpdata->wid, tmpdata->hgh);
 		// kill ghostscript and unlink it's files
 		tmpdata->gspid = -1;
 		lyx::kill(pid, SIGKILL);
@@ -610,17 +585,8 @@ static void runqueue()
 					       << "] GHOSTVIEW property"
 						" found. Waiting." << endl;
 				}
-#if 0
-#ifdef WITH_WARNINGS
-#warning What is this doing? (wouldn't a sleep(1); work too?')
-#endif
-				alarm(1);
-				alarmed = false;
-				signal(SIGALRM, waitalarm);
-				while (!alarmed) pause();
-#else
+
 				sleep(1);
-#endif
 			}
 
 			XChangeProperty(tempdisp, 
@@ -1914,7 +1880,7 @@ void InsetFig::CallbackFig(long arg)
 				lyxerr << "Update: ["
 				       << wid << 'x' << hgh << ']' << endl;
 			}
-			UpdateInset(this);
+			UpdateInset(current_view, this);
 			if (arg == 8) {
 				fl_set_focus_object(form->Figure, form->OkBtn);
 				fl_hide_form(form->Figure);

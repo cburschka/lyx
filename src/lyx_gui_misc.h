@@ -67,11 +67,7 @@ void WarnReadonly(string const & file);
 inline
 void LyXBell() {
 	// if (audio()) ON/OFF switch yet to be implemented
-#if FL_REVISION > 85
 	fl_ringbell(20);
-#else
-	ringbell();
-#endif
 }
 
 #endif

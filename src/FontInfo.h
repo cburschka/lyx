@@ -4,7 +4,7 @@
  * 
  *           LyX, The Document Processor
  * 	 
- *	    Copyright (C) 1997 Asger Alstrup
+ *           Copyright 1997 Asger Alstrup
  *           and the LyX Team.
  *
  * ====================================================== */
@@ -80,8 +80,7 @@ private:
 	int scaleindex;
 
 	/// Initialize empty record
-	void init()
-	{
+	void init() {
 		sizes = 0;
 		strings = 0;
 		matches = 0;

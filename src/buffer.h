@@ -1,14 +1,14 @@
 // -*- C++ -*-
 /* This file is part of
  * ====================================================== 
-* 
-*           LyX, The Document Processor 	 
-*	    Copyright (C) 1995 Matthias Ettrich
-*
-*           This file is Copyleft (C) 1996
-*           Lars Gullik Bjønnes
-*
-* ====================================================== */
+ * 
+ *           LyX, The Document Processor 	 
+ *           Copyright 1995 Matthias Ettrich
+ *
+ *           This file is Copyleft 1996
+ *           Lars Gullik Bjønnes
+ *
+ * ====================================================== */
  
 // Change Log:
 // =========== 
@@ -26,12 +26,12 @@
 #pragma interface
 #endif
 
-#include "undo.h"
+#include "LString.h"
+
 #include "BufferView.h"
 #include "lyxvc.h"
 #include "bufferparams.h"
 #include "texrow.h"
-#include "lyxtext.h"
 #include "support/filetools.h"
 #include "lyx_gui_misc.h"
 
@@ -88,12 +88,11 @@ public:
 	void Dispatch(int ac, const string & argument);
 
 	/// should be changed to work for a list.
-	void resize()
-		{
-			if (users) {
-				users->resize();
-			}
+	void resize() {
+		if (users) {
+			users->resize();
 		}
+	}
 
 	/// Update window titles of all users
 	void updateTitles();
@@ -110,7 +109,7 @@ public:
 	/** Removes the BufferView from the users list.
 	    Since we only can have one at the moment, we just reset it.
 	*/
-	void delUser(BufferView *){ users = 0; }
+	void delUser(BufferView *) { users = 0; }
 	
 	///
 	void redraw() {
@@ -118,9 +117,6 @@ public:
 		users->fitCursor(); 
 		users->updateScrollbar();
 	}
-
-        /// Open and lock an updatable inset
-        //void open_new_inset(UpdatableInset *);
 
 	///
 	void loadAutoSaveFile();
@@ -134,9 +130,6 @@ public:
 	    Returns false, if file is not completely read.
 	    If par is given, the file is inserted. */
 	bool readLyXformat2(LyXLex &, LyXParagraph * par = 0);
-
-	/// Inserts a lyx file at cursor position. Returns false if it fails.
-	//bool insertLyXFile(string const & filename);
 
 	/// Write file. Returns false if unsuccesful.
 	bool writeFile(string const &, bool);
@@ -175,7 +168,7 @@ public:
 	bool isLyxClean() const { return lyx_clean; }
 	
 	/// changed Heinrich Bauer, 23/03/98
-	bool isDviClean();
+	bool isDviClean() const;
 	
         ///
         bool isNwClean() const { return nw_clean; }
@@ -235,8 +228,8 @@ public:
 	///
 	string const & fileName() const { return filename; }
 
-	/// A transformed version of the file name, adequate for LaTeX  
-	/* The path is stripped if no_path is true (default) */
+	/** A transformed version of the file name, adequate for LaTeX  
+	    The path is stripped if no_path is true (default) */
 	string getLatexName(bool no_path = true) const {
 		return ChangeExtension(MakeLatexName(filename), 
 				       ".tex", no_path); 
@@ -277,11 +270,6 @@ public:
 	///
 	void setPaperStuff();
 
-#if 0
-	///
-	void setOldPaperStuff();
-#endif
-	
 	/** Validate a buffer for LaTeX.
 	    This validates the buffer, and returns a struct for use by
 	    makeLaTeX and others. Its main use is to figure out what commands
@@ -290,17 +278,7 @@ public:
 	    points to coresponding \labels). It should perhaps inset "error"
 	    insets to help the user correct obvious mistakes.
 	*/
-	void validate(LaTeXFeatures &); //the correct parameters to be
-	//included later 
-
-	/** Insert an inset into the buffer
-	    Insert inset into buffer, placing it in a layout of lout,
-	    if no_table make sure that it doesn't end up in a table. */
-	//void insertInset(Inset *, string const & lout = string(), 
-	//		 bool no_table = false);
-
-        ///
-	//void setCursorFromRow (int);
+	void validate(LaTeXFeatures &) const;
 
 	///
 	string getIncludeonlyList(char delim = ',');
@@ -308,11 +286,6 @@ public:
 	string getReferenceList(char delim = '|');
 	///
 	string getBibkeyList(char delim = '|');
-	///
-	//bool gotoLabel(string const &);
-
-	/// removes all autodeletable insets
-	//bool removeAutoInsets();
 
 	/** This will clearly have to change later. Later we can have more
 	    than one user per buffer. */
@@ -349,9 +322,6 @@ public:
 	/// Used when typesetting to place errorboxes.
 	TexRow texrow;
 private:
-	///
-	//void insertErrors(TeXErrors &);
-
         ///
         void linuxDocHandleFootnote(ostream & os,
 				    LyXParagraph * & par, int const depth);
@@ -426,7 +396,6 @@ private:
 	    of the buffers in the list of users to do a updateLayoutChoice.
 	*/
 	BufferView * users;
-
 };
 
 

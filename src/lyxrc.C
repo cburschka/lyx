@@ -23,6 +23,7 @@ using std::ios;
 #include "debug.h"
 
 #include "lyxrc.h"
+#include "kbmap.h"
 #include "LyXAction.h"
 #include "lyxserver.h"
 #include "lyx_main.h"

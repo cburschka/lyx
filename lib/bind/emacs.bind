@@ -3,7 +3,7 @@
 #
 #                   LyX, the High Level Word Processor
 # 
-#                  Copyright (C) 1995-1997 The LyX Team
+#                  Copyright 1995-2000 The LyX Team
 #
 #               THIS FILE DEFINES THE EMACS LYX BINDINGS
 #
@@ -70,7 +70,7 @@
 \bind "S-C-quotedbl"           "quote-insert"
 
 \bind "C-x a"                  "buffer-auto-save"
-\bind "C-x b"                  "buffer-previous"
+#\bind "C-x b"                  "buffer-previous"
 \bind "C-x c"                  "lyx-quit"
 \bind "C-x d"                  "buffer-new"
 \bind "C-x g"                  "buffer-view-ps"
@@ -86,7 +86,6 @@
 \bind "C-x v u"                "vc-revert"
 \bind "C-x v c"                "vc-undo-last"
 \bind "C-x v i"                "vc-register"
-#\bind "C-x w"                  "buffer-write-as"
 \bind "C-x bracketleft"        "screen-up"
 \bind "C-x bracketright"       "screen-down"
 \bind "C-x C-a"                "buffer-auto-save"

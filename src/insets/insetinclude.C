@@ -26,7 +26,7 @@ extern BufferView * current_view;
 
 extern LyXRC * lyxrc;
 extern BufferList bufferlist;
-extern void UpdateInset(Inset * inset, bool mark_dirty = true);
+extern void UpdateInset(BufferView *, Inset * inset, bool mark_dirty = true);
 
 
 FD_include * create_form_include(void)
@@ -145,7 +145,7 @@ extern "C" void include_cb(FL_OBJECT *, long arg)
 			}
 			
 			fl_hide_form(form->include);
-			UpdateInset(inset);
+			UpdateInset(current_view, inset);
 			break;
 		} // fall through
 		
@@ -166,7 +166,7 @@ extern "C" void include_cb(FL_OBJECT *, long arg)
 			}
 			
 			fl_hide_form(form->include);
-			UpdateInset(inset);
+			UpdateInset(current_view, inset);
 			current_view->owner()->getLyXFunc()->Dispatch(LFUN_CHILDOPEN, inset->getContents().c_str());
                 }
                 break;

@@ -4,7 +4,7 @@
  *           LyX, The Document Processor
  * 	 
  *	    Copyright 1995 Matthias Ettrich
- *          Copyright 1995-1999 The LyX Team.
+ *          Copyright 1995-2000 The LyX Team.
  *
  * ====================================================== */
 
@@ -17,8 +17,7 @@
 
 // I keep these here so that it will be processed as early in
 // the compilation process as possible.
-#if !defined(FL_REVISION) || (FL_REVISION != 88 && FL_REVISION != 89) \
-			  || FL_VERSION != 0
+#if !defined(FL_REVISION) || FL_REVISION < 88 || FL_VERSION != 0
 #error LyX will not compile with this version of XForms.\
        Please get version 0.89.\
        If you want to try to compile anyway, delete this test in src/main.C.
@@ -41,5 +40,5 @@ int main(int argc, char *argv[]) {
 #endif
 
 	LyX lyx(&argc, argv);
-	return 0; // ok
+	return 0; // SUCCESS
 }

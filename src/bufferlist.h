@@ -140,7 +140,7 @@ public:
 
 	/// returns true if the buffer is loaded
 	bool isLoaded(Buffer const * b) const;
-
+	
 	/// returns a pointer to the buffer with the given name.
 	Buffer * getBuffer(string const &);
 	/// returns a pointer to the buffer with the given number.

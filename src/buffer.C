@@ -60,9 +60,6 @@ using std::setw;
 #include "insets/inseturl.h"
 #include "insets/insetinfo.h"
 #include "insets/insetquotes.h"
-#if 0
-#include "insets/insetlatex.h"
-#endif
 #include "insets/insetlatexaccent.h"
 #include "insets/insetbib.h" 
 #include "insets/insetindex.h" 
@@ -197,59 +194,6 @@ void Buffer::fileName(string const & newfile)
 	filepath = OnlyPath(filename);
 	setReadonly(IsFileWriteable(filename) == 0);
 	updateTitles();
-}
-
-
-// Inserts a file into current document
-bool BufferView::insertLyXFile(string const & filen)
-	//
-	// (c) CHT Software Service GmbH
-	// Uwe C. Schroeder
-	//
-	// Insert a Lyxformat - file into current buffer
-	//
-	// Moved from lyx_cb.C (Lgb)
-{
-	if (filen.empty()) return false;
-
-	string fname = MakeAbsPath(filen);
-
-	// check if file exist
-	FileInfo fi(fname);
-
-	if (!fi.readable()) {
-		WriteAlert(_("Error!"),
-			   _("Specified file is unreadable: "),
-			   MakeDisplayPath(fname, 50));
-		return false;
-	}
-	
-	beforeChange();
-
-	ifstream ifs(fname.c_str());
-	if (!ifs) {
-		WriteAlert(_("Error!"),
-			   _("Cannot open specified file: "),
-			   MakeDisplayPath(fname, 50));
-		return false;
-	}
-	LyXLex lex(0, 0);
-	lex.setStream(ifs);
-	char c; ifs.get(c);
-	ifs.putback(c);
-
-	bool res = true;
-
-	if (c == '#') {
-		lyxerr.debug() << "Will insert file with header" << endl;
-		res = buffer()->readFile(lex, text->cursor.par);
-	} else {
-		lyxerr.debug() << "Will insert file without header" << endl;
-		res = buffer()->readLyXformat2(lex, text->cursor.par);
-	}
-
-	resize();
-	return res;
 }
 
 
@@ -502,14 +446,7 @@ bool Buffer::readLyXformat2(LyXLex & lex, LyXParagraph * par)
 				break;
 			}
                 } else if (token == "\\papersize") {
-#if 0
-                        if (format > 2.13)
-#endif
                                 tmpret = lex.FindToken(string_papersize);
-#if 0
-                        else
-                                tmpret = lex.FindToken(string_oldpapersize);
-#endif
 			if (tmpret == -1)
                                 ++tmpret;
                         else
@@ -764,108 +701,6 @@ bool Buffer::readLyXformat2(LyXLex & lex, LyXParagraph * par)
 				par->InsertInset(pos, inset);
 				par->SetFont(pos, font);
 				++pos;
-#if 0 // should not be used any more
-			} else if (tmptok == "Latex") {
-				// This one is on its way out
-				lex.EatLine();
-				tmptok = strip(lex.GetString());
-				//lyxerr <<string(tmptok[0]));
-				if (tmptok[0] == '\\') {
-					// then this latex is a
-					// latex command
-					InsetCommand *tmpinset = 
-						new InsetCommand();
-					tmpinset->scanCommand(tmptok);
-					inset = tmpinset;
-				} else {
-					// This should not use InsetLaTexDel
-					// it should rather insert text into
-					// the paragraph and mark it as tex.
-					inset = new InsetLatex(tmptok);
-				}
-				par->InsertChar(pos, LyXParagraph::META_INSET); 
-				par->InsertInset(pos, inset);
-				par->SetFont(pos, font);
-				++pos;
-#endif
-#if 0 // should not be used any more
-			} else if (tmptok == "LatexDel") {
-				// This one is on its way out...
-				lex.EatLine();
-				tmptok = strip(lex.GetString());
-				//lyxerr <<string(tmptok[0]));
-				if (tmptok == "\\tableofcontents") {
-					inset = new InsetTOC(this);
-				} else if (tmptok == "\\listoffigures") {
-					inset = new InsetLOF(this);
-				} else if (tmptok == "\\listoftables") {
-					inset = new InsetLOT(this);
-				} else if (tmptok == "\\listofalgorithms") {
-					inset = new InsetLOA(this);
-				} else if (contains(tmptok, "\\ref{")
-					   || contains(tmptok, "\\pageref{")) {
-					inset = new InsetRef(tmptok, this);
-				} else if (contains(tmptok, "\\url{")
-					   || contains(tmptok, "\\htmlurl{")) {
-					string cont, opt, tmptmptok, cmdname;
-					lex.next();
-					while(lex.IsOK() && lex.GetString() != "\\end_inset" ) {
-						lex.next();
-					}
-					lex.next();
-					while(lex.IsOK()) {
-						tmptmptok = lex.GetString();
-						if(tmptmptok[0] == '\\') {
-							if( tmptmptok == "\\backslash")
-								opt += '\\';
-							else
-								break;
-						}
-						else
-							opt += tmptmptok;
-						opt += ' ';
-						lex.next();
-					}
-					while(lex.IsOK() && lex.GetString() != "\\end_inset" ) {
-						lex.next();
-					}
-					lex.next();
-					while(lex.IsOK()) {
-						tmptmptok = lex.GetString();
-						if(tmptmptok[0] == '\\') {
-							if( tmptmptok == "\\backslash")
-								cont += '\\';
-							else
-								break;
-						}
-						else
-							cont += tmptmptok;
-						cont += ' ';
-						lex.next();
-					}
-					while(lex.IsOK() && lex.GetString() != "\\end_inset" ) {
-						lex.next();
-					}
-					if(contains(tmptok, "\\url{"))
-						cmdname = string("url");
-					else
-						cmdname = string("htmlurl");
-					cont = strip(cont);
-					opt = strip(opt);
-					inset = new InsetUrl(cmdname, cont, opt);
-				} else if (tmptok[0] == '\\') {
-					// then this latex del is a
-					// latex command
-					InsetCommand * tmpinset = 
-						new InsetCommand();
-					tmpinset->scanCommand(tmptok);
-					inset = tmpinset;
-				} 
-				par->InsertChar(pos, LyXParagraph::META_INSET); 
-				par->InsertInset(pos, inset);
-				par->SetFont(pos, font);
-				++pos;
-#endif
 			} else if (tmptok == "\\i") {
 				inset = new InsetLatexAccent;
 				inset->Read(lex);
@@ -894,20 +729,6 @@ bool Buffer::readLyXformat2(LyXLex & lex, LyXParagraph * par)
 				par->InsertInset(pos, inset);
 				par->SetFont(pos, font);
 				++pos;
-#if 0
-			} else if (tmptok == "Label") {
-				// Kept for compability. Remove in 0.13.
-				if (lex.EatLine()) {
-					string tmp = "\\label{";
-					tmp += lex.GetString();
-					tmp += '}';
-					inset = new InsetLabel(tmp);
-					par->InsertChar(pos, LyXParagraph::META_INSET); 
-					par->InsertInset(pos, inset);
-					par->SetFont(pos, font);
-					++pos;
-				}
-#endif
 			} else if (tmptok == "Info") {
 				inset = new InsetInfo;
 				inset->Read(lex);
@@ -946,6 +767,7 @@ bool Buffer::readLyXformat2(LyXLex & lex, LyXParagraph * par)
 					if (!inscmd.getOptions().empty() || !inscmd.getContents().empty()) {
 						inset = new InsetRef(inscmd, this);
 					}
+#warning Verify that this else clause is still needed. (Lgb)
 					// This condition comes from a
 					// temporary solution to the latexdel
 					// ref inset that was transformed to
@@ -1012,19 +834,6 @@ bool Buffer::readLyXformat2(LyXLex & lex, LyXParagraph * par)
 				} else if (inscmd.getCmdName() == "lyxparent") {
 					inset = new InsetParent(inscmd.getContents(), this);
 				}
-#if 0
-				// Do we need this at all now?
-				else 
-					// The following three are only for compatibility
-					if (inscmd.getCmdName() == "-") {
-						inset = new InsetSpecialChar(InsetSpecialChar::HYPHENATION);
-					} else if (inscmd.getCmdName() == "@.") {
-						inset = new InsetSpecialChar(InsetSpecialChar::END_OF_SENTENCE);
-					} else if (inscmd.getCmdName() == "ldots") {
-						inset = new InsetSpecialChar(InsetSpecialChar::LDOTS);
-					} else
-						inset = inscmd.Clone();
-#endif
 			       
 				if (inset) {
 					par->InsertChar(pos, LyXParagraph::META_INSET);
@@ -1040,17 +849,6 @@ bool Buffer::readLyXformat2(LyXLex & lex, LyXParagraph * par)
 			par->InsertInset(pos, inset);
 			par->SetFont(pos, font);
 			++pos;
-#if 0
-		} else if (token == "\\InsetLatex") {
-			inset = new InsetLatex;
-			inset->Read(lex);
-			par->InsertChar(pos, LyXParagraph::META_INSET); 
-			par->InsertInset(pos, inset);
-			par->SetFont(pos, font);
-			++pos;
-		} else if (token == "\\InsetLatexDel") {
-			lex.printError(_("Warning: Ignoring Old Inset"));
-#endif
 		} else if (token == "\\InsetFormula") {
 			inset = new InsetFormula;
 			inset->Read(lex);
@@ -1141,16 +939,9 @@ bool Buffer::readFile(LyXLex & lex, LyXParagraph * par)
 				// Formats >= 2.13 support "\the_end" marker
 				if (format < 2.13)
 					the_end = true;
-#if 0
-                                // Formats >= 2.14 changed papersize stuff
-                                if (format < 2.14) {
-                                        setOldPaperStuff();
-                                } else {
-#endif
-                                        setPaperStuff();
-#if 0
-                                }
-#endif
+
+				setPaperStuff();
+
 				if (!the_end)
 					WriteAlert(_("Warning!"),
 						   _("Reading of document is not complete"),
@@ -3124,39 +2915,6 @@ void Buffer::SimpleDocBookOnePar(string & file, string & extra,
 }
 
 
-bool BufferView::removeAutoInsets()
-{
-	LyXParagraph * par = buffer()->paragraph;
-
-	LyXCursor cursor = text->cursor;
-	LyXCursor tmpcursor = cursor;
-	cursor.par = tmpcursor.par->ParFromPos(tmpcursor.pos);
-	cursor.pos = tmpcursor.par->PositionInParFromPos(tmpcursor.pos);
-
-	bool a = false;
-	while (par) {
-		if (par->AutoDeleteInsets()){
-			a = true;
-			if (par->footnoteflag != LyXParagraph::CLOSED_FOOTNOTE){
-				// this is possible now, since SetCursor takes
-				// care about footnotes
-				text->SetCursorIntern(par, 0);
-				text->RedoParagraphs(text->cursor,
-						     text->cursor.par->Next());
-				text->FullRebreak();
-			}
-		}
-		par = par->next;
-	}
-	// avoid forbidden cursor positions caused by error removing
-	if (cursor.pos > cursor.par->Last())
-		cursor.pos = cursor.par->Last();
-	text->SetCursorIntern(cursor.par, cursor.pos);
-
-	return a;
-}
-
-
 int Buffer::runLaTeX()
 {
 	if (!users->text) return 0;
@@ -3418,70 +3176,6 @@ int Buffer::runChktex()
 }
 
 
-void BufferView::insertErrors(TeXErrors & terr)
-{
-	// Save the cursor position
-	LyXCursor cursor = text->cursor;
-
-	// This is drastic, but it's the only fix, I could find. (Asger)
-	allFloats(1, 0);
-	allFloats(1, 1);
-
-	for (TeXErrors::Errors::const_iterator cit = terr.begin();
-	     cit != terr.end();
-	     ++cit) {
-		string desctext((*cit).error_desc);
-		string errortext((*cit).error_text);
-		string msgtxt = desctext + '\n' + errortext;
-		int errorrow = (*cit).error_in_line;
-
-		// Insert error string for row number
-		int tmpid = -1; 
-		int tmppos = -1;
-
-		buffer()->texrow.getIdFromRow(errorrow, tmpid, tmppos);
-
-		LyXParagraph * texrowpar = 0;
-
-		if (tmpid == -1) {
-			texrowpar = text->FirstParagraph();
-			tmppos = 0;
-		} else {
-			texrowpar = text->GetParFromID(tmpid);
-		}
-
-		if (texrowpar == 0)
-			continue;
-
-		InsetError * new_inset = new InsetError(msgtxt);
-		text->SetCursorIntern(texrowpar, tmppos);
-		text->InsertInset(new_inset);
-		text->FullRebreak();
-	}
-	// Restore the cursor position
-	text->SetCursorIntern(cursor.par, cursor.pos);
-}
-
-
-void BufferView::setCursorFromRow(int row)
-{
-	int tmpid = -1; 
-	int tmppos = -1;
-
-	buffer()->texrow.getIdFromRow(row, tmpid, tmppos);
-
-	LyXParagraph * texrowpar;
-
-	if (tmpid == -1) {
-		texrowpar = text->FirstParagraph();
-		tmppos = 0;
-	} else {
-		texrowpar = text->GetParFromID(tmpid);
-	}
-	text->SetCursor(texrowpar, tmppos);
-}
-
-
 void Buffer::RoffAsciiTable(ostream & os, LyXParagraph * par)
 {
 	LyXFont font1 =  LyXFont(LyXFont::ALL_INHERIT);
@@ -3600,7 +3294,7 @@ void Buffer::RoffAsciiTable(ostream & os, LyXParagraph * par)
 
 	
 /// changed Heinrich Bauer, 23/03/98
-bool Buffer::isDviClean()
+bool Buffer::isDviClean() const
 {
   if (lyxrc->use_tempdir)
     return dvi_clean_tmpd;
@@ -3629,7 +3323,7 @@ void Buffer::markDviDirty()
 }
 
 
-void Buffer::validate(LaTeXFeatures & features)
+void Buffer::validate(LaTeXFeatures & features) const
 {
 	LyXParagraph * par = paragraph;
         LyXTextClass const & tclass = 
@@ -3709,100 +3403,6 @@ void Buffer::setPaperStuff()
 	} else if ((c1 == BufferParams::PACKAGE_A4) || (c1 == BufferParams::PACKAGE_A4WIDE) ||
 		   (c1 == BufferParams::PACKAGE_WIDEMARGINSA4))
 		params.papersize = BufferParams::PAPER_A4PAPER;
-}
-
-
-#if 0
-void Buffer::setOldPaperStuff()
-{
-	char c = params.papersize = params.papersize2;
-	params.papersize2 = BufferParams::VM_PAPER_DEFAULT;
-	params.paperpackage = BufferParams::PACKAGE_NONE;
-	if (c == OLD_PAPER_A4PAPER)
-		params.papersize2 = BufferParams::VM_PAPER_A4;
-	else if (c == OLD_PAPER_A4)
-		params.paperpackage = BufferParams::PACKAGE_A4;
-	else if (c == OLD_PAPER_A4WIDE)
-		params.paperpackage = BufferParams::PACKAGE_A4WIDE;
-	else if (c == OLD_PAPER_WIDEMARGINSA4)
-		params.paperpackage = BufferParams::PACKAGE_WIDEMARGINSA4;
-	else if (c == OLD_PAPER_USLETTER)
-		params.papersize2 = BufferParams::VM_PAPER_USLETTER;
-	else if (c == OLD_PAPER_A5PAPER)
-		params.papersize2 = BufferParams::VM_PAPER_A5;
-	else if (c == OLD_PAPER_B5PAPER)
-		params.papersize2 = BufferParams::VM_PAPER_B5;
-	else if (c == OLD_PAPER_EXECUTIVEPAPER)
-		params.papersize2 = BufferParams::VM_PAPER_USEXECUTIVE;
-	else if (c == OLD_PAPER_LEGALPAPER)
-		params.papersize2 = BufferParams::VM_PAPER_USLEGAL;
-	setPaperStuff();
-}
-#endif
-
-
-void BufferView::insertInset(Inset * inset, string const & lout,
-			 bool no_table)
-{
-	// check for table/list in tables
-	if (no_table && text->cursor.par->table){
-		WriteAlert(_("Impossible Operation!"),
-			   _("Cannot insert table/list in table."),
-			   _("Sorry."));
-		return;
-	}
-	// not quite sure if we want this...
-	text->SetCursorParUndo();
-	text->FreezeUndo();
-	
-	beforeChange();
-	if (!lout.empty()) {
-		update(-2);
-		text->BreakParagraph();
-		update(-1);
-		
-		if (text->cursor.par->Last()) {
-			text->CursorLeft();
-			
-			text->BreakParagraph();
-			update(-1);
-		}
-
-		int lay = textclasslist.NumberOfLayout(buffer()->params.textclass,
-						       lout).second;
-		if (lay == -1) // layout not found
-			// use default layout "Standard" (0)
-			lay = 0;
-		
-		text->SetLayout(lay);
-		
-		text->SetParagraph(0, 0,
-				   0, 0,
-				   VSpace(VSpace::NONE), VSpace(VSpace::NONE),
-				   LYX_ALIGN_LAYOUT, 
-				   string(),
-				   0);
-		update(-1);
-		
-		text->current_font.setLatex(LyXFont::OFF);
-	}
-	
-	text->InsertInset(inset);
-	update(-1);
-
-	text->UnFreezeUndo();	
-}
-
-
-// Open and lock an updatable inset
-void BufferView::open_new_inset(UpdatableInset * new_inset)
-{
-	beforeChange();
-	text->FinishUndo();
-	insertInset(new_inset);
-	text->CursorLeft();
-	update(1);
-    	new_inset->Edit(0, 0);
 }
 
 
@@ -3919,37 +3519,6 @@ string Buffer::getBibkeyList(char delim)
  
 	lyxerr.debug() << "Bibkeys(" << bibkeys << ")" << endl;
 	return bibkeys;
-}
-
-
-/* This is also a buffer property (ale) */
-// Not so sure about that. a goto Label function can not be buffer local, just
-// think how this will work in a multiwindo/buffer environment, all the
-// cursors in all the views showing this buffer will move. (Lgb)
-// OK, then no cursor action should be allowed in buffer. (ale)
-bool BufferView::gotoLabel(string const & label)
-
-{
-        LyXParagraph * par = buffer()->paragraph;
-        LyXParagraph::size_type pos;
-        Inset * inset;
-        while (par) {
-                pos = -1;
-                while ((inset = par->ReturnNextInsetPointer(pos))){     
-                        for (int i = 0; i < inset->GetNumberOfLabels(); ++i) {
-				if (label == inset->getLabel(i)) {
-					beforeChange();
-					text->SetCursor(par, pos);
-					text->sel_cursor = text->cursor;
-					update(0);
-					return true;
-				}
-			}
-                        ++pos;
-                } 
-                par = par->next;
-	}
-	return false;
 }
 
 

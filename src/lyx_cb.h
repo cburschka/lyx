@@ -7,6 +7,7 @@
 #include "LString.h"
 
 class Inset;
+class BufferView;
 
 ///
 extern bool quitting;
@@ -16,47 +17,47 @@ extern bool quitting;
 extern bool BindFileSet;
 
 ///
-extern "C" void FootCB(FL_OBJECT *, long);
+extern void Foot(BufferView *);
 ///
-extern void EmphCB();
+extern void Emph();
 ///
-extern void BoldCB();
+extern void Bold();
 ///
-extern void NounCB();
+extern void Noun();
+///
+extern void Margin(BufferView *);
+///
+extern void Figure();
 ///
 extern void RTLCB();
 ///
-extern "C" void MarginCB(FL_OBJECT *, long);
+extern void Table();
 ///
-extern "C" void FigureCB(FL_OBJECT *, long);
+extern void Melt(BufferView *);
 ///
-extern "C" void TableCB(FL_OBJECT *, long);
+extern void Tex();
 ///
-extern "C" void MeltCB(FL_OBJECT *, long);
+extern void changeDepth(BufferView *, int);
 ///
-extern void TexCB();
+extern void Free();
 ///
-extern "C" void DepthCB(FL_OBJECT *, long);
+extern void HtmlUrl();
 ///
-extern void FreeCB();
-///
-extern void HtmlUrlCB();
-///
-extern void UrlCB();
+extern void Url();
 ///
 extern void ProhibitInput();
 ///
-extern void CodeCB();
+extern void Code();
 ///
-extern void SansCB();
+extern void Sans();
 ///
-extern void RomanCB();
+extern void Roman();
 ///
-extern void StyleResetCB();
+extern void StyleReset();
 ///
-extern void UnderlineCB();
+extern void Underline();
 ///
-extern void FontSizeCB(string const &);
+extern void FontSize(string const &);
 ///
 extern string CurrentState();
 ///

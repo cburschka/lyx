@@ -22,9 +22,7 @@ FD_panel * create_form_panel(void)
   fdui->func_browse = obj = fl_add_browser(FL_SELECT_BROWSER, 180, 40, 94, 110, _("Functions"));
     fl_set_object_lalign(obj, FL_ALIGN_TOP);
     fl_set_object_callback(obj, button_cb, MM_FUNC);
-#if FL_REVISION > 85
     fl_set_browser_hscrollbar(obj, FL_OFF);
-#endif
   fdui->greek = obj = fl_add_button(FL_NORMAL_BUTTON, 10, 90, 50, 30, _("Greek"));
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_lstyle(obj, 15);

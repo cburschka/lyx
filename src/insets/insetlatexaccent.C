@@ -32,18 +32,6 @@ InsetLatexAccent::InsetLatexAccent()
 }
 
 
-#if 0  // the compiler generated version should be ok.
-InsetLatexAccent::InsetLatexAccent(InsetLatexAccent const & other)
-	: Inset(), contents(other.contents),
-	  candisp(other.candisp),
-	  modtype(other.modtype),
-	  remdot(other.remdot),
-	  plusasc(other.plusasc),
-	  plusdesc(other.plusdesc),
-	  ic(other.ic)
-{}
-#endif
-
 InsetLatexAccent::InsetLatexAccent(string const & string)
 	: contents(string)
 {
@@ -384,7 +372,6 @@ void InsetLatexAccent::Draw(LyXFont font,
 		int desc = Descent(font);
 		int wid = Width(font);
 		float x2 = x + (Rbearing(font) - Lbearing(font)) / 2.0;
-		float hg35;
 		float hg;
 		int y;
 		if (plusasc) {
@@ -400,7 +387,7 @@ void InsetLatexAccent::Draw(LyXFont font,
 			y = baseline;
 		}
 
-		hg35 = float(hg * 3.0) / 5.0;
+		float hg35 = float(hg * 3.0) / 5.0;
 
 		// display with proper accent mark
 		// first the letter
@@ -433,23 +420,23 @@ void InsetLatexAccent::Draw(LyXFont font,
 		switch (modtype) {
 		case ACUTE:     // acute
  		{
-			scr.drawLine(pgc, int(x2), int(y + hg35),
-				     int(x2 + hg35), y);
+			scr.drawLine(pgc, int(x2), int(y + hg),
+				     int(x2 + hg35), y + hg35);
 			break;
 		}
 		case GRAVE:     // grave
 		{
-			scr.drawLine(pgc, int(x2), int(y + hg35),
-				     int(x2 - hg35), y); 
+			scr.drawLine(pgc, int(x2), int(y + hg),
+				     int(x2 - hg35), y + hg35); 
 			break;
 		}
 		case MACRON:     // macron
 		{
 			scr.drawLine(pgc,
-				     int(x2 - (3.0 * wid / 7.0)),
-				     int(y + (hg / 2.0) + hg35),
-				     int(x2 + (3.0 * wid / 7.0)),
-				     int(y + (hg / 2.0) + hg35));
+				     int(x2 - wid * 0.4),
+				     int(y + hg),
+				     int(x2 + wid * 0.4),
+				     int(y + hg));
 			break;
 		}
 		case TILDE:     // tilde
@@ -467,14 +454,15 @@ void InsetLatexAccent::Draw(LyXFont font,
 		case UNDERBAR:     // underbar
 		{
 			scr.drawLine(pgc,
-				     int(x2 - (3.0 * wid / 7.0)),
+				     int(x2 - wid * 0.4),
 				     y + (hg / 2.0),
-				     int(x2 + (3.0 * wid / 7.0)),
+				     int(x2 + wid * 0.4),
 				     y + (hg / 2.0));
 			break;
 		}
 		case CEDILLA:     // cedilla
 		{
+#if 1
 			XPoint p[4];
 			p[0].x = int(x2);          p[0].y = y;
 			p[1].x = int(x2);          p[1].y = y + int(hg / 3.0);
@@ -482,42 +470,66 @@ void InsetLatexAccent::Draw(LyXFont font,
 			p[2].y = y + int(hg / 2.0);
 			p[3].x = int(x2 - (hg / 4.0)); p[3].y = y + int(hg);
 			scr.drawLines(pgc, p, 4);
+#endif
+			//scr.drawLine(pgc,
+			//	     x2, y,
+			//	     x2 - hg / 4.0, y + hg);
+			// and then we need a circle thingie.
+			// ...
 			break;
 		}
 		case UNDERDOT:     // underdot
-		case DOT:    // dot
 		{
-			scr.fillArc(pgc, int(x2), y + (hg / 2.0),
-				    1, 1, 0, 360*64); 
+#if 1
+			scr.fillArc(pgc, int(x2), y + hg35,
+				    3, 3, 0, 360*64);
+#endif
+			//scr.drawText(font, "·", 1, y + 2 * hg, x2);
 			break;
 		}
+
+		case DOT:    // dot
+		{
+#if 1
+			scr.fillArc(pgc, int(x2), y + hg * 0.5,
+				    (hg + 3.0)/5.0,
+				    (hg + 3.0)/5.0, 0, 360*64);
+#endif
+			//scr.drawText(font, "·", 1, y + 2.0 * hg, x2);
+			break;
+		}
+
 		case CIRCLE:     // circle
 		{
+#if 1
 			scr.drawArc(pgc, int(x2 - (hg / 2.0)),
 				    y + (hg / 2.0), hg, hg, 0,
 				    360*64);
+#endif
+			//scr.drawText(font, "°", 1, y + 2.0 * hg, x2);
+			
 			break;
 		}
 		case TIE:     // tie
 		{
 			scr.drawArc(pgc,
-				    int(x2), y + (hg / 4.0),
-				    hg, hg, 0, 11519);
+				    int(x2 + hg35), y + (hg / 2.0),
+				    2 * hg, hg, 0, 360*32);
 			break;
 		}
 		case BREVE:     // breve
 		{
 			scr.drawArc(pgc,
-				    int(x2 - (hg / 2.0)), y - (hg / 4.0),
-				    hg, hg, 0, -11519);
+				    int(x2 - (hg / 2.0)), y,
+				    hg, hg, 0, -360*32);
 			break;
 		}
 		case CARON:    // caron
 		{
 			XPoint p[3];
-			p[0].x = int(x2 - hg35); p[0].y = y;
-			p[1].x = int(x2);        p[1].y = int(y + hg35);
-			p[2].x = int(x2 + hg35); p[2].y = y;
+			p[0].x = int(x2 - hg35); p[0].y = int(y + hg35);
+			p[1].x = int(x2);        p[1].y = int(y + hg);
+			p[2].x = int(x2 + hg35); p[2].y = int(y + hg35);
 			scr.drawLines(pgc, p, 3);
 			break;
 		}
@@ -539,11 +551,13 @@ void InsetLatexAccent::Draw(LyXFont font,
 		case HUNGARIAN_UMLAUT:    // hung. umlaut
 		{
 			XSegment s[2];
-			s[0].x1= int(x2 - (hg / 2.0));     s[0].y1 = int(y + hg35);
-			s[0].x2= int(x2 + hg35 - (hg / 2.0)); s[0].y2 = y;
-			s[1].x1= int(x2 + (hg / 2.0));
-			s[1].y1 = int(y + hg35);
-			s[1].x2= int(x2 + hg35 + (hg / 2.0)); s[1].y2 = y;
+			s[0].x1= int(x2 - (hg / 2.0));     s[0].y1 = int(y + hg);
+			s[0].x2 = int(x2 + hg35 - (hg / 2.0));
+			s[0].y2 = int(y + hg35);
+			s[1].x1 = int(x2 + (hg / 2.0));
+			s[1].y1 = int(y + hg);
+			s[1].x2 = int(x2 + hg35 + (hg / 2.0));
+			s[1].y2 = int(y + hg35);
 
 			scr.drawSegments(pgc, s, 2);
 			break;
@@ -554,21 +568,22 @@ void InsetLatexAccent::Draw(LyXFont font,
 			if (rad <= 1.0) {
 				scr.drawPoint(pgc,
 					      int(x2 - ((4.0 * hg) / 7.0)),
-					      y);
+					      y + hg35);
 				scr.drawPoint(pgc,
 					      int(x2 + ((4.0 * hg) / 7.0)),
-					      y);
+					      y + hg35);
 			} else {
 				rad += .5; // this ensures that f.ex. 1.5 will
 				// not be rounded down to .5 and then
 				// converted to int = 0
 				scr.fillArc(pgc, int(x2 - ((2.0 * hg) / 4.0)),
-					    y,
+					    y + hg35,
 					    rad, rad, 0, 360*64);
 				scr.fillArc(pgc, int(x2 + ((2.0 * hg) / 4.0)),
-					    y,
+					    y + hg35,
 					    rad, rad, 0, 360*64);
 			}
+			//scr.drawText(font, "¨", 1, y + hg, x2);
 			break;
 		}
 		case CIRCUMFLEX:    // circumflex
@@ -586,8 +601,8 @@ void InsetLatexAccent::Draw(LyXFont font,
 			// it should certainly be refined
 			XPoint p[4];
 			p[0].x = int(x2);          p[0].y = y;
-			p[1].x = int(x2);          p[1].y = y + int(hg / 3.0);
-			p[2].x = int(x2 - (hg / 3.0));
+			p[1].x = int(x2);          p[1].y = y + int(hg35);
+			p[2].x = int(x2 - hg35);
 			p[2].y = y + int(hg / 2.0);
 			p[3].x = int(x2 + (hg / 4.0)); p[3].y = y + int(hg);
 			scr.drawLines(pgc, p, 4);

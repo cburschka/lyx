@@ -7,7 +7,7 @@
 #endif
 
 #include "commandtags.h"
-#include "kbmap.h"
+#include "kbsequence.h"
 #include "insets/lyxinset.h"
 #include "LString.h"
 

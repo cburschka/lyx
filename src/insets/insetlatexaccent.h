@@ -4,7 +4,7 @@
  *
  *           LyX, The Document Processor
  * 	 
- *	    Copyright (C) 1995 Matthias Ettrich
+ *	    Copyright 1995 Matthias Ettrich
  *
  * ====================================================== */
 
@@ -33,10 +33,6 @@ public:
 	InsetLatexAccent(); 
 	///
 	InsetLatexAccent(string const & string);
-#if 0     // the compiler generated version should be ok.
-	///
-	InsetLatexAccent(InsetLatexAccent const &);
-#endif
 	///
 	int Ascent(LyXFont const & font) const;
 	///

@@ -13,6 +13,7 @@ lyx_SOURCES = \
 	BackStack.h \
 	BufferView.C \
 	BufferView.h \
+	BufferView2.C \
 	Bullet.C \
 	Bullet.h \
 	Chktex.C \
@@ -46,6 +47,8 @@ lyx_SOURCES = \
 	Spacing.C \
 	Spacing.h \
 	TableLayout.C \
+	TextCache.C \
+	TextCache.h \
 	bibforms.h \
 	bmtable.c \
 	bmtable.h \
@@ -82,6 +85,8 @@ lyx_SOURCES = \
 	intl.h \
 	kbmap.C \
 	kbmap.h \
+	kbsequence.C \
+	kbsequence.h \
 	lastfiles.C \
 	lastfiles.h \
 	latexoptions.C \

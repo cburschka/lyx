@@ -33,9 +33,7 @@ LyXVC::~LyXVC()
 			fl_hide_form(browser->LaTeXLog);
 		fl_free_form(browser->LaTeXLog);
 	}
-	if (vcs) { // DEL LINE
-		delete vcs;
-	} // DEL LINE
+	delete vcs;
 }
 
 

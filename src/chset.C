@@ -13,6 +13,8 @@ using std::ifstream;
 #include "support/LSubstring.h"
 #include "debug.h"
 
+using std::make_pair;
+
 bool CharacterSet::loadFile(string const & fname)
 {
 	map_.clear();

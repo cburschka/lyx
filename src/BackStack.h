@@ -4,7 +4,7 @@
  * 
  *           LyX, The Document Processor
  * 	 
- *	    Copyright (C) 1997-1999 The LyX Team.
+ *	    Copyright 1997-2000 The LyX Team.
  *
  * ====================================================== */
 
@@ -24,12 +24,9 @@ class BackStack {
 private:
 	///
 	struct BackStackItem {
+		///
 		BackStackItem(string const & f, int xx, int yy)
 			: fname(f), x(xx), y(yy) {}
-		///
-		//void set(string f, int xx, int yy) {
-		//	fname = f;  x = xx;  y = yy;
-		//}
 		/// Filename
 		string fname;
 		/// Cursor x-position

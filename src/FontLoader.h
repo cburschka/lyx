@@ -4,8 +4,8 @@
  * 
  *           LyX, The Document Processor
  * 	 
- *	      Copyright (C) 1997 Asger Alstrup
- * 			and the LyX Team.
+ *           Copyright 1997 Asger Alstrup
+ * 	     and the LyX Team.
  *
  * ====================================================== */
 
@@ -39,19 +39,18 @@ public:
 	void update();
 
 	/// Load font
-	XFontStruct* load(LyXFont::FONT_FAMILY family, 
-			  LyXFont::FONT_SERIES series, 
-			  LyXFont::FONT_SHAPE shape, 
-			  LyXFont::FONT_SIZE size)
-	{
-		if (fontstruct[family][series][shape][size]!= 0)
+	XFontStruct * load(LyXFont::FONT_FAMILY family, 
+			   LyXFont::FONT_SERIES series, 
+			   LyXFont::FONT_SHAPE shape, 
+			   LyXFont::FONT_SIZE size) {
+		if (fontstruct[family][series][shape][size] != 0)
 			return fontstruct[family][series][shape][size];
 		else
 			return doLoad(family, series, shape, size);
 	};
 private:
 	/// Array of font structs
-	XFontStruct* fontstruct[4][2][4][10];
+	XFontStruct * fontstruct[4][2][4][10];
 
 	/// Array of font infos
 	FontInfo * fontinfo[4][2][4];
@@ -68,9 +67,9 @@ private:
 			 LyXFont::FONT_SHAPE shape);
 
 	/** Does the actual loading of a font. Updates fontstruct. */
-	XFontStruct* doLoad(LyXFont::FONT_FAMILY family, 
-			    LyXFont::FONT_SERIES series, 
-			    LyXFont::FONT_SHAPE shape, 
-			    LyXFont::FONT_SIZE size);
+	XFontStruct * doLoad(LyXFont::FONT_FAMILY family, 
+			     LyXFont::FONT_SERIES series, 
+			     LyXFont::FONT_SHAPE shape, 
+			     LyXFont::FONT_SIZE size);
 };
 #endif

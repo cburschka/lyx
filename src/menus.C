@@ -5,7 +5,7 @@
  *       LyX, The Document Processor
  *
  *       Copyright 1995 Matthias Ettrich
- *       Copyright 1995-1999 The LyX Team.
+ *       Copyright 1995-2000 The LyX Team.
  *
  * ================================================== 
  */
@@ -59,7 +59,7 @@ extern void ShowCopyright();
 extern void show_symbols_form(LyXFunc *);
 extern void ProhibitInput();
 extern void AllowInput();
-extern void LaTeXOptions();
+extern void LaTeXOptions(BufferView *);
 
 // A bunch of wrappers
 
@@ -1540,7 +1540,7 @@ void Menus::ShowOptionsMenu(FL_OBJECT * ob, long)
 	case 1: men->ScreenOptions(); break;
 	case 2: SpellCheckerOptions(); break;      
 	case 3: men->_view->getIntl()->MenuKeymap(); break;
-	case 4: LaTeXOptions(); break;
+	case 4: LaTeXOptions(men->_view->view()); break;
 	case 5: tmpfunc->Dispatch(LFUN_RECONFIGURE); break;
 	default: break;
 	}   

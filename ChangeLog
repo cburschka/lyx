@@ -1,3 +1,46 @@
+2000-02-04  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/support/lyxsum.C: rework to be more flexible.
+	
+	* several places: don't check if a pointer is 0 if you are going
+	to delete it.
+
+	* src/text.C: remove some dead code.
+
+	* src/insets/figinset.C: remove some dead code
+	
+	* src/buffer.C: move the BufferView funcs to BufferView2.C
+	remove all support for insetlatexdel
+	remove support for oldpapersize stuff
+	made some member funcs const
+
+	* src/kbmap.C: use a std::list to store the bindings in.
+	
+	* src/BufferView2.C: new file
+
+	* src/kbsequence.[Ch]: new files
+	
+	* src/LyXAction.C + others: remove all trace of buffer-previous
+	
+	* src/Bullet.[Ch]: moved ITEMIZE_DEFAULTS inside Bullet.C so that we
+	only have one copy in the binary of this table.
+	
+	* hebrew patch: moved some functions from LyXText to more
+	appropriate places. (LyXParagraph, BufferParams, LyXFont)
+	
+	* several files: remove support for XForms older than 0.88
+	whitespace changes.
+	remove some #if 0 #endif code
+	
+	* src/TextCache.[Ch]: new file. Holds the textcache.
+
+	* src/BufferView.C: changes to use the new TextCache interface.
+	(waitForX): remove the now unused code.
+	
+	* src/BackStack.h: remove some commented code
+
+	* lib/bind/emacs.bind: remove binding for buffer-previous
+
 2000-02-03  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* applied the hebrew patch.
@@ -54,6 +97,12 @@
 	* src/lyx_cb.C (UpdateLayoutDocument): use a switch to set
 	correctly the paper sides radio buttons.
 	(UpdateDocumentButtons): ditto.
+
+2000-01-27  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/kbmap.C (getsym + others): change to return unsigned int,
+	returning a long can give problems on 64 bit systems. (I assume
+	that int is 32bit on 64bit systems)
 
 2000-01-27  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 

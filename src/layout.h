@@ -67,14 +67,6 @@ enum LYX_MARGIN_TYPE {
 
 
 ///
-enum LyXDirection {
-	///
-	LYX_DIR_LEFT_TO_RIGHT = 1,
-	///
-	LYX_DIR_RIGHT_TO_LEFT = -1
-};
-  
-///
 enum LyXAlignment {
 	///
 	LYX_ALIGN_NONE = 0,

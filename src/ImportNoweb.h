@@ -4,9 +4,9 @@
  * 
  *           LyX, The Document Processor
  *
- *           Copyright (C) 1995-1999 The LyX Team.
+ *           Copyright 1995-2000 The LyX Team.
  *
- *           This file is Copyright (C) 1999
+ *           This file is Copyright 1999
  *           Kayvan A. Sylvan
  *
  * ====================================================== 
@@ -29,7 +29,7 @@ public:
 	/**
 	  file = name and path of the noweb file to import
 	  */
-	ImportNoweb(string const & file) : file(file) {};
+	ImportNoweb(string const & file) : file(file) {}
 	
 	/** Imports the document.
 	  Return 0 if fail.
@@ -41,7 +41,7 @@ private:
 	///
 	string documentclass();
 	///
-	enum{ 
+	enum { 
 		BUFSIZE = 512 
 	};
 };

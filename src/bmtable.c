@@ -256,12 +256,7 @@ void fl_set_bmtable_pixmap_data(FL_OBJECT * ob, int nx, int ny,
 	extern Colormap color_map;
 	if (sp) {
 		Pixmap dummy_shapemask = 0;
-#if 0
-		// I can't see why this initalization is needed. (Lgb)
-		XpmAttributes dumb_attributes = {0};
-#else
 		XpmAttributes dumb_attributes;
-#endif
 		sp->nx = nx;
 		sp->ny = ny; 
 		sp->bx = FL_abs(ob->bw);
@@ -324,11 +319,7 @@ void fl_set_bmtable_pixmap_file(FL_OBJECT *ob, int nx, int ny, char const *filen
 	BMTABLE_SPEC *sp = (BMTABLE_SPEC *)ob->spec;
 	if (sp) {
 		Pixmap dummy_shapemask = 0;
-#if 0
-		XpmAttributes dumb_attributes = {0};
-#else
 		XpmAttributes dumb_attributes;
-#endif
 		sp->nx = nx;
 		sp->ny = ny; 
 		sp->bx = FL_abs(ob->bw);

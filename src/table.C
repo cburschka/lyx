@@ -295,23 +295,21 @@ void LyXTable::set_row_column_number_info()
 	row = 0;
 	column = 0;
 
-	if (rowofcell) // DEL LINE
-		delete [] rowofcell;
+	delete [] rowofcell;
 	rowofcell = new int[numberofcells];
-	if (columnofcell) // DEL LINE
-		delete [] columnofcell;
+	delete [] columnofcell;
 	columnofcell = new int[numberofcells];
   
 	while (c < numberofcells && row < rows && column < columns) {
 		rowofcell[c] = row;
 		columnofcell[c] = column;
 		++c;
-		do{
+		do {
 			++column;
 		} while (column < columns &&
 			 cell_info[row][column].multicolumn
 			 == LyXTable::CELL_PART_OF_MULTICOLUMN);
-		if (column == columns){
+		if (column == columns) {
 			column = 0;
 			++row;
 		}

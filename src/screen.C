@@ -17,6 +17,7 @@
 #include "lyxscreen.h"
 #include "lyxdraw.h"
 #include "lyxtext.h"
+#include "lyxrow.h"
 
 extern int mono_video;
 extern int fast_selection;

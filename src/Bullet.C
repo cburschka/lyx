@@ -21,6 +21,14 @@
 
 #include "Bullet.h"
 
+/** The four LaTeX itemize environment default bullets
+ */
+extern
+Bullet const ITEMIZE_DEFAULTS[4] = { Bullet( 0, 8 ),//"\\(\\bullet\\)"
+				     Bullet( 0, 0 ),//"\\normalfont\\bfseries{--}"
+				     Bullet( 0, 6 ),//"\\(\\ast\\)"
+				     Bullet( 0, 10 ) };//"\\(\\cdot\\)"
+
 // will need these later if still using full text as below
 // \usepackage{latexsym,pifont,amssymb}
 // and wasysym when that panel is created
@@ -101,7 +109,7 @@ void Bullet::generateText()
 }
 
 
-string Bullet::bulletSize(const short & s)
+string Bullet::bulletSize(short int s)
 {
 	// use a parameter rather than hard code `size' in here
 	// in case some future function may want to retrieve
@@ -117,7 +125,7 @@ string Bullet::bulletSize(const short & s)
 }
 
 
-string Bullet::bulletEntry(const short & f, const short & c)
+string Bullet::bulletEntry(short int f, short int c)
 {
 	// Despite how this may at first appear the static local variables
 	// are only initialized once..

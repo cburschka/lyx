@@ -5,7 +5,7 @@
  *           LyX, The Document Processor
  * 	 
  *           Copyright 1995 Matthias Ettrich
- *           Copyright 1995-1999 The LyX Team.
+ *           Copyright 1995-2000 The LyX Team.
  *
  * ====================================================== */
 
@@ -24,7 +24,6 @@
 #include "insets/insetquotes.h"
 #include "layout.h"
 #include "support/block.h"
-
 
 /**
   This class contains all the parameters for this a buffer uses. Some
@@ -115,10 +114,13 @@ public:
 	void useClassDefaults();
 
 	///
-	VSpace getDefSkip() const { return defskip; }
+	VSpace const & getDefSkip() const { return defskip; }
 
 	///
-	void setDefSkip(VSpace vs) { defskip = vs; }
+	void setDefSkip(VSpace const & vs) { defskip = vs; }
+
+	///
+	LyXDirection getDocumentDirection() const;
 	
 	/** Wether paragraphs are separated by using a indent like in
 	  articles or by using a little skip like in letters.
@@ -206,7 +208,6 @@ public:
         bool use_amsmath;
 	/// Time ago we agreed that this was a buffer property [ale990407]
         string parentname;
-protected:
 private:
 	///
 	friend class Buffer;

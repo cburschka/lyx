@@ -40,7 +40,7 @@
 #include "support/LOstream.h"
 #include "LyXView.h"
 
-extern void UpdateInset(Inset * inset, bool mark_dirty = true);
+extern void UpdateInset(BufferView *, Inset * inset, bool mark_dirty = true);
 
 extern GC canvasGC, mathGC, mathLineGC, latexGC, cursorGC, mathFrameGC;
 extern char * mathed_label;
@@ -476,7 +476,7 @@ void InsetFormula::Edit(int x, int y)
    mathcursor = new MathedCursor(par);
    current_view->lockInset(this);
    par->Metrics();
-   UpdateInset(this, false);
+   UpdateInset(current_view, this, false);
    x += par->xo; 
    y += par->yo; 
    mathcursor->SetPos(x, y);
@@ -495,7 +495,7 @@ void InsetFormula::InsetUnlock()
      delete mathcursor;
    }
    mathcursor = 0;
-   UpdateInset(this, false);
+   UpdateInset(current_view, this, false);
 }
 
 
@@ -574,7 +574,7 @@ void InsetFormula::ToggleInsetSelection()
 //    x -= par->xo; 
 //    y -= par->yo;
 
-    UpdateInset(this, false);
+    UpdateInset(current_view, this, false);
       
 }
 
@@ -653,7 +653,7 @@ void InsetFormula::UpdateLocal()
 {
    par->Metrics();  // To inform lyx kernel the exact size 
                   // (there were problems with arrays).
-   UpdateInset(this);
+   UpdateInset(current_view, this);
 }
 
 
@@ -667,7 +667,7 @@ void InsetFormula::InsetButtonRelease(int x, int y, int /*button*/)
     if (sel_flag) {
 	sel_flag = false; 
 	sel_x = sel_y = 0;
-	UpdateInset(this, false); 
+	UpdateInset(current_view, this, false); 
     }
 }
 
@@ -678,7 +678,7 @@ void InsetFormula::InsetButtonPress(int x, int y, int /*button*/)
     sel_x = x;  sel_y = y; 
     if (mathcursor->Selection()) {
 	mathcursor->SelClear();
-	UpdateInset(this, false); 
+	UpdateInset(current_view, this, false); 
     }
 }
 
@@ -701,7 +701,7 @@ void InsetFormula::InsetMotionNotify(int x, int y, int /*button*/)
 	  ShowInsetCursor();
 	  mathcursor->GetPos(x, y);
 	  if (sel_x!= x || sel_y!= y)
-	    UpdateInset(this, false); 
+	    UpdateInset(current_view, this, false); 
 	  sel_x = x;  sel_y = y;
       }
 }
@@ -803,7 +803,7 @@ bool InsetFormula::LocalDispatch(int action, char const * arg)
 	 break;
        
        if (!mathcursor->InMacroMode() && mathcursor->pullArg()) {       
-	   UpdateInset(this);
+	   UpdateInset(current_view, this);
 	   break;
        }
       
@@ -811,7 +811,7 @@ bool InsetFormula::LocalDispatch(int action, char const * arg)
 	    //current_view->lockedInsetStoreUndo(Undo::INSERT);
 	    current_view->lockedInsetStoreUndo(Undo::DELETE);
       mathcursor->Delete();       
-      UpdateInset(this);
+      UpdateInset(current_view, this);
       break;    
 //    case LFUN_GETXY:
 //      sprintf(dispatch_buffer, "%d %d",);

@@ -42,7 +42,7 @@ enum combox_type {
 };
 
 /// callback prototype
-typedef void (*FL_COMBO_CB) (int, void*);
+typedef void (*FL_COMBO_CB) (int, void *);
 /// pre post prototype
 typedef void (*FL_COMBO_PRE_POST) ();
 
@@ -60,20 +60,20 @@ public:
 	void add(int x, int y, int w, int hmin, int hmax);
 	
 	/// Add lines. Same as for fl_browser object
-	void addline(char const*);
+	void addline(char const *);
 	/// Add lines. Same as for fl_browser object
-	void addto(char const*);
+	void addto(char const *);
 	
 	/// Returns the selected item
 	int get();
    
 	/// Returns a pointer to the selected line of text
-	char const*getline();
+	char const * getline();
    
 	///  Select an arbitrary item
 	void select(int);
 	///
-        bool select_text(char const*);
+        bool select_text(char const *);
    
 	///  Clear all the list
 	void clear();
@@ -102,7 +102,7 @@ public:
 	///
 	void deactivate();
 	///
-        void shortcut(char const*, int);
+        void shortcut(char const *, int);
 	///
 	void Redraw();
 	///
@@ -117,7 +117,7 @@ public:
         /// At least Hide should not be public
 	void Hide(int who = 0);
 	///
-	FL_OBJECT *browser;
+	FL_OBJECT * browser;
  private:
 	///
 	combox_type type;
@@ -130,15 +130,15 @@ public:
 	///
 	FL_COMBO_CB callback;
 	///
-	void *cb_arg;
+	void * cb_arg;
 	///
 	FL_COMBO_PRE_POST _pre;
 	///
 	FL_COMBO_PRE_POST _post;
 	///
-	FL_OBJECT *button;
+	FL_OBJECT * button;
 	///
-	FL_OBJECT *label;
+	FL_OBJECT * label;
 	///
         FL_FORM* form;
 };
@@ -148,13 +148,14 @@ public:
 //-----------------  Inline methods  --------------------------- 
 
 inline
-void Combox::addto(char const* text)
+void Combox::addto(char const * text)
 {
 	if (browser) {
 		fl_addto_browser(browser, text);
 		is_empty = false;
 	}
 }
+
 
 inline
 void Combox::resize(unsigned r)
@@ -163,6 +164,7 @@ void Combox::resize(unsigned r)
    if (label!= button) fl_set_object_resize(label, r); 
 }
 
+
 inline
 void Combox::gravity(unsigned g1, unsigned g2)
 {
@@ -170,19 +172,22 @@ void Combox::gravity(unsigned g1, unsigned g2)
    if (label!= button) fl_set_object_gravity(label, g1, g2); 
 }
 
+
 inline
-void Combox::shortcut(char const* s, int i)
+void Combox::shortcut(char const * s, int i)
 {
    if (button)
       fl_set_object_shortcut(button, s, i);
 }
 
+
 inline
-void Combox::setcallback(FL_COMBO_CB cb, void *a = 0)
+void Combox::setcallback(FL_COMBO_CB cb, void * a = 0)
 {
    callback = cb;
    cb_arg = a;
 }
+
 
 inline
 void Combox::setpre(FL_COMBO_PRE_POST cb)
@@ -190,17 +195,20 @@ void Combox::setpre(FL_COMBO_PRE_POST cb)
 	_pre = cb;
 }
 
+
 inline
 void Combox::setpost(FL_COMBO_PRE_POST cb)
 {
 	_post = cb;
 }
 
+
 inline
 int Combox::get()
 {
    return sel;
 }
+
 
 inline
 char const * Combox::getline()
@@ -212,5 +220,3 @@ char const * Combox::getline()
 }
 
 #endif
-
-

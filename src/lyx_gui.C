@@ -202,10 +202,8 @@ LyXGUI::~LyXGUI()
 {
         // Lyxserver was created in this class so should be destroyed
         // here.  asierra-970604
-        if (lyxserver) { // DEL LINE
-		delete lyxserver;
-		lyxserver = 0;
-	} // DEL LINE
+	delete lyxserver;
+	lyxserver = 0;
 
 	CloseLyXLookup();
 }
@@ -249,30 +247,12 @@ void LyXGUI::init()
         string popupfontname = lyxrc->popup_font_name 
 		               + "-*-*-*-?-*-*-*-*-"  
 		               + lyxrc->font_norm; 
-#if FL_REVISION > 85
+
         if (fl_set_font_name(FL_BOLD_STYLE, menufontname.c_str()) < 0)
-#else
-        int nfonts;
-        char ** list = XListFonts(fl_display, menufontname.c_str(), 
-				  1, &nfonts);
-        XFreeFontNames(list);
-        if (nfonts > 0)
-                fl_set_font_name(FL_BOLD_STYLE, menufontname.c_str());
-        else
-#endif
                 lyxerr << "Could not set menu font to "
 		       << menufontname << endl;
 
-#if FL_REVISION > 85
         if (fl_set_font_name(FL_NORMAL_STYLE, popupfontname.c_str()) < 0)
-#else
-        list = XListFonts(fl_display, popupfontname.c_str(), 
-			  1, &nfonts);
-        XFreeFontNames(list);
-        if (nfonts > 0)
-                fl_set_font_name(FL_NORMAL_STYLE, popupfontname.c_str());
-        else
-#endif
                 lyxerr << "Could not set popup font to "
 		       << popupfontname << endl;
 
@@ -349,9 +329,8 @@ void LyXGUI::create_forms()
 #else
 	FL_OBJECT *obj = fl_add_pixmapbutton(FL_NORMAL_BUTTON, 0, 0, 425, 290, "");
 	  fl_set_pixmapbutton_data(obj, const_cast<char **>(banner));
-#if FL_REVISION > 85
+
 	  fl_set_pixmapbutton_focus_outline(obj, 3);
-#endif
 #endif
 	  fl_set_button_shortcut(obj, "^M ^[", 1);
 	  fl_set_object_boxtype(obj, FL_NO_BOX);

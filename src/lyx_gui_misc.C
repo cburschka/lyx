@@ -372,11 +372,7 @@ bool AskQuestion(string const & s1, string const & s2, string const & s3)
 {
 	fl_set_resource("flQuestion.yes.label", idex(_("Yes|Yy#y")));
 	fl_set_resource("flQuestion.no.label", idex(_("No|Nn#n")));
-#if FL_REVISION > 85
 	return fl_show_question((s1 + "\n" + s2 + "\n" + s3).c_str(), 0);
-#else
-	return fl_show_question(s1.c_str(), s2.c_str(), s3.c_str());
-#endif
 }
 
 
@@ -386,18 +382,10 @@ int AskConfirmation(string const & s1, string const & s2, string const & s3)
 	fl_set_choices_shortcut(scex(_("Yes|Yy#y")),
 				scex(_("No|Nn#n")),
 				scex(_("Cancel|^[")));
-#if FL_REVISION < 86
-        return fl_show_choice(s1.c_str(), s2.c_str(), s3.c_str(), 
-			      3, idex(_("Yes|Yy#y")),
-			      idex(_("No|Nn#n")),
-			      idex(_("Cancel|^[")));
-#endif
-#if FL_REVISION > 85
         return fl_show_choice(s1.c_str(), s2.c_str(), s3.c_str(), 
 			      3, idex(_("Yes|Yy#y")),
 			      idex(_("No|Nn#n")),
                               idex(_("Cancel|^[")), 3);
-#endif
 }
 
 

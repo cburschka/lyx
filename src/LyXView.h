@@ -5,7 +5,7 @@
  *           LyX, The Document Processor
  *        
  *           Copyright 1995 Matthias Ettrich
- *           Copyright 1995-1998 The LyX Team.
+ *           Copyright 1995-2000 The LyX Team.
  *
  * ====================================================== */
 
@@ -17,11 +17,8 @@
 #endif
 
 #include FORMS_H_LOCATION
-#include "lyx.h"
 #include "buffer.h"
 #include "menus.h"
-#include "BufferView.h"
-#include "layout.h"
 
 class LyXFunc;
 class Toolbar;

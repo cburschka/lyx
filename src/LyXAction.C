@@ -128,8 +128,6 @@ void LyXAction::init()
 		{ LFUN_MENUNEWTMPLT,"buffer-new-template",
 		  N_("New document from template"), NoBuffer },
 		{ LFUN_MENUOPEN, "buffer-open", N_("Open"), NoBuffer },
-		{ LFUN_PREVBUFFER, "buffer-previous",
-		  N_("Switch to previous document"), ReadOnly },
 		{ LFUN_MENUPRINT, "buffer-print", N_("Print"), ReadOnly },
 		{ LFUN_MENURELOAD, "buffer-reload",
 		  N_("Revert to saved"), ReadOnly },

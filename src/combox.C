@@ -368,26 +368,20 @@ int Combox::peek_event(FL_FORM * form, void * xev)
 	FL_OBJECT * ob = static_cast<FL_OBJECT *>(form->u_vdata);
 	Combox * combo = static_cast<Combox*>(ob->u_vdata);
 	
-#if FL_REVISION < 86
-	if(((XEvent *)xev)->type == ButtonPress && !ob->belowmouse)
-#endif
-#if FL_REVISION > 85
-// I don't know why belowmouse does not work, but it doesn't. (Asger)
-		// Are we sure?
-		if (static_cast<XEvent *>(xev)->type == ButtonPress && (
-			static_cast<XEvent *>(xev)->xbutton.x - ob->x < 0 ||
-			static_cast<XEvent *>(xev)->xbutton.x - ob->x > ob->w ||
-			static_cast<XEvent *>(xev)->xbutton.y - ob->y < 0 ||
-			static_cast<XEvent *>(xev)->xbutton.y - ob->y > ob->h))
-#endif
-	{
+	// I don't know why belowmouse does not work, but it doesn't. (Asger)
+	// Are we sure? Please verify. (Lgb)
+	if (static_cast<XEvent *>(xev)->type == ButtonPress && (
+		static_cast<XEvent *>(xev)->xbutton.x - ob->x < 0 ||
+		static_cast<XEvent *>(xev)->xbutton.x - ob->x > ob->w ||
+		static_cast<XEvent *>(xev)->xbutton.y - ob->y < 0 ||
+		static_cast<XEvent *>(xev)->xbutton.y - ob->y > ob->h)) {
 		combo->Hide(1); 
 		return 1;
 	}
 		
 	if (static_cast<XEvent*>(xev)->type != KeyPress) return 0;
 	
-	char s_r[10];
+	char s_r[10]; s_r[9] = '\0';
 	static int num_bytes;
 	KeySym keysym_return;
 	num_bytes = XLookupString(&static_cast<XEvent*>(xev)->xkey, s_r, 10, 

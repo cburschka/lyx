@@ -287,12 +287,6 @@ void Toolbar::set(bool doingmain)
 		fl_addto_form(owner->getForm());
 	}
 
-#if FL_REVISION < 86
-	// Ensure borderwidth is 2 to get visual feedback
-	int bw = fl_get_border_width();
-	fl_set_border_width(-2);
-#endif
-
 	// add the time if it don't exist
 	if (bubble_timer == 0)
 		bubble_timer = fl_add_timer(FL_HIDDEN_TIMER,
@@ -330,10 +324,8 @@ void Toolbar::set(bool doingmain)
 					      NorthWestGravity);
 			fl_set_object_callback(obj, C_Toolbar_ToolbarCB,
 					       static_cast<long>(item->action));
-#if FL_REVISION >85
 			// Remove the blue feedback rectangle
 			fl_set_pixmapbutton_focus_outline(obj, 0);
-#endif
 
 			// set the bubble-help (Matthias)
 #ifdef WITH_WARNINGS
@@ -358,10 +350,7 @@ void Toolbar::set(bool doingmain)
 			break;
 		}
 	}
-#if FL_REVISION < 86
-	// Reset borderwidth to its default value.
-	fl_set_border_width(bw);
-#endif
+
 	if (!doingmain) {
 		fl_end_form();
 		fl_unfreeze_form(owner->getForm());

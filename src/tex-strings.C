@@ -12,12 +12,6 @@ char const * string_quotes_language[7] = {
         "english", "swedish", "german", "polish", "french", "danish", ""
 };      
 
-#if 0
-char const * string_oldpapersize[10] = {
-	"a4paper", "a4", "a4wide", "widemarginsa4", "usletter", 
-	"a5paper", "b5paper", "executivepaper", "legalpaper", ""
-};
-#endif
 
 char const * string_papersize[12] = {
 	"Default", "Custom", "letterpaper", "executivepaper", "legalpaper", 

@@ -13,42 +13,21 @@
 #pragma interface
 #endif
 
+#include <list>
+using std::list;
+
 #include "LString.h"
 
-#define KB_PREALLOC  16
-
-class kb_keymap;
 class kb_sequence;
-
-///
-struct kb_key {
-	/// Keysym
-	unsigned int code;
-	
-	/// Modifier masks
-	unsigned int mod;
-	
-	/// Keymap for prefix keys
-	kb_keymap * table;
-	
-	/// Action for !prefix keys
-	int action;
-};
-
 
 /// Defines key maps and actions for key sequences
 class kb_keymap {
 public:
 	///
-	kb_keymap() {
-		size = 0; 
-		table = 0;
-	}
-	///
 	~kb_keymap();
 	
-	/// Bind a key-sequence to an action
-	/** Returns 0 on success. Otherwise, position in string where
+	/** Bind a key-sequence to an action.
+	    Returns 0 on success. Otherwise, position in string where
 	    error occured. */
 	int bind(char const * seq, int action);
 
@@ -56,97 +35,44 @@ public:
 	void print(string & buf) const;
 	
 	/// Look up a key in the keymap
-	int lookup(unsigned long key, unsigned mod, kb_sequence * seq);
+	int lookup(unsigned int key,
+		   unsigned int mod, kb_sequence * seq) const;
 
 	/// Given an action, find all keybindings.
 	string findbinding(int action) const;
 private:
+	///
+	struct kb_key {
+		/// Keysym
+		unsigned int code;
+		
+		/// Modifier masks
+		unsigned int mod;
+		
+		/// Keymap for prefix keys
+		kb_keymap * table;
+		
+		/// Action for !prefix keys
+		int action;
+	};
+
+
 	/// Define a new key sequence
 	int defkey(kb_sequence * seq, int action, int idx = 0);
-	
-	/// Size of the table (<0: hashtab)
-	int size;
-	
-	/// Holds the defined keys
-	/// Table for linear array, table ends with NoSymbol.
-	kb_key * table;
-};
-
-
-/// Holds a key sequence and the current and standard keymaps
-class kb_sequence {
-public:
 	///
-	kb_sequence() {
-		stdmap = curmap = 0;
-		sequence = staticseq;
-		modifiers = staticmod;
-		length = 0; 
-		size = KB_PREALLOC;
+	static string keyname(kb_key const & k);
+	
+	///
+	static
+	void printKey(kb_key const & key, string & buf);
+	///
+	bool empty() const {
+		return table.empty();
 	}
-	
 	///
-	
-	
+	typedef list<kb_key> Table;
 	///
-	~kb_sequence() {
-		if (sequence != staticseq) {
-			delete sequence;
-			delete modifiers;
-		}
-	}
-	
-	/// Add a key to the key sequence and look it up in the curmap
-	/** Add a key to the key sequence and look it up in the curmap
-	    if the latter is defined. */
-	int addkey(unsigned long key, unsigned mod, unsigned nmod = 0);
-
-	///
-	int print(string & buf, bool when_defined = false) const;
-	
-        ///
-	int printOptions(string & buf) const;
-	
-	/// Make length negative to mark the sequence as deleted
-	void delseq();
-	
-	///
-	char getiso();
-	
-	///
-	unsigned long getsym();
-	
-	///
-	void reset();
-	
-	///
-	int parse(char const * s);
-	
-	/// Keymap to use if a new sequence is starting
-	kb_keymap * stdmap;
-	
-	/// Keymap to use for the next key
-	kb_keymap * curmap;
-	
-	/// Array holding the current key sequence
-	/** If sequence[length-1] < 0xff it can be used as ISO8859 char */
-	unsigned int * sequence;
-	
-	///
-	unsigned int * modifiers;
-	
-	/// Current length of key sequence
-	int length;
-	
-private:
-	/// Static array preallocated for sequence
-	unsigned int staticseq[KB_PREALLOC];
-	
-	///
-	unsigned int staticmod[KB_PREALLOC];
-	
-	/// Physically allocated storage size
-	int size;
+	Table table;
 };
 
 #endif

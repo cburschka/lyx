@@ -18,13 +18,14 @@
 
 #include FORMS_H_LOCATION
 #include "BackStack.h"
-#include "lyxtext.h"
 #include "LaTeX.h"
+#include "undo.h"
 
 class LyXView;
 class Buffer;
 class LyXScreen;
 class Inset;
+class LyXText;
 
 ///
 class BufferView {

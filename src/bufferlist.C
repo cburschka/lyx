@@ -39,6 +39,7 @@
 #include "gettext.h"
 #include "LyXView.h"
 #include "vc-backend.h"
+#include "TextCache.h"
 
 extern BufferView * current_view;
 extern int RunLinuxDoc(int, string const &);
@@ -47,6 +48,7 @@ using std::ifstream;
 using std::ofstream;
 using std::ios;
 using std::find;
+
 //
 // Class BufferStorage
 //
@@ -55,8 +57,12 @@ void BufferStorage::release(Buffer * buf)
 {
 	Container::iterator it = find(container.begin(), container.end(), buf);
 	if (it != container.end()) {
+		// Make sure that we don't store a LyXText in
+		// the textcache that points to the buffer
+		// we just deleted.
 		Buffer * tmp = (*it);
 		container.erase(it);
+		textcache.removeAllWithBuffer(tmp);
 		delete tmp;
 	}
 }
@@ -178,19 +184,12 @@ bool BufferList::write(Buffer * buf, bool makeBackup)
 			ifstream ifs(buf->fileName().c_str());
 			ofstream ofs(s.c_str(), ios::out|ios::trunc);
 			if (ifs && ofs) {
-#if 1
 				ofs << ifs.rdbuf();
-#else
-				char c = 0;
-				while (ifs.get(c)) {
-					ofs.put(c);
-				}
-#endif
 				ifs.close();
 				ofs.close();
-				chmod(s.c_str(), fmode);
+				::chmod(s.c_str(), fmode);
 				
-				if (utime(s.c_str(), times)) {
+				if (::utime(s.c_str(), times)) {
 					lyxerr << "utime error." << endl;
 				}
 			} else {
@@ -215,7 +214,7 @@ bool BufferList::write(Buffer * buf, bool makeBackup)
 		a += '#';
 		FileInfo fileinfo(a);
 		if (fileinfo.exist()) {
-			if (remove(a.c_str()) != 0) {
+			if (::remove(a.c_str()) != 0) {
 				WriteFSAlert(_("Could not delete "
 					       "auto-save file!"), a);
 			}
@@ -224,7 +223,7 @@ bool BufferList::write(Buffer * buf, bool makeBackup)
 		// Saving failed, so backup is not backup
 		if (makeBackup) {
 			string s = buf->fileName() + '~';
-			rename(s.c_str(), buf->fileName().c_str());
+			::rename(s.c_str(), buf->fileName().c_str());
 		}
 		current_view->owner()->getMiniBuffer()->Set(_("Save failed!"));
 		return false;
@@ -237,6 +236,10 @@ bool BufferList::write(Buffer * buf, bool makeBackup)
 void BufferList::closeAll()
 {
 	state_ = BufferList::CLOSING;
+	// Since we are closing we can just as well delete all
+	// in the textcache this will also speed the closing/quiting up a bit.
+	textcache.clear();
+	
 	while (!bstore.empty()) {
 		close(bstore.front());
 	}
@@ -435,7 +438,7 @@ Buffer * BufferList::readFile(string const & s, bool ronly)
 				use_emergency = true;
 			} else {
 				// Here, we should delete the emergency save
-				unlink(e.c_str());
+				::unlink(e.c_str());
 			}
 		}
 	}
@@ -458,7 +461,7 @@ Buffer * BufferList::readFile(string const & s, bool ronly)
 					b->markDirty();
 				} else {
 					// Here, we should delete the autosave
-					unlink(a.c_str());
+					::unlink(a.c_str());
 				}
 			}
 		}
@@ -507,14 +510,14 @@ Buffer * BufferList::getBuffer(string const & s)
 
 Buffer * BufferList::newFile(string const & name, string tname)
 {
-	/* get a free buffer */ 
+	// get a free buffer
 	Buffer * b = bstore.newBuffer(name, lyxrc);
 
 	// use defaults.lyx as a default template if it exists.
 	if (tname.empty()) {
 		tname = LibFileSearch("templates", "defaults.lyx");
 	}
-	if (!tname.empty() && IsLyXFilename(tname)){
+	if (!tname.empty() && IsLyXFilename(tname)) {
 		bool templateok = false;
 		LyXLex lex(0, 0);
 		lex.setFile(tname);
@@ -587,8 +590,8 @@ Buffer * BufferList::loadLyXFile(string const & filename, bool tolastfiles)
 	switch (IsFileWriteable(s)) {
 	case 0:
 		current_view->owner()->getMiniBuffer()->
-			Set(_("File `")+MakeDisplayPath(s, 50)+
-			_("' is read-only."));
+			Set(_("File `") + MakeDisplayPath(s, 50) +
+			    _("' is read-only."));
 		ro = true;
 		// Fall through
 	case 1:

@@ -27,7 +27,7 @@ FD_citation_form * citation_form = 0;
 FD_bibitem_form * bibitem_form = 0;
 static Combox * bibcombox = 0;
 
-extern void UpdateInset(Inset * inset, bool mark_dirty = true);
+extern void UpdateInset(BufferView *, Inset * inset, bool mark_dirty = true);
 void BibitemUpdate(Combox *);
 FD_citation_form * create_form_citation_form(void);
 FD_bibitem_form * create_form_bibitem_form(void);
@@ -45,7 +45,7 @@ extern "C" void bibitem_cb(FL_OBJECT *, long data)
 			fl_hide_form(citation_form->citation_form);
 			// shouldn't mark the buffer dirty unless something
 			// was actually altered
-			UpdateInset(inset);
+			UpdateInset(current_view, inset);
 			break;
 		}
 		// fall through to Cancel on RO-mode

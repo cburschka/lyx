@@ -4,7 +4,7 @@
  *           LyX, The Document Processor
  * 	 
  *	    Copyright 1995 Matthias Ettrich
- *          Copyright 1995-1999 The LyX Team.
+ *          Copyright 1995-2000 The LyX Team.
  *
  * ====================================================== */
 
@@ -30,9 +30,6 @@
 #include "lyx_main.h"
 #include "lyx_cb.h"
 #include "LyXAction.h"
-#if 0
-#include "insets/insetlatex.h"
-#endif
 #include "insets/inseturl.h"
 #include "insets/insetlatexaccent.h"
 #include "insets/insettoc.h"
@@ -116,16 +113,14 @@ extern void bulletForm();
 
 extern Buffer * NewLyxFile(string const &);
 extern void LoadLyXFile(string const &);
-extern void Reconfigure();
+extern void Reconfigure(BufferView *);
 
 extern int current_layout;
 extern int getISOCodeFromLaTeX(char *);
 
-//extern int UnlockInset(UpdatableInset *);
-
 extern void ShowLatexLog();
 
-extern void UpdateInset(Inset * inset, bool mark_dirty = true);
+extern void UpdateInset(BufferView *, Inset * inset, bool mark_dirty = true);
 
 /* === globals =========================================================== */
 
@@ -253,7 +248,7 @@ int LyXFunc::processKeyEvent(XEvent * ev)
 	// why not return already here if action == -1 and
 	// num_bytes == 0? (Lgb)
 
-	if(keyseq.length > 1 || keyseq.length < -1){
+	if(keyseq.length > 1 || keyseq.length < -1) {
 		string buf;
 		keyseq.print(buf);
 		owner->getMiniBuffer()->Set(buf);
@@ -438,8 +433,6 @@ string LyXFunc::Dispatch(int ac,
 	string argument;
 	kb_action action;
         
-	FL_OBJECT * ob = 0;  // This will disapear soon
-    
         // we have not done anything wrong yet.
         errorstat = false;
 	dispatch_buffer.clear();
@@ -554,7 +547,7 @@ string LyXFunc::Dispatch(int ac,
 						return string();
 					else {
 						setMessage(N_("Text mode"));
-						LyXDirection direction = owner->view()->text->GetParDirection(owner->view()->text->cursor.par);
+						LyXDirection direction = owner->view()->text->cursor.par->getParDirection();
 						if ( action == -1 ||
 						     (action == LFUN_RIGHT
 						      && direction == LYX_DIR_LEFT_TO_RIGHT)) {
@@ -782,7 +775,7 @@ string LyXFunc::Dispatch(int ac,
 		break;
 		
 	case LFUN_TOCVIEW:
-		TocUpdateCB(ob, 0);
+		TocUpdateCB(0, 0);
 		if (fd_form_toc->form_toc->visible) {
 			fl_raise_form(fd_form_toc->form_toc);
 		} else {
@@ -828,11 +821,11 @@ string LyXFunc::Dispatch(int ac,
 	}
 		
 	case LFUN_TABLE:
-		TableCB(ob, 0);
+		Table();
 		break;
 		
 	case LFUN_FIGURE:
-		FigureCB(ob, 0);
+		Figure();
 		break;
 		
 	case LFUN_AUTOSAVE:
@@ -920,33 +913,33 @@ string LyXFunc::Dispatch(int ac,
 		break;
 		
 	case LFUN_DEPTH:
-		DepthCB(ob, 0);
+		changeDepth(owner->view(), 0);
 		break;
 		
 	case LFUN_DEPTH_MIN:
-		DepthCB(ob, -1);
+		changeDepth(owner->view(), -1);
 		break;
 		
 	case LFUN_DEPTH_PLUS:
-		DepthCB(ob, 1);
+		changeDepth(owner->view(), 1);
 		break;
 		
 	case LFUN_FREE:
-		FreeCB();
+		Free();
 		break;
 		
 	case LFUN_TEX:
-		TexCB();
+		Tex();
 		owner->view()->SetState();
 		owner->getMiniBuffer()->Set(CurrentState());
 		break;
 		
 	case LFUN_MELT:
-		MeltCB(ob, 0);
+		Melt(owner->view());
 		break;
 		
 	case LFUN_RECONFIGURE:
-		Reconfigure();
+		Reconfigure(owner->view());
 		break;
 
 	case LFUN_FOOTMELT:
@@ -956,10 +949,10 @@ string LyXFunc::Dispatch(int ac,
 		    != LyXParagraph::NO_FOOTNOTE)
 			{ // only melt footnotes with FOOTMELT, not margins etc
 				if(owner->view()->text->cursor.par->footnotekind == LyXParagraph::FOOTNOTE)
-					MeltCB(ob, 0);
+					Melt(owner->view());
 			}
 		else
-			FootCB(ob, 0);
+			Foot(owner->view()); 
 		owner->view()->SetState();
 		break;
 
@@ -970,10 +963,9 @@ string LyXFunc::Dispatch(int ac,
 		    != LyXParagraph::NO_FOOTNOTE) {
 			// only melt margins
 			if(owner->view()->text->cursor.par->footnotekind == LyXParagraph::MARGIN)
-				MeltCB(ob, 0);
-		}
-		else
-			MarginCB(ob, 0); 
+				Melt(owner->view());
+		} else
+			Margin(owner->view()); 
 		owner->view()->SetState();
 		break;
 		
@@ -1020,22 +1012,7 @@ string LyXFunc::Dispatch(int ac,
 	}
 	
 	// --- buffers ----------------------------------------
-	case LFUN_PREVBUFFER:
-#ifdef WITH_WARNINGS
-#warning fix this please
-#endif
-		// it is the LyXView or the BufferView that should
-		// remember the previous buffer, not bufferlist.
-// 			if (owner->view()->available()){	  
-// 				owner->view()->beforeChange();
-// 				owner->buffer()->update(-2);
-// 			}
-// 			owner->view()->setBuffer(bufferlist.prev());
 
-// 			owner->view()->
-// 				resizeCurrentBufferPseudoExpose();
-		break;
-			
 	case LFUN_FILE_INSERT:
 	{
 		MenuInsertLyXFile(argument);
@@ -1172,39 +1149,39 @@ string LyXFunc::Dispatch(int ac,
 		break;
 
 	case LFUN_EMPH:
-		EmphCB();
+		Emph();
 		break;
 		
 	case LFUN_BOLD:
-		BoldCB();
+		Bold();
 		break;
 		
 	case LFUN_NOUN:
-		NounCB();
+		Noun();
 		break;
 		
 	case LFUN_CODE:
-		CodeCB();
+		Code();
 		break;
 		
 	case LFUN_SANS:
-		SansCB();
+		Sans();
 		break;
 		
 	case LFUN_ROMAN:
-		RomanCB();
+		Roman();
 		break;
 		
 	case LFUN_DEFAULT:
-		StyleResetCB();
+		StyleReset();
 		break;
 		
 	case LFUN_UNDERLINE:
-		UnderlineCB();
+		Underline();
 		break;
 		
 	case LFUN_FONT_SIZE:
-		FontSizeCB(argument);
+		FontSize(argument);
 		break;
 		
 	case LFUN_FONT_STATE:
@@ -1252,7 +1229,7 @@ string LyXFunc::Dispatch(int ac,
 				inset->setFlag(InsetRef::PAGE_REF);
 			else
 				inset->setFlag(InsetRef::REF);
-			UpdateInset(inset);
+			UpdateInset(owner->view(), inset);
 		} else {
 			setErrorMessage(N_("No cross-reference to toggle"));
 		}
@@ -1295,7 +1272,8 @@ string LyXFunc::Dispatch(int ac,
 	case LFUN_RIGHT:
 	{
 		LyXText * tmptext = owner->view()->text;
-		LyXDirection direction = tmptext->GetParDirection(tmptext->cursor.par);
+		LyXDirection direction =
+			tmptext->cursor.par->getParDirection();
 		if(!tmptext->mark_set)
 			owner->view()->beforeChange();
 		owner->view()->update(-2);
@@ -1324,7 +1302,7 @@ string LyXFunc::Dispatch(int ac,
 		// This is soooo ugly. Isn`t it possible to make
 		// it simpler? (Lgb)
 		LyXText * txt = owner->view()->text;
-		LyXDirection direction = txt->GetParDirection(txt->cursor.par);
+		LyXDirection direction = txt->cursor.par->getParDirection();
 		if(!txt->mark_set) owner->view()->beforeChange();
 		owner->view()->update(-2);
 		if (direction == LYX_DIR_LEFT_TO_RIGHT)
@@ -1442,7 +1420,7 @@ string LyXFunc::Dispatch(int ac,
 		if(!owner->view()->text->mark_set)
 			owner->view()->beforeChange();
 		owner->view()->update(-2);
-		if (owner->view()->text->GetParDirection(owner->view()->text->cursor.par) 
+		if (owner->view()->text->cursor.par->getParDirection() 
 		    == LYX_DIR_LEFT_TO_RIGHT)
 			owner->view()->text->CursorRightOneWord();
 		else
@@ -1456,7 +1434,7 @@ string LyXFunc::Dispatch(int ac,
 		if(!owner->view()->text->mark_set)
 			owner->view()->beforeChange();
 		owner->view()->update(-2);
-		if (owner->view()->text->GetParDirection(owner->view()->text->cursor.par) 
+		if (owner->view()->text->cursor.par->getParDirection() 
 		    == LYX_DIR_LEFT_TO_RIGHT)
 			owner->view()->text->CursorLeftOneWord();
 		else
@@ -1490,7 +1468,7 @@ string LyXFunc::Dispatch(int ac,
 		/* cursor selection ---------------------------- */
 	case LFUN_RIGHTSEL:
 		owner->view()->update(-2);
-		if (owner->view()->text->GetParDirection(owner->view()->text->cursor.par)
+		if (owner->view()->text->cursor.par->getParDirection()
 		    == LYX_DIR_LEFT_TO_RIGHT)
 			owner->view()->text->CursorRight();
 		else
@@ -1502,7 +1480,7 @@ string LyXFunc::Dispatch(int ac,
 		
 	case LFUN_LEFTSEL:
 		owner->view()->update(-2);
-		if (owner->view()->text->GetParDirection(owner->view()->text->cursor.par)
+		if (owner->view()->text->cursor.par->getParDirection()
 		    == LYX_DIR_LEFT_TO_RIGHT)
 			owner->view()->text->CursorLeft();
 		else
@@ -1578,7 +1556,7 @@ string LyXFunc::Dispatch(int ac,
 		
 	case LFUN_WORDRIGHTSEL:
 		owner->view()->update(-2);
-		if (owner->view()->text->GetParDirection(owner->view()->text->cursor.par)
+		if (owner->view()->text->cursor.par->getParDirection()
 		    == LYX_DIR_LEFT_TO_RIGHT)
 			owner->view()->text->CursorRightOneWord();
 		else
@@ -1590,7 +1568,7 @@ string LyXFunc::Dispatch(int ac,
 		
 	case LFUN_WORDLEFTSEL:
 		owner->view()->update(-2);
-		if (owner->view()->text->GetParDirection(owner->view()->text->cursor.par) 
+		if (owner->view()->text->cursor.par->getParDirection() 
 		    == LYX_DIR_LEFT_TO_RIGHT)
 			owner->view()->text->CursorLeftOneWord();
 		else
@@ -2097,14 +2075,7 @@ string LyXFunc::Dispatch(int ac,
 	break;
 	
 	// --- insert characters ----------------------------------------
-#if 0
-	case LFUN_INSERT_INSET_LATEX:
-	{
-		Inset * new_inset = new InsetLatex(argument);
-		owner->buffer()->insertInset(new_inset);
-	}
-	break;
-#endif
+
 	// ---  Mathed stuff. If we are here, there is no locked inset yet.
 	
 	// Greek mode     

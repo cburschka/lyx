@@ -128,5 +128,4 @@ bool LyXAction::isPseudoAction(int a) const
 	return a > int(LFUN_LASTACTION); 
 }
      
-
 #endif

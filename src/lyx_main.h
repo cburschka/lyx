@@ -4,8 +4,8 @@
 * 
 *           LyX, The Document Processor
 * 	 
-*	    Copyright (C) 1995 1996 Matthias Ettrich
-*           and the LyX Team.
+*           Copyright 1995 Matthias Ettrich
+*           Copyright 1995-2000 The LyX Team.
 *
 * ====================================================== */
 
@@ -29,17 +29,16 @@ extern string system_lyxdir;
 extern string user_lyxdir;
 extern string system_tempdir;
 
-extern LastFiles *lastfiles; /* we should hopefully be able to move this
+extern LastFiles * lastfiles; /* we should hopefully be able to move this
 			      * inside the LyX class */
 
-extern LyXRC *lyxrc;
+extern LyXRC * lyxrc;
 
 
 /**
   This is the main LyX object it encapsulates most of the other objects.
 */
-class LyX
-{
+class LyX {
 public:
 	/**@name Constructors and Deconstructors */
 	//@{
@@ -52,7 +51,7 @@ public:
 	/**@name Pointers to... */
 	//@{
 	///
-	LyXGUI *lyxGUI;  // should be only one of this
+	LyXGUI * lyxGUI;  // should be only one of this
 	//@}
 private:
 	/**@name Constructors and Deconstructors */
@@ -77,16 +76,14 @@ private:
 	///
 	void runtime();
 	///
-	void init(int *argc, char *argv[]);
+	void init(int * argc, char * argv[]);
 	///
 	void queryUserLyXDir();
 	///
         void ReadRcFile(string const & name);
         ///
-	bool easyParse(int *argc, char *argv[]);
+	bool easyParse(int * argc, char * argv[]);
 	//@}
 };
 
 #endif
-
-

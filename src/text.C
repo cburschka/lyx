@@ -30,6 +30,7 @@
 #include "debug.h"
 #include "lyxrc.h"
 #include "LyXView.h"
+#include "lyxrow.h"
 
 using std::max;
 using std::min;
@@ -131,48 +132,55 @@ LyXParagraph::size_type LyXText::RowLast(Row const * row) const
 		return row->next->pos - 1;
 }
 
-LyXDirection LyXText::GetDocumentDirection() const {
-	return (lyxrc->rtl_support && parameters->language == "hebrew")
+
+LyXDirection BufferParams::getDocumentDirection() const
+{
+	return (lyxrc->rtl_support && language == "hebrew")
 		? LYX_DIR_RIGHT_TO_LEFT : LYX_DIR_LEFT_TO_RIGHT;
 }
 
-LyXDirection LyXText::GetParDirection(LyXParagraph * par) const {
-	if (!lyxrc->rtl_support || par->table)
+LyXDirection LyXParagraph::getParDirection() const
+{
+	if (!lyxrc->rtl_support || table)
 		return LYX_DIR_LEFT_TO_RIGHT;
 
-	if (par->size() > 0)
-		return (GetFont(par, 0).direction() ==  LyXFont::RTL_DIR)
+	if (size() > 0)
+		return (getFont(0).direction() ==  LyXFont::RTL_DIR)
 			? LYX_DIR_RIGHT_TO_LEFT : LYX_DIR_LEFT_TO_RIGHT;
 	else
-		return GetDocumentDirection();
+		return current_view->buffer()->params.getDocumentDirection();
 }
 
-LyXDirection LyXText::GetFontDirection(LyXFont const &font) const {
+LyXDirection LyXFont::getFontDirection() const
+{
 	if (lyxrc->rtl_support 
-	    && font.direction() == LyXFont::RTL_DIR
-	    && font.latex() != LyXFont::ON)
+	    && direction() == LyXFont::RTL_DIR
+	    && latex() != LyXFont::ON)
 		return LYX_DIR_RIGHT_TO_LEFT;
 	else
 		return LYX_DIR_LEFT_TO_RIGHT;
 }
 
-LyXDirection LyXText::GetLetterDirection(LyXParagraph * par,
-					 LyXParagraph::size_type pos) const {
+LyXDirection
+LyXParagraph::getLetterDirection(LyXParagraph::size_type pos) const
+{
 	if (!lyxrc->rtl_support)
 		return LYX_DIR_LEFT_TO_RIGHT;
 
-	LyXDirection direction = GetFontDirection(GetFont(par, pos));
-	if (par->IsLineSeparator(pos) && 0 < pos && pos < par->Last()-1
-	    && !par->IsLineSeparator(pos+1)
-	    && !(par->table && par->IsNewline(pos+1))
-	    && ( GetFontDirection(GetFont(par, pos-1)) != direction ||
-		 GetFontDirection(GetFont(par, pos+1)) != direction) )
-		return GetParDirection(par);
+	LyXDirection direction = getFont(pos).getFontDirection();
+	if (IsLineSeparator(pos) && 0 < pos && pos < Last() - 1
+	    && !IsLineSeparator(pos + 1)
+	    && !(table && IsNewline(pos + 1))
+	    && (getFont(pos - 1).getFontDirection() != direction
+		|| getFont(pos + 1).getFontDirection() != direction))
+		return getParDirection();
 	else
 		return direction;
 }
 
-void LyXText::ComputeBidiTables(Row *row) const {
+
+void LyXText::ComputeBidiTables(Row * row) const
+{
 
 	if (!lyxrc->rtl_support) {
 		bidi_start = -1;
@@ -186,68 +194,81 @@ void LyXText::ComputeBidiTables(Row *row) const {
 		return;
 	}
 
-	if (last+2-bidi_start >
-	    static_cast<LyXParagraph::size_type>(log2vis_list.size()) ) {
+	if (last + 2 - bidi_start >
+	    static_cast<LyXParagraph::size_type>(log2vis_list.size())) {
 		LyXParagraph::size_type new_size = 
-			(last+2-bidi_start < 500) ? 500 : 2*(last+2-bidi_start);
+			(last + 2 - bidi_start < 500) ?
+			500 : 2 * (last + 2 - bidi_start);
 		log2vis_list.resize(new_size);
 		vis2log_list.resize(new_size);
 	}
 
-	vis2log_list[last+1-bidi_start] = -1;
-	log2vis_list[last+1-bidi_start] = -1;
+	vis2log_list[last + 1 - bidi_start] = -1;
+	log2vis_list[last + 1 - bidi_start] = -1;
 
 	LyXParagraph::size_type main_body = BeginningOfMainBody(row->par);
-	if (main_body > 0 && row->pos < main_body-1 && main_body-1 <= last
-	    && row->par->IsLineSeparator(main_body-1)) {
+	if (main_body > 0 && row->pos < main_body - 1 && main_body - 1 <= last
+	    && row->par->IsLineSeparator(main_body - 1)) {
 		// This is needed in case there is a direction change in
 		// the label which is continued into the main body
-		if (GetParDirection(row->par) == LYX_DIR_LEFT_TO_RIGHT) {
-			ComputeBidiTablesFromTo(row,bidi_start,main_body-2,0);
-			log2vis_list[main_body-1-bidi_start] = main_body-1;
-			vis2log_list[main_body-1-bidi_start] = main_body-1;
+		if (row->par->getParDirection() == LYX_DIR_LEFT_TO_RIGHT) {
+			ComputeBidiTablesFromTo(row, bidi_start,
+						main_body - 2, 0);
+			log2vis_list[main_body - 1 - bidi_start] =
+				main_body - 1;
+			vis2log_list[main_body - 1 - bidi_start] =
+				main_body - 1;
 			if (main_body <= last)
-				ComputeBidiTablesFromTo(row,main_body,last,0);
+				ComputeBidiTablesFromTo(row,
+							main_body,last, 0);
 		} else {
-			ComputeBidiTablesFromTo(row,bidi_start,main_body-2,last-main_body+2);
-			log2vis_list[main_body-1-bidi_start] = last-main_body+1+bidi_start;
-			vis2log_list[last-main_body+1-bidi_start] = main_body-1;
+			ComputeBidiTablesFromTo(row, bidi_start,
+						main_body - 2,
+						last - main_body + 2);
+			log2vis_list[main_body - 1 - bidi_start] =
+				last - main_body + 1 + bidi_start;
+			vis2log_list[last - main_body + 1 - bidi_start] =
+				main_body - 1;
 			if (main_body <= last)
-				ComputeBidiTablesFromTo(row,main_body,last,-main_body);
+				ComputeBidiTablesFromTo(row, main_body,
+							last, -main_body);
 		}
 	} else
-		ComputeBidiTablesFromTo(row,bidi_start,last,0);
+		ComputeBidiTablesFromTo(row, bidi_start, last, 0);
 }
 
 
-void LyXText::ComputeBidiTablesFromTo(Row *row,
+void LyXText::ComputeBidiTablesFromTo(Row * row,
 				      LyXParagraph::size_type from,
 				      LyXParagraph::size_type to,
-				      LyXParagraph::size_type offset) const {
-
+				      LyXParagraph::size_type offset) const
+{
 	LyXParagraph::size_type vpos, old_lpos, stack[2];
-	LyXDirection par_direction = GetParDirection(row->par);
+	LyXDirection par_direction = row->par->getParDirection();
 	LyXDirection direction = par_direction;
 	LyXParagraph::size_type lpos = from;
 	int level = 0;
 
 	while (lpos <= to) {
-		if (GetLetterDirection(row->par, lpos) == direction) {
-			log2vis_list[lpos-bidi_start] = direction;
-			lpos++;
+		if (row->par->getLetterDirection(lpos) == direction) {
+			log2vis_list[lpos - bidi_start] = direction;
+			++lpos;
 		} else {
 			if (level == 0 ||
 			    (level == 1 && direction == LYX_DIR_RIGHT_TO_LEFT
-			     && GetFont(row->par, lpos).direction() == LyXFont::RTL_DIR
-			     && GetFont(row->par, lpos).latex() == LyXFont::ON ) ) {
-				// The last check is needed when the char is a space
+			     && row->par->getFont(lpos).direction() ==
+			     LyXFont::RTL_DIR
+			     && row->par->getFont(lpos).latex() ==
+			     LyXFont::ON ) ) {
+				// The last check is needed when the
+				// char is a space
 				stack[level++] = lpos;
 			} else {
 				old_lpos = stack[--level];
-				log2vis_list[old_lpos-bidi_start] = 
-					log2vis_list[lpos-bidi_start] =
-					(old_lpos-lpos)*direction;
-				lpos++;
+				log2vis_list[old_lpos - bidi_start] = 
+					log2vis_list[lpos - bidi_start] =
+					(old_lpos - lpos) * direction;
+				++lpos;
 			}
 			direction = static_cast<LyXDirection>(-direction);
 		}
@@ -255,19 +276,21 @@ void LyXText::ComputeBidiTablesFromTo(Row *row,
 
 	while (level > 0) {
 		old_lpos = stack[--level];
-		log2vis_list[old_lpos-bidi_start] = (old_lpos-(to+1))*direction; 
+		log2vis_list[old_lpos - bidi_start] =
+			(old_lpos - (to + 1)) * direction; 
 		direction = static_cast<LyXDirection>(-direction);
 	}
 
 	vpos = (par_direction == LYX_DIR_LEFT_TO_RIGHT)
-		? from-1 : to+1;
+		? from - 1 : to + 1;
 	vpos += offset;
-	for (lpos = from; lpos <= to; lpos++) {
-		vpos += log2vis_list[lpos-bidi_start];
-		vis2log_list[vpos-bidi_start] = lpos;
-		log2vis_list[lpos-bidi_start] = vpos;
+	for (lpos = from; lpos <= to; ++lpos) {
+		vpos += log2vis_list[lpos - bidi_start];
+		vis2log_list[vpos - bidi_start] = lpos;
+		log2vis_list[lpos - bidi_start] = vpos;
 	}
 }
+
 
 void LyXText::Draw(Row const * row, LyXParagraph::size_type & vpos,
 		   LyXScreen & scr, int offset, float & x)
@@ -284,7 +307,7 @@ void LyXText::Draw(Row const * row, LyXParagraph::size_type & vpos,
 		int wid = font.width('n');
 		int y = (offset + row->baseline);
 		XPoint p[3];
-		if (GetLetterDirection(row->par, pos) == LYX_DIR_LEFT_TO_RIGHT) {
+		if (row->par->getLetterDirection(pos) == LYX_DIR_LEFT_TO_RIGHT) {
 			p[0].x = int(x + wid*0.375); p[0].y = int(y - 0.875*asc*0.75);
 			p[1].x = int(x);	     p[1].y = int(y - 0.500*asc*0.75);
 			p[2].x = int(x + wid*0.375); p[2].y = int(y - 0.125*asc*0.75);
@@ -2652,7 +2675,7 @@ void LyXText::PrepareToPrint(Row * row, float & x,
 	fill_separator = 0;
 	fill_label_hfill = 0;
 
-	LyXDirection direction = GetParDirection(row->par);
+	LyXDirection direction = row->par->getParDirection();
 
 	if (direction == LYX_DIR_RIGHT_TO_LEFT) {
 		x = RightMargin(row);
@@ -3481,7 +3504,7 @@ void LyXText::GetVisibleRow(LyXScreen & scr, int offset,
 			    Row * row_ptr, long y)
 {
 	/* returns a printed row */
-	LyXDirection direction = GetParDirection(row_ptr->par);
+	LyXDirection direction = row_ptr->par->getParDirection();
 	LyXParagraph::size_type vpos, pos, pos_end;
 	float x, tmpx;
 	int y_top, y_bottom;
@@ -4101,7 +4124,7 @@ int LyXText::GetColumnNearX(Row * row, int & x) const
 	PrepareToPrint(row, tmpx, fill_separator,
 		       fill_hfill, fill_label_hfill);
 
-	LyXDirection direction = GetParDirection(row->par);
+	LyXDirection direction = row->par->getParDirection();
 	LyXParagraph::size_type vc = row->pos;
 	LyXParagraph::size_type last = RowLast(row);
 	LyXParagraph::size_type c;
@@ -4192,28 +4215,28 @@ int LyXText::GetColumnNearX(Row * row, int & x) const
 		c = row->pos;
 	else if (vc <= last) {
 		c = vis2log(vc);
-		LyXDirection direction = GetLetterDirection(row->par , c);
+		LyXDirection direction = row->par->getLetterDirection(c);
 		if (vc > row->pos && row->par->IsLineSeparator(c)
-		    && GetLetterDirection(row->par , vis2log(vc-1)) != direction)
+		    && row->par->getLetterDirection(vis2log(vc - 1)) != direction)
 			c = vis2log(vc-1);
 		if (direction == LYX_DIR_RIGHT_TO_LEFT)
 			++c;
 	} else {
 		c = vis2log(last)+1;
-		if (GetLetterDirection(row->par, c-1) == LYX_DIR_RIGHT_TO_LEFT)
+		if (row->par->getLetterDirection(c - 1) == LYX_DIR_RIGHT_TO_LEFT)
 			--c;		
 	}
 
 	if (!row->par->table && row->pos <= last && c > last
 	    && row->par->IsNewline(last)) {
-		if (GetLetterDirection(row->par,last) == LYX_DIR_LEFT_TO_RIGHT)
+		if (row->par->getLetterDirection(last) == LYX_DIR_LEFT_TO_RIGHT)
 			tmpx -= SingleWidth(row->par, last);
 		else
 			tmpx += SingleWidth(row->par, last);
 		c = last;
 	}
 
-	c-= row->pos;	
+	c -= row->pos;
 	x = int(tmpx);
 	return c;
 }

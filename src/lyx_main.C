@@ -4,7 +4,7 @@
  *           LyX, The Document Processor
  * 	 
  *           Copyright 1995 Matthias Ettrich
- *           Copyright 1995-1999 The LyX Team.
+ *           Copyright 1995-2000 The LyX Team.
  *
  * ====================================================== */
 
@@ -28,6 +28,7 @@
 #include "lyxserver.h"
 #include "layout.h"
 #include "gettext.h"
+#include "kbmap.h"
 
 extern void LoadLyXFile(string const &);
 
@@ -88,7 +89,7 @@ LyX::LyX(int * argc, char * argv[])
 	// filenames.
 	if ((*argc) == 2) 
 		lyxerr[Debug::INFO] << "Opening document..." << endl;
-	else if ((*argc)>2)
+	else if ((*argc) > 2)
 		lyxerr[Debug::INFO] << "Opening documents..." << endl;
 
 	Buffer * last_loaded = 0;
@@ -133,11 +134,8 @@ LyX::LyX(int * argc, char * argv[])
 // A destructor is always necessary  (asierra-970604)
 LyX::~LyX()
 {
-	if (lastfiles) // DEL LINE
-		delete lastfiles;
-
-	if (lyxGUI) // DEL LINE
-		delete lyxGUI;
+	delete lastfiles;
+	delete lyxGUI;
 }
 
 

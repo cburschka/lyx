@@ -517,8 +517,7 @@ MathAccentInset::MathAccentInset(MathedInset *ins, int cd, short st)
 
 MathAccentInset::~MathAccentInset()
 {
-    if (inset) // DEL LINE
-      delete inset;
+	delete inset;
 }
 
 

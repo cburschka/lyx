@@ -5,7 +5,7 @@
  *           LyX, The Document Processor
  * 	 
  *	    Copyright 1995 Matthias Ettrich
- *          Copyright 1995-1999 The LyX Team.
+ *          Copyright 1995-2000 The LyX Team.
  *
  * ====================================================== */
 
@@ -25,9 +25,7 @@
 #include "vspace.h"
 #include "layout.h"
 #include "support/block.h"
-
-#define NEW_INSETTABLE 1
-#define NEW_FONTTABLE 1
+#include "direction.h"
 
 class BufferParams;
 class LyXBuffer;
@@ -114,6 +112,13 @@ public:
 	};
 	
 	///
+	typedef char value_type;
+	///
+	typedef vector<value_type> TextContainer;
+	///
+	typedef int size_type;
+
+	///
 	LyXParagraph();
 	/// this konstruktor inserts the new paragraph in a list
 	LyXParagraph(LyXParagraph * par);
@@ -121,9 +126,14 @@ public:
 	~LyXParagraph();
 
 	///
+	LyXDirection getParDirection() const;
+	///
+	LyXDirection getLetterDirection(size_type pos) const;
+	
+	///
 	void writeFile(ostream &, BufferParams &, char, char);
 	///
-	void validate(LaTeXFeatures &);
+	void validate(LaTeXFeatures &) const;
 	
 	///
 	int id() const {
@@ -154,7 +164,7 @@ public:
 	LyXParagraph * Clone() const;
 	
 	///
-	bool HasSameLayout(LyXParagraph const * par);
+	bool HasSameLayout(LyXParagraph const * par) const;
 	
 	///
 	void MakeSameLayout(LyXParagraph const * par);
@@ -168,12 +178,6 @@ public:
 	}
 
 
-	///
-	typedef char value_type;
-	///
-	typedef vector<value_type> TextContainer;
-	///
-	typedef int size_type;
 	///
 	TextContainer text;
 	///
@@ -429,7 +433,7 @@ public:
 	LyXParagraph * FirstSelfrowPar();
 
 	///
-	int ClearParagraph(){
+	int ClearParagraph() {
 		int i = 0;
 		if (!IsDummy() && !table){
 			while (Last()
@@ -492,10 +496,6 @@ private:
 		allowed in these font tables.
 		*/
 		LyXFont font;
-#ifndef NEW_FONTTABLE
-		/// Pointer to next font entry
-		FontTable * next;
-#endif
 	};
 	///
 	struct InsetTable {
@@ -503,29 +503,15 @@ private:
 		size_type pos;
 		///
 		Inset * inset;
-#ifndef NEW_INSETTABLE
-		///
-		InsetTable * next;
-#endif
 	};
-#ifdef NEW_FONTTABLE
 	///
 	typedef list<FontTable> FontList;
 	///
 	FontList fontlist;
-#else
-	///
-	FontTable * fonttable;
-#endif
-#ifdef NEW_INSETTABLE
 	///
 	typedef list<InsetTable> InsetList;
 	///
 	InsetList insetlist;
-#else
-	///
-	InsetTable * insettable;
-#endif
 	///
 	LyXParagraph * TeXDeeper(string & file, TexRow & texrow,
 				   string & foot, TexRow & foot_texrow,

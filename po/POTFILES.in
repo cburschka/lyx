@@ -11,6 +11,7 @@
 
 src/buffer.C
 src/bufferlist.C
+src/BufferView2.C
 src/BufferView.C
 src/bullet_forms.C
 src/bullet_forms_cb.C
@@ -42,7 +43,7 @@ src/insets/inseturl.C
 src/insets/inseturl.h
 src/insets/lyxinset.h
 src/intl.C
-src/kbmap.C
+src/kbsequence.C
 src/LaTeX.C
 src/LaTeXLog.C
 src/latexoptions.C

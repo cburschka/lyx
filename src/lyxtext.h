@@ -17,7 +17,6 @@
 #endif
 
 #include "lyxfont.h"
-#include "lyxrow.h"
 #include "undo.h"
 #include "lyxcursor.h"
 #include "lyxparagraph.h"
@@ -26,6 +25,7 @@
 class Buffer;
 class BufferParams;
 class LyXScreen;
+class Row;
 
 /**
   This class holds the mapping between buffer paragraphs and screen rows.
@@ -467,28 +467,12 @@ public:
 	void CursorRightIntern() const;
         ///
         void RemoveTableRow(LyXCursor * cursor) const;
-#if 0
-        ///
-        bool IsEmptyTableRow(LyXCursor const & cursor) const;
-#endif
         ///
         bool IsEmptyTableCell() const;
         ///
         void toggleAppendix();
 	///
 	unsigned short paperWidth() const { return paperwidth; }
-
-	///
-	LyXDirection GetDocumentDirection() const;
-	///
-	LyXDirection GetParDirection(LyXParagraph * par) const;
-
-	///
-	LyXDirection GetFontDirection(LyXFont const &font) const;
-
-	///
-	LyXDirection GetLetterDirection(LyXParagraph * par, LyXParagraph::size_type pos) const;
-
 private:
 	/// width of the paper
 	unsigned short  paperwidth;

@@ -15,27 +15,23 @@
 
 #include <config.h>
 
-// For 1.1.4 we disable the new code:
-#ifdef MODERN_STL_STREAMS
-#undef MODERN_STL_STREAMS
-// It seems that some systems have buggy istream::readsome(...)
-#endif
-
-#ifdef MODERN_STL_STREAMS
 #include <fstream>
-using std::ifstream;
+
+#ifdef HAVE_SSTREAM
+#include <sstream>
+using std::ostringstream;
 #else
-#include <cstdio>
+#include <strstream>
 #endif
 
 #include "support/lyxlib.h"
 
-
-/* Number of bytes to read at once.  */
-#define BUFLEN (1 << 16)
+using std::ifstream;
+using std::ios;
 
 // DO _NOT_ CHANGE _ANYTHING_ IN THIS TABLE
-static unsigned long const crctab[256] =
+static
+unsigned long const crctab[256] =
 {
 	0x0,
 	0x04C11DB7, 0x09823B6E, 0x0D4326D9, 0x130476DC, 0x17C56B6B,
@@ -90,72 +86,49 @@ static unsigned long const crctab[256] =
 	0x933EB0BB, 0x97FFAD0C, 0xAFB010B1, 0xAB710D06, 0xA6322BDF,
 	0xA2F33668, 0xBCB4666D, 0xB8757BDA, 0xB5365D03, 0xB1F740B4
 };
- 
+
 /* Calculate the checksum of file FILE.
    Return crc if successful, 0 if an error occurs. */
  
-unsigned long
-lyx::sum (char const * file)
+template<typename InputIterator>
+static inline
+unsigned long do_crc(InputIterator first, InputIterator last)
 {
 	unsigned long crc = 0;
-	long length = 0;
-	long bytes_read;
-#ifdef MODERN_STL_STREAMS
-	char buf[BUFLEN];
-	ifstream ifs(file);
-	if (!ifs) {
-		return 0;
+	long bytes_read = 0;
+	while(first != last) {
+		++bytes_read;
+		crc = (crc << 8)
+			^ crctab[((crc >> 24) ^ *first++) & 0xFF];
 	}
- 
-	while ((bytes_read = ifs.readsome(buf, BUFLEN)) > 0) {
-		unsigned char * cp = reinterpret_cast<unsigned char*>(buf);
-		length += bytes_read;
-		while (bytes_read--)
-			crc = (crc << 8) ^ crctab[((crc >> 24) ^ *(cp++)) & 0xFF];
-	}
- 
-	if (ifs.fail()) {
-		ifs.close();
-		return 0;
-	}
-
-	ifs.close();
-	if (ifs.fail()) {
-		return 0;
-	}
-#else
-	unsigned char buf[BUFLEN];
- 
-	register FILE * fp = fopen (file, "r");
-	if (fp == 0) {
-		return 0;
-	}
- 
-	while ((bytes_read = fread (buf, 1, BUFLEN, fp)) > 0) {
-		unsigned char *cp = buf;
-		
-		length += bytes_read;
-		while (bytes_read--)
-			crc = (crc << 8) ^ crctab[((crc >> 24) ^ *(cp++)) & 0xFF];
-	}
- 
-	if (ferror (fp)) {
-		fclose (fp);
-		return 0;
-	}
- 
-	if (fclose (fp) == EOF)	{
-		return 0;
-	}
-#endif 
-	bytes_read = length;
 	while (bytes_read > 0) {
-		crc = (crc << 8) ^ crctab[((crc >> 24) ^ bytes_read) & 0xFF];
+		crc = (crc << 8)
+			^ crctab[((crc >> 24) ^ bytes_read) & 0xFF];
 		bytes_read >>= 8;
 	}
- 
-	crc = ~crc & 0xFFFFFFFF;
- 
-	return crc;
+	return ~crc & 0xFFFFFFFF;
 }
- 
+
+
+// And this would be the file interface.
+unsigned long lyx::sum(char const * file)
+{
+	ifstream ifs(file);
+	if (!ifs) return 0;
+	ifs.unsetf(ios::skipws);
+#ifdef HAVE_SSTREAM
+	ostringstream ostr;
+	ostr << ifs.rdbuf();
+	string w = ostr.str();
+	return do_crc(w.begin(), w.end());
+#else
+	ostrstream ostr;
+	ostr << ifs.rdbuf();
+	char * tmp = ostr.str();
+	if (!tmp) return 0; // empty file
+	string w(tmp, ostr.tellp());
+	unsigned long crc = do_crc(w.begin(), w.end());
+	delete tmp;
+	return crc;
+#endif
+}

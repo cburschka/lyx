@@ -10,8 +10,6 @@ extern char const * string_paragraph_separation[];
 ///
 extern char const * string_quotes_language[];
 ///
-extern char const * string_oldpapersize[];
-///
 extern char const * string_papersize[];
 ///
 extern char const * string_paperpackages[];
