@@ -1805,7 +1805,7 @@ void LyXText::breakParagraph(BufferView * bview, char keep_layout)
 
 	insertParagraph(bview, cursor.par()->next(), cursor.row());
 
-	updateCounters(bview, cursor.row()->previous());
+	updateCounters(bview);
 
 	// This check is necessary. Otherwise the new empty paragraph will
 	// be deleted automatically. And it is more friendly for the user!
@@ -2818,7 +2818,7 @@ void LyXText::backspace(BufferView * bview)
 
 			// This rebuilds the rows.
 			appendParagraph(bview, cursor.row());
-			updateCounters(bview, cursor.row());
+			updateCounters(bview);
 
 			// the row may have changed, block, hfills etc.
 			setCursor(bview, cursor.par(), cursor.pos(), false);

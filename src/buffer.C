@@ -20,6 +20,7 @@
 
 #include "buffer.h"
 #include "bufferlist.h"
+#include "counters.h"
 #include "LyXAction.h"
 #include "lyxrc.h"
 #include "lyxlex.h"
@@ -148,7 +149,7 @@ const int LYX_FORMAT = 220;
 Buffer::Buffer(string const & file, bool ronly)
 	: niceFile(true), lyx_clean(true), bak_clean(true),
 	  unnamed(false), dep_clean(0), read_only(ronly),
-	  filename_(file), users(0)
+	  filename_(file), users(0), ctrs(new Counters)
 {
 	lyxerr[Debug::INFO] << "Buffer::Buffer()" << endl;
 //	filename = file;
@@ -3857,6 +3858,12 @@ bool Buffer::isMultiLingual()
 			return true;
 
 	return false;
+}
+
+
+Counters & Buffer::counters() const
+{
+	return *ctrs.get();
 }
 
 

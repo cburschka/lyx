@@ -222,6 +222,7 @@ void Counters::reset(string const & match)
 	}
 }
 
+
 void Counters::copy(Counters & from, Counters & to, string const & match)
 {
 	CounterList::iterator it = counterList.begin();
@@ -245,6 +246,7 @@ char loweralphaCounter(int n)
 		return 'a' + n - 1;
 }
 
+
 inline
 char alphaCounter(int n)
 {
@@ -253,6 +255,7 @@ char alphaCounter(int n)
 	else
 		return 'A' + n - 1;
 }
+
 
 inline
 char hebrewCounter(int n)
@@ -267,6 +270,7 @@ char hebrewCounter(int n)
 	else
 		return hebrew[n-1];
 }
+
 
 inline
 string const romanCounter(int n)
@@ -285,10 +289,11 @@ string const romanCounter(int n)
 
 } // namespace anon
 
+
 string Counters::labelItem(string const & ctr,
-		string const & numbertype,
-		string const & langtype,
-		bool first)
+			   string const & numbertype,
+			   string const & langtype,
+			   bool first)
 {
 	ostringstream s, o;
 	CounterList::iterator it = counterList.find(ctr);
@@ -314,10 +319,11 @@ string Counters::labelItem(string const & ctr,
 	return s.str();
 }
 
+
 string Counters::numberLabel(string const & ctr,
-		string const & numbertype,
-		string const & langtype,
-		int head)
+			     string const & numbertype,
+			     string const & langtype,
+			     int head)
 {
 	ostringstream s, o;
 	if (numbertype == "sectioning" || numbertype == "appendix") {

@@ -216,7 +216,7 @@ bool textHandleUndo(BufferView * bv, Undo & undo)
 			// for an evt. new selection.
 			t->clearSelection();
 			t->selection.cursor = t->cursor;
-			t->updateCounters(bv, t->cursor.row());
+			t->updateCounters(bv);
 			bv->fitCursor();
 		}
 		bv->updateInset(it, false);
@@ -238,7 +238,7 @@ bool textHandleUndo(BufferView * bv, Undo & undo)
 			// for an evt. new selection.
 			t->clearSelection();
 			t->selection.cursor = t->cursor;
-			t->updateCounters(bv, t->cursor.row());
+			t->updateCounters(bv);
 		}
 	}
 

@@ -2057,7 +2057,3 @@ bool Paragraph::isFreeSpacing() const
 }
 
 
-Counters & Paragraph::counters()
-{
-	return pimpl_->ctrs;
-}

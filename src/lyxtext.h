@@ -618,7 +618,7 @@ private:
 public:
 	/** Updates all counters starting BEHIND the row. Changed paragraphs
 	 * with a dynamic left margin will be rebroken. */
-	void updateCounters(BufferView *, Row * row) const;
+	void updateCounters(BufferView *) const;
 private:
 	///
 	void setCounter(Buffer const *, Paragraph * par) const;

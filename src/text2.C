@@ -542,7 +542,7 @@ void LyXText::setLayout(BufferView * bview, string const & layout)
 		  selection.start.pos(), false);
 	selection.cursor = cursor;
 	setCursor(bview, selection.end.par(), selection.end.pos(), false);
-	updateCounters(bview, cursor.row());
+	updateCounters(bview);
 	clearSelection();
 	setSelection(bview);
 	setCursor(bview, tmpcursor.par(), tmpcursor.pos(), true);
@@ -619,7 +619,7 @@ void  LyXText::incDepth(BufferView * bview)
 	setCursor(bview, selection.start.par(), selection.start.pos());
 	selection.cursor = cursor;
 	setCursor(bview, selection.end.par(), selection.end.pos());
-	updateCounters(bview, cursor.row());
+	updateCounters(bview);
 	clearSelection();
 	setSelection(bview);
 	setCursor(bview, tmpcursor.par(), tmpcursor.pos());
@@ -676,7 +676,7 @@ void  LyXText::decDepth(BufferView * bview)
 		  selection.start.pos());
 	selection.cursor = cursor;
 	setCursor(bview, selection.end.par(), selection.end.pos());
-	updateCounters(bview, cursor.row());
+	updateCounters(bview);
 	clearSelection();
 	setSelection(bview);
 	setCursor(bview, tmpcursor.par(), tmpcursor.pos());
@@ -883,6 +883,7 @@ void LyXText::redoParagraphs(BufferView * bview, LyXCursor const & cur,
 
 	if (tmprow && tmprow->next())
 		setHeightOfRow(bview, tmprow->next());
+	updateCounters(bview);
 }
 
 
@@ -1218,21 +1219,16 @@ void LyXText::setCounter(Buffer const * buf, Paragraph * par) const
 	LyXTextClass const & textclass = buf->params.getLyXTextClass();
 	LyXLayout_ptr const & layout = par->layout();
 
-	// copy the prev-counters to this one,
-	// unless this is the first paragraph
 	if (par->previous()) {
-
-		par->counters().copy(par->previous()->counters(), par->counters(), "");
 
 		par->params().appendix(par->previous()->params().appendix());
 		if (!par->params().appendix() && par->params().startOfAppendix()) {
 			par->params().appendix(true);
-			par->counters().reset();
+			buf->counters().reset();
 		}
 		par->enumdepth = par->previous()->enumdepth;
 		par->itemdepth = par->previous()->itemdepth;
 	} else {
-		par->counters().reset();
 		par->params().appendix(par->params().startOfAppendix());
 		par->enumdepth = 0;
 		par->itemdepth = 0;
@@ -1258,8 +1254,6 @@ void LyXText::setCounter(Buffer const * buf, Paragraph * par) const
 	    && par->previous()->getDepth() > par->getDepth()
 	    && layout->labeltype != LABEL_BIBLIO) {
 		par->enumdepth = par->depthHook(par->getDepth())->enumdepth;
-		par->counters().set(par->counters().enums[par->enumdepth],
-			par->depthHook(par->getDepth())->counters().value(par->counters().enums[par->enumdepth]));
 	}
 
 	if (!par->params().labelString().empty()) {
@@ -1283,7 +1277,7 @@ void LyXText::setCounter(Buffer const * buf, Paragraph * par) const
 
 		if (i >= 0 && i<= buf->params.secnumdepth) {
 
-			par->counters().step(par->counters().sects[i]);
+			buf->counters().step(buf->counters().sects[i]);
 
 			// Is there a label? Useful for Chapter layout
 			if (!par->params().appendix()) {
@@ -1310,28 +1304,28 @@ void LyXText::setCounter(Buffer const * buf, Paragraph * par) const
 					langtype = "latin";
 			}
 
-			s << par->counters().numberLabel(par->counters().sects[i],
+			s << buf->counters().numberLabel(buf->counters().sects[i],
 				numbertype, langtype, head);
 
-			par->params().labelString(par->params().labelString() +s.str().c_str());
+			par->params().labelString(par->params().labelString() + s.str().c_str());
 			// We really want to remove the c_str as soon as
 			// possible...
 
 			// reset enum counters
-			par->counters().reset("enum");
+			buf->counters().reset("enum");
 		} else if (layout->labeltype < LABEL_COUNTER_ENUMI) {
-			par->counters().reset("enum");
+			buf->counters().reset("enum");
 		} else if (layout->labeltype == LABEL_COUNTER_ENUMI) {
-			par->counters().step(par->counters().enums[par->enumdepth]);
+			buf->counters().step(buf->counters().enums[par->enumdepth]);
 
-			s << par->counters().numberLabel(par->counters().enums[par->enumdepth],
+			s << buf->counters().numberLabel(buf->counters().enums[par->enumdepth],
 				"enumeration", langtype);
 			par->params().labelString(s.str().c_str());
 
 		}
 	} else if (layout->labeltype == LABEL_BIBLIO) {// ale970302
-		par->counters().step("bibitem");
-		int number = par->counters().value("bibitem");
+		buf->counters().step("bibitem");
+		int number = buf->counters().value("bibitem");
 		if (!par->bibkey) {
 			InsetCommandParams p("bibitem" );
 			par->bibkey = new InsetBibKey(p);
@@ -1353,11 +1347,12 @@ void LyXText::setCounter(Buffer const * buf, Paragraph * par) const
 				Floating const & fl
 					= floatList.getType(tmp->type());
 
-				// Why doesn't it work? -- MV
-				par->counters().step(fl.name());
-				// We should get the correct number here too.
+				buf->counters().step(fl.name());
+				
+				// Doesn't work... yet.
 				ostringstream o;
-				o << fl.name() << " " << par->counters().value(fl.name()) << ":";
+				//o << fl.name() << " " << buf->counters().value(fl.name()) << ":";
+				o << fl.name() << " #:";
 				s = o.str();
 			} else {
 				/* par->SetLayout(0);
@@ -1371,7 +1366,7 @@ void LyXText::setCounter(Buffer const * buf, Paragraph * par) const
 		/* reset the enumeration counter. They are always resetted
 		 * when there is any other layout between */
 		for (int i = par->enumdepth + 1; i < 4; i++) {
-			par->counters().set(par->counters().enums[i], 0);
+			buf->counters().set(buf->counters().enums[i], 0);
 		}
 	}
 }
@@ -1379,21 +1374,18 @@ void LyXText::setCounter(Buffer const * buf, Paragraph * par) const
 
 // Updates all counters BEHIND the row. Changed paragraphs
 // with a dynamic left margin will be rebroken.
-void LyXText::updateCounters(BufferView * bview, Row * row) const
+void LyXText::updateCounters(BufferView * bview) const
 {
 	Paragraph * par;
+	
+	Row * row = firstrow;
+	par = row->par();
 
-	if (!row) {
-		row = firstrow;
-		par = row->par();
-	} else {
-		par = row->par()->next();
-	}
-
+	bview->buffer()->counters().reset();
 	while (par) {
 		while (row->par() != par)
 			row = row->next();
-
+		
 		setCounter(bview->buffer(), par);
 
 		// now check for the headline layouts. remember that they
@@ -1520,7 +1512,7 @@ void LyXText::cutSelection(BufferView * bview, bool doclear, bool realcut)
 
 	setCursor(bview, cursor.par(), cursor.pos());
 	selection.cursor = cursor;
-	updateCounters(bview, cursor.row());
+	updateCounters(bview);
 }
 
 
@@ -1573,7 +1565,7 @@ void LyXText::pasteSelection(BufferView * bview)
 	selection.cursor = cursor;
 	setCursor(bview, actpar, pos);
 	setSelection(bview);
-	updateCounters(bview, cursor.row());
+	updateCounters(bview);
 }
 
 
@@ -2319,7 +2311,7 @@ bool LyXText::deleteEmptyParagraphMechanism(BufferView * bview,
 			 * there is another layout before */
 			if (refresh_row->next()) {
 				breakAgain(bview, refresh_row->next());
-				updateCounters(bview, refresh_row);
+				updateCounters(bview);
 			}
 			setHeightOfRow(bview, refresh_row);
 		} else {
@@ -2352,7 +2344,7 @@ bool LyXText::deleteEmptyParagraphMechanism(BufferView * bview,
 			   there is another layout before */
 			if (refresh_row) {
 				breakAgain(bview, refresh_row);
-				updateCounters(bview, refresh_row->previous());
+				updateCounters(bview);
 			}
 		}
 
@@ -2395,7 +2387,7 @@ void LyXText::toggleAppendix(BufferView * bview)
 	status(bview, LyXText::NEED_MORE_REFRESH);
 	refresh_y = 0;
 	refresh_row = 0; // not needed for full update
-	updateCounters(bview, 0);
+	updateCounters(bview);
 	setCursor(bview, cursor.par(), cursor.pos());
 }
 
