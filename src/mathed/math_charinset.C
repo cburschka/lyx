@@ -72,18 +72,31 @@ void MathCharInset::draw(Painter & pain, int x, int y) const
 }
 
 
-void MathCharInset::write(std::ostream & os, bool) const
+void MathCharInset::writeHeader(std::ostream & os) const
 {
 	if (code_ >= LM_TC_RM && code_ <= LM_TC_TEXTRM) 
 		os << '\\' << math_font_name[code_ - LM_TC_RM] << '{';
+}
 
-	if (code_ == LM_TC_TEX || code_ == LM_TC_SPECIAL)
-		os << '\\';
 
-	os << char_;
-
+void MathCharInset::writeTrailer(std::ostream & os) const
+{
 	if (code_ >= LM_TC_RM && code_ <= LM_TC_TEXTRM)
 		os << '}';
+}
+
+
+void MathCharInset::writeRaw(std::ostream & os) const
+{
+	os << char_;
+}
+
+
+void MathCharInset::write(std::ostream & os, bool) const
+{
+	writeHeader(os);
+	writeRaw(os);
+	writeTrailer(os);
 }
 
 

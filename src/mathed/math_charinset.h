@@ -29,6 +29,12 @@ public:
 	///
 	void write(std::ostream &, bool fragile) const;
 	///
+	void writeHeader(std::ostream &) const;
+	///
+	void writeTrailer(std::ostream &) const;
+	///
+	void writeRaw(std::ostream &) const;
+	///
 	void writeNormal(std::ostream &) const;
 	/// 
 	int ascent() const;
@@ -37,7 +43,7 @@ public:
 	///
 	int width() const;
 	/// identifies Charinsets
-	bool isCharInset() const { return true; }
+	MathCharInset const * asCharInset() const { return this; }
 	///
 	char getChar() const { return char_; }
 	///

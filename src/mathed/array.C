@@ -3,6 +3,7 @@
 #endif
 
 #include "math_inset.h"
+#include "math_charinset.h"
 #include "debug.h"
 #include "array.h"
 #include "mathed/support.h"
@@ -173,11 +174,40 @@ std::ostream & operator<<(std::ostream & os, MathArray const & ar)
 	return os;
 }
 
+// returns sequence of char with same code starting at it up to end
+// it might be less, though...
+string charSequence(MathArray::const_iterator it, MathArray::const_iterator end)
+{
+	string s;
+	MathCharInset const * p = (*it)->asCharInset();
+	if (!p)
+		return s;
+
+	MathTextCodes c = p->code();
+	while (it != end && (p = (*it)->asCharInset()) && p->code() == c) { 
+		s += p->getChar();
+		++it;
+	}
+	return s;
+}
+
 
 void MathArray::write(ostream & os, bool fragile) const
 {
-	for (const_iterator it = begin(); it != end(); ++it)
-		(*it)->write(os, fragile);
+	for (const_iterator it = begin(); it != end(); ) {
+		MathCharInset const * p = (*it)->asCharInset();
+		if (p) {
+			// special handling for character sequences with the same code
+			string s = charSequence(it, end());
+			p->writeHeader(os);
+			os << s;
+			p->writeTrailer(os);
+			it += s.size();
+		} else {
+			(*it)->write(os, fragile);
+			++it;
+		}
+	}
 }
 
 

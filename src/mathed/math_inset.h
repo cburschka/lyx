@@ -39,6 +39,7 @@
 
 
 class LaTeXFeatures;
+class MathCharInset;
 
 class MathInset {
 public: 
@@ -175,7 +176,7 @@ public:
 	/// identifies ArrayInsets
 	virtual bool isArray() const { return false; }
 	/// identifies Charinsets
-	virtual bool isCharInset() const { return false; }
+	virtual MathCharInset const * asCharInset() const { return 0; }
 	///
 	virtual bool isActive() const { return nargs() > 0; }
 	///
