@@ -1,3 +1,8 @@
+2002-06-26  Angus Leeming  <leeming@lyx.org>
+
+	* xformsGImage.C (load, setPixmap): changes aassociated with moving
+	grfx::DisplayType out of grfx::GParams.
+
 2002-06-25  Angus Leeming  <leeming@lyx.org>
 
 	* FormPreferences.C (LnFmisc::apply): Comment out the call to

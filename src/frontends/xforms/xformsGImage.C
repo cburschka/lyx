@@ -203,7 +203,7 @@ void xformsGImage::load(string const & filename, SignalTypePtr on_finish)
 
 bool xformsGImage::setPixmap(GParams const & params)
 {
-	if (!image_ || params.display == GParams::NONE)
+	if (!image_ || params.display == NoDisplay)
 		return false;
 
 	Display * display = fl_get_display();
@@ -213,14 +213,14 @@ bool xformsGImage::setPixmap(GParams const & params)
 
 	int color_key;
 	switch (params.display) {
-	case GParams::MONOCHROME:
+	case MonochromeDisplay:
 		color_key = FL_IMAGE_MONO;
 		break;
-	case GParams::GRAYSCALE:
+	case GrayscaleDisplay:
 		color_key = FL_IMAGE_GRAY;
 		break;
-	case GParams::COLOR:
-	default: // NONE cannot happen!
+	case ColorDisplay:
+	default: // NoDisplay cannot happen!
 		color_key = FL_IMAGE_RGB;
 		break;
 	}

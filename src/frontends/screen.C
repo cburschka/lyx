@@ -29,15 +29,14 @@
 #include "lyxfont.h"
 #include "version.h"
 
-#include "graphics/GraphicsCache.h"
-#include "graphics/GraphicsCacheItem.h"
+#include "graphics/GraphicsLoader.h"
 #include "graphics/GraphicsImage.h"
-#include "graphics/GraphicsParams.h"
 
 #include "support/filetools.h" // LibFileSearch
 
 #include <boost/utility.hpp>
 #include <boost/bind.hpp>
+#include <boost/signals/trackable.hpp>
 
 using std::min;
 using std::max;
@@ -45,36 +44,25 @@ using std::endl;
 
 namespace {
 
-class SplashScreen : boost::noncopyable {
+class SplashScreen : boost::noncopyable, boost::signals::trackable {
 public:
 	/// This is a singleton class. Get the instance.
 	static SplashScreen const & get();
 	///
-	grfx::GImage const * image() const { return graphic_->image().get(); }
+	grfx::GImage const * image() const { return loader_.image(); }
 	///
 	string const & text() const { return text_; }
 	///
 	LyXFont const & font() const { return font_; }
 
 private:
-	/** Make the c-tor, d-tor private so we can control how many objects
+	/** Make the c-tor private so we can control how many objects
 	 *  are instantiated.
 	 */
 	SplashScreen();
-	///
-	~SplashScreen();
 
-	/** Connected to grfx::GCacheItem::statusChanged, so will generate the
-	 *  pixmap as soon as the file is loaded into memory.
-	 */
-	void createPixmap();
-	
-	/** Must store a copy of the cached item to ensure that it is not
-	 *  erased unexpectedly by the cache itself.
-	 */
-	grfx::GraphicPtr graphic_;
-	/// The loading status of the image.
-	grfx::ImageStatus status_;
+	///
+	grfx::Loader loader_;
 	/// The text to be written on top of the pixmap
 	string const text_;
 	/// in this font...
@@ -90,8 +78,7 @@ SplashScreen const & SplashScreen::get()
 
 
 SplashScreen::SplashScreen()
-	: status_(grfx::WaitingToLoad),
-	  text_(lyx_version ? lyx_version : "unknown")
+	: text_(lyx_version ? lyx_version : "unknown")
 {
 	string const file = LibFileSearch("images", "banner", "xpm");
 	if (file.empty())
@@ -104,54 +91,13 @@ SplashScreen::SplashScreen()
 	font_.setColor(LColor::yellow);
 
 	// Load up the graphics file
-	grfx::GCache & gc = grfx::GCache::get();
-	if (!gc.inCache(file))
-		gc.add(file);
-	// We /must/ make a local copy of this.
-	graphic_ = gc.graphic(file);
-
-	if (graphic_->status() == grfx::Loaded) {
-		createPixmap();
-	} else {
-		graphic_->statusChanged.connect(
-			boost::bind(&SplashScreen::createPixmap, this));
-		graphic_->startLoading();
-	}
-}
-
-
-SplashScreen::~SplashScreen()
-{
-	if (!graphic_.get())
-		return;
-
-	string const file = graphic_->filename();
-	graphic_.reset();
-
-	// If only the cache itself now references this item, then it will be
-	// removed.
-	grfx::GCache::get().remove(file);
-}
-
-
-void SplashScreen::createPixmap()
-{
-	if (!graphic_.get() || status_ != grfx::WaitingToLoad)
-		return;
-
-	// We aren't going to modify the image, so don't bother making a
-	// local copy
-	grfx::GImage * const image = graphic_->image().get();
-	if (!image)
-		return;
-
-	if (image->getPixmap()) {
-		status_ = grfx::Loaded;
-		return;
-	}
-
-	bool const success = image->setPixmap(grfx::GParams());
-	status_ = success ? grfx::Loaded : grfx::ErrorLoading;
+	loader_.reset(file);
+	// We aren't interested here in when the image is loaded.
+	// If it isn't ready when we want it, then we ignore it.
+//  	loader_->statusChanged.connect(
+//  			boost::bind(&SplashScreen::statusChanged, this));
+	if (loader_.status() == grfx::WaitingToLoad)
+		loader_.startLoading();
 }
 
 } // namespace anon

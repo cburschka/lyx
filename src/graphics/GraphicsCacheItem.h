@@ -8,13 +8,10 @@
  * \author Angus Leeming <a.leeming@ic.ac.uk>
  *
  * The graphics cache is a container of GCacheItems. Each GCacheItem, defined
- * here represents a separate image file. However, each file can be viewed in
- * different ways (different sizes, rotations etc), so each GCacheItem itself
- * contains a list of ModifiedItems, also defined here. Each ModifiedItem
- * has a GParams variable that defines the way it will be viewed. It also
- * contains a list of the graphics insets that refer to it, so calls through
- * the GCache to GCacheItem ultimately return the loading status and image
- * for that particular graphics inset.
+ * here represents a separate image file. The routines here can be used to
+ * load the graphics file into memory at which point (status() == grfx::Loaded).
+ * The user is then free to access image() in order to transform the image
+ * (rotate, scale, clip) and to generate the pixmap.
  *
  * The graphics cache supports fully asynchronous:
  * file conversion to a loadable format;
@@ -22,8 +19,6 @@
  *
  * Whether you get that, of course, depends on grfx::GConverter and on the
  * grfx::GImage-derived image class.
- *
- * Image modification (scaling, rotation etc) is blocking.
  */
 
 #ifndef GRAPHICSCACHEITEM_H

@@ -78,8 +78,7 @@ TODO Before initial production release:
 #include "insets/insetgraphics.h"
 #include "insets/insetgraphicsParams.h"
 
-#include "graphics/GraphicsCache.h"
-#include "graphics/GraphicsCacheItem.h"
+#include "graphics/GraphicsLoader.h"
 #include "graphics/GraphicsImage.h"
 
 #include "frontends/LyXView.h"
@@ -106,6 +105,7 @@ TODO Before initial production release:
 #include "support/os.h"
 
 #include <boost/bind.hpp>
+#include <boost/signals/trackable.hpp>
 
 #include <algorithm> // For the std::max
 
@@ -150,102 +150,29 @@ string const uniqueID()
 } // namespace anon
 
 
-struct InsetGraphics::Cache
+struct InsetGraphics::Cache : boost::signals::trackable
 {
 	///
 	Cache(InsetGraphics &);
 	///
-	~Cache();
-	///
-	void reset(grfx::GraphicPtr const &);
-	///
-	bool empty() const { return !graphic_.get(); }
-	///
-	grfx::ImageStatus status() const;
-	///
-	void setStatus(grfx::ImageStatus);
-	///
-	grfx::GImage * image() const;
-	///
-	string const filename() const;
-	///
 	void update(string const & file_with_path);
-	///
-	void modify();
 
 	///
 	int old_ascent;
 	///
-	grfx::GraphicPtr graphic_;
+	grfx::Loader loader;
 
 private:
-	/// The connection to cache_->statusChanged.
-	boost::signals::connection cc_;
-	///
-	grfx::ImageStatus status_;
-	///
-	grfx::GParams params_;
-	///
-	grfx::ImagePtr modified_image_;
 	///
 	InsetGraphics & parent_;
 };
 
 
 InsetGraphics::Cache::Cache(InsetGraphics & p)
-	: old_ascent(0), status_(grfx::ErrorUnknown), parent_(p)
-{}
-
-
-InsetGraphics::Cache::~Cache()
+	: old_ascent(0), parent_(p)
 {
-	string const old_file = filename();
-	graphic_.reset();
-
-	if (!old_file.empty()) {
-		grfx::GCache & gc = grfx::GCache::get();
-		gc.remove(old_file);
-	}
-}
-
-
-void InsetGraphics::Cache::reset(grfx::GraphicPtr const & graphic)
-{
-	string const old_file = filename();
-	string const new_file = graphic.get() ? graphic->filename() : string();
-	if (old_file == new_file)
-		return;
-
-	graphic_ = graphic;
-
-	if (!old_file.empty()) {
-		grfx::GCache & gc = grfx::GCache::get();
-		gc.remove(old_file);
-	}
-}
-
-
-grfx::ImageStatus InsetGraphics::Cache::status() const
-{
-	return status_;
-}
-
-
-void InsetGraphics::Cache::setStatus(grfx::ImageStatus new_status)
-{
-	status_ = new_status;
-}
-
-
-grfx::GImage * InsetGraphics::Cache::image() const
-{
-	return modified_image_.get();
-}
-
-
-string const InsetGraphics::Cache::filename() const
-{
-	return empty() ? string() : graphic_->filename();
+  	loader.statusChanged.connect(
+		boost::bind(&InsetGraphics::statusChanged, &parent_));
 }
 
 
@@ -253,64 +180,8 @@ void InsetGraphics::Cache::update(string const & file_with_path)
 {
 	lyx::Assert(!file_with_path.empty());
 
-	// Check whether the file has changed.
-	string current_file = filename();
-
-	if (current_file == file_with_path) {
-		modify();
-		return;
-	}
-
-	// It /has/ changed.
-	// Remove the connection to any previous grfx::CacheItems
-	grfx::GCache & gc = grfx::GCache::get();
-	if (!current_file.empty() && gc.inCache(current_file)) {
-		graphic_.reset();
-		gc.remove(current_file);
-		cc_.disconnect();
-	}
-
-	// Update the cache to point to the new file
-	if (!gc.inCache(file_with_path))
-		gc.add(file_with_path);
-
-	graphic_ = gc.graphic(file_with_path);
-	cc_ = graphic_->statusChanged.connect(
-	 	boost::bind(&InsetGraphics::statusChanged, &parent_));
-
-	setStatus(graphic_->status());
-	if (status() == grfx::Loaded)
-		modify();
-}
-
-
-void InsetGraphics::Cache::modify()
-{
-	// The image has not been loaded from file
-	if (!graphic_->image().get())
-		return;
-
-	string const path = OnlyPath(filename());
-	grfx::GParams params = parent_.params().asGParams(path);
-
-	if (params == params_)
-		return;
-
-	params_ = params;
-	setStatus(grfx::ScalingEtc);
-	modified_image_.reset(graphic_->image()->clone());
-	modified_image_->clip(params);
-	modified_image_->rotate(params);
-	modified_image_->scale(params);
-	
-	bool const success = modified_image_->setPixmap(params);
-
-	if (success) {
-		setStatus(grfx::Loaded);
-	} else {
-		modified_image_.reset();
-		setStatus(grfx::ErrorScalingEtc);
-	}
+	string const path = OnlyPath(file_with_path);
+	loader.reset(file_with_path, parent_.params().asGParams(path));
 }
 
 
@@ -333,7 +204,6 @@ InsetGraphics::InsetGraphics(InsetGraphics const & ig,
 
 InsetGraphics::~InsetGraphics()
 {
-	cache_->reset(grfx::GraphicPtr());
 	// Emits the hide signal to the dialog connected (if any)
 	hideDialog();
 }
@@ -343,7 +213,7 @@ string const InsetGraphics::statusMessage() const
 {
 	string msg;
 
-	switch (cache_->status()) {
+	switch (cache_->loader.status()) {
 	case grfx::WaitingToLoad:
 		msg = _("Waiting for draw request to start loading...");
 		break;
@@ -353,23 +223,26 @@ string const InsetGraphics::statusMessage() const
 	case grfx::Converting:
 		msg = _("Converting to loadable format...");
 		break;
+	case grfx::Loaded:
+		msg = _("Loaded into memory. Must now generate pixmap.");
+		break;
 	case grfx::ScalingEtc:
 		msg = _("Scaling etc...");
 		break;
-	case grfx::Loaded:
-		msg = _("Loaded.");
+	case grfx::Ready:
+		msg = _("Ready to display");
 		break;
 	case grfx::ErrorNoFile:
 		msg = _("No file found!");
 		break;
-	case grfx::ErrorLoading:
-		msg = _("Error loading file into memory");
-		break;
 	case grfx::ErrorConverting:
 		msg = _("Error converting to loadable format");
 		break;
-	case grfx::ErrorScalingEtc:
-		msg = _("Error scaling etc");
+	case grfx::ErrorLoading:
+		msg = _("Error loading file into memory");
+		break;
+	case grfx::ErrorGeneratingPixmap:
+		msg = _("Error generating the pixmap");
 		break;
 	case grfx::ErrorUnknown:
 		msg = _("No image");
@@ -382,10 +255,10 @@ string const InsetGraphics::statusMessage() const
 
 bool InsetGraphics::imageIsDrawable() const
 {
-	if (!cache_->image() || cache_->status() != grfx::Loaded)
+	if (!cache_->loader.image() || cache_->loader.status() != grfx::Ready)
 		return false;
 
-	return cache_->image()->getPixmap() != 0;
+	return cache_->loader.image()->getPixmap() != 0;
 }
 
 
@@ -393,7 +266,7 @@ int InsetGraphics::ascent(BufferView *, LyXFont const &) const
 {
 	cache_->old_ascent = 50;
 	if (imageIsDrawable())
-		cache_->old_ascent = cache_->image()->getHeight();
+		cache_->old_ascent = cache_->loader.image()->getHeight();
 	return cache_->old_ascent;
 }
 
@@ -407,7 +280,7 @@ int InsetGraphics::descent(BufferView *, LyXFont const &) const
 int InsetGraphics::width(BufferView *, LyXFont const & font) const
 {
 	if (imageIsDrawable())
-		return cache_->image()->getWidth();
+		return cache_->loader.image()->getWidth();
 	else {
 		int font_width = 0;
 
@@ -454,8 +327,8 @@ void InsetGraphics::draw(BufferView * bv, LyXFont const & font,
 	int old_x = int(x);
 	x += lwidth;
 
-	if (cache_->status() == grfx::WaitingToLoad) {
-		cache_->graphic_->startLoading();
+	if (cache_->loader.status() == grfx::WaitingToLoad) {
+		cache_->loader.startLoading();
 	}
 
 	// This will draw the graphics. If the graphics has not been loaded yet,
@@ -465,7 +338,7 @@ void InsetGraphics::draw(BufferView * bv, LyXFont const & font,
 	if (imageIsDrawable()) {
 		paint.image(old_x + 2, baseline - lascent,
 			    lwidth - 4, lascent + ldescent,
-			    *cache_->image());
+			    *cache_->loader.image());
 
 	} else {
 
@@ -1011,10 +884,6 @@ void InsetGraphics::validate(LaTeXFeatures & features) const
 
 void InsetGraphics::statusChanged()
 {
-	cache_->setStatus(cache_->graphic_->status());
-	if (cache_->status() == grfx::Loaded)
-		cache_->modify();
-
 	current_view->updateInset(this, false);
 }
 

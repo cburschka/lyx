@@ -359,30 +359,30 @@ grfx::GParams InsetGraphicsParams::asGParams(string const & filepath) const
 	if (display == InsetGraphicsParams::DEFAULT) {
 
 		if (lyxrc.display_graphics == "mono")
-			pars.display = grfx::GParams::MONOCHROME;
+			pars.display = grfx::MonochromeDisplay;
 		else if (lyxrc.display_graphics == "gray")
-			pars.display = grfx::GParams::GRAYSCALE;
+			pars.display = grfx::GrayscaleDisplay;
 		else if (lyxrc.display_graphics == "color")
-			pars.display = grfx::GParams::COLOR;
+			pars.display = grfx::ColorDisplay;
 		else
-			pars.display = grfx::GParams::NONE;
+			pars.display = grfx::NoDisplay;
 
 	} else if (display == InsetGraphicsParams::NONE) {
-		pars.display = grfx::GParams::NONE;
+		pars.display = grfx::NoDisplay;
 
 	} else if (display == InsetGraphicsParams::MONOCHROME) {
-		pars.display = grfx::GParams::MONOCHROME;
+		pars.display = grfx::MonochromeDisplay;
 
 	} else if (display == InsetGraphicsParams::GRAYSCALE) {
-		pars.display = grfx::GParams::GRAYSCALE;
+		pars.display = grfx::GrayscaleDisplay;
 
 	} else if (display == InsetGraphicsParams::COLOR) {
-		pars.display = grfx::GParams::COLOR;
+		pars.display = grfx::ColorDisplay;
 	}
 
 	// Override the above if we're not using a gui
 	if (!lyxrc.use_gui) {
-		pars.display = grfx::GParams::NONE;
+		pars.display = grfx::NoDisplay;
 	}
 
 	if (lyxsize_type == InsetGraphicsParams::SCALE) {

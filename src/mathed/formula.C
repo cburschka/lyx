@@ -193,7 +193,7 @@ void InsetFormula::draw(BufferView * bv, LyXFont const & font,
 		WriteStream wi(os, false, false);
 		par_->write(wi);
 		if (preview(os.str(), preview_)) {
-			cerr << "image could be drawn\n";
+			lyxerr << "image could be drawn\n";
 			pi.pain.image(x + w + 2, y - a + 1, w - 2, h - 2, *(preview_->image()));
 		} else {
 			pi.pain.fillRectangle(x + w, y - a, w, h, LColor::white);

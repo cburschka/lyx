@@ -19,6 +19,8 @@ libgraphics_la_SOURCES = \
 	GraphicsConverter.C \
 	GraphicsImage.h \
 	GraphicsImage.C \
+	GraphicsLoader.h \
+	GraphicsLoader.C \
 	$(GRAPHICSIMAGEXPM) GraphicsParams.C \
 	GraphicsParams.h \
 	GraphicsTypes.h

@@ -1,3 +1,8 @@
+2002-06-26  Angus Leeming  <leeming@lyx.org>
+
+	* screen.C: moved the image loading stuff into a new class grfx::Loader.
+	Simplifies this file enormously.
+
 2002-06-25  Angus Leeming  <leeming@lyx.org>
 
 	* screen.C: add a SplashScreen class to load up the pixmap once again.

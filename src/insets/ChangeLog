@@ -1,3 +1,13 @@
+2002-06-26  Angus Leeming  <leeming@lyx.org>
+
+	* insetgraphics.C: moved the image loading stuff into a new class
+	grfx::Loader. Simplifies this file enormously.
+
+	* insetgraphics.h: no longer #include "graphics/GraphicsTypes.h".
+
+	* insetgraphicsParams.C: changes aassociated with moving
+	grfx::DisplayType out of grfx::GParams.
+
 2002-06-26  André Pönitz <poenitz@gmx.net>
 
 	* insetgraphics.C: use os::external_path where necesaary according to a

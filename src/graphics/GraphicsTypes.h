@@ -41,20 +41,34 @@ namespace grfx {
 		Loading,
 		/// The image is being converted to a loadable format.
 		Converting,
+		/// The image has been loaded into memory.
+		Loaded,
 		/// The image is in memory and is being scaled, rotated, etc.
 		ScalingEtc,
 		/// All finished. Can display the image.
-		Loaded,
+		Ready,
 		///
 		ErrorNoFile,
 		///
 		ErrorConverting,
 		///
 		ErrorLoading,
-		/// Fall back on the unmodified image?
-		ErrorScalingEtc,
+		///
+		ErrorGeneratingPixmap,
 		/// The data is not in the cache at all!
 		ErrorUnknown
+	};
+
+	/// How is the image to be displayed on the LyX screen?
+	enum DisplayType {
+		///
+		ColorDisplay,
+		///
+		GrayscaleDisplay,
+		///
+		MonochromeDisplay,
+		///
+		NoDisplay
 	};
 }
 

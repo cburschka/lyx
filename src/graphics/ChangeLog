@@ -1,3 +1,21 @@
+2002-06-26  Angus Leeming  <leeming@lyx.org>
+
+	* GraphicsTypes.h: add "Ready" to the ImageStatus enum.
+	move the DisplayType enum out of grfx::GParams to here.
+
+	* GraphicsCacheItem.h: re-write preliminary description to reflect
+	current reality.
+
+	* GraphicsParams.[Ch]:
+	* GraphicsImageXPM.C (load, setPixmap): changes aassociated with moving
+	grfx::DisplayType out of grfx::GParams.
+
+	* GraphicsLoader.[Ch]: new files. Factor out the image loading stuff
+	that was in frontends/screen.C and insets/insetgraphics.C into a
+	single, easy-to-use class.
+
+	* Makefile.am: add these files.
+
 2002-06-25  Angus Leeming  <leeming@lyx.org>
 
 	* GraphicsCache.[Ch]:

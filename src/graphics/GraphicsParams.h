@@ -16,6 +16,7 @@
 #pragma interface
 #endif
 
+#include "GraphicsTypes.h"
 #include "LString.h"
 
 
@@ -45,15 +46,6 @@ bool operator!=(BoundingBox const &, BoundingBox const &);
 struct GParams
 {
 	GParams();
-
-	/// How is the image to be displayed on the LyX screen?
-	enum DisplayType {
-		COLOR,
-		GRAYSCALE,
-		MONOCHROME,
-		/// We aren't going to display it at all!
-		NONE
-	};
 
 	DisplayType display;
 

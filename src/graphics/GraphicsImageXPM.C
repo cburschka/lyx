@@ -157,7 +157,7 @@ void GImageXPM::load(string const & filename, GImage::SignalTypePtr on_finish)
 
 bool GImageXPM::setPixmap(GParams const & params)
 {
-	if (image_.empty() || params.display == GParams::NONE) {
+	if (image_.empty() || params.display == NoDisplay) {
 		return false;
 	}
 
@@ -182,14 +182,14 @@ bool GImageXPM::setPixmap(GParams const & params)
 	// The XPM file format allows multiple pixel colours to be defined
 	// as c_color, g_color or m_color.
 	switch (params.display) {
-	case GParams::MONOCHROME:
+	case MonochromeDisplay:
 		attrib.color_key = XPM_MONO;
 		break;
-	case GParams::GRAYSCALE:
+	case GrayscaleDisplay:
 		attrib.color_key = XPM_GRAY;
 		break;
-	case GParams::COLOR:
-	default: // NONE cannot happen!
+	case ColorDisplay:
+	default: // NoDisplay cannot happen!
 		attrib.color_key = XPM_COLOR;
 		break;
 	}
