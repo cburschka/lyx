@@ -25,20 +25,22 @@ bool MathFracbaseInset::idxLeft(MathInset::idx_type &,
 
 
 bool MathFracbaseInset::idxUp(MathInset::idx_type & idx,
-			      MathInset::pos_type &) const
+			      MathInset::pos_type & pos) const
 {
 	if (idx == 0)
 		return false;
 	idx = 0;
+	pos = std::min(pos, cell(idx).size());
 	return true;
 }
 
 
 bool MathFracbaseInset::idxDown(MathInset::idx_type & idx,
-				MathInset::pos_type &) const
+				MathInset::pos_type & pos) const
 {
 	if (idx == 1)
 		return false;
 	idx = 1;
+	pos = std::min(pos, cell(idx).size());
 	return true;
 }
