@@ -30,8 +30,7 @@ GraphicsCache::getInstance()
 
 GraphicsCache::~GraphicsCache()
 {
-	// The map elements should have already been eliminated.
-	Assert(cache.empty());
+	// All elements are destroyed by the shared_ptr's in the map.
 }
 
 
