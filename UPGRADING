@@ -3,7 +3,7 @@ How do I upgrade my existing LyX system to version 1.2.x?
 
 If you upgrade from version 1.1.6 or 1.1.5, you shouldn't have any
 problems. It is nevertheless a good idea to advise all users to run
-Edit>Reconfigure.
+Edit->Reconfigure.
 
 If you have your own layout files, you may need to update them a little:
 
@@ -15,26 +15,59 @@ If you have your own layout files, you may need to update them a little:
 The new layout format keywords are described in the Customization
 manual.
 
+Build requirements
+------------------
+
+LyX's graphics handling system has changed substantially. If you
+do not have the JPEG library installed, you may need to install
+it before you can use the graphics capabilities of LyX. If you
+do not have the ImageMagick command-line tools installed, you
+will need to modify the default set up of LyX, or install them,
+in order to get previews of your document's graphics.
+
+Note: if you are using convert, and the graphics won't load in LyX,
+then you are probably seeing a bug in earlier versions of ImageMagick.
+You can either upgrade ImageMagick, change the convertor to use
+"convert -depth 8", which shold work around the problem, or set up
+a convertor to use a different conversion program as described in
+the documentation.
+
+http://bugzilla.lyx.org/show_bug.cgi?id=360
+ 
 Document transfer
 -----------------
 
 In general, you don't need to convert any documents saved with LyX
 1.1.5 or 1.1.6 to use them with LyX 1.2.0.
 
-LyX 1.2.0 can read all documents saved with lyx 1.1.6 correctly.
-However, older LyX versions will almost certainly fail to read files
-produced by LyX 1.2.0.
+Older versions of LyX cannot read documents saved with LyX 1.2.0.
+ 
+LyX 1.2.0 can read most documents saved with lyx 1.1.6 correctly.
 
+If you were previously using the floatflt paragraph option to
+wrap text around a figure, you will need to modify this for LyX 1.2.0
+manually, as described in the manuals. Please ask on the lyx-users
+list for assistance if you have trouble with this.
+ 
 Note that your document may rely on the floatflt package (for example,
 you may use \floatingfigure via LaTeX commands). If your document does
 not have "\usepackage{floatflt}" already in the user pre-amble, you will
 need to add it.
  
-Note that the babel package is now loaded after the user-defined
+The babel package is now loaded after the user-defined
 preamble (because some packages really need to be loaded before
 babel). If you relied, on babel being loaded before your own
 definitions, you can add an extra "\usepackage{babel}" statement at
 the beginning of your preamble.
 
+http://bugzilla.lyx.org/show_bug.cgi?id=315
 
+If you are using the minipage paragraph options in your document, you
+may find that LyX 1.2.0 fails to import them correctly as minipages.
+This might require some editing to correct this. If you have
+trouble with this, please ask the lyx-users mailing list for assistance,
+and we will be happy to help.
 
+http://bugzilla.lyx.org/show_bug.cgi?id=374
+http://bugzilla.lyx.org/show_bug.cgi?id=375
+http://bugzilla.lyx.org/show_bug.cgi?id=376
