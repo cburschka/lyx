@@ -25,6 +25,8 @@ public:
 	void write(WriteStream & os) const;
 	/// write normalized content
 	void normalize(NormalStream & ns) const;
+	///
+	mode_type currentMode() const { return TEXT_MODE; }
 private:
 	/// width of '[' in current font
 	mutable int w_;

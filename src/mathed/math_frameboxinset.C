@@ -22,6 +22,7 @@ MathInset * MathFrameboxInset::clone() const
 
 void MathFrameboxInset::metrics(MathMetricsInfo & mi) const
 {
+	MathFontSetChanger dummy(mi.base, "textnormal");
 	w_ = mathed_char_width(mi.base.font, '[');
 	MathNestInset::metrics(mi);
 	dim_    = cell(0).dim();
@@ -33,6 +34,7 @@ void MathFrameboxInset::metrics(MathMetricsInfo & mi) const
 
 void MathFrameboxInset::draw(MathPainterInfo & pi, int x, int y) const
 {
+	MathFontSetChanger dummy(pi.base, "textnormal");
 	pi.pain.rectangle(x + 1, y - ascent() + 1, width() - 2, height() - 2,
 			LColor::black);
 	x += 5;
