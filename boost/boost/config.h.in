@@ -1,0 +1,98 @@
+/* boost/config.h.in.  Generated automatically from configure.in by autoheader.  */
+
+/* Define if on AIX 3.
+   System headers sometimes define this.
+   We just want to avoid a redefinition error message.  */
+#ifndef _ALL_SOURCE
+#undef _ALL_SOURCE
+#endif
+
+/* Define if you need to in order for stat and other things to work.  */
+#undef _POSIX_SOURCE
+
+#undef BOOST_RE_NO_ITERATOR_H
+#undef BOOST_RE_NO_WCHAR_H
+#undef BOOST_RE_NO_WCSTRING
+#undef BOOST_RE_NO_WCTYPE_H
+#undef BOOST_RE_NO_SWPRINTF
+#undef BOOST_RE_SIZEOF_INT
+#undef BOOST_RE_SIZEOF_LONG
+#undef BOOST_RE_SIZEOF_SHORT
+#undef BOOST_RE_INT32_LONG
+#undef BOOST_RE_USE_ALGO
+#undef BOOST_RE_THREADS
+#undef BOOST_RE_RI_T_3
+#undef BOOST_RE_RI_T_0
+#undef BOOST_RE_PLATFORM_WINDOWS
+#undef BOOST_RE_PLATFORM_W32
+#undef BOOST_RE_PLATFORM_DOS
+#undef BOOST_RE_OLD_IOSTREAM
+#undef BOOST_RE_OI_T_3
+#undef BOOST_RE_OI_T_0
+#undef BOOST_RE_NO_W32
+#undef BOOST_RE_NO_TEMPLATE_SWITCH_MERGE
+#undef BOOST_RE_NO_TEMPLATE_RETURNS
+#undef BOOST_RE_NO_TEMPLATE_MERGE_A
+#undef BOOST_RE_NO_TEMPLATE_INST
+#undef BOOST_RE_NO_TEMPLATE_FRIEND
+#undef BOOST_RE_NO_STRING_H
+#undef BOOST_RE_NO_STRING_DEF_ARGS
+#undef BOOST_RE_NO_STL
+#undef BOOST_RE_NO_PARTIAL_FUNC_SPEC
+#undef BOOST_RE_NO_OI_ASSIGN
+#undef BOOST_RE_NO_MUTABLE
+#undef BOOST_RE_NO_MEMORY_H
+#undef BOOST_RE_NO_MEMBER_TEMPLATES
+#undef BOOST_RE_NO_LOCALE_H
+#undef BOOST_RE_NO_EXCEPTION_H
+#undef BOOST_RE_NO_CAT
+#undef BOOST_RE_NO_BOOL
+#undef BOOST_RE_NESTED_TEMPLATE_DECL
+#undef BOOST_RE_ITERATOR_T_2
+#undef BOOST_RE_ITERATOR_T_1
+#undef BOOST_RE_INT64_T_2
+#undef BOOST_RE_INT64_T_3
+#undef BOOST_RE_INT64_T_4
+#undef BOOST_RE_INT64_T_5
+#undef BOOST_RE_FI_T_3
+#undef BOOST_RE_II_T_0
+#undef BOOST_RE_II_T_3
+#undef BOOST_RE_II_T_4
+#undef BOOST_RE_INT64_T_6
+#undef BOOST_RE_ITERATOR_T_0
+#undef BOOST_RE_AUTO_CONFIGURE
+#undef BOOST_RE_BI_T_
+#undef BOOST_RE_BI_T_0
+#undef BOOST_RE_CALL
+#undef BOOST_RE_CCALL
+#undef BOOST_RE_DISTANCE_T_0
+#undef BOOST_RE_INT64_T_0
+#undef BOOST_RE_INT64_T_1
+#undef BOOST_RE_DISTANCE_T_1
+#undef BOOST_RE_DISTANCE_T_2
+#undef BOOST_RE_FI_T_0
+
+/* The number of bytes in a int.  */
+#undef SIZEOF_INT
+
+/* The number of bytes in a long.  */
+#undef SIZEOF_LONG
+
+/* The number of bytes in a short.  */
+#undef SIZEOF_SHORT
+
+/* Define if you have the nl_types library (-lnl_types).  */
+#undef HAVE_LIBNL_TYPES
+
+/* Define if you have the posix library (-lposix).  */
+#undef HAVE_LIBPOSIX
+
+/* Define if you have the pthread library (-lpthread).  */
+#undef HAVE_LIBPTHREAD
+
+/* Name of package */
+#undef PACKAGE
+
+/* Version number of package */
+#undef VERSION
+
