@@ -7,7 +7,7 @@ Number of forms: 1
 Unit of measure: FL_COORD_PIXEL
 
 =============== FORM ===============
-Name: include
+Name: form_include
 Width: 340
 Height: 210
 Number of Objects: 14
@@ -63,7 +63,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: browsebt
-callback: include_cb
+callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
@@ -81,7 +81,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: flag1
-callback: 
+callback:
 argument: 
 
 --------------------
@@ -98,8 +98,8 @@ label: OK
 shortcut: ^M
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: 
-callback: include_cb
+name: button_ok
+callback: C_FormBaseOKCB
 argument: 1
 
 --------------------
@@ -116,8 +116,8 @@ label: Cancel|^[
 shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: 
-callback: include_cb
+name: button_cancel
+callback: C_FormBaseCancelCB
 argument: 2
 
 --------------------
@@ -134,8 +134,8 @@ label: Load|#L
 shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: 
-callback: include_cb
+name: loadbt
+callback: C_FormBaseInputCB
 argument: 5
 
 --------------------
@@ -152,7 +152,7 @@ label: File name:|#F
 shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: input
+name: filename
 callback: 
 argument: 
 
@@ -207,7 +207,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: flag4
-callback: include_cb
+callback: C_FormBaseInputCB
 argument: 10
 
 --------------------
@@ -225,7 +225,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: flag2
-callback: include_cb
+callback: C_FormBaseInputCB
 argument: 11
 
 --------------------
@@ -243,7 +243,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: flag3
-callback: include_cb
+callback: C_FormBaseInputCB
 argument: 11
 
 --------------------

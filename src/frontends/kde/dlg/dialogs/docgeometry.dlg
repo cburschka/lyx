@@ -178,6 +178,121 @@ ComboBox {
 		FontPropagation {AllChildren}
 		PalettePropagation {AllChildren}
 }
+User {
+		UserClassHeader {lengthentry.h}
+		UserClassName {LengthEntry}
+		Rect {10 140 285 35}
+		Name {width}
+		Variable {width}
+		MinimumSize {0 0}
+		MaximumSize {32767 32767}
+		BackgroundPixmap {}
+		UseBackgroundPixmap {false}
+		AdjustSize {false}
+		ReadPixmapFromData {false}
+		DataVarName {}
+		DataLenName {}
+		minWidthSizeHint {true}
+		minHeightSizeHint {true}
+		maxWidthSizeHint {false}
+		maxHeightSizeHint {true}
+		FocusPolicy {NoFocus}
+		BackgroundMode {PaletteBackground}
+		FontPropagation {NoChildren}
+		PalettePropagation {NoChildren}
+}
+User {
+		UserClassHeader {lengthentry.h}
+		UserClassName {LengthEntry}
+		Rect {10 255 285 35}
+		Name {height}
+		Variable {height}
+		MinimumSize {0 0}
+		MaximumSize {32767 32767}
+		BackgroundPixmap {}
+		UseBackgroundPixmap {false}
+		AdjustSize {false}
+		ReadPixmapFromData {false}
+		DataVarName {}
+		DataLenName {}
+		minWidthSizeHint {true}
+		minHeightSizeHint {true}
+		maxWidthSizeHint {false}
+		maxHeightSizeHint {true}
+		FocusPolicy {NoFocus}
+		BackgroundMode {PaletteBackground}
+		FontPropagation {NoChildren}
+		PalettePropagation {NoChildren}
+}
+User {
+		UserClassHeader {lengthentry.h}
+		UserClassName {LengthEntry}
+		Rect {310 85 285 28}
+		Name {headheight}
+		Variable {headheight}
+		MinimumSize {0 0}
+		MaximumSize {32767 32767}
+		BackgroundPixmap {}
+		UseBackgroundPixmap {false}
+		AdjustSize {false}
+		ReadPixmapFromData {false}
+		DataVarName {}
+		DataLenName {}
+		minWidthSizeHint {true}
+		minHeightSizeHint {true}
+		maxWidthSizeHint {false}
+		maxHeightSizeHint {true}
+		FocusPolicy {NoFocus}
+		BackgroundMode {PaletteBackground}
+		FontPropagation {NoChildren}
+		PalettePropagation {NoChildren}
+}
+User {
+		UserClassHeader {lengthentry.h}
+		UserClassName {LengthEntry}
+		Rect {310 178 285 27}
+		Name {headsep}
+		Variable {headsep}
+		MinimumSize {0 0}
+		MaximumSize {32767 32767}
+		BackgroundPixmap {}
+		UseBackgroundPixmap {false}
+		AdjustSize {false}
+		ReadPixmapFromData {false}
+		DataVarName {}
+		DataLenName {}
+		minWidthSizeHint {true}
+		minHeightSizeHint {true}
+		maxWidthSizeHint {false}
+		maxHeightSizeHint {true}
+		FocusPolicy {NoFocus}
+		BackgroundMode {PaletteBackground}
+		FontPropagation {NoChildren}
+		PalettePropagation {NoChildren}
+}
+User {
+		UserClassHeader {lengthentry.h}
+		UserClassName {LengthEntry}
+		Rect {310 270 285 28}
+		Name {footskip}
+		Variable {footskip}
+		MinimumSize {0 0}
+		MaximumSize {32767 32767}
+		BackgroundPixmap {}
+		UseBackgroundPixmap {false}
+		AdjustSize {false}
+		ReadPixmapFromData {false}
+		DataVarName {}
+		DataLenName {}
+		minWidthSizeHint {true}
+		minHeightSizeHint {true}
+		maxWidthSizeHint {false}
+		maxHeightSizeHint {true}
+		FocusPolicy {NoFocus}
+		BackgroundMode {PaletteBackground}
+		FontPropagation {NoChildren}
+		PalettePropagation {NoChildren}
+}
 Label {
 		Text {Margins :}
 		Alignment {0}
@@ -205,34 +320,6 @@ Label {
 		BackgroundMode {PaletteBackground}
 		FontPropagation {NoChildren}
 		PalettePropagation {NoChildren}
-}
-ComboBox {
-		Style {ReadOnly}
-		SizeLimit {30}
-		Policy {AtBottom}
-		AutoResize {true}
-		MaxCount {2147483647}
-		AutoCompletion {false}
-		Rect {241 355 112 54}
-		Name {margins}
-		Variable {margins}
-		Signal {[Protected]  highlighted --> marginsChanged  (const char*)}
-		MinimumSize {0 0}
-		MaximumSize {32767 32767}
-		BackgroundPixmap {}
-		UseBackgroundPixmap {false}
-		AdjustSize {false}
-		ReadPixmapFromData {false}
-		DataVarName {}
-		DataLenName {}
-		minWidthSizeHint {true}
-		minHeightSizeHint {true}
-		maxWidthSizeHint {false}
-		maxHeightSizeHint {true}
-		FocusPolicy {StrongFocus}
-		BackgroundMode {PaletteBackground}
-		FontPropagation {AllChildren}
-		PalettePropagation {AllChildren}
 }
 Label {
 		Text {Width :}
@@ -402,56 +489,6 @@ Label {
 		FontPropagation {NoChildren}
 		PalettePropagation {NoChildren}
 }
-RadioButton {
-		Checked {true}
-		Text {Portrait}
-		AutoRepeat {false}
-		AutoResize {false}
-		Rect {481 412 1 57}
-		Name {portrait}
-		Variable {portrait}
-		MinimumSize {0 0}
-		MaximumSize {32767 32767}
-		BackgroundPixmap {}
-		UseBackgroundPixmap {false}
-		AdjustSize {false}
-		ReadPixmapFromData {false}
-		DataVarName {}
-		DataLenName {}
-		minWidthSizeHint {true}
-		minHeightSizeHint {true}
-		maxWidthSizeHint {true}
-		maxHeightSizeHint {true}
-		FocusPolicy {TabFocus}
-		BackgroundMode {PaletteBackground}
-		FontPropagation {NoChildren}
-		PalettePropagation {NoChildren}
-}
-RadioButton {
-		Checked {false}
-		Text {Landscape}
-		AutoRepeat {false}
-		AutoResize {false}
-		Rect {481 531 1 57}
-		Name {landscape}
-		Variable {landscape}
-		MinimumSize {0 0}
-		MaximumSize {32767 32767}
-		BackgroundPixmap {}
-		UseBackgroundPixmap {false}
-		AdjustSize {false}
-		ReadPixmapFromData {false}
-		DataVarName {}
-		DataLenName {}
-		minWidthSizeHint {true}
-		minHeightSizeHint {true}
-		maxWidthSizeHint {true}
-		maxHeightSizeHint {true}
-		FocusPolicy {TabFocus}
-		BackgroundMode {PaletteBackground}
-		FontPropagation {NoChildren}
-		PalettePropagation {NoChildren}
-}
 Label {
 		Text {Header height :}
 		Alignment {0}
@@ -536,12 +573,17 @@ Label {
 		FontPropagation {NoChildren}
 		PalettePropagation {NoChildren}
 }
-User {
-		UserClassHeader {lengthentry.h}
-		UserClassName {LengthEntry}
-		Rect {10 140 285 35}
-		Name {width}
-		Variable {width}
+ComboBox {
+		Style {ReadOnly}
+		SizeLimit {30}
+		Policy {AtBottom}
+		AutoResize {true}
+		MaxCount {2147483647}
+		AutoCompletion {false}
+		Rect {241 355 112 54}
+		Name {margins}
+		Variable {margins}
+		Signal {[Protected]  highlighted --> marginsChanged  (const char*)}
 		MinimumSize {0 0}
 		MaximumSize {32767 32767}
 		BackgroundPixmap {}
@@ -554,33 +596,10 @@ User {
 		minHeightSizeHint {true}
 		maxWidthSizeHint {false}
 		maxHeightSizeHint {true}
-		FocusPolicy {NoFocus}
+		FocusPolicy {StrongFocus}
 		BackgroundMode {PaletteBackground}
-		FontPropagation {NoChildren}
-		PalettePropagation {NoChildren}
-}
-User {
-		UserClassHeader {lengthentry.h}
-		UserClassName {LengthEntry}
-		Rect {10 255 285 35}
-		Name {height}
-		Variable {height}
-		MinimumSize {0 0}
-		MaximumSize {32767 32767}
-		BackgroundPixmap {}
-		UseBackgroundPixmap {false}
-		AdjustSize {false}
-		ReadPixmapFromData {false}
-		DataVarName {}
-		DataLenName {}
-		minWidthSizeHint {true}
-		minHeightSizeHint {true}
-		maxWidthSizeHint {false}
-		maxHeightSizeHint {true}
-		FocusPolicy {NoFocus}
-		BackgroundMode {PaletteBackground}
-		FontPropagation {NoChildren}
-		PalettePropagation {NoChildren}
+		FontPropagation {AllChildren}
+		PalettePropagation {AllChildren}
 }
 User {
 		UserClassHeader {lengthentry.h}
@@ -654,75 +673,6 @@ User {
 User {
 		UserClassHeader {lengthentry.h}
 		UserClassName {LengthEntry}
-		Rect {310 85 285 28}
-		Name {headheight}
-		Variable {headheight}
-		MinimumSize {0 0}
-		MaximumSize {32767 32767}
-		BackgroundPixmap {}
-		UseBackgroundPixmap {false}
-		AdjustSize {false}
-		ReadPixmapFromData {false}
-		DataVarName {}
-		DataLenName {}
-		minWidthSizeHint {true}
-		minHeightSizeHint {true}
-		maxWidthSizeHint {false}
-		maxHeightSizeHint {true}
-		FocusPolicy {NoFocus}
-		BackgroundMode {PaletteBackground}
-		FontPropagation {NoChildren}
-		PalettePropagation {NoChildren}
-}
-User {
-		UserClassHeader {lengthentry.h}
-		UserClassName {LengthEntry}
-		Rect {310 178 285 27}
-		Name {headsep}
-		Variable {headsep}
-		MinimumSize {0 0}
-		MaximumSize {32767 32767}
-		BackgroundPixmap {}
-		UseBackgroundPixmap {false}
-		AdjustSize {false}
-		ReadPixmapFromData {false}
-		DataVarName {}
-		DataLenName {}
-		minWidthSizeHint {true}
-		minHeightSizeHint {true}
-		maxWidthSizeHint {false}
-		maxHeightSizeHint {true}
-		FocusPolicy {NoFocus}
-		BackgroundMode {PaletteBackground}
-		FontPropagation {NoChildren}
-		PalettePropagation {NoChildren}
-}
-User {
-		UserClassHeader {lengthentry.h}
-		UserClassName {LengthEntry}
-		Rect {310 270 285 28}
-		Name {footskip}
-		Variable {footskip}
-		MinimumSize {0 0}
-		MaximumSize {32767 32767}
-		BackgroundPixmap {}
-		UseBackgroundPixmap {false}
-		AdjustSize {false}
-		ReadPixmapFromData {false}
-		DataVarName {}
-		DataLenName {}
-		minWidthSizeHint {true}
-		minHeightSizeHint {true}
-		maxWidthSizeHint {false}
-		maxHeightSizeHint {true}
-		FocusPolicy {NoFocus}
-		BackgroundMode {PaletteBackground}
-		FontPropagation {NoChildren}
-		PalettePropagation {NoChildren}
-}
-User {
-		UserClassHeader {lengthentry.h}
-		UserClassName {LengthEntry}
 		Rect {204 605 211 40}
 		Name {right}
 		Variable {right}
@@ -739,6 +689,56 @@ User {
 		maxWidthSizeHint {false}
 		maxHeightSizeHint {true}
 		FocusPolicy {NoFocus}
+		BackgroundMode {PaletteBackground}
+		FontPropagation {NoChildren}
+		PalettePropagation {NoChildren}
+}
+RadioButton {
+		Checked {true}
+		Text {Portrait}
+		AutoRepeat {false}
+		AutoResize {false}
+		Rect {481 412 1 57}
+		Name {portrait}
+		Variable {portrait}
+		MinimumSize {0 0}
+		MaximumSize {32767 32767}
+		BackgroundPixmap {}
+		UseBackgroundPixmap {false}
+		AdjustSize {false}
+		ReadPixmapFromData {false}
+		DataVarName {}
+		DataLenName {}
+		minWidthSizeHint {true}
+		minHeightSizeHint {true}
+		maxWidthSizeHint {true}
+		maxHeightSizeHint {true}
+		FocusPolicy {TabFocus}
+		BackgroundMode {PaletteBackground}
+		FontPropagation {NoChildren}
+		PalettePropagation {NoChildren}
+}
+RadioButton {
+		Checked {false}
+		Text {Landscape}
+		AutoRepeat {false}
+		AutoResize {false}
+		Rect {481 531 1 57}
+		Name {landscape}
+		Variable {landscape}
+		MinimumSize {0 0}
+		MaximumSize {32767 32767}
+		BackgroundPixmap {}
+		UseBackgroundPixmap {false}
+		AdjustSize {false}
+		ReadPixmapFromData {false}
+		DataVarName {}
+		DataLenName {}
+		minWidthSizeHint {true}
+		minHeightSizeHint {true}
+		maxWidthSizeHint {true}
+		maxHeightSizeHint {true}
+		FocusPolicy {TabFocus}
 		BackgroundMode {PaletteBackground}
 		FontPropagation {NoChildren}
 		PalettePropagation {NoChildren}

@@ -8,18 +8,18 @@
 #endif
 
 #include FORMS_H_LOCATION  
+#include "frontends/Dialogs.h"
 #include "insetbib.h"
 #include "buffer.h"
 #include "debug.h"
-#include "lyx_gui_misc.h"
 #include "BufferView.h"
 #include "gettext.h"
-#include "bibforms.h"
 #include "lyxtext.h"
 #include "support/filetools.h"
 #include "support/path.h"
 #include "lyxrc.h"
 #include "font.h"
+#include "LyXView.h" 
 
 using std::ostream;
 using std::ifstream;
@@ -28,54 +28,6 @@ using std::endl;
 using std::vector;
 using std::pair;
 using std::max;
-
-FD_bibitem_form * bibitem_form = 0;
-
-FD_bibitem_form * create_form_bibitem_form(void);
-
-extern BufferView * current_view;
-
-// This is foul!
-// called from both InsetBibKey and InsetBibtex dialogs yet cast off
-// only to InsetBibKey holder. Real problems can ensue.
-extern "C"
-void bibitem_cb(FL_OBJECT *, long data)
-{
-	InsetBibKey::Holder * holder =
-		static_cast<InsetBibKey::Holder*>
-		(bibitem_form->bibitem_form->u_vdata);
-
-	holder->inset->callback( bibitem_form, data );
-}
-
-
-FD_bibitem_form * create_form_bibitem_form(void)
-{
-	FL_OBJECT * obj;
-	FD_bibitem_form * fdui = (FD_bibitem_form *) fl_calloc(1, sizeof(FD_bibitem_form));
-
-	fdui->bibitem_form = fl_bgn_form(FL_NO_BOX, 220, 130);
-	obj = fl_add_box(FL_UP_BOX, 0, 0, 220, 130, "");
-	fdui->key = obj = fl_add_input(FL_NORMAL_INPUT, 80, 10, 130, 30, idex(_("Key:|#K")));
-	fl_set_input_shortcut(obj, scex(_("Key:|#K")), 1);
-	fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-	obj = fl_add_button(FL_RETURN_BUTTON, 20, 90, 90, 30, _("OK"));
-	fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-	fl_set_object_callback(obj, bibitem_cb, 1);
-	obj = fl_add_button(FL_NORMAL_BUTTON, 120, 90, 90, 30, idex(_("Cancel|^[")));
-	fl_set_button_shortcut(obj, scex(_("Cancel|^[")), 1);
-	fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-	fl_set_object_callback(obj, bibitem_cb, 0);
-	fdui->label = obj = fl_add_input(FL_NORMAL_INPUT, 80, 50, 130, 30, idex(_("Label:|#L")));
-	fl_set_input_shortcut(obj, scex(_("Label:|#L")), 1);
-	fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-	fl_end_form();
-
-	//fdui->bibitem_form->fdui = fdui;
-
-	return fdui;
-}
-
 
 int InsetBibKey::key_counter = 0;
 const string key_prefix = "key-";
@@ -91,10 +43,6 @@ InsetBibKey::InsetBibKey(InsetCommandParams const & p)
 
 InsetBibKey::~InsetBibKey()
 {
-	if (bibitem_form && bibitem_form->bibitem_form
-	   && bibitem_form->bibitem_form->visible
-	   && bibitem_form->bibitem_form->u_vdata == &holder)
-		fl_hide_form(bibitem_form->bibitem_form);
 }
 
 
@@ -103,42 +51,6 @@ Inset * InsetBibKey::Clone(Buffer const &) const
 	InsetBibKey * b = new InsetBibKey(params());
 	b->setCounter(counter);
 	return b;
-}
-
-
-void InsetBibKey::callback( FD_bibitem_form * form, long data )
-{
-	switch (data) {
-	case 1:
-	{
-		// Do NOT change this to
-		// holder.view->buffer() as this code is used by both
-		// InsetBibKey and InsetBibtex! Ughhhhhhh!!!!
-		if (current_view->buffer()->isReadonly()) {
-			WarnReadonly(current_view->buffer()->fileName());
-			break;
-		}
-
-		string key = fl_get_input(form->key);
-		string label = fl_get_input(form->label);
-		if (key != getContents())
-			current_view->ChangeCitationsIfUnique(getContents(),
-							      key);
-
-		if (key != getContents() || label != getOptions()) {
-			setContents(key);
-			setOptions(label);
-			current_view->updateInset(this, true);
-			// We need to do a redraw becuase the maximum 
-			// InsetBibKey width could have changed.
-			current_view->redraw();
-			current_view->fitCursor(getLyXText(current_view));
-		} // fall through to Cancel
-	}
-	case 0:
-		fl_hide_form(form->bibitem_form);
-		break;
-        }
 }
 
 
@@ -195,41 +107,9 @@ string const InsetBibKey::getScreenLabel() const
 }
 
 
-/**
-  The value in "Key:" isn't allways set right after a few bibkey insets have
-  been added/removed.  Perhaps the wrong object is deleted/used somewhere
-  upwards?
-  (Joacim 1998-03-04)
-*/
 void InsetBibKey::Edit(BufferView * bv, int, int, unsigned int)
-{
-	if (bv->buffer()->isReadonly())
-		WarnReadonly(bv->buffer()->fileName());
-	
-	if (!bibitem_form) {
-		bibitem_form = create_form_bibitem_form();
-		fl_set_form_atclose(bibitem_form->bibitem_form, 
-				    CancelCloseBoxCB, 0);
-	}
-
-	holder.inset = this;
-	holder.view = bv;
-	
-	bibitem_form->bibitem_form->u_vdata = &holder;
-	// InsetBibtex uses the same form, with different labels
-	fl_set_object_label(bibitem_form->key, idex(_("Key:|#K")));
-	fl_set_button_shortcut(bibitem_form->key, scex(_("Key:|#K")), 1);
-	fl_set_object_label(bibitem_form->label, idex(_("Label:|#L")));
-	fl_set_button_shortcut(bibitem_form->label, scex(_("Label:|#L")), 1);
-	fl_set_input(bibitem_form->key, getContents().c_str());
-	fl_set_input(bibitem_form->label, getOptions().c_str());
-	if (bibitem_form->bibitem_form->visible) {
-		fl_raise_form(bibitem_form->bibitem_form);
-	} else {
-		fl_show_form(bibitem_form->bibitem_form,
-			     FL_PLACE_MOUSE | FL_FREE_SIZE, FL_TRANSIENT,
-			     _("Bibliography item"));
-	}   
+{ 
+	bv->owner()->getDialogs()->showBibitem(this);
 }
 
 
@@ -240,10 +120,6 @@ InsetBibtex::InsetBibtex(InsetCommandParams const & p)
 
 InsetBibtex::~InsetBibtex()
 {
-	if (bibitem_form && bibitem_form->bibitem_form
-	   && bibitem_form->bibitem_form->visible
-	   && bibitem_form->bibitem_form->u_vdata == &holder)
-		fl_hide_form(bibitem_form->bibitem_form);
 }
 
 
@@ -335,30 +211,9 @@ vector<pair<string, string> > const InsetBibtex::getKeys(Buffer const * buffer) 
 }
 
 
-// BibTeX should have its own dialog. This is provisional.
 void InsetBibtex::Edit(BufferView * bv, int, int, unsigned int)
 {
-	if (!bibitem_form) {
-		bibitem_form = create_form_bibitem_form();
-		fl_set_form_atclose(bibitem_form->bibitem_form, 
-				    CancelCloseBoxCB, 0);
-	}
-
-	holder.inset = this;
-	holder.view = bv;
-	bibitem_form->bibitem_form->u_vdata = &holder;
-
-	fl_set_object_label(bibitem_form->key, _("Database:"));
-	fl_set_object_label(bibitem_form->label, _("Style:  "));
-	fl_set_input(bibitem_form->key, getContents().c_str());
-	fl_set_input(bibitem_form->label, getOptions().c_str());
-	if (bibitem_form->bibitem_form->visible) {
-		fl_raise_form(bibitem_form->bibitem_form);
-	} else {
-		fl_show_form(bibitem_form->bibitem_form,
-			     FL_PLACE_MOUSE | FL_FREE_SIZE, FL_TRANSIENT,
-			     _("BibTeX"));
-	}   
+	bv->owner()->getDialogs()->showBibtex(this);
 }
 
 

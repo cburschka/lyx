@@ -1,14 +1,13 @@
-/**********************************************************************
+/**
+ * \file paraextradlg.h
+ * Copyright 2001 the LyX Team
+ * Read the file COPYING
+ *
+ * \author John Levon
+ */
 
-	--- Qt Architect generated file ---
-
-	File: paraextradialog.h
-	Last generated: Sat Oct 14 00:27:49 2000
-
- *********************************************************************/
-
-#ifndef ParaExtraDialog_included
-#define ParaExtraDialog_included
+#ifndef PARAEXTRADIALOG_H
+#define PARAEXTRADIALOG_H
 
 #include "dlg/paraextradlgdata.h"
 
@@ -16,23 +15,18 @@ class ParaDialog;
 
 class ParaExtraDialog : public ParaExtraDialogData
 {
-    Q_OBJECT
+	Q_OBJECT
 
 public:
+	ParaExtraDialog (QWidget * parent = NULL, char const * name = NULL);
 
-    ParaExtraDialog
-    (
-        QWidget* parent = NULL,
-        const char* name = NULL
-    );
+	virtual ~ParaExtraDialog();
 
-    virtual ~ParaExtraDialog();
-
-    friend class ParaDialog;
+	friend class ParaDialog;
 
 protected slots:
 
-    void typeHighlighted(int);
+	void typeHighlighted(int);
 
 };
-#endif // ParaExtraDialog_included
+#endif // PARAEXTRADIALOG_H

@@ -6,7 +6,7 @@ Dialog {
 	DataHeader {copyrightdlgdata.h}
 	DataSource {copyrightdlgdata.C}
 	DataName {CopyrightDialogData}
-	WindowBaseClass {QWidget}
+	WindowBaseClass {QDialog}
 	UseGetText {true}
 	WindowFlags {53248}
 }
@@ -19,7 +19,7 @@ Grid {5}
 
 PushButton {
 		ToggleButton {false}
-		Default {false}
+		Default {true}
 		AutoDefault {true}
 		IsMenuButton {false}
 		Text {&OK}

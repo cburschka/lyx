@@ -1,33 +1,23 @@
-/*
- * paradlg.h
- * (C) 2000 LyX Team
- * John Levon, moz@compsoc.man.ac.uk
+/**
+ * \file paradlg.h
+ * Copyright 2001 the LyX Team
+ * Read the file COPYING
+ *
+ * \author John Levon
  */
-
-/***************************************************************************
- *                                                                         *
- *   This program is free software; you can redistribute it and/or modify  *
- *   it under the terms of the GNU General Public License as published by  *
- *   the Free Software Foundation; either version 2 of the License, or     *
- *   (at your option) any later version.                                   *
- *                                                                         *
- ***************************************************************************/
 
 #ifndef PARADLG_H
 #define PARADLG_H
 
 #include <config.h>
 #include <gettext.h>
-#include <string>
 
 #include  "parageneraldlg.h"
 #include  "paraextradlg.h"
- 
-//#include <qtabdialog.h>
- 
-#include "vspace.h" 
+
+#include "vspace.h"
 #include "lyxparagraph.h"
-#include "debug.h" 
+#include "debug.h"
 
 #include "dlg/paradlgdata.h"
 
@@ -35,14 +25,14 @@
 #include "FormParagraph.h"
 
 class ParaDialog : public ParaDialogData  {
-   Q_OBJECT
+	Q_OBJECT
 public:
-	ParaDialog(FormParagraph *form, QWidget *parent=0, const char *name=0,
+	ParaDialog(FormParagraph * form, QWidget * parent=0, char const * name=0,
 			    bool modal=false, WFlags f=0);
 	~ParaDialog();
 
 	void setReadOnly(bool);
-	void setLabelWidth(const char *);
+	void setLabelWidth(char const *);
 	void setAlign(int);
 	void setChecks(bool, bool, bool, bool, bool);
 	void setSpace(VSpace::vspace_kind, VSpace::vspace_kind, bool, bool);
@@ -50,19 +40,18 @@ public:
 	void setBelowLength(float, float, float, LyXGlueLength::UNIT, LyXGlueLength::UNIT, LyXGlueLength::UNIT);
 	void setExtra(float, LyXGlueLength::UNIT, const string, int, bool, bool, LyXParagraph::PEXTRA_TYPE);
 
-	const char *getLabelWidth() const {
+	char const * getLabelWidth() const {
 		return generalpage->labelwidth->text();
 	}
 
 	LyXAlignment getAlign() const {
-		if (generalpage->right->isChecked())
-			return LYX_ALIGN_RIGHT;
-		else if (generalpage->left->isChecked())
-			return LYX_ALIGN_LEFT;
-		else if (generalpage->center->isChecked())
-			return LYX_ALIGN_CENTER;
-		else
-			return LYX_ALIGN_BLOCK;
+		switch (generalpage->justification->currentItem()) { 
+			case 0: return LYX_ALIGN_BLOCK;
+			case 1: return LYX_ALIGN_CENTER;
+			case 2: return LYX_ALIGN_LEFT;
+			case 3: return LYX_ALIGN_RIGHT;
+		}
+		return LYX_ALIGN_BLOCK;
 	}
 
 	bool getAboveKeep() const {
@@ -76,7 +65,7 @@ public:
 	bool getLineAbove() const {
 		return generalpage->lineabove->isChecked();
 	}
- 
+
 	bool getLineBelow() const {
 		return generalpage->linebelow->isChecked();
 	}
@@ -96,7 +85,7 @@ public:
 	VSpace::vspace_kind getSpaceAboveKind() const {
 		return getSpaceKind(generalpage->abovepage->spaceabove->currentItem());
 	}
-	
+
 	VSpace::vspace_kind getSpaceBelowKind() const {
 		return getSpaceKind(generalpage->belowpage->spacebelow->currentItem());
 	}
@@ -136,15 +125,15 @@ public:
 	}
 
 protected:
-	void closeEvent(QCloseEvent *e);
- 
+	void closeEvent(QCloseEvent * e);
+
 private:
-	FormParagraph *form_;
+	FormParagraph * form_;
 
 	/// the general tab page
-	ParaGeneralDialog *generalpage;
+	ParaGeneralDialog * generalpage;
 	/// the extra options tab page
-	ParaExtraDialog *extrapage;
+	ParaExtraDialog * extrapage;
 
 	VSpace::vspace_kind getSpaceKind(int val) const {
 		switch (val) {
@@ -185,4 +174,4 @@ private slots:
 
 };
 
-#endif
+#endif // PARADLG_H

@@ -12,51 +12,21 @@ Dialog {
 }
 WidgetLayout {
 InitialPos {0 0}
-Size {455 505}
+Size {550 515}
 MinSize {0 0}
 MaxSize {32767 32767}
 Grid {5}
 
-Label {
-		Text {Document class :}
-		Alignment {289}
-		AutoResize {false}
-		Margin {-1}
-		Style {0}
+GroupBox {
+		Title {Paragraph spacing}
+		Alignment {Left}
+		Style {49}
 		LineWidth {1}
 		MidLineWidth {0}
-		FrameMargin {0}
-		Rect {95 5 85 23}
-		Name {labelClass}
-		MinimumSize {0 0}
-		MaximumSize {32767 32767}
-		BackgroundPixmap {}
-		UseBackgroundPixmap {false}
-		AdjustSize {false}
-		ReadPixmapFromData {false}
-		DataVarName {}
-		DataLenName {}
-		minWidthSizeHint {true}
-		minHeightSizeHint {true}
-		maxWidthSizeHint {true}
-		maxHeightSizeHint {true}
-		FocusPolicy {NoFocus}
-		BackgroundMode {PaletteBackground}
-		FontPropagation {NoChildren}
-		PalettePropagation {NoChildren}
-}
-ComboBox {
-		Style {ReadOnly}
-		SizeLimit {30}
-		Policy {AtBottom}
-		AutoResize {false}
-		MaxCount {2147483647}
-		AutoCompletion {false}
-		Rect {275 5 85 23}
-		Name {docclass}
-		Variable {docclass}
-		Signal {[Protected]  highlighted --> classChanged  (const char*)}
-		MinimumSize {0 0}
+		FrameMargin {17}
+		Rect {5 180 540 220}
+		Name {paraspacingbox}
+		MinimumSize {35 69}
 		MaximumSize {32767 32767}
 		BackgroundPixmap {}
 		UseBackgroundPixmap {false}
@@ -67,14 +37,14 @@ ComboBox {
 		minWidthSizeHint {true}
 		minHeightSizeHint {true}
 		maxWidthSizeHint {false}
-		maxHeightSizeHint {true}
-		FocusPolicy {StrongFocus}
+		maxHeightSizeHint {false}
+		FocusPolicy {NoFocus}
 		BackgroundMode {PaletteBackground}
-		FontPropagation {AllChildren}
-		PalettePropagation {AllChildren}
+		FontPropagation {NoChildren}
+		PalettePropagation {NoChildren}
 }
 Label {
-		Text {Page style :}
+		Text {Font size :}
 		Alignment {289}
 		AutoResize {false}
 		Margin {-1}
@@ -82,8 +52,8 @@ Label {
 		LineWidth {1}
 		MidLineWidth {0}
 		FrameMargin {0}
-		Rect {95 33 85 23}
-		Name {labelPagestyle}
+		Rect {114 95 104 25}
+		Name {labelFontSize}
 		MinimumSize {0 0}
 		MaximumSize {32767 32767}
 		BackgroundPixmap {}
@@ -110,7 +80,7 @@ Label {
 		LineWidth {1}
 		MidLineWidth {0}
 		FrameMargin {0}
-		Rect {95 61 85 22}
+		Rect {114 65 104 25}
 		Name {labelFont}
 		MinimumSize {0 0}
 		MaximumSize {32767 32767}
@@ -130,7 +100,7 @@ Label {
 		PalettePropagation {NoChildren}
 }
 Label {
-		Text {Font size :}
+		Text {Page style :}
 		Alignment {289}
 		AutoResize {false}
 		Margin {-1}
@@ -138,8 +108,36 @@ Label {
 		LineWidth {1}
 		MidLineWidth {0}
 		FrameMargin {0}
-		Rect {95 88 85 23}
-		Name {labelFontSize}
+		Rect {114 35 104 25}
+		Name {labelPagestyle}
+		MinimumSize {0 0}
+		MaximumSize {32767 32767}
+		BackgroundPixmap {}
+		UseBackgroundPixmap {false}
+		AdjustSize {false}
+		ReadPixmapFromData {false}
+		DataVarName {}
+		DataLenName {}
+		minWidthSizeHint {true}
+		minHeightSizeHint {true}
+		maxWidthSizeHint {true}
+		maxHeightSizeHint {true}
+		FocusPolicy {NoFocus}
+		BackgroundMode {PaletteBackground}
+		FontPropagation {NoChildren}
+		PalettePropagation {NoChildren}
+}
+Label {
+		Text {Document class :}
+		Alignment {289}
+		AutoResize {false}
+		Margin {-1}
+		Style {0}
+		LineWidth {1}
+		MidLineWidth {0}
+		FrameMargin {0}
+		Rect {114 5 104 25}
+		Name {labelClass}
 		MinimumSize {0 0}
 		MaximumSize {32767 32767}
 		BackgroundPixmap {}
@@ -164,7 +162,35 @@ ComboBox {
 		AutoResize {false}
 		MaxCount {2147483647}
 		AutoCompletion {false}
-		Rect {275 33 85 23}
+		Rect {332 5 104 25}
+		Name {docclass}
+		Variable {docclass}
+		Signal {[Protected]  highlighted --> classChanged  (const char*)}
+		MinimumSize {0 0}
+		MaximumSize {32767 32767}
+		BackgroundPixmap {}
+		UseBackgroundPixmap {false}
+		AdjustSize {false}
+		ReadPixmapFromData {false}
+		DataVarName {}
+		DataLenName {}
+		minWidthSizeHint {true}
+		minHeightSizeHint {true}
+		maxWidthSizeHint {false}
+		maxHeightSizeHint {true}
+		FocusPolicy {StrongFocus}
+		BackgroundMode {PaletteBackground}
+		FontPropagation {AllChildren}
+		PalettePropagation {AllChildren}
+}
+ComboBox {
+		Style {ReadOnly}
+		SizeLimit {30}
+		Policy {AtBottom}
+		AutoResize {false}
+		MaxCount {2147483647}
+		AutoCompletion {false}
+		Rect {332 35 104 25}
 		Name {pagestyle}
 		Variable {pagestyle}
 		MinimumSize {0 0}
@@ -191,7 +217,7 @@ ComboBox {
 		AutoResize {false}
 		MaxCount {2147483647}
 		AutoCompletion {false}
-		Rect {275 61 85 22}
+		Rect {332 65 104 25}
 		Name {font}
 		Variable {font}
 		MinimumSize {0 0}
@@ -218,7 +244,7 @@ ComboBox {
 		AutoResize {false}
 		MaxCount {2147483647}
 		AutoCompletion {false}
-		Rect {275 88 85 23}
+		Rect {332 95 104 25}
 		Name {fontsize}
 		Variable {fontsize}
 		MinimumSize {0 0}
@@ -243,7 +269,7 @@ CheckBox {
 		Text {Two-sided}
 		AutoRepeat {false}
 		AutoResize {false}
-		Rect {93 116 88 91}
+		Rect {112 125 107 50}
 		Name {sides}
 		Variable {sides}
 		MinimumSize {0 0}
@@ -268,34 +294,9 @@ CheckBox {
 		Text {Two column pages}
 		AutoRepeat {false}
 		AutoResize {false}
-		Rect {274 116 88 91}
+		Rect {331 125 107 50}
 		Name {columns}
 		Variable {columns}
-		MinimumSize {0 0}
-		MaximumSize {32767 32767}
-		BackgroundPixmap {}
-		UseBackgroundPixmap {false}
-		AdjustSize {false}
-		ReadPixmapFromData {false}
-		DataVarName {}
-		DataLenName {}
-		minWidthSizeHint {true}
-		minHeightSizeHint {true}
-		maxWidthSizeHint {true}
-		maxHeightSizeHint {true}
-		FocusPolicy {TabFocus}
-		BackgroundMode {PaletteBackground}
-		FontPropagation {NoChildren}
-		PalettePropagation {NoChildren}
-}
-CheckBox {
-		Checked {false}
-		Text {Skip separation (FIXME)}
-		AutoRepeat {false}
-		AutoResize {false}
-		Rect {153 212 149 91}
-		Name {separation}
-		Variable {separation}
 		MinimumSize {0 0}
 		MaximumSize {32767 32767}
 		BackgroundPixmap {}
@@ -322,8 +323,148 @@ Label {
 		LineWidth {1}
 		MidLineWidth {0}
 		FrameMargin {0}
-		Rect {5 308 145 46}
+		Rect {5 405 177 50}
 		Name {labelSpacing}
+		MinimumSize {0 0}
+		MaximumSize {32767 32767}
+		BackgroundPixmap {}
+		UseBackgroundPixmap {false}
+		AdjustSize {false}
+		ReadPixmapFromData {false}
+		DataVarName {}
+		DataLenName {}
+		minWidthSizeHint {true}
+		minHeightSizeHint {true}
+		maxWidthSizeHint {true}
+		maxHeightSizeHint {true}
+		FocusPolicy {NoFocus}
+		BackgroundMode {PaletteBackground}
+		FontPropagation {NoChildren}
+		PalettePropagation {NoChildren}
+}
+Label {
+		Text {Extra options :}
+		Alignment {289}
+		AutoResize {false}
+		Margin {-1}
+		Style {0}
+		LineWidth {1}
+		MidLineWidth {0}
+		FrameMargin {0}
+		Rect {5 460 268 50}
+		Name {labelExtraoptions}
+		MinimumSize {0 0}
+		MaximumSize {32767 32767}
+		BackgroundPixmap {}
+		UseBackgroundPixmap {false}
+		AdjustSize {false}
+		ReadPixmapFromData {false}
+		DataVarName {}
+		DataLenName {}
+		minWidthSizeHint {true}
+		minHeightSizeHint {true}
+		maxWidthSizeHint {true}
+		maxHeightSizeHint {true}
+		FocusPolicy {NoFocus}
+		BackgroundMode {PaletteBackground}
+		FontPropagation {NoChildren}
+		PalettePropagation {NoChildren}
+}
+Label {
+		Text {Default paragraph spacing :}
+		Alignment {289}
+		AutoResize {false}
+		Margin {-1}
+		Style {0}
+		LineWidth {1}
+		MidLineWidth {0}
+		FrameMargin {0}
+		Rect {10 247 128 30}
+		Name {labelSkip}
+		MinimumSize {0 0}
+		MaximumSize {32767 32767}
+		BackgroundPixmap {}
+		UseBackgroundPixmap {false}
+		AdjustSize {false}
+		ReadPixmapFromData {false}
+		DataVarName {}
+		DataLenName {}
+		minWidthSizeHint {true}
+		minHeightSizeHint {true}
+		maxWidthSizeHint {true}
+		maxHeightSizeHint {true}
+		FocusPolicy {NoFocus}
+		BackgroundMode {PaletteBackground}
+		FontPropagation {NoChildren}
+		PalettePropagation {NoChildren}
+}
+Label {
+		Text {Size :}
+		Alignment {289}
+		AutoResize {false}
+		Margin {-1}
+		Style {0}
+		LineWidth {1}
+		MidLineWidth {0}
+		FrameMargin {0}
+		Rect {10 294 173 30}
+		Name {labelparasize}
+		MinimumSize {0 0}
+		MaximumSize {32767 32767}
+		BackgroundPixmap {}
+		UseBackgroundPixmap {false}
+		AdjustSize {false}
+		ReadPixmapFromData {false}
+		DataVarName {}
+		DataLenName {}
+		minWidthSizeHint {true}
+		minHeightSizeHint {true}
+		maxWidthSizeHint {true}
+		maxHeightSizeHint {true}
+		FocusPolicy {NoFocus}
+		BackgroundMode {PaletteBackground}
+		FontPropagation {NoChildren}
+		PalettePropagation {NoChildren}
+}
+Label {
+		Text {Shrink :}
+		Alignment {289}
+		AutoResize {false}
+		Margin {-1}
+		Style {0}
+		LineWidth {1}
+		MidLineWidth {0}
+		FrameMargin {0}
+		Rect {10 365 173 30}
+		Name {paralabelShrink}
+		MinimumSize {0 0}
+		MaximumSize {32767 32767}
+		BackgroundPixmap {}
+		UseBackgroundPixmap {false}
+		AdjustSize {false}
+		ReadPixmapFromData {false}
+		DataVarName {}
+		DataLenName {}
+		minWidthSizeHint {true}
+		minHeightSizeHint {true}
+		maxWidthSizeHint {true}
+		maxHeightSizeHint {true}
+		FocusPolicy {NoFocus}
+		BackgroundMode {PaletteBackground}
+		FontPropagation {NoChildren}
+		PalettePropagation {NoChildren}
+}
+Label {
+		Text {Stretch :}
+		Alignment {289}
+		AutoResize {false}
+		Margin {-1}
+		Style {0}
+		LineWidth {1}
+		MidLineWidth {0}
+		FrameMargin {0}
+		Rect {10 329 173 31}
+		Name {paralabelStretch}
 		MinimumSize {0 0}
 		MaximumSize {32767 32767}
 		BackgroundPixmap {}
@@ -348,7 +489,104 @@ ComboBox {
 		AutoResize {false}
 		MaxCount {2147483647}
 		AutoCompletion {false}
-		Rect {155 308 215 46}
+		Rect {284 247 128 30}
+		Name {paraspacing}
+		Variable {paraspacing}
+		Signal {[Protected]  highlighted --> paraspacingChanged  (const char*)}
+		MinimumSize {0 0}
+		MaximumSize {32767 32767}
+		BackgroundPixmap {}
+		UseBackgroundPixmap {false}
+		AdjustSize {false}
+		ReadPixmapFromData {false}
+		DataVarName {}
+		DataLenName {}
+		minWidthSizeHint {true}
+		minHeightSizeHint {true}
+		maxWidthSizeHint {false}
+		maxHeightSizeHint {true}
+		FocusPolicy {StrongFocus}
+		BackgroundMode {PaletteBackground}
+		FontPropagation {AllChildren}
+		PalettePropagation {AllChildren}
+}
+User {
+		UserClassHeader {lengthentry.h}
+		UserClassName {LengthEntry}
+		Rect {188 294 174 30}
+		Name {paraspacingValue}
+		Variable {paraspacingValue}
+		MinimumSize {0 0}
+		MaximumSize {32767 32767}
+		BackgroundPixmap {}
+		UseBackgroundPixmap {false}
+		AdjustSize {false}
+		ReadPixmapFromData {false}
+		DataVarName {}
+		DataLenName {}
+		minWidthSizeHint {true}
+		minHeightSizeHint {true}
+		maxWidthSizeHint {false}
+		maxHeightSizeHint {true}
+		FocusPolicy {NoFocus}
+		BackgroundMode {PaletteBackground}
+		FontPropagation {NoChildren}
+		PalettePropagation {NoChildren}
+}
+User {
+		UserClassHeader {lengthentry.h}
+		UserClassName {LengthEntry}
+		Rect {188 329 174 31}
+		Name {paraspacingStretch}
+		Variable {paraspacingStretch}
+		MinimumSize {0 0}
+		MaximumSize {32767 32767}
+		BackgroundPixmap {}
+		UseBackgroundPixmap {false}
+		AdjustSize {false}
+		ReadPixmapFromData {false}
+		DataVarName {}
+		DataLenName {}
+		minWidthSizeHint {true}
+		minHeightSizeHint {true}
+		maxWidthSizeHint {false}
+		maxHeightSizeHint {true}
+		FocusPolicy {NoFocus}
+		BackgroundMode {PaletteBackground}
+		FontPropagation {NoChildren}
+		PalettePropagation {NoChildren}
+}
+User {
+		UserClassHeader {lengthentry.h}
+		UserClassName {LengthEntry}
+		Rect {188 365 174 30}
+		Name {paraspacingShrink}
+		Variable {paraspacingShrink}
+		MinimumSize {0 0}
+		MaximumSize {32767 32767}
+		BackgroundPixmap {}
+		UseBackgroundPixmap {false}
+		AdjustSize {false}
+		ReadPixmapFromData {false}
+		DataVarName {}
+		DataLenName {}
+		minWidthSizeHint {true}
+		minHeightSizeHint {true}
+		maxWidthSizeHint {false}
+		maxHeightSizeHint {true}
+		FocusPolicy {NoFocus}
+		BackgroundMode {PaletteBackground}
+		FontPropagation {NoChildren}
+		PalettePropagation {NoChildren}
+}
+ComboBox {
+		Style {ReadOnly}
+		SizeLimit {30}
+		Policy {AtBottom}
+		AutoResize {false}
+		MaxCount {2147483647}
+		AutoCompletion {false}
+		Rect {187 405 176 50}
 		Name {linespacing}
 		Variable {linespacing}
 		MinimumSize {0 0}
@@ -368,121 +606,13 @@ ComboBox {
 		FontPropagation {AllChildren}
 		PalettePropagation {AllChildren}
 }
-Label {
-		Text {Default skip spacing :}
-		Alignment {289}
-		AutoResize {false}
-		Margin {-1}
-		Style {0}
-		LineWidth {1}
-		MidLineWidth {0}
-		FrameMargin {0}
-		Rect {5 359 145 45}
-		Name {labelSkip}
-		MinimumSize {0 0}
-		MaximumSize {32767 32767}
-		BackgroundPixmap {}
-		UseBackgroundPixmap {false}
-		AdjustSize {false}
-		ReadPixmapFromData {false}
-		DataVarName {}
-		DataLenName {}
-		minWidthSizeHint {true}
-		minHeightSizeHint {true}
-		maxWidthSizeHint {true}
-		maxHeightSizeHint {true}
-		FocusPolicy {NoFocus}
-		BackgroundMode {PaletteBackground}
-		FontPropagation {NoChildren}
-		PalettePropagation {NoChildren}
-}
-ComboBox {
-		Style {ReadOnly}
-		SizeLimit {30}
-		Policy {AtBottom}
-		AutoResize {false}
-		MaxCount {2147483647}
-		AutoCompletion {false}
-		Rect {155 359 215 45}
-		Name {skipspacing}
-		Variable {skipspacing}
-		MinimumSize {0 0}
-		MaximumSize {32767 32767}
-		BackgroundPixmap {}
-		UseBackgroundPixmap {false}
-		AdjustSize {false}
-		ReadPixmapFromData {false}
-		DataVarName {}
-		DataLenName {}
-		minWidthSizeHint {true}
-		minHeightSizeHint {true}
-		maxWidthSizeHint {false}
-		maxHeightSizeHint {true}
-		FocusPolicy {StrongFocus}
-		BackgroundMode {PaletteBackground}
-		FontPropagation {AllChildren}
-		PalettePropagation {AllChildren}
-}
-LineEdit {
-		Text {}
-		EchoMode {Normal}
-		MaxLength {32767}
-		FrameShown {true}
-		Rect {230 409 220 91}
-		Name {extraoptions}
-		Variable {extraoptions}
-		MinimumSize {0 0}
-		MaximumSize {32767 32767}
-		BackgroundPixmap {}
-		UseBackgroundPixmap {false}
-		AdjustSize {false}
-		ReadPixmapFromData {false}
-		DataVarName {}
-		DataLenName {}
-		minWidthSizeHint {true}
-		minHeightSizeHint {true}
-		maxWidthSizeHint {false}
-		maxHeightSizeHint {true}
-		FocusPolicy {StrongFocus}
-		BackgroundMode {PaletteBase}
-		FontPropagation {NoChildren}
-		PalettePropagation {NoChildren}
-}
-Label {
-		Text {Extra options :}
-		Alignment {289}
-		AutoResize {false}
-		Margin {-1}
-		Style {0}
-		LineWidth {1}
-		MidLineWidth {0}
-		FrameMargin {0}
-		Rect {5 409 220 91}
-		Name {labelExtraoptions}
-		MinimumSize {0 0}
-		MaximumSize {32767 32767}
-		BackgroundPixmap {}
-		UseBackgroundPixmap {false}
-		AdjustSize {false}
-		ReadPixmapFromData {false}
-		DataVarName {}
-		DataLenName {}
-		minWidthSizeHint {true}
-		minHeightSizeHint {true}
-		maxWidthSizeHint {true}
-		maxHeightSizeHint {true}
-		FocusPolicy {NoFocus}
-		BackgroundMode {PaletteBackground}
-		FontPropagation {NoChildren}
-		PalettePropagation {NoChildren}
-}
 KDE::KRestrictedLine {
 		ValidChars {0123456789.,}
 		Text {}
 		EchoMode {Normal}
 		MaxLength {32767}
 		FrameShown {true}
-		Rect {375 308 75 46}
+		Rect {368 405 177 50}
 		Name {linespacingVal}
 		Variable {linespacingVal}
 		MinimumSize {0 0}
@@ -502,17 +632,14 @@ KDE::KRestrictedLine {
 		FontPropagation {NoChildren}
 		PalettePropagation {NoChildren}
 }
-Label {
-		Text {FIXME}
-		Alignment {289}
-		AutoResize {false}
-		Margin {-1}
-		Style {0}
-		LineWidth {1}
-		MidLineWidth {0}
-		FrameMargin {0}
-		Rect {375 359 75 45}
-		Name {FIXME}
+LineEdit {
+		Text {}
+		EchoMode {Normal}
+		MaxLength {32767}
+		FrameShown {true}
+		Rect {278 460 267 50}
+		Name {extraoptions}
+		Variable {extraoptions}
 		MinimumSize {0 0}
 		MaximumSize {32767 32767}
 		BackgroundPixmap {}
@@ -521,11 +648,37 @@ Label {
 		ReadPixmapFromData {false}
 		DataVarName {}
 		DataLenName {}
-		minWidthSizeHint {false}
-		minHeightSizeHint {false}
+		minWidthSizeHint {true}
+		minHeightSizeHint {true}
 		maxWidthSizeHint {false}
-		maxHeightSizeHint {false}
-		FocusPolicy {NoFocus}
+		maxHeightSizeHint {true}
+		FocusPolicy {StrongFocus}
+		BackgroundMode {PaletteBase}
+		FontPropagation {NoChildren}
+		PalettePropagation {NoChildren}
+}
+CheckBox {
+		Checked {false}
+		Text {Add space}
+		AutoRepeat {false}
+		AutoResize {false}
+		Rect {10 200 398 30}
+		Name {addspace}
+		Variable {addspace}
+		Signal {[Protected]  toggled --> addspaceChanged  (bool)}
+		MinimumSize {0 0}
+		MaximumSize {32767 32767}
+		BackgroundPixmap {}
+		UseBackgroundPixmap {false}
+		AdjustSize {false}
+		ReadPixmapFromData {false}
+		DataVarName {}
+		DataLenName {}
+		minWidthSizeHint {true}
+		minHeightSizeHint {true}
+		maxWidthSizeHint {true}
+		maxHeightSizeHint {true}
+		FocusPolicy {TabFocus}
 		BackgroundMode {PaletteBackground}
 		FontPropagation {NoChildren}
 		PalettePropagation {NoChildren}
@@ -548,7 +701,7 @@ Grid_Layout-1.1{
 	ColumnInfo {5 1}
 	ColumnInfo {5 1}
 	ColumnInfo {5 1}
-	BoxStretch {1}
+	BoxStretch {2}
 }
 Grid_Row-1.1.1{
 	Stretch {1}
@@ -657,7 +810,23 @@ Layout_Widget-1.2.4{
 Box_Stretch-1.2.5{
 	Stretch {1}
 }
-Box_Layout-1.3{
+Layout_Widget-1.3{
+	Widget {paraspacingbox}
+	BoxStretch {3}
+	Alignment {33}
+}
+Box_Layout-1.3.1{
+	Direction {TopToBottom}
+	Border {5}
+	AutoBorder {17}
+	Name {}
+	Strut {0}
+	Stretch {1}
+}
+Box_Spacing-1.3.1.1{
+	Spacing {15}
+}
+Box_Layout-1.3.1.2{
 	Direction {LeftToRight}
 	Border {5}
 	AutoBorder {5}
@@ -665,63 +834,116 @@ Box_Layout-1.3{
 	Strut {0}
 	Stretch {1}
 }
-Box_Stretch-1.3.1{
-	Stretch {1}
-}
-Layout_Widget-1.3.2{
-	Widget {separation}
-	BoxStretch {1}
+Layout_Widget-1.3.1.2.1{
+	BoxStretch {3}
 	Alignment {33}
 }
-Box_Stretch-1.3.3{
+Box_Stretch-1.3.1.2.2{
 	Stretch {1}
 }
-Grid_Layout-1.4{
+Box_Layout-1.3.1.3{
+	Direction {LeftToRight}
+	Border {5}
+	AutoBorder {17}
+	Name {}
+	Strut {0}
+	Stretch {1}
+}
+Layout_Widget-1.3.1.3.1{
+	Widget {labelSkip}
+	BoxStretch {1}
+	Alignment {36}
+}
+Box_Stretch-1.3.1.3.2{
+	Stretch {1}
+}
+Layout_Widget-1.3.1.3.3{
+	Widget {paraspacing}
+	BoxStretch {1}
+	Alignment {36}
+}
+Box_Stretch-1.3.1.3.4{
+	Stretch {1}
+}
+Grid_Layout-1.3.1.4{
 	Border {5}
 	AutoBorder {5}
 	Name {}
-	ColumnInfo {5 2}
-	ColumnInfo {5 3}
 	ColumnInfo {5 1}
-	BoxStretch {1}
+	ColumnInfo {5 1}
+	ColumnInfo {5 1}
+	BoxStretch {3}
 }
-Grid_Row-1.4.1{
+Grid_Row-1.3.1.4.1{
 	Stretch {1}
 	Spacing {0}
 }
-Layout_Widget-1.4.1.1{
+Layout_Widget-1.3.1.4.1.1{
+	Widget {labelparasize}
+	BoxStretch {1}
+	Alignment {33}
+}
+Layout_Widget-1.3.1.4.1.2{
+	Widget {paraspacingValue}
+	BoxStretch {1}
+	Alignment {33}
+}
+Grid_Spacer-1.3.1.4.1.3{
+}
+Grid_Row-1.3.1.4.2{
+	Stretch {1}
+	Spacing {0}
+}
+Layout_Widget-1.3.1.4.2.1{
+	Widget {paralabelStretch}
+	BoxStretch {1}
+	Alignment {33}
+}
+Layout_Widget-1.3.1.4.2.2{
+	Widget {paraspacingStretch}
+	BoxStretch {1}
+	Alignment {33}
+}
+Grid_Spacer-1.3.1.4.2.3{
+}
+Grid_Row-1.3.1.4.3{
+	Stretch {1}
+	Spacing {0}
+}
+Layout_Widget-1.3.1.4.3.1{
+	Widget {paralabelShrink}
+	BoxStretch {1}
+	Alignment {33}
+}
+Layout_Widget-1.3.1.4.3.2{
+	Widget {paraspacingShrink}
+	BoxStretch {1}
+	Alignment {33}
+}
+Grid_Spacer-1.3.1.4.3.3{
+}
+Box_Layout-1.4{
+	Direction {LeftToRight}
+	Border {5}
+	AutoBorder {5}
+	Name {}
+	Strut {0}
+	Stretch {1}
+}
+Layout_Widget-1.4.1{
 	Widget {labelSpacing}
 	BoxStretch {1}
-	Alignment {33}
+	Alignment {36}
 }
-Layout_Widget-1.4.1.2{
+Layout_Widget-1.4.2{
 	Widget {linespacing}
 	BoxStretch {1}
-	Alignment {33}
+	Alignment {36}
 }
-Layout_Widget-1.4.1.3{
+Layout_Widget-1.4.3{
 	Widget {linespacingVal}
 	BoxStretch {1}
-	Alignment {33}
-}
-Grid_Row-1.4.2{
-	Stretch {1}
-	Spacing {0}
-}
-Layout_Widget-1.4.2.1{
-	Widget {labelSkip}
-	BoxStretch {1}
-	Alignment {33}
-}
-Layout_Widget-1.4.2.2{
-	Widget {skipspacing}
-	BoxStretch {1}
-	Alignment {33}
-}
-Layout_Widget-1.4.2.3{
-	Widget {FIXME}
-	BoxStretch {1}
-	Alignment {33}
+	Alignment {36}
 }
 Box_Layout-1.5{
 	Direction {LeftToRight}

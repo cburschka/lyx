@@ -1,17 +1,10 @@
-/*
- * urldlg.h
- * (C) 2000 LyX Team
- * John Levon, moz@compsoc.man.ac.uk
+/**
+ * \file urldlg.h
+ * Copyright 2001 the LyX Team
+ * Read the file COPYING
+ *
+ * \author John Levon
  */
-
-/***************************************************************************
- *                                                                         *
- *   This program is free software; you can redistribute it and/or modify  *
- *   it under the terms of the GNU General Public License as published by  *
- *   the Free Software Foundation; either version 2 of the License, or     *
- *   (at your option) any later version.                                   *
- *                                                                         *
- ***************************************************************************/
 
 #ifndef URLDLG_H
 #define URLDLG_H
@@ -22,6 +15,7 @@
 // to connect apply() and hide()
 #include "FormUrl.h"
 
+#include <qdialog.h>
 #include <qlayout.h>
 #include <qlabel.h>
 #include <qtooltip.h>
@@ -29,37 +23,37 @@
 #include <qlineedit.h>
 #include <qpushbutton.h>
 
-class UrlDialog : public QWidget {
+class UrlDialog : public QDialog {
    Q_OBJECT
 public:
-	UrlDialog(FormUrl *form, QWidget *parent=0, const char *name=0,
+	UrlDialog(FormUrl * form, QWidget * parent=0, char const * name=0,
 			    bool modal=false, WFlags f=0);
 	~UrlDialog();
 
 	// widgets
  
-	QLabel *labelurl;
-	QLabel *labelurlname;
-	QLineEdit *url;
-	QLineEdit *urlname;
-	QCheckBox *htmlurl;
-	QPushButton *buttonOk;
-	QPushButton *buttonCancel;
+	QLabel * labelurl;
+	QLabel * labelurlname;
+	QLineEdit * url;
+	QLineEdit * urlname;
+	QCheckBox * htmlurl;
+	QPushButton * buttonOk;
+	QPushButton * buttonCancel;
 
 protected:
-	void closeEvent(QCloseEvent *e);
+	void closeEvent(QCloseEvent * e);
  
 private:
-	FormUrl *form_;
+	FormUrl * form_;
 
 	// layouts
  
-	QHBoxLayout *topLayout;
-	QVBoxLayout *layout;
-	QHBoxLayout *urlLayout;
-	QBoxLayout *urlnameLayout;
-	QBoxLayout *htmlurlLayout;
-	QHBoxLayout *buttonLayout;
+	QHBoxLayout * topLayout;
+	QVBoxLayout * layout;
+	QHBoxLayout * urlLayout;
+	QBoxLayout * urlnameLayout;
+	QBoxLayout * htmlurlLayout;
+	QHBoxLayout * buttonLayout;
 
 private slots:
 	/// adaptor to FormUrl::apply
@@ -76,4 +70,4 @@ private slots:
 	}
 };
 
-#endif
+#endif // URLDLG_H

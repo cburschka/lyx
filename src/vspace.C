@@ -50,8 +50,7 @@ static LyXLength::UNIT unit[4]   = { LyXLength::UNIT_NONE,
 				     LyXLength::UNIT_NONE,
 				     LyXLength::UNIT_NONE,
 				     LyXLength::UNIT_NONE };
-//static int number_index, unit_index;
-int number_index, unit_index;
+static int number_index, unit_index;
 
 
 static inline
@@ -459,16 +458,16 @@ VSpace::VSpace (string const & data)
 
 bool VSpace::operator==(VSpace const & other) const
 {
-	if (this->kin == other.kin) 
-		if (this->kin == LENGTH)
-			if (this->len == other.len)
-				return this->kp == other.kp;
-			else
-				return false;
-		else
-			return this->kp == other.kp;
-	else
+	if (this->kin != other.kin)
 		return false;
+ 
+	if (this->kin != LENGTH)
+		return this->kp == other.kp;
+ 
+	if (!(this->len == other.len))
+		return false;
+ 
+	return this->kp == other.kp;
 }
 
 

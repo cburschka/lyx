@@ -53,7 +53,6 @@ extern Combox * combo_language;
 extern Combox * combo_language2;
 extern BufferList bufferlist;
 extern void show_symbols_form();
-extern FD_form_title * fd_form_title;
 extern FD_form_character * fd_form_character;
 extern FD_form_preamble * fd_form_preamble;
 extern FD_form_figure * fd_form_figure;
@@ -784,23 +783,6 @@ LyXFont const UserFreeFont(BufferParams const & params)
 		font.setLanguage(languages.getLanguage(combo_language2->getline()));
 
 	return font; 
-}
-
-
-/* callbacks for form form_title */
-extern "C"
-void TimerCB(FL_OBJECT *, long)
-{
-	// only if the form still exists
-	if (lyxrc.show_banner
-	    && fd_form_title
-	    && fd_form_title->form_title) {
-		if (fd_form_title->form_title->visible) {
-			fl_hide_form(fd_form_title->form_title);
-		}
-		fl_free_form(fd_form_title->form_title);
-		fd_form_title->form_title = 0;
-	}
 }
 
 

@@ -1,17 +1,10 @@
-/*
- * FormIndex.C
- * (C) 2000 LyX Team
- * John Levon, moz@compsoc.man.ac.uk
+/**
+ * \file FormIndex.C
+ * Copyright 2001 the LyX Team
+ * Read the file COPYING
+ *
+ * \author John Levon
  */
- 
-/***************************************************************************
- *                                                                         *
- *   This program is free software; you can redistribute it and/or modify  *
- *   it under the terms of the GNU General Public License as published by  *
- *   the Free Software Foundation; either version 2 of the License, or     *
- *   (at your option) any later version.                                   *
- *                                                                         *
- ***************************************************************************/
 
 #include <config.h>
 
@@ -26,17 +19,16 @@
 FormIndex::FormIndex(LyXView *v, Dialogs *d)
 	: dialog_(0), lv_(v), d_(d), inset_(0), h_(0), u_(0), ih_(0)
 {
-	// let the dialog be shown
-	// This is a permanent connection so we won't bother
-	// storing a copy because we won't be disconnecting.
 	d->showIndex.connect(slot(this, &FormIndex::showIndex));
 	d->createIndex.connect(slot(this, &FormIndex::createIndex));
 }
+
 
 FormIndex::~FormIndex()
 {
 	delete dialog_;
 }
+
 
 void FormIndex::showIndex(InsetCommand * const inset)
 {
@@ -51,6 +43,7 @@ void FormIndex::showIndex(InsetCommand * const inset)
 	
 	show();
 }
+
  
 void FormIndex::createIndex(string const & arg)
 {
@@ -62,6 +55,7 @@ void FormIndex::createIndex(string const & arg)
 	params.setFromString(arg);
 	show();
 }
+
  
 void FormIndex::update(bool switched)
 {
@@ -73,6 +67,7 @@ void FormIndex::update(bool switched)
 	dialog_->setIndexText(params.getContents().c_str());
 	dialog_->setReadOnly(readonly);
 }
+
  
 void FormIndex::apply()
 {
@@ -89,6 +84,7 @@ void FormIndex::apply()
 	} else
 		lv_->getLyXFunc()->Dispatch(LFUN_INDEX_INSERT, params.getAsString().c_str());
 }
+
  
 void FormIndex::show()
 {
@@ -107,6 +103,7 @@ void FormIndex::show()
 	dialog_->show();
 }
 
+
 void FormIndex::close()
 {
 	h_.disconnect();
@@ -114,6 +111,7 @@ void FormIndex::close()
 	ih_.disconnect();
 	inset_ = 0;
 }
+
  
 void FormIndex::hide()
 {

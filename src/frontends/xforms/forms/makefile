@@ -17,17 +17,21 @@
 SHELL = /bin/sh
 .SUFFIXES: .fd .c
 
-SRCS := form_citation.fd \
+SRCS := form_bibitem.fd \
+	form_bibtex.fd \
+	form_citation.fd \
 	form_copyright.fd \
 	form_document.fd \
 	form_error.fd \
 	form_graphics.fd \
+	form_include.fd \
 	form_index.fd \
 	form_browser.fd \
 	form_paragraph.fd \
 	form_preferences.fd \
 	form_print.fd \
 	form_ref.fd \
+	form_splash.fd \
 	form_tabular.fd \
 	form_tabular_create.fd \
 	form_toc.fd \

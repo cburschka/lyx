@@ -4,8 +4,6 @@
 #define FD_form_title_h_
 
 /** Callbacks, globals and object handlers **/
-extern "C" void TimerCB(FL_OBJECT *, long);
-
 extern "C" void FigureOKCB(FL_OBJECT *, long);
 extern "C" void FigureApplyCB(FL_OBJECT *, long);
 extern "C" void FigureCancelCB(FL_OBJECT *, long);
@@ -20,15 +18,6 @@ extern "C" void ExternalCancelCB(FL_OBJECT *, long);
 
 
 /**** Forms and Objects ****/
-typedef struct {
-	FL_FORM *form_title;
-	void *vdata;
-	char *cdata;
-	long  ldata;
-	FL_OBJECT *timer_title;
-} FD_form_title;
-
-extern FD_form_title * create_form_form_title(void);
 typedef struct {
 	FL_FORM *form_figure;
 	void *vdata;

@@ -1,3 +1,9 @@
+2001-02-12  John Levon  <moz@compsoc.man.ac.uk>
+
+	* insetinclude.C:
+	* insetbib.h:
+	* insetbib.C: move dialogs to frontends/
+
 2001-02-10  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* insettext.C (LocalDispatch): Restore the language if the inset

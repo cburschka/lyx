@@ -20,6 +20,14 @@ libxforms_la_SOURCES = \
 	GUIRunTime.C \
 	FormBase.C \
 	FormBase.h \
+	FormBibitem.C \
+	FormBibitem.h \
+	form_bibitem.C \
+	form_bibitem.h \
+	FormBibtex.C \
+	FormBibtex.h \
+	form_bibtex.C \
+	form_bibtex.h \
 	FormBrowser.C \
 	FormBrowser.h \
 	form_browser.C \
@@ -44,6 +52,10 @@ libxforms_la_SOURCES = \
 	FormGraphics.h \
 	form_graphics.C \
 	form_graphics.h \
+	FormInclude.C \
+	FormInclude.h \
+	form_include.C \
+	form_include.h \
 	FormIndex.C \
 	FormIndex.h \
 	form_index.C \
@@ -68,6 +80,10 @@ libxforms_la_SOURCES = \
 	FormRef.h \
 	form_ref.C \
 	form_ref.h \
+	FormSplash.C \
+	FormSplash.h \
+	form_splash.C \
+	form_splash.h \
 	FormTabular.C \
 	FormTabular.h \
 	form_tabular.C \

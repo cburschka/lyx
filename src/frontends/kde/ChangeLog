@@ -1,3 +1,28 @@
+2001-02-12  John Levon  <moz@compsoc.man.ac.uk>
+
+	* <various>: move to house style
+
+	* Dialogs.C: add bib, splash, include, logs
+
+	* dlg/README: update
+
+	* Makefile.am:
+	* FormLog.C:
+	* FormLog.h:
+	* FormVCLog.C:
+	* FormVCLog.h:
+	* logdlg.C:
+	* logdlg.h:
+	* dlg/logdlgdata.C:
+	* dlg/logdlgdata.h:
+	* dlg/dialogs/log.dlg: new Log and VCLog dialogs
+
+	* dlg/dialogs/para*.dlg: fix tab order
+
+	* docdlg.C:
+	* docdlg.h:
+	* dlg/dialogs/doc*.dlg: tab order, UI improvements
+
 2001-02-07  John Levon  <moz@compsoc.man.ac.uk>
 
 	* Timeout_pimpl.h:

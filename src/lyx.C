@@ -9,24 +9,6 @@
 #include <cstdlib>
 #include "lyx.h"
 
-FD_form_title *create_form_form_title(void)
-{
-  FL_OBJECT *obj;
-  FD_form_title *fdui = (FD_form_title *) fl_calloc(1, sizeof(FD_form_title));
-
-  fdui->form_title = fl_bgn_form(FL_NO_BOX, 420, 290);
-  obj = fl_add_box(FL_UP_BOX, 0, 0, 420, 290, "");
-    fl_set_object_color(obj, FL_BLACK, FL_TOP_BCOL);
-  fdui->timer_title = obj = fl_add_timer(FL_HIDDEN_TIMER, 110, 170, 190, 60, "");
-    fl_set_object_callback(obj, TimerCB, 0);
-  fl_end_form();
-
-  fdui->form_title->fdui = fdui;
-
-  return fdui;
-}
-/*---------------------------------------*/
-
 FD_form_figure *create_form_form_figure(void)
 {
   FL_OBJECT *obj;

@@ -1,17 +1,10 @@
-/*
- * FormTabularCreate.C
- * (C) 2000 LyX Team
- * John Levon, moz@compsoc.man.ac.uk
+/**
+ * \file FormTabularCreate.C
+ * Copyright 2001 the LyX Team
+ * Read the file COPYING
+ *
+ * \author John Levon
  */
-
-/***************************************************************************
- *                                                                         *
- *   This program is free software; you can redistribute it and/or modify  *
- *   it under the terms of the GNU General Public License as published by  *
- *   the Free Software Foundation; either version 2 of the License, or     *
- *   (at your option) any later version.                                   *
- *                                                                         *
- ***************************************************************************/
 
 #include <config.h>
 
@@ -27,16 +20,15 @@
 FormTabularCreate::FormTabularCreate(LyXView *v, Dialogs *d)
 	: dialog_(0), lv_(v), d_(d), h_(0)
 {
-	// let the dialog be shown
-	// This is a permanent connection so we won't bother
-	// storing a copy because we won't be disconnecting.
 	d->showTabularCreate.connect(slot(this, &FormTabularCreate::show));
 }
+
 
 FormTabularCreate::~FormTabularCreate()
 {
 	delete dialog_;
 }
+
 
 void FormTabularCreate::apply(unsigned int rows, unsigned cols)
 {
@@ -46,6 +38,7 @@ void FormTabularCreate::apply(unsigned int rows, unsigned cols)
 	string tmp = tostr(rows) + " " + tostr(cols);
 	lv_->getLyXFunc()->Dispatch(LFUN_INSET_TABULAR, tmp);
 }
+
 
 void FormTabularCreate::show()
 {
@@ -63,10 +56,12 @@ void FormTabularCreate::show()
 	dialog_->show();
 }
 
+
 void FormTabularCreate::close()
 {
 	h_.disconnect();
 }
+
 
 void FormTabularCreate::hide()
 {

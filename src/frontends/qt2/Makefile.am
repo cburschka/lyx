@@ -6,11 +6,20 @@ INCLUDES = -I${top_srcdir}/src/ -I${top_srcdir}/src/frontends/ \
 	${SIGC_CFLAGS} ${FRONTEND_INCLUDES} $(BOOST_INCLUDES) \
 	-I${top_srcdir}/src/frontends/xforms
 DEFINES = -DQT_CLEAN_NAMESPACE
+CXXFLAGS= $(DEFINES)
 
 # moc generated files
-BUILTSOURCES = FormCopyrightDialog_moc.C \
-	FormCopyrightDialogBase_moc.C
+BUILTSOURCES = 	moc_FormCopyrightDialogBase.C \
+                moc_FormCopyrightDialog.C \
+	       moc_paragraphdlg.C \
+	       moc_paragraphdlgimpl.C \
+	       moc_printdlg.C \
+	       moc_printdlgimpl.C \
+	       moc_tabularcreatedlg.C \
+	       moc_tabularcreatedlgimpl.C \
+	       moc_emptytable.C
 
+		
 LYXDATADIRS = dlg
 DISTCLEANFILES = $(BUILTSOURCES) *.orig *.rej *~ *.bak core
 
@@ -24,29 +33,24 @@ libqt2_la_OBJADD = \
 	../xforms/FormGraphics.lo \
 	../xforms/FormIndex.lo \
 	../xforms/FormInset.lo \
-	../xforms/FormParagraph.lo \
 	../xforms/FormPreferences.lo \
-	../xforms/FormPrint.lo \
 	../xforms/FormRef.lo \
 	../xforms/FormTabular.lo \
-	../xforms/FormTabularCreate.lo \
 	../xforms/FormToc.lo \
 	../xforms/FormUrl.lo \
 	../xforms/Menubar_pimpl.lo \
 	../xforms/RadioButtonGroup.lo \
 	../xforms/Toolbar_pimpl.lo \
+	../xforms/Timeout_pimpl.lo \
 	../xforms/form_citation.lo \
 	../xforms/form_copyright.lo \
 	../xforms/form_document.lo \
 	../xforms/form_error.lo \
-	../xforms/form_graphics.lo \
 	../xforms/form_index.lo \
-	../xforms/form_paragraph.lo \
+	../xforms/form_graphics.lo \
 	../xforms/form_preferences.lo \
-	../xforms/form_print.lo \
 	../xforms/form_ref.lo \
 	../xforms/form_tabular.lo \
-	../xforms/form_tabular_create.lo \
 	../xforms/form_toc.lo \
 	../xforms/form_url.lo \
 	../xforms/input_validators.lo \
@@ -65,7 +69,27 @@ libqt2_la_SOURCES = \
 	FormCopyrightDialog.C \
 	FormCopyrightDialog.h \
 	FormCopyrightDialogBase.C \
-	FormCopyrightDialogBase.h
+	FormCopyrightDialogBase.h \
+	FormParagraph.C	\
+	FormParagraph.h	\
+	paragraphdlg.C \
+	paragraphdlg.h \
+	paragraphdlgimpl.C \
+	paragraphdlgimpl.h \
+	FormPrint.C	\
+	FormPrint.h	\
+	printdlg.C \
+	printdlg.h \
+	printdlgimpl.C \
+	printdlgimpl.h \
+	emptytable.C \
+	emptytable.h \
+	FormTabularCreate.C \
+	FormTabularCreate.h \
+	tabularcreatedlg.C \
+	tabularcreatedlg.h \
+	tabularcreatedlgimpl.C \
+	tabularcreatedlgimpl.h
 
 # just copied from old lyx repository
 dist-hook:
@@ -83,10 +107,42 @@ dist-hook:
 
 FormCopyright.C: FormCopyrightDialogBase.h
 FormCopyrightDialogBase.h: FormCopyrightDialogBase.ui
-	uic -o $@ $<
+	$(UIC) -o $@ $<
 FormCopyrightDialogBase.C: FormCopyrightDialogBase.ui
-	uic -impl FormCopyrightDialogBase.h -o $@ $<
-FormCopyrightDialogBase_moc.C: FormCopyrightDialogBase.h
-	moc -o $@ $<
-FormCopyrightDialog_moc.C: FormCopyrightDialog.h
-	moc -o $@ $<
+	$(UIC) -impl FormCopyrightDialogBase.h -o $@ $<
+moc_FormCopyrightDialogBase.C: FormCopyrightDialogBase.h
+	$(MOC) -o $@ $<
+moc_FormCopyrightDialog.C: FormCopyrightDialog.h
+	$(MOC) -o $@ $<
+
+FormParagraph.C: paragraphdlg.h
+paragraphdlg.h: paragraphdlg.ui
+	$(UIC) -o $@ $<
+paragraphdlg.C: paragraphdlg.ui
+	$(UIC) -impl paragraphdlg.h -o $@ $<
+moc_paragraphdlg.C: paragraphdlg.h
+	$(MOC) -o $@ $<
+moc_paragraphdlgimpl.C: paragraphdlgimpl.h
+	$(MOC) -o $@ $<
+
+FormPrint.C: printdlg.h
+printdlg.h: printdlg.ui
+	$(UIC) -o $@ $<
+printdlg.C: printdlg.ui
+	$(UIC) -impl printdlg.h -o $@ $<
+moc_printdlg.C: printdlg.h
+	$(MOC) -o $@ $<
+moc_printdlgimpl.C: printdlgimpl.h
+	$(MOC) -o $@ $<
+
+FormTabularCreate.C: tabularcreatedlg.h
+tabularcreatedlg.h: tabularcreatedlg.ui
+	$(UIC) -o $@ $<
+tabularcreatedlg.C: tabularcreatedlg.ui
+	$(UIC) -impl tabularcreatedlg.h -o $@ $<
+moc_tabularcreatedlg.C: tabularcreatedlg.h
+	$(MOC) -o $@ $<
+moc_tabularcreatedlgimpl.C: tabularcreatedlgimpl.h
+	$(MOC) -o $@ $<
+moc_emptytable.C: emptytable.h
+	$(MOC) -o $@ $<

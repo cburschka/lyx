@@ -1,17 +1,10 @@
-/*
- * refdlg.h
- * (C) 2000 LyX Team
- * John Levon, moz@compsoc.man.ac.uk
+/**
+ * \file refdlg.h
+ * Copyright 2001 the LyX Team
+ * Read the file COPYING
+ *
+ * \author John Levon
  */
-
-/***************************************************************************
- *                                                                         *
- *   This program is free software; you can redistribute it and/or modify  *
- *   it under the terms of the GNU General Public License as published by  *
- *   the Free Software Foundation; either version 2 of the License, or     *
- *   (at your option) any later version.                                   *
- *                                                                         *
- ***************************************************************************/
 
 #ifndef REFDLG_H
 #define REFDLG_H
@@ -21,6 +14,7 @@
 
 #include "FormRef.h"
 
+#include <qdialog.h>
 #include <qlayout.h>
 #include <qcombobox.h> 
 #include <qcheckbox.h>
@@ -30,54 +24,54 @@
 #include <qlineedit.h>
 #include <qpushbutton.h>
 
-class RefDialog : public QWidget {
-   Q_OBJECT
+class RefDialog : public QDialog {
+	Q_OBJECT
 public:
-	RefDialog(FormRef *form, QWidget *parent=0, const char *name=0,
+	RefDialog(FormRef * form, QWidget * parent=0, char const * name=0,
 			    bool modal=false, WFlags f=0);
 	~RefDialog();
 
 	// widgets
  
-	QListBox *refs;
-	QLabel *labelrefs;
-	QLineEdit *refname;
-	QLineEdit *reference;
-	QLabel *labelrefname;
-	QLabel *labelreference;
-	QCheckBox *sort;
-	QComboBox *type; 
-	QLabel *labeltype; 
-	QPushButton *buttonGoto;
-	QPushButton *buttonUpdate;
-	QPushButton *buttonOk;
-	QPushButton *buttonCancel;
+	QListBox * refs;
+	QLabel * labelrefs;
+	QLineEdit * refname;
+	QLineEdit * reference;
+	QLabel * labelrefname;
+	QLabel * labelreference;
+	QCheckBox * sort;
+	QComboBox * type; 
+	QLabel * labeltype; 
+	QPushButton * buttonGoto;
+	QPushButton * buttonUpdate;
+	QPushButton * buttonOk;
+	QPushButton * buttonCancel;
  
 protected:
-	void closeEvent(QCloseEvent *e);
+	void closeEvent(QCloseEvent * e);
  
 private:
-	FormRef *form_;
+	FormRef * form_;
 
 	// layouts
  
-	QHBoxLayout *topLayout;
-	QVBoxLayout *layout;
-	QHBoxLayout *upperLayout;
-	QVBoxLayout *browserLayout;
-	QVBoxLayout *rightLayout;
-	QHBoxLayout *nameLayout;
-	QHBoxLayout *referenceLayout; 
-	QHBoxLayout *buttonLayout;
+	QHBoxLayout * topLayout;
+	QVBoxLayout * layout;
+	QHBoxLayout * upperLayout;
+	QVBoxLayout * browserLayout;
+	QVBoxLayout * rightLayout;
+	QHBoxLayout * nameLayout;
+	QHBoxLayout * referenceLayout; 
+	QHBoxLayout * buttonLayout;
 
 private slots:
 	/// adaptor to FormRef::select
-	void select_adaptor(const char *sel) {
+	void select_adaptor(const char * sel) {
 		form_->select(sel);
 	}
 
 	/// adaptor to FormRef::highlight
-	void highlight_adaptor(const char *sel) {
+	void highlight_adaptor(const char * sel) {
 		form_->highlight(sel); 
 	}
 
@@ -110,4 +104,4 @@ private slots:
 	}
 };
 
-#endif
+#endif // REFDLG_H

@@ -11,6 +11,15 @@
 //  http://www.boost.org/libs/config
 
 //  Revision History (excluding minor changes for specific compilers)
+//   20 Jan 01  BOOST_NO_LIMITS_COMPILE_TIME_CONSTANTS moved here from
+//              cast.hpp. Added missing BOOST_NO_STRINGSTREAM which some
+//              boost code seemed to depend on. (Dave Abrahams)
+//   13 Jan 01  SGI MIPSpro and Compaq Tru64 Unix compiler support added
+//              (Jens Maurer)
+//   13 Jan 01  BOOST_NO_ARGUMENT_DEPENDENT_LOOKUP (Jens Maurer)
+//   17 Nov 00  BOOST_NO_AUTO_PTR (John Maddock)
+//    4 Oct 00  BOOST_NO_STD_MIN_MAX (Jeremy Siek)
+//   29 Sep 00  BOOST_NO_INTEGRAL_INT64_T (Jens Maurer)
 //   25 Sep 00  BOOST_NO_STD_ALLOCATOR (Jeremy Siek)
 //   18 SEP 00  BOOST_NO_SLIST, BOOST_NO_HASH, 
 //              BOOST_NO_TEMPLATED_ITERATOR_CONSTRUCTORS
@@ -50,11 +59,24 @@
 //  burden where it should be, on non-conforming compilers.  In the future,
 //  hopefully, less rather than more conformance flags will have to be defined.
 
+//  BOOST_NO_ARGUMENT_DEPENDENT_LOOKUP: Compiler does not implement
+//  argument-dependent lookup (also named Koenig lookup); see std::3.4.2
+//  [basic.koenig.lookup]
+
 //  BOOST_NO_DEPENDENT_TYPES_IN_TEMPLATE_VALUE_PARAMETERS: Template value
 //  parameters cannot have a dependent type, for example
 //  "template<class T, typename T::type value> class X { ... };"
 
 //  BOOST_NO_INCLASS_MEMBER_INITIALIZATION: Compiler violates std::9.4.2/4. 
+
+//  BOOST_NO_INT64_T: <boost/cstdint.hpp> does not support 64-bit integer
+//  types.  (Set by <boost/cstdint.hpp> rather than <boost/config.hpp>).
+
+//  BOOST_NO_INTEGRAL_INT64_T: int64_t as defined by <boost/cstdint.hpp> is
+//  not an integral type.
+
+//  BOOST_NO_LIMITS_COMPILE_TIME_CONSTANTS: constants such as
+//  numeric_limits<T>::is_signed are not available for use at compile-time.
 
 //  BOOST_NO_MEMBER_TEMPLATES: Member template functions not fully supported.
 //  Also see BOOST_MSVC6_MEMBER_TEMPLATES in the Compiler Control section below.
@@ -99,6 +121,9 @@
 //  that imports a template from the global namespace into a named namespace.
 //  Probably Borland specific.
 
+//  BOOST_NO_AUTO_PTR: If the compiler / library supplies non-standard or broken
+//  std::auto_ptr.
+
 //  Compiler Control or Information Macros  ----------------------------------//
 //
 //  Compilers often supply features outside of the C++ Standard which need to be
@@ -107,12 +132,19 @@
 
 //  BOOST_DECL:  Certain compilers for Microsoft operating systems require
 //  non-standard class and function decoration if dynamic load library linking
-//  is desired.  BOOST_DECL supplies that decoration, defaulting to a nul string
-//  so that it is harmless when not required.  Boost does not encourage the use
-//  of BOOST_DECL - it is non-standard and to be avoided if practical to do so.
-
-//  BOOST_DECL_EXPORTS:  User defined, BOOST_DECL_EXPORTS causes BOOST_DECL to
-//  be defined as __declspec(dllexport) rather than __declspec(dllimport).
+//  is desired.  BOOST_DECL supplies that decoration.  Boost does not require
+//  use of BOOST_DECL - it is non-standard and to be avoided if practical to do
+//  so. Even compilers requiring it for DLL's only require it in certain cases.
+//
+//    BOOST_DECL_EXPORTS:  User defined, usually via command line or IDE,
+//    it causes BOOST_DECL to be defined as __declspec(dllexport).
+//
+//    BOOST_DECL_IMPORTS:  User defined, usually via command line or IDE,
+//    it causes BOOST_DECL to be defined as __declspec(dllimport).
+//
+//    If neither BOOST_DECL_EXPORTS nor BOOST_DECL_IMPORTS is defined, or if
+//    the compiler does not require __declspec() decoration, BOOST_DECL is
+//    defined as a null string.
 
 //  BOOST_MSVC6_MEMBER_TEMPLATES:  Microsoft Visual C++ 6.0 has enough member
 //  template idiosyncrasies (being polite) that BOOST_NO_MEMBER_TEMPLATES is
@@ -138,8 +170,13 @@
 
 //  BOOST_NO_SLIST: The C++ implementation does not provide the slist class.
 
+//  BOOST_NO_STRINGSTREAM: The C++ implementation does not provide the <sstream> header.
+
 //  BOOST_NO_HASH: The C++ implementation does not provide the hash_set
 //  or hash_map classes.
+
+//  BOOST_STD_EXTENSION_NAMESPACE: The name of the namespace in which the slist,
+//  hash_set and/or hash_map templates are defined in this implementation (if any).
 
 //  BOOST_NO_TEMPLATED_ITERATOR_CONSTRUCTORS: The standard library does not provide
 //  templated iterator constructors for its containers.
@@ -154,16 +191,26 @@
 //  BOOST_NO_STD_ALLOCATOR: The C++ standard library does not provide
 //  a standards conforming std::allocator.
 
+//  BOOST_NO_STD_MIN_MAX: The C++ standard library does not provide
+//  the min() and max() template functions that should be in <algorithm>.
+
 //  Compilers are listed in alphabetic order (except VC++ last - see below)---//
 
 //  GNU CC (also known as GCC and G++)  --------------------------------------//
 
 # if defined __GNUC__
+#   if __GNUC__ == 2 && __GNUC_MINOR__ == 91
+       // egcs 1.1 won't parse smart_ptr.hpp without this:
+#      define BOOST_NO_AUTO_PTR
+#   endif
 #   if __GNUC__ == 2 && __GNUC_MINOR__ <= 95
 #     include <iterator>  // not sure this is the right way to do this -JGS
 #     if !defined(_CXXRT_STD) && !defined(__SGI_STL) // need to ask Dietmar about this -JGS
 #       define BOOST_NO_STD_ITERATOR
 #       define BOOST_NO_LIMITS
+#     endif
+#     if !defined(_CXXRT_STD) && !defined(__SGI_STL_OWN_IOSTREAMS)
+#       define BOOST_NO_STRINGSTREAM
 #     endif
 #     define BOOST_NO_MEMBER_TEMPLATE_FRIENDS
 #     define BOOST_NO_OPERATORS_IN_NAMESPACE
@@ -171,15 +218,43 @@
 #   if __GNUC__ == 2 && __GNUC_MINOR__ <= 8
 #     define BOOST_NO_MEMBER_TEMPLATES
 #   endif
-//  LGB
-#   if __GNUC__ == 2 && __GNUC_MINOR__ == 97
-#     define BOOST_NO_STDC_NAMESPACE
+#   if (__GNUC__ == 2 && __GNUC_MINOR__ > 95) || __GNUC__ > 2
+      // upcoming gcc 3.0
+#     include <iterator>
+#     if defined(__GLIBCPP__)
+        // The new GNU C++ library has slist, hash_map, hash_set headers
+        // in <ext/*>, but client code assumes they're in <*> --- Jens M. 
+#       define BOOST_NO_SLIST
+#       define BOOST_NO_HASH
+#     endif
 #   endif
+
 //  Kai C++ ------------------------------------------------------------------//
 
 #elif defined __KCC
 #   define BOOST_NO_SLIST
 #   define BOOST_NO_HASH
+
+#   if __KCC_VERSION <= 4001
+      // at least on Sun, the contents of <cwchar> is not in namespace std
+#     define BOOST_NO_STDC_NAMESPACE
+#   endif
+
+//  SGI MIPSpro C++ --------------------------------------------------------
+
+#elif defined __sgi
+
+#   if defined(__EDG_VERSION__) && __EDG_VERSION__ <= 240
+#     define BOOST_NO_ARGUMENT_DEPENDENT_LOOKUP
+#   endif
+
+//  Compaq Tru64 Unix cxx ---------------------------------------------------
+
+#elif defined __DECCXX
+
+#   if defined(__EDG_VERSION__) && __EDG_VERSION__ <= 240
+#     define BOOST_NO_ARGUMENT_DEPENDENT_LOOKUP
+#   endif
 
 //  Greenhills C++ -----------------------------------------------------------//
 
@@ -190,7 +265,10 @@
 //  Borland ------------------------------------------------------------------//
 
 #elif defined __BORLANDC__
+#   define BOOST_NO_SLIST
+#   define BOOST_NO_HASH
 #   if __BORLANDC__ <= 0x0551
+#     define BOOST_NO_INTEGRAL_INT64_T
 #     define BOOST_NO_PRIVATE_IN_AGGREGATE
 #   endif
 #   if __BORLANDC__ <= 0x0550
@@ -203,9 +281,14 @@
 #     endif
 #   endif
 #   if defined BOOST_DECL_EXPORTS
+#     if defined BOOST_DECL_IMPORTS
+#       error Not valid to define both BOOST_DECL_EXPORTS and BOOST_DECL_IMPORTS
+#     endif
 #     define BOOST_DECL __declspec(dllexport)
-#   else
+#   elif defined BOOST_DECL_IMPORTS
 #     define BOOST_DECL __declspec(dllimport)
+#   else
+#     define BOOST_DECL
 #   endif
 
 //  Intel  -------------------------------------------------------------------//
@@ -224,6 +307,7 @@
 #     define BOOST_NO_HASH
 #     define BOOST_NO_TEMPLATED_ITERATOR_CONSTRUCTORS
 #     define BOOST_NO_STD_ALLOCATOR
+#     define BOOST_NO_STD_MIN_MAX
 #   endif
 
 
@@ -240,14 +324,26 @@
 #     define BOOST_SYSTEM_HAS_STDINT_H
 #   endif
 #   if defined BOOST_DECL_EXPORTS
+#     if defined BOOST_DECL_IMPORTS
+#       error Not valid to define both BOOST_DECL_EXPORTS and BOOST_DECL_IMPORTS
+#     endif
 #     define BOOST_DECL __declspec(dllexport)
-#   else
+#   elif defined BOOST_DECL_IMPORTS
 #     define BOOST_DECL __declspec(dllimport)
+#   else
+#     define BOOST_DECL
 #   endif
+
+#   define BOOST_STD_EXTENSION_NAMESPACE Metrowerks
 
 //  Sun Workshop Compiler C++ ------------------------------------------------//
 
 # elif defined  __SUNPRO_CC
+#    if __SUNPRO_CC <= 0x520
+#      define BOOST_NO_SLIST
+#      define BOOST_NO_HASH
+#      define BOOST_NO_STD_ITERATOR_TRAITS
+#    endif
 #    if __SUNPRO_CC <= 0x500
 #      define BOOST_NO_MEMBER_TEMPLATES
 #      define BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION
@@ -268,7 +364,9 @@
 #   if _MSC_VER <= 1200  // 1200 == VC++ 6.0
 #     define BOOST_NO_INCLASS_MEMBER_INITIALIZATION
 #     define BOOST_NO_PRIVATE_IN_AGGREGATE
+#     define BOOST_NO_ARGUMENT_DEPENDENT_LOOKUP
 
+#     define BOOST_NO_INTEGRAL_INT64_T
 #     define BOOST_NO_INTRINSIC_WCHAR_T
 
 //    VC++ 6.0 has member templates but they have numerous problems including
@@ -292,6 +390,17 @@
 #       define BOOST_NO_HASH
 #       define BOOST_NO_TEMPLATED_ITERATOR_CONSTRUCTORS
 #       define BOOST_NO_STD_ALLOCATOR
+#       ifndef _CPPLIB_VER
+          // Updated Dinkum library defines this, and provides
+          // its own min and max definitions.
+#         define BOOST_NO_STD_MIN_MAX
+#         undef min
+#         undef max
+#       endif
+#       ifndef NOMINMAX
+          // avoid spurious NOMINMAX redefinition warning
+#         define NOMINMAX
+#       endif
 #     endif
 #     define BOOST_NO_STD_ITERATOR_TRAITS
 
@@ -303,16 +412,21 @@
 
 // Determine if the standard library implementation is already pulling names
 // into std.  STLport defines the following if so. (Ed Brey 5 Jun 00)
-#     ifndef __STL_IMPORT_VENDOR_CSTD
+#     if !defined( __STL_IMPORT_VENDOR_CSTD ) || defined( __STL_NO_CSTD_FUNCTION_IMPORTS )
 #       define BOOST_NO_STDC_NAMESPACE
 #     endif
 
 #   endif
 
 #   if defined BOOST_DECL_EXPORTS
+#     if defined BOOST_DECL_IMPORTS
+#       error Not valid to define both BOOST_DECL_EXPORTS and BOOST_DECL_IMPORTS
+#     endif
 #     define BOOST_DECL __declspec(dllexport)
-#   else
+#   elif defined BOOST_DECL_IMPORTS
 #     define BOOST_DECL __declspec(dllimport)
+#   else
+#     define BOOST_DECL
 #   endif
 
 # endif // Microsoft (excluding Intel/EDG frontend) 
@@ -322,6 +436,23 @@
 # endif
 
 //  end of compiler specific portion  ----------------------------------------//
+
+#if defined(BOOST_NO_LIMITS) || \
+  (defined(_RWSTD_VER) && _RWSTD_VER < 0x0203) || \
+  (defined(__SGI_STL_PORT) && __SGI_STL_PORT <= 0x410 && __STL_STATIC_CONST_INIT_BUG)
+// STLPort 4.0 doesn't define the static constants in numeric_limits<> so that they
+// can be used at compile time if the compiler bug indicated by
+// __STL_STATIC_CONST_INIT_BUG is present.
+
+// Rogue wave STL (C++ Builder) also has broken numeric_limits
+// with default template defining members out of line.
+// However, Compaq C++ also uses RogueWave (version 2.03) and it's ok.
+#   define BOOST_NO_LIMITS_COMPILE_TIME_CONSTANTS
+#endif
+
+#ifndef BOOST_STD_EXTENSION_NAMESPACE
+# define BOOST_STD_EXTENSION_NAMESPACE std
+#endif
 
 // Check for old name "BOOST_NMEMBER_TEMPLATES" for compatibility  -----------//
 // Don't use BOOST_NMEMBER_TEMPLATES. It is deprecated and will be removed soon.
@@ -345,5 +476,26 @@
     // using ::wchar_t; removed since wchar_t is a C++ built-in type (Ed Brey)
 # endif
 
+#ifdef BOOST_NO_STD_MIN_MAX
+namespace std {
+  template <class _Tp>
+  inline const _Tp& min(const _Tp& __a, const _Tp& __b) {
+    return __b < __a ? __b : __a;
+  }
+  template <class _Tp>
+  inline const _Tp& max(const _Tp& __a, const _Tp& __b) {
+    return  __a < __b ? __b : __a;
+  }
+#ifdef BOOST_MSVC
+  inline long min(long __a, long __b) {
+    return __b < __a ? __b : __a;
+  }
+  inline long max(long __a, long __b) {
+    return  __a < __b ? __b : __a;
+  }
+#endif
+}
+#endif
 
 #endif  // BOOST_CONFIG_HPP
+

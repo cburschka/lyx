@@ -12,7 +12,7 @@
 
 
 #ifndef COUNTERS_H
-#define COUTNERS_H
+#define COUNTERS_H
 
 #ifdef __GNUG__
 #pragma interface

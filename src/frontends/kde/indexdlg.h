@@ -1,14 +1,13 @@
-/**********************************************************************
+/**
+ * \file indexdlg.h
+ * Copyright 2001 the LyX Team
+ * Read the file COPYING
+ *
+ * \author John Levon
+ */
 
-	--- Qt Architect generated file ---
-
-	File: indexdlg.h
-	Last generated: Thu Sep 14 12:08:37 2000
-
- *********************************************************************/
-
-#ifndef IndexDialog_included
-#define IndexDialog_included
+#ifndef INDEXDIALOG_H
+#define INDEXDIALOG_H
 
 #include "dlg/indexdlgdata.h"
 
@@ -16,28 +15,22 @@ class FormIndex;
 
 class IndexDialog : public IndexDialogData
 {
-    Q_OBJECT
+Q_OBJECT
 
 public:
+	IndexDialog (FormIndex * form, QWidget * parent = NULL, char const * name = NULL);
+	virtual ~IndexDialog();
 
-    IndexDialog
-    (
-        FormIndex *, QWidget* parent = NULL,
-        const char* name = NULL
-    );
-
-    virtual ~IndexDialog();
-
-    void setIndexText(const char * str) { index->setText(str); }
-    const char * getIndexText() { return index->text(); }
-    void setReadOnly(bool);
+	void setIndexText(char const * str) { index->setText(str); }
+	char const * getIndexText() { return index->text(); }
+	void setReadOnly(bool);
 
 private slots:
-    void clickedOK();
-    void clickedCancel();
+	void clickedOK();
+	void clickedCancel();
 
 private:
-    FormIndex *form_;
+	FormIndex * form_;
 
 };
-#endif // IndexDialog_included
+#endif // INDEXDIALOG_H

@@ -68,7 +68,11 @@ public:
 	/// Undo last check-in.
 	void undoLast();
 
-	/// generate a log file and return the filename
+	/**
+	 * Generate a log file and return the filename.
+	 * It is the caller's responsibility to unlink the
+	 * file after use.
+	 */
 	const string getLogFile() const;
 
 	/// 

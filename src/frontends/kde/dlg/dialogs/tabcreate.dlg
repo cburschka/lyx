@@ -6,7 +6,7 @@ Dialog {
 	DataHeader {tabcreatedlgdata.h}
 	DataSource {tabcreatedlgdata.C}
 	DataName {TabularCreateDialogData}
-	WindowBaseClass {QWidget}
+	WindowBaseClass {QDialog}
 	UseGetText {true}
 	WindowFlags {0}
 }
@@ -19,7 +19,7 @@ Grid {5}
 
 PushButton {
 		ToggleButton {false}
-		Default {false}
+		Default {true}
 		AutoDefault {false}
 		IsMenuButton {false}
 		Text {&Insert}

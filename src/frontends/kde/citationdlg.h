@@ -1,17 +1,10 @@
-/*
- * citationdlg.h
- * (C) 2000 LyX Team
- * John Levon, moz@compsoc.man.ac.uk
+/**
+ * \file citationdlg.h
+ * Copyright 2001 the LyX Team
+ * Read the file COPYING
+ *
+ * \author John Levon
  */
-
-/***************************************************************************
- *                                                                         *
- *   This program is free software; you can redistribute it and/or modify  *
- *   it under the terms of the GNU General Public License as published by  *
- *   the Free Software Foundation; either version 2 of the License, or     *
- *   (at your option) any later version.                                   *
- *                                                                         *
- ***************************************************************************/
 
 #ifndef CITATIONDLG_H
 #define CITATIONDLG_H
@@ -22,55 +15,56 @@
 // to connect apply() and hide()
 #include "FormCitation.h"
 
-#include <qlistbox.h> 
+#include <qdialog.h> 
+#include <qlistbox.h>
 #include <qlayout.h>
 #include <qlabel.h>
 #include <qtooltip.h>
 #include <qlineedit.h>
-#include <qmultilinedit.h> 
+#include <qmultilinedit.h>
 #include <qpushbutton.h>
 
-class CitationDialog : public QWidget {
+class CitationDialog : public QDialog {
    Q_OBJECT
 public:
-	CitationDialog(FormCitation *form, QWidget *parent=0, const char *name=0,
+	CitationDialog(FormCitation *form, QWidget *parent=0, char const * name=0,
 			    bool modal=false, WFlags f=0);
 	~CitationDialog();
 
 	// widgets
- 
-	QLabel *labelchosen;
-	QListBox *chosen;
-	QLabel *labelkeys;
-	QListBox *keys;
-	QLabel *labelentry;
-	QMultiLineEdit *entry;
-	QLabel *labelafter;
-	QLineEdit *after;
-	QPushButton *add;
-	QPushButton *up;
-	QPushButton *down;
-	QPushButton *remove;
-	QPushButton *buttonOk;
-	QPushButton *buttonCancel;
- 
+
+	QLabel * labelchosen;
+	QListBox * chosen;
+	QLabel * labelkeys;
+	QListBox * keys;
+	QLabel * labelentry;
+	QMultiLineEdit * entry;
+	QLabel * labelafter;
+	QLineEdit * after;
+	QPushButton * add;
+	QPushButton * up;
+	QPushButton * down;
+	QPushButton * remove;
+	QPushButton * buttonOk;
+	QPushButton * buttonCancel;
+
 protected:
-	void closeEvent(QCloseEvent *e);
- 
+	void closeEvent(QCloseEvent * e);
+
 private:
-	FormCitation *form_;
+	FormCitation * form_;
 
 	// layouts
- 
-	QHBoxLayout *topLayout;
-	QVBoxLayout *layout;
-	QHBoxLayout *browserLayout;
-	QVBoxLayout *chosenLayout;
-	QVBoxLayout *iconLayout;
-	QVBoxLayout *keysLayout; 
-	QVBoxLayout *entryLayout; 
-	QHBoxLayout *afterLayout;
-	QHBoxLayout *buttonLayout;
+
+	QHBoxLayout * topLayout;
+	QVBoxLayout * layout;
+	QHBoxLayout * browserLayout;
+	QVBoxLayout * chosenLayout;
+	QVBoxLayout * iconLayout;
+	QVBoxLayout * keysLayout;
+	QVBoxLayout * entryLayout;
+	QHBoxLayout * afterLayout;
+	QHBoxLayout * buttonLayout;
 
 private slots:
 	void apply_adaptor(void) {
@@ -100,18 +94,17 @@ private slots:
 		form_->remove();
 	}
 
-	void select_key_adaptor(const char *key) {
+	void select_key_adaptor(const char * key) {
 		form_->select_key(key);
 	}
- 
-	void highlight_key_adaptor(const char *key) {
+
+	void highlight_key_adaptor(const char * key) {
 		form_->highlight_key(key);
 	}
 
-	void highlight_chosen_adaptor(const char *key) {
+	void highlight_chosen_adaptor(const char * key) {
 		form_->highlight_chosen(key);
 	}
- 
 };
 
-#endif
+#endif // CITATIONDLG_H

@@ -64,7 +64,7 @@ protected: // methods
 	virtual void redraw();
 
 	/// Create the dialog if necessary, update it and display it.
-	void show();
+	virtual void show();
 	/// Hide the dialog.
 	virtual void hide();
 	/// Update the dialog.

@@ -1,17 +1,10 @@
-/*
- * FormToc.C
- * (C) 2000 LyX Team
- * John Levon, moz@compsoc.man.ac.uk
+/**
+ * \file FormToc.C
+ * Copyright 2001 the LyX Team
+ * Read the file COPYING
+ *
+ * \author John Levon
  */
-
-/***************************************************************************
- *                                                                         *
- *   This program is free software; you can redistribute it and/or modify  *
- *   it under the terms of the GNU General Public License as published by  *
- *   the Free Software Foundation; either version 2 of the License, or     *
- *   (at your option) any later version.                                   *
- *                                                                         *
- ***************************************************************************/
 
 #include <config.h>
 
@@ -33,7 +26,7 @@ using std::pair;
 using std::stack;
 using std::endl;
  
-// FIXME: we should be able to move sections around like klyx can.
+// FIXME: we should be able to move sections around like klyx1 can
 
 FormToc::FormToc(LyXView *v, Dialogs *d)
 	: dialog_(0), lv_(v), d_(d), inset_(0), h_(0), u_(0), ih_(0),
@@ -46,15 +39,17 @@ FormToc::FormToc(LyXView *v, Dialogs *d)
 	d->createTOC.connect(slot(this, &FormToc::createTOC));
 }
 
+
 FormToc::~FormToc()
 {
 	delete dialog_;
 }
 
+
 void FormToc::showTOC(InsetCommand * const inset)
 {
 	// FIXME: when could inset be 0 here ?
-	if (inset==0)
+	if (inset == 0)
 		return;
 
 	inset_ = inset;
@@ -64,6 +59,7 @@ void FormToc::showTOC(InsetCommand * const inset)
 	show();
 }
 
+
 void FormToc::createTOC(string const & arg)
 {
 	if (inset_)
@@ -72,6 +68,7 @@ void FormToc::createTOC(string const & arg)
 	params.setFromString(arg);
 	show();
 }
+
 
 void FormToc::updateToc(int newdepth)
 {
@@ -85,7 +82,7 @@ void FormToc::updateToc(int newdepth)
 		lv_->view()->buffer()->getTocList();
 
 	// Check if all elements are the same.
-	if (newdepth==depth && toclist.size() == tmp[type].size()) {
+	if (newdepth == depth && toclist.size() == tmp[type].size()) {
 		unsigned int i = 0;
 		for (; i < toclist.size(); ++i) {
 			if (toclist[i] !=  tmp[type][i])
@@ -107,9 +104,9 @@ void FormToc::updateToc(int newdepth)
 
 	int curdepth = 0;
 	stack< pair< QListViewItem *, QListViewItem *> > istack;
-	QListViewItem *last = 0;
-	QListViewItem *parent = 0;
-	QListViewItem *item;
+	QListViewItem * last = 0;
+	QListViewItem * parent = 0;
+	QListViewItem * item;
 
 	// Yes, it is this ugly. Two reasons - root items must have a QListView parent,
 	// rather than QListViewItem; and the TOC can move in and out an arbitrary number
@@ -159,6 +156,7 @@ void FormToc::updateToc(int newdepth)
 	dialog_->tree->update();
 }
 
+
 void FormToc::setType(Buffer::TocType toctype)
 {
 	type = toctype;
@@ -186,22 +184,24 @@ void FormToc::setType(Buffer::TocType toctype)
 	}
 }
 
+
 void FormToc::set_depth(int newdepth)
 {
-	if (newdepth!=depth)
+	if (newdepth != depth)
 		updateToc(newdepth);
 }
+
 
 // we can safely ignore the parameter because we can always update
 void FormToc::update(bool)
 {
-	if (params.getCmdName()=="tableofcontents") {
+	if (params.getCmdName() == "tableofcontents") {
 		setType(Buffer::TOC_TOC);
 		dialog_->menu->setCurrentItem(0);
-	} else if (params.getCmdName()=="listoffigures") {
+	} else if (params.getCmdName() == "listoffigures") {
 		setType(Buffer::TOC_LOF);
 		dialog_->menu->setCurrentItem(1);
-	} else if (params.getCmdName()=="listoftables") {
+	} else if (params.getCmdName() == "listoftables") {
 		setType(Buffer::TOC_LOT);
 		dialog_->menu->setCurrentItem(2);
 	} else {
@@ -212,18 +212,19 @@ void FormToc::update(bool)
 	updateToc(depth);
 }
 
-void FormToc::select(const char *text)
+
+void FormToc::select(char const * text)
 {
 	if (!lv_->view()->available())
 		return;
 
 	vector <Buffer::TocItem>::const_iterator iter = toclist.begin();
 	for (; iter != toclist.end(); ++iter) {
-		if (iter->str==text)
+		if (iter->str == text)
 			break;
 	}
 	
-	if (iter==toclist.end()) {
+	if (iter == toclist.end()) {
 		lyxerr[Debug::GUI] << "Couldn't find highlighted TOC entry : " << text << endl;
 		return;
 	}
@@ -231,14 +232,16 @@ void FormToc::select(const char *text)
 	lv_->getLyXFunc()->Dispatch(LFUN_GOTO_PARAGRAPH, tostr(iter->par->id()).c_str());
 }
 
+
 void FormToc::set_type(Buffer::TocType toctype)
 {
-	if (toctype==type)
+	if (toctype == type)
 		return;
 
 	setType(toctype);
 	updateToc(depth);
 }
+
 
 void FormToc::show()
 {
@@ -257,6 +260,7 @@ void FormToc::show()
 	dialog_->show();
 }
 
+
 void FormToc::close()
 {
 	h_.disconnect();
@@ -264,6 +268,7 @@ void FormToc::close()
 	ih_.disconnect();
 	inset_ = 0;
 }
+
 
 void FormToc::hide()
 {

@@ -84,10 +84,10 @@ public:
 	//@{
 	/// Do we really have to push this?
 	Signal1<void, vector<string> const &> SetDocumentClassChoice;
-	///
-	Signal1<void, InsetBibKey *> showBibkey;
-	///
-	Signal1<void, InsetBibtex *> showBibtex;
+	/// show the key and label of a bibliography entry
+	Signal1<void, InsetCommand *> showBibitem;
+	/// show the bibtex dialog
+	Signal1<void, InsetCommand *> showBibtex;
 	///
 	Signal0<void> showCharacter;
 	///
@@ -102,8 +102,10 @@ public:
 	Signal1<void, InsetError *> showError;
 	///
 	Signal1<void, InsetGraphics *> showGraphics;
-	///
-	Signal1<void, InsetInclude *> showInclude;
+	/// show the details of a LyX file include inset
+	Signal1<void, InsetCommand *> showInclude;
+	/// create a LyX file include inset
+	Signal1<void, string const &> createInclude;
 	///
 	Signal1<void, InsetCommand *> showIndex;
 	///
@@ -128,6 +130,10 @@ public:
 	Signal1<void, InsetCommand *> showRef;
 	///
 	Signal1<void, string const &> createRef;
+	/// pop up the splash
+	Signal0<void> showSplash;
+	/// hide the splash immediately
+	Signal0<void> hideSplash;
 	///
 	Signal1<void, InsetTabular *> showTabular;
 	///

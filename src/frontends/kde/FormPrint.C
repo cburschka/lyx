@@ -1,17 +1,10 @@
-/*
- * FormPrint.C
- * (C) 2000 LyX Team
- * John Levon, moz@compsoc.man.ac.uk
+/**
+ * \file FormPrint.C
+ * Copyright 2001 the LyX Team
+ * Read the file COPYING
+ *
+ * \author John Levon
  */
- 
-/***************************************************************************
- *                                                                         *
- *   This program is free software; you can redistribute it and/or modify  *
- *   it under the terms of the GNU General Public License as published by  *
- *   the Free Software Foundation; either version 2 of the License, or     *
- *   (at your option) any later version.                                   *
- *                                                                         *
- ***************************************************************************/
 
 #include <config.h>
 
@@ -42,16 +35,15 @@ using std::max;
 FormPrint::FormPrint(LyXView *v, Dialogs *d)
 	: dialog_(0), lv_(v), d_(d), h_(0), u_(0)
 {
-	// let the dialog be shown
-	// This is a permanent connection so we won't bother
-	// storing a copy because we won't be disconnecting.
 	d->showPrint.connect(slot(this, &FormPrint::show));
 }
+
 
 FormPrint::~FormPrint()
 {
 	delete dialog_;
 }
+
 
 // we can safely ignore the parameter because we can always update
 void FormPrint::update(bool)
@@ -80,6 +72,7 @@ void FormPrint::update(bool)
 		dialog_->setTo("");
 	}
 }
+
  
 void FormPrint::print()
 {
@@ -112,6 +105,7 @@ void FormPrint::print()
 	}
 }
 
+
 void FormPrint::show()
 {
 	if (!dialog_)
@@ -129,11 +123,13 @@ void FormPrint::show()
 	dialog_->show();
 }
 
+
 void FormPrint::close()
 {
 	h_.disconnect();
 	u_.disconnect();
 }
+
  
 void FormPrint::hide()
 {

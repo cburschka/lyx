@@ -1,9 +1,11 @@
-/*
- * printdlg.h
- * (C) 2000 LyX Team
- * John Levon, moz@compsoc.man.ac.uk
- */ 
- 
+/**
+ * \file printdlg.h
+ * Copyright 2001 the LyX Team
+ * Read the file COPYING
+ *
+ * \author John Levon
+ */
+
 #ifndef PRINTDLG_H
 #define PRINTDLG_H
 
@@ -19,14 +21,14 @@ class PrintDialog : public PrintDialogData
 	Q_OBJECT
 public:
 
-	PrintDialog(FormPrint *f, QWidget* parent = NULL, const char* name = NULL);
+	PrintDialog(FormPrint * f, QWidget * parent = NULL, char const * name = NULL);
 	virtual ~PrintDialog();
 	
-	const char *getFrom() {
+	char const * getFrom() {
 		return from->text();
 	}
 
-	const char *getTo() {
+	char const * getTo() {
 		return to->text();
 	}
 
@@ -37,11 +39,11 @@ public:
 			return PrinterParams::FILE;
 	}
 
-	const char *getPrinter() {
+	char const * getPrinter() {
 		return printername->text();
 	}
 
-	const char *getFile() {
+	char const * getFile() {
 		return filename->text();
 	}
 	
@@ -62,20 +64,20 @@ public:
 		return sort->isChecked();
 	}
 
-	const char *getCount() {
+	char const * getCount() {
 		return count->text();
 	}
 
 	void setTarget(PrinterParams::Target t) {
-		toprinter->setChecked(t==PrinterParams::PRINTER);
-		tofile->setChecked(t!=PrinterParams::PRINTER);
+		toprinter->setChecked(t == PrinterParams::PRINTER);
+		tofile->setChecked(t != PrinterParams::PRINTER);
 	}
 	 
-       	void setPrinter(const char *name) {
+       	void setPrinter(char const * name) {
 		printername->setText(name);
 	} 
  
-	void setFile(const char *name) {
+	void setFile(char const * name) {
 		filename->setText(name);
 	}	 
  
@@ -106,15 +108,16 @@ public:
 		sort->setEnabled(num > 1);
 	}
 
-	void setFrom(const char *text) {
+	void setFrom(char const * text) {
 		from->setText(text);
 	}
 
-	void setTo(const char *text) {
+	void setTo(char const * text) {
 		to->setText(text);
 	}
 
 protected slots:
+ 
 	void clickedCancel() {
 		form_->close();
 		hide();
@@ -130,9 +133,9 @@ protected slots:
 	void clickedBrowse();
 	
 	/// validate and change collate status
-	void changedCount(const char *text);
+	void changedCount(char const * text);
  
 private:
-    	FormPrint *form_;
+    	FormPrint * form_;
 };
 #endif // PRINTDLG_H

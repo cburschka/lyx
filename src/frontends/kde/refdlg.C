@@ -1,30 +1,23 @@
-/*
- * refdlg.C
- * (C) 2000 LyX Team
- * John Levon, moz@compsoc.man.ac.uk
+/**
+ * \file refdlg.C
+ * Copyright 2001 the LyX Team
+ * Read the file COPYING
+ *
+ * \author John Levon
  */
 
-/***************************************************************************
- *                                                                         *
- *   This program is free software; you can redistribute it and/or modify  *
- *   it under the terms of the GNU General Public License as published by  *
- *   the Free Software Foundation; either version 2 of the License, or     *
- *   (at your option) any later version.                                   *
- *                                                                         *
- ***************************************************************************/
-
 #include <config.h>
+ 
 #include "refdlg.h"
 #include "dlg/helpers.h"
 #include "insets/insetref.h"
-
 
 #ifdef CXX_WORKING_NAMESPACES
 using kde_helpers::setSizeHint;
 #endif
 
-RefDialog::RefDialog(FormRef *form, QWidget *parent, const char *name, bool, WFlags)
-	: QWidget(parent,name,0), form_(form)
+RefDialog::RefDialog(FormRef * form, QWidget * parent, char const * name, bool, WFlags)
+	: QDialog(parent,name,0), form_(form)
 {
 	setCaption(name);
 
@@ -163,7 +156,7 @@ RefDialog::RefDialog(FormRef *form, QWidget *parent, const char *name, bool, WFl
  
 	// connections
 
-	connect(refs, SIGNAL(highlighted(const char *)), this, SLOT(highlight_adaptor(const char *))); 
+	connect(refs, SIGNAL(highlighted(const char *)), this, SLOT(highlight_adaptor(const char *)));
 	connect(refs, SIGNAL(selected(const char *)), this, SLOT(select_adaptor(const char *)));
 	connect(sort, SIGNAL(toggled(bool)), this, SLOT(sort_adaptor(bool))); 
 	connect(buttonOk, SIGNAL(clicked()), this, SLOT(apply_adaptor()));
@@ -174,11 +167,13 @@ RefDialog::RefDialog(FormRef *form, QWidget *parent, const char *name, bool, WFl
 	resize(sizeHint());
 }
 
+
 RefDialog::~RefDialog()
 {
 }
 
-void RefDialog::closeEvent(QCloseEvent *e)
+
+void RefDialog::closeEvent(QCloseEvent * e)
 {
 	form_->close();
 	e->accept();

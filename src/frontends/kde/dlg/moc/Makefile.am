@@ -13,6 +13,7 @@ libkdedlgmoc_la_SOURCES = copyrightdlgdata_moc.C \
 		docextradlgdata_moc.C \
 		docbulletsdlgdata_moc.C \
 		indexdlgdata_moc.C \
+		logdlgdata_moc.C \
 		paradlgdata_moc.C \
 		parageneraldlgdata_moc.C \
 		paraabovedlgdata_moc.C \
@@ -47,6 +48,8 @@ docbulletsdlgdata_moc.C: ../docbulletsdlgdata.h
 emptytable_moc.C: ../emptytable.h
 	$(MOC) $< -o $@
 indexdlgdata_moc.C: ../indexdlgdata.h
+	$(MOC) $< -o $@
+logdlgdata_moc.C: ../logdlgdata.h
 	$(MOC) $< -o $@
 paradlgdata_moc.C: ../paradlgdata.h
 	$(MOC) $< -o $@

@@ -64,8 +64,8 @@ typedef map<string, GraphicsCacheItem_pimpl*> CallbackMap;
 static CallbackMap callbackMap;
 
 
-void
-static callback(string cmd, int retval)
+static
+void callback(string cmd, int retval)
 {
 	lyxerr << "callback, cmd=" << cmd << ", retval=" << retval << endl;
 

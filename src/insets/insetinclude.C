@@ -7,9 +7,9 @@
 #pragma implementation
 #endif
 
-#include FORMS_H_LOCATION 
+#include "frontends/Dialogs.h"
+ 
 #include "insetinclude.h"
-#include "filedlg.h" 
 #include "buffer.h"
 #include "bufferlist.h"
 #include "debug.h"
@@ -17,9 +17,7 @@
 #include "lyxrc.h"
 #include "LyXView.h"
 #include "LaTeXFeatures.h"
-#include "lyx_gui_misc.h" // CancelCloseBoxCB
 #include "gettext.h"
-#include "include_form.h"
 #include "support/FileInfo.h"
 #include "layout.h"
 #include "lyxfunc.h"
@@ -29,166 +27,7 @@ using std::endl;
 using std::vector;
 using std::pair;
 
-extern BufferView * current_view;
-
 extern BufferList bufferlist;
-
-
-FD_include * create_form_include(void)
-{
-  FL_OBJECT * obj;
-  FD_include * fdui = (FD_include *) fl_calloc(1, sizeof(FD_include));
-
-  fdui->include = fl_bgn_form(FL_NO_BOX, 340, 210);
-  obj = fl_add_box(FL_UP_BOX, 0, 0, 340, 210, "");
-  obj = fl_add_frame(FL_ENGRAVED_FRAME, 10, 70, 160, 90, "");
-  fdui->browsebt = obj = fl_add_button(FL_NORMAL_BUTTON, 230, 30, 100, 30, idex(_("Browse|#B")));
-    fl_set_button_shortcut(obj, scex(_("Browse|#B")), 1);
-    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    fl_set_object_callback(obj, include_cb, 0);
-  fdui->flag1 = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 180, 70, 150, 30, idex(_("Don't typeset|#D")));
-    fl_set_button_shortcut(obj, scex(_("Don't typeset|#D")), 1);
-    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-  obj = fl_add_button(FL_RETURN_BUTTON, 120, 170, 100, 30, _("OK"));
-    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    fl_set_object_callback(obj, include_cb, 1);
-  obj = fl_add_button(FL_NORMAL_BUTTON, 230, 170, 100, 30, idex(_("Cancel|^[")));
-    fl_set_button_shortcut(obj, scex(_("Cancel|^[")), 1);
-    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    fl_set_object_callback(obj, include_cb, 2);
-  obj = fl_add_button(FL_NORMAL_BUTTON, 230, 130, 100, 30, idex(_("Load|#L")));
-    fl_set_button_shortcut(obj, scex(_("Load|#L")), 1);
-    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    fl_set_object_callback(obj, include_cb, 5);
-  fdui->input = obj = fl_add_input(FL_NORMAL_INPUT, 10, 30, 210, 30, idex(_("File name:|#F")));
-    fl_set_input_shortcut(obj, scex(_("File name:|#F")), 1);
-    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    fl_set_object_lalign(obj, FL_ALIGN_TOP_LEFT);
-  fdui->flag41 = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 180, 100, 150, 30, idex(_("Visible space|#s")));
-    fl_set_button_shortcut(obj, scex(_("Visible space|#s")), 1);
-    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-
-  fdui->include_grp = fl_bgn_group();
-  fdui->flag4 = obj = fl_add_checkbutton(FL_RADIO_BUTTON, 10, 130, 160, 30, idex(_("Verbatim|#V")));
-    fl_set_button_shortcut(obj, scex(_("Verbatim|#V")), 1);
-    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    fl_set_object_callback(obj, include_cb, 10);
-  fdui->flag2 = obj = fl_add_checkbutton(FL_RADIO_BUTTON, 10, 100, 160, 30, idex(_("Use input|#i")));
-    fl_set_button_shortcut(obj, scex(_("Use input|#i")), 1);
-    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    fl_set_object_callback(obj, include_cb, 11);
-  fdui->flag3 = obj = fl_add_checkbutton(FL_RADIO_BUTTON, 10, 70, 160, 30, idex(_("Use include|#U")));
-    fl_set_button_shortcut(obj, scex(_("Use include|#U")), 1);
-    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    fl_set_object_callback(obj, include_cb, 11);
-  fl_end_group();
-
-  fl_end_form();
-
-  //fdui->include->fdui = fdui;
-
-  return fdui;
-}
-/*---------------------------------------*/
-
-
-FD_include * form = 0;
-
-extern "C"
-void include_cb(FL_OBJECT *, long arg)
-{
-    
-	InsetInclude * inset = static_cast<InsetInclude*>(form->include->u_vdata);
-	switch (arg) {
-	case 0:
-	{
-		// Should browsing too be disabled in RO-mode?
-		LyXFileDlg fileDlg;
-		string const mpath = OnlyPath(inset->getMasterFilename());
-                string ext;
-    
-		if (fl_get_button(form->flag2)) // Use Input Button
-			ext = "*.tex";
-		else if (fl_get_button(form->flag4)) // Verbatim all files
-			ext = "*";
-                else
-                        ext = "*.lyx";
-		// launches dialog
-		fileDlg.SetButton(0, _("Documents"), lyxrc.document_path);
-    
-		// Use by default the master's path
-		string const filename =
-			fileDlg.Select(_("Select Child Document"),
-				       mpath, ext, 
-				       inset->getContents());
-		XFlush(fl_get_display());
- 
-		// check selected filename
-		if (!filename.empty()) {
-			string const filename2 = MakeRelPath(filename,
-							     mpath);
-			if (prefixIs(filename2, ".."))
-				fl_set_input(form->input,
-					     filename.c_str());
-			else
-				fl_set_input(form->input,
-					     filename2.c_str());
-		}
-		break;
-	}
-
-	case 1:
-		if (!current_view->buffer()->isReadonly()) {
-			inset->setContents(fl_get_input(form->input));
-			// don't typeset
-			inset->setNoLoad(fl_get_button(form->flag1));
-			if (fl_get_button(form->flag2))
-				inset->setInput();
-			else if (fl_get_button(form->flag3))
-				inset->setInclude();
-			else if (fl_get_button(form->flag4)) {
-				inset->setVerb();
-				inset->setVisibleSpace(fl_get_button(form->flag41));
-			}
-			
-			fl_hide_form(form->include);
-			current_view->updateInset(inset, true);
-			break;
-		} // fall through
-		
-	case 2:
-		fl_hide_form(form->include);
-		break;
-	case 5:
-		if (!current_view->buffer()->isReadonly()) {
-			inset->setContents(fl_get_input(form->input));
-			inset->setNoLoad(fl_get_button(form->flag1));
-			if (fl_get_button(form->flag2))
-				inset->setInput();
-			else if (fl_get_button(form->flag3))
-				inset->setInclude();
-			else if (fl_get_button(form->flag4)) {
-				inset->setVerb();
-				inset->setVisibleSpace(fl_get_button(form->flag41));
-			}
-			
-			fl_hide_form(form->include);
-			current_view->updateInset(inset, true);
-			current_view->owner()->getLyXFunc()->Dispatch(LFUN_CHILDOPEN, inset->getContents());
-                }
-                break;
-		
-        case 10:
-                fl_activate_object(form->flag41);
-                fl_set_object_lcol(form->flag41, FL_BLACK); 
-                break;
-        case 11:
-                fl_deactivate_object(form->flag41);
-                fl_set_object_lcol(form->flag41, FL_INACTIVE);
-	        fl_set_button(form->flag41, 0);
-                break;
-	}
-}
 
 
 static inline
@@ -214,18 +53,6 @@ InsetInclude::InsetInclude(InsetCommandParams const & p, Buffer const & bf)
 
 InsetInclude::~InsetInclude()
 {
-	if (form && form->include->u_vdata == this) {
-		// this inset is in the popup so hide the popup 
-		// and remove the reference to this inset. ARRae
-		if (form->include) {
-			if (form->include->visible) {
-				fl_hide_form(form->include);
-			}
-			fl_free_form(form->include);
-		}
-		fl_free(form);
-		form = 0;
-	}
 }
 
 
@@ -247,35 +74,7 @@ Inset * InsetInclude::Clone(Buffer const & buffer) const
 
 void InsetInclude::Edit(BufferView * bv, int, int, unsigned int)
 {
-	if (bv->buffer()->isReadonly())
-		WarnReadonly(bv->buffer()->fileName());
-
-	if (!form) {
-                form = create_form_include();
-		fl_set_form_atclose(form->include, CancelCloseBoxCB, 0);
-	}
-        form->include->u_vdata = this;
-    
-        fl_set_input(form->input, getContents().c_str());
-	fl_set_button(form->flag1, int(isNoLoad()));
-	fl_set_button(form->flag2, int(isInput()));
-	fl_set_button(form->flag3, int(isInclude()));
-	fl_set_button(form->flag4, int(isVerb()));
-        if (isVerb()) 
-            fl_set_button(form->flag41, int(isVerbVisibleSpace()));
-        else {
-	    fl_set_button(form->flag41, 0);
-            fl_deactivate_object(form->flag41);
-	    fl_set_object_lcol(form->flag41, FL_INACTIVE);
-	}
-	
-        if (form->include->visible) {
-		fl_raise_form(form->include);
-	} else {
-		fl_show_form(form->include,
-			     FL_PLACE_MOUSE | FL_FREE_SIZE, FL_TRANSIENT,
-			     _("Include"));
-	}
+	bv->owner()->getDialogs()->showInclude(this);
 }
 
 

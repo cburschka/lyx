@@ -1,17 +1,10 @@
-/* FormDocument.h
- * (C) 2001 LyX Team
- * John Levon, moz@compsoc.man.ac.uk
+/**
+ * \file FormDocument.h
+ * Copyright 2001 the LyX Team
+ * Read the file COPYING
+ *
+ * \author John Levon
  */
-
-/***************************************************************************
- *                                                                         *
- *   This program is free software; you can redistribute it and/or modify  *
- *   it under the terms of the GNU General Public License as published by  *
- *   the Free Software Foundation; either version 2 of the License, or     *
- *   (at your option) any later version.                                   *
- *                                                                         *
- ***************************************************************************/
-
 #ifndef FORMDOCUMENT_H
 #define FORMDOCUMENT_H
 
@@ -31,13 +24,9 @@ class BufferParams;
  */
 class FormDocument : public DialogBase, public noncopyable {
 public:
-	/**@name Constructors and Destructors */
-	//@{
-	///
 	FormDocument(LyXView *, Dialogs *);
-	///
+ 
 	~FormDocument();
-	//@}
 
 	/// Apply changes
 	void apply();
@@ -70,4 +59,4 @@ private:
 	bool readonly;
 };
 
-#endif
+#endif // FORMDOCUMENT_H

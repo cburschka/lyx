@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Form implementation generated from reading ui file 'FormCopyrightDialogBase.ui'
 **
-** Created: Wed Jan 24 12:18:52 2001
+** Created: Wed Feb 7 18:46:40 2001
 **      by:  The User Interface Compiler (uic)
 **
 ** WARNING! All changes made in this file will be lost!

@@ -20,7 +20,6 @@
 #include "insetcommand.h"
 
 class Buffer;
-struct FD_bibitem_form;
 
 /** Used to insert bibitem's information (key and label)
   
@@ -59,8 +58,6 @@ public:
         int  getCounter() const { return counter; }
 	///
 	string const getBibLabel() const;
-	///
-	void callback( FD_bibitem_form *, long );
 	///
 	struct Holder {
 		InsetBibKey * inset;

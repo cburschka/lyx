@@ -5,6 +5,7 @@
 
 /** \file lyxfunctional.h
     \brief Convenient function objects for use with LyX
+    
     This is currently a small collection of small function objects for use
     together with std::algorithms.
 **/

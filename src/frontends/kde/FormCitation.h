@@ -1,16 +1,10 @@
-/* FormCitation.h
- * (C) 2000 LyX Team
- * John Levon, moz@compsoc.man.ac.uk
+/**
+ * \file FormCitation.h
+ * Copyright 2001 the LyX Team
+ * Read the file COPYING
+ *
+ * \author John Levon
  */
-
-/***************************************************************************
- *                                                                         *
- *   This program is free software; you can redistribute it and/or modify  *
- *   it under the terms of the GNU General Public License as published by  *
- *   the Free Software Foundation; either version 2 of the License, or     *
- *   (at your option) any later version.                                   *
- *                                                                         *
- ***************************************************************************/
 
 #ifndef FORMCITATION_H
 #define FORMCITATION_H
@@ -18,23 +12,19 @@
 #include "DialogBase.h"
 #include "support/lstrings.h"
 #include "boost/utility.hpp"
-#include "insets/insetcommand.h" 
+#include "insets/insetcommand.h"
 
-#include <vector> 
- 
+#include <vector>
+
 class Dialogs;
 class LyXView;
 class CitationDialog;
 
 class FormCitation : public DialogBase, public noncopyable {
-public: 
-	/**@name Constructors and Destructors */
-	//@{
-	///
+public:
 	FormCitation(LyXView *, Dialogs *);
-	/// 
+
 	~FormCitation();
-	//@}
 
 	/// Apply changes
 	void apply();
@@ -47,15 +37,15 @@ public:
 	/// move a key up
 	void up();
 	/// move a key down
-	void down(); 
+	void down();
 	/// a key has been highlighted
-	void highlight_key(const char *key);
+	void highlight_key(char const * key);
 	/// a chosen key has been highlighted
-	void highlight_chosen(const char *key); 
+	void highlight_chosen(char const * key);
 	/// a key has been double-clicked
-	void select_key(const char *key);
- 
-private: 
+	void select_key(char const * key);
+
+private:
 	/// Create the dialog if necessary, update it and display it.
 	void show();
 	/// Hide the dialog.
@@ -67,22 +57,22 @@ private:
 	void createCitation(string const &);
 	/// edit a Citation inset
 	void showCitation(InsetCommand * const);
- 
+
 	/// update add,remove,up,down
 	void updateButtons();
 	/// update the available keys list
 	void updateAvailableList();
 	/// update the chosen keys list
 	void updateChosenList();
-	/// select the currently chosen key 
+	/// select the currently chosen key
 	void selectChosen();
- 
+
 	/// Real GUI implementation.
 	CitationDialog * dialog_;
 
 	/// the LyXView we belong to
 	LyXView * lv_;
- 
+
 	/** Which Dialogs do we belong to?
 	    Used so we can get at the signals we have to connect to.
 	*/
@@ -105,7 +95,7 @@ private:
 	std::vector<std::pair<string, string> > keys;
 	/// chosen citation keys
 	std::vector<string> chosenkeys;
- 
+
 	/// currently selected key
 	string selectedKey;
 
@@ -113,4 +103,4 @@ private:
 	string selectedChosenKey;
 };
 
-#endif
+#endif // FORMCITATION_H

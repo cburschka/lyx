@@ -6,7 +6,7 @@ Dialog {
 	DataHeader {docdlgdata.h}
 	DataSource {docdlgdata.C}
 	DataName {DocDialogData}
-	WindowBaseClass {QWidget}
+	WindowBaseClass {QDialog}
 	UseGetText {true}
 	WindowFlags {0}
 }
@@ -42,29 +42,6 @@ PushButton {
 		maxWidthSizeHint {true}
 		maxHeightSizeHint {true}
 		FocusPolicy {TabFocus}
-		BackgroundMode {PaletteBackground}
-		FontPropagation {NoChildren}
-		PalettePropagation {NoChildren}
-}
-User {
-		UserClassHeader {tabstack.h}
-		UserClassName {TabStack}
-		Rect {5 5 630 545}
-		Name {User_1}
-		Variable {tabstack}
-		MinimumSize {0 0}
-		MaximumSize {32767 32767}
-		BackgroundPixmap {}
-		UseBackgroundPixmap {false}
-		AdjustSize {false}
-		ReadPixmapFromData {false}
-		DataVarName {}
-		DataLenName {}
-		minWidthSizeHint {true}
-		minHeightSizeHint {true}
-		maxWidthSizeHint {false}
-		maxHeightSizeHint {false}
-		FocusPolicy {NoFocus}
 		BackgroundMode {PaletteBackground}
 		FontPropagation {NoChildren}
 		PalettePropagation {NoChildren}
@@ -152,6 +129,29 @@ PushButton {
 		maxWidthSizeHint {true}
 		maxHeightSizeHint {true}
 		FocusPolicy {TabFocus}
+		BackgroundMode {PaletteBackground}
+		FontPropagation {NoChildren}
+		PalettePropagation {NoChildren}
+}
+User {
+		UserClassHeader {tabstack.h}
+		UserClassName {TabStack}
+		Rect {5 5 630 545}
+		Name {User_1}
+		Variable {tabstack}
+		MinimumSize {0 0}
+		MaximumSize {32767 32767}
+		BackgroundPixmap {}
+		UseBackgroundPixmap {false}
+		AdjustSize {false}
+		ReadPixmapFromData {false}
+		DataVarName {}
+		DataLenName {}
+		minWidthSizeHint {true}
+		minHeightSizeHint {true}
+		maxWidthSizeHint {false}
+		maxHeightSizeHint {false}
+		FocusPolicy {NoFocus}
 		BackgroundMode {PaletteBackground}
 		FontPropagation {NoChildren}
 		PalettePropagation {NoChildren}

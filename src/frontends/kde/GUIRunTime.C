@@ -1,11 +1,10 @@
-/* This file is part of
- * ======================================================
- * 
- *           LyX, The Document Processor
- * 	 
- *           Copyright 2000 The LyX Team.
+/**
+ * \file GUIRunTime.C
+ * Copyright 2001 the LyX Team
+ * Read the file COPYING
  *
- * ====================================================== */
+ * \author Jürgen Vigna
+ */
 
 #include <config.h>
 
@@ -22,10 +21,8 @@
 
 using std::endl;
 
-// For now we need this here as long as we use xforms components!
-
-// I keep these here so that it will be processed as early in
-// the compilation process as possible.
+// tell me again why this test is cluttering up the source rather than
+// being in lyxinclude.m4 ? - jbl
 #if !defined(FL_REVISION) || FL_REVISION < 88 || FL_VERSION != 0
 #error LyX will not compile with this version of XForms.\
        Please get version 0.89.\
@@ -38,20 +35,7 @@ static int const xforms_include_version = FL_INCLUDE_VERSION;
 
 int GUIRunTime::initApplication(int argc, char * argv[])
 {
-	// Check the XForms version in the forms.h header against
-	// the one in the libforms. If they don't match quit the
-	// execution of LyX. Better with a clean fast exit than
-	// a strange segfault later.
-	// I realize that this check have to be moved when we
-	// support several toolkits, but IMO all the toolkits
-	// should try to have the same kind of check. This could
-	// be done by having a CheckHeaderAndLib function in
-	// all the toolkit implementations, this function is
-	// responsible for notifing the user.
-	// if (!CheckHeaderAndLib()) {
-	//         // header vs. lib version failed
-	//         return 1;
-	// }
+	// same here, this is clearly a configure-time test - jbl
 	int xforms_lib_version = fl_library_version(0, 0);
 	if (xforms_include_version != xforms_lib_version) {
 		lyxerr << "You are either running LyX with wrong "
@@ -69,6 +53,7 @@ int GUIRunTime::initApplication(int argc, char * argv[])
 
 	return 0;
 }
+
 
 void GUIRunTime::processEvents() 
 {
@@ -110,4 +95,3 @@ void GUIRunTime::setDefaults()
 			| FL_PDMenuFontSize
 			| FL_PDBorderWidth, &cntl);
 }
-

@@ -43,7 +43,6 @@ bool selection_possible = false;
 extern BufferList bufferlist;
 extern char ascii_type;
 
-extern "C" void TimerCB(FL_OBJECT *, long); 
 extern void sigchldhandler(pid_t pid, int * status);
 extern int bibitemMaxWidth(BufferView *, LyXFont const &);
 
@@ -312,9 +311,8 @@ int BufferView::Pimpl::resizeCurrentBuffer()
 	bv_->setState();
 	AllowInput(bv_);
 
-	// Now if the title form still exist kill it
-	TimerCB(0, 0);
-
+	owner_->getDialogs()->hideSplash();
+ 
 	return 0;
 }
 

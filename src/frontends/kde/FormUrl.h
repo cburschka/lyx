@@ -1,16 +1,10 @@
-/* FormUrl.h
- * (C) 2000 LyX Team
- * John Levon, moz@compsoc.man.ac.uk
+/**
+ * \file FormUrl.h
+ * Copyright 2001 the LyX Team
+ * Read the file COPYING
+ *
+ * \author John Levon
  */
-
-/***************************************************************************
- *                                                                         *
- *   This program is free software; you can redistribute it and/or modify  *
- *   it under the terms of the GNU General Public License as published by  *
- *   the Free Software Foundation; either version 2 of the License, or     *
- *   (at your option) any later version.                                   *
- *                                                                         *
- ***************************************************************************/
 
 #ifndef FORMURL_H
 #define FORMURL_H
@@ -26,13 +20,9 @@ class UrlDialog;
 
 class FormUrl : public DialogBase, public noncopyable {
 public: 
-	/**@name Constructors and Destructors */
-	//@{
-	///
 	FormUrl(LyXView *, Dialogs *);
-	/// 
+
 	~FormUrl();
-	//@}
 
 	/// Apply changes
 	void apply();
@@ -58,10 +48,9 @@ private:
 	/// the LyXView we belong to
 	LyXView * lv_;
  
-	/** Which Dialogs do we belong to?
-	    Used so we can get at the signals we have to connect to.
-	*/
+	/// Dialogs object
 	Dialogs * d_;
+ 
 	/// pointer to the inset if any
 	InsetCommand * inset_;
 	/// insets params
@@ -77,4 +66,4 @@ private:
 	Connection ih_;
 };
 
-#endif
+#endif // FORMURL_H

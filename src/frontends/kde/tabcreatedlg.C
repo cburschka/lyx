@@ -1,7 +1,9 @@
-/*
- * tabcreatedlg.C
- * (C) 2000 LyX Team
- * John Levon, <moz@compsoc.man.ac.uk>
+/**
+ * \file tabcreatedlg.C
+ * Copyright 2001 the LyX Team
+ * Read the file COPYING
+ *
+ * \author John Levon
  */
 
 #include <config.h>
@@ -11,7 +13,7 @@
 #include <gettext.h>
 #include <qtooltip.h>
 
-TabularCreateDialog::TabularCreateDialog (FormTabularCreate *form, QWidget *parent, const char* name)
+TabularCreateDialog::TabularCreateDialog (FormTabularCreate * form, QWidget * parent, char const * name)
 	: TabularCreateDialogData(parent, name), form_(form)
 {
 	setCaption(name);
@@ -25,9 +27,11 @@ TabularCreateDialog::TabularCreateDialog (FormTabularCreate *form, QWidget *pare
 	QToolTip::add(table, _("Drag with left mouse button to resize")); 
 }
 
+
 TabularCreateDialog::~TabularCreateDialog()
 {
 }
+
 
 void TabularCreateDialog::colsChanged(unsigned int nr_cols)
 {
@@ -35,11 +39,13 @@ void TabularCreateDialog::colsChanged(unsigned int nr_cols)
 		cols->setValue(nr_cols);
 }
 
+
 void TabularCreateDialog::rowsChanged(unsigned int nr_rows)
 {
 	if (nr_rows != strToUnsignedInt(rows->text()))
 		rows->setValue(nr_rows);
 }
+
 
 void TabularCreateDialog::clickedInsert()
 {
@@ -47,6 +53,7 @@ void TabularCreateDialog::clickedInsert()
 	form_->close();
 	hide();
 }
+
  
 void TabularCreateDialog::clickedCancel()
 {

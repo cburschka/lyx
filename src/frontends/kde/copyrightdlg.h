@@ -1,33 +1,28 @@
-/**********************************************************************
+/**
+ * \file copyrightdlg.h
+ * Copyright 2001 the LyX Team
+ * Read the file COPYING
+ *
+ * \author John Levon
+ */
 
-	--- Qt Architect generated file ---
-
-	File: copyrightdlg.h
-	Last generated: Thu Oct 12 18:32:40 2000
-
- *********************************************************************/
-
-#ifndef CopyrightDialog_included
-#define CopyrightDialog_included
+#ifndef COPYRIGHTDIALOG_H
+#define COPYRIGHTDIALOG_H
 
 #include "dlg/copyrightdlgdata.h"
 
 class CopyrightDialog : public CopyrightDialogData
 {
-    Q_OBJECT
-
+	Q_OBJECT
+ 
 public:
+	CopyrightDialog (QWidget * parent = NULL, char const * name = NULL);
 
-    CopyrightDialog
-    (
-        QWidget* parent = NULL,
-        const char* name = NULL
-    );
-
-    virtual ~CopyrightDialog();
+	virtual ~CopyrightDialog();
 
 protected slots:
 
-    virtual void clickedOK();
+	virtual void clickedOK();
 };
-#endif // CopyrightDialog_included
+ 
+#endif // COPYRIGHTDIALOG_H

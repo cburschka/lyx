@@ -41,12 +41,12 @@
 #include "bufferlist.h"
 #include "language.h"
 #include "ColorHandler.h"
+#include "frontends/Dialogs.h"
 #include "frontends/GUIRunTime.h"
 #include "frontends/xforms/xform_helpers.h" // for XformColor
 
 using std::endl;
 
-FD_form_title * fd_form_title;
 FD_form_character * fd_form_character;
 FD_form_preamble * fd_form_preamble;
 FD_form_sendto * fd_form_sendto;
@@ -279,32 +279,6 @@ void LyXGUI::create_forms()
 	// Create forms
 	//
 
-	// the title form
-	string banner_file = LibFileSearch("images", "banner", "xpm");
-	if (lyxrc.show_banner && !banner_file.empty()) {
-		fd_form_title = create_form_form_title();
-		fl_set_form_dblbuffer(fd_form_title->form_title, 1); // use dbl buffer
-		fl_set_form_atclose(fd_form_title->form_title, CancelCloseBoxCB, 0);
-		fl_addto_form(fd_form_title->form_title);
-		FL_OBJECT *obj = fl_add_pixmapbutton(FL_NORMAL_BUTTON, 0, 0, 425, 290, "");
-		fl_set_pixmapbutton_file(obj, banner_file.c_str());
-		
-		fl_set_pixmapbutton_focus_outline(obj, 3);
-		fl_set_button_shortcut(obj, "^M ^[", 1);
-		fl_set_object_boxtype(obj, FL_NO_BOX);
-		fl_set_object_callback(obj, TimerCB, 0);
-		
-		obj = fl_add_text(FL_NORMAL_TEXT, 248, 265, 170, 16, LYX_VERSION);
-		fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-		fl_mapcolor(FL_FREE_COL2, 0x05, 0x2e, 0x4c);
-		fl_mapcolor(FL_FREE_COL3, 0xe1, 0xd2, 0x9b);
-		fl_set_object_color(obj, FL_FREE_COL2, FL_FREE_COL2);
-		fl_set_object_lcol(obj, FL_FREE_COL3);
-		fl_set_object_lalign(obj, FL_ALIGN_CENTER|FL_ALIGN_INSIDE);
-		fl_set_object_lstyle(obj, FL_BOLD_STYLE);
-		fl_end_form();
-	}
-
 	// the character form
 	fd_form_character = create_form_form_character();
 	fl_set_form_atclose(fd_form_character->form_character,
@@ -376,32 +350,16 @@ void LyXGUI::create_forms()
 	
 	// Show the main & title form
 	int main_placement = FL_PLACE_CENTER | FL_FREE_SIZE;
-	int title_placement = FL_PLACE_CENTER;
 	// Did we get a valid position?
 	if (xpos >= 0 && ypos >= 0) {
 		lyxViews->setPosition(xpos, ypos);
-		if (lyxrc.show_banner) {
-			// show the title form in the middle of the main form
-			fl_set_form_position(fd_form_title->form_title,
-					     abs(xpos + (width/2) - (370 / 2)),
-					     abs(ypos + (height/2) - (290 / 2)));
-			title_placement = FL_PLACE_GEOMETRY;
-			// The use of abs() above is a trick to ensure
-			// valid positions
-		}
-			main_placement = FL_PLACE_POSITION;
+		main_placement = FL_PLACE_POSITION;
 	}
-	lyxViews->show(main_placement, FL_FULLBORDER, "LyX");
-	if (lyxrc.show_banner) {
-		fl_show_form(fd_form_title->form_title, 
-			     title_placement, FL_NOBORDER, 
-			     _("LyX Banner"));
-		fl_redraw_form(fd_form_title->form_title);
-		fl_raise_form(fd_form_title->form_title);
 
-		// Show the title form at most 7 secs (lowered from 10 secs)
-		fl_set_timer(fd_form_title->timer_title, 7);
-	}
+	lyxViews->show(main_placement, FL_FULLBORDER, "LyX");
+
+	if (lyxrc.show_banner)
+		lyxViews->getDialogs()->showSplash();
 }
 
 

@@ -1,12 +1,13 @@
-/*
- * QtLyXView.h
- * (C) 2000 LyX Team
- * moz@compsoc.man.ac.uk
+/**
+ * \file QtLyXView.h
+ * Copyright 2001 the LyX Team
+ * Read the file COPYING
+ *
+ * \author John Levon
  */
 
-/* Qt 1.x has a messy namespace which conflicts with 'emit' in
- * src/Timeout.h. This can go away when Qt 2.x happens.
+/* Qt has a messy namespace which conflicts with 'emit' in
+ * Timeout. Yep, they #define emit to nothing.
  */
-
 #undef emit
 #include "LyXView.h"

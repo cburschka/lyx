@@ -1,11 +1,10 @@
-/**********************************************************************
-
-	--- Qt Architect generated file ---
-
-	File: parageneraldlg.C
-	Last generated: Sat Oct 14 00:27:47 2000
-
- *********************************************************************/
+/**
+ * \file parageneraldlg.C
+ * Copyright 2001 the LyX Team
+ * Read the file COPYING
+ *
+ * \author John Levon
+ */
 
 #include <config.h>
 #include "parageneraldlg.h"
@@ -16,19 +15,12 @@
 
 #include <qtooltip.h>
 
-#define Inherited ParaGeneralDialogData
-
 #ifdef CXX_WORKING_NAMESPACES
 using kde_helpers::setSizeHint;
 #endif
 
-ParaGeneralDialog::ParaGeneralDialog
-(
-	QWidget* parent,
-	const char* name
-)
-	:
-	Inherited( parent, name )
+ParaGeneralDialog::ParaGeneralDialog (QWidget * parent, char const * name)
+	: ParaGeneralDialogData(parent, name)
 {
 
 	abovepage = new ParaAboveDialogData(this, "abovepage");
@@ -46,21 +38,25 @@ ParaGeneralDialog::ParaGeneralDialog
 	abovepage->spaceabove->insertItem(_("Medium skip"));
 	abovepage->spaceabove->insertItem(_("Big skip"));
 	abovepage->spaceabove->insertItem(_("VFill"));
-	abovepage->spaceabove->insertItem(_("Length"));
+	abovepage->spaceabove->insertItem(_("Custom"));
 	setSizeHint(abovepage->spaceabove); 
+
 	belowpage->spacebelow->insertItem(_("None"));
 	belowpage->spacebelow->insertItem(_("Defskip"));
 	belowpage->spacebelow->insertItem(_("Small skip"));
 	belowpage->spacebelow->insertItem(_("Medium skip"));
 	belowpage->spacebelow->insertItem(_("Big skip"));
 	belowpage->spacebelow->insertItem(_("VFill"));
-	belowpage->spacebelow->insertItem(_("Length"));
+	belowpage->spacebelow->insertItem(_("Custom"));
 	setSizeHint(belowpage->spacebelow); 
 	
-	QToolTip::add(block, _("Alignment of current paragraph")); 
-	QToolTip::add(center, _("Alignment of current paragraph")); 
-	QToolTip::add(left, _("Alignment of current paragraph")); 
-	QToolTip::add(right, _("Alignment of current paragraph")); 
+	justification->insertItem(_("Block"));
+	justification->insertItem(_("Centered"));
+	justification->insertItem(_("Left"));
+	justification->insertItem(_("Right"));
+	setSizeHint(justification); 
+ 
+	QToolTip::add(justification, _("Alignment of current paragraph")); 
 	QToolTip::add(noindent, _("No indent on first line of paragraph")); 
 	QToolTip::add(labelwidth, _("FIXME please !")); 
 	
@@ -77,9 +73,11 @@ ParaGeneralDialog::ParaGeneralDialog
 	QToolTip::add(belowpage->spacebelowminus, _("Minimum space required"));
 }
 
+
 ParaGeneralDialog::~ParaGeneralDialog()
 {
 }
+
 
 void ParaGeneralDialog::spaceaboveHighlighted(int val)
 {
@@ -87,6 +85,7 @@ void ParaGeneralDialog::spaceaboveHighlighted(int val)
 	abovepage->spaceaboveplus->setEnabled(val == 6);
 	abovepage->spaceaboveminus->setEnabled(val == 6);
 }
+
 
 void ParaGeneralDialog::spacebelowHighlighted(int val)
 {

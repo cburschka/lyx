@@ -1,7 +1,9 @@
-/*
- * tabcreatedialog.h
- * (C) 2000 LyX Team
- * John Levon, moz@compsoc.man.ac.uk
+/**
+ * \file tabcreatedlg.h
+ * Copyright 2001 the LyX Team
+ * Read the file COPYING
+ *
+ * \author John Levon
  */
 
 #ifndef TABCREATEDIALOG_H
@@ -12,9 +14,9 @@
 
 class TabularCreateDialog : public TabularCreateDialogData
 {
-    Q_OBJECT
+	Q_OBJECT
 public:
-	TabularCreateDialog (FormTabularCreate *form, QWidget* parent = 0, const char *name = 0);
+	TabularCreateDialog (FormTabularCreate * form, QWidget * parent = 0, char const * name = 0);
 	virtual ~TabularCreateDialog();
 
 protected slots:
@@ -24,6 +26,6 @@ protected slots:
 	virtual void rowsChanged(unsigned int);
 
 private:
-	FormTabularCreate *form_;
+	FormTabularCreate * form_;
 };
-#endif
+#endif // TABCREATEDIALOG_H

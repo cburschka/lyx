@@ -1,24 +1,16 @@
-/**********************************************************************
-
-	--- Qt Architect generated file ---
-
-	File: copyrightdlg.C
-	Last generated: Thu Oct 12 18:32:40 2000
-
- *********************************************************************/
+/**
+ * \file copyrightdlg.C
+ * Copyright 2001 the LyX Team
+ * Read the file COPYING
+ *
+ * \author John Levon
+ */
 
 #include <config.h>
 #include "copyrightdlg.h"
 
-#define Inherited CopyrightDialogData
-
-CopyrightDialog::CopyrightDialog
-(
-	QWidget* parent,
-	const char* name
-)
-	:
-	Inherited( parent, name )
+CopyrightDialog::CopyrightDialog(QWidget * parent, char const * name)
+	: CopyrightDialogData(parent, name)
 {
 	setCaption(name);
 }
@@ -27,6 +19,7 @@ CopyrightDialog::CopyrightDialog
 CopyrightDialog::~CopyrightDialog()
 {
 }
+
 
 void CopyrightDialog::clickedOK()
 {

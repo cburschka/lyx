@@ -2751,16 +2751,34 @@ string const LyXFunc::Dispatch(int ac,
 	}
 	break;
 
-	case LFUN_CHILDINSERT:
+	case LFUN_CHILD_CREATE:
 	{
-		InsetCommandParams p( "include", argument );
-		Inset * inset = new InsetInclude(p, *owner->buffer());
-		if (owner->view()->insertInset(inset, "Standard", true))
-			inset->Edit(owner->view(), 0, 0, 0);
-		else
-			delete inset;
+		InsetCommandParams p("include");
+ 
+		if (!argument.empty()) {
+			if (contains(argument, "|")) {
+				p.setContents(token(argument, '|', 0));
+				p.setOptions(token(argument, '|', 1));
+			} else
+				p.setContents(argument);
+			Dispatch(LFUN_CHILD_INSERT, p.getAsString());
+		} else
+			owner->getDialogs()->createInclude(p.getAsString());
 	}
 	break;
+
+	case LFUN_CHILD_INSERT:
+	{
+		InsetCommandParams p;
+		p.setFromString(argument);
+
+		InsetInclude * inset = new InsetInclude(p, *owner->buffer());
+		if (!owner->view()->insertInset(inset))
+			delete inset;
+		else
+			owner->view()->updateInset(inset, true);
+	}
+	break; 
 
 	case LFUN_CHILDOPEN:
 	{

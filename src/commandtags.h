@@ -202,7 +202,7 @@ enum kb_action {
 	LFUN_LAYOUT_COPY,		// Asger 1997-05-04
 	LFUN_LAYOUT_PASTE,		// Asger 1997-05-04
 	LFUN_TABINSERT, // 180          // Ale 970515
-	LFUN_CHILDINSERT,               // Ale 970521
+	LFUN_CHILD_INSERT,               // Ale 970521
 	LFUN_CHILDOPEN,                 // Ale 970528
 	LFUN_TOC_INSERT,                // Lgb 97-05-27
 	LFUN_LOA_INSERT,                // Bernhard 97-08-07
@@ -276,6 +276,7 @@ enum kb_action {
 	LFUN_REFERENCE_GOTO,             // Dekel 20010114
 	LFUN_BOOKMARK_SAVE,              // Dekel 20010127
 	LFUN_BOOKMARK_GOTO,              // Dekel 20010127
+	LFUN_CHILD_CREATE, 		// Levon 20010207
 	LFUN_LASTACTION  /* this marks the end of the table */
 };
 

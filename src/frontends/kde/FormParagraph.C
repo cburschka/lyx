@@ -1,17 +1,10 @@
-/*
- * FormParagraph.C
- * (C) 2000 LyX Team
- * John Levon, moz@compsoc.man.ac.uk
+/**
+ * \file FormParagraph.C
+ * Copyright 2001 the LyX Team
+ * Read the file COPYING
+ *
+ * \author John Levon
  */
-
-/***************************************************************************
- *                                                                         *
- *   This program is free software; you can redistribute it and/or modify  *
- *   it under the terms of the GNU General Public License as published by  *
- *   the Free Software Foundation; either version 2 of the License, or     *
- *   (at your option) any later version.                                   *
- *                                                                         *
- ***************************************************************************/
 
 #include <config.h>
 
@@ -35,16 +28,15 @@ using std::endl;
 FormParagraph::FormParagraph(LyXView *v, Dialogs *d)
 	: dialog_(0), lv_(v), d_(d), h_(0)
 {
-	// let the dialog be shown
-	// This is a permanent connection so we won't bother
-	// storing a copy because we won't be disconnecting.
 	d->showLayoutParagraph.connect(slot(this, &FormParagraph::show));
 }
+
 
 FormParagraph::~FormParagraph()
 {
 	delete dialog_;
 }
+
 
 void FormParagraph::update(bool switched)
 {
@@ -58,12 +50,12 @@ void FormParagraph::update(bool switched)
 
 	Buffer *buf = lv_->view()->buffer();
 	
-	if (readonly!=buf->isReadonly()) {
+	if (readonly != buf->isReadonly()) {
 		readonly = buf->isReadonly();
 		dialog_->setReadOnly(readonly);
 	}
 
-	LyXText *text = 0;
+	LyXText * text = 0;
 
 	if (lv_->view()->theLockingInset())
 		text = lv_->view()->theLockingInset()->getLyXText(lv_->view());
@@ -71,7 +63,7 @@ void FormParagraph::update(bool switched)
 	if (!text)
 		text = lv_->view()->text;
 
-	LyXParagraph *par = text->cursor.par();
+	LyXParagraph const * par = text->cursor.par();
 
 	int align = par->GetAlign();
 	
@@ -79,22 +71,26 @@ void FormParagraph::update(bool switched)
 		align = textclasslist.Style(buf->params.textclass, par->GetLayout()).align;
 
 #ifndef NEW_INSETS
-	LyXParagraph *physpar = par->FirstPhysicalPar();
+	LyXParagraph const * physpar = par->FirstPhysicalPar();
 #else
-	LyXParagraph *physpar = par;
+	LyXParagraph const * physpar = par;
 #endif
 
-	if (physpar->added_space_top.kind()==VSpace::LENGTH) {
+	if (physpar->added_space_top.kind() == VSpace::LENGTH) {
 		LyXGlueLength above = physpar->added_space_top.length();
-		lyxerr[Debug::GUI] << "Reading above space : \"" << physpar->added_space_top.length().asString() << "\"" << endl;
+		lyxerr[Debug::GUI] << "Reading above space : \"" 
+			<< physpar->added_space_top.length().asString() << "\"" << endl;
+ 
 		dialog_->setAboveLength(above.value(), above.plusValue(), above.minusValue(),
 			above.unit(), above.plusUnit(), above.minusUnit());
 	} else
 		dialog_->setAboveLength(0.0, 0.0, 0.0, LyXLength::UNIT_NONE, LyXLength::UNIT_NONE, LyXLength::UNIT_NONE);
 
-	if (physpar->added_space_bottom.kind()==VSpace::LENGTH) {
+	if (physpar->added_space_bottom.kind() == VSpace::LENGTH) {
 		LyXGlueLength below = physpar->added_space_bottom.length();
-		lyxerr[Debug::GUI] << "Reading below space : \"" << physpar->added_space_bottom.length().asString() << "\"" << endl;
+		lyxerr[Debug::GUI] << "Reading below space : \"" 
+			<< physpar->added_space_bottom.length().asString() << "\"" << endl;
+
 		dialog_->setBelowLength(below.value(), below.plusValue(), below.minusValue(),
 			below.unit(), below.plusUnit(), below.minusUnit());
 	} else
@@ -102,8 +98,10 @@ void FormParagraph::update(bool switched)
 
 	dialog_->setLabelWidth(text->cursor.par()->GetLabelWidthString().c_str());
 	dialog_->setAlign(align);
+
 	dialog_->setChecks(physpar->line_top, physpar->line_bottom,
 		physpar->pagebreak_top, physpar->pagebreak_bottom, physpar->noindent);
+ 
 	dialog_->setSpace(physpar->added_space_top.kind(), physpar->added_space_bottom.kind(),
 		physpar->added_space_top.keep(), physpar->added_space_bottom.keep());
 
@@ -128,6 +126,7 @@ void FormParagraph::update(bool switched)
 		static_cast<LyXParagraph::PEXTRA_TYPE>(par->pextra_type));
 }
 
+
 void FormParagraph::apply()
 {
 	if (readonly)
@@ -136,12 +135,12 @@ void FormParagraph::apply()
 	VSpace spaceabove;
 	VSpace spacebelow;
 
-	if (dialog_->getSpaceAboveKind()==VSpace::LENGTH)
+	if (dialog_->getSpaceAboveKind() == VSpace::LENGTH)
 		spaceabove = VSpace(dialog_->getAboveLength());
 	else
 		spaceabove = VSpace(dialog_->getSpaceAboveKind());
 
-	if (dialog_->getSpaceBelowKind()==VSpace::LENGTH)
+	if (dialog_->getSpaceBelowKind() == VSpace::LENGTH)
 		spacebelow = VSpace(dialog_->getBelowLength());
 	else
 		spacebelow = VSpace(dialog_->getSpaceBelowKind());
@@ -149,8 +148,10 @@ void FormParagraph::apply()
 	spaceabove.setKeep(dialog_->getAboveKeep());
 	spacebelow.setKeep(dialog_->getBelowKeep());
 
-	lyxerr[Debug::GUI] << "Setting above space \"" << LyXGlueLength(spaceabove.length().asString()).asString() << "\"" << endl;
-	lyxerr[Debug::GUI] << "Setting below space \"" << LyXGlueLength(spacebelow.length().asString()).asString() << "\"" << endl;
+	lyxerr[Debug::GUI] << "Setting above space \"" 
+		<< LyXGlueLength(spaceabove.length().asString()).asString() << "\"" << endl;
+	lyxerr[Debug::GUI] << "Setting below space \"" 
+		<< LyXGlueLength(spacebelow.length().asString()).asString() << "\"" << endl;
 
 	lv_->view()->text->SetParagraph(lv_->view(),
 		dialog_->getLineAbove(), dialog_->getLineBelow(),
@@ -164,7 +165,7 @@ void FormParagraph::apply()
 	string widthp("");
 
 	LyXLength extrawidth(dialog_->getExtraWidth());
-	if (extrawidth.unit()==LyXLength::UNIT_NONE) {
+	if (extrawidth.unit() == LyXLength::UNIT_NONE) {
 		widthp = dialog_->getExtraWidthPercent();
 	} else
 		width = extrawidth.asString();
@@ -183,6 +184,7 @@ void FormParagraph::apply()
 	setMinibuffer(lv_, _("Paragraph layout set"));
 }
 
+
 void FormParagraph::show()
 {
 	if (!dialog_)
@@ -191,7 +193,6 @@ void FormParagraph::show()
 	if (!dialog_->isVisible())
 		h_ = d_->hideBufferDependent.connect(slot(this, &FormParagraph::hide));
 
-	 
 	dialog_->raise();
 	dialog_->setActiveWindow();
 	update();
@@ -199,10 +200,12 @@ void FormParagraph::show()
 	dialog_->show();
 }
 
+
 void FormParagraph::close()
 {
 	h_.disconnect();
 }
+
 
 void FormParagraph::hide()
 {

@@ -22,7 +22,7 @@ fi
 
 # Generate acinclude.m4
 echo -n "Generate acinclude.m4... "
-rm -f acinclude.m4 sigc++/acinclude.m4
+rm -f acinclude.m4 sigc++/acinclude.m4 boost/acinclude.m4
 touch acinclude.m4
 for fil in config/lyxinclude.m4 config/libtool.m4 config/gettext.m4 config/lcmessage.m4 config/progtest.m4 config/sigc++.m4 config/kde.m4 config/qt2.m4 config/gtk--.m4 config/gnome--.m4 config/gnome.m4 config/pspell.m4; do
     cat $fil >> acinclude.m4
@@ -31,12 +31,21 @@ touch sigc++/acinclude.m4
 for fil in config/libtool.m4 ; do
     cat $fil >> sigc++/acinclude.m4
 done
+touch boost/acinclude.m4
+for fil in config/boost.m4 ; do
+    cat $fil >> boost/acinclude.m4
+done
 echo "done."
 
 # Generate the Makefiles and configure files
 if ( aclocal --version ) </dev/null > /dev/null 2>&1; then
-	echo -n "Building macros... "
-	$ACLOCAL ; ( cd lib/reLyX; $ACLOCAL ) ; ( cd sigc++; $ACLOCAL ) 
+	echo "Building macros..."
+	for dir in . lib/reLyX sigc++ boost ; do
+	    echo -e "\t$dir"
+	    ( cd $dir ; $ACLOCAL )
+	done
+#	$ACLOCAL ; ( cd lib/reLyX; $ACLOCAL ) ; ( cd sigc++; $ACLOCAL ) 
+#	( cd boost; $ACLOCAL ) 
 	echo "done."
 else
 	echo "aclocal not found -- aborting"
@@ -44,8 +53,12 @@ else
 fi
 
 if ( autoheader --version ) </dev/null > /dev/null 2>&1; then
-	echo -n "Building config header template... "
-	$AUTOHEADER ; ( cd sigc++; $AUTOHEADER )
+	echo "Building config header template..."
+	for dir in . sigc++ boost ; do
+	    echo -e "\t$dir"
+	    ( cd $dir ; $AUTOHEADER )
+	done
+#	$AUTOHEADER ; ( cd sigc++; $AUTOHEADER ) ; ( cd boost; $AUTOHEADER ) 
 	echo "done."
 else
 	echo "autoheader not found -- aborting"
@@ -53,8 +66,13 @@ else
 fi
 
 if ( $AUTOMAKE --version ) </dev/null > /dev/null 2>&1; then
-	echo -n "Building Makefile templates... "
-	$AUTOMAKE ; ( cd lib/reLyX ; $AUTOMAKE ) ; ( cd sigc++; $AUTOMAKE )
+	echo "Building Makefile templates..."
+	for dir in . lib/reLyX sigc++ boost ; do
+	    echo -e "\t$dir"
+	    ( cd $dir ; $AUTOMAKE )
+	done
+#	$AUTOMAKE ; ( cd lib/reLyX ; $AUTOMAKE ) ; ( cd sigc++; $AUTOMAKE ) 
+#	( cd boost; $AUTOMAKE )
 	echo "done."
 else
 	echo "automake not found -- aborting"
@@ -62,8 +80,13 @@ else
 fi
 
 if ( $AUTOCONF --version ) </dev/null > /dev/null 2>&1; then
-	echo -n "Building configure... "
-	$AUTOCONF ; ( cd lib/reLyX ; $AUTOCONF ) ; ( cd sigc++; $AUTOCONF )
+	echo "Building configure..."
+	for dir in . lib/reLyX sigc++ boost ; do
+	    echo -e "\t$dir"
+	    ( cd $dir ; $AUTOCONF )
+	done
+#	$AUTOCONF ; ( cd lib/reLyX ; $AUTOCONF ) ; ( cd sigc++; $AUTOCONF )
+#	( cd boost; $AUTOCONF ) 
 	echo "done."
 else
 	echo "autoconf not found -- aborting"

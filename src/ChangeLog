@@ -1,3 +1,29 @@
+2001-02-12  John Levon  <moz@compsoc.man.ac.uk>
+
+	* BufferView_pimpl.C: call hideSplash()
+
+	* LyXAction.C: make buffer-child-insert use LFUN_CHILD_CREATE
+
+	* include_form.h:
+	* bibforms.h: remove
+
+	* lyxfunc.C:
+	* src/commandtags.h: LFUN_CHILDINSERT -> LFUN_CHILD_INSERT,
+	  add LFUN_CHILD_CREATE
+
+	* counters.h: fix tiny typo
+	
+	* lyx_cb.C:
+	* lyx.h:
+	* lyx_gui.C:
+	* lyx.C: move splash to frontends/xforms/
+
+	* lyx_gui_misc.C: move Include and Bibform to frontends
+
+	* lyxvc.h: clarify comment
+
+	* vspace.C: tiny housekeeping
+
 2001-02-10  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* text.C (PrepareToPrint): RTL Fix.

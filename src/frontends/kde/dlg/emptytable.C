@@ -24,6 +24,7 @@ const unsigned int cellsize = 20;
 EmptyTable::EmptyTable(QWidget * parent, const char * name)
 	: QTableView(parent,name)
 {
+	setBackgroundMode(NoBackground);
 	setNumCols(5);
 	setNumRows(5);
 	setCellWidth(cellsize);
@@ -72,9 +73,9 @@ void EmptyTable::mouseMoveEvent(QMouseEvent *ev)
 	int x = ev->pos().x();
 	int y = ev->pos().y();
 
-	if (x > 0) 
+	if (x > 0)
 		setNumberColumns(x / cellsize + leftCell());
 
-	if (y > 0) 
+	if (y > 0)
 		setNumberRows(y / cellsize + topCell());
 }

@@ -1,17 +1,10 @@
-/*
- * FormDocument.C
- * (C) 2001 LyX Team
- * John Levon, moz@compsoc.man.ac.uk
+/**
+ * \file FormDocument.C
+ * Copyright 2001 the LyX Team
+ * Read the file COPYING
+ *
+ * \author John Levon
  */
-
-/***************************************************************************
- *                                                                         *
- *   This program is free software; you can redistribute it and/or modify  *
- *   it under the terms of the GNU General Public License as published by  *
- *   the Free Software Foundation; either version 2 of the License, or     *
- *   (at your option) any later version.                                   *
- *                                                                         *
- ***************************************************************************/
 
 #include <config.h>
 
@@ -34,24 +27,18 @@ using Liason::setMinibuffer;
 FormDocument::FormDocument(LyXView *v, Dialogs *d)
 	: dialog_(0), lv_(v), d_(d), h_(0)
 {
-	// let the dialog be shown
-	// This is a permanent connection so we won't bother
-	// storing a copy because we won't be disconnecting.
 	d->showLayoutDocument.connect(slot(this, &FormDocument::show));
 }
+
 
 FormDocument::~FormDocument()
 {
 	delete dialog_;
 }
 
-void FormDocument::update(bool switched)
+
+void FormDocument::update(bool)
 {
-	if (switched) {
-		hide();
-		return;
-	}
-	
 	if (!lv_->view()->available())
 		return;
 
@@ -64,6 +51,7 @@ void FormDocument::update(bool switched)
 
 	dialog_->setFromParams(buf->params);
 }
+
 
 void FormDocument::apply()
 {
@@ -81,6 +69,7 @@ void FormDocument::apply()
 	lv_->buffer()->markDirty();
 	setMinibuffer(lv_, _("Document layout set"));
 }
+ 
 
 void FormDocument::show()
 {
@@ -97,6 +86,7 @@ void FormDocument::show()
  
 	dialog_->show();
 }
+
 
 bool FormDocument::changeClass(BufferParams & params, int new_class)
 {
@@ -118,11 +108,13 @@ bool FormDocument::changeClass(BufferParams & params, int new_class)
 
 	return true;
 }
+
  
 void FormDocument::close()
 {
 	h_.disconnect();
 }
+
 
 void FormDocument::hide()
 {

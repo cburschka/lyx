@@ -3,50 +3,8 @@ Magic: 13000
 Internal Form Definition File
     (do not change)
 
-Number of forms: 3
+Number of forms: 2
 Unit of measure: FL_COORD_PIXEL
-
-=============== FORM ===============
-Name: form_title
-Width: 420
-Height: 290
-Number of Objects: 2
-
---------------------
-class: FL_BOX
-type: UP_BOX
-box: 0 0 420 290
-boxtype: FL_UP_BOX
-colors: FL_BLACK FL_TOP_BCOL
-alignment: FL_ALIGN_CENTER
-style: FL_NORMAL_STYLE
-size: FL_DEFAULT_SIZE
-lcol: FL_BLACK
-label: 
-shortcut: 
-resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
-name: 
-callback: 
-argument: 
-
---------------------
-class: FL_TIMER
-type: HIDDEN_TIMER
-box: 110 170 190 60
-boxtype: FL_DOWN_BOX
-colors: FL_COL1 FL_RED
-alignment: FL_ALIGN_CENTER
-style: FL_NORMAL_STYLE
-size: FL_DEFAULT_SIZE
-lcol: FL_BLACK
-label: 
-shortcut: 
-resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
-name: timer_title
-callback: TimerCB
-argument: 0
 
 =============== FORM ===============
 Name: form_figure

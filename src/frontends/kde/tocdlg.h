@@ -1,17 +1,10 @@
-/*
- * tocdlg.h
- * (C) 2000 LyX Team
- * John Levon, moz@compsoc.man.ac.uk
+/**
+ * \file tocdlg.h
+ * Copyright 2001 the LyX Team
+ * Read the file COPYING
+ *
+ * \author John Levon
  */
-
-/***************************************************************************
- *                                                                         *
- *   This program is free software; you can redistribute it and/or modify  *
- *   it under the terms of the GNU General Public License as published by  *
- *   the Free Software Foundation; either version 2 of the License, or     *
- *   (at your option) any later version.                                   *
- *                                                                         *
- ***************************************************************************/
 
 #ifndef TOCDLG_H
 #define TOCDLG_H
@@ -30,37 +23,37 @@
 
 #include "FormToc.h"
 
-class TocDialog : public QWidget {
-   Q_OBJECT
+class TocDialog : public QDialog {
+	Q_OBJECT
 public:
-	TocDialog(FormToc *form, QWidget *parent=0, const char *name=0,
+	TocDialog(FormToc * form, QWidget * parent=0, char const * name=0,
 			    bool modal=false, WFlags f=0);
 	~TocDialog();
 
 	// widgets
 
-	QComboBox *menu;
-	QListView *tree;
-	QPushButton *buttonUpdate;
-	QPushButton *buttonClose;
-	QSlider *depth;
-	QLabel *depthlabel; 
+	QComboBox * menu;
+	QListView * tree;
+	QPushButton * buttonUpdate;
+	QPushButton * buttonClose;
+	QSlider * depth;
+	QLabel * depthlabel; 
 
 protected:
-	void closeEvent(QCloseEvent *e);
+	void closeEvent(QCloseEvent * e);
 
 private:
-	FormToc *form_;
+	FormToc * form_;
 
 	// layouts 
 
-	QHBoxLayout *topLayout;
-	QVBoxLayout *layout;
-	QHBoxLayout *buttonLayout;
+	QHBoxLayout * topLayout;
+	QVBoxLayout * layout;
+	QHBoxLayout * buttonLayout;
 
 private slots:
 	/// adaptor to FormToc::select
-	void select_adaptor(QListViewItem *item) {
+	void select_adaptor(QListViewItem * item) {
 		form_->select(item->text(0));
 	}
 
@@ -102,4 +95,4 @@ private slots:
 	}
 };
 
-#endif
+#endif // TOCDLG_H

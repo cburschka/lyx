@@ -1,11 +1,10 @@
-/**********************************************************************
-
-	--- Qt Architect generated file ---
-
-	File: paraextradlg.C
-	Last generated: Sat Oct 14 00:27:49 2000
-
- *********************************************************************/
+/**
+ * \file paraextradlg.C
+ * Copyright 2001 the LyX Team
+ * Read the file COPYING
+ *
+ * \author John Levon
+ */
 
 #include <config.h>
 #include "paraextradlg.h"
@@ -20,15 +19,8 @@
 using kde_helpers::setSizeHint;
 #endif
 
-#define Inherited ParaExtraDialogData
-
-ParaExtraDialog::ParaExtraDialog
-(
-	QWidget* parent,
-	const char* name
-)
-	:
-	Inherited( parent, name )
+ParaExtraDialog::ParaExtraDialog (QWidget * parent, char const * name) 
+	: ParaExtraDialogData(parent, name)
 {
 	type->insertItem(_("Normal"));
 	type->insertItem(_("Indented paragraph"));
@@ -54,18 +46,20 @@ ParaExtraDialog::ParaExtraDialog
 	QToolTip::add(startnewminipage, _("FIXME please !"));
 }
 
+
 ParaExtraDialog::~ParaExtraDialog()
 {
 }
 
+
 void ParaExtraDialog::typeHighlighted(int val)
 {
-	specialalignment->setEnabled(val==2);
-	top->setEnabled(val==2);
-	middle->setEnabled(val==2);
-	bottom->setEnabled(val==2);
-	widthvalue->setEnabled(val!=0);
-	widthvalueunits->setEnabled(val!=0);
-	hfillbetween->setEnabled(val==2); 
-	startnewminipage->setEnabled(val==2); 
+	specialalignment->setEnabled(val == 2);
+	top->setEnabled(val == 2);
+	middle->setEnabled(val == 2);
+	bottom->setEnabled(val == 2);
+	widthvalue->setEnabled(val != 0);
+	widthvalueunits->setEnabled(val != 0);
+	hfillbetween->setEnabled(val == 2); 
+	startnewminipage->setEnabled(val == 2); 
 }

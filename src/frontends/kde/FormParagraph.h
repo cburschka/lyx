@@ -1,16 +1,10 @@
-/* FormParagraph.h
- * (C) 2000 LyX Team
- * John Levon, moz@compsoc.man.ac.uk
+/**
+ * \file FormParagraph.h
+ * Copyright 2001 the LyX Team
+ * Read the file COPYING
+ *
+ * \author John Levon
  */
-
-/***************************************************************************
- *                                                                         *
- *   This program is free software; you can redistribute it and/or modify  *
- *   it under the terms of the GNU General Public License as published by  *
- *   the Free Software Foundation; either version 2 of the License, or     *
- *   (at your option) any later version.                                   *
- *                                                                         *
- ***************************************************************************/
 
 #ifndef FORMPARAGRAPH_H
 #define FORMPARAGRAPH_H
@@ -25,13 +19,9 @@ class ParaDialog;
 
 class FormParagraph : public DialogBase, public noncopyable {
 public: 
-	/**@name Constructors and Destructors */
-	//@{
-	///
 	FormParagraph(LyXView *, Dialogs *);
-	/// 
+
 	~FormParagraph();
-	//@}
 
 	/// Apply changes
 	void apply();
@@ -62,4 +52,4 @@ private:
 	bool readonly; 
 };
 
-#endif
+#endif // FORMPARAGRAPH_H

@@ -52,6 +52,8 @@ public:
 	virtual void hide() = 0;
 	///
 	virtual void update() {};
+	///
+	virtual void close() {};
 	//@}
 };
 

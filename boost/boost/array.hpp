@@ -11,7 +11,8 @@
  * This software is provided "as is" without express or implied
  * warranty, and with no claim as to its suitability for any purpose.
  *
- * Jul 31, 2000
+ * 20 Jan 2001 - STLport fix (Beman Dawes)
+ * 29 Sep 2000 - Initial Revision (Nico Josuttis)
  */
 #ifndef BOOST_ARRAY_HPP
 #define BOOST_ARRAY_HPP
@@ -21,9 +22,7 @@
 #include <iterator>
 #include <algorithm>
 
-// BUG-FIX for compilers that don't support
-// std::size_t and std::ptrdiff_t yet
-// (such as gcc)
+// FIXES for broken compilers
 #include <boost/config.hpp>
 
 // LGB
@@ -51,14 +50,14 @@
         const_iterator end() const { return elems+N; }
 
         // reverse iterator support
-# if !defined(BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION)
+#if    !defined(BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION) && !defined(BOOST_MSVC_STD_ITERATOR)
         typedef std::reverse_iterator<iterator> reverse_iterator;
         typedef std::reverse_iterator<const_iterator> const_reverse_iterator;
-# else
-        // workaround for broken reverse_iterator implementations due to no partial specialization
+#else
+        // workaround for broken reverse_iterator implementations
         typedef std::reverse_iterator<iterator,T> reverse_iterator;
         typedef std::reverse_iterator<const_iterator,T> const_reverse_iterator;
-# endif
+#endif
 
         reverse_iterator rbegin() { return reverse_iterator(end()); }
         const_reverse_iterator rbegin() const {
@@ -89,7 +88,6 @@
         static size_type max_size() { return N; }
         enum { static_size = N };
 
-  public:
         // swap (note: linear complexity)
         void swap (array<T,N>& y) {
             std::swap_ranges(begin(),end(),y.begin());
@@ -111,10 +109,10 @@
             std::fill_n(begin(),size(),value);
         }
 
-# ifndef BOOST_NO_PRIVATE_IN_AGGREGATE
+#ifndef BOOST_NO_PRIVATE_IN_AGGREGATE
       private:
-# endif
-        // private member functions are allowed in aggregates [ISO 8.5.1]
+#endif
+        // check range (may be private because it is static)
         static void rangecheck (size_type i) {
             if (i >= size()) { throw std::range_error("array"); }
         }

@@ -6,7 +6,7 @@ Dialog {
 	DataHeader {printdlgdata.h}
 	DataSource {printdlgdata.C}
 	DataName {PrintDialogData}
-	WindowBaseClass {QWidget}
+	WindowBaseClass {QDialog}
 	UseGetText {true}
 	WindowFlags {0}
 }
@@ -185,7 +185,7 @@ PushButton {
 }
 PushButton {
 		ToggleButton {false}
-		Default {false}
+		Default {true}
 		AutoDefault {false}
 		IsMenuButton {false}
 		Text {&Cancel}
@@ -221,6 +221,31 @@ RadioButton {
 		Name {allpages}
 		Variable {allpages}
 		MinimumSize {80 20}
+		MaximumSize {32767 32767}
+		BackgroundPixmap {}
+		UseBackgroundPixmap {false}
+		AdjustSize {false}
+		ReadPixmapFromData {false}
+		DataVarName {}
+		DataLenName {}
+		minWidthSizeHint {true}
+		minHeightSizeHint {true}
+		maxWidthSizeHint {true}
+		maxHeightSizeHint {true}
+		FocusPolicy {TabFocus}
+		BackgroundMode {PaletteBackground}
+		FontPropagation {NoChildren}
+		PalettePropagation {NoChildren}
+}
+RadioButton {
+		Checked {false}
+		Text {&Odd pages}
+		AutoRepeat {false}
+		AutoResize {false}
+		Rect {15 96 142 14}
+		Name {oddpages}
+		Variable {oddpages}
+		MinimumSize {0 0}
 		MaximumSize {32767 32767}
 		BackgroundPixmap {}
 		UseBackgroundPixmap {false}
@@ -287,6 +312,107 @@ KDE::KIntLineEdit {
 		FontPropagation {NoChildren}
 		PalettePropagation {NoChildren}
 }
+KDE::KIntLineEdit {
+		Text {}
+		EchoMode {Normal}
+		MaxLength {32767}
+		FrameShown {true}
+		Rect {113 204 49 31}
+		Name {to}
+		Variable {to}
+		MinimumSize {0 0}
+		MaximumSize {32767 32767}
+		BackgroundPixmap {}
+		UseBackgroundPixmap {false}
+		AdjustSize {false}
+		ReadPixmapFromData {false}
+		DataVarName {}
+		DataLenName {}
+		minWidthSizeHint {true}
+		minHeightSizeHint {true}
+		maxWidthSizeHint {false}
+		maxHeightSizeHint {true}
+		FocusPolicy {StrongFocus}
+		BackgroundMode {PaletteBase}
+		FontPropagation {NoChildren}
+		PalettePropagation {NoChildren}
+}
+CheckBox {
+		Checked {false}
+		Text {&Reverse order}
+		AutoRepeat {false}
+		AutoResize {true}
+		Rect {10 240 152 30}
+		Name {reverse}
+		Variable {reverse}
+		MinimumSize {0 0}
+		MaximumSize {32767 32767}
+		BackgroundPixmap {}
+		UseBackgroundPixmap {false}
+		AdjustSize {false}
+		ReadPixmapFromData {false}
+		DataVarName {}
+		DataLenName {}
+		minWidthSizeHint {true}
+		minHeightSizeHint {true}
+		maxWidthSizeHint {true}
+		maxHeightSizeHint {true}
+		FocusPolicy {TabFocus}
+		BackgroundMode {PaletteBackground}
+		FontPropagation {NoChildren}
+		PalettePropagation {NoChildren}
+}
+KDE::KIntLineEdit {
+		Text {}
+		EchoMode {Normal}
+		MaxLength {32767}
+		FrameShown {true}
+		Rect {334 17 50 46}
+		Name {count}
+		Variable {count}
+		Signal {[Protected]  textChanged --> changedCount  (const char*)}
+		MinimumSize {0 0}
+		MaximumSize {32767 32767}
+		BackgroundPixmap {}
+		UseBackgroundPixmap {false}
+		AdjustSize {false}
+		ReadPixmapFromData {false}
+		DataVarName {}
+		DataLenName {}
+		minWidthSizeHint {true}
+		minHeightSizeHint {true}
+		maxWidthSizeHint {false}
+		maxHeightSizeHint {true}
+		FocusPolicy {StrongFocus}
+		BackgroundMode {PaletteBase}
+		FontPropagation {NoChildren}
+		PalettePropagation {NoChildren}
+}
+CheckBox {
+		Checked {false}
+		Text {Co&llate}
+		AutoRepeat {false}
+		AutoResize {true}
+		Rect {440 17 50 46}
+		Name {sort}
+		Variable {sort}
+		MinimumSize {0 0}
+		MaximumSize {32767 32767}
+		BackgroundPixmap {}
+		UseBackgroundPixmap {false}
+		AdjustSize {false}
+		ReadPixmapFromData {false}
+		DataVarName {}
+		DataLenName {}
+		minWidthSizeHint {true}
+		minHeightSizeHint {true}
+		maxWidthSizeHint {true}
+		maxHeightSizeHint {true}
+		FocusPolicy {TabFocus}
+		BackgroundMode {PaletteBackground}
+		FontPropagation {NoChildren}
+		PalettePropagation {NoChildren}
+}
 Label {
 		Text {From}
 		Alignment {289}
@@ -341,31 +467,6 @@ Label {
 		maxWidthSizeHint {true}
 		maxHeightSizeHint {true}
 		FocusPolicy {NoFocus}
-		BackgroundMode {PaletteBackground}
-		FontPropagation {NoChildren}
-		PalettePropagation {NoChildren}
-}
-RadioButton {
-		Checked {false}
-		Text {&Odd pages}
-		AutoRepeat {false}
-		AutoResize {false}
-		Rect {15 96 142 14}
-		Name {oddpages}
-		Variable {oddpages}
-		MinimumSize {0 0}
-		MaximumSize {32767 32767}
-		BackgroundPixmap {}
-		UseBackgroundPixmap {false}
-		AdjustSize {false}
-		ReadPixmapFromData {false}
-		DataVarName {}
-		DataLenName {}
-		minWidthSizeHint {true}
-		minHeightSizeHint {true}
-		maxWidthSizeHint {true}
-		maxHeightSizeHint {true}
-		FocusPolicy {TabFocus}
 		BackgroundMode {PaletteBackground}
 		FontPropagation {NoChildren}
 		PalettePropagation {NoChildren}
@@ -445,31 +546,6 @@ LineEdit {
 		FontPropagation {NoChildren}
 		PalettePropagation {NoChildren}
 }
-CheckBox {
-		Checked {false}
-		Text {&Reverse order}
-		AutoRepeat {false}
-		AutoResize {true}
-		Rect {10 240 152 30}
-		Name {reverse}
-		Variable {reverse}
-		MinimumSize {0 0}
-		MaximumSize {32767 32767}
-		BackgroundPixmap {}
-		UseBackgroundPixmap {false}
-		AdjustSize {false}
-		ReadPixmapFromData {false}
-		DataVarName {}
-		DataLenName {}
-		minWidthSizeHint {true}
-		minHeightSizeHint {true}
-		maxWidthSizeHint {true}
-		maxHeightSizeHint {true}
-		FocusPolicy {TabFocus}
-		BackgroundMode {PaletteBackground}
-		FontPropagation {NoChildren}
-		PalettePropagation {NoChildren}
-}
 LineEdit {
 		Text {}
 		EchoMode {Normal}
@@ -492,31 +568,6 @@ LineEdit {
 		maxHeightSizeHint {true}
 		FocusPolicy {StrongFocus}
 		BackgroundMode {PaletteBase}
-		FontPropagation {NoChildren}
-		PalettePropagation {NoChildren}
-}
-CheckBox {
-		Checked {false}
-		Text {Co&llate}
-		AutoRepeat {false}
-		AutoResize {true}
-		Rect {440 17 50 46}
-		Name {sort}
-		Variable {sort}
-		MinimumSize {0 0}
-		MaximumSize {32767 32767}
-		BackgroundPixmap {}
-		UseBackgroundPixmap {false}
-		AdjustSize {false}
-		ReadPixmapFromData {false}
-		DataVarName {}
-		DataLenName {}
-		minWidthSizeHint {true}
-		minHeightSizeHint {true}
-		maxWidthSizeHint {true}
-		maxHeightSizeHint {true}
-		FocusPolicy {TabFocus}
-		BackgroundMode {PaletteBackground}
 		FontPropagation {NoChildren}
 		PalettePropagation {NoChildren}
 }
@@ -549,32 +600,6 @@ PushButton {
 		FontPropagation {NoChildren}
 		PalettePropagation {NoChildren}
 }
-KDE::KIntLineEdit {
-		Text {}
-		EchoMode {Normal}
-		MaxLength {32767}
-		FrameShown {true}
-		Rect {334 17 50 46}
-		Name {count}
-		Variable {count}
-		Signal {[Protected]  textChanged --> changedCount  (const char*)}
-		MinimumSize {0 0}
-		MaximumSize {32767 32767}
-		BackgroundPixmap {}
-		UseBackgroundPixmap {false}
-		AdjustSize {false}
-		ReadPixmapFromData {false}
-		DataVarName {}
-		DataLenName {}
-		minWidthSizeHint {true}
-		minHeightSizeHint {true}
-		maxWidthSizeHint {false}
-		maxHeightSizeHint {true}
-		FocusPolicy {StrongFocus}
-		BackgroundMode {PaletteBase}
-		FontPropagation {NoChildren}
-		PalettePropagation {NoChildren}
-}
 Label {
 		Text {Count}
 		Alignment {289}
@@ -601,31 +626,6 @@ Label {
 		maxHeightSizeHint {true}
 		FocusPolicy {NoFocus}
 		BackgroundMode {PaletteBackground}
-		FontPropagation {NoChildren}
-		PalettePropagation {NoChildren}
-}
-KDE::KIntLineEdit {
-		Text {}
-		EchoMode {Normal}
-		MaxLength {32767}
-		FrameShown {true}
-		Rect {113 204 49 31}
-		Name {to}
-		Variable {to}
-		MinimumSize {0 0}
-		MaximumSize {32767 32767}
-		BackgroundPixmap {}
-		UseBackgroundPixmap {false}
-		AdjustSize {false}
-		ReadPixmapFromData {false}
-		DataVarName {}
-		DataLenName {}
-		minWidthSizeHint {true}
-		minHeightSizeHint {true}
-		maxWidthSizeHint {false}
-		maxHeightSizeHint {true}
-		FocusPolicy {StrongFocus}
-		BackgroundMode {PaletteBase}
 		FontPropagation {NoChildren}
 		PalettePropagation {NoChildren}
 }

@@ -1,20 +1,13 @@
-/*
- * paradlg.C
- * (C) 2000 LyX Team
- * John Levon, moz@compsoc.man.ac.uk
+/**
+ * \file paradlg.C
+ * Copyright 2001 the LyX Team
+ * Read the file COPYING
+ *
+ * \author John Levon
  */
 
-/***************************************************************************
- *                                                                         *
- *   This program is free software; you can redistribute it and/or modify  *
- *   it under the terms of the GNU General Public License as published by  *
- *   the Free Software Foundation; either version 2 of the License, or     *
- *   (at your option) any later version.                                   *
- *                                                                         *
- ***************************************************************************/
-
 #include <config.h>
-#include "support/lstrings.h" 
+#include "support/lstrings.h"
 
 #include "dlg/helpers.h"
 #include "dlg/lengthentry.h"
@@ -30,31 +23,39 @@ using kde_helpers::setSizeHint;
 
 using std::endl;
 
-ParaDialog::ParaDialog(FormParagraph *form, QWidget *parent, const char *name, bool, WFlags)
+ParaDialog::ParaDialog(FormParagraph * form, QWidget * parent, char const * name, bool, WFlags)
 	: ParaDialogData(parent,name), form_(form)
 {
 	setCaption(name);
+
+	setUpdatesEnabled(false);
 
 	generalpage = new ParaGeneralDialog(this, "generalpage");
 	extrapage = new ParaExtraDialog(this, "extrapage");
 	
 	tabstack->addTabPage(generalpage, _("&General"));
 	tabstack->addTabPage(extrapage, _("&Extra"));
+
+	setUpdatesEnabled(true);
+	update();
 }
+
 
 ParaDialog::~ParaDialog()
 {
 }
 
-void ParaDialog::closeEvent(QCloseEvent *e)
+
+void ParaDialog::closeEvent(QCloseEvent * e)
 {
 	form_->close();
 	e->accept();
 }
 
+
 void ParaDialog::setReadOnly(bool readonly)
 {
-	generalpage->alignment->setEnabled(!readonly);
+	generalpage->justification->setEnabled(!readonly);
 	generalpage->lineabove->setEnabled(!readonly);
 	generalpage->linebelow->setEnabled(!readonly);
 	generalpage->abovepage->pagebreakabove->setEnabled(!readonly);
@@ -70,10 +71,6 @@ void ParaDialog::setReadOnly(bool readonly)
 	generalpage->belowpage->spacebelowplus->setEnabled(!readonly);
 	generalpage->abovepage->spaceaboveminus->setEnabled(!readonly);
 	generalpage->belowpage->spacebelowminus->setEnabled(!readonly);
-	generalpage->block->setEnabled(!readonly);
-	generalpage->left->setEnabled(!readonly);
-	generalpage->right->setEnabled(!readonly);
-	generalpage->center->setEnabled(!readonly);
 	generalpage->labelwidth->setEnabled(!readonly);
 	extrapage->specialalignment->setEnabled(!readonly);
 	extrapage->type->setEnabled(!readonly);
@@ -90,7 +87,8 @@ void ParaDialog::setReadOnly(bool readonly)
 	cancel->setText(readonly ? _("&Close") : _("&Cancel"));
 }
 
-void ParaDialog::setLabelWidth(const char *text)
+
+void ParaDialog::setLabelWidth(char const * text)
 {
 	// FIXME: should be cleverer here
 	if (!strcmp(_("Senseless with this layout!"),text)) {
@@ -102,32 +100,29 @@ void ParaDialog::setLabelWidth(const char *text)
 	}
 }
 
+
 void ParaDialog::setAlign(int type)
 {
 	switch (type) {
-		case LYX_ALIGN_RIGHT:
-			generalpage->right->setChecked(true);
-			break;
-		case LYX_ALIGN_LEFT:
-			generalpage->left->setChecked(true);
-			break;
-		case LYX_ALIGN_CENTER:
-			generalpage->center->setChecked(true);
-			break;
-		default: // ewww
-			generalpage->block->setChecked(true);
-			break;
+		case LYX_ALIGN_RIGHT: type = 3; break;
+		case LYX_ALIGN_LEFT: type = 2; break;
+		case LYX_ALIGN_CENTER: type = 1; break;
+		default: type = 0; break;
 	}
+
+	generalpage->justification->setCurrentItem(type);
 }
+
 
 void ParaDialog::setChecks(bool labove, bool lbelow, bool pabove, bool pbelow, bool noindent)
 {
 	generalpage->lineabove->setChecked(labove);
 	generalpage->linebelow->setChecked(lbelow);
-	generalpage->abovepage->pagebreakabove->setChecked(pabove); 
-	generalpage->belowpage->pagebreakbelow->setChecked(pbelow); 
+	generalpage->abovepage->pagebreakabove->setChecked(pabove);
+	generalpage->belowpage->pagebreakbelow->setChecked(pbelow);
 	generalpage->noindent->setChecked(noindent);
 }
+
 
 void ParaDialog::setSpace(VSpace::vspace_kind kindabove, VSpace::vspace_kind kindbelow, bool keepabove, bool keepbelow)
 {
@@ -154,7 +149,7 @@ void ParaDialog::setSpace(VSpace::vspace_kind kindabove, VSpace::vspace_kind kin
 		case VSpace::LENGTH: item = 6; break;
 	}
 	generalpage->belowpage->spacebelow->setCurrentItem(item);
-	 
+	
 	generalpage->abovepage->spaceabovevalue->setEnabled(kindabove == VSpace::LENGTH);
 	generalpage->abovepage->spaceaboveplus->setEnabled(kindabove == VSpace::LENGTH);
 	generalpage->abovepage->spaceaboveminus->setEnabled(kindabove == VSpace::LENGTH);
@@ -166,53 +161,55 @@ void ParaDialog::setSpace(VSpace::vspace_kind kindabove, VSpace::vspace_kind kin
 	generalpage->belowpage->keepbelow->setChecked(keepbelow);
 }
 
-void ParaDialog::setAboveLength(float val, float plus, float minus, 
+
+void ParaDialog::setAboveLength(float val, float plus, float minus,
 	LyXLength::UNIT vunit, LyXLength::UNIT punit, LyXLength::UNIT munit)
 {
-	if (vunit==LyXLength::UNIT_NONE) {
+	if (vunit == LyXLength::UNIT_NONE) {
 		generalpage->abovepage->spaceabovevalue->setValue("");
 		generalpage->abovepage->spaceaboveplus->setValue("");
 		generalpage->abovepage->spaceaboveminus->setValue("");
-	} else { 
+	} else {
 		generalpage->abovepage->spaceabovevalue->setValue(tostr(val));
 		generalpage->abovepage->spaceaboveplus->setValue(tostr(plus));
 		generalpage->abovepage->spaceaboveminus->setValue(tostr(minus));
 	}
- 
+
 	generalpage->abovepage->spaceabovevalue->setUnits(vunit);
 	generalpage->abovepage->spaceaboveplus->setUnits(punit);
 	generalpage->abovepage->spaceaboveminus->setUnits(munit);
 }
 
-void ParaDialog::setBelowLength(float val, float plus, float minus, 
+
+void ParaDialog::setBelowLength(float val, float plus, float minus,
 	LyXLength::UNIT vunit, LyXLength::UNIT punit, LyXLength::UNIT munit)
 {
-	if (vunit==LyXLength::UNIT_NONE) {
+	if (vunit == LyXLength::UNIT_NONE) {
 		generalpage->belowpage->spacebelowvalue->setValue("");
 		generalpage->belowpage->spacebelowplus->setValue("");
 		generalpage->belowpage->spacebelowminus->setValue("");
-	} else { 
+	} else {
 		generalpage->belowpage->spacebelowvalue->setValue(tostr(val));
 		generalpage->belowpage->spacebelowplus->setValue(tostr(plus));
 		generalpage->belowpage->spacebelowminus->setValue(tostr(minus));
 	}
- 
+
 	generalpage->belowpage->spacebelowvalue->setUnits(vunit);
 	generalpage->belowpage->spacebelowplus->setUnits(punit);
 	generalpage->belowpage->spacebelowminus->setUnits(munit);
 }
 
-void ParaDialog::setExtra(float widthval, LyXLength::UNIT units, const string percent, int align, 
+
+void ParaDialog::setExtra(float widthval, LyXLength::UNIT units, const string percent, int align,
 	bool hfill, bool startminipage, LyXParagraph::PEXTRA_TYPE type)
 {
-
 	if (type!=LyXParagraph::PEXTRA_NONE) {
 		lyxerr[Debug::GUI] << "percent : $" << percent << "$ widthval " << widthval << " unit " << long(units) << endl;
 		if (percent != "") {
 			extrapage->widthvalue->setText(percent.c_str());
 			extrapage->widthvalueunits->setCurrentItem(11);
 		} else {
-			int unit = 0; 
+			int unit = 0;
 			extrapage->widthvalue->setText(tostr(widthval).c_str());
 			switch (units) {
 				case LyXLength::CM: unit = 0; break;
@@ -230,7 +227,7 @@ void ParaDialog::setExtra(float widthval, LyXLength::UNIT units, const string pe
 				case LyXLength::UNIT_NONE: unit = 0; break;
 				default:
 					lyxerr[Debug::GUI] << "Unknown unit " << long(units) << endl;
-			} 
+			}
 			extrapage->widthvalueunits->setCurrentItem(unit);
 		}
 	} else
@@ -262,19 +259,20 @@ void ParaDialog::setExtra(float widthval, LyXLength::UNIT units, const string pe
 
 	switch (type) {
 		case LyXParagraph::PEXTRA_NONE:
-			extrapage->type->setCurrentItem(0); 
+			extrapage->type->setCurrentItem(0);
 			break;
 		case LyXParagraph::PEXTRA_INDENT:
-			extrapage->type->setCurrentItem(1); 
+			extrapage->type->setCurrentItem(1);
 			break;
 		case LyXParagraph::PEXTRA_MINIPAGE:
-			extrapage->type->setCurrentItem(2); 
+			extrapage->type->setCurrentItem(2);
 			break;
 		case LyXParagraph::PEXTRA_FLOATFLT:
-			extrapage->type->setCurrentItem(3); 
+			extrapage->type->setCurrentItem(3);
 			break;
 	}
 }
+
 
 LyXGlueLength ParaDialog::getAboveLength() const
 {
@@ -290,6 +288,7 @@ LyXGlueLength ParaDialog::getAboveLength() const
 	return len;
 }
 
+
 LyXGlueLength ParaDialog::getBelowLength() const
 {
 	LyXGlueLength len(
@@ -304,11 +303,12 @@ LyXGlueLength ParaDialog::getBelowLength() const
 	return len;
 }
 
+
 LyXLength ParaDialog::getExtraWidth() const
 {
 
-	if (extrapage->widthvalueunits->currentItem()!=11) {
-		LyXLength::UNIT unit = LyXLength::CM; 
+	if (extrapage->widthvalueunits->currentItem() != 11) {
+		LyXLength::UNIT unit = LyXLength::CM;
 		switch (extrapage->widthvalueunits->currentItem()) {
 			case 0: unit = LyXLength::CM; break;
 			case 1: unit = LyXLength::IN; break;
@@ -321,7 +321,7 @@ LyXLength ParaDialog::getExtraWidth() const
 			case 8: unit = LyXLength::BP; break;
 			case 9: unit = LyXLength::DD; break;
 			case 10: unit = LyXLength::CC; break;
-			case 11: unit = LyXLength::CM; break; 
+			case 11: unit = LyXLength::CM; break;
 			default:
 				lyxerr[Debug::GUI] << "Unknown unit " << extrapage->widthvalueunits->currentItem() << endl;
 		}
@@ -333,10 +333,11 @@ LyXLength ParaDialog::getExtraWidth() const
 	}
 }
 
+
 string ParaDialog::getExtraWidthPercent() const
 {
-	double val = strToDbl(extrapage->widthvalue->text()); 
-	if (val > 100.0) 
+	double val = strToDbl(extrapage->widthvalue->text());
+	if (val > 100.0)
 		val = 100.0;
 	if (val < 0.0)
 		val = 0.0;

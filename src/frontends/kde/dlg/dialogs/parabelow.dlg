@@ -124,7 +124,7 @@ ComboBox {
 		PalettePropagation {AllChildren}
 }
 Label {
-		Text {Value}
+		Text {Size}
 		Alignment {289}
 		AutoResize {false}
 		Margin {-1}
@@ -152,7 +152,7 @@ Label {
 		PalettePropagation {NoChildren}
 }
 Label {
-		Text {Plus}
+		Text {Stretch}
 		Alignment {289}
 		AutoResize {false}
 		Margin {-1}
@@ -180,7 +180,7 @@ Label {
 		PalettePropagation {NoChildren}
 }
 Label {
-		Text {Minus}
+		Text {Shrink}
 		Alignment {289}
 		AutoResize {false}
 		Margin {-1}

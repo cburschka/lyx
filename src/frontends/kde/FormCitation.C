@@ -1,21 +1,14 @@
-/*
- * FormCitation.C
- * (C) 2000 LyX Team
- * John Levon, moz@compsoc.man.ac.uk
+/**
+ * \file FormCitation.C
+ * Copyright 2001 the LyX Team
+ * Read the file COPYING
+ *
+ * \author John Levon
  */
-
-/***************************************************************************
- *                                                                         *
- *   This program is free software; you can redistribute it and/or modify  *
- *   it under the terms of the GNU General Public License as published by  *
- *   the Free Software Foundation; either version 2 of the License, or     *
- *   (at your option) any later version.                                   *
- *                                                                         *
- ***************************************************************************/
 
 #include <config.h>
 
-#include <algorithm> 
+#include <algorithm>
 
 #include "Dialogs.h"
 #include "FormCitation.h"
@@ -24,27 +17,26 @@
 #include "LyXView.h"
 #include "lyxfunc.h"
 #include "citationdlg.h"
- 
+
 using std::vector;
 using std::pair;
 using std::find;
- 
+
 FormCitation::FormCitation(LyXView *v, Dialogs *d)
-	: dialog_(0), lv_(v), d_(d), inset_(0), h_(0), u_(0), ih_(0), 
+	: dialog_(0), lv_(v), d_(d), inset_(0), h_(0), u_(0), ih_(0),
 	keys(0), chosenkeys(0)
 {
-	// let the dialog be shown
-	// This is a permanent connection so we won't bother
-	// storing a copy because we won't be disconnecting.
 	d->showCitation.connect(slot(this, &FormCitation::showCitation));
 	d->createCitation.connect(slot(this, &FormCitation::createCitation));
 }
 
+ 
 FormCitation::~FormCitation()
 {
 	delete dialog_;
 }
 
+ 
 void FormCitation::showCitation(InsetCommand * const inset)
 {
 	// FIXME: when could inset be 0 here ?
@@ -59,6 +51,7 @@ void FormCitation::showCitation(InsetCommand * const inset)
 	show();
 }
 
+
 void FormCitation::createCitation(string const & arg)
 {
 	// we could already be showing stuff, clear it out
@@ -70,8 +63,9 @@ void FormCitation::createCitation(string const & arg)
 	show();
 }
 
+
 void FormCitation::updateButtons()
-{ 
+{
 	if (readonly) {
 		dialog_->add->setEnabled(false);
 		dialog_->remove->setEnabled(false);
@@ -81,8 +75,8 @@ void FormCitation::updateButtons()
 	}
 
 	bool ischosenkey = !selectedChosenKey.empty();
- 
-	vector<string>::const_iterator iter = 
+
+	vector<string>::const_iterator iter =
 		find(chosenkeys.begin(), chosenkeys.end(), selectedKey);
 
 	dialog_->add->setEnabled(!selectedKey.empty() && iter == chosenkeys.end());
@@ -90,7 +84,8 @@ void FormCitation::updateButtons()
 	dialog_->up->setEnabled(ischosenkey);
 	dialog_->down->setEnabled(ischosenkey);
 }
- 
+
+
 void FormCitation::updateChosenList()
 {
 	dialog_->chosen->setAutoUpdate(false);
@@ -104,6 +99,7 @@ void FormCitation::updateChosenList()
 	dialog_->chosen->update();
 }
 
+
 void FormCitation::updateAvailableList()
 {
 	dialog_->keys->setAutoUpdate(false);
@@ -116,25 +112,25 @@ void FormCitation::updateAvailableList()
 	dialog_->keys->setAutoUpdate(true);
 	dialog_->keys->update();
 }
- 
+
 
 // we can safely ignore the parameter because we can always update
 void FormCitation::update(bool)
 {
 	keys.clear();
- 
-	vector < pair<string,string> > ckeys = lv_->buffer()->getBibkeyList(); 
+
+	vector < pair<string,string> > const ckeys = lv_->buffer()->getBibkeyList();
 
 	for (vector< pair<string,string> >::const_iterator iter = ckeys.begin();
 		iter != ckeys.end(); ++iter) {
 		keys.push_back(*iter);
 	}
- 
+
 	updateAvailableList();
 	selectedKey.erase();
- 
+
 	chosenkeys.clear();
- 
+
 	string tmp, paramkeys(params.getContents());
 	paramkeys = frontStrip(split(paramkeys, tmp, ','));
 
@@ -145,13 +141,13 @@ void FormCitation::update(bool)
 
 	updateChosenList();
 	selectedChosenKey.erase();
- 
+
 	dialog_->entry->setText("");
 
 	dialog_->after->setText(params.getOptions().c_str());
 
 	updateButtons();
- 
+
 	if (readonly) {
 		dialog_->keys->setFocusPolicy(QWidget::NoFocus);
 		dialog_->chosen->setFocusPolicy(QWidget::NoFocus);
@@ -183,7 +179,7 @@ void FormCitation::apply()
 		
 	params.setContents(contents);
 	params.setOptions(dialog_->after->text());
-	 
+	
 	if (inset_ != 0) {
 		if (params != inset_->params()) {
 			inset_->setParams(params);
@@ -234,20 +230,20 @@ void FormCitation::selectChosen()
 		}
 	}
 }
- 
+
 void FormCitation::add()
 {
 	if (selectedKey.empty())
 		return;
 
-	for (vector< pair<string,string> >::const_iterator iter = keys.begin(); 
+	for (vector< pair<string,string> >::const_iterator iter = keys.begin();
 		iter != keys.end(); ++iter) {
 		if (iter->first == selectedKey) {
 			chosenkeys.push_back(iter->first);
-			break; 
+			break;
 		}
 	}
-		 
+		
 	selectedChosenKey.erase();
 	updateChosenList();
 	updateButtons();
@@ -256,7 +252,7 @@ void FormCitation::add()
 void FormCitation::remove()
 {
 	if (selectedChosenKey.empty())
-		return; 
+		return;
 
 	for (vector< string >::iterator iter = chosenkeys.begin();
 		iter != chosenkeys.end(); ++iter) {
@@ -275,9 +271,9 @@ void FormCitation::up()
 	if (selectedChosenKey.empty())
 		return;
 
-	// Qt will select the first one on redo, so we need this 
+	// Qt will select the first one on redo, so we need this
 	string tmp = selectedChosenKey;
- 
+
 	vector< string >::iterator iter = chosenkeys.begin();
 
 	for (; iter != chosenkeys.end(); ++iter) {
@@ -290,47 +286,49 @@ void FormCitation::up()
 	}
 	if (iter==chosenkeys.end())
 		return;
- 
+
 	updateChosenList();
 	selectedChosenKey=tmp;
 	selectChosen();
 }
 
+ 
 void FormCitation::down()
 {
 	if (selectedChosenKey.empty())
 		return;
 
-	// Qt will select the first one on redo, so we need this 
+	// Qt will select the first one on redo, so we need this
 	string tmp = selectedChosenKey;
- 
+
 	vector< string >::iterator iter = chosenkeys.begin();
 
 	for (; iter != chosenkeys.end(); ++iter) {
-		if (*iter==selectedChosenKey && (iter+1)!=chosenkeys.end()) {
+		if (*iter == selectedChosenKey && (iter+1)!=chosenkeys.end()) {
 			string tmp = *iter;
 			chosenkeys.erase(iter);
 			chosenkeys.insert(iter+1, tmp);
 			break;
 		}
 	}
-	if (iter==chosenkeys.end())
+	if (iter == chosenkeys.end())
 		return;
- 
+
 	updateChosenList();
 	selectedChosenKey=tmp;
 	selectChosen();
 }
+
  
-void FormCitation::select_key(const char *key)
+void FormCitation::select_key(char const * key)
 {
 	if (readonly)
 		return;
 
-	vector<string>::const_iterator iter = 
+	vector<string>::const_iterator iter =
 		find(chosenkeys.begin(), chosenkeys.end(), key);
 
-	if (iter!=chosenkeys.end())
+	if (iter != chosenkeys.end())
 		return;
 
 	selectedKey.erase();
@@ -338,8 +336,9 @@ void FormCitation::select_key(const char *key)
 
 	add();
 }
+
  
-void FormCitation::highlight_key(const char *key)
+void FormCitation::highlight_key(char const * key)
 {
 	if (readonly)
 		return;
@@ -348,7 +347,7 @@ void FormCitation::highlight_key(const char *key)
 	selectedKey = key;
 
 	for (unsigned int i=0; i < keys.size(); i++) {
-		if (keys[i].first==key) {
+		if (keys[i].first == key) {
 			dialog_->entry->setText(keys[i].second.c_str());
 			dialog_->chosen->clearFocus();
 			dialog_->chosen->clearSelection();
@@ -360,15 +359,16 @@ void FormCitation::highlight_key(const char *key)
 	updateButtons();
 }
 
-void FormCitation::highlight_chosen(const char *key)
+ 
+void FormCitation::highlight_chosen(char const * key)
 {
 	selectedChosenKey.erase();
 	selectedChosenKey = key;
- 
+
 	unsigned int i;
 
 	for (i=0; i < keys.size(); i++) {
-		if (keys[i].first==key) {
+		if (keys[i].first == key) {
 			if (keys[i].second.compare(dialog_->entry->text()))
 				dialog_->entry->setText(keys[i].second.c_str());
 			dialog_->keys->clearFocus();
@@ -378,8 +378,8 @@ void FormCitation::highlight_chosen(const char *key)
 		}
 	}
 
-	if (i==keys.size())
+	if (i == keys.size())
 		dialog_->entry->setText(_("Key not found in references."));
- 
+
 	updateButtons();
 }

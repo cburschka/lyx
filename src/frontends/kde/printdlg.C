@@ -1,7 +1,9 @@
-/*
- * printdlg.C
- * (C) 2000, LyX Team
- * John Levon, moz@compsoc.man.ac.uk
+/**
+ * \file printdlg.C
+ * Copyright 2001 the LyX Team
+ * Read the file COPYING
+ *
+ * \author John Levon
  */
 
 #include <config.h>
@@ -18,9 +20,7 @@
 
 #define Inherited PrintDialogData
 
-/* FIXME: tab order is out of whack */
-
-PrintDialog::PrintDialog(FormPrint *f, QWidget* parent, const char * name)
+PrintDialog::PrintDialog(FormPrint * f, QWidget * parent, char const * name)
 	: PrintDialogData(parent, name), form_(f)
 {
 	setCaption(name); 
@@ -37,9 +37,11 @@ PrintDialog::PrintDialog(FormPrint *f, QWidget* parent, const char * name)
 	QToolTip::add(browse, _("Select output filename"));
 }
 
+
 PrintDialog::~PrintDialog()
 {
 }
+
 
 void PrintDialog::clickedBrowse()
 {
@@ -51,7 +53,8 @@ void PrintDialog::clickedBrowse()
 		filename->setText(filedlg.selectedFile().data());
 }
 
-void PrintDialog::changedCount(const char *text)
+
+void PrintDialog::changedCount(char const * text)
 {
 	if (strcmp("",text) && strToInt(text) == 0) {
 		count->setText("1");

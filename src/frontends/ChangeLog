@@ -1,3 +1,10 @@
+2001-02-12  John Levon  <moz@compsoc.man.ac.uk>
+
+	* DialogBase.C: add close(), non-pure. This is
+	  useful for logdlg.C in the KDE frontend.
+
+	* Dialogs.h: splash, include, and bib forms
+
 2001-02-07  John Levon  <moz@compsoc.man.ac.uk>
 
 	* ButtonPolicies.C:

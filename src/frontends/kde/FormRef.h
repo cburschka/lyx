@@ -1,16 +1,10 @@
-/* FormRef.h
- * (C) 2000 LyX Team
- * John Levon, moz@compsoc.man.ac.uk
+/**
+ * \file FormRef.h
+ * Copyright 2001 the LyX Team
+ * Read the file COPYING
+ *
+ * \author John Levon
  */
-
-/***************************************************************************
- *                                                                         *
- *   This program is free software; you can redistribute it and/or modify  *
- *   it under the terms of the GNU General Public License as published by  *
- *   the Free Software Foundation; either version 2 of the License, or     *
- *   (at your option) any later version.                                   *
- *                                                                         *
- ***************************************************************************/
 
 #ifndef FORMREF_H
 #define FORMREF_H
@@ -26,18 +20,14 @@ class RefDialog;
 
 class FormRef : public DialogBase, public noncopyable {
 public: 
-	/**@name Constructors and Destructors */
-	//@{
-	///
 	FormRef(LyXView *, Dialogs *);
-	/// 
+
 	~FormRef();
-	//@}
 
 	/// double-click a ref
-	void select(const char *);
+	void select(char const *);
 	/// highlight a ref
-	void highlight(const char *);
+	void highlight(char const *);
 	/// set sort
 	void set_sort(bool);
 	/// goto a ref (or back)
@@ -75,10 +65,9 @@ private:
 	/// the LyXView we belong to
 	LyXView * lv_;
  
-	/** Which Dialogs do we belong to?
-	    Used so we can get at the signals we have to connect to.
-	*/
+	/// dialogs object
 	Dialogs * d_;
+ 
 	/// pointer to the inset if any
 	InsetCommand * inset_;
 	/// insets params
@@ -103,4 +92,4 @@ private:
 	std::vector< string > refs;
 };
 
-#endif
+#endif // FORMREF_H

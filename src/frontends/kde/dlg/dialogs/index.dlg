@@ -6,7 +6,7 @@ Dialog {
 	DataHeader {indexdlgdata.h}
 	DataSource {indexdlgdata.C}
 	DataName {IndexDialogData}
-	WindowBaseClass {QWidget}
+	WindowBaseClass {QDialog}
 	UseGetText {true}
 	WindowFlags {53248}
 }

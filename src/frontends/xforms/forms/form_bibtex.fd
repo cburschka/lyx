@@ -7,7 +7,7 @@ Number of forms: 1
 Unit of measure: FL_COORD_PIXEL
 
 =============== FORM ===============
-Name: bibitem_form
+Name: form_bibtex
 Width: 220
 Height: 130
 Number of Objects: 5
@@ -40,13 +40,13 @@ alignment: FL_ALIGN_LEFT
 style: FL_NORMAL_STYLE
 size: FL_NORMAL_SIZE
 lcol: FL_BLACK
-label: Key:|#K
-shortcut:
+label: Database:|#D
+shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: key
-callback: 
-argument: 
+name: database
+callback: C_FormBaseInputCB
+argument: 0
 
 --------------------
 class: FL_BUTTON
@@ -62,8 +62,8 @@ label: OK
 shortcut: ^M
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: 
-callback: bibitem_cb
+name: button_ok
+callback: C_FormBaseOKCB
 argument: 3
 
 --------------------
@@ -77,11 +77,11 @@ style: FL_NORMAL_STYLE
 size: FL_NORMAL_SIZE
 lcol: FL_BLACK
 label: Cancel|^[
-shortcut:
+shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: 
-callback: bibitem_cb
+name: button_cancel
+callback: C_FormBaseCancelCB
 argument: 2
 
 --------------------
@@ -94,13 +94,13 @@ alignment: FL_ALIGN_LEFT
 style: FL_NORMAL_STYLE
 size: FL_NORMAL_SIZE
 lcol: FL_BLACK
-label: Label:|#L
-shortcut:
+label: Style:|#S
+shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: label
-callback: 
-argument: 
+name: style
+callback: C_FormBaseInputCB
+argument: 0
 
 ==============================
 create_the_forms

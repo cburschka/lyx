@@ -18,12 +18,10 @@
 #include <cerrno>
 #include "lyx_gui_misc.h"
 #include "BufferView.h"
-#include "bibforms.h"
 #include "buffer.h"
 #include "credits_form.h"
 #include "form1.h"
 #include "gettext.h"
-#include "include_form.h"
 #include "layout_forms.h"
 #include "lyx.h"
 #include "lyx_cb.h"
@@ -55,8 +53,6 @@ extern FD_delim  * fd_delim;
 extern FD_deco   * fd_deco;
 extern FD_space  * fd_space;
 extern FD_matrix * fd_matrix;
-extern FD_bibitem_form * bibitem_form;
-extern FD_include * form;
 
 extern void HideFiguresPopups();
 
@@ -69,9 +65,6 @@ extern "C" int CancelCloseBoxCB(FL_FORM *, void *)
 // that the xform colors have been re-mapped).
 void RedrawAllBufferRelatedDialogs()
 {
-	if (bibitem_form && bibitem_form->bibitem_form->visible) {
-		fl_redraw_form(bibitem_form->bibitem_form);
-	}
 	if (fd_deco && fd_deco->deco->visible) {
 		fl_redraw_form(fd_deco->deco);
 	}
@@ -109,9 +102,6 @@ void RedrawAllBufferRelatedDialogs()
 	}
 	if (fd_space && fd_space->space->visible) {
 		fl_redraw_form(fd_space->space);
-	}
-	if (form && form->include->visible) {
-		fl_redraw_form(form->include);
 	}
 }
 
@@ -165,16 +155,6 @@ void CloseAllBufferRelatedDialogs()
 	if (fd_matrix) {
 		if (fd_matrix->matrix->visible) {
 			fl_hide_form(fd_matrix->matrix);
-		}
-	}
-	if (bibitem_form) {
-		if (bibitem_form->bibitem_form->visible) {
-			fl_hide_form(bibitem_form->bibitem_form);
-		}
-	}
-	if (form) {
-		if (form->include->visible) {
-			fl_hide_form(form->include);
 		}
 	}
 	HideFiguresPopups();
@@ -254,16 +234,6 @@ void updateAllVisibleBufferRelatedDialogs(bool)
 		}
 	}
 #endif
-	if (bibitem_form) {
-		if (bibitem_form->bibitem_form->visible) {
-			fl_hide_form(bibitem_form->bibitem_form);
-		}
-	}
-	if (form) {
-		if (form->include->visible) {
-			fl_hide_form(form->include);
-		}
-	}
 	HideFiguresPopups();
 }
 

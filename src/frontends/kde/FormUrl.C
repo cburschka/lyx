@@ -1,17 +1,10 @@
-/*
- * FormUrl.C
- * (C) 2000 LyX Team
- * John Levon, moz@compsoc.man.ac.uk
+/**
+ * \file FormUrl.C
+ * Copyright 2001 the LyX Team
+ * Read the file COPYING
+ *
+ * \author John Levon
  */
- 
-/***************************************************************************
- *                                                                         *
- *   This program is free software; you can redistribute it and/or modify  *
- *   it under the terms of the GNU General Public License as published by  *
- *   the Free Software Foundation; either version 2 of the License, or     *
- *   (at your option) any later version.                                   *
- *                                                                         *
- ***************************************************************************/
 
 #include <config.h>
 
@@ -26,22 +19,21 @@
 FormUrl::FormUrl(LyXView *v, Dialogs *d)
 	: dialog_(0), lv_(v), d_(d), inset_(0), h_(0), u_(0), ih_(0)
 {
-	// let the dialog be shown
-	// This is a permanent connection so we won't bother
-	// storing a copy because we won't be disconnecting.
 	d->showUrl.connect(slot(this, &FormUrl::showUrl));
 	d->createUrl.connect(slot(this, &FormUrl::createUrl));
 }
+
 
 FormUrl::~FormUrl()
 {
 	delete dialog_;
 }
 
+
 void FormUrl::showUrl(InsetCommand * const inset)
 {
 	// FIXME: when could inset be 0 here ?
-	if (inset==0)
+	if (inset == 0)
 		return;
 
 	inset_ = inset;
@@ -51,6 +43,7 @@ void FormUrl::showUrl(InsetCommand * const inset)
 	
 	show();
 }
+
  
 void FormUrl::createUrl(string const & arg)
 {
@@ -62,11 +55,11 @@ void FormUrl::createUrl(string const & arg)
 	params.setFromString(arg);
 	show();
 }
+
  
 void FormUrl::update(bool switched)
 {
 	if (switched) {
-		// I suspect a buffer switch should cause hide() here. ARRae
 		hide();
 		return;
 	}
@@ -74,7 +67,7 @@ void FormUrl::update(bool switched)
 	dialog_->url->setText(params.getContents().c_str());
 	dialog_->urlname->setText(params.getOptions().c_str());
 
-	if (params.getCmdName()=="url") 
+	if (params.getCmdName() == "url") 
 		dialog_->htmlurl->setChecked(0);
 	else
 		dialog_->htmlurl->setChecked(1);
@@ -94,6 +87,7 @@ void FormUrl::update(bool switched)
 		dialog_->htmlurl->setEnabled(true);
 	}
 }
+
  
 void FormUrl::apply()
 {
@@ -116,6 +110,7 @@ void FormUrl::apply()
 	} else
 		lv_->getLyXFunc()->Dispatch(LFUN_INSERT_URL, params.getAsString().c_str());
 }
+
  
 void FormUrl::show()
 {
@@ -134,6 +129,7 @@ void FormUrl::show()
 	dialog_->show();
 }
 
+
 void FormUrl::close()
 {
 	h_.disconnect();
@@ -141,6 +137,7 @@ void FormUrl::close()
 	ih_.disconnect();
 	inset_ = 0;
 }
+
  
 void FormUrl::hide()
 {

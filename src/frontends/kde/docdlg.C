@@ -1,23 +1,18 @@
-/*
- * docdlg.C
- * (C) 2001 LyX Team
- * John Levon, moz@compsoc.man.ac.uk
+/**
+ * \file docdlg.C
+ * Copyright 2001 the LyX Team
+ * Read the file COPYING
+ *
+ * \author John Levon
  */
-
-/***************************************************************************
- *                                                                         *
- *   This program is free software; you can redistribute it and/or modify  *
- *   it under the terms of the GNU General Public License as published by  *
- *   the Free Software Foundation; either version 2 of the License, or     *
- *   (at your option) any later version.                                   *
- *                                                                         *
- ***************************************************************************/
 
 #include <config.h>
 
 #include <qtooltip.h>
 
 #include "docdlg.h"
+
+#include "support/lstrings.h"
 
 #include "layout.h"
 #include "tex-strings.h"
@@ -35,10 +30,12 @@ using kde_helpers::setComboFromStr;
 
 using std::endl;
 
-DocDialog::DocDialog(FormDocument *form, QWidget *parent, const char *name, bool, WFlags)
+DocDialog::DocDialog(FormDocument * form, QWidget * parent, char const * name, bool, WFlags)
 	: DocDialogData(parent,name), form_(form)
 {
 	setCaption(name);
+
+	setUpdatesEnabled(false);
 
 	settings = new DocSettingsDialogData(this, "settings");
 	extra = new DocExtraDialogData(this, "extra");
@@ -85,14 +82,38 @@ DocDialog::DocDialog(FormDocument *form, QWidget *parent, const char *name, bool
 	connect(settings->linespacing, SIGNAL(highlighted(const char *)),
 		this, SLOT(linespacingChanged(const char *)));
 
-	settings->skipspacing->insertItem(_("small"));
-	settings->skipspacing->insertItem(_("medium"));
-	settings->skipspacing->insertItem(_("big"));
-	settings->skipspacing->insertItem(_("custom"));
-	setSizeHint(settings->skipspacing);
+	settings->paraspacing->insertItem(_("small"));
+	settings->paraspacing->insertItem(_("medium"));
+	settings->paraspacing->insertItem(_("big"));
+	settings->paraspacing->insertItem(_("custom"));
+	setSizeHint(settings->paraspacing);
 
-	connect(settings->skipspacing, SIGNAL(highlighted(const char *)),
-		this, SLOT(skipspacingChanged(const char *)));
+	connect(settings->paraspacing, SIGNAL(highlighted(const char *)),
+		this, SLOT(paraspacingChanged(const char *)));
+
+	connect(settings->addspace, SIGNAL(toggled(bool)),
+		this, SLOT(addspaceChanged(bool)));
+
+	extra->first->insertItem(_("Here"));
+	extra->first->insertItem(_("Bottom of page"));
+	extra->first->insertItem(_("Top of page"));
+	extra->first->insertItem(_("Separate page"));
+	extra->first->insertItem(_("Not set"));
+	extra->second->insertItem(_("Here"));
+	extra->second->insertItem(_("Bottom of page"));
+	extra->second->insertItem(_("Top of page"));
+	extra->second->insertItem(_("Separate page"));
+	extra->second->insertItem(_("Not set"));
+	extra->third->insertItem(_("Here"));
+	extra->third->insertItem(_("Bottom of page"));
+	extra->third->insertItem(_("Top of page"));
+	extra->third->insertItem(_("Separate page"));
+	extra->third->insertItem(_("Not set"));
+	extra->fourth->insertItem(_("Here"));
+	extra->fourth->insertItem(_("Bottom of page"));
+	extra->fourth->insertItem(_("Top of page"));
+	extra->fourth->insertItem(_("Separate page"));
+	extra->fourth->insertItem(_("Not set"));
 
 	// ps driver options
 	for (int i = 0; tex_graphics[i][0]; i++)
@@ -154,10 +175,14 @@ DocDialog::DocDialog(FormDocument *form, QWidget *parent, const char *name, bool
 	/* FIXME: bullets */
 	
 	QToolTip::add(settings->pagestyle, _("Specify header + footer style etc"));
-	QToolTip::add(settings->separation, _("FIXME please !"));
+	QToolTip::add(settings->addspace, _("Add spacing between paragraphs rather\n than indenting"));
 	QToolTip::add(settings->linespacingVal, _("Custom line spacing in line units"));
 	QToolTip::add(settings->extraoptions, _("Additional LaTeX options"));
-	QToolTip::add(extra->floatplacement, _("Specify preferred order for\nplacing floats"));
+	QToolTip::add(extra->first, _("Specify preferred order for\nplacing floats"));
+	QToolTip::add(extra->second, _("Specify preferred order for\nplacing floats"));
+	QToolTip::add(extra->third, _("Specify preferred order for\nplacing floats"));
+	QToolTip::add(extra->fourth, _("Specify preferred order for\nplacing floats"));
+	QToolTip::add(extra->ignore, _("Tell LaTeX to ignore usual rules\n for float placement"));
 	QToolTip::add(extra->sectiondepth, _("How far in the (sub)sections are numbered"));
 	QToolTip::add(extra->tocdepth, _("How detailed the Table of Contents is"));
 	QToolTip::add(extra->psdriver, _("Program to produce PostScript output"));
@@ -165,17 +190,23 @@ DocDialog::DocDialog(FormDocument *form, QWidget *parent, const char *name, bool
 	QToolTip::add(geometry->headheight, _("FIXME please !"));
 	QToolTip::add(geometry->headsep, _("FIXME please !"));
 	QToolTip::add(geometry->footskip, _("FIXME please !"));
+
+	setUpdatesEnabled(true);
+	update();
 }
+
 
 DocDialog::~DocDialog()
 {
 }
 
-void DocDialog::closeEvent(QCloseEvent *e)
+
+void DocDialog::closeEvent(QCloseEvent * e)
 {
 	form_->close();
 	e->accept();
 }
+
 
 void DocDialog::setReadOnly(bool readonly)
 {
@@ -183,8 +214,11 @@ void DocDialog::setReadOnly(bool readonly)
 	cancel->setText(readonly ? _("&Close") : _("&Cancel"));
 }
 
+
 void DocDialog::setFromParams(BufferParams const & params)
 {
+	setUpdatesEnabled(false);
+ 
 	if (!setComboFromStr(settings->docclass, textclasslist.DescOfClass(params.textclass)))
 		lyxerr[Debug::GUI] << "Couldn't set docclass " << textclasslist.DescOfClass(params.textclass) << endl;
 
@@ -194,14 +228,19 @@ void DocDialog::setFromParams(BufferParams const & params)
 	LyXTextClass const & tclass = textclasslist.TextClass(params.textclass);
 	
 	// opt_fontsize is a string like "10|11|12"
-	// FIXME: check + 1 ?
 	settings->fontsize->setCurrentItem(tokenPos(tclass.opt_fontsize(), '|', params.fontsize) + 1);
 
 	// "empty|plain|headings|fancy"
-	// FIXME: check + 1 ?
 	settings->pagestyle->setCurrentItem(tokenPos(tclass.opt_pagestyle(), '|', params.pagestyle) + 1);
 	
-	settings->separation->setChecked(params.paragraph_separation == BufferParams::PARSEP_INDENT);
+	settings->addspace->setChecked(params.paragraph_separation == BufferParams::PARSEP_SKIP);
+
+	bool const isskip = (params.paragraph_separation == BufferParams::PARSEP_SKIP);
+
+	settings->paraspacing->setEnabled(isskip);
+	settings->paraspacingValue->setEnabled(isskip);
+	settings->paraspacingStretch->setEnabled(isskip);
+	settings->paraspacingShrink->setEnabled(isskip);
 
 	int item=0;
 
@@ -214,9 +253,26 @@ void DocDialog::setFromParams(BufferParams const & params)
 			lyxerr[Debug::GUI] << "Unknown defskip " << int(params.getDefSkip().kind()) << endl;
 	}
 
-	/* FIXME */ 
-	settings->skipspacing->setCurrentItem(item);
-	//setFromLengthStr(settings->skipspacingVal, settings->skipspacingUnits, params.getDefSkip().asLyXCommand());
+	settings->paraspacing->setCurrentItem(item);
+
+	settings->paraspacingValue->setEnabled(item == 3);
+	settings->paraspacingStretch->setEnabled(item == 3);
+	settings->paraspacingShrink->setEnabled(item == 3);
+
+	if (item == 3) {
+		LyXGlueLength const len = params.getDefSkip().length();
+		settings->paraspacingValue->setValue(len.value());
+		settings->paraspacingValue->setUnits(len.unit());
+		settings->paraspacingStretch->setValue(len.plusValue());
+		settings->paraspacingStretch->setUnits(len.plusUnit());
+		settings->paraspacingShrink->setValue(len.minusValue());
+		settings->paraspacingShrink->setUnits(len.minusUnit());
+		lyxerr[Debug::GUI] << params.getDefSkip().asLyXCommand() << endl;;
+	} else {
+		settings->paraspacingValue->setFromLengthStr("0cm");
+		settings->paraspacingStretch->setFromLengthStr("0cm");
+		settings->paraspacingShrink->setFromLengthStr("0cm");
+	}
 
 	settings->sides->setChecked(params.sides == LyXTextClass::TwoSides);
 	settings->columns->setChecked(params.columns == 2);
@@ -296,14 +352,45 @@ void DocDialog::setFromParams(BufferParams const & params)
 	extra->sectiondepth->setValue(params.secnumdepth);
 	extra->tocdepth->setValue(params.tocdepth);
 
-	/* FIXME */
-	if (params.float_placement.empty())
-		extra->floatplacement->setText("");
-	else
-		extra->floatplacement->setText(params.float_placement.c_str());
-		
+	string const place = params.float_placement;
+	int count = 0;
+	QComboBox * box;
+
+	extra->ignore->setChecked(false);
+	setComboFromStr(extra->first, _("Not set"));
+	setComboFromStr(extra->second, _("Not set"));
+	setComboFromStr(extra->third, _("Not set"));
+	setComboFromStr(extra->fourth, _("Not set"));
+
+	for (string::const_iterator iter = place.begin(); iter != place.end(); ++count, ++iter) {
+		switch (count) {
+			case 0: box = extra->first; break;
+			case 1: box = extra->second; break;
+			case 2: box = extra->third; break;
+			default: box = extra->fourth; break;
+		};
+
+		if (*iter == '!') {
+			extra->ignore->setChecked(true);
+			continue;
+		}
+
+		switch (*iter) {
+			case 'h': setComboFromStr(box, _("Here")); break;
+			case 'b': setComboFromStr(box, _("Bottom of page")); break;
+			case 't': setComboFromStr(box, _("Top of page")); break;
+			case 'p': setComboFromStr(box, _("Separate page")); break;
+			default:
+				lyxerr[Debug::GUI] << "Unknown float placement \'" << *iter << endl;
+		}
+	}
+
 	/* FIXME: bullets ! */
+ 
+	setUpdatesEnabled(true);
+	update();
 }
+
 
 bool DocDialog::updateParams(BufferParams & params)
 {
@@ -328,14 +415,11 @@ bool DocDialog::updateParams(BufferParams & params)
 			redo = true;
 	}
 
-	// paragraph separation, skip or indent
-	// FIXME: what does this do
-
 	BufferParams::PARSEP tmpsep = params.paragraph_separation;
 
-	(settings->separation->isChecked())
-		? params.paragraph_separation = BufferParams::PARSEP_INDENT
-		: params.paragraph_separation = BufferParams::PARSEP_SKIP;
+	(settings->addspace->isChecked())
+		? params.paragraph_separation = BufferParams::PARSEP_SKIP
+		: params.paragraph_separation = BufferParams::PARSEP_INDENT;
 		
 	redo = (tmpsep != params.paragraph_separation) || redo;
 
@@ -343,17 +427,23 @@ bool DocDialog::updateParams(BufferParams & params)
 
 	VSpace tmpskip;
 
-	switch (settings->skipspacing->currentItem()) {
+	switch (settings->paraspacing->currentItem()) {
 		case 0: tmpskip = VSpace(VSpace::SMALLSKIP); break;
 		case 1: tmpskip = VSpace(VSpace::MEDSKIP); break;
 		case 2: tmpskip = VSpace(VSpace::BIGSKIP); break;
-		case 3:
-			tmpskip = VSpace(LyXGlueLength("23mm"));
-			/* FIXME: read glue length from skip bits !!! */
-			break;
 		default:
 			lyxerr[Debug::GUI] << "Unknown skip spacing " <<
-				settings->skipspacing->currentItem() << endl;
+				settings->paraspacing->currentItem() << endl;
+			break;
+		case 3:
+			string const val = settings->paraspacingValue->getLengthStr()
+				+ "+" + settings->paraspacingStretch->getLengthStr()
+				+ "-" + settings->paraspacingShrink->getLengthStr();
+			lyxerr[Debug::GUI] << "Read para spacing of \"" << val << "\"" << endl;
+			LyXGlueLength length(0.0, LyXLength::PT);
+			isValidGlueLength(val, &length);
+			tmpskip = VSpace(length);
+			break;
 	}
 	
 	if (tmpskip != params.getDefSkip()) {
@@ -477,22 +567,53 @@ bool DocDialog::updateParams(BufferParams & params)
 
 	params.tocdepth = extra->tocdepth->value();
 
-	/* FIXME */
-	params.float_placement = extra->floatplacement->text();
+	string place;
+
+	place += placementString(extra->first);
+	place += placementString(extra->second);
+	place += placementString(extra->third);
+	place += placementString(extra->fourth);
+	params.float_placement = place;
 
 	/* FIXME: bullets */
 	
 	return redo;
 }
 
-void DocDialog::linespacingChanged(const char *sel)
+string DocDialog::placementString(QComboBox * box) const
 {
-	bool custom = !strcmp(sel, _("custom"));
+	if (!strcmp(box->currentText(), _("Here")))
+		return "h";
+	if (!strcmp(box->currentText(), _("Bottom of page")))
+		return "b";
+	if (!strcmp(box->currentText(), _("Top of page")))
+		return "t";
+	if (!strcmp(box->currentText(), _("Separate page")))
+		return "p";
+	return "";
+}
+
+void DocDialog::linespacingChanged(const char * sel)
+{
+	bool const custom = !strcmp(sel, _("custom"));
 
 	settings->linespacingVal->setEnabled(custom);
 }
 
-void DocDialog::skipspacingChanged(const char *sel)
+
+void DocDialog::paraspacingChanged(const char * sel)
 {
-	bool custom = !strcmp(sel, _("custom"));
+	bool const custom = !strcmp(sel, _("custom"));
+	settings->paraspacingValue->setEnabled(custom);
+	settings->paraspacingStretch->setEnabled(custom);
+	settings->paraspacingShrink->setEnabled(custom);
+}
+
+void DocDialog::addspaceChanged(bool on)
+{
+	settings->paraspacing->setEnabled(on);
+	on = (on && !strcmp(settings->paraspacing->currentText(), _("custom")));
+	settings->paraspacingValue->setEnabled(on);
+	settings->paraspacingStretch->setEnabled(on);
+	settings->paraspacingShrink->setEnabled(on);
 }

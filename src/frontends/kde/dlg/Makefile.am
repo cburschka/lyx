@@ -23,6 +23,8 @@ GENSOURCES =    copyrightdlgdata.C \
 		docbulletsdlgadat.h \
 		indexdlgdata.C \
 		indexdlgdata.h \
+		logdlgdata.C \
+		logdlgdata.h \
 		paradlgdata.C \
 		paradlgdata.h \
 		parageneraldlgdata.C \
@@ -62,6 +64,7 @@ moc/docextradlgdata_moc.C: docextradlgdata.C docextradlgdata.h
 moc/docbulletsdlgdata_moc.C: docbulletsdlgdata.C docbulletsdlgdata.h
 moc/emptytable_moc.C: emptytable.C emptytable.h
 moc/indexdlgdata_moc.C: indexdlgdata.C indexdlgdata.h
+moc/logdlgdata_moc.C: logdlgdata.C logdlgdata.h
 moc/paradlgdata_moc.C: paradlgdata.C paradlgdata.h
 moc/parageneraldlgdata_moc.C: parageneraldlgdata.C parageneraldlgdata.h
 moc/paraabovedlgdata_moc.C: paraabovedlgdata.C paraabovedlgdata.h

@@ -1,17 +1,10 @@
-/*
- * FormRef.C
- * (C) 2000 LyX Team
- * John Levon, moz@compsoc.man.ac.uk
+/**
+ * \file FormRef.C
+ * Copyright 2001 the LyX Team
+ * Read the file COPYING
+ *
+ * \author John Levon
  */
-
-/***************************************************************************
- *                                                                         *
- *   This program is free software; you can redistribute it and/or modify  *
- *   it under the terms of the GNU General Public License as published by  *
- *   the Free Software Foundation; either version 2 of the License, or     *
- *   (at your option) any later version.                                   *
- *                                                                         *
- ***************************************************************************/
 
 #include <config.h>
 
@@ -33,17 +26,16 @@ FormRef::FormRef(LyXView *v, Dialogs *d)
 	: dialog_(0), lv_(v), d_(d), inset_(0), h_(0), u_(0), ih_(0),
 	sort(0), gotowhere(GOTOREF), refs(0)
 {
-	// let the dialog be shown
-	// This is a permanent connection so we won't bother
-	// storing a copy because we won't be disconnecting.
 	d->showRef.connect(slot(this, &FormRef::showRef));
 	d->createRef.connect(slot(this, &FormRef::createRef));
 }
+
 
 FormRef::~FormRef()
 {
 	delete dialog_;
 }
+
 
 void FormRef::showRef(InsetCommand * const inset)
 {
@@ -59,6 +51,7 @@ void FormRef::showRef(InsetCommand * const inset)
 	show();
 }
 
+
 void FormRef::createRef(string const & arg)
 {
 	if (inset_)
@@ -69,13 +62,15 @@ void FormRef::createRef(string const & arg)
 	show();
 }
 
-void FormRef::select(const char *text)
+
+void FormRef::select(char const * text)
 {
 	highlight(text);
 	goto_ref();
 }
 
-void FormRef::highlight(const char *text)
+
+void FormRef::highlight(char const * text)
 {
 	if (gotowhere==GOTOBACK)
 		goto_ref();
@@ -88,14 +83,16 @@ void FormRef::highlight(const char *text)
 	}
 }
 
+
 void FormRef::set_sort(bool on)
 {
-	if (on!=sort) {
+	if (on != sort) {
 		sort=on;
 		dialog_->refs->clear();
 		updateRefs();
 	}
 }
+
 
 void FormRef::goto_ref()
 {
@@ -117,10 +114,11 @@ void FormRef::goto_ref()
 		}
 }
 
+
 void FormRef::updateRefs()
 {
 	// list will be re-done, should go back if necessary
-	if (gotowhere==GOTOBACK) {
+	if (gotowhere == GOTOBACK) {
 		lv_->getLyXFunc()->Dispatch(LFUN_BOOKMARK_GOTO, "0");
 		gotowhere = GOTOREF;
 		dialog_->buttonGoto->setText(_("&Goto reference"));
@@ -144,7 +142,7 @@ void FormRef::updateRefs()
 
 	dialog_->reference->setText(tmp.c_str());
 
-	for (unsigned int i = 0; i < dialog_->refs->count(); ++i) {
+	for (unsigned int i=0; i < dialog_->refs->count(); ++i) {
 		if (!strcmp(dialog_->reference->text(),dialog_->refs->text(i)))
 			dialog_->refs->setCurrentItem(i);
 	}
@@ -152,6 +150,7 @@ void FormRef::updateRefs()
 	dialog_->refs->setAutoUpdate(true);
 	dialog_->refs->update();
 }
+
 
 void FormRef::do_ref_update()
 {
@@ -162,6 +161,7 @@ void FormRef::do_ref_update()
 		dialog_->sort->setEnabled(true);
 	updateRefs();
 }
+
 
 void FormRef::update(bool switched)
 {
@@ -201,6 +201,7 @@ void FormRef::update(bool switched)
 		dialog_->buttonCancel->setText(_("&Cancel"));
 }
 
+
 void FormRef::apply()
 {
 	if (readonly)
@@ -222,6 +223,7 @@ void FormRef::apply()
 		lv_->getLyXFunc()->Dispatch(LFUN_REF_INSERT, params.getAsString().c_str());
 }
 
+
 void FormRef::show()
 {
 	if (!dialog_)
@@ -239,6 +241,7 @@ void FormRef::show()
 	dialog_->show();
 }
 
+
 void FormRef::close()
 {
 	h_.disconnect();
@@ -246,6 +249,7 @@ void FormRef::close()
 	ih_.disconnect();
 	inset_ = 0;
 }
+
 
 void FormRef::hide()
 {

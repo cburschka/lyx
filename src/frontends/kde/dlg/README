@@ -3,13 +3,13 @@ from
 
 http://qtarch.sourceforge.net/
 
-Currently you also need this patch : 
+Currently you also need this patch :
 http://www.movement.uklinux.net/patches/lyx/qtarch-1.4.6.diff
 
 Eventually the intent is to fold this patch into the official qtarch and
 release a qtarch-1.4-6 tarball.
 
-Note this is *not* the latest version, as they only support Qt 2.0.
+Note this is *not* the latest version, as they only support Qt 2.
 
 You should compile in the KDE module when you compile qtarch-1.4.
 For me this was just a case of a make in the module/kde/ directory,
@@ -70,10 +70,14 @@ o do the geometry layouts last. you cannot alter the geometry of widgets
   whilst they're being managed which makes any settings a pain, which
   are useful mainly while editing the dialog in qtarch
   
+o remember tab order, and keyboard access in general. Tab order is decided by
+  instantation order of each widget, NOT the heirarchical layout. This translates
+  to ordering the widget descriptions in the qtarch .dlg file correctly.
+ 
 o when doing layout, add all the layouts before any of the widgets otherwise
   qtarch has a tendency to get confused
 
-o qtarch often produces code that initialises stuff in the wrong order. 
+o qtarch can produce code that initialises stuff in the wrong order. 
   This is nasty, but usually dumps core so is noticable. Either way, the 
   cheesy perl script checkinitorder.pl will verify the produced files for 
   you - if it complains you need to hack the .dlg file to re-arrange the order.

@@ -1,16 +1,10 @@
-/* FormPrint.h
- * (C) 2000 LyX Team
- * John Levon, moz@compsoc.man.ac.uk
+/**
+ * \file FormPrint.h
+ * Copyright 2001 the LyX Team
+ * Read the file COPYING
+ *
+ * \author John Levon
  */
-
-/***************************************************************************
- *                                                                         *
- *   This program is free software; you can redistribute it and/or modify  *
- *   it under the terms of the GNU General Public License as published by  *
- *   the Free Software Foundation; either version 2 of the License, or     *
- *   (at your option) any later version.                                   *
- *                                                                         *
- ***************************************************************************/
 
 #ifndef FORMPRINT_H
 #define FORMPRINT_H
@@ -28,13 +22,9 @@ using SigC::Connection;
 
 class FormPrint : public DialogBase, public noncopyable {
 public: 
-	/**@name Constructors and Destructors */
-	//@{
-	///
 	FormPrint(LyXView *, Dialogs *);
-	/// 
+
 	~FormPrint();
-	//@}
 
 	/// start print
 	void print();
@@ -66,4 +56,4 @@ private:
 	Connection u_;
 };
 
-#endif
+#endif // FORMPRINT_H

@@ -1,17 +1,10 @@
-/*
- * tocdlg.C
- * (C) 2000 LyX Team
- * John Levon, moz@compsoc.man.ac.uk
+/**
+ * \file tocdlg.C
+ * Copyright 2001 the LyX Team
+ * Read the file COPYING
+ *
+ * \author John Levon
  */
-
-/***************************************************************************
- *									 *
- *   This program is free software; you can redistribute it and/or modify  *
- *   it under the terms of the GNU General Public License as published by  *
- *   the Free Software Foundation; either version 2 of the License, or     *
- *   (at your option) any later version.				   *
- *									 *
- ***************************************************************************/
 
 #include <config.h>
 #include "tocdlg.h"
@@ -22,8 +15,8 @@
 using kde_helpers::setSizeHint;
 #endif
 
-TocDialog::TocDialog(FormToc *form, QWidget *parent, const char *name, bool, WFlags)
-	: QWidget(parent,name,0), form_(form)
+TocDialog::TocDialog(FormToc * form, QWidget * parent, char const * name, bool, WFlags)
+	: QDialog(parent,name,0), form_(form)
 {
 	setCaption(name);
 	setMinimumWidth(350);
@@ -97,11 +90,13 @@ TocDialog::TocDialog(FormToc *form, QWidget *parent, const char *name, bool, WFl
 	resize(sizeHint());
 }
 
-void TocDialog::closeEvent(QCloseEvent *e)
+
+void TocDialog::closeEvent(QCloseEvent * e)
 {
 	form_->close();
 	e->accept();
 }
+
 
 TocDialog::~TocDialog()
 {

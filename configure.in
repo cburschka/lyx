@@ -294,13 +294,13 @@ if test "x$enable_assertions" = xyes ; then
 fi
 
 ### Finish the work.
-AC_CONFIG_SUBDIRS(sigc++ lib lib/reLyX)
+AC_CONFIG_SUBDIRS(boost sigc++ lib lib/reLyX)
 AC_OUTPUT([Makefile \
        development/lyx.spec \
        lib/Makefile \
        intl/Makefile \
        po/Makefile.in \
-       boost/Makefile \
+       sourcedoc/Doxyfile \
        src/Makefile \
        src/mathed/Makefile \
        src/graphics/Makefile \

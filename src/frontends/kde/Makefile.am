@@ -16,13 +16,21 @@ libkde_la_OBJADD = \
 	dlg/libkdedlg.la \
 	dlg/moc/libkdedlgmoc.la \
         ../xforms/FormBase.lo \
+	../xforms/FormBibitem.lo \
+	../xforms/form_bibitem.lo \
+	../xforms/FormBibtex.lo \
+	../xforms/form_bibtex.lo \
         ../xforms/FormError.lo \
         ../xforms/form_error.lo \
         ../xforms/FormGraphics.lo \
         ../xforms/form_graphics.lo \
+	../xforms/FormInclude.lo \
+	../xforms/form_include.lo \
 	../xforms/FormInset.lo \
         ../xforms/FormPreferences.lo \
         ../xforms/form_preferences.lo \
+	../xforms/FormSplash.lo \
+	../xforms/form_splash.lo \
         ../xforms/FormTabular.lo \
         ../xforms/form_tabular.lo \
 	../xforms/ButtonController.lo \
@@ -50,6 +58,8 @@ libkde_la_SOURCES = \
 	FormDocument.h \
 	FormIndex.C \
 	FormIndex.h \
+	FormLog.C \
+	FormLog.h \
 	FormParagraph.C \
 	FormParagraph.h \
 	FormPrint.C \
@@ -62,6 +72,8 @@ libkde_la_SOURCES = \
 	FormToc.h \
 	FormUrl.C \
 	FormUrl.h \
+	FormVCLog.C \
+	FormVCLog.h \
 	citationdlg.C \
 	citationdlg.h \
 	copyrightdlg.C \
@@ -70,6 +82,8 @@ libkde_la_SOURCES = \
 	docdlg.h \
 	indexdlg.C \
 	indexdlg.h \
+	logdlg.C \
+	logdlg.h \
 	paradlg.C \
 	paradlg.h \
 	parageneraldlg.C \
@@ -90,6 +104,7 @@ libkde_la_SOURCES = \
 moc/citationdlg_moc.C: citationdlg.C citationdlg.h
 moc/copyrightdlg_moc.C: copyrightdlg.C copyrightdlg.h
 moc/docdlg_moc.C: docdlg.C docdlg.h
+moc/logdlg_moc.C: logdlg.C logdlg.h
 moc/indexdlg_moc.C: indexdlg.C indexdlg.h
 moc/paradlg_moc.C: paradlg.C paradlg.h
 moc/parageneraldlg_moc.C: parageneraldlg.C parageneraldlg.h

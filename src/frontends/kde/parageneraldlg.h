@@ -1,11 +1,13 @@
-/*
- * parageneraldlg.h
- * (C) 2000 LyX Team
- * John Levon, moz@compsoc.man.ac.uk
+/**
+ * \file parageneraldlg.h
+ * Copyright 2001 the LyX Team
+ * Read the file COPYING
+ *
+ * \author John Levon
  */
- 
-#ifndef ParaGeneralDialog_included
-#define ParaGeneralDialog_included
+
+#ifndef PARAGENERALDIALOG_H
+#define PARAGENERALDIALOG_H
 
 #include "dlg/parageneraldlgdata.h"
 #include "dlg/paraabovedlgdata.h" 
@@ -15,11 +17,11 @@ class ParaDialog;
 
 class ParaGeneralDialog : public ParaGeneralDialogData
 {
-    Q_OBJECT
+	Q_OBJECT
 
 public:
 
-	ParaGeneralDialog (QWidget* parent = NULL, const char* name = NULL);
+	ParaGeneralDialog(QWidget * parent = NULL, char const * name = NULL);
 
 	virtual ~ParaGeneralDialog();
 
@@ -31,8 +33,8 @@ protected slots:
 	void spacebelowHighlighted(int);
 
 private:
-	ParaAboveDialogData *abovepage;
-	ParaBelowDialogData *belowpage;
+	ParaAboveDialogData * abovepage;
+	ParaBelowDialogData * belowpage;
 };
 
-#endif // ParaGeneralDialog_included
+#endif // PARAGENERALDIALOG_H

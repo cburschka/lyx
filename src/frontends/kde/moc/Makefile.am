@@ -9,6 +9,7 @@ libkdemoc_la_SOURCES = citationdlg_moc.C \
 		copyrightdlg_moc.C \
 		docdlg_moc.C \
 		indexdlg_moc.C \
+		logdlg_moc.C \
 		paradlg_moc.C \
 		parageneraldlg_moc.C \
 		paraextradlg_moc.C \
@@ -30,6 +31,8 @@ copyrightdlg_moc.C: ../copyrightdlg.h
 docdlg_moc.C: ../docdlg.h
 	$(MOC) $< -o $@
 indexdlg_moc.C: ../indexdlg.h
+	$(MOC) $< -o $@
+logdlg_moc.C: ../logdlg.h
 	$(MOC) $< -o $@
 paradlg_moc.C: ../paradlg.h
 	$(MOC) $< -o $@

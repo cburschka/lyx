@@ -84,6 +84,17 @@ AC_DEFUN(QT2_FIND_PATH,
 ])
  
 dnl ------------------------------------------------------------------------
+dnl Find the UIC compiler if available
+dnl ------------------------------------------------------------------------
+AC_DEFUN(QT2_AC_PATH_UIC,
+[
+   QT2_FIND_PATH(uic, UIC, [$ac_qt2_bindir $QTDIR/bin \
+            /usr/bin /usr/X11R6/bin /usr/lib/qt2/bin \
+            /usr/local/qt2/bin /usr/local/qt/bin /usr/lib/qt/bin], )
+   AC_SUBST(UIC)
+])
+ 
+dnl ------------------------------------------------------------------------
 dnl Find the meta object compiler in the PATH, in $QTDIR/bin, and some
 dnl more usual places
 dnl ------------------------------------------------------------------------
@@ -184,6 +195,7 @@ AC_MSG_CHECKING([for Qt 2])
 ac_qt2_includes=NO ac_qt2_libraries=NO ac_qt2_bindir=NO
 qt2_libraries=""
 qt2_includes=""
+ 
 AC_ARG_WITH(qt2-dir,
     [  --with-qt2-dir           where the root of Qt2 is installed ],
     [  ac_qt2_includes="$withval"/include
@@ -294,7 +306,6 @@ QT2_CHECK_DIRECT(qt2_libraries= ,[])
 fi
 
 dnl check it is Qt2
-dnl FIXME: what minor version do we require ???
 
 SAVE_CXXFLAGS="$CXXFLAGS"
 CXXFLAGS="$CXXFLAGS -I$qt2_includes -L$qt2_libraries"
@@ -304,7 +315,7 @@ AC_TRY_COMPILE([
 #include <qglobal.h>
 ],
 [
-#if (QT_VERSION < 200)
+#if (QT_VERSION < 223)
 break_me_(\\\);
 #endif
 ],
@@ -337,6 +348,7 @@ AC_SUBST(QT2_INCLUDES)
 AC_SUBST(QT2_LDFLAGS)
 AC_SUBST(QT2_LIBS)
 QT2_AC_PATH_MOC
+QT2_AC_PATH_UIC
 ])
 
 AC_DEFUN(QT2_DO_IT_ALL,

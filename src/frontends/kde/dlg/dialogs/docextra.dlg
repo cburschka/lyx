@@ -12,23 +12,21 @@ Dialog {
 }
 WidgetLayout {
 InitialPos {-1 -1}
-Size {545 460}
+Size {635 640}
 MinSize {0 0}
 MaxSize {32767 32767}
 Grid {5}
 
-Label {
-		Text {Float placement : (FIXME)}
-		Alignment {289}
-		AutoResize {false}
-		Margin {-1}
-		Style {0}
+GroupBox {
+		Title {Float Placement}
+		Alignment {Left}
+		Style {49}
 		LineWidth {1}
 		MidLineWidth {0}
 		FrameMargin {0}
-		Rect {5 5 105 86}
-		Name {labelFloatplacement}
-		MinimumSize {0 0}
+		Rect {5 5 625 378}
+		Name {placementBox}
+		MinimumSize {25 30}
 		MaximumSize {32767 32767}
 		BackgroundPixmap {}
 		UseBackgroundPixmap {false}
@@ -38,21 +36,23 @@ Label {
 		DataLenName {}
 		minWidthSizeHint {true}
 		minHeightSizeHint {true}
-		maxWidthSizeHint {true}
-		maxHeightSizeHint {true}
+		maxWidthSizeHint {false}
+		maxHeightSizeHint {false}
 		FocusPolicy {NoFocus}
 		BackgroundMode {PaletteBackground}
 		FontPropagation {NoChildren}
 		PalettePropagation {NoChildren}
 }
-LineEdit {
-		Text {}
-		EchoMode {Normal}
-		MaxLength {32767}
-		FrameShown {true}
-		Rect {225 5 205 86}
-		Name {floatplacement}
-		Variable {floatplacement}
+ComboBox {
+		Style {ReadOnly}
+		SizeLimit {10}
+		Policy {AtBottom}
+		AutoResize {false}
+		MaxCount {2147483647}
+		AutoCompletion {false}
+		Rect {320 10 150 65}
+		Name {first}
+		Variable {first}
 		MinimumSize {0 0}
 		MaximumSize {32767 32767}
 		BackgroundPixmap {}
@@ -66,7 +66,113 @@ LineEdit {
 		maxWidthSizeHint {false}
 		maxHeightSizeHint {true}
 		FocusPolicy {StrongFocus}
-		BackgroundMode {PaletteBase}
+		BackgroundMode {PaletteBackground}
+		FontPropagation {AllChildren}
+		PalettePropagation {AllChildren}
+}
+ComboBox {
+		Style {ReadOnly}
+		SizeLimit {10}
+		Policy {AtBottom}
+		AutoResize {false}
+		MaxCount {2147483647}
+		AutoCompletion {false}
+		Rect {320 80 150 66}
+		Name {second}
+		Variable {second}
+		MinimumSize {0 0}
+		MaximumSize {32767 32767}
+		BackgroundPixmap {}
+		UseBackgroundPixmap {false}
+		AdjustSize {false}
+		ReadPixmapFromData {false}
+		DataVarName {}
+		DataLenName {}
+		minWidthSizeHint {true}
+		minHeightSizeHint {true}
+		maxWidthSizeHint {false}
+		maxHeightSizeHint {true}
+		FocusPolicy {StrongFocus}
+		BackgroundMode {PaletteBackground}
+		FontPropagation {AllChildren}
+		PalettePropagation {AllChildren}
+}
+ComboBox {
+		Style {ReadOnly}
+		SizeLimit {10}
+		Policy {AtBottom}
+		AutoResize {false}
+		MaxCount {2147483647}
+		AutoCompletion {false}
+		Rect {320 151 150 65}
+		Name {third}
+		Variable {third}
+		MinimumSize {0 0}
+		MaximumSize {32767 32767}
+		BackgroundPixmap {}
+		UseBackgroundPixmap {false}
+		AdjustSize {false}
+		ReadPixmapFromData {false}
+		DataVarName {}
+		DataLenName {}
+		minWidthSizeHint {true}
+		minHeightSizeHint {true}
+		maxWidthSizeHint {false}
+		maxHeightSizeHint {true}
+		FocusPolicy {StrongFocus}
+		BackgroundMode {PaletteBackground}
+		FontPropagation {AllChildren}
+		PalettePropagation {AllChildren}
+}
+ComboBox {
+		Style {ReadOnly}
+		SizeLimit {10}
+		Policy {AtBottom}
+		AutoResize {false}
+		MaxCount {2147483647}
+		AutoCompletion {false}
+		Rect {320 221 150 65}
+		Name {fourth}
+		Variable {fourth}
+		MinimumSize {0 0}
+		MaximumSize {32767 32767}
+		BackgroundPixmap {}
+		UseBackgroundPixmap {false}
+		AdjustSize {false}
+		ReadPixmapFromData {false}
+		DataVarName {}
+		DataLenName {}
+		minWidthSizeHint {true}
+		minHeightSizeHint {true}
+		maxWidthSizeHint {false}
+		maxHeightSizeHint {true}
+		FocusPolicy {StrongFocus}
+		BackgroundMode {PaletteBackground}
+		FontPropagation {AllChildren}
+		PalettePropagation {AllChildren}
+}
+CheckBox {
+		Checked {false}
+		Text {Ignore LaTeX placement rules}
+		AutoRepeat {false}
+		AutoResize {false}
+		Rect {10 291 615 87}
+		Name {ignore}
+		Variable {ignore}
+		MinimumSize {0 0}
+		MaximumSize {32767 32767}
+		BackgroundPixmap {}
+		UseBackgroundPixmap {false}
+		AdjustSize {false}
+		ReadPixmapFromData {false}
+		DataVarName {}
+		DataLenName {}
+		minWidthSizeHint {true}
+		minHeightSizeHint {true}
+		maxWidthSizeHint {true}
+		maxHeightSizeHint {true}
+		FocusPolicy {TabFocus}
+		BackgroundMode {PaletteBackground}
 		FontPropagation {NoChildren}
 		PalettePropagation {NoChildren}
 }
@@ -79,7 +185,7 @@ Label {
 		LineWidth {1}
 		MidLineWidth {0}
 		FrameMargin {0}
-		Rect {5 96 105 86}
+		Rect {5 388 153 58}
 		Name {labelsectiondepth}
 		MinimumSize {0 0}
 		MaximumSize {32767 32767}
@@ -107,7 +213,7 @@ Label {
 		LineWidth {1}
 		MidLineWidth {0}
 		FrameMargin {0}
-		Rect {5 187 105 86}
+		Rect {5 451 153 58}
 		Name {labeltocdepth}
 		MinimumSize {0 0}
 		MaximumSize {32767 32767}
@@ -135,7 +241,7 @@ Label {
 		LineWidth {1}
 		MidLineWidth {0}
 		FrameMargin {0}
-		Rect {5 278 105 86}
+		Rect {5 514 153 58}
 		Name {labelPSDriver}
 		MinimumSize {0 0}
 		MaximumSize {32767 32767}
@@ -154,31 +260,6 @@ Label {
 		FontPropagation {NoChildren}
 		PalettePropagation {NoChildren}
 }
-CheckBox {
-		Checked {false}
-		Text {Use AMS Math}
-		AutoRepeat {false}
-		AutoResize {false}
-		Rect {5 369 105 86}
-		Name {amsmath}
-		Variable {amsmath}
-		MinimumSize {0 0}
-		MaximumSize {32767 32767}
-		BackgroundPixmap {}
-		UseBackgroundPixmap {false}
-		AdjustSize {false}
-		ReadPixmapFromData {false}
-		DataVarName {}
-		DataLenName {}
-		minWidthSizeHint {true}
-		minHeightSizeHint {true}
-		maxWidthSizeHint {true}
-		maxHeightSizeHint {true}
-		FocusPolicy {TabFocus}
-		BackgroundMode {PaletteBackground}
-		FontPropagation {NoChildren}
-		PalettePropagation {NoChildren}
-}
 SpinBox {
 		MinValue {-2}
 		MaxValue {5}
@@ -191,7 +272,7 @@ SpinBox {
 		LineWidth {2}
 		MidLineWidth {0}
 		FrameMargin {0}
-		Rect {225 96 205 86}
+		Rect {320 388 153 58}
 		Name {sectiondepth}
 		Variable {sectiondepth}
 		MinimumSize {0 0}
@@ -223,7 +304,7 @@ SpinBox {
 		LineWidth {2}
 		MidLineWidth {0}
 		FrameMargin {0}
-		Rect {225 187 205 86}
+		Rect {320 451 153 58}
 		Name {tocdepth}
 		Variable {tocdepth}
 		MinimumSize {0 0}
@@ -250,7 +331,7 @@ ComboBox {
 		AutoResize {true}
 		MaxCount {2147483647}
 		AutoCompletion {false}
-		Rect {225 278 205 86}
+		Rect {320 514 153 58}
 		Name {psdriver}
 		Variable {psdriver}
 		MinimumSize {0 0}
@@ -270,96 +351,331 @@ ComboBox {
 		FontPropagation {AllChildren}
 		PalettePropagation {AllChildren}
 }
+CheckBox {
+		Checked {false}
+		Text {Use AMS Math}
+		AutoRepeat {false}
+		AutoResize {false}
+		Rect {5 577 153 58}
+		Name {amsmath}
+		Variable {amsmath}
+		MinimumSize {0 0}
+		MaximumSize {32767 32767}
+		BackgroundPixmap {}
+		UseBackgroundPixmap {false}
+		AdjustSize {false}
+		ReadPixmapFromData {false}
+		DataVarName {}
+		DataLenName {}
+		minWidthSizeHint {true}
+		minHeightSizeHint {true}
+		maxWidthSizeHint {true}
+		maxHeightSizeHint {true}
+		FocusPolicy {TabFocus}
+		BackgroundMode {PaletteBackground}
+		FontPropagation {NoChildren}
+		PalettePropagation {NoChildren}
+}
+Label {
+		Text {First try :}
+		Alignment {289}
+		AutoResize {false}
+		Margin {-1}
+		Style {0}
+		LineWidth {1}
+		MidLineWidth {0}
+		FrameMargin {0}
+		Rect {10 10 150 65}
+		Name {labelFirst}
+		MinimumSize {0 0}
+		MaximumSize {32767 32767}
+		BackgroundPixmap {}
+		UseBackgroundPixmap {false}
+		AdjustSize {false}
+		ReadPixmapFromData {false}
+		DataVarName {}
+		DataLenName {}
+		minWidthSizeHint {true}
+		minHeightSizeHint {true}
+		maxWidthSizeHint {true}
+		maxHeightSizeHint {true}
+		FocusPolicy {NoFocus}
+		BackgroundMode {PaletteBackground}
+		FontPropagation {NoChildren}
+		PalettePropagation {NoChildren}
+}
+Label {
+		Text {then :}
+		Alignment {289}
+		AutoResize {false}
+		Margin {-1}
+		Style {0}
+		LineWidth {1}
+		MidLineWidth {0}
+		FrameMargin {0}
+		Rect {10 80 150 66}
+		Name {labelSecond}
+		MinimumSize {0 0}
+		MaximumSize {32767 32767}
+		BackgroundPixmap {}
+		UseBackgroundPixmap {false}
+		AdjustSize {false}
+		ReadPixmapFromData {false}
+		DataVarName {}
+		DataLenName {}
+		minWidthSizeHint {true}
+		minHeightSizeHint {true}
+		maxWidthSizeHint {true}
+		maxHeightSizeHint {true}
+		FocusPolicy {NoFocus}
+		BackgroundMode {PaletteBackground}
+		FontPropagation {NoChildren}
+		PalettePropagation {NoChildren}
+}
+Label {
+		Text {then :}
+		Alignment {289}
+		AutoResize {false}
+		Margin {-1}
+		Style {0}
+		LineWidth {1}
+		MidLineWidth {0}
+		FrameMargin {0}
+		Rect {10 151 150 65}
+		Name {labelThird}
+		MinimumSize {0 0}
+		MaximumSize {32767 32767}
+		BackgroundPixmap {}
+		UseBackgroundPixmap {false}
+		AdjustSize {false}
+		ReadPixmapFromData {false}
+		DataVarName {}
+		DataLenName {}
+		minWidthSizeHint {true}
+		minHeightSizeHint {true}
+		maxWidthSizeHint {true}
+		maxHeightSizeHint {true}
+		FocusPolicy {NoFocus}
+		BackgroundMode {PaletteBackground}
+		FontPropagation {NoChildren}
+		PalettePropagation {NoChildren}
+}
+Label {
+		Text {then :}
+		Alignment {289}
+		AutoResize {false}
+		Margin {-1}
+		Style {0}
+		LineWidth {1}
+		MidLineWidth {0}
+		FrameMargin {0}
+		Rect {10 221 150 65}
+		Name {labelFourth}
+		MinimumSize {0 0}
+		MaximumSize {32767 32767}
+		BackgroundPixmap {}
+		UseBackgroundPixmap {false}
+		AdjustSize {false}
+		ReadPixmapFromData {false}
+		DataVarName {}
+		DataLenName {}
+		minWidthSizeHint {true}
+		minHeightSizeHint {true}
+		maxWidthSizeHint {true}
+		maxHeightSizeHint {true}
+		FocusPolicy {NoFocus}
+		BackgroundMode {PaletteBackground}
+		FontPropagation {NoChildren}
+		PalettePropagation {NoChildren}
+}
 
-Grid_Layout-1{
+Box_Layout-1{
+	Direction {TopToBottom}
+	Border {5}
+	AutoBorder {5}
+	Name {}
+	Strut {0}
+	Stretch {1}
+}
+Layout_Widget-1.1{
+	Widget {placementBox}
+	BoxStretch {3}
+	Alignment {36}
+}
+Box_Layout-1.1.1{
+	Direction {TopToBottom}
+	Border {5}
+	AutoBorder {5}
+	Name {}
+	Strut {0}
+	Stretch {1}
+}
+Grid_Layout-1.1.1.1{
 	Border {5}
 	AutoBorder {5}
 	Name {}
 	ColumnInfo {5 1}
 	ColumnInfo {5 1}
-	ColumnInfo {5 2}
 	ColumnInfo {5 1}
-	BoxStretch {1}
+	ColumnInfo {5 1}
+	BoxStretch {3}
 }
-Grid_Row-1.1{
+Grid_Row-1.1.1.1.1{
 	Stretch {1}
 	Spacing {0}
 }
-Layout_Widget-1.1.1{
-	Widget {labelFloatplacement}
+Layout_Widget-1.1.1.1.1.1{
+	Widget {labelFirst}
 	BoxStretch {1}
-	Alignment {33}
+	Alignment {36}
 }
-Grid_Spacer-1.1.2{
+Grid_Spacer-1.1.1.1.1.2{
 }
-Layout_Widget-1.1.3{
-	Widget {floatplacement}
+Layout_Widget-1.1.1.1.1.3{
+	Widget {first}
 	BoxStretch {1}
-	Alignment {33}
+	Alignment {36}
 }
-Grid_Spacer-1.1.4{
+Grid_Spacer-1.1.1.1.1.4{
 }
-Grid_Row-1.2{
+Grid_Row-1.1.1.1.2{
 	Stretch {1}
 	Spacing {0}
 }
-Layout_Widget-1.2.1{
+Layout_Widget-1.1.1.1.2.1{
+	Widget {labelSecond}
+	BoxStretch {1}
+	Alignment {36}
+}
+Grid_Spacer-1.1.1.1.2.2{
+}
+Layout_Widget-1.1.1.1.2.3{
+	Widget {second}
+	BoxStretch {1}
+	Alignment {36}
+}
+Grid_Spacer-1.1.1.1.2.4{
+}
+Grid_Row-1.1.1.1.3{
+	Stretch {1}
+	Spacing {0}
+}
+Layout_Widget-1.1.1.1.3.1{
+	Widget {labelThird}
+	BoxStretch {1}
+	Alignment {36}
+}
+Grid_Spacer-1.1.1.1.3.2{
+}
+Layout_Widget-1.1.1.1.3.3{
+	Widget {third}
+	BoxStretch {1}
+	Alignment {36}
+}
+Grid_Spacer-1.1.1.1.3.4{
+}
+Grid_Row-1.1.1.1.4{
+	Stretch {1}
+	Spacing {0}
+}
+Layout_Widget-1.1.1.1.4.1{
+	Widget {labelFourth}
+	BoxStretch {1}
+	Alignment {36}
+}
+Grid_Spacer-1.1.1.1.4.2{
+}
+Layout_Widget-1.1.1.1.4.3{
+	Widget {fourth}
+	BoxStretch {1}
+	Alignment {36}
+}
+Grid_Spacer-1.1.1.1.4.4{
+}
+Box_Layout-1.1.1.2{
+	Direction {LeftToRight}
+	Border {5}
+	AutoBorder {5}
+	Name {}
+	Strut {0}
+	Stretch {1}
+}
+Layout_Widget-1.1.1.2.1{
+	Widget {ignore}
+	BoxStretch {1}
+	Alignment {36}
+}
+Grid_Layout-1.2{
+	Border {5}
+	AutoBorder {5}
+	Name {}
+	ColumnInfo {5 1}
+	ColumnInfo {5 1}
+	ColumnInfo {5 1}
+	ColumnInfo {5 1}
+	BoxStretch {2}
+}
+Grid_Row-1.2.1{
+	Stretch {1}
+	Spacing {0}
+}
+Layout_Widget-1.2.1.1{
 	Widget {labelsectiondepth}
 	BoxStretch {1}
-	Alignment {33}
+	Alignment {36}
 }
-Grid_Spacer-1.2.2{
+Grid_Spacer-1.2.1.2{
 }
-Layout_Widget-1.2.3{
+Layout_Widget-1.2.1.3{
 	Widget {sectiondepth}
 	BoxStretch {1}
-	Alignment {33}
+	Alignment {36}
 }
-Grid_Spacer-1.2.4{
+Grid_Spacer-1.2.1.4{
 }
-Grid_Row-1.3{
+Grid_Row-1.2.2{
 	Stretch {1}
 	Spacing {0}
 }
-Layout_Widget-1.3.1{
+Layout_Widget-1.2.2.1{
 	Widget {labeltocdepth}
 	BoxStretch {1}
-	Alignment {33}
+	Alignment {36}
 }
-Grid_Spacer-1.3.2{
+Grid_Spacer-1.2.2.2{
 }
-Layout_Widget-1.3.3{
+Layout_Widget-1.2.2.3{
 	Widget {tocdepth}
 	BoxStretch {1}
-	Alignment {33}
+	Alignment {36}
 }
-Grid_Spacer-1.3.4{
+Grid_Spacer-1.2.2.4{
 }
-Grid_Row-1.4{
+Grid_Row-1.2.3{
 	Stretch {1}
 	Spacing {0}
 }
-Layout_Widget-1.4.1{
+Layout_Widget-1.2.3.1{
 	Widget {labelPSDriver}
 	BoxStretch {1}
-	Alignment {33}
+	Alignment {36}
 }
-Grid_Spacer-1.4.2{
+Grid_Spacer-1.2.3.2{
 }
-Layout_Widget-1.4.3{
+Layout_Widget-1.2.3.3{
 	Widget {psdriver}
 	BoxStretch {1}
-	Alignment {33}
+	Alignment {36}
 }
-Grid_Spacer-1.4.4{
+Grid_Spacer-1.2.3.4{
 }
-Grid_Row-1.5{
+Grid_Row-1.2.4{
 	Stretch {1}
 	Spacing {0}
 }
-Layout_Widget-1.5.1{
+Layout_Widget-1.2.4.1{
 	Widget {amsmath}
 	BoxStretch {1}
-	Alignment {33}
+	Alignment {36}
 }
 }
