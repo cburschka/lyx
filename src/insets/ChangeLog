@@ -1,5 +1,8 @@
 2004-08-14  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
+	* insettabular.C (metrics): when the width of a cell is zero(),
+	let it use as much space as it can
+
 	* insettext.C (editXY): compilation fix
 
 	* insetinclude.C (priv_dispatch): fix showing dialog on mouse

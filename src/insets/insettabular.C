@@ -235,8 +235,10 @@ void InsetTabular::metrics(MetricsInfo & mi, Dimension & dim) const
 			++cell;
 			Dimension dim;
 			MetricsInfo m = mi;
-			m.base.textwidth =
-				tabular.column_info[j].p_width.inPixels(mi.base.textwidth);
+			LyXLength p_width = tabular.column_info[j].p_width;
+			if (!p_width.zero()) {
+				m.base.textwidth = p_width.inPixels(mi.base.textwidth);
+			}
 			tabular.getCellInset(cell).metrics(m, dim);
 			maxAsc  = max(maxAsc, dim.asc);
 			maxDesc = max(maxDesc, dim.des);
