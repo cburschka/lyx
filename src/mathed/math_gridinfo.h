@@ -3,7 +3,7 @@
 
 struct ColInfo
 {
-	ColInfo() : rightline(0), leftline(false) {}
+	ColInfo() : align('c'), rightline(0), leftline(false) {}
 	char   align;      // column alignment
 	string width;      // column width
 	int    rightline;  // a line on the right?

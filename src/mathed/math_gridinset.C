@@ -151,7 +151,8 @@ void MathGridInset::halign(string const & hh)
 	for (string::const_iterator it = hh.begin(); it != hh.end(); ++it) {
 		if (col == ncols())
 			addCol(ncols() - 1);
-		char c = *it;
+		char const c = *it;
+		lyxerr << "handle column separator: '" << c << "'\n";
 		if (c == '|') {
 			colinfo_[col].lines_++;
 		} else if (c == 'c' || c == 'l' || c == 'r') {
@@ -163,13 +164,11 @@ void MathGridInset::halign(string const & hh)
 		}
 	}
 
-/*
 	col_type n = hh.size();
-	if (n > ncols())
-		n = ncols();
+	if (n >= ncols())
+		n = ncols() - 1;
 	for (col_type col = 0; col < n; ++col)
-		colinfo_[col].align_ = hh[col];
-*/
+		colinfo_[col].align = hh[col];
 }
 
 
