@@ -26,6 +26,7 @@ using namespace lyx::support;
 
 using std::ostream;
 using std::endl;
+using std::auto_ptr;
 
 
 /* LatexAccent. Proper handling of accented characters */
@@ -359,7 +360,6 @@ void InsetLatexAccent::draw(PainterInfo & pi, int x, int baseline) const
 	// overhaul. Different ways of drawing (what metrics to use)
 	// should also be considered.
 
-	BufferView * bv = pi.base.bv;
 	LyXFont font = pi.base.font;
 	if (lyxrc.font_norm_type == LyXRC::ISO_10646_1)
 		font.setLanguage(english_language);
@@ -650,9 +650,9 @@ bool InsetLatexAccent::directWrite() const
 }
 
 
-InsetBase * InsetLatexAccent::clone() const
+auto_ptr<InsetBase> InsetLatexAccent::clone() const
 {
-	return new InsetLatexAccent(contents);
+	return auto_ptr<InsetBase>(new InsetLatexAccent(contents));
 }
 
 

@@ -808,16 +808,16 @@ namespace {
 		Buffer & buf = *bv->buffer();
 		if (buf.isClean())
 			return true;
-		
+
 		string const file = MakeDisplayPath(buf.fileName(), 30);
 		string text = bformat(_("The document %1$s has unsaved "
 					"changes.\n\nDo you want to save "
 					"the document?"), file);
 		int const ret = Alert::prompt(_("Save changed document?"),
-					      text, 0, 1, _("&Save"), 
+					      text, 0, 1, _("&Save"),
 					      _("&Cancel"));
 
-		if (ret == 0) 
+		if (ret == 0)
 			bv->owner()->dispatch(FuncRequest(LFUN_MENUWRITE));
 
 		return buf.isClean();
@@ -1915,7 +1915,7 @@ void LyXFunc::closeBuffer()
 {
 	if (bufferlist.close(owner->buffer(), true) && !quitting) {
 		if (bufferlist.empty()) {
-			// need this otherwise SEGV may occur while 
+			// need this otherwise SEGV may occur while
 			// trying to set variables that don't exist
 			// since there's no current buffer
 			owner->getDialogs().hideBufferDependent();

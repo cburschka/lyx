@@ -25,8 +25,8 @@ public:
 	///
 	~InsetCitation();
 	///
-	InsetBase * clone() const {
-		return new InsetCitation(params());
+	std::auto_ptr<InsetBase> clone() const {
+		return std::auto_ptr<InsetBase>(new InsetCitation(params()));
 	}
 	///
 	string const getScreenLabel(Buffer const *) const;

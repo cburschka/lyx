@@ -18,6 +18,7 @@
 
 
 using std::max;
+using std::auto_ptr;
 
 
 MathRootInset::MathRootInset()
@@ -25,9 +26,9 @@ MathRootInset::MathRootInset()
 {}
 
 
-InsetBase * MathRootInset::clone() const
+auto_ptr<InsetBase> MathRootInset::clone() const
 {
-	return new MathRootInset(*this);
+	return auto_ptr<InsetBase>(new MathRootInset(*this));
 }
 
 

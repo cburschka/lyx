@@ -10,6 +10,8 @@
 #include "LaTeXFeatures.h"
 #include "debug.h"
 
+using std::auto_ptr;
+
 
 MathSymbolInset::MathSymbolInset(latexkeys const * l)
 	: sym_(l), h_(0)
@@ -26,10 +28,9 @@ MathSymbolInset::MathSymbolInset(string const & name)
 {}
 
 
-
-InsetBase * MathSymbolInset::clone() const
+auto_ptr<InsetBase> MathSymbolInset::clone() const
 {
-	return new MathSymbolInset(*this);
+	return auto_ptr<InsetBase>(new MathSymbolInset(*this));
 }
 
 

@@ -1,8 +1,9 @@
-
 #include "command_inset.h"
 #include "math_mathmlstream.h"
 #include "funcrequest.h"
 #include "Lsstream.h"
+
+using std::auto_ptr;
 
 
 CommandInset::CommandInset(string const & name)
@@ -14,9 +15,9 @@ CommandInset::CommandInset(string const & name)
 }
 
 
-InsetBase * CommandInset::clone() const
+auto_ptr<InsetBase> CommandInset::clone() const
 {
-	return new CommandInset(*this);
+	return auto_ptr<InsetBase>(new CommandInset(*this));
 }
 
 

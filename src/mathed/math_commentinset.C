@@ -8,6 +8,8 @@
 #include "support/LOstream.h"
 #include "textpainter.h"
 
+using std::auto_ptr;
+
 
 MathCommentInset::MathCommentInset()
 	: MathNestInset(1)
@@ -21,9 +23,9 @@ MathCommentInset::MathCommentInset(string const & str)
 }
 
 
-InsetBase * MathCommentInset::clone() const
+auto_ptr<InsetBase> MathCommentInset::clone() const
 {
-	return new MathCommentInset(*this);
+	return auto_ptr<InsetBase>(new MathCommentInset(*this));
 }
 
 

@@ -18,7 +18,7 @@ public:
 	///
 	MathBraceInset(MathArray const & ar);
 	///
-	InsetBase * clone() const;
+	virtual std::auto_ptr<InsetBase> clone() const;
 	/// we write extra braces in any case...
 	bool extraBraces() const { return true; }
 	///

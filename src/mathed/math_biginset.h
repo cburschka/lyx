@@ -24,7 +24,7 @@ public:
 	///
 	MathBigInset(string const & name, string const & delim);
 	///
-	InsetBase * clone() const;
+	virtual std::auto_ptr<InsetBase> clone() const;
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///

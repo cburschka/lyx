@@ -1009,7 +1009,7 @@ int readParToken(Buffer & buf, Paragraph & par, LyXLex & lex, string const & tok
 		string const s = bformat(_("Unknown token: %1$s %2$s\n"),
 			token, lex.getString());
 
-		buf.error(ErrorItem(_("Unknown token"), s, 
+		buf.error(ErrorItem(_("Unknown token"), s,
 				    par.id(), 0, par.size()));
 		return 1;
 	}

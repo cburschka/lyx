@@ -15,7 +15,7 @@ public:
 	///
 	explicit MathMacroArgument(int);
 	///
-	InsetBase * clone() const;
+	virtual std::auto_ptr<InsetBase> clone() const;
 	///
 	bool isActive() const { return false; }
 	///

@@ -7,6 +7,8 @@
 #include "math_support.h"
 #include "Lsstream.h"
 
+using std::auto_ptr;
+
 
 MathAMSArrayInset::MathAMSArrayInset(string const & name, int m, int n)
 	: MathGridInset(m, n), name_(name)
@@ -18,9 +20,9 @@ MathAMSArrayInset::MathAMSArrayInset(string const & name)
 {}
 
 
-InsetBase * MathAMSArrayInset::clone() const
+auto_ptr<InsetBase> MathAMSArrayInset::clone() const
 {
-	return new MathAMSArrayInset(*this);
+	return auto_ptr<InsetBase>(new MathAMSArrayInset(*this));
 }
 
 

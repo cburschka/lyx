@@ -26,7 +26,7 @@ public:
 	///
 	void read(Buffer const * buf, LyXLex & lex);
 	///
-	InsetBase * clone() const;
+	virtual std::auto_ptr<InsetBase> clone() const;
 	///
 	Inset::Code lyxCode() const { return Inset::ENVIRONMENT_CODE; }
 	///

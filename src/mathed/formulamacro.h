@@ -52,7 +52,7 @@ public:
 	int docbook(Buffer const *, std::ostream &, bool mixcont) const;
 
 	///
-	Inset * clone() const;
+	virtual std::auto_ptr<InsetBase> clone() const;
 	///
 	Inset::Code lyxCode() const;
 	///

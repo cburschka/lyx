@@ -1,8 +1,9 @@
-
 #include "math_matrixinset.h"
 #include "math_parser.h"
 #include "math_mathmlstream.h"
 #include "Lsstream.h"
+
+using std::auto_ptr;
 
 
 MathMatrixInset::MathMatrixInset(MathGridInset const & p)
@@ -10,9 +11,9 @@ MathMatrixInset::MathMatrixInset(MathGridInset const & p)
 {}
 
 
-InsetBase * MathMatrixInset::clone() const
+auto_ptr<InsetBase> MathMatrixInset::clone() const
 {
-	return new MathMatrixInset(*this);
+	return auto_ptr<InsetBase>(new MathMatrixInset(*this));
 }
 
 

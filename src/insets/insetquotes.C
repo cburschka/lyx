@@ -33,6 +33,7 @@ using namespace lyx::support;
 
 using std::ostream;
 using std::endl;
+using std::auto_ptr;
 
 namespace {
 
@@ -354,9 +355,9 @@ void InsetQuotes::validate(LaTeXFeatures & features) const
 }
 
 
-InsetBase * InsetQuotes::clone() const
+auto_ptr<InsetBase> InsetQuotes::clone() const
 {
-	return new InsetQuotes(language_, side_, times_);
+	return auto_ptr<InsetBase>(new InsetQuotes(language_, side_, times_));
 }
 
 

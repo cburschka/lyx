@@ -28,6 +28,7 @@ using std::vector;
 using std::max;
 using std::endl;
 using std::pair;
+using std::auto_ptr;
 
 namespace {
 
@@ -106,9 +107,9 @@ MathHullInset::MathHullInset(string const & type)
 }
 
 
-InsetBase * MathHullInset::clone() const
+auto_ptr<InsetBase> MathHullInset::clone() const
 {
-	return new MathHullInset(*this);
+	return auto_ptr<InsetBase>(new MathHullInset(*this));
 }
 
 

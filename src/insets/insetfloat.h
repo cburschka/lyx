@@ -53,7 +53,7 @@ public:
 	///
 	void validate(LaTeXFeatures & features) const;
 	///
-	InsetBase * clone() const;
+	virtual std::auto_ptr<InsetBase> clone() const;
 	///
 	Inset::Code lyxCode() const { return Inset::FLOAT_CODE; }
 	///

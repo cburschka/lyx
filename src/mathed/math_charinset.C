@@ -18,6 +18,7 @@
 
 using std::ostream;
 using std::endl;
+using std::auto_ptr;
 
 #ifndef CXX_GLOBAL_CSTD
 using std::strchr;
@@ -49,9 +50,9 @@ MathCharInset::MathCharInset(char c)
 
 
 
-InsetBase * MathCharInset::clone() const
+auto_ptr<InsetBase> MathCharInset::clone() const
 {
-	return new MathCharInset(*this);
+	return auto_ptr<InsetBase>(new MathCharInset(*this));
 }
 
 

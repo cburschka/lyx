@@ -26,8 +26,8 @@ public:
 	///
 	~InsetIndex();
 	///
-	virtual InsetBase * clone() const {
-		return new InsetIndex(params());
+	virtual std::auto_ptr<InsetBase> clone() const {
+		return std::auto_ptr<InsetBase>(new InsetIndex(params()));
 	}
 	///
 	dispatch_result localDispatch(FuncRequest const & cmd);
@@ -49,8 +49,8 @@ public:
 	///
 	~InsetPrintIndex();
 	///
-	InsetBase * clone() const {
-		return new InsetPrintIndex(params());
+	virtual std::auto_ptr<InsetBase> clone() const {
+		return std::auto_ptr<InsetBase>(new InsetPrintIndex(params()));
 	}
 	///
 	//dispatch_result localDispatch(FuncRequest const & cmd);

@@ -33,6 +33,7 @@
 
 using std::ostream;
 using std::endl;
+using std::auto_ptr;
 
 
 // Some information about Minipages in LaTeX:
@@ -94,9 +95,9 @@ InsetMinipage::InsetMinipage(InsetMinipage const & in)
 {}
 
 
-InsetBase * InsetMinipage::clone() const
+auto_ptr<InsetBase> InsetMinipage::clone() const
 {
-	return new InsetMinipage(*this);
+	return auto_ptr<InsetBase>(new InsetMinipage(*this));
 }
 
 

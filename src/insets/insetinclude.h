@@ -74,7 +74,7 @@ public:
 	void set(Params const & params);
 
 	///
-	virtual InsetBase * clone() const;
+	virtual std::auto_ptr<InsetBase> clone() const;
 	///
 	Inset::Code lyxCode() const { return Inset::INCLUDE_CODE; }
 	/// This returns the list of labels on the child buffer

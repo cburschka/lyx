@@ -15,17 +15,17 @@
 
 #include "insetcollapsable.h"
 
-  
+
  struct InsetNoteParams {
- 	///
- 	void write(std::ostream & os) const;
- 	///
- 	void read(LyXLex & lex);
- 	///
- 	string type;
+	///
+	void write(std::ostream & os) const;
+	///
+	void read(LyXLex & lex);
+	///
+	string type;
 };
- 
- 
+
+
 /** The PostIt note inset, and other annotations
 
 */
@@ -33,14 +33,14 @@ class InsetNote : public InsetCollapsable {
 public:
 	///
 
-	
+
 	InsetNote(BufferParams const &, string const &);
 	/// Copy constructor
 	InsetNote(InsetNote const &);
 	///
 	~InsetNote();
 	///
-	InsetBase * clone() const;
+	virtual std::auto_ptr<InsetBase> clone() const;
 	///
 	string const editMessage() const;
 	///

@@ -5,15 +5,17 @@
 #include "math_streamstr.h"
 #include "support/LOstream.h"
 
+using std::auto_ptr;
+
 
 MathSubstackInset::MathSubstackInset()
 	: MathGridInset(1, 1)
 {}
 
 
-InsetBase * MathSubstackInset::clone() const
+auto_ptr<InsetBase> MathSubstackInset::clone() const
 {
-	return new MathSubstackInset(*this);
+	return auto_ptr<InsetBase>(new MathSubstackInset(*this));
 }
 
 

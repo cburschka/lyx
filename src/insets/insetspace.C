@@ -28,6 +28,7 @@
 
 using std::ostream;
 using std::max;
+using std::auto_ptr;
 
 
 InsetSpace::InsetSpace()
@@ -251,9 +252,9 @@ int InsetSpace::docbook(Buffer const *, ostream & os, bool) const
 }
 
 
-InsetBase * InsetSpace::clone() const
+auto_ptr<InsetBase>  InsetSpace::clone() const
 {
-	return new InsetSpace(kind_);
+	return auto_ptr<InsetBase>(new InsetSpace(kind_));
 }
 
 

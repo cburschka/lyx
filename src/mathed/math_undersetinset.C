@@ -1,19 +1,19 @@
-
 #include "math_undersetinset.h"
 #include "math_mathmlstream.h"
 #include "math_support.h"
 
 
 using std::max;
+using std::auto_ptr;
 
 
 MathUndersetInset::MathUndersetInset()
 {}
 
 
-InsetBase * MathUndersetInset::clone() const
+auto_ptr<InsetBase> MathUndersetInset::clone() const
 {
-	return new MathUndersetInset(*this);
+	return auto_ptr<InsetBase>(new MathUndersetInset(*this));
 }
 
 

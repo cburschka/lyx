@@ -13,7 +13,7 @@ public:
 	///
 	MathLimInset(MathArray const & f, MathArray const & x, MathArray const & x0);
 	///
-	InsetBase * clone() const;
+	virtual std::auto_ptr<InsetBase> clone() const;
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///

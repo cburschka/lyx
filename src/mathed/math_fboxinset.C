@@ -7,6 +7,7 @@
 #include "math_parser.h"
 #include "frontends/Painter.h"
 
+using std::auto_ptr;
 
 
 MathFboxInset::MathFboxInset(latexkeys const * key)
@@ -14,9 +15,9 @@ MathFboxInset::MathFboxInset(latexkeys const * key)
 {}
 
 
-InsetBase * MathFboxInset::clone() const
+auto_ptr<InsetBase> MathFboxInset::clone() const
 {
-	return new MathFboxInset(*this);
+	return auto_ptr<InsetBase>(new MathFboxInset(*this));
 }
 
 

@@ -63,7 +63,7 @@ public:
 	///
 	int docbook(Buffer const *, std::ostream &, bool mixcont) const;
 	///
-	virtual InsetBase * clone() const;
+	virtual std::auto_ptr<InsetBase> clone() const;
 	///
 	Inset::Code lyxCode() const { return Inset::SPECIALCHAR_CODE; }
 	/// We don't need \begin_inset and \end_inset

@@ -14,7 +14,7 @@ public:
 	///
 	explicit MathExIntInset(string const & name_);
 	///
-	InsetBase * clone() const;
+	virtual std::auto_ptr<InsetBase> clone() const;
 	///
 	void symbol(string const &);
 	///

@@ -1,9 +1,10 @@
-
 #include "math_diffinset.h"
 #include "math_support.h"
 #include "math_mathmlstream.h"
 #include "math_symbolinset.h"
 #include "debug.h"
+
+using std::auto_ptr;
 
 
 MathDiffInset::MathDiffInset()
@@ -11,9 +12,9 @@ MathDiffInset::MathDiffInset()
 {}
 
 
-InsetBase * MathDiffInset::clone() const
+auto_ptr<InsetBase> MathDiffInset::clone() const
 {
-	return new MathDiffInset(*this);
+	return auto_ptr<InsetBase>(new MathDiffInset(*this));
 }
 
 

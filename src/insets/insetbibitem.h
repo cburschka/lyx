@@ -29,7 +29,7 @@ public:
 	///
 	~InsetBibitem();
 	///
-	InsetBase * clone() const;
+	std::auto_ptr<InsetBase> clone() const;
 	///
 	virtual dispatch_result localDispatch(FuncRequest const & cmd);
 	/** Currently \bibitem is used as a LyX2.x command,

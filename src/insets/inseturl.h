@@ -27,8 +27,8 @@ public:
 	///
 	~InsetUrl();
 	///
-	virtual InsetBase * clone() const {
-		return new InsetUrl(params());
+	virtual std::auto_ptr<InsetBase> clone() const {
+		return std::auto_ptr<InsetBase>(new InsetUrl(params()));
 	}
 	///
 	dispatch_result localDispatch(FuncRequest const & cmd);

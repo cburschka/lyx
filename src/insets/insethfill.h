@@ -20,8 +20,8 @@ public:
 	///
 	InsetHFill();
 	///
-	virtual InsetBase * clone() const {
-		return new InsetHFill;
+	virtual std::auto_ptr<InsetBase> clone() const {
+		return std::auto_ptr<InsetBase>(new InsetHFill);
 	}
 	///
 	string const getScreenLabel(Buffer const *) const { return getContents(); }

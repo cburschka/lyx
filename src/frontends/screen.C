@@ -477,4 +477,3 @@ void LyXScreen::drawFromTo(LyXText * text, BufferView * bv,
 			LColor::bottomarea);
 	}
 }
-

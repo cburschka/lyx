@@ -4,8 +4,8 @@
 #include "math_support.h"
 #include "debug.h"
 
-
 using std::endl;
+using std::auto_ptr;
 
 
 MathMacroArgument::MathMacroArgument(int n)
@@ -21,9 +21,9 @@ MathMacroArgument::MathMacroArgument(int n)
 }
 
 
-InsetBase * MathMacroArgument::clone() const
+auto_ptr<InsetBase> MathMacroArgument::clone() const
 {
-	return new MathMacroArgument(*this);
+	return auto_ptr<InsetBase>(new MathMacroArgument(*this));
 }
 
 

@@ -6,15 +6,17 @@
 #include "math_streamstr.h"
 #include "frontends/Painter.h"
 
+using std::auto_ptr;
+
 
 MathFrameboxInset::MathFrameboxInset()
 	: MathNestInset(3)
 {}
 
 
-InsetBase * MathFrameboxInset::clone() const
+auto_ptr<InsetBase> MathFrameboxInset::clone() const
 {
-	return new MathFrameboxInset(*this);
+	return auto_ptr<InsetBase>(new MathFrameboxInset(*this));
 }
 
 

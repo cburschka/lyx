@@ -34,7 +34,7 @@
 
 using std::ostream;
 using std::endl;
-
+using std::auto_ptr;
 
 namespace {
 
@@ -95,7 +95,7 @@ dispatch_result InsetWrap::localDispatch(FuncRequest const & cmd)
 		return DISPATCHED;
 	}
 
-	case LFUN_INSET_DIALOG_UPDATE: 
+	case LFUN_INSET_DIALOG_UPDATE:
 		InsetWrapMailer(*this).updateDialog(cmd.view());
 		return DISPATCHED;
 
@@ -167,9 +167,9 @@ void InsetWrap::validate(LaTeXFeatures & features) const
 }
 
 
-InsetBase * InsetWrap::clone() const
+auto_ptr<InsetBase> InsetWrap::clone() const
 {
-	return new InsetWrap(*this);
+	return auto_ptr<InsetBase>(new InsetWrap(*this));
 }
 
 

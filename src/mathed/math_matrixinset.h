@@ -14,7 +14,7 @@ public:
 	///
 	MathMatrixInset(string const & str);
 	///
-	InsetBase * clone() const;
+	virtual std::auto_ptr<InsetBase> clone() const;
 	/// identifies MatrixInsets
 	MathMatrixInset const * asMatrixInset() const { return this; }
 

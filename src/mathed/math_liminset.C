@@ -1,9 +1,10 @@
-
 #include "math_liminset.h"
 #include "math_support.h"
 #include "math_mathmlstream.h"
 #include "math_symbolinset.h"
 #include "debug.h"
+
+using std::auto_ptr;
 
 
 MathLimInset::MathLimInset
@@ -16,9 +17,9 @@ MathLimInset::MathLimInset
 }
 
 
-InsetBase * MathLimInset::clone() const
+auto_ptr<InsetBase> MathLimInset::clone() const
 {
-	return new MathLimInset(*this);
+	return auto_ptr<InsetBase>(new MathLimInset(*this));
 }
 
 

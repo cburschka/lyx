@@ -42,8 +42,8 @@ public:
 
 	~InsetRef();
 	///
-	virtual InsetBase * clone() const {
-		return new InsetRef(*this);
+	virtual std::auto_ptr<InsetBase> clone() const {
+		return std::auto_ptr<InsetBase>(new InsetRef(*this));
 	}
 	///
 	dispatch_result localDispatch(FuncRequest const & cmd);

@@ -28,6 +28,7 @@
 
 
 using std::ostream;
+using std::auto_ptr;
 
 
 InsetFoot::InsetFoot(BufferParams const & bp)
@@ -46,9 +47,9 @@ InsetFoot::InsetFoot(InsetFoot const & in)
 }
 
 
-InsetBase * InsetFoot::clone() const
+auto_ptr<InsetBase> InsetFoot::clone() const
 {
-	return new InsetFoot(*this);
+	return auto_ptr<InsetBase>(new InsetFoot(*this));
 }
 
 

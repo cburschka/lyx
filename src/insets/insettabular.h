@@ -75,7 +75,7 @@ public:
 	///
 	~InsetTabular();
 	///
-	InsetBase * clone() const;
+	virtual std::auto_ptr<InsetBase> clone() const;
 	///
 	void read(Buffer const *, LyXLex &);
 	///

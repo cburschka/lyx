@@ -1,4 +1,3 @@
-
 #include <config.h>
 
 #include "math_exintinset.h"
@@ -9,6 +8,8 @@
 #include "debug.h"
 
 #include <boost/scoped_ptr.hpp>
+
+using std::auto_ptr;
 
 
 MathExIntInset::MathExIntInset(string const & name)
@@ -21,9 +22,9 @@ MathExIntInset::MathExIntInset(string const & name)
 // 3 - upper
 
 
-InsetBase * MathExIntInset::clone() const
+auto_ptr<InsetBase> MathExIntInset::clone() const
 {
-	return new MathExIntInset(*this);
+	return auto_ptr<InsetBase>(new MathExIntInset(*this));
 }
 
 

@@ -13,7 +13,7 @@ public:
 	///
 	explicit MathSpaceInset(string const & name);
 	///
-	InsetBase * clone() const;
+	virtual std::auto_ptr<InsetBase> clone() const;
 	///
 	MathSpaceInset const * asSpaceInset() const { return this; }
 	///

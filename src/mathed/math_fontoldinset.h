@@ -18,7 +18,7 @@ public:
 	///
 	explicit MathFontOldInset(latexkeys const * key);
 	///
-	InsetBase * clone() const;
+	virtual std::auto_ptr<InsetBase> clone() const;
 	/// we are in text mode.
 	mode_type currentMode() const { return TEXT_MODE; }
 	/// we write extra braces in any case...

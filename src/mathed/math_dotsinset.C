@@ -6,15 +6,17 @@
 #include "math_support.h"
 #include "math_parser.h"
 
+using std::auto_ptr;
+
 
 MathDotsInset::MathDotsInset(latexkeys const * key)
 	: key_(key)
 {}
 
 
-InsetBase * MathDotsInset::clone() const
+auto_ptr<InsetBase> MathDotsInset::clone() const
 {
-	return new MathDotsInset(*this);
+	return auto_ptr<InsetBase>(new MathDotsInset(*this));
 }
 
 

@@ -1,4 +1,3 @@
-
 #include <config.h>
 
 #include "ref_inset.h"
@@ -16,6 +15,8 @@
 
 #include "support/LOstream.h"
 
+using std::auto_ptr;
+
 
 RefInset::RefInset()
 	: CommandInset("ref")
@@ -27,9 +28,9 @@ RefInset::RefInset(string const & data)
 {}
 
 
-InsetBase * RefInset::clone() const
+auto_ptr<InsetBase> RefInset::clone() const
 {
-	return new RefInset(*this);
+	return auto_ptr<InsetBase>(new RefInset(*this));
 }
 
 
@@ -135,10 +136,10 @@ dispatch_result RefInset::localDispatch(FuncRequest const & cmd)
 		return UNDISPATCHED;
 
 	*this = *ar[0].nucleus()->asRefInset();
-// 	if (cmd.view())
+//	if (cmd.view())
 //                 // This does not compile because updateInset expects
 //                 // an Inset* and 'this' isn't.
-// 		cmd.view()->updateInset(this);
+//		cmd.view()->updateInset(this);
 	return DISPATCHED;
 }
 

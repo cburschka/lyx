@@ -6,15 +6,17 @@
 #include "math_mathmlstream.h"
 #include "math_streamstr.h"
 
+using std::auto_ptr;
+
 
 MathBigInset::MathBigInset(string const & name, string const & delim)
 	: name_(name), delim_(delim)
 {}
 
 
-InsetBase * MathBigInset::clone() const
+auto_ptr<InsetBase> MathBigInset::clone() const
 {
-	return new MathBigInset(*this);
+	return auto_ptr<InsetBase>(new MathBigInset(*this));
 }
 
 

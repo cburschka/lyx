@@ -10,6 +10,7 @@
 #include "math_streamstr.h"
 #include "frontends/Painter.h"
 
+using std::auto_ptr;
 
 
 MathMakeboxInset::MathMakeboxInset()
@@ -17,9 +18,9 @@ MathMakeboxInset::MathMakeboxInset()
 {}
 
 
-InsetBase * MathMakeboxInset::clone() const
+auto_ptr<InsetBase> MathMakeboxInset::clone() const
 {
-	return new MathMakeboxInset(*this);
+	return auto_ptr<InsetBase>(new MathMakeboxInset(*this));
 }
 
 

@@ -1,9 +1,10 @@
-
 #include "math_inferinset.h"
 #include "math_support.h"
 #include "frontends/Painter.h"
 #include "math_mathmlstream.h"
 #include "textpainter.h"
+
+using std::auto_ptr;
 
 
 MathInferInset::MathInferInset()
@@ -11,9 +12,9 @@ MathInferInset::MathInferInset()
 {}
 
 
-InsetBase * MathInferInset::clone() const
+auto_ptr<InsetBase> MathInferInset::clone() const
 {
-	return new MathInferInset(*this);
+	return auto_ptr<InsetBase>(new MathInferInset(*this));
 }
 
 

@@ -6,15 +6,17 @@
 #include "math_mathmlstream.h"
 #include "math_streamstr.h"
 
+using std::auto_ptr;
+
 
 MathUnknownInset::MathUnknownInset(string const & nm, bool final, bool black)
 	: name_(nm), final_(final), black_(black)
 {}
 
 
-InsetBase * MathUnknownInset::clone() const
+auto_ptr<InsetBase> MathUnknownInset::clone() const
 {
-	return new MathUnknownInset(*this);
+	return auto_ptr<InsetBase>(new MathUnknownInset(*this));
 }
 
 

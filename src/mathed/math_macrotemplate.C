@@ -1,9 +1,10 @@
-
 #include "math_macrotemplate.h"
 #include "math_mathmlstream.h"
 #include "math_parser.h"
 #include "frontends/Painter.h"
 #include "debug.h"
+
+using std::auto_ptr;
 
 
 MathMacroTemplate::MathMacroTemplate()
@@ -37,10 +38,10 @@ MathMacroTemplate::MathMacroTemplate(std::istream & is)
 }
 
 
-InsetBase * MathMacroTemplate::clone() const
+auto_ptr<InsetBase> MathMacroTemplate::clone() const
 {
 	//lyxerr << "cloning MacroTemplate!\n";
-	return new MathMacroTemplate(*this);
+	return auto_ptr<InsetBase>(new MathMacroTemplate(*this));
 }
 
 
@@ -90,7 +91,7 @@ void MathMacroTemplate::write(WriteStream & os) const
 {
 	if (type_ == "def") {
 		os << "\n\\def\\" << name_.c_str();
-		for (int i = 1; i <= numargs_; ++i) 
+		for (int i = 1; i <= numargs_; ++i)
 			os << '#' << i;
 	} else {
 		// newcommand or renewcommand

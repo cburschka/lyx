@@ -24,8 +24,8 @@ public:
 	///
 	~InsetTOC();
 	///
-	virtual InsetBase * clone() const {
-		return new InsetTOC(params());
+	virtual std::auto_ptr<InsetBase> clone() const {
+		return std::auto_ptr<InsetBase>(new InsetTOC(params()));
 	}
 	///
 	dispatch_result localDispatch(FuncRequest const & cmd);

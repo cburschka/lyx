@@ -8,15 +8,17 @@
 #include "LaTeXFeatures.h"
 #include "support/LOstream.h"
 
+using std::auto_ptr;
+
 
 MathCasesInset::MathCasesInset(row_type n)
 	: MathGridInset(2, n, 'c', "ll")
 {}
 
 
-InsetBase * MathCasesInset::clone() const
+auto_ptr<InsetBase> MathCasesInset::clone() const
 {
-	return new MathCasesInset(*this);
+	return auto_ptr<InsetBase>(new MathCasesInset(*this));
 }
 
 

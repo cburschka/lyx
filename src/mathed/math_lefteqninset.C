@@ -1,7 +1,8 @@
-
 #include "math_lefteqninset.h"
 #include "math_support.h"
 #include "support/LOstream.h"
+
+using std::auto_ptr;
 
 
 MathLefteqnInset::MathLefteqnInset()
@@ -9,9 +10,9 @@ MathLefteqnInset::MathLefteqnInset()
 {}
 
 
-InsetBase * MathLefteqnInset::clone() const
+auto_ptr<InsetBase> MathLefteqnInset::clone() const
 {
-	return new MathLefteqnInset(*this);
+	return auto_ptr<InsetBase>(new MathLefteqnInset(*this));
 }
 
 

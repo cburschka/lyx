@@ -7,6 +7,8 @@
 #include "math_streamstr.h"
 #include "math_support.h"
 
+using std::auto_ptr;
+
 
 MathKernInset::MathKernInset()
 {}
@@ -22,9 +24,9 @@ MathKernInset::MathKernInset(string const & s)
 {}
 
 
-InsetBase * MathKernInset::clone() const
+auto_ptr<InsetBase> MathKernInset::clone() const
 {
-	return new MathKernInset(*this);
+	return auto_ptr<InsetBase>(new MathKernInset(*this));
 }
 
 

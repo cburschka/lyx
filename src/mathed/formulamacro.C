@@ -39,6 +39,7 @@
 using namespace lyx::support;
 
 using std::ostream;
+using std::auto_ptr;
 
 extern MathCursor * mathcursor;
 
@@ -65,9 +66,9 @@ InsetFormulaMacro::InsetFormulaMacro(string const & s)
 }
 
 
-Inset * InsetFormulaMacro::clone() const
+auto_ptr<InsetBase> InsetFormulaMacro::clone() const
 {
-	return new InsetFormulaMacro(*this);
+	return auto_ptr<InsetBase>(new InsetFormulaMacro(*this));
 }
 
 

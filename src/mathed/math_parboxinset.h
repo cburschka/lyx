@@ -1,3 +1,4 @@
+// -*- C++ -*-
 #ifndef MATH_PARBOXINSET_H
 #define MATH_PARBOXINSET_H
 
@@ -13,7 +14,7 @@ public:
 	///
 	MathParboxInset * asParboxInset() { return this; }
 	///
-	InsetBase * clone() const;
+	virtual std::auto_ptr<InsetBase> clone() const;
 	///
 	mode_type currentMode() const { return TEXT_MODE; }
 	///

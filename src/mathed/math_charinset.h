@@ -16,7 +16,7 @@ public:
 	///
 	explicit MathCharInset(char c);
 	///
-	InsetBase * clone() const;
+	virtual std::auto_ptr<InsetBase> clone() const;
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///

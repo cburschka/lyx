@@ -49,6 +49,8 @@ using std::ostream;
 using std::endl;
 using std::vector;
 using std::pair;
+using std::auto_ptr;
+
 
 extern BufferList bufferlist;
 
@@ -206,13 +208,13 @@ void InsetInclude::set(Params const & p)
 }
 
 
-InsetBase * InsetInclude::clone() const
+auto_ptr<InsetBase> InsetInclude::clone() const
 {
 	//Params p(params_);
 	//p.masterFilename_ = buffer.fileName();
 #warning FIXME: broken cross-doc copy/paste - must fix
 
-	return new InsetInclude(params_);
+	return auto_ptr<InsetBase>(new InsetInclude(params_));
 }
 
 

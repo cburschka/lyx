@@ -1,3 +1,4 @@
+// -*- C++ -*-
 #ifndef MATH_ERTINSET_H
 #define MATH_ERTINSET_H
 
@@ -11,7 +12,7 @@ public:
 	///
 	MathErtInset() {}
 	///
-	InsetBase * clone() const;
+	virtual std::auto_ptr<InsetBase> clone() const;
 	///
 	mode_type currentMode() const { return TEXT_MODE; }
 	///

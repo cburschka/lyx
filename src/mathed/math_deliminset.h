@@ -19,7 +19,7 @@ public:
 	///
 	MathDelimInset(string const & left, string const & right, MathArray const &);
 	///
-	InsetBase * clone() const;
+	virtual std::auto_ptr<InsetBase> clone() const;
 	///
 	MathDelimInset * asDelimInset() { return this; }
 	///

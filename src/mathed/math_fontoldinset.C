@@ -10,6 +10,7 @@
 #include "support/LOstream.h"
 #include "frontends/Painter.h"
 
+using std::auto_ptr;
 
 
 MathFontOldInset::MathFontOldInset(latexkeys const * key)
@@ -19,9 +20,9 @@ MathFontOldInset::MathFontOldInset(latexkeys const * key)
 }
 
 
-InsetBase * MathFontOldInset::clone() const
+auto_ptr<InsetBase> MathFontOldInset::clone() const
 {
-	return new MathFontOldInset(*this);
+	return auto_ptr<InsetBase>(new MathFontOldInset(*this));
 }
 
 

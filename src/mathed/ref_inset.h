@@ -12,7 +12,7 @@ public:
 	///
 	explicit RefInset(string const & data);
 	///
-	InsetBase * clone() const;
+	virtual std::auto_ptr<InsetBase> clone() const;
 	///
 	//void write(WriteStream & os) const;
 	///

@@ -68,7 +68,7 @@ public:
 	Inset::Code lyxCode() const { return Inset::GRAPHICS_CODE; }
 
 	///
-	virtual InsetBase * clone() const;
+	virtual std::auto_ptr<InsetBase> clone() const;
 
 	/** Set the inset parameters, used by the GUIndependent dialog.
 	    Return true of new params are different from what was so far.

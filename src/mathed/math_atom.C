@@ -32,8 +32,11 @@ MathAtom::MathAtom(InsetBase * p)
 
 
 MathAtom::MathAtom(MathAtom const & at)
-	: nucleus_(at.nucleus_ ? static_cast<MathInset *>(at.nucleus_->clone()) : 0)
-{}
+	: nucleus_(0)
+{
+	if (at.nucleus_)
+		nucleus_ = static_cast<MathInset*>(at.nucleus_->clone().release());
+}
 
 
 void MathAtom::operator=(MathAtom const & at)

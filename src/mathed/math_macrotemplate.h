@@ -25,7 +25,7 @@ public:
 	///
 	explicit MathMacroTemplate(std::istream & is);
 	///
-	InsetBase * clone() const;
+	virtual std::auto_ptr<InsetBase> clone() const;
 	///
 	void write(WriteStream & os) const;
 	/// Number of arguments

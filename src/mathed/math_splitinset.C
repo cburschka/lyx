@@ -1,7 +1,8 @@
-
 #include "math_splitinset.h"
 #include "math_mathmlstream.h"
 #include "math_streamstr.h"
+
+using std::auto_ptr;
 
 
 MathSplitInset::MathSplitInset(string const & name)
@@ -11,9 +12,9 @@ MathSplitInset::MathSplitInset(string const & name)
 }
 
 
-InsetBase * MathSplitInset::clone() const
+auto_ptr<InsetBase> MathSplitInset::clone() const
 {
-	return new MathSplitInset(*this);
+	return auto_ptr<InsetBase>(new MathSplitInset(*this));
 }
 
 

@@ -9,6 +9,7 @@
 using namespace lyx::support;
 
 using std::max;
+using std::auto_ptr;
 
 
 MathScriptInset::MathScriptInset()
@@ -37,9 +38,9 @@ MathScriptInset::MathScriptInset(MathAtom const & at, bool up)
 
 
 
-InsetBase * MathScriptInset::clone() const
+auto_ptr<InsetBase> MathScriptInset::clone() const
 {
-	return new MathScriptInset(*this);
+	return auto_ptr<InsetBase>(new MathScriptInset(*this));
 }
 
 

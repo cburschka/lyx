@@ -1,19 +1,19 @@
-
 #include "math_stackrelinset.h"
 #include "math_mathmlstream.h"
 #include "math_support.h"
 
 
 using std::max;
+using std::auto_ptr;
 
 
 MathStackrelInset::MathStackrelInset()
 {}
 
 
-InsetBase * MathStackrelInset::clone() const
+auto_ptr<InsetBase> MathStackrelInset::clone() const
 {
-	return new MathStackrelInset(*this);
+	return auto_ptr<InsetBase>(new MathStackrelInset(*this));
 }
 
 
@@ -37,7 +37,7 @@ void MathStackrelInset::draw(PainterInfo & pi, int x, int y) const
 	cell(1).draw(pi, m - cell(1).width() / 2, y);
 	FracChanger dummy(pi.base);
 	cell(0).draw(pi, m - cell(0).width() / 2, yo);
-	drawMarkers(pi, x, y);	
+	drawMarkers(pi, x, y);
 }
 
 

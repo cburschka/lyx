@@ -1,9 +1,10 @@
-
 #include "math_parboxinset.h"
 #include "math_mathmlstream.h"
 #include "math_streamstr.h"
 #include "lyxlength.h"
 #include "debug.h"
+
+using std::auto_ptr;
 
 
 MathParboxInset::MathParboxInset()
@@ -13,9 +14,9 @@ MathParboxInset::MathParboxInset()
 }
 
 
-InsetBase * MathParboxInset::clone() const
+auto_ptr<InsetBase> MathParboxInset::clone() const
 {
-	return new MathParboxInset(*this);
+	return auto_ptr<InsetBase>(new MathParboxInset(*this));
 }
 
 

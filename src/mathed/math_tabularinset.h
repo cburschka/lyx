@@ -23,7 +23,7 @@ public:
 	///
 	MathTabularInset(string const &, char valign, string const & halign);
 	///
-	InsetBase * clone() const;
+	virtual std::auto_ptr<InsetBase> clone() const;
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///

@@ -172,7 +172,7 @@ void BufferView::Pimpl::disconnectBuffer()
 }
 
 
-bool BufferView::Pimpl::newFile(string const & filename, 
+bool BufferView::Pimpl::newFile(string const & filename,
 				string const & tname,
 				bool isNamed)
 {
@@ -960,10 +960,10 @@ void BufferView::Pimpl::MenuInsertLyXFile(string const & filen)
 	string const disp_fn = MakeDisplayPath(filename);
 	owner_->message(bformat(_("Inserting document %1$s..."), disp_fn));
 	if (bv_->insertLyXFile(filename))
-		owner_->message(bformat(_("Document %1$s inserted."), 
+		owner_->message(bformat(_("Document %1$s inserted."),
 					disp_fn));
 	else
-		owner_->message(bformat(_("Could not insert document %1$s"), 
+		owner_->message(bformat(_("Could not insert document %1$s"),
 					disp_fn));
 }
 

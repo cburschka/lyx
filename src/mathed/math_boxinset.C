@@ -6,15 +6,17 @@
 #include "math_streamstr.h"
 #include "support/LOstream.h"
 
+using std::auto_ptr;
+
 
 MathBoxInset::MathBoxInset(string const & name)
 	: MathNestInset(1), name_(name)
 {}
 
 
-InsetBase * MathBoxInset::clone() const
+auto_ptr<InsetBase> MathBoxInset::clone() const
 {
-	return new MathBoxInset(*this);
+	return auto_ptr<InsetBase>(new MathBoxInset(*this));
 }
 
 

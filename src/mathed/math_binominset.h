@@ -13,7 +13,7 @@ public:
 	///
 	explicit MathBinomInset(bool choose = false);
 	///
-	InsetBase * clone() const;
+	virtual std::auto_ptr<InsetBase> clone() const;
 	///
 	void write(WriteStream & os) const;
 	///

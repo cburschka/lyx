@@ -23,6 +23,7 @@
 using namespace lyx::support;
 
 using std::max;
+using std::auto_ptr;
 
 
 int InsetBibitem::key_counter = 0;
@@ -44,11 +45,11 @@ InsetBibitem::~InsetBibitem()
 }
 
 
-InsetBase * InsetBibitem::clone() const
+auto_ptr<InsetBase> InsetBibitem::clone() const
 {
 	InsetBibitem * b = new InsetBibitem(params());
 	b->setCounter(counter);
-	return b;
+	return auto_ptr<InsetBase>(b);
 }
 
 
@@ -132,7 +133,7 @@ string const InsetBibitem::getScreenLabel(Buffer const *) const
 
 
 // ale070405 This function maybe shouldn't be here. We'll fix this at 0.13.
-int bibitemMaxWidth(BufferView * bv, LyXFont const & font)
+int bibitemMaxWidth(BufferView * bv, LyXFont const &)
 {
 	int w = 0;
 	// Ha, now we are mainly at 1.2.0 and it is still here (Jug)

@@ -76,7 +76,7 @@ public:
 	///
 	explicit InsetText(InsetText const &);
 	///
-	InsetBase * clone() const;
+	virtual std::auto_ptr<InsetBase> clone() const;
 	///
 	InsetText & operator=(InsetText const & it);
 	/// empty inset to empty par, or just mark as erased

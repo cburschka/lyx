@@ -29,8 +29,6 @@ class InsetFormulaBase : public UpdatableInset {
 public:
 	///
 	InsetFormulaBase();
-	///
-	Inset * clone() const = 0;
 	/// lowest x coordinate
 	virtual int xlow() const;
 	/// highest x coordinate

@@ -1,4 +1,3 @@
-
 #include "math_fracinset.h"
 #include "math_support.h"
 #include "frontends/Painter.h"
@@ -7,6 +6,7 @@
 
 
 using std::max;
+using std::auto_ptr;
 
 
 MathFracInset::MathFracInset(bool atop)
@@ -14,9 +14,9 @@ MathFracInset::MathFracInset(bool atop)
 {}
 
 
-InsetBase * MathFracInset::clone() const
+auto_ptr<InsetBase> MathFracInset::clone() const
 {
-	return new MathFracInset(*this);
+	return auto_ptr<InsetBase>(new MathFracInset(*this));
 }
 
 

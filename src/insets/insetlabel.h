@@ -22,8 +22,8 @@ public:
 	///
 	~InsetLabel();
 	///
-	virtual InsetBase * clone() const {
-		return new InsetLabel(params());
+	virtual std::auto_ptr<InsetBase> clone() const {
+		return std::auto_ptr<InsetBase>(new InsetLabel(params()));
 	}
 	///
 	virtual dispatch_result localDispatch(FuncRequest const & cmd);

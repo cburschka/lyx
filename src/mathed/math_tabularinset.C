@@ -14,6 +14,7 @@ using std::vector;
 using std::istringstream;
 using std::getline;
 using std::istream_iterator;
+using std::auto_ptr;
 
 
 MathTabularInset::MathTabularInset(string const & name, int m, int n)
@@ -33,9 +34,9 @@ MathTabularInset::MathTabularInset(string const & name, char valign,
 {}
 
 
-InsetBase * MathTabularInset::clone() const
+auto_ptr<InsetBase> MathTabularInset::clone() const
 {
-	return new MathTabularInset(*this);
+	return auto_ptr<InsetBase>(new MathTabularInset(*this));
 }
 
 

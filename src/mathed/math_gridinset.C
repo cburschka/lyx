@@ -15,6 +15,7 @@ using std::max;
 using std::min;
 using std::vector;
 using std::istream;
+using std::auto_ptr;
 
 
 class GridInsetMailer : public MailInset {
@@ -160,9 +161,9 @@ MathGridInset::~MathGridInset()
 }
 
 
-InsetBase * MathGridInset::clone() const
+auto_ptr<InsetBase> MathGridInset::clone() const
 {
-	return new MathGridInset(*this);
+	return auto_ptr<InsetBase>(new MathGridInset(*this));
 }
 
 

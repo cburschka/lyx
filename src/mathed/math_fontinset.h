@@ -18,7 +18,7 @@ public:
 	///
 	explicit MathFontInset(latexkeys const * key);
 	///
-	InsetBase * clone() const;
+	virtual std::auto_ptr<InsetBase> clone() const;
 	///
 	MathFontInset * asFontInset() { return this; }
 	///

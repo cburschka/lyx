@@ -40,7 +40,7 @@ public:
 	///
 	InsetERT(InsetERT const &);
 	///
-	InsetBase * clone() const;
+	virtual std::auto_ptr<InsetBase> clone() const;
 	///
 	InsetERT(BufferParams const &,
 		 Language const *, string const & contents, bool collapsed);

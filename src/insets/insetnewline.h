@@ -20,8 +20,8 @@ public:
 
 	InsetNewline() {}
 
-	virtual InsetBase * clone() const {
-		return new InsetNewline;
+	virtual std::auto_ptr<InsetBase> clone() const {
+		return std::auto_ptr<InsetBase>(new InsetNewline);
 	}
 
 	Inset::Code lyxCode() const { return Inset::NEWLINE_CODE; }

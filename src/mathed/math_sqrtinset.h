@@ -15,7 +15,7 @@ public:
 	///
 	MathSqrtInset();
 	///
-	InsetBase * clone() const;
+	virtual std::auto_ptr<InsetBase> clone() const;
 	///
 	void draw(PainterInfo &, int x, int y) const;
 	///

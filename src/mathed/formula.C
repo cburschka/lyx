@@ -51,6 +51,7 @@
 
 using std::ostream;
 using std::vector;
+using std::auto_ptr;
 
 
 class InsetFormula::PreviewImpl : public lyx::graphics::PreviewedInset {
@@ -112,9 +113,9 @@ InsetFormula::~InsetFormula()
 {}
 
 
-Inset * InsetFormula::clone() const
+auto_ptr<InsetBase> InsetFormula::clone() const
 {
-	return new InsetFormula(*this);
+	return auto_ptr<InsetBase>(new InsetFormula(*this));
 }
 
 

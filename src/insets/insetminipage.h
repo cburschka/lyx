@@ -66,7 +66,7 @@ public:
 	///
 	void read(Buffer const * buf, LyXLex & lex);
 	///
-	InsetBase * clone() const;
+	virtual std::auto_ptr<InsetBase> clone() const;
 	///
 	void metrics(MetricsInfo &, Dimension &) const;
 	///

@@ -7,17 +7,18 @@
 #include "math_support.h"
 #include "support/LOstream.h"
 
-
 using std::atoi;
+using std::auto_ptr;
+
 
 MathSizeInset::MathSizeInset(latexkeys const * l)
 	: MathNestInset(1), key_(l), style_(Styles(atoi(l->extra.c_str())))
 {}
 
 
-InsetBase * MathSizeInset::clone() const
+auto_ptr<InsetBase> MathSizeInset::clone() const
 {
-	return new MathSizeInset(*this);
+	return auto_ptr<InsetBase>(new MathSizeInset(*this));
 }
 
 

@@ -1,3 +1,7 @@
+2003-07-25  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* all inset files (clone): return a auto_ptr<InsetBase>
+
 2003-07-23  Angus Leeming  <leeming@lyx.org>
 
 	* insetexternal.[Ch] (setParams): pass it a Buffer const *.
@@ -87,7 +91,7 @@
 	* insettext.[Ch]:
 	* insettabular.[Ch]: remove unneeded in_update_ members
 
-	* insettext.[Ch]: remove unneeded InsetText::old_max_width member 
+	* insettext.[Ch]: remove unneeded InsetText::old_max_width member
 
 2003-07-16  André Pönitz  <poenitz@gmx.net>
 
@@ -95,7 +99,7 @@
 
 2003-07-16  John Levon  <levon@movementarian.org>
 
-	* insetnote.h:	
+	* insetnote.h:
 	* insetnote.C: implement showInsetDialog()
 
 2003-07-15  André Pönitz  <poenitz@gmx.net>
@@ -106,7 +110,7 @@
 2003-07-15  Alfredo Braunstein  <abraunst@libero.it>
 
 	* insettext.C: adjust call to LyXText::init
-	
+
 2003-07-14  Juergen Spitzmueller  <j.spitzmueller@gmx.de>
 
 	* insettext.C: use bufferview_funcs->replaceSelection()

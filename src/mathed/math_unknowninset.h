@@ -13,7 +13,7 @@ public:
 	explicit MathUnknownInset(string const & name,
 		bool final = true, bool black = false);
 	///
-	InsetBase * clone() const;
+	virtual std::auto_ptr<InsetBase> clone() const;
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///

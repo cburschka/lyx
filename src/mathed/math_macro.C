@@ -29,6 +29,7 @@
 
 
 using std::max;
+using std::auto_ptr;
 
 
 MathMacro::MathMacro(string const & name)
@@ -44,9 +45,9 @@ MathMacro::MathMacro(MathMacro const & m)
 
 
 
-InsetBase * MathMacro::clone() const
+auto_ptr<InsetBase> MathMacro::clone() const
 {
-	return new MathMacro(*this);
+	return auto_ptr<InsetBase>(new MathMacro(*this));
 }
 
 

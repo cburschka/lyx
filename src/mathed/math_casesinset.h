@@ -12,7 +12,7 @@ public:
 	///
 	explicit MathCasesInset(row_type rows = 1u);
 	///
-	InsetBase * clone() const;
+	virtual std::auto_ptr<InsetBase> clone() const;
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///

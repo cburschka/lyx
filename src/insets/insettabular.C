@@ -58,6 +58,7 @@ using std::max;
 using std::endl;
 using std::swap;
 using std::max;
+using std::auto_ptr;
 
 
 namespace {
@@ -196,9 +197,9 @@ InsetTabular::~InsetTabular()
 }
 
 
-InsetBase * InsetTabular::clone() const
+auto_ptr<InsetBase> InsetTabular::clone() const
 {
-	return new InsetTabular(*this);
+	return auto_ptr<InsetBase>(new InsetTabular(*this));
 }
 
 
@@ -260,9 +261,9 @@ void InsetTabular::metrics(MetricsInfo & mi, Dimension & dim) const
 		lyxerr << "InsetTabular::metrics: need bv\n";
 		Assert(0);
 	}
-		
+
 	calculate_dimensions_of_cells(mi);
-			
+
 	dim.asc = tabular.getAscentOfRow(0);
 	dim.des = tabular.getHeightOfTabular() - tabular.getAscentOfRow(0) + 1;
 	dim.wid = tabular.getWidthOfTabular() + 2 * ADD_TO_TABULAR_WIDTH;

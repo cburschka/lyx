@@ -25,7 +25,7 @@ public:
 	/// convienience constructor from whitespace/newline seperated data
 	MathArrayInset(string const &, string const & str);
 	///
-	InsetBase * clone() const;
+	virtual std::auto_ptr<InsetBase> clone() const;
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///

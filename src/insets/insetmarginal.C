@@ -23,6 +23,7 @@
 
 
 using std::ostream;
+using std::auto_ptr;
 
 
 InsetMarginal::InsetMarginal(BufferParams const & bp)
@@ -41,9 +42,9 @@ InsetMarginal::InsetMarginal(InsetMarginal const & in)
 }
 
 
-InsetBase * InsetMarginal::clone() const
+auto_ptr<InsetBase> InsetMarginal::clone() const
 {
-	return new InsetMarginal(*this);
+	return auto_ptr<InsetBase>(new InsetMarginal(*this));
 }
 
 

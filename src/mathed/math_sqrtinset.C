@@ -1,9 +1,10 @@
-
 #include "math_sqrtinset.h"
 #include "math_mathmlstream.h"
 #include "LColor.h"
 #include "frontends/Painter.h"
 #include "textpainter.h"
+
+using std::auto_ptr;
 
 
 MathSqrtInset::MathSqrtInset()
@@ -11,9 +12,9 @@ MathSqrtInset::MathSqrtInset()
 {}
 
 
-InsetBase * MathSqrtInset::clone() const
+auto_ptr<InsetBase> MathSqrtInset::clone() const
 {
-	return new MathSqrtInset(*this);
+	return auto_ptr<InsetBase>(new MathSqrtInset(*this));
 }
 
 

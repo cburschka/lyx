@@ -14,6 +14,7 @@ using std::vector;
 using std::istringstream;
 using std::getline;
 using std::istream_iterator;
+using std::auto_ptr;
 
 
 MathArrayInset::MathArrayInset(string const & name, int m, int n)
@@ -57,9 +58,9 @@ MathArrayInset::MathArrayInset(string const & name, string const & str)
 }
 
 
-InsetBase * MathArrayInset::clone() const
+auto_ptr<InsetBase> MathArrayInset::clone() const
 {
-	return new MathArrayInset(*this);
+	return auto_ptr<InsetBase>(new MathArrayInset(*this));
 }
 
 

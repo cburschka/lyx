@@ -69,7 +69,7 @@ public:
 	/// virtual base class destructor
 	virtual ~InsetBase() {}
 	/// replicate ourselves
-	virtual InsetBase * clone() const = 0;
+	virtual std::auto_ptr<InsetBase> clone() const = 0;
 
 	// the real dispatcher
 	virtual dispatch_result dispatch

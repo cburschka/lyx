@@ -1,3 +1,9 @@
+2003-07-25  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* paragraph.C (Paragraph): adjust for new clone return type
+	(operator==): ditto
+	(copyIntoMinibuffer): ditto
+
 2003-07-25  Asger Alstrup  <alstrup@lyx.org>
 
 	* undo_funcs.C (textHandleUndo): Fix undo crash in first paragraph
@@ -72,11 +78,11 @@
 
 	* lyx_main.C: fix a crash in batch mode if no files specified
 	* converter.C: ws
-	
+
 2003-07-17  Alfredo Braunstein  <abraunst@libero.it>
 
 	* format.[Ch] (papersize): moved to BufferParams
-	* converter.[Ch] (dvips_options): moved to BufferParams 
+	* converter.[Ch] (dvips_options): moved to BufferParams
 	(dvipdfm_options): moved to anon namespace
 	* bufferparams.[Ch]: added above functions.
 
@@ -116,7 +122,7 @@
 
 	* lyxtext.h (init): remove reinit argument (act as if always true)
 	* text2.C: adjust to that
-	
+
 2003-07-14  Juergen Spitzmueller  <j.spitzmueller@gmx.de>
 
 	* bufferview_funcs.[Ch]: introduce function replaceSelection()
@@ -135,18 +141,18 @@
 2003-07-14  Alfredo Braunstein  <abraunst@libero.it>
 
 	* text2.C (init): fix a crash fired on resize
-	
+
 2003-07-11  Alfredo Braunstein  <abraunst@libero.it>
 
 	* buffer.[Ch]: added new closing signal
 	* BufferView_pimpl.[Ch]: connect/disconnect to new signal
-	* lyxfunc.C: removed BufferView::buffer(0) call now handled in 
+	* lyxfunc.C: removed BufferView::buffer(0) call now handled in
 	BufferView::Pimpl via the closing the signal
-	
+
 2003-07-10  Alfredo Braunstein  <abraunst@libero.it>
 
 	* buffer.[Ch]: take out all bv-related from buffer
-	* BufferView.C: 
+	* BufferView.C:
 	* BufferView_pimpl.[Ch]: connect to new signals
 	* CutAndPaste.C: removed useless asserts
 	* bufferview_funcs.[Ch] (resizeInsets): moved from buffer

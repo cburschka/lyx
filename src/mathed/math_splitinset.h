@@ -12,7 +12,7 @@ public:
 	///
 	explicit MathSplitInset(string const & name);
 	///
-	InsetBase * clone() const;
+	virtual std::auto_ptr<InsetBase> clone() const;
 	///
 	void write(WriteStream & os) const;
 	///

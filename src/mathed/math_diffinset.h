@@ -13,7 +13,7 @@ public:
 	///
 	explicit MathDiffInset();
 	///
-	InsetBase * clone() const;
+	virtual std::auto_ptr<InsetBase> clone() const;
 	///
 	void addDer(MathArray const & der);
 	///

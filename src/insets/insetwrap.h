@@ -1,3 +1,4 @@
+// -*- C++ -*-
 /**
  * \file insetwrap.h
  * This file is part of LyX, the document processor.
@@ -49,7 +50,7 @@ public:
 	///
 	void validate(LaTeXFeatures & features) const;
 	///
-	InsetBase * clone() const;
+	virtual std::auto_ptr<InsetBase> clone() const;
 	///
 	Inset::Code lyxCode() const { return Inset::WRAP_CODE; }
 	///

@@ -9,6 +9,7 @@
 
 
 using std::max;
+using std::auto_ptr;
 
 namespace {
 
@@ -52,9 +53,9 @@ MathDelimInset::MathDelimInset
 }
 
 
-InsetBase * MathDelimInset::clone() const
+auto_ptr<InsetBase> MathDelimInset::clone() const
 {
-	return new MathDelimInset(*this);
+	return auto_ptr<InsetBase>(new MathDelimInset(*this));
 }
 
 

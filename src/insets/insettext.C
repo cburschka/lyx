@@ -70,6 +70,7 @@ using std::make_pair;
 using std::vector;
 using std::pair;
 using std::for_each;
+using std::auto_ptr;
 
 using namespace lyx::support;
 using namespace lyx::graphics;
@@ -204,9 +205,9 @@ void InsetText::clear(bool just_mark_erased)
 }
 
 
-InsetBase * InsetText::clone() const
+auto_ptr<InsetBase> InsetText::clone() const
 {
-	return new InsetText(*this);
+	return auto_ptr<InsetBase>(new InsetText(*this));
 }
 
 
@@ -1924,7 +1925,7 @@ void InsetText::deleteLyXText(BufferView * bv, bool recursive) const
 }
 
 
-void InsetText::resizeLyXText(BufferView * bv, bool force) const
+void InsetText::resizeLyXText(BufferView * bv, bool /*force*/) const
 {
 	if (paragraphs.size() == 1 && paragraphs.begin()->empty()) {
 		// no data, resize not neccessary!

@@ -20,7 +20,7 @@ public:
 	///
 	explicit MathHullInset(string const & type);
 	///
-	InsetBase * clone() const;
+	virtual std::auto_ptr<InsetBase> clone() const;
 	///
 	mode_type currentMode() const;
 	///

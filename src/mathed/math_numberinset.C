@@ -7,15 +7,17 @@
 #include "math_support.h"
 #include "debug.h"
 
+using std::auto_ptr;
+
 
 MathNumberInset::MathNumberInset(string const & s)
 	: str_(s)
 {}
 
 
-InsetBase * MathNumberInset::clone() const
+auto_ptr<InsetBase> MathNumberInset::clone() const
 {
-	return new MathNumberInset(*this);
+	return auto_ptr<InsetBase>(new MathNumberInset(*this));
 }
 
 

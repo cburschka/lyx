@@ -1,3 +1,4 @@
+// -*- C++ -*-
 #ifndef MATH_TEXTINSET_H
 #define MATH_TEXTINSET_H
 
@@ -11,7 +12,7 @@ public:
 	///
 	MathTextInset();
 	///
-	InsetBase * clone() const;
+	virtual std::auto_ptr<InsetBase> clone() const;
 	/// get cursor position
 	void getPos(idx_type idx, pos_type pos, int & x, int & y) const;
 	/// this stores metrics information in cache_

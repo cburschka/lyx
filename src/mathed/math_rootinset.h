@@ -29,7 +29,7 @@ public:
 	///
 	MathRootInset();
 	///
-	InsetBase * clone() const;
+	virtual std::auto_ptr<InsetBase> clone() const;
 	///
 	bool idxUpDown(idx_type & idx, pos_type & pos, bool up, int targetx) const;
 	///

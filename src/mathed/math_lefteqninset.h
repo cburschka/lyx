@@ -12,7 +12,7 @@ public:
 	///
 	MathLefteqnInset();
 	///
-	InsetBase * clone() const;
+	virtual std::auto_ptr<InsetBase> clone() const;
 	///
 	string name() const;
 	///

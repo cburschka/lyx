@@ -82,7 +82,7 @@ public:
 	virtual Inset::Code lyxCode() const { return EXTERNAL_CODE; }
 
 	///
-	virtual InsetBase * clone() const;
+	virtual std::auto_ptr<InsetBase> clone() const;
 
 	/// return a copy of our current params
 	Params const & params() const;

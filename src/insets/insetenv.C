@@ -23,6 +23,7 @@
 
 using std::ostream;
 using std::endl;
+using std::auto_ptr;
 
 
 InsetEnvironment::InsetEnvironment
@@ -40,9 +41,9 @@ InsetEnvironment::InsetEnvironment(InsetEnvironment const & in)
 {}
 
 
-InsetBase * InsetEnvironment::clone() const
+auto_ptr<InsetBase> InsetEnvironment::clone() const
 {
-	return new InsetEnvironment(*this);
+	return auto_ptr<InsetBase>(new InsetEnvironment(*this));
 }
 
 

@@ -40,6 +40,7 @@ using namespace lyx::support;
 
 using std::ostream;
 using std::endl;
+using std::auto_ptr;
 
 
 // With this inset it will be possible to support the latex package
@@ -261,9 +262,9 @@ void InsetFloat::validate(LaTeXFeatures & features) const
 }
 
 
-InsetBase * InsetFloat::clone() const
+auto_ptr<InsetBase> InsetFloat::clone() const
 {
-	return new InsetFloat(*this);
+	return auto_ptr<InsetBase>(new InsetFloat(*this));
 }
 
 

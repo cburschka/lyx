@@ -26,6 +26,7 @@
 #include "debug.h"
 
 using std::ostream;
+using std::auto_ptr;
 
 
 void InsetNote::init()
@@ -58,9 +59,9 @@ InsetNote::~InsetNote() // MV
 }
 
 
-InsetBase * InsetNote::clone() const
+auto_ptr<InsetBase> InsetNote::clone() const
 {
-	return new InsetNote(*this);
+	return auto_ptr<InsetBase>(new InsetNote(*this));
 }
 
 
@@ -124,14 +125,14 @@ dispatch_result InsetNote::localDispatch(FuncRequest const & cmd)
 		return DISPATCHED;
 		}
 	case LFUN_INSET_EDIT:
-		if (cmd.button() != mouse_button::button3) 
+		if (cmd.button() != mouse_button::button3)
 			return InsetCollapsable::localDispatch(cmd);
 		return UNDISPATCHED;
 	case LFUN_INSET_DIALOG_UPDATE:
 		InsetNoteMailer("note", *this).updateDialog(bv);
 		return DISPATCHED;
 	case LFUN_MOUSE_RELEASE:
-		if (cmd.button() == mouse_button::button3 && cmd.x < button_length 
+		if (cmd.button() == mouse_button::button3 && cmd.x < button_length
 					&& cmd.y >= button_top_y && cmd.y <= button_bottom_y) {
 			InsetNoteMailer("note", *this).showDialog(bv);
 			return DISPATCHED;
@@ -159,8 +160,8 @@ int InsetNote::latex(Buffer const * buf, ostream & os,
 
 	if (pt == "Comment") {
 		os << "%\n\\end{comment}\n";
- 		i += 3;
-	} else if (pt == "Greyedout") { 
+		i += 3;
+	} else if (pt == "Greyedout") {
 		os << "\\normalcolor%\n}";
 		i += 2;
 	}
@@ -169,8 +170,8 @@ int InsetNote::latex(Buffer const * buf, ostream & os,
 
 
 int InsetNote::linuxdoc(Buffer const *, std::ostream &) const
-{ 
-	return 0; 
+{
+	return 0;
 }
 
 
@@ -179,9 +180,9 @@ int InsetNote::docbook(Buffer const * buf, std::ostream & os, bool mixcont) cons
 	int i = 0;
 	string const pt = params_.type;
 	// incomplete, untested - MV
-	if (pt != "Note") 
+	if (pt != "Note")
 		i = inset.docbook(buf, os, mixcont);
-	return i; 
+	return i;
 }
 
 
@@ -200,7 +201,7 @@ int InsetNote::ascii(Buffer const * buf, std::ostream & os, int ll) const
 
 void InsetNote::validate(LaTeXFeatures & features) const
 {
-	if (params_.type == "Comment") 
+	if (params_.type == "Comment")
 		features.require("verbatim");
 	if (params_.type == "Greyedout")
 		features.require("color");
@@ -265,4 +266,3 @@ void InsetNoteParams::read(LyXLex & lex)
 		type = lex.getString();
 	}
 }
-

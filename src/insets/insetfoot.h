@@ -27,7 +27,7 @@ public:
 	///
 	InsetFoot(InsetFoot const &);
 	///
-	InsetBase * clone() const;
+	virtual std::auto_ptr<InsetBase> clone() const;
 	///
 	Inset::Code lyxCode() const { return Inset::FOOT_CODE; }
 	///

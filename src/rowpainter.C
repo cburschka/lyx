@@ -131,7 +131,7 @@ RowPainter::RowPainter(BufferView const & bv, LyXText const & text,
      RowList::iterator rit,
      int y_offset, int x_offset, int y)
 	: bv_(bv), pain_(bv_.painter()), text_(text), row_(rit),
-	  pit_(rit->par()), 
+	  pit_(rit->par()),
 		xo_(x_offset), yo_(y_offset), y_(y)
 {}
 

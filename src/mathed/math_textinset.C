@@ -1,7 +1,8 @@
-
 #include "math_textinset.h"
 #include "metricsinfo.h"
 #include "debug.h"
+
+using std::auto_ptr;
 
 
 MathTextInset::MathTextInset()
@@ -9,9 +10,9 @@ MathTextInset::MathTextInset()
 {}
 
 
-InsetBase * MathTextInset::clone() const
+auto_ptr<InsetBase> MathTextInset::clone() const
 {
-	return new MathTextInset(*this);
+	return auto_ptr<InsetBase>(new MathTextInset(*this));
 }
 
 

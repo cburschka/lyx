@@ -5,6 +5,8 @@
 #include "math_mathmlstream.h"
 #include "math_streamstr.h"
 
+using std::auto_ptr;
+
 
 MathExFuncInset::MathExFuncInset(string const & name)
 	: MathNestInset(1), name_(name)
@@ -18,9 +20,9 @@ MathExFuncInset::MathExFuncInset(string const & name, MathArray const & ar)
 }
 
 
-InsetBase * MathExFuncInset::clone() const
+auto_ptr<InsetBase> MathExFuncInset::clone() const
 {
-	return new MathExFuncInset(*this);
+	return auto_ptr<InsetBase>(new MathExFuncInset(*this));
 }
 
 

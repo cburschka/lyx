@@ -7,6 +7,7 @@
 #include "support/LOstream.h"
 
 using std::max;
+using std::auto_ptr;
 
 
 MathBraceInset::MathBraceInset()
@@ -21,9 +22,9 @@ MathBraceInset::MathBraceInset(MathArray const & ar)
 }
 
 
-InsetBase * MathBraceInset::clone() const
+auto_ptr<InsetBase> MathBraceInset::clone() const
 {
-	return new MathBraceInset(*this);
+	return auto_ptr<InsetBase>(new MathBraceInset(*this));
 }
 
 

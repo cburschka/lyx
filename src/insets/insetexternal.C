@@ -48,6 +48,7 @@ using namespace lyx::support;
 
 using std::ostream;
 using std::endl;
+using std::auto_ptr;
 
 namespace {
 
@@ -100,10 +101,9 @@ InsetExternal::InsetExternal(InsetExternal const & other)
 }
 
 
-InsetBase * InsetExternal::clone() const
+auto_ptr<InsetBase> InsetExternal::clone() const
 {
-	InsetExternal * inset = new InsetExternal(*this);
-	return inset;
+	return auto_ptr<InsetBase>(new InsetExternal(*this));
 }
 
 

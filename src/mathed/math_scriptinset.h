@@ -20,7 +20,7 @@ public:
 	/// create inset with single script and given nucleus
 	MathScriptInset(MathAtom const & at, bool up);
 	///
-	InsetBase * clone() const;
+	virtual std::auto_ptr<InsetBase> clone() const;
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///

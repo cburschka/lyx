@@ -35,11 +35,12 @@
 
 using namespace lyx::support;
 
+using lyx::pos_type;
+
 using std::ostream;
 using std::min;
 using std::endl;
-
-using lyx::pos_type;
+using std::auto_ptr;
 
 
 void InsetERT::init()
@@ -71,9 +72,9 @@ InsetERT::InsetERT(InsetERT const & in)
 }
 
 
-InsetBase * InsetERT::clone() const
+auto_ptr<InsetBase> InsetERT::clone() const
 {
-	return new InsetERT(*this);
+	return auto_ptr<InsetBase>(new InsetERT(*this));
 }
 
 

@@ -8,15 +8,17 @@
 #include "math_streamstr.h"
 #include "support/LOstream.h"
 
+using std::auto_ptr;
+
 
 MathDecorationInset::MathDecorationInset(latexkeys const * key)
 	: MathNestInset(1), key_(key)
 {}
 
 
-InsetBase * MathDecorationInset::clone() const
+auto_ptr<InsetBase> MathDecorationInset::clone() const
 {
-	return new MathDecorationInset(*this);
+	return auto_ptr<InsetBase>(new MathDecorationInset(*this));
 }
 
 

@@ -68,7 +68,7 @@ public:
 	/// Create the right quote inset after character c
 	InsetQuotes(char c, BufferParams const & params);
 	///
-	InsetBase * clone() const;
+	virtual std::auto_ptr<InsetBase> clone() const;
 	///
 	void metrics(MetricsInfo &, Dimension &) const;
 	///

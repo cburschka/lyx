@@ -7,6 +7,7 @@
 
 
 using std::max;
+using std::auto_ptr;
 
 
 MathBinomInset::MathBinomInset(bool choose)
@@ -14,9 +15,9 @@ MathBinomInset::MathBinomInset(bool choose)
 {}
 
 
-InsetBase * MathBinomInset::clone() const
+auto_ptr<InsetBase> MathBinomInset::clone() const
 {
-	return new MathBinomInset(*this);
+	return auto_ptr<InsetBase>(new MathBinomInset(*this));
 }
 
 

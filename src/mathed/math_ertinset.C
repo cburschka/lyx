@@ -1,14 +1,15 @@
-
 #include <config.h>
 
 #include "math_ertinset.h"
 #include "math_mathmlstream.h"
 #include "support/LOstream.h"
 
+using std::auto_ptr;
 
-InsetBase * MathErtInset::clone() const
+
+auto_ptr<InsetBase> MathErtInset::clone() const
 {
-	return new MathErtInset(*this);
+	return auto_ptr<InsetBase>(new MathErtInset(*this));
 }
 
 

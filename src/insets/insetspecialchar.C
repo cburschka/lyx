@@ -26,6 +26,7 @@
 
 using std::ostream;
 using std::max;
+using std::auto_ptr;
 
 
 InsetSpecialChar::InsetSpecialChar(Kind k)
@@ -239,9 +240,9 @@ int InsetSpecialChar::docbook(Buffer const *, ostream & os, bool) const
 }
 
 
-InsetBase * InsetSpecialChar::clone() const
+auto_ptr<InsetBase> InsetSpecialChar::clone() const
 {
-	return new InsetSpecialChar(kind_);
+	return auto_ptr<InsetBase>(new InsetSpecialChar(kind_));
 }
 
 

@@ -26,6 +26,8 @@
 using std::ostream;
 using std::vector;
 using std::pair;
+using std::auto_ptr;
+
 
 InsetOptArg::InsetOptArg(BufferParams const & ins)
 	: InsetCollapsable(ins, true)
@@ -47,9 +49,9 @@ InsetOptArg::InsetOptArg(InsetOptArg const & in)
 }
 
 
-InsetBase * InsetOptArg::clone() const
+auto_ptr<InsetBase> InsetOptArg::clone() const
 {
-	return new InsetOptArg(*this);
+	return auto_ptr<InsetBase>(new InsetOptArg(*this));
 }
 
 

@@ -57,7 +57,7 @@ public:
 	///
 	bool directWrite() const;
 	///
-	virtual InsetBase * clone() const;
+	virtual std::auto_ptr<InsetBase> clone() const;
 	///
 	Inset::Code lyxCode()const;
 	///

@@ -89,6 +89,7 @@ using namespace lyx::support;
 
 using std::ostream;
 using std::endl;
+using std::auto_ptr;
 
 
 namespace {
@@ -153,9 +154,9 @@ InsetGraphics::InsetGraphics(InsetGraphics const & ig)
 }
 
 
-InsetBase * InsetGraphics::clone() const
+auto_ptr<InsetBase> InsetGraphics::clone() const
 {
-	return new InsetGraphics(*this);
+	return auto_ptr<InsetBase>(new InsetGraphics(*this));
 }
 
 
@@ -468,7 +469,7 @@ int InsetGraphics::latex(Buffer const * buf, ostream & os,
 		<< "insetgraphics::latex: Filename = "
 		<< params().filename.absFilename() << endl;
 
-	string const relative_file = 
+	string const relative_file =
 		params().filename.relFilename(buf->filePath());
 
 	// A missing (e)ps-extension is no problem for LaTeX, so
@@ -625,7 +626,7 @@ string const InsetGraphicsMailer::inset2string(Buffer const & buffer) const
 
 void InsetGraphicsMailer::string2params(string const & in,
 					Buffer const & buffer,
- 					InsetGraphicsParams & params)
+					InsetGraphicsParams & params)
 {
 	params = InsetGraphicsParams();
 

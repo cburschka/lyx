@@ -19,7 +19,7 @@ public:
 	///
 	MathFboxInset(latexkeys const * key);
 	///
-	InsetBase * clone() const;
+	virtual std::auto_ptr<InsetBase> clone() const;
 	///
 	mode_type currentMode() const;
 	///

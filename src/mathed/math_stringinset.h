@@ -17,7 +17,7 @@ public:
 	///
 	explicit MathStringInset(string const & s);
 	///
-	InsetBase * clone() const;
+	virtual std::auto_ptr<InsetBase> clone() const;
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///

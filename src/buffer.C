@@ -263,7 +263,7 @@ int Buffer::readHeader(LyXLex & lex)
 							   "%1$s %2$s\n"),
 							 token,
 							 lex.getString());
-				error(ErrorItem(_("Header error"), s, 
+				error(ErrorItem(_("Header error"), s,
 						-1, 0, 0));
 			}
 		}
