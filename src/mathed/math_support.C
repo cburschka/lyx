@@ -526,7 +526,7 @@ LyXFont::FONT_SHAPE  const inh_shape  = LyXFont::INHERIT_SHAPE;
 // mathnormal should be the first, otherwise the fallback fuerther down
 // does not work
 fontinfo fontinfos[] = {
-	{"mathnormal", inh_family,inh_series, LyXFont::UP_SHAPE, LColor::math},
+	{"mathnormal", inh_family, LyXFont::MEDIUM_SERIES, LyXFont::UP_SHAPE, LColor::math},
 	{"mathbf", inh_family, LyXFont::BOLD_SERIES, inh_shape, LColor::math},
 	{"mathcal",LyXFont::CMSY_FAMILY, inh_series, inh_shape, LColor::math},
 	{"mathfrak", LyXFont::EUFRAK_FAMILY, inh_series, inh_shape, LColor::math},

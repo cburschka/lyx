@@ -79,8 +79,6 @@ libmathed_la_SOURCES = \
 	math_kerninset.h \
 	math_lefteqninset.C \
 	math_lefteqninset.h \
-	math_limitopinset.C \
-	math_limitopinset.h \
 	math_macro.C \
 	math_macro.h \
 	math_macroarg.C \
