@@ -1,0 +1,122 @@
+
+     Lazy Generation of LyXText
+     --------------------------
+
+     Currently we generate the Row structure at the time of LyXText
+     creation. This is the "formatting" period of the document
+     loading. As can be seen this has a significant hit on the amount
+     of time used to load large documents. On my computer this
+     manifests itself as a 15 second load time of the UserGuide. In
+     many ways this is acceptable, but we actually get the same hit
+     when switching between documents. Because of this the TextCache
+     was created, however it seems that textcache has some internal
+     problems or it makes problems in LyXText show.
+
+     My suggestion is to make LyXText only generate Rows as need, i.e.
+     lazy evaluation/generation of the on screen formatting. This will
+     give us: blinding fast document loading. It also lessens the need
+     for the TextCache class significantly and with some small further
+     alterations TextCache can be removed completely.
+
+     The Rows are currently stored in a home made double linked list.
+     To achieve the lazy evaluation this should be changed slightly:
+
+     struct RowPar {
+	    // Pointer to the paragraph that this rowpar holds rows for.
+	    LyXParagraph * par;
+	    // Only used for lazy evaluation when switching between buffers.
+	    unsigned int par_y;
+	    typedef vector<Row> Rows;
+	    // The actual rows, generated as needed.
+	    Rows rows;
+	};
+
+     struct Row {
+	    LyXParagraph::size_type pos;
+	    mutable int fill;
+	    unsigned short height;
+	    unsigned short ascent_of_text;
+	    unsigned baseline;
+	};
+
+     typedef list<RowPar> ParRowList;
+     ParRowList parrow;
+
+     Several LyXText methods needs to be changed to handle this new
+     structure.
+
+     Note about RowPar::par_y: If we only want top-down¹ this variable
+     is not needed. If we however want to be able to begin evaluation
+     at the location of the cursor it is needed. Then we don't have to
+     store the formatted document in the textcache. Only a list of
+
+     struct Cache {
+	    LyXParagraph * par;
+	    unsigned int par_y;
+     };
+
+     is needed. Since we regenerate all the rows subtleties with row
+     lifetime etc. are avoided.
+
+     Memory usage: the current Row has a size of about 28 bytes on a
+     32 bit machine and we have one Row for each line on the screen.
+     For a 10 page document with ca. 50 lines on each page this is
+     28 * 10 * 50 = 14000 bytes.
+     The approach above has three pointer less in each row, so
+     this is 16 * 10 * 50 = 8000 bytes, we have however some
+     additional overhead: the RowPars one for each paragraph if we
+     assume 5 lines per paragraph and 20 bytes for each RowPar we get:
+     10 * 50 / 5 * 20 = 2000. This is a sum of 10000 on the new scheme. 
+
+     Speed: some operations will most likely be somewhat faster since
+     they now can operate on the number of paragraph instead of the
+     number of rows. I do not foresee any operations becoming slower.
+     The actual lazy evaluation will be done upon displaying, and when
+     the lyx process is idle (idle_callback), this will mostly be
+     initiated by LyXScreen and done in LyXText::GetRowNearY and in
+     LyXText::GetRow. Perhaps also in LyXText::GetVisibleRow. All of
+     the evaluation will be done on a per-paragraph basis.
+
+     If we want to operate on rows only it is easy to create iterators
+     that can handle this. (This means that a way to force the
+     evaluation of the rows might be something like:
+		
+		// traverse all the rows and generate the missing ones. 
+		for_each(rowlist.begin(), rowlist.end(), dummy_func);
+
+     Note about the buffer structure in the lyx repository: LyXText
+     really is orthogonal to the new buffer structure in that the
+     BufferStructure is used for storage of the paragraphs, and
+     LyXText is used for the caching of on-screen display (of
+     lines/rows).
+
+     Note on impact on other code: Since the current rowlist is
+     internal to LyXText the impact on code outside LyXText will be
+     very small. However _inside_ LyXText the impact will be huge, and
+     all methods that access the rowlist will have to change.
+
+     When to begin coding on this. Of course since this is something
+     that I want to do, I'd like to begin right away. There can be
+     argued that this should wait until table and floats has been
+     moved out of LyXText, but I only partially agree. These changes
+     will be on a fairly low-level and the removal of table and floats
+     will not impact the development of this code much. Also this can
+     very well be done in a separate branch in cvs. Anyway this coding
+     will not begin until after 1.1.5 is released.
+
+     Fun stuff: Instead of doing the lazy evaluation only when needed
+     or by the idle callback this could also be done by a separate
+     thread taking advantage of SMP and/or io-blocking in the main
+     thread. We could even have the evaluation of each paragraph we
+     done in its own thread (or by a few² worker threads)
+
+
+	 Lgb
+
+¹ Row evaluation from the beginning of the document to the end. Never
+from the middle.
+
+² Number of CPUs f.ex.
+
+
+     

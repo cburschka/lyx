@@ -17,16 +17,9 @@
 ///
 struct Row {
 	///
-	Row()
-		: par(0), pos(0), baseline(0), fill(0), height(0),
-		  ascent_of_text(0), next(0), previous(0)
-		{}
-	///
 	LyXParagraph * par;
 	///
 	LyXParagraph::size_type pos;
-	///
-	unsigned short  baseline;
 	/** what is missing to a full row can be negative.
 	  Needed for hfills, flushright, block etc. */
 	mutable int fill;
@@ -34,7 +27,13 @@ struct Row {
 	unsigned short  height;
 	///
 	unsigned short ascent_of_text;
-	
+	///
+	unsigned int  baseline;
+	///
+	Row()
+		: par(0), pos(0), fill(0), height(0),
+		  ascent_of_text(0), baseline(0), next(0), previous(0)
+		{}
 	///
 	Row * next;
 	///

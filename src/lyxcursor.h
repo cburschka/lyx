@@ -28,7 +28,7 @@ struct LyXCursor {
 	///
 	int x_fix;
 	///
-	long y;
+	unsigned long y;
 	///
 	Row * row;
 };

@@ -611,27 +611,32 @@ void runqueue()
 				::sleep(1);
 				XGrabServer(tempdisp);
 			}
+#ifdef HAVE_SSTREAM
 			XChangeProperty(tempdisp, 
 					fl_get_canvas_id(figinset_canvas),
 					XInternAtom(tempdisp, "GHOSTVIEW", false),
 					XInternAtom(tempdisp, "STRING", false),
 					8, PropModeAppend, 
-#ifdef HAVE_SSTREAM
 					reinterpret_cast<unsigned char*>(const_cast<char*>(t1.str().c_str())),
-					t1.str().size()
+					t1.str().size());
 #else
+			
+			XChangeProperty(tempdisp, 
+					fl_get_canvas_id(figinset_canvas),
+					XInternAtom(tempdisp, "GHOSTVIEW", false),
+					XInternAtom(tempdisp, "STRING", false),
+					8, PropModeAppend, 
 					reinterpret_cast<unsigned char*>(const_cast<char*>(t1.str())),
-					strlen(t1.str())
+					::strlen(t1.str()));
 #endif
-				);
 			XUngrabServer(tempdisp);
 			XFlush(tempdisp);
 
 #ifdef HAVE_SSTREAM
 			ostringstream t3;
 #else
-			char tbuf3[384];
-			ostrstream t3(tbuf3, sizeof(tbuf3));
+			//char tbuf[384];
+			ostrstream t3(tbuf, sizeof(tbuf));
 #endif
 			switch (p->data->flags & 3) {
 			case 0: t3 << 'H'; break; // Hidden
@@ -652,20 +657,25 @@ void runqueue()
 #endif
 
 			XGrabServer(tempdisp);
+#ifdef HAVE_SSTREAM
 			XChangeProperty(tempdisp, 
 					fl_get_canvas_id(figinset_canvas),
 					XInternAtom(tempdisp,
 						    "GHOSTVIEW_COLORS", false),
 					XInternAtom(tempdisp, "STRING", false),
 					8, PropModeReplace, 
-#ifdef HAVE_SSTREAM
 					reinterpret_cast<unsigned char*>(const_cast<char*>(t3.str().c_str())),
-					t3.str().size()
+					t3.str().size());
 #else
+			XChangeProperty(tempdisp, 
+					fl_get_canvas_id(figinset_canvas),
+					XInternAtom(tempdisp,
+						    "GHOSTVIEW_COLORS", false),
+					XInternAtom(tempdisp, "STRING", false),
+					8, PropModeReplace, 
 					reinterpret_cast<unsigned char*>(const_cast<char*>(t3.str())),
-					strlen(t3.str())
+					::strlen(t3.str()));
 #endif
-				);
 			XUngrabServer(tempdisp);
 			XFlush(tempdisp);
 			
@@ -963,7 +973,7 @@ void UnregisterFigure(InsetFig * fi)
 			fl_hide_form(tmpfig->inset->form->Figure);
 		}
 #if FL_REVISION == 89
-#warning Reactivate this free_form calls
+		// CHECK Reactivate this free_form calls
 #else
 		fl_free_form(tmpfig->inset->form->Figure);
 		free(tmpfig->inset->form); // Why free?
@@ -1768,7 +1778,7 @@ void InsetFig::CallbackFig(long arg)
 				fl_set_focus_object(form->Figure, form->OkBtn);
 				fl_hide_form(form->Figure);
 #if FL_REVISION == 89
-#warning Reactivate this free_form calls
+				// CHECK Reactivate this free_form calls
 #else
 				fl_free_form(form->Figure);
 				free(form); // Why free?
@@ -1785,8 +1795,8 @@ void InsetFig::CallbackFig(long arg)
 		fl_set_focus_object(form->Figure, form->OkBtn);
 		fl_hide_form(form->Figure);
 #if FL_REVISION == 89
-#warning Reactivate this free_form calls
-#warning Jug, is this still a problem?
+		// CHECK Reactivate this free_form calls
+		// Jug, is this still a problem?
 #else
 		fl_free_form(form->Figure);
 		free(form); // Why free?

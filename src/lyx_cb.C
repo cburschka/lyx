@@ -479,9 +479,7 @@ bool RunScript(Buffer * buffer, bool wait,
 		// the return code of the command. This means that all
 		// the code I added in PrintApplyCB is currently
 		// useless...
-#ifdef WITH_WARNINGS
-#warning What should we do here?
-#endif		
+		// CHECK What should we do here?
 		ShowMessage(buffer, _("Executing command:"), cmd);
 		result = one.startscript(Systemcalls::System, cmd);
 	} else {
@@ -1279,9 +1277,9 @@ int RunLinuxDoc(BufferView * bv, int flag, string const & filename)
 	if (!bv->available())
 		return 0;
 	bv->buffer()->makeLinuxDocFile(name, 0);
-#ifdef WITH_WARNINGS
-#warning remove this once we have a proper geometry class
-#endif
+
+	// CHECK remove this once we have a proper geometry class
+
 	BufferParams::PAPER_SIZE ps =
 		static_cast<BufferParams::PAPER_SIZE>(bv->buffer()->params.papersize);
 	switch (ps) {
@@ -2364,9 +2362,10 @@ extern "C" void DocumentApplyCB(FL_OBJECT *, long)
 	BufferParams * params = &(current_view->buffer()->params);
 
 	Language const * old_language = params->language_info;
-	Language const * new_language;
 	params->language = combo_language->getline();
 	Languages::iterator lit = languages.find(params->language);
+
+	Language const * new_language;
 	if (lit != languages.end()) 
 		new_language = &(*lit).second;
 	else
@@ -2707,7 +2706,7 @@ extern "C" void TableApplyCB(FL_OBJECT *, long)
 
 	Language const * lang = 
 		current_view->text->cursor.par->getParLanguage();
-	LyXFont font(LyXFont::ALL_INHERIT,lang);
+	LyXFont font(LyXFont::ALL_INHERIT, lang);
 	for (int i = 0; i < xsize * ysize - 1; ++i) {
 		current_view->text->cursor.par->InsertChar(0, LyXParagraph::META_NEWLINE);
 		current_view->text->cursor.par->SetFont(0, font);

@@ -775,8 +775,8 @@ int LyXText::LeftMargin(Row const * row) const
 	}
 	return x;
 }
-    
-   
+
+
 int LyXText::RightMargin(Row const * row) const
 {
 	LyXLayout const & layout =
@@ -1800,7 +1800,7 @@ void LyXText::OpenFootnote()
    /* set the dimensions of the cursor row */
    row->fill = Fill(row, paperwidth);
    SetHeightOfRow(row);
-#warning See comment on top of text.C
+   // CHECK See comment on top of text.C
    tmppar = tmppar->Next();
    
    while (tmppar != endpar) {
@@ -2401,7 +2401,7 @@ void LyXText::CheckParagraphInTable(LyXParagraph * par,
 		/* redraw only the row */
 		LyXCursor tmpcursor = cursor;
 		SetCursorIntern(par, pos);
-#warning See comment on top of text.C
+		//CHECK See comment on top of text.C
 		refresh_y = y;
 		refresh_x = cursor.x;
 		refresh_row = row;
@@ -2525,9 +2525,7 @@ void LyXText::InsertChar(char c)
 	// The bug is triggered when we type in a description environment:
 	// The current_font is not changed when we go from label to main text
 	// and it should (along with realtmpfont) when we type the space.
-#ifdef WITH_WARNINGS
-#warning There is a bug here! (Asger)
-#endif
+	// CHECK There is a bug here! (Asger)
 	
 	LyXFont realtmpfont = real_current_font;
 	LyXFont rawtmpfont = current_font;  /* store the current font.
@@ -2835,7 +2833,7 @@ void LyXText::CursorRightOneWord() const
 {
 	// treat floats, HFills and Insets as words
 	LyXCursor tmpcursor = cursor;
-#warning See comment on top of text.C
+	// CHECK See comment on top of text.C
 
 	if (tmpcursor.pos == tmpcursor.par->Last()
 	    && tmpcursor.par->Next())
@@ -3114,7 +3112,7 @@ void LyXText::DeleteWordForward()
         
 	if (!cursor.par->Last())
 		CursorRight();
-#warning See comment on top of text.C
+	// CHECK See comment on top of text.C
 	else {
 		/* -------> Skip initial non-word stuff. */
 		while ( cursor.pos < cursor.par->Last() 
@@ -3141,7 +3139,7 @@ void LyXText::DeleteWordBackward()
        LyXCursor tmpcursor = cursor;
        if (!cursor.par->Last())
          CursorLeft();
-#warning See comment on top of text.C
+       // CHECK See comment on top of text.C
        else{
          selection = true; // to avoid deletion 
          CursorLeftOneWord();
@@ -3159,7 +3157,7 @@ void LyXText::DeleteLineForward()
 	LyXCursor tmpcursor = cursor;
 	if (!cursor.par->Last())
 		CursorRight();
-#warning See comment on top of text.C
+	// CHECK See comment on top of text.C
 	else {
 		CursorEnd();
 		sel_cursor = cursor;
@@ -3233,7 +3231,7 @@ void LyXText::Delete()
 	// just move to the right
 	CursorRightIntern();
 
-#warning Look at the comment here.
+	// CHECK Look at the comment here.
 	// This check is not very good...
 	// The CursorRightIntern calls DeleteEmptyParagrapgMechanism
 	// and that can very well delete the par or par->previous in
@@ -3593,8 +3591,7 @@ void LyXText::GetVisibleRow(int offset, Row * row_ptr, long y)
 	PrepareToPrint(row_ptr, x, fill_separator,
 		       fill_hfill, fill_label_hfill);
 	
-	/* initialize the pixmap */
-	
+	// clear the area where we want to paint/print
 	pain.fillRectangle(0, offset, paperwidth, row_ptr->height);
 	
 	if (selection) {
@@ -3634,14 +3631,16 @@ void LyXText::GetVisibleRow(int offset, Row * row_ptr, long y)
 							   sel_end_cursor.x,
 							   row_ptr->height,
 							   LColor::selection);
-			} else if (y > sel_start_cursor.y && y < sel_end_cursor.y) {
+			} else if (y > long(sel_start_cursor.y)
+				   && y < long(sel_end_cursor.y)) {
 				pain.fillRectangle(0, offset,
 						   paperwidth, row_ptr->height,
 						   LColor::selection);
 			}
 		} else if ( sel_start_cursor.row != row_ptr &&
 			    sel_end_cursor.row != row_ptr &&
-			    y > sel_start_cursor.y && y < sel_end_cursor.y) {
+			    y > long(sel_start_cursor.y)
+			    && y < long(sel_end_cursor.y)) {
 			pain.fillRectangle(0, offset,
 					   paperwidth, row_ptr->height,
 					   LColor::selection);
@@ -4592,56 +4591,9 @@ void LyXText::InsertFootnoteEnvironment(LyXParagraph::footnote_kind kind)
 Row * LyXText::GetRow(LyXParagraph * par,
 		      LyXParagraph::size_type pos, long & y) const
 {
-	Row * tmprow;
-
-	if (currentrow) {
-		if (par == currentrow->par
-		    || par == currentrow->par->Previous()) {
-			// do not dereference par, it may have been deleted
-			// already! (Matthias)
-
-			// Walk backwards as long as the previous
-			// rows par is not par
-			while (currentrow->previous
-			       && currentrow->previous->par != par) {
-				currentrow = currentrow->previous;
-				currentrow_y -= currentrow->height;
-			}
-			// Walk backwards as long as the previous
-			// rows par _is_ par
-			while (currentrow->previous
-			       && currentrow->previous->par == par) {
-				currentrow = currentrow->previous;
-				currentrow_y -= currentrow->height;
-			}
-		}
-
-		tmprow = currentrow;
-		y = currentrow_y;
-		// find the first row of the specified paragraph
-		while (tmprow->next
-		       && tmprow->par != par) {
-			y += tmprow->height;
-			tmprow = tmprow->next;
-		}
-		
-		if (tmprow->par == par){
-			// now find the wanted row
-			while (tmprow->pos < pos
-			       && tmprow->next
-			       && tmprow->next->par == par
-			       && tmprow->next->pos <= pos) {
-				y += tmprow->height;
-				tmprow = tmprow->next;
-			}
-			currentrow = tmprow;
-			currentrow_y = y;
-			return tmprow;
-		}
-	}
-
-	tmprow = firstrow;
+	Row * tmprow = firstrow;
 	y = 0;
+	
 	// find the first row of the specified paragraph
 	while (tmprow->next && tmprow->par != par) {
 		y += tmprow->height;
@@ -4656,9 +4608,6 @@ Row * LyXText::GetRow(LyXParagraph * par,
 		y += tmprow->height;
 		tmprow = tmprow->next;
 	}
-	
-	currentrow = tmprow;
-	currentrow_y = y;
 	
 	return tmprow;
 }

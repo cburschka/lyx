@@ -27,6 +27,7 @@ class BufferParams;
 class Row;
 class BufferView;
 
+
 /**
   This class holds the mapping between buffer paragraphs and screen rows.
   */
@@ -36,8 +37,6 @@ public:
 	enum text_status {
 		///
 		UNCHANGED,
-		///
-		NEED_LITTLE_REFRESH,
 		///
 		NEED_MORE_REFRESH,
 		///
@@ -144,8 +143,9 @@ public:
 	///
 	void InsertInset(Inset * inset);
    
-	/// completes the insertion with a full rebreak
-	int FullRebreak();
+	/** Completes the insertion with a full rebreak.
+	    Returns true if something was broken. */
+        bool FullRebreak();
 
 	///
 	LyXParagraph::footnote_flag GetFootnoteFlag(int row);
@@ -485,18 +485,13 @@ private:
 	mutable Row * firstrow;
 	///
 	mutable Row * lastrow;
-	
+
 	/** Copybuffer for copy environment type
 	  Asger has learned that this should be a buffer-property instead
 	  Lgb has learned that 'char' is a lousy type for non-characters
 	  */
 	LyXTextClass::size_type copylayouttype;
 
-	/// the currentrow is needed to access rows faster*/ 
-	mutable Row * currentrow; // pointer to the current row
-	/// position in the text 
-	mutable long currentrow_y;
-   
 	/** inserts a new row behind the specified row, increments
 	 * the touched counters */
 	void InsertRow(Row * row, LyXParagraph * par,
@@ -590,12 +585,12 @@ private:
    
 	/// like NumberOfHfills, but only those in the manual label!
 	int NumberOfLabelHfills(Row const * row) const;
-
 	/** returns true, if a expansion is needed. Rules are given by 
 	  LaTeX
 	  */
 	bool HfillExpansion(Row const * row_ptr,
 			    LyXParagraph::size_type pos) const;
+
 
 	///
 	mutable std::vector<LyXParagraph::size_type> log2vis_list;

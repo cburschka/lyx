@@ -339,7 +339,6 @@ void mathed_write(MathParInset * p, ostream & os, int * newlines,
 	   //if it is not there? The reason why I want to avoid this is
 	   // because of the "backlook" into the output stream.
 	   // Lgb.
-#warning CHECK
 #if 0
      if (!suffixIs(outf, '\n')) {
        // in batchmode we need to make sure

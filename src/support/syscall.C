@@ -95,9 +95,10 @@ void Systemcalls::kill(int /*tolerance*/) {
 		// Here, we should add the PID to a list of
 		// waiting processes to kill if they are not
 		// dead without tolerance seconds
-#ifdef WITH_WARNINGS
-#warning Implement this using the timer of the singleton systemcontroller (Asger)
-#endif
+
+		// CHECK Implement this using the timer of
+		// the singleton systemcontroller (Asger)
+
 	}
 }
 

@@ -48,8 +48,10 @@ public:
 	void update();
 	///
 	void update(signed char f);
+#if 0
 	///
 	void smallUpdate(signed char f);
+#endif
 	///
 	void updateScrollbar();
 	///
@@ -190,12 +192,14 @@ public:
 	bool active() const;
 	///
 	bool belowMouse() const;
+#if 0
 	/// A callback for the up arrow in the scrollbar.
 	void upCB(long time, int button);
-	/// A callback for the slider in the scrollbar.
-	void scrollCB(double);
 	/// A callback for the down arrow in the scrollbar.
 	void downCB(long time, int button);
+#endif
+	/// A callback for the slider in the scrollbar.
+	void scrollCB(double);
 
 	///
 	static void cursorToggleCB(FL_OBJECT * ob, long);

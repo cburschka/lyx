@@ -1,0 +1,39 @@
+
+		How to support the seminar package in LyX
+	       ===========================================
+
+         Seminar.cls is a nice LaTeX2e package aimed a producing
+       nice and clear slides. It can work together with pstricks and
+       the color package, and can procduce fance slides indeed.
+
+       The seminar class has some important class options: 
+	   - article   Produce the whole seminar document as a regular
+	               latex article with the slides as floating
+		       bodies and the notes as running text.
+	   - slidesonly Generates only the slides, not the notes.
+	   - notesonly Generates only the notes.
+	   -
+
+           Variables for the slide environment
+           ===================================
+
+	   \slideleftmargin
+	   \sliderightmargin
+	   \slidetopmargin
+	   \slidebottommargin
+	   \paperwidth
+	   \paperheight
+	   ... and a lot of others
+
+	   Goal
+	   ====
+
+	   The ultimate goad would be to be able to do all that is
+	   done in the Seminar FAQ inside LyX.
+
+	   References
+	   ==========
+
+	   CTAN/macros/latex/contrib/other/seminar
+	   http://www.tug.org/applications/Seminar
+	   The Seminar FAQ

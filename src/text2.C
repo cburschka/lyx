@@ -51,10 +51,7 @@ LyXText::LyXText(BufferView * bv, int pw, Buffer * p)
 	owner_ = bv;
 	firstrow = 0;
 	lastrow = 0;
-	currentrow = 0;
-	currentrow_y = 0;
 	paperwidth = pw;
-	//bparams = &p->params;
 	buffer = p;
 	number_of_rows = 0;
 	refresh_y = 0;
@@ -87,6 +84,22 @@ LyXText::LyXText(BufferView * bv, int pw, Buffer * p)
 
 	// Default layouttype for copy environment type
 	copylayouttype = 0;
+
+#if 0
+	// Dump all rowinformation:
+	Row * tmprow = firstrow;
+	lyxerr << "Baseline Paragraph Pos Height Ascent Fill\n";
+	while (tmprow) {
+		lyxerr << tmprow->baseline << '\t'
+		       << tmprow->par << '\t'
+		       << tmprow->pos << '\t'
+		       << tmprow->height << '\t'
+		       << tmprow->ascent_of_text << '\t'
+		       << tmprow->fill << '\n';
+		tmprow = tmprow->next;
+	}
+	lyxerr.flush();
+#endif
 }
 
 
@@ -282,11 +295,6 @@ void LyXText::RemoveRow(Row * row) const
 	   row of this row */
 	long unused_y;
 	GetRow(row->par, row->pos, unused_y);
-	currentrow = currentrow->previous;
-	if (currentrow)
-		currentrow_y -= currentrow->height;
-	else
-		currentrow_y = 0;
    
 	if (row->next)
 		row->next->previous = row->previous;
@@ -910,14 +918,14 @@ void LyXText::RedoParagraphs(LyXCursor const & cur,
 }
 
 
-int LyXText::FullRebreak()
+bool LyXText::FullRebreak()
 {
 	if (need_break_row) {
 		BreakAgain(need_break_row);
 		need_break_row = 0;
-		return 1;
+		return true;
 	}
-	return 0;
+	return false;
 }
 
 
@@ -1041,38 +1049,21 @@ void  LyXText::CursorBottom() const
    
 /* returns a pointer to the row near the specified y-coordinate
 * (relative to the whole text). y is set to the real beginning
-* of this row */ 
+* of this row */
 Row * LyXText::GetRowNearY(long & y) const
 {
-	Row * tmprow;
-	long tmpy;
-   
-	if (currentrow) {
-		tmprow = currentrow;
-		tmpy = currentrow_y;
-	} else {
-		tmprow = firstrow;
-		tmpy = 0;
+	Row * tmprow = firstrow;
+	long tmpy = 0;
+
+	while (tmprow->next && tmpy + tmprow->height <= y) {
+		tmpy += tmprow->height;
+		tmprow = tmprow->next;
 	}
-
-	if (tmpy <= y)
-		while (tmprow->next && tmpy + tmprow->height <= y) {
-			tmpy += tmprow->height;
-			tmprow = tmprow->next;
-		}
-	else
-		while (tmprow->previous && tmpy > y) {
-			tmprow = tmprow->previous;
-			tmpy -= tmprow->height;
-		}
-
-	currentrow = tmprow;
-	currentrow_y = tmpy;
 
 	y = tmpy;   // return the real y
 	return tmprow;
 }
-   
+
 
 void LyXText::ToggleFree(LyXFont const & font, bool toggleall)
 {
@@ -2897,8 +2888,8 @@ bool LyXText::GotoNextNote() const
 void LyXText::CheckParagraph(LyXParagraph * par,
 			     LyXParagraph::size_type pos)
 {
-  
-	LyXCursor tmpcursor;
+	LyXCursor tmpcursor;			
+
 
 	/* table stuff -- begin*/
    
@@ -3699,17 +3690,8 @@ bool LyXText::TextHandleUndo(Undo * undo)
 				if (undo->kind == Undo::EDIT) {
 					tmppar2->setContentsFromPar(tmppar);
 					tmppar->clearContents();
-					//tmppar2->text = tmppar->text;
-					//tmppar->text.clear();
 					tmppar2 = tmppar2->next;
 				}
-				if ( currentrow && currentrow->par == tmppar )
-					currentrow = currentrow -> previous;
-				// Commenting out this might remove the error
-				// reported by Purify, but it might also
-				// introduce a memory leak. We need to
-				// check this (Lgb)
-				//delete tmppar;
 			}
 		}
     

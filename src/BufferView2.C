@@ -379,7 +379,7 @@ void BufferView::allFloats(char flag, char figmar)
 	text->SetCursorIntern(cursor.par, cursor.pos);
 	redraw();
 	fitCursor();
-	updateScrollbar();
+	//updateScrollbar();
 }
 
 

@@ -25,7 +25,7 @@
 #include "lyx_gui_misc.h"
 #include "lyxrc.h"
 #include "intl.h"
-
+#include "support/LAssert.h"
 using std::pair;
 using std::endl;
 
@@ -181,10 +181,13 @@ void BufferView::Pimpl::redraw()
 }
 
 
-void BufferView::Pimpl::fitCursor()
+bool BufferView::Pimpl::fitCursor()
 {
-	if (screen) screen->FitCursor();
-	updateScrollbar();
+	Assert(screen); // it is a programming error to call fitCursor
+	// without a valid screen.
+	bool ret = screen->FitCursor();
+	if (ret) updateScrollbar();
+	return ret;
 }
 
 
@@ -346,10 +349,10 @@ void BufferView::Pimpl::updateScrollbar()
 		return;
 	}
 	
-	static long max2 = 0;
-	static long height2 = 0;
+	static unsigned long max2 = 0;
+	static unsigned long height2 = 0;
 
-	long cbth = 0;
+	unsigned long cbth = 0;
 	long cbsf = 0;
 
 	if (bv_->text)
@@ -414,7 +417,7 @@ void BufferView::Pimpl::scrollCB(double value)
 
 	if (cursor_follows_scrollbar) {
 		LyXText * vbt = bv_->text;
-		int height = vbt->DefaultHeight();
+		unsigned int height = vbt->DefaultHeight();
 		
 		if (vbt->cursor.y < screen->first + height) {
 			vbt->SetCursorFromCoordinates(0,
@@ -432,6 +435,7 @@ void BufferView::Pimpl::scrollCB(double value)
 }
 
 
+#if 0
 // Callback for scrollbar down button
 void BufferView::Pimpl::downCB(long time, int button)
 {
@@ -449,6 +453,7 @@ void BufferView::Pimpl::downCB(long time, int button)
 		break;
 	}
 }
+#endif
 
 
 int BufferView::Pimpl::scrollUp(long time)
@@ -508,7 +513,7 @@ int BufferView::Pimpl::scrollDown(long time)
 	return 0;
 }
 
-
+#if 0
 void BufferView::Pimpl::scrollUpOnePage()
 {
 	if (buffer_ == 0) return;
@@ -526,8 +531,9 @@ void BufferView::Pimpl::scrollUpOnePage()
 	
 	bv_->scrollCB(y); 
 }
+#endif
 
-
+#if 0
 void BufferView::Pimpl::scrollDownOnePage()
 {
 	if (buffer_ == 0) return;
@@ -545,6 +551,7 @@ void BufferView::Pimpl::scrollDownOnePage()
 	
 	bv_->scrollCB(y); 
 }
+#endif
 
 
 void BufferView::Pimpl::workAreaMotionNotify(int x, int y, unsigned int state)
@@ -578,8 +585,7 @@ void BufferView::Pimpl::workAreaMotionNotify(int x, int y, unsigned int state)
       
 		bv_->text->SetSelection();
 		screen->ToggleToggle();
-		if (screen->FitCursor())
-			updateScrollbar(); 
+		fitCursor();
 		screen->ShowCursor();
 	}
 	return;
@@ -708,8 +714,7 @@ void BufferView::Pimpl::workAreaButtonPress(int xpos, int ypos,
 	bv_->text->cursor.x_fix = bv_->text->cursor.x;
 	
 	owner_->updateLayoutChoice();
-	if (screen->FitCursor()){
-		updateScrollbar();
+	if (fitCursor()) {
 		selection_possible = false;
 	}
 	
@@ -781,7 +786,8 @@ void BufferView::Pimpl::leaveView()
 }
 
 
-void BufferView::Pimpl::workAreaButtonRelease(int x, int y, unsigned int button)
+void BufferView::Pimpl::workAreaButtonRelease(int x, int y,
+					      unsigned int button)
 {
 	if (buffer_ == 0 || screen == 0) return;
 
@@ -823,9 +829,9 @@ void BufferView::Pimpl::workAreaButtonRelease(int x, int y, unsigned int button)
 	if (inset_hit != 0) {
 		// Inset like error, notes and figures
 		selection_possible = false;
-#ifdef WITH_WARNINGS
-#warning fix this proper in 0.13
-#endif
+
+		// CHECK fix this proper in 0.13
+
 		// Following a ref shouldn't issue
 		// a push on the undo-stack
 		// anylonger, now that we have
@@ -907,7 +913,7 @@ void BufferView::Pimpl::workAreaButtonRelease(int x, int y, unsigned int button)
 		int box_x = 20; // LYX_PAPER_MARGIN;
 		box_x += lyxfont::width(" wide-tab ", font);
 
-		int screen_first = screen->first;
+		unsigned int screen_first = screen->first;
 
 		if (x < box_x
 		    && y + screen_first > bv_->text->cursor.y -
@@ -945,7 +951,7 @@ Inset * BufferView::Pimpl::checkInsetHit(int & x, int & y,
 	if (!screen)
 		return 0;
   
-	int y_tmp = y + screen->first;
+	unsigned int y_tmp = y + screen->first;
   
 	LyXCursor cursor;
 	bv_->text->SetCursorFromCoordinates(cursor, x, y_tmp);
@@ -1027,8 +1033,8 @@ void BufferView::Pimpl::workAreaExpose()
 	//	redraw();
 	//}
 	
-	static int work_area_width = -1;
-	static int work_area_height = -1;
+	static unsigned int work_area_width = 0;
+	static unsigned int work_area_height = 0;
 
 	bool widthChange = workarea->workWidth() != work_area_width;
 	bool heightChange = workarea->height() != work_area_height;
@@ -1156,9 +1162,46 @@ void BufferView::Pimpl::update()
 	if (screen) screen->Update();
 }
 
-
+// Values used when calling update:
+// -3 - update
+// -2 - update, move sel_cursor if selection, fitcursor
+// -1 - update, move sel_cursor if selection, fitcursor, mark dirty
+//  0 - update, move sel_cursor if selection, fitcursor 
+//  1 - update, move sel_cursor if selection, fitcursor, mark dirty
+//  3 - update, move sel_cursor if selection
+//
+// update -
+// a simple redraw of the parts that need refresh
+//
+// move sel_cursor if selection -
+// the text's sel_cursor is moved if there is selection is progress
+//
+// fitcursor -
+// fitCursor() is called and the scrollbar updated
+//
+// mark dirty -
+// the buffer is marked dirty.
+//
+// enum {
+//       UPDATE = 0,
+//       SELECT = 1,
+//       FITCUR = 2,
+//       CHANGE = 4 
+// };
+//
+// UPDATE_ONLY = UPDATE;
+// UPDATE_SELECT = UPDATE | SELECT;
+// UPDATE_SELECT_MOVE = UPDATE | SELECT | FITCUR;
+// UPDATE_SELECT_MOVE_AFTER_CHANGE = UPDATE | SELECT | FITCUR | CHANGE;
+//
+// update(-3) -> update(0)         -> update(0) -> update(UPDATE)
+// update(-2) -> update(1 + 2)     -> update(3) -> update(SELECT|FITCUR)
+// update(-1) -> update(1 + 2 + 4) -> update(7) -> update(SELECT|FITCUR|CHANGE)
+// update(1)  -> update(1 + 2 + 4) -> update(7) -> update(SELECT|FITCUR|CHANGE)
+// update(3)  -> update(1)         -> update(1) -> update(SELECT)
 void BufferView::Pimpl::update(signed char f)
 {
+#if 1
 	owner_->updateLayoutChoice();
 
 	if (!bv_->text->selection && f > -3)
@@ -1171,7 +1214,7 @@ void BufferView::Pimpl::update(signed char f)
 
 	if (f != 3 && f != -3) {
 		fitCursor();
-		updateScrollbar();
+		//updateScrollbar();
       	}
 
 	if (f == 1 || f == -1) {
@@ -1182,11 +1225,40 @@ void BufferView::Pimpl::update(signed char f)
 			buffer_->markDirty();
 		}
 	}
+#else
+	owner_->updateLayoutChoice();
+
+	if (!bv_->text->selection && (f & SELECT))
+		bv_->text->sel_cursor = bv_->text->cursor;
+	
+	FreeUpdateTimer();
+	bv_->text->FullRebreak();
+
+	update();
+
+	if ((f & FITCUR)) {
+		fitCursor();
+		//updateScrollbar();
+      	}
+
+	if ((f & CHANGE)) {
+		if (buffer_->isLyxClean()) {
+			buffer_->markDirty();
+			owner_->getMiniBuffer()->setTimer(4);
+		} else {
+			buffer_->markDirty();
+		}
+	}
+#endif
 }
 
 
+#if 0
 void BufferView::Pimpl::smallUpdate(signed char f)
 {
+#if 1
+	update(f);
+#else
 	screen->SmallUpdate();
 	if (screen->TopCursorVisible()
 	    != screen->first) {
@@ -1195,7 +1267,7 @@ void BufferView::Pimpl::smallUpdate(signed char f)
 	}
 
 	fitCursor();
-	updateScrollbar();
+	//updateScrollbar();
 
 	if (!bv_->text->selection)
 		bv_->text->sel_cursor = bv_->text->cursor;
@@ -1208,7 +1280,9 @@ void BufferView::Pimpl::smallUpdate(signed char f)
 			buffer_->markDirty();
 		}
 	}
+#endif
 }
+#endif
 
 
 // Callback for cursor timer
@@ -1331,6 +1405,7 @@ void BufferView::Pimpl::cursorPrevious()
 				  - bv_->text->cursor.row->baseline
 				  + bv_->text->cursor.row->height
 				  - workarea->height() + 1 );
+	updateScrollbar();
 }
 
 
@@ -1351,6 +1426,7 @@ void BufferView::Pimpl::cursorNext()
  	if (bv_->text->cursor.row->height < workarea->height())
 		screen->Draw(bv_->text->cursor.y
 			     - bv_->text->cursor.row->baseline);
+	updateScrollbar();
 }
 
 

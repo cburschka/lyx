@@ -28,8 +28,8 @@ struct BufferView::Pimpl {
 	void resize();
 	///
 	void redraw();
-	///
-	void fitCursor();
+	/// Return true if the cursor was fitted.
+	bool fitCursor();
 	///
 	void redoCurrentBuffer();
 	///
@@ -38,8 +38,10 @@ struct BufferView::Pimpl {
 	void update();
 	///
 	void update(signed char f);
+#if 0
 	///
 	void smallUpdate(signed char f);
+#endif
 	///
 	void gotoError();
   	/// Update pixmap of screen
@@ -50,12 +52,18 @@ struct BufferView::Pimpl {
 	void updateScrollbar();
 	///
 	void scrollCB(double value);
+#if 0
 	///
 	void downCB(long time, int button);
+#endif
+#if 0
 	///
 	void scrollUpOnePage();
+#endif
+#if 0
 	///
 	void scrollDownOnePage();
+#endif
 	///
 	void create_view();
 	///

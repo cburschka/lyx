@@ -164,12 +164,12 @@ void LyXFunc::moveCursorUpdate(bool selecting)
 	if (selecting || owner->view()->text->mark_set) {
 		owner->view()->text->SetSelection();
 		owner->view()->toggleToggle();
-		owner->view()->update(0);
-	} else {
-		owner->view()->update(-2); // this IS necessary
+		//owner->view()->update(0);
+		//} else {
+		//owner->view()->update(-2); // this IS necessary
 		// (Matthias) 
 	}
-
+	owner->view()->update(0);
 	owner->view()->showCursor();
 	
 	/* ---> Everytime the cursor is moved, show the current font state. */
@@ -948,7 +948,7 @@ string LyXFunc::Dispatch(int ac,
 		if (owner->view()->removeAutoInsets()) {
 			owner->view()->redraw();
 			owner->view()->fitCursor();
-			owner->view()->updateScrollbar();
+			//owner->view()->updateScrollbar();
 		}
 		break;
 		
@@ -1680,7 +1680,11 @@ string LyXFunc::Dispatch(int ac,
 	case LFUN_BREAKLINE:
 		owner->view()->beforeChange();
 		owner->view()->text->InsertChar(LyXParagraph::META_NEWLINE);
+#if 1
+		owner->view()->update(1);
+#else
 		owner->view()->smallUpdate(1);
+#endif
 		SetUpdateTimer(0.01);
 		moveCursorUpdate(false);
 		break;
@@ -1722,7 +1726,11 @@ string LyXFunc::Dispatch(int ac,
 			owner->view()->text->Delete();
 			owner->view()->text->sel_cursor = 
 				owner->view()->text->cursor;
+#if 1
+			owner->view()->update(1);
+#else
 			owner->view()->smallUpdate(1);
+#endif
 			// It is possible to make it a lot faster still
 			// just comment out the lone below...
 			owner->view()->showCursor();
@@ -1765,13 +1773,21 @@ string LyXFunc::Dispatch(int ac,
 					owner->view()->text->Delete();
 					owner->view()->text->sel_cursor = 
 						owner->view()->text->cursor;
+#if 1
+					owner->view()->update(1);
+#else
 					owner->view()->smallUpdate(1);
+#endif
 				}
 			} else {
 				owner->view()->text->Delete();
 				owner->view()->text->sel_cursor = 
 					owner->view()->text->cursor;
+#if 1
+				owner->view()->update(1);
+#else
 				owner->view()->smallUpdate(1);
+#endif
 			}
 		} else {
 			owner->view()->cut();
@@ -1839,7 +1855,11 @@ string LyXFunc::Dispatch(int ac,
 				owner->view()->text->Backspace();
 				owner->view()->text->sel_cursor = 
 					owner->view()->text->cursor;
+#if 1
+				owner->view()->update(1);
+#else
 				owner->view()->smallUpdate(1);
+#endif
 				// It is possible to make it a lot faster still
 				// just comment out the lone below...
 				owner->view()->showCursor();
@@ -1877,7 +1897,11 @@ string LyXFunc::Dispatch(int ac,
 				owner->view()->text->Backspace();
 				owner->view()->text->sel_cursor 
 					= cursor;
+#if 1
+				owner->view()->update(1);
+#else
 				owner->view()->smallUpdate (1);
+#endif
 			}
 		} else
 			owner->view()->cut();
@@ -1889,7 +1913,11 @@ string LyXFunc::Dispatch(int ac,
 	{
 		owner->view()->beforeChange();
 		owner->view()->text->BreakParagraph(0);
+#if 1
+		owner->view()->update(1);
+#else
 		owner->view()->smallUpdate(1);
+#endif
 		SetUpdateTimer(0.01);
 		owner->view()->text->sel_cursor = 
 			owner->view()->text->cursor;
@@ -1902,7 +1930,11 @@ string LyXFunc::Dispatch(int ac,
 	{
 		owner->view()->beforeChange();
 		owner->view()->text->BreakParagraph(1);
+#if 1
+		owner->view()->update(1);
+#else
 		owner->view()->smallUpdate(1);
+#endif
 		SetUpdateTimer(0.01);
 		owner->view()->text->sel_cursor = 
 			owner->view()->text->cursor;
@@ -1935,7 +1967,11 @@ string LyXFunc::Dispatch(int ac,
 		}
 		else {
 			owner->view()->text->BreakParagraph(0);
+#if 1
+			owner->view()->update(1);
+#else
 			owner->view()->smallUpdate(1);
+#endif
 		}
 		SetUpdateTimer(0.01);
 		owner->view()->text->sel_cursor = cursor;
@@ -1995,7 +2031,11 @@ string LyXFunc::Dispatch(int ac,
 	case LFUN_QUOTE:
 		owner->view()->beforeChange();
 		owner->view()->text->InsertChar('\"');  // This " matches the single quote in the code
+#if 1
+		owner->view()->update(1);
+#else
 		owner->view()->smallUpdate(1);
+#endif
 		SetUpdateTimer();
                 moveCursorUpdate(false);
 		break;
@@ -2191,7 +2231,11 @@ string LyXFunc::Dispatch(int ac,
 		keyseq.length = 0;
 		
 		// copied verbatim from do_accent_char
+#if 1
+		owner->view()->update(1);
+#else
 		owner->view()->smallUpdate(1);
+#endif
 		SetUpdateTimer();
 		owner->view()->text->sel_cursor = 
 			owner->view()->text->cursor;
@@ -2545,7 +2589,11 @@ string LyXFunc::Dispatch(int ac,
 			owner->view()->text->InsertChar(argument[i]);
 			// This needs to be in the loop, or else we
 			// won't break lines correctly. (Asger)
+#if 1
+			owner->view()->update(1);
+#else
 			owner->view()->smallUpdate(1);
+#endif
 		}
 		SetUpdateTimer();
 		owner->view()->text->sel_cursor = 
@@ -2583,7 +2631,11 @@ string LyXFunc::Dispatch(int ac,
 		datetmp_len = (int) strftime(datetmp, 32, arg.c_str(), now_tm);
 		for (int i = 0; i < datetmp_len; i++) {
 			owner->view()->text->InsertChar(datetmp[i]);
+#if 1
+			owner->view()->update(1);
+#else
 			owner->view()->smallUpdate(1);
+#endif
 		}
 		SetUpdateTimer();
 		owner->view()->text->sel_cursor = owner->view()->text->cursor;
@@ -2637,8 +2689,12 @@ string LyXFunc::Dispatch(int ac,
 				} else
 					owner->getIntl()->getTrans()->TranslateAndInsert(argument[i], owner->view()->text);
 			}
-			
+
+#if 1
+			owner->view()->update(1);
+#else
 			owner->view()->smallUpdate(1);
+#endif
 			SetUpdateTimer();
 
 			owner->view()->text->sel_cursor = 

@@ -47,15 +47,15 @@ public:
 
 	/** Draws the screen form textposition y. Uses as much of
 	    the already printed pixmap as possible */
-	void Draw(long y );
+	void Draw(unsigned long y );
 
 	/// Redraws the screen, without using existing pixmap
 	void Redraw();
    
 	/// Returns a new top so that the cursor is visible
-	long TopCursorVisible();
+	unsigned long TopCursorVisible();
 	/// Redraws the screen such that the cursor is visible
-	int FitCursor();
+	bool FitCursor();
 	///
 	void ShowCursor();
 	///
@@ -66,7 +66,7 @@ public:
 	void ShowManualCursor(long x, long y, int asc, int desc,
 			      Cursor_Shape shape);
 	/// returns 1 if first has changed, otherwise 0
-	int  FitManualCursor(long, long, int, int);
+	bool FitManualCursor(long, long, int, int);
 	///
 	void ToggleSelection(bool = true);
 	///
@@ -79,12 +79,13 @@ public:
 	    we only update the current row. */
 	void Update();
 
+#if 0
 	/** Updates part of the screen. Updates till row with cursor,
 	    or only current row */
 	void SmallUpdate();
-
+#endif
 	/// first visible pixel-row
-	long first;
+	unsigned long first;
 
 	///
 	bool cursor_visible;
@@ -94,9 +95,14 @@ private:
 
 	/// y1 and y2 are coordinates of the screen
 	void DrawFromTo(int y1, int y2);
-   
+
+#if 1
+	/// y is a coordinate of the text
+	void DrawOneRow(Row * row, long y_text);
+#else
 	/// y is a coordinate of the text
 	void DrawOneRow(Row * row, long & y_text);
+#endif
 
 	///
 	WorkArea & owner;
@@ -114,11 +120,12 @@ private:
 	int cursor_pixmap_w;
 	///
 	int cursor_pixmap_h;
+#if 0
 	///
 	long screen_refresh_y;
 	///
 	Row * screen_refresh_row;
-
+#endif
 	///
 	GC gc_copy;
 };

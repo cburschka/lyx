@@ -129,6 +129,7 @@ extern "C" {
 }
 
 
+#if 0
 // Callback for scrollbar up button
 void BufferView::upCB(long time, int button)
 {
@@ -146,6 +147,7 @@ void BufferView::upCB(long time, int button)
 		break;
 	}
 }
+#endif
 
 
 void BufferView::enterView()
@@ -167,11 +169,13 @@ void BufferView::scrollCB(double value)
 }
 
 
+#if 0
 // Callback for scrollbar down button
 void BufferView::downCB(long time, int button)
 {
 	pimpl_->downCB(time, button);
 }
+#endif
 
 
 void BufferView::workAreaMotionNotify(int x, int y, unsigned int state)
@@ -270,10 +274,12 @@ void BufferView::update(signed char f)
 }
 
 
+#if 0
 void BufferView::smallUpdate(signed char f)
 {
 	pimpl_->smallUpdate(f);
 }
+#endif
 
 
 void BufferView::setState()

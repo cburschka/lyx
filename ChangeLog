@@ -1,3 +1,102 @@
+2000-04-26  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/text2.C (GetRowNearY): remove currentrow code
+
+	* src/text.C (GetRow): remove currentrow code
+
+	* src/screen.C (Update): rewritten a bit.
+	(SmallUpdate): removed func
+
+	* src/lyxtext.h (text_status): removed NEED_LITTLE_REFRESH, never
+	used.
+	(FullRebreak): return bool
+	(currentrow): remove var
+	(currentrow_y): ditto
+
+	* src/lyxscreen.h (Draw): change arg to unsigned long
+	(FitCursor): return bool
+	(FitManualCursor): ditto
+	(Smallpdate): remove func
+	(first): change to unsigned long
+	(DrawOneRow): change second arg to long (from long &)
+	(screen_refresh_y): remove var
+	(scree_refresh_row): ditto
+	
+	* src/lyxrow.h: change baseline to usigned int from unsigned
+	short, this brings some implicit/unsigned issues out in the open.
+
+	* src/lyxfunc.C (moveCursorUpdate): update(0) == update(-2) change
+	accordingly.
+	(Dispatch): don't call updateScrollbar after fitCursor. Use update
+	instead of smallUpdate.
+
+	* src/lyxcursor.h: change y to unsigned long
+
+	* src/buffer.h: don't call updateScrollbar after fitcursor
+
+	* src/buffer.C (parseSingleLyXformat2Token): move variables to
+	where they are used. Removed "\\direction", this was not present
+	in 1.1.4 and is already obsolete. Commented out some code that I
+	believe to never be called.
+	(runLiterate): don't call updateScrollbar after fitCursor
+	(runLaTeX): ditto
+	(buildProgram): ditto
+	(runChktex): ditto
+
+	* src/WorkArea.h (workWidth): change return val to unsigned
+	(width): ditto
+	(height): ditto
+	(redraw): remove the button redraws
+	(setScrollbarValue): change for scrollbar
+	(getScrollbarValue): change for scrollbar
+	(getScrollbarBounds): change for scrollbar
+
+	* src/WorkArea.C (C_WorkArea_up_cb): removed func
+	(C_WorkArea_down_cb): removed func
+	(WorkArea): use fl_add_scrollbar instead of two buttons and a slider.
+	(resize): change for scrollbar
+	(setScrollbar): ditto
+	(setScrollbarBounds): ditto
+	(setScrollbarIncrements): ditto
+	(up_cb): removed func
+	(down_cb): removed func
+	(scroll_cb): change for scrollbar
+	(work_area_handler): ditto
+
+	* src/BufferView_pimpl.C (fitCursor): only call updateScrollbar
+	when FitCursor did something.
+	(updateScrollbar): some unsigned changes
+	(downCB): removed func
+	(scrollUpOnePage): removed func
+	(scrollDownOnePage): remvoed func
+	(workAreaMotionNotify): don't call screen->FitCursor but use
+	fitCursor instead. and bool return val
+	(workAreaButtonPress): ditto
+	(workAreaButtonRelease): some unsigned changes
+	(checkInsetHit): ditto
+	(workAreaExpose): ditto
+	(update): parts rewritten, comments about the signed char arg added
+	(smallUpdate): removed func
+	(cursorPrevious): call needed updateScrollbar
+	(cursorNext): ditto
+
+	* src/BufferView2.C (allFloats): don't call updateScrollbar after
+	fitCursor.
+
+	* src/BufferView.[Ch] (upCB): removed func
+	(downCB): removed func
+	(smallUpdate): removed func
+
+2000-04-25  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/lyxtext.h src/text.C src/text2.C: removed support for the
+	currentrow, currentrow_y optimization. This did not help a lot and
+	if we want to do this kind of optimization we should rather use
+	cursor.row instead of the currentrow. 
+
+	* src/buffer.C (parseSingleLyXformat2Token): fixed mistake in
+	buffer spacing and klyx spacing support.
+
 2000-04-25  Dekel Tsur  <dekel@math.tau.ac.il>
 
 	* src/spellchecker.C (RunSpellChecker): Speedup spellchecking by

@@ -5,7 +5,7 @@
 #include "gettext.h"
 
 Languages languages;
-Language const * default_language;
+Language const *default_language;
 Language ignore_lang = {"ignore", "Ignore", false};
 Language const * ignore_language = &ignore_lang;
 

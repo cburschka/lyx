@@ -4218,7 +4218,7 @@ void LyXParagraph::ChangeLanguage(Language const * from, Language const * to)
 		LyXFont font = GetFontSettings(i);
 		if (font.language() == from) {
 			font.setLanguage(to);
-			SetFont(i,font);
+			SetFont(i, font);
 		}
 	}
 }

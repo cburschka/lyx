@@ -443,6 +443,7 @@ LyXFont::LyXFont(LyXFont::FONT_INIT3, Language const * l)
 	lang = l;
 }
 
+
 inline
 LyXFont & LyXFont::operator=(LyXFont const & x) 
 {

@@ -91,9 +91,7 @@ string MakeLatexName(string const & file)
 // Substitutes spaces with underscores in filename (and path)
 string QuoteName(string const & name)
 {
-#ifdef WITH_WARNINGS
-#warning Add proper emx support here!
-#endif
+	// CHECK Add proper emx support here!
 #ifndef __EMX__
 	return '\'' + name + '\'';
 #else
@@ -305,9 +303,7 @@ string GetEnvPath(string const & name)
 
 bool PutEnv(string const & envstr)
 {
-#ifdef WITH_WARNINGS
-#warning Look at and fix this.
-#endif
+	// CHECK Look at and fix this.
         // f.ex. what about error checking?
 #if HAVE_PUTENV
         // this leaks, but what can we do about it?

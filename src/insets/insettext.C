@@ -1019,7 +1019,8 @@ void InsetText::setPos(Painter & pain, int x, int y) const
     cursor.y = top_baseline;
     y += cursor.y;
     for(unsigned int i = 1;
-	((cursor.y + rows[i - 1].desc) < y) && (i < rows.size() - 1); ++i) {
+	(long(cursor.y + rows[i - 1].desc) < y)
+		&& (i < rows.size() - 1); ++i) {
 	cursor.y = rows[i].baseline;
 	cursor.pos = rows[i].pos;
 	actrow = i;

@@ -11,9 +11,25 @@ struct Language {
 	bool RightToLeft;
 };
 
+#if 0
+bool operator==(Language const & l1, Language const & l2) 
+{
+	return l1.lang == l2.lang
+		&& l1.display == l2.display
+		&& l1.RightToLeft == l2.RightToLeft;
+}
+
+
+bool operator!=(Language const l1, Language const & l2)
+{
+	return !(l1 == l2);
+
+}
+#endif
+
 typedef std::map<string, Language> Languages;
 extern Languages languages;
 extern Language const * default_language;
-extern Language const * ignore_language;
+extern Language const *ignore_language;
 
 #endif

@@ -113,7 +113,7 @@ public:
 	void redraw() {
 		users->redraw(); 
 		users->fitCursor(); 
-		users->updateScrollbar();
+		//users->updateScrollbar();
 	}
 
 	///
