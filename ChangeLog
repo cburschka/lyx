@@ -1,3 +1,12 @@
+2000-09-04  Angus Leeming  <a.leeming@ic.ac.uk> +
+
+	* src/frontends/xforms/Menubar_pimpl.C: added two using directives
+	so that code compiles with DEC cxx.
+	
+	* src/frontends/xforms/FormCitation.C (setSize): code re-writtenn
+	to work correctly! Also now supports the additional elements
+	neeeded by natbib.
+	
 2000-09-01  Allan Rae  <rae@lyx.org>
 
 	* src/frontends/ButtonPolicies.C: renamed all the references to

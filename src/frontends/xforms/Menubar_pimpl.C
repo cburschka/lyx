@@ -32,6 +32,8 @@
 using std::pair;
 using std::endl;
 using std::vector;
+using std::max;
+using std::min;
 
 typedef vector<int>::size_type size_type;
 

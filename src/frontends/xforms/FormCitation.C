@@ -35,6 +35,8 @@ using std::max;
 using std::min;
 using std::find;
 
+static int min_wform;
+
 FormCitation::FormCitation(LyXView * lv, Dialogs * d)
 	: FormCommand(lv, d, _("Citation")), dialog_(0)
 {
@@ -64,6 +66,7 @@ void FormCitation::clearStore()
 void FormCitation::build()
 {
 	dialog_ = build_citation();
+	min_wform = dialog_->form->w;
 }
 
 
@@ -196,54 +199,94 @@ void FormCitation::setCiteButtons( State status ) const
 
 void FormCitation::setSize( int hbrsr, bool bibPresent ) const
 {
-	int const hinfo  = dialog_->infoBrsr->h;
-	int const hother = 140;
-	hbrsr = max( hbrsr, 175 );
-	int wform = dialog_->form->w;
-	int hform = hbrsr + hother;
+	bool const natbib = false; // will eventually be input
+	hbrsr = max( hbrsr, 175 ); // limit max size of cite/bib brsrs
 
-	if( bibPresent ) hform += hinfo + 30;
-	fl_set_form_size( dialog_->form, wform, hform );
+	// dh1, dh2, dh3 are the vertical separation between elements.
+	// These can be specified because the browser height is fixed
+	// so they are not changed by dynamic resizing
+	static int const dh1 = 30; // top of form to top of cite/bib brsrs;
+	                           // bottom of cite/bib brsrs to top of info;
+	                           // bottom of info to top next element;
+	                           // bottom of style to top textBefore;
+	                           // bottom of text to top ok/cancel buttons.
+	static int const dh2 = 10; // bottom of textBefore to top textAftr;
+	                           // bottom of ok/cancel buttons to bottom form
+	static int const dh3 = 5;  // spacing between add/delete/... buttons.
 
-	// No resizing is allowed in the y-direction
-	fl_set_form_minsize( dialog_->form, wform,   hform );
-	fl_set_form_maxsize( dialog_->form, 3*wform, hform );
+	int const wbrsr  = dialog_->citeBrsr->w;
+	static int const hinfo  = dialog_->infoBrsr->h;
+	static int const hstyle = dialog_->style->h;
+	static int const htext  = dialog_->textAftr->h;
+	static int const hok    = dialog_->ok->h;
 
+	int const wform = dialog_->form->w;
+	int hform = dh1 + hbrsr + dh1;
+	if( bibPresent ) hform += hinfo + dh1;
+	if( natbib ) hform += hstyle + dh1 + htext + dh2;
+	hform += htext + dh1 + hok + dh2;
+
+	bool const sizeSet = ( hform != dialog_->form->h );
+	if( sizeSet ) fl_set_form_size( dialog_->form, wform, hform );
+
+	// No vertical resizing is allowed
+	// min_wform set in build()
+	fl_set_form_minsize( dialog_->form, min_wform,   hform );
+	fl_set_form_maxsize( dialog_->form, 3*min_wform, hform );
+
+	if( !sizeSet ) return;
+
+	int x = 0;
 	int y = 0;
-	fl_set_object_geometry( dialog_->box, 0, y, wform, hform );
-	y += 30;
-	fl_set_object_geometry( dialog_->citeBrsr, 10, y, 180, hbrsr );
-	fl_set_object_geometry( dialog_->bibBrsr, 240, y, 180, hbrsr );
+	fl_set_object_geometry( dialog_->box, x, y, wform, hform );
 
-	fl_set_object_position( dialog_->addBtn,  200, y );
-	y += 5 + dialog_->addBtn->h;
-	fl_set_object_position( dialog_->delBtn,  200, y );
-	y += 5 + dialog_->delBtn->h;
-	fl_set_object_position( dialog_->upBtn,   200, y );
-	y += 5 + dialog_->upBtn->h;
-	fl_set_object_position( dialog_->downBtn, 200, y );
+	x = dialog_->citeBrsr->x;
+	y += dh1; 
+	fl_set_object_geometry( dialog_->citeBrsr, x, y, wbrsr, hbrsr );
+	x = dialog_->bibBrsr->x;
+	fl_set_object_geometry( dialog_->bibBrsr,  x, y, wbrsr, hbrsr );
 
-	y = dialog_->bibBrsr->y + dialog_->bibBrsr->h;
+	x = dialog_->addBtn->x;
+	fl_set_object_position( dialog_->addBtn,  x, y );
+	y += dh3 + dialog_->addBtn->h;
+	fl_set_object_position( dialog_->delBtn,  x, y );
+	y += dh3 + dialog_->delBtn->h;
+	fl_set_object_position( dialog_->upBtn,   x, y );
+	y += dh3 + dialog_->upBtn->h;
+	fl_set_object_position( dialog_->downBtn, x, y );
 
-	// awaiting natbib support
-	fl_hide_object( dialog_->style );
+	y = dh1 + hbrsr + dh1; // in position for next element
 
 	if( bibPresent ) {
-		y += 30;
-		fl_set_object_position( dialog_->infoBrsr, 10, y );
+		x = dialog_->infoBrsr->x;
+		fl_set_object_position( dialog_->infoBrsr, x, y );
 		fl_show_object( dialog_->infoBrsr );
-		y += hinfo;
-	}
-	else
+		y += hinfo + dh1;
+	} else
 		fl_hide_object( dialog_->infoBrsr );
 
-	y += 20;
-	// awaiting natbib support
-	fl_hide_object( dialog_->textBefore );
+	if( natbib ) {
+		x = dialog_->style->x;
+		fl_set_object_position( dialog_->style, x, y );
+		fl_show_object( dialog_->style );
+		x = dialog_->textBefore->x;
+		y += hstyle + dh1;
+		fl_set_object_position( dialog_->textBefore, x, y );
+		fl_show_object( dialog_->textBefore );
+		y += htext + dh2;
+	} else {
+		fl_hide_object( dialog_->style );
+		fl_hide_object( dialog_->textBefore );
+	}
 
-	fl_set_object_position( dialog_->textAftr, 100, y );
-	fl_set_object_position( dialog_->ok,       230, y+50 );
-	fl_set_object_position( dialog_->cancel,   330, y+50 );
+	x = dialog_->textAftr->x;
+	fl_set_object_position( dialog_->textAftr, x, y );
+
+	x = dialog_->ok->x;
+	y += htext + dh1;
+	fl_set_object_position( dialog_->ok,       x, y );
+	x = dialog_->cancel->x;
+	fl_set_object_position( dialog_->cancel,   x, y );
 }
 
 

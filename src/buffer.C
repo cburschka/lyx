@@ -3381,6 +3381,8 @@ int Buffer::runLaTeX()
         AllowInput(users);
  
         return latex.getNumErrors();
+#else
+	return 0;
 #endif
 }
 
