@@ -99,9 +99,6 @@ public:
 	///
 	int findToken(char const * str[]);
 
-	///
-	string const text() const;
-
 	/** Pushes a token list on a stack and replaces it with a new one.
 	 */
 	void pushTable(keyword_item *, int);

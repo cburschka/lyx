@@ -171,7 +171,7 @@ bool LyXLex::Pimpl::next(bool esc /* = false */)
 				// That is not fast... (Lgb)
 				string dummy;
 				getline(is, dummy);
-				
+
 				lyxerr[Debug::LYXLEX] << "Comment read: `" << c
 						      << dummy << '\'' << endl;
 #else
@@ -184,7 +184,7 @@ bool LyXLex::Pimpl::next(bool esc /* = false */)
 
 			if (c == '\"') {
 				buff.clear();
-				
+
 				do {
 					is.get(cc);
 					c = cc;
@@ -212,7 +212,7 @@ bool LyXLex::Pimpl::next(bool esc /* = false */)
 				// lot better to use the functions from cctype
 			if (c > ' ' && is)  {
 				buff.clear();
-				
+
 				do {
 					buff.push_back(c);
 					is.get(cc);
@@ -255,7 +255,7 @@ bool LyXLex::Pimpl::next(bool esc /* = false */)
 			if (c == '\\') {
 				// escape
 				buff.clear();
-				
+
 				do {
 					if (c == '\\') {
 						// escape the next char
@@ -277,7 +277,7 @@ bool LyXLex::Pimpl::next(bool esc /* = false */)
 				// That is still not fast... (Lgb)
 				string dummy;
 				getline(is, dummy);
-				
+
 				lyxerr[Debug::LYXLEX] << "Comment read: `" << c
 						      << dummy << '\'' << endl;
 #else
@@ -292,7 +292,7 @@ bool LyXLex::Pimpl::next(bool esc /* = false */)
 			// string
 			if (c == '\"') {
 				buff.clear();
-				
+
 				bool escaped = false;
 				do {
 					escaped = false;
@@ -326,7 +326,7 @@ bool LyXLex::Pimpl::next(bool esc /* = false */)
 
 			if (c > ' ' && is) {
 				buff.clear();
-				
+
 				do {
 					if (c == '\\') {
 						// escape the next char
@@ -384,7 +384,7 @@ int LyXLex::Pimpl::lex()
 bool LyXLex::Pimpl::eatLine()
 {
 	buff.clear();
-	
+
 	unsigned char c = '\0';
 	char cc = 0;
 	while (is && c != '\n') {
@@ -433,7 +433,7 @@ bool LyXLex::Pimpl::nextToken()
 		c = cc;
 		if (c >= ' ' && is) {
 			buff.clear();
-			
+
 			if (c == '\\') { // first char == '\\'
 				do {
 					buff.push_back(c);

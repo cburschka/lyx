@@ -973,11 +973,11 @@ int readParToken(Buffer & buf, Paragraph & par, LyXLex & lex, string const & tok
 		lex.eatLine();
 #if USE_BOOST_FORMAT
 		boost::format fmt(_("Unknown token: %1$s %2$s\n"));
-		fmt % token % lex.text();
+		fmt % token % lex.getString();
 		string const s = fmt.str();
 #else
 		string const s = _("Unknown token: ") + token
-			+ ' ' + lex.text() + '\n';
+			+ ' ' + lex.getString() + '\n';
 #endif
 		// we can do this here this way because we're actually reading
 		// the buffer and don't care about LyXText right now.

@@ -223,7 +223,7 @@ void FormPreferences::build()
 		folder = lang_opts_tab_->tabfolder_inner;
 		fl_set_tabfolder_autofit(folder, FL_FIT);
 	}
-	
+
 	// Stack tabs
 	// Now add them to the tabfolder
 	fl_addto_tabfolder(dialog_->tabfolder_prefs,

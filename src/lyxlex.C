@@ -52,12 +52,6 @@ int LyXLex::getLineNo() const
 }
 
 
-string const LyXLex::text() const
-{
-	return pimpl_->getString();
-}
-
-
 istream & LyXLex::getStream()
 {
 	return pimpl_->is;

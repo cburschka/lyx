@@ -1,5 +1,11 @@
 2003-04-14  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
+	* lyxlex.[Ch] (text): delete function
+	* trans.C (Load): adjust
+	* paragraph_funcs.C (readParToken): adjust
+
+2003-04-14  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
 	* lyxlex_pimpl.h: get rid of LEX_MAX_BUFF, change buff to be a
 	vector<char> instead of a char[].
 
