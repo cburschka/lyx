@@ -19,7 +19,7 @@ case $autoversion in
 	rm -f lib/reLyX/configure.ac
 	EXTRA_ACINCLUDE_FILES="lyxinclude213.m4"
 	;;
-    *2.5[23467])
+    *2.5[234678])
 	rm -f acconfig.h
 	rm -f configure.in
 	cp config/configure.ac .
@@ -29,7 +29,7 @@ case $autoversion in
 	;;
     *)
 	echo "This autoconf version is not supported by LyX."
-	echo "LyX only supports autoconf 2.13 and 2.5[23467]."
+	echo "LyX only supports autoconf 2.13 and 2.5[234678]."
 	exit
 	;;
 esac
