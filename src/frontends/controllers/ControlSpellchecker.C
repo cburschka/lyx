@@ -106,7 +106,7 @@ void ControlSpellchecker::check()
 			view().partialUpdate(0);
 		}
 
-		if (!speller_->alive()) {
+		if (!speller_ || !speller_->alive()) {
 			clearParams();
 			stop();
 			return;

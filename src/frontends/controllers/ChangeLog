@@ -1,16 +1,19 @@
+2002-11-12  Angus Leeming  <leeming@lyx.org>
+
+	* ControlSpellchecker.C (check): fix crash
+
 2002-11-07  Edwin Leuven  <leuven@fee.uva.nl>
 
 	* ControlDocument.[Ch]: Remove unused method
 
-2002-11-07  leeming  <leeming@e182182.fee.uva.nl>
+2002-11-07  Angus Leeming  <leeming@lyx.org>
 
 	* ChangeLog, biblio.C: * Add RegEx to the compiled boost files.
 	* clean-up the search code in biblio.C.
 
-2002-11-07  levon  <levon@e182182.fee.uva.nl>
+2002-11-07  John Levon  <levon@movementarian.org>
 
-	* ControlGraphics.C:
-	QGraphics fixes
+	* ControlGraphics.C: QGraphics fixes
 
 2002-11-07  Juergen Spitzmueller <j.spitzmueller@gmx.de>
 
