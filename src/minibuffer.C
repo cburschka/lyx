@@ -60,7 +60,7 @@ void MiniBuffer::ExecutingCB(FL_OBJECT *ob, long)
 		function = strip(function);
 	} else {
 		function = arg;
-		arg.erase();
+		arg.clear();
 	}
 	lyxerr.debug() << "Function: " << function
 		       << "\nArg     : " << arg << endl;
@@ -95,7 +95,7 @@ void MiniBuffer::ExecutingCB(FL_OBJECT *ob, long)
 
 void MiniBuffer::ExecCommand()
 {
-	text.erase();
+	text.clear();
 	fl_set_input(the_buffer, "");
 	fl_set_focus_object(owner->getForm(),the_buffer);
 }
@@ -207,7 +207,7 @@ void MiniBuffer::Reset()
 {
 	if (!text_stored.empty()){
 		Set(text_stored);
-		text_stored.erase();
+		text_stored.clear();
 	}
 }
 

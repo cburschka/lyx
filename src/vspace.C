@@ -94,11 +94,10 @@ static char nextToken (string & data)
 		// I really mean assignment ("=") below, not equality!
 		if ((i = data.find_last_of("0123456789.")) != string::npos) {
 			if (number_index > 3) return 'E';  // Error
-			++i;
-                        string buffer = data.substr(0, i);
+                        string buffer = data.substr(0, i + 1);
 			if (sscanf (buffer.c_str(),
 				    "%f", &number[number_index]) == 1) {
-				advance (data, i);
+				advance (data, i + 1);
 				++number_index;
 				return 'n';
 			} else 
@@ -106,11 +105,10 @@ static char nextToken (string & data)
 		} else if ((i=data.find_last_of("abcdefghijklmnopqrstuvwxyz"))
 			   != string::npos) {
 			if (unit_index > 3) return 'E';  // Error
-			++i;
-			string buffer = data.substr(0, i);
+			string buffer = data.substr(0, i + 1);
 			unit[unit_index] = unitFromString (buffer);
 			if (unit[unit_index] != LyXLength::UNIT_NONE) {
-				advance (data, i);
+				advance (data, i + 1);
 				++unit_index;
 				return 'u';
 			} else

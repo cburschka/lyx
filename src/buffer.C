@@ -119,7 +119,7 @@ Buffer::Buffer(string const & file, LyXRC *lyxrc, bool ronly)
 	lyxerr.debug() << "Buffer::Buffer()" << endl;
 	if (read_only || (lyxrc && lyxrc->use_tempdir)) {
 		tmppath = CreateBufferTmpDir();
-	} else tmppath.erase();
+	} else tmppath.clear();
 }
 
 
@@ -1871,7 +1871,7 @@ void Buffer::makeLaTeXFile(string const & filename,
 
 		// Write out what we've generated so far...and reset LFile
 		fwrite(LFile.c_str(), sizeof(char), LFile.length(), file);
-		LFile.erase(); 
+		LFile.clear(); 
 
 		// Now insert the LyX specific LaTeX commands...
 		string preamble, tmppreamble;
@@ -2000,7 +2000,7 @@ void Buffer::makeLaTeXFile(string const & filename,
 			}
 			LFile += ftnote;
 			texrow += ft_texrow;
-			ftnote.erase();
+			ftnote.clear();
 			ft_texrow.reset();
 			ftcount = 0;
 		}
@@ -2011,7 +2011,7 @@ void Buffer::makeLaTeXFile(string const & filename,
 			// LFile.length() in a future revision.  ARRae
 			fwrite(LFile.c_str(), sizeof(char),
 			       LFile.length(), file);
-			LFile.erase();
+			LFile.clear();
 			loop_count = 0;
 		}
 	}
@@ -2037,7 +2037,7 @@ void Buffer::makeLaTeXFile(string const & filename,
 
 	// Write out what we've generated...and reset LFile
 	fwrite(LFile.c_str(), sizeof(char), LFile.length(), file);
-	LFile.erase();
+	LFile.clear();
 
 	// tex_code_break_column's value is used to decide
 	// if we are in batchmode or not (within mathed_write()
@@ -2165,7 +2165,7 @@ void Buffer::makeLinuxDocFile(string const & filename, int column)
 		/* environment tag closing */
 		for( ;depth > par->depth; depth--) {
 			sgmlCloseTag(file,depth,environment_stack[depth]);
-			environment_stack[depth].erase();
+			environment_stack[depth].clear();
 		}
 
 		/* write opening SGML tags */
@@ -2174,7 +2174,7 @@ void Buffer::makeLinuxDocFile(string const & filename, int column)
 			if(depth == par->depth 
 			   && !environment_stack[depth].empty()) {
 				sgmlCloseTag(file,depth,environment_stack[depth]);
-				environment_stack[depth].erase();
+				environment_stack[depth].clear();
 				if(depth) 
 					depth--;
 				else
@@ -2192,7 +2192,7 @@ void Buffer::makeLinuxDocFile(string const & filename, int column)
 				fprintf(file, "</p>");
 			}
 
-			environment_stack[depth].erase();
+			environment_stack[depth].clear();
 			sgmlOpenTag(file,depth, style->latexname);
 			break;
 
@@ -2203,11 +2203,11 @@ void Buffer::makeLinuxDocFile(string const & filename, int column)
 			   && !environment_stack[depth].empty()) {
 
 				sgmlCloseTag(file,depth,environment_stack[depth]);
-				environment_stack[depth].erase();
+				environment_stack[depth].clear();
 			}
 			if (depth < par->depth) {
 			       depth = par->depth;
-			       environment_stack[depth].erase();
+			       environment_stack[depth].clear();
 			}
 			if (environment_stack[depth] != style->latexname) {
 				if(depth==0) {
@@ -2331,7 +2331,7 @@ void Buffer::DocBookHandleFootnote(FILE *file,LyXParagraph* &par, int const dept
 			if(inner_span) {
 				if(!tmp_par.empty()) {
 					fprintf(file,"%s",tmp_par.c_str());
-					tmp_par.erase();
+					tmp_par.clear();
 					sgmlCloseTag(file,depth+1,inner_tag);
 					sgmlOpenTag(file,depth+1,inner_tag);
 				}
@@ -2343,7 +2343,7 @@ void Buffer::DocBookHandleFootnote(FILE *file,LyXParagraph* &par, int const dept
 			if(!inner_tag.empty()) sgmlCloseTag(file,depth+1,inner_tag);
 			if(!extra_par.empty()) fprintf(file,"%s",extra_par.c_str());
 			if(!tag.empty()) sgmlCloseTag(file,depth,tag);
-			extra_par.erase();
+			extra_par.clear();
 
 			switch (par->footnotekind) {
 			case LyXParagraph::FOOTNOTE:
@@ -2378,7 +2378,7 @@ void Buffer::DocBookHandleFootnote(FILE *file,LyXParagraph* &par, int const dept
 			if ((present == TAB_LIKE) || (present == FIG_LIKE)) {
 				DocBookHandleCaption(file, inner_tag, depth,
 						     desc_on, par);
-				inner_tag.erase();
+				inner_tag.clear();
 			} else {
 				sgmlOpenTag(file,depth+1,inner_tag);
 			}
@@ -2741,8 +2741,8 @@ void Buffer::makeDocBookFile(string const & filename, int column)
 			}
 			sgmlCloseTag(file,depth+command_depth,
 				     environment_stack[depth]);
-			environment_stack[depth].erase();
-			environment_inner[depth].erase();
+			environment_stack[depth].clear();
+			environment_inner[depth].clear();
 		}
 
 		if(depth == par->depth
@@ -2760,8 +2760,8 @@ void Buffer::makeDocBookFile(string const & filename, int column)
 			sgmlCloseTag(file,depth+command_depth,
 				     environment_stack[depth]);
 			
-			environment_stack[depth].erase();
-			environment_inner[depth].erase();
+			environment_stack[depth].clear();
+			environment_inner[depth].clear();
                 }
 
 		// Write opening SGML tags.
@@ -2832,7 +2832,7 @@ void Buffer::makeDocBookFile(string const & filename, int column)
 		case LATEX_ITEM_ENVIRONMENT:
 			if (depth < par->depth) {
 				depth = par->depth;
-				environment_stack[depth].erase();
+				environment_stack[depth].clear();
 			}
 
 			if (environment_stack[depth] != style->latexname) {

@@ -482,14 +482,14 @@ void LyXParagraph::Clear()
 	noindent = false;
 
         pextra_type = PEXTRA_NONE;
-        pextra_width.erase();
-        pextra_widthp.erase();
+        pextra_width.clear();
+        pextra_widthp.clear();
         pextra_alignment = MINIPAGE_ALIGN_TOP;
         pextra_hfill = false;
         pextra_start_minipage = false;
 
-        labelstring.erase();
-	labelwidthstring.erase();
+        labelstring.clear();
+	labelwidthstring.clear();
 	layout = 0;
 	bibkey = 0;
 	
@@ -1736,7 +1736,7 @@ void LyXParagraph::SetLayout(char new_layout)
 		*npar = 0;
 
         par->layout = new_layout;
-	par->labelwidthstring.erase();
+	par->labelwidthstring.clear();
 	par->align = LYX_ALIGN_LAYOUT;
 	//par->depth = 0;
 	par->added_space_top = VSpace(VSpace::NONE);
@@ -2529,7 +2529,7 @@ bool LyXParagraph::linuxDocConvertChar(char c, string &sgml_string)
 	bool retval = false;
 	switch (c) {
 	case LYX_META_HFILL:
-		sgml_string.erase();
+		sgml_string.clear();
 		break;
 	case LYX_META_PROTECTED_SEPARATOR: 
 		sgml_string = ' ';
@@ -2581,7 +2581,7 @@ bool LyXParagraph::linuxDocConvertChar(char c, string &sgml_string)
 		sgml_string = ' ';
 		break;
 	case '\0': /* Ignore :-) */
-		sgml_string.erase();
+		sgml_string.clear();
 		break;
 	default:
 		sgml_string = c;
@@ -3531,7 +3531,7 @@ LyXParagraph* LyXParagraph::TeXEnvironment(string &file, TexRow &texrow,
 				}
 				file += foot;
 				texrow += foot_texrow;
-				foot.erase();
+				foot.clear();
 				foot_texrow.reset();
 				foot_count = 0;
 			}
@@ -3851,8 +3851,8 @@ void LyXParagraph::UnsetPExtraType()
         return;
     
     pextra_type = PEXTRA_NONE;
-    pextra_width.erase();
-    pextra_widthp.erase();
+    pextra_width.clear();
+    pextra_widthp.clear();
 
     if (lyxstyle.Style(GetCurrentTextClass(), 
                        layout)->isEnvironment()) {
@@ -3874,8 +3874,8 @@ void LyXParagraph::UnsetPExtraType()
         par = ppar;
         while (par && (par->layout == layout) && (par->depth == depth)) {
             par->pextra_type = PEXTRA_NONE;
-            par->pextra_width.erase();
-            par->pextra_widthp.erase();
+            par->pextra_width.clear();
+            par->pextra_widthp.clear();
             par = par->NextAfterFootnote();
             if (par && (par->depth > depth))
                 par->UnsetPExtraType();

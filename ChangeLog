@@ -1,5 +1,20 @@
 1999-10-19  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
+	* src/support/lyxstring.C: removed the compilation guards
+
+	* src/vspace.C (nextToken): use i + 1  instead of ++i. Maks things
+	a bit clearer.
+
+	* src/support/Makefile.am (LYXSTRING): bruker USE_LYXSTRING for
+	conditional compile of lyxstring.Ch
+
+	* acinclude.m4 (LYX_CXX_STL_STRING): new and improved, still a
+	stupid check, but it is a lot better than the bastring hack. 
+	(LYX_CXX_STL_STRING): bruker nå AM_CONDITIONAL(USE_LYXSTRING  
+
+	* several files: changed string::erase into string::clear. Not
+	really needed.
+	
 	* src/chset.C (encodeString): use a char temporary instead
 
 	* src/table.C (TexEndOfCell): added tostr around

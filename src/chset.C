@@ -31,7 +31,7 @@ void CharacterSet::freeMap()
 		delete t;
 	}
 
-	name_.erase();
+	name_.clear();
 }
 
 

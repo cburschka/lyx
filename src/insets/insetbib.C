@@ -417,7 +417,7 @@ string InsetBibtex::getKeys()
 								keys += strip(tmp) + ",";
 						}
 					}
-					linebuf.erase();
+					linebuf.clear();
 				} else {
 					linebuf += c;
 				}

@@ -284,7 +284,7 @@ int LyXText::LeftMargin(Row* row)
 
    /* table stuff -- begin*/ 
    if (row->par->table)
-      parindent.erase();
+      parindent.clear();
    /* table stuff -- end*/       
 
    x = LYX_PAPER_MARGIN;
@@ -307,7 +307,7 @@ int LyXText::LeftMargin(Row* row)
 	 if (row->par->FirstPhysicalPar()->Previous()) {
 	    newpar = row->par->DepthHook(row->par->GetDepth());
 	    if (newpar && lyxstyle.Style(parameters->textclass, newpar->GetLayout())->nextnoindent)
-	       parindent.erase();
+	       parindent.clear();
 	 }
       }
    }
@@ -337,7 +337,7 @@ int LyXText::LeftMargin(Row* row)
       
       if (newpar && !row->par->GetLayout()) {
 	 if (newpar->FirstPhysicalPar()->noindent)
-	    parindent.erase();
+	    parindent.clear();
 	 else
 	    parindent = lyxstyle.Style(parameters->textclass, 
 				       newpar->GetLayout())->parindent;

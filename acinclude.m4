@@ -294,18 +294,35 @@ fi])
 
 
 dnl Usage: LYX_CXX_STL_STRING : checks whether the C++ compiler
-dnl   has a working stl string container
+dnl   has a working stl string container, the check is really stupid
+dnl   and could need some improvement.
 AC_DEFUN(LYX_CXX_STL_STRING,[
-AC_ARG_WITH(included-string,
-[  --with-included-string  use LyX string class instead of STL string],,
-[AC_CHECK_HEADER(std/bastring.h,
-  [with_included_string=yes],
-  [with_included_string=no])])
-if test x$with_included_string = xyes ; then
-  AC_DEFINE(USE_INCLUDED_STRING, 1, 
-    [Define to use the LString class bundled with LyX])
-  lyx_flags="$lyx_flags included-string"
-fi])
+    AC_REQUIRE([LYX_PROG_CXX])
+    AC_MSG_CHECKING(Use the included std::string)
+    AC_ARG_WITH(included-string,[
+	--with-included-string  use LyX string class instead of STL string
+    ],[
+	with_included_string=$withval
+    ],[
+	AC_TRY_COMPILE([
+	    #include <string>
+	],[
+	    string a("hello there");
+	    a.clear();
+	    a = "hey";
+	    a.erase();
+	],[
+	    with_included_string=no
+	],[
+	    with_included_string=yes
+	    AC_DEFINE(USE_INCLUDED_STRING, 1,
+	    [Define to use the lyxstring class bundled with LyX.])
+	    lyx_flags="$lyx_flags included-string"
+	])
+    ])
+    AM_CONDITIONAL(USE_LYXSTRING, test x$with_included_string = xyes)
+    AC_MSG_RESULT([$with_included_string])
+])
 
 
 dnl LYX_CXX_MUTABLE

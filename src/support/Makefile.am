@@ -3,6 +3,11 @@ noinst_LIBRARIES = libsupport.a
 libsupport_a_LIBADD = @LIBOBJS@
 ETAGS_ARGS = --c++
 INCLUDES = -I${srcdir}/../
+
+if USE_LYXSTRING
+LYXSTRING = lyxstring.C lyxstring.h
+endif
+
 libsupport_a_SOURCES = \
 	DebugStream.C \
 	DebugStream.h \
@@ -14,9 +19,7 @@ libsupport_a_SOURCES = \
 	lstrings.C \
 	lstrings.h \
 	lyxlib.h \
-	lyxstring.C \
-	lyxstring.h \
-	lyxsum.C \
+	$(LYXSTRING) lyxsum.C \
 	path.h \
 	syscall.C \
 	syscall.h \
@@ -24,3 +27,4 @@ libsupport_a_SOURCES = \
 	syscontr.h \
 	syssingleton.C \
 	textutils.h
+

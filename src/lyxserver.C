@@ -337,7 +337,7 @@ void LyXComm::callback(int fd, void *v)
 			{
 				lyxerr << "LyxComm: truncated command: " 
 				       << lsbuf << endl;
-				lsbuf.erase();
+				lsbuf.clear();
 			}
 			break; // reset connection
 		}
@@ -485,7 +485,7 @@ void LyXServer::callback(LyXServer * serv, string const & msg)
 				}
 				if (i<serv->numclients) {
 					serv->numclients--;
-					serv->clients[i].erase();
+					serv->clients[i].clear();
 					lyxerr[Debug::LYXSERVER]
 						<< "LyXServer: Client "
 						<< client << " said goodbye"

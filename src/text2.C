@@ -1463,7 +1463,7 @@ void LyXText::SetCounter(LyXParagraph *par)
 	}
    
 	if (!par->labelstring.empty()) {
-		par->labelstring.erase();
+		par->labelstring.clear();
 	}
    
 	if (layout->margintype == MARGIN_MANUAL) {
@@ -1489,13 +1489,13 @@ void LyXText::SetCounter(LyXParagraph *par)
 				if (!layout->labelstring.empty())
 					par->labelstring = layout->labelstring;
 				else
-					par->labelstring.erase();
+					par->labelstring.clear();
                         }
 			else {
 				if (!layout->labelstring_appendix.empty())
 					par->labelstring = layout->labelstring_appendix;
 				else
-					par->labelstring.erase();
+					par->labelstring.clear();
 			}
  
 			if (!par->appendix){

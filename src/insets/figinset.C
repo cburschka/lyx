@@ -1905,7 +1905,7 @@ void InsetFig::CallbackFig(long arg)
 			} else {
 				if (!fname.empty()) {
 					changedfname = true;
-					fname.erase();
+					fname.clear();
 				}
 			}
 			subcaption = fl_get_input(form->Subcaption);

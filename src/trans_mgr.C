@@ -381,7 +381,7 @@ void TransManager::deadkey(char c,tex_accent accent,LyXText *t)
     if (active_==default_ || c==0) {
 	i.accent=accent;
 	i.allowed=lyx_accent_table[accent].native;
-	i.data.erase();
+	i.data.clear();
 	i.exception_list=0;
 	
 	string res=trans_fsm_.currentState->deadkey(c,i);

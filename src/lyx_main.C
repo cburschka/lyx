@@ -225,7 +225,7 @@ void LyX::init(int */*argc*/, char **argv)
 		lyxerr[Debug::INIT]
 			<< "Checking whether LyX is run in place... no"
 			<< endl;
-		build_lyxdir.erase();
+		build_lyxdir.clear();
 	}
 
 

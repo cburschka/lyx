@@ -589,7 +589,7 @@ void InsetFormula::SetDisplay(bool dspf)
 	 par->SetType(LM_OT_MIN);
 	 par->SetStyle(LM_ST_TEXT);
 	 if (!label.empty() && par->GetType()!=LM_OT_MPARN) {
-		 label.erase();
+		 label.clear();
 	 }
       }
       disp_flag = dspf;
@@ -890,7 +890,7 @@ bool InsetFormula::LocalDispatch(int action, char const *arg)
 	  if (oldf) {
 	     type--;
 	     if (!label.empty()) {
-		     label.erase();
+		     label.clear();
 	     }
 	     minibuffer->Set(_("No number"));  
 	  } else {
@@ -1038,7 +1038,7 @@ bool InsetFormula::LocalDispatch(int action, char const *arg)
 	  }
 	  UpdateLocal();
        } else
-	       label.erase();
+	       label.clear();
 	       //label = 0;
        break;
     }
