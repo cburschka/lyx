@@ -631,80 +631,48 @@ RowList::iterator LyXText::firstRow(ParagraphList::iterator pit)
 // rebreaks all paragraphs between the specified pars
 // This function is needed after SetLayout and SetFont etc.
 void LyXText::redoParagraphs(ParagraphList::iterator start,
-  ParagraphList::iterator endpit)
+  ParagraphList::iterator end)
 {
-	RowList::iterator rit = firstRow(start);
+	for ( ; start != end; ++start)
+		redoParagraph(start);
+}
+
+
+void LyXText::redoParagraph(ParagraphList::iterator pit)
+{
+	RowList::iterator rit = firstRow(pit);
 
 	if (rit == rows().end()) {
 		lyxerr << "LyXText::redoParagraphs: should not happen\n";
 		Assert(0);
 	}
 
-	ParagraphList::iterator first_phys_pit;
-	RowList::iterator prevrit;
-	if (rit == rows().begin()) {
-		// A trick/hack for UNDO.
-		// This is needed because in an UNDO/REDO we could have
-		// changed the ownerParagraph() so the paragraph inside
-		// the row is NOT my really first par anymore.
-		// Got it Lars ;) (Jug 20011206)
-		first_phys_pit = ownerParagraphs().begin();
-		prevrit = rows().end();
-	} else {
-		first_phys_pit = rit->par();
-		while (rit != rows().begin()
-		       && boost::prior(rit)->par() == first_phys_pit)
-		{
-			--rit;
-		}
-		prevrit = boost::prior(rit);
-	}
-
 	// remove it
-	while (rit != rows().end() && rit->par() != endpit) {
+	while (rit != rows().end() && rit->par() == pit) {
 		RowList::iterator rit2 = rit++;
 		removeRow(rit2);
 	}
 
-	// Reinsert the paragraphs.
-	ParagraphList::iterator tmppit = first_phys_pit;
-
-	while (tmppit != ownerParagraphs().end()) {
-		insertParagraph(tmppit, rit);
-		while (rit != rows().end() && rit->par() == tmppit)
-			++rit;
-		++tmppit;
-		if (tmppit == endpit)
-			break;
-	}
-	if (prevrit != rows().end())
-		setHeightOfRow(prevrit);
-	else
-		setHeightOfRow(rows().begin());
-	postPaint();
-	if (rit != rows().end())
-		setHeightOfRow(rit);
-
+	// Reinsert the paragraph.
+	insertParagraph(pit, rit);
+	setHeightOfRow(rows().begin());
 	updateCounters();
-}
-
-
-void LyXText::redoParagraph(ParagraphList::iterator pit)
-{
-	redoParagraphs(pit, boost::next(pit));
 }
 
 
 void LyXText::fullRebreak()
 {
-	init(bv());
+	lyxerr << "fullRebreak\n";
+	redoParagraphs(ownerParagraphs().begin(), ownerParagraphs().end());
 	setCursorIntern(cursor.par(), cursor.pos());
+	selection.cursor = cursor;
 }
 
 
 void LyXText::metrics(MetricsInfo & mi, Dimension & dim)
 {
-	//lyxerr << "LyXText::metrics: width: " << mi.base.textwidth << "\n";
+	lyxerr << "LyXText::metrics: width: " << mi.base.textwidth << "\n";
+	//Assert(mi.base.textwidth);
 
 	// rebuild row cache
 	rowlist_.clear();
