@@ -348,17 +348,17 @@ void QDocumentDialog::enableSkip(bool skip)
 
 void QDocumentDialog::setMargins(int papersize)
 {
-	QStringList a4only;
-	QStringList normal;
-	a4only << _("Small Margins") << _("Very small Margins")
-	       << _("Very wide Margins ");
-	normal << _("Default") << _("Custom");
-
+	const char * a4only[] = {
+		_("Small Margins"), _("Very small Margins"),
+		_("Very wide Margins ") };
+	const char * normal[] = {
+		_("Default"), _("Custom") };
+ 
 	int olditem = marginsModule->marginCO->currentItem();
 	marginsModule->marginCO->clear();
-	marginsModule->marginCO->insertStringList(normal);
+	marginsModule->marginCO->insertStrList(normal);
 	if (papersize==6) {
-		marginsModule->marginCO->insertStringList(a4only);
+		marginsModule->marginCO->insertStrList(a4only);
 	}
 	marginsModule->marginCO->setCurrentItem(olditem);
 	setCustomMargins(olditem);

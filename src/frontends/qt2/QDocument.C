@@ -106,11 +106,11 @@ void QDocument::build_dialog()
 	}
 
 	// paper
-	QStringList papersize_;
-	papersize_ << _("Default") << _("Custom") << _("US letter") << _("US legal")
-		   << _("US executive") << _("A3") << _("A4") << _("A5")
-		   << _("B3") << _("B4") << _("B5");
-	dialog_->paperModule->papersizeCO->insertStringList(papersize_);
+	char const * sizes[] = { 
+		_("Default") , _("Custom") , _("US letter") , _("US legal")
+		   , _("US executive") , _("A3") , _("A4") , _("A5")
+		   , _("B3") , _("B4") , _("B5") };
+	dialog_->paperModule->papersizeCO->insertStrList(sizes);
 
 	// layout
 	for (LyXTextClassList::const_iterator cit = textclasslist.begin();
@@ -450,19 +450,14 @@ void QDocument::update_contents()
 		params.user_defined_bullets[3].getSize() + 1);
 	
 	// packages
-	QStringList enc;
-	enc <<  "default" << "auto" << "latin1" << "latin2" << "latin3" <<
-		"latin4" << "latin5" << "latin9" << "koi8-r" << "koi8-u" <<
-		"cp866" << "cp1251" << "iso88595" << "pt154";
-	int pos2 = 0;
-	for (QStringList::Iterator it = enc.begin();
-	     it!=enc.end(); ++it) {
-		if (*it == params.inputenc.c_str()) {
-			dialog_->packagesModule->encodingCO->setCurrentItem(pos2);
-		}
-		++pos2;
+	char const * enc[] = { 
+		"default" , "auto" , "latin1" , "latin2" , "latin3" ,
+		"latin4" , "latin5" , "latin9" , "koi8-r" , "koi8-u" ,
+		"cp866" , "cp1251" , "iso88595" , "pt154" };
+	for (size_t i = 0; i < sizeof(enc)/sizeof(char *); ++i) {
+		if (params.inputenc == enc[i])
+			dialog_->packagesModule->encodingCO->setCurrentItem(i);
 	}
-
 
 	QString text = params.graphicsDriver.c_str();
 	int nitem = dialog_->packagesModule->psdriverCO->count();
