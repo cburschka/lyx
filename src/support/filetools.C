@@ -128,13 +128,10 @@ string const QuoteName(string const & name)
 
 
 // Is a file readable ?
-bool IsFileReadable (string const & path)
+bool IsFileReadable(string const & path)
 {
 	FileInfo file(path);
-	if (file.isOK() && file.isRegular() && file.readable())
-		return true;
-	else
-		return false;
+	return file.isOK() && file.isRegular() && file.readable();
 }
 
 
@@ -142,7 +139,7 @@ bool IsFileReadable (string const & path)
 // return 1 read-write
 //	  0 read_only
 //	 -1 error (doesn't exist, no access, anything else)
-int IsFileWriteable (string const & path)
+int IsFileWriteable(string const & path)
 {
 	FileInfo fi(path);
 
@@ -156,7 +153,7 @@ int IsFileWriteable (string const & path)
 
 //returns true: dir writeable
 //	  false: not writeable
-bool IsDirWriteable (string const & path)
+bool IsDirWriteable(string const & path)
 {
 	lyxerr[Debug::FILES] << "IsDirWriteable: " << path << endl;
 
@@ -175,10 +172,11 @@ bool IsDirWriteable (string const & path)
 // If path entry begins with $$LyX/, use system_lyxdir
 // If path entry begins with $$User/, use user_lyxdir
 // Example: "$$User/doc;$$LyX/doc"
-string const FileOpenSearch (string const & path, string const & name,
+string const FileOpenSearch(string const & path, string const & name,
 			     string const & ext)
 {
-	string real_file, path_element;
+	string real_file;
+	string path_element;
 	bool notfound = true;
 	string tmppath = split(path, path_element, ';');
 
@@ -421,7 +419,7 @@ bool PutEnvPath(string const & envstr)
 
 namespace {
 
-int DeleteAllFilesInDir (string const & path)
+int DeleteAllFilesInDir(string const & path)
 {
 	// I have decided that we will be using parts from the boost
 	// library. Check out http://www.boost.org/
