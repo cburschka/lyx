@@ -46,8 +46,11 @@ inline void nextState(ButtonPolicy::State & state,
 
 PreferencesPolicy::PreferencesPolicy()
 	: state_(INITIAL),
-	  outputs_(APPLIED+1, OKAY | APPLY | CANCEL | UNDO_ALL),
-	  state_machine_(APPLIED+1, StateArray(SMI_TOTAL, BOGUS))
+	  outputs_(APPLIED+1,
+		   static_cast<int const &>(OKAY | APPLY | CANCEL | UNDO_ALL)),
+	  state_machine_(APPLIED+1,
+			 StateArray(SMI_TOTAL,
+				    static_cast<State const &>(BOGUS)))
 {
 	// Build the state output map
 	outputs_[INITIAL] = CLOSE;
@@ -118,8 +121,11 @@ void PreferencesPolicy::input(SMInput input)
 
 OkCancelPolicy::OkCancelPolicy()
 	: state_(INITIAL),
-	  outputs_(INVALID+1, OKAY | APPLY | CANCEL | UNDO_ALL),
-	  state_machine_(INVALID+1, StateArray(SMI_TOTAL, BOGUS))
+	  outputs_(INVALID+1,
+		   static_cast<int const &>(OKAY | APPLY | CANCEL | UNDO_ALL)),
+	  state_machine_(INVALID+1,
+			 StateArray(SMI_TOTAL,
+				    static_cast<State const &>(BOGUS)))
 {
 	// Build the state output map
 	outputs_[INITIAL] = CLOSE;
@@ -168,8 +174,11 @@ void OkCancelPolicy::input(SMInput input)
 
 OkCancelReadOnlyPolicy::OkCancelReadOnlyPolicy()
 	: state_(INITIAL),
-	  outputs_(RO_INVALID+1, OKAY | APPLY | CANCEL | UNDO_ALL),
-	  state_machine_(RO_INVALID+1, StateArray(SMI_TOTAL, BOGUS))
+	  outputs_(RO_INVALID+1,
+		   static_cast<int const &>(OKAY | APPLY | CANCEL | UNDO_ALL)),
+	  state_machine_(RO_INVALID+1,
+			 StateArray(SMI_TOTAL,
+				    static_cast<State const &>(BOGUS)))
 {
 	// Build the state output map
 	outputs_[INITIAL] = CLOSE;
@@ -238,8 +247,11 @@ void OkCancelReadOnlyPolicy::input(SMInput input)
 
 NoRepeatedApplyReadOnlyPolicy::NoRepeatedApplyReadOnlyPolicy()
 	: state_(INITIAL),
-	  outputs_(RO_INVALID+1, OKAY | APPLY | CANCEL | UNDO_ALL),
-	  state_machine_(RO_INVALID+1, StateArray(SMI_TOTAL, BOGUS))
+	  outputs_(RO_INVALID+1,
+		   static_cast<int const &>(OKAY | APPLY | CANCEL | UNDO_ALL)),
+	  state_machine_(RO_INVALID+1,
+			 StateArray(SMI_TOTAL,
+				    static_cast<State const &>(BOGUS)))
 {
 	// Build the state output map
 	outputs_[INITIAL] = CLOSE;
@@ -309,8 +321,11 @@ void NoRepeatedApplyReadOnlyPolicy::input(SMInput input)
 
 OkApplyCancelReadOnlyPolicy::OkApplyCancelReadOnlyPolicy()
 	: state_(INITIAL),
-	  outputs_(RO_APPLIED+1, OKAY | APPLY | CANCEL | UNDO_ALL),
-	  state_machine_(RO_APPLIED+1, StateArray(SMI_TOTAL, BOGUS))
+	  outputs_(RO_APPLIED+1,
+		   static_cast<int const &>(OKAY | APPLY | CANCEL | UNDO_ALL)),
+	  state_machine_(RO_APPLIED+1,
+			 StateArray(SMI_TOTAL,
+				    static_cast<State const &>(BOGUS)))
 {
 	// Build the state output map
 	outputs_[INITIAL] = CLOSE;
@@ -394,8 +409,11 @@ void OkApplyCancelReadOnlyPolicy::input(SMInput input)
 
 OkApplyCancelPolicy::OkApplyCancelPolicy()
 	: state_(INITIAL),
-	  outputs_(APPLIED+1, OKAY | APPLY | CANCEL | UNDO_ALL),
-	  state_machine_(APPLIED+1, StateArray(SMI_TOTAL, BOGUS))
+	  outputs_(APPLIED+1,
+		   static_cast<int const &>(OKAY | APPLY | CANCEL | UNDO_ALL)),
+	  state_machine_(APPLIED+1,
+			 StateArray(SMI_TOTAL,
+				    static_cast<State const &>(BOGUS)))
 {
 	// Build the state output map
 	outputs_[INITIAL] = CLOSE;
@@ -455,8 +473,11 @@ void OkApplyCancelPolicy::input(SMInput input)
 
 NoRepeatedApplyPolicy::NoRepeatedApplyPolicy()
 	: state_(INITIAL),
-	  outputs_(INVALID+1, OKAY | APPLY | CANCEL | UNDO_ALL),
-	  state_machine_(INVALID+1, StateArray(SMI_TOTAL, BOGUS))
+	  outputs_(INVALID+1,
+		   static_cast<int const &>(OKAY | APPLY | CANCEL | UNDO_ALL)),
+	  state_machine_(INVALID+1,
+			 StateArray(SMI_TOTAL,
+				    static_cast<State const &>(BOGUS)))
 {
 	// Build the state output map
 	outputs_[INITIAL] = CLOSE;

@@ -1,3 +1,8 @@
+2000-08-15  Dekel Tsur  <dekel@math.tau.ac.il>
+
+	* src/frontends/ButtonPolicies.C: make gcc happy when compiling with
+	-pedantic
+
 2000-08-14  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/Timeout.h: remove Qt::emit hack.
