@@ -471,7 +471,7 @@ TeXOnePar(Buffer const * buf,
 		}
 
 		if (pit->params().lineTop()) {
-			os << "\\lyxline{\\" << pit->getFont(bparams, 0, outerFont(pit)).latexSize() << '}'
+			os << "\\lyxline{\\" << pit->getFont(bparams, 0, outerFont(pit, paragraphs)).latexSize() << '}'
 			   << "\\vspace{-1\\parskip}";
 			further_blank_line = true;
 		}
@@ -550,7 +550,8 @@ TeXOnePar(Buffer const * buf,
 		break;
 	}
 
-	bool need_par = pit->simpleTeXOnePar(buf, bparams, outerFont(pit),
+	bool need_par = pit->simpleTeXOnePar(buf, bparams,
+					     outerFont(pit, paragraphs),
 					     os, texrow, moving_arg);
 
 	// Make sure that \\par is done with the font of the last
@@ -562,7 +563,7 @@ TeXOnePar(Buffer const * buf,
 	// Is this really needed ? (Dekel)
 	// We do not need to use to change the font for the last paragraph
 	// or for a command.
-	LyXFont const outerfont(outerFont(pit));
+	LyXFont const outerfont(outerFont(pit, paragraphs));
 
 	LyXFont const font =
 		(pit->empty()
@@ -1029,7 +1030,8 @@ int readParagraph(Buffer & buf, Paragraph & par, LyXLex & lex)
 }
 
 
-LyXFont const outerFont(ParagraphList::iterator pit)
+LyXFont const outerFont(ParagraphList::iterator pit,
+			ParagraphList const & /*plist*/)
 {
 	Paragraph::depth_type par_depth = pit->getDepth();
 	LyXFont tmpfont(LyXFont::ALL_INHERIT);

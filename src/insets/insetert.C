@@ -158,13 +158,14 @@ void InsetERT::read(Buffer const * buf, LyXLex & lex)
 	LyXFont font(LyXFont::ALL_INHERIT, latex_language);
 	font.setFamily(LyXFont::TYPEWRITER_FAMILY);
 	font.setColor(LColor::latex);
-	Paragraph * par = inset.paragraph();
-	while (par) {
-		pos_type siz = par->size();
+
+	ParagraphList::iterator pit = inset.paragraphs.begin();
+	ParagraphList::iterator pend = inset.paragraphs.end();
+	for (; pit != pend; ++pit) {
+		pos_type siz = pit->size();
 		for (pos_type i = 0; i < siz; ++i) {
-			par->setFont(i, font);
+			pit->setFont(i, font);
 		}
-		par = par->next();
 	}
 #endif
 

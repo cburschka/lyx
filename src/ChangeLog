@@ -1,3 +1,20 @@
+2003-04-16  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* text2.C (getFont): adjust
+	(getLayoutFont): adjust
+	(getLabelFont): adjust
+
+	* paragraph_funcs.C (TeXOnePar): adjust
+
+	* buffer.C (simpleLinuxDocOnePar): adjust
+	(simpleDocBookOnePar): adjust
+
+	* CutAndPaste.C (pasteSelection): adjust
+
+	* BufferView.C (getEncoding): adjust
+
+	* paragraph_funcs.C (outerFont): prepare for a ParagraphList arg.
+
 2003-04-16  John Levon  <levon@movementarian.org>
 
 	* lyxfind.C: use parlist stuff for search/changes
@@ -8,7 +25,7 @@
 
 	* text2.C (deleteEmptyParagraphMechanism): adjust
 
-	* text2.[Ch] (ownerParagraph): delete func (both of them 
+	* text2.[Ch] (ownerParagraph): delete func (both of them
 
 2003-04-15  Lars Gullik Bjønnes  <larsbj@gullik.net>
 

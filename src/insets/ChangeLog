@@ -1,3 +1,7 @@
+2003-04-16  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* insetert.C (read): use ParagraphList::iterator.
+
 2003-04-15  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* insetquotes.C (latex): comment some code and add warnings.

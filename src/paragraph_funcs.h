@@ -69,6 +69,7 @@ int readParagraph(Buffer & buf, Paragraph & par, LyXLex & lex);
 LyXFont const realizeFont(LyXFont const & font,
 			  BufferParams const & params);
 
-LyXFont const outerFont(ParagraphList::iterator pit);
+LyXFont const outerFont(ParagraphList::iterator pit,
+			ParagraphList const & plist);
 
 #endif // PARAGRAPH_FUNCS_H

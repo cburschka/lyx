@@ -969,7 +969,7 @@ Encoding const * BufferView::getEncoding() const
 
 	LyXCursor const & c = t->cursor;
 	LyXFont const font = c.par()->getFont(buffer()->params, c.pos(),
-					      outerFont(c.par()));
+					      outerFont(c.par(), t->ownerParagraphs()));
 	return font.language()->encoding();
 }
 
