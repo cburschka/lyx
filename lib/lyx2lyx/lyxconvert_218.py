@@ -441,12 +441,13 @@ def update_tabular(lines):
 def fix_oldfloatinset(lines):
     i = 0
     while 1:
-	i = find_token(lines, "\\begin_inset Float", i)
+	i = find_token(lines, "\\begin_inset Float ", i)
 	if i == -1:
 	    break
         j = find_token(lines, "collapsed", i)
         if j != -1:
             lines[j:j] = ["wide false"]
+            sys.stderr.write("i,j=%d,%d\n" % (i,j))
         i = i+1
 
 def change_listof(lines):

@@ -1,3 +1,8 @@
+2002-10-05  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* lyx2lyx/lyxconvert_218.py (fix_oldfloatinset): Search for 
+	"\begin_inset Float " to avoid matching "\begin_inset FloatList". 
+
 2002-10-01  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* lyx2lyx/lyxconvert_218.py: Handle end_deeper "inside" ERT.
