@@ -1,5 +1,13 @@
 2002-11-17  John Levon  <levon@movementarian.org>
 
+	* fontloader.C: disable crashing code for now
+
+	* QPrefs.h:
+	* QPrefs.C:
+	* QPrefsDialog.C: implement most prefs load/save
+ 
+2002-11-17  John Levon  <levon@movementarian.org>
+
 	* ui/QPref*:
 	* QPrefsDialog.C:
 	* QPrefs.C: more work

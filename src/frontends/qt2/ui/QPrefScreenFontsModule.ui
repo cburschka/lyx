@@ -13,8 +13,8 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>278</width>
-            <height>353</height>
+            <width>203</width>
+            <height>360</height>
         </rect>
     </property>
     <property stdset="1">
@@ -276,7 +276,7 @@
                     <class>QLineEdit</class>
                     <property stdset="1">
                         <name>name</name>
-                        <cstring>scrrenTinyED</cstring>
+                        <cstring>screenTinyED</cstring>
                     </property>
                 </widget>
                 <widget row="4"  column="3" >
@@ -494,6 +494,27 @@
                 </widget>
             </grid>
         </widget>
+        <spacer>
+            <property>
+                <name>name</name>
+                <cstring>Spacer2</cstring>
+            </property>
+            <property stdset="1">
+                <name>orientation</name>
+                <enum>Vertical</enum>
+            </property>
+            <property stdset="1">
+                <name>sizeType</name>
+                <enum>Expanding</enum>
+            </property>
+            <property>
+                <name>sizeHint</name>
+                <size>
+                    <width>20</width>
+                    <height>20</height>
+                </size>
+            </property>
+        </spacer>
     </vbox>
 </widget>
 <tabstops>
@@ -505,7 +526,7 @@
     <tabstop>screenTypewriterPB</tabstop>
     <tabstop>screenZoomSB</tabstop>
     <tabstop>screenDpiSB</tabstop>
-    <tabstop>scrrenTinyED</tabstop>
+    <tabstop>screenTinyED</tabstop>
     <tabstop>screenSmallestED</tabstop>
     <tabstop>screenSmallerED</tabstop>
     <tabstop>screenSmallED</tabstop>

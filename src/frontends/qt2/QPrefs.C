@@ -35,6 +35,8 @@
 #include "QPrefs.h"
 #include "Qt2BC.h"
 #include "lyxrc.h"
+#include "frnt_lang.h"
+#include "helper_funcs.h"
 
 #include <qpushbutton.h>
 #include <qcheckbox.h>
@@ -59,6 +61,19 @@ void QPrefs::build_dialog()
 	bc().setApply(dialog_->applyPB);
 	bc().setCancel(dialog_->closePB);
 	bc().setRestore(dialog_->restorePB);
+ 
+	QPrefLanguageModule * langmod(dialog_->languageModule);
+ 
+	langmod->defaultLanguageCO->clear();
+	// store the lang identifiers for later
+	vector<frnt::LanguagePair> const langs = frnt::getLanguageData(false);
+	lang_ = getSecond(langs);
+
+	vector<frnt::LanguagePair>::const_iterator lit  = langs.begin();
+	vector<frnt::LanguagePair>::const_iterator lend = langs.end();
+	for (; lit != lend; ++lit) {
+		langmod->defaultLanguageCO->insertItem(lit->first.c_str());
+	}
 }
 
 
@@ -68,112 +83,74 @@ void QPrefs::apply()
 
 	// do something ... 
 
-#if 0
-	bool modifiedText = false;
-	bool modifiedBackground = false;
+	QPrefLanguageModule * langmod(dialog_->languageModule);
+ 
+	// FIXME: remove rtl_support bool
+	rc.rtl_support = langmod->rtlCB->isChecked();
+	rc.mark_foreign_language = langmod->markForeignCB->isChecked(); 
+	rc.language_auto_begin = langmod->autoBeginCB->isChecked(); 
+	rc.language_auto_end = langmod->autoEndCB->isChecked(); 
+	rc.language_use_babel = langmod->useBabelCB->isChecked();
+	rc.language_global_options = langmod->globalCB->isChecked();
+	rc.language_package = langmod->languagePackageED->text().latin1();
+	rc.language_command_begin = langmod->startCommandED->text().latin1();
+	rc.language_command_end = langmod->endCommandED->text().latin1();
+        rc.default_language = lang_[langmod->defaultLanguageCO->currentItem()];
 
-	// Now do the same for the LyX LColors...
-	for (vector<NamedColor>::const_iterator cit = lyxColorDB.begin();
-	     cit != lyxColorDB.end(); ++cit) {
-		LColor::color lc = lcolor.getFromGUIName(cit->getname());
-		if (lc == LColor::inherit) continue;
+	QPrefUIModule * uimod(dialog_->uiModule); 
 
-		// Create a valid X11 name of the form "#rrggbb"
-		string const hexname = X11hexname(cit->color());
+	rc.bind_file = uimod->uiFileED->text().latin1();
+	rc.ui_file = uimod->bindFileED->text().latin1();
+	rc.cursor_follows_scrollbar = uimod->cursorFollowsCB->isChecked(); 
+	rc.wheel_jump = uimod->wheelMouseSB->value();
+	rc.autosave = uimod->autoSaveSB->value() * 60;
+	rc.make_backup = uimod->autoSaveCB->isChecked();
+	rc.num_lastfiles = uimod->lastfilesSB->value();
+ 
+ 
+	QPrefKeyboardModule * keymod(dialog_->keyboardModule);
 
-		if (lcolor.getX11Name(lc) != hexname) {
-			lyxerr[Debug::GUI]
-				<< "FormPreferences::Colors::apply: "
-				<< "resetting LColor " << lcolor.getGUIName(lc)
-				<< " from \"" << lcolor.getX11Name(lc)
-				<< "\" to \"" << hexname << "\"."
-				<< endl;
+	// FIXME: can derive CB from the two EDs 
+	rc.use_kbmap = keymod->keymapCB->isChecked();
+	rc.primary_kbmap = keymod->firstKeymapED->text().latin1();
+	rc.secondary_kbmap = keymod->secondKeymapED->text().latin1();
+ 
 
-			parent_.controller().setColor(lc, hexname);
-		}
+	QPrefAsciiModule * ascmod(dialog_->asciiModule);
+
+	rc.ascii_linelen = ascmod->asciiLinelengthSB->value();
+	rc.ascii_roff_command = ascmod->asciiRoffED->text().latin1();
+
+
+	QPrefDateModule * datemod(dialog_->dateModule);
+
+	rc.date_insert_format = datemod->DateED->text().latin1();
+
+
+	QPrefLatexModule * latexmod(dialog_->latexModule);
+
+	rc.fontenc = latexmod->latexEncodingED->text().latin1();
+	rc.chktex_command = latexmod->latexChecktexED->text().latin1(); 
+	rc.auto_reset_options = latexmod->latexAutoresetCB->isChecked();
+	rc.view_dvi_paper_option = latexmod->latexDviPaperED->text().latin1();
+	rc.default_papersize =
+		static_cast<BufferParams::PAPER_SIZE>(latexmod->latexPaperSizeCO->currentItem());
+
+
+	QPrefDisplayModule * displaymod(dialog_->displayModule);
+
+	rc.preview = displaymod->previewCB->isChecked();
+ 
+	grfx::DisplayType dtype(grfx::ColorDisplay);
+ 
+	switch (displaymod->displayGraphicsCO->currentItem()) {
+		case 3:	dtype = grfx::NoDisplay; break;
+		case 2:	dtype = grfx::ColorDisplay; break;
+		case 1: dtype = grfx::GrayscaleDisplay;	break;
+		case 0: dtype = grfx::MonochromeDisplay; break;
 	}
-}
+	rc.display_graphics = dtype;
  
-	parent_.controller().setConverters(local_converters);
-
-	parent_.controller().setFormats(local_formats);
- 
-	rc.date_insert_format =
-		fl_get_input(dialog_->input_date_format);
- 
-	rc.popup_normal_font =
-		fl_get_input(dialog_->input_popup_normal_font);
-	rc.popup_bold_font = fl_get_input(dialog_->input_popup_bold_font);
-	rc.popup_font_encoding =
-		fl_get_input(dialog_->input_popup_font_encoding);
-	rc.bind_file = fl_get_input(dialog_->input_bind_file);
-	rc.ui_file = fl_get_input(dialog_->input_ui_file);
-	rc.override_x_deadkeys =
-		fl_get_button(dialog_->check_override_x_dead_keys);
-}
-	int const pos = combo_default_lang->get();
-	rc.default_language = lang_[pos-1];
-
-	int button = fl_get_button(dialog_->check_use_kbmap);
-	string const name_1 = fl_get_input(dialog_->input_kbmap1);
-	string const name_2 = fl_get_input(dialog_->input_kbmap2);
-	if (button)
-		button = !(name_1.empty() && name_2.empty());
-	rc.use_kbmap = static_cast<bool>(button);
-
-	if (rc.use_kbmap) {
-		rc.primary_kbmap = name_1;
-		rc.secondary_kbmap = name_2;
-	}
-
-	button = fl_get_button(dialog_->check_rtl_support);
-	rc.rtl_support = static_cast<bool>(button);
-
-	button = fl_get_button(dialog_->check_mark_foreign);
-	rc.mark_foreign_language = static_cast<bool>(button);
-
-	button = fl_get_button(dialog_->check_auto_begin);
-	rc.language_auto_begin = static_cast<bool>(button);
-
-	button = fl_get_button(dialog_->check_auto_end);
-	rc.language_auto_end = static_cast<bool>(button);
-
-	button = fl_get_button(dialog_->check_use_babel);
-	rc.language_use_babel = static_cast<bool>(button);
-
-	button = fl_get_button(dialog_->check_global_options);
-	rc.language_global_options = static_cast<bool>(button);
-
-	rc.language_package = fl_get_input(dialog_->input_package);
-	rc.language_command_begin = fl_get_input(dialog_->input_command_begin);
-	rc.language_command_end = fl_get_input(dialog_->input_command_end);
-
-	// Ensure that all is self-consistent.
-	update(rc);
-
- 
-	rc.auto_region_delete =
-		fl_get_button(dialog_->check_auto_region_delete);
-	rc.cursor_follows_scrollbar =
-		fl_get_button(dialog_->check_cursor_follows_scrollbar);
-	rc.dialogs_iconify_with_main =
-		fl_get_button(dialog_->check_dialogs_iconify_with_main);
-	rc.preview = fl_get_button(dialog_->check_preview_latex);
-	rc.autosave = static_cast<unsigned int>
-		(fl_get_counter_value(dialog_->counter_autosave));
-	rc.wheel_jump = static_cast<unsigned int>
-		(fl_get_counter_value(dialog_->counter_wm_jump));
-
-	// See FIXME below
-	// grfx::DisplayType old_value = rc.display_graphics;
-	switch (fl_get_choice(dialog_->choice_display)) {
-		case 4: rc.display_graphics = grfx::NoDisplay; break;
-		case 3: rc.display_graphics = grfx::ColorDisplay; break;
-		case 2: rc.display_graphics = grfx::GrayscaleDisplay; break;
-		case 1: rc.display_graphics = grfx::MonochromeDisplay; break;
-		default: rc.display_graphics = grfx::ColorDisplay; break;
-	}
-
 #ifdef WITH_WARNINGS
 #warning FIXME!! The graphics cache no longer has a changeDisplay method.
 #endif
@@ -183,258 +160,113 @@ void QPrefs::apply()
 		gc.changeDisplay();
 	}
 #endif
+	 
+	QPrefPathsModule * pathsmod(dialog_->pathsModule);
  
+	rc.document_path = pathsmod->workingDirED->text().latin1();
+	rc.template_path = pathsmod->templateDirED->text().latin1();
+	rc.backupdir_path = pathsmod->backupDirED->text().latin1();
+	rc.use_tempdir = pathsmod->tempDirCB->isChecked();
+	rc.tempdir_path = pathsmod->tempDirED->text().latin1();
+	// FIXME: should be a checkbox only
+	rc.lyxpipes = pathsmod->lyxserverDirED->text().latin1();
 
+
+	QPrefSpellcheckerModule * spellmod(dialog_->spellcheckerModule);
+
+	if (spellmod->spellCommandCO->currentItem() == 0)
+		rc.isp_command = "ispell";
+	else
+		rc.isp_command = "aspell";
  
-	rc.ascii_linelen = static_cast<unsigned int>
-		(fl_get_counter_value(dialog_->counter_line_len));
-	rc.fontenc = fl_get_input(dialog_->input_tex_encoding);
+	// FIXME: remove isp_use_alt_lang
+	rc.isp_alt_lang = spellmod->altLanguageED->text().latin1();
+	rc.isp_use_alt_lang = !rc.isp_alt_lang.empty(); 
+	// FIXME: remove isp_use_esc_chars 
+	rc.isp_esc_chars = spellmod->escapeCharactersED->text().latin1();
+	rc.isp_use_esc_chars = !rc.isp_esc_chars.empty();
+	// FIXME: remove isp_use_pers_dict 
+	rc.isp_pers_dict = spellmod->persDictionaryED->text().latin1();
+	rc.isp_use_pers_dict = !rc.isp_pers_dict.empty();
+	rc.isp_accept_compound = spellmod->compoundWordCB->isChecked();
+	rc.isp_use_input_encoding = spellmod->inputEncodingCB->isChecked();
 
-	int const choice =
-		fl_get_choice(dialog_->choice_default_papersize) - 1;
-	rc.default_papersize = static_cast<BufferParams::PAPER_SIZE>(choice);
 
-	rc.ascii_roff_command = fl_get_input(dialog_->input_ascii_roff);
-	rc.chktex_command = fl_get_input(dialog_->input_checktex);
-	rc.view_dvi_paper_option = fl_get_input(dialog_->input_paperoption);
-	rc.auto_reset_options = fl_get_button(dialog_->check_autoreset_classopt);
+	QPrefPrinterModule * printmod(dialog_->printerModule);
+
+	rc.print_adapt_output = printmod->printerAdaptCB->isChecked();
+	rc.print_command = printmod->printerCommandED->text().latin1();
+	rc.printer = printmod->printerNameED->text().latin1();
+
+	rc.print_pagerange_flag = printmod->printerPageRangeED->text().latin1();
+	rc.print_copies_flag = printmod->printerCopiesED->text().latin1();
+	rc.print_reverse_flag = printmod->printerReverseED->text().latin1();
+	rc.print_to_printer = printmod->printerToPrinterED->text().latin1();
+	rc.print_file_extension = printmod->printerExtensionED->text().latin1();
+	rc.print_file_extension = printmod->printerSpoolCommandED->text().latin1();
+	rc.print_paper_flag = printmod->printerPaperTypeED->text().latin1();
+	rc.print_evenpage_flag = printmod->printerEvenED->text().latin1();
+	rc.print_oddpage_flag = printmod->printerOddED->text().latin1();
+	rc.print_collcopies_flag = printmod->printerCollatedED->text().latin1();
+	rc.print_landscape_flag = printmod->printerLandscapeED->text().latin1();
+	rc.print_to_file = printmod->printerToFileED->text().latin1();
+	rc.print_extra_options = printmod->printerExtraED->text().latin1();
+	rc.print_spool_printerprefix = printmod->printerSpoolPrefixED->text().latin1();
+	rc.print_paper_dimension_flag = printmod->printerPaperSizeED->text().latin1();
 
 
+	QPrefScreenFontsModule * fontmod(dialog_->screenfontsModule);
+
+	LyXRC const oldrc(rc);
  
-	rc.document_path = fl_get_input(dialog_->input_default_path);
-	rc.template_path = fl_get_input(dialog_->input_template_path);
+	rc.roman_font_name = fontmod->screenRomanED->text().latin1();
+	rc.sans_font_name = fontmod->screenSansED->text().latin1();
+	rc.typewriter_font_name = fontmod->screenTypewriterED->text().latin1();
+	rc.zoom = fontmod->screenZoomSB->value();
+	rc.dpi = fontmod->screenDpiSB->value();
+	rc.font_sizes[LyXFont::SIZE_TINY] = strToDbl(fontmod->screenTinyED->text().latin1());
+	rc.font_sizes[LyXFont::SIZE_SCRIPT] = strToDbl(fontmod->screenSmallestED->text().latin1());
+	rc.font_sizes[LyXFont::SIZE_FOOTNOTE] = strToDbl(fontmod->screenSmallerED->text().latin1());
+	rc.font_sizes[LyXFont::SIZE_SMALL] = strToDbl(fontmod->screenSmallED->text().latin1());
+	rc.font_sizes[LyXFont::SIZE_NORMAL] = strToDbl(fontmod->screenNormalED->text().latin1());
+	rc.font_sizes[LyXFont::SIZE_LARGE] = strToDbl(fontmod->screenLargeED->text().latin1());
+	rc.font_sizes[LyXFont::SIZE_LARGER] = strToDbl(fontmod->screenLargerED->text().latin1());
+	rc.font_sizes[LyXFont::SIZE_LARGEST] = strToDbl(fontmod->screenLargestED->text().latin1());
+	rc.font_sizes[LyXFont::SIZE_HUGE] = strToDbl(fontmod->screenHugeED->text().latin1());
+	rc.font_sizes[LyXFont::SIZE_HUGER] = strToDbl(fontmod->screenHugerED->text().latin1());
 
-	int button = fl_get_button(dialog_->check_use_temp_dir);
-	string str  = fl_get_input(dialog_->input_temp_dir);
-	if (!button)
-		str.erase();
-
-	rc.use_tempdir = button;
-	rc.tempdir_path = str;
-
-	button = fl_get_button(dialog_->check_last_files);
-	str = fl_get_input(dialog_->input_lastfiles);
-	if (!button) str.erase();
-
-	rc.check_lastfiles = button;
-	rc.lastfiles = str;
-	rc.num_lastfiles = static_cast<unsigned int>
-		(fl_get_counter_value(dialog_->counter_lastfiles));
-
-	button = fl_get_button(dialog_->check_make_backups);
-	str = fl_get_input(dialog_->input_backup_path);
-	if (!button)
-		str.erase();
-
-	rc.make_backup = button;
-	rc.backupdir_path = str;
-
-	rc.lyxpipes = fl_get_input(dialog_->input_serverpipe);
-
-	// update view
-	update(rc);
-
+	if (rc.font_sizes != oldrc.font_sizes
+		|| rc.roman_font_name != oldrc.roman_font_name
+		|| rc.sans_font_name != oldrc.sans_font_name
+		|| rc.typewriter_font_name != oldrc.typewriter_font_name
+		|| rc.zoom != oldrc.zoom || rc.dpi != oldrc.dpi) {
+		controller().updateScreenFonts();
+	}
  
-	rc.print_adapt_output = fl_get_button(dialog_->check_adapt_output);
-	rc.print_command = fl_get_input(dialog_->input_command);
-	rc.print_pagerange_flag = fl_get_input(dialog_->input_page_range);
-	rc.print_copies_flag = fl_get_input(dialog_->input_copies);
-	rc.print_reverse_flag = fl_get_input(dialog_->input_reverse);
-	rc.print_to_printer = fl_get_input(dialog_->input_to_printer);
-	rc.print_file_extension =
-		fl_get_input(dialog_->input_file_extension);
-	rc.print_spool_command =
-		fl_get_input(dialog_->input_spool_command);
-	rc.print_paper_flag = fl_get_input(dialog_->input_paper_type);
-	rc.print_evenpage_flag = fl_get_input(dialog_->input_even_pages);
-	rc.print_oddpage_flag = fl_get_input(dialog_->input_odd_pages);
-	rc.print_collcopies_flag = fl_get_input(dialog_->input_collated);
-	rc.print_landscape_flag = fl_get_input(dialog_->input_landscape);
-	rc.print_to_file = fl_get_input(dialog_->input_to_file);
-	rc.print_extra_options =
-		fl_get_input(dialog_->input_extra_options);
-	rc.print_spool_printerprefix =
-		fl_get_input(dialog_->input_spool_prefix);
-	rc.print_paper_dimension_flag =
-		fl_get_input(dialog_->input_paper_size);
-	rc.printer = fl_get_input(dialog_->input_name);
+	// FIXME: here we read new converters/ formats
 
+	controller().setConverters(converters_);
+	controller().setFormats(formats_); 
 
- 
-	bool changed = false;
-
-	string str = fl_get_input(dialog_->input_roman);
-	if (rc.roman_font_name != str) {
-		changed = true;
-		rc.roman_font_name = str;
-	}
-
-	str = fl_get_input(dialog_->input_sans);
-	if (rc.sans_font_name != str) {
-		changed = true;
-		rc.sans_font_name = str;
-	}
-
-	str = fl_get_input(dialog_->input_typewriter);
-	if (rc.typewriter_font_name != str) {
-		changed = true;
-		rc.typewriter_font_name = str;
-	}
-
-	str = fl_get_input(dialog_->input_screen_encoding);
-	if (rc.font_norm != str) {
-		changed = true;
-		rc.font_norm = str;
-	}
-
-	bool button = fl_get_button(dialog_->check_scalable);
-	if (rc.use_scalable_fonts != button) {
-		changed = true;
-		rc.use_scalable_fonts = button;
-	}
-
-	unsigned int ivalue = static_cast<unsigned int>
-		(fl_get_counter_value(dialog_->counter_zoom));
-	if (rc.zoom != ivalue) {
-		changed = true;
-		rc.zoom = ivalue;
-	}
-
-	ivalue = static_cast<unsigned int>
-		(fl_get_counter_value(dialog_->counter_dpi));
-	if (rc.dpi != ivalue) {
-		changed = true;
-		rc.dpi = ivalue;
-	}
-
-	double dvalue = strToDbl(fl_get_input(dialog_->input_tiny));
-	if (rc.font_sizes[LyXFont::SIZE_TINY] != dvalue) {
-		changed = true;
-		rc.font_sizes[LyXFont::SIZE_TINY] = dvalue;
-	}
-
-	dvalue = strToDbl(fl_get_input(dialog_->input_script));
-	if (rc.font_sizes[LyXFont::SIZE_SCRIPT] != dvalue) {
-		changed = true;
-		rc.font_sizes[LyXFont::SIZE_SCRIPT] = dvalue;
-	}
-
-	dvalue = strToDbl(fl_get_input(dialog_->input_footnote));
-	if (rc.font_sizes[LyXFont::SIZE_FOOTNOTE] != dvalue) {
-		changed = true;
-		rc.font_sizes[LyXFont::SIZE_FOOTNOTE] = dvalue;
-	}
-
-	dvalue = strToDbl(fl_get_input(dialog_->input_small));
-	if (rc.font_sizes[LyXFont::SIZE_SMALL] != dvalue) {
-		changed = true;
-		rc.font_sizes[LyXFont::SIZE_SMALL] = dvalue;
-	}
-
-	dvalue = strToDbl(fl_get_input(dialog_->input_normal));
-	if (rc.font_sizes[LyXFont::SIZE_NORMAL] != dvalue) {
-		changed = true;
-		rc.font_sizes[LyXFont::SIZE_NORMAL] = dvalue;
-	}
-
-	dvalue = strToDbl(fl_get_input(dialog_->input_large));
-	if (rc.font_sizes[LyXFont::SIZE_LARGE] != dvalue) {
-		changed = true;
-		rc.font_sizes[LyXFont::SIZE_LARGE] = dvalue;
-	}
-
-	dvalue = strToDbl(fl_get_input(dialog_->input_larger));
-	if (rc.font_sizes[LyXFont::SIZE_LARGER] != dvalue) {
-		changed = true;
-		rc.font_sizes[LyXFont::SIZE_LARGER] = dvalue;
-	}
-
-	dvalue = strToDbl(fl_get_input(dialog_->input_largest));
-	if (rc.font_sizes[LyXFont::SIZE_LARGEST] != dvalue) {
-		changed = true;
-		rc.font_sizes[LyXFont::SIZE_LARGEST] = dvalue;
-	}
-
-	dvalue = strToDbl(fl_get_input(dialog_->input_huge));
-	if (rc.font_sizes[LyXFont::SIZE_HUGE] != dvalue) {
-		changed = true;
-		rc.font_sizes[LyXFont::SIZE_HUGE] = dvalue;
-	}
-
-	dvalue = strToDbl(fl_get_input(dialog_->input_huger));
-	if (rc.font_sizes[LyXFont::SIZE_HUGER] != dvalue) {
-		changed = true;
-		rc.font_sizes[LyXFont::SIZE_HUGER] = dvalue;
-	}
-
-	if (changed) {
-		// Now update the buffers
-		// Can anything below here affect the redraw process?
-		parent_.controller().updateScreenFonts();
-
-
- 
-	string choice = fl_get_choice_text(dialog_->choice_spell_command);
-	choice = trim(choice);
-
-	rc.isp_command = choice;
-
-#if 0
-	// If spell checker == "none", all other input set to off.
-	if (fl_get_choice(dialog_->choice_spell_command) == 1) {
-		rc.isp_use_alt_lang = false;
-		rc.isp_alt_lang.erase();
-
-		rc.isp_use_esc_chars = false;
-		rc.isp_esc_chars.erase();
-
-		rc.isp_use_pers_dict = false;
-		rc.isp_pers_dict.erase();
-
-		rc.isp_accept_compound = false;
-		rc.isp_use_input_encoding = false;
-	} else {
-#else
-		int button = fl_get_button(dialog_->check_alt_lang);
-		choice = fl_get_input(dialog_->input_alt_lang);
-		if (button && choice.empty()) button = 0;
-		if (!button) choice.erase();
-
-		rc.isp_use_alt_lang = static_cast<bool>(button);
-		rc.isp_alt_lang = choice;
-
-		button = fl_get_button(dialog_->check_escape_chars);
-		choice = fl_get_input(dialog_->input_escape_chars);
-		if (button && choice.empty()) button = 0;
-		if (!button) choice.erase();
-
-		rc.isp_use_esc_chars = static_cast<bool>(button);
-		rc.isp_esc_chars = choice;
-
-		button = fl_get_button(dialog_->check_personal_dict);
-		choice = fl_get_input(dialog_->input_personal_dict);
-		if (button && choice.empty()) button = 0;
-		if (!button) choice.erase();
-
-		rc.isp_use_pers_dict = static_cast<bool>(button);
-		rc.isp_pers_dict = choice;
-
-		button = fl_get_button(dialog_->check_compound_words);
-		rc.isp_accept_compound = static_cast<bool>(button);
-
-		button = fl_get_button(dialog_->check_input_enc);
-		rc.isp_use_input_encoding = static_cast<bool>(button);
-#endif
-#if 0
-	}
-#endif
-
-	// Reset view
-	update(rc);
-#endif
- 
+	// FIXME: controller().setColor(lc, hexname) 
 }
 
+
+// FIXME: move to helper_funcs.h 
+namespace {
+ 
+template<class A>
+typename std::vector<A>::size_type
+findPos(std::vector<A> const & vec, A const & val)
+{
+	typename std::vector<A>::const_iterator it =
+		std::find(vec.begin(), vec.end(), val);
+	if (it == vec.end())
+		return 0;
+	return std::distance(vec.begin(), it);
+}
+
+}
 
 void QPrefs::update_contents()
 {
@@ -453,6 +285,8 @@ void QPrefs::update_contents()
 	langmod->startCommandED->setText(rc.language_command_begin.c_str());
 	langmod->endCommandED->setText(rc.language_command_end.c_str());
 
+	int const pos = int(findPos(lang_, rc.default_language));
+	langmod->defaultLanguageCO->setCurrentItem(pos);
 
 	QPrefUIModule * uimod(dialog_->uiModule); 
 
@@ -466,6 +300,7 @@ void QPrefs::update_contents()
 		mins = 1;
 	uimod->autoSaveSB->setValue(mins);
 	uimod->autoSaveCB->setChecked(rc.make_backup);
+	uimod->lastfilesSB->setValue(rc.num_lastfiles);
  
  
 	QPrefKeyboardModule * keymod(dialog_->keyboardModule);
@@ -493,6 +328,7 @@ void QPrefs::update_contents()
 	latexmod->latexChecktexED->setText(rc.chktex_command.c_str()); 
 	latexmod->latexAutoresetCB->setChecked(rc.auto_reset_options);
 	latexmod->latexDviPaperED->setText(rc.view_dvi_paper_option.c_str());
+	latexmod->latexPaperSizeCO->setCurrentItem(rc.default_papersize);
 
 
 	QPrefDisplayModule * displaymod(dialog_->displayModule);
@@ -520,139 +356,66 @@ void QPrefs::update_contents()
 	// FIXME: should be a checkbox only
 	pathsmod->lyxserverDirED->setText(rc.lyxpipes.c_str());
 
-#if 0 
-	local_converters = converters;
-	local_converters.update(local_formats);
-	UpdateBrowser();
 
-	local_formats = formats;
-	UpdateBrowser();
+	QPrefSpellcheckerModule * spellmod(dialog_->spellcheckerModule);
 
-	int const pos = int(findPos(lang_, rc.default_language));
-	combo_default_lang->select(pos + 1);
-
-	fl_set_choice(dialog_->choice_default_papersize,
-		      rc.default_papersize + 1);
-
-	fl_set_counter_value(dialog_->counter_lastfiles,
-			     rc.num_lastfiles);
-
-	fl_set_button(dialog_->check_adapt_output,
-		      rc.print_adapt_output);
-	fl_set_input(dialog_->input_command,
-		     rc.print_command.c_str());
-	fl_set_input(dialog_->input_page_range,
-		     rc.print_pagerange_flag.c_str());
-	fl_set_input(dialog_->input_copies,
-		     rc.print_copies_flag.c_str());
-	fl_set_input(dialog_->input_reverse,
-		     rc.print_reverse_flag.c_str());
-	fl_set_input(dialog_->input_to_printer,
-		     rc.print_to_printer.c_str());
-	fl_set_input(dialog_->input_file_extension,
-		     rc.print_file_extension.c_str());
-	fl_set_input(dialog_->input_spool_command,
-		     rc.print_spool_command.c_str());
-	fl_set_input(dialog_->input_paper_type,
-		     rc.print_paper_flag.c_str());
-	fl_set_input(dialog_->input_even_pages,
-		     rc.print_evenpage_flag.c_str());
-	fl_set_input(dialog_->input_odd_pages,
-		     rc.print_oddpage_flag.c_str());
-	fl_set_input(dialog_->input_collated,
-		     rc.print_collcopies_flag.c_str());
-	fl_set_input(dialog_->input_landscape,
-		     rc.print_landscape_flag.c_str());
-	fl_set_input(dialog_->input_to_file,
-		     rc.print_to_file.c_str());
-	fl_set_input(dialog_->input_extra_options,
-		     rc.print_extra_options.c_str());
-	fl_set_input(dialog_->input_spool_prefix,
-		     rc.print_spool_printerprefix.c_str());
-	fl_set_input(dialog_->input_paper_size,
-		     rc.print_paper_dimension_flag.c_str());
-	fl_set_input(dialog_->input_name,
-		     rc.printer.c_str());
+	item = (rc.isp_command == "ispell") ? 0 : 1;
+	spellmod->spellCommandCO->setCurrentItem(item);
+	// FIXME: remove isp_use_alt_lang
+	spellmod->altLanguageED->setText(rc.isp_alt_lang.c_str());
+	// FIXME: remove isp_use_esc_chars 
+	spellmod->escapeCharactersED->setText(rc.isp_esc_chars.c_str());
+	// FIXME: remove isp_use_pers_dict 
+	spellmod->persDictionaryED->setText(rc.isp_pers_dict.c_str());
+	spellmod->compoundWordCB->setChecked(rc.isp_accept_compound);
+	spellmod->inputEncodingCB->setChecked(rc.isp_use_input_encoding);
 
 
+	QPrefPrinterModule * printmod(dialog_->printerModule);
 
-	fl_set_input(dialog_->input_roman,
-		     rc.roman_font_name.c_str());
-	fl_set_input(dialog_->input_sans,
-		     rc.sans_font_name.c_str());
-	fl_set_input(dialog_->input_typewriter,
-		     rc.typewriter_font_name.c_str());
-	fl_set_counter_value(dialog_->counter_zoom, rc.zoom);
-	fl_set_counter_value(dialog_->counter_dpi,  rc.dpi);
-	fl_set_input(dialog_->input_tiny,
-		     tostr(rc.font_sizes[LyXFont::SIZE_TINY]).c_str());
-	fl_set_input(dialog_->input_script,
-		     tostr(rc.font_sizes[LyXFont::SIZE_SCRIPT]).c_str());
-	fl_set_input(dialog_->input_footnote,
-		     tostr(rc.font_sizes[LyXFont::SIZE_FOOTNOTE]).c_str());
-	fl_set_input(dialog_->input_small,
-		     tostr(rc.font_sizes[LyXFont::SIZE_SMALL]).c_str());
-	fl_set_input(dialog_->input_normal,
-		     tostr(rc.font_sizes[LyXFont::SIZE_NORMAL]).c_str());
-	fl_set_input(dialog_->input_large,
-		     tostr(rc.font_sizes[LyXFont::SIZE_LARGE]).c_str());
-	fl_set_input(dialog_->input_larger,
-		     tostr(rc.font_sizes[LyXFont::SIZE_LARGER]).c_str());
-	fl_set_input(dialog_->input_largest,
-		     tostr(rc.font_sizes[LyXFont::SIZE_LARGEST]).c_str());
-	fl_set_input(dialog_->input_huge,
-		     tostr(rc.font_sizes[LyXFont::SIZE_HUGE]).c_str());
-	fl_set_input(dialog_->input_huger,
-		     tostr(rc.font_sizes[LyXFont::SIZE_HUGER]).c_str());
+	printmod->printerAdaptCB->setChecked(rc.print_adapt_output);
+	printmod->printerCommandED->setText(rc.print_command.c_str());
+	printmod->printerNameED->setText(rc.printer.c_str());
 
+	printmod->printerPageRangeED->setText(rc.print_pagerange_flag.c_str());
+	printmod->printerCopiesED->setText(rc.print_copies_flag.c_str());
+	printmod->printerReverseED->setText(rc.print_reverse_flag.c_str());
+	printmod->printerToPrinterED->setText(rc.print_to_printer.c_str());
+	printmod->printerExtensionED->setText(rc.print_file_extension.c_str());
+	printmod->printerSpoolCommandED->setText(rc.print_file_extension.c_str());
+	printmod->printerPaperTypeED->setText(rc.print_paper_flag.c_str());
+	printmod->printerEvenED->setText(rc.print_evenpage_flag.c_str());
+	printmod->printerOddED->setText(rc.print_oddpage_flag.c_str());
+	printmod->printerCollatedED->setText(rc.print_collcopies_flag.c_str());
+	printmod->printerLandscapeED->setText(rc.print_landscape_flag.c_str());
+	printmod->printerToFileED->setText(rc.print_to_file.c_str());
+	printmod->printerExtraED->setText(rc.print_extra_options.c_str());
+	printmod->printerSpoolPrefixED->setText(rc.print_spool_printerprefix.c_str());
+	printmod->printerPaperSizeED->setText(rc.print_paper_dimension_flag.c_str());
+
+
+	QPrefScreenFontsModule * fontmod(dialog_->screenfontsModule);
+
+	fontmod->screenRomanED->setText(rc.roman_font_name.c_str());
+	fontmod->screenSansED->setText(rc.sans_font_name.c_str());
+	fontmod->screenTypewriterED->setText(rc.typewriter_font_name.c_str());
+	fontmod->screenZoomSB->setValue(rc.zoom);
+	fontmod->screenDpiSB->setValue(int(rc.dpi));
+	fontmod->screenTinyED->setText(tostr(rc.font_sizes[LyXFont::SIZE_TINY]).c_str());
+	fontmod->screenSmallestED->setText(tostr(rc.font_sizes[LyXFont::SIZE_SCRIPT]).c_str());
+	fontmod->screenSmallerED->setText(tostr(rc.font_sizes[LyXFont::SIZE_FOOTNOTE]).c_str());
+	fontmod->screenSmallED->setText(tostr(rc.font_sizes[LyXFont::SIZE_SMALL]).c_str());
+	fontmod->screenNormalED->setText(tostr(rc.font_sizes[LyXFont::SIZE_NORMAL]).c_str());
+	fontmod->screenLargeED->setText(tostr(rc.font_sizes[LyXFont::SIZE_LARGE]).c_str());
+	fontmod->screenLargerED->setText(tostr(rc.font_sizes[LyXFont::SIZE_LARGER]).c_str());
+	fontmod->screenLargestED->setText(tostr(rc.font_sizes[LyXFont::SIZE_LARGEST]).c_str());
+	fontmod->screenHugeED->setText(tostr(rc.font_sizes[LyXFont::SIZE_HUGE]).c_str());
+	fontmod->screenHugerED->setText(tostr(rc.font_sizes[LyXFont::SIZE_HUGER]).c_str());
+
+	converters_ = converters;
+	formats_ = formats;
  
-	int choice = 1;
-#if 0
-	if (rc.isp_command == "none")
-		choice = 1;
-	else if (rc.isp_command == "ispell")
-		choice = 2;
-	else if (rc.isp_command == "aspell")
-		choice = 3;
-#else
-	if (rc.isp_command == "ispell")
-		choice = 1;
-	else if (rc.isp_command == "aspell")
-		choice = 2;
-#endif
-	fl_set_choice(dialog_->choice_spell_command, choice);
+	// FIXME: populate converters/formats 
 
-	string str;
-	if (rc.isp_use_alt_lang)
-		str = rc.isp_alt_lang;
-
-	fl_set_button(dialog_->check_alt_lang,
-		      rc.isp_use_alt_lang);
-	fl_set_input(dialog_->input_alt_lang, str.c_str());
-
-	str.erase();
-	if (rc.isp_use_esc_chars)
-		str = rc.isp_esc_chars;
-
-	fl_set_button(dialog_->check_escape_chars,
-		      rc.isp_use_esc_chars);
-	fl_set_input(dialog_->input_escape_chars, str.c_str());
-
-	str.erase();
-	if (rc.isp_use_pers_dict)
-		str = rc.isp_pers_dict;
-
-	fl_set_button(dialog_->check_personal_dict,
-		      rc.isp_use_pers_dict);
-	fl_set_input(dialog_->input_personal_dict, str.c_str());
-
-	fl_set_button(dialog_->check_compound_words,
-		      rc.isp_accept_compound);
-	fl_set_button(dialog_->check_input_enc,
-		      rc.isp_use_input_encoding);
-
-	// Activate/Deactivate the input fields dependent on the state of the
-	// buttons.
-	input(0);
-#endif 
+	// FIXME: populate colors
 }

@@ -49,6 +49,8 @@ public:
 public slots:
 	virtual void switchPane(QListViewItem * i);
 
+	void change_adaptor();
+
 protected:
 	void closeEvent(QCloseEvent * e);
  
@@ -73,6 +75,7 @@ private:
 	QPrefUIModule * uiModule;
 
 	QPrefs * form_;
+
 };
 
 #endif // PREFSDIALOG_H

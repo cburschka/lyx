@@ -13,7 +13,7 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>347</width>
+            <width>343</width>
             <height>237</height>
         </rect>
     </property>
@@ -62,6 +62,54 @@
                         </property>
                         <widget row="1"  column="1" >
                             <class>QComboBox</class>
+                            <item>
+                                <property>
+                                    <name>text</name>
+                                    <string>Default</string>
+                                </property>
+                            </item>
+                            <item>
+                                <property>
+                                    <name>text</name>
+                                    <string>US Letter</string>
+                                </property>
+                            </item>
+                            <item>
+                                <property>
+                                    <name>text</name>
+                                    <string>Legal</string>
+                                </property>
+                            </item>
+                            <item>
+                                <property>
+                                    <name>text</name>
+                                    <string>Executive</string>
+                                </property>
+                            </item>
+                            <item>
+                                <property>
+                                    <name>text</name>
+                                    <string>A3</string>
+                                </property>
+                            </item>
+                            <item>
+                                <property>
+                                    <name>text</name>
+                                    <string>A4</string>
+                                </property>
+                            </item>
+                            <item>
+                                <property>
+                                    <name>text</name>
+                                    <string>A5</string>
+                                </property>
+                            </item>
+                            <item>
+                                <property>
+                                    <name>text</name>
+                                    <string>B5</string>
+                                </property>
+                            </item>
                             <property stdset="1">
                                 <name>name</name>
                                 <cstring>latexPaperSizeCO</cstring>

@@ -42,6 +42,10 @@
 #include <qwidgetstack.h>
 #include <qpushbutton.h>
 #include <qlistview.h>
+#include <qspinbox.h>
+#include <qlineedit.h>
+#include <qcheckbox.h>
+#include <qcombobox.h>
 
 using std::map;
 using std::endl;
@@ -147,6 +151,86 @@ QPrefsDialog::QPrefsDialog(QPrefs * form)
 
 	// Qt sucks
 	resize(minimumSize());
+
+	// Qt really sucks. This is as ugly as it looks, but the alternative
+	// means having to derive every module == bloat
+ 
+	// FIXME: connect converters/formats/colors objs
+	connect(languageModule->rtlCB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
+	connect(languageModule->markForeignCB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
+	connect(languageModule->autoBeginCB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
+	connect(languageModule->autoEndCB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
+	connect(languageModule->useBabelCB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
+	connect(languageModule->globalCB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
+	connect(languageModule->languagePackageED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
+	connect(languageModule->startCommandED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
+	connect(languageModule->endCommandED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
+	connect(languageModule->defaultLanguageCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
+	connect(uiModule->uiFileED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
+	connect(uiModule->bindFileED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
+	connect(uiModule->cursorFollowsCB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
+	connect(uiModule->wheelMouseSB, SIGNAL(valueChanged(int)), this, SLOT(change_adaptor()));
+	connect(uiModule->autoSaveSB, SIGNAL(valueChanged(int)), this, SLOT(change_adaptor()));
+	connect(uiModule->autoSaveCB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
+	connect(uiModule->lastfilesSB, SIGNAL(valueChanged(int)), this, SLOT(change_adaptor()));
+	connect(keyboardModule->keymapCB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
+	connect(keyboardModule->firstKeymapED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
+	connect(keyboardModule->secondKeymapED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
+	connect(asciiModule->asciiLinelengthSB, SIGNAL(valueChanged(int)), this, SLOT(change_adaptor()));
+	connect(asciiModule->asciiRoffED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
+	connect(dateModule->DateED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
+	connect(latexModule->latexEncodingED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
+	connect(latexModule->latexChecktexED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
+	connect(latexModule->latexAutoresetCB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
+	connect(latexModule->latexDviPaperED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
+	connect(latexModule->latexPaperSizeCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
+	connect(displayModule->previewCB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
+	connect(displayModule->displayGraphicsCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
+	connect(pathsModule->workingDirED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
+	connect(pathsModule->templateDirED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
+	connect(pathsModule->backupDirED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
+	connect(pathsModule->tempDirCB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
+	connect(pathsModule->tempDirED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
+	connect(pathsModule->lyxserverDirED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
+	connect(spellcheckerModule->spellCommandCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
+	connect(spellcheckerModule->altLanguageED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
+	connect(spellcheckerModule->escapeCharactersED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
+	connect(spellcheckerModule->persDictionaryED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
+	connect(spellcheckerModule->compoundWordCB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
+	connect(spellcheckerModule->inputEncodingCB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
+	connect(printerModule->printerAdaptCB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
+	connect(printerModule->printerCommandED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
+	connect(printerModule->printerNameED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
+	connect(printerModule->printerPageRangeED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
+	connect(printerModule->printerCopiesED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
+	connect(printerModule->printerReverseED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
+	connect(printerModule->printerToPrinterED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
+	connect(printerModule->printerExtensionED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
+	connect(printerModule->printerSpoolCommandED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
+	connect(printerModule->printerPaperTypeED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
+	connect(printerModule->printerEvenED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
+	connect(printerModule->printerOddED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
+	connect(printerModule->printerCollatedED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
+	connect(printerModule->printerLandscapeED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
+	connect(printerModule->printerToFileED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
+	connect(printerModule->printerExtraED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
+	connect(printerModule->printerSpoolPrefixED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
+	connect(printerModule->printerPaperSizeED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
+	connect(screenfontsModule->screenRomanED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
+	connect(screenfontsModule->screenSansED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
+	connect(screenfontsModule->screenTypewriterED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
+	connect(screenfontsModule->screenZoomSB, SIGNAL(valueChanged(int)), this, SLOT(change_adaptor()));
+	connect(screenfontsModule->screenDpiSB, SIGNAL(valueChanged(int)), this, SLOT(change_adaptor()));
+	connect(screenfontsModule->screenTinyED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
+	connect(screenfontsModule->screenSmallestED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
+	connect(screenfontsModule->screenSmallerED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
+	connect(screenfontsModule->screenSmallED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
+	connect(screenfontsModule->screenNormalED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
+	connect(screenfontsModule->screenLargeED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
+	connect(screenfontsModule->screenLargerED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
+	connect(screenfontsModule->screenLargestED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
+	connect(screenfontsModule->screenHugeED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
+	connect(screenfontsModule->screenHugerED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
 }
 
 
@@ -165,4 +249,10 @@ void QPrefsDialog::closeEvent(QCloseEvent * e)
 void QPrefsDialog::switchPane(QListViewItem * i)
 {
 	prefsWS->raiseWidget(pane_map_[i]);
+}
+
+
+void QPrefsDialog::change_adaptor()
+{
+	form_->changed();
 }

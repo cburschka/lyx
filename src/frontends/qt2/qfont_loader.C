@@ -48,6 +48,8 @@ qfont_loader::~qfont_loader()
 
 void qfont_loader::update()
 {
+#warning crashes ???? 
+#if 0 
 	for (int i1 = 0; i1 < LyXFont::NUM_FAMILIES; ++i1) {
 		for (int i2 = 0; i1 < 2; ++i2) {
 			for (int i3 = 0; i1 < 4; ++i3) {
@@ -57,6 +59,7 @@ void qfont_loader::update()
 			}
 		}
 	}
+#endif 
 }
 
 

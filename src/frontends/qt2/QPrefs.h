@@ -16,9 +16,13 @@
 #pragma interface
 #endif
 
+#include "converter.h"
+ 
 #include "Qt2Base.h"
 #include "ControlPrefs.h"
 
+#include <vector>
+ 
 class QPrefsDialog;
 
 class QPrefs
@@ -39,6 +43,15 @@ private:
 
 	/// build the dialog
 	virtual void build_dialog();
+
+	/// languages
+	std::vector<string> lang_;
+
+	/// converters
+	Converters converters_;
+
+	/// formats
+	Formats formats_;
 };
 
 #endif // QPREFS_H
