@@ -1,3 +1,11 @@
+2005-02-17  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* lyx_1_4.py (convert_table_valignment_middle,
+	revert_valignment_middle): use regex to recognize
+	'\\begin_inset Tabular' and '\\begin_inset  Tabular'
+	* lyx_1_2.py (update_tabular, update_longtables): ditto
+	* lyx_1_1_6fix3.py (update_tabular): ditto
+
 2005-02-15  José Matos  <jamatos@lyx.org>
 
 	* lyx_1_2.py (remove_pextra): fix bug 1816.

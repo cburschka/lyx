@@ -2,7 +2,7 @@
 # -*- coding: iso-8859-1 -*-
 # Copyright (C) 2002 Dekel Tsur <dekel@lyx.org>
 # Copyright (C) 2002-2004 José Matos <jamatos@lyx.org>
-# Copyright (C) 2004-2005 Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+# Copyright (C) 2004-2005 Georg Baum <Georg.Baum@post.rwth-aachen.de>
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -23,7 +23,7 @@ from os import access, F_OK
 import os.path
 from parser_tools import find_token, find_end_of_inset, get_next_paragraph, \
                          get_paragraph, get_value, del_token, is_nonempty_line,\
-			 find_tokens, find_end_of, find_token2
+			 find_tokens, find_end_of, find_token2, find_re
 from sys import stdin
 from string import replace, split, find, strip, join
 
@@ -396,9 +396,10 @@ def convert_valignment_middle(body, start, end):
 
 
 def convert_table_valignment_middle(file):
+    regexp = re.compile(r'^\\begin_inset\s+Tabular')
     i = 0
     while 1:
-        i = find_token(file.body, '\\begin_inset  Tabular', i)
+        i = find_re(file.body, regexp, i)
         if i == -1:
             return
         j = find_end_of_inset(file.body, i + 1)
@@ -417,9 +418,10 @@ def revert_table_valignment_middle(body, start, end):
 
 
 def revert_valignment_middle(file):
+    regexp = re.compile(r'^\\begin_inset\s+Tabular')
     i = 0
     while 1:
-        i = find_token(file.body, '\\begin_inset  Tabular', i)
+        i = find_re(file.body, regexp, i)
         if i == -1:
             return
         j = find_end_of_inset(file.body, i + 1)

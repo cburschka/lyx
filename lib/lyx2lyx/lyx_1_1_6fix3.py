@@ -18,7 +18,7 @@
 
 import re
 import string
-from parser_tools import find_token
+from parser_tools import find_token, find_re
 
 def bool_table(item):
     if item == "0":
@@ -32,10 +32,11 @@ use_table = {"0": "none", "1": "parbox"}
 table_meta_re = re.compile(r'<LyXTabular version="?1"? rows="?(\d*)"? columns="?(\d*)"?>')
 
 def update_tabular(file):
+    regexp = re.compile(r'^\\begin_inset\s+Tabular')
     lines = file.body
     i=0
     while 1:
-        i = find_token(lines, '\\begin_inset  Tabular', i)
+        i = find_re(lines, regexp, i)
         if i == -1:
             break
 

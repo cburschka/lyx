@@ -480,10 +480,11 @@ attr_re = re.compile(r' \w*="(false|0|)"')
 line_re = re.compile(r'<(features|column|row|cell)')
 
 def update_tabular(file):
+    regexp = re.compile(r'^\\begin_inset\s+Tabular')
     lines = file.body
     i = 0
     while 1:
-        i = find_token(lines, '\\begin_inset  Tabular', i)
+        i = find_re(lines, regexp, i)
         if i == -1:
             break
 
@@ -608,10 +609,11 @@ longtable_re = re.compile(r'islongtable="(\w)"')
 ltvalues_re = re.compile(r'endhead="(-?\d*)" endfirsthead="(-?\d*)" endfoot="(-?\d*)" endlastfoot="(-?\d*)"')
 lt_features_re = re.compile(r'(endhead="-?\d*" endfirsthead="-?\d*" endfoot="-?\d*" endlastfoot="-?\d*")')
 def update_longtables(file):
+    regexp = re.compile(r'^\\begin_inset\s+Tabular')
     body = file.body
     i = 0
     while 1:
-        i = find_token(body, '\\begin_inset  Tabular', i)
+        i = find_re(body, regexp, i)
         if i == -1:
             break
         i = i + 1
