@@ -1,3 +1,7 @@
+2003-10-08  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* qfont_loader.C: add #include (needed for LyX/Mac)
+
 2003-10-08  Angus Leeming  <leeming@lyx.org>
 
 	Fix doxygen warnings.
@@ -24,10 +28,10 @@
 	* iconpalette.h: 
 	* panelstack.h: add #include <string>.
 
-2003-10-01  Vitaly Lipatov <lav@vl3143.spb.edu>
+2003-10-01  Vitaly Lipatov  <lav@vl3143.spb.edu>
 
-       * FileDialog.C: use fromqstr in a few places to enable the dialog to
-       read non-latin filenames.
+	* FileDialog.C: use fromqstr in a few places to enable the dialog to
+	read non-latin filenames.
 
 2003-10-01  Angus Leeming  <leeming@lyx.org>
 

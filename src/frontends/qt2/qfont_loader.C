@@ -19,6 +19,8 @@
 #include "support/lstrings.h"
 #include "frontends/lyx_gui.h"
 
+#include <qfontinfo.h>
+
 #include <boost/tuple/tuple.hpp>
 
 #ifdef Q_WS_X11
