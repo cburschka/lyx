@@ -1,4 +1,9 @@
-e2001-11-25  Dekel Tsur  <dekelts@tau.ac.il>
+2001-09-29  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* src/paragraph.C (SimpleTeXSpecialChars): Call to textrow.start
+        after a multi-line inset.
+
+2001-11-25  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* src/buffer.C (parseSingleLyXformat2Token): Insert an error inset
 	when encountering an unknown token.

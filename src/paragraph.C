@@ -2894,6 +2894,7 @@ void LyXParagraph::SimpleTeXSpecialChars(Buffer const * buf,
 
 			if (tmp) {
 				column = 0;
+				texrow.start(this, i + 1);
 			} else {
 				column += int(os.tellp()) - len;
 			}
