@@ -17,6 +17,7 @@
 class BufferView;
 class FuncRequest;
 class MetricsInfo;
+class Dimension;
 class PainterInfo;
 
 /** Dispatch result codes
@@ -49,14 +50,18 @@ enum dispatch_result {
 /// Common base class to all insets
 class InsetBase {
 public:
+	///
+	typedef int      difference_type;
+	/// short of anything else reasonable
+	typedef size_t   size_type;
 	/// type for cell indices
-	typedef size_t                   idx_type;
+	typedef size_t  idx_type;
 	/// type for cursor positions
-	typedef size_t                   pos_type;
+	typedef size_t  pos_type;
 	/// type for row numbers
-	typedef size_t                   row_type;
+	typedef size_t  row_type;
 	/// type for column numbers
-	typedef size_t                   col_type;
+	typedef size_t  col_type;
 
 	// the real dispatcher
 	virtual dispatch_result dispatch
@@ -64,7 +69,9 @@ public:
 
 	/// small wrapper for the time being
 	virtual dispatch_result localDispatch(FuncRequest const & cmd);
-	///
+	/// compute the size of the object returned in dim
+	virtual void metrics(MetricsInfo & mi, Dimension & dim) const = 0;
+	/// draw inset and update (xo, yo)-cache
 	virtual void draw(PainterInfo & pi, int x, int y) const = 0;
 
 	///

@@ -69,7 +69,7 @@ void MathMacro::expand() const
 }
 
 
-Dimension MathMacro::metrics(MetricsInfo & mi) const
+void MathMacro::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	augmentFont(font_, "lyxtex");
 	mi_ = mi;
@@ -104,13 +104,13 @@ Dimension MathMacro::metrics(MetricsInfo & mi) const
 
 	}
 
-	return dim_;
+	dim = dim_;
 }
 
 
 void MathMacro::draw(PainterInfo & pi, int x, int y) const
 {
-	metrics(mi_);
+	metrics(mi_, dim_);
 
 	LyXFont texfont;
 	augmentFont(texfont, "lyxtex");

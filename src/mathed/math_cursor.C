@@ -346,6 +346,14 @@ void MathCursor::plainInsert(MathAtom const & t)
 }
 
 
+void MathCursor::insert2(string const & str)
+{
+	MathArray ar;
+	asArray(str, ar);
+	insert(ar);
+}
+
+
 void MathCursor::insert(string const & str)
 {
 	//lyxerr << "inserting '" << str << "'\n";
@@ -373,7 +381,8 @@ void MathCursor::insert(MathAtom const & t)
 
 void MathCursor::niceInsert(string const & t)
 {
-	MathArray ar = asArray(t);
+	MathArray ar;
+	asArray(t, ar);
 	if (ar.size() == 1)
 		niceInsert(ar[0]);
 	else
@@ -624,7 +633,7 @@ void MathCursor::drawSelection(PainterInfo & pi) const
 void MathCursor::handleNest(MathAtom const & a)
 {
 	MathAtom at = a;
-	at.nucleus()->cell(0) = asArray(grabAndEraseSelection());
+	asArray(grabAndEraseSelection(), at.nucleus()->cell(0));
 	insert(at);
 	pushRight(prevAtom());
 }

@@ -1,5 +1,6 @@
 
 #include "math_spaceinset.h"
+#include "math_data.h"
 #include "math_support.h"
 #include "LColor.h"
 #include "frontends/Painter.h"
@@ -31,16 +32,14 @@ MathSpaceInset::MathSpaceInset(string const & name)
 }
 
 
-
 MathInset * MathSpaceInset::clone() const
 {
 	return new MathSpaceInset(*this);
 }
 
 
-Dimension MathSpaceInset::metrics(MetricsInfo &) const
+void MathSpaceInset::metrics(MetricsInfo &, Dimension & dim) const
 {
-	Dimension dim;
 	switch (space_) {
 		case 0: dim.wid = 6; break;
 		case 1: dim.wid = 8; break;
@@ -56,7 +55,6 @@ Dimension MathSpaceInset::metrics(MetricsInfo &) const
 	}
 	dim.asc = 4;
 	dim.des = 0;
-	return dim;
 }
 
 

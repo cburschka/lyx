@@ -2,6 +2,7 @@
 #define MATH_NESTINSET_H
 
 #include "math_diminset.h"
+#include "math_data.h"
 
 /** Abstract base class for all math objects that contain nested items.
     This is basically everything that is not a single character or a

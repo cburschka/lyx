@@ -20,6 +20,7 @@
 #include "lyxfont.h"
 #include "lyxtext.h"
 #include "dimension.h"
+#include "metricsinfo.h"
 
 #include "frontends/Painter.h"
 #include "frontends/mouse_state.h"
@@ -146,7 +147,10 @@ int Inset::latexTextWidth(BufferView * bv) const
 int Inset::ascent(BufferView * bv, LyXFont const & font) const
 {
 	Dimension dim;
-	dimension(bv, font, dim);
+	MetricsInfo mi;
+	mi.base.bv = bv;
+	mi.base.font = font;
+	metrics(mi, dim);
 	return dim.ascent();
 }
 
@@ -154,7 +158,10 @@ int Inset::ascent(BufferView * bv, LyXFont const & font) const
 int Inset::descent(BufferView * bv, LyXFont const & font) const
 {
 	Dimension dim;
-	dimension(bv, font, dim);
+	MetricsInfo mi;
+	mi.base.bv = bv;
+	mi.base.font = font;
+	metrics(mi, dim);
 	return dim.descent();
 }
 
@@ -162,6 +169,9 @@ int Inset::descent(BufferView * bv, LyXFont const & font) const
 int Inset::width(BufferView * bv, LyXFont const & font) const
 {
 	Dimension dim;
-	dimension(bv, font, dim);
+	MetricsInfo mi;
+	mi.base.bv = bv;
+	mi.base.font = font;
+	metrics(mi, dim);
 	return dim.width();
 }

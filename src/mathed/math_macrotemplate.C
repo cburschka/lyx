@@ -62,14 +62,14 @@ string MathMacroTemplate::name() const
 }
 
 
-Dimension MathMacroTemplate::metrics(MetricsInfo & mi) const
+void MathMacroTemplate::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	cell(0).metrics(mi);
 	cell(1).metrics(mi);
 	dim_.wid = cell(0).width() + cell(1).width() + 10;
 	dim_.asc = std::max(cell(0).ascent(),  cell(1).ascent())  + 2;
 	dim_.des = std::max(cell(0).descent(), cell(1).descent()) + 2;
-	return dim_;
+	dim = dim_;
 }
 
 

@@ -32,10 +32,9 @@ void MathDiffInset::normalize(NormalStream & os) const
 }
 
 
-Dimension MathDiffInset::metrics(MetricsInfo &) const
+void MathDiffInset::metrics(MetricsInfo &, Dimension &) const
 {
 	lyxerr << "should not happen\n";
-	return Dimension();
 }
 
 

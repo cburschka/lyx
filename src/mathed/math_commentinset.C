@@ -1,12 +1,12 @@
 #include <config.h>
 
-
 #include "math_commentinset.h"
+#include "math_data.h"
+#include "math_support.h"
 #include "math_mathmlstream.h"
 #include "LaTeXFeatures.h"
 #include "support/LOstream.h"
 #include "textpainter.h"
-
 
 
 MathCommentInset::MathCommentInset()
@@ -17,7 +17,7 @@ MathCommentInset::MathCommentInset()
 MathCommentInset::MathCommentInset(string const & str)
 	: MathNestInset(1)
 {
-	cell(0) = asArray(str);
+	asArray(str, cell(0));
 }
 
 
@@ -27,11 +27,11 @@ MathInset * MathCommentInset::clone() const
 }
 
 
-Dimension MathCommentInset::metrics(MetricsInfo & mi) const
+void MathCommentInset::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	cell(0).metrics(mi);
 	metricsMarkers();
-	return dim_;
+	dim = dim_;
 }
 
 

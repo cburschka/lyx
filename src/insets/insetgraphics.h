@@ -13,8 +13,9 @@
 #ifndef INSET_GRAPHICS_H
 #define INSET_GRAPHICS_H
 
-#include "insets/inset.h"
-#include "insets/insetgraphicsParams.h"
+#include "inset.h"
+#include "insetgraphicsParams.h"
+#include "dimension.h"
 
 #include <boost/signals/trackable.hpp>
 #include <boost/scoped_ptr.hpp>
@@ -34,7 +35,7 @@ public:
 	///
 	virtual dispatch_result localDispatch(FuncRequest const & cmd);
 	///
-	void dimension(BufferView *, LyXFont const &, Dimension &) const;
+	void metrics(MetricsInfo &, Dimension &) const;
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
 	///
@@ -113,6 +114,8 @@ private:
 	friend class Cache;
 	/// The pointer never changes although *cache_'s contents may.
 	boost::scoped_ptr<Cache> const cache_;
+	/// dimension cache
+	mutable Dimension dim_;
 };
 
 

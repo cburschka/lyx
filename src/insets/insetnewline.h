@@ -26,7 +26,7 @@ public:
 
 	Inset::Code lyxCode() const { return Inset::NEWLINE_CODE; }
 
-	void dimension(BufferView *, LyXFont const &, Dimension &) const;
+	void metrics(MetricsInfo &, Dimension &) const;
 
 	virtual void draw(PainterInfo & pi, int x, int y) const;
 

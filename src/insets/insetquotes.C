@@ -171,9 +171,9 @@ string const InsetQuotes::dispString(Language const * loclang) const
 }
 
 
-void InsetQuotes::dimension(BufferView *, LyXFont const & font,
-	Dimension & dim) const
+void InsetQuotes::metrics(MetricsInfo & mi, Dimension & dim) const
 {
+	LyXFont & font = mi.base.font;
 	dim.asc = font_metrics::maxAscent(font);
 	dim.des = font_metrics::maxDescent(font);
 	dim.wid = 0;

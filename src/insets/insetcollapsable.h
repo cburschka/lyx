@@ -45,7 +45,7 @@ public:
 	///
 	void write(Buffer const *, std::ostream &) const;
 	///
-	void dimension(BufferView *, LyXFont const &, Dimension &) const;
+	void metrics(MetricsInfo &, Dimension &) const;
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
 	/// draw, either inlined (no button) or collapsed/open

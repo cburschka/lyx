@@ -18,7 +18,7 @@ MathInset * MathFrameboxInset::clone() const
 }
 
 
-Dimension MathFrameboxInset::metrics(MetricsInfo & mi) const
+void MathFrameboxInset::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	FontSetChanger dummy(mi.base, "textnormal");
 	w_ = mathed_char_width(mi.base.font, '[');
@@ -27,7 +27,7 @@ Dimension MathFrameboxInset::metrics(MetricsInfo & mi) const
 	dim_ += cell(1).dim();
 	dim_ += cell(2).dim();
 	metricsMarkers();
-	return dim_;
+	dim = dim_;
 }
 
 

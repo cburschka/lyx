@@ -33,7 +33,7 @@ public:
 	///
 	bool idxUpDown(idx_type & idx, pos_type & pos, bool up, int targetx) const;
 	///
-	Dimension metrics(MetricsInfo & mi) const;
+	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
 

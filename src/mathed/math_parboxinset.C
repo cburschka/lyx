@@ -33,13 +33,13 @@ void MathParboxInset::setWidth(string const & w)
 }
 
 
-Dimension MathParboxInset::metrics(MetricsInfo & mi) const
+void MathParboxInset::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	FontSetChanger dummy1(mi.base, "textnormal");
 	WidthChanger dummy2(mi.base, lyx_width_);
-	MathTextInset::metrics(mi);
+	MathTextInset::metrics(mi, dim_);
 	metricsMarkers();
-	return dim_;
+	dim = dim_;
 }
 
 

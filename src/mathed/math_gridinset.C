@@ -298,7 +298,7 @@ LyXLength MathGridInset::vcrskip(row_type row) const
 }
 
 
-Dimension MathGridInset::metrics(MetricsInfo & mi) const
+void MathGridInset::metrics(MetricsInfo & mi) const
 {
 	// let the cells adjust themselves
 	MathNestInset::metrics(mi);
@@ -434,7 +434,13 @@ Dimension MathGridInset::metrics(MetricsInfo & mi) const
 		cxrow->setBaseline(cxrow->getBaseline() - ascent);
 	}
 */
-	return dim_;
+}
+
+
+void MathGridInset::metrics(MetricsInfo & mi, Dimension & dim) const
+{
+	metrics(mi);
+	dim = dim_;
 }
 
 
@@ -1020,17 +1026,14 @@ dispatch_result MathGridInset::dispatch
 
 		case LFUN_MOUSE_RELEASE:
 			//if (cmd.button() == mouse_button::button3) {
-			//	GridInsetMailer mailer(*this);
-			//	mailer.showDialog();
+			//	GridInsetMailer(*this).showDialog();
 			//	return DISPATCHED;
 			//}
-			break;
+			return UNDISPATCHED;
 
-		case LFUN_INSET_DIALOG_UPDATE: {
-			GridInsetMailer mailer(*this);
-			mailer.updateDialog(cmd.view());
-			break;
-		}
+		case LFUN_INSET_DIALOG_UPDATE: 
+			GridInsetMailer(*this).updateDialog(cmd.view());
+			return UNDISPATCHED;
 
 		// insert file functions
 		case LFUN_DELETE_LINE_FORWARD:
@@ -1164,5 +1167,4 @@ dispatch_result MathGridInset::dispatch
 		default:
 			return MathNestInset::dispatch(cmd, idx, pos);
 	}
-	return UNDISPATCHED;
 }

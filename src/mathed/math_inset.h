@@ -16,9 +16,6 @@
  *   the GNU General Public Licence version 2 or later.
  */
 
-//  Note: These math insets are internal to Math and are not derived
-//        from lyx inset.
-
 #ifndef MATH_INSET_H
 #define MATH_INSET_H
 
@@ -26,7 +23,6 @@
 
 #include "LString.h"
 #include "insets/insetbase.h"
-#include "math_data.h"
 
 /**
 
@@ -36,8 +32,8 @@ the math objects.
 
 Math insets do not know there parents, a cursor position or things
 like that. The are dumb object that are contained in other math insets
-(mathNestInsets, in fact) thus forming a tree. The root of this tree is
-always a mathHullInset, which provides an interface to the Outer World by
+(MathNestInsets, in fact) thus forming a tree. The root of this tree is
+always a MathHullInset, which provides an interface to the Outer World by
 inclusion in the "real LyX insets" FormulaInset and FormulaMacroInset.
 
 */
@@ -47,9 +43,9 @@ class MathArrayInset;
 class MathAMSArrayInset;
 class MathCharInset;
 class MathDelimInset;
-class MathGridInset;
 class MathFracInset;
 class MathFontInset;
+class MathGridInset;
 class MathHullInset;
 class MathMatrixInset;
 class MathNestInset;
@@ -62,6 +58,9 @@ class MathUnknownInset;
 
 class RefInset;
 
+class MathArray;
+class MathAtom;
+
 class NormalStream;
 class OctaveStream;
 class MapleStream;
@@ -70,32 +69,22 @@ class MathematicaStream;
 class MathMLStream;
 class WriteStream;
 class InfoStream;
-class MathArray;
 
 class LaTeXFeatures;
 class BufferView;
 class UpdatableInset;
 class MathMacroTemplate;
+class MathMacro;
 class MathPosFinder;
 class Dimension;
 class FuncRequest;
+class TextPainter;
+class TextMetricsInfo;
+class ReplaceData;
 
 
 class MathInset : public InsetBase {
 public:
-	/// short of anything else reasonable
-	typedef MathArray::size_type        size_type;
-	/// type for cursor positions differences within a cell
-	typedef MathArray::difference_type  difference_type;
-	/// type for cursor positions within a cell
-	typedef MathArray::size_type        pos_type;
-	/// type for cell indices
-	typedef size_type                   idx_type;
-	/// type for row numbers
-	typedef size_type                   row_type;
-	/// type for column numbers
-	typedef size_type                   col_type;
-
 	/// our members behave nicely...
 	MathInset() {}
 
@@ -103,11 +92,6 @@ public:
 	virtual MathInset * clone() const = 0;
 	/// substitutes macro arguments if necessary
 	virtual void substitute(MathMacro const & macro);
-	/// compute the size of the object returned in dim
-	virtual Dimension metrics(MetricsInfo & mi) const = 0;
-	/// draw the object
-	// updates the (xo,yo)-caches of all contained cells
-	virtual void draw(PainterInfo & pi, int x, int y) const;
 	/// draw selection between two positions
 	virtual void drawSelection(PainterInfo & pi,
 		idx_type idx1, pos_type pos1, idx_type idx2, pos_type pos2) const;
@@ -294,11 +278,6 @@ protected:
 };
 
 std::ostream & operator<<(std::ostream &, MathAtom const &);
-
-// converts single cell to string
-string asString(MathArray const & ar);
-// converts string to single cell
-MathArray asArray(string const & str);
 
 // initialize math
 void initMath();

@@ -38,9 +38,9 @@ void InsetNewline::write(Buffer const *, ostream & os) const
 }
 
 
-void InsetNewline::dimension(BufferView *, LyXFont const & font,
-	Dimension & dim) const
+void InsetNewline::metrics(MetricsInfo & mi, Dimension & dim) const
 {
+	LyXFont & font = mi.base.font;
 	dim.asc = font_metrics::maxAscent(font);
 	dim.des = font_metrics::maxDescent(font);
 	dim.wid = font_metrics::width('n', font);

@@ -17,7 +17,7 @@ public:
 	///
 	mode_type currentMode() const { return TEXT_MODE; }
 	///
-	Dimension metrics(MetricsInfo & mi) const;
+	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
 	void draw(PainterInfo &, int x, int y) const;
 	///

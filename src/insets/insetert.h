@@ -99,7 +99,7 @@ public:
 	WordLangTuple const
 	selectNextWordToSpellcheck(BufferView *, float &) const;
 	///
-	void dimension(BufferView *, LyXFont const &, Dimension &) const;
+	void metrics(MetricsInfo &, Dimension &) const;
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
 	/// set the status of the inset

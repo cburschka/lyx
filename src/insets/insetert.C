@@ -552,13 +552,12 @@ bool InsetERT::checkInsertChar(LyXFont & /* font */)
 }
 
 
-void InsetERT::dimension(BufferView * bv, LyXFont const & font,
-	Dimension & dim) const
+void InsetERT::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	if (inlined())
-		inset.dimension(bv, font, dim);
+		inset.metrics(mi, dim);
 	else
-		InsetCollapsable::dimension(bv, font, dim);
+		InsetCollapsable::metrics(mi, dim);
 }
 
 

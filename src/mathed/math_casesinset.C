@@ -20,11 +20,11 @@ MathInset * MathCasesInset::clone() const
 }
 
 
-Dimension MathCasesInset::metrics(MetricsInfo & mi) const
+void MathCasesInset::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	MathGridInset::metrics(mi);
 	dim_.wid += 8;
-	return dim_;
+	dim = dim_;
 }
 
 

@@ -14,6 +14,7 @@
 
 #include "inset.h"
 #include "LString.h"
+#include "dimension.h"
 
 /** Used for error messages from LaTeX runs.
 
@@ -30,7 +31,7 @@ public:
 	///
 	virtual dispatch_result localDispatch(FuncRequest const & cmd);
 	///
-	void dimension(BufferView *, LyXFont const &, Dimension &) const;
+	void metrics(MetricsInfo &, Dimension &) const;
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
 	///
@@ -65,5 +66,7 @@ public:
 private:
 	///
 	string contents;
+	///
+	mutable Dimension dim_;
 };
 #endif

@@ -33,13 +33,13 @@ void MathMacroArgument::write(WriteStream & os) const
 }
 
 
-Dimension MathMacroArgument::metrics(MetricsInfo & mi) const
+void MathMacroArgument::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	if (expanded_)
 		cell(0).metrics(mi, dim_);
 	else
 		mathed_string_dim(mi.base.font, str_, dim_);
-	return dim_;
+	dim = dim_;
 }
 
 

@@ -23,7 +23,7 @@ MathInset * MathMakeboxInset::clone() const
 }
 
 
-Dimension MathMakeboxInset::metrics(MetricsInfo & mi) const
+void MathMakeboxInset::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	FontSetChanger dummy(mi.base, "textnormal");
 	w_ = mathed_char_width(mi.base.font, '[');
@@ -33,7 +33,7 @@ Dimension MathMakeboxInset::metrics(MetricsInfo & mi) const
 	dim_  += cell(2).dim();
 	dim_.wid += 4 * w_ + 4;
 	metricsMarkers();
-	return dim_;
+	dim = dim_;
 }
 
 

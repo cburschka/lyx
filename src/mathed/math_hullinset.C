@@ -165,7 +165,7 @@ char const * MathHullInset::standardFont() const
 }
 
 
-Dimension MathHullInset::metrics(MetricsInfo & mi) const
+void MathHullInset::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	FontSetChanger dummy1(mi.base, standardFont());
 	StyleChanger dummy2(mi.base, display() ? LM_ST_DISPLAY : LM_ST_TEXT);
@@ -197,7 +197,7 @@ Dimension MathHullInset::metrics(MetricsInfo & mi) const
 
 	// for markers
 	metricsMarkers2();
-	return dim_;
+	dim = dim_;
 }
 
 
@@ -697,7 +697,7 @@ void MathHullInset::doExtern
 		size_type pos = cell(idx).find_last(eq);
 		MathArray ar;
 		if (mathcursor && mathcursor->selection()) {
-			ar = asArray(mathcursor->grabAndEraseSelection());
+			asArray(mathcursor->grabAndEraseSelection(), ar);
 		} else if (pos == cell(idx).size()) {
 			ar = cell(idx);
 			lyxerr << "use whole cell: " << ar << "\n";

@@ -28,7 +28,7 @@ MathInset::mode_type MathFboxInset::currentMode() const
 }
 
 
-Dimension MathFboxInset::metrics(MetricsInfo & mi) const
+void MathFboxInset::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	if (key_->name == "fbox") {
 		FontSetChanger dummy(mi.base, "textnormal");
@@ -37,7 +37,7 @@ Dimension MathFboxInset::metrics(MetricsInfo & mi) const
 		cell(0).metrics(mi, dim_);
 	}
 	metricsMarkers(5); // 5 pixels margin
-	return dim_;
+	dim = dim_;
 }
 
 

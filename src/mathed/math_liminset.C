@@ -28,10 +28,9 @@ void MathLimInset::normalize(NormalStream & os) const
 }
 
 
-Dimension MathLimInset::metrics(MetricsInfo &) const
+void MathLimInset::metrics(MetricsInfo &, Dimension &) const
 {
 	lyxerr << "should not happen\n";
-	return Dimension();
 }
 
 

@@ -39,7 +39,7 @@ MathInset * MathTabularInset::clone() const
 }
 
 
-Dimension MathTabularInset::metrics(MetricsInfo & mi) const
+void MathTabularInset::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	FontSetChanger dummy(mi.base, "textnormal");
 	return MathGridInset::metrics(mi);

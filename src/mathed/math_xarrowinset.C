@@ -18,7 +18,7 @@ MathInset * MathXArrowInset::clone() const
 }
 
 
-Dimension MathXArrowInset::metrics(MetricsInfo & mi) const
+void MathXArrowInset::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	ScriptChanger dummy(mi.base);
 	cell(0).metrics(mi);
@@ -26,7 +26,7 @@ Dimension MathXArrowInset::metrics(MetricsInfo & mi) const
 	dim_.wid = std::max(cell(0).width(), cell(1).width()) + 10;
 	dim_.asc = cell(0).height() + 10;
 	dim_.des = cell(1).height();
-	return dim_;
+	dim = dim_;
 }
 
 

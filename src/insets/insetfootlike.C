@@ -10,7 +10,6 @@
 
 #include <config.h>
 
-
 #include "insetfootlike.h"
 #include "lyxfont.h"
 #include "buffer.h"

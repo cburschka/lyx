@@ -17,9 +17,8 @@ MathInset * MathInferInset::clone() const
 }
 
 
-Dimension MathInferInset::metrics(MetricsInfo &) const
+void MathInferInset::metrics(MetricsInfo &, Dimension &) const
 {
-	return Dimension();
 }
 
 

@@ -25,12 +25,12 @@ MathInset * MathFontOldInset::clone() const
 }
 
 
-Dimension MathFontOldInset::metrics(MetricsInfo & mi) const
+void MathFontOldInset::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	FontSetChanger dummy(mi.base, key_->name.c_str());
 	cell(0).metrics(mi, dim_);
 	metricsMarkers(1);
-	return dim_;
+	dim = dim_;
 }
 
 

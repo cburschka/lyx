@@ -68,7 +68,7 @@ public:
 	///
 	Inset * clone(Buffer const &) const;
 	///
-	void dimension(BufferView *, LyXFont const &, Dimension &) const;
+	void metrics(MetricsInfo &, Dimension &) const;
 	///
 	Inset::Code lyxCode() const { return Inset::MINIPAGE_CODE; }
 	///

@@ -13,6 +13,7 @@
 #define INSET_INCLUDE_H
 
 #include "insetcommand.h"
+#include "dimension.h"
 
 #include <boost/scoped_ptr.hpp>
 
@@ -60,11 +61,7 @@ public:
 	virtual dispatch_result localDispatch(FuncRequest const & cmd);
 
 	/// Override these InsetButton methods if Previewing
-	int ascent(BufferView *, LyXFont const &) const;
-	///
-	int descent(BufferView *, LyXFont const &) const;
-	///
-	int width(BufferView *, LyXFont const &) const;
+	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
 
@@ -131,6 +128,9 @@ private:
 	friend class PreviewImpl;
 	/// The pointer never changes although *preview_'s contents may.
 	boost::scoped_ptr<PreviewImpl> const preview_;
+
+	/// cache
+	mutable Dimension dim_;
 };
 
 

@@ -17,7 +17,7 @@ MathInset * MathSubstackInset::clone() const
 }
 
 
-Dimension MathSubstackInset::metrics(MetricsInfo & mi) const
+void MathSubstackInset::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	if (mi.base.style == LM_ST_DISPLAY) {
 		StyleChanger dummy(mi.base, LM_ST_TEXT);
@@ -26,7 +26,7 @@ Dimension MathSubstackInset::metrics(MetricsInfo & mi) const
 		MathGridInset::metrics(mi);
 	}
 	metricsMarkers();
-	return dim_;
+	dim = dim_;
 }
 
 

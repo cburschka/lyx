@@ -512,24 +512,16 @@ void InsetInclude::fillWithBibKeys(vector<pair<string,string> > & keys) const
 }
 
 
-int InsetInclude::ascent(BufferView * bv, LyXFont const & font) const
+void InsetInclude::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	return preview_->previewReady() ?
-		preview_->pimage()->ascent() : InsetButton::ascent(bv, font);
-}
-
-
-int InsetInclude::descent(BufferView * bv, LyXFont const & font) const
-{
-	return preview_->previewReady() ?
-		preview_->pimage()->descent() : InsetButton::descent(bv, font);
-}
-
-
-int InsetInclude::width(BufferView * bv, LyXFont const & font) const
-{
-	return preview_->previewReady() ?
-		preview_->pimage()->width() : InsetButton::width(bv, font);
+	if (preview_->previewReady()) {
+		dim.asc = preview_->pimage()->ascent();
+		dim.des = preview_->pimage()->descent();
+		dim.wid = preview_->pimage()->width();
+	} else {
+		InsetButton::metrics(mi, dim);
+	}
+	dim_ = dim;
 }
 
 
@@ -545,7 +537,11 @@ void InsetInclude::draw(PainterInfo & pi, int x, int y) const
 		preview_->startMonitoring();
 
 	Dimension dim;
-	dimension(pi.base.bv, pi.base.font, dim);
+	MetricsInfo mi;
+	mi.base.bv = pi.base.bv;
+	mi.base.font = pi.base.font;
+	metrics(mi, dim);
+	dim_ = dim;
 
 	pi.pain.image(x, y - dim.asc, dim.wid, dim.height(),
 			    *(preview_->pimage()->image()));

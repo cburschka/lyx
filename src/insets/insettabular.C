@@ -243,7 +243,7 @@ void InsetTabular::read(Buffer const * buf, LyXLex & lex)
 }
 
 
-void InsetTabular::dimension(BufferView *, LyXFont const &,
+void InsetTabular::metrics(MetricsInfo &,
 	Dimension & dim) const
 {
 	dim.asc = tabular->GetAscentOfRow(0);

@@ -2,6 +2,7 @@
 
 #include "math_unknowninset.h"
 #include "math_support.h"
+#include "math_atom.h"
 #include "math_mathmlstream.h"
 #include "math_streamstr.h"
 
@@ -42,11 +43,9 @@ void MathUnknownInset::normalize(NormalStream & os) const
 }
 
 
-Dimension MathUnknownInset::metrics(MetricsInfo & mi) const
+void MathUnknownInset::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	Dimension dim;
 	mathed_string_dim(mi.base.font, name_, dim);
-	return dim;
 }
 
 

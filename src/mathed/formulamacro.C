@@ -29,15 +29,12 @@
 #include "frontends/Painter.h"
 #include "frontends/font_metrics.h"
 #include "support/lyxlib.h"
+#include "support/lstrings.h"
 #include "support/LOstream.h"
 #include "debug.h"
 #include "lyxlex.h"
 #include "lyxtext.h"
-#include "lyxfont.h"
-
 #include "Lsstream.h"
-
-#include "support/BoostFormat.h"
 
 using std::ostream;
 
@@ -125,31 +122,24 @@ void InsetFormulaMacro::read(std::istream & is)
 	MathMacroTemplate * p = new MathMacroTemplate(is);
 	setInsetName(p->name());
 	MathMacroTable::create(MathAtom(p));
-	metrics();
+	//metrics();
 }
 
 
 string InsetFormulaMacro::prefix() const
 {
-#if USE_BOOST_FORMAT
-	return STRCONV(boost::io::str(boost::format(_(" Macro: %s: ")) %
-		STRCONV(getInsetName())));
-#else
-	return _(" Macro: ") + getInsetName() + ": ";
-#endif
+	return bformat(_(" Macro: %s: "), getInsetName());
 }
 
 
-void InsetFormulaMacro::dimension(BufferView * bv, LyXFont const & font,
-	Dimension & dim) const
+void InsetFormulaMacro::metrics(MetricsInfo & m, Dimension & dim) const
 {
-	MetricsInfo mi;
-	mi.base.bv = bv;
-	mi.base.font = font;
-	dim = par()->metrics(mi);
-	dim.asc += 5;
-	dim.des += 5;
-	dim.wid += 10 + font_metrics::width(prefix(), font);
+	MetricsInfo mi = m;
+	par()->metrics(mi, dim_);
+	dim_.asc += 5;
+	dim_.des += 5;
+	dim_.wid += 10 + font_metrics::width(prefix(), mi.base.font);
+	dim = dim_;
 }
 
 
@@ -182,7 +172,11 @@ void InsetFormulaMacro::draw(PainterInfo & p, int x, int y) const
 	pi.base.font  = font;
 
 	Dimension dim;
-	dimension(pi.base.bv, font, dim);
+	MetricsInfo mi;
+	mi.base.bv = pi.base.bv;
+	mi.base.font = pi.base.font;
+	metrics(mi, dim);
+	dim_ = dim;
 	int const a = y - dim.asc + 1;
 	int const w = dim.wid - 2;
 	int const h = dim.height() - 2;

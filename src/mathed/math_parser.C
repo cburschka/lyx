@@ -1109,11 +1109,13 @@ void Parser::parse1(MathGridInset & grid, unsigned flags,
 
 		else if (t.cs() == "label") {
 			string label = parse_verbatim_item();
+			MathArray ar;
+			asArray(label, ar);
 			if (grid.asHullInset()) {
 				grid.asHullInset()->label(cellrow, label);
 			} else {
 				cell->push_back(createMathInset(t.cs()));
-				cell->push_back(MathAtom(new MathBraceInset(asArray(label))));
+				cell->push_back(MathAtom(new MathBraceInset(ar)));
 			}
 		}
 

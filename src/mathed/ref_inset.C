@@ -7,6 +7,7 @@
 #include "BufferView.h"
 #include "debug.h"
 #include "funcrequest.h"
+#include "math_support.h"
 #include "gettext.h"
 #include "LaTeXFeatures.h"
 

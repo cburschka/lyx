@@ -61,14 +61,14 @@ dispatch_result InsetError::localDispatch(FuncRequest const & cmd)
 }
 
 
-void InsetError::dimension(BufferView *, LyXFont const & font,
-	Dimension & dim) const
+void InsetError::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	LyXFont efont;
-	efont.setSize(font.size()).decSize();
-	dim.asc = font_metrics::maxAscent(efont) + 1;
-	dim.des = font_metrics::maxDescent(efont) + 1;
-	dim.wid = 6 + font_metrics::width(_("Error"), efont);
+	efont.setSize(mi.base.font.size()).decSize();
+	dim_.asc = font_metrics::maxAscent(efont) + 1;
+	dim_.des = font_metrics::maxDescent(efont) + 1;
+	dim_.wid = 6 + font_metrics::width(_("Error"), efont);
+	dim = dim_;
 }
 
 
@@ -84,7 +84,11 @@ void InsetError::draw(PainterInfo & pi, int x, int y) const
 	// Draw as "Error" in a framed box
 	x += 1;
 	Dimension dim;
-	dimension(pi.base.bv, pi.base.font, dim);
+	MetricsInfo mi;
+	mi.base.bv = pi.base.bv;
+	mi.base.font = pi.base.font;
+	metrics(mi, dim);
+	dim_ = dim;
 	pi.pain.fillRectangle(x, y - dim.asc + 1,
 	      dim.wid - 2, dim.asc + dim.des - 2, LColor::insetbg);
 	pi.pain.rectangle(x, y - dim.asc + 1,

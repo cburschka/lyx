@@ -16,7 +16,7 @@ ButtonInset::ButtonInset()
 {}
 
 
-Dimension ButtonInset::metrics(MetricsInfo & mi) const
+void ButtonInset::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	FontSetChanger dummy(mi.base, "textnormal");
 	if (editing()) {
@@ -28,7 +28,7 @@ Dimension ButtonInset::metrics(MetricsInfo & mi) const
 		mathed_string_dim(mi.base.font, screenLabel(), dim_);
 		dim_.wid += 10;
 	}
-	return dim_;
+	dim = dim_;
 }
 
 

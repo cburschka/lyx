@@ -17,14 +17,14 @@ MathInset * MathSqrtInset::clone() const
 }
 
 
-Dimension MathSqrtInset::metrics(MetricsInfo & mi) const
+void MathSqrtInset::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	cell(0).metrics(mi, dim_);
 	dim_.asc += 4;
 	dim_.des += 2;
 	dim_.wid += 12;
 	metricsMarkers(1);
-	return dim_;
+	dim = dim_;
 }
 
 

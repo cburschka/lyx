@@ -72,7 +72,7 @@ void MathDelimInset::normalize(NormalStream & os) const
 }
 
 
-Dimension MathDelimInset::metrics(MetricsInfo & mi) const
+void MathDelimInset::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	cell(0).metrics(mi);
 	Dimension t;
@@ -88,7 +88,7 @@ Dimension MathDelimInset::metrics(MetricsInfo & mi) const
 	dim_.wid = cell(0).width() + 2 * dw_ + 8;
 	dim_.asc = max(a0, d0) + h0;
 	dim_.des = max(a0, d0) - h0;
-	return dim_;
+	dim = dim_;
 }
 
 

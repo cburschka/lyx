@@ -18,7 +18,7 @@ MathInset * MathDotsInset::clone() const
 }
 
 
-Dimension MathDotsInset::metrics(MetricsInfo & mi) const
+void MathDotsInset::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	mathed_char_dim(mi.base.font, 'M', dim_);
 	dh_ = 0;
@@ -33,7 +33,7 @@ Dimension MathDotsInset::metrics(MetricsInfo & mi) const
 	}
 	else if (key_->name == "ddots")
 		dh_ = dim_.asc;
-	return dim_;
+	dim = dim_;
 }
 
 

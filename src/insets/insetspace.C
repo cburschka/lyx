@@ -45,9 +45,9 @@ InsetSpace::Kind InsetSpace::kind() const
 }
 
 
-void InsetSpace::dimension(BufferView *, LyXFont const & font,
-			   Dimension & dim) const
+void InsetSpace::metrics(MetricsInfo & mi, Dimension & dim) const
 {
+	LyXFont & font = mi.base.font;
 	dim.asc = font_metrics::maxAscent(font);
 	dim.des = font_metrics::maxDescent(font);
 

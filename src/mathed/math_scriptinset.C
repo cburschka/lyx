@@ -180,7 +180,7 @@ int MathScriptInset::ndes() const
 }
 
 
-Dimension MathScriptInset::metrics(MetricsInfo & mi) const
+void MathScriptInset::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	cell(2).metrics(mi);
 	ScriptChanger dummy(mi.base);
@@ -203,7 +203,7 @@ Dimension MathScriptInset::metrics(MetricsInfo & mi) const
 	dim_.asc = dy1() + (hasUp() ? up().ascent() : 0);
 	dim_.des = dy0() + (hasDown() ? down().descent() : 0);
 	metricsMarkers();
-	return dim_;
+	dim = dim_;
 }
 
 

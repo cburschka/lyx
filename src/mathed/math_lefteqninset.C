@@ -15,14 +15,14 @@ MathInset * MathLefteqnInset::clone() const
 }
 
 
-Dimension MathLefteqnInset::metrics(MetricsInfo & mi) const
+void MathLefteqnInset::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	cell(0).metrics(mi);
 	dim_.asc = cell(0).ascent() + 2;
 	dim_.des = cell(0).descent() + 2;
 	dim_.wid = 4;
 	metricsMarkers();
-	return dim_;
+	dim = dim_;
 }
 
 

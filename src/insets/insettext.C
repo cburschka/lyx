@@ -293,15 +293,14 @@ void InsetText::read(Buffer const * buf, LyXLex & lex)
 }
 
 
-void InsetText::dimension(BufferView * bv, LyXFont const &,
-	Dimension & dim) const
+void InsetText::metrics(MetricsInfo & mi, Dimension & dim) const
 {
+	BufferView * bv = mi.base.bv;
 	LyXText * text = getLyXText(bv);
 	dim.asc = text->rows().begin()->ascent_of_text() + TEXT_TO_INSET_OFFSET;
 	dim.des = text->height - dim.asc + TEXT_TO_INSET_OFFSET;
 	dim.wid = max(textWidth(bv), int(text->width)) + 2 * TEXT_TO_INSET_OFFSET;
 	dim.wid = max(dim.wid, 10);
-	// cache it
 	dim_ = dim;
 }
 
@@ -335,9 +334,6 @@ void InsetText::draw(PainterInfo & pi, int x, int baseline) const
 
 	BufferView * bv = pi.base.bv;
 	Painter & pain = pi.pain;
-
-	// call this method so that dim_ has the right value
-	dimension(bv, pi.base.font, dim_);
 
 	// repaint the background if needed
 	if (backgroundColor() != LColor::background)

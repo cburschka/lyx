@@ -1,6 +1,5 @@
 #include <config.h>
 
-
 #include "math_envinset.h"
 #include "math_mathmlstream.h"
 #include "math_streamstr.h"
@@ -18,11 +17,11 @@ MathInset * MathEnvInset::clone() const
 }
 
 
-Dimension MathEnvInset::metrics(MetricsInfo & mi) const
+void MathEnvInset::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	cell(0).metrics(mi, dim_);
 	metricsMarkers();
-	return dim_;
+	dim = dim_;
 }
 
 

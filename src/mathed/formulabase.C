@@ -27,11 +27,11 @@
 #include "debug.h"
 #include "math_support.h"
 #include "metricsinfo.h"
+#include "math_data.h"
 #include "support/lstrings.h"
 #include "frontends/LyXView.h"
 #include "frontends/font_metrics.h"
 #include "frontends/mouse_state.h"
-#include "Lsstream.h"
 #include "math_arrayinset.h"
 #include "math_charinset.h"
 #include "math_deliminset.h"
@@ -83,7 +83,7 @@ bool openNewInset(BufferView * bv, UpdatableInset * new_inset)
 
 
 InsetFormulaBase::InsetFormulaBase()
-	: font_(), xo_(0), yo_(0)
+	: xo_(0), yo_(0)
 {
 	// This is needed as long the math parser is not re-entrant
 	initMath();
@@ -133,33 +133,12 @@ void InsetFormulaBase::handleFont
 
 BufferView * InsetFormulaBase::view() const
 {
-	return view_.lock().get();
+	return view_;
 }
 
 
 void InsetFormulaBase::validate(LaTeXFeatures &) const
 {}
-
-
-void InsetFormulaBase::metrics(BufferView * bv, LyXFont const & f,
-			       Dimension & /*dim*/) const
-{
-	font_ = f;
-	metrics(bv);
-}
-
-
-void InsetFormulaBase::metrics(BufferView * bv) const
-{
-	if (bv)
-		view_ = bv->owner()->view();
-	MetricsInfo mi;
-	mi.base.bv    = bv;
-	mi.base.style = LM_ST_TEXT;
-	mi.base.font  = font_;
-	mi.base.font.setColor(LColor::math);
-	par()->metrics(mi);
-}
 
 
 string const InsetFormulaBase::editMessage() const
@@ -211,7 +190,9 @@ void InsetFormulaBase::fitInsetCursor(BufferView * bv) const
 	if (!mathcursor)
 		return;
 	int x, y, asc, des;
-	math_font_max_dim(font_, asc, des);
+	asc = 10;
+	des = 2;
+	//math_font_max_dim(font_, asc, des);
 	getCursorPos(bv, x, y);
 	//y += yo_;
 	//lyxerr << "fitInsetCursor: x: " << x << " y: " << y << " yo: " << yo_ << endl;
@@ -252,9 +233,11 @@ dispatch_result InsetFormulaBase::lfunMouseRelease(FuncRequest const & cmd)
 	}
 
 	if (cmd.button() == mouse_button::button2) {
+		MathArray ar;
+		asArray(bv->getClipboard(), ar);
 		mathcursor->selClear();
 		mathcursor->setPos(cmd.x + xo_, cmd.y + yo_);
-		mathcursor->insert(asArray(bv->getClipboard()));
+		mathcursor->insert(ar);
 		bv->updateInset(this);
 		return DISPATCHED;
 	}
@@ -284,7 +267,7 @@ dispatch_result InsetFormulaBase::lfunMousePress(FuncRequest const & cmd)
 		lyxerr[Debug::MATHED] << "re-create cursor" << endl;
 		releaseMathCursor(bv);
 		mathcursor = new MathCursor(this, cmd.x == 0);
-		metrics(bv);
+		//metrics(bv);
 		mathcursor->setPos(cmd.x + xo_, cmd.y + yo_);
 	}
 
@@ -356,10 +339,10 @@ dispatch_result InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 			releaseMathCursor(bv);
 			if (!cmd.argument.empty()) {
 				mathcursor = new MathCursor(this, cmd.argument == "left");
-				metrics(bv);
+				//metrics(bv);
 			} else {
 				mathcursor = new MathCursor(this, true);
-				metrics(bv);
+				//metrics(bv);
 				mathcursor->setPos(cmd.x + xo_, cmd.y + yo_);
 			}
 			// if that is removed, we won't get the magenta box when entering an
@@ -681,8 +664,8 @@ dispatch_result InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 			bv->lockedInsetStoreUndo(Undo::EDIT);
 			if (argument.size() == 1)
 				result = mathcursor->interpret(argument[0]) ? DISPATCHED : FINISHED_RIGHT;
-			else
-				mathcursor->insert(asArray(argument));
+			else 
+				mathcursor->insert(argument);
 		}
 		break;
 
@@ -811,13 +794,13 @@ Inset::Code InsetFormulaBase::lyxCode() const
 
 int InsetFormulaBase::ylow() const
 {
-	return yo_ - ascent(view(), font_);
+	return yo_ - dim_.asc;
 }
 
 
 int InsetFormulaBase::yhigh() const
 {
-	return yo_ + descent(view(), font_);
+	return yo_ + dim_.des;
 }
 
 
@@ -829,7 +812,7 @@ int InsetFormulaBase::xlow() const
 
 int InsetFormulaBase::xhigh() const
 {
-	return xo_ + width(view(), font_);
+	return xo_ + dim_.wid;
 }
 
 
@@ -868,7 +851,7 @@ bool InsetFormulaBase::searchForward(BufferView * bv, string const & str,
 			}
 			delete mathcursor;
 			mathcursor = new MathCursor(this, true);
-			metrics(bv);
+			//metrics(bv);
 			mathcursor->setSelection(it, ar.size());
 			current = it;
 			it.jump(ar.size());

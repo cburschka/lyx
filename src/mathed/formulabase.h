@@ -14,7 +14,7 @@
 #define INSET_FORMULABASE_H
 
 #include "insets/updatableinset.h"
-#include "lyxfont.h"
+#include "dimension.h"
 
 #include <boost/weak_ptr.hpp>
 #include <iosfwd>
@@ -108,15 +108,10 @@ private:
 
 protected:
 	///
-	mutable boost::weak_ptr<BufferView> view_;
-	///
-	mutable LyXFont font_;
+	//mutable boost::weak_ptr<BufferView> view_;
+	mutable BufferView * view_;
 
 protected:
-	///
-	void metrics(BufferView * bv, LyXFont const & font, Dimension & dim) const;
-	///
-	void metrics(BufferView * bv = 0) const;
 	///
 	void handleFont(BufferView * bv, string const & arg, string const & font);
 
@@ -124,6 +119,8 @@ protected:
 	mutable int xo_;
 	///
 	mutable int yo_;
+	///
+	mutable Dimension dim_;
 };
 
 // We don't really mess want around with mathed stuff outside mathed.

@@ -285,8 +285,7 @@ bool InsetGraphics::imageIsDrawable() const
 }
 
 
-void InsetGraphics::dimension(BufferView *, LyXFont const & font,
-	Dimension & dim) const
+void InsetGraphics::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	cache_->old_ascent = 50;
 	if (imageIsDrawable())
@@ -298,7 +297,7 @@ void InsetGraphics::dimension(BufferView *, LyXFont const & font,
 	else {
 		int font_width = 0;
 
-		LyXFont msgFont(font);
+		LyXFont msgFont(mi.base.font);
 		msgFont.setFamily(LyXFont::SANS_FAMILY);
 
 		string const justname = OnlyFilename(params().filename);
@@ -315,6 +314,7 @@ void InsetGraphics::dimension(BufferView *, LyXFont const & font,
 
 		dim.wid = std::max(50, font_width + 15);
 	}
+	dim_ = dim;
 }
 
 
@@ -343,7 +343,11 @@ void InsetGraphics::draw(PainterInfo & pi, int x, int y) const
 	int oasc = cache_->old_ascent;
 
 	Dimension dim;
-	dimension(bv, pi.base.font, dim);
+	MetricsInfo mi;
+	mi.base.bv = pi.base.bv;
+	mi.base.font = pi.base.font;
+	metrics(mi, dim);
+	dim_ = dim;
 
 	// we may have changed while someone other was drawing us so better
 	// to not draw anything as we surely call to redraw ourself soon.
@@ -367,14 +371,14 @@ void InsetGraphics::draw(PainterInfo & pi, int x, int y) const
 	// we draw just a rectangle.
 
 	if (imageIsDrawable()) {
-		pi.pain.image(x + TEXT_TO_INSET_OFFSET, y - dim.asc,
-			    dim.wid - 2 * TEXT_TO_INSET_OFFSET, dim.asc + dim.des,
+		pi.pain.image(x + TEXT_TO_INSET_OFFSET, y - dim_.asc,
+			    dim_.wid - 2 * TEXT_TO_INSET_OFFSET, dim_.asc + dim_.des,
 			    *cache_->loader.image());
 
 	} else {
 
-		pi.pain.rectangle(x + TEXT_TO_INSET_OFFSET, y - dim.asc,
-				dim.wid - 2 * TEXT_TO_INSET_OFFSET, dim.asc + dim.des);
+		pi.pain.rectangle(x + TEXT_TO_INSET_OFFSET, y - dim_.asc,
+				dim_.wid - 2 * TEXT_TO_INSET_OFFSET, dim_.asc + dim_.des);
 
 		// Print the file name.
 		LyXFont msgFont = pi.base.font;

@@ -12,13 +12,13 @@ MathInset * MathErtInset::clone() const
 }
 
 
-Dimension MathErtInset::metrics(MetricsInfo & mi) const
+void MathErtInset::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	FontSetChanger dummy(mi.base, "lyxert");
-	MathTextInset::metrics(mi);
+	MathTextInset::metrics(mi, dim_);
 	cache_.colinfo_[0].align_ = 'l';
 	metricsMarkers();
-	return dim_;
+	dim = dim_;
 }
 
 

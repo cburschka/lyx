@@ -39,9 +39,9 @@ InsetSpecialChar::Kind InsetSpecialChar::kind() const
 }
 
 
-void InsetSpecialChar::dimension(BufferView *, LyXFont const & font,
-	Dimension & dim) const
+void InsetSpecialChar::metrics(MetricsInfo & mi, Dimension & dim) const
 {
+	LyXFont & font = mi.base.font;
 	dim.asc = font_metrics::maxAscent(font);
 	dim.des = font_metrics::maxDescent(font);
 

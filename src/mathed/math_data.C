@@ -12,6 +12,7 @@
 #include "debug.h"
 #include "support/LAssert.h"
 #include "metricsinfo.h"
+#include "math_data.h"
 #include "frontends/Painter.h"
 #include "textpainter.h"
 
@@ -220,8 +221,9 @@ void MathArray::metrics(MetricsInfo & mi) const
 
 	if (!empty()) {
 		dim_.wid = 0;
+		Dimension d;
 		for (const_iterator it = begin(), et = end(); it != et; ++it) {
-			Dimension d = (*it)->metrics(mi);
+			(*it)->metrics(mi, d);
 			dim_ += d;
 			it->width_ = d.wid;
 		}

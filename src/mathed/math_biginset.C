@@ -35,14 +35,14 @@ double MathBigInset::increase() const
 }
 
 
-Dimension MathBigInset::metrics(MetricsInfo & mi) const
+void MathBigInset::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	double const h = mathed_char_ascent(mi.base.font, 'I');
 	double const f = increase();
 	dim_.wid = 6;
 	dim_.asc = int(h + f * h);
 	dim_.des = int(f * h);
-	return dim_;
+	dim = dim_;
 }
 
 

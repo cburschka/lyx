@@ -2,6 +2,7 @@
 
 #include "math_charinset.h"
 #include "LColor.h"
+#include "dimension.h"
 #include "frontends/Painter.h"
 #include "frontends/font_metrics.h"
 #include "support/LOstream.h"
@@ -54,9 +55,8 @@ MathInset * MathCharInset::clone() const
 }
 
 
-Dimension MathCharInset::metrics(MetricsInfo & mi) const
+void MathCharInset::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	Dimension dim;
 #if 1
 	if (char_ == '=' && has_math_fonts) {
 		FontSetChanger dummy(mi.base, "cmr");
@@ -82,7 +82,6 @@ Dimension MathCharInset::metrics(MetricsInfo & mi) const
 		width_ += 2 * font_metrics::width(' ', font_);
 	lyxerr << "MathCharInset::metrics: " << dim << "\n";
 #endif
-	return dim;
 }
 
 

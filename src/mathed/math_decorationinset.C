@@ -72,7 +72,7 @@ bool MathDecorationInset::wide() const
 }
 
 
-Dimension MathDecorationInset::metrics(MetricsInfo & mi) const
+void MathDecorationInset::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	cell(0).metrics(mi);
 	dim_ = cell(0).dim();
@@ -89,7 +89,7 @@ Dimension MathDecorationInset::metrics(MetricsInfo & mi) const
 	}
 
 	metricsMarkers();
-	return dim_;
+	dim = dim_;
 }
 
 

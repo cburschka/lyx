@@ -57,7 +57,7 @@ bool MathTextInset::idxUpDown2(idx_type &, pos_type & pos, bool up,
 }
 
 
-Dimension MathTextInset::metrics(MetricsInfo & mi) const
+void MathTextInset::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	cell(0).metrics(mi);
 
@@ -151,14 +151,14 @@ Dimension MathTextInset::metrics(MetricsInfo & mi) const
 	//lyxerr << "last line: " << ar.data() << "\n";
 
 	// what to report?
-	dim_ = cache_.metrics(mi);
+	cache_.metrics(mi, dim_);
 	//lyxerr << "outer dim: " << dim_ << endl;
 
 	// reset position cache
 	for (idx_type i = 0; i < cache_.nargs(); ++i)
 		cache_.cell(i).setXY(old_xo, old_yo);
 
-	return dim_;
+	dim = dim_;
 }
 
 

@@ -63,12 +63,12 @@ MathInset * MathArrayInset::clone() const
 }
 
 
-Dimension MathArrayInset::metrics(MetricsInfo & mi) const
+void MathArrayInset::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	ArrayChanger dummy(mi.base);
 	MathGridInset::metrics(mi);
 	metricsMarkers2();
-	return dim_;
+	dim = dim_;
 }
 
 

@@ -6,12 +6,15 @@
 #include "math_inset.h"
 #include "math_parser.h"
 #include "metricsinfo.h"
+#include "math_data.h"
 #include "frontends/Painter.h"
 #include "frontends/font_metrics.h"
 #include "frontends/lyx_gui.h"
 #include "debug.h"
 #include "lfuns.h"
 #include "dimension.h"
+#include "Lsstream.h"
+#include "math_mathmlstream.h"
 
 #include <map>
 
@@ -676,3 +679,20 @@ void augmentFont(LyXFont & font, string const & name)
 	if (info->color_ != LColor::none)
 		font.setColor(info->color_);
 }
+
+
+string asString(MathArray const & ar)
+{
+	std::ostringstream os;
+	WriteStream ws(os);
+	ws << ar;
+	return STRCONV(os.str());
+}
+
+
+void asArray(string const & str, MathArray & ar)
+{
+	mathed_parse_cell(ar, str);
+}
+
+

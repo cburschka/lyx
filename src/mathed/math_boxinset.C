@@ -32,12 +32,12 @@ void MathBoxInset::normalize(NormalStream & os) const
 }
 
 
-Dimension MathBoxInset::metrics(MetricsInfo & mi) const
+void MathBoxInset::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	FontSetChanger dummy(mi.base, "textnormal");
 	cell(0).metrics(mi, dim_);
 	metricsMarkers();
-	return dim_;
+	dim = dim_;
 }
 
 

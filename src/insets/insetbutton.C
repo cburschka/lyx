@@ -28,15 +28,14 @@ using std::ostream;
 using std::endl;
 
 
-void InsetButton::dimension(BufferView * bv, LyXFont const &,
-	Dimension & dim) const
+void InsetButton::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	lyx::Assert(bv);
+	lyx::Assert(mi.base.bv);
 
 	LyXFont font(LyXFont::ALL_SANE);
 	font.decSize();
 
-	string const s = getScreenLabel(bv->buffer());
+	string const s = getScreenLabel(mi.base.bv->buffer());
 
 	if (editable())
 		font_metrics::buttonText(s, font, dim.wid, dim.asc, dim.des);

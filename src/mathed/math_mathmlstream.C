@@ -3,6 +3,7 @@
 
 #include "math_mathmlstream.h"
 #include "math_inset.h"
+#include "math_data.h"
 #include "math_extern.h"
 #include "debug.h"
 #include "support/lyxalgo.h"

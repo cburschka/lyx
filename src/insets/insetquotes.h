@@ -69,8 +69,9 @@ public:
 	InsetQuotes(char c, BufferParams const & params);
 	///
 	Inset * clone(Buffer const &) const;
+
 	///
-	void dimension(BufferView *, LyXFont const &, Dimension &) const;
+	void metrics(MetricsInfo &, Dimension &) const;
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
 #if 0

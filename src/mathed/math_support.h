@@ -3,12 +3,12 @@
 #ifndef MATH_SUPPORT_H
 #define MATH_SUPPORT_H
 
-
 #include "LString.h"
 
 class PainterInfo;
 class LyXFont;
 class Dimension;
+class MathArray;
 
 void mathed_char_dim(LyXFont const &, unsigned char c, Dimension & dim);
 int mathed_char_width(LyXFont const &, unsigned char c);
@@ -32,5 +32,10 @@ void math_font_max_dim(LyXFont const &, int & asc, int & desc);
 void augmentFont(LyXFont & f, string const & cmd);
 
 bool isFontName(string const & name);
+
+// converts single cell to string
+string asString(MathArray const & ar);
+// converts string to single cell
+void asArray(string const & str, MathArray & ar);
 
 #endif

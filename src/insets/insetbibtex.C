@@ -7,8 +7,8 @@
  *
  * Full author contact details are available in file CREDITS
  */
-#include <config.h>
 
+#include <config.h>
 
 #include "insetbibtex.h"
 #include "buffer.h"
@@ -40,15 +40,9 @@ InsetBibtex::InsetBibtex(InsetCommandParams const & p)
 {}
 
 
-// InsetBibtex::InsetBibtex(InsetCommandParams const & p, bool)
-//	: InsetCommand(p, false)
-// {}
-
-
 InsetBibtex::~InsetBibtex()
 {
-	InsetCommandMailer mailer("bibtex", *this);
-	mailer.hideDialog();
+	InsetCommandMailer("bibtex", *this).hideDialog();
 }
 
 

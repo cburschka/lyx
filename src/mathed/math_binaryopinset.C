@@ -28,7 +28,7 @@ int MathBinaryOpInset::opwidth() const
 }
 
 
-Dimension MathBinaryOpInset::metrics(MetricsInfo & mi) const
+void MathBinaryOpInset::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	mi_ = mi;
 	cell(0).metrics(mi);

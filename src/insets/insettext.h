@@ -87,7 +87,7 @@ public:
 	///
 	void write(Buffer const *, std::ostream &) const;
 	///
-	void dimension(BufferView *, LyXFont const &, Dimension &) const;
+	void metrics(MetricsInfo &, Dimension &) const;
 	///
 	int textWidth(BufferView *, bool fordraw = false) const;
 	///

@@ -218,14 +218,13 @@ void InsetMinipage::read(Buffer const * buf, LyXLex & lex)
 }
 
 
-void InsetMinipage::dimension(BufferView * bv, LyXFont const & font,
-	Dimension & dim) const
+void InsetMinipage::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	if (collapsed_)
 		dimension_collapsed(dim);
 	else {
 		Dimension d;
-		InsetCollapsable::dimension(bv, font, d);
+		InsetCollapsable::metrics(mi, d);
 		switch (params_.pos) {
 		case top:
 			dim.asc = d.asc;

@@ -29,6 +29,7 @@
 using std::ostream;
 using std::endl;
 
+
 InsetCaption::InsetCaption(BufferParams const & bp)
 	: InsetText(bp)
 {
@@ -43,7 +44,6 @@ void InsetCaption::write(Buffer const * buf, ostream & os) const
 	os << "Caption\n";
 	writeParagraphData(buf, os);
 }
-
 
 
 void InsetCaption::read(Buffer const * buf, LyXLex & lex)

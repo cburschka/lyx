@@ -33,7 +33,7 @@ public:
 	/// constructs a mocro from its LaTeX definition
 	explicit InsetFormulaMacro(string const & s);
 	///
-	void dimension(BufferView *, LyXFont const &, Dimension &) const;
+	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
 

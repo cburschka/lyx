@@ -63,6 +63,8 @@ public:
 	///
 	void insert(MathArray const &);
 	///
+	void insert2(string const &);
+	///
 	void paste(string const & data);
 	/// return false for empty math insets
 	bool erase();

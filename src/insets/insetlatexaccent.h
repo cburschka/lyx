@@ -12,11 +12,9 @@
 #ifndef INSET_LATEX_ACCENT_H
 #define INSET_LATEX_ACCENT_H
 
-
 #include "inset.h"
 #include "LString.h"
-
-class LyXLex;
+#include "dimension.h"
 
 /** Insertion of accents
 
@@ -34,7 +32,7 @@ public:
 	explicit
 	InsetLatexAccent(string const & string);
 	///
-	void dimension(BufferView *, LyXFont const &, Dimension &) const;
+	void metrics(MetricsInfo &, Dimension &) const;
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
 	///
@@ -131,6 +129,8 @@ private:
 	bool  plusdesc;
 	/// international char
 	mutable char  ic;
+	///
+	mutable Dimension dim_;
 };
 
 

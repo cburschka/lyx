@@ -13,7 +13,6 @@
 #include "insetlatexaccent.h"
 
 #include "debug.h"
-#include "dimension.h"
 #include "lyxrc.h"
 #include "support/lstrings.h"
 #include "BufferView.h"
@@ -264,9 +263,9 @@ void InsetLatexAccent::checkContents()
 }
 
 
-void InsetLatexAccent::dimension(BufferView *, LyXFont const & font,
-	Dimension & dim) const
+void InsetLatexAccent::metrics(MetricsInfo & mi, Dimension & dim) const
 {
+	LyXFont & font = mi.base.font;
 	// This function is a bit too simplistic and is just a
 	// "try to make a fit for all accents" approach, to
 	// make it better we need to know what kind of accent is
@@ -292,6 +291,7 @@ void InsetLatexAccent::dimension(BufferView *, LyXFont const & font,
 		dim.des = font_metrics::maxDescent(font) + 4;
 		dim.wid = font_metrics::width(contents, font) + 4;
 	}
+	dim_ = dim;
 }
 
 
@@ -363,7 +363,11 @@ void InsetLatexAccent::draw(PainterInfo & pi, int x, int baseline) const
 		font.setLanguage(english_language);
 
 	Dimension dim;
-	dimension(bv, font, dim);
+	MetricsInfo mi;
+	mi.base.bv = pi.base.bv;
+	mi.base.font = pi.base.font;
+	metrics(mi, dim);
+	dim_ = dim;
 
 	if (candisp) {
 		float x2 = x + (rbearing(font) - lbearing(font)) / 2.0;
@@ -372,13 +376,13 @@ void InsetLatexAccent::draw(PainterInfo & pi, int x, int baseline) const
 		if (plusasc) {
 			// mark at the top
 			hg = font_metrics::maxDescent(font);
-			y = baseline - dim.asc;
+			y = baseline - dim_.asc;
 
 			if (font.shape() == LyXFont::ITALIC_SHAPE)
 				x2 += (4.0 * hg) / 5.0; // italic
 		} else {
 			// at the bottom
-			hg = dim.des;
+			hg = dim_.des;
 			y = baseline;
 		}
 
@@ -395,7 +399,7 @@ void InsetLatexAccent::draw(PainterInfo & pi, int x, int baseline) const
 				tmpx += int(0.8 * hg); // italic
 			lyxerr[Debug::KEY] << "Removing dot." << endl;
 			// remove the dot first
-			pi.pain.fillRectangle(x + tmpx, tmpvar, dim.wid,
+			pi.pain.fillRectangle(x + tmpx, tmpvar, dim_.wid,
 					   font_metrics::ascent('i', pi.base.font) -
 					   font_metrics::ascent('x', pi.base.font) - 1,
 					   backgroundColor());
@@ -506,17 +510,17 @@ void InsetLatexAccent::draw(PainterInfo & pi, int x, int baseline) const
 		case SPECIAL_CARON:    // special caron
 		{
 			switch (ic) {
-			case 'L': dim.wid = int(4.0 * dim.wid / 5.0); break;
+			case 'L': dim_.wid = int(4.0 * dim_.wid / 5.0); break;
 			case 't': y -= int(hg35 / 2.0); break;
 			}
 			int xp[3], yp[3];
-			xp[0] = int(x + dim.wid);
+			xp[0] = int(x + dim_.wid);
 			yp[0] = int(y + hg35 + hg);
 
-			xp[1] = int(x + dim.wid + (hg35 / 2.0));
+			xp[1] = int(x + dim_.wid + (hg35 / 2.0));
 			yp[1] = int(y + hg + (hg35 / 2.0));
 
-			xp[2] = int(x + dim.wid + (hg35 / 2.0));
+			xp[2] = int(x + dim_.wid + (hg35 / 2.0));
 			yp[2] = y + int(hg);
 
 			pi.pain.lines(xp, yp, 3);
@@ -577,7 +581,7 @@ void InsetLatexAccent::draw(PainterInfo & pi, int x, int baseline) const
 			xp[0] = int(x);
 			yp[0] = y + int(3.0 * hg);
 
-			xp[1] = int(x + float(dim.wid) * 0.75);
+			xp[1] = int(x + float(dim_.wid) * 0.75);
 			yp[1] = y + int(hg);
 
 			pi.pain.lines(xp, yp, 2);
@@ -592,10 +596,10 @@ void InsetLatexAccent::draw(PainterInfo & pi, int x, int baseline) const
 		}
 	} else {
 		pi.pain.fillRectangle(x + 1,
-				   baseline - dim.asc + 1, dim.wid - 2,
-				   dim.asc + dim.des - 2, backgroundColor());
-		pi.pain.rectangle(x + 1, baseline - dim.asc + 1,
-			       dim.wid - 2, dim.asc + dim.des - 2);
+				   baseline - dim_.asc + 1, dim_.wid - 2,
+				   dim_.asc + dim_.des - 2, backgroundColor());
+		pi.pain.rectangle(x + 1, baseline - dim_.asc + 1,
+			       dim_.wid - 2, dim_.asc + dim_.des - 2);
 		pi.pain.text(x + 2, baseline, contents, font);
 	}
 }

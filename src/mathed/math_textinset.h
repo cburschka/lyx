@@ -1,8 +1,8 @@
 #ifndef MATH_TEXTINSET_H
 #define MATH_TEXTINSET_H
 
-
 #include "math_gridinset.h"
+
 
 // not yet a substitute for the real text inset...
 
@@ -15,7 +15,7 @@ public:
 	/// get cursor position
 	void getPos(idx_type idx, pos_type pos, int & x, int & y) const;
 	/// this stores metrics information in cache_
-	Dimension metrics(MetricsInfo & mi) const;
+	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	/// draw according to cached metrics
 	void draw(PainterInfo &, int x, int y) const;
 	/// draw selection background

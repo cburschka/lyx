@@ -19,7 +19,7 @@ public:
 	///
 	void draw(PainterInfo &, int x, int y) const;
 	///
-	Dimension metrics(MetricsInfo & mi) const;
+	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
 	void drawT(TextPainter &, int x, int y) const;
 	///

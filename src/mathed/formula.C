@@ -89,11 +89,11 @@ InsetFormula::InsetFormula(InsetFormula const & other)
 {}
 
 
-InsetFormula::InsetFormula(BufferView * bv)
+InsetFormula::InsetFormula(BufferView *)
 	: par_(MathAtom(new MathHullInset)),
 	  preview_(new PreviewImpl(*this))
 {
-	view_ = bv->owner()->view();
+	//view_ = bv->owner()->view();
 }
 
 
@@ -152,7 +152,7 @@ int InsetFormula::ascii(Buffer const *, ostream & os, int) const
 		par()->drawT(tpain, 0, dim.ascent());
 		tpain.show(os, 3);
 		// reset metrics cache to "real" values
-		metrics();
+		//metrics();
 		return tpain.textheight();
 	} else {
 		WriteStream wi(os, false, true);
@@ -201,7 +201,7 @@ void InsetFormula::read(Buffer const *, LyXLex & lex)
 			}
 		}
 	}
-	metrics();
+	//metrics();
 }
 
 
@@ -220,7 +220,11 @@ void InsetFormula::draw(PainterInfo & pi, int x, int y) const
 	bool const use_preview = preview_->previewReady();
 
 	Dimension dim;
-	dimension(pi.base.bv, pi.base.font, dim);
+	MetricsInfo mi;
+	mi.base.bv = pi.base.bv;
+	mi.base.font = pi.base.font;
+	metrics(mi, dim);
+	dim_ = dim;
 	int const w = dim.wid;
 	int const d = dim.des;
 	int const a = dim.asc;
@@ -282,23 +286,25 @@ bool InsetFormula::insetAllowed(Inset::Code code) const
 }
 
 
-void InsetFormula::dimension(BufferView * bv, LyXFont const & font,
-	Dimension & dim) const
+void InsetFormula::metrics(MetricsInfo & m, Dimension & dim) const
 {
-	metrics(bv, font, dim);
+	view_ = m.base.bv;
 	if (preview_->previewReady()) {
-		dim.asc = preview_->pimage()->ascent();
-		int const descent = preview_->pimage()->descent();
-		dim.des = display() ? descent + 12 : descent;
+		dim_.asc = preview_->pimage()->ascent();
+		dim_.des = preview_->pimage()->descent();
 		// insert a one pixel gap in front of the formula
-		dim.wid = 1 + preview_->pimage()->width();
+		dim_.wid = 1 + preview_->pimage()->width();
+		if (display())
+			dim_.des += 12;
 	} else {
-		MetricsInfo mi;
-		mi.base.bv = bv;
-		dim = par()->metrics(mi);
-		dim.asc += 1;
-		dim.des += 1;
+		MetricsInfo mi = m;
+		mi.base.style = LM_ST_TEXT;
+		mi.base.font.setColor(LColor::math);
+		par()->metrics(mi, dim_);
+		dim_.asc += 1;
+		dim_.des += 1;
 	}
+	dim = dim_;
 }
 
 

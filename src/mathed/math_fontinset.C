@@ -32,12 +32,12 @@ MathInset::mode_type MathFontInset::currentMode() const
 }
 
 
-Dimension MathFontInset::metrics(MetricsInfo & mi) const
+void MathFontInset::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	FontSetChanger dummy(mi.base, key_->name.c_str());
 	cell(0).metrics(mi, dim_);
 	metricsMarkers(1);
-	return dim_;
+	dim = dim_;
 }
 
 

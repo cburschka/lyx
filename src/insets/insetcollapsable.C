@@ -124,16 +124,15 @@ int InsetCollapsable::height_collapsed() const
 }
 
 
-void InsetCollapsable::dimension(BufferView * bv, LyXFont const & font,
-	Dimension & dim) const
+void InsetCollapsable::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	dimension_collapsed(dim);
 	if (collapsed_)
 		return;
 	Dimension insetdim;
-	inset.dimension(bv, font, insetdim);
+	inset.metrics(mi, insetdim);
 	dim.des += insetdim.height() + TEXT_TO_BOTTOM_OFFSET;
-	dim.wid = max(dim.wid, insetdim.width());
+	dim.wid = max(dim.wid, insetdim.wid);
 }
 
 

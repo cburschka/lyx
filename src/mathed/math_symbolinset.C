@@ -2,10 +2,12 @@
 #include <config.h>
 
 #include "math_symbolinset.h"
+#include "dimension.h"
 #include "math_mathmlstream.h"
 #include "math_streamstr.h"
 #include "math_support.h"
 #include "math_parser.h"
+#include "math_atom.h"
 #include "LaTeXFeatures.h"
 #include "debug.h"
 
@@ -38,14 +40,13 @@ string MathSymbolInset::name() const
 }
 
 
-Dimension MathSymbolInset::metrics(MetricsInfo & mi) const
+void MathSymbolInset::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	//lyxerr << "metrics: symbol: '" << sym_->name
 	//	<< "' in font: '" << sym_->inset
 	//	<< "' drawn as: '" << sym_->draw
 	//	<< "'\n";
 
-	Dimension dim;
 	int const em = mathed_char_width(mi.base.font, 'M');
 	FontSetChanger dummy(mi.base, sym_->inset.c_str());
 	mathed_string_dim(mi.base.font, sym_->draw, dim);
@@ -65,8 +66,6 @@ Dimension MathSymbolInset::metrics(MetricsInfo & mi) const
 	if (mi.base.style == LM_ST_DISPLAY)
 		if (sym_->inset == "cmex" || sym_->extra == "funclim")
 			scriptable_ = true;
-
-	return dim;
 }
 
 

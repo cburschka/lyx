@@ -160,8 +160,6 @@ public:
 	///
 	Inset(Inset const & in);
 	///
-	virtual void dimension(BufferView *, LyXFont const &, Dimension &) const = 0;
-	///
 	int ascent(BufferView *, LyXFont const &) const;
 	///
 	int descent(BufferView *, LyXFont const &) const;

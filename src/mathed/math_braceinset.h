@@ -22,7 +22,7 @@ public:
 	/// we write extra braces in any case...
 	bool extraBraces() const { return true; }
 	///
-	Dimension metrics(MetricsInfo & mi) const;
+	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
 	void draw(PainterInfo &, int x, int y) const;
 	///

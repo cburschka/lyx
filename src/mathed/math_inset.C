@@ -18,11 +18,9 @@
 #include <config.h>
 
 #include "math_inset.h"
-#include "Lsstream.h"
 #include "math_scriptinset.h"
 #include "math_mathmlstream.h"
 #include "math_cursor.h"
-#include "math_parser.h"
 #include "debug.h"
 
 #include "frontends/LyXView.h"
@@ -35,9 +33,7 @@ using std::ostream;
 
 BufferView * MathInset::view() const
 {
-	if (!mathcursor)
-		return 0;
-	return mathcursor->formula()->view();
+	return mathcursor ? mathcursor->formula()->view() : 0;
 }
 
 
@@ -158,12 +154,6 @@ bool MathInset::idxBetween(idx_type idx, idx_type from, idx_type to) const
 }
 
 
-void MathInset::draw(PainterInfo &, int, int) const
-{
-	lyxerr << "MathInset::draw() called directly!\n";
-}
-
-
 void MathInset::drawSelection(PainterInfo &,
 	idx_type, pos_type, idx_type, pos_type) const
 {
@@ -264,23 +254,6 @@ string const & MathInset::getType() const
 string MathInset::name() const
 {
 	return "unknown";
-}
-
-
-string asString(MathArray const & ar)
-{
-	std::ostringstream os;
-	WriteStream ws(os);
-	ws << ar;
-	return STRCONV(os.str());
-}
-
-
-MathArray asArray(string const & str)
-{
-	MathArray ar;
-	mathed_parse_cell(ar, str);
-	return ar;
 }
 
 

@@ -21,12 +21,12 @@ MathInset * MathSizeInset::clone() const
 }
 
 
-Dimension MathSizeInset::metrics(MetricsInfo & mi) const
+void MathSizeInset::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	StyleChanger dummy(mi.base, style_);
 	cell(0).metrics(mi, dim_);
 	metricsMarkers();
-	return dim_;
+	dim = dim_;
 }
 
 

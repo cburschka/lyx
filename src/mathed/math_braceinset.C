@@ -27,7 +27,7 @@ MathInset * MathBraceInset::clone() const
 }
 
 
-Dimension MathBraceInset::metrics(MetricsInfo & mi) const
+void MathBraceInset::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	cell(0).metrics(mi);
 	Dimension t;
@@ -36,7 +36,7 @@ Dimension MathBraceInset::metrics(MetricsInfo & mi) const
 	dim_.asc = max(cell(0).ascent(), t.asc);
 	dim_.des = max(cell(0).descent(), t.des);
 	dim_.wid = cell(0).width() + 2 * wid_;
-	return dim_;
+	dim = dim_;
 }
 
 

@@ -32,7 +32,7 @@ MathFracInset const * MathFracInset::asFracInset() const
 }
 
 
-Dimension MathFracInset::metrics(MetricsInfo & mi) const
+void MathFracInset::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	FracChanger dummy(mi.base);
 	cell(0).metrics(mi);
@@ -40,7 +40,7 @@ Dimension MathFracInset::metrics(MetricsInfo & mi) const
 	dim_.wid = max(cell(0).width(), cell(1).width()) + 2;
 	dim_.asc = cell(0).height() + 2 + 5;
 	dim_.des = cell(1).height() + 2 - 5;
-	return dim_;
+	dim = dim_;
 }
 
 
@@ -62,7 +62,7 @@ void MathFracInset::metricsT(TextMetricsInfo const & mi, Dimension & dim) const
 	dim.wid = max(cell(0).width(), cell(1).width());
 	dim.asc = cell(0).height() + 1;
 	dim.des = cell(1).height();
-	//return dim_;
+	//dim = dim_;
 }
 
 

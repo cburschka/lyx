@@ -15,11 +15,11 @@
 #ifndef INSET_FORMULA_H
 #define INSET_FORMULA_H
 
-
 #include "formulabase.h"
 #include "math_atom.h"
 
 #include <boost/scoped_ptr.hpp>
+
 
 /// The main LyX math inset
 class InsetFormula : public InsetFormulaBase {
@@ -35,7 +35,7 @@ public:
 	///
 	~InsetFormula();
 	///
-	void dimension(BufferView *, LyXFont const &, Dimension &) const;
+	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
 

@@ -17,7 +17,7 @@ MathInset * MathUndersetInset::clone() const
 }
 
 
-Dimension MathUndersetInset::metrics(MetricsInfo & mi) const
+void MathUndersetInset::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	cell(1).metrics(mi);
 	FracChanger dummy(mi.base);
@@ -25,7 +25,7 @@ Dimension MathUndersetInset::metrics(MetricsInfo & mi) const
 	dim_.wid = max(cell(0).width(), cell(1).width()) + 4;
 	dim_.asc = cell(1).ascent();
 	dim_.des = cell(1).descent() + cell(0).height() + 4;
-	return dim_;
+	dim = dim_;
 }
 
 

@@ -3,7 +3,6 @@
 #include "math_amsarrayinset.h"
 #include "math_mathmlstream.h"
 #include "metricsinfo.h"
-#include "math_support.h"
 #include "math_streamstr.h"
 #include "math_support.h"
 #include "Lsstream.h"
@@ -57,14 +56,14 @@ char const * MathAMSArrayInset::name_right() const
 }
 
 
-Dimension MathAMSArrayInset::metrics(MetricsInfo & mi) const
+void MathAMSArrayInset::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	MetricsInfo m = mi;
 	if (m.base.style == LM_ST_DISPLAY)
 		m.base.style = LM_ST_TEXT;
 	MathGridInset::metrics(m);
 	dim_.wid += 12;
-	return dim_;
+	dim = dim_;
 }
 
 
