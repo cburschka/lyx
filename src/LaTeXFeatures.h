@@ -78,7 +78,8 @@ public:
 	void useLayout(string const & lyt);
 	///
 	BufferParams const & bufferParams() const;
-	///
+	/// the return value is dependent upon both LyXRC and LaTeXFeatures.
+	bool useBabel() const;
 
 private:
 	string externalPreambles;

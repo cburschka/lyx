@@ -1,3 +1,8 @@
+2003-05-23  Angus Leeming  <leeming@lyx.org>
+
+	* LaTeXFeatures.[Ch] (useBabel): new method.
+	* bufferparams.C (writeLaTeX): use it.
+
 2003-05-23  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* ParagraphList.h (set): remove unused function. 

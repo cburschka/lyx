@@ -38,11 +38,6 @@ using std::ostream;
 using std::endl;
 using std::pair;
 
-#ifdef WITH_WARNINGS
-#warning Do we need this horrible thing? (JMarc)
-#endif
-bool use_babel;
-
 
 BufferParams::BufferParams()
 	// Initialize textclass to point to article. if `first' is
@@ -524,17 +519,14 @@ bool BufferParams::writeLaTeX(ostream & os, LaTeXFeatures & features,
 		clsoptions << "landscape,";
 
 	// language should be a parameter to \documentclass
-	use_babel = false;
-	ostringstream language_options;
 	if (language->babel() == "hebrew"
 	    && default_language->babel() != "hebrew")
 		// This seems necessary
 		features.useLanguage(default_language);
 
-	if (lyxrc.language_use_babel ||
-	    language->lang() != lyxrc.default_language ||
-	    features.hasLanguages()) {
-		use_babel = true;
+	ostringstream language_options;
+	bool const use_babel = features.useBabel();
+	if (use_babel) {
 		language_options << features.getLanguages();
 		language_options << language->babel();
 		if (lyxrc.language_global_options)

@@ -322,10 +322,9 @@ int InsetQuotes::docbook(Buffer const *, ostream & os, bool) const
 }
 
 
-extern bool use_babel;
-
 void InsetQuotes::validate(LaTeXFeatures & features) const
 {
+	bool const use_babel = features.useBabel();
 	char type = quote_char[quote_index[side_][language_]];
 
 #ifdef DO_USE_DEFAULT_LANGUAGE

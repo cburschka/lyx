@@ -38,6 +38,14 @@ LaTeXFeatures::LaTeXFeatures(BufferParams const & p)
 {}
 
 
+bool LaTeXFeatures::useBabel() const
+{
+	return lyxrc.language_use_babel ||
+		bufferParams().language->lang() != lyxrc.default_language ||
+		this->hasLanguages();
+}
+
+
 void LaTeXFeatures::require(string const & name)
 {
 	if (isRequired(name))
