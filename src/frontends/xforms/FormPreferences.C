@@ -29,7 +29,6 @@
 #include "lyxfont.h"
 
 #include "support/lstrings.h"
-#include "support/tostr.h"
 #include "support/path_defines.h"
 #include "support/filetools.h"
 
@@ -2632,61 +2631,61 @@ void FormPreferences::ScreenFonts::apply(LyXRC & rc) const
 		rc.dpi = ivalue;
 	}
 
-	double dvalue = strToDbl(fl_get_input(dialog_->input_tiny));
+	string dvalue = fl_get_input(dialog_->input_tiny);
 	if (rc.font_sizes[LyXFont::SIZE_TINY] != dvalue) {
 		changed = true;
 		rc.font_sizes[LyXFont::SIZE_TINY] = dvalue;
 	}
 
-	dvalue = strToDbl(fl_get_input(dialog_->input_script));
+	dvalue = fl_get_input(dialog_->input_script);
 	if (rc.font_sizes[LyXFont::SIZE_SCRIPT] != dvalue) {
 		changed = true;
 		rc.font_sizes[LyXFont::SIZE_SCRIPT] = dvalue;
 	}
 
-	dvalue = strToDbl(fl_get_input(dialog_->input_footnote));
+	dvalue = fl_get_input(dialog_->input_footnote);
 	if (rc.font_sizes[LyXFont::SIZE_FOOTNOTE] != dvalue) {
 		changed = true;
 		rc.font_sizes[LyXFont::SIZE_FOOTNOTE] = dvalue;
 	}
 
-	dvalue = strToDbl(fl_get_input(dialog_->input_small));
+	dvalue = fl_get_input(dialog_->input_small);
 	if (rc.font_sizes[LyXFont::SIZE_SMALL] != dvalue) {
 		changed = true;
 		rc.font_sizes[LyXFont::SIZE_SMALL] = dvalue;
 	}
 
-	dvalue = strToDbl(fl_get_input(dialog_->input_normal));
+	dvalue = fl_get_input(dialog_->input_normal);
 	if (rc.font_sizes[LyXFont::SIZE_NORMAL] != dvalue) {
 		changed = true;
 		rc.font_sizes[LyXFont::SIZE_NORMAL] = dvalue;
 	}
 
-	dvalue = strToDbl(fl_get_input(dialog_->input_large));
+	dvalue = fl_get_input(dialog_->input_large);
 	if (rc.font_sizes[LyXFont::SIZE_LARGE] != dvalue) {
 		changed = true;
 		rc.font_sizes[LyXFont::SIZE_LARGE] = dvalue;
 	}
 
-	dvalue = strToDbl(fl_get_input(dialog_->input_larger));
+	dvalue = fl_get_input(dialog_->input_larger);
 	if (rc.font_sizes[LyXFont::SIZE_LARGER] != dvalue) {
 		changed = true;
 		rc.font_sizes[LyXFont::SIZE_LARGER] = dvalue;
 	}
 
-	dvalue = strToDbl(fl_get_input(dialog_->input_largest));
+	dvalue = fl_get_input(dialog_->input_largest);
 	if (rc.font_sizes[LyXFont::SIZE_LARGEST] != dvalue) {
 		changed = true;
 		rc.font_sizes[LyXFont::SIZE_LARGEST] = dvalue;
 	}
 
-	dvalue = strToDbl(fl_get_input(dialog_->input_huge));
+	dvalue = fl_get_input(dialog_->input_huge);
 	if (rc.font_sizes[LyXFont::SIZE_HUGE] != dvalue) {
 		changed = true;
 		rc.font_sizes[LyXFont::SIZE_HUGE] = dvalue;
 	}
 
-	dvalue = strToDbl(fl_get_input(dialog_->input_huger));
+	dvalue = fl_get_input(dialog_->input_huger);
 	if (rc.font_sizes[LyXFont::SIZE_HUGER] != dvalue) {
 		changed = true;
 		rc.font_sizes[LyXFont::SIZE_HUGER] = dvalue;
@@ -2858,25 +2857,25 @@ void FormPreferences::ScreenFonts::update(LyXRC const & rc)
 	fl_set_counter_value(dialog_->counter_zoom, rc.zoom);
 	fl_set_counter_value(dialog_->counter_dpi,  rc.dpi);
 	fl_set_input(dialog_->input_tiny,
-		     tostr(rc.font_sizes[LyXFont::SIZE_TINY]).c_str());
+		     rc.font_sizes[LyXFont::SIZE_TINY].c_str());
 	fl_set_input(dialog_->input_script,
-		     tostr(rc.font_sizes[LyXFont::SIZE_SCRIPT]).c_str());
+		     rc.font_sizes[LyXFont::SIZE_SCRIPT].c_str());
 	fl_set_input(dialog_->input_footnote,
-		     tostr(rc.font_sizes[LyXFont::SIZE_FOOTNOTE]).c_str());
+		     rc.font_sizes[LyXFont::SIZE_FOOTNOTE].c_str());
 	fl_set_input(dialog_->input_small,
-		     tostr(rc.font_sizes[LyXFont::SIZE_SMALL]).c_str());
+		     rc.font_sizes[LyXFont::SIZE_SMALL].c_str());
 	fl_set_input(dialog_->input_normal,
-		     tostr(rc.font_sizes[LyXFont::SIZE_NORMAL]).c_str());
+		     rc.font_sizes[LyXFont::SIZE_NORMAL].c_str());
 	fl_set_input(dialog_->input_large,
-		     tostr(rc.font_sizes[LyXFont::SIZE_LARGE]).c_str());
+		     rc.font_sizes[LyXFont::SIZE_LARGE].c_str());
 	fl_set_input(dialog_->input_larger,
-		     tostr(rc.font_sizes[LyXFont::SIZE_LARGER]).c_str());
+		     rc.font_sizes[LyXFont::SIZE_LARGER].c_str());
 	fl_set_input(dialog_->input_largest,
-		     tostr(rc.font_sizes[LyXFont::SIZE_LARGEST]).c_str());
+		     rc.font_sizes[LyXFont::SIZE_LARGEST].c_str());
 	fl_set_input(dialog_->input_huge,
-		     tostr(rc.font_sizes[LyXFont::SIZE_HUGE]).c_str());
+		     rc.font_sizes[LyXFont::SIZE_HUGE].c_str());
 	fl_set_input(dialog_->input_huger,
-		     tostr(rc.font_sizes[LyXFont::SIZE_HUGER]).c_str());
+		     rc.font_sizes[LyXFont::SIZE_HUGER].c_str());
 }
 
 

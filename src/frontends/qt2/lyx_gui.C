@@ -75,11 +75,11 @@ extern BufferList bufferlist;
 
 namespace {
 
-float getDPI()
+int getDPI()
 {
 	QWidget w;
 	QPaintDeviceMetrics pdm(&w);
-	return 0.5 * (pdm.logicalDpiX() + pdm.logicalDpiY());
+	return int(0.5 * (pdm.logicalDpiX() + pdm.logicalDpiY()));
 }
 
 map<int, shared_ptr<socket_callback> > socket_callbacks;

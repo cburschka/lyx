@@ -72,11 +72,11 @@ namespace {
 bool finished = false;
 
 /// estimate DPI from X server
-float getDPI()
+int getDPI()
 {
 	Screen * scr = ScreenOfDisplay(fl_get_display(), fl_screen);
-	return ((HeightOfScreen(scr) * 25.4 / HeightMMOfScreen(scr)) +
-		(WidthOfScreen(scr) * 25.4 / WidthMMOfScreen(scr))) / 2;
+	return int(((HeightOfScreen(scr) * 25.4 / HeightMMOfScreen(scr)) +
+		(WidthOfScreen(scr) * 25.4 / WidthMMOfScreen(scr))) / 2);
 }
 
 

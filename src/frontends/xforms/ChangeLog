@@ -1,3 +1,10 @@
+2005-01-05  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* FormPreferences.C: store all float/double values as strings.
+	lyxrc.dpi is an int value now.
+	
+	* xfont_loader.C: lyxrc.font_sizes is a string now.
+
 2005-01-04  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* FormExternal.C: store all float/double values as strings.

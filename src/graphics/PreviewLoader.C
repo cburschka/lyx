@@ -317,7 +317,7 @@ PreviewLoader::Impl::Impl(PreviewLoader & p, Buffer const & b)
 	: parent_(p), buffer_(b), font_scaling_factor_(0.0)
 {
 	font_scaling_factor_ = 0.01 * lyxrc.dpi * lyxrc.zoom *
-		lyxrc.preview_scale_factor;
+		support::strToDbl(lyxrc.preview_scale_factor);
 
 	lyxerr[Debug::GRAPHICS] << "The font scaling factor is "
 				<< font_scaling_factor_ << endl;

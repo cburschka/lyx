@@ -26,12 +26,14 @@
 #include "frontends/LyXView.h"
 #include "frontends/lyx_gui.h"
 
+#include "support/lstrings.h"
 #include "support/systemcall.h"
 #include "support/filetools.h"
 
 #include <cmath>	// fabs()
 #include <vector>
 
+using lyx::support::strToDbl;
 
 using std::endl;
 using std::string;
@@ -129,7 +131,7 @@ XftPattern * xftFontLoader::getFontPattern(LyXFont::FONT_FAMILY family,
 	string ffamily;
 	int fweight;
 	int fslant;
-	double fsize = lyxrc.font_sizes[size] * lyxrc.zoom / 100.0;
+	double fsize = strToDbl(lyxrc.font_sizes[size]) * lyxrc.zoom / 100.0;
 	XftPattern *fpat = XftPatternCreate();
 
 	ffamily = familyString(family);

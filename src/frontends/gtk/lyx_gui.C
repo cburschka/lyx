@@ -92,11 +92,11 @@ bool finished = false;
 
 
 /// estimate DPI from X server
-float getDPI()
+int getDPI()
 {
 	Screen * scr = ScreenOfDisplay(getDisplay(), getScreen());
-	return ((HeightOfScreen(scr) * 25.4 / HeightMMOfScreen(scr)) +
-		(WidthOfScreen(scr) * 25.4 / WidthMMOfScreen(scr))) / 2;
+	return int(((HeightOfScreen(scr) * 25.4 / HeightMMOfScreen(scr)) +
+		(WidthOfScreen(scr) * 25.4 / WidthMMOfScreen(scr))) / 2);
 }
 
 

@@ -215,16 +215,16 @@ void LyXRC::setDefaults() {
 	zoom = 150;
 	wheel_jump = 5;
 	// Default LaTeX font size:
-	font_sizes[LyXFont::SIZE_TINY] = 5.0;
-	font_sizes[LyXFont::SIZE_SCRIPT] = 7.0;
-	font_sizes[LyXFont::SIZE_FOOTNOTE] = 8.0;
-	font_sizes[LyXFont::SIZE_SMALL] = 9.0;
-	font_sizes[LyXFont::SIZE_NORMAL] = 10.0;
-	font_sizes[LyXFont::SIZE_LARGE] = 12.0;
-	font_sizes[LyXFont::SIZE_LARGER] = 14.4;
-	font_sizes[LyXFont::SIZE_LARGEST] = 17.26;
-	font_sizes[LyXFont::SIZE_HUGE] = 20.74;
-	font_sizes[LyXFont::SIZE_HUGER] = 24.88;
+	font_sizes[LyXFont::SIZE_TINY] = "5.0";
+	font_sizes[LyXFont::SIZE_SCRIPT] = "7.0";
+	font_sizes[LyXFont::SIZE_FOOTNOTE] = "8.0";
+	font_sizes[LyXFont::SIZE_SMALL] = "9.0";
+	font_sizes[LyXFont::SIZE_NORMAL] = "10.0";
+	font_sizes[LyXFont::SIZE_LARGE] = "12.0";
+	font_sizes[LyXFont::SIZE_LARGER] = "14.4";
+	font_sizes[LyXFont::SIZE_LARGEST] = "17.26";
+	font_sizes[LyXFont::SIZE_HUGE] = "20.74";
+	font_sizes[LyXFont::SIZE_HUGER] = "24.88";
 	use_scalable_fonts = true;
 	roman_font_name = "";
 	sans_font_name = "";
@@ -272,7 +272,7 @@ void LyXRC::setDefaults() {
 	label_init_length = 3;
 	preview = PREVIEW_OFF;
 	preview_hashed_labels  = false;
-	preview_scale_factor = 0.9;
+	preview_scale_factor = "0.9";
 
 	user_name = lyx::support::user_name();
 
@@ -617,43 +617,43 @@ int LyXRC::read(LyXLex & lexrc)
 		case RC_SCREEN_FONT_SIZES:
 			if (lexrc.next()) {
 				font_sizes[LyXFont::SIZE_TINY] =
-					lexrc.getFloat();
+					lexrc.getString();
 			}
 			if (lexrc.next()) {
 				font_sizes[LyXFont::SIZE_SCRIPT] =
-					lexrc.getFloat();
+					lexrc.getString();
 			}
 			if (lexrc.next()) {
 				font_sizes[LyXFont::SIZE_FOOTNOTE] =
-					lexrc.getFloat();
+					lexrc.getString();
 			}
 			if (lexrc.next()) {
 				font_sizes[LyXFont::SIZE_SMALL] =
-					lexrc.getFloat();
+					lexrc.getString();
 			}
 			if (lexrc.next()) {
 				font_sizes[LyXFont::SIZE_NORMAL] =
-					lexrc.getFloat();
+					lexrc.getString();
 			}
 			if (lexrc.next()) {
 				font_sizes[LyXFont::SIZE_LARGE] =
-					lexrc.getFloat();
+					lexrc.getString();
 			}
 			if (lexrc.next()) {
 				font_sizes[LyXFont::SIZE_LARGER] =
-					lexrc.getFloat();
+					lexrc.getString();
 			}
 			if (lexrc.next()) {
 				font_sizes[LyXFont::SIZE_LARGEST] =
-					lexrc.getFloat();
+					lexrc.getString();
 			}
 			if (lexrc.next()) {
 				font_sizes[LyXFont::SIZE_HUGE] =
-					lexrc.getFloat();
+					lexrc.getString();
 			}
 			if (lexrc.next()) {
 				font_sizes[LyXFont::SIZE_HUGER] =
-					lexrc.getFloat();
+					lexrc.getString();
 			}
 			break;
 
@@ -1107,7 +1107,7 @@ int LyXRC::read(LyXLex & lexrc)
 
 		case RC_PREVIEW_SCALE_FACTOR:
 			if (lexrc.next()) {
-				preview_scale_factor = lexrc.getFloat();
+				preview_scale_factor = lexrc.getString();
 			}
 			break;
 

@@ -238,11 +238,11 @@ public:
 	/// parameter for button_4 and button_5 (scrollwheel)
 	unsigned int wheel_jump;
 	/// Screen font sizes in points for each font size
-	float font_sizes[10];
+	std::string font_sizes[10];
 	/// Allow the use of scalable fonts? Default is yes.
 	bool use_scalable_fonts;
 	/// DPI of monitor
-	float dpi;
+	unsigned int dpi;
 	///
 	std::string fontenc;
 	///
@@ -369,7 +369,7 @@ public:
 	///
 	bool preview_hashed_labels;
 	///
-	float preview_scale_factor;
+	std::string preview_scale_factor;
 	/// user name
 	std::string user_name;
 	/// user email

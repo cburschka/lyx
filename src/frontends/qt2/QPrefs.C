@@ -37,7 +37,6 @@
 #include "lyxfont.h"
 
 #include "support/lstrings.h"
-#include "support/tostr.h"
 
 #include "controllers/ControlPrefs.h"
 #include "controllers/frnt_lang.h"
@@ -309,16 +308,16 @@ void QPrefs::apply()
 
 	rc.zoom = fontmod->screenZoomSB->value();
 	rc.dpi = fontmod->screenDpiSB->value();
-	rc.font_sizes[LyXFont::SIZE_TINY] = strToDbl(fromqstr(fontmod->screenTinyED->text()));
-	rc.font_sizes[LyXFont::SIZE_SCRIPT] = strToDbl(fromqstr(fontmod->screenSmallestED->text()));
-	rc.font_sizes[LyXFont::SIZE_FOOTNOTE] = strToDbl(fromqstr(fontmod->screenSmallerED->text()));
-	rc.font_sizes[LyXFont::SIZE_SMALL] = strToDbl(fromqstr(fontmod->screenSmallED->text()));
-	rc.font_sizes[LyXFont::SIZE_NORMAL] = strToDbl(fromqstr(fontmod->screenNormalED->text()));
-	rc.font_sizes[LyXFont::SIZE_LARGE] = strToDbl(fromqstr(fontmod->screenLargeED->text()));
-	rc.font_sizes[LyXFont::SIZE_LARGER] = strToDbl(fromqstr(fontmod->screenLargerED->text()));
-	rc.font_sizes[LyXFont::SIZE_LARGEST] = strToDbl(fromqstr(fontmod->screenLargestED->text()));
-	rc.font_sizes[LyXFont::SIZE_HUGE] = strToDbl(fromqstr(fontmod->screenHugeED->text()));
-	rc.font_sizes[LyXFont::SIZE_HUGER] = strToDbl(fromqstr(fontmod->screenHugerED->text()));
+	rc.font_sizes[LyXFont::SIZE_TINY] = fromqstr(fontmod->screenTinyED->text());
+	rc.font_sizes[LyXFont::SIZE_SCRIPT] = fromqstr(fontmod->screenSmallestED->text());
+	rc.font_sizes[LyXFont::SIZE_FOOTNOTE] = fromqstr(fontmod->screenSmallerED->text());
+	rc.font_sizes[LyXFont::SIZE_SMALL] = fromqstr(fontmod->screenSmallED->text());
+	rc.font_sizes[LyXFont::SIZE_NORMAL] = fromqstr(fontmod->screenNormalED->text());
+	rc.font_sizes[LyXFont::SIZE_LARGE] = fromqstr(fontmod->screenLargeED->text());
+	rc.font_sizes[LyXFont::SIZE_LARGER] = fromqstr(fontmod->screenLargerED->text());
+	rc.font_sizes[LyXFont::SIZE_LARGEST] = fromqstr(fontmod->screenLargestED->text());
+	rc.font_sizes[LyXFont::SIZE_HUGE] = fromqstr(fontmod->screenHugeED->text());
+	rc.font_sizes[LyXFont::SIZE_HUGER] = fromqstr(fontmod->screenHugerED->text());
 
 	if (rc.font_sizes != oldrc.font_sizes
 		|| rc.roman_font_name != oldrc.roman_font_name
@@ -619,17 +618,17 @@ void QPrefs::update_contents()
 	dialog_->select_typewriter(fontmod->screenTypewriterCO->currentText());
 
 	fontmod->screenZoomSB->setValue(rc.zoom);
-	fontmod->screenDpiSB->setValue(int(rc.dpi));
-	fontmod->screenTinyED->setText(toqstr(tostr(rc.font_sizes[LyXFont::SIZE_TINY])));
-	fontmod->screenSmallestED->setText(toqstr(tostr(rc.font_sizes[LyXFont::SIZE_SCRIPT])));
-	fontmod->screenSmallerED->setText(toqstr(tostr(rc.font_sizes[LyXFont::SIZE_FOOTNOTE])));
-	fontmod->screenSmallED->setText(toqstr(tostr(rc.font_sizes[LyXFont::SIZE_SMALL])));
-	fontmod->screenNormalED->setText(toqstr(tostr(rc.font_sizes[LyXFont::SIZE_NORMAL])));
-	fontmod->screenLargeED->setText(toqstr(tostr(rc.font_sizes[LyXFont::SIZE_LARGE])));
-	fontmod->screenLargerED->setText(toqstr(tostr(rc.font_sizes[LyXFont::SIZE_LARGER])));
-	fontmod->screenLargestED->setText(toqstr(tostr(rc.font_sizes[LyXFont::SIZE_LARGEST])));
-	fontmod->screenHugeED->setText(toqstr(tostr(rc.font_sizes[LyXFont::SIZE_HUGE])));
-	fontmod->screenHugerED->setText(toqstr(tostr(rc.font_sizes[LyXFont::SIZE_HUGER])));
+	fontmod->screenDpiSB->setValue(rc.dpi);
+	fontmod->screenTinyED->setText(toqstr(rc.font_sizes[LyXFont::SIZE_TINY]));
+	fontmod->screenSmallestED->setText(toqstr(rc.font_sizes[LyXFont::SIZE_SCRIPT]));
+	fontmod->screenSmallerED->setText(toqstr(rc.font_sizes[LyXFont::SIZE_FOOTNOTE]));
+	fontmod->screenSmallED->setText(toqstr(rc.font_sizes[LyXFont::SIZE_SMALL]));
+	fontmod->screenNormalED->setText(toqstr(rc.font_sizes[LyXFont::SIZE_NORMAL]));
+	fontmod->screenLargeED->setText(toqstr(rc.font_sizes[LyXFont::SIZE_LARGE]));
+	fontmod->screenLargerED->setText(toqstr(rc.font_sizes[LyXFont::SIZE_LARGER]));
+	fontmod->screenLargestED->setText(toqstr(rc.font_sizes[LyXFont::SIZE_LARGEST]));
+	fontmod->screenHugeED->setText(toqstr(rc.font_sizes[LyXFont::SIZE_HUGE]));
+	fontmod->screenHugerED->setText(toqstr(rc.font_sizes[LyXFont::SIZE_HUGER]));
 
 	dialog_->updateFormats();
 	dialog_->updateConverters();

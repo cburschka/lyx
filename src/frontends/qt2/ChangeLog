@@ -1,3 +1,10 @@
+2005-01-05  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* QPrefs.C: store all float/double values as strings.
+	lyxrc.dpi is an int value now.
+	
+	* QFontLoader.C: lyxrc.font_sizes is a string now.
+
 2005-01-05  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
 	* ui/Makefile.am (libqt2ui_la_LINK): Improve the trick to avoid
