@@ -79,7 +79,7 @@ string SpaceLess(string const & file)
 	string temp = AddName(path, name);
 	// Replace spaces with underscores, also in directory
 	// No!!! I checked it that it is not necessary.
-	// temp.subst(' ','_');
+	// temp = subst(temp, ' ', '_');
 
 	return temp;
 }
@@ -331,8 +331,8 @@ bool PutEnvPath(string const & envstr)
         string pathlist = envstr;
 #warning Verify that this is correct.
 #ifdef __EMX__
-        pathlist.subst(':', ';');
-        pathlist.subst('/', '\\');
+        pathlist = subst(pathlist, ':', ';');
+        pathlist = subst(pathlist, '/', '\\');
 #endif
         return PutEnv(pathlist);
 }
@@ -690,9 +690,8 @@ string NormalizePath(string const & path)
 string CleanupPath(string const & path) 
 {
 #ifdef __EMX__	  /* SMiyata: This should fix searchpath bug. */
-	string temppath(path);
-	subst(tmppath, '\\', '/');
-	subst(tmppath, "//", "/");
+	string temppath = subst(path, '\\', '/');
+	temppath = subst(temppath, "//", "/");
 	return lowercase(temppath);
 #else // On unix, nothing to do
 	return path;

@@ -523,8 +523,7 @@ bool LyXLayout::Read (LyXLex & lexrc, LyXLayoutList * list)
 
 		case LT_LABELSEP:	/* label separator */
 			if (lexrc.next()) {
-				labelsep = lexrc.GetString();
-				subst(labelsep, 'x', ' ');
+				labelsep = subst(lexrc.GetString(), 'x', ' ');
 			}
 			break;
 
@@ -882,10 +881,9 @@ int LyXTextClass::Read (string const &filename, LyXLayoutList *list)
 
 		case LT_STYLE:
 			if (lexrc.next()) {
-				string name = lexrc.GetString();
 				bool is_new = false;
 
-				subst(name, '_',' ');
+				string name = subst(lexrc.GetString(), '_', ' ');
 				tmpl = l->GetLayout(name);
 				if (!tmpl) {
 					is_new = true;

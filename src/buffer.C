@@ -3539,7 +3539,7 @@ void Buffer::RoffAsciiTable(FILE *file, LyXParagraph *par)
 	par->table->RoffEndOfCell(fp, cell);
 	fclose(fp);
 	string cmd = lyxrc->ascii_roff_command + " >" + fname2;
-	subst(cmd, "$$FName",fname1);
+	cmd = subst(cmd, "$$FName", fname1);
 	Systemcalls one(Systemcalls::System, cmd);
 	if (!(lyxerr.debugging(Debug::ROFF))) {
 		remove(fname1.c_str());

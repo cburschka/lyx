@@ -158,8 +158,8 @@ void LyX::init(int */*argc*/, char **argv)
 	// Determine path of binary
 	//
 
-	string fullbinpath, binpath = argv[0];
-	subst(binpath, '\\', '/');
+	string fullbinpath;
+	string binpath = subst(argv[0], '\\', '/');
 	string binname = OnlyFilename(argv[0]);
 	// Sorry for system specific code. (SMiyata)
 	if (suffixIs(binname, ".exe")) binname.erase(binname.length()-4, string::npos);

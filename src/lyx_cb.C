@@ -757,8 +757,7 @@ void MenuFax(Buffer *buffer)
 	}
 	Path p(path);
 	if (!lyxrc->fax_program.empty()) {
-		string help2 = lyxrc->fax_program;
-                subst(help2, "$$FName",ps);
+                string help2 = subst(lyxrc->fax_program, "$$FName", ps);
                 help2 += " &";
                 Systemcalls one(Systemcalls::System, help2);
 	} else
@@ -3286,11 +3285,9 @@ extern "C" void PrintApplyCB(FL_OBJECT *, long)
 // Changes by Stephan Witt (stephan.witt@beusen.de), 19-Jan-99
 // User may give a page (range) list
 // User may print multiple (unsorted) copies
-	string pages = fl_get_input(fd_form_print->input_pages);
-	subst(pages, ';',',');
-	subst(pages, '+',',');
-	pages = strip (pages) ;
-	pages = frontStrip (pages) ;
+	string pages = subst(fl_get_input(fd_form_print->input_pages), ';',',');
+	pages = subst(pages, '+',',');
+	pages = frontStrip(strip(pages)) ;
 	while (!pages.empty()) { // a page range was given
 		string piece ;
 		pages = split (pages, piece, ',') ;

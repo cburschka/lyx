@@ -115,12 +115,12 @@ bool button_send(string const &fname, string const &sendcmd)
     cmd = sendcmd + " >";
     cmd += logfile + " 2>";
     cmd += logfile;
-    subst(cmd, "$$Host",host);
-    subst(cmd, "$$Comment",comment);
-    subst(cmd, "$$Enterprise",enterprise);
-    subst(cmd, "$$Name",name);
-    subst(cmd, "$$Phone",phone);
-    subst(cmd, "$$FName",fname);
+    cmd = subst(cmd, "$$Host", host);
+    cmd = subst(cmd, "$$Comment", comment);
+    cmd = subst(cmd, "$$Enterprise", enterprise);
+    cmd = subst(cmd, "$$Name", name);
+    cmd = subst(cmd, "$$Phone", phone);
+    cmd = subst(cmd, "$$FName", fname);
     lyxerr << "CMD: " << cmd << endl;
     Systemcalls one(Systemcalls::System, cmd);
     show_logfile(logfile,false);

@@ -352,9 +352,9 @@ int InsetInclude::Latex(string &file, signed char /*fragile*/)
 		writefile = ChangeExtension(getFileName(), ".tex", false);
 		if (!master->tmppath.empty()
 		    && !master->niceFile) {
-			subst(incfile, '/','@');
+			incfile = subst(incfile, '/','@');
 			#ifdef __EMX__
-			subst(incfile, ':', '$');
+			incfile = subst(incfile, ':', '$');
 			#endif
 			writefile = AddName(master->tmppath, incfile);
 		} else

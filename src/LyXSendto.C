@@ -82,7 +82,7 @@ void SendtoApplyCB(FL_OBJECT *, long)
 					      ftypeext, true));
     if (!contains(command, "$$FName"))
         command = "( " + command + " ) <$$FName";
-    subst(command, "$$FName",fname);
+    command = subst(command, "$$FName",fname);
     command += " &"; // execute in background
     // push directorypath, if necessary 
     string path = OnlyPath(buffer->getFileName());

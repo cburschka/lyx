@@ -408,8 +408,10 @@ string InsetBibtex::getKeys()
 				// At end of each line check if line begins with '@'
 				if ( c == '\n') {
 					if (prefixIs(linebuf, "@") ) {
-						subst(linebuf, '{','(');
-						linebuf=split(linebuf, tmp,'(');
+						linebuf = subst(linebuf,
+								'{', '(');
+						linebuf = split(linebuf,
+								tmp, '(');
 						tmp = lowercase(tmp);
 	    					if (!prefixIs(tmp, "@string") && !prefixIs(tmp, "@preamble") ) {
 							linebuf = split(linebuf, tmp,',');
@@ -470,9 +472,10 @@ bool InsetBibtex::delDatabase(string const &db)
 		string bd = db;
 		int n = tokenPos(contents, ',', bd);
 		if (n > 0) {
+			// Weird code, would someone care to explain this?(Lgb)
 			string tmp(",");
 			tmp += bd;
-			subst(contents, tmp.c_str(), ",");
+			contents = subst(contents, tmp.c_str(), ",");
 		} else if (n==0)
 			contents = split(contents, bd, ',');
 		else 

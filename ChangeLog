@@ -1,3 +1,36 @@
+1999-10-27  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/support/filetools.C (CleanupPath): subst fix
+
+	* src/insets/insetbib.C (delDatabase): subst fix, this looks
+	_really_ weird.
+
+	* src/support/filetools.C (PutEnvPath): subst fix, how come nobody
+	complained about this one?
+
+	* src/insets/insetinclude.C (Latex): subst fix
+
+	* src/insets/insetbib.C (getKeys): subst fix
+
+	* src/LyXSendto.C (SendtoApplyCB): subst fix
+
+	* src/lyx_main.C (init): subst fix
+
+	* src/layout.C (Read): subst fix
+
+	* src/lyx_sendfax_main.C (button_send): subst fix
+
+	* src/buffer.C (RoffAsciiTable): subst fix
+
+	* src/lyx_cb.C (MenuFax): subst fix
+	(PrintApplyCB): subst fix
+
+1999-10-26  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* development/lyx.spec.in (%build): add CFLAGS also.
+
+	* src/screen.C (drawFrame): removed another warning.
+
 1999-10-25  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* renamed WHATSNEW to NEWS (usual GNU style), CHANGES to
@@ -8,12 +41,6 @@
 	* src/paragraph.C (SimpleTeXBlanks): spaces are automatically made
 	unbreakable if we are in freespacing mode (LyX-Code), but not in
 	latex mode.
-
-1999-10-26  Lars Gullik Bjønnes  <larsbj@lyx.org>
-
-	* development/lyx.spec.in (%build): add CFLAGS also.
-
-	* src/screen.C (drawFrame): removed another warning.
 
 1999-10-25  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
