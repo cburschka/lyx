@@ -114,6 +114,13 @@ void MathMatrixInset::metrics(MathStyles) const
 		if (l)
 			width_ += 30 + l;
 	}
+
+	// make it at least as high as the current font
+	int asc = 0;
+	int des = 0;
+	math_font_max_dim(LM_TC_TEXTRM, LM_ST_TEXT, asc, des);
+	ascent_  = std::max(ascent_,  asc);
+	descent_ = std::max(descent_, des);
 }
 
 

@@ -216,6 +216,7 @@ void InsetFormulaBase::getCursorPos(BufferView *, int & x, int & y) const
 	mathcursor->getPos(x, y);
 	x -= par()->xo();
 	y -= par()->yo();
+	y -= 3;
 }
 
 
@@ -232,10 +233,11 @@ void InsetFormulaBase::toggleInsetCursor(BufferView * bv)
 		mathcursor->getPos(x, y);
 		//x -= par()->xo();
 		y -= par()->yo();
+		y -= 3;
 		int asc;
-		int desc;
-		math_font_max_dim(LM_TC_TEXTRM, LM_ST_TEXT, asc, desc);
-		bv->showLockedInsetCursor(x, y, asc, desc);
+		int des;
+		math_font_max_dim(LM_TC_TEXTRM, LM_ST_TEXT, asc, des);
+		bv->showLockedInsetCursor(x, y, asc, des);
 	}
 
 	toggleCursorVisible();
@@ -252,9 +254,9 @@ void InsetFormulaBase::showInsetCursor(BufferView * bv, bool)
 			x -= par()->xo();
 			y -= par()->yo();
 			int asc;
-			int desc;
-			math_font_max_dim(LM_TC_TEXTRM, LM_ST_TEXT, asc, desc);
-			bv->fitLockedInsetCursor(x, y, asc, desc);
+			int des;
+			math_font_max_dim(LM_TC_TEXTRM, LM_ST_TEXT, asc, des);
+			bv->fitLockedInsetCursor(x, y, asc, des);
 		}
 		toggleInsetCursor(bv);
 	}

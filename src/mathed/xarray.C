@@ -27,7 +27,8 @@ void MathXArray::metrics(MathStyles st) const
 
 	if (data_.empty()) 
 		return;
-	
+
+	math_font_max_dim(LM_TC_TEXTRM, LM_ST_TEXT, ascent_, descent_);	
 	width_   = 0;
 
 	//lyxerr << "MathXArray::metrics(): '" << data_ << "'\n";
