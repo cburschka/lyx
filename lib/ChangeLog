@@ -1,3 +1,8 @@
+2004-05-03  José Matos  <jamatos@lyx.org>
+
+	* reLyX/MakePreamble.pm(translate_preamble): use a saner method
+	to translate \usepackage from the preamble, fix #1584.
+
 2004-05-03  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* layouts/scrlttr2.layout: include counters.
