@@ -22,9 +22,9 @@ FD_form_citation * FormCitation::build_citation()
   FL_OBJECT *obj;
   FD_form_citation *fdui = new FD_form_citation;
 
-  fdui->form = fl_bgn_form(FL_NO_BOX, 680, 440);
+  fdui->form = fl_bgn_form(FL_NO_BOX, 680, 480);
   fdui->form->u_vdata = this;
-  fdui->box = obj = fl_add_box(FL_UP_BOX, 0, 0, 680, 440, "");
+  fdui->box = obj = fl_add_box(FL_UP_BOX, 0, 0, 680, 480, "");
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
   {
     char const * const dummy = N_("Inset keys|#I");
@@ -164,19 +164,19 @@ FD_form_citation * FormCitation::build_citation()
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
   {
     char const * const dummy = N_("Restore|#R");
-    fdui->button_restore = obj = fl_add_button(FL_NORMAL_BUTTON, 10, 400, 100, 30, idex(_(dummy)));
+    fdui->button_restore = obj = fl_add_button(FL_NORMAL_BUTTON, 10, 395, 100, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_gravity(obj, FL_SouthWest, FL_SouthWest);
     fl_set_object_callback(obj, C_FormBaseRestoreCB, 0);
-  fdui->button_ok = obj = fl_add_button(FL_RETURN_BUTTON, 360, 400, 90, 30, _("OK"));
+  fdui->button_ok = obj = fl_add_button(FL_RETURN_BUTTON, 360, 395, 90, 30, _("OK"));
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_gravity(obj, FL_SouthEast, FL_SouthEast);
     fl_set_object_callback(obj, C_FormBaseOKCB, 0);
   {
     char const * const dummy = N_("Apply|#A");
-    fdui->button_apply = obj = fl_add_button(FL_NORMAL_BUTTON, 470, 400, 90, 30, idex(_(dummy)));
+    fdui->button_apply = obj = fl_add_button(FL_NORMAL_BUTTON, 470, 395, 90, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
@@ -184,12 +184,15 @@ FD_form_citation * FormCitation::build_citation()
     fl_set_object_callback(obj, C_FormBaseApplyCB, 0);
   {
     char const * const dummy = N_("Cancel|^[");
-    fdui->button_cancel = obj = fl_add_button(FL_NORMAL_BUTTON, 580, 400, 90, 30, idex(_(dummy)));
+    fdui->button_cancel = obj = fl_add_button(FL_NORMAL_BUTTON, 580, 395, 90, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_gravity(obj, FL_SouthEast, FL_SouthEast);
     fl_set_object_callback(obj, C_FormBaseCancelCB, 0);
+  fdui->text_info = obj = fl_add_text(FL_NORMAL_TEXT, 10, 440, 660, 30, "");
+    fl_set_object_lalign(obj, FL_ALIGN_LEFT|FL_ALIGN_INSIDE);
+  obj = fl_add_frame(FL_ENGRAVED_FRAME, 10, 430, 660, 1, "");
   fl_end_form();
 
   fdui->form->fdui = fdui;

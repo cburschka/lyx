@@ -123,8 +123,3 @@ void ControlTexinfo::viewFile(string const filename) const
 	lv_.getDialogs()->showFile(filename);
 }
 
-
-void ControlTexinfo::help() const
-{
-	lv_.getDialogs()->showFile(i18nLibFileSearch("help","Texinfo.hlp"));
-}

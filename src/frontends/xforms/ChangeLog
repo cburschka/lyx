@@ -11,6 +11,14 @@
 	* FormGraphic.C: cosmetic changes to the layout. Delete
 	the help button
 
+2002-02-05  Juergen Spitzmueller  <j.spitzmueller@gmx.de>
+
+	* forms/form.texinfo.fd: delete help button, add text_info
+	* forms/form.citation.fd,form.bibtex.fd: add text_info
+	* FormTexinfo.[Ch]: Delete Help mechanism, add tooltips and help messages.
+	* FormCitation.[Ch],FormBibtex.[Ch]: add tooltips and help messages (actually
+	no tooltips in Bibtex). 
+
 2002-02-05  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* FormBase.[Ch]: You want tooltips too? You got 'em. Verified as

@@ -24,9 +24,6 @@ public:
 	///
 	FormTexinfo(ControlTexinfo &);
 
-	/// preemptive handler for feedback messages
-	void feedbackCB(FL_OBJECT *, int);
-
 private:
 	/// not needed
 	virtual void apply() {}
@@ -37,13 +34,15 @@ private:
 	/// Filter the inputs on callback from xforms
 	virtual ButtonPolicy::SMInput input(FL_OBJECT *, long);
 	///
+	string const getTooltip(FL_OBJECT *);
+	///
 	void feedback(FL_OBJECT *);
+	///
+	void clear_feedback();
 	///
 	void updateStyles(ControlTexinfo::texFileSuffix);
 	/// Fdesign generated method
 	FD_form_texinfo * build_texinfo();
-	///
-	bool warningPosted;
 	///
 	ControlTexinfo::texFileSuffix activeStyle;
 };

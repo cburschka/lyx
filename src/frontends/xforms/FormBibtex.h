@@ -37,6 +37,10 @@ private:
 	virtual void update();
 	/// Filter the inputs on callback from xforms
 	virtual ButtonPolicy::SMInput input(FL_OBJECT *, long);
+	/// tooltips
+	void feedback(FL_OBJECT *);
+	/// 
+	void clear_feedback();
 
 	/// Fdesign generated method
 	FD_form_bibtex * build_bibtex();

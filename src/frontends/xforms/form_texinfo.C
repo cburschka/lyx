@@ -26,7 +26,7 @@ FD_form_texinfo * FormTexinfo::build_texinfo()
   fdui->form->u_vdata = this;
   obj = fl_add_box(FL_UP_BOX, 0, 0, 513, 394, "");
     fl_set_object_lstyle(obj, FL_FIXED_STYLE);
-  fdui->browser = obj = fl_add_browser(FL_HOLD_BROWSER, 15, 12, 324, 290, "");
+  fdui->browser = obj = fl_add_browser(FL_HOLD_BROWSER, 15, 12, 324, 241, "");
     fl_set_object_lalign(obj, FL_ALIGN_TOP);
     fl_set_object_lstyle(obj, FL_FIXED_STYLE);
     fl_set_object_gravity(obj, FL_NorthWest, FL_SouthEast);
@@ -92,18 +92,12 @@ FD_form_texinfo * FormTexinfo::build_texinfo()
     fl_set_object_lalign(obj, FL_ALIGN_RIGHT);
     fl_set_object_gravity(obj, FL_NorthEast, FL_NorthEast);
     fl_set_object_callback(obj, C_FormBaseInputCB, 2);
-  fdui->message = obj = fl_add_text(FL_NORMAL_TEXT, 15, 313, 481, 31, "");
-    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+  fdui->message = obj = fl_add_text(FL_NORMAL_TEXT, 14, 323, 482, 56, "");
     fl_set_object_lalign(obj, FL_ALIGN_LEFT|FL_ALIGN_INSIDE);
     fl_set_object_gravity(obj, FL_SouthWest, FL_SouthEast);
-  fdui->help = obj = fl_add_button(FL_NORMAL_BUTTON, 10, 353, 90, 30, _("Help"));
-    fl_set_button_shortcut(obj, _("H"), 1);
-    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    fl_set_object_gravity(obj, FL_SouthWest, FL_SouthWest);
-    fl_set_object_callback(obj, C_FormBaseInputCB, 0);
   {
     char const * const dummy = N_("Run Texhash|#T");
-    fdui->button_texhash = obj = fl_add_button(FL_NORMAL_BUTTON, 188, 353, 135, 30, idex(_(dummy)));
+    fdui->button_texhash = obj = fl_add_button(FL_NORMAL_BUTTON, 15, 271, 135, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
@@ -111,12 +105,13 @@ FD_form_texinfo * FormTexinfo::build_texinfo()
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
   {
     char const * const dummy = N_("Close|^[^M");
-    fdui->button_close = obj = fl_add_button(FL_NORMAL_BUTTON, 410, 353, 90, 30, idex(_(dummy)));
+    fdui->button_close = obj = fl_add_button(FL_NORMAL_BUTTON, 408, 272, 90, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_gravity(obj, FL_SouthEast, FL_SouthEast);
     fl_set_object_callback(obj, C_FormBaseCancelCB, 0);
+  obj = fl_add_frame(FL_ENGRAVED_FRAME, 13, 312, 485, 1, "");
   fl_end_form();
 
   fdui->form->fdui = fdui;

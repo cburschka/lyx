@@ -51,6 +51,12 @@ private:
 	virtual void update();
 	/// Filter the inputs on callback from xforms
 	virtual ButtonPolicy::SMInput input(FL_OBJECT *, long);
+	/// tooltips
+	string const getTooltip(FL_OBJECT *);
+	///
+	void feedback(FL_OBJECT *);
+	///
+	void clear_feedback();
 
 	/// Fdesign generated method
 	FD_form_citation * build_citation();

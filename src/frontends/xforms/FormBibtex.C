@@ -19,7 +19,9 @@
 #include "form_bibtex.h"
 #include "gettext.h"
 #include "debug.h"
+#include "xforms_helpers.h"
 #include "helper_funcs.h"
+#include "support/LAssert.h"
 #include "support/lstrings.h"
 #include "support/filetools.h"
 
@@ -47,6 +49,13 @@ void FormBibtex::build()
 	bc().addReadOnly(dialog_->style_browse);
 	bc().addReadOnly(dialog_->style);
 	bc().addReadOnly(dialog_->radio_bibtotoc);
+
+	// set up the feedback mechanism
+	setPrehandler(dialog_->database_browse);
+	setPrehandler(dialog_->database);
+	setPrehandler(dialog_->style_browse);
+	setPrehandler(dialog_->style);
+	setPrehandler(dialog_->radio_bibtotoc);
 }
 
 
@@ -171,4 +180,39 @@ void FormBibtex::apply()
 		// only style
 		controller().params().setOptions(bibstyle);
 	}
+}
+
+void FormBibtex::clear_feedback()
+{
+	fl_set_object_label(dialog_->text_info, "");
+	fl_redraw_object(dialog_->text_info);
+}
+
+void FormBibtex::feedback(FL_OBJECT * ob)
+{
+	lyx::Assert(ob);
+
+	string str;
+
+	if (ob == dialog_->database) {
+		str = N_("The database you want to cite from. Insert it without the default extension \".bib\". If you insert it with the browser, LyX strips the extension. Several databases must be separated by a comma: \"natbib, books\".");
+
+	} else if (ob == dialog_->database_browse) {
+		str = _("Browse your directory for BibTeX databases.");
+
+	} else if (ob == dialog_->style) {
+		str = _("The BibTeX style to use (only one allowed). Insert it without the default extension \".bst\" and without path. Most of the bibstyles are stored in $TEXMF/bibtex/bst. $TEXMF is the root dir of the local TeX tree. In \"Help->TeX Info\" you can list all installed styles.");
+
+	} else if (ob == dialog_->style_browse) {
+		str = _("Browse your directory for BibTeX stylefiles.");
+
+	} else if (ob == dialog_->radio_bibtotoc) {
+		str = _("Activate this option if you want the bibliography to appear in the Table of Contents (which doesn't happen by default).");
+	}
+
+	str = formatted(_(str), dialog_->text_info->w-10, FL_SMALL_SIZE);
+
+	fl_set_object_label(dialog_->text_info, str.c_str());
+	fl_set_object_lsize(dialog_->text_info, FL_SMALL_SIZE);
+	fl_redraw_object(dialog_->text_info);
 }

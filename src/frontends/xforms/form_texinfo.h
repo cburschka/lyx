@@ -22,7 +22,6 @@ struct FD_form_texinfo {
 	FL_OBJECT *button_view;
 	FL_OBJECT *button_fullPath;
 	FL_OBJECT *message;
-	FL_OBJECT *help;
 	FL_OBJECT *button_texhash;
 	FL_OBJECT *button_close;
 };

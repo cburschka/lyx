@@ -33,8 +33,6 @@ public:
 	///
 	void viewFile(string const filename) const;
 	///
-	void help() const;
-	///
 	void rescanStyles() const;
 	///
 	void runTexhash() const;
