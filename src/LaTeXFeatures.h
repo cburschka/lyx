@@ -44,7 +44,7 @@ struct LaTeXFeatures {
 	///
 	string const getIncludedFiles(string const & fname) const;
 	///
-	void getFloatDefinitions(ostream & os) const;
+	void getFloatDefinitions(std::ostream & os) const;
 
 	///
 	void showStruct() const;

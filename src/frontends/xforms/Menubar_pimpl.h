@@ -26,11 +26,9 @@
 #include "LString.h"
 #include "frontends/Menubar.h"
 #include "commandtags.h"
+#include "MenuBackend.h"
 
 class LyXView;
-class MenuBackend;
-class MenuItem;
-class Menu;
 
 /** The LyX GUI independent menubar class
   The GUI interface is implemented in the corresponding Menubar_pimpl class. 

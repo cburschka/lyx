@@ -287,7 +287,10 @@ void BufferList::emergencyWriteAll()
 
 void BufferList::emergencyWrite(Buffer * buf) 
 {
-	assert(buf); // use c assert to avoid a loop
+	// assert(buf) // this is not good since C assert takes an int
+	               // and a pointer is a long (JMarc)
+	assert(buf != 0); // use c assert to avoid a loop
+
 	
 	// No need to save if the buffer has not changed.
 	if (buf->isLyxClean()) return;
