@@ -146,13 +146,13 @@ void handle_opt(vector<string> & opts, char const ** what, string & target)
 }
 
 
-void inset_header(ostream & os, string const & name)
+void begin_inset(ostream & os, string const & name)
 {
 	os << "\n\\begin_inset " << name;
 }
 
 
-void inset_footer(ostream & os)
+void end_inset(ostream & os)
 {
 	os << "\n\\end_inset\n";
 }
@@ -160,7 +160,7 @@ void inset_footer(ostream & os)
 
 void handle_ert(ostream & os, string const & s)
 {
-	inset_header(os, "ERT");
+	begin_inset(os, "ERT");
 	os << "\nstatus Collapsed\n\n\\layout Standard\n\n";
 	for (string::const_iterator it = s.begin(), et = s.end(); it != et; ++it) {
 		if (*it == '\\')
@@ -168,7 +168,7 @@ void handle_ert(ostream & os, string const & s)
 		else
 			os << *it;
 	}
-	inset_footer(os);
+	end_inset(os);
 }
 
 
@@ -180,6 +180,10 @@ void handle_par(ostream & os)
 	string s = active_environments.top();
 	if (s == "document") {
 		os << "Standard\n\n";
+		return;
+	}
+	if (s == "lyxcode") {
+		os << "LyX-Code\n\n";
 		return;
 	}
 	if (s.size()) 
@@ -320,7 +324,7 @@ void parse(Parser & p, ostream & os, unsigned flags, mode_type mode)
 			if (mode == TEXT_MODE || mode == MATHTEXT_MODE) {
 				// we are inside some text mode thingy, so opening new math is allowed
 				if (mode == TEXT_MODE)
-					inset_header(os, "Formula ");
+					begin_inset(os, "Formula ");
 				Token const & n = p.getToken();
 				if (n.cat() == catMath) {
 					// TeX's $$...$$ syntax for displayed math
@@ -336,7 +340,7 @@ void parse(Parser & p, ostream & os, unsigned flags, mode_type mode)
 					os << '$';
 				}
 				if (mode == TEXT_MODE)
-					inset_footer(os);
+					end_inset(os);
 			}
 
 			else if (flags & FLAG_SIMPLE) {
@@ -438,19 +442,19 @@ void parse(Parser & p, ostream & os, unsigned flags, mode_type mode)
 		}
 
 		else if (t.cs() == "(") {
-			inset_header(os, "Formula");
+			begin_inset(os, "Formula");
 			os << " \\(";
 			parse(p, os, FLAG_SIMPLE2, MATH_MODE);
 			os << "\\)";
-			inset_footer(os);
+			end_inset(os);
 		}
 
 		else if (t.cs() == "[") {
-			inset_header(os, "Formula");
+			begin_inset(os, "Formula");
 			os << " \\[";
 			parse(p, os, FLAG_EQUATION, MATH_MODE);
 			os << "\\]";
-			inset_footer(os);
+			end_inset(os);
 		}
 
 		else if (t.cs() == "protect")
@@ -575,6 +579,9 @@ void parse(Parser & p, ostream & os, unsigned flags, mode_type mode)
 		else if (t.cs() == "makeindex" || t.cs() == "maketitle")
 			; // swallow this
 
+		else if (t.cs() == "tableofcontents")
+			p.verbatimItem(); // swallow this
+
 		else if (t.cs() == "textrm") {
 			os << '\\' << t.cs() << '{';
 			parse(p, os, FLAG_ITEM, MATHTEXT_MODE);
@@ -585,6 +592,12 @@ void parse(Parser & p, ostream & os, unsigned flags, mode_type mode)
 			os << "\n\\emph on\n";
 			parse(p, os, FLAG_ITEM, mode);
 			os << "\n\\emph default\n";
+		}
+
+		else if (t.cs() == "index") {
+			begin_inset(os, "LatexCommand");
+			parse(p, os, FLAG_ITEM, TEXT_MODE);
+			end_inset(os);
 		}
 
 		else 
