@@ -1,5 +1,10 @@
 2002-11-20  John Levon  <levon@movementarian.org>
 
+	* QMathDialog.C: don't pass empty commands to math
+	  on menu tear-off
+ 
+2002-11-20  John Levon  <levon@movementarian.org>
+
 	* QLPopupMenu.C: only check .disabled() on Commands
  
 2002-11-20  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>

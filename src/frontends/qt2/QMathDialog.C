@@ -271,6 +271,7 @@ void QMathDialog::insertSpace(int id)
 		case 4: str = "quad"; break;
 		case 5: str = "qquad"; break;
 		case 6: str = "!"; break;
+		default: return;
 	}
 	form_->insert(str);
 }
@@ -300,6 +301,7 @@ void QMathDialog::insertStyle(int id)
 		case 2: str = "textstyle"; break;
 		case 3: str = "scriptstyle"; break;
 		case 4: str = "scriptscriptstyle"; break;
+		default: return;
 	}
 	form_->insert(str);
 }
@@ -318,6 +320,7 @@ void QMathDialog::insertFont(int id)
 		case 7: str = "mathfrak"; break;
 		case 8: str = "mathcal"; break;
 		case 9: str = "textrm"; break;
+		default: return;
 	}
 	form_->insert(str);
 }
