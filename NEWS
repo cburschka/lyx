@@ -42,12 +42,16 @@ except:
 
 - enable size changes to arrays after creation (add/delete rows/columns)
 
-- enable switching between equation/eqnarray and align environment
+- support for amsmath align environment
 
+- support for changing font on a selection
 
 Most of the popups have been rewritten in the GUI-I framework:
 
 - [...]
+
+- The citation dialog citation dialog has a search facility, with
+  support for regular expressions.
 
 - the kde frontend has been dropped in favor of a new qt2 frontend.
   Note that only the xforms front is really operational as of this
@@ -60,6 +64,14 @@ Other changes include:
 - support for parsing preamble when converting LaTeX files
 
 - updated documentation
+
+- support for setting bookmarks and jumping to them
+
+- It is possible to cycle between a label and its references.
+
+- preliminary support for multiple bibliographies
+
+- babel can be disabled when using the default language.
 
 
 
