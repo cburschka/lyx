@@ -70,10 +70,9 @@ int GUIRunTime::initApplication(int , char **)
 
 void GUIRunTime::processEvents() 
 {
-	XEvent ev;
-
 	if (fl_do_forms() == FL_EVENT) {
 		lyxerr << "LyX: This shouldn't happen..." << endl;
+		XEvent ev;
 		fl_XNextEvent(&ev);
 	}
 }
@@ -81,10 +80,10 @@ void GUIRunTime::processEvents()
 
 void GUIRunTime::runTime()
 {
-	XEvent ev;
 	while (!finished) {
 		if (fl_check_forms() == FL_EVENT) {
 			lyxerr << "LyX: This shouldn't happen..." << endl;
+			XEvent ev;
 			fl_XNextEvent(&ev);
 		}
 	}

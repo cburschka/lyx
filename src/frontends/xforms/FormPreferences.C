@@ -393,7 +393,7 @@ void FormPreferences::update()
 
 
 FormPreferences::Colors::Colors(FormPreferences & p)
-	: parent_(p)
+	: modifiedXformsPrefs(false), parent_(p)
 {}
 
 
