@@ -401,12 +401,29 @@ copyToDirIfNeeded(string const & file_in, string const & dir, bool zipped)
 }
 
 
+string const stripExtension(string const & file)
+{
+	// Remove the extension so the LaTeX will use whatever
+	// is appropriate (when there are several versions in
+	// different formats)
+	// This works only if the filename contains no dots besides
+	// the just removed one. We can fool here by replacing all
+	// dots with a macro whose definition is just a dot ;-)
+	return subst(RemoveExtension(file), ".", "\\lyxdot ");
+}
+
+
 string const stripExtensionIfPossible(string const & file, string const & to)
 {
 	// No conversion is needed. LaTeX can handle the graphic file as is.
 	// This is true even if the orig_file is compressed.
-	if (formats.getFormat(to)->extension() == GetExtension(file))
-		return RemoveExtension(file);
+	string const to_format = formats.getFormat(to)->extension();
+	string const file_format = GetExtension(file);
+	// for latex .ps == .eps
+	if (to_format == file_format ||
+	    (to_format == "eps" && file_format ==  "ps") ||
+	    (to_format ==  "ps" && file_format == "eps"))
+		return stripExtension(file);
 	return file;
 }
 
@@ -416,17 +433,9 @@ string const stripExtensionIfPossible(string const & file, string const & to)
 string const InsetGraphics::prepareFile(Buffer const & buf,
 					OutputParams const & runparams) const
 {
-	string orig_file = params().filename.absFilename();
+	// We assume that the file exists (the caller checks this)
+	string const orig_file = params().filename.absFilename();
 	string const rel_file = params().filename.relFilename(buf.filePath());
-
-	// LaTeX can cope if the graphics file doesn't exist, so just return the
-	// filename.
-	if (!IsFileReadable(orig_file)) {
-		lyxerr[Debug::GRAPHICS]
-			<< "InsetGraphics::prepareFile\n"
-			<< "No file '" << orig_file << "' can be found!" << endl;
-		return rel_file;
-	}
 
 	// If the file is compressed and we have specified that it
 	// should not be uncompressed, then just return its name and
@@ -437,10 +446,14 @@ string const InsetGraphics::prepareFile(Buffer const & buf,
 	// we move it to a temp dir or uncompress it.
 	string temp_file = orig_file;
 
+	// The master buffer. This is useful when there are multiple levels
+	// of include files
+	Buffer const * m_buffer = buf.getMasterBuffer();
+
 	// We place all temporary files in the master buffer's temp dir.
 	// This is possible because we use mangled file names.
 	// This is necessary for DVI export.
-	string const temp_path = buf.getMasterBuffer()->temppath();
+	string const temp_path = m_buffer->temppath();
 
 	bool conversion_needed = true;
 
@@ -453,6 +466,15 @@ string const InsetGraphics::prepareFile(Buffer const & buf,
 	else if (status == IDENTICAL_CONTENTS)
 		conversion_needed = false;
 
+	// a relative filename should be relative to the master
+	// buffer.
+	// "nice" means that the buffer is exported to LaTeX format but not
+	//        run through the LaTeX compiler.
+	string const output_file = os::external_path(runparams.nice ?
+		params().filename.outputFilename(m_buffer->filePath()) :
+		OnlyFilename(temp_file));
+	string const source_file = runparams.nice ? orig_file : temp_file;
+
 	if (zipped) {
 		if (params().noUnzip) {
 			// We don't know wether latex can actually handle
@@ -461,17 +483,30 @@ string const InsetGraphics::prepareFile(Buffer const & buf,
 			// noUnzip parameter meaningless.
 			lyxerr[Debug::GRAPHICS]
 				<< "\tpass zipped file to LaTeX.\n";
-			// LaTeX needs the bounding box file in the tmp dir
-			string bb_file;
-			boost::tie(status, bb_file) =
-				copyFileIfNeeded(ChangeExtension(orig_file, "bb"),
-				                 ChangeExtension(temp_file, "bb"));
-			if (status == FAILURE)
-				return orig_file;
-			runparams.exportdata->addExternalFile("latex", temp_file);
-			runparams.exportdata->addExternalFile("latex", bb_file);
-			runparams.exportdata->addExternalFile("dvi", temp_file);
-			return OnlyFilename(temp_file);
+
+			string const bb_orig_file = ChangeExtension(orig_file, "bb");
+			if (runparams.nice) {
+				runparams.exportdata->addExternalFile("latex",
+						bb_orig_file,
+						ChangeExtension(output_file, "bb"));
+			} else {
+				// LaTeX needs the bounding box file in the
+				// tmp dir
+				string bb_file = ChangeExtension(temp_file, "bb");
+				boost::tie(status, bb_file) =
+					copyFileIfNeeded(bb_orig_file, bb_file);
+				if (status == FAILURE)
+					return orig_file;
+				runparams.exportdata->addExternalFile("latex",
+						bb_file);
+			}
+			runparams.exportdata->addExternalFile("latex",
+					source_file, output_file);
+			runparams.exportdata->addExternalFile("dvi",
+					source_file, output_file);
+			// We can't strip the extension, because we don't know
+			// the unzipped file format
+			return output_file;
 		}
 
 		string const unzipped_temp_file = unzippedFileName(temp_file);
@@ -504,13 +539,15 @@ string const InsetGraphics::prepareFile(Buffer const & buf,
 
 	if (from == to) {
 		// The extension of temp_file might be != to!
-		runparams.exportdata->addExternalFile("latex", temp_file);
-		runparams.exportdata->addExternalFile("dvi", temp_file);
-		return OnlyFilename(stripExtensionIfPossible(temp_file, to));
+		runparams.exportdata->addExternalFile("latex", source_file,
+		                                      output_file);
+		runparams.exportdata->addExternalFile("dvi", source_file,
+		                                      output_file);
+		return stripExtensionIfPossible(output_file, to);
 	}
 
-	string const to_file_base = RemoveExtension(temp_file);
-	string const to_file = ChangeExtension(to_file_base, to);
+	string const to_file = ChangeExtension(temp_file, to);
+	string const output_to_file = ChangeExtension(output_file, to);
 
 	// Do we need to perform the conversion?
 	// Yes if to_file does not exist or if temp_file is newer than to_file
@@ -520,21 +557,22 @@ string const InsetGraphics::prepareFile(Buffer const & buf,
 			<< bformat(_("No conversion of %1$s is needed after all"),
 				   rel_file)
 			<< std::endl;
-		runparams.exportdata->addExternalFile("latex", to_file);
-		runparams.exportdata->addExternalFile("dvi", to_file);
-		return OnlyFilename(to_file_base);
+		runparams.exportdata->addExternalFile("latex", to_file,
+		                                      output_to_file);
+		runparams.exportdata->addExternalFile("dvi", to_file,
+		                                      output_to_file);
+		return stripExtension(output_file);
 	}
 
 	lyxerr[Debug::GRAPHICS]
 		<< "\tThe original file is " << orig_file << "\n"
 		<< "\tA copy has been made and convert is to be called with:\n"
 		<< "\tfile to convert = " << temp_file << '\n'
-		<< "\tto_file_base = " << to_file_base << '\n'
 		<< "\t from " << from << " to " << to << '\n';
 
 	// if no special converter defined, then we take the default one
 	// from ImageMagic: convert from:inname.from to:outname.to
-	if (!converters.convert(&buf, temp_file, to_file_base, from, to)) {
+	if (!converters.convert(&buf, temp_file, temp_file, from, to)) {
 		string const command =
 			"sh " + LibFileSearch("scripts", "convertDefault.sh") +
 				' ' + from + ':' + temp_file + ' ' +
@@ -545,8 +583,10 @@ string const InsetGraphics::prepareFile(Buffer const & buf,
 		Systemcall one;
 		one.startscript(Systemcall::Wait, command);
 		if (IsFileReadable(to_file)) {
-			runparams.exportdata->addExternalFile("latex", to_file);
-			runparams.exportdata->addExternalFile("dvi", to_file);
+			runparams.exportdata->addExternalFile("latex",
+					to_file, output_to_file);
+			runparams.exportdata->addExternalFile("dvi",
+					to_file, output_to_file);
 		} else {
 			string str = bformat(_("No information for converting %1$s "
 				"format files to %2$s.\n"
@@ -555,17 +595,13 @@ string const InsetGraphics::prepareFile(Buffer const & buf,
 		}
 	}
 
-	return OnlyFilename(to_file_base);
+	return stripExtension(output_file);
 }
 
 
 int InsetGraphics::latex(Buffer const & buf, ostream & os,
 			 OutputParams const & runparams) const
 {
-	// The master buffer. This is useful when there are multiple levels
-	// of include files
-	Buffer const * m_buffer = buf.getMasterBuffer();
-
 	// If there is no file specified or not existing,
 	// just output a message about it in the latex output.
 	lyxerr[Debug::GRAPHICS]
@@ -579,7 +615,7 @@ int InsetGraphics::latex(Buffer const & buf, ostream & os,
 	bool const file_exists = !file_.empty() && IsFileReadable(file_);
 	string const message = file_exists ?
 		string() : string("bb = 0 0 200 100, draft, type=eps");
-	// if !message.empty() than there was no existing file
+	// if !message.empty() then there was no existing file
 	// "filename" found. In this case LaTeX
 	// draws only a rectangle with the above bb and the
 	// not found filename in it.
@@ -613,29 +649,13 @@ int InsetGraphics::latex(Buffer const & buf, ostream & os,
 
 
 	string latex_str = before + '{';
-	// "nice" means that the buffer is exported to LaTeX format but not
-	//        run through the LaTeX compiler.
-	if (runparams.nice) {
-		// a relative filename should be relative to the master
-		// buffer.
-		string basename = params().filename.outputFilename(m_buffer->filePath());
+	if (file_exists)
+		// Convert the file if necessary.
 		// Remove the extension so the LaTeX will use whatever
 		// is appropriate (when there are several versions in
 		// different formats)
-		basename = RemoveExtension(basename);
-		if(params().filename.isZipped())
-			basename = RemoveExtension(basename);
-		// This works only if the filename contains no dots besides
-		// the just removed one. We can fool here by replacing all
-		// dots with a macro whose definition is just a dot ;-)
-		latex_str += subst(basename, ".", "\\lyxdot ");
-	} else if (file_exists) {
-		// Make the filename relative to the lyx file
-		// and remove the extension so the LaTeX will use whatever
-		// is appropriate (when there are several versions in
-		// different formats)
-		latex_str += os::external_path(prepareFile(buf, runparams));
-	} else
+		latex_str += prepareFile(buf, runparams);
+	else
 		latex_str += relative_file + " not found!";
 
 	latex_str += '}' + after;

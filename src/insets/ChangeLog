@@ -1,3 +1,11 @@
+2004-06-10  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* insetgraphics.C (stripExtension): new
+	* insetgraphics.C (prepareFile): Don't check for nonexisting files,
+	the caller does this
+	* insetgraphics.C (prepareFile): Handle "nice" exports, too
+	* insetgraphics.C (latex): call prepareFile() also for "nice" exports
+
 2004-06-02  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* insetfloatlist.C (latex,getScreenLabel): translate according to
