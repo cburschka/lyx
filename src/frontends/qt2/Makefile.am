@@ -19,7 +19,6 @@ libqt2_la_SOURCES = \
 	QDialogView.C \
 	QDialogView.h \
 	Alert_pimpl.C \
-	bulletstrings.C bulletstrings.h \
 	Dialogs.C \
 	Dialogs2.C \
 	FileDialog.C \
