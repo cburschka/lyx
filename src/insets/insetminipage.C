@@ -107,8 +107,6 @@ InsetMinipage::~InsetMinipage()
 
 dispatch_result InsetMinipage::localDispatch(FuncRequest const & cmd)
 {
-	Inset::RESULT result = UNDISPATCHED;
-
 	switch (cmd.action) {
 	case LFUN_INSET_MODIFY: {
 		InsetMinipage::Params params;
@@ -125,21 +123,16 @@ dispatch_result InsetMinipage::localDispatch(FuncRequest const & cmd)
 		inset.update(cmd.view(), true);
 		t->setCursorIntern(t->cursor.par(), t->cursor.pos());
 		cmd.view()->updateInset(this);
-		result = DISPATCHED;
+		return DISPATCHED;
 	}
-	break;
 
-	case LFUN_INSET_DIALOG_UPDATE: {
-		InsetMinipageMailer mailer(*this);
-		mailer.updateDialog(cmd.view());
-	}
-	break;
+	case LFUN_INSET_DIALOG_UPDATE: 
+		InsetMinipageMailer(*this).updateDialog(cmd.view());
+		return DISPATCHED;
 
 	default:
-		result = InsetCollapsable::localDispatch(cmd);
+		return InsetCollapsable::localDispatch(cmd);
 	}
-
-	return result;
 }
 
 

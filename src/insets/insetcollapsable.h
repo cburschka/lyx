@@ -17,6 +17,7 @@
 #include "inset.h"
 #include "insettext.h"
 #include "lyxfont.h"
+#include "funcrequest.h" // for adjustCommand
 #include "LColor.h"
 
 #include <boost/weak_ptr.hpp>
@@ -212,11 +213,9 @@ protected:
 
 private:
 	///
-	void lfunMousePress(FuncRequest const &);
+	void lfunMouseRelease(FuncRequest const &);
 	///
-	bool lfunMouseRelease(FuncRequest const &);
-	///
-	void lfunMouseMotion(FuncRequest const &);
+	FuncRequest adjustCommand(FuncRequest const &);
 
 	///
 	mutable string label;

@@ -13,7 +13,6 @@
 #ifndef INSETMINIPAGE_H
 #define INSETMINIPAGE_H
 
-
 #include "insetcollapsable.h"
 #include "lyxlength.h"
 

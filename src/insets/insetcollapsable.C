@@ -231,9 +231,7 @@ void InsetCollapsable::draw(BufferView * bv, LyXFont const & f,
 
 Inset::EDITABLE InsetCollapsable::editable() const
 {
-	if (collapsed_)
-		return IS_EDITABLE;
-	return HIGHLY_EDITABLE;
+	return collapsed_ ? IS_EDITABLE : HIGHLY_EDITABLE;
 }
 
 
@@ -256,31 +254,36 @@ void InsetCollapsable::insetUnlock(BufferView * bv)
 }
 
 
-void InsetCollapsable::lfunMousePress(FuncRequest const & cmd)
+FuncRequest InsetCollapsable::adjustCommand(FuncRequest const & cmd)
 {
-	if (!collapsed_ && (cmd.y > button_bottom_y)) {
-		LyXFont font(LyXFont::ALL_SANE);
-		FuncRequest cmd1 = cmd;
-		cmd1.y = ascent(cmd.view(), font) + cmd.y -
-		    (ascent_collapsed() +
-		     descent_collapsed() +
-		     inset.ascent(cmd.view(), font));
-		inset.localDispatch(cmd1);
-	}
+	LyXFont font(LyXFont::ALL_SANE);
+	FuncRequest cmd1 = cmd;
+	cmd1.y = ascent(cmd.view(), font) + cmd.y -
+	    (ascent_collapsed() +
+	     descent_collapsed() +
+	     inset.ascent(cmd.view(), font));
+	return cmd1;
 }
 
 
-bool InsetCollapsable::lfunMouseRelease(FuncRequest const & cmd)
+void InsetCollapsable::lfunMouseRelease(FuncRequest const & cmd)
 {
 	bool ret = false;
 	BufferView * bv = cmd.view();
+
+	if (collapsed_ && cmd.button() != mouse_button::button3) {
+		collapsed_ = false;
+		inset.setUpdateStatus(bv, InsetText::FULL);
+		bv->updateInset(this);
+		bv->buffer()->markDirty();
+		return;
+	}
+
 	if ((cmd.button() != mouse_button::button3) && (cmd.x < button_length) &&
 	    (cmd.y >= button_top_y) && (cmd.y <= button_bottom_y))
 	{
 		if (collapsed_) {
 			collapsed_ = false;
-// should not be called on inset open!
-//			inset.insetButtonRelease(bv, 0, 0, button);
 			inset.setUpdateStatus(bv, InsetText::FULL);
 			bv->updateInset(this);
 			bv->buffer()->markDirty();
@@ -291,31 +294,10 @@ bool InsetCollapsable::lfunMouseRelease(FuncRequest const & cmd)
 			bv->buffer()->markDirty();
 		}
 	} else if (!collapsed_ && (cmd.y > button_bottom_y)) {
-		LyXFont font(LyXFont::ALL_SANE);
-		FuncRequest cmd1 = cmd;
-		cmd1.y = ascent(cmd.view(), font) + cmd.y -
-		    (ascent_collapsed() +
-		     descent_collapsed() +
-		     inset.ascent(cmd.view(), font));
-		ret = (inset.localDispatch(cmd1) == DISPATCHED);
+		ret = (inset.localDispatch(adjustCommand(cmd)) == DISPATCHED);
 	}
 	if (cmd.button() == mouse_button::button3 && !ret)
-		return showInsetDialog(bv);
-	return ret;
-}
-
-
-void InsetCollapsable::lfunMouseMotion(FuncRequest const & cmd)
-{
-	if (cmd.y > button_bottom_y) {
-		LyXFont font(LyXFont::ALL_SANE);
-		FuncRequest cmd1 = cmd;
-		cmd1.y = ascent(cmd.view(), font) + cmd.y -
-		    (ascent_collapsed() +
-		     descent_collapsed() +
-		     inset.ascent(cmd.view(), font));
-		inset.localDispatch(cmd1);
-	}
+		showInsetDialog(bv);
 }
 
 
@@ -363,6 +345,7 @@ void InsetCollapsable::update(BufferView * bv, bool reinit)
 
 Inset::RESULT InsetCollapsable::localDispatch(FuncRequest const & cmd)
 {
+	//lyxerr << "InsetCollapsable::localDispatch: " << cmd.action << "\n";
 	BufferView * bv = cmd.view();
 	switch (cmd.action) {
 		case LFUN_INSET_EDIT: {
@@ -421,11 +404,13 @@ Inset::RESULT InsetCollapsable::localDispatch(FuncRequest const & cmd)
 		}
 
 		case LFUN_MOUSE_PRESS:
-			lfunMousePress(cmd);
+			if (!collapsed_ && cmd.y > button_bottom_y)
+				inset.localDispatch(adjustCommand(cmd));
 			return DISPATCHED;
 
 		case LFUN_MOUSE_MOTION:
-			lfunMouseMotion(cmd);
+			if (!collapsed_ && cmd.y > button_bottom_y)
+				inset.localDispatch(adjustCommand(cmd));
 			return DISPATCHED;
 
 		case LFUN_MOUSE_RELEASE:
