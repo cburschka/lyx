@@ -196,24 +196,21 @@ void MathMacro::validate(LaTeXFeatures & features) const
 
 void MathMacro::maplize(MapleStream & os) const
 {
-	expanded_ = tmplate_->xcell(0);
-	expanded_.data_.substitute(*this);
+	updateExpansion();
 	::maplize(expanded_.data_, os);
 }
 
 
 void MathMacro::mathmlize(MathMLStream & os) const
 {
-	expanded_ = tmplate_->xcell(0);
-	expanded_.data_.substitute(*this);
+	updateExpansion();
 	::mathmlize(expanded_.data_, os);
 }
 
 
 void MathMacro::octavize(OctaveStream & os) const
 {
-	expanded_ = tmplate_->xcell(0);
-	expanded_.data_.substitute(*this);
+	updateExpansion();
 	::octavize(expanded_.data_, os);
 }
 
@@ -234,4 +231,11 @@ void MathMacro::write(WriteStream & os) const
 		os << '{' << cell(i) << '}';
 	if (nargs() == 0) 
 		os << ' ';
+}
+
+
+void MathMacro::updateExpansion() const
+{
+	expanded_ = tmplate_->xcell(0);
+	expanded_.data_.substitute(*this);
 }

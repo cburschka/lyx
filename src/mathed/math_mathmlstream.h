@@ -193,5 +193,4 @@ WriteStream & operator<<(WriteStream &, int);
 ///
 WriteStream & operator<<(WriteStream &, unsigned int);
 
-
 #endif

@@ -86,6 +86,8 @@ private:
 	bool editing() const;
 	///
 	bool defining() const;
+	///
+	void updateExpansion() const;
 
 	///
 	MathAtom & tmplate_;

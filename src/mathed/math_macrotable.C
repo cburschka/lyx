@@ -55,6 +55,7 @@ void MathMacroTable::create(string const & name, int na, string const & text)
 }
 
 
+
 void MathMacroTable::create(string const & name, int na, MathArray const & ar)
 {
 	MathAtom t(new MathMacroTemplate(name, na));

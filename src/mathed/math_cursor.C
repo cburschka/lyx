@@ -1266,6 +1266,12 @@ bool MathCursor::interpret(string const & s)
 		return true;
 	}
 
+	latexkeys const * l = in_word_set(s.substr(1));
+	if (l && (l->token == LM_TK_FONT || l->token == LM_TK_OLDFONT)) {
+		lastcode_ = static_cast<MathTextCodes>(l->id);
+		return true;
+	}
+
 	niceInsert(createMathInset(s.substr(1)));
 	return true;
 }
@@ -1403,7 +1409,8 @@ bool MathCursor::interpret(char c)
 	}
 
 	// no special circumstances, so insert the character without any fuss
-	insert(c, LM_TC_MIN);
+	insert(c, lastcode_);
+	lastcode_ = LM_TC_MIN;
 	return true;
 }
 
